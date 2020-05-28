@@ -62,7 +62,7 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp ts`
    * 处理ts
    * */
-  tasks.ts = () => gulp.src(globs.ts, { ...srcOptions, since: since(tasks.ts) })
+  tasks.ts = () => gulp.src(globs.ts, srcOptions)
     .pipe(sourcemaps.init())
     .pipe(tsProject()) // 编译ts
     .pipe(sourcemaps.write('.'))
