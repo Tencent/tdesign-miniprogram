@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "outDir": "dist",
+    "types": ["miniprogram-api-typings"],
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/button/button"
+  ],
+  "usingComponents": {
+    "t-button": "@tencent/tdesign-miniprogram/button/button"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0052d9",
+    "navigationBarTitleText": "TDesign",
+    "navigationBarTextStyle": "white"
+  }
+}
