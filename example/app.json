@@ -1,10 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/button/button"
+    "pages/index",
+    "pages/button/button",
+    "pages/dialog/dialog"
   ],
   "usingComponents": {
-    "t-button": "@tencent/tdesign-miniprogram/button/button"
+    "t-button": "@tencent/tdesign-miniprogram/button/button",
+    "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog"
   },
   "window": {
     "backgroundTextStyle": "light",

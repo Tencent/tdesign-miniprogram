@@ -1,0 +1,45 @@
+<!-- API形式调用 -->
+<button class="t-button" bindtap="showFeedbackDialog">反馈类对话框（标题+内容）</button>
+<button class="t-button" bindtap="showFeedbackDialog2">反馈类对话框（仅内容）</button>
+<button class="t-button" bindtap="showConfirmDialog">确认类对话框</button>
+<!-- <button class="t-button" bindtap="showInputDialog">输入类对话框</button> -->
+
+<t-dialog id="t-dialog" />
+
+<!-- 组件方式调用 -->
+<button class="t-button" bindtap="showCompDialog">组件方式调用</button>
+
+<t-dialog
+  visible="{{ compDialogVisible }}"
+  mode="modal"
+  className="my-dialog"
+  width="70%"
+  header="对话框标题"
+  body="告知当前状态、信息和解决方案"
+  showCancel="{{ true }}"
+  showOverlay="{{ true }}"
+  preventScrollThrough="{{ true }}"
+  zIndex="2500"
+  bindclickOverlay="hideCompDialog"
+  bindclickCloseBtn="hideCompDialog"
+  bindclickConfirmBtn="hideCompDialog" />
+
+<button class="t-button" bindtap="showOpenTypeDialog">自定义按钮 open-type</button>
+
+<t-dialog
+  visible="{{ openTypeDialogVisible }}"
+  customStyle="box-shadow:#ccc 0 5px 15px;"
+  header="请求授权"
+  body="是否允许授权获取手机号？"
+  footer="{{ false }}"
+  showOverlay="{{ false }}"
+  preventScrollThrough="{{ false }}"
+  bind:clickOverlay="hideOpenTypeDialog">
+  <view slot="footer">
+    <t-button bindtap="hideOpenTypeDialog">取消</t-button>
+    <t-button
+      open-type="openSetting"
+      bindopensetting="openSetting"
+    >确定</t-button>
+  </view>
+</t-dialog>
