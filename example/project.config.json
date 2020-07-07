@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.0.0",
-	"appid": "wx18d1dace92f15d3d",
+	"appid": "touristappid",
 	"projectname": "TDesign",
 	"debugOptions": {
 		"hidedInDevtools": []

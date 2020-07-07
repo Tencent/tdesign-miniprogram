@@ -1,0 +1,17 @@
+/* utils */
+
+/**
+ * addUnit */
+// 为 css 添加单位
+function addUnit(property, value, unit) {
+  unit = unit || 'px';
+  if (value == null || value === '') return '';
+  return property
+    + ':'
+    + ((+value == value) ? (value + unit) : value)
+    + ';';
+}
+
+module.exports = {
+  addUnit: addUnit,
+};

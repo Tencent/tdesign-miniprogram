@@ -19,8 +19,12 @@ module.exports = {
   rules: {
     // 非开发模式禁用debugger
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-    // 允许调用指定的首字母大写的函数时没有 new 操作符
-    'new-cap': ['error', { capIsNewExceptions: ['App', 'Page', 'Component'] }],
+    // 允许调用首字母大写的函数时没有 new 操作符
+    'new-cap': 'off',
+    // 在工具库中允许变量以下划线开头
+    'no-underscore-dangle': 'off',
+    // 在工具库中允许参数重新赋值
+    'no-param-reassign': 'off',
   },
   // 配置小程序内全局函数，避免报错
   globals: {

@@ -1,9 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "outDir": "dist",
     "types": ["miniprogram-api-typings"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "@tencent/tdesign-miniprogram/*": ["miniprogram_dist/*"]
+    }
   },
-  "include": ["src/**/*"]
+  "include": [
+    "src/**/*",
+    "example/**/*",
+  ]
 }

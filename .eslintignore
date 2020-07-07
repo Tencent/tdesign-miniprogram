@@ -1,2 +1,4 @@
+**/*.wxs
+src/common/lib
 miniprogram_dist
 node_modules

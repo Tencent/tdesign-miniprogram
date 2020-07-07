@@ -102,6 +102,12 @@ module.exports = (src, dist, moduleName) => {
   tasks.wxss = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) })
     .pipe(gulp.dest(dist));
 
+  /** `gulp common`
+   * 拷贝common中样式
+   */
+  tasks.common = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) })
+    .pipe(gulp.dest(dist));
+
   // set displayName
   setDisplayName(tasks, moduleName);
 
