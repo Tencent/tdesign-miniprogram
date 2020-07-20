@@ -1,20 +1,22 @@
 <wxs src="../common/utils.wxs" module="utils" />
 
 <view class="{{ visible ? 't-show' :'t-hidden' }}" wx:if="{{ visible }}">
-
   <view
     wx:if="{{ preventScrollThrough }}"
     catchtouchmove="catchtouchmove"
     class="{{ showOverlay ? 't-mask' : 't-mask--transparent' }}"
-    bindtap="clickOverlay"></view>
+    bindtap="clickOverlay"
+  ></view>
   <view
     wx:else
     class="{{ showOverlay ? 't-mask' : 't-mask--transparent' }}"
-    bindtap="clickOverlay"></view>
+    bindtap="clickOverlay"
+  ></view>
 
   <view
     class="t-dialog {{ className }}"
-    style="z-index:{{zIndex}};{{ utils.addUnit('width', width) }}{{ customStyle }}">
+    style="z-index:{{zIndex}};{{ utils.addUnit('width', width) }}{{ customStyle }}"
+  >
     <view wx:if="{{ header }}" class="t-dialog__header">
       <view class="t-dialog__title">{{ header }}</view>
     </view>
@@ -28,17 +30,21 @@
     <view class="t-dialog__footer">
       <block wx:if="{{ footer }}">
         <view
-          wx:if="{{ showCancel }}"
+          wx:if="{{ cancelContent }}"
           class="t-dialog__btn t-dialog__btn--default"
           hover-class="t-dialog__btn--active"
-          bindtap="clickCloseBtn">{{ cancelContent }}</view>
+          bindtap="clickCloseBtn"
+          >{{ cancelContent }}</view
+        >
         <view
+          wx:if="{{ confirmContent }}"
           class="t-dialog__btn t-dialog__btn--{{ theme }}"
           hover-class="t-dialog__btn--active"
-          bindtap="clickConfirmBtn">{{ confirmContent }}</view>
+          bindtap="clickConfirmBtn"
+          >{{ confirmContent }}</view
+        >
       </block>
       <slot wx:else name="footer"></slot>
     </view>
   </view>
-
 </view>

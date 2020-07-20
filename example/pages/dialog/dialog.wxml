@@ -16,7 +16,7 @@
   width="70%"
   header="对话框标题"
   body="告知当前状态、信息和解决方案"
-  showCancel="{{ true }}"
+  cancelContent="{{ false }}"
   showOverlay="{{ true }}"
   preventScrollThrough="{{ true }}"
   zIndex="2500"

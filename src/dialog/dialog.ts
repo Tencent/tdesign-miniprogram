@@ -39,16 +39,12 @@ TComponent({
       type: Boolean,
       value: true,
     },
-    showCancel: {
-      type: Boolean,
-      value: false,
-    },
     confirmContent: {
-      type: String,
+      type: null, // 不限制类型
       value: '确定',
     },
     cancelContent: {
-      type: String,
+      type: null, // 不限制类型
       value: '取消',
     },
     showOverlay: {
@@ -65,9 +61,7 @@ TComponent({
     },
   },
   // 组件的内部数据
-  data: {
-
-  },
+  data: {},
 
   /* 组件生命周期 */
   lifetimes: {
@@ -86,7 +80,7 @@ TComponent({
   /* Methods */
   methods: {
     // preventScrollThrough
-    catchtouchmove() { },
+    catchtouchmove() {},
     // 点击笼罩层
     clickOverlay(event) {
       this.triggerEvent('clickOverlay', {
