@@ -1,0 +1,12 @@
+<view>
+  <view class="t-loading-wrapper">
+    <t-loading vertical="{{vertical}}" error="{{error}}" size="{{size}}" loading="{{loading}}"
+      showType="{{showType}}" layout="{{layout}}" bind:reload="toggleError">
+    </t-loading>
+  </view>
+  <button class="t-button" bindtap="toggleVertical">切换横竖排版</button>
+  <button class="t-button" bindtap="toggleSize">切换圆圈大小</button>
+  <button class="t-button" bindtap="toggleError">切换失败状态</button>
+  <button class="t-button" bindtap="toggleShowType">切换图标文字显示</button>
+  <button class="t-button" bindtap="toggleLayout">切换页面加载</button>
+</view>
