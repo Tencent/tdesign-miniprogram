@@ -2,11 +2,13 @@
   "pages": [
     "pages/index",
     "pages/button/button",
-    "pages/dialog/dialog"
+    "pages/dialog/dialog",
+    "pages/dropdown-menu/dropdown-menu"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
-    "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog"
+    "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
+    "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu"
   },
   "window": {
     "backgroundTextStyle": "light",
