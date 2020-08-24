@@ -1,3 +1,13 @@
 import TComponent from '../common/component';
 
-TComponent({});
+TComponent({
+  properties: {
+    visible: {
+      type: Boolean,
+      value: true,
+    },
+  },
+  data: {
+    prefix: 't-dropdown-menu',
+  },
+});

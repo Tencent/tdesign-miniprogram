@@ -1,1 +1,10 @@
-<view class="t-dropdown">Dropdown Menu</view>
+<view class="{{prefix}}">
+  <view class="{{prefix}}__bar">
+    <view class="{{prefix}}__item">
+      <view class="{{prefix}}__title">Dropdown Menu</view>
+    </view>
+    <view class="{{prefix}}__item">
+      <view class="{{prefix}}__title">Dropdown Menu</view>
+    </view>
+  </view>
+</view>
