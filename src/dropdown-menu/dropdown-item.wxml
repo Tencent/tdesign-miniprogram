@@ -1,0 +1,3 @@
+<view class="{{prefix}}">
+  test
+</view>

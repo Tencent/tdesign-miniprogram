@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "Dropdown Menu 下拉菜单"
+  "navigationBarTitleText": "Dropdown Menu 下拉菜单",
+  "usingComponents": {
+    "t-dropdown-item": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-item"
+  }
 }

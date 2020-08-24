@@ -1,10 +1,8 @@
 <view class="{{prefix}}">
   <view class="{{prefix}}__bar">
-    <view class="{{prefix}}__item">
-      <view class="{{prefix}}__title">Dropdown Menu</view>
-    </view>
-    <view class="{{prefix}}__item">
-      <view class="{{prefix}}__title">Dropdown Menu</view>
+    <view wx:for="{{titles}}" wx:key="item" class="{{prefix}}__item">
+      <view class="{{prefix}}__title">{{item}}</view>
     </view>
   </view>
+  <slot></slot>
 </view>

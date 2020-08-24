@@ -1,3 +1,6 @@
 <view>
-  <t-dropdown-menu></t-dropdown-menu>
+  <t-dropdown-menu>
+    <t-dropdown-item title="单选菜单" options="{{optionsS}}"></t-dropdown-item>
+    <t-dropdown-item title="多选菜单" options="{{optionsN}}"></t-dropdown-item>
+  </t-dropdown-menu>
 </view>
