@@ -1,7 +1,13 @@
-<view class="{{prefix}}">
-  <view class="{{prefix}}__bar">
-    <view wx:for="{{titles}}" wx:key="item" class="{{prefix}}__item">
-      <view class="{{prefix}}__title">{{item}}</view>
+<view class="{{base}}">
+  <view class="{{base}}__bar" id="t-bar">
+    <view
+      wx:for="{{titles}}"
+      wx:key="item"
+      class="{{base}}__item {{ activeIdx == index ? prefix + '-is-active' : ''}}"
+    >
+      <view class="{{base}}__title" bindtap="_toggleDropdown" data-index="{{index}}">
+        {{item}}
+      </view>
     </view>
   </view>
   <slot></slot>

@@ -1,3 +1,9 @@
-<view class="{{prefix}}">
-  test
+<view class="{{base}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px">
+  <view wx:if="{{show && showOverlay}}" class="t-mask" bindtap="clickOverlay"></view>
+  <view class="{{base}}__content">
+    <view class="{{base}}__bd">
+      {{title}}
+      <text wx:if="{{show}}">已被展开</text>
+    </view>
+  </view>
 </view>

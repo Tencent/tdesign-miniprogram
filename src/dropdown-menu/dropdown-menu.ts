@@ -8,9 +8,12 @@ TComponent({
     },
   },
   data: {
-    prefix: 't-dropdown-menu',
+    prefix: 't',
+    base: 't-dropdown-menu',
     nodes: null,
     titles: null,
+    activeIdx: -1,
+    bottom: 0,
   },
   relations: {
     './dropdown-item': {
@@ -28,6 +31,27 @@ TComponent({
         nodes,
         titles,
       });
+    },
+    _toggleDropdown(e) {
+      const idx = e.target.dataset.index;
+      const { activeIdx } = this.data;
+      if (activeIdx !== -1) {
+        this.data.nodes[activeIdx].setData({
+          show: false,
+        });
+      }
+      if (activeIdx === idx) {
+        this.setData({
+          activeIdx: -1,
+        });
+      } else {
+        this.setData({
+          activeIdx: idx,
+        });
+        this.data.nodes[idx].setData({
+          show: true,
+        });
+      }
     },
   },
   ready() {
