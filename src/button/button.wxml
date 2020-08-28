@@ -1,1 +1,21 @@
-<view>按钮</view>
+<button
+  class="{{className}}"
+  form-type="{{formType}}"
+  open-type="{{openType}}"
+  lang="{{lang}}"
+  session-from="{{sessionFrom}}"
+  send-message-title="{{sendMessageTitle}}"
+  send-message-path="{{sendMessagePath}}"
+  send-message-img="{{sendMessageImg}}"
+  app-parameter="{{appParameter}}"
+  show-message-card="{{showMessageCard}}"
+  bindgetuserinfo="getuserinfo"
+  bindcontact="contact"
+  bindgetphonenumber="getphonenumber"
+  binderror="error"
+  bindopensetting="opensetting"
+  bindlaunchapp="launchapp"
+>
+  <!-- icon暂未实现，先等t-icon完成 -->
+  <slot></slot>
+</button>

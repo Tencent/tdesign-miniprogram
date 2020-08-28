@@ -3,12 +3,14 @@
     "pages/index",
     "pages/button/button",
     "pages/dialog/dialog",
-    "pages/dropdown-menu/dropdown-menu"
+    "pages/dropdown-menu/dropdown-menu",
+    "pages/loading/loading"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
     "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
-    "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu"
+    "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu",
+    "t-loading": "@tencent/tdesign-miniprogram/loading/loading"
   },
   "window": {
     "backgroundTextStyle": "light",
