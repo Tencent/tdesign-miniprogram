@@ -3,38 +3,25 @@
   <view class="{{contentClasses}} {{base}}__content" style="transition: all 200ms ease;">
     <view class="{{base}}__bd" wx:if="{{show}}">
       <!-- 单选列表 -->
-      <view
-        wx:if="{{selectMode === 'single'}}"
-        class="t-cell-group t-cell-group-container border--top-bottom"
-      >
-        <view class="t-radio-group">
-          <block wx:for="{{options}}" wx:key="index">
-            <view
-              data-value="{{item.value}}"
-              bindtap="itemSelected"
-              class="t-cell t-cell--theme-default"
-            >
-              <view
-                class="t-cell__value t-cell__left {{base}}__radio {{ selected == item.value ? prefix + '-is-checked' : ''}}"
-              >
-                <view class="t-radio t-radio__content-title">{{item.title}}</view>
-              </view>
-            </view>
+      <t-cell-group wx:if="{{selectMode === 'single'}}">
+        <t-radio-group model:selected="{{selected}}">
+          <block wx:for="{{options}}" wx:key="value">
+            <t-cell value-align="left">
+              <t-radio
+                selected="{{selected}}"
+                value="{{item.value}}"
+                title="{{item.title}}"
+                disabled="{{item.disabled}}"
+              ></t-radio>
+            </t-cell>
           </block>
-        </view>
-      </view>
+        </t-radio-group>
+      </t-cell-group>
       <!-- 多选列表 -->
-      <view
-        wx:if="{{selectMode === 'multi'}}"
-        class="t-cell-group t-cell-group-container border--top-bottom"
-      >
+      <t-cell-group wx:if="{{selectMode === 'multi'}}">
         <view class="t-check-group">
           <block wx:for="{{options}}" wx:key="index">
-            <view
-              data-value="{{item.value}}"
-              bindtap="itemSelected"
-              class="t-cell t-cell--theme-default"
-            >
+            <t-cell value-align="left">
               <view class="t-check-box">
                 <view
                   class="t-check-box__content-wrap {{ selected == item.value ? prefix + '-is-checked' : ''}}"
@@ -43,10 +30,10 @@
                   <view class="t-check-box__content-title">{{item.title}}</view>
                 </view>
               </view>
-            </view>
+            </t-cell>
           </block>
         </view>
-      </view>
+      </t-cell-group>
     </view>
     <view class="{{base}}__ft" wx:if="{{selectMode === 'multi' || optionsLayout === 'tree'}}">
       <t-button class="t-button" theme="default" disabled="{{isBtnDisabled}}" bindtap="resetSelect"

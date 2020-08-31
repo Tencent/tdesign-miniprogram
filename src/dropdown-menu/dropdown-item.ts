@@ -44,7 +44,6 @@ TComponent({
     './dropdown-menu': {
       type: 'parent',
       linked(target) {
-        console.log('child linked to ', target);
         this._getParentBottom(target);
         this.setData({
           bar: target,
@@ -71,7 +70,6 @@ TComponent({
       const contentClasses = Object.keys(contentClassesObj)
         .filter(e => contentClassesObj[e] === true)
         .join(' ');
-      console.warn(contentClasses, layoutCol);
       this.setData({
         contentClasses,
       });
@@ -100,11 +98,10 @@ TComponent({
     clickOverlay() {
       this._closeDropdown();
     },
-    itemSelected(e) {
-      this.setData({
-        selected: e.currentTarget.dataset.value,
-      });
-      this._closeDropdown();
+  },
+  observers: {
+    selected() {
+      if (this.data.selectMode == 'single') this._closeDropdown();
     },
   },
 });

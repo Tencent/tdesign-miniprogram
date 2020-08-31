@@ -18,9 +18,6 @@ TComponent({
   relations: {
     './dropdown-item': {
       type: 'child',
-      linked(target) {
-        console.log('[dropdown-item] a child is linked: ', target);
-      },
     },
   },
   methods: {
