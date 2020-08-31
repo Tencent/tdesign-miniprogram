@@ -18,6 +18,10 @@ TComponent({
       type: String,
       value: 'columns',
     },
+    optionsColumns: {
+      type: [Number, String],
+      value: 1,
+    },
     showOverlay: {
       type: Boolean,
       value: true,
@@ -34,6 +38,7 @@ TComponent({
     isBtnDisabled: true,
     bar: null,
     top: 0,
+    contentClasses: '',
   },
   relations: {
     './dropdown-menu': {
@@ -45,6 +50,31 @@ TComponent({
           bar: target,
         });
       },
+    },
+  },
+  lifetimes: {
+    attached() {
+      const { selectMode } = this.data;
+      const { optionsLayout } = this.data;
+      const layoutCol = +this.data.optionsColumns;
+      const isTree = optionsLayout === 'tree';
+      const treeCol = +this.data.treeColumns;
+      const prefix = 't';
+      const contentClassesObj: Object = {
+        [`${prefix}-is-tree`]: isTree,
+        [`${prefix}-is-single`]: !isTree && selectMode === 'single',
+        [`${prefix}-is-multi`]: !isTree && selectMode === 'multi',
+        [`${prefix}-is-col1`]: layoutCol === 1 || treeCol === 1,
+        [`${prefix}-is-col2`]: layoutCol === 2 || treeCol === 2,
+        [`${prefix}-is-col3`]: layoutCol === 3 || treeCol === 3,
+      };
+      const contentClasses = Object.keys(contentClassesObj)
+        .filter(e => contentClassesObj[e] === true)
+        .join(' ');
+      console.warn(contentClasses, layoutCol);
+      this.setData({
+        contentClasses,
+      });
     },
   },
   methods: {

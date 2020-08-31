@@ -1,10 +1,14 @@
 <view class="{{base}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px">
   <view wx:if="{{show && showOverlay}}" class="t-mask" bindtap="clickOverlay"></view>
-  <view class="{{base}}__content" style="transition: all 200ms ease;">
+  <view class="{{contentClasses}} {{base}}__content" style="transition: all 200ms ease;">
     <view class="{{base}}__bd" wx:if="{{show}}">
-      <view class="t-cell-group t-cell-group-container border--top-bottom">
+      <!-- 单选列表 -->
+      <view
+        wx:if="{{selectMode === 'single'}}"
+        class="t-cell-group t-cell-group-container border--top-bottom"
+      >
         <view class="t-radio-group">
-          <block wx:for="{{options}}">
+          <block wx:for="{{options}}" wx:key="index">
             <view
               data-value="{{item.value}}"
               bindtap="itemSelected"
@@ -19,10 +23,42 @@
           </block>
         </view>
       </view>
+      <!-- 多选列表 -->
+      <view
+        wx:if="{{selectMode === 'multi'}}"
+        class="t-cell-group t-cell-group-container border--top-bottom"
+      >
+        <view class="t-check-group">
+          <block wx:for="{{options}}" wx:key="index">
+            <view
+              data-value="{{item.value}}"
+              bindtap="itemSelected"
+              class="t-cell t-cell--theme-default"
+            >
+              <view class="t-check-box">
+                <view
+                  class="t-check-box__content-wrap {{ selected == item.value ? prefix + '-is-checked' : ''}}"
+                >
+                  <view class="t-check-box__icon-left"></view>
+                  <view class="t-check-box__content-title">{{item.title}}</view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
     </view>
-    <view class="{{name}}__ft" wx:if="{{selectMode === 'multi' || optionsLayout === 'tree'}}">
-      <t-button theme="default" disabled="{{isBtnDisabled}}" bindtap="resetSelect">重置</t-button>
-      <t-button theme="primary" disabled="{{isBtnDisabled}}" bindtap="confirmSelect">确定</t-button>
+    <view class="{{base}}__ft" wx:if="{{selectMode === 'multi' || optionsLayout === 'tree'}}">
+      <t-button class="t-button" theme="default" disabled="{{isBtnDisabled}}" bindtap="resetSelect"
+        >重置</t-button
+      >
+      <t-button
+        class="t-button"
+        theme="primary"
+        disabled="{{isBtnDisabled}}"
+        bindtap="confirmSelect"
+        >确定</t-button
+      >
     </view>
   </view>
 </view>
