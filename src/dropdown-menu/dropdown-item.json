@@ -5,6 +5,8 @@
     "t-cell": "./temp-components/cell",
     "t-cell-group": "./temp-components/cell-group",
     "t-radio": "./temp-components/radio",
-    "t-radio-group": "./temp-components/radio-group"
+    "t-radio-group": "./temp-components/radio-group",
+    "t-checkbox": "./temp-components/checkbox",
+    "t-checkbox-group": "./temp-components/checkbox-group"
   }
 }

@@ -7,6 +7,8 @@ const numberArr = emptyArr.map((_, i) => ({
 Page({
   data: {
     optionsS: numberArr,
-    selectedS: null
+    selectedS: null,
+    optionsM: numberArr,
+    selectedM: ["option_1"]
   }
 });

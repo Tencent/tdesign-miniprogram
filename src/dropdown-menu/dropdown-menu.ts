@@ -1,12 +1,7 @@
 import TComponent from '../common/component';
 
 TComponent({
-  properties: {
-    menus: {
-      type: Array,
-      value: [],
-    },
-  },
+  properties: {},
   data: {
     prefix: 't',
     base: 't-dropdown-menu',
