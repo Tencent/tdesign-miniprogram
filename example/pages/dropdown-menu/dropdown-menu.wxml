@@ -1,7 +1,8 @@
 <view>
   <t-dropdown-menu>
     <t-dropdown-item title="单选菜单" options="{{optionsS}}" model:selected="{{selectedS}}"></t-dropdown-item>
-    <t-dropdown-item title="多选菜单" options="{{optionsM}}" model:selected="{{selectedM}}" selectMode="multi"></t-dropdown-item>
+    <t-dropdown-item title="多选菜单" options="{{optionsM}}" selected="{{selectedM}}" bindselected="multiSelected" selectMode="multi"></t-dropdown-item>
   </t-dropdown-menu>
   <view>单项选择选中项：{{selectedS}}</view>
+  <view>多项选择选中项：{{selectedM}}</view>
 </view>

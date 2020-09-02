@@ -72,6 +72,7 @@ TComponent({
     this.setData({
       contentClasses,
     });
+    this.updateButtonState();
   },
   methods: {
     _closeDropdown() {
@@ -97,10 +98,25 @@ TComponent({
       this._closeDropdown();
     },
     updateSelected(e) {
-      this.setData({
+      const data = {
         selected: e.detail.selected,
-      });
+      };
+      this.setData(data);
+      this.triggerEvent('selected', data);
+      this.updateButtonState();
       if (this.data.bar && this.data.selectMode == 'single') this._closeDropdown();
+    },
+    updateButtonState() {
+      const isEmpty = this.data.selected?.length === 0;
+      this.setData({
+        isBtnDisabled: isEmpty,
+      });
+    },
+    resetSelect() {
+      this.updateSelected({ detail: { selected: [] } });
+    },
+    confirmSelect() {
+      this._closeDropdown();
     },
   },
 });

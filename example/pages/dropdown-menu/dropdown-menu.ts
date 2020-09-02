@@ -9,6 +9,11 @@ Page({
     optionsS: numberArr,
     selectedS: null,
     optionsM: numberArr,
-    selectedM: ["option_1"]
+    selectedM: ["option_1", "option_3"]
+  },
+  multiSelected(e){
+    this.setData({
+      selectedM: e.detail.selected
+    })
   }
 });
