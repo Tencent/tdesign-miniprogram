@@ -1,8 +1,23 @@
-<view>
-  <t-dropdown-menu>
-    <t-dropdown-item title="单选菜单" options="{{optionsS}}" model:selected="{{selectedS}}"></t-dropdown-item>
-    <t-dropdown-item title="多选菜单" options="{{optionsM}}" selected="{{selectedM}}" bindselected="multiSelected" selectMode="multi"></t-dropdown-item>
-  </t-dropdown-menu>
-  <view>单项选择选中项：{{selectedS}}</view>
-  <view>多项选择选中项：{{selectedM}}</view>
+<view class="wrapper">
+  <view wx:if="{{tab==0}}">
+    <t-dropdown-menu>
+      <t-dropdown-item title="单选菜单" options="{{optionsS}}" model:selected="{{selectedS}}"></t-dropdown-item>
+      <t-dropdown-item title="多选菜单" options="{{optionsM}}" selected="{{selectedM}}" bindselected="multiSelected" selectMode="multi"></t-dropdown-item>
+    </t-dropdown-menu>
+    <view>单项选择选中项：{{selectedS}}</view>
+    <view>多项选择选中项：{{selectedM}}</view>
+  </view>
+
+  <view wx:if="{{tab==1}}">
+    <t-dropdown-menu>
+      <t-dropdown-item title="禁用菜单" disabled="{{true}}"></t-dropdown-item>
+      <t-dropdown-item title="禁用选项" options="{{optionsD}}" model:selected="{{selectedD}}"></t-dropdown-item>
+    </t-dropdown-menu>
+    <view>禁用了序号为3的倍数的选项。</view>
+  </view>
+</view>
+
+<view class="buttons">
+  <button class="t-button" bindtap="switchTab" data-tab="0">单选及多选菜单</button>
+  <button class="t-button" bindtap="switchTab" data-tab="1">禁用菜单及选项</button>
 </view>

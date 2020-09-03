@@ -30,6 +30,10 @@ TComponent({
       type: [Array, String],
       value: null,
     },
+    disabled: {
+      type: Boolean,
+      value: false,
+    },
   },
   data: {
     prefix: 't',

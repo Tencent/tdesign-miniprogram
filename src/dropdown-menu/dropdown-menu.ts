@@ -6,7 +6,7 @@ TComponent({
     prefix: 't',
     base: 't-dropdown-menu',
     nodes: null,
-    titles: null,
+    menus: null,
     activeIdx: -1,
     bottom: 0,
   },
@@ -18,10 +18,13 @@ TComponent({
   methods: {
     _getAllItems() {
       const nodes = this.getRelationNodes('./dropdown-item');
-      const titles = nodes.map(a => a.data.title);
+      const menus = nodes.map((a) => {
+        const { title, disabled } = a.data;
+        return { title, disabled };
+      });
       this.setData({
         nodes,
-        titles,
+        menus,
       });
     },
     _toggleDropdown(e) {
