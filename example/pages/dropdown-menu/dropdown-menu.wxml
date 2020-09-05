@@ -15,9 +15,18 @@
     </t-dropdown-menu>
     <view>禁用了序号为3的倍数的选项。</view>
   </view>
+
+  <view wx:if="{{tab==2}}">
+    <t-dropdown-menu>
+      <t-dropdown-item title="两栏菜单" optionsColumns="2" options="{{optionsM}}" selected="{{selectedM}}" bindselected="multiSelected" selectMode="multi"></t-dropdown-item>
+      <t-dropdown-item title="三栏菜单" optionsColumns="3" options="{{optionsM}}" selected="{{selectedM}}" bindselected="multiSelected" selectMode="multi"></t-dropdown-item>
+    </t-dropdown-menu>
+    <view>选中项：{{selectedM}}</view>
+  </view>
 </view>
 
 <view class="buttons">
-  <button class="t-button" bindtap="switchTab" data-tab="0">单选及多选菜单</button>
+  <button class="t-button" bindtap="switchTab" data-tab="0">基础用法</button>
   <button class="t-button" bindtap="switchTab" data-tab="1">禁用菜单及选项</button>
+  <button class="t-button" bindtap="switchTab" data-tab="2">菜单选项分栏</button>
 </view>
