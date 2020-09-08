@@ -23,10 +23,27 @@
     </t-dropdown-menu>
     <view>选中项：{{selectedM}}</view>
   </view>
+
+  <view wx:if="{{tab==3}}">
+    <t-dropdown-menu>
+      <t-dropdown-item title="树形选单" optionsLayout="slot" options="{{optionsM}}" selected="{{selectedM}}" bindselected="multiSelected"></t-dropdown-item>
+    </t-dropdown-menu>
+    <view>选中项：{{selectedM}}</view>
+  </view>
+
+  <view wx:if="{{tab==4}}">
+    <t-dropdown-menu>
+      <t-dropdown-item title="自定义选单" optionsLayout="slot">
+        自定义内容（如按钮等）
+      </t-dropdown-item>
+    </t-dropdown-menu>
+  </view>
 </view>
 
 <view class="buttons">
   <button class="t-button" bindtap="switchTab" data-tab="0">基础用法</button>
   <button class="t-button" bindtap="switchTab" data-tab="1">禁用菜单及选项</button>
   <button class="t-button" bindtap="switchTab" data-tab="2">菜单选项分栏</button>
+  <button class="t-button" bindtap="switchTab" data-tab="3">树形选单</button>
+  <button class="t-button" bindtap="switchTab" data-tab="4">自定义选单</button>
 </view>
