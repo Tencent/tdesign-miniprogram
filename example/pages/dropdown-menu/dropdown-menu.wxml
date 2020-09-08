@@ -26,9 +26,9 @@
 
   <view wx:if="{{tab==3}}">
     <t-dropdown-menu>
-      <t-dropdown-item title="树形选单" optionsLayout="slot" options="{{optionsM}}" selected="{{selectedM}}" bindselected="multiSelected"></t-dropdown-item>
+      <t-dropdown-item title="树形选单" optionsLayout="tree" options="{{optionsM}}" selected="{{selectedM}}" bindselected="multiSelected"></t-dropdown-item>
     </t-dropdown-menu>
-    <view>选中项：{{selectedM}}</view>
+    <view>选中项：（逻辑待实现）</view>
   </view>
 
   <view wx:if="{{tab==4}}">

@@ -34,8 +34,26 @@
           </t-checkbox-group>
         </t-cell-group>
       </block>
-      <block wx:else-if="{{optionsLayout === 'tree'}}"> </block>
-      <block wx:else-if="{{optionsLayout === 'slot'}}">
+      <block wx:elif="{{optionsLayout === 'tree'}}">
+        <!-- 树形列表 ST -->
+        <!-- TODO 逻辑待实现 -->
+        <t-cell-group class="{{prefix}}-tree-cell-group" wx:for="{{[0,1,2]}}" wx:key="item">
+          <t-radio-group selected="{{selected}}" bindchanged="updateTreeSelected">
+            <block wx:for="{{options}}" wx:key="value">
+              <t-cell value-align="left">
+                <t-radio
+                  selected="{{selected}}"
+                  value="{{item.value}}"
+                  title="{{item.title}}"
+                  disabled="{{item.disabled}}"
+                ></t-radio>
+              </t-cell>
+            </block>
+          </t-radio-group>
+        </t-cell-group>
+        <!-- 树形列表 ED -->
+      </block>
+      <block wx:elif="{{optionsLayout === 'slot'}}">
         <slot></slot>
       </block>
     </view>

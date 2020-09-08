@@ -12,11 +12,11 @@ TComponent({
     },
     selectMode: {
       type: String,
-      value: 'single',
+      value: 'single', // single | multi
     },
     optionsLayout: {
       type: String,
-      value: 'columns',
+      value: 'columns', // columns | tree | slot
     },
     optionsColumns: {
       type: [Number, String],
@@ -43,6 +43,7 @@ TComponent({
     bar: null,
     top: 0,
     contentClasses: '',
+    treeColumns: 3,
   },
   relations: {
     './dropdown-menu': {
@@ -60,7 +61,7 @@ TComponent({
     const { optionsLayout } = this.data;
     const layoutCol = +this.data.optionsColumns;
     const isTree = optionsLayout === 'tree';
-    const treeCol = +this.data.treeColumns;
+    const treeCol = isTree ? +this.data.treeColumns : 0;
     const prefix = 't';
     const contentClassesObj: Object = {
       [`${prefix}-is-tree`]: isTree,
