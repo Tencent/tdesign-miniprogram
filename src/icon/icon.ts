@@ -33,8 +33,8 @@ TComponent({
     fontSize: 'inherit',
   },
   methods: {
-    onTap() {
-      this.triggerEvent('tap');
+    onTap(event: any) {
+      this.triggerEvent('click', event.detail);
     },
   },
 });

@@ -23,4 +23,11 @@ Page({
       'arrow-right',
     ],
   },
+  onIconTap(event: any) {
+    const { icons } = this.data;
+    const { index } = event.currentTarget.dataset;
+    wx.setClipboardData({
+      data: icons[index],
+    });
+  },
 });
