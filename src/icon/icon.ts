@@ -15,7 +15,7 @@ TComponent({
       type: String,
       value: 'middle', // 图标尺寸，支持 'xs', 'small', 'middle', 'large', 'xl'，'35px', '3em' 等，默认值为 middle
       observer(val: string) {
-        let fontSize = 'inherit';
+        let fontSize = val;
         // 如果是关键词需要转换成对应尺寸
         if (Object.prototype.hasOwnProperty.call(sizeKeywordMap, val)) {
           fontSize = sizeKeywordMap[val];
