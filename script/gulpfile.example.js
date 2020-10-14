@@ -42,7 +42,7 @@ const build = gulp.series(baseBuild, syncDist);
  * 编译app.less
  * */
 const commonLess = () => gulp
-  .src(`${src}/app.less`, { since: since(commonLess) })
+  .src(`${src}/app.less`)
   .pipe(sourcemaps.init())
   .pipe(gulpLess()) // 编译less
   .pipe(rename({ extname: '.wxss' }))
