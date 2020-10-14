@@ -1,0 +1,5 @@
+<label
+  class="t-icon t-icon-{{name}}"
+  style="color: {{ color }};font-size: {{ fontSize }};{{ customStyle }}"
+  bind:tap="onTap"
+></label>

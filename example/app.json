@@ -4,13 +4,15 @@
     "pages/button/button",
     "pages/button-group/button-group",
     "pages/dialog/dialog",
+    "pages/icon/icon",
     "pages/loading/loading"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
     "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
     "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
-    "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group"
+    "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group",
+    "t-icon": "@tencent/tdesign-miniprogram/icon/icon"
   },
   "window": {
     "backgroundTextStyle": "light",
