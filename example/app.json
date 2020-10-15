@@ -5,19 +5,22 @@
     "pages/button-group/button-group",
     "pages/dialog/dialog",
     "pages/icon/icon",
-    "pages/loading/loading"
+    "pages/loading/loading",
+    "pages/rate/rate"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
     "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
     "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
     "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group",
-    "t-icon": "@tencent/tdesign-miniprogram/icon/icon"
+    "t-icon": "@tencent/tdesign-miniprogram/icon/icon",
+    "t-rate": "@tencent/tdesign-miniprogram/rate/rate"
   },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0052d9",
     "navigationBarTitleText": "TDesign",
     "navigationBarTextStyle": "white"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
