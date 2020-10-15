@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index",
+    "pages/picker/picker",
     "pages/button/button",
     "pages/button-group/button-group",
     "pages/dialog/dialog",
@@ -14,7 +15,9 @@
     "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
     "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group",
     "t-icon": "@tencent/tdesign-miniprogram/icon/icon",
-    "t-rate": "@tencent/tdesign-miniprogram/rate/rate"
+    "t-rate": "@tencent/tdesign-miniprogram/rate/rate",
+    "t-picker": "@tencent/tdesign-miniprogram/picker/picker",
+    "t-picker-column": "@tencent/tdesign-miniprogram/picker/picker-column"
   },
   "window": {
     "backgroundTextStyle": "light",
