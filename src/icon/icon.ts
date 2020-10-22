@@ -26,11 +26,11 @@ TComponent({
     customStyle: String,
     color: {
       type: String,
-      value: 'initial',
+      value: '',
     },
   },
   data: {
-    fontSize: 'inherit',
+    fontSize: '',
   },
   methods: {
     onTap(event: any) {
