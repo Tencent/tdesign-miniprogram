@@ -1,0 +1,25 @@
+var getTagClass = function(name, props) {
+  var baseClass = 't-tag';
+  var prefix = 't';
+  var { size, shape, theme, effect, maxWidth } = props;
+  var tagClass = [
+    baseClass + '--theme-' + theme,
+    baseClass + '--effect-' + effect,
+    closable ? baseClass + '--closable' : '',
+    disabled ? baseClass + '--disabled' : '',
+    baseClass + '--size-' + size,
+    shape === 'shape' ? baseClass + '--square' : '',
+    shape === 'round' ? baseClass + '--round' : '',
+    shape === 'circle' ? baseClass + '--circle' : '',
+  ]
+  return tagClass.join(' ');
+};
+var getTagStyle = function(maxWidth) {
+  if (!maxWidth) {
+    return '';
+  }
+  var width = typeof maxWidth === 'number' ? maxWidth + 'px' : maxWidth;
+  return 'maxWidth:' + width + ';';
+}
+module.exports.getTagClass = getTagClass;
+module.exports.getTagStyle = getTagStyle;

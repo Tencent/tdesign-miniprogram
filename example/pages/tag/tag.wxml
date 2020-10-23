@@ -1,0 +1,46 @@
+<view>风格</view>
+<view class="tdesign-demo-tag">
+  <t-tag theme="primary">重要</t-tag>
+  <t-tag theme="danger">危险</t-tag>
+  <t-tag theme="warning">警告</t-tag>
+  <t-tag theme="success">成功</t-tag>
+  <t-tag theme="info">信息</t-tag>
+</view>
+
+<view>主题效果</view>
+<view class="tdesign-demo-tag">
+  <t-tag theme="primary" effect="dark">深色</t-tag>
+  <t-tag theme="primary" effect="light">浅色</t-tag>
+  <t-tag theme="primary" effect="plain">朴素</t-tag>
+</view>
+
+<view>大小</view>
+<view class="tdesign-demo-tag">
+  <t-tag size="large" theme="primary">大号</t-tag>
+    <t-tag size="medium" theme="primary">中号</t-tag>
+    <t-tag size="small" theme="primary">小号</t-tag>
+</view>
+
+<view>失效标签（只针对于默认主题，其它主题不生效）</view>
+<view class="tdesign-demo-tag">
+    <t-tag size="medium" theme="primary" shape="circle">圆角</t-tag>
+</view>
+
+<view>超长文本省略标签</view>
+<view class="tdesign-demo-tag">
+    <t-tag max-width="150" title="超长省略文本标签超长省略文本标签">超长省略文本标签超长省略文本标签</t-tag>
+</view>
+
+<view>尺寸</view>
+<view class="tdesign-tag-size">
+  <view class="tdesign-demo-block">
+    <t-tag size="small">标签 小</t-tag>
+    <t-tag>标签 中</t-tag>
+    <t-tag size="large">标签 大</t-tag>
+  </view>
+  <view class="tdesign-demo-block">
+    <t-tag size="small" theme="primary">标签 小</t-tag>
+    <t-tag theme="primary">标签 中</t-tag>
+    <t-tag size="large" theme="primary">标签 大</t-tag>
+  </view>
+</view>

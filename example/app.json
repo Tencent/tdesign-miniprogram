@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/tag/tag",
     "pages/index",
     "pages/picker/picker",
     "pages/button/button",
@@ -17,7 +18,8 @@
     "t-icon": "@tencent/tdesign-miniprogram/icon/icon",
     "t-rate": "@tencent/tdesign-miniprogram/rate/rate",
     "t-picker": "@tencent/tdesign-miniprogram/picker/picker",
-    "t-picker-column": "@tencent/tdesign-miniprogram/picker/picker-column"
+    "t-picker-column": "@tencent/tdesign-miniprogram/picker/picker-column",
+    "t-tag": "@tencent/tdesign-miniprogram/tag/tag"
   },
   "window": {
     "backgroundTextStyle": "light",
