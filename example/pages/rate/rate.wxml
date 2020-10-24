@@ -1,0 +1,63 @@
+<view class="example">
+  <view class="example-title">v-model基本用法</view>
+  <t-rate
+    value="{{star1}}"
+    bind:change="onChangeVal1"
+  />
+</view>
+
+<view class="example">
+  <view class="example-title">size=20px</view>
+  <t-rate
+    value="{{star2}}"
+    bind:change="onChangeVal2"
+    size="20px"
+  />
+</view>
+
+<view class="example">
+  <view class="example-title">readonly=true</view>
+  <t-rate
+    value="{{star3}}"
+    readonly
+    bind:change="onChangeVal3"
+    bind:readonly="onDisableVal3"
+  />
+</view>
+
+<view class="example">
+  <view class="example-title">count=3</view>
+  <t-rate
+    value="{{star4}}"
+    count="{{3}}"
+    bind:change="onChangeVal4"
+  />
+</view>
+
+
+<view class="example">
+  <view class="example-title">clearable=true</view>
+  <view class="example-des">（长按最大已选择元素可取消）</view>
+  <t-rate
+    value="{{star5}}"
+    clearable
+    bind:change="onChangeVal5"
+  />
+  <view class="example-result">当前评分：{{star5}}星</view>
+</view>
+
+<view class="example">
+  <view class="example-title">showText=true</view>
+  <t-rate
+    value="{{star6}}"
+    showText="{{true}}"
+    textColor="#FF0000"
+    bind:change="onChangeVal6"
+  />
+</view>
+
+<view class="btns">
+  <button class="btn" type="primary" catchtap="resetStar">
+    重置所有评分为0
+  </button>
+</view>

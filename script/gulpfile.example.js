@@ -2,30 +2,28 @@ const gulp = require('gulp');
 const changed = require('gulp-changed');
 const base = require('./gulpfile.base');
 const packageJSON = require('../package.json');
+const rename = require('gulp-rename');
+const gulpLess = require('gulp-less');
+const sourcemaps = require('gulp-sourcemaps');
 
 /* config */
 const src = 'example';
 const dist = '_example';
 
 /* base tasks */
-const {
-  clear,
-  build: baseBuild,
-  watch: baseWatch,
-} = base(src, dist, 'example');
+const { clear, build: baseBuild, watch: baseWatch } = base(src, dist, 'example');
 
 // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
 // https://github.com/gulpjs/vinyl-fs/issues/226
-const since = task => (
-  file => (gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0)
-);
+const since = task => file => (gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0);
 
 /** `gulp syncDist`
  * 将 miniprogram_dist 同步至 _example
  * */
 const input = 'miniprogram_dist';
 const output = `_example/miniprogram_npm/${packageJSON.name}`;
-const syncDist = () => gulp.src(`${input}/**`, { base: input, since: since(syncDist) })
+const syncDist = () => gulp
+  .src(`${input}/**`, { base: input, since: since(syncDist) })
   .pipe(changed(output)) // 过滤掉未改变的文件
   .pipe(gulp.dest(output));
 
@@ -38,18 +36,30 @@ watchDist.displayName = 'syncDist:watch';
 /** `gulp build`
  * 构建
  * */
-const build = gulp.series(
-  baseBuild,
-  syncDist,
-);
+const build = gulp.series(baseBuild, syncDist);
 
+/** `gulp task`
+ * 编译app.less
+ * */
+const commonLess = () => gulp
+  .src(`${src}/app.less`)
+  .pipe(sourcemaps.init())
+  .pipe(gulpLess()) // 编译less
+  .pipe(rename({ extname: '.wxss' }))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest(dist));
+
+/** `gulp watch`
+ * 监听common中less更新
+ * */
+
+const watchCommonLess = () => {
+  gulp.watch('common/style/miniprogram/components/**', { events: ['add', 'change'] }, commonLess);
+};
 /** `gulp watch`
  * 监听
  * */
-const watch = gulp.parallel(
-  baseWatch,
-  watchDist,
-);
+const watch = gulp.parallel(baseWatch, watchCommonLess, watchDist);
 
 // `gulp --tasks --gulpfile script/gulpfile.example.js` list tasks
 module.exports = {
