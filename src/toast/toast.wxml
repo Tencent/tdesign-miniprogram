@@ -7,7 +7,11 @@
     <block wx:if="{{icon || type}}">
       <view class="t-toast__main-icon">
         <block wx:if="{{type}}">
-          <view class="t-toast__main-icon__icon t-toast__main-icon__icon--{{type}}"></view>
+          <view class="t-toast__main-icon__icon">
+            <t-icon wx:if="{{type === 'success'}}" name="tick" color="#FFFFFF" size="96rpx"></t-icon>
+            <t-icon wx:if="{{type === 'warning'}}" name="warning" color="#FFFFFF" size="96rpx"></t-icon>
+            <t-icon wx:if="{{type === 'loading'}}" name="loading" color="#FFFFFF" size="96rpx"></t-icon>
+          </view>
         </block>
         <block wx:else>
           <image class="t-toast__main-icon__icon" src="{{icon}}"></image>

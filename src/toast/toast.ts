@@ -1,11 +1,13 @@
 import TComponent from '../common/component';
 
 TComponent({
+  isLock: false,
   properties: {
     // 是否展示
     show: {
       type: Boolean,
       value: false,
+      observer: '_observeShow',
     },
     // 提示类型
     // 合法值：loading/success/fail
@@ -55,17 +57,18 @@ TComponent({
     // detached() { },
   },
 
-  observers: {
-    show(show) {
-      if (show) {
+  methods: {
+    _observeShow(v) {
+      if (this.isLock) return;
+      if (v) {
+        this.isLock = true;
         setTimeout(() => {
           this.clear();
+          this.isLock = false;
         }, this.data.duration);
       }
     },
-  },
 
-  methods: {
     loading() {
       this.setData({
         show: true,
@@ -94,7 +97,6 @@ TComponent({
         position: 'middle',
         message: '',
         icon: '',
-        showOverlay: false,
         duration: 1000,
       });
     },
