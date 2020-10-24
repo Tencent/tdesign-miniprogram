@@ -3,12 +3,14 @@
     "pages/index",
     "pages/button/button",
     "pages/dialog/dialog",
-    "pages/loading/loading"
+    "pages/loading/loading",
+    "pages/toast/toast"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
     "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
-    "t-loading": "@tencent/tdesign-miniprogram/loading/loading"
+    "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
+    "t-toast": "@tencent/tdesign-miniprogram/toast/toast"
   },
   "window": {
     "backgroundTextStyle": "light",

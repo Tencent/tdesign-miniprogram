@@ -1,0 +1,27 @@
+<view class="{{show?'t-toast-show':'t-toast-hidden'}}">
+  <block wx:if="{{showOverlay}}">
+    <view class="t-toast__mask"></view>
+  </block>
+
+  <view class="t-toast__main">
+    <block wx:if="{{icon || type}}">
+      <view class="t-toast__main-icon">
+        <block wx:if="{{type}}">
+          <view class="t-toast__main-icon__icon t-toast__main-icon__icon--{{type}}"></view>
+        </block>
+        <block wx:else>
+          <image class="t-toast__main-icon__icon" src="{{icon}}"></image>
+        </block>
+
+        <block wx:if="{{message}}">
+          <view class="t-toast__main-icon__text">{{message}}</view>
+        </block>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="t-toast__main-text t-toast__main-text--{{position}}" >
+        {{message}}
+      </view>
+    </block>
+  </view>
+</view>
