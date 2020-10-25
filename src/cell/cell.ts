@@ -18,7 +18,7 @@ TComponent({
   },
   methods: {
     onTap(event: any) {
-      this.trigger('click', event.detail);
+      this.triggerEvent('click', event.detail);
     },
   },
 });
