@@ -10,7 +10,8 @@
     "pages/rate/rate",
     "pages/progress/progress",
     "pages/cell/cell",
-    "pages/cell-group/cell-group"
+    "pages/cell-group/cell-group",
+    "pages/input/input"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
@@ -23,7 +24,8 @@
     "t-rate": "@tencent/tdesign-miniprogram/rate/rate",
     "t-picker": "@tencent/tdesign-miniprogram/picker/picker",
     "t-picker-column": "@tencent/tdesign-miniprogram/picker/picker-column",
-    "t-progress": "@tencent/tdesign-miniprogram/progress/progress"
+    "t-progress": "@tencent/tdesign-miniprogram/progress/progress",
+    "t-input": "@tencent/tdesign-miniprogram/input/input"
   },
   "window": {
     "backgroundTextStyle": "light",
