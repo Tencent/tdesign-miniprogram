@@ -52,8 +52,8 @@ TComponent({
     },
   },
   created() {
-    this._startY = 0;  // touchStart 触摸位置 Y 坐标
-    this._startOffset = 0;  // touchStart 起始偏移量
+    this._startY = 0; // touchStart 触摸位置 Y 坐标
+    this._startOffset = 0; // touchStart 起始偏移量
   },
   attached() {
     const { defaultIndex, optionList } = this.data;
@@ -65,8 +65,8 @@ TComponent({
   data: {
     prefix: `${config.prefix}-picker-column`,
     optionList: [],
-    offset: 0,  // 滚动偏移量
-    duration: 0,  // 滚动动画延迟
+    offset: 0, // 滚动偏移量
+    duration: 0, // 滚动动画延迟
   },
   methods: {
     onTouchStart(event) {
@@ -80,11 +80,7 @@ TComponent({
       // 偏移增量
       const deltaY = event.touches[0].clientY - _startY;
       this.setData({
-        offset: range(
-          _startOffset + deltaY,
-          -(this.getCount() * itemHeight),
-          itemHeight,
-        ),
+        offset: range(_startOffset + deltaY, -(this.getCount() * itemHeight), itemHeight),
       });
     },
 
@@ -96,11 +92,7 @@ TComponent({
         return;
       }
       // 调整偏移量
-      const index = range(
-        Math.round(-offset / itemHeight),
-        0,
-        this.getCount() - 1,
-      );
+      const index = range(Math.round(-offset / itemHeight), 0, this.getCount() - 1);
       this.setData({
         duration: DEFAULT_DURATION,
         offset: -index * itemHeight,

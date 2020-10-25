@@ -8,10 +8,14 @@
     "pages/icon/icon",
     "pages/loading/loading",
     "pages/rate/rate",
-    "pages/progress/progress"
+    "pages/progress/progress",
+    "pages/cell/cell",
+    "pages/cell-group/cell-group"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
+    "t-cell": "@tencent/tdesign-miniprogram/cell/cell",
+    "t-cell-group": "@tencent/tdesign-miniprogram/cell-group/cell-group",
     "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
     "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
     "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group",
