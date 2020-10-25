@@ -1,0 +1,46 @@
+<view class="{{show?'t-toast-show':'t-toast-hidden'}}">
+  <block wx:if="{{showOverlay}}">
+    <view class="t-toast__mask"></view>
+  </block>
+
+  <view class="t-toast__main">
+    <block wx:if="{{icon || type}}">
+      <view class="t-toast__main-icon">
+        <block wx:if="{{type}}">
+          <view class="t-toast__main-icon__icon">
+            <t-icon
+              wx:if="{{type === 'success'}}"
+              name="tick"
+              color="#FFFFFF"
+              size="96rpx"
+            ></t-icon>
+            <t-icon
+              wx:if="{{type === 'warning'}}"
+              name="warning"
+              color="#FFFFFF"
+              size="96rpx"
+            ></t-icon>
+            <t-icon
+              wx:if="{{type === 'loading'}}"
+              name="loading"
+              color="#FFFFFF"
+              size="96rpx"
+            ></t-icon>
+          </view>
+        </block>
+        <block wx:else>
+          <image class="t-toast__main-icon__icon" src="{{icon}}"></image>
+        </block>
+
+        <block wx:if="{{message}}">
+          <view class="t-toast__main-icon__text">{{message}}</view>
+        </block>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="t-toast__main-text t-toast__main-text--{{position}}">
+        {{message}}
+      </view>
+    </block>
+  </view>
+</view>

@@ -12,7 +12,8 @@
     "pages/cell/cell",
     "pages/cell-group/cell-group",
     "pages/input/input",
-    "pages/message/message"
+    "pages/message/message",
+    "pages/toast/toast"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
@@ -27,7 +28,8 @@
     "t-picker-column": "@tencent/tdesign-miniprogram/picker/picker-column",
     "t-progress": "@tencent/tdesign-miniprogram/progress/progress",
     "t-input": "@tencent/tdesign-miniprogram/input/input",
-    "t-message": "@tencent/tdesign-miniprogram/message/message"
+    "t-message": "@tencent/tdesign-miniprogram/message/message",
+    "t-toast": "@tencent/tdesign-miniprogram/toast/toast"
   },
   "window": {
     "backgroundTextStyle": "light",
