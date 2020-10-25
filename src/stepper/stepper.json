@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-cell": "../cell/cell"
+  }
+}
