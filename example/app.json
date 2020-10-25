@@ -11,7 +11,8 @@
     "pages/progress/progress",
     "pages/cell/cell",
     "pages/cell-group/cell-group",
-    "pages/input/input"
+    "pages/input/input",
+    "pages/message/message"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
@@ -25,7 +26,8 @@
     "t-picker": "@tencent/tdesign-miniprogram/picker/picker",
     "t-picker-column": "@tencent/tdesign-miniprogram/picker/picker-column",
     "t-progress": "@tencent/tdesign-miniprogram/progress/progress",
-    "t-input": "@tencent/tdesign-miniprogram/input/input"
+    "t-input": "@tencent/tdesign-miniprogram/input/input",
+    "t-message": "@tencent/tdesign-miniprogram/message/message"
   },
   "window": {
     "backgroundTextStyle": "light",
