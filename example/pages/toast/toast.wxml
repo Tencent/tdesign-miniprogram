@@ -1,0 +1,30 @@
+<view class="tdesign-demo-toast-base">
+  <view class="title">文本轻提示</view>
+  <button class="t-button" bindtap="tapShowShortTip">短文本轻提示</button>
+  <button class="t-button" bindtap="tapShowLongTip">长文本轻提示</button>
+
+  <view class="title">图标轻提示</view>
+  <button class="t-button" bindtap="tapShowSuccess">成功</button>
+  <button class="t-button" bindtap="tapShowWarning">警告</button>
+  <button class="t-button" bindtap="tapShowLoading">加载</button>
+  <button class="t-button" bindtap="tapShowIcon">自定义图标</button>
+
+  <view class="title">图标加文本轻提示</view>
+  <button class="t-button" bindtap="tapShowSuccessTip">成功</button>
+  <button class="t-button" bindtap="tapShowWarningTip">警告</button>
+  <button class="t-button" bindtap="tapShowLoadingTip">加载</button>
+  <button class="t-button" bindtap="tapShowIconTip">自定义图标</button>
+</view>
+
+<t-toast
+  id="t-toast"
+  show="{{show}}"
+  type="{{type}}"
+  position="{{position}}"
+  message="{{message}}"
+  icon="{{icon}}"
+  showOverlay="{{showOverlay}}"
+  duration="{{duration}}"
+></t-toast>
+
+

@@ -1,12 +1,18 @@
-var getTagClass = function(name, props) {
+var getTagClass = function(props) {
   var baseClass = 't-tag';
-  var prefix = 't';
-  var { size, shape, theme, effect, maxWidth } = props;
+  var prefix = 't'
+  var size = props.size || 'medium';
+  var shape = props.shape || 'square';
+  var theme = props.theme || 'default';
+  var effect = props.effect || 'dark';
+  var closable = props.closable || false;
+  var disabled = props.disabled || false;
   var tagClass = [
+    baseClass,
     baseClass + '--theme-' + theme,
     baseClass + '--effect-' + effect,
-    closable ? baseClass + '--closable' : '',
-    disabled ? baseClass + '--disabled' : '',
+    closable ? baseClass + '--closable ' + prefix + '-is-closable' : '',
+    disabled ? baseClass + '--disabled ' + prefix + '-is-disabled' : '',
     baseClass + '--size-' + size,
     shape === 'shape' ? baseClass + '--square' : '',
     shape === 'round' ? baseClass + '--round' : '',

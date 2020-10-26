@@ -1,10 +1,10 @@
 <wxs src="./tag.wxs" module="this" />
 
 <view
-  class="{{  this.getTagClass('t-tag', [theme, size, effect, size, shape, disabled]) }}"
-  style="{{this.getTagStyle(maxWidth)}}"
+  class="{{ this.getTagClass({theme, size, effect, shape, disabled, closable}) }}"
+  style="{{ this.getTagStyle(maxWidth) }}"
 >
   <t-icon wx-if="{{icon}}" name="{{icon}}" />
   <slot />
-  <t-icon wx:if="{{ closeable && !disabled }}" name="close" bind:click="onClickClose" />
+  <t-icon wx:if="{{ closable && !disabled }}" name="close" bind:tap="onClickClose" />
 </view>

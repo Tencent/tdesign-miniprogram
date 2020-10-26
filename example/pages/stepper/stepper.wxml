@@ -1,0 +1,13 @@
+<t-cell-group title="基础步进器">
+  <t-stepper label="标题文字" bind:change="stepperChangeHandler" />
+
+  <t-stepper label="步长" step="2" />
+
+  <t-stepper label="禁用" disabled="true" />
+
+  <t-stepper label="禁用输入" disableInput="true" />
+
+  <t-stepper label="设定范围" min="5" max="10" modelValue="7" />
+
+  <t-stepper label="设置输入框宽度" inputWidth="100" />
+</t-cell-group>

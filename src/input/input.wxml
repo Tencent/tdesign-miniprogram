@@ -1,0 +1,53 @@
+<view>
+  <view wx:if="{{ type === 'textarea' }}">
+    <view wx:if="{{ label && label.length > 0 }}" class="t-input--textarea-label">
+      <view>{{ label }}</view>
+    </view>
+    <view class="t-input--textarea">
+      <textarea
+        maxlength="{{maxlength}}"
+        disabled="{{disabled}}"
+        placeholder="{{placeholder}}"
+        placeholder-class="t-input__placeholder"
+        value="{{value}}"
+        bindinput="onInput"
+      >
+      </textarea>
+      <view class="t-input--count"> {{inputValue.length}} / {{maxlength}} </view>
+    </view>
+  </view>
+  <view wx:else>
+    <t-cell
+      class="t-input {{error ? 't-input__error' : ''}}  {{!!errorMessage ? 't-input__error_enable' :''}}"
+      title="{{label}}"
+      rightIcon="{{rightIcon}}"
+    >
+      <view class="t-input-wrap">
+        <input
+          maxlength="{{maxlength}}"
+          disabled="{{disabled}}"
+          placeholder="{{placeholder}}"
+          placeholder-class="t-input__placeholder"
+          value="{{value}}"
+          bindinput="onInput"
+          password="{{password}}"
+          class="t-input--control {{suffix?'t-input--control__right':''}}"
+        />
+        <view
+          wx:if="{{ clearable && inputValue.length > 0 }}"
+          class="t-input-wrap--icon"
+          bind:tap="clearInput"
+        >
+          <t-icon name="close_fill" />
+        </view>
+
+        <view class="t-input-wrap--suffix">
+          <slot name="suffix"></slot>
+        </view>
+      </view>
+      <view wx:if="{{errorMessage && errorMessage.length > 0}}" class="t-input__error-msg"
+        >{{errorMessage}}</view
+      >
+    </t-cell>
+  </view>
+</view>

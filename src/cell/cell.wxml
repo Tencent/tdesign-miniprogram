@@ -1,0 +1,18 @@
+<view class="t-cell {{bordered ? 't-cell--bordered' : ''}}" bind:tap="onTap">
+  <t-icon wx:if="{{ leftIcon }}" name="{{ leftIcon }}" class="t-cell__left-icon" />
+  <slot wx:else name="left-icon" />
+  <view class="t-cell__title">
+    <block wx:if="{{ title }}">{{ title }}</block>
+    <slot wx:else name="title" />
+    <view wx:if="{{ label || useLabelSlot }}" class="t-cell__label">
+      <slot wx:if="{{ useLabelSlot }}" name="label" />
+      <block wx:elif="{{ label }}">{{ label }}</block>
+    </view>
+  </view>
+  <view class="t-cell__value">
+    <block wx:if="{{ value }}">{{ value }}</block>
+    <slot wx:else />
+  </view>
+  <t-icon wx:if="{{ rightIcon }}" name="{{ rightIcon }}" class="t-cell__right-icon" />
+  <slot wx:else name="right-icon" />
+</view>

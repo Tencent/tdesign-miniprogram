@@ -1,0 +1,43 @@
+<!--示例页面-->
+<view>
+  <t-cell-group title="基础输入框">
+    <t-input label="标准五个字" placeholder="预设文本(非必填)" right-icon="arrow-right" />
+    <t-input label="一个很长的标题需换行" placeholder="预设文本保持上下居中" >
+    </t-input>
+    <t-input placeholder="无标题预设文本" />
+    <t-input label="未填写警告" placeholder="警告文本" bind:input="onInput3" error="{{ text3.length === 0 }}"></t-input>
+
+    <t-input label="填写错误" value="{{text4}}" bind:input="onInput4" error="{{ text4.length > 4 }}" error-message="提示信息"></t-input>
+
+    <t-input label="不可编辑" placeholder="不可编辑" disabled="{{true}}"></t-input>
+  </t-cell-group>
+
+  <t-cell-group title="特殊输入框" clearable="{{true}}">
+    <t-input label="输入密码" password="{{true}}" value="{{textPassword}}" clearable="{{true}}" bind:clear="onClear"/>
+    <t-input placeholder="请输入手机号码">
+      <view slot="suffix">
+        <image style="width: 72px; height: 36px;display: block;margin-top: -6px;margin-bottom: -6px" src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png" mode="heightFix"/>
+      </view>
+    </t-input>
+
+    <t-input placeholder="请输入手机号码">
+      <view slot="suffix">
+        <t-button theme="text">发送验证码</t-button>
+      </view>
+    </t-input>
+
+    <t-input label="价格" placeholder="0.00" suffix="元" />
+    <t-input label="个数" placeholder="填写个数"  suffix="个" />
+  </t-cell-group>
+
+
+  <t-cell-group title="长文本输入框">
+    <t-input type="textarea" placeholder="长文本预设内容，文本默认容纳四行" bind:input="onInput"></t-input>
+  </t-cell-group>
+
+  <t-cell-group>
+    <t-input type="textarea" label="标题文字" placeholder="长文本预设内容，文本默认容纳四行" bind:input="onInput"></t-input>
+  </t-cell-group>
+
+
+</view>

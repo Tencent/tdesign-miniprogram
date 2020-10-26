@@ -1,14 +1,8 @@
 <view class="{{prefix}}">
   <view class="{{prefix}}__toolbar">
-    <view class="{{prefix}}__cancel" bindtap="onCancel">
-      {{cancelButtonText}}
-    </view>
-    <view class="{{prefix}}__title">
-      {{title}}
-    </view>
-    <view class="{{prefix}}__confirm" bindtap="onConfirm">
-      {{confirmButtonText}}
-    </view>
+    <view class="{{prefix}}__cancel" bindtap="onCancel"> {{cancelButtonText}} </view>
+    <view class="{{prefix}}__title"> {{title}} </view>
+    <view class="{{prefix}}__confirm" bindtap="onConfirm"> {{confirmButtonText}} </view>
   </view>
   <view class="{{prefix}}__main">
     <slot></slot>

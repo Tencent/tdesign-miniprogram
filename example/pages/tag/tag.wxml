@@ -32,15 +32,44 @@
 </view>
 
 <view>尺寸</view>
-<view class="tdesign-tag-size">
+<view class="tdesign-demo-tag">
   <view class="tdesign-demo-block">
     <t-tag size="small">标签 小</t-tag>
     <t-tag>标签 中</t-tag>
     <t-tag size="large">标签 大</t-tag>
   </view>
-  <view class="tdesign-demo-block">
+  <view class="tdesign-demo-tag">
     <t-tag size="small" theme="primary">标签 小</t-tag>
     <t-tag theme="primary">标签 中</t-tag>
     <t-tag size="large" theme="primary">标签 大</t-tag>
   </view>
+</view>
+
+<view>可关闭</view>
+<view class="tdesign-demo-tag">
+  <t-tag
+    wx:for="{{closableTags}}"
+    wx:for-item="tag"
+    closable="{{true}}"
+    disabled="{{tag.disabled}}"
+    wx:key="tag"
+    theme="primary"
+    size="{{tag.size}}"
+    data-index="{{index}}"
+    bind:close="onClickClose"
+  >{{tag.name}}</t-tag>
+</view>
+<view>点击型标签</view>
+<view class="tdesign-demo-tag">
+  <t-check-tag
+    size="large"
+    wx:for="{{fruits}}"
+    wx:for-item="fruit"
+    wx:for-index="index"
+    wx:key="index"
+    checked="{{fruit.checked}}"
+    disabled="{{fruit.disabled}}"
+    data-index="{{index}}"
+    bind:tap="onClickFruit"
+  >{{fruit.name}}</t-check-tag>
 </view>

@@ -1,0 +1,9 @@
+<view>
+  <view class="t-cell-group-demo-wrapper">
+    <view class="t-cell-group-demo__title">组合单元格</view>
+    <t-cell-group title="分组标题" bordered>
+      <t-cell title="单行标题" />
+      <t-cell title="单行标题" rightIcon="arrow-right" />
+    </t-cell-group>
+  </view>
+</view>

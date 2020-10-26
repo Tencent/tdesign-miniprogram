@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/tag/tag",
     "pages/index",
     "pages/picker/picker",
     "pages/button/button",
@@ -8,10 +7,20 @@
     "pages/dialog/dialog",
     "pages/icon/icon",
     "pages/loading/loading",
-    "pages/rate/rate"
+    "pages/rate/rate",
+    "pages/progress/progress",
+    "pages/cell/cell",
+    "pages/cell-group/cell-group",
+    "pages/input/input",
+    "pages/message/message",
+    "pages/toast/toast",
+    "pages/stepper/stepper",
+    "pages/tag/tag"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
+    "t-cell": "@tencent/tdesign-miniprogram/cell/cell",
+    "t-cell-group": "@tencent/tdesign-miniprogram/cell-group/cell-group",
     "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
     "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
     "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group",
@@ -19,7 +28,13 @@
     "t-rate": "@tencent/tdesign-miniprogram/rate/rate",
     "t-picker": "@tencent/tdesign-miniprogram/picker/picker",
     "t-picker-column": "@tencent/tdesign-miniprogram/picker/picker-column",
-    "t-tag": "@tencent/tdesign-miniprogram/tag/tag"
+    "t-progress": "@tencent/tdesign-miniprogram/progress/progress",
+    "t-input": "@tencent/tdesign-miniprogram/input/input",
+    "t-message": "@tencent/tdesign-miniprogram/message/message",
+    "t-toast": "@tencent/tdesign-miniprogram/toast/toast",
+    "t-stepper": "@tencent/tdesign-miniprogram/stepper/stepper",
+    "t-tag": "@tencent/tdesign-miniprogram/tag/tag",
+    "t-check-tag": "@tencent/tdesign-miniprogram/tag/check-tag"
   },
   "window": {
     "backgroundTextStyle": "light",
