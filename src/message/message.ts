@@ -64,6 +64,7 @@ TComponent({
   observers: {
     'theme, align'() {
       this.setClass();
+      this.setIconName();
     },
   },
 
@@ -74,6 +75,7 @@ TComponent({
     // 组件实例进入页面节点树
     attached() {
       this.setClass();
+      this.setIconName();
     },
     // 页面组件初始化完成
     // ready() { },
@@ -85,6 +87,13 @@ TComponent({
 
   /* Methods */
   methods: {
+    setIconName() {
+      const iconName = this.properties.theme === 'success' ? 'tick_fill' : 'warning_fill';
+
+      this.setData({
+        iconName,
+      });
+    },
     setClass() {
       const rootClassList = [`${name}`, `${name}--${this.properties.theme}`];
 
