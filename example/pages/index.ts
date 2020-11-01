@@ -71,8 +71,8 @@ Page({
             path: '/pages/stepper/stepper',
           },
           {
-            name: 'Slide',
-            path: '/pages/slide/slide',
+            name: 'Slider',
+            path: '/pages/slider/slider',
           },
         ],
       },

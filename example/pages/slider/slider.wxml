@@ -1,0 +1,60 @@
+<t-cell-group title="默认 slider {{value}}">
+  <t-cell>
+    <t-slider value="{{value}}" bindsliderchanging="onDefaultSliderValueChange"></t-slider>
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="禁用的 slider">
+  <t-cell>
+    <t-slider disabled></t-slider>
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="范围 slider[{{valueRange}}]">
+  <t-cell>
+    <t-slider
+      min="{{10}}"
+      max="{{100}}"
+      range
+      showExtremValue
+      bindsliderchanging="onSliderValueChangeRange"
+      value="{{valueRange}}"
+    ></t-slider>
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="范围 slider 0起始[{{valueRange2}}]">
+  <t-cell>
+    <t-slider
+      min="{{0}}"
+      max="{{100}}"
+      range
+      showExtremValue
+      bindsliderchanging="onSliderValueChangeRange2"
+      value="{{valueRange2}}"
+    ></t-slider>
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="上方显示当前值 左右显示极值 slider">
+  <t-cell>
+    <t-slider
+      value="{{value1}}"
+      label="右侧"
+      showExtremValue
+      bindsliderchanging="onSliderValueChange"
+      bindsliderchange="onSliderValueChange"
+    ></t-slider>
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="不显示极值 右侧显示当前值 slider">
+  <t-cell>
+    <t-slider
+      value="{{value2}}"
+      showValue
+      bindsliderchanging="onSliderValueChange2"
+      bindsliderchange="onSliderValueChange2"
+    ></t-slider>
+  </t-cell>
+</t-cell-group>
