@@ -7,65 +7,65 @@ Page({
     showTypeIdx: 0,
     layout: 'default',
     barLoadingTimeOut: null,
-    loading: true
+    loading: true,
   },
-  toggleVertical(){
+  toggleVertical() {
     this.resetDefault();
     this.setData({
-      vertical: !this.data.vertical
-    })
+      vertical: !this.data.vertical,
+    });
   },
-  toggleError(){
+  toggleError() {
     this.setData({
-      error: !this.data.error
-    })
+      error: !this.data.error,
+    });
   },
-  toggleSize(){
+  toggleSize() {
     this.resetDefault();
     this.setData({
-      size: this.data.size == "48px" ? "30px" : "48px"
-    })
+      size: this.data.size == '48px' ? '30px' : '48px',
+    });
   },
-  toggleLayout(){
-    if(this.data.layout == "default"){
-      const timeout = setTimeout(()=>{
+  toggleLayout() {
+    if (this.data.layout == 'default') {
+      const timeout = setTimeout(() => {
         this.setData({ loading: false });
-      }, 10000)
-      this.setData({ 
-        layout: "bar",
-        barLoadingTimeOut: timeout
+      }, 10000);
+      this.setData({
+        layout: 'bar',
+        barLoadingTimeOut: timeout,
       });
-      this.changeNavBarColor('#000000', '#ffffff')
+      this.changeNavBarColor('#000000', '#ffffff');
     } else {
       this.resetDefault();
     }
   },
-  toggleShowType(){
+  toggleShowType() {
     this.resetDefault();
-    const types = ["all", "icon-only", "text-only"];
-    const index = (this.data.showTypeIdx + 1) % types.length; 
+    const types = ['all', 'icon-only', 'text-only'];
+    const index = (this.data.showTypeIdx + 1) % types.length;
     this.setData({
       showType: types[index],
-      showTypeIdx: index
-    })
-  },
-  resetDefault(){
-    clearTimeout(this.data.barLoadingTimeOut)
-    this.changeNavBarColor('#ffffff', '#0052d9')
-    this.setData({ 
-      layout: "default", 
-      error: false,
-      loading: true 
+      showTypeIdx: index,
     });
   },
-  changeNavBarColor(frontColor, backgroundColor){
+  resetDefault() {
+    clearTimeout(this.data.barLoadingTimeOut);
+    this.changeNavBarColor('#ffffff', '#0052d9');
+    this.setData({
+      layout: 'default',
+      error: false,
+      loading: true,
+    });
+  },
+  changeNavBarColor(frontColor, backgroundColor) {
     wx.setNavigationBarColor({
       frontColor,
       backgroundColor,
       animation: {
         duration: 500,
-        timingFunc: 'easeIn'
-      }
-    })
-  }
+        timingFunc: 'easeIn',
+      },
+    });
+  },
 });

@@ -38,9 +38,7 @@
       </view>
     </block>
     <block wx:else>
-      <view class="t-toast__main-text t-toast__main-text--{{position}}">
-        {{message}}
-      </view>
+      <view class="t-toast__main-text t-toast__main-text--{{position}}"> {{message}} </view>
     </block>
   </view>
 </view>
