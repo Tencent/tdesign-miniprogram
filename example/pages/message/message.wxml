@@ -1,0 +1,8 @@
+<!-- API形式调用 -->
+<button class="t-button" bindtap="showMessage" data-type="info">弹出消息（info）</button>
+<button class="t-button" bindtap="showMessage" data-type="warning">弹出消息（warning）</button>
+<button class="t-button" bindtap="showMessage" data-type="success">弹出消息（success）</button>
+<button class="t-button" bindtap="showMessage" data-type="error">弹出消息（error）</button>
+<!-- <button class="t-button" bindtap="showInputDialog">输入类对话框</button> -->
+
+<t-message id="t-message" />

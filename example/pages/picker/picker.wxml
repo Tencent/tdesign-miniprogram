@@ -1,0 +1,54 @@
+<t-cell-group title="单列选择、默认选中">
+  <t-picker
+    title="标题"
+    bindchange="onPicker1Change"
+    bindconfirm="onPicker1Confirm"
+    bindcancel="onPicker1Cancel"
+  >
+    <t-picker-column
+      data-index="{{0}}"
+      options="{{heroOptions}}"
+      optionKey="name"
+      defaultIndex="{{3}}"
+      bindchange="onColumn1Change"
+    ></t-picker-column>
+  </t-picker>
+</t-cell-group>
+
+<t-cell-group title="多列选择、默认选中">
+  <t-picker
+    title="标题"
+    bindchange="onPicker2Change"
+    bindconfirm="onPicker2Confirm"
+    bindcancel="onPicker2Cancel"
+  >
+    <t-picker-column
+      data-index="{{0}}"
+      options="{{gameOptions}}"
+      optionKey="name"
+      defaultIndex="{{3}}"
+    ></t-picker-column>
+    <t-picker-column
+      data-index="{{1}}"
+      options="{{evaluationOptions}}"
+      optionKey="name"
+      defaultIndex="{{2}}"
+    ></t-picker-column>
+  </t-picker>
+</t-cell-group>
+
+<t-cell-group title="联动选择">
+  <t-picker
+    title="标题"
+    bindchange="onPicker2Change"
+    bindconfirm="onPicker2Confirm"
+    bindcancel="onPicker2Cancel"
+  >
+    <t-picker-column
+      data-index="{{0}}"
+      options="{{roleOptions}}"
+      bindchange="onRoleChange"
+    ></t-picker-column>
+    <t-picker-column data-index="{{1}}" options="{{multiHeroOptions[roleIndex]}}"></t-picker-column>
+  </t-picker>
+</t-cell-group>

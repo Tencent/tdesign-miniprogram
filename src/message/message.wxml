@@ -1,0 +1,7 @@
+<wxs src="../common/utils.wxs" module="utils" />
+
+<view wx:if="{{ visible }}" class="{{ rootClasses }}" style="z-index: {{ zIndex }};">
+  <t-icon name="{{ iconName }}" />
+  <span class="{{ messageClasses }}">{{ content }}</span>
+  <slot></slot>
+</view>

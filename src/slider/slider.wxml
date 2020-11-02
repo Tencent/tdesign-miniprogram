@@ -1,0 +1,71 @@
+<view class="{{classPrefix}}__container">
+  <view class="{{classPrefix}}-label">{{label}}</view>
+  <view class="{{classPrefix}}-right">
+    <view wx-if="{{!range}}">
+      <view class="{{classPrefix}}-value__active" wx-if="{{showExtremValue}}">{{value}}</view>
+      <view class="{{classPrefix}}__wrapper">
+        <text wx-if="{{showExtremValue}}" class="{{classPrefix}}-value {{classPrefix}}-value__min"
+          >{{min}}</text
+        >
+        <slider
+          class="{{classPrefix}}__main"
+          min="{{min}}"
+          max="{{max}}"
+          step="{{step}}"
+          disabled="{{disabled}}"
+          value="{{value}}"
+          backgroundColor="{{backgroundColor}}"
+          activeColor="{{activeColor}}"
+          blockSize="{{blockSize}}"
+          blockColor="{{blockColor}}"
+          showValue="{{showValue}}"
+          bindchange="sliderchange"
+          bindchanging="sliderchanging"
+          left-icon="cancel"
+          right-icon="success_no_circle"
+        />
+        <text wx-if="{{showExtremValue}}" class="{{classPrefix}}-value {{classPrefix}}-value__max"
+          >{{max}}</text
+        >
+      </view>
+    </view>
+
+    <!-- range选择器自定义 -->
+    <view wx-if="{{range}}">
+      <view
+        class="{{classPrefix}}-range-container"
+        style="padding: {{blockSize * 1.4}}px 0 {{blockSize / 4}}px 0">
+        <view class="{{classPrefix}}-range-extrem {{classPrefix}}-range-min">{{min}}</view>
+        <view
+          id="sliderLine"
+          bindtap="onLineTap"
+          class="{{classPrefix}}-bar"
+          style="background-color: {{backgroundColor}};">
+          <view
+            class="{{classPrefix}}-line"
+            bindtap="onLineTap"
+            style="background-color: {{activeColor}}; left: {{lineLeft}}px; right: {{lineRight}}px"></view>
+          <view
+            id="leftDot"
+            bindtouchmove="onTouchMove"
+            class="{{classPrefix}}-dot {{classPrefix}}-dot__left"
+            style="background-color: {{blockColor}}; width: {{blockSize}}px; height:{{blockSize}}px; top: {{-blockSize / 2 + 8}}px; left: {{activeLeft}}px">
+            <view
+              class="{{classPrefix}}-dot-value"
+              style="background-color: {{activeColor}}; border-color: {{activeColor}}">{{dotTopValue[0]}}</view>
+          </view>
+          <view
+            id="rightDot"
+            bindtouchmove="onTouchMoveRight"
+            class="{{classPrefix}}-dot {{classPrefix}}-dot__right"
+            style="background-color: {{blockColor}}; width: {{blockSize}}px; height:{{blockSize}}px; top: {{-blockSize / 2 + 8}}px; right: {{activeRight}}px">
+            <view
+              class="{{classPrefix}}-dot-value"
+              style="background-color: {{activeColor}}; border-color: {{activeColor}}">{{dotTopValue[1]}}</view>
+          </view>
+        </view>
+        <view class="{{classPrefix}}-range-extrem {{classPrefix}}-range-max">{{max}}</view>
+      </view>
+    </view>
+  </view>
+</view>

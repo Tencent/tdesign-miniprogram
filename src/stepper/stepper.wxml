@@ -1,0 +1,22 @@
+<wxs src="../common/utils.wxs" module="utils" />
+<t-cell class="{{ classPrefix }} {{ disabled ? 't-is-disabled': ''}}">
+  <view slot="title" class="{{classPrefix}}__label">{{ label }}</view>
+  <view
+    class="{{ classPrefix }}__minus {{ disabled || disableMinus || currentValue <= min ? 't-is-disabled': ''}}"
+    bindtap="minusValue"
+  >
+  </view>
+  <input
+    class="{{ classPrefix }}__input"
+    style="{{ utils.addUnit('width',inputWidth) }}"
+    disabled="{{ disabled || disableInput }}"
+    type="number"
+    value="{{ currentValue }}"
+    bindblur="blurHandler"
+  />
+  <view
+    class="{{ classPrefix }}__plus {{ disabled || disablePlus|| currentValue >= max ? 't-is-disabled': ''}}"
+    bindtap="plusValue"
+  >
+  </view>
+</t-cell>

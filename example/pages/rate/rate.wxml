@@ -1,0 +1,44 @@
+<t-cell-group title="v-model基本用法">
+  <t-cell>
+    <t-rate value="{{star1}}" bind:change="onChangeVal1" />
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="size=20px">
+  <t-cell>
+    <t-rate value="{{star2}}" bind:change="onChangeVal2" size="20px" />
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="readonly=true">
+  <t-cell>
+    <t-rate value="{{star3}}" readonly bind:change="onChangeVal3" bind:readonly="onDisableVal3" />
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="count=3">
+  <t-cell>
+    <t-rate value="{{star4}}" count="{{3}}" bind:change="onChangeVal4" />
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="clearable=true（长按最大已选择元素可取消）">
+  <t-cell>
+    <t-rate value="{{star5}}" clearable bind:change="onChangeVal5" />
+  </t-cell>
+  <t-cell>
+    当前评分：{{star5}}星
+  </t-cell>
+</t-cell-group>
+
+<t-cell-group title="showText=true">
+  <t-cell>
+    <t-rate value="{{star6}}" showText="{{true}}" textColor="#FF0000" bind:change="onChangeVal6" />
+  </t-cell>
+</t-cell-group>
+
+<t-cell>
+  <t-button theme="primary" block catchtap="resetStar">
+    重置所有评分为0
+  </t-button>
+</t-cell>

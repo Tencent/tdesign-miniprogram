@@ -1,0 +1,105 @@
+@prefix: t-slider;
+
+.@{prefix}__container {
+  font-size: 14px;
+  overflow: hidden;
+  position: relative;
+  .@{prefix}-label {
+    width: 10%;
+    float: left;
+    bottom: 10px;
+    position: absolute;
+  }
+  .@{prefix}-right {
+    float: right;
+    width: 90%
+  }
+  .@{prefix}-value__active {
+    text-align: center;
+  }
+}
+
+.@{prefix}__wrapper {
+  display: flex;
+  align-items: center;
+  .@{prefix}__main {
+    flex: 10;
+  }
+  .@{prefix}-value {
+    flex: 1;
+    display: inline-block;
+    color: #888888;
+  }
+  .@{prefix}-active {
+    width: 100%;
+  }
+
+  .@{prefix}-range__main1 {
+    flex: 10;
+  }
+}
+.@{prefix}-range-extrem {
+  display: inline-block;
+  width: 12%;
+  vertical-align: top;
+  color: #888888;
+}
+
+.@{prefix}-range-min {
+  text-align: left;
+}
+.@{prefix}-range-max {
+  text-align: right;
+}
+.@{prefix}-bar {
+  padding: 8px 0;
+  background-clip: content-box;
+  width: 76%;
+  height: 5rpx;
+  position: relative;
+  display: inline-block;
+
+  .@{prefix}-selected {
+    height: 5rpx;
+    position: absolute;
+    top: 8px;
+  }
+
+  .@{prefix}-dot {
+    border-radius: 50%;
+    box-shadow: 0 0 1px 2px #eee;
+    position: absolute;
+    z-index: 2;
+
+    &__left {
+      left: 0;
+    }
+
+    &__right {
+      right: 0;
+    }
+
+    &-value {
+      position: relative;
+      top: -30px;
+      color: #FFF;
+      text-align: center;
+      border-radius: 5px;
+      &::before {
+        content: '';
+        position: absolute;
+        border: 5px solid transparent;
+        top: 20px;
+        border-top-color: inherit;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  .@{prefix}-line {
+    position: absolute;
+    top: 8px;
+    height: 5rpx;
+  }
+}
