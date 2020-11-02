@@ -34,13 +34,13 @@ Page({
       closeOnClickOverlay: false,
       asyncClose: true,
     }).then(({ confirm, close }) => {
-      if (confirm) {
-        // 点击确定按钮
-        close(); // 关闭弹窗
-      } else {
-        // 点击取消按钮
-        close(); // 关闭弹窗
-      }
+      // if (confirm) {
+      // 点击确定按钮
+      close(); // 关闭弹窗
+      // } else {
+      // 点击取消按钮
+      // close(); // 关闭弹窗
+      // }
     });
   },
   // 输入类对话框
