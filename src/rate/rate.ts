@@ -48,7 +48,9 @@ TComponent({
         return;
       }
 
-      const { target: { dataset: { val = 0 } = {} } = {} } = e;
+      const {
+        val = 0,
+      } = (e.target && e.target.dataset) || {};
       this.setData({
         value: val,
       });
@@ -73,7 +75,9 @@ TComponent({
         return;
       }
 
-      const { target: { dataset: { val = 0 } = {} } = {} } = e;
+      const {
+        val = 0,
+      } = (e.target && e.target.dataset) || {};
       // 只处理当前最大选中元素的取消
       if (val !== this.data.value) {
         return;
