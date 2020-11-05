@@ -84,12 +84,6 @@ TComponent({
     dotTopValue: [0, 0]
   },
 
-  observers: {
-    'backgroundColor, activeColor, blockSize, blockColor'() {
-      // this.setClass();
-    },
-  },
-
   lifetimes: {
     attached() {
       if (this.data.range) {
