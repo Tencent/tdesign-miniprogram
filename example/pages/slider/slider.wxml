@@ -1,12 +1,22 @@
 <t-cell-group title="默认 slider {{value}}">
   <t-cell>
-    <t-slider value="{{value}}" bindsliderchanging="onDefaultSliderValueChange"></t-slider>
-  </t-cell>
+    <t-slider
+      value="{{value}}"
+      bindsliderchanging="onDefaultSliderValueChange"></t-slider>
+    </t-cell>
 </t-cell-group>
 
 <t-cell-group title="禁用的 slider">
   <t-cell>
     <t-slider disabled></t-slider>
+  </t-cell>
+</t-cell-group>
+<t-cell-group title="step slider, step=3">
+  <t-cell>
+    <t-slider
+      value="{{valueStep}}"
+      step="{{3}}"
+      bindsliderchanging="onStepSliderValueChange"></t-slider>
   </t-cell>
 </t-cell-group>
 

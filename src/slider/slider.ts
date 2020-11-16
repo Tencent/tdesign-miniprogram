@@ -190,10 +190,32 @@ TComponent({
         value: [left < min ? min : left, right > max ? max : right]
       });
     },
+    stepValue(value) {
+      const { step, min, max } = this.data;
+
+      if (step < 1 || step > max - min) return value;
+      const remainderValue = Math.floor(value) % step;
+
+      remainderValue < step / 2 ? value -= remainderValue : value += step - remainderValue;
+
+      if (value < min) return min;
+      if (value > max) return max
+      return value;
+    },
     sliderchange(e) {
+      const value = this.stepValue(e.detail.value);
+      this.setData({
+        value
+      });
+      e.detail.value = value;
+
       this.triggerEvent('sliderchange', e.detail);
     },
     sliderchanging(e) {
+      const value = this.stepValue(e.detail.value);
+      this.setData({
+        value
+      });
       this.triggerEvent('sliderchanging', e.detail);
     },
     onTouchStart(e) {
