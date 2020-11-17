@@ -17,6 +17,7 @@
     "pages/toast/toast",
     "pages/stepper/stepper",
     "pages/slider/slider",
+    "pages/switch/switch",
     "pages/tag/tag"
   ],
   "usingComponents": {
@@ -37,7 +38,8 @@
     "t-stepper": "@tencent/tdesign-miniprogram/stepper/stepper",
     "t-slider": "@tencent/tdesign-miniprogram/slider/slider",
     "t-tag": "@tencent/tdesign-miniprogram/tag/tag",
-    "t-check-tag": "@tencent/tdesign-miniprogram/tag/check-tag"
+    "t-check-tag": "@tencent/tdesign-miniprogram/tag/check-tag",
+    "t-switch": "@tencent/tdesign-miniprogram/switch/switch"
   },
   "window": {
     "backgroundTextStyle": "light",
