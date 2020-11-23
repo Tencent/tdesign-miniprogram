@@ -1,5 +1,7 @@
 const gulp = require('gulp');
 const del = require('del');
+const replace = require('gulp-replace');
+const plumber = require('gulp-plumber');
 const changed = require('gulp-changed');
 const gulpTs = require('gulp-typescript');
 const sourcemaps = require('gulp-sourcemaps');
@@ -22,6 +24,7 @@ module.exports = (src, dist, moduleName) => {
   // options
   const srcOptions = { base: src };
   const watchOptions = { events: ['add', 'change'] };
+  const gulpErrorPath = 'example/utils/gulpError.js';
 
   // 文件匹配路径
   const globs = {
@@ -52,6 +55,19 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.clear = () => del(dist);
 
+  /** `gulp handleError`
+   * 输出错误到小程序
+   * */
+  tasks.handleError = err => gulp.src(gulpErrorPath, { base: 'example' })
+    .pipe(replace('gulpErrorPlaceHolder', err))
+    .pipe(gulp.dest('_example/'));
+
+  /** `gulp resetError`
+   * 重置gulpError
+   * */
+  tasks.resetError = () => gulp.src(gulpErrorPath, { base: 'example' })
+    .pipe(gulp.dest('_example/'));
+
   /** `gulp copy`
    * 清理
    * */
@@ -63,6 +79,12 @@ module.exports = (src, dist, moduleName) => {
    * 处理ts
    * */
   tasks.ts = () => gulp.src(globs.ts, srcOptions)
+    .pipe(plumber({
+      errorHandler: (err) => {
+        console.log(err);
+        tasks.handleError(err.message);
+      },
+    }))
     .pipe(sourcemaps.init())
     .pipe(tsProject()) // 编译ts
     .pipe(sourcemaps.write('.'))
@@ -90,6 +112,12 @@ module.exports = (src, dist, moduleName) => {
    * 处理less
    * */
   tasks.less = () => gulp.src(globs.less, { ...srcOptions, since: since(tasks.less) })
+    .pipe(plumber({
+      errorHandler: (err) => {
+        console.log(err);
+        tasks.handleError(err.message);
+      },
+    }))
     .pipe(sourcemaps.init())
     .pipe(gulpLess()) // 编译less
     .pipe(rename({ extname: '.wxss' }))
@@ -116,6 +144,7 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.build = gulp.series(
     tasks.clear,
+    tasks.resetError,
     gulp.parallel(
       tasks.copy,
       tasks.ts,
@@ -132,11 +161,11 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.watch = () => {
     gulp.watch(globs.copy, watchOptions, tasks.copy);
-    gulp.watch(globs.ts, watchOptions, tasks.ts);
+    gulp.watch(globs.ts, watchOptions, gulp.series(tasks.resetError, tasks.ts));
     gulp.watch(globs.js, watchOptions, tasks.js);
     gulp.watch(globs.wxs, watchOptions, tasks.wxs);
     gulp.watch(globs.json, watchOptions, tasks.json);
-    gulp.watch(globs.less, watchOptions, tasks.less);
+    gulp.watch(globs.less, watchOptions, gulp.series(tasks.resetError, tasks.less));
     gulp.watch(globs.wxss, watchOptions, tasks.wxss);
   };
 

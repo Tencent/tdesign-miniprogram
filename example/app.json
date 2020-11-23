@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/gulp-error/index",
     "pages/index",
     "pages/picker/picker",
     "pages/button/button",
