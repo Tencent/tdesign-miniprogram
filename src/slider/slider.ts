@@ -134,8 +134,10 @@ TComponent({
       valueMax = valueMax > max ? max : valueMax;
 
       const fullLineWidth = maxRange + blockSize;
+      const left = fullLineWidth * (valueMin - min) / (max - min);
+      const right = fullLineWidth * (max - valueMax) / (max - min);
       // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
-      this.setDotStyle(fullLineWidth * (valueMin - min) / (max - min), fullLineWidth * (max - valueMax) / (max - min));
+      this.setDotStyle(left, right);
     },
     setDotStyle(left, right) {
       const halfBlock = this.data.blockSize / 2;
@@ -171,7 +173,7 @@ TComponent({
       const halfBlock = blockSize / 2;
       const fullLineWidth = maxRange + blockSize;
 
-      let changePos = activeLeft + activeRight >= maxRange;
+      const changePos = activeLeft + activeRight >= maxRange;
       if (changePos) {
         const temp = activeLeft;
         activeLeft = fullLineWidth - activeRight - blockSize;
@@ -179,7 +181,7 @@ TComponent({
       }
 
       let left = Math.round((max - min) * (activeLeft + halfBlock) / fullLineWidth) + min;
-      let right = Math.round(max - (max - min) * (activeRight + halfBlock) / fullLineWidth);
+      let right = Math.round(max - ((max - min) * (activeRight + halfBlock) / fullLineWidth));
 
       if (left < min) left = min;
       if (left > max) left = max;
@@ -199,7 +201,7 @@ TComponent({
       remainderValue < step / 2 ? value -= remainderValue : value += step - remainderValue;
 
       if (value < min) return min;
-      if (value > max) return max
+      if (value > max) return max;
       return value;
     },
     sliderchange(e) {
@@ -263,7 +265,8 @@ TComponent({
           const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
 
           const isMoveLeft = distanceLeft < distanceRight;
-          let moveDistance = isMoveLeft ? pageX - leftDot.left - halfBlock : rightDot.left - pageX + halfBlock;
+          const moveDistance = isMoveLeft
+            ? pageX - leftDot.left - halfBlock : rightDot.left - pageX + halfBlock;
           if (isMoveLeft) {
             this.setDotStyle(activeLeft + halfBlock + moveDistance, null);
           } else {
@@ -297,7 +300,7 @@ TComponent({
       } else {
         this.setData({
           lineLeft: maxRange + halfBlock - activeRight,
-          lineRight: maxRange -  activeLeft + 1.5 * halfBlock,
+          lineRight: maxRange -  activeLeft + (1.5 * halfBlock),
         });
       }
     },

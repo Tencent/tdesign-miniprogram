@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/gulp-error/index",
     "pages/index",
     "pages/picker/picker",
     "pages/button/button",
@@ -17,8 +16,10 @@
     "pages/toast/toast",
     "pages/stepper/stepper",
     "pages/slider/slider",
+    "pages/radio/radio",
     "pages/switch/switch",
-    "pages/tag/tag"
+    "pages/tag/tag",
+    "pages/gulp-error/index"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
@@ -38,6 +39,8 @@
     "t-stepper": "@tencent/tdesign-miniprogram/stepper/stepper",
     "t-slider": "@tencent/tdesign-miniprogram/slider/slider",
     "t-tag": "@tencent/tdesign-miniprogram/tag/tag",
+    "t-radio": "@tencent/tdesign-miniprogram/radio/radio",
+    "t-radio-group": "@tencent/tdesign-miniprogram/radio-group/radio-group",
     "t-check-tag": "@tencent/tdesign-miniprogram/tag/check-tag",
     "t-switch": "@tencent/tdesign-miniprogram/switch/switch"
   },
