@@ -1,18 +1,8 @@
-<view>
-  <view class="t-radio-demo-wrapper">
-    <view class="t-radio-demo__title">基础单选框</view>
-    <t-radio title="单行标题" name="radio1" bind:change="onChange"></t-radio>
-    <t-radio title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" name="radio2" bind:change="onChange"></t-radio>
-    <view class="t-radio-demo__title">禁用选项</view>
-    <t-radio-group bind:change="onChange" value="radio1">
-      <t-radio title="单行标题" name="radio1" disabled></t-radio>
-      <t-radio title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" name="radio2" disabled bordered="{{false}}"></t-radio>
-    </t-radio-group>
-    <view class="t-radio-demo__title">组合使用</view>
-    <t-radio-group bind:change="onChange" value="radio1" bordered>
-      <t-radio title="单行标题" name="radio1"></t-radio>
-      <t-radio title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" name="radio2"></t-radio>
-      <t-radio title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" label="一段很长很长的内容文字，一段很长很长的内容文字，一段很长很长的内容文字" name="radio3" bordered="{{false}}"></t-radio>
-    </t-radio-group>
-  </view>
+<view class="t-radio-demo-wrapper">
+  <view class="t-radio-demo__title">基础单选框</view>
+  <basic-demo class="basic-demo" />
+  <view class="t-radio-demo__title">禁用选项</view>
+  <group-demo class="disabled-demo" items="{{group1}}" value="{{group1value}}"/>
+  <view class="t-radio-demo__title">组合使用</view>
+  <group-demo class="group-demo" items="{{group2}}" value="{{group2value}}"/>
 </view>

@@ -11,6 +11,7 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
+    jest: true,
   },
   // 启用默认核心规则
   extends: ['@tencent/eslint-config-tencent'],

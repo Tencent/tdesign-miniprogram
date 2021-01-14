@@ -10,9 +10,10 @@ TComponent({
       type: Boolean,
       value: false,
       observer(val: boolean) {
-        this.setData({
-          active: val,
-        });
+        this.data.active !== val &&
+          this.setData({
+            active: val,
+          });
       },
     },
     title: String,
@@ -36,7 +37,7 @@ TComponent({
       if (this.data.disabled) return;
       const { name, active } = this.data;
       const item = { name, checked: !active };
-      const [parent] = this.getRelationNodes('../radio-group/radio-group');
+      const [parent] = this.getRelationNodes('../radio-group/radio-group') || [];
       if (parent) {
         parent.updateValue({ name });
       } else {
