@@ -19,6 +19,7 @@
     "pages/radio/radio",
     "pages/switch/switch",
     "pages/tag/tag",
+    "pages/indexes/indexes",
     "pages/gulp-error/index"
   ],
   "usingComponents": {
@@ -42,7 +43,10 @@
     "t-radio": "@tencent/tdesign-miniprogram/radio/radio",
     "t-radio-group": "@tencent/tdesign-miniprogram/radio-group/radio-group",
     "t-check-tag": "@tencent/tdesign-miniprogram/tag/check-tag",
-    "t-switch": "@tencent/tdesign-miniprogram/switch/switch"
+    "t-switch": "@tencent/tdesign-miniprogram/switch/switch",
+    "t-indexes": "@tencent/tdesign-miniprogram/indexes/indexes",
+    "t-indexes-anchor": "@tencent/tdesign-miniprogram/indexes/indexes-anchor",
+    "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell"
   },
   "window": {
     "backgroundTextStyle": "light",

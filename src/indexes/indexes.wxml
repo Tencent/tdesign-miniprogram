@@ -1,0 +1,25 @@
+<scroll-view
+  scroll-y="{{true}}"
+  scroll-into-view="{{toView}}"
+  scroll-top="{{topValue}}"
+  class="t-indexes"
+  bindtouchstart="handleRootTouchstart"
+  bindtouchend="handleRootTouchend"
+  bindscroll="handleRootScroll"
+>
+  <view class="t-indexes__sidebar" bindtouchstart="handleSidebarTouchstart">
+    <view
+      catchtouchmove="handleSidebarTouchmove"
+      class="t-indexes__sidebar-item {{ currentSidebar === item ? 't-indexes__sidebar-item--active' : '' }}"
+      wx:for="{{ indexLists }}"
+      wx:key="index"
+      data-index="{{ item }}"
+      data-num="{{ index }}"
+      bindtap="handleSidebarItemClick"
+    >
+      {{ item }}
+    </view>
+  </view>
+  <view wx:if="{{ showCurrentSidebar }}" class="t-indexes__current"> {{ currentSidebar }} </view>
+  <slot />
+</scroll-view>

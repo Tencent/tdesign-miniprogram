@@ -68,6 +68,12 @@
 					"name": "rate",
 					"pathName": "pages/rate/rate",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "indexes",
+					"pathName": "pages/indexes/indexes",
+					"scene": null
 				}
       ]
 		}
