@@ -22,7 +22,9 @@
     "pages/checkbox/checkbox",
     "pages/gulp-error/index",
     "pages/fab/fab",
-    "pages/tab-bar/tab-bar"
+    "pages/tab-bar/tab-bar",
+    "pages/transition/transition",
+    "pages/popup/popup"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
@@ -50,7 +52,9 @@
     "t-switch": "@tencent/tdesign-miniprogram/switch/switch",
     "t-fab": "@tencent/tdesign-miniprogram/fab/fab",
     "t-tab-bar": "@tencent/tdesign-miniprogram/tab-bar/tab-bar",
-    "t-tab-bar-item": "@tencent/tdesign-miniprogram/tab-bar/tab-bar-item"
+    "t-tab-bar-item": "@tencent/tdesign-miniprogram/tab-bar/tab-bar-item",
+    "t-transition": "@tencent/tdesign-miniprogram/transition/transition",
+    "t-popup": "@tencent/tdesign-miniprogram/popup/popup"
   },
   "window": {
     "backgroundTextStyle": "light",

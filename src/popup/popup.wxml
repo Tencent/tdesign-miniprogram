@@ -1,0 +1,14 @@
+<t-transition
+  visible="{{ visible }}"
+  appear="{{ appear }}"
+  custom-class="{{ className }}"
+  name="{{ dataTransitionProps.name }}"
+  appear="{{ dataTransitionProps.appear }}"
+  durations="{{ dataTransitionProps.durations }}"
+  destoryOnHide="{{ destoryOnHide }}"
+>
+  <view class="t-popup__mask" bind:tap="onMaskClick"></view>
+  <view class="t-popup__content">
+    <slot />
+  </view>
+</t-transition>

@@ -8,6 +8,10 @@ Page({
             name: 'Icon',
             path: '/pages/icon/icon',
           },
+          {
+            name: 'Transition',
+            path: '/pages/transition/transition',
+          },
         ],
       },
       {
@@ -102,6 +106,10 @@ Page({
           {
             name: 'Message',
             path: '/pages/message/message',
+          },
+          {
+            name: 'Popup',
+            path: '/pages/popup/popup',
           },
         ],
       },

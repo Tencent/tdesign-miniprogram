@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "Transition 过渡",
+  "usingComponents": {
+    "base-demo": "./demos/base",
+    "custom-demo": "./demos/custom",
+    "destroy-demo": "./demos/destroy",
+    "appear-demo": "./demos/appear"
+  }
+}
