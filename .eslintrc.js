@@ -38,4 +38,13 @@ module.exports = {
     Component: true,
     getRegExp: true,
   },
+  overrides: [
+    {
+      files: ['script/**'],
+      rules: {
+        // node 环境下支持 require
+        '@typescript-eslint/no-require-imports': 'off',
+      },
+    },
+  ],
 };

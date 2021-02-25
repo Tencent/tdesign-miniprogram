@@ -81,7 +81,7 @@ TComponent({
     maxRange: 0,
     lineLeft: 0,
     lineRight: 0,
-    dotTopValue: [0, 0]
+    dotTopValue: [0, 0],
   },
 
   lifetimes: {
@@ -164,7 +164,7 @@ TComponent({
         b = tem;
       }
       this.setData({
-        dotTopValue: [a, b]
+        dotTopValue: [a, b],
       });
     },
     emitValue() {
@@ -181,7 +181,7 @@ TComponent({
       }
 
       let left = Math.round((max - min) * (activeLeft + halfBlock) / fullLineWidth) + min;
-      let right = Math.round(max - ((max - min) * (activeRight + halfBlock) / fullLineWidth));
+      let right = Math.round(max - (((max - min) * (activeRight + halfBlock)) / fullLineWidth));
 
       if (left < min) left = min;
       if (left > max) left = max;
@@ -189,7 +189,7 @@ TComponent({
       if (right > max) right = max;
 
       this.triggerEvent('sliderchanging', {
-        value: [left < min ? min : left, right > max ? max : right]
+        value: [left < min ? min : left, right > max ? max : right],
       });
     },
     stepValue(value) {
@@ -207,7 +207,7 @@ TComponent({
     sliderchange(e) {
       const value = this.stepValue(e.detail.value);
       this.setData({
-        value
+        value,
       });
       e.detail.value = value;
 
@@ -216,7 +216,7 @@ TComponent({
     sliderchanging(e) {
       const value = this.stepValue(e.detail.value);
       this.setData({
-        value
+        value,
       });
       this.triggerEvent('sliderchanging', e.detail);
     },
@@ -300,7 +300,7 @@ TComponent({
       } else {
         this.setData({
           lineLeft: maxRange + halfBlock - activeRight,
-          lineRight: maxRange -  activeLeft + (1.5 * halfBlock),
+          lineRight: maxRange - activeLeft + (halfBlock * 1.5),
         });
       }
     },
