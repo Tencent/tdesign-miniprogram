@@ -74,6 +74,10 @@ Page({
             name: 'Slider',
             path: '/pages/slider/slider',
           },
+          {
+            name: 'Fab',
+            path: '/pages/fab/fab',
+          },
         ],
       },
       {
