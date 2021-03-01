@@ -105,6 +105,15 @@ Page({
           },
         ],
       },
+      {
+        type: '导航类',
+        components: [
+          {
+            name: 'TabBar',
+            path: '/pages/tab-bar/tab-bar',
+          },
+        ],
+      },
     ],
   },
 });
