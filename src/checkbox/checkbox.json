@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+      "t-cell": "../cell/cell",
+      "t-icon": "../icon/icon"
+    }
+  }
+  

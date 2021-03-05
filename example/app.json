@@ -19,6 +19,7 @@
     "pages/radio/radio",
     "pages/switch/switch",
     "pages/tag/tag",
+    "pages/checkbox/checkbox",
     "pages/gulp-error/index",
     "pages/fab/fab",
     "pages/tab-bar/tab-bar"
@@ -44,6 +45,8 @@
     "t-radio": "@tencent/tdesign-miniprogram/radio/radio",
     "t-radio-group": "@tencent/tdesign-miniprogram/radio-group/radio-group",
     "t-check-tag": "@tencent/tdesign-miniprogram/tag/check-tag",
+    "t-checkbox": "@tencent/tdesign-miniprogram/checkbox/checkbox",
+    "t-checkbox-group": "@tencent/tdesign-miniprogram/checkbox-group/checkbox-group",
     "t-switch": "@tencent/tdesign-miniprogram/switch/switch",
     "t-fab": "@tencent/tdesign-miniprogram/fab/fab",
     "t-tab-bar": "@tencent/tdesign-miniprogram/tab-bar/tab-bar",
