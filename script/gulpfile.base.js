@@ -22,7 +22,7 @@ module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json');
 
   // options
-  const srcOptions = { base: src };
+  const srcOptions = { base: src, ignore: ['**/__test__', '**/__test__/**'] };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
 
