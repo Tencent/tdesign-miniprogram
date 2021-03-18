@@ -120,6 +120,10 @@ Page({
             name: 'TabBar',
             path: '/pages/tab-bar/tab-bar',
           },
+          {
+            name: 'Tabs',
+            path: '/pages/tabs/tabs',
+          },
         ],
       },
     ],

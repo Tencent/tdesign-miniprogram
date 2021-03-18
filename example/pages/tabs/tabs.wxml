@@ -1,0 +1,33 @@
+<view>
+  <view class="t-tabs-demo-wrapper">
+    <view class="t-tabs-demo__title">基本用法</view>
+    <t-tabs activeName="{{0}}" bind:change="onTabsChange" bind:click="onTabsChange">
+      <t-tab wx:for="{{[1,2,3,4]}}" wx:key="index" title="标签页{{index}}" name="{{index}}">
+        标签页{{index}}
+      </t-tab>
+    </t-tabs>
+    <view class="t-tabs-demo__title">标签栏滚动</view>
+    <t-tabs activeName="0" bind:change="onTabsChange" bind:click="onTabsChange">
+      <t-tab wx:for="{{[1,2,3,4,5,6,7]}}" wx:key="index" title="标签页{{index}}" name="{{index}}">
+        标签页{{index}}
+      </t-tab>
+    </t-tabs>
+    <view class="t-tabs-demo__title">切换动画</view>
+    <t-tabs activeName="0" bind:change="onTabsChange" animated bind:click="onTabsChange">
+      <t-tab title="标签页1" name="0">标签页1</t-tab>
+      <t-tab title="标签页2" name="1">标签页2</t-tab>
+    </t-tabs>
+    <view class="t-tabs-demo__title">导航栏居左</view>
+    <t-tabs activeName="0" tabPosition="left" bind:change="onTabsChange" bind:click="onTabsChange">
+      <t-tab wx:for="{{[1,2,3,4]}}" wx:key="index" title="标签页{{index}}" name="{{index}}">
+        标签页{{index}}
+      </t-tab>
+    </t-tabs>
+    <view class="t-tabs-demo__title">禁用标签</view>
+    <t-tabs activeName="{{0}}" bind:change="onTabsChange" swipeable bind:disabled="onTabsDisabled" bind:click="onTabsChange">
+      <t-tab title="标签页1" name="0">标签页1</t-tab>
+      <t-tab title="标签页2" name="1" disabled>标签页2</t-tab>
+      <t-tab title="标签页3" name="2">标签页3</t-tab>
+    </t-tabs>
+  </view>
+</view>

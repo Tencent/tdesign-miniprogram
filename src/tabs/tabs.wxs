@@ -1,0 +1,24 @@
+/* eslint-disable */
+/* utils */
+
+/**
+ * animate */
+// 为tab切换添加动画
+function animate(options) {
+  var result =
+    '-webkit-transition-duration: ' +
+    options.duration +
+    's' +
+    ';transition-duration: ' +
+    options.duration +
+    's';
+  result +=
+    options.direction === 'Y'
+      ? ';transform: translate3d( 0,' + -100 * options.currentIndex + '%, 0)'
+      : ';transform: translate3d( ' + -100 * options.currentIndex + '%,0, 0)';
+  return result;
+}
+
+module.exports = {
+  animate: animate,
+};

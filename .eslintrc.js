@@ -37,6 +37,7 @@ module.exports = {
     getCurrentPages: true,
     Component: true,
     getRegExp: true,
+    Behavior: true,
   },
   overrides: [
     {
