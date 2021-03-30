@@ -124,6 +124,10 @@ Page({
             name: 'Tabs',
             path: '/pages/tabs/tabs',
           },
+          {
+            name: 'Steps',
+            path: '/pages/steps/steps',
+          },
         ],
       },
     ],

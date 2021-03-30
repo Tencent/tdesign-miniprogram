@@ -26,7 +26,8 @@
     "pages/tab-bar/tab-bar",
     "pages/transition/transition",
     "pages/popup/popup",
-    "pages/indexes/indexes"
+    "pages/indexes/indexes",
+    "pages/steps/steps"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
@@ -61,7 +62,9 @@
     "t-popup": "@tencent/tdesign-miniprogram/popup/popup",
     "t-indexes": "@tencent/tdesign-miniprogram/indexes/indexes",
     "t-indexes-anchor": "@tencent/tdesign-miniprogram/indexes/indexes-anchor",
-    "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell"
+    "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell",
+    "t-steps": "@tencent/tdesign-miniprogram/steps/steps",
+    "t-step": "@tencent/tdesign-miniprogram/steps/step"
   },
   "window": {
     "backgroundTextStyle": "light",
