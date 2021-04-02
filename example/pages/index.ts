@@ -33,6 +33,10 @@ Page({
             name: 'Progress',
             path: '/pages/progress/progress',
           },
+          {
+            name: 'SegmentedControl',
+            path: '/pages/segmented-control/segmented-control',
+          },
         ],
       },
       {
