@@ -28,7 +28,8 @@
     "pages/transition/transition",
     "pages/popup/popup",
     "pages/indexes/indexes",
-    "pages/steps/steps"
+    "pages/steps/steps",
+    "pages/dropdown-menu/dropdown-menu"
   ],
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
@@ -66,7 +67,8 @@
     "t-indexes-anchor": "@tencent/tdesign-miniprogram/indexes/indexes-anchor",
     "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell",
     "t-steps": "@tencent/tdesign-miniprogram/steps/steps",
-    "t-step": "@tencent/tdesign-miniprogram/steps/step"
+    "t-step": "@tencent/tdesign-miniprogram/steps/step",
+    "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu"
   },
   "window": {
     "backgroundTextStyle": "light",
