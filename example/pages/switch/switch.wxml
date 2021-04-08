@@ -1,0 +1,25 @@
+<t-cell-group title="small, value: {{valueSmall}}">
+     <t-cell>
+          <t-switch activeValue="{{1}}" inactiveValue="{{2}}" size="small" bindchange="onswitchchangesmall" value="{{valueSmall}}"></t-switch>
+          </t-cell>
+</t-cell-group>
+<t-cell-group title="defualt, value: {{value}}">
+     <t-cell>
+          <t-switch bindchange="onswitchchange" value="{{value}}"></t-switch>
+          </t-cell>
+</t-cell-group>
+<t-cell-group title="disabled, value: {{true}}">
+     <t-cell>
+          <t-switch value="{{true}}" disabled="{{true}}"></t-switch>
+          </t-cell>
+</t-cell-group>
+<t-cell-group title="activeValue: baby, inactiveValue: child, value: {{valueDefault}}">
+     <t-cell>
+          <t-switch labelWidth="{{80}}"  activeValue="baby" inactiveValue="child" activedColor="red" inactivedColor="green" bindchange="onswitchchangedefault" value="{{valueDefault}}"></t-switch>
+          </t-cell>
+</t-cell-group>
+<t-cell-group title="large, value: {{valueLarge}}">
+     <t-cell>
+          <t-switch inactiveText="关闭了" activeText="打开了" dotColor="yellow" activedColor="brown" inactivedColor="pink" size="large" bindchange="onswitchchangelarge" value="{{valueLarge}}"></t-switch>
+          </t-cell>
+</t-cell-group>

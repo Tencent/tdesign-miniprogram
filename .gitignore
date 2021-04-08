@@ -1,6 +1,8 @@
+_site
 miniprogram_dist
 _example
-coverage
+test/e2e
+test/unit
 .DS_Store
 package-lock.json
 node_modules

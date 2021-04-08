@@ -5,13 +5,14 @@ const packageJSON = require('../package.json');
 const rename = require('gulp-rename');
 const gulpLess = require('gulp-less');
 const sourcemaps = require('gulp-sourcemaps');
+const plumber = require("gulp-plumber");
 
 /* config */
 const src = 'example';
 const dist = '_example';
 
 /* base tasks */
-const { clear, build: baseBuild, watch: baseWatch } = base(src, dist, 'example');
+const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
 
 // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
 // https://github.com/gulpjs/vinyl-fs/issues/226
@@ -43,6 +44,12 @@ const build = gulp.series(baseBuild, syncDist);
  * */
 const commonLess = () => gulp
   .src(`${src}/app.less`)
+  .pipe(plumber({
+    errorHandler: (err) => {
+      console.log(err);
+      handleError(err.message);
+    },
+  }))
   .pipe(sourcemaps.init())
   .pipe(gulpLess()) // 编译less
   .pipe(rename({ extname: '.wxss' }))
@@ -54,7 +61,7 @@ const commonLess = () => gulp
  * */
 
 const watchCommonLess = () => {
-  gulp.watch('common/style/miniprogram/components/**', { events: ['add', 'change'] }, commonLess);
+  gulp.watch('common/style/miniprogram/components/**', { events: ['add', 'change'] }, gulp.series(resetError, commonLess));
 };
 /** `gulp watch`
  * 监听

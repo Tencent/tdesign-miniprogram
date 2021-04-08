@@ -3,6 +3,7 @@ Page({
     value: 40,
     value1: 10,
     value2: 10,
+    valueStep: 24,
     valueRange: [50, 50],
     valueRange2: [0, 90],
   },
@@ -11,6 +12,11 @@ Page({
   onDefaultSliderValueChange(e) {
     this.setData({
       value: e.detail.value,
+    });
+  },
+  onStepSliderValueChange(e) {
+    this.setData({
+      valueStep: e.detail.value,
     });
   },
   onSliderValueChange(e) {

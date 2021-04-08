@@ -1,0 +1,5 @@
+<view class="t-radio {{disabled ? 't-radio--disabled' : ''}}">
+  <t-cell title="{{title}}" label="{{label}}" bind:click="onChange" bordered="{{bordered}}">
+    <view slot="left-icon" class="t-radio__button {{active ? 't-is-active' : ''}}" />
+  </t-cell>
+</view>

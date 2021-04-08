@@ -1,0 +1,3 @@
+<view class="t-radio-group {{ bordered ? 't-radio-group--bordered' : '' }}">
+  <slot />
+</view>

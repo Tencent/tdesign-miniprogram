@@ -1,0 +1,27 @@
+<view class="{{classPrefix}}">
+  <view
+    class="{{classPrefix}}__content {{isChecked ? prefix+'-is-checked' : ''}} {{icon ? prefix+'-size-s' : ''}}"
+    bindtap="toggle"
+  >
+    <view class="{{classPrefix}}__icon" wx:if="{{icon}}">
+      <t-icon name="{{icon}}" size="large"></t-icon>
+    </view>
+    <view class="{{classPrefix}}__text">
+      <view class="{{classPrefix}}__icon-menu" wx:if="{{hasChildren}}"></view>
+      <slot />
+    </view>
+  </view>
+
+  <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}">
+    <view
+      class="{{classPrefix}}__spread-item"
+      wx:for="{{children}}"
+      wx:for-item="child"
+      wx:for-index="index"
+      wx:key="index"
+      bindtap="selectChild"
+      data-name="{{child.name || index}}"
+      >{{ child.text }}</view
+    >
+  </view>
+</view>

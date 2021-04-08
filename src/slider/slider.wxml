@@ -18,7 +18,7 @@
           activeColor="{{activeColor}}"
           blockSize="{{blockSize}}"
           blockColor="{{blockColor}}"
-          showValue="{{showValue}}"
+          showValue="{{!showExtremValue}}"
           bindchange="sliderchange"
           bindchanging="sliderchanging"
           left-icon="cancel"

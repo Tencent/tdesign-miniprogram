@@ -81,13 +81,7 @@ TComponent({
     maxRange: 0,
     lineLeft: 0,
     lineRight: 0,
-    dotTopValue: [0, 0]
-  },
-
-  observers: {
-    'backgroundColor, activeColor, blockSize, blockColor'() {
-      // this.setClass();
-    },
+    dotTopValue: [0, 0],
   },
 
   lifetimes: {
@@ -140,8 +134,10 @@ TComponent({
       valueMax = valueMax > max ? max : valueMax;
 
       const fullLineWidth = maxRange + blockSize;
+      const left = (fullLineWidth * (valueMin - min)) / (max - min);
+      const right = (fullLineWidth * (max - valueMax)) / (max - min);
       // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
-      this.setDotStyle(fullLineWidth * (valueMin - min) / (max - min), fullLineWidth * (max - valueMax) / (max - min));
+      this.setDotStyle(left, right);
     },
     setDotStyle(left, right) {
       const halfBlock = this.data.blockSize / 2;
@@ -168,7 +164,7 @@ TComponent({
         b = tem;
       }
       this.setData({
-        dotTopValue: [a, b]
+        dotTopValue: [a, b],
       });
     },
     emitValue() {
@@ -177,15 +173,15 @@ TComponent({
       const halfBlock = blockSize / 2;
       const fullLineWidth = maxRange + blockSize;
 
-      let changePos = activeLeft + activeRight >= maxRange;
+      const changePos = activeLeft + activeRight >= maxRange;
       if (changePos) {
         const temp = activeLeft;
         activeLeft = fullLineWidth - activeRight - blockSize;
         activeRight = fullLineWidth - temp - blockSize;
       }
 
-      let left = Math.round((max - min) * (activeLeft + halfBlock) / fullLineWidth) + min;
-      let right = Math.round(max - (max - min) * (activeRight + halfBlock) / fullLineWidth);
+      let left = Math.round(((max - min) * (activeLeft + halfBlock)) / fullLineWidth) + min;
+      let right = Math.round(max - ((max - min) * (activeRight + halfBlock)) / fullLineWidth); //eslint-disable-line
 
       if (left < min) left = min;
       if (left > max) left = max;
@@ -193,17 +189,40 @@ TComponent({
       if (right > max) right = max;
 
       this.triggerEvent('sliderchanging', {
-        value: [left < min ? min : left, right > max ? max : right]
+        value: [left < min ? min : left, right > max ? max : right],
       });
     },
+    stepValue(value) {
+      const { step, min, max } = this.data;
+
+      if (step < 1 || step > max - min) return value;
+      const remainderValue = Math.floor(value) % step;
+
+      remainderValue < step / 2 ? (value -= remainderValue) : (value += step - remainderValue);
+
+      if (value < min) return min;
+      if (value > max) return max;
+      return value;
+    },
     sliderchange(e) {
+      const value = this.stepValue(e.detail.value);
+      this.setData({
+        value,
+      });
+      e.detail.value = value;
+
       this.triggerEvent('sliderchange', e.detail);
     },
     sliderchanging(e) {
+      const value = this.stepValue(e.detail.value);
+      this.setData({
+        value,
+      });
       this.triggerEvent('sliderchanging', e.detail);
     },
     onTouchStart(e) {
-      const { pageX } = e.changedTouches[0];
+      const [touch] = e.changedTouches;
+      const { pageX } = touch;
       if (this.data.initialLeft === null) {
         this.setData({
           initialLeft: pageX,
@@ -211,7 +230,8 @@ TComponent({
       }
     },
     onTouchStartRight(e) {
-      const { pageX } = e.changedTouches[0];
+      const [touch] = e.changedTouches;
+      const { pageX } = touch;
       if (this.data.initialRight === null) {
         this.setData({
           initialRight: pageX,
@@ -222,9 +242,9 @@ TComponent({
       const { disabled, initialLeft, maxRange, blockSize } = this.data;
       if (disabled) return;
 
-      const { pageX } = e.changedTouches[0];
+      const [touch] = e.changedTouches;
+      const { pageX } = touch;
       const currentLeft = pageX - initialLeft;
-
 
       if (currentLeft <= 0) {
         this.setDotStyle(0, null);
@@ -238,7 +258,8 @@ TComponent({
       const { disabled, activeLeft, activeRight } = this.data;
       if (disabled) return;
 
-      const { pageX } = e.changedTouches[0];
+      const [touch] = e.changedTouches;
+      const { pageX } = touch;
       const halfBlock = this.data.blockSize / 2;
 
       this.getSelectorQuery('leftDot').then((leftDot) => {
@@ -247,7 +268,9 @@ TComponent({
           const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
 
           const isMoveLeft = distanceLeft < distanceRight;
-          let moveDistance = isMoveLeft ? pageX - leftDot.left - halfBlock : rightDot.left - pageX + halfBlock;
+          const moveDistance = isMoveLeft
+            ? pageX - leftDot.left - halfBlock
+            : rightDot.left - pageX + halfBlock;
           if (isMoveLeft) {
             this.setDotStyle(activeLeft + halfBlock + moveDistance, null);
           } else {
@@ -260,7 +283,8 @@ TComponent({
       const { disabled, initialRight, maxRange, blockSize } = this.data;
       if (disabled) return;
 
-      const { pageX } = e.changedTouches[0];
+      const [touch] = e.changedTouches;
+      const { pageX } = touch;
       const currentRight = pageX - initialRight;
       if (currentRight >= 0) {
         this.setDotStyle(null, 0);
@@ -281,7 +305,7 @@ TComponent({
       } else {
         this.setData({
           lineLeft: maxRange + halfBlock - activeRight,
-          lineRight: maxRange -  activeLeft + 1.5 * halfBlock,
+          lineRight: maxRange - activeLeft + halfBlock * 1.5, //eslint-disable-line
         });
       }
     },
