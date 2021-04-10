@@ -23,13 +23,13 @@
         <!-- 多选列表 -->
         <t-cell-group wx:if="{{selectMode === 'multi'}}" bordered="{{false}}">
           <t-checkbox-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
-            <t-checkbox
-              wx:for="{{options}}"
-              wx:key="index"
-              name="{{item.value}}"
-              title="{{item.title}}"
-              disabled="{{item.disabled}}"
-            ></t-checkbox>
+            <view class="{{prefix}}-checkbox-wrap" wx:for="{{options}}" wx:key="index">
+              <t-checkbox
+                name="{{item.value}}"
+                title="{{item.title}}"
+                disabled="{{item.disabled}}"
+              ></t-checkbox>
+            </view>
           </t-checkbox-group>
         </t-cell-group>
       </block>
