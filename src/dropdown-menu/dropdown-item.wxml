@@ -9,8 +9,8 @@
     <view class="{{base}}__bd" wx:if="{{show}}">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
-        <t-cell-group wx:if="{{selectMode === 'single'}}">
-          <t-radio-group value="{{selected}}" bordered="false" bind:change="updateSelected">
+        <t-cell-group wx:if="{{selectMode === 'single'}}" bordered="{{false}}">
+          <t-radio-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
             <t-radio
               wx:for="{{options}}"
               wx:key="index"
@@ -21,8 +21,8 @@
           </t-radio-group>
         </t-cell-group>
         <!-- 多选列表 -->
-        <t-cell-group wx:if="{{selectMode === 'multi'}}">
-          <t-checkbox-group value="{{selected}}" bordered="false" bind:change="updateSelected">
+        <t-cell-group wx:if="{{selectMode === 'multi'}}" bordered="{{false}}">
+          <t-checkbox-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
             <t-checkbox
               wx:for="{{options}}"
               wx:key="index"
