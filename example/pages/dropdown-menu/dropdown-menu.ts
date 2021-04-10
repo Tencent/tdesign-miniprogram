@@ -14,20 +14,20 @@ Page({
   data: {
     tab: 0,
     optionsS: numberArr,
-    selectedS: "option_1",
+    selectedS: 'option_2',
     optionsM: numberArr,
-    selectedM: ["option_1", "option_3"],
+    selectedM: ['option_1', 'option_3'],
     optionsD: disabledArr,
-    selectedD: "option_1",
+    selectedD: 'option_1',
   },
-  multiSelected(e){
+  multiSelected(e) {
     this.setData({
-      selectedM: e.detail.selected
-    })
+      selectedM: e.detail.selected,
+    });
   },
-  switchTab(e){
+  switchTab(e) {
     this.setData({
-      tab: e.currentTarget.dataset.tab
-    })
-  }
+      tab: e.currentTarget.dataset.tab,
+    });
+  },
 });

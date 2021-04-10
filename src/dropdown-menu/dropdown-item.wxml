@@ -1,36 +1,35 @@
 <view class="{{base}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px">
-  <view wx:if="{{show && showOverlay}}" class="t-mask" bindtap="clickOverlay"></view>
-  <view class="{{contentClasses}} {{base}}__content" style="transition: all 200ms ease;">
+  <view
+    wx:if="{{show && showOverlay}}"
+    class="t-mask"
+    bindtap="clickOverlay"
+    catchtouchmove="catchtouchmove"
+  ></view>
+  <view class="{{contentClasses}} {{base}}__content" style="transition: all 200ms ease">
     <view class="{{base}}__bd" wx:if="{{show}}">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
         <t-cell-group wx:if="{{selectMode === 'single'}}">
-          <t-radio-group selected="{{selected}}" bindchanged="updateSelected">
-            <block wx:for="{{options}}" wx:key="value">
-              <t-cell value-align="left">
-                <t-radio
-                  selected="{{selected}}"
-                  value="{{item.value}}"
-                  title="{{item.title}}"
-                  disabled="{{item.disabled}}"
-                ></t-radio>
-              </t-cell>
-            </block>
+          <t-radio-group value="{{selected}}" bordered="false" bind:change="updateSelected">
+            <t-radio
+              wx:for="{{options}}"
+              wx:key="index"
+              name="{{item.value}}"
+              title="{{item.title}}"
+              disabled="{{item.disabled}}"
+            ></t-radio>
           </t-radio-group>
         </t-cell-group>
         <!-- 多选列表 -->
         <t-cell-group wx:if="{{selectMode === 'multi'}}">
-          <t-checkbox-group selected="{{selected}}" bindchanged="updateSelected">
-            <block wx:for="{{options}}" wx:key="index">
-              <t-cell value-align="left">
-                <t-checkbox
-                  selected="{{selected}}"
-                  value="{{item.value}}"
-                  title="{{item.title}}"
-                  disabled="{{item.disabled}}"
-                ></t-checkbox>
-              </t-cell>
-            </block>
+          <t-checkbox-group value="{{selected}}" bordered="false" bind:change="updateSelected">
+            <t-checkbox
+              wx:for="{{options}}"
+              wx:key="index"
+              name="{{item.value}}"
+              title="{{item.title}}"
+              disabled="{{item.disabled}}"
+            ></t-checkbox>
           </t-checkbox-group>
         </t-cell-group>
       </block>

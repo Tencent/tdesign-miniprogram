@@ -104,7 +104,7 @@ TComponent({
     },
     updateSelected(e) {
       const data = {
-        selected: e.detail.selected,
+        selected: e.detail.name || e.detail.names,
       };
       this.setData(data);
       this.triggerEvent('selected', data);

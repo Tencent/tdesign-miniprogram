@@ -1,7 +1,20 @@
 import TComponent from '../common/component';
 
 TComponent({
-  properties: {},
+  properties: {
+    overlay: {
+      type: Boolean,
+      value: true,
+    },
+    duration: {
+      type: Number,
+      value: 200,
+    },
+    closeOnClickOverlay: {
+      type: Number,
+      value: true,
+    },
+  },
   data: {
     prefix: 't',
     base: 't-dropdown-menu',
