@@ -44,6 +44,12 @@ TComponent({
     top: 0,
     contentClasses: '',
     treeColumns: 3,
+    treeState: {
+      leafLevel: 0,
+      selectList: [],
+      select: [],
+    },
+    treeOptions: [],
   },
   relations: {
     './dropdown-menu': {
@@ -78,8 +84,47 @@ TComponent({
       contentClasses,
     });
     this.updateButtonState();
+    if (isTree) {
+      this._buildTreeOptions();
+    }
   },
   methods: {
+    _buildTreeOptions() {
+      const { options, selectMode } = this.data;
+      const { selectList } = this.data.treeState;
+      const newTreeOptions = [];
+      let level = -1;
+      let node = { options };
+      while (node.options) {
+        // 当前层级节点的列表
+        const list = node.options;
+        newTreeOptions.push([...list]);
+        level += 1;
+        // 当前层级列表选中项
+        const thisValue: [] | string | number | null = selectList[level];
+        if (thisValue === undefined) {
+          const firstChild = list[0];
+          if (firstChild.options) {
+            // 还有子节点，当前层级作为单选处理
+            this._selectTreeNode(level, firstChild.value);
+            node = firstChild;
+          } else {
+            // 没有子节点，结束处理
+            this._selectTreeNode(level, selectMode === 'multi' ? [] : undefined);
+            break;
+          }
+        } else {
+          const child: any =
+            !Array.isArray(thisValue) && list.find((child: any) => child.value === thisValue);
+          node = child;
+        }
+      }
+      this.setData({
+        'treeState.leafLevel': Math.max(0, level),
+        treeOptions: newTreeOptions,
+      });
+    },
+
     _closeDropdown() {
       this.data.bar.setData({
         activeIdx: -1,
@@ -98,6 +143,16 @@ TComponent({
           });
         })
         .exec();
+    },
+
+    _selectTreeNode(level: number, value: any) {
+      // console.log('level:', level, 'value:', value);
+      // 当前节点
+      const tempValue: any = this.data.treeState.selectList.slice(0, level);
+      tempValue[level] = value;
+      this.setData({
+        'treeState.selectList': tempValue,
+      });
     },
     clickOverlay() {
       this._closeDropdown();
@@ -122,6 +177,10 @@ TComponent({
     },
     confirmSelect() {
       this._closeDropdown();
+    },
+    selectTreeNode(e) {
+      this._selectTreeNode(e.target.dataset.level, e.detail.name);
+      this._buildTreeOptions();
     },
   },
 });

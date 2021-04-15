@@ -36,19 +36,59 @@
       <block wx:elif="{{optionsLayout === 'tree'}}">
         <!-- 树形列表 ST -->
         <!-- TODO 逻辑待实现 -->
-        <t-cell-group class="{{prefix}}-tree-cell-group" wx:for="{{[0,1,2]}}" wx:key="item">
-          <t-radio-group selected="{{selected}}" bindchanged="updateTreeSelected">
-            <block wx:for="{{options}}" wx:key="value">
-              <t-cell value-align="left">
-                <t-radio
-                  selected="{{selected}}"
-                  value="{{item.value}}"
-                  title="{{item.title}}"
-                  disabled="{{item.disabled}}"
-                ></t-radio>
-              </t-cell>
-            </block>
+        <t-cell-group
+          class="{{prefix}}-tree-cell-group"
+          wx:for="{{treeOptions}}"
+          wx:key="level"
+          wx:for-index="level"
+        >
+          <t-radio-group
+            wx:if="{{level < treeState.leafLevel}}"
+            value="{{treeState.selectList[level]}}"
+            data-level="{{level}}"
+            bind:change="selectTreeNode"
+          >
+            <t-radio
+              wx:for="{{treeOptions[level]}}"
+              wx:key="index"
+              name="{{item.value}}"
+              bordered="{{false}}"
+              title="{{item.title}}"
+            ></t-radio>
           </t-radio-group>
+          <block wx:else>
+            <block wx:if="{{selectMode === 'single'}}">
+              <!-- 树形列表 - 叶子节点（单选） ST -->
+              <t-radio-group value="{{treeState.selectList[level]}}" bind:change="selectTreeNode">
+                <t-radio
+                  wx:for="{{treeOptions[level]}}"
+                  wx:key="index"
+                  name="{{item.value}}"
+                  bordered="{{false}}"
+                  title="{{item.title}}"
+                ></t-radio>
+              </t-radio-group>
+              <!-- 树形列表 - 叶子节点（单选） ED -->
+            </block>
+            <block wx:elif="{{selectMode === 'multi'}}">
+              <!-- 树形列表 - 叶子节点（多选） ST -->
+              <t-checkbox-group
+                value="{{treeState.selectList[level]}}"
+                bordered="{{false}}"
+                bind:change="selectTreeNode(level, $event)"
+              >
+                <view
+                  class="{{prefix}}-checkbox-wrap"
+                  wx:for="{{treeOptions[level]}}"
+                  wx:key="index"
+                >
+                  <t-checkbox name="{{item.value}}" title="{{item.title}}"></t-checkbox>
+                </view>
+              </t-checkbox-group>
+              <!-- 树形列表 - 叶子节点（多选） ED -->
+            </block>
+            <!-- 树形列表 - 叶子节点 ED -->
+          </block>
         </t-cell-group>
         <!-- 树形列表 ED -->
       </block>
