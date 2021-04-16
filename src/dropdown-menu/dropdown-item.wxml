@@ -59,7 +59,11 @@
           <block wx:else>
             <block wx:if="{{selectMode === 'single'}}">
               <!-- 树形列表 - 叶子节点（单选） ST -->
-              <t-radio-group value="{{treeState.selectList[level]}}" bind:change="selectTreeNode">
+              <t-radio-group
+                data-level="{{level}}"
+                value="{{treeState.selectList[level]}}"
+                bind:change="updateSelected"
+              >
                 <t-radio
                   wx:for="{{treeOptions[level]}}"
                   wx:key="index"
@@ -75,7 +79,8 @@
               <t-checkbox-group
                 value="{{treeState.selectList[level]}}"
                 bordered="{{false}}"
-                bind:change="selectTreeNode(level, $event)"
+                bind:change="updateSelected"
+                data-level="{{level}}"
               >
                 <view
                   class="{{prefix}}-checkbox-wrap"

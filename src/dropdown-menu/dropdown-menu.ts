@@ -44,21 +44,25 @@ TComponent({
       const idx = e.target.dataset.index;
       const { activeIdx } = this.data;
       if (activeIdx !== -1) {
+        this.triggerEvent('close');
         this.data.nodes[activeIdx].setData({
           show: false,
         });
+        this.triggerEvent('closed');
       }
       if (activeIdx === idx) {
         this.setData({
           activeIdx: -1,
         });
       } else {
+        this.triggerEvent('open');
         this.setData({
           activeIdx: idx,
         });
         this.data.nodes[idx].setData({
           show: true,
         });
+        this.triggerEvent('opened');
       }
     },
   },

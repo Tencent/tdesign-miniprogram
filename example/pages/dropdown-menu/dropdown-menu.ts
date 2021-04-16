@@ -73,8 +73,10 @@ const treeOption = [{
   ],
 }];
 
+// const treeValue1 = ['tianjin', 'tianjin', 'heping'];
+// const treeValue2 = ['tianjin', 'tianjin', ['hedong', 'hexi']];
 const treeValue1 = null;
-const treeValue2 = ['tianjin', 'tianjin', ['hedong', 'hexi']];
+const treeValue2 = null;
 
 Page({
   data: {
@@ -87,11 +89,26 @@ Page({
     selectedD: 'option_1',
     treeOption,
     treeValue1,
-    treeValue2
+    treeValue2,
+  },
+  singleSelected(e) {
+    this.setData({
+      selectedS: e.detail,
+    });
   },
   multiSelected(e) {
     this.setData({
-      selectedM: e.detail.selected,
+      selectedM: e.detail,
+    });
+  },
+  tree1Selected(e) {
+    this.setData({
+      treeValue1: e.detail,
+    });
+  },
+  tree2Selected(e) {
+    this.setData({
+      treeValue2: e.detail,
     });
   },
   switchTab(e) {
