@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-button": "@tencent/tdesign-miniprogram/button/button",
+    "t-cell": "@tencent/tdesign-miniprogram/cell/cell",
+    "t-cell-group": "@tencent/tdesign-miniprogram/cell-group/cell-group",
+    "t-radio": "@tencent/tdesign-miniprogram/radio/radio",
+    "t-radio-group": "@tencent/tdesign-miniprogram/radio-group/radio-group",
+    "t-checkbox": "@tencent/tdesign-miniprogram/checkbox/checkbox",
+    "t-checkbox-group": "@tencent/tdesign-miniprogram/checkbox-group/checkbox-group"
+  }
+}
