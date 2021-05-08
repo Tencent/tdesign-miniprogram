@@ -53,7 +53,7 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp clear`
    * 清理文件
    * */
-  tasks.clear = () => del(dist);
+  tasks.clear = () => del(`${dist}/**`);
 
   /** `gulp handleError`
    * 输出错误到小程序
