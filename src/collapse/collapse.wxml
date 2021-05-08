@@ -1,0 +1,3 @@
+<view class="custom-class t-collapse {{ border ? 'hairline--top-bottom' : '' }}">
+  <slot />
+</view>
