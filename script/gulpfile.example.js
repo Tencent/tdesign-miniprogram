@@ -5,7 +5,7 @@ const packageJSON = require('../package.json');
 const rename = require('gulp-rename');
 const gulpLess = require('gulp-less');
 const sourcemaps = require('gulp-sourcemaps');
-const plumber = require("gulp-plumber");
+const plumber = require('gulp-plumber');
 
 /* config */
 const src = 'example';
@@ -46,7 +46,7 @@ const commonLess = () => gulp
   .src(`${src}/app.less`)
   .pipe(plumber({
     errorHandler: (err) => {
-      console.log(err);
+      console.error(err);
       handleError(err.message);
     },
   }))
