@@ -11,41 +11,19 @@
   }
   module.exports.fn = fn;
 </wxs>
+  <t-cell-group title="基础型">
+      <t-collapse value="{{ active1 }}" data-key="active1" bind:change="changeBaseDemo" bind:open="open" bind:close="close">
+        <t-collapse-panel wx:for="{{panels}}" wx:key-index="index" wx:key="index" title="{{item.title}}"  extra="{{item.extra}}" labelWidth="{{item.labelWidth}}" content="{{item.content}}" name="{{item.name}}" icon="{{currentActive === 'active1' && item.expand ? 'arrow-up': 'arrow-down'}}">
+        </t-collapse-panel>
+      </t-collapse>
+
+  </t-cell-group>
+
+  <t-cell-group title="手风琴模式">
+      <t-collapse value="{{ active2 }}" accordion data-key="active2" bind:change="changeBaseDemo" bind:open="open" bind:close="close">
+        <t-collapse-panel wx:for="{{panels}}" wx:key-index="index" wx:key="index" title="{{item.title}}"  extra="{{item.extra}}" labelWidth="{{item.labelWidth}}" content="{{item.content}}" name="{{item.name}}" icon="{{currentActive === 'active2' && item.expand ? 'arrow-up': 'arrow-down'}}">
+        </t-collapse-panel>
+      </t-collapse>
+  </t-cell-group>
 
 
-  <t-collapse value="{{ active1 }}" data-key="active1" bind:change="changeBaseDemo">
-    <t-collapse-panel wx:for="{{panels}}" wx:key-index="index" wx:key="index" title="{{item.title}}"  extra="{{item.extra}}" labelWidth="{{item.labelWidth}}" content="{{item.content}}" name="{{item.name}}">
-    </t-collapse-panel>
-    <t-collapse-panel  title="订单">
-      <view class="flex collapse-content-item">
-        <view class="collapse-content-item-title">订单编号</view>
-        <view class="collapse-content-item-val">
-          <view>SA012101141720170003680768</view>
-          <t-button size="small" type="default" class="copy-button" >复制</t-button>
-        </view>
-      </view>
-      <view class="flex collapse-content-item">
-        <view class="collapse-content-item-title">下单时间</view>
-        <view class="collapse-content-item-val">2020-02-04 16:00</view>
-      </view>
-      <view class="flex collapse-content-item">
-        <view class="collapse-content-item-title">支付时间</view>
-        <view class="collapse-content-item-val">2020-02-04 16:15</view>
-      </view>
-      <view class="flex collapse-content-item">
-        <view class="collapse-content-item-title">发货时间</view>
-        <view class="collapse-content-item-val">2020-02-04 17:23</view>
-      </view>
-      <view class="flex collapse-content-item">
-        <view class="collapse-content-item-title">成交时间</view>
-        <view class="collapse-content-item-val">2020-02-08 08:12</view>
-      </view>
-    </t-collapse-panel>
-
-  </t-collapse>
-
-
-  <t-collapse value="{{ active2 }}" accordion data-key="active2" bind:change="changeBaseDemo" custom-class	="collapse-demo">
-    <t-collapse-panel wx:for="{{panels}}" wx:key-index="index" wx:key="index" title="{{item.title}}"  extra="{{item.extra}}" labelWidth="{{item.labelWidth}}" content="{{item.content}}" name="{{item.name}}">
-    </t-collapse-panel>
-  </t-collapse>

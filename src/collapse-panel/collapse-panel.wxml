@@ -1,6 +1,6 @@
 <wxs module="getType">
-  function isArray(array) { return array && array.constructor === 'Array'; } function isObject(obj)
-  { return obj && obj.constructor === 'Object'; } module.exports.isArray = isArray;
+  function isArray(array) { return array && array.constructor === 'Array'; } function isObject(obj){
+  return obj && obj.constructor === 'Object'; } module.exports.isArray = isArray;
   module.exports.isObject = isObject;
 </wxs>
 
@@ -8,7 +8,7 @@
   <t-cell
     title="{{ title }}"
     title-class="title-class"
-    icon="{{ icon }}"
+    rightIcon="{{ icon }}"
     value="{{ extra }}"
     label="{{ label }}"
     is-link="{{ isLink }}"

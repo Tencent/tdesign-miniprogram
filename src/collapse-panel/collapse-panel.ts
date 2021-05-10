@@ -6,16 +6,16 @@ TComponent({
   externalClasses: ['t-class'],
   relations: {
     '../collapse/collapse': {
-      type: 'ancestor' as 'ancestor',
+      type: 'ancestor',
       linked(this, target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
       },
     },
   },
   properties: {
-    name: String,
-    title: String,
-    extra: String,
+    name: null,
+    title: null,
+    extra: null,
     icon: String,
     label: String,
     disabled: Boolean,
@@ -32,7 +32,7 @@ TComponent({
       type: Number,
       value: 80,
     },
-    content: [Array, String, Number],
+    content: null,
   },
 
   data: {

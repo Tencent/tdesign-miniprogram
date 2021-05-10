@@ -8,7 +8,7 @@ TComponent({
 
   relations: {
     '../collapse-panel/collapse-panel': {
-      type: 'descendant' as 'descendant',
+      type: 'descendant',
       linked(this, target: WechatMiniprogram.Component.TrivialInstance) {
         this.children.push(target);
       },
@@ -44,6 +44,7 @@ TComponent({
       this.children = [];
     },
     updateExpanded() {
+      this.children = this.getRelationNodes('../collapse-panel/collapse-panel');
       this.children.forEach((child: WechatMiniprogram.Component.TrivialInstance) => {
         child.updateExpanded();
       });
