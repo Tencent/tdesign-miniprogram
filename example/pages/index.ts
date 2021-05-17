@@ -30,6 +30,10 @@ Page({
             path: '/pages/cell-group/cell-group',
           },
           {
+            name: 'Collapse',
+            path: '/pages/collapse/collapse',
+          },
+          {
             name: 'Progress',
             path: '/pages/progress/progress',
           },

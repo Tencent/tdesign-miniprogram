@@ -1,0 +1,29 @@
+
+<wxs module="m1">
+  function fn(arr, arg) {
+    var result = {
+      indexOf: false,
+      toString: ''
+    }
+    result.indexOf = arr.indexOf(arg) > -1;
+    result.toString = arr.join(",");
+    return result;
+  }
+  module.exports.fn = fn;
+</wxs>
+  <t-cell-group title="基础型">
+      <t-collapse value="{{ active1 }}" data-key="active1" bind:change="changeBaseDemo" bind:open="open" bind:close="close">
+        <t-collapse-panel wx:for="{{panels}}" wx:key-index="index" wx:key="index" title="{{item.title}}"  extra="{{item.extra}}" labelWidth="{{item.labelWidth}}" content="{{item.content}}" name="{{item.name}}" icon="{{currentActive === 'active1' && item.expand ? 'arrow-up': 'arrow-down'}}">
+        </t-collapse-panel>
+      </t-collapse>
+
+  </t-cell-group>
+
+  <t-cell-group title="手风琴模式">
+      <t-collapse value="{{ active2 }}" accordion data-key="active2" bind:change="changeBaseDemo" bind:open="open" bind:close="close">
+        <t-collapse-panel wx:for="{{panels}}" wx:key-index="index" wx:key="index" title="{{item.title}}"  extra="{{item.extra}}" labelWidth="{{item.labelWidth}}" content="{{item.content}}" name="{{item.name}}" icon="{{currentActive === 'active2' && item.expand ? 'arrow-up': 'arrow-down'}}">
+        </t-collapse-panel>
+      </t-collapse>
+  </t-cell-group>
+
+
