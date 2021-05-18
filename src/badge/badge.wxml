@@ -1,0 +1,4 @@
+<view v-if="showBadge" :class="badgeClasses">
+  <view :class="badgeInnerClasses" :style="badgeStyles">{{ value }}</view>
+  <slot />
+</view>
