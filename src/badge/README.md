@@ -40,16 +40,16 @@
 
 #### Props
 
-| 属性        | 类型                        | 默认值 | 必传 | 说明                              |
-| ----------- | --------------------------- | ------ | ---- | --------------------------------- |
+| 属性         | 类型                           | 默认值 | 必传 | 说明                              |
+| ----------- | ---------------------------   | ------ | ---- | --------------------------------- |
 | color       | `String`                      | red    | N    | 颜色                              |
 | count       | `Number`                      | -      | N    | 展示的数字                        |
-| dot         | `Boolean`                     | false  | -    | 是否为红点                        |
+| dot         | `Boolean`                     | false  | N    | 是否为红点                        |
 | maxCount    | `Number`                      | 99     | N    | 封顶的数字                        |
-| content     | `String | Slot`               | -      | N    | 自定义文字                        |
-| size        | `Array`                       | medium | N    | 尺寸（medium, small）             |
-| shape       | `Array`                       | circle | N    | 形状，圆形或圆角矩形 (circle,rounded or ribbon) |
+| content     | `String`                      | -      | N    | 自定义文字                        |
+| size        | `String`                      | medium | N    | 尺寸（medium, small）             |
+| shape       | `String`                      | circle | N    | 形状，圆形或圆角矩形 (circle,rounded or ribbon) |
 | showZero    | `Boolean`                     | false  | N    | 当数值为 0 时是否展示 badge       |
 | offset      | `Array`                       | -      | N    | 设置状态点的位置偏移，格式为[x,y] |
 | numberStyle | `Object`                      | -      | N    | 设置状态点的样式                  |
-
+| hasSlot     | `Boolean`                     | false  | N    | 是否有 slot，小程序自定义组件限制   |

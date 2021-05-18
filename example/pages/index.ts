@@ -18,6 +18,10 @@ Page({
         type: '信息展示类',
         components: [
           {
+            name: 'Badge',
+            path: '/pages/badge/badge',
+          },
+          {
             name: 'Tag',
             path: '/pages/tag/tag',
           },

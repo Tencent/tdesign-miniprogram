@@ -1,25 +1,54 @@
+import { badgeProps } from './badge.interface';
 import TComponent from '../common/component';
 
 TComponent({
   properties: {
-    size: {
-      type: String,
-      value: 'middle', // 尺寸，支持 'medium', 'small'
-      observer(val: string) {
-        // this.setData({ fontSize })
-      },
-    },
     customStyle: String,
     color: {
       type: String,
+      value: 'red',
+    },
+    count: {
+      type: Number,
+      value: 0,
+    },
+    dot: {
+      type: Boolean,
+      value: false,
+    },
+    maxCount: {
+      type: Number,
+      value: 99,
+    },
+    content: {
+      type: String,
       value: '',
     },
-  },
-  computed: {
-    showBadge() {
-      const { content, showZero, count } = this.data;
-      return content || showZero || count !== 0;
+    size: {
+      type: String,
+      value: 'middle', // 尺寸，支持 'medium', 'small'
+    },
+    shape: {
+      type: String,
+      value: 'middle', // 尺寸，支持 'circle', 'rounded', 'ribbon'
+    },
+    showZero: {
+      type: Boolean,
+      value: false,
+    },
+    offset: {
+      type: Array,
+      value: [0, 0],
+    },
+    hasSlot: {
+      type: Boolean,
+      value: false,
     },
   },
-  data: {},
+  data: {
+    value: '',
+  },
+  lifetimes: {
+    created() {},
+  },
 });
