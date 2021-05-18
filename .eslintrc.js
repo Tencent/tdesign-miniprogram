@@ -37,5 +37,15 @@ module.exports = {
     getCurrentPages: true,
     Component: true,
     getRegExp: true,
+    Behavior: true,
   },
+  overrides: [
+    {
+      files: ['script/**'],
+      rules: {
+        // node 环境下支持 require
+        '@typescript-eslint/no-require-imports': 'off',
+      },
+    },
+  ],
 };

@@ -1,0 +1,18 @@
+<view>
+  <view class="t-checkbox-demo-wrapper">
+    <view class="t-checkbox-demo__title">基础单选框</view>
+    <t-checkbox title="单行标题" name="checkbox1" checked bind:change="onChange"></t-checkbox>
+    <t-checkbox title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" name="checkbox2" bind:change="onChange"></t-checkbox>
+    <view class="t-checkbox-demo__title">禁用选项</view>
+    <t-checkbox-group bind:change="onChange" value="checkbox1">
+      <t-checkbox title="单行标题" name="checkbox1" disabled></t-checkbox>
+      <t-checkbox title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" name="checkbox2" disabled bordered="{{false}}"></t-checkbox>
+    </t-checkbox-group>
+    <view class="t-checkbox-demo__title">组合使用</view>
+    <t-checkbox-group bind:change="onChange" value="checkbox1" bordered>
+      <t-checkbox title="单行标题" name="checkbox1"></t-checkbox>
+      <t-checkbox title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" name="checkbox2"></t-checkbox>
+      <t-checkbox title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" label="一段很长很长的内容文字，一段很长很长的内容文字，一段很长很长的内容文字" name="checkbox3" bordered="{{false}}"></t-checkbox>
+    </t-checkbox-group>
+  </view>
+</view>

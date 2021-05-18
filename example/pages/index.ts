@@ -8,6 +8,10 @@ Page({
             name: 'Icon',
             path: '/pages/icon/icon',
           },
+          {
+            name: 'Transition',
+            path: '/pages/transition/transition',
+          },
         ],
       },
       {
@@ -26,8 +30,16 @@ Page({
             path: '/pages/cell-group/cell-group',
           },
           {
+            name: 'Collapse',
+            path: '/pages/collapse/collapse',
+          },
+          {
             name: 'Progress',
             path: '/pages/progress/progress',
+          },
+          {
+            name: 'SegmentedControl',
+            path: '/pages/segmented-control/segmented-control',
           },
         ],
       },
@@ -74,6 +86,10 @@ Page({
             name: 'Slider',
             path: '/pages/slider/slider',
           },
+          {
+            name: 'Fab',
+            path: '/pages/fab/fab',
+          },
         ],
       },
       {
@@ -98,6 +114,27 @@ Page({
           {
             name: 'Message',
             path: '/pages/message/message',
+          },
+          {
+            name: 'Popup',
+            path: '/pages/popup/popup',
+          },
+        ],
+      },
+      {
+        type: '导航类',
+        components: [
+          {
+            name: 'TabBar',
+            path: '/pages/tab-bar/tab-bar',
+          },
+          {
+            name: 'Tabs',
+            path: '/pages/tabs/tabs',
+          },
+          {
+            name: 'Steps',
+            path: '/pages/steps/steps',
           },
         ],
       },

@@ -1,0 +1,3 @@
+<view class="{{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}--{{type}}-anchor">
+  <slot />
+</view>

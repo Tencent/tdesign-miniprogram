@@ -1,0 +1,14 @@
+<view class="t-segmented-control">
+  <view class="t-segmented-control__list">
+    <view
+      wx:for="{{items}}"
+      wx:for-item="item"
+      wx:key="index"
+      data-value="{{item.value !== undefined ? item.value : index}}"
+      class="t-segmented-control__item {{currentValue === (item.value !== undefined ? item.value : index) ? 't-is-active' : ''}}"
+      bind:tap="onTap"
+    >
+      {{item.text}}
+    </view>
+  </view>
+</view>

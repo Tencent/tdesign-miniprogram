@@ -1,0 +1,3 @@
+<view class="t-checkbox-group {{ bordered ? 't-checkbox-group--bordered' : '' }}">
+  <slot />
+</view>

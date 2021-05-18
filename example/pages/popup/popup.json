@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "popup 弹窗",
+  "usingComponents": {
+    "base-demo": "./demos/base",
+    "mask-transparent-demo": "./demos/mask-transparent",
+    "position-demo": "./demos/position"
+  }
+}

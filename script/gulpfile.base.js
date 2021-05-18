@@ -22,7 +22,7 @@ module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json');
 
   // options
-  const srcOptions = { base: src };
+  const srcOptions = { base: src, ignore: ['**/__test__', '**/__test__/**'] };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
 
@@ -53,7 +53,7 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp clear`
    * 清理文件
    * */
-  tasks.clear = () => del(dist);
+  tasks.clear = () => del(`${dist}/**`);
 
   /** `gulp handleError`
    * 输出错误到小程序
