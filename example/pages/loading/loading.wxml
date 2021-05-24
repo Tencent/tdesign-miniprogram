@@ -1,7 +1,14 @@
 <view>
   <view class="t-loading-wrapper">
-    <t-loading vertical="{{vertical}}" error="{{error}}" size="{{size}}" loading="{{loading}}"
-      showType="{{showType}}" layout="{{layout}}" bind:reload="toggleError">
+    <t-loading
+      vertical="{{vertical}}"
+      error="{{error}}"
+      size="{{size}}"
+      loading="{{loading}}"
+      showType="{{showType}}"
+      layout="{{layout}}"
+      bind:reload="toggleError"
+    >
     </t-loading>
   </view>
   <button class="t-button" bindtap="toggleVertical">切换横竖排版</button>

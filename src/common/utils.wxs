@@ -6,10 +6,7 @@
 function addUnit(property, value, unit) {
   unit = unit || 'px';
   if (value == null || value === '') return '';
-  return property
-    + ':'
-    + ((+value == value) ? (value + unit) : value)
-    + ';';
+  return property + ':' + (+value == value ? value + unit : value) + ';';
 }
 
 module.exports = {

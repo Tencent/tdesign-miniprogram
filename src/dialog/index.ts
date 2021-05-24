@@ -53,7 +53,8 @@ const getDefaultInstance = () => {
   return currentPage.selectComponent('#t-dialog');
 };
 
-const dialog = options => new Promise<{
+const dialog = (options) =>
+  new Promise<{
     confirm: Boolean;
     close?: Function;
     dialog: WechatMiniprogram.Component.TrivialInstance;
@@ -62,9 +63,10 @@ const dialog = options => new Promise<{
     const dialog = options.instance || getDefaultInstance();
 
     // 关闭 Dialog
-    const hideDialog = () => dialog.setData({
-      visible: false,
-    });
+    const hideDialog = () =>
+      dialog.setData({
+        visible: false,
+      });
 
     // 触发点击事件
     const clickEvent = (confirm) => {

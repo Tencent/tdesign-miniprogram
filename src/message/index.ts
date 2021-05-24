@@ -31,9 +31,10 @@ const create = (options: MessageOptions) => {
   const message = options.instance || getDefaultInstance();
 
   // 关闭 Message
-  const hideMessage = () => message.setData({
-    visible: false,
-  });
+  const hideMessage = () =>
+    message.setData({
+      visible: false,
+    });
 
   if (message?.setData) {
     const parsedOptions = {

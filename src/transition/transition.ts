@@ -76,7 +76,7 @@ TComponent({
     getDurations() {
       const { durations } = this.data;
       if (Array.isArray(durations)) {
-        return durations.map(item => Number(item));
+        return durations.map((item) => Number(item));
       }
       return [Number(durations), Number(durations)];
     },

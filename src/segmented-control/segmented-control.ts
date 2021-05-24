@@ -23,7 +23,7 @@ TComponent({
       this.triggerEvent('change', value);
     },
     updateValue(value) {
-      if ((this.data.items || []).some(item => item.value === value)) {
+      if ((this.data.items || []).some((item) => item.value === value)) {
         this.setData({ currentValue: value });
       } else {
         this.setData({ currentValue: +value });

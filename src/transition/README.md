@@ -37,15 +37,16 @@
 组件路径：`@tencent/tdesign-miniprogram/transition/transition`
 
 ### 过渡类名
+
 过渡类名指定格式同 vue，enter/enter-to leave/leave-to
 
 #### Props
 
-| 属性 | 值类型 | 默认值 | 说明 |
-|-----|-------|-------|-----|-----|
-| name | String | 't-transition' | 过渡类名，类似 vue 过渡类名 |
-| visible | Boolean | false | 是否显示 |
-| customClass | String | false | 自定义容器类名 |
-| destoryOnHide | Boolean | false | 隐藏之后是否渲染 slot 内容 |
-| appear | Boolean | false | 首次出现是否展示动画 |
-| durations | Number / Boolean |  | 手动指定过渡时间 |
+| 属性          | 值类型           | 默认值         | 说明                        |
+| ------------- | ---------------- | -------------- | --------------------------- |
+| name          | String           | 't-transition' | 过渡类名，类似 vue 过渡类名 |
+| visible       | Boolean          | false          | 是否显示                    |
+| customClass   | String           | false          | 自定义容器类名              |
+| destoryOnHide | Boolean          | false          | 隐藏之后是否渲染 slot 内容  |
+| appear        | Boolean          | false          | 首次出现是否展示动画        |
+| durations     | Number / Boolean |                | 手动指定过渡时间            |

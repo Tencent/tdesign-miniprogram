@@ -17,18 +17,20 @@
 <view>大小</view>
 <view class="tdesign-demo-tag">
   <t-tag size="large" theme="primary">大号</t-tag>
-    <t-tag size="medium" theme="primary">中号</t-tag>
-    <t-tag size="small" theme="primary">小号</t-tag>
+  <t-tag size="medium" theme="primary">中号</t-tag>
+  <t-tag size="small" theme="primary">小号</t-tag>
 </view>
 
 <view>失效标签（只针对于默认主题，其它主题不生效）</view>
 <view class="tdesign-demo-tag">
-    <t-tag size="medium" theme="primary" shape="circle">圆角</t-tag>
+  <t-tag size="medium" theme="primary" shape="circle">圆角</t-tag>
 </view>
 
 <view>超长文本省略标签</view>
 <view class="tdesign-demo-tag">
-    <t-tag max-width="150" title="超长省略文本标签超长省略文本标签">超长省略文本标签超长省略文本标签</t-tag>
+  <t-tag max-width="150" title="超长省略文本标签超长省略文本标签"
+    >超长省略文本标签超长省略文本标签</t-tag
+  >
 </view>
 
 <view>尺寸</view>
@@ -57,7 +59,8 @@
     size="{{tag.size}}"
     data-index="{{index}}"
     bind:close="onClickClose"
-  >{{tag.name}}</t-tag>
+    >{{tag.name}}</t-tag
+  >
 </view>
 <view>点击型标签</view>
 <view class="tdesign-demo-tag">
@@ -71,5 +74,6 @@
     disabled="{{fruit.disabled}}"
     data-index="{{index}}"
     bind:tap="onClickFruit"
-  >{{fruit.name}}</t-check-tag>
+    >{{fruit.name}}</t-check-tag
+  >
 </view>

@@ -1,4 +1,4 @@
 <view class="t-fab-wrapper">
   <t-fab bottom="100px" icon="add" />
-  <t-fab icon="add" text="咨询记录"/>
+  <t-fab icon="add" text="咨询记录" />
 </view>

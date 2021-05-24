@@ -21,9 +21,7 @@ Page({
 
   onChangeVal1(event) {
     const {
-      detail: {
-        val,
-      },
+      detail: { val },
     } = event;
     this.setData({
       star1: val,
@@ -36,9 +34,7 @@ Page({
 
   onChangeVal2(event) {
     const {
-      detail: {
-        val,
-      },
+      detail: { val },
     } = event;
     this.setData({
       star2: val,
@@ -47,9 +43,7 @@ Page({
 
   onChangeVal3(event) {
     const {
-      detail: {
-        val,
-      },
+      detail: { val },
     } = event;
     this.setData({
       star3: val,
@@ -65,9 +59,7 @@ Page({
 
   onChangeVal4(event) {
     const {
-      detail: {
-        val,
-      },
+      detail: { val },
     } = event;
     this.setData({
       star4: val,
@@ -76,9 +68,7 @@ Page({
 
   onChangeVal5(event) {
     const {
-      detail: {
-        val,
-      },
+      detail: { val },
     } = event;
     this.setData({
       star5: val,
@@ -87,10 +77,7 @@ Page({
 
   onChangeVal6(event) {
     const {
-      detail: {
-        val,
-        text,
-      },
+      detail: { val, text },
     } = event;
     this.setData({
       star6: val,

@@ -22,7 +22,8 @@
   zIndex="2500"
   bindclickOverlay="hideCompDialog"
   bindclickCloseBtn="hideCompDialog"
-  bindclickConfirmBtn="hideCompDialog" />
+  bindclickConfirmBtn="hideCompDialog"
+/>
 
 <button class="t-button" bindtap="showOpenTypeDialog">自定义按钮 open-type</button>
 
@@ -34,12 +35,10 @@
   footer="{{ false }}"
   showOverlay="{{ false }}"
   preventScrollThrough="{{ false }}"
-  bind:clickOverlay="hideOpenTypeDialog">
+  bind:clickOverlay="hideOpenTypeDialog"
+>
   <view slot="footer">
     <t-button bindtap="hideOpenTypeDialog">取消</t-button>
-    <t-button
-      open-type="openSetting"
-      bindopensetting="openSetting"
-    >确定</t-button>
+    <t-button open-type="openSetting" bindopensetting="openSetting">确定</t-button>
   </view>
 </t-dialog>

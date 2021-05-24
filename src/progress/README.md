@@ -19,6 +19,7 @@
   "t-progress": "@tencent/tdesign-miniprogram/progress/progress"
 }
 ```
+
 ## API
 
 ### `<Progress>` 组件
@@ -27,12 +28,12 @@
 
 #### Props
 
-| 属性 | 值类型 | 默认值 | 说明 |
-|-----|-------|-------|-----|
-| percentage | `Number | String` | 0 | 百分比（必填） |
-| showInfo | `Boolean` | `true ` | 是否显示进度条文字内容 |
-| activeColor | `String` | `-` | 已加载进度条背景色 |
-| bgColor | `String` | `-` | 进度条背景色 |
-| textColor | `String` | `-` | 进度条文字内容颜色 |
-| type | `String` | `info` | 进度条类型，可选`info`,`success`,`error`,`warning` |
-| strokeWidth | `Number | String` | 3 | 进度条宽度，单位px |
+| 属性        | 值类型    | 默认值  | 说明                                               |
+| ----------- | --------- | ------- | -------------------------------------------------- | ------------------- |
+| percentage  | `Number   | String` | 0                                                  | 百分比（必填）      |
+| showInfo    | `Boolean` | `true ` | 是否显示进度条文字内容                             |
+| activeColor | `String`  | `-`     | 已加载进度条背景色                                 |
+| bgColor     | `String`  | `-`     | 进度条背景色                                       |
+| textColor   | `String`  | `-`     | 进度条文字内容颜色                                 |
+| type        | `String`  | `info`  | 进度条类型，可选`info`,`success`,`error`,`warning` |
+| strokeWidth | `Number   | String` | 3                                                  | 进度条宽度，单位 px |

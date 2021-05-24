@@ -42,8 +42,8 @@ TComponent({
       }
 
       const selectedValues = {
-        index: pickerColumns.map(pickerColumn => pickerColumn._selectedIndex),
-        value: pickerColumns.map(pickerColumn => pickerColumn._selectedValue),
+        index: pickerColumns.map((pickerColumn) => pickerColumn._selectedIndex),
+        value: pickerColumns.map((pickerColumn) => pickerColumn._selectedValue),
       };
       const multi = pickerColumns.length > 1;
       if (multi) {

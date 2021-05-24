@@ -13,7 +13,7 @@ TComponent({
         this.children.push(target);
       },
       unlinked(this, target: WechatMiniprogram.Component.TrivialInstance) {
-        this.children = this.children.filter(item => item !== target);
+        this.children = this.children.filter((item) => item !== target);
       },
     },
   },
@@ -55,7 +55,7 @@ TComponent({
       if (!accordion) {
         name = expanded
           ? (value || []).concat(name)
-          : (value || []).filter(activeName => activeName !== name);
+          : (value || []).filter((activeName) => activeName !== name);
       } else {
         name = expanded ? name : '';
       }

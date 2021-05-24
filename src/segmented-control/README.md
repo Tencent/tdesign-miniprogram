@@ -45,38 +45,40 @@
 Page({
   data: {
     list: [{ text: '项目一' }, { text: '项目二' }],
-    list: [{ text: '项目A', value: 'item_1' }, { text: '项目B', value: 'item_2' }],
+    list: [
+      { text: '项目A', value: 'item_1' },
+      { text: '项目B', value: 'item_2' },
+    ],
     currentValue: -1,
     currentValue2: '',
   },
   onChange(event) {
-    this.setData({ currentValue: event.detail })
+    this.setData({ currentValue: event.detail });
   },
   onChange2(event) {
-    this.setData({ currentValue2: event.detail })
+    this.setData({ currentValue2: event.detail });
   },
 });
-
 ```
 
 ## API
 
 ### Props
 
-| 属性       | 类型          | 默认值   | 必传         | 说明       |
-| ---------- | ------------- | -------- | ------------ | ---------- | ------------ | --- | ------------ |
-| items      | `Array<String | Number>` | []           | Y          | 分段器的选项 |
-| value    | `String | Number`   | -    | N            | 当前选中的值 |
+| 属性  | 类型          | 默认值   | 必传 | 说明 |
+| ----- | ------------- | -------- | ---- | ---- | ------------ |
+| items | `Array<String | Number>` | []   | Y    | 分段器的选项 |
+| value | `String       | Number`  | -    | N    | 当前选中的值 |
 
-### Props items 参数 
+### Props items 参数
 
-| 属性  | 类型     | 默认值  | 必传          | 说明           |
-| ----- | -------- | ------- | ------------- | -------------- | ------------ |
-| text  | `String` | -       | Y             | 选项显示的内容 |
-| value | `String  | Number` | - | N         | 选项的标识符 |
+| 属性  | 类型     | 默认值  | 必传 | 说明           |
+| ----- | -------- | ------- | ---- | -------------- | ------------ |
+| text  | `String` | -       | Y    | 选项显示的内容 |
+| value | `String  | Number` | -    | N              | 选项的标识符 |
 
 ### Event
 
-| 事件名 | 说明             | 回调参数 |
-| ------ | ---------------- | -------- | ------ | ------------ | -------- |
-| change | 选中变化时候触发，回调参数为 `item.value` 或数组索引 | `String | Number` |
+| 事件名 | 说明                                                 | 回调参数 |
+| ------ | ---------------------------------------------------- | -------- | ------- |
+| change | 选中变化时候触发，回调参数为 `item.value` 或数组索引 | `String  | Number` |

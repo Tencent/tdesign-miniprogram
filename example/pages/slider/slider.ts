@@ -7,8 +7,7 @@ Page({
     valueRange: [50, 50],
     valueRange2: [0, 90],
   },
-  onLoad() {
-  },
+  onLoad() {},
   onDefaultSliderValueChange(e) {
     this.setData({
       value: e.detail.value,

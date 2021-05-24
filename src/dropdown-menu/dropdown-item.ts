@@ -80,7 +80,7 @@ TComponent({
       [`${prefix}-is-col3`]: layoutCol === 3 || treeCol === 3,
     };
     const contentClasses = Object.keys(contentClassesObj)
-      .filter(e => contentClassesObj[e] === true)
+      .filter((e) => contentClassesObj[e] === true)
       .join(' ');
     this.setData({
       contentClasses,

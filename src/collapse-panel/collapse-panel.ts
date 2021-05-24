@@ -1,6 +1,6 @@
 import TComponent from '../common/component';
 
-const nextTick = () => new Promise(resolve => setTimeout(resolve, 20));
+const nextTick = () => new Promise((resolve) => setTimeout(resolve, 20));
 
 TComponent({
   externalClasses: ['t-class'],
@@ -47,7 +47,7 @@ TComponent({
     set(data: Record<string, object | any>) {
       this.setData(data);
 
-      return new Promise(resolve => wx.nextTick(resolve));
+      return new Promise((resolve) => wx.nextTick(resolve));
     },
     updateExpanded() {
       if (!this.parent) {
