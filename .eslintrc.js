@@ -14,7 +14,7 @@ module.exports = {
     jest: true,
   },
   // 启用默认核心规则
-  extends: ['@tencent/eslint-config-tencent'],
+  extends: ['@tencent/eslint-config-tencent', 'eslint-config-prettier'],
   plugins: ['@typescript-eslint', 'prettier'],
   // add your custom rules here
   rules: {

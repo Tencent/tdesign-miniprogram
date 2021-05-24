@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const list_1 = [
   {
     name: 'label_1',
@@ -60,17 +62,8 @@ const list_5 = [
 Page({
   data: {
     value: null,
-    demoList_1: [
-      list_1,
-      list_2,
-      list_3,
-    ],
-    demoList_2: [
-      list_1,
-      list_2,
-      list_3,
-      list_4,
-    ],
+    demoList_1: [list_1, list_2, list_3],
+    demoList_2: [list_1, list_2, list_3, list_4],
     list_5,
   },
   onChange(event) {

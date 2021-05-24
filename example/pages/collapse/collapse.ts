@@ -9,15 +9,11 @@ Page({
         name: '0',
         content:
           '一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字',
-        },
+      },
       {
         title: '内容列表',
         name: '1',
-        content: [
-          '一段很长很长的内容文字',
-          '一段很长很长的内容文字',
-          '一段很长很长的内容文字',
-        ],
+        content: ['一段很长很长的内容文字', '一段很长很长的内容文字', '一段很长很长的内容文字'],
       },
       {
         title: '内容带标签',
@@ -27,8 +23,7 @@ Page({
           { label: '类目标题2', content: '预设文本' },
           {
             label: '很长很长很长的内容标题',
-            content:
-              '一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字',
+            content: '一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字',
           },
         ],
       },
@@ -40,8 +35,7 @@ Page({
           { label: '标题1', content: '预设文本' },
           {
             label: '很长很长很长的内容标题',
-            content:
-              '一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字',
+            content: '一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字',
           },
         ],
       },
@@ -57,7 +51,7 @@ Page({
 
   open(event) {
     const { key } = event.currentTarget.dataset;
-    let {panels} = this.data;
+    const { panels } = this.data;
 
     if (key === 'active2') {
       panels.forEach((item, i) => {
@@ -68,11 +62,10 @@ Page({
     this.setData({
       panels,
     });
-
   },
   close(event) {
     const { key } = event.currentTarget.dataset;
-    let {panels} = this.data;
+    const { panels } = this.data;
     panels[event.detail].expand = false;
     this.setData({
       panels,
