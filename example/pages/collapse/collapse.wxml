@@ -1,7 +1,3 @@
-<wxs module="m1">
-  function fn(arr, arg) { var result = { indexOf: false, toString: '' } result.indexOf =
-  arr.indexOf(arg) > -1; result.toString = arr.join(","); return result; } module.exports.fn = fn;
-</wxs>
 <t-cell-group title="基础型">
   <t-collapse
     value="{{ active1 }}"

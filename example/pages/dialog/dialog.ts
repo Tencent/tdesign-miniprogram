@@ -73,4 +73,9 @@ Page({
     // 打开授权设置页
     this.hideDialog(); // 关闭弹窗
   },
+  hideDialog() {
+    this.setData({
+      openTypeDialogVisible: false,
+    });
+  },
 });

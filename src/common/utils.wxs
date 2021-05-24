@@ -9,6 +9,16 @@ function addUnit(property, value, unit) {
   return property + ':' + (+value == value ? value + unit : value) + ';';
 }
 
+function isArray(array) {
+  return array && array.constructor === 'Array';
+}
+
+function isObject(obj) {
+  return obj && obj.constructor === 'Object';
+}
+
 module.exports = {
   addUnit: addUnit,
+  isArray: isArray,
+  isObject: isObject,
 };

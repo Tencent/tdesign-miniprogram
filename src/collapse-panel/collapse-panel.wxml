@@ -1,8 +1,4 @@
-<wxs module="getType">
-  function isArray(array) { return array && array.constructor === 'Array'; } function isObject(obj){
-  return obj && obj.constructor === 'Object'; } module.exports.isArray = isArray;
-  module.exports.isObject = isObject;
-</wxs>
+<wxs src="../common/utils.wxs" module="utils" />
 
 <view class="t-collapse-panel custom-class {{ index !== 0 ? 't-hairline--top' : '' }}">
   <t-cell
@@ -31,14 +27,14 @@
     bind:transitionend="onTransitionEnd"
   >
     <view class="t-collapse-panel__content content-class">
-      <view class="collapse-panel-item" wx:if="{{content && getType.isArray(content)}}">
+      <view class="collapse-panel-item" wx:if="{{content && utils.isArray(content)}}">
         <view
           wx:for="{{content}}"
           class="collapse-panel-item-container"
           wx:key="index"
           wx:for-index="index"
         >
-          <block wx:if="{{getType.isObject(item)}}">
+          <block wx:if="{{utils.isObject(item)}}">
             <view class="panel-label" style="{{labelWidth ? 'width:' + labelWidth + 'rpx' : ''}}">
               {{item.label}}
             </view>
@@ -49,7 +45,7 @@
           </block>
         </view>
       </view>
-      <view class="collapse-panel-single-item" wx:if="{{content && !getType.isArray(content)}}">
+      <view class="collapse-panel-single-item" wx:if="{{content && !utils.isArray(content)}}">
         {{content}}
       </view>
       <block wx:else>

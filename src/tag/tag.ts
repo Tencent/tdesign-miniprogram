@@ -58,7 +58,7 @@ TComponent({
     },
     maxWidth: {
       type: String,
-      optionalTypes: [Number, String],
+      optionalTypes: [Number],
       value: '',
     },
   },

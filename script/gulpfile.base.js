@@ -7,6 +7,9 @@ const gulpTs = require('gulp-typescript');
 const sourcemaps = require('gulp-sourcemaps');
 const gulpLess = require('gulp-less');
 const rename = require('gulp-rename');
+const replaceTask = require('gulp-replace-task');
+
+const config = require('./config');
 
 // set displayName
 const setDisplayName = (tasks, moduleName) => {
@@ -14,6 +17,17 @@ const setDisplayName = (tasks, moduleName) => {
     if (!tasks[key].displayName) {
       tasks[key].displayName = moduleName ? `${moduleName}:${key}` : key;
     }
+  });
+};
+
+// generate config replace task
+const generateConfigReplaceTask = (replaceConfig) => {
+  return replaceTask({
+    patterns: Object.entries(replaceConfig).map(([key, value]) => ({
+      match: key,
+      replacement: JSON.stringify(value),
+    })),
+    usePrefix: false,
   });
 };
 
@@ -98,6 +112,7 @@ module.exports = (src, dist, moduleName) => {
           },
         }),
       )
+      .pipe(generateConfigReplaceTask(config))
       .pipe(sourcemaps.init())
       .pipe(tsProject()) // 编译ts
       .pipe(sourcemaps.write('.'))
@@ -107,13 +122,19 @@ module.exports = (src, dist, moduleName) => {
    * 处理js
    * */
   tasks.js = () =>
-    gulp.src(globs.js, { ...srcOptions, since: since(tasks.js) }).pipe(gulp.dest(dist));
+    gulp
+      .src(globs.js, { ...srcOptions, since: since(tasks.js) })
+      .pipe(generateConfigReplaceTask(config))
+      .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
    * 处理wxs
    * */
   tasks.wxs = () =>
-    gulp.src(globs.wxs, { ...srcOptions, since: since(tasks.wxs) }).pipe(gulp.dest(dist));
+    gulp
+      .src(globs.wxs, { ...srcOptions, since: since(tasks.wxs) })
+      .pipe(generateConfigReplaceTask(config))
+      .pipe(gulp.dest(dist));
 
   /** `gulp json`
    * 处理json
