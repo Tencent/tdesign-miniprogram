@@ -68,7 +68,7 @@ TComponent({
       value: false,
     },
     tabPosition: {
-      type: Position,
+      type: String,
       value: Position.top, // 枚举 'bottom' | 'left' | 'right',
     },
   },
