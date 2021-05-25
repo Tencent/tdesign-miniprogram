@@ -1,5 +1,12 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-radio-group`;
+
 TComponent({
+  data: {
+    classPrefix: name,
+  },
   relations: {
     '../radio/radio': {
       type: 'descendant',

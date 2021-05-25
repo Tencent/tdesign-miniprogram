@@ -1,8 +1,8 @@
-<view class="t-checkbox {{disabled ? 't-is-disabled' : ''}}">
+<view class="{{ classPrefix }} {{disabled ? classBasePrefix + '-is-disabled' : ''}}">
   <t-cell title="{{title}}" label="{{label}}" bind:click="onChange" bordered="{{bordered}}">
     <t-icon
       slot="left-icon"
-      class="t-checkbox__button {{active ? 't-is-checked' : ''}}"
+      class="{{ classPrefix }}__button {{active ? classBasePrefix + '-is-checked' : ''}}"
       name="tick_fill"
     />
   </t-cell>

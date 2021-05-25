@@ -2,15 +2,15 @@
   scroll-y="{{true}}"
   scroll-into-view="{{toView}}"
   scroll-top="{{topValue}}"
-  class="t-indexes"
+  class="{{classPrefix}}"
   bindtouchstart="handleRootTouchstart"
   bindtouchend="handleRootTouchend"
   bindscroll="handleRootScroll"
 >
-  <view class="t-indexes__sidebar" bindtouchstart="handleSidebarTouchstart">
+  <view class="{{classPrefix}}__sidebar" bindtouchstart="handleSidebarTouchstart">
     <view
       catchtouchmove="handleSidebarTouchmove"
-      class="t-indexes__sidebar-item {{ currentSidebar === item ? 't-indexes__sidebar-item--active' : '' }}"
+      class="{{classPrefix}}__sidebar-item {{ currentSidebar === item ? classPrefix + '__sidebar-item--active' : '' }}"
       wx:for="{{ indexLists }}"
       wx:key="index"
       data-index="{{ item }}"
@@ -20,6 +20,8 @@
       {{ item }}
     </view>
   </view>
-  <view wx:if="{{ showCurrentSidebar }}" class="t-indexes__current"> {{ currentSidebar }} </view>
+  <view wx:if="{{ showCurrentSidebar }}" class="{{classPrefix}}__current">
+    {{ currentSidebar }}
+  </view>
   <slot />
 </scroll-view>

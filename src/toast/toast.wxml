@@ -1,13 +1,13 @@
-<view class="{{show?'t-toast-show':'t-toast-hidden'}}">
+<view class="{{show?classPrefix+'-show':classPrefix+'-hidden'}}">
   <block wx:if="{{showOverlay}}">
-    <view class="t-toast__mask"></view>
+    <view class="{{classPrefix}}__mask"></view>
   </block>
 
-  <view class="t-toast__main">
+  <view class="{{classPrefix}}__main">
     <block wx:if="{{icon || type}}">
-      <view class="t-toast__main-icon">
+      <view class="{{classPrefix}}__main-icon">
         <block wx:if="{{type}}">
-          <view class="t-toast__main-icon__icon">
+          <view class="{{classPrefix}}__main-icon__icon">
             <t-icon
               wx:if="{{type === 'success'}}"
               name="tick"
@@ -29,16 +29,18 @@
           </view>
         </block>
         <block wx:else>
-          <image class="t-toast__main-icon__icon" src="{{icon}}"></image>
+          <image class="{{classPrefix}}__main-icon__icon" src="{{icon}}"></image>
         </block>
 
         <block wx:if="{{message}}">
-          <view class="t-toast__main-icon__text">{{message}}</view>
+          <view class="{{classPrefix}}__main-icon__text">{{message}}</view>
         </block>
       </view>
     </block>
     <block wx:else>
-      <view class="t-toast__main-text t-toast__main-text--{{position}}"> {{message}} </view>
+      <view class="{{classPrefix}}__main-text {{classPrefix}}__main-text--{{position}}">
+        {{message}}
+      </view>
     </block>
   </view>
 </view>

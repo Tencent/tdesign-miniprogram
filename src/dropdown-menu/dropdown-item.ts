@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-dropdown-item`;
 
 TComponent({
   properties: {
@@ -36,8 +39,8 @@ TComponent({
     },
   },
   data: {
-    prefix: 't',
-    base: 't-dropdown-item',
+    classBasePrefix: prefix,
+    classPrefix: name,
     show: false,
     isBtnDisabled: true,
     bar: null,
@@ -70,7 +73,6 @@ TComponent({
     const layoutCol = +this.data.optionsColumns;
     const isTree = optionsLayout === 'tree';
     const treeCol = isTree ? +this.data.treeColumns : 0;
-    const prefix = 't';
     const contentClassesObj: Object = {
       [`${prefix}-is-tree`]: isTree,
       [`${prefix}-is-single`]: !isTree && selectMode === 'single',
@@ -143,7 +145,7 @@ TComponent({
     _getParentBottom(parent) {
       const query = wx.createSelectorQuery().in(parent);
       query
-        .select('#t-bar')
+        .select(`#${prefix}-bar`)
         .boundingClientRect((res) => {
           this.setData({
             top: res.bottom,

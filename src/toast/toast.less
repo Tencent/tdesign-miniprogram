@@ -1,31 +1,34 @@
-//.t-toast__mask,
-//.t-toast__main {
+// 同 scripts/config.js
+@classBasePrefix: CONFIG_PREFIX;
+
+//.@{classBasePrefix}-toast__mask,
+//.@{classBasePrefix}-toast__main {
 //  transition: visibility .3s;
 //}
 
-.t-toast-show {
-  .t-toast__mask {
+.@{classBasePrefix}-toast-show {
+  .@{classBasePrefix}-toast__mask {
     opacity: 1;
     visibility: visible;
   }
-  .t-toast__main {
+  .@{classBasePrefix}-toast__main {
     opacity: 1;
     visibility: visible;
   }
 }
 
-.t-toast-hidden {
-  .t-toast__mask {
+.@{classBasePrefix}-toast-hidden {
+  .@{classBasePrefix}-toast__mask {
     visibility: hidden;
     opacity: 0;
   }
-  .t-toast__main {
+  .@{classBasePrefix}-toast__main {
     visibility: hidden;
     opacity: 0;
   }
 }
 
-.t-toast__mask {
+.@{classBasePrefix}-toast__mask {
   position: fixed;
   top: 0;
   left: 0;
@@ -33,8 +36,8 @@
   height: 100%;
 }
 
-.t-toast__main-icon,
-.t-toast__main-text {
+.@{classBasePrefix}-toast__main-icon,
+.@{classBasePrefix}-toast__main-text {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 8rpx;
@@ -44,7 +47,7 @@
   color: #ffffff;
 }
 
-.t-toast__main-text {
+.@{classBasePrefix}-toast__main-text {
   width: 100%;
   max-width: 544rpx;
   padding: 16rpx 32rpx;
@@ -66,7 +69,7 @@
   }
 }
 
-.t-toast__main-icon {
+.@{classBasePrefix}-toast__main-icon {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

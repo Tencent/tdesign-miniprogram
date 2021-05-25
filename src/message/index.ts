@@ -23,7 +23,7 @@ const defaultOptions = {
 const getDefaultInstance = () => {
   const pages = getCurrentPages();
   const currentPage = pages[pages.length - 1];
-  return currentPage.selectComponent('#t-message');
+  return currentPage.selectComponent(`#${prefix}-message`);
 };
 
 const create = (options: MessageOptions) => {

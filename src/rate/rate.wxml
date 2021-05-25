@@ -1,6 +1,6 @@
 <wxs src="./rate.wxs" module="this"></wxs>
 
-<view class="t-rate ctn-class t-rate-{{value}}">
+<view class="{{classPrefix}} ctn-class {{classPrefix}}-{{value}}">
   <block wx:for="{{this.getStarList(count)}}" wx:key="*this">
     <!-- 缺省值，目前没有找到判断是否有传递slot的方式，先harcode为true -->
     <image
@@ -27,7 +27,7 @@
       <slot wx:else name="default-icon"></slot>
     </view>
   </block>
-  <view wx:if="{{showText}}" class="t-rate-text" style="color: {{textColor}};">
+  <view wx:if="{{showText}}" class="{{classPrefix}}-text" style="color: {{textColor}};">
     {{texts[value - 1]}}
   </view>
 </view>

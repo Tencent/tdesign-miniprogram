@@ -5,33 +5,36 @@
     <view
       wx:if="{{!error}}"
       style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
-      class="t-loading__bar {{progress < 0 ? 't-loading__bar-animation' : '' }} {{progress >= 100 || !loading ? 't-loading__bar-loaded' : '' }}"
+      class="{{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
     >
     </view>
   </view>
 
   <view
     wx:elif="{{loading}}"
-    class="t-loading-{{showType}} {{vertical ? 't-loading-vertical' : ''}}"
+    class="{{classPrefix}}-{{showType}} {{vertical ? classPrefix + '-vertical' : ''}}"
   >
-    <view class="t-loading__mask" wx:if="{{layout=='full'}}"></view>
-    <view class="t-loading-{{layout}}">
-      <view class="t-loading__content" wx:if="{{!error}}">
+    <view class="{{classPrefix}}__mask" wx:if="{{layout=='full'}}"></view>
+    <view class="{{classPrefix}}-{{layout}}">
+      <view class="{{classPrefix}}__content" wx:if="{{!error}}">
         <view
-          class="t-loading__icon t-loading__circular"
+          class="{{classPrefix}}__icon {{classPrefix}}__circular"
           style="width: {{size}}; height: {{size}};"
         >
-          <view class="t-loading__base_circle"></view>
-          <view class="t-loading__base_circle_arc"></view>
+          <view class="{{classPrefix}}__base_circle"></view>
+          <view class="{{classPrefix}}__base_circle_arc"></view>
         </view>
-        <view class="t-loading__text" style="font-size: {{textSize}}; padding: {{textPadding}};">
+        <view
+          class="{{classPrefix}}__text"
+          style="font-size: {{textSize}}; padding: {{textPadding}};"
+        >
           {{title}}
         </view>
       </view>
 
-      <view class="t-loading__content_error" style="font-size: {{textSize}}" wx:else>
+      <view class="{{classPrefix}}__content_error" style="font-size: {{textSize}}" wx:else>
         加载失败
-        <span class="t-loading__content_error_text" bindtap="reloadClick">刷新</span>
+        <span class="{{classPrefix}}__content_error_text" bindtap="reloadClick">刷新</span>
       </view>
     </view>
   </view>

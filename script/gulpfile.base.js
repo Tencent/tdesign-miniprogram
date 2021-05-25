@@ -21,11 +21,11 @@ const setDisplayName = (tasks, moduleName) => {
 };
 
 // generate config replace task
-const generateConfigReplaceTask = (replaceConfig) => {
+const generateConfigReplaceTask = (replaceConfig, options = {}) => {
   return replaceTask({
     patterns: Object.entries(replaceConfig).map(([key, value]) => ({
       match: key,
-      replacement: JSON.stringify(value),
+      replacement: options.stringify ? JSON.stringify(value) : value,
     })),
     usePrefix: false,
   });
@@ -112,7 +112,7 @@ module.exports = (src, dist, moduleName) => {
           },
         }),
       )
-      .pipe(generateConfigReplaceTask(config))
+      .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(sourcemaps.init())
       .pipe(tsProject()) // 编译ts
       .pipe(sourcemaps.write('.'))
@@ -124,7 +124,7 @@ module.exports = (src, dist, moduleName) => {
   tasks.js = () =>
     gulp
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
-      .pipe(generateConfigReplaceTask(config))
+      .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
@@ -133,7 +133,7 @@ module.exports = (src, dist, moduleName) => {
   tasks.wxs = () =>
     gulp
       .src(globs.wxs, { ...srcOptions, since: since(tasks.wxs) })
-      .pipe(generateConfigReplaceTask(config))
+      .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(gulp.dest(dist));
 
   /** `gulp json`
@@ -156,6 +156,7 @@ module.exports = (src, dist, moduleName) => {
           },
         }),
       )
+      .pipe(generateConfigReplaceTask(config, { stringify: false }))
       .pipe(sourcemaps.init())
       .pipe(gulpLess()) // 编译less
       .pipe(rename({ extname: '.wxss' }))

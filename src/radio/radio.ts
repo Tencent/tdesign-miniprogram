@@ -1,4 +1,8 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-radio`;
+
 TComponent({
   relations: {
     '../radio-group/radio-group': {
@@ -31,6 +35,8 @@ TComponent({
   },
   data: {
     active: false,
+    classPrefix: name,
+    classBasePrefix: prefix,
   },
   methods: {
     onChange() {

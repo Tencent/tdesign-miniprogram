@@ -1,4 +1,8 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-progress`;
+
 TComponent({
   // 组件的对外属性
   properties: {
@@ -37,6 +41,7 @@ TComponent({
   data: {
     percent: 0,
     barStyle: '100%',
+    classPrefix: name,
   },
   observers: {
     percentage(percentage) {

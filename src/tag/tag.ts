@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-tag`;
 
 export enum TagTheme {
   Default = 'default',
@@ -27,6 +30,10 @@ export enum TagShape {
   Circle = 'circle',
 }
 TComponent({
+  data: {
+    classPrefix: name,
+    classBasePrefix: prefix,
+  },
   properties: {
     theme: {
       type: String,

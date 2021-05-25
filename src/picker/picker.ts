@@ -1,5 +1,7 @@
 import TComponent from '../common/component';
 import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-picker`;
 
 TComponent({
   relations: {
@@ -25,7 +27,7 @@ TComponent({
     },
   },
   data: {
-    prefix: `${config.prefix}-picker`,
+    classPrefix: name,
   },
   methods: {
     getPickerColumns() {

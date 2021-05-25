@@ -1,10 +1,13 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-collapse`;
 
 TComponent({
   options: {
     addGlobalClass: true,
   },
-  externalClasses: ['t-class'],
+  externalClasses: [`${prefix}-class`],
 
   relations: {
     '../collapse-panel/collapse-panel': {
@@ -37,7 +40,9 @@ TComponent({
     },
   },
 
-  data: {},
+  data: {
+    classPrefix: name,
+  },
 
   methods: {
     created() {

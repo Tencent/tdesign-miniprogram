@@ -1,3 +1,5 @@
+import config from '../common/config';
+
 interface DialogOptions {
   mode?: 'modal' | 'half-screen';
   theme?: 'primary' | 'warning' | 'success' | 'error';
@@ -50,7 +52,7 @@ const confirmDefaultOptions = {
 const getDefaultInstance = () => {
   const pages = getCurrentPages();
   const currentPage = pages[pages.length - 1];
-  return currentPage.selectComponent('#t-dialog');
+  return currentPage.selectComponent(`#${config.prefix}-dialog`);
 };
 
 const dialog = (options) =>

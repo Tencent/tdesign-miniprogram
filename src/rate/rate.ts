@@ -1,6 +1,12 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-rate`;
 
 TComponent({
+  data: {
+    classPrefix: name,
+  },
   properties: {
     count: {
       type: Number,
