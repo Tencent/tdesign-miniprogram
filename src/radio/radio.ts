@@ -23,7 +23,10 @@ TComponent({
     title: String,
     name: String,
     label: String,
-    value: String,
+    value: {
+      type: String,
+      optionalTypes: [Number],
+    },
     disabled: {
       type: Boolean,
       value: false,

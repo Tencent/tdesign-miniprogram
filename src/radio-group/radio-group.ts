@@ -22,9 +22,13 @@ TComponent({
     },
   },
   properties: {
-    name: String,
+    name: {
+      type: String,
+      value: '',
+    },
     value: {
       type: String,
+      optionalTypes: [Number],
       value: '',
       observer: 'updateChildren',
     },

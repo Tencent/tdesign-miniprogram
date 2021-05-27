@@ -34,7 +34,8 @@ TComponent({
       value: false,
     },
     value: {
-      type: [Number, Array],
+      type: Number,
+      optionalTypes: [Array],
       value: 0,
     },
     backgroundColor: {

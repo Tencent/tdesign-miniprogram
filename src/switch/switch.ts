@@ -7,12 +7,12 @@ TComponent({
   properties: {
     label: {
       type: String,
-      value: '是否打开',
+      value: '',
     },
-    // size默认default，还有small和large
+    // size默认medium，还有small和large
     size: {
       type: String,
-      value: 'default',
+      value: 'medium',
     },
     labelWidth: {
       type: Number,
@@ -23,15 +23,18 @@ TComponent({
       value: false,
     },
     value: {
-      type: [Boolean, String, Number],
-      value: true,
+      type: Boolean,
+      optionalTypes: [, String, Number],
+      value: false,
     },
     activeValue: {
-      type: [Boolean, String, Number],
+      type: Boolean,
+      optionalTypes: [String, Number],
       value: true,
     },
     inactiveValue: {
-      type: [Boolean, String, Number],
+      type: Boolean,
+      optionalTypes: [String, Number],
       value: false,
     },
     activedColor: {
@@ -60,7 +63,7 @@ TComponent({
     classPrefix: name,
     height: {
       small: 20,
-      default: 25,
+      medium: 25,
       large: 30,
     },
   },

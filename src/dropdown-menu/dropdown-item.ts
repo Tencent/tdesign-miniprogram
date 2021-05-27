@@ -22,7 +22,8 @@ TComponent({
       value: 'columns', // columns | tree | slot
     },
     optionsColumns: {
-      type: [Number, String],
+      type: Number,
+      optionalTypes: [String],
       value: 1,
     },
     showOverlay: {
@@ -30,7 +31,8 @@ TComponent({
       value: true,
     },
     value: {
-      type: [Array, String],
+      type: String,
+      optionalTypes: [Array],
       value: null,
     },
     disabled: {

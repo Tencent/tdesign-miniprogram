@@ -14,7 +14,7 @@ TComponent({
     },
     size: {
       type: String,
-      value: 'default',
+      value: 'medium',
     },
     icon: String,
     plain: {
@@ -27,7 +27,7 @@ TComponent({
     },
     shape: {
       type: String,
-      value: 'round',
+      value: 'square',
     },
     loading: {
       type: Boolean,

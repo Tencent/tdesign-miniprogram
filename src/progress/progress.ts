@@ -8,7 +8,6 @@ TComponent({
   properties: {
     percentage: {
       type: Number,
-      optionalTypes: [String],
       value: 0,
     },
     showInfo: {

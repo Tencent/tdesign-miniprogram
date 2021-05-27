@@ -42,7 +42,7 @@ TComponent({
     },
     checked: {
       type: Boolean,
-      default: false,
+      value: false,
     },
   },
   methods: {

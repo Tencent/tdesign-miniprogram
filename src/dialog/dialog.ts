@@ -31,8 +31,9 @@ TComponent({
       value: '',
     },
     header: {
-      type: String,
-      value: '',
+      type: Boolean,
+      optionalTypes: [String],
+      value: true,
     },
     body: {
       type: String,

@@ -33,6 +33,7 @@ TComponent({
       observer(this) {
         this.updateExpanded();
       },
+      value: false,
     },
     border: {
       type: Boolean,

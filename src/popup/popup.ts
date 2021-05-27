@@ -15,7 +15,10 @@ TComponent({
     styleIsolation: 'shared',
   },
   properties: {
-    visible: Boolean,
+    visible: {
+      type: Boolean,
+      value: false,
+    },
     // center | top | bottom | left | right
     position: {
       type: String,
@@ -26,7 +29,10 @@ TComponent({
       type: Boolean,
       value: true,
     },
-    destroyOnHide: Boolean,
+    destroyOnHide: {
+      type: Boolean,
+      value: false,
+    },
     customClass: String,
     transitionProps: Object,
   },
