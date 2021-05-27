@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-input`;
 
 TComponent({
   options: {
@@ -71,6 +74,7 @@ TComponent({
 
   data: {
     inputValue: '',
+    classPrefix: name,
   },
   /* 组件生命周期 */
   lifetimes: {

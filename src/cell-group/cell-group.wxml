@@ -1,4 +1,4 @@
-<view wx:if="{{ title }}" class="t-cell-group__title"> {{ title }} </view>
-<view class="t-cell-group {{ bordered ? 't-cell-group--bordered' : '' }}">
+<view wx:if="{{ title }}" class="{{ classPrefix }}__title"> {{ title }} </view>
+<view class="{{ classPrefix }} {{ bordered ? classPrefix + '--bordered' : '' }}">
   <slot />
 </view>

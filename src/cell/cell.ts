@@ -1,5 +1,12 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-cell`;
+
 TComponent({
+  data: {
+    classPrefix: name,
+  },
   properties: {
     title: null,
     value: null,

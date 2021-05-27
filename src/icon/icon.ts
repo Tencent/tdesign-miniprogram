@@ -1,4 +1,8 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-icon`;
+
 const sizeKeywordMap = {
   xs: '12px',
   small: '14px',
@@ -30,6 +34,7 @@ TComponent({
     },
   },
   data: {
+    classPrefix: name,
     fontSize: '',
   },
   methods: {

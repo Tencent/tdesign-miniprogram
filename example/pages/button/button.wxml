@@ -22,16 +22,16 @@
   <t-cell-group title="其他尺寸">
     <t-cell>
       <t-button theme="primary">中按钮</t-button>
-      <t-button theme="primary" size="small" style="margin-left: 16px;">小按钮</t-button>
+      <t-button theme="primary" size="small" style="margin-left: 16px">小按钮</t-button>
       <view></view>
       <t-button>中按钮</t-button>
-      <t-button size="small" style="margin-left: 16px;">小按钮</t-button>
+      <t-button size="small" style="margin-left: 16px">小按钮</t-button>
       <view></view>
       <t-button theme="ghost">中按钮</t-button>
-      <t-button theme="ghost" size="small" style="margin-left: 16px;">小按钮</t-button>
+      <t-button theme="ghost" size="small" style="margin-left: 16px">小按钮</t-button>
       <view></view>
       <t-button theme="warning">中按钮</t-button>
-      <t-button theme="warning" size="small" style="margin-left: 16px;">小按钮</t-button>
+      <t-button theme="warning" size="small" style="margin-left: 16px">小按钮</t-button>
     </t-cell>
   </t-cell-group>
 

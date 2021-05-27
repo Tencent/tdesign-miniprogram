@@ -1,6 +1,12 @@
 <template name="iconCard">
   <view class="t-icon__card">
-    <t-icon name="{{name}}" size="{{size}}" color="{{color}}" bind:click="onIconTap" data-index="{{index}}" />
+    <t-icon
+      name="{{name}}"
+      size="{{size}}"
+      color="{{color}}"
+      bind:click="onIconTap"
+      data-index="{{index}}"
+    />
     <view class="t-icon__card-name">{{name}}</view>
   </view>
 </template>
@@ -22,9 +28,16 @@
       <t-icon name="warning_fill" />
       <t-icon name="warning_fill" size="28px" />
     </view>
-    <view class="t-icon__title">所有图标<label class="t-icon__title-tip">（点击图标自动复制图标名）</label></view>
+    <view class="t-icon__title"
+      >所有图标<label class="t-icon__title-tip">（点击图标自动复制图标名）</label></view
+    >
     <view class="t-icon__list">
-      <template wx:for="{{icons}}" wx:key="index" is="iconCard" data="{{name:item, size: '32px',index}}"/>
+      <template
+        wx:for="{{icons}}"
+        wx:key="index"
+        is="iconCard"
+        data="{{name:item, size: '32px',index}}"
+      />
     </view>
   </view>
 </view>

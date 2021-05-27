@@ -26,9 +26,7 @@
   <t-cell>
     <t-rate value="{{star5}}" clearable bind:change="onChangeVal5" />
   </t-cell>
-  <t-cell>
-    当前评分：{{star5}}星
-  </t-cell>
+  <t-cell> 当前评分：{{star5}}星 </t-cell>
 </t-cell-group>
 
 <t-cell-group title="showText=true">
@@ -38,7 +36,5 @@
 </t-cell-group>
 
 <t-cell>
-  <t-button theme="primary" block catchtap="resetStar">
-    重置所有评分为0
-  </t-button>
+  <t-button theme="primary" block catchtap="resetStar"> 重置所有评分为0 </t-button>
 </t-cell>

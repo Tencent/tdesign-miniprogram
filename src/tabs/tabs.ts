@@ -1,6 +1,10 @@
 import TComponent from '../common/component';
 import dom from '../behaviors/dom';
 import touch from '../behaviors/touch';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-tabs`;
+
 enum Position {
   top = 'top',
   right = 'right',
@@ -64,11 +68,12 @@ TComponent({
       value: false,
     },
     tabPosition: {
-      type: Position,
+      type: String,
       value: Position.top, // 枚举 'bottom' | 'left' | 'right',
     },
   },
   data: {
+    classPrefix: name,
     tabs: [],
     currentIndex: -1,
     trackStyle: '',
@@ -149,7 +154,7 @@ TComponent({
       if (!children) return;
       const { currentIndex, duration, scrollX, direction } = this.data;
       if (currentIndex <= -1) return;
-      this.gettingBoundingClientRect('.t-tabs__tabbar', true).then((res: any) => {
+      this.gettingBoundingClientRect(`.${name}__tabbar`, true).then((res: any) => {
         const rect = res[currentIndex];
         if (!rect) return;
         let count = 0;

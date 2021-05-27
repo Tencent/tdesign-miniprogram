@@ -10,9 +10,5 @@
       "@tencent/tdesign-miniprogram/*": ["miniprogram_dist/*"]
     }
   },
-  "include": [
-    "src/**/*",
-    "example/**/*",
-    "site/**/*",
-  ]
+  "include": ["src/**/*", "example/**/*", "site/**/*", "typing.d.ts"]
 }

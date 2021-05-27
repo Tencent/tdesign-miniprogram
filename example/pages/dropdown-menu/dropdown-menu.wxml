@@ -1,8 +1,19 @@
 <view class="wrapper">
   <view wx:if="{{tab==0}}">
     <t-dropdown-menu>
-      <t-dropdown-item title="单选菜单" options="{{optionsS}}" value="{{selectedS}}" bindchange="singleSelected"></t-dropdown-item>
-      <t-dropdown-item title="多选菜单" options="{{optionsM}}" value="{{selectedM}}" bindchange="multiSelected" selectMode="multi"></t-dropdown-item>
+      <t-dropdown-item
+        title="单选菜单"
+        options="{{optionsS}}"
+        value="{{selectedS}}"
+        bindchange="singleSelected"
+      ></t-dropdown-item>
+      <t-dropdown-item
+        title="多选菜单"
+        options="{{optionsM}}"
+        value="{{selectedM}}"
+        bindchange="multiSelected"
+        selectMode="multi"
+      ></t-dropdown-item>
     </t-dropdown-menu>
     <view>单项选择选中项：{{selectedS}}</view>
     <view>多项选择选中项：{{selectedM}}</view>
@@ -11,23 +22,54 @@
   <view wx:if="{{tab==1}}">
     <t-dropdown-menu>
       <t-dropdown-item title="禁用菜单" disabled="{{true}}"></t-dropdown-item>
-      <t-dropdown-item title="禁用选项" options="{{optionsD}}" value="{{selectedD}}"></t-dropdown-item>
+      <t-dropdown-item
+        title="禁用选项"
+        options="{{optionsD}}"
+        value="{{selectedD}}"
+      ></t-dropdown-item>
     </t-dropdown-menu>
     <view>禁用了序号为3的倍数的选项。</view>
   </view>
 
   <view wx:if="{{tab==2}}">
     <t-dropdown-menu>
-      <t-dropdown-item title="两列菜单" optionsColumns="2" options="{{optionsM}}" value="{{selectedM}}" bindchange="multiSelected" selectMode="multi"></t-dropdown-item>
-      <t-dropdown-item title="三列菜单" optionsColumns="3" options="{{optionsM}}" value="{{selectedM}}" bindchange="multiSelected" selectMode="multi"></t-dropdown-item>
+      <t-dropdown-item
+        title="两列菜单"
+        optionsColumns="2"
+        options="{{optionsM}}"
+        value="{{selectedM}}"
+        bindchange="multiSelected"
+        selectMode="multi"
+      ></t-dropdown-item>
+      <t-dropdown-item
+        title="三列菜单"
+        optionsColumns="3"
+        options="{{optionsM}}"
+        value="{{selectedM}}"
+        bindchange="multiSelected"
+        selectMode="multi"
+      ></t-dropdown-item>
     </t-dropdown-menu>
     <view>选中项：{{selectedM}}</view>
   </view>
 
   <view wx:if="{{tab==3}}">
     <t-dropdown-menu>
-      <t-dropdown-item title="单选树形选单" optionsLayout="tree" options="{{treeOption}}" value="{{treeValue1}}" bindchange="tree1Selected"></t-dropdown-item>
-      <t-dropdown-item title="多选树形选单" optionsLayout="tree" options="{{treeOption}}" value="{{treeValue2}}" bindchange="tree2Selected" selectMode="multi"></t-dropdown-item>
+      <t-dropdown-item
+        title="单选树形选单"
+        optionsLayout="tree"
+        options="{{treeOption}}"
+        value="{{treeValue1}}"
+        bindchange="tree1Selected"
+      ></t-dropdown-item>
+      <t-dropdown-item
+        title="多选树形选单"
+        optionsLayout="tree"
+        options="{{treeOption}}"
+        value="{{treeValue2}}"
+        bindchange="tree2Selected"
+        selectMode="multi"
+      ></t-dropdown-item>
     </t-dropdown-menu>
     <view>选中项：{{treeValue1}}</view>
     <view>选中项：{{treeValue2}}</view>
@@ -48,5 +90,4 @@
   <button class="t-button" bindtap="switchTab" data-tab="2">菜单选项多列</button>
   <button class="t-button" bindtap="switchTab" data-tab="3">树形选单</button>
   <button class="t-button" bindtap="switchTab" data-tab="4">自定义选单</button>
-
 </view>

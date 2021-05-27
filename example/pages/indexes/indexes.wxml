@@ -1,7 +1,16 @@
 <!-- 示例页面 -->
 <t-indexes indexLists="{{indexLists}}" cellLists="{{cellLists}}">
   <view wx:for="{{indexLists}}" wx:key="index">
-    <t-indexes-anchor title="标题{{indexLists[index]}}" index="{{indexLists[index]}}" wx:key="index"></t-indexes-anchor>
-    <t-indexes-cell bindtap="handleClick" wx:for="{{cellListDemo}}" wx:key="index" title="此处使用列表样式{{item}}"></t-indexes-cell>
+    <t-indexes-anchor
+      title="标题{{indexLists[index]}}"
+      index="{{indexLists[index]}}"
+      wx:key="index"
+    ></t-indexes-anchor>
+    <t-indexes-cell
+      bindtap="handleClick"
+      wx:for="{{cellListDemo}}"
+      wx:key="index"
+      title="此处使用列表样式{{item}}"
+    ></t-indexes-cell>
   </view>
 </t-indexes>

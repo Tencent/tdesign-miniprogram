@@ -1,9 +1,12 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-collapse-panel`;
 
-const nextTick = () => new Promise(resolve => setTimeout(resolve, 20));
+const nextTick = () => new Promise((resolve) => setTimeout(resolve, 20));
 
 TComponent({
-  externalClasses: ['t-class'],
+  externalClasses: [`${prefix}-class`],
   relations: {
     '../collapse/collapse': {
       type: 'ancestor',
@@ -39,6 +42,8 @@ TComponent({
     contentHeight: 0,
     expanded: false,
     transition: false,
+    classPrefix: name,
+    classBasePrefix: prefix,
   },
   methods: {
     ready() {
@@ -47,7 +52,7 @@ TComponent({
     set(data: Record<string, object | any>) {
       this.setData(data);
 
-      return new Promise(resolve => wx.nextTick(resolve));
+      return new Promise((resolve) => wx.nextTick(resolve));
     },
     updateExpanded() {
       if (!this.parent) {
@@ -112,7 +117,7 @@ TComponent({
       });
     },
     updateStyle(expanded: boolean) {
-      return this.getRect('.t-collapse-panel__content')
+      return this.getRect(`.${name}__content`)
         .then((rect: WechatMiniprogram.BoundingClientRectCallbackResult) => rect.height)
         .then((height: number) => {
           if (expanded) {

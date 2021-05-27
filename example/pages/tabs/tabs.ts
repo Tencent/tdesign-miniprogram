@@ -1,6 +1,5 @@
 Page({
-  data: {
-  },
+  data: {},
   onTabsChange(event: any) {
     // console.log(event.detail);
   },

@@ -26,5 +26,3 @@
   showOverlay="{{showOverlay}}"
   duration="{{duration}}"
 ></t-toast>
-
-

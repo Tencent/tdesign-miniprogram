@@ -45,7 +45,7 @@ describe('radio', () => {
     cls = await button.attribute('class');
     expect(cls.indexOf('t-is-active')).toBeGreaterThan(-1);
   });
-  test('radio group\'s active class should update correctly', async () => {
+  test("radio group's active class should update correctly", async () => {
     const radioGroup = await page.$('.group-demo');
     const radios = await radioGroup.$$('t-radio');
     const button0 = await radios[0].$('.t-radio__button');

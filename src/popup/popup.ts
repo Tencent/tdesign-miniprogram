@@ -5,7 +5,7 @@ const { prefix } = config;
 const name = `${prefix}-popup`;
 
 const defaultTransitionProps = {
-  name: 't-popup--transition',
+  name: `${name}--transition`,
   durations: [300, 300],
   appear: false,
 };

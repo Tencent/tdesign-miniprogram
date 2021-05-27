@@ -23,7 +23,7 @@ const defaultOptions = {
 const getDefaultInstance = () => {
   const pages = getCurrentPages();
   const currentPage = pages[pages.length - 1];
-  return currentPage.selectComponent('#t-message');
+  return currentPage.selectComponent(`#${prefix}-message`);
 };
 
 const create = (options: MessageOptions) => {
@@ -31,9 +31,10 @@ const create = (options: MessageOptions) => {
   const message = options.instance || getDefaultInstance();
 
   // 关闭 Message
-  const hideMessage = () => message.setData({
-    visible: false,
-  });
+  const hideMessage = () =>
+    message.setData({
+      visible: false,
+    });
 
   if (message?.setData) {
     const parsedOptions = {

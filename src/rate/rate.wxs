@@ -7,18 +7,17 @@ module.exports = {
     return result;
   },
   getIcon: function (val, startIndex) {
-    if (val >=
-      startIndex) {
+    if (val >= startIndex) {
       return './assets/star-active.svg';
     }
     return './assets/star-default.svg';
   },
-  getIconClass: function(readonly) {
+  getIconClass: function (readonly) {
     var cls = 't-rate-star';
     if (readonly) {
       cls += ' rate-readonly';
     }
 
     return cls;
-  }
-}
+  },
+};

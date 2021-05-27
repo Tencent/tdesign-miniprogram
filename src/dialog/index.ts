@@ -1,3 +1,5 @@
+import config from '../common/config';
+
 interface DialogOptions {
   mode?: 'modal' | 'half-screen';
   theme?: 'primary' | 'warning' | 'success' | 'error';
@@ -50,10 +52,11 @@ const confirmDefaultOptions = {
 const getDefaultInstance = () => {
   const pages = getCurrentPages();
   const currentPage = pages[pages.length - 1];
-  return currentPage.selectComponent('#t-dialog');
+  return currentPage.selectComponent(`#${config.prefix}-dialog`);
 };
 
-const dialog = options => new Promise<{
+const dialog = (options) =>
+  new Promise<{
     confirm: Boolean;
     close?: Function;
     dialog: WechatMiniprogram.Component.TrivialInstance;
@@ -62,9 +65,10 @@ const dialog = options => new Promise<{
     const dialog = options.instance || getDefaultInstance();
 
     // 关闭 Dialog
-    const hideDialog = () => dialog.setData({
-      visible: false,
-    });
+    const hideDialog = () =>
+      dialog.setData({
+        visible: false,
+      });
 
     // 触发点击事件
     const clickEvent = (confirm) => {

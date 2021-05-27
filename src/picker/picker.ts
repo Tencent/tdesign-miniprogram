@@ -1,5 +1,7 @@
 import TComponent from '../common/component';
 import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-picker`;
 
 TComponent({
   relations: {
@@ -25,7 +27,7 @@ TComponent({
     },
   },
   data: {
-    prefix: `${config.prefix}-picker`,
+    classPrefix: name,
   },
   methods: {
     getPickerColumns() {
@@ -42,8 +44,8 @@ TComponent({
       }
 
       const selectedValues = {
-        index: pickerColumns.map(pickerColumn => pickerColumn._selectedIndex),
-        value: pickerColumns.map(pickerColumn => pickerColumn._selectedValue),
+        index: pickerColumns.map((pickerColumn) => pickerColumn._selectedIndex),
+        value: pickerColumns.map((pickerColumn) => pickerColumn._selectedValue),
       };
       const multi = pickerColumns.length > 1;
       if (multi) {

@@ -1,3 +1,23 @@
+const compileTimeConfiguration = require('./script/config.js');
+
+// 配置小程序内全局函数，避免报错
+const globals = {
+  require: true,
+  Page: true,
+  wx: true,
+  App: true,
+  getApp: true,
+  getCurrentPages: true,
+  Component: true,
+  getRegExp: true,
+  Behavior: true,
+};
+
+// 配置编译时配置，避免报错
+Object.keys(compileTimeConfiguration).forEach((key) => {
+  globals[key] = true;
+});
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -14,7 +34,7 @@ module.exports = {
     jest: true,
   },
   // 启用默认核心规则
-  extends: ['@tencent/eslint-config-tencent'],
+  extends: ['@tencent/eslint-config-tencent', 'eslint-config-prettier'],
   plugins: ['@typescript-eslint', 'prettier'],
   // add your custom rules here
   rules: {
@@ -27,18 +47,7 @@ module.exports = {
     // 在工具库中允许参数重新赋值
     'no-param-reassign': 'off',
   },
-  // 配置小程序内全局函数，避免报错
-  globals: {
-    require: true,
-    Page: true,
-    wx: true,
-    App: true,
-    getApp: true,
-    getCurrentPages: true,
-    Component: true,
-    getRegExp: true,
-    Behavior: true,
-  },
+  globals,
   overrides: [
     {
       files: ['script/**'],

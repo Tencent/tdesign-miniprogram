@@ -1,6 +1,12 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-loading`;
 
 TComponent({
+  data: {
+    classPrefix: name,
+  },
   properties: {
     layout: {
       type: String,

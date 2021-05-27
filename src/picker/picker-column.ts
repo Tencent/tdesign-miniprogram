@@ -26,10 +26,12 @@ TComponent({
       type: Array,
       value: [],
       observer(options) {
-        const formatter = this.data.formatter || (val => val);
+        const formatter = this.data.formatter || ((val) => val);
         const optionKey = this.data.optionKey || '';
         const optionList = Array.isArray(options)
-          ? options.map(option => formatter(typeof option === 'object' && optionKey ? option[optionKey] : option))
+          ? options.map((option) =>
+              formatter(typeof option === 'object' && optionKey ? option[optionKey] : option),
+            )
           : [];
         this.setData({
           optionList,

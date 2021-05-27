@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-dialog`;
 
 TComponent({
   // 组件的对外属性
@@ -61,7 +64,10 @@ TComponent({
     },
   },
   // 组件的内部数据
-  data: {},
+  data: {
+    classPrefix: name,
+    classBasePrefix: prefix,
+  },
 
   /* 组件生命周期 */
   lifetimes: {
