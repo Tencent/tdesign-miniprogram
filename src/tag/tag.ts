@@ -12,7 +12,7 @@ export enum TagTheme {
   Success = 'success',
 }
 
-export enum TagEffect {
+export enum TagVariant {
   Dark = 'dark',
   Light = 'light',
   Plain = 'plain',
@@ -39,9 +39,9 @@ TComponent({
       type: String,
       value: TagTheme.Default,
     },
-    effect: {
+    variant: {
       type: String,
-      value: TagEffect.Dark,
+      value: TagVariant.Dark,
     },
     size: {
       type: String,

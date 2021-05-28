@@ -3,24 +3,24 @@
   <view
     wx-if="{{inactiveText}}"
     class="{{classPrefix}}-text {{classPrefix}}-text__inactive"
-    style="color: {{ value === activeValue ? '#000' : '#0252d9'}}"
+    style="color: {{ isActive ? '#000' : '#0252d9'}}"
     >{{inactiveText}}</view
   >
   <view
     class="{{classPrefix}}-body"
-    style="height: {{height[size]}}px; width: {{height[size] * 2 - 2}}px; border-color: {{value === activeValue ? activedColor : inactivedColor }}; border-radius: {{height[size] / 2}}px; background-color: {{value === activeValue ? activedColor : inactivedColor}}"
+    style="height: {{height[size]}}px; width: {{height[size] * 2 - 2}}px; border-color: {{isActive ? activedColor : inactivedColor }}; border-radius: {{height[size] / 2}}px; background-color: {{isActive ? activedColor : inactivedColor}}"
     bindtap="onTapBackground"
   >
     <view
       class="{{classPrefix}}-dot"
-      style="left: {{value === activeValue ? height[size] - 1 : 1}}px; height: {{height[size] - 2}}px; width: {{height[size] - 2}}px; border-radius: {{height[size] / 2 - 1}}px; background-color: {{dotColor}}"
+      style="left: {{isActive ? height[size] - 1 : 1}}px; height: {{height[size] - 2}}px; width: {{height[size] - 2}}px; border-radius: {{height[size] / 2 - 1}}px; background-color: {{dotColor}}"
       catchtap="onTapDot"
     ></view>
   </view>
   <view
     wx-if="{{activeText}}"
     class="{{classPrefix}}-text {{classPrefix}}-text__active"
-    style="color: {{value === activeValue ? '#0252d9' : '#000'}}"
+    style="color: {{isActive ? '#0252d9' : '#000'}}"
     >{{activeText}}</view
   >
 </view>

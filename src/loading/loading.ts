@@ -14,7 +14,7 @@ TComponent({
     },
     size: {
       type: String,
-      value: '40px',
+      value: 'medium',
     },
     textSize: {
       type: String,
@@ -48,10 +48,7 @@ TComponent({
       type: Number,
       value: '-1',
     },
-    loading: {
-      type: Boolean,
-      value: true,
-    },
+    loading: Boolean,
   },
   methods: {
     reloadClick() {

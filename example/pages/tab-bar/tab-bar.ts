@@ -61,7 +61,7 @@ const list_5 = [
 
 Page({
   data: {
-    value: null,
+    value: 0,
     demoList_1: [list_1, list_2, list_3],
     demoList_2: [list_1, list_2, list_3, list_4],
     list_5,

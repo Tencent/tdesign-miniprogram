@@ -22,20 +22,22 @@ TComponent({
       value: 'columns', // columns | tree | slot
     },
     optionsColumns: {
-      type: [Number, String],
+      type: Number,
+      optionalTypes: [String],
       value: 1,
     },
-    showOverlay: {
-      type: Boolean,
-      value: true,
-    },
     value: {
-      type: [Array, String],
-      value: null,
+      type: Array,
+      optionalTypes: [String, Number],
+      value: [],
     },
     disabled: {
       type: Boolean,
       value: false,
+    },
+    itemId: {
+      type: String,
+      value: '',
     },
   },
   data: {

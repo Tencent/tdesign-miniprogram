@@ -39,25 +39,9 @@ TComponent({
     },
   },
   properties: {
-    indexLists: {
+    indexList: {
       type: Array,
       value: ['A', 'B', 'C', 'D'],
-    },
-    cellLists: {
-      type: Array,
-      value: ['1', '2', '3', '4'],
-    },
-    currentSidebar: {
-      type: String,
-      value: '',
-    },
-    showCurrentSidebar: {
-      type: Boolean,
-      value: false,
-    },
-    children: {
-      type: Array,
-      value: [],
     },
   },
   data: {

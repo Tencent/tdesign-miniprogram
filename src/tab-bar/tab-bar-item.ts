@@ -21,8 +21,9 @@ TComponent({
   },
   properties: {
     name: {
-      type: [Number, String],
-      value: undefined,
+      type: String,
+      optionalTypes: [Number],
+      value: '',
     },
     icon: {
       type: String,

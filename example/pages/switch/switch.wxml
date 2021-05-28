@@ -9,7 +9,7 @@
     ></t-switch>
   </t-cell>
 </t-cell-group>
-<t-cell-group title="defualt, value: {{value}}">
+<t-cell-group title="medium, value: {{value}}">
   <t-cell>
     <t-switch bindchange="onswitchchange" value="{{value}}"></t-switch>
   </t-cell>

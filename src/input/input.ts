@@ -14,6 +14,7 @@ TComponent({
     },
     value: {
       type: String,
+      optionalTypes: [Number],
       value: '',
     },
     password: {
@@ -38,7 +39,8 @@ TComponent({
     },
     type: {
       type: String,
-      value: '',
+      optionalTypes: [Number],
+      value: 'text',
     },
     maxlength: {
       type: Number,

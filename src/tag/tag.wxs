@@ -4,13 +4,13 @@ var getTagClass = function (props) {
   var size = props.size || 'medium';
   var shape = props.shape || 'square';
   var theme = props.theme || 'default';
-  var effect = props.effect || 'dark';
+  var variant = props.variant || 'dark';
   var closable = props.closable || false;
   var disabled = props.disabled || false;
   var tagClass = [
     baseClass,
     baseClass + '--theme-' + theme,
-    baseClass + '--effect-' + effect,
+    baseClass + '--effect-' + variant,
     closable ? baseClass + '--closable ' + prefix + '-is-closable' : '',
     disabled ? baseClass + '--disabled ' + prefix + '-is-disabled' : '',
     baseClass + '--size-' + size,

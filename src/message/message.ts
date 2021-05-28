@@ -28,7 +28,7 @@ TComponent({
      */
     theme: {
       type: String,
-      value: 'primary', // 'primary' | 'warning' | 'success' | 'error'
+      value: 'info', //  'info' | 'success' | 'warning' | 'error' | 'question' | 'loading'
     },
     /**
      * @description 显示时间，毫秒
@@ -36,7 +36,7 @@ TComponent({
      */
     duration: {
       type: Number,
-      default: 2000,
+      value: 3000,
     },
     /**
      * @description 文本对齐方式

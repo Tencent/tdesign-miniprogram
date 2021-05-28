@@ -4,7 +4,8 @@ const { prefix } = config;
 TComponent({
   properties: {
     modelValue: {
-      type: [Boolean, String],
+      type: Number,
+      optionalTypes: [String],
       value: 0,
       observer(newVal) {
         this.setData({

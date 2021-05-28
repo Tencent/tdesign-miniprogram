@@ -14,7 +14,7 @@ TComponent({
       value: 200,
     },
     closeOnClickOverlay: {
-      type: Number,
+      type: Boolean,
       value: true,
     },
   },
