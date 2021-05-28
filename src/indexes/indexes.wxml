@@ -11,7 +11,7 @@
     <view
       catchtouchmove="handleSidebarTouchmove"
       class="{{classPrefix}}__sidebar-item {{ currentSidebar === item ? classPrefix + '__sidebar-item--active' : '' }}"
-      wx:for="{{ indexLists }}"
+      wx:for="{{ indexList }}"
       wx:key="index"
       data-index="{{ item }}"
       data-num="{{ index }}"

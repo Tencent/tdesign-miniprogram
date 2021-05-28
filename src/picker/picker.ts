@@ -25,6 +25,10 @@ TComponent({
       type: String,
       value: '取消',
     },
+    theme: {
+      type: String,
+      value: 'default',
+    },
   },
   data: {
     classPrefix: name,

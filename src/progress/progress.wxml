@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="utils" />
-<view class="{{showInfo ? classPrefix : classPrefix+' '+classPrefix+'--without-text'}}">
+<view class="{{showText ? classPrefix : classPrefix+' '+classPrefix+'--without-text'}}">
   <view class="{{ classPrefix }}-bar">
     <view
       class="{{ classPrefix }}-bar__outer"
@@ -7,11 +7,11 @@
     >
       <view
         class="{{ classPrefix }}-bar__inner {{ classPrefix }}-bar__inner--{{ type }}"
-        style="{{ activeColor ? 'width: ' +percent + '%;background-color: ' + activeColor :'width: ' + percent + '%;'}}"
+        style="{{ color ? 'width: ' +percent + '%;background-color: ' + color :'width: ' + percent + '%;'}}"
       ></view>
     </view>
   </view>
-  <block wx:if="{{ showInfo }}">
+  <block wx:if="{{ showText }}">
     <view wx:if="{{textColor}}" class="{{ classPrefix }}__info" style="color: {{textColor}}"
       >{{percent + '%'}}</view
     >

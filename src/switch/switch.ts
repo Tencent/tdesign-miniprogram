@@ -24,7 +24,7 @@ TComponent({
     },
     value: {
       type: Boolean,
-      optionalTypes: [, String, Number],
+      optionalTypes: [String, Number],
       value: false,
     },
     activeValue: {
@@ -66,20 +66,24 @@ TComponent({
       medium: 25,
       large: 30,
     },
+    isActive: false,
   },
   lifetimes: {
     attached() {
-      console.log(this.data.inactiveText);
-      // debugger
+      const { value, activeValue } = this.data;
+      this.setData({
+        isActive: value === activeValue,
+      });
     },
   },
   methods: {
     switchChange(e) {
-      const { disabled, value, activeValue, inactiveValue } = this.data;
+      const { disabled, value, activeValue, inactiveValue, isActive } = this.data;
       if (disabled) return;
 
       this.setData({
         value: value === activeValue ? inactiveValue : activeValue,
+        isActive: !isActive,
       });
 
       this.triggerEvent('change', {

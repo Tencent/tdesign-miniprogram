@@ -3,7 +3,7 @@
   style="top:{{top}}px"
 >
   <view
-    wx:if="{{show && showOverlay}}"
+    wx:if="{{show}}"
     class="t-mask"
     bindtap="clickOverlay"
     catchtouchmove="catchtouchmove"

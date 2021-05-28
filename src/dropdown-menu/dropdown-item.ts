@@ -26,18 +26,18 @@ TComponent({
       optionalTypes: [String],
       value: 1,
     },
-    showOverlay: {
-      type: Boolean,
-      value: true,
-    },
     value: {
-      type: String,
-      optionalTypes: [Array],
-      value: null,
+      type: Array,
+      optionalTypes: [String, Number],
+      value: [],
     },
     disabled: {
       type: Boolean,
       value: false,
+    },
+    itemId: {
+      type: String,
+      value: '',
     },
   },
   data: {

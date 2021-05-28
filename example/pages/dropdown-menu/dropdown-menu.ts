@@ -82,8 +82,8 @@ const treeOption = [
 
 // const treeValue1 = ['tianjin', 'tianjin', 'heping'];
 // const treeValue2 = ['tianjin', 'tianjin', ['hedong', 'hexi']];
-const treeValue1 = null;
-const treeValue2 = null;
+const treeValue1 = [];
+const treeValue2 = [];
 
 Page({
   data: {

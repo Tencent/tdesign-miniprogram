@@ -10,11 +10,11 @@ TComponent({
       type: Number,
       value: 0,
     },
-    showInfo: {
+    showText: {
       type: Boolean,
       value: true,
     },
-    activeColor: {
+    color: {
       type: String,
       value: '',
     },
@@ -30,17 +30,13 @@ TComponent({
       type: String,
       value: 'info', // info || error
     },
-    strokeWidth: {
-      type: Number,
-      optionalTypes: [String],
-      value: 3,
-    },
   },
   // 组件的内部数据
   data: {
     percent: 0,
     barStyle: '100%',
     classPrefix: name,
+    strokeWidth: 3,
   },
   observers: {
     percentage(percentage) {
@@ -50,8 +46,8 @@ TComponent({
         percent: percentage,
       });
     },
-    'bgColor, strokeWidth'(bgColor, strokeWidth) {
-      let tempStyle = `height: ${strokeWidth}px;`;
+    bgColor(bgColor) {
+      let tempStyle = `height: ${this.data.strokeWidth}px;`;
       if (bgColor) tempStyle += `background-color: ${bgColor}`;
       this.setData({
         barStyle: tempStyle,
