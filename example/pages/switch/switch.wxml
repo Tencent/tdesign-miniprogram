@@ -6,22 +6,24 @@
       size="small"
       bindchange="onswitchchangesmall"
       value="{{valueSmall}}"
+      label="是否打开"
     ></t-switch>
   </t-cell>
 </t-cell-group>
 <t-cell-group title="medium, value: {{value}}">
   <t-cell>
-    <t-switch bindchange="onswitchchange" value="{{value}}"></t-switch>
+    <t-switch bindchange="onswitchchange" value="{{value}}" label="是否打开"></t-switch>
   </t-cell>
 </t-cell-group>
 <t-cell-group title="disabled, value: {{true}}">
   <t-cell>
-    <t-switch value="{{true}}" disabled="{{true}}"></t-switch>
+    <t-switch label="是否打开" value="{{true}}" disabled="{{true}}"></t-switch>
   </t-cell>
 </t-cell-group>
 <t-cell-group title="activeValue: baby, inactiveValue: child, value: {{valueDefault}}">
   <t-cell>
     <t-switch
+      label="是否打开"
       labelWidth="{{80}}"
       activeValue="baby"
       inactiveValue="child"
@@ -35,6 +37,7 @@
 <t-cell-group title="large, value: {{valueLarge}}">
   <t-cell>
     <t-switch
+      label="是否打开"
       inactiveText="关闭了"
       activeText="打开了"
       dotColor="yellow"
