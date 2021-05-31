@@ -33,6 +33,7 @@
     "pages/dropdown-menu/dropdown-menu"
   ],
   "usingComponents": {
+    "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
     "t-button": "@tencent/tdesign-miniprogram/button/button",
     "t-cell": "@tencent/tdesign-miniprogram/cell/cell",
     "t-cell-group": "@tencent/tdesign-miniprogram/cell-group/cell-group",
