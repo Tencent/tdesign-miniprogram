@@ -140,6 +140,10 @@ Page({
             name: 'Steps',
             path: '/pages/steps/steps',
           },
+          {
+            name: 'Drawer',
+            path: '/pages/drawer/drawer',
+          }
         ],
       },
     ],

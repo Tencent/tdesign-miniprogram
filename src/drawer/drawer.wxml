@@ -1,0 +1,27 @@
+<t-popup visible="{{visible}}" bind:close="onClickOverlay" position="{{position}}">
+  <view
+    class="t-drawer__sidebar"
+    style="{{position === 'left' || position === 'right' ? 'width:' + drawerSize : 'height:' + drawerSize}}"
+  >
+    <view class="t-drawer__sidebar-header">
+      <view class="t-drawer__header-title">
+        <slot name="title"></slot>
+      </view>
+      <label class="t-drawer__close-btn" wx:if="{{closeBtn}}" bind:tap="onClose"></label>
+    </view>
+    <view class="t-drawer__sidebar-content">
+      <view wx:for="{{sidebar}}" wx:key="index" class="t-drawer__sidebar-item">
+        <image
+          class="t-drawer__sidebar-item-icon"
+          wx:if="{{item.icon}}"
+          src="{{item.icon}}"
+        ></image>
+        <view class="t-drawer__sidebar-item-name">{{item.name}}</view>
+      </view>
+      <slot></slot>
+    </view>
+    <view class="t-drawer__sidebar-footer">
+      <slot name="footer"></slot>
+    </view>
+  </view>
+</t-popup>
