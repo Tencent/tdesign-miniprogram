@@ -65,7 +65,7 @@ TComponent({
 
       if (len > 0) {
         items.forEach((item, index) => {
-          item.updateStatus(current, index, this.data.type, this.data.direction);
+          item.updateStatus(current, index, this.data.type, this.data.direction, items);
         });
       }
     },
