@@ -11,9 +11,6 @@ const defaultTransitionProps = {
 };
 
 TComponent({
-  options: {
-    styleIsolation: 'shared',
-  },
   properties: {
     visible: {
       type: Boolean,

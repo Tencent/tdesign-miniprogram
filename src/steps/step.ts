@@ -35,11 +35,15 @@ TComponent({
   // 组件的内部数据
   data: {
     classPrefix: `${prefix}-steps-item`,
+    prefix,
     rootClassName: '',
     parent: null,
     index: 0,
     isDot: false,
     curStatus: '',
+    direction: 'vertical',
+    type: 'default',
+    isLastChild: false,
   },
   lifetimes: {
     ready() {
@@ -53,7 +57,7 @@ TComponent({
     },
   },
   methods: {
-    updateStatus(current, index, type, direction) {
+    updateStatus(current, index, type, direction, steps) {
       const { status } = this.data;
       let newStatus = status;
       if (!status) {
@@ -76,6 +80,9 @@ TComponent({
         curStatus: newStatus,
         index,
         isDot: type === 'dot' && direction === 'vertical',
+        direction,
+        type,
+        isLastChild: steps.length - 1 === index,
       });
     },
     click() {
