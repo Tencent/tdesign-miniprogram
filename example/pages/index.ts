@@ -45,6 +45,10 @@ Page({
             name: 'SegmentedControl',
             path: '/pages/segmented-control/segmented-control',
           },
+          {
+            name: 'Skeleton',
+            path: '/pages/skeleton/skeleton',
+          },
         ],
       },
       {
@@ -123,6 +127,10 @@ Page({
             name: 'Popup',
             path: '/pages/popup/popup',
           },
+          {
+            name: 'PullDownReflesh',
+            path: '/pages/pulldown-reflesh/pulldown-reflesh',
+          },
         ],
       },
       {
@@ -143,7 +151,7 @@ Page({
           {
             name: 'Drawer',
             path: '/pages/drawer/drawer',
-          }
+          },
         ],
       },
     ],
