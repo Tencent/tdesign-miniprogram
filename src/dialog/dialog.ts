@@ -11,7 +11,7 @@ TComponent({
       value: false,
     },
     mode: {
-      type: Boolean,
+      type: String,
       value: 'modal', // 'modal' | 'half-screen'
     },
     theme: {

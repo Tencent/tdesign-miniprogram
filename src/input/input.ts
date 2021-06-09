@@ -65,13 +65,6 @@ TComponent({
     placeholder: {
       type: String,
     },
-    // todo 事件是这样写的？
-    bindinput: {
-      type: Function,
-    },
-    bindclear: {
-      type: Function,
-    },
   },
 
   data: {

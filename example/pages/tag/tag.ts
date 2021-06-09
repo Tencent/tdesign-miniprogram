@@ -33,14 +33,14 @@ Page({
       },
     ],
   },
-  onClickClose(e: WechatMiniprogram.Event) {
+  onClickClose(e: WechatMiniprogram.BaseEvent) {
     const { index } = e.currentTarget.dataset;
     const value = this.data.closableTags.splice(index, 1);
     this.setData({
       closableTags: value,
     });
   },
-  onClickFruit(e: WechatMiniprogram.Event) {
+  onClickFruit(e: WechatMiniprogram.BaseEvent) {
     const { index } = e.currentTarget.dataset;
     const value = this.data.fruits[index].checked;
     this.setData({

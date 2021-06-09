@@ -46,7 +46,7 @@ TComponent({
     },
     progress: {
       type: Number,
-      value: '-1',
+      value: -1,
     },
     loading: Boolean,
   },

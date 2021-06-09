@@ -46,7 +46,7 @@ TComponent({
     },
   },
   methods: {
-    onClickClose(e: WechatMiniprogram.Event) {
+    onClickClose(e: WechatMiniprogram.BaseEvent) {
       this.triggerEvent('close', e);
     },
   },

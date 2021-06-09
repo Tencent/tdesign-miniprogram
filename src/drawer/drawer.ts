@@ -22,7 +22,7 @@ TComponent({
     },
     sidebar: {
       type: Array,
-      value: () => [],
+      value: [],
     },
   },
   data: {

@@ -6,8 +6,8 @@ const name = `${prefix}-toast`;
 TComponent({
   data: {
     classPrefix: name,
+    isLock: false,
   },
-  isLock: false,
   properties: {
     // 是否展示
     show: {
@@ -65,12 +65,12 @@ TComponent({
 
   methods: {
     _observeShow(v) {
-      if (this.isLock) return;
+      if (this.data.isLock) return;
       if (v) {
-        this.isLock = true;
+        this.data.isLock = true;
         setTimeout(() => {
           this.clear();
-          this.isLock = false;
+          this.data.isLock = false;
         }, this.data.duration);
       }
     },
