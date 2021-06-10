@@ -4,55 +4,61 @@ const { prefix } = config;
 const name = `${prefix}-skeleton`;
 
 TComponent({
+  externalClasses: [
+    'after-loading-class',
+    'avatar-class',
+    'title-class',
+    'row-class',
+    'loading-class',
+  ],
   data: {
     classPrefix: name,
+    isArray: false,
+    rowWidthArray: [],
   },
   properties: {
-    layout: {
-      type: String,
-      value: 'default', // 'default' | 'full' | 'bar'
+    row: {
+      type: Number,
+      value: 0,
+      // observer: (value: number) => {
+      //   this.setData({ rowArray: Array.from({ length: value }) });
+      // },
     },
-    size: {
-      type: String,
-      value: 'medium',
-    },
-    textSize: {
-      type: String,
-      value: '14px',
-    },
-    textPadding: {
-      type: String,
-      value: '0',
-    },
-    vertical: {
+    title: Boolean,
+    avatar: Boolean,
+    loading: {
       type: Boolean,
       value: true,
     },
-    type: {
-      type: String,
-      value: 'circle',
-    },
-    error: {
+    animate: {
       type: Boolean,
-      value: false,
+      value: true,
     },
-    showType: {
+    avatarSize: {
       type: String,
-      value: 'all', // 'all' | 'text-only' | 'icon-only'
+      value: '64rpx',
     },
-    title: {
+    avatarShape: {
       type: String,
-      value: '加载中',
+      value: 'round',
     },
-    progress: {
-      type: Number,
-      value: -1,
+    titleWidth: {
+      type: String,
+      value: '40%',
     },
-    loading: Boolean,
+    rowWidth: {
+      type: null,
+      value: '100%',
+      observer(this: any, val) {
+        if (Array.isArray(val)) {
+          this.setData({ rowWidthArray: val });
+        }
+      },
+    },
+    rowHeight: {
+      type: Array,
+      value: null,
+    },
   },
-  methods: {
-    reloadClick() {
-      this.triggerEvent('reload');
-    },
-  },
+  methods: {},
 });

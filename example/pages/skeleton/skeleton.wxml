@@ -1,30 +1,41 @@
-<!-- <view>
-  <view class="t-loading-wrapper">
-    <t-loading
-      vertical="{{vertical}}"
-      error="{{error}}"
-      size="{{size}}"
-      loading="{{loading}}"
-      showType="{{showType}}"
-      layout="{{layout}}"
-      bind:reload="toggleError"
-    >
-    </t-loading>
-  </view>
-  <button class="t-button" bindtap="toggleVertical">切换横竖排版</button>
-  <button class="t-button" bindtap="toggleSize">切换圆圈大小</button>
-  <button class="t-button" bindtap="toggleError">切换失败状态</button>
-  <button class="t-button" bindtap="toggleShowType">切换图标文字显示</button>
-  <button class="t-button" bindtap="toggleLayout">切换页面加载</button>
-</view> -->
-<view class="title">Skeleton 骨架屏</view>
-<view class="desc"
-  >下拉动页面帮助用户快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新</view
+<view class="t-skeleton-title">Skeleton 骨架屏</view>
+<view class="t-skeleton-desc"
+  >用于等待加载内容所展示的占位图形组合，有动态效果加载效果，减少用户等待焦虑</view
 >
 
-<view class="gutter" />
-
-<view class="">
-  <view class="">01 基本用法</view>
-  <view class="">下拉刷新大致分为顶部下拉和中间下拉</view>
+<view class="t-skeleton-wrapper">
+  <view class="t-skeleton-wrapper-title">01 基本用法</view>
+  <view class="t-skeleton-wrapper-desc"
+    >通过title属性显示标题占位图，通过row属性配置占位段落行数。</view
+  >
+  <view class="flex skeletion-content">
+    <t-skeleton
+      row="4"
+      loading-class="skeletion-item"
+      row-width="{{rowWidth}}"
+      rowHeight="{{rowHeight}}"
+      animate
+    />
+    <t-skeleton
+      row="4"
+      loading-class="skeletion-item"
+      row-width="{{rowWidth}}"
+      rowHeight="{{rowHeight}}"
+      animate
+    />
+    <t-skeleton
+      row="4"
+      loading-class="skeletion-item"
+      row-width="{{rowWidth}}"
+      rowHeight="{{rowHeight}}"
+      animate
+    />
+    <t-skeleton
+      row="4"
+      loading-class="skeletion-item"
+      row-width="{{rowWidth}}"
+      rowHeight="{{rowHeight}}"
+      animate
+    />
+  </view>
 </view>
