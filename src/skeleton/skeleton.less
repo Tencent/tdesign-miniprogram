@@ -1,7 +1,10 @@
 @import (css) '../common/index.wxss';
 
+@classBasePrefix: CONFIG_PREFIX;
+
 @h-space-sm: 32rpx;
 @h-space-nest: 24rpx;
+
 // skeleton
 @skeleton-padding: 0 @h-space-sm;
 @skeleton-row-height: 16px;
@@ -10,16 +13,15 @@
 @skeleton-avatar-background-color: #f2f3f5;
 @skeleton-animation-duration: 1.2s;
 
-.wr-skeleton {
+.@{classBasePrefix}-skeleton {
   display: flex;
   box-sizing: border-box;
   width: 100%;
-  .theme(padding, '@skeleton-padding');
 
   &__avatar {
     flex-shrink: 0;
-    .theme(margin-right, '@h-space-sm');
-    .theme(background-color, '@skeleton-avatar-background-color');
+    margin-right: @h-space-sm;
+    background-color: @skeleton-avatar-background-color;
 
     &--round {
       border-radius: 100%;
@@ -34,13 +36,13 @@
   }
 
   &__avatar + &__content {
-    .theme(padding-top, '@cell');
+    padding-top: 16rpx;
   }
 
   &__row,
   &__title {
-    .theme(height, '@skeleton-row-height');
-    .theme(background-color, '@skeleton-row-background-color');
+    height: @skeleton-row-height;
+    background-color: @skeleton-row-background-color;
   }
 
   &__title {
@@ -49,20 +51,20 @@
 
   &__row {
     &:not(:first-child) {
-      .theme(margin-top, '@skeleton-row-margin-top');
+      margin-top: @skeleton-row-margin-top;
     }
   }
 
   &__title + &__row {
     margin-top: 20px;
   }
-
-  &--animate {
-    animation: wr-skeleton-blink @skeleton-animation-duration ease-in-out infinite;
-  }
 }
 
-@keyframes wr-skeleton-blink {
+.animate {
+  animation: t-skeleton-blink @skeleton-animation-duration ease-in-out infinite;
+}
+
+@keyframes t-skeleton-blink {
   50% {
     opacity: 0.6;
   }

@@ -1,27 +1,24 @@
-<view
-  wx:if="{{ loading }}"
-  class="wr-skeleton loading-class {{animate ? 'wr-skeleton--animate' : ''}} "
->
+<view wx:if="{{ loading }}" class="{{classPrefix}} loading-class {{animate ? 'animate' : ''}} ">
   <view
     wx:if="{{ avatar }}"
-    class="avatar-class wr-skeleton__avatar wr-skeleton__avatar--{{avatarShape}}"
+    class="avatar-class {{classPrefix}}__avatar {{classPrefix}}__avatar--{{avatarShape}}"
     style="{{ 'width:' + avatarSize + ';height:' + avatarSize }}"
   />
-  <view class="wr-skeleton__content">
+  <view class="{{classPrefix}}__content">
     <view
       wx:if="{{ title }}"
-      class="title-class wr-skeleton__title}}"
+      class="title-class {{classPrefix}}__title}}"
       style="{{ 'width:' + titleWidth }}"
     />
     <view
       wx:for="{{ row }}"
       wx:key="index"
       wx:for-index="index"
-      class="row-class wr-skeleton__row"
+      class="row-class {{classPrefix}}__row"
       style="width: {{rowWidthArray.length > 0 && rowWidthArray[index] ? rowWidthArray[index] : rowWidth}}; {{rowHeight && rowHeight[index] ? 'height:' + rowHeight[index] : ''}}"
     />
   </view>
 </view>
-<view wx:else class="wr-skeleton__content after-loading-class">
+<view wx:else class="{{classPrefix}}__content after-loading-class">
   <slot />
 </view>

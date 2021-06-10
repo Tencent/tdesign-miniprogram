@@ -12,6 +12,7 @@
     <t-skeleton
       row="4"
       loading-class="skeletion-item"
+      row-class="skeletion-row"
       row-width="{{rowWidth}}"
       rowHeight="{{rowHeight}}"
       animate
@@ -19,6 +20,7 @@
     <t-skeleton
       row="4"
       loading-class="skeletion-item"
+      row-class="skeletion-row"
       row-width="{{rowWidth}}"
       rowHeight="{{rowHeight}}"
       animate
@@ -26,6 +28,7 @@
     <t-skeleton
       row="4"
       loading-class="skeletion-item"
+      row-class="skeletion-row"
       row-width="{{rowWidth}}"
       rowHeight="{{rowHeight}}"
       animate
@@ -33,6 +36,7 @@
     <t-skeleton
       row="4"
       loading-class="skeletion-item"
+      row-class="skeletion-row"
       row-width="{{rowWidth}}"
       rowHeight="{{rowHeight}}"
       animate
