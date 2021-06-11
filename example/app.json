@@ -31,7 +31,8 @@
     "pages/indexes/indexes",
     "pages/steps/steps",
     "pages/dropdown-menu/dropdown-menu",
-    "pages/drawer/drawer"
+    "pages/drawer/drawer",
+    "pages/scroll-view/scroll-view"
   ],
   "usingComponents": {
     "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
@@ -74,7 +75,8 @@
     "t-steps": "@tencent/tdesign-miniprogram/steps/steps",
     "t-step": "@tencent/tdesign-miniprogram/steps/step",
     "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu",
-    "t-drawer": "@tencent/tdesign-miniprogram/drawer/drawer"
+    "t-drawer": "@tencent/tdesign-miniprogram/drawer/drawer",
+    "t-scroll-view": "@tencent/tdesign-miniprogram/scroll-view/scroll-view"
   },
   "window": {
     "backgroundTextStyle": "light",

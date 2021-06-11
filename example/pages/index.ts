@@ -45,6 +45,10 @@ Page({
             name: 'SegmentedControl',
             path: '/pages/segmented-control/segmented-control',
           },
+          {
+            name: 'Scroll-View',
+            path: '/pages/scroll-view/scroll-view',
+          },
         ],
       },
       {
@@ -143,7 +147,7 @@ Page({
           {
             name: 'Drawer',
             path: '/pages/drawer/drawer',
-          }
+          },
         ],
       },
     ],
