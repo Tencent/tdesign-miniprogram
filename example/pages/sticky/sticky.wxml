@@ -1,0 +1,5 @@
+<view class="tdesign-demo-sticky-base">
+  <t-sticky>
+    <view class="box box3">指定容器</view>
+  </t-sticky>
+</view>
