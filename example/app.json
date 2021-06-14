@@ -32,7 +32,7 @@
     "pages/steps/steps",
     "pages/dropdown-menu/dropdown-menu",
     "pages/drawer/drawer",
-    "pages/pulldown-reflesh/pulldown-reflesh",
+    "pages/pull-down-refresh/pull-down-refresh",
     "pages/skeleton/skeleton"
   ],
   "usingComponents": {
@@ -77,7 +77,7 @@
     "t-step": "@tencent/tdesign-miniprogram/steps/step",
     "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu",
     "t-drawer": "@tencent/tdesign-miniprogram/drawer/drawer",
-    "t-pulldown-reflesh": "@tencent/tdesign-miniprogram/pulldown-reflesh/pulldown-reflesh",
+    "t-pull-down-refresh": "@tencent/tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
     "t-skeleton": "@tencent/tdesign-miniprogram/skeleton/skeleton"
   },
   "window": {

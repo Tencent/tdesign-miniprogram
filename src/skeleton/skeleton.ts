@@ -32,7 +32,7 @@ TComponent({
     },
     animate: {
       type: Boolean,
-      value: true,
+      value: false,
     },
     avatarSize: {
       type: String,

@@ -129,7 +129,7 @@ Page({
           },
           {
             name: 'PullDownReflesh',
-            path: '/pages/pulldown-reflesh/pulldown-reflesh',
+            path: '/pages/pull-down-refresh/pull-down-refresh',
           },
         ],
       },
