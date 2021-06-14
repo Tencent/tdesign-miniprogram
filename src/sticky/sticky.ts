@@ -3,9 +3,8 @@ import config from '../common/config';
 
 import { pageScrollMixin, getRect } from './utils';
 const { prefix } = config;
-const name = `${prefix}-sticky`;
 
-const CONTAINER_CLASS = `.${name}`;
+const CONTAINER_CLASS = `.${prefix}-sticky`;
 type ContainerRef = () => WechatMiniprogram.NodesRef;
 
 interface StickyProps {
@@ -57,7 +56,7 @@ export default class Sticky extends SuperComponent {
   data = {
     containerStyle: '',
     contentStyle: '',
-    classPrefix: name,
+    classPrefix: `.${prefix}-sticky`,
   };
 
   mounted() {

@@ -46,6 +46,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     // 在工具库中允许参数重新赋值
     'no-param-reassign': 'off',
+    '@typescript-eslint/explicit-member-accessibility': 'off',
   },
   globals,
   overrides: [
