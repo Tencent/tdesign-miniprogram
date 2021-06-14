@@ -7,7 +7,7 @@
 ```json
 // app.json 或 index.json
 "usingComponents": {
-  "wr-sticky": "@tencent/retailwe-ui-sticky/index"
+  "t-sticky": "@tencent/tdesign-miniprogram/sticky/sticky"
 }
 ```
 
@@ -18,9 +18,9 @@
 将内容包裹在`Sticky`组件内
 
 ```html
-<wr-sticky>
+<t-sticky>
   <view class="box box1">基础用法</view>
-</wr-sticky>
+</t-sticky>
 ```
 
 ### 吸顶距离
@@ -28,9 +28,9 @@
 通过`offset-top`属性可以设置组件在吸顶时与顶部的距离
 
 ```html
-<wr-sticky offset-top="{{ 60 }}">
+<t-sticky offset-top="{{ 60 }}">
   <view class="box box2">吸顶距离</view>
-</wr-sticky>
+</t-sticky>
 ```
 
 ### 指定容器
@@ -39,9 +39,9 @@
 
 ```html
 <view class="box-c">
-  <wr-sticky container="{{ container }}">
+  <t-sticky container="{{ container }}">
     <view class="box box3">指定容器</view>
-  </wr-sticky>
+  </t-sticky>
 </view>
 ```
 
@@ -76,6 +76,6 @@ Page({
 
 ### Sticky 外部样式类
 
-| 类名     | 说明         |
-| -------- | ------------ |
-| wr-class | 根节点样式类 |
+| 类名    | 说明         |
+| ------- | ------------ |
+| t-class | 根节点样式类 |
