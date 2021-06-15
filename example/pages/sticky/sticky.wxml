@@ -1,0 +1,13 @@
+<view class="tdesign-demo-sticky-base">
+  <t-sticky>
+    <view class="box box1">吸顶容器</view>
+  </t-sticky>
+  <t-sticky offset-top="{{ 40 }}">
+    <view class="box box2">吸顶距离</view>
+  </t-sticky>
+  <view class="box-c">
+    <t-sticky container="{{ container }}">
+      <view class="box box3">指定容器</view>
+    </t-sticky>
+  </view>
+</view>

@@ -2,6 +2,15 @@ Page({
   data: {
     list: [
       {
+        type: '新增类',
+        components: [
+          {
+            name: 'Sticky',
+            path: '/pages/sticky/sticky',
+          },
+        ],
+      },
+      {
         type: '基础类',
         components: [
           {
