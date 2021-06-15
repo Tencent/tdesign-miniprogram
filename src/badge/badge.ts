@@ -6,7 +6,7 @@ TComponent({
     customStyle: String,
     color: {
       type: String,
-      value: 'red',
+      value: '#e34d59',
     },
     count: {
       type: Number,
@@ -30,7 +30,7 @@ TComponent({
     },
     shape: {
       type: String,
-      value: 'middle', // 尺寸，支持 'circle', 'rounded', 'ribbon'
+      value: 'circle', // 尺寸，支持 'circle', 'rounded', 'ribbon'
     },
     showZero: {
       type: Boolean,
