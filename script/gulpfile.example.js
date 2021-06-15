@@ -6,6 +6,7 @@ const rename = require('gulp-rename');
 const gulpLess = require('gulp-less');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
+const path = require('path');
 
 /* config */
 const src = 'example';
@@ -49,9 +50,25 @@ const build = gulp.series(baseBuild, syncDist);
 /** `gulp task`
  * 编译app.less
  * */
+// const commonLess = () =>
+//   gulp
+//     .src(`${src}/app.less`)
+//     .pipe(
+//       plumber({
+//         errorHandler: (err) => {
+//           console.error(err);
+//           handleError(err.message);
+//         },
+//       }),
+//     )
+//     .pipe(sourcemaps.init())
+//     .pipe(gulpLess()) // 编译less
+//     .pipe(rename({ extname: '.wxss' }))
+//     .pipe(sourcemaps.write('.'))
+//     .pipe(gulp.dest(dist));
 const commonLess = () =>
   gulp
-    .src(`${src}/app.less`)
+    .src(path.join(__dirname, '..', `src/common/index.less`))
     .pipe(
       plumber({
         errorHandler: (err) => {
@@ -64,8 +81,7 @@ const commonLess = () =>
     .pipe(gulpLess()) // 编译less
     .pipe(rename({ extname: '.wxss' }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(dist));
-
+    .pipe(gulp.dest(`${output}/common/`));
 /** `gulp watch`
  * 监听common中less更新
  * */
