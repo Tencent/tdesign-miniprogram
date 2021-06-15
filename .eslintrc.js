@@ -46,6 +46,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     // 在工具库中允许参数重新赋值
     'no-param-reassign': 'off',
+    // 在类属性和方法上关闭需要显式的可访问性修饰符
     '@typescript-eslint/explicit-member-accessibility': 'off',
   },
   globals,
