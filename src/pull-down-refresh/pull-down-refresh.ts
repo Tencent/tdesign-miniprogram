@@ -19,7 +19,7 @@ export default class PullDownRefresh extends SuperComponent {
 
   RefreshTimeout = 2000; // 刷新超时时间，超过没有回调刷新成功，会自动结束刷新动画。单位 ms
 
-  externalClasses = ['wr-class'];
+  externalClasses = ['t-class'];
 
   /** 开始刷新 - 刷新成功/失败 最小间隔时间setTimeout句柄 */
   minRefreshTimeFlag = 0;
