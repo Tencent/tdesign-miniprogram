@@ -50,22 +50,6 @@ const build = gulp.series(baseBuild, syncDist);
 /** `gulp task`
  * 编译app.less
  * */
-// const commonLess = () =>
-//   gulp
-//     .src(`${src}/app.less`)
-//     .pipe(
-//       plumber({
-//         errorHandler: (err) => {
-//           console.error(err);
-//           handleError(err.message);
-//         },
-//       }),
-//     )
-//     .pipe(sourcemaps.init())
-//     .pipe(gulpLess()) // 编译less
-//     .pipe(rename({ extname: '.wxss' }))
-//     .pipe(sourcemaps.write('.'))
-//     .pipe(gulp.dest(dist));
 const commonLess = () =>
   gulp
     .src(path.join(__dirname, '..', `src/common/index.less`))
