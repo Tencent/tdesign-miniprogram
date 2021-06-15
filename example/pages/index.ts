@@ -137,7 +137,7 @@ Page({
             path: '/pages/popup/popup',
           },
           {
-            name: 'PullDownReflesh',
+            name: 'PullDownRefresh',
             path: '/pages/pull-down-refresh/pull-down-refresh',
           },
         ],

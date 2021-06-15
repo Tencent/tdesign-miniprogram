@@ -1,22 +1,22 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-skeleton`;
 
-TComponent({
-  externalClasses: [
+@wxComponent()
+export default class Skeleton extends SuperComponent {
+  /**
+   * Component properties
+   */
+  externalClasses = [
     'after-loading-class',
     'avatar-class',
     'title-class',
     'row-class',
     'loading-class',
-  ],
-  data: {
-    classPrefix: name,
-    isArray: false,
-    rowWidthArray: [],
-  },
-  properties: {
+  ];
+
+  properties = {
     row: {
       type: Number,
       value: 0,
@@ -32,7 +32,7 @@ TComponent({
     },
     animate: {
       type: Boolean,
-      value: false,
+      value: true,
     },
     avatarSize: {
       type: String,
@@ -49,7 +49,7 @@ TComponent({
     rowWidth: {
       type: null,
       value: '100%',
-      observer(this: any, val) {
+      observer(this: Skeleton, val) {
         if (Array.isArray(val)) {
           this.setData({ rowWidthArray: val });
         }
@@ -59,6 +59,17 @@ TComponent({
       type: Array,
       value: null,
     },
-  },
-  methods: {},
-});
+  };
+
+  /**
+   * Component initial data
+   */
+  data = {
+    classPrefix: name,
+    isArray: false,
+    rowWidthArray: [],
+  };
+  /**
+   * Component methods
+   */
+}
