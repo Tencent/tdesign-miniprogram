@@ -16,6 +16,10 @@ Page({
             name: 'Divider',
             path: '/pages/divider/divider',
           },
+          {
+            name: 'Back-top',
+            path: '/pages/back-top/back-top',
+          },
         ],
       },
       {
