@@ -36,7 +36,8 @@
     "pages/drawer/drawer",
     "pages/pull-down-refresh/pull-down-refresh",
     "pages/skeleton/skeleton",
-    "pages/footer/footer"
+    "pages/footer/footer",
+    "pages/divider/divider"
   ],
   "usingComponents": {
     "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
@@ -84,7 +85,8 @@
     "t-drawer": "@tencent/tdesign-miniprogram/drawer/drawer",
     "t-pull-down-refresh": "@tencent/tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
     "t-skeleton": "@tencent/tdesign-miniprogram/skeleton/skeleton",
-    "t-footer": "@tencent/tdesign-miniprogram/footer/footer"
+    "t-footer": "@tencent/tdesign-miniprogram/footer/footer",
+    "t-divider": "@tencent/tdesign-miniprogram/divider/divider"
   },
   "window": {
     "backgroundTextStyle": "light",

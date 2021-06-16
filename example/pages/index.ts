@@ -12,6 +12,10 @@ Page({
             name: 'Swipeout',
             path: '/pages/swipeout/swipeout',
           },
+          {
+            name: 'Divider',
+            path: '/pages/divider/divider',
+          },
         ],
       },
       {
