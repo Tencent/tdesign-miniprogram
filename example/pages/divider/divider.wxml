@@ -34,11 +34,24 @@
           </view>
           <view class="t-divider-demo">
             <view class="t-divider-demo__title">文字+直线</view>
-            <t-divider t-class="demo-5" hairline content-position="center">文字信息</t-divider>
+            <t-divider
+              t-class="demo-5"
+              hairline
+              text-color="rgba(0, 0, 0, 0.4)"
+              border-color="rgba(231,231,231,1)"
+              content-position="center"
+              >文字信息</t-divider
+            >
           </view>
           <view class="t-divider-demo">
             <view class="t-divider-demo__title">文字+虚线</view>
-            <t-divider t-class="demo-5" dashed hairline content-position="center"
+            <t-divider
+              t-class="demo-5"
+              dashed
+              hairline
+              text-color="rgba(0, 0, 0, 0.4)"
+              border-color="rgba(231,231,231,1)"
+              content-position="center"
               >文字信息</t-divider
             >
           </view>
@@ -46,6 +59,7 @@
             <view class="t-divider-demo__title">纯文字</view>
             <t-divider
               t-class="demo-6"
+              text-color="rgba(0, 0, 0, 0.4)"
               content-position="center"
               hairline
               border-color="transparent"

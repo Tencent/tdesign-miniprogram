@@ -23,38 +23,58 @@
 `border-color`属性可定义线条颜色，不需要显示线条时，传入`border-color`的值为`transparent`即可。
 
 ```html
-<view class="divider-demo">
-  <view class="divider-demo__title">直线拉通</view>
+<view class="t-divider-demo">
+  <view class="t-divider-demo__title">直线拉通</view>
   <t-divider hairline></t-divider>
 </view>
-<view class="divider-demo">
-  <view class="divider-demo__title">虚线拉通</view>
+<view class="t-divider-demo">
+  <view class="t-divider-demo__title">虚线拉通</view>
   <t-divider dashed></t-divider>
 </view>
-<view class="divider-demo">
-  <view class="divider-demo__title">居中左右间距</view>
-  <t-divider wr-class="demo-2" hairline></t-divider>
+<view class="t-divider-demo">
+  <view class="t-divider-demo__title">左右间距</view>
+  <t-divider t-class="demo-2" hairline></t-divider>
 </view>
-<view class="divider-demo">
-  <view class="divider-demo__title">右侧拉通</view>
-  <t-divider wr-class="demo-3" hairline></t-divider>
+<view class="t-divider-demo">
+  <view class="t-divider-demo__title">右侧拉通</view>
+  <t-divider t-class="demo-3" hairline></t-divider>
 </view>
 
-<view class="divider-demo">
-  <view class="divider-demo__title">自定义左侧间距</view>
-  <t-divider wr-class="demo-4" hairline></t-divider>
+<view class="t-divider-demo">
+  <view class="t-divider-demo__title">自定义左侧间距</view>
+  <t-divider t-class="demo-4" hairline></t-divider>
 </view>
-<view class="divider-demo">
-  <view class="divider-demo__title">文字+直线</view>
-  <t-divider wr-class="demo-5" hairline content-position="center">文字信息</t-divider>
+<view class="t-divider-demo">
+  <view class="t-divider-demo__title">文字+直线</view>
+  <t-divider
+    t-class="demo-5"
+    hairline
+    text-color="rgba(0, 0, 0, 0.4)"
+    border-color="rgba(231,231,231,1)"
+    content-position="center"
+    >文字信息</t-divider
+  >
 </view>
-<view class="divider-demo">
-  <view class="divider-demo__title">文字+虚线</view>
-  <t-divider wr-class="demo-5" dashed hairline content-position="center">文字信息</t-divider>
+<view class="t-divider-demo">
+  <view class="t-divider-demo__title">文字+虚线</view>
+  <t-divider
+    t-class="demo-5"
+    dashed
+    hairline
+    text-color="rgba(0, 0, 0, 0.4)"
+    border-color="rgba(231,231,231,1)"
+    content-position="center"
+    >文字信息</t-divider
+  >
 </view>
-<view class="divider-demo">
-  <view class="divider-demo__title">纯文字</view>
-  <t-divider wr-class="demo-6" content-position="center" hairline border-color="transparent"
+<view class="t-divider-demo">
+  <view class="t-divider-demo__title">纯文字</view>
+  <t-divider
+    t-class="demo-6"
+    text-color="rgba(0, 0, 0, 0.4)"
+    content-position="center"
+    hairline
+    border-color="transparent"
     >没有更多了~</t-divider
   >
 </view>
