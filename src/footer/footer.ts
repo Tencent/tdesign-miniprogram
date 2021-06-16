@@ -1,4 +1,4 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-footer`;
@@ -15,8 +15,9 @@ interface LinkObj {
   openType: OpenTypeVal;
 }
 
-TComponent({
-  properties: {
+@wxComponent()
+export default class SwiperCell extends SuperComponent {
+  properties = {
     type: {
       type: String,
       value: 'logo' as FooterType,
@@ -41,8 +42,8 @@ TComponent({
       type: String,
       value: ``,
     },
-  },
-  data: {
+  };
+  data = {
     classPrefix: name,
-  },
-});
+  };
+}
