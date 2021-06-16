@@ -62,6 +62,10 @@ Page({
             name: 'Skeleton',
             path: '/pages/skeleton/skeleton',
           },
+          {
+            name: 'Footer',
+            path: '/pages/footer/footer',
+          },
         ],
       },
       {
