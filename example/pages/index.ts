@@ -8,6 +8,10 @@ Page({
             name: 'Sticky',
             path: '/pages/sticky/sticky',
           },
+          {
+            name: 'Swipeout',
+            path: '/pages/swipeout/swipeout',
+          },
         ],
       },
       {
