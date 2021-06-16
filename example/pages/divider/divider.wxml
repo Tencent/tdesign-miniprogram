@@ -1,0 +1,59 @@
+<view class="a-template wr-class">
+  <view class="a-template-content">
+    <view class="a-template-info">
+      <view class="title">BackTop 返回顶部</view>
+      <view class="desc">返回顶部用于帮助用户快速回到页面顶部</view>
+    </view>
+    <view class="template-item">
+      <view class="template-item-content">
+        <view class="template-item-info">
+          <view class="title">01 基本用法</view>
+          <view class="desc">返回顶部有浅色模式和深色模式</view>
+        </view>
+        <view class="t-divider-list">
+          <view class="t-divider-demo">
+            <view class="t-divider-demo__title">直线拉通</view>
+            <t-divider hairline></t-divider>
+          </view>
+          <view class="t-divider-demo">
+            <view class="t-divider-demo__title">虚线拉通</view>
+            <t-divider dashed></t-divider>
+          </view>
+          <view class="t-divider-demo">
+            <view class="t-divider-demo__title">居中左右间距</view>
+            <t-divider wr-class="demo-2" hairline></t-divider>
+          </view>
+          <view class="t-divider-demo">
+            <view class="t-divider-demo__title">右侧拉通</view>
+            <t-divider wr-class="demo-3" hairline></t-divider>
+          </view>
+
+          <view class="t-divider-demo">
+            <view class="t-divider-demo__title">自定义左侧间距</view>
+            <t-divider wr-class="demo-4" hairline></t-divider>
+          </view>
+          <view class="t-divider-demo">
+            <view class="t-divider-demo__title">文字+直线</view>
+            <t-divider wr-class="demo-5" hairline content-position="center">文字信息</t-divider>
+          </view>
+          <view class="t-divider-demo">
+            <view class="t-divider-demo__title">文字+虚线</view>
+            <t-divider wr-class="demo-5" dashed hairline content-position="center"
+              >文字信息</t-divider
+            >
+          </view>
+          <view class="t-divider-demo">
+            <view class="t-divider-demo__title">纯文字</view>
+            <t-divider
+              wr-class="demo-6"
+              content-position="center"
+              hairline
+              border-color="transparent"
+              >没有更多了~</t-divider
+            >
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
