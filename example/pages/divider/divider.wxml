@@ -1,4 +1,4 @@
-<view class="a-template wr-class">
+<view class="a-template t-class">
   <view class="a-template-content">
     <view class="a-template-info">
       <view class="title">Divider 分割符</view>
@@ -21,31 +21,31 @@
           </view>
           <view class="t-divider-demo">
             <view class="t-divider-demo__title">左右间距</view>
-            <t-divider wr-class="demo-2" hairline></t-divider>
+            <t-divider t-class="demo-2" hairline></t-divider>
           </view>
           <view class="t-divider-demo">
             <view class="t-divider-demo__title">右侧拉通</view>
-            <t-divider wr-class="demo-3" hairline></t-divider>
+            <t-divider t-class="demo-3" hairline></t-divider>
           </view>
 
           <view class="t-divider-demo">
             <view class="t-divider-demo__title">自定义左侧间距</view>
-            <t-divider wr-class="demo-4" hairline></t-divider>
+            <t-divider t-class="demo-4" hairline></t-divider>
           </view>
           <view class="t-divider-demo">
             <view class="t-divider-demo__title">文字+直线</view>
-            <t-divider wr-class="demo-5" hairline content-position="center">文字信息</t-divider>
+            <t-divider t-class="demo-5" hairline content-position="center">文字信息</t-divider>
           </view>
           <view class="t-divider-demo">
             <view class="t-divider-demo__title">文字+虚线</view>
-            <t-divider wr-class="demo-5" dashed hairline content-position="center"
+            <t-divider t-class="demo-5" dashed hairline content-position="center"
               >文字信息</t-divider
             >
           </view>
           <view class="t-divider-demo">
             <view class="t-divider-demo__title">纯文字</view>
             <t-divider
-              wr-class="demo-6"
+              t-class="demo-6"
               content-position="center"
               hairline
               border-color="transparent"
