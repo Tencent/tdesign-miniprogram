@@ -1,0 +1,20 @@
+<view
+  class="t-class {{className}} {{show ? 'show' : 'hide'}} {{fixed && 'fixed'}} {{type}}"
+  bindtap="toTop"
+>
+  <t-icon
+    wx:if="{{!!icon}}"
+    class="t-class-icon icon"
+    color="{{iconColor || 'inherit'}}"
+    name="{{icon}}"
+    size="{{iconSize || 'inherit'}}"
+  />
+  <view
+    wx:if="{{ !!text }}"
+    class="t-class-text text"
+    style="color:{{textColor}}; font-size: {{textSize}};"
+  >
+    {{ text }}
+  </view>
+  <slot />
+</view>

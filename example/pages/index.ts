@@ -12,6 +12,10 @@ Page({
             name: 'Swipeout',
             path: '/pages/swipeout/swipeout',
           },
+          {
+            name: 'Back-top',
+            path: '/pages/back-top/back-top',
+          },
         ],
       },
       {
