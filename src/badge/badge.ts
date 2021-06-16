@@ -1,8 +1,9 @@
 import { badgeProps } from './badge.interface';
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 
-TComponent({
-  properties: {
+@wxComponent()
+export default class Badge extends SuperComponent {
+  properties = {
     customStyle: String,
     color: {
       type: String,
@@ -44,11 +45,9 @@ TComponent({
       type: Boolean,
       value: false,
     },
-  },
-  data: {
+  };
+
+  data = {
     value: '',
-  },
-  lifetimes: {
-    created() {},
-  },
-});
+  };
+}
