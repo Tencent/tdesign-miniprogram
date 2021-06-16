@@ -8,6 +8,10 @@ Page({
             name: 'Sticky',
             path: '/pages/sticky/sticky',
           },
+          {
+            name: 'Swipeout',
+            path: '/pages/swipeout/swipeout',
+          },
         ],
       },
       {
@@ -53,6 +57,10 @@ Page({
           {
             name: 'SegmentedControl',
             path: '/pages/segmented-control/segmented-control',
+          },
+          {
+            name: 'Skeleton',
+            path: '/pages/skeleton/skeleton',
           },
         ],
       },
@@ -131,6 +139,10 @@ Page({
           {
             name: 'Popup',
             path: '/pages/popup/popup',
+          },
+          {
+            name: 'PullDownRefresh',
+            path: '/pages/pull-down-refresh/pull-down-refresh',
           },
         ],
       },
