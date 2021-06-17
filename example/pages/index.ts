@@ -20,6 +20,10 @@ Page({
             name: 'Back-top',
             path: '/pages/back-top/back-top',
           },
+          {
+            name: 'Empty',
+            path: '/pages/empty/empty',
+          },
         ],
       },
       {

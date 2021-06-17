@@ -38,6 +38,7 @@
     "pages/skeleton/skeleton",
     "pages/footer/footer",
     "pages/divider/divider",
+    "pages/empty/empty",
     "pages/back-top/back-top"
   ],
   "usingComponents": {
@@ -88,6 +89,7 @@
     "t-skeleton": "@tencent/tdesign-miniprogram/skeleton/skeleton",
     "t-footer": "@tencent/tdesign-miniprogram/footer/footer",
     "t-divider": "@tencent/tdesign-miniprogram/divider/divider",
+    "t-empty": "@tencent/tdesign-miniprogram/empty/empty",
     "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top"
   },
   "window": {
