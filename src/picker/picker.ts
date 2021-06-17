@@ -51,8 +51,8 @@ TComponent({
         index: pickerColumns.map((pickerColumn) => pickerColumn._selectedIndex),
         value: pickerColumns.map((pickerColumn) => pickerColumn._selectedValue),
       };
-      const multi = pickerColumns.length > 1;
-      if (multi) {
+      const isMulti = pickerColumns.length > 1;
+      if (isMulti) {
         return selectedValues;
       }
       return {
@@ -67,8 +67,8 @@ TComponent({
       this.triggerEvent('cancel');
     },
     triggerChange({ column, index, value }) {
-      const multi = this.getPickerColumns().length > 1;
-      this.triggerEvent('change', multi ? { column, index, value } : { index, value });
+      const isMulti = this.getPickerColumns().length > 1;
+      this.triggerEvent('change', isMulti ? { column, index, value } : { index, value });
     },
   },
 });

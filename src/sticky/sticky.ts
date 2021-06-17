@@ -4,12 +4,12 @@ import config from '../common/config';
 import { pageScrollMixin, getRect } from './utils';
 const { prefix } = config;
 
-const CONTAINER_CLASS = `.${prefix}-sticky`;
+const ContainerClass = `.${prefix}-sticky`;
 type ContainerRef = () => WechatMiniprogram.NodesRef;
 
 interface StickyProps {
   zIndex: number;
-  disabled: boolean;
+  isDisabled: boolean;
   container: ContainerRef;
   offsetTop: number;
   scrollTop: number;
@@ -28,7 +28,7 @@ export default class Sticky extends SuperComponent {
       value: 0,
       observer: 'onScroll',
     },
-    disabled: {
+    isDisabled: {
       type: Boolean,
       observer: 'onScroll',
     },
@@ -65,9 +65,9 @@ export default class Sticky extends SuperComponent {
 
   onScroll(event?: { scrollTop: number }) {
     const { scrollTop } = event || {};
-    const { container, offsetTop, disabled } = this.properties;
+    const { container, offsetTop, isDisabled } = this.properties;
 
-    if (disabled) {
+    if (isDisabled) {
       this.setDataAfterDiff({
         fixed: false,
         transform: 0,
@@ -78,7 +78,7 @@ export default class Sticky extends SuperComponent {
     this.scrollTop = scrollTop || this.scrollTop;
 
     if (typeof container === 'function') {
-      Promise.all([getRect(this, CONTAINER_CLASS), this.getContainerRect()]).then(
+      Promise.all([getRect(this, ContainerClass), this.getContainerRect()]).then(
         ([root, container]) => {
           if (offsetTop + root.height > container.height + container.top) {
             this.setDataAfterDiff({
@@ -100,7 +100,7 @@ export default class Sticky extends SuperComponent {
       return;
     }
 
-    getRect(this, CONTAINER_CLASS).then((root) => {
+    getRect(this, ContainerClass).then((root) => {
       if (offsetTop >= root.top) {
         this.setDataAfterDiff({ fixed: true, height: root.height });
         this.transform = 0;

@@ -54,7 +54,7 @@ Page({
     const { panels } = this.data;
 
     if (key === 'active2') {
-      panels.forEach((item, i) => {
+      panels.forEach((item) => {
         item.expand = false;
       });
     }
@@ -64,7 +64,7 @@ Page({
     });
   },
   close(event) {
-    const { key } = event.currentTarget.dataset;
+    // const { key } = event.currentTarget.dataset;
     const { panels } = this.data;
     panels[event.detail].expand = false;
     this.setData({

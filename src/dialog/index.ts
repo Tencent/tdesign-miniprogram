@@ -94,24 +94,24 @@ const dialog = (options) =>
         ...options,
       });
       // 点击笼罩层
-      const _clickOverlay = dialog.clickOverlay;
+      const ClickOverlayer = dialog.clickOverlay;
       dialog.clickOverlay = function (...args) {
-        _clickOverlay.bind(this)(...args);
+        ClickOverlayer.bind(this)(...args);
         if (options.closeOnClickOverlay) {
           // 点击笼罩层是否关闭
           clickEvent(false);
         }
       };
       // 点击关闭按钮
-      const _clickCloseBtn = dialog.clickCloseBtn;
+      const ClickCloseButton = dialog.clickCloseBtn;
       dialog.clickCloseBtn = function (...args) {
-        _clickCloseBtn.bind(this)(...args);
+        ClickCloseButton.bind(this)(...args);
         clickEvent(false);
       };
       // 点击确定按钮
-      const _clickConfirmBtn = dialog.clickConfirmBtn;
+      const ClickConfirmButton = dialog.clickConfirmBtn;
       dialog.clickConfirmBtn = function (...args) {
-        _clickConfirmBtn.bind(this)(...args);
+        ClickConfirmButton.bind(this)(...args);
         clickEvent(true);
       };
     } else {
@@ -121,7 +121,7 @@ const dialog = (options) =>
     }
   });
 
-const Dialog = {
+const DIALOG = {
   // Dialog.alert
   alert(options: DialogOptions): Promise<{
     close?: Function;
@@ -146,4 +146,4 @@ const Dialog = {
   },
 };
 
-export default Dialog;
+export default DIALOG;
