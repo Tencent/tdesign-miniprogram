@@ -77,7 +77,7 @@ TComponent({
     },
   },
   methods: {
-    switchChange(e) {
+    switchChange() {
       const { disabled, value, activeValue, inactiveValue, isActive } = this.data;
       if (disabled) return;
 
@@ -93,7 +93,7 @@ TComponent({
     onTapBackground() {
       this.switchChange();
     },
-    onTapDot(e) {
+    onTapDot() {
       this.switchChange();
     },
   },

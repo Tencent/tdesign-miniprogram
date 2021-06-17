@@ -11,13 +11,13 @@ export default class PullDownRefresh extends SuperComponent {
   pixelRatio = 1; // 像素比(rpx与px在此设备上的比值)
   startPoint: { pageX: number; pageY: number } | null = null; // 下拉开始的起点，主要用于计算下拉高度
   isPulling = false; // 是否下拉中
-  DefaultBarHeight = 0; // 下拉效果的默认高度
-  MaxBarHeight = 200; // 最大下拉高度，单位 rpx
+  defaultBarHeight = 0; // 下拉效果的默认高度
+  maxBarHeight = 200; // 最大下拉高度，单位 rpx
   // 触发刷新的下拉高度，单位rpx
   // 松开时下拉高度大于这个值即会触发刷新，触发刷新后松开，会恢复到这个高度并保持，直到刷新结束
-  NormalBarHeight = 150;
+  normalBarHeight = 150;
 
-  RefreshTimeout = 2000; // 刷新超时时间，超过没有回调刷新成功，会自动结束刷新动画。单位 ms
+  refreshTimeout = 2000; // 刷新超时时间，超过没有回调刷新成功，会自动结束刷新动画。单位 ms
 
   externalClasses = ['t-class'];
 
@@ -85,7 +85,7 @@ export default class PullDownRefresh extends SuperComponent {
     classPrefix: name,
     loadingSize: '40rpx',
     loadingImg: './loading.png',
-    barHeight: this.DefaultBarHeight,
+    barHeight: this.defaultBarHeight,
     refreshStatus: 0, // 0-未开始，1释放可刷新，2-刷新中，3-刷新成功，4-结束中
     rotate: 0, // 旋转角度，refreshStatus为0、1时根据下拉距离动态计算得出
     useLoadingSlot: false,
@@ -102,15 +102,15 @@ export default class PullDownRefresh extends SuperComponent {
     // 自定义拉下宽度
     const maxBarHeight = this.properties.maxBarHeight as any as number;
     if (maxBarHeight) {
-      this.MaxBarHeight = maxBarHeight;
+      this.maxBarHeight = maxBarHeight;
     }
     const normalBarHeight = this.properties.normalBarHeight as any as number;
     if (normalBarHeight) {
-      this.NormalBarHeight = normalBarHeight;
+      this.normalBarHeight = normalBarHeight;
     }
     const refreshTimeout = this.properties.refreshTimeout as any as number;
     if (refreshTimeout) {
-      this.RefreshTimeout = refreshTimeout;
+      this.refreshTimeout = refreshTimeout;
     }
   }
 
@@ -152,10 +152,10 @@ export default class PullDownRefresh extends SuperComponent {
     const offset = pageY - this.startPoint.pageY;
     const barHeight = this.toRpx(offset);
     if (barHeight > 0) {
-      if (barHeight > this.MaxBarHeight) {
+      if (barHeight > this.maxBarHeight) {
         // 限高
-        this.setRefreshBarHeight(this.MaxBarHeight);
-        this.startPoint.pageY = pageY - this.toPx(this.MaxBarHeight); // 限高的同时修正起点，避免触摸点上移时无效果
+        this.setRefreshBarHeight(this.maxBarHeight);
+        this.startPoint.pageY = pageY - this.toPx(this.maxBarHeight); // 限高的同时修正起点，避免触摸点上移时无效果
       } else {
         this.setRefreshBarHeight(barHeight);
       }
@@ -171,9 +171,9 @@ export default class PullDownRefresh extends SuperComponent {
     const barHeight = this.toRpx(pageY - this.startPoint.pageY);
     this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
     // 松开时高度超过阈值则触发刷新
-    if (barHeight > this.NormalBarHeight) {
+    if (barHeight > this.normalBarHeight) {
       this.setData({
-        barHeight: this.NormalBarHeight,
+        barHeight: this.normalBarHeight,
         rotate: 0,
         refreshStatus: 2,
       }); // 正在刷新
@@ -212,7 +212,7 @@ export default class PullDownRefresh extends SuperComponent {
         if (this.data.refreshStatus === 2) {
           this.close(); // 超时仍未被回调，则直接结束下拉
         }
-      }, this.RefreshTimeout) as any as number;
+      }, this.refreshTimeout) as any as number;
     } else {
       this.close();
     }
@@ -227,13 +227,13 @@ export default class PullDownRefresh extends SuperComponent {
   }
 
   setRefreshBarHeight(barHeight: number): Promise<number> {
-    const data = { barHeight };
-    if (barHeight >= this.NormalBarHeight) {
-      data['refreshStatus'] = 1;
-      data['rotate'] = 720; // 大于正常高度后不再旋转
+    const data: Record<string, any> = { barHeight };
+    if (barHeight >= this.normalBarHeight) {
+      data.refreshStatus = 1;
+      data.rotate = 720; // 大于正常高度后不再旋转
     } else {
-      data['refreshStatus'] = 0;
-      data['rotate'] = (barHeight / this.NormalBarHeight) * 720; // 小于正常高度时随下拉高度旋转720度
+      data.refreshStatus = 0;
+      data.rotate = (barHeight / this.normalBarHeight) * 720; // 小于正常高度时随下拉高度旋转720度
     }
     return new Promise((resolve) => {
       this.setData(data, () => resolve(barHeight));
@@ -241,7 +241,7 @@ export default class PullDownRefresh extends SuperComponent {
   }
 
   close() {
-    this.setData({ barHeight: this.DefaultBarHeight, refreshStatus: 4 }); // 结束下拉
+    this.setData({ barHeight: this.defaultBarHeight, refreshStatus: 4 }); // 结束下拉
     this.closingAnimateTimeFlag = setTimeout(() => {
       // 清理自身timeout
       this.closingAnimateTimeFlag = 0;

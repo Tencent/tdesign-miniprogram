@@ -1,9 +1,9 @@
-const MIN_DISTANCE = 10;
+const MinDistance = 10;
 const getDirection = (x: number, y: number) => {
-  if (x > y && x > MIN_DISTANCE) {
+  if (x > y && x > MinDistance) {
     return 'horizontal';
   }
-  if (y > x && y > MIN_DISTANCE) {
+  if (y > x && y > MinDistance) {
     return 'vertical';
   }
   return '';

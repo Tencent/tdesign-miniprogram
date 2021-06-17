@@ -1,4 +1,4 @@
-import { badgeProps } from './badge.interface';
+// import { BADGE_PROPS } from './badge.interface';
 import { SuperComponent, wxComponent } from '../common/src/index';
 
 @wxComponent()

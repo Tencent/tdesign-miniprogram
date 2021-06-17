@@ -32,7 +32,7 @@ export default class SwiperCell extends SuperComponent {
     },
     logoIconUrl: {
       type: String,
-      value: ``,
+      value: '',
     },
     logoTitle: {
       type: String,
@@ -40,7 +40,7 @@ export default class SwiperCell extends SuperComponent {
     },
     logoTitleUrl: {
       type: String,
-      value: ``,
+      value: '',
     },
   };
   data = {
