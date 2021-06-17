@@ -26,9 +26,9 @@ Page({
     if (!this.windowHeight) {
       this.windowHeight = wx.getSystemInfoSync().windowHeight;
     }
-    const showBackTop = e.scrollTop > this.windowHeight;
-    if (showBackTop !== this.data.showBackTop) {
-      this.setData({ showBackTop });
+    const isShowBackTop = e.scrollTop > this.windowHeight;
+    if (isShowBackTop !== this.data.showBackTop) {
+      this.setData({ showBackTop: isShowBackTop });
     }
   },
 
