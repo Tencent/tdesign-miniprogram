@@ -1,0 +1,30 @@
+<view
+  class="{{classPrefix}} t-class"
+  bind:touchstart="onTouchStart"
+  bind:touchmove="onTouchMove"
+  bind:touchend="onTouchEnd"
+>
+  <view
+    id="refresh-bar"
+    class="refresh-bar {{refreshStatus === 2 ? 'refreshing' : refreshStatus === 3 ? 'success' : refreshStatus === 4 ? 'finishing' : ''}}"
+    style="height: {{barHeight + 'rpx'}}; background: {{background}}; color: {{color}}; font-size: {{fontSize}};"
+  >
+    <view class="refresh-bar__content">
+      <view
+        class="refresh-bar__loading"
+        style="width: {{loadingSize}}; height: {{loadingSize}}; transform: rotate({{rotate}}deg);"
+      >
+        <block wx:if="{{useLoadingSlot}}">
+          <slot name="loading" />
+        </block>
+        <block wx:else>
+          <image class="img" src="{{loadingImg}}" />
+        </block>
+      </view>
+      <view class="refresh-bar__text">{{loadingTexts[refreshStatus]}}</view>
+    </view>
+  </view>
+  <view class="{{classPrefix}}__content">
+    <slot />
+  </view>
+</view>

@@ -3,8 +3,8 @@
   <scroll-view
     class="{{classPrefix}}__nav-wrapper"
     enable-flex
-    scroll-x="{{scrollX}}"
-    scroll-y="{{scrollY}}"
+    scroll-x="{{isScrollX}}"
+    scroll-y="{{isScrollY}}"
   >
     <view class="{{classPrefix}}__nav {{scrollable ? classPrefix+'__nav--scrollable' : '' }}">
       <view

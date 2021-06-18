@@ -8,7 +8,7 @@ interface MessageOptions extends IMessageProps {
   instance?: WechatMiniprogram.Component.TrivialInstance;
 }
 
-const TIMER_SYMBOL = Symbol(`${prefix}-message-timer`) as any;
+const TimerSymbol = Symbol(`${prefix}-message-timer`) as any;
 
 const defaultOptions = {
   theme: 'info',
@@ -43,11 +43,11 @@ const create = (options: MessageOptions) => {
     };
     message.setData(parsedOptions);
 
-    if (message[TIMER_SYMBOL]) {
-      clearTimeout(message[TIMER_SYMBOL]);
+    if (message[TimerSymbol]) {
+      clearTimeout(message[TimerSymbol]);
     }
 
-    message[TIMER_SYMBOL] = setTimeout(() => {
+    message[TimerSymbol] = setTimeout(() => {
       hideMessage();
       message.durationEnd(message);
     }, parsedOptions.duration);
@@ -57,10 +57,10 @@ const create = (options: MessageOptions) => {
   }
 };
 
-const Message = {};
+const MESSAGE = {};
 
 (['info', 'success', 'warning', 'error'] as MessageType[]).forEach((type: MessageType): void => {
-  Message[type] = (options: IMessageProps | string) => {
+  MESSAGE[type] = (options: IMessageProps | string) => {
     let props: IMessageProps = {
       content: '',
       theme: type,
@@ -79,4 +79,4 @@ const Message = {};
   };
 });
 
-export default Message;
+export default MESSAGE;

@@ -5,7 +5,7 @@ Page({
     textPassword: '123456',
   },
   onInput(event) {
-    console.log('123');
+    console.log('123', event);
   },
 
   onClear() {

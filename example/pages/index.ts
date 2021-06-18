@@ -2,6 +2,27 @@ Page({
   data: {
     list: [
       {
+        type: '新增类',
+        components: [
+          {
+            name: 'Sticky',
+            path: '/pages/sticky/sticky',
+          },
+          {
+            name: 'Swipeout',
+            path: '/pages/swipeout/swipeout',
+          },
+          {
+            name: 'Divider',
+            path: '/pages/divider/divider',
+          },
+          {
+            name: 'Back-top',
+            path: '/pages/back-top/back-top',
+          },
+        ],
+      },
+      {
         type: '基础类',
         components: [
           {
@@ -48,6 +69,14 @@ Page({
           {
             name: 'Scroll-View',
             path: '/pages/scroll-view/scroll-view',
+          },
+          {
+            name: 'Skeleton',
+            path: '/pages/skeleton/skeleton',
+          },
+          {
+            name: 'Footer',
+            path: '/pages/footer/footer',
           },
         ],
       },
@@ -126,6 +155,10 @@ Page({
           {
             name: 'Popup',
             path: '/pages/popup/popup',
+          },
+          {
+            name: 'PullDownRefresh',
+            path: '/pages/pull-down-refresh/pull-down-refresh',
           },
         ],
       },

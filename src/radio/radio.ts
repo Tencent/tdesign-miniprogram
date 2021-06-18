@@ -14,10 +14,7 @@ TComponent({
       type: Boolean,
       value: false,
       observer(val: boolean) {
-        this.data.active !== val &&
-          this.setData({
-            active: val,
-          });
+        this.data.active !== val && this.setData({ active: val });
       },
     },
     title: String,

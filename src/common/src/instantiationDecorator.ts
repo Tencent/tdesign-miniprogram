@@ -3,10 +3,10 @@ import { isPlainObject, toObject } from './flatTool';
 import { SuperComponent } from './superComponent';
 
 // 将 on 开头的生命周期函数转变成非 on 开头的
-const RAW_LIFE_CYCLES = ['Created', 'Attached', 'Ready', 'Moved', 'Detached'];
-const NATIVE_LIFE_CYCLES = RAW_LIFE_CYCLES.map((k) => k.toLowerCase());
+const RawLifeCycles = ['Created', 'Attached', 'Ready', 'Moved', 'Detached'];
+const NativeLifeCycles = RawLifeCycles.map((k) => k.toLowerCase());
 
-const COMPONENT_NATIVE_PROPS = [
+const ComponentNativeProps = [
   'externalClasses',
   'properties',
   'data',
@@ -39,11 +39,11 @@ export function toComponent(options: { [key: string]: any }): any {
   Object.getOwnPropertyNames(options).forEach((k) => {
     const desc = Object.getOwnPropertyDescriptor(options, k);
     if (!desc) return;
-    if (NATIVE_LIFE_CYCLES.indexOf(k) < 0 && typeof desc.value === 'function') {
+    if (NativeLifeCycles.indexOf(k) < 0 && typeof desc.value === 'function') {
       // 非生命周期函数挂载到 methods 对象上面
       Object.defineProperty(options.methods, k, desc);
       delete options[k];
-    } else if (COMPONENT_NATIVE_PROPS.indexOf(k) < 0) {
+    } else if (ComponentNativeProps.indexOf(k) < 0) {
       // 非函数，也非组件内部属性
       // 由于小程序组件会忽略不能识别的字段，需要这里需要把这些字段配置在组件 created 的时候赋值
       inits[k] = desc;
@@ -69,7 +69,7 @@ export function toComponent(options: { [key: string]: any }): any {
 export function wxComponent() {
   return function (constructor: new () => SuperComponent): void {
     class WxComponent extends constructor {
-      constructor(..._args: any[]) {
+      constructor() {
         super();
       }
 

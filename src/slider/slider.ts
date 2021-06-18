@@ -101,6 +101,8 @@ TComponent({
           .boundingClientRect((rect) => {
             if (rect) {
               resolve(rect);
+            } else {
+              reject(rect);
             }
           })
           .exec();
@@ -174,8 +176,8 @@ TComponent({
       const halfBlock = blockSize / 2;
       const fullLineWidth = maxRange + blockSize;
 
-      const changePos = activeLeft + activeRight >= maxRange;
-      if (changePos) {
+      const isChangePos = activeLeft + activeRight >= maxRange;
+      if (isChangePos) {
         const temp = activeLeft;
         activeLeft = fullLineWidth - activeRight - blockSize;
         activeRight = fullLineWidth - temp - blockSize;
