@@ -67,6 +67,10 @@ Page({
             path: '/pages/segmented-control/segmented-control',
           },
           {
+            name: 'Scroll-View',
+            path: '/pages/scroll-view/scroll-view',
+          },
+          {
             name: 'Skeleton',
             path: '/pages/skeleton/skeleton',
           },
