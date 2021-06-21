@@ -47,6 +47,17 @@
 | bordered     | `Boolean` | `true`  | N    | 是否显示下边框                  |
 | useLabelSlot | `Boolean` | `false` | N    | 是否使用 label slot             |
 
+| title-width | `string` | - | N | 标题宽度，须包含单位 |
+| size | `string` | `small` | N | 单元格 padding 大小，可选值为 `large`|`small` |
+| center | `boolean` | `false` | N | 是否使内容垂直居中 |
+| url | `string` | - | N | 点击后跳转的链接地址 |
+| link-type | `string` |`navigateTo`| N | 链接跳转类型，可选值为 `redirectTo` `switchTab` `reLaunch`
+| clickable | `boolean` | `false` | N | 是否开启点击反馈 |
+| is-link | `boolean` | `false` | N | 是否展示右侧箭头并开启点击反馈,is-link 属性默认带右箭头图标，可用 right-icon 属性选用其他图标 |
+| required | `boolean` | `false` | N | 是否显示表单必填星号 |
+| icon-color | `string` | `''` | N | 透传给[icon#color]
+| icon-size | `String` | `inherit` | N | 透传给[icon#ize]m 图标大小, 可以'middle' 'small'等关键字， 也可以是字体大小如'20px' |
+
 ### Slots
 
 | 名称       | 说明                                                        |
@@ -62,20 +73,3 @@
 | 事件       | event.detail | 说明             |
 | ---------- | ------------ | ---------------- |
 | bind:click | -            | 点击单元格时触发 |
-
-### `<t-cell-group>` 组件
-
-组件路径：`@tencent/tdesign-miniprogram/cell-group/cell-group`
-
-#### Props
-
-| 属性     | 值类型    | 默认值 | 必传 | 说明           |
-| -------- | --------- | ------ | ---- | -------------- |
-| title    | `String`  | -      | N    | 分组标题       |
-| bordered | `Boolean` | `true` | N    | 是否显示外边框 |
-
-### Slots
-
-| 名称 | 说明      |
-| ---- | --------- |
-| 默认 | cell 组件 |

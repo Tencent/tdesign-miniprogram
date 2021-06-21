@@ -1,9 +1,78 @@
 <view>
-  <view class="t-cell-group-demo-wrapper">
+  <view class="t-cell-group-demo-tapper">
     <view class="t-cell-group-demo__title">组合单元格</view>
-    <t-cell-group title="分组标题" bordered>
-      <t-cell title="单行标题" />
-      <t-cell title="单行标题" rightIcon="arrow-right" />
+
+    <t-cell-group title="01 基础用法">
+      <t-cell border required title="单行列表" />
+      <t-cell border title="单行列表1" value="内容文字" />
+      <t-cell border title="单行列表2" is-link />
+      <t-cell border title="单行列表3" right-icon="arrow-right" />
+      <t-cell border title="单行列表4" value="内容文字" is-link />
+    </t-cell-group>
+
+    <t-cell-group title="02 多行">
+      <t-cell
+        border
+        center
+        title="两行列表"
+        value="内容文字"
+        label="说明文字"
+        is-link
+        rightIcon="arrow-right"
+      />
+      <t-cell border center title="两行列表2" value="内容文字" label="说明文字" is-link>
+        <t-icon name="location_fill" size="40" slot="left-icon" />
+      </t-cell>
+      <t-cell border center title="两行列表" value="内容文字" label="说明文字图片1" is-link>
+        <image
+          class="title-image"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+          slot="left-icon"
+        />
+      </t-cell>
+      <t-cell border center title="两行列表" value="内容文字" label="说明文字图片2" is-link>
+        <image
+          class="title-image-large"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
+          slot="left-icon"
+        />
+      </t-cell>
+    </t-cell-group>
+
+    <t-cell-group title="03 规格">
+      <t-cell
+        border
+        center
+        t-class="small-cell"
+        title="小列表项（单行列表48）"
+        value="内容文字"
+        is-link
+      />
+      <t-cell
+        border
+        center
+        t-class="medium-cell"
+        title="中列表项（单行列表56）"
+        value="内容文字"
+        is-link
+      />
+      <t-cell
+        border
+        center
+        t-class="large-cell"
+        title="大列表项（双行列表）"
+        value="内容文字"
+        label="说明文字"
+        is-link
+      />
+      <t-cell
+        border
+        center
+        t-class="unlimit-cell"
+        title="不定高"
+        value="内容文字"
+        label="说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字说明文字"
+      />
     </t-cell-group>
   </view>
 </view>
