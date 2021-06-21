@@ -27,7 +27,7 @@ TComponent({
     },
     shape: {
       type: String,
-      value: 'square',
+      value: 'round',
     },
     loading: {
       type: Boolean,
@@ -113,11 +113,9 @@ TComponent({
         `${name}--${this.data.theme}`,
         `${name}--size-${this.data.size}`,
       ];
-      if (this.data.shape === 'square') {
-        classList.push(`${name}--square`);
-      } else if (this.data.shape === 'circle') {
-        classList.push(`${name}--circle`);
-      }
+
+      classList.push(`${name}--${this.data.shape}`);
+
       if (this.data.block) {
         classList.push(`${prefix}-is-block`);
       }
