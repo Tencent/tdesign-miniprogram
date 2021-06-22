@@ -1,26 +1,13 @@
-<view class="{{classPrefix}}-container" style="opacity: {{disabled ? 0.6 : 1}}">
-  <view class="{{classPrefix}}-label" style="width: {{labelWidth}}px">{{label}}</view>
+<view class="{{classPrefix}}">
+  <view class="{{classPrefix}}__label" style="width: {{labelWidth}}px">{{label}}</view>
   <view
-    wx-if="{{inactiveText}}"
-    class="{{classPrefix}}-text {{classPrefix}}-text__inactive"
-    style="color: {{ isActive ? '#000' : '#0252d9'}}"
-    >{{inactiveText}}</view
-  >
-  <view
-    class="{{classPrefix}}-body"
-    style="height: {{height[size]}}px; width: {{height[size] * 2 - 2}}px; border-color: {{isActive ? activedColor : inactivedColor }}; border-radius: {{height[size] / 2}}px; background-color: {{isActive ? activedColor : inactivedColor}}"
+    class="{{classPrefix}}__body {{isActive ? classPrefix + '__body--active' : ''}} {{disabled ? classPrefix + '__body--disabled' : ''}}"
+    style="background-color: {{disabled ? '' : (isActive ? activedColor : inactivedColor)}}"
     bindtap="onTapBackground"
   >
     <view
-      class="{{classPrefix}}-dot"
-      style="left: {{isActive ? height[size] - 1 : 1}}px; height: {{height[size] - 2}}px; width: {{height[size] - 2}}px; border-radius: {{height[size] / 2 - 1}}px; background-color: {{dotColor}}"
+      class="{{classPrefix}}__dot  {{isActive ? classPrefix + '__dot--active' : ''}}"
       catchtap="onTapDot"
-    ></view>
+    />
   </view>
-  <view
-    wx-if="{{activeText}}"
-    class="{{classPrefix}}-text {{classPrefix}}-text__active"
-    style="color: {{isActive ? '#0252d9' : '#000'}}"
-    >{{activeText}}</view
-  >
 </view>

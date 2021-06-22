@@ -1,18 +1,13 @@
-import TComponent from '../common/component';
+import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-switch`;
-
-TComponent({
-  properties: {
+@wxComponent()
+export default class Switch extends SuperComponent {
+  properties = {
     label: {
       type: String,
       value: '',
-    },
-    // size默认medium，还有small和large
-    size: {
-      type: String,
-      value: 'medium',
     },
     labelWidth: {
       type: Number,
@@ -39,44 +34,33 @@ TComponent({
     },
     activedColor: {
       type: String,
-      value: '#0252d9',
+      value: '#0052d9',
     },
     inactivedColor: {
       type: String,
-      value: '#dcdfe6',
+      value: 'rgba(0, 0, 0, .26)',
     },
-    dotColor: {
-      type: String,
-      value: '#fff',
-    },
-    activeText: {
-      type: String,
-      value: null,
-    },
-    inactiveText: {
-      type: String,
-      value: null,
-    },
-  },
+  };
   // 组件的内部数据
-  data: {
+  data = {
     classPrefix: name,
-    height: {
-      small: 20,
-      medium: 25,
-      large: 30,
-    },
     isActive: false,
-  },
-  lifetimes: {
+    bodyStyle: '',
+  };
+  lifetimes = {
     attached() {
-      const { value, activeValue } = this.data;
+      const { value, activeValue, disabled, activedColor, inactivedColor } = this.data;
       this.setData({
         isActive: value === activeValue,
       });
+      if (!disabled) {
+        this.setData({
+          bodyStyle: `background-color: ${this.data.isActive ? activedColor : inactivedColor}`,
+        });
+      }
     },
-  },
-  methods: {
+  };
+  methods = {
     switchChange() {
       const { disabled, value, activeValue, inactiveValue, isActive } = this.data;
       if (disabled) return;
@@ -96,5 +80,5 @@ TComponent({
     onTapDot() {
       this.switchChange();
     },
-  },
-});
+  };
+}
