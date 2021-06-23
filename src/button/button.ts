@@ -1,12 +1,13 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-button`;
 
-TComponent({
-  behaviors: ['wx://form-field-button'],
+@wxComponent()
+export default class Button extends SuperComponent {
+  behaviors = ['wx://form-field-button'];
   // 组件的对外属性
-  properties: {
+  properties = {
     // 样式相关 START ===
     theme: {
       type: String,
@@ -76,21 +77,21 @@ TComponent({
       value: false,
     },
     // === END 小程序功能相关
-  },
+  };
   // 组件的内部数据
-  data: {
+  data = {
     // 按钮样式列表
     className: '',
-  },
+  };
 
-  observers: {
+  observers = {
     'theme, size, plain, block, shape, disabled, loading'() {
       this.setClass();
     },
-  },
+  };
 
   /* 组件生命周期 */
-  lifetimes: {
+  lifetimes = {
     // 组件实例被创建
     // created() {},
     // 组件实例进入页面节点树
@@ -103,10 +104,10 @@ TComponent({
     // moved() {},
     // 组件实例被从页面节点树移除
     // detached() { },
-  },
+  };
 
   /* Methods */
-  methods: {
+  methods = {
     setClass() {
       const classList = [
         `${name}`,
@@ -150,5 +151,5 @@ TComponent({
     launchapp(e) {
       this.triggerEvent('launchapp', e.detail);
     },
-  },
-});
+  };
+}
