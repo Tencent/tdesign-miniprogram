@@ -1,3 +1,5 @@
-<view class="{{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}--{{type}}-anchor">
+<view
+  class="{{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}--{{type}}-anchor {{readonly ? classPrefix + '--readonly' : ''}}"
+>
   <slot />
 </view>

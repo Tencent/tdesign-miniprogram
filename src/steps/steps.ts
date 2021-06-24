@@ -1,4 +1,4 @@
-import TComponent from '../common/component';
+import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-steps`;
@@ -11,16 +11,17 @@ export enum StepStatusEnum {
   Error = 'error',
 }
 
-export default TComponent({
-  relations: {
+@wxComponent()
+export default class Steps extends SuperComponent {
+  relations: RelationsOptions = {
     './step': {
       type: 'descendant',
       linked() {
         this.updateChildren();
       },
     },
-  },
-  properties: {
+  };
+  properties = {
     readonly: {
       type: Boolean,
       value: false,
@@ -52,12 +53,12 @@ export default TComponent({
       type: String,
       value: StepStatusEnum.Wait,
     },
-  },
+  };
   // 组件的内部数据
-  data: {
+  data = {
     classPrefix: name,
-  },
-  methods: {
+  };
+  methods = {
     updateChildren() {
       const items = this.getRelationNodes('./step');
       const len = items.length;
@@ -89,5 +90,5 @@ export default TComponent({
         });
       }
     },
-  },
-});
+  };
+}

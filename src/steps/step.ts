@@ -1,14 +1,18 @@
-import TComponent from '../common/component';
+import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 
-TComponent({
-  relations: {
+@wxComponent()
+export default class Step extends SuperComponent {
+  options = {
+    multipleSlots: true,
+  };
+  relations: RelationsOptions = {
     './steps': {
       type: 'ancestor',
     },
-  },
-  properties: {
+  };
+  properties = {
     title: {
       type: String,
       value: '',
@@ -31,9 +35,9 @@ TComponent({
       type: String,
       value: '',
     },
-  },
+  };
   // 组件的内部数据
-  data: {
+  data = {
     classPrefix: `${prefix}-steps-item`,
     prefix,
     rootClassName: '',
@@ -44,8 +48,8 @@ TComponent({
     direction: 'vertical',
     type: 'default',
     isLastChild: false,
-  },
-  lifetimes: {
+  };
+  lifetimes = {
     ready() {
       const [parent] = this.getRelationNodes('./steps') || [];
 
@@ -55,8 +59,8 @@ TComponent({
         });
       }
     },
-  },
-  methods: {
+  };
+  methods = {
     updateStatus(current, index, type, direction, steps) {
       const { status } = this.data;
       let newStatus = status;
@@ -88,5 +92,5 @@ TComponent({
     click() {
       this.data.parent.handleClick(this.data.index);
     },
-  },
-});
+  };
+}
