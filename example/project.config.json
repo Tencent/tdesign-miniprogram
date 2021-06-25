@@ -25,7 +25,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.11.3",
-  "appid": "touristappid",
+  "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {
     "hidedInDevtools": []
@@ -58,14 +58,8 @@
       "list": [
         {
           "id": -1,
-          "name": "index",
-          "pathName": "pages/index",
-          "scene": null
-        },
-        {
-          "id": -1,
-          "name": "dialog",
-          "pathName": "pages/dialog/dialog",
+          "name": "custom",
+          "pathName": "pages/button/button",
           "query": "",
           "scene": null
         },

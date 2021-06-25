@@ -1,14 +1,15 @@
-import TComponent from '../common/component';
+import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar`;
 
-TComponent({
-  relations: {
+@wxComponent()
+export default class Tabbar extends SuperComponent {
+  relations: RelationsOptions = {
     './tab-bar-item': {
       type: 'descendant',
       linked() {
-        this.updateChildren();
+        // this.updateChildren();
       },
       // linkChanged() {
       //   this.updateChildren();
@@ -17,20 +18,20 @@ TComponent({
       //   this.updateChildren();
       // },
     },
-  },
-  data: {
+  };
+  data = {
     classPrefix,
     defaultNameIndex: -1,
-  },
-  properties: {
+  };
+  properties = {
     value: {
       type: Number,
       optionalTypes: [Array, String],
       value: 0,
       observer: 'updateChildren',
     },
-  },
-  methods: {
+  };
+  methods = {
     updateChildren() {
       const items = this.getRelationNodes('./tab-bar-item');
       const len = items.length;
@@ -64,5 +65,5 @@ TComponent({
       });
       return nameIndex;
     },
-  },
-});
+  };
+}
