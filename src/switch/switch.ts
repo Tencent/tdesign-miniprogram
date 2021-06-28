@@ -2,8 +2,10 @@ import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-switch`;
+const externalClass = `${prefix}-class`;
 @wxComponent()
 export default class Switch extends SuperComponent {
+  externalClasses = [externalClass];
   properties = {
     label: {
       type: String,
@@ -43,6 +45,7 @@ export default class Switch extends SuperComponent {
   };
   // 组件的内部数据
   data = {
+    externalClass,
     classPrefix: name,
     isActive: false,
     bodyStyle: '',
