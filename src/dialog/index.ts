@@ -1,3 +1,5 @@
+import config from '../common/config';
+
 interface DialogOptions {
   mode?: 'modal' | 'half-screen';
   theme?: 'primary' | 'warning' | 'success' | 'error';
@@ -50,10 +52,11 @@ const confirmDefaultOptions = {
 const getDefaultInstance = () => {
   const pages = getCurrentPages();
   const currentPage = pages[pages.length - 1];
-  return currentPage.selectComponent('#t-dialog');
+  return currentPage.selectComponent(`#${config.prefix}-dialog`);
 };
 
-const dialog = options => new Promise<{
+const dialog = (options) =>
+  new Promise<{
     confirm: Boolean;
     close?: Function;
     dialog: WechatMiniprogram.Component.TrivialInstance;
@@ -62,9 +65,10 @@ const dialog = options => new Promise<{
     const dialog = options.instance || getDefaultInstance();
 
     // 关闭 Dialog
-    const hideDialog = () => dialog.setData({
-      visible: false,
-    });
+    const hideDialog = () =>
+      dialog.setData({
+        visible: false,
+      });
 
     // 触发点击事件
     const clickEvent = (confirm) => {
@@ -90,24 +94,24 @@ const dialog = options => new Promise<{
         ...options,
       });
       // 点击笼罩层
-      const _clickOverlay = dialog.clickOverlay;
+      const ClickOverlayer = dialog.clickOverlay;
       dialog.clickOverlay = function (...args) {
-        _clickOverlay.bind(this)(...args);
+        ClickOverlayer.bind(this)(...args);
         if (options.closeOnClickOverlay) {
           // 点击笼罩层是否关闭
           clickEvent(false);
         }
       };
       // 点击关闭按钮
-      const _clickCloseBtn = dialog.clickCloseBtn;
+      const ClickCloseButton = dialog.clickCloseBtn;
       dialog.clickCloseBtn = function (...args) {
-        _clickCloseBtn.bind(this)(...args);
+        ClickCloseButton.bind(this)(...args);
         clickEvent(false);
       };
       // 点击确定按钮
-      const _clickConfirmBtn = dialog.clickConfirmBtn;
+      const ClickConfirmButton = dialog.clickConfirmBtn;
       dialog.clickConfirmBtn = function (...args) {
-        _clickConfirmBtn.bind(this)(...args);
+        ClickConfirmButton.bind(this)(...args);
         clickEvent(true);
       };
     } else {
@@ -117,7 +121,7 @@ const dialog = options => new Promise<{
     }
   });
 
-const Dialog = {
+const DIALOG = {
   // Dialog.alert
   alert(options: DialogOptions): Promise<{
     close?: Function;
@@ -142,4 +146,4 @@ const Dialog = {
   },
 };
 
-export default Dialog;
+export default DIALOG;

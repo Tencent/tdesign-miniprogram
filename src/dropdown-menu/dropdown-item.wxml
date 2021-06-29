@@ -1,12 +1,15 @@
-<view class="{{base}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px">
+<view
+  class="{{classPrefix}} {{show ? classBasePrefix + '-is-expanded' : ''}}"
+  style="top:{{top}}px"
+>
   <view
-    wx:if="{{show && showOverlay}}"
+    wx:if="{{show}}"
     class="t-mask"
     bindtap="clickOverlay"
     catchtouchmove="catchtouchmove"
   ></view>
-  <view class="{{contentClasses}} {{base}}__content" style="transition: all 200ms ease">
-    <view class="{{base}}__bd" wx:if="{{show}}">
+  <view class="{{contentClasses}} {{classPrefix}}__content" style="transition: all 200ms ease">
+    <view class="{{classPrefix}}__bd" wx:if="{{show}}">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
         <t-cell-group wx:if="{{selectMode === 'single'}}" bordered="{{false}}">
@@ -23,7 +26,7 @@
         <!-- 多选列表 -->
         <t-cell-group wx:if="{{selectMode === 'multi'}}" bordered="{{false}}">
           <t-checkbox-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
-            <view class="{{prefix}}-checkbox-wrap" wx:for="{{options}}" wx:key="index">
+            <view class="{{classBasePrefix}}-checkbox-wrap" wx:for="{{options}}" wx:key="index">
               <t-checkbox
                 name="{{item.value}}"
                 title="{{item.title}}"
@@ -37,7 +40,7 @@
         <!-- 树形列表 ST -->
         <!-- TODO 逻辑待实现 -->
         <t-cell-group
-          class="{{prefix}}-tree-cell-group"
+          class="{{classBasePrefix}}-tree-cell-group"
           wx:for="{{treeOptions}}"
           wx:key="level"
           wx:for-index="level"
@@ -83,7 +86,7 @@
                 data-level="{{level}}"
               >
                 <view
-                  class="{{prefix}}-checkbox-wrap"
+                  class="{{classBasePrefix}}-checkbox-wrap"
                   wx:for="{{treeOptions[level]}}"
                   wx:key="index"
                 >
@@ -101,7 +104,10 @@
         <slot></slot>
       </block>
     </view>
-    <view class="{{base}}__ft" wx:if="{{selectMode === 'multi' || optionsLayout === 'tree'}}">
+    <view
+      class="{{classPrefix}}__ft"
+      wx:if="{{selectMode === 'multi' || optionsLayout === 'tree'}}"
+    >
       <t-button class="t-button" theme="default" disabled="{{isBtnDisabled}}" bindtap="resetSelect"
         >重置</t-button
       >

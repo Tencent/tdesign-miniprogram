@@ -1,3 +1,8 @@
+@import (css) '../common/index.wxss';
+
+// 同 scripts/config.js
+@classBasePrefix: CONFIG_PREFIX;
+
 // Color Palette
 @black: #000;
 @white: #fff;
@@ -98,26 +103,26 @@
   transform: scaleY(0.5);
 }
 
-.t-collapse-panel {
+.@{classBasePrefix}-collapse-panel {
   &__title {
-    .t-cell__right-icon {
+    .@{classBasePrefix}-cell__right-icon {
       transform: rotate(90deg);
       .theme(transition, 'transform @collapse-item-transition-duration');
     }
 
     &--expanded {
-      .t-cell__right-icon {
+      .@{classBasePrefix}-cell__right-icon {
         transform: rotate(-90deg);
       }
     }
 
     &--disabled {
-      .t-cell,
-      .t-cell__right-icon {
+      .@{classBasePrefix}-cell,
+      .@{classBasePrefix}-cell__right-icon {
         .theme(color, '@collapse-item-title-disabled-color') !important;
       }
 
-      .t-cell--hover {
+      .@{classBasePrefix}-cell--hover {
         .theme(background-color, '@white') !important;
       }
     }

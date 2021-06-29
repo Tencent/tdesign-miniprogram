@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-dropdown-item`;
 
 TComponent({
   properties: {
@@ -19,25 +22,27 @@ TComponent({
       value: 'columns', // columns | tree | slot
     },
     optionsColumns: {
-      type: [Number, String],
+      type: Number,
+      optionalTypes: [String],
       value: 1,
     },
-    showOverlay: {
-      type: Boolean,
-      value: true,
-    },
     value: {
-      type: [Array, String],
-      value: null,
+      type: Array,
+      optionalTypes: [String, Number],
+      value: [],
     },
     disabled: {
       type: Boolean,
       value: false,
     },
+    itemId: {
+      type: String,
+      value: '',
+    },
   },
   data: {
-    prefix: 't',
-    base: 't-dropdown-item',
+    classBasePrefix: prefix,
+    classPrefix: name,
     show: false,
     isBtnDisabled: true,
     bar: null,
@@ -70,7 +75,6 @@ TComponent({
     const layoutCol = +this.data.optionsColumns;
     const isTree = optionsLayout === 'tree';
     const treeCol = isTree ? +this.data.treeColumns : 0;
-    const prefix = 't';
     const contentClassesObj: Object = {
       [`${prefix}-is-tree`]: isTree,
       [`${prefix}-is-single`]: !isTree && selectMode === 'single',
@@ -80,7 +84,7 @@ TComponent({
       [`${prefix}-is-col3`]: layoutCol === 3 || treeCol === 3,
     };
     const contentClasses = Object.keys(contentClassesObj)
-      .filter(e => contentClassesObj[e] === true)
+      .filter((e) => contentClassesObj[e] === true)
       .join(' ');
     this.setData({
       contentClasses,
@@ -143,7 +147,7 @@ TComponent({
     _getParentBottom(parent) {
       const query = wx.createSelectorQuery().in(parent);
       query
-        .select('#t-bar')
+        .select(`#${prefix}-bar`)
         .boundingClientRect((res) => {
           this.setData({
             top: res.bottom,

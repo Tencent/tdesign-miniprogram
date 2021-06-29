@@ -3,6 +3,14 @@ import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-steps`;
 
+export enum StepStatusEnum {
+  Empty = '',
+  Wait = 'wait',
+  Process = 'process',
+  Finish = 'finish',
+  Error = 'error',
+}
+
 TComponent({
   relations: {
     './step': {
@@ -37,6 +45,13 @@ TComponent({
       type: String,
       value: 'horizontal', // 'horizontal' | 'vertical'
     },
+    /**
+     * 完成状态 wait process error finish
+     */
+    status: {
+      type: String,
+      value: StepStatusEnum.Wait,
+    },
   },
   // 组件的内部数据
   data: {
@@ -50,7 +65,7 @@ TComponent({
 
       if (len > 0) {
         items.forEach((item, index) => {
-          item.updateStatus(current, index, this.data.type, this.data.direction);
+          item.updateStatus(current, index, this.data.type, this.data.direction, items);
         });
       }
     },

@@ -1,5 +1,12 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-checkbox-group`;
+
 TComponent({
+  data: {
+    classPrefix: name,
+  },
   relations: {
     '../checkbox/checkbox': {
       type: 'descendant',

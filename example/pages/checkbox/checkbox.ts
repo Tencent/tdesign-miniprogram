@@ -1,6 +1,5 @@
 Page({
-  data: {
-  },
+  data: {},
   onChange(event) {
     console.log(event.detail);
   },

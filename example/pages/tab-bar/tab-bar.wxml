@@ -9,21 +9,13 @@
       bindchange="onChange"
       class="{{index===demoList_1.length-1?'':'mb-12'}}"
     >
-      <t-tab-bar-item
-        wx:for="{{list}}"
-        wx:for-item="item"
-        wx:for-index="index"
-        wx:key="index"
-      >
+      <t-tab-bar-item wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
         {{item.text}}
       </t-tab-bar-item>
     </t-tab-bar>
   </t-cell-group>
   <t-cell-group title="双层级纯文本标签栏">
-    <t-tab-bar
-      value="{{value}}"
-      bindchange="onChange"
-    >
+    <t-tab-bar value="{{value}}" bindchange="onChange">
       <t-tab-bar-item
         wx:for="{{list_5}}"
         wx:for-item="item"

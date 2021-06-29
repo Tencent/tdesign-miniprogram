@@ -1,0 +1,8 @@
+<view
+  class="t-class {{classPrefix}}  {{ hairline?  't-divider--hairline' : ''}} {{classPrefix}}--{{contentPosition}}  {{dashed? 't-divider--dashed' : ''}} "
+  style="{{ borderColor  ? 'border-color: ' + borderColor + ';' : '' }}{{ textColor ? 'color: ' + textColor + ';' : '' }}{{ customStyle }}"
+>
+  <view class="">
+    <slot />
+  </view>
+</view>

@@ -1,6 +1,12 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-rate`;
 
 TComponent({
+  data: {
+    classPrefix: name,
+  },
   properties: {
     count: {
       type: Number,
@@ -48,9 +54,7 @@ TComponent({
         return;
       }
 
-      const {
-        val = 0,
-      } = (e.target && e.target.dataset) || {};
+      const { val = 0 } = (e.target && e.target.dataset) || {};
       this.setData({
         value: val,
       });
@@ -75,9 +79,7 @@ TComponent({
         return;
       }
 
-      const {
-        val = 0,
-      } = (e.target && e.target.dataset) || {};
+      const { val = 0 } = (e.target && e.target.dataset) || {};
       // 只处理当前最大选中元素的取消
       if (val !== this.data.value) {
         return;

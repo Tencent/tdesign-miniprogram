@@ -19,7 +19,6 @@
   </view>
 </view>
 
-
 <view class="tdesign-demo-transition">
   <view class="demo-title">隐藏不渲染</view>
   <view class="demo-content">

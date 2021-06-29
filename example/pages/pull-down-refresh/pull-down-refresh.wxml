@@ -1,0 +1,78 @@
+<t-pull-down-refresh
+  id="pull-down-refresh-0"
+  normal-bar-height="{{200}}"
+  max-bar-height="{{272}}"
+  refreshTimeout="{{3000}}"
+  background="#f5f5f5"
+  use-loading-slot
+  loading-si
+  ze="60rpx"
+  loading-texts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成', '']}}"
+  bindrefresh="onPullDownRefresh0"
+>
+  <t-loading
+    loading
+    slot="loading"
+    error="{{error}}"
+    size="38px"
+    showType="icon-only"
+    layout="default"
+    bind:reload="toggleError"
+  >
+  </t-loading>
+  <view class="t-pulldown-reflesh_title">PullDownRefresh 下拉刷新</view>
+  <view class="t-pulldown-reflesh_desc"
+    >下拉动页面帮助用户快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新</view
+  >
+
+  <view class="t-pulldown-reflesh_wrapper">
+    <view class="t-pulldown-reflesh_wrapper-title">01 基本用法</view>
+    <view class="t-pulldown-reflesh_wrapper-desc">下拉刷新大致分为顶部下拉和中间下拉</view>
+    <view class="flex pulldown-reflesh_content">
+      <t-skeleton
+        wx:for="{{2}}"
+        wx:key="index"
+        row="3"
+        loading-class="skeletion-item"
+        row-class="skeletion-row"
+        row-width="{{['340rpx', '340rpx', '218rpx']}}"
+        rowHeight="{{['342rpx', '32rpx', '32rpx']}}"
+      />
+      <!-- <view class="text">拖拽该区域演示 顶部下拉刷新</view> -->
+    </view>
+  </view>
+</t-pull-down-refresh>
+<t-pull-down-refresh
+  id="pull-down-refresh-1"
+  normal-bar-height="{{200}}"
+  max-bar-height="{{272}}"
+  refreshTimeout="{{3000}}"
+  background="white"
+  use-loading-slot
+  loading-size="60rpx"
+  loading-texts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成', '']}}"
+  bindrefresh="onPullDownRefresh1"
+>
+  <t-loading
+    slot="loading"
+    loading
+    error="{{error}}"
+    size="38px"
+    showType="icon-only"
+    layout="default"
+    bind:reload="toggleError"
+  >
+  </t-loading>
+  <view class="flex pulldown-reflesh_content">
+    <t-skeleton
+      wx:for="{{2}}"
+      wx:key="index"
+      row="3"
+      loading-class="skeletion-item"
+      row-class="skeletion-row"
+      row-width="{{['340rpx', '340rpx', '218rpx']}}"
+      rowHeight="{{['342rpx', '32rpx', '32rpx']}}"
+    />
+    <view class="text">拖拽该区域演示 中间下拉刷新</view>
+  </view>
+</t-pull-down-refresh>

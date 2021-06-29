@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-input`;
 
 enum TSizeValue {
   Medium = 'medium',
@@ -24,6 +27,7 @@ TComponent({
     },
     value: {
       type: String,
+      optionalTypes: [Number],
       value: '',
     },
     password: {
@@ -47,7 +51,8 @@ TComponent({
       value: '',
     },
     type: {
-      type: TTypeValue,
+      type: String,
+      optionalTypes: [Number],
       value: TTypeValue.Text,
     },
     maxlength: {
@@ -85,6 +90,7 @@ TComponent({
 
   data: {
     inputValue: '',
+    classPrefix: name,
   },
   /* 组件生命周期 */
   lifetimes: {

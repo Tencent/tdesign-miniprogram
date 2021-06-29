@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-dropdown-menu`;
 
 TComponent({
   properties: {
@@ -11,13 +14,13 @@ TComponent({
       value: 200,
     },
     closeOnClickOverlay: {
-      type: Number,
+      type: Boolean,
       value: true,
     },
   },
   data: {
-    prefix: 't',
-    base: 't-dropdown-menu',
+    classBasePrefix: prefix,
+    classPrefix: name,
     nodes: null,
     menus: null,
     activeIdx: -1,

@@ -1,4 +1,8 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-checkbox`;
+
 TComponent({
   relations: {
     '../checkbox-group/checkbox-group': {
@@ -18,7 +22,11 @@ TComponent({
     title: String,
     name: String,
     label: String,
-    value: String,
+    value: {
+      type: String,
+      optionalTypes: [Number],
+      value: '',
+    },
     disabled: {
       type: Boolean,
       value: false,
@@ -29,6 +37,8 @@ TComponent({
     },
   },
   data: {
+    classPrefix: name,
+    classBasePrefix: prefix,
     active: false,
   },
   methods: {

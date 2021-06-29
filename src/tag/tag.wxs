@@ -1,31 +1,31 @@
-var getTagClass = function(props) {
-  var baseClass = 't-tag';
-  var prefix = 't'
+var getTagClass = function (props) {
+  var baseClass = props.classPrefix || '';
+  var prefix = props.classBasePrefix || '';
   var size = props.size || 'medium';
   var shape = props.shape || 'square';
   var theme = props.theme || 'default';
-  var effect = props.effect || 'dark';
+  var variant = props.variant || 'dark';
   var closable = props.closable || false;
   var disabled = props.disabled || false;
   var tagClass = [
     baseClass,
     baseClass + '--theme-' + theme,
-    baseClass + '--effect-' + effect,
+    baseClass + '--effect-' + variant,
     closable ? baseClass + '--closable ' + prefix + '-is-closable' : '',
     disabled ? baseClass + '--disabled ' + prefix + '-is-disabled' : '',
     baseClass + '--size-' + size,
     shape === 'shape' ? baseClass + '--square' : '',
     shape === 'round' ? baseClass + '--round' : '',
     shape === 'circle' ? baseClass + '--circle' : '',
-  ]
+  ];
   return tagClass.join(' ');
 };
-var getTagStyle = function(maxWidth) {
+var getTagStyle = function (maxWidth) {
   if (!maxWidth) {
     return '';
   }
   var width = typeof maxWidth === 'number' ? maxWidth + 'px' : maxWidth;
   return 'maxWidth:' + width + ';';
-}
+};
 module.exports.getTagClass = getTagClass;
 module.exports.getTagStyle = getTagStyle;

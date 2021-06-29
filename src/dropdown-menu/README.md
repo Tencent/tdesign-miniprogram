@@ -1,4 +1,4 @@
-#  DropdownMenu 下拉菜单
+# DropdownMenu 下拉菜单
 
 ## 介绍
 
@@ -28,9 +28,20 @@
 ```html
 <!-- page.wxml -->
 <t-dropdown-menu>
-      <t-dropdown-item title="单选菜单" options="{{optionsS}}" value="{{selectedS}}" bindselected="singleSelected"></t-dropdown-item>
-      <t-dropdown-item title="多选菜单" options="{{optionsM}}" value="{{selectedM}}" bindselected="multiSelected" selectMode="multi"></t-dropdown-item>
-    </t-dropdown-menu>
+  <t-dropdown-item
+    title="单选菜单"
+    options="{{optionsS}}"
+    value="{{selectedS}}"
+    bindselected="singleSelected"
+  ></t-dropdown-item>
+  <t-dropdown-item
+    title="多选菜单"
+    options="{{optionsM}}"
+    value="{{selectedM}}"
+    bindselected="multiSelected"
+    selectMode="multi"
+  ></t-dropdown-item>
+</t-dropdown-menu>
 ```
 
 ## API
@@ -46,7 +57,6 @@
 | duration               | number  | 200    | -    | 展开动画的时长         |
 | overlay                | boolean | true   | -    | 展开选单时是否展示遮罩 |
 | close-on-click-overlay | boolean | true   | -    | 点击遮罩时是否关闭选单 |
-
 
 ### `<t-dropdown-item>` 组件
 

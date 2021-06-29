@@ -1,8 +1,7 @@
 Page({
-  data: {
-  },
+  data: {},
   onTabsChange(event: any) {
-    // console.log(event.detail);
+    console.log(event.detail);
   },
   onTabsDisabled({ detail: { title } }) {
     wx.showToast({

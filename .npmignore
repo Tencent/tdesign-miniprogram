@@ -1,0 +1,21 @@
+**/**
+!LICENSE
+!README.md
+!CHANGELOG.md
+
+# 对发布的组件进行筛选
+miniprogram_dist/**/**
+!miniprogram_dist/common/**/**
+!miniprogram_dist/behaviors/**/**
+
+!miniprogram_dist/message/**/**
+!miniprogram_dist/segmented-control/**/**
+# !miniprogram_dist/stepper/**/**
+# !miniprogram_dist/dropdown-menu/**/**
+!miniprogram_dist/icon/**/**
+# !miniprogram_dist/input/**/**
+!miniprogram_dist/steps/**/**
+!miniprogram_dist/tag/**/**
+!miniprogram_dist/toast/**/**
+!miniprogram_dist/picker/**/**
+!miniprogram_dist/progress/**/**

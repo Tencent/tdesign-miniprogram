@@ -1,6 +1,12 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-loading`;
 
 TComponent({
+  data: {
+    classPrefix: name,
+  },
   properties: {
     layout: {
       type: String,
@@ -8,7 +14,7 @@ TComponent({
     },
     size: {
       type: String,
-      value: '40px',
+      value: 'medium',
     },
     textSize: {
       type: String,
@@ -40,12 +46,9 @@ TComponent({
     },
     progress: {
       type: Number,
-      value: '-1',
+      value: -1,
     },
-    loading: {
-      type: Boolean,
-      value: true,
-    },
+    loading: Boolean,
   },
   methods: {
     reloadClick() {

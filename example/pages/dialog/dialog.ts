@@ -33,7 +33,7 @@ Page({
       confirmContent: '警告操作',
       closeOnClickOverlay: false,
       asyncClose: true,
-    }).then(({ confirm, close }) => {
+    }).then(({ close }) => {
       // if (confirm) {
       // 点击确定按钮
       close(); // 关闭弹窗
@@ -46,25 +46,25 @@ Page({
   // 输入类对话框
   // showInputDialog() { },
   // 展示组件对话框
-  showCompDialog(event) {
+  showCompDialog() {
     this.setData({
       compDialogVisible: true,
     });
   },
   // 点击笼罩层
-  hideCompDialog(event) {
+  hideCompDialog() {
     this.setData({
       compDialogVisible: false,
     });
   },
   // 展示组件对话框
-  showOpenTypeDialog(event) {
+  showOpenTypeDialog() {
     this.setData({
       openTypeDialogVisible: true,
     });
   },
   // 点击笼罩层
-  hideOpenTypeDialog(event) {
+  hideOpenTypeDialog() {
     this.setData({
       openTypeDialogVisible: false,
     });
@@ -72,5 +72,10 @@ Page({
   openSetting() {
     // 打开授权设置页
     this.hideDialog(); // 关闭弹窗
+  },
+  hideDialog() {
+    this.setData({
+      openTypeDialogVisible: false,
+    });
   },
 });

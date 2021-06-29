@@ -1,5 +1,8 @@
-<view class="t-radio {{disabled ? 't-radio--disabled' : ''}}">
+<view class="{{classPrefix}} {{disabled ? classPrefix+'--disabled' : ''}}">
   <t-cell title="{{title}}" label="{{label}}" bind:click="onChange" bordered="{{bordered}}">
-    <view slot="left-icon" class="t-radio__button {{active ? 't-is-active' : ''}}" />
+    <view
+      slot="left-icon"
+      class="{{classPrefix}}__button {{active ? classBasePrefix+'-is-active' : ''}}"
+    />
   </t-cell>
 </view>

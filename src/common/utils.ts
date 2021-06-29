@@ -44,7 +44,7 @@ export const classNames = function (...args) {
 
 export const styles = function (styleObj) {
   return Object.keys(styleObj)
-    .map(styleKey => `${styleKey}: ${styleObj[styleKey]}`)
+    .map((styleKey) => `${styleKey}: ${styleObj[styleKey]}`)
     .join('; ');
 };
 

@@ -5,17 +5,17 @@ const { prefix } = config;
 const name = `${prefix}-popup`;
 
 const defaultTransitionProps = {
-  name: 't-popup--transition',
+  name: `${name}--transition`,
   durations: [300, 300],
   appear: false,
 };
 
 TComponent({
-  options: {
-    styleIsolation: 'shared',
-  },
   properties: {
-    visible: Boolean,
+    visible: {
+      type: Boolean,
+      value: false,
+    },
     // center | top | bottom | left | right
     position: {
       type: String,
@@ -26,7 +26,10 @@ TComponent({
       type: Boolean,
       value: true,
     },
-    destroyOnHide: Boolean,
+    destroyOnHide: {
+      type: Boolean,
+      value: false,
+    },
     customClass: String,
     transitionProps: Object,
   },

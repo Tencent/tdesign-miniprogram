@@ -1,10 +1,13 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-collapse`;
 
 TComponent({
   options: {
     addGlobalClass: true,
   },
-  externalClasses: ['t-class'],
+  externalClasses: [`${prefix}-class`],
 
   relations: {
     '../collapse-panel/collapse-panel': {
@@ -13,7 +16,7 @@ TComponent({
         this.children.push(target);
       },
       unlinked(this, target: WechatMiniprogram.Component.TrivialInstance) {
-        this.children = this.children.filter(item => item !== target);
+        this.children = this.children.filter((item) => item !== target);
       },
     },
   },
@@ -30,6 +33,7 @@ TComponent({
       observer(this) {
         this.updateExpanded();
       },
+      value: false,
     },
     border: {
       type: Boolean,
@@ -37,7 +41,9 @@ TComponent({
     },
   },
 
-  data: {},
+  data: {
+    classPrefix: name,
+  },
 
   methods: {
     created() {
@@ -55,7 +61,7 @@ TComponent({
       if (!accordion) {
         name = expanded
           ? (value || []).concat(name)
-          : (value || []).filter(activeName => activeName !== name);
+          : (value || []).filter((activeName) => activeName !== name);
       } else {
         name = expanded ? name : '';
       }

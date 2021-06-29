@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-indexes`;
 
 interface Touch {
   startX: number;
@@ -36,28 +39,13 @@ TComponent({
     },
   },
   properties: {
-    indexLists: {
+    indexList: {
       type: Array,
       value: ['A', 'B', 'C', 'D'],
     },
-    cellLists: {
-      type: Array,
-      value: ['1', '2', '3', '4'],
-    },
-    currentSidebar: {
-      type: String,
-      value: '',
-    },
-    showCurrentSidebar: {
-      type: Boolean,
-      value: false,
-    },
-    children: {
-      type: Array,
-      value: [],
-    },
   },
   data: {
+    classPrefix: name,
     rootScrollMask: false,
     showCurrentSidebar: false,
     currentSidebar: '',
@@ -104,7 +92,7 @@ TComponent({
       touch.startY = touches[0].clientX;
       const query = wx.createSelectorQuery().in(this);
       query
-        .selectAll('.t-indexes__sidebar-item')
+        .selectAll(`.${name}__sidebar-item`)
         .fields(
           {
             id: false,
@@ -147,7 +135,7 @@ TComponent({
     getTitleNode() {
       const query = wx.createSelectorQuery().in(this);
       query
-        .selectAll('.t-indexes>>>.t-indexes__anchor')
+        .selectAll(`.${name}>>>.${name}__anchor`)
         .fields(
           {
             id: false,

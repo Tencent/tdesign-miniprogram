@@ -2,7 +2,7 @@ import TComponent from '../common/component';
 import config from '../common/config';
 
 const itemHeight = 40;
-const DEFAULT_DURATION = 200;
+const DefaultDuration = 200;
 
 const range = function (num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max);
@@ -26,10 +26,12 @@ TComponent({
       type: Array,
       value: [],
       observer(options) {
-        const formatter = this.data.formatter || (val => val);
+        const formatter = this.data.formatter || ((val) => val);
         const optionKey = this.data.optionKey || '';
         const optionList = Array.isArray(options)
-          ? options.map(option => formatter(typeof option === 'object' && optionKey ? option[optionKey] : option))
+          ? options.map((option) =>
+              formatter(typeof option === 'object' && optionKey ? option[optionKey] : option),
+            )
           : [];
         this.setData({
           optionList,
@@ -37,7 +39,7 @@ TComponent({
           offset: 0,
         });
         // 重置选中的值与下标
-        this._selectedIndex = 0;
+        this.SelectedIndex = 0;
         // eslint-disable-next-line prefer-destructuring
         this._selectedValue = optionList[0];
       },
@@ -52,14 +54,14 @@ TComponent({
     },
   },
   created() {
-    this._startY = 0; // touchStart 触摸位置 Y 坐标
-    this._startOffset = 0; // touchStart 起始偏移量
+    this.StartY = 0; // touchStart 触摸位置 Y 坐标
+    this.StartOffset = 0; // touchStart 起始偏移量
   },
   attached() {
     const { defaultIndex, optionList } = this.data;
     this.setData({ offset: -defaultIndex * itemHeight });
     // 当前选中的值与下标
-    this._selectedIndex = defaultIndex;
+    this.SelectedIndex = defaultIndex;
     this._selectedValue = optionList[defaultIndex];
   },
   data: {
@@ -70,35 +72,35 @@ TComponent({
   },
   methods: {
     onTouchStart(event) {
-      this._startY = event.touches[0].clientY;
-      this._startOffset = this.data.offset;
+      this.StartY = event.touches[0].clientY;
+      this.StartOffset = this.data.offset;
       this.setData({ duration: 0 });
     },
 
     onTouchMove(event) {
-      const { _startY, _startOffset } = this;
+      const { StartY, StartOffset } = this;
       // 偏移增量
-      const deltaY = event.touches[0].clientY - _startY;
+      const deltaY = event.touches[0].clientY - StartY;
       this.setData({
-        offset: range(_startOffset + deltaY, -(this.getCount() * itemHeight), itemHeight),
+        offset: range(StartOffset + deltaY, -(this.getCount() * itemHeight), itemHeight),
       });
     },
 
     onTouchEnd() {
-      const { _startOffset, _selectedIndex } = this;
+      const { StartOffset, SelectedIndex } = this;
       const { offset, optionList } = this.data;
 
-      if (offset === _startOffset) {
+      if (offset === StartOffset) {
         return;
       }
       // 调整偏移量
       const index = range(Math.round(-offset / itemHeight), 0, this.getCount() - 1);
       this.setData({
-        duration: DEFAULT_DURATION,
+        duration: DefaultDuration,
         offset: -index * itemHeight,
       });
 
-      if (index === _selectedIndex) {
+      if (index === SelectedIndex) {
         return;
       }
       wx.nextTick(() => {
@@ -106,7 +108,7 @@ TComponent({
           index,
           value: optionList[index],
         };
-        this._selectedIndex = index;
+        this.SelectedIndex = index;
         this._selectedValue = optionList[index];
         this.triggerEvent('change', changeObj);
         const picker = this.getRelationNodes('./picker')?.[0];

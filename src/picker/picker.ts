@@ -1,5 +1,7 @@
 import TComponent from '../common/component';
 import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-picker`;
 
 TComponent({
   relations: {
@@ -23,9 +25,13 @@ TComponent({
       type: String,
       value: '取消',
     },
+    theme: {
+      type: String,
+      value: 'default',
+    },
   },
   data: {
-    prefix: `${config.prefix}-picker`,
+    classPrefix: name,
   },
   methods: {
     getPickerColumns() {
@@ -42,11 +48,11 @@ TComponent({
       }
 
       const selectedValues = {
-        index: pickerColumns.map(pickerColumn => pickerColumn._selectedIndex),
-        value: pickerColumns.map(pickerColumn => pickerColumn._selectedValue),
+        index: pickerColumns.map((pickerColumn) => pickerColumn._selectedIndex),
+        value: pickerColumns.map((pickerColumn) => pickerColumn._selectedValue),
       };
-      const multi = pickerColumns.length > 1;
-      if (multi) {
+      const isMulti = pickerColumns.length > 1;
+      if (isMulti) {
         return selectedValues;
       }
       return {
@@ -61,8 +67,8 @@ TComponent({
       this.triggerEvent('cancel');
     },
     triggerChange({ column, index, value }) {
-      const multi = this.getPickerColumns().length > 1;
-      this.triggerEvent('change', multi ? { column, index, value } : { index, value });
+      const isMulti = this.getPickerColumns().length > 1;
+      this.triggerEvent('change', isMulti ? { column, index, value } : { index, value });
     },
   },
 });

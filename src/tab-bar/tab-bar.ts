@@ -24,7 +24,8 @@ TComponent({
   },
   properties: {
     value: {
-      type: [Array, Number, String],
+      type: Number,
+      optionalTypes: [Array, String],
       value: 0,
       observer: 'updateChildren',
     },

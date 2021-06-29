@@ -2,7 +2,7 @@
   <view class="t-radio-demo__title">基础单选框</view>
   <basic-demo class="basic-demo" />
   <view class="t-radio-demo__title">禁用选项</view>
-  <group-demo class="disabled-demo" items="{{group1}}" value="{{group1value}}"/>
+  <group-demo class="disabled-demo" items="{{group1}}" value="{{group1value}}" />
   <view class="t-radio-demo__title">组合使用</view>
-  <group-demo class="group-demo" items="{{group2}}" value="{{group2value}}"/>
+  <group-demo class="group-demo" items="{{group2}}" value="{{group2value}}" />
 </view>

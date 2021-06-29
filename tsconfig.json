@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "es6",
     "outDir": "dist",
     "types": ["miniprogram-api-typings"],
@@ -10,9 +11,5 @@
       "@tencent/tdesign-miniprogram/*": ["miniprogram_dist/*"]
     }
   },
-  "include": [
-    "src/**/*",
-    "example/**/*",
-    "site/**/*",
-  ]
+  "include": ["src/**/*", "example/**/*", "site/**/*", "typing.d.ts"]
 }

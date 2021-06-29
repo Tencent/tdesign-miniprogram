@@ -1,8 +1,7 @@
 {
-    "component": true,
-    "usingComponents": {
-      "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell",
-      "t-indexes-anchor": "@tencent/tdesign-miniprogram/indexes/indexes-anchor"
-    }
+  "component": true,
+  "usingComponents": {
+    "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell",
+    "t-indexes-anchor": "@tencent/tdesign-miniprogram/indexes/indexes-anchor"
   }
-  
+}

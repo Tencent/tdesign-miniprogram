@@ -2,6 +2,31 @@ Page({
   data: {
     list: [
       {
+        type: '新增类',
+        components: [
+          {
+            name: 'Sticky',
+            path: '/pages/sticky/sticky',
+          },
+          {
+            name: 'Swipeout',
+            path: '/pages/swipeout/swipeout',
+          },
+          {
+            name: 'Divider',
+            path: '/pages/divider/divider',
+          },
+          {
+            name: 'Back-top',
+            path: '/pages/back-top/back-top',
+          },
+          {
+            name: 'Empty',
+            path: '/pages/empty/empty',
+          },
+        ],
+      },
+      {
         type: '基础类',
         components: [
           {
@@ -17,6 +42,10 @@ Page({
       {
         type: '信息展示类',
         components: [
+          {
+            name: 'Badge',
+            path: '/pages/badge/badge',
+          },
           {
             name: 'Tag',
             path: '/pages/tag/tag',
@@ -40,6 +69,18 @@ Page({
           {
             name: 'SegmentedControl',
             path: '/pages/segmented-control/segmented-control',
+          },
+          {
+            name: 'Scroll-View',
+            path: '/pages/scroll-view/scroll-view',
+          },
+          {
+            name: 'Skeleton',
+            path: '/pages/skeleton/skeleton',
+          },
+          {
+            name: 'Footer',
+            path: '/pages/footer/footer',
           },
         ],
       },
@@ -119,6 +160,10 @@ Page({
             name: 'Popup',
             path: '/pages/popup/popup',
           },
+          {
+            name: 'PullDownRefresh',
+            path: '/pages/pull-down-refresh/pull-down-refresh',
+          },
         ],
       },
       {
@@ -135,6 +180,10 @@ Page({
           {
             name: 'Steps',
             path: '/pages/steps/steps',
+          },
+          {
+            name: 'Drawer',
+            path: '/pages/drawer/drawer',
           },
         ],
       },

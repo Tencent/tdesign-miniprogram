@@ -1,6 +1,10 @@
 import TComponent from '../common/component';
 import dom from '../behaviors/dom';
 import touch from '../behaviors/touch';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-tabs`;
+
 enum Position {
   top = 'top',
   right = 'right',
@@ -64,16 +68,17 @@ TComponent({
       value: false,
     },
     tabPosition: {
-      type: Position,
+      type: String,
       value: Position.top, // 枚举 'bottom' | 'left' | 'right',
     },
   },
   data: {
+    classPrefix: name,
     tabs: [],
     currentIndex: -1,
     trackStyle: '',
-    scrollX: true,
-    scrollY: false,
+    isScrollX: true,
+    isScrollY: false,
     direction: 'X',
     scrollable: false,
   },
@@ -88,17 +93,17 @@ TComponent({
 
       // 根据tabPosition判断scroll-view滚动方向
       const { tabPosition } = this.data;
-      let scrollX = false;
-      let scrollY = false;
+      let isScrollX = false;
+      let isScrollY = false;
       if (tabPosition === Position.top || tabPosition === Position.bottom) {
-        scrollX = true;
+        isScrollX = true;
       } else {
-        scrollY = true;
+        isScrollY = true;
       }
       this.setData({
-        scrollX,
-        scrollY,
-        direction: scrollX ? 'X' : 'Y',
+        isScrollX,
+        isScrollY,
+        direction: isScrollX ? 'X' : 'Y',
       });
     },
   },
@@ -122,9 +127,9 @@ TComponent({
     setCurrentIndex(index: number) {
       if (index <= -1 || index >= this.children.length) return;
       this.children.forEach((child: any, idx: number) => {
-        const active = index === idx;
-        if (active !== child.data.active) {
-          child.render(active, this);
+        const isActive = index === idx;
+        if (isActive !== child.data.active) {
+          child.render(isActive, this);
         }
       });
       if (this.data.currentIndex === index) return;
@@ -147,20 +152,20 @@ TComponent({
     setTrack(color = '#0052d9') {
       const { children } = this;
       if (!children) return;
-      const { currentIndex, duration, scrollX, direction } = this.data;
+      const { currentIndex, duration, isScrollX, direction } = this.data;
       if (currentIndex <= -1) return;
-      this.gettingBoundingClientRect('.t-tabs__tabbar', true).then((res: any) => {
+      this.gettingBoundingClientRect(`.${name}__tabbar`, true).then((res: any) => {
         const rect = res[currentIndex];
         if (!rect) return;
         let count = 0;
         let distance = 0;
         for (const item of res) {
           if (count < currentIndex) {
-            distance += scrollX ? item.width : item.height;
+            distance += isScrollX ? item.width : item.height;
             count += 1;
           }
         }
-        if (scrollX) {
+        if (isScrollX) {
           distance += (rect.width - trackLineWidth) / 2;
         }
         let trackStyle = `background-color: ${color};
@@ -169,7 +174,7 @@ TComponent({
         -webkit-transition-duration: ${duration}s;
         transition-duration: ${duration}s;
       `;
-        trackStyle += scrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
+        trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
         this.setData({
           trackStyle,
         });

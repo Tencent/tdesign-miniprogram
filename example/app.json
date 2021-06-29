@@ -20,7 +20,9 @@
     "pages/stepper/stepper",
     "pages/slider/slider",
     "pages/radio/radio",
+    "pages/swipeout/swipeout",
     "pages/switch/switch",
+    "pages/sticky/sticky",
     "pages/tag/tag",
     "pages/checkbox/checkbox",
     "pages/gulp-error/index",
@@ -30,9 +32,18 @@
     "pages/popup/popup",
     "pages/indexes/indexes",
     "pages/steps/steps",
-    "pages/dropdown-menu/dropdown-menu"
+    "pages/dropdown-menu/dropdown-menu",
+    "pages/drawer/drawer",
+    "pages/scroll-view/scroll-view",
+    "pages/pull-down-refresh/pull-down-refresh",
+    "pages/skeleton/skeleton",
+    "pages/footer/footer",
+    "pages/divider/divider",
+    "pages/empty/empty",
+    "pages/back-top/back-top"
   ],
   "usingComponents": {
+    "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
     "t-button": "@tencent/tdesign-miniprogram/button/button",
     "t-cell": "@tencent/tdesign-miniprogram/cell/cell",
     "t-cell-group": "@tencent/tdesign-miniprogram/cell-group/cell-group",
@@ -60,7 +71,9 @@
     "t-check-tag": "@tencent/tdesign-miniprogram/tag/check-tag",
     "t-checkbox": "@tencent/tdesign-miniprogram/checkbox/checkbox",
     "t-checkbox-group": "@tencent/tdesign-miniprogram/checkbox-group/checkbox-group",
+    "t-swipeout": "@tencent/tdesign-miniprogram/swipeout/swipeout",
     "t-switch": "@tencent/tdesign-miniprogram/switch/switch",
+    "t-sticky": "@tencent/tdesign-miniprogram/sticky/sticky",
     "t-fab": "@tencent/tdesign-miniprogram/fab/fab",
     "t-tab-bar": "@tencent/tdesign-miniprogram/tab-bar/tab-bar",
     "t-tab-bar-item": "@tencent/tdesign-miniprogram/tab-bar/tab-bar-item",
@@ -71,13 +84,21 @@
     "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell",
     "t-steps": "@tencent/tdesign-miniprogram/steps/steps",
     "t-step": "@tencent/tdesign-miniprogram/steps/step",
-    "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu"
+    "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu",
+    "t-drawer": "@tencent/tdesign-miniprogram/drawer/drawer",
+    "t-scroll-view": "@tencent/tdesign-miniprogram/scroll-view/scroll-view",
+    "t-pull-down-refresh": "@tencent/tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
+    "t-skeleton": "@tencent/tdesign-miniprogram/skeleton/skeleton",
+    "t-footer": "@tencent/tdesign-miniprogram/footer/footer",
+    "t-divider": "@tencent/tdesign-miniprogram/divider/divider",
+    "t-empty": "@tencent/tdesign-miniprogram/empty/empty",
+    "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top"
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#0052d9",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "TDesign",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
 }

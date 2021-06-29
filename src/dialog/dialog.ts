@@ -1,4 +1,7 @@
 import TComponent from '../common/component';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-dialog`;
 
 TComponent({
   // 组件的对外属性
@@ -8,7 +11,7 @@ TComponent({
       value: false,
     },
     mode: {
-      type: Boolean,
+      type: String,
       value: 'modal', // 'modal' | 'half-screen'
     },
     theme: {
@@ -28,8 +31,9 @@ TComponent({
       value: '',
     },
     header: {
-      type: String,
-      value: '',
+      type: Boolean,
+      optionalTypes: [String],
+      value: true,
     },
     body: {
       type: String,
@@ -61,7 +65,10 @@ TComponent({
     },
   },
   // 组件的内部数据
-  data: {},
+  data: {
+    classPrefix: name,
+    classBasePrefix: prefix,
+  },
 
   /* 组件生命周期 */
   lifetimes: {
