@@ -20,7 +20,7 @@ const ComponentNativeProps = [
  * 在这里需要对一些方法进行操作
  * @param options {}
  */
-export function toComponent(options: { [key: string]: any }): any {
+export const toComponent = function toComponent(options: { [key: string]: any }): any {
   // 处理 properties 属性
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
@@ -60,19 +60,15 @@ export function toComponent(options: { [key: string]: any }): any {
   }
 
   return options;
-}
+};
 
 /**
  * 将一个继承了 BaseComponent 的类转化成 小程序 Component 的调用
  * 根据最新的微信 d.ts 描述文件，Component 在实例化的时候，会忽略不支持的自定义属性
  */
-export function wxComponent() {
+export const wxComponent = function wxComponent() {
   return function (constructor: new () => SuperComponent): void {
     class WxComponent extends constructor {
-      constructor() {
-        super();
-      }
-
       created() {
         super.created && super.created();
       }
@@ -98,4 +94,4 @@ export function wxComponent() {
     const obj = toComponent(toObject(current));
     Component(obj);
   };
-}
+};

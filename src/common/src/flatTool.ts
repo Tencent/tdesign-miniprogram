@@ -3,9 +3,9 @@
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 *******************************************************************/
 
-export function getPrototypeOf(obj: any): any {
+export const getPrototypeOf = function (obj: any): any {
   return Object.getPrototypeOf ? Object.getPrototypeOf(obj) : obj.__proto__;
-}
+};
 
 /**
  * 遍历继承关系类的 prototype
@@ -22,7 +22,7 @@ export function getPrototypeOf(obj: any): any {
  * 在 C 中调用： iterateInheritedPrototype(fn, A, C, true)
  * 则，fn 会被调用三次，分别是 fn(A.prototype) fn(B.prototype) fn(C.prototype)
  */
-export function iterateInheritedPrototype(
+export const iterateInheritedPrototype = function iterateInheritedPrototype(
   callback: (proto: Record<string, any>) => boolean | void,
   fromCtor: any,
   toCtor: any,
@@ -37,7 +37,7 @@ export function iterateInheritedPrototype(
     if (proto === toProto) break;
     proto = getPrototypeOf(proto);
   }
-}
+};
 
 export interface ClassInstanceToObjectOptions {
   /**
@@ -90,7 +90,7 @@ export interface ClassInstanceToObjectOptions {
  *
  * 注意2：类继承的时候不要在函数中调用 super，toObject 之后是扁平的，没有 super 之说
  */
-export function toObject(
+export const toObject = function toObject(
   something: any,
   options: ClassInstanceToObjectOptions = {},
 ): { [key: string]: any } {
@@ -132,18 +132,18 @@ export function toObject(
   );
 
   return obj;
-}
+};
 
 /**
  * 判断 something 是不是一个 JS Object (从 mora-script 中取过来的)
  *
  * 除了 null, 及字面量，其它一般都是 Object，包括 函数
  */
-export function isObject(something: any) {
+export const isObject = function isObject(something: any) {
   const type = typeof something;
   return something !== null && (type === 'function' || type === 'object');
-}
+};
 
-export function isPlainObject(something: any) {
+export const isPlainObject = function isPlainObject(something: any) {
   return Object.prototype.toString.call(something) === '[object Object]';
-}
+};
