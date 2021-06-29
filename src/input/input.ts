@@ -1,5 +1,18 @@
 import TComponent from '../common/component';
 
+enum TSizeValue {
+  Medium = 'medium',
+  Small = 'small',
+}
+
+enum TTypeValue {
+  Textarea = 'textarea',
+  Text = 'text',
+  Number = 'number',
+  Idcard = 'idcard',
+  Digit = 'digit',
+}
+
 TComponent({
   options: {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
@@ -34,8 +47,8 @@ TComponent({
       value: '',
     },
     type: {
-      type: String,
-      value: '',
+      type: TTypeValue,
+      value: TTypeValue.Text,
     },
     maxlength: {
       type: Number,
@@ -60,12 +73,13 @@ TComponent({
     placeholder: {
       type: String,
     },
-    // todo 事件是这样写的？
-    bindinput: {
-      type: Function,
+    size: {
+      type: String,
+      value: TSizeValue.Medium,
     },
-    bindclear: {
-      type: Function,
+    bordered: {
+      type: Boolean,
+      value: true,
     },
   },
 

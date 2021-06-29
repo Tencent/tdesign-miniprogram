@@ -1,7 +1,7 @@
 <!--示例页面-->
 <view>
   <t-cell-group title="基础输入框">
-    <t-input label="标准五个字" placeholder="预设文本(非必填)" right-icon="arrow-right" />
+    <t-input size="medium" label="标准五个字" placeholder="预设文本(非必填)" right-icon="arrow-right" />
     <t-input label="一个很长的标题需换行" placeholder="预设文本保持上下居中" >
     </t-input>
     <t-input placeholder="无标题预设文本" />
@@ -30,6 +30,17 @@
     <t-input label="个数" placeholder="填写个数"  suffix="个" />
   </t-cell-group>
 
+  <t-cell-group title="规格">
+    <t-input size='small' label="小规格(H48)" placeholder="请输入文字" />
+    <view class='splitter' />
+    <t-input size='medium' label="中规格(H56)" placeholder="请输入文字" />
+  </t-cell-group>
+
+  <t-cell-group title="边框">
+    <t-input bordered="{{false}}" label="无边框" placeholder="请输入文字" />
+    <view class='splitter' />
+    <t-input label="有边框" placeholder="请输入文字" />
+  </t-cell-group>
 
   <t-cell-group title="长文本输入框">
     <t-input type="textarea" placeholder="长文本预设内容，文本默认容纳四行" bind:input="onInput"></t-input>
@@ -38,6 +49,5 @@
   <t-cell-group>
     <t-input type="textarea" label="标题文字" placeholder="长文本预设内容，文本默认容纳四行" bind:input="onInput"></t-input>
   </t-cell-group>
-
 
 </view>

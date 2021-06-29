@@ -18,9 +18,10 @@
   </view>
   <view wx:else>
     <t-cell
-      class="t-input {{error ? 't-input__error' : ''}}  {{!!errorMessage ? 't-input__error_enable' :''}}"
+      class="t-input {{error ? 't-input__error' : ''}}  {{!!errorMessage ? 't-input__error_enable' :''}} t-input--size-{{size}}"
       title="{{label}}"
       rightIcon="{{rightIcon}}"
+      bordered="{{bordered}}"
     >
       <view class="t-input-wrap">
         <input
@@ -32,6 +33,7 @@
           bindinput="onInput"
           password="{{password}}"
           class="t-input--control {{suffix?'t-input--control__right':''}}"
+          type="{{type}}"
         />
         <view
           wx:if="{{ clearable && inputValue.length > 0 }}"
