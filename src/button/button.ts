@@ -2,11 +2,10 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-button`;
-const externalClass = `${prefix}-class`;
 
 @wxComponent()
 export default class Button extends SuperComponent {
-  externalClasses = [externalClass];
+  externalClasses = ['t-class'];
   behaviors = ['wx://form-field-button'];
   // 组件的对外属性
   properties = {
@@ -113,7 +112,7 @@ export default class Button extends SuperComponent {
     setClass() {
       const classList = [
         name,
-        externalClass,
+        't-class',
         `${name}--${this.data.theme}`,
         `${name}--size-${this.data.size}`,
       ];
