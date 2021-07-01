@@ -15,8 +15,8 @@ Page({
     backTopDemo: backTopDemos[0],
     showBackTop: false,
     skeleton: {
-      rowWidth: ['300rpx', '300rpx', '208rpx', '190rpx'],
-      rowHeight: ['302rpx', '32rpx', '32rpx', '32rpx'],
+      rowWidth: ['340rpx', '340rpx', '218rpx', '190rpx'],
+      rowHeight: ['342rpx', '32rpx', '32rpx', '32rpx'],
     },
   },
 

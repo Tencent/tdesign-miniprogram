@@ -1,71 +1,68 @@
-<view class="a-template wr-class">
-  <view class="a-template-content">
-    <view class="a-template-info">
-      <view class="title">BackTop 返回顶部</view>
-      <view class="desc"
-        >当页面过长往下滑动是会出现返回顶部的便捷操作，帮助用户快速回到页面顶部</view
-      >
-    </view>
-    <view class="template-item">
-      <view class="template-item-content">
-        <view class="template-item-info">
-          <view class="title">01 基本用法</view>
-          <view class="desc">返回顶部有圆型和半圆型两种类型</view>
-        </view>
-        <view class="">
-          <view class="button-group">
-            <view class="button-group-item">
-              <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{0}}"
-                >点击演示BackTop-圆白底</t-button
-              >
-            </view>
-            <view class="button-group-item">
-              <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{1}}"
-                >点击演示BackTop-圆黑底</t-button
-              >
-            </view>
-            <view class="button-group-item">
-              <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{2}}"
-                >点击演示BackTop-圆白底纯图标</t-button
-              >
-            </view>
-            <view class="button-group-item">
-              <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{3}}"
-                >点击演示BackTop-圆黑底纯图标</t-button
-              >
-            </view>
-            <view class="button-group-item">
-              <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{4}}"
-                >点击演示BackTop-半圆白底</t-button
-              >
-            </view>
-            <view class="button-group-item">
-              <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{5}}"
-                >点击演示BackTop-半圆黑底</t-button
-              >
-            </view>
-          </view>
-          <view class="placeholder flex skeletion-content">
-            <t-skeleton
-              wx:for="{{8}}"
-              wx:key="index"
-              row="4"
-              loading-class="skeletion-item"
-              row-width="{{skeleton.rowWidth}}"
-              rowHeight="{{skeleton.rowHeight}}"
-              animate
-            />
-          </view>
+<view class="demo">
+  <view class="demo-title">BackTop 返回顶部</view>
+  <view class="demo-desc"
+    >当页面过长往下滑动是会出现返回顶部的便捷操作，帮助用户快速回到页面顶部</view
+  >
 
-          <t-back-top
-            show="{{showBackTop}}"
-            type="{{backTopDemo.type}}"
-            icon="arrow-up"
-            text="{{backTopDemo.text}}"
-          >
-          </t-back-top>
-        </view>
+  <view class="demo-section">
+    <view class="demo-section__title">01 类型</view>
+    <view class="demo-section__desc">圆型返回顶部</view>
+    <view class="button-group">
+      <view class="button-group-item">
+        <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{0}}">
+          圆白底
+        </t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{1}}">
+          圆黑底
+        </t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{2}}">
+          圆白底纯图标
+        </t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{3}}">
+          圆黑底纯图标
+        </t-button>
       </view>
     </view>
+
+    <view class="demo-section__desc">圆型返回顶部</view>
+    <view class="button-group">
+      <view class="button-group-item">
+        <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{4}}">
+          半圆白底
+        </t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{5}}">
+          半圆黑底
+        </t-button>
+      </view>
+    </view>
+
+    <view class="flex skeletion-content">
+      <t-skeleton
+        wx:for="{{8}}"
+        wx:key="index"
+        row="4"
+        row-class="skeletion-row"
+        loading-class="skeletion-item"
+        row-width="{{skeleton.rowWidth}}"
+        rowHeight="{{skeleton.rowHeight}}"
+        animate
+      />
+    </view>
+
+    <t-back-top
+      show="{{showBackTop}}"
+      type="{{backTopDemo.type}}"
+      icon="arrow-up"
+      text="{{backTopDemo.text}}"
+    >
+    </t-back-top>
   </view>
 </view>
