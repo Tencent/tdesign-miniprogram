@@ -16,6 +16,6 @@
   bindopensetting="opensetting"
   bindlaunchapp="launchapp"
 >
-  <!-- icon暂未实现，先等t-icon完成 -->
-  <slot></slot>
+  <t-icon class="t-button__icon" wx:if="{{icon}}" name="{{icon}}"></t-icon>
+  <slot />
 </button>

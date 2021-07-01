@@ -1,53 +1,61 @@
-<view class="tdesign-demo-button-base">
-  <t-cell-group title="基础按钮">
-    <t-cell>
-      <t-button theme="primary" size="large">主按钮</t-button>
-      <t-button theme="primary" size="large" disabled>主按钮-禁用</t-button>
-      <t-button size="large">次要按钮</t-button>
-      <t-button size="large" disabled>次要按钮-禁用</t-button>
+<view class="demo">
+  <view class="demo-title">Button 按钮</view>
+  <div class="demo-desc">可点击的按钮，常用于表单</div>
+
+  <view class="demo-section">
+    <view class="demo-section__title">01 类型</view>
+    <view class="demo-section__desc">基础按钮</view>
+
+    <t-button theme="primary" size="large">强按钮</t-button>
+    <t-button theme="primary" size="large" plain>弱按钮</t-button>
+    <t-button size="large" plain>次按钮</t-button>
+    <t-button theme="primary" size="large" icon="warning_fill" plain>带图标按钮</t-button>
+    <t-button theme="danger" size="large">强告警按钮</t-button>
+    <t-button theme="danger" size="large" plain>弱告警按钮</t-button>
+    <view class="box">
       <t-button theme="ghost" size="large">幽灵按钮</t-button>
-      <t-button theme="ghost" size="large" disabled>幽灵按钮-禁用</t-button>
-      <t-button theme="success" size="large">成功按钮</t-button>
-      <t-button theme="success" size="large" disabled>成功按钮-禁用</t-button>
-      <t-button theme="danger" size="large">错误按钮</t-button>
-      <t-button theme="danger" size="large" disabled>错误按钮-禁用</t-button>
-      <t-button theme="warning" size="large">警告按钮</t-button>
-      <t-button theme="warning" size="large" disabled>警告按钮-禁用</t-button>
-      <t-button theme="text">文本按钮</t-button>
-      <view></view>
-      <t-button theme="text" disabled>文本按钮-禁用</t-button><br />
-    </t-cell>
-  </t-cell-group>
+    </view>
+    <t-button theme="text" size="large">文字按钮</t-button>
 
-  <t-cell-group title="其他尺寸">
-    <t-cell>
-      <t-button theme="primary">中按钮</t-button>
-      <t-button theme="primary" size="small" style="margin-left: 16px">小按钮</t-button>
-      <view></view>
-      <t-button>中按钮</t-button>
-      <t-button size="small" style="margin-left: 16px">小按钮</t-button>
-      <view></view>
-      <t-button theme="ghost">中按钮</t-button>
-      <t-button theme="ghost" size="small" style="margin-left: 16px">小按钮</t-button>
-      <view></view>
-      <t-button theme="warning">中按钮</t-button>
-      <t-button theme="warning" size="small" style="margin-left: 16px">小按钮</t-button>
-    </t-cell>
-  </t-cell-group>
+    <t-button theme="primary" size="large" shape="square" block>通栏按钮</t-button>
 
-  <t-cell-group title="图标按钮">
-    <t-cell>
-      <t-button theme="text">
-        <t-icon name="loading" color="#0052d9"></t-icon>带图标文字按钮
-      </t-button>
-      <view></view>
-      <t-button theme="primary">
-        <t-icon name="loading" color="white"></t-icon>带图标的按钮
-      </t-button>
-      <view></view>
-      <t-button theme="primary">
-        <t-icon name="loading" color="white"></t-icon>
-      </t-button>
-    </t-cell>
-  </t-cell-group>
+    <t-button-group>
+      <t-button size="large" block>次按钮</t-button>
+      <t-button theme="primary" size="large" block>主按钮</t-button>
+    </t-button-group>
+  </view>
+
+  <view class="demo-section">
+    <view class="demo-section__title">02 状态</view>
+    <view class="demo-section__desc">按钮禁用态</view>
+
+    <t-button theme="primary" size="large" disabled>强按钮</t-button>
+    <t-button theme="primary" size="large" plain disabled>弱按钮</t-button>
+    <t-button size="large" plain disabled>次按钮</t-button>
+    <t-button theme="primary" size="large" icon="warning_fill" disabled>带图标按钮</t-button>
+    <t-button theme="danger" size="large" disabled>强告警按钮</t-button>
+    <t-button theme="danger" size="large" plain disabled>弱告警按钮</t-button>
+    <view class="box">
+      <t-button theme="ghost" size="large" disabled>幽灵按钮</t-button>
+    </view>
+    <t-button theme="text" size="large" disabled>文字按钮</t-button>
+
+    <t-button theme="primary" size="large" shape="square" block disabled>通栏按钮</t-button>
+
+    <t-button-group>
+      <t-button size="large" block disabled>次按钮</t-button>
+      <t-button theme="primary" size="large" block disabled>主按钮</t-button>
+    </t-button-group>
+  </view>
+
+  <view class="demo-section">
+    <view class="demo-section__title">03 规格</view>
+    <view class="demo-section__desc">按钮尺寸</view>
+
+    <t-button theme="primary" size="large">按钮 40</t-button>
+    <t-button theme="primary" style="margin-left: 16px">按钮 36</t-button>
+
+    <view></view>
+    <t-button theme="primary" size="small" style="margin-left: 16px">按钮 28</t-button>
+  </view>
 </view>

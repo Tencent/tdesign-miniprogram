@@ -13,8 +13,16 @@ Page({
             path: '/pages/swipeout/swipeout',
           },
           {
+            name: 'Divider',
+            path: '/pages/divider/divider',
+          },
+          {
             name: 'Back-top',
             path: '/pages/back-top/back-top',
+          },
+          {
+            name: 'Empty',
+            path: '/pages/empty/empty',
           },
         ],
       },
@@ -63,8 +71,16 @@ Page({
             path: '/pages/segmented-control/segmented-control',
           },
           {
+            name: 'Scroll-View',
+            path: '/pages/scroll-view/scroll-view',
+          },
+          {
             name: 'Skeleton',
             path: '/pages/skeleton/skeleton',
+          },
+          {
+            name: 'Footer',
+            path: '/pages/footer/footer',
           },
         ],
       },

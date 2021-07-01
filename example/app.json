@@ -34,8 +34,12 @@
     "pages/steps/steps",
     "pages/dropdown-menu/dropdown-menu",
     "pages/drawer/drawer",
+    "pages/scroll-view/scroll-view",
     "pages/pull-down-refresh/pull-down-refresh",
     "pages/skeleton/skeleton",
+    "pages/footer/footer",
+    "pages/divider/divider",
+    "pages/empty/empty",
     "pages/back-top/back-top"
   ],
   "usingComponents": {
@@ -82,15 +86,19 @@
     "t-step": "@tencent/tdesign-miniprogram/steps/step",
     "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu",
     "t-drawer": "@tencent/tdesign-miniprogram/drawer/drawer",
+    "t-scroll-view": "@tencent/tdesign-miniprogram/scroll-view/scroll-view",
     "t-pull-down-refresh": "@tencent/tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
     "t-skeleton": "@tencent/tdesign-miniprogram/skeleton/skeleton",
+    "t-footer": "@tencent/tdesign-miniprogram/footer/footer",
+    "t-divider": "@tencent/tdesign-miniprogram/divider/divider",
+    "t-empty": "@tencent/tdesign-miniprogram/empty/empty",
     "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top"
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#0052d9",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "TDesign",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,12 +1,13 @@
-import { badgeProps } from './badge.interface';
-import TComponent from '../common/component';
+// import { BADGE_PROPS } from './badge.interface';
+import { SuperComponent, wxComponent } from '../common/src/index';
 
-TComponent({
-  properties: {
+@wxComponent()
+export default class Badge extends SuperComponent {
+  properties = {
     customStyle: String,
     color: {
       type: String,
-      value: 'red',
+      value: '#e34d59',
     },
     count: {
       type: Number,
@@ -30,7 +31,7 @@ TComponent({
     },
     shape: {
       type: String,
-      value: 'middle', // 尺寸，支持 'circle', 'rounded', 'ribbon'
+      value: 'circle', // 尺寸，支持 'circle', 'rounded', 'ribbon'
     },
     showZero: {
       type: Boolean,
@@ -44,11 +45,9 @@ TComponent({
       type: Boolean,
       value: false,
     },
-  },
-  data: {
+  };
+
+  data = {
     value: '',
-  },
-  lifetimes: {
-    created() {},
-  },
-});
+  };
+}

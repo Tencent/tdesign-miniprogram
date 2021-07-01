@@ -1,4 +1,4 @@
-const dom = Behavior({
+export default Behavior({
   methods: {
     gettingBoundingClientRect(selector: string, all: boolean) {
       return new Promise((resolve, reject) => {
@@ -23,4 +23,3 @@ const dom = Behavior({
     },
   },
 });
-export default dom;
