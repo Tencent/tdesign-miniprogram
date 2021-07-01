@@ -96,9 +96,9 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#0052d9",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "TDesign",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
 }

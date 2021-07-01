@@ -69,7 +69,7 @@ export default class Sticky extends SuperComponent {
 
     if (isDisabled) {
       this.setDataAfterDiff({
-        fixed: false,
+        isFixed: false,
         transform: 0,
       });
       return;
@@ -82,17 +82,17 @@ export default class Sticky extends SuperComponent {
         ([root, container]) => {
           if (offsetTop + root.height > container.height + container.top) {
             this.setDataAfterDiff({
-              fixed: false,
+              isFixed: false,
               transform: container.height - root.height,
             });
           } else if (offsetTop >= root.top) {
             this.setDataAfterDiff({
-              fixed: true,
+              isFixed: true,
               height: root.height,
               transform: 0,
             });
           } else {
-            this.setDataAfterDiff({ fixed: false, transform: 0 });
+            this.setDataAfterDiff({ isFixed: false, transform: 0 });
           }
         },
       );
@@ -102,23 +102,23 @@ export default class Sticky extends SuperComponent {
 
     getRect(this, ContainerClass).then((root) => {
       if (offsetTop >= root.top) {
-        this.setDataAfterDiff({ fixed: true, height: root.height });
+        this.setDataAfterDiff({ isFixed: true, height: root.height });
         this.transform = 0;
       } else {
-        this.setDataAfterDiff({ fixed: false });
+        this.setDataAfterDiff({ isFixed: false });
       }
     });
   }
 
-  setDataAfterDiff(data: { fixed: boolean; height?: number; transform?: number }) {
+  setDataAfterDiff(data: { isFixed: boolean; height?: number; transform?: number }) {
     const { offsetTop } = this.properties;
     const { containerStyle: prevContainerStyle, contentStyle: prevContentStyle } = this.data;
-    const { fixed, height, transform } = data;
+    const { isFixed, height, transform } = data;
     wx.nextTick(() => {
       let containerStyle = '';
       let contentStyle = '';
 
-      if (fixed) {
+      if (isFixed) {
         containerStyle += `height:${height}px;`;
         contentStyle += `position:fixed;top:${offsetTop}px`;
       }
@@ -133,7 +133,7 @@ export default class Sticky extends SuperComponent {
 
       this.triggerEvent('scroll', {
         scrollTop: this.scrollTop,
-        isFixed: data.fixed,
+        isFixed,
       });
     });
   }
