@@ -15,8 +15,8 @@ Page({
     backTopDemo: backTopDemos[0],
     showBackTop: false,
     skeleton: {
-      rowWidth: ['300rpx', '300rpx', '208rpx', '190rpx'],
-      rowHeight: ['302rpx', '32rpx', '32rpx', '32rpx'],
+      rowWidth: ['340rpx', '340rpx', '218rpx', '190rpx'],
+      rowHeight: ['342rpx', '32rpx', '32rpx', '32rpx'],
     },
   },
 
@@ -26,9 +26,9 @@ Page({
     if (!this.windowHeight) {
       this.windowHeight = wx.getSystemInfoSync().windowHeight;
     }
-    const showBackTop = e.scrollTop > this.windowHeight;
-    if (showBackTop !== this.data.showBackTop) {
-      this.setData({ showBackTop });
+    const isShowBackTop = e.scrollTop > this.windowHeight;
+    if (isShowBackTop !== this.data.showBackTop) {
+      this.setData({ showBackTop: isShowBackTop });
     }
   },
 
