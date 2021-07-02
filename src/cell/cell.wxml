@@ -1,5 +1,5 @@
 <view
-  class="t-class t-cell {{isLink || clickable ? 't-cell--clickable' : ''}} {{!border ? 't-cell--borderless' : ''}} {{center?'t-cell--center':''}} {{required?'t-cell--required':''}}  t-cell--{{size}} {{ label || useLabelSlot ? 't-cell-noCenter' : ''}}"
+  class="t-class t-cell {{isLink || clickable ? 't-cell--clickable' : ''}} {{!bordered ? 't-cell--borderless' : ''}} {{center?'t-cell--center':''}} {{required?'t-cell--required':''}}  t-cell--{{size}} {{ label || useLabelSlot ? 't-cell-noCenter' : ''}}"
   hover-class="t-cell--hover"
   hover-stay-time="70"
   style="{{ customStyle }}"

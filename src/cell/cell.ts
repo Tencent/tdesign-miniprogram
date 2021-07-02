@@ -47,9 +47,8 @@ export default class Cell extends SuperComponent {
     clickable: Boolean,
     titleWidth: String,
     customStyle: String,
-    arrowDirection: String,
     useLabelSlot: Boolean,
-    border: {
+    bordered: {
       type: Boolean,
       value: true,
     },
