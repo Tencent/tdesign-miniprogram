@@ -1,7 +1,6 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
-const name = `${prefix}-icon`;
 
 const sizeKeywordMap = {
   xs: '12px',
@@ -10,17 +9,20 @@ const sizeKeywordMap = {
   large: '18px',
   xl: '20px',
 };
-TComponent({
-  properties: {
+@wxComponent()
+export default class Icon extends SuperComponent {
+  behaviors: ['wx://form-field-icon'];
+  externalClasses = ['t-class'];
+  properties = {
     name: {
       type: String,
+      value: '',
     },
     size: {
       type: String,
-      value: 'middle', // 图标尺寸，支持 'xs', 'small', 'middle', 'large', 'xl'，'35px', '3em' 等，默认值为 middle
+      value: 'middle',
       observer(val: string) {
         let fontSize = val;
-        // 如果是关键词需要转换成对应尺寸
         if (Object.prototype.hasOwnProperty.call(sizeKeywordMap, val)) {
           fontSize = sizeKeywordMap[val];
         }
@@ -32,14 +34,14 @@ TComponent({
       type: String,
       value: '',
     },
-  },
-  data: {
-    classPrefix: name,
+  };
+  data = {
+    classPrefix: `${prefix}-icon`,
     fontSize: '',
-  },
-  methods: {
+  };
+  methods = {
     onTap(event: any) {
       this.triggerEvent('click', event.detail);
     },
-  },
-});
+  };
+}
