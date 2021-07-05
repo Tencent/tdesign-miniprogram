@@ -1,18 +1,46 @@
-<view class="{{ classPrefix }} {{bordered ? classPrefix + '--bordered' : ''}}" bind:tap="onTap">
-  <t-icon wx:if="{{ leftIcon }}" name="{{ leftIcon }}" class="{{ classPrefix }}__left-icon" />
+<view
+  class="t-class t-cell {{isLink || clickable ? 't-cell--clickable' : ''}} {{!bordered ? 't-cell--borderless' : ''}} {{center?'t-cell--center':''}} {{required?'t-cell--required':''}}  t-cell--{{size}} {{ label || useLabelSlot ? 't-cell-noCenter' : ''}}"
+  hover-class="t-cell--hover"
+  hover-stay-time="70"
+  style="{{ customStyle }}"
+  bind:tap="onClick"
+>
+  <t-icon
+    wx:if="{{ leftIcon }}"
+    name="{{ leftIcon  }}"
+    class="t-cell__left-icon-wrap"
+    color="{{iconColor}}"
+    size="{{iconSize}}"
+  />
   <slot wx:else name="left-icon" />
-  <view class="{{ classPrefix }}__title">
+
+  <view
+    style="{{ titleWidth ? 'max-width:' + titleWidth + ';min-width:' + titleWidth : '' }}"
+    class="t-cell__title title-class"
+  >
     <block wx:if="{{ title }}">{{ title }}</block>
     <slot wx:else name="title" />
-    <view wx:if="{{ label || useLabelSlot }}" class="{{ classPrefix }}__label">
+
+    <view wx:if="{{ label || useLabelSlot }}" class="t-cell__label label-class">
       <slot wx:if="{{ useLabelSlot }}" name="label" />
       <block wx:elif="{{ label }}">{{ label }}</block>
     </view>
   </view>
-  <view class="{{ classPrefix }}__value">
-    <block wx:if="{{ value }}">{{ value }}</block>
+
+  <view class="t-cell__value value-class">
+    <block wx:if="{{ value || value === 0 }}">{{ value }}</block>
     <slot wx:else />
   </view>
-  <t-icon wx:if="{{ rightIcon }}" name="{{ rightIcon }}" class="{{ classPrefix }}__right-icon" />
+
+  <t-icon
+    wx:if="{{ isLink || rightIcon }}"
+    name="{{ rightIcon ? rightIcon : 'arrow-right' }}"
+    class="t-cell__right-icon-wrap right-icon-class"
+    color="{{iconColor}}"
+    size="{{iconSize}}"
+  />
+
   <slot wx:else name="right-icon" />
+
+  <slot name="extra" />
 </view>

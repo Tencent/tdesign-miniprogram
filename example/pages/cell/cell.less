@@ -1,9 +1,59 @@
-.t-cell-demo {
-  &-wrapper {
-    background-color: #fbfbfb;
+page {
+  .demo {
+    min-height: 100vh;
+    background: #f9f9f9;
     overflow: hidden;
   }
-  &__title {
-    margin: 30rpx 0 30rpx 30rpx;
+  .t-cell-wrapper {
+    margin: 32rpx 0;
+  }
+  .test {
+    width: 36rpx;
+    height: 36rpx;
+    line-height: 36rpx;
+    border-radius: 50%;
+    font-size: 20rpx;
+    color: #fff;
+    background-color: brown;
+    text-align: center;
+  }
+
+  .multiline-center {
+    .t-cell__right-icon-wrap,
+    .t-cell__value {
+      align-self: center;
+    }
+  }
+
+  .title-icon {
+    margin-right: 16rpx;
+    padding: 4rpx;
+  }
+
+  .title-image {
+    margin-right: 16rpx;
+    width: 96rpx;
+    height: 96rpx;
+  }
+
+  .title-image-large {
+    margin-right: 16rpx;
+    width: 112rpx;
+    height: 112rpx;
+  }
+
+  .small-cell {
+    padding-top: 24rpx;
+    padding-bottom: 24rpx;
+  }
+
+  .large-cell {
+    padding-top: 32rpx;
+    padding-bottom: 32rpx;
+  }
+
+  .unlimit-cell {
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
   }
 }
