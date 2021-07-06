@@ -24,9 +24,9 @@
       <view class="interval"></view>
       <t-stepper label="禁用（步长）" step="2" disabled="true" />
       <view class="interval"></view>
-      <t-stepper label="最小值" min="5" modelValue="7" />
+      <t-stepper label="最小值 (5)" min="5" modelValue="7" />
       <view class="interval"></view>
-      <t-stepper label="最大值" max="10" modelValue="7" />
+      <t-stepper label="最大值 (10)" max="10" modelValue="7" />
       <view class="interval"></view>
       <view class="pure-stepper-container">
         <t-stepper modelValue="3" disabled pureMode />
