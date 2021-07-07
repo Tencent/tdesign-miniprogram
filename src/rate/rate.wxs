@@ -1,23 +1,6 @@
 module.exports = {
-  getStarList: function (maxVal) {
-    var result = [];
-    for (var i = 0; i < maxVal; i++) {
-      result.push(i + 1);
-    }
-    return result;
-  },
-  getIcon: function (val, startIndex) {
-    if (val >= startIndex) {
-      return './assets/star-active.svg';
-    }
-    return './assets/star-default.svg';
-  },
-  getIconClass: function (readonly) {
-    var cls = 't-rate-star';
-    if (readonly) {
-      cls += ' rate-readonly';
-    }
-
-    return cls;
+  getText: function (texts, val) {
+    var curVal = Math.floor(val - 1);
+    return texts[curVal];
   },
 };

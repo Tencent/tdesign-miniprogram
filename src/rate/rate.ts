@@ -1,28 +1,68 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-rate`;
 
-TComponent({
-  data: {
-    classPrefix: name,
-  },
-  properties: {
+const rpx2px = (() => {
+  let systemInfo: any = null;
+  return (rpx: number): number => {
+    if (!systemInfo) {
+      systemInfo = wx.getSystemInfoSync();
+    }
+    return (rpx * (systemInfo ? systemInfo.screenWidth : 750)) / 750;
+  };
+})();
+
+@wxComponent()
+export default class Rate extends SuperComponent {
+  externalClasses = ['t-class'];
+  properties = {
+    value: Number,
+    size: {
+      type: Number,
+      value: 48,
+    },
+    gap: {
+      type: Number,
+      value: 6,
+    },
     count: {
       type: Number,
       value: 5,
     },
-    value: {
-      type: Number,
-      value: 0,
+    color: {
+      type: String,
+      value: '#ED7B2F',
     },
-    readonly: {
+    voidColor: {
+      type: String,
+      value: '#E3E6EB',
+    },
+    disabledColor: {
+      type: String,
+      value: '#999',
+    },
+    touchable: {
       type: Boolean,
       value: false,
     },
-    clearable: {
+    half: {
       type: Boolean,
       value: false,
+    },
+    readonly: Boolean,
+    disabled: Boolean,
+    icon: {
+      type: String,
+      value: 'star_fill',
+    },
+    voidIcon: {
+      type: String,
+      value: 'circle',
+    },
+    halfIcon: {
+      type: String,
+      value: 'loading',
     },
     showText: {
       type: Boolean,
@@ -32,67 +72,34 @@ TComponent({
       type: Array,
       value: ['极差', '失望', '一般', '满意', '惊喜'],
     },
-    textColor: {
-      type: String,
-      value: '#BBBBBB',
-    },
-    size: {
-      type: String,
-      value: '30px',
-    },
-  },
-  externalClasses: ['ctn-class', 'star-class', 'text-class'],
-  methods: {
-    /**
-     * 正常状态下点击Icon的处理函数
-     * @param e 事件对象
-     */
-    changeVal(e) {
-      // 只读时返回并抛出事件
-      if (this.properties.readonly) {
-        this.triggerEvent('readonly');
-        return;
-      }
-
-      const { val = 0 } = (e.target && e.target.dataset) || {};
-      this.setData({
-        value: val,
-      });
-      this.triggerEvent('change', {
-        val,
-        text: this.data.texts[val - 1],
-      });
-    },
-    /**
-     * 只读状态下点击Icon的处理函数
-     * @param e 事件对象
-     */
-    clearVal(e) {
-      // 不可取消时直接返回
-      if (!this.properties.clearable) {
-        return;
-      }
-
-      // 只读时返回并抛出事件
-      if (this.properties.readonly) {
-        this.triggerEvent('readonly');
-        return;
-      }
-
-      const { val = 0 } = (e.target && e.target.dataset) || {};
-      // 只处理当前最大选中元素的取消
-      if (val !== this.data.value) {
-        return;
-      }
-
-      const newVal = Math.max(val - 1, 0);
-      this.setData({
-        value: newVal,
-      });
-      this.triggerEvent('change', {
-        val: newVal,
-        text: this.data.texts[newVal - 1],
-      });
-    },
-  },
-});
+  };
+  data = {
+    classPrefix: name,
+  };
+  onTouch(e: any) {
+    const { count, half, gap, value: currentValue } = this.properties as any;
+    const touch = e.touches[0];
+    const margin = rpx2px(gap);
+    const selQuery = this.createSelectorQuery();
+    selQuery
+      .select(`.${name}__wrapper`)
+      .boundingClientRect((rect: any) => {
+        const { width, left } = rect;
+        const starWidth = (width - (count - 1) * margin) / count;
+        const offsetX = touch.pageX - left;
+        const num = (offsetX + margin) / (starWidth + margin);
+        const remainder = num % 1;
+        const integral = num - remainder;
+        let value = remainder <= 0.5 && half ? integral + 0.5 : integral + 1;
+        if (value > count) {
+          value = count;
+        } else if (value < 0) {
+          value = 0;
+        }
+        if (value !== currentValue) {
+          this.triggerEvent('change', { value });
+        }
+      })
+      .exec();
+  }
+}

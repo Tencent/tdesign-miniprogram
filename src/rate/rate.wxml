@@ -1,33 +1,21 @@
-<wxs src="./rate.wxs" module="this"></wxs>
-
-<view class="{{classPrefix}} ctn-class {{classPrefix}}-{{value}}">
-  <block wx:for="{{this.getStarList(count)}}" wx:key="*this">
-    <!-- 缺省值，目前没有找到判断是否有传递slot的方式，先harcode为true -->
-    <image
-      wx:if="{{true}}"
-      class="star-class {{this.getIconClass(readonly)}}"
-      style="width:{{size}};height:{{size}};"
-      src="{{this.getIcon(value, item)}}"
-      mode="aspectFit"
-      data-val="{{item}}"
-      catchtap="changeVal"
-      catchlongpress="clearVal"
+<wxs src="./rate.wxs" module="this" />
+<view class="{{ classPrefix }}">
+  <view
+    class="{{ classPrefix }}__wrapper t-class"
+    style="font-size:{{ size }}rpx;"
+    bind:touchmove="{{ !disabled && !readonly && touchable ? 'onTouch' : '' }}"
+    bind:touchstart="{{ disabled || readonly ? '' : 'onTouch' }}"
+  >
+    <t-icon
+      wx:for="{{ count }}"
+      wx:key="*this"
+      t-class="{{ classPrefix }}__star"
+      name="{{ value - index >= 1 ? icon : ( half && value - index > 0 ? halfIcon : voidIcon ) }}"
+      color="{{ value - index >= 1 ? ( disabled ? disabledColor : color ) : ( half && value - index > 0 ? 'transparent' : voidColor ) }}"
+      size="{{ size }}"
+      style="margin-right:{{ count - index > 1 ? gap : 0 }}rpx;"
+      custom-style="background:linear-gradient(to right, {{ disabled ? disabledColor : color }} 0%,  {{ disabled ? disabledColor : color }} 50%, {{ voidColor }} 51%, {{ voidColor }} 100%);-webkit-background-clip:text;background-clip:text;"
     />
-    <!-- 依赖t-icon -->
-    <view
-      wx:else
-      class="star-class {{this.getIconClass(readonly)}}"
-      data-val="{{item}}"
-      catchtap="changeVal"
-      catchlongpress="clearVal"
-    >
-      <!--选中态-->
-      <slot wx:if="{{value >= item}}" name="active-icon"></slot>
-      <!--默认态-->
-      <slot wx:else name="default-icon"></slot>
-    </view>
-  </block>
-  <view wx:if="{{showText}}" class="{{classPrefix}}-text" style="color: {{textColor}};">
-    {{texts[value - 1]}}
   </view>
+  <text wx:if="{{showText}}" class="{{ classPrefix }}__desc">{{this.getText(texts,value)}}</text>
 </view>
