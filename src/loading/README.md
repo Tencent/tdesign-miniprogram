@@ -163,7 +163,7 @@ Loading 分纯 icon、icon 加文字、纯文字、带刷新
 
 组件路径：`@tencent/tdesign-miniprogram/loading/loading`
 
-#### Props
+### Props
 
 | 属性            | 值类型    | 默认值     | 说明                                |
 | --------------- | --------- | ---------- | ----------------------------------- |
@@ -181,7 +181,16 @@ Loading 分纯 icon、icon 加文字、纯文字、带刷新
 | duration        | `Number`  | `0.8`      | 动画循环一次的时间，决定动画速度    |
 | paused          | `Boolean` | `false`    | 暂停动画                            |
 
-#### Events
+_注意：_ loading 效果 `circular` 的中间区域是通过一个小的圆形覆盖实现的。所以需要传入 `backgroundColor` 属性来模拟中间区域透明效果。`backgroundColor` 属性仅在 `type="circular"` 时有效。  
+为了配合主题切换和样式统一，又增加了 css 变量 `--loading-background-color` 来控制 `circular` 的中间区域背景色，这样不需要传入 `backgroundColor` 属性，可以在 css 样式里直接引用全局样式主题色了。
+
+### Slots
+
+| 名称 | 说明     |
+| ---- | -------- |
+| -    | 加载文案 |
+
+### Events
 
 | 事件        | event.detail | 说明                     |
 | ----------- | ------------ | ------------------------ |
