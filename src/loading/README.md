@@ -165,32 +165,21 @@ Loading 分纯 icon、icon 加文字、纯文字、带刷新
 
 #### Props
 
-<!-- | 属性        | 值类型    | 默认值     | 说明                                                                       |
-| ----------- | --------- | ---------- | -------------------------------------------------------------------------- |
-| loading     | `Boolean` | `true`     | 是否显示加载                                                               |
-| layout      | `String`  | `default`  | 显示类型，可选`default` - 默认，`full` - 整页，`bar` - 顶部进度条          |
-| size        | `String`  | `40px`     | 加载圆圈大小，带单位                                                       |
-| textSize    | `String`  | `14px`     | 加载文字大小，带单位                                                       |
-| textPadding | `String`  | `0`        | 加载文字 padding 大小，带单位                                              |
-| vertical    | `Boolean` | `true`     | 是否纵向排版，否则横向排版                                                 |
-| type        | `String`  | `circular` | 加载图标类型(spinner/d)                                                    |
-| error       | `Boolean` | `false`    | 是否显示加载错误                                                           |
-| showType    | `String`  | `all`      | 显示类型，可选`text-only` - 仅文字，`icon-only` - 仅图标，`all` - 全部显示 |
-| title       | `String`  | `加载中`   | 加载文字                                                                   |
-| progress    | `Number`  | `-1`       | 顶部进度条加载进度（选填）                                                 | -->
-
-| ｜参数          | 说明                                                      | 类型      | 默认值     | 版本    |
-| --------------- | --------------------------------------------------------- | --------- | ---------- | ------- | --- |
-| type            | 类型，可选值`circular`, `circular-ext`, `spinner`, `dots` | _string_  | `circular` | -       |
-| vertical        | 文字是否显示在 loading 下方                               | _boolean_ | `false`    | -       |
-| size            | loading 的大小                                            | _string_  | `50rpx`    | -       |
-| textSize        | 文字的大小                                                |           | _string_   | `24rpx` | -   |
-| color           | loading 的颜色                                            | _string_  | `#c8c9cc`  | -       |
-| textColor       | 文字的颜色                                                | _string_  | `#969799`  | -       |
-| backgroundColor | loading 背景色，`circular-ext`必填                        | _string_  | -          | -       |
-| reverse         | 反向旋转                                                  | _boolean_ | `false`    | -       |
-| duration        | 动画循环一次的时间，决定动画速度                          | _number_  | `0.8`      | -       |
-| paused          | 暂停动画                                                  | _boolean_ | `false`    | -       |
+| 属性            | 值类型    | 默认值     | 说明                                |
+| --------------- | --------- | ---------- | ----------------------------------- |
+| loading         | `Boolean` | `true`     | 是否显示加载                        |
+| size            | `String`  | `40rpx`    | 加载圆圈大小，带单位                |
+| textSize        | `String`  | `24rpx`    | 加载文字大小，带单位                |
+| color           | `String`  | `#000000`  | loading 颜色                        |
+| textColor       | `String`  | `#000000`  | 文字颜色                            |
+| vertical        | `Boolean` | `true`     | 是否纵向排版，否则横向排版          |
+| type            | `String`  | `circular` | 加载图标类型(spinner/dots/circular) |
+| error           | `Boolean` | `false`    | 是否显示加载错误                    |
+| backgroundColor | `String`  | -          | loading 背景色，`circular`必填      |
+| reverse         | `Boolean` | `false`    | 反向旋转                            |
+| progress        | `Number`  | `-1`       | 顶部进度条加载进度（选填）          |
+| duration        | `Number`  | `0.8`      | 动画循环一次的时间，决定动画速度    |
+| paused          | `Boolean` | `false`    | 暂停动画                            |
 
 #### Events
 
