@@ -1,1 +1,155 @@
 @import (css) '../common/index.wxss';
+
+.loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  // 嵌套一层swapper，模拟设计稿上额外的内边距
+  &__spinner__swapper {
+    padding: 4rpx;
+  }
+
+  &__spinner {
+    position: relative;
+    box-sizing: border-box;
+    width: 50rpx;
+    max-width: 100%;
+    max-height: 100%;
+    height: 50rpx;
+    animation: rotate 0.8s linear infinite;
+
+    &.reverse {
+      animation-name: rotateReverse;
+    }
+
+    &--spinner {
+      animation-timing-function: steps(12);
+    }
+
+    &--circular {
+      .loading__mask1 {
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+      }
+
+      .loading__mask2 {
+        position: absolute;
+        border-radius: 50%;
+        width: 80%;
+        height: 80%;
+        min-width: 1px;
+        min-height: 1px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+    }
+
+    &--dots {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: none;
+
+      .dot {
+        width: 16.67%;
+        height: 16.67%;
+        border-radius: 50%;
+        background-color: currentColor;
+        animation-duration: 1.8s;
+        animation-name: dotting;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+      }
+    }
+  }
+
+  &__text {
+    color: #969799;
+    font-size: 24rpx;
+    line-height: 30rpx;
+    margin-left: 8rpx;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+
+    .loading__text {
+      margin: 8rpx 0 0;
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &::before {
+      display: block;
+      width: 5rpx;
+      height: 25%;
+      margin: 0 auto;
+      background-color: currentColor;
+      border-radius: 40%;
+      content: ' ';
+    }
+  }
+}
+
+.generate(@n, @i: 1) when (@i =< @n) {
+  .loading__dot:nth-of-type(@{i}) {
+    transform: rotate(@i * 30deg);
+    opacity: (0.75 / 12) * (@i - 1);
+  }
+  .generate(@n, (@i + 1));
+}
+.generate(12);
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes dotting {
+  0% {
+    opacity: 0.4;
+  }
+  1% {
+    opacity: 0.8;
+  }
+  33% {
+    opacity: 0.8;
+  }
+  34% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}

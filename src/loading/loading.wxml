@@ -1,41 +1,70 @@
 <wxs src="../common/utils.wxs" module="utils" />
-
-<view>
-  <view wx:if="{{layout == 'bar'}}">
-    <view
-      wx:if="{{!error}}"
-      style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
-      class="{{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
-    >
-    </view>
-  </view>
-
+<view wx:if="{{type==='bar'}}" class="t-class-bar">
   <view
-    wx:elif="{{loading}}"
-    class="{{classPrefix}}-{{showType}} {{vertical ? classPrefix + '-vertical' : ''}}"
-  >
-    <view class="{{classPrefix}}__mask" wx:if="{{layout=='full'}}"></view>
-    <view class="{{classPrefix}}-{{layout}}">
-      <view class="{{classPrefix}}__content" wx:if="{{!error}}">
+    wx:if="{{!error}}"
+    style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
+    class="{{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
+  ></view>
+</view>
+<view class="t-class loading {{ vertical ? 'loading--vertical' : '' }}" wx:elif="{{!error}}">
+  <view class="loading__spinner__swapper">
+    <view
+      wx:if="{{type && type !== 'none'}}"
+      class="t-class-spinner loading__spinner loading__spinner--{{ type }} {{reverse ? 'reverse' : ''}}"
+      style="color: {{ color }}; width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{duration ? 'animation-duration: ' + duration + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"
+    >
+      <view
+        wx:if="{{ type === 'spinner' }}"
+        wx:for="item in 12"
+        wx:key="index"
+        class="loading__dot"
+      />
+      <block wx:if="{{ type === 'circular' }}">
         <view
-          class="{{classPrefix}}__icon {{classPrefix}}__circular"
-          style="width: {{size}}; height: {{size}};"
-        >
-          <view class="{{classPrefix}}__base_circle"></view>
-          <view class="{{classPrefix}}__base_circle_arc"></view>
-        </view>
+          class="loading__mask1"
+          style="
+            background: conic-gradient(
+              from 180deg at 50% 50%,
+              rgba(0, 0, 0, 0) 0deg,
+              rgba(0, 0, 0, 0) 60deg,
+              currentColor 330deg,
+              rgba(0, 0, 0, 0) 360deg
+            );
+          "
+        />
         <view
-          class="{{classPrefix}}__text"
-          style="font-size: {{textSize}}; padding: {{textPadding}};"
-        >
-          {{title}}
-        </view>
-      </view>
-
-      <view class="{{classPrefix}}__content_error" style="font-size: {{textSize}}" wx:else>
-        加载失败
-        <span class="{{classPrefix}}__content_error_text" bindtap="reloadClick">刷新</span>
-      </view>
+          class="t-class-circular-mask loading__mask2"
+          style="background-color: {{backgroundColor}};"
+        />
+      </block>
+      <block wx:if="{{ type === 'dots' }}">
+        <view
+          class="dot dot1"
+          style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + 0 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"
+        ></view>
+        <view
+          class="dot dot2"
+          style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + duration * 1 / 3 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"
+        ></view>
+        <view
+          class="dot dot3"
+          style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + duration * 2 / 3 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"
+        ></view>
+      </block>
     </view>
   </view>
+  <view
+    class="loading__text"
+    style="font-size: {{ utils.addUnit(textSize) }}; color: {{textColor}}"
+  >
+    <slot />
+  </view>
+</view>
+<view
+  class="{{classPrefix}}__content_error"
+  style="font-size: {{textSize}}; color:{{textColor}}"
+  wx:else
+>
+  加载失败
+  <span class="{{classPrefix}}__content_error_text" bindtap="reloadClick">刷新</span>
 </view>

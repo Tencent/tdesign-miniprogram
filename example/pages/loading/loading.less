@@ -1,12 +1,19 @@
-.t-loading-wrapper {
-  width: 100%;
-  height: 300px;
+.t-loading-flex {
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin: 36rpx 32rpx;
+  t-loading {
+    min-width: 20%;
+    margin-right: 40rpx;
+    display: flex;
+  }
 }
 
-.t-button {
-  display: flex !important;
-  margin: 30rpx;
+.t-loading-flex-column {
+  display: block;
+  margin-left: 32rpx;
+  t-loading {
+    display: block;
+    margin-top: 20rpx;
+  }
 }
