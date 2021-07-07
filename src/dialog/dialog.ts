@@ -1,110 +1,109 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
-const name = `${prefix}-dialog`;
+const name = `${prefix}-dialog`; // t-dialog有时候不生效，微信开发工具异常
 
-TComponent({
-  // 组件的对外属性
-  properties: {
-    visible: {
+@wxComponent()
+export default class Dailog extends SuperComponent {
+  externalClasses = ['-dialog', 't-cancel-btn', 't-confirm-btn'];
+  properties = {
+    show: {
       type: Boolean,
       value: false,
     },
-    mode: {
+    title: String,
+    message: String,
+    textAlign: {
       type: String,
-      value: 'modal', // 'modal' | 'half-screen'
+      value: 'center',
     },
-    theme: {
-      type: String,
-      value: 'primary', // 'primary' | 'warning' | 'success' | 'error'
-    },
-    className: {
-      type: String,
-      value: '',
-    },
-    customStyle: {
-      type: String,
-      value: '',
-    },
-    width: {
-      type: String,
-      value: '',
-    },
-    header: {
-      type: Boolean,
-      optionalTypes: [String],
-      value: true,
-    },
-    body: {
-      type: String,
-      value: '',
-    },
-    footer: {
-      type: Boolean,
-      value: true,
-    },
-    confirmContent: {
-      type: null, // 不限制类型
-      value: '确定',
-    },
-    cancelContent: {
-      type: null, // 不限制类型
-      value: '取消',
-    },
-    showOverlay: {
-      type: Boolean,
-      value: true,
-    },
-    preventScrollThrough: {
-      type: Boolean,
-      value: true,
-    },
+    showCancelButton: Boolean,
+    width: null,
     zIndex: {
       type: Number,
-      value: 2500,
+      value: 2000,
     },
-  },
-  // 组件的内部数据
-  data: {
+    confirmButtonText: {
+      type: String,
+      value: '确认',
+    },
+    cancelButtonText: {
+      type: String,
+      value: '取消',
+    },
+    showConfirmButton: {
+      type: Boolean,
+      value: true,
+    },
+    position: {
+      type: String,
+      value: 'center',
+    },
+    direction: {
+      type: String,
+      value: 'row',
+    },
+    actions: {
+      type: Array,
+      value: [],
+    },
+    confirmOpenTypeValue: String,
+    asyncClose: {
+      type: Boolean,
+      value: false,
+    },
+  };
+
+  data = {
     classPrefix: name,
-    classBasePrefix: prefix,
-  },
+  };
 
-  /* 组件生命周期 */
-  lifetimes: {
-    // 组件实例被创建
-    // created() {},
-    // 组件实例进入页面节点树
-    // attached() {},
-    // 页面组件初始化完成
-    // ready() { },
-    // 组件实例被移动到节点树另一个位置
-    // moved() {},
-    // 组件实例被从页面节点树移除
-    // detached() { },
-  },
+  onConfirm() {
+    const { asyncClose } = this.properties;
+    if (!asyncClose) {
+      this.setData({
+        show: false,
+      });
+    }
+    this.triggerEvent('confirm');
+    this._onComfirm && this._onComfirm();
+  }
 
-  /* Methods */
-  methods: {
-    // preventScrollThrough
-    catchtouchmove() {},
-    // 点击笼罩层
-    clickOverlay(event) {
-      this.triggerEvent('clickOverlay', {
-        ...event.detail,
+  onCancel() {
+    const { asyncClose } = this.properties;
+    if (!asyncClose) {
+      this.setData({
+        show: false,
       });
-    },
-    // 点击关闭按钮
-    clickCloseBtn(event) {
-      this.triggerEvent('clickCloseBtn', {
-        ...event.detail,
+    }
+    this.triggerEvent('cancel');
+    this._onCancel && this._onCancel();
+  }
+
+  close() {
+    this.setData({
+      show: false,
+    });
+    this.triggerEvent('close');
+  }
+
+  onActionTap(e: any) {
+    const { asyncClose } = this.properties;
+    if (!asyncClose) {
+      this.setData({
+        show: false,
       });
-    },
-    // 点击确定按钮
-    clickConfirmBtn(event) {
-      this.triggerEvent('clickConfirmBtn', {
-        ...event.detail,
-      });
-    },
-  },
-});
+    }
+    const { index } = e.currentTarget.dataset;
+    this.triggerEvent('action', { index });
+    this._onAction && this._onAction({ index });
+  }
+
+  openValueCBHandle(e) {
+    this.triggerEvent('open-type-event', e.detail);
+  }
+
+  openValueErrCBHandle(e) {
+    this.triggerEvent('open-type-error-event', e.detail);
+  }
+}

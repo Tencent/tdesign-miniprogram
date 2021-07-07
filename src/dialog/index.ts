@@ -1,149 +1,116 @@
-import config from '../common/config';
+type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
-interface DialogOptions {
-  mode?: 'modal' | 'half-screen';
-  theme?: 'primary' | 'warning' | 'success' | 'error';
-  className?: String | Object | any[];
-  customStyle?: String | Object;
-  width?: Number | String;
-  header?: String;
-  body: String;
-  cancelContent?: String;
-  confirmContent?: String;
-  showOverlay?: Boolean;
-  preventScrollThrough?: Boolean;
-  zIndex?: Number | String;
-  // API 调用方式新增
-  closeOnClickOverlay?: Boolean;
-  asyncClose?: Boolean;
-  instance?: WechatMiniprogram.Component.TrivialInstance;
+interface DialogAlertOptionsType {
+  context?: Context;
+  selector?: string;
+  title?: string;
+  message: string;
+  zIndex?: number;
+  asyncClose?: boolean;
+  confirmButtonText?: string;
+  textAlign?: string;
 }
 
-const defaultOptions = {
-  mode: 'modal',
-  theme: 'primary',
-  className: '',
-  customStyle: '',
-  width: '',
-  header: '',
-  body: '',
-  cancelContent: '取消',
-  confirmContent: '确定',
-  showOverlay: true,
-  preventScrollThrough: true,
-  zIndex: 2500,
-  closeOnClickOverlay: true,
-  asyncClose: false,
-  visible: true,
-  footer: true,
+interface DialogComfirmOptionsType extends DialogAlertOptionsType {
+  cancelButtonText?: string;
+}
+
+interface Action {
+  name: string;
+  primary?: boolean;
+  style?: string;
+}
+
+interface DialogActionOptionsType {
+  context?: Context;
+  selector?: string;
+  title?: string;
+  message: string;
+  zIndex?: number;
+  asyncClose?: boolean;
+  actions?: Action[]; // 自定义多选项，优先级高于默认的确定、取消按钮，触发后返回按钮的index
+  direction?: 'column' | 'row'; // 按钮排列方向，默认row，传入action时默认column
+}
+
+function getDialogInstance(context?: Context, selector = '#t-dialog') {
+  if (!context) {
+    const pages = getCurrentPages();
+    const page = pages[pages.length - 1];
+    context = page.$$basePage || page;
+  }
+  const instance = context?.selectComponent(selector);
+  if (!instance) {
+    console.warn(`未找到dialog组件,请检查selector是否正确`);
+    return null;
+  }
+  return instance;
+}
+
+const DEFAULT_OPTIONS = {
+  zIndex: 1001,
+  actions: [],
 };
 
-// alert 覆盖 Dialog 的默认 Options
-const alertDefaultOptions = {
-  ...defaultOptions,
-  cancelContent: false,
-};
-// confirm 覆盖 Dialog 的默认 Options
-const confirmDefaultOptions = {
-  ...defaultOptions,
-};
+export default {
+  alert(options: DialogAlertOptionsType) {
+    const { context, selector, ..._options } = options;
+    const instance = getDialogInstance(context, selector);
+    if (!instance) return Promise.reject();
 
-// 获取当前页面的默认 Dialog 实例
-const getDefaultInstance = () => {
-  const pages = getCurrentPages();
-  const currentPage = pages[pages.length - 1];
-  return currentPage.selectComponent(`#${config.prefix}-dialog`);
-};
-
-const dialog = (options) =>
-  new Promise<{
-    confirm: Boolean;
-    close?: Function;
-    dialog: WechatMiniprogram.Component.TrivialInstance;
-  }>((resolve, reject) => {
-    // Dialog 组件实例
-    const dialog = options.instance || getDefaultInstance();
-
-    // 关闭 Dialog
-    const hideDialog = () =>
-      dialog.setData({
-        visible: false,
+    return new Promise((resolve) => {
+      instance.setData({
+        ...DEFAULT_OPTIONS,
+        showConfirmButton: true,
+        ..._options,
+        showCancelButton: false,
+        show: true,
       });
+      instance._onComfirm = resolve;
+    });
+  },
+  confirm(options: DialogComfirmOptionsType) {
+    const { context, selector, ..._options } = options;
+    const instance = getDialogInstance(context, selector);
+    if (!instance) return Promise.reject();
 
-    // 触发点击事件
-    const clickEvent = (confirm) => {
-      if (options.asyncClose) {
-        // 异步手动关闭
-        resolve({
-          confirm,
-          dialog,
-          close: hideDialog,
-        });
-      } else {
-        // 自动关闭
-        hideDialog();
-        resolve({
-          confirm,
-          dialog,
-        });
-      }
-    };
-
-    if (dialog?.setData) {
-      dialog.setData({
-        ...options,
+    return new Promise((resolve, reject) => {
+      instance.setData({
+        ...DEFAULT_OPTIONS,
+        showConfirmButton: true,
+        ..._options,
+        showCancelButton: true,
+        show: true,
       });
-      // 点击笼罩层
-      const ClickOverlayer = dialog.clickOverlay;
-      dialog.clickOverlay = function (...args) {
-        ClickOverlayer.bind(this)(...args);
-        if (options.closeOnClickOverlay) {
-          // 点击笼罩层是否关闭
-          clickEvent(false);
-        }
-      };
-      // 点击关闭按钮
-      const ClickCloseButton = dialog.clickCloseBtn;
-      dialog.clickCloseBtn = function (...args) {
-        ClickCloseButton.bind(this)(...args);
-        clickEvent(false);
-      };
-      // 点击确定按钮
-      const ClickConfirmButton = dialog.clickConfirmBtn;
-      dialog.clickConfirmBtn = function (...args) {
-        ClickConfirmButton.bind(this)(...args);
-        clickEvent(true);
-      };
-    } else {
-      const msg = '`instance` 参数错误，请确认是否正确选中 Dialog 组件实例';
-      console.warn(msg);
-      reject(msg);
+      instance._onComfirm = resolve;
+      instance._onCancel = reject;
+    });
+  },
+  close() {
+    const instance = getDialogInstance();
+    if (instance) {
+      instance.close();
+      return Promise.resolve();
+    } 
+      return Promise.reject();
+    
+  },
+  action(options: DialogActionOptionsType): Promise<{ index: number }> {
+    const { context, selector, actions, ..._options } = options;
+    const instance = getDialogInstance(context, selector);
+    if (!instance) return Promise.reject();
+    if (!actions || actions.length === 0 || actions.length > 7) {
+      console.warn('action 数量建议控制在1至7个');
     }
-  });
 
-const DIALOG = {
-  // Dialog.alert
-  alert(options: DialogOptions): Promise<{
-    close?: Function;
-    dialog: WechatMiniprogram.Component.TrivialInstance;
-  }> {
-    return dialog({
-      ...alertDefaultOptions,
-      ...options,
-    });
-  },
-
-  // Dialog.confirm
-  confirm(options: DialogOptions): Promise<{
-    confirm: Boolean;
-    close?: Function;
-    dialog: WechatMiniprogram.Component.TrivialInstance;
-  }> {
-    return dialog({
-      ...confirmDefaultOptions,
-      ...options,
+    return new Promise((resolve) => {
+      instance.setData({
+        ...DEFAULT_OPTIONS,
+        actions,
+        direction: 'column',
+        ..._options,
+        show: true,
+      });
+      instance._onAction = resolve;
     });
   },
 };
-
-export default DIALOG;

@@ -1,81 +1,211 @@
+// @ts-ignore
 import Dialog from '@tencent/tdesign-miniprogram/dialog/index';
+
+const title = '对话框标题';
+const maxTitle = '对话框标题告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内';
+const message = '告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内';
+const maxMessage =
+  '告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。';
+
+interface Config {
+  title: string;
+  tConfirmBtn: string;
+  message: string;
+  showConfirmButton: boolean;
+  showCancelButton: boolean;
+  confirmButtonText: string;
+  cancelButtonText: string;
+  confirmOpenTypeValue: string;
+  asyncClose: boolean;
+  direction: 'row' | 'column';
+  actions: { name: string; primary?: boolean; style?: string }[];
+}
+
+const dialogConfig: Config = {
+  title: '',
+  tConfirmBtn: '',
+  message: '',
+  showConfirmButton: false,
+  showCancelButton: false,
+  confirmButtonText: '',
+  cancelButtonText: '',
+  confirmOpenTypeValue: '',
+  asyncClose: false,
+  direction: 'row',
+  actions: [],
+};
+
+const modelConfigFactory = (opt: Partial<Config>) => {
+  return {
+    ...dialogConfig,
+    ...opt,
+  };
+};
 
 Page({
   data: {
-    compDialogVisible: false,
-    openTypeDialogVisible: false,
+    show: false,
+    show4Slot: false,
+    reDeployModal: true,
+    dialogConfig,
   },
-  // 点击反馈类对话框（标题+内容）
-  showFeedbackDialog() {
-    Dialog.alert({
-      header: '对话框标题',
-      body: '告知当前状态、信息和解决方法',
-      confirmContent: '我知道了',
+
+  /** 隐藏渲染可配置的dialog组件 */
+  closeConfigableDialogHandle() {
+    return new Promise((resolve) => {
+      this.setData({ reDeployModal: false }, () => resolve({}));
     });
   },
-  // 点击反馈类对话框（仅内容）
-  showFeedbackDialog2() {
-    Dialog.alert({
-      body: '告知当前状态、信息和解决方法',
-      asyncClose: true,
-    }).then(({ close }) => {
-      // 点击确定按钮
-      close(); // 手动关闭弹窗
-    });
+
+  clickHandle(e) {
+    const { key } = e.currentTarget.dataset;
+
+    this.closeConfigableDialogHandle()
+      .then(() => this.switchDialogConfigHandle(key))
+      .then(() => {
+        this.setData({ reDeployModal: true });
+      });
   },
-  // 确认类对话框
-  showConfirmDialog() {
-    Dialog.confirm({
-      theme: 'error',
-      header: '弹窗标题',
-      body: '告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。',
-      cancelContent: '辅助操作',
-      confirmContent: '警告操作',
-      closeOnClickOverlay: false,
-      asyncClose: true,
-    }).then(({ close }) => {
-      // if (confirm) {
-      // 点击确定按钮
-      close(); // 关闭弹窗
-      // } else {
-      // 点击取消按钮
-      // close(); // 关闭弹窗
-      // }
-    });
+
+  /** 切换dialog配置项 */
+  switchDialogConfigHandle(key: string) {
+    switch (key) {
+      // 纯文本弹窗
+      case 'text':
+      case 'multiText': {
+        this.setData({
+          show: true,
+          show4Slot: false,
+          dialogConfig: modelConfigFactory({
+            title: key === 'text' ? title : maxTitle,
+            showConfirmButton: true,
+            confirmButtonText: '知道了',
+          }),
+        });
+        return;
+      }
+      // 标题&副标题弹窗
+      case 'textAndTitle':
+      case 'multiTextAndTitle': {
+        this.setData({
+          show: true,
+          show4Slot: false,
+          dialogConfig: modelConfigFactory({
+            title: key === 'textAndTitle' ? title : '对话框带文本最大高度',
+            message: key === 'textAndTitle' ? message : maxMessage,
+            showConfirmButton: true,
+            confirmButtonText: '我知道了',
+          }),
+        });
+        return;
+      }
+
+      // 确认弹窗-普通
+      case 'confirm': {
+        this.setData({
+          show: true,
+          show4Slot: false,
+          dialogConfig: modelConfigFactory({
+            title,
+            message,
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: '按钮最多字数',
+            cancelButtonText: '取消',
+          }),
+        });
+        return;
+      }
+      // 确认弹窗-警示操作
+      case 'warnConfirm': {
+        this.setData({
+          show: true,
+          show4Slot: false,
+          dialogConfig: modelConfigFactory({
+            title,
+            tConfirmBtn: 'custom-confirm-btn',
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: '警示操作',
+            cancelButtonText: '取消',
+          }),
+        });
+        return;
+      }
+      // 按钮文字过长弹层
+      case 'tooLongBtnContent': {
+        this.setData({
+          show: true,
+          show4Slot: false,
+          dialogConfig: modelConfigFactory({
+            title,
+            message,
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: '按钮文案文字内容较长',
+            cancelButtonText: '取消',
+            direction: 'column',
+          }),
+        });
+        return;
+      }
+      // 多按钮弹层
+      case 'multiBtn': {
+        this.setData({
+          show: true,
+          show4Slot: false,
+          dialogConfig: modelConfigFactory({
+            title,
+            message,
+            direction: 'column', // 'row' | 'column'
+            actions: [
+              { name: '取消', primary: false },
+              { name: '按钮文案文字内容较长', primary: true },
+              { name: '单行按钮最多十五个字符文案内容', primary: true },
+            ], // {name: string, primary?: string, style?: string}[]
+          }),
+        });
+        return;
+      }
+      // 带输入弹窗
+      case 'withInput':
+      case 'textAndTitleWithInput': {
+        this.setData({
+          dialogConfig: modelConfigFactory({
+            title,
+            message: key === 'withInput' ? '' : message,
+          }),
+          show: false,
+          show4Slot: true,
+        });
+        return;
+      }
+
+      default: {
+        Dialog.alert({
+          title: `未知key: ${key}`,
+          message: '',
+        });
+        break;
+      }
+    }
   },
-  // 输入类对话框
-  // showInputDialog() { },
-  // 展示组件对话框
-  showCompDialog() {
+
+  /** 异步关闭弹层 */
+  asyncCloseHandle() {
+    if (this.data.dialogConfig.asyncClose) {
+      setTimeout(() => this.confirmHandle(), 1000);
+    } else {
+      this.confirmHandle();
+    }
+  },
+
+  /** 普通弹层关闭 */
+  confirmHandle() {
     this.setData({
-      compDialogVisible: true,
+      show4Slot: false,
+      show: false,
     });
-  },
-  // 点击笼罩层
-  hideCompDialog() {
-    this.setData({
-      compDialogVisible: false,
-    });
-  },
-  // 展示组件对话框
-  showOpenTypeDialog() {
-    this.setData({
-      openTypeDialogVisible: true,
-    });
-  },
-  // 点击笼罩层
-  hideOpenTypeDialog() {
-    this.setData({
-      openTypeDialogVisible: false,
-    });
-  },
-  openSetting() {
-    // 打开授权设置页
-    this.hideDialog(); // 关闭弹窗
-  },
-  hideDialog() {
-    this.setData({
-      openTypeDialogVisible: false,
-    });
+    Dialog.close();
   },
 });
