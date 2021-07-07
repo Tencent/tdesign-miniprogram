@@ -20,18 +20,7 @@
         class="loading__dot"
       />
       <block wx:if="{{ type === 'circular' }}">
-        <view
-          class="loading__mask1"
-          style="
-            background: conic-gradient(
-              from 180deg at 50% 50%,
-              rgba(0, 0, 0, 0) 0deg,
-              rgba(0, 0, 0, 0) 60deg,
-              currentColor 330deg,
-              rgba(0, 0, 0, 0) 360deg
-            );
-          "
-        />
+        <view class="loading__mask1" />
         <view
           class="t-class-circular-mask loading__mask2"
           style="background-color: {{backgroundColor}};"
@@ -39,15 +28,15 @@
       </block>
       <block wx:if="{{ type === 'dots' }}">
         <view
-          class="dot dot1"
+          class="dot"
           style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + 0 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"
         ></view>
         <view
-          class="dot dot2"
+          class="dot"
           style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + duration * 1 / 3 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"
         ></view>
         <view
-          class="dot dot3"
+          class="dot"
           style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + duration * 2 / 3 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"
         ></view>
       </block>
