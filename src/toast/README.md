@@ -23,29 +23,20 @@
 #### 默认布局
 
 ```html
-<t-toast
-  id="t-toast"
-  show="{{show}}"
-  type="{{type}}"
-  position="{{position}}"
-  message="{{message}}"
-  icon="{{icon}}"
-  showOverlay="{{showOverlay}}"
-  duration="{{duration}}"
-></t-toast>
+<t-toast id="t-toast"></t-toast>
 ```
 
 ```js
+import Toast from '@tencent/tdesign-miniprogram/toast/index';
 // page.js
 Page({
-  data: {
-    show: false,
-    type: '',
-    position: 'middle',
-    message: '',
-    icon: '',
-    showOverlay: true,
-    duration: 1000,
+  data: {},
+  handleTap(e) {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      text: 'toast内容',
+    });
   },
 });
 ```
@@ -58,12 +49,14 @@ Page({
 
 #### Props
 
-| 属性        | 值类型    | 默认值   | 说明                                                             |
-| ----------- | --------- | -------- | ---------------------------------------------------------------- |
-| show        | `Boolean` | `false`  | 是否显示加载                                                     |
-| type        | `String`  | `''`     | 显示类型，可选`loading` - 加载，`success` - 成功， `fail` - 失败 |
-| position    | `String`  | `middle` | 展示位置，可选`top` - 顶部，`middle` - 中间，`bottom` - 底部     |
-| message     | `String`  | `''`     | 文本内容                                                         |
-| icon        | `String`  | `''`     | 自定义图标                                                       |
-| showOverlay | `Boolean` | `true`   | 显示背景遮罩，禁止背景点击和滚动                                 |
-| duration    | `Number`  | `1000`   | 展示时长 ms，值为 0 时不消失                                     |
+| 参数      | 说明                             | 类型     | 默认值    |
+| --------- | -------------------------------- | -------- | --------- |
+| icon      | 弹窗显示 icon 类型名称           | _string_ | `success` |
+| iconColor | 弹窗显示 icon 颜色               | _string_ | `#fff`    |
+| iconSize  | 弹窗显示 icon 大小               | _string_ | -         |
+| text      | 弹窗显示文字提示                 | _string_ | -         |
+| textColor | 弹窗显示文字颜色                 | _string_ | ``        |
+| zIndex    | 当前弹窗所在的层级值             | _number_ | `10`      |
+| fontSize  | 弹窗显示文字大小                 | _number_ | -         |
+| duration  | 弹窗显示毫秒数                   | _number_ | `2000`    |
+| direction | 按钮排列方式:`'row'`\|`'column'` | _string_ | `'row'`   |
