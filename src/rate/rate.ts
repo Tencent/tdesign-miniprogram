@@ -58,11 +58,11 @@ export default class Rate extends SuperComponent {
     },
     voidIcon: {
       type: String,
-      value: 'circle',
+      value: 'star_fill',
     },
     halfIcon: {
       type: String,
-      value: 'loading',
+      value: 'star_fill',
     },
     showText: {
       type: Boolean,

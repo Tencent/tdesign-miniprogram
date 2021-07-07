@@ -8,89 +8,68 @@
     <view class="desc">实心评分</view>
     <view class="item">
       <view class="item__title">请点击评分</view>
-      <view class="item__rate">
-        <t-rate value="{{value[0]}}" data-index="{{0}}" bind:change="onChange" />
-      </view>
+      <t-rate value="{{value[0]}}" data-index="{{0}}" bind:change="onChange" />
     </view>
   </block>
   <block>
     <view class="desc">空心评分</view>
     <view class="item">
       <view class="item__title">请点击评分</view>
-      <view class="item__rate">
-        <t-rate value="{{value[1]}}" data-index="{{1}}" bind:change="onChange" />
-      </view>
+      <t-rate value="{{value[1]}}" data-index="{{1}}" bind:change="onChange" />
     </view>
   </block>
   <block>
     <view class="desc">自定义数量评分</view>
     <view class="item">
       <view class="item__title">自定义数量</view>
-      <view class="item__rate">
-        <t-rate value="{{value[2]}}" data-index="{{2}}" count="{{6}}" bind:change="onChange" />
-      </view>
+      <t-rate value="{{value[2]}}" data-index="{{2}}" count="{{6}}" bind:change="onChange" />
     </view>
   </block>
   <block>
     <view class="desc">半星评分</view>
     <view class="item">
       <view class="item__title">半星评价</view>
-      <view class="item__rate">
-        <t-rate value="{{value[3]}}" data-index="{{3}}" half="{{true}}" bind:change="onChange" />
-      </view>
+      <t-rate value="{{value[3]}}" data-index="{{3}}" half="{{true}}" bind:change="onChange" />
     </view>
   </block>
   <block>
     <view class="desc">实心带描述评分</view>
     <view class="item">
       <view class="item__title">请点击评分</view>
-      <view class="item__rate">
-        <t-rate
-          value="{{value[4]}}"
-          data-index="{{4}}"
-          bind:change="onChange"
-          showText="{{true}}"
-          texts="{{texts}}"
-        />
-      </view>
+      <t-rate
+        value="{{value[4]}}"
+        data-index="{{4}}"
+        bind:change="onChange"
+        showText="{{true}}"
+        texts="{{texts}}"
+      />
     </view>
     <view class="item">
       <view class="item__title">请点击评分</view>
-      <view class="item__rate">
-        <t-rate
-          value="{{value[5]}}"
-          data-index="{{5}}"
-          bind:change="onChange"
-          showText="{{true}}"
-        />
-      </view>
+      <t-rate value="{{value[5]}}" data-index="{{5}}" bind:change="onChange" showText="{{true}}" />
     </view>
   </block>
   <block>
     <view class="desc">展示型评分</view>
     <view class="item">
       <view class="item__title">只读评分</view>
-      <view class="item__rate">
-        <t-rate
-          value="{{value[6]}}"
-          data-index="{{6}}"
-          half="{{true}}"
-          bind:change="onChange"
-          readonly
-        />
-      </view>
+      <t-rate
+        value="{{value[6]}}"
+        data-index="{{6}}"
+        half="{{true}}"
+        bind:change="onChange"
+        readonly
+      />
     </view>
     <view class="item">
       <view class="item__title">禁用评分</view>
-      <view class="item__rate">
-        <t-rate
-          value="{{value[7]}}"
-          data-index="{{7}}"
-          half="{{true}}"
-          bind:change="onChange"
-          disabled
-        />
-      </view>
+      <t-rate
+        value="{{value[7]}}"
+        data-index="{{7}}"
+        half="{{true}}"
+        bind:change="onChange"
+        disabled
+      />
     </view>
   </block>
   <view class="sub-title">02 规格</view>
@@ -98,15 +77,11 @@
     <view class="desc">评价规格</view>
     <view class="item">
       <view class="item__title">规格 56</view>
-      <view class="item__rate">
-        <t-rate value="{{value[8]}}" data-index="{{8}}" bind:change="onChange" size="{{56}}" />
-      </view>
+      <t-rate value="{{value[8]}}" data-index="{{8}}" bind:change="onChange" size="{{56}}" />
     </view>
     <view class="item">
       <view class="item__title">规格 32</view>
-      <view class="item__rate">
-        <t-rate value="{{value[9]}}" data-index="{{9}}" bind:change="onChange" size="{{32}}" />
-      </view>
+      <t-rate value="{{value[9]}}" data-index="{{9}}" bind:change="onChange" size="{{32}}" />
     </view>
   </block>
 </view>
