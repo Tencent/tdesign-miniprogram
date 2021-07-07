@@ -6,11 +6,14 @@
     class="{{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
   ></view>
 </view>
-<view class="t-class loading {{ vertical ? 'loading--vertical' : '' }}" wx:elif="{{!error}}">
-  <view class="loading__spinner__swapper">
+<view
+  class="t-class {{classPrefix}} {{ vertical ? classPrefix + '--vertical' : '' }}"
+  wx:elif="{{!error}}"
+>
+  <view class="{{classPrefix}}__spinner__swapper">
     <view
       wx:if="{{type && type !== 'none'}}"
-      class="t-class-spinner loading__spinner loading__spinner--{{ type }} {{reverse ? 'reverse' : ''}}"
+      class="t-class-spinner {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ type }} {{reverse ? 'reverse' : ''}}"
       style="color: {{ color }}; width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{duration ? 'animation-duration: ' + duration + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"
     >
       <view
@@ -43,7 +46,7 @@
     </view>
   </view>
   <view
-    class="loading__text"
+    class="{{classPrefix}}__text"
     style="font-size: {{ utils.addUnit(textSize) }}; color: {{textColor}}"
   >
     <slot />
