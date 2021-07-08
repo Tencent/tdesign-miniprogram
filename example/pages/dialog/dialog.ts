@@ -8,13 +8,11 @@ const maxMessage =
   '告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。';
 
 interface Config {
-  title: string;
+  header: string;
   tConfirmBtn: string;
-  message: string;
-  showConfirmButton: boolean;
-  showCancelButton: boolean;
-  confirmButtonText: string;
-  cancelButtonText: string;
+  body: string;
+  confirmBtn: string;
+  cancelBtn: string;
   confirmOpenTypeValue: string;
   asyncClose: boolean;
   direction: 'row' | 'column';
@@ -22,13 +20,11 @@ interface Config {
 }
 
 const dialogConfig: Config = {
-  title: '',
+  header: '',
   tConfirmBtn: '',
-  message: '',
-  showConfirmButton: false,
-  showCancelButton: false,
-  confirmButtonText: '',
-  cancelButtonText: '',
+  body: '',
+  confirmBtn: '',
+  cancelBtn: '',
   confirmOpenTypeValue: '',
   asyncClose: false,
   direction: 'row',
@@ -132,9 +128,8 @@ Page({
           show: true,
           show4Slot: false,
           dialogConfig: modelConfigFactory({
-            title: key === 'text' ? title : maxTitle,
-            showConfirmButton: true,
-            confirmButtonText: '知道了',
+            header: key === 'text' ? title : maxTitle,
+            confirmBtn: '知道了',
           }),
         });
         return;
@@ -146,10 +141,9 @@ Page({
           show: true,
           show4Slot: false,
           dialogConfig: modelConfigFactory({
-            title: key === 'textAndTitle' ? title : '对话框带文本最大高度',
-            message: key === 'textAndTitle' ? message : maxMessage,
-            showConfirmButton: true,
-            confirmButtonText: '我知道了',
+            header: key === 'textAndTitle' ? title : '对话框带文本最大高度',
+            body: key === 'textAndTitle' ? message : maxMessage,
+            confirmBtn: '我知道了',
           }),
         });
         return;
@@ -160,12 +154,10 @@ Page({
           show: true,
           show4Slot: false,
           dialogConfig: modelConfigFactory({
-            title,
-            message,
-            showConfirmButton: true,
-            showCancelButton: true,
-            confirmButtonText: '按钮最多字数',
-            cancelButtonText: '取消',
+            header: title,
+            body: message,
+            confirmBtn: '按钮最多字数',
+            cancelBtn: '取消',
           }),
         });
         return;
@@ -176,12 +168,10 @@ Page({
           show: true,
           show4Slot: false,
           dialogConfig: modelConfigFactory({
-            title,
+            header: title,
             tConfirmBtn: 'custom-confirm-btn',
-            showConfirmButton: true,
-            showCancelButton: true,
-            confirmButtonText: '警示操作',
-            cancelButtonText: '取消',
+            confirmBtn: '警示操作',
+            cancelBtn: '取消',
           }),
         });
         return;
@@ -192,12 +182,10 @@ Page({
           show: true,
           show4Slot: false,
           dialogConfig: modelConfigFactory({
-            title,
-            message,
-            showConfirmButton: true,
-            showCancelButton: true,
-            confirmButtonText: '按钮文案文字内容较长',
-            cancelButtonText: '取消',
+            header: title,
+            body: message,
+            confirmBtn: '按钮文案文字内容较长',
+            cancelBtn: '取消',
             direction: 'column',
           }),
         });
@@ -209,8 +197,8 @@ Page({
           show: true,
           show4Slot: false,
           dialogConfig: modelConfigFactory({
-            title,
-            message,
+            header: title,
+            body: message,
             direction: 'column', // 'row' | 'column'
             actions: [
               { name: '取消', primary: false },
@@ -226,8 +214,8 @@ Page({
       case 'textAndTitleWithInput': {
         this.setData({
           dialogConfig: modelConfigFactory({
-            title,
-            message: key === 'withInput' ? '' : message,
+            header: title,
+            body: key === 'withInput' ? '' : message,
           }),
           show: false,
           show4Slot: true,
@@ -237,8 +225,8 @@ Page({
 
       default: {
         Dialog.alert({
-          title: `未知key: ${key}`,
-          message: '',
+          header: `未知key: ${key}`,
+          body: '',
         });
         break;
       }

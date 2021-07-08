@@ -15,14 +15,12 @@
 <!-- 无slot的情况 -->
 <block wx:if="{{reDeployModal}}">
   <t-dialog
-    show="{{show}}"
+    visible="{{show}}"
     t-confirm-btn="{{dialogConfig.tConfirmBtn}}"
-    title="{{dialogConfig.title}}"
-    message="{{dialogConfig.message}}"
-    show-confirm-button="{{dialogConfig.showConfirmButton}}"
-    show-cancel-button="{{dialogConfig.showCancelButton}}"
-    confirm-button-text="{{dialogConfig.confirmButtonText}}"
-    cancel-button-text="{{dialogConfig.cancelButtonText}}"
+    header="{{dialogConfig.header}}"
+    body="{{dialogConfig.body}}"
+    confirm-btn="{{dialogConfig.confirmBtn}}"
+    cancel-btn="{{dialogConfig.cancelBtn}}"
     confirm-open-type-value="{{dialogConfig.confirmOpenTypeValue}}"
     async-close="{{dialogConfig.asyncClose}}"
     direction="{{dialogConfig.direction}}"
@@ -32,11 +30,11 @@
   />
   <!-- slot -->
   <t-dialog
-    show="{{show4Slot}}"
-    title="{{dialogConfig.title}}"
-    message="{{dialogConfig.message}}"
-    confirm-button-text="确定"
-    cancle-button-text="取消"
+    visible="{{show4Slot}}"
+    header="{{dialogConfig.header}}"
+    body="{{dialogConfig.body}}"
+    confirm-btn="确定"
+    cancle-btn="取消"
     show-cancel-button="{{true}}"
     bind:confirm="confirmHandle"
     bind:cancel="asyncCloseHandle"

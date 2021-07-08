@@ -3,8 +3,8 @@ type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Compon
 interface DialogAlertOptionsType {
   context?: Context;
   selector?: string;
-  title?: string;
-  message: string;
+  header?: string;
+  body: string;
   zIndex?: number;
   asyncClose?: boolean;
   confirmButtonText?: string;
@@ -24,8 +24,8 @@ interface Action {
 interface DialogActionOptionsType {
   context?: Context;
   selector?: string;
-  title?: string;
-  message: string;
+  header?: string;
+  body: string;
   zIndex?: number;
   asyncClose?: boolean;
   actions?: Action[]; // 自定义多选项，优先级高于默认的确定、取消按钮，触发后返回按钮的index
@@ -60,10 +60,9 @@ export default {
     return new Promise((resolve) => {
       instance.setData({
         ...DEFAULT_OPTIONS,
-        showConfirmButton: true,
+        cancelBtn: '',
         ..._options,
-        showCancelButton: false,
-        show: true,
+        visible: true,
       });
       instance._onComfirm = resolve;
     });
@@ -76,10 +75,8 @@ export default {
     return new Promise((resolve, reject) => {
       instance.setData({
         ...DEFAULT_OPTIONS,
-        showConfirmButton: true,
         ..._options,
-        showCancelButton: true,
-        show: true,
+        visible: true,
       });
       instance._onComfirm = resolve;
       instance._onCancel = reject;
@@ -90,9 +87,8 @@ export default {
     if (instance) {
       instance.close();
       return Promise.resolve();
-    } 
-      return Promise.reject();
-    
+    }
+    return Promise.reject();
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
     const { context, selector, actions, ..._options } = options;
@@ -108,7 +104,7 @@ export default {
         actions,
         direction: 'column',
         ..._options,
-        show: true,
+        visible: true,
       });
       instance._onAction = resolve;
     });

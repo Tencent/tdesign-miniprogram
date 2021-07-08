@@ -1,12 +1,17 @@
-<t-popup visible="{{ show }}" zIndex="{{ zIndex }}">
-  <view class="{{ classPrefix }}">
+<t-popup
+  visible="{{ visible }}"
+  showOverlay="{{showOverlay}}"
+  closeOnOverlayClick="{{closeOnOverlayClick}}"
+  zIndex="{{ zIndex }}"
+  bindoverlayClick="overlayClick"
+>
+  <view class="{{ classPrefix }} t-class">
     <view class="{{ classPrefix }}__content">
-      <view wx:if="{{ title }}" class="{{ classPrefix }}__header">{{ title }}</view>
-      <view
-        class="{{ classPrefix }}__message {{title ? '' : 'no-title'}} {{textAlign ? classPrefix + '__message--' + textAlign : ''}}"
-      >
-        <text wx:if="{{ message }}" class="{{ classPrefix }}__message-text">{{ message }}</text>
-        <slot />
+      <view wx:if="{{ header }}" class="{{ classPrefix }}__header">{{ header }}</view>
+      <slot wx:else name="header" />
+      <view class="{{ classPrefix }}__body {{header ? '' : 'no-header'}}">
+        <text wx:if="{{ body }}" class="{{ classPrefix }}__body-text">{{ body }}</text>
+        <slot wx:else name="body" />
       </view>
     </view>
     <block wx:if="{{actions && actions.length > 0}}">
@@ -29,28 +34,32 @@
       <view
         class="{{ classPrefix }}__footer {{ classPrefix }}__footer--default {{direction === 'column' ? classPrefix + '__footer--column' : ''}}"
       >
-        <button
-          wx:if="{{ showCancelButton }}"
-          class="{{ classPrefix }}__button {{ classPrefix }}__button-cancel t-cancel-btn"
-          bindtap="onCancel"
-        >
-          {{ cancelButtonText }}
-        </button>
-        <button
-          wx:if="{{ showConfirmButton }}"
-          class="{{ classPrefix }}__button {{ classPrefix }}__button-confirm t-confirm-btn"
-          bindtap="onConfirm"
-          open-type="{{confirmOpenTypeValue}}"
-          bind:getuserinfo="openValueCBHandle"
-          bind:contact="openValueCBHandle"
-          bind:getphonenumber="openValueCBHandle"
-          bind:opensetting="openValueCBHandle"
-          bind:launchapp="openValueCBHandle"
-          bind:error="openValueErrCBHandle"
-          style="color: {{confirmTextColor}};border-color:{{borderColor}}"
-        >
-          {{ confirmButtonText }}
-        </button>
+        <block wx:if="{{ footer }}">
+          <button
+            wx:if="{{ cancelBtn }}"
+            class="{{ classPrefix }}__button {{ classPrefix }}__button-cancel t-cancel-btn"
+            bindtap="onCancel"
+          >
+            {{ cancelBtn }}
+          </button>
+          <slot wx:else name="cancelBtn" />
+          <button
+            wx:if="{{ confirmBtn }}"
+            class="{{ classPrefix }}__button {{ classPrefix }}__button-confirm t-confirm-btn"
+            bindtap="onConfirm"
+            open-type="{{confirmOpenTypeValue}}"
+            bind:getuserinfo="openValueCBHandle"
+            bind:contact="openValueCBHandle"
+            bind:getphonenumber="openValueCBHandle"
+            bind:opensetting="openValueCBHandle"
+            bind:launchapp="openValueCBHandle"
+            bind:error="openValueErrCBHandle"
+            style="color: {{confirmTextColor}};border-color:{{borderColor}}"
+          >
+            {{ confirmBtn }}
+          </button>
+        </block>
+        <slot wx:else name="confirmBtn" />
       </view>
     </block>
   </view>

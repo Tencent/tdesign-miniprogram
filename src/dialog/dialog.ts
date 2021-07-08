@@ -1,43 +1,54 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
-const name = `${prefix}-dialog`; // t-dialog有时候不生效，微信开发工具异常
+const name = `${prefix}-dialog`;
 
 @wxComponent()
 export default class Dailog extends SuperComponent {
-  externalClasses = ['-dialog', 't-cancel-btn', 't-confirm-btn'];
+  externalClasses = ['t-class', 't-cancel-btn', 't-confirm-btn'];
   properties = {
-    show: {
+    visible: {
       type: Boolean,
       value: false,
     },
-    title: String,
-    message: String,
-    textAlign: {
+    header: {
       type: String,
-      value: 'center',
+      optionalTypes: [Boolean],
+      value: true,
     },
-    showCancelButton: Boolean,
-    width: null,
-    zIndex: {
-      type: Number,
-      value: 2000,
-    },
-    confirmButtonText: {
+    body: {
       type: String,
-      value: '确认',
+      value: '',
     },
-    cancelButtonText: {
-      type: String,
-      value: '取消',
-    },
-    showConfirmButton: {
+    footer: {
       type: Boolean,
       value: true,
     },
-    position: {
+    confirmBtn: {
       type: String,
-      value: 'center',
+      optionalTypes: [Boolean],
+      value: '确认',
+    },
+    cancelBtn: {
+      type: String,
+      optionalTypes: [Boolean],
+      value: '取消',
+    },
+    showOverlay: {
+      type: Boolean,
+      value: true,
+    },
+    closeOnOverlayClick: {
+      type: Boolean,
+      value: true,
+    },
+    preventScrollThrough: {
+      type: Boolean,
+      value: true,
+    },
+    zIndex: {
+      type: Number,
+      value: 2500,
     },
     direction: {
       type: String,
@@ -62,7 +73,7 @@ export default class Dailog extends SuperComponent {
     const { asyncClose } = this.properties;
     if (!asyncClose) {
       this.setData({
-        show: false,
+        visible: false,
       });
     }
     this.triggerEvent('confirm');
@@ -72,26 +83,30 @@ export default class Dailog extends SuperComponent {
   onCancel() {
     const { asyncClose } = this.properties;
     if (!asyncClose) {
-      this.setData({
-        show: false,
-      });
+      this.close();
     }
     this.triggerEvent('cancel');
-    this._onCancel && this._onCancel();
   }
 
   close() {
     this.setData({
-      show: false,
+      visible: false,
     });
     this.triggerEvent('close');
+  }
+
+  overlayClick() {
+    if (this.properties.closeOnOverlayClick) {
+      this.close();
+    }
+    this.triggerEvent('overlayClick');
   }
 
   onActionTap(e: any) {
     const { asyncClose } = this.properties;
     if (!asyncClose) {
       this.setData({
-        show: false,
+        visible: false,
       });
     }
     const { index } = e.currentTarget.dataset;
