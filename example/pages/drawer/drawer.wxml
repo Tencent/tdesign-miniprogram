@@ -3,39 +3,19 @@
     <view class="t-drawer-demo-content">
       <view class="t-drawer-demo-text">基础抽屉</view>
       <view class="t-drawer-demo-item">
-        <t-drawer
-          visible="{{leftDemoVisible}}"
-          sidebar="{{baseSidebar}}"
-          size="large"
-          position="left"
-        ></t-drawer>
+        <t-drawer visible="{{leftDemoVisible}}" sidebar="{{baseSidebar}}" size="large" position="left"></t-drawer>
         <button size="large" bind:tap="openLeftDrawer">从左往右开</button>
       </view>
       <view class="t-drawer-demo-item">
-        <t-drawer
-          visible="{{rightDemoVisible}}"
-          sidebar="{{baseSidebar}}"
-          size="large"
-          position="right"
-        ></t-drawer>
+        <t-drawer visible="{{rightDemoVisible}}" sidebar="{{baseSidebar}}" size="large" position="right"></t-drawer>
         <button size="large" bind:tap="openRightDrawer">从右往左开</button>
       </view>
       <view class="t-drawer-demo-item">
-        <t-drawer
-          visible="{{topDemoVisible}}"
-          sidebar="{{baseSidebar}}"
-          size="40%"
-          position="top"
-        ></t-drawer>
+        <t-drawer visible="{{topDemoVisible}}" sidebar="{{baseSidebar}}" size="40%" position="top"></t-drawer>
         <button size="large" bind:tap="openTopDrawer">从上往下开</button>
       </view>
       <view class="t-drawer-demo-item">
-        <t-drawer
-          visible="{{bottomDemoVisible}}"
-          sidebar="{{baseSidebar}}"
-          size="40%"
-          position="bottom"
-        ></t-drawer>
+        <t-drawer visible="{{bottomDemoVisible}}" sidebar="{{baseSidebar}}" size="40%" position="bottom"></t-drawer>
         <button size="large" bind:tap="openBottomDrawer">从下往上开</button>
       </view>
     </view>

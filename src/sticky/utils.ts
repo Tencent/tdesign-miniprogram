@@ -10,10 +10,9 @@ type Scroller = (
 ) => void;
 
 function onPageScroll(event?: IPageScrollOption) {
-  const { pageScroller = [] } =
-    getCurrentPage<{
-      pageScroller: Scroller[];
-    }>();
+  const { pageScroller = [] } = getCurrentPage<{
+    pageScroller: Scroller[];
+  }>();
 
   pageScroller.forEach((scroller: Scroller) => {
     if (typeof scroller === 'function') {

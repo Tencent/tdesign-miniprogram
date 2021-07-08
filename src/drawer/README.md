@@ -28,6 +28,7 @@ import Drawer from '@tencent/tdesign-miniprogram/drawer/drawer';
 
 ### 基础用法
 
+
 ```html
 <!-- page.wxml -->
 <t-drawer visible="{{visible}}"></t-drawer>
@@ -37,19 +38,19 @@ import Drawer from '@tencent/tdesign-miniprogram/drawer/drawer';
 // page.js
 Page({
   data: {
-    visible: false,
+    visible: false
   },
   openDrawer() {
     this.setData({
-      visible: true,
-    });
-  },
-});
+      visible: true
+    })
+  }
+})
 ```
 
-### 自定义 title、content、以及 footer
+### 自定义title、content、以及footer
 
-`Drawer`组件支持通过 slot 的方式自定义头部、内容、底部
+`Drawer`组件支持通过slot的方式自定义头部、内容、底部
 
 ```html
 <!-- page.wxml -->
@@ -60,6 +61,7 @@ Page({
 </t-drawer>
 ```
 
+
 ## API
 
 ### `<Drawer>` 组件
@@ -68,26 +70,26 @@ Page({
 
 #### Props
 
-| 属性        | 值类型    | 默认值  | 说明                                                           |
-| ----------- | --------- | ------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------ | --- | ---------- |
-| visible     | `Boolean` | `false` | Drawer 是否可见                                                |
-| closeBtn    | `Boolean` | `true`  | 是否显示右上角的关闭按钮                                       |
-| showOverlay | `Boolean` | `true`  | 是否展示遮罩                                                   |
-| placement   | `'top'    | 'right' | 'bottom'                                                       | 'left'`                                                                              | -   | 抽屉的方向 |
-| size        | `String   | Number` | -                                                              | 抽屉的大小，值可以是：large/middle/small/300px/500px/80%/50%/120(number)/150(number) |
-| sidebar     | `Object`  | -       | 列表参数，包含 name(菜单名称),path(跳转路径),icon(图标 string) |
+| 属性 | 值类型 | 默认值 | 说明 |
+|-----|-------|-------|-----|
+| visible | `Boolean` | `false` | Drawer是否可见 |
+| closeBtn | `Boolean` | `true` | 是否显示右上角的关闭按钮 |
+| showOverlay | `Boolean` | `true` | 是否展示遮罩 |
+| placement | `'top' | 'right' | 'bottom' | 'left'` | - | 抽屉的方向 |
+| size | `String | Number` | - | 抽屉的大小，值可以是：large/middle/small/300px/500px/80%/50%/120(number)/150(number) |
+| sidebar | `Object` | - | 列表参数，包含 name(菜单名称),path(跳转路径),icon(图标string) |
 
 #### Events
 
-| 事件              | event.detail | 说明                 |
-| ----------------- | ------------ | -------------------- |
-| bind:clickOverlay | -            | 点击遮罩层时触发     |
-| bind:closed       | -            | 点击右上角叉触发回调 |
+| 事件 | event.detail | 说明 |
+|-----|------|-----|
+| bind:clickOverlay | - | 点击遮罩层时触发 |
+| bind:closed | - | 点击右上角叉触发回调 |
 
 #### Slots
 
-| 插槽    | 说明               |
-| ------- | ------------------ |
-| header  | 抽屉标题区的内容。 |
-| default | 抽屉自定义内容。   |
-| footer  | 抽屉底部的内容。   |
+| 插槽 | 说明 |
+|-----|-----|
+| header | 抽屉标题区的内容。|
+| default | 抽屉自定义内容。 |
+| footer | 抽屉底部的内容。|
