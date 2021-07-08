@@ -3,74 +3,12 @@
   <view class="demo-desc"
     >在不跳转页面的情况下，需要用户进行操作时使用，用对话框的方式承载相应的操作</view
   >
-  <view class="demo-section">
-    <view class="demo-section__title">01 基本用法</view>
-    <view class="demo-section__desc">对话框根据内容分为反馈类、确认类、输入类</view>
-    <view class="demo-section__sub-title">反馈类对话框</view>
-    <view class="button-group">
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="text" bind:tap="clickHandle"
-          >单行标题
-        </t-button>
-      </view>
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="multiText" bind:tap="clickHandle">
-          多行标题最大高度
-        </t-button>
-      </view>
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="textAndTitle" bind:tap="clickHandle">
-          带说明文本
-        </t-button>
-      </view>
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="multiTextAndTitle" bind:tap="clickHandle">
-          带说明文本最大高度
-        </t-button>
-      </view>
-    </view>
-    <view class="demo-section__sub-title">确认类对话框</view>
-    <view class="button-group">
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="confirm" bind:tap="clickHandle">
-          双按钮
-        </t-button>
-      </view>
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="warnConfirm" bind:tap="clickHandle">
-          带警示按钮
-        </t-button>
-      </view>
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="tooLongBtnContent" bind:tap="clickHandle">
-          双按钮文字过长
-        </t-button>
-      </view>
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="multiBtn" bind:tap="clickHandle">
-          多按钮
-        </t-button>
-      </view>
-    </view>
-    <view class="demo-section__sub-title">输入类对话框</view>
-    <view class="button-group">
-      <view class="button-group-item">
-        <t-button size="large" shape="round" data-key="withInput" bind:tap="clickHandle">
-          单行标题
-        </t-button>
-      </view>
-      <view class="button-group-item">
-        <t-button
-          size="large"
-          shape="round"
-          data-key="textAndTitleWithInput"
-          bind:tap="clickHandle"
-        >
-          带说明文本
-        </t-button>
-      </view>
-    </view>
-  </view>
+  <t-demo
+    title="01 基本用法"
+    desc="对话框根据内容分为反馈类、确认类、输入类"
+    operList="{{operList}}"
+    bindclickoper="clickHandle"
+  />
 </view>
 <!-- 链式调用基础 -->
 <t-dialog id="t-dialog" />

@@ -14,7 +14,7 @@
         class="{{ classPrefix }}__footer {{direction === 'column' ?  classPrefix + '__footer--column' : ''}}"
       >
         <button
-          class="{{ classPrefix }}__button hairline--top {{action.primary ? classPrefix + '__button-confirm' : ''}}"
+          class="{{ classPrefix }}__button {{action.primary ? classPrefix + '__button-confirm' : ''}}"
           style="{{action.style}}"
           wx:for="{{actions}}"
           wx:for-item="action"
@@ -27,18 +27,18 @@
     </block>
     <block wx:else>
       <view
-        class="hairline--top {{ classPrefix }}__footer {{ classPrefix }}__footer--default {{direction === 'column' ? classPrefix + '__footer--column' : ''}}"
+        class="{{ classPrefix }}__footer {{ classPrefix }}__footer--default {{direction === 'column' ? classPrefix + '__footer--column' : ''}}"
       >
         <button
           wx:if="{{ showCancelButton }}"
-          class="{{ classPrefix }}__button {{direction === 'column' ? 'hairline--top' : 'hairline--right'}} {{ classPrefix }}__button-cancel t-cancel-btn"
+          class="{{ classPrefix }}__button {{ classPrefix }}__button-cancel t-cancel-btn"
           bindtap="onCancel"
         >
           {{ cancelButtonText }}
         </button>
         <button
           wx:if="{{ showConfirmButton }}"
-          class="{{ classPrefix }}__button hairline {{ classPrefix }}__button-confirm t-confirm-btn"
+          class="{{ classPrefix }}__button {{ classPrefix }}__button-confirm t-confirm-btn"
           bindtap="onConfirm"
           open-type="{{confirmOpenTypeValue}}"
           bind:getuserinfo="openValueCBHandle"

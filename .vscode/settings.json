@@ -1,4 +1,5 @@
 {
+  "wxmlConfig.onSaveFormat": true,
   "editor.formatOnSave": true,
   "eslint.enable": true,
   "editor.codeActionsOnSave": {
@@ -26,5 +27,11 @@
   "[wxml]": {
     "editor.defaultFormatter": "qiu8310.minapp-vscode"
   },
-  "wxmlConfig.onSaveFormat": true
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": ["stylelint"]
 }

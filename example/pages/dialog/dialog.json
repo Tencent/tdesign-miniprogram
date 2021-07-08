@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "Dialog 对话框",
-  "usingComponents": {}
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
 }

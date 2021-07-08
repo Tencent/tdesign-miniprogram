@@ -48,6 +48,63 @@ Page({
     show4Slot: false,
     reDeployModal: true,
     dialogConfig,
+    operList: [
+      {
+        title: '反馈类对话框',
+        btns: [
+          {
+            type: 'text',
+            text: '单行标题',
+          },
+          {
+            type: 'multiText',
+            text: '多行标题最大高度',
+          },
+          {
+            type: 'textAndTitle',
+            text: '多行标题最大高度',
+          },
+          {
+            type: 'multiTextAndTitle',
+            text: '多行标题最大高度',
+          },
+        ],
+      },
+      {
+        title: '确认类对话框',
+        btns: [
+          {
+            type: 'confirm',
+            text: '双按钮',
+          },
+          {
+            type: 'warnConfirm',
+            text: '带警示按钮',
+          },
+          {
+            type: 'tooLongBtnContent',
+            text: '双按钮文字过长',
+          },
+          {
+            type: 'multiBtn',
+            text: '多按钮',
+          },
+        ],
+      },
+      {
+        title: '输入类对话框',
+        btns: [
+          {
+            type: 'withInput',
+            text: '单行标题',
+          },
+          {
+            type: 'textAndTitleWithInput',
+            text: '带说明文本',
+          },
+        ],
+      },
+    ],
   },
 
   /** 隐藏渲染可配置的dialog组件 */
@@ -58,10 +115,8 @@ Page({
   },
 
   clickHandle(e) {
-    const { key } = e.currentTarget.dataset;
-
     this.closeConfigableDialogHandle()
-      .then(() => this.switchDialogConfigHandle(key))
+      .then(() => this.switchDialogConfigHandle(e.detail))
       .then(() => {
         this.setData({ reDeployModal: true });
       });
@@ -99,7 +154,6 @@ Page({
         });
         return;
       }
-
       // 确认弹窗-普通
       case 'confirm': {
         this.setData({
