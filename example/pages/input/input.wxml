@@ -1,38 +1,50 @@
 <!--示例页面-->
-<view>
-  <t-cell-group title="基础输入框">
-    <<<<<<< HEAD
-    <t-input
-      size="medium"
-      label="标准五个字"
-      placeholder="预设文本(非必填)"
-      right-icon="arrow-right"
-    />
-    <t-input label="一个很长的标题需换行" placeholder="预设文本保持上下居中"> </t-input>
-    =======
+<view class="input-example">
+  <t-cell-group title="01 基础输入框">
     <t-input label="标准五个字" placeholder="预设文本(非必填)" right-icon="arrow-right" />
-    <t-input label="一个很长的标题需换行" placeholder="预设文本保持上下居中"> </t-input>
-    >>>>>>> develop
     <t-input placeholder="无标题预设文本" />
+    <t-input label="一个很长的标题需换行" placeholder="预设文本保持上下居中"> </t-input>
+    <t-cell-group title="原生input类型">
+      <t-input type="idcard" bordered="{{false}}" label="身份证" placeholder="请输入身份证" />
+    </t-cell-group>
+
+    <t-cell-group title="长文本输入框">
+      <t-input
+        type="textarea"
+        placeholder="长文本预设内容，文本默认容纳四行"
+        bind:input="onInput"
+      ></t-input>
+    </t-cell-group>
+
+    <t-cell-group title="长文本输入框（可设置label）">
+      <t-input
+        type="textarea"
+        label="标题文字"
+        placeholder="长文本预设内容，文本默认容纳四行"
+        bind:input="onInput"
+      ></t-input>
+    </t-cell-group>
+  </t-cell-group>
+
+  <t-cell-group title="02 状态">
     <t-input
       label="未填写警告"
-      placeholder="警告文本"
+      placeholder="该项必须填写"
       bind:input="onInput3"
       error="{{ text3.length === 0 }}"
     ></t-input>
-
     <t-input
       label="填写错误"
       value="{{text4}}"
       bind:input="onInput4"
       error="{{ text4.length > 4 }}"
-      error-message="提示信息"
-    ></t-input>
-
+      error-message="文字不能超过4个"
+    >
+    </t-input>
     <t-input label="不可编辑" placeholder="不可编辑" disabled="{{true}}"></t-input>
   </t-cell-group>
 
-  <t-cell-group title="特殊输入框" clearable="{{true}}">
+  <t-cell-group title="03 特殊输入框" clearable="{{true}}">
     <t-input
       label="输入密码"
       password="{{true}}"
@@ -40,7 +52,7 @@
       clearable="{{true}}"
       bind:clear="onClear"
     />
-    <t-input placeholder="请输入手机号码">
+    <t-input placeholder="请输入手机号码" type="number">
       <view slot="suffix">
         <image
           style="width: 72px; height: 36px; display: block; margin-top: -6px; margin-bottom: -6px"
@@ -50,7 +62,7 @@
       </view>
     </t-input>
 
-    <t-input placeholder="请输入手机号码">
+    <t-input placeholder="请输入手机号码" type="number">
       <view slot="suffix">
         <t-button theme="text">发送验证码</t-button>
       </view>
@@ -60,35 +72,14 @@
     <t-input label="个数" placeholder="填写个数" suffix="个" />
   </t-cell-group>
 
-  <<<<<<< HEAD
-  <t-cell-group title="规格">
+  <t-cell-group title="04 规格">
     <t-input size="small" label="小规格(H48)" placeholder="请输入文字" />
-    <view class="splitter" />
     <t-input size="medium" label="中规格(H56)" placeholder="请输入文字" />
   </t-cell-group>
 
-  <t-cell-group title="边框">
-    <t-input bordered="{{false}}" label="无边框" placeholder="请输入文字" />
-    <view class="splitter" />
-    <t-input label="有边框" placeholder="请输入文字" />
+  <t-cell-group title="05 下边框" style="padding-top: 12px; padding-bottom: 12px">
+    <t-input bordered="{{false}}" label="无下边框" placeholder="请输入文字" />
+    <t-input label="有下边框" placeholder="请输入文字" />
+    <view class="splitter"></view>
   </t-cell-group>
-
-  ======= >>>>>>> develop
-  <t-cell-group title="长文本输入框">
-    <t-input
-      type="textarea"
-      placeholder="长文本预设内容，文本默认容纳四行"
-      bind:input="onInput"
-    ></t-input>
-  </t-cell-group>
-
-  <t-cell-group>
-    <t-input
-      type="textarea"
-      label="标题文字"
-      placeholder="长文本预设内容，文本默认容纳四行"
-      bind:input="onInput"
-    ></t-input>
-  </t-cell-group>
-  <<<<<<< HEAD ======= >>>>>>> develop
 </view>

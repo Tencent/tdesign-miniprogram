@@ -46,6 +46,9 @@
         <view class="{{classPrefix}}-wrap--suffix">
           <slot name="suffix"></slot>
         </view>
+        <view wx:if="{{suffix}}" class="{{classPrefix}}-wrap--suffix-text">
+          <text>{{suffix}}</text>
+        </view>
       </view>
       <view wx:if="{{errorMessage && errorMessage.length > 0}}" class="{{classPrefix}}__error-msg"
         >{{errorMessage}}</view

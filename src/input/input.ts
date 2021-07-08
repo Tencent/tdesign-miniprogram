@@ -1,3 +1,4 @@
+import { SuperComponent, wxComponent } from '../common/src/index';
 import TComponent from '../common/component';
 import config from '../common/config';
 const { prefix } = config;
@@ -15,12 +16,12 @@ enum TTypeValue {
   Idcard = 'idcard',
   Digit = 'digit',
 }
-
-TComponent({
-  options: {
+@wxComponent()
+export default class Input extends SuperComponent {
+  options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
-  },
-  properties: {
+  };
+  properties = {
     label: {
       type: String,
       value: '',
@@ -86,14 +87,13 @@ TComponent({
       type: Boolean,
       value: true,
     },
-  },
-
-  data: {
+  };
+  data = {
     inputValue: '',
     classPrefix: name,
-  },
+  };
   /* 组件生命周期 */
-  lifetimes: {
+  lifetimes = {
     // 组件实例被创建
     // created() {},
     // 组件实例进入页面节点树
@@ -106,8 +106,8 @@ TComponent({
     // moved() {},
     // 组件实例被从页面节点树移除
     // detached() { },
-  },
-  methods: {
+  };
+  methods = {
     onInput(event) {
       const { value } = event.detail;
       this.setData({ inputValue: value });
@@ -122,5 +122,5 @@ TComponent({
         ...event.detail,
       });
     },
-  },
-});
+  };
+}
