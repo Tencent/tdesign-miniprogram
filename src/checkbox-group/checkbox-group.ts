@@ -1,21 +1,21 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
-
-TComponent({
-  data: {
-    classPrefix: name,
-  },
-  relations: {
+@wxComponent()
+export default class CheckboxGroup extends SuperComponent {
+  relations = {
     '../checkbox/checkbox': {
-      type: 'descendant',
+      type: 'descendant' as 'descendant',
       linked() {
         this.updateChildren();
       },
     },
-  },
-  properties: {
+  };
+  data = {
+    classPrefix: name,
+  };
+  properties = {
     name: String,
     value: {
       type: Array,
@@ -26,8 +26,8 @@ TComponent({
       type: Boolean,
       value: true,
     },
-  },
-  methods: {
+  };
+  methods = {
     updateChildren() {
       const items = this.getRelationNodes('../checkbox/checkbox');
       const len = items.length;
@@ -52,5 +52,5 @@ TComponent({
       this.updateChildren();
       this.triggerEvent('change', { names: newValue });
     },
-  },
-});
+  };
+}

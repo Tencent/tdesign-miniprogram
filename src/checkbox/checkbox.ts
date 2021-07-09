@@ -1,15 +1,17 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-checkbox`;
-
-TComponent({
-  relations: {
+@wxComponent()
+export default class Checkbox extends SuperComponent {
+  externalClasses = ['t-class', 't-label'];
+  relations = {
     '../checkbox-group/checkbox-group': {
-      type: 'ancestor',
+      type: 'ancestor' as 'ancestor',
     },
-  },
-  properties: {
+  };
+  // 组件的对外属性
+  properties = {
     checked: {
       type: Boolean,
       value: false,
@@ -35,16 +37,20 @@ TComponent({
       type: Boolean,
       value: true,
     },
-  },
-  data: {
+  };
+  // 组件的内部数据
+  data = {
     classPrefix: name,
     classBasePrefix: prefix,
     active: false,
-  },
-  methods: {
+  };
+
+  /* Methods */
+  methods = {
     onChange() {
       if (this.data.disabled) return;
       const { name, active } = this.data;
+      console.log('this.data', this.data);
       const item = { name, checked: !active };
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
       if (parent) {
@@ -65,5 +71,5 @@ TComponent({
         active,
       });
     },
-  },
-});
+  };
+}
