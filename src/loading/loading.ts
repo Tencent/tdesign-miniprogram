@@ -5,43 +5,36 @@ const name = `${prefix}-loading`;
 
 @wxComponent()
 export default class extends SuperComponent {
-  externalClasses = ['t-class', 't-class-spinner', 't-class-circular-mask', 't-class-bar'];
+  externalClasses = ['t-class', 't-class-error'];
   data = {
     classPrefix: name,
   };
   properties = {
-    type: {
+    theme: {
       type: String,
       value: 'circular',
     },
-    vertical: Boolean,
+    delay: {
+      type: Number,
+      value: 0,
+    },
+    layout: {
+      type: String,
+      value: 'horizontal', // 水平的horizontal；垂直的vertical
+    },
     size: {
       type: String,
       value: '40rpx',
     },
-    textSize: {
-      type: String,
-      value: '24rpx',
+    reverse: {
+      type: Boolean,
+      value: false,
     },
-    color: {
-      type: String,
-      value: '#000000',
-    },
-    textColor: {
-      type: String,
-      value: '#000000',
-    },
-    backgroundColor: {
-      type: String,
-      value: '',
-    },
-    reverse: Boolean,
     duration: {
       type: Number,
-      value: '0.8',
+      value: 300,
     },
-    paused: Boolean,
-    error: {
+    pause: {
       type: Boolean,
       value: false,
     },
@@ -49,10 +42,17 @@ export default class extends SuperComponent {
       type: Number,
       value: -1,
     },
-    loading: Boolean,
+    loading: {
+      type: Boolean,
+      value: true,
+    },
+    indicator: {
+      type: Boolean,
+      value: true,
+    },
+    text: {
+      type: String,
+      value: '',
+    },
   };
-
-  reloadClick() {
-    this.triggerEvent('reload');
-  }
 }
