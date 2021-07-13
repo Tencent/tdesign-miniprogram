@@ -58,6 +58,12 @@
       "list": [
         {
           "id": -1,
+          "name": "index",
+          "pathName": "pages/index",
+          "scene": null
+        },
+        {
+          "id": -1,
           "name": "dialog",
           "pathName": "pages/dialog/dialog",
           "query": "",
