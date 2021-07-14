@@ -2,11 +2,9 @@ Page({
   data: {
     barLoadingTimeOut: null,
     loadingFirst: false,
-    loadingSecond: false,
     loadingBar: false,
     progress: -1,
     isCheck: false,
-    // show: true,
   },
   switchChange() {
     const { loadingFirst } = this.data;

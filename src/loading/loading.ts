@@ -5,7 +5,7 @@ const { prefix } = config;
 const name = `${prefix}-loading`;
 @wxComponent()
 export default class Loading extends SuperComponent {
-  externalClasses = ['t-class', 't-class-error'];
+  externalClasses = ['t-class', 't-class-text', 't-class-indicator'];
   data = {
     classPrefix: name,
     show: false,

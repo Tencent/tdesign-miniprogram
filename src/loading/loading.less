@@ -19,6 +19,24 @@
 
     &--spinner {
       animation-timing-function: steps(12);
+
+      .loading__dot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        &::before {
+          display: block;
+          width: 5rpx;
+          height: 25%;
+          margin: 0 auto;
+          background-color: currentColor;
+          border-radius: 40%;
+          content: ' ';
+        }
+      }
     }
 
     &--circular {
@@ -71,42 +89,21 @@
     }
   }
 
-  &__text {
-    color: #969799;
-    font-size: 24rpx;
-    line-height: 30rpx;
-    margin-left: 8rpx;
-
-    &:empty {
-      display: none;
+  &--vertical {
+    flex-direction: column;
+    .loading-text {
+      margin-top: 6rpx;
     }
   }
 
-  &--vertical {
-    flex-direction: column;
-  }
   &--horizontal {
     flex-direction: row;
-  }
-
-  .loading__dot {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    &::before {
-      display: block;
-      width: 5rpx;
-      height: 25%;
-      margin: 0 auto;
-      background-color: currentColor;
-      border-radius: 40%;
-      content: ' ';
+    .loading-text {
+      margin-left: 6rpx;
     }
   }
 }
+
 .refreshBtn {
   margin-left: 16rpx;
   color: #0052d9;

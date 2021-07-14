@@ -1,11 +1,10 @@
 <wxs src="../common/utils.wxs" module="utils" />
 <view class="t-class">
-  <view wx:if="{{theme==='bar'&& theme!=='error'}}">
-    <view
-      style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
-      class="{{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
-    ></view>
-  </view>
+  <view
+    wx:if="{{theme==='bar'&& theme!=='error'}}"
+    style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
+    class="t-class-indicator {{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
+  ></view>
   <view
     class="{{classPrefix}} {{classPrefix + '--' + layout}}"
     style="{{show?'display':'display:none'}}"
@@ -13,7 +12,7 @@
   >
     <view
       wx:if="{{ theme !== 'error' }}"
-      class=" {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
+      class=" t-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
       style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{indicator?'':'display:none'}}; {{duration ? 'animation-duration: ' + duration/1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
     >
       <view
@@ -46,7 +45,7 @@
         <span>加载失败</span>
         <span class="refreshBtn" bind:tap="refreshPage">刷新</span>
       </view>
-      <view wx:else>{{text}}</view>
+      <view class="loading-text" wx:else>{{text}}</view>
     </view>
     <slot />
   </view>
