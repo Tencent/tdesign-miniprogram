@@ -50,7 +50,6 @@ export default class Checkbox extends SuperComponent {
     onChange() {
       if (this.data.disabled) return;
       const { name, active } = this.data;
-      console.log('this.data', this.data);
       const item = { name, checked: !active };
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
       if (parent) {
