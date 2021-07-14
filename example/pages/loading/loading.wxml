@@ -32,21 +32,18 @@
     <view class="demo-section__title">02 布局类型</view>
     <view class="demo-section__desc">横向排列、垂直排列</view>
     <view class="loading-container-flex">
-      <t-loading
-        theme="circular"
-        size="40rpx"
-        text="加载中..."
-        loading
-        t-class-indicator="indicator-blue"
-      ></t-loading>
+      <t-loading theme="circular" size="40rpx" loading t-class-indicator="indicator-blue"
+        ><span slot="text">加载中...</span></t-loading
+      >
       <t-loading
         theme="circular"
         layout="vertical"
         size="40rpx"
-        text="加载中..."
         loading
         t-class-indicator="indicator-blue"
-      ></t-loading>
+      >
+        <span slot="text">加载中...</span>
+      </t-loading>
     </view>
   </view>
   <view class="demo-section">
@@ -94,19 +91,19 @@
   </view>
   <view class="demo-section">
     <view class="demo-section__title">04 规格</view>
-    <view class="demo-section__desc">加载规格分L、M、S</view>
+    <view class="demo-section__desc">加载规格支持自定义</view>
     <view class="loading-container-flex-column">
       <t-loading
         theme="circular"
         size="40rpx"
-        text="S加载中..."
+        text="小规格加载中..."
         loading
         t-class-indicator="indicator-blue"
       ></t-loading>
       <t-loading
         theme="circular"
         size="48rpx"
-        text="M加载中..."
+        text="中规格加载中..."
         loading
         t-class-text="text-m"
         t-class-indicator="indicator-blue"
@@ -114,7 +111,7 @@
       <t-loading
         theme="circular"
         size="52rpx"
-        text="L加载中..."
+        text="大规格加载中..."
         loading
         t-class-text="text-l"
         t-class-indicator="indicator-blue"

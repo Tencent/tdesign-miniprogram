@@ -10,7 +10,9 @@ export default class Loading extends SuperComponent {
     classPrefix: name,
     show: false,
   };
-
+  options = {
+    multipleSlots: true,
+  };
   properties = props;
   timer = null;
   observers = {

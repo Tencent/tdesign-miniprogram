@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-07-13 19:57:24
+ * updated at 2021-07-14 17:42:00
  * */
 
 import { TdLoadingProps } from './type';
@@ -10,7 +10,7 @@ const props: TdLoadingProps = {
     type: Number,
     value: 0,
   },
-  /** 加载动画执行完成一次的时间 */
+  /** 加载动画执行完成一次的时间，单位：毫秒 */
   duration: {
     type: Number,
     value: 300,
@@ -19,7 +19,7 @@ const props: TdLoadingProps = {
   externalClasses: {
     type: Array,
   },
-  /** 加载指示符，值为 true 显示默认指示符，值为 false 则不显示，也可以自定义指示符 */
+  /** 是否显示加载指示符 */
   indicator: {
     type: Boolean,
     value: true,
@@ -47,7 +47,7 @@ const props: TdLoadingProps = {
   reverse: {
     type: Boolean,
   },
-  /** 尺寸，示例：small/medium/large/40rpx/20px */
+  /** 尺寸，示例：40rpx/20px */
   size: {
     type: String,
     value: '40rpx',

@@ -45,8 +45,10 @@
         <span>加载失败</span>
         <span class="refreshBtn" bind:tap="refreshPage">刷新</span>
       </view>
-      <view class="loading-text" wx:else>{{text}}</view>
+      <view class="loading-text" wx:else>
+        {{text}}
+        <slot name="text" />
+      </view>
     </view>
-    <slot />
   </view>
 </view>
