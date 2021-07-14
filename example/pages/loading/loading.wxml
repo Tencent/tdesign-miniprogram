@@ -5,40 +5,28 @@
     <view class="demo-section__title">01 基本用法</view>
     <view class="demo-section__desc">Loading分纯icon、icon加文字、纯文字、带刷新</view>
     <view class="loading-container-flex">
-      <t-loading t-class="spinner-blue-40" theme="circular" size="40rpx"></t-loading>
-      <t-loading
-        t-class="spinner-blue-40"
-        theme="circular"
-        size="40rpx"
-        text="加载中..."
-      ></t-loading>
-      <t-loading indicator="{{false}}" text="加载中..."></t-loading>
+      <t-loading theme="circular" size="40rpx" loading delay="{{500}}"></t-loading>
+      <t-loading theme="circular" size="40rpx" text="加载中..." loading></t-loading>
+      <t-loading indicator="{{false}}" text="加载中..." loading></t-loading>
     </view>
     <t-loading
-      t-class-error="error-text"
       theme="error"
       class="loading-container-flex"
+      loading
       bind:reload="reloadPage"
-    >
-      <span class="refreshBtn">刷新</span>
-    </t-loading>
+    ></t-loading>
   </view>
   <view class="demo-section">
     <view class="demo-section__title">02 布局类型</view>
     <view class="demo-section__desc">横向排列、垂直排列</view>
     <view class="loading-container-flex">
+      <t-loading theme="circular" size="40rpx" text="加载中..." loading></t-loading>
       <t-loading
-        t-class="spinner-blue-40"
-        theme="circular"
-        size="40rpx"
-        text="加载中..."
-      ></t-loading>
-      <t-loading
-        t-class="spinner-blue-40"
         theme="circular"
         layout="vertical"
         size="40rpx"
         text="加载中..."
+        loading
       ></t-loading>
     </view>
   </view>
@@ -46,56 +34,42 @@
     <view class="demo-section__title">03 样式类型</view>
     <view class="demo-section__desc">标准、自定义icon、区块loading、页面进度条加载</view>
     <view class="loading-container-flex">
-      <t-loading t-class="spinner-black" theme="circular" size="40rpx" text="加载中..."></t-loading>
-      <t-loading
-        t-class="spinner-blue-40"
-        theme="circular"
-        size="40rpx"
-        text="加载中..."
-      ></t-loading>
+      <t-loading theme="circular" size="40rpx" text="加载中..." loading></t-loading>
+      <t-loading theme="circular" size="40rpx" text="加载中..." loading></t-loading>
     </view>
     <view class="loading-container-flex">
-      <t-loading t-class="spinner-black" theme="spinner" size="40rpx" text="加载中..."></t-loading>
-      <t-loading
-        t-class="spinner-blue-40"
-        theme="spinner"
-        size="40rpx"
-        text="加载中..."
-      ></t-loading>
+      <t-loading theme="spinner" size="40rpx" text="加载中..." loading></t-loading>
+      <t-loading theme="spinner" size="40rpx" text="加载中..." loading></t-loading>
     </view>
     <view class="loading-container-flex">
-      <t-loading t-class="spinner-black-80" theme="dots" duration="800" size="80rpx"></t-loading>
-      <t-loading t-class="spinner-blue-80" theme="dots" duration="1800" size="80rpx"></t-loading>
+      <t-loading theme="dots" duration="800" size="80rpx" loading></t-loading>
+      <t-loading theme="dots" duration="1800" size="80rpx" loading></t-loading>
     </view>
     <t-button size="large" plain bind:tap="showProgressBar">页面进度条加载</t-button>
-    <t-loading
-      t-class="loading-bar"
-      theme="bar"
-      progress="{{progress}}"
-      loading="{{loading}}"
-    ></t-loading>
+    <t-loading theme="bar" progress="{{progress}}" loading="{{loadingBar}}"></t-loading>
   </view>
   <view class="demo-section">
     <view class="demo-section__title">04 规格</view>
     <view class="demo-section__desc">加载规格分L、M、S</view>
     <view class="loading-container-flex-column">
+      <t-loading theme="circular" size="40rpx" text="S加载中..." loading></t-loading>
+      <t-loading theme="circular" size="48rpx" text="M加载中..." loading></t-loading>
+      <t-loading theme="circular" size="52rpx" text="L加载中..." loading></t-loading>
+    </view>
+  </view>
+  <view class="demo-section">
+    <view class="demo-section__title">05 延迟</view>
+    <view class="demo-section__desc"
+      >如果加载loading状态在delay时间内结束，则不显示loading加载状态</view
+    >
+    <view class="loading-container-flex-column">
+      <switch checked="{{isCheck}}" bindchange="switchChange" />
       <t-loading
-        t-class="spinner-blue-40"
         theme="circular"
         size="40rpx"
-        text="S加载中..."
-      ></t-loading>
-      <t-loading
-        t-class="spinner-blue-48"
-        theme="circular"
-        size="48rpx"
-        text="M加载中..."
-      ></t-loading>
-      <t-loading
-        t-class="spinner-blue-52"
-        theme="circular"
-        size="52rpx"
-        text="L加载中..."
+        text="加载中..."
+        loading="{{loadingFirst}}"
+        delay="{{1000}}"
       ></t-loading>
     </view>
   </view>

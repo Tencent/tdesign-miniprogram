@@ -1,68 +1,53 @@
-<!-- <wxs src="../common/utils.wxs" module="utils" />
-<view wx:if="{{theme==='bar'}}" class="t-class-bar">
-  <view wx:if="{{theme!=='error'}}" style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}" class="{{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"></view>
-</view>
-<view class="t-class {{classPrefix}} {{ vertical ? classPrefix + '--vertical' : '' }}" wx:elif="{{theme!=='error'}}">
-  <view class="{{classPrefix}}__spinner__swapper">
-    <view wx:if="{{ theme !== 'none'}}" class="t-class-spinner {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}" style="color: {{ color }}; width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{duration ? 'animation-duration: ' + duration + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};">
-      <view wx:if="{{ theme === 'spinner' }}" wx:for="item in 12" wx:key="index" class="loading__dot" />
-      <block wx:if="{{ theme === 'circular' }}">
-        <view class="loading__mask1" />
-        <view class="t-class-circular-mask loading__mask2" style="background-color: {{backgroundColor}};" />
-      </block>
-      <block wx:if="{{ theme === 'dots' }}">
-        <view class="dot" style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + 0 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"></view>
-        <view class="dot" style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + duration * 1 / 3 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"></view>
-        <view class="dot" style="{{duration ? 'animation-duration: ' + duration + 's; animation-delay:' + duration * 2 / 3 + 's;' : ''}} animation-play-state: {{paused ? 'paused' : 'running'}};"></view>
-      </block>
-    </view>
-  </view>
-  <view class="{{classPrefix}}__text" style="font-size: {{ utils.addUnit(textSize) }}; color: {{textColor}}">
-    <slot />
-  </view>
-</view>
-<view class="{{classPrefix}}__content_error" style="font-size: {{textSize}}; color:{{textColor}}" wx:else>
-  加载失败
-  <span class="{{classPrefix}}__content_error_text" bindtap="reloadClick">刷新</span>
-</view> -->
 <wxs src="../common/utils.wxs" module="utils" />
-<view wx:if="{{theme==='bar'&& theme!=='error'}}" class="t-class">
+<view class="t-class">
+  <view wx:if="{{theme==='bar'&& theme!=='error'}}">
+    <view
+      style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
+      class="{{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
+    ></view>
+  </view>
   <view
-    style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
-    class="{{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
-  ></view>
-</view>
-<view class="{{classPrefix}} {{classPrefix + '--' + layout}} " wx:else>
-  <view
-    wx:if="{{ theme !== 'error'}}"
-    class=" {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
-    style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{indicator?'':'display:none'}}; {{duration ? 'animation-duration: ' + duration/1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+    class="{{classPrefix}} {{classPrefix + '--' + layout}}"
+    style="{{show?'display':'display:none'}}"
+    wx:else
   >
     <view
-      wx:if="{{ theme === 'spinner' }}"
-      wx:for="item in 12"
-      wx:key="index"
-      class="loading__dot"
-    />
-    <block wx:if="{{ theme === 'circular' }}">
-      <view class="loading__mask1" />
-      <view class="loading__mask2" />
-    </block>
-    <block wx:if="{{ theme === 'dots' }}">
+      wx:if="{{ theme !== 'error' }}"
+      class=" {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
+      style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{indicator?'':'display:none'}}; {{duration ? 'animation-duration: ' + duration/1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+    >
       <view
-        class="dot"
-        style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + 0 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-      ></view>
-      <view
-        class="dot"
-        style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 1 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-      ></view>
-      <view
-        class="dot"
-        style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 2 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-      ></view>
-    </block>
+        wx:if="{{ theme === 'spinner' }}"
+        wx:for="item in 12"
+        wx:key="index"
+        class="loading__dot"
+      />
+      <block wx:if="{{ theme === 'circular' }}">
+        <view class="loading__mask1" />
+        <view class="loading__mask2" />
+      </block>
+      <block wx:if="{{ theme === 'dots' }}">
+        <view
+          class="dot"
+          style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + 0 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+        ></view>
+        <view
+          class="dot"
+          style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 1 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+        ></view>
+        <view
+          class="dot"
+          style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 2 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+        ></view>
+      </block>
+    </view>
+    <view class="t-class-text">
+      <view wx:if="{{theme==='error'}}">
+        <span>加载失败</span>
+        <span class="refreshBtn" bind:tap="refreshPage">刷新</span>
+      </view>
+      <view wx:else>{{text}}</view>
+    </view>
+    <slot />
   </view>
-  <view class="t-class-text">{{theme==='error'?'加载失败':text}}</view>
-  <slot />
 </view>

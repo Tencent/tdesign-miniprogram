@@ -1,16 +1,25 @@
 Page({
   data: {
     barLoadingTimeOut: null,
-    loading: false,
+    loadingFirst: false,
+    loadingSecond: false,
+    loadingBar: false,
     progress: -1,
+    isCheck: false,
+    // show: true,
   },
+  switchChange() {
+    const { loadingFirst } = this.data;
+    this.setData({ loadingFirst: !loadingFirst });
+  },
+
   showProgressBar() {
     const timeout = setTimeout(() => {
-      this.setData({ loading: false });
-    }, 10000);
+      this.setData({ loadingBar: false });
+    }, 1000);
     this.setData({
       progress: -1,
-      loading: true,
+      loadingBar: true,
       barLoadingTimeOut: timeout,
     });
     this.changeNavBarColor('#000000', '#ffffff');

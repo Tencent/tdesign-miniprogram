@@ -1,58 +1,45 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-loading`;
-
 @wxComponent()
-export default class extends SuperComponent {
+export default class Loading extends SuperComponent {
   externalClasses = ['t-class', 't-class-error'];
   data = {
     classPrefix: name,
+    show: false,
   };
-  properties = {
-    theme: {
-      type: String,
-      value: 'circular',
-    },
-    delay: {
-      type: Number,
-      value: 0,
-    },
-    layout: {
-      type: String,
-      value: 'horizontal', // 水平的horizontal；垂直的vertical
-    },
-    size: {
-      type: String,
-      value: '40rpx',
-    },
-    reverse: {
-      type: Boolean,
-      value: false,
-    },
-    duration: {
-      type: Number,
-      value: 300,
-    },
-    pause: {
-      type: Boolean,
-      value: false,
-    },
-    progress: {
-      type: Number,
-      value: -1,
-    },
-    loading: {
-      type: Boolean,
-      value: true,
-    },
-    indicator: {
-      type: Boolean,
-      value: true,
-    },
-    text: {
-      type: String,
-      value: '',
+
+  properties = props;
+  timer = null;
+  observers = {
+    loading(this, cur) {
+      const { delay } = this.properties;
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      if (cur) {
+        if (delay) {
+          this.timer = setTimeout(() => {
+            this.setData({ show: cur });
+            console.log('Debounce');
+            this.timer = null;
+          }, delay);
+        } else {
+          this.setData({ show: cur });
+        }
+      } else {
+        this.setData({ show: cur });
+      }
     },
   };
+  lifetimes = {
+    detached() {
+      clearTimeout(this.timer);
+    },
+  };
+  refreshPage() {
+    this.triggerEvent('reload');
+  }
 }
