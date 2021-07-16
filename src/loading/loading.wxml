@@ -3,7 +3,7 @@
   <view
     wx:if="{{theme==='bar'&& theme!=='error'}}"
     style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
-    class="t-class-indicator {{classPrefix}}__bar {{progress < 0 ? classPrefix + '__bar-animation' : '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
+    class="t-class-indicator {{classPrefix}}__bar {{progress < 0? classPrefix + '__bar-animation' :progress<100? classPrefix + '__bar-static': '' }} {{progress >= 100 || !loading ? classPrefix + '__bar-loaded' : '' }}"
   ></view>
   <view
     class="{{classPrefix}} {{classPrefix + '--' + layout}}"

@@ -114,10 +114,16 @@
   width: 80%;
   transition: 0.5s;
   background-color: #0052d9;
+  display: none;
+}
+
+.t-loading__bar-static {
+  display: block;
 }
 
 .t-loading__bar-animation {
   animation: t-bar 8s linear;
+  display: block;
 }
 
 .t-loading__bar-loaded {
@@ -142,13 +148,13 @@
 
 @keyframes t-bar-loaded {
   0% {
-    height: 3px;
+    height: 6rpx;
     opacity: 1;
     width: 90%;
   }
 
   50% {
-    height: 3px;
+    height: 6rpx;
     opacity: 1;
     width: 100%;
   }
