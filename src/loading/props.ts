@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-07-14 17:42:00
+ * updated at 2021-07-16 11:05:29
  * */
 
 import { TdLoadingProps } from './type';

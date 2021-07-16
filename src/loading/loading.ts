@@ -25,7 +25,6 @@ export default class Loading extends SuperComponent {
         if (delay) {
           this.timer = setTimeout(() => {
             this.setData({ show: cur });
-            console.log('Debounce');
             this.timer = null;
           }, delay);
         } else {
