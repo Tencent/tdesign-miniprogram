@@ -1,35 +1,57 @@
 <view>
   <view class="t-checkbox-demo-wrapper">
-    <view class="t-checkbox-demo__title">基础单选框</view>
-    <t-checkbox title="单行标题" name="checkbox1" checked bind:change="onChange"></t-checkbox>
-    <t-checkbox
-      title="双行标题，长文本自动换行，该选项的描述是一段很长的内容"
-      name="checkbox2"
-      bind:change="onChange"
-    ></t-checkbox>
-    <view class="t-checkbox-demo__title">禁用选项</view>
-    <t-checkbox-group bind:change="onChange" value="checkbox1">
-      <t-checkbox title="单行标题" name="checkbox1" disabled></t-checkbox>
-      <t-checkbox
-        title="双行标题，长文本自动换行，该选项的描述是一段很长的内容"
-        name="checkbox2"
-        disabled
-        bordered="{{false}}"
-      ></t-checkbox>
-    </t-checkbox-group>
-    <view class="t-checkbox-demo__title">组合使用</view>
-    <t-checkbox-group bind:change="onChange" value="checkbox1" bordered>
-      <t-checkbox title="单行标题" name="checkbox1"></t-checkbox>
-      <t-checkbox
-        title="双行标题，长文本自动换行，该选项的描述是一段很长的内容"
-        name="checkbox2"
-      ></t-checkbox>
-      <t-checkbox
-        title="双行标题，长文本自动换行，该选项的描述是一段很长的内容"
-        label="一段很长很长的内容文字，一段很长很长的内容文字，一段很长很长的内容文字"
-        name="checkbox3"
-        bordered="{{false}}"
-      ></t-checkbox>
-    </t-checkbox-group>
+    <view class="t-checkbox-demo__title">Checkbox多选框</view>
+    <view class="t-checkbox-demo__description">描述文字</view>
+    <view class="t-checkbox-demo__demo1">
+      <view class="t-checkbox-demo__demo-title">01 类型</view>
+      <view class="t-checkbox-demo__demo-description">基础多选框</view>
+      <view class="t-checkbox-demo__demo-content">
+        <t-checkbox-group value="{{['checkbox2','checkbox3']}}" bordered="{{true}}">
+          <t-checkbox name="checkbox1" title="多选" bordered="{{true}}" />
+          <t-checkbox name="checkbox2" title="多选" />
+          <t-checkbox name="checkbox3" title="多选" />
+          <t-checkbox
+            name="checkbox4"
+            title="多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选"
+          />
+          <t-checkbox
+            name="checkbox5"
+            title="多选"
+            label="多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选"
+          />
+        </t-checkbox-group>
+      </view>
+    </view>
+    <view class="t-checkbox-demo__demo2">
+      <view class="t-checkbox-demo__demo-title">02 限制最多可选数多选框</view>
+      <view class="t-checkbox-demo__demo-description">限制最多可选数量</view>
+      <view class="t-checkbox-demo__demo-content">
+        <t-checkbox-group value="{{['checkbox3','checkbox2']}}">
+          <t-checkbox name="checkbox1" title="多选" />
+          <t-checkbox name="checkbox2" title="多选" />
+          <t-checkbox name="checkbox3" title="多选" />
+        </t-checkbox-group>
+      </view>
+    </view>
+    <view class="t-checkbox-demo__demo3">
+      <view class="t-checkbox-demo__demo-title">03 状态</view>
+      <view class="t-checkbox-demo__demo-description">多选框禁用状态</view>
+      <view class="t-checkbox-demo__demo-content">
+        <t-checkbox-group value="{{['checkbox1','checkbox2']}}">
+          <t-checkbox name="checkbox1" title="多选" disabled="{{true}}" />
+          <t-checkbox name="checkbox2" title="多选" disabled="{{true}}" />
+        </t-checkbox-group>
+      </view>
+    </view>
+    <view class="t-checkbox-demo__demo4">
+      <view class="t-checkbox-demo__demo-title">04 规格</view>
+      <view class="t-checkbox-demo__demo-description">多选框尺寸规格</view>
+      <view class="t-checkbox-demo__demo-content">
+        <t-checkbox-group value="{{['checkbox1','checkbox2']}}">
+          <t-checkbox name="checkbox1" title="多选H48" />
+          <t-checkbox name="checkbox2" title="多选H48" />
+        </t-checkbox-group>
+      </view>
+    </view>
   </view>
 </view>
