@@ -4,10 +4,14 @@
 
   <view class="demo-section">
     <t-cell-group title="01 基础用法">
-      <t-cell required title="单行标题" />
-      <t-cell title="单行标题" clickable="true" value="辅助信息" />
-      <t-cell title="单行标题" is-link />
-      <t-cell title="单行标题" clickable="true" value="辅助信息" rightIcon="arrow-right" />
+      <t-cell title="单行标题" required />
+      <t-cell title="单行标题" hover content="辅助信息" />
+      <t-cell title="单行标题" hover>
+        <t-icon name="arrow-right" slot="right-icon" />
+      </t-cell>
+      <t-cell title="单行标题" hover content="辅助信息">
+        <t-icon name="arrow-right" slot="right-icon" />
+      </t-cell>
     </t-cell-group>
   </view>
 </view>

@@ -1,46 +1,28 @@
 <view
-  class="t-class t-cell {{isLink || clickable ? 't-cell--clickable' : ''}} {{!bordered ? 't-cell--borderless' : ''}} {{center?'t-cell--center':''}} {{required?'t-cell--required':''}}  t-cell--{{size}} {{ label || useLabelSlot ? 't-cell-noCenter' : ''}}"
+  class="t-class t-cell {{ hover ? 't-cell__hover' : ''}} {{!bordered ? 't-cell--borderless' : ''}} t-cell--{{align}} {{required?'t-cell--required':''}}  t-cell--{{size}}"
   hover-class="t-cell--hover"
   hover-stay-time="70"
-  style="{{ customStyle }}"
   bind:tap="onClick"
 >
-  <t-icon
-    wx:if="{{ leftIcon }}"
-    name="{{ leftIcon  }}"
-    class="t-cell__left-icon-wrap"
-    color="{{iconColor}}"
-    size="{{iconSize}}"
-  />
-  <slot wx:else name="left-icon" />
-
-  <view
-    style="{{ titleWidth ? 'max-width:' + titleWidth + ';min-width:' + titleWidth : '' }}"
-    class="t-cell__title title-class"
-  >
+  <view class="t-cell__left-wrap t-class-left">
+    <slot name="left-icon" />
+  </view>
+  <view class="t-cell__title t-class-title">
     <block wx:if="{{ title }}">{{ title }}</block>
     <slot wx:else name="title" />
 
-    <view wx:if="{{ label || useLabelSlot }}" class="t-cell__label label-class">
+    <view wx:if="{{ label || useLabelSlot }}" class="t-cell__label t-class-label">
       <slot wx:if="{{ useLabelSlot }}" name="label" />
       <block wx:elif="{{ label }}">{{ label }}</block>
     </view>
   </view>
 
-  <view class="t-cell__value value-class">
-    <block wx:if="{{ value || value === 0 }}">{{ value }}</block>
-    <slot wx:else />
+  <view class="t-cell__content t-class-content">
+    <block wx:if="{{ content || content=== 0 }}">{{ content}}</block>
+    <slot wx:else name="content" />
   </view>
 
-  <t-icon
-    wx:if="{{ isLink || rightIcon }}"
-    name="{{ rightIcon ? rightIcon : 'arrow-right' }}"
-    class="t-cell__right-icon-wrap right-icon-class"
-    color="{{iconColor}}"
-    size="{{iconSize}}"
-  />
-
-  <slot wx:else name="right-icon" />
-
-  <slot name="extra" />
+  <view class="t-cell__right-wrap t-class-right">
+    <slot name="right-icon" />
+  </view>
 </view>

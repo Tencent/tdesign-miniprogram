@@ -1,1 +1,36 @@
-@import (css) '../common/index.wxss';
+// @import (css) '../common/index.wxss';
+
+@import '../../common/style/miniprogram/index.less';
+
+@cell-group-title-font-size: 28rpx;
+@cell-group-title-line-height: 90rpx;
+@cell-group-title-padding-left: 32rpx;
+@cell-group-title-bg-color: @bg-color-fade;
+@cell-group-title-color: @text-level-3-color;
+@cell-group-border-color: @border-level-1-color;
+
+.@{prefix}-cell-group {
+  position: relative;
+
+  &__title {
+    font-family: PingFangSC-Regular;
+    font-size: @cell-group-title-font-size;
+    color: @cell-group-title-color;
+    text-align: left;
+    line-height: @cell-group-title-line-height;
+    background-color: @cell-group-title-bg-color;
+    padding-left: @cell-group-title-padding-left;
+  }
+
+  &--bordered {
+    &::before {
+      .hairline-top(@cell-group-border-color);
+      z-index: 1;
+    }
+
+    &::after {
+      .hairline-bottom(@cell-group-border-color);
+      z-index: 1;
+    }
+  }
+}
