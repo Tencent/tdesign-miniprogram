@@ -1,17 +1,19 @@
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
+type ToastType = 'loading' | 'success' | 'fail';
+type ToastPositionType = 'top' | 'middle' | 'bottom';
+type ToastDirectionType = 'row' | 'column';
+
 type ToastOptionsType = {
   context?: Context;
   selector?: string;
   icon?: string;
-  iconSize?: number | string;
-  iconColor?: string;
-  text: string;
-  textColor?: string;
-  fontSize?: number | string;
-  zIndex?: number;
+  message: string;
   duration?: number;
-  direction?: string;
+  type?: ToastType;
+  position?: ToastPositionType;
+  showOverlay?: boolean;
+  direction?: ToastDirectionType;
 };
 
 const getInstance = (context?: Context, selector = '#t-toast') => {

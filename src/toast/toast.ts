@@ -3,28 +3,27 @@ import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-toast`;
 
+type ToastType = 'loading' | 'success' | 'fail';
+type ToastPositionType = 'top' | 'middle' | 'bottom';
+type ToastDirectionType = 'row' | 'column';
+
 type ToastOptionsType = {
   icon?: string;
-  iconSize?: number | string;
-  iconColor?: string;
-  text: string;
-  textColor?: string;
-  fontSize?: number | string;
-  zIndex?: number;
+  message: string;
   duration?: number;
-  direction?: string;
+  type?: ToastType;
+  position?: ToastPositionType;
+  showOverlay?: boolean;
+  direction?: ToastDirectionType;
 };
 
-const DefaultOpions: ToastOptionsType = {
+const DefaultOptions: ToastOptionsType = {
   icon: '',
-  iconColor: '#ffffff',
-  iconSize: '96rpx',
-  text: '',
-  textColor: '#ffffff',
-  zIndex: 10002,
-  fontSize: '28rpx',
+  message: '',
   duration: 2000,
   direction: 'row',
+  position: 'middle',
+  showOverlay: false
 };
 
 @wxComponent()
@@ -32,6 +31,11 @@ export default class Toast extends SuperComponent {
   externalClasses = ['t-class'];
   hideTimer: number | null = null;
   removeTimer: number | null = null;
+  typeMapIcon: Record<string, string> = {
+    loading: 'loading',
+    success: 'tick',
+    fail: 'close',
+  }
 
   data = {
     inserted: false,
@@ -41,31 +45,34 @@ export default class Toast extends SuperComponent {
 
   properties: AnyObject = {
     icon: String,
-    iconColor: String,
-    iconSize: null,
-    text: String,
-    textColor: String,
-    zIndex: Number,
-    fontSize: null,
+    message: String,
     duration: Number,
+    type: String,
+    position: String,
+    showOverlay: Boolean,
     direction: String,
+    typeMapIcon: String,
   };
+
   show(options: ToastOptionsType) {
     if (this.hideTimer) clearTimeout(this.hideTimer);
     if (this.removeTimer) clearTimeout(this.removeTimer);
+    const typeMapIcon = Object.keys(this.typeMapIcon).indexOf(options?.type) !== -1 ? this.typeMapIcon[options?.type] : '';
+
     const data = {
-      ...DefaultOpions,
+      ...DefaultOptions,
       ...options,
       show: true,
+      typeMapIcon,
       inserted: true,
     };
     const { duration } = data;
     this.setData(data);
     this.hideTimer = setTimeout(() => {
-      this.hide();
+      this.clear();
     }, duration as number);
   }
-  hide() {
+  clear() {
     this.setData({ show: false });
     this.removeTimer = setTimeout(() => {
       this.setData({

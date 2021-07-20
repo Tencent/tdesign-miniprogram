@@ -4,58 +4,56 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '轻提示文字内容',
+      message: '轻提示文字内容',
     });
   },
   tapShowIconTip() {
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '带图标提示',
+      message: '带图标提示',
       icon: 'tick',
-      iconSize: '42rpx',
+
     });
   },
   tapShowMaxTip() {
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '最多一行展示十个汉字宽度限制最多不超过三行文字行文字行文字',
+      message: '最多一行展示十个汉字宽度限制最多不超过三行文字行文字行文字',
     });
   },
   tapShowRowSuccessTip() {
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '成功文案',
-      icon: 'tick',
-      iconSize: '42rpx',
+      message: '成功文案',
+      type: 'success',
     });
   },
-  tapShowRowWarnTip() {
+  tapShowRowFailTip() {
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '警告文案',
-      icon: 'warning',
-      iconSize: '42rpx',
+      message: '失败文案',
+      type: 'fail'
     });
   },
   tapShowColumnSuccessTip() {
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '成功文案',
-      icon: 'tick',
+      message: '成功文案',
+      type: 'success',
       direction: 'column',
     });
   },
-  tapShowColumnWarnTip() {
+  tapShowColumnFailTip() {
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '警告文案',
-      icon: 'warning',
+      message: '失败文案',
+      type: 'fail',
       direction: 'column',
     });
   },
@@ -63,8 +61,8 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '加载中...',
-      icon: 'loading',
+      message: '加载中...',
+      type: 'loading',
       direction: 'column',
     });
   },
@@ -72,9 +70,54 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      text: '自定义图标自定义图标自定义图标自定义图标图标自定义图标自定义图标自定义图标',
+      message: '自定义图标自定义图标自定义图标自定义图标图标自定义图标自定义图标自定义图标',
       icon: 'star_fill',
       direction: 'column',
     });
   },
+  tapShowTopTip() {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message: '顶部-展示1秒',
+      icon: 'star_fill',
+      direction: 'column',
+      position: 'top',
+      duration: 1000,
+    });
+  },
+  tapShowMiddleTip() {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message: '中间-展示3秒',
+      icon: 'star_fill',
+      direction: 'column',
+      position: 'middle',
+      duration: 3000,
+    });
+  },
+  tapShowBottomTip() {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message: '底部-展示5秒',
+      icon: 'star_fill',
+      direction: 'column',
+      position: 'bottom',
+      duration: 5000,
+    });
+  },
+  tapShowOverlayTip() {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message: '禁止滑动和点击',
+      icon: 'star_fill',
+      direction: 'column',
+      position: 'bottom',
+      duration: 5000,
+      showOverlay: true
+    });
+  }
 });

@@ -1,8 +1,13 @@
-<view
-  wx:if="{{inserted > 0}}"
-  class="{{ classPrefix }}__content t-class {{direction}} {{show ? 'enter' : 'leave'}}"
-  style="z-index:{{zIndex}};font-size:{{fontSize}}rpx;color:{{textColor}};"
->
-  <t-icon wx:if="{{icon}}" name="{{icon}}" color="{{iconColor}}" size="{{iconSize}}" />
-  <view class="{{ classPrefix }}__text">{{text}}</view>
-</view>
+<block>
+	<view wx:if="{{inserted}}" class="{{ classPrefix }}__content t-class {{direction}} {{show ? 'enter' : 'leave'}}" style="top: {{position === 'top' ? '25%' : position === 'bottom' ? '75%': '45%'}}">
+		<t-icon
+		 wx:if="{{typeMapIcon || icon}}"
+		 name="{{typeMapIcon || icon}}"
+		 color="#ffffff"
+		 size="{{direction === 'row' ? '42rpx' : '96rpx'}}"
+		/>
+		<view class="{{ classPrefix }}__text">{{message}}</view>
+	</view>
+	<view class="{{ classPrefix }}__bg" catchtouchmove="true" wx:if="{{showOverlay &&  inserted}}" />
+</block>
+

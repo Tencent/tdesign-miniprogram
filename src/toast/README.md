@@ -35,7 +35,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      text: 'toast内容',
+      message: 'toast内容',
     });
   },
 });
@@ -47,16 +47,20 @@ Page({
 
 组件路径：@tencent/tdesign-miniprogram/toast/toast
 
-#### Props
+### Props
 
-| 参数      | 说明                             | 类型     | 默认值    |
-| --------- | -------------------------------- | -------- | --------- |
-| icon      | 弹窗显示 icon 类型名称           | _string_ | `success` |
-| iconColor | 弹窗显示 icon 颜色               | _string_ | `#fff`    |
-| iconSize  | 弹窗显示 icon 大小               | _string_ | -         |
-| text      | 弹窗显示文字提示                 | _string_ | -         |
-| textColor | 弹窗显示文字颜色                 | _string_ | ``        |
-| zIndex    | 当前弹窗所在的层级值             | _number_ | `10`      |
-| fontSize  | 弹窗显示文字大小                 | _number_ | -         |
-| duration  | 弹窗显示毫秒数                   | _number_ | `2000`    |
-| direction | 按钮排列方式:`'row'`\|`'column'` | _string_ | `'row'`   |
+| 参数        | 说明                                            | 类型                 | 默认值   |
+| ----------- | ----------------------------------------------- | -------------------- | -------- |
+| icon        | 自定义图标                                      | _string_             | ``       |
+| type        | 提示类型，可选值：'loading'、'success'、'fail'  | _ToastType_          | ``       |
+| message     | 弹窗显示文字提示                                | _string_             | -        |
+| position    | 弹窗展示位置，可选值：'top'、'middle'、'bottom' | _ToastPositionType_  | `middle` |
+| duration    | 弹窗显示毫秒数                                  | _number_             | `2000`   |
+| direction   | 图标排列方式，可选值：'row'、'column'           | _ToastDirectionType_ | `'row'`  |
+| showOverlay | 显示背景遮罩，禁止背景点击和滚动                | _boolean_            | false    |
+
+```js
+type ToastType = 'loading' | 'success' | 'fail';
+type ToastPositionType = 'top' | 'middle' | 'bottom';
+type ToastDirectionType = 'row' | 'column';
+```
