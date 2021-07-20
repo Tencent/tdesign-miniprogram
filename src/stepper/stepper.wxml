@@ -19,7 +19,7 @@
 
   <input
     class="{{ classPrefix }}__input"
-    style="{{ utils.addUnit('width',inputWidth) }}"
+    style="width:{{ utils.addUnit(inputWidth) }};"
     disabled="{{ disabled || disableInput }}"
     type="number"
     value="{{ currentValue }}"
