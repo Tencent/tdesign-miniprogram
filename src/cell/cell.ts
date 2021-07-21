@@ -30,10 +30,6 @@ export default class Cell extends SuperComponent {
       type: String,
       value: '',
     },
-    size: {
-      type: String,
-      value: 'small', // 'small' | 'large'
-    },
     label: {
       type: String,
       value: '',

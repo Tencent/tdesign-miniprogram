@@ -1,5 +1,5 @@
 <view
-  class="t-class t-cell {{ hover ? 't-cell__hover' : ''}} {{!bordered ? 't-cell--borderless' : ''}} t-cell--{{align}} {{required?'t-cell--required':''}}  t-cell--{{size}}"
+  class="t-class t-cell {{ hover ? 't-cell__hover' : ''}} {{!bordered ? 't-cell--borderless' : ''}} t-cell--{{align}} {{required?'t-cell--required':''}}"
   hover-class="t-cell--hover"
   hover-stay-time="70"
   bind:tap="onClick"

@@ -9,7 +9,7 @@
 @cell-text-color: rgba(0, 0, 0, 0.9);
 @cell-background-color: #ffffff;
 @cell-border-color: #e7e7e7;
-@cell-active-color: #f2f3f5;
+@cell-hover-color: #f2f3f5;
 @cell-required-color: #e34d59;
 @cell-label-color: rgba(0, 0, 0, 0.4);
 @cell-label-font-size: 28rpx;
@@ -20,9 +20,6 @@
 @cell-right-icon-color: #bbb;
 @cell-gutter: 16rpx;
 @cell-border-padding-left: 32rpx;
-@cell-large-vertical-padding: 32rpx;
-@cell-large-title-font-size: 32rpx;
-@cell-large-label-font-size: 28rpx;
 
 .@{prefix}-cell {
   position: relative;
@@ -86,7 +83,7 @@
   }
 
   &__hover&--hover {
-    background-color: @cell-active-color;
+    background-color: @cell-hover-color;
   }
 
   &--required {
@@ -98,19 +95,6 @@
       left: @cell-gutter;
       font-size: @cell-font-size;
       color: @cell-required-color;
-    }
-  }
-
-  &--large {
-    padding-top: @cell-large-vertical-padding;
-    padding-bottom: @cell-large-vertical-padding;
-
-    .t-cell__title {
-      font-size: @cell-large-title-font-size;
-    }
-
-    .t-cell__label {
-      font-size: @cell-large-label-font-size;
     }
   }
 
