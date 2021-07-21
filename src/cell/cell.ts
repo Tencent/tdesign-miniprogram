@@ -82,9 +82,9 @@ export default class Cell extends SuperComponent {
     this.triggerEvent('click', e.detail);
     this.jumpLink();
   }
-  jumpLink(urlKey = 'url') {
+  jumpLink(urlKey = 'url', link = 'linkType') {
     const url = this.data[urlKey];
-    const {linkType} = this.data;
+    const linkType = this.data[link];
     if (url) {
       wx[linkType]({ url });
       // wx.navigateTo({ url });
