@@ -1,8 +1,14 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
-TComponent({
-  properties: {
+
+@wxComponent()
+export default class Stepper extends SuperComponent {
+  externalClasses = ['classname'];
+  options = {
+    addGlobalClass: true,
+  };
+  properties = {
     modelValue: {
       type: Number,
       optionalTypes: [String],
@@ -41,66 +47,95 @@ TComponent({
       type: Number,
       value: 1,
     },
-  },
+    iconPrefix: {
+      type: String,
+      value: '',
+    },
+    minusIcon: {
+      type: String,
+      value: 'remove',
+    },
+    plusIcon: {
+      type: String,
+      value: 'add',
+    },
+    pureMode: {
+      type: Boolean,
+      value: false,
+    },
+  };
+
   data: {
+    currentValue: Number;
+    classPrefix: String;
+  } = {
     currentValue: 0,
     classPrefix: `${prefix}-stepper`,
-  },
+  };
+
   attached() {
+    const { modelValue } = this.properties;
     this.setData({
-      currentValue: Number(this.data.modelValue) || 0,
+      currentValue: Number(modelValue) || 0,
     });
-  },
-  methods: {
-    isDisabled(type) {
-      const { min, max, currentValue, disabled } = this.data;
-      if (disabled) {
-        return true;
-      }
-      if (type === 'minus' && currentValue <= min) {
-        return true;
-      }
-      if (type === 'plus' && currentValue >= max) {
-        return true;
-      }
+  }
+
+  isDisabled(type) {
+    const { min, max, disabled } = this.properties;
+    const { currentValue } = this.data as any;
+    if (disabled) {
+      return true;
+    }
+    if (type === 'minus' && currentValue <= min) {
+      return true;
+    }
+    if (type === 'plus' && currentValue >= max) {
+      return true;
+    }
+    return false;
+  }
+
+  format(value) {
+    const { min, max } = this.properties as any;
+    // 超过边界取边界值
+    return Math.max(Math.min(max, value, Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER);
+  }
+
+  setValue(value) {
+    this.setData({
+      currentValue: value,
+    });
+    this.triggerEvent('change', { value });
+  }
+
+  minusValue() {
+    if (this.isDisabled('minus')) {
+      this.triggerEvent('overlimit', { type: 'minus' });
       return false;
-    },
-    format(value) {
-      const { min, max } = this.data;
-      // 超过边界取边界值
-      return Math.max(Math.min(max, value, Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER);
-    },
-    setValue(value) {
-      this.setData(
-        {
-          currentValue: value,
-        },
-        this.triggerEvent('change', { value }),
-      );
-    },
-    minusValue() {
-      if (this.isDisabled('minus')) {
-        return false;
-      }
-      const { currentValue, step } = this.data;
-      this.setValue(this.format(currentValue - step));
-    },
-    plusValue() {
-      if (this.isDisabled('plus')) {
-        return false;
-      }
-      const { currentValue, step } = this.data;
-      this.setValue(this.format(currentValue + step));
-    },
-    changeValue(e) {
-      const value =
-        String(e.detail.value)
-          .split('.')[0]
-          .replace(/[^-0-9]/g, '') || 0;
-      this.setValue(this.format(Number(value)));
-    },
-    blurHandler(e) {
-      this.changeValue(e);
-    },
-  },
-});
+    }
+    const { currentValue, step } = this.data as any;
+    this.setValue(this.format(currentValue - step));
+  }
+
+  plusValue() {
+    if (this.isDisabled('plus')) {
+      this.triggerEvent('overlimit', { type: 'plus' });
+      return false;
+    }
+    const { currentValue, step } = this.data as any;
+    this.setValue(this.format(currentValue + step));
+  }
+
+  changeValue(e) {
+    const value =
+      String(e.detail.value)
+        .split('.')[0]
+        .replace(/[^-0-9]/g, '') || 0;
+    this.setValue(this.format(Number(value)));
+    this.triggerEvent('blur', { value });
+  }
+
+  blurHandler(e) {
+    this.changeValue(e);
+  }
+}

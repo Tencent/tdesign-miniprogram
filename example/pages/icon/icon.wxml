@@ -28,9 +28,15 @@
       <t-icon name="warning_fill" />
       <t-icon name="warning_fill" size="28px" />
     </view>
+    <view class="t-icon__title">自定义属性</view>
+    <view class="t-icon__list">
+      <t-icon name="warning_fill" custom-style="color:#e5b34b;font-size:48rpx" />
+      <t-icon name="warning_fill" custom-style="color:#dd0b0b;font-size:68rpx" />
+    </view>
     <view class="t-icon__title"
-      >所有图标<label class="t-icon__title-tip">（点击图标自动复制图标名）</label></view
-    >
+      >所有图标
+      <label class="t-icon__title-tip">（点击图标自动复制图标名）</label>
+    </view>
     <view class="t-icon__list">
       <template
         wx:for="{{icons}}"
