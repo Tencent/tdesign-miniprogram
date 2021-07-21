@@ -5,7 +5,10 @@ const name = `${prefix}-dialog`;
 
 @wxComponent()
 export default class Dailog extends SuperComponent {
-  externalClasses = ['t-class', 't-cancel-btn', 't-confirm-btn'];
+  options = {
+    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+  };
+  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel'];
   properties = {
     visible: {
       type: Boolean,
@@ -14,25 +17,27 @@ export default class Dailog extends SuperComponent {
     header: {
       type: String,
       optionalTypes: [Boolean],
-      value: true,
+      value: '',
     },
     body: {
       type: String,
+      optionalTypes: [Boolean],
       value: '',
     },
     footer: {
-      type: Boolean,
-      value: true,
+      type: Array,
+      optionalTypes: [Boolean],
+      value: [],
     },
     confirmBtn: {
       type: String,
       optionalTypes: [Boolean],
-      value: '确认',
+      value: '',
     },
     cancelBtn: {
       type: String,
       optionalTypes: [Boolean],
-      value: '取消',
+      value: '',
     },
     showOverlay: {
       type: Boolean,
@@ -50,18 +55,9 @@ export default class Dailog extends SuperComponent {
       type: Number,
       value: 2500,
     },
-    direction: {
+    buttonLayout: {
       type: String,
-      value: 'row',
-    },
-    actions: {
-      type: Array,
-      value: [],
-    },
-    confirmOpenTypeValue: String,
-    asyncClose: {
-      type: Boolean,
-      value: false,
+      value: 'horizontal', // horizontal 水平；vertical 垂直
     },
   };
 
@@ -70,21 +66,15 @@ export default class Dailog extends SuperComponent {
   };
 
   onConfirm() {
-    const { asyncClose } = this.properties;
-    if (!asyncClose) {
-      this.setData({
-        visible: false,
-      });
-    }
+    this.setData({
+      visible: false,
+    });
     this.triggerEvent('confirm');
     this._onComfirm && this._onComfirm();
   }
 
   onCancel() {
-    const { asyncClose } = this.properties;
-    if (!asyncClose) {
-      this.close();
-    }
+    this.close();
     this.triggerEvent('cancel');
   }
 
@@ -103,12 +93,10 @@ export default class Dailog extends SuperComponent {
   }
 
   onActionTap(e: any) {
-    const { asyncClose } = this.properties;
-    if (!asyncClose) {
-      this.setData({
-        visible: false,
-      });
-    }
+    this.setData({
+      visible: false,
+    });
+
     const { index } = e.currentTarget.dataset;
     this.triggerEvent('action', { index });
     this._onAction && this._onAction({ index });

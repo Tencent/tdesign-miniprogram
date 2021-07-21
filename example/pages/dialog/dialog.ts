@@ -13,10 +13,8 @@ interface Config {
   body: string;
   confirmBtn: string;
   cancelBtn: string;
-  confirmOpenTypeValue: string;
-  asyncClose: boolean;
-  direction: 'row' | 'column';
-  actions: { name: string; primary?: boolean; style?: string }[];
+  buttonLayout: 'horizontal' | 'vertical';
+  footer: boolean | { name: string; primary?: boolean; style?: string }[];
 }
 
 const dialogConfig: Config = {
@@ -25,10 +23,8 @@ const dialogConfig: Config = {
   body: '',
   confirmBtn: '',
   cancelBtn: '',
-  confirmOpenTypeValue: '',
-  asyncClose: false,
-  direction: 'row',
-  actions: [],
+  buttonLayout: 'horizontal',
+  footer: false,
 };
 
 const modelConfigFactory = (opt: Partial<Config>) => {
@@ -41,8 +37,7 @@ const modelConfigFactory = (opt: Partial<Config>) => {
 Page({
   data: {
     show: false,
-    show4Slot: false,
-    reDeployModal: true,
+    useSlot: false,
     dialogConfig,
     operList: [
       {
@@ -103,30 +98,15 @@ Page({
     ],
   },
 
-  /** 隐藏渲染可配置的dialog组件 */
-  closeConfigableDialogHandle() {
-    return new Promise((resolve) => {
-      this.setData({ reDeployModal: false }, () => resolve({}));
-    });
-  },
-
-  clickHandle(e) {
-    this.closeConfigableDialogHandle()
-      .then(() => this.switchDialogConfigHandle(e.detail))
-      .then(() => {
-        this.setData({ reDeployModal: true });
-      });
-  },
-
   /** 切换dialog配置项 */
-  switchDialogConfigHandle(key: string) {
+  clickHandle(e) {
+    const key = e.detail;
     switch (key) {
       // 纯文本弹窗
       case 'text':
       case 'multiText': {
         this.setData({
           show: true,
-          show4Slot: false,
           dialogConfig: modelConfigFactory({
             header: key === 'text' ? title : maxTitle,
             confirmBtn: '知道了',
@@ -139,7 +119,6 @@ Page({
       case 'multiTextAndTitle': {
         this.setData({
           show: true,
-          show4Slot: false,
           dialogConfig: modelConfigFactory({
             header: key === 'textAndTitle' ? title : '对话框带文本最大高度',
             body: key === 'textAndTitle' ? message : maxMessage,
@@ -152,7 +131,6 @@ Page({
       case 'confirm': {
         this.setData({
           show: true,
-          show4Slot: false,
           dialogConfig: modelConfigFactory({
             header: title,
             body: message,
@@ -166,7 +144,6 @@ Page({
       case 'warnConfirm': {
         this.setData({
           show: true,
-          show4Slot: false,
           dialogConfig: modelConfigFactory({
             header: title,
             tConfirmBtn: 'custom-confirm-btn',
@@ -180,13 +157,12 @@ Page({
       case 'tooLongBtnContent': {
         this.setData({
           show: true,
-          show4Slot: false,
           dialogConfig: modelConfigFactory({
             header: title,
             body: message,
             confirmBtn: '按钮文案文字内容较长',
             cancelBtn: '取消',
-            direction: 'column',
+            buttonLayout: 'vertical',
           }),
         });
         return;
@@ -195,12 +171,11 @@ Page({
       case 'multiBtn': {
         this.setData({
           show: true,
-          show4Slot: false,
           dialogConfig: modelConfigFactory({
             header: title,
             body: message,
-            direction: 'column', // 'row' | 'column'
-            actions: [
+            buttonLayout: 'vertical', // 'horizontal' | 'vertical'
+            footer: [
               { name: '取消', primary: false },
               { name: '按钮文案文字内容较长', primary: true },
               { name: '单行按钮最多十五个字符文案内容', primary: true },
@@ -213,16 +188,17 @@ Page({
       case 'withInput':
       case 'textAndTitleWithInput': {
         this.setData({
+          show: true,
+          useSlot: true,
           dialogConfig: modelConfigFactory({
-            header: title,
+            header: '带输入框对话框',
             body: key === 'withInput' ? '' : message,
+            confirmBtn: '确认',
+            cancelBtn: '取消',
           }),
-          show: false,
-          show4Slot: true,
         });
         return;
       }
-
       default: {
         Dialog.alert({
           header: `未知key: ${key}`,
@@ -234,19 +210,15 @@ Page({
   },
 
   /** 异步关闭弹层 */
-  asyncCloseHandle() {
-    if (this.data.dialogConfig.asyncClose) {
-      setTimeout(() => this.confirmHandle(), 1000);
-    } else {
-      this.confirmHandle();
-    }
+  closeHandle() {
+    this.confirmHandle();
   },
 
   /** 普通弹层关闭 */
   confirmHandle() {
     this.setData({
-      show4Slot: false,
       show: false,
+      useSlot: false,
     });
     Dialog.close();
   },

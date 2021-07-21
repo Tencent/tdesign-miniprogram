@@ -2,65 +2,59 @@
   visible="{{ visible }}"
   showOverlay="{{showOverlay}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
+  preventScrollThrough="{{preventScrollThrough}}"
   zIndex="{{ zIndex }}"
   bindoverlayClick="overlayClick"
 >
   <view class="{{ classPrefix }} t-class">
     <view class="{{ classPrefix }}__content">
       <view wx:if="{{ header }}" class="{{ classPrefix }}__header">{{ header }}</view>
-      <slot wx:else name="header" />
-      <view class="{{ classPrefix }}__body {{header ? '' : 'no-header'}}">
-        <text wx:if="{{ body }}" class="{{ classPrefix }}__body-text">{{ body }}</text>
-        <slot wx:else name="body" />
+      <slot name="header" />
+      <view wx:if="{{ body }}" class="{{ classPrefix }}__body {{header ? '' : 'no-header'}}">
+        <text class="{{ classPrefix }}__body-text">{{ body }}</text>
       </view>
+      <slot name="body" />
     </view>
-    <block wx:if="{{actions && actions.length > 0}}">
-      <view
-        class="{{ classPrefix }}__footer {{direction === 'column' ?  classPrefix + '__footer--column' : ''}}"
-      >
+    <view
+      class="{{ classPrefix }}__footer {{ classPrefix }}__footer--default {{buttonLayout === 'vertical' ? classPrefix + '__footer--column' : ''}}"
+    >
+      <view wx:if="{{footer}}">
         <button
-          class="{{ classPrefix }}__button {{action.primary ? classPrefix + '__button-confirm' : ''}}"
-          style="{{action.style}}"
-          wx:for="{{actions}}"
-          wx:for-item="action"
+          class="{{ classPrefix }}__button {{item.primary ? classPrefix + '__button-confirm' : ''}}"
+          wx:for="{{footer}}"
+          wx:key="action"
+          style="{{item.style}}"
           data-index="{{index}}"
           bindtap="onActionTap"
         >
-          {{action.name}}
+          {{ite m.name}}
         </button>
       </view>
-    </block>
-    <block wx:else>
-      <view
-        class="{{ classPrefix }}__footer {{ classPrefix }}__footer--default {{direction === 'column' ? classPrefix + '__footer--column' : ''}}"
+      <slot name="footer" />
+      <button
+        wx:if="{{ cancelBtn }}"
+        class="{{ classPrefix }}__button {{ classPrefix }}__button-cancel t-class-cancel"
+        bindtap="onCancel"
       >
-        <block wx:if="{{ footer }}">
-          <button
-            wx:if="{{ cancelBtn }}"
-            class="{{ classPrefix }}__button {{ classPrefix }}__button-cancel t-cancel-btn"
-            bindtap="onCancel"
-          >
-            {{ cancelBtn }}
-          </button>
-          <slot wx:else name="cancelBtn" />
-          <button
-            wx:if="{{ confirmBtn }}"
-            class="{{ classPrefix }}__button {{ classPrefix }}__button-confirm t-confirm-btn"
-            bindtap="onConfirm"
-            open-type="{{confirmOpenTypeValue}}"
-            bind:getuserinfo="openValueCBHandle"
-            bind:contact="openValueCBHandle"
-            bind:getphonenumber="openValueCBHandle"
-            bind:opensetting="openValueCBHandle"
-            bind:launchapp="openValueCBHandle"
-            bind:error="openValueErrCBHandle"
-            style="color: {{confirmTextColor}};border-color:{{borderColor}}"
-          >
-            {{ confirmBtn }}
-          </button>
-        </block>
-        <slot wx:else name="confirmBtn" />
-      </view>
-    </block>
+        {{ cancelBtn }}
+      </button>
+      <slot name="cancelBtn" />
+      <button
+        wx:if="{{ confirmBtn }}"
+        class="{{ classPrefix }}__button {{ classPrefix }}__button-confirm t-class-confirm"
+        bindtap="onConfirm"
+        open-type="{{confirmBtn.openType}}"
+        bind:getuserinfo="openValueCBHandle"
+        bind:contact="openValueCBHandle"
+        bind:getphonenumber="openValueCBHandle"
+        bind:opensetting="openValueCBHandle"
+        bind:launchapp="openValueCBHandle"
+        bind:error="openValueErrCBHandle"
+        style="color: {{confirmTextColor}};border-color:{{borderColor}}"
+      >
+        {{ confirmBtn }}
+      </button>
+      <slot name="confirmBtn" />
+    </view>
   </view>
 </t-popup>

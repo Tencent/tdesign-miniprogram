@@ -1,36 +1,9 @@
-type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
-
-interface DialogAlertOptionsType {
-  context?: Context;
-  selector?: string;
-  header?: string;
-  body: string;
-  zIndex?: number;
-  asyncClose?: boolean;
-  confirmButtonText?: string;
-  textAlign?: string;
-}
-
-interface DialogComfirmOptionsType extends DialogAlertOptionsType {
-  cancelButtonText?: string;
-}
-
-interface Action {
-  name: string;
-  primary?: boolean;
-  style?: string;
-}
-
-interface DialogActionOptionsType {
-  context?: Context;
-  selector?: string;
-  header?: string;
-  body: string;
-  zIndex?: number;
-  asyncClose?: boolean;
-  actions?: Action[]; // 自定义多选项，优先级高于默认的确定、取消按钮，触发后返回按钮的index
-  direction?: 'column' | 'row'; // 按钮排列方向，默认row，传入action时默认column
-}
+import {
+  Context,
+  DialogAlertOptionsType,
+  DialogComfirmOptionsType,
+  DialogActionOptionsType,
+} from './type';
 
 function getDialogInstance(context?: Context, selector = '#t-dialog') {
   if (!context) {
@@ -46,11 +19,6 @@ function getDialogInstance(context?: Context, selector = '#t-dialog') {
   return instance;
 }
 
-const DEFAULT_OPTIONS = {
-  zIndex: 1001,
-  actions: [],
-};
-
 export default {
   alert(options: DialogAlertOptionsType) {
     const { context, selector, ..._options } = options;
@@ -59,7 +27,6 @@ export default {
 
     return new Promise((resolve) => {
       instance.setData({
-        ...DEFAULT_OPTIONS,
         cancelBtn: '',
         ..._options,
         visible: true,
@@ -74,7 +41,6 @@ export default {
 
     return new Promise((resolve, reject) => {
       instance.setData({
-        ...DEFAULT_OPTIONS,
         ..._options,
         visible: true,
       });
@@ -91,18 +57,17 @@ export default {
     return Promise.reject();
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
-    const { context, selector, actions, ..._options } = options;
+    const { context, selector, footer, ..._options } = options;
     const instance = getDialogInstance(context, selector);
     if (!instance) return Promise.reject();
-    if (!actions || actions.length === 0 || actions.length > 7) {
+    if (!footer || footer.length === 0 || footer.length > 7) {
       console.warn('action 数量建议控制在1至7个');
     }
 
     return new Promise((resolve) => {
       instance.setData({
-        ...DEFAULT_OPTIONS,
-        actions,
-        direction: 'column',
+        footer,
+        direction: 'vertical',
         ..._options,
         visible: true,
       });

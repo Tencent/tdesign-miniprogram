@@ -10,35 +10,20 @@
     bindclickoper="clickHandle"
   />
 </view>
+
 <!-- 链式调用基础 -->
 <t-dialog id="t-dialog" />
-<!-- 无slot的情况 -->
-<block wx:if="{{reDeployModal}}">
-  <t-dialog
-    visible="{{show}}"
-    t-confirm-btn="{{dialogConfig.tConfirmBtn}}"
-    header="{{dialogConfig.header}}"
-    body="{{dialogConfig.body}}"
-    confirm-btn="{{dialogConfig.confirmBtn}}"
-    cancel-btn="{{dialogConfig.cancelBtn}}"
-    confirm-open-type-value="{{dialogConfig.confirmOpenTypeValue}}"
-    async-close="{{dialogConfig.asyncClose}}"
-    direction="{{dialogConfig.direction}}"
-    actions="{{dialogConfig.actions}}"
-    bind:confirm="confirmHandle"
-    bind:cancel="asyncCloseHandle"
-  />
-  <!-- slot -->
-  <t-dialog
-    visible="{{show4Slot}}"
-    header="{{dialogConfig.header}}"
-    body="{{dialogConfig.body}}"
-    confirm-btn="确定"
-    cancle-btn="取消"
-    show-cancel-button="{{true}}"
-    bind:confirm="confirmHandle"
-    bind:cancel="asyncCloseHandle"
-  >
-    <input placeholder="输入文案" />
-  </t-dialog>
-</block>
+<t-dialog
+  visible="{{show}}"
+  t-class-confirm="{{dialogConfig.tConfirmBtn}}"
+  header="{{dialogConfig.header}}"
+  body="{{dialogConfig.body}}"
+  confirm-btn="{{dialogConfig.confirmBtn}}"
+  cancel-btn="{{dialogConfig.cancelBtn}}"
+  button-layout="{{dialogConfig.buttonLayout}}"
+  footer="{{dialogConfig.footer}}"
+  bind:confirm="confirmHandle"
+  bind:cancel="closeHandle"
+>
+  <input wx:if="{{useSlot}}" placeholder="输入文案" slot="body" />
+</t-dialog>
