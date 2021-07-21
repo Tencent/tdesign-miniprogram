@@ -1,58 +1,46 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-loading`;
-
-TComponent({
-  data: {
+@wxComponent()
+export default class Loading extends SuperComponent {
+  externalClasses = ['t-class', 't-class-text', 't-class-indicator'];
+  data = {
     classPrefix: name,
-  },
-  properties: {
-    layout: {
-      type: String,
-      value: 'default', // 'default' | 'full' | 'bar'
+    show: false,
+  };
+  options = {
+    multipleSlots: true,
+  };
+  properties = props;
+  timer = null;
+  observers = {
+    loading(this, cur) {
+      const { delay } = this.properties;
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      if (cur) {
+        if (delay) {
+          this.timer = setTimeout(() => {
+            this.setData({ show: cur });
+            this.timer = null;
+          }, delay);
+        } else {
+          this.setData({ show: cur });
+        }
+      } else {
+        this.setData({ show: cur });
+      }
     },
-    size: {
-      type: String,
-      value: 'medium',
+  };
+  lifetimes = {
+    detached() {
+      clearTimeout(this.timer);
     },
-    textSize: {
-      type: String,
-      value: '14px',
-    },
-    textPadding: {
-      type: String,
-      value: '0',
-    },
-    vertical: {
-      type: Boolean,
-      value: true,
-    },
-    type: {
-      type: String,
-      value: 'circle',
-    },
-    error: {
-      type: Boolean,
-      value: false,
-    },
-    showType: {
-      type: String,
-      value: 'all', // 'all' | 'text-only' | 'icon-only'
-    },
-    title: {
-      type: String,
-      value: '加载中',
-    },
-    progress: {
-      type: Number,
-      value: -1,
-    },
-    loading: Boolean,
-  },
-  methods: {
-    reloadClick() {
-      this.triggerEvent('reload');
-    },
-  },
-});
+  };
+  refreshPage() {
+    this.triggerEvent('reload');
+  }
+}
