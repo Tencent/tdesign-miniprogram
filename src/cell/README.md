@@ -1,19 +1,19 @@
 #### Props
 
-| 属性            | 值类型    | 默认值       | 必传 | 说明                                                                                                                          |
-| --------------- | --------- | ------------ | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
-| title           | `String`  | -            | N    | 左侧标题                                                                                                                      |
-| content         | `String`  | -            | N    | 右侧内容                                                                                                                      |
-| size            | `string`  | `small`      | N    | 单元格 padding 大小，可选值为 `large` , `small`,                                                                              |
-| label           | `String`  | -            | N    | 标题下方的描述信息                                                                                                            |
-| align           | `String`  | `middle`     | N    | cell 内容位置，可选值`top`,`middle`,`bottom `                                                                                 |
-| required        | `boolean` | `false`      | N    | 是否显示表单必填星号                                                                                                          |
-| hover           | `boolean` | `false`      | N    | 是否开启点击反馈                                                                                                              |
-| useLabelSlot    | `Boolean` | `false`      | N    | 是否使用 label slot                                                                                                           |
-| bordered        | `Boolean` | `true`       | N    | 是否显示下边框                                                                                                                |
-| url             | `string`  | -            | N    | 点击后跳转的链接地址                                                                                                          |
-| linkType        | `string`  | `navigateTo` | N    | 链接跳转类型，可选值为 `redirectTo`, `switchTab` ,`reLaunch`                                                                  |
-| externalClasses | `Array`   | -            | N    | 外部样式表。['t-class', 't-class-title', 't-calss-label', 't-class-content','t-class-hover','t-class-left','t-class-right', ] |
+| 属性            | 值类型    | 默认值       | 必传 | 说明                                                                                                                                                                                                                                  |
+| --------------- | --------- | ------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| title           | `String`  | -            | N    | 左侧标题                                                                                                                                                                                                                              |
+| content         | `String`  | -            | N    | 右侧内容                                                                                                                                                                                                                              |
+| size            | `string`  | `small`      | N    | 单元格 padding 大小，可选值为 `large` , `small`,分表表示 cell 组件垂直方向 32rpx、24rpx                                                                                                                                               |
+| label           | `String`  | -            | N    | 标题下方的描述信息                                                                                                                                                                                                                    |
+| align           | `String`  | `middle`     | N    | cell 内容位置，可选值`top`,`middle`,`bottom `                                                                                                                                                                                         |
+| required        | `boolean` | `false`      | N    | 是否显示表单必填星号                                                                                                                                                                                                                  |
+| hover           | `boolean` | `false`      | N    | 是否开启点击反馈                                                                                                                                                                                                                      |
+| useLabelSlot    | `Boolean` | `false`      | N    | 是否使用 label slot                                                                                                                                                                                                                   |
+| bordered        | `Boolean` | `true`       | N    | 是否显示下边框                                                                                                                                                                                                                        |
+| url             | `string`  | -            | N    | 点击后跳转的链接地址                                                                                                                                                                                                                  |
+| linkType        | `string`  | `navigateTo` | N    | 链接跳转类型，可选值为 `redirectTo`, `switchTab` ,`reLaunch`                                                                                                                                                                          |
+| externalClasses | `Array`   | -            | N    | 外部样式类名，分别用于设置 cell 组件最外层样式、左侧标题、左侧 label、右侧内容、点击反馈效果、左侧 slot、右侧 slot。['t-class', 't-class-title', 't-calss-label', 't-class-content','t-class-hover','t-class-left','t-class-right', ] |
 
 #### Events
 
