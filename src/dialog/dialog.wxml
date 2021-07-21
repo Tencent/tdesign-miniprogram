@@ -27,7 +27,7 @@
           data-index="{{index}}"
           bindtap="onActionTap"
         >
-          {{ite m.name}}
+          {{item.name}}
         </button>
       </view>
       <slot name="footer" />
