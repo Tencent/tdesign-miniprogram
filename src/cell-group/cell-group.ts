@@ -13,7 +13,10 @@ export default class CellGroup extends SuperComponent {
    * 组件的属性列表
    */
   properties = {
-    title: String,
+    title: {
+      type: String,
+      value: '',
+    },
     bordered: {
       type: Boolean,
       value: true,
