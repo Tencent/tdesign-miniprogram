@@ -42,28 +42,12 @@ export default class Rate extends SuperComponent {
       type: String,
       value: '#999',
     },
-    touchable: {
-      type: Boolean,
-      value: false,
-    },
-    half: {
+    allowHalf: {
       type: Boolean,
       value: false,
     },
     readonly: Boolean,
     disabled: Boolean,
-    icon: {
-      type: String,
-      value: 'star_fill',
-    },
-    voidIcon: {
-      type: String,
-      value: 'star_fill',
-    },
-    halfIcon: {
-      type: String,
-      value: 'star_fill',
-    },
     showText: {
       type: Boolean,
       value: false,
@@ -75,9 +59,12 @@ export default class Rate extends SuperComponent {
   };
   data = {
     classPrefix: name,
+    icon: 'star_fill',
+    voidIcon: 'star_fill',
+    halfIcon: 'star_fill',
   };
   onTouch(e: any) {
-    const { count, half, gap, value: currentValue } = this.properties as any;
+    const { count, allowHalf, gap, value: currentValue } = this.properties as any;
     const touch = e.touches[0];
     const margin = rpx2px(gap);
     const selQuery = this.createSelectorQuery();
@@ -90,7 +77,7 @@ export default class Rate extends SuperComponent {
         const num = (offsetX + margin) / (starWidth + margin);
         const remainder = num % 1;
         const integral = num - remainder;
-        let value = remainder <= 0.5 && half ? integral + 0.5 : integral + 1;
+        let value = remainder <= 0.5 && allowHalf ? integral + 0.5 : integral + 1;
         if (value > count) {
           value = count;
         } else if (value < 0) {

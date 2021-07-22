@@ -21,24 +21,22 @@
 
 ### rate Props
 
-| 参数          | 说明                | 类型      | 默认值                                   | 版本    |
-| ------------- | ------------------- | --------- | ---------------------------------------- | ------- |
-| count         | star 总数           | _number_  | 默认 5 个                                | -       |
-| size          | star 图标大小       | _number_  | 48                                       | -       |
-| size          | star 图标间距       | _number_  | 6                                        | -       |
-| half          | 是否存在个 半个星星 | _boolean_ | false                                    |
-| value         | 值                  | _number_  | -                                        | > v0.25 |
-| color         | 激活图标颜色        | _string_  | #ffc51c                                  | > v0.25 |
-| voidColor     | 默认图标颜色        | _string_  | #ddd                                     | > v0.25 |
-| disabledColor | 禁用图标颜色        | _string_  | #999                                     | > v0.25 |
-| touchable     | 是否滑动            | _boolean_ | false                                    | > v0.25 |
-| readonly      | 是否只读            | _boolean_ | false                                    | > v0.25 |
-| disabled      | 是否禁用            | _boolean_ | false                                    | > v0.25 |
-| icon          | 激活图标 icon name  | _string_  | -                                        | > v0.25 |
-| voidIcon      | 默认图标 icon name  | _string_  | -                                        | > v0.25 |
-| halfIcon      | 半图标 icon name    | _string_  | -                                        | > v0.25 |
-| showText      | 是否展示描述文本    | _string_  | false                                    | > v0.25 |
-| texts         | 描述文本数组        | _string_  | ['极差', '失望', '一般', '满意', '惊喜'] | > v0.25 |
+| 参数          | 说明               | 类型      | 默认值                                   | 版本 |
+| ------------- | ------------------ | --------- | ---------------------------------------- | ---- |
+| count         | star 总数          | _number_  | 默认 5 个                                | -    |
+| size          | star 图标大小      | _number_  | 48                                       | -    |
+| gap           | star 图标间距      | _number_  | 6                                        | -    |
+| allowHalf     | 是否允许半选       | _boolean_ | false                                    |
+| value         | 值                 | _number_  | -                                        | -    |
+| color         | 激活图标颜色       | _string_  | #ffc51c                                  | -    |
+| disabledColor | 禁用图标颜色       | _string_  | #999                                     | -    |
+| readonly      | 是否只读           | _boolean_ | false                                    | -    |
+| disabled      | 是否禁用           | _boolean_ | false                                    | -    |
+| icon          | 激活图标 icon name | _string_  | -                                        | -    |
+| voidIcon      | 默认图标 icon name | _string_  | -                                        | -    |
+| halfIcon      | 半图标 icon name   | _string_  | -                                        | -    |
+| showText      | 是否展示描述文本   | _string_  | false                                    | -    |
+| texts         | 描述文本数组       | _string_  | ['极差', '失望', '一般', '满意', '惊喜'] | -    |
 
 ### rate Event
 

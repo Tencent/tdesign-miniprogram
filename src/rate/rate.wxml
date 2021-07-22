@@ -1,21 +1,22 @@
 <wxs src="./rate.wxs" module="this" />
 <view class="{{ classPrefix }}">
-  <view
-    class="{{ classPrefix }}__wrapper t-class"
-    style="font-size:{{ size }}rpx;"
-    bind:touchmove="{{ !disabled && !readonly && touchable ? 'onTouch' : '' }}"
-    bind:touchstart="{{ disabled || readonly ? '' : 'onTouch' }}"
-  >
-    <t-icon
-      wx:for="{{ count }}"
-      wx:key="*this"
-      t-class="{{ classPrefix }}__star"
-      name="{{ value - index >= 1 ? icon : ( half && value - index > 0 ? halfIcon : voidIcon ) }}"
-      color="{{ value - index >= 1 ? ( disabled ? disabledColor : color ) : ( half && value - index > 0 ? 'transparent' : voidColor ) }}"
-      size="{{ size }}"
-      style="margin-right:{{ count - index > 1 ? gap : 0 }}rpx;"
-      custom-style="background:linear-gradient(to right, {{ disabled ? disabledColor : color }} 0%,  {{ disabled ? disabledColor : color }} 50%, {{ voidColor }} 51%, {{ voidColor }} 100%);-webkit-background-clip:text;background-clip:text;"
-    />
-  </view>
-  <text wx:if="{{showText}}" class="{{ classPrefix }}__desc">{{this.getText(texts,value)}}</text>
+	<view
+	 class="{{ classPrefix }}__wrapper t-class"
+	 style="font-size:{{ size }}rpx;"
+	 bind:touchmove="{{ !disabled && !readonly  ? 'onTouch' : '' }}"
+	 bind:touchstart="{{ disabled || readonly ? '' : 'onTouch' }}"
+	>
+		<t-icon
+		 wx:for="{{ count }}"
+		 wx:key="*this"
+		 t-class="{{ classPrefix }}__star"
+		 name="{{ value - index >= 1 ? icon : ( allowHalf && value - index > 0 ? halfIcon : voidIcon ) }}"
+		 color="{{ value - index >= 1 ? ( disabled ? disabledColor : color ) : ( allowHalf && value - index > 0 ? 'transparent' :  '#E3E6EB' ) }}"
+		 size="{{ size }}"
+		 style="margin-right:{{ count - index > 1 ? gap : 0 }}rpx;"
+		 custom-style="background:linear-gradient(to right, {{ disabled ? disabledColor : color }} 0%,  {{ disabled ? disabledColor : color }} 50%,  #E3E6EB 51%,  #E3E6EB 100%);-webkit-background-clip:text;background-clip:text;"
+		/>
+	</view>
+	<text wx:if="{{showText}}" class="{{ classPrefix }}__desc">{{this.getText(texts,value)}}</text>
 </view>
+
