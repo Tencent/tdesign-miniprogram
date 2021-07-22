@@ -18,6 +18,10 @@ export default class Rate extends SuperComponent {
   externalClasses = ['t-class'];
   properties = {
     value: Number,
+    defaultValue: {
+      type: Number,
+      value: 3
+    },
     size: {
       type: Number,
       value: 48,

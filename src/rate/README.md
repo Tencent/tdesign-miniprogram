@@ -27,7 +27,8 @@
 | size          | star 图标大小    | _number_  | 48                                       | -    |
 | gap           | star 图标间距    | _number_  | 6                                        | -    |
 | allowHalf     | 是否允许半选     | _boolean_ | false                                    |
-| value         | 值               | _number_  | -                                        | -    |
+| value         | 值,受控          | _number_  | -                                        | -    |
+| defaultValue  | 默认值，非受控   | _number_  | 3                                        | -    |
 | color         | 激活图标颜色     | _string_  | #ffc51c                                  | -    |
 | disabledColor | 禁用图标颜色     | _string_  | #999                                     | -    |
 | readonly      | 是否只读         | _boolean_ | false                                    | -    |
