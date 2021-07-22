@@ -1,46 +1,16 @@
-<view class="{{show?classPrefix+'-show':classPrefix+'-hidden'}}">
-  <block wx:if="{{showOverlay}}">
-    <view class="{{classPrefix}}__mask"></view>
-  </block>
-
-  <view class="{{classPrefix}}__main">
-    <block wx:if="{{icon || type}}">
-      <view class="{{classPrefix}}__main-icon">
-        <block wx:if="{{type}}">
-          <view class="{{classPrefix}}__main-icon__icon">
-            <t-icon
-              wx:if="{{type === 'success'}}"
-              name="tick"
-              color="#FFFFFF"
-              size="96rpx"
-            ></t-icon>
-            <t-icon
-              wx:if="{{type === 'warning'}}"
-              name="warning"
-              color="#FFFFFF"
-              size="96rpx"
-            ></t-icon>
-            <t-icon
-              wx:if="{{type === 'loading'}}"
-              name="loading"
-              color="#FFFFFF"
-              size="96rpx"
-            ></t-icon>
-          </view>
-        </block>
-        <block wx:else>
-          <image class="{{classPrefix}}__main-icon__icon" src="{{icon}}"></image>
-        </block>
-
-        <block wx:if="{{message}}">
-          <view class="{{classPrefix}}__main-icon__text">{{message}}</view>
-        </block>
-      </view>
-    </block>
-    <block wx:else>
-      <view class="{{classPrefix}}__main-text {{classPrefix}}__main-text--{{position}}">
-        {{message}}
-      </view>
-    </block>
+<block>
+  <view
+    wx:if="{{inserted}}"
+    class="{{ classPrefix }}__content t-class {{direction}} {{show ? 'enter' : 'leave'}}"
+    style="top: {{position === 'top' ? '25%' : position === 'bottom' ? '75%': '45%'}}"
+  >
+    <t-icon
+      wx:if="{{typeMapIcon || icon}}"
+      name="{{typeMapIcon || icon}}"
+      color="#ffffff"
+      size="{{direction === 'row' ? '42rpx' : '96rpx'}}"
+    />
+    <view class="{{ classPrefix }}__text">{{message}}</view>
   </view>
-</view>
+  <view class="{{ classPrefix }}__bg" catchtouchmove="true" wx:if="{{showOverlay &&  inserted}}" />
+</block>
