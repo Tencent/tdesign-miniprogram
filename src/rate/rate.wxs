@@ -1,23 +1,26 @@
 module.exports = {
-  getStarList: function (maxVal) {
-    var result = [];
-    for (var i = 0; i < maxVal; i++) {
-      result.push(i + 1);
-    }
-    return result;
+  getText: function (texts, val) {
+    var curVal = Math.floor(val - 1);
+    return texts[curVal];
   },
-  getIcon: function (val, startIndex) {
-    if (val >= startIndex) {
-      return './assets/star-active.svg';
+  getIconName: function (defaultValue, value, index, allowHalf, icon, halfIcon, voidIcon) {
+    var curVal = value ? value : defaultValue;
+    if (curVal - index >= 1) {
+      return icon;
+    } else if (allowHalf && curVal - index > 0) {
+      return halfIcon;
+    } else {
+      return voidIcon;
     }
-    return './assets/star-default.svg';
   },
-  getIconClass: function (readonly) {
-    var cls = 't-rate-star';
-    if (readonly) {
-      cls += ' rate-readonly';
+  getIconColor: function (defaultValue, value, index, allowHalf, disabled, color, disabledColor) {
+    var curVal = value ? value : defaultValue;
+    if (curVal - index >= 1) {
+      return disabled ? disabledColor : color;
+    } else if (allowHalf && curVal - index > 0) {
+      return 'transparent';
+    } else {
+      return '#E3E6EB';
     }
-
-    return cls;
   },
 };

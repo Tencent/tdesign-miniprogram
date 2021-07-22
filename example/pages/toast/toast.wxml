@@ -1,28 +1,28 @@
-<view class="tdesign-demo-toast-base">
-  <view class="title">文本轻提示</view>
-  <button class="t-button" bindtap="tapShowShortTip">短文本轻提示</button>
-  <button class="t-button" bindtap="tapShowLongTip">长文本轻提示</button>
-
-  <view class="title">图标轻提示</view>
-  <button class="t-button" bindtap="tapShowSuccess">成功</button>
-  <button class="t-button" bindtap="tapShowWarning">警告</button>
-  <button class="t-button" bindtap="tapShowLoading">加载</button>
-  <button class="t-button" bindtap="tapShowIcon">自定义图标</button>
-
-  <view class="title">图标加文本轻提示</view>
-  <button class="t-button" bindtap="tapShowSuccessTip">成功</button>
-  <button class="t-button" bindtap="tapShowWarningTip">警告</button>
-  <button class="t-button" bindtap="tapShowLoadingTip">加载</button>
-  <button class="t-button" bindtap="tapShowIconTip">自定义图标</button>
+<view class="toast">
+	<view class="title">Toast 轻提示</view>
+	<view class="desc">底部弹起的模态面板，包含与当前情境相关的多个选项。</view>
+	<view class="sub-title">01 基本用法</view>
+	<view class="desc">弹窗内容为纯文本、带图标文本，支持横向、竖向两种展示方式。</view>
+	<button class="t-button" bindtap="tapShowShortTip">纯文本</button>
+	<button class="t-button" bindtap="tapShowIconTip">带图标-横向</button>
+	<button class="t-button" bindtap="tapShowMaxTip">纯文本最大高度</button>
+	<button class="t-button" bindtap="tapShowColumnSuccessTip">带图标-竖向</button>
+	<view class="sub-title">02 类型</view>
+	<view class="desc">弹窗类型为成功、失败、加载中，也可以自定义图标。</view>
+	<button class="t-button" bindtap="tapShowRowSuccessTip">成功-横向</button>
+	<button class="t-button" bindtap="tapShowRowFailTip">失败-横向</button>
+	<button class="t-button" bindtap="tapShowColumnSuccessTip">成功-竖向</button>
+	<button class="t-button" bindtap="tapShowColumnFailTip">警告-竖向</button>
+	<button class="t-button" bindtap="tapShowLoadingTip">加载中...</button>
+	<button class="t-button" bindtap="tapShowCustomTip">自定义图标</button>
+	<view class="sub-title">03 展示位置和展示时间</view>
+	<view class="desc">弹窗展示位置分为顶部、中间、底部三种，可自定义展示时间</view>
+	<button class="t-button" bindtap="tapShowTopTip">顶部-展示1秒</button>
+	<button class="t-button" bindtap="tapShowMiddleTip">中间-展示3秒</button>
+	<button class="t-button" bindtap="tapShowBottomTip">底部-展示5秒</button>
+	<view class="sub-title">03 显示遮罩</view>
+	<view class="desc">弹窗可以显示遮罩，禁止滑动和点击</view>
+	<button class="t-button" bindtap="tapShowOverlayTip">禁止滑动和点击</button>
 </view>
+<t-toast id="t-toast" />
 
-<t-toast
-  id="t-toast"
-  show="{{show}}"
-  type="{{type}}"
-  position="{{position}}"
-  message="{{message}}"
-  icon="{{icon}}"
-  showOverlay="{{showOverlay}}"
-  duration="{{duration}}"
-></t-toast>
