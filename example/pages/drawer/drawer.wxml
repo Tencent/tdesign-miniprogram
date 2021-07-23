@@ -27,7 +27,7 @@
       <button size="large" bind:tap="openDrawer2">带图标抽屉</button>
     </view>
   </view>
-   <view class="t-drawer-demo">
+  <view class="t-drawer-demo">
     <t-drawer visible="{{slotDemoVisible}}" size="300px" position="top">
       <view slot="title" class="slot-title">自定义header</view>
       <view class="slot-content">
