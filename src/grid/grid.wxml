@@ -1,0 +1,3 @@
+<view class="t-grid {{ border && !gutter ? 't-hairline--top' : '' }}" style="{{ viewStyle }}">
+  <slot />
+</view>

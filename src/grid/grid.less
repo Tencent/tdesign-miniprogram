@@ -1,0 +1,94 @@
+// @import '../../common/style/miniprogram/index.less';
+
+@grid-border-width: 2rpx;
+@grid-border-color: rgb(233, 149, 149);
+
+.t-ellipsis {
+  overflow: hidden;
+  white-space: notap;
+  text-overflow: ellipsis;
+}
+
+.t-multi-ellipsis--l2 {
+  -webkit-line-clamp: 2;
+}
+
+.t-multi-ellipsis--l2,
+.t-multi-ellipsis--l3 {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+
+.t-multi-ellipsis--l3 {
+  -webkit-line-clamp: 3;
+}
+
+.t-clearfix:after {
+  display: table;
+  clear: both;
+  content: '';
+}
+
+.t-hairline,
+.t-hairline--bottom,
+.t-hairline--left,
+.t-hairline--right,
+.t-hairline--surround,
+.t-hairline--top,
+.t-hairline--top-bottom {
+  position: relative;
+}
+
+.t-hairline--bottom:after,
+.t-hairline--left:after,
+.t-hairline--right:after,
+.t-hairline--surround:after,
+.t-hairline--top-bottom:after,
+.t-hairline--top:after,
+.t-hairline:after {
+  position: absolute;
+  box-sizing: border-box;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  content: ' ';
+  pointer-events: none;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+  border: 0 solid @grid-border-color;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+.t-hairline--top:after {
+  border-top-width: @grid-border-width;
+}
+
+.t-hairline--left:after {
+  border-left-width: @grid-border-width;
+}
+
+.t-hairline--right:after {
+  border-right-width: @grid-border-width;
+}
+
+.t-hairline--bottom:after {
+  border-bottom-width: @grid-border-width;
+}
+
+.t-hairline--top-bottom:after {
+  border-width: @grid-border-width 0;
+}
+
+.t-hairline--surround:after {
+  border-width: @grid-border-width;
+}
+
+.t-grid {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}

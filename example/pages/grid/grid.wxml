@@ -1,0 +1,249 @@
+<view class="demo">
+  <view class="demo-title">Grid 宫格</view>
+  <view class="demo-desc">横向分割的点击单元，用作一组次级功能的入口。</view>
+
+  <view class="demo-section">
+    <view class="demo-section__title">01 基本用法</view>
+    <view class="demo-section__desc">宫格包含基本图标和标题文字，部分情况可配置说明文字</view>
+
+    <view class="demo-section__title">0 类型</view>
+    <view class="demo-section__desc">一行三个</view>
+    <view class="t-grid-wrapper">
+      <t-grid border="{{false}}" column-num="3" class="">
+        <t-grid-item text="标题文字">
+          <image
+            class="large-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题文字">
+          <image
+            class="large-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题最多六个字">
+          <image
+            class="large-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+      </t-grid>
+    </view>
+
+    <view class="demo-section__desc">一行四个</view>
+    <view class="t-grid-wrapper">
+      <t-grid border="{{false}}" column-num="4" class="small-item middle-verticla-padding">
+        <t-grid-item text="标题文字">
+          <image
+            class="middle-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题文字">
+          <image
+            class="middle-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题文字">
+          <image
+            class="middle-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题五字内">
+          <image
+            class="middle-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+      </t-grid>
+    </view>
+
+    <view class="demo-section__desc">一五个</view>
+    <view class="t-grid-wrapper">
+      <t-grid border="{{false}}" column-num="5" class="xs-small-item middle-verticla-padding">
+        <t-grid-item text="标题文字">
+          <image
+            class="small-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题文字">
+          <image
+            class="small-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题文字">
+          <image
+            class="small-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题文字">
+          <image
+            class="small-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="最多四字">
+          <image
+            class="small-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+      </t-grid>
+      <view class="gutter-row"></view>
+      <view style="margin: 0 24rpx; border-radius: 16rpx">
+        <t-grid border="{{false}}" column-num="5" class="xs-small-item middle-verticla-padding">
+          <t-grid-item text="标题文字">
+            <image
+              class="small-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+              slot="icon"
+            />
+          </t-grid-item>
+          <t-grid-item text="标题文字">
+            <image
+              class="small-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+              slot="icon"
+            />
+          </t-grid-item>
+          <t-grid-item text="标题文字">
+            <image
+              class="small-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+              slot="icon"
+            />
+          </t-grid-item>
+          <t-grid-item text="标题文字">
+            <image
+              class="small-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+              slot="icon"
+            />
+          </t-grid-item>
+          <t-grid-item text="最多四字">
+            <image
+              class="small-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+              slot="icon"
+            />
+          </t-grid-item>
+        </t-grid>
+      </view>
+    </view>
+
+    <view class="demo-section__desc">一行二个带说明宫格</view>
+    <view class="t-grid-wrapper">
+      <t-grid border="{{false}}" column-num="2" class="direction-row">
+        <t-grid-item text="标题文字" second-text="说明文字">
+          <image
+            class="large-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题最多六字" second-text="说明文字最多八字">
+          <image
+            class="large-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+      </t-grid>
+    </view>
+
+    <view class="demo-section__desc">一行三个带说明宫格</view>
+    <view class="t-grid-wrapper">
+      <t-grid border="{{false}}" column-num="3" class="direction-row">
+        <t-grid-item text="标题文字" second-text="说明文字">
+          <image
+            class="large-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题文字" second-text="说明文字">
+          <image
+            class="large-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+        <t-grid-item text="标题最多六字" second-text="说明文字最多六字">
+          <image
+            class="large-icon-image"
+            src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            slot="icon"
+          />
+        </t-grid-item>
+      </t-grid>
+    </view>
+
+    <view class="demo-section__desc">带徽标宫格</view>
+    <view class="t-grid-wrapper">
+      <t-grid border="{{false}}" column-num="4" class="small-item middle-verticla-padding">
+        <t-grid-item text="标题文字">
+          <t-badge dot hasSlot class="badge-item" slot="icon">
+            <image
+              class="middle-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            />
+          </t-badge>
+        </t-grid-item>
+        <t-grid-item text="标题文字">
+          <t-badge count="{{16}}" hasSlot class="badge-item" slot="icon">
+            <image
+              class="middle-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            />
+          </t-badge>
+        </t-grid-item>
+        <t-grid-item text="标题文字">
+          <t-badge content="New" hasSlot class="badge-item" slot="icon">
+            <image
+              class="middle-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            />
+          </t-badge>
+        </t-grid-item>
+        <t-grid-item text="标题五字内">
+          <t-badge content="···" hasSlot class="badge-item" slot="icon">
+            <image
+              class="middle-icon-image"
+              src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/round.svg"
+            />
+          </t-badge>
+        </t-grid-item>
+      </t-grid>
+    </view>
+
+    <view class="demo-section__desc">自定义内容</view>
+    <view class="t-grid-wrapper">
+      <t-grid border="{{false}}" column-num="3" class="middle-verticla-padding">
+        <t-grid-item use-slot wx:for="{{ array3 }}" wx:for-item="index" wx:key="*this">
+          <image
+            style="width: 100%; height: 90px"
+            src="https://img.yzcdn.cn/vant/apple-{{ index + 1 }}.jpg"
+          />
+        </t-grid-item>
+      </t-grid>
+    </view>
+  </view>
+</view>
