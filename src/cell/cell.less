@@ -37,7 +37,7 @@
     left: @cell-border-padding-left;
   }
 
-  &__borderless::after {
+  &--borderless::after {
     display: none;
   }
 
@@ -81,7 +81,7 @@
     margin-right: 8rpx;
   }
 
-  &__thumb-image {
+  &__thumb {
     height: @cell-line-height;
     width: @cell-line-height;
   }
@@ -97,24 +97,24 @@
     line-height: @cell-line-height;
   }
 
-  &__hover&--hover {
+  &--hover&--hover-class {
     background-color: @cell-hover-color;
   }
 
-  &__required {
+  &--required {
     font-size: @cell-font-size;
     color: @cell-required-color;
   }
 
-  &__middle {
+  &--middle {
     align-items: center;
   }
 
-  &__top {
+  &--top {
     align-items: flex-start;
   }
 
-  &__bottom {
+  &--bottom {
     align-items: flex-end;
   }
 }

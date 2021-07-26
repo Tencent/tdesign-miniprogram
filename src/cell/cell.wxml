@@ -1,11 +1,11 @@
 <view
-  class="t-class t-cell {{ hover ? 't-cell__hover' : ''}} {{ !bordered ? 't-cell__borderless' : ''}} t-cell__{{align}}"
-  hover-class="t-cell--hover"
+  class="t-class t-cell {{ hover ? 't-cell--hover' : ''}} {{ !bordered ? 't-cell--borderless' : ''}} t-cell--{{align}}"
+  hover-class="t-cell--hover-class"
   hover-stay-time="70"
   bind:tap="onClick"
 >
   <view class="t-cell__left-wrap t-class-left">
-    <image wx:if="{{ thumb }}" class="t-cell__thumb-image t-class-thumb" src="{{ thumb }}" />
+    <image wx:if="{{ thumb }}" class="t-cell__thumb t-class-thumb" src="{{ thumb }}" />
     <slot wx:els name="left-icon" />
   </view>
   <view class="t-cell__title t-class-title">
@@ -13,7 +13,7 @@
       <block wx:if="{{ title }}"> {{ title}} </block>
       <slot wx:else name="title" />
       <block wx:if="{{required}}">
-        <text decode class="t-cell__required">&nbsp;*</text>
+        <text decode class="t-cell--required">&nbsp;*</text>
       </block>
     </view>
 
