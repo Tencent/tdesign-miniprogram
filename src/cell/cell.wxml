@@ -1,28 +1,35 @@
 <view
-  class="t-class t-cell {{ hover ? 't-cell__hover' : ''}} {{!bordered ? 't-cell--borderless' : ''}} t-cell--{{align}} {{required?'t-cell--required':''}}"
+  class="t-class t-cell {{ hover ? 't-cell__hover' : ''}} {{ !bordered ? 't-cell__borderless' : ''}} t-cell__{{align}}"
   hover-class="t-cell--hover"
   hover-stay-time="70"
   bind:tap="onClick"
 >
   <view class="t-cell__left-wrap t-class-left">
-    <slot name="left-icon" />
+    <image wx:if="{{ thumb }}" class="t-cell__thumb-image t-class-thumb" src="{{ thumb }}" />
+    <slot wx:els name="left-icon" />
   </view>
   <view class="t-cell__title t-class-title">
-    <block wx:if="{{ title }}">{{ title }}</block>
-    <slot wx:else name="title" />
+    <view class="t-cell__title__wrap">
+      <block wx:if="{{ title }}"> {{ title}} </block>
+      <slot wx:else name="title" />
+      <block wx:if="{{required}}">
+        <text decode class="t-cell__required">&nbsp;*</text>
+      </block>
+    </view>
 
-    <view wx:if="{{ label || useLabelSlot }}" class="t-cell__label t-class-label">
-      <slot wx:if="{{ useLabelSlot }}" name="label" />
-      <block wx:elif="{{ label }}">{{ label }}</block>
+    <view class="t-cell__description t-class-description">
+      <block wx:if="{{ description }}">{{ description }}</block>
+      <slot wx:else name="description" />
     </view>
   </view>
 
-  <view class="t-cell__content t-class-content">
-    <block wx:if="{{ content || content=== 0 }}">{{ content}}</block>
-    <slot wx:else name="content" />
+  <view class="t-cell__note t-class-note">
+    <block wx:if="{{ note }}">{{ note}}</block>
+    <slot wx:else name="note" />
   </view>
 
   <view class="t-cell__right-wrap t-class-right">
-    <slot name="right-icon" />
+    <t-icon wx:if="{{ arrow }}" name="arrow-right" class="t-cell__right-icon" />
+    <slot wx:else name="right-icon" />
   </view>
 </view>
