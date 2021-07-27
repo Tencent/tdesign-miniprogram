@@ -11,11 +11,11 @@
 @cell-border-color: #e7e7e7;
 @cell-hover-color: #f2f3f5;
 @cell-required-color: #e34d59;
-@cell-label-color: rgba(0, 0, 0, 0.4);
-@cell-label-font-size: 28rpx;
-@cell-label-line-height: 44rpx;
-@cell-label-margin-top: 8rpx;
-@cell-content-color: rgba(0, 0, 0, 0.4);
+@cell-description-color: rgba(0, 0, 0, 0.4);
+@cell-description-font-size: 28rpx;
+@cell-description-line-height: 44rpx;
+@cell-description-margin-top: 8rpx;
+@cell-note-color: rgba(0, 0, 0, 0.4);
 @cell-icon-size: 48rpx;
 @cell-right-icon-color: #bbb;
 @cell-gutter: 16rpx;
@@ -41,28 +41,32 @@
     display: none;
   }
 
-  &__label {
-    margin-top: @cell-label-margin-top;
-    font-size: @cell-label-font-size;
-    line-height: @cell-label-line-height;
-    color: @cell-label-color;
+  &__description {
+    margin-top: @cell-description-margin-top;
+    font-size: @cell-description-font-size;
+    line-height: @cell-description-line-height;
+    color: @cell-description-color;
   }
 
-  &__content {
+  &__note {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     overflow: hidden;
-    color: @cell-content-color;
+    color: @cell-note-color;
   }
 
   &__title,
-  &__content {
+  &__note {
     flex: 1 1 auto;
 
     &:empty {
       display: none;
     }
+  }
+
+  &__title__wrap {
+    display: flex;
   }
 
   &__left-wrap,
@@ -77,25 +81,29 @@
     margin-right: 8rpx;
   }
 
+  &__thumb {
+    height: @cell-line-height;
+    width: @cell-line-height;
+  }
+
   &__right-wrap {
     margin-left: 8rpx;
     color: @cell-right-icon-color;
   }
 
-  &__hover&--hover {
+  &__right-icon {
+    color: @cell-right-icon-color;
+    font-size: @cell-icon-size;
+    line-height: @cell-line-height;
+  }
+
+  &--hover&--hover-class {
     background-color: @cell-hover-color;
   }
 
   &--required {
-    overflow: visible;
-
-    &::before {
-      position: absolute;
-      content: '*';
-      left: @cell-gutter;
-      font-size: @cell-font-size;
-      color: @cell-required-color;
-    }
+    font-size: @cell-font-size;
+    color: @cell-required-color;
   }
 
   &--middle {

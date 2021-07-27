@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-cell`;
 
@@ -11,58 +12,17 @@ export default class Cell extends SuperComponent {
   externalClasses = [
     't-class',
     't-class-title',
-    't-class-label',
-    't-class-content',
+    't-class-description',
+    't-class-note',
     't-class-hover',
+    't-class-thumb',
     't-class-left',
     't-class-right',
   ];
   options = {
     multipleSlots: true,
   };
-
-  properties = {
-    title: {
-      type: String,
-      value: '',
-    },
-    content: {
-      type: String,
-      value: '',
-    },
-    label: {
-      type: String,
-      value: '',
-    },
-    align: {
-      type: String,
-      value: 'middle', // 'top' | 'middle' | 'bottom'
-    },
-    required: {
-      type: Boolean,
-      value: false,
-    },
-    hover: {
-      type: Boolean,
-      value: false,
-    },
-    useLabelSlot: {
-      type: Boolean,
-      value: false,
-    },
-    bordered: {
-      type: Boolean,
-      value: true,
-    },
-    url: {
-      type: String,
-      value: '',
-    },
-    linkType: {
-      type: String,
-      value: 'navigateTo', // 'navigateTo' | 'redirectTo' | 'switchTab' | 'reLaunch'
-    },
-  };
+  properties = props;
 
   /**
    * Component initial data
@@ -70,19 +30,19 @@ export default class Cell extends SuperComponent {
   data = {
     classPrefix: name,
   };
+
   /**
    * Component methods
    */
-
   onClick(e) {
     this.triggerEvent('click', e.detail);
     this.jumpLink();
   }
-  jumpLink(urlKey = 'url', link = 'linkType') {
+  jumpLink(urlKey = 'url', link = 'jumpType') {
     const url = this.data[urlKey];
-    const linkType = this.data[link];
+    const jumpType = this.data[link];
     if (url) {
-      wx[linkType]({ url });
+      wx[jumpType]({ url });
       // wx.navigateTo({ url });
     }
   }
