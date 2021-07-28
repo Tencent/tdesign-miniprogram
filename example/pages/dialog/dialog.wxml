@@ -16,14 +16,14 @@
 <t-dialog
   visible="{{show}}"
   t-class-confirm="{{dialogConfig.tConfirmBtn}}"
-  header="{{dialogConfig.header}}"
-  body="{{dialogConfig.body}}"
+  title="{{dialogConfig.title}}"
+  content="{{dialogConfig.content}}"
   confirm-btn="{{dialogConfig.confirmBtn}}"
   cancel-btn="{{dialogConfig.cancelBtn}}"
   button-layout="{{dialogConfig.buttonLayout}}"
-  footer="{{dialogConfig.footer}}"
+  actions="{{dialogConfig.actions}}"
   bind:confirm="confirmHandle"
   bind:cancel="closeHandle"
 >
-  <input wx:if="{{useSlot}}" placeholder="输入文案" slot="body" />
+  <input wx:if="{{useSlot}}" placeholder="输入文案" slot="content" />
 </t-dialog>

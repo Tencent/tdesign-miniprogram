@@ -14,17 +14,17 @@ export default class Dailog extends SuperComponent {
       type: Boolean,
       value: false,
     },
-    header: {
+    title: {
       type: String,
       optionalTypes: [Boolean],
       value: '',
     },
-    body: {
+    content: {
       type: String,
       optionalTypes: [Boolean],
       value: '',
     },
-    footer: {
+    actions: {
       type: Array,
       optionalTypes: [Boolean],
       value: [],

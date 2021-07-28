@@ -5,8 +5,8 @@ export type Context =
 export interface DialogAlertOptionsType {
   context?: Context;
   selector?: string;
-  header?: string;
-  body: string;
+  title?: string;
+  content: string;
   zIndex?: number;
   asyncClose?: boolean;
   confirmButtonText?: string;
@@ -26,10 +26,10 @@ export interface Action {
 export interface DialogActionOptionsType {
   context?: Context;
   selector?: string;
-  header?: string;
-  body: string;
+  title?: string;
+  content: string;
   zIndex?: number;
   asyncClose?: boolean;
-  footer?: Action[]; // 自定义多选项，优先级高于默认的确定、取消按钮，触发后返回按钮的index
+  actions?: Action[]; // 自定义多选项，优先级高于默认的确定、取消按钮，触发后返回按钮的index
   buttonLayout?: 'vertical' | 'horizontal'; // 多按钮排列方式，可选值：horizontal/vertical。
 }

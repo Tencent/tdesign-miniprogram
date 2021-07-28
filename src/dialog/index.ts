@@ -57,16 +57,16 @@ export default {
     return Promise.reject();
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
-    const { context, selector, footer, ..._options } = options;
+    const { context, selector, actions, ..._options } = options;
     const instance = getDialogInstance(context, selector);
     if (!instance) return Promise.reject();
-    if (!footer || footer.length === 0 || footer.length > 7) {
+    if (!actions || actions.length === 0 || actions.length > 7) {
       console.warn('action 数量建议控制在1至7个');
     }
 
     return new Promise((resolve) => {
       instance.setData({
-        footer,
+        actions,
         direction: 'vertical',
         ..._options,
         visible: true,

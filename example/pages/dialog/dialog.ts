@@ -8,23 +8,23 @@ const maxMessage =
   '告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。';
 
 interface Config {
-  header: string;
+  title: string;
   tConfirmBtn: string;
-  body: string;
+  content: string;
   confirmBtn: string;
   cancelBtn: string;
   buttonLayout: 'horizontal' | 'vertical';
-  footer: boolean | { name: string; primary?: boolean; style?: string }[];
+  actions: boolean | { name: string; primary?: boolean; style?: string }[];
 }
 
 const dialogConfig: Config = {
-  header: '',
+  title: '',
   tConfirmBtn: '',
-  body: '',
+  content: '',
   confirmBtn: '',
   cancelBtn: '',
   buttonLayout: 'horizontal',
-  footer: false,
+  actions: false,
 };
 
 const modelConfigFactory = (opt: Partial<Config>) => {
@@ -108,7 +108,7 @@ Page({
         this.setData({
           show: true,
           dialogConfig: modelConfigFactory({
-            header: key === 'text' ? title : maxTitle,
+            title: key === 'text' ? title : maxTitle,
             confirmBtn: '知道了',
           }),
         });
@@ -120,8 +120,8 @@ Page({
         this.setData({
           show: true,
           dialogConfig: modelConfigFactory({
-            header: key === 'textAndTitle' ? title : '对话框带文本最大高度',
-            body: key === 'textAndTitle' ? message : maxMessage,
+            title: key === 'textAndTitle' ? title : '对话框带文本最大高度',
+            content: key === 'textAndTitle' ? message : maxMessage,
             confirmBtn: '我知道了',
           }),
         });
@@ -132,8 +132,8 @@ Page({
         this.setData({
           show: true,
           dialogConfig: modelConfigFactory({
-            header: title,
-            body: message,
+            title,
+            content: message,
             confirmBtn: '按钮最多字数',
             cancelBtn: '取消',
           }),
@@ -145,7 +145,7 @@ Page({
         this.setData({
           show: true,
           dialogConfig: modelConfigFactory({
-            header: title,
+            title,
             tConfirmBtn: 'custom-confirm-btn',
             confirmBtn: '警示操作',
             cancelBtn: '取消',
@@ -158,8 +158,8 @@ Page({
         this.setData({
           show: true,
           dialogConfig: modelConfigFactory({
-            header: title,
-            body: message,
+            title,
+            content: message,
             confirmBtn: '按钮文案文字内容较长',
             cancelBtn: '取消',
             buttonLayout: 'vertical',
@@ -172,10 +172,10 @@ Page({
         this.setData({
           show: true,
           dialogConfig: modelConfigFactory({
-            header: title,
-            body: message,
+            title,
+            content: message,
             buttonLayout: 'vertical', // 'horizontal' | 'vertical'
-            footer: [
+            actions: [
               { name: '取消', primary: false },
               { name: '按钮文案文字内容较长', primary: true },
               { name: '单行按钮最多十五个字符文案内容', primary: true },
@@ -191,8 +191,8 @@ Page({
           show: true,
           useSlot: true,
           dialogConfig: modelConfigFactory({
-            header: '带输入框对话框',
-            body: key === 'withInput' ? '' : message,
+            title: '带输入框对话框',
+            content: key === 'withInput' ? '' : message,
             confirmBtn: '确认',
             cancelBtn: '取消',
           }),
@@ -201,8 +201,8 @@ Page({
       }
       default: {
         Dialog.alert({
-          header: `未知key: ${key}`,
-          body: '',
+          title: `未知key: ${key}`,
+          content: '',
         });
         break;
       }
