@@ -1,44 +1,36 @@
-page {
-  background-color: #f4f6f9;
-  padding-bottom: 48rpx;
-}
 @border-width: 2rpx;
 @grid-text-font-size: 28rpx;
 @grid-text-color: rgba(0, 0, 0, 0.9);
 @grid-sencond-text-font-size: 24rpx;
 @grid-sencond-color: rgba(0, 0, 0, 0.4);
 @gutter-row-height: 32rpx;
-@gutter-column-width: 24rpx;
-@desc-margin-bottom: 24rpx;
 
-.t-grid-wrapper {
-  margin: 32rpx 0;
-}
-.small-icon-image {
-  width: 28px;
-  height: 28px;
-}
-.middle-icon-image {
-  width: 32px;
-  height: 32px;
-}
-.large-icon-image {
-  width: 48px;
-  height: 48px;
-}
+page {
+  .demo {
+    min-height: 100vh;
+    background: #f9f9f9;
+    overflow: hidden;
+  }
 
-.desc {
-  margin-top: 48rpx;
-  margin-bottom: @desc-margin-bottom;
-}
+  .t-grid-wrapper {
+    margin: 32rpx 0;
+  }
 
-.gutter-row {
-  height: @gutter-row-height;
-}
-
-.gutter-column {
-  width: @gutter-column-width;
-  display: inline-block;
+  .small-icon-image {
+    width: 28px;
+    height: 28px;
+  }
+  .middle-icon-image {
+    width: 32px;
+    height: 32px;
+  }
+  .large-icon-image {
+    width: 48px;
+    height: 48px;
+  }
+  .gutter-row {
+    height: @gutter-row-height;
+  }
 }
 
 // 以下是覆盖grid组件内的样式
@@ -50,48 +42,51 @@ page {
       line-height: 22rpx * 2;
       margin-top: 10rpx * 2;
     }
-    .t-grid-item__second_text {
-      font-size: @grid-sencond-text-font-size;
-      color: @grid-sencond-color;
-      line-height: 20rpx * 2;
-      margin-top: 2rpx * 2;
-    }
-  }
-  .xs-small-item {
-    .t-grid-item__text {
-      font-size: 12px;
-      line-height: 40rpx;
-      margin-top: 16rpx;
-    }
-  }
-  .small-item {
-    .t-grid-item__text {
-      font-size: 12px;
-      line-height: 40rpx;
-      margin-top: 20rpx;
-    }
   }
 
-  .middle-verticla-padding {
+  .column-3 {
     .t-grid-item__content {
-      padding: 16px 8px;
+      padding: 24rpx 0;
+    }
+
+    .t-grid-item__text {
+      font-size: 14px;
+      line-height: 22rpx * 2;
     }
   }
 
-  .middle-item.direction-row {
+  .column-4,
+  .column-5 {
+    .t-grid-item__content {
+      padding: 32rpx 16rpx 24rpx;
+    }
+
+    .t-grid-item__text {
+      font-size: 12px;
+      line-height: 20rpx * 2;
+    }
+  }
+
+  .t-class-column-5 {
+    border-radius: 32rpx;
+    padding: 0 16rpx;
+    margin: 0 24rpx;
+  }
+
+  .column-2.direction-row {
     .t-grid-item__content {
       flex-direction: row;
-      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 24rpx 0 24rpx 32rpx;
     }
+
     .t-grid-item__text_wapper {
       margin-left: 12rpx * 2;
       text-align: left;
     }
+
     .t-grid-item__text {
       margin-top: 0;
-    }
-    .t-grid-item__second_text {
-      margin-top: 2rpx * 2;
     }
   }
 }
