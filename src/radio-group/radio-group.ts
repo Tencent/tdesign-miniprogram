@@ -1,15 +1,17 @@
 import TComponent from '../common/component';
 import config from '../common/config';
+import { SuperComponent, wxComponent } from '../common/src/index';
 const { prefix } = config;
 const name = `${prefix}-radio-group`;
 
-TComponent({
-  data: {
+@wxComponent()
+export default class PullDownRefresh extends SuperComponent {
+  data={
     classPrefix: name,
-  },
-  relations: {
+  }
+  relations= {
     '../radio/radio': {
-      type: 'descendant',
+      type: 'descendant' as 'descendant',
       linked() {
         this.updateChildren();
       },
@@ -20,8 +22,8 @@ TComponent({
       //   this.updateChildren();
       // },
     },
-  },
-  properties: {
+  }
+  properties={
     name: {
       type: String,
       value: '',
@@ -36,8 +38,8 @@ TComponent({
       type: Boolean,
       value: true,
     },
-  },
-  methods: {
+  }
+  methods={
     updateChildren() {
       const items = this.getRelationNodes('../radio/radio');
       const len = items.length;
@@ -55,5 +57,5 @@ TComponent({
       this.updateChildren();
       this.triggerEvent('change', item);
     },
-  },
-});
+  }
+};

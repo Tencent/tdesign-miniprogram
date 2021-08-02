@@ -1,15 +1,16 @@
-import TComponent from '../common/component';
 import config from '../common/config';
+import { SuperComponent, wxComponent } from '../common/src/index';
 const { prefix } = config;
 const name = `${prefix}-radio`;
-
-TComponent({
-  relations: {
+@wxComponent()
+export default class PullDownRefresh extends SuperComponent {
+  externalClasses=['t-class']
+  relations= {
     '../radio-group/radio-group': {
-      type: 'ancestor',
+      type: 'ancestor' as  'ancestor',
     },
-  },
-  properties: {
+  }
+  properties= {
     checked: {
       type: Boolean,
       value: false,
@@ -32,13 +33,13 @@ TComponent({
       type: Boolean,
       value: true,
     },
-  },
-  data: {
+  }
+  data= {
     active: false,
     classPrefix: name,
     classBasePrefix: prefix,
-  },
-  methods: {
+  }
+  methods= {
     onChange() {
       if (this.data.disabled) return;
       const { name, active } = this.data;
@@ -62,5 +63,5 @@ TComponent({
         active,
       });
     },
-  },
-});
+  }
+}

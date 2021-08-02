@@ -1,18 +1,13 @@
-<view
-  class="{{ classPrefix }} {{disabled ? classBasePrefix + '-is-disabled' : ''}} {{bordered?classPrefix + '-bordered' : ''}}"
->
-  <t-cell
-    label-class="{{classPrefix}}__label"
-    title="{{title}}"
-    label="{{label}}"
-    bind:click="onChange"
-    bordered="{{bordered}}"
-    t-class="{{classPrefix}}__view"
-  >
-    <t-icon
-      slot="left-icon"
-      class="{{ classPrefix }}__button {{active ? classBasePrefix + '-is-checked' : ''}}"
-      name="tick_fill"
-    />
-  </t-cell>
+<view class='{{ classPrefix }} {{disabled ? classBasePrefix + '-is-disabled' : ''}} {{bordered?classPrefix + '-bordered' : '' }}'>
+	<t-cell
+	 label-class='{{ classPrefix }}__label'
+	 title='{{ title }}'
+	 label='{{ label }}'
+	 bind:click='onChange'
+	 bordered='{{ bordered }}'
+	 t-class='{{ classPrefix }}__view'
+	>
+		<t-icon slot='left-icon' class='{{ classPrefix }}__button {{active ? classBasePrefix + '-is-checked' : '' }}' name='tick_fill' />
+	</t-cell>
 </view>
+
