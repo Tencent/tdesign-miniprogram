@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-cell-group`;
 
@@ -12,13 +13,7 @@ export default class CellGroup extends SuperComponent {
   /**
    * 组件的属性列表
    */
-  properties = {
-    title: String,
-    bordered: {
-      type: Boolean,
-      value: true,
-    },
-  };
+  properties = props;
   /**
    * 组件的初始数据
    */

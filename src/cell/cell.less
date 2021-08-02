@@ -1,1 +1,120 @@
-@import (css) '../common/index.wxss';
+// @import (css) '../common/index.wxss';
+
+@import '../../common/style/miniprogram/index.less';
+
+@cell-font-size: 32rpx;
+@cell-line-height: 48rpx;
+@cell-vertical-padding: 24rpx;
+@cell-horizontal-padding: 32rpx;
+@cell-text-color: rgba(0, 0, 0, 0.9);
+@cell-background-color: #ffffff;
+@cell-border-color: #e7e7e7;
+@cell-hover-color: #f2f3f5;
+@cell-required-color: #e34d59;
+@cell-description-color: rgba(0, 0, 0, 0.4);
+@cell-description-font-size: 28rpx;
+@cell-description-line-height: 44rpx;
+@cell-description-margin-top: 8rpx;
+@cell-note-color: rgba(0, 0, 0, 0.4);
+@cell-icon-size: 48rpx;
+@cell-right-icon-color: #bbb;
+@cell-gutter: 16rpx;
+@cell-border-padding-left: 32rpx;
+
+.@{prefix}-cell {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding: @cell-vertical-padding @cell-horizontal-padding;
+  font-size: @cell-font-size;
+  line-height: @cell-line-height;
+  color: @cell-text-color;
+  background-color: @cell-background-color;
+
+  &::after {
+    .hairline-bottom(@cell-border-color);
+    left: @cell-border-padding-left;
+  }
+
+  &--borderless::after {
+    display: none;
+  }
+
+  &__description {
+    margin-top: @cell-description-margin-top;
+    font-size: @cell-description-font-size;
+    line-height: @cell-description-line-height;
+    color: @cell-description-color;
+  }
+
+  &__note {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    color: @cell-note-color;
+  }
+
+  &__title,
+  &__note {
+    flex: 1 1 auto;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__title__wrap {
+    display: flex;
+  }
+
+  &__left-wrap,
+  &__right-wrap {
+    display: flex;
+    align-items: center;
+    font-size: @cell-icon-size;
+    line-height: @cell-line-height;
+  }
+
+  &__left-wrap {
+    margin-right: 8rpx;
+  }
+
+  &__thumb {
+    height: @cell-line-height;
+    width: @cell-line-height;
+  }
+
+  &__right-wrap {
+    margin-left: 8rpx;
+    color: @cell-right-icon-color;
+  }
+
+  &__right-icon {
+    color: @cell-right-icon-color;
+    font-size: @cell-icon-size;
+    line-height: @cell-line-height;
+  }
+
+  &--hover&--hover-class {
+    background-color: @cell-hover-color;
+  }
+
+  &--required {
+    font-size: @cell-font-size;
+    color: @cell-required-color;
+  }
+
+  &--middle {
+    align-items: center;
+  }
+
+  &--top {
+    align-items: flex-start;
+  }
+
+  &--bottom {
+    align-items: flex-end;
+  }
+}

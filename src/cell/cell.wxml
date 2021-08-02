@@ -1,46 +1,35 @@
 <view
-  class="t-class t-cell {{isLink || clickable ? 't-cell--clickable' : ''}} {{!bordered ? 't-cell--borderless' : ''}} {{center?'t-cell--center':''}} {{required?'t-cell--required':''}}  t-cell--{{size}} {{ label || useLabelSlot ? 't-cell-noCenter' : ''}}"
-  hover-class="t-cell--hover"
+  class="t-class t-cell {{ hover ? 't-cell--hover' : ''}} {{ !bordered ? 't-cell--borderless' : ''}} t-cell--{{align}}"
+  hover-class="t-cell--hover-class"
   hover-stay-time="70"
-  style="{{ customStyle }}"
   bind:tap="onClick"
 >
-  <t-icon
-    wx:if="{{ leftIcon }}"
-    name="{{ leftIcon  }}"
-    class="t-cell__left-icon-wrap"
-    color="{{iconColor}}"
-    size="{{iconSize}}"
-  />
-  <slot wx:else name="left-icon" />
+  <view class="t-cell__left-wrap t-class-left">
+    <image wx:if="{{ thumb }}" class="t-cell__thumb t-class-thumb" src="{{ thumb }}" />
+    <slot wx:els name="left-icon" />
+  </view>
+  <view class="t-cell__title t-class-title">
+    <view class="t-cell__title__wrap">
+      <block wx:if="{{ title }}"> {{ title}} </block>
+      <slot wx:else name="title" />
+      <block wx:if="{{required}}">
+        <text decode class="t-cell--required">&nbsp;*</text>
+      </block>
+    </view>
 
-  <view
-    style="{{ titleWidth ? 'max-width:' + titleWidth + ';min-width:' + titleWidth : '' }}"
-    class="t-cell__title title-class"
-  >
-    <block wx:if="{{ title }}">{{ title }}</block>
-    <slot wx:else name="title" />
-
-    <view wx:if="{{ label || useLabelSlot }}" class="t-cell__label label-class">
-      <slot wx:if="{{ useLabelSlot }}" name="label" />
-      <block wx:elif="{{ label }}">{{ label }}</block>
+    <view class="t-cell__description t-class-description">
+      <block wx:if="{{ description }}">{{ description }}</block>
+      <slot wx:else name="description" />
     </view>
   </view>
 
-  <view class="t-cell__value value-class">
-    <block wx:if="{{ value || value === 0 }}">{{ value }}</block>
-    <slot wx:else />
+  <view class="t-cell__note t-class-note">
+    <block wx:if="{{ note }}">{{ note}}</block>
+    <slot wx:else name="note" />
   </view>
 
-  <t-icon
-    wx:if="{{ isLink || rightIcon }}"
-    name="{{ rightIcon ? rightIcon : 'arrow-right' }}"
-    class="t-cell__right-icon-wrap right-icon-class"
-    color="{{iconColor}}"
-    size="{{iconSize}}"
-  />
-
-  <slot wx:else name="right-icon" />
-
-  <slot name="extra" />
+  <view class="t-cell__right-wrap t-class-right">
+    <t-icon wx:if="{{ arrow }}" name="arrow-right" class="t-cell__right-icon" />
+    <slot wx:else name="right-icon" />
+  </view>
 </view>

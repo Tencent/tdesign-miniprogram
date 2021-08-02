@@ -1,13 +1,27 @@
+import { SuperComponent, wxComponent } from '../common/src/index';
 import TComponent from '../common/component';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-input`;
 
-TComponent({
-  options: {
+enum TSizeValue {
+  Medium = 'medium',
+  Small = 'small',
+}
+
+enum TTypeValue {
+  Textarea = 'textarea',
+  Text = 'text',
+  Number = 'number',
+  Idcard = 'idcard',
+  Digit = 'digit',
+}
+@wxComponent()
+export default class Input extends SuperComponent {
+  options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
-  },
-  properties: {
+  };
+  properties = {
     label: {
       type: String,
       value: '',
@@ -40,7 +54,7 @@ TComponent({
     type: {
       type: String,
       optionalTypes: [Number],
-      value: 'text',
+      value: TTypeValue.Text,
     },
     maxlength: {
       type: Number,
@@ -65,14 +79,21 @@ TComponent({
     placeholder: {
       type: String,
     },
-  },
-
-  data: {
+    size: {
+      type: String,
+      value: TSizeValue.Medium,
+    },
+    bordered: {
+      type: Boolean,
+      value: true,
+    },
+  };
+  data = {
     inputValue: '',
     classPrefix: name,
-  },
+  };
   /* 组件生命周期 */
-  lifetimes: {
+  lifetimes = {
     // 组件实例被创建
     // created() {},
     // 组件实例进入页面节点树
@@ -85,8 +106,8 @@ TComponent({
     // moved() {},
     // 组件实例被从页面节点树移除
     // detached() { },
-  },
-  methods: {
+  };
+  methods = {
     onInput(event) {
       const { value } = event.detail;
       this.setData({ inputValue: value });
@@ -101,5 +122,5 @@ TComponent({
         ...event.detail,
       });
     },
-  },
-});
+  };
+}

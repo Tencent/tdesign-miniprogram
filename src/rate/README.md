@@ -1,95 +1,49 @@
-# Rate
-
-> 开发者：terrancewan(万宽红)
-
-## 介绍
-
-评分，输入型组件
-
-### 特性及兼容性
-
-无
+# 评分
 
 ## 引入
 
-### 引入组件
-
-在 `app.json` 或 `page.json` 中引入组件：
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
-"usingComponents": {
-  "t-rate": "@tencent/tdesign-miniprogram/rate/rate"
+// app.json 或 index.json
+{
+  "usingComponents": {
+    "t-rate": "@tencent/tdesign-miniprogram/rate/rate"
+  }
 }
 ```
 
-## 用法
-
-### v-model 基本用法
+### 基础（实心样式）：
 
 ```html
-<t-rate value="{{star1}}" bind:change="onChangeVal1" />
+<t-rate size="{{48}}" value="{{3}}" bind:change="onChange"></t-rate>
 ```
 
-### 指定 Icon size
+### rate Props
 
-```html
-<t-rate value="{{star2}}" bind:change="onChangeVal2" size="20px" />
-```
+| 参数          | 说明             | 类型      | 默认值                                   | 版本 |
+| ------------- | ---------------- | --------- | ---------------------------------------- | ---- |
+| count         | star 总数        | _number_  | 默认 5 个                                | -    |
+| size          | star 图标大小    | _number_  | 48                                       | -    |
+| gap           | star 图标间距    | _number_  | 6                                        | -    |
+| allowHalf     | 是否允许半选     | _boolean_ | false                                    |
+| value         | 值,受控          | _number_  | -                                        | -    |
+| defaultValue  | 默认值，非受控   | _number_  | 3                                        | -    |
+| color         | 激活图标颜色     | _string_  | #ffc51c                                  | -    |
+| disabledColor | 禁用图标颜色     | _string_  | #999                                     | -    |
+| readonly      | 是否只读         | _boolean_ | false                                    | -    |
+| disabled      | 是否禁用         | _boolean_ | false                                    | -    |
+| showText      | 是否展示描述文本 | _string_  | false                                    | -    |
+| texts         | 描述文本数组     | _string_  | ['极差', '失望', '一般', '满意', '惊喜'] | -    |
 
-### 设置为只读
+### rate Event
 
-```html
-<t-rate value="{{star3}}" readonly bind:change="onChangeVal3" bind:readonly="onDisableVal3" />
-```
+| 事件名 | 说明                 | 参数 |
+| ------ | -------------------- | ---- |
+| change | 点击 star 组件时触发 | -    |
 
-### 调整评分最大等级
+### rate 外部样式类
 
-```html
-<t-rate value="{{star4}}" count="{{3}}" bind:change="onChangeVal4" />
-```
-
-### 设置为可取消
-
-```html
-<t-rate value="{{star5}}" clearable bind:change="onChangeVal5" />
-```
-
-### 显示辅助文字
-
-```html
-<t-rate value="{{star6}}" showText="{{true}}" textColor="#FF0000" bind:change="onChangeVal6" />
-```
-
-## API
-
-### Props
-
-| 属性           | 类型     | 默认值                                   | 必传                     | 说明                                     |
-| -------------- | -------- | ---------------------------------------- | ------------------------ | ---------------------------------------- |
-| **count**      | Number   | 5                                        | N                        | 最大评分                                 |
-| **value**      | Number   | 0                                        | N                        | 当前评分，可与事件**change**形成 v-model |
-| **readonly**   | Boolean  | false                                    | N                        | 是否只读                                 |
-| **clearable**  | Boolean  | false                                    | N                        | 是否可以取消当前最大选择                 |
-| **showText**   | Boolean  | false                                    | N                        | 是否显示辅助文字                         |
-| **texts**      | String[] | ['极差', '失望', '一般', '满意', '惊喜'] | 对选择的评分进行辅助说明 |
-| **textColor**  | String   | '#BBBBBB'                                | 辅助文字的颜色           |
-| **size**       | String   | '30px'                                   | Icon 尺寸                |
-| **ctn-class**  | string   | ''                                       | N                        | 自定义评分容器样式类                     |
-| **star-class** | string   | ''                                       | N                        | 自定义评分 Icon 样式类                   |
-| **text-class** | string   | ''                                       | N                        | 辅助文字的样式类                         |
-
-### Slots
-
-| 插槽名称         | 说明            |
-| ---------------- | --------------- |
-| **active-icon**  | 选中态时的 Icon |
-| **default-icon** | 默认态的 Icon   |
-
-PS: 待`t-icon`组件完善
-
-### Events
-
-| 事件名称     | 参数       | 说明                           |
-| ------------ | ---------- | ------------------------------ |
-| **change**   | {val,text} | 评分组件值改变的回调           |
-| **readonly** | null       | 组件为只读状态时点击触发的事件 |
+| 类名    | 说明         |
+| ------- | ------------ |
+| t-class | 根节点样式类 |
