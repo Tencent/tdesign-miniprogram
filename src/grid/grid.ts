@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import { addUnit } from '../common/utils';
 const { prefix } = config;
 const name = `${prefix}-grid`;
 
@@ -28,11 +29,7 @@ export default class Grid extends SuperComponent {
       },
     },
   };
-  // relation = {
-  //   name: 'grid-item',
-  //   type: 'descendant',
-  //   current: 'grid',
-  // };
+
   properties = {
     square: {
       type: Boolean,
@@ -80,6 +77,7 @@ export default class Grid extends SuperComponent {
       },
     },
   };
+
   /**
    * Component initial data
    */
@@ -87,22 +85,29 @@ export default class Grid extends SuperComponent {
     classPrefix: name,
     viewStyle: '',
   };
-  /**
-   * Component methods
-   */
+
   created() {
     this.children = [];
   }
+
+  detached() {
+    this.destroyed();
+  }
+
+  /**
+   * Component methods
+   */
   updateGutter() {
     const gutter = this.properties.gutter as any as string | number;
     if (gutter) {
-      let viewStyle = `padding-left: ${this.addUnit(gutter)}`; // 每个子项都会留出右边距来实现gutter，这里在左侧留出同等的左边距以保持两端间距相等
+      let viewStyle = `padding-left: ${addUnit(gutter)}`; // 每个子项都会留出右边距来实现gutter，这里在左侧留出同等的左边距以保持两端间距相等
       if ((this.properties.gutterType as any as string) === 'between') {
-        viewStyle = `margin-right: -${this.addUnit(gutter)}`; // 右侧设置负值外边距，以补偿最右侧子项的右边距，以保持两端没有边距
+        viewStyle = `margin-right: -${addUnit(gutter)}`; // 右侧设置负值外边距，以补偿最右侧子项的右边距，以保持两端没有边距
       }
       this.setData({ viewStyle });
     }
   }
+
   updateChildren() {
     // 由于linked的时候会多次调用此方法，造成性能问题，所以加上延时节流控制
     if (this.updateTimer) clearTimeout(this.updateTimer);
@@ -112,23 +117,7 @@ export default class Grid extends SuperComponent {
       });
     }, 100);
   }
-  isDef(value: any): boolean {
-    return value !== undefined && value !== null;
-  }
-  isNumber(value) {
-    return /^\d+(\.\d+)?$/.test(value);
-  }
-  addUnit(value?: string | number): string | undefined {
-    if (!this.isDef(value)) {
-      return undefined;
-    }
 
-    value = String(value);
-    return this.isNumber(value) ? `${value}px` : value;
-  }
-  detached() {
-    this.destroyed();
-  }
   destroyed() {
     if (this.updateTimer) {
       clearTimeout(this.updateTimer);
