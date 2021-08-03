@@ -1,7 +1,6 @@
 <t-transition
   visible="{{ visible }}"
-  appear="{{ appear }}"
-  custom-class="{{ className }}"
+  custom-class="t-class"
   name="{{ dataTransitionProps.name }}"
   appear="{{ dataTransitionProps.appear }}"
   durations="{{ dataTransitionProps.durations }}"

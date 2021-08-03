@@ -1,8 +1,11 @@
+import { TdTransitionProps } from './type';
 import TComponent from '../common/component';
 import config from '../common/config';
 import { classNames } from '../common/utils';
 const { prefix } = config;
 const name = `${prefix}-transition`;
+
+export type TransitionProps = TdTransitionProps;
 
 TComponent({
   options: {
