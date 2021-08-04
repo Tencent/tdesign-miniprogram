@@ -1,11 +1,3 @@
-<!-- <view class="{{classPrefix}} {{disabled ? classPrefix+'--disabled' : ''}}">
-  <t-cell title="{{title}}" label="{{label}}" bind:click="onChange" bordered="{{bordered}}">
-    <view
-      slot="left-icon"
-      class="{{classPrefix}}__button {{active ? classBasePrefix+'-is-active' : ''}}"
-    />
-  </t-cell>
-</view> -->
 <view class="{{classPrefix}} t-class">
   <!-- icon left-->
   <view

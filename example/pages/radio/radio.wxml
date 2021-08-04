@@ -22,21 +22,21 @@
       <view class="t-radio-demo__demo-content">
         <t-radio-group value="radio2" bordered="{{true}}">
           <t-radio name="radio1" title="单选" bordered="{{true}}" use-icon-slot>
-            <t-icon name="tick" slot="left-icon" />
+            <t-icon name="tick" slot="left-icon" size="xl" />
           </t-radio>
           <t-radio name="radio2" title="单选" use-icon-slot>
-            <t-icon name="tick" slot="left-icon" />
+            <t-icon name="tick" slot="left-icon" size="xl" />
           </t-radio>
           <t-radio name="radio3" title="单选" use-icon-slot>
-            <t-icon name="tick" slot="left-icon" />
+            <t-icon name="tick" slot="left-icon" size="xl" />
           </t-radio>
           <t-radio name="radio4" limit-content-row="{{1}}" use-icon-slot>
             单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选
-            <t-icon name="tick" slot="left-icon" />
+            <t-icon name="tick" slot="left-icon" size="xl" />
           </t-radio>
           <t-radio name="radio5" title="单选" use-icon-slot>
             单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选选单选单选单选
-            <t-icon name="tick" slot="left-icon" />
+            <t-icon name="tick" slot="left-icon" size="xl" />
           </t-radio>
         </t-radio-group>
       </view>
@@ -50,21 +50,21 @@
             use-icon-slot
             label-position="left"
           >
-            <t-icon name="tick" slot="right-icon" />
+            <t-icon name="tick" slot="right-icon" size="xl" />
           </t-radio>
           <t-radio name="radio2" title="单选" use-icon-slot label-position="left">
-            <t-icon name="tick" slot="right-icon" />
+            <t-icon name="tick" slot="right-icon" size="xl" />
           </t-radio>
           <t-radio name="radio3" title="单选" use-icon-slot label-position="left">
-            <t-icon name="tick" slot="right-icon" />
+            <t-icon name="tick" slot="right-icon" size="xl" />
           </t-radio>
           <t-radio name="radio4" limit-content-row="{{1}}" use-icon-slot label-position="left">
             单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选
-            <t-icon name="tick" slot="right-icon" />
+            <t-icon name="tick" slot="right-icon" size="xl" />
           </t-radio>
           <t-radio name="radio5" title="单选" use-icon-slot label-position="left">
             单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选选单选单选单选
-            <t-icon name="tick" slot="right-icon" />
+            <t-icon name="tick" slot="right-icon" size="xl" />
           </t-radio>
         </t-radio-group>
       </view>
@@ -89,10 +89,10 @@
       <view class="t-radio-demo__demo-content">
         <t-radio-group value="radio2">
           <t-radio name="radio1" title="单选" disabled="{{true}}" use-icon-slot>
-            <t-icon name="tick" slot="left-icon" />
+            <t-icon name="tick" slot="left-icon" size="xl" />
           </t-radio>
           <t-radio name="radio2" title="单选" disabled="{{true}}" use-icon-slot>
-            <t-icon name="tick" slot="left-icon" />
+            <t-icon name="tick" slot="left-icon" size="xl" />
           </t-radio>
         </t-radio-group>
       </view>
@@ -105,7 +105,7 @@
             labelPosition="left"
             use-icon-slot
           >
-            <t-icon name="tick" slot="right-icon" />
+            <t-icon name="tick" slot="right-icon" size="xl" />
           </t-radio>
           <t-radio
             name="radio2"
@@ -114,7 +114,7 @@
             labelPosition="left"
             use-icon-slot
           >
-            <t-icon name="tick" slot="right-icon" />
+            <t-icon name="tick" size="xl" slot="right-icon" size="xl" />
           </t-radio>
         </t-radio-group>
       </view>
