@@ -1,4 +1,4 @@
-<wxs src="./tabs.wxs" module="filters" />
+<!-- <wxs src="./tabs.wxs" module="filters" />
 <view class="{{classPrefix}} t-is-{{tabPosition}}">
   <scroll-view
     class="{{classPrefix}}__nav-wrapper"
@@ -35,4 +35,19 @@
       <slot />
     </view>
   </view>
+</view> -->
+<view class="t-tabs">
+  <scroll-view scroll-x="{{true}}" scroll-y="{{false}}" enable-flex class="t-tabs-scroll">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="value"
+      class="t-tab-item"
+      data-index="{{item.value}}"
+      bind:tap="onTabTap"
+    >
+      {{item.label}}
+    </view>
+    <!-- <view wx:if="{{showBottomLine && item.key === value}}"></view> -->
+  </scroll-view>
+  <slot></slot>
 </view>
