@@ -1,7 +1,7 @@
 Page({
   data: {
     tCellItems: ['a', 'b'],
-    checkboxValues1: ['checkbox1', 'checkbox2'],
+    checkboxValues1: ['checkbox1'],
     check5: false,
   },
   onChange(event) {

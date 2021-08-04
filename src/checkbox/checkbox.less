@@ -34,6 +34,7 @@
 //     background-color: #f5f5f5;
 //   }
 // }
+
 .t-checkbox {
   width: 100%;
   position: relative;
@@ -42,27 +43,28 @@
   align-items: baseline;
   font-size: 32rpx;
   padding: 32rpx 0rpx;
+  .limit-title-row {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   &__icon-left {
     margin-right: 20rpx;
   }
   &__icon-right {
-    flex: 1;
-    text-align: right;
+    margin-left: auto;
   }
   &__btn {
     font-size: 40rpx;
   }
   &__content {
+    flex: 1;
   }
   &__title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    .limit-title-row();
   }
   &__description {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    .limit-title-row();
   }
   &-is-disabled {
     cursor: not-allowed;

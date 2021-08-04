@@ -6,6 +6,11 @@
   align-items: baseline;
   padding: 32rpx 0rpx;
   font-size: 32rpx;
+  .limit-title-row {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
   &__icon-left {
     margin-right: 20rpx;
     width: 40rpx;
@@ -21,14 +26,10 @@
     flex: 1;
   }
   &__title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    .limit-title-row();
   }
   &__description {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    .limit-title-row();
   }
   &-is-disabled {
     cursor: not-allowed;

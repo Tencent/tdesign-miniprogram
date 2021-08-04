@@ -6,8 +6,8 @@
       <view class="t-radio-demo__demo-title">01 类型</view>
       <view class="t-radio-demo__demo-description">左侧圆形单选框</view>
       <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio2" bordered="{{true}}">
-          <t-radio name="radio1" title="单选" bordered="{{true}}" />
+        <t-radio-group value="radio2">
+          <t-radio name="radio1" title="单选" />
           <t-radio name="radio2" title="单选" />
           <t-radio name="radio3" title="单选" />
           <t-radio name="radio4" limit-content-row="{{1}}"
@@ -20,8 +20,8 @@
       </view>
       <view class="t-radio-demo__demo-description">左侧勾形单选框</view>
       <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio2" bordered="{{true}}">
-          <t-radio name="radio1" title="单选" bordered="{{true}}" use-icon-slot>
+        <t-radio-group value="radio2">
+          <t-radio name="radio1" title="单选" use-icon-slot>
             <t-icon name="tick" slot="left-icon" size="xl" />
           </t-radio>
           <t-radio name="radio2" title="单选" use-icon-slot>
@@ -42,14 +42,8 @@
       </view>
       <view class="t-radio-demo__demo-description">右侧勾形单选框</view>
       <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio2" bordered="{{true}}">
-          <t-radio
-            name="radio1"
-            title="单选"
-            bordered="{{true}}"
-            use-icon-slot
-            label-position="left"
-          >
+        <t-radio-group value="radio2">
+          <t-radio name="radio1" title="单选" use-icon-slot label-position="left">
             <t-icon name="tick" slot="right-icon" size="xl" />
           </t-radio>
           <t-radio name="radio2" title="单选" use-icon-slot label-position="left">
