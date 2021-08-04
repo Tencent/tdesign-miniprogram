@@ -1,20 +1,31 @@
-export type MessageType = 'info' | 'success' | 'warning' | 'error';
+export enum MessageType {
+  info = 'info',
+  success = 'success',
+  warning = 'warning',
+  error = 'error',
+}
 
-export type MessageAlignType = 'left' | 'center';
-
-export interface IMessageOffset {
+export interface MessageOffset {
   top?: number | string;
   right?: number | string;
   left?: number | string;
 }
 
-export interface IMessageProps {
+export interface MessageMarquee {
+  speed?: number;
+  loop?: number;
+  delay?: number;
+}
+
+export interface MessageProps {
   visible?: boolean;
   content: string;
   theme?: MessageType;
-  align?: MessageAlignType;
-  offset?: IMessageOffset;
+  icon?: boolean | string;
+  closeBtn?: boolean;
+  action?: string;
+  marquee?: MessageMarquee;
+  offset?: MessageOffset;
   duration?: number;
-  icon?: string;
   zIndex?: number;
 }

@@ -1,7 +1,36 @@
-<wxs src="../common/utils.wxs" module="utils" />
+<block wx:if="{{ visible }}">
+  <view
+    class=" {{ classPrefix }} t-class t-message--{{ theme }} "
+    style="z-index: {{ zIndex }};top: {{ offset.top+'px' }};right:{{ offset.right+'px' }};left:{{ offset.left+'px' }};"
+  >
+    <t-icon wx:if="{{local.icon}}" name="{{local.icon}}" class="t-message--left-icon" size="20px" />
+    <slot name="icon" />
 
-<view wx:if="{{ visible }}" class="{{ rootClasses }}" style="z-index: {{ zIndex }};">
-  <t-icon name="{{ iconName }}" />
-  <span class="{{ messageClasses }}">{{ content }}</span>
-  <slot></slot>
-</view>
+    <view
+      class="t-message--text-wrap {{ marquee ? 't-message--text-nowrap' : '' }} "
+      id="t-message--text-wrap"
+    >
+      <view class="t-message--text" id="t-message--text" animation="{{animation}}">
+        <view wx:if="{{content}}"> {{ content }} </view>
+        <slot name="content"></slot>
+      </view>
+    </view>
+
+    <t-button
+      wx:if="{{ action }}"
+      t-class="t-message--right-btn"
+      size="small"
+      bind:tap="btnClickHandle"
+      >{{action}}</t-button
+    >
+    <slot name="action" />
+    <t-icon
+      wx:if="{{ closeBtn }}"
+      class="t-message--right-icon"
+      name="close"
+      size="20px"
+      bind:tap="closeHandle"
+    />
+    <slot name="closeBtn" />
+  </view>
+</block>
