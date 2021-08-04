@@ -368,13 +368,13 @@ export default class Tabs extends SuperComponent {
     console.log('🚀 ~ index', index);
     console.log('🚀 ~ currentTab', currentTab);
 
-    // if (currentTab.disabled) {
-    //   this.trigger('disabled', index);
-    // } else {
-    this.setCurrentIndex(+index);
-    wx.nextTick(() => {
-      this.trigger('click', index);
-    });
-    // }
+    if (currentTab.disabled) {
+      this.trigger('disabled', index);
+    } else {
+      this.setCurrentIndex(+index);
+      wx.nextTick(() => {
+        this.trigger('click', index);
+      });
+    }
   }
 }
