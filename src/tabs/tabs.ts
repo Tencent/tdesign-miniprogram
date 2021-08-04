@@ -263,6 +263,7 @@ export default class Tabs extends SuperComponent {
       },
     },
   };
+
   properties = {
     animation: {
       type: Object,
@@ -283,35 +284,41 @@ export default class Tabs extends SuperComponent {
     },
     /** 激活的选项卡值 */
     value: {
-      type: String || Number,
+      type: String,
+      value: '0',
+      // observer(v: string) {
+      //   if (v !== this.getCurrentValue()) {
+      //     this.setCurrentIndexByName(v);
+      //   }
+      // },
     },
   };
+
   data = {
     tabs: [],
     showScrollBar: false,
     currentIndex: -1,
+    children: [],
   };
   created() {
     this.children = [];
   }
+
   updateTabs() {
     const { children } = this;
     this.setData({ tabs: children.map((child: any) => child.data) });
+    this.setCurrentIndexByName(this.properties.value);
   }
-  // onTabTap(e) {
-  //   const { value } = this.properties;
-  //   const _value = e.currentTarget.dataset.value;
-  //   console.log('🚀 ~ value', value);
-  //   console.log('🚀 ~ _value', _value);
-  // }
 
-  // setCurrentIndexByName(name: string) {
-  //   const { children } = this;
-  //   const index = children.findIndex((child: any) => child.getComputedName() === name);
-  //   if (index > -1) {
-  //     this.setCurrentIndex(index);
-  //   }
-  // }
+  setCurrentIndexByName(name) {
+    const { children } = this;
+    const index = children.findIndex((child: any) => child.getValue() === name);
+
+    if (index > -1) {
+      this.setCurrentIndex(index);
+    }
+  }
+
   setCurrentIndex(index: number) {
     if (index <= -1 || index >= this.children.length) return;
     this.children.forEach((child: any, idx: number) => {
@@ -328,14 +335,15 @@ export default class Tabs extends SuperComponent {
       this.trigger('change', index);
     });
   }
-  // getCurrentName() {
-  //   if (this.children) {
-  //     const activeTab = this.children[this.data.currentIndex];
-  //     if (activeTab) {
-  //       return activeTab.getComputedName();
-  //     }
-  //   }
-  // }
+
+  getCurrentValue() {
+    if (this.children) {
+      const activeTab = this.children[this.data.currentIndex];
+      if (activeTab) {
+        return activeTab.getValue();
+      }
+    }
+  }
 
   trigger(eventName: string, index: number) {
     const currentIndex = index || this.data.currentIndex;
@@ -349,17 +357,24 @@ export default class Tabs extends SuperComponent {
       });
     }
   }
-  onTabTap(event: any) {
-    const { index } = event.currentTarget.dataset;
-    const currentTab = this.data.tabs[index];
 
-    if (currentTab.disabled) {
-      this.trigger('disabled', index);
-    } else {
-      this.setCurrentIndex(+index);
-      wx.nextTick(() => {
-        this.trigger('click', index);
-      });
-    }
+  onTabTap(event: any) {
+    const { children } = this;
+    const index = children.findIndex(
+      (child: any) => child.getValue() === event.currentTarget.dataset.index,
+    );
+
+    const currentTab = this.data.tabs[index];
+    console.log('🚀 ~ index', index);
+    console.log('🚀 ~ currentTab', currentTab);
+
+    // if (currentTab.disabled) {
+    //   this.trigger('disabled', index);
+    // } else {
+    this.setCurrentIndex(+index);
+    wx.nextTick(() => {
+      this.trigger('click', index);
+    });
+    // }
   }
 }

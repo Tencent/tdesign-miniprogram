@@ -37,13 +37,13 @@
     </t-tabs>
   </view>
 </view> -->
-<t-tabs>
+<t-tabs value="v1">
   <t-tab-panel label="标签一" value="0">
     <p>这是标签1</p>
   </t-tab-panel>
-  <t-tab-panel label="标签二" value="1">这是标签2</t-tab-panel>
-  <t-tab-panel label="标签三" value="2">这是标签3</t-tab-panel>
-  <t-tab-panel label="标签一" value="3"></t-tab-panel>
+  <t-tab-panel label="标签二" value="v1">这是标签2</t-tab-panel>
+  <t-tab-panel label="标签三" value="2" disabled>这是标签3</t-tab-panel>
+  <t-tab-panel label="标签四"></t-tab-panel>
   <t-tab-panel label="标签二" value="4"></t-tab-panel>
   <t-tab-panel label="标签三" value="5"></t-tab-panel>
   <t-tab-panel label="标签一" value="6"></t-tab-panel>

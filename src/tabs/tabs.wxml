@@ -41,7 +41,7 @@
     <view
       wx:for="{{tabs}}"
       wx:key="value"
-      class="t-tab-item"
+      class="t-tab-item {{item.disabled?'t-tab-disabled':''}} {{currentIndex === index?'t-is-active':''}}"
       data-index="{{item.value}}"
       bind:tap="onTabTap"
     >
