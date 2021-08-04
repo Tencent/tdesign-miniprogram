@@ -1,57 +1,49 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-dialog`;
 
-TComponent({
-  // 组件的对外属性
-  properties: {
+@wxComponent()
+export default class Dailog extends SuperComponent {
+  options = {
+    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+  };
+  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel'];
+  properties = {
     visible: {
       type: Boolean,
       value: false,
     },
-    mode: {
+    title: {
       type: String,
-      value: 'modal', // 'modal' | 'half-screen'
-    },
-    theme: {
-      type: String,
-      value: 'primary', // 'primary' | 'warning' | 'success' | 'error'
-    },
-    className: {
-      type: String,
+      optionalTypes: [Boolean],
       value: '',
     },
-    customStyle: {
+    content: {
       type: String,
+      optionalTypes: [Boolean],
       value: '',
     },
-    width: {
+    actions: {
+      type: Array,
+      optionalTypes: [Boolean],
+      value: [],
+    },
+    confirmBtn: {
       type: String,
+      optionalTypes: [Boolean],
       value: '',
     },
-    header: {
-      type: Boolean,
-      optionalTypes: [String],
-      value: true,
-    },
-    body: {
+    cancelBtn: {
       type: String,
+      optionalTypes: [Boolean],
       value: '',
-    },
-    footer: {
-      type: Boolean,
-      value: true,
-    },
-    confirmContent: {
-      type: null, // 不限制类型
-      value: '确定',
-    },
-    cancelContent: {
-      type: null, // 不限制类型
-      value: '取消',
     },
     showOverlay: {
+      type: Boolean,
+      value: true,
+    },
+    closeOnOverlayClick: {
       type: Boolean,
       value: true,
     },
@@ -63,48 +55,58 @@ TComponent({
       type: Number,
       value: 2500,
     },
-  },
-  // 组件的内部数据
-  data: {
+    buttonLayout: {
+      type: String,
+      value: 'horizontal', // horizontal 水平；vertical 垂直
+    },
+  };
+
+  data = {
     classPrefix: name,
-    classBasePrefix: prefix,
-  },
+  };
 
-  /* 组件生命周期 */
-  lifetimes: {
-    // 组件实例被创建
-    // created() {},
-    // 组件实例进入页面节点树
-    // attached() {},
-    // 页面组件初始化完成
-    // ready() { },
-    // 组件实例被移动到节点树另一个位置
-    // moved() {},
-    // 组件实例被从页面节点树移除
-    // detached() { },
-  },
+  onConfirm() {
+    this.setData({
+      visible: false,
+    });
+    this.triggerEvent('confirm');
+    this._onComfirm && this._onComfirm();
+  }
 
-  /* Methods */
-  methods: {
-    // preventScrollThrough
-    catchtouchmove() {},
-    // 点击笼罩层
-    clickOverlay(event) {
-      this.triggerEvent('clickOverlay', {
-        ...event.detail,
-      });
-    },
-    // 点击关闭按钮
-    clickCloseBtn(event) {
-      this.triggerEvent('clickCloseBtn', {
-        ...event.detail,
-      });
-    },
-    // 点击确定按钮
-    clickConfirmBtn(event) {
-      this.triggerEvent('clickConfirmBtn', {
-        ...event.detail,
-      });
-    },
-  },
-});
+  onCancel() {
+    this.close();
+    this.triggerEvent('cancel');
+  }
+
+  close() {
+    this.setData({
+      visible: false,
+    });
+    this.triggerEvent('close');
+  }
+
+  overlayClick() {
+    if (this.properties.closeOnOverlayClick) {
+      this.close();
+    }
+    this.triggerEvent('overlayClick');
+  }
+
+  onActionTap(e: any) {
+    this.setData({
+      visible: false,
+    });
+
+    const { index } = e.currentTarget.dataset;
+    this.triggerEvent('action', { index });
+    this._onAction && this._onAction({ index });
+  }
+
+  openValueCBHandle(e) {
+    this.triggerEvent('open-type-event', e.detail);
+  }
+
+  openValueErrCBHandle(e) {
+    this.triggerEvent('open-type-error-event', e.detail);
+  }
+}
