@@ -54,11 +54,6 @@ export default class Checkbox extends SuperComponent {
       type: String,
       value: '#0052d9',
     },
-    // 下边框
-    bordered: {
-      type: Boolean,
-      value: true,
-    },
     // 使用自定义图标
     useIconSlot: {
       type: Boolean,

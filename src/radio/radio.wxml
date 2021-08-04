@@ -1,8 +1,60 @@
-<view class="{{classPrefix}} {{disabled ? classPrefix+'--disabled' : ''}}">
+<!-- <view class="{{classPrefix}} {{disabled ? classPrefix+'--disabled' : ''}}">
   <t-cell title="{{title}}" label="{{label}}" bind:click="onChange" bordered="{{bordered}}">
     <view
       slot="left-icon"
       class="{{classPrefix}}__button {{active ? classBasePrefix+'-is-active' : ''}}"
     />
   </t-cell>
+</view> -->
+<view class="{{classPrefix}} t-class">
+  <!-- icon left-->
+  <view
+    class="{{classPrefix}}__icon-left t-icon"
+    data-target="icon"
+    bind:tap="onChange"
+    wx:if="{{labelPosition==='right'}}"
+  >
+    <view hidden="{{!useIconSlot||!active}}">
+      <slot name="left-icon"></slot>
+    </view>
+    <block wx:if="{{!useIconSlot}}">
+      <t-icon
+        name="{{active?'tick_fill':'circle'}}"
+        color="{{active?(disabled?'#DCDCDC':checkedColor):'#DCDCDC'}}"
+        class="{{classPrefix}}__btn {{disabled?classPrefix + '-is-disabled' : ''}} {{active?classPrefix + '-is-checked' : ''}}"
+      />
+    </block>
+  </view>
+  <!-- 文本内容 -->
+  <view class="{{classPrefix}}__content " data-target="text" bind:tap="onChange">
+    <!-- title -->
+    <view class="{{classPrefix}}__title t-label" style="-webkit-line-clamp:{{limitTitleRow}}">
+      {{title}}
+    </view>
+    <!-- content -->
+    <view
+      class="{{classPrefix}}__description t-description"
+      style="-webkit-line-clamp:{{limitContentRow}}"
+    >
+      <slot />
+    </view>
+  </view>
+  <!-- icon right -->
+  <view
+    class="{{classPrefix}}__icon-right t-icon"
+    data-target="icon"
+    bind:tap="onChange"
+    wx:if="{{labelPosition==='left'}}"
+  >
+    <block wx:if="{{useIconSlot&&active}}">
+      <slot name="right-icon"></slot>
+    </block>
+    <block wx:elif="{{!useIconSlot}}">
+      <t-icon
+        name="{{active?'tick_fill':'circle'}}"
+        color="{{active?(disabled?'#DCDCDC':checkedColor):'#DCDCDC'}}"
+        class="{{classPrefix}}__btn {{disabled?classPrefix + '-is-disabled' : ''}} {{disabled?classPrefix + '-is-checked' : ''}}"
+      />
+    </block>
+  </view>
 </view>

@@ -6,10 +6,10 @@ const name = `${prefix}-radio-group`;
 
 @wxComponent()
 export default class PullDownRefresh extends SuperComponent {
-  data={
+  data = {
     classPrefix: name,
-  }
-  relations= {
+  };
+  relations = {
     '../radio/radio': {
       type: 'descendant' as 'descendant',
       linked() {
@@ -22,8 +22,8 @@ export default class PullDownRefresh extends SuperComponent {
       //   this.updateChildren();
       // },
     },
-  }
-  properties={
+  };
+  properties = {
     name: {
       type: String,
       value: '',
@@ -34,12 +34,8 @@ export default class PullDownRefresh extends SuperComponent {
       value: '',
       observer: 'updateChildren',
     },
-    bordered: {
-      type: Boolean,
-      value: true,
-    },
-  }
-  methods={
+  };
+  methods = {
     updateChildren() {
       const items = this.getRelationNodes('../radio/radio');
       const len = items.length;
@@ -57,5 +53,5 @@ export default class PullDownRefresh extends SuperComponent {
       this.updateChildren();
       this.triggerEvent('change', item);
     },
-  }
-};
+  };
+}

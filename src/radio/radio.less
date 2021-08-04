@@ -1,1 +1,48 @@
-@import (css) '../common/index.wxss';
+// @import (css) '../common/index.wxss';
+.t-radio {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 32rpx 0rpx;
+  font-size: 32rpx;
+  &__icon-left {
+    margin-right: 20rpx;
+    width: 40rpx;
+  }
+  &__icon-right {
+    margin-left: auto;
+    width: 40rpx;
+  }
+  &__btn {
+    font-size: 40rpx;
+  }
+  &__content {
+    flex: 1;
+  }
+  &__title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &__description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &-is-disabled {
+    cursor: not-allowed;
+  }
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    border-top: 2rpx solid #e9e9e9;
+    width: 100%;
+    margin-left: 96rpx;
+    bottom: 0px;
+  }
+  .t-icon {
+    font-size: 40rpx;
+  }
+}
