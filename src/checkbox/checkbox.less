@@ -1,27 +1,79 @@
-@import (css) '../common/index.wxss';
-.t-checkbox-bordered {
+// // @import (css) '../common/index.wxss';
+
+// @checkbox-button-width: 48rpx;
+// @checkbox-button-height: 48rpx;
+// @checkbox-button-border-color: #cdcdcd;
+// @checkbox-button-border-width: 2rpx;
+// @checkbox-button-margin-right: 16rpx;
+// @checkbox-button-disabled-bg-color: @bg-color;
+// @checkbox-cell-title-disabled-color: @text-level-3-color;
+// @checkbox-icon-color: @primary-color;
+// @checkbox-icon-font-size: 48rpx;
+// &__button {
+//   width: @checkbox-button-width;
+//   height: @checkbox-button-height;
+//   line-height: @checkbox-button-height;
+//   border: @checkbox-button-border-width solid @checkbox-button-border-color;
+//   border-radius: 50%;
+//   color: transparent;
+//   box-sizing: border-box;
+//   margin-right: @checkbox-button-margin-right;
+
+//   &.@{prefix}-is-checked {
+//     color: @checkbox-icon-color;
+//     font-size: @checkbox-icon-font-size;
+//     border-color: transparent;
+//   }
+// }
+
+// &.@{prefix}-is-disabled {
+//   .@{prefix}-cell__title {
+//     color: @checkbox-cell-title-disabled-color;
+//   }
+//   .@{prefix}-checkbox__button {
+//     background-color: #f5f5f5;
+//   }
+// }
+.t-checkbox {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  font-size: 32rpx;
+  padding: 32rpx 0rpx;
+  &__icon-left {
+    margin-right: 20rpx;
+  }
+  &__icon-right {
+    flex: 1;
+    text-align: right;
+  }
+  &__btn {
+    font-size: 40rpx;
+  }
+  &__content {
+  }
+  &__title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &__description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &-is-disabled {
+    cursor: not-allowed;
+  }
   position: relative;
   &::after {
     content: '';
     position: absolute;
-    border-top: 1px solid #e9e9e9;
+    border-top: 2rpx solid #e9e9e9;
     width: 100%;
-    margin-left: 48px;
+    margin-left: 96rpx;
     bottom: 0px;
-  }
-}
-.t-checkbox__view {
-  align-items: flex-start !important;
-}
-.t-checkbox__label {
-  margin-top: 8px;
-}
-.t-is-disabled {
-  .t-cell__title {
-    color: rgba(0, 0, 0, 0.26);
-  }
-  .t-checkbox__button {
-    background-color: #dcdcdc;
-    color: #dcdcdc;
   }
 }

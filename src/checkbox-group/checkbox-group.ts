@@ -16,15 +16,15 @@ export default class CheckboxGroup extends SuperComponent {
     classPrefix: name,
   };
   properties = {
-    name: String,
     value: {
       type: Array,
       value: [],
       observer: 'updateChildren',
     },
-    bordered: {
-      type: Boolean,
-      value: true,
+    // 可选择最大条数
+    max: {
+      type: Number,
+      value: '',
     },
   };
   methods = {
@@ -39,7 +39,11 @@ export default class CheckboxGroup extends SuperComponent {
       }
     },
     updateValue({ name, checked }) {
-      let { value: newValue } = this.data;
+      const { value, max } = this.data;
+      let newValue = value;
+      if (max && checked && newValue.length === max) {
+        return;
+      }
       if (checked) {
         newValue = newValue.concat(name);
       } else {

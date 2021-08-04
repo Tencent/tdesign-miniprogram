@@ -1,4 +1,4 @@
-<view class='{{ classPrefix }} {{disabled ? classBasePrefix + '-is-disabled' : ''}} {{bordered?classPrefix + '-bordered' : '' }}'>
+<!-- <view class='{{ classPrefix }} {{disabled ? classBasePrefix + '-is-disabled' : ''}} {{bordered?classPrefix + '-bordered' : '' }}'>
 	<t-cell
 	 label-class='{{ classPrefix }}__label'
 	 title='{{ title }}'
@@ -9,5 +9,56 @@
 	>
 		<t-icon slot='left-icon' class='{{ classPrefix }}__button {{active ? classBasePrefix + '-is-checked' : '' }}' name='tick_fill' />
 	</t-cell>
+</view> -->
+<view class="{{classPrefix}} t-class">
+  <!-- icon left-->
+  <view
+    class="{{classPrefix}}__icon-left t-icon"
+    data-target="icon"
+    bind:tap="onChange"
+    wx:if="{{labelPosition==='right'}}"
+  >
+    <block wx:if="{{useIconSlot}}">
+      <slot name="left-icon"></slot>
+    </block>
+    <block wx:else>
+      <t-icon
+        name="{{active?'tick_fill':'circle'}}"
+        color="{{active?(disabled?'#DCDCDC':checkedColor):'#DCDCDC'}}"
+        class="{{classPrefix}}__btn {{disabled?classPrefix + '-is-disabled' : ''}} {{disabled?classPrefix + '-is-checked' : ''}}"
+      />
+    </block>
+  </view>
+  <!-- 文本内容 -->
+  <view class="{{classPrefix}}__content " data-target="text" bind:tap="onChange">
+    <!-- title -->
+    <view class="{{classPrefix}}__title t-label" style="-webkit-line-clamp:{{limitTitleRow}}">
+      {{title}}
+    </view>
+    <!-- content -->
+    <view
+      class="{{classPrefix}}__description t-description"
+      style="-webkit-line-clamp:{{limitContentRow}}"
+    >
+      <slot />
+    </view>
+  </view>
+  <!-- icon right -->
+  <view
+    class="{{classPrefix}}__icon-right t-icon"
+    data-target="icon"
+    bind:tap="onChange"
+    wx:if="{{labelPosition==='left'}}"
+  >
+    <block wx:if="{{useIconSlot}}">
+      <slot name="right-icon"></slot>
+    </block>
+    <block wx:else>
+      <t-icon
+        name="{{active?'tick_fill':'circle'}}"
+        color="{{active?(disabled?'#DCDCDC':checkedColor):'#DCDCDC'}}"
+        class="{{classPrefix}}__btn {{disabled?classPrefix + '-is-disabled' : ''}} {{disabled?classPrefix + '-is-checked' : ''}}"
+      />
+    </block>
+  </view>
 </view>
-
