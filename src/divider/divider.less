@@ -1,1 +1,87 @@
-@import (css) '../common/index.wxss';
+// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@divider-color: rgba(231, 231, 231, 1);
+
+.@{prefix}-divider {
+  &--horizontal {
+    display: flex;
+    align-items: center;
+    color: @divider-color;
+    border-color: @divider-color;
+    border-style: solid;
+    border-width: 0;
+    &::before,
+    &::after {
+      display: block;
+      flex: 1;
+      box-sizing: border-box;
+      border-color: inherit;
+      border-style: inherit;
+      border-width: 2rpx 0 0;
+    }
+
+    &::before {
+      content: '';
+    }
+  }
+
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    height: 1em;
+    margin: 0 @spacer;
+    color: @divider-color;
+    border-color: @divider-color;
+    border-style: solid;
+    border-width: 0;
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      flex: 1;
+      box-sizing: border-box;
+      border-color: inherit;
+      border-style: inherit;
+      border-width: 0 2rpx 0 0;
+    }
+  }
+
+  &--vertical--center {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  &--dashed {
+    border-style: dashed;
+  }
+
+  &--content {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  // horizontal: 文本位置
+  &--center,
+  &--left,
+  &--right {
+    &::before {
+    }
+
+    &::after {
+      content: '';
+    }
+  }
+
+  &--left {
+    &::before {
+      max-width: 60rpx;
+    }
+  }
+
+  &--right {
+    &::after {
+      max-width: 60rpx;
+    }
+  }
+}
