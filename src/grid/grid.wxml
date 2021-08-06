@@ -1,5 +1,5 @@
 <view
-  class="t-grid t-class {{ border && !gutter ? 't-hairline--top' : '' }}"
+  class="t-class {{classPrefix}} {{ border && !gutter ? 't-hairline--top' : '' }}"
   style="{{ viewStyle }}"
 >
   <slot />
