@@ -1,0 +1,72 @@
+<block wx:if="{{demoType === 'base-default'}}">
+  <t-navbar
+    title="这里是标题一二三四"
+    fixed="{{fixed}}"
+    visible="{{visible}}"
+    showBack="{{showBack}}"
+    showHome="{{showHome}}"
+  />
+</block>
+<block wx:if="{{demoType === 'base-color'}}">
+  <t-navbar
+    title="设置颜色、字号和背景"
+    titleColor="#f77"
+    titleSize="30rpx"
+    backgroundColor="#ccc"
+    fixed="{{fixed}}"
+    visible="{{visible}}"
+    showBack="{{showBack}}"
+    showHome="{{showHome}}"
+  />
+</block>
+<block wx:if="{{demoType === 'base-transparent'}}">
+  <t-navbar
+    title="透明背景"
+    titleColor="#f77"
+    backgroundColor="transparent"
+    fixed="{{fixed}}"
+    visible="{{visible}}"
+    showBack="{{showBack}}"
+    showHome="{{showHome}}"
+  />
+</block>
+<block wx:if="{{demoType === 'base-capsule-style'}}">
+  <t-navbar
+    title="胶囊自定义样式"
+    fixed="{{true}}"
+    visible="{{visible}}"
+    showBack="always"
+    showHome="always"
+    capsule-style="border: 1rpx solid #f77; background: #ccc"
+  />
+</block>
+
+<block wx:if="{{demoType === 'slot-left'}}">
+  <t-navbar
+    title="左侧胶囊位置插槽"
+    visible="{{visible}}"
+    fixed="{{fixed}}"
+    showBack="none"
+    showHome="none"
+  >
+    <view slot="left" class="slot-left">左侧胶囊</view>
+  </t-navbar>
+</block>
+
+<block wx:if="{{demoType === 'slot-center'}}">
+  <t-navbar title="标题位置插槽" visible="{{visible}}" fixed="{{fixed}}" title="">
+    <view slot="center" class="slot-center">标题位置</view>
+  </t-navbar>
+</block>
+
+<view class="demo">
+  <view class="demo-title">Navbar 导航条</view>
+  <view class="demo-desc"></view>
+  <t-demo
+    title="01 基本用法"
+    desc="微信小程序导航条，需要开启页面的 navigationStyle: custom，同时必须把页面路径加入 app.json"
+    operList="{{operList}}"
+    bindclickoper="clickHandle"
+  />
+  <t-demo title="02 插槽" desc="" operList="{{slotList}}" bindclickoper="clickHandle" />
+</view>

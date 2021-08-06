@@ -1,0 +1,146 @@
+// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@black: #000;
+@white: #fff;
+
+// navbar 字体颜色
+@navbar-color: @black;
+
+// navbar 背景色
+@navbar-background-color: @white;
+
+.@{prefix}-navbar {
+  --navbar-height: 44px;
+  --navbar-right: 190rpx; // 默认右上角胶囊按钮宽度，组件会在初始化时尝试自动获取胶囊按钮宽度并覆写该值
+  --status-bar-height: 20px; // 默认状态栏高度，组件会在初始化时尝试自动获取状态栏高度并覆写该值
+
+  overflow: hidden;
+
+  &--fixed {
+    .@{prefix}-navbar__content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 5001;
+    }
+  }
+
+  &--visible {
+    display: '';
+  }
+
+  &--visible-animated {
+    display: '';
+    opacity: 1;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  &--hide-animated {
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -webkit-transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  &--hide {
+    display: none;
+  }
+
+  &--android {
+    --navbar-height: 48px;
+    --navbar-right: 222rpx;
+  }
+
+  &__placeholder {
+    height: var(--navbar-height);
+    padding-top: var(--status-bar-height);
+    position: relative;
+    visibility: hidden;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    height: var(--navbar-height);
+    width: calc(100% - var(--navbar-right));
+    padding-right: var(--navbar-right);
+    padding-top: var(--status-bar-height);
+    display: flex;
+    align-items: center;
+    background-color: @navbar-background-color;
+    color: @navbar-color;
+  }
+
+  &__left {
+    position: relative;
+    width: var(--navbar-right);
+    padding-left: 24rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+  }
+
+  &__capsule {
+    box-sizing: border-box;
+    width: 87rpx * 2;
+    height: 64rpx;
+    border-radius: 16rpx * 2;
+    border: 1rpx solid #e3e6eb;
+    background: #fff;
+    display: flex;
+    align-items: center;
+
+    .@{prefix}-navbar__btn {
+      flex: 1;
+      &:not(:first-child) {
+        position: relative;
+
+        &::before {
+          display: block;
+          content: '';
+          position: absolute;
+          top: 4rpx;
+          bottom: 4rpx;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.2);
+          width: 1px;
+        }
+      }
+    }
+  }
+
+  &__center {
+    font-size: 36rpx;
+    text-align: center;
+    position: relative;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    overflow: hidden;
+
+    &_title {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  &__right {
+    margin-right: 16px;
+  }
+
+  &__btn {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
