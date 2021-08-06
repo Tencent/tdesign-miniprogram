@@ -1,4 +1,4 @@
-<view class="{{theme==='vertical'? 't-divider--vertical--center' : ''}}">
+<view class="{{theme==='vertical'? 't-divider--vertical-center' : ''}}">
   <view
     class="t-class {{classPrefix}} {{classPrefix}}--{{theme}} {{classPrefix}}--{{align}} {{dashed? 't-divider--dashed' : ''}} "
     style="{{ lineColor  ? 'border-color: ' + lineColor + ';' : '' }}{{ tStyle }}"
