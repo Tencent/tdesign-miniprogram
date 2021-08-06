@@ -1,33 +1,113 @@
 // @import (css) '../common/index.wxss';
-
 .t-tabs {
-  background: #fff;
   display: flex;
-  display: block;
-}
-.t-tabs-scroll {
-  white-space: nowrap;
-  display: flex;
-  height: 92rpx;
-  line-height: 92rpx;
-}
-// .t-tabs-nav {
-//   white-space: nowrap;
-// }
-.t-tab-item {
-  display: inline-block;
-  height: 92rpx;
-  text-align: center;
-  padding-right: 48rpx;
-}
-.t-tab-item:first-child {
-  padding-left: 32rpx;
-}
 
-.t-is-active {
-  color: #0052d9;
-}
+  &-item {
+    flex: 1;
 
-.t-tab-disabled {
-  color: #c8c9cc;
+    &.t-is-active {
+      font-weight: 600;
+    }
+
+    &--disabled {
+      // color: @tabs-title-disabled-color;
+    }
+  }
+
+  &-content {
+    overflow: hidden;
+  }
+
+  &-nav {
+    position: relative;
+    z-index: 0;
+    user-select: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &-content-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &--animated {
+      display: flex;
+      transition-property: transform;
+    }
+  }
+  &.t-is-top,
+  &.t-is-bottom {
+    flex-wrap: wrap;
+    .t-tabs-scroll {
+      position: relative;
+      &::after {
+        content: '';
+      }
+    }
+
+    // .t-tabs-nav {
+    //   // height: @tabs-horizontal-height;
+
+    //   &-wrapper {
+    //     position: relative;
+
+    //     &::after {
+    //       content: '';
+    //     }
+    //   }
+    // }
+    .t-tabs-item {
+      text-align: center;
+    }
+    .t-tabs__track {
+      left: 0;
+      bottom: 0;
+      height: 4rpx;
+    }
+    .t-tabs-content {
+      width: 100%;
+    }
+  }
+  &.t-is-bottom {
+    flex-direction: column-reverse;
+  }
+  &.t-is-left,
+  &.t-is-right {
+    .t-tabs-nav {
+      flex-direction: column;
+    }
+    .t-tabs-content {
+      flex: 0 1 auto;
+    }
+    .t-tabs-content-inner--animated {
+      flex-direction: column;
+    }
+    .t-tabs-item {
+      width: 100%;
+      text-align: center;
+    }
+
+    .t-tabs-content {
+      height: 100%;
+    }
+  }
+  &.t-is-left {
+    .t-tabs__track {
+      left: 0;
+      top: 0;
+      width: 4rpx;
+    }
+  }
+  &.t-is-right {
+    flex-direction: row-reverse;
+    .t-tabs__track {
+      right: 0;
+      top: 0;
+      width: 4rpx;
+    }
+  }
 }

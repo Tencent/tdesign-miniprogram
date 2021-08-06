@@ -1,53 +1,31 @@
-<!-- <wxs src="./tabs.wxs" module="filters" />
-<view class="{{classPrefix}} t-is-{{tabPosition}}">
-  <scroll-view
-    class="{{classPrefix}}__nav-wrapper"
-    enable-flex
-    scroll-x="{{isScrollX}}"
-    scroll-y="{{isScrollY}}"
-  >
-    <view class="{{classPrefix}}__nav {{scrollable ? classPrefix+'__nav--scrollable' : '' }}">
+<wxs src="./tabs.wxs" module="filters" />
+<view class="t-tabs t-is-{{placement}}">
+  <scroll-view class="t-tabs-scroll" enable-flex scroll-x="{{isScrollX}}" scroll-y="{{isScrollY}}">
+    <view class="t-tabs-nav">
       <view
         wx:for="{{tabs}}"
         wx:key="index"
         data-index="{{index}}"
-        class="{{classPrefix}}__tabbar {{item.disabled ? classPrefix+'__tabbar--disabled' : '' }} {{currentIndex === index ? 't-is-active' : ''}}"
+        class="t-tabs-item {{item.disabled ? 't-tabs-item--disabled' : '' }} {{currentIndex === index ? 't-is-active' : ''}}"
         bind:tap="onTabTap"
       >
-        <label class="{{classPrefix}}__title {{ ellipsis ? 't-is-ellipsis' : '' }}"
-          >{{item.title}}</label
-        >
+        {{item.label}}
       </view>
-      <view class="{{classPrefix}}__track" style="{{trackStyle}}" />
+      <!-- <view class="t-tabs__track" style="{{trackStyle}}" /> -->
     </view>
   </scroll-view>
   <view
-    class="{{classPrefix}}__content"
+    class="t-tabs-content"
     bind:touchstart="onTouchStart"
     bind:touchmove="onTouchMove"
     bind:touchend="onTouchEnd"
     bind:touchcancel="onTouchEnd"
   >
     <view
-      class="{{classPrefix}}__content-inner {{animated ? classPrefix+'__content-inner--animated' : ''}}"
-      style="{{animated ? filters.animate({duration: duration,currentIndex:currentIndex, direction}) : ''}}"
+      class="t-tabs-content-inner t-tabs-content-inner--animated"
+      style="{{  filters.animate({duration: 2,currentIndex:currentIndex, direction}) }}"
     >
       <slot />
     </view>
   </view>
-</view> -->
-<view class="t-tabs">
-  <scroll-view scroll-x="{{true}}" scroll-y="{{false}}" enable-flex class="t-tabs-scroll">
-    <view
-      wx:for="{{tabs}}"
-      wx:key="value"
-      class="t-tab-item {{item.disabled?'t-tab-disabled':''}} {{currentIndex === index?'t-is-active':''}}"
-      data-index="{{item.value}}"
-      bind:tap="onTabTap"
-    >
-      {{item.label}}
-    </view>
-    <!-- <view wx:if="{{showBottomLine && item.key === value}}"></view> -->
-  </scroll-view>
-  <slot></slot>
 </view>
