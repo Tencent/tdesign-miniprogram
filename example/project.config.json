@@ -58,8 +58,14 @@
       "list": [
         {
           "id": -1,
-          "name": "button",
-          "pathName": "pages/button/button",
+          "name": "index",
+          "pathName": "pages/index",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "dialog",
+          "pathName": "pages/dialog/dialog",
           "query": "",
           "scene": null
         },
