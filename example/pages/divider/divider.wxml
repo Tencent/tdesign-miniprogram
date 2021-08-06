@@ -4,45 +4,61 @@
   <t-demo title="01 基本用法" desc="分割符主要是由直线和文字组成">
     <view class="t-divider-list">
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">直线拉通</view>
-        <t-divider dashed></t-divider>
+        <view class="demo-section__desc">直线拉通</view>
+        <view class="demo-section__wrapper">
+          <t-divider dashed></t-divider>
+        </view>
       </view>
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">虚线拉通</view>
-        <t-divider dashed></t-divider>
+        <view class="demo-section__desc">虚线拉通</view>
+        <view class="demo-section__wrapper">
+          <t-divider dashed></t-divider>
+        </view>
       </view>
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">左右间距</view>
-        <t-divider t-class="demo-2"></t-divider>
+        <view class="demo-section__desc">左右间距</view>
+        <view class="demo-section__wrapper">
+          <t-divider t-class="demo-2"></t-divider>
+        </view>
       </view>
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">右侧拉通</view>
-        <t-divider t-class="demo-3"></t-divider>
+        <view class="demo-section__desc">右侧拉通</view>
+        <view class="demo-section__wrapper">
+          <t-divider t-class="demo-3"></t-divider>
+        </view>
       </view>
 
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">自定义左侧间距</view>
-        <t-divider t-class="demo-4"></t-divider>
+        <view class="demo-section__desc">自定义左侧间距</view>
+        <view class="demo-section__wrapper">
+          <t-divider t-class="demo-4"></t-divider>
+        </view>
       </view>
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">文字+直线</view>
-        <t-divider t-class="demo-5" t-class-content="t-class-content">
-          <text slot="content">文字信息</text>
-        </t-divider>
+        <view class="demo-section__desc">文字+直线</view>
+        <view class="demo-section__wrapper">
+          <t-divider t-class="demo-5" t-class-content="t-class-content">
+            <text slot="content">文字信息</text>
+          </t-divider>
+        </view>
       </view>
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">文字+虚线</view>
-        <t-divider t-class="demo-5" t-class-content="t-class-content" dashed content="文字信息">
-        </t-divider>
+        <view class="demo-section__desc">文字+虚线</view>
+        <view class="demo-section__wrapper">
+          <t-divider t-class="demo-5" t-class-content="t-class-content" dashed content="文字信息">
+          </t-divider>
+        </view>
       </view>
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">纯文字</view>
-        <t-divider lineColor="transparent">
-          <text slot="content">没有更多了~</text>
-        </t-divider>
+        <view class="demo-section__desc">纯文字</view>
+        <view class="demo-section__wrapper">
+          <t-divider lineColor="transparent">
+            <text slot="content">没有更多了~</text>
+          </t-divider>
+        </view>
       </view>
       <view class="t-divider-demo">
-        <view class="t-divider-demo__title">垂直分割</view>
+        <view class="demo-section__desc">垂直分割</view>
         <view class="demo-6">
           <text>雨纷纷</text>
           <t-divider theme="vertical"></t-divider>
