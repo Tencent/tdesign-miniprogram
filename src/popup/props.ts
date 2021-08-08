@@ -1,11 +1,11 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-03 19:04:54
+ * updated at 2021-08-07 11:03:22
  * */
 
 import { TdPopupProps } from './type'
 const props: TdPopupProps = {
-  /** 关闭按钮，值类型为 Boolean 时表示是否显示关闭按钮。也可以自定义按钮 */
+  /** 关闭按钮，值类型为 Boolean 时表示是否显示关闭按钮。也可以自定义关闭按钮 */
   closeBtn: {
     type: Boolean,
   },
@@ -20,11 +20,6 @@ const props: TdPopupProps = {
   },
   /** 是否在关闭浮层时销毁浮层 */
   destroyOnClose: {
-    type: Boolean,
-    value: false,
-  },
-  /** 是否禁用组件 */
-  disabled: {
     type: Boolean,
     value: false,
   },
