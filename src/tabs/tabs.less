@@ -4,13 +4,17 @@
 
   &-item {
     flex: 1;
+    font-size: 28rpx;
+    font-weight: 400;
+    min-width: 150rpx;
 
-    &.t-is-active {
-      font-weight: 600;
+    &.t-tabs-is-active {
+      font-weight: 700;
+      color: #0052d9;
     }
 
     &--disabled {
-      // color: @tabs-title-disabled-color;
+      color: #c8c9cc;
     }
   }
 
@@ -26,7 +30,7 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 
   &-content-inner {
@@ -42,32 +46,28 @@
   &.t-is-top,
   &.t-is-bottom {
     flex-wrap: wrap;
+    .t-tabs-nav {
+      height: 60rpx;
+    }
+
     .t-tabs-scroll {
       position: relative;
+
       &::after {
         content: '';
       }
     }
 
-    // .t-tabs-nav {
-    //   // height: @tabs-horizontal-height;
-
-    //   &-wrapper {
-    //     position: relative;
-
-    //     &::after {
-    //       content: '';
-    //     }
-    //   }
-    // }
     .t-tabs-item {
       text-align: center;
     }
+
     .t-tabs__track {
       left: 0;
       bottom: 0;
       height: 4rpx;
     }
+
     .t-tabs-content {
       width: 100%;
     }
@@ -75,24 +75,33 @@
   &.t-is-bottom {
     flex-direction: column-reverse;
   }
+
   &.t-is-left,
   &.t-is-right {
+    .t-tabs-scroll {
+      width: 150rpx;
+    }
+
     .t-tabs-nav {
       flex-direction: column;
     }
-    .t-tabs-content {
-      flex: 0 1 auto;
-    }
-    .t-tabs-content-inner--animated {
-      flex-direction: column;
-    }
+
+    // .t-tabs-content {
+    //   flex: 0 1 auto;
+    // }
+
+    // .t-tabs-content-inner--animated {
+    //   flex-direction: column;
+    // }
+
     .t-tabs-item {
       width: 100%;
       text-align: center;
     }
 
     .t-tabs-content {
-      height: 100%;
+      // height: inherit;
+      width: 100%;
     }
   }
   &.t-is-left {
@@ -104,6 +113,7 @@
   }
   &.t-is-right {
     flex-direction: row-reverse;
+
     .t-tabs__track {
       right: 0;
       top: 0;

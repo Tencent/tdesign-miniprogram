@@ -6,7 +6,7 @@
         wx:for="{{tabs}}"
         wx:key="index"
         data-index="{{index}}"
-        class="t-tabs-item {{item.disabled ? 't-tabs-item--disabled' : '' }} {{currentIndex === index ? 't-is-active' : ''}}"
+        class="t-tabs-item {{item.disabled ? 't-tabs-item--disabled' : '' }} {{currentIndex === index ? 't-tabs-is-active' : ''}}"
         bind:tap="onTabTap"
       >
         {{item.label}}
@@ -23,7 +23,7 @@
   >
     <view
       class="t-tabs-content-inner t-tabs-content-inner--animated"
-      style="{{  filters.animate({duration: 2,currentIndex:currentIndex, direction}) }}"
+      style="{{  filters.animate({duration: 1,currentIndex:currentIndex, direction}) }}"
     >
       <slot />
     </view>

@@ -32,12 +32,6 @@ export default class Tabs extends SuperComponent {
     },
   };
   properties = {
-    // color: {
-    //   type: String,
-    //   observer(color: string) {
-    //     this.setTrack(color);
-    //   },
-    // },
     value: {
       type: String,
       value: '0',
@@ -127,37 +121,37 @@ export default class Tabs extends SuperComponent {
       }
     }
   }
-  setTrack(color = '#0052d9') {
-    const { children } = this;
-    if (!children) return;
-    const { currentIndex, isScrollX, direction } = this.data;
-    if (currentIndex <= -1) return;
-    this.gettingBoundingClientRect('.t-tabs-item', true).then((res: any) => {
-      const rect = res[currentIndex];
-      if (!rect) return;
-      let count = 0;
-      let distance = 0;
-      for (const item of res) {
-        if (count < currentIndex) {
-          distance += isScrollX ? item.width : item.height;
-          count += 1;
-        }
-      }
-      if (isScrollX) {
-        distance += (rect.width - trackLineWidth) / 2;
-      }
-      let trackStyle = `background-color: ${color};
-        -webkit-transform: translate${direction}(${distance}px);
-        transform: translate${direction}(${distance}px);
-        -webkit-transition-duration: ${2}s;
-        transition-duration: ${2}s;
-      `;
-      trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
-      this.setData({
-        trackStyle,
-      });
-    });
-  }
+  // setTrack(color = '#0052d9') {
+  //   const { children } = this;
+  //   if (!children) return;
+  //   const { currentIndex, isScrollX, direction } = this.data;
+  //   if (currentIndex <= -1) return;
+  //   this.gettingBoundingClientRect('.t-tabs-item', true).then((res: any) => {
+  //     const rect = res[currentIndex];
+  //     if (!rect) return;
+  //     let count = 0;
+  //     let distance = 0;
+  //     for (const item of res) {
+  //       if (count < currentIndex) {
+  //         distance += isScrollX ? item.width : item.height;
+  //         count += 1;
+  //       }
+  //     }
+  //     if (isScrollX) {
+  //       distance += (rect.width - trackLineWidth) / 2;
+  //     }
+  //     let trackStyle = `background-color: ${color};
+  //       -webkit-transform: translate${direction}(${distance}px);
+  //       transform: translate${direction}(${distance}px);
+  //       -webkit-transition-duration: ${2}s;
+  //       transition-duration: ${2}s;
+  //     `;
+  //     trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
+  //     this.setData({
+  //       trackStyle,
+  //     });
+  //   });
+  // }
   trigger(eventName: string, index: number) {
     const currentIndex = index || this.data.currentIndex;
     const currentTab = this.data.tabs[currentIndex];
@@ -182,32 +176,32 @@ export default class Tabs extends SuperComponent {
       });
     }
   }
-  // onTouchStart(event: any) {
-  //   this.touchStart(event);
-  // }
-  // onTouchMove(event: any) {
-  //   this.touchMove(event);
-  // }
-  // onTouchEnd() {
-  //   const { direction, deltaX, offsetX } = this;
-  //   const minSwipeDistance = 50;
-  //   if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
-  //     const index = this.getAvaiableTabIndex(deltaX);
-  //     if (index !== -1) {
-  //       this.setCurrentIndex(index);
-  //     }
-  //   }
-  // }
-  // getAvaiableTabIndex(deltaX: number) {
-  //   const step = deltaX > 0 ? -1 : 1;
-  //   const { currentIndex, tabs } = this.data;
-  //   const len = tabs.length;
-  //   for (let i = step; currentIndex + step >= 0 && currentIndex + step < len; i += step) {
-  //     const newIndex = currentIndex + i;
-  //     if (newIndex >= 0 && newIndex < len && tabs[newIndex] && !tabs[newIndex].disabled) {
-  //       return newIndex;
-  //     }
-  //   }
-  //   return -1;
-  // }
+  onTouchStart(event: any) {
+    this.touchStart(event);
+  }
+  onTouchMove(event: any) {
+    this.touchMove(event);
+  }
+  onTouchEnd() {
+    const { direction, deltaX, offsetX } = this;
+    const minSwipeDistance = 50;
+    if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
+      const index = this.getAvaiableTabIndex(deltaX);
+      if (index !== -1) {
+        this.setCurrentIndex(index);
+      }
+    }
+  }
+  getAvaiableTabIndex(deltaX: number) {
+    const step = deltaX > 0 ? -1 : 1;
+    const { currentIndex, tabs } = this.data;
+    const len = tabs.length;
+    for (let i = step; currentIndex + step >= 0 && currentIndex + step < len; i += step) {
+      const newIndex = currentIndex + i;
+      if (newIndex >= 0 && newIndex < len && tabs[newIndex] && !tabs[newIndex].disabled) {
+        return newIndex;
+      }
+    }
+    return -1;
+  }
 }
