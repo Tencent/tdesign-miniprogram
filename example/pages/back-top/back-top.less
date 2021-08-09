@@ -1,31 +1,36 @@
 page {
-  background-color: #fff;
+  background: #f9f9f9;
+
+  // 覆盖skeleton组件样式
+  .t-skeleton__row {
+    background-color: #eeeeee;
+  }
+
+  .skeletion-content {
+    justify-content: space-between;
+    margin: 0 24rpx;
+    flex-wrap: wrap;
+    padding-bottom: 32rpx;
+  }
+
+  .skeletion-item {
+    padding: 0;
+    margin-bottom: 32rpx;
+  }
+
+  .skeletion-row {
+    border-radius: 16rpx;
+  }
 }
 
 .button-group {
-  margin: 28rpx 32rpx;
+  margin-top: 32rpx;
 }
 
 .button-group-item {
-  margin-bottom: 24rpx;
+  margin-bottom: 32rpx;
 }
 
 .flex {
   display: flex;
-}
-
-.skeletion-content {
-  justify-content: space-between;
-  margin: 0 24rpx;
-  flex-wrap: wrap;
-  padding-bottom: 32rpx;
-}
-
-.skeletion-item {
-  padding: 0 !important;
-  margin-top: 32rpx;
-}
-
-.skeletion-row {
-  border-radius: 16rpx;
 }

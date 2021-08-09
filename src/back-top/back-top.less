@@ -1,1 +1,114 @@
-@import (css) '../common/index.wxss';
+// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@back-top-text-font-size: @font-size;
+@back-top-icon-font-size: 48rpx;
+
+.@{prefix}-back-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: height 0.2s;
+
+  &.show {
+    height: auto;
+  }
+
+  &.hide {
+    height: 0;
+    border-width: 0;
+    display: none;
+  }
+
+  &.fixed {
+    position: fixed;
+    right: 32rpx;
+    bottom: 133rpx;
+  }
+
+  &.round,
+  &.round-dark {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+
+    .icon {
+      margin: 0;
+      // border: none;
+      border-radius: 0;
+      font-size: @back-top-icon-font-size;
+      background-color: transparent;
+    }
+
+    .text {
+      padding: 0;
+      margin-top: 0;
+      font-size: @back-top-text-font-size;
+    }
+  }
+
+  &.round,
+  &.half-round {
+    background-color: rgb(255, 255, 255);
+    color: #333;
+    border: 1rpx solid;
+    border-color: #ddd;
+
+    .icon,
+    .text {
+      color: #333;
+    }
+  }
+
+  &.round-dark,
+  &.half-round-dark {
+    background-color: #000;
+    color: #fff;
+
+    .icon,
+    .text {
+      color: #fff;
+    }
+  }
+
+  &.half-round,
+  &.half-round-dark {
+    width: 120rpx;
+    height: 80rpx;
+    border-radius: 120rpx 0 0 120rpx;
+    flex-direction: row;
+    right: 0;
+
+    .icon {
+      margin: 0;
+      // border: none;
+      border-radius: 0;
+      font-size: @back-top-icon-font-size;
+      background-color: transparent;
+    }
+
+    .text {
+      padding: 0;
+      margin-left: 4rpx;
+      width: 2em;
+      font-size: @back-top-text-font-size;
+    }
+  }
+
+  .text {
+    font-size: @back-top-text-font-size;
+    color: #666;
+    padding-top: 10rpx;
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+  }
+}

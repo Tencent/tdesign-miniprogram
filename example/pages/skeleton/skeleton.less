@@ -1,63 +1,20 @@
-.t-skeleton {
-  &-title,
-  &-desc {
-    margin: 0 32rpx;
+page {
+  .flex {
+    display: flex;
   }
 
-  &-title {
-    padding-top: 48rpx;
-    font-size: 44rpx;
-    font-weight: bold;
-    line-height: 64rpx;
+  .skeletion-content {
+    justify-content: space-between;
+    margin: 0 24rpx;
+    flex-wrap: wrap;
+    padding-bottom: 32rpx;
+  }
+  .skeletion-item {
+    padding: 0 !important;
+    margin-top: 32rpx;
   }
 
-  &-desc {
-    color: #999;
-    margin-top: 8rpx;
-    font-size: 26rpx;
-    line-height: 36rpx;
+  .skeletion-row {
+    border-radius: 16rpx;
   }
-}
-.t-skeleton-wrapper {
-  margin-top: 48rpx;
-  margin-bottom: 68rpx;
-
-  &-title,
-  &-desc {
-    margin: 0 32rpx;
-  }
-
-  &-title {
-    color: #333;
-    font-size: 36rpx;
-    font-weight: bold;
-    margin-top: 64rpx;
-  }
-
-  &-desc {
-    margin-top: 8rpx;
-    color: #999;
-    font-size: 26rpx;
-    line-height: 40rpx;
-    white-space: pre-line;
-  }
-}
-
-.flex {
-  display: flex;
-}
-
-.skeletion-content {
-  justify-content: space-between;
-  margin: 0 24rpx;
-  flex-wrap: wrap;
-  padding-bottom: 32rpx;
-}
-.skeletion-item {
-  padding: 0 !important;
-  margin-top: 32rpx;
-}
-
-.skeletion-row {
-  border-radius: 16rpx;
 }
