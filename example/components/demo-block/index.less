@@ -1,0 +1,45 @@
+@import '../../../src/common/style/_variables.less';
+
+.demo-block {
+  margin: @spacer-3 0 0;
+  line-height: @text-line-height;
+  font-size: @font-size-m;
+  opacity: 90%;
+
+  &__heander {
+    color: @text-level-1-color;
+    margin: 0 @spacer-2;
+    &-title {
+      font-weight: 700;
+    }
+
+    &-desc {
+      margin-top: @spacer;
+      font-size: @font-size-s;
+      white-space: pre-line;
+      opacity: 40%;
+    }
+  }
+
+  &__oper {
+    margin-top: @spacer-2;
+
+    &-subtitle {
+      font-size: @font-size-base;
+      margin-bottom: @spacer-1;
+    }
+
+    &-btn {
+      margin: 0 0 @spacer-2 0;
+      height: 48rpx * 2;
+    }
+  }
+
+  &__slot {
+    margin-top: @spacer-2;
+
+    &.with-padding {
+      margin: 0 @spacer-2;
+    }
+  }
+}

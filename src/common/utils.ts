@@ -57,3 +57,19 @@ export const requestAnimationFrame = function (cb: Function) {
       cb();
     });
 };
+
+const isDef = function (value: any): boolean {
+  return value !== undefined && value !== null;
+};
+
+const isNumber = function (value) {
+  return /^\d+(\.\d+)?$/.test(value);
+};
+
+export const addUnit = function (value?: string | number): string | undefined {
+  if (!isDef(value)) {
+    return undefined;
+  }
+  value = String(value);
+  return isNumber(value) ? `${value}px` : value;
+};

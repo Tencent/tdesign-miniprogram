@@ -5,6 +5,10 @@ Page({
         type: '新增类',
         components: [
           {
+            name: 'Grid',
+            path: '/pages/grid/grid',
+          },
+          {
             name: 'Sticky',
             path: '/pages/sticky/sticky',
           },

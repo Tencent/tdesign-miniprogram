@@ -1,53 +1,60 @@
-<wxs src="../common/utils.wxs" module="utils" />
-
-<view
-  class="{{ visible ? classBasePrefix + '-show' :classBasePrefix + '-hidden' }}"
-  wx:if="{{ visible }}"
+<t-popup
+  visible="{{ visible }}"
+  showOverlay="{{showOverlay}}"
+  closeOnOverlayClick="{{closeOnOverlayClick}}"
+  preventScrollThrough="{{preventScrollThrough}}"
+  zIndex="{{ zIndex }}"
+  bindoverlayClick="overlayClick"
 >
-  <view
-    wx:if="{{ preventScrollThrough }}"
-    catchtouchmove="catchtouchmove"
-    class="{{ showOverlay ? classBasePrefix + '-mask' : classBasePrefix + '-mask--transparent' }}"
-    bindtap="clickOverlay"
-  ></view>
-  <view
-    wx:else
-    class="{{ showOverlay ? classBasePrefix + '-mask' : classBasePrefix + '-mask--transparent' }}"
-    bindtap="clickOverlay"
-  ></view>
-
-  <view
-    class="{{ classPrefix }} {{ className }}"
-    style="z-index:{{zIndex}};{{ utils.addUnit('width', width) }}{{ customStyle }}"
-  >
-    <view wx:if="{{ header }}" class="{{ classPrefix }}__header">
-      <view class="{{ classPrefix }}__title">{{ header }}</view>
+  <view class="{{ classPrefix }} t-class">
+    <view class="{{ classPrefix }}__content">
+      <view wx:if="{{ title }}" class="{{ classPrefix }}__header">{{ title }}</view>
+      <slot name="title" />
+      <view wx:if="{{ content }}" class="{{ classPrefix }}__body {{title ? '' : 'no-title'}}">
+        <text class="{{ classPrefix }}__body-text">{{ content }}</text>
+      </view>
+      <slot name="content" />
     </view>
-    <slot wx:else name="header"></slot>
-
-    <view class="{{ classPrefix }}__body">
-      <block wx:if="{{ body }}">{{ body }}</block>
-      <slot wx:else name="body"></slot>
-    </view>
-
-    <view class="{{ classPrefix }}__footer">
-      <block wx:if="{{ footer }}">
-        <view
-          wx:if="{{ cancelContent }}"
-          class="{{ classPrefix }}__btn {{ classPrefix }}__btn--default"
-          hover-class="{{ classPrefix }}__btn--active"
-          bindtap="clickCloseBtn"
-          >{{ cancelContent }}</view
+    <view
+      class="{{ classPrefix }}__footer {{ classPrefix }}__footer--default {{buttonLayout === 'vertical' ? classPrefix + '__footer--column' : ''}}"
+    >
+      <view wx:if="{{actions}}">
+        <button
+          class="{{ classPrefix }}__button {{item.primary ? classPrefix + '__button-confirm' : ''}}"
+          wx:for="{{actions}}"
+          wx:key="action"
+          style="{{item.style}}"
+          data-index="{{index}}"
+          bindtap="onActionTap"
         >
-        <view
-          wx:if="{{ confirmContent }}"
-          class="{{ classPrefix }}__btn {{ classPrefix }}__btn--{{ theme }}"
-          hover-class="{{ classPrefix }}__btn--active"
-          bindtap="clickConfirmBtn"
-          >{{ confirmContent }}</view
-        >
-      </block>
-      <slot wx:else name="footer"></slot>
+          {{item.name}}
+        </button>
+      </view>
+      <slot name="actions" />
+      <button
+        wx:if="{{ cancelBtn }}"
+        class="{{ classPrefix }}__button {{ classPrefix }}__button-cancel t-class-cancel"
+        bindtap="onCancel"
+      >
+        {{ cancelBtn }}
+      </button>
+      <slot name="cancelBtn" />
+      <button
+        wx:if="{{ confirmBtn }}"
+        class="{{ classPrefix }}__button {{ classPrefix }}__button-confirm t-class-confirm"
+        bindtap="onConfirm"
+        open-type="{{confirmBtn.openType}}"
+        bind:getuserinfo="openValueCBHandle"
+        bind:contact="openValueCBHandle"
+        bind:getphonenumber="openValueCBHandle"
+        bind:opensetting="openValueCBHandle"
+        bind:launchapp="openValueCBHandle"
+        bind:error="openValueErrCBHandle"
+        style="color: {{confirmTextColor}};border-color:{{borderColor}}"
+      >
+        {{ confirmBtn }}
+      </button>
+      <slot name="confirmBtn" />
     </view>
   </view>
-</view>
+</t-popup>
