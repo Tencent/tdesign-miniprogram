@@ -1,12 +1,14 @@
-<view>
-  <view class="t-tabs-demo-wrapper">
-    <view class="t-tabs-demo__label">基本用法</view>
+<view class="demo">
+  <view class="demo-title">Tabs 选项卡</view>
+  <view class="demo-desc">用作一组平行关系页面/内容的切换器</view>
+  <t-demo title="01 基本用法" desc="横向选项卡">
     <t-tabs value="{{0}}" bind:change="onTabsChange" bind:click="onTabsChange">
       <t-tab-panel wx:for="{{[1,2,3,4]}}" wx:key="index" label="标签页{{index}}" value="{{index}}">
         标签页{{index}}
       </t-tab-panel>
     </t-tabs>
-    <view class="t-tabs-demo__label">标签栏滚动</view>
+  </t-demo>
+  <t-demo title="02 滚动" desc="超屏滚动">
     <t-tabs value="1" bind:change="onTabsChange" bind:click="onTabsChange">
       <t-tab-panel
         wx:for="{{[1,2,3,4,5,6,7,8]}}"
@@ -17,12 +19,14 @@
         标签页{{index}}
       </t-tab-panel>
     </t-tabs>
-    <view class="t-tabs-demo__label">切换动画</view>
-    <t-tabs value="0" bind:change="onTabsChange" animated bind:click="onTabsChange">
+  </t-demo>
+  <t-demo title="03 动画" desc="动画加载内容">
+    <t-tabs value="0" bind:change="onTabsChange" bind:click="onTabsChange">
       <t-tab-panel label="标签页1" value="0">标签页1</t-tab-panel>
       <t-tab-panel label="标签页2" value="1">标签页2</t-tab-panel>
     </t-tabs>
-    <view class="t-tabs-demo__label">导航栏居左</view>
+  </t-demo>
+  <t-demo title="04 导航栏居左" desc="导航栏居左显示">
     <t-tabs value="0" placement="left" bind:change="onTabsChange" bind:click="onTabsChange">
       <t-tab-panel
         wx:for="{{[1,2,3,4,5,6]}}"
@@ -33,7 +37,8 @@
         标签页{{index}}
       </t-tab-panel>
     </t-tabs>
-    <view class="t-tabs-demo__label">禁用标签</view>
+  </t-demo>
+  <t-demo title="05 禁用标签" desc="标签禁用">
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
@@ -45,5 +50,5 @@
       <t-tab-panel label="标签页2" value="1" disabled>标签页2</t-tab-panel>
       <t-tab-panel label="标签页3" value="2">标签页3</t-tab-panel>
     </t-tabs>
-  </view>
+  </t-demo>
 </view>
