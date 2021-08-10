@@ -30,6 +30,26 @@ export default class Tabbar extends SuperComponent {
       value: 0,
       observer: 'updateChildren',
     },
+    border: {
+      type: Boolean,
+      value: true,
+    },
+    fixed: {
+      type: Boolean,
+      value: true,
+    },
+    safeAreaInsetBottom: {
+      type: Boolean,
+      value: true,
+    },
+    color: {
+      type: String,
+      value: 'rgba(0, 0, 0, .6)',
+    },
+    activeColor: {
+      type: String,
+      value: '#0052D9',
+    },
   };
   methods = {
     updateChildren() {
