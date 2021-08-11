@@ -1,1 +1,27 @@
-@import (css) '../common/index.wxss';
+// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@empty-text-color: rgba(0, 0, 0, 0.4);
+
+.@{prefix}-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__content {
+    text-align: center;
+  }
+
+  &__img {
+    width: 100rpx;
+    height: 100rpx;
+  }
+
+  &__description {
+    margin: 48rpx 0 32rpx;
+    text-align: center;
+    color: @empty-text-color;
+    font-size: 28rpx;
+    line-height: 44rpx;
+  }
+}
