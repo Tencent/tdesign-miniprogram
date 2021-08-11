@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-10 14:31:10
+ * updated at 2021-08-11 16:34:26
  * */
 
 export interface TdCheckboxProps {
@@ -13,6 +13,15 @@ export interface TdCheckboxProps {
   align?: {
     type: StringConstructor;
     value?: 'left' | 'right';
+    required?: boolean;
+  };
+  /**
+   * 用于标识是否为「全选选项」
+   * @default false
+   */
+  checkAll?: {
+    type: BooleanConstructor;
+    value?: boolean;
     required?: boolean;
   };
   /**

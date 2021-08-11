@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-10 14:30:58
+ * updated at 2021-08-11 16:34:42
  * */
 
 export interface TdRadioProps {
@@ -21,6 +21,14 @@ export interface TdRadioProps {
   checked?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 单选内容
+   */
+  content?: {
+    type: StringConstructor;
+    value?: string;
     required?: boolean;
   };
   /**
@@ -55,6 +63,14 @@ export interface TdRadioProps {
     type: StringConstructor;
     optionalTypes: Array<ArrayConstructor>;
     value?: 'fill-circle' | 'stroke-line' | Array<string>;
+    required?: boolean;
+  };
+  /**
+   * 主文案
+   */
+  label?: {
+    type: StringConstructor;
+    value?: string;
     required?: boolean;
   };
   /**

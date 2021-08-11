@@ -1,51 +1,50 @@
 <view class="{{classPrefix}} t-class">
   <!-- icon left-->
   <view
-    class="{{classPrefix}}__icon-left t-icon"
+    class="{{classPrefix}}__icon-left t-class-icon"
     data-target="icon"
     bind:tap="onChange"
-    wx:if="{{labelPosition==='right'}}"
+    wx:if="{{align==='left'}}"
   >
-    <view hidden="{{!useIconSlot||!active}}">
-      <slot name="left-icon"></slot>
-    </view>
-    <block wx:if="{{!useIconSlot}}">
+    <block wx:if="{{customIcon}}">
+      <image src="{{active?icon[0]:icon[1]}}" class="{{classPrefix}}-icon__image" />
+    </block>
+    <block wx:else>
       <t-icon
-        name="{{active?'tick_fill':'circle'}}"
-        color="{{active?(disabled?'#DCDCDC':checkedColor):'#DCDCDC'}}"
+        name="{{active?iconVal[0]:iconVal[1]}}"
         class="{{classPrefix}}__btn {{disabled?classPrefix + '-is-disabled' : ''}} {{active?classPrefix + '-is-checked' : ''}}"
       />
     </block>
   </view>
   <!-- 文本内容 -->
   <view class="{{classPrefix}}__content " data-target="text" bind:tap="onChange">
-    <!-- title -->
-    <view class="{{classPrefix}}__title t-label" style="-webkit-line-clamp:{{limitTitleRow}}">
-      {{title}}
+    <!-- 主文本 -->
+    <view class="{{classPrefix}}__title t-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
+      {{label}}
     </view>
     <!-- content -->
     <view
-      class="{{classPrefix}}__description t-description"
-      style="-webkit-line-clamp:{{limitContentRow}}"
+      class="{{classPrefix}}__description t-class-content"
+      style="-webkit-line-clamp:{{maxContentRow}}"
     >
+      {{content}}
       <slot />
     </view>
   </view>
   <!-- icon right -->
   <view
-    class="{{classPrefix}}__icon-right t-icon"
+    class="{{classPrefix}}__icon-right t-class-icon"
     data-target="icon"
     bind:tap="onChange"
-    wx:if="{{labelPosition==='left'}}"
+    wx:if="{{align==='right'}}"
   >
-    <block wx:if="{{useIconSlot&&active}}">
-      <slot name="right-icon"></slot>
+    <block wx:if="{{customIcon}}">
+      <image src="{{active?icon[0]:icon[1]}}" class="{{classPrefix}}-icon__image" />
     </block>
-    <block wx:elif="{{!useIconSlot}}">
+    <block wx:else>
       <t-icon
-        name="{{active?'tick_fill':'circle'}}"
-        color="{{active?(disabled?'#DCDCDC':checkedColor):'#DCDCDC'}}"
-        class="{{classPrefix}}__btn {{disabled?classPrefix + '-is-disabled' : ''}} {{disabled?classPrefix + '-is-checked' : ''}}"
+        name="{{active?iconVal[0]:iconVal[1]}}"
+        class="{{classPrefix}}__btn {{disabled?classPrefix + '-is-disabled' : ''}} {{active?classPrefix + '-is-checked' : ''}}"
       />
     </block>
   </view>

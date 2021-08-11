@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-10 14:30:58
+ * updated at 2021-08-11 16:34:42
  * */
 
 import { TdRadioProps } from './type';
@@ -15,6 +15,10 @@ const props: TdRadioProps = {
   /** 是否选中 */
   checked: {
     type: Boolean,
+  },
+  /** 单选内容 */
+  content: {
+    type: String,
   },
   /** 是否禁用组件内容（content）触发选中 */
   contentDisabled: {
@@ -34,6 +38,10 @@ const props: TdRadioProps = {
     type: String,
     optionalTypes: [Array],
     value: 'fill-circle',
+  },
+  /** 主文案 */
+  label: {
+    type: String,
   },
   /** 内容最大行数限制 */
   maxContentRow: {

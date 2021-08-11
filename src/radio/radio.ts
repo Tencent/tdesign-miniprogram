@@ -1,10 +1,16 @@
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
+import Props from './props';
 const { prefix } = config;
 const name = `${prefix}-radio`;
+
+const iconDefault = {
+  'fill-circle': ['tick_fill', 'circle'],
+  'stroke-line': ['tick', ''],
+};
 @wxComponent()
 export default class PullDownRefresh extends SuperComponent {
-  externalClasses = ['t-class', 't-label', 't-icon', 't-description'];
+  externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
   relations = {
     '../radio-group/radio-group': {
       type: 'ancestor' as 'ancestor',
@@ -13,60 +19,26 @@ export default class PullDownRefresh extends SuperComponent {
   options = {
     multipleSlots: true,
   };
-  properties = {
-    checked: {
-      type: Boolean,
-      value: false,
-      observer(val: boolean) {
-        this.data.active !== val && this.setData({ active: val });
-      },
-    },
-    title: String,
-    name: String,
-    label: String,
-    value: {
-      type: String,
-      optionalTypes: [Number],
-    },
-    // 禁用
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    // 文本区域不能点击
-    contentDisabled: {
-      type: Boolean,
-      value: false,
-    },
-    // 标题限制行数
-    limitTitleRow: {
-      type: Number,
-      value: 1,
-    },
-    // 内容限制行数
-    limitContentRow: {
-      type: Number,
-      value: 2,
-    },
-    // 选中图标颜色
-    checkedColor: {
-      type: String,
-      value: '#0052d9',
-    },
-    // 使用自定义图标
-    useIconSlot: {
-      type: Boolean,
-      value: false,
-    },
-    labelPosition: {
-      type: String,
-      value: 'right',
+  lifetimes = {
+    attached() {
+      const { icon } = this.data;
+      const idArr = Array.isArray(icon);
+      this.setData({
+        active: this.data.checked,
+        customIcon: idArr,
+        iconVal: !idArr ? iconDefault[icon] : [],
+      });
     },
   };
+  properties = Props;
+
   data = {
     active: false,
     classPrefix: name,
     classBasePrefix: prefix,
+    customIcon: false,
+    optionLinked: false,
+    iconVal: [],
   };
   methods = {
     onChange(e) {
@@ -76,12 +48,16 @@ export default class PullDownRefresh extends SuperComponent {
       if (target === 'text' && contentDisabled) {
         return;
       }
-      const { name, active } = this.data;
-      const item = { name, checked: !active };
-      const [parent] = this.getRelationNodes('../radio-group/radio-group') || [];
+      const { value, active, optionLinked } = this.data;
+      const item = { name: value, checked: !active };
+      const [parent] = this.getRelationNodes('../radio-group/radio-group');
       if (parent) {
-        parent.updateValue({ name });
+        parent.updateValue({ name: value });
       } else {
+        if (optionLinked) {
+          this.triggerEvent('toggleGroupSelect', { name: value });
+          return;
+        }
         this.triggerEvent('change', item);
         this.toggle();
       }
@@ -95,6 +71,17 @@ export default class PullDownRefresh extends SuperComponent {
     changeActive(active: boolean) {
       this.setData({
         active,
+      });
+    },
+    setDisabled(disabled: Boolean) {
+      this.setData({
+        disabled: this.data.disabled || disabled,
+      });
+    },
+    // 支持options
+    setOptionLinked(linked: Boolean) {
+      this.setData({
+        optionLinked: linked,
       });
     },
   };

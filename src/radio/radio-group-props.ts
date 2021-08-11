@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-10 14:30:58
+ * updated at 2021-08-11 16:34:42
  * */
 
 import { TdRadioGroupProps } from './type';

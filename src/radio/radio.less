@@ -3,7 +3,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  // align-items: baseline;
   padding: 32rpx 0rpx;
   font-size: 32rpx;
   .limit-title-row {
@@ -19,11 +19,20 @@
     margin-left: auto;
     width: 40rpx;
   }
+  &-icon__image {
+    height: 40rpx;
+    width: 40rpx;
+  }
   &__btn {
     font-size: 40rpx;
+    height: 40rpx;
+    // line-height: 1;
+    line-height: 40rpx;
+    display: block;
   }
   &__content {
     flex: 1;
+    line-height: 48rpx;
   }
   &__title {
     .limit-title-row();
@@ -31,8 +40,12 @@
   &__description {
     .limit-title-row();
   }
+  &-is-checked {
+    color: #0052d9;
+  }
   &-is-disabled {
     cursor: not-allowed;
+    color: #dcdcdc;
   }
   position: relative;
   &::after {

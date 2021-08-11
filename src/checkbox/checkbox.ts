@@ -14,10 +14,8 @@ export default class Checkbox extends SuperComponent {
   options = {
     multipleSlots: true,
   };
-  properties = {
-    ...Props,
-    checkAll: Boolean,
-  };
+  properties = Props;
+
   // 组件的内部数据
   data = {
     classPrefix: currentComponent,
