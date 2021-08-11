@@ -11,7 +11,7 @@
       >
         {{item.label}}
       </view>
-      <!-- <view class="t-tabs__track" style="{{trackStyle}}" /> -->
+      <view class="t-tabs-track" style="{{trackStyle}}" />
     </view>
   </scroll-view>
   <view

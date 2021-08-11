@@ -9,7 +9,7 @@ enum Position {
   bottom = 'bottom',
   left = 'left',
 }
-const trackLineWidth = 88;
+const trackLineWidth = 60;
 // TComponent({
 @wxComponent()
 export default class Tabs extends SuperComponent {
@@ -45,6 +45,11 @@ export default class Tabs extends SuperComponent {
     placement: {
       type: String,
       value: Position.top, // 枚举 'bottom' | 'left' | 'right',
+    },
+
+    showBottomLine: {
+      type: Boolean,
+      value: true,
     },
   };
   data = {
@@ -121,37 +126,40 @@ export default class Tabs extends SuperComponent {
       }
     }
   }
-  // setTrack(color = '#0052d9') {
-  //   const { children } = this;
-  //   if (!children) return;
-  //   const { currentIndex, isScrollX, direction } = this.data;
-  //   if (currentIndex <= -1) return;
-  //   this.gettingBoundingClientRect('.t-tabs-item', true).then((res: any) => {
-  //     const rect = res[currentIndex];
-  //     if (!rect) return;
-  //     let count = 0;
-  //     let distance = 0;
-  //     for (const item of res) {
-  //       if (count < currentIndex) {
-  //         distance += isScrollX ? item.width : item.height;
-  //         count += 1;
-  //       }
-  //     }
-  //     if (isScrollX) {
-  //       distance += (rect.width - trackLineWidth) / 2;
-  //     }
-  //     let trackStyle = `background-color: ${color};
-  //       -webkit-transform: translate${direction}(${distance}px);
-  //       transform: translate${direction}(${distance}px);
-  //       -webkit-transition-duration: ${2}s;
-  //       transition-duration: ${2}s;
-  //     `;
-  //     trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
-  //     this.setData({
-  //       trackStyle,
-  //     });
-  //   });
-  // }
+  setTrack(color = '#0052d9') {
+    if (!this.properties.showBottomLine) return;
+    const { children } = this;
+    if (!children) return;
+    const { currentIndex, isScrollX, direction } = this.data;
+    if (currentIndex <= -1) return;
+    this.gettingBoundingClientRect('.t-tabs-item', true).then((res: any) => {
+      const rect = res[currentIndex];
+      if (!rect) return;
+      let count = 0;
+      let distance = 0;
+      for (const item of res) {
+        if (count < currentIndex) {
+          distance += isScrollX ? item.width : item.height;
+          count += 1;
+        }
+      }
+      console.log('🚀 ~ distance', distance);
+
+      if (isScrollX) {
+        distance += (rect.width - trackLineWidth) / 2;
+      }
+      let trackStyle = `background-color: ${color};
+        -webkit-transform: translate${direction}(${distance}px);
+        transform: translate${direction}(${distance}px);
+        -webkit-transition-duration: ${2}s;
+        transition-duration: ${2}s;
+      `;
+      trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
+      this.setData({
+        trackStyle,
+      });
+    });
+  }
   trigger(eventName: string, index: number) {
     const currentIndex = index || this.data.currentIndex;
     const currentTab = this.data.tabs[currentIndex];

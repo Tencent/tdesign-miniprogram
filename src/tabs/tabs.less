@@ -33,6 +33,12 @@
     // justify-content: space-between;
   }
 
+  &-track {
+    position: absolute;
+    font-weight: 600;
+    z-index: 1;
+  }
+
   &-content-inner {
     position: relative;
     width: 100%;
@@ -62,7 +68,7 @@
       text-align: center;
     }
 
-    .t-tabs__track {
+    .t-tabs-track {
       left: 0;
       bottom: 0;
       height: 4rpx;
@@ -105,7 +111,7 @@
     }
   }
   &.t-is-left {
-    .t-tabs__track {
+    .t-tabs-track {
       left: 0;
       top: 0;
       width: 4rpx;
@@ -114,7 +120,7 @@
   &.t-is-right {
     flex-direction: row-reverse;
 
-    .t-tabs__track {
+    .t-tabs-track {
       right: 0;
       top: 0;
       width: 4rpx;

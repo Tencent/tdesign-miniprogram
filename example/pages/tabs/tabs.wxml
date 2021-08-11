@@ -9,7 +9,7 @@
     </t-tabs>
   </t-demo>
   <t-demo title="02 滚动" desc="超屏滚动">
-    <t-tabs value="1" bind:change="onTabsChange" bind:click="onTabsChange">
+    <t-tabs value="1" bind:change="onTabsChange" bind:click="onTabsChange" showBottomLine="false">
       <t-tab-panel
         wx:for="{{[1,2,3,4,5,6,7,8]}}"
         wx:key="index"
