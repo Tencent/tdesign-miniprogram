@@ -6,6 +6,7 @@
       label="{{item.label||item.text||''}}"
       value="{{item.value||''}}"
       check-all="{{item.checkAll}}"
+      disabled="{{item.disabled}}"
       bind:toggleAll="handleCheckAll"
     ></t-checkbox>
   </block>

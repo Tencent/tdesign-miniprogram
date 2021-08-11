@@ -100,6 +100,9 @@ export default class CheckboxGroup extends SuperComponent {
         this.setData({
           value: items
             .map((item) => {
+              if (item.data.disabled) {
+                return;
+              }
               item.changeActive(checked);
               return checked ? item.data.value : '';
             })
