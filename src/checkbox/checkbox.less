@@ -48,11 +48,21 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+  .image-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
   &__icon-left {
     margin-right: 20rpx;
   }
   &__icon-right {
-    margin-left: auto;
+    .image-center();
+    right: 0px;
+  }
+  &-icon__image {
+    width: 20px;
+    height: 20px;
   }
   &__btn {
     font-size: 40rpx;
@@ -66,8 +76,12 @@
   &__description {
     .limit-title-row();
   }
+  &-is-checked {
+    color: #0052d9;
+  }
   &-is-disabled {
     cursor: not-allowed;
+    color: #dcdcdc;
   }
   position: relative;
   &::after {

@@ -1,10 +1,11 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import Props from './props';
 const { prefix } = config;
 const currentComponent = `${prefix}-checkbox`;
 @wxComponent()
 export default class Checkbox extends SuperComponent {
-  externalClasses = ['t-class', 't-label', 't-icon', 't-description'];
+  externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
   relations = {
     '../checkbox-group/checkbox-group': {
       type: 'ancestor' as 'ancestor',
@@ -13,81 +14,48 @@ export default class Checkbox extends SuperComponent {
   options = {
     multipleSlots: true,
   };
-  // 组件的对外属性
   properties = {
-    // 标题
-    title: String,
-    // 选项值
-    name: String,
-    // 当前选中的值
-    // value: {
-    //   type: String,
-    //   optionalTypes: [Number],
-    //   value: '',
-    // },
-    value: {
-      type: Boolean,
-      value: false,
-    },
-    // 禁用
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    // 文本区域不能点击
-    contentDisabled: {
-      type: Boolean,
-      value: false,
-    },
-    // 标题限制行数
-    limitTitleRow: {
-      type: Number,
-      value: 1,
-    },
-    // 内容限制行数
-    limitContentRow: {
-      type: Number,
-      value: 2,
-    },
-    // 选中图标颜色
-    checkedColor: {
-      type: String,
-      value: '#0052d9',
-    },
-    // 使用自定义图标
-    useIconSlot: {
-      type: Boolean,
-      value: false,
-    },
-    labelPosition: {
-      type: String,
-      value: 'right',
-    },
+    ...Props,
+    checkAll: Boolean,
   };
   // 组件的内部数据
   data = {
     classPrefix: currentComponent,
     classBasePrefix: prefix,
     active: false,
+    halfChecked: false,
+    optionLinked: false,
   };
-
+  lifetimes = {
+    attached() {
+      this.setData({
+        active: this.data.checked,
+        halfChecked: this.data.indeterminate,
+      });
+    },
+  };
   /* Methods */
   methods = {
     onChange(e) {
-      if (this.data.disabled) return;
+      const { disabled, readonly } = this.data;
+      if (disabled || readonly) return;
       const { target } = e.currentTarget.dataset;
       const { contentDisabled } = this.data;
       if (target === 'text' && contentDisabled) {
         return;
       }
-      const { name, active } = this.data;
-      const item = { name, checked: !active };
+      const { value, active, checkAll, optionLinked } = this.data;
+      const item = { name: value, checked: !active };
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
       if (parent) {
         parent.updateValue(item);
       } else {
-        this.triggerEvent('change', item);
-        this.toggle();
+        if (checkAll || optionLinked) {
+          this.triggerEvent('toggleAll', { checked: !active, option: !checkAll, name: value });
+        } else {
+          this.triggerEvent('change', item);
+          this.toggle();
+        }
       }
     },
     toggle() {
@@ -96,9 +64,26 @@ export default class Checkbox extends SuperComponent {
         active: !active,
       });
     },
+    setDisabled(disabled: Boolean) {
+      this.setData({
+        disabled: this.data.disabled || disabled,
+      });
+    },
     changeActive(active: boolean) {
       this.setData({
         active,
+      });
+    },
+    // 半选
+    changeCheckAllHalfStatus(active: boolean) {
+      this.setData({
+        halfChecked: active,
+      });
+    },
+    // group option
+    setOptionLinked(linked: Boolean) {
+      this.setData({
+        optionLinked: linked,
       });
     },
   };

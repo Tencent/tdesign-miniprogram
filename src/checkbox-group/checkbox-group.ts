@@ -1,40 +1,44 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import Props from '../checkbox/checkbox-group-props';
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
+const count = 0;
 @wxComponent()
 export default class CheckboxGroup extends SuperComponent {
   relations = {
     '../checkbox/checkbox': {
       type: 'descendant' as 'descendant',
       linked() {
-        this.updateChildren();
+        // this.updateChildren();
       },
     },
   };
   data = {
     classPrefix: name,
+    checkboxOptions: [],
   };
-  properties = {
-    value: {
-      type: Array,
-      value: [],
-      observer: 'updateChildren',
+  properties = Props;
+  observers = {
+    value() {
+      this.updateChildren();
     },
-    // 可选择最大条数
-    max: {
-      type: Number,
-      value: '',
+  };
+  lifetimes = {
+    attached() {
+      this.handleCreateMulCheckbox();
+      this.handleOptionLinked();
     },
   };
   methods = {
+    // slot插入选项
     updateChildren() {
       const items = this.getRelationNodes('../checkbox/checkbox');
-      const len = items.length;
-      const { value } = this.data;
-      if (len > 0) {
+      const { value, disabled } = this.data;
+      if (items.length > 0) {
         items.forEach((item: any) => {
-          item.changeActive(value.indexOf(item.data.name) > -1);
+          item.changeActive(value.indexOf(item.data.value) > -1);
+          item.setDisabled(disabled);
         });
       }
     },
@@ -55,6 +59,74 @@ export default class CheckboxGroup extends SuperComponent {
       });
       this.updateChildren();
       this.triggerEvent('change', { names: newValue });
+    },
+    // 支持自定义options
+    handleCreateMulCheckbox() {
+      const { options } = this.data;
+      // 数字数组｜字符串数组｜对像数组
+      if (!options?.length || !Array.isArray(options)) {
+        return;
+      }
+      const optionsValue = [];
+      try {
+        options.forEach((element) => {
+          const typeName = typeof element;
+          if (typeName === 'number' || typeName === 'string') {
+            optionsValue.push({
+              label: `${element}`,
+              value: element,
+            });
+          } else if (typeName === 'object') {
+            optionsValue.push({
+              ...element,
+            });
+          }
+        });
+        this.setData({
+          checkboxOptions: optionsValue,
+        });
+      } catch (error) {
+        console.log('error', error);
+      }
+    },
+    // 处理全选
+    handleCheckAll(e) {
+      const { checked, option, name } = e.detail;
+      const items = this.selectAllComponents('.t-checkbox');
+      if (!option) {
+        if (!items?.length) {
+          return;
+        }
+        this.setData({
+          value: items
+            .map((item) => {
+              item.changeActive(checked);
+              return checked ? item.data.value : '';
+            })
+            .filter((val) => val),
+        });
+        this.triggerEvent('change', { names: this.data.value });
+      } else {
+        this.updateValue({ name, checked });
+        const element = items.find((item) => item.data.value === name);
+        element?.changeActive(checked);
+      }
+      this.handleHalfCheck(items.length);
+    },
+    // 处理半选
+    handleHalfCheck(len: number) {
+      const items = this.selectAllComponents('.t-checkbox');
+      const element = items.find((item) => item.data.checkAll);
+      element?.changeCheckAllHalfStatus(this.data.value.length !== len - 1);
+    },
+    // 设置可全选option选项
+    handleOptionLinked() {
+      const items = this.selectAllComponents('.t-checkbox');
+      if (this.data.checkboxOptions.length) {
+        items.forEach((item) => {
+          item.setOptionLinked(true);
+        });
+      }
     },
   };
 }
