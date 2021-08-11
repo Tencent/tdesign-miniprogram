@@ -6,8 +6,8 @@
 @button-default-height: 36px;
 @button-default-line-height: @text-line-height;
 @button-default-font-size: @font-size * 1.4;
-@button-default-color: rgba(0, 0, 0, 0.9);
-@button-default-color--disabled: rgba(0, 0, 0, 0.26);
+@button-default-color: rgba(0, 0, 0, .9);
+@button-default-color--disabled: rgba(0, 0, 0, .26);
 @button-default-bg-color: #ffffff;
 @button-default-border-color: #dcdcdc;
 @button-anti-primary-color: @text-anti-primary-color;
@@ -17,7 +17,7 @@
 @button-danger-color--disabled: @danger-color-disabled;
 @button-ghost-color: #fff;
 @button-ghost-border-color: @button-ghost-color;
-@button-ghost-color--disabled: rgba(255, 255, 255, 0.35);
+@button-ghost-color--disabled: rgba(255, 255, 255, .35);
 @button-text-color: @primary-color;
 @button-text-color--disabled: @primary-color-disabled;
 @button-border-width: 1px;
@@ -43,7 +43,7 @@
   background-image: none;
   border: @button-border-width solid transparent;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all .3s;
   user-select: none;
   touch-action: manipulation;
   font-size: @button-default-font-size;
@@ -69,7 +69,7 @@
   }
 
   &:not(.@{prefix}-is-disabled):active::after {
-    opacity: 0.1;
+    opacity: .1;
   }
 
   &--default {
