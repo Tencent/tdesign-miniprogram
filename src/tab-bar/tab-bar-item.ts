@@ -1,16 +1,27 @@
-import TComponent from '../common/component';
+import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './tab-bar-item-props';
 
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar-item`;
 
-TComponent({
-  relations: {
+@wxComponent()
+export default class TabbarItem extends SuperComponent {
+  relations: RelationsOptions = {
     './tab-bar': {
       type: 'ancestor',
+      linked(parent) {
+        this.setData({
+          parent,
+          currentName: this.properties.name ? this.properties.name : parent.initName(),
+          color: parent.data.color,
+          activeColor: parent.data.activeColor,
+        });
+        parent.updateChildren();
+      },
     },
-  },
-  data: {
+  };
+  data = {
     prefix,
     classPrefix,
     isSpread: false,
@@ -18,28 +29,18 @@ TComponent({
     parent: null,
     hasChildren: false,
     currentName: '',
-  },
-  properties: {
-    name: {
-      type: String,
-      optionalTypes: [Number],
-      value: '',
+    color: '',
+    activeColor: '',
+  };
+  properties = props;
+  observers = {
+    children(value: Record<string, any>[]) {
+      this.setData({
+        hasChildren: value.length > 0,
+      });
     },
-    icon: {
-      type: String,
-      value: '',
-    },
-    children: {
-      type: Array,
-      value: [],
-      observer(value: Array<Object>) {
-        this.setData({
-          hasChildren: value.length > 0,
-        });
-      },
-    },
-  },
-  methods: {
+  };
+  methods = {
     toggle() {
       const { parent, currentName, isSpread, hasChildren } = this.data;
 
@@ -66,29 +67,17 @@ TComponent({
     },
     checkActive(value) {
       const { currentName, hasChildren } = this.data;
+      const isChecked =
+        currentName === value ||
+        (hasChildren && this.properties.children.some((item) => item.name === value));
 
       if (hasChildren && Array.isArray(value)) {
         return value.indexOf(currentName) > -1;
       }
       this.setData({
-        isChecked: currentName === value,
+        isChecked,
+        isSpread: isChecked,
       });
     },
-  },
-  ready() {
-    const [parent] = this.getRelationNodes('./tab-bar') || [];
-
-    if (parent) {
-      if (this.name === undefined) {
-        this.setData({
-          parent,
-          currentName: parent.initName(),
-        });
-      } else {
-        this.setData({
-          parent,
-        });
-      }
-    }
-  },
-});
+  };
+}
