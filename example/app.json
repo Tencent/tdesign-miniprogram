@@ -41,7 +41,6 @@
     "pages/divider/divider",
     "pages/empty/empty",
     "pages/back-top/back-top",
-    "pages/grid-item/grid-item",
     "pages/grid/grid"
   ],
   "usingComponents": {
