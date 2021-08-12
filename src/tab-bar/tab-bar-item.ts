@@ -1,5 +1,6 @@
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './tab-bar-item-props';
 
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar-item`;
@@ -31,32 +32,12 @@ export default class TabbarItem extends SuperComponent {
     color: '',
     activeColor: '',
   };
-  properties = {
-    name: {
-      type: String,
-      optionalTypes: [Number],
-      value: '',
-    },
-    icon: {
-      type: String,
-      value: '',
-    },
-    children: {
-      type: Array,
-      value: [],
-      observer(value: Array<Object>) {
-        this.setData({
-          hasChildren: value.length > 0,
-        });
-      },
-    },
-    badge: {
-      type: String,
-      value: '',
-    },
-    dot: {
-      type: Boolean,
-      value: false,
+  properties = props;
+  observers = {
+    children(value: Record<string, any>[]) {
+      this.setData({
+        hasChildren: value.length > 0,
+      });
     },
   };
   methods = {

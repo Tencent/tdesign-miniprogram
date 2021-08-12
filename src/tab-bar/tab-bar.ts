@@ -1,5 +1,7 @@
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar`;
 
@@ -8,47 +10,16 @@ export default class Tabbar extends SuperComponent {
   relations: RelationsOptions = {
     './tab-bar-item': {
       type: 'descendant',
-      linked() {
-        // this.updateChildren();
-      },
-      // linkChanged() {
-      //   this.updateChildren();
-      // },
-      // unlinked() {
-      //   this.updateChildren();
-      // },
     },
   };
   data = {
     classPrefix,
     defaultNameIndex: -1,
   };
-  properties = {
-    value: {
-      type: Number,
-      optionalTypes: [Array, String],
-      value: 0,
-      observer: 'updateChildren',
-    },
-    border: {
-      type: Boolean,
-      value: true,
-    },
-    fixed: {
-      type: Boolean,
-      value: true,
-    },
-    safeAreaInsetBottom: {
-      type: Boolean,
-      value: true,
-    },
-    color: {
-      type: String,
-      value: 'rgba(0, 0, 0, .6)',
-    },
-    activeColor: {
-      type: String,
-      value: '#0052D9',
+  properties = props;
+  observers = {
+    value() {
+      this.updateChildren();
     },
   };
   methods = {
