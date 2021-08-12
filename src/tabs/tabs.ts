@@ -31,6 +31,7 @@ export default class Tabs extends SuperComponent {
       },
     },
   };
+  externalClasses = ['t-class-tabs', 't-class-item', 't-class-active'];
   properties = {
     value: {
       type: String,
@@ -143,7 +144,6 @@ export default class Tabs extends SuperComponent {
           count += 1;
         }
       }
-      console.log('🚀 ~ distance', distance);
 
       if (isScrollX) {
         distance += (rect.width - trackLineWidth) / 2;

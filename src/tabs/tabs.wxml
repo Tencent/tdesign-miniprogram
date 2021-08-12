@@ -1,12 +1,12 @@
 <wxs src="./tabs.wxs" module="filters" />
-<view class="t-tabs t-is-{{placement}}">
+<view class="t-tabs t-class-tabs t-is-{{placement}}">
   <scroll-view class="t-tabs-scroll" enable-flex scroll-x="{{isScrollX}}" scroll-y="{{isScrollY}}">
     <view class="t-tabs-nav">
       <view
         wx:for="{{tabs}}"
         wx:key="index"
         data-index="{{index}}"
-        class="t-tabs-item {{item.disabled ? 't-tabs-item--disabled' : '' }} {{currentIndex === index ? 't-tabs-is-active' : ''}}"
+        class="t-tabs-item t-class-item {{item.disabled ? 't-tabs-item--disabled' : '' }} {{currentIndex === index ? 't-tabs-is-active t-class-active' : ''}}"
         bind:tap="onTabTap"
       >
         {{item.label}}

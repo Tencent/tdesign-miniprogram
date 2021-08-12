@@ -1,12 +1,12 @@
 // @import (css) '../common/index.wxss';
 .t-tabs {
   display: flex;
+  font-size: 28rpx;
 
   &-item {
     flex: 1;
-    font-size: 28rpx;
     font-weight: 400;
-    min-width: 150rpx;
+    min-width: 162rpx;
 
     &.t-tabs-is-active {
       font-weight: 700;
@@ -52,9 +52,6 @@
   &.t-is-top,
   &.t-is-bottom {
     flex-wrap: wrap;
-    .t-tabs-nav {
-      height: 60rpx;
-    }
 
     .t-tabs-scroll {
       position: relative;
@@ -78,6 +75,11 @@
       width: 100%;
     }
   }
+  &.t-is-top {
+    .t-tabs-scroll {
+      border-bottom: solid 1rpx rgba(0, 0, 0, 0.12);
+    }
+  }
   &.t-is-bottom {
     flex-direction: column-reverse;
   }
@@ -92,21 +94,12 @@
       flex-direction: column;
     }
 
-    // .t-tabs-content {
-    //   flex: 0 1 auto;
-    // }
-
-    // .t-tabs-content-inner--animated {
-    //   flex-direction: column;
-    // }
-
     .t-tabs-item {
       width: 100%;
       text-align: center;
     }
 
     .t-tabs-content {
-      // height: inherit;
       width: 100%;
     }
   }
