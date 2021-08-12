@@ -6,7 +6,7 @@
       <view class="t-radio-demo__demo-title">01 类型</view>
       <view class="t-radio-demo__demo-description">左侧圆形单选框</view>
       <view class="t-radio-demo__demo-content">
-        <t-radio-group bind:change="onChange">
+        <t-radio-group bind:change="onChange" value="radio1">
           <t-radio value="radio1" label="单选" />
           <t-radio value="radio4"
             >单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选</t-radio
@@ -18,7 +18,7 @@
       </view>
       <view class="t-radio-demo__demo-description">右侧圆形单选框</view>
       <view class="t-radio-demo__demo-content">
-        <t-radio-group bind:change="onChange">
+        <t-radio-group bind:change="onChange" value="radio4">
           <t-radio value="radio1" label="单选" align="right" />
           <t-radio value="radio4" align="right"
             >单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选</t-radio

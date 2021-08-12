@@ -1,13 +1,13 @@
 Page({
   data: {
     options: [
+      { label: '全选', checkAll: true },
       'string11',
       // 'string22',
       100,
       // 101,
       { label: 'object1', value: 'value1' },
       // { label: 'object2', value: 'value2' },
-      { label: '全选', checkAll: true },
     ],
     tCellItems: ['a', 'b'],
     activeImage: 'https://0729-75822.gzc.vod.tencent-cloud.com/site_doc/tdesign-logo.png',
