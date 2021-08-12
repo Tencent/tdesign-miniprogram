@@ -10,10 +10,11 @@
         <t-checkbox
           value="checkbox2"
           bind:change="onChange"
+          checked
           label="多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选"
           >多选</t-checkbox
         >
-        <t-checkbox value="checkbox4" bind:change="onChange"
+        <t-checkbox value="checkbox4" bind:change="toggle5" checked="{{check5}}"
           >多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选</t-checkbox
         >
         <t-checkbox value="checkbox5" label="多选" bind:change="onChange">

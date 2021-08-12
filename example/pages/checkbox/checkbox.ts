@@ -13,7 +13,7 @@ Page({
     activeImage: 'https://0729-75822.gzc.vod.tencent-cloud.com/site_doc/tdesign-logo.png',
     inActiveImage: 'https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/logo-icon.png',
     checkboxValues1: ['checkbox1'],
-    check5: false,
+    check5: true,
   },
   handleGroupChange(event) {
     console.log('group', event.detail);

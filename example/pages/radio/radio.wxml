@@ -6,12 +6,21 @@
       <view class="t-radio-demo__demo-title">01 类型</view>
       <view class="t-radio-demo__demo-description">左侧圆形单选框</view>
       <view class="t-radio-demo__demo-content">
-        <t-radio-group options="{{options}}" />
-        <t-radio-group>
+        <t-radio-group bind:change="onChange">
           <t-radio value="radio1" label="单选" />
-          <!-- <t-radio value="radio2" label="单选" />
-          <t-radio value="radio3" label="单选" /> -->
-          <t-radio value="radio4" max-content-row="{{1}}" icon="stroke-line"
+          <t-radio value="radio4"
+            >单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选</t-radio
+          >
+          <t-radio value="radio5" label="单选">
+            单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选选单选单选单选
+          </t-radio>
+        </t-radio-group>
+      </view>
+      <view class="t-radio-demo__demo-description">右侧圆形单选框</view>
+      <view class="t-radio-demo__demo-content">
+        <t-radio-group bind:change="onChange">
+          <t-radio value="radio1" label="单选" align="right" />
+          <t-radio value="radio4" align="right"
             >单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选</t-radio
           >
           <t-radio value="radio5" label="单选" align="right">
@@ -19,117 +28,77 @@
           </t-radio>
         </t-radio-group>
       </view>
-      <!-- <view class="t-radio-demo__demo-description">左侧勾形单选框</view>
+
+      <view class="t-radio-demo__demo-description">左侧勾形单选框</view>
       <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio2">
-          <t-radio value="radio1" label="单选" use-icon-slot>
-            <t-icon value="tick" slot="left-icon" size="xl" />
-          </t-radio>
-          <t-radio value="radio2" label="单选" use-icon-slot>
-            <t-icon value="tick" slot="left-icon" size="xl" />
-          </t-radio>
-          <t-radio value="radio3" label="单选" use-icon-slot>
-            <t-icon value="tick" slot="left-icon" size="xl" />
-          </t-radio>
-          <t-radio value="radio4" limit-content-row="{{1}}" use-icon-slot>
+        <t-radio-group value="radio4" bind:change="onChange">
+          <t-radio value="radio1" label="单选" icon="stroke-line"> </t-radio>
+          <t-radio value="radio4" icon="stroke-line">
             单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选
-            <t-icon value="tick" slot="left-icon" size="xl" />
           </t-radio>
-          <t-radio value="radio5" label="单选" use-icon-slot>
+          <t-radio value="radio5" label="单选" icon="stroke-line">
             单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选选单选单选单选
-            <t-icon value="tick" slot="left-icon" size="xl" />
           </t-radio>
         </t-radio-group>
       </view>
       <view class="t-radio-demo__demo-description">右侧勾形单选框</view>
       <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio2">
-          <t-radio value="radio1" label="单选" use-icon-slot label-position="left">
-            <t-icon value="tick" slot="right-icon" size="xl" />
-          </t-radio>
-          <t-radio value="radio2" label="单选" use-icon-slot label-position="left">
-            <t-icon value="tick" slot="right-icon" size="xl" />
-          </t-radio>
-          <t-radio value="radio3" label="单选" use-icon-slot label-position="left">
-            <t-icon value="tick" slot="right-icon" size="xl" />
-          </t-radio>
-          <t-radio value="radio4" limit-content-row="{{1}}" use-icon-slot label-position="left">
+        <t-radio-group value="radio4" bind:change="onChange">
+          <t-radio value="radio1" label="单选" icon="stroke-line" align="right"> </t-radio>
+          <t-radio value="radio4" icon="stroke-line" align="right">
             单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选
-            <t-icon value="tick" slot="right-icon" size="xl" />
           </t-radio>
-          <t-radio value="radio5" label="单选" use-icon-slot label-position="left">
+          <t-radio value="radio5" label="单选" icon="stroke-line" align="right">
             单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选选单选单选单选
-            <t-icon value="tick" slot="right-icon" size="xl" />
           </t-radio>
         </t-radio-group>
       </view>
-      <view class="t-radio-demo__demo-description">右侧圆形单选框</view>
-      <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio2">
-          <t-radio value="radio1" label="单选" labelPosition="left" />
-          <t-radio value="radio2" label="单选" labelPosition="left" />
-          <t-radio value="radio3" label="单选" labelPosition="left" />
-        </t-radio-group>
+      <view class="t-radio-demo__demo2">
+        <view class="t-radio-demo__demo-title">02 禁用状态 </view>
+        <view class="t-radio-demo__demo-description">单选框禁用状态</view>
+        <view class="t-radio-demo__demo-content">
+          <t-radio-group value="radio2" disabled="{{true}}">
+            <t-radio value="radio1" label="单选" />
+            <t-radio value="radio2" label="单选" />
+          </t-radio-group>
+        </view>
       </view>
-    </view>
-    <view class="t-radio-demo__demo2">
-      <view class="t-radio-demo__demo-title">02 状态</view>
-      <view class="t-radio-demo__demo-description">单选框禁用状态</view>
-      <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio2">
-          <t-radio value="radio1" label="单选" disabled="{{true}}" />
-          <t-radio value="radio2" label="单选" disabled="{{true}}" />
-        </t-radio-group>
+      <view class="t-radio-demo__demo2">
+        <view class="t-radio-demo__demo-title">03 主文案/内容最大行数 </view>
+        <view class="t-radio-demo__demo-description">单选框支持主文案/内容最大行数</view>
+        <view class="t-radio-demo__demo-content">
+          <t-radio-group value="radio2" bind:change="onChange">
+            <t-radio
+              value="radio1"
+              max-label-row="{{1}}"
+              label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选选单选单选单选"
+            />
+            <t-radio
+              value="radio2"
+              max-content-row="{{1}}"
+              label="单选"
+              content="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选选单选单选单选"
+            />
+          </t-radio-group>
+        </view>
       </view>
-      <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio2">
-          <t-radio value="radio1" label="单选" disabled="{{true}}" use-icon-slot>
-            <t-icon value="tick" slot="left-icon" size="xl" />
-          </t-radio>
-          <t-radio value="radio2" label="单选" disabled="{{true}}" use-icon-slot>
-            <t-icon value="tick" slot="left-icon" size="xl" />
-          </t-radio>
-        </t-radio-group>
+      <view class="t-radio-demo__demo2">
+        <view class="t-radio-demo__demo-title">04 文本内容禁用点击 </view>
+        <view class="t-radio-demo__demo-description">单选框文本内容禁用点击</view>
+        <view class="t-radio-demo__demo-content">
+          <t-radio-group value="radio2" bind:change="onChange">
+            <t-radio value="radio1" label="单选" content-disabled />
+            <t-radio value="radio2" label="单选" content-disabled />
+          </t-radio-group>
+        </view>
       </view>
-      <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio1">
-          <t-radio
-            value="radio1"
-            label="单选"
-            disabled="{{true}}"
-            labelPosition="left"
-            use-icon-slot
-          >
-            <t-icon value="tick" slot="right-icon" size="xl" />
-          </t-radio>
-          <t-radio
-            value="radio2"
-            label="单选"
-            disabled="{{true}}"
-            labelPosition="left"
-            use-icon-slot
-          >
-            <t-icon value="tick" size="xl" slot="right-icon" size="xl" />
-          </t-radio>
-        </t-radio-group>
+      <view class="t-radio-demo__demo2">
+        <view class="t-radio-demo__demo-title">05 options创建单选框组 </view>
+        <view class="t-radio-demo__demo-description">支持动态创建多个单选框</view>
+        <view class="t-radio-demo__demo-content">
+          <t-radio-group options="{{options}}" bind:change="onChange" />
+        </view>
       </view>
-      <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio1">
-          <t-radio value="radio1" labelPosition="left" label="单选" disabled="{{true}}" />
-          <t-radio value="radio2" labelPosition="left" label="单选" disabled="{{true}}" />
-        </t-radio-group>
-      </view>
-    </view>
-    <view class="t-radio-demo__demo4">
-      <view class="t-radio-demo__demo-title">04 规格</view>
-      <view class="t-radio-demo__demo-description">单选框尺寸规格</view>
-      <view class="t-radio-demo__demo-content">
-        <t-radio-group value="radio1">
-          <t-radio value="radio1" label="单选H48" />
-          <t-radio value="radio2" label="单选H48" />
-        </t-radio-group>
-      </view>
-    </view> -->
     </view>
   </view>
 </view>

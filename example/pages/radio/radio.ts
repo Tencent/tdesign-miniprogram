@@ -13,7 +13,7 @@ Page({
     ],
   },
   onChange(event) {
-    console.log(event.detail);
+    console.log('radio', event.detail);
   },
   toggle5() {
     this.setData({

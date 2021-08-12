@@ -18,12 +18,6 @@ export default class CheckboxGroup extends SuperComponent {
     checkboxOptions: [],
   };
   properties = Props;
-  // observers = {
-  //   value() {
-  //     console.log('this.data.value', this.data.value);
-  //     this.updateChildren();
-  //   },
-  // };
   lifetimes = {
     attached() {
       this.handleCreateMulCheckbox();
