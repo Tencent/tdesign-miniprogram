@@ -3,14 +3,13 @@ import config from '../common/config';
 import Props from '../checkbox/checkbox-group-props';
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
-const count = 0;
 @wxComponent()
 export default class CheckboxGroup extends SuperComponent {
   relations = {
     '../checkbox/checkbox': {
       type: 'descendant' as 'descendant',
       linked() {
-        // this.updateChildren();
+        this.updateChildren();
       },
     },
   };
@@ -19,11 +18,12 @@ export default class CheckboxGroup extends SuperComponent {
     checkboxOptions: [],
   };
   properties = Props;
-  observers = {
-    value() {
-      this.updateChildren();
-    },
-  };
+  // observers = {
+  //   value() {
+  //     console.log('this.data.value', this.data.value);
+  //     this.updateChildren();
+  //   },
+  // };
   lifetimes = {
     attached() {
       this.handleCreateMulCheckbox();
@@ -120,7 +120,12 @@ export default class CheckboxGroup extends SuperComponent {
     handleHalfCheck(len: number) {
       const items = this.selectAllComponents('.t-checkbox');
       const element = items.find((item) => item.data.checkAll);
-      element?.changeCheckAllHalfStatus(this.data.value.length !== len - 1);
+      if (this.data.value.length) {
+        element?.changeActive(true);
+        element?.changeCheckAllHalfStatus(this.data.value.length !== len - 1);
+      } else {
+        element?.changeActive(false);
+      }
     },
     // 设置可全选option选项
     handleOptionLinked() {

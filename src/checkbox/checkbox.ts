@@ -51,7 +51,7 @@ export default class Checkbox extends SuperComponent {
         if (checkAll || optionLinked) {
           this.triggerEvent('toggleAll', { checked: !active, option: !checkAll, name: value });
         } else {
-          this.triggerEvent('change', item);
+          this.triggerEvent('change', !active);
           this.toggle();
         }
       }
