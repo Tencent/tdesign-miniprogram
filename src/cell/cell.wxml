@@ -5,7 +5,7 @@
   bind:tap="onClick"
 >
   <view class="t-cell__left-wrap t-class-left">
-    <image wx:if="{{ thumb }}" class="t-cell__thumb t-class-thumb" src="{{ thumb }}" />
+    <image wx:if="{{ image }}" class="t-cell__image t-class-image" src="{{ image }}" />
     <slot wx:els name="left-icon" />
   </view>
   <view class="t-cell__title t-class-title">

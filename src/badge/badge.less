@@ -1,17 +1,15 @@
-@import '../common/index.less';
+// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
 
 @badge-text-color: @text-anti-primary-color;
 @badge-color: #e34d59;
 @badge-font-size: @font-size-xs;
-@badge-height: 16px;
+@badge-height: 32rpx;
 @badge-font-weight: normal;
-
-@badge-circle-border-radius: 8px;
-
-@badge-round-border-radius: 4px;
-
-@badge-dot-height: 10px;
-@badge-dot-border-radius: 4px;
+@badge-circle-border-radius: 16rpx;
+@badge-round-border-radius: 8rpx;
+@badge-dot-height: 20rpx;
+@badge-dot-border-radius: 8rpx;
 
 // <name> 替换为组件名
 .@{prefix}-badge {
@@ -25,7 +23,7 @@
     color: @badge-text-color;
     background-color: @badge-color;
     height: @badge-height;
-    padding: 0 4px;
+    padding: 0 8rpx;
     text-align: center;
     line-height: @badge-height;
     font-weight: @badge-font-weight;
@@ -46,7 +44,7 @@
   }
 
   &--small {
-    transform: translate(50%, -50%) scale(0.75);
+    transform: translate(50%, -50%) scale(.75);
   }
 
   &--circle {
