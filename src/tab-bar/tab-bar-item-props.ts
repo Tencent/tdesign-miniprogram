@@ -2,32 +2,25 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-12 15:21:51
+ * updated at 2021-08-13 20:56:20
  * */
 
 import { TdTabBarItemProps } from './type';
 const props: TdTabBarItemProps = {
-  /** null */
-  badge: {
-    type: String,
-    value: '',
+  /** 图标右上角提示信息 */
+  badgeProps: {
+    type: Object,
   },
-  /** null */
-  children: {
-    type: Array,
-  },
-  /** null */
-  dot: {
-    type: Boolean,
-    value: false,
-  },
-  /** null */
+  /** 图标名称 */
   icon: {
     type: String,
-    value: '',
   },
-  /** null */
-  name: {
+  /** 二级菜单 */
+  subTabBar: {
+    type: Array,
+  },
+  /** 标识符 */
+  value: {
     type: String,
     optionalTypes: [Number],
   },

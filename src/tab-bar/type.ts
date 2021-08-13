@@ -2,8 +2,10 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-12 15:21:51
+ * updated at 2021-08-13 20:56:20
  * */
+
+import { TdBadgeProps } from '../badge/type';
 
 export interface TdTabBarProps {
   /**
@@ -56,42 +58,23 @@ export interface TdTabBarProps {
    */
   value?: {
     type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | ArrayConstructor>;
-    value?: string | number | array;
+    optionalTypes: Array<NumberConstructor>;
+    value?: string | number;
     required?: boolean;
   };
 }
 
 export interface TdTabBarItemProps {
   /**
-   * null
-   * @default ''
+   * 图标右上角提示信息
    */
-  badge?: {
-    type: StringConstructor;
-    value?: string;
+  badgeProps?: {
+    type: ObjectConstructor;
+    value?: TdBadgeProps;
     required?: boolean;
   };
   /**
-   * null
-   */
-  children?: {
-    type: ArrayConstructor;
-    value?: array;
-    required?: boolean;
-  };
-  /**
-   * null
-   * @default false
-   */
-  dot?: {
-    type: BooleanConstructor;
-    value?: boolean;
-    required?: boolean;
-  };
-  /**
-   * null
-   * @default ''
+   * 图标名称
    */
   icon?: {
     type: StringConstructor;
@@ -99,12 +82,25 @@ export interface TdTabBarItemProps {
     required?: boolean;
   };
   /**
-   * null
+   * 二级菜单
    */
-  name?: {
+  subTabBar?: {
+    type: ArrayConstructor;
+    value?: SubTabBarItem[];
+    required?: boolean;
+  };
+  /**
+   * 标识符
+   */
+  value?: {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: string | number;
     required?: boolean;
   };
+}
+
+export interface SubTabBarItem {
+  value: string;
+  text: string;
 }

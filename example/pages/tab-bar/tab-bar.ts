@@ -2,12 +2,12 @@
 
 const list_1 = [
   {
-    name: 'label_1',
+    value: 'label_1',
     text: '文字',
     icon: 'user_fill',
   },
   {
-    name: 'label_2',
+    value: 'label_2',
     text: '文字',
     icon: 'user_fill',
   },
@@ -15,7 +15,7 @@ const list_1 = [
 const list_2 = [
   ...list_1,
   {
-    name: 'label_3',
+    value: 'label_3',
     text: '文字',
     icon: 'user_fill',
   },
@@ -23,7 +23,7 @@ const list_2 = [
 const list_3 = [
   ...list_2,
   {
-    name: 'label_4',
+    value: 'label_4',
     text: '文字',
     icon: 'user_fill',
   },
@@ -31,7 +31,7 @@ const list_3 = [
 const list_4 = [
   ...list_3,
   {
-    name: 'label_5',
+    value: 'label_5',
     text: '文字',
     icon: 'user_fill',
   },
@@ -40,19 +40,19 @@ const list_4 = [
 const list_5 = [
   ...list_1,
   {
-    name: 'label_3',
+    value: 'label_3',
     text: '此处展开',
     children: [
       {
-        name: 'spread_1',
+        value: 'spread_1',
         text: '展开项一',
       },
       {
-        name: 'spread_2',
+        value: 'spread_2',
         text: '展开项二',
       },
       {
-        name: 'spread_3',
+        value: 'spread_3',
         text: '展开项三',
       },
     ],

@@ -5,7 +5,18 @@
     bindtap="toggle"
   >
     <view class="{{classPrefix}}__icon" wx:if="{{icon}}">
-      <t-badge wx:if="{{dot || badge}}" dot="{{dot}}" content="{{badge}}" hasSlot>
+      <t-badge
+        wx:if="{{badgeProps.dot || badgeProps.content}}"
+        color="{{badgeProps.color}}"
+        count="{{badgeProps.count}}"
+        max-count="{{badgeProps.maxCount}}"
+        dot="{{badgeProps.dot}}"
+        content="{{badgeProps.content}}"
+        size="{{badgeProps.size}}"
+        showZero="{{badgeProps.showZero}}"
+        offset="{{badgeProps.offset}}"
+        hasSlot
+      >
         <t-icon name="{{icon}}" size="24px"></t-icon>
       </t-badge>
       <t-icon wx:else name="{{icon}}" size="24px"></t-icon>
@@ -19,7 +30,7 @@
   <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}">
     <view
       class="{{classPrefix}}__spread-item"
-      wx:for="{{children}}"
+      wx:for="{{subTabBar}}"
       wx:for-item="child"
       wx:for-index="index"
       wx:key="index"
