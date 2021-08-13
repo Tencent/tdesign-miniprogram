@@ -26,7 +26,7 @@ export default class PullDownRefresh extends SuperComponent {
       this.setData({
         active: this.data.checked,
         customIcon: idArr,
-        iconVal: !idArr ? iconDefault[icon] : [],
+        iconVal: !idArr ? iconDefault[icon] : this.data.icon,
       });
     },
   };
@@ -40,6 +40,7 @@ export default class PullDownRefresh extends SuperComponent {
     optionLinked: false,
     iconVal: [],
   };
+
   methods = {
     onChange(e) {
       if (this.data.disabled) return;

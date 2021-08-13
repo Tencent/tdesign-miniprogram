@@ -138,7 +138,7 @@
           value="checkbox1"
           label="多选H48"
           icon="{{[activeImage,inActiveImage]}}"
-          value="{{check5}}"
+          checked="{{check5}}"
           bindchange="toggle5"
         >
         </t-checkbox>

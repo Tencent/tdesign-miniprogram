@@ -99,6 +99,19 @@
           <t-radio-group options="{{options}}" bind:change="onChange" />
         </view>
       </view>
+      <view class="t-radio-demo__demo2">
+        <view class="t-radio-demo__demo-title">05 自定义图标 </view>
+        <view class="t-radio-demo__demo-description">支持自定义图标的单选框</view>
+        <view class="t-radio-demo__demo-content">
+          <t-radio
+            value="radio1"
+            checked="{{check5}}"
+            label="单选"
+            bind:change="toggle5"
+            icon="{{[activeImage,inActiveImage]}}"
+          />
+        </view>
+      </view>
     </view>
   </view>
 </view>
