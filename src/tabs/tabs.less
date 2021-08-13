@@ -38,19 +38,23 @@
     z-index: 1;
   }
 
-  &-content-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    &--animated {
-      display: flex;
-      transition-property: transform;
-    }
+  .t-tabs-content-inner {
+    display: block;
   }
+
   &.t-is-top,
   &.t-is-bottom {
     flex-wrap: wrap;
+
+    .t-tabs-content-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .t-tabs-content-inner--animated {
+      display: flex;
+      transition-property: transform;
+    }
 
     .t-tabs-scroll {
       position: relative;
@@ -86,6 +90,17 @@
 
   &.t-is-left,
   &.t-is-right {
+    .t-tabs-content-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .t-tabs-content-inner--animated {
+      display: flex;
+      flex-direction: column;
+      transition-property: transform;
+    }
+
     .t-tabs-scroll {
       width: auto;
     }

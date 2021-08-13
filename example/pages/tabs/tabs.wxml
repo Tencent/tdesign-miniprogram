@@ -8,6 +8,7 @@
       bind:click="onTabsChange"
       class="t-tabs-horizontal"
       t-class-item="scroll-item-horizontal"
+      t-class-tabs="tabs-contianer"
     >
       <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
@@ -86,30 +87,38 @@
   </t-demo>
   <t-demo title="03 特殊类型" desc="竖向选项卡">
     <t-tabs
-      value="0"
+      value="{{0}}"
       placement="left"
       bind:change="onTabsChange"
       bind:click="onTabsChange"
       t-class-item="scroll-item-vertical"
-      t-class-tabs="tabs-vertical"
       t-class-active="tabs-vertical-active"
+      t-class-tabs="t-tabs-vertical"
     >
-      <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
-      <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-      <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
-      <t-tab-panel label="标签页四" value="3">标签四内容</t-tab-panel>
-      <t-tab-panel label="标签页五" value="4">标签五内容</t-tab-panel>
+      <t-tab-panel label="标签页一" value="0">
+        <view class="tab-content">标签一内容</view>
+      </t-tab-panel>
+      <t-tab-panel label="标签页二" value="1">
+        <view class="tab-content">标签二内容</view>
+      </t-tab-panel>
+      <t-tab-panel label="标签页三" value="2">
+        <view class="tab-content">标签三内容</view>
+      </t-tab-panel>
+      <t-tab-panel label="标签页四" value="3">
+        <view class="tab-content">标签四内容</view>
+      </t-tab-panel>
+      <t-tab-panel label="标签页五" value="4">
+        <view class="tab-content">标签五内容</view>
+      </t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo title="04 规格" desc="选中态文字尺寸规格">
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      swipeable
-      bind:disabled="onTabsDisabled"
       bind:click="onTabsChange"
       t-class-item="scroll-item-horizontal"
-      class="t-tabs-horizontal"
+      t-class-tabs="t-tabs-horizontal"
       t-class-active="active-item"
     >
       <t-tab-panel label="大尺寸" value="0">标签一内容</t-tab-panel>
@@ -122,11 +131,9 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      swipeable
-      bind:disabled="onTabsDisabled"
       bind:click="onTabsChange"
       t-class-item="scroll-item-horizontal"
-      class="t-tabs-horizontal"
+      t-class-tabs="t-tabs-horizontal"
     >
       <t-tab-panel label="小尺寸" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
