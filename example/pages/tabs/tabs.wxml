@@ -23,7 +23,7 @@
     >
       <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-      <t-tab-panel label="标签页三" value="1">标签三内容</t-tab-panel>
+      <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo>
@@ -36,8 +36,8 @@
     >
       <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-      <t-tab-panel label="标签页三" value="1">标签三内容</t-tab-panel>
-      <t-tab-panel label="标签页四" value="1">标签四内容</t-tab-panel>
+      <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
+      <t-tab-panel label="标签页四" value="3">标签四内容</t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo desc="超过屏幕滚动">
@@ -50,10 +50,10 @@
     >
       <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-      <t-tab-panel label="标签页三" value="1">标签三内容</t-tab-panel>
-      <t-tab-panel label="标签页四" value="1">标签四内容</t-tab-panel>
-      <t-tab-panel label="标签页五" value="1">标签五内容</t-tab-panel>
-      <t-tab-panel label="标签页六" value="1">标签六内容</t-tab-panel>
+      <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
+      <t-tab-panel label="标签页四" value="3">标签四内容</t-tab-panel>
+      <t-tab-panel label="标签页五" value="4">标签五内容</t-tab-panel>
+      <t-tab-panel label="标签页六" value="5">标签六内容</t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo desc="无下划线">
@@ -67,8 +67,8 @@
     >
       <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-      <t-tab-panel label="标签页三" value="1">标签三内容</t-tab-panel>
-      <t-tab-panel label="标签页四" value="1">标签四内容</t-tab-panel>
+      <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
+      <t-tab-panel label="标签页四" value="3">标签四内容</t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo title="02 状态" desc="选项卡状态">
@@ -81,7 +81,7 @@
     >
       <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-      <t-tab-panel label="标签页三" value="1" disabled>标签三内容</t-tab-panel>
+      <t-tab-panel label="标签页三" value="2" disabled>标签三内容</t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo title="03 特殊类型" desc="竖向选项卡">
@@ -91,15 +91,14 @@
       bind:change="onTabsChange"
       bind:click="onTabsChange"
       t-class-item="scroll-item-vertical"
+      t-class-tabs="tabs-vertical"
+      t-class-active="tabs-vertical-active"
     >
-      <t-tab-panel
-        wx:for="{{[1,2,3,4,5,6]}}"
-        wx:key="index"
-        label="标签页{{index}}"
-        value="{{index}}"
-      >
-        标签页{{index}}
-      </t-tab-panel>
+      <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
+      <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
+      <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
+      <t-tab-panel label="标签页四" value="3">标签四内容</t-tab-panel>
+      <t-tab-panel label="标签页五" value="4">标签五内容</t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo title="04 规格" desc="选中态文字尺寸规格">
@@ -116,7 +115,7 @@
       <t-tab-panel label="大尺寸" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
       <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
-      <t-tab-panel label="标签页四" value="2">标签四内容</t-tab-panel>
+      <t-tab-panel label="标签页四" value="3">标签四内容</t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo>
@@ -132,7 +131,7 @@
       <t-tab-panel label="小尺寸" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
       <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
-      <t-tab-panel label="标签页四" value="2">标签四内容</t-tab-panel>
+      <t-tab-panel label="标签页四" value="3">标签四内容</t-tab-panel>
     </t-tabs>
   </t-demo>
 </view>
