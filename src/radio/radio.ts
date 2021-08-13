@@ -59,7 +59,7 @@ export default class PullDownRefresh extends SuperComponent {
           this.triggerEvent('toggleGroupSelect', { name: value });
           return;
         }
-        this.triggerEvent('change', item);
+        this.triggerEvent('change', !active);
         this.toggle();
       }
     },

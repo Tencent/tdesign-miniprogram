@@ -17,9 +17,9 @@ Page({
   onChange(event) {
     console.log('radio', event.detail);
   },
-  toggle5() {
+  toggle5(checked) {
     this.setData({
-      check5: !this.data.check5,
+      check5: checked,
     });
   },
 });
