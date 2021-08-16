@@ -2,15 +2,15 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import imageMogr from './imageMogr';
 
 @wxComponent()
-export default class WrImage extends SuperComponent {
-  externalClasses = ['wr-class'];
+export default class Image extends SuperComponent {
+  externalClasses = ['t-class'];
   options = {
     multipleSlots: true,
   };
   properties = {
     src: {
       type: String,
-      observer(this: WrImage) {
+      observer(this: Image) {
         this.update();
       },
     },
@@ -47,7 +47,7 @@ export default class WrImage extends SuperComponent {
     widthStyle: '', // 自动计算的图片宽度样式（兼容基础库版本2.10.3以下的版本不支持heightFix模式）
   };
   lifetimes = {
-    attached(this: WrImage) {
+    attached(this: Image) {
       this.update();
     },
   };

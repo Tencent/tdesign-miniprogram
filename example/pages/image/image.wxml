@@ -80,7 +80,7 @@
       <view class="gutter-column-24"></view>
       <view class="image-example">
         <t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill" use-loading-slot>
-          <t-loading slot="loading" type="dots" color="#bbb" size="48rpx"></t-loading>
+          <t-loading theme="dots" size="48rpx" slot="loading" loading></t-loading>
         </t-image>
         <view class="text">加载中</view>
       </view>

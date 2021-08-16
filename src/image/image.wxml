@@ -5,18 +5,18 @@
 <!-- 加载中占位 -->
 <view
   wx:if="{{loading && (useLoadingSlot || loadingImage)}}"
-  class="wr-class wr-image wr-image__mask wr-image--loading"
+  class="t-class t-image t-image__mask t-image--loading"
   style="{{width? 'width:' + width + 'rpx;':''}}{{height? 'height:' + height + 'rpx;':''}}; {{imgStyle}}"
 >
   <slot wx:if="{{useLoadingSlot}}" name="loading" />
   <image
     wx:elif="{{utils.include(loadingImage, '/')}}"
-    class="wr-image-common"
+    class="t-image-common"
     src="{{loadingImage}}"
   />
   <t-icon
     wx:elif="{{loadingImage}}"
-    wr-class="wr-image-icon"
+    t-class="t-image-icon"
     name="{{loadingImage}}"
     size="{{width && !noInlineSize ? width*1/2 + 'rpx' : ''}}"
   ></t-icon>
@@ -24,18 +24,18 @@
 <!-- 加载失败占位 -->
 <view
   wx:elif="{{failed && (useLoadFailedSlot || loadFailedImage)}}"
-  class="wr-class wr-image wr-image__mask wr-image--faild"
+  class="t-class t-image t-image__mask t-image--faild"
   style="{{width? 'width:' + width + 'rpx;':''}}{{height? 'height:' + height + 'rpx;':''}}; {{imgStyle}}"
 >
   <slot wx:if="{{useLoadFailedSlot}}" name="failed" />
   <image
     wx:elif="{{utils.include(loadFailedImage, '/')}}"
-    class="wr-image-common"
+    class="t-image-common"
     src="{{loadFailedImage}}"
   />
   <t-icon
     wx:elif="{{loadFailedImage}}"
-    wr-class="wr-image-icon"
+    t-class="t-image-icon"
     name="{{loadFailedImage}}"
     size="{{width && !noInlineSize ? width*1/2 + 'rpx' : ''}}"
   ></t-icon>
@@ -44,7 +44,7 @@
 <image
   id="image"
   hidden="{{(loading && (useLoadingSlot || loadingImage)) || (failed && (useLoadFailedSlot || loadFailedImage))}}"
-  class="wr-class wr-image"
+  class="t-class t-image"
   src="{{url}}"
   style="{{width && !noInlineSize? 'width:' + width + 'rpx;':''}}{{height && !noInlineSize? 'height:' + height + 'rpx;':''}};{{imgStyle}} {{widthStyle}}"
   mode="{{mode}}"

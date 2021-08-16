@@ -1,21 +1,29 @@
-// page {
-//   .theme(background-color, '@white');
-//   .theme(padding-bottom, '@v-space-md');
-// }
+.title {
+  margin: 0rpx 32rpx;
+  padding-top: 48rpx;
+  font-size: 44rpx;
+  font-weight: bold;
+  line-height: 64rpx;
+}
 
-// .desc {
-//   .theme(margin-top, '@v-space-md');
-//   .theme(margin-bottom, '@v-space-xs');
-// }
+.desc {
+  margin-top: 48rpx;
+  margin-bottom: 24rpx;
+  margin-left: 32rpx;
+  margin-right: 32rpx;
+  color: #999;
+  font-size: 26rpx;
+  line-height: 36rpx;
+}
 
 .row {
   display: flex;
   align-items: flex-end;
 }
 
-// .gutter-row {
-//   .theme(height, '@v-space-sm');
-// }
+.gutter-row {
+  height: 32rpx;
+}
 
 .gutter-column-24 {
   width: 24rpx * 2;
@@ -32,93 +40,71 @@
   align-items: center;
   flex-direction: column;
 
-  // .text {
-  //   margin-top: 8rpx * 2;
-  //   .theme(font-size, '@font-size-caption-3');
-  //   .theme(color, '@color-text-caption');
-  // }
+  .text {
+    margin-top: 8rpx * 2;
+    font-size: 20rpx;
+    color: #999;
+  }
 }
 
-// .custom-loading-failed {
-//   .theme(font-size, '@font-size-caption-3');
-//   .theme(color, '@color-text-caption');
-// }
-
-@keyframes dotting {
-  0% {
-    background-color: rgba(187, 187, 187, .8);
-  }
-
-  1% {
-    background-color: rgba(187, 187, 187, .4);
-  }
-
-  33% {
-    background-color: rgba(187, 187, 187, .4);
-  }
-
-  34% {
-    background-color: rgba(187, 187, 187, .8);
-  }
-
-  100% {
-    background-color: rgba(187, 187, 187, .8);
-  }
+.custom-loading-failed {
+  font-size: 20rpx;
+  color: #999;
 }
 
 // 以下覆盖组件内部样式
 page {
-  .wr-image {
+  .t-image {
     border-radius: 0;
     overflow: hidden;
   }
 
-  .wr-image__mask {
+  .t-image__mask {
     background-color: #f2f2f2;
   }
 
-  .radius-l .wr-image {
-    // .theme(border-radius, '@radius-md');
+  .radius-l .t-image {
+    border-radius: 16rpx;
   }
 
-  .radius-m .wr-image {
-    // .theme(border-radius, '@radius-sm');
+  .radius-m .t-image {
+    border-radius: 8rpx;
   }
 
-  .radius-s .wr-image {
-    // .theme(border-radius, '@radius-xs');
+  .radius-s .t-image {
+    border-radius: 4rpx;
   }
 
-  .radius-round .wr-image {
+  .radius-round .t-image {
     border-radius: 999px;
   }
 
-  .size-xl .wr-image {
+  .size-xl .t-image {
     width: 120rpx * 2;
     height: 120rpx * 2;
   }
 
-  .size-l .wr-image {
+  .size-l .t-image {
     width: 72rpx * 2;
     height: 72rpx * 2;
   }
 
-  .size-m .wr-image {
+  .size-m .t-image {
     width: 56rpx * 2;
     height: 56rpx * 2;
   }
 
-  .size-s .wr-image {
+  .size-s .t-image {
     width: 48rpx * 2;
     height: 48rpx * 2;
   }
 
-  .size-xs .wr-image {
+  .size-xs .t-image {
     width: 32rpx * 2;
     height: 32rpx * 2;
   }
 
-  .size-xss .wr-image {
+  .size-xss .t-image {
     width: 24rpx * 2;
     height: 24rpx * 2;
   }
