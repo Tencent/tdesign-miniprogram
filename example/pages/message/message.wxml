@@ -3,11 +3,8 @@
   <view class="demo-desc">
     用于页面消息通知提示，具有成功提示、提醒、警示等功能，通常在顶部出现，可以自动消失或点击关闭
   </view>
-
-  <view class="demo-section">
-    <view class="demo-section__title">01 类型</view>
+  <t-demo title="01 类型">
     <view class="demo-section__desc">弹窗内容为存文本、标题和副标题、带输入框</view>
-
     <view class="button-group">
       <view class="button-group-item">
         <t-button size="large" bindtap="showMessage" data-type="text">纯文字通知</t-button>
@@ -25,8 +22,8 @@
         <t-button size="large" bindtap="showMessage" bin data-type="btn">带按钮通知</t-button>
       </view>
     </view>
-
-    <view class="demo-section__title">02 状态</view>
+  </t-demo>
+  <t-demo title="02 状态">
     <view class="demo-section__desc">弹窗内容为存文本、标题和副标题、带输入框</view>
     <view class="button-group">
       <view class="button-group-item">
@@ -42,11 +39,6 @@
         <t-button size="large" bindtap="showMessage" data-type="error">错误提示通知</t-button>
       </view>
     </view>
-
-    <t-message
-      id="t-message"
-      bind:actionBtnClick="clickMessageBtnHadnle"
-      t-class="t-class-content"
-    />
-  </view>
+  </t-demo>
+  <t-message id="t-message" bind:actionBtnClick="clickMessageBtnHadnle" t-class="t-class-content" />
 </view>

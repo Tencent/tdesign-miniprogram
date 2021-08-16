@@ -39,7 +39,6 @@ Page({
           icon: 'sound_fill',
           content: '这是一条滚动的通知信息',
           duration: -1,
-          closeBtn: true,
         });
         break;
       }
