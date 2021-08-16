@@ -10,9 +10,6 @@ export default class Image extends SuperComponent {
   properties = {
     src: {
       type: String,
-      observer(this: Image) {
-        this.update();
-      },
     },
     imgStyle: {
       type: String,
@@ -48,6 +45,11 @@ export default class Image extends SuperComponent {
   };
   lifetimes = {
     attached(this: Image) {
+      this.update();
+    },
+  };
+  observers = {
+    src() {
       this.update();
     },
   };
