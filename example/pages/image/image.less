@@ -1,0 +1,125 @@
+// page {
+//   .theme(background-color, '@white');
+//   .theme(padding-bottom, '@v-space-md');
+// }
+
+// .desc {
+//   .theme(margin-top, '@v-space-md');
+//   .theme(margin-bottom, '@v-space-xs');
+// }
+
+.row {
+  display: flex;
+  align-items: flex-end;
+}
+
+// .gutter-row {
+//   .theme(height, '@v-space-sm');
+// }
+
+.gutter-column-24 {
+  width: 24rpx * 2;
+  display: inline-block;
+}
+
+.gutter-column-32 {
+  width: 32rpx * 2;
+  display: inline-block;
+}
+
+.image-example {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  // .text {
+  //   margin-top: 8rpx * 2;
+  //   .theme(font-size, '@font-size-caption-3');
+  //   .theme(color, '@color-text-caption');
+  // }
+}
+
+// .custom-loading-failed {
+//   .theme(font-size, '@font-size-caption-3');
+//   .theme(color, '@color-text-caption');
+// }
+
+@keyframes dotting {
+  0% {
+    background-color: rgba(187, 187, 187, .8);
+  }
+
+  1% {
+    background-color: rgba(187, 187, 187, .4);
+  }
+
+  33% {
+    background-color: rgba(187, 187, 187, .4);
+  }
+
+  34% {
+    background-color: rgba(187, 187, 187, .8);
+  }
+
+  100% {
+    background-color: rgba(187, 187, 187, .8);
+  }
+}
+
+// 以下覆盖组件内部样式
+page {
+  .wr-image {
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .wr-image__mask {
+    background-color: #f2f2f2;
+  }
+
+  .radius-l .wr-image {
+    // .theme(border-radius, '@radius-md');
+  }
+
+  .radius-m .wr-image {
+    // .theme(border-radius, '@radius-sm');
+  }
+
+  .radius-s .wr-image {
+    // .theme(border-radius, '@radius-xs');
+  }
+
+  .radius-round .wr-image {
+    border-radius: 999px;
+  }
+
+  .size-xl .wr-image {
+    width: 120rpx * 2;
+    height: 120rpx * 2;
+  }
+
+  .size-l .wr-image {
+    width: 72rpx * 2;
+    height: 72rpx * 2;
+  }
+
+  .size-m .wr-image {
+    width: 56rpx * 2;
+    height: 56rpx * 2;
+  }
+
+  .size-s .wr-image {
+    width: 48rpx * 2;
+    height: 48rpx * 2;
+  }
+
+  .size-xs .wr-image {
+    width: 32rpx * 2;
+    height: 32rpx * 2;
+  }
+
+  .size-xss .wr-image {
+    width: 24rpx * 2;
+    height: 24rpx * 2;
+  }
+}

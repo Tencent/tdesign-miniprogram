@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../../common/src/index';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import imageMogr from './imageMogr';
 
 @wxComponent()

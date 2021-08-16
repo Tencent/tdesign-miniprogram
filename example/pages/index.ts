@@ -28,6 +28,10 @@ Page({
             name: 'Empty',
             path: '/pages/empty/empty',
           },
+          {
+            name: 'Image',
+            path: '/pages/image/image',
+          },
         ],
       },
       {

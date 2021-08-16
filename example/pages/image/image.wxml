@@ -1,0 +1,157 @@
+<view class="title">Image 图片</view>
+<view class="desc">图片主要为上下左右居中裁切、拉伸、平铺等方式</view>
+<view class="gutter" />
+<t-demo title="01 基本用法" desc="图片基础展示为上下左右居中 裁切展示">
+  <view class="desc">
+    <view class="row">
+      <view class="image-example">
+        <t-image
+          class="size-l radius-m"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">裁切</view>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="image-example">
+        <t-image
+          class="size-l radius-m"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+          mode="heightFix"
+        ></t-image>
+        <view class="text">适应高</view>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="image-example">
+        <t-image
+          class="size-l radius-m"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+          mode="scaleToFill"
+        ></t-image>
+        <view class="text">拉伸</view>
+      </view>
+    </view>
+  </view>
+</t-demo>
+<t-demo title="02 类型" desc="圆角样式">
+  <view class="desc">
+    <view class="row">
+      <view class="image-example">
+        <t-image
+          class="size-l"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">方形</view>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="image-example">
+        <t-image
+          class="size-l radius-m"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">圆角方形</view>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="image-example">
+        <t-image
+          class="size-l radius-round"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">圆形</view>
+      </view>
+    </view>
+  </view>
+</t-demo>
+<t-demo title="03 状态" desc="空白图、加载中状态">
+  <view class="desc">
+    <view class="row">
+      <view class="image-example">
+        <t-image
+          class="size-l radius-m"
+          src=""
+          mode="aspectFill"
+          load-failed-image="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/empty.png"
+        ></t-image>
+        <view class="text">空白图</view>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="image-example">
+        <t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill" use-loading-slot>
+          <t-loading slot="loading" type="dots" color="#bbb" size="48rpx"></t-loading>
+        </t-image>
+        <view class="text">加载中</view>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="image-example">
+        <t-image class="size-l radius-m" src="" mode="aspectFill" use-load-failed-slot>
+          <view slot="failed" class="custom-loading-failed">加载失败</view>
+        </t-image>
+        <view class="text">加载失败</view>
+      </view>
+    </view>
+  </view>
+</t-demo>
+<t-demo title="04 规格" desc="常用图片尺寸">
+  <view class="desc">
+    <view class="row">
+      <view class="image-example">
+        <t-image
+          class="size-m radius-m"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">图片 56</view>
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="image-example">
+        <t-image
+          class="size-s radius-m"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">图片 48</view>
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="image-example">
+        <t-image
+          class="size-xs radius-m"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">图片 32</view>
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="image-example">
+        <t-image
+          class="size-xss radius-s"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">图片 24</view>
+      </view>
+    </view>
+    <view class="gutter-row"></view>
+    <view class="row">
+      <view class="image-example">
+        <t-image
+          class="size-xl radius-l"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">图片 120</view>
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="image-example">
+        <t-image
+          class="size-l radius-m"
+          src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+          mode="aspectFill"
+        ></t-image>
+        <view class="text">图片 72</view>
+      </view>
+    </view>
+  </view>
+</t-demo>
