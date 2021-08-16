@@ -14,12 +14,14 @@ export default class Message extends SuperComponent {
     't-class-action',
     't-class-close-btn',
   ];
+
   options = {
     styleIsolation: 'apply-shared' as const,
     multipleSlots: true,
   };
   // 组件的对外属性
   properties: MessageProps = { ...props } as unknown as MessageProps;
+
   // 组件的内部数据
   data = {
     classPrefix: name,
@@ -119,7 +121,6 @@ export default class Message extends SuperComponent {
   /** 检查是否需要开启一个新的动画循环 */
   checkAnimation() {
     const speeding = this.properties.marquee.speed;
-    const delayTime = this.properties.marquee.delay;
 
     if (!this.properties.marquee) {
       return;
