@@ -1,83 +1,46 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import { MessageType, MessageProps } from './message.interface';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
 @wxComponent()
 export default class Message extends SuperComponent {
-  externalClasses = ['t-class', 't-class-content'];
+  externalClasses = [
+    't-class',
+    't-class-content',
+    't-class-icon',
+    't-class-action',
+    't-class-close-btn',
+  ];
   options = {
     styleIsolation: 'apply-shared' as const,
     multipleSlots: true,
   };
   // 组件的对外属性
-  properties: MessageProps = {
-    visible: {
-      type: Boolean,
-      value: false,
-    },
-    theme: {
-      type: String,
-      value: MessageType.info, //  'info' | 'success' | 'warning' | 'error'|
-    },
-    icon: {
-      type: String,
-      optionalTypes: [Boolean],
-      value: true,
-    },
-    closeBtn: {
-      type: Boolean,
-      value: false,
-    },
-    action: {
-      type: String,
-      value: '',
-    },
-    content: {
-      type: String,
-      value: 'info',
-    },
-    duration: {
-      type: Number,
-      value: 3000,
-    },
-    marquee: {
-      type: Object,
-      optionalTypes: [Boolean],
-      value: false,
-      observer(val: Object) {
-        if (JSON.stringify(val) === '{}') {
-          this.setData({
-            marquee: {
-              loop: -1,
-              delay: 1,
-              speed: 50,
-            },
-          });
-        }
-      },
-    },
-    offset: {
-      type: Object,
-      value: {
-        top: 6,
-        right: 16,
-        left: 16,
-      },
-    },
-    zIndex: {
-      type: Number,
-      value: 5000,
-    },
-  } as unknown as MessageProps;
+  properties: MessageProps = { ...props } as unknown as MessageProps;
   // 组件的内部数据
   data = {
     classPrefix: name,
     visible: false,
+    loop: -1,
     animation: [],
     local: {
       icon: '',
+    },
+  };
+  observers = {
+    marquee(val) {
+      if (JSON.stringify(val) === '{}') {
+        this.setData({
+          marquee: {
+            speed: 50,
+            loop: -1,
+            delay: 5000,
+          },
+        });
+      }
     },
   };
 
@@ -162,6 +125,15 @@ export default class Message extends SuperComponent {
       return;
     }
 
+    if (this.data.loop > 0) {
+      this.data.loop = this.data.loop - 1;
+    } else if (this.data.loop < 0) {
+    } else {
+      // 动画回到初始位置
+      this.setData({ animation: this.resetAnimation.translateX(0).step().export() });
+      return;
+    }
+
     if (this.nextAnimationContext) {
       this.clearMessageAnimation();
     }
@@ -221,7 +193,7 @@ export default class Message extends SuperComponent {
 
   show() {
     const { duration, icon } = this.properties;
-    this.setData({ visible: true });
+    this.setData({ visible: true, loop: this.properties.marquee.loop });
     this.setIcon(icon);
     this.checkAnimation();
     if (duration && duration > 0) {

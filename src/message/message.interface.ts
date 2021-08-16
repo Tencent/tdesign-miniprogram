@@ -5,12 +5,6 @@ export enum MessageType {
   error = 'error',
 }
 
-export interface MessageOffset {
-  top?: number | string;
-  right?: number | string;
-  left?: number | string;
-}
-
 export interface MessageMarquee {
   speed?: number;
   loop?: number;
@@ -25,7 +19,7 @@ export interface MessageProps {
   closeBtn?: boolean;
   action?: string;
   marquee?: MessageMarquee;
-  offset?: MessageOffset;
+  offset?: object;
   duration?: number;
   zIndex?: number;
 }

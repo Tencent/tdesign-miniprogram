@@ -12,6 +12,9 @@
 
 .@{prefix}-message {
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: @message-align;
   align-items: center;
@@ -22,7 +25,7 @@
   border-radius: @message-border-radius;
   font-size: @message-font-size;
   background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .2);
 
   &--text {
     display: inline-block;
@@ -33,6 +36,7 @@
     overflow-x: hidden;
     text-overflow: ellipsis;
   }
+
   &--text-nowrap {
     word-break: keep-all;
     white-space: nowrap;

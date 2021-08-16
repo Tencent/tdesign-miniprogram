@@ -6,6 +6,7 @@ Page({
     switch (type) {
       case 'text': {
         Message.info({
+          offset: [20, 32],
           duration: 5000,
           icon: false,
           content: '这是一条纯文字的消息通知 5s消失',
@@ -14,6 +15,7 @@ Page({
       }
       case 'icon': {
         Message.info({
+          offset: ['20rpx', '32rpx'],
           duration: 5000,
           icon: 'sound_fill',
           content: '这是一条带图标的消息通知 5s消失',
@@ -22,6 +24,7 @@ Page({
       }
       case 'closeable': {
         Message.info({
+          offset: ['20rpx', 32],
           icon: false,
           content: '这是一条带关闭的消息通知 常驻可关闭',
           duration: -1,
@@ -31,7 +34,8 @@ Page({
       }
       case 'scroll': {
         Message.info({
-          marquee: { speed: 50, loop: 2, delay: 5000 },
+          offset: [20, 32],
+          marquee: { speed: 50, loop: -1, delay: 5000 },
           icon: 'sound_fill',
           content: '这是一条滚动的通知信息',
           duration: -1,
@@ -41,6 +45,7 @@ Page({
       }
       case 'btn': {
         Message.info({
+          offset: [20, 32],
           icon: false,
           content: '这是一条带操作的消息通知',
           duration: -1,
@@ -50,13 +55,16 @@ Page({
       }
       case 'info': {
         Message.info({
+          offset: [20, 32],
+          marquee: { speed: 50, loop: 2, delay: 5000 },
           duration: -1,
-          content: '这是一条普通的通知信息',
+          content: '这是一条普通的通知信息,带滚动2次',
         });
         break;
       }
       case 'warning': {
         Message.warning({
+          offset: [20, 32],
           duration: -1,
           content: '这是一条需要用户关注到的警示通知',
         });
@@ -64,6 +72,7 @@ Page({
       }
       case 'success': {
         Message.success({
+          offset: [20, 32],
           duration: -1,
           content: '这是一条需要成功的提示消息',
         });
@@ -71,6 +80,7 @@ Page({
       }
       case 'error': {
         Message.error({
+          offset: [20, 32],
           duration: -1,
           content: '这是一条错误提示通知',
         });
