@@ -1,9 +1,6 @@
-<view class="{{ classPrefix }} {{ fixedClass }}" style="{{ boxStyle }}">
+<view class="{{ classPrefix }} {{ fixedClass }} {{visibleClass}}" style="{{ boxStyle }}">
   <view wx:if="{{fixed}}" class="{{ classPrefix }}__placeholder {{systemClass}}"></view>
-  <view
-    class="{{ classPrefix }}__content {{systemClass}} {{visibleClass}}"
-    style="{{ contentStyle }}"
-  >
+  <view class="{{ classPrefix }}__content {{systemClass}}" style="{{ contentStyle }}">
     <view class="{{ classPrefix }}__left">
       <block wx:if="{{_back && _home}}">
         <view class="{{ classPrefix }}__capsule" style="{{capsuleStyle}}">

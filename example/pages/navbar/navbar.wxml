@@ -54,8 +54,14 @@
 </block>
 
 <block wx:if="{{demoType === 'slot-center'}}">
-  <t-navbar title="标题位置插槽" visible="{{visible}}" fixed="{{fixed}}" title="">
+  <t-navbar title="" visible="{{visible}}" fixed="{{fixed}}">
     <view slot="center" class="slot-center">标题位置</view>
+  </t-navbar>
+</block>
+
+<block wx:if="{{demoType === 'slot-right'}}">
+  <t-navbar title="标题" visible="{{visible}}" fixed="{{fixed}}">
+    <view slot="right" class="slot-right">右侧位置</view>
   </t-navbar>
 </block>
 

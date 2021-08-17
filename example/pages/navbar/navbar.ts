@@ -29,7 +29,7 @@ Page({
   data: {
     fixed: true,
     visible: true,
-    demoType: 'slot-left',
+    demoType: 'base-default',
     showBack: '',
     showHome: '',
 
@@ -110,6 +110,10 @@ Page({
           {
             type: 'slot-center',
             text: '中间位置插槽，需title设置为空字符串',
+          },
+          {
+            type: 'slot-right',
+            text: '右边位置插槽',
           },
         ],
       },

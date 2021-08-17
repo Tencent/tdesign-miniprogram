@@ -11,6 +11,7 @@ enum ButtonShow {
 
 @wxComponent()
 export default class Navbar extends SuperComponent {
+  timer = null;
   options = {
     multipleSlots: true,
   };
@@ -99,9 +100,20 @@ export default class Navbar extends SuperComponent {
   observers = {
     visible(this: Navbar, visible) {
       const { animated } = this.properties;
+      const visibleClass = `${name}${visible ? '--visible' : '--hide'}`;
       this.setData({
-        visibleClass: `${name}${visible ? '--visible' : '--hide'}${animated ? '-animated' : ''}`,
+        visibleClass: `${visibleClass}${animated ? '-animated' : ''}`,
       });
+      if (this.timer) {
+        clearTimeout(this.timer);
+      }
+      if (animated) {
+        this.timer = setTimeout(() => {
+          this.setData({
+            visibleClass,
+          });
+        }, 300);
+      }
     },
     fixed(this: Navbar, fixed) {
       this.setData({
