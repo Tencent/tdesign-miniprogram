@@ -30,8 +30,8 @@ Page({
     fixed: true,
     visible: true,
     demoType: 'base-default',
-    showBack: '',
-    showHome: '',
+    showBack: 'auto',
+    showHome: 'auto',
 
     operList: [
       {
@@ -112,8 +112,8 @@ Page({
             text: '中间位置插槽，需title设置为空字符串',
           },
           {
-            type: 'slot-right',
-            text: '右边位置插槽',
+            type: 'slot-custom',
+            text: '通栏插槽，最大自定义空间',
           },
         ],
       },

@@ -49,7 +49,7 @@
     showBack="none"
     showHome="none"
   >
-    <view slot="left" class="slot-left">左侧胶囊</view>
+    <view slot="left" class="slot-left">左侧胶囊插槽</view>
   </t-navbar>
 </block>
 
@@ -59,9 +59,9 @@
   </t-navbar>
 </block>
 
-<block wx:if="{{demoType === 'slot-right'}}">
-  <t-navbar title="标题" visible="{{visible}}" fixed="{{fixed}}">
-    <view slot="right" class="slot-right">右侧位置</view>
+<block wx:if="{{demoType === 'slot-custom'}}">
+  <t-navbar visible="{{visible}}" fixed="{{fixed}}" custom-slot="custom">
+    <view slot="custom" class="slot-custom">除右边系统胶囊，这里整个位置都是你的...</view>
   </t-navbar>
 </block>
 

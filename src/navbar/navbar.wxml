@@ -1,39 +1,39 @@
-<view class="{{ classPrefix }} {{ fixedClass }} {{visibleClass}}" style="{{ boxStyle }}">
-  <view wx:if="{{fixed}}" class="{{ classPrefix }}__placeholder {{systemClass}}"></view>
-  <view class="{{ classPrefix }}__content {{systemClass}}" style="{{ contentStyle }}">
-    <view class="{{ classPrefix }}__left">
-      <block wx:if="{{_back && _home}}">
-        <view class="{{ classPrefix }}__capsule" style="{{capsuleStyle}}">
-          <view class="{{ classPrefix }}__btn" bindtap="goBack">
-            <t-icon name="{{ backIcon }}" size="{{capsuleIconSize}}" />
+<view class="{{classPrefix}} {{fixedClass}} {{visibleClass}}" style="{{boxStyle}}">
+  <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder"></view>
+  <view class="{{classPrefix}}__content" style="{{contentStyle}}">
+    <slot wx:if="{{customSlot}}" name="{{customSlot}}"></slot>
+    <block wx:else>
+      <view class="{{classPrefix}}__left">
+        <block wx:if="{{_back && _home}}">
+          <view class="{{classPrefix}}__capsule" style="{{capsuleStyle}}">
+            <view class="{{classPrefix}}__btn" bindtap="goBack">
+              <t-icon name="{{backIcon}}" size="{{capsuleIconSize}}" />
+            </view>
+            <view class="{{classPrefix}}__btn" bindtap="goHome">
+              <t-icon name="{{homeIcon}}" size="{{capsuleIconSize}}" />
+            </view>
           </view>
-          <view class="{{ classPrefix }}__btn" bindtap="goHome">
-            <t-icon name="{{ homeIcon }}" size="{{capsuleIconSize}}" />
+        </block>
+        <block wx:else>
+          <view wx:if="{{_back}}" class="{{classPrefix}}__btn" bindtap="goBack">
+            <t-icon name="{{backIcon}}" size="{{singleIconSize}}" />
           </view>
-        </view>
-      </block>
-      <block wx:else>
-        <view wx:if="{{_back}}" class="{{ classPrefix }}__btn" bindtap="goBack">
-          <t-icon name="{{ backIcon }}" size="{{singleIconSize}}" />
-        </view>
-        <view wx:if="{{_home}}" class="{{ classPrefix }}__btn" bindtap="goHome">
-          <t-icon name="{{ homeIcon }}" size="{{singleIconSize}}" />
-        </view>
-      </block>
-      <block wx:if="{{showBack === 'none' && showHome === 'none'}}">
-        <slot name="left"></slot>
-      </block>
-    </view>
-    <view class="{{ classPrefix }}__center">
-      <block wx:if="{{title}}">
-        <text class="{{ classPrefix }}__center_title" style="{{titleStyle}}">{{title}}</text>
-      </block>
-      <block wx:else>
-        <slot name="center"></slot>
-      </block>
-    </view>
-    <view class="{{ classPrefix }}__right">
-      <slot name="right"></slot>
-    </view>
+          <view wx:if="{{_home}}" class="{{classPrefix}}__btn" bindtap="goHome">
+            <t-icon name="{{homeIcon}}" size="{{singleIconSize}}" />
+          </view>
+        </block>
+        <block wx:if="{{showBack === 'none' && showHome === 'none'}}">
+          <slot name="left"></slot>
+        </block>
+      </view>
+      <view class="{{classPrefix}}__center">
+        <block wx:if="{{title}}">
+          <text class="{{classPrefix}}__center_title" style="{{titleStyle}}">{{title}}</text>
+        </block>
+        <block wx:else>
+          <slot name="center"></slot>
+        </block>
+      </view>
+    </block>
   </view>
 </view>

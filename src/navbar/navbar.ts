@@ -95,6 +95,11 @@ export default class Navbar extends SuperComponent {
       type: String,
       value: '',
     },
+    // 通栏自定义插槽
+    customSlot: {
+      type: String,
+      value: '',
+    },
   };
 
   observers = {
@@ -147,7 +152,6 @@ export default class Navbar extends SuperComponent {
     classPrefix: name,
     fixedClass: `${name}--fixed`,
 
-    systemClass: '',
     titleStyle: '',
     contentStyle: '',
     boxStyle: '',
@@ -170,16 +174,19 @@ export default class Navbar extends SuperComponent {
     wx.getSystemInfo({
       success: (res) => {
         const ios = !!(res.system.toLowerCase().search('ios') + 1);
+        const navbarHeight = ios ? 44 : 48;
         const boxStyleList = [];
-        if (res?.statusBarHeight) {
-          boxStyleList.push(`--status-bar-height:${res.statusBarHeight}px;`);
-        }
+        boxStyleList.push(
+          `--narbar-padding-top:${(rect.bottom + rect.top) / 2 - navbarHeight / 2}px;`,
+        );
         if (rect && res?.windowWidth) {
           boxStyleList.push(`--navbar-right:${res.windowWidth - rect.left}px;`); // 导航栏右侧小程序胶囊按钮宽度
         }
+        boxStyleList.push(`--capsule-height:${rect.height}px;`); // 胶囊高度
+        boxStyleList.push(`--capsule-wight:${rect.width}px;`); // 胶囊宽度
+        boxStyleList.push(`--navbar-height:${navbarHeight}px;`); // navbar高度
         this.setData({
           ios,
-          systemClass: `${name}--${ios ? 'ios' : 'android'}`,
           boxStyle: boxStyleList.join(';'),
         });
       },
@@ -191,9 +198,7 @@ export default class Navbar extends SuperComponent {
 
   calcLeftBtn() {
     const { showHome, showBack } = this.properties as any;
-    if (this.pagesStackLength === 0) {
-      this.pagesStackLength = getCurrentPages().length;
-    }
+    this.pagesStackLength = getCurrentPages().length;
 
     let home = false;
     let back = false;
@@ -204,7 +209,6 @@ export default class Navbar extends SuperComponent {
     if (showBack === ButtonShow.always) back = true;
     else if (showBack === ButtonShow.none) back = false;
     else if (this.pagesStackLength > 1) back = true;
-
     this.setData({
       _home: home,
       _back: back,
