@@ -1,55 +1,28 @@
-<wxs module="utils">
-  var include = function (source, target) { return source.indexOf(target) > -1; }
-  module.exports.include = include;
-</wxs>
 <!-- 加载中占位 -->
-<view
-  wx:if="{{loading && (useLoadingSlot || loadingImage)}}"
-  class="t-class t-image t-image__mask t-image--loading"
-  style="{{width? 'width:' + width + 'rpx;':''}}{{height? 'height:' + height + 'rpx;':''}}; {{imgStyle}}"
->
-  <slot wx:if="{{useLoadingSlot}}" name="loading" />
-  <image
-    wx:elif="{{utils.include(loadingImage, '/')}}"
-    class="t-image-common"
-    src="{{loadingImage}}"
-  />
-  <t-icon
-    wx:elif="{{loadingImage}}"
-    t-class="t-image-icon"
-    name="{{loadingImage}}"
-    size="{{width && !noInlineSize ? width*1/2 + 'rpx' : ''}}"
-  ></t-icon>
+<view wx:if="{{isLoading}}" class="t-class t-image t-image__mask t-image--loading">
+  <view wx:if="{{loading === 'default'}}">default</view>
+  <view wx:elif="{{loading !== 'slot' && loading !== ''}}" class="t-image-common">{{loading}}</view>
+  <slot wx:else name="loading" />
 </view>
 <!-- 加载失败占位 -->
-<view
-  wx:elif="{{failed && (useLoadFailedSlot || loadFailedImage)}}"
-  class="t-class t-image t-image__mask t-image--faild"
-  style="{{width? 'width:' + width + 'rpx;':''}}{{height? 'height:' + height + 'rpx;':''}}; {{imgStyle}}"
->
-  <slot wx:if="{{useLoadFailedSlot}}" name="failed" />
-  <image
-    wx:elif="{{utils.include(loadFailedImage, '/')}}"
-    class="t-image-common"
-    src="{{loadFailedImage}}"
-  />
-  <t-icon
-    wx:elif="{{loadFailedImage}}"
-    t-class="t-image-icon"
-    name="{{loadFailedImage}}"
-    size="{{width && !noInlineSize ? width*1/2 + 'rpx' : ''}}"
-  ></t-icon>
+<view wx:elif="{{isFailed}}" class="t-class t-image t-image__mask t-image--faild">
+  <view wx:if="{{loadFailed === 'default'}}">default</view>
+  <view wx:elif="{{loadFailed !== 'slot' && loadFailed !== ''}}" class="t-image-common">
+    {{loadFailed}}
+  </view>
+  <slot wx:else name="loadFailed"></slot>
 </view>
 <!-- 图片 -->
 <image
   id="image"
-  hidden="{{(loading && (useLoadingSlot || loadingImage)) || (failed && (useLoadFailedSlot || loadFailedImage))}}"
+  hidden="{{isLoading || isFailed}}"
   class="t-class t-image"
-  src="{{url}}"
-  style="{{width && !noInlineSize? 'width:' + width + 'rpx;':''}}{{height && !noInlineSize? 'height:' + height + 'rpx;':''}};{{imgStyle}} {{widthStyle}}"
+  src="{{src}}"
+  style="{{widthStyle}}"
   mode="{{mode}}"
   webp="{{webp}}"
   lazy-load="{{lazyLoad}}"
   bindload="onLoaded"
   binderror="onLoadError"
+  show-menu-by-longpress="{{show-menu-by-longpress}}"
 />

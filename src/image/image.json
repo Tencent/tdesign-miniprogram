@@ -1,6 +1,4 @@
 {
   "component": true,
-  "usingComponents": {
-    "t-icon": "@tencent/tdesign-miniprogram/icon/icon"
-  }
+  "usingComponents": {}
 }

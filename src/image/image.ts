@@ -1,46 +1,15 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
-import imageMogr from './imageMogr';
-
+import ImageProps from './props';
 @wxComponent()
 export default class Image extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = ['t-class', 't-class-load'];
   options = {
     multipleSlots: true,
   };
-  properties = {
-    src: {
-      type: String,
-    },
-    imgStyle: {
-      type: String,
-      value: '',
-    },
-    mode: {
-      type: String,
-      value: 'scaleToFill',
-    },
-    webp: {
-      type: Boolean,
-      value: true,
-    },
-    width: Number,
-    height: Number,
-    lazyLoad: Boolean,
-    loadingImage: String,
-    useLoadingSlot: Boolean,
-    loadFailedImage: {
-      type: String,
-      value: 'jiazaishibai',
-    },
-    useLoadFailedSlot: Boolean,
-    noImgMogr: Boolean,
-    noInlineSize: Boolean,
-  };
+  properties = ImageProps;
   data = {
-    src: '',
-    loading: true,
-    failed: false,
-    url: '',
+    isLoading: true,
+    isFailed: false,
     widthStyle: '', // 自动计算的图片宽度样式（兼容基础库版本2.10.3以下的版本不支持heightFix模式）
   };
   lifetimes = {
@@ -78,29 +47,17 @@ export default class Image extends SuperComponent {
       }
     }
     this.setData({
-      loading: false,
-      failed: false,
+      isLoading: false,
+      isFailed: false,
     });
     this.triggerEvent('load', e.detail);
   }
   onLoadError(e: any) {
     this.setData({
-      loading: false,
-      failed: true,
+      isLoading: false,
+      isFailed: true,
     });
     this.triggerEvent('error', e.detail);
-  }
-  buildUrl() {
-    const { src, webp, mode, width = '', height = '', noImageMogr } = this.properties as any;
-    if (src) {
-      this.setData({
-        url: noImageMogr ? src : imageMogr({ url: src, webp, mode, width, height }),
-        loading: true,
-        failed: false,
-      });
-    } else {
-      this.onLoadError({ detail: { errMsg: '图片地址为空' } });
-    }
   }
   update() {
     const { src } = this.properties as any;
@@ -109,7 +66,10 @@ export default class Image extends SuperComponent {
       this.onLoadError({ errMsg: '图片链接为空' });
       console.error('图片链接为空');
     } else {
-      this.buildUrl();
+      this.setData({
+        isLoading: true,
+        isFailed: false,
+      });
     }
   }
 }
