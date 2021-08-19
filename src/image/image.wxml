@@ -1,12 +1,12 @@
 <!-- 加载中占位 -->
 <view wx:if="{{isLoading}}" class="t-class t-image t-image__mask t-image--loading">
-  <view wx:if="{{loading === 'default'}}">default</view>
+  <t-loading wx:if="{{loading === 'default'}}" theme="dots" size="40rpx" loading></t-loading>
   <view wx:elif="{{loading !== 'slot' && loading !== ''}}" class="t-image-common">{{loading}}</view>
   <slot wx:else name="loading" />
 </view>
 <!-- 加载失败占位 -->
 <view wx:elif="{{isFailed}}" class="t-class t-image t-image__mask t-image--faild">
-  <view wx:if="{{loadFailed === 'default'}}">default</view>
+  <view wx:if="{{loadFailed === 'default'}}">默认加载失败</view>
   <view wx:elif="{{loadFailed !== 'slot' && loadFailed !== ''}}" class="t-image-common">
     {{loadFailed}}
   </view>

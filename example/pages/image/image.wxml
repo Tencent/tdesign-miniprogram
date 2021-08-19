@@ -1,7 +1,6 @@
 <view class="title">Image 图片</view>
 <view class="desc">图片主要为上下左右居中裁切、拉伸、平铺等方式</view>
-<view class="gutter" />
-<t-demo title="01 基本用法" desc="图片基础展示为上下左右居中 裁切展示">
+<t-demo title="01 类型" desc="裁切样式">
   <view class="desc">
     <view class="row">
       <view class="image-example">
@@ -33,7 +32,7 @@
     </view>
   </view>
 </t-demo>
-<t-demo title="02 类型" desc="圆角样式">
+<t-demo title="" desc="圆角样式">
   <view class="desc">
     <view class="row">
       <view class="image-example">
@@ -65,36 +64,53 @@
     </view>
   </view>
 </t-demo>
-<t-demo title="03 状态" desc="空白图、加载中状态">
+<t-demo title="02 状态" desc="加载中提示">
   <view class="desc">
     <view class="row">
       <view class="image-example">
+        <t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill"></t-image>
+        <view class="text">默认提示</view>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="image-example">
         <t-image
+          id="loading-img-custom"
           class="size-l radius-m"
           src=""
           mode="aspectFill"
-          load-failed-image="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/empty.png"
-        ></t-image>
-        <view class="text">空白图</view>
-      </view>
-      <view class="gutter-column-24"></view>
-      <view class="image-example">
-        <t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill" use-loading-slot>
-          <t-loading theme="dots" size="48rpx" slot="loading" loading></t-loading>
+          loading="slot"
+        >
+          <t-loading
+            slot="loading"
+            theme="circular"
+            size="40rpx"
+            loading
+            style="opacity: 0.6"
+          ></t-loading>
         </t-image>
-        <view class="text">加载中</view>
-      </view>
-      <view class="gutter-column-24"></view>
-      <view class="image-example">
-        <t-image class="size-l radius-m" src="" mode="aspectFill" use-load-failed-slot>
-          <view slot="failed" class="custom-loading-failed">加载失败</view>
-        </t-image>
-        <view class="text">加载失败</view>
+        <view class="text">自定义提示</view>
       </view>
     </view>
   </view>
 </t-demo>
-<t-demo title="04 规格" desc="常用图片尺寸">
+<t-demo title="" desc="加载失败提示">
+  <view class="desc">
+    <view class="row">
+      <view class="image-example">
+        <t-image class="size-l radius-m" src="" mode="aspectFill"></t-image>
+        <view class="text">默认提示</view>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="image-example">
+        <t-image class="size-l radius-m" src="" mode="aspectFill" loadFailed="slot">
+          <view slot="loadFailed" class="custom-loading-failed">加载失败</view>
+        </t-image>
+        <view class="text">自定义提示</view>
+      </view>
+    </view>
+  </view>
+</t-demo>
+<t-demo title="03 规格" desc="常用图片尺寸">
   <view class="desc">
     <view class="row">
       <view class="image-example">
