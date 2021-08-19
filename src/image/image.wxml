@@ -14,7 +14,13 @@
 </view>
 <!-- 加载失败占位 -->
 <view wx:elif="{{isFailed}}" class="t-class t-image t-image__mask t-image--faild">
-  <view wx:if="{{loadFailed === 'default'}}" class="t-class-load">默认加载失败</view>
+  <view
+    wx:if="{{loadFailed === 'default'}}"
+    class="t-class-load"
+    style="font-size: 20rpx; color: #999"
+  >
+    默认失败提示
+  </view>
   <view
     wx:elif="{{loadFailed !== 'slot' && loadFailed !== ''}}"
     class="t-image-common t-class-load"
