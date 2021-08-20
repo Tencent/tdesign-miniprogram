@@ -101,7 +101,6 @@ export default class Message extends SuperComponent {
       };
       nextValue = themeMessage[theme];
       this.setData({ iconName: nextValue });
-      return;
     }
   }
 
@@ -115,8 +114,7 @@ export default class Message extends SuperComponent {
 
     if (this.data.loop > 0) {
       this.data.loop = this.data.loop - 1;
-    } else if (this.data.loop < 0) {
-    } else {
+    } else if (this.data.loop === 0) {
       // 动画回到初始位置
       this.setData({ animation: this.resetAnimation.translateX(0).step().export() });
       return;
