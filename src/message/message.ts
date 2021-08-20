@@ -1,6 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
-import { MessageType, MessageProps } from './message.interface';
+import { MessageProps } from './message.interface';
 import props from './props';
 
 const { prefix } = config;
