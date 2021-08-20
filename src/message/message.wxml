@@ -6,8 +6,8 @@
     style="z-index: {{ zIndex }};{{this.getMessageStylesOffset({ offset })}};"
   >
     <t-icon
-      wx:if="{{local.icon}}"
-      name="{{local.icon}}"
+      wx:if="{{iconName}}"
+      name="{{iconName}}"
       class="t-message--left-icon t-class-icon"
       size="20px"
     />
@@ -37,7 +37,7 @@
       class="t-message--right-icon t-class-close-btn"
       name="close"
       size="20px"
-      bind:tap="closeHandle"
+      bind:tap="handleClose"
     />
     <slot name="closeBtn" />
   </view>

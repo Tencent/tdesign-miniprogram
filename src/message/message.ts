@@ -28,9 +28,7 @@ export default class Message extends SuperComponent {
     visible: false,
     loop: -1,
     animation: [],
-    local: {
-      icon: '',
-    },
+    iconName: '',
   };
   observers = {
     marquee(val) {
@@ -80,40 +78,29 @@ export default class Message extends SuperComponent {
   setIcon(icon = this.properties.icon!) {
     // 使用空值
     if (!icon) {
-      this.setData({ 'local.icon': '' });
+      this.setData({ iconName: '' });
       return;
     }
     // 固定值
     if (icon === 'warning_fill' || icon === 'sound_fill') {
       this.setData({
-        'local.icon': `${icon}`,
+        iconName: `${icon}`,
       });
       return;
     }
 
     // 使用默认值
     if (icon) {
-      let nextValue = 'exclamation';
+      let nextValue = 'exclamation'; // exclamation-目前td没有这个icon
       const { theme } = this.properties;
-      switch (theme) {
-        case MessageType.info: {
-          nextValue = 'help_fill';
-          break;
-        }
-        case MessageType.success: {
-          nextValue = 'tick_fill';
-          break;
-        }
-        case MessageType.warning: {
-          nextValue = 'warning_fill';
-          break;
-        }
-        case MessageType.error: {
-          nextValue = 'close_fill';
-          break;
-        }
-      }
-      this.setData({ 'local.icon': nextValue });
+      const themeMessage = {
+        info: 'help_fill',
+        success: 'tick_fill',
+        warning: 'warning_fill',
+        error: 'close_fill',
+      };
+      nextValue = themeMessage[theme];
+      this.setData({ iconName: nextValue });
       return;
     }
   }
@@ -200,7 +187,7 @@ export default class Message extends SuperComponent {
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
         this.hide();
-        this.durationEnd();
+        this.triggerEvent('durationEnd', { self: this });
       }, duration) as unknown as number;
     }
   }
@@ -213,16 +200,12 @@ export default class Message extends SuperComponent {
     this.setData({ visible: false, animation: [] });
   }
 
-  closeHandle() {
+  handleClose() {
     this.hide();
     this.triggerEvent('closeBtnClick');
   }
 
   btnClickHandle() {
     this.triggerEvent('actionBtnClick', { self: this });
-  }
-
-  durationEnd() {
-    this.triggerEvent('durationEnd', { self: this });
   }
 }
