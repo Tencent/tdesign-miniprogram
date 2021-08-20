@@ -29,5 +29,5 @@
   lazy-load="{{lazyLoad}}"
   bindload="onLoaded"
   binderror="onLoadError"
-  show-menu-by-longpress="{{show-menu-by-longpress}}"
+  show-menu-by-longpress="{{showMenuByLongpress}}"
 />
