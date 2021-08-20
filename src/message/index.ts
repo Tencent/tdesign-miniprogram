@@ -1,82 +1,61 @@
-import config from '../common/config';
-import { MessageType, IMessageProps } from './message.interface';
+import { MessageType, MessageProps } from './message.interface';
 
-const { prefix } = config;
+type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
-interface MessageOptions extends IMessageProps {
-  // API 调用方式新增
-  instance?: WechatMiniprogram.Component.TrivialInstance;
+interface MessageActionOptionsType extends Optional<MessageProps> {
+  context?: Context;
+  selector?: string;
 }
 
-const TimerSymbol = Symbol(`${prefix}-message-timer`) as any;
-
-const defaultOptions = {
-  theme: 'info',
-  content: '',
-  duration: 2000,
-  align: 'left',
-  zIndex: 6000,
-  visible: true,
-};
-
-// 获取当前页面的默认 Dialog 实例
-const getDefaultInstance = () => {
-  const pages = getCurrentPages();
-  const currentPage = pages[pages.length - 1];
-  return currentPage.selectComponent(`#${prefix}-message`);
-};
-
-const create = (options: MessageOptions) => {
-  // Message 组件实例
-  const message = options.instance || getDefaultInstance();
-
-  // 关闭 Message
-  const hideMessage = () =>
-    message.setData({
-      visible: false,
-    });
-
-  if (message?.setData) {
-    const parsedOptions = {
-      ...defaultOptions,
-      ...options,
-    };
-    message.setData(parsedOptions);
-
-    if (message[TimerSymbol]) {
-      clearTimeout(message[TimerSymbol]);
-    }
-
-    message[TimerSymbol] = setTimeout(() => {
-      hideMessage();
-      message.durationEnd(message);
-    }, parsedOptions.duration);
-  } else {
-    const msg = '`instance` 参数错误，请确认是否正确选中 Message 组件实例';
-    console.warn(msg);
+const getInstance = function (context?: Context, selector = '#t-message') {
+  if (!context) {
+    const pages = getCurrentPages();
+    const page = pages[pages.length - 1];
+    context = page.$$basePage || page;
   }
+  const instance = context?.selectComponent(selector);
+  if (!instance) {
+    console.warn(`未找到Message组件, 请检查selector是否正确`);
+    return null;
+  }
+  return instance;
 };
 
-const MESSAGE = {};
+const showMessage = function (
+  options: MessageActionOptionsType,
+  theme: MessageType = MessageType.info,
+) {
+  const { context, selector } = options;
+  const instance = getInstance(context, selector);
+  if (!instance) return Promise.reject();
 
-(['info', 'success', 'warning', 'error'] as MessageType[]).forEach((type: MessageType): void => {
-  MESSAGE[type] = (options: IMessageProps | string) => {
-    let props: IMessageProps = {
-      content: '',
-      theme: type,
-    };
+  instance.hide();
 
-    if (typeof options === 'string') {
-      props.content = options;
-    } else {
-      props = {
-        ...props,
-        ...options,
-      };
+  instance.resetData(() => {
+    instance.setData({ theme, ...options }, instance.show);
+  });
+
+  return instance;
+};
+
+export default {
+  info(options: MessageActionOptionsType) {
+    return showMessage(options, MessageType.info);
+  },
+  success(options: MessageActionOptionsType) {
+    return showMessage(options, MessageType.success);
+  },
+  warning(options: MessageActionOptionsType) {
+    return showMessage(options, MessageType.warning);
+  },
+  error(options: MessageActionOptionsType) {
+    return showMessage(options, MessageType.error);
+  },
+  hide() {
+    const instance = getInstance();
+    if (!instance) {
+      return;
     }
-
-    return create(props);
-  };
-});
-
-export default MESSAGE;
+    instance.hide();
+  },
+};
