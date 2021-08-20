@@ -6,30 +6,32 @@
 
 ```json
 "usingComponents": {
-  "t-image": "@tencent/retailwe-ui-image/index"
+    "t-image": "@tencent/tdesign-miniprogram/image/image"
 }
 ```
 
 ## 代码演示
 
-### 01 基本用法
+### 01 类型
+
+#### 裁切样式
 
 `mode`属性控制图片的缩放/裁剪模式。
 
 ```html
 <t-image
   class="size-l radius-m"
-  src="../../../assests-exp/image/image.jpg"
+  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
   mode="aspectFill"
 ></t-image>
 <t-image
   class="size-l radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
+  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
   mode="heightFix"
 ></t-image>
 <t-image
   class="size-l radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
+  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
   mode="scaleToFill"
 ></t-image>
 ```
@@ -37,7 +39,7 @@
 示例:
 ![示例](./readme-assests/base.png)
 
-### 02 类型
+#### 圆角样式
 
 这里通过样式覆盖来自定义图片圆角。
 
@@ -72,25 +74,19 @@
 
 ### 03 状态
 
-可以通过`load-failed-image`、`loading-image`属性分别定义加载失败、加载中的展位图，支持 icon 或者图片连接。
-属性`use-loading-slot`、`use-load-failed-slot`的值为`true`时，也可以通过 slot 来自定义加载中和加载失败时的占位元素。
+可以通过`loading`、`load-failed`属性分别定义加载失败、加载中的提示。值为 'default' 则表示使用默认加载风格，值为空或者 'slot' 表示使用插槽渲染，值为其他则表示普通文本内容。
 
 ```html
-<t-image
-  class="size-l radius-m"
-  src=""
-  mode="aspectFill"
-  load-failed-image="../../../assests-exp/image/empty.png"
-></t-image>
-<t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill" use-loading-slot>
-  <view slot="loading" class="dots">
-    <view class="dot dot1"></view>
-    <view class="dot dot2"></view>
-    <view class="dot dot3"></view>
-  </view>
+<t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill"></t-image>
+<t-image id="loading-img-custom" class="size-l radius-m" src="" mode="aspectFill" loading="slot">
+  <t-loading slot="loading" theme="circular" size="40rpx" loading style="opacity: 0.6"></t-loading>
 </t-image>
 <t-image class="size-l radius-m" src="" mode="aspectFill" use-load-failed-slot>
   <view slot="failed" class="custom-loading-failed">加载失败</view>
+</t-image>
+<t-image class="size-l radius-m" src="" mode="aspectFill"></t-image>
+<t-image class="size-l radius-m" src="" mode="aspectFill" loadFailed="slot">
+  <view slot="loadFailed" class="custom-loading-failed">加载失败</view>
 </t-image>
 ```
 
