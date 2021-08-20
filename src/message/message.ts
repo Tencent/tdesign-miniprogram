@@ -75,7 +75,7 @@ export default class Message extends SuperComponent {
     this.clearMessageAnimation();
   }
   /** icon 值设置*/
-  setIcon(icon = this.properties.icon!) {
+  setIcon(icon = this.properties.icon) {
     // 使用空值
     if (!icon) {
       this.setData({ iconName: '' });
@@ -205,7 +205,7 @@ export default class Message extends SuperComponent {
     this.triggerEvent('closeBtnClick');
   }
 
-  btnClickHandle() {
+  handleBtnClick() {
     this.triggerEvent('actionBtnClick', { self: this });
   }
 }
