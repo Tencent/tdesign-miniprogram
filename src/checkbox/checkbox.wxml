@@ -24,14 +24,18 @@
     </block>
   </view>
   <!-- 文本内容 -->
-  <view class="{{classPrefix}}__content " data-target="text" bind:tap="onChange">
+  <view
+    class="{{classPrefix}}__content {{disabled?classPrefix + '-is-disabled-context' : ''}}"
+    data-target="text"
+    bind:tap="onChange"
+  >
     <!-- title -->
     <view class="{{classPrefix}}__title t-class-label" style="-webkit-line-clamp:{{maxLabelRow}}"
       >{{label}}</view
     >
     <!-- content -->
     <view
-      class="{{classPrefix}}__description t-class-content"
+      class="{{classPrefix}}__description t-class-content "
       style="-webkit-line-clamp:{{maxContentRow}}"
       >{{content}}
       <slot />

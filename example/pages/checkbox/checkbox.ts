@@ -1,17 +1,20 @@
 Page({
   data: {
+    demoCheckbox1: ['checkbox2', 'checkbox3'],
+    demoCheckbox2: ['checkbox2', 'checkbox3'],
+    demoCheckboxMax: ['checkbox1', 'checkbox2'],
+    demoCheckbox3: ['checkbox2', 'checkbox4'],
     options: [
       { label: '全选', checkAll: true },
-      'string11',
-      100,
-      { label: 'object1', value: 'object1' },
+      '多选1',
+      '多选2',
+      { label: '多选3', value: '多选3' },
     ],
-    checkAllValues: ['string11'],
+    checkAllValues: ['多选1', '多选2', '多选3'],
     activeImage:
       'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png',
     inActiveImage:
       'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png',
-    checkboxValues1: ['checkbox1'],
     check5: true,
     checkAll1: ['checkbox1'],
   },

@@ -3,7 +3,6 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  // align-items: baseline;
   padding: 32rpx 0rpx;
   font-size: 32rpx;
   .limit-title-row {
@@ -43,6 +42,7 @@
   }
   &__description {
     .limit-title-row();
+    color: rgba(0, 0, 0, 0.4);
   }
   &-is-checked {
     color: #0052d9;
@@ -50,6 +50,10 @@
   &-is-disabled {
     cursor: not-allowed;
     color: #dcdcdc;
+  }
+  &-is-disabled-context {
+    cursor: not-allowed;
+    color: rgba(0, 0, 0, 0.26);
   }
   position: relative;
   // &::after {
