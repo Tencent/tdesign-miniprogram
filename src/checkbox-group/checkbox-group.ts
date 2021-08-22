@@ -5,6 +5,7 @@ const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
 @wxComponent()
 export default class CheckboxGroup extends SuperComponent {
+  externalClasses = ['t-class'];
   relations = {
     '../checkbox/checkbox': {
       type: 'descendant' as 'descendant',
@@ -21,22 +22,33 @@ export default class CheckboxGroup extends SuperComponent {
   lifetimes = {
     attached() {
       this.handleCreateMulCheckbox();
-      this.handleOptionLinked();
     },
   };
   methods = {
     // slot插入选项
-    updateChildren() {
-      const items = this.getRelationNodes('../checkbox/checkbox');
+    updateChildren(type = 'slot') {
+      let items = [];
+      if (type === 'not-slot') {
+        items = this.selectAllComponents('.t-checkbox');
+      } else {
+        items = this.getRelationNodes('../checkbox/checkbox');
+      }
       const { value, disabled } = this.data;
       if (items.length > 0) {
         items.forEach((item: any) => {
-          item.changeActive(value.indexOf(item.data.value) > -1);
+          !item.data.checkAll && item.changeActive(value.indexOf(item.data.value) > -1);
           item.setDisabled(disabled);
         });
+        // 关联可全选项
+        if (items.findIndex((item) => item.data.checkAll) > -1) {
+          items.forEach((item) => {
+            item.setOptionLinked(true);
+          });
+          this.handleHalfCheck(type, items.length);
+        }
       }
     },
-    updateValue({ name, checked }) {
+    updateValue({ name, checked }, type = 'slot') {
       const { value, max } = this.data;
       let newValue = value;
       if (max && checked && newValue.length === max) {
@@ -51,8 +63,8 @@ export default class CheckboxGroup extends SuperComponent {
       this.setData({
         value: newValue,
       });
-      this.updateChildren();
-      this.triggerEvent('change', { names: newValue });
+      this.updateChildren(type);
+      this.triggerEvent('change', newValue);
     },
     // 支持自定义options
     handleCreateMulCheckbox() {
@@ -79,14 +91,20 @@ export default class CheckboxGroup extends SuperComponent {
         this.setData({
           checkboxOptions: optionsValue,
         });
+        this.updateChildren('not-slot');
       } catch (error) {
         console.log('error', error);
       }
     },
     // 处理全选
     handleCheckAll(e) {
-      const { checked, option, name } = e.detail;
-      const items = this.selectAllComponents('.t-checkbox');
+      const { checked, option, name, type } = e.detail || e;
+      let items = [];
+      if (type === 'not-slot') {
+        items = this.selectAllComponents('.t-checkbox');
+      } else {
+        items = this.getRelationNodes('../checkbox/checkbox');
+      }
       if (!option) {
         if (!items?.length) {
           return;
@@ -98,21 +116,24 @@ export default class CheckboxGroup extends SuperComponent {
                 return;
               }
               item.changeActive(checked);
-              return checked ? item.data.value : '';
+              return checked && !item.data.checkAll ? item.data.value : '';
             })
             .filter((val) => val),
         });
-        this.triggerEvent('change', { names: this.data.value });
+        this.triggerEvent('change', this.data.value);
+        this.handleHalfCheck(type, items.length);
       } else {
-        this.updateValue({ name, checked });
-        const element = items.find((item) => item.data.value === name);
-        element?.changeActive(checked);
+        this.updateValue({ name, checked }, type);
       }
-      this.handleHalfCheck(items.length);
     },
-    // 处理半选
-    handleHalfCheck(len: number) {
-      const items = this.selectAllComponents('.t-checkbox');
+    // 处理options半选
+    handleHalfCheck(type: string, len: number) {
+      let items = [];
+      if (type === 'not-slot') {
+        items = this.selectAllComponents('.t-checkbox');
+      } else {
+        items = this.getRelationNodes('../checkbox/checkbox');
+      }
       const element = items.find((item) => item.data.checkAll);
       if (this.data.value.length) {
         element?.changeActive(true);

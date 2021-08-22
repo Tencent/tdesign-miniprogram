@@ -1,8 +1,10 @@
 Page({
   data: {
     check5: false,
-    activeImage: 'https://0729-75822.gzc.vod.tencent-cloud.com/site_doc/tdesign-logo.png',
-    inActiveImage: 'https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/logo-icon.png',
+    activeImage:
+      'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png',
+    inActiveImage:
+      'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png',
     options: [
       '字符串',
       // 'string22',
@@ -15,9 +17,10 @@ Page({
   onChange(event) {
     console.log('radio', event.detail);
   },
-  toggle5(checked) {
+  toggle5(e) {
+    console.log('radio', e.detail);
     this.setData({
-      check5: checked,
+      check5: e.detail,
     });
   },
 });

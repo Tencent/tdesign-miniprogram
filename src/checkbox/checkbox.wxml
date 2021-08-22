@@ -8,7 +8,13 @@
   >
     <block wx:if="{{icon.length>0}}">
       <!-- <slot name="icon"></slot> -->
-      <image src="{{active?icon[0]:icon[1]}}" class="{{classPrefix}}-icon__image" webp="{{true}}" />
+      <view class="{{classPrefix}}__image">
+        <image
+          src="{{active?icon[0]:icon[1]}}"
+          class="{{classPrefix}}-icon__image"
+          webp="{{true}}"
+        />
+      </view>
     </block>
     <block wx:else>
       <t-icon
@@ -40,7 +46,13 @@
   >
     <block wx:if="{{icon.length>0}}">
       <!-- <slot name="icon"></slot> -->
-      <image src="{{active?icon[0]:icon[1]}}" class="{{classPrefix}}-icon__image" webp="{{true}}" />
+      <view class="{{classPrefix}}__image">
+        <image
+          src="{{active?icon[0]:icon[1]}}"
+          class="{{classPrefix}}-icon__image"
+          webp="{{true}}"
+        />
+      </view>
     </block>
     <block wx:else>
       <t-icon

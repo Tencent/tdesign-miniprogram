@@ -1,6 +1,6 @@
 <view class="demo-title">Checkbox多选框</view>
 <view class="demo-desc">描述文字</view>
-<t-demo title="01 类型" desc="基础多选框">
+<!-- <t-demo title="01 类型" desc="基础多选框">
   <t-checkbox value="checkbox3" label="多选" bind:change="onChange" />
   <t-checkbox
     value="checkbox2"
@@ -63,17 +63,22 @@
       多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选
     </t-checkbox>
   </t-checkbox-group>
-</t-demo>
+</t-demo> -->
 <t-demo title="05 支持全选多选框" desc="全选多选框">
-  <t-checkbox-group options="{{options}}" bind:change="onChange"> </t-checkbox-group>
+  <t-checkbox-group
+    options="{{options}}"
+    value="{{checkAllValues}}"
+    bind:change="onChange"
+  ></t-checkbox-group>
 </t-demo>
-<t-demo title="06 限制最多可选数多选框" desc="限制最多可选数量">
+<!-- <t-demo title="06 限制最多可选数多选框" desc="限制最多可选数量">
   <t-checkbox-group value="{{['checkbox3','checkbox2']}}" max="{{2}}" bind:change="onChange">
     <t-checkbox value="checkbox1" label="多选" />
     <t-checkbox value="checkbox2" label="多选" />
     <t-checkbox value="checkbox3" label="多选" />
   </t-checkbox-group>
-</t-demo>
+</t-demo> -->
+<!--
 <t-demo title="07 禁用状态" desc="多选框禁用状态">
   <t-checkbox-group value="{{checkboxValues1}}" disabled="{{true}}">
     <t-checkbox value="checkbox1" label="多选" />
@@ -89,7 +94,8 @@
 <t-demo title="09 只读状态" desc="多选框支持只读">
   <t-checkbox value="checkbox1" label="多选" readonly checked />
   <t-checkbox value="checkbox2" label="多选" readonly />
-</t-demo>
+</t-demo>-->
+
 <t-demo title="10 自定义图标" desc="多选框支持自定义图标">
   <t-checkbox
     value="checkbox1"

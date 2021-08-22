@@ -6,6 +6,7 @@ const name = `${prefix}-radio-group`;
 
 @wxComponent()
 export default class PullDownRefresh extends SuperComponent {
+  externalClasses = ['t-class'];
   data = {
     classPrefix: name,
     radioOptions: [],
@@ -41,7 +42,7 @@ export default class PullDownRefresh extends SuperComponent {
         value: item.name,
       });
       this.updateChildren();
-      this.triggerEvent('change', item);
+      this.triggerEvent('change', item.name);
     },
     // 处理 group选项
     handleGroupSelect(e) {
@@ -49,7 +50,7 @@ export default class PullDownRefresh extends SuperComponent {
       this.setData({
         value: name,
       });
-      this.triggerEvent('change', e.detail);
+      this.triggerEvent('change', name);
       const items = this.selectAllComponents('.t-radio');
       if (items.length > 0) {
         items.forEach((item) => {

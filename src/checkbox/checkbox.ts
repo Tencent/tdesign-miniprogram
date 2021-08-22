@@ -9,6 +9,9 @@ export default class Checkbox extends SuperComponent {
   relations = {
     '../checkbox-group/checkbox-group': {
       type: 'ancestor' as 'ancestor',
+      linked(target) {
+        console.log('checkbox linked', this);
+      },
     },
   };
   options = {
@@ -26,10 +29,8 @@ export default class Checkbox extends SuperComponent {
   };
   lifetimes = {
     attached() {
-      this.setData({
-        active: this.data.checked,
-        halfChecked: this.data.indeterminate,
-      });
+      console.log('group attached');
+      this.initStatus();
     },
   };
   /* Methods */
@@ -43,16 +44,45 @@ export default class Checkbox extends SuperComponent {
         return;
       }
       const { value, active, checkAll, optionLinked } = this.data;
-      const item = { name: value, checked: !active };
+      const item = { name: value, checked: !active, checkAll };
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
       if (parent) {
-        parent.updateValue(item);
+        if (checkAll || optionLinked) {
+          parent.handleCheckAll({
+            type: 'slot',
+            checked: !active,
+            option: !checkAll,
+            name: value,
+          });
+        } else {
+          parent.updateValue(item);
+        }
       } else {
         if (checkAll || optionLinked) {
-          this.triggerEvent('toggleAll', { checked: !active, option: !checkAll, name: value });
+          this.triggerEvent('toggleAll', {
+            type: 'not-slot',
+            checked: !active,
+            option: !checkAll,
+            name: value,
+          });
         } else {
           this.triggerEvent('change', !active);
           this.toggle();
+        }
+      }
+    },
+    initStatus() {
+      if (!this.data.optionLinked) {
+        if (this.data.indeterminate) {
+          this.setData({
+            active: true,
+            halfChecked: true,
+          });
+        } else {
+          this.setData({
+            active: this.data.checked,
+            halfChecked: this.data.indeterminate,
+          });
         }
       }
     },

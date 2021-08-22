@@ -7,11 +7,13 @@
     wx:if="{{align==='left'}}"
   >
     <block wx:if="{{customIcon}}">
-      <image
-        src="{{active?iconVal[0]:iconVal[1]}}"
-        class="{{classPrefix}}-icon__image"
-        webp="{{true}}"
-      />
+      <view class="{{classPrefix}}__image">
+        <image
+          src="{{active?iconVal[0]:iconVal[1]}}"
+          class="{{classPrefix}}-icon__image"
+          webp="{{true}}"
+        />
+      </view>
     </block>
     <block wx:else>
       <t-icon
@@ -43,11 +45,13 @@
     wx:if="{{align==='right'}}"
   >
     <block wx:if="{{customIcon}}">
-      <image
-        src="{{active?iconVal[0]:iconVal[1]}}"
-        class="{{classPrefix}}-icon__image"
-        webp="{{true}}"
-      />
+      <view class="{{classPrefix}}__image">
+        <image
+          src="{{active?iconVal[0]:iconVal[1]}}"
+          class="{{classPrefix}}-icon__image"
+          webp="{{true}}"
+        />
+      </view>
     </block>
     <block wx:else>
       <t-icon

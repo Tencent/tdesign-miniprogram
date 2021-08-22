@@ -3,7 +3,7 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  // align-items: baseline;
+  // align-items: center;
   font-size: 32rpx;
   padding: 32rpx 0rpx;
   .limit-title-row {
@@ -27,6 +27,11 @@
   &-icon__image {
     width: 20px;
     height: 20px;
+    vertical-align: sub;
+  }
+
+  &__image {
+    line-height: 48rpx;
   }
   &__btn {
     font-size: 40rpx;
@@ -36,6 +41,7 @@
   &__content {
     flex: 1;
     line-height: 48rpx;
+    margin-right: 10px;
   }
   &__title {
     .limit-title-row();
