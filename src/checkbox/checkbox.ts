@@ -9,9 +9,6 @@ export default class Checkbox extends SuperComponent {
   relations = {
     '../checkbox-group/checkbox-group': {
       type: 'ancestor' as 'ancestor',
-      linked(target) {
-        console.log('checkbox linked', this);
-      },
     },
   };
   options = {

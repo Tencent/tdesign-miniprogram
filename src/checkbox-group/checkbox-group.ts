@@ -134,10 +134,12 @@ export default class CheckboxGroup extends SuperComponent {
       } else {
         items = this.getRelationNodes('../checkbox/checkbox');
       }
+      const all = items.filter((i) => !i.data.checkAll).map((item) => item.data.value);
+      const currentVal = Array.from(new Set(this.data.value.filter((i) => all.indexOf(i) > -1)));
       const element = items.find((item) => item.data.checkAll);
-      if (this.data.value.length) {
+      if (currentVal.length) {
         element?.changeActive(true);
-        element?.changeCheckAllHalfStatus(this.data.value.length !== len - 1);
+        element?.changeCheckAllHalfStatus(currentVal.length !== len - 1);
       } else {
         element?.changeActive(false);
       }

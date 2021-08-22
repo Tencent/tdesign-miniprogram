@@ -11,7 +11,7 @@ Page({
       // 100,
       '数字',
       // { label: 'object1', value: 'value1', disabled: true },
-      { label: '对象', value: 'value2' },
+      { label: '对象', value: 'value2', disabled: true },
     ],
   },
   onChange(event) {
