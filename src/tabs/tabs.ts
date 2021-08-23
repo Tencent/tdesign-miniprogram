@@ -2,6 +2,7 @@ import dom from '../behaviors/dom';
 import touch from '../behaviors/touch';
 
 import { SuperComponent, wxComponent } from '../common/src/index';
+import props from './props';
 
 enum Position {
   top = 'top',
@@ -38,27 +39,36 @@ export default class Tabs extends SuperComponent {
   properties = {
     value: {
       type: String,
+      optionalTypes: [Number],
       value: '0',
-      observer(name: string) {
-        if (name !== this.getCurrentName()) {
-          this.setCurrentIndexByName(name);
-        }
-      },
     },
 
     animation: {
       type: Object,
-      value: { duration: 0 },
     },
 
     placement: {
       type: String,
-      value: Position.top, // 枚举 'bottom' | 'left' | 'right',
+      value: 'top', // 枚举 'bottom' | 'left' | 'right',
     },
 
     showBottomLine: {
       type: Boolean,
       value: true,
+    },
+  };
+
+  // properties = props;
+
+  observers = {
+    value(name) {
+      if (name !== this.getCurrentName()) {
+        this.setCurrentIndexByName(name);
+      }
+    },
+
+    animation(v) {
+      this.setData({ animate: v });
     },
   };
 
@@ -70,6 +80,7 @@ export default class Tabs extends SuperComponent {
     isScrollX: true,
     isScrollY: false,
     direction: 'X',
+    animate: { duration: 0 },
   };
 
   created() {
@@ -108,7 +119,7 @@ export default class Tabs extends SuperComponent {
 
   setCurrentIndexByName(name) {
     const { children } = this;
-    const index = children.findIndex((child: any) => child.getComputedName() === name);
+    const index = children.findIndex((child: any) => child.getComputedName() === `${name}`);
     if (index > -1) {
       this.setCurrentIndex(index);
     }
@@ -165,8 +176,8 @@ export default class Tabs extends SuperComponent {
       let trackStyle = `background-color: ${color};
         -webkit-transform: translate${direction}(${distance}px);
         transform: translate${direction}(${distance}px);
-        -webkit-transition-duration: ${this.properties.animation.duration}s;
-        transition-duration: ${this.properties.animation.duration}s;
+        -webkit-transition-duration: ${this.data.animate.duration}s;
+        transition-duration: ${this.data.animate.duration}s;
       `;
       trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
       this.setData({
