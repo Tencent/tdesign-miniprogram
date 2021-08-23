@@ -1,5 +1,8 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import ImageProps from './props';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-image`;
 @wxComponent()
 export default class Image extends SuperComponent {
   externalClasses = ['t-class', 't-class-load'];
@@ -11,6 +14,7 @@ export default class Image extends SuperComponent {
     isLoading: true,
     isFailed: false,
     widthStyle: '', // 自动计算的图片宽度样式（兼容基础库版本2.10.3以下的版本不支持heightFix模式）
+    classPrefix: name,
   };
   lifetimes = {
     attached(this: Image) {
@@ -24,7 +28,7 @@ export default class Image extends SuperComponent {
   };
   onLoaded(e: any) {
     const sdkVersion = wx.getSystemInfoSync().SDKVersion;
-    const versionArray = sdkVersion.split('.').map((v) => parseInt(v));
+    const versionArray = sdkVersion.split('.').map((v) => parseInt(v, 10));
     // 版本号低于2.10.3时组件内部实现heightFix模式
     if (
       versionArray[0] < 2 ||
@@ -64,7 +68,6 @@ export default class Image extends SuperComponent {
     if (!src) {
       // 链接为空时直接触发加载失败
       this.onLoadError({ errMsg: '图片链接为空' });
-      console.error('图片链接为空');
     } else {
       this.setData({
         isLoading: true,

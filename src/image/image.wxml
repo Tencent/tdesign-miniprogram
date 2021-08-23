@@ -1,5 +1,8 @@
 <!-- 加载中占位 -->
-<view wx:if="{{isLoading}}" class="t-class t-image t-image__mask t-image--loading">
+<view
+  wx:if="{{isLoading}}"
+  class="t-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading"
+>
   <t-loading
     wx:if="{{loading === 'default'}}"
     theme="dots"
@@ -7,13 +10,19 @@
     loading
     class="t-class-load"
   ></t-loading>
-  <view wx:elif="{{loading !== 'slot' && loading !== ''}}" class="t-image-common t-class-load">
+  <view
+    wx:elif="{{loading !== 'slot' && loading !== ''}}"
+    class="{{classPrefix}}-common t-class-load"
+  >
     {{loading}}
   </view>
   <slot wx:else name="loading" class="t-class-load" />
 </view>
 <!-- 加载失败占位 -->
-<view wx:elif="{{isFailed}}" class="t-class t-image t-image__mask t-image--faild">
+<view
+  wx:elif="{{isFailed}}"
+  class="t-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--faild"
+>
   <!-- 等icon组件出了再改变加载失败默认提示 -->
   <view
     wx:if="{{loadFailed === 'default'}}"
@@ -23,7 +32,7 @@
   >
   <view
     wx:elif="{{loadFailed !== 'slot' && loadFailed !== ''}}"
-    class="t-image-common t-class-load"
+    class="{{classPrefix}}-common t-class-load"
   >
     {{loadFailed}}
   </view>
@@ -33,7 +42,7 @@
 <image
   id="image"
   hidden="{{isLoading || isFailed}}"
-  class="t-class t-image"
+  class="t-class {{classPrefix}}"
   src="{{src}}"
   style="{{widthStyle}}"
   mode="{{mode}}"
