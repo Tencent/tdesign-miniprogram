@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "Divider",
-  "usingComponents": {}
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
 }

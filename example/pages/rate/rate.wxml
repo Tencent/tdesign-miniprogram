@@ -1,115 +1,90 @@
-<view class="rate">
-	<view class="title">Rate 评分</view>
-	<view class="desc">评分组件，对内容进行快速评级操作，或内容评价的等级展示，目前常用为五星实心评价</view>
-	<view class="sub-title">01 类型</view>
-	<block>
-		<view class="desc">实心评分</view>
-		<view class="item">
-			<view class="item__title">请点击评分</view>
-			<t-rate value="{{value[0]}}" data-index="{{0}}" bind:change="onChange" />
-		</view>
-	</block>
-	<block>
-		<view class="desc">空心评分</view>
-		<view class="item">
-			<view class="item__title">请点击评分</view>
-			<t-rate value="{{value[1]}}" data-index="{{1}}" bind:change="onChange" />
-		</view>
-	</block>
-	<block>
-		<view class="desc">自定义数量评分</view>
-		<view class="item">
-			<view class="item__title">自定义数量</view>
-			<t-rate
-			 value="{{value[2]}}"
-			 data-index="{{2}}"
-			 count="{{6}}"
-			 bind:change="onChange"
-			/>
-		</view>
-	</block>
-	<block>
-		<view class="desc">半星评分</view>
-		<view class="item">
-			<view class="item__title">半星评价</view>
-			<t-rate
-			 value="{{value[3]}}"
-			 data-index="{{3}}"
-			 allowHalf="{{true}}"
-			 bind:change="onChange"
-			/>
-		</view>
-	</block>
-	<block>
-		<view class="desc">实心带描述评分</view>
-		<view class="item">
-			<view class="item__title">自定义描述</view>
-			<t-rate
-			 value="{{value[4]}}"
-			 data-index="{{4}}"
-			 bind:change="onChange"
-			 showText="{{true}}"
-			 texts="{{texts}}"
-			/>
-		</view>
-		<view class="item">
-			<view class="item__title">默认描述</view>
-			<t-rate
-			 value="{{value[5]}}"
-			 data-index="{{5}}"
-			 bind:change="onChange"
-			 showText="{{true}}"
-			/>
-		</view>
-	</block>
-	<block>
-		<view class="desc">展示型评分</view>
-		<view class="item">
-			<view class="item__title">只读评分</view>
-			<t-rate
-			 value="{{value[6]}}"
-			 data-index="{{6}}"
-			 allowHalf="{{true}}"
-			 bind:change="onChange"
-			 readonly
-			/>
-		</view>
-		<view class="item">
-			<view class="item__title">禁用评分</view>
-			<t-rate
-			 value="{{value[7]}}"
-			 data-index="{{7}}"
-			 allowHalf="{{true}}"
-			 bind:change="onChange"
-			 disabled
-			/>
-		</view>
-		<view class="item">
-			<view class="item__title">非受控评分</view>
-			<t-rate defaultValue="{{3.5}}" allowHalf="{{true}}" />
-		</view>
-	</block>
-	<view class="sub-title">02 规格</view>
-	<block>
-		<view class="desc">评价规格</view>
-		<view class="item">
-			<view class="item__title">规格 56</view>
-			<t-rate
-			 value="{{value[8]}}"
-			 data-index="{{8}}"
-			 bind:change="onChange"
-			 size="{{56}}"
-			/>
-		</view>
-		<view class="item">
-			<view class="item__title">规格 32</view>
-			<t-rate
-			 value="{{value[9]}}"
-			 data-index="{{9}}"
-			 bind:change="onChange"
-			 size="{{32}}"
-			/>
-		</view>
-	</block>
-</view>
+<view class="demo">
+  <view class="demo-title">Rate 评分</view>
+  <view class="demo-desc"
+    >评分组件，对内容进行快速评级操作，或内容评价的等级展示，目前常用为五星实心评</view
+  >
+  <t-demo title="01 类型">
+    <view class="demo-section__desc">实心评分</view>
+    <view class="item">
+      <view class="item__title">请点击评分</view>
+      <t-rate value="{{value[0]}}" data-index="{{0}}" bind:change="onChange" />
+    </view>
 
+    <view class="demo-section__desc">实心评分</view>
+    <view class="item">
+      <view class="item__title">请点击评分</view>
+      <t-rate value="{{value[0]}}" data-index="{{0}}" bind:change="onChange" />
+    </view>
+
+    <view class="demo-section__desc">空心评分</view>
+    <view class="item">
+      <view class="item__title">请点击评分</view>
+      <t-rate value="{{value[1]}}" data-index="{{1}}" bind:change="onChange" />
+    </view>
+
+    <view class="demo-section__desc">自定义数量评分</view>
+    <view class="item">
+      <view class="item__title">自定义数量</view>
+      <t-rate value="{{value[2]}}" data-index="{{2}}" count="{{6}}" bind:change="onChange" />
+    </view>
+
+    <view class="demo-section__desc">半星评分</view>
+    <view class="item">
+      <view class="item__title">半星评价</view>
+      <t-rate value="{{value[3]}}" data-index="{{3}}" allowHalf="{{true}}" bind:change="onChange" />
+    </view>
+
+    <view class="demo-section__desc">实心带描述评分</view>
+    <view class="item">
+      <view class="item__title">自定义描述</view>
+      <t-rate
+        value="{{value[4]}}"
+        data-index="{{4}}"
+        bind:change="onChange"
+        showText="{{true}}"
+        texts="{{texts}}"
+      />
+    </view>
+    <view class="item">
+      <view class="item__title">默认描述</view>
+      <t-rate value="{{value[5]}}" data-index="{{5}}" bind:change="onChange" showText="{{true}}" />
+    </view>
+
+    <view class="demo-section__desc">展示型评分</view>
+    <view class="item">
+      <view class="item__title">只读评分</view>
+      <t-rate
+        value="{{value[6]}}"
+        data-index="{{6}}"
+        allowHalf="{{true}}"
+        bind:change="onChange"
+        readonly
+      />
+    </view>
+    <view class="item">
+      <view class="item__title">禁用评分</view>
+      <t-rate
+        value="{{value[7]}}"
+        data-index="{{7}}"
+        allowHalf="{{true}}"
+        bind:change="onChange"
+        disabled
+      />
+    </view>
+    <view class="item">
+      <view class="item__title">非受控评分</view>
+      <t-rate defaultValue="{{3.5}}" allowHalf="{{true}}" />
+    </view>
+  </t-demo>
+  <t-demo title="02 规格">
+    <view class="demo-section__desc">评价规格</view>
+    <view class="item">
+      <view class="item__title">规格 56</view>
+      <t-rate value="{{value[8]}}" data-index="{{8}}" bind:change="onChange" size="{{56}}" />
+    </view>
+    <view class="item">
+      <view class="item__title">规格 32</view>
+      <t-rate value="{{value[9]}}" data-index="{{9}}" bind:change="onChange" size="{{32}}" />
+    </view>
+  </t-demo>
+</view>

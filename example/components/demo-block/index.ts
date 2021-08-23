@@ -19,7 +19,7 @@ Component({
     },
   },
   methods: {
-    clickHandle (e) {
+    clickHandle(e) {
       const { type } = e.currentTarget.dataset;
       this.triggerEvent('clickoper', type);
     },

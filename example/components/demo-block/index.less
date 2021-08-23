@@ -1,16 +1,17 @@
 @import '../../../src/common/style/_variables.less';
 
 .demo-block {
-  margin: @spacer-3 @spacer-3 0 @spacer-3;
+  margin: @spacer-3 0 0;
   line-height: @text-line-height;
   font-size: @font-size-m;
   opacity: 90%;
 
   &__heander {
     color: @text-level-1-color;
+    margin: 0 @spacer-2;
 
     &-title {
-      font-weight: 500;
+      font-weight: 700;
     }
 
     &-desc {
@@ -36,10 +37,10 @@
   }
 
   &__slot {
-    margin-top: @spacer;
+    margin-top: @spacer-2;
 
     &.with-padding {
-      margin: 0 @spacer;
+      margin: 0 @spacer-2;
     }
   }
 }
