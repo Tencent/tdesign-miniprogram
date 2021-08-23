@@ -113,7 +113,7 @@ TComponent({
     },
     handleSidebarTouchmove(e: { touches: any }) {
       const { touches } = e;
-      const { clientY } = touches[0];
+      const [{ clientY }] = touches;
       let currentTarget = '';
       let number = 0;
       this.data.SidebarNode.forEach((ele: { dataset?: any; top?: any }) => {
