@@ -36,9 +36,6 @@
 ></t-image>
 ```
 
-示例:
-![示例](./readme-assests/base.png)
-
 #### 圆角样式
 
 这里通过样式覆盖来自定义图片圆角。
@@ -69,9 +66,6 @@
 }
 ```
 
-示例:
-![示例](./readme-assests/type.png)
-
 ### 03 状态
 
 可以通过`loading`、`load-failed`属性分别定义加载失败、加载中的提示。值为 'default' 则表示使用默认加载风格，值为空或者 'slot' 表示使用插槽渲染，值为其他则表示普通文本内容。
@@ -89,9 +83,6 @@
   <view slot="loadFailed" class="custom-loading-failed">加载失败</view>
 </t-image>
 ```
-
-示例:
-![示例](./readme-assests/status.png)
 
 ### 04 规格
 
@@ -161,9 +152,6 @@
   height: 24rpx * 2;
 }
 ```
-
-示例:
-![示例](./readme-assests/size.png)
 
 ## API
 
