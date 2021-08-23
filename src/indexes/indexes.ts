@@ -10,22 +10,25 @@ export default class IndexBar extends SuperComponent {
     list: {
       type: Array,
       value: [],
-      observer(this: IndexBar, newValue) {
-        let groups = newValue;
-        // 分组没有title属性时，默认以index作为title
-        if (!!newValue.length && newValue[0].title === undefined) {
-          groups = groups.map((g) => {
-            return Object.assign({ title: g.index }, g);
-          });
-        }
-        this.setData({ groups });
-      },
     },
     height: {
       type: Number,
-      observer(this: IndexBar) {
-        this.getBtnBarInfo();
-      },
+    },
+  };
+
+  observers = {
+    list(this: IndexBar, newValue) {
+      let groups = newValue;
+      // 分组没有title属性时，默认以index作为title
+      if (!!newValue.length && newValue[0].title === undefined) {
+        groups = groups.map((g) => {
+          return Object.assign({ title: g.index }, g);
+        });
+      }
+      this.setData({ groups });
+    },
+    height(this: IndexBar) {
+      this.getBtnBarInfo();
     },
   };
 
