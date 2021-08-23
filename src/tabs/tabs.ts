@@ -2,6 +2,9 @@ import dom from '../behaviors/dom';
 import touch from '../behaviors/touch';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-tabs`;
 
 enum Position {
   top = 'top',
@@ -9,7 +12,7 @@ enum Position {
   bottom = 'bottom',
   left = 'left',
 }
-const trackLineWidth = 60;
+const trackLineWidth = 30;
 @wxComponent()
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
@@ -32,7 +35,7 @@ export default class Tabs extends SuperComponent {
     },
   };
 
-  externalClasses = ['t-class-tabs', 't-class-item', 't-class-active'];
+  externalClasses = ['t-class', 't-class-item', 't-class-active'];
 
   properties = props;
 
@@ -49,7 +52,7 @@ export default class Tabs extends SuperComponent {
   };
 
   data = {
-    classPrefix: 't-tabs',
+    classPrefix: name,
     tabs: [],
     currentIndex: -1,
     trackStyle: '',

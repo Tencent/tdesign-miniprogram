@@ -8,7 +8,7 @@
       bind:click="onTabsChange"
       class="t-tabs-horizontal"
       t-class-item="scroll-item-horizontal"
-      t-class-tabs="tabs-contianer"
+      t-class="tabs-contianer"
     >
       <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
@@ -108,7 +108,7 @@
       bind:click="onTabsChange"
       t-class-item="scroll-item-vertical"
       t-class-active="tabs-vertical-active"
-      t-class-tabs="t-tabs-vertical"
+      t-class="t-tabs-vertical"
     >
       <t-tab-panel label="标签页一" value="0">
         <view class="tab-content">标签一内容区</view>
@@ -133,7 +133,7 @@
       bind:change="onTabsChange"
       bind:click="onTabsChange"
       t-class-item="scroll-item-horizontal"
-      t-class-tabs="t-tabs-horizontal"
+      t-class="t-tabs-horizontal"
       t-class-active="active-item"
     >
       <t-tab-panel label="大尺寸" value="0">标签一内容</t-tab-panel>
@@ -148,7 +148,7 @@
       bind:change="onTabsChange"
       bind:click="onTabsChange"
       t-class-item="scroll-item-horizontal"
-      t-class-tabs="t-tabs-horizontal"
+      t-class="t-tabs-horizontal"
     >
       <t-tab-panel label="小尺寸" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
