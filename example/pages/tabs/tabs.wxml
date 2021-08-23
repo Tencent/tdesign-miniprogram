@@ -97,12 +97,12 @@
     >
       <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
       <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-      <t-tab-panel label="标签页三" value="2" disabled>标签三内容</t-tab-panel>
+      <t-tab-panel label="禁用状态" value="2" disabled>禁用状态</t-tab-panel>
     </t-tabs>
   </t-demo>
   <t-demo title="03 特殊类型" desc="竖向选项卡">
     <t-tabs
-      value="{{0}}"
+      value="{{1}}"
       placement="left"
       bind:change="onTabsChange"
       bind:click="onTabsChange"
@@ -111,19 +111,19 @@
       t-class-tabs="t-tabs-vertical"
     >
       <t-tab-panel label="标签页一" value="0">
-        <view class="tab-content">标签一内容</view>
+        <view class="tab-content">标签一内容区</view>
       </t-tab-panel>
       <t-tab-panel label="标签页二" value="1">
-        <view class="tab-content">标签二内容</view>
+        <view class="tab-content">标签二内容区</view>
       </t-tab-panel>
       <t-tab-panel label="标签页三" value="2">
-        <view class="tab-content">标签三内容</view>
+        <view class="tab-content">标签三内容区</view>
       </t-tab-panel>
       <t-tab-panel label="标签页四" value="3">
-        <view class="tab-content">标签四内容</view>
+        <view class="tab-content">标签四内容区</view>
       </t-tab-panel>
       <t-tab-panel label="标签页五" value="4">
-        <view class="tab-content">标签五内容</view>
+        <view class="tab-content">标签五内容区</view>
       </t-tab-panel>
     </t-tabs>
   </t-demo>
