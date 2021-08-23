@@ -1,188 +1,150 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 const { prefix } = config;
-const name = `${prefix}-indexes`;
 
-interface Touch {
-  startX: number;
-  startY: number;
-  deltaX: number;
-  deltaY: number;
-  offsetX: number;
-  offsetY: number;
-}
+const classPrefix = `${prefix}-indexes`;
 
-const touch: Touch = {
-  startX: 0,
-  startY: 0,
-  deltaX: 0,
-  deltaY: 0,
-  offsetX: 0,
-  offsetY: 0,
-};
-
-TComponent({
-  lifetimes: {
-    attached() {
-      wx.getSystemInfo({
-        success: (res) => {
-          this.setData({
-            clientHeight: res.windowHeight,
-          });
-        },
-      });
-    },
-  },
-  relations: {
-    './indexes-anchor': {
-      type: 'child',
-    },
-  },
-  properties: {
-    indexList: {
+@wxComponent()
+export default class IndexBar extends SuperComponent {
+  properties = {
+    list: {
       type: Array,
-      value: ['A', 'B', 'C', 'D'],
-    },
-  },
-  data: {
-    classPrefix: name,
-    rootScrollMask: false,
-    showCurrentSidebar: false,
-    currentSidebar: '',
-    children: [],
-    timer: 0,
-    toView: '',
-    toValue: '',
-    childrenNode: [],
-    sidebarNode: [],
-  },
-  methods: {
-    setCurrentSidebar(index: any) {
-      this.setData({ currentSidebar: index, showCurrentSidebar: true });
-    },
-    _getAllLi() {
-      const nodes = this.getRelationNodes('./indexes-anchor');
-      this.setData({
-        childrenNode: nodes,
-      });
-    },
-    handleRootTouchstart() {
-      this.setData({
-        rootScrollMask: true,
-      });
-    },
-    handleRootTouchend() {
-      this.setData({
-        rootScrollMask: false,
-      });
-    },
-    handleSidebarItemClick(e: { currentTarget: { dataset: { num: any; index: any } } }) {
-      this._getAllLi();
-      this.scrollToView(e.currentTarget.dataset.num);
-      this.setCurrentSidebar(e.currentTarget.dataset.index);
-    },
-    scrollToView(index: string | number) {
-      this.setData({
-        topValue: this.data.childrenNode[index].data.top,
-      });
-    },
-    handleSidebarTouchstart(e: { touches: any }) {
-      const { touches } = e;
-      touch.startX = touches[0].clientX;
-      touch.startY = touches[0].clientX;
-      const query = wx.createSelectorQuery().in(this);
-      query
-        .selectAll(`.${name}__sidebar-item`)
-        .fields(
-          {
-            id: false,
-            rect: true,
-            dataset: true,
-            size: true,
-            scrollOffset: true,
-            properties: ['scrollX', 'scrollY'],
-            computedStyle: ['margin', 'backgroundColor'],
-          },
-          (res) => {
-            this.setData({
-              SidebarNode: res,
-            });
-          },
-        )
-        .exec();
-    },
-    handleSidebarTouchmove(e: { touches: any }) {
-      const { touches } = e;
-      const { clientY } = touches[0];
-      let currentTarget = '';
-      let number = 0;
-      this.data.SidebarNode.forEach((ele: { dataset?: any; top?: any }) => {
-        const { top } = ele;
-        const { index, num } = ele.dataset;
-        const targetClientVertical = top - clientY;
-        if (currentTarget === '' && top >= 0) {
-          currentTarget = this.data.SidebarNode[0].dataset.index ?? '';
-          number = 0;
-        } else if (targetClientVertical < 0) {
-          currentTarget = index ?? '';
-          number = num;
+      value: [],
+      observer(this: IndexBar, newValue) {
+        let groups = newValue;
+        // 分组没有title属性时，默认以index作为title
+        if (!!newValue.length && newValue[0].title === undefined) {
+          groups = groups.map((g) => {
+            return Object.assign({ title: g.index }, g);
+          });
         }
-      });
-      this._getAllLi();
-      this.scrollToView(number);
-      this.setCurrentSidebar(currentTarget);
+        this.setData({ groups });
+      },
     },
-    getTitleNode() {
-      const query = wx.createSelectorQuery().in(this);
-      query
-        .selectAll(`.${name}>>>.${name}__anchor`)
-        .fields(
+    height: {
+      type: Number,
+      observer(this: IndexBar) {
+        this.getBtnBarInfo();
+      },
+    },
+  };
+
+  data = {
+    classPrefix,
+    clientHeight: 0,
+    groups: [],
+    currentGroup: null,
+    showScrollTip: false,
+  };
+
+  timer = null;
+
+  ready() {
+    this.getHeight();
+  }
+  getHeight() {
+    wx.getSystemInfo({
+      success: (res) => {
+        this.setData(
           {
-            id: false,
-            rect: true,
-            dataset: true,
-            size: true,
-            scrollOffset: true,
+            clientHeight: res.windowHeight,
           },
-          (res) => {
-            this.setData({
-              children: res,
-            });
-          },
-        )
-        .exec();
-    },
-    handleRootScroll(e: { detail: { scrollTop: number } }) {
-      if (!this.data.rootScrollMask) {
+          this.getBtnBarInfo,
+        );
+      },
+    });
+  }
+
+  getBtnBarInfo() {
+    const query = this.createSelectorQuery();
+    query
+      .select(`#${classPrefix}__btn-bar`)
+      .boundingClientRect()
+      .exec((res) => {
+        if (!res[0]) return;
+        this.btnBar = {
+          top: res[0].top,
+          height: res[0].height,
+          itemHeight: res[0].height / this.data.groups.length,
+        };
+      });
+  }
+  computedIndex(tapY) {
+    const offsetY = tapY - this.btnBar.top;
+    let index;
+    if (offsetY < 0) {
+      index = 0;
+    } else if (offsetY > this.btnBar.height) {
+      index = this.data.groups.length - 1;
+    } else {
+      index = Math.floor(offsetY / this.btnBar.itemHeight);
+    }
+    return index;
+  }
+  scrollToY(tapY) {
+    const index = this.computedIndex(tapY);
+    this.scrollToAnchor(index);
+  }
+  scrollToAnchor(index) {
+    this.switchScrollTip(true);
+    this.setData({
+      currentGroup: this.data.groups[index],
+    });
+  }
+  switchScrollTip(val) {
+    val = !!val;
+    const switchFun = (value) => {
+      if (this.data.showScrollTip === value) {
         return;
       }
-      this._getAllLi();
-      let currentTarget = '';
-      const { childrenNode } = this.data;
-
-      childrenNode.forEach((ele: { data: { top?: any; index?: any } }) => {
-        const { top, index } = ele.data;
-        const targetClientVertical = top - e.detail.scrollTop;
-        if (currentTarget === '' && top >= 0) {
-          currentTarget = childrenNode[0].data.index ?? '';
-        } else if (targetClientVertical < 50) {
-          currentTarget = index ?? '';
-        }
+      this.setData({
+        showScrollTip: value,
       });
-
-      this.setCurrentSidebar(currentTarget);
-    },
-  },
-  observers: {
-    showCurrentSidebar(showCurrentSidebar: any) {
-      clearInterval(this.data.timer);
-      if (showCurrentSidebar) {
-        this.data.timer = setTimeout(() => {
-          this.setData({
-            showCurrentSidebar: false,
-          });
-        }, 2000);
+    };
+    // 关闭tip有延时，开启无延时
+    if (!val) {
+      clearInterval(this.timer);
+      this.timer = setTimeout(() => {
+        switchFun(false);
+      }, 1000);
+    } else {
+      switchFun(true);
+    }
+  }
+  // 控制触发频率(防抖)
+  throttleScroll() {
+    return new Promise<void>((resolve) => {
+      const delay = 100;
+      const now = Date.now();
+      if (this.lastScrollTime && this.lastScrollTime + delay > now) {
+        if (this.scrollTimer) {
+          clearTimeout(this.scrollTimer);
+        }
+        this.scrollTimer = setTimeout(() => {
+          this.lastScrollTime = now;
+          resolve();
+        }, delay);
+      } else {
+        this.lastScrollTime = now;
+        resolve();
       }
-    },
-  },
-});
+    });
+  }
+  onTouchStart() {
+    // this.switchScrollTip(true);
+  }
+  onTouchMove(e) {
+    this.throttleScroll().then(() => this.scrollToY(e.changedTouches[0].pageY));
+  }
+  onTouchCancel() {
+    this.switchScrollTip(false);
+  }
+  onTouchEnd(e) {
+    this.switchScrollTip(false);
+    this.scrollToY(e.changedTouches[0].pageY);
+  }
+  onCellTap(e) {
+    const { indexes } = e.currentTarget.dataset;
+    this.triggerEvent('select', { indexes });
+  }
+}
