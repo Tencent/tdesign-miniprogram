@@ -23,7 +23,7 @@
   >
     <view
       class="t-tabs-content-inner t-tabs-content-inner--animated"
-      style="{{  filters.animate({duration: 1,currentIndex:currentIndex, direction}) }}"
+      style="{{  filters.animate({duration: animation.duration,currentIndex:currentIndex, direction}) }}"
     >
       <slot />
     </view>

@@ -14,6 +14,7 @@ const trackLineWidth = 60;
 @wxComponent()
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
+
   relations = {
     '../tab-panel/tab-panel': {
       type: 'descendant' as 'descendant',
@@ -31,7 +32,9 @@ export default class Tabs extends SuperComponent {
       },
     },
   };
+
   externalClasses = ['t-class-tabs', 't-class-item', 't-class-active'];
+
   properties = {
     value: {
       type: String,
@@ -41,6 +44,11 @@ export default class Tabs extends SuperComponent {
           this.setCurrentIndexByName(name);
         }
       },
+    },
+
+    animation: {
+      type: Object,
+      value: { duration: 0 },
     },
 
     placement: {
@@ -53,6 +61,7 @@ export default class Tabs extends SuperComponent {
       value: true,
     },
   };
+
   data = {
     classPrefix: 't-tabs',
     tabs: [],
@@ -66,6 +75,7 @@ export default class Tabs extends SuperComponent {
   created() {
     this.children = this.children || [];
   }
+
   attached() {
     wx.nextTick(() => {
       this.setTrack();
@@ -95,6 +105,7 @@ export default class Tabs extends SuperComponent {
     });
     this.setCurrentIndexByName(this.properties.value);
   }
+
   setCurrentIndexByName(name) {
     const { children } = this;
     const index = children.findIndex((child: any) => child.getComputedName() === name);
@@ -102,6 +113,7 @@ export default class Tabs extends SuperComponent {
       this.setCurrentIndex(index);
     }
   }
+
   setCurrentIndex(index: number) {
     if (index <= -1 || index >= this.children.length) return;
     this.children.forEach((child: any, idx: number) => {
@@ -119,6 +131,7 @@ export default class Tabs extends SuperComponent {
       this.trigger('change', index);
     });
   }
+
   getCurrentName() {
     if (this.children) {
       const activeTab = this.children[this.data.currentIndex];
@@ -127,6 +140,7 @@ export default class Tabs extends SuperComponent {
       }
     }
   }
+
   setTrack(color = '#0052d9') {
     if (!this.properties.showBottomLine) return;
     const { children } = this;
@@ -151,8 +165,8 @@ export default class Tabs extends SuperComponent {
       let trackStyle = `background-color: ${color};
         -webkit-transform: translate${direction}(${distance}px);
         transform: translate${direction}(${distance}px);
-        -webkit-transition-duration: ${2}s;
-        transition-duration: ${2}s;
+        -webkit-transition-duration: ${this.properties.animation.duration}s;
+        transition-duration: ${this.properties.animation.duration}s;
       `;
       trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
       this.setData({
@@ -160,6 +174,7 @@ export default class Tabs extends SuperComponent {
       });
     });
   }
+
   trigger(eventName: string, index: number) {
     const currentIndex = index || this.data.currentIndex;
     const currentTab = this.data.tabs[currentIndex];
@@ -172,6 +187,7 @@ export default class Tabs extends SuperComponent {
       });
     }
   }
+
   onTabTap(event: any) {
     const { index } = event.currentTarget.dataset;
     const currentTab = this.data.tabs[index];
@@ -184,23 +200,27 @@ export default class Tabs extends SuperComponent {
       });
     }
   }
+
   onTouchStart(event: any) {
     this.touchStart(event);
   }
+
   onTouchMove(event: any) {
     this.touchMove(event);
   }
+
   onTouchEnd() {
     const { direction, deltaX, offsetX } = this;
     const minSwipeDistance = 50;
     if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
-      const index = this.getAvaiableTabIndex(deltaX);
+      const index = this.getAvailableTabIndex(deltaX);
       if (index !== -1) {
         this.setCurrentIndex(index);
       }
     }
   }
-  getAvaiableTabIndex(deltaX: number) {
+
+  getAvailableTabIndex(deltaX: number) {
     const step = deltaX > 0 ? -1 : 1;
     const { currentIndex, tabs } = this.data;
     const len = tabs.length;
