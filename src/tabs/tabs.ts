@@ -1,6 +1,5 @@
 import dom from '../behaviors/dom';
 import touch from '../behaviors/touch';
-
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 
@@ -11,7 +10,6 @@ enum Position {
   left = 'left',
 }
 const trackLineWidth = 60;
-// TComponent({
 @wxComponent()
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
@@ -36,29 +34,7 @@ export default class Tabs extends SuperComponent {
 
   externalClasses = ['t-class-tabs', 't-class-item', 't-class-active'];
 
-  properties = {
-    value: {
-      type: String,
-      optionalTypes: [Number],
-      value: '0',
-    },
-
-    animation: {
-      type: Object,
-    },
-
-    placement: {
-      type: String,
-      value: 'top', // 枚举 'bottom' | 'left' | 'right',
-    },
-
-    showBottomLine: {
-      type: Boolean,
-      value: true,
-    },
-  };
-
-  // properties = props;
+  properties = props;
 
   observers = {
     value(name) {

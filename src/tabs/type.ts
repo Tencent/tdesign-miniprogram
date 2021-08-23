@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-09 19:19:48
+ * updated at 2021-08-23 20:51:17
  * */
 
 export interface TdTabsProps {
@@ -44,7 +44,8 @@ export interface TdTabsProps {
    * 激活的选项卡值
    */
   value?: {
-    optionalTypes: Array<StringConstructor | NumberConstructor>;
+    type: StringConstructor;
+    optionalTypes: Array<NumberConstructor>;
     value?: TabValue;
     required?: boolean;
   };
@@ -80,7 +81,8 @@ export interface TdTabPanelProps {
    * 选项卡的值，唯一标识
    */
   value?: {
-    optionalTypes: Array<StringConstructor | NumberConstructor>;
+    type: StringConstructor;
+    optionalTypes: Array<NumberConstructor>;
     value?: TabValue;
     required?: boolean;
   };
