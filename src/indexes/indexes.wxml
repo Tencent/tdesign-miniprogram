@@ -2,7 +2,7 @@
   <scroll-view
     class="{{classPrefix}}__content"
     scroll-y
-    scroll-into-view="{{ currentGroup.index }}"
+    scroll-into-view="index_{{ currentGroup.index }}"
     scroll-with-animation="{{ false }}"
     style="height: {{ height ? height + 'px' : clientHeight + 'px' }};"
   >
@@ -12,7 +12,7 @@
       wx:key="index"
       wx:for-item="group"
       wx:for-index="gindex"
-      id="{{ group.index }}"
+      id="index_{{ group.index }}"
       title="{{ group.title }}"
     >
       <t-cell
