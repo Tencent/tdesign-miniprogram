@@ -36,7 +36,7 @@
       wx:key="index"
       bindtap="selectChild"
       data-name="{{child.name || index}}"
-      >{{ child.text }}</view
+      >{{ child.label }}</view
     >
   </view>
 </view>

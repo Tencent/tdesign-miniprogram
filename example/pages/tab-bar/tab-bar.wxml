@@ -21,7 +21,7 @@
         wx:key="index"
         value="{{item.value}}"
       >
-        {{item.text}}
+        {{item.label}}
       </t-tab-bar-item>
     </t-tab-bar>
 
@@ -43,7 +43,7 @@
         icon="{{item.icon}}"
         value="{{item.value}}"
       >
-        {{item.text}}
+        {{item.label}}
       </t-tab-bar-item>
     </t-tab-bar>
 
@@ -103,7 +103,7 @@
         value="{{item.value}}"
         sub-tab-bar="{{item.children}}"
       >
-        {{item.text}}
+        {{item.label}}
       </t-tab-bar-item>
     </t-tab-bar>
   </view>

@@ -2,10 +2,10 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-13 20:56:20
+ * updated at 2021-08-24 15:38:46
  * */
 
-import { TdTabBarItemProps } from './type';
+import { TdTabBarItemProps } from './type'
 const props: TdTabBarItemProps = {
   /** 图标右上角提示信息 */
   badgeProps: {

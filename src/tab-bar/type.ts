@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-13 20:56:20
+ * updated at 2021-08-24 15:38:46
  * */
 
 import { TdBadgeProps } from '../badge/type';
@@ -62,7 +62,7 @@ export interface TdTabBarProps {
     value?: string | number;
     required?: boolean;
   };
-}
+};
 
 export interface TdTabBarItemProps {
   /**
@@ -86,7 +86,7 @@ export interface TdTabBarItemProps {
    */
   subTabBar?: {
     type: ArrayConstructor;
-    value?: SubTabBarItem[];
+    value?: SubTabBarItem[] ;
     required?: boolean;
   };
   /**
@@ -98,9 +98,6 @@ export interface TdTabBarItemProps {
     value?: string | number;
     required?: boolean;
   };
-}
+};
 
-export interface SubTabBarItem {
-  value: string;
-  text: string;
-}
+export interface SubTabBarItem { value: string; label: string };
