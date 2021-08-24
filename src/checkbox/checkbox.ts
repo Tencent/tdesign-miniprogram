@@ -26,7 +26,6 @@ export default class Checkbox extends SuperComponent {
   };
   lifetimes = {
     attached() {
-      console.log('group attached');
       this.initStatus();
     },
   };
