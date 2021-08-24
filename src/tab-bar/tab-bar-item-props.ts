@@ -5,7 +5,7 @@
  * updated at 2021-08-24 15:38:46
  * */
 
-import { TdTabBarItemProps } from './type'
+import { TdTabBarItemProps } from './type';
 const props: TdTabBarItemProps = {
   /** 图标右上角提示信息 */
   badgeProps: {
