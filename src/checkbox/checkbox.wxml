@@ -4,28 +4,24 @@
     class="{{classPrefix}}__icon-left t-class-icon"
     data-target="icon"
     bind:tap="onChange"
-    wx:if="{{align==='left'}}"
+    wx:if="{{align === 'left'}}"
   >
-    <block wx:if="{{icon.length>0}}">
+    <block wx:if="{{icon.length > 0}}">
       <!-- <slot name="icon"></slot> -->
       <view class="{{classPrefix}}__image">
-        <image
-          src="{{active?icon[0]:icon[1]}}"
-          class="{{classPrefix}}-icon__image"
-          webp="{{true}}"
-        />
+        <image src="{{active ? icon[0] : icon[1]}}" class="{{classPrefix}}-icon__image" webp />
       </view>
     </block>
     <block wx:else>
       <t-icon
-        name="{{active?(halfChecked?'remove':'tick_fill'):'circle'}}"
-        class="{{classPrefix}}__btn {{active?classPrefix + '-is-checked' : ''}} {{disabled?classPrefix + '-is-disabled' : ''}}"
+        name="{{active ? (halfChecked ? 'remove' : 'tick_fill') : 'circle'}}"
+        class="{{classPrefix}}__btn {{active ? classPrefix + '-is-checked' : ''}} {{disabled ? classPrefix + '-is-disabled' : ''}}"
       />
     </block>
   </view>
   <!-- 文本内容 -->
   <view
-    class="{{classPrefix}}__content {{disabled?classPrefix + '-is-disabled-context' : ''}}"
+    class="{{classPrefix}}__content {{disabled ? classPrefix + '-is-disabled-context' : ''}}"
     data-target="text"
     bind:tap="onChange"
   >
@@ -46,22 +42,18 @@
     class="{{classPrefix}}__icon-right t-class-icon"
     data-target="icon"
     bind:tap="onChange"
-    wx:if="{{align==='right'}}"
+    wx:if="{{align === 'right'}}"
   >
     <block wx:if="{{icon.length>0}}">
       <!-- <slot name="icon"></slot> -->
       <view class="{{classPrefix}}__image">
-        <image
-          src="{{active?icon[0]:icon[1]}}"
-          class="{{classPrefix}}-icon__image"
-          webp="{{true}}"
-        />
+        <image src="{{active ? icon[0] : icon[1]}}" class="{{classPrefix}}-icon__image" webp />
       </view>
     </block>
     <block wx:else>
       <t-icon
-        name="{{active?(halfChecked?'remove':'tick_fill'):'circle'}}"
-        class="{{classPrefix}}__btn {{disabled?classPrefix + '-is-disabled' : ''}} {{active?classPrefix + '-is-checked' : ''}}"
+        name="{{active ? (halfChecked ? 'remove' : 'tick_fill') : 'circle'}}"
+        class="{{classPrefix}}__btn {{disabled ? classPrefix + '-is-disabled' : ''}} {{active ? classPrefix + '-is-checked' : ''}}"
       />
     </block>
   </view>

@@ -3,8 +3,8 @@
   <block wx:for="{{checkboxOptions}}" wx:key="value">
     <t-checkbox
       class="t-checkbox"
-      label="{{item.label||item.text||''}}"
-      value="{{item.value||''}}"
+      label="{{item.label || item.text || ''}}"
+      value="{{item.value || ''}}"
       check-all="{{item.checkAll}}"
       disabled="{{item.disabled}}"
       bind:toggleAll="handleCheckAll"
