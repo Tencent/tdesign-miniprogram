@@ -201,4 +201,5 @@ Page({
       },
     ],
   },
+  onShareAppMessage() {},
 });
