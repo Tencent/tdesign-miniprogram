@@ -1,41 +1,57 @@
 .demo {
-  padding-bottom: 28px;
+  padding-bottom: 56rpx;
   // padding-bottom: env(safe-area-inset-bottom, 28px); 小程序真机渲染有bug
   // padding-bottom: constant(safe-area-inset-bottom, 28px);
 
   &-title {
-    font-size: 20px;
-    line-height: 28px;
-    margin: 16px 16px 0;
-    color: rgba(0, 0, 0, 0.9);
+    font-size: 40rpx;
+    font-weight: 700;
+    line-height: 56rpx;
+    margin: 32rpx 32rpx 0;
+    color: rgba(0, 0, 0, .9);
   }
 
   &-desc {
-    font-size: 13px;
+    font-size: 26rpx;
     color: #999;
-    margin: 4px 16px;
-    line-height: 18px;
+    margin: 8rpx 32rpx;
+    line-height: 36rpx;
   }
 
   &-section {
-    margin-top: 28px;
+    margin-top: 56rpx;
 
     &__title {
-      font-size: 16px;
-      margin: 16px 16px 0;
-      color: rgba(0, 0, 0, 0.9);
-      line-height: 24px;
+      font-size: 32rpx;
+      margin: 32rpx 32rpx 0;
+      color: rgba(0, 0, 0, .9);
+      line-height: 48rpx;
+    }
+
+    &__sub-title {
+      font-size: 28rpx;
+      margin: 32rpx 32rpx 24rpx 32rpx;
+      color: rgba(0, 0, 0, .9);
+      line-height: 44rpx;
     }
 
     &__desc {
-      font-size: 13px;
+      font-size: 26rpx;
       color: #999;
-      margin: 4px 16px;
-      line-height: 18px;
+      margin: 8rpx 32rpx;
+      line-height: 36rpx;
     }
 
     &__container {
-      padding: 0 16px;
+      padding: 0 32rpx;
+    }
+
+    .button-group {
+      margin: 56rrpx 0rpx;
+    }
+
+    .button-group-item {
+      margin-bottom: 48rrpx;
     }
   }
 }

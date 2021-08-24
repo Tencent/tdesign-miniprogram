@@ -1,17 +1,17 @@
 <view class="demo">
   <view class="demo-title">Empty 空状态</view>
   <view class="demo-desc">空状态时的占位提示。</view>
+  <t-demo title="01 类型" desc="状态图标结合描述文字">
+    <view class="demo-section__desc">自定义图片空状态</view>
+    <view class="demo-section__wrapper">
+      <t-empty t-class="empty-cls" image="{{emptyBag}}" size="224rpx" description="描述文字" />
+    </view>
 
-  <view class="demo-section">
-    <view class="demo-section__title">01 基本用法</view>
-    <view class="demo-section__desc">状态图标结合描述文字</view>
-    <view class="empty-text" style="margin-top: 32rpx"> 自定义图片空状态 </view>
-    <t-empty t-class="empty-cls" image="{{emptyBag}}" size="224rpx" description="描述文字" />
-    <view class="empty-text"> 带操作空状态 </view>
-    <view class="empty-wrap">
+    <view class="demo-section__desc"> 带操作空状态</view>
+    <view class="demo-section__wrapper">
       <t-empty t-class="empty-cls" image="{{emptyCart}}" size="224rpx" description="描述文字">
         <t-button t-class="empty-button" bind:tap="toHome">按钮</t-button>
       </t-empty>
     </view>
-  </view>
+  </t-demo>
 </view>

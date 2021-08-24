@@ -15,7 +15,7 @@ export default class Cell extends SuperComponent {
     't-class-description',
     't-class-note',
     't-class-hover',
-    't-class-thumb',
+    't-class-image',
     't-class-left',
     't-class-right',
   ];

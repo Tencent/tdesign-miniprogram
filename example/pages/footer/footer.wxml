@@ -1,27 +1,43 @@
-<view class="t-footer-demo">
-  <view class="t-footer-demo__title">01 基本用法</view>
-  <view class="t-footer-demo__desc">页脚主要有版权信息、底部链接或logo构成</view>
-  <!-- type 为 text，只有版权信息 -->
-  <t-footer type="text" textCopyrightInfo="{{textCopyrightInfo}}" class="footer" />
-  <!-- type 为 text，含有底部链接 -->
-  <t-footer
-    type="text"
-    textCopyrightInfo="{{textCopyrightInfo}}"
-    textLinkList="{{textLinkListOne}}"
-    class="footer"
-  />
-  <!-- type 为 text，含有两条底部链接 -->
-  <t-footer
-    type="text"
-    textCopyrightInfo="{{textCopyrightInfo}}"
-    textLinkList="{{textLinkListTwo}}"
-    class="footer"
-  />
-  <!-- type 为 logo -->
-  <t-footer
-    type="logo"
-    logoIconUrl="{{logoIconUrl}}"
-    logoTitleUrl="{{logoTitleUrl}}"
-    class="footer"
-  />
+<view class="demo">
+  <view class="demo-title">Footer 页脚</view>
+  <view class="demo-desc">页脚主要有版权信息、底部链接或logo构成</view>
+  <t-demo title="01 类型">
+    <view class="t-footer-demo">
+      <view class="demo-section__desc">基础页脚</view>
+      <view class="demo-section__wrapper">
+        <!-- type 为 text，只有版权信息 -->
+        <t-footer type="text" textCopyrightInfo="{{textCopyrightInfo}}" class="footer" />
+      </view>
+
+      <view class="demo-section__desc">基础加连接页脚</view>
+      <view class="demo-section__wrapper">
+        <!-- type 为 text，含有底部链接 -->
+        <t-footer
+          type="text"
+          textCopyrightInfo="{{textCopyrightInfo}}"
+          textLinkList="{{textLinkListOne}}"
+          class="footer"
+        />
+        <!-- type 为 text，含有两条底部链接 -->
+        <view class="t-footer-demo--divider"></view>
+        <t-footer
+          type="text"
+          textCopyrightInfo="{{textCopyrightInfo}}"
+          textLinkList="{{textLinkListTwo}}"
+          class="footer"
+        />
+      </view>
+
+      <view class="demo-section__desc">基础加连接页脚</view>
+      <view class="demo-section__wrapper">
+        <!-- type 为 logo -->
+        <t-footer
+          type="logo"
+          logoIconUrl="{{logoIconUrl}}"
+          logoTitleUrl="{{logoTitleUrl}}"
+          class="footer"
+        />
+      </view>
+    </view>
+  </t-demo>
 </view>
