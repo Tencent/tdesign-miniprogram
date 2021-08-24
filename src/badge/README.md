@@ -1,4 +1,4 @@
-# Badge 
+# Badge
 
 ## 介绍
 
@@ -26,30 +26,21 @@
 
 ```html
 <!-- page.wxml -->
-<t-badge
-  count="10"
-  size="medium">
-</t-badge>
+<t-badge count="10" size="medium"> </t-badge>
 ```
 
 ## API
 
-### `<t-badge>` 组件
+### Badge Props
 
-组件路径：`@tencent/tdesign-miniprogram/badge/badge`
-
-#### Props
-
-| 属性         | 类型                           | 默认值 | 必传 | 说明                              |
-| ----------- | ---------------------------   | ------ | ---- | --------------------------------- |
-| color       | `String`                      | red    | N    | 颜色                              |
-| count       | `Number`                      | -      | N    | 展示的数字                        |
-| dot         | `Boolean`                     | false  | N    | 是否为红点                        |
-| maxCount    | `Number`                      | 99     | N    | 封顶的数字                        |
-| content     | `String`                      | -      | N    | 自定义文字                        |
-| size        | `String`                      | medium | N    | 尺寸（medium, small）             |
-| shape       | `String`                      | circle | N    | 形状，圆形或圆角矩形 (circle,rounded or ribbon) |
-| showZero    | `Boolean`                     | false  | N    | 当数值为 0 时是否展示 badge       |
-| offset      | `Array`                       | -      | N    | 设置状态点的位置偏移，格式为[x,y] |
-| numberStyle | `Object`                      | -      | N    | 设置状态点的样式                  |
-| hasSlot     | `Boolean`                     | false  | N    | 是否有 slot，小程序自定义组件限制   |
+| 名称      | 类型                   | 默认值 | 说明                                                                              | 必传     |
+| --------- | ---------------------- | ------ | --------------------------------------------------------------------------------- | -------- | --- |
+| color     | String                 | -      | 颜色                                                                              | N        |
+| content   | String / Slot          | -      | 徽标内容                                                                          | N        |
+| count     | String / Number / Slot | -      | 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+                         | N        |
+| dot       | Boolean                | false  | 是否为红点                                                                        | N        |
+| max-count | Number                 | 99     | 封顶的数字值                                                                      | N        |
+| offset    | Array                  | -      | 设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem']。TS 类型：`Array<string | number>` | N   |
+| shape     | String                 | circle | 形状。可选值：circle/round                                                        | N        |
+| show-zero | Boolean                | false  | 当数值为 0 时，是否展示徽标数字                                                   | N        |
+| size      | String                 | medium | 尺寸。可选值：small/medium                                                        | N        |

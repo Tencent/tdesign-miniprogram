@@ -1,117 +1,209 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import { MessageProps } from './message.interface';
+import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-message`;
+@wxComponent()
+export default class Message extends SuperComponent {
+  externalClasses = [
+    't-class',
+    't-class-content',
+    't-class-icon',
+    't-class-action',
+    't-class-close-btn',
+  ];
 
-TComponent({
+  options = {
+    styleIsolation: 'apply-shared' as const,
+    multipleSlots: true,
+  };
   // 组件的对外属性
-  properties: {
-    /**
-     * @description 显示与隐藏
-     * @attribute visible
-     */
-    visible: {
-      type: Boolean,
-      value: false,
-    },
-    /**
-     * @description 消息内容
-     * @attribute content
-     */
-    content: {
-      type: String,
-      value: '',
-    },
-    /**
-     * @description 消息类型
-     * @attribute theme
-     */
-    theme: {
-      type: String,
-      value: 'info', //  'info' | 'success' | 'warning' | 'error' | 'question' | 'loading'
-    },
-    /**
-     * @description 显示时间，毫秒
-     * @attribute duration
-     */
-    duration: {
-      type: Number,
-      value: 3000,
-    },
-    /**
-     * @description 文本对齐方式
-     * @attribute align
-     */
-    align: {
-      type: String,
-      value: 'left', // 'left' | 'center'
-    },
-    /**
-     * @description 自定义层级
-     * @attribute zIndex
-     */
-    zIndex: {
-      type: Number,
-      value: 6000,
-    },
-  },
+  properties: MessageProps = { ...props } as unknown as MessageProps;
+
   // 组件的内部数据
-  data: {
-    rootClasses: '',
-    rootStyles: '',
-  },
-
-  observers: {
-    'theme, align'() {
-      this.setClass();
-      this.setIconName();
-    },
-  },
-
-  /* 组件生命周期 */
-  lifetimes: {
-    // 组件实例被创建
-    // created() {},
-    // 组件实例进入页面节点树
-    attached() {
-      this.setClass();
-      this.setIconName();
-    },
-    // 页面组件初始化完成
-    // ready() { },
-    // 组件实例被移动到节点树另一个位置
-    // moved() {},
-    // 组件实例被从页面节点树移除
-    // detached() { },
-  },
-
-  /* Methods */
-  methods: {
-    setIconName() {
-      const iconName = this.properties.theme === 'success' ? 'tick_fill' : 'warning_fill';
-
-      this.setData({
-        iconName,
-      });
-    },
-    setClass() {
-      const rootClassList = [`${name}`, `${name}--${this.properties.theme}`];
-
-      if (!!this.properties.align) {
-        rootClassList.push(`${name}--size-${this.properties.align}`);
+  data = {
+    classPrefix: name,
+    visible: false,
+    loop: -1,
+    animation: [],
+    iconName: '',
+  };
+  observers = {
+    marquee(val) {
+      if (JSON.stringify(val) === '{}') {
+        this.setData({
+          marquee: {
+            speed: 50,
+            loop: -1,
+            delay: 5000,
+          },
+        });
       }
+    },
+  };
 
-      const messageClassList = [`${name}--txt`];
+  /** 延时关闭句柄 */
+  closeTimeoutContext = 0;
+  /** 动画句柄 */
+  nextAnimationContext = 0;
 
+  resetAnimation = wx.createAnimation({
+    duration: 0,
+    timingFunction: 'linear',
+  });
+
+  ready() {
+    this.memoInitalData();
+    this.setIcon();
+  }
+
+  /** 记录组件设置的项目 */
+  memoInitalData() {
+    this.initalData = {
+      ...this.properties,
+      ...this.data,
+    };
+  }
+
+  resetData(cb: () => void) {
+    this.setData({ ...this.initalData }, cb);
+  }
+
+  detached() {
+    this.clearMessageAnimation();
+  }
+  /** icon 值设置*/
+  setIcon(icon = this.properties.icon) {
+    // 使用空值
+    if (!icon) {
+      this.setData({ iconName: '' });
+      return;
+    }
+    // 固定值
+    if (icon === 'warning_fill' || icon === 'sound_fill') {
       this.setData({
-        rootClasses: rootClassList.join(' '),
-        messageClasses: messageClassList.join(' '),
+        iconName: `${icon}`,
       });
-    },
-    durationEnd(event) {
-      this.triggerEvent('durationEnd', {
-        ...event.detail,
-      });
-    },
-  },
-});
+      return;
+    }
+
+    // 使用默认值
+    if (icon) {
+      let nextValue = 'exclamation'; // exclamation-目前td没有这个icon
+      const { theme } = this.properties;
+      const themeMessage = {
+        info: 'help_fill',
+        success: 'tick_fill',
+        warning: 'warning_fill',
+        error: 'close_fill',
+      };
+      nextValue = themeMessage[theme];
+      this.setData({ iconName: nextValue });
+    }
+  }
+
+  /** 检查是否需要开启一个新的动画循环 */
+  checkAnimation() {
+    const speeding = this.properties.marquee.speed;
+
+    if (!this.properties.marquee) {
+      return;
+    }
+
+    if (this.data.loop > 0) {
+      this.data.loop = this.data.loop - 1;
+    } else if (this.data.loop === 0) {
+      // 动画回到初始位置
+      this.setData({ animation: this.resetAnimation.translateX(0).step().export() });
+      return;
+    }
+
+    if (this.nextAnimationContext) {
+      this.clearMessageAnimation();
+    }
+
+    const warpID = '#t-message--text-wrap';
+    const nodeID = '#t-message--text';
+    Promise.all([this.queryWidth(nodeID), this.queryWidth(warpID)]).then(
+      ([nodeWidth, warpWidth]) => {
+        this.setData(
+          {
+            animation: this.resetAnimation.translateX(warpWidth).step().export(),
+          },
+          () => {
+            const durationTime = ((nodeWidth + warpWidth) / speeding) * 1000;
+            const nextAnimation = wx
+              .createAnimation({
+                // 默认50px/s
+                duration: durationTime,
+              })
+              .translateX(-nodeWidth)
+              .step()
+              .export();
+
+            // 这里就只能用 setTimeout/20, nextTick 没用
+            // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
+            setTimeout(() => {
+              this.nextAnimationContext = setTimeout(
+                this.checkAnimation.bind(this),
+                durationTime,
+              ) as unknown as number;
+
+              this.setData({ animation: nextAnimation });
+            }, 20);
+          },
+        );
+      },
+    );
+  }
+
+  /** 获取元素长度 */
+  queryWidth(queryName: string): Promise<number> {
+    return new Promise((resolve) => {
+      this.createSelectorQuery()
+        .select(queryName)
+        .boundingClientRect(({ width }) => {
+          resolve(width);
+        })
+        .exec();
+    });
+  }
+
+  /** 清理动画循环 */
+  clearMessageAnimation() {
+    clearTimeout(this.nextAnimationContext);
+    this.nextAnimationContext = 0;
+  }
+
+  show() {
+    const { duration, icon } = this.properties;
+    this.setData({ visible: true, loop: this.properties.marquee.loop });
+    this.setIcon(icon);
+    this.checkAnimation();
+    if (duration && duration > 0) {
+      this.closeTimeoutContext = setTimeout(() => {
+        this.hide();
+        this.triggerEvent('durationEnd', { self: this });
+      }, duration) as unknown as number;
+    }
+  }
+  hide() {
+    if (this.nextAnimationContext) {
+      this.clearMessageAnimation();
+    }
+    clearTimeout(this.closeTimeoutContext);
+    this.closeTimeoutContext = 0;
+    this.setData({ visible: false, animation: [] });
+  }
+
+  handleClose() {
+    this.hide();
+    this.triggerEvent('closeBtnClick');
+  }
+
+  handleBtnClick() {
+    this.triggerEvent('actionBtnClick', { self: this });
+  }
+}

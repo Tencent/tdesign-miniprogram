@@ -1,12 +1,27 @@
-<view class="{{classPrefix}}">
+<view class="{{classPrefix}} {{icon ? '' : prefix+'-is-bordered'}}">
   <view
-    class="{{classPrefix}}__content {{isChecked ? prefix+'-is-checked' : ''}} {{icon ? prefix+'-size-s' : ''}}"
+    class="{{classPrefix}}__content {{isChecked ? prefix+'-is-checked' : ''}}"
+    style="color: {{isChecked ? activeColor: color}}"
     bindtap="toggle"
   >
     <view class="{{classPrefix}}__icon" wx:if="{{icon}}">
-      <t-icon name="{{icon}}" size="large"></t-icon>
+      <t-badge
+        wx:if="{{badgeProps.dot || badgeProps.content}}"
+        color="{{badgeProps.color}}"
+        count="{{badgeProps.count}}"
+        max-count="{{badgeProps.maxCount}}"
+        dot="{{badgeProps.dot}}"
+        content="{{badgeProps.content}}"
+        size="{{badgeProps.size}}"
+        showZero="{{badgeProps.showZero}}"
+        offset="{{badgeProps.offset}}"
+        hasSlot
+      >
+        <t-icon name="{{icon}}" size="24px"></t-icon>
+      </t-badge>
+      <t-icon wx:else name="{{icon}}" size="24px"></t-icon>
     </view>
-    <view class="{{classPrefix}}__text">
+    <view class="{{classPrefix}}__text {{icon ? prefix+'-size-s' : ''}}">
       <view class="{{classPrefix}}__icon-menu" wx:if="{{hasChildren}}"></view>
       <slot />
     </view>
@@ -15,13 +30,13 @@
   <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}">
     <view
       class="{{classPrefix}}__spread-item"
-      wx:for="{{children}}"
+      wx:for="{{subTabBar}}"
       wx:for-item="child"
       wx:for-index="index"
       wx:key="index"
       bindtap="selectChild"
       data-name="{{child.name || index}}"
-      >{{ child.text }}</view
+      >{{ child.label }}</view
     >
   </view>
 </view>

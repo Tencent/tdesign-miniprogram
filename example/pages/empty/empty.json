@@ -2,6 +2,7 @@
   "navigationBarTitleText": "Empty",
   "usingComponents": {
     "t-button": "@tencent/tdesign-miniprogram/button/button",
-    "t-empty": "@tencent/tdesign-miniprogram/empty/empty"
+    "t-empty": "@tencent/tdesign-miniprogram/empty/empty",
+    "t-demo": "../../components/demo-block/index"
   }
 }

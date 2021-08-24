@@ -60,13 +60,13 @@
       <view class="t-divider-demo">
         <view class="demo-section__desc">垂直分割</view>
         <view class="demo-6">
-          <text>雨纷纷</text>
+          <text class="demo-6--text-color">雨纷纷</text>
           <t-divider theme="vertical"></t-divider>
-          <text>雨纷纷</text>
+          <text class="demo-6--text-color">雨纷纷</text>
           <t-divider theme="vertical"></t-divider>
-          <text>雨纷纷</text>
+          <text class="demo-6--text-color">雨纷纷</text>
           <t-divider theme="vertical"></t-divider>
-          <text>雨纷纷</text>
+          <text class="demo-6--text-color">雨纷纷</text>
         </view>
       </view>
     </view>

@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-07-26 09:42:22
+ * updated at 2021-08-11 16:04:33
  * */
 
 export interface TdCellProps {
@@ -67,6 +67,14 @@ export interface TdCellProps {
     required?: boolean;
   };
   /**
+   * 主图
+   */
+  image?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
    * 链接跳转类型
    * @default navigateTo
    */
@@ -90,14 +98,6 @@ export interface TdCellProps {
   required?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
-  };
-  /**
-   * 主图
-   */
-  thumb?: {
-    type: StringConstructor;
-    value?: string;
     required?: boolean;
   };
   /**
