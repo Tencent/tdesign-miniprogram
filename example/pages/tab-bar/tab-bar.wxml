@@ -19,9 +19,9 @@
         wx:for-item="item"
         wx:for-index="index"
         wx:key="index"
-        name="{{item.name}}"
+        value="{{item.value}}"
       >
-        {{item.text}}
+        {{item.label}}
       </t-tab-bar-item>
     </t-tab-bar>
 
@@ -41,17 +41,33 @@
         wx:for-index="index"
         wx:key="index"
         icon="{{item.icon}}"
-        name="{{item.name}}"
+        value="{{item.value}}"
       >
-        {{item.text}}
+        {{item.label}}
       </t-tab-bar-item>
     </t-tab-bar>
 
     <t-tab-bar value="label1" bindchange="onChange" class="mb-12">
-      <t-tab-bar-item badge="16" icon="user" name="label1" icon="user_fill">文字</t-tab-bar-item>
-      <t-tab-bar-item dot icon="user" name="label2" icon="user_fill">文字</t-tab-bar-item>
-      <t-tab-bar-item badge="New" icon="user" name="label3" icon="user_fill">文字</t-tab-bar-item>
-      <t-tab-bar-item badge="..." icon="user" name="label4" icon="user_fill">文字</t-tab-bar-item>
+      <t-tab-bar-item badge-props="{{ {content: 16} }}" icon="user" value="label1" icon="user_fill"
+        >文字</t-tab-bar-item
+      >
+      <t-tab-bar-item badge-props="{{ { dot: true } }}" icon="user" value="label2" icon="user_fill"
+        >文字</t-tab-bar-item
+      >
+      <t-tab-bar-item
+        badge-props="{{ {content: 'New'} }}"
+        icon="user"
+        value="label3"
+        icon="user_fill"
+        >文字</t-tab-bar-item
+      >
+      <t-tab-bar-item
+        badge-props="{{ {content: '...'} }}"
+        icon="user"
+        value="label4"
+        icon="user_fill"
+        >文字</t-tab-bar-item
+      >
     </t-tab-bar>
 
     <view class="demo-section__desc mg-16">纯图标标签栏</view>
@@ -70,7 +86,7 @@
         wx:for-index="index"
         wx:key="index"
         icon="{{item.icon}}"
-        name="{{item.name}}"
+        value="{{item.value}}"
       >
       </t-tab-bar-item>
     </t-tab-bar>
@@ -84,10 +100,10 @@
         wx:for-item="item"
         wx:for-index="index"
         wx:key="index"
-        name="{{item.name}}"
-        children="{{item.children}}"
+        value="{{item.value}}"
+        sub-tab-bar="{{item.children}}"
       >
-        {{item.text}}
+        {{item.label}}
       </t-tab-bar-item>
     </t-tab-bar>
   </view>

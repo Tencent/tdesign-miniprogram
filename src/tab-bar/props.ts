@@ -2,10 +2,10 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-12 15:21:51
+ * updated at 2021-08-24 15:38:46
  * */
 
-import { TdTabBarProps } from './type';
+import { TdTabBarProps } from './type'
 const props: TdTabBarProps = {
   /** 是否显示外边框 */
   bordered: {
@@ -34,7 +34,7 @@ const props: TdTabBarProps = {
   /** 当前选中标签的索引 */
   value: {
     type: String,
-    optionalTypes: [Number, Array],
+    optionalTypes: [Number],
     value: 0,
   },
 };
