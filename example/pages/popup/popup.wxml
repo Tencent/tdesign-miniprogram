@@ -1,6 +1,8 @@
 <view class="tdesign-demo-popup">
-  <view class="demo-title">01 基本用法</view>
-  <view class="demo-content">
-    <position-demo></position-demo>
-  </view>
+	<t-demo title="01 基本用法">
+		<view class="demo-content">
+			<position-demo/>
+		</view>
+	</t-demo>
 </view>
+

@@ -18,6 +18,7 @@ export default class Popup extends SuperComponent {
   externalClasses = ['t-class', 't-class-overlay', 't-class-content'];
   options = {
     multipleSlots: true, // 多slot支持
+    styleIsolation: 'shared' as const,
   };
   properties = props;
   data = {
