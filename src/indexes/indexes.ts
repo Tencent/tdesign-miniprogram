@@ -3,6 +3,7 @@ import config from '../common/config';
 const { prefix } = config;
 
 const classPrefix = `${prefix}-indexes`;
+const TOP_OFFSET = 40; // 滑动选中高亮的顶部偏移(px)
 
 @wxComponent()
 export default class IndexBar extends SuperComponent {
@@ -28,7 +29,7 @@ export default class IndexBar extends SuperComponent {
       this.setData({ groups });
     },
     height(this: IndexBar) {
-      this.getBtnBarInfo();
+      this.getDomInfo();
     },
   };
 
@@ -36,11 +37,14 @@ export default class IndexBar extends SuperComponent {
     classPrefix,
     clientHeight: 0,
     groups: [],
-    currentGroup: null,
+    activeGroup: null, // 当前高亮group
+    currentGroup: null, // 当前跳转group
     showScrollTip: false,
   };
 
   timer = null;
+  groupTop = null;
+  btnBar = null;
 
   ready() {
     this.getHeight();
@@ -52,26 +56,34 @@ export default class IndexBar extends SuperComponent {
           {
             clientHeight: res.windowHeight,
           },
-          this.getBtnBarInfo,
+          this.getDomInfo,
         );
       },
     });
   }
-
-  getBtnBarInfo() {
+  getDomInfo() {
     const query = this.createSelectorQuery();
-    query
-      .select(`#${classPrefix}__btn-bar`)
-      .boundingClientRect()
-      .exec((res) => {
-        if (!res[0]) return;
-        this.btnBar = {
-          top: res[0].top,
-          height: res[0].height,
-          itemHeight: res[0].height / this.data.groups.length,
-        };
+    query.select(`#${classPrefix}__btn-bar`).boundingClientRect();
+    query.selectAll(`.${classPrefix}__group`).boundingClientRect();
+    query.exec((res) => {
+      if (!res[0]) return;
+      this.btnBar = {
+        top: res[0].top,
+        height: res[0].height,
+        itemHeight: res[0].height / this.data.groups.length,
+      };
+      if (!res[1]) return;
+      // 计算每个group的scrollTop
+      this.groupTop = res[1].map((element) => element.height);
+      this.groupTop.reduce((acc, cur, index, src) => {
+        const amount = acc + cur;
+        this.groupTop[index] = amount;
+
+        return amount;
       });
+    });
   }
+  // 通过点击索引的点击位置，判断点击的索引下标位置。
   computedIndex(tapY) {
     const offsetY = tapY - this.btnBar.top;
     let index;
@@ -84,14 +96,33 @@ export default class IndexBar extends SuperComponent {
     }
     return index;
   }
+  // 通过scroll-view滑动高度计算当前下标位置
+  computedIndexByScrollTop(scrollTop: number): number {
+    if (!this.groupTop) {
+      return -1;
+    }
+
+    return this.groupTop.findIndex((element) => element - TOP_OFFSET > scrollTop);
+  }
+  // 在scroll-view滑动过程中，高亮对应的index
+  activeIndexWhenScroll(scrollTop: number) {
+    const curIndex = this.computedIndexByScrollTop(scrollTop);
+    if (curIndex >= 0) {
+      this.setData({
+        activeGroup: this.data.groups[curIndex],
+      });
+    }
+  }
   scrollToY(tapY) {
     const index = this.computedIndex(tapY);
     this.scrollToAnchor(index);
   }
   scrollToAnchor(index) {
     this.switchScrollTip(true);
+    const curGroup = this.data.groups[index];
     this.setData({
-      currentGroup: this.data.groups[index],
+      activeGroup: curGroup,
+      currentGroup: curGroup,
     });
   }
   switchScrollTip(val) {
@@ -133,9 +164,7 @@ export default class IndexBar extends SuperComponent {
       }
     });
   }
-  onTouchStart() {
-    // this.switchScrollTip(true);
-  }
+  onTouchStart() {}
   onTouchMove(e) {
     this.throttleScroll().then(() => this.scrollToY(e.changedTouches[0].pageY));
   }
@@ -149,5 +178,11 @@ export default class IndexBar extends SuperComponent {
   onCellTap(e) {
     const { indexes } = e.currentTarget.dataset;
     this.triggerEvent('select', { indexes });
+  }
+  onListScroll(e) {
+    this.throttleScroll().then(() => {
+      const { scrollTop } = e.detail;
+      this.activeIndexWhenScroll(scrollTop);
+    });
   }
 }

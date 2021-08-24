@@ -5,9 +5,11 @@
     scroll-into-view="index_{{ currentGroup.index }}"
     scroll-with-animation="{{ false }}"
     style="height: {{ height ? height + 'px' : clientHeight + 'px' }};"
+    bindscroll="onListScroll"
   >
     <t-cell-group
       t-class="{{classPrefix}}__group"
+      class="{{classPrefix}}__group"
       wx:for="{{ groups }}"
       wx:key="index"
       wx:for-item="group"
@@ -38,7 +40,7 @@
       catch:touchend="onTouchEnd"
     >
       <view
-        class="{{classPrefix}}__btn {{currentGroup.index === group.index ? 'is-actived' : ''}}"
+        class="{{classPrefix}}__btn {{activeGroup.index === group.index ? 'is-actived' : ''}}"
         wx:for="{{ groups }}"
         wx:key="index"
         wx:for-item="group"
