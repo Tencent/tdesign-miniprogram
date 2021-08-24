@@ -114,7 +114,7 @@ TComponent({
         // 当前层级列表选中项
         const thisValue: [] | string | number | null = selectList[level];
         if (thisValue === undefined) {
-          const firstChild = list[0];
+          const [firstChild] = list;
           if (firstChild.options) {
             // 还有子节点，当前层级作为单选处理
             this._selectTreeNode(level, firstChild.value);
@@ -172,14 +172,14 @@ TComponent({
       if (this.data.isTree) {
         this._selectTreeNode(
           e.target.dataset.level,
-          this.data.selectMode == 'single' ? e.detail.name : e.detail.names,
+          this.data.selectMode === 'single' ? e.detail.name : e.detail.names,
         );
       } else {
         const data = {
-          selected: this.data.selectMode == 'single' ? e.detail.name : e.detail.names,
+          selected: this.data.selectMode === 'single' ? e.detail.name : e.detail.names,
         };
         this.setData(data);
-        if (this.data.bar && this.data.selectMode == 'single') {
+        if (this.data.bar && this.data.selectMode === 'single') {
           this.confirmSelect();
         }
       }

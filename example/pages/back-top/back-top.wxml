@@ -4,8 +4,7 @@
     >当页面过长往下滑动是会出现返回顶部的便捷操作，帮助用户快速回到页面顶部</view
   >
 
-  <view class="demo-section">
-    <view class="demo-section__title">01 类型</view>
+  <t-demo title="01 类型">
     <view class="demo-section__desc">圆型返回顶部</view>
     <view class="button-group">
       <view class="button-group-item">
@@ -30,7 +29,7 @@
       </view>
     </view>
 
-    <view class="demo-section__desc">圆型返回顶部</view>
+    <view class="demo-section__desc">半圆型返回顶部</view>
     <view class="button-group">
       <view class="button-group-item">
         <t-button size="large" shape="round" bindtap="onBtnClick" data-index="{{4}}">
@@ -64,5 +63,5 @@
       text="{{backTopDemo.text}}"
     >
     </t-back-top>
-  </view>
+  </t-demo>
 </view>

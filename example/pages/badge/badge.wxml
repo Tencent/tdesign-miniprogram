@@ -31,24 +31,24 @@
       </t-badge>
     </view>
     <t-cell-group style="overflow: hidden">
-      <t-cell label="单行标题" link rightIcon="arrow-right">
-        <view class="cell-badge-wrap">
+      <t-cell title="单行标题" hover arrow>
+        <view class="cell-badge-wrap" slot="note">
           <t-badge dot />
         </view>
       </t-cell>
-      <t-cell label="单行标题" link rightIcon="arrow-right">
-        <view class="cell-badge-wrap">
+      <t-cell title="单行标题" hover arrow>
+        <view class="cell-badge-wrap" slot="note">
           <t-badge count="{{16}}" />
         </view>
       </t-cell>
-      <t-cell label="单行标题" link rightIcon="arrow-right">
-        <view class="cell-badge-wrap">
+      <t-cell title="单行标题" hover arrow>
+        <view class="cell-badge-wrap" slot="note">
           <t-badge content="New" shape="round" class="cell-badge" />
           <t-badge content="New" class="cell-badge" />
         </view>
       </t-cell>
-      <t-cell label="单行标题">
-        <t-badge content="New" offset="{{[0, 0]}}" shape="ribbon" />
+      <t-cell title="单行标题">
+        <t-badge content="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
       </t-cell>
     </t-cell-group>
   </view>

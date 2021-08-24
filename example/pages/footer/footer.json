@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "footer 页脚"
+  "navigationBarTitleText": "footer 页脚",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
 }
