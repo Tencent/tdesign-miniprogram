@@ -41,12 +41,14 @@
           >
             <t-icon name="close_fill" />
           </view>
-
           <view class="{{classPrefix}}-wrap--suffix">
             <slot name="suffix"></slot>
           </view>
           <view wx:if="{{suffix}}" class="{{classPrefix}}-wrap--suffix-text">
             <text>{{suffix}}</text>
+          </view>
+          <view wx:if="{{rightIcon}}" class="{{classPrefix}}-wrap--icon">
+            <t-icon name="{{rightIcon}}" />
           </view>
         </view>
         <view
