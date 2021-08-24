@@ -1,8 +1,44 @@
-<!-- API形式调用 -->
-<button class="t-button" bindtap="showMessage" data-type="info">弹出消息（info）</button>
-<button class="t-button" bindtap="showMessage" data-type="warning">弹出消息（warning）</button>
-<button class="t-button" bindtap="showMessage" data-type="success">弹出消息（success）</button>
-<button class="t-button" bindtap="showMessage" data-type="error">弹出消息（error）</button>
-<!-- <button class="t-button" bindtap="showInputDialog">输入类对话框</button> -->
-
-<t-message id="t-message" />
+<view class="demo">
+  <view class="demo-title">Message 消息通知</view>
+  <view class="demo-desc">
+    用于页面消息通知提示，具有成功提示、提醒、警示等功能，通常在顶部出现，可以自动消失或点击关闭
+  </view>
+  <t-demo title="01 类型">
+    <view class="demo-section__desc">弹窗内容为存文本、标题和副标题、带输入框</view>
+    <view class="button-group">
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" data-type="text">纯文字通知</t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" data-type="icon">带图标通知</t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" data-type="closeable">带关闭通知</t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" data-type="scroll">滚动通知</t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" bin data-type="btn">带按钮通知</t-button>
+      </view>
+    </view>
+  </t-demo>
+  <t-demo title="02 状态">
+    <view class="demo-section__desc">弹窗内容为存文本、标题和副标题、带输入框</view>
+    <view class="button-group">
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" data-type="info">普通通知</t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" data-type="warning">警示提示通知</t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" data-type="success">成功提示通知</t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button size="large" bindtap="showMessage" data-type="error">错误提示通知</t-button>
+      </view>
+    </view>
+  </t-demo>
+  <t-message id="t-message" bind:actionBtnClick="clickMessageBtnHadnle" t-class="t-class-content" />
+</view>

@@ -28,6 +28,10 @@ Page({
             name: 'Empty',
             path: '/pages/empty/empty',
           },
+          {
+            name: 'Image',
+            path: '/pages/image/image',
+          },
         ],
       },
       {
@@ -188,6 +192,10 @@ Page({
           {
             name: 'Drawer',
             path: '/pages/drawer/drawer',
+          },
+          {
+            name: 'Indexes',
+            path: '/pages/indexes/indexes',
           },
         ],
       },
