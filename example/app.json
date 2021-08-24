@@ -82,8 +82,6 @@
     "t-transition": "@tencent/tdesign-miniprogram/transition/transition",
     "t-popup": "@tencent/tdesign-miniprogram/popup/popup",
     "t-indexes": "@tencent/tdesign-miniprogram/indexes/indexes",
-    "t-indexes-anchor": "@tencent/tdesign-miniprogram/indexes/indexes-anchor",
-    "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell",
     "t-steps": "@tencent/tdesign-miniprogram/steps/steps",
     "t-step": "@tencent/tdesign-miniprogram/steps/step",
     "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu",

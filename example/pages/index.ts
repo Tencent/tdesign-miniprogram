@@ -193,6 +193,10 @@ Page({
             name: 'Drawer',
             path: '/pages/drawer/drawer',
           },
+          {
+            name: 'Indexes',
+            path: '/pages/indexes/indexes',
+          },
         ],
       },
     ],
