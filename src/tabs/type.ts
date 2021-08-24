@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-23 20:51:17
+ * updated at 2021-08-24 15:43:28
  * */
 
 export interface TdTabsProps {
@@ -57,6 +57,15 @@ export interface TdTabPanelProps {
    * @default true
    */
   destroyOnHide?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 是否禁用当前选项卡
+   * @default false
+   */
+  disabled?: {
     type: BooleanConstructor;
     value?: boolean;
     required?: boolean;

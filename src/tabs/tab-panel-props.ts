@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-23 20:51:17
+ * updated at 2021-08-24 15:43:28
  * */
 
 import { TdTabPanelProps } from './type';
@@ -11,6 +11,11 @@ const props: TdTabPanelProps = {
   destroyOnHide: {
     type: Boolean,
     value: true,
+  },
+  /** 是否禁用当前选项卡 */
+  disabled: {
+    type: Boolean,
+    value: false,
   },
   /** 选项卡名称，可自定义选项卡导航内容 */
   label: {
