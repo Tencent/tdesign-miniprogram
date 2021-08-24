@@ -6,24 +6,30 @@
   // align-items: center;
   font-size: 32rpx;
   padding: 32rpx 32rpx;
+  position: relative;
+
   .limit-title-row {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
   .image-center {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
   }
+
   &__icon-left {
     margin-right: 20rpx;
   }
+
   &__icon-right {
-    .image-center();
     right: 0px;
     display: contents;
+    .image-center();
   }
+
   &-icon__image {
     width: 20px;
     height: 20px;
@@ -33,35 +39,41 @@
   &__image {
     line-height: 48rpx;
   }
+
   &__btn {
     font-size: 40rpx;
     display: block;
     line-height: 40rpx;
   }
+
   &__content {
     flex: 1;
     line-height: 48rpx;
     margin-right: 10px;
   }
+
   &__title {
     .limit-title-row();
   }
+
   &__description {
+    color: rgba(0, 0, 0, .4);
     .limit-title-row();
-    color: rgba(0, 0, 0, 0.4);
   }
+
   &-is-checked {
     color: #0052d9;
   }
+
   &-is-disabled {
     cursor: not-allowed;
     color: #dcdcdc;
   }
+
   &-is-disabled-context {
     cursor: not-allowed;
-    color: rgba(0, 0, 0, 0.26);
+    color: rgba(0, 0, 0, .26);
   }
-  position: relative;
   // &::after {
   //   content: '';
   //   position: absolute;
