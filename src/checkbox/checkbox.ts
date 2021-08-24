@@ -1,57 +1,85 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import Props from './props';
 const { prefix } = config;
-const name = `${prefix}-checkbox`;
-
-TComponent({
-  relations: {
+const currentComponent = `${prefix}-checkbox`;
+@wxComponent()
+export default class Checkbox extends SuperComponent {
+  externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
+  relations = {
     '../checkbox-group/checkbox-group': {
-      type: 'ancestor',
+      type: 'ancestor' as 'ancestor',
     },
-  },
-  properties: {
-    checked: {
-      type: Boolean,
-      value: false,
-      observer(val: boolean) {
-        this.setData({
-          active: val,
-        });
-      },
-    },
-    title: String,
-    name: String,
-    label: String,
-    value: {
-      type: String,
-      optionalTypes: [Number],
-      value: '',
-    },
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    bordered: {
-      type: Boolean,
-      value: true,
-    },
-  },
-  data: {
-    classPrefix: name,
+  };
+  options = {
+    multipleSlots: true,
+  };
+  properties = Props;
+
+  // 组件的内部数据
+  data = {
+    classPrefix: currentComponent,
     classBasePrefix: prefix,
     active: false,
-  },
-  methods: {
-    onChange() {
-      if (this.data.disabled) return;
-      const { name, active } = this.data;
-      const item = { name, checked: !active };
+    halfChecked: false,
+    optionLinked: false,
+  };
+  lifetimes = {
+    attached() {
+      this.initStatus();
+    },
+  };
+  /* Methods */
+  methods = {
+    onChange(e) {
+      const { disabled, readonly } = this.data;
+      if (disabled || readonly) return;
+      const { target } = e.currentTarget.dataset;
+      const { contentDisabled } = this.data;
+      if (target === 'text' && contentDisabled) {
+        return;
+      }
+      const { value, active, checkAll, optionLinked } = this.data;
+      const item = { name: value, checked: !active, checkAll };
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
       if (parent) {
-        parent.updateValue(item);
+        if (checkAll || optionLinked) {
+          parent.handleCheckAll({
+            type: 'slot',
+            checked: !active,
+            option: !checkAll,
+            name: value,
+          });
+        } else {
+          parent.updateValue(item);
+        }
       } else {
-        this.triggerEvent('change', item);
-        this.toggle();
+        if (checkAll || optionLinked) {
+          this.triggerEvent('toggleAll', {
+            type: 'not-slot',
+            checked: !active,
+            option: !checkAll,
+            name: value,
+          });
+        } else {
+          this.triggerEvent('change', !active);
+          this.toggle();
+        }
+      }
+    },
+    initStatus() {
+      if (!this.data.optionLinked) {
+        if (this.data.indeterminate) {
+          this.setData({
+            active: true,
+            halfChecked: true,
+          });
+        } else {
+          this.setData({
+            active: this.data.checked,
+            halfChecked: this.data.indeterminate,
+          });
+        }
       }
     },
     toggle() {
@@ -60,10 +88,27 @@ TComponent({
         active: !active,
       });
     },
+    setDisabled(disabled: Boolean) {
+      this.setData({
+        disabled: this.data.disabled || disabled,
+      });
+    },
     changeActive(active: boolean) {
       this.setData({
         active,
       });
     },
-  },
-});
+    // 半选
+    changeCheckAllHalfStatus(active: boolean) {
+      this.setData({
+        halfChecked: active,
+      });
+    },
+    // group option
+    setOptionLinked(linked: Boolean) {
+      this.setData({
+        optionLinked: linked,
+      });
+    },
+  };
+}

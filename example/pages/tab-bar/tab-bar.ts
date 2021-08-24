@@ -2,37 +2,37 @@
 
 const list_1 = [
   {
-    name: 'label_1',
-    text: '文字',
+    value: 'label_1',
+    label: '文字',
     icon: 'user_fill',
   },
   {
-    name: 'label_2',
-    text: '文字',
+    value: 'label_2',
+    label: '文字',
     icon: 'user_fill',
   },
 ];
 const list_2 = [
   ...list_1,
   {
-    name: 'label_3',
-    text: '文字',
+    value: 'label_3',
+    label: '文字',
     icon: 'user_fill',
   },
 ];
 const list_3 = [
   ...list_2,
   {
-    name: 'label_4',
-    text: '文字',
+    value: 'label_4',
+    label: '文字',
     icon: 'user_fill',
   },
 ];
 const list_4 = [
   ...list_3,
   {
-    name: 'label_5',
-    text: '文字',
+    value: 'label_5',
+    label: '文字',
     icon: 'user_fill',
   },
 ];
@@ -40,20 +40,20 @@ const list_4 = [
 const list_5 = [
   ...list_1,
   {
-    name: 'label_3',
-    text: '此处展开',
+    value: 'label_3',
+    label: '此处展开',
     children: [
       {
-        name: 'spread_1',
-        text: '展开项一',
+        value: 'spread_1',
+        label: '展开项一',
       },
       {
-        name: 'spread_2',
-        text: '展开项二',
+        value: 'spread_2',
+        label: '展开项二',
       },
       {
-        name: 'spread_3',
-        text: '展开项三',
+        value: 'spread_3',
+        label: '展开项三',
       },
     ],
   },
