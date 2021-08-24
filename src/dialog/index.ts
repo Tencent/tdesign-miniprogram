@@ -5,7 +5,7 @@ import {
   DialogActionOptionsType,
 } from './type';
 
-function getDialogInstance(context?: Context, selector = '#t-dialog') {
+const getDialogInstance = function(context?: Context, selector = '#t-dialog') {
   if (!context) {
     const pages = getCurrentPages();
     const page = pages[pages.length - 1];

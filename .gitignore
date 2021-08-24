@@ -4,7 +4,6 @@ _example
 test/e2e
 test/unit
 .DS_Store
-package-lock.json
 node_modules
 
 # Log files

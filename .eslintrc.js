@@ -48,6 +48,9 @@ module.exports = {
     'no-param-reassign': 'off',
     // 在类属性和方法上关闭需要显式的可访问性修饰符
     '@typescript-eslint/explicit-member-accessibility': 'off',
+    'eqeqeq': ['error', 'always', {
+      'null': 'ignore'
+    }]
   },
   globals,
   overrides: [

@@ -159,6 +159,7 @@ TComponent({
         if (!rect) return;
         let count = 0;
         let distance = 0;
+        // eslint-disable-next-line no-restricted-syntax
         for (const item of res) {
           if (count < currentIndex) {
             distance += isScrollX ? item.width : item.height;

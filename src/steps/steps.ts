@@ -11,7 +11,7 @@ export enum StepStatusEnum {
   Error = 'error',
 }
 
-TComponent({
+export default TComponent({
   relations: {
     './step': {
       type: 'descendant',

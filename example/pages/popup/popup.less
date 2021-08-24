@@ -1,35 +1,43 @@
 .tdesign-demo-popup {
   padding: 16px;
+
   .demo-title {
     margin-bottom: 10px;
   }
+
   .t-button + .t-button {
     margin-left: 8px;
   }
+
   .t-button {
     margin-top: 10px;
   }
+
   .block {
     width: 100px;
     height: 100px;
     border-radius: 4px;
-    background: #ffffff;
+    background: #fff;
     color: #333;
     display: flex;
     align-items: center;
     justify-content: center;
+
     &::after {
       content: 'content';
     }
+
     &--border {
       border: 1rpx solid #d8d8d8;
     }
+
     &--left,
     &--right {
       width: 87vw;
       height: 100vh;
       border-radius: 0;
     }
+
     &--top,
     &--bottom {
       width: 100vw;

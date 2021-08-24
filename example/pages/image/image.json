@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Image",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}
