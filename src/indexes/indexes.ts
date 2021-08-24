@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 const { prefix } = config;
 
 const classPrefix = `${prefix}-indexes`;
@@ -7,15 +8,7 @@ const TOP_OFFSET = 40; // 滑动选中高亮的顶部偏移(px)
 
 @wxComponent()
 export default class IndexBar extends SuperComponent {
-  properties = {
-    list: {
-      type: Array,
-      value: [],
-    },
-    height: {
-      type: Number,
-    },
-  };
+  properties = props;
 
   observers = {
     list(this: IndexBar, newValue) {
