@@ -17,8 +17,10 @@ const trackLineWidth = 30;
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
 
+  externalClasses = ['t-class', 't-class-item', 't-class-active'];
+
   relations = {
-    '../tab-panel/tab-panel': {
+    './tab-panel': {
       type: 'descendant' as 'descendant',
       linked(target: any) {
         this.children.push(target);
@@ -34,8 +36,6 @@ export default class Tabs extends SuperComponent {
       },
     },
   };
-
-  externalClasses = ['t-class', 't-class-item', 't-class-active'];
 
   properties = props;
 
@@ -89,7 +89,6 @@ export default class Tabs extends SuperComponent {
 
   updateTabs() {
     const { children } = this;
-
     this.setData({
       tabs: children.map((child: any) => child.data),
     });
