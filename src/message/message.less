@@ -1,1 +1,81 @@
-@import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@message-horizen-padding: 32rpx;
+@message-vertical-padding: 24rpx;
+@message-font-size: 28rpx;
+@message-font-color: #0052d9;
+@message-align: flex-start;
+@message-icon-size: @icon-l;
+@message-border-radius: 8rpx;
+@message-z-index: 5000;
+@gutter: 16rpx;
+
+.@{prefix}-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: @message-align;
+  align-items: center;
+  z-index: @message-z-index;
+  color: @message-font-color;
+  padding: @message-vertical-padding @message-horizen-padding;
+  box-sizing: border-box;
+  border-radius: @message-border-radius;
+  font-size: @message-font-size;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .2);
+
+  &--text {
+    display: inline-block;
+  }
+
+  &--text-wrap {
+    flex: 1 1 auto;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &--text-nowrap {
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+
+  &--info {
+    color: @primary-color;
+  }
+
+  &--success {
+    color: @success-color;
+  }
+
+  &--warning {
+    color: @warning-color;
+  }
+
+  &--error {
+    color: @error-color;
+  }
+
+  .t-message--left-icon {
+    margin-right: @gutter;
+  }
+
+  .t-message--right-icon,
+  .t-message--right-btn {
+    flex: 0 0 auto;
+    margin-left: @gutter;
+  }
+
+  .t-message--right-btn {
+    font-size: inherit;
+    line-height: 44rpx;
+    border-radius: @message-border-radius;
+    border-color: inherit;
+    color: inherit;
+    padding: 6rpx 32rpx;
+    min-height: 0;
+    background: transparent;
+  }
+}

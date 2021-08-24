@@ -69,7 +69,7 @@ export default class Rate extends SuperComponent {
   };
   onTouch(e: any) {
     const { count, allowHalf, gap, value: currentValue } = this.properties as any;
-    const touch = e.touches[0];
+    const [touch] = e.touches;
     const margin = rpx2px(gap);
     const selQuery = this.createSelectorQuery();
     selQuery

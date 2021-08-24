@@ -1,12 +1,16 @@
-<view class="{{classPrefix}}">
+<view class="{{classPrefix}} {{icon ? '' : prefix+'-is-bordered'}}">
   <view
-    class="{{classPrefix}}__content {{isChecked ? prefix+'-is-checked' : ''}} {{icon ? prefix+'-size-s' : ''}}"
+    class="{{classPrefix}}__content {{isChecked ? prefix+'-is-checked' : ''}}"
+    style="color: {{isChecked ? activeColor: color}}"
     bindtap="toggle"
   >
     <view class="{{classPrefix}}__icon" wx:if="{{icon}}">
-      <t-icon name="{{icon}}" size="large"></t-icon>
+      <t-badge wx:if="{{dot || badge}}" dot="{{dot}}" content="{{badge}}" hasSlot>
+        <t-icon name="{{icon}}" size="24px"></t-icon>
+      </t-badge>
+      <t-icon wx:else name="{{icon}}" size="24px"></t-icon>
     </view>
-    <view class="{{classPrefix}}__text">
+    <view class="{{classPrefix}}__text {{icon ? prefix+'-size-s' : ''}}">
       <view class="{{classPrefix}}__icon-menu" wx:if="{{hasChildren}}"></view>
       <slot />
     </view>

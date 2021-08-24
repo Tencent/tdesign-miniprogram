@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-07-26 09:42:22
+ * updated at 2021-08-11 16:04:33
  * */
 
 import { TdCellProps } from './type';
@@ -34,6 +34,10 @@ const props: TdCellProps = {
   hover: {
     type: Boolean,
   },
+  /** 主图 */
+  image: {
+    type: String,
+  },
   /** 链接跳转类型 */
   jumpType: {
     type: String,
@@ -47,10 +51,6 @@ const props: TdCellProps = {
   required: {
     type: Boolean,
     value: false,
-  },
-  /** 主图 */
-  thumb: {
-    type: String,
   },
   /** 标题 */
   title: {
