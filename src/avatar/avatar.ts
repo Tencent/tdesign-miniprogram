@@ -15,7 +15,7 @@ export default class Avatar extends SuperComponent {
     },
     shape: {
       type: String,
-      value: 'round',
+      value: 'circle',
     },
     size: {
       type: String,
