@@ -186,11 +186,11 @@
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="s" info="2" />
+        <t-avatar image="{{pics[0]}}" size="s" dot />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="xs" info="2" />
+        <t-avatar image="{{pics[0]}}" size="xs" dot />
       </view>
     </view>
     <view class="row">
@@ -207,11 +207,11 @@
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="s" />
+        <t-avatar shape="round" image="{{pics[0]}}" dot size="s" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="xs" />
+        <t-avatar shape="round" image="{{pics[0]}}" dot size="xs" />
       </view>
     </view>
     <view class="row">
