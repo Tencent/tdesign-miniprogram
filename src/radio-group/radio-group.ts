@@ -5,7 +5,7 @@ const { prefix } = config;
 const name = `${prefix}-radio-group`;
 
 @wxComponent()
-export default class PullDownRefresh extends SuperComponent {
+export default class RadioGroup extends SuperComponent {
   externalClasses = ['t-class'];
   data = {
     classPrefix: name,
