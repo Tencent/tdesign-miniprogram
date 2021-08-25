@@ -29,7 +29,7 @@ export default class CheckboxGroup extends SuperComponent {
     updateChildren(type = 'slot') {
       let items = [];
       if (type === 'not-slot') {
-        items = this.selectAllComponents('.t-checkbox');
+        items = this.selectAllComponents('.t-checkbox-option');
       } else {
         items = this.getRelationNodes('../checkbox/checkbox');
       }
@@ -101,7 +101,7 @@ export default class CheckboxGroup extends SuperComponent {
       const { checked, option, name, type } = e.detail || e;
       let items = [];
       if (type === 'not-slot') {
-        items = this.selectAllComponents('.t-checkbox');
+        items = this.selectAllComponents('.t-checkbox-option');
       } else {
         items = this.getRelationNodes('../checkbox/checkbox');
       }
@@ -130,7 +130,7 @@ export default class CheckboxGroup extends SuperComponent {
     handleHalfCheck(type: string, len: number) {
       let items = [];
       if (type === 'not-slot') {
-        items = this.selectAllComponents('.t-checkbox');
+        items = this.selectAllComponents('.t-checkbox-option');
       } else {
         items = this.getRelationNodes('../checkbox/checkbox');
       }
@@ -146,7 +146,7 @@ export default class CheckboxGroup extends SuperComponent {
     },
     // 设置可全选option选项
     handleOptionLinked() {
-      const items = this.selectAllComponents('.t-checkbox');
+      const items = this.selectAllComponents('.t-checkbox-option');
       if (this.data.checkboxOptions.length) {
         items.forEach((item) => {
           item.setOptionLinked(true);
