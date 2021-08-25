@@ -1,41 +1,24 @@
-<!-- <template name="avatar" data={{}}></template> -->
-<t-badge dot="{{ dot }}" count="{{ info }}" hasSlot offset="{{ radius ? '' : ['10%', '10%'] }}">
+<view class="{{ classPrefix }}--wrapper {{ classPrefix }}--{{size}}">
   <view
-    class="{{ classPrefix }} {{ classPrefix }}--{{size}} {{shape === 'round' ? classPrefix + '--round' : ''}}"
-    style="border-radius: {{radius}}; border-width: {{borderWidth}}; border-color: {{borderColor}};"
+    class="{{ classPrefix }} {{ classPrefix }}--{{size}} {{shape === 'round' ? classPrefix + '--round' : ''}} t-image-class"
   >
+    <!-- 图片 -->
     <t-image
-      wx:if="{{ !(!!icon || !!alt) }}"
+      wx:if="{{ !icon && !alt }}"
       class="t-image-component"
       t-class="t-image"
-      src="{{ image || defaultImageUrl }}"
+      src="{{ image }}"
       mode="aspectFill"
       loadFailed="slot"
-      binderror="{{ onLoadError }}"
+      binderror="onLoadError"
     >
-      <view slot="loadFailed">加载失败</view>
     </t-image>
-    <view
-      wx:if="{{ !!alt }}"
-      class="{{ classPrefix }}__text"
-      style="color: {{ color }}; background: {{ backgroundColor }};"
-    >
-      {{ alt }}
-    </view>
-    <view
-      wx:if="{{ !!icon }}"
-      class="{{ classPrefix }}__icon"
-      style="color: {{ color }}; background: {{ backgroundColor }};"
-    >
-      <t-icon name="{{ icon }}" class-prefix="{{ classPrefix }}" size="{{ iconSize }}" color="inherit" />
+    <!-- 文字 -->
+    <view wx:if="{{ !!alt }}" class="{{ classPrefix }}__text t-alt-class"> {{ alt }} </view>
+    <!-- icon -->
+    <view wx:if="{{ !!icon }}" class="{{ classPrefix }}__icon t-icon-class">
+      <t-icon name="{{ icon }}" />
     </view>
   </view>
-</t-badge>
-
-
-
-
-
-
-
-
+  <t-badge wx:if="{{ dot || info }}" dot="{{ dot }}" count="{{ info }}"></t-badge>
+</view>

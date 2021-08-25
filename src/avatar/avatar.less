@@ -9,7 +9,17 @@
   border: 0 solid;
   border-radius: 999px;
 
-  &--no_dot{
+  &--wrapper {
+    position: relative;
+
+    t-badge {
+      position: absolute;
+      top: -25%;
+      right: -5%;
+    }
+  }
+
+  &--no_dot {
     > .t-badge--basic {
       visibility: hidden;
     }
@@ -25,8 +35,13 @@
     height: 100%;
   }
 
-  &--round {
+  &--circle {
     border-radius: 999px;
+    overflow: hidden;
+  }
+
+  &--round {
+    border-radius: 5px;
     overflow: hidden;
   }
 
@@ -75,5 +90,3 @@
     border-radius: 999px;
   }
 }
-
-

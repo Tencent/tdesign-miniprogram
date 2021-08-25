@@ -2,44 +2,91 @@
   min-height: 100vh;
   background: #f9f9f9;
   overflow: hidden;
+  color: rgba(0, 0, 0, .4);
 
   &-section__grid {
     display: grid;
     margin: 16px;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 50px;
 
     .row {
       display: flex;
-      align-items: flex-end;
       width: 100%;
-      height: 65px;
 
       .image-example {
         text-align: center;
+        font-size: 12px;
       }
 
       .text {
         display: flex;
         justify-content: space-around;
       }
-    }
-  }
-  .avatar-group {
-    display: flex;
 
-    t-avatar {
-      margin-left: -8rpx * 2;
-    }
+      .alt-example {
+        font-size: 16px;
+        color: #fff;
+        background-color: #0052d9;
+      }
 
-    &--reverse {
-      flex-direction: row-reverse;
-      justify-content: flex-end;
+      .border-example-1 {
+        border-width: 1px;
+        border-color: white;
+      }
+
+      .border-example-2 {
+        border-width: 2px;
+        border-color: white;
+      }
+
+      .border-example-3 {
+        border-width: 3px;
+        border-color: white;
+      }
+
+      .icon-example {
+        background-color: #e5e5e5;
+        color: #bbb;
+      }
+
+      .avatar-group {
+        display: flex;
+
+        t-avatar {
+          margin-left: -8rpx * 2;
+        }
+
+        &--reverse {
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+        }
+      }
+
+      .avatar-group-reverse {
+        display: flex;
+
+        t-avatar {
+          margin-right: -8rpx * 2;
+        }
+
+        &--reverse {
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+        }
+      }
+
+      .row-text {
+      }
     }
   }
 
   .gutter-row {
     height: 32rpx;
+  }
+
+  .gutter-column-12 {
+    width: 12rpx * 2;
+    display: inline-block;
   }
 
   .gutter-column-24 {
@@ -49,6 +96,11 @@
 
   .gutter-column-32 {
     width: 32rpx * 2;
+    display: inline-block;
+  }
+
+  .gutter-column-64 {
+    width: 64rpx * 2;
     display: inline-block;
   }
 
@@ -77,4 +129,3 @@
     }
   }
 }
-

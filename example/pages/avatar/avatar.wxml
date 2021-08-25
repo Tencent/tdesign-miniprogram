@@ -1,154 +1,363 @@
 <view class="demo">
   <view class="demo-title">Avatar 头像</view>
-  <view class="demo-desc">展示头像、文字等</view>
+  <view class="demo-desc">用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作</view>
   <view class="demo-section">
-    <view class="demo-section__title">01 基本用法</view>
-    <view class="demo-section__desc">默认头像和微信头像和网络加载失败头像</view>
+    <view class="demo-section__title">01 类型</view>
+    <view class="demo-section__desc">头像样式可为默认头像、微信头像圆形、方形、自定义文字</view>
     <view class="demo-section__grid">
-      <t-avatar shape="round" />
-      <t-avatar round image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" />
-      <t-avatar round image="https://pic.qqtn.com/up/201" onLoadError="onLoadError" />
+      <view class="row">
+        <view class="image-example">
+          <t-avatar shape="circle" />
+          <text>默认</text>
+        </view>
+        <view class="gutter-column-12"></view>
+        <view class="image-example">
+          <t-avatar
+            shape="circle"
+            image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+          />
+          <text>用户</text>
+        </view>
+        <view class="gutter-column-12"></view>
+        <view class="image-example">
+          <t-avatar
+            shape="circle"
+            image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+          />
+          <text>圆形</text>
+        </view>
+        <view class="gutter-column-12"></view>
+        <view class="image-example">
+          <t-avatar
+            shape="round"
+            image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+          />
+          <text>方形</text>
+        </view>
+        <view class="gutter-column-12"></view>
+        <view
+          class="image-example"
+          style="width: 68px; display: flex; flex-direction: column; align-items: center"
+        >
+          <t-avatar shape="circle" alt="A" t-alt-class="alt-example" />
+          <text>自定义文字</text>
+        </view>
+      </view>
     </view>
-     <view class="demo-section__title">02 组合</view>
-    <view class="demo-section__desc">头像样式可为圆形、方形、也可以自定义文字</view>
+    <view class="demo-section__title">02 特殊类型</view>
+    <view class="demo-section__desc">纯展示 从上往下</view>
     <view class="demo-section__grid">
-      <t-avatar round image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" />
-      <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" imgMode="aspectFit" />
-      <t-avatar round alt="A" backgroundColor="#0052D9" color="#FFFFFF" />
+      <view class="row">
+        <view class="avatar-group avatar-group--reverse">
+          <t-avatar
+            alt="+5"
+            shape="circle"
+            t-image-class="border-example-1"
+            t-alt-class="icon-example"
+            size="xs"
+          />
+          <t-avatar
+            wx:for="{{pics}}"
+            wx:for-item="pic"
+            wx:key="index"
+            image="{{pic}}"
+            shape="circle"
+            size="xs"
+            t-image-class="border-example-1"
+          />
+        </view>
+      </view>
+    </view>
+    <view class="demo-section__grid">
+      <view class="row">
+        <view class="avatar-group avatar-group--reverse">
+          <t-avatar
+            alt="+5"
+            shape="circle"
+            t-image-class="border-example-2"
+            t-alt-class="icon-example"
+            size="s"
+          />
+          <t-avatar
+            wx:for="{{pics}}"
+            wx:for-item="pic"
+            wx:key="index"
+            image="{{pic}}"
+            shape="circle"
+            size="s"
+            t-image-class="border-example-2"
+          />
+        </view>
+      </view>
+    </view>
+    <view class="demo-section__grid">
+      <view class="row">
+        <view class="avatar-group avatar-group--reverse">
+          <t-avatar
+            alt="+5"
+            shape="circle"
+            t-image-class="border-example-3"
+            t-alt-class="icon-example"
+            size="m"
+          />
+          <t-avatar
+            wx:for="{{pics}}"
+            wx:for-item="pic"
+            wx:key="index"
+            image="{{pic}}"
+            shape="circle"
+            size="m"
+            t-image-class="border-example-3"
+          />
+        </view>
+      </view>
+    </view>
+    <view class="demo-section__desc">带操作 从下往上</view>
+    <view class="demo-section__grid">
+      <view class="row">
+        <view class="avatar-group">
+          <t-avatar
+            wx:for="{{pics}}"
+            wx:for-item="pic"
+            wx:key="index"
+            image="{{pic}}"
+            shape="circle"
+            size="xs"
+            t-image-class="border-example-1"
+          />
+          <t-avatar
+            icon="user_fill"
+            shape="circle"
+            t-image-class="border-example-1"
+            t-icon-class="icon-example"
+            size="xs"
+            bindtap="onAddTap"
+          />
+        </view>
+      </view>
+    </view>
+    <view class="demo-section__grid">
+      <view class="row">
+        <view class="avatar-group">
+          <t-avatar
+            wx:for="{{pics}}"
+            wx:for-item="pic"
+            wx:key="index"
+            image="{{pic}}"
+            shape="circle"
+            size="s"
+            t-image-class="border-example-2"
+          />
+          <t-avatar
+            icon="user_fill"
+            shape="circle"
+            t-image-class="border-example-2"
+            t-icon-class="icon-example"
+            size="s"
+            bindtap="onAddTap"
+          />
+        </view>
+      </view>
+    </view>
+    <view class="demo-section__grid">
+      <view class="row">
+        <view class="avatar-group">
+          <t-avatar
+            wx:for="{{pics}}"
+            wx:for-item="pic"
+            wx:key="index"
+            image="{{pic}}"
+            shape="circle"
+            size="m"
+            t-image-class="border-example-3"
+          />
+          <t-avatar
+            icon="user_fill"
+            shape="circle"
+            t-image-class="border-example-3"
+            t-icon-class="icon-example"
+            size="m"
+            bindtap="onAddTap"
+          />
+        </view>
+      </view>
     </view>
     <view class="demo-section__title">03 规格</view>
     <view class="demo-section__desc">头像大小尺寸及消息提醒</view>
-    <view class="demo-section__grid">
-      <view class="row">
-        <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round info="25555" size="xl" />
-        </view>
-        <view class="gutter-column-32"></view>
-        <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round info="2555" size="l" />
-        </view>
-        <view class="gutter-column-32"></view>
-        <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round info="255" size="m" />
-        </view>
-        <view class="gutter-column-32"></view>
-        <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round info="25" size="s" />
-        </view>
-        <view class="gutter-column-32"></view>
-        <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round info="2" size="xs" />
-        </view>
-      </view>
+    <view class="row" style="margin: 20px 0">
+      <view class="gutter-column-32"></view>
+      <text class="row-text">XL</text>
+      <view class="gutter-column-64"></view>
+      <view class="gutter-column-12"></view>
+      <text class="row-text">L</text>
+      <view class="gutter-column-64"></view>
+      <text class="row-text">M</text>
+      <view class="gutter-column-64"></view>
+      <text class="row-text">S</text>
+      <view class="gutter-column-32"></view>
+      <view class="gutter-column-12"></view>
+      <text class="row-text">XS</text>
     </view>
     <view class="demo-section__grid">
       <view class="row">
         <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round dot size="xl" />
+          <t-avatar
+            image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+            shape="circle"
+            size="xl"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round dot size="l" />
+          <t-avatar
+            image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+            shape="circle"
+            size="l"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round dot size="m" />
+          <t-avatar
+            image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+            shape="circle"
+            size="m"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round dot size="s" />
+          <t-avatar
+            image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+            shape="circle"
+            size="s"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" round dot size="xs" />
-        </view>
-      </view>
-    </view>
-    <view class="demo-section__grid">
-      <view class="row">
-        <view class="image-example">
-          <t-avatar round alt="A" backgroundColor="#0052D9" color="#FFFFFF" size="xl" />
-        </view>
-        <view class="gutter-column-32"></view>
-        <view class="image-example">
-          <t-avatar round alt="A" backgroundColor="#0052D9" color="#FFFFFF" size="l" />
-        </view>
-        <view class="gutter-column-32"></view>
-        <view class="image-example">
-          <t-avatar round alt="A" backgroundColor="#0052D9" color="#FFFFFF" size="m" />
-        </view>
-        <view class="gutter-column-32"></view>
-        <view class="image-example">
-          <t-avatar round alt="A" backgroundColor="#0052D9" color="#FFFFFF" size="s" />
-        </view>
-        <view class="gutter-column-32"></view>
-        <view class="image-example">
-          <t-avatar round alt="A" backgroundColor="#0052D9" color="#FFFFFF" size="xs" />
+          <t-avatar
+            image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
+            shape="circle"
+            size="xs"
+          />
         </view>
       </view>
     </view>
     <view class="demo-section__grid">
       <view class="row">
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" dot size="xl" />
+          <t-avatar
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            shape="circle"
+            info="2"
+            size="xl"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" dot size="l" />
+          <t-avatar
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            shape="circle"
+            info="2"
+            size="l"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" dot size="m" />
+          <t-avatar
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            shape="circle"
+            info="2"
+            size="m"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" dot size="s" />
+          <t-avatar
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            shape="circle"
+            dot
+            size="s"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" dot size="xs" />
+          <t-avatar
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            shape="circle"
+            dot
+            size="xs"
+          />
         </view>
       </view>
     </view>
     <view class="demo-section__grid">
       <view class="row">
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" info="25555" size="xl" />
+          <t-avatar
+            shape="round"
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            info="2"
+            size="xl"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" info="2555" size="l" />
+          <t-avatar
+            shape="round"
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            info="2"
+            size="l"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" info="255" size="m" />
+          <t-avatar
+            shape="round"
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            info="2"
+            size="m"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" info="25" size="s" />
+          <t-avatar
+            shape="round"
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            dot
+            size="s"
+          />
         </view>
         <view class="gutter-column-32"></view>
         <view class="image-example">
-          <t-avatar radius="5px" image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg" info="2" size="xs" />
+          <t-avatar
+            shape="round"
+            image="https://pic.qqtn.com/up/2019-9/15690311636958128.jpg"
+            dot
+            size="xs"
+          />
         </view>
       </view>
     </view>
-    <view class="demo-section__title">04 特殊类型</view>
-    <view class="demo-section__desc">头像排列</view>
     <view class="demo-section__grid">
-      <view class="avatar-group">
-        <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" round size="s" borderWidth="2px"
-          borderColor="white" />
-        <t-avatar alt="+5" round size="s" borderWidth="2px" border-color="white" backgroundColor="#E5E5E5"
-          color="#bbb" />
-      </view>
-    </view>
-    <view class="demo-section__grid">
-      <view class="avatar-group">
-        <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" round size="s" borderWidth="1px"
-          borderColor="white" />
-        <t-avatar icon="user_fill" round size="s" borderWidth="1px" borderColor="white" backgroundColor="#E5E5E5"
-          color="#bbb" bindtap="onAddTap" />
+      <view class="row">
+        <view class="image-example">
+          <t-avatar shape="circle" alt="A" t-alt-class="alt-example" size="xl" />
+        </view>
+        <view class="gutter-column-32"></view>
+        <view class="image-example">
+          <t-avatar shape="circle" alt="A" t-alt-class="alt-example" size="l" />
+        </view>
+        <view class="gutter-column-32"></view>
+        <view class="image-example">
+          <t-avatar shape="circle" alt="A" t-alt-class="alt-example" size="m" />
+        </view>
+        <view class="gutter-column-32"></view>
+        <view class="image-example">
+          <t-avatar shape="circle" alt="A" t-alt-class="alt-example" size="s" />
+        </view>
+        <view class="gutter-column-32"></view>
+        <view class="image-example">
+          <t-avatar shape="circle" alt="A" t-alt-class="alt-example" size="xs" />
+        </view>
       </view>
     </view>
   </view>

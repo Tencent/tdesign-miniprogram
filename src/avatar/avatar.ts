@@ -5,17 +5,13 @@ const name = `${prefix}-avatar`;
 
 @wxComponent()
 export default class Avatar extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = ['t-class', 't-image-class', 't-icon-class', 't-alt-class'];
   properties = {
-    image: String,
-    imgMode: {
+    alt: String,
+    icon: String,
+    image: {
       type: String,
-      value: 'aspectFill',
-    },
-    defaultImageUrl: {
-      type: String,
-      value:
-        'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components/avatar/detaul_avatar.jpg',
+      value: 'https://cdn-we-retail.ym.tencent.com/retail-ui/components/avatar/detaul_avatar.jpg',
     },
     shape: {
       type: String,
@@ -25,21 +21,13 @@ export default class Avatar extends SuperComponent {
       type: String,
       value: 'l',
     },
-    alt: String,
-    icon: String,
-    iconClassPrefix: {
-      type: String,
-      value: 't',
-    },
-    radius: String,
-    borderWidth: String,
-    borderColor: String,
-    color: String,
-    backgroundColor: String,
     info: String,
     dot: Boolean,
   };
   data = {
-    classPrefix: name
+    classPrefix: name,
+  };
+  onLoadError(e: any) {
+    this.triggerEvent('error', e.detail);
   }
 }
