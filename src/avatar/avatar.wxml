@@ -1,8 +1,7 @@
-<view class="{{ classPrefix }}--wrapper {{ classPrefix }}--{{size}}">
+<view class="{{ classPrefix }}--wrapper {{ classPrefix }}--{{ size }} t-class">
   <view
-    class="{{ classPrefix }} {{ classPrefix }}--{{size}} {{ shape === 'round' ? classPrefix + '--round' : '' }} t-image-class"
+    class="{{ classPrefix }} {{ classPrefix }}--{{ size }} {{ shape === 'round' ? classPrefix + '--round' : '' }} t-image-class"
   >
-    <!-- 图片 -->
     <t-image
       wx:if="{{ !icon && !alt }}"
       class="t-image-component"
@@ -12,9 +11,7 @@
       binderror="onLoadError"
     >
     </t-image>
-    <!-- 文字 -->
     <view wx:if="{{ !!alt }}" class="{{ classPrefix }}__text t-alt-class">{{ alt }}</view>
-    <!-- icon -->
     <view wx:if="{{ !!icon }}" class="{{ classPrefix }}__icon t-icon-class">
       <t-icon name="{{ icon }}" />
     </view>
