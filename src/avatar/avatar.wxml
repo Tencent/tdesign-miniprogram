@@ -1,0 +1,41 @@
+<!-- <template name="avatar" data={{}}></template> -->
+<t-badge dot="{{ dot }}" count="{{ info }}" hasSlot offset="{{ radius ? '' : ['10%', '10%'] }}">
+  <view
+    class="{{ classPrefix }} {{ classPrefix }}--{{size}} {{shape === 'round' ? classPrefix + '--round' : ''}}"
+    style="border-radius: {{radius}}; border-width: {{borderWidth}}; border-color: {{borderColor}};"
+  >
+    <t-image
+      wx:if="{{ !(!!icon || !!alt) }}"
+      class="t-image-component"
+      t-class="t-image"
+      src="{{ image || defaultImageUrl }}"
+      mode="aspectFill"
+      loadFailed="slot"
+      binderror="{{ onLoadError }}"
+    >
+      <view slot="loadFailed">加载失败</view>
+    </t-image>
+    <view
+      wx:if="{{ !!alt }}"
+      class="{{ classPrefix }}__text"
+      style="color: {{ color }}; background: {{ backgroundColor }};"
+    >
+      {{ alt }}
+    </view>
+    <view
+      wx:if="{{ !!icon }}"
+      class="{{ classPrefix }}__icon"
+      style="color: {{ color }}; background: {{ backgroundColor }};"
+    >
+      <t-icon name="{{ icon }}" class-prefix="{{ classPrefix }}" size="{{ iconSize }}" color="inherit" />
+    </view>
+  </view>
+</t-badge>
+
+
+
+
+
+
+
+

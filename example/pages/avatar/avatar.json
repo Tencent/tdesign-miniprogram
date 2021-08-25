@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Avatar 头像",
+  "usingComponents": {
+    "t-avatar": "@tencent/tdesign-miniprogram/avatar/avatar",
+    "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
+    "t-image": "@tencent/tdesign-miniprogram/image/image"
+  }
+}

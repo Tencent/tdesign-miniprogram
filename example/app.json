@@ -2,6 +2,7 @@
   "pages": [
     "pages/index",
     "pages/picker/picker",
+    "pages/avatar/avatar",
     "pages/button/button",
     "pages/button-group/button-group",
     "pages/dialog/dialog",
