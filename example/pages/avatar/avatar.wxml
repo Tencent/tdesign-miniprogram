@@ -9,29 +9,21 @@
       </view>
       <view class="gutter-column-24"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-        />
+        <t-avatar image="{{pics[0]}}" />
         <text>用户</text>
       </view>
       <view class="gutter-column-24"></view>
       <view class="avatar-example">
-        <t-avatar
-          shape="circle"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-        />
+        <t-avatar shape="circle" image="{{pics[0]}}" />
         <text>圆形</text>
       </view>
       <view class="gutter-column-24"></view>
       <view class="avatar-example">
-        <t-avatar
-          shape="round"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-        />
+        <t-avatar shape="round" image="{{pics[0]}}" />
         <text>方形</text>
       </view>
       <view class="gutter-column-24"></view>
-      <view class="avatar-example">
+      <view class="avatar-example text">
         <t-avatar alt="A" t-alt-class="alt-example" />
         <text>自定义文字</text>
       </view>
@@ -161,125 +153,65 @@
     </view>
     <view class="row">
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          size="xl"
-        />
+        <t-avatar image="{{pics[0]}}" size="xl" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          size="l"
-        />
+        <t-avatar image="{{pics[0]}}" size="l" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          size="m"
-        />
+        <t-avatar image="{{pics[0]}}" size="m" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          size="s"
-        />
+        <t-avatar image="{{pics[0]}}" size="s" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          size="xs"
-        />
+        <t-avatar image="{{pics[0]}}" size="xs" />
       </view>
     </view>
     <view class="row">
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          info="2"
-          size="xl"
-        />
+        <t-avatar image="{{pics[0]}}" size="xl" info="2" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          info="2"
-          size="l"
-        />
+        <t-avatar image="{{pics[0]}}" size="l" info="2" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          info="2"
-          size="m"
-        />
+        <t-avatar image="{{pics[0]}}" size="m" info="2" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          dot
-          size="s"
-        />
+        <t-avatar image="{{pics[0]}}" size="s" info="2" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          dot
-          size="xs"
-        />
+        <t-avatar image="{{pics[0]}}" size="xs" info="2" />
       </view>
     </view>
     <view class="row">
       <view class="avatar-example">
-        <t-avatar
-          shape="round"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          info="2"
-          size="xl"
-        />
+        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="xl" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          shape="round"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          info="2"
-          size="l"
-        />
+        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="l" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          shape="round"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          info="2"
-          size="m"
-        />
+        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="m" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          shape="round"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          dot
-          size="s"
-        />
+        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="s" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar
-          shape="round"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg"
-          dot
-          size="xs"
-        />
+        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="xs" />
       </view>
     </view>
     <view class="row">

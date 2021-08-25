@@ -12,32 +12,34 @@
 
   .avatar-example {
     text-align: center;
-    font-size: 12px;
+    font-size: 24rpx;
   }
 
   .text {
+    width: 130rpx;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
   }
 
   .alt-example {
-    font-size: 16px;
+    font-size: 32rpx;
     color: #fff;
     background-color: #0052d9;
   }
 
   .border-example-1 {
-    border-width: 1px;
+    border-width: 2rpx;
     border-color: white;
   }
 
   .border-example-2 {
-    border-width: 2px;
+    border-width: 4rpx;
     border-color: white;
   }
 
   .border-example-3 {
-    border-width: 3px;
+    border-width: 6rpx;
     border-color: white;
   }
 
@@ -50,7 +52,7 @@
     display: flex;
 
     t-avatar {
-      margin-left: -8rpx * 2;
+      margin-left: -16rpx;
     }
 
     &--reverse {
@@ -58,66 +60,24 @@
       justify-content: flex-end;
     }
   }
-
-  .avatar-group-reverse {
-    display: flex;
-
-    t-avatar {
-      margin-right: -8rpx * 2;
-    }
-
-    &--reverse {
-      flex-direction: row-reverse;
-      justify-content: flex-end;
-    }
-  }
-}
-
-.gutter-row {
-  height: 32rpx;
 }
 
 .gutter-column-12 {
-  width: 12rpx * 2;
+  width: 24rpx;
   display: inline-block;
 }
 
 .gutter-column-24 {
-  width: 24rpx * 2;
+  width: 48rpx;
   display: inline-block;
 }
 
 .gutter-column-32 {
-  width: 32rpx * 2;
+  width: 64rpx;
   display: inline-block;
 }
 
 .gutter-column-64 {
-  width: 64rpx * 2;
+  width: 128rpx;
   display: inline-block;
-}
-
-&-tabbar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background: #fff;
-  border-top: 1px solid #e6e6e6;
-  padding-bottom: env(safe-area-inset-bottom, 28px);
-  padding-bottom: constant(safe-area-inset-bottom, 28px);
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
-
-    .t-icon {
-      width: 100%;
-    }
-  }
 }
