@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-icon": "@tencent/tdesign-miniprogram/icon/icon",
+    "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
+    "t-image": "@tencent/tdesign-miniprogram/image/image"
+  }
+}
