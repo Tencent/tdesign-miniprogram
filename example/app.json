@@ -54,7 +54,7 @@
     "t-collapse-panel": "@tencent/tdesign-miniprogram/collapse-panel/collapse-panel",
     "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
     "t-tabs": "@tencent/tdesign-miniprogram/tabs/tabs",
-    "t-tab": "@tencent/tdesign-miniprogram/tab/tab",
+    "t-tab-panel": "@tencent/tdesign-miniprogram/tabs/tab-panel",
     "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
     "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group",
     "t-icon": "@tencent/tdesign-miniprogram/icon/icon",
