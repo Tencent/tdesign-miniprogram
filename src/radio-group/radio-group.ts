@@ -5,7 +5,7 @@ const { prefix } = config;
 const name = `${prefix}-radio-group`;
 
 @wxComponent()
-export default class PullDownRefresh extends SuperComponent {
+export default class RadioGroup extends SuperComponent {
   externalClasses = ['t-class'];
   data = {
     classPrefix: name,
@@ -23,12 +23,14 @@ export default class PullDownRefresh extends SuperComponent {
   lifetimes = {
     attached() {
       this.handleCreateMulRadio();
-      this.handleOptionLinked();
     },
   };
   methods = {
     updateChildren() {
-      const items = this.getRelationNodes('../radio/radio');
+      let items = this.getRelationNodes('../radio/radio');
+      if (!items.length) {
+        items = this.selectAllComponents('.t-radio-option');
+      }
       const { value, disabled } = this.data;
       if (items.length > 0) {
         items.forEach((item) => {
@@ -51,7 +53,7 @@ export default class PullDownRefresh extends SuperComponent {
         value: name,
       });
       this.triggerEvent('change', name);
-      const items = this.selectAllComponents('.t-radio');
+      const items = this.selectAllComponents('.t-radio-option');
       if (items.length > 0) {
         items.forEach((item) => {
           item.changeActive(name === item.data.value);
@@ -60,7 +62,7 @@ export default class PullDownRefresh extends SuperComponent {
     },
     // 设置option选项
     handleOptionLinked() {
-      const items = this.selectAllComponents('.t-radio');
+      const items = this.selectAllComponents('.t-radio-option');
       if (this.data.radioOptions.length) {
         items.forEach((item) => {
           item.setOptionLinked(true);
@@ -92,6 +94,8 @@ export default class PullDownRefresh extends SuperComponent {
         this.setData({
           radioOptions: optionsValue,
         });
+        this.handleOptionLinked();
+        this.updateChildren();
       } catch (error) {
         console.log('error', error);
       }

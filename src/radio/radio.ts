@@ -21,13 +21,7 @@ export default class PullDownRefresh extends SuperComponent {
   };
   lifetimes = {
     attached() {
-      const { icon } = this.data;
-      const idArr = Array.isArray(icon);
-      this.setData({
-        active: this.data.checked,
-        customIcon: idArr,
-        iconVal: !idArr ? iconDefault[icon] : this.data.icon,
-      });
+      this.handleInitStatus();
     },
   };
   properties = Props;
@@ -61,6 +55,19 @@ export default class PullDownRefresh extends SuperComponent {
         }
         this.triggerEvent('change', !active);
         this.toggle();
+      }
+    },
+    handleInitStatus() {
+      const { icon } = this.data;
+      const idArr = Array.isArray(icon);
+      this.setData({
+        customIcon: idArr,
+        iconVal: !idArr ? iconDefault[icon] : this.data.icon,
+      });
+      if (!this.data.optionLinked) {
+        this.setData({
+          active: this.data.checked,
+        });
       }
     },
     toggle() {

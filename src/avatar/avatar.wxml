@@ -1,0 +1,33 @@
+<view class="{{ classPrefix }}--wrapper {{ classPrefix }}--{{ size }} t-class">
+  <view
+    class="{{ classPrefix }} {{ classPrefix }}--{{ size }} {{ shape === 'round' ? classPrefix + '--round' : '' }} t-image-class"
+  >
+    <t-image
+      wx:if="{{ !icon && !alt }}"
+      class="t-image-component"
+      t-class="t-image"
+      src="{{ image }}"
+      mode="aspectFill"
+      binderror="onLoadError"
+    >
+    </t-image>
+    <view wx:if="{{ !!alt }}" class="{{ classPrefix }}__text t-alt-class">{{ alt }}</view>
+    <view wx:if="{{ !!icon }}" class="{{ classPrefix }}__icon t-icon-class">
+      <t-icon name="{{ icon }}" />
+    </view>
+  </view>
+  <t-badge
+    class="{{ shape === 'circle' ? 't-badge__circle' : 't-badge__round' }}"
+    wx:if="{{ badgeProps.dot || badgeProps.content }}"
+    color="{{ badgeProps.color }}"
+    count="{{ badgeProps.count }}"
+    max-count="{{ badgeProps.maxCount }}"
+    dot="{{ badgeProps.dot}}"
+    content="{{ badgeProps.content }}"
+    size="{{ badgeProps.size }}"
+    showZero="{{ badgeProps.showZero }}"
+    offset="{{ badgeProps.offset }}"
+    hasSlot
+  >
+  </t-badge>
+</view>

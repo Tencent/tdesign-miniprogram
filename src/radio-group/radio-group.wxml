@@ -2,7 +2,7 @@
   <slot />
   <block wx:for="{{radioOptions}}" wx:key="value">
     <t-radio
-      class="t-radio"
+      class="t-radio-option"
       label="{{item.label}}"
       value="{{item.value}}"
       disabled="{{item.disabled}}"
