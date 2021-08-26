@@ -4,7 +4,9 @@
   <view class="desc">
     <view class="row">
       <view class="avatar-example">
-        <t-avatar />
+        <t-avatar
+          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components/avatar/detaul_avatar.jpg"
+        />
         <text>默认</text>
       </view>
       <view class="gutter-column-24"></view>

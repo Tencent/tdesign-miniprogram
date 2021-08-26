@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-26 14:41:59
+ * updated at 2021-08-26 15:50:48
  * */
 
 import { TdBadgeProps } from '../badge/type';
@@ -26,6 +26,24 @@ export interface TdAvatarProps {
     required?: boolean;
   };
   /**
+   * 图标
+   * @default ''
+   */
+  icon?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
+   * 图片地址
+   * @default ''
+   */
+  image?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
    * 形状
    * @default circle
    */
@@ -36,7 +54,7 @@ export interface TdAvatarProps {
   };
   /**
    * 尺寸
-   * @default medium
+   * @default l
    */
   size?: {
     type: StringConstructor;

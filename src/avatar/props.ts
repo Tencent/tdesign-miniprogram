@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-26 14:41:59
+ * updated at 2021-08-26 15:50:48
  * */
 
 import { TdAvatarProps } from './type';
@@ -16,6 +16,16 @@ const props: TdAvatarProps = {
   badgeProps: {
     type: Object,
   },
+  /** 图标 */
+  icon: {
+    type: String,
+    value: '',
+  },
+  /** 图片地址 */
+  image: {
+    type: String,
+    value: '',
+  },
   /** 形状 */
   shape: {
     type: String,
@@ -24,7 +34,7 @@ const props: TdAvatarProps = {
   /** 尺寸 */
   size: {
     type: String,
-    value: 'medium',
+    value: 'l',
   },
 };
 
