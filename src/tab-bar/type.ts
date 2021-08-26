@@ -62,7 +62,7 @@ export interface TdTabBarProps {
     value?: string | number;
     required?: boolean;
   };
-};
+}
 
 export interface TdTabBarItemProps {
   /**
@@ -86,7 +86,7 @@ export interface TdTabBarItemProps {
    */
   subTabBar?: {
     type: ArrayConstructor;
-    value?: SubTabBarItem[] ;
+    value?: SubTabBarItem[];
     required?: boolean;
   };
   /**
@@ -98,6 +98,9 @@ export interface TdTabBarItemProps {
     value?: string | number;
     required?: boolean;
   };
-};
+}
 
-export interface SubTabBarItem { value: string; label: string };
+export interface SubTabBarItem {
+  value: string;
+  label: string;
+}
