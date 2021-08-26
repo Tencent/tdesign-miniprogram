@@ -16,5 +16,18 @@
       <t-icon name="{{ icon }}" />
     </view>
   </view>
-  <t-badge wx:if="{{ dot || info }}" dot="{{ dot }}" count="{{ info }}"></t-badge>
+  <t-badge
+    class="{{ shape === 'circle' ? 't-badge__circle' : 't-badge__round' }}"
+    wx:if="{{ badgeProps.dot || badgeProps.content }}"
+    color="{{ badgeProps.color }}"
+    count="{{ badgeProps.count }}"
+    max-count="{{ badgeProps.maxCount }}"
+    dot="{{ badgeProps.dot}}"
+    content="{{ badgeProps.content }}"
+    size="{{ badgeProps.size }}"
+    showZero="{{ badgeProps.showZero }}"
+    offset="{{ badgeProps.offset }}"
+    hasSlot
+  >
+  </t-badge>
 </view>

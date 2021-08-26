@@ -2,9 +2,10 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-25 20:01:39
+ * updated at 2021-08-26 11:34:32
  * */
 
+import { TdBadgeProps } from '../badge/type';
 import { SizeEnum } from '../common/common';
 
 export interface TdAvatarProps {
@@ -18,12 +19,20 @@ export interface TdAvatarProps {
     required?: boolean;
   };
   /**
+   * 头像右上角提示信息
+   */
+  badgeProps?: {
+    type: ObjectConstructor;
+    value?: TdBadgeProps;
+    required?: boolean;
+  };
+  /**
    * 形状
    * @default circle
    */
   shape?: {
     type: StringConstructor;
-    value?: SizeEnum;
+    value?: ShapeEnum;
     required?: boolean;
   };
   /**
@@ -36,3 +45,7 @@ export interface TdAvatarProps {
     required?: boolean;
   };
 }
+
+export type ShapeEnum = 'circle' | 'round';
+
+export type SizeEnum = 'xl' | 'l' | 'm' | 's' | 'xs';

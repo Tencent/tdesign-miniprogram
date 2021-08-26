@@ -19,10 +19,11 @@ export default class Avatar extends SuperComponent {
     },
     size: {
       type: String,
-      value: 'l',
+      value: 'm',
     },
-    info: String,
-    dot: Boolean,
+    badgeProps: {
+      type: Object,
+    },
   };
   data = {
     classPrefix: name,

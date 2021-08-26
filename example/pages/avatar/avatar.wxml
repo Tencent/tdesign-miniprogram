@@ -174,44 +174,44 @@
     </view>
     <view class="row">
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="xl" info="2" />
+        <t-avatar image="{{pics[0]}}" size="xl" badge-props="{{ {content: 2} }}" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="l" info="2" />
+        <t-avatar image="{{pics[0]}}" size="l" badge-props="{{ {content: 2} }}" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="m" info="2" />
+        <t-avatar image="{{pics[0]}}" size="m" badge-props="{{ {content: 2} }}" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="s" dot />
+        <t-avatar image="{{pics[0]}}" size="s" badge-props="{{ {dot: true} }}" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="xs" dot />
+        <t-avatar image="{{pics[0]}}" size="xs" badge-props="{{ {dot: true} }}" />
       </view>
     </view>
     <view class="row">
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="xl" />
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {content: 2} }}" size="xl" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="l" />
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {content: 2} }}" size="l" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" info="2" size="m" />
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {content: 2} }}" size="m" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" dot size="s" />
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {dot: true} }}" size="s" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" dot size="xs" />
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {dot: true} }}" size="xs" />
       </view>
     </view>
     <view class="row">
