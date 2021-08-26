@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-26 11:34:32
+ * updated at 2021-08-26 14:41:59
  * */
 
 import { TdAvatarProps } from './type';
