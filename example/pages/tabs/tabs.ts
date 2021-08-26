@@ -1,6 +1,6 @@
 Page({
   data: {
-    animation: { duration: 2 },
+    animation: { duration: 1 },
   },
   onTabsChange(event: any) {
     console.log(event.detail);

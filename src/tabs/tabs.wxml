@@ -28,7 +28,7 @@
   >
     <view
       class="{{classPrefix}}-content-inner "
-      style="{{  filters.animate({duration: animate.duration,currentIndex:currentIndex, direction}) }}"
+      style="{{ filters.animate({duration: animate.duration,currentIndex:currentIndex, direction}) }}"
     >
       <slot />
     </view>
