@@ -1,118 +1,293 @@
+
 export default {
-  navs: {
-    components: {
-      title: '组件',
-      url: 'components',
-      docs: [
+  docs: [
+    {
+      title: '开始',
+      type: 'document', // 普通文档
+      children: [
         {
-          title: '开始',
-          type: 'document', // 普通文档
-          children: [
-            {
-              title: '安装',
-              name: 'install',
-              component: () => import('@/../README.md'),
-            },
-            {
-              title: '开发指南',
-              name: 'develop',
-              component: () => import('@/../CONTRIBUTING.md'),
-            },
-            // {
-            //   title: '更新日志',
-            //   name: 'changelog',
-            //   component: () => import('../CHANGELOG.md'),
-            // },
-          ],
+          title: '安装',
+          name: 'install',
+          meta: { docType: 'explain' },
+          path: '/miniprogram/install',
+          component: () => import('@/../README.md'),
         },
         {
-          title: '基础组件',
-          type: 'component', // 组件文档
-          children: [
-            {
-              title: 'Icon 图标',
-              name: 'icon',
-              component: () => import('@/icon/README.md'),
-            },
-            {
-              title: 'Button 按钮',
-              name: 'button',
-              component: () => import('@/button/README.md'),
-            },
-            {
-              title: 'Rate 评分',
-              name: 'rate',
-              component: () => import('@/rate/README.md'),
-            },
-            {
-              title: 'Switch 选择器',
-              name: 'switch',
-              component: () => import('@/switch/README.md'),
-            },
-            {
-              title: 'Picker 选择器',
-              name: 'picker',
-              component: () => import('@/picker/README.md'),
-            },
-            {
-              title: 'Radio 单选框',
-              name: 'radio',
-              component: () => import('@/radio/README.md'),
-            },
-            {
-              title: 'Progress 进度条',
-              name: 'progress',
-              component: () => import('@/progress/README.md'),
-            },
-            {
-              title: 'Tag 标签',
-              name: 'tag',
-              component: () => import('@/tag/README.md'),
-            },
-            {
-              title: 'CheckBox 复选框',
-              name: 'check-box',
-              component: () => import('@/check-box/README.md'),
-            },
-            {
-              title: 'Mask',
-              name: 'mask',
-              component: () => import('@/mask/README.md'),
-            },
-            {
-              title: 'Stepper 步进器',
-              name: 'stepper',
-              component: () => import('@/stepper/README.md'),
-            },
-          ],
+          title: '开发指南',
+          name: 'develop',
+          meta: { docType: 'explain' },
+          path: '/miniprogram/develop',
+          component: () => import('@/../CONTRIBUTING.md'),
+        },
+        // {
+        //   title: '更新日志',
+        //   name: 'changelog',
+        //   meta: { docType: 'explain' },
+        //   path: '/miniprogram/changelog',
+        //   component: () => import('../CHANGELOG.md'),
+        // },
+      ],
+    },
+    {
+      title: '基础组件',
+      type: 'component', // 组件文档
+      children: [
+        {
+          title: 'Icon 图标',
+          name: 'icon',
+          meta: { docType: 'base' },
+          path: '/miniprogram/components/icon',
+          component: () => import('@/icon/README.md'),
         },
         {
-          title: '消息提醒',
-          type: 'component', // 组件文档
-          children: [
-            {
-              title: 'Toast 轻提示',
-              name: 'toast',
-              component: () => import('@/toast/README.md'),
-            },
-            {
-              title: 'Message 消息',
-              name: 'message',
-              component: () => import('@/message/README.md'),
-            },
-            {
-              title: 'NoticeBar 公告栏',
-              name: 'notice-bar',
-              component: () => import('@/notice-bar/README.md'),
-            },
-            {
-              title: 'Dialog 对话框',
-              name: 'dialog',
-              component: () => import('@/dialog/README.md'),
-            },
-          ],
+          title: 'Button 按钮',
+          name: 'button',
+          meta: { docType: 'base' },
+          path: '/miniprogram/components/button',
+          component: () => import('@/button/README.md'),
         },
       ],
     },
-  },
+    {
+      title: '信息展示',
+      type: 'component',
+      children: [
+        {
+          title: 'Badge 徽标',
+          name: 'badge',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/badge',
+          component: () => import('@/badge/README.md'),
+        },
+        {
+          title: 'Tag 标签',
+          name: 'tag',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/tag',
+          component: () => import('@/tag/README.md'),
+        },
+        {
+          title: 'DropdownMenu 下拉菜单',
+          name: 'dropdown-menu',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/dropdown-menu',
+          component: () => import('@/dropdown-menu/README.md'),
+        },
+        {
+          title: 'Collapse 折叠面板',
+          name: 'collapse',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/collapse',
+          component: () => import('@/collapse/README.md'),
+        },
+        {
+          title: 'Cell 单元格',
+          name: 'cell',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/cell',
+          component: () => import('@/cell/README.md'),
+        },
+      ],
+    },
+    {
+      title: '输入类组件',
+      type: 'component',
+      children: [
+        {
+          title: 'Stepper 步进器',
+          name: 'stepper',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/stepper',
+          component: () => import('@/stepper/README.md'),
+        },
+        {
+          title: 'Slider 滑动选择器',
+          name: 'slider',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/slider',
+          component: () => import('@/slider/README.md'),
+        },
+        {
+          title: 'Picker 选择器',
+          name: 'picker',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/picker',
+          component: () => import('@/picker/README.md'),
+        },
+        {
+          title: 'Radio 单选框',
+          name: 'radio',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/radio',
+          component: () => import('@/radio/README.md'),
+        },
+        {
+          title: 'Rate 评分',
+          name: 'rate',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/rate',
+          component: () => import('@/rate/README.md'),
+        },
+        {
+          title: 'Switch 开关',
+          name: 'switch',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/switch',
+          component: () => import('@/switch/README.md'),
+        },
+        {
+          title: 'CheckBox 复选框',
+          name: 'checkbox',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/checkbox',
+          component: () => import('@/checkbox/README.md'),
+        },
+        {
+          title: 'Input 输入框',
+          name: 'input',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/input',
+          component: () => import('@/input/README.md'),
+        },
+        {
+          title: 'Fab 悬浮按钮',
+          name: 'fab',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/fab',
+          component: () => import('@/fab/README.md'),
+        },
+        {
+          title: 'SearchField 搜索框',
+          name: 'search-field',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/search-field',
+          component: () => import('@/search-field/README.md'),
+        },
+      ],
+    },
+    {
+      title: '导航组件',
+      type: 'component',
+      children: [
+        {
+          title: 'Steps 步骤条',
+          name: 'steps',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/steps',
+          component: () => import('@/steps/README.md'),
+        },
+        {
+          title: 'TabBar 标签栏',
+          name: 'tabbar',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/tabbar',
+          component: () => import('@/tab-bar/README.md'),
+        },
+        {
+          title: 'SegmentedControl 分段器',
+          name: 'segmented-control',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/segmented-control',
+          component: () => import('@/segmented-control/README.md'),
+        },
+        {
+          title: 'ImageViewer 图片预览',
+          name: 'image-viewer',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/image-viewer',
+          component: () => import('@/image-viewer/README.md'),
+        },
+        {
+          title: 'Drawer 抽屉',
+          name: 'drawer',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/drawer',
+          component: () => import('@/drawer/README.md'),
+        },
+        {
+          title: 'Tabs 选项卡',
+          name: 'tabs',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/tabs',
+          component: () => import('@/tabs/README.md'),
+        },
+        {
+          title: 'Navbar 导航条',
+          name: 'navbar',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/navbar',
+          component: () => import('@/navbar/README.md'),
+        },
+        {
+          title: 'Indexes 索引',
+          name: 'indexes',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/indexes',
+          component: () => import('@/indexes/README.md'),
+        },
+        {
+          title: 'BackTop 返回顶部',
+          name: 'back-top',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/back-top',
+          component: () => import('@/back-top/README.md'),
+        },
+      ],
+    },
+    {
+      title: '消息提醒',
+      type: 'component', // 组件文档
+      children: [
+        {
+          title: 'Progress 进度条',
+          name: 'progress',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/progress',
+          component: () => import('@/progress/README.md'),
+        },
+        {
+          title: 'ActionSheet 动作面板',
+          name: 'actionsheet',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/actionsheet',
+          component: () => import('@/action-sheet/README.md'),
+        },
+        {
+          title: 'Toast 轻提示',
+          name: 'toast',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/toast',
+          component: () => import('@/toast/README.md'),
+        },
+        {
+          title: 'Message 消息',
+          name: 'message',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/message',
+          component: () => import('@/message/README.md'),
+        },
+        {
+          title: 'NoticeBar 公告栏',
+          name: 'noticebar',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/noticebar',
+          component: () => import('@/noticebar/README.md'),
+        },
+        {
+          title: 'Dialog 弹出框',
+          name: 'dialog',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/dialog',
+          component: () => import('@/dialog/README.md'),
+        },
+        {
+          title: 'Popup 弹出层',
+          name: 'popup',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/popup',
+          component: () => import('@/popup/README.md'),
+        },
+      ],
+    },
+  ],
 };
