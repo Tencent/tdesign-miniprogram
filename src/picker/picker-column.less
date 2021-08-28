@@ -1,4 +1,30 @@
-@import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@picker-group--height: 400rpx;
+@picker-column--height: 80rpx;
+@picker-column--line-height: 80rpx;
+@picker-column--text-color: #000000;
+
+.@{prefix}-picker-column {
+  &__group {
+    height: @picker-group--height;
+    overflow: hidden;
+    flex: 1;
+  }
+
+  &__wrapper {
+    padding: 160rpx 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: @picker-column--height;
+    line-height: @picker-column--line-height;
+    color: @picker-column--text-color;
+  }
+}
 
 :host {
   display: flex;
