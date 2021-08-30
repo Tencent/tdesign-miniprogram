@@ -1,7 +1,5 @@
-<!-- <t-popup visible="{{visible}}" position="bottom"> -->
-<!-- popup 还没 mr  临时处理 -->
-<view wx:if="{{visible}}">
-  <view class="{{classPrefix}}">
+<t-popup visible="{{visible}}" placement="bottom">
+  <view slot="content" class="{{classPrefix}}">
     <view class="{{classPrefix}}__toolbar">
       <view class="{{classPrefix}}__cancel" bindtap="onCancel">{{cancelBtn}}</view>
       <view class="{{classPrefix}}__title">{{title}}</view>
@@ -17,5 +15,4 @@
     <!-- 扩展插槽 -->
     <slot name="after"></slot>
   </view>
-</view>
-<!-- </t-popup> -->
+</t-popup>
