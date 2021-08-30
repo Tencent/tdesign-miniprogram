@@ -51,11 +51,10 @@ export default class PickerColumn extends SuperComponent {
     },
 
     onTouchEnd(event) {
-      const { StartOffset, _selectedIndex } = this;
       const { offset } = this.data;
       const { options } = this.properties;
 
-      if (offset === StartOffset) {
+      if (offset === this.StartOffset) {
         return;
       }
       // 调整偏移量
@@ -65,7 +64,7 @@ export default class PickerColumn extends SuperComponent {
         offset: -index * itemHeight,
       });
 
-      if (index === _selectedIndex) {
+      if (index === this._selectedIndex) {
         return;
       }
 
