@@ -5,43 +5,43 @@ import {
   DialogActionOptionsType,
 } from './type';
 
-function getDialogInstance(context?: Context, selector = '#t-dialog') {
+const getDialogInstance = function (context?: Context, selector = '#t-dialog') {
   if (!context) {
     const pages = getCurrentPages();
     const page = pages[pages.length - 1];
     context = page.$$basePage || page;
   }
-  const instance = context?.selectComponent(selector);
+  const instance = context ? context.selectComponent(selector) : null;
   if (!instance) {
-    console.warn(`未找到dialog组件,请检查selector是否正确`);
+    console.warn('未找到dialog组件,请检查selector是否正确');
     return null;
   }
   return instance;
-}
+};
 
 export default {
   alert(options: DialogAlertOptionsType) {
-    const { context, selector, ..._options } = options;
+    const { context, selector, ...otherOptions } = options;
     const instance = getDialogInstance(context, selector);
     if (!instance) return Promise.reject();
 
     return new Promise((resolve) => {
       instance.setData({
         cancelBtn: '',
-        ..._options,
+        ...otherOptions,
         visible: true,
       });
       instance._onComfirm = resolve;
     });
   },
   confirm(options: DialogComfirmOptionsType) {
-    const { context, selector, ..._options } = options;
+    const { context, selector, ...otherOptions } = options;
     const instance = getDialogInstance(context, selector);
     if (!instance) return Promise.reject();
 
     return new Promise((resolve, reject) => {
       instance.setData({
-        ..._options,
+        ...otherOptions,
         visible: true,
       });
       instance._onComfirm = resolve;
@@ -57,7 +57,7 @@ export default {
     return Promise.reject();
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
-    const { context, selector, actions, ..._options } = options;
+    const { context, selector, actions, ...otherOptions } = options;
     const instance = getDialogInstance(context, selector);
     if (!instance) return Promise.reject();
     if (!actions || actions.length === 0 || actions.length > 7) {
@@ -68,7 +68,7 @@ export default {
       instance.setData({
         actions,
         direction: 'vertical',
-        ..._options,
+        ...otherOptions,
         visible: true,
       });
       instance._onAction = resolve;

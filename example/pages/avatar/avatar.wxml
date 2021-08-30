@@ -1,0 +1,241 @@
+<view class="demo-title">Avatar 头像</view>
+<view class="demo-desc">用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作</view>
+<t-demo title="01 类型" desc="头像样式可为默认头像、微信头像圆形、方形、自定义文字">
+  <view class="desc">
+    <view class="row">
+      <view class="avatar-example">
+        <t-avatar
+          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components/avatar/detaul_avatar.jpg"
+        />
+        <text>默认</text>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" />
+        <text>用户</text>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="avatar-example">
+        <t-avatar shape="circle" image="{{pics[0]}}" />
+        <text>圆形</text>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="avatar-example">
+        <t-avatar shape="round" image="{{pics[0]}}" />
+        <text>方形</text>
+      </view>
+      <view class="gutter-column-24"></view>
+      <view class="avatar-example text">
+        <t-avatar alt="A" t-alt-class="alt-example" />
+        <text>自定义文字</text>
+      </view>
+    </view>
+  </view>
+</t-demo>
+<t-demo title="02 特殊类型" desc="纯展示 从上往下">
+  <view class="desc">
+    <view class="row">
+      <view class="avatar-group avatar-group--reverse">
+        <t-avatar alt="+5" t-image-class="border-example-1" t-alt-class="icon-example" size="xs" />
+        <t-avatar
+          wx:for="{{pics}}"
+          wx:for-item="pic"
+          wx:key="index"
+          image="{{pic}}"
+          size="xs"
+          t-image-class="border-example-1"
+        />
+      </view>
+    </view>
+    <view class="row">
+      <view class="avatar-group avatar-group--reverse">
+        <t-avatar alt="+5" t-image-class="border-example-2" t-alt-class="icon-example" size="s" />
+        <t-avatar
+          wx:for="{{pics}}"
+          wx:for-item="pic"
+          wx:key="index"
+          image="{{pic}}"
+          size="s"
+          t-image-class="border-example-2"
+        />
+      </view>
+    </view>
+    <view class="row">
+      <view class="avatar-group avatar-group--reverse">
+        <t-avatar alt="+5" t-image-class="border-example-3" t-alt-class="icon-example" size="m" />
+        <t-avatar
+          wx:for="{{pics}}"
+          wx:for-item="pic"
+          wx:key="index"
+          image="{{pic}}"
+          size="m"
+          t-image-class="border-example-3"
+        />
+      </view>
+    </view>
+  </view>
+</t-demo>
+<t-demo desc="带操作 从下往上">
+  <view class="desc">
+    <view class="row">
+      <view class="avatar-group">
+        <t-avatar
+          wx:for="{{pics}}"
+          wx:for-item="pic"
+          wx:key="index"
+          image="{{pic}}"
+          size="xs"
+          t-image-class="border-example-1"
+        />
+        <t-avatar
+          icon="user_fill"
+          t-image-class="border-example-1"
+          t-icon-class="icon-example"
+          size="xs"
+          bindtap="onAddTap"
+        />
+      </view>
+    </view>
+    <view class="row">
+      <view class="avatar-group">
+        <t-avatar
+          wx:for="{{pics}}"
+          wx:for-item="pic"
+          wx:key="index"
+          image="{{pic}}"
+          size="s"
+          t-image-class="border-example-2"
+        />
+        <t-avatar
+          icon="user_fill"
+          t-image-class="border-example-2"
+          t-icon-class="icon-example"
+          size="s"
+          bindtap="onAddTap"
+        />
+      </view>
+    </view>
+    <view class="row">
+      <view class="avatar-group">
+        <t-avatar
+          wx:for="{{pics}}"
+          wx:for-item="pic"
+          wx:key="index"
+          image="{{pic}}"
+          size="m"
+          t-image-class="border-example-3"
+        />
+        <t-avatar
+          icon="user_fill"
+          t-image-class="border-example-3"
+          t-icon-class="icon-example"
+          size="m"
+          bindtap="onAddTap"
+        />
+      </view>
+    </view>
+  </view>
+</t-demo>
+<t-demo title="03 规格" desc="头像大小尺寸及消息提醒">
+  <view class="desc">
+    <view class="row" style="margin: 20px 0">
+      <view class="gutter-column-24"></view>
+      <text class="row-text">XL</text>
+      <view class="gutter-column-64"></view>
+      <view class="gutter-column-12"></view>
+      <text class="row-text">L</text>
+      <view class="gutter-column-64"></view>
+      <text class="row-text">M</text>
+      <view class="gutter-column-32"></view>
+      <view class="gutter-column-24"></view>
+      <text class="row-text">S</text>
+      <view class="gutter-column-32"></view>
+      <view class="gutter-column-12"></view>
+      <text class="row-text">XS</text>
+    </view>
+    <view class="row">
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="xl" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="l" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="m" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="s" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="xs" />
+      </view>
+    </view>
+    <view class="row">
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="xl" badge-props="{{ {content: 2} }}" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="l" badge-props="{{ {content: 2} }}" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="m" badge-props="{{ {content: 2} }}" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="s" badge-props="{{ {dot: true} }}" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar image="{{pics[0]}}" size="xs" badge-props="{{ {dot: true} }}" />
+      </view>
+    </view>
+    <view class="row">
+      <view class="avatar-example">
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {content: 2} }}" size="xl" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {content: 2} }}" size="l" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {content: 2} }}" size="m" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {dot: true} }}" size="s" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {dot: true} }}" size="xs" />
+      </view>
+    </view>
+    <view class="row">
+      <view class="avatar-example">
+        <t-avatar alt="A" t-alt-class="alt-example" size="xl" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar alt="A" t-alt-class="alt-example" size="l" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar alt="A" t-alt-class="alt-example" size="m" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar alt="A" t-alt-class="alt-example" size="s" />
+      </view>
+      <view class="gutter-column-32"></view>
+      <view class="avatar-example">
+        <t-avatar alt="A" t-alt-class="alt-example" size="xs" />
+      </view>
+    </view>
+  </view>
+</t-demo>

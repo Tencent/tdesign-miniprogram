@@ -22,7 +22,7 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "minapp-vscode.wxmlFormatter": "wxml",
+  "minapp-vscode.wxmlFormatter": "prettier",
   "[wxml]": {
     "editor.defaultFormatter": "qiu8310.minapp-vscode"
   },

@@ -1,36 +1,34 @@
 <wxs src="./tabs.wxs" module="filters" />
-<view class="{{classPrefix}} t-is-{{tabPosition}}">
+<view class="t-class {{classPrefix}} {{classPrefix}}-{{placement}}">
   <scroll-view
-    class="{{classPrefix}}__nav-wrapper"
+    class="{{classPrefix}}-scroll"
     enable-flex
     scroll-x="{{isScrollX}}"
     scroll-y="{{isScrollY}}"
   >
-    <view class="{{classPrefix}}__nav {{scrollable ? classPrefix+'__nav--scrollable' : '' }}">
+    <view class="{{classPrefix}}-nav">
       <view
         wx:for="{{tabs}}"
         wx:key="index"
         data-index="{{index}}"
-        class="{{classPrefix}}__tabbar {{item.disabled ? classPrefix+'__tabbar--disabled' : '' }} {{currentIndex === index ? 't-is-active' : ''}}"
+        class="t-class-item {{classPrefix}}-item  {{item.disabled ? 't-tabs-item--disabled' : '' }} {{currentIndex === index ? 't-tabs-is-active t-class-active' : ''}}"
         bind:tap="onTabTap"
       >
-        <label class="{{classPrefix}}__title {{ ellipsis ? 't-is-ellipsis' : '' }}"
-          >{{item.title}}</label
-        >
+        {{item.label}}
       </view>
-      <view class="{{classPrefix}}__track" style="{{trackStyle}}" />
+      <view class="{{classPrefix}}-track" style="{{trackStyle}}" />
     </view>
   </scroll-view>
   <view
-    class="{{classPrefix}}__content"
+    class="{{classPrefix}}-content"
     bind:touchstart="onTouchStart"
     bind:touchmove="onTouchMove"
     bind:touchend="onTouchEnd"
     bind:touchcancel="onTouchEnd"
   >
     <view
-      class="{{classPrefix}}__content-inner {{animated ? classPrefix+'__content-inner--animated' : ''}}"
-      style="{{animated ? filters.animate({duration: duration,currentIndex:currentIndex, direction}) : ''}}"
+      class="{{classPrefix}}-content-inner "
+      style="{{ filters.animate({duration: animate.duration,currentIndex:currentIndex, direction}) }}"
     >
       <slot />
     </view>

@@ -15,7 +15,7 @@ const getInstance = function (context?: Context, selector = '#t-message') {
   }
   const instance = context?.selectComponent(selector);
   if (!instance) {
-    console.warn(`未找到Message组件, 请检查selector是否正确`);
+    console.warn('未找到Message组件, 请检查selector是否正确');
     return null;
   }
   return instance;

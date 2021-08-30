@@ -1,74 +1,69 @@
-import TComponent from '../common/component';
+import { TdPopupProps } from './type';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 import { classNames } from '../common/utils';
+export type PopupProps = TdPopupProps;
+
 const { prefix } = config;
 const name = `${prefix}-popup`;
-
 const defaultTransitionProps = {
   name: `${name}--transition`,
   durations: [300, 300],
   appear: false,
 };
 
-TComponent({
-  properties: {
-    visible: {
-      type: Boolean,
-      value: false,
-    },
-    // center | top | bottom | left | right
-    position: {
-      type: String,
-      value: 'center',
-    },
-    maskTransparent: Boolean,
-    maskClosable: {
-      type: Boolean,
-      value: true,
-    },
-    destroyOnHide: {
-      type: Boolean,
-      value: false,
-    },
-    customClass: String,
-    transitionProps: Object,
-  },
-  data: {
+@wxComponent()
+export default class Popup extends SuperComponent {
+  externalClasses = ['t-class', 't-class-overlay', 't-class-content'];
+  options = {
+    multipleSlots: true, // 多slot支持
+    styleIsolation: 'shared' as const,
+  };
+  properties = props;
+  data = {
     className: name,
     dataTransitionProps: { ...defaultTransitionProps },
-  },
-  lifetimes: {
+  };
+  lifetimes = {
     attached() {
       this.setClass();
       this.setTransitionProps();
     },
-  },
-  methods: {
-    setClass() {
-      const { customClass, position, maskTransparent } = this.data;
-      const className = classNames(name, customClass, `${name}--position-${position}`, {
-        [`${name}--mask-transparent`]: maskTransparent,
-      });
-      this.setData({
-        className,
-      });
-    },
-    setTransitionProps() {
-      if (!this.data.transitionProps) {
-        return;
-      }
-      const transitionProps = Object.assign({}, defaultTransitionProps, this.data.transitionProps);
+  };
+  setClass() {
+    const { placement, showOverlay } = this.properties;
+    const className = classNames(name, 't-class', `${name}--position-${placement}`, {
+      [`${name}--overlay-transparent`]: !showOverlay,
+    });
+    this.setData({
+      className,
+    });
+  }
+  setTransitionProps() {
+    if (!this.properties.transitionProps) {
+      return;
+    }
+    const transitionProps = Object.assign(
+      {},
+      defaultTransitionProps,
+      this.properties.transitionProps,
+    );
 
-      this.setData({
-        dataTransitionProps: transitionProps,
-      });
-    },
-    onMaskClick() {
-      const { maskClosable } = this.data;
-      if (maskClosable) {
-        this.triggerEvent('close', { trigger: 'mask' });
-      }
-      this.triggerEvent('mask-click');
-    },
-  },
-});
+    this.setData({
+      dataTransitionProps: transitionProps,
+    });
+  }
+  onOverlayClick() {
+    const { closeOnOverlayClick } = this.properties;
+    if (closeOnOverlayClick) {
+      this.triggerEvent('visible-change', { visiable: false });
+    }
+  }
+  onCloseClick() {
+    this.triggerEvent('visible-change', { visiable: false });
+  }
+  preventEvent() {
+    return;
+  }
+}
