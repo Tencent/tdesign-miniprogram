@@ -4,9 +4,10 @@
   closeOnOverlayClick="{{closeOnOverlayClick}}"
   preventScrollThrough="{{preventScrollThrough}}"
   zIndex="{{ zIndex }}"
+  placement="{{center}}"
   bindoverlayClick="overlayClick"
 >
-  <view class="{{ classPrefix }} t-class">
+  <view slot="content" class="{{ classPrefix }} t-class">
     <view class="{{ classPrefix }}__content">
       <view wx:if="{{ title }}" class="{{ classPrefix }}__header">{{ title }}</view>
       <slot name="title" />
