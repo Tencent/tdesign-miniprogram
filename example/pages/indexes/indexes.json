@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "Indexes 索引"
+  "navigationBarTitleText": "Indexes 索引",
+  "usingComponents": {
+    "t-indexes": "@tencent/tdesign-miniprogram/indexes/indexes"
+  }
 }

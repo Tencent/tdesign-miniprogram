@@ -2,6 +2,7 @@
   "pages": [
     "pages/index",
     "pages/picker/picker",
+    "pages/avatar/avatar",
     "pages/button/button",
     "pages/button-group/button-group",
     "pages/dialog/dialog",
@@ -41,8 +42,8 @@
     "pages/divider/divider",
     "pages/empty/empty",
     "pages/back-top/back-top",
-    "pages/grid-item/grid-item",
-    "pages/grid/grid"
+    "pages/grid/grid",
+    "pages/image/image"
   ],
   "usingComponents": {
     "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
@@ -53,7 +54,7 @@
     "t-collapse-panel": "@tencent/tdesign-miniprogram/collapse-panel/collapse-panel",
     "t-dialog": "@tencent/tdesign-miniprogram/dialog/dialog",
     "t-tabs": "@tencent/tdesign-miniprogram/tabs/tabs",
-    "t-tab": "@tencent/tdesign-miniprogram/tab/tab",
+    "t-tab-panel": "@tencent/tdesign-miniprogram/tabs/tab-panel",
     "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
     "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group",
     "t-icon": "@tencent/tdesign-miniprogram/icon/icon",
@@ -82,8 +83,6 @@
     "t-transition": "@tencent/tdesign-miniprogram/transition/transition",
     "t-popup": "@tencent/tdesign-miniprogram/popup/popup",
     "t-indexes": "@tencent/tdesign-miniprogram/indexes/indexes",
-    "t-indexes-anchor": "@tencent/tdesign-miniprogram/indexes/indexes-anchor",
-    "t-indexes-cell": "@tencent/tdesign-miniprogram/indexes/indexes-cell",
     "t-steps": "@tencent/tdesign-miniprogram/steps/steps",
     "t-step": "@tencent/tdesign-miniprogram/steps/step",
     "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu",
@@ -96,7 +95,8 @@
     "t-empty": "@tencent/tdesign-miniprogram/empty/empty",
     "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top",
     "t-grid-item": "@tencent/tdesign-miniprogram/grid-item/grid-item",
-    "t-grid": "@tencent/tdesign-miniprogram/grid/grid"
+    "t-grid": "@tencent/tdesign-miniprogram/grid/grid",
+    "t-image": "@tencent/tdesign-miniprogram/image/image"
   },
   "window": {
     "backgroundTextStyle": "light",

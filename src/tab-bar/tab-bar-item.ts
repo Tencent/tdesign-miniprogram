@@ -11,11 +11,12 @@ export default class TabbarItem extends SuperComponent {
     './tab-bar': {
       type: 'ancestor',
       linked(parent) {
+        const [activeColor, color] = parent.data.color;
         this.setData({
           parent,
-          currentName: this.properties.name ? this.properties.name : parent.initName(),
-          color: parent.data.color,
-          activeColor: parent.data.activeColor,
+          color,
+          activeColor,
+          currentName: this.properties.value ? this.properties.value : parent.initName(),
         });
         parent.updateChildren();
       },
@@ -34,7 +35,7 @@ export default class TabbarItem extends SuperComponent {
   };
   properties = props;
   observers = {
-    children(value: Record<string, any>[]) {
+    subTabBar(value: Record<string, any>[]) {
       this.setData({
         hasChildren: value.length > 0,
       });
@@ -69,7 +70,7 @@ export default class TabbarItem extends SuperComponent {
       const { currentName, hasChildren } = this.data;
       const isChecked =
         currentName === value ||
-        (hasChildren && this.properties.children.some((item) => item.name === value));
+        (hasChildren && this.properties.subTabBar.some((item) => item.name === value));
 
       if (hasChildren && Array.isArray(value)) {
         return value.indexOf(currentName) > -1;

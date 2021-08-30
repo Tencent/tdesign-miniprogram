@@ -1,7 +1,7 @@
-const getCurrentPage = function<T>() {
+const getCurrentPage = function <T>() {
   const pages = getCurrentPages();
   return pages[pages.length - 1] as T & WechatMiniprogram.Page.TrivialInstance;
-}
+};
 
 type IPageScrollOption = WechatMiniprogram.Page.IPageScrollOption;
 type Scroller = (
@@ -9,7 +9,7 @@ type Scroller = (
   event?: IPageScrollOption,
 ) => void;
 
-const onPageScroll = function(event?: IPageScrollOption) {
+const onPageScroll = function (event?: IPageScrollOption) {
   const { pageScroller = [] } = getCurrentPage<{
     pageScroller: Scroller[];
   }>();
@@ -20,7 +20,7 @@ const onPageScroll = function(event?: IPageScrollOption) {
       scroller(event);
     }
   });
-}
+};
 
 export const pageScrollMixin = (scroller: Scroller) =>
   Behavior({
@@ -45,7 +45,7 @@ export const pageScrollMixin = (scroller: Scroller) =>
     },
   });
 
-export const getRect = function(context: any, selector: string) {
+export const getRect = function (context: any, selector: string) {
   return new Promise<WechatMiniprogram.BoundingClientRectCallbackResult>((resolve) => {
     wx.createSelectorQuery()
       .in(context)
@@ -53,4 +53,4 @@ export const getRect = function(context: any, selector: string) {
       .boundingClientRect()
       .exec((rect = []) => resolve(rect[0]));
   });
-}
+};

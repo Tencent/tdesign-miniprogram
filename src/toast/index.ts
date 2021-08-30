@@ -24,19 +24,19 @@ const getInstance = (context?: Context, selector = '#t-toast') => {
   }
   const instance = context?.selectComponent(selector);
   if (!instance) {
-    console.warn(`未找到toast组件,请检查selector是否正确`);
+    console.warn('未找到toast组件,请检查selector是否正确');
     return null;
   }
   return instance;
 };
 
 export default function (options: ToastOptionsType) {
-  const { context, selector, ..._options } = options;
+  const { context, selector, ...Options } = options;
   const instance = getInstance(context, selector);
   if (instance) {
     instance.show({
-      ..._options,
-      duration: _options.duration || 2000,
+      ...Options,
+      duration: Options.duration || 2000,
     });
   }
 }

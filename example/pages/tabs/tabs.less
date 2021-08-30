@@ -2,22 +2,52 @@ page {
   background-color: #f7f8fa;
 }
 
-.t-tabs-demo {
-  &__title {
-    margin: 0;
-    padding: 32px 16px 16px;
-    color: rgba(69, 90, 100, .6);
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-  }
-}
-
 .t-tabs {
   background-color: #fff;
 }
 
-.t-tab__pane {
-  padding: 18px 20px;
+.t-tab-panel {
+  background-color: #fff;
+}
+
+.t-tabs-vertical {
+  .tab-content {
+    margin-top: 250rpx;
+    color: rgba(0, 0, 0, .26);
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+.t-tabs-horizontal {
+  t-tab-panel {
+    text-align: center;
+    justify-content: center;
+    height: 172rpx;
+    line-height: 172rpx;
+    color: rgba(0, 0, 0, .26);
+  }
+}
+
+.scroll-item-horizontal {
+  height: 92rpx;
+  line-height: 92rpx;
+}
+
+.scroll-item-vertical {
+  line-height: 108rpx;
+  height: 108rpx;
+  width: 208rpx;
+}
+
+.active-item {
+  font-size: 32rpx;
+}
+
+.scroll-item-vertical {
+  background-color: rgba(243, 243, 243, 1);
+}
+
+.tabs-vertical-active {
   background-color: #fff;
 }

@@ -1,16 +1,10 @@
-<!-- 示例页面 -->
-<t-indexes indexLists="{{indexLists}}" cellLists="{{cellLists}}">
-  <view wx:for="{{indexLists}}" wx:key="index">
-    <t-indexes-anchor
-      title="标题{{indexLists[index]}}"
-      index="{{indexLists[index]}}"
-      wx:key="index"
-    ></t-indexes-anchor>
-    <t-indexes-cell
-      bindtap="handleClick"
-      wx:for="{{cellListDemo}}"
-      wx:key="index"
-      title="此处使用列表样式{{item}}"
-    ></t-indexes-cell>
+<view class="indexes">
+  <view class="title">Indexes 索引</view>
+  <view class="desc">索引列表，用于通过索引导航快速定位到相应内容。</view>
+  <view class="sub-title">基本用法</view>
+  <view class="button-wrap">
+    <button class="t-button" bindtap="tapShowLetter">字母索引</button>
+    <button class="t-button" bindtap="tapShowNumber">数字索引</button>
   </view>
-</t-indexes>
+  <t-indexes id="bar" list="{{ list }}" height="{{barHeight}}" bind:select="onSelect"></t-indexes>
+</view>

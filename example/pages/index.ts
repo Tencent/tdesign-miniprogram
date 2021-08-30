@@ -28,6 +28,10 @@ Page({
             name: 'Empty',
             path: '/pages/empty/empty',
           },
+          {
+            name: 'Image',
+            path: '/pages/image/image',
+          },
         ],
       },
       {
@@ -46,6 +50,10 @@ Page({
       {
         type: '信息展示类',
         components: [
+          {
+            name: 'Avatar',
+            path: '/pages/avatar/avatar',
+          },
           {
             name: 'Badge',
             path: '/pages/badge/badge',
@@ -85,7 +93,7 @@ Page({
           {
             name: 'Footer',
             path: '/pages/footer/footer',
-          },
+          }
         ],
       },
       {
@@ -189,8 +197,13 @@ Page({
             name: 'Drawer',
             path: '/pages/drawer/drawer',
           },
+          {
+            name: 'Indexes',
+            path: '/pages/indexes/indexes',
+          },
         ],
       },
     ],
   },
+  onShareAppMessage() {},
 });
