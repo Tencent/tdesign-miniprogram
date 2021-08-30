@@ -23,7 +23,7 @@ const DefaultOptions: ToastOptionsType = {
   duration: 2000,
   direction: 'row',
   position: 'middle',
-  showOverlay: false
+  showOverlay: false,
 };
 
 @wxComponent()
@@ -35,7 +35,7 @@ export default class Toast extends SuperComponent {
     loading: 'loading',
     success: 'tick',
     fail: 'close',
-  }
+  };
 
   data = {
     inserted: false,
@@ -57,7 +57,10 @@ export default class Toast extends SuperComponent {
   show(options: ToastOptionsType) {
     if (this.hideTimer) clearTimeout(this.hideTimer);
     if (this.removeTimer) clearTimeout(this.removeTimer);
-    const typeMapIcon = Object.keys(this.typeMapIcon).indexOf(options?.type) !== -1 ? this.typeMapIcon[options?.type] : '';
+    const typeMapIcon =
+      Object.keys(this.typeMapIcon).indexOf(options?.type) !== -1
+        ? this.typeMapIcon[options?.type]
+        : '';
 
     const data = {
       ...DefaultOptions,

@@ -1,4 +1,10 @@
-// 等待button组件更新
+/* eslint-disable */
+
+/**
+ * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
+ * updated at 2021-08-03 16:25:55
+ * */
+
 // import { ButtonProps } from '../button/button';
 
 export interface TdDialogProps {

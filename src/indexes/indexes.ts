@@ -4,7 +4,7 @@ import props from './props';
 const { prefix } = config;
 
 const classPrefix = `${prefix}-indexes`;
-const TOP_OFFSET = 40; // 滑动选中高亮的顶部偏移(px)
+const topOffset = 40; // 滑动选中高亮的顶部偏移(px)
 
 @wxComponent()
 export default class IndexBar extends SuperComponent {
@@ -68,7 +68,7 @@ export default class IndexBar extends SuperComponent {
       if (!res[1]) return;
       // 计算每个group的scrollTop
       this.groupTop = res[1].map((element) => element.height);
-      this.groupTop.reduce((acc, cur, index, src) => {
+      this.groupTop.reduce((acc, cur, index) => {
         const amount = acc + cur;
         this.groupTop[index] = amount;
 
@@ -95,7 +95,7 @@ export default class IndexBar extends SuperComponent {
       return -1;
     }
 
-    return this.groupTop.findIndex((element) => element - TOP_OFFSET > scrollTop);
+    return this.groupTop.findIndex((element) => element - topOffset > scrollTop);
   }
   // 在scroll-view滑动过程中，高亮对应的index
   activeIndexWhenScroll(scrollTop: number) {
