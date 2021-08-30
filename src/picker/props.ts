@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-24 21:03:27
+ * updated at 2021-08-30 17:06:26
  * */
 
 import { TdPickerProps } from './type';
@@ -18,7 +18,7 @@ const props: TdPickerProps = {
     value: '确定',
   },
   /** 标题 */
-  titile: {
+  title: {
     type: String,
     value: '',
   },
