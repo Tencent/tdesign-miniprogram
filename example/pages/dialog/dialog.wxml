@@ -3,12 +3,7 @@
   <view class="demo-desc"
     >在不跳转页面的情况下，需要用户进行操作时使用，用对话框的方式承载相应的操作</view
   >
-  <t-demo
-    title="01 基本用法"
-    desc="对话框根据内容分为反馈类、确认类、输入类"
-    operList="{{operList}}"
-    bindclickoper="clickHandle"
-  />
+  <t-demo title="01 类型" operList="{{operList}}" bindclickoper="clickHandle" />
 </view>
 
 <!-- 链式调用基础 -->
