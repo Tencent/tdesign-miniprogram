@@ -30,7 +30,6 @@
     </t-cell-group>
   </scroll-view>
   <view class="{{classPrefix}}__index">
-    <t-icon name="location" t-class="index-icon" size=""></t-icon>
     <view
       class="{{classPrefix}}__btn-bar"
       id="{{classPrefix}}__btn-bar"
