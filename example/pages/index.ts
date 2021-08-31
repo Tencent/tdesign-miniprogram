@@ -87,13 +87,17 @@ Page({
             path: '/pages/scroll-view/scroll-view',
           },
           {
+            name: 'CountDown',
+            path: '/pages/count-down/count-down',
+          },
+          {
             name: 'Skeleton',
             path: '/pages/skeleton/skeleton',
           },
           {
             name: 'Footer',
             path: '/pages/footer/footer',
-          }
+          },
         ],
       },
       {
