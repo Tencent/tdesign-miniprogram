@@ -1,12 +1,18 @@
-<view class="{{classPrefix}}">
-  <view class="{{classPrefix}}__toolbar">
-    <view class="{{classPrefix}}__cancel" bindtap="onCancel"> {{cancelButtonText}} </view>
-    <view class="{{classPrefix}}__title"> {{title}} </view>
-    <view class="{{classPrefix}}__confirm" bindtap="onConfirm"> {{confirmButtonText}} </view>
+<t-popup visible="{{visible}}" placement="bottom">
+  <view slot="content" class="{{classPrefix}}">
+    <view class="{{classPrefix}}__toolbar">
+      <view class="{{classPrefix}}__cancel" bindtap="onCancel">{{cancelBtn}}</view>
+      <view class="{{classPrefix}}__title">{{title}}</view>
+      <view class="{{classPrefix}}__confirm" bindtap="onConfirm">{{confirmBtn}}</view>
+    </view>
+    <!-- 扩展插槽 -->
+    <slot name="before"></slot>
+    <view class="{{classPrefix}}__main">
+      <slot></slot>
+      <view class="{{classPrefix}}__mask"></view>
+      <view class="{{classPrefix}}__indicator"></view>
+    </view>
+    <!-- 扩展插槽 -->
+    <slot name="after"></slot>
   </view>
-  <view class="{{classPrefix}}__main">
-    <slot></slot>
-    <view class="{{classPrefix}}__mask"></view>
-    <view class="{{classPrefix}}__indicator"></view>
-  </view>
-</view>
+</t-popup>

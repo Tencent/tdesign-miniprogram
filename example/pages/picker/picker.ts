@@ -1,75 +1,102 @@
 Page({
   data: {
-    heroOptions: [
-      { index: 0, name: '伊泽瑞尔' },
-      { index: 1, name: '卢锡安' },
-      { index: 2, name: '薇恩' },
-      { index: 3, name: '厄斐琉斯' },
-      { index: 4, name: '塞娜' },
-      { index: 5, name: '维鲁斯' },
-      { index: 6, name: '格雷福斯' },
-      { index: 7, name: '金克斯' },
+    picker1Visible: false,
+    picker2Visible: false,
+    picker3Visible: false,
+    citys: [
+      { label: '北京', value: '北京' },
+      { label: '上海', value: '上海' },
+      { label: '广州', value: '广州' },
+      { label: '深圳', value: '深圳' },
+      { label: '成都', value: '成都' },
     ],
-    gameOptions: [
-      { index: 0, name: '英雄联盟' },
-      { index: 1, name: 'DOTA2' },
-      { index: 2, name: '王者荣耀' },
-      { index: 3, name: '和平精英' },
-      { index: 4, name: '阴阳师' },
-      { index: 5, name: '梦幻西游' },
-      { index: 6, name: '大话西游' },
-      { index: 7, name: '一刀999' },
+    years: [
+      { label: '2021', value: '2021' },
+      { label: '2020', value: '2020' },
+      { label: '2019', value: '2019' },
     ],
-    evaluationOptions: [
-      { index: 0, name: '3A大作' },
-      { index: 1, name: '精品游戏' },
-      { index: 2, name: 'MOBA' },
-      { index: 3, name: '换皮游戏' },
-      { index: 4, name: '氪金游戏' },
-      { index: 5, name: '辣鸡游戏' },
-      { index: 6, name: '卡牌游戏' },
-      { index: 7, name: '回合制游戏' },
+    months: Array.from(new Array(12), (_, index) => ({ label: index + 1, value: index + 1 })),
+    days: Array.from(new Array(31), (_, index) => ({ label: index + 1, value: index + 1 })),
+    seasons: [
+      { label: '春', value: '春' },
+      { label: '夏', value: '夏' },
+      { label: '秋', value: '秋' },
+      { label: '冬', value: '冬' },
     ],
-    roleOptions: ['战士', '法师', '射手', '刺客', '坦克', '辅助'],
-    multiHeroOptions: [
-      ['01', '02', '03', '04', '05'],
-      ['11', '12', '13', '14', '15'],
-      ['21', '22', '23', '24', '25'],
-      ['31', '32', '33', '34', '35'],
-      ['41', '42', '43', '44', '45'],
-      ['51', '52', '53', '54', '55'],
-      ['61', '62', '63', '64', '65'],
-    ],
-    roleIndex: 0,
+    selectedCityValue: '广州',
+    selectedYears: '',
+    selectedSeason: '',
+    selectedMonth: '',
+    selectedDay: '',
+    formatYear: (val) => `${val}年`,
+    formatMonth: (val) => `${val}月`,
+    formatDay: (val) => `${val}日`,
   },
-  onPicker1Confirm(event) {
-    const { index, value } = event.detail;
-    console.log(`picker tap confirm! index: ${index}, value: ${value}`);
+
+  onColumnChange(e) {
+    console.log('column change:', e.detail);
   },
-  onPicker1Cancel() {
-    console.log('picker tap cancel!');
+
+  onClickPicker(e) {
+    const { index } = e?.currentTarget?.dataset;
+    this.setData({
+      [`picker${index}Visible`]: true,
+    });
   },
-  onPicker1Change(event) {
-    const { index, value } = event.detail;
-    console.log(`picker change! index: ${index}, value: ${value}`);
+
+  onPickerChange(e) {
+    console.log('picker change:', e.detail);
   },
-  onColumn1Change(event) {
-    const { index, value } = event.detail;
-    console.log(`picker column change! index: ${index}, value: ${value}`);
+
+  /** **********************Picker1****************************/
+  onPicker1Confirm(e) {
+    console.log('picker1 confirm:', e.detail);
+    this.setData({
+      picker1Visible: false,
+      selectedCityValue: e.detail.value?.value,
+    });
   },
-  onPicker2Confirm(event) {
-    const { index, value } = event.detail;
-    console.log(`picker tap confirm! index: ${index}, value: ${value}`);
+  onPicker1Cancel(e) {
+    console.log('picker1 cancel:');
+    this.setData({
+      picker1Visible: false,
+    });
   },
-  onPicker2Cancel() {
-    console.log('picker tap cancel!');
+  /** **********************Picker1****************************/
+
+  /** **********************Picker2****************************/
+  onPicker2Confirm(e) {
+    console.log('picker2 confirm:', e.detail);
+    this.setData({
+      picker2Visible: false,
+      selectedYears: e.detail.value[0]?.value,
+      selectedSeason: e.detail.value[1]?.value,
+    });
   },
-  onPicker2Change(event) {
-    const { column, index, value } = event.detail;
-    console.log(`picker change! column: ${column}, index: ${index}, value: ${value}`);
+  onPicker2Cancel(e) {
+    console.log('picker2 cancel:');
+    this.setData({
+      picker2Visible: false,
+    });
   },
-  onRoleChange(event) {
-    const { index } = event.detail;
-    this.setData({ roleIndex: index });
+  /** **********************Picker2****************************/
+
+  /** **********************Picker2****************************/
+  onPicker3Confirm(e) {
+    console.log('picker3 confirm:', e.detail);
+    this.setData({
+      picker3Visible: false,
+      selectedYears: e.detail.value[0]?.value,
+      selectedMonth: e.detail.value[1]?.value,
+      selectedDay: e.detail.value[2]?.value,
+    });
   },
+
+  onPicker3Cancel(e) {
+    console.log('picker3 cancel:');
+    this.setData({
+      picker3Visible: false,
+    });
+  },
+  /** **********************Picker2****************************/
 });
