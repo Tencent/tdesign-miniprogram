@@ -1,5 +1,5 @@
 {
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "eslint.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true,
