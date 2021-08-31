@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-31 16:59:19
+ * updated at 2021-08-31 20:19:29
  * */
 
 import { TdSliderProps } from './type';
@@ -30,6 +30,7 @@ const props: TdSliderProps = {
   marks: {
     type: Object,
     optionalTypes: [Array],
+    value: {},
   },
   /** 滑块范围最大值 */
   max: {

@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-31 16:59:19
+ * updated at 2021-08-31 20:19:29
  * */
 
 export interface TdSliderProps {
@@ -49,11 +49,12 @@ export interface TdSliderProps {
   };
   /**
    * 刻度标记，示例：[0, 10, 40, 200] 或者 { 5:  '5¥', 10: '10%' }
+   * @default {}
    */
   marks?: {
-    type: ArrayConstructor;
-    optionalTypes: Array<ObjectConstructor>;
-    value?: Array<number> | Marks;
+    type: ObjectConstructor;
+    optionalTypes: Array<ArrayConstructor>;
+    value?: Record<number, string> | Array<number>;
     required?: boolean;
   };
   /**
@@ -110,10 +111,6 @@ export interface TdSliderProps {
     value?: SliderValue;
     required?: boolean;
   };
-}
-
-export interface Marks {
-  [mark: number]: string;
 }
 
 export type SliderValue = number | Array<number>;
