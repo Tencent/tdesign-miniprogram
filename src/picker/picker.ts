@@ -1,39 +1,40 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-picker`;
 
-TComponent({
-  relations: {
+@wxComponent()
+export default class Picker extends SuperComponent {
+  /**
+   * Component properties
+   */
+  properties = props;
+
+  externalClasses = ['t-class'];
+
+  options = {
+    multipleSlots: true,
+  };
+
+  relations = {
     './picker-column': {
-      type: 'child',
+      type: 'child' as 'child',
     },
-  },
-  // options: {
-  //   virtualHost: true,
-  // },
-  properties: {
-    title: {
-      type: String,
-      value: '',
-    },
-    confirmButtonText: {
-      type: String,
-      value: '确认',
-    },
-    cancelButtonText: {
-      type: String,
-      value: '取消',
-    },
-    theme: {
-      type: String,
-      value: 'default',
-    },
-  },
-  data: {
+  };
+
+  /**
+   * Component initial data
+   */
+  data = {
     classPrefix: name,
-  },
-  methods: {
+  };
+
+  /**
+   * Component methods
+   */
+  methods = {
     getPickerColumns() {
       const pickerColumns = this.getRelationNodes('./picker-column');
       if (Array.isArray(pickerColumns)) {
@@ -43,7 +44,7 @@ TComponent({
     },
     getSelectedValues() {
       const pickerColumns = this.getPickerColumns();
-      if (pickerColumns.length === 0) {
+      if (pickerColumns?.length === 0) {
         return { index: undefined, value: undefined };
       }
 
@@ -51,7 +52,8 @@ TComponent({
         index: pickerColumns.map((pickerColumn) => pickerColumn._selectedIndex),
         value: pickerColumns.map((pickerColumn) => pickerColumn._selectedValue),
       };
-      const isMulti = pickerColumns.length > 1;
+
+      const isMulti = pickerColumns?.length > 1;
       if (isMulti) {
         return selectedValues;
       }
@@ -65,10 +67,21 @@ TComponent({
     },
     onCancel() {
       this.triggerEvent('cancel');
+      // 取消事件 触发重置 先不做重置 保留用户操作
+      // const columns = this.getPickerColumns();
+      // columns?.map((column) => {
+      //   column.methods.resetOrigin.call(column);
+      // });
     },
     triggerChange({ column, index, value }) {
       const isMulti = this.getPickerColumns().length > 1;
       this.triggerEvent('change', isMulti ? { column, index, value } : { index, value });
     },
-  },
-});
+  };
+
+  // 给 column 打标 标识顺序
+  ready() {
+    const columns = this.getPickerColumns();
+    columns.map((column, index) => (column.columnIndex = index));
+  }
+}

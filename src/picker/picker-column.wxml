@@ -11,12 +11,12 @@
   >
     <view
       class="{{prefix}}__item"
-      wx:for="{{optionList}}"
+      wx:for="{{options}}"
       wx:key="index"
       wx:for-item="option"
       data-index="{{ index }}"
     >
-      {{option}}
+      {{option.label}}
     </view>
   </view>
 </view>
