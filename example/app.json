@@ -46,7 +46,7 @@
     "pages/count-down/count-down",
     "pages/image/image",
     "pages/search/search"
-],
+  ],
   "usingComponents": {
     "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
     "t-button": "@tencent/tdesign-miniprogram/button/button",
@@ -101,7 +101,7 @@
     "t-count-down": "@tencent/tdesign-miniprogram/count-down/count-down",
     "t-image": "@tencent/tdesign-miniprogram/image/image",
     "t-search": "@tencent/tdesign-miniprogram/search/search"
-},
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
