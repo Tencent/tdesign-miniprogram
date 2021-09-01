@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "Slider 滑块"
+  "navigationBarTitleText": "Slider 滑块",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
 }
