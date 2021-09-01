@@ -1,0 +1,76 @@
+@import '../common/style/index.less';
+
+@search-input-height: 80rpx;
+@search-input-text-color: rgba(0, 0, 0, 0.9);
+@search-input-text-disable: rgba(0, 0, 0, 0.26);
+@search-input-bg: rgba(243, 243, 243, 1);
+@search-label-padding-right: 8rpx;
+@search-input-padding-vertical: 16rpx;
+@search-input-padding-horizontal: 24rpx;
+@search-input-radius-square: 8rpx;
+@search-input-radius-round: @search-input-height / 2;
+@search-input-font-size: @font-size-m;
+@h-space-nest: @spacer;
+
+.@{prefix}-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &--label {
+    padding: @search-label-padding-right;
+    color: @search-input-text-color;
+  }
+
+  &--input-box {
+    flex: 1;
+    box-sizing: border-box;
+    display: flex;
+    height: @search-input-height;
+    align-items: center;
+    border: 2rpx solid @search-input-bg;
+    background: @search-input-bg;
+    padding: @search-input-padding-vertical @search-input-padding-horizontal;
+
+    &.focus {
+      border-color: @search-input-bg;
+    }
+
+    &.round {
+      border-radius: @search-input-radius-round;
+    }
+
+    &.square {
+      border-radius: @search-input-radius-square;
+    }
+
+    &.center.not-focus {
+      justify-content: center;
+    }
+
+    .keywrod {
+      display: inline-block;
+      flex: 1;
+      color: @search-input-text-color;
+      font-size: @search-input-font-size;
+      padding-left: @h-space-nest;
+    }
+
+    .left-icon,
+    .right-icon {
+      color: @search-input-text-disable;
+    }
+  }
+
+  &--search-action {
+    margin-left: 30rpx;
+    font-size: @search-input-font-size;
+    color: @search-input-text-disable;
+  }
+
+  &--placeholder-center {
+    font-size: @search-input-font-size;
+    color: @search-input-text-disable;
+    margin-left: @h-space-nest;
+  }
+}
