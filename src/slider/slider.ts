@@ -17,7 +17,20 @@ export default class Slider extends SuperComponent {
 
   // 组件的内部数据
   data: {
-    [key: string]: any;
+    sliderStyles: string;
+    classPrefix: string;
+    initialLeft: number | null;
+    initialRight: number | null;
+    activeLeft: number;
+    activeRight: number;
+    maxRange: number;
+    lineLeft: number;
+    lineRight: number;
+    dotTopValue: number[];
+    blockSize: number;
+    isScale: boolean;
+    scaleArray: any[];
+    scaleTextArray: any[];
     _value: number | number[];
   } = {
     // 按钮样式列表
@@ -96,7 +109,6 @@ export default class Slider extends SuperComponent {
   triggerValue(value?: number | number[]) {
     value = trimValue(value || this.data._value, this.properties);
 
-    console.log(111, value);
     this.triggerEvent('change', {
       value,
     });
@@ -191,7 +203,11 @@ export default class Slider extends SuperComponent {
 
     if (Number(step) < 1 || Number(step) > Number(max) - Number(min)) return value;
 
-    const closestStep = trimSingleValue(Math.round(value / step) * step, min, max);
+    const closestStep = trimSingleValue(
+      Math.round(value / Number(step)) * Number(step),
+      Number(min),
+      Number(max),
+    );
 
     return closestStep as number;
   }
@@ -244,7 +260,7 @@ export default class Slider extends SuperComponent {
    * @memberof Slider
    */
   convertPosToValue(posValue: number, dir: 0 | 1): number {
-    const { maxRange, blockSize, max, min } = this.data;
+    const { maxRange, blockSize, max, min } = this.data as any;
     const fullLineWidth = maxRange + blockSize;
     return dir === 0
       ? (posValue / fullLineWidth) * (max - min) + min
@@ -254,7 +270,7 @@ export default class Slider extends SuperComponent {
   // 点击范围选择滑动条的事件
   onLineTap(e: any) {
     const { disabled } = this.properties;
-    const { initialLeft, initialRight, maxRange, blockSize, max, min } = this.data;
+    const { initialLeft, initialRight, maxRange, blockSize } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
