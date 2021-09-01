@@ -1,52 +1,50 @@
-<wxs src="../common/utils.wxs" module="utils" />
 <t-cell
-  wx:if="{{!pureMode}}"
-  class="{{ classPrefix }} {{ disabled ? 't-is-disabled': ''}} classname"
+  wx:if="{{theme === 'normal'}}"
+  class="{{ classPrefix }}-normal {{ disabled ? 't-is-disabled': ''}} t-class"
 >
   <view slot="title" class="{{ classPrefix }}__label">{{ label }}</view>
-  <view
-    class="{{ classPrefix }}__minus {{ disabled || disableMinus || currentValue <= min ? 't-is-disabled': ''}}"
-    bindtap="minusValue"
-  >
+  <view slot="right-icon" class="{{ classPrefix }}__right-container">
     <t-icon
-      class-prefix="{{ iconPrefix }}"
-      name="{{ minusIcon }}"
+      bindtap="minusValue"
+      class="{{ classPrefix }}__minus {{ disabled || disableMinus || currentValue <= min ? 't-is-disabled': ''}}"
+      name="remove"
       color="{{ disabled || disableMinus || currentValue <= min ? '#ccc': '#444'}}"
       size="20px"
       t-class="stepper__minus__icon"
+      slot="right-icon"
     />
-  </view>
 
-  <input
-    class="{{ classPrefix }}__input"
-    style="width:{{ utils.addUnit(inputWidth) }};"
-    disabled="{{ disabled || disableInput }}"
-    type="number"
-    value="{{ currentValue }}"
-    bindblur="blurHandler"
-  />
-  <view
-    class="{{ classPrefix }}__plus {{ disabled || disablePlus|| currentValue >= max ? 't-is-disabled': ''}}"
-    bindtap="plusValue"
-  >
+    <input
+      slot="note"
+      style="width: {{inputWidth || 100}}rpx"
+      class="{{ classPrefix }}__input"
+      disabled="{{ disabled || disableInput }}"
+      type="number"
+      value="{{ currentValue }}"
+      bindblur="blurHandler"
+    />
     <t-icon
-      class-prefix="{{ iconPrefix }}"
-      name="{{ plusIcon }}"
+      class="{{ classPrefix }}__plus {{ disabled || disablePlus|| currentValue >= max ? 't-is-disabled': ''}}"
+      bindtap="plusValue"
+      name="add"
       color="{{ disabled || disablePlus|| currentValue >= max ? '#ccc': '#444'}}"
       size="20px"
       t-class="stepper__minus__icon"
+      slot="right-icon"
     />
   </view>
 </t-cell>
 
-<view wx:else class="{{ classPrefix }}-pure {{ disabled ? 't-is-disabled': ''}} classname">
+<view
+  wx:if="{{theme === 'mode'}}"
+  class="{{ classPrefix }}-pure {{ disabled ? 't-is-disabled': ''}} t-class"
+>
   <view
     class="{{ classPrefix }}__minus {{ disabled || disableMinus || currentValue <= min ? 't-is-disabled': ''}}"
     bindtap="minusValue"
   >
     <t-icon
-      class-prefix="{{ iconPrefix }}"
-      name="{{ minusIcon }}"
+      name="remove"
       color="{{ disabled || disableMinus || currentValue <= min ? '#ccc': '#444'}}"
       size="16px"
       t-class="stepper__minus__icon"
@@ -55,7 +53,7 @@
 
   <input
     class="{{ classPrefix }}__input"
-    style="{{ utils.addUnit('width',inputWidth) }}"
+    style="width: {{inputWidth || 72}}rpx"
     disabled="{{ disabled || disableInput }}"
     type="number"
     value="{{ currentValue }}"
@@ -66,8 +64,7 @@
     bindtap="plusValue"
   >
     <t-icon
-      class-prefix="{{ iconPrefix }}"
-      name="{{ plusIcon }}"
+      name="add"
       color="{{ disabled || disablePlus|| currentValue >= max ? '#ccc': '#444'}}"
       size="16px"
       t-class="stepper__minus__icon"

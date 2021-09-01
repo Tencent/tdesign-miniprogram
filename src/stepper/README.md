@@ -25,34 +25,16 @@
 
 ## API
 
-### stepper Props
-
-| 参数 | 说明 | 类型 | 默认值 | 版本 |
-|-----------|-----------|-----------|-------------|-------------|
-| modelValue | 初始输入值 | *string* | 0 | - |
-| disabled | 是否禁用 | *boolean* | `false` | - |
-| disableInput | 是否禁止输入 | *boolean* | `false` | - |
-| inputWidth | input框长度 | *number* | null | - |
-| label | 标题 | *string* | '' | - |
-| min | 允许最小值 | *boolean* | `0` | - |
-| max | 允许最大值 | *infinity* | `0` | - |
-| step | 步长 | *number* | 1 | - |
-| iconPrefix | 自定义icon前缀 | *string* | '' | - |
-| minusIcon | 自定义减少按钮的icon | *string* | `stepper-minus` | - |
-| plusIcon | 自定义增加按钮的icon | *string* | `stepper-plus` | - |
-| pureMode | 是否启用纯步进器 | *boolean* | `false` | - |
-
-### stepper Event
-
-| 事件名 | 说明 | 参数 |
-|------|------|------|
-| blur | 输入框失去焦点 | 当前输入的值 |
-| overlimit | 当前值超出范围 | 无 |
-| change | 当绑定值变化时触发的事件 | 返回event,event.detail: 当前输入的值 |
-
-### stepper 外部样式类
-
-| 类名 | 说明 |
-|-----------|-----------|
-| classname | 根节点样式类 |
+### Stepper Props
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+disabled | Boolean | false | 禁用 | N
+disable-input | Boolean | false | 禁用输入框 | N
+input-width | Number | - | 输入框宽度 | N
+label | String | - | 标签 | N
+max | Number | 100 | 最大值 | N
+min | Number | 0 | 最小值 | N
+step | Number | 1 | 步进 | N
+theme | String | normal | 组件风格。可选项：normal/mode | N
+value | String / Number | 0 | 值 | N
 ```
