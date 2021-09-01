@@ -260,11 +260,12 @@ export default class Slider extends SuperComponent {
    * @memberof Slider
    */
   convertPosToValue(posValue: number, dir: 0 | 1): number {
-    const { maxRange, blockSize, max, min } = this.data as any;
+    const { maxRange, blockSize } = this.data;
+    const { max, min } = this.properties;
     const fullLineWidth = maxRange + blockSize;
     return dir === 0
-      ? (posValue / fullLineWidth) * (max - min) + min
-      : max - (posValue / fullLineWidth) * (max - min);
+      ? (posValue / fullLineWidth) * (Number(max) - Number(min)) + Number(min)
+      : Number(max) - (posValue / fullLineWidth) * (Number(max) - Number(min));
   }
 
   // 点击范围选择滑动条的事件
