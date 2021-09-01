@@ -1,7 +1,7 @@
 import ContributorsData from '../../common/contributors/component-contributors.json';
 import ContributorsInfo from '../../common/contributors/contributors-info.json';
 
- const getContributors = (componentName?: string) => {
+const getContributors = (componentName?: string) => {
   const componentInfo = ContributorsData.mobile.find((item) => item.name === componentName);
   if (!componentInfo) {
     return [];
@@ -42,7 +42,7 @@ import ContributorsInfo from '../../common/contributors/contributors-info.json';
       ...userInfo,
     };
   });
-}
+};
 
 export {
   getContributors,

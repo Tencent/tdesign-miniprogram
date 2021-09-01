@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/miniprogram/components/button',
   },
   {
-    path: "/:catchAll(.*)",
+    path: '/:catchAll(.*)',
     redirect: 'home',
   },
   ...getDocsRoutes(docs, 'document'),
