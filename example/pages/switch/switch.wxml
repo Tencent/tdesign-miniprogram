@@ -2,59 +2,61 @@
   <view class="demo-title">Swich 开关</view>
   <view class="demo-desc">开关用于切换当个设置项的状态，开启、关闭为两个互斥的操作</view>
 
-  <view class="demo-section">
-    <view class="demo-section__title">01 类型</view>
-    <view class="demo-section__desc">基础开关</view>
+  <t-demo title="01 类型" desc="基础开关">
     <view class="group">
-      <t-cell label="默认">
-        <t-switch bindchange="onswitchchangesmall" value="{{true}}" />
+      <t-cell title="默认">
+        <t-switch bindchange="onswitchchangesmall" value="{{true}}" slot="note" />
       </t-cell>
-      <t-cell label="默认关">
-        <t-switch bindchange="onswitchchange" value="{{false}}"></t-switch>
+      <t-cell title="默认关">
+        <t-switch bindchange="onswitchchange" value="{{false}}" slot="note" />
       </t-cell>
-      <t-cell label="自定义颜色">
-        <t-switch value="{{true}}" activedColor="#00A870"></t-switch>
+      <t-cell title="自定义颜色">
+        <t-switch value="{{true}}" activedColor="#00A870" slot="note" />
       </t-cell>
-      <t-cell label="异步操作" bordered="{{false}}">
-        <t-switch value="{{true}}"></t-switch>
+      <t-cell title="异步操作" bordered="{{false}}">
+        <t-switch value="{{true}}" slot="note" />
       </t-cell>
     </view>
 
     <view class="group">
-      <t-cell label="默认">
-        <t-switch bindchange="onswitchchangesmall" value="{{true}}" label="描述信息" />
+      <t-cell title="默认">
+        <t-switch bindchange="onswitchchangesmall" value="{{true}}" label="描述信息" slot="note" />
       </t-cell>
-      <t-cell label="默认关">
-        <t-switch bindchange="onswitchchange" value="{{false}}" label="描述信息"></t-switch>
+      <t-cell title="默认关">
+        <t-switch bindchange="onswitchchange" value="{{false}}" label="描述信息" slot="note" />
       </t-cell>
-      <t-cell label="自定义颜色" bordered="{{false}}">
-        <t-switch value="{{true}}" activedColor="#00A870" label="描述信息"></t-switch>
+      <t-cell title="自定义颜色" bordered="{{false}}">
+        <t-switch value="{{true}}" colors="{{['#00A870', 'gray']}}" label="描述信息" slot="note" />
       </t-cell>
     </view>
-  </view>
+  </t-demo>
 
-  <view class="demo-section">
-    <view class="demo-section__title">02 状态</view>
-    <view class="demo-section__desc">开关状态</view>
-
+  <t-demo title="02 状态" desc="开关状态">
     <view class="group">
-      <t-cell label="开关">
-        <t-switch bindchange="onswitchchangesmall" value="{{true}}" disabled />
+      <t-cell title="开关">
+        <t-switch bindchange="onswitchchangesmall" value="{{true}}" disabled slot="note" />
       </t-cell>
-      <t-cell label="开关">
-        <t-switch bindchange="onswitchchange" value="{{false}}" disabled></t-switch>
+      <t-cell title="开关">
+        <t-switch bindchange="onswitchchange" value="{{false}}" disabled slot="note" />
       </t-cell>
-      <t-cell label="开关">
-        <t-switch bindchange="onswitchchangesmall" value="{{true}}" label="描述信息" disabled />
+      <t-cell title="开关">
+        <t-switch
+          bindchange="onswitchchangesmall"
+          value="{{true}}"
+          label="描述信息"
+          disabled
+          slot="note"
+        />
       </t-cell>
-      <t-cell label="开关" bordered="{{false}}">
+      <t-cell title="开关" bordered="{{false}}">
         <t-switch
           bindchange="onswitchchange"
           value="{{false}}"
           label="描述信息"
           disabled
-        ></t-switch>
+          slot="note"
+        />
       </t-cell>
     </view>
-  </view>
+  </t-demo>
 </view>

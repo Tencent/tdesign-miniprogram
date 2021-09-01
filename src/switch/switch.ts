@@ -1,47 +1,13 @@
 import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-switch`;
 @wxComponent()
 export default class Switch extends SuperComponent {
   externalClasses = ['t-class'];
-  properties = {
-    label: {
-      type: String,
-      value: '',
-    },
-    labelWidth: {
-      type: Number,
-      value: 100,
-    },
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    value: {
-      type: Boolean,
-      optionalTypes: [String, Number],
-      value: false,
-    },
-    activeValue: {
-      type: Boolean,
-      optionalTypes: [String, Number],
-      value: true,
-    },
-    inactiveValue: {
-      type: Boolean,
-      optionalTypes: [String, Number],
-      value: false,
-    },
-    activedColor: {
-      type: String,
-      value: '#0052d9',
-    },
-    inactivedColor: {
-      type: String,
-      value: 'rgba(0, 0, 0, .26)',
-    },
-  };
+  properties = props;
   // 组件的内部数据
   data = {
     externalClass: 't-class',
@@ -51,20 +17,19 @@ export default class Switch extends SuperComponent {
   };
   lifetimes = {
     attached() {
-      const { value, activeValue, disabled, activedColor, inactivedColor } = this.data;
+      const { value, customValue, disabled, colors } = this.data;
+      const [activeValue] = customValue;
+      
       this.setData({
         isActive: value === activeValue,
       });
-      if (!disabled) {
-        this.setData({
-          bodyStyle: `background-color: ${this.data.isActive ? activedColor : inactivedColor}`,
-        });
-      }
+      this.handleColorChange();
     },
   };
   methods = {
     switchChange() {
-      const { disabled, value, activeValue, inactiveValue, isActive } = this.data;
+      const { disabled, value, customValue, isActive } = this.data;
+      const [activeValue, inactiveValue] = customValue;
       if (disabled) return;
 
       this.setData({
@@ -75,6 +40,16 @@ export default class Switch extends SuperComponent {
       this.triggerEvent('change', {
         value: this.data.value,
       });
+      this.handleColorChange();
+    },
+    handleColorChange() {
+      const { disabled, colors } = this.data;
+      const [activedColor, inactivedColor] = colors;
+      if (!disabled) {
+        this.setData({
+          bodyStyle: `background-color: ${this.data.isActive ? activedColor : inactivedColor}`,
+        });
+      }
     },
     onTapBackground() {
       this.switchChange();
