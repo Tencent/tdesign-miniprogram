@@ -93,7 +93,7 @@ Page({
           {
             name: 'Footer',
             path: '/pages/footer/footer',
-          }
+          },
         ],
       },
       {
@@ -142,6 +142,10 @@ Page({
           {
             name: 'Fab',
             path: '/pages/fab/fab',
+          },
+          {
+            name: 'ImagePicker',
+            path: '/pages/image-picker/image-picker',
           },
         ],
       },
