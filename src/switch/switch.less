@@ -1,1 +1,51 @@
-@import (css) '../common/index.wxss';
+@import './_var.less';
+
+.@{prefix}-switch {
+  display: flex;
+  align-items: center;
+
+  &__label {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    margin-right: 32rpx;
+    font-size: @swtich-label-font-size;
+    color: @switch-label-color;
+  }
+
+  &__body {
+    vertical-align: middle;
+    width: @switch-width;
+    height: @switch-height;
+    border-radius: 24rpx;
+    background-color: @switch-inactive-color;
+    position: relative;
+
+    &--active {
+      background-color: @switch-active-color;
+    }
+
+    &--disabled {
+      background-color: @switch-inactive-color--disabled;
+    }
+
+    &--active&--disabled {
+      background-color: @switch-active-color--disabled;
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    left: @switch-dot-pos-left;
+    top: @switch-dot-pos-top;
+    width: @switch-dot-size;
+    height: @switch-dot-size;
+    border-radius: 50%;
+    background-color: @bg-color-block;
+    transition: all .3s;
+
+    &--active {
+      left: @switch-dot-size + @switch-dot-pos-left;
+    }
+  }
+}

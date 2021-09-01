@@ -1,84 +1,35 @@
-import TComponent from '../common/component';
+import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-switch`;
-
-TComponent({
-  properties: {
-    label: {
-      type: String,
-      value: '',
-    },
-    // size默认medium，还有small和large
-    size: {
-      type: String,
-      value: 'medium',
-    },
-    labelWidth: {
-      type: Number,
-      value: 100,
-    },
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    value: {
-      type: Boolean,
-      optionalTypes: [String, Number],
-      value: false,
-    },
-    activeValue: {
-      type: Boolean,
-      optionalTypes: [String, Number],
-      value: true,
-    },
-    inactiveValue: {
-      type: Boolean,
-      optionalTypes: [String, Number],
-      value: false,
-    },
-    activedColor: {
-      type: String,
-      value: '#0252d9',
-    },
-    inactivedColor: {
-      type: String,
-      value: '#dcdfe6',
-    },
-    dotColor: {
-      type: String,
-      value: '#fff',
-    },
-    activeText: {
-      type: String,
-      value: null,
-    },
-    inactiveText: {
-      type: String,
-      value: null,
-    },
-  },
+@wxComponent()
+export default class Switch extends SuperComponent {
+  externalClasses = ['t-class'];
+  properties = props;
   // 组件的内部数据
-  data: {
+  data = {
+    externalClass: 't-class',
     classPrefix: name,
-    height: {
-      small: 20,
-      medium: 25,
-      large: 30,
-    },
     isActive: false,
-  },
-  lifetimes: {
+    bodyStyle: '',
+  };
+  lifetimes = {
     attached() {
-      const { value, activeValue } = this.data;
+      const { value, customValue, disabled, colors } = this.data;
+      const [activeValue] = customValue;
+      
       this.setData({
         isActive: value === activeValue,
       });
+      this.handleColorChange();
     },
-  },
-  methods: {
+  };
+  methods = {
     switchChange() {
-      const { disabled, value, activeValue, inactiveValue, isActive } = this.data;
+      const { disabled, value, customValue, isActive } = this.data;
+      const [activeValue, inactiveValue] = customValue;
       if (disabled) return;
 
       this.setData({
@@ -89,6 +40,16 @@ TComponent({
       this.triggerEvent('change', {
         value: this.data.value,
       });
+      this.handleColorChange();
+    },
+    handleColorChange() {
+      const { disabled, colors } = this.data;
+      const [activedColor, inactivedColor] = colors;
+      if (!disabled) {
+        this.setData({
+          bodyStyle: `background-color: ${this.data.isActive ? activedColor : inactivedColor}`,
+        });
+      }
     },
     onTapBackground() {
       this.switchChange();
@@ -96,5 +57,5 @@ TComponent({
     onTapDot() {
       this.switchChange();
     },
-  },
-});
+  };
+}
