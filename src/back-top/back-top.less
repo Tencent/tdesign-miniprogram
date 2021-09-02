@@ -2,7 +2,8 @@
 @import '../common/style/index.less';
 
 @back-top-text-font-size: @font-size;
-@back-top-icon-font-size: 48rpx;
+@back-top-icon-font-size: 32rpx;
+@back-top-default-color: #666;
 
 .@{prefix}-back-top {
   display: flex;
@@ -40,14 +41,12 @@
       margin: 0;
       // border: none;
       border-radius: 0;
-      font-size: @back-top-icon-font-size;
       background-color: transparent;
     }
 
     .text {
       padding: 0;
       margin-top: 0;
-      font-size: @back-top-text-font-size;
     }
   }
 
@@ -85,30 +84,28 @@
 
     .icon {
       margin: 0;
-      // border: none;
       border-radius: 0;
-      font-size: @back-top-icon-font-size;
       background-color: transparent;
     }
 
     .text {
       padding: 0;
-      margin-left: 4rpx;
+      margin-left: 8rpx;
       width: 2em;
-      font-size: @back-top-text-font-size;
     }
   }
 
   .text {
     font-size: @back-top-text-font-size;
-    color: #666;
-    padding-top: 10rpx;
+    color: @back-top-default-color;
+    line-height: 24rpx;
   }
 
   .icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #666;
+    color: @back-top-default-color;
+    font-size: @back-top-icon-font-size;
   }
 }
