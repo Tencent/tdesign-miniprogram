@@ -4,7 +4,6 @@
  * @Description:
  * @FilePath: /tdesign-miniprogram/src/slider/tool.ts
  */
-import { TdSliderProps } from './type';
 
 /**
  * 处理单个number的超限和异常
@@ -34,7 +33,7 @@ export const trimSingleValue = (value: any, min: number, max: number): number =>
  * @param props
  * @returns
  */
-export const trimValue = (value: number | number[], props: TdSliderProps): number | number[] => {
+export const trimValue = (value: number | number[], props): number | number[] => {
   const { min, max, range } = props;
 
   if (range && Array.isArray(value)) {
