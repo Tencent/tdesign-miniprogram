@@ -34,32 +34,7 @@ Page({
 
   onBtnClick(e: any) {
     const index = e.currentTarget.dataset.index as number;
-    switch (index) {
-      case 0: {
-        this.setData({ backTopDemo: backTopDemos[0] });
-        break;
-      }
-      case 1: {
-        this.setData({ backTopDemo: backTopDemos[1] });
-        break;
-      }
-      case 2: {
-        this.setData({ backTopDemo: backTopDemos[2] });
-        break;
-      }
-      case 3: {
-        this.setData({ backTopDemo: backTopDemos[3] });
-        break;
-      }
-      case 4: {
-        this.setData({ backTopDemo: backTopDemos[4] });
-        break;
-      }
-      case 5: {
-        this.setData({ backTopDemo: backTopDemos[5] });
-        break;
-      }
-    }
+    this.setData({ backTopDemo: backTopDemos[index] });
     wx.pageScrollTo({ duration: 300, scrollTop: 1000 });
   },
 });
