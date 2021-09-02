@@ -2,10 +2,7 @@
   <view class="demo-title">Steps 步骤条</view>
   <view class="demo-desc">用于用户对某个任务的时间节点</view>
 
-  <view class="demo-section">
-    <view class="demo-section__title">01 类型</view>
-    <view class="demo-section__desc">横向可操作步骤条</view>
-
+  <t-demo title="01 类型" desc="横向可操作步骤条">
     <view class="group">
       <t-steps class="demo-steps" current="1">
         <t-step title="步骤描述" />
@@ -49,14 +46,14 @@
 
     <view class="group">
       <t-steps class="demo-steps" current="1">
-        <t-step title="步骤描述" icon="user_fill"></t-step>
-        <t-step title="选中步骤" icon="location_fill" />
-        <t-step title="步骤描述" icon="circle-time_fill" />
+        <t-step title="步骤描述" icon="user"></t-step>
+        <t-step title="选中步骤" icon="location" />
+        <t-step title="步骤描述" icon="time" />
       </t-steps>
       <t-steps class="demo-steps" current="1">
-        <t-step title="步骤描述" icon="user_fill" content="辅助信息文字最多两行"></t-step>
-        <t-step title="选中步骤" icon="location_fill" content="辅助信息文字最多两行" />
-        <t-step title="步骤描述" icon="circle-time_fill" content="辅助信息文字最多两行" />
+        <t-step title="步骤描述" icon="user" content="辅助信息文字最多两行"></t-step>
+        <t-step title="选中步骤" icon="location" content="辅助信息文字最多两行" />
+        <t-step title="步骤描述" icon="time" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
 
@@ -147,14 +144,14 @@
     <view class="demo-section__desc">竖向带图标只读步骤条</view>
     <view class="group">
       <t-steps class="demo-steps vertical" current="1" readonly="true" direction="vertical">
-        <t-step title="已完成步骤" icon="tick" />
-        <t-step title="当前步骤" icon="tick" />
-        <t-step title="未完成步骤" icon="tick" />
+        <t-step title="已完成步骤" icon="check" />
+        <t-step title="当前步骤" icon="check" />
+        <t-step title="未完成步骤" icon="check" />
       </t-steps>
       <t-steps class="demo-steps vertical" current="1" readonly="true" direction="vertical">
-        <t-step title="已完成步骤" icon="tick" />
-        <t-step title="错误步骤" icon="tick" status="error" />
-        <t-step title="未完成步骤" icon="tick" />
+        <t-step title="已完成步骤" icon="check" />
+        <t-step title="错误步骤" icon="check" status="error" />
+        <t-step title="未完成步骤" icon="check" />
       </t-steps>
     </view>
 
@@ -196,5 +193,5 @@
         </t-step>
       </t-steps>
     </view>
-  </view>
+  </t-demo>
 </view>
