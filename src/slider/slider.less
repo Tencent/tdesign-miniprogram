@@ -1,21 +1,21 @@
-@import (css) '../common/index.wxss';
+// @import (css) '../common/index.wxss';
 
 @prefix: t-slider;
+@bar-height: 2rpx;
+@block-color: #fff;
+@block-size: 16px;
 
 .@{prefix}__container {
   font-size: 14px;
-  overflow: hidden;
-  position: relative;
-  .@{prefix}-label {
-    width: 10%;
-    float: left;
-    bottom: 10px;
-    position: absolute;
+
+  &.bottom {
+    padding-bottom: 40rpx;
   }
-  .@{prefix}-right {
-    float: right;
-    width: 90%;
+
+  &.disabled {
+    opacity: .5;
   }
+
   .@{prefix}-value__active {
     text-align: center;
   }
@@ -24,85 +24,130 @@
 .@{prefix}__wrapper {
   display: flex;
   align-items: center;
+  height: 96rpx;
+
+  // 单点滑块样式
   .@{prefix}__main {
+    position: relative;
+    margin: 0 32rpx;
     flex: 10;
+    padding: 16rpx 0;
+    background-clip: content-box;
+    height: @bar-height * 2;
+    border-radius: @bar-height;
+    display: inline-block;
+
+    .@{prefix}-line {
+      position: absolute;
+      top: 8px;
+      height: @bar-height * 2;
+      border-radius: @bar-height;
+    }
+
+    .@{prefix}-dot {
+      border-radius: 50%;
+      box-shadow: 0 0 1px 2px #eee;
+      position: absolute;
+      background-color: @block-color;
+      width: @block-size;
+      height: @block-size;
+      top: @bar-height - @block-size - 2;
+      z-index: 2;
+    }
   }
   .@{prefix}-value {
-    flex: 1;
+    // flex: 1;
     display: inline-block;
-    color: #888;
+    color: rgba(0, 0, 0, .4);
+  }
+  .@{prefix}-value__min {
+    margin-left: 16px;
+  }
+  .@{prefix}-value__max {
+    margin-right: 16px;
+  }
+  .@{prefix}-value__right {
+    flex-basis: 80rpx;
   }
   .@{prefix}-active {
     width: 100%;
   }
+}
 
-  .@{prefix}-range__main1 {
+// 范围滑块样式
+.@{prefix}-range-container {
+  display: flex;
+  padding: @block-size * 1.4 0 0 0;
+
+  .@{prefix}-range-extrem {
+    display: inline-block;
+    color: rgba(0, 0, 0, .4);
+  }
+  .@{prefix}-range-min {
+    margin-left: 32rpx;
+    text-align: left;
+  }
+  .@{prefix}-range-max {
+    margin-right: 32rpx;
+    text-align: right;
+  }
+  .@{prefix}-bar {
+    margin: 0 32rpx;
     flex: 10;
-  }
-}
-.@{prefix}-range-extrem {
-  display: inline-block;
-  width: 12%;
-  vertical-align: top;
-  color: #888;
-}
+    padding: 16rpx 0;
+    background-clip: content-box;
+    height: @bar-height * 2;
+    border-radius: @bar-height;
+    position: relative;
+    display: inline-block;
 
-.@{prefix}-range-min {
-  text-align: left;
-}
-.@{prefix}-range-max {
-  text-align: right;
-}
-.@{prefix}-bar {
-  padding: 8px 0;
-  background-clip: content-box;
-  width: 76%;
-  height: 5rpx;
-  position: relative;
-  display: inline-block;
+    .@{prefix}-dot {
+      border-radius: 50%;
+      box-shadow: 0 0 1px 2px #eee;
+      position: absolute;
+      z-index: 2;
+      background-color: @block-color;
+      width: @block-size;
+      height: @block-size;
+      top: @bar-height - @block-size + 16;
 
-  .@{prefix}-selected {
-    height: 5rpx;
-    position: absolute;
-    top: 8px;
-  }
+      &__left {
+        left: 0;
+      }
 
-  .@{prefix}-dot {
-    border-radius: 50%;
-    box-shadow: 0 0 1px 2px #eee;
-    position: absolute;
-    z-index: 2;
+      &__right {
+        right: 0;
+      }
 
-    &__left {
-      left: 0;
-    }
-
-    &__right {
-      right: 0;
-    }
-
-    &-value {
-      position: relative;
-      top: -30px;
-      color: #fff;
-      text-align: center;
-      border-radius: 5px;
-
-      &::before {
-        content: '';
-        position: absolute;
-        border: 5px solid transparent;
-        top: 20px;
-        border-top-color: inherit;
-        left: 50%;
-        transform: translateX(-50%);
+      &-value {
+        position: relative;
+        top: -26px;
+        color: rgba(0, 0, 0, .4);
+        text-align: center;
       }
     }
-  }
 
-  .@{prefix}-line {
+    .@{prefix}-line {
+      position: absolute;
+      top: 8px;
+      height: 5rpx;
+    }
+  }
+}
+
+// 刻度样式
+.@{prefix}-scale-item {
+  background-color: #0052d9;
+  width: @bar-height * 2;
+  height: 14rpx;
+  position: absolute;
+  bottom: 6rpx;
+  z-index: 1;
+
+  .scale-desc {
     position: absolute;
-    top: 8px;
-    height: 5rpx;
+    color: rgba(0, 0, 0, .4);
+    transform: translateX(-50%);
+    top: 20rpx;
   }
 }

@@ -56,7 +56,7 @@ Page({
       selectedCityValue: e.detail.value?.value,
     });
   },
-  onPicker1Cancel(e) {
+  onPicker1Cancel() {
     console.log('picker1 cancel:');
     this.setData({
       picker1Visible: false,
@@ -73,7 +73,7 @@ Page({
       selectedSeason: e.detail.value[1]?.value,
     });
   },
-  onPicker2Cancel(e) {
+  onPicker2Cancel() {
     console.log('picker2 cancel:');
     this.setData({
       picker2Visible: false,
@@ -92,7 +92,7 @@ Page({
     });
   },
 
-  onPicker3Cancel(e) {
+  onPicker3Cancel() {
     console.log('picker3 cancel:');
     this.setData({
       picker3Visible: false,

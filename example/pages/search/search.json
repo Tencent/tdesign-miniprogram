@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Stepper 步进器",
+  "navigationBarTitleText": "Search",
   "usingComponents": {
     "t-demo": "../../components/demo-block/index"
   }

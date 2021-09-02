@@ -1,8 +1,12 @@
 import { createApp } from 'vue';
-import router from './router';
 import app from './app.vue';
-import '../common/style/miniprogram/index.less';
-import '../common/style/site/index.less';
+import router from './router';
+
+// import '../styles/sites/index.less';
+
+// import site webcomponents
+import '~/common/site/lib/site.es.js';
+import '~/common/site/lib/style.css';
 
 createApp(app)
   .use(router)

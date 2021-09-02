@@ -1,77 +1,38 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import { trimSingleValue, trimValue } from './tool';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-slider`;
+@wxComponent()
+export default class Slider extends SuperComponent {
+  externalClasses: [
+    't-class',
+    't-class-bar',
+    't-class-bar-active',
+    't-class-bar-disabled',
+    't-class-cursor',
+  ];
+  properties = props;
 
-TComponent({
-  properties: {
-    label: {
-      type: String,
-      value: '范围',
-    },
-    min: {
-      type: Number,
-      value: 0,
-    },
-    showMax: {
-      type: Boolean,
-      value: false,
-    },
-    showMin: {
-      type: Boolean,
-      value: false,
-    },
-    max: {
-      type: Number,
-      value: 100,
-    },
-    step: {
-      type: Number,
-      value: 1,
-    },
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    value: {
-      type: Number,
-      optionalTypes: [Array],
-      value: 0,
-    },
-    backgroundColor: {
-      type: String,
-      value: '#cccccc',
-    },
-    // 已选择的颜色
-    activeColor: {
-      type: String,
-      value: '#0252d9',
-    },
-    // 滑块的大小，取值范围为 12 - 28
-    blockSize: {
-      type: Number,
-      value: 28,
-    },
-    // 滑块的颜色
-    blockColor: {
-      type: String,
-      value: '#ffffff',
-    },
-    showValue: {
-      type: Boolean,
-      value: false,
-    },
-    showExtremValue: {
-      type: Boolean,
-      value: false,
-    },
-    range: {
-      type: Boolean,
-      value: false,
-    },
-  },
   // 组件的内部数据
   data: {
+    sliderStyles: string;
+    classPrefix: string;
+    initialLeft: number | null;
+    initialRight: number | null;
+    activeLeft: number;
+    activeRight: number;
+    maxRange: number;
+    lineLeft: number;
+    lineRight: number;
+    dotTopValue: number[];
+    blockSize: number;
+    isScale: boolean;
+    scaleArray: any[];
+    scaleTextArray: any[];
+    _value: number | number[];
+  } = {
     // 按钮样式列表
     sliderStyles: '',
     classPrefix: name,
@@ -83,234 +44,337 @@ TComponent({
     lineLeft: 0,
     lineRight: 0,
     dotTopValue: [0, 0],
-  },
+    _value: 0,
+    blockSize: 16,
+    isScale: false,
+    scaleArray: [],
+    scaleTextArray: [],
+  };
 
-  lifetimes: {
-    attached() {
-      if (this.data.range) {
-        this.getInitialStyle();
+  observers = {
+    value(this: Slider, newValue: number | number[]) {
+      const _value = trimValue(newValue, this.properties);
+      if (_value === this.data._value) {
+        return;
+      }
+
+      const setValueAndTrigger = () => {
+        this.setData(
+          {
+            _value,
+          },
+          this.triggerValue,
+        );
+      };
+
+      // 基本样式未初始化，等待初始化后在改变数据。
+      if (this.data.maxRange === 0) {
+        this.getInitialStyle().then(setValueAndTrigger);
+        return;
+      }
+
+      setValueAndTrigger();
+    },
+    _value(this: Slider, newValue: number | number[]) {
+      const { min, max, range } = this.properties;
+      const { maxRange, blockSize } = this.data;
+      const fullLineWidth = maxRange + Number(blockSize);
+
+      if (range) {
+        const left = (fullLineWidth * (newValue[0] - Number(min))) / (Number(max) - Number(min));
+        const right = (fullLineWidth * (Number(max) - newValue[1])) / (Number(max) - Number(min));
+        // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
+        this.setDotStyle(left, right);
+      } else {
+        const left =
+          (fullLineWidth * (Number(newValue) - Number(min))) / (Number(max) - Number(min));
+        this.setDotStyle(left, null);
+        this.getSingleBarWidth(newValue as number);
       }
     },
-  },
+  };
 
-  methods: {
-    getSelectorQuery(id) {
-      return new Promise((resolve, reject) => {
-        this.createSelectorQuery()
-          .select(`#${id}`)
-          .boundingClientRect((rect) => {
-            if (rect) {
-              resolve(rect);
-            } else {
-              reject(rect);
-            }
-          })
-          .exec();
+  attached() {
+    const { marks } = this.properties;
+    this.handleMask(marks);
+    this.getInitialStyle();
+  }
+
+  /**
+   * 通知父组件，触发change事件
+   * touchMove过程中，_value变化，但不trigger，其他改变_value的场景需要调用该函数
+   * @param {number | number[]} value
+   * @memberof Slider
+   */
+  triggerValue(value?: number | number[]) {
+    value = trimValue(value || this.data._value, this.properties);
+
+    this.triggerEvent('change', {
+      value,
+    });
+  }
+
+  handleMask(marks: any) {
+    if (marks?.length && Array.isArray(marks)) {
+      this.setData({
+        isScale: true,
+        scaleArray: marks,
       });
-    },
-    getInitialStyle() {
-      this.getSelectorQuery('sliderLine').then((line) => {
-        const { blockSize } = this.data;
-        const halfBlock = blockSize / 2;
-        this.setData({
-          maxRange: line.right - line.left - blockSize,
-          initialLeft: line.left - halfBlock,
-          initialRight: line.right + halfBlock,
-        });
+    }
 
-        this.setValueToDot();
+    if (Object.prototype.toString.call(marks) === '[object Object]') {
+      const scaleArray = Object.keys(marks).map((item) => Number(item));
+      const scaleTextArray = scaleArray.map((item) => marks[item]);
+      if (scaleArray.length) {
+        this.setData({
+          isScale: true,
+          scaleArray,
+          scaleTextArray,
+        });
+      }
+    }
+  }
+
+  getSingleBarWidth(value: number) {
+    const { max, min } = this.properties;
+    const width = `${((Number(value) - Number(min)) * 100) / (Number(max) - Number(min))}%`;
+    this.setData({
+      lineBarWidth: width,
+    });
+  }
+
+  getSelectorQuery(id: string): Promise<{ left: number; right: number }> {
+    return new Promise((resolve, reject) => {
+      this.createSelectorQuery()
+        .select(`#${id}`)
+        .boundingClientRect((rect) => {
+          if (rect) {
+            resolve(rect);
+          } else {
+            reject(rect);
+          }
+        })
+        .exec();
+    });
+  }
+
+  async getInitialStyle() {
+    const line: { right: number; left: number } = await this.getSelectorQuery('sliderLine');
+    const { blockSize } = this.data;
+    const halfBlock: number = Number(blockSize) / 2;
+    this.setData({
+      maxRange: line.right - line.left - Number(blockSize),
+      initialLeft: line.left - halfBlock,
+      initialRight: line.right + halfBlock,
+    });
+
+    return;
+  }
+
+  setDotStyle(left: number, right: number) {
+    const { range } = this.properties;
+    const { blockSize } = this.data;
+    const halfBlock = Number(blockSize) / 2;
+    if (left !== null) {
+      this.setData({
+        activeLeft: left - halfBlock,
       });
-    },
-    setValueToDot() {
-      if (!Array.isArray(this.data.value)) {
-        throw Error('slider范围组件的value应为数组');
-      }
+    }
 
-      const { value, maxRange, blockSize, min, max } = this.data;
-      let [valueMin, valueMax] = value;
+    if (right !== null) {
+      this.setData({
+        activeRight: right - halfBlock,
+      });
+    }
 
-      if (valueMin > valueMax) {
-        throw Error('slider范围组件中左侧参数不应大于右侧参数');
-      }
-
-      valueMin = valueMin < min ? min : valueMin;
-      valueMax = valueMax > max ? max : valueMax;
-
-      const fullLineWidth = maxRange + blockSize;
-      const left = (fullLineWidth * (valueMin - min)) / (max - min);
-      const right = (fullLineWidth * (max - valueMax)) / (max - min);
-      // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
-      this.setDotStyle(left, right);
-    },
-    setDotStyle(left, right) {
-      const halfBlock = this.data.blockSize / 2;
-      if (left !== null) {
-        this.setData({
-          activeLeft: left - halfBlock,
-        });
-      }
-
-      if (right !== null) {
-        this.setData({
-          activeRight: right - halfBlock,
-        });
-      }
-
+    if (range) {
       this.setLineStyle();
-      this.emitValue();
 
-      let [a, b] = this.data.value;
-      const { activeLeft, activeRight, maxRange } = this.data;
-      if (activeLeft + activeRight > maxRange) {
-        const tem = a;
-        a = b;
-        b = tem;
-      }
+      const [a, b] = this.data._value as any;
+
       this.setData({
         dotTopValue: [a, b],
       });
-    },
-    emitValue() {
-      let { activeLeft, activeRight } = this.data;
-      const { maxRange, max, min, blockSize } = this.data;
-      const halfBlock = blockSize / 2;
-      const fullLineWidth = maxRange + blockSize;
+    }
+  }
 
-      const isChangePos = activeLeft + activeRight >= maxRange;
-      if (isChangePos) {
-        const temp = activeLeft;
-        activeLeft = fullLineWidth - activeRight - blockSize;
-        activeRight = fullLineWidth - temp - blockSize;
-      }
+  stepValue(value: number): number {
+    const { step, min, max } = this.properties;
 
-      let left = Math.round(((max - min) * (activeLeft + halfBlock)) / fullLineWidth) + min;
-      let right = Math.round(max - ((max - min) * (activeRight + halfBlock)) / fullLineWidth); //eslint-disable-line
+    if (Number(step) < 1 || Number(step) > Number(max) - Number(min)) return value;
 
-      if (left < min) left = min;
-      if (left > max) left = max;
-      if (right < min) right = min;
-      if (right > max) right = max;
+    const closestStep = trimSingleValue(
+      Math.round(value / Number(step)) * Number(step),
+      Number(min),
+      Number(max),
+    );
 
-      this.triggerEvent('sliderchanging', {
-        value: [left < min ? min : left, right > max ? max : right],
+    return closestStep as number;
+  }
+
+  onSingleTouchMove(e: any) {
+    this.getSingleChangeValue(e);
+  }
+
+  // 点击滑动条的事件
+  onSingleLineTap(e: any) {
+    const value = this.getSingleChangeValue(e);
+    this.triggerValue(value);
+  }
+
+  getSingleChangeValue(e: any) {
+    const { disabled, min, max } = this.properties;
+    const { initialLeft, maxRange, blockSize } = this.data;
+    if (disabled) return;
+
+    const [touch] = e.changedTouches;
+    const { pageX } = touch;
+    const halfBlock = Number(blockSize) / 2;
+
+    const currentLeft = pageX - initialLeft - halfBlock;
+    let value = 0;
+
+    if (currentLeft <= 0) {
+      value = Number(min);
+    } else if (currentLeft >= maxRange + Number(blockSize)) {
+      value = Number(max);
+    } else {
+      value = Math.round(
+        (currentLeft / (maxRange + Number(blockSize))) * (Number(max) - Number(min)) + Number(min),
+      );
+    }
+    const stapValue = this.stepValue(value);
+    this.setData({
+      _value: stapValue,
+    });
+    this.getSingleBarWidth(stapValue);
+    return stapValue;
+  }
+
+  /**
+   * 将位置转换为值
+   *
+   * @param {number} posValue 位置数据
+   * @param {(0 | 1)} dir 方向： 0-left， 1-right
+   * @return  {number}
+   * @memberof Slider
+   */
+  convertPosToValue(posValue: number, dir: 0 | 1): number {
+    const { maxRange, blockSize } = this.data;
+    const { max, min } = this.properties;
+    const fullLineWidth = maxRange + blockSize;
+    return dir === 0
+      ? (posValue / fullLineWidth) * (Number(max) - Number(min)) + Number(min)
+      : Number(max) - (posValue / fullLineWidth) * (Number(max) - Number(min));
+  }
+
+  // 点击范围选择滑动条的事件
+  onLineTap(e: any) {
+    const { disabled } = this.properties;
+    const { initialLeft, initialRight, maxRange, blockSize } = this.data;
+    if (disabled) return;
+
+    const [touch] = e.changedTouches;
+    const { pageX } = touch;
+    const halfBlock = Number(blockSize) / 2;
+
+    const currentLeft = pageX - initialLeft - halfBlock;
+    if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
+
+    this.getSelectorQuery('leftDot').then((leftDot: { left: number; right: number }) => {
+      this.getSelectorQuery('rightDot').then((rightDot: { left: number; right: number }) => {
+        // 点击处-halfblock 与 leftDot左侧的距离（绝对值）
+        const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
+        // 点击处-halfblock 与 rightDot左侧的距离（绝对值）
+        const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
+        // 哪个绝对值小就移动哪个Dot
+        const isMoveLeft = distanceLeft < distanceRight;
+        if (isMoveLeft) {
+          // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
+          const left = pageX - initialLeft - halfBlock;
+          const leftValue = this.convertPosToValue(left, 0);
+          this.setData(
+            {
+              _value: [this.stepValue(leftValue), this.data._value[1]],
+            },
+            this.triggerValue,
+          );
+        } else {
+          const right = -(pageX - initialRight) - halfBlock;
+          const rightValue = this.convertPosToValue(right, 1);
+          const newValue = trimValue(
+            [this.data._value[0], this.stepValue(rightValue)],
+            this.properties,
+          );
+          this.setData(
+            {
+              _value: newValue,
+            },
+            this.triggerValue,
+          );
+        }
       });
-    },
-    stepValue(value) {
-      const { step, min, max } = this.data;
+    });
+  }
 
-      if (step < 1 || step > max - min) return value;
-      const remainderValue = Math.floor(value) % step;
+  onTouchMoveLeft(e: any) {
+    const { disabled } = this.properties;
+    const { initialLeft, maxRange, blockSize, _value } = this.data;
+    if (disabled) return;
 
-      remainderValue < step / 2 ? (value -= remainderValue) : (value += step - remainderValue);
+    const [touch] = e.changedTouches;
+    const { pageX } = touch;
 
-      if (value < min) return min;
-      if (value > max) return max;
-      return value;
-    },
-    sliderchange(e) {
-      const value = this.stepValue(e.detail.value);
+    const halfBlock = Number(blockSize) / 2;
+    const currentLeft = pageX - initialLeft - halfBlock;
+
+    const newData = [...(_value as number[])];
+    const leftValue = this.convertPosToValue(currentLeft, 0);
+    newData[0] = this.stepValue(leftValue);
+
+    this.setData({
+      _value: newData,
+    });
+  }
+
+  onTouchMoveRight(e: any) {
+    const { disabled } = this.properties;
+    const { initialRight, blockSize, _value } = this.data;
+    if (disabled) return;
+
+    const [touch] = e.changedTouches;
+    const { pageX } = touch;
+
+    const halfBlock = Number(blockSize) / 2;
+    const currentRight = -(pageX - initialRight) - halfBlock;
+
+    const newData = [...(_value as number[])];
+    const rightValue = this.convertPosToValue(currentRight, 1);
+    newData[1] = this.stepValue(rightValue);
+
+    this.setData({
+      _value: newData,
+    });
+  }
+
+  setLineStyle() {
+    const { activeLeft, activeRight, maxRange, blockSize } = this.data;
+    const halfBlock = Number(blockSize) / 2;
+    if (activeLeft + activeRight <= maxRange) {
       this.setData({
-        value,
+        lineLeft: activeLeft + halfBlock,
+        lineRight: activeRight + halfBlock,
       });
-      e.detail.value = value;
-
-      this.triggerEvent('sliderchange', e.detail);
-    },
-    sliderchanging(e) {
-      const value = this.stepValue(e.detail.value);
+    } else {
       this.setData({
-        value,
+        lineLeft: maxRange + halfBlock - activeRight,
+        lineRight: maxRange - activeLeft + halfBlock * 1.5, //eslint-disable-line
       });
-      this.triggerEvent('sliderchanging', e.detail);
-    },
-    onTouchStart(e) {
-      const [touch] = e.changedTouches;
-      const { pageX } = touch;
-      if (this.data.initialLeft === null) {
-        this.setData({
-          initialLeft: pageX,
-        });
-      }
-    },
-    onTouchStartRight(e) {
-      const [touch] = e.changedTouches;
-      const { pageX } = touch;
-      if (this.data.initialRight === null) {
-        this.setData({
-          initialRight: pageX,
-        });
-      }
-    },
-    onTouchMove(e) {
-      const { disabled, initialLeft, maxRange, blockSize } = this.data;
-      if (disabled) return;
+    }
+  }
 
-      const [touch] = e.changedTouches;
-      const { pageX } = touch;
-      const currentLeft = pageX - initialLeft;
-
-      if (currentLeft <= 0) {
-        this.setDotStyle(0, null);
-      } else if (currentLeft >= this.data.maxRange + blockSize) {
-        this.setDotStyle(maxRange + blockSize, null);
-      } else {
-        this.setDotStyle(currentLeft, null);
-      }
-    },
-    onLineTap(e) {
-      const { disabled, activeLeft, activeRight } = this.data;
-      if (disabled) return;
-
-      const [touch] = e.changedTouches;
-      const { pageX } = touch;
-      const halfBlock = this.data.blockSize / 2;
-
-      this.getSelectorQuery('leftDot').then((leftDot) => {
-        this.getSelectorQuery('rightDot').then((rightDot) => {
-          const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
-          const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
-
-          const isMoveLeft = distanceLeft < distanceRight;
-          const moveDistance = isMoveLeft
-            ? pageX - leftDot.left - halfBlock
-            : rightDot.left - pageX + halfBlock;
-          if (isMoveLeft) {
-            this.setDotStyle(activeLeft + halfBlock + moveDistance, null);
-          } else {
-            this.setDotStyle(null, activeRight + halfBlock + moveDistance);
-          }
-        });
-      });
-    },
-    onTouchMoveRight(e) {
-      const { disabled, initialRight, maxRange, blockSize } = this.data;
-      if (disabled) return;
-
-      const [touch] = e.changedTouches;
-      const { pageX } = touch;
-      const currentRight = pageX - initialRight;
-      if (currentRight >= 0) {
-        this.setDotStyle(null, 0);
-      } else if (currentRight < 0 && currentRight > -(maxRange + blockSize)) {
-        this.setDotStyle(null, -currentRight);
-      } else {
-        this.setDotStyle(null, maxRange + blockSize);
-      }
-    },
-    setLineStyle() {
-      const { activeLeft, activeRight, blockSize, maxRange } = this.data;
-      const halfBlock = blockSize / 2;
-      if (activeLeft + activeRight <= maxRange) {
-        this.setData({
-          lineLeft: activeLeft + halfBlock,
-          lineRight: activeRight + halfBlock,
-        });
-      } else {
-        this.setData({
-          lineLeft: maxRange + halfBlock - activeRight,
-          lineRight: maxRange - activeLeft + halfBlock * 1.5, //eslint-disable-line
-        });
-      }
-    },
-  },
-});
+  onTouchEnd() {
+    // touchMove未trigger，在end事件统一trigger
+    this.triggerValue();
+  }
+}

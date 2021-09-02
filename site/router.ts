@@ -1,20 +1,30 @@
-import { RouteRecordRaw, createRouter, createWebHistory } from 'vue-router';
-import config from './config';
+import { RouteRecordRaw, createRouter, createWebHistory, createWebHashHistory, RouterOptions } from 'vue-router';
+import siteConfig from './config';
 
-const { navs } = config;
+const { docs } = siteConfig;
 
 const getDocsRoutes = (docs: any[], type: string): RouteRecordRaw[] => {
-  let docsRoutes: RouteRecordRaw[] = [];
-
+  let docsRoutes: Array<RouteRecordRaw> = [];
   docs.forEach((item) => {
     const docType = item.type || type;
     if (docType === type) {
-      if (item.children) {
-        docsRoutes = docsRoutes.concat(getDocsRoutes(item.children, docType));
+      let { children } = item;
+      if (item.type === 'component') {
+        children = item.children.sort((a: any, b: any) => {
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
+          if (nameA < nameB) return -1;
+          if (nameA > nameB) return 1;
+          return 0;
+        });
+      }
+      if (children) {
+        docsRoutes = docsRoutes.concat(getDocsRoutes(children, docType));
       } else {
         docsRoutes.push({
-          path: `/components/${item.name}`,
+          path: item.path,
           name: item.name,
+          meta: item.meta || {},
           component: item.component,
         });
       }
@@ -23,18 +33,30 @@ const getDocsRoutes = (docs: any[], type: string): RouteRecordRaw[] => {
   return docsRoutes;
 };
 
-const routes: RouteRecordRaw[] = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/components/install',
+    name: 'home',
+    redirect: '/miniprogram/components/button',
   },
-  ...getDocsRoutes(navs.components.docs, 'document'),
-  ...getDocsRoutes(navs.components.docs, 'component'),
+  {
+    path: '/:catchAll(.*)',
+    redirect: 'home',
+  },
+  ...getDocsRoutes(docs, 'document'),
+  ...getDocsRoutes(docs, 'component'),
 ];
 
-const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+const routerConfig: RouterOptions = {
   routes,
-});
+  history: createWebHistory('/'),
+};
+
+// 本地开发用hash路由
+if (process.env.NODE_ENV === 'development') {
+  routerConfig.history = createWebHashHistory('/');
+}
+
+const router = createRouter(routerConfig);
 
 export default router;
