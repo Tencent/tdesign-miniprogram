@@ -3,7 +3,7 @@
  * updated at 2021-08-07 11:03:22
  * */
 
-import { TdPopupProps } from './type'
+import { TdPopupProps } from './type';
 const props: TdPopupProps = {
   /** 关闭按钮，值类型为 Boolean 时表示是否显示关闭按钮。也可以自定义关闭按钮 */
   closeBtn: {
@@ -57,4 +57,4 @@ const props: TdPopupProps = {
   },
 };
 
-export default props
+export default props;

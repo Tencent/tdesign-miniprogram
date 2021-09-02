@@ -50,7 +50,7 @@ export default class PickerColumn extends SuperComponent {
       });
     },
 
-    onTouchEnd(event) {
+    onTouchEnd() {
       const { offset } = this.data;
       const { options } = this.properties;
 

@@ -17,7 +17,7 @@ export default class Switch extends SuperComponent {
   };
   lifetimes = {
     attached() {
-      const { value, customValue, disabled, colors } = this.data;
+      const { value, customValue } = this.data;
       const [activeValue] = customValue;
       
       this.setData({
