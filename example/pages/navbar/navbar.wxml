@@ -12,7 +12,7 @@
     title="设置颜色、字号和背景"
     titleColor="#f77"
     titleSize="30rpx"
-    backgroundColor="#ccc"
+    background="#ccc"
     fixed="{{fixed}}"
     visible="{{visible}}"
     showBack="{{showBack}}"
@@ -23,13 +23,25 @@
   <t-navbar
     title="透明背景"
     titleColor="#f77"
-    backgroundColor="transparent"
+    background="transparent"
     fixed="{{fixed}}"
     visible="{{visible}}"
     showBack="{{showBack}}"
     showHome="{{showHome}}"
   />
 </block>
+
+<block wx:if="{{demoType === 'background-high-level'}}">
+  <t-navbar
+    title="复杂背景"
+    fixed="{{true}}"
+    visible="{{true}}"
+    showBack="never"
+    showHome="never"
+    background="linear-gradient(to right, red 20%, orange 20% 40%, yellow 40% 60%, green 60% 80%, blue 80%)"
+  />
+</block>
+
 <block wx:if="{{demoType === 'base-capsule-style'}}">
   <t-navbar
     title="胶囊自定义样式"
@@ -46,8 +58,8 @@
     title="左侧胶囊位置插槽"
     visible="{{visible}}"
     fixed="{{fixed}}"
-    showBack="none"
-    showHome="none"
+    showBack="never"
+    showHome="never"
   >
     <view slot="left" class="slot-left">左侧胶囊插槽</view>
   </t-navbar>

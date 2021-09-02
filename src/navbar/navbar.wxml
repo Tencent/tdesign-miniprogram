@@ -22,7 +22,7 @@
             <t-icon name="{{homeIcon}}" size="{{singleIconSize}}" />
           </view>
         </block>
-        <block wx:if="{{showBack === 'none' && showHome === 'none'}}">
+        <block wx:if="{{showBack === 'never' && showHome === 'never'}}">
           <slot name="left"></slot>
         </block>
       </view>

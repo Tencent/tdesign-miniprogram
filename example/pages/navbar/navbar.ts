@@ -50,6 +50,10 @@ Page({
             text: '透明背景',
           },
           {
+            type: 'background-high-level',
+            text: '复杂背景',
+          },
+          {
             type: 'base-capsule-style',
             text: '胶囊自定义样式',
           },
@@ -81,7 +85,7 @@ Page({
           },
           {
             type: 'fixed-none',
-            text: '可取消 fixed',
+            text: '取消 fixed',
           },
         ],
       },
@@ -105,7 +109,7 @@ Page({
         btns: [
           {
             type: 'slot-left',
-            text: '左侧胶囊位置插槽，需showHome、showBack="none"',
+            text: '左侧胶囊位置插槽，需showHome、showBack="never"',
           },
           {
             type: 'slot-center',

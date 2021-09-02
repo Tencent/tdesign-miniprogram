@@ -6,13 +6,14 @@ const name = `${prefix}-navbar`;
 enum ButtonShow {
   auto = 'auto', // 自动处理，默认情况下，栈深度>1显示才back，不显示home
   always = 'always', // 总是显示
-  none = 'none', // 不显示
+  never = 'never', // 永不显示
 }
 
 @wxComponent()
 export default class Navbar extends SuperComponent {
   timer = null;
   options = {
+    addGlobalClass: true,
     multipleSlots: true,
   };
   properties = {
@@ -21,7 +22,7 @@ export default class Navbar extends SuperComponent {
       type: Boolean,
       value: true,
     },
-    // 是否 fixed 在在顶部
+    // 是否 fixed 在顶部
     fixed: {
       type: Boolean,
       value: true,
@@ -38,8 +39,8 @@ export default class Navbar extends SuperComponent {
       type: String,
       value: '',
     },
-    // 背景颜色
-    backgroundColor: {
+    // 背景
+    background: {
       type: String,
       value: '',
     },
@@ -133,9 +134,9 @@ export default class Navbar extends SuperComponent {
         titleStyle: list.join(';'),
       });
     },
-    backgroundColor(this: Navbar, backgroundColor) {
+    background(this: Navbar, background) {
       const list = [];
-      if (backgroundColor) list.push(`background: ${backgroundColor}`);
+      if (background) list.push(`background: ${background}`);
       this.setData({
         contentStyle: list.join(';'),
       });
@@ -204,10 +205,10 @@ export default class Navbar extends SuperComponent {
     let back = false;
 
     if (showHome === ButtonShow.always) home = true;
-    else if (showHome === ButtonShow.none) home = false;
+    else if (showHome === ButtonShow.never) home = false;
 
     if (showBack === ButtonShow.always) back = true;
-    else if (showBack === ButtonShow.none) back = false;
+    else if (showBack === ButtonShow.never) back = false;
     else if (this.pagesStackLength > 1) back = true;
     this.setData({
       _home: home,
@@ -222,7 +223,9 @@ export default class Navbar extends SuperComponent {
       if (homeIsTabBar) {
         wx.switchTab({
           url: homePath,
-          fail() {},
+          fail(e) {
+            console.error(e);
+          },
         });
       } else {
         wx.navigateTo({
@@ -238,6 +241,9 @@ export default class Navbar extends SuperComponent {
     if (delta > 0) {
       wx.navigateBack({
         delta,
+        fail(e) {
+          console.error(e);
+        },
       });
     }
     this.triggerEvent('goback');
