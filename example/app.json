@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index",
+    "pages/home/index",
     "pages/picker/picker",
     "pages/avatar/avatar",
     "pages/button/button",
