@@ -20,7 +20,7 @@ export default class Message extends SuperComponent {
     multipleSlots: true,
   };
   // 组件的对外属性
-  properties: MessageProps = { ...props } as unknown as MessageProps;
+  properties: MessageProps = ({ ...props } as unknown) as MessageProps;
 
   // 组件的内部数据
   data = {
@@ -91,13 +91,13 @@ export default class Message extends SuperComponent {
 
     // 使用默认值
     if (icon) {
-      let nextValue = 'exclamation'; // exclamation-目前td没有这个icon
+      let nextValue = 'notification-filled';
       const { theme } = this.properties;
       const themeMessage = {
-        info: 'help_fill',
-        success: 'tick_fill',
-        warning: 'warning_fill',
-        error: 'close_fill',
+        info: 'error-circle-filled',
+        success: 'check-circle-filled',
+        warning: 'error-circle-filled',
+        error: 'error-circle-filled',
       };
       nextValue = themeMessage[theme];
       this.setData({ iconName: nextValue });
@@ -146,10 +146,10 @@ export default class Message extends SuperComponent {
             // 这里就只能用 setTimeout/20, nextTick 没用
             // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
             setTimeout(() => {
-              this.nextAnimationContext = setTimeout(
+              this.nextAnimationContext = (setTimeout(
                 this.checkAnimation.bind(this),
                 durationTime,
-              ) as unknown as number;
+              ) as unknown) as number;
 
               this.setData({ animation: nextAnimation });
             }, 20);
@@ -183,10 +183,10 @@ export default class Message extends SuperComponent {
     this.setIcon(icon);
     this.checkAnimation();
     if (duration && duration > 0) {
-      this.closeTimeoutContext = setTimeout(() => {
+      this.closeTimeoutContext = (setTimeout(() => {
         this.hide();
         this.triggerEvent('durationEnd', { self: this });
-      }, duration) as unknown as number;
+      }, duration) as unknown) as number;
     }
   }
   hide() {
