@@ -26,16 +26,16 @@
 
 ```html
 <!-- type 为 text，只有版权信息 -->
-<t-footer type="text" textCopyrightInfo="{{textCopyrightInfo}}" class="footer" />
+<t-footer theme="text" copyright="{{copyright}}" class="t-footer-demo" />
 <!-- type 为 text，含有底部链接 -->
 <t-footer
-  type="text"
-  textCopyrightInfo="{{textCopyrightInfo}}"
-  textLinkList="{{textLinkList}}"
+  theme="text"
+  copyright="{{copyright}}"
+  textLinkList="{{textLinkListOne}}"
   class="footer"
 />
 <!-- type 为 logo -->
-<t-footer type="logo" logoTitleUrl="{{logoTitleUrl}}" class="footer" />
+<t-footer theme="logo" logo="{{logo}}" class="t-footer-demo" />
 ```
 
 ```javascript
