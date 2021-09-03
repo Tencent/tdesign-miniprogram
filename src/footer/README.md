@@ -35,18 +35,13 @@
   class="footer"
 />
 <!-- type 为 logo -->
-<t-footer
-  type="logo"
-  logoIconUrl="{{logoIconUrl}}"
-  logoTitleUrl="{{logoTitleUrl}}"
-  class="footer"
-/>
+<t-footer type="logo" logoTitleUrl="{{logoTitleUrl}}" class="footer" />
 ```
 
 ```javascript
 Page({
   data: {
-    textCopyrightInfo: 'Copyright © 2021-2031 TD.All Rights Reserved.',
+    copyright: 'Copyright © 2021-2031 TD.All Rights Reserved.',
     textLinkListOne: [
       {
         name: '底部链接',
@@ -66,8 +61,9 @@ Page({
         openType: 'navigateBack',
       },
     ],
-    logoIconUrl: 'https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/logo-icon.png', // 占位图片
-    logoTitleUrl: 'https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/logo-title.png', // 占位图片
+    logo: {
+      url: 'https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png', // 占位图片
+    },
   },
 });
 ```
@@ -80,16 +76,14 @@ Page({
 
 #### Props
 
-|       参数        |                   说明                   |     类型     | 默认值 | 必填 |
-| :---------------: | :--------------------------------------: | :----------: | :----: | :--: |
-|       type        |               页脚展示类型               | `FooterType` | `text` |  是  |
-| textCopyrightInfo |       版权信息，type 为`text`生效        |   `String`   |   -    |  否  |
-|   textLinkList    |       链接列表，type 为`text`生效        | `LinkObj[]`  |   []   |  否  |
-|    logoIconUrl    |   logo 图标链接地址，type 为`logo`生效   |   `String`   |   -    |  否  |
-|     logoTitle     |     logo 标题文本，type 为`logo`生效     |   `String`   |   ``   |  否  |
-|   logoTitleUrl    | logo 标题图片链接地址，type 为`logo`生效 |   `String`   |   -    |  否  |
+|     参数     |                                                                                                            说明                                                                                                            |     类型     | 默认值 | 必填 |
+| :----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------: | :----: | :--: |
+|    theme     |                                                                                                        页脚展示类型                                                                                                        | `FooterType` | `text` |  是  |
+|  Copyright   |                                                                                                版权信息，theme 为`text`生效                                                                                                |   `String`   |   -    |  否  |
+| textLinkList |                                                                                                链接列表，theme 为`text`生效                                                                                                | `LinkObj[]`  |   []   |  否  |
+|     logo     | 图标配置，theme 为`logo`生效。`logo.icon` 表示图标链接地址，`logo.title` 表示标题文本，`logo.url` 表示链接跳转地址 TS 类型定义：`FooterLogo【interface FooterLogo { icon: string; title?: string; titleUrl?: string }】`。 |   `object`   |   -    |  否  |
 
-- 注意： `logoTitle`与`logoTitleUrl`二选一，且`logoTitle`优先级高于`logoTitleUrl`
+- 注意： `logo.title`与`logo.url`二选一，且`logo.title`优先级高于`logo.url`
 
 - `FooterType`参数说明：
 
