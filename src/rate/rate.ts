@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-rate`;
 
@@ -16,56 +17,11 @@ const rpx2px = (() => {
 @wxComponent()
 export default class Rate extends SuperComponent {
   externalClasses = ['t-class'];
-  properties = {
-    value: Number,
-    defaultValue: {
-      type: Number,
-      value: 3
-    },
-    size: {
-      type: Number,
-      value: 48,
-    },
-    gap: {
-      type: Number,
-      value: 6,
-    },
-    count: {
-      type: Number,
-      value: 5,
-    },
-    color: {
-      type: String,
-      value: '#ED7B2F',
-    },
-    voidColor: {
-      type: String,
-      value: '#E3E6EB',
-    },
-    disabledColor: {
-      type: String,
-      value: '#999',
-    },
-    allowHalf: {
-      type: Boolean,
-      value: false,
-    },
-    readonly: Boolean,
-    disabled: Boolean,
-    showText: {
-      type: Boolean,
-      value: false,
-    },
-    texts: {
-      type: Array,
-      value: ['极差', '失望', '一般', '满意', '惊喜'],
-    },
-  };
+  properties = props;
   data = {
     classPrefix: name,
-    icon: 'star_fill',
-    voidIcon: 'star_fill',
-    halfIcon: 'star_fill',
+    icon: 'star-filled',
+    halfIcon: 'star-filled',
   };
   onTouch(e: any) {
     const { count, allowHalf, gap, value: currentValue } = this.properties as any;
