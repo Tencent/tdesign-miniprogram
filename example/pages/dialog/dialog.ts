@@ -53,11 +53,11 @@ Page({
           },
           {
             type: 'textAndTitle',
-            text: '多行标题最大高度',
+            text: '带说明文本',
           },
           {
             type: 'multiTextAndTitle',
-            text: '多行标题最大高度',
+            text: '带说明文本最大高度',
           },
         ],
       },
@@ -177,9 +177,9 @@ Page({
             buttonLayout: 'vertical', // 'horizontal' | 'vertical'
             actions: [
               { name: '取消', primary: false },
-              { name: '按钮文案文字内容较长', primary: true },
               { name: '单行按钮最多十五个字符文案内容', primary: true },
-            ], // {name: string, primary?: string, style?: string}[]
+              { name: '按钮文案文字内容较长', primary: true, style: 'color:red;' },
+            ], // {name: string, primary?: string}[]
           }),
         });
         return;
