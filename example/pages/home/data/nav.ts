@@ -7,7 +7,7 @@ const nav = {
       label: '导航条',
     },
     {
-      name: 'Tab bar',
+      name: 'TabBar',
       label: '标签栏',
     },
     {

@@ -1,15 +1,3 @@
-<!-- <t-cell-group wx:for="{{list}}" wx:key="index" title="{{item.type}}">
-  <t-cell
-    wx:for="{{item.components}}"
-    wx:for-index="idx"
-    wx:key="idx"
-    wx:for-item="com"
-    title="{{com.name}}"
-    url="{{com.path}}"
-    arrow
-  >
-  </t-cell>
-</t-cell-group> -->
 <view class="main">
   <view class="title-wrap">
     <image
