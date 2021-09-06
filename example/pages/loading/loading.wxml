@@ -89,14 +89,17 @@
         duration="{{duration}}"
       ></t-loading>
     </view>
-    <t-slider
-      value="{{duration}}"
-      class="slider-style"
-      label="速度调整"
-      min="{{100}}"
-      max="{{2000}}"
-      bindsliderchanging="durationChange"
-    ></t-slider>
+    <view class="slider-container">
+      <view>速度调整</view>
+      <t-slider
+        class="slider-class"
+        value="{{duration}}"
+        min="{{100}}"
+        max="{{2000}}"
+        label
+        bind:change="durationChange"
+      ></t-slider>
+    </view>
   </t-demo>
 
   <t-demo title="04 规格">
