@@ -1,50 +1,38 @@
 const ux = {
   name: '反馈信息',
-  icon: 'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/home/ux.png',
+  icon: '/assets/chat.png',
   childArr: [
+    {
+      name: 'BackTop',
+      label: '返回顶部',
+    },
     {
       name: 'Dialog',
       label: '对话框',
-    },
-    {
-      name: 'Toast',
-      label: '轻提示',
-    },
-    {
-      name: 'Message',
-      label: '信息通知',
-    },
-    {
-      name: 'NoticeBar',
-      label: '公告栏',
     },
     {
       name: 'Loading',
       label: '加载',
     },
     {
-      name: 'PullRefresh',
-      label: '下拉刷新',
+      name: 'Message',
+      label: '信息通知',
     },
     {
-      name: 'Progress',
-      label: '进度条',
-    },
-    {
-      name: 'ActionSheet',
-      label: '动作面板',
-    },
-    {
-      name: 'PopUp',
+      name: 'Popup',
       label: '弹出层',
+    },
+    {
+      name: 'PullDownRefresh',
+      label: '下拉刷新',
     },
     {
       name: 'Swipeout',
       label: '滑动操作',
     },
     {
-      name: 'Back Top',
-      label: '返回顶部',
+      name: 'Toast',
+      label: '轻提示',
     },
   ],
 };

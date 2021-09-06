@@ -1,6 +1,6 @@
 <view class="main">
   <view class="title-wrap">
-    <image class="title-icon" mode="aspectFit" src="./logo/TDesignLogo@2x.png" />
+    <image class="title-icon" mode="aspectFit" src="/assets/TDesignLogo@2x.png" />
   </view>
   <view class="desc">
     TDesign 小程序是由前端通用 UI 组件库 Oteam发起，协同公司内有组件库开发经验的同学一起建设的组件库
