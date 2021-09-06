@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-06 15:22:46
+ * updated at 2021-09-06 16:09:14
  * */
 
 import { TdRateProps } from './type';
@@ -55,6 +55,7 @@ const props: TdRateProps = {
   /** 自定义评分等级对应的辅助文字 */
   texts: {
     type: Array,
+    value: ['极差', '失望', '一般', '满意', '惊喜'],
   },
   /** 选择评分的值 */
   value: {
