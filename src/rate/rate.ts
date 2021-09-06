@@ -22,6 +22,7 @@ export default class Rate extends SuperComponent {
     classPrefix: name,
     icon: 'star-filled',
     halfIcon: 'star-filled',
+    defaultTexts: ['极差', '失望', '一般', '满意', '惊喜'],
   };
   onTouch(e: any) {
     const { count, allowHalf, gap, value: currentValue } = this.properties as any;

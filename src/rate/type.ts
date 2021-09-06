@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-06 16:09:14
+ * updated at 2021-09-06 19:41:38
  * */
 
 export interface TdRateProps {
@@ -88,8 +88,7 @@ export interface TdRateProps {
     required?: boolean;
   };
   /**
-   * 自定义评分等级对应的辅助文字
-   * @default ['极差', '失望', '一般', '满意', '惊喜'],
+   * 自定义评分等级对应的辅助文字，组件内部默认为：['极差', '失望', '一般', '满意', '惊喜']
    */
   texts?: {
     type: ArrayConstructor;
