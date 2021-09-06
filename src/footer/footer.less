@@ -1,6 +1,23 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
+@link-color: #266fe8;
+@footer-info-font-size: 24rpx;
+@footer-item-font-size: 24rpx;
+@footer-title-font-size: 32rpx;
+@footer-info-line-height: 32rpx;
+@footer-item-line-height: 40rpx;
+@footer-title-line-height: 48rpx;
+@footer-link-list-margin-bottom: 12rpx;
+@footer-icon-margin-right: 16rpx;
+@footer-item-padding-left: 6rpx;
+@footer-custom-item-padding: 10rpx;
+@footer-icon-width: 48rpx;
+@footer-icon-height: 48rpx;
+@footer-title-url-width: 256rpx;
+@footer-item-color: @link-color;
+@footer-copyright-info-color: @text-level-4-color;
+
 .@{prefix}-footer {
   display: flex;
   flex-direction: column;
@@ -8,32 +25,32 @@
   justify-content: flex-start;
 
   &__copyright-info {
-    font-size: 24rpx;
-    line-height: 32rpx;
-    color: #bbb;
+    font-size: @footer-info-font-size;
+    line-height: @footer-info-line-height;
+    color: @footer-copyright-info-color;
   }
 
   &__link-list {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 12rpx;
+    margin-bottom: @footer-link-list-margin-bottom;
   }
 
   &__item {
-    color: #266fe8;
-    font-size: 24rpx;
-    line-height: 40rpx;
-    padding-left: 6rpx;
+    color: @footer-item-color;
+    font-size: @footer-item-font-size;
+    line-height: @footer-item-line-height;
+    padding-left: @footer-item-padding-left;
     text-decoration: underline;
   }
 
   &__item:not(:last-child)::after {
     content: '|';
-    color: #266fe8;
+    color: @footer-item-color;
     display: inline-block;
-    padding-left: 10rpx;
-    padding-right: 10rpx;
+    padding-left: @footer-custom-item-padding;
+    padding-right: @footer-custom-item-padding;
   }
 
   &__logo {
@@ -43,19 +60,19 @@
   }
 
   &__icon {
-    width: 48rpx;
-    height: 48rpx;
-    margin-right: 16rpx;
+    width: @footer-icon-width;
+    height: @footer-icon-height;
+    margin-right: @footer-icon-margin-right;
   }
 
   &__title {
     font-weight: bold;
-    font-size: 32rpx;
-    line-height: 48rpx;
+    font-size: @footer-title-font-size;
+    line-height: @footer-title-line-height;
     font-style: italic;
   }
 
   &__title-url {
-    width: 204rpx;
+    width: @footer-title-url-width;
   }
 }
