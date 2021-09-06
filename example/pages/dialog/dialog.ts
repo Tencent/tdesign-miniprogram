@@ -179,7 +179,7 @@ Page({
               { name: '取消', primary: false },
               { name: '单行按钮最多十五个字符文案内容', primary: true },
               { name: '按钮文案文字内容较长', primary: true, style: 'color:red;' },
-            ], // {name: string, primary?: string}[]
+            ], // {name: string, primary?: string}
           }),
         });
         return;
