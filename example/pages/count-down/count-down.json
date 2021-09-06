@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "count-down 倒计时",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}

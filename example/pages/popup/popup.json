@@ -3,6 +3,7 @@
   "usingComponents": {
     "base-demo": "./demos/base",
     "mask-transparent-demo": "./demos/mask-transparent",
-    "position-demo": "./demos/position"
+    "position-demo": "./demos/position",
+    "t-demo": "../../components/demo-block/index"
   }
 }

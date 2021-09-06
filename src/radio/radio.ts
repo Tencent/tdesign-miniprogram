@@ -44,7 +44,6 @@ export default class PullDownRefresh extends SuperComponent {
         return;
       }
       const { value, active, optionLinked } = this.data;
-      const item = { name: value, checked: !active };
       const [parent] = this.getRelationNodes('../radio-group/radio-group');
       if (parent) {
         parent.updateValue({ name: value });
@@ -59,10 +58,10 @@ export default class PullDownRefresh extends SuperComponent {
     },
     handleInitStatus() {
       const { icon } = this.data;
-      const idArr = Array.isArray(icon);
+      const isIdArr = Array.isArray(icon);
       this.setData({
-        customIcon: idArr,
-        iconVal: !idArr ? iconDefault[icon] : this.data.icon,
+        customIcon: isIdArr,
+        iconVal: !isIdArr ? iconDefault[icon] : this.data.icon,
       });
       if (!this.data.optionLinked) {
         this.setData({

@@ -1,30 +1,60 @@
 <template>
-  <tdesign-doc
-    :nav-data="navData"
-    base="components"
-  />
+  <td-doc-layout>
+    <td-header ref="tdHeader" slot="header"></td-header>
+    <td-doc-aside ref="tdDocAside" slot="doc-aside" title="WeChat MiniProgram"></td-doc-aside>
+
+    <router-view :style="contentStyle" @loaded="contentLoaded" :docType="docType" />
+  </td-doc-layout>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import TdesignDoc from './pages/doc.vue';
-import config from './config';
+<script>
+import siteConfig from './config';
 
-const navData = config.navs.components.docs;
+import { defineComponent } from 'vue';
+
+const { docs: routerList } = JSON.parse(JSON.stringify(siteConfig).replace(/component:.+/g, ''));
 
 export default defineComponent({
-  components: {
-    TdesignDoc,
-  },
   data() {
     return {
-      navData,
+      docType: '',
+      loaded: false,
     };
+  },
+
+  computed: {
+    contentStyle() {
+      const { loaded } = this;
+      return { visibility: loaded ? 'visible' : 'hidden' };
+    },
+  },
+
+  mounted() {
+    this.docType = this.$route.meta.docType;
+    this.$refs.tdHeader.framework = 'miniprogram';
+    this.$refs.tdDocAside.routerList = routerList;
+    this.$refs.tdDocAside.onchange = ({ detail }) => {
+      if (this.$route.path === detail) return;
+      this.loaded = false;
+      this.$router.push({ path: detail });
+      window.scrollTo(0, 0);
+    };
+  },
+
+  watch: {
+    $route(route) {
+      if (!route.meta.docType) return;
+      this.docType = route.meta.docType;
+    }
+  },
+
+  methods: {
+    contentLoaded(callback) {
+      requestAnimationFrame(() => {
+        this.loaded = true;
+        callback();
+      });
+    },
   },
 });
 </script>
-
-<style lang="less">
-@import '../common/style/miniprogram/_variables.less';
-@import '../common/style/mobile/_reset.less';
-</style>

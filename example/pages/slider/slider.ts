@@ -3,45 +3,33 @@ Page({
     value: 40,
     value1: 10,
     value2: 10,
+    value3: 10,
     valueStep: 24,
-    valueRange: [50, 50],
-    valueRange2: [0, 90],
+    valueRange: [],
+    valueRange2: [],
+    mask1: [0, 50, 100],
+    mask2: {
+      0: '￥0',
+      50: '￥50',
+      100: '￥100',
+    },
+    mask3: {
+      0: '小',
+      50: '中',
+      100: '大',
+    },
   },
   onLoad() {},
-  onDefaultSliderValueChange(e) {
+  valueChange1(e: any) {
+    console.log('带数值滑动选择器', e.detail.value);
     this.setData({
-      value: e.detail.value,
+      value3: e.detail.value,
     });
   },
-  onStepSliderValueChange(e) {
-    this.setData({
-      valueStep: e.detail.value,
-    });
+  valueChange2(e: any) {
+    console.log('起始非零滑动选择器', e.detail.value);
   },
-  onSliderValueChange(e) {
-    this.setData({
-      value1: e.detail.value,
-    });
-  },
-  onSliderValueChange2(e) {
-    this.setData({
-      value2: e.detail.value,
-    });
-  },
-  onSliderValueChangeRange(e) {
-    this.setData({
-      valueRange: e.detail.value,
-    });
-  },
-  onSliderValueChangeRange2(e) {
-    this.setData({
-      valueRange2: e.detail.value,
-    });
-  },
-  onsliderchanging(e) {
-    console.log(e);
-    this.setData({
-      value: e.detail.value,
-    });
+  valueChange3(e: any) {
+    console.log('区间滑动选择器', e.detail.value);
   },
 });

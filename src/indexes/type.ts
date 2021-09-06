@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-20 17:33:15
+ * updated at 2021-08-30 15:09:30
  * */
 
 export interface TdIndexesProps {
@@ -20,13 +20,13 @@ export interface TdIndexesProps {
    */
   list: {
     type: ArrayConstructor;
-    value?: [
-      {
-        title: 'A开头（索引标题）';
-        index: 'A（索引值）';
-        children: [{ title: '阿（行内容）' }];
-      },
-    ];
+    value?: ListItem[];
     required?: boolean;
   };
+}
+
+export interface ListItem {
+  title: string;
+  index: string;
+  children: { title: string; [key: string]: any }[];
 }

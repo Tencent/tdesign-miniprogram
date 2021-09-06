@@ -1,79 +1,76 @@
-<view>风格</view>
-<view class="tdesign-demo-tag">
-  <t-tag theme="primary">重要</t-tag>
-  <t-tag theme="danger">危险</t-tag>
-  <t-tag theme="warning">警告</t-tag>
-  <t-tag theme="success">成功</t-tag>
-  <t-tag theme="info">信息</t-tag>
-</view>
+<view class="demo">
+  <view class="demo-title">Tag 标签</view>
+  <view class="demo-desc">用于标记表示主体属性、类型、状态等，由底部图形和标签文字组成</view>
 
-<view>主题效果</view>
-<view class="tdesign-demo-tag">
-  <t-tag theme="primary" variant="dark">深色</t-tag>
-  <t-tag theme="primary" variant="light">浅色</t-tag>
-  <t-tag theme="primary" variant="plain">朴素</t-tag>
-</view>
+  <view class="demo-section">
+    <view class="demo-section__title">01 类型</view>
+    <view class="demo-section__desc">展示型标签</view>
 
-<view>大小</view>
-<view class="tdesign-demo-tag">
-  <t-tag size="large" theme="primary">大号</t-tag>
-  <t-tag size="medium" theme="primary">中号</t-tag>
-  <t-tag size="small" theme="primary">小号</t-tag>
-</view>
+    <view class="group">
+      <t-tag theme="primary">重要</t-tag>
+      <t-tag theme="danger">危险</t-tag>
+      <t-tag theme="warning">警告</t-tag>
+      <t-tag theme="success">成功</t-tag>
+      <t-tag theme="info">信息</t-tag>
+    </view>
 
-<view>失效标签（只针对于默认主题，其它主题不生效）</view>
-<view class="tdesign-demo-tag">
-  <t-tag size="medium" theme="primary" shape="circle">圆角</t-tag>
-</view>
+    <view class="group">
+      <t-tag theme="primary" variant="plain">镂空标签</t-tag>
+      <t-tag theme="primary" variant="light">浅底标签</t-tag>
+      <t-tag theme="primary" variant="mixed">标签</t-tag>
+    </view>
 
-<view>超长文本省略标签</view>
-<view class="tdesign-demo-tag">
-  <t-tag max-width="150" title="超长省略文本标签超长省略文本标签"
-    >超长省略文本标签超长省略文本标签</t-tag
-  >
-</view>
+    <view class="group">
+      <t-tag theme="primary" shape="circle">圆角标签</t-tag>
+      <t-tag theme="primary" shape="half-circle">半圆角标签</t-tag>
+    </view>
 
-<view>尺寸</view>
-<view class="tdesign-demo-tag">
-  <view class="tdesign-demo-block">
-    <t-tag size="small">标签 小</t-tag>
-    <t-tag>标签 中</t-tag>
-    <t-tag size="large">标签 大</t-tag>
+    <view class="group">
+      <t-tag closable theme="primary">标签</t-tag>
+    </view>
+
+    <view class="group">
+      <t-tag max-width="150" title="超长省略文本标签超长省略文本标签"
+        >超长省略文本标签超长省略文本标签</t-tag
+      >
+    </view>
   </view>
-  <view class="tdesign-demo-tag">
-    <t-tag size="small" theme="primary">标签 小</t-tag>
-    <t-tag theme="primary">标签 中</t-tag>
-    <t-tag size="large" theme="primary">标签 大</t-tag>
-  </view>
-</view>
 
-<view>可关闭</view>
-<view class="tdesign-demo-tag">
-  <t-tag
-    wx:for="{{closableTags}}"
-    wx:for-item="tag"
-    closable="{{true}}"
-    disabled="{{tag.disabled}}"
-    wx:key="tag"
-    theme="primary"
-    size="{{tag.size}}"
-    data-index="{{index}}"
-    bind:close="onClickClose"
-    >{{tag.name}}</t-tag
-  >
-</view>
-<view>点击型标签</view>
-<view class="tdesign-demo-tag">
-  <t-check-tag
-    size="large"
-    wx:for="{{fruits}}"
-    wx:for-item="fruit"
-    wx:for-index="index"
-    wx:key="index"
-    checked="{{fruit.checked}}"
-    disabled="{{fruit.disabled}}"
-    data-index="{{index}}"
-    bind:tap="onClickFruit"
-    >{{fruit.name}}</t-check-tag
-  >
+  <view class="demo-section">
+    <view class="demo-section__title">02 状态</view>
+    <view class="demo-section__desc">标签状态</view>
+
+    <view class="group">
+      <t-check-tag
+        size="large"
+        wx:for="{{fruits}}"
+        wx:for-item="fruit"
+        wx:for-index="index"
+        wx:key="index"
+        checked="{{fruit.checked}}"
+        disabled="{{fruit.disabled}}"
+        data-index="{{index}}"
+        bind:tap="onClickFruit"
+        >{{fruit.name}}</t-check-tag
+      >
+    </view>
+  </view>
+
+  <view class="demo-section">
+    <view class="demo-section__title">03 规格</view>
+    <view class="demo-section__desc">规格标签</view>
+
+    <view class="group d-flex">
+      <view class="left">
+        <t-tag size="large" theme="primary">展示标签30</t-tag>
+        <t-tag size="medium" theme="primary">展示标签24</t-tag>
+        <t-tag size="small" theme="primary">展示标签22</t-tag>
+      </view>
+
+      <view class="right">
+        <t-check-tag size="large">点击标签30</t-check-tag>
+        <t-check-tag size="midium">点击标签24</t-check-tag>
+      </view>
+    </view>
+  </view>
 </view>
