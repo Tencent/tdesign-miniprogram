@@ -1,11 +1,13 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import Props from '../checkbox/checkbox-group-props';
+
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
 @wxComponent()
 export default class CheckboxGroup extends SuperComponent {
   externalClasses = ['t-class'];
+
   relations = {
     '../checkbox/checkbox': {
       type: 'descendant' as 'descendant',
@@ -14,16 +16,20 @@ export default class CheckboxGroup extends SuperComponent {
       },
     },
   };
+
   data = {
     classPrefix: name,
     checkboxOptions: [],
   };
+
   properties = Props;
+
   lifetimes = {
     attached() {
       this.handleCreateMulCheckbox();
     },
   };
+
   methods = {
     // slot插入选项
     updateChildren(type = 'slot') {
@@ -93,7 +99,7 @@ export default class CheckboxGroup extends SuperComponent {
         });
         this.updateChildren('not-slot');
       } catch (error) {
-        console.log('error', error);
+        console.error('error', error);
       }
     },
     // 处理全选

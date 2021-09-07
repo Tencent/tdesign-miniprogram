@@ -4,8 +4,8 @@
 // size
 @dialog-width: 320rpx * 2;
 @dialog-body-min-height: 88rpx * 2;
-@dialog-body-max-height: 408rpx * 2;
-@dialog-btn-line-height: 56rpx * 2;
+@dialog-body-max-height: 388rpx * 2;
+@dialog-btn-height: 56rpx * 2;
 @dialog-input-height: 48rpx * 2;
 
 // color
@@ -13,141 +13,149 @@
 @dialog-btn-border-color: #eee;
 @dialog-input-bg-color: #f0f0f0;
 
-.@{prefix}-dialog {
-  overflow: hidden;
-  width: @dialog-width;
-  border-radius: @border-radius;
-  background-color: @bg-color-block;
+page {
+  .@{prefix}-dialog {
+    overflow: hidden;
+    width: @dialog-width;
+    border-radius: @border-radius;
+    background-color: @bg-color-block;
 
-  &__content {
-    padding: @spacer-4 @spacer-3;
-    min-height: @dialog-body-min-height;
-    max-height: @dialog-body-max-height;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  &__header {
-    text-align: center;
-    font-weight: 500;
-    font-size: @font-size-m;
-    line-height: @text-line-height;
-    color: @text-level-1-color;
-  }
-
-  &__body {
-    overflow-y: auto;
-    text-align: center;
-    -webkit-overflow-scrolling: touch;
-    font-size: @font-size-m;
-    color: @text-level-3-color;
-    margin-top: @spacer-2;
-
-    &.no-title {
-      margin-top: 0;
+    &__content {
+      padding: @spacer-4 @spacer-3;
+      min-height: @dialog-body-min-height;
+      max-height: @dialog-body-max-height;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: @font-size-m;
+      line-height: @text-line-height;
     }
 
-    &-text {
-      word-wrap: break-word;
+    &__header {
+      text-align: center;
+      font-weight: 500;
+      font-size: @font-size-m;
+      line-height: @text-line-height;
+      color: @text-level-1-color;
     }
 
-    &--left {
-      text-align: left;
+    &__body {
+      overflow-y: auto;
+      text-align: center;
+      -webkit-overflow-scrolling: touch;
+      font-size: @font-size-m;
+      color: @text-level-3-color;
+      margin-top: @spacer-2;
+
+      &.no-title {
+        margin-top: 0;
+      }
+
+      &-text {
+        word-wrap: break-word;
+      }
+
+      &--left {
+        text-align: left;
+      }
+
+      &--right {
+        text-align: right;
+      }
     }
 
-    &--right {
-      text-align: right;
-    }
-  }
+    &__footer {
+      display: flex;
 
-  &__footer {
-    display: flex;
+      &--column {
+        flex-flow: column-reverse;
 
-    &--column {
-      flex-flow: column-reverse;
-
-      .t-dialog__button {
-        width: 100%;
-        color: @text-level-1-color;
-
-        &-confirm {
-          color: @primary-color;
+        .t-dialog__button {
+          width: 100%;
         }
       }
     }
-  }
 
-  &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    font-size: @font-size-m;
-    padding: 0 @spacer-3;
-    line-height: @dialog-btn-line-height;
-    background-color: @bg-color-block;
-    border-radius: 0;
-    border: 0;
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      font-size: @font-size-m;
+      padding: 0 @spacer-3;
 
-    &-confirm {
-      color: @primary-color;
-      font-weight: 500;
-    }
-
-    &-cancel {
-      color: @text-level-1-color;
-      font-weight: normal;
-    }
-
-    &-bounce-enter {
-      transform: translate3d(-50%, -50%, 0) scale(.7);
-      opacity: 0;
-    }
-
-    &-bounce-leave-active {
-      transform: translate3d(-50%, -50%, 0) scale(.9);
-      opacity: 0;
-    }
-
-    .dialog__button::after {
+      background-color: @bg-color-block;
+      width: @dialog-width;
+      height: @dialog-btn-height;
+      line-height: @dialog-btn-height;
       border-radius: 0;
-      border-color: @dialog-btn-bg-color-active;
+      border-color: @border-color;
+      border-left: 0;
+      border-bottom: 0;
+
+      &-half {
+        width: @dialog-width / 2;
+      }
+
+      &-confirm {
+        color: @primary-color;
+        font-weight: 500;
+      }
+
+      &-cancel {
+        color: @text-level-1-color;
+        font-weight: normal;
+      }
+
+      &-bounce-enter {
+        transform: translate3d(-50%, -50%, 0) scale(.7);
+        opacity: 0;
+      }
+
+      &-bounce-leave-active {
+        transform: translate3d(-50%, -50%, 0) scale(.9);
+        opacity: 0;
+      }
+
+      .dialog__button::after {
+        border-radius: 0;
+        border-color: @dialog-btn-bg-color-active;
+      }
+
+      &--active,
+      &:active {
+        background-color: @dialog-btn-bg-color-active;
+      }
+
+      &:before {
+        content: ' ';
+        .hairline-left(@dialog-btn-border-color);
+      }
     }
 
-    &--active,
-    &:active {
-      background-color: @dialog-btn-bg-color-active;
+    &__text {
+      & + .@{prefix}-dialog__input {
+        margin-top: @spacer-3;
+      }
     }
 
-    &:before {
-      content: ' ';
-      .hairline-left(@dialog-btn-border-color);
-    }
-  }
+    &__input {
+      width: 100%;
+      background-color: @dialog-input-bg-color;
+      font-size: @font-size-m;
+      color: @text-level-1-color;
+      border-radius: @border-radius / 2;
+      height: @dialog-input-height;
+      line-height: @text-line-height;
+      padding: @spacer-1;
+      margin-top: @spacer-1;
+      box-sizing: border-box;
+      text-align: left;
 
-  &__text {
-    & + .@{prefix}-dialog__input {
-      margin-top: @spacer-3;
-    }
-  }
-
-  &__input {
-    width: 100%;
-    background-color: @dialog-input-bg-color;
-    font-size: @font-size-m;
-    color: @text-level-1-color;
-    border-radius: @border-radius / 2;
-    height: @dialog-input-height;
-    line-height: @text-line-height;
-    padding: @spacer-1;
-    margin-top: @spacer-1;
-    box-sizing: border-box;
-    text-align: left;
-
-    &-placeholder {
-      color: @text-level-4-color;
+      &-placeholder {
+        color: @text-level-4-color;
+      }
     }
   }
 }

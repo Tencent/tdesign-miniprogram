@@ -1,6 +1,7 @@
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import Props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-radio`;
 
@@ -11,19 +12,23 @@ const iconDefault = {
 @wxComponent()
 export default class PullDownRefresh extends SuperComponent {
   externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
+
   relations = {
     '../radio-group/radio-group': {
       type: 'ancestor' as 'ancestor',
     },
   };
+
   options = {
     multipleSlots: true,
   };
+
   lifetimes = {
     attached() {
       this.handleInitStatus();
     },
   };
+
   properties = Props;
 
   data = {

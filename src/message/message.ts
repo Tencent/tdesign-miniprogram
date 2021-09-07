@@ -19,6 +19,7 @@ export default class Message extends SuperComponent {
     styleIsolation: 'apply-shared' as const,
     multipleSlots: true,
   };
+
   // 组件的对外属性
   properties: MessageProps = ({ ...props } as unknown) as MessageProps;
 
@@ -30,6 +31,7 @@ export default class Message extends SuperComponent {
     animation: [],
     iconName: '',
   };
+
   observers = {
     marquee(val) {
       if (JSON.stringify(val) === '{}') {
@@ -46,6 +48,7 @@ export default class Message extends SuperComponent {
 
   /** 延时关闭句柄 */
   closeTimeoutContext = 0;
+
   /** 动画句柄 */
   nextAnimationContext = 0;
 
@@ -74,7 +77,8 @@ export default class Message extends SuperComponent {
   detached() {
     this.clearMessageAnimation();
   }
-  /** icon 值设置*/
+
+  /** icon 值设置 */
   setIcon(icon = this.properties.icon) {
     // 使用空值
     if (!icon) {
@@ -113,7 +117,7 @@ export default class Message extends SuperComponent {
     }
 
     if (this.data.loop > 0) {
-      this.data.loop = this.data.loop - 1;
+      this.data.loop -= 1;
     } else if (this.data.loop === 0) {
       // 动画回到初始位置
       this.setData({ animation: this.resetAnimation.translateX(0).step().export() });
@@ -189,6 +193,7 @@ export default class Message extends SuperComponent {
       }, duration) as unknown) as number;
     }
   }
+
   hide() {
     if (this.nextAnimationContext) {
       this.clearMessageAnimation();

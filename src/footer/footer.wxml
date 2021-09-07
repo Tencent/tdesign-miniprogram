@@ -1,18 +1,18 @@
 <view class="{{ classPrefix }}">
-  <!-- type 为 logo -->
-  <block wx:if="{{type === 'logo'}}">
+  <!-- theme 为 logo -->
+  <block wx:if="{{theme === 'logo'}}">
     <view class="{{ classPrefix }}__logo">
-      <image class="{{ classPrefix }}__icon" src="{{logoIconUrl}}" wx:if="{{logoIconUrl}}" />
-      <view class="{{ classPrefix }}__title" wx:if="{{logoTitle}}">{{logoTitle}}</view>
+      <image class="{{ classPrefix }}__icon" src="{{logo.icon}}" wx:if="{{logo.icon}}" />
+      <view class="{{ classPrefix }}__title" wx:if="{{logo.title}}">{{logo.title}}</view>
       <image
         class="{{ classPrefix }}__title-url"
-        src="{{logoTitleUrl}}"
+        src="{{logo.url}}"
         mode="widthFix"
-        wx:elif="{{logoTitleUrl}}"
+        wx:elif="{{logo.url}}"
       />
     </view>
   </block>
-  <!-- type 为 text -->
+  <!-- theme 为 text -->
   <block wx:else>
     <view wx:if="{{textLinkList.length > 0}}" class="{{ classPrefix }}__link-list">
       <block wx:for="{{textLinkList}}" wx:key="name" wx:for-item="item">
@@ -26,6 +26,6 @@
         </navigator>
       </block>
     </view>
-    <view class="{{ classPrefix }}__copyright-info">{{textCopyrightInfo}}</view>
+    <view class="{{ classPrefix }}__copyright-info">{{copyright}}</view>
   </block>
 </view>
