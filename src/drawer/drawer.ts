@@ -1,4 +1,5 @@
 import TComponent from '../common/component';
+
 const sizeKeywordMap = {
   small: '30%',
   middle: '50%',

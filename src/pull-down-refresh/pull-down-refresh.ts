@@ -2,17 +2,24 @@
 /* eslint-disable prefer-destructuring */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-pull-down-refresh`;
 
 @wxComponent()
 export default class PullDownRefresh extends SuperComponent {
   isScrollToTop = true;
+
   pixelRatio = 1; // 像素比(rpx与px在此设备上的比值)
+
   startPoint: { pageX: number; pageY: number } | null = null; // 下拉开始的起点，主要用于计算下拉高度
+
   isPulling = false; // 是否下拉中
+
   defaultBarHeight = 0; // 下拉效果的默认高度
+
   maxBarHeight = 200; // 最大下拉高度，单位 rpx
+
   // 触发刷新的下拉高度，单位rpx
   // 松开时下拉高度大于这个值即会触发刷新，触发刷新后松开，会恢复到这个高度并保持，直到刷新结束
   normalBarHeight = 150;
@@ -23,10 +30,13 @@ export default class PullDownRefresh extends SuperComponent {
 
   /** 开始刷新 - 刷新成功/失败 最小间隔时间setTimeout句柄 */
   minRefreshTimeFlag = 0;
+
   /** 刷新成功/失败 - 关闭刷新动画 最小间隔时间setTimeout句柄 */
   minRefreshStatusShowTimeFlag = 0;
+
   /** 开始刷新 - 刷新成功/失败 最大间隔时间setTimeout句柄 */
   maxRefreshAnimateTimeFlag = 0;
+
   /** 关闭动画耗时setTimeout句柄 */
   closingAnimateTimeFlag = 0;
 
@@ -69,7 +79,7 @@ export default class PullDownRefresh extends SuperComponent {
         const unit = res[2];
         let loadingSize = parseFloat(res[1]);
         if (loadingSize > 0) {
-          loadingSize = loadingSize * (40 / 24);
+          loadingSize *= (40 / 24);
           this.setData({ loadingSize: loadingSize + unit });
         }
       },

@@ -1,10 +1,20 @@
 /** ****************************************************************
  MIT License http://www.opensource.org/licenses/mit-license.php
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
-*******************************************************************/
+****************************************************************** */
 
 export const getPrototypeOf = function (obj: any): any {
   return Object.getPrototypeOf ? Object.getPrototypeOf(obj) : obj.__proto__;
+};
+
+/**
+ * 判断 something 是不是一个 JS Object (从 mora-script 中取过来的)
+ *
+ * 除了 null, 及字面量，其它一般都是 Object，包括 函数
+ */
+ export const isObject = function isObject(something: any) {
+  const type = typeof something;
+  return something !== null && (type === 'function' || type === 'object');
 };
 
 /**
@@ -132,16 +142,6 @@ export const toObject = function toObject(
   );
 
   return obj;
-};
-
-/**
- * 判断 something 是不是一个 JS Object (从 mora-script 中取过来的)
- *
- * 除了 null, 及字面量，其它一般都是 Object，包括 函数
- */
-export const isObject = function isObject(something: any) {
-  const type = typeof something;
-  return something !== null && (type === 'function' || type === 'object');
 };
 
 export const isPlainObject = function isPlainObject(something: any) {

@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+
 const { prefix } = config;
 
 const classPrefix = `${prefix}-indexes`;
@@ -16,7 +17,7 @@ export default class IndexBar extends SuperComponent {
       // 分组没有title属性时，默认以index作为title
       if (!!newValue.length && newValue[0].title === undefined) {
         groups = groups.map((g) => {
-          return Object.assign({ title: g.index }, g);
+          return {title: g.index, ...g};
         });
       }
       this.setData({ groups });
@@ -36,12 +37,15 @@ export default class IndexBar extends SuperComponent {
   };
 
   timer = null;
+
   groupTop = null;
+
   btnBar = null;
 
   ready() {
     this.getHeight();
   }
+
   getHeight() {
     wx.getSystemInfo({
       success: (res) => {
@@ -54,6 +58,7 @@ export default class IndexBar extends SuperComponent {
       },
     });
   }
+
   getDomInfo() {
     const query = this.createSelectorQuery();
     query.select(`#${classPrefix}__btn-bar`).boundingClientRect();
@@ -76,6 +81,7 @@ export default class IndexBar extends SuperComponent {
       });
     });
   }
+
   // 通过点击索引的点击位置，判断点击的索引下标位置。
   computedIndex(tapY) {
     const offsetY = tapY - this.btnBar.top;
@@ -89,6 +95,7 @@ export default class IndexBar extends SuperComponent {
     }
     return index;
   }
+
   // 通过scroll-view滑动高度计算当前下标位置
   computedIndexByScrollTop(scrollTop: number): number {
     if (!this.groupTop) {
@@ -97,6 +104,7 @@ export default class IndexBar extends SuperComponent {
 
     return this.groupTop.findIndex((element) => element - topOffset > scrollTop);
   }
+
   // 在scroll-view滑动过程中，高亮对应的index
   activeIndexWhenScroll(scrollTop: number) {
     const curIndex = this.computedIndexByScrollTop(scrollTop);
@@ -106,10 +114,12 @@ export default class IndexBar extends SuperComponent {
       });
     }
   }
+
   scrollToY(tapY) {
     const index = this.computedIndex(tapY);
     this.scrollToAnchor(index);
   }
+
   scrollToAnchor(index) {
     this.switchScrollTip(true);
     const curGroup = this.data.groups[index];
@@ -118,6 +128,7 @@ export default class IndexBar extends SuperComponent {
       currentGroup: curGroup,
     });
   }
+
   switchScrollTip(val) {
     val = !!val;
     const switchFun = (value) => {
@@ -138,6 +149,7 @@ export default class IndexBar extends SuperComponent {
       switchFun(true);
     }
   }
+
   // 控制触发频率(防抖)
   throttleScroll() {
     return new Promise<void>((resolve) => {
@@ -157,21 +169,27 @@ export default class IndexBar extends SuperComponent {
       }
     });
   }
+
   onTouchStart() {}
+
   onTouchMove(e) {
     this.throttleScroll().then(() => this.scrollToY(e.changedTouches[0].pageY));
   }
+
   onTouchCancel() {
     this.switchScrollTip(false);
   }
+
   onTouchEnd(e) {
     this.switchScrollTip(false);
     this.scrollToY(e.changedTouches[0].pageY);
   }
+
   onCellTap(e) {
     const { indexes } = e.currentTarget.dataset;
     this.triggerEvent('select', { indexes });
   }
+
   onListScroll(e) {
     this.throttleScroll().then(() => {
       const { scrollTop } = e.detail;

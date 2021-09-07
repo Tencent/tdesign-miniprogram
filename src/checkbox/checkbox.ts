@@ -1,19 +1,23 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import Props from './props';
+
 const { prefix } = config;
 const currentComponent = `${prefix}-checkbox`;
 @wxComponent()
 export default class Checkbox extends SuperComponent {
   externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
+
   relations = {
     '../checkbox-group/checkbox-group': {
       type: 'ancestor' as 'ancestor',
     },
   };
+
   options = {
     multipleSlots: true,
   };
+
   properties = Props;
 
   // 组件的内部数据
@@ -24,11 +28,13 @@ export default class Checkbox extends SuperComponent {
     halfChecked: false,
     optionLinked: false,
   };
+
   lifetimes = {
     attached() {
       this.initStatus();
     },
   };
+
   /* Methods */
   methods = {
     onChange(e) {
@@ -53,8 +59,7 @@ export default class Checkbox extends SuperComponent {
         } else {
           parent.updateValue(item);
         }
-      } else {
-        if (checkAll || optionLinked) {
+      } else if (checkAll || optionLinked) {
           this.triggerEvent('toggleAll', {
             type: 'not-slot',
             checked: !active,
@@ -65,7 +70,6 @@ export default class Checkbox extends SuperComponent {
           this.triggerEvent('change', !active);
           this.toggle();
         }
-      }
     },
     initStatus() {
       if (!this.data.optionLinked) {

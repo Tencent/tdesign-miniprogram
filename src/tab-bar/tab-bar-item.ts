@@ -22,6 +22,7 @@ export default class TabbarItem extends SuperComponent {
       },
     },
   };
+
   data = {
     prefix,
     classPrefix,
@@ -33,7 +34,9 @@ export default class TabbarItem extends SuperComponent {
     color: '',
     activeColor: '',
   };
+
   properties = props;
+
   observers = {
     subTabBar(value: Record<string, any>[]) {
       this.setData({
@@ -41,6 +44,7 @@ export default class TabbarItem extends SuperComponent {
       });
     },
   };
+
   methods = {
     toggle() {
       const { parent, currentName, isSpread, hasChildren } = this.data;

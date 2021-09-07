@@ -7,7 +7,9 @@ const name = `${prefix}-switch`;
 @wxComponent()
 export default class Switch extends SuperComponent {
   externalClasses = ['t-class'];
+
   properties = props;
+
   // 组件的内部数据
   data = {
     externalClass: 't-class',
@@ -15,6 +17,7 @@ export default class Switch extends SuperComponent {
     isActive: false,
     bodyStyle: '',
   };
+
   lifetimes = {
     attached() {
       const { value, customValue } = this.data;
@@ -26,6 +29,7 @@ export default class Switch extends SuperComponent {
       this.handleColorChange();
     },
   };
+
   methods = {
     switchChange() {
       const { disabled, value, customValue, isActive } = this.data;
