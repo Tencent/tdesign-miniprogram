@@ -10,13 +10,14 @@ var getTagClass = function (props) {
   var tagClass = [
     baseClass,
     baseClass + '--theme-' + theme,
-    baseClass + '--effect-' + variant,
+    baseClass + '--variant-' + variant,
     closable ? baseClass + '--closable ' + prefix + '-is-closable' : '',
     disabled ? baseClass + '--disabled ' + prefix + '-is-disabled' : '',
     baseClass + '--size-' + size,
     shape === 'shape' ? baseClass + '--square' : '',
     shape === 'round' ? baseClass + '--round' : '',
     shape === 'circle' ? baseClass + '--circle' : '',
+    shape === 'half-circle' ? baseClass + '--half-circle' : '',
   ];
   return tagClass.join(' ');
 };

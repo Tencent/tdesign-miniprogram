@@ -5,6 +5,10 @@ Page({
         type: '新增类',
         components: [
           {
+            name: 'Search',
+            path: '/pages/search/search',
+          },
+          {
             name: 'Grid',
             path: '/pages/grid/grid',
           },
@@ -87,13 +91,17 @@ Page({
             path: '/pages/scroll-view/scroll-view',
           },
           {
+            name: 'CountDown',
+            path: '/pages/count-down/count-down',
+          },
+          {
             name: 'Skeleton',
             path: '/pages/skeleton/skeleton',
           },
           {
             name: 'Footer',
             path: '/pages/footer/footer',
-          }
+          },
         ],
       },
       {
@@ -142,6 +150,10 @@ Page({
           {
             name: 'Fab',
             path: '/pages/fab/fab',
+          },
+          {
+            name: 'ImagePicker',
+            path: '/pages/image-picker/image-picker',
           },
         ],
       },

@@ -3,7 +3,7 @@
  * updated at 2021-08-03 16:17:22
  * */
 
-import { TdTransitionProps } from './type'
+import { TdTransitionProps } from './type';
 const props: TdTransitionProps = {
   /** 首次出现是否展示动画 */
   appear: {
@@ -36,4 +36,4 @@ const props: TdTransitionProps = {
   },
 };
 
-export default props
+export default props;

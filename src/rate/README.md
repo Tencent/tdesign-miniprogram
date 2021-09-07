@@ -16,31 +16,31 @@
 ### 基础（实心样式）：
 
 ```html
-<t-rate size="{{48}}" value="{{3}}" bind:change="onChange"></t-rate>
+<t-rate size="{{48}}" value="{{3}}" variant="filled" bind:change="onChange"></t-rate>
 ```
 
-### rate Props
+### Rate Props
 
-| 参数          | 说明             | 类型      | 默认值                                   | 版本 |
-| ------------- | ---------------- | --------- | ---------------------------------------- | ---- |
-| count         | star 总数        | _number_  | 默认 5 个                                | -    |
-| size          | star 图标大小    | _number_  | 48                                       | -    |
-| gap           | star 图标间距    | _number_  | 6                                        | -    |
-| allowHalf     | 是否允许半选     | _boolean_ | false                                    |
-| value         | 值,受控          | _number_  | -                                        | -    |
-| defaultValue  | 默认值，非受控   | _number_  | 3                                        | -    |
-| color         | 激活图标颜色     | _string_  | #ffc51c                                  | -    |
-| disabledColor | 禁用图标颜色     | _string_  | #999                                     | -    |
-| readonly      | 是否只读         | _boolean_ | false                                    | -    |
-| disabled      | 是否禁用         | _boolean_ | false                                    | -    |
-| showText      | 是否展示描述文本 | _string_  | false                                    | -    |
-| texts         | 描述文本数组     | _string_  | ['极差', '失望', '一般', '满意', '惊喜'] | -    |
+| 名称           | 类型    | 默认值  | 说明                                                                                                             | 必传 |
+| -------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------- | ---- |
+| allow-half     | Boolean | false   | 是否允许半选                                                                                                     | N    |
+| color          | String  | #ED7B2F | 评分图标的颜色                                                                                                   | N    |
+| count          | Number  | 5       | 评分的数量                                                                                                       | N    |
+| disabled       | Boolean | false   | 是否禁用评分                                                                                                     | N    |
+| disabled-color | String  | #999999 | 禁用图标的颜色                                                                                                   | N    |
+| gap            | Number  | 6       | 评分图标的间距                                                                                                   | N    |
+| readonly       | Boolean | false   | 是否为只读                                                                                                       | N    |
+| show-text      | Boolean | false   | 是否显示辅助文字                                                                                                 | N    |
+| size           | String  | 48      | 评分图标的大小                                                                                                   | N    |
+| texts          | Array   | -       | 自定义评分等级对应的辅助文字，组件内部默认为：['极差', '失望', '一般', '满意', '惊喜']。TS 类型：`Array<string>` | N    |
+| value          | Number  | -       | 必需。选择评分的值                                                                                               | Y    |
+| variant        | String  | outline | 形状类型，有描边类型和填充类型两种。可选项：outline/filled                                                       | N    |
 
-### rate Event
+### Rate Events
 
-| 事件名 | 说明                 | 参数 |
-| ------ | -------------------- | ---- |
-| change | 点击 star 组件时触发 | -    |
+| 名称   | 参数              | 描述             |
+| ------ | ----------------- | ---------------- |
+| change | `(value: number)` | 评分数改变时触发 |
 
 ### rate 外部样式类
 

@@ -1,0 +1,168 @@
+// 组件允许单个组件打包，因此默认引入公共基础样式
+@import '../../common/index.less';
+@import './_var.less';
+
+@themes: primary, success, warning, info, danger;
+
+.genEffect(@fontColorWeight; @borderColorWeight; @backgroundColorWeight; @hoverColorWeight) {
+  &.@{prefix}-tag--theme-default {
+    color: @tag-default-color;
+    border-color: @tag-default-border-color;
+    background-color: @tag-default-background-color;
+  }
+
+  .for(@themes, @i: 1) when(@i =< length(@themes)) {
+    @theme: extract(@themes, @i);
+
+    @theme-color: 'tag-@{theme}-color';
+
+    &.@{prefix}-tag--theme-@{theme} {
+      background-color: mix(@@theme-color, @color-white, @backgroundColorWeight);
+      border-color: mix(@@theme-color, @color-white, @borderColorWeight);
+      color: mix(@@theme-color, @color-white, @fontColorWeight);
+    }
+
+    .for(@themes, (@i + 1));
+  }
+
+  .for(@themes);
+}
+
+.@{prefix}-tag {
+  display: inline-block;
+  border-width: 0;
+  border-style: solid;
+  border-color: transparent;
+  box-sizing: border-box;
+  border-radius: @border-radius-square;
+  white-space: nowrap;
+  font-size: 12px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0px 12px;
+  font-size: 12px;
+  max-width: 120px;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+
+  &--variant {
+    &-dark {
+      .genEffect(0, 100, 100, 100);
+    }
+
+    &-light {
+      .genEffect(100, 10, 10, 10);
+    }
+
+    &-plain {
+      border-width: 1px;
+      .genEffect(100, 50, 0, 5);
+    }
+
+    &-mixed {
+      border-width: 1px;
+      .genEffect(100, 50, 10, 5);
+    }
+  }
+
+  .@{prefix}-tag__content {
+    width: 100%;
+  }
+
+  .@{prefix}__icon {
+    font-size: @tag-medium-font-size;
+  }
+
+  .@{prefix}__icon-close {
+    font-size: @tag-small-font-size;
+    border-radius: @border-radius-50;
+    cursor: pointer;
+  }
+
+  .@{prefix}-icon-close {
+    margin-left: 4px;
+  }
+
+  &.@{prefix}-tag--size {
+    &-small {
+      height: 22px;
+      line-height: 22px;
+      padding: 0px 8px;
+      font-size: 10px;
+
+      .@{prefix}-icon {
+        font-size: 10px;
+      }
+    }
+
+    &-medium {
+      height: 24px;
+      line-height: 24px;
+      padding: 0px 12px;
+      font-size: 12px;
+
+      .@{prefix}-icon {
+        font-size: 12px;
+      }
+    }
+
+    &-large {
+      height: 30px;
+      line-height: 30px;
+      padding: 0px 12px;
+      font-size: 14px;
+
+      .@{prefix}-icon {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &.@{prefix}-tag--square {
+    border-radius: @border-radius-square;
+  }
+
+  &.@{prefix}-tag--round {
+    border-radius: @border-radius-round;
+  }
+
+  &.@{prefix}-tag--circle {
+    border-radius: @border-radius-circle;
+  }
+
+  &.@{prefix}-tag--half-circle {
+    border-radius: 0 @border-radius-circle @border-radius-circle 0;
+  }
+
+  &.@{prefix}-tag--checkable {
+    cursor: pointer;
+    color: @tag-default-color;
+    background-color: @tag-default-background-color;
+    border-color: @tag-default-border-color;
+
+    &.@{prefix}-tag--checked {
+      color: @color-white;
+      background-color: @tag-primary-color;
+      border-color: @tag-primary-color;
+    }
+
+    &.@{prefix}-tag--disabled {
+      cursor: not-allowed;
+      color: @tag-disabled-color;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-border-color;
+    }
+  }
+
+  &.@{prefix}-tag--closable {
+    &.@{prefix}-tag--disabled {
+      cursor: not-allowed;
+      color: @tag-disabled-color;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-border-color;
+    }
+  }
+}

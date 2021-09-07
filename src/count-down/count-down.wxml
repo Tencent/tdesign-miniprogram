@@ -1,0 +1,4 @@
+<view class="{{prefix}}-class {{prefix}}-count-down">
+  <slot wx:if="{{ content !== 'default' }}" />
+  <block wx:else>{{ formattedTime }}</block>
+</view>

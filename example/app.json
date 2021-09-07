@@ -43,7 +43,10 @@
     "pages/empty/empty",
     "pages/back-top/back-top",
     "pages/grid/grid",
-    "pages/image/image"
+    "pages/image-picker/image-picker",
+    "pages/count-down/count-down",
+    "pages/image/image",
+    "pages/search/search"
   ],
   "usingComponents": {
     "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
@@ -96,7 +99,10 @@
     "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top",
     "t-grid-item": "@tencent/tdesign-miniprogram/grid-item/grid-item",
     "t-grid": "@tencent/tdesign-miniprogram/grid/grid",
-    "t-image": "@tencent/tdesign-miniprogram/image/image"
+    "t-image-picker": "@tencent/tdesign-miniprogram/image-picker/image-picker",
+    "t-count-down": "@tencent/tdesign-miniprogram/count-down/count-down",
+    "t-image": "@tencent/tdesign-miniprogram/image/image",
+    "t-search": "@tencent/tdesign-miniprogram/search/search"
   },
   "window": {
     "backgroundTextStyle": "light",

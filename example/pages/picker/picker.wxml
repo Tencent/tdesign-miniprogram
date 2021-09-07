@@ -1,54 +1,87 @@
-<t-cell-group title="单列选择、默认选中">
+<view class="area-picker-demo">
+  <view class="demo-title">Picker 选择器</view>
+  <view class="demo-desc"
+    >用于选择一个地区的省、市、区、街道等，包含树形用于多层级地区选择以及行政区单层选择</view
+  >
+  <view class="demo-section">
+    <t-demo title="01 类型" desc="基础选择器"></t-demo>
+    <view class="pannel-item" bind:tap="onClickPicker" data-index="{{1}}">
+      <view class="pannel-label">城市</view>
+      <view class="pannel-text">{{selectedCityValue || '选择城市'}}</view>
+      <t-icon name="arrow-right" color="#999" />
+    </view>
+    <view class="pannel-item" bind:tap="onClickPicker" data-index="{{2}}">
+      <view class="pannel-label">年份和季节</view>
+      <view class="pannel-text">
+        {{selectedYears}} {{selectedSeason}} {{ !selectedYears ? '选择年份和季节' : ''}}</view
+      >
+      <t-icon name="arrow-right" color="#999" />
+    </view>
+    <view class="pannel-item" bind:tap="onClickPicker" data-index="{{3}}">
+      <view class="pannel-label">日期</view>
+      <view class="pannel-text">
+        {{selectedYears}} {{selectedMonth}} {{selectedDay}} {{!selectedYears ? '选择日期' :
+        ''}}</view
+      >
+      <t-icon name="arrow-right" color="#999" />
+    </view>
+  </view>
   <t-picker
-    title="标题"
-    bindchange="onPicker1Change"
+    visible="{{picker1Visible}}"
+    title="请选择城市"
+    bindchange="onPickerChange"
     bindconfirm="onPicker1Confirm"
     bindcancel="onPicker1Cancel"
   >
     <t-picker-column
-      data-index="{{0}}"
-      options="{{heroOptions}}"
-      optionKey="name"
-      defaultIndex="{{3}}"
-      bindchange="onColumn1Change"
+      options="{{citys}}"
+      value="{{selectedCityValue}}"
+      bindchange="onColumnChange"
     ></t-picker-column>
   </t-picker>
-</t-cell-group>
-
-<t-cell-group title="多列选择、默认选中">
   <t-picker
-    title="标题"
-    bindchange="onPicker2Change"
+    visible="{{picker2Visible}}"
+    title="选择年份和季节"
+    bindchange="onPickerChange"
     bindconfirm="onPicker2Confirm"
     bindcancel="onPicker2Cancel"
   >
     <t-picker-column
-      data-index="{{0}}"
-      options="{{gameOptions}}"
-      optionKey="name"
-      defaultIndex="{{3}}"
+      options="{{years}}"
+      value="{{selectedYears}}"
+      formatter="{{formatYear}}"
+      bindchange="onColumnChange"
     ></t-picker-column>
     <t-picker-column
-      data-index="{{1}}"
-      options="{{evaluationOptions}}"
-      optionKey="name"
-      defaultIndex="{{2}}"
+      options="{{seasons}}"
+      value="{{selectedSeason}}"
+      bindchange="onColumnChange"
     ></t-picker-column>
   </t-picker>
-</t-cell-group>
-
-<t-cell-group title="联动选择">
   <t-picker
-    title="标题"
-    bindchange="onPicker2Change"
-    bindconfirm="onPicker2Confirm"
-    bindcancel="onPicker2Cancel"
+    visible="{{picker3Visible}}"
+    title="选择日期"
+    bindchange="onPickerChange"
+    bindconfirm="onPicker3Confirm"
+    bindcancel="onPicker3Cancel"
   >
     <t-picker-column
-      data-index="{{0}}"
-      options="{{roleOptions}}"
-      bindchange="onRoleChange"
+      options="{{years}}"
+      value="{{selectedYears}}"
+      formatter="{{formatYear}}"
+      bindchange="onColumnChange"
     ></t-picker-column>
-    <t-picker-column data-index="{{1}}" options="{{multiHeroOptions[roleIndex]}}"></t-picker-column>
+    <t-picker-column
+      options="{{months}}"
+      value="{{selectedMonth}}"
+      formatter="{{formatMonth}}"
+      bindchange="onColumnChange"
+    ></t-picker-column>
+    <t-picker-column
+      options="{{days}}"
+      value="{{selectedDay}}"
+      formatter="{{formatDay}}"
+      bindchange="onColumnChange"
+    ></t-picker-column>
   </t-picker>
-</t-cell-group>
+</view>
