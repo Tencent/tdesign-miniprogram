@@ -22,7 +22,7 @@ Page({
       url: path,
       fail: () => {
         wx.navigateTo({
-          url: `/pages/home/home`,
+          url: `/pages/home/navigateFail/navigateFail`,
         });
       },
     });

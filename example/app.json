@@ -47,7 +47,8 @@
     "pages/image-picker/image-picker",
     "pages/count-down/count-down",
     "pages/image/image",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/home/navigateFail/navigateFail"
   ],
   "usingComponents": {
     "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
