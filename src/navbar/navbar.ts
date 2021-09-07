@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-navbar`;
 
@@ -16,104 +17,105 @@ export default class Navbar extends SuperComponent {
     addGlobalClass: true,
     multipleSlots: true,
   };
-  properties = {
-    // 是否渲染
-    visible: {
-      type: Boolean,
-      value: true,
-    },
-    // 是否 fixed 在顶部
-    fixed: {
-      type: Boolean,
-      value: true,
-    },
-    // 页面标题
-    title: String,
-    // 标题字号，默认为 36rpx
-    titleSize: {
-      type: String,
-      value: '',
-    },
-    // 标题颜色
-    titleColor: {
-      type: String,
-      value: '',
-    },
-    // 背景
-    background: {
-      type: String,
-      value: '',
-    },
-    // back 按钮 icon
-    backIcon: {
-      type: String,
-      value: 'arrow-left',
-    },
-    // home 按钮 icon
-    homeIcon: {
-      type: String,
-      value: 'circle',
-    },
-    // 是否显示 back 按钮
-    showBack: {
-      type: String,
-      value: ButtonShow.auto,
-    },
-    // 是否显示 home 按钮
-    showHome: {
-      type: String,
-      value: ButtonShow.auto,
-    },
-    // 后退按钮后退层数 含义参考 wx.navigateBack，特殊的，传入 0 不会发生执行 wx.navigateBack，只会触发一个 goback 事件供自行处理
-    delta: {
-      type: Number,
-      value: 1,
-    },
-    // home 按钮被点击后跳转的路径，如果不传入，则 home 被点击后不会发生任页面跳转，只会触发一个 gohome 事件供自行处理
-    homePath: {
-      type: String,
-      value: '',
-    },
-    // homePath 是否是 tabbar 页面，如果是请传入 true，默认值为 false
-    homeIsTabBar: Boolean,
-    // 切换 visible 时使用动画
-    animated: {
-      type: Boolean,
-      value: true,
-    },
-    // 只显示 back 或者 home 中的一个按钮时的 icon 字号，默认 48rpx
-    singleIconSize: {
-      type: String,
-      value: '48rpx',
-    },
-    // 同时显示 back 或者 home 两个按钮时的 icon 字号，默认 40rpx
-    capsuleIconSize: {
-      type: String,
-      value: '40rpx',
-    },
-    // 胶囊自定义样式，可在不同的主题下实现胶囊的边框、背景
-    capsuleStyle: {
-      type: String,
-      value: '',
-    },
-    // 通栏自定义插槽
-    customSlot: {
-      type: String,
-      value: '',
-    },
-  };
+  properties = props;
+  // {
+  //   // 是否渲染
+  //   visible: {
+  //     type: Boolean,
+  //     value: true,
+  //   },
+  //   // 是否 fixed 在顶部
+  //   fixed: {
+  //     type: Boolean,
+  //     value: true,
+  //   },
+  //   // 页面标题
+  //   title: String,
+  //   // 标题字号，默认为 36rpx
+  //   titleSize: {
+  //     type: String,
+  //     value: '',
+  //   },
+  //   // 标题颜色
+  //   titleColor: {
+  //     type: String,
+  //     value: '',
+  //   },
+  //   // 背景
+  //   background: {
+  //     type: String,
+  //     value: '',
+  //   },
+  //   // back 按钮 icon
+  //   backIcon: {
+  //     type: String,
+  //     value: 'arrow-left',
+  //   },
+  //   // home 按钮 icon
+  //   homeIcon: {
+  //     type: String,
+  //     value: 'circle',
+  //   },
+  //   // 是否显示 back 按钮
+  //   showBack: {
+  //     type: String,
+  //     value: ButtonShow.auto,
+  //   },
+  //   // 是否显示 home 按钮
+  //   showHome: {
+  //     type: String,
+  //     value: ButtonShow.auto,
+  //   },
+  //   // 后退按钮后退层数 含义参考 wx.navigateBack，特殊的，传入 0 不会发生执行 wx.navigateBack，只会触发一个 goback 事件供自行处理
+  //   delta: {
+  //     type: Number,
+  //     value: 1,
+  //   },
+  //   // home 按钮被点击后跳转的路径，如果不传入，则 home 被点击后不会发生任页面跳转，只会触发一个 gohome 事件供自行处理
+  //   homePath: {
+  //     type: String,
+  //     value: '',
+  //   },
+  //   // homePath 是否是 tabbar 页面，如果是请传入 true，默认值为 false
+  //   homeIsTabBar: Boolean,
+  //   // 切换 visible 时使用动画
+  //   animated: {
+  //     type: Boolean,
+  //     value: true,
+  //   },
+  //   // 只显示 back 或者 home 中的一个按钮时的 icon 字号，默认 48rpx
+  //   singleIconSize: {
+  //     type: String,
+  //     value: '48rpx',
+  //   },
+  //   // 同时显示 back 或者 home 两个按钮时的 icon 字号，默认 40rpx
+  //   capsuleIconSize: {
+  //     type: String,
+  //     value: '40rpx',
+  //   },
+  //   // 胶囊自定义样式，可在不同的主题下实现胶囊的边框、背景
+  //   capsuleStyle: {
+  //     type: String,
+  //     value: '',
+  //   },
+  //   // 通栏自定义插槽
+  //   customSlot: {
+  //     type: String,
+  //     value: '',
+  //   },
+  // };
 
   observers = {
     visible(this: Navbar, visible) {
-      const { animated } = this.properties;
+      const { animation } = this.properties;
       const visibleClass = `${name}${visible ? '--visible' : '--hide'}`;
       this.setData({
-        visibleClass: `${visibleClass}${animated ? '-animated' : ''}`,
+        visibleClass: `${visibleClass}${animation ? '-animation' : ''}`,
       });
       if (this.timer) {
         clearTimeout(this.timer);
       }
-      if (animated) {
+      if (animation) {
         this.timer = setTimeout(() => {
           this.setData({
             visibleClass,
