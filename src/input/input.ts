@@ -1,6 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
-import TComponent from '../common/component';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-input`;
 
@@ -21,6 +21,7 @@ export default class Input extends SuperComponent {
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
+
   properties = {
     label: {
       type: String,
@@ -88,10 +89,12 @@ export default class Input extends SuperComponent {
       value: true,
     },
   };
+
   data = {
     inputValue: '',
     classPrefix: name,
   };
+
   /* 组件生命周期 */
   lifetimes = {
     // 组件实例被创建
@@ -107,6 +110,7 @@ export default class Input extends SuperComponent {
     // 组件实例被从页面节点树移除
     // detached() { },
   };
+
   methods = {
     onInput(event) {
       const { value } = event.detail;

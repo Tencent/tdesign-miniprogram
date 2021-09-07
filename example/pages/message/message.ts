@@ -17,7 +17,7 @@ Page({
         Message.info({
           offset: ['20rpx', '32rpx'],
           duration: 5000,
-          icon: 'sound_fill',
+          icon: 'notification-filled',
           content: '这是一条带图标的消息通知 5s消失',
         });
         break;
@@ -36,7 +36,7 @@ Page({
         Message.info({
           offset: [20, 32],
           marquee: { speed: 50, loop: -1, delay: 5000 },
-          icon: 'sound_fill',
+          icon: false,
           content: '这是一条滚动的通知信息',
           duration: -1,
         });
@@ -57,7 +57,7 @@ Page({
           offset: [20, 32],
           marquee: { speed: 50, loop: 2, delay: 5000 },
           duration: -1,
-          content: '这是一条普通的通知信息,带滚动2次',
+          content: '这是一条普通的通知信息，带滚动2次',
         });
         break;
       }

@@ -19,8 +19,9 @@ export default class Message extends SuperComponent {
     styleIsolation: 'apply-shared' as const,
     multipleSlots: true,
   };
+
   // 组件的对外属性
-  properties: MessageProps = { ...props } as unknown as MessageProps;
+  properties: MessageProps = ({ ...props } as unknown) as MessageProps;
 
   // 组件的内部数据
   data = {
@@ -30,6 +31,7 @@ export default class Message extends SuperComponent {
     animation: [],
     iconName: '',
   };
+
   observers = {
     marquee(val) {
       if (JSON.stringify(val) === '{}') {
@@ -46,6 +48,7 @@ export default class Message extends SuperComponent {
 
   /** 延时关闭句柄 */
   closeTimeoutContext = 0;
+
   /** 动画句柄 */
   nextAnimationContext = 0;
 
@@ -74,7 +77,8 @@ export default class Message extends SuperComponent {
   detached() {
     this.clearMessageAnimation();
   }
-  /** icon 值设置*/
+
+  /** icon 值设置 */
   setIcon(icon = this.properties.icon) {
     // 使用空值
     if (!icon) {
@@ -91,13 +95,13 @@ export default class Message extends SuperComponent {
 
     // 使用默认值
     if (icon) {
-      let nextValue = 'exclamation'; // exclamation-目前td没有这个icon
+      let nextValue = 'notification-filled';
       const { theme } = this.properties;
       const themeMessage = {
-        info: 'help_fill',
-        success: 'tick_fill',
-        warning: 'warning_fill',
-        error: 'close_fill',
+        info: 'error-circle-filled',
+        success: 'check-circle-filled',
+        warning: 'error-circle-filled',
+        error: 'error-circle-filled',
       };
       nextValue = themeMessage[theme];
       this.setData({ iconName: nextValue });
@@ -113,7 +117,7 @@ export default class Message extends SuperComponent {
     }
 
     if (this.data.loop > 0) {
-      this.data.loop = this.data.loop - 1;
+      this.data.loop -= 1;
     } else if (this.data.loop === 0) {
       // 动画回到初始位置
       this.setData({ animation: this.resetAnimation.translateX(0).step().export() });
@@ -146,10 +150,10 @@ export default class Message extends SuperComponent {
             // 这里就只能用 setTimeout/20, nextTick 没用
             // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
             setTimeout(() => {
-              this.nextAnimationContext = setTimeout(
+              this.nextAnimationContext = (setTimeout(
                 this.checkAnimation.bind(this),
                 durationTime,
-              ) as unknown as number;
+              ) as unknown) as number;
 
               this.setData({ animation: nextAnimation });
             }, 20);
@@ -183,12 +187,13 @@ export default class Message extends SuperComponent {
     this.setIcon(icon);
     this.checkAnimation();
     if (duration && duration > 0) {
-      this.closeTimeoutContext = setTimeout(() => {
+      this.closeTimeoutContext = (setTimeout(() => {
         this.hide();
         this.triggerEvent('durationEnd', { self: this });
-      }, duration) as unknown as number;
+      }, duration) as unknown) as number;
     }
   }
+
   hide() {
     if (this.nextAnimationContext) {
       this.clearMessageAnimation();

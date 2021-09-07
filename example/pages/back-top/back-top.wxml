@@ -92,12 +92,7 @@
       />
     </view>
 
-    <t-back-top
-      show="{{showBackTop}}"
-      type="{{backTopDemo.type}}"
-      icon="arrow-up"
-      text="{{backTopDemo.text}}"
-    >
+    <t-back-top show="{{showBackTop}}" type="{{backTopDemo.type}}" text="{{backTopDemo.text}}">
     </t-back-top>
   </t-demo>
 </view>

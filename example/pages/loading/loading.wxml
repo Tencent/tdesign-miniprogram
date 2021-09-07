@@ -34,7 +34,7 @@
       theme="circular"
       size="40rpx"
       loading
-      text="加载中..."
+      text="加载中"
       t-class-indicator="indicator-blue"
       layout="vertical"
     ></t-loading>
@@ -43,7 +43,9 @@
     <view class="demo-section__desc">加载失败</view>
     <t-loading theme="error" class="loading-style" loading bind:reload="reloadPage"></t-loading>
     <view class="demo-section__desc">进度条加载</view>
-    <t-button size="large" plain bind:tap="showProgressBar">页面进度条加载</t-button>
+    <t-button size="large" plain bind:tap="showProgressBar" class="progress-btn"
+      >页面进度条加载</t-button
+    >
     <t-loading
       theme="bar"
       progress="{{progress}}"
@@ -52,7 +54,55 @@
     ></t-loading>
   </t-demo>
 
-  <t-demo title="02 规格">
+  <t-demo title="02 状态" desc="如果加载状态在延迟内结束，则不显示">
+    <view class="loading-container-flex">
+      <t-switch
+        value="{{isCheck}}"
+        bindchange="switchChange"
+        colors="{{['#00A870', 'rgba(0,0,0,0.26)']}}"
+        slot="note"
+      />
+      <span class="text-info">
+        {{loadingFirst?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
+      </span>
+    </view>
+    <t-loading
+      class="loading-style"
+      theme="circular"
+      size="40rpx"
+      text="加载中..."
+      loading="{{loadingFirst}}"
+      delay="{{1000}}"
+      t-class-indicator="indicator-blue"
+    ></t-loading>
+  </t-demo>
+
+  <t-demo title="03 加载速度" desc="加载速度可配置，加载一周的时间单位（毫秒）">
+    <view class="loading-container-flex">
+      <t-loading
+        theme="circular"
+        size="52rpx"
+        text="加载中..."
+        loading
+        t-class-text="text-l"
+        t-class-indicator="indicator-blue"
+        duration="{{duration}}"
+      ></t-loading>
+    </view>
+    <view class="slider-container">
+      <view>速度调整</view>
+      <t-slider
+        class="slider-class"
+        value="{{duration}}"
+        min="{{100}}"
+        max="{{800}}"
+        label
+        bind:change="durationChange"
+      ></t-slider>
+    </view>
+  </t-demo>
+
+  <t-demo title="04 规格">
     <view class="demo-section__desc">支持自定义加载规格</view>
     <view class="loading-container-flex-column">
       <t-loading
@@ -65,7 +115,7 @@
       <t-loading
         theme="circular"
         size="48rpx"
-        text="加载中(中)..."
+        text="加载(中)..."
         loading
         t-class-text="text-m"
         t-class-indicator="indicator-blue"
@@ -79,48 +129,5 @@
         t-class-indicator="indicator-blue"
       ></t-loading>
     </view>
-  </t-demo>
-
-  <view class="demo-section">
-    <view class="demo-section__title">02 规格</view>
-  </view>
-  <t-demo title="03 速度" desc="加载速度可配置，加载一周的时间单位（毫秒）">
-    <view class="loading-container-flex">
-      <t-loading
-        theme="circular"
-        size="52rpx"
-        text="加载中..."
-        loading
-        t-class-text="text-l"
-        t-class-indicator="indicator-blue"
-        duration="{{duration}}"
-      ></t-loading>
-    </view>
-    <t-slider
-      value="{{duration}}"
-      class="slider-style"
-      label="速度调整"
-      min="{{100}}"
-      max="{{2000}}"
-      bindsliderchanging="durationChange"
-    ></t-slider>
-  </t-demo>
-
-  <t-demo title="04 延迟" desc="如果加载loading状态在delay时间内结束，则不显示loading状态">
-    <view class="loading-container-flex">
-      <switch checked="{{isCheck}}" bindchange="switchChange" class="switch-style" />
-      <span style="color: rgba(0, 0, 0, 0.26)">
-        {{loadingFirst?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
-      </span>
-    </view>
-    <t-loading
-      class="loading-style"
-      theme="circular"
-      size="40rpx"
-      text="加载中..."
-      loading="{{loadingFirst}}"
-      delay="{{1000}}"
-      t-class-indicator="indicator-blue"
-    ></t-loading>
   </t-demo>
 </view>

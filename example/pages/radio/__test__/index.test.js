@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import automator from 'miniprogram-automator';
+
 describe('radio', () => {
   let miniProgram;
   let page;

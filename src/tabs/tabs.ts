@@ -3,6 +3,7 @@ import touch from '../behaviors/touch';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-tabs`;
 
@@ -155,8 +156,8 @@ export default class Tabs extends SuperComponent {
       let trackStyle = `background-color: ${color};
         -webkit-transform: translate${direction}(${distance}px);
         transform: translate${direction}(${distance}px);
-        -webkit-transition-duration: ${this.data.animate.duration}s;
-        transition-duration: ${this.data.animate.duration}s;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
       `;
       trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
       this.setData({

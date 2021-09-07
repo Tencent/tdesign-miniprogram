@@ -1,12 +1,15 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-button`;
 
 @wxComponent()
 export default class Button extends SuperComponent {
   externalClasses = ['t-class'];
+
   behaviors = ['wx://form-field-button'];
+
   // 组件的对外属性
   properties = {
     // 样式相关 START ===
@@ -79,6 +82,7 @@ export default class Button extends SuperComponent {
     },
     // === END 小程序功能相关
   };
+
   // 组件的内部数据
   data = {
     // 按钮样式列表

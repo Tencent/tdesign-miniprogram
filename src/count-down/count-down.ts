@@ -68,7 +68,7 @@ export default class CountDown extends SuperComponent {
   }
 
   tick() {
-    if (!!this.properties.millisecond) {
+    if (this.properties.millisecond) {
       this.microTick();
     } else {
       this.macroTick();

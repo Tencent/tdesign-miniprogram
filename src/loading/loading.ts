@@ -1,20 +1,26 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-loading`;
 @wxComponent()
 export default class Loading extends SuperComponent {
   externalClasses = ['t-class', 't-class-text', 't-class-indicator'];
+
   data = {
     classPrefix: name,
     show: false,
   };
+
   options = {
     multipleSlots: true,
   };
+
   properties = props;
+
   timer = null;
+
   observers = {
     loading(this, cur) {
       const { delay } = this.properties;
@@ -35,11 +41,13 @@ export default class Loading extends SuperComponent {
       }
     },
   };
+
   lifetimes = {
     detached() {
       clearTimeout(this.timer);
     },
   };
+
   refreshPage() {
     this.triggerEvent('reload');
   }

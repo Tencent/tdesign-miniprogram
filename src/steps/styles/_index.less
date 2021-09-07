@@ -1,0 +1,147 @@
+@import '../../common/index.less';
+@import './_var.less';
+@import './_mixin.less';
+
+@{prefix}-steps {
+  display: flex;
+  width: 100%;
+}
+
+@{prefix}-step {
+  flex: 1;
+  vertical-align: top;
+  position: relative;
+}
+
+.step-item-basic();
+
+.@{prefix}-step {
+  &--horizontal {
+    // 内容最大宽度
+    .@{prefix}-steps-item-content {
+      max-width: 80px;
+      margin-top: @spacer;
+    }
+
+    .@{prefix}-steps-item {
+      &--default {
+        .default-number-status(default);
+      }
+
+      &--finish {
+        .default-number-status(finish);
+      }
+
+      &--process {
+        .default-number-status(process);
+      }
+
+      &--error {
+        .default-number-status(error);
+        .@{prefix}-steps-item-title {
+          color: @step-error-title-color;
+        }
+      }
+    }
+
+    .connector-default(horizontal);
+  }
+
+  &--vertical {
+    .@{prefix}-steps-item {
+      position: relative;
+
+      &__inner {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      &-content {
+        margin-left: @spacer;
+      }
+
+      &-title {
+        text-align: left;
+        margin-top: @title-content-margin-top;
+        line-height: @font-size-base;
+        margin-bottom: @spacer;
+      }
+
+      &-description {
+        text-align: left;
+      }
+
+      &-extra {
+        margin-bottom: 19px;
+      }
+    }
+
+    &.@{prefix}-step--default-anchor {
+      .@{prefix}-steps-item {
+        &--default {
+          .default-number-status(default);
+        }
+
+        &--finish {
+          .default-number-status(finish);
+        }
+
+        &--process {
+          .default-number-status(process);
+        }
+
+        &--error {
+          .default-number-status(error);
+          .@{prefix}-steps-item-title {
+            color: @error-color;
+          }
+        }
+      }
+    }
+
+    &.@{prefix}-step--dot-anchor {
+      .@{prefix}-steps-item {
+        &-icon {
+          &__dot {
+            display: block;
+            width: @dot-steps-anchor-width;
+            height: @dot-steps-anchor-width;
+            box-sizing: border-box;
+            border: 2px solid @primary-color;
+            border-radius: 50%;
+            margin-top: 1px;
+          }
+        }
+
+        &-title {
+          margin-top: 0;
+        }
+      }
+      &.@{prefix}-step--not-last-child {
+        .@{prefix}-steps-item__inner::after {
+          content: '';
+          display: block;
+          height: calc(100% - @dot-steps-anchor-width);
+          width: 2px;
+          background: @border-level-2-color;
+          position: absolute;
+          left: calc(@dot-steps-anchor-width / 2 - 1px);
+          top: calc(@dot-steps-anchor-width + 1px);
+        }
+      }
+    }
+
+    .connector-default(vertical);
+  }
+}
+
+.@{prefix}-steps {
+  display: flex;
+  width: 100%;
+
+  // 垂直
+  &--vertical {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
