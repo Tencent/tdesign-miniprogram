@@ -35,7 +35,7 @@ module.exports = {
   },
   // 启用默认核心规则
   extends: ['eslint-config-airbnb-base', 'eslint-config-prettier'],
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier', 'import'],
   // add your custom rules here
   rules: {
     // 非开发模式禁用debugger
