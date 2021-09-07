@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-dialog`;
 
@@ -9,57 +10,7 @@ export default class Dailog extends SuperComponent {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
   externalClasses = ['t-class', 't-class-confirm', 't-class-cancel'];
-  properties = {
-    visible: {
-      type: Boolean,
-      value: false,
-    },
-    title: {
-      type: String,
-      optionalTypes: [Boolean],
-      value: '',
-    },
-    content: {
-      type: String,
-      optionalTypes: [Boolean],
-      value: '',
-    },
-    actions: {
-      type: Array,
-      optionalTypes: [Boolean],
-      value: [],
-    },
-    confirmBtn: {
-      type: String,
-      optionalTypes: [Boolean],
-      value: '',
-    },
-    cancelBtn: {
-      type: String,
-      optionalTypes: [Boolean],
-      value: '',
-    },
-    showOverlay: {
-      type: Boolean,
-      value: true,
-    },
-    closeOnOverlayClick: {
-      type: Boolean,
-      value: true,
-    },
-    preventScrollThrough: {
-      type: Boolean,
-      value: true,
-    },
-    zIndex: {
-      type: Number,
-      value: 2500,
-    },
-    buttonLayout: {
-      type: String,
-      value: 'horizontal', // horizontal 水平；vertical 垂直
-    },
-  };
+  properties = props;
 
   data = {
     classPrefix: name,
