@@ -95,7 +95,7 @@
         class="slider-class"
         value="{{duration}}"
         min="{{100}}"
-        max="{{800}}"
+        max="{{2000}}"
         label
         bind:change="durationChange"
       ></t-slider>

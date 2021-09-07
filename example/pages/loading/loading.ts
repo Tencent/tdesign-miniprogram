@@ -5,7 +5,7 @@ Page({
     loadingBar: false,
     progress: 100,
     isCheck: false,
-    duration: 300,
+    duration: 800,
   },
   switchChange() {
     const { loadingFirst } = this.data;
