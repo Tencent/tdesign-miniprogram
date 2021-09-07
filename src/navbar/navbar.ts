@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-navbar`;
 
@@ -13,11 +14,14 @@ export default class Navbar extends SuperComponent {
     't-class-home-icon',
     't-class-capsule',
   ];
+
   timer = null;
+
   options = {
     addGlobalClass: true,
     multipleSlots: true,
   };
+
   properties = props;
 
   observers = {
@@ -128,14 +132,14 @@ export default class Navbar extends SuperComponent {
   }
 
   goHome() {
-    this.triggerEvent('gohome');
+    this.triggerEvent('go-home');
   }
 
   goBack() {
     const { delta } = this.data;
     // eslint-disable-next-line
     const that = this;
-    this.triggerEvent('goback');
+    this.triggerEvent('go-back');
     if (delta > 0) {
       wx.navigateBack({
         delta,
