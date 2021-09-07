@@ -15,6 +15,10 @@ const form = {
       label: '时间选择器',
     },
     {
+      name: 'Input',
+      label: '输入框',
+    },
+    {
       name: 'Picker',
       label: '选择器',
     },
@@ -41,10 +45,6 @@ const form = {
     {
       name: 'Switch',
       label: '开关',
-    },
-    {
-      name: 'Input',
-      label: '文本框',
     },
     {
       name: 'Upload',
