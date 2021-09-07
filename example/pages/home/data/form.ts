@@ -14,6 +14,10 @@ const form = {
       name: 'DateTimePicker',
       label: '时间选择器',
     },
+    // {
+    //   name: 'Fab',
+    //   label: '悬浮按钮',
+    // },
     {
       name: 'Input',
       label: '输入框',
@@ -46,6 +50,10 @@ const form = {
       name: 'Switch',
       label: '开关',
     },
+    // {
+    //   name: 'PeriodSelector',
+    //   label: '时间段选择器',
+    // },
     {
       name: 'Upload',
       label: '上传',

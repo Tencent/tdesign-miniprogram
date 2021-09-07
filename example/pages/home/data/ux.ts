@@ -2,6 +2,10 @@ const ux = {
   name: '反馈信息',
   icon: '/assets/chat.png',
   childArr: [
+    // {
+    //   name: 'ActionSheet',
+    //   label: '动作面板',
+    // },
     {
       name: 'BackTop',
       label: '返回顶部',
@@ -14,14 +18,26 @@ const ux = {
       name: 'Loading',
       label: '加载',
     },
+    // {
+    //   name: 'LoadMore',
+    //   label: '加载更多',
+    // },
     {
       name: 'Message',
-      label: '信息通知',
+      label: '消息通知',
     },
+    // {
+    //   name: 'NoticeBar',
+    //   label: '公告栏',
+    // },
     {
       name: 'Popup',
       label: '弹出层',
     },
+    // {
+    //   name: 'Progress',
+    //   label: '进度条',
+    // },
     {
       name: 'PullDownRefresh',
       label: '下拉刷新',
