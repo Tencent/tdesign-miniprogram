@@ -12,7 +12,7 @@ export const getPrototypeOf = function (obj: any): any {
  *
  * 除了 null, 及字面量，其它一般都是 Object，包括 函数
  */
- export const isObject = function isObject(something: any) {
+export const isObject = function isObject(something: any) {
   const type = typeof something;
   return something !== null && (type === 'function' || type === 'object');
 };

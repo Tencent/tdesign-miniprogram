@@ -169,8 +169,6 @@ export default class Slider extends SuperComponent {
       initialLeft: line.left - halfBlock,
       initialRight: line.right + halfBlock,
     });
-
-    
   }
 
   setDotStyle(left: number, right: number) {

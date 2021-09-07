@@ -52,7 +52,6 @@ export default class Popup extends SuperComponent {
       return;
     }
     const transitionProps = {
-      
       ...defaultTransitionProps,
       ...this.properties.transitionProps,
     };
@@ -73,7 +72,5 @@ export default class Popup extends SuperComponent {
     this.triggerEvent('visible-change', { visiable: false });
   }
 
-  preventEvent() {
-    
-  }
+  preventEvent() {}
 }

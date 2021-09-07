@@ -60,16 +60,16 @@ export default class Checkbox extends SuperComponent {
           parent.updateValue(item);
         }
       } else if (checkAll || optionLinked) {
-          this.triggerEvent('toggleAll', {
-            type: 'not-slot',
-            checked: !active,
-            option: !checkAll,
-            name: value,
-          });
-        } else {
-          this.triggerEvent('change', !active);
-          this.toggle();
-        }
+        this.triggerEvent('toggleAll', {
+          type: 'not-slot',
+          checked: !active,
+          option: !checkAll,
+          name: value,
+        });
+      } else {
+        this.triggerEvent('change', !active);
+        this.toggle();
+      }
     },
     initStatus() {
       if (!this.data.optionLinked) {

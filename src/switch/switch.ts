@@ -22,7 +22,7 @@ export default class Switch extends SuperComponent {
     attached() {
       const { value, customValue } = this.data;
       const [activeValue] = customValue;
-      
+
       this.setData({
         isActive: value === activeValue,
       });

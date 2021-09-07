@@ -17,7 +17,7 @@ export default class IndexBar extends SuperComponent {
       // 分组没有title属性时，默认以index作为title
       if (!!newValue.length && newValue[0].title === undefined) {
         groups = groups.map((g) => {
-          return {title: g.index, ...g};
+          return { title: g.index, ...g };
         });
       }
       this.setData({ groups });
