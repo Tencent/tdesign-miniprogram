@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-07 10:22:33
+ * updated at 2021-09-07 11:00:17
  * */
 
 import { TdNavbarProps } from './type';
@@ -17,18 +17,13 @@ const props: TdNavbarProps = {
     type: String,
     value: '',
   },
-  /** 导航中间页面 */
-  content: {
-    type: String,
-  },
-  /** 后退按钮后退层数 含义参考 wx.navigateBack，特殊的，传入 0 不会发生执行 wx.navigateBack，只会触发一个 goback 事件供自行处理 */
+  /** 后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack，只会触发一个 goback 事件供自行处理。 */
   delta: {
     type: Number,
   },
   /** 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、右侧图标、胶囊等元素类名 */
   externalClasses: {
-    type: String,
-    value: '',
+    type: Array,
   },
   /** 是否固定在顶部 */
   fixed: {
