@@ -1,31 +1,38 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import ImageProps from './props';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-image`;
 @wxComponent()
 export default class Image extends SuperComponent {
   externalClasses = ['t-class', 't-class-load'];
+
   options = {
     multipleSlots: true,
   };
+
   properties = ImageProps;
+
   data = {
     isLoading: true,
     isFailed: false,
     widthStyle: '', // 自动计算的图片宽度样式（兼容基础库版本2.10.3以下的版本不支持heightFix模式）
     classPrefix: name,
   };
+
   lifetimes = {
     attached(this: Image) {
       this.update();
     },
   };
+
   observers = {
     src() {
       this.update();
     },
   };
+
   onLoaded(e: any) {
     const sdkVersion = wx.getSystemInfoSync().SDKVersion;
     const versionArray = sdkVersion.split('.').map((v) => parseInt(v, 10));
@@ -35,7 +42,7 @@ export default class Image extends SuperComponent {
       (versionArray[0] === 2 && versionArray[1] < 10) ||
       (versionArray[0] === 2 && versionArray[1] === 10 && versionArray[2] < 3)
     ) {
-      const mode = this.properties.mode as any as string;
+      const mode = (this.properties.mode as any) as string;
       if (mode === 'heightFix') {
         // 实现heightFix模式，保持高度和宽高比，设置对应的宽度
         const { height: picHeight, width: picWidth } = e.detail;
@@ -56,6 +63,7 @@ export default class Image extends SuperComponent {
     });
     this.triggerEvent('load', e.detail);
   }
+
   onLoadError(e: any) {
     this.setData({
       isLoading: false,
@@ -63,6 +71,7 @@ export default class Image extends SuperComponent {
     });
     this.triggerEvent('error', e.detail);
   }
+
   update() {
     const { src } = this.properties as any;
     if (!src) {

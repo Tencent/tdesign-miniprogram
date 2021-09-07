@@ -4,6 +4,7 @@
  * */
 
 import { TdSearchProps } from './type';
+
 const props: TdSearchProps = {
   /** 自定义右侧cancel文字 */
   actionText: {

@@ -1,4 +1,5 @@
 import Toast from '@tencent/tdesign-miniprogram/toast/index';
+
 Page({
   tapShowShortTip() {
     Toast({
@@ -13,7 +14,6 @@ Page({
       selector: '#t-toast',
       message: '带图标提示',
       icon: 'tick',
-
     });
   },
   tapShowMaxTip() {
@@ -36,7 +36,7 @@ Page({
       context: this,
       selector: '#t-toast',
       message: '失败文案',
-      type: 'fail'
+      type: 'fail',
     });
   },
   tapShowColumnSuccessTip() {
@@ -117,7 +117,7 @@ Page({
       direction: 'column',
       position: 'bottom',
       duration: 5000,
-      showOverlay: true
+      showOverlay: true,
     });
-  }
+  },
 });

@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import { trimSingleValue, trimValue } from './tool';
 import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-slider`;
 @wxComponent()
@@ -13,6 +14,7 @@ export default class Slider extends SuperComponent {
     't-class-bar-disabled',
     't-class-cursor',
   ];
+
   properties = props;
 
   // 组件的内部数据
@@ -167,8 +169,6 @@ export default class Slider extends SuperComponent {
       initialLeft: line.left - halfBlock,
       initialRight: line.right + halfBlock,
     });
-
-    return;
   }
 
   setDotStyle(left: number, right: number) {
@@ -319,7 +319,7 @@ export default class Slider extends SuperComponent {
 
   onTouchMoveLeft(e: any) {
     const { disabled } = this.properties;
-    const { initialLeft, maxRange, blockSize, _value } = this.data;
+    const { initialLeft, blockSize, _value } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;

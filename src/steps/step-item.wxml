@@ -2,21 +2,21 @@
   class="{{prefix}}-step {{prefix}}-step--{{direction}} {{prefix}}-step--{{type}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}}"
 >
   <view class="{{classPrefix}} {{classPrefix}}--{{curStatus}}">
-    <view class="{{classPrefix}}__inner">
+    <view class="{{classPrefix}}__inner {{icon ? classPrefix + '__inner--icon' : '' }}">
       <view class="{{classPrefix}}-icon" bindtap="click">
         <view wx:if="{{isDot}}" class="{{classPrefix}}-icon__dot"></view>
-        <view wx:else class="{{classPrefix}}-icon__number">
-          <view wx:if="{{icon}}"><t-icon name="{{icon}}" size="large"></t-icon></view>
-          <view wx:else>{{index + 1}}</view>
+        <view wx:elif="{{icon}}" class="{{classPrefix}}-icon__number {{classPrefix}}-icon__icon">
+          <t-icon name="{{icon}}" size="large"></t-icon>
         </view>
+        <view wx:else class="{{classPrefix}}-icon__number">{{index + 1}}</view>
       </view>
       <view class="{{classPrefix}}-content">
-        <view class="{{classPrefix}}-title"
-          >{{ title }}
+        <view class="{{classPrefix}}-title">
+          {{ title }}
           <slot name="title"></slot>
         </view>
-        <view class="{{classPrefix}}-description"
-          >{{ content }}
+        <view class="{{classPrefix}}-description">
+          {{ content }}
           <slot name="content" />
         </view>
         <view class="{{classPrefix}}-extra">

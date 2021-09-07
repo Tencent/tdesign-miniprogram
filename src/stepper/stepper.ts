@@ -1,11 +1,13 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+
 const { prefix } = config;
 
 @wxComponent()
 export default class Stepper extends SuperComponent {
   externalClasses = ['t-class'];
+
   options = {
     addGlobalClass: true,
   };
@@ -49,17 +51,20 @@ export default class Stepper extends SuperComponent {
     }
     return false;
   }
+
   format(value) {
     const { min, max } = this.properties as any;
     // 超过边界取边界值
     return Math.max(Math.min(max, value, Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER);
   }
+
   setValue(value) {
     this.setData({
       currentValue: value,
     });
     this.triggerEvent('change', { value });
   }
+
   minusValue() {
     if (this.isDisabled('minus')) {
       this.triggerEvent('overlimit', { type: 'minus' });
@@ -68,6 +73,7 @@ export default class Stepper extends SuperComponent {
     const { currentValue, step } = this.data as any;
     this.setValue(this.format(currentValue - step));
   }
+
   plusValue() {
     if (this.isDisabled('plus')) {
       this.triggerEvent('overlimit', { type: 'plus' });
@@ -76,6 +82,7 @@ export default class Stepper extends SuperComponent {
     const { currentValue, step } = this.data as any;
     this.setValue(this.format(currentValue + step));
   }
+
   changeValue(e) {
     const value =
       String(e.detail.value)
@@ -84,6 +91,7 @@ export default class Stepper extends SuperComponent {
     this.setValue(this.format(Number(value)));
     this.triggerEvent('blur', { value });
   }
+
   blurHandler(e) {
     this.changeValue(e);
   }
