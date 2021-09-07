@@ -102,6 +102,10 @@ Page({
             name: 'Footer',
             path: '/pages/footer/footer',
           },
+          {
+            name: 'Swiper',
+            path: '/pages/swiper/swiper',
+          },
         ],
       },
       {
