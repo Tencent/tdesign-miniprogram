@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-07-16 11:05:29
+ * updated at 2021-09-06 17:40:39
  * */
 
 export interface TdLoadingProps {
@@ -11,14 +13,16 @@ export interface TdLoadingProps {
   delay?: {
     type: NumberConstructor;
     value?: number;
+    required?: boolean;
   };
   /**
    * 加载动画执行完成一次的时间，单位：毫秒
-   * @default 300
+   * @default 400
    */
   duration?: {
     type: NumberConstructor;
     value?: number;
+    required?: boolean;
   };
   /**
    * 组件类名，分别用于设置加载组件外层元素，加载组件文本，加载组件指示符
@@ -26,6 +30,7 @@ export interface TdLoadingProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-text', 't-class-indicator'];
+    required?: boolean;
   };
   /**
    * 是否显示加载指示符
@@ -34,6 +39,7 @@ export interface TdLoadingProps {
   indicator?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 对齐方式
@@ -42,6 +48,7 @@ export interface TdLoadingProps {
   layout?: {
     type: StringConstructor;
     value?: 'horizontal' | 'vertical';
+    required?: boolean;
   };
   /**
    * 是否处于加载状态
@@ -50,6 +57,7 @@ export interface TdLoadingProps {
   loading?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 是否暂停动画
@@ -58,6 +66,7 @@ export interface TdLoadingProps {
   pause?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 加载进度
@@ -65,6 +74,7 @@ export interface TdLoadingProps {
   progress?: {
     type: NumberConstructor;
     value?: number;
+    required?: boolean;
   };
   /**
    * 加载动画是否反向
@@ -72,6 +82,7 @@ export interface TdLoadingProps {
   reverse?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 尺寸，示例：40rpx/20px
@@ -80,6 +91,7 @@ export interface TdLoadingProps {
   size?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 加载提示文案
@@ -87,6 +99,7 @@ export interface TdLoadingProps {
   text?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 加载组件类型
@@ -95,5 +108,6 @@ export interface TdLoadingProps {
   theme?: {
     type: StringConstructor;
     value?: 'circular' | 'spinner' | 'bar' | 'error' | 'dots';
+    required?: boolean;
   };
 }

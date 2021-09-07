@@ -20,5 +20,10 @@
   bind:confirm="confirmHandle"
   bind:cancel="closeHandle"
 >
-  <input wx:if="{{useSlot}}" placeholder="输入文案" slot="content" />
+  <input
+    wx:if="{{useSlot}}"
+    slot="content"
+    placeholder="输入文案"
+    placeholder-class="placeholder"
+  />
 </t-dialog>

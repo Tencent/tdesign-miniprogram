@@ -1,6 +1,7 @@
 import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-tag`;
 
@@ -10,6 +11,7 @@ export default class Tag extends SuperComponent {
     classPrefix: name,
     classBasePrefix: prefix,
   };
+
   properties = props;
 
   methods = {
