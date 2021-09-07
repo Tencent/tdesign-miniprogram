@@ -1,56 +1,35 @@
 <block wx:if="{{demoType === 'base-default'}}">
-  <t-navbar
-    title="这里是标题一二三四"
-    fixed="{{fixed}}"
-    visible="{{visible}}"
-    showBack="{{showBack}}"
-    showHome="{{showHome}}"
-  />
+  <t-navbar title="标题" />
 </block>
-<block wx:if="{{demoType === 'base-color'}}">
-  <t-navbar
-    title="设置颜色、字号和背景"
-    titleColor="#f77"
-    titleSize="30rpx"
-    background="#ccc"
-    fixed="{{fixed}}"
-    visible="{{visible}}"
-    showBack="{{showBack}}"
-    showHome="{{showHome}}"
-  />
+<block wx:if="{{demoType === 'base-back'}}">
+  <t-navbar title="标题" leftIcon="arrow-left" />
 </block>
-<block wx:if="{{demoType === 'base-transparent'}}">
-  <t-navbar
-    title="透明背景"
-    titleColor="#f77"
-    background="transparent"
-    fixed="{{fixed}}"
-    visible="{{visible}}"
-    showBack="{{showBack}}"
-    showHome="{{showHome}}"
-  />
+<block wx:if="{{demoType === 'base-back-home'}}">
+  <t-navbar title="标题" leftIcon="arrow-left" homeIcon="arrow-left" bindgohome="onGoHome" />
+</block>
+<block wx:if="{{demoType === 'base-brand'}}">
+  <t-navbar leftIcon="slot">
+    <span slot="left-icon" class="slot-left">品牌名称</span>
+  </t-navbar>
+</block>
+<block wx:if="{{demoType === 'base-img'}}">
+  <t-navbar leftIcon="slot">
+    <t-image
+      t-class="img"
+      class="size-l radius-m slot-left"
+      src="https://0729-75822.gzc.vod.tencent-cloud.com/site_doc/tdesign-logo.png"
+      mode="aspectFill"
+      slot="left-icon"
+    ></t-image>
+  </t-navbar>
 </block>
 
-<block wx:if="{{demoType === 'background-high-level'}}">
-  <t-navbar
-    title="复杂背景"
-    fixed="{{true}}"
-    visible="{{true}}"
-    showBack="never"
-    showHome="never"
-    background="linear-gradient(to right, red 20%, orange 20% 40%, yellow 40% 60%, green 60% 80%, blue 80%)"
-  />
-</block>
-
-<block wx:if="{{demoType === 'base-capsule-style'}}">
-  <t-navbar
-    title="胶囊自定义样式"
-    fixed="{{true}}"
-    visible="{{visible}}"
-    showBack="always"
-    showHome="always"
-    capsule-style="border: 1rpx solid #f77; background: #ccc"
-  />
+<block wx:if="{{demoType === 'base-brand-long'}}">
+  <t-navbar leftIcon="slot" t-class-left-icon="left-icon">
+    <span slot="left-icon" class="long-brand"
+      >品牌名称最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长</span
+    >
+  </t-navbar>
 </block>
 
 <block wx:if="{{demoType === 'slot-left'}}">
@@ -78,13 +57,10 @@
 </block>
 
 <view class="demo">
-  <view class="demo-title">Navbar 导航条</view>
-  <view class="demo-desc"></view>
-  <t-demo
-    title="01 基本用法"
-    desc="微信小程序导航条，需要开启页面的 navigationStyle: custom，同时必须把页面路径加入 app.json"
-    operList="{{operList}}"
-    bindclickoper="clickHandle"
-  />
-  <t-demo title="02 插槽" desc="" operList="{{slotList}}" bindclickoper="clickHandle" />
+  <view class="demo-title">NavBar 导航栏</view>
+  <view class="demo-desc"
+    >很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字</view
+  >
+  <t-demo title="01 类型" operList="{{normalOperList}}" bindclickoper="clickHandle" />
+  <t-demo title="02 特殊类型" operList="{{specialOperList}}" bindclickoper="clickHandle" />
 </view>

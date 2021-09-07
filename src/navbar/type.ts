@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-07 14:25:53
+ * updated at 2021-09-07 16:53:17
  * */
 
 export interface TdNavbarProps {
@@ -26,6 +26,7 @@ export interface TdNavbarProps {
   };
   /**
    * 后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack，只会触发一个 goback 事件供自行处理。
+   * @default 1
    */
   delta?: {
     type: NumberConstructor;
