@@ -4,11 +4,11 @@ import props from './props';
 const { prefix } = config;
 const name = `${prefix}-navbar`;
 
-enum ButtonShow {
-  auto = 'auto', // 自动处理，默认情况下，栈深度>1显示才back，不显示home
-  always = 'always', // 总是显示
-  never = 'never', // 永不显示
-}
+// enum ButtonShow {
+//   auto = 'auto', // 自动处理，默认情况下，栈深度>1显示才back，不显示home
+//   always = 'always', // 总是显示
+//   never = 'never', // 永不显示
+// }
 
 @wxComponent()
 export default class Navbar extends SuperComponent {
@@ -18,6 +18,13 @@ export default class Navbar extends SuperComponent {
     multipleSlots: true,
   };
   properties = props;
+  externalClasses: [
+    't-class',
+    't-class-title',
+    't-class-left-icon',
+    't-class-home-icon',
+    't-class-capsule',
+  ];
   // {
   //   // 是否渲染
   //   visible: {
@@ -128,14 +135,14 @@ export default class Navbar extends SuperComponent {
         fixedClass: fixed ? `${name}--fixed` : '',
       });
     },
-    'titleSize, titleColor'(this: Navbar, titleSize, titleColor) {
-      const list = [];
-      if (titleSize) list.push(`font-size: ${titleSize}`);
-      if (titleColor) list.push(`color: ${titleColor}`);
-      this.setData({
-        titleStyle: list.join(';'),
-      });
-    },
+    // 'titleSize, titleColor'(this: Navbar, titleSize, titleColor) {
+    //   const list = [];
+    //   if (titleSize) list.push(`font-size: ${titleSize}`);
+    //   if (titleColor) list.push(`color: ${titleColor}`);
+    //   this.setData({
+    //     titleStyle: list.join(';'),
+    //   });
+    // },
     background(this: Navbar, background) {
       const list = [];
       if (background) list.push(`background: ${background}`);
@@ -143,8 +150,17 @@ export default class Navbar extends SuperComponent {
         contentStyle: list.join(';'),
       });
     },
-    'showHome, showBack'(this: Navbar) {
+    'homeIcon, leftIcon'(this: Navbar) {
       this.calcLeftBtn();
+    },
+    'title,titleMaxLength'(this: any) {
+      const { title } = this.properties;
+      const { titleMaxLength } = this.properties;
+      let temp = title.slice(0, titleMaxLength);
+      if (titleMaxLength < title.length) temp += '...';
+      this.setData({
+        showTitle: temp,
+      });
     },
   };
 
@@ -155,17 +171,18 @@ export default class Navbar extends SuperComponent {
     classPrefix: name,
     fixedClass: `${name}--fixed`,
 
-    titleStyle: '',
+    // titleStyle: '',
     contentStyle: '',
     boxStyle: '',
 
     opacity: 0.1,
     ios: false,
     delta: 1,
-    homePath: '',
+    showTitle: '',
+    // homePath: '',
   };
 
-  pagesStackLength = 0; // 页面栈深度
+  // pagesStackLength = 0; // 页面栈深度
 
   attached() {
     this.calcLeftBtn(); // 根据页面栈来决定展示返回按钮还是home按钮
@@ -200,18 +217,18 @@ export default class Navbar extends SuperComponent {
   }
 
   calcLeftBtn() {
-    const { showHome, showBack } = this.properties as any;
-    this.pagesStackLength = getCurrentPages().length;
+    const { homeIcon, leftIcon } = this.properties as any;
+    // this.pagesStackLength = getCurrentPages().length;
 
     let home = false;
     let back = false;
 
-    if (showHome === ButtonShow.always) home = true;
-    else if (showHome === ButtonShow.never) home = false;
+    if (homeIcon) home = true;
+    // else if (showHome === ButtonShow.never) home = false;
 
-    if (showBack === ButtonShow.always) back = true;
-    else if (showBack === ButtonShow.never) back = false;
-    else if (this.pagesStackLength > 1) back = true;
+    if (leftIcon) back = true;
+    // else if (showBack === ButtonShow.never) back = false;
+    // else if (this.pagesStackLength > 1) back = true;
     this.setData({
       _home: home,
       _back: back,
@@ -219,22 +236,6 @@ export default class Navbar extends SuperComponent {
   }
 
   goHome() {
-    const { homePath } = this.data;
-    const { homeIsTabBar } = this.properties;
-    if (homePath) {
-      if (homeIsTabBar) {
-        wx.switchTab({
-          url: homePath,
-          fail(e) {
-            console.error(e);
-          },
-        });
-      } else {
-        wx.navigateTo({
-          url: homePath,
-        });
-      }
-    }
     this.triggerEvent('gohome');
   }
 

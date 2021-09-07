@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-07 11:00:17
+ * updated at 2021-09-07 14:25:53
  * */
 
 import { TdNavbarProps } from './type';
@@ -21,7 +21,7 @@ const props: TdNavbarProps = {
   delta: {
     type: Number,
   },
-  /** 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、右侧图标、胶囊等元素类名 */
+  /** 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、胶囊等元素类名 */
   externalClasses: {
     type: Array,
   },
