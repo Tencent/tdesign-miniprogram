@@ -1,10 +1,9 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import { addUnit } from '../common/utils';
+
 const { prefix } = config;
 const name = `${prefix}-grid`;
-
-type TrivialInstance = WechatMiniprogram.Component.TrivialInstance;
 
 @wxComponent()
 export default class Grid extends SuperComponent {
@@ -16,13 +15,13 @@ export default class Grid extends SuperComponent {
   relations = {
     '../grid-item/grid-item': {
       type: 'descendant' as 'descendant',
-      linked(this: Grid, _target: TrivialInstance) {
+      linked(this: Grid) {
         // this.children.push(target);
         // push target 的方式仅适用于每次变动的都是末尾grid item，用以下方式替代
         this.children = this.getRelationNodes('../grid-item/grid-item');
         this.updateChildren();
       },
-      unlinked(this: Grid, _target: TrivialInstance) {
+      unlinked(this: Grid) {
         // this.children = this.children.filter(item => item !== target);
         this.children = this.getRelationNodes('../grid-item/grid-item');
         this.updateChildren();
@@ -98,10 +97,10 @@ export default class Grid extends SuperComponent {
    * Component methods
    */
   updateGutter() {
-    const gutter = this.properties.gutter as any as string | number;
+    const gutter = (this.properties.gutter as any) as string | number;
     if (gutter) {
       let viewStyle = `padding-left: ${addUnit(gutter)}`; // 每个子项都会留出右边距来实现gutter，这里在左侧留出同等的左边距以保持两端间距相等
-      if ((this.properties.gutterType as any as string) === 'between') {
+      if (((this.properties.gutterType as any) as string) === 'between') {
         viewStyle = `margin-right: -${addUnit(gutter)}`; // 右侧设置负值外边距，以补偿最右侧子项的右边距，以保持两端没有边距
       }
       this.setData({ viewStyle });

@@ -4,6 +4,7 @@
  * */
 
 import { TdBackTopProps } from './type';
+
 const props: TdBackTopProps = {
   /** 是否绝对定位固定到屏幕右下方 */
   fixed: {

@@ -12,16 +12,20 @@ export default class Tabbar extends SuperComponent {
       type: 'descendant',
     },
   };
+
   data = {
     classPrefix,
     defaultNameIndex: -1,
   };
+
   properties = props;
+
   observers = {
     value() {
       this.updateChildren();
     },
   };
+
   methods = {
     updateChildren() {
       const items = this.getRelationNodes('./tab-bar-item');
