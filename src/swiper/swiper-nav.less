@@ -1,0 +1,117 @@
+@import '../common/style/index.less';
+
+.@{prefix}-swiper-nav {
+  &-dots,
+  &-dotsBar {
+    position: absolute;
+    left: 50%;
+    bottom: 20rpx;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+
+    &-item {
+      width: 12rpx;
+      height: 12rpx;
+      background: rgba(255, 255, 255, .55);
+      border-radius: 50%;
+      margin: 0 10rpx;
+      transition: all .4s ease-in;
+
+      &.active {
+        background-color: #fff;
+      }
+    }
+  }
+
+  &-dotsBar {
+    &-item {
+      &.active {
+        width: 40rpx;
+        border-radius: 6rpx;
+        background-color: #fff;
+      }
+    }
+  }
+
+  &-vertical &-dots,
+  &-vertical &-dotsBar {
+    left: auto;
+    right: 20rpx;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
+    flex-direction: column;
+
+    &-item {
+      margin: 10rpx 0;
+    }
+  }
+
+  &-vertical &-dotsBar {
+    &-item {
+      &.active {
+        width: 12rpx;
+        height: 40rpx;
+      }
+    }
+  }
+
+  &-pages {
+    position: absolute;
+    right: 20rpx;
+    bottom: 20rpx;
+    padding: 0 20rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    border-radius: 20rpx;
+    background: rgba(0, 0, 0, .4);
+    color: #fff;
+    font-size: 24rpx;
+  }
+
+  &-btn {
+    &-prev,
+    &-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40rpx;
+      height: 40rpx;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .4);
+
+      &::after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        display: block;
+        content: '';
+        width: 12rpx;
+        height: 12rpx;
+        border-color: #fff;
+        border-style: solid;
+      }
+    }
+
+    &-prev {
+      left: 30rpx;
+
+      &::after {
+        margin-left: 4rpx;
+        border-width: 2rpx 0 0 2rpx;
+        transform: translate(-50%, -50%) rotateZ(-45deg);
+      }
+    }
+
+    &-next {
+      right: 30rpx;
+
+      &::after {
+        margin-left: -4rpx;
+        border-width: 2rpx 2rpx 0 0;
+        transform: translate(-50%, -50%) rotateZ(45deg);
+      }
+    }
+  }
+}

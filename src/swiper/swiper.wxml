@@ -1,0 +1,29 @@
+<wxs src="./swiper.wxs" module="swiper" />
+<view id="swiper" class="t-class {{classPrefix}}">
+  <view
+    id="swiperContainer"
+    class="{{classPrefix}}-container {{inited?'swiper-ani':'hidden'}}"
+    style="transition-duration: {{duration/1000}}s;transition-timing-function:{{easings[animation]||animation}};"
+    bindtouchstart="{{swiper.startDrag}}"
+    capture-catch:touchmove="{{swiper.onDrag}}"
+    bindtouchend="{{swiper.endDrag}}"
+    bindtouchcancel="{{swiper.endDrag}}"
+    offsetX="{{offsetX}}"
+    offsetY="{{offsetY}}"
+    width="{{width}}"
+    height="{{height}}"
+    direction="{{direction}}"
+    total="{{total}}"
+    currentInited="{{currentInited}}"
+    change:offsetX="{{swiper.changeOffsetX}}"
+    change:offsetY="{{swiper.changeOffsetY}}"
+    change:width="{{swiper.changeWidth}}"
+    change:height="{{swiper.changeHeight}}"
+    change:direction="{{swiper.changeDirection}}"
+    change:total="{{swiper.changeTotal}}"
+    change:currentInited="{{swiper.changeCurrentInited}}"
+  >
+    <slot />
+  </view>
+  <slot name="nav" />
+</view>

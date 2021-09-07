@@ -1,0 +1,15 @@
+<view class="t-class {{classPrefix}} {{classPrefix}}-{{direction}}" wx:if="{{total>=minShowNum}}">
+  <view wx:if="{{ type==='dots' || type==='dotsBar'}}" class="{{classPrefix}}-{{type}}">
+    <view
+      wx:for="{{total}}"
+      wx:for-index="idx"
+      wx:key="idx"
+      class="{{classPrefix}}-{{type}}-item {{index===idx?'active':''}}"
+    />
+  </view>
+  <view wx:if="{{ type==='pages'}}" class="{{classPrefix}}-pages"> {{index+1}}/{{total}} </view>
+  <view wx:if="{{hasNavBtn}}" class="{{classPrefix}}-btn">
+    <view class="{{classPrefix}}-btn-prev" bind:tap="prev" />
+    <view class="{{classPrefix}}-btn-next" bind:tap="next" />
+  </view>
+</view>
