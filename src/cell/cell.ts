@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-cell`;
 
@@ -19,9 +20,11 @@ export default class Cell extends SuperComponent {
     't-class-left',
     't-class-right',
   ];
+
   options = {
     multipleSlots: true,
   };
+
   properties = props;
 
   /**
@@ -38,6 +41,7 @@ export default class Cell extends SuperComponent {
     this.triggerEvent('click', e.detail);
     this.jumpLink();
   }
+
   jumpLink(urlKey = 'url', link = 'jumpType') {
     const url = this.data[urlKey];
     const jumpType = this.data[link];

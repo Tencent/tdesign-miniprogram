@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-dialog`;
 
@@ -8,7 +9,9 @@ export default class Dailog extends SuperComponent {
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
+
   externalClasses = ['t-class', 't-class-confirm', 't-class-cancel'];
+
   properties = {
     visible: {
       type: Boolean,

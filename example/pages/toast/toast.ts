@@ -1,4 +1,5 @@
 import Toast from '@tencent/tdesign-miniprogram/toast/index';
+
 Page({
   tapShowShortTip() {
     Toast({

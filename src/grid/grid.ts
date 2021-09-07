@@ -1,10 +1,9 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import { addUnit } from '../common/utils';
+
 const { prefix } = config;
 const name = `${prefix}-grid`;
-
-type TrivialInstance = WechatMiniprogram.Component.TrivialInstance;
 
 @wxComponent()
 export default class Grid extends SuperComponent {
@@ -16,13 +15,13 @@ export default class Grid extends SuperComponent {
   relations = {
     '../grid-item/grid-item': {
       type: 'descendant' as 'descendant',
-      linked(this: Grid, _target: TrivialInstance) {
+      linked(this: Grid) {
         // this.children.push(target);
         // push target 的方式仅适用于每次变动的都是末尾grid item，用以下方式替代
         this.children = this.getRelationNodes('../grid-item/grid-item');
         this.updateChildren();
       },
-      unlinked(this: Grid, _target: TrivialInstance) {
+      unlinked(this: Grid) {
         // this.children = this.children.filter(item => item !== target);
         this.children = this.getRelationNodes('../grid-item/grid-item');
         this.updateChildren();

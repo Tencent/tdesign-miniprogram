@@ -4,6 +4,7 @@
  * */
 
 import { TdPopupProps } from './type';
+
 const props: TdPopupProps = {
   /** 关闭按钮，值类型为 Boolean 时表示是否显示关闭按钮。也可以自定义关闭按钮 */
   closeBtn: {

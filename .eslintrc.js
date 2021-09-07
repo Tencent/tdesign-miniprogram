@@ -34,8 +34,8 @@ module.exports = {
     jest: true,
   },
   // 启用默认核心规则
-  extends: ['@tencent/eslint-config-tencent', 'eslint-config-prettier'],
-  plugins: ['@typescript-eslint', 'prettier'],
+  extends: ['eslint-config-airbnb-base', 'eslint-config-prettier'],
+  plugins: ['@typescript-eslint', 'prettier', 'import'],
   // add your custom rules here
   rules: {
     // 非开发模式禁用debugger
@@ -50,7 +50,38 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 'off',
     'eqeqeq': ['error', 'always', {
       'null': 'ignore'
-    }]
+    }],
+    'import/no-unresolved': 0,
+    'import/no-named-as-default': 0,
+    'import/extensions': 0,
+    'import/export': 0,
+    'import/no-cycle': 0,
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        'devDependencies': true
+      }
+    ],
+    'import/no-dynamic-require': 0,
+    'object-shorthand': 0,
+    'no-shadow': 0,
+    "no-unused-expressions": 0,
+    "no-unused-vars": 0,
+    "@typescript-eslint/no-unused-vars": 2,
+    'consistent-return': 0,
+    'no-return-assign': 0,
+    "func-names": 0,
+    'class-methods-use-this': 0,
+    "no-console": [
+      2,
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "no-proto": 0,
   },
   globals,
   overrides: [
@@ -61,5 +92,11 @@ module.exports = {
         '@typescript-eslint/no-require-imports': 'off',
       },
     },
+    {
+      files: ['example/**'],
+      rules: {
+        'no-console': 0,
+      },
+    }
   ],
 };

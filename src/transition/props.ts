@@ -4,6 +4,7 @@
  * */
 
 import { TdTransitionProps } from './type';
+
 const props: TdTransitionProps = {
   /** 首次出现是否展示动画 */
   appear: {
