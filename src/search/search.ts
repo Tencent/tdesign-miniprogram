@@ -1,12 +1,14 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+
 const { prefix } = config;
 const name = `${prefix}-search`;
 
 @wxComponent()
 export default class Search extends SuperComponent {
   externalClasses = ['t-class', 't-class-input', 't-class-cancel', 't-class-left', 't-class-right'];
+
   options = {
     multipleSlots: true,
   };

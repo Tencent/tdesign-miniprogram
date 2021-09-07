@@ -1,6 +1,22 @@
 page {
   background: #f9f9f9;
 
+  .button-group {
+    margin-top: 32rpx;
+
+    &-item {
+      margin-bottom: 32rpx;
+
+      .t-class-button {
+        font-size: 32rpx;
+      }
+    }
+  }
+
+  .flex {
+    display: flex;
+  }
+
   // 覆盖skeleton组件样式
   .t-skeleton__row {
     background-color: #eee;
@@ -21,20 +37,4 @@ page {
   .skeletion-row {
     border-radius: 16rpx;
   }
-}
-
-.button-group {
-  margin-top: 32rpx;
-
-  &-item {
-    margin-bottom: 32rpx;
-
-    .t-class-button {
-      font-size: 32rpx;
-    }
-  }
-}
-
-.flex {
-  display: flex;
 }

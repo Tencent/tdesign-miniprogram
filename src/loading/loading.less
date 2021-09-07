@@ -1,4 +1,3 @@
-// @import (css) '../common/index.wxss';
 .t-loading {
   display: inline-flex;
   align-items: center;
@@ -56,8 +55,8 @@
       .loading__mask2 {
         position: absolute;
         border-radius: 50%;
-        width: 80%;
-        height: 80%;
+        width: 70%;
+        height: 70%;
         min-width: 2rpx;
         min-height: 2rpx;
         top: 0;
@@ -76,8 +75,8 @@
       animation: none;
 
       .dot {
-        width: 16.67%;
-        height: 16.67%;
+        width: 20%;
+        height: 20%;
         border-radius: 50%;
         background-color: currentColor;
         animation-duration: 1.8s;
@@ -93,7 +92,7 @@
     flex-direction: column;
 
     .loading-text {
-      margin-top: 6rpx;
+      margin-top: 12rpx;
     }
   }
 
@@ -101,7 +100,7 @@
     flex-direction: row;
 
     .loading-text {
-      margin-left: 6rpx;
+      margin-left: 16rpx;
     }
   }
 }
@@ -171,7 +170,7 @@
 .generate(@n, @i: 1) when (@i =< @n) {
   .loading__dot:nth-of-type(@{i}) {
     transform: rotate(@i * 30deg);
-    opacity: (.75 / 12) * (@i - 1);
+    opacity: (1 / 12) * (@i - 1);
   }
   .generate(@n, (@i + 1));
 }

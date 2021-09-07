@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 
 import { pageScrollMixin, getRect } from './utils';
+
 const { prefix } = config;
 
 const ContainerClass = `.${prefix}-sticky`;
@@ -18,6 +19,7 @@ interface StickyProps {
 @wxComponent()
 export default class Sticky extends SuperComponent {
   externalClasses = [`${prefix}-class`];
+
   properties: StickyProps = {
     zIndex: {
       type: Number,

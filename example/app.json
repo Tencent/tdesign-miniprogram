@@ -42,7 +42,6 @@
     "pages/divider/divider",
     "pages/empty/empty",
     "pages/back-top/back-top",
-    "pages/grid-item/grid-item",
     "pages/grid/grid",
     "pages/image-picker/image-picker",
     "pages/count-down/count-down",

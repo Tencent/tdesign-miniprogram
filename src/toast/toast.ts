@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-toast`;
 
@@ -29,8 +30,11 @@ const DefaultOptions: ToastOptionsType = {
 @wxComponent()
 export default class Toast extends SuperComponent {
   externalClasses = ['t-class'];
+
   hideTimer: number | null = null;
+
   removeTimer: number | null = null;
+
   typeMapIcon: Record<string, string> = {
     loading: 'loading',
     success: 'tick',
@@ -75,6 +79,7 @@ export default class Toast extends SuperComponent {
       this.clear();
     }, duration as number);
   }
+
   clear() {
     this.setData({ show: false });
     this.removeTimer = setTimeout(() => {
@@ -83,9 +88,11 @@ export default class Toast extends SuperComponent {
       });
     }, 300);
   }
+
   detached() {
     this.destroyed();
   }
+
   destroyed() {
     if (this.removeTimer) {
       clearTimeout(this.removeTimer);

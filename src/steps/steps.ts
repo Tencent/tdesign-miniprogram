@@ -15,11 +15,14 @@ export default class Steps extends SuperComponent {
       },
     },
   };
+
   properties = props;
+
   // 组件的内部数据
   data = {
     classPrefix: name,
   };
+
   methods = {
     updateChildren() {
       const items = this.getRelationNodes('./step-item');

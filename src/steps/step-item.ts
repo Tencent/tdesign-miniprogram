@@ -9,12 +9,15 @@ export default class StepItem extends SuperComponent {
   options = {
     multipleSlots: true,
   };
+
   relations: RelationsOptions = {
     './steps': {
       type: 'ancestor',
     },
   };
+
   properties = props;
+
   // 组件的内部数据
   data = {
     classPrefix: `${prefix}-steps-item`,
@@ -28,6 +31,7 @@ export default class StepItem extends SuperComponent {
     type: 'default',
     isLastChild: false,
   };
+
   lifetimes = {
     ready() {
       const [parent] = this.getRelationNodes('./steps') || [];
@@ -39,6 +43,7 @@ export default class StepItem extends SuperComponent {
       }
     },
   };
+
   methods = {
     updateStatus(current, index, type, direction, steps) {
       const { status } = this.data;

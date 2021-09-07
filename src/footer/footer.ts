@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-footer`;
 
@@ -43,6 +44,7 @@ export default class SwiperCell extends SuperComponent {
       value: '',
     },
   };
+
   data = {
     classPrefix: name,
   };

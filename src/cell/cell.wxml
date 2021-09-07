@@ -6,7 +6,7 @@
 >
   <view class="t-cell__left-wrap t-class-left">
     <image wx:if="{{ image }}" class="t-cell__image t-class-image" src="{{ image }}" />
-    <slot wx:els name="left-icon" />
+    <slot wx:else name="left-icon" />
   </view>
   <view class="t-cell__title t-class-title">
     <view class="t-cell__title__wrap">
@@ -17,8 +17,8 @@
       </block>
     </view>
 
-    <view class="t-cell__description t-class-description">
-      <block wx:if="{{ description }}">{{ description }}</block>
+    <view class="t-cell__description-wrap t-class-description">
+      <view wx:if="{{ description }}" class="t-cell__description">{{ description }}</view>
       <slot wx:else name="description" />
     </view>
   </view>
@@ -29,7 +29,7 @@
   </view>
 
   <view class="t-cell__right-wrap t-class-right">
-    <t-icon wx:if="{{ arrow }}" name="arrow-right" class="t-cell__right-icon" />
+    <t-icon wx:if="{{ arrow }}" name="chevron-right" class="t-cell__right-icon" />
     <slot wx:else name="right-icon" />
   </view>
 </view>

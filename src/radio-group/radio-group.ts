@@ -1,16 +1,19 @@
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import Props from '../radio/radio-group-props';
+
 const { prefix } = config;
 const name = `${prefix}-radio-group`;
 
 @wxComponent()
 export default class RadioGroup extends SuperComponent {
   externalClasses = ['t-class'];
+
   data = {
     classPrefix: name,
     radioOptions: [],
   };
+
   relations = {
     '../radio/radio': {
       type: 'descendant' as 'descendant',
@@ -19,12 +22,15 @@ export default class RadioGroup extends SuperComponent {
       },
     },
   };
+
   properties = Props;
+
   lifetimes = {
     attached() {
       this.handleCreateMulRadio();
     },
   };
+
   methods = {
     updateChildren() {
       let items = this.getRelationNodes('../radio/radio');
@@ -97,7 +103,7 @@ export default class RadioGroup extends SuperComponent {
         this.handleOptionLinked();
         this.updateChildren();
       } catch (error) {
-        console.log('error', error);
+        console.error('error', error);
       }
     },
   };

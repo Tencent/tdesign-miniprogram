@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+
 const { prefix } = config;
 
 const sizeKeywordMap = {
@@ -12,7 +13,9 @@ const sizeKeywordMap = {
 @wxComponent()
 export default class Icon extends SuperComponent {
   behaviors: ['wx://form-field-icon'];
+
   externalClasses = ['t-class'];
+
   properties = {
     name: {
       type: String,
@@ -35,10 +38,12 @@ export default class Icon extends SuperComponent {
       value: '',
     },
   };
+
   data = {
     classPrefix: `${prefix}-icon`,
     fontSize: '',
   };
+
   methods = {
     onTap(event: any) {
       this.triggerEvent('click', event.detail);
