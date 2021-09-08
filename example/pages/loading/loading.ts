@@ -1,39 +1,28 @@
 Page({
   data: {
-    barLoadingTimeOut: null,
-    loadingFirst: false,
-    loadingBar: false,
-    progress: 100,
+    isLoading: false,
     isCheck: false,
-    duration: 300,
-  },
-  switchChange() {
-    const { loadingFirst } = this.data;
-    this.setData({ loadingFirst: !loadingFirst });
+    duration: 800,
   },
 
-  showProgressBar() {
-    const timeout = setTimeout(() => {
-      this.setData({ loadingBar: false });
-    }, 10000);
-    this.setData({
-      progress: -1,
-      loadingBar: true,
-      barLoadingTimeOut: timeout,
-    });
+  switchChange() {
+    const { isLoading } = this.data;
+    this.setData({ isLoading: !isLoading });
   },
 
   durationChange(e) {
     this.setData({ duration: e.detail.value });
   },
 
+  goToProgress() {
+    wx.redirectTo({
+      url: '/pages/loading/loadingProgress/loadingProgress',
+    });
+  },
+
   reloadPage() {
     wx.redirectTo({
       url: '/pages/loading/loading',
     });
-  },
-
-  onUnload() {
-    clearTimeout(this.data.barLoadingTimeOut);
   },
 });
