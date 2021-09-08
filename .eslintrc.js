@@ -48,8 +48,8 @@ module.exports = {
     'no-param-reassign': 'off',
     // 在类属性和方法上关闭需要显式的可访问性修饰符
     '@typescript-eslint/explicit-member-accessibility': 'off',
-    'eqeqeq': ['error', 'always', {
-      'null': 'ignore'
+    eqeqeq: ['error', 'always', {
+      null: 'ignore'
     }],
     'import/no-unresolved': 0,
     'import/no-named-as-default': 0,
@@ -59,29 +59,29 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        'devDependencies': true
+        devDependencies: true
       }
     ],
     'import/no-dynamic-require': 0,
     'object-shorthand': 0,
     'no-shadow': 0,
-    "no-unused-expressions": 0,
-    "no-unused-vars": 0,
-    "@typescript-eslint/no-unused-vars": 2,
+    'no-unused-expressions': 0,
+    'no-unused-vars': 0,
+    '@typescript-eslint/no-unused-vars': 2,
     'consistent-return': 0,
     'no-return-assign': 0,
-    "func-names": 0,
+    'func-names': 0,
     'class-methods-use-this': 0,
-    "no-console": [
+    'no-console': [
       2,
       {
-        "allow": [
-          "warn",
-          "error"
+        allow: [
+          'warn',
+          'error'
         ]
       }
     ],
-    "no-proto": 0,
+    'no-proto': 0,
   },
   globals,
   overrides: [
