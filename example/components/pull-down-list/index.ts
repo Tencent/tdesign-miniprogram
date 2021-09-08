@@ -4,7 +4,7 @@ Component({
   data: {
     childBoxHeight: 0,
   },
-  externalClasses: ['wr-class'],
+  externalClasses: ['t-class'],
   properties: {
     defaultOpen: {
       type: Boolean,

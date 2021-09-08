@@ -4,6 +4,7 @@ Page({
   data: {
     list,
   },
+
   clickHandle(e) {
     let { name, path = '' } = e.detail.item as {
       name: string;
