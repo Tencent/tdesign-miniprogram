@@ -12,7 +12,7 @@
       bind:tap="tapChild"
     >
       {{ item.name }} {{ item.label }}
-      <wr-icon name="arrow" color="#bbb" />
+      <t-icon name="arrow" color="#bbb" />
     </view>
   </view>
 </view>
