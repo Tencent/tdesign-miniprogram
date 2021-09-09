@@ -3,7 +3,7 @@
   <view
     id="swiperContainer"
     class="{{classPrefix}}-container {{inited?'swiper-ani':'hidden'}}"
-    style="transition-duration: {{duration/1000}}s;transition-timing-function:{{easings[easing]||easing}};"
+    style="transition-duration: {{duration/1000}}s;transition-timing-function:{{easings.linear}};"
     bindtouchstart="{{swiper.startDrag}}"
     capture-catch:touchmove="{{swiper.onDrag}}"
     bindtouchend="{{swiper.endDrag}}"

@@ -94,13 +94,6 @@ export default class Swiper extends SuperComponent {
       type: String,
       value: 'slide',
     },
-    /**
-     * 缓动类型
-     */
-    easing: {
-      type: String,
-      value: 'linear',
-    },
   };
 
   observers = {
