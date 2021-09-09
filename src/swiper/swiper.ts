@@ -123,7 +123,9 @@ export default class Swiper extends SuperComponent {
   };
 
   children = null;
+
   $nav = null;
+
   timer = null;
 
   relations = {
@@ -171,6 +173,7 @@ export default class Swiper extends SuperComponent {
     this.initItem();
     this.initNav();
   }
+
   /**
    * 初始化 swiper-item
    */
@@ -184,11 +187,12 @@ export default class Swiper extends SuperComponent {
       total: this.children.length,
     });
   }
+
   /**
    * 初始化 swiper-nav
    */
   initNav() {
-    this.$nav = this.getRelationNodes('./swiper-nav')[0];
+    this.$nav = this.getRelationNodes('./swiper-nav')?.[0];
   }
 
   /**
@@ -206,7 +210,7 @@ export default class Swiper extends SuperComponent {
    * 需要通过wxs更新位置，存在短暂延迟
    */
   initCurrent() {
-    const { defaultCurrent, current, direction } = this.properties;
+    const { defaultCurrent, current } = this.properties;
     const index: any = checkVal(current) ? current : defaultCurrent;
     this.setData({
       _current: index,
@@ -236,6 +240,7 @@ export default class Swiper extends SuperComponent {
     this.timer && clearInterval(this.timer);
     this.timer = null;
   }
+
   /**
    * 跳转目标页
    * @param index 目标页索引
@@ -254,6 +259,7 @@ export default class Swiper extends SuperComponent {
     }
     this.update(index);
   }
+
   /**
    * 更新目标页
    * @param index 目标页索引（一页可能有多个item）
@@ -277,6 +283,7 @@ export default class Swiper extends SuperComponent {
       finish,
     );
   }
+
   /**
    * 更新导航器
    * @param index
@@ -290,6 +297,7 @@ export default class Swiper extends SuperComponent {
       direction,
     });
   }
+
   calcOffset(index: number) {
     const { direction } = this.properties;
     const { width, height } = this.data;
@@ -302,6 +310,7 @@ export default class Swiper extends SuperComponent {
       offsetY: -index * height,
     };
   }
+
   /**
    * 下一页
    * @param opt
@@ -314,10 +323,11 @@ export default class Swiper extends SuperComponent {
       // 最后一个时，跳转第一个
       nextIndex = 0;
     } else if (len - 1 > _current) {
-      nextIndex = nextIndex + 1;
+      nextIndex += 1;
     }
     this.goto(nextIndex, opt.source);
   }
+
   /**
    * 上一页
    * @param opt
@@ -330,7 +340,7 @@ export default class Swiper extends SuperComponent {
       // 第一个时，跳转到最后一个
       nextIndex = len - 1;
     } else if (nextIndex > 0) {
-      nextIndex = nextIndex - 1;
+      nextIndex -= 1;
     }
     this.goto(nextIndex, opt.source);
   }

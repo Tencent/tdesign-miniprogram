@@ -62,7 +62,7 @@ export default class SwiperNav extends SuperComponent {
   };
 
   ready() {
-    this.$swiper = this.getRelationNodes('./swiper')[0];
+    this.$swiper = this.getRelationNodes('./swiper')?.[0];
   }
 
   onChange(opt: NavOptions) {
