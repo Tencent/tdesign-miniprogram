@@ -19,30 +19,28 @@
     <view
       class="{{ classPrefix }}__footer {{ classPrefix }}__footer--default {{buttonLayout === 'vertical' ? classPrefix + '__footer--column' : ''}}"
     >
-      <view wx:if="{{actions}}">
-        <button
-          class="{{ classPrefix }}__button {{item.primary ? classPrefix + '__button-confirm' : ''}}"
-          wx:for="{{actions}}"
-          wx:key="action"
-          style="{{item.style}}"
-          data-index="{{index}}"
-          bindtap="onActionTap"
-        >
-          {{item.name}}
-        </button>
-      </view>
+      <t-button
+        wx:if="{{ actions }}"
+        wx:for="{{actions}}"
+        wx:key="action"
+        data-index="{{index}}"
+        t-class="{{ classPrefix }}__button {{ classPrefix }}__button-{{item.primary ? 'confirm' : 'cancel'}} t-class-actiont"
+        bindtap="onActionTap"
+      >
+        {{item.name}}
+      </t-button>
       <slot name="actions" />
-      <button
+      <t-button
         wx:if="{{ cancelBtn }}"
-        class="{{ classPrefix }}__button {{ classPrefix }}__button-cancel t-class-cancel"
+        t-class="{{ classPrefix }}__button {{ classPrefix }}__button-cancel {{ confirmBtn ? classPrefix + '__button-half' : '' }} t-class-cancel"
         bindtap="onCancel"
       >
         {{ cancelBtn }}
-      </button>
+      </t-button>
       <slot name="cancelBtn" />
-      <button
+      <t-button
         wx:if="{{ confirmBtn }}"
-        class="{{ classPrefix }}__button {{ classPrefix }}__button-confirm t-class-confirm"
+        t-class="{{ classPrefix }}__button {{ classPrefix }}__button-confirm {{ cancelBtn ? classPrefix + '__button-half' : '' }} t-class-confirm"
         bindtap="onConfirm"
         open-type="{{confirmBtn.openType}}"
         bind:getuserinfo="openValueCBHandle"
@@ -51,10 +49,9 @@
         bind:opensetting="openValueCBHandle"
         bind:launchapp="openValueCBHandle"
         bind:error="openValueErrCBHandle"
-        style="color: {{confirmTextColor}};border-color:{{borderColor}}"
       >
         {{ confirmBtn }}
-      </button>
+      </t-button>
       <slot name="confirmBtn" />
     </view>
   </view>

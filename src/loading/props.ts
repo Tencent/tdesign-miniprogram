@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-06 17:40:39
+ * updated at 2021-09-07 17:39:44
  * */
 
 import { TdLoadingProps } from './type';
@@ -15,7 +15,7 @@ const props: TdLoadingProps = {
   /** 加载动画执行完成一次的时间，单位：毫秒 */
   duration: {
     type: Number,
-    value: 400,
+    value: 800,
   },
   /** 组件类名，分别用于设置加载组件外层元素，加载组件文本，加载组件指示符 */
   externalClasses: {

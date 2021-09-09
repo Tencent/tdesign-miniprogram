@@ -9,7 +9,7 @@ import renderDemo from './render-demo';
 import transforms from './transforms';
 
 // 解析 markdown 内容
-const customRenderInfo = (source: string, id: string, md: string) => {
+const customRenderInfo = (source: string, id: string) => {
   const mdSegment = {
     title: '',
     description: '',
@@ -44,11 +44,11 @@ const customRenderInfo = (source: string, id: string, md: string) => {
   }
 
   // 移动端路由地址
-  const prefix = process.env.NODE_ENV === 'development' ? `/preview.html` : `/miniporgram/preview.html`;
+  const prefix = process.env.NODE_ENV === 'development' ? '/preview.html' : '/miniporgram/preview.html';
   mdSegment.mobileUrl = `${prefix}#/${name}`;
 
   return mdSegment;
-}
+};
 
 export default function createTDesignPlugin() {
 

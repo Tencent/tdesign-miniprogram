@@ -43,15 +43,9 @@
     <view class="demo-section__desc">加载失败</view>
     <t-loading theme="error" class="loading-style" loading bind:reload="reloadPage"></t-loading>
     <view class="demo-section__desc">进度条加载</view>
-    <t-button size="large" plain bind:tap="showProgressBar" class="progress-btn"
+    <t-button size="large" plain class="progress-btn" bind:tap="goToProgress"
       >页面进度条加载</t-button
     >
-    <t-loading
-      theme="bar"
-      progress="{{progress}}"
-      loading="{{loadingBar}}"
-      t-class-indicator="indicator-black"
-    ></t-loading>
   </t-demo>
 
   <t-demo title="02 状态" desc="如果加载状态在延迟内结束，则不显示">
@@ -63,7 +57,7 @@
         slot="note"
       />
       <span class="text-info">
-        {{loadingFirst?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
+        {{isLoading?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
       </span>
     </view>
     <t-loading
@@ -71,7 +65,7 @@
       theme="circular"
       size="40rpx"
       text="加载中..."
-      loading="{{loadingFirst}}"
+      loading="{{isLoading}}"
       delay="{{1000}}"
       t-class-indicator="indicator-blue"
     ></t-loading>
@@ -95,7 +89,7 @@
         class="slider-class"
         value="{{duration}}"
         min="{{100}}"
-        max="{{800}}"
+        max="{{2000}}"
         label
         bind:change="durationChange"
       ></t-slider>

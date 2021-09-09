@@ -1,5 +1,6 @@
 import simulate from 'miniprogram-simulate';
 import getDemoPath from '../../../test/utils/getDemoPath';
+
 describe('radio basic demo', () => {
   let id;
   beforeAll(() => {

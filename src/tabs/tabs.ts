@@ -3,6 +3,7 @@ import touch from '../behaviors/touch';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
+
 const { prefix } = config;
 const name = `${prefix}-tabs`;
 

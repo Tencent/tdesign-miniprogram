@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index",
+    "pages/home/home",
     "pages/picker/picker",
     "pages/avatar/avatar",
     "pages/button/button",
@@ -9,6 +9,7 @@
     "pages/tabs/tabs",
     "pages/icon/icon",
     "pages/loading/loading",
+    "pages/loading/loadingProgress/loadingProgress",
     "pages/rate/rate",
     "pages/progress/progress",
     "pages/cell/cell",
@@ -47,9 +48,11 @@
     "pages/image-picker/image-picker",
     "pages/count-down/count-down",
     "pages/image/image",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/home/navigateFail/navigateFail"
   ],
   "usingComponents": {
+    "t-demo": "components/demo-block/index",
     "t-badge": "@tencent/tdesign-miniprogram/badge/badge",
     "t-button": "@tencent/tdesign-miniprogram/button/button",
     "t-cell": "@tencent/tdesign-miniprogram/cell/cell",
@@ -91,7 +94,7 @@
     "t-popup": "@tencent/tdesign-miniprogram/popup/popup",
     "t-indexes": "@tencent/tdesign-miniprogram/indexes/indexes",
     "t-steps": "@tencent/tdesign-miniprogram/steps/steps",
-    "t-step": "@tencent/tdesign-miniprogram/steps/step",
+    "t-step": "@tencent/tdesign-miniprogram/steps/step-item",
     "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu",
     "t-drawer": "@tencent/tdesign-miniprogram/drawer/drawer",
     "t-scroll-view": "@tencent/tdesign-miniprogram/scroll-view/scroll-view",

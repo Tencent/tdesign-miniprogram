@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-06 17:40:39
+ * updated at 2021-09-07 17:39:44
  * */
 
 export interface TdLoadingProps {
@@ -17,7 +17,7 @@ export interface TdLoadingProps {
   };
   /**
    * 加载动画执行完成一次的时间，单位：毫秒
-   * @default 400
+   * @default 800
    */
   duration?: {
     type: NumberConstructor;
