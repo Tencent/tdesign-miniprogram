@@ -11,7 +11,7 @@ const nav = {
       label: '索引',
     },
     {
-      name: 'NavBar',
+      name: 'Navbar',
       label: '导航栏',
     },
     // {
