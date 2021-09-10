@@ -1,6 +1,6 @@
 const base = {
   name: '设计基础',
-  icon: '/assets/app.png',
+  icon: '/assets/app@2x.png',
   childArr: [
     // {
     //   name: 'Color',

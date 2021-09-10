@@ -1,6 +1,6 @@
 const ux = {
   name: '反馈信息',
-  icon: '/assets/chat.png',
+  icon: '/assets/chat@2x.png',
   childArr: [
     // {
     //   name: 'ActionSheet',

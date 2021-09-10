@@ -1,8 +1,8 @@
 {
   "navigationBarTitleText": "TDesign UI",
-  "navigationBarBackgroundColor": "#F4F6F9",
+  "navigationBarBackgroundColor": "#f6f6f6",
   "navigationBarTextStyle": "black",
-  "backgroundColor": "#F4F6F9",
+  "backgroundColor": "#f6f6f6",
   "usingComponents": {
     "t-icon": "@tencent/tdesign-miniprogram/icon/icon",
     "pull-down-list": "../../components/pull-down-list/index"
