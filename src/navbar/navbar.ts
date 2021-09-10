@@ -69,8 +69,8 @@ export default class Navbar extends SuperComponent {
   };
 
   data = {
-    _home: false,
-    _back: false,
+    hasHomeIcon: false,
+    hasBackIcon: false,
 
     classPrefix: name,
     fixedClass: `${name}--fixed`,
@@ -126,8 +126,8 @@ export default class Navbar extends SuperComponent {
 
     if (leftIcon) back = true;
     this.setData({
-      _home: home,
-      _back: back,
+      hasHomeIcon: home,
+      hasBackIcon: back,
     });
   }
 

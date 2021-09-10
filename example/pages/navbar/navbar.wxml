@@ -1,11 +1,24 @@
 <block wx:if="{{demoType === 'base-default'}}">
-  <t-navbar title="标题" />
+  <t-navbar title="标题" t-class-title="nav-title" />
 </block>
 <block wx:if="{{demoType === 'base-back'}}">
-  <t-navbar title="标题" leftIcon="arrow-left" />
+  <t-navbar
+    title="标题"
+    leftIcon="chevron-left"
+    t-class-left-icon="left-icon-back"
+    t-class-title="nav-title"
+  />
 </block>
 <block wx:if="{{demoType === 'base-back-home'}}">
-  <t-navbar title="标题" leftIcon="arrow-left" homeIcon="arrow-left" bindgohome="onGoHome" />
+  <t-navbar
+    title="标题"
+    leftIcon="chevron-left"
+    homeIcon="home"
+    bindgohome="onGoHome"
+    t-class-left-icon="left-icon-back"
+    t-class-home-icon="home-icon"
+    t-class-title="nav-title"
+  />
 </block>
 <block wx:if="{{demoType === 'base-brand'}}">
   <t-navbar leftIcon="slot">
@@ -25,34 +38,10 @@
 </block>
 
 <block wx:if="{{demoType === 'base-brand-long'}}">
-  <t-navbar leftIcon="slot" t-class-left-icon="left-icon">
+  <t-navbar leftIcon="slot" t-class-left-icon="left-icon-slot">
     <span slot="left-icon" class="long-brand"
       >品牌名称最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长</span
     >
-  </t-navbar>
-</block>
-
-<block wx:if="{{demoType === 'slot-left'}}">
-  <t-navbar
-    title="左侧胶囊位置插槽"
-    visible="{{visible}}"
-    fixed="{{fixed}}"
-    showBack="never"
-    showHome="never"
-  >
-    <view slot="left" class="slot-left">左侧胶囊插槽</view>
-  </t-navbar>
-</block>
-
-<block wx:if="{{demoType === 'slot-center'}}">
-  <t-navbar title="" visible="{{visible}}" fixed="{{fixed}}">
-    <view slot="center" class="slot-center">标题位置</view>
-  </t-navbar>
-</block>
-
-<block wx:if="{{demoType === 'slot-custom'}}">
-  <t-navbar visible="{{visible}}" fixed="{{fixed}}" custom-slot="custom">
-    <view slot="custom" class="slot-custom">除右边系统胶囊，这里整个位置都是你的...</view>
   </t-navbar>
 </block>
 
