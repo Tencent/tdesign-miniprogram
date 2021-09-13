@@ -25,5 +25,14 @@
   >
     <slot />
   </view>
+  <t-swiper-nav
+    id="swiperNav"
+    wx:if="{{_navigation}}"
+    type="{{_navigation.type}}"
+    minShowNum="{{_navigation.minShowNum}}"
+    hasNavBtn="{{_navigation.hasNavBtn}}"
+    bind:navBtnChange="onSwiperNavBtnChange"
+  />
+  <!-- 同时支持插槽组合 -->
   <slot name="nav" />
 </view>

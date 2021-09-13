@@ -9,7 +9,7 @@
   </view>
   <view wx:if="{{ type==='pages'}}" class="{{classPrefix}}-pages"> {{index+1}}/{{total}} </view>
   <view wx:if="{{hasNavBtn}}" class="{{classPrefix}}-btn">
-    <view class="{{classPrefix}}-btn-prev" bind:tap="prev" />
-    <view class="{{classPrefix}}-btn-next" bind:tap="next" />
+    <view class="{{classPrefix}}-btn-prev" bind:tap="nav" data-dir="prev" />
+    <view class="{{classPrefix}}-btn-next" bind:tap="nav" data-dir="next" />
   </view>
 </view>

@@ -1,10 +1,12 @@
 /**
  * 轮播导航器
- * todo: 垂直滚动
+ * 同时支持两种方式
+ * 1、swiper简易配置，参见swiper的navigation。提升易用性
+ * 2、自定义组件插槽组合，slot=nav。提升灵活性，方便样式覆盖
  */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
-import { DIRECTION } from './common/constants';
+import { DIRECTION, NavTypes } from './common/constants';
 
 const { prefix } = config;
 type NavOptions = {
@@ -12,17 +14,6 @@ type NavOptions = {
   total: number;
   direction: boolean;
 };
-
-const enum Types {
-  // 无
-  none = '',
-  // 点状
-  dots = 'dots',
-  // 点状-激活条形
-  dotsBar = 'dotsBar',
-  // 页码
-  pages = 'pages',
-}
 
 @wxComponent()
 export default class SwiperNav extends SuperComponent {
@@ -32,7 +23,7 @@ export default class SwiperNav extends SuperComponent {
     // 页码导航类型
     type: {
       type: String,
-      value: Types.dots,
+      value: NavTypes.dots,
     },
     // 最小显示数量，即小于这个数不会显示导航器
     minShowNum: {
@@ -71,13 +62,15 @@ export default class SwiperNav extends SuperComponent {
     });
   }
 
-  prev() {
-    this.$swiper.pause();
-    this.$swiper.prev({ source: 'nav', cycle: true });
-  }
-
-  next() {
-    this.$swiper.pause();
-    this.$swiper.next({ source: 'nav', cycle: true });
+  nav(e) {
+    const { dir } = e.target.dataset;
+    const opt = { source: 'nav', cycle: true };
+    // 触发导航按钮事件
+    this.triggerEvent('navBtnChange', { ...opt, dir });
+    // 插槽嵌入时主动调用API
+    if (this.$swiper) {
+      this.$swiper?.pause();
+      this.$swiper?.[dir](opt);
+    }
   }
 }

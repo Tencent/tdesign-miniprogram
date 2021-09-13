@@ -1,12 +1,11 @@
 /**
  * 轮播组件
  * 因原生swiper受限，基于wxs重新实现，后期可以扩展更多丰富的功能
- * 第一期：完成基础API，导航器，分页条
- * 第二期：todo，无限循环，垂直轮播，3D动效等
+ * todo：无限循环，3D动效等
  */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
-import { DIRECTION } from './common/constants';
+import { DIRECTION, NavTypes } from './common/constants';
 
 const { prefix } = config;
 const easings = {
@@ -27,6 +26,11 @@ interface SwitchOpt {
   cycle?: boolean;
   source: 'autoplay' | 'touch' | 'nav';
 }
+const defaultNavigation = {
+  type: NavTypes.dots,
+  minShowNum: 2,
+  hasNavBtn: false,
+};
 const checkVal = function (val: any): boolean {
   if (typeof val === 'undefined' || val === null || val === -1) {
     return false;
@@ -94,9 +98,21 @@ export default class Swiper extends SuperComponent {
       type: String,
       value: 'slide',
     },
+    /**
+     * 分页导航器
+     */
+    navigation: {
+      type: Object,
+      value: null,
+    },
   };
 
   observers = {
+    navigation(val) {
+      this.setData({
+        _navigation: { ...defaultNavigation, ...val },
+      });
+    },
     current(val) {
       this.update(+val);
     },
@@ -138,8 +154,10 @@ export default class Swiper extends SuperComponent {
   };
 
   data = {
-    // 内部状态
+    // 内部状态：当前临时索引
     _current: 0,
+    // 内部取默认值后的配置
+    _navigation: null,
     width: 0,
     height: 0,
     offsetX: 0,
@@ -192,7 +210,14 @@ export default class Swiper extends SuperComponent {
    * 初始化 swiper-nav
    */
   initNav() {
-    this.$nav = this.getRelationNodes('./swiper-nav')?.[0];
+    const { _navigation } = this.data;
+    if (_navigation) {
+      // 启用内部导航器
+      this.$nav = this.selectComponent('#swiperNav');
+    } else {
+      // 启用插槽嵌入的导航器
+      this.$nav = this.getRelationNodes('./swiper-nav')?.[0];
+    }
   }
 
   /**
@@ -343,5 +368,15 @@ export default class Swiper extends SuperComponent {
       nextIndex -= 1;
     }
     this.goto(nextIndex, opt.source);
+  }
+
+  /**
+   * 内置导航组件，监听按钮点击
+   * @param e
+   */
+  onSwiperNavBtnChange(e) {
+    const { dir, ...rest } = e.detail;
+    this.pause();
+    this?.[dir](rest);
   }
 }

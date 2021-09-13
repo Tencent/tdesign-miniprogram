@@ -21,6 +21,10 @@ Page({
         cls: 'item4',
       },
     ],
+    navigation1: { type: 'dotsBar' },
+    navigation2: { type: 'pages' },
+    navigation3: { type: false, hasNavBtn: true },
+    navigation4: { type: 'pages', hasNavBtn: true },
   },
   onChange(e) {
     const {

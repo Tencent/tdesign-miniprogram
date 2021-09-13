@@ -11,11 +11,11 @@
         duration="{{duration}}"
         interval="{{interval}}"
         bindchange="onChange"
+        navigation
       >
         <t-swiper-item wx:for="{{items}}" wx:key="index">
           <view class="item {{item.cls}}">{{index}}</view>
         </t-swiper-item>
-        <t-swiper-nav slot="nav" />
       </t-swiper>
     </view>
     <view class="swiper-demo-space" />
@@ -29,6 +29,7 @@
         <t-swiper-item wx:for="{{items}}" wx:key="index">
           <view class="item {{item.cls}}">{{index}}</view>
         </t-swiper-item>
+        <!-- 使用插槽组合，可自定义nav组件 -->
         <t-swiper-nav slot="nav" type="dotsBar" />
       </t-swiper>
     </view>
@@ -39,11 +40,11 @@
         autoplay="{{autoplay}}"
         duration="{{duration}}"
         interval="{{interval}}"
+        navigation="{{navigation2}}"
       >
         <t-swiper-item wx:for="{{items}}" wx:key="index">
           <view class="item {{item.cls}}">{{index}}</view>
         </t-swiper-item>
-        <t-swiper-nav slot="nav" type="pages" />
       </t-swiper>
     </view>
     <view class="swiper-demo-space" />
@@ -53,11 +54,11 @@
         autoplay="{{autoplay}}"
         duration="{{duration}}"
         interval="{{interval}}"
+        navigation="{{navigation4}}"
       >
         <t-swiper-item wx:for="{{items}}" wx:key="index">
           <view class="item {{item.cls}}">{{index}}</view>
         </t-swiper-item>
-        <t-swiper-nav slot="nav" type="" hasNavBtn="{{true}}" />
       </t-swiper>
     </view>
     <t-demo title="02 垂直" desc="轮播图垂直样式"></t-demo>
@@ -68,12 +69,12 @@
         autoplay="{{autoplay}}"
         duration="{{duration}}"
         interval="{{interval}}"
+        navigation="{{navigation1}}"
         direction="vertical"
       >
         <t-swiper-item wx:for="{{items}}" wx:key="index">
           <view class="item {{item.cls}}">{{index}}</view>
         </t-swiper-item>
-        <t-swiper-nav slot="nav" type="dotsBar" />
       </t-swiper>
     </view>
     <view class="swiper-demo-space" />
