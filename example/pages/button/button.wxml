@@ -4,15 +4,15 @@
   <t-demo title="01 类型">
     <view class="demo-section__desc">基础按钮</view>
     <t-button theme="primary" size="large">强按钮</t-button>
-    <t-button theme="primary" size="large" plain>弱按钮</t-button>
-    <t-button size="large" plain>次按钮</t-button>
-    <t-button theme="primary" size="large" icon="app" plain>带图标按钮</t-button>
+    <t-button theme="primary" size="large" variant="plain">弱按钮</t-button>
+    <t-button size="large" variant="plain">次按钮</t-button>
+    <t-button theme="primary" size="large" icon="app" variant="plain">带图标按钮</t-button>
     <t-button theme="danger" size="large">强告警按钮</t-button>
-    <t-button theme="danger" size="large" plain>弱告警按钮</t-button>
+    <t-button theme="danger" size="large" variant="plain">弱告警按钮</t-button>
     <view class="box">
-      <t-button theme="ghost" size="large">幽灵按钮</t-button>
+      <t-button ghost size="large">幽灵按钮</t-button>
     </view>
-    <t-button theme="text" size="large">文字按钮</t-button>
+    <t-button variant="text" size="large">文字按钮</t-button>
     <t-button theme="primary" size="large" shape="square" block>通栏按钮</t-button>
     <t-button-group>
       <t-button size="large" block shape="square">次按钮</t-button>
@@ -22,15 +22,15 @@
   <t-demo title="02 状态">
     <view class="demo-section__desc">按钮禁用态</view>
     <t-button theme="primary" size="large" disabled>强按钮</t-button>
-    <t-button theme="primary" size="large" plain disabled>弱按钮</t-button>
-    <t-button size="large" plain disabled>次按钮</t-button>
+    <t-button theme="primary" size="large" variant="plain" disabled>弱按钮</t-button>
+    <t-button size="large" variant="plain" disabled>次按钮</t-button>
     <t-button theme="primary" size="large" icon="app" disabled>带图标按钮</t-button>
     <t-button theme="danger" size="large" disabled>强告警按钮</t-button>
-    <t-button theme="danger" size="large" plain disabled>弱告警按钮</t-button>
+    <t-button theme="danger" size="large" variant="plain" disabled>弱告警按钮</t-button>
     <view class="box">
-      <t-button theme="ghost" size="large" disabled>幽灵按钮</t-button>
+      <t-button ghost size="large" disabled>幽灵按钮</t-button>
     </view>
-    <t-button theme="text" size="large" disabled>文字按钮</t-button>
+    <t-button variant="text" size="large" disabled>文字按钮</t-button>
     <t-button theme="primary" size="large" shape="square" block disabled>通栏按钮</t-button>
     <t-button-group>
       <t-button size="large" shape="square" block disabled>次按钮</t-button>

@@ -132,12 +132,33 @@
     }
   }
 
+  &--plain {
+    background-color: transparent;
+    &.@{prefix}-button--primary {
+      color: @button-primary-color;
+
+      &.@{prefix}-is-disabled {
+        background-color: transparent;
+        color: @button-primary-color--disabled;
+      }
+    }
+
+    &.@{prefix}-button--danger {
+      color: @button-danger-color;
+
+      &.@{prefix}-is-disabled {
+        background-color: transparent;
+        color: @button-danger-color--disabled;
+      }
+    }
+  }
+
   &--size {
     &-large {
       display: flex;
       margin: 0 32rpx;
       height: @button-large-height;
-      line-height: @button-default-line-height;
+      line-height: @button-large-height;
       padding-left: @spacer*3;
       padding-right: @spacer*3;
     }
@@ -176,11 +197,11 @@
     margin-left: @spacer;
   }
 
-  &--square {
-    border-radius: 0;
+  &--round {
+    border-radius: @button-large-height / 2;
 
     &::after {
-      border-radius: 0;
+      border-radius: @button-large-height / 2;
     }
   }
 
@@ -197,29 +218,15 @@
       margin-right: 0;
       height: 88rpx;
       line-height: 88rpx;
+      border-radius: 0;
+
+      &::after {
+        border-radius: 0;
+      }
     }
 
     &-disabled {
       cursor: not-allowed;
-    }
-
-    &-plain {
-      background-color: transparent;
-      &.@{prefix}-button--primary {
-        color: @button-primary-color;
-
-        &.@{prefix}-is-disabled {
-          color: @button-primary-color--disabled;
-        }
-      }
-
-      &.@{prefix}-button--danger {
-        color: @button-danger-color;
-
-        &.@{prefix}-is-disabled {
-          color: @button-danger-color--disabled;
-        }
-      }
     }
 
     &-loading {
