@@ -6,6 +6,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import { DIRECTION, NavTypes } from './common/constants';
+import props from './props';
 
 const { prefix } = config;
 const easings = {
@@ -31,8 +32,13 @@ const defaultNavigation = {
   minShowNum: 2,
   hasNavBtn: false,
 };
-const checkVal = function (val: any): boolean {
-  if (typeof val === 'undefined' || val === null || val === -1) {
+/**
+ * 检查受控属性，判断是否受控
+ * @param val
+ * @returns
+ */
+const isControlled = function (val: any): boolean {
+  if (typeof val === 'undefined' || val === null) {
     return false;
   }
   return true;
@@ -45,67 +51,7 @@ export default class Swiper extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = {
-    /**
-     * 当前滑块的index
-     * 受控属性，必须配合change事件来更新
-     */
-    current: {
-      type: Number,
-      value: -1,
-    },
-    /**
-     * 默认滑块的index
-     * 非受控属性，若current，defaultCurrent一起用，则current优先
-     */
-    defaultCurrent: {
-      type: Number,
-      value: 0,
-    },
-    /**
-     * 是否自动播放
-     */
-    autoplay: {
-      type: Boolean,
-      value: false,
-    },
-    /**
-     * 滑动动画时长
-     */
-    duration: {
-      type: Number,
-      value: 500,
-    },
-    /**
-     * 自动播放间隔
-     */
-    interval: {
-      type: Number,
-      value: 3000,
-    },
-    /**
-     * 轮播滑动方向，可选值：horizontal/vertical
-     * todo
-     */
-    direction: {
-      type: String,
-      value: DIRECTION.HOR,
-    },
-    /**
-     * 动画类型
-     */
-    animation: {
-      type: String,
-      value: 'slide',
-    },
-    /**
-     * 分页导航器
-     */
-    navigation: {
-      type: Object,
-      value: null,
-    },
-  };
+  properties = props;
 
   observers = {
     navigation(val) {
@@ -158,8 +104,10 @@ export default class Swiper extends SuperComponent {
     _current: 0,
     // 内部取默认值后的配置
     _navigation: null,
-    width: 0,
-    height: 0,
+    // 容器宽
+    _width: 0,
+    // 容器高
+    _height: 0,
     offsetX: 0,
     // todo
     offsetY: 0,
@@ -179,8 +127,8 @@ export default class Swiper extends SuperComponent {
       .select('#swiper')
       .boundingClientRect((rect) => {
         this.setData({
-          width: rect.width,
-          height: rect.height,
+          _width: rect.width,
+          _height: rect.height,
         });
         this.initCurrent();
       })
@@ -236,7 +184,7 @@ export default class Swiper extends SuperComponent {
    */
   initCurrent() {
     const { defaultCurrent, current } = this.properties;
-    const index: any = checkVal(current) ? current : defaultCurrent;
+    const index: any = isControlled(current) ? current : defaultCurrent;
     this.setData({
       _current: index,
       currentInited: true,
@@ -275,11 +223,11 @@ export default class Swiper extends SuperComponent {
   goto(index: number, source: string) {
     const { current } = this.properties;
     this.triggerEvent('change', {
-      _current: index,
+      current: index,
       source,
     });
     // 使用了受控属性，必须配合change事件来更新
-    if (checkVal(current)) {
+    if (isControlled(current)) {
       return;
     }
     this.update(index);
@@ -291,6 +239,7 @@ export default class Swiper extends SuperComponent {
    * @returns
    */
   update(index: number, finish?) {
+    if (!this.children) return;
     const len = this.children.length;
     let fixIndex = +index;
     if (Number.isNaN(fixIndex)) return;
@@ -325,14 +274,14 @@ export default class Swiper extends SuperComponent {
 
   calcOffset(index: number) {
     const { direction } = this.properties;
-    const { width, height } = this.data;
+    const { _width, _height } = this.data;
     if ((direction as any) === DIRECTION.HOR) {
       return {
-        offsetX: -index * width,
+        offsetX: -index * _width,
       };
     }
     return {
-      offsetY: -index * height,
+      offsetY: -index * _height,
     };
   }
 

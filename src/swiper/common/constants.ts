@@ -10,8 +10,8 @@ const enum NavTypes {
   // 点状
   dots = 'dots',
   // 点状-激活条形
-  dotsBar = 'dotsBar',
+  dotsBar = 'dots-bar',
   // 页码
-  pages = 'pages',
+  fraction = 'fraction',
 }
 export { DIRECTION, NavTypes };

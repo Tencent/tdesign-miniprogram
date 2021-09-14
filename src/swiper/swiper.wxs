@@ -88,16 +88,22 @@ function endDrag(event, ownerInstance) {
   // 重置
   moveContainer(state, true);
 }
-
+/**
+ * 返回分页操作的方向
+ * @param move 移动距离
+ * @param size 容器尺寸
+ * @returns
+ */
 function getPageDir(move, size) {
   if (move > 0) {
+    // 右滑超过阈值
     if (move > size * moveThreshold) {
       return 'prev';
     }
   } else {
+    // 左滑超过阈值
     if (-move > size * moveThreshold) {
       return 'next';
-      return;
     }
   }
 }

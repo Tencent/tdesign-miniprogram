@@ -1,5 +1,6 @@
 <wxs src="./swiper.wxs" module="swiper" />
-<view id="swiper" class="t-class {{classPrefix}}">
+<!-- 支持传入height指定容器高度，单位rpx -->
+<view id="swiper" class="t-class {{classPrefix}}" style="{{height?'height:'+height+'rpx':''}}">
   <view
     id="swiperContainer"
     class="{{classPrefix}}-container {{inited?'swiper-ani':'hidden'}}"
@@ -10,8 +11,8 @@
     bindtouchcancel="{{swiper.endDrag}}"
     offsetX="{{offsetX}}"
     offsetY="{{offsetY}}"
-    width="{{width}}"
-    height="{{height}}"
+    width="{{_width}}"
+    height="{{_height}}"
     direction="{{direction}}"
     total="{{total}}"
     currentInited="{{currentInited}}"
