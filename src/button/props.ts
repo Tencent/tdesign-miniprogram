@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-14 10:47:22
+ * updated at 2021-09-14 15:09:49
  * */
 
 import { TdButtonProps } from './type';
@@ -11,10 +11,6 @@ const props: TdButtonProps = {
   block: {
     type: Boolean,
     value: false,
-  },
-  /** 按钮内容 */
-  content: {
-    type: String,
   },
   /** 是否禁用按钮 */
   disabled: {
