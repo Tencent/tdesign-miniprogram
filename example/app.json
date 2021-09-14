@@ -48,7 +48,8 @@
     "pages/count-down/count-down",
     "pages/image/image",
     "pages/search/search",
-    "pages/home/navigateFail/navigateFail"
+    "pages/home/navigateFail/navigateFail",
+    "pages/navbar/navbar"
   ],
   "usingComponents": {
     "t-demo": "components/demo-block/index",
@@ -105,7 +106,8 @@
     "t-image-picker": "@tencent/tdesign-miniprogram/image-picker/image-picker",
     "t-count-down": "@tencent/tdesign-miniprogram/count-down/count-down",
     "t-image": "@tencent/tdesign-miniprogram/image/image",
-    "t-search": "@tencent/tdesign-miniprogram/search/search"
+    "t-search": "@tencent/tdesign-miniprogram/search/search",
+    "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar"
   },
   "window": {
     "backgroundTextStyle": "light",

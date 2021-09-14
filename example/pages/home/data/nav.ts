@@ -1,6 +1,6 @@
 const nav = {
   name: ' 导航',
-  icon: '/assets/view-module.png',
+  icon: '/assets/view-module@2x.png',
   childArr: [
     // {
     //   name: 'Drawer',
@@ -11,7 +11,7 @@ const nav = {
       label: '索引',
     },
     {
-      name: 'NavBar',
+      name: 'Navbar',
       label: '导航栏',
     },
     // {
