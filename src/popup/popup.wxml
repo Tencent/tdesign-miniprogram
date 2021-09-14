@@ -11,7 +11,7 @@
 	<view class="t-popup__content t-class-content" style="z-index:{{zIndex}}">
 		{{content}}
 		<view class="t-popup__close">
-			<t-icon name="close" wx:if="{{closeBtn}}" bind:tap="onCloseClick" />
+			<t-icon name="close" wx:if="{{closeBtn}}" bind:tap="onCloseClick" size="64rpx" />
 			<slot name="closeBtn" class="t-popup__close" />
 		</view>
 		<slot name="content" />
