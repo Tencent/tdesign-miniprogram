@@ -8,17 +8,17 @@
   }
 
   .t-button + .t-button {
-    margin-left: 8px;
+    margin-left: 16rpx;
   }
 
   .t-button {
-    margin-top: 10px;
+    margin-top: 20rpx;
   }
 
   .block {
-    width: 100px;
-    height: 100px;
-    border-radius: 4px;
+    width: 176rpx;
+    height: 176rpx;
+    border-radius: 8rpx;
     background: #fff;
     color: #333;
     display: flex;
@@ -36,11 +36,18 @@
       border-radius: 0;
     }
 
-    &--top,
+    &--top {
+      width: 100vw;
+      height: 35vh;
+      border-bottom-left-radius: 16rpx;
+      border-bottom-right-radius: 16rpx;
+    }
+
     &--bottom {
       width: 100vw;
       height: 35vh;
-      border-radius: 0;
+      border-top-left-radius: 16rpx;
+      border-top-right-radius: 16rpx;
     }
   }
 }
