@@ -1,4 +1,4 @@
-<view class="{{classPrefix}} t-class">
+<view class="{{classPrefix}} t-class ">
   <!-- icon left -->
   <view
     class="{{classPrefix}}__icon-left t-class-icon"
@@ -14,7 +14,7 @@
     </block>
     <block wx:else>
       <t-icon
-        name="{{active ? (halfChecked ? 'remove' : 'tick_fill') : 'circle'}}"
+        name="{{active ? (halfChecked ? 'minus-circle' : 'check-circle-filled') : 'round'}}"
         class="{{classPrefix}}__btn {{active ? classPrefix + '-is-checked' : ''}} {{disabled ? classPrefix + '-is-disabled' : ''}}"
       />
     </block>
@@ -52,9 +52,13 @@
     </block>
     <block wx:else>
       <t-icon
-        name="{{active ? (halfChecked ? 'remove' : 'tick_fill') : 'circle'}}"
+        name="{{active ? (halfChecked ? 'minus-circle' : 'check-circle-filled') : 'round'}}"
         class="{{classPrefix}}__btn {{disabled ? classPrefix + '-is-disabled' : ''}} {{active ? classPrefix + '-is-checked' : ''}}"
       />
     </block>
   </view>
+  <!-- 内置下边框 -->
+  <view
+    class="{{classPrefix}}-border {{classPrefix}}{{align==='left'?'-border-left':'-border-right'}}"
+  ></view>
 </view>
