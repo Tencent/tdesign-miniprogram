@@ -55,8 +55,8 @@ const form = {
     //   label: '时间段选择器',
     // },
     {
-      name: 'Upload',
-      label: '上传',
+      name: 'ImagePicker',
+      label: '图片选择器',
     },
   ],
 };
