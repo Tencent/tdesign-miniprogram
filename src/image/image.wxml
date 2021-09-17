@@ -23,13 +23,13 @@
   wx:elif="{{isFailed}}"
   class="t-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--faild"
 >
-  <!-- 等icon组件出了再改变加载失败默认提示 -->
   <view
     wx:if="{{loadFailed === 'default'}}"
-    style="font-size: 20rpx; color: #999"
+    style="font-size: 40rpx; color: #999"
     class="t-class-load"
-    >默认失败提示</view
   >
+    <t-icon name="close" />
+  </view>
   <view
     wx:elif="{{loadFailed !== 'slot' && loadFailed !== ''}}"
     class="{{classPrefix}}-common t-class-load"

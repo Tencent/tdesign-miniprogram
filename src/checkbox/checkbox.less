@@ -7,6 +7,7 @@
   font-size: 32rpx;
   padding: 32rpx 32rpx;
   position: relative;
+  background: white;
 
   .limit-title-row {
     display: -webkit-box;
@@ -31,8 +32,8 @@
   }
 
   &-icon__image {
-    width: 20px;
-    height: 20px;
+    width: 48rpx;
+    height: 48rpx;
     vertical-align: sub;
   }
 
@@ -41,9 +42,10 @@
   }
 
   &__btn {
-    font-size: 40rpx;
+    font-size: 48rpx;
     display: block;
     line-height: 40rpx;
+    color: #dcdcdc;
   }
 
   &__content {
@@ -59,6 +61,8 @@
   &__description {
     color: rgba(0, 0, 0, .4);
     .limit-title-row();
+    font-size: 28rpx;
+    line-height: 44rpx;
   }
 
   &-is-checked {
@@ -74,12 +78,20 @@
     cursor: not-allowed;
     color: rgba(0, 0, 0, .26);
   }
-  // &::after {
-  //   content: '';
-  //   position: absolute;
-  //   border-top: 2rpx solid #e9e9e9;
-  //   width: 100%;
-  //   margin-left: 64rpx;
-  //   bottom: 0px;
-  // }
+
+  &-border {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    border-top: 2rpx solid #e9e9e9;
+    width: 100%;
+  }
+
+  &-border-left {
+    margin-left: 64rpx;
+  }
+
+  &-border-right {
+    right: 80rpx;
+  }
 }

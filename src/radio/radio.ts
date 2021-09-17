@@ -6,8 +6,8 @@ const { prefix } = config;
 const name = `${prefix}-radio`;
 
 const iconDefault = {
-  'fill-circle': ['tick_fill', 'circle'],
-  'stroke-line': ['tick', ''],
+  'fill-circle': ['check-circle-filled', 'round'],
+  'stroke-line': ['check', ''],
 };
 @wxComponent()
 export default class PullDownRefresh extends SuperComponent {
