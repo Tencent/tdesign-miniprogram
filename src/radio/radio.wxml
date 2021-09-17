@@ -64,4 +64,8 @@
       />
     </block>
   </view>
+  <!-- 预制下边框 -->
+  <view
+    class="{{classPrefix}}-border {{classPrefix}}{{align==='left'?'-border-left':'-border-right'}}"
+  ></view>
 </view>
