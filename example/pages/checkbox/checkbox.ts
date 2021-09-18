@@ -23,6 +23,9 @@ Page({
   },
   onChange(event) {
     console.log('checkbox', event.detail);
+  },
+  onCheckAllChange(event) {
+    console.log('checkbox', event.detail);
     this.setData({
       checkAllValues: event.detail,
     });

@@ -1,6 +1,6 @@
 const form = {
   name: '表单',
-  icon: '/assets/bulletpoint.png',
+  icon: '/assets/bulletpoint@2x.png',
   childArr: [
     {
       name: 'Button',
@@ -55,8 +55,8 @@ const form = {
     //   label: '时间段选择器',
     // },
     {
-      name: 'Upload',
-      label: '上传',
+      name: 'ImagePicker',
+      label: '图片选择器',
     },
   ],
 };

@@ -1,6 +1,6 @@
 const display = {
   name: '信息展示',
-  icon: '/assets/image.png',
+  icon: '/assets/image@2x.png',
   childArr: [
     {
       name: 'Avatar',
