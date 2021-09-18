@@ -4,8 +4,6 @@ import Dialog from '@tencent/tdesign-miniprogram/dialog/index';
 const title = '对话框标题';
 const maxTitle = '对话框标题告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内';
 const message = '告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内';
-const maxMessage =
-  '告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。告知当前状态、信息和解决方法。';
 
 interface Config {
   title: string;
@@ -39,6 +37,7 @@ Page({
     show: false,
     useSlot: false,
     dialogConfig,
+    currentKey: '',
     operList: [
       {
         title: '反馈类对话框',
@@ -107,6 +106,7 @@ Page({
       case 'multiText': {
         this.setData({
           show: true,
+          currentKey: key,
           dialogConfig: modelConfigFactory({
             title: key === 'text' ? title : maxTitle,
             confirmBtn: '知道了',
@@ -119,9 +119,10 @@ Page({
       case 'multiTextAndTitle': {
         this.setData({
           show: true,
+          currentKey: key,
           dialogConfig: modelConfigFactory({
             title: key === 'textAndTitle' ? title : '对话框带文本最大高度',
-            content: key === 'textAndTitle' ? message : maxMessage,
+            content: key === 'textAndTitle' ? message : '',
             confirmBtn: '我知道了',
           }),
         });
@@ -131,6 +132,7 @@ Page({
       case 'confirm': {
         this.setData({
           show: true,
+          currentKey: key,
           dialogConfig: modelConfigFactory({
             title,
             content: message,
@@ -144,6 +146,7 @@ Page({
       case 'warnConfirm': {
         this.setData({
           show: true,
+          currentKey: key,
           dialogConfig: modelConfigFactory({
             title,
             tConfirmBtn: 'custom-confirm-btn',
@@ -157,6 +160,7 @@ Page({
       case 'tooLongBtnContent': {
         this.setData({
           show: true,
+          currentKey: key,
           dialogConfig: modelConfigFactory({
             title,
             content: message,
@@ -171,6 +175,7 @@ Page({
       case 'multiBtn': {
         this.setData({
           show: true,
+          currentKey: key,
           dialogConfig: modelConfigFactory({
             title,
             content: message,
@@ -190,6 +195,7 @@ Page({
         this.setData({
           show: true,
           useSlot: true,
+          currentKey: key,
           dialogConfig: modelConfigFactory({
             title: '带输入框对话框',
             content: key === 'withInput' ? '' : message,
