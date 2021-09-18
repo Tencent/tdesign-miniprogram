@@ -20,6 +20,16 @@
   bind:confirm="confirmHandle"
   bind:cancel="closeHandle"
 >
+  <scroll-view
+    wx:if="{{currentKey === 'multiTextAndTitle'}}"
+    slot="content"
+    scroll-y
+    class="long-content"
+  >
+    <view class="content-cintainer">
+      告知当前状态、信息和解决方法，等内容。描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案
+    </view>
+  </scroll-view>
   <input
     wx:if="{{useSlot}}"
     slot="content"
