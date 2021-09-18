@@ -31,7 +31,7 @@
               wx:if="{{leftIcon!=='slot'}}"
               name="{{leftIcon}}"
               bindtap="goBack"
-              class="t-class-left-icon"
+              class="{{classPrefix}}__capsule__icon t-class-left-icon"
             />
             <slot name="left-icon" class="t-class-left-icon"></slot>
           </view>
@@ -40,7 +40,7 @@
               wx:if="{{homeIcon!=='slot'}}"
               name="{{homeIcon}}"
               bindtap="goHome"
-              class="t-class-home-icon"
+              class="{{classPrefix}}__capsule__icon t-class-home-icon"
             />
             <slot name="home-icon" class="t-class-home-icon"></slot>
           </view>
