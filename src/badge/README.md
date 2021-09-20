@@ -42,5 +42,13 @@
 | max-count | Number                 | 99     | 封顶的数字值                                                                      | N        |
 | offset    | Array                  | -      | 设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem']。TS 类型：`Array<string | number>` | N   |
 | shape     | String                 | circle | 形状。可选值：circle/round                                                        | N        |
-| show-zero | Boolean                | false  | 当数值为 0 时，是否展示徽标数字                                                   | N        |
+| show-zero | Boolean                | false  | 当数值为 0 时，是否展示徽标                                                       | N        |
 | size      | String                 | medium | 尺寸。可选值：small/medium                                                        | N        |
+| hasSlot   | Boolean                | false  | 是否存在 slot                                                                     | N        |
+
+### External Classes
+
+| 名称          | 参数 | 描述             |
+| ------------- | ---- | ---------------- |
+| wrapper-class | -    | 外部包裹的拓展类 |
+| badge-class   | -    | badge 的拓展类   |

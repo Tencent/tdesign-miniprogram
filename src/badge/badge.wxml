@@ -1,9 +1,10 @@
-<wxs src="./badge.wxs" module="this"></wxs>
+<wxs src="./badge.wxs" module="this" />
 
-<view class="{{this.getBadgeOuterClass({shape})}}">
+<view class="{{this.getBadgeOuterClass({shape})}} wrapper-class">
   <view
-    class="{{this.getBadgeInnerClass({dot, size, shape, hasSlot})}}"
+    class="{{this.getBadgeInnerClass({dot, size, shape, hasSlot})}} badge-class"
     style="{{this.getBadgeStyles({color, offset})}}"
+    wx:if="{{this.isShowBadge({dot,content,count,showZero})}}"
     >{{ this.getBadgeValue({dot, content, count, maxCount}) }}</view
   >
   <slot />
