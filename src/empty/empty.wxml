@@ -1,17 +1,11 @@
 <wxs src="./empty.wxs" module="utils" />
 
-<view class="t-class t-empty" style="background-color: {{backColor}}">
+<view class="t-class t-empty">
   <view class="t-empty__content">
-    <image
-      class="t-empty__img"
-      style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}"
-      src="{{image}}"
-      mode="aspectFit"
-    />
+    <image class="t-empty__img t-class-image" src="{{image}}" mode="aspectFit" />
     <view
       wx:if="{{description}}"
-      class="t-empty__description"
-      style="font-size: {{ utils.addUnit(textSize) }}; color: {{textColor}}"
+      class="t-empty__description t-class-description t-empty__description-{{theme}}"
       >{{description}}</view
     >
     <slot />

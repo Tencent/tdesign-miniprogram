@@ -1,7 +1,7 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@empty-text-color: rgba(0, 0, 0, .4);
+@empty-text-color: rgba(0, 0, 0, 0.4);
 
 .@{prefix}-empty {
   display: flex;
@@ -23,5 +23,18 @@
     color: @empty-text-color;
     font-size: 28rpx;
     line-height: 44rpx;
+    color: #999;
+
+    &-primary {
+      color: @primary-color;
+    }
+
+    &-warning {
+      color: @warning-color;
+    }
+
+    &-error {
+      color: @error-color;
+    }
   }
 }
