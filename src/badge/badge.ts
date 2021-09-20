@@ -1,7 +1,7 @@
 /*
  * @Author: rileycai
  * @Date: 2021-06-30 11:22:22
- * @LastEditTime: 2021-09-20 17:32:11
+ * @LastEditTime: 2021-09-20 20:03:40
  * @LastEditors: Please set LastEditors
  * @Description: 第一次走查问题修复
  * @FilePath: /tdesign-miniprogram/src/badge/badge.ts
@@ -45,7 +45,7 @@ export default class Badge extends SuperComponent {
       type: String,
       value: 'circle' as ShapeType, // 尺寸，支持 'circle', 'rounded', 'ribbon'
     },
-    showZero: {
+    visible: {
       type: Boolean,
       value: false,
     },

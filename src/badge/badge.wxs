@@ -38,7 +38,7 @@ var isShowBadge = function (props) {
   if (props.dot || props.content) {
     return true;
   }
-  if (!props.showZero && props.count === 0) {
+  if (!props.visible && props.count === 0) {
     return false;
   }
   return true;

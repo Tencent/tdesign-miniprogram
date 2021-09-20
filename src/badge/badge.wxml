@@ -4,7 +4,7 @@
   <view
     class="{{this.getBadgeInnerClass({dot, size, shape, hasSlot})}} badge-class"
     style="{{this.getBadgeStyles({color, offset})}}"
-    wx:if="{{this.isShowBadge({dot,content,count,showZero})}}"
+    wx:if="{{this.isShowBadge({dot,content,count,visible})}}"
     >{{ this.getBadgeValue({dot, content, count, maxCount}) }}</view
   >
   <slot />
