@@ -1,3 +1,10 @@
+<!--
+ * @Author: shiyanzhang
+ * @Date: 2021-08-24 15:56:07
+ * @Description:
+ * @FilePath: /tdesign-miniprogram/src/empty/README.md
+-->
+
 # empty 空内容
 
 ## 引入
@@ -39,25 +46,12 @@ Page({
 
 ## API
 
-### empty Props
+### Empty Props
 
-| 参数        | 说明     | 类型     | 默认值                                                              | 版本 |
-| ----------- | -------- | -------- | ------------------------------------------------------------------- | ---- |
-| image       | 图片地址 | _string_ | `https://cdn.ghsmpwalmart.com/saas/market/image/empty/no_goods.png` | -    |
-| size        | 图片大小 | _string_ | `100rpx`                                                            | -    |
-| textSize    | 文字大小 | _string_ | `24rpx`                                                             | -    |
-| textColor   | 文字颜色 | _string_ | `#969799`                                                           | -    |
-| backColor   | 背景颜色 | _string_ | -                                                                   | -    |
-| description | 描述文字 | _string_ | -                                                                   | -    |
-
-### Slots
-
-| 名称 | 说明     |
-| ---- | -------- |
-| -    | 底部扩展 |
-
-### empty 外部样式类
-
-| 类名    | 说明         |
-| ------- | ------------ |
-| t-class | 根节点样式类 |
+| 名称             | 类型          | 默认值  | 说明                                                                                                                             | 必传 |
+| ---------------- | ------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| action           | Slot          | -       | 操作按钮                                                                                                                         | N    |
+| description      | String / Slot | -       | 描述文字                                                                                                                         | N    |
+| external-classes | Array         | -       | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-description', 't-class-image']` | N    |
+| image            | String / Slot | -       | 图片地址                                                                                                                         | N    |
+| theme            | String        | default | 空页面风格类型（待确认）。可选项：default/primary/warning/error                                                                  | N    |
