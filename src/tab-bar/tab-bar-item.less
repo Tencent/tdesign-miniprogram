@@ -4,7 +4,7 @@
 @tab-bar-height: 48px;
 @tab-bar-bg-color: @bg-color-block;
 @tab-bar-border-color: @border-level-1-color;
-@tab-bar-hover-bg-color: rgba(0, 0, 0, .05);
+@tab-bar-hover-bg-color: rgba(0, 0, 0, 0.05);
 @tab-bar-active-color: @primary-color;
 
 @{tab-bar-cls}-item {
@@ -43,6 +43,10 @@
         background-color: @tab-bar-active-color;
       }
     }
+  }
+
+  .badge-class {
+    transform: translate(50%, -10%);
   }
 
   &__text {
