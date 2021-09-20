@@ -1,7 +1,7 @@
 <view class="{{theme==='vertical'? 't-divider--vertical-center' : ''}}">
   <view
     class="t-class {{classPrefix}} {{classPrefix}}--{{theme}} {{classPrefix}}--{{align}} {{dashed? 't-divider--dashed' : ''}} "
-    style="{{ lineColor  ? 'border-color: ' + lineColor + ';' : '' }}{{ tStyle }}"
+    style="{{ lineColor  ? 'border-color: ' + lineColor + ';' : '' }}"
   >
     <view class="t-class-content t-divider--content">
       <view wx:if="{{content}}"> {{content}} </view>
