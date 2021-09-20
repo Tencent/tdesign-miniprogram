@@ -1,5 +1,5 @@
 <view
-  class="t-class {{classPrefix}} {{show ? 'show' : 'hide'}} {{fixed && 'fixed'}} {{type}}"
+  class="t-class {{classPrefix}} {{visible ? 'show' : 'hide'}} {{fixed && 'fixed'}} {{type}}"
   bindtap="toTop"
 >
   <t-icon wx:if="{{!!icon}}" class="icon t-class-icon" name="{{icon}}" />
