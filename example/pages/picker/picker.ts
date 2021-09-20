@@ -3,6 +3,7 @@ Page({
     picker1Visible: false,
     picker2Visible: false,
     picker3Visible: false,
+    pickerTitle: '',
     citys: [
       { label: '北京', value: '北京' },
       { label: '上海', value: '上海' },
@@ -38,8 +39,10 @@ Page({
   },
 
   onClickPicker(e) {
-    const { index } = e?.currentTarget?.dataset;
+    const { index, title } = e?.currentTarget?.dataset;
+
     this.setData({
+      pickerTitle: title || '',
       [`picker${index}Visible`]: true,
     });
   },
