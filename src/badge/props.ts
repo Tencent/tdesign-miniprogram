@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-21 19:47:31
+ * updated at 2021-09-21 19:55:49
  * */
 
 import { TdBadgeProps } from './type';
@@ -18,6 +18,7 @@ const props: TdBadgeProps = {
   /** 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+ */
   count: {
     optionalTypes: [String, Number],
+    value: 0,
   },
   /** 是否为红点 */
   dot: {
@@ -37,6 +38,7 @@ const props: TdBadgeProps = {
   /** 设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem'] */
   offset: {
     type: Array,
+    value: [0, 0],
   },
   /** 形状 */
   shape: {
