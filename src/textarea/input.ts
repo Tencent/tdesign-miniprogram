@@ -4,9 +4,18 @@ import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-input`;
 
-type TSizeValue = 'medium' | 'small';
-type TTypeValue = 'text' | 'number' | 'idcard' | 'digit' | 'safe-password';
+enum TSizeValue {
+  Medium = 'medium',
+  Small = 'small',
+}
 
+enum TTypeValue {
+  Textarea = 'textarea',
+  Text = 'text',
+  Number = 'number',
+  Idcard = 'idcard',
+  Digit = 'digit',
+}
 @wxComponent()
 export default class Input extends SuperComponent {
   options = {
@@ -17,16 +26,16 @@ export default class Input extends SuperComponent {
     label: {
       type: String,
       value: '',
-    }, // 标签
+    },
     value: {
       type: String,
       optionalTypes: [Number],
       value: '',
-    }, // input的值
+    },
     password: {
       type: Boolean,
       value: false,
-    }, // 是否密码类型
+    },
     error: {
       type: Boolean,
       value: false,
@@ -45,11 +54,20 @@ export default class Input extends SuperComponent {
     },
     type: {
       type: String,
-      value: 'text' as TTypeValue,
+      optionalTypes: [Number],
+      value: TTypeValue.Text,
     },
     maxlength: {
       type: Number,
       value: 500,
+    },
+    rows: {
+      type: Number,
+      value: 4,
+    },
+    maxRows: {
+      type: Number,
+      value: 12,
     },
     clearable: {
       type: Boolean,
@@ -64,15 +82,11 @@ export default class Input extends SuperComponent {
     },
     size: {
       type: String,
-      value: 'small' as TSizeValue,
+      value: TSizeValue.Medium,
     },
     bordered: {
       type: Boolean,
       value: true,
-    },
-    required: {
-      type: Boolean,
-      value: false,
     },
   };
 

@@ -1,0 +1,62 @@
+<view>
+  <block wx:if="{{ type === 'textarea' }}">
+    <view wx:if="{{ label && label.length > 0 }}" class="{{classPrefix}}--textarea-label">
+      <view>{{ label }}</view>
+    </view>
+    <view class="{{classPrefix}}--textarea">
+      <textarea
+        maxlength="{{maxlength}}"
+        disabled="{{disabled}}"
+        placeholder="{{placeholder}}"
+        placeholder-class="{{classPrefix}}__placeholder"
+        value="{{value}}"
+        bindinput="onInput"
+      >
+      </textarea>
+      <view class="{{classPrefix}}--count"> {{inputValue.length}} / {{maxlength}} </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view
+      class="{{classPrefix}} {{error ? classPrefix + '__error' : ''}}  {{!!errorMessage ? classPrefix + '__error_enable' :''}} t-input--size-{{size}} {{bordered ? classPrefix + '--bordered' : ''}}"
+    >
+      <view wx:if="{{label}}" class="{{classPrefix + '__label'}}">{{label}}</view>
+      <view class="{{classPrefix}}-wrap">
+        <view class="{{classPrefix}}__content">
+          <input
+            maxlength="{{maxlength}}"
+            disabled="{{disabled}}"
+            placeholder="{{placeholder}}"
+            placeholder-class="{{classPrefix}}__placeholder"
+            value="{{value}}"
+            bindinput="onInput"
+            password="{{password}}"
+            type="{{type}}"
+            class="{{classPrefix}}--control {{suffix? classPrefix + '--control__right':''}}"
+          />
+          <view
+            wx:if="{{ clearable && inputValue.length > 0 }}"
+            class="{{classPrefix}}-wrap--icon"
+            bind:tap="clearInput"
+          >
+            <t-icon name="close_fill" />
+          </view>
+          <view class="{{classPrefix}}-wrap--suffix">
+            <slot name="suffix"></slot>
+          </view>
+          <view wx:if="{{suffix}}" class="{{classPrefix}}-wrap--suffix-text">
+            <text>{{suffix}}</text>
+          </view>
+          <view wx:if="{{rightIcon}}" class="{{classPrefix}}-wrap--icon">
+            <t-icon name="{{rightIcon}}" />
+          </view>
+        </view>
+        <view
+          wx:if="{{error && errorMessage && errorMessage.length > 0}}"
+          class="{{classPrefix}}__error-msg"
+          >{{errorMessage}}
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

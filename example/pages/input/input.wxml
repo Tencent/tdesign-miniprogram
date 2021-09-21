@@ -1,9 +1,22 @@
 <!--示例页面-->
+<view class="demo-title">Input 输入框</view>
+<view class="demo-desc">输入框组件，可添加标题、后缀</view>
+<t-demo title="01 类型" desc="基础文本框">
+  <t-input label="标签文字" placeholder="请输入文字" />
+</t-demo>
+<t-demo title="" desc="必填、选填文本框">
+  <t-input label="标签文字" placeholder="请输入文字" required />
+  <t-input label="标签文字" placeholder="请输入文字(选填)" />
+</t-demo>
+<t-demo title="" desc="无标题文本框">
+  <t-input placeholder="请输入文字" required />
+</t-demo>
+
 <view class="input-example">
   <t-cell-group title="01 基础输入框">
     <t-input label="标准五个字" placeholder="预设文本(非必填)" right-icon="arrow-right" />
     <t-input placeholder="无标题预设文本" />
-    <t-input label="一个很长的标题需换行" placeholder="预设文本保持上下居中"> </t-input>
+    <t-input label="一个很长的标题需换行" placeholder="预设文本保持上下居中" />
     <t-cell-group title="原生input类型">
       <t-input type="idcard" bordered="{{false}}" label="身份证" placeholder="请输入身份证" />
     </t-cell-group>
@@ -13,7 +26,7 @@
         type="textarea"
         placeholder="长文本预设内容，文本默认容纳四行"
         bind:input="onInput"
-      ></t-input>
+      />
     </t-cell-group>
 
     <t-cell-group title="长文本输入框（可设置label）">
@@ -22,7 +35,7 @@
         label="标题文字"
         placeholder="长文本预设内容，文本默认容纳四行"
         bind:input="onInput"
-      ></t-input>
+      />
     </t-cell-group>
   </t-cell-group>
 
@@ -32,16 +45,15 @@
       placeholder="该项必须填写"
       bind:input="onInput3"
       error="{{ text3.length === 0 }}"
-    ></t-input>
+    />
     <t-input
       label="填写错误"
       value="{{text4}}"
       bind:input="onInput4"
       error="{{ text4.length > 4 }}"
       error-message="文字不能超过4个"
-    >
-    </t-input>
-    <t-input label="不可编辑" placeholder="不可编辑" disabled="{{true}}"></t-input>
+    />
+    <t-input label="不可编辑" placeholder="不可编辑" disabled="{{true}}" />
   </t-cell-group>
 
   <t-cell-group title="03 特殊输入框" clearable="{{true}}">
@@ -80,6 +92,6 @@
   <t-cell-group title="05 下边框" style="padding-top: 12px; padding-bottom: 12px">
     <t-input bordered="{{false}}" label="无下边框" placeholder="请输入文字" />
     <t-input label="有下边框" placeholder="请输入文字" />
-    <view class="splitter"></view>
+    <view class="splitter" />
   </t-cell-group>
 </view>
