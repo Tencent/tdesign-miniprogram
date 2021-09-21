@@ -43,24 +43,14 @@ Page({
 
 ## API
 
-`<Toast>` 组件
+### Toast Props
 
-组件路径：@tencent/tdesign-miniprogram/toast/toast
-
-### Props
-
-| 参数        | 说明                                            | 类型                 | 默认值   |
-| ----------- | ----------------------------------------------- | -------------------- | -------- |
-| icon        | 自定义图标                                      | _string_             | ``       |
-| type        | 提示类型，可选值：'loading'、'success'、'fail'  | _ToastType_          | ``       |
-| message     | 弹窗显示文字提示                                | _string_             | -        |
-| position    | 弹窗展示位置，可选值：'top'、'middle'、'bottom' | _ToastPositionType_  | `middle` |
-| duration    | 弹窗显示毫秒数                                  | _number_             | `2000`   |
-| direction   | 图标排列方式，可选值：'row'、'column'           | _ToastDirectionType_ | `'row'`  |
-| showOverlay | 显示背景遮罩，禁止背景点击和滚动                | _boolean_            | false    |
-
-```js
-type ToastType = 'loading' | 'success' | 'fail';
-type ToastPositionType = 'top' | 'middle' | 'bottom';
-type ToastDirectionType = 'row' | 'column';
-```
+| 名称         | 类型    | 默认值 | 说明                                     | 必传 |
+| ------------ | ------- | ------ | ---------------------------------------- | ---- |
+| direction    | String  | -      | 图标排列方式。可选项：row/column         | N    |
+| duration     | Number  | 2000   | 弹窗显示毫秒数                           | N    |
+| icon         | Slot    | -      | 自定义图标                               | N    |
+| message      | String  | -      | 弹窗显示文字                             | N    |
+| position     | String  | middle | 弹窗展示位置。可选项： top/middle/bottom | N    |
+| show-overlay | Boolean | -      | 是否显示背景遮罩，禁止背景点击和滚动     | N    |
+| type         | String  | -      | 提示类型。可选项：loading/success/fail   | N    |
