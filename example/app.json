@@ -111,7 +111,8 @@
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f6f6f6",
+    "backgroundColor": "#f6f6f6",
     "navigationBarTitleText": "TDesign",
     "navigationBarTextStyle": "black"
   },

@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-button`;
@@ -11,77 +12,7 @@ export default class Button extends SuperComponent {
   behaviors = ['wx://form-field-button'];
 
   // 组件的对外属性
-  properties = {
-    // 样式相关 START ===
-    theme: {
-      type: String,
-      value: 'default',
-    },
-    size: {
-      type: String,
-      value: 'medium',
-    },
-    icon: String,
-    plain: {
-      type: Boolean,
-      value: false,
-    },
-    block: {
-      type: Boolean,
-      value: false,
-    },
-    shape: {
-      type: String,
-      value: 'round',
-    },
-    loading: {
-      type: Boolean,
-      value: false,
-    },
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    // === END 样式相关
-    // === 小程序功能相关 START
-    formType: {
-      type: String,
-      value: '',
-    },
-    openType: {
-      type: String,
-      value: '',
-    },
-    lang: {
-      type: String,
-      value: 'en',
-    },
-    sessionFrom: {
-      type: String,
-      value: '',
-    },
-    sendMessageTitle: {
-      type: String,
-      value: '',
-    },
-    sendMessagePath: {
-      type: String,
-      value: '',
-    },
-    sendMessageImg: {
-      type: String,
-      value: '',
-    },
-    appParameter: {
-      type: String,
-      value: '',
-    },
-    showMessageCard: {
-      type: Boolean,
-      value: false,
-    },
-    // === END 小程序功能相关
-  };
+  properties = props;
 
   // 组件的内部数据
   data = {
@@ -117,7 +48,7 @@ export default class Button extends SuperComponent {
       const classList = [
         name,
         't-class',
-        `${name}--${this.data.theme}`,
+        `${name}--${this.data.theme || 'default'}`,
         `${name}--size-${this.data.size}`,
       ];
 
@@ -132,8 +63,11 @@ export default class Button extends SuperComponent {
       if (this.data.loading) {
         classList.push(`${prefix}-is-loading`);
       }
-      if (this.data.plain) {
-        classList.push(`${prefix}-is-plain`);
+      if (this.data.variant !== 'base') {
+        classList.push(`${name}--${this.data.variant}`);
+      }
+      if (this.data.ghost) {
+        classList.push(`${name}--ghost`);
       }
       this.setData({
         className: classList.join(' '),

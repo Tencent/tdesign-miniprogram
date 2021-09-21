@@ -1,31 +1,28 @@
-var getBadgeValue = function(props) {
+var getBadgeValue = function (props) {
   if (props.dot) {
-      return '';
-    }
-    if (props.content) {
-      return props.content;
-    }
-    return props.count > props.maxCount ? props.maxCount + '+'  : props.count;
+    return '';
+  }
+  if (props.content) {
+    return props.content;
+  }
+  return props.count > props.maxCount ? props.maxCount + '+' : props.count;
 };
 
-var getBadgeStyles = function(props) {
-  var styleStr = ''
-  styleStr += 'background:' + props.color + ';'
-  styleStr += 'top:' + props.offset[0] + ';'
-  styleStr += 'right:' + props.offset[1] + ';'
-  return styleStr
+var getBadgeStyles = function (props) {
+  var styleStr = '';
+  styleStr += 'background:' + props.color + ';';
+  styleStr += 'top:' + props.offset[0] + ';';
+  styleStr += 'right:' + props.offset[1] + ';';
+  return styleStr;
 };
 
-var getBadgeOuterClass = function(props) {
+var getBadgeOuterClass = function (props) {
   var baseClass = 't-badge';
-  var classNames = [
-    baseClass,
-    props.shape === 'ribbon' ? baseClass + '__ribbon--outer' : '' 
-  ]
+  var classNames = [baseClass, props.shape === 'ribbon' ? baseClass + '__ribbon--outer' : ''];
   return classNames.join(' ');
 };
 
-var getBadgeInnerClass = function(props) {
+var getBadgeInnerClass = function (props) {
   var baseClass = 't-badge';
   var classNames = [
     baseClass + '--basic',
@@ -33,11 +30,22 @@ var getBadgeInnerClass = function(props) {
     props.dot ? baseClass + '--dot' : '',
     props.size === 'small' ? baseClass + '--small' : '',
     baseClass + '--' + props.shape,
-  ]
+  ];
   return classNames.join(' ');
+};
+
+var isShowBadge = function (props) {
+  if (props.dot || props.content) {
+    return true;
+  }
+  if (!props.visible && props.count === 0) {
+    return false;
+  }
+  return true;
 };
 
 module.exports.getBadgeValue = getBadgeValue;
 module.exports.getBadgeStyles = getBadgeStyles;
 module.exports.getBadgeOuterClass = getBadgeOuterClass;
 module.exports.getBadgeInnerClass = getBadgeInnerClass;
+module.exports.isShowBadge = isShowBadge;

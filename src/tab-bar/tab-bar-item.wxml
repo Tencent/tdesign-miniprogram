@@ -13,16 +13,17 @@
         dot="{{badgeProps.dot}}"
         content="{{badgeProps.content}}"
         size="{{badgeProps.size}}"
-        showZero="{{badgeProps.showZero}}"
+        visible="{{badgeProps.visible}}"
         offset="{{badgeProps.offset}}"
         hasSlot
+        badge-class="badge-class"
       >
-        <t-icon name="{{icon}}" size="24px"></t-icon>
+        <t-icon name="{{icon}}" size="24px" />
       </t-badge>
-      <t-icon wx:else name="{{icon}}" size="24px"></t-icon>
+      <t-icon wx:else name="{{icon}}" size="24px" />
     </view>
     <view class="{{classPrefix}}__text {{icon ? prefix+'-size-s' : ''}}">
-      <view class="{{classPrefix}}__icon-menu" wx:if="{{hasChildren}}"></view>
+      <view class="{{classPrefix}}__icon-menu" wx:if="{{hasChildren}}" />
       <slot />
     </view>
   </view>
@@ -36,7 +37,7 @@
       wx:key="index"
       bindtap="selectChild"
       data-name="{{child.name || index}}"
-      >{{ child.label }}</view
-    >
+      >{{ child.label }}
+    </view>
   </view>
 </view>

@@ -6,7 +6,7 @@ const { prefix } = config;
 
 @wxComponent()
 export default class Stepper extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = ['t-class', 't-class-label', 't-class-input', 't-class-minus', 't-class-plus'];
 
   options = {
     addGlobalClass: true,
