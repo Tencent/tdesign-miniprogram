@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-20 20:25:14
+ * updated at 2021-09-21 20:02:12
  * */
 
 export interface TdBadgeProps {
@@ -20,11 +20,12 @@ export interface TdBadgeProps {
     value?: string;
   };
   /**
-   * 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+
+   * 徽标右上角内容。如：3/99+
+   * @default 0
    */
   count?: {
-    optionalTypes: Array<StringConstructor | NumberConstructor>;
-    value?: string | number;
+    type: NumberConstructor;
+    value?: number;
   };
   /**
    * 是否为红点
@@ -52,6 +53,7 @@ export interface TdBadgeProps {
   };
   /**
    * 设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem']
+   * @default [0,0]
    */
   offset?: {
     type: ArrayConstructor;

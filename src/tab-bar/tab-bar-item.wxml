@@ -16,7 +16,7 @@
         visible="{{badgeProps.visible}}"
         offset="{{badgeProps.offset}}"
         hasSlot
-        badge-class="badge-class"
+        t-class-badge="badge-class"
       >
         <t-icon name="{{icon}}" size="24px" />
       </t-badge>
