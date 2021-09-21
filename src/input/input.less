@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@input-label-text-color: @text-level-1-color;
+@input-name-text-color: @text-level-1-color;
 @input-text-color: @text-level-1-color;
 @input-placeholder-text-color: @text-level-4-color;
 @input-disabled-text-color: @text-level-1-color;
@@ -14,7 +14,7 @@
 @input-error-msg-font-size: @font-size-s;
 @input-vertical-padding: 24rpx;
 @input-horizontal-padding: 32rpx;
-@input-label-horizontal-margin: 32rpx;
+@input-name-horizontal-margin: 32rpx;
 @input-border-padding-left: 32rpx;
 
 .@{prefix}-input--bordered {
@@ -29,9 +29,9 @@
   padding: @input-vertical-padding @input-horizontal-padding;
   background: @bg-color-block;
 
-  &__label {
+  &__name {
     width: 164rpx;
-    margin-right: @input-label-horizontal-margin;
+    margin-right: @input-name-horizontal-margin;
     flex: none;
   }
 
@@ -80,7 +80,7 @@
     &--suffix-text {
       position: relative;
       padding-left: 24rpx;
-      color: @input-label-text-color;
+      color: @input-name-text-color;
     }
   }
 

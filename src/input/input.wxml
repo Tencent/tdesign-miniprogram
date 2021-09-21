@@ -1,8 +1,8 @@
 <view
   class="{{classPrefix}} {{error ? classPrefix + '__error' : ''}}  {{!!errorMessage ? classPrefix + '__error_enable' :''}} t-input--size-{{size}} {{classPrefix + '--bordered'}} wrapper-class"
 >
-  <view wx:if="{{label}}" class="{{classPrefix + '__label'}}"
-    >{{label}}
+  <view wx:if="{{name}}" class="{{classPrefix + '__name'}}"
+    >{{name}}
     <text wx:if="{{required}}" class="{{classPrefix + '__required'}}">*</text>
   </view>
   <view class="{{classPrefix}}-wrap">

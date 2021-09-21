@@ -16,7 +16,7 @@ export default class Input extends SuperComponent {
   externalClasses = ['wrapper-class', 'input-class', 'placeholder-class'];
 
   properties = {
-    label: {
+    name: {
       type: String,
       value: '',
     }, // 标签
@@ -51,7 +51,7 @@ export default class Input extends SuperComponent {
     },
     maxlength: {
       type: Number,
-      value: 500,
+      value: 140,
     },
     clearable: {
       type: Boolean,

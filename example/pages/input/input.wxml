@@ -3,32 +3,32 @@
   <view class="demo-title">Input 输入框</view>
   <view class="demo-desc">输入框组件，可添加标题、后缀</view>
   <t-demo title="01 类型" desc="基础文本框">
-    <t-input label="标签文字" placeholder="请输入文字" />
+    <t-input name="标签文字" placeholder="请输入文字" />
   </t-demo>
   <t-demo title="" desc="必填、选填文本框">
-    <t-input label="标签文字" placeholder="请输入文字" required />
-    <t-input label="标签文字" placeholder="请输入文字(选填)" />
+    <t-input name="标签文字" placeholder="请输入文字" required />
+    <t-input name="标签文字" placeholder="请输入文字(选填)" />
   </t-demo>
   <t-demo title="" desc="无标题文本框">
     <t-input placeholder="请输入文字" required />
   </t-demo>
   <t-demo title="" desc="带提示信息文本框">
-    <t-input label="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" />
+    <t-input name="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" />
   </t-demo>
   <t-demo title="" desc="长标题文本框">
-    <t-input label="超长需换行的标签" placeholder="预设文本" />
+    <t-input name="超长需换行的标签" placeholder="预设文本" />
   </t-demo>
   <t-demo title="02 状态" desc="文本框状态">
-    <t-input label="标签文字" placeholder="请输入文字" value="已输入文字" />
-    <t-input label="标签文字" value="一段错误填写的内容" error error-message="提示信息" />
-    <t-input label="标签文字" value="不可编辑文字" disabled />
+    <t-input name="标签文字" placeholder="请输入文字" value="已输入文字" />
+    <t-input name="标签文字" value="一段错误填写的内容" error error-message="提示信息" />
+    <t-input name="标签文字" value="不可编辑文字" disabled />
   </t-demo>
   <t-demo title="03 特殊类型" desc="特殊文本类型">
     <view class="cell">
-      <t-input label="输入密码" password value="{{textPassword}}" clearable bind:clear="onClear" />
+      <t-input name="输入密码" password value="{{textPassword}}" clearable bind:clear="onClear" />
     </view>
     <view class="cell">
-      <t-input placeholder="请输入验证码" label="验证码">
+      <t-input placeholder="请输入验证码" name="验证码">
         <view slot="suffix">
           <image
             style="width: 72px; height: 36px; display: block; margin-top: -6px; margin-bottom: -6px"
@@ -44,18 +44,18 @@
       </t-input>
     </view>
     <view class="cell">
-      <t-input label="价格" placeholder="0.00" suffix="元" type="number" />
+      <t-input name="价格" placeholder="0.00" suffix="元" type="number" />
     </view>
     <view class="cell">
-      <t-input label="数量" placeholder="填写个数" suffix="个" type="number" />
+      <t-input name="数量" placeholder="填写个数" suffix="个" type="number" />
     </view>
   </t-demo>
   <t-demo title="04 规格" desc="文本框尺寸规格">
     <view class="cell">
-      <t-input label="小规格H48" placeholder="请输入文字" />
+      <t-input name="小规格H48" placeholder="请输入文字" />
     </view>
     <view class="cell">
-      <t-input label="中规格H56" placeholder="请输入文字" size="medium" />
+      <t-input name="中规格H56" placeholder="请输入文字" size="medium" />
     </view>
   </t-demo>
 </view>
