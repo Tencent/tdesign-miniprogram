@@ -13,6 +13,8 @@ export default class Input extends SuperComponent {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
+  externalClasses = ['wrapper-class', 'input-class', 'placeholder-class'];
+
   properties = {
     label: {
       type: String,
@@ -65,10 +67,6 @@ export default class Input extends SuperComponent {
     size: {
       type: String,
       value: 'small' as TSizeValue,
-    },
-    bordered: {
-      type: Boolean,
-      value: true,
     },
     required: {
       type: Boolean,

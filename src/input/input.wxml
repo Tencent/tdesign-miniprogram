@@ -1,5 +1,5 @@
 <view
-  class="{{classPrefix}} {{error ? classPrefix + '__error' : ''}}  {{!!errorMessage ? classPrefix + '__error_enable' :''}} t-input--size-{{size}} {{bordered ? classPrefix + '--bordered' : ''}}"
+  class="{{classPrefix}} {{error ? classPrefix + '__error' : ''}}  {{!!errorMessage ? classPrefix + '__error_enable' :''}} t-input--size-{{size}} {{classPrefix + '--bordered'}} wrapper-class"
 >
   <view wx:if="{{label}}" class="{{classPrefix + '__label'}}"
     >{{label}}
@@ -11,12 +11,12 @@
         maxlength="{{maxlength}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
-        placeholder-class="{{classPrefix}}__placeholder"
+        placeholder-class="{{classPrefix}}__placeholder placeholder-class"
         value="{{value}}"
         bindinput="onInput"
         password="{{password}}"
         type="{{type}}"
-        class="{{classPrefix}}--control {{suffix? classPrefix + '--control__right':''}}"
+        class="{{classPrefix}}--control {{suffix? classPrefix + '--control__right':''}} input-class"
       />
       <view
         wx:if="{{ clearable && inputValue.length > 0 }}"
