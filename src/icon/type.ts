@@ -7,8 +7,23 @@
 
 export interface TdIconProps {
   /**
+   * 图标自定义样式
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
+   * 图标颜色
+   */
+  color?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
    * 图标名称
-   * @default ''
    */
   name: {
     type: StringConstructor;
@@ -21,24 +36,6 @@ export interface TdIconProps {
   size?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
-  };
-  /**
-   * 图标 DOM 元素，可选值：i/span/div/...
-   * @default i
-   */
-  tag?: {
-    type: StringConstructor;
-    value?: string;
-    required?: boolean;
-  };
-  /**
-   * 图标地址，地址内容参考[组件内部默认加载图标](https://tdesign.gtimg.com/icon/web/index.css)。也可以在 index.html 中引入图标地址
-   */
-  url?: {
-    type: StringConstructor;
-    optionalTypes: Array<ArrayConstructor>;
-    value?: string | Array<string>;
     required?: boolean;
   };
 }
