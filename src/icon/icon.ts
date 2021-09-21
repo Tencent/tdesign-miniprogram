@@ -3,7 +3,7 @@ import config from '../common/config';
 import props from './props';
 
 const { prefix } = config;
-const name = `${prefix}-dialog`;
+const name = `${prefix}-icon`;
 
 const sizeKeywordMap = {
   xs: '24rpx',
