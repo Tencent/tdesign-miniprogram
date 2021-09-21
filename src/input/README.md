@@ -66,8 +66,8 @@
 
 ### External Class
 
-| 类名              | 说明                        |
-| ----------------- | --------------------------- |
-| wrapper-class     | 外部包裹的拓展类            |
-| input-class       | 输入框的拓展类              |
-| placeholder-class | 输入框 placeholder 的拓展类 |
+| 类名                | 说明                        |
+| ------------------- | --------------------------- |
+| t-class             | 外部包裹的拓展类            |
+| t-class-input       | 输入框的拓展类              |
+| t-class-placeholder | 输入框 placeholder 的拓展类 |

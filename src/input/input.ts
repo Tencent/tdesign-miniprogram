@@ -1,8 +1,8 @@
 /*
  * @Author: rileycai
  * @Date: 2021-09-21 19:10:10
- * @LastEditTime: 2021-09-21 19:41:08
- * @LastEditors: rileycai
+ * @LastEditTime: 2021-09-21 20:07:41
+ * @LastEditors: Please set LastEditors
  * @Description: textarea从input组件拆分出去
  * @FilePath: /tdesign-miniprogram/src/input/input.ts
  */
@@ -19,7 +19,7 @@ export default class Input extends SuperComponent {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
-  externalClasses = ['wrapper-class', 'input-class', 'placeholder-class'];
+  externalClasses = ['t-class', 't-class-input', 't-class-placeholder'];
 
   properties = props;
 
