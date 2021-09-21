@@ -1,32 +1,10 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
+import { TdToastProps } from './type';
 import config from '../common/config';
+import Props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-toast`;
-
-type ToastType = 'loading' | 'success' | 'fail';
-type ToastPositionType = 'top' | 'middle' | 'bottom';
-type ToastDirectionType = 'row' | 'column';
-
-type ToastOptionsType = {
-  icon?: string;
-  message: string;
-  duration?: number;
-  type?: ToastType;
-  position?: ToastPositionType;
-  showOverlay?: boolean;
-  direction?: ToastDirectionType;
-};
-
-const DefaultOptions: ToastOptionsType = {
-  icon: '',
-  message: '',
-  duration: 2000,
-  direction: 'row',
-  position: 'middle',
-  showOverlay: false,
-};
-
 @wxComponent()
 export default class Toast extends SuperComponent {
   externalClasses = ['t-class'];
@@ -37,7 +15,7 @@ export default class Toast extends SuperComponent {
 
   typeMapIcon: Record<string, string> = {
     loading: 'loading',
-    success: 'tick',
+    success: 'check',
     fail: 'close',
   };
 
@@ -45,29 +23,30 @@ export default class Toast extends SuperComponent {
     inserted: false,
     show: false,
     classPrefix: name,
+    typeMapIcon: '',
   };
 
-  properties: AnyObject = {
-    icon: String,
-    message: String,
-    duration: Number,
-    type: String,
-    position: String,
-    showOverlay: Boolean,
-    direction: String,
-    typeMapIcon: String,
+  properties = {
+    ...Props,
+    direction: {
+      type: String,
+      value: 'row',
+    },
+    icon: {
+      type: String,
+      value: '',
+    },
   };
 
-  show(options: ToastOptionsType) {
+  show(options: TdToastProps) {
     if (this.hideTimer) clearTimeout(this.hideTimer);
     if (this.removeTimer) clearTimeout(this.removeTimer);
     const typeMapIcon =
-      Object.keys(this.typeMapIcon).indexOf(options?.type) !== -1
-        ? this.typeMapIcon[options?.type]
+      Object.keys(this.typeMapIcon).indexOf(options?.type as any) !== -1
+        ? this.typeMapIcon[options?.type as any]
         : '';
 
     const data = {
-      ...DefaultOptions,
       ...options,
       show: true,
       typeMapIcon,
@@ -77,7 +56,7 @@ export default class Toast extends SuperComponent {
     this.setData(data);
     this.hideTimer = setTimeout(() => {
       this.clear();
-    }, duration as number);
+    }, duration as any);
   }
 
   clear() {
