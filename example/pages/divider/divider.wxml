@@ -1,7 +1,7 @@
 <view class="demo">
   <view class="demo-title">Divider 分割符</view>
   <view class="demo-desc">用于段落、行、组的内容分割，便于用户更好的浏览信息和识别内容</view>
-  <t-demo title="01 基本用法" desc="分割符主要是由直线和文字组成">
+  <t-demo title="01 类型" desc="分割符主要是由直线和文字组成">
     <view class="t-divider-list">
       <view class="t-divider-demo">
         <view class="demo-section__desc">直线拉通</view>

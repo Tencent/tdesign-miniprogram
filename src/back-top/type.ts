@@ -24,7 +24,7 @@ export interface TdBackTopProps {
    * 是否显示组件
    * @default false
    */
-  show?: {
+  visible?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -40,7 +40,7 @@ export interface TdBackTopProps {
    * 预设的样式类型
    * @default round
    */
-  type?: {
+  theme?: {
     type: StringConstructor;
     value?: 'round' | 'half-round' | 'round-dark' | 'half-round-dark';
   };

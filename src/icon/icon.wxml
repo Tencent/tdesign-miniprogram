@@ -1,5 +1,6 @@
-<label
-  class=" {{ classPrefix }}  {{ classPrefix }}-{{name}}"
-  style="{{ color ? 'color:' + color : '' }};{{ fontSize ? 'font-size:'+ fontSize : '' }};{{ customStyle }}"
+<view
+  class="t-class {{ classPrefix }}-{{name}}"
+  style="{{ color ? 'color:' + color : '' }};{{ fontSize ? 'font-size:'+ fontSize : '' }};"
   bind:tap="onTap"
-></label>
+>
+</view>
