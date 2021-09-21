@@ -35,7 +35,7 @@ export default class Input extends SuperComponent {
       type: String,
       value: '',
     },
-    rightIcon: {
+    suffixIcon: {
       type: String,
       value: '',
     },
