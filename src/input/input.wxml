@@ -14,8 +14,15 @@
         placeholder-class="{{classPrefix}}__placeholder placeholder-class"
         value="{{value}}"
         bindinput="onInput"
+        bindfocus="onFocus"
+        bindblur="onBlur"
+        bindconfirm="onConfirm"
         password="{{password}}"
         type="{{type}}"
+        focus="{{focus}}"
+        confirm-type="{{confirmType}}"
+        confirm-hold="{{confirmHold}}"
+        adjust-position="{{adjustPosition}}"
         class="{{classPrefix}}--control {{suffix? classPrefix + '--control__right':''}} input-class"
       />
       <view

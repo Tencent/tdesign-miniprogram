@@ -1,9 +1,17 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-21 18:21:58
+ * updated at 2021-09-21 19:38:43
  * */
 
 export interface TdInputProps {
+  /**
+   * 键盘弹起时，是否自动上推页面
+   * @default true
+   */
+  adjustPosition?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
   /**
    * 是否可清空
    * @default false
@@ -11,6 +19,22 @@ export interface TdInputProps {
   clearable?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 点击键盘右下角按钮时是否保持键盘不收起点
+   * @default false
+   */
+  confirmHold?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 设置键盘右下角按钮的文字，仅在 type='text'时生效
+   * @default done
+   */
+  confirmType?: {
+    type: StringConstructor;
+    value?: 'send' | 'search' | 'next' | 'go' | 'done';
   };
   /**
    * 是否禁用输入框
@@ -35,6 +59,14 @@ export interface TdInputProps {
   errorMessage?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 是否获取焦点
+   * @default false
+   */
+  focus?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 用户最多可以输入的文本长度
@@ -82,7 +114,7 @@ export interface TdInputProps {
    */
   size?: {
     type: StringConstructor;
-    value?: TSizeValue;
+    value?: 'medium' | 'small';
   };
   /**
    * 后置文本内容
@@ -105,7 +137,7 @@ export interface TdInputProps {
    */
   type?: {
     type: StringConstructor;
-    value?: TTypeValue;
+    value?: 'text' | 'number' | 'idcard' | 'digit' | 'safe-password';
   };
   /**
    * 输入框的值
