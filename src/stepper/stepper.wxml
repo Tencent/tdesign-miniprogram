@@ -2,7 +2,7 @@
   wx:if="{{theme === 'normal'}}"
   class="{{ classPrefix }}-normal {{ disabled ? 't-is-disabled': ''}} t-class"
 >
-  <view slot="title" class="{{ classPrefix }}__label">{{ label }}</view>
+  <view slot="title" class="{{ classPrefix }}__label t-class-label">{{ label}}</view>
   <view slot="right-icon" class="{{ classPrefix }}__right-container">
     <t-icon
       bindtap="minusValue"
@@ -17,12 +17,13 @@
     <input
       slot="note"
       style="width: {{inputWidth || 100}}rpx"
-      class="{{ classPrefix }}__input"
+      class="{{ classPrefix }}__input t-class-input"
       disabled="{{ disabled || disableInput }}"
       type="number"
       value="{{ currentValue }}"
       bindblur="blurHandler"
     />
+
     <t-icon
       class="{{ classPrefix }}__plus {{ disabled || disablePlus|| currentValue >= max ? 't-is-disabled': ''}}"
       bindtap="plusValue"
@@ -40,7 +41,7 @@
   class="{{ classPrefix }}-pure {{ disabled ? 't-is-disabled': ''}} t-class"
 >
   <view
-    class="{{ classPrefix }}__minus {{ disabled || disableMinus || currentValue <= min ? 't-is-disabled': ''}}"
+    class="{{ classPrefix }}__minus t-class-minus {{ disabled || disableMinus || currentValue <= min ? 't-is-disabled': ''}}"
     bindtap="minusValue"
   >
     <t-icon
@@ -52,7 +53,7 @@
   </view>
 
   <input
-    class="{{ classPrefix }}__input"
+    class="{{ classPrefix }}__input t-class-input"
     style="width: {{inputWidth || 72}}rpx"
     disabled="{{ disabled || disableInput }}"
     type="number"
@@ -60,7 +61,7 @@
     bindblur="blurHandler"
   />
   <view
-    class="{{ classPrefix }}__plus {{ disabled || disablePlus|| currentValue >= max ? 't-is-disabled': ''}}"
+    class="{{ classPrefix }}__plus t-class-plus {{ disabled || disablePlus|| currentValue >= max ? 't-is-disabled': ''}}"
     bindtap="plusValue"
   >
     <t-icon

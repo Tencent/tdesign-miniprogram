@@ -88,7 +88,7 @@
     </t-radio-group>
   </t-demo>
 
-  <t-demo title="03 特殊类型" desc="自定义图标单选框">
+  <t-demo title="04 规格" desc="单选框尺寸规格">
     <t-radio value="radio1" label="单选H48" t-class="t-radio-padding" checked />
     <t-radio value="radio2" label="单选H56" t-class="t-radio-demo" checked />
   </t-demo>

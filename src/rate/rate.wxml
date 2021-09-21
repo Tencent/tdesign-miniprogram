@@ -9,7 +9,7 @@
     <t-icon
       wx:for="{{ count }}"
       wx:key="*this"
-      t-class="{{ classPrefix }}__star"
+      t-class="{{ classPrefix }}__star t-class-icon"
       name="{{this.getIconName(defaultValue, value, index, allowHalf, icon, halfIcon, variant)}}"
       color="{{this.getIconColor(defaultValue, value, index, allowHalf, disabled, color, disabledColor)}}"
       size="{{ size }}"
@@ -17,7 +17,7 @@
       custom-style="background:linear-gradient(to right, {{ disabled ? disabledColor : color }} 0%,  {{ disabled ? disabledColor : color }} 50%,  #E3E6EB 51%,  #E3E6EB 100%);-webkit-background-clip:text;background-clip:text;"
     />
   </view>
-  <text wx:if="{{showText}}" class="{{ classPrefix }}__desc"
+  <text wx:if="{{showText}}" class="{{ classPrefix }}__desc t-class-desc"
     >{{this.getText(texts,value,defaultTexts)}}</text
   >
 </view>

@@ -6,13 +6,12 @@ const { prefix } = config;
 const name = `${prefix}-switch`;
 @wxComponent()
 export default class Switch extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = ['t-class', 't-class-label', 't-class-body', 't-class-dot'];
 
   properties = props;
 
   // 组件的内部数据
   data = {
-    externalClass: 't-class',
     classPrefix: name,
     isActive: false,
     bodyStyle: '',

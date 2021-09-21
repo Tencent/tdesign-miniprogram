@@ -1,13 +1,13 @@
-<view class="{{externalClass}} {{classPrefix}}">
+<view class="t-class {{classPrefix}}">
   <!-- <view class="{{classPrefix}}__label" style="width: {{labelWidth}}px">{{label}}</view> -->
-  <view class="{{classPrefix}}__label">{{label}}</view>
+  <view class="{{classPrefix}}__label t-class-label">{{label}}</view>
   <view
-    class="{{classPrefix}}__body {{isActive ? classPrefix + '__body--active' : ''}} {{disabled ? classPrefix + '__body--disabled' : ''}}"
+    class="{{classPrefix}}__body t-class-body {{isActive ? classPrefix + '__body--active' : ''}} {{disabled ? classPrefix + '__body--disabled' : ''}}"
     style="{{bodyStyle}}"
     bindtap="onTapBackground"
   >
     <view
-      class="{{classPrefix}}__dot  {{isActive ? classPrefix + '__dot--active' : ''}}"
+      class="{{classPrefix}}__dot t-class-dot  {{isActive ? classPrefix + '__dot--active' : ''}}"
       catchtap="onTapDot"
     />
   </view>
