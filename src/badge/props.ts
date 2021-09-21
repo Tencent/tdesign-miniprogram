@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-21 19:55:49
+ * updated at 2021-09-21 20:02:12
  * */
 
 import { TdBadgeProps } from './type';
@@ -15,9 +15,9 @@ const props: TdBadgeProps = {
   content: {
     type: String,
   },
-  /** 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+ */
+  /** 徽标右上角内容。如：3/99+ */
   count: {
-    optionalTypes: [String, Number],
+    type: Number,
     value: 0,
   },
   /** 是否为红点 */
