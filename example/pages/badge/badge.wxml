@@ -1,87 +1,67 @@
-<view class="demo">
-  <view class="demo-title">Badge 徽标</view>
-  <view class="demo-desc">展示新增内容的提示，用警示红色为主色，包含数字或文字提示内容</view>
-  <view class="demo-section">
-    <view class="demo-section__title">01 基本用法</view>
-    <view class="demo-section__desc">消息提示主要分数字、文本和圆点提醒</view>
-    <view class="demo-section__grid">
-      <t-badge dot hasSlot class="badge-item">
-        <text style="padding: 0 2px">消息</text>
-      </t-badge>
-      <t-badge count="{{16}}" hasSlot class="badge-item">
-        <text style="padding: 0 10px">消息</text>
-      </t-badge>
-      <t-badge content="New" hasSlot class="badge-item">
-        <text style="padding: 0 12px">消息</text>
-      </t-badge>
-      <t-badge content="···" hasSlot class="badge-item">
-        <text style="padding: 0 12px">消息</text>
-      </t-badge>
-      <t-badge dot hasSlot class="badge-item">
-        <t-button size="small" variant="outline">小按钮</t-button>
-      </t-badge>
-      <t-badge count="{{16}}" hasSlot class="badge-item">
-        <t-button size="small" variant="outline">小按钮</t-button>
-      </t-badge>
-      <t-badge content="New" hasSlot class="badge-item">
-        <t-button size="small" variant="outline">小按钮</t-button>
-      </t-badge>
-      <t-badge content="···" hasSlot class="badge-item">
-        <t-button size="small" variant="outline">小按钮</t-button>
-      </t-badge>
-    </view>
-    <t-cell-group style="overflow: hidden">
-      <t-cell title="单行标题" hover arrow>
-        <view class="cell-badge-wrap" slot="note">
-          <t-badge dot />
-        </view>
-      </t-cell>
-      <t-cell title="单行标题" hover arrow>
-        <view class="cell-badge-wrap" slot="note">
-          <t-badge count="{{16}}" />
-        </view>
-      </t-cell>
-      <t-cell title="单行标题" hover arrow>
-        <view class="cell-badge-wrap" slot="note">
-          <t-badge content="New" shape="round" class="cell-badge" />
-          <t-badge content="New" class="cell-badge" />
-        </view>
-      </t-cell>
-      <t-cell title="单行标题">
-        <t-badge content="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-      </t-cell>
-    </t-cell-group>
+<view class="demo-title">Badge 徽标</view>
+<view class="demo-desc">展示新增内容的提示，用警示红色为主色，包含数字或文字提示内容</view>
+<t-demo title="01 基本用法" desc="徽标主要分红点、数字、文字和角标提醒">
+  <view class="demo-grid">
+    <t-badge dot hasSlot class="badge-item">
+      <text style="padding: 0 2px">消息</text>
+    </t-badge>
+    <t-badge count="{{16}}" hasSlot class="badge-item">
+      <text style="padding: 0 10px">消息</text>
+    </t-badge>
+    <t-badge content="New" hasSlot class="badge-item">
+      <text style="padding: 0 12px">消息</text>
+    </t-badge>
+    <t-badge content="···" hasSlot class="badge-item">
+      <text style="padding: 0 12px">消息</text>
+    </t-badge>
+    <t-badge dot hasSlot class="badge-item">
+      <t-button size="small" variant="outline">小按钮</t-button>
+    </t-badge>
+    <t-badge count="{{16}}" hasSlot class="badge-item">
+      <t-button size="small" variant="outline">小按钮</t-button>
+    </t-badge>
+    <t-badge content="New" hasSlot class="badge-item">
+      <t-button size="small" variant="outline">小按钮</t-button>
+    </t-badge>
+    <t-badge content="···" hasSlot class="badge-item">
+      <t-button size="small" variant="outline">小按钮</t-button>
+    </t-badge>
   </view>
-
-  <view class="demo-section">
-    <view class="demo-tabbar">
-      <view class="demo-tabbar__item">
-        <t-badge dot hasSlot class="badge-item">
-          <t-icon name="help_fill" />
-        </t-badge>
-        <view>文字</view>
+  <t-cell-group style="overflow: hidden">
+    <t-cell title="单行标题" hover arrow>
+      <view class="cell-badge-wrap" slot="note">
+        <t-badge dot />
       </view>
-
-      <view class="demo-tabbar__item">
-        <t-badge count="{{16}}" hasSlot class="badge-item">
-          <t-icon name="help_fill" />
-        </t-badge>
-        <view>文字</view>
+    </t-cell>
+    <t-cell title="单行标题" hover arrow>
+      <view class="cell-badge-wrap" slot="note">
+        <t-badge count="{{16}}" />
       </view>
-
-      <view class="demo-tabbar__item">
-        <t-badge content="New" hasSlot class="badge-item">
-          <t-icon name="help_fill" />
-        </t-badge>
-        <view>文字</view>
+    </t-cell>
+    <t-cell title="单行标题" hover arrow>
+      <view class="cell-badge-wrap" slot="note">
+        <t-badge content="New" shape="round" class="cell-badge" />
+        <t-badge content="New" class="cell-badge" />
       </view>
-
-      <view class="demo-tabbar__item">
-        <t-badge content="···" hasSlot class="badge-item">
-          <t-icon name="help_fill" />
-        </t-badge>
-        <view>文字</view>
-      </view>
-    </view>
-  </view>
-</view>
+    </t-cell>
+    <t-cell title="单行标题">
+      <t-badge content="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+    </t-cell>
+  </t-cell-group>
+</t-demo>
+<t-demo desc="标签栏带徽标">
+  <t-tab-bar value="label1" bindchange="onChange" class="mb-12">
+    <t-tab-bar-item badge-props="{{ {content: 16} }}" value="label1" icon="app"
+      >文字</t-tab-bar-item
+    >
+    <t-tab-bar-item badge-props="{{ { dot: true } }}" value="label2" icon="app"
+      >文字
+    </t-tab-bar-item>
+    <t-tab-bar-item badge-props="{{ {content: 'New'} }}" value="label3" icon="app"
+      >文字
+    </t-tab-bar-item>
+    <t-tab-bar-item badge-props="{{ {content: '...'} }}" value="label4" icon="app"
+      >文字
+    </t-tab-bar-item>
+  </t-tab-bar>
+</t-demo>

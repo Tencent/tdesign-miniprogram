@@ -1,8 +1,20 @@
+/*
+ * @Author: rileycai
+ * @Date: 2021-06-30 11:22:22
+ * @LastEditTime: 2021-09-20 20:03:40
+ * @LastEditors: Please set LastEditors
+ * @Description: 第一次走查问题修复
+ * @FilePath: /tdesign-miniprogram/src/badge/badge.ts
+ */
 // import { BADGE_PROPS } from './badge.interface';
 import { SuperComponent, wxComponent } from '../common/src/index';
 
+type ShapeType = 'circle' | 'rounded' | 'ribbon';
+type SizeType = 'medium' | 'small';
 @wxComponent()
 export default class Badge extends SuperComponent {
+  externalClasses = ['wrapper-class', 'badge-class'];
+
   properties = {
     customStyle: String,
     color: {
@@ -27,13 +39,13 @@ export default class Badge extends SuperComponent {
     },
     size: {
       type: String,
-      value: 'middle', // 尺寸，支持 'medium', 'small'
+      value: 'middle' as SizeType, // 尺寸，支持 'medium', 'small'
     },
     shape: {
       type: String,
-      value: 'circle', // 尺寸，支持 'circle', 'rounded', 'ribbon'
+      value: 'circle' as ShapeType, // 尺寸，支持 'circle', 'rounded', 'ribbon'
     },
-    showZero: {
+    visible: {
       type: Boolean,
       value: false,
     },
