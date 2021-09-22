@@ -5,7 +5,7 @@ var getBadgeValue = function (props) {
   if (props.content) {
     return props.content;
   }
-  return props.count > props.maxCount ? props.maxCount + '+' : props.count;
+  return parseInt(props.count) > props.maxCount ? props.maxCount + '+' : props.count;
 };
 
 var getBadgeStyles = function (props) {
@@ -38,7 +38,7 @@ var isShowBadge = function (props) {
   if (props.dot || props.content) {
     return true;
   }
-  if (!props.visible && props.count === 0) {
+  if (!props.visible && parseInt(props.count) === 0) {
     return false;
   }
   return true;
