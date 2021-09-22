@@ -3,7 +3,7 @@
  * 因原生swiper受限，基于wxs重新实现，后期可以扩展更多丰富的功能
  * todo：无限循环，3D动效等
  */
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, ControlOption, useControl } from '../common/src/index';
 import config from '../common/config';
 import { DIRECTION, NavTypes } from './common/constants';
 import props from './props';
@@ -32,17 +32,7 @@ const defaultNavigation = {
   minShowNum: 2,
   hasNavBtn: false,
 };
-/**
- * 检查受控属性，判断是否受控
- * @param val
- * @returns
- */
-const isControlled = function (val: any): boolean {
-  if (typeof val === 'undefined' || val === null) {
-    return false;
-  }
-  return true;
-};
+
 @wxComponent()
 export default class Swiper extends SuperComponent {
   externalClasses = ['t-class'];
@@ -90,6 +80,9 @@ export default class Swiper extends SuperComponent {
 
   timer = null;
 
+  // 受控属性
+  controll: ControlOption = null;
+
   relations = {
     './swiper-item': {
       type: 'child' as 'child',
@@ -123,6 +116,7 @@ export default class Swiper extends SuperComponent {
   };
 
   attached() {
+    this.controll = useControl.call(this, 'current', 'defaultCurrent');
     this.createSelectorQuery()
       .select('#swiper')
       .boundingClientRect((rect) => {
@@ -172,7 +166,7 @@ export default class Swiper extends SuperComponent {
    * 初始化也需要等待wxs完成，由wxs触发inited
    */
   inited() {
-    this.updateNav(this.data._current);
+    this.updateNav(this.controll.get());
     this.setData({
       inited: true,
     });
@@ -183,10 +177,8 @@ export default class Swiper extends SuperComponent {
    * 需要通过wxs更新位置，存在短暂延迟
    */
   initCurrent() {
-    const { defaultCurrent, current } = this.properties;
-    const index: any = isControlled(current) ? current : defaultCurrent;
-    this.setData({
-      _current: index,
+    const index = this.controll.initValue;
+    this.controll.set(index, {
       currentInited: true,
       // 默认为0时，不需要等待wxs计算位置，可直接显示
       inited: index === 0,
@@ -221,16 +213,16 @@ export default class Swiper extends SuperComponent {
    * @returns
    */
   goto(index: number, source: string) {
-    const { current } = this.properties;
-    this.triggerEvent('change', {
-      current: index,
-      source,
-    });
-    // 使用了受控属性，必须配合change事件来更新
-    if (isControlled(current)) {
-      return;
-    }
-    this.update(index);
+    this.controll.change(
+      index,
+      {
+        current: index,
+        source,
+      },
+      () => {
+        this.update(index);
+      },
+    );
   }
 
   /**
@@ -249,13 +241,7 @@ export default class Swiper extends SuperComponent {
       fixIndex = len - 1;
     }
     this.updateNav(fixIndex);
-    this.setData(
-      {
-        _current: fixIndex,
-        ...this.calcOffset(fixIndex),
-      },
-      finish,
-    );
+    this.controll.set(fixIndex, this.calcOffset(fixIndex), finish);
   }
 
   /**
@@ -265,7 +251,7 @@ export default class Swiper extends SuperComponent {
   updateNav(index) {
     if (!this.$nav) return;
     const { direction } = this.properties;
-    this.$nav.onChange({
+    this.$nav?.onChange({
       index,
       total: this.children.length,
       direction,
@@ -290,13 +276,13 @@ export default class Swiper extends SuperComponent {
    * @param opt
    */
   next(opt: SwitchOpt) {
-    const { _current } = this.data;
+    const innerVal = this.controll.get();
     const len = this.children.length;
-    let nextIndex = _current;
-    if (opt.cycle && _current === len - 1) {
+    let nextIndex = innerVal;
+    if (opt.cycle && innerVal === len - 1) {
       // 最后一个时，跳转第一个
       nextIndex = 0;
-    } else if (len - 1 > _current) {
+    } else if (len - 1 > innerVal) {
       nextIndex += 1;
     }
     this.goto(nextIndex, opt.source);
@@ -307,10 +293,10 @@ export default class Swiper extends SuperComponent {
    * @param opt
    */
   prev(opt: SwitchOpt) {
-    const { _current } = this.data;
+    const innerVal = this.controll.get();
     const len = this.children.length;
-    let nextIndex = _current;
-    if (opt.cycle && _current === 0) {
+    let nextIndex = innerVal;
+    if (opt.cycle && innerVal === 0) {
       // 第一个时，跳转到最后一个
       nextIndex = len - 1;
     } else if (nextIndex > 0) {
