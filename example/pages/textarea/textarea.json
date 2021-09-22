@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Input 输入框",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}
