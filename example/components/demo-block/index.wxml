@@ -10,7 +10,6 @@
       <t-button
         t-class="demo-block__oper-btn"
         size="large"
-        shape="round"
         data-type="{{ btnItem.type }}"
         bind:tap="clickHandle"
       >
