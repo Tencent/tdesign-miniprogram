@@ -81,7 +81,7 @@ export default class Swiper extends SuperComponent {
   timer = null;
 
   // 受控属性
-  controll: ControlOption = null;
+  control: ControlOption = null;
 
   relations = {
     './swiper-item': {
@@ -116,7 +116,7 @@ export default class Swiper extends SuperComponent {
   };
 
   attached() {
-    this.controll = useControl.call(this, 'current', 'defaultCurrent');
+    this.control = useControl.call(this, 'current', 'defaultCurrent');
     this.createSelectorQuery()
       .select('#swiper')
       .boundingClientRect((rect) => {
@@ -166,7 +166,7 @@ export default class Swiper extends SuperComponent {
    * 初始化也需要等待wxs完成，由wxs触发inited
    */
   inited() {
-    this.updateNav(this.controll.get());
+    this.updateNav(this.control.get());
     this.setData({
       inited: true,
     });
@@ -177,8 +177,8 @@ export default class Swiper extends SuperComponent {
    * 需要通过wxs更新位置，存在短暂延迟
    */
   initCurrent() {
-    const index = this.controll.initValue;
-    this.controll.set(index, {
+    const index = this.control.initValue;
+    this.control.set(index, {
       currentInited: true,
       // 默认为0时，不需要等待wxs计算位置，可直接显示
       inited: index === 0,
@@ -213,7 +213,7 @@ export default class Swiper extends SuperComponent {
    * @returns
    */
   goto(index: number, source: string) {
-    this.controll.change(
+    this.control.change(
       index,
       {
         current: index,
@@ -241,7 +241,7 @@ export default class Swiper extends SuperComponent {
       fixIndex = len - 1;
     }
     this.updateNav(fixIndex);
-    this.controll.set(fixIndex, this.calcOffset(fixIndex), finish);
+    this.control.set(fixIndex, this.calcOffset(fixIndex), finish);
   }
 
   /**
@@ -276,7 +276,7 @@ export default class Swiper extends SuperComponent {
    * @param opt
    */
   next(opt: SwitchOpt) {
-    const innerVal = this.controll.get();
+    const innerVal = this.control.get();
     const len = this.children.length;
     let nextIndex = innerVal;
     if (opt.cycle && innerVal === len - 1) {
@@ -293,7 +293,7 @@ export default class Swiper extends SuperComponent {
    * @param opt
    */
   prev(opt: SwitchOpt) {
-    const innerVal = this.controll.get();
+    const innerVal = this.control.get();
     const len = this.children.length;
     let nextIndex = innerVal;
     if (opt.cycle && innerVal === 0) {
