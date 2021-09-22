@@ -1,10 +1,10 @@
 const backTopDemos = [
-  { text: '顶部', type: 'round' },
-  { text: '顶部', type: 'round-dark' },
-  { text: '', type: 'round' },
-  { text: '', type: 'round-dark' },
-  { text: '返回顶部', type: 'half-round' },
-  { text: '返回顶部', type: 'half-round-dark' },
+  { text: '顶部', theme: 'round' },
+  { text: '顶部', theme: 'round-dark' },
+  { text: '', theme: 'round' },
+  { text: '', theme: 'round-dark' },
+  { text: '返回顶部', theme: 'half-round' },
+  { text: '返回顶部', theme: 'half-round-dark' },
 ];
 
 Page({
