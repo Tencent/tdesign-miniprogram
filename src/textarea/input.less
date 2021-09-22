@@ -1,0 +1,197 @@
+@import '../common/style/index.less';
+
+@input-label-text-color: @text-level-1-color;
+@input-text-color: @text-level-2-color;
+@input-placeholder-text-color: @text-level-3-color;
+@input-disabled-text-color: @text-level-3-color;
+@input-icon-color: @text-level-4-color;
+@input-error-text-color: @error-color;
+@input-suffix-text-color: @text-level-1-color;
+@input-border-color: #e7e7e7;
+
+@input-font-size: 32rpx;
+@input-icon-font-size: 40rpx;
+@input-error-msg-font-size: @font-size-s;
+@input-vertical-padding: 24rpx;
+@input-horizontal-padding: 32rpx;
+@input-label-horizontal-margin: 32rpx;
+@input-border-padding-left: 32rpx;
+
+.@{prefix}-input--bordered {
+  &::after {
+    .hairline-bottom(@input-border-color);
+    left: @input-border-padding-left;
+  }
+}
+.@{prefix}-input {
+  position: relative;
+  display: flex;
+  padding: @input-vertical-padding @input-horizontal-padding;
+
+  &__label {
+    max-width: 80px;
+    margin-right: @input-label-horizontal-margin;
+    flex: none;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: @input-font-size;
+  }
+
+  &-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex: auto;
+
+    &--suffix,
+    &--icon {
+      flex: 0 0 auto;
+      margin-left: @spacer-1;
+
+      i {
+        font-size: @input-icon-font-size;
+        color: @input-icon-color;
+      }
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    &--suffix {
+      position: relative;
+      padding-left: 12px;
+
+      &::after {
+        .hairline-left();
+      }
+    }
+
+    &--suffix-text {
+      position: relative;
+      padding-left: 12px;
+      color: @input-label-text-color;
+    }
+  }
+
+  &--control {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0; // for flex-shrink in field__button
+    margin: 0;
+    padding: 0;
+    color: @input-text-color;
+    line-height: inherit;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+    font-size: inherit;
+
+    &::placeholder {
+      color: @input-placeholder-text-color;
+    }
+
+    &:disabled {
+      color: @input-disabled-text-color;
+      background-color: transparent;
+      cursor: not-allowed;
+      opacity: 1;
+      -webkit-text-fill-color: currentColor; // fix disabled color in iOS
+    }
+
+    &:read-only {
+      cursor: default;
+    }
+
+    &__right {
+      text-align: right;
+    }
+  }
+
+  &__placeholder {
+    color: @input-placeholder-text-color;
+  }
+
+  &--textarea {
+    padding: @input-vertical-padding @input-horizontal-padding;
+
+    textarea {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+      background-color: transparent;
+      border: 0;
+      resize: none;
+      font-size: @input-font-size;
+    }
+
+    &-label {
+      position: relative;
+      padding: @input-vertical-padding @input-horizontal-padding;
+      font-size: @input-font-size;
+      color: @input-label-text-color;
+
+      &::after {
+        .hairline-bottom();
+        left: @input-horizontal-padding;
+      }
+    }
+  }
+
+  &--count {
+    text-align: right;
+    color: @input-placeholder-text-color;
+  }
+}
+
+.@{prefix}-input__error {
+  align-items: flex-start;
+
+  .@{prefix}-input {
+    &--control {
+      color: @input-error-text-color;
+
+      &::placeholder {
+        color: @input-error-text-color;
+      }
+    }
+
+    &__placeholder {
+      color: @input-error-text-color;
+    }
+  }
+}
+
+.@{prefix}-input__error_enable {
+  .@{prefix}-input {
+    &__error-msg {
+      text-align: left;
+      padding-top: @spacer-1;
+      font-size: @input-error-msg-font-size;
+      line-height: 1;
+      color: @input-placeholder-text-color;
+    }
+  }
+}
+
+.@{prefix}-input__disabled {
+  color: @input-disabled-text-color;
+}
+
+.@{prefix}-input--size-medium {
+  padding-top: @spacer-2;
+  padding-bottom: @spacer-2;
+}
+.@{prefix}-input--size-small {
+  padding-top: 24rpx;
+  padding-bottom: 24rpx;
+}
