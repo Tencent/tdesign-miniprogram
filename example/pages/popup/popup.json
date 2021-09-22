@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "popup 弹窗",
+  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base-demo": "./demos/base",
     "mask-transparent-demo": "./demos/mask-transparent",
