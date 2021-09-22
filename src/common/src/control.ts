@@ -24,11 +24,17 @@ type ControlOption = {
    * @param customChangeData 自定义change数据，默认同newVal
    * @param customUpdateFn 自定义更新函数，默认使用set()
    */
-  change(newVal: any, customChangeData: any, customUpdateFn: any): void;
+  change(newVal: any, customChangeData?: any, customUpdateFn?: any): void;
 };
 
 /**
  * 受控函数
+ * 用法示例：
+ * {
+ *  attached() {
+ *    this.control = useControl.call(this);
+ *  }
+ * }
  * 注意事项：
  * 1：命名规范：约束value等命名，一般不需要改。内部属性统一命名以_开头。
  * 2：value默认值：小程序number类型未传值（undefined）会初始化为0，导致无法判断。建议默认值设置为null
