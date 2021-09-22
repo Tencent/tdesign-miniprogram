@@ -1,13 +1,14 @@
-<view>
-  <view wx:if="{{ name && name.length > 0 }}" class="{{classPrefix}}--textarea-name">
+<view class="{{classPrefix}} t-class">
+  <view wx:if="{{ name && name.length > 0 }}" class="{{classPrefix}}__name">
     <view>{{ name }}</view>
   </view>
-  <view class="{{classPrefix}}--textarea">
+  <view class="{{classPrefix}}__wrapper">
     <textarea
       maxlength="{{maxlength}}"
       disabled="{{disabled}}"
       placeholder="{{placeholder}}"
-      placeholder-class="{{classPrefix}}__placeholder"
+      class="t-class-textarea"
+      placeholder-class="{{classPrefix}}__wrapper__placeholder t-class-placeholder"
       value="{{value}}"
       auto-focus="{{autofocus}}"
       focus="{{focus}}"
@@ -21,6 +22,6 @@
       bindconfirm="onConfirm"
       bindlinechange="onLineChange"
     />
-    <view class="{{classPrefix}}--count"> {{inputValue.length}} / {{maxlength}} </view>
+    <view class="{{classPrefix}}__wrapper__count"> {{inputValue.length}} / {{maxlength}} </view>
   </view>
 </view>

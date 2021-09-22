@@ -1,73 +1,27 @@
+/*
+ * @Author: rileycai
+ * @Date: 2021-09-22 10:33:54
+ * @LastEditTime: 2021-09-22 21:07:53
+ * @LastEditors: Please set LastEditors
+ * @Description: 新增textarea组件
+ * @FilePath: /tdesign-miniprogram/src/textarea/textarea.ts
+ */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-textarea`;
 
 @wxComponent()
-export default class Input extends SuperComponent {
+export default class Textarea extends SuperComponent {
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
-  externalClasses = ['t-class', 't-class-input', 't-class-placeholder'];
+  externalClasses = ['t-class', 't-class-textarea', 't-class-placeholder'];
 
-  properties = {
-    /** 键盘弹起时，是否自动上推页面 */
-    adjustPosition: {
-      type: Boolean,
-      value: true,
-    },
-    /** 点击键盘右下角按钮时是否保持键盘不收起点 */
-    confirmHold: {
-      type: Boolean,
-      value: false,
-    },
-    /** 设置键盘右下角按钮的文字，仅在 type='text'时生效 */
-    confirmType: {
-      type: String,
-      value: 'done',
-    },
-    /** 是否禁用输入框 */
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    /** 是否获取焦点 */
-    focus: {
-      type: Boolean,
-      value: false,
-    },
-    /** 是否自动获取焦点 */
-    autofocus: {
-      type: Boolean,
-      value: false,
-    },
-    /** 用户最多可以输入的文本长度 */
-    maxlength: {
-      type: Number,
-      value: 140,
-    },
-    /** 名称 */
-    name: {
-      type: String,
-      value: '',
-    },
-    /** 占位符 */
-    placeholder: {
-      type: String,
-      value: '',
-    },
-    /** 输入框的值 */
-    value: {
-      type: String,
-      value: '',
-    },
-    autoHeight: {
-      type: Boolean,
-      value: false,
-    },
-  };
+  properties = props;
 
   data = {
     inputValue: '',
