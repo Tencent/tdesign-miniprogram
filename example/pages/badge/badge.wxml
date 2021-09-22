@@ -15,16 +15,16 @@
       <text style="padding: 0 12px">消息</text>
     </t-badge>
     <t-badge dot hasSlot class="badge-item">
-      <t-button size="small" variant="outline">小按钮</t-button>
+      <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
     <t-badge count="{{16}}" hasSlot class="badge-item">
-      <t-button size="small" variant="outline">小按钮</t-button>
+      <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
     <t-badge content="New" hasSlot class="badge-item">
-      <t-button size="small" variant="outline">小按钮</t-button>
+      <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
     <t-badge content="···" hasSlot class="badge-item">
-      <t-button size="small" variant="outline">小按钮</t-button>
+      <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
   </view>
   <t-cell-group style="overflow: hidden">
