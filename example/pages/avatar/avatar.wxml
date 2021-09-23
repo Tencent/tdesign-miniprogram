@@ -26,7 +26,7 @@
       </view>
       <view class="gutter-column-24"></view>
       <view class="avatar-example text">
-        <t-avatar alt="A" t-alt-class="alt-example" />
+        <t-avatar alt="A" t-class-alt="alt-example" />
         <text>自定义文字</text>
       </view>
     </view>
@@ -36,40 +36,40 @@
   <view class="desc">
     <view class="row">
       <view class="avatar-group avatar-group--reverse">
-        <t-avatar alt="+5" t-image-class="border-example-1" t-alt-class="icon-example" size="xs" />
+        <t-avatar alt="+5" t-class-image="border-example-1" t-class-alt="alt-example1" size="xs" />
         <t-avatar
           wx:for="{{pics}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
           size="xs"
-          t-image-class="border-example-1"
+          t-class-image="border-example-1"
         />
       </view>
     </view>
     <view class="row">
       <view class="avatar-group avatar-group--reverse">
-        <t-avatar alt="+5" t-image-class="border-example-2" t-alt-class="icon-example" size="s" />
+        <t-avatar alt="+5" t-class-image="border-example-2" t-class-alt="alt-example1" size="s" />
         <t-avatar
           wx:for="{{pics}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
           size="s"
-          t-image-class="border-example-2"
+          t-class-image="border-example-2"
         />
       </view>
     </view>
     <view class="row">
       <view class="avatar-group avatar-group--reverse">
-        <t-avatar alt="+5" t-image-class="border-example-3" t-alt-class="icon-example" size="m" />
+        <t-avatar alt="+5" t-class-image="border-example-3" t-class-alt="alt-example1" size="m" />
         <t-avatar
           wx:for="{{pics}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
           size="m"
-          t-image-class="border-example-3"
+          t-class-image="border-example-3"
         />
       </view>
     </view>
@@ -85,12 +85,12 @@
           wx:key="index"
           image="{{pic}}"
           size="xs"
-          t-image-class="border-example-1"
+          t-class-image="border-example-1"
         />
         <t-avatar
-          icon="user_fill"
-          t-image-class="border-example-1"
-          t-icon-class="icon-example"
+          icon="user-add"
+          t-class-image="border-example-1"
+          t-class-icon="icon-example"
           size="xs"
           bindtap="onAddTap"
         />
@@ -104,12 +104,12 @@
           wx:key="index"
           image="{{pic}}"
           size="s"
-          t-image-class="border-example-2"
+          t-class-image="border-example-2"
         />
         <t-avatar
-          icon="user_fill"
-          t-image-class="border-example-2"
-          t-icon-class="icon-example"
+          icon="user-add"
+          t-class-image="border-example-2"
+          t-class-icon="icon-example"
           size="s"
           bindtap="onAddTap"
         />
@@ -123,12 +123,12 @@
           wx:key="index"
           image="{{pic}}"
           size="m"
-          t-image-class="border-example-3"
+          t-class-image="border-example-3"
         />
         <t-avatar
-          icon="user_fill"
-          t-image-class="border-example-3"
-          t-icon-class="icon-example"
+          icon="user-add"
+          t-class-image="border-example-3"
+          t-class-icon="icon-example"
           size="m"
           bindtap="onAddTap"
         />
@@ -218,23 +218,23 @@
     </view>
     <view class="row">
       <view class="avatar-example">
-        <t-avatar alt="A" t-alt-class="alt-example" size="xl" />
+        <t-avatar alt="A" t-class-alt="alt-example" size="xl" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar alt="A" t-alt-class="alt-example" size="l" />
+        <t-avatar alt="A" t-class-alt="alt-example" size="l" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar alt="A" t-alt-class="alt-example" size="m" />
+        <t-avatar alt="A" t-class-alt="alt-example" size="m" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar alt="A" t-alt-class="alt-example" size="s" />
+        <t-avatar alt="A" t-class-alt="alt-example" size="s" />
       </view>
       <view class="gutter-column-32"></view>
       <view class="avatar-example">
-        <t-avatar alt="A" t-alt-class="alt-example" size="xs" />
+        <t-avatar alt="A" t-class-alt="alt-example" size="xs" />
       </view>
     </view>
   </view>

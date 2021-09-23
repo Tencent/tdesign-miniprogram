@@ -47,12 +47,12 @@ export default class TabbarItem extends SuperComponent {
 
   methods = {
     toggle() {
-      const { parent, currentName, isSpread, hasChildren } = this.data;
+      const { parent, currentName, hasChildren } = this.data;
 
       if (hasChildren) {
-        this.setData({
-          isSpread: !isSpread,
-        });
+        // this.setData({
+        //   isSpread: !isSpread,
+        // });
         if (Array.isArray(parent.value) && parent.value[0] === currentName) {
           parent.updateValue([currentName]);
         }
@@ -71,7 +71,9 @@ export default class TabbarItem extends SuperComponent {
       });
     },
     checkActive(value) {
-      const { currentName, hasChildren } = this.data;
+      const { currentName, hasChildren, isSpread } = this.data;
+      // console.log(isSpread, currentName, value);
+
       const isChecked =
         currentName === value ||
         (hasChildren && this.properties.subTabBar.some((item) => item.name === value));
@@ -79,9 +81,10 @@ export default class TabbarItem extends SuperComponent {
       if (hasChildren && Array.isArray(value)) {
         return value.indexOf(currentName) > -1;
       }
+
       this.setData({
         isChecked,
-        isSpread: isChecked,
+        isSpread: currentName === value && hasChildren ? !isSpread : isChecked,
       });
     },
   };

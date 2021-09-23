@@ -1,10 +1,7 @@
 <view class="demo">
   <view class="demo-title">Tab bar 标签栏</view>
   <view class="demo-desc">移动端的主导航，用做功能模块之间的切换</view>
-
-  <view class="demo-section">
-    <view class="demo-section__title">01 类型</view>
-    <view class="demo-section__desc mb-12">单层级纯文本标签栏</view>
+  <t-demo title="01 类型" desc="单层级纯文本标签栏">
     <t-tab-bar
       wx:for="{{demoList_1}}"
       wx:for-item="list"
@@ -24,8 +21,8 @@
         {{item.label}}
       </t-tab-bar-item>
     </t-tab-bar>
-
-    <view class="demo-section__desc mg-16">文本加图标标签栏</view>
+  </t-demo>
+  <t-demo desc="文本加图标标签栏">
     <t-tab-bar
       wx:for="{{demoList_2}}"
       wx:for-item="list"
@@ -34,6 +31,7 @@
       value="{{value}}"
       bindchange="onChange"
       class="mb-12"
+      color="{{['#0052D9', 'rgba(0, 0, 0, .9)']}}"
     >
       <t-tab-bar-item
         wx:for="{{list}}"
@@ -46,35 +44,27 @@
         {{item.label}}
       </t-tab-bar-item>
     </t-tab-bar>
-
-    <t-tab-bar value="label1" bindchange="onChange" class="mb-12">
-      <t-tab-bar-item badge-props="{{ {content: 16} }}" icon="loading" value="label1" icon="loading"
+    <t-tab-bar
+      value="label1"
+      bindchange="onChange"
+      class="mb-12"
+      color="{{['#0052D9', 'rgba(0, 0, 0, .9)']}}"
+    >
+      <t-tab-bar-item badge-props="{{ {content: 16} }}" icon="loading" value="label1" icon="app"
         >文字
       </t-tab-bar-item>
-      <t-tab-bar-item
-        badge-props="{{ { dot: true } }}"
-        icon="loading"
-        value="label2"
-        icon="user_fill"
+      <t-tab-bar-item badge-props="{{ { dot: true } }}" icon="loading" value="label2" icon="app"
         >文字
       </t-tab-bar-item>
-      <t-tab-bar-item
-        badge-props="{{ {content: 'New'} }}"
-        icon="user"
-        value="label3"
-        icon="user_fill"
+      <t-tab-bar-item badge-props="{{ {content: 'New'} }}" icon="user" value="label3" icon="app"
         >文字
       </t-tab-bar-item>
-      <t-tab-bar-item
-        badge-props="{{ {content: '...'} }}"
-        icon="user"
-        value="label4"
-        icon="user_fill"
+      <t-tab-bar-item badge-props="{{ {content: '...'} }}" icon="user" value="label4" icon="app"
         >文字
       </t-tab-bar-item>
     </t-tab-bar>
-
-    <view class="demo-section__desc mg-16">纯图标标签栏</view>
+  </t-demo>
+  <t-demo desc="纯图标标签栏">
     <t-tab-bar
       wx:for="{{demoList_2}}"
       wx:for-item="list"
@@ -83,6 +73,8 @@
       value="{{value}}"
       bindchange="onChange"
       class="{{index===demoList_2.length-1?'':'mb-12'}}"
+      color="{{['#0052D9', 'rgba(0, 0, 0, .9)']}}"
+      bordered="true"
     >
       <t-tab-bar-item
         wx:for="{{list}}"
@@ -93,21 +85,21 @@
         value="{{item.value}}"
       />
     </t-tab-bar>
-
-    <view class="demo-section__desc" style="margin-bottom: 170px; margin-top: 16px"
-      >双层级纯文本标签栏</view
-    >
-    <t-tab-bar value="label_3" bindchange="onChange">
-      <t-tab-bar-item
-        wx:for="{{list_5}}"
-        wx:for-item="item"
-        wx:for-index="index"
-        wx:key="index"
-        value="{{item.value}}"
-        sub-tab-bar="{{item.children}}"
-      >
-        {{item.label}}
-      </t-tab-bar-item>
-    </t-tab-bar>
-  </view>
+  </t-demo>
+  <t-demo desc="双层级纯文本标签栏">
+    <view class="demo-word">
+      <t-tab-bar value="label_3" bindchange="onChange">
+        <t-tab-bar-item
+          wx:for="{{list_5}}"
+          wx:for-item="item"
+          wx:for-index="index"
+          wx:key="index"
+          value="{{item.value}}"
+          sub-tab-bar="{{item.children}}"
+        >
+          {{item.label}}
+        </t-tab-bar-item>
+      </t-tab-bar>
+    </view>
+  </t-demo>
 </view>
