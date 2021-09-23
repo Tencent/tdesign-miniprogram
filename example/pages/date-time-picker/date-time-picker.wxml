@@ -1,0 +1,79 @@
+<view class="demo">
+  <view class="demo-title">DatetimePicker 时间选择器</view>
+  <view class="demo-desc">用于选择某一具体日期</view>
+  <t-demo title="01 类型" desc="基础时间选择器" />
+  <t-cell
+    title="选择日期(年月日)"
+    hover
+    note="{{dateText || '年 月 日'}}"
+    arrow
+    data-mode="date"
+    bindtap="showPicker"
+  />
+  <t-cell
+    title="选择日期(年月)"
+    hover
+    note="{{monthText || '年 月'}}"
+    arrow
+    data-mode="month"
+    bindtap="showPicker"
+  />
+  <t-cell
+    title="选择时间(时分)"
+    hover
+    note="{{timeText || '时 分'}}"
+    arrow
+    data-mode="time"
+    bindtap="showPicker"
+  />
+  <t-cell
+    title="选择日期时间(年月日时分)"
+    hover
+    note="{{datetimeText || '年月日时分'}}"
+    arrow
+    data-mode="datetime"
+    bindtap="showPicker"
+  />
+</view>
+
+<!-- 年月日 -->
+<t-date-time-picker
+  visible="{{dateVisible}}"
+  mode="{{['date']}}"
+  value="{{date}}"
+  format="YYYY-MM-DD"
+  bindconfirm="onConfirm"
+  bindcancel="hidePicker"
+  disableDate="{{disableDate}}"
+></t-date-time-picker>
+
+<!-- 年月 -->
+<t-date-time-picker
+  visible="{{monthVisible}}"
+  mode="{{['month']}}"
+  value="{{month}}"
+  format="YYYY-MM"
+  bindconfirm="onConfirm"
+  bindcancel="hidePicker"
+></t-date-time-picker>
+
+<!-- 时分 -->
+<t-date-time-picker
+  visible="{{timeVisible}}"
+  mode="{{['null', 'minute']}}"
+  value="{{time}}"
+  format="HH:mm"
+  bindconfirm="onConfirm"
+  bindcancel="hidePicker"
+></t-date-time-picker>
+
+<!-- 年月日时分 -->
+<t-date-time-picker
+  visible="{{datetimeVisible}}"
+  mode="{{['minute']}}"
+  value="{{datetime}}"
+  format="YYYY-MM-DD HH:mm"
+  bindconfirm="onConfirm"
+  bindcancel="hidePicker"
+  disableDate="{{disableDate}}"
+></t-date-time-picker>

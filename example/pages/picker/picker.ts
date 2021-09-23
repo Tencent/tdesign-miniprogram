@@ -56,7 +56,7 @@ Page({
     console.log('picker1 confirm:', e.detail);
     this.setData({
       picker1Visible: false,
-      selectedCityValue: e.detail.value?.value,
+      selectedCityValue: e.detail.value[0].value,
     });
   },
   onPicker1Cancel() {
