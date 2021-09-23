@@ -1,25 +1,25 @@
 /*
  * @Author: rileycai
- * @Date: 2021-09-21 19:10:10
- * @LastEditTime: 2021-09-23 14:40:51
+ * @Date: 2021-09-22 10:33:54
+ * @LastEditTime: 2021-09-23 10:53:01
  * @LastEditors: Please set LastEditors
- * @Description: textarea从input组件拆分出去
- * @FilePath: /tdesign-miniprogram/src/input/input.ts
+ * @Description: 新增textarea组件
+ * @FilePath: /tdesign-miniprogram/src/textarea/textarea.ts
  */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
 const { prefix } = config;
-const name = `${prefix}-input`;
+const name = `${prefix}-textarea`;
 
 @wxComponent()
-export default class Input extends SuperComponent {
+export default class Textarea extends SuperComponent {
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
-  externalClasses = ['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg'];
+  externalClasses = ['t-class', 't-class-textarea', 't-class-placeholder', 't-class-name'];
 
   properties = props;
 
@@ -40,7 +40,7 @@ export default class Input extends SuperComponent {
       const { value } = event.detail;
       this.setData({ inputValue: value });
 
-      this.triggerEvent('input', {
+      this.triggerEvent('change', {
         ...event.detail,
       });
     },
@@ -59,9 +59,8 @@ export default class Input extends SuperComponent {
         ...event.detail,
       });
     },
-    clearInput(event) {
-      this.setData({ inputValue: '' });
-      this.triggerEvent('clear', {
+    onLineChange(event) {
+      this.triggerEvent('lineChange', {
         ...event.detail,
       });
     },

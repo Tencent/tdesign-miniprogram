@@ -44,7 +44,7 @@
     </view>
     <view
       wx:if="{{error && errorMessage && errorMessage.length > 0}}"
-      class="{{classPrefix}}__error-msg"
+      class="{{classPrefix}}__error-msg t-class-error-msg"
       >{{errorMessage}}
     </view>
   </view>

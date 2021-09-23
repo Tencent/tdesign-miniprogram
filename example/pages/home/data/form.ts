@@ -23,6 +23,10 @@ const form = {
       label: '输入框',
     },
     {
+      name: 'Textarea',
+      label: '多行输入框',
+    },
+    {
       name: 'Picker',
       label: '选择器',
     },
