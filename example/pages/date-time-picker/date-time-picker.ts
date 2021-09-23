@@ -41,7 +41,7 @@ Page({
     const { value, formatValue } = e?.detail;
     const { mode } = this.data;
 
-    console.log(value, 233);
+    console.log(value, formatValue);
 
     this.setData({
       [mode]: value.valueOf(),
