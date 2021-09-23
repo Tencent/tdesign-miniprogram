@@ -50,7 +50,8 @@
     "pages/image/image",
     "pages/search/search",
     "pages/home/navigateFail/navigateFail",
-    "pages/navbar/navbar"
+    "pages/navbar/navbar",
+    "pages/date-time-picker/date-time-picker"
   ],
   "usingComponents": {
     "t-demo": "components/demo-block/index",
@@ -109,7 +110,8 @@
     "t-count-down": "@tencent/tdesign-miniprogram/count-down/count-down",
     "t-image": "@tencent/tdesign-miniprogram/image/image",
     "t-search": "@tencent/tdesign-miniprogram/search/search",
-    "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar"
+    "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar",
+    "t-date-time-picker": "@tencent/tdesign-miniprogram/date-time-picker/date-time-picker"
   },
   "window": {
     "backgroundTextStyle": "light",

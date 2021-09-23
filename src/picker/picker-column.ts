@@ -2,8 +2,12 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './picker-item-props';
 
-const itemHeight = 40;
+const itemHeight = 80;
 const DefaultDuration = 200;
+
+const { windowWidth } = wx.getSystemInfoSync();
+
+const rpx2px = (rpx) => Math.floor((windowWidth * rpx) / 750);
 
 const range = function (num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max);
@@ -42,7 +46,7 @@ export default class PickerColumn extends SuperComponent {
     },
 
     onTouchMove(event) {
-      const { StartY, StartOffset } = this;
+      const { StartY, StartOffset, itemHeight } = this;
       // 偏移增量
       const deltaY = event.touches[0].clientY - StartY;
       this.setData({
@@ -58,10 +62,10 @@ export default class PickerColumn extends SuperComponent {
         return;
       }
       // 调整偏移量
-      const index = range(Math.round(-offset / itemHeight), 0, this.getCount() - 1);
+      const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
       this.setData({
         duration: DefaultDuration,
-        offset: -index * itemHeight,
+        offset: -index * this.itemHeight,
       });
 
       if (index === this._selectedIndex) {
@@ -95,7 +99,7 @@ export default class PickerColumn extends SuperComponent {
       const index = options.findIndex((item) => item.value === value);
       const selectedIndex = index > 0 ? index : 0;
 
-      this.setData({ offset: -selectedIndex * itemHeight });
+      this.setData({ offset: -selectedIndex * this.itemHeight });
 
       this._selectedIndex = selectedIndex;
       this._selectedValue = options[selectedIndex];
@@ -113,5 +117,6 @@ export default class PickerColumn extends SuperComponent {
   created() {
     this.StartY = 0;
     this.StartOffset = 0;
+    this.itemHeight = rpx2px(itemHeight);
   }
 }
