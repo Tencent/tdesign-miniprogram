@@ -52,7 +52,7 @@ const DEFAULT_MAX_DATE: Dayjs = dayjs('2030-12-31 23:59:59');
 export default class DateTimePicker extends SuperComponent {
   properties = props;
 
-  externalClasses = ['t-class'];
+  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
 
   observers = {
     // value 变化需要同步 内部 date 实现受控属性
