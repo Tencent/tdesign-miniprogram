@@ -8,7 +8,6 @@
         <view class="item">
           <view class="item__title">上传图片</view>
           <t-upload
-            max="2"
             media-type="{{['image']}}"
             files="{{originFiles1}}"
             bind:remove="handleRemove"
