@@ -2,10 +2,7 @@
   <view class="demo-title">Tag 标签</view>
   <view class="demo-desc">用于标记表示主体属性、类型、状态等，由底部图形和标签文字组成</view>
 
-  <view class="demo-section">
-    <view class="demo-section__title">01 类型</view>
-    <view class="demo-section__desc">展示型标签</view>
-
+  <t-demo title="01 类型" desc="展示型标签">
     <view class="group">
       <t-tag theme="primary">重要</t-tag>
       <t-tag theme="danger">危险</t-tag>
@@ -34,12 +31,9 @@
         >超长省略文本标签超长省略文本标签</t-tag
       >
     </view>
-  </view>
+  </t-demo>
 
-  <view class="demo-section">
-    <view class="demo-section__title">02 状态</view>
-    <view class="demo-section__desc">标签状态</view>
-
+  <t-demo title="02 状态" desc="标签状态">
     <view class="group">
       <t-check-tag
         size="large"
@@ -54,12 +48,9 @@
         >{{fruit.name}}</t-check-tag
       >
     </view>
-  </view>
+  </t-demo>
 
-  <view class="demo-section">
-    <view class="demo-section__title">03 规格</view>
-    <view class="demo-section__desc">规格标签</view>
-
+  <t-demo title="03 规格" desc="规格标签">
     <view class="group d-flex">
       <view class="left">
         <t-tag size="large" theme="primary">展示标签30</t-tag>
@@ -72,5 +63,5 @@
         <t-check-tag size="midium">点击标签24</t-check-tag>
       </view>
     </view>
-  </view>
+  </t-demo>
 </view>

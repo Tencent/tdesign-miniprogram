@@ -2,7 +2,7 @@
 @import '../common/style/index.less';
 
 // size
-@dialog-width: 320rpx * 2;
+@dialog-width: 322rpx * 2;
 @dialog-body-min-height: 88rpx * 2;
 @dialog-body-max-height: 388rpx * 2;
 @dialog-btn-height: 56rpx * 2;
@@ -34,14 +34,14 @@ page {
 
     &__header {
       text-align: center;
-      font-weight: 500;
+      font-weight: bold;
       font-size: @font-size-m;
       line-height: @text-line-height;
       color: @text-level-1-color;
     }
 
     &__body {
-      overflow-y: auto;
+      overflow-y: scroll;
       text-align: center;
       -webkit-overflow-scrolling: touch;
       font-size: @font-size-m;
@@ -100,7 +100,7 @@ page {
 
       &-confirm {
         color: @primary-color;
-        font-weight: 500;
+        font-weight: bold;
       }
 
       &-cancel {
@@ -118,7 +118,7 @@ page {
         opacity: 0;
       }
 
-      .dialog__button::after {
+      &::after {
         border-radius: 0;
         border-color: @dialog-btn-bg-color-active;
       }
@@ -126,11 +126,6 @@ page {
       &--active,
       &:active {
         background-color: @dialog-btn-bg-color-active;
-      }
-
-      &:before {
-        content: ' ';
-        .hairline-left(@dialog-btn-border-color);
       }
     }
 

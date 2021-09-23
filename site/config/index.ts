@@ -1,4 +1,3 @@
-
 export default {
   docs: [
     {
@@ -148,6 +147,13 @@ export default {
           meta: { docType: 'form' },
           path: '/miniprogram/components/input',
           component: () => import('@/input/README.md'),
+        },
+        {
+          title: 'Textarea 多行输入框',
+          name: 'textarea',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/textarea',
+          component: () => import('@/textarea/README.md'),
         },
         {
           title: 'Fab 悬浮按钮',

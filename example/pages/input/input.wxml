@@ -1,85 +1,77 @@
 <!--示例页面-->
 <view class="input-example">
-  <t-cell-group title="01 基础输入框">
-    <t-input label="标准五个字" placeholder="预设文本(非必填)" right-icon="arrow-right" />
-    <t-input placeholder="无标题预设文本" />
-    <t-input label="一个很长的标题需换行" placeholder="预设文本保持上下居中"> </t-input>
-    <t-cell-group title="原生input类型">
-      <t-input type="idcard" bordered="{{false}}" label="身份证" placeholder="请输入身份证" />
-    </t-cell-group>
-
-    <t-cell-group title="长文本输入框">
+  <view class="demo-title">Input 输入框</view>
+  <view class="demo-desc">输入框组件，可添加标题、后缀</view>
+  <t-demo title="01 类型" desc="基础文本框">
+    <t-input name="标签文字" placeholder="请输入文字" />
+  </t-demo>
+  <t-demo title="" desc="必填、选填文本框">
+    <t-input name="标签文字" placeholder="请输入文字" required />
+    <t-input name="标签文字" placeholder="请输入文字(选填)" />
+  </t-demo>
+  <t-demo title="" desc="无标题文本框">
+    <t-input placeholder="请输入文字" required />
+  </t-demo>
+  <t-demo title="" desc="带提示信息文本框">
+    <t-input name="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" />
+  </t-demo>
+  <t-demo title="" desc="长标题文本框">
+    <t-input name="超长需换行的标签" placeholder="预设文本" />
+  </t-demo>
+  <t-demo title="02 状态" desc="文本框状态">
+    <t-input name="标签文字" placeholder="请输入文字" value="已输入文字" />
+    <t-input name="标签文字" value="一段错误填写的内容" error error-message="提示信息" />
+    <t-input name="标签文字" value="不可编辑文字" disabled />
+  </t-demo>
+  <t-demo title="03 特殊类型" desc="特殊文本类型">
+    <view class="cell">
+      <t-input name="输入密码" password value="{{textPassword}}" clearable bind:clear="onClear" />
+    </view>
+    <view class="cell">
+      <t-input placeholder="请输入验证码" name="验证码">
+        <view slot="suffix">
+          <image
+            style="width: 72px; height: 36px; display: block; margin-top: -6px; margin-bottom: -6px"
+            src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png"
+            mode="heightFix"
+          />
+        </view>
+      </t-input>
+    </view>
+    <view class="cell">
       <t-input
-        type="textarea"
-        placeholder="长文本预设内容，文本默认容纳四行"
-        bind:input="onInput"
-      ></t-input>
-    </t-cell-group>
-
-    <t-cell-group title="长文本输入框（可设置label）">
+        placeholder="请输入手机号码"
+        value="{{phoneNumber}}"
+        type="number"
+        error="{{phoneError}}"
+        error-message="手机号输入不正确"
+        bindinput="onPhoneInput"
+      >
+        <view slot="suffix" class="verify"> 发送验证码 </view>
+      </t-input>
+    </view>
+    <view class="cell">
       <t-input
-        type="textarea"
-        label="标题文字"
-        placeholder="长文本预设内容，文本默认容纳四行"
-        bind:input="onInput"
-      ></t-input>
-    </t-cell-group>
-  </t-cell-group>
-
-  <t-cell-group title="02 状态">
-    <t-input
-      label="未填写警告"
-      placeholder="该项必须填写"
-      bind:input="onInput3"
-      error="{{ text3.length === 0 }}"
-    ></t-input>
-    <t-input
-      label="填写错误"
-      value="{{text4}}"
-      bind:input="onInput4"
-      error="{{ text4.length > 4 }}"
-      error-message="文字不能超过4个"
-    >
-    </t-input>
-    <t-input label="不可编辑" placeholder="不可编辑" disabled="{{true}}"></t-input>
-  </t-cell-group>
-
-  <t-cell-group title="03 特殊输入框" clearable="{{true}}">
-    <t-input
-      label="输入密码"
-      password="{{true}}"
-      value="{{textPassword}}"
-      clearable="{{true}}"
-      bind:clear="onClear"
-    />
-    <t-input placeholder="请输入手机号码" type="number">
-      <view slot="suffix">
-        <image
-          style="width: 72px; height: 36px; display: block; margin-top: -6px; margin-bottom: -6px"
-          src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png"
-          mode="heightFix"
-        />
-      </view>
-    </t-input>
-
-    <t-input placeholder="请输入手机号码" type="number">
-      <view slot="suffix">
-        <t-button theme="text">发送验证码</t-button>
-      </view>
-    </t-input>
-
-    <t-input label="价格" placeholder="0.00" suffix="元" />
-    <t-input label="个数" placeholder="填写个数" suffix="个" />
-  </t-cell-group>
-
-  <t-cell-group title="04 规格">
-    <t-input size="small" label="小规格(H48)" placeholder="请输入文字" />
-    <t-input size="medium" label="中规格(H56)" placeholder="请输入文字" />
-  </t-cell-group>
-
-  <t-cell-group title="05 下边框" style="padding-top: 12px; padding-bottom: 12px">
-    <t-input bordered="{{false}}" label="无下边框" placeholder="请输入文字" />
-    <t-input label="有下边框" placeholder="请输入文字" />
-    <view class="splitter"></view>
-  </t-cell-group>
+        name="价格"
+        placeholder="0.00"
+        suffix="元"
+        bindinput="onPriceInput"
+        vlaue="{{price}}"
+        error="{{priceError}}"
+        error-message="请输入正确的价格"
+        t-class-error-msg="error-msg"
+      />
+    </view>
+    <view class="cell">
+      <t-input name="数量" placeholder="填写个数" suffix="个" type="number" />
+    </view>
+  </t-demo>
+  <t-demo title="04 规格" desc="文本框尺寸规格">
+    <view class="cell">
+      <t-input name="小规格H48" placeholder="请输入文字" />
+    </view>
+    <view class="cell">
+      <t-input name="中规格H56" placeholder="请输入文字" size="medium" />
+    </view>
+  </t-demo>
 </view>

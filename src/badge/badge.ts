@@ -1,51 +1,19 @@
-// import { BADGE_PROPS } from './badge.interface';
+/*
+ * @Author: rileycai
+ * @Date: 2021-06-30 11:22:22
+ * @LastEditTime: 2021-09-21 20:05:07
+ * @LastEditors: Please set LastEditors
+ * @Description: 第一次走查问题修复
+ * @FilePath: /tdesign-miniprogram/src/badge/badge.ts
+ */
 import { SuperComponent, wxComponent } from '../common/src/index';
+import props from './props';
 
 @wxComponent()
 export default class Badge extends SuperComponent {
-  properties = {
-    customStyle: String,
-    color: {
-      type: String,
-      value: '#e34d59',
-    },
-    count: {
-      type: Number,
-      value: 0,
-    },
-    dot: {
-      type: Boolean,
-      value: false,
-    },
-    maxCount: {
-      type: Number,
-      value: 99,
-    },
-    content: {
-      type: String,
-      value: '',
-    },
-    size: {
-      type: String,
-      value: 'middle', // 尺寸，支持 'medium', 'small'
-    },
-    shape: {
-      type: String,
-      value: 'circle', // 尺寸，支持 'circle', 'rounded', 'ribbon'
-    },
-    showZero: {
-      type: Boolean,
-      value: false,
-    },
-    offset: {
-      type: Array,
-      value: [0, 0],
-    },
-    hasSlot: {
-      type: Boolean,
-      value: false,
-    },
-  };
+  externalClasses = ['t-class', 't-class-badge'];
+
+  properties = props;
 
   data = {
     value: '',

@@ -1,11 +1,10 @@
 Page({
   data: {
-    text3: '',
-    text4: '一段错误填写的内容',
     textPassword: '123456',
-  },
-  onInput(event) {
-    console.log('123', event);
+    phoneError: false,
+    phoneNumber: '17600600600',
+    price: '10.2',
+    priceError: false,
   },
 
   onClear() {
@@ -13,16 +12,22 @@ Page({
       textPassword: '',
     });
   },
-
-  onInput3(event) {
-    this.setData({
-      text3: event.detail.value,
-    });
+  onPhoneInput(e) {
+    const { phoneError } = this.data;
+    const isPhoneNumber = /^[1][3,4,5,7,8,9][0-9]{9}$/.test(e.detail.value);
+    if (phoneError === isPhoneNumber) {
+      this.setData({
+        phoneError: !isPhoneNumber,
+      });
+    }
   },
-
-  onInput4(event) {
-    this.setData({
-      text4: event.detail.value,
-    });
+  onPriceInput(e) {
+    const { priceError } = this.data;
+    const isNumber = /^\d+(\.\d+)?$/.test(e.detail.value);
+    if (priceError === isNumber) {
+      this.setData({
+        priceError: !isNumber,
+      });
+    }
   },
 });

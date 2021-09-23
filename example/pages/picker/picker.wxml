@@ -3,19 +3,18 @@
   <view class="demo-desc"
     >用于选择一个地区的省、市、区、街道等，包含树形用于多层级地区选择以及行政区单层选择</view
   >
-  <view class="demo-section">
-    <t-demo title="01 类型" desc="基础选择器"></t-demo>
+  <t-demo title="01 类型" desc="基础选择器">
     <view class="pannel-item" bind:tap="onClickPicker" data-index="{{1}}">
       <view class="pannel-label">城市</view>
       <view class="pannel-text">{{selectedCityValue || '选择城市'}}</view>
-      <t-icon name="arrow-right" color="#999" />
+      <t-icon name="chevron-right" color="#999" />
     </view>
     <view class="pannel-item" bind:tap="onClickPicker" data-index="{{2}}">
       <view class="pannel-label">年份和季节</view>
       <view class="pannel-text">
         {{selectedYears}} {{selectedSeason}} {{ !selectedYears ? '选择年份和季节' : ''}}</view
       >
-      <t-icon name="arrow-right" color="#999" />
+      <t-icon name="chevron-right" color="#999" />
     </view>
     <view class="pannel-item" bind:tap="onClickPicker" data-index="{{3}}">
       <view class="pannel-label">日期</view>
@@ -23,12 +22,40 @@
         {{selectedYears}} {{selectedMonth}} {{selectedDay}} {{!selectedYears ? '选择日期' :
         ''}}</view
       >
+      <t-icon name="chevron-right" color="#999" />
+    </view>
+  </t-demo>
+  <t-demo desc="带标题选择器">
+    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择城市" data-index="{{1}}">
+      <view class="pannel-label">城市</view>
+      <view class="pannel-text">{{selectedCityValue || '选择城市'}}</view>
       <t-icon name="arrow-right" color="#999" />
     </view>
-  </view>
+    <view
+      class="pannel-item"
+      bind:tap="onClickPicker"
+      data-title="选择年份和季节"
+      data-index="{{2}}"
+    >
+      <view class="pannel-label">年份和季节</view>
+      <view class="pannel-text">
+        {{selectedYears}} {{selectedSeason}} {{ !selectedYears ? '选择年份和季节' : ''}}</view
+      >
+      <t-icon name="arrow-right" color="#999" />
+    </view>
+    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择日期" data-index="{{3}}">
+      <view class="pannel-label">日期</view>
+      <view class="pannel-text">
+        {{selectedYears}} {{selectedMonth}} {{selectedDay}} {{!selectedYears ? '选择日期' :
+        ''}}</view
+      >
+      <t-icon name="arrow-right" color="#999" />
+    </view>
+  </t-demo>
+
   <t-picker
     visible="{{picker1Visible}}"
-    title="请选择城市"
+    title="{{pickerTitle}}"
     bindchange="onPickerChange"
     bindconfirm="onPicker1Confirm"
     bindcancel="onPicker1Cancel"
@@ -41,7 +68,7 @@
   </t-picker>
   <t-picker
     visible="{{picker2Visible}}"
-    title="选择年份和季节"
+    title="{{pickerTitle}}"
     bindchange="onPickerChange"
     bindconfirm="onPicker2Confirm"
     bindcancel="onPicker2Cancel"
@@ -60,7 +87,7 @@
   </t-picker>
   <t-picker
     visible="{{picker3Visible}}"
-    title="选择日期"
+    title="{{pickerTitle}}"
     bindchange="onPickerChange"
     bindconfirm="onPicker3Confirm"
     bindcancel="onPicker3Cancel"

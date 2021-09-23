@@ -7,11 +7,19 @@
         <block wx:if="{{hasBackIcon && hasHomeIcon}}">
           <view class="{{classPrefix}}__capsule t-class-capsule">
             <view class="{{classPrefix}}__btn" bindtap="goBack">
-              <t-icon wx:if="{{leftIcon!=='slot'}}" name="{{leftIcon}}" class="t-class-left-icon" />
+              <t-icon
+                wx:if="{{leftIcon!=='slot'}}"
+                name="{{leftIcon}}"
+                class="{{classPrefix}}__capsule__icon t-class-left-icon"
+              />
               <slot name="left-icon" class="t-class-left-icon"></slot>
             </view>
             <view class="{{classPrefix}}__btn" bindtap="goHome">
-              <t-icon wx:if="{{homeIcon!=='slot'}}" name="{{homeIcon}}" class="t-class-home-icon" />
+              <t-icon
+                wx:if="{{homeIcon!=='slot'}}"
+                name="{{homeIcon}}"
+                class="{{classPrefix}}__capsule__icon t-class-home-icon"
+              />
               <slot name="home-icon" class="t-class-home-icon"></slot>
             </view>
           </view>
@@ -23,7 +31,7 @@
               wx:if="{{leftIcon!=='slot'}}"
               name="{{leftIcon}}"
               bindtap="goBack"
-              class="t-class-left-icon"
+              class="{{classPrefix}}__capsule__icon t-class-left-icon"
             />
             <slot name="left-icon" class="t-class-left-icon"></slot>
           </view>
@@ -32,7 +40,7 @@
               wx:if="{{homeIcon!=='slot'}}"
               name="{{homeIcon}}"
               bindtap="goHome"
-              class="t-class-home-icon"
+              class="{{classPrefix}}__capsule__icon t-class-home-icon"
             />
             <slot name="home-icon" class="t-class-home-icon"></slot>
           </view>

@@ -17,7 +17,7 @@ const props: TdBackTopProps = {
     value: 'backtop',
   },
   /** 是否显示组件 */
-  show: {
+  visible: {
     type: Boolean,
     value: false,
   },
@@ -27,7 +27,7 @@ const props: TdBackTopProps = {
     value: '',
   },
   /** 预设的样式类型 */
-  type: {
+  theme: {
     type: String,
     value: 'round',
   },
