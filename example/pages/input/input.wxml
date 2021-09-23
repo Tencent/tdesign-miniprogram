@@ -45,13 +45,22 @@
         type="number"
         error="{{phoneError}}"
         error-message="手机号输入不正确"
-        bindinput="onInput"
+        bindinput="onPhoneInput"
       >
         <view slot="suffix" class="verify"> 发送验证码 </view>
       </t-input>
     </view>
     <view class="cell">
-      <t-input name="价格" placeholder="0.00" suffix="元" type="number" />
+      <t-input
+        name="价格"
+        placeholder="0.00"
+        suffix="元"
+        bindinput="onPriceInput"
+        vlaue="{{price}}"
+        error="{{priceError}}"
+        error-message="请输入正确的价格"
+        t-class-error-msg="error-msg"
+      />
     </view>
     <view class="cell">
       <t-input name="数量" placeholder="填写个数" suffix="个" type="number" />
