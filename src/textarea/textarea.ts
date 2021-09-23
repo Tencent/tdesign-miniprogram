@@ -1,7 +1,7 @@
 /*
  * @Author: rileycai
  * @Date: 2021-09-22 10:33:54
- * @LastEditTime: 2021-09-22 21:07:53
+ * @LastEditTime: 2021-09-23 10:53:01
  * @LastEditors: Please set LastEditors
  * @Description: 新增textarea组件
  * @FilePath: /tdesign-miniprogram/src/textarea/textarea.ts
@@ -19,7 +19,7 @@ export default class Textarea extends SuperComponent {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
-  externalClasses = ['t-class', 't-class-textarea', 't-class-placeholder'];
+  externalClasses = ['t-class', 't-class-textarea', 't-class-placeholder', 't-class-name'];
 
   properties = props;
 

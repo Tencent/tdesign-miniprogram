@@ -64,3 +64,4 @@
 | t-class             | 外部包裹的拓展类            |
 | t-class-textarea    | 输入框的拓展类              |
 | t-class-placeholder | 输入框 placeholder 的拓展类 |
+| t-class-name        | 标签的拓展类                |

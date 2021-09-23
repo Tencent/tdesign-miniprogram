@@ -39,7 +39,14 @@
       </t-input>
     </view>
     <view class="cell">
-      <t-input placeholder="请输入手机号码" type="number">
+      <t-input
+        placeholder="请输入手机号码"
+        value="{{phoneNumber}}"
+        type="number"
+        error="{{phoneError}}"
+        error-message="手机号输入不正确"
+        bindinput="onInput"
+      >
         <view slot="suffix" class="verify"> 发送验证码 </view>
       </t-input>
     </view>

@@ -1,5 +1,5 @@
 <view class="{{classPrefix}} t-class">
-  <view wx:if="{{ name && name.length > 0 }}" class="{{classPrefix}}__name">
+  <view wx:if="{{ name && name.length > 0 }}" class="{{classPrefix}}__name t-class-name">
     <view>{{ name }}</view>
   </view>
   <view class="{{classPrefix}}__wrapper">
