@@ -2,6 +2,7 @@
 /* eslint-disable prefer-destructuring */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-pull-down-refresh`;
@@ -18,15 +19,13 @@ export default class PullDownRefresh extends SuperComponent {
 
   defaultBarHeight = 0; // 下拉效果的默认高度
 
-  maxBarHeight = 200; // 最大下拉高度，单位 rpx
+  maxBarHeight = 276; // 最大下拉高度，单位 rpx
 
   // 触发刷新的下拉高度，单位rpx
   // 松开时下拉高度大于这个值即会触发刷新，触发刷新后松开，会恢复到这个高度并保持，直到刷新结束
-  normalBarHeight = 150;
+  loadingBarHeight = 200;
 
-  refreshTimeout = 2000; // 刷新超时时间，超过没有回调刷新成功，会自动结束刷新动画。单位 ms
-
-  externalClasses = ['t-class'];
+  refreshTimeout = 3000; // 刷新超时时间，超过没有回调刷新成功，会自动结束刷新动画。单位 ms
 
   /** 开始刷新 - 刷新成功/失败 最小间隔时间setTimeout句柄 */
   minRefreshTimeFlag = 0;
@@ -40,65 +39,19 @@ export default class PullDownRefresh extends SuperComponent {
   /** 关闭动画耗时setTimeout句柄 */
   closingAnimateTimeFlag = 0;
 
+  externalClasses = ['t--class', 't-class-loading', 't-class-tex', 't-class-indicator'];
+
   options = {
     multipleSlots: true,
   };
 
-  properties = {
-    maxBarHeight: Number,
-    normalBarHeight: Number,
-    refreshTimeout: Number,
-    background: {
-      type: String,
-      value: '#F5F5F5',
-    },
-    loadingColorType: {
-      type: String,
-      observer(this: PullDownRefresh, loadingColorType: string) {
-        let loadingImg = './loading.png';
-        if (loadingColorType === 'white') {
-          loadingImg = './loading-white.png';
-        }
-        this.setData({ loadingImg });
-      },
-    },
-    color: {
-      type: String,
-      value: '#999999',
-    },
-    loadingSize: String,
-    // 字体size，会按比例计算loading size
-    fontSize: {
-      type: String,
-      value: '24rpx',
-      observer(this: PullDownRefresh, fontSize: string) {
-        // 没有定义loadingSize的情况下，自动根据字体size按比例缩放loading
-        if ((this.properties.loadingSize as any) as string) return;
-        const res = fontSize.match(/([\d\\.]+)([^\d]*)/);
-        if (!res) return;
-        const unit = res[2];
-        let loadingSize = parseFloat(res[1]);
-        if (loadingSize > 0) {
-          loadingSize *= 40 / 24;
-          this.setData({ loadingSize: loadingSize + unit });
-        }
-      },
-    },
-    useLoadingSlot: Boolean,
-    loadingTexts: {
-      type: Array,
-      value: ['下拉刷新', '释放刷新', '正在刷新', '刷新完成', ''],
-    },
-  };
+  properties = props;
 
   data = {
     classPrefix: name,
-    loadingSize: '40rpx',
-    loadingImg: './loading.png',
     barHeight: this.defaultBarHeight,
     refreshStatus: 0, // 0-未开始，1释放可刷新，2-刷新中，3-刷新成功，4-结束中
     rotate: 0, // 旋转角度，refreshStatus为0、1时根据下拉距离动态计算得出
-    useLoadingSlot: false,
   };
 
   attached() {
@@ -114,9 +67,9 @@ export default class PullDownRefresh extends SuperComponent {
     if (maxBarHeight) {
       this.maxBarHeight = maxBarHeight;
     }
-    const normalBarHeight = (this.properties.normalBarHeight as any) as number;
-    if (normalBarHeight) {
-      this.normalBarHeight = normalBarHeight;
+    const loadingBarHeight = (this.properties.loadingBarHeight as any) as number;
+    if (loadingBarHeight) {
+      this.loadingBarHeight = loadingBarHeight;
     }
     const refreshTimeout = (this.properties.refreshTimeout as any) as number;
     if (refreshTimeout) {
@@ -128,7 +81,7 @@ export default class PullDownRefresh extends SuperComponent {
     this.cleanTimeFlag();
   }
 
-  onPageScroll(e) {
+  onPageScroll(e: WechatMiniprogram.Component.TrivialInstance) {
     const { scrollTop } = e;
     this.isScrollToTop = scrollTop === 0;
   }
@@ -141,7 +94,7 @@ export default class PullDownRefresh extends SuperComponent {
     clearTimeout(this.closingAnimateTimeFlag);
   }
 
-  onTouchStart(e: any) {
+  onTouchStart(e: WechatMiniprogram.Component.TrivialInstance) {
     // 如果页面没滚动到顶部，不做处理
     // 如果下拉效果没有结束，不做处理
     if (!this.isScrollToTop || this.isPulling) return;
@@ -152,7 +105,7 @@ export default class PullDownRefresh extends SuperComponent {
     this.isPulling = true; // 进入下拉状态
   }
 
-  onTouchMove(e) {
+  onTouchMove(e: WechatMiniprogram.Component.TrivialInstance) {
     // 如果页面没滚到顶部，不做处理
     // 如果没有起点，不做处理
     if (!this.isScrollToTop || !this.startPoint) return;
@@ -172,7 +125,7 @@ export default class PullDownRefresh extends SuperComponent {
     }
   }
 
-  onTouchEnd(e) {
+  onTouchEnd(e: WechatMiniprogram.Component.TrivialInstance) {
     // 如果没有起点，不做处理
     if (!this.startPoint) return;
     const { changedTouches } = e;
@@ -181,9 +134,9 @@ export default class PullDownRefresh extends SuperComponent {
     const barHeight = this.toRpx(pageY - this.startPoint.pageY);
     this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
     // 松开时高度超过阈值则触发刷新
-    if (barHeight > this.normalBarHeight) {
+    if (barHeight > this.loadingBarHeight) {
       this.setData({
-        barHeight: this.normalBarHeight,
+        barHeight: this.loadingBarHeight,
         rotate: 0,
         refreshStatus: 2,
       }); // 正在刷新
@@ -195,7 +148,6 @@ export default class PullDownRefresh extends SuperComponent {
           () => {
             // 清理自身timeout
             this.minRefreshTimeFlag = 0;
-
             // 如果还没超时
             if (this.maxRefreshAnimateTimeFlag) {
               // 清理超时setup
@@ -220,6 +172,8 @@ export default class PullDownRefresh extends SuperComponent {
         this.maxRefreshAnimateTimeFlag = 0;
 
         if (this.data.refreshStatus === 2) {
+          // 超时回调
+          this.triggerEvent('timeout');
           this.close(); // 超时仍未被回调，则直接结束下拉
         }
       }, this.refreshTimeout) as any) as number;
@@ -238,12 +192,12 @@ export default class PullDownRefresh extends SuperComponent {
 
   setRefreshBarHeight(barHeight: number): Promise<number> {
     const data: Record<string, any> = { barHeight };
-    if (barHeight >= this.normalBarHeight) {
+    if (barHeight >= this.loadingBarHeight) {
       data.refreshStatus = 1;
-      data.rotate = 720; // 大于正常高度后不再旋转
+      data.rotate = -720; // 大于正常高度后不再旋转
     } else {
       data.refreshStatus = 0;
-      data.rotate = (barHeight / this.normalBarHeight) * 720; // 小于正常高度时随下拉高度旋转720度
+      data.rotate = (barHeight / this.loadingBarHeight) * -720; // 小于正常高度时随下拉高度旋转720度
     }
     return new Promise((resolve) => {
       this.setData(data, () => resolve(barHeight));

@@ -3,6 +3,12 @@ Page({
   pullDownRefresh1: null as WechatMiniprogram.Component.TrivialInstance | null,
   data: {
     error: false,
+    loadingProps0: {
+      size: '50rpx',
+    },
+    loadingProps1: {
+      size: '60rpx',
+    },
   },
   onLoad() {
     this.pullDownRefresh0 = this.selectComponent('#pull-down-refresh-0');
@@ -20,7 +26,11 @@ Page({
     const { callback } = e.detail;
     setTimeout(() => {
       callback?.();
-    }, 1000);
+    }, 3000);
+  },
+
+  timeoutCallback() {
+    console.log('timeout');
   },
 
   onPullDownRefresh1(e) {
