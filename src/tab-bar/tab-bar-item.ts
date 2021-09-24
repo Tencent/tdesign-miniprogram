@@ -46,18 +46,21 @@ export default class TabbarItem extends SuperComponent {
   };
 
   methods = {
+    showSpread() {
+      this.setData({
+        isSpread: true,
+      });
+    },
     toggle() {
-      const { parent, currentName, hasChildren } = this.data;
+      const { parent, currentName, hasChildren, isSpread } = this.data;
 
       if (hasChildren) {
-        // this.setData({
-        //   isSpread: !isSpread,
-        // });
-        if (Array.isArray(parent.value) && parent.value[0] === currentName) {
-          parent.updateValue([currentName]);
-        }
+        this.setData({
+          isSpread: !isSpread,
+        });
       }
       parent.updateValue(currentName);
+      parent.changeOtherSpread(currentName);
     },
     selectChild(event) {
       const { parent, currentName } = this.data;
@@ -71,12 +74,8 @@ export default class TabbarItem extends SuperComponent {
       });
     },
     checkActive(value) {
-      const { currentName, hasChildren, isSpread } = this.data;
-      // console.log(isSpread, currentName, value);
-
-      const isChecked =
-        currentName === value ||
-        (hasChildren && this.properties.subTabBar.some((item) => item.name === value));
+      const { currentName, hasChildren } = this.data;
+      const isChecked = currentName === value;
 
       if (hasChildren && Array.isArray(value)) {
         return value.indexOf(currentName) > -1;
@@ -84,7 +83,11 @@ export default class TabbarItem extends SuperComponent {
 
       this.setData({
         isChecked,
-        isSpread: currentName === value && hasChildren ? !isSpread : isChecked,
+      });
+    },
+    closeSpread() {
+      this.setData({
+        isSpread: false,
       });
     },
   };
