@@ -1,0 +1,24 @@
+@import '../common/style/index.less';
+
+.@{prefix}-swiper {
+  position: relative;
+  overflow: hidden;
+  height: 300rpx;
+
+  &-container {
+    // display: flex;
+    // flex-direction: row;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &.swiper-ani {
+      transition-property: transform;
+    }
+
+    &.hidden {
+      visibility: hidden;
+      transition-property: none;
+    }
+  }
+}
