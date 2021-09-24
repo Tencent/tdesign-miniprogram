@@ -1,16 +1,16 @@
-// @import (css) '../common/index.wxss';
-@import '../common/style/index.less';
-
-.@{prefix}-pull-down-refresh {
+.t-pull-down-refresh {
   .refresh-bar {
     overflow: hidden;
     position: relative;
+    background: #f6f6f6;
+    color: #bbb;
+    font-size: 24rpx;
 
     &.refreshing {
       transition: height .5s;
 
       .refresh-bar__loading {
-        animation: rotateReverse .5s linear infinite;
+        animation: rotateLoading .5s linear infinite;
       }
     }
 
@@ -38,24 +38,12 @@
     &__loading {
       position: relative;
       box-sizing: border-box;
-      width: 50rpx;
-      max-width: 100%;
-      max-height: 100%;
-      height: 50rpx;
-      margin-right: 10rpx;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      .img {
-        width: 100%;
-        height: 100%;
-      }
+      width: auto;
+      height: auto;
     }
 
     &__text {
-      color: #bbb;
-      font-size: 24rpx;
+      margin-top: 10rpx;
     }
   }
 
@@ -64,12 +52,16 @@
   }
 }
 
-@keyframes rotateReverse {
+.indicator-blue {
+  color: #0052d9;
+}
+
+@keyframes rotateLoading {
   from {
     transform: rotate(0deg);
   }
 
   to {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }

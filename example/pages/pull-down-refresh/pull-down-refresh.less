@@ -55,6 +55,7 @@
   margin: 0 24rpx;
   flex-wrap: wrap;
   padding-bottom: 32rpx;
+  position: relative;
 
   .text {
     position: absolute;
@@ -78,6 +79,8 @@
 
 // 以下覆盖pull-down-refresh内部样式
 page {
+  background-color: #fff;
+
   .refresh-bar__content {
     flex-direction: column; // 与组件默认样式不同，这里按照设计稿改成竖向结构
 
@@ -93,4 +96,19 @@ page {
       visibility: hidden;
     }
   }
+}
+
+.indicator-blue {
+  color: #0052d9;
+}
+
+.text-class {
+  .refresh-bar__text {
+    color: red;
+    font-size: 36rpx;
+  }
+}
+
+.loading-class {
+  background-color: blue;
 }
