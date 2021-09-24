@@ -39,12 +39,7 @@ export default class PullDownRefresh extends SuperComponent {
   /** 关闭动画耗时setTimeout句柄 */
   closingAnimateTimeFlag = 0;
 
-  externalClasses = [
-    `${prefix}-class`,
-    `${prefix}-class-loading`,
-    `${prefix}-class-text`,
-    `${prefix}-class-indicator`,
-  ];
+  externalClasses = ['t--class', 't-class-loading', 't-class-tex', 't-class-indicator'];
 
   options = {
     multipleSlots: true,
