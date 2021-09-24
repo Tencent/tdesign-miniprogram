@@ -9,6 +9,8 @@
     arrow
     data-mode="date"
     bindtap="showPicker"
+    t-class-right="sub-text"
+    t-class-note="sub-text"
   />
   <t-cell
     title="选择日期(年月)"
@@ -17,6 +19,8 @@
     arrow
     data-mode="month"
     bindtap="showPicker"
+    t-class-right="sub-text"
+    t-class-note="sub-text"
   />
   <t-cell
     title="选择时间(时分)"
@@ -25,6 +29,8 @@
     arrow
     data-mode="time"
     bindtap="showPicker"
+    t-class-right="sub-text"
+    t-class-note="sub-text"
   />
   <t-cell
     title="选择日期时间(年月日时分)"
@@ -33,6 +39,8 @@
     arrow
     data-mode="datetime"
     bindtap="showPicker"
+    t-class-right="sub-text"
+    t-class-note="sub-text"
   />
 </view>
 
