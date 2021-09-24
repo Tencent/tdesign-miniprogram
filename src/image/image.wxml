@@ -9,6 +9,7 @@
     size="40rpx"
     loading
     class="t-class-load"
+    t-class-text="{{classPrefix}}-loading-text"
   ></t-loading>
   <view
     wx:elif="{{loading !== 'slot' && loading !== ''}}"
