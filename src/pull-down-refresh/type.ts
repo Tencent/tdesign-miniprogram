@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-24 11:41:27
+ * updated at 2021-09-24 14:54:25
  * */
 
 import { TdLoadingProps } from '../loading/type';
@@ -13,7 +13,16 @@ export interface TdPullDownRefreshProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class', 't-class-refresh', 't-class-loading', 't-loading-color'];
+    value?: ['t-class', 't-class-loading', 't-class-text', 't-class-indicator'];
+    required?: boolean;
+  };
+  /**
+   * 加载中下拉高度
+   * @default 200
+   */
+  loadingBarHeight?: {
+    type: NumberConstructor;
+    value?: number;
     required?: boolean;
   };
   /**
@@ -25,7 +34,7 @@ export interface TdPullDownRefreshProps {
     required?: boolean;
   };
   /**
-   * 提示语
+   * 提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']
    * @default []
    */
   loadingTexts?: {
@@ -38,15 +47,6 @@ export interface TdPullDownRefreshProps {
    * @default 272
    */
   maxBarHeight?: {
-    type: NumberConstructor;
-    value?: number;
-    required?: boolean;
-  };
-  /**
-   * 加载中下拉高度
-   * @default 200
-   */
-  normalBarHeight?: {
     type: NumberConstructor;
     value?: number;
     required?: boolean;

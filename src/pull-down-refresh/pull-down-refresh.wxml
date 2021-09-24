@@ -6,7 +6,7 @@
 >
   <view
     id="refresh-bar"
-    class="refresh-bar t-class-refresh {{refreshStatus === 2 ? 'refreshing' : refreshStatus === 3 ? 'success' : refreshStatus === 4 ? 'finishing' : ''}}"
+    class="refresh-bar {{refreshStatus === 2 ? 'refreshing' : refreshStatus === 3 ? 'success' : refreshStatus === 4 ? 'finishing' : ''}}"
     style="height: {{barHeight + 'rpx'}};"
   >
     <view class="refresh-bar__content">
@@ -26,10 +26,10 @@
           size="{{loadingProps.size || '50rpx'}}"
           text="{{loadingProps.text}}"
           theme="{{loadingProps.theme || 'circular'}}"
-          t-class-indicator="t-loading-color"
+          t-class-indicator="t-class-indicator"
         ></t-loading>
       </view>
-      <view class="refresh-bar__text">{{loadingTexts[refreshStatus]}}</view>
+      <view class="refresh-bar__text t-class-text">{{loadingTexts[refreshStatus]}}</view>
     </view>
   </view>
   <view class="{{classPrefix}}__content">

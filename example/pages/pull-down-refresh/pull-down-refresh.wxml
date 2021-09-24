@@ -2,7 +2,7 @@
   id="pull-down-refresh-0"
   loadingProps="{{loadingProps0}}"
   loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
-  t-loading-color="indicator-blue"
+  t-class-indicator="indicator-blue"
   bind:refresh="onPullDownRefresh0"
   bind:timeout="timeoutCallback"
 >
@@ -31,7 +31,7 @@
 <t-pull-down-refresh
   id="pull-down-refresh-1"
   loadingProps="{{loadingProps1}}"
-  t-loading-color="indicator-blue"
+  t-class-indicator="indicator-blue"
   loadingTexts="{{['继续拉哦', '该松手啦', '努力刷新中', '完成~']}}"
   bind:refresh="onPullDownRefresh1"
 >

@@ -23,7 +23,7 @@ export default class PullDownRefresh extends SuperComponent {
 
   // 触发刷新的下拉高度，单位rpx
   // 松开时下拉高度大于这个值即会触发刷新，触发刷新后松开，会恢复到这个高度并保持，直到刷新结束
-  normalBarHeight = 200;
+  loadingBarHeight = 200;
 
   refreshTimeout = 3000; // 刷新超时时间，超过没有回调刷新成功，会自动结束刷新动画。单位 ms
 
@@ -41,9 +41,9 @@ export default class PullDownRefresh extends SuperComponent {
 
   externalClasses = [
     `${prefix}-class`,
-    `${prefix}-class-refresh`,
     `${prefix}-class-loading`,
-    `${prefix}-loading-color`,
+    `${prefix}-class-text`,
+    `${prefix}-class-indicator`,
   ];
 
   options = {
@@ -72,9 +72,9 @@ export default class PullDownRefresh extends SuperComponent {
     if (maxBarHeight) {
       this.maxBarHeight = maxBarHeight;
     }
-    const normalBarHeight = (this.properties.normalBarHeight as any) as number;
-    if (normalBarHeight) {
-      this.normalBarHeight = normalBarHeight;
+    const loadingBarHeight = (this.properties.loadingBarHeight as any) as number;
+    if (loadingBarHeight) {
+      this.loadingBarHeight = loadingBarHeight;
     }
     const refreshTimeout = (this.properties.refreshTimeout as any) as number;
     if (refreshTimeout) {
@@ -139,9 +139,9 @@ export default class PullDownRefresh extends SuperComponent {
     const barHeight = this.toRpx(pageY - this.startPoint.pageY);
     this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
     // 松开时高度超过阈值则触发刷新
-    if (barHeight > this.normalBarHeight) {
+    if (barHeight > this.loadingBarHeight) {
       this.setData({
-        barHeight: this.normalBarHeight,
+        barHeight: this.loadingBarHeight,
         rotate: 0,
         refreshStatus: 2,
       }); // 正在刷新
@@ -197,12 +197,12 @@ export default class PullDownRefresh extends SuperComponent {
 
   setRefreshBarHeight(barHeight: number): Promise<number> {
     const data: Record<string, any> = { barHeight };
-    if (barHeight >= this.normalBarHeight) {
+    if (barHeight >= this.loadingBarHeight) {
       data.refreshStatus = 1;
       data.rotate = -720; // 大于正常高度后不再旋转
     } else {
       data.refreshStatus = 0;
-      data.rotate = (barHeight / this.normalBarHeight) * -720; // 小于正常高度时随下拉高度旋转720度
+      data.rotate = (barHeight / this.loadingBarHeight) * -720; // 小于正常高度时随下拉高度旋转720度
     }
     return new Promise((resolve) => {
       this.setData(data, () => resolve(barHeight));
