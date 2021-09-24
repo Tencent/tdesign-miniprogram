@@ -14,7 +14,7 @@
         content="{{badgeProps.content}}"
         size="{{badgeProps.size}}"
         visible="{{badgeProps.visible}}"
-        offset="{{badgeProps.offset}}"
+        offset="{{badgeProps.offset || [0,0]}}"
         hasSlot
         t-class-badge="badge-class"
       >

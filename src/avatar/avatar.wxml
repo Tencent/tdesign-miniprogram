@@ -1,6 +1,6 @@
 <view class="{{ classPrefix }}--wrapper {{ classPrefix }}--{{ size }} t-class">
   <view
-    class="{{ classPrefix }} {{ classPrefix }}--{{ size }} {{ shape === 'round' ? classPrefix + '--round' : '' }} t-image-class"
+    class="{{ classPrefix }} {{ classPrefix }}--{{ size }} {{ shape === 'round' ? classPrefix + '--round' : '' }} t-class-image"
   >
     <t-image
       wx:if="{{ !icon && !alt }}"
@@ -10,8 +10,8 @@
       mode="aspectFill"
       binderror="onLoadError"
     />
-    <view wx:if="{{ !!alt }}" class="{{ classPrefix }}__text t-alt-class">{{ alt }}</view>
-    <view wx:if="{{ !!icon }}" class="{{ classPrefix }}__icon t-icon-class">
+    <view wx:if="{{ !!alt }}" class="{{ classPrefix }}__text t-class-alt">{{ alt }}</view>
+    <view wx:if="{{ !!icon }}" class="{{ classPrefix }}__icon t-class-icon">
       <t-icon name="{{ icon }}" />
     </view>
   </view>
