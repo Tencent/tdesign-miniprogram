@@ -7,14 +7,14 @@
     <view class="pannel-item" bind:tap="onClickPicker" data-index="{{1}}">
       <view class="pannel-label">城市</view>
       <view class="pannel-text">{{selectedCityValue || '选择城市'}}</view>
-      <t-icon name="arrow-right" color="#999" />
+      <t-icon name="chevron-right" color="#999" />
     </view>
     <view class="pannel-item" bind:tap="onClickPicker" data-index="{{2}}">
       <view class="pannel-label">年份和季节</view>
       <view class="pannel-text">
         {{selectedYears}} {{selectedSeason}} {{ !selectedYears ? '选择年份和季节' : ''}}</view
       >
-      <t-icon name="arrow-right" color="#999" />
+      <t-icon name="chevron-right" color="#999" />
     </view>
     <view class="pannel-item" bind:tap="onClickPicker" data-index="{{3}}">
       <view class="pannel-label">日期</view>
@@ -22,14 +22,14 @@
         {{selectedYears}} {{selectedMonth}} {{selectedDay}} {{!selectedYears ? '选择日期' :
         ''}}</view
       >
-      <t-icon name="arrow-right" color="#999" />
+      <t-icon name="chevron-right" color="#999" />
     </view>
   </t-demo>
   <t-demo desc="带标题选择器">
     <view class="pannel-item" bind:tap="onClickPicker" data-title="选择城市" data-index="{{1}}">
       <view class="pannel-label">城市</view>
       <view class="pannel-text">{{selectedCityValue || '选择城市'}}</view>
-      <t-icon name="arrow-right" color="#999" />
+      <t-icon name="chevron-right" color="#999" />
     </view>
     <view
       class="pannel-item"
@@ -41,7 +41,7 @@
       <view class="pannel-text">
         {{selectedYears}} {{selectedSeason}} {{ !selectedYears ? '选择年份和季节' : ''}}</view
       >
-      <t-icon name="arrow-right" color="#999" />
+      <t-icon name="chevron-right" color="#999" />
     </view>
     <view class="pannel-item" bind:tap="onClickPicker" data-title="选择日期" data-index="{{3}}">
       <view class="pannel-label">日期</view>
@@ -49,7 +49,7 @@
         {{selectedYears}} {{selectedMonth}} {{selectedDay}} {{!selectedYears ? '选择日期' :
         ''}}</view
       >
-      <t-icon name="arrow-right" color="#999" />
+      <t-icon name="chevron-right" color="#999" />
     </view>
   </t-demo>
 

@@ -1,20 +1,20 @@
 @import '../common/style/index.less';
 
-@input-label-text-color: @text-level-1-color;
-@input-text-color: @text-level-2-color;
-@input-placeholder-text-color: @text-level-3-color;
-@input-disabled-text-color: @text-level-3-color;
+@input-name-text-color: @text-level-1-color;
+@input-text-color: @text-level-1-color;
+@input-placeholder-text-color: @text-level-4-color;
+@input-disabled-text-color: @text-level-1-color;
 @input-icon-color: @text-level-4-color;
-@input-error-text-color: @error-color;
+@input-error-text-color: #e34d59;
 @input-suffix-text-color: @text-level-1-color;
 @input-border-color: #e7e7e7;
 
 @input-font-size: 32rpx;
-@input-icon-font-size: 40rpx;
+@input-icon-font-size: 32rpx;
 @input-error-msg-font-size: @font-size-s;
 @input-vertical-padding: 24rpx;
 @input-horizontal-padding: 32rpx;
-@input-label-horizontal-margin: 32rpx;
+@input-name-horizontal-margin: 32rpx;
 @input-border-padding-left: 32rpx;
 
 .@{prefix}-input--bordered {
@@ -27,11 +27,16 @@
   position: relative;
   display: flex;
   padding: @input-vertical-padding @input-horizontal-padding;
+  background: @bg-color-block;
 
-  &__label {
-    max-width: 80px;
-    margin-right: @input-label-horizontal-margin;
+  &__name {
+    width: 164rpx;
+    margin-right: @input-name-horizontal-margin;
     flex: none;
+  }
+
+  &__required {
+    color: @input-error-text-color;
   }
 
   &__content {
@@ -50,6 +55,8 @@
     &--icon {
       flex: 0 0 auto;
       margin-left: @spacer-1;
+      color: @input-icon-color;
+      font-size: @input-icon-font-size;
 
       i {
         font-size: @input-icon-font-size;
@@ -63,7 +70,7 @@
 
     &--suffix {
       position: relative;
-      padding-left: 12px;
+      padding-left: 24rpx;
 
       &::after {
         .hairline-left();
@@ -72,8 +79,8 @@
 
     &--suffix-text {
       position: relative;
-      padding-left: 12px;
-      color: @input-label-text-color;
+      padding-left: 24rpx;
+      color: @input-name-text-color;
     }
   }
 
@@ -117,36 +124,6 @@
     color: @input-placeholder-text-color;
   }
 
-  &--textarea {
-    padding: @input-vertical-padding @input-horizontal-padding;
-
-    textarea {
-      display: block;
-      box-sizing: border-box;
-      width: 100%;
-      min-width: 0;
-      margin: 0;
-      padding: 0;
-      text-align: left;
-      background-color: transparent;
-      border: 0;
-      resize: none;
-      font-size: @input-font-size;
-    }
-
-    &-label {
-      position: relative;
-      padding: @input-vertical-padding @input-horizontal-padding;
-      font-size: @input-font-size;
-      color: @input-label-text-color;
-
-      &::after {
-        .hairline-bottom();
-        left: @input-horizontal-padding;
-      }
-    }
-  }
-
   &--count {
     text-align: right;
     color: @input-placeholder-text-color;
@@ -179,6 +156,7 @@
       font-size: @input-error-msg-font-size;
       line-height: 1;
       color: @input-placeholder-text-color;
+      width: 100%;
     }
   }
 }
@@ -188,8 +166,8 @@
 }
 
 .@{prefix}-input--size-medium {
-  padding-top: @spacer-2;
-  padding-bottom: @spacer-2;
+  padding-top: 32rpx;
+  padding-bottom: 33rpx;
 }
 .@{prefix}-input--size-small {
   padding-top: 24rpx;

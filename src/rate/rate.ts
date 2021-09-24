@@ -17,7 +17,7 @@ const rpx2px = (() => {
 
 @wxComponent()
 export default class Rate extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = ['t-class', 't-class-icon', 't-class-desc'];
 
   properties = props;
 

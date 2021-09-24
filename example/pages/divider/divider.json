@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "Divider",
+  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "t-demo": "../../components/demo-block/index"
   }

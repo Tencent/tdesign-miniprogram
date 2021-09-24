@@ -1,0 +1,65 @@
+@import '../common/style/index.less';
+
+@textarea-background-color: @bg-color-block;
+@textarea-text-color: @text-level-1-color;
+@textarea-placeholder-text-color: @text-level-4-color;
+@textarea-disabled-text-color: @text-level-1-color;
+@textarea-placeholder-text-color: @text-level-3-color;
+@textarea-font-size: 32rpx;
+@textarea-line-height: 48rpx;
+@textarea-count-font-size: 24rpx;
+@textarea-vertical-padding: 24rpx;
+@textarea-horizontal-padding: 32rpx;
+
+.@{prefix}-textarea {
+  position: relative;
+  background-color: #fff;
+
+  &__name {
+    position: relative;
+    padding: @textarea-vertical-padding @textarea-horizontal-padding;
+    font-size: @textarea-font-size;
+    color: @textarea-text-color;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &::after {
+      .hairline-bottom();
+      left: @textarea-horizontal-padding;
+    }
+  }
+
+  &__wrapper {
+    padding: @textarea-vertical-padding @textarea-horizontal-padding;
+    font-size: @textarea-font-size;
+    color: @textarea-text-color;
+
+    textarea {
+      display: block;
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+      background-color: transparent;
+      border: 0;
+      resize: none;
+      font-size: @textarea-font-size;
+      line-height: @textarea-line-height;
+    }
+
+    &__placeholder,
+    &__count {
+      color: @textarea-placeholder-text-color;
+      font-size: @textarea-font-size;
+      line-height: @textarea-line-height;
+    }
+
+    &__count {
+      font-size: @textarea-count-font-size;
+      text-align: right;
+    }
+  }
+}

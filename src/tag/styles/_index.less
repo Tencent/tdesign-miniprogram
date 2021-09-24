@@ -30,18 +30,18 @@
 
 .@{prefix}-tag {
   display: inline-block;
-  border-width: 0;
+  border-width: 1rpx;
   border-style: solid;
   border-color: transparent;
   box-sizing: border-box;
   border-radius: @border-radius-square;
   white-space: nowrap;
-  font-size: 12px;
-  height: 24px;
-  line-height: 24px;
-  padding: 0px 12px;
-  font-size: 12px;
-  max-width: 120px;
+  font-size: 24rpx;
+  height: 48rpx;
+  line-height: 46rpxpx;
+  padding: 0 24rpx;
+  font-size: 24rpx;
+  max-width: 240rpx;
   white-space: nowrap;
   word-wrap: normal;
   overflow: hidden;
@@ -58,12 +58,10 @@
     }
 
     &-plain {
-      border-width: 1px;
       .genEffect(100, 50, 0, 5);
     }
 
     &-mixed {
-      border-width: 1px;
       .genEffect(100, 50, 10, 5);
     }
   }

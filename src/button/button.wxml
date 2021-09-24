@@ -2,8 +2,12 @@
   class="{{className}}"
   form-type="{{formType}}"
   open-type="{{openType}}"
+  hover-stop-propagation="{{hoverStopPropagation}}"
+  hover-start-time="{{hoverStartTime}}"
+  hover-stay-time="{{hoverStayTime}}"
   lang="{{lang}}"
   session-from="{{sessionFrom}}"
+  hover-class="{{variant == 'text' ? 'none' : 'button-hover'}}"
   send-message-title="{{sendMessageTitle}}"
   send-message-path="{{sendMessagePath}}"
   send-message-img="{{sendMessageImg}}"
@@ -16,6 +20,6 @@
   bindopensetting="opensetting"
   bindlaunchapp="launchapp"
 >
-  <t-icon class="t-button__icon" wx:if="{{icon}}" name="{{icon}}"></t-icon>
+  <t-icon class="t-button__icon" wx:if="{{icon}}" name="{{icon}}" size="44rpx"></t-icon>
   <slot />
 </button>

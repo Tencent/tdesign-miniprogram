@@ -30,13 +30,9 @@ const props: TdDividerProps = {
     value: '',
   },
   /** 分隔线类型有两种：水平和垂直 */
-  theme: {
+  layout: {
     type: String,
     value: 'horizontal',
-  },
-  /** 组件样式 */
-  tStyle: {
-    type: Object,
   },
 };
 

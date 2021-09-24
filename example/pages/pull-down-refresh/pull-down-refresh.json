@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "PullDownRefresh 下拉刷新"
+  "navigationBarTitleText": "PullDownRefresh 下拉刷新",
+  "navigationBarBackgroundColor": "#fff"
 }

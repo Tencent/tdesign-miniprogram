@@ -16,6 +16,7 @@
     "pages/cell-group/cell-group",
     "pages/collapse/collapse",
     "pages/input/input",
+    "pages/textarea/textarea",
     "pages/message/message",
     "pages/toast/toast",
     "pages/segmented-control/segmented-control",
@@ -44,12 +45,13 @@
     "pages/empty/empty",
     "pages/back-top/back-top",
     "pages/grid/grid",
-    "pages/image-picker/image-picker",
+    "pages/upload/upload",
     "pages/count-down/count-down",
     "pages/image/image",
     "pages/search/search",
     "pages/home/navigateFail/navigateFail",
-    "pages/navbar/navbar"
+    "pages/navbar/navbar",
+    "pages/date-time-picker/date-time-picker"
   ],
   "usingComponents": {
     "t-demo": "components/demo-block/index",
@@ -70,6 +72,7 @@
     "t-picker-column": "@tencent/tdesign-miniprogram/picker/picker-column",
     "t-progress": "@tencent/tdesign-miniprogram/progress/progress",
     "t-input": "@tencent/tdesign-miniprogram/input/input",
+    "t-textarea": "@tencent/tdesign-miniprogram/textarea/textarea",
     "t-message": "@tencent/tdesign-miniprogram/message/message",
     "t-toast": "@tencent/tdesign-miniprogram/toast/toast",
     "t-segmented-control": "@tencent/tdesign-miniprogram/segmented-control/segmented-control",
@@ -103,15 +106,17 @@
     "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top",
     "t-grid-item": "@tencent/tdesign-miniprogram/grid-item/grid-item",
     "t-grid": "@tencent/tdesign-miniprogram/grid/grid",
-    "t-image-picker": "@tencent/tdesign-miniprogram/image-picker/image-picker",
+    "t-upload": "@tencent/tdesign-miniprogram/upload/upload",
     "t-count-down": "@tencent/tdesign-miniprogram/count-down/count-down",
     "t-image": "@tencent/tdesign-miniprogram/image/image",
     "t-search": "@tencent/tdesign-miniprogram/search/search",
-    "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar"
+    "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar",
+    "t-date-time-picker": "@tencent/tdesign-miniprogram/date-time-picker/date-time-picker"
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f6f6f6",
+    "backgroundColor": "#f6f6f6",
     "navigationBarTitleText": "TDesign",
     "navigationBarTextStyle": "black"
   },
