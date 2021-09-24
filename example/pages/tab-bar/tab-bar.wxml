@@ -87,7 +87,7 @@
     </t-tab-bar>
   </t-demo>
   <t-demo desc="双层级纯文本标签栏">
-    <view class="demo-word">
+    <view class="demo-word bottom-row">
       <t-tab-bar value="label_3" bindchange="onChange">
         <t-tab-bar-item
           wx:for="{{list_5}}"

@@ -216,7 +216,7 @@
         <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {dot: true} }}" size="xs" />
       </view>
     </view>
-    <view class="row">
+    <view class="row bottom-row">
       <view class="avatar-example">
         <t-avatar alt="A" t-class-alt="alt-example" size="xl" />
       </view>
