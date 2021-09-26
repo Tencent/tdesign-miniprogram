@@ -15,6 +15,7 @@
 
     <view
       class="{{ classPrefix }}--text-wrap {{ marquee ? '{{ classPrefix }}--text-nowrap' : '' }} "
+      style="text-align: {{align}}"
       id="{{ classPrefix }}--text-wrap"
     >
       <view
