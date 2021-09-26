@@ -12,6 +12,7 @@ export interface MessageMarquee {
 export interface MessageProps {
   visible?: boolean;
   content: string;
+  align?: string;
   theme?: MessageType;
   icon?: boolean | string;
   closeBtn?: boolean;
