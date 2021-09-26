@@ -1,4 +1,4 @@
-<view>
+<view class="checkbox-demo">
   <view class="demo-title">Checkbox多选框</view>
   <view class="demo-desc">描述文字</view>
   <t-demo title="01 类型" desc="基础多选框">

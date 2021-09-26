@@ -8,6 +8,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const gulpLess = require('gulp-less');
 const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
+const mpNpm = require('gulp-mp-npm');
 
 const config = require('./config');
 
@@ -64,7 +65,7 @@ module.exports = (src, dist, moduleName) => {
 
   // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
   // https://github.com/gulpjs/vinyl-fs/issues/226
-  const since = (task) => (file) => gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0;
+  const since = (task) => (file) => (gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0);
 
   /* tasks */
   const tasks = {};
@@ -115,6 +116,7 @@ module.exports = (src, dist, moduleName) => {
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(sourcemaps.init())
       .pipe(tsProject()) // 编译ts
+      .pipe(mpNpm())
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest(dist));
 

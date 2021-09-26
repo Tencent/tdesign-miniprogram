@@ -1,4 +1,5 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
+import props from './props';
 import config from '../common/config';
 
 import { pageScrollMixin, getRect } from './utils';
@@ -10,50 +11,26 @@ type ContainerRef = () => WechatMiniprogram.NodesRef;
 
 interface StickyProps {
   zIndex: number;
-  isDisabled: boolean;
+  disabled: boolean;
   container: ContainerRef;
   offsetTop: number;
-  scrollTop: number;
 }
 
 @wxComponent()
 export default class Sticky extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
-  properties: StickyProps = {
-    zIndex: {
-      type: Number,
-      value: 99,
-    },
-    offsetTop: {
-      type: Number,
-      value: 0,
-      observer: 'onScroll',
-    },
-    isDisabled: {
-      type: Boolean,
-      observer: 'onScroll',
-    },
-    container: {
-      type: null,
-      observer: 'onScroll',
-    },
-    scrollTop: {
-      type: null,
-      observer(this: Sticky, val: number) {
-        this.onScroll({ scrollTop: val });
-      },
-    },
-  } as any;
+  properties: StickyProps = props as any;
 
   behaviors = [
     pageScrollMixin(function (event) {
-      if (this.properties.scrollTop != null) {
-        return;
-      }
       this.onScroll(event);
     }),
   ];
+
+  observers = {
+    'offsetTop, disabled, container': this.onScroll,
+  };
 
   data = {
     containerStyle: '',
@@ -67,9 +44,9 @@ export default class Sticky extends SuperComponent {
 
   onScroll(event?: { scrollTop: number }) {
     const { scrollTop } = event || {};
-    const { container, offsetTop, isDisabled } = this.properties;
+    const { container, offsetTop, disabled } = this.properties;
 
-    if (isDisabled) {
+    if (disabled) {
       this.setDataAfterDiff({
         isFixed: false,
         transform: 0,

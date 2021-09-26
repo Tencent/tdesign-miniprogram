@@ -1,8 +1,8 @@
-# input 组件
+# Input 输入框
 
 ## 介绍
 
-输入框
+用于单行文本信息输入。
 
 ### 特性及兼容性
 
@@ -71,3 +71,4 @@
 | t-class             | 外部包裹的拓展类            |
 | t-class-input       | 输入框的拓展类              |
 | t-class-placeholder | 输入框 placeholder 的拓展类 |
+| t-class-error-msg   | 错误提示的拓展类            |

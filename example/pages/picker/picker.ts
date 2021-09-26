@@ -12,12 +12,15 @@ Page({
       { label: '成都', value: '成都' },
     ],
     years: [
-      { label: '2021', value: '2021' },
-      { label: '2020', value: '2020' },
-      { label: '2019', value: '2019' },
+      { label: '2021年', value: '2021' },
+      { label: '2020年', value: '2020' },
+      { label: '2019年', value: '2019' },
     ],
-    months: Array.from(new Array(12), (_, index) => ({ label: index + 1, value: index + 1 })),
-    days: Array.from(new Array(31), (_, index) => ({ label: index + 1, value: index + 1 })),
+    months: Array.from(new Array(12), (_, index) => ({
+      label: `${index + 1}月`,
+      value: index + 1,
+    })),
+    days: Array.from(new Array(31), (_, index) => ({ label: `${index + 1}日`, value: index + 1 })),
     seasons: [
       { label: '春', value: '春' },
       { label: '夏', value: '夏' },
@@ -29,9 +32,6 @@ Page({
     selectedSeason: '',
     selectedMonth: '',
     selectedDay: '',
-    formatYear: (val) => `${val}年`,
-    formatMonth: (val) => `${val}月`,
-    formatDay: (val) => `${val}日`,
   },
 
   onColumnChange(e) {
@@ -56,7 +56,7 @@ Page({
     console.log('picker1 confirm:', e.detail);
     this.setData({
       picker1Visible: false,
-      selectedCityValue: e.detail.value?.value,
+      selectedCityValue: e.detail.value[0].value,
     });
   },
   onPicker1Cancel() {

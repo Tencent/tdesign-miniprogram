@@ -127,7 +127,7 @@
       </t-steps>
     </view>
 
-    <!-- <view class="demo-section__desc">竖向双层级只读步骤条 todo</view>
+    <view class="demo-section__desc">竖向双层级只读步骤条 todo</view>
     <view class="group">
       <t-steps class="demo-steps vertical" current="1" readonly="true" direction="vertical">
         <t-step title="已完成步骤" />
@@ -139,7 +139,7 @@
         <t-step title="错误步骤" status="error" />
         <t-step title="未完成步骤" />
       </t-steps>
-    </view> -->
+    </view>
 
     <view class="demo-section__desc">竖向带图标只读步骤条</view>
     <view class="group">
@@ -162,7 +162,7 @@
         current="1"
         readonly="true"
         direction="vertical"
-        type="dot"
+        theme="dot"
       >
         <t-step title="事件描述" />
         <t-step title="事件描述" />

@@ -1,7 +1,9 @@
-<view class="demo-block">
+<view class="demo-block {{!title && 'demo-block_notitle'}}">
   <view wx:if="{{ title || desc }}" class="demo-block__heander">
     <view wx:if="{{ title }}" class="demo-block__heander-title">{{ title }}</view>
-    <view wx:if="{{ desc }}" class="demo-block__heander-desc">{{ desc }}</view>
+    <view wx:if="{{ desc }}" class="demo-block__heander-desc {{!title && 'demo-block_subtitle' }}"
+      >{{ desc }}</view
+    >
     <!-- <slot name="title-right" /> -->
   </view>
   <view wx:for="{{ operList }}" wx:for-item="operItem" wx:key="oper" class="demo-block__oper">

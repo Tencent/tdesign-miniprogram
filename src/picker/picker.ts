@@ -12,7 +12,7 @@ export default class Picker extends SuperComponent {
    */
   properties = props;
 
-  externalClasses = ['t-class'];
+  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
 
   options = {
     multipleSlots: true,
@@ -53,29 +53,16 @@ export default class Picker extends SuperComponent {
         value: pickerColumns.map((pickerColumn) => pickerColumn._selectedValue),
       };
 
-      const isMulti = pickerColumns?.length > 1;
-      if (isMulti) {
-        return selectedValues;
-      }
-      return {
-        index: selectedValues.index[0],
-        value: selectedValues.value[0],
-      };
+      return selectedValues;
     },
     onConfirm() {
       this.triggerEvent('confirm', this.getSelectedValues());
     },
     onCancel() {
       this.triggerEvent('cancel');
-      // 取消事件 触发重置 先不做重置 保留用户操作
-      // const columns = this.getPickerColumns();
-      // columns?.map((column) => {
-      //   column.methods.resetOrigin.call(column);
-      // });
     },
     triggerChange({ column, index, value }) {
-      const isMulti = this.getPickerColumns().length > 1;
-      this.triggerEvent('change', isMulti ? { column, index, value } : { index, value });
+      this.triggerEvent('change', { column, index, value });
     },
   };
 

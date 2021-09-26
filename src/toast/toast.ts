@@ -15,7 +15,7 @@ export default class Toast extends SuperComponent {
 
   typeMapIcon: Record<string, string> = {
     loading: 'loading',
-    success: 'check',
+    success: 'check-circle',
     fail: 'close',
   };
 

@@ -17,6 +17,12 @@ page {
   .avatar-example {
     text-align: center;
     font-size: 24rpx;
+    display: flex;
+    flex-direction: column;
+
+    .avatar-word {
+      margin-top: 16rpx;
+    }
   }
 
   .text {
@@ -24,6 +30,33 @@ page {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .row-text {
+    &-64 {
+      width: 128rpx;
+    }
+
+    &-48 {
+      width: 96rpx;
+    }
+
+    &-40 {
+      width: 80rpx;
+    }
+
+    &-32 {
+      width: 64rpx;
+    }
+
+    &-24 {
+      width: 48rpx;
+    }
+  }
+
+  .row-text-common {
+    // display: flex;
+    text-align: center;
   }
 
   .alt-example {
@@ -50,6 +83,12 @@ page {
   .icon-example {
     background-color: #e5e5e5;
     color: #bbb;
+    font-size: 40rpx;
+  }
+
+  .alt-example1 {
+    background-color: #e5e5e5;
+    color: #bbb;
   }
 
   .avatar-group {
@@ -64,6 +103,10 @@ page {
       justify-content: flex-end;
     }
   }
+}
+
+.bottom-row {
+  padding-bottom: 96rpx;
 }
 
 .gutter-column-12 {

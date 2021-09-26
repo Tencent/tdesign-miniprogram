@@ -1,3 +1,5 @@
+@btn-width: 48rpx;
+
 .t-checkbox {
   // width: 100%;
   position: relative;
@@ -23,6 +25,7 @@
 
   &__icon-left {
     margin-right: 20rpx;
+    width: 40rpx;
   }
 
   &__icon-right {
@@ -32,25 +35,26 @@
   }
 
   &-icon__image {
-    width: 48rpx;
-    height: 48rpx;
+    width: @btn-width;
+    height: @btn-width;
     vertical-align: sub;
   }
 
   &__image {
-    line-height: 48rpx;
+    line-height: @btn-width;
   }
 
   &__btn {
-    font-size: 48rpx;
+    font-size: @btn-width;
     display: block;
     line-height: 40rpx;
     color: #dcdcdc;
+    width: @btn-width;
   }
 
   &__content {
     flex: 1;
-    line-height: 48rpx;
+    line-height: @btn-width;
     margin-right: 10px;
   }
 
@@ -83,15 +87,17 @@
     position: absolute;
     bottom: 0;
     display: block;
-    border-top: 2rpx solid #e9e9e9;
+    border-top: 1rpx solid #e7e7e7;
     width: 100%;
   }
 
   &-border-left {
-    margin-left: 64rpx;
+    left: 80rpx;
+    width: calc(100% - 80rpx);
   }
 
   &-border-right {
     right: 80rpx;
+    width: calc(100% - 80rpx);
   }
 }

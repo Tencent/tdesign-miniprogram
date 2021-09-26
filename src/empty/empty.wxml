@@ -2,12 +2,18 @@
 
 <view class="t-class t-empty">
   <view class="t-empty__content">
-    <image class="t-empty__img t-class-image" src="{{image}}" mode="aspectFit" />
+    <image wx:if="{{image}}" class="t-empty__img t-class-image" src="{{image}}" mode="aspectFit" />
+    <slot wx:else name="image" class="t-empty__img t-class-image" />
     <view
       wx:if="{{description}}"
       class="t-empty__description t-class-description t-empty__description-{{theme}}"
       >{{description}}</view
     >
-    <slot />
+    <slot
+      wx:else
+      name="description"
+      class="t-empty__description t-class-description t-empty__description-{{theme}}"
+    />
+    <slot name="action" />
   </view>
 </view>
