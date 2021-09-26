@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-22 14:07:46
+ * updated at 2021-09-26 16:33:28
  * */
 
 export interface TdUploadProps {
@@ -74,11 +74,12 @@ export interface TdUploadProps {
     required?: boolean;
   };
   /**
-   * 图片文件大小限制，单位 Byte
+   * 图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`
    */
   sizeLimit?: {
     type: NumberConstructor;
-    value?: number;
+    optionalTypes: Array<ObjectConstructor>;
+    value?: number | SizeLimitObj;
     required?: boolean;
   };
 }
@@ -107,7 +108,15 @@ export interface UploadFile {
   name?: string;
   size?: number;
   type?: 'image' | 'video';
-  progress?: number;
+  percent?: number;
 }
 
 export type MediaType = 'image' | 'video';
+
+export interface SizeLimitObj {
+  size: number;
+  unit: SizeUnit;
+  message?: string;
+}
+
+export type SizeUnit = 'B' | 'KB' | 'MB' | 'GB';

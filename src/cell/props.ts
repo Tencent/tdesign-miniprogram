@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-11 16:04:33
+ * updated at 2021-09-26 16:31:13
  * */
 
 import { TdCellProps } from './type';
@@ -43,6 +43,10 @@ const props: TdCellProps = {
     type: String,
     value: 'navigateTo',
   },
+  /** 左侧图标，出现在单元格标题的左侧 */
+  leftIcon: {
+    type: String,
+  },
   /** 和标题同行的说明文字 */
   note: {
     type: String,
@@ -51,6 +55,10 @@ const props: TdCellProps = {
   required: {
     type: Boolean,
     value: false,
+  },
+  /** 最右侧图标 */
+  rightIcon: {
+    type: String,
   },
   /** 标题 */
   title: {

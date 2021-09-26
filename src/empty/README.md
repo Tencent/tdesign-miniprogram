@@ -1,11 +1,8 @@
-<!--
- * @Author: shiyanzhang
- * @Date: 2021-08-24 15:56:07
- * @Description:
- * @FilePath: /tdesign-miniprogram/src/empty/README.md
--->
+# Empty 空内容
 
-# empty 空内容
+## 介绍
+
+用于空状态时的占位提示。
 
 ## 引入
 
