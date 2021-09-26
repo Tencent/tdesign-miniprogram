@@ -1,7 +1,16 @@
 <view class="toast">
-	<view class="title">Toast 轻提示</view>
-	<view class="desc">底部弹起的模态面板，包含与当前情境相关的多个选项。</view>
-	<view class="sub-title">01 基本用法</view>
+  <view class="title">Toast 轻提示</view>
+  <view class="desc">底部弹起的模态面板，包含与当前情境相关的多个选项。</view>
+  <t-demo title="01 基本用法" desc="" operList="{{operList1}}" bindclickoper="clickHandle" />
+  <t-demo
+    title="02 展示位置和展示时间"
+    desc=""
+    operList="{{operList2}}"
+    bindclickoper="clickHandle"
+  />
+  <t-demo title="03 显示遮罩" desc="" operList="{{operList3}}" bindclickoper="clickHandle" />
+
+  <!-- <view class="sub-title">01 基本用法</view>
 	<view class="desc">弹窗内容为纯文本、带图标文本，支持横向、竖向两种展示方式。</view>
 	<button class="t-button" bindtap="tapShowShortTip">纯文本</button>
 	<button class="t-button" bindtap="tapShowIconTip">带图标-横向</button>
@@ -22,7 +31,6 @@
 	<button class="t-button" bindtap="tapShowBottomTip">底部-展示5秒</button>
 	<view class="sub-title">03 显示遮罩</view>
 	<view class="desc">弹窗可以显示遮罩，禁止滑动和点击</view>
-	<button class="t-button" bindtap="tapShowOverlayTip">禁止滑动和点击</button>
+	<button class="t-button" bindtap="tapShowOverlayTip">禁止滑动和点击</button> -->
 </view>
 <t-toast id="t-toast" />
-

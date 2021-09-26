@@ -7,7 +7,7 @@ const name = `${prefix}-avatar`;
 
 @wxComponent()
 export default class Avatar extends SuperComponent {
-  externalClasses = ['t-class', 't-image-class', 't-icon-class', 't-alt-class'];
+  externalClasses = ['t-class', 't-class-image', 't-class-icon', 't-class-alt'];
 
   properties = avatarProps;
 

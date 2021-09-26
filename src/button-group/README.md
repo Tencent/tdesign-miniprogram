@@ -1,4 +1,4 @@
-# Dialog
+# ButtonGroup
 
 ## 介绍
 

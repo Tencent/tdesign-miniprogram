@@ -8,46 +8,22 @@
     <view class="demo-section__desc">圆型返回顶部</view>
     <view class="button-group">
       <view class="button-group-item">
-        <t-button
-          t-class="t-class-button"
-          size="large"
-          shape="round"
-          bindtap="onBtnClick"
-          data-index="{{0}}"
-        >
+        <t-button t-class="t-class-button" size="large" bindtap="onBtnClick" data-index="{{0}}">
           圆白底
         </t-button>
       </view>
       <view class="button-group-item">
-        <t-button
-          t-class="t-class-button"
-          size="large"
-          shape="round"
-          bindtap="onBtnClick"
-          data-index="{{1}}"
-        >
+        <t-button t-class="t-class-button" size="large" bindtap="onBtnClick" data-index="{{1}}">
           圆黑底
         </t-button>
       </view>
       <view class="button-group-item">
-        <t-button
-          t-class="t-class-button"
-          size="large"
-          shape="round"
-          bindtap="onBtnClick"
-          data-index="{{2}}"
-        >
+        <t-button t-class="t-class-button" size="large" bindtap="onBtnClick" data-index="{{2}}">
           圆白底纯图标
         </t-button>
       </view>
       <view class="button-group-item">
-        <t-button
-          t-class="t-class-button"
-          size="large"
-          shape="round"
-          bindtap="onBtnClick"
-          data-index="{{3}}"
-        >
+        <t-button t-class="t-class-button" size="large" bindtap="onBtnClick" data-index="{{3}}">
           圆黑底纯图标
         </t-button>
       </view>
@@ -56,24 +32,12 @@
     <view class="demo-section__desc">半圆型返回顶部</view>
     <view class="button-group">
       <view class="button-group-item">
-        <t-button
-          t-class="t-class-button"
-          size="large"
-          shape="round"
-          bindtap="onBtnClick"
-          data-index="{{4}}"
-        >
+        <t-button t-class="t-class-button" size="large" bindtap="onBtnClick" data-index="{{4}}">
           半圆白底
         </t-button>
       </view>
       <view class="button-group-item">
-        <t-button
-          t-class="t-class-button"
-          size="large"
-          shape="round"
-          bindtap="onBtnClick"
-          data-index="{{5}}"
-        >
+        <t-button t-class="t-class-button" size="large" bindtap="onBtnClick" data-index="{{5}}">
           半圆黑底
         </t-button>
       </view>
@@ -92,7 +56,7 @@
       />
     </view>
 
-    <t-back-top wx:if="{{showBackTop}}" theme="{{backTopDemo.type}}" text="{{backTopDemo.text}}">
+    <t-back-top wx:if="{{showBackTop}}" theme="{{backTopDemo.theme}}" text="{{backTopDemo.text}}">
     </t-back-top>
   </t-demo>
 </view>

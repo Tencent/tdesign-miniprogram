@@ -46,15 +46,8 @@ export interface TdDividerProps {
    * 分隔线类型有两种：水平和垂直
    * @default horizontal
    */
-  theme?: {
+  layout?: {
     type: StringConstructor;
     value?: 'horizontal' | 'vertical';
-  };
-  /**
-   * 组件样式
-   */
-  tStyle?: {
-    type: ObjectConstructor;
-    value?: Record<string, any>;
   };
 }

@@ -1,53 +1,31 @@
-.badge-wrap {
-  padding: 20px 16px;
-
-  .badge-item {
-    margin-right: 20px;
-  }
-}
-
 .cell-badge {
-  margin-left: 8px;
+  margin-left: 16rpx;
 }
 
 .cell-badge-wrap {
-  padding-bottom: 4px;
+  padding-bottom: 8rpx;
 }
 
-.demo {
-  min-height: 100vh;
-  background: #f9f9f9;
-  overflow: hidden;
+.demo-grid {
+  display: grid;
+  margin: 32rpx 32rpx 0rpx;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 92rpx;
+}
 
-  &-section__grid {
-    display: grid;
-    margin: 16px;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 50px;
-  }
+.size-mini {
+  width: 120rpx;
+  height: 60rpx !important;
+}
 
-  &-tabbar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background: #fff;
-    border-top: 1px solid #e6e6e6;
-    padding-bottom: env(safe-area-inset-bottom, 28px);
-    padding-bottom: constant(safe-area-inset-bottom, 28px);
-
-    &__item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 10px;
-
-      .t-icon {
-        width: 100%;
-      }
-    }
+.tab-bar-wrapper {
+  &::after {
+    content: '标签栏带徽标';
+    position: absolute;
+    top: -34px;
+    left: 16px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, .4);
+    font-size: 12px;
   }
 }

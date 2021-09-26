@@ -45,6 +45,10 @@
     }
   }
 
+  .badge-class {
+    transform: translate(50%, -10%);
+  }
+
   &__text {
     display: flex;
     align-items: center;
@@ -119,22 +123,19 @@
         position: relative;
 
         &:before {
-          .hairline-top(@color: @tab-bar-border-color);
+          position: absolute;
+          box-sizing: border-box;
+          content: ' ';
+          pointer-events: none;
+          top: 0;
+          border-top: 1px solid #e6e6e6;
+          transform: scaleY(.5);
+          border-top-width: 1px;
+          border-top-style: solid;
+          border-top-color: @tab-bar-border-color;
+          width: 80%;
         }
       }
     }
   }
 }
-
-// .spread-enter-active,
-// .spread-leave-active {
-//   transition-property: opacity, transform;
-//   transition-duration: .3s;
-//   transition-timing-function: ease;
-// }
-
-// .spread-enter-from,
-// .spread-leave-to {
-//   transform: translate3d(0, -100%, 0);
-//   opacity: 0;
-// }

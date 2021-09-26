@@ -110,4 +110,4 @@ export interface TdLoadingProps {
     value?: 'circular' | 'spinner' | 'bar' | 'error' | 'dots';
     required?: boolean;
   };
-};
+}

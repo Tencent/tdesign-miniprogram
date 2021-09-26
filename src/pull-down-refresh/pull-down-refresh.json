@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "t-loading": "@tencent/tdesign-miniprogram/loading/loading"
+  }
 }

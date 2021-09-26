@@ -1,8 +1,6 @@
-/* eslint-disable */
-
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-13 20:35:53
+ * updated at 2021-09-21 20:02:12
  * */
 
 export interface TdBadgeProps {
@@ -13,7 +11,6 @@ export interface TdBadgeProps {
   color?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 徽标内容
@@ -21,16 +18,14 @@ export interface TdBadgeProps {
   content?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
-   * 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+
+   * 徽标右上角内容。如：3/99+
+   * @default 0
    */
   count?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
-    required?: boolean;
+    type: NumberConstructor;
+    value?: number;
   };
   /**
    * 是否为红点
@@ -39,7 +34,14 @@ export interface TdBadgeProps {
   dot?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
+  };
+  /**
+   * 是否存在slot
+   * @default false
+   */
+  hasSlot?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 封顶的数字值
@@ -48,15 +50,14 @@ export interface TdBadgeProps {
   maxCount?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem']
+   * @default [0,0]
    */
   offset?: {
     type: ArrayConstructor;
     value?: Array<string | number>;
-    required?: boolean;
   };
   /**
    * 形状
@@ -64,17 +65,7 @@ export interface TdBadgeProps {
    */
   shape?: {
     type: StringConstructor;
-    value?: 'circle' | 'round';
-    required?: boolean;
-  };
-  /**
-   * 当数值为 0 时，是否展示徽标数字
-   * @default false
-   */
-  showZero?: {
-    type: BooleanConstructor;
-    value?: boolean;
-    required?: boolean;
+    value?: 'circle' | 'round' | 'ribbon';
   };
   /**
    * 尺寸
@@ -83,6 +74,13 @@ export interface TdBadgeProps {
   size?: {
     type: StringConstructor;
     value?: 'small' | 'medium';
-    required?: boolean;
+  };
+  /**
+   * 当数值为 0 时，是否展示徽标
+   * @default false
+   */
+  visible?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
 }

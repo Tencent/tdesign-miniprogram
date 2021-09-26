@@ -1,19 +1,174 @@
 import Toast from '@tencent/tdesign-miniprogram/toast/index';
 
 Page({
+  data: {
+    operList1: [
+      {
+        title: '基础提示',
+        btns: [
+          {
+            type: 'pureText',
+            text: '纯文本',
+          },
+          {
+            type: 'withIconRow',
+            text: '带图标横向',
+          },
+          {
+            type: 'withIconColumn',
+            text: '带图标竖向',
+          },
+          {
+            type: 'pureTextMaxHeight',
+            text: '纯文本最大高度',
+          },
+        ],
+      },
+      {
+        title: '默认提示',
+        btns: [
+          {
+            type: 'successRow',
+            text: '成功-横向',
+          },
+          {
+            type: 'warnRow',
+            text: '警告横向',
+          },
+          {
+            type: 'successColumn',
+            text: '成功竖向',
+          },
+          {
+            type: 'warnColumn',
+            text: '警告竖向',
+          },
+          {
+            type: 'loading',
+            text: '加载',
+          },
+        ],
+      },
+    ],
+    operList2: [
+      {
+        label: '02 展示位置和展示时间',
+        title: '弹窗展示位置为顶部、中部、底部三种，展示时间可自定义',
+        btns: [
+          {
+            type: 'topShow',
+            text: '顶部展示1秒',
+          },
+          {
+            type: 'middleShow',
+            text: '中间展示2秒',
+          },
+          {
+            type: 'bottomShow',
+            text: '底部展示2秒',
+          },
+        ],
+      },
+    ],
+    operList3: [
+      {
+        title: '弹窗可现实遮罩，禁止滑动和点击',
+        btns: [
+          {
+            type: 'disableSlideAndClick',
+            text: '禁止滑动和点击',
+          },
+        ],
+      },
+    ],
+  },
+  clickHandle(e) {
+    switch (e.detail) {
+      case 'pureText': {
+        this.tapShowShortTip();
+        break;
+      }
+      case 'withIconRow': {
+        this.tapShowIconTip();
+        break;
+      }
+      case 'withIconColumn': {
+        this.tapShowIconTipColumn();
+        break;
+      }
+      case 'pureTextMaxHeight': {
+        this.tapShowMaxTip();
+        break;
+      }
+      case 'successRow': {
+        this.tapShowRowSuccessTip();
+        break;
+      }
+      case 'warnRow': {
+        this.tapShowRowFailTip();
+        break;
+      }
+      case 'successColumn': {
+        this.tapShowColumnSuccessTip();
+        break;
+      }
+      case 'warnColumn': {
+        this.tapShowColumnFailTip();
+        break;
+      }
+      case 'loading': {
+        this.tapShowLoadingTip();
+        break;
+      }
+      case 'topShow': {
+        this.tapShowTopTip();
+        break;
+      }
+      case 'middleShow': {
+        this.tapShowMiddleTip();
+        break;
+      }
+      case 'bottomShow': {
+        this.tapShowBottomTip();
+        break;
+      }
+      case 'disableSlideAndClick': {
+        this.tapShowOverlayTip();
+        break;
+      }
+      default: {
+        Toast({
+          context: this,
+          selector: '#t-toast',
+          message: '未知点击事件',
+        });
+      }
+    }
+  },
   tapShowShortTip() {
     Toast({
       context: this,
       selector: '#t-toast',
       message: '轻提示文字内容',
+      icon: '',
     });
   },
   tapShowIconTip() {
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '带图标提示',
-      icon: 'tick',
+      message: '带图标横向',
+      icon: 'check',
+      direction: 'row',
+    });
+  },
+  tapShowIconTipColumn() {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message: '带图标竖向',
+      icon: 'check',
+      direction: 'column',
     });
   },
   tapShowMaxTip() {
@@ -21,6 +176,7 @@ Page({
       context: this,
       selector: '#t-toast',
       message: '最多一行展示十个汉字宽度限制最多不超过三行文字行文字行文字',
+      icon: '',
     });
   },
   tapShowRowSuccessTip() {
@@ -29,6 +185,7 @@ Page({
       selector: '#t-toast',
       message: '成功文案',
       type: 'success',
+      direction: 'row',
     });
   },
   tapShowRowFailTip() {
@@ -37,6 +194,7 @@ Page({
       selector: '#t-toast',
       message: '失败文案',
       type: 'fail',
+      direction: 'row',
     });
   },
   tapShowColumnSuccessTip() {

@@ -1,0 +1,34 @@
+<view class="demo">
+  <view class="demo-title">Upload 上传</view>
+  <view class="demo-desc">用于上传一个媒体资源，包含图片及视频，点击可以进行图片或视频预览。</view>
+  <t-demo title="01 类型">
+    <view class="t-grid-list">
+      <view class="demo-section__desc">单选上传图片</view>
+      <view class="demo-section__wrapper">
+        <view class="item">
+          <view class="item__title">上传图片</view>
+          <t-upload
+            media-type="{{['image']}}"
+            files="{{originFiles1}}"
+            bind:remove="handleRemove"
+            bind:success="handleSuccess"
+          >
+            <t-icon slot="addContent" name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
+          </t-upload>
+        </view>
+      </view>
+      <view class="demo-section__desc demo-section-multiple">多选上传图片</view>
+      <view class="demo-section__wrapper">
+        <view class="item">
+          <view class="item__title">上传图片</view>
+          <t-upload
+            media-type="{{['image']}}"
+            bind:remove="handleRemove2"
+            bind:success="handleSuccess2"
+            files="{{originFiles2}}"
+          />
+        </view>
+      </view>
+    </view>
+  </t-demo>
+</view>

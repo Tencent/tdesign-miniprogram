@@ -1,0 +1,3 @@
+<view class="{{classPrefix}}" style="transform: {{translate}} translateZ(0px);">
+  <slot />
+</view>

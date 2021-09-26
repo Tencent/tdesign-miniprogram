@@ -74,6 +74,12 @@
           "name": "indexes",
           "pathName": "pages/indexes/indexes",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "swiper",
+          "pathName": "pages/swiper/swiper",
+          "scene": null
         }
       ]
     }

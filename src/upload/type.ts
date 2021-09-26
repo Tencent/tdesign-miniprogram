@@ -1,0 +1,113 @@
+/* eslint-disable */
+
+/**
+ * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
+ * updated at 2021-09-22 14:07:46
+ * */
+
+export interface TdUploadProps {
+  /**
+   * 添加按钮内容。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。
+   */
+  addContent?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
+   * 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)
+   */
+  config?: {
+    type: ObjectConstructor;
+    value?: UploadConfig;
+    required?: boolean;
+  };
+  /**
+   * 删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。
+   */
+  deleteBtn?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
+   * 已上传文件列表
+   */
+  files?: {
+    type: ArrayConstructor;
+    value?: Array<UploadFile>;
+    required?: boolean;
+  };
+  /**
+   * 预览窗格的 gutter 大小，单位 rpx
+   * @default 16
+   */
+  gutter?: {
+    type: NumberConstructor;
+    value?: number;
+    required?: boolean;
+  };
+  /**
+   * 用于控制文件上传数量，值为 0 则不限制
+   * @default 0
+   */
+  max?: {
+    type: NumberConstructor;
+    value?: number;
+    required?: boolean;
+  };
+  /**
+   * 支持上传的文件类型，图片或视频
+   * @default ['image', 'video']
+   */
+  mediaType?: {
+    type: ArrayConstructor;
+    value?: Array<MediaType>;
+    required?: boolean;
+  };
+  /**
+   * 自定义上传方法
+   */
+  requestMethod?: {
+    type: null;
+    value?: null;
+    required?: boolean;
+  };
+  /**
+   * 图片文件大小限制，单位 Byte
+   */
+  sizeLimit?: {
+    type: NumberConstructor;
+    value?: number;
+    required?: boolean;
+  };
+}
+
+export type UploadConfig = ImageConfig | VideoConfig;
+
+export interface ImageConfig {
+  count?: number;
+  sizeType?: Array<SizeTypeValues>;
+  sourceType?: Array<SourceTypeValues>;
+}
+
+export type SizeTypeValues = 'original' | 'compressed';
+
+export type SourceTypeValues = 'album' | 'camera';
+
+export interface VideoConfig {
+  sourceType?: Array<SourceTypeValues>;
+  compressed?: boolean;
+  maxDuration?: number;
+  camera?: 'back' | 'front';
+}
+
+export interface UploadFile {
+  url: string;
+  name?: string;
+  size?: number;
+  type?: 'image' | 'video';
+  progress?: number;
+}
+
+export type MediaType = 'image' | 'video';
