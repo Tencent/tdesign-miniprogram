@@ -44,7 +44,6 @@
 | shape     | String                 | circle | 形状。可选值：circle/round                                                        | N        |
 | visible   | Boolean                | false  | 当数值为 0 时，是否展示徽标                                                       | N        |
 | size      | String                 | medium | 尺寸。可选值：small/medium                                                        | N        |
-| hasSlot   | Boolean                | false  | 是否存在 slot                                                                     | N        |
 
 ### External Classes
 

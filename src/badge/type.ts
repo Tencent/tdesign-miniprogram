@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-21 20:02:12
+ * updated at 2021-09-26 21:34:22
  * */
 
 export interface TdBadgeProps {
@@ -20,26 +20,19 @@ export interface TdBadgeProps {
     value?: string;
   };
   /**
-   * 徽标右上角内容。如：3/99+
+   * 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为 slot 表示使用插槽渲染
    * @default 0
    */
   count?: {
-    type: NumberConstructor;
-    value?: number;
+    type: StringConstructor;
+    optionalTypes: Array<StringConstructor | NumberConstructor>;
+    value?: string | number;
   };
   /**
    * 是否为红点
    * @default false
    */
   dot?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 是否存在slot
-   * @default false
-   */
-  hasSlot?: {
     type: BooleanConstructor;
     value?: boolean;
   };

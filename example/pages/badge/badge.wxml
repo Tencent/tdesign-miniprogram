@@ -2,28 +2,28 @@
 <view class="demo-desc">展示新增内容的提示，用警示红色为主色，包含数字或文字提示内容</view>
 <t-demo title="01 类型" desc="徽标主要分红点、数字、文字和角标提醒">
   <view class="demo-grid">
-    <t-badge dot hasSlot class="badge-item">
+    <t-badge dot class="badge-item">
       <text style="margin-left: 10px">消息</text>
     </t-badge>
-    <t-badge count="{{16}}" hasSlot class="badge-item">
+    <t-badge count="{{16}}" class="badge-item">
       <text style="padding: 0 10px">消息</text>
     </t-badge>
-    <t-badge content="New" hasSlot class="badge-item">
+    <t-badge content="New" class="badge-item">
       <text style="padding: 0 10px">消息</text>
     </t-badge>
-    <t-badge content="···" hasSlot class="badge-item">
+    <t-badge content="···" class="badge-item">
       <text style="padding: 0 10px">消息</text>
     </t-badge>
-    <t-badge dot hasSlot class="badge-item">
+    <t-badge dot class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
-    <t-badge count="{{16}}" hasSlot class="badge-item">
+    <t-badge count="{{16}}" class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
-    <t-badge content="New" hasSlot class="badge-item">
+    <t-badge content="New" class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
-    <t-badge content="···" hasSlot class="badge-item">
+    <t-badge content="···" class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
   </view>

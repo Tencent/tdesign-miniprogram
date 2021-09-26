@@ -26,7 +26,5 @@
     size="{{ badgeProps.size }}"
     visible="{{ badgeProps.visible }}"
     offset="{{ badgeProps.offset }}"
-    hasSlot
-  >
-  </t-badge>
+  />
 </view>
