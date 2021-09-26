@@ -7,27 +7,27 @@
         <t-avatar
           image="https://cdn-we-retail.ym.tencent.com/retail-ui/components/avatar/detaul_avatar.jpg"
         />
-        <text>默认</text>
+        <text class="avatar-word">默认</text>
       </view>
       <view class="gutter-column-24"></view>
       <view class="avatar-example">
         <t-avatar image="{{pics[0]}}" />
-        <text>用户</text>
+        <text class="avatar-word">用户</text>
       </view>
       <view class="gutter-column-24"></view>
       <view class="avatar-example">
         <t-avatar shape="circle" image="{{pics[0]}}" />
-        <text>圆形</text>
+        <text class="avatar-word">圆形</text>
       </view>
       <view class="gutter-column-24"></view>
       <view class="avatar-example">
         <t-avatar shape="round" image="{{pics[0]}}" />
-        <text>方形</text>
+        <text class="avatar-word">方形</text>
       </view>
       <view class="gutter-column-24"></view>
       <view class="avatar-example text">
         <t-avatar alt="A" t-class-alt="alt-example" />
-        <text>自定义文字</text>
+        <text class="avatar-word">自定义文字</text>
       </view>
     </view>
   </view>
@@ -139,19 +139,15 @@
 <t-demo title="03 规格" desc="头像大小尺寸及消息提醒">
   <view class="desc">
     <view class="row" style="margin: 20px 0">
-      <view class="gutter-column-24"></view>
-      <text class="row-text">XL</text>
-      <view class="gutter-column-64"></view>
-      <view class="gutter-column-12"></view>
-      <text class="row-text">L</text>
-      <view class="gutter-column-64"></view>
-      <text class="row-text">M</text>
+      <text class="row-text-64 row-text-common">XL</text>
       <view class="gutter-column-32"></view>
-      <view class="gutter-column-24"></view>
-      <text class="row-text">S</text>
+      <text class="row-text-48 row-text-common">L</text>
       <view class="gutter-column-32"></view>
-      <view class="gutter-column-12"></view>
-      <text class="row-text">XS</text>
+      <text class="row-text-40 row-text-common">M</text>
+      <view class="gutter-column-32"></view>
+      <text class="row-text-32 row-text-common">S</text>
+      <view class="gutter-column-32"></view>
+      <text class="row-text-24 row-text-common">XS</text>
     </view>
     <view class="row">
       <view class="avatar-example">
