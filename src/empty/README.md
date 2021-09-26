@@ -54,4 +54,4 @@ Page({
 | description      | String / Slot | -       | 描述文字                                                                                                                         | N    |
 | external-classes | Array         | -       | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-description', 't-class-image']` | N    |
 | image            | String / Slot | -       | 图片地址                                                                                                                         | N    |
-| theme            | String        | default | 空页面风格类型（待确认）。可选项：default/primary/warning/error                                                                  | N    |
+| theme            | String        | default | 空页面风格类型。可选项：default/primary/warning/error                                                                            | N    |
