@@ -1,12 +1,11 @@
 ### Props
 
-| 参数    | 说明                                                                       | 类型    | 默认值  | 版本      |
-| ------- | -------------------------------------------------------------------------- | ------- | ------- | --------- |
-| visible | 是否显示组件                                                               | boolean | `false` | -         |
-| type    | 预设的样式类型，可选值 `round` `hafl-round` `round-dark` `half-round-dark` | String  | -       | -         |
-| fixed   | 是否绝对定位固定到屏幕右下方                                               | boolean | `true`  | -         |
-| text    | 文案                                                                       | String  | -       | -         |
-| icon    | 图标                                                                       | String  | -       | `backtop` |
+| 参数  | 说明                                                                       | 类型    | 默认值 | 版本      |
+| ----- | -------------------------------------------------------------------------- | ------- | ------ | --------- |
+| theme | 预设的样式类型，可选值 `round` `hafl-round` `round-dark` `half-round-dark` | String  | -      | -         |
+| fixed | 是否绝对定位固定到屏幕右下方                                               | boolean | `true` | -         |
+| text  | 文案                                                                       | String  | -      | -         |
+| icon  | 图标                                                                       | String  | -      | `backtop` |
 
 ### tab Event
 
