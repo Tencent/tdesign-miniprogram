@@ -12,11 +12,11 @@ Page({
           },
           {
             type: 'withIconRow',
-            text: '带图标横向',
+            text: '带图标-横向',
           },
           {
             type: 'withIconColumn',
-            text: '带图标竖向',
+            text: '带图标-竖向',
           },
           {
             type: 'pureTextMaxHeight',
@@ -33,15 +33,15 @@ Page({
           },
           {
             type: 'warnRow',
-            text: '警告横向',
+            text: '警告-横向',
           },
           {
             type: 'successColumn',
-            text: '成功竖向',
+            text: '成功-竖向',
           },
           {
             type: 'warnColumn',
-            text: '警告竖向',
+            text: '警告-竖向',
           },
           {
             type: 'loading',
@@ -81,6 +81,13 @@ Page({
         ],
       },
     ],
+  },
+  handleToast(option) {
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      ...option,
+    });
   },
   clickHandle(e) {
     switch (e.detail) {
