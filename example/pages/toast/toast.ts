@@ -106,14 +106,14 @@ Page({
       case 'withIconRow': {
         this.handleToast({
           message: '带图标横向',
-          icon: 'check',
+          icon: 'check-circle',
         });
         break;
       }
       case 'withIconColumn': {
         this.handleToast({
           message: '带图标竖向',
-          icon: 'check',
+          icon: 'star',
           direction: 'column',
         });
         break;
@@ -133,8 +133,8 @@ Page({
       }
       case 'warnRow': {
         this.handleToast({
-          message: '失败文案',
-          type: 'fail',
+          message: '警告文案',
+          icon: 'error-circle',
         });
         break;
       }
@@ -148,8 +148,8 @@ Page({
       }
       case 'warnColumn': {
         this.handleToast({
-          message: '失败文案',
-          type: 'fail',
+          message: '警告文案',
+          icon: 'error-circle',
           direction: 'column',
         });
         break;
@@ -165,7 +165,6 @@ Page({
       case 'topShow': {
         this.handleToast({
           message: '顶部-展示1秒',
-          icon: 'star_fill',
           direction: 'column',
           position: 'top',
           duration: 1000,
@@ -174,27 +173,24 @@ Page({
       }
       case 'middleShow': {
         this.handleToast({
-          message: '中间-展示3秒',
-          icon: 'star_fill',
+          message: '中间-展示2秒',
           direction: 'column',
-          duration: 3000,
+          duration: 2000,
         });
         break;
       }
       case 'bottomShow': {
         this.handleToast({
-          message: '底部-展示5秒',
-          icon: 'star_fill',
+          message: '底部-展示2秒',
           direction: 'column',
           position: 'bottom',
-          duration: 5000,
+          duration: 2000,
         });
         break;
       }
       case 'disableSlideAndClick': {
         this.handleToast({
           message: '禁止滑动和点击',
-          icon: 'star_fill',
           direction: 'column',
           position: 'bottom',
           duration: 5000,

@@ -35,7 +35,7 @@
 | gap            | Number  | 6       | 评分图标的间距                                                                                                   | N    |
 | readonly       | Boolean | false   | 是否为只读                                                                                                       | N    |
 | show-text      | Boolean | false   | 是否显示辅助文字                                                                                                 | N    |
-| size           | String  | 48      | 评分图标的大小                                                                                                   | N    |
+| size           | String  | 40      | 评分图标的大小                                                                                                   | N    |
 | texts          | Array   | -       | 自定义评分等级对应的辅助文字，组件内部默认为：['极差', '失望', '一般', '满意', '惊喜']。TS 类型：`Array<string>` | N    |
 | value          | Number  | -       | 必需。选择评分的值                                                                                               | Y    |
 | variant        | String  | outline | 形状类型，有描边类型和填充类型两种。可选项：outline/filled                                                       | N    |
