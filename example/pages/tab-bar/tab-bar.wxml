@@ -59,7 +59,7 @@
       <t-tab-bar-item badge-props="{{ {content: 'New'} }}" icon="user" value="label3" icon="app"
         >文字
       </t-tab-bar-item>
-      <t-tab-bar-item badge-props="{{ {content: '...'} }}" icon="user" value="label4" icon="app"
+      <t-tab-bar-item badge-props="{{ {content: '···'} }}" icon="user" value="label4" icon="app"
         >文字
       </t-tab-bar-item>
     </t-tab-bar>

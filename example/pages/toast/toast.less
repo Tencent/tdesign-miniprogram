@@ -32,11 +32,23 @@
     width: 686rpx;
     height: 96rpx;
     border-radius: 8rpx;
-    border: 1rpx solid #dcdcdc;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 32rpx;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      transform: scale(.5);
+      transform-origin: 0 0;
+      box-sizing: border-box;
+      border: 2rpx solid #dcdcdc;
+    }
   }
 
   .demo-block__oper {
