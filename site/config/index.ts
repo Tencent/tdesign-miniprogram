@@ -232,13 +232,13 @@ export default {
           path: '/miniprogram/components/textarea',
           component: () => import('@/textarea/README.md'),
         },
-        {
-          title: 'Fab 悬浮按钮',
-          name: 'fab',
-          meta: { docType: 'form' },
-          path: '/miniprogram/components/fab',
-          component: () => import('@/fab/README.md'),
-        },
+        // {
+        //   title: 'Fab 悬浮按钮',
+        //   name: 'fab',
+        //   meta: { docType: 'form' },
+        //   path: '/miniprogram/components/fab',
+        //   component: () => import('@/fab/README.md'),
+        // },
         {
           title: 'Search 搜索框',
           name: 'search',
