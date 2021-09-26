@@ -1,11 +1,9 @@
 <wxs src="./badge.wxs" module="this" />
 
 <view class="{{this.getBadgeOuterClass({shape})}} t-class">
-  <view
-    class="{{this.getBadgeInnerClass({dot, size, shape, hasSlot})}} t-class-badge"
-    style="{{this.getBadgeStyles({color, offset})}}"
-    wx:if="{{this.isShowBadge({dot,content,count,visible})}}"
-    >{{ this.getBadgeValue({dot, content, count, maxCount}) }}</view
-  >
-  <slot />
+	<view class="has-slot">
+		<slot/>
+	</view>
+	<view class="{{this.getBadgeInnerClass({dot, size, shape, hasSlot})}} has-children t-class-badge" style="{{this.getBadgeStyles({color, offset})}}" wx:if="{{this.isShowBadge({dot,content,count,visible})}}">{{ this.getBadgeValue({dot, content, count, maxCount}) }}</view>
 </view>
+

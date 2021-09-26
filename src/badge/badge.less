@@ -28,13 +28,6 @@
     font-weight: @badge-font-weight;
   }
 
-  &--has-children {
-    transform: translate(50%, -50%);
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
   &--dot {
     height: @badge-dot-height;
     border-radius: @badge-dot-border-radius;
@@ -86,5 +79,12 @@
       border-bottom: @badge-height solid @badge-color;
       border-right: @badge-height solid transparent;
     }
+  }
+
+  .has-slot:not(:empty) + .has-children {
+    transform: translate(50%, -50%);
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }

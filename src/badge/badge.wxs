@@ -26,7 +26,6 @@ var getBadgeInnerClass = function (props) {
   var baseClass = 't-badge';
   var classNames = [
     baseClass + '--basic',
-    props.hasSlot ? baseClass + '--has-children' : '',
     props.dot ? baseClass + '--dot' : '',
     props.size === 'small' ? baseClass + '--small' : '',
     baseClass + '--' + props.shape,
