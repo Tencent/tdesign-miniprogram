@@ -29,20 +29,18 @@
 }
 
 .@{prefix}-tag {
-  display: inline-block;
-  border-width: 1rpx;
-  border-style: solid;
-  border-color: transparent;
+  display: inline-flex;
+  align-items: center;
+  border: 1rpx solid transparent;
   box-sizing: border-box;
   border-radius: @border-radius-square;
   white-space: nowrap;
   font-size: 24rpx;
   height: 48rpx;
-  line-height: 46rpxpx;
+  line-height: 48rpx;
   padding: 0 24rpx;
   font-size: 24rpx;
   max-width: 240rpx;
-  white-space: nowrap;
   word-wrap: normal;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -66,7 +64,7 @@
     }
   }
 
-  .@{prefix}-tag__content {
+  &__content {
     width: 100%;
   }
 
@@ -74,47 +72,41 @@
     font-size: @tag-medium-font-size;
   }
 
-  .@{prefix}__icon-close {
-    font-size: @tag-small-font-size;
-    border-radius: @border-radius-50;
-    cursor: pointer;
-  }
-
-  .@{prefix}-icon-close {
-    margin-left: 4px;
+  &__icon-close {
+    margin-left: 8rpx;
   }
 
   &.@{prefix}-tag--size {
     &-small {
-      height: 22px;
-      line-height: 22px;
-      padding: 0px 8px;
-      font-size: 10px;
+      height: 44rpx;
+      line-height: 44rpx;
+      padding: 0 16rpx;
+      font-size: 20rpx;
 
       .@{prefix}-icon {
-        font-size: 10px;
+        font-size: 20rpx;
       }
     }
 
     &-medium {
-      height: 24px;
-      line-height: 24px;
-      padding: 0px 12px;
-      font-size: 12px;
+      height: 48rpx;
+      line-height: 48rpx;
+      padding: 0 24rpx;
+      font-size: 24rpx;
 
       .@{prefix}-icon {
-        font-size: 12px;
+        font-size: 24rpx;
       }
     }
 
     &-large {
-      height: 30px;
-      line-height: 30px;
-      padding: 0px 12px;
-      font-size: 14px;
+      height: 60rpx;
+      line-height: 60rpx;
+      padding: 0 24rpx;
+      font-size: 28rpx;
 
       .@{prefix}-icon {
-        font-size: 14px;
+        font-size: 28rpx;
       }
     }
   }

@@ -26,9 +26,9 @@
         width: @connector-default-icon-width;
         height: @connector-default-icon-width;
         text-align: center;
-        border: 1px solid @border-level-2-color;
+        border: 1px solid @step-item-icon-color;
         border-radius: 50%;
-        color: @border-level-2-color;
+        color: @step-item-icon-color;
       }
     }
 
@@ -44,13 +44,17 @@
       font-size: @font-size-base;
       text-align: center;
       margin-bottom: 4px;
+      font-weight: 700;
     }
 
     &-description {
       color: @text-level-3-color;
       line-height: 20px;
       font-size: @font-size-s;
-      margin-bottom: @spacer;
+    }
+
+    &-extra:not(:empty) {
+      margin-top: @spacer;
     }
   }
 }
