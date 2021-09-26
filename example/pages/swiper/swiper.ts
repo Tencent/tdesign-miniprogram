@@ -7,18 +7,23 @@ Page({
     items: [
       {
         cls: 'item0',
+        image: './common/01.png',
       },
       {
         cls: 'item1',
+        image: './common/02.png',
       },
       {
         cls: 'item2',
+        image: './common/03.png',
       },
       {
         cls: 'item3',
+        image: './common/04.png',
       },
       {
         cls: 'item4',
+        image: './common/05.png',
       },
     ],
     navigation1: { type: 'dots-bar' },

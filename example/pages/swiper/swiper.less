@@ -13,19 +13,24 @@
   &-space {
     height: 30rpx;
   }
+  // 插槽方式，下面的样式在真机测试无效
+  .swiper-wrap {
+    // border-radius: 16rpx;
+    // overflow: hidden;
+  }
 
   .swiper-box {
-    border-radius: 16rpx;
+    // border-radius: 16rpx;
     margin: 0 32rpx;
-    overflow: hidden;
+    // overflow: hidden;
   }
   // 样式覆盖
   .t-swiper-nav-dots-bar-item {
-    background: #ebc0dcc2;
+    background: #1b131850;
   }
 
   .t-swiper-nav-dots-bar-item.active {
-    background: #ebc0dc;
+    background: #080006;
   }
 
   .swiper-vertical {
@@ -34,6 +39,14 @@
 
   .swiper-box2 {
     .item {
+      .img {
+        height: 300rpx;
+      }
+    }
+  }
+
+  .swiper-box3 {
+    .item {
       line-height: 400rpx;
     }
   }
@@ -41,29 +54,37 @@
   .item {
     width: 100%;
     height: 100%;
-    background-color: #0052d9;
+    // background-color: #0052d9;
     text-align: center;
     line-height: 300rpx;
 
-    &.item0 {
-      background-color: #4fb669;
+    .img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
     }
 
-    &.item1 {
-      background-color: #c461a3;
-    }
+    // &.item0 {
+    //   background-color: #4fb669;
+    // }
 
-    &.item2 {
-      background-color: #3830a1;
-    }
+    // &.item1 {
+    //   background-color: #c461a3;
+    // }
 
-    &.item3 {
-      background-color: #acb47e;
-    }
+    // &.item2 {
+    //   background-color: #3830a1;
+    // }
 
-    &.item4 {
-      background-color: #363444;
-    }
+    // &.item3 {
+    //   background-color: #acb47e;
+    // }
+
+    // &.item4 {
+    //   background-color: #363444;
+    // }
   }
 
   .cell {
