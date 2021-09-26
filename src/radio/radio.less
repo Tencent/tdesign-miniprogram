@@ -1,4 +1,6 @@
 // @import (css) '../common/index.wxss';
+@btn-width: 48rpx;
+
 .t-radio {
   position: relative;
   display: flex;
@@ -17,27 +19,27 @@
 
   &__icon-left {
     margin-right: 20rpx;
-    width: 40rpx;
+    width: @btn-width;
   }
 
   &__icon-right {
     margin-left: auto;
-    width: 40rpx;
+    width: @btn-width;
   }
 
   &__image {
-    line-height: 48rpx;
+    line-height: @btn-width;
   }
 
   &-icon__image {
-    height: 48rpx;
-    width: 48rpx;
+    height: @btn-width;
+    width: @btn-width;
     vertical-align: sub;
   }
 
   &__btn {
-    font-size: 48rpx;
-    height: 48rpx;
+    font-size: @btn-width;
+    height: @btn-width;
     line-height: 40rpx;
     color: #dcdcdc;
     display: block;
@@ -45,7 +47,7 @@
 
   &__content {
     flex: 1;
-    line-height: 48rpx;
+    line-height: @btn-width;
     margin-right: 10px;
   }
 
@@ -83,10 +85,12 @@
   }
 
   &-border-left {
-    margin-left: 64rpx;
+    left: 80rpx;
+    width: calc(100% - 80rpx);
   }
 
   &-border-right {
     right: 80rpx;
+    width: calc(100% - 80rpx);
   }
 }
