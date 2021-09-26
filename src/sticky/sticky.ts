@@ -11,7 +11,7 @@ type ContainerRef = () => WechatMiniprogram.NodesRef;
 
 interface StickyProps {
   zIndex: number;
-  isDisabled: boolean;
+  disabled: boolean;
   container: ContainerRef;
   offsetTop: number;
 }
@@ -29,7 +29,7 @@ export default class Sticky extends SuperComponent {
   ];
 
   observers = {
-    'offsetTop, isDisabled, container': this.onScroll,
+    'offsetTop, disabled, container': this.onScroll,
   };
 
   data = {
@@ -44,9 +44,9 @@ export default class Sticky extends SuperComponent {
 
   onScroll(event?: { scrollTop: number }) {
     const { scrollTop } = event || {};
-    const { container, offsetTop, isDisabled } = this.properties;
+    const { container, offsetTop, disabled } = this.properties;
 
-    if (isDisabled) {
+    if (disabled) {
       this.setDataAfterDiff({
         isFixed: false,
         transform: 0,
