@@ -92,7 +92,7 @@
       />
     </view>
 
-    <t-back-top show="{{showBackTop}}" type="{{backTopDemo.type}}" text="{{backTopDemo.text}}">
+    <t-back-top wx:if="{{showBackTop}}" theme="{{backTopDemo.type}}" text="{{backTopDemo.text}}">
     </t-back-top>
   </t-demo>
 </view>

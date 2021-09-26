@@ -21,14 +21,6 @@ export interface TdBackTopProps {
     value?: string;
   };
   /**
-   * 是否显示组件
-   * @default false
-   */
-  visible?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 文案
    * @default ''
    */
