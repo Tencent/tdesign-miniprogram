@@ -2,8 +2,8 @@ var getBadgeValue = function (props) {
   if (props.dot) {
     return '';
   }
-  if (props.content) {
-    return props.content;
+  if (isNaN(props.count) || isNaN(props.maxCount)) {
+    return props.count;
   }
   return parseInt(props.count) > props.maxCount ? props.maxCount + '+' : props.count;
 };
@@ -34,10 +34,10 @@ var getBadgeInnerClass = function (props) {
 };
 
 var isShowBadge = function (props) {
-  if (props.dot || props.content) {
+  if (props.dot) {
     return true;
   }
-  if (!props.visible && parseInt(props.count) === 0) {
+  if (!props.visible && !isNaN(props.count) && parseInt(props.count) === 0) {
     return false;
   }
   return true;

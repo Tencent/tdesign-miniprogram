@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 21:34:22
+ * updated at 2021-09-27 15:18:11
  * */
 
 import { TdBadgeProps } from './type';
@@ -11,11 +11,12 @@ const props: TdBadgeProps = {
     type: String,
     value: '',
   },
-  /** 徽标内容 */
+  /** 徽标内容，示例：`content='自定义内容'`。也可以使用默认插槽定义 */
   content: {
     type: String,
+    value: '',
   },
-  /** 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为 slot 表示使用插槽渲染 */
+  /** 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为空表示使用插槽渲染 */
   count: {
     type: String,
     optionalTypes: [String, Number],
@@ -25,6 +26,10 @@ const props: TdBadgeProps = {
   dot: {
     type: Boolean,
     value: false,
+  },
+  /** 组件类名，分别用于设置外层元素、默认内容、右上角内容等元素类名 */
+  externalClasses: {
+    type: Array,
   },
   /** 封顶的数字值 */
   maxCount: {

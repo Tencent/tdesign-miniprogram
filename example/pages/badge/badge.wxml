@@ -2,28 +2,24 @@
 <view class="demo-desc">展示新增内容的提示，用警示红色为主色，包含数字或文字提示内容</view>
 <t-demo title="01 类型" desc="徽标主要分红点、数字、文字和角标提醒">
   <view class="demo-grid">
-    <t-badge dot class="badge-item">
-      <text style="margin-left: 10px">消息</text>
-    </t-badge>
-    <t-badge count="{{16}}" class="badge-item">
+    <t-badge dot class="badge-item" content="消息" />
+    <t-badge count="{{16}}" class="badge-item" content="消息" />
+    <t-badge count="New" class="badge-item">
       <text style="padding: 0 10px">消息</text>
     </t-badge>
-    <t-badge content="New" class="badge-item">
-      <text style="padding: 0 10px">消息</text>
-    </t-badge>
-    <t-badge content="···" class="badge-item">
+    <t-badge count="···" class="badge-item">
       <text style="padding: 0 10px">消息</text>
     </t-badge>
     <t-badge dot class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
-    <t-badge count="{{16}}" class="badge-item">
+    <t-badge count="{{200}}" class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
-    <t-badge content="New" class="badge-item">
+    <t-badge count="New" class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
-    <t-badge content="···" class="badge-item">
+    <t-badge count="···" class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
   </view>
@@ -40,27 +36,24 @@
     </t-cell>
     <t-cell title="单行标题" hover arrow>
       <view class="cell-badge-wrap" slot="note">
-        <t-badge content="New" shape="round" class="cell-badge" />
-        <t-badge content="New" class="cell-badge" />
+        <t-badge count="New" shape="square" class="cell-badge" />
+        <t-badge count="New" shape="round" class="cell-badge" />
+        <t-badge count="New" class="cell-badge" />
       </view>
     </t-cell>
     <t-cell title="单行标题">
-      <t-badge content="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+      <t-badge count="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
     </t-cell>
   </t-cell-group>
 </t-demo>
 <view class="bar-wrapper">
   <t-tab-bar value="label1" bindchange="onChange" class="mb-12" t-class="tab-bar-wrapper">
-    <t-tab-bar-item badge-props="{{ {content: 16} }}" value="label1" icon="app"
-      >文字</t-tab-bar-item
-    >
-    <t-tab-bar-item badge-props="{{ { dot: true } }}" value="label2" icon="app"
+    <t-tab-bar-item badge-props="{{ {count: 16} }}" value="label1" icon="app">文字</t-tab-bar-item>
+    <t-tab-bar-item badge-props="{{ {dot: true} }}" value="label2" icon="app">文字 </t-tab-bar-item>
+    <t-tab-bar-item badge-props="{{ {count: 'New'} }}" value="label3" icon="app"
       >文字
     </t-tab-bar-item>
-    <t-tab-bar-item badge-props="{{ {content: 'New'} }}" value="label3" icon="app"
-      >文字
-    </t-tab-bar-item>
-    <t-tab-bar-item badge-props="{{ {content: '···'} }}" value="label4" icon="app"
+    <t-tab-bar-item badge-props="{{ {count: '···'} }}" value="label4" icon="app"
       >文字
     </t-tab-bar-item>
   </t-tab-bar>

@@ -210,7 +210,7 @@
             </t-badge>
           </t-grid-item>
           <t-grid-item text="标题文字">
-            <t-badge content="New" slot="icon">
+            <t-badge count="New" slot="icon">
               <image
                 class="middle-icon-image"
                 src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
@@ -218,7 +218,7 @@
             </t-badge>
           </t-grid-item>
           <t-grid-item text="标题五字内">
-            <t-badge content="···" slot="icon">
+            <t-badge count="···" slot="icon">
               <image
                 class="middle-icon-image"
                 src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
