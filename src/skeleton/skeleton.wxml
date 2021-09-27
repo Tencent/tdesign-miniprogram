@@ -1,24 +1,15 @@
-<view wx:if="{{ loading }}" class="{{classPrefix}} loading-class {{animate ? 'animate' : ''}} ">
-  <view
-    wx:if="{{ avatar }}"
-    class="avatar-class {{classPrefix}}__avatar {{classPrefix}}__avatar--{{avatarShape}}"
-    style="{{ 'width:' + avatarSize + ';height:' + avatarSize }}"
-  />
-  <view class="{{classPrefix}}__content">
-    <view
-      wx:if="{{ title }}"
-      class="title-class {{classPrefix}}__title}}"
-      style="{{ 'width:' + titleWidth }}"
-    />
+<view wx:if="{{ loading }}" class="t-class {{classPrefix}} {{animation? 'animate-'+animation:''}} ">
+  <view wx:if="{{ theme === 'avatar-text' }}" class="t-class-avatar {{classPrefix}}__avatar " />
+  <view wx:if="{{theme === 'avatar-text' || 'text' }}" class="{{classPrefix}}__content">
     <view
       wx:for="{{ row }}"
       wx:key="index"
       wx:for-index="index"
-      class="row-class {{classPrefix}}__row"
+      class="t-class-text {{classPrefix}}__row"
       style="width: {{rowWidthArray.length > 0 && rowWidthArray[index] ? rowWidthArray[index] : rowWidth}}; {{rowHeight && rowHeight[index] ? 'height:' + rowHeight[index] : ''}}"
     />
   </view>
 </view>
-<view wx:else class="{{classPrefix}}__content after-loading-class">
+<view wx:else class="{{classPrefix}}__content ">
   <slot />
 </view>

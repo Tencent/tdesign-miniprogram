@@ -4,48 +4,25 @@
 @h-space-sm: 32rpx;
 @h-space-nest: 24rpx;
 // skeleton
-@skeleton-padding: 0 @h-space-sm;
-@skeleton-row-height: 16px;
-@skeleton-row-background-color: #f2f3f5;
+@skeleton-row-background-color: rgba(238, 238, 238, 1);
 @skeleton-row-margin-top: @h-space-nest;
-@skeleton-avatar-background-color: #f2f3f5;
+@skeleton-avatar-background-color: rgba(238, 238, 238, 1);
 @skeleton-animation-duration: 1.2s;
 
 .@{prefix}-skeleton {
   display: flex;
   box-sizing: border-box;
-  width: 100%;
+  // width: 100%;
 
   &__avatar {
     flex-shrink: 0;
-    margin-right: @h-space-sm;
     background-color: @skeleton-avatar-background-color;
-
-    &--round {
-      border-radius: 100%;
-    }
-
-    &--square {
-      border-radius: 0%;
-    }
+    height: 64rpx;
+    width: 64rpx;
   }
 
-  &__content {
-    flex: 1;
-  }
-
-  &__avatar + &__content {
-    padding-top: 16rpx;
-  }
-
-  &__row,
-  &__title {
-    height: @skeleton-row-height;
+  &__row {
     background-color: @skeleton-row-background-color;
-  }
-
-  &__title {
-    margin: 0;
   }
 
   &__row {
@@ -53,13 +30,9 @@
       margin-top: @skeleton-row-margin-top;
     }
   }
-
-  &__title + &__row {
-    margin-top: 20px;
-  }
 }
 
-.animate {
+.animate-flashed {
   animation: t-skeleton-blink @skeleton-animation-duration ease-in-out infinite;
 }
 
