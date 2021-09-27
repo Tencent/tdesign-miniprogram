@@ -1,7 +1,7 @@
 /*
  * @Author: rileycai
  * @Date: 2021-09-21 19:10:10
- * @LastEditTime: 2021-09-23 14:40:51
+ * @LastEditTime: 2021-09-27 20:15:06
  * @LastEditors: Please set LastEditors
  * @Description: textarea从input组件拆分出去
  * @FilePath: /tdesign-miniprogram/src/input/input.ts
@@ -9,6 +9,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import getCharacterLength from './utils';
 
 const { prefix } = config;
 const name = `${prefix}-input`;
@@ -26,6 +27,7 @@ export default class Input extends SuperComponent {
   data = {
     inputValue: '',
     classPrefix: name,
+    characterLength: 0,
   };
 
   /* 组件生命周期 */
@@ -38,9 +40,18 @@ export default class Input extends SuperComponent {
   methods = {
     onInput(event) {
       const { value } = event.detail;
-      this.setData({ inputValue: value });
+      const { maxcharacter } = this.properties;
+      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+        const { characters = '', length = 0 } = getCharacterLength(value, maxcharacter);
+        this.setData({
+          value: characters,
+          characterLength: length,
+        });
+      } else {
+        this.setData({ inputValue: value });
+      }
 
-      this.triggerEvent('input', {
+      this.triggerEvent('change', {
         ...event.detail,
       });
     },
@@ -60,7 +71,7 @@ export default class Input extends SuperComponent {
       });
     },
     clearInput(event) {
-      this.setData({ inputValue: '' });
+      this.setData({ inputValue: '', value: '' });
       this.triggerEvent('clear', {
         ...event.detail,
       });

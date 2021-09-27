@@ -39,7 +39,8 @@
 | value          | `String`            | -       | N    | 输入框的值                                                                                   |
 | disabled       | `Boolean`           | `false` | N    | 是否禁用输入框                                                                               |
 | placeholder    | `String`            | -       | N    | 输入框为空时的占位符                                                                         |
-| maxlength      | `Number`            | 140     | N    | 输入框输入文本的最大长度                                                                     |
+| maxlength      | `Number`            | -       | N    | 输入框输入文本的最大长度                                                                     |
+| maxcharacter   | `Number`            | -       | N    | 输入框输入文本的最大长度,一个中文汉字表示两个字符                                            |
 | focus          | `Boolean`           | `false` | N    | 是否获取焦点                                                                                 |
 | autofocus      | `Boolean`           | `false` | N    | 自动聚焦，拉起键盘                                                                           |
 | autosize       | `Boolean`           | `false` | N    | 是否自动增高，设置 auto-height 时，style.height 不生效                                       |
