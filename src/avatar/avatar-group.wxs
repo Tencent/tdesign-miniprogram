@@ -1,0 +1,17 @@
+module.exports = {
+  getAvatarGroupOuterClass: function (classPrefix, size, cascading) {
+    var isIncludePx = size.indexOf('px') > -1;
+    var classNames = [
+      classPrefix + '--content',
+      isIncludePx ? '' : classPrefix + '--' + size,
+      classPrefix + (cascading === 'right-up' ? '--right-up' : '--left-up'),
+    ];
+    return classNames.join(' ');
+  },
+  getAvatarGroupSizePx: function (size) {
+    var isIncludePx = size.indexOf('px') > -1;
+    if (isIncludePx) {
+      return 'width:' + size + ';height:' + size + ';';
+    }
+  },
+};

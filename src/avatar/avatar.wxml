@@ -1,6 +1,12 @@
-<view class="{{ classPrefix }}--wrapper {{ classPrefix }}--{{ size }} t-class">
+<wxs src="./avatar.wxs" module="this" />
+
+<view
+  class="{{ classPrefix }}--wrapper {{this.getTClass(size,classPrefix)}} t-class"
+  style="{{this.getShow(isShow)}}"
+>
   <view
-    class="{{ classPrefix }} {{ classPrefix }}--{{ size }} {{ shape === 'round' ? classPrefix + '--round' : '' }} t-class-image"
+    class="{{this.getAvatarOuterClass(classPrefix, size, shape)}} t-class-image"
+    style="{{this.getAvatarSizePx(size)}}"
   >
     <t-image
       wx:if="{{ !icon && !alt }}"

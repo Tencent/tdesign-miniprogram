@@ -13,6 +13,30 @@ export default class Avatar extends SuperComponent {
 
   data = {
     classPrefix: name,
+    isShow: true,
+  };
+
+  relations = {
+    './avatar-group': {
+      type: 'ancestor' as 'ancestor',
+      linked(this: Avatar, target: WechatMiniprogram.Component.TrivialInstance) {
+        this.parent = target;
+      },
+    },
+  };
+
+  methods = {
+    updateShow() {
+      // console.log('children');
+
+      this.setData({
+        isShow: false,
+      });
+    },
+
+    updateSize(size) {
+      this.setData({ size });
+    },
   };
 
   onLoadError(e: any) {

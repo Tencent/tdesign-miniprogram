@@ -1,0 +1,17 @@
+<wxs src="./avatar-group.wxs" module="this" />
+
+<view
+  class="{{classPrefix}} {{this.getAvatarGroupOuterClass(classPrefix, size, cascading)}}"
+  style="{{this.getAvatarGroupSizePx(size)}}"
+>
+  <slot />
+  <slot name="collapseAvatar" class="collapse-avatar" />
+  <t-avatar
+    class="default-collapse-avatar"
+    icon="user-add"
+    t-class-image="border-example-1"
+    t-class-icon="icon-example"
+    size="48rpx"
+    bindtap="onAddTap"
+  />
+</view>
