@@ -8,11 +8,11 @@ type ToastOptionsType = {
   context?: Context;
   selector?: string;
   icon?: string;
-  message: string;
+  message?: string;
   duration?: number;
-  type?: ToastType;
-  position?: ToastPositionType;
-  showOverlay?: boolean;
+  theme?: ToastType;
+  placement?: ToastPositionType;
+  preventScrollThrough?: boolean;
   direction?: ToastDirectionType;
 };
 

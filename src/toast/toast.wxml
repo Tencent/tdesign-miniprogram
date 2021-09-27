@@ -13,7 +13,7 @@
     <t-loading
       wx:if="{{typeMapIcon === 'loading'}}"
       theme="circular"
-      size="40px"
+      size="{{direction === 'row' ? '42rpx' : '96rpx'}}"
       loading
       t-class-indicator="indicator-blue"
       layout="vertical"
