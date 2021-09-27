@@ -28,8 +28,7 @@ Page({
     ],
     navigation1: { type: 'dots-bar' },
     navigation2: { type: 'fraction' },
-    navigation3: { type: false, hasNavBtn: true },
-    navigation4: { type: 'fraction', hasNavBtn: true },
+    navigation3: { type: '', hasNavBtn: true },
   },
   onChange(e) {
     const {

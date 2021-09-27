@@ -1,5 +1,13 @@
+page {
+  background: #fff;
+}
+
 .swiper-demo {
   .demo-section {
+  }
+
+  .t-slider__wrapper .t-slider__main {
+    margin: 0;
   }
 
   &-tag {
@@ -13,41 +21,61 @@
   &-space {
     height: 30rpx;
   }
-  // 插槽方式，下面的样式在真机测试无效
+
+  .swiper-switch {
+    margin: 22rpx 0;
+
+    .t-switch__label {
+      display: none;
+    }
+  }
+
   .swiper-wrap {
     // border-radius: 16rpx;
     // overflow: hidden;
+    // transform: translateY(0);
   }
 
   .swiper-box {
-    // border-radius: 16rpx;
     margin: 0 32rpx;
-    // overflow: hidden;
+    border-radius: 16rpx;
+    overflow: hidden;
+    // fix: 小程序webview圆角BUG，下面的样式规避圆角在真机失效的问题
+    // https://developers.weixin.qq.com/community/develop/doc/00026658428810dd8c07c062556400
+    transform: translateY(0);
   }
   // 样式覆盖
-  .t-swiper-nav-dots-bar-item {
-    background: #1b131850;
-  }
+  // .t-swiper-nav-dots-bar-item {
+  //   background: #1b131850;
+  // }
 
-  .t-swiper-nav-dots-bar-item.active {
-    background: #080006;
+  // .t-swiper-nav-dots-bar-item.active {
+  //   background: #080006;
+  // }
+
+  .swiper-box-option {
+    overflow: visible;
+    border-radius: 0;
   }
 
   .swiper-vertical {
     height: 400rpx;
   }
 
-  .swiper-box2 {
-    .item {
-      .img {
-        height: 300rpx;
-      }
-    }
-  }
+  // .swiper-box2 {
+  //   .item {
+  //     .img {
+  //       height: 300rpx;
+  //     }
+  //   }
+  // }
 
-  .swiper-box3 {
+  .swiper-box-vertical {
     .item {
       line-height: 400rpx;
+
+      // .img {
+      // }
     }
   }
 
@@ -89,6 +117,8 @@
 
   .cell {
     padding: 10rpx 0;
+    font-size: 28rpx;
+    color: #999;
 
     &.row {
       display: flex;
@@ -96,9 +126,23 @@
     }
 
     .label {
-      font-size: 28rpx;
       color: #999;
       margin-right: 20rpx;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+    }
+
+    .option-desc {
+      padding: 0 30rpx;
+    }
+
+    .swiper-slider {
+      flex: 1;
     }
   }
 }
