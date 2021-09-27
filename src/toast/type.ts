@@ -2,12 +2,13 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-21 18:50:46
+ * updated at 2021-09-27 12:23:27
  * */
 
 export interface TdToastProps {
   /**
    * 图标排列方式
+   * @default row
    */
   direction?: {
     type: StringConstructor;
@@ -24,8 +25,24 @@ export interface TdToastProps {
     required?: boolean;
   };
   /**
-   * 弹窗显示文字
+   * 组件类名
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class'];
+    required?: boolean;
+  };
+  /**
+   * 自定义图标
    * @default ''
+   */
+  icon?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
+   * 弹窗显示文字
    */
   message?: {
     type: StringConstructor;
@@ -36,15 +53,16 @@ export interface TdToastProps {
    * 弹窗展示位置
    * @default middle
    */
-  position?: {
+  placement?: {
     type: StringConstructor;
     value?: 'top' | 'middle' | 'bottom';
     required?: boolean;
   };
   /**
-   * 是否显示背景遮罩，禁止背景点击和滚动
+   * 防止滚动穿透，即不允许点击和滚动
+   * @default false
    */
-  showOverlay?: {
+  preventScrollThrough?: {
     type: BooleanConstructor;
     value?: boolean;
     required?: boolean;
@@ -52,7 +70,7 @@ export interface TdToastProps {
   /**
    * 提示类型
    */
-  type?: {
+  theme?: {
     type: StringConstructor;
     value?: 'loading' | 'success' | 'fail';
     required?: boolean;

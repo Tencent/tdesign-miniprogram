@@ -5,9 +5,14 @@ import Props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-toast`;
+
 @wxComponent()
 export default class Toast extends SuperComponent {
   externalClasses = ['t-class'];
+
+  options = {
+    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+  };
 
   hideTimer: number | null = null;
 
@@ -15,8 +20,8 @@ export default class Toast extends SuperComponent {
 
   typeMapIcon: Record<string, string> = {
     loading: 'loading',
-    success: 'check',
-    fail: 'close',
+    success: 'check-circle',
+    fail: 'error-circle',
   };
 
   data = {
@@ -26,24 +31,14 @@ export default class Toast extends SuperComponent {
     typeMapIcon: '',
   };
 
-  properties = {
-    ...Props,
-    direction: {
-      type: String,
-      value: 'row',
-    },
-    icon: {
-      type: String,
-      value: '',
-    },
-  };
+  properties = Props;
 
   show(options: TdToastProps) {
     if (this.hideTimer) clearTimeout(this.hideTimer);
     if (this.removeTimer) clearTimeout(this.removeTimer);
     const typeMapIcon =
-      Object.keys(this.typeMapIcon).indexOf(options?.type as any) !== -1
-        ? this.typeMapIcon[options?.type as any]
+      Object.keys(this.typeMapIcon).indexOf(options?.theme as any) !== -1
+        ? this.typeMapIcon[options?.theme as any]
         : '';
 
     const data = {
