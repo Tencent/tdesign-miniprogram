@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-22 21:07:37
+ * updated at 2021-09-27 16:40:47
  * */
 
 import { TdTextareaProps } from './type';
@@ -16,8 +16,8 @@ const props: TdTextareaProps = {
     type: Boolean,
     value: false,
   },
-  /** 是否自动增高，设置auto-height时，style.height不生效 */
-  autoHeight: {
+  /** 是否自动增高，值为 autosize 时，style.height 不生效 */
+  autosize: {
     type: Boolean,
     value: false,
   },
@@ -36,15 +36,18 @@ const props: TdTextareaProps = {
     type: Boolean,
     value: false,
   },
-  /** 是否获取焦点 */
+  /** 自动聚焦 */
   focus: {
     type: Boolean,
     value: false,
   },
+  /** 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 */
+  maxcharacter: {
+    type: Number,
+  },
   /** 用户最多可以输入的字符个数 */
   maxlength: {
     type: Number,
-    value: 140,
   },
   /** 名称 */
   name: {

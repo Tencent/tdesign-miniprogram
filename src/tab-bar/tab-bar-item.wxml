@@ -14,7 +14,7 @@
         size="{{badgeProps.size}}"
         visible="{{badgeProps.visible}}"
         offset="{{badgeProps.offset || [0,0]}}"
-        t-class-badge="badge-class"
+        t-class-count="badge-class"
       >
         <t-icon name="{{icon}}" size="24px" />
       </t-badge>

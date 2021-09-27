@@ -1,7 +1,7 @@
 /*
  * @Author: rileycai
  * @Date: 2021-09-22 10:33:54
- * @LastEditTime: 2021-09-23 10:53:01
+ * @LastEditTime: 2021-09-27 17:16:35
  * @LastEditors: Please set LastEditors
  * @Description: 新增textarea组件
  * @FilePath: /tdesign-miniprogram/src/textarea/textarea.ts
@@ -9,6 +9,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import getCharacterLength from './utils';
 
 const { prefix } = config;
 const name = `${prefix}-textarea`;
@@ -26,6 +27,7 @@ export default class Textarea extends SuperComponent {
   data = {
     inputValue: '',
     classPrefix: name,
+    characterLength: 0,
   };
 
   /* 组件生命周期 */
@@ -38,7 +40,16 @@ export default class Textarea extends SuperComponent {
   methods = {
     onInput(event) {
       const { value } = event.detail;
-      this.setData({ inputValue: value });
+      const { maxcharacter } = this.properties;
+      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+        const { characters = '', length = 0 } = getCharacterLength(value, maxcharacter);
+        this.setData({
+          value: characters,
+          characterLength: length,
+        });
+      } else {
+        this.setData({ inputValue: value });
+      }
 
       this.triggerEvent('change', {
         ...event.detail,
