@@ -1,3 +1,25 @@
+# Search 搜索框
+
+## 介绍
+
+用于用户输入搜索信息，并进行页面内容搜索。
+
+### 特性及兼容性
+
+无
+
+## 引入
+
+### 引入组件
+
+在 `app.json` 或 `page.json` 中引入组件：
+
+```json
+"usingComponents": {
+  "t-search": "@tencent/tdesign-miniprogram/search/search"
+}
+```
+
 ### Props
 
 | 参数            | 说明                                                                                                          | 类型         | 默认值                                                                        | 版本                  |

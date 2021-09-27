@@ -1,9 +1,60 @@
 import Message from '@tencent/tdesign-miniprogram/message/index';
 
 Page({
+  data: {
+    operList1: [
+      {
+        title: '弹窗内容为存文本、标题和副标题、带输入框',
+        btns: [
+          {
+            type: 'text',
+            text: '纯文字通知',
+          },
+          {
+            type: 'icon',
+            text: '带图标通知',
+          },
+          {
+            type: 'closeable',
+            text: '带关闭通知',
+          },
+          {
+            type: 'scroll',
+            text: '滚动通知',
+          },
+          {
+            type: 'btn',
+            text: '带按钮通知',
+          },
+        ],
+      },
+    ],
+    operList2: [
+      {
+        title: '窗内容为存文本、标题和副标题、带输入框',
+        btns: [
+          {
+            type: 'info',
+            text: '普通通知',
+          },
+          {
+            type: 'warning',
+            text: '警示提示通知',
+          },
+          {
+            type: 'success',
+            text: '成功提示通知',
+          },
+          {
+            type: 'error',
+            text: '错误提示通知',
+          },
+        ],
+      },
+    ],
+  },
   showMessage(e) {
-    const { type } = e.currentTarget.dataset;
-    switch (type) {
+    switch (e.detail) {
       case 'text': {
         Message.info({
           offset: [20, 32],

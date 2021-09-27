@@ -1,11 +1,8 @@
-<!--
- * @Author: shiyanzhang
- * @Date: 2021-08-24 15:56:07
- * @Description:
- * @FilePath: /tdesign-miniprogram/src/empty/README.md
--->
+# Empty 空内容
 
-# empty 空内容
+## 介绍
+
+用于空状态时的占位提示。
 
 ## 引入
 
@@ -54,4 +51,4 @@ Page({
 | description      | String / Slot | -       | 描述文字                                                                                                                         | N    |
 | external-classes | Array         | -       | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-description', 't-class-image']` | N    |
 | image            | String / Slot | -       | 图片地址                                                                                                                         | N    |
-| theme            | String        | default | 空页面风格类型（待确认）。可选项：default/primary/warning/error                                                                  | N    |
+| theme            | String        | default | 空页面风格类型。可选项：default/primary/warning/error                                                                            | N    |

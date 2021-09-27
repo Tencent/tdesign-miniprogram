@@ -56,7 +56,7 @@
       />
     </view>
 
-    <t-back-top visible="{{showBackTop}}" theme="{{backTopDemo.theme}}" text="{{backTopDemo.text}}">
+    <t-back-top wx:if="{{showBackTop}}" theme="{{backTopDemo.theme}}" text="{{backTopDemo.text}}">
     </t-back-top>
   </t-demo>
 </view>

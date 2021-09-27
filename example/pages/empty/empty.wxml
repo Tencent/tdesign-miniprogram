@@ -10,7 +10,7 @@
     <view class="demo-section__desc"> 带操作空状态</view>
     <view class="demo-section__wrapper">
       <t-empty t-class="empty-cls" image="{{emptyCart}}" size="224rpx" description="描述文字">
-        <t-button t-class="empty-button" bind:tap="toHome">按钮</t-button>
+        <t-button slot="action" t-class="empty-button" bind:tap="toHome">按钮</t-button>
       </t-empty>
     </view>
   </t-demo>

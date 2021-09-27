@@ -1,5 +1,9 @@
 # Image 图片
 
+## 介绍
+
+用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。
+
 ## 引入
 
 在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](/#/ui/components/ui/README?id=按需引入)

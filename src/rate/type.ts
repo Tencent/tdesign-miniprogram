@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-06 19:41:38
+ * updated at 2021-09-26 11:17:44
  * */
 
 export interface TdRateProps {
@@ -80,7 +80,7 @@ export interface TdRateProps {
   };
   /**
    * 评分图标的大小
-   * @default 48
+   * @default 40
    */
   size?: {
     type: StringConstructor;

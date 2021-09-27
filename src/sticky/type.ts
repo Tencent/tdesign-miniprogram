@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-22 19:39:17
+ * updated at 2021-09-26 20:35:47
  * */
 
 export interface TdStickyProps {
@@ -13,20 +15,20 @@ export interface TdStickyProps {
     required?: boolean;
   };
   /**
+   * 是否禁用组件
+   * @default false
+   */
+  disabled?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+  /**
    * 根结点外部样式
    */
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class'];
-    required?: boolean;
-  };
-  /**
-   * 是否禁用组件
-   * @default false
-   */
-  isDisabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
     required?: boolean;
   };
   /**
