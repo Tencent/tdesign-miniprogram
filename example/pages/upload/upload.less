@@ -3,21 +3,46 @@ page {
     min-height: 100vh;
     overflow: hidden;
 
+    &-title {
+      font-size: 40rpx;
+      font-weight: 700;
+      line-height: 56rpx;
+      margin: 48rpx 32rpx 0;
+      color: rgba(0, 0, 0, .9)
+    }
+
+    &-desc {
+      margin-top: 16rpx;
+      font-size: 24rpx;
+      line-height: 40rpx;
+    }
+
+    &-section {
+      margin-top: 0;
+
+      &__desc {
+        margin-top: 0;
+        margin-bottom: 32rpx;
+        font-size: 26rpx;
+        color: #999;
+        line-height: 40rpx;
+        font-size: 12rpx * 2;
+      }
+    }
+
     .demo-section-multiple {
-      height: 100rpx;
-      line-height: 100rpx;
+      margin-top: 32rpx;
     }
   }
 
   .item {
     background-color: #fff;
-    padding: 24rpx 0 0 0;
+    padding: 24rpx 0 11rpx 0;
     box-sizing: border-box;
     padding-left: 8rpx;
 
     &__title {
       font-size: 32rpx;
-      line-height: 48rpx;
       color: rgba(0, 0, 0, .9);
       padding-bottom: 22rpx;
       padding-left: 16rpx;
