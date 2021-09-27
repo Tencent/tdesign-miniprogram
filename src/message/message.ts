@@ -95,13 +95,13 @@ export default class Message extends SuperComponent {
 
     // 使用默认值
     if (icon) {
-      let nextValue = 'notification-filled';
+      let nextValue = 'notification';
       const { theme } = this.properties;
       const themeMessage = {
-        info: 'error-circle-filled',
-        success: 'check-circle-filled',
-        warning: 'error-circle-filled',
-        error: 'error-circle-filled',
+        info: 'error-circle',
+        success: 'check-circle',
+        warning: 'error-circle',
+        error: 'error-circle',
       };
       nextValue = themeMessage[theme];
       this.setData({ iconName: nextValue });
