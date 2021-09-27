@@ -30,7 +30,7 @@
         class="{{classPrefix}}-wrap--icon"
         bind:tap="clearInput"
       >
-        <t-icon name="close-circle-filled" />
+        <t-icon name="close-circle-filled" customStyle="font-size: 39rpx" />
       </view>
       <view class="{{classPrefix}}-wrap--suffix">
         <slot name="suffix" />
@@ -39,7 +39,7 @@
         <text>{{suffix}}</text>
       </view>
       <view wx:if="{{suffixIcon}}" class="{{classPrefix}}-wrap--icon">
-        <t-icon name="{{suffixIcon}}" />
+        <t-icon name="{{suffixIcon}}" customStyle="font-size: 39rpx" />
       </view>
     </view>
     <view

@@ -11,7 +11,7 @@
         <t-switch bindchange="onswitchchange" value="{{false}}" slot="note" />
       </t-cell>
       <t-cell title="自定义颜色">
-        <t-switch value="{{true}}" colors="{{['#00A870', 'gray']}}" slot="note" />
+        <t-switch value="{{true}}" colors="{{['#00A870']}}" slot="note" />
       </t-cell>
       <t-cell title="异步操作" bordered="{{false}}">
         <t-switch value="{{true}}" slot="note" />
@@ -26,7 +26,7 @@
         <t-switch bindchange="onswitchchange" value="{{false}}" label="描述信息" slot="note" />
       </t-cell>
       <t-cell title="自定义颜色" bordered="{{false}}">
-        <t-switch value="{{true}}" colors="{{['#00A870', 'gray']}}" label="描述信息" slot="note" />
+        <t-switch value="{{true}}" colors="{{['#00A870']}}" label="描述信息" slot="note" />
       </t-cell>
     </view>
   </t-demo>

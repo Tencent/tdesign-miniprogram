@@ -1,11 +1,15 @@
 <wxs src="./badge.wxs" module="this" />
 
 <view class="{{this.getBadgeOuterClass({shape})}} t-class">
+  <view class="content-slot">
+    <slot wx:if="{{!content}}" />
+    <text wx:else class="t-class-content">{{content}}</text>
+  </view>
   <view
-    class="{{this.getBadgeInnerClass({dot, size, shape, hasSlot})}} t-class-badge"
+    wx:if="{{count !== 'slot' && this.isShowBadge({dot,count,visible})}}"
+    class="{{this.getBadgeInnerClass({dot, size, shape})}} has-count t-class-count"
     style="{{this.getBadgeStyles({color, offset})}}"
-    wx:if="{{this.isShowBadge({dot,content,count,visible})}}"
-    >{{ this.getBadgeValue({dot, content, count, maxCount}) }}</view
-  >
-  <slot />
+    >{{ this.getBadgeValue({dot, count, maxCount}) }}
+  </view>
+  <slot name="count" wx:if="{{count === 'slot'}}" />
 </view>

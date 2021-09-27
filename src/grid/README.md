@@ -212,7 +212,7 @@
 <view class="demo-section__wrapper">
   <t-grid border="{{false}}" column-num="4" class="column-4">
     <t-grid-item text="标题文字">
-      <t-badge content="···" hasSlot slot="icon">
+      <t-badge content="···" slot="icon">
         <image
           class="middle-icon-image"
           src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
@@ -220,7 +220,7 @@
       </t-badge>
     </t-grid-item>
     <t-grid-item text="标题文字">
-      <t-badge count="{{16}}" hasSlot slot="icon">
+      <t-badge count="{{16}}" slot="icon">
         <image
           class="middle-icon-image"
           src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
@@ -228,7 +228,7 @@
       </t-badge>
     </t-grid-item>
     <t-grid-item text="标题文字">
-      <t-badge content="New" hasSlot slot="icon">
+      <t-badge content="New" slot="icon">
         <image
           class="middle-icon-image"
           src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
@@ -236,7 +236,7 @@
       </t-badge>
     </t-grid-item>
     <t-grid-item text="标题五字内">
-      <t-badge content="···" hasSlot slot="icon">
+      <t-badge content="···" slot="icon">
         <image
           class="middle-icon-image"
           src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"

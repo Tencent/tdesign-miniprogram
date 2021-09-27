@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-16 18:49:08
+ * updated at 2021-09-26 15:53:45
  * */
 
 import { TdMessageProps } from './type';
@@ -10,6 +10,11 @@ const props: TdMessageProps = {
   /** 操作 */
   action: {
     type: String,
+  },
+  /** 文本对齐方式 */
+  align: {
+    type: String,
+    value: 'left',
   },
   /** 关闭按钮，可以自定义。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string 则直接显示值，如：“关闭”。也可以完全自定义按钮 */
   closeBtn: {

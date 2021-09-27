@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-22 19:39:17
+ * updated at 2021-09-26 20:35:47
  * */
 
 import { TdStickyProps } from './type';
@@ -11,14 +11,14 @@ const props: TdStickyProps = {
   container: {
     type: null,
   },
+  /** 是否禁用组件 */
+  disabled: {
+    type: Boolean,
+    value: false,
+  },
   /** 根结点外部样式 */
   externalClasses: {
     type: Array,
-  },
-  /** 是否禁用组件 */
-  isDisabled: {
-    type: Boolean,
-    value: false,
   },
   /** 吸顶时与顶部的距离，单位`px` */
   offsetTop: {

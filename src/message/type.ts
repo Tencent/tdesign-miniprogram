@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-16 18:49:08
+ * updated at 2021-09-26 15:53:45
  * */
 
 export interface TdMessageProps {
@@ -12,6 +12,15 @@ export interface TdMessageProps {
   action?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
+  };
+  /**
+   * 文本对齐方式
+   * @default left
+   */
+  align?: {
+    type: StringConstructor;
+    value?: 'left' | 'center';
     required?: boolean;
   };
   /**

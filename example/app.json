@@ -35,6 +35,7 @@
     "pages/transition/transition",
     "pages/popup/popup",
     "pages/indexes/indexes",
+    "pages/indexes/display",
     "pages/steps/steps",
     "pages/dropdown-menu/dropdown-menu",
     "pages/drawer/drawer",
