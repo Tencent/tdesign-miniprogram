@@ -108,7 +108,7 @@
     "t-divider": "@tencent/tdesign-miniprogram/divider/divider",
     "t-empty": "@tencent/tdesign-miniprogram/empty/empty",
     "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top",
-    "t-grid-item": "@tencent/tdesign-miniprogram/grid-item/grid-item",
+    "t-grid-item": "@tencent/tdesign-miniprogram/grid/grid-item",
     "t-grid": "@tencent/tdesign-miniprogram/grid/grid",
     "t-upload": "@tencent/tdesign-miniprogram/upload/upload",
     "t-count-down": "@tencent/tdesign-miniprogram/count-down/count-down",

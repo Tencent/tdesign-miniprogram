@@ -251,12 +251,22 @@
 
 ### Grid Props
 
-| 参数       | 说明                                                                                                       | 类型               | 默认值  | 版本 |
-| ---------- | ---------------------------------------------------------------------------------------------------------- | ------------------ | ------- | ---- |
-| column-num | 列数                                                                                                       | _number_           | `4`     | -    |
-| gutter     | 格子两侧之间的间距，默认单位为`px`                                                                         | _string \| number_ | `0`     | -    |
-| gutterType | 可选值`between`、`around`，值为`around`时，grids 两侧保留与 gutter 相等的边距，值为`between`时两侧没有边距 | _string \| number_ | `0`     | -    |
-| border     | 是否显示边框                                                                                               | _boolean_          | `true`  | -    |
-| center     | 是否将格子内容居中显示                                                                                     | _boolean_          | `true`  | -    |
-| square     | 是否将格子固定为正方形                                                                                     | _boolean_          | `false` | -    |
-| hover      | 是否开启格子点击反馈                                                                                       | _boolean_          | `false` | -    |
+| 名称             | 类型             | 默认值       | 说明                                                                                                | 必传                                              |
+| ---------------- | ---------------- | ------------ | --------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------- | -------- | -------- | -------- | ------- | ----------- | --- |
+| align            | String           | center       | 内容对齐方式。可选项：left/center                                                                   | N                                                 |
+| border           | Boolean / Object | false        | 边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式。TS 类型：`boolean | { color?: string; width?: string; style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' }` | N   |
+| external-classes | Array            | -            | 组件类名，用于设置组件外层元素类名。`['t-class']`                                                   | N                                                 |
+| gutter           | String / Number  | -            | 间隔大小，`justify-content` 值为 `start/center/end` 时有效                                          | N                                                 |
+| hover            | Boolean          | false        | 是否开启点击反馈                                                                                    | N                                                 |
+| justify-content  | String           | space-around | 间隔分布模式。可选项：space-between/space-around/start/center/end                                   | N                                                 |
+
+### GridItem Props
+
+| 名称             | 类型          | 默认值      | 说明                                                                                                                                  | 必传 |
+| ---------------- | ------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| description      | String / Slot | -           | 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点                                                           | N    |
+| external-classes | Array         | -           | 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名。`['t-class', 't-class-image', 't-class-text', 't-class-description']` | N    |
+| image            | String / Slot | -           | 图片，可以是图片地址，也可以自定义图片节点                                                                                            | N    |
+| jump-type        | String        | navigate-to | 链接跳转类型。可选项：redirect-to/switch-tab/relaunch/navigate-to                                                                     | N    |
+| text             | String / Slot | -           | 文本，可以通过 Props 传入文本，也可以自定义标题节点                                                                                   | N    |
+| url              | String        | -           | 点击后的跳转链接                                                                                                                      | N    |

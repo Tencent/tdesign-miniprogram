@@ -1,0 +1,147 @@
+// @import '../common/style/index.less';
+
+// @grid-item-border-width: 2rpx;
+// @grid-item-border-color: #eee;
+// @grid-item-content-bg: white;
+// @grid-item-content-active-color: #f2f3f5;
+// @grid-item-text-font-size: 28rpx;
+// @grid-item-text-line-height: 44rpx;
+// @grid-item-text-color: #646566;
+// @grid-item-sencond-text-font-size: 24rpx;
+// @grid-item-sencond-text-line-height: 40rpx;
+// @grid-item-sencond-text-margin-top: 8rpx;
+// @grid-item-sencond-color: #999;
+
+// .hairline-common() {
+//   position: absolute;
+//   box-sizing: border-box;
+//   transform-origin: center; /* cover wechat button:after default transforn-origin */
+//   content: ' ';
+//   pointer-events: none;
+// }
+
+// .hairline(@color) {
+//   .hairline-common();
+//   top: -50%;
+//   right: -50%;
+//   bottom: -50%;
+//   left: -50%;
+//   border: 0 solid @color;
+//   transform: scale(.5);
+// }
+
+// .@{prefix}-grid-item {
+//   position: relative;
+//   float: left;
+//   box-sizing: border-box;
+
+//   &--square {
+//     height: 0;
+//   }
+
+//   &__content {
+//     display: flex;
+//     flex-direction: column;
+//     box-sizing: border-box;
+//     height: 100%;
+//     padding: 24rpx 16rpx 16rpx;
+//     background-color: @grid-item-content-bg;
+
+//     &::after {
+//       z-index: 1;
+//       border-width: 0 @grid-item-border-width @grid-item-border-width 0;
+//     }
+
+//     &--surround {
+//       &::after {
+//         .hairline(@color:  @grid-item-border-color);
+//         border-width: @grid-item-border-width;
+//       }
+//     }
+
+//     &-noGutter--surround {
+//       &::after {
+//         .hairline(@color:  @grid-item-border-color);
+//         border-width: 0 @grid-item-border-width @grid-item-border-width 0;
+//       }
+//     }
+
+//     &-noSquare--surround {
+//       position: relative;
+
+//       &::after {
+//         .hairline(@color:  @grid-item-border-color);
+//         border-width: @grid-item-border-width;
+//       }
+//     }
+
+//     &--center {
+//       align-items: center;
+//       justify-content: center;
+//       text-align: center;
+//     }
+
+//     &--square {
+//       position: absolute;
+//       top: 0;
+//       right: 0;
+//       left: 0;
+//     }
+
+//     &--hover:active {
+//       background-color: @grid-item-content-active-color;
+//     }
+//   }
+
+//   &__text_wapper {
+//     display: flex;
+//     flex-direction: column;
+//   }
+
+//   &__text {
+//     word-wrap: break-word;
+//     color: @grid-item-text-color;
+//     font-size: @grid-item-text-font-size;
+//     line-height: @grid-item-text-line-height;
+//   }
+
+//   &__second_text {
+//     word-wrap: break-word;
+//     color: @grid-item-sencond-color;
+//     font-size: @grid-item-sencond-text-font-size;
+//     line-height: @grid-item-sencond-text-line-height;
+//     margin-top: @grid-item-sencond-text-margin-top;
+//   }
+// }
+
+@import '../common/style/index.less';
+
+.@{prefix}-grid-item {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // &-content {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+  &-hover:active {
+    background-color: #f2f3f5;
+  }
+
+  &-text-wapper {
+    font-size: 28rpx;
+    font-weight: 400;
+    margin-top: 8rpx;
+  }
+
+  &-description-wapper {
+    font-size: 24rpx;
+    color: rgba(0, 0, 0, .4);
+    margin-top: 8rpx;
+  }
+}
