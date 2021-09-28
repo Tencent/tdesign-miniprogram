@@ -25,8 +25,8 @@ var getTagStyle = function (maxWidth) {
   if (!maxWidth) {
     return '';
   }
-  var width = typeof maxWidth === 'number' ? maxWidth + 'px' : maxWidth;
-  return 'maxWidth:' + width + ';';
+  var width = !isNaN(maxWidth) ? maxWidth + 'px' : maxWidth;
+  return 'max-width:' + width + ';';
 };
 module.exports.getTagClass = getTagClass;
 module.exports.getTagStyle = getTagStyle;
