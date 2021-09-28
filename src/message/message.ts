@@ -5,6 +5,9 @@ import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
+
+// 展示动画持续时间
+const SHOW_DURATION = 500;
 @wxComponent()
 export default class Message extends SuperComponent {
   externalClasses = [
@@ -29,7 +32,9 @@ export default class Message extends SuperComponent {
     visible: false,
     loop: -1,
     animation: [],
+    showAnimation: [],
     iconName: '',
+    wrapTop: -92,
   };
 
   observers = {
@@ -86,7 +91,7 @@ export default class Message extends SuperComponent {
       return;
     }
     // 固定值
-    if (icon === 'warning_fill' || icon === 'sound_fill') {
+    if (typeof icon === 'string') {
       this.setData({
         iconName: `${icon}`,
       });
@@ -163,13 +168,25 @@ export default class Message extends SuperComponent {
     );
   }
 
-  /** 获取元素长度 */
+  /** 获取元素宽度 */
   queryWidth(queryName: string): Promise<number> {
     return new Promise((resolve) => {
       this.createSelectorQuery()
         .select(queryName)
         .boundingClientRect(({ width }) => {
           resolve(width);
+        })
+        .exec();
+    });
+  }
+
+  /** 获取元素长度 */
+  queryHeight(queryName: string): Promise<number> {
+    return new Promise((resolve) => {
+      this.createSelectorQuery()
+        .select(queryName)
+        .boundingClientRect(({ height }) => {
+          resolve(height);
         })
         .exec();
     });
@@ -184,6 +201,7 @@ export default class Message extends SuperComponent {
   show() {
     const { duration, icon } = this.properties;
     this.setData({ visible: true, loop: this.properties.marquee.loop });
+    this.reset();
     this.setIcon(icon);
     this.checkAnimation();
     if (duration && duration > 0) {
@@ -192,15 +210,38 @@ export default class Message extends SuperComponent {
         this.triggerEvent('durationEnd', { self: this });
       }, duration) as unknown) as number;
     }
+
+    const wrapID = '#t-message';
+    this.queryHeight(wrapID).then((wrapHeight) => {
+      const showAnimation = wx
+        .createAnimation({ duration: SHOW_DURATION })
+        .translateY(0)
+        .step()
+        .export();
+      this.setData({ showAnimation, wrapTop: -wrapHeight });
+    });
   }
 
   hide() {
+    this.reset();
+    const showAnimation = wx
+      .createAnimation({ duration: SHOW_DURATION })
+      .translateY(this.data.wrapTop)
+      .step()
+      .export();
+    this.setData({ showAnimation });
+    setTimeout(() => {
+      this.setData({ visible: false, animation: [] });
+    }, SHOW_DURATION);
+  }
+
+  // 重置定时器等
+  reset() {
     if (this.nextAnimationContext) {
       this.clearMessageAnimation();
     }
     clearTimeout(this.closeTimeoutContext);
     this.closeTimeoutContext = 0;
-    this.setData({ visible: false, animation: [] });
   }
 
   handleClose() {

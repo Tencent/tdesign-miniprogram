@@ -68,7 +68,7 @@ Page({
         Message.info({
           offset: ['20rpx', '32rpx'],
           duration: 5000,
-          icon: 'notification-filled',
+          icon: 'error-circle',
           content: '这是一条带图标的消息通知 5s消失',
         });
         break;
@@ -76,7 +76,7 @@ Page({
       case 'closeable': {
         Message.info({
           offset: ['20rpx', 32],
-          icon: false,
+          icon: 'error-circle',
           content: '这是一条带关闭的消息通知 常驻可关闭',
           duration: -1,
           closeBtn: true,
@@ -96,7 +96,7 @@ Page({
       case 'btn': {
         Message.info({
           offset: [20, 32],
-          icon: false,
+          icon: 'notification',
           content: '这是一条带操作的消息通知',
           duration: -1,
           action: '按钮',
