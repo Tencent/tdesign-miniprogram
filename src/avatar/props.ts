@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 20:59:31
+ * updated at 2021-09-28 15:26:24
  * */
 
 import { TdAvatarProps } from './type';
@@ -39,10 +39,10 @@ const props: TdAvatarProps = {
     type: String,
     value: 'circle',
   },
-  /** 尺寸，示例值：small/medium/large/24px/38px 等 */
+  /** 尺寸，示例值：small/medium/large/24px/38px 等，默认为 large */
   size: {
     type: String,
-    value: 'large',
+    value: '',
   },
 };
 

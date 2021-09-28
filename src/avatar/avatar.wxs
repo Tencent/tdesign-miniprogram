@@ -18,7 +18,8 @@ module.exports = {
       return 'width:' + size + ';height:' + size + ';';
     }
   },
-  getShow: function (isShow) {
-    return isShow ? '' : 'display: none;';
+  getStyles: function (isShow, zIndex, isChild) {
+    var styles = 'z-index:' + zIndex + ';' + (isChild ? 'margin-right: -30rpx;' : '');
+    return styles + (isShow ? '' : 'display: none;');
   },
 };

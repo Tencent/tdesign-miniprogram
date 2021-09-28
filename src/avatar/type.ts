@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 20:59:31
+ * updated at 2021-09-28 15:26:24
  * */
 
 import { BadgeProps } from '../badge/type';
@@ -69,7 +69,7 @@ export interface TdAvatarProps {
     required?: boolean;
   };
   /**
-   * 尺寸，示例值：small/medium/large/24px/38px 等
+   * 尺寸，示例值：small/medium/large/24px/38px 等，默认为 large
    * @default ''
    */
   size?: {
@@ -87,6 +87,14 @@ export interface TdAvatarGroupProps {
   cascading?: {
     type: StringConstructor;
     value?: CascadingValue;
+    required?: boolean;
+  };
+  /**
+   * 头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多`
+   */
+  collapseAvatar?: {
+    type: StringConstructor;
+    value?: string;
     required?: boolean;
   };
   /**

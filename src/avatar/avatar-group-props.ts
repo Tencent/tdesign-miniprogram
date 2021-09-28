@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 20:59:31
+ * updated at 2021-09-28 15:26:24
  * */
 
 import { TdAvatarGroupProps } from './type';
@@ -11,6 +11,10 @@ const props: TdAvatarGroupProps = {
   cascading: {
     type: String,
     value: 'right-up',
+  },
+  /** 头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多` */
+  collapseAvatar: {
+    type: String,
   },
   /** 组件类名，用于设置组件外层元素元素类名 */
   externalClasses: {

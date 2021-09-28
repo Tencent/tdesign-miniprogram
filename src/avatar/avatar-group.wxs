@@ -1,11 +1,7 @@
 module.exports = {
-  getAvatarGroupOuterClass: function (classPrefix, size, cascading) {
+  getAvatarGroupOuterClass: function (classPrefix, size) {
     var isIncludePx = size.indexOf('px') > -1;
-    var classNames = [
-      classPrefix + '--content',
-      isIncludePx ? '' : classPrefix + '--' + size,
-      classPrefix + (cascading === 'right-up' ? '--right-up' : '--left-up'),
-    ];
+    var classNames = [classPrefix + '--content', isIncludePx ? '' : classPrefix + '--' + size];
     return classNames.join(' ');
   },
   getAvatarGroupSizePx: function (size) {
@@ -13,5 +9,10 @@ module.exports = {
     if (isIncludePx) {
       return 'width:' + size + ';height:' + size + ';';
     }
+  },
+  getZIndex: function (cascading) {
+    console.log(cascading);
+    var zIndex = cascading === 'right-up' ? 100 : 0;
+    return 'z-index:' + zIndex + ';';
   },
 };

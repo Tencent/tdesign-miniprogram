@@ -14,6 +14,8 @@ export default class Avatar extends SuperComponent {
   data = {
     classPrefix: name,
     isShow: true,
+    zIndex: 0,
+    isChild: false,
   };
 
   relations = {
@@ -26,16 +28,36 @@ export default class Avatar extends SuperComponent {
   };
 
   methods = {
-    updateShow() {
-      // console.log('children');
+    /**
+     * @description avatar-group子节点缩紧，avatar无
+     * @param isChild 是否为avatar-group子节点
+     */
+    updateIsChild(isChild) {
+      this.setData({
+        isChild,
+      });
+    },
 
+    /**
+     * @description 控制avatar显隐
+     */
+    updateShow() {
       this.setData({
         isShow: false,
       });
     },
-
+    /**
+     * @description 控制avatar尺寸
+     */
     updateSize(size) {
+      if (this.properties.size) return;
       this.setData({ size });
+    },
+    /**
+     * @description 控制avatar左侧在上/右侧在上
+     */
+    updateCascading(zIndex) {
+      this.setData({ zIndex });
     },
   };
 

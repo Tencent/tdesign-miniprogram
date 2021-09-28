@@ -35,30 +35,26 @@
     }
   }
 
-  &--right-up {
-    t-avatar:not(:last-child) {
-      margin-right: -16rpx;
-    }
+  .slot-collapse-avatar:empty + .default-collapse-avatar {
+    display: block;
   }
 
-  &--left-up {
-    t-avatar:not(:first-child) {
-      margin-left: -16rpx;
-    }
+  .slot-collapse-avatar:not(:empty) + .default-collapse-avatar {
+    display: none;
   }
 
-  .collapse-avatar:empty + .default-collapse-avatar {
-    //
+  .hide-collapse-avatar {
+    display: none;
   }
 
   .border-example-1 {
-    border-width: 2rpx;
+    border-width: 4rpx;
     border-color: white;
   }
 
-  .icon-example {
+  .alt-example {
     background-color: #e5e5e5;
     color: #bbb;
-    font-size: 40rpx;
+    font-size: 30rpx;
   }
 }
