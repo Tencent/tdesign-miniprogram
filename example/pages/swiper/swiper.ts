@@ -1,3 +1,4 @@
+const imageCdn = 'https://tdesign.gtimg.com/site/swiper';
 Page({
   data: {
     current: 1,
@@ -7,24 +8,28 @@ Page({
     items: [
       {
         cls: 'item0',
+        image: `${imageCdn}/01.png`,
       },
       {
         cls: 'item1',
+        image: `${imageCdn}/02.png`,
       },
       {
         cls: 'item2',
+        image: `${imageCdn}/03.png`,
       },
       {
         cls: 'item3',
+        image: `${imageCdn}/04.png`,
       },
       {
         cls: 'item4',
+        image: `${imageCdn}/05.png`,
       },
     ],
     navigation1: { type: 'dots-bar' },
     navigation2: { type: 'fraction' },
-    navigation3: { type: false, hasNavBtn: true },
-    navigation4: { type: 'fraction', hasNavBtn: true },
+    navigation3: { type: '', hasNavBtn: true },
   },
   onChange(e) {
     const {

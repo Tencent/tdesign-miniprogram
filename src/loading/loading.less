@@ -39,32 +39,21 @@
     }
 
     &--circular {
-      .loading__mask1 {
+      .loading__circular {
         border-radius: 100%;
         width: 100%;
         height: 100%;
         background: conic-gradient(
           from 180deg at 50% 50%,
-          rgba(255,255,255,0) 0deg,
-          rgba(255,255,255,0) 60deg,
+          rgba(255, 255, 255, 0) 0deg,
+          rgba(255, 255, 255, 0) 60deg,
           currentColor 330deg,
-          rgba(255,255,255,0) 360deg,
+          rgba(255, 255, 255, 0) 360deg
         );
-      }
+        mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
 
-      .loading__mask2 {
-        position: absolute;
-        border-radius: 50%;
-        width: 70%;
-        height: 70%;
-        min-width: 2rpx;
-        min-height: 2rpx;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        background-color: white;
+        /* stylelint-disable-next-line */
+        -webkit-mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
       }
     }
 

@@ -3,13 +3,15 @@
 <block wx:if="{{ visible }}">
   <view
     class=" {{ classPrefix }} t-class {{ classPrefix }}--{{ theme }} "
-    style="z-index: {{ zIndex }};{{this.getMessageStylesOffset({ offset })}};"
+    style="z-index: {{ zIndex }};{{this.getMessageStylesOffset({ offset })}};transform: translateY({{wrapTop}}px)"
+    animation="{{showAnimation}}"
+    id="{{classPrefix}}"
   >
     <t-icon
       wx:if="{{iconName}}"
       name="{{iconName}}"
       class="{{ classPrefix }}--left-icon t-class-icon"
-      size="20px"
+      size="22px"
     />
     <slot name="icon" />
 

@@ -29,7 +29,7 @@ const showMessage = function (
   const instance = getInstance(context, selector);
   if (!instance) return Promise.reject();
 
-  instance.hide();
+  // instance.hide();
 
   instance.resetData(() => {
     instance.setData({ theme, ...options }, instance.show);
