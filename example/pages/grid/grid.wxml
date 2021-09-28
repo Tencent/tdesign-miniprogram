@@ -252,36 +252,45 @@
       <view class="demo-section__desc">带徽标宫格</view>
       <view class="demo-section__wrapper">
         <t-grid class="t-grid badge">
-          <t-grid-item text="标题文字">
-            <t-badge content="16" slot="image">
+          <t-grid-item text="标题文字" t-class-text="text">
+            <t-badge count="{{16}}" slot="image" t-class="badge-item">
               <image
                 class="image-icon"
                 src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
               />
             </t-badge>
           </t-grid-item>
-          <t-grid-item text="标题文字">
-            <t-badge count="{{16}}" slot="icon">
+          <t-grid-item text="标题文字" t-class-text="text"
+            >>
+            <t-badge dot slot="image" t-class="badge-item">
               <image
-                class="middle-icon-image"
+                class="image-icon"
                 src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
               />
             </t-badge>
           </t-grid-item>
-          <t-grid-item text="标题文字">
-            <t-badge count="New" slot="icon">
+          <t-grid-item text="标题文字" t-class-text="text"
+            >>
+            <t-badge count="New" slot="image" t-class="badge-item" t-class-text="text">
               <image
-                class="middle-icon-image"
+                class="image-icon"
                 src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
               />
             </t-badge>
           </t-grid-item>
-          <t-grid-item text="标题五字内">
-            <t-badge count="···" slot="icon">
+          <t-grid-item text="标题文字" t-class-text="text">
+            <t-badge count="slot" slot="image" t-class="badge-item">
               <image
-                class="middle-icon-image"
+                class="image-icon"
                 src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
               />
+              <view slot="count" class="badge-circle">
+                <view class="badge-circle-container">
+                  <view class="circle" />
+                  <view class="circle" />
+                  <view class="circle" />
+                </view>
+              </view>
             </t-badge>
           </t-grid-item>
         </t-grid>

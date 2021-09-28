@@ -147,10 +147,43 @@ page {
   }
 
   .badge {
+    .text {
+      margin-bottom: 32rpx;
+    }
+
     .image-icon {
-      padding-top: 24rpx;
       width: 96rpx;
       height: 96rpx;
+    }
+
+    .badge-item {
+      margin-top: 32rpx;
+    }
+
+    .badge-circle {
+      display: flex;
+      justify-content: center;
+      background-color: #e34d59;
+      border-radius: 15rpx;
+      width: 36rpx;
+      height: 32rpx;
+      align-items: center;
+      position: absolute;
+      top: -15rpx;
+      left: 80rpx;
+
+      .circle {
+        width: 4rpx;
+        height: 4rpx;
+        border-radius: 2rpx;
+        background-color: white;
+        margin-left: 4rpx;
+      }
+
+      .badge-circle-container {
+        margin-left: -4rpx;
+        display: flex;
+      }
     }
   }
 }
