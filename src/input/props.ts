@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-21 19:38:43
+ * updated at 2021-09-27 17:32:54
  * */
 
 import { TdInputProps } from './type';
@@ -10,6 +10,16 @@ const props: TdInputProps = {
   adjustPosition: {
     type: Boolean,
     value: true,
+  },
+  /** 文本内容位置，居左/居中/居右 */
+  align: {
+    type: String,
+    value: 'left',
+  },
+  /** 自动聚焦 */
+  autofocus: {
+    type: Boolean,
+    value: false,
   },
   /** 是否可清空 */
   clearable: {
@@ -31,45 +41,33 @@ const props: TdInputProps = {
     type: Boolean,
     value: false,
   },
-  /** 是否存在错误提示消息 */
-  error: {
-    type: Boolean,
-    value: false,
-  },
   /** 错误提示文本 */
   errorMessage: {
     type: String,
     value: '',
   },
-  /** 是否获取焦点 */
+  /** 自动聚焦 */
   focus: {
     type: Boolean,
     value: false,
   },
-  /** 用户最多可以输入的文本长度 */
+  /** 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 */
+  maxcharacter: {
+    type: Number,
+  },
+  /** 用户最多可以输入的文本长度。值小于等于 0 的时候，则不限制输入长度 */
   maxlength: {
     type: Number,
-    value: 140,
   },
   /** 名称 */
   name: {
     type: String,
     value: '',
   },
-  /** 是否密码类型 */
-  password: {
-    type: Boolean,
-    value: false,
-  },
   /** 占位符 */
   placeholder: {
     type: String,
     value: '',
-  },
-  /** 是否必填 */
-  required: {
-    type: Boolean,
-    value: false,
   },
   /** 输入框尺寸 */
   size: {
@@ -93,7 +91,7 @@ const props: TdInputProps = {
   /** 输入框的值 */
   value: {
     type: String,
-    value: '',
+    optionalTypes: [String, Number],
   },
 };
 

@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-21 19:38:43
+ * updated at 2021-09-27 17:32:54
  * */
 
 export interface TdInputProps {
@@ -9,6 +9,22 @@ export interface TdInputProps {
    * @default true
    */
   adjustPosition?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 文本内容位置，居左/居中/居右
+   * @default left
+   */
+  align?: {
+    type: StringConstructor;
+    value?: 'left' | 'center' | 'right';
+  };
+  /**
+   * 自动聚焦
+   * @default false
+   */
+  autofocus?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -45,14 +61,6 @@ export interface TdInputProps {
     value?: boolean;
   };
   /**
-   * 是否存在错误提示消息
-   * @default false
-   */
-  error?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 错误提示文本
    * @default ''
    */
@@ -61,7 +69,7 @@ export interface TdInputProps {
     value?: string;
   };
   /**
-   * 是否获取焦点
+   * 自动聚焦
    * @default false
    */
   focus?: {
@@ -69,8 +77,14 @@ export interface TdInputProps {
     value?: boolean;
   };
   /**
-   * 用户最多可以输入的文本长度
-   * @default 140
+   * 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度
+   */
+  maxcharacter?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 用户最多可以输入的文本长度。值小于等于 0 的时候，则不限制输入长度
    */
   maxlength?: {
     type: NumberConstructor;
@@ -85,28 +99,12 @@ export interface TdInputProps {
     value?: string;
   };
   /**
-   * 是否密码类型
-   * @default false
-   */
-  password?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 占位符
    * @default ''
    */
   placeholder?: {
     type: StringConstructor;
     value?: string;
-  };
-  /**
-   * 是否必填
-   * @default false
-   */
-  required?: {
-    type: BooleanConstructor;
-    value?: boolean;
   };
   /**
    * 输入框尺寸
@@ -137,14 +135,16 @@ export interface TdInputProps {
    */
   type?: {
     type: StringConstructor;
-    value?: 'text' | 'number' | 'idcard' | 'digit' | 'safe-password';
+    value?: 'text' | 'number' | 'idcard' | 'digit' | 'safe-password' | 'password';
   };
   /**
    * 输入框的值
-   * @default ''
    */
   value?: {
     type: StringConstructor;
-    value?: string;
+    optionalTypes: Array<StringConstructor | NumberConstructor>;
+    value?: InputValue;
   };
 }
+
+export type InputValue = string | number;

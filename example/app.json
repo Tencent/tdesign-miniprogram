@@ -16,6 +16,7 @@
     "pages/cell-group/cell-group",
     "pages/collapse/collapse",
     "pages/input/input",
+    "pages/badge/badge",
     "pages/textarea/textarea",
     "pages/message/message",
     "pages/toast/toast",

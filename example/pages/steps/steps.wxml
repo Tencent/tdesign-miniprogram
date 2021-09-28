@@ -175,14 +175,13 @@
       <t-steps class="demo-steps vertical" current="1" readonly="true" direction="vertical">
         <t-step title="已完成步骤">
           <view slot="content">可自定义此处内容</view>
-          <view slot="extra">
-            <div class="extra-img">
-              <image
-                src="https://0729-75822.gzc.vod.tencent-cloud.com/site_doc/tdesign-logo.png"
-                alt=""
-                style="width: 200px; height: 50px"
-              />
-            </div>
+          <view class="extra-img" slot="extra">
+            <image
+              src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%871.png"
+              alt=""
+              style="width: 100%"
+              mode="widthFix"
+            />
           </view>
         </t-step>
         <t-step title="当前步骤">

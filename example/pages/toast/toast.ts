@@ -87,10 +87,10 @@ Page({
       context: this,
       selector: '#t-toast',
       icon: '',
-      type: '',
+      theme: '',
       direction: 'row',
-      position: 'middle',
-      showOverlay: false,
+      placement: 'middle',
+      preventScrollThrough: false,
       duration: 2000,
       ...option,
     });
@@ -127,21 +127,21 @@ Page({
       case 'successRow': {
         this.handleToast({
           message: '成功文案',
-          type: 'success',
+          theme: 'success',
         });
         break;
       }
       case 'warnRow': {
         this.handleToast({
           message: '警告文案',
-          icon: 'error-circle',
+          theme: 'fail',
         });
         break;
       }
       case 'successColumn': {
         this.handleToast({
           message: '成功文案',
-          type: 'success',
+          theme: 'success',
           direction: 'column',
         });
         break;
@@ -149,7 +149,7 @@ Page({
       case 'warnColumn': {
         this.handleToast({
           message: '警告文案',
-          icon: 'error-circle',
+          theme: 'fail',
           direction: 'column',
         });
         break;
@@ -157,7 +157,7 @@ Page({
       case 'loading': {
         this.handleToast({
           message: '加载中...',
-          type: 'loading',
+          theme: 'loading',
           direction: 'column',
         });
         break;
@@ -166,7 +166,7 @@ Page({
         this.handleToast({
           message: '顶部-展示1秒',
           direction: 'column',
-          position: 'top',
+          placement: 'top',
           duration: 1000,
         });
         break;
@@ -183,8 +183,8 @@ Page({
         this.handleToast({
           message: '底部-展示2秒',
           direction: 'column',
-          position: 'bottom',
-          duration: 2000,
+          placement: 'bottom',
+          duration: 5000,
         });
         break;
       }
@@ -192,9 +192,9 @@ Page({
         this.handleToast({
           message: '禁止滑动和点击',
           direction: 'column',
-          position: 'bottom',
+          placement: 'bottom',
           duration: 5000,
-          showOverlay: true,
+          preventScrollThrough: true,
         });
         break;
       }

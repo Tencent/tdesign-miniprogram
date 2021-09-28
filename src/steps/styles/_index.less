@@ -4,13 +4,13 @@
 
 @{prefix}-steps {
   display: flex;
-  width: 100%;
 }
 
 @{prefix}-step {
   flex: 1;
   vertical-align: top;
   position: relative;
+  align-self: flex-start;
 }
 
 .step-item-basic();
@@ -57,16 +57,20 @@
   }
 
   &--vertical {
+    padding-right: 32rpx;
+
     .@{prefix}-steps-item {
       position: relative;
 
       &__inner {
         flex-direction: row;
         align-items: flex-start;
+        justify-content: flex-start;
       }
 
       &-content {
         margin-left: @spacer;
+        flex: 1;
       }
 
       &-title {
@@ -81,9 +85,9 @@
         min-height: 40rpx;
       }
 
-      // &-extra {
-      //   margin-bottom: 19px;
-      // }
+      &-extra {
+        margin-bottom: 50rpx;
+      }
     }
 
     &.@{prefix}-step--default-anchor {
@@ -98,12 +102,21 @@
 
         &--process {
           .default-number-status(process);
+          .@{prefix}-steps-item-title {
+            color: @primary-color;
+          }
         }
 
         &--error {
           .default-number-status(error);
           .@{prefix}-steps-item-title {
             color: @error-color;
+          }
+        }
+
+        &--wait {
+          .@{prefix}-steps-item-title, .@{prefix}-steps-item-description {
+            color: @title-color--default;
           }
         }
       }
@@ -152,6 +165,9 @@
   // 垂直
   &--vertical {
     flex-direction: column;
-    align-items: flex-start;
+
+    @{prefix}-step {
+      width: 100%;
+    }
   }
 }

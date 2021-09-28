@@ -1,6 +1,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-22 21:07:37
+ * updated at 2021-09-27 16:40:47
  * */
 
 export interface TdTextareaProps {
@@ -21,10 +21,10 @@ export interface TdTextareaProps {
     value?: boolean;
   };
   /**
-   * 是否自动增高，设置auto-height时，style.height不生效
+   * 是否自动增高，值为 autosize 时，style.height 不生效
    * @default false
    */
-  autoHeight?: {
+  autosize?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -53,7 +53,7 @@ export interface TdTextareaProps {
     value?: boolean;
   };
   /**
-   * 是否获取焦点
+   * 自动聚焦
    * @default false
    */
   focus?: {
@@ -61,8 +61,14 @@ export interface TdTextareaProps {
     value?: boolean;
   };
   /**
+   * 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度
+   */
+  maxcharacter?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
    * 用户最多可以输入的字符个数
-   * @default 140
    */
   maxlength?: {
     type: NumberConstructor;
