@@ -1,7 +1,7 @@
 /*
  * @Author: rileycai
  * @Date: 2021-09-22 10:33:54
- * @LastEditTime: 2021-09-27 17:16:35
+ * @LastEditTime: 2021-09-28 10:26:44
  * @LastEditors: Please set LastEditors
  * @Description: 新增textarea组件
  * @FilePath: /tdesign-miniprogram/src/textarea/textarea.ts
@@ -9,7 +9,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import getCharacterLength from './utils';
+import { getCharacterLength } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-textarea`;
