@@ -96,7 +96,7 @@ export default class Grid extends SuperComponent {
     let { border } = this.properties;
     if (!border) return ''; // 如果border的值没传或者是border的值为false
     if (!isObject(border)) border = {} as any;
-    const { color = 'black', width = 10, style = 'solid' } = border as any;
+    const { color = '#266FE8', width = 2, style = 'solid' } = border as any;
     if (
       // 如果justifyContent的值是around或者between
       (justifyContent as any) === 'space-between' ||

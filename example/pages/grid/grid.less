@@ -1,11 +1,15 @@
 @border-width: 2rpx;
 @grid-text-font-size: 28rpx;
-@grid-text-color: rgba(0, 0, 0, .9);
+@grid-text-color: rgba(0, 0, 0, 0.9);
 @grid-sencond-text-font-size: 24rpx;
-@grid-sencond-color: rgba(0, 0, 0, .4);
+@grid-sencond-color: rgba(0, 0, 0, 0.4);
 @gutter-row-height: 32rpx;
 
 page {
+  .t-grid-item {
+    flex: 1;
+  }
+
   .demo {
     min-height: 100vh;
     overflow: hidden;
@@ -25,11 +29,6 @@ page {
     height: 32px;
   }
 
-  .large-icon-image {
-    width: 48px;
-    height: 48px;
-  }
-
   .gutter-row {
     height: @gutter-row-height;
   }
@@ -37,58 +36,121 @@ page {
 
 // 以下是覆盖grid组件内的样式
 page {
-  .t-grid {
-    .t-grid-item__text {
-      font-size: @grid-text-font-size;
-      color: @grid-text-color;
-      line-height: 22rpx * 2;
-      margin-top: 10rpx * 2;
+  // .t-grid {
+  //   .t-grid-item__text {
+  //     font-size: @grid-text-font-size;
+  //     color: @grid-text-color;
+  //     line-height: 22rpx * 2;
+  //     margin-top: 10rpx * 2;
+  //   }
+  // }
+
+  .three-border {
+    .text {
+      margin-bottom: 24rpx;
+    }
+
+    .image-icon {
+      padding-top: 24rpx;
+      width: 48px;
+      height: 48px;
     }
   }
 
-  .column-3 {
-    .t-grid-item__content {
-      padding: 24rpx 0;
+  .four {
+    .text {
+      margin-bottom: 32rpx;
+      font-size: 24rpx;
     }
 
-    .t-grid-item__text {
-      font-size: 14px;
-      line-height: 22rpx * 2;
-    }
-  }
-
-  .column-4,
-  .column-5 {
-    .t-grid-item__content {
-      padding: 32rpx 16rpx 24rpx;
-    }
-
-    .t-grid-item__text {
-      font-size: 12px;
-      line-height: 20rpx * 2;
+    .image-icon {
+      padding-top: 32rpx;
+      width: 64rpx;
+      height: 64rpx;
     }
   }
 
-  .t-class-column-5 {
-    border-radius: 32rpx;
-    padding: 0 16rpx;
-    margin: 0 24rpx;
+  .five {
+    .text {
+      margin-bottom: 32rpx;
+      font-size: 24rpx;
+    }
+
+    .image-icon {
+      padding-top: 32rpx;
+      width: 56rpx;
+      height: 56rpx;
+    }
   }
 
-  .column-2.direction-row {
-    .t-grid-item__content {
-      flex-direction: row;
-      justify-content: flex-start;
-      padding: 24rpx 0 24rpx 32rpx;
+  .three {
+    .text {
+      margin-bottom: 24rpx;
+      font-size: 28rpx;
     }
 
-    .t-grid-item__text_wapper {
-      margin-left: 12rpx * 2;
-      text-align: left;
+    .image-icon {
+      padding-top: 24rpx;
+      width: 96rpx;
+      height: 96rpx;
+    }
+  }
+
+  .two-des {
+    display: block !important;
+
+    .image-icon {
+      padding-top: 24rpx;
+      width: 96rpx;
+      height: 96rpx;
+      float: left;
+      padding-left: 24rpx;
+      padding-bottom: 32rpx;
     }
 
-    .t-grid-item__text {
-      margin-top: 0;
+    .text {
+      float: left;
+      margin-top: 24rpx;
+      margin-left: 16rpx;
+      width: 50%;
+    }
+
+    .t-grid-item {
+      display: block !important;
+    }
+
+    .description {
+      float: left;
+      width: 50%;
+      padding-left: 16rpx;
+    }
+  }
+
+  .three-des {
+    .text {
+      font-size: 28rpx;
+    }
+
+    .image-icon {
+      padding-top: 24rpx;
+      width: 96rpx;
+      height: 96rpx;
+    }
+
+    .description {
+      margin-bottom: 24rpx;
+    }
+  }
+
+  .five-with-padding {
+    padding: 0 24rpx;
+  }
+
+  .badge {
+    .image-icon {
+      padding-top: 24rpx;
+      width: 96rpx;
+      height: 96rpx;
     }
   }
 }
