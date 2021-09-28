@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-27 16:11:41
+ * updated at 2021-09-28 17:49:47
  * */
 
 import { TdLoadingProps } from './type';
@@ -17,7 +17,7 @@ const props: TdLoadingProps = {
     type: Number,
     value: 800,
   },
-  /** 组件类名，分别用于设置加载组件外层元素，加载组件文本，加载组件指示符 */
+  /** 组件类名，分别用于设置加载组件外层元素，加载组件文本，加载组件指示符，加载指示符内侧同心圆等元素类名 */
   externalClasses: {
     type: Array,
   },
