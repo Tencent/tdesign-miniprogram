@@ -62,6 +62,16 @@ export default class Message extends SuperComponent {
     timingFunction: 'linear',
   });
 
+  // 入场动画
+  showAnimation = wx.createAnimation({ duration: SHOW_DURATION }).translateY(0).step().export();
+
+  // 出场动画
+  hideAnimation = wx
+    .createAnimation({ duration: SHOW_DURATION })
+    .translateY(this.data.wrapTop)
+    .step()
+    .export();
+
   ready() {
     this.memoInitalData();
     this.setIcon();
@@ -213,29 +223,19 @@ export default class Message extends SuperComponent {
 
     const wrapID = '#t-message';
     this.queryHeight(wrapID).then((wrapHeight) => {
-      const showAnimation = wx
-        .createAnimation({ duration: SHOW_DURATION })
-        .translateY(0)
-        .step()
-        .export();
-      this.setData({ showAnimation, wrapTop: -wrapHeight });
+      this.setData({ showAnimation: this.showAnimation, wrapTop: -wrapHeight });
     });
   }
 
   hide() {
     this.reset();
-    const showAnimation = wx
-      .createAnimation({ duration: SHOW_DURATION })
-      .translateY(this.data.wrapTop)
-      .step()
-      .export();
-    this.setData({ showAnimation });
+    this.setData({ showAnimation: this.hideAnimation });
     setTimeout(() => {
       this.setData({ visible: false, animation: [] });
     }, SHOW_DURATION);
   }
 
-  // 重置定时器等
+  // 重置定时器
   reset() {
     if (this.nextAnimationContext) {
       this.clearMessageAnimation();
