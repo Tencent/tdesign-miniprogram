@@ -20,7 +20,7 @@
               slot="image"
             />
           </t-grid-item>
-          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+          <t-grid-item text="标题最多六字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
@@ -54,7 +54,7 @@
               slot="image"
             />
           </t-grid-item>
-          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+          <t-grid-item text="标题五字内" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
@@ -95,7 +95,7 @@
               slot="image"
             />
           </t-grid-item>
-          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+          <t-grid-item text="最多四字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
@@ -105,7 +105,7 @@
         </t-grid>
         <view class="gutter-row"></view>
         <view class="five-with-padding">
-          <t-grid class="t-grid five">
+          <t-grid class="t-grid" t-class="grid">
             <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
               <image
                 class="image-icon"
@@ -134,7 +134,7 @@
                 slot="image"
               />
             </t-grid-item>
-            <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+            <t-grid-item text="最多四字" class="t-grid-item" t-class-text="text">
               <image
                 class="image-icon"
                 src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
@@ -162,7 +162,7 @@
               slot="image"
             />
           </t-grid-item>
-          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+          <t-grid-item text="标题最多六字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
@@ -189,11 +189,11 @@
             />
           </t-grid-item>
           <t-grid-item
-            text="标题文字"
+            text="标题最多六字"
             class="t-grid-item"
             t-class-text="text"
             t-class-description="description"
-            description="说明文字"
+            description="说明文字最多八字"
           >
             <image
               class="image-icon"
@@ -234,11 +234,11 @@
             />
           </t-grid-item>
           <t-grid-item
-            text="标题文字"
+            text="标题最多六字"
             class="t-grid-item"
             t-class-text="text"
             t-class-description="description"
-            description="说明文字"
+            description="说明最多六字"
           >
             <image
               class="image-icon"
@@ -277,7 +277,7 @@
               />
             </t-badge>
           </t-grid-item>
-          <t-grid-item text="标题文字" t-class-text="text">
+          <t-grid-item text="标题五字内" t-class-text="text">
             <t-badge count="slot" slot="image" t-class="badge-item">
               <image
                 class="image-icon"
@@ -294,42 +294,31 @@
           </t-grid-item>
         </t-grid>
       </view>
-      <view class="demo-section__desc">自定义宫格布局-border重合</view>
+      <view class="demo-section__desc">自定义宫格布局（border重合）</view>
       <view class="demo-section__wrapper">
-        <t-grid class="t-grid three-des" justifyContent="center" border="{{true}}">
-          <t-grid-item
-            text="标题文字"
-            class="t-grid-item"
-            t-class-text="text"
-            t-class-description="description"
-            description="说明文字"
-          >
+        <t-grid class="t-grid four-custom-border" justifyContent="center" border="{{true}}">
+          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
               slot="image"
             />
           </t-grid-item>
-          <t-grid-item
-            text="标题文字"
-            class="t-grid-item"
-            t-class-text="text"
-            t-class-description="description"
-            description="说明文字"
-          >
+          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
               slot="image"
             />
           </t-grid-item>
-          <t-grid-item
-            text="标题文字"
-            class="t-grid-item"
-            t-class-text="text"
-            t-class-description="description"
-            description="说明文字"
-          >
+          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+            <image
+              class="image-icon"
+              src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
+              slot="image"
+            />
+          </t-grid-item>
+          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
@@ -338,42 +327,36 @@
           </t-grid-item>
         </t-grid>
       </view>
-      <view class="demo-section__desc">自定义宫格布局-border分离</view>
+      <view class="demo-section__desc">自定义宫格布局（border分离）</view>
       <view class="demo-section__wrapper">
-        <t-grid class="t-grid three-des" justifyContent="flex-start" border="{{true}}" gutter="20">
-          <t-grid-item
-            text="标题文字"
-            class="t-grid-item"
-            t-class-text="text"
-            t-class-description="description"
-            description="说明文字"
-          >
+        <t-grid
+          class="t-grid four-custom-border"
+          justifyContent="center"
+          border="{{true}}"
+          gutter="{{20}}"
+        >
+          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
               slot="image"
             />
           </t-grid-item>
-          <t-grid-item
-            text="标题文字"
-            class="t-grid-item"
-            t-class-text="text"
-            t-class-description="description"
-            description="说明文字"
-          >
+          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
               slot="image"
             />
           </t-grid-item>
-          <t-grid-item
-            text="标题文字"
-            class="t-grid-item"
-            t-class-text="text"
-            t-class-description="description"
-            description="说明文字"
-          >
+          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+            <image
+              class="image-icon"
+              src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
+              slot="image"
+            />
+          </t-grid-item>
+          <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
               src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"

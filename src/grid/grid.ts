@@ -62,9 +62,11 @@ export default class Grid extends SuperComponent {
     const contentStyles = [];
     const borderStyle = this.getContentBorder();
     const marginStyle = this.getContentMargin();
-    contentStyles.push(`justify-content:${justifyContent}`);
+    const justifyContentStyle = `justify-content:${justifyContent}`;
+    const widthStyle = `width:${this.getContentWidth()}`;
+    justifyContentStyle && contentStyles.push(justifyContentStyle);
     borderStyle && contentStyles.push(borderStyle);
-    contentStyles.push(`width:${this.getContentWidth()}`);
+    widthStyle && contentStyles.push(widthStyle);
     marginStyle && contentStyles.push(marginStyle);
 
     this.setData({

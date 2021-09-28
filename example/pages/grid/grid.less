@@ -36,15 +36,6 @@ page {
 
 // 以下是覆盖grid组件内的样式
 page {
-  // .t-grid {
-  //   .t-grid-item__text {
-  //     font-size: @grid-text-font-size;
-  //     color: @grid-text-color;
-  //     line-height: 22rpx * 2;
-  //     margin-top: 10rpx * 2;
-  //   }
-  // }
-
   .three-border {
     .text {
       margin-bottom: 24rpx;
@@ -80,6 +71,25 @@ page {
       padding-top: 32rpx;
       width: 56rpx;
       height: 56rpx;
+    }
+  }
+
+  .five-with-padding {
+    padding: 0 24rpx;
+
+    .grid {
+      border-radius: 16rpx;
+
+      .image-icon {
+        padding-top: 24rpx;
+        width: 56rpx;
+        height: 56rpx;
+      }
+
+      .text {
+        margin-bottom: 20rpx;
+        font-size: 24rpx;
+      }
     }
   }
 
@@ -123,6 +133,7 @@ page {
       float: left;
       width: 50%;
       padding-left: 16rpx;
+      font-size: 22rpx;
     }
   }
 
@@ -140,10 +151,6 @@ page {
     .description {
       margin-bottom: 24rpx;
     }
-  }
-
-  .five-with-padding {
-    padding: 0 24rpx;
   }
 
   .badge {
@@ -183,6 +190,23 @@ page {
       .badge-circle-container {
         margin-left: -4rpx;
         display: flex;
+      }
+    }
+  }
+
+  .four-custom-border {
+    .t-grid-item {
+      .image-icon {
+        width: 56rpx;
+        height: 56rpx;
+        padding-top: 32rpx;
+      }
+
+      .text {
+        font-size: 24rpx;
+        padding-bottom: 32rpx;
+        width: 150rpx;
+        text-align: center;
       }
     }
   }
