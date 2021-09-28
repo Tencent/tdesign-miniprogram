@@ -7,9 +7,6 @@ const name = `${prefix}-grid`;
 
 @wxComponent()
 export default class Grid extends SuperComponent {
-  /**
-   * Component properties
-   */
   externalClasses = ['t-class'];
 
   relations = {
@@ -26,9 +23,6 @@ export default class Grid extends SuperComponent {
 
   properties = props;
 
-  /**
-   * Component initial data
-   */
   data = {
     classPrefix: name,
     contentStyle: '',

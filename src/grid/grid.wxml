@@ -1,7 +1,3 @@
-<!-- <view
-  class="{{classPrefix}} {{ border && !gutter ? 't-hairline--top' : '' }} t-class"
-  style="{{ viewStyle }}"
-> -->
 <view class="{{classPrefix}} t-class" style="{{ gridStyle}}">
   <view class="{{classPrefix}}-content" style="{{ contentStyle }}">
     <slot />

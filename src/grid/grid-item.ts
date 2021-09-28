@@ -1,21 +1,18 @@
 import { SuperComponent, wxComponent, isObject } from '../common/src/index';
 import config from '../common/config';
-// import { addUnit } from '../common/utils';
 import props from './grid-item-props';
 
 const { prefix } = config;
 const name = `${prefix}-grid-item`;
-const LinkTypes = ['navigateTo', 'redirectTo', 'switchTab', 'reLaunch'];
-// "redirect-to" | "switch-tab" | "relaunch" | "navigate-to"
-// enum LinkTypes{
-//   "redirect-to"="redirectTo"
-// }
+enum LinkTypes {
+  'redirect-to' = 'redirectTo',
+  'switch-tab' = 'switchTab',
+  'relaunch' = 'reLaunch',
+  'navigate-to' = 'navigateTo',
+}
 
 @wxComponent()
 export default class GridItem extends SuperComponent {
-  /**
-   * Component properties
-   */
   externalClasses = ['t-class', 't-class-image', 't-class-text', 't-class-description'];
 
   options = {
@@ -33,21 +30,11 @@ export default class GridItem extends SuperComponent {
 
   properties = props;
 
-  /**
-   * Component initial data
-   */
   data = {
     classPrefix: name,
     gridItemStyle: '',
   };
 
-  // ready() {
-  //   this.updateStyle();
-  // }
-
-  /**
-   * Component methods
-   */
   updateStyle() {
     const { hover } = this.parent.properties;
     const gridItemStyles = [];
@@ -110,8 +97,8 @@ export default class GridItem extends SuperComponent {
   jumpLink() {
     const { url, jumpType } = this.properties;
     if (url && jumpType) {
-      if (LinkTypes.indexOf(jumpType as any) > -1) {
-        wx[jumpType as any]({ url });
+      if (LinkTypes[jumpType as any]) {
+        wx[LinkTypes[jumpType as any]]({ url });
       }
     }
   }

@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-27 16:28:20
+ * updated at 2021-09-28 11:59:09
  * */
 
 import { TdGridProps } from './type';
@@ -22,7 +22,7 @@ const props: TdGridProps = {
   externalClasses: {
     type: Array,
   },
-  /** 间隔大小，`justify-content` 值为 `start/center/end` 时有效 */
+  /** 间隔大小，`justify-content` 值为 `flex-start/center/flex-end` 时有效 */
   gutter: {
     type: String,
     optionalTypes: [Number],

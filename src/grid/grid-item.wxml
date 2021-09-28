@@ -3,13 +3,6 @@
   style="{{ gridItemStyle }}"
   bindtap="onClick"
 >
-  <!-- <view
-    class="{{classPrefix}}-content t-class-content {{hover? 'classPrefix__content--hover':''}} {{border && !gutter ? 'classPrefix__content-noGutter--surround':''}} {{ border && gutter && square ? 'classPrefix__content--surround' : '' }}  {{border && gutter && !square? 'classPrefix__content-noSquare--surround': ''}}"
-    style="{{ contentStyle }}"
-  > -->
-  <!-- <block wx:if="{{ useSlot }}">
-      <slot />
-    </block> -->
   <view class="{{classPrefix}}-image-wapper">
     <t-image wx:if="{{image && image!== 'slot'}}" src="{{image}}" class="t-class-image" />
     <slot wx:else name="image" class="t-class-image"></slot>
@@ -24,22 +17,4 @@
     </view>
     <slot wx:else name="description" class="t-class-description"></slot>
   </view>
-  <!-- <slot name="icon"></slot> -->
-  <!-- <view class="{{classPrefix}}__te_wapper">
-        <view class="{{classPrefix}}__text">
-          <text wx:if="{{ text }}" style="color: {{textColor}}; font-size:{{textSize}};"
-            >{{ text }}</text
-          >
-          <slot wx:else name="text"></slot>
-        </view>
-        <view class="{{classPrefix}}__second_text">
-          <text
-            wx:if="{{ secondText }}"
-            style="color: {{secondTextColor}}; font-size:{{secondTextSize}};"
-            >{{ secondText }}</text
-          >
-          <slot wx:else name="second-text"></slot>
-        </view>
-      </view> -->
-  <!-- </view> -->
 </view>

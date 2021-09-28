@@ -256,9 +256,9 @@
 | align            | String           | center       | 内容对齐方式。可选项：left/center                                                                   | N                                                 |
 | border           | Boolean / Object | false        | 边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式。TS 类型：`boolean | { color?: string; width?: string; style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' }` | N   |
 | external-classes | Array            | -            | 组件类名，用于设置组件外层元素类名。`['t-class']`                                                   | N                                                 |
-| gutter           | String / Number  | -            | 间隔大小，`justify-content` 值为 `start/center/end` 时有效                                          | N                                                 |
+| gutter           | String / Number  | -            | 间隔大小，`justify-content` 值为 `flex-start/center/flex-end` 时有效                                | N                                                 |
 | hover            | Boolean          | false        | 是否开启点击反馈                                                                                    | N                                                 |
-| justify-content  | String           | space-around | 间隔分布模式。可选项：space-between/space-around/start/center/end                                   | N                                                 |
+| justify-content  | String           | space-around | 间隔分布模式。可选项：space-between/space-around/flex-start/center/flex-end                         | N                                                 |
 
 ### GridItem Props
 
