@@ -23,7 +23,6 @@ export default class Skeleton extends SuperComponent {
 
     loading: {
       type: Boolean,
-      value: true,
     },
 
     rowWidth: {

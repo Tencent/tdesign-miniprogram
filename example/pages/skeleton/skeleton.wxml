@@ -11,6 +11,7 @@
       row="4"
       rowWidth="{{rowWidth}}"
       rowHeight="{{rowHeight}}"
+      loading
     ></t-skeleton>
 
     <view class="demo-section__desc">头像组合</view>
@@ -21,6 +22,7 @@
       rowWidth="{{rowWidth2}}"
       rowHeight="{{rowHeight2}}"
       theme="avatar-text"
+      loading
     ></t-skeleton>
 
     <view class="demo-section__desc">图片组合</view>
@@ -30,12 +32,14 @@
         rowWidth="{{rowWidth3}}"
         rowHeight="{{rowHeight3}}"
         t-class-text="skeleton-text"
+        loading
       ></t-skeleton>
       <t-skeleton
         row="4"
         rowWidth="{{rowWidth3}}"
         rowHeight="{{rowHeight3}}"
         t-class-text="skeleton-text"
+        loading
       ></t-skeleton>
     </view>
   </t-demo>
@@ -46,7 +50,8 @@
       row="4"
       rowWidth="{{rowWidth}}"
       rowHeight="{{rowHeight}}"
-      animation="flashed"
+      animation="gradient"
+      loading
     ></t-skeleton>
     <view class="demo-section__desc">闪烁加载动画</view>
     <t-skeleton
@@ -57,6 +62,7 @@
       rowHeight="{{rowHeight2}}"
       theme="avatar-text"
       animation="flashed"
+      loading
     ></t-skeleton>
   </t-demo>
 </view>

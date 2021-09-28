@@ -5,14 +5,14 @@
 @h-space-nest: 24rpx;
 // skeleton
 @skeleton-row-background-color: rgba(238, 238, 238, 1);
+// @skeleton-row-background-color: red;
 @skeleton-row-margin-top: @h-space-nest;
 @skeleton-avatar-background-color: rgba(238, 238, 238, 1);
-@skeleton-animation-duration: 1.2s;
+@skeleton-animation-duration: 0.6s;
 
 .@{prefix}-skeleton {
   display: flex;
   box-sizing: border-box;
-  // width: 100%;
 
   &__avatar {
     flex-shrink: 0;
@@ -33,11 +33,39 @@
 }
 
 .animate-flashed {
-  animation: t-skeleton-blink @skeleton-animation-duration ease-in-out infinite;
+  animation: t-flashed @skeleton-animation-duration infinite alternate;
 }
 
-@keyframes t-skeleton-blink {
-  50% {
+@keyframes t-flashed {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
     opacity: .6;
+  }
+}
+
+.animate-gradient {
+  .t-skeleton__row {
+    background: linear-gradient(
+      to right,
+      rgba(238, 238, 238, 1) 10%,
+      rgba(238, 238, 238, .4) 20%,
+      rgba(238, 238, 238, 1) 30%
+    );
+    background-size: 400% 50%;
+    width: 100%;
+    animation: t-gradient 1s ease-in-out infinite;
+  }
+}
+
+@keyframes t-gradient {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }
