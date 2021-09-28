@@ -23,7 +23,7 @@
       />
       <block wx:if="{{ theme === 'circular' }}">
         <view class="loading__mask1" />
-        <view class="loading__mask2" />
+        <view class="t-class-indicator-inner-circle loading__mask2" />
       </block>
       <block wx:if="{{ theme === 'dots' }}">
         <view
