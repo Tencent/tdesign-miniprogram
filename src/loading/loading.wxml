@@ -21,10 +21,7 @@
         wx:key="index"
         class="loading__dot"
       />
-      <block wx:if="{{ theme === 'circular' }}">
-        <view class="loading__mask1" />
-        <view class="t-class-indicator-inner-circle loading__mask2" />
-      </block>
+      <view wx:if="{{ theme === 'circular' }}" class="loading__circular" />
       <block wx:if="{{ theme === 'dots' }}">
         <view
           class="dot"
