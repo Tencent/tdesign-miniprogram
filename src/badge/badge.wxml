@@ -11,5 +11,5 @@
     style="{{this.getBadgeStyles({color, offset})}}"
     >{{ this.getBadgeValue({dot, count, maxCount}) }}
   </view>
-  <slot name="count" wx:if="{{count === 'slot'}}" />
+  <slot name="count" wx:if="{{count === 'slot' || !count}}" />
 </view>

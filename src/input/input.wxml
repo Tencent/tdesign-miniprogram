@@ -1,14 +1,14 @@
 <view
-  class="{{classPrefix}} {{error ? classPrefix + '__error' : ''}}  {{!!errorMessage ? classPrefix + '__error_enable' :''}} t-input--size-{{size}} {{classPrefix + '--bordered'}} t-class"
+  class="{{classPrefix}} {{!!errorMessage ? classPrefix + '__error' : ''}}  t-input--size-{{size}} {{classPrefix + '--bordered'}} t-class"
 >
-  <view wx:if="{{name}}" class="{{classPrefix + '__name'}}"
-    >{{name}}
-    <text wx:if="{{required}}" class="{{classPrefix + '__required'}}">*</text>
+  <view wx:if="{{name}}" class="{{classPrefix + '__name'}}">
+    <slot name="name" wx:if="{{name === 'slot'}}" />
+    <text wx:else>{{name}}</text>
   </view>
   <view class="{{classPrefix}}-wrap">
     <view class="{{classPrefix}}__content">
       <input
-        maxlength="{{maxlength}}"
+        maxlength="{{maxlength || -1}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholder-class="{{classPrefix}}__placeholder t-class-placeholder"
@@ -17,16 +17,17 @@
         bindfocus="onFocus"
         bindblur="onBlur"
         bindconfirm="onConfirm"
-        password="{{password}}"
-        type="{{type}}"
+        password="{{type === 'password'}}"
+        type="{{type === 'password' ? 'text' : type}}"
         focus="{{focus}}"
+        auto-focus="{{autofocus}}"
         confirm-type="{{confirmType}}"
         confirm-hold="{{confirmHold}}"
         adjust-position="{{adjustPosition}}"
-        class="{{classPrefix}}--control {{suffix? classPrefix + '--control__right':''}} t-class-input"
+        class="{{classPrefix}}--control {{suffix || align ==='right' ? classPrefix + '--control__right':''}} {{align === 'center' ? classPrefix + '--control__center':''}}  t-class-input"
       />
       <view
-        wx:if="{{ clearable && inputValue.length > 0 }}"
+        wx:if="{{ clearable && (inputValue.length > 0 || characterLength > 0)}}"
         class="{{classPrefix}}-wrap--icon"
         bind:tap="clearInput"
       >
@@ -43,7 +44,7 @@
       </view>
     </view>
     <view
-      wx:if="{{error && errorMessage && errorMessage.length > 0}}"
+      wx:if="{{errorMessage && errorMessage.length > 0}}"
       class="{{classPrefix}}__error-msg t-class-error-msg"
       >{{errorMessage}}
     </view>

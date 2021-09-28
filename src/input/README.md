@@ -37,32 +37,32 @@
 | -------------- | ------------------- | ------- | ---- | -------------------------------------------------------------------------------------------- |
 | name           | `String`            | -       | N    | 标签名称                                                                                     |
 | value          | `String`            | -       | N    | 输入框的值                                                                                   |
-| password       | `Boolean`           | `false` | N    | 是否密码类型                                                                                 |
-| error          | `Boolean`           | `false` | N    | 是否存在错误提示                                                                             |
 | errorMessage   | `String`            | -       | N    | 错误提示文本                                                                                 |
 | suffixIcon     | `String`            | -       | N    | 组件后置图标                                                                                 |
 | suffix         | `String`            | -       | N    | 后置文本内容                                                                                 |
-| type           | `TTypeValue`        | `text`  | N    | 输入框类型，'text'、'number'、 'idcard' 、 'digit' 、'safe-password'                         |
+| algin          | `String`            | -       | N    | 输入框文本对其，'left'、'center'、'right'                                                    |
+| type           | `TTypeValue`        | `text`  | N    | 输入框类型，'text'、'number'、 'idcard' 、 'digit' 、'safe-password'、'password'             |
 | size           | `TSizeValue`        | `small` | N    | 文本框规格 'medium'、 'small'                                                                |
-| required       | `Boolean`           | `false` | N    | 是否必填                                                                                     |
 | clearable      | `Boolean`           | `false` | N    | 是否可清空                                                                                   |
 | disabled       | `Boolean`           | `false` | N    | 是否禁用输入框                                                                               |
 | placeholder    | `String`            | -       | N    | 输入框为空时的占位符                                                                         |
-| maxlength      | `Number`            | 140     | N    | 输入框输入文本的最大长度                                                                     |
+| maxlength      | `Number`            | -       | N    | 输入框输入文本的最大长度                                                                     |
+| maxcharacter   | `Number`            | -       | N    | 输入框输入文本的最大长度,一个中文汉字表示两个字符                                            |
 | focus          | `Boolean`           | `false` | N    | 是否获取焦点                                                                                 |
+| autofocus      | `Boolean`           | `false` | N    | 自动聚焦，拉起键盘                                                                           |
 | confirmType    | `TConfirmTypeValue` | -       | N    | 设置键盘右下角按钮的文字，仅在 type='text'时生效,'send'、 'search' 、 'next' 、'go' 、'done' |
 | confirmHold    | `Boolean`           | `false` | N    | 点击键盘右下角按钮时是否保持键盘不收起点                                                     |
 | adjustPosition | `Boolean`           | `true`  | N    | 键盘弹起时，是否自动上推页面                                                                 |
 
 ### Events
 
-| 事件  | event.detail | 说明               |
-| ----- | ------------ | ------------------ |
-| input | -            | 键盘输入时触发     |
-| focus | -            | 键盘聚焦时触发     |
-| blur  | -            | 键盘失去焦点时触发 |
-| enter | -            | 点击完成按钮时触发 |
-| clear | -            | 输入框清除时触发   |
+| 事件   | event.detail | 说明               |
+| ------ | ------------ | ------------------ |
+| change | -            | 键盘输入时触发     |
+| focus  | -            | 键盘聚焦时触发     |
+| blur   | -            | 键盘失去焦点时触发 |
+| enter  | -            | 点击完成按钮时触发 |
+| clear  | -            | 输入框清除时触发   |
 
 ### External Class
 
