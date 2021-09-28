@@ -28,10 +28,10 @@
       <!-- 失败重试 -->
       <view
         data-index="{{index}}"
-        wx:if="{{file.progress !== undefined && file.progress !== 100}}"
+        wx:if="{{file.percent !== undefined && file.percent !== 100}}"
         class="progress-mask"
       >
-        <view wx:if="{{file.progress === -1}}" class="progress-failed">
+        <view wx:if="{{file.percent === -1}}" class="progress-failed">
           <t-icon
             name="refresh"
             size="45rpx"
@@ -39,7 +39,7 @@
             color="#fff"
           />
         </view>
-        <view wx:else class="progress-value">{{file.progress}}%</view>
+        <view wx:else class="progress-value">{{file.percent}}%</view>
       </view>
       <!-- 删除 -->
       <view class="upload-grid--file__close-btn" bindtap="onDelete" data-index="{{index}}">
@@ -47,7 +47,7 @@
         <t-icon
           wx:else
           name="close"
-          size="24rpx"
+          size="34rpx"
           t-class="upload-grid--file__close-btn__icon"
           color="#fff"
         />

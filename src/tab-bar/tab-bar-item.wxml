@@ -6,16 +6,14 @@
   >
     <view class="{{classPrefix}}__icon" wx:if="{{icon}}">
       <t-badge
-        wx:if="{{badgeProps.dot || badgeProps.content}}"
-        color="{{badgeProps.color}}"
+        wx:if="{{badgeProps.dot || badgeProps.count}}"
         count="{{badgeProps.count}}"
-        max-count="{{badgeProps.maxCount}}"
+        max-count="{{badgeProps.maxCount || 99}}"
         dot="{{badgeProps.dot}}"
         content="{{badgeProps.content}}"
         size="{{badgeProps.size}}"
         visible="{{badgeProps.visible}}"
         offset="{{badgeProps.offset || [0,0]}}"
-        hasSlot
         t-class-badge="badge-class"
       >
         <t-icon name="{{icon}}" size="24px" />

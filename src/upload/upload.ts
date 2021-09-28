@@ -39,7 +39,7 @@ export default class Upload extends SuperComponent {
   onProofTap(e: any) {
     const { index } = e.currentTarget.dataset;
     wx.previewImage({
-      urls: this.data.customFiles.filter((file) => file.progress !== -1).map((file) => file.url),
+      urls: this.data.customFiles.filter((file) => file.percent !== -1).map((file) => file.url),
       current: this.data.customFiles[index]?.url,
     });
   }

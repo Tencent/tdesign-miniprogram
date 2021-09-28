@@ -4,13 +4,13 @@
 
 @{prefix}-steps {
   display: flex;
-  width: 100%;
 }
 
 @{prefix}-step {
   flex: 1;
   vertical-align: top;
   position: relative;
+  align-self: flex-start;
 }
 
 .step-item-basic();
@@ -34,6 +34,9 @@
 
       &--process {
         .default-number-status(process);
+        .@{prefix}-steps-item-title {
+          color: @primary-color;
+        }
       }
 
       &--error {
@@ -42,22 +45,32 @@
           color: @step-error-title-color;
         }
       }
+
+      &--wait {
+        .@{prefix}-steps-item-title, .@{prefix}-steps-item-description {
+          color: @title-color--default;
+        }
+      }
     }
 
     .connector-default(horizontal);
   }
 
   &--vertical {
+    padding-right: 32rpx;
+
     .@{prefix}-steps-item {
       position: relative;
 
       &__inner {
         flex-direction: row;
         align-items: flex-start;
+        justify-content: flex-start;
       }
 
       &-content {
         margin-left: @spacer;
+        flex: 1;
       }
 
       &-title {
@@ -69,10 +82,11 @@
 
       &-description {
         text-align: left;
+        min-height: 40rpx;
       }
 
       &-extra {
-        margin-bottom: 19px;
+        margin-bottom: 50rpx;
       }
     }
 
@@ -88,12 +102,21 @@
 
         &--process {
           .default-number-status(process);
+          .@{prefix}-steps-item-title {
+            color: @primary-color;
+          }
         }
 
         &--error {
           .default-number-status(error);
           .@{prefix}-steps-item-title {
             color: @error-color;
+          }
+        }
+
+        &--wait {
+          .@{prefix}-steps-item-title, .@{prefix}-steps-item-description {
+            color: @title-color--default;
           }
         }
       }
@@ -122,10 +145,10 @@
           content: '';
           display: block;
           height: calc(100% - @dot-steps-anchor-width);
-          width: 2px;
+          width: 1px;
           background: @border-level-2-color;
           position: absolute;
-          left: calc(@dot-steps-anchor-width / 2 - 1px);
+          left: calc(@dot-steps-anchor-width / 2 - 1rpx);
           top: calc(@dot-steps-anchor-width + 1px);
         }
       }
@@ -142,6 +165,9 @@
   // 垂直
   &--vertical {
     flex-direction: column;
-    align-items: flex-start;
+
+    @{prefix}-step {
+      width: 100%;
+    }
   }
 }

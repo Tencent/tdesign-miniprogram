@@ -6,5 +6,10 @@
 >
   <t-icon wx-if="{{icon}}" name="{{icon}}" />
   <slot />
-  <t-icon wx:if="{{ closable && !disabled }}" name="close" bind:tap="onClickClose" />
+  <t-icon
+    wx:if="{{ closable && !disabled }}"
+    class="{{classPrefix}}__icon-close"
+    name="close"
+    bind:tap="onClickClose"
+  />
 </view>

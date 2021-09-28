@@ -2,7 +2,7 @@
 
 ### 介绍
 
-宫格可以在水平方向上把页面分隔成等宽度的区块，用于展示内容或进行页面导航
+用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。
 
 ## 引入
 
@@ -212,7 +212,7 @@
 <view class="demo-section__wrapper">
   <t-grid border="{{false}}" column-num="4" class="column-4">
     <t-grid-item text="标题文字">
-      <t-badge content="···" hasSlot slot="icon">
+      <t-badge content="···" slot="icon">
         <image
           class="middle-icon-image"
           src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
@@ -220,7 +220,7 @@
       </t-badge>
     </t-grid-item>
     <t-grid-item text="标题文字">
-      <t-badge count="{{16}}" hasSlot slot="icon">
+      <t-badge count="{{16}}" slot="icon">
         <image
           class="middle-icon-image"
           src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
@@ -228,7 +228,7 @@
       </t-badge>
     </t-grid-item>
     <t-grid-item text="标题文字">
-      <t-badge content="New" hasSlot slot="icon">
+      <t-badge content="New" slot="icon">
         <image
           class="middle-icon-image"
           src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
@@ -236,7 +236,7 @@
       </t-badge>
     </t-grid-item>
     <t-grid-item text="标题五字内">
-      <t-badge content="···" hasSlot slot="icon">
+      <t-badge content="···" slot="icon">
         <image
           class="middle-icon-image"
           src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"

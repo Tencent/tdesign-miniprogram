@@ -2,22 +2,19 @@ Page({
   data: {
     originFiles1: [
       {
-        url:
-          'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/uploader/uploaded1.png',
+        url: 'https://tdesign.gtimg.com/site/upload1.png',
         name: 'uploaded1.png',
         type: 'image',
       },
     ],
     originFiles2: [
       {
-        url:
-          'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/uploader/uploaded1.png',
+        url: 'https://tdesign.gtimg.com/site/upload1.png',
         name: 'uploaded1.png',
         type: 'image',
       },
       {
-        url:
-          'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/uploader/uploaded2.png',
+        url: 'https://tdesign.gtimg.com/site/upload2.png',
         name: 'uploaded2.png',
         type: 'image',
       },
@@ -33,11 +30,10 @@ Page({
           console.log('uploading');
           resolve([
             {
-              url:
-                'https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/uploader/uploaded2.png',
+              url: 'https://tdesign.gtimg.com/site/upload2.png',
               name: 'uploaded2.png',
               type: 'image',
-              progress: -1,
+              percent: -1,
             },
           ]);
         })

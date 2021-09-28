@@ -16,11 +16,6 @@ const props: TdBackTopProps = {
     type: String,
     value: 'backtop',
   },
-  /** 是否显示组件 */
-  visible: {
-    type: Boolean,
-    value: false,
-  },
   /** 文案 */
   text: {
     type: String,

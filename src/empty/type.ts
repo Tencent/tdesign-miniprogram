@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-20 14:23:22
+ * updated at 2021-09-26 21:03:14
  * */
 
 export interface TdEmptyProps {
@@ -28,15 +28,6 @@ export interface TdEmptyProps {
   image?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
-  };
-  /**
-   * 空页面风格类型（待确认）
-   * @default default
-   */
-  theme?: {
-    type: StringConstructor;
-    value?: 'default' | 'primary' | 'warning' | 'error';
     required?: boolean;
   };
 }

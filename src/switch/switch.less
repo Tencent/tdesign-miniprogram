@@ -37,12 +37,13 @@
   &__dot {
     position: absolute;
     left: @switch-dot-pos-left;
-    top: @switch-dot-pos-top;
+    top: 50%;
     width: @switch-dot-size;
     height: @switch-dot-size;
     border-radius: 50%;
     background-color: @bg-color-block;
     transition: all .3s;
+    transform: translateY(-50%);
 
     &--active {
       left: @switch-dot-size + @switch-dot-pos-left;
