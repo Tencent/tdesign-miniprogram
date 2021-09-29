@@ -85,3 +85,5 @@ export interface TdBadgeProps {
     value?: boolean;
   };
 }
+
+export type BadgeProps = TdBadgeProps;
