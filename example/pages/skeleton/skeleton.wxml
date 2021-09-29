@@ -5,11 +5,17 @@
   >
   <t-demo title="01 类型">
     <view class="demo-section__desc">基础</view>
-    <t-skeleton t-class="skeleton-basic" rowCol="{{rowCol1}}" loading></t-skeleton>
+    <t-skeleton
+      t-class="skeleton-basic"
+      rowCol="{{rowCol1}}"
+      t-class-text="basic-text"
+      loading
+    ></t-skeleton>
     <view class="demo-section__desc">头像组合</view>
     <t-skeleton
       t-class="skeleton-avatar"
       t-class-avatar="skeleton-avatar-size"
+      t-class-text="basic-text"
       rowCol="{{rowCol2}}"
       theme="avatar-text"
       loading
@@ -24,6 +30,7 @@
     <view class="demo-section__desc">渐变加载动画</view>
     <t-skeleton
       t-class="skeleton-basic"
+      t-class-text="basic-text"
       rowCol="{{rowCol1}}"
       animation="gradient"
       loading
@@ -32,6 +39,7 @@
     <t-skeleton
       t-class="skeleton-avatar"
       t-class-avatar="skeleton-avatar-size"
+      t-class-text="basic-text"
       rowCol="{{rowCol2}}"
       theme="avatar-text"
       animation="flashed"
