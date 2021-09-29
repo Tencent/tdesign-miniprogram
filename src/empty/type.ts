@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 21:03:14
+ * updated at 2021-09-29 14:49:26
  * */
 
 export interface TdEmptyProps {
@@ -19,7 +19,16 @@ export interface TdEmptyProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class', 't-class-description', 't-class-image'];
+    value?: ['t-class', 't-class-description', 't-class-image', 't-class-actions'];
+    required?: boolean;
+  };
+  /**
+   * 图标名称
+   * @default ''
+   */
+  icon?: {
+    type: StringConstructor;
+    value?: string;
     required?: boolean;
   };
   /**
