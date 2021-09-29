@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-31 20:19:29
+ * updated at 2021-09-29 15:40:19
  * */
 
 export interface TdSliderProps {
@@ -22,6 +22,15 @@ export interface TdSliderProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 禁用状态滑动条的颜色（已选、未选）
+   * @default ['#bbd3fb', '#dcdcdc']
+   */
+  disabledColor?: {
+    type: ArrayConstructor;
+    value?: Array<string>;
     required?: boolean;
   };
   /**

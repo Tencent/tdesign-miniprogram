@@ -10,7 +10,7 @@
       <view
         id="sliderLine"
         class="{{classPrefix}}__main t-class-bar"
-        style="background-color: {{colors[1]}}"
+        style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
         bindtap="onSingleLineTap"
       >
         <block wx:if="{{isScale}}">
@@ -19,7 +19,7 @@
             wx:for="{{scaleArray}}"
             wx:for-index="index"
             wx:key="index"
-            style="background:{{_value < item ? colors[1] : colors[0]}};left:{{item}}%;transform:translateX({{- item}}%);"
+            style="background:{{_value < item ? (disabled ? disabledColor[1] : colors[1]) : ( disabled ? disabledColor[0] : colors[0])}};left:{{item}}%;transform:translateX({{- item}}%);"
           >
             <view wx:if="{{scaleTextArray.length}}" class="scale-desc">
               {{scaleTextArray[index]}}
@@ -28,7 +28,7 @@
         </block>
         <view
           class="{{classPrefix}}-line t-class-bar-active"
-          style="background-color: {{colors[0]}}; left: 0;width: {{lineBarWidth}};"
+          style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px;width: {{lineBarWidth}};"
           bindtap="onSingleLineTap"
         >
           <view
@@ -62,7 +62,7 @@
         id="sliderLine"
         bindtap="onLineTap"
         class="{{classPrefix}}-bar t-class-bar"
-        style="background-color: {{colors[1]}};"
+        style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
       >
         <block wx:if="{{isScale}}">
           <view
@@ -70,7 +70,7 @@
             wx:for="{{scaleArray}}"
             wx:for-index="index"
             wx:key="index"
-            style="background:{{dotTopValue[1] < item || item < dotTopValue[0] ? colors[1] : colors[0]}};left: {{item}}%;transform:translateX({{- item}}%);"
+            style="background:{{dotTopValue[1] < item || item < dotTopValue[0] ? (disabled ? disabledColor[1] : colors[1]) : ( disabled ? disabledColor[0] : colors[0])}};left: {{item}}%;transform:translateX({{- item}}%);"
           >
             <view wx:if="{{scaleTextArray.length}}"> {{scaleTextArray[index]}} </view>
           </view>
@@ -78,7 +78,7 @@
         <view
           class="{{classPrefix}}-line t-class-bar-active"
           bindtap="onLineTap"
-          style="background-color: {{colors[0]}}; left: {{lineLeft}}px; right: {{lineRight}}px;"
+          style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; right: {{lineRight}}px;"
         />
         <view
           id="leftDot"

@@ -1,11 +1,10 @@
 // @import (css) '../common/index.wxss';
 
-@prefix: t-slider;
 @bar-height: 2rpx;
 @block-color: #fff;
 @block-size: 16px;
 
-.@{prefix}__container {
+.t-slider__container {
   font-size: 14px;
 
   &.bottom {
@@ -13,21 +12,26 @@
   }
 
   &.disabled {
-    opacity: .5;
+    .t-slider-value,
+    .t-slider-range-extrem,
+    .t-slider-dot-value,
+    .scale-desc {
+      color: rgba(0, 0, 0, .26);
+    }
   }
 
-  .@{prefix}-value__active {
+  .t-slider-value__active {
     text-align: center;
   }
 }
 
-.@{prefix}__wrapper {
+.t-slider__wrapper {
   display: flex;
   align-items: center;
   height: 96rpx;
 
   // 单点滑块样式
-  .@{prefix}__main {
+  .t-slider__main {
     position: relative;
     margin: 0 32rpx;
     flex: 10;
@@ -37,16 +41,16 @@
     border-radius: @bar-height;
     display: inline-block;
 
-    .@{prefix}-line {
+    .t-slider-line {
       position: absolute;
       top: 8px;
       height: @bar-height * 2;
       border-radius: @bar-height;
     }
 
-    .@{prefix}-dot {
+    .t-slider-dot {
       border-radius: 50%;
-      box-shadow: 0 0 1px 2px #eee;
+      border: 2rpx solid #dcdcdc;
       position: absolute;
       background-color: @block-color;
       width: @block-size;
@@ -55,43 +59,51 @@
       z-index: 2;
     }
   }
-  .@{prefix}-value {
+
+  .t-slider-value {
     // flex: 1;
     display: inline-block;
     color: rgba(0, 0, 0, .4);
   }
-  .@{prefix}-value__min {
+
+  .t-slider-value__min {
     margin-left: 16px;
   }
-  .@{prefix}-value__max {
+
+  .t-slider-value__max {
     margin-right: 16px;
   }
-  .@{prefix}-value__right {
+
+  .t-slider-value__right {
     flex-basis: 80rpx;
   }
-  .@{prefix}-active {
+
+  .t-slider-active {
     width: 100%;
   }
 }
 
 // 范围滑块样式
-.@{prefix}-range-container {
+.t-slider-range-container {
   display: flex;
   padding: @block-size * 1.4 0 0 0;
 
-  .@{prefix}-range-extrem {
+  .t-slider-range-extrem {
     display: inline-block;
     color: rgba(0, 0, 0, .4);
   }
-  .@{prefix}-range-min {
+
+  .t-slider-range-min {
     margin-left: 32rpx;
     text-align: left;
   }
-  .@{prefix}-range-max {
+
+  .t-slider-range-max {
     margin-right: 32rpx;
     text-align: right;
   }
-  .@{prefix}-bar {
+
+  .t-slider-bar {
     margin: 0 32rpx;
     flex: 10;
     padding: 16rpx 0;
@@ -101,9 +113,9 @@
     position: relative;
     display: inline-block;
 
-    .@{prefix}-dot {
+    .t-slider-dot {
       border-radius: 50%;
-      box-shadow: 0 0 1px 2px #eee;
+      border: 2rpx solid #dcdcdc;
       position: absolute;
       z-index: 2;
       background-color: @block-color;
@@ -127,7 +139,7 @@
       }
     }
 
-    .@{prefix}-line {
+    .t-slider-line {
       position: absolute;
       top: 8px;
       height: 5rpx;
@@ -136,7 +148,7 @@
 }
 
 // 刻度样式
-.@{prefix}-scale-item {
+.t-slider-scale-item {
   background-color: #0052d9;
   width: @bar-height * 2;
   height: 14rpx;

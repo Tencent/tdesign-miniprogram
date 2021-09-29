@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-31 20:19:29
+ * updated at 2021-09-29 15:40:19
  * */
 
 import { TdSliderProps } from './type';
@@ -16,6 +16,11 @@ const props: TdSliderProps = {
   disabled: {
     type: Boolean,
     value: false,
+  },
+  /** 禁用状态滑动条的颜色（已选、未选） */
+  disabledColor: {
+    type: Array,
+    value: ['#bbd3fb', '#dcdcdc'],
   },
   /** 组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名 */
   externalClasses: {
