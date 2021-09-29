@@ -21,365 +21,62 @@
 ### 01 基本用法
 
 ```html
-<view class="demo-section__desc">一行三个（border）</view>
-<view class="demo-section__wrapper">
-  <t-grid border="{{true}}" class="t-grid three-border">
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+<view>一行三个（border）</view>
+<view>
+  <t-grid border="{{true}}">
+    <t-grid-item text="标题文字">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+    <t-grid-item text="标题文字">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
-    <t-grid-item text="标题最多六字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+    <t-grid-item text="标题最多六字">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
   </t-grid>
 </view>
 
-<view class="demo-section__desc">一行四个</view>
-<view class="demo-section__wrapper">
-  <t-grid class="t-grid four">
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+<view>一行二个带说明宫格</view>
+<view>
+  <t-grid>
+    <t-grid-item text="标题文字" description="说明文字">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题五字内" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+    <t-grid-item text="标题最多六字" description="说明文字最多八字">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
   </t-grid>
 </view>
 
-<view class="demo-section__desc">一行五个</view>
-<view class="demo-section__wrapper">
-  <t-grid class="t-grid five">
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="最多四字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-  </t-grid>
-  <view class="gutter-row"></view>
-  <view class="five-with-padding">
-    <t-grid class="t-grid" t-class="grid">
-      <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-          slot="image"
-        />
-      </t-grid-item>
-      <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-          slot="image"
-        />
-      </t-grid-item>
-      <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-          slot="image"
-        />
-      </t-grid-item>
-      <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-          slot="image"
-        />
-      </t-grid-item>
-      <t-grid-item text="最多四字" class="t-grid-item" t-class-text="text">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-          slot="image"
-        />
-      </t-grid-item>
-    </t-grid>
-  </view>
-</view>
-
-<view class="demo-section__desc">一行三个</view>
-<view class="demo-section__wrapper">
-  <t-grid class="t-grid three">
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题最多六字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-  </t-grid>
-</view>
-
-<view class="demo-section__desc">一行二个带说明宫格</view>
-<view class="demo-section__wrapper">
-  <t-grid class="t-grid two-des">
-    <t-grid-item
-      text="标题文字"
-      class="t-grid-item"
-      t-class-text="text"
-      t-class-description="description"
-      description="说明文字"
-    >
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item
-      text="标题最多六字"
-      class="t-grid-item"
-      t-class-text="text"
-      t-class-description="description"
-      description="说明文字最多八字"
-    >
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-  </t-grid>
-</view>
-
-<view class="demo-section__desc">一行三个带说明宫格</view>
-<view class="demo-section__wrapper">
-  <t-grid class="t-grid three-des">
-    <t-grid-item
-      text="标题文字"
-      class="t-grid-item"
-      t-class-text="text"
-      t-class-description="description"
-      description="说明文字"
-    >
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item
-      text="标题文字"
-      class="t-grid-item"
-      t-class-text="text"
-      t-class-description="description"
-      description="说明文字"
-    >
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item
-      text="标题最多六字"
-      class="t-grid-item"
-      t-class-text="text"
-      t-class-description="description"
-      description="说明最多六字"
-    >
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-  </t-grid>
-</view>
-
-<view class="demo-section__desc">带徽标宫格</view>
-<view class="demo-section__wrapper">
+<view>带徽标宫格</view>
+<view>
   <t-grid class="t-grid badge">
-    <t-grid-item text="标题文字" t-class-text="text">
-      <t-badge count="{{16}}" slot="image" t-class="badge-item">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        />
-      </t-badge>
-    </t-grid-item>
-    <t-grid-item text="标题文字" t-class-text="text">
-      <t-badge dot slot="image" t-class="badge-item">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        />
-      </t-badge>
-    </t-grid-item>
-    <t-grid-item text="标题文字" t-class-text="text"
-      >>
-      <t-badge count="New" slot="image" t-class="badge-item" t-class-text="text">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        />
-      </t-badge>
-    </t-grid-item>
-    <t-grid-item text="标题五字内" t-class-text="text">
-      <t-badge count="slot" slot="image" t-class="badge-item">
-        <image
-          class="image-icon"
-          src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        />
-        <view slot="count" class="badge-circle">
-          <view class="badge-circle-container">
-            <view class="circle" />
-            <view class="circle" />
-            <view class="circle" />
-          </view>
-        </view>
+    <t-grid-item text="标题文字">
+      <t-badge count="{{16}}" slot="image">
+        <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
       </t-badge>
     </t-grid-item>
   </t-grid>
 </view>
-<view class="demo-section__desc">自定义宫格布局（border重合）</view>
-<view class="demo-section__wrapper">
-  <t-grid class="t-grid four-custom-border" justifyContent="center" border="{{true}}">
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+<view>自定义宫格布局（border重合）</view>
+<view>
+  <t-grid justifyContent="center" border="{{true}}">
+    <t-grid-item text="标题文字">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+    <t-grid-item text="标题文字">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
   </t-grid>
 </view>
-<view class="demo-section__desc">自定义宫格布局（border分离）</view>
-<view class="demo-section__wrapper">
-  <t-grid
-    class="t-grid four-custom-border"
-    justifyContent="center"
-    border="{{true}}"
-    gutter="{{20}}"
-  >
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+<view>自定义宫格布局（border分离）</view>
+<view>
+  <t-grid justifyContent="center" border="{{true}}" gutter="{{20}}">
+    <t-grid-item text="标题文字" t-class-text="text">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
-    </t-grid-item>
-    <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-      <image
-        class="image-icon"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%9B%BE%E7%89%87.png"
-        slot="image"
-      />
+    <t-grid-item text="标题文字" t-class-text="text">
+      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
   </t-grid>
 </view>

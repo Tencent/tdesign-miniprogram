@@ -63,7 +63,7 @@ export default class Grid extends SuperComponent {
     const borderStyle = this.getContentBorder();
     const marginStyle = this.getContentMargin();
     const justifyContentStyle = `justify-content:${justifyContent}`;
-    const widthStyle = `width:${this.getContentWidth()}`;
+    const widthStyle = this.getContentWidth();
     justifyContentStyle && contentStyles.push(justifyContentStyle);
     borderStyle && contentStyles.push(borderStyle);
     widthStyle && contentStyles.push(widthStyle);
@@ -82,8 +82,8 @@ export default class Grid extends SuperComponent {
       (justifyContent as any) === 'space-between' ||
       (justifyContent as any) === 'space-around'
     )
-      return '100%';
-    return 'auto';
+      return 'width:100%';
+    return 'width:auto';
   }
 
   // 判断border在grid上的css属性,用border-right来填充最后一个grid-item的右侧border
@@ -99,10 +99,10 @@ export default class Grid extends SuperComponent {
       (justifyContent as any) === 'space-around'
     ) {
       if (!this.isNext) return ''; // 如果没有接壤就不需要在gird上加border
-      return `border-right:${width}rpx ${style} ${color};`;
+      return `border-right:${width}rpx ${style} ${color}`;
     }
     if (gutter) return '';
-    return `border-right:${width}rpx ${style} ${color};`;
+    return `border-right:${width}rpx ${style} ${color}`;
   }
 
   // 判断需不需要在content上加负margin以实现gutter间距
