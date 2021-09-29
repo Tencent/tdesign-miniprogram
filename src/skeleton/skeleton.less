@@ -20,11 +20,13 @@
     width: 64rpx;
   }
 
-  &__row {
+  &__item {
     background-color: @skeleton-row-background-color;
   }
 
   &__row {
+    display: flex;
+
     &:not(:first-child) {
       margin-top: @skeleton-row-margin-top;
     }

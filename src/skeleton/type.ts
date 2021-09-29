@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-27 16:32:51
+ * updated at 2021-09-28 19:21:03
  * */
 
 export interface TdSkeletonProps {
@@ -33,6 +33,7 @@ export interface TdSkeletonProps {
   /**
    * 文本行数，用于控制骨架图高度
    * @default 4
+   * @deprecated
    */
   row?: {
     type: NumberConstructor;
@@ -40,7 +41,17 @@ export interface TdSkeletonProps {
     required?: boolean;
   };
   /**
+   * 用于设置行列数量、宽度高度、间距等。【示例一】，`[1, 1, 2]` 表示输出三行骨架图，第一行一列，第二行一列，第三行两列。【示例二】，`[1, 1, { width: '100px' }]` 表示自定义第三行的宽度为 `100px`。【示例三】，`[1, 2, [{ width, height }, { width, height, marginLeft }]]` 表示第三行有两列，且自定义宽度、高度和间距
+   * @default [1, 1, 1, { width: '70%' }]
+   */
+  rowCol?: {
+    type: ArrayConstructor;
+    value?: SkeletonRowCol;
+    required?: boolean;
+  };
+  /**
    * 控制多个文本行的高度
+   * @deprecated
    */
   rowHeight?: {
     type: ArrayConstructor;
@@ -49,6 +60,7 @@ export interface TdSkeletonProps {
   };
   /**
    * 控制多个文本行的宽度
+   * @deprecated
    */
   rowWidth?: {
     type: ArrayConstructor;
@@ -56,12 +68,21 @@ export interface TdSkeletonProps {
     required?: boolean;
   };
   /**
-   * 骨架图风格，有基础、头像组合、图片组合等三种
+   * 骨架图风格，有基础、头像组合等两大类
    * @default text
    */
   theme?: {
     type: StringConstructor;
-    value?: 'text' | 'avatar-text' | 'image-text-list';
+    value?: 'text' | 'avatar-text';
     required?: boolean;
   };
+}
+
+export type SkeletonRowCol = Array<Number | SkeletonRowColObj | Array<SkeletonRowColObj>>;
+
+export interface SkeletonRowColObj {
+  width?: string;
+  height?: string;
+  marginRight?: string;
+  marginLeft?: string;
 }

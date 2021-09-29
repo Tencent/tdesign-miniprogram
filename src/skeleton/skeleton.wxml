@@ -2,12 +2,20 @@
   <view wx:if="{{ theme === 'avatar-text' }}" class="t-class-avatar {{classPrefix}}__avatar " />
   <view wx:if="{{theme === 'avatar-text' || 'text' }}" class="{{classPrefix}}__content">
     <view
-      wx:for="{{ row }}"
+      wx:for="{{ rowCol.length }}"
       wx:key="index"
       wx:for-index="index"
-      class="t-class-text {{classPrefix}}__row"
-      style="width: {{rowWidthArray.length > 0 && rowWidthArray[index] ? rowWidthArray[index] : rowWidth}}; {{rowHeight && rowHeight[index] ? 'height:' + rowHeight[index] : ''}}"
-    />
+      class="{{classPrefix}}__row"
+      style="justify-content:{{isNumList[index]?'space-between':''}} "
+    >
+      <view
+        wx:for="{{rowStyles[index]}}"
+        wx:key="col"
+        wx:for-item="item"
+        class="{{classPrefix}}__item"
+        style="width: {{item.width }}; height: {{item.height?item.height:'32rpx'}}; margin-right:{{item.marginRight?item.marginRight:''}}; margin-left:{{item.marginLeft?item.marginLeft:''}}"
+      ></view>
+    </view>
   </view>
 </view>
 <view wx:else class="{{classPrefix}}__content ">

@@ -62,7 +62,7 @@ const isDef = function (value: any): boolean {
   return value !== undefined && value !== null;
 };
 
-const isNumber = function (value) {
+export const isNumber = function (value) {
   return /^\d+(\.\d+)?$/.test(value);
 };
 
