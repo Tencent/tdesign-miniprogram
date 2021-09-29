@@ -71,6 +71,7 @@
       &-content {
         margin-left: @spacer;
         flex: 1;
+        padding-bottom: 50rpx;
       }
 
       &-title {
@@ -82,11 +83,6 @@
 
       &-description {
         text-align: left;
-        min-height: 40rpx;
-      }
-
-      &-extra {
-        margin-bottom: 50rpx;
       }
     }
 
@@ -120,6 +116,8 @@
           }
         }
       }
+
+      .connector-default(vertical);
     }
 
     &.@{prefix}-step--dot-anchor {
@@ -153,8 +151,6 @@
         }
       }
     }
-
-    .connector-default(vertical);
   }
 }
 

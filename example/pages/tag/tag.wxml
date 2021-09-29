@@ -36,7 +36,6 @@
   <t-demo title="02 状态" desc="标签状态">
     <view class="group">
       <t-check-tag
-        size="large"
         wx:for="{{fruits}}"
         wx:for-item="fruit"
         wx:for-index="index"

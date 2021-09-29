@@ -1,6 +1,5 @@
 <view class="t-class {{classPrefix}}">
-  <!-- <view class="{{classPrefix}}__label" style="width: {{labelWidth}}px">{{label}}</view> -->
-  <view class="{{classPrefix}}__label t-class-label">{{label}}</view>
+  <view wx:if="{{label}}" class="{{classPrefix}}__label t-class-label">{{label}}</view>
   <view
     class="{{classPrefix}}__body t-class-body {{isActive ? classPrefix + '__body--active' : ''}} {{disabled ? classPrefix + '__body--disabled' : ''}}"
     style="{{bodyStyle}}"

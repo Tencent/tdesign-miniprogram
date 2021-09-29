@@ -84,7 +84,10 @@ function endDrag(event, ownerInstance) {
   } else {
     pageDir = getPageDir(state.moveY, state.height);
   }
-  if (pageDir) ownerInstance.callMethod(pageDir, { source: 'touch' });
+  if (pageDir) {
+    ownerInstance.callMethod(pageDir, { source: 'touch' });
+    return;
+  }
   // 重置
   moveContainer(state, true);
 }

@@ -2,10 +2,11 @@
 
 <view
   class="{{ this.getTagClass({classBasePrefix, classPrefix, theme, size, variant, shape, disabled, closable}) }}"
-  style="{{ this.getTagStyle(maxWidth) }}"
 >
   <t-icon wx-if="{{icon}}" name="{{icon}}" />
-  <slot />
+  <view class="{{classPrefix}}__text" style="{{ this.getTagStyle(maxWidth) }}">
+    <slot />
+  </view>
   <t-icon
     wx:if="{{ closable && !disabled }}"
     class="{{classPrefix}}__icon-close"
