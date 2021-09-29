@@ -62,6 +62,11 @@ export default class Avatar extends SuperComponent {
   };
 
   onLoadError(e: any) {
+    if (this.properties.hideOnLoadFailed) {
+      this.setData({
+        isShow: false,
+      });
+    }
     this.triggerEvent('error', e.detail);
   }
 }
