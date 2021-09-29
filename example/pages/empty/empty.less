@@ -8,8 +8,32 @@ page {
   margin-left: 32rpx;
 }
 
-.demo-section__wrapper {
-  margin: 32rpx 0;
-  // display: grid;
-  // align-items: center;
+.demo-block__slot {
+  margin-top: 0;
+}
+
+.t-empty {
+  &__image {
+    width: 240rpx !important;
+    height: 240rpx !important;
+  }
+
+  &__button {
+    width: 320rpx !important;
+    height: 72rpx !important;
+    line-height: 72rpx !important;
+  }
+}
+
+.demo {
+  &-section {
+    &__desc {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &__wrapper {
+      margin: 32rpx 0;
+    }
+  }
 }

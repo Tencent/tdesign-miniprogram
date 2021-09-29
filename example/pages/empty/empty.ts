@@ -6,12 +6,10 @@
  */
 Page({
   data: {
-    emptyBag: 'https://cdn-we-retail.ym.tencent.com/retail-ui/components/error/emptybag.png',
-    emptyCart: 'https://cdn-we-retail.ym.tencent.com/retail-ui/components/error/emptycart.png',
+    image:
+      'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/empty__demo-image.png',
   },
-  toHome() {
-    wx.reLaunch({
-      url: '/pages/home/home',
-    });
+  goEmptyPage() {
+    wx.navigateTo({ url: './empty-page' });
   },
 });

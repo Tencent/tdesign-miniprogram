@@ -6,7 +6,6 @@
 .@{prefix}-empty {
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   &__content {
     text-align: center;
@@ -18,10 +17,14 @@
   }
 
   &__description {
-    margin: 48rpx 0 32rpx;
+    margin-top: 48rpx;
     text-align: center;
     color: @empty-text-color;
     font-size: 28rpx;
     line-height: 44rpx;
+  }
+
+  &__description + &__actions:not(:empty) {
+    margin-top: 48rpx;
   }
 }
