@@ -22,9 +22,6 @@ Page({
   onLoad() {},
   valueChange1(e: any) {
     console.log('带数值滑动选择器', e.detail.value);
-    this.setData({
-      value3: e.detail.value,
-    });
   },
   valueChange2(e: any) {
     console.log('起始非零滑动选择器', e.detail.value);

@@ -54,28 +54,8 @@ export default class Slider extends SuperComponent {
   };
 
   observers = {
-    value(this: Slider, newValue: number | number[]) {
-      const _value = trimValue(newValue, this.properties);
-      if (_value === this.data._value) {
-        return;
-      }
-
-      const setValueAndTrigger = () => {
-        this.setData(
-          {
-            _value,
-          },
-          this.triggerValue,
-        );
-      };
-
-      // 基本样式未初始化，等待初始化后在改变数据。
-      if (this.data.maxRange === 0) {
-        this.getInitialStyle().then(setValueAndTrigger);
-        return;
-      }
-
-      setValueAndTrigger();
+    'value, min, max'(this: Slider, newValue: number | number[]) {
+      this.handlePropsChange(newValue);
     },
     _value(this: Slider, newValue: number | number[]) {
       const { min, max, range } = this.properties;
@@ -97,7 +77,8 @@ export default class Slider extends SuperComponent {
   };
 
   attached() {
-    const { marks } = this.properties;
+    const { marks, value } = this.properties;
+    if (!value) this.handlePropsChange(0);
     this.handleMask(marks);
     this.getInitialStyle();
   }
@@ -114,6 +95,31 @@ export default class Slider extends SuperComponent {
     this.triggerEvent('change', {
       value,
     });
+  }
+
+  /**
+   * 监控props传参，计算组件value值
+   * @param newValue
+   */
+  handlePropsChange(newValue: number | number[]) {
+    const _value = trimValue(newValue, this.properties);
+
+    const setValueAndTrigger = () => {
+      this.setData(
+        {
+          _value,
+        },
+        this.triggerValue,
+      );
+    };
+
+    // 基本样式未初始化，等待初始化后在改变数据。
+    if (this.data.maxRange === 0) {
+      this.getInitialStyle().then(setValueAndTrigger);
+      return;
+    }
+
+    setValueAndTrigger();
   }
 
   handleMask(marks: any) {
