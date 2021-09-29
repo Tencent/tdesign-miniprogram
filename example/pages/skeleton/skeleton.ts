@@ -1,11 +1,5 @@
 Page({
   data: {
-    rowWidth: ['686rpx', '686rpx', '686rpx', '380rpx'],
-    rowHeight: ['32rpx', '32rpx', '32rpx', '32rpx'],
-    rowWidth2: ['566rpx', '100%', '100%', '314rpx'],
-    rowHeight2: ['32rpx', '32rpx', '32rpx', '32rpx'],
-    rowWidth3: ['332rpx', '332rpx', '214rpx', '186rpx'],
-    rowHeight3: ['342rpx', '32rpx', '32rpx', '32rpx'],
     rowCol: [
       { width: '686rpx', height: '32rpx' },
       2,
@@ -15,6 +9,22 @@ Page({
         { width: '38rpx', height: '32rpx' },
       ],
       { width: '380rpx' },
+    ],
+    rowCol1: [{ width: '686rpx', height: '32rpx' }, 1, 1, { width: '380rpx', height: '32rpx' }],
+    rowCol2: [
+      { width: '566rpx', height: '32rpx' },
+      { width: '100%', height: '32rpx' },
+      { width: '100%', height: '32rpx' },
+      { width: '314rpx', height: '32rpx' },
+    ],
+    rowCol3: [
+      { width: '332rpx', height: '342rpx' },
+      { width: '332rpx', height: '32rpx' },
+      { width: '214rpx', height: '32rpx' },
+      [
+        { width: '186rpx', height: '32rpx' },
+        { width: '64rpx', height: '32rpx', marginLeft: '82rpx' },
+      ],
     ],
   },
 });
