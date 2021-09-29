@@ -1,0 +1,20 @@
+<view
+  class="{{classPrefix}} {{hover? 't-grid-item-hover':''}} t-class"
+  style="{{ gridItemStyle }}"
+  bindtap="onClick"
+>
+  <view class="{{classPrefix}}-image-wapper">
+    <t-image wx:if="{{image && image!== 'slot'}}" src="{{image}}" class="t-class-image" />
+    <slot wx:else name="image" class="t-class-image"></slot>
+  </view>
+  <view class="{{classPrefix}}-text-wapper">
+    <view wx:if="{{text && text !== 'slot'}}" class="t-class-text"> {{text}} </view>
+    <slot wx:else name="text" class="t-class-text"></slot>
+  </view>
+  <view class="{{classPrefix}}-description-wapper">
+    <view wx:if="{{description && description!== 'slot'}}" class="t-class-description">
+      {{description}}
+    </view>
+    <slot wx:else name="description" class="t-class-description"></slot>
+  </view>
+</view>

@@ -28,6 +28,13 @@
 
 .@{prefix}-grid {
   position: relative;
-  box-sizing: border-box;
   overflow: hidden;
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+
+  &-content {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+  }
 }
