@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-28 19:21:03
+ * updated at 2021-09-29 15:03:15
  * */
 
 export interface TdSkeletonProps {
@@ -31,40 +31,12 @@ export interface TdSkeletonProps {
     required?: boolean;
   };
   /**
-   * 文本行数，用于控制骨架图高度
-   * @default 4
-   * @deprecated
-   */
-  row?: {
-    type: NumberConstructor;
-    value?: number;
-    required?: boolean;
-  };
-  /**
    * 用于设置行列数量、宽度高度、间距等。【示例一】，`[1, 1, 2]` 表示输出三行骨架图，第一行一列，第二行一列，第三行两列。【示例二】，`[1, 1, { width: '100px' }]` 表示自定义第三行的宽度为 `100px`。【示例三】，`[1, 2, [{ width, height }, { width, height, marginLeft }]]` 表示第三行有两列，且自定义宽度、高度和间距
    * @default [1, 1, 1, { width: '70%' }]
    */
   rowCol?: {
     type: ArrayConstructor;
     value?: SkeletonRowCol;
-    required?: boolean;
-  };
-  /**
-   * 控制多个文本行的高度
-   * @deprecated
-   */
-  rowHeight?: {
-    type: ArrayConstructor;
-    value?: Array<number>;
-    required?: boolean;
-  };
-  /**
-   * 控制多个文本行的宽度
-   * @deprecated
-   */
-  rowWidth?: {
-    type: ArrayConstructor;
-    value?: Array<number>;
     required?: boolean;
   };
   /**
