@@ -212,7 +212,7 @@
 </t-demo>
 <t-demo title="03 规格" desc="头像大小尺寸及消息提醒">
   <view class="desc">
-    <view class="row" style="margin: 20px 0">
+    <view class="row" style="margin: 40rpx 0">
       <text class="row-text-64 row-text-common">64px</text>
       <view class="gutter-column-32"></view>
       <text class="row-text-48 row-text-common">large</text>
