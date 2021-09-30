@@ -5,7 +5,7 @@
     <view class="t-grid-list">
       <view class="demo-section__desc">一行三个（border）</view>
       <view class="demo-section__wrapper">
-        <t-grid border="{{true}}" class="t-grid three-border">
+        <t-grid border="{{true}}" class="three-border" column="{{3}}">
           <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
@@ -32,7 +32,7 @@
 
       <view class="demo-section__desc">一行四个</view>
       <view class="demo-section__wrapper">
-        <t-grid class="t-grid four">
+        <t-grid class="four">
           <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
@@ -66,7 +66,7 @@
 
       <view class="demo-section__desc">一行五个</view>
       <view class="demo-section__wrapper">
-        <t-grid class="t-grid five">
+        <t-grid class="five" column="{{5}}">
           <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
@@ -105,7 +105,7 @@
         </t-grid>
         <view class="gutter-row"></view>
         <view class="five-with-padding">
-          <t-grid class="t-grid" t-class="grid">
+          <t-grid t-class="grid" column="{{5}}">
             <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
               <image
                 class="image-icon"
@@ -147,7 +147,7 @@
 
       <view class="demo-section__desc">一行三个</view>
       <view class="demo-section__wrapper">
-        <t-grid class="t-grid three">
+        <t-grid class="three" column="{{3}}">
           <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"
@@ -174,13 +174,14 @@
 
       <view class="demo-section__desc">一行二个带说明宫格</view>
       <view class="demo-section__wrapper">
-        <t-grid class="t-grid two-des">
+        <t-grid class="two-des" column="{{2}}" align="left">
           <t-grid-item
             text="标题文字"
             class="t-grid-item"
             t-class-text="text"
             t-class-description="description"
             description="说明文字"
+            layout="horizontal"
           >
             <image
               class="image-icon"
@@ -194,6 +195,7 @@
             t-class-text="text"
             t-class-description="description"
             description="说明文字最多八字"
+            layout="horizontal"
           >
             <image
               class="image-icon"
@@ -206,7 +208,7 @@
 
       <view class="demo-section__desc">一行三个带说明宫格</view>
       <view class="demo-section__wrapper">
-        <t-grid class="t-grid three-des">
+        <t-grid class="three-des" column="{{3}}">
           <t-grid-item
             text="标题文字"
             class="t-grid-item"
@@ -294,7 +296,7 @@
           </t-grid-item>
         </t-grid>
       </view>
-      <view class="demo-section__desc">自定义宫格布局（border重合）</view>
+      <!-- <view class="demo-section__desc">自定义宫格布局（border重合）</view>
       <view class="demo-section__wrapper">
         <t-grid class="t-grid four-custom-border" justifyContent="center" border="{{true}}">
           <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
@@ -364,7 +366,7 @@
             />
           </t-grid-item>
         </t-grid>
-      </view>
+      </view> -->
     </view>
   </t-demo>
 </view>

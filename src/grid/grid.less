@@ -3,38 +3,12 @@
 @grid-border-width: 2rpx;
 @grid-border-color: #eee;
 
-.hairline-common() {
-  position: absolute;
-  box-sizing: border-box;
-  transform-origin: center; /* cover wechat button:after default transforn-origin */
-  content: ' ';
-  pointer-events: none;
-}
-
-.hairline(@color) {
-  .hairline-common();
-  top: -50%;
-  right: -50%;
-  bottom: -50%;
-  left: -50%;
-  border: 0 solid @color;
-  transform: scale(.5);
-}
-
-.t-hairline--top:after {
-  .hairline(@color:  @grid-border-color);
-  border-top-width: @grid-border-width;
-}
-
 .@{prefix}-grid {
   position: relative;
   overflow: hidden;
-  display: flex;
   background: rgba(255, 255, 255, 1);
 
   &-content {
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
+    width: auto;
   }
 }
