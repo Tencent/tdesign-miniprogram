@@ -19,6 +19,16 @@ export default defineConfig({
     open: '/',
     https: false,
   },
+  build: {
+    rollupOptions: {
+      external: [
+        /.*\.md$/,
+      ],
+      input: {
+        site: './index.html',
+      },
+    },
+  },
   plugins: [
     vue({
       template: {

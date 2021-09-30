@@ -37,7 +37,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
-    redirect: '/miniprogram/components/button',
+    redirect: '/miniprogram/components/icon',
   },
   {
     path: '/:catchAll(.*)',

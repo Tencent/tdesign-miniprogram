@@ -5,10 +5,10 @@ export default {
       type: 'document', // 普通文档
       children: [
         {
-          title: '安装',
-          name: 'install',
+          title: '说明',
+          name: 'explain',
           meta: { docType: 'explain' },
-          path: '/miniprogram/install',
+          path: '/miniprogram/explain',
           component: () => import('@/../README.md'),
         },
         {

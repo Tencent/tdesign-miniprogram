@@ -44,8 +44,8 @@ const customRenderInfo = (source: string, id: string) => {
   }
 
   // 移动端路由地址
-  const prefix = process.env.NODE_ENV === 'development' ? '/preview.html' : '/miniporgram/preview.html';
-  mdSegment.mobileUrl = `${prefix}#/${name}`;
+  // const prefix = process.env.NODE_ENV === 'development' ? '/preview.html' : '/miniporgram/preview.html';
+  // mdSegment.mobileUrl = `${prefix}#/${name}`;
 
   return mdSegment;
 };
