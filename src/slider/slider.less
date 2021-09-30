@@ -11,6 +11,12 @@
     padding-bottom: 40rpx;
   }
 
+  .t-slider-value,
+  .t-slider-range-extrem,
+  .t-slider-dot-value {
+    color: rgba(0, 0, 0, .4);
+  }
+
   &.disabled {
     .t-slider-value,
     .t-slider-range-extrem,
@@ -61,9 +67,7 @@
   }
 
   .t-slider-value {
-    // flex: 1;
     display: inline-block;
-    color: rgba(0, 0, 0, .4);
   }
 
   .t-slider-value__min {
@@ -90,7 +94,6 @@
 
   .t-slider-range-extrem {
     display: inline-block;
-    color: rgba(0, 0, 0, .4);
   }
 
   .t-slider-range-min {
@@ -134,7 +137,6 @@
       &-value {
         position: relative;
         top: -26px;
-        color: rgba(0, 0, 0, .4);
         text-align: center;
       }
     }
