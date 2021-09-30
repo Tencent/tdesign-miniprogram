@@ -19,7 +19,7 @@ export default class StepItem extends SuperComponent {
   externalClasses = [
     't-class',
     't-class-content',
-    ' t-class-title',
+    't-class-title',
     't-class-description',
     't-class-extra',
   ];
