@@ -50,7 +50,6 @@ export default class Grid extends SuperComponent {
     const contentStyles = [];
     const marginStyle = this.getContentMargin();
     marginStyle && contentStyles.push(marginStyle);
-
     this.setData({
       contentStyle: contentStyles.join(';'),
     });

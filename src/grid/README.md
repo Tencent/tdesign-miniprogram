@@ -23,7 +23,7 @@
 ```html
 <view>一行三个（border）</view>
 <view>
-  <t-grid border="{{true}}">
+  <t-grid border="{{true}}" column="{{3}}">
     <t-grid-item text="标题文字">
       <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
@@ -38,7 +38,7 @@
 
 <view>一行二个带说明宫格</view>
 <view>
-  <t-grid>
+  <t-grid column="{{2}}">
     <t-grid-item text="标题文字" description="说明文字">
       <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
@@ -50,7 +50,7 @@
 
 <view>带徽标宫格</view>
 <view>
-  <t-grid class="t-grid badge">
+  <t-grid column="{{1}}">
     <t-grid-item text="标题文字">
       <t-badge count="{{16}}" slot="image">
         <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
@@ -60,7 +60,7 @@
 </view>
 <view>自定义宫格布局（border重合）</view>
 <view>
-  <t-grid justifyContent="center" border="{{true}}">
+  <t-grid border="{{true}}" column="{{2}}">
     <t-grid-item text="标题文字">
       <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
@@ -71,7 +71,7 @@
 </view>
 <view>自定义宫格布局（border分离）</view>
 <view>
-  <t-grid justifyContent="center" border="{{true}}" gutter="{{20}}">
+  <t-grid border="{{true}}" gutter="{{20}}" column="{{2}}">
     <t-grid-item text="标题文字" t-class-text="text">
       <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
