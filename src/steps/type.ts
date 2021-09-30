@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-30 11:12:44
+ * updated at 2021-09-30 11:31:06
  * */
 
 export interface TdStepsProps {
@@ -67,13 +67,7 @@ export interface TdStepItemProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-content',
-      ' t-class-title',
-      't-class-description',
-      't-class-extra',
-    ];
+    value?: ['t-class', 't-class-content', 't-class-title', 't-class-description', 't-class-extra'];
     required?: boolean;
   };
   /**
