@@ -26,9 +26,77 @@
 
 ```html
 <!-- page.wxml -->
-<t-button theme="primary" open-type="getUserInfo" bindgetuserinfo="someFunction">
-  按钮文案
-</t-button>
+<view class="demo">
+  <view class="demo-title">Button 按钮</view>
+  <div class="demo-desc">可点击的按钮，常用于表单</div>
+  <t-demo title="01 类型">
+    <view class="demo-section__desc">基础按钮</view>
+    <t-button theme="primary" size="large">强按钮</t-button>
+    <t-button theme="primary" size="large" variant="plain">弱按钮</t-button>
+    <t-button size="large" variant="plain">次按钮</t-button>
+    <t-button theme="primary" size="large" icon="app" variant="plain">带图标按钮</t-button>
+    <t-button theme="danger" size="large">强告警按钮</t-button>
+    <t-button theme="danger" size="large" variant="plain">弱告警按钮</t-button>
+    <view class="box">
+      <t-button ghost size="large">幽灵按钮</t-button>
+    </view>
+    <t-button variant="text" size="large">文字按钮</t-button>
+    <t-button theme="primary" size="large" shape="square" block>通栏按钮</t-button>
+    <t-button-group>
+      <t-button size="large" block shape="square">次按钮</t-button>
+      <t-button theme="primary" size="large" block shape="square">主按钮</t-button>
+    </t-button-group>
+  </t-demo>
+  <t-demo title="02 状态">
+    <view class="demo-section__desc">按钮禁用态</view>
+    <t-button theme="primary" size="large" disabled>强按钮</t-button>
+    <t-button theme="primary" size="large" variant="plain" disabled>弱按钮</t-button>
+    <t-button size="large" variant="plain" disabled>次按钮</t-button>
+    <t-button theme="primary" size="large" icon="app" disabled>带图标按钮</t-button>
+    <t-button theme="danger" size="large" disabled>强告警按钮</t-button>
+    <t-button theme="danger" size="large" variant="plain" disabled>弱告警按钮</t-button>
+    <view class="box">
+      <t-button ghost size="large" disabled>幽灵按钮</t-button>
+    </view>
+    <t-button variant="text" size="large" disabled>文字按钮</t-button>
+    <t-button theme="primary" size="large" shape="square" block disabled>通栏按钮</t-button>
+    <t-button-group>
+      <t-button size="large" shape="square" block disabled>次按钮</t-button>
+      <t-button theme="primary" size="large" block shape="square" disabled>主按钮</t-button>
+    </t-button-group>
+  </t-demo>
+
+  <t-demo title="03 规格">
+    <view class="demo-section__desc">按钮尺寸</view>
+    <t-button theme="primary" size="large">按钮 44</t-button>
+    <t-button theme="primary" style="margin-left: 16px">按钮 40</t-button>
+    <view></view>
+    <t-button theme="primary" size="small" style="margin-left: 16px">按钮 36</t-button>
+  </t-demo>
+</view>
+```
+
+```js
+// page.js
+Page({});
+```
+
+```less
+.demo {
+  .t-button {
+    margin-top: 16px;
+  }
+
+  .box {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px 0;
+    margin-top: 16px;
+
+    .t-button {
+      margin-top: 0;
+    }
+  }
+}
 ```
 
 ## API
