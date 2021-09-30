@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "t-avatar": "@tencent/tdesign-miniprogram/avatar/avatar",
+    "t-avatar-group": "@tencent/tdesign-miniprogram/avatar/avatar-group",
     "t-demo": "../../components/demo-block/index"
   }
 }

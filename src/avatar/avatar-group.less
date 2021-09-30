@@ -1,0 +1,60 @@
+@import '../common/style/index.less';
+
+.@{prefix}-avatar-group {
+  // display: flex;
+  display: block;
+
+  &--content {
+    display: flex;
+  }
+
+  &--large {
+    .t-avatar--large {
+      width: 96rpx;
+      height: 96rpx;
+      font-weight: 600;
+      font-size: 36rpx;
+    }
+  }
+
+  &--medium {
+    .t-avatar--large {
+      width: 80rpx;
+      height: 80rpx;
+      font-weight: 600;
+      font-size: 32rpx;
+    }
+  }
+
+  &--small {
+    .t-avatar--large {
+      width: 64rpx;
+      height: 64rpx;
+      font-weight: 600;
+      font-size: 24rpx;
+    }
+  }
+
+  .slot-collapse-avatar:empty + .default-collapse-avatar {
+    display: block;
+  }
+
+  .slot-collapse-avatar:not(:empty) + .default-collapse-avatar {
+    display: none;
+  }
+
+  .hide-collapse-avatar {
+    display: none;
+  }
+
+  .border-example-1 {
+    border-width: 4rpx;
+    border-color: white;
+  }
+
+  .alt-example {
+    background-color: #e5e5e5;
+    color: #bbb;
+    font-size: 30rpx;
+  }
+}

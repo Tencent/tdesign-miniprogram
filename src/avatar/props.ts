@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-26 15:50:48
+ * updated at 2021-09-28 15:26:24
  * */
 
 import { TdAvatarProps } from './type';
@@ -12,14 +12,22 @@ const props: TdAvatarProps = {
     type: String,
     value: '',
   },
-  /** 头像右上角提示信息 */
+  /** 头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字 */
   badgeProps: {
     type: Object,
+  },
+  /** 组件类名，用于设置组件外层元素元素类名 */
+  externalClasses: {
+    type: Array,
+  },
+  /** 加载失败时隐藏图片 */
+  hideOnLoadFailed: {
+    type: Boolean,
+    value: false,
   },
   /** 图标 */
   icon: {
     type: String,
-    value: '',
   },
   /** 图片地址 */
   image: {
@@ -31,10 +39,10 @@ const props: TdAvatarProps = {
     type: String,
     value: 'circle',
   },
-  /** 尺寸 */
+  /** 尺寸，示例值：small/medium/large/24px/38px 等 */
   size: {
     type: String,
-    value: 'l',
+    value: '',
   },
 };
 
