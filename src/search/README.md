@@ -20,6 +20,138 @@
 }
 ```
 
+## 用法
+
+### 组件方式
+
+```html
+<view class="demo">
+  <view class="demo-title">Search 搜索</view>
+  <view class="demo-desc">
+    很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字
+  </view>
+  <t-demo title="01 类型">
+    <view class="demo-section__desc">基础搜索框</view>
+    <view class="demo-section__wrapper">
+      <t-search placeholder="搜索预设文案" center="{{true}}" />
+    </view>
+  </t-demo>
+
+  <t-demo title="01 状态">
+    <block wx:for="{{searchBoxGroup}}" wx:key="id">
+      <view class="demo-section__desc">{{item.title}}</view>
+      <view class="demo-section__wrapper">
+        <t-search
+          t-class-cancel="t-class-cancel"
+          keyword="{{item.keyword}}"
+          placeholder="{{item.placeholder}}"
+          action-text="{{item.actionText}}"
+          data-idx="{{index}}"
+          bind:blur="blurHandle"
+          bind:focus="focusHandle"
+          bind:cancel="cancelHandle"
+        />
+      </view>
+    </block>
+  </t-demo>
+</view>
+```
+
+```js
+const placeholder = '搜索预设文案';
+const actionText = '取消';
+Page({
+  data: {
+    searchBoxGroup: [
+      {
+        id: `${Math.random()}`,
+        keyword: '',
+        placeholder,
+        actionText: '',
+      },
+      {
+        id: `${Math.random()}`,
+        keyword: '',
+        placeholder,
+        actionText: '取消',
+      },
+      {
+        id: `${Math.random()}`,
+        keyword: '关键词',
+        placeholder,
+        actionText: '取消',
+      },
+    ],
+  },
+
+  changeHandle({
+    detail,
+    currentTarget: {
+      dataset: { idx },
+    },
+  }) {
+    this.setData({
+      [`searchBoxGroup[${idx}].keyword`]: detail,
+    });
+  },
+
+  focusHandle({
+    currentTarget: {
+      dataset: { idx },
+    },
+  }) {
+    this.data.searchBoxGroup.forEach((_, index) => {
+      this.setData({
+        [`searchBoxGroup[${index}].actionText`]: '',
+      });
+    });
+
+    this.setData({
+      [`searchBoxGroup[${idx}].actionText`]: actionText,
+      [`searchBoxGroup[${idx}].focus`]: true,
+    });
+  },
+
+  cancelHandle({
+    currentTarget: {
+      dataset: { idx },
+    },
+  }) {
+    this.setData({
+      [`searchBoxGroup[${idx}].actionText`]: '',
+    });
+  },
+
+  clearHandle({
+    currentTarget: {
+      dataset: { idx },
+    },
+  }) {
+    this.setData({
+      [`searchBoxGroup[${idx}].keyword`]: '',
+    });
+  },
+});
+```
+
+```less
+page {
+  .demo-section__wrapper {
+    margin: 32rpx 0;
+    padding: 16rpx 32rpx;
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .t-class-cancel {
+    color: rgba(0, 82, 217, 1);
+    font-weight: 400;
+  }
+}
+```
+
+## API
+
 ### Props
 
 | 参数            | 说明                                                                                                          | 类型         | 默认值                                                                        | 版本                  |
