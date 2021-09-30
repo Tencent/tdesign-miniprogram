@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-02 16:42:00
+ * updated at 2021-09-30 11:12:44
  * */
 
 import { TdStepItemProps } from './type';
@@ -12,10 +12,13 @@ const props: TdStepItemProps = {
     type: String,
     value: '',
   },
-  /** 图标，默认显示内置图标，也可以自定义图标 */
+  /** 组件类名，用于设置组件外层元素元素类名 */
+  externalClasses: {
+    type: Array,
+  },
+  /** 图标 */
   icon: {
     type: String,
-    value: '',
   },
   /** 当前步骤的状态 */
   status: {

@@ -16,6 +16,14 @@ export default class StepItem extends SuperComponent {
     },
   };
 
+  externalClasses = [
+    't-class',
+    't-class-content',
+    ' t-class-title',
+    't-class-description',
+    't-class-extra',
+  ];
+
   properties = props;
 
   // 组件的内部数据

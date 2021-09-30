@@ -1,5 +1,5 @@
 <view
-  class="{{prefix}}-step {{prefix}}-step--{{direction}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}}"
+  class="{{prefix}}-step {{prefix}}-step--{{direction}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} t-class"
 >
   <view class="{{classPrefix}} {{classPrefix}}--{{curStatus}}">
     <view class="{{classPrefix}}__inner {{icon ? classPrefix + '__inner--icon' : '' }}">
@@ -10,16 +10,16 @@
         </view>
         <view wx:else class="{{classPrefix}}-icon__number">{{index + 1}}</view>
       </view>
-      <view class="{{classPrefix}}-content">
-        <view class="{{classPrefix}}-title">
+      <view class="{{classPrefix}}-content t-class-content">
+        <view class="{{classPrefix}}-title t-class-title">
           {{ title }}
           <slot name="title"></slot>
         </view>
-        <view class="{{classPrefix}}-description">
+        <view class="{{classPrefix}}-description t-class-description">
           {{ content }}
           <slot name="content" />
         </view>
-        <view class="{{classPrefix}}-extra">
+        <view class="{{classPrefix}}-extra t-class-extra">
           <slot name="extra" />
         </view>
       </view>
