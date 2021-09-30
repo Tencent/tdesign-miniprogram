@@ -63,12 +63,18 @@ export default class Message extends SuperComponent {
   });
 
   // 入场动画
-  showAnimation = wx.createAnimation({ duration: SHOW_DURATION }).translateY(0).step().export();
+  showAnimation = wx
+    .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
+    .translateY(0)
+    .opacity(1)
+    .step()
+    .export();
 
   // 出场动画
   hideAnimation = wx
-    .createAnimation({ duration: SHOW_DURATION })
+    .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
     .translateY(this.data.wrapTop)
+    .opacity(0)
     .step()
     .export();
 

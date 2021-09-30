@@ -106,9 +106,9 @@ Page({
       case 'info': {
         Message.info({
           offset: [20, 32],
-          marquee: { speed: 50, loop: 2, delay: 5000 },
-          duration: -1,
-          content: '这是一条普通的通知信息，带滚动2次',
+          duration: 5000,
+          icon: false,
+          content: '这是一条纯文字的消息通知 5s消失',
         });
         break;
       }
