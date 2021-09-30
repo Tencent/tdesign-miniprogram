@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-14 15:09:49
+ * updated at 2021-09-30 15:16:10
  * */
 
 import { TdButtonProps } from './type';
@@ -17,14 +17,19 @@ const props: TdButtonProps = {
     type: Boolean,
     value: false,
   },
+  /** 组件类名 */
+  externalClasses: {
+    type: Array,
+  },
   /** 是否为幽灵按钮（镂空按钮） */
   ghost: {
     type: Boolean,
     value: false,
   },
-  /** 按钮内部图标，可完全自定义 */
+  /** 图标名称 */
   icon: {
     type: String,
+    value: '',
   },
   /** 是否显示为加载状态 */
   loading: {
