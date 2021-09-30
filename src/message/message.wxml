@@ -11,7 +11,7 @@
       wx:if="{{iconName}}"
       name="{{iconName}}"
       class="{{ classPrefix }}--left-icon t-class-icon"
-      size="22px"
+      size="44rpx"
     />
     <slot name="icon" />
 

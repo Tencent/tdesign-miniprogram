@@ -3,6 +3,7 @@
 @message-horizen-padding: 32rpx;
 @message-vertical-padding: 24rpx;
 @message-font-size: 28rpx;
+@message-line-height: 44rpx;
 @message-font-color: #0052d9;
 @message-align: flex-start;
 @message-icon-size: @icon-l;
@@ -24,8 +25,10 @@
   box-sizing: border-box;
   border-radius: @message-border-radius;
   font-size: @message-font-size;
+  line-height: @message-line-height;
   background: rgba(255, 255, 255, 1);
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .2);
+  opacity: 0;
 
   &--text {
     display: inline-block;
@@ -70,6 +73,7 @@
 
   .t-message--right-btn {
     font-size: inherit;
+    line-height: inherit;
     height: 44rpx;
     line-height: 44rpx;
     border-radius: @message-border-radius;
