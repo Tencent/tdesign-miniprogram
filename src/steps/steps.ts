@@ -16,6 +16,8 @@ export default class Steps extends SuperComponent {
     },
   };
 
+  externalClasses = ['t-class'];
+
   properties = props;
 
   // 组件的内部数据

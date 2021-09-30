@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-02 16:42:00
+ * updated at 2021-09-30 11:31:06
  * */
 
 export interface TdStepsProps {
@@ -22,6 +22,14 @@ export interface TdStepsProps {
   direction?: {
     type: StringConstructor;
     value?: 'horizontal' | 'vertical';
+    required?: boolean;
+  };
+  /**
+   * 组件类名，用于设置组件外层元素元素类名
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class'];
     required?: boolean;
   };
   /**
@@ -55,8 +63,15 @@ export interface TdStepItemProps {
     required?: boolean;
   };
   /**
-   * 图标，默认显示内置图标，也可以自定义图标
-   * @default ''
+   * 组件类名，用于设置组件外层元素元素类名
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-content', 't-class-title', 't-class-description', 't-class-extra'];
+    required?: boolean;
+  };
+  /**
+   * 图标
    */
   icon?: {
     type: StringConstructor;
