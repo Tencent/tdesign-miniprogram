@@ -1,6 +1,6 @@
 <view class="demo">
   <view class="demo-title">Empty 空状态</view>
-  <view class="demo-desc">空状态时的占位提示。</view>
+  <view class="demo-desc">用于空状态时的占位提示。</view>
   <t-demo title="01 类型" desc="图标空状态">
     <view class="demo-section__wrapper">
       <t-empty t-class="empty-cls" icon="info-circle-filled" description="描述文字" />

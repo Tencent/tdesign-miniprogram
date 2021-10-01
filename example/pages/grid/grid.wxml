@@ -1,6 +1,8 @@
 <view class="demo">
   <view class="demo-title">Grid 宫格</view>
-  <view class="demo-desc">横向分割的点击单元，用作一组次级功能的入口。</view>
+  <view class="demo-desc"
+    >用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。</view
+  >
   <t-demo title="01 类型">
     <view class="t-grid-list">
       <view class="demo-section__desc">一行三个（border）</view>

@@ -1,7 +1,7 @@
 <view class="demo">
   <view class="demo-title">Dialog 对话框</view>
   <view class="demo-desc"
-    >在不跳转页面的情况下，需要用户进行操作时使用，用对话框的方式承载相应的操作</view
+    >用于显示重要提示或请求用户进行重要操作，一种打断当前操作的模态视图。</view
   >
   <t-demo title="01 类型" operList="{{operList}}" bindclickoper="clickHandle" />
 </view>

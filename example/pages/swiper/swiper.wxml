@@ -1,7 +1,7 @@
 <view class="demo swiper-demo">
   <view class="demo-title">Swiper 轮播</view>
   <view class="demo-desc">
-    用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置
+    用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置。
   </view>
   <view class="demo-section">
     <t-demo title="01 类型" desc="轮播图的多种样式"></t-demo>

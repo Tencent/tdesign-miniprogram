@@ -1,6 +1,6 @@
 <view class="demo">
   <view class="demo-title">Steps 步骤条</view>
-  <view class="demo-desc">用于用户对某个任务的时间节点</view>
+  <view class="demo-desc">用于任务步骤展示或任务进度展示。</view>
 
   <t-demo title="01 类型" desc="横向可操作步骤条">
     <view class="group">

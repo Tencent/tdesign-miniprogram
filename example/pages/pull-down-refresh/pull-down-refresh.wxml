@@ -8,7 +8,7 @@
 >
   <view class="t-pulldown-reflesh_title">PullDownRefresh 下拉刷新</view>
   <view class="t-pulldown-reflesh_desc"
-    >下拉动页面帮助用户快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新</view
+    >用于快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新。</view
   >
 
   <view class="t-pulldown-reflesh_wrapper">
