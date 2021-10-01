@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-28 11:59:09
+ * updated at 2021-10-01 09:46:26
  * */
 
 import { TdGridItemProps } from './type';
@@ -23,6 +23,11 @@ const props: TdGridItemProps = {
   jumpType: {
     type: String,
     value: 'navigate-to',
+  },
+  /** 内容布局方式 */
+  layout: {
+    type: String,
+    value: 'vertical',
   },
   /** 文本，可以通过 Props 传入文本，也可以自定义标题节点 */
   text: {

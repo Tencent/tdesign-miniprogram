@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-28 11:59:09
+ * updated at 2021-10-01 09:46:26
  * */
 
 export interface TdGridProps {
@@ -32,6 +32,15 @@ export interface TdGridProps {
     required?: boolean;
   };
   /**
+   * 每一行的列数量
+   * @default 4
+   */
+  column?: {
+    type: NumberConstructor;
+    value?: number;
+    required?: boolean;
+  };
+  /**
    * 组件类名，用于设置组件外层元素类名
    */
   externalClasses?: {
@@ -40,12 +49,11 @@ export interface TdGridProps {
     required?: boolean;
   };
   /**
-   * 间隔大小，`justify-content` 值为 `flex-start/center/flex-end` 时有效
+   * 间隔大小
    */
   gutter?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
+    type: NumberConstructor;
+    value?: number;
     required?: boolean;
   };
   /**
@@ -55,15 +63,6 @@ export interface TdGridProps {
   hover?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
-  };
-  /**
-   * 间隔分布模式
-   * @default space-around
-   */
-  justifyContent?: {
-    type: StringConstructor;
-    value?: 'space-between' | 'space-around' | 'flex-start' | 'center' | 'flex-end';
     required?: boolean;
   };
 }
@@ -100,6 +99,15 @@ export interface TdGridItemProps {
   jumpType?: {
     type: StringConstructor;
     value?: 'redirect-to' | 'switch-tab' | 'relaunch' | 'navigate-to';
+    required?: boolean;
+  };
+  /**
+   * 内容布局方式
+   * @default vertical
+   */
+  layout?: {
+    type: StringConstructor;
+    value?: 'vertical' | 'horizontal';
     required?: boolean;
   };
   /**

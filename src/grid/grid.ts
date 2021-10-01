@@ -26,13 +26,11 @@ export default class Grid extends SuperComponent {
   data = {
     classPrefix: name,
     contentStyle: '',
-    gridStyle: '',
   };
 
   observers = {
     'justifyContent,border,gutter'() {
       this.updateChildren();
-      this.updateGridStyle();
     },
   };
 
@@ -48,97 +46,24 @@ export default class Grid extends SuperComponent {
     },
   };
 
-  updateGridStyle() {
-    const { justifyContent } = this.properties;
-    const gridStyles = [];
-    gridStyles.push(`justify-content:${justifyContent}`);
-    this.setData({
-      gridStyle: gridStyles.join(';'),
-    });
-  }
-
   updateContentStyle() {
-    const { justifyContent } = this.properties;
     const contentStyles = [];
-    const borderStyle = this.getContentBorder();
     const marginStyle = this.getContentMargin();
-    const justifyContentStyle = `justify-content:${justifyContent}`;
-    const widthStyle = this.getContentWidth();
-    justifyContentStyle && contentStyles.push(justifyContentStyle);
-    borderStyle && contentStyles.push(borderStyle);
-    widthStyle && contentStyles.push(widthStyle);
     marginStyle && contentStyles.push(marginStyle);
-
     this.setData({
       contentStyle: contentStyles.join(';'),
     });
   }
 
-  // 判断content的宽度
-  getContentWidth() {
-    const { justifyContent } = this.properties;
-    if (
-      // 如果justifyContent的值是around或者between
-      (justifyContent as any) === 'space-between' ||
-      (justifyContent as any) === 'space-around'
-    )
-      return 'width:100%';
-    return 'width:auto';
-  }
-
-  // 判断border在grid上的css属性,用border-right来填充最后一个grid-item的右侧border
-  getContentBorder() {
-    const { justifyContent, gutter } = this.properties;
+  // 判断需不需要在content上加负margin以实现gutter间距
+  getContentMargin() {
+    const { gutter } = this.properties;
     let { border } = this.properties;
     if (!border) return ''; // 如果border的值没传或者是border的值为false
     if (!isObject(border)) border = {} as any;
-    const { color = '#266FE8', width = 2, style = 'solid' } = border as any;
-    if (
-      // 如果justifyContent的值是around或者between
-      (justifyContent as any) === 'space-between' ||
-      (justifyContent as any) === 'space-around'
-    ) {
-      if (!this.isNext) return ''; // 如果没有接壤就不需要在gird上加border
-      return `border-right:${width}rpx ${style} ${color}`;
-    }
-    if (gutter) return '';
-    return `border-right:${width}rpx ${style} ${color}`;
-  }
-
-  // 判断需不需要在content上加负margin以实现gutter间距
-  getContentMargin() {
-    const { gutter, justifyContent } = this.properties;
-    if (
-      !gutter ||
-      (justifyContent as any) === 'space-between' ||
-      (justifyContent as any) === 'space-around'
-    )
-      return ''; // 如果没有gutter或者不是end,start,center布局就不需要这个负margin
-    return `margin-left:-${gutter}rpx`;
-  }
-
-  // 判断grid内部中的grid-item是否挨着
-  isChildrenNextToEachOther() {
-    return new Promise((resolve) => {
-      let childrenWidthSum = 0;
-      this.children.forEach((item) => {
-        const query = item.createSelectorQuery();
-        query.select(`.${prefix}-grid-item`).boundingClientRect();
-        query.exec((res) => {
-          childrenWidthSum += res[0].width;
-        });
-      });
-      const query = this.createSelectorQuery();
-      let gridWidth = 0;
-      query
-        .select(`.${prefix}-grid`)
-        .boundingClientRect()
-        .exec((res) => {
-          gridWidth += res[0].width;
-          this.isNext = gridWidth <= childrenWidthSum;
-          resolve(this.isNext);
-        });
-    });
+    const { width = 2 } = border as any;
+    if (gutter) return `margin-left:-${gutter}rpx; margin-top:-${gutter}rpx`;
+    return `margin-left:-${width}rpx; margin-top:-${width}rpx`;
   }
 
   updateChildren() {
@@ -146,11 +71,9 @@ export default class Grid extends SuperComponent {
     if (this.updateTimer) clearTimeout(this.updateTimer);
     this.updateTimer = setTimeout(() => {
       this.children = this.getRelationNodes('./grid-item');
-      this.isChildrenNextToEachOther().then(() => {
-        this.updateContentStyle();
-        this.children.forEach(function (item: WechatMiniprogram.Component.TrivialInstance) {
-          item.updateStyle();
-        });
+      this.updateContentStyle();
+      this.children.forEach(function (item: WechatMiniprogram.Component.TrivialInstance) {
+        item.updateStyle();
       });
     }, 100);
   }

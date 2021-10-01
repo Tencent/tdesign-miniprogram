@@ -67,7 +67,7 @@
 <t-demo desc="max为3时，自定义折叠元素内容，左侧头像在上">
   <view class="desc">
     <view class="row">
-      <t-avatar-group max="2" cascading="left-up" collapseAvatar="+5">
+      <t-avatar-group max="3" cascading="left-up" collapseAvatar="+5">
         <t-avatar
           wx:for="{{pics}}"
           wx:for-item="pic"
