@@ -18,37 +18,48 @@ Page({
         name: 'uploaded2.png',
         type: 'image',
       },
-    ],
-    requestMethod: null,
-  },
-  onLoad() {
-    this.setData({
-      requestMethod: (files) => {
-        // 模拟处理微信返回的files结果。
-        console.log(files);
-        new Promise((resolve) => {
-          console.log('uploading');
-          resolve([
-            {
-              url: 'https://tdesign.gtimg.com/site/upload2.png',
-              name: 'uploaded2.png',
-              type: 'image',
-              percent: -1,
-            },
-          ]);
-        })
-          .then((res: any) => {
-            this.setData({
-              originFiles1: [...this.data.originFiles1, ...res],
-            });
-            console.log('success');
-          })
-          .catch(() => {
-            console.log('error');
-          });
+      {
+        url: 'https://tdesign.gtimg.com/site/upload1.png',
+        name: 'uploaded1.png',
+        type: 'image',
+        percent: -1,
       },
-    });
+    ],
+    // requestMethod: null,
+    gridConfig: {
+      column: 4,
+      width: 160,
+      height: 160,
+    },
   },
+  // onLoad() {
+  //   this.setData({
+  //     requestMethod: (files) => {
+  //       // 模拟处理微信返回的files结果。
+  //       console.log(files);
+  //       new Promise((resolve) => {
+  //         console.log('uploading');
+  //         resolve([
+  //           {
+  //             url: 'https://tdesign.gtimg.com/site/upload2.png',
+  //             name: 'uploaded2.png',
+  //             type: 'image',
+  //             percent: -1,
+  //           },
+  //         ]);
+  //       })
+  //         .then((res: any) => {
+  //           this.setData({
+  //             originFiles1: [...this.data.originFiles1, ...res],
+  //           });
+  //           console.log('success');
+  //         })
+  //         .catch(() => {
+  //           console.log('error');
+  //         });
+  //     },
+  //   });
+  // },
   // 选中文件之后，计算一个随机的短文件名
   getRandFileName(filePath) {
     const extIndex = filePath.lastIndexOf('.');

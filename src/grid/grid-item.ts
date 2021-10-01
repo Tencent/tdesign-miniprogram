@@ -24,6 +24,7 @@ export default class GridItem extends SuperComponent {
       type: 'ancestor' as 'ancestor',
       linked(this: GridItem, target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
+        this.updateStyle();
       },
     },
   };
