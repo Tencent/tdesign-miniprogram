@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 16:33:28
+ * updated at 2021-10-01 19:05:22
  * */
 
 export interface TdUploadProps {
@@ -36,6 +36,18 @@ export interface TdUploadProps {
   files?: {
     type: ArrayConstructor;
     value?: Array<UploadFile>;
+    required?: boolean;
+  };
+  /**
+   * upload组件每行上传图片列数以及图片的宽度和高度
+   */
+  gridConfig?: {
+    type: ObjectConstructor;
+    value?: {
+      column?: number;
+      width?: number;
+      height?: number;
+    };
     required?: boolean;
   };
   /**
@@ -82,11 +94,6 @@ export interface TdUploadProps {
     value?: number | SizeLimitObj;
     required?: boolean;
   };
-  gridConfig: {
-    type: ObjectConstructor;
-    value?: GridConfig;
-    required?: boolean;
-  };
 }
 
 export type UploadConfig = ImageConfig | VideoConfig;
@@ -125,9 +132,3 @@ export interface SizeLimitObj {
 }
 
 export type SizeUnit = 'B' | 'KB' | 'MB' | 'GB';
-
-export interface GridConfig {
-  column: number;
-  width: number;
-  height: number;
-}

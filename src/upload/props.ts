@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 16:33:28
+ * updated at 2021-10-01 19:05:22
  * */
 
 import { TdUploadProps } from './type';
@@ -22,6 +22,10 @@ const props: TdUploadProps = {
   /** 已上传文件列表 */
   files: {
     type: Array,
+  },
+  /** upload组件每行上传图片列数以及图片的宽度和高度 */
+  gridConfig: {
+    type: Object,
   },
   /** 预览窗格的 gutter 大小，单位 rpx */
   gutter: {
@@ -46,10 +50,6 @@ const props: TdUploadProps = {
   sizeLimit: {
     type: Number,
     optionalTypes: [Object],
-  },
-  /** upload组件每行上传图片列数以及图片的宽度和高度 */
-  gridConfig: {
-    type: Object,
   },
 };
 
