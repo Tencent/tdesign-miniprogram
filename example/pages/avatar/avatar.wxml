@@ -1,5 +1,5 @@
 <view class="demo-title">Avatar 头像</view>
-<view class="demo-desc">用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作</view>
+<view class="demo-desc">用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作。</view>
 <t-demo title="01 类型" desc="头像样式可为默认头像、微信头像圆形、方形、自定义文字">
   <view class="desc">
     <view class="row">
@@ -67,7 +67,7 @@
 <t-demo desc="max为3时，自定义折叠元素内容，左侧头像在上">
   <view class="desc">
     <view class="row">
-      <t-avatar-group max="2" cascading="left-up" collapseAvatar="+5">
+      <t-avatar-group max="3" cascading="left-up" collapseAvatar="+5">
         <t-avatar
           wx:for="{{pics}}"
           wx:for-item="pic"

@@ -23,7 +23,7 @@
 ```html
 <view>一行三个（border）</view>
 <view>
-  <t-grid border="{{true}}">
+  <t-grid border="{{true}}" column="{{3}}">
     <t-grid-item text="标题文字">
       <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
@@ -38,7 +38,7 @@
 
 <view>一行二个带说明宫格</view>
 <view>
-  <t-grid>
+  <t-grid column="{{2}}">
     <t-grid-item text="标题文字" description="说明文字">
       <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
@@ -50,7 +50,7 @@
 
 <view>带徽标宫格</view>
 <view>
-  <t-grid class="t-grid badge">
+  <t-grid column="{{1}}">
     <t-grid-item text="标题文字">
       <t-badge count="{{16}}" slot="image">
         <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
@@ -60,7 +60,7 @@
 </view>
 <view>自定义宫格布局（border重合）</view>
 <view>
-  <t-grid justifyContent="center" border="{{true}}">
+  <t-grid border="{{true}}" column="{{2}}">
     <t-grid-item text="标题文字">
       <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
@@ -71,7 +71,7 @@
 </view>
 <view>自定义宫格布局（border分离）</view>
 <view>
-  <t-grid justifyContent="center" border="{{true}}" gutter="{{20}}">
+  <t-grid border="{{true}}" gutter="{{20}}" column="{{2}}">
     <t-grid-item text="标题文字" t-class-text="text">
       <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
     </t-grid-item>
@@ -86,14 +86,14 @@
 
 ### Grid Props
 
-| 名称             | 类型             | 默认值       | 说明                                                                                                | 必传                                              |
-| ---------------- | ---------------- | ------------ | --------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------- | -------- | -------- | -------- | ------- | ----------- | --- |
-| align            | String           | center       | 内容对齐方式。可选项：left/center                                                                   | N                                                 |
-| border           | Boolean / Object | false        | 边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式。TS 类型：`boolean | { color?: string; width?: string; style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' }` | N   |
-| external-classes | Array            | -            | 组件类名，用于设置组件外层元素类名。`['t-class']`                                                   | N                                                 |
-| gutter           | String / Number  | -            | 间隔大小，`justify-content` 值为 `flex-start/center/flex-end` 时有效                                | N                                                 |
-| hover            | Boolean          | false        | 是否开启点击反馈                                                                                    | N                                                 |
-| justify-content  | String           | space-around | 间隔分布模式。可选项：space-between/space-around/flex-start/center/flex-end                         | N                                                 |
+| 名称             | 类型             | 默认值 | 说明                                                                                                | 必传                                              |
+| ---------------- | ---------------- | ------ | --------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------- | -------- | -------- | -------- | ------- | ----------- | --- |
+| align            | String           | center | 内容对齐方式。可选项：left/center                                                                   | N                                                 |
+| border           | Boolean / Object | false  | 边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式。TS 类型：`boolean | { color?: string; width?: string; style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' }` | N   |
+| column           | Number           | 4      | 每一行的列数量                                                                                      | N                                                 |
+| external-classes | Array            | -      | 组件类名，用于设置组件外层元素类名。`['t-class']`                                                   | N                                                 |
+| gutter           | Number           | -      | 间隔大小                                                                                            | N                                                 |
+| hover            | Boolean          | false  | 是否开启点击反馈                                                                                    | N                                                 |
 
 ### GridItem Props
 
@@ -103,5 +103,6 @@
 | external-classes | Array         | -           | 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名。`['t-class', 't-class-image', 't-class-text', 't-class-description']` | N    |
 | image            | String / Slot | -           | 图片，可以是图片地址，也可以自定义图片节点                                                                                            | N    |
 | jump-type        | String        | navigate-to | 链接跳转类型。可选项：redirect-to/switch-tab/relaunch/navigate-to                                                                     | N    |
+| layout           | String        | vertical    | 内容布局方式。可选项：vertical/horizontal                                                                                             | N    |
 | text             | String / Slot | -           | 文本，可以通过 Props 传入文本，也可以自定义标题节点                                                                                   | N    |
 | url              | String        | -           | 点击后的跳转链接                                                                                                                      | N    |

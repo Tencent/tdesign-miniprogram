@@ -1,5 +1,5 @@
 <view class="demo-title">Badge 徽标</view>
-<view class="demo-desc">展示新增内容的提示，用警示红色为主色，包含数字或文字提示内容</view>
+<view class="demo-desc">用于告知用户，该区域的状态变化或者待处理任务的数量。</view>
 <t-demo title="01 类型" desc="徽标主要分红点、数字、文字和角标提醒">
   <view class="demo-grid">
     <t-badge dot class="badge-item" content="消息" />
