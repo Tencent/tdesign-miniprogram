@@ -86,20 +86,19 @@
 
 ### Grid Props
 
-| 名称             | 类型             | 默认值 | 说明                                                                                                            | 必传                                              |
-| ---------------- | ---------------- | ------ | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------- | -------- | -------- | -------- | ------- | ----------- | --- |
-| align            | String           | center | 内容对齐方式。可选项：left/center                                                                               | N                                                 |
-| border           | Boolean / Object | false  | （后期开发）边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式。TS 类型：`boolean | { color?: string; width?: string; style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' }` | N   |
-| column           | Number           | 4      | 每一行的列数量                                                                                                  | N                                                 |
-| external-classes | Array            | -      | 组件类名，用于设置组件外层元素类名。`['t-class']`                                                               | N                                                 |
-| gutter           | Number           | -      | 间隔大小                                                                                                        | N                                                 |
-| hover            | Boolean          | false  | 是否开启点击反馈                                                                                                | N                                                 |
+| 名称             | 类型             | 默认值 | 说明                                                                                                | 必传                                              |
+| ---------------- | ---------------- | ------ | --------------------------------------------------------------------------------------------------- | ------------------------------------------------- | -------- | -------- | -------- | -------- | ------- | ----------- | --- |
+| align            | String           | center | 内容对齐方式。可选项：left/center                                                                   | N                                                 |
+| border           | Boolean / Object | false  | 边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式。TS 类型：`boolean | { color?: string; width?: string; style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' }` | N   |
+| column           | Number           | 4      | 每一行的列数量                                                                                      | N                                                 |
+| external-classes | Array            | -      | 组件类名，用于设置组件外层元素类名。`['t-class']`                                                   | N                                                 |
+| gutter           | Number           | -      | 间隔大小                                                                                            | N                                                 |
+| hover            | Boolean          | false  | 是否开启点击反馈                                                                                    | N                                                 |
 
 ### GridItem Props
 
 | 名称             | 类型          | 默认值      | 说明                                                                                                                                  | 必传 |
 | ---------------- | ------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---- |
-| align            | String        | center      | 内容对齐方式。可选项：left/center                                                                                                     | N    |
 | description      | String / Slot | -           | 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点                                                           | N    |
 | external-classes | Array         | -           | 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名。`['t-class', 't-class-image', 't-class-text', 't-class-description']` | N    |
 | image            | String / Slot | -           | 图片，可以是图片地址，也可以自定义图片节点                                                                                            | N    |
