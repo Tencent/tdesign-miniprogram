@@ -1,6 +1,6 @@
 <view class="demo">
   <view class="demo-title">Tabs 选项卡</view>
-  <view class="demo-desc">用作一组平行关系页面/内容的切换器</view>
+  <view class="demo-desc">用于内容分类后的展示切换。</view>
   <t-demo title="01 类型" desc="横向选项卡">
     <t-tabs
       value="{{0}}"

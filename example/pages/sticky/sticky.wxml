@@ -1,3 +1,6 @@
+<view class="demo-title">Sticky 吸顶</view>
+<view class="demo-desc">用于常驻页面顶部的信息、操作展示。</view>
+<view style="height: 80rpx"></view>
 <view class="tdesign-demo-sticky-base">
   <t-sticky>
     <view class="box box1">吸顶容器</view>

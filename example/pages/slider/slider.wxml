@@ -1,7 +1,5 @@
 <view class="t-slider-title">Slider 滑动选择器</view>
-<view class="t-slider-desc"
-  >滑动滑块来选择一个数值，在具体场景中也可以增加来刻度和展示数值来方便用户使用</view
->
+<view class="t-slider-desc">用于选择横轴上的数值、区间、档位。</view>
 
 <t-demo title="01 类型" desc="基础滑动选择器">
   <view class="space"><t-slider /></view>

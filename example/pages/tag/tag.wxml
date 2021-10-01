@@ -1,6 +1,6 @@
 <view class="demo">
   <view class="demo-title">Tag 标签</view>
-  <view class="demo-desc">用于标记表示主体属性、类型、状态等，由底部图形和标签文字组成</view>
+  <view class="demo-desc">用于表明主体的类目，属性或状态。</view>
 
   <t-demo title="01 类型" desc="展示型标签">
     <view class="group">
