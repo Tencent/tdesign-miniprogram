@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { isObject, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import { MediaType, UploadConfig, UploadFile } from './type';
 
@@ -23,6 +23,8 @@ export default class Upload extends SuperComponent {
     max: 0,
     sizeLimit: 0,
     requestMethod: null,
+    gridItemStyle: '',
+    column: 4,
   };
 
   properties = props;
@@ -33,6 +35,9 @@ export default class Upload extends SuperComponent {
     },
     max(max) {
       this.handleLimit(this.data.customFiles, max);
+    },
+    gridConfig() {
+      this.updateGrid();
     },
   };
 
@@ -46,6 +51,7 @@ export default class Upload extends SuperComponent {
 
   ready() {
     this.handleLimit(this.data.customFiles, this.data.max);
+    this.updateGrid();
   }
 
   handleLimit(customFiles: UploadFile[], max: number) {
@@ -193,5 +199,15 @@ export default class Upload extends SuperComponent {
     const { customFiles } = this.data;
     const delFile = customFiles[index];
     this.triggerEvent('remove', { index, file: delFile });
+  }
+
+  updateGrid() {
+    let { gridConfig = {} } = this.properties;
+    if (!isObject(gridConfig)) gridConfig = {};
+    const { column = 4, width = 160, height = 160 } = gridConfig as any;
+    this.setData({
+      gridItemStyle: `width:${width}rpx;height:${height}rpx`,
+      column: column,
+    });
   }
 }

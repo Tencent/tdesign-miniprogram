@@ -82,6 +82,11 @@ export interface TdUploadProps {
     value?: number | SizeLimitObj;
     required?: boolean;
   };
+  gridConfig: {
+    type: ObjectConstructor;
+    value?: GridConfig;
+    required?: boolean;
+  };
 }
 
 export type UploadConfig = ImageConfig | VideoConfig;
@@ -120,3 +125,9 @@ export interface SizeLimitObj {
 }
 
 export type SizeUnit = 'B' | 'KB' | 'MB' | 'GB';
+
+export interface GridConfig {
+  column: number;
+  width: number;
+  height: number;
+}

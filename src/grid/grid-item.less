@@ -12,6 +12,8 @@
   &-content {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    position: relative;
   }
 
   .horizontal-content {
@@ -19,10 +21,12 @@
   }
 
   &-words-wapper {
+    display: flex;
     flex: 1;
   }
 
   &-image-wapper {
+    display: flex;
     flex: 1;
   }
 
@@ -36,10 +40,10 @@
   }
 
   .align-center {
-    text-align: center;
+    justify-content: center;
   }
 
   .align-left {
-    text-align: left;
+    justify-content: flex-start;
   }
 }

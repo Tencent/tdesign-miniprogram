@@ -47,6 +47,10 @@ const props: TdUploadProps = {
     type: Number,
     optionalTypes: [Object],
   },
+  /** upload组件每行上传图片列数以及图片的宽度和高度 */
+  gridConfig: {
+    type: Object,
+  },
 };
 
 export default props;

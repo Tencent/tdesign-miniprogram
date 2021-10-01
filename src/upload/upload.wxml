@@ -1,5 +1,5 @@
 <view class="upload t-class">
-  <t-grid center square gutter="{{gutter}}rpx" border="{{false}}">
+  <t-grid gutter="{{gutter}}" border="{{false}}" align="center" column="{{column}}">
     <!-- 图片/视频 -->
     <t-grid-item
       wx:for="{{customFiles}}"
@@ -7,50 +7,51 @@
       wx:for-item="file"
       t-class="upload-grid upload-grid--file"
       t-class-content="upload-grid__content"
-      use-slot
     >
-      <image
-        wx:if="{{file.type !== 'video'}}"
-        bindtap="onProofTap"
-        data-index="{{index}}"
-        class="upload-grid--file__thumbnail"
-        src="{{file.url}}"
-        mode="aspectFit"
-      />
-      <video
-        wx:if="{{file.type === 'video'}}"
-        class="upload-grid--file__thumbnail"
-        src="{{file.url}}"
-        controls
-        autoplay="{{false}}"
-        objectFit="contain"
-      />
-      <!-- 失败重试 -->
-      <view
-        data-index="{{index}}"
-        wx:if="{{file.percent !== undefined && file.percent !== 100}}"
-        class="progress-mask"
-      >
-        <view wx:if="{{file.percent === -1}}" class="progress-failed">
+      <view class="upload-grid-item-wrapper" slot="image" style="{{gridItemStyle}}">
+        <image
+          wx:if="{{file.type !== 'video'}}"
+          bindtap="onProofTap"
+          data-index="{{index}}"
+          class="upload-grid--file__thumbnail"
+          src="{{file.url}}"
+          mode="scaleToFill"
+        />
+        <video
+          wx:if="{{file.type === 'video'}}"
+          class="upload-grid--file__thumbnail"
+          src="{{file.url}}"
+          controls
+          autoplay="{{false}}"
+          objectFit="contain"
+        />
+        <!-- 失败重试 -->
+        <view
+          data-index="{{index}}"
+          wx:if="{{file.percent !== undefined && file.percent !== 100}}"
+          class="progress-mask"
+        >
+          <view wx:if="{{file.percent === -1}}" class="progress-failed">
+            <t-icon
+              name="refresh"
+              size="45rpx"
+              t-class="upload-grid--file__refresh__icon"
+              color="#fff"
+            />
+          </view>
+          <view wx:else class="progress-value">{{file.percent}}%</view>
+        </view>
+        <!-- 删除 -->
+        <view class="upload-grid--file__close-btn" bindtap="onDelete" data-index="{{index}}">
+          <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
           <t-icon
-            name="refresh"
-            size="45rpx"
-            t-class="upload-grid--file__refresh__icon"
+            wx:else
+            name="close"
+            size="34rpx"
+            t-class="upload-grid--file__close-btn__icon"
             color="#fff"
           />
         </view>
-        <view wx:else class="progress-value">{{file.percent}}%</view>
-      </view>
-      <!-- 删除 -->
-      <view class="upload-grid--file__close-btn" bindtap="onDelete" data-index="{{index}}">
-        <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
-        <t-icon
-          wx:else
-          name="close"
-          size="34rpx"
-          t-class="upload-grid--file__close-btn__icon"
-          color="#fff"
-        />
       </view>
     </t-grid-item>
     <!-- 添加 -->
@@ -59,11 +60,12 @@
       t-class="upload-grid upload-grid--add-btn"
       t-class-content="upload-grid__content"
       bindclick="onAddTap"
-      useSlot
     >
-      <view class="upload-grid--add-btn__icon">
-        <slot wx:if="{{addContent === 'slot'}}" name="addContent" />
-        <t-icon wx:else name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
+      <view class="grid-item-wrapper" slot="image" style="{{gridItemStyle}}">
+        <view class="upload-grid--add-btn__icon">
+          <slot wx:if="{{addContent === 'slot'}}" name="addContent" />
+          <t-icon wx:else name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
+        </view>
       </view>
     </t-grid-item>
   </t-grid>
