@@ -19,7 +19,7 @@ module.exports = {
     }
   },
   getStyles: function (isShow, zIndex, isChild) {
-    var styles = 'z-index:' + zIndex + ';' + (isChild ? 'margin-right: -30rpx;' : '');
+    var styles = 'z-index:' + zIndex + ';' + (isChild ? 'margin-right: -3%;' : '');
     return styles + (isShow ? '' : 'display: none;');
   },
 };
