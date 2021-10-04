@@ -33,39 +33,57 @@
 <t-demo title="02 特殊类型" desc="纯展示 从上往下">
   <view class="desc">
     <view class="row">
-      <t-avatar-group cascading="left-up" max="5" collapseAvatar="+5" size="small">
+      <t-avatar-group
+        cascading="left-up"
+        max="5"
+        collapseAvatar="+5"
+        size="small"
+        class="border-example-show"
+      >
         <t-avatar
           wx:for="{{pics}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
           size="small"
-          t-class-image="border-example-show"
-          t-class="border-example-show-small"
+          t-class-image="img-small"
+          t-class="small"
         />
       </t-avatar-group>
     </view>
     <view class="row">
-      <t-avatar-group max="5" cascading="left-up" collapseAvatar="+5" size="medium">
+      <t-avatar-group
+        max="5"
+        cascading="left-up"
+        collapseAvatar="+5"
+        size="medium"
+        class="border-example-show"
+      >
         <t-avatar
           wx:for="{{pics6}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-example-show"
-          t-class="border-example-show-medium"
+          t-class-image="img-medium"
+          t-class="medium"
         />
       </t-avatar-group>
     </view>
     <view class="row">
-      <t-avatar-group max="5" cascading="left-up" collapseAvatar="+5" size="large">
+      <t-avatar-group
+        max="5"
+        cascading="left-up"
+        collapseAvatar="+5"
+        size="large"
+        class="border-example-show"
+      >
         <t-avatar
           wx:for="{{pics6}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-example-show"
-          t-class="border-example-show-large"
+          t-class-image="img-large"
+          t-class="large"
         />
       </t-avatar-group>
     </view>
@@ -74,41 +92,41 @@
 <t-demo desc="带操作 从下往上">
   <view class="desc">
     <view class="row">
-      <t-avatar-group max="3" size="small">
+      <t-avatar-group max="3" size="small" class="border-example-operate">
         <t-avatar
           wx:for="{{pics}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-example-operate"
-          t-class="border-example-show-small"
+          t-class-image="img-small"
+          t-class="small"
         />
         <t-avatar
           slot="collapseAvatar"
           icon="user-add"
-          t-class-icon="border-example-operate"
+          t-class-icon="img-small"
           t-class-alt="alt-example1"
           bindtap="onAddTap"
-          t-class="border-example-show-small"
+          t-class="small"
         />
       </t-avatar-group>
     </view>
   </view>
   <view class="desc">
     <view class="row">
-      <t-avatar-group max="3" size="medium">
+      <t-avatar-group max="3" size="medium" class="border-example-operate">
         <t-avatar
           wx:for="{{pics}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-example-operate"
-          t-class="border-example-show-medium"
+          t-class-image="img-medium"
+          t-class="medium"
         />
         <t-avatar
           slot="collapseAvatar"
           icon="user-add"
-          t-class-icon="border-example-operate"
+          t-class-icon="img-medium"
           t-class-alt="alt-example1"
           bindtap="onAddTap"
           t-class="border-example-show-medium"
@@ -119,19 +137,19 @@
   <view class="desc">
     <view class="row">
       <view class="avatar-group">
-        <t-avatar-group max="3" size="large">
+        <t-avatar-group max="3" size="large" class="border-example-operate">
           <t-avatar
             wx:for="{{pics}}"
             wx:for-item="pic"
             wx:key="index"
             image="{{pic}}"
-            t-class-image="border-example-operate"
-            t-class="border-example-show-large"
+            t-class-image="img-large"
+            t-class="large"
           />
           <t-avatar
             slot="collapseAvatar"
             icon="user-add"
-            t-class-icon="border-example-operate"
+            t-class-icon="img-large"
             t-class-alt="alt-example1"
             bindtap="onAddTap"
             t-class="border-example-show-large"
