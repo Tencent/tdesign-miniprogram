@@ -21,9 +21,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: [
-        /.*\.md$/,
-      ],
+      external: [/.*\.md$/],
       input: {
         site: './index.html',
       },
@@ -33,9 +31,9 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: tag => tag.startsWith('td-')
-        }
-      }
+          isCustomElement: (tag) => tag.startsWith('td-'),
+        },
+      },
     }),
     vueJsx(),
     createTDesignPlugin(),
