@@ -40,7 +40,8 @@
           wx:key="index"
           image="{{pic}}"
           size="small"
-          t-class-image="border-example-2"
+          t-class-image="border-example-show"
+          t-class="border-example-show-small"
         />
       </t-avatar-group>
     </view>
@@ -51,7 +52,8 @@
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-example-2"
+          t-class-image="border-example-show"
+          t-class="border-example-show-medium"
         />
       </t-avatar-group>
     </view>
@@ -62,7 +64,8 @@
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-example-2"
+          t-class-image="border-example-show"
+          t-class="border-example-show-large"
         />
       </t-avatar-group>
     </view>
@@ -77,14 +80,16 @@
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-example-1"
+          t-class-image="border-example-operate"
+          t-class="border-example-show-small"
         />
         <t-avatar
           slot="collapseAvatar"
           icon="user-add"
-          t-class-icon="border-example-1"
+          t-class-icon="border-example-operate"
           t-class-alt="alt-example1"
           bindtap="onAddTap"
+          t-class="border-example-show-small"
         />
       </t-avatar-group>
     </view>
@@ -97,14 +102,16 @@
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-example-1"
+          t-class-image="border-example-operate"
+          t-class="border-example-show-medium"
         />
         <t-avatar
           slot="collapseAvatar"
           icon="user-add"
-          t-class-icon="border-example-1"
+          t-class-icon="border-example-operate"
           t-class-alt="alt-example1"
           bindtap="onAddTap"
+          t-class="border-example-show-medium"
         />
       </t-avatar-group>
     </view>
@@ -118,14 +125,16 @@
             wx:for-item="pic"
             wx:key="index"
             image="{{pic}}"
-            t-class-image="border-example-1"
+            t-class-image="border-example-operate"
+            t-class="border-example-show-large"
           />
           <t-avatar
             slot="collapseAvatar"
             icon="user-add"
-            t-class-icon="border-example-1"
+            t-class-icon="border-example-operate"
             t-class-alt="alt-example1"
             bindtap="onAddTap"
+            t-class="border-example-show-large"
           />
         </t-avatar-group>
       </view>
