@@ -12,18 +12,16 @@
   >
 
   <view class="t-pulldown-reflesh_wrapper">
-    <view class="t-pulldown-reflesh_wrapper-title">01 基本用法</view>
+    <view class="t-pulldown-reflesh_wrapper-title">01 类型</view>
     <view class="t-pulldown-reflesh_wrapper-desc">下拉刷新大致分为顶部下拉和中间下拉</view>
     <view class="flex pulldown-reflesh_content">
       <t-skeleton
-        wx:for="{{2}}"
-        wx:key="index"
-        row="3"
-        loading-class="skeletion-item"
-        row-class="skeletion-row"
-        row-width="{{['340rpx', '340rpx', '218rpx']}}"
-        rowHeight="{{['342rpx', '32rpx', '32rpx']}}"
-      />
+        rowCol="{{rowCol}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+        style="margin-top: 32rpx"
+      ></t-skeleton>
       <view class="text">拖拽该区域演示 顶部下拉刷新</view>
     </view>
   </view>
@@ -37,14 +35,12 @@
 >
   <view class="flex pulldown-reflesh_content">
     <t-skeleton
-      wx:for="{{2}}"
-      wx:key="index"
-      row="3"
-      loading-class="skeletion-item"
-      row-class="skeletion-row"
-      row-width="{{['340rpx', '340rpx', '218rpx']}}"
-      rowHeight="{{['342rpx', '32rpx', '32rpx']}}"
-    />
+      rowCol="{{rowCol}}"
+      class="skeleton-item"
+      t-class-text="skeleton-text"
+      loading
+      style="margin-top: 16rpx"
+    ></t-skeleton>
     <view class="text">拖拽该区域演示 中间下拉刷新</view>
   </view>
 </t-pull-down-refresh>
