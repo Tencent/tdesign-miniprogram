@@ -4,15 +4,11 @@
 
 用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。
 
-### 特性及兼容性
-
-无
-
 ## 引入
 
 ### 引入组件
 
-在 `app.json` 或 `page.json` 中引入组件：
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
@@ -20,59 +16,50 @@
 }
 ```
 
-## 用法
+## 代码演示
 
-### 组件方式
+### 类型
+
+![demo页](图片链接 'optional title')
 
 ```html
-<!-- type 为 text，只有版权信息 -->
-<t-footer theme="text" copyright="{{copyright}}" class="t-footer-demo" />
-<!-- type 为 text，含有底部链接 -->
+<!-- 基础页脚 只有版权信息 -->
 <t-footer
   theme="text"
-  copyright="{{copyright}}"
-  textLinkList="{{textLinkListOne}}"
+  copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+  class="t-footer-demo"
+/>
+
+<!-- 基础加连接页脚 -->
+<t-footer
+  theme="text"
+  copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+  textLinkList="{{textLinkListTwo}}"
   class="footer"
 />
-<!-- type 为 logo -->
-<t-footer theme="logo" logo="{{logo}}" class="t-footer-demo" />
+
+<!-- 基础加连接页脚 -->
+<t-footer theme="logo" logo="{{'xxx.png'}}" class="t-footer-demo" />
 ```
 
-```javascript
-Page({
-  data: {
-    copyright: 'Copyright © 2021-2031 TD.All Rights Reserved.',
-    textLinkListOne: [
-      {
-        name: '底部链接',
-        url: '/pages/index',
-        openType: 'navigate',
-      },
-    ],
-    textLinkListTwo: [
-      {
-        name: '底部链接',
-        url: '/pages/index',
-        openType: 'navigate',
-      },
-      {
-        name: '底部链接',
-        url: '',
-        openType: 'navigateBack',
-      },
-    ],
-    logo: {
-      url: 'https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png', // 占位图片
+```js
+data: {
+  textLinkListTwo: [
+    {
+      name: '底部链接',
+      url: '/pages/index',
+      openType: 'navigate',
     },
-  },
-});
+    {
+      name: '底部链接',
+      url: '',
+      openType: 'navigateBack',
+    },
+  ],
+},
 ```
 
 ## API
-
-### `<t-footer>` 组件
-
-组件路径：`@tencent/tdesign-miniprogram/footer/footer`
 
 #### Props
 
