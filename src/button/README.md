@@ -18,12 +18,13 @@
 
 ## 代码演示
 
-### 01 类型
+### 类型
+
+基础按钮
 
 ![Alt text](图片链接 'optional title')
 
 ```html
-<!-- 基础按钮 -->
 <t-button theme="primary" size="large">强按钮</t-button>
 <t-button theme="primary" size="large" variant="plain">弱按钮</t-button>
 <t-button size="large" variant="plain">次按钮</t-button>
@@ -41,12 +42,13 @@
 </t-button-group>
 ```
 
-### 02 状态
+### 状态
+
+按钮禁用态
 
 ![Alt text](图片链接 'optional title')
 
 ```html
-<!-- 按钮禁用态 -->
 <t-button theme="primary" size="large" disabled>强按钮</t-button>
 <t-button theme="primary" size="large" variant="plain" disabled>弱按钮</t-button>
 <t-button size="large" variant="plain" disabled>次按钮</t-button>
@@ -64,23 +66,16 @@
 </t-button-group>
 ```
 
-### 03 规格
+### 规格
+
+按钮尺寸
 
 ![Alt text](图片链接 'optional title')
 
 ```html
-<!-- 按钮尺寸 -->
 <t-button theme="primary" size="large">按钮 44</t-button>
 <t-button theme="primary" style="margin-left: 16px">按钮 40</t-button>
 <t-button theme="primary" size="small" style="margin-left: 16px">按钮 36</t-button>
-```
-
-```less
-.box {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 8px 0;
-  margin-top: 16px;
-}
 ```
 
 ## API
