@@ -51,6 +51,7 @@ Toast({
   context: this,
   selector: '#t-toast',
   message: '带图标横向',
+  icon: 'check-circle',
 });
 ```
 
@@ -63,6 +64,8 @@ Toast({
   context: this,
   selector: '#t-toast',
   message: '带图标竖向',
+  icon: 'star',
+  direction: 'column',
 });
 ```
 
@@ -75,7 +78,52 @@ Toast({
   context: this,
   selector: '#t-toast',
   message: '成功文案',
-  theme: 'success', // fail、loading
+  theme: 'fail',
+});
+
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '警告文案',
+  theme: 'success',
+});
+
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '加载中...',
+  theme: 'loading',
+  direction: 'column',
+});
+```
+
+### 显示位置和展示时间
+
+```js
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '顶部-展示1秒',
+  direction: 'column',
+  placement: 'top',
+  duration: 1000,
+});
+
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '中间-展示2秒',
+  direction: 'column',
+  duration: 2000,
+});
+
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '底部-展示2秒',
+  direction: 'column',
+  placement: 'bottom',
+  duration: 5000,
 });
 ```
 
