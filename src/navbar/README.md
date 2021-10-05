@@ -15,6 +15,55 @@
 }
 ```
 
+![Alt text](图片链接 'optional title')
+
+```html
+<!-- 基础导航栏 -->
+<t-navbar title="标题" t-class-title="nav-title" />
+```
+
+![Alt text](图片链接 'optional title')
+
+```html
+<!-- 带返回，主页按钮导航栏 -->
+<t-navbar
+  title="标题"
+  leftIcon="chevron-left"
+  homeIcon="home"
+  bindgohome="onGoHome"
+  t-class-left-icon="left-icon-back"
+  t-class-home-icon="home-icon"
+  t-class-title="nav-title"
+/>
+```
+
+![Alt text](图片链接 'optional title')
+
+```html
+<!-- 自定义插槽导航栏 -->
+<t-navbar leftIcon="slot">
+  <t-image
+    t-class="img"
+    class="size-l radius-m slot-left"
+    src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%8D%A0%E4%BD%8D%E5%9B%BE%402x.png"
+    mode="aspectFill"
+    slot="left-icon"
+  ></t-image>
+</t-navbar>
+```
+
+```js
+  onGoHome() {
+    wx.navigateTo({
+      url: '/pages/index',
+    });
+  },
+```
+
+## 代码演示
+
+### 01 类型
+
 ### Navbar Props
 
 | 名称             | 类型          | 默认值 | 说明                                                                                                                                                                                                             | 必传 |
