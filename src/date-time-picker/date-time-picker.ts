@@ -33,6 +33,7 @@ enum ModeType {
   YEAR_ADD_MINUTE = 'year+minute', // 年/小时/分钟
   MONTH_ADD_HOUR = 'month+hour', // 年/月/小时
   MONTH_ADD_MINUTE = 'month+minute', // 年/月/小时/分钟
+  MONTH_ADD_DATE = 'month+date', // 月/日
   DATE_ADD_HOUR = 'date+hour', // 年/月/日/小时
   DATE_ADD_MINUTE = 'date+minute', // 年/月/日/小时/分钟
 
@@ -334,6 +335,10 @@ export default class DateTimePicker extends SuperComponent {
     if (modeName === ModeType.NULL_MINUTE) {
       return [hours, minutes];
     }
+
+    if (modeName === ModeType.MONTH_ADD_DATE) {
+      return [months, days];
+    }
   }
 
   getValueCols(this: DateTimePicker) {
@@ -390,6 +395,7 @@ export default class DateTimePicker extends SuperComponent {
 
       [`${ModeType.NULL_HOUR}`]: [`${date.hour()}`],
       [`${ModeType.NULL_MINUTE}`]: [`${date.hour()}`, `${date.minute()}`],
+      [`${ModeType.MONTH_ADD_DATE}`]: [`${date.month()}`, `${date.date()}`],
     };
 
     if (mode2Value[modeName] === undefined) {
