@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Avatar 头像",
+  "navigationBarTitleText": "Avatar",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "t-avatar": "@tencent/tdesign-miniprogram/avatar/avatar",

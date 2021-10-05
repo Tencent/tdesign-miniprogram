@@ -6,7 +6,7 @@ const { prefix } = config;
 const name = `${prefix}-radio`;
 
 const iconDefault = {
-  'fill-circle': ['check-circle-filled', 'circle'],
+  'fill-circle': ['check-circle-filled', 'round'],
   'stroke-line': ['check', ''],
 };
 @wxComponent()

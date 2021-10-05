@@ -1,8 +1,7 @@
 <wxs src="./avatar.wxs" module="this" />
-
 <view
   class="{{ classPrefix }}--wrapper {{this.getTClass(size,classPrefix)}} t-class"
-  style="{{this.getStyles(isShow, zIndex, isChild)}}"
+  style="{{this.getStyles(isShow, zIndex)}}"
 >
   <view
     class="{{this.getAvatarOuterClass(classPrefix, size, shape)}} t-class-image"

@@ -1,6 +1,6 @@
 <view class="demo tdesign-demo-sticky-base">
   <view class="demo-title">Sticky 吸顶</view>
-  <view class="demo-desc">组件描述</view>
+  <view class="demo-desc">用于常驻页面顶部的信息、操作展示。</view>
   <t-demo title="01 类型" desc="基础吸顶">
     <t-sticky>
       <t-button class="box1" theme="primary" t-class="inner-box" size="small">基础吸顶</t-button>

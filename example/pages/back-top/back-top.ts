@@ -18,6 +18,15 @@ Page({
       rowWidth: ['340rpx', '340rpx', '218rpx', '190rpx'],
       rowHeight: ['342rpx', '32rpx', '32rpx', '32rpx'],
     },
+    rowCol3: [
+      { width: '332rpx', height: '342rpx' },
+      { width: '332rpx', height: '32rpx' },
+      { width: '214rpx', height: '32rpx' },
+      [
+        { width: '186rpx', height: '32rpx' },
+        { width: '64rpx', height: '32rpx', marginLeft: '82rpx' },
+      ],
+    ],
   },
 
   windowHeight: null as null | number,
