@@ -43,7 +43,7 @@ const ux = {
       label: '下拉刷新',
     },
     {
-      name: 'Swipeout',
+      name: 'SwipeCell',
       label: '滑动操作',
     },
     {
