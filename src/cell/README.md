@@ -4,19 +4,95 @@
 
 用于各个类别行的信息展示。
 
-### 特性及兼容性
-
-无
-
 ## 引入
 
 ### 引入组件
 
-在 `app.json` 或 `page.json` 中引入组件：
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
   "t-cell": "@tencent/tdesign-miniprogram/cell/cell"
+}
+```
+
+## 代码演示
+
+### 类型
+
+![单行\多行demo](图片链接 'optional title')
+
+```html
+<!-- 单行 默认 -->
+<t-cell title="单行标题" hover />
+
+<!-- 单行 必须 -->
+<t-cell title="单行标题" required />
+
+<!-- 单行 辅助信息 -->
+<t-cell title="单行标题" hover note="辅助信息" />
+
+<!-- 单行 箭头 -->
+<t-cell title="单行标题" hover arrow />
+
+<!-- 单行 自定义辅助信息-slot -->
+<t-cell title="单行标题" hover arrow>
+  <t-badge count="{{16}}" slot="note" />
+</t-cell>
+
+<!-- 单行 左侧icon-slot -->
+<t-cell title="单行标题" hover>
+  <t-icon name="app" slot="left-icon" />
+</t-cell>
+
+<!-- 多行 -->
+<t-cell title="多行标题" description="一段很长很长的内容文字" />
+
+<!-- 多行 带图标 -->
+<t-cell title="多行带图标" description="说明文字" note="辅助信息" arrow t-class-left="t-class-left">
+  <t-icon class="icon-center title-icon" name="app" slot="left-icon" />
+</t-cell>
+
+<!-- 多行 带头像 -->
+<t-cell
+  title="多行带头像"
+  arrow
+  description="一段很长很长很长的内容文字"
+  t-class-image="title-image"
+>
+  <view class="avatar" slot="left-icon">
+    <open-data type="userAvatarUrl" />
+  </view>
+</t-cell>
+
+<!-- 多行 带图片 -->
+<t-cell
+  title="多行带图片"
+  description="一段很长很长的内容文字"
+  align="top"
+  t-class-image="title-image-large"
+  image="xxx.svg"
+/>
+```
+
+```less
+.t-class-left {
+  align-self: flex-start;
+}
+
+.title-icon {
+  margin-right: 8rpx;
+}
+
+.title-image {
+  margin-right: 8rpx;
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.title-image-large {
+  width: 112rpx;
+  height: 112rpx;
 }
 ```
 

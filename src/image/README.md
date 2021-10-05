@@ -6,7 +6,7 @@
 
 ## 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](/#/ui/components/ui/README?id=按需引入)
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
@@ -17,8 +17,6 @@
 ## 代码演示
 
 ### 01 类型
-
-#### 裁切样式
 
 `mode`属性控制图片的缩放/裁剪模式。
 
