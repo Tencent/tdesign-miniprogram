@@ -4,6 +4,8 @@
 
 用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
 
+![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/button.png)
+
 ## 引入
 
 ### 引入组件

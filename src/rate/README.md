@@ -4,6 +4,8 @@
 
 用于对某行为/事物进行打分。
 
+![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/rate.png)
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -17,7 +19,13 @@
 }
 ```
 
-### 基础（实心样式）：
+## 代码演示
+
+### 类型
+
+实心评分
+
+![Alt text](图片链接 'optional title')
 
 ```html
 <t-rate size="{{48}}" value="{{3}}" variant="filled" bind:change="onChange"></t-rate>

@@ -4,6 +4,8 @@
 
 用于数量的增减。
 
+![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/stepper.png)
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -17,12 +19,14 @@
 
 ## 代码演示
 
-#### 基础用法
+### 类型
 
-![default](./readme-assests/3.png)
+带单位步进器。
+
+![Alt text](图片链接 'optional title')
 
 ```html
-<stepper value="{{value}}" classname="steper-cls" bind:change="onChange"></stepper>
+<t-stepper label="标题文字（单位）" step="2" />
 ```
 
 ```

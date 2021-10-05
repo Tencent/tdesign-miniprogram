@@ -4,15 +4,11 @@
 
 用于用户输入搜索信息，并进行页面内容搜索。
 
-### 特性及兼容性
-
-无
+![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/search.png)
 
 ## 引入
 
-### 引入组件
-
-在 `app.json` 或 `page.json` 中引入组件：
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
@@ -20,134 +16,16 @@
 }
 ```
 
-## 用法
+## 代码演示
 
-### 组件方式
+### 类型
+
+基础搜索框。
+
+![Alt text](图片链接 'optional title')
 
 ```html
-<view class="demo">
-  <view class="demo-title">Search 搜索</view>
-  <view class="demo-desc">
-    很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字
-  </view>
-  <t-demo title="01 类型">
-    <view class="demo-section__desc">基础搜索框</view>
-    <view class="demo-section__wrapper">
-      <t-search placeholder="搜索预设文案" center="{{true}}" />
-    </view>
-  </t-demo>
-
-  <t-demo title="01 状态">
-    <block wx:for="{{searchBoxGroup}}" wx:key="id">
-      <view class="demo-section__desc">{{item.title}}</view>
-      <view class="demo-section__wrapper">
-        <t-search
-          t-class-cancel="t-class-cancel"
-          keyword="{{item.keyword}}"
-          placeholder="{{item.placeholder}}"
-          action-text="{{item.actionText}}"
-          data-idx="{{index}}"
-          bind:blur="blurHandle"
-          bind:focus="focusHandle"
-          bind:cancel="cancelHandle"
-        />
-      </view>
-    </block>
-  </t-demo>
-</view>
-```
-
-```js
-const placeholder = '搜索预设文案';
-const actionText = '取消';
-Page({
-  data: {
-    searchBoxGroup: [
-      {
-        id: `${Math.random()}`,
-        keyword: '',
-        placeholder,
-        actionText: '',
-      },
-      {
-        id: `${Math.random()}`,
-        keyword: '',
-        placeholder,
-        actionText: '取消',
-      },
-      {
-        id: `${Math.random()}`,
-        keyword: '关键词',
-        placeholder,
-        actionText: '取消',
-      },
-    ],
-  },
-
-  changeHandle({
-    detail,
-    currentTarget: {
-      dataset: { idx },
-    },
-  }) {
-    this.setData({
-      [`searchBoxGroup[${idx}].keyword`]: detail,
-    });
-  },
-
-  focusHandle({
-    currentTarget: {
-      dataset: { idx },
-    },
-  }) {
-    this.data.searchBoxGroup.forEach((_, index) => {
-      this.setData({
-        [`searchBoxGroup[${index}].actionText`]: '',
-      });
-    });
-
-    this.setData({
-      [`searchBoxGroup[${idx}].actionText`]: actionText,
-      [`searchBoxGroup[${idx}].focus`]: true,
-    });
-  },
-
-  cancelHandle({
-    currentTarget: {
-      dataset: { idx },
-    },
-  }) {
-    this.setData({
-      [`searchBoxGroup[${idx}].actionText`]: '',
-    });
-  },
-
-  clearHandle({
-    currentTarget: {
-      dataset: { idx },
-    },
-  }) {
-    this.setData({
-      [`searchBoxGroup[${idx}].keyword`]: '',
-    });
-  },
-});
-```
-
-```less
-page {
-  .demo-section__wrapper {
-    margin: 32rpx 0;
-    padding: 16rpx 32rpx;
-    opacity: 1;
-    background: rgba(255, 255, 255, 1);
-  }
-
-  .t-class-cancel {
-    color: rgba(0, 82, 217, 1);
-    font-weight: 400;
-  }
-}
+<t-search placeholder="搜索预设文案" center="{{true}}" />
 ```
 
 ## API
