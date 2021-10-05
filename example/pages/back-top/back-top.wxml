@@ -41,17 +41,55 @@
       </view>
     </view>
 
-    <view class="flex skeletion-content">
+    <view class="container-flex">
       <t-skeleton
-        wx:for="{{8}}"
-        wx:key="index"
-        row="4"
-        row-class="skeletion-row"
-        loading-class="skeletion-item"
-        row-width="{{skeleton.rowWidth}}"
-        rowHeight="{{skeleton.rowHeight}}"
-        animate
-      />
+        rowCol="{{rowCol3}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+      ></t-skeleton>
+      <t-skeleton
+        rowCol="{{rowCol3}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+      ></t-skeleton>
+      <t-skeleton
+        rowCol="{{rowCol3}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+      ></t-skeleton>
+      <t-skeleton
+        rowCol="{{rowCol3}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+      ></t-skeleton>
+      <t-skeleton
+        rowCol="{{rowCol3}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+      ></t-skeleton>
+      <t-skeleton
+        rowCol="{{rowCol3}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+      ></t-skeleton>
+      <t-skeleton
+        rowCol="{{rowCol3}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+      ></t-skeleton>
+      <t-skeleton
+        rowCol="{{rowCol3}}"
+        class="skeleton-item"
+        t-class-text="skeleton-text"
+        loading
+      ></t-skeleton>
     </view>
 
     <t-back-top wx:if="{{showBackTop}}" theme="{{backTopDemo.theme}}" text="{{backTopDemo.text}}">

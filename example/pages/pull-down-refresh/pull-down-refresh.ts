@@ -9,6 +9,17 @@ Page({
     loadingProps1: {
       size: '60rpx',
     },
+    rowCol: [
+      { width: '100%', height: '342rpx' },
+      [
+        { width: '332.26rpx', height: '32rpx' },
+        { width: '332.26rpx', height: '32rpx', marginLeft: '21.5rpx' },
+      ],
+      [
+        { width: '213.04rpx', height: '32rpx' },
+        { width: '213.04rpx', height: '32rpx', marginLeft: '140.72rpx' },
+      ],
+    ],
   },
   onLoad() {
     this.pullDownRefresh0 = this.selectComponent('#pull-down-refresh-0');

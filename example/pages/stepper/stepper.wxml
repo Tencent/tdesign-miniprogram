@@ -19,7 +19,7 @@
       <view class="interval" />
       <t-stepper label="最小值 (5)" min="5" />
       <view class="interval" />
-      <t-stepper label="最大值 (10)" value="999" max="999" />
+      <t-stepper label="最大值 (999)" value="999" max="999" />
       <view class="interval" />
       <view class="pure-stepper-container">
         <t-stepper disabled value="3" theme="mode" />
