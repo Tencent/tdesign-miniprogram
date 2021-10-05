@@ -4,6 +4,8 @@
 
 用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。
 
+![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/navbar.png)
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。

@@ -4,6 +4,8 @@
 
 用于告知用户，该区域的状态变化或者待处理任务的数量。
 
+![](https://tdesign.gtimg.com/miniprogram/qrcode/badge.png)
+
 ## 引入
 
 ### 引入组件

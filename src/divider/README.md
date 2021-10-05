@@ -4,6 +4,8 @@
 
 用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。
 
+![](https://tdesign.gtimg.com/miniprogram/qrcode/divider.png)
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。

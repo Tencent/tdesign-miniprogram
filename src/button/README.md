@@ -4,9 +4,9 @@
 
 用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
 
-## 引入
+![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/button.png)
 
-### 引入组件
+## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
