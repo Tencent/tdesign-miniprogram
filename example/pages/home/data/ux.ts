@@ -1,5 +1,5 @@
 const ux = {
-  name: '反馈信息',
+  name: '反馈提示',
   icon: '/assets/chat@2x.png',
   childArr: [
     // {

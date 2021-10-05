@@ -4,20 +4,135 @@
 
 用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。
 
-### 特性及兼容性
-
-无
+## 引入
 
 ## 引入
 
-### 引入组件
-
-在 `app.json` 或 `page.json` 中引入组件：
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
   "t-loading": "@tencent/tdesign-miniprogram/loading/loading"
 }
+```
+
+## 代码演示
+
+### 类型
+
+纯 icon
+
+![纯icon](图片链接 'optional title')
+
+```html
+<t-loading theme="circular" size="40rpx" loading t-class-indicator="indicator-blue"></t-loading>
+<t-loading theme="spinner" size="40rpx" loading></t-loading>
+<t-loading theme="dots" size="80rpx" loading></t-loading>
+```
+
+icon 加文字横向
+
+![icon加文字横向](图片链接 'optional title')
+
+```html
+<t-loading
+  theme="circular"
+  size="40rpx"
+  loading
+  text="加载中..."
+  t-class-indicator="indicator-blue"
+></t-loading>
+<t-loading theme="spinner" size="40rpx" loading text="加载中..."></t-loading>
+<t-loading theme="circular" size="40rpx" loading style="color: #0052d9">
+  <span slot="text">加载中...</span>
+</t-loading>
+```
+
+icon 加文字竖向
+
+![icon加文字横向](图片链接 'optional title')
+
+```html
+<t-loading
+  class="loading-style"
+  theme="circular"
+  size="40rpx"
+  loading
+  text="加载中"
+  t-class-indicator="indicator-blue"
+  layout="vertical"
+></t-loading>
+<view class="demo-section__desc">纯文字</view>
+<t-loading class="loading-style" indicator="{{false}}" text="加载中..." loading></t-loading>
+<view class="demo-section__desc">加载失败</view>
+<t-loading theme="error" class="loading-style" loading bind:reload="reloadPage"></t-loading>
+```
+
+进度条加载
+
+![进度条加载](图片链接 'optional title')
+
+```html
+<t-loading theme="bar" progress="{{progress}}" loading="{{isLoading}}"></t-loading>
+```
+
+```js
+Page({
+  data: {
+    progress: 100,
+    isLoading: false,
+    barLoadingTimeOut: null,
+  },
+
+  onLoad() {
+    const timeout = setTimeout(() => {
+      this.setData({ isLoading: false });
+    }, 10000);
+    this.setData({
+      progress: -1,
+      isLoading: true,
+      barLoadingTimeOut: timeout,
+    });
+  },
+
+  onUnload() {
+    clearTimeout(this.data.barLoadingTimeOut);
+  },
+});
+```
+
+### 状态
+
+延迟显示进度条加载
+
+![延迟显示](图片链接 'optional title')
+
+```html
+<t-loading
+  class="loading-style"
+  theme="circular"
+  size="40rpx"
+  text="加载中..."
+  loading
+  delay="{{1000}}"
+  t-class-indicator="indicator-blue"
+></t-loading>
+```
+
+### 加载速度
+
+加载速度可配置，加载一周的时间单位（毫秒）
+
+```html
+<t-loading
+  theme="circular"
+  size="52rpx"
+  text="加载中..."
+  loading
+  t-class-text="text-l"
+  t-class-indicator="indicator-blue"
+  duration="{{duration}}"
+></t-loading>
 ```
 
 ## API
