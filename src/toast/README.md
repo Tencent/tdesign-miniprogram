@@ -8,7 +8,7 @@
 
 ### 引入组件
 
-在 `app.json` 或 `page.json` 中引入组件：
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
@@ -16,28 +16,114 @@
 }
 ```
 
-### 组件方式调用
+## 代码演示
 
-以组件的形式调用，可选属性 `show` 赋值为`true`指示是否正在加载，或加载失败
+### 基本用法
 
-#### 默认布局
+基础提示，用 API `Toast` 方法调用轻提示。
 
 ```html
-<t-toast id="t-toast"></t-toast>
+<t-toast id="t-toast" />
 ```
 
 ```js
 import Toast from '@tencent/tdesign-miniprogram/toast/index';
-// page.js
-Page({
-  data: {},
-  handleTap(e) {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: 'toast内容',
-    });
-  },
+```
+
+纯文本
+
+![纯文本](图片链接 'optional title')
+
+```js
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '轻提示文字内容',
+});
+```
+
+带图标-横向
+
+![带图标-横向](图片链接 'optional title')
+
+```js
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '带图标横向',
+  icon: 'check-circle',
+});
+```
+
+带图标-竖向
+
+![带图标-竖向](图片链接 'optional title')
+
+```js
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '带图标竖向',
+  icon: 'star',
+  direction: 'column',
+});
+```
+
+### 默认提示
+
+![默认提示](图片链接 'optional title')
+
+```js
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '成功文案',
+  theme: 'fail',
+});
+
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '警告文案',
+  theme: 'success',
+});
+
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '加载中...',
+  theme: 'loading',
+  direction: 'column',
+});
+```
+
+### 显示位置和展示时间
+
+```js
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '顶部-展示1秒',
+  direction: 'column',
+  placement: 'top',
+  duration: 1000,
+});
+
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '中间-展示2秒',
+  direction: 'column',
+  duration: 2000,
+});
+
+Toast({
+  context: this,
+  selector: '#t-toast',
+  message: '底部-展示3秒',
+  direction: 'column',
+  placement: 'bottom',
+  duration: 3000,
 });
 ```
 

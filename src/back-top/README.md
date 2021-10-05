@@ -2,7 +2,7 @@
 
 ## 介绍
 
-用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作。
+用于当页面过长往下滑动时，帮助用户快速回到页面顶部。
 
 ## 引入
 
@@ -14,6 +14,38 @@
 "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top",
 }
 ```
+
+## 代码演示
+
+### 类型
+
+圆型返回顶部。
+
+![圆型](图片链接 'optional title')
+
+```html
+<!-- 圆白底 -->
+<t-back-top theme="round" text="顶部"></t-back-top>
+<!-- 圆黑底 -->
+<t-back-top theme="round-dark" text="顶部"></t-back-top>
+<!-- 圆白底纯图标 -->
+<t-back-top theme="round" text=""></t-back-top>
+<!-- 圆黑底纯图标 -->
+<t-back-top theme="round-dark" text=""></t-back-top>
+```
+
+半圆型返回顶部。
+
+![半圆型](图片链接 'optional title')
+
+```html
+<!-- 半圆白底 -->
+<t-back-top theme="half-round" text="顶部"></t-back-top>
+<!-- 半圆黑底 -->
+<t-back-top theme="half-round-dark" text="顶部"></t-back-top>
+```
+
+## API
 
 ### Props
 
