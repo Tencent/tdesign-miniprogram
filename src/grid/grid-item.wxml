@@ -15,7 +15,7 @@
         <slot wx:else name="image" class="t-class-image"></slot>
       </view>
       <view
-        class="{{classPrefix}}-words-wapper {{align === 'center' ? 'align-center' : 'align-left'}}"
+        class="{{classPrefix}}-words-wapper {{align === 'center' ? 'align-center' : 'align-left'}} {{layout==='horizontal' ? 'horizontal-words' : ''}}"
       >
         <view wx:if="{{text && text !== 'slot'}}" class="{{classPrefix}}-text t-class-text">
           {{text}}

@@ -1,5 +1,5 @@
 const ux = {
-  name: '反馈信息',
+  name: '反馈提示',
   icon: '/assets/chat@2x.png',
   childArr: [
     // {
@@ -43,7 +43,7 @@ const ux = {
       label: '下拉刷新',
     },
     {
-      name: 'Swipeout',
+      name: 'SwipeCell',
       label: '滑动操作',
     },
     {
