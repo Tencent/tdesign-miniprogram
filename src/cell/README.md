@@ -20,7 +20,7 @@
 
 ### 类型
 
-单行
+#### 单行
 
 ![单行 demo](图片链接 'optional title')
 
@@ -48,7 +48,7 @@
 </t-cell>
 ```
 
-多行
+#### 多行
 
 ![多行 demo](图片链接 'optional title')
 

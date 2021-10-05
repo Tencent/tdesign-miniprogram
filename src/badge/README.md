@@ -20,7 +20,7 @@
 
 ### 类型
 
-普通徽标
+#### 普通徽标
 
 ![普通徽标 demo](图片链接 'optional title')
 
@@ -45,7 +45,7 @@
 <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
 ```
 
-cell 徽标
+#### cell 徽标
 
 ![cell徽标 demo](图片链接 'optional title')
 
@@ -58,7 +58,7 @@ cell 徽标
 </t-cell>
 ```
 
-tabbar 徽标
+#### tabbar 徽标
 
 ![tabbar徽标 demo](图片链接 'optional title')
 
