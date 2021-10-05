@@ -4,6 +4,8 @@
 
 用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。
 
+![](https://tdesign.gtimg.com/miniprogram/qrcode/image.png)
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。

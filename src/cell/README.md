@@ -4,6 +4,8 @@
 
 用于各个类别行的信息展示。
 
+![](https://tdesign.gtimg.com/miniprogram/qrcode/cell.png)
+
 ## 引入
 
 ### 引入组件

@@ -4,6 +4,8 @@
 
 用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。
 
+![](https://tdesign.gtimg.com/miniprogram/qrcode/grid.png)
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。

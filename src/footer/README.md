@@ -4,6 +4,8 @@
 
 用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。
 
+![](https://tdesign.gtimg.com/miniprogram/qrcode/footer.png)
+
 ## 引入
 
 ### 引入组件

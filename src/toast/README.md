@@ -4,6 +4,8 @@
 
 用于轻量级反馈或提示，不会打断用户操作。
 
+![](https://tdesign.gtimg.com/miniprogram/qrcode/toast.png)
+
 ## 引入
 
 ### 引入组件
