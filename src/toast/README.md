@@ -120,10 +120,10 @@ Toast({
 Toast({
   context: this,
   selector: '#t-toast',
-  message: '底部-展示2秒',
+  message: '底部-展示3秒',
   direction: 'column',
   placement: 'bottom',
-  duration: 5000,
+  duration: 3000,
 });
 ```
 
