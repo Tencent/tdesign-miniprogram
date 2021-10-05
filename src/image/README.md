@@ -16,7 +16,7 @@
 
 ## 代码演示
 
-### 01 类型
+### 类型
 
 `mode`属性控制图片的缩放/裁剪模式，并可通过`class`设置图片圆角样式
 
@@ -30,7 +30,7 @@
 <t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
 ```
 
-### 02 状态
+### 状态
 
 加载中/加载失败提示
 
