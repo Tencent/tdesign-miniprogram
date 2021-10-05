@@ -20,139 +20,47 @@
 
 `mode`属性控制图片的缩放/裁剪模式。
 
-```html
-<t-image
-  class="size-l radius-m"
-  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-l radius-m"
-  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
-  mode="heightFix"
-></t-image>
-<t-image
-  class="size-l radius-m"
-  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
-  mode="scaleToFill"
-></t-image>
-```
-
-#### 圆角样式
-
-这里通过样式覆盖来自定义图片圆角。
+![裁切/圆角 demo](图片链接 'optional title')
 
 ```html
-<t-image class="size-l" src="../../../assests-exp/image/image.jpg" mode="aspectFill"></t-image>
-<t-image
-  class="size-l radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-l radius-round"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
+<!-- 裁切样式 裁切 -->
+<t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
+
+<!-- 圆角样式 圆角方形 -->
+<t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
 ```
 
-```less
-.t-image {
-  border-radius: 0;
-}
-.radius-m .t-image {
-  border-radius: 4rpx * 2;
-}
-.radius-round .t-image {
-  border-radius: 999px;
-}
-```
+### 02 状态
 
-### 03 状态
+加载中提示
 
-可以通过`loading`、`load-failed`属性分别定义加载失败、加载中的提示。值为 'default' 则表示使用默认加载风格，值为空或者 'slot' 表示使用插槽渲染，值为其他则表示普通文本内容。
+![加载中/加载失败 demo](图片链接 'optional title')
 
 ```html
+<!-- 加载中 默认提示 -->
 <t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill"></t-image>
+
+<!-- 加载中 自定义提示 -->
 <t-image id="loading-img-custom" class="size-l radius-m" src="" mode="aspectFill" loading="slot">
-  <t-loading slot="loading" theme="circular" size="40rpx" loading style="opacity: 0.6"></t-loading>
+  <t-loading
+    slot="loading"
+    theme="circular"
+    size="40rpx"
+    loading
+    style="opacity: 0.6"
+    t-class-text="loading-text"
+    t-class="loading-container"
+    class="custom-loading"
+  ></t-loading>
 </t-image>
-<t-image class="size-l radius-m" src="" mode="aspectFill" use-load-failed-slot>
-  <view slot="failed" class="custom-loading-failed">加载失败</view>
-</t-image>
+
+<!-- 加载失败 默认提示 -->
 <t-image class="size-l radius-m" src="" mode="aspectFill"></t-image>
+
+<!-- 加载失败 自定义提示 -->
 <t-image class="size-l radius-m" src="" mode="aspectFill" loadFailed="slot">
   <view slot="loadFailed" class="custom-loading-failed">加载失败</view>
 </t-image>
-```
-
-### 04 规格
-
-这里通过样式覆盖来自定义几个常用的图片尺寸。
-
-```html
-<t-image
-  class="size-m radius-m"
-  src="../../../assests-exp/image/image.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-s radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-xs radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-xss radius-s"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-xl radius-l"
-  src="../../../assests-exp/image/image.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-l radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-```
-
-```less
-.size-xl .t-image {
-  width: 120rpx * 2;
-  height: 120rpx * 2;
-}
-
-.size-l .t-image {
-  width: 72rpx * 2;
-  height: 72rpx * 2;
-}
-
-.size-m .t-image {
-  width: 56rpx * 2;
-  height: 56rpx * 2;
-}
-
-.size-s .t-image {
-  width: 48rpx * 2;
-  height: 48rpx * 2;
-}
-
-.size-xs .t-image {
-  width: 32rpx * 2;
-  height: 32rpx * 2;
-}
-
-.size-xss .t-image {
-  width: 24rpx * 2;
-  height: 24rpx * 2;
-}
 ```
 
 ## API

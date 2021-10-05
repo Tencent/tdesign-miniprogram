@@ -18,7 +18,9 @@
 
 ### 类型
 
-![demo](图片链接 'optional title')
+空状态
+
+![图标空状态/自定义图片空状态/带操作空状态 demo](图片链接 'optional title')
 
 ```html
 <!-- 图标空状态 -->
@@ -31,7 +33,13 @@
 <t-empty icon="info-circle-filled" description="描述文字">
   <t-button slot="action" t-class="t-empty__button" theme="primary">操作按钮</t-button>
 </t-empty>
+```
 
+空页面
+
+![空页面 demo](图片链接 'optional title')
+
+```html
 <!-- 空页面 -->
 <view class="page">
   <t-empty
@@ -43,35 +51,6 @@
     <t-button slot="action" variant="plain">按钮</t-button>
   </t-empty>
 </view>
-```
-
-```less
-.t-empty {
-  &__image {
-    width: 240rpx !important;
-    height: 240rpx !important;
-  }
-
-  &__button {
-    width: 320rpx !important;
-    height: 72rpx !important;
-    line-height: 72rpx !important;
-  }
-}
-
-page {
-  background-color: #fff;
-}
-
-.page {
-  padding-top: 240rpx;
-}
-
-.t-empty {
-  &__actions {
-    margin-top: 128rpx !important;
-  }
-}
 ```
 
 ## API

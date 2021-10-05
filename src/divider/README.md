@@ -55,30 +55,6 @@
 </view>
 ```
 
-```less
-.demo-1 {
-  margin: 0 32rpx;
-}
-
-.demo-2 {
-  margin-left: 152rpx;
-}
-
-.demo-3 {
-  display: flex;
-  height: 20px;
-  line-height: center;
-  align-items: center;
-  margin: 0 32rpx;
-  font-size: 12px;
-
-  &--text-color {
-    color: #000;
-    opacity: 0.4;
-  }
-}
-```
-
 ## API
 
 ### Props

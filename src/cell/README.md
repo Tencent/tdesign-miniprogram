@@ -20,7 +20,9 @@
 
 ### 类型
 
-![单行\多行demo](图片链接 'optional title')
+单行
+
+![单行 demo](图片链接 'optional title')
 
 ```html
 <!-- 单行 默认 -->
@@ -44,7 +46,13 @@
 <t-cell title="单行标题" hover>
   <t-icon name="app" slot="left-icon" />
 </t-cell>
+```
 
+多行
+
+![多行 demo](图片链接 'optional title')
+
+```html
 <!-- 多行 -->
 <t-cell title="多行标题" description="一段很长很长的内容文字" />
 
@@ -73,27 +81,6 @@
   t-class-image="title-image-large"
   image="xxx.svg"
 />
-```
-
-```less
-.t-class-left {
-  align-self: flex-start;
-}
-
-.title-icon {
-  margin-right: 8rpx;
-}
-
-.title-image {
-  margin-right: 8rpx;
-  width: 96rpx;
-  height: 96rpx;
-}
-
-.title-image-large {
-  width: 112rpx;
-  height: 112rpx;
-}
 ```
 
 ## API

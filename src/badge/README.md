@@ -20,31 +20,49 @@
 
 ### 类型
 
-徽标主要分红点、数字、文字和角标提醒
+普通徽标
 
-![demo图](图片链接 'optional title')
+![普通徽标 demo](图片链接 'optional title')
 
 ```html
 <!-- 红点提示 -->
 <t-badge dot content="消息" />
+
 <!-- 数字提示 -->
 <t-badge count="{{16}}" content="消息" />
+
 <!-- 文字提示 -->
 <t-badge count="New">
   <text style="padding: 0 10px">消息</text>
 </t-badge>
+
 <!-- 角标提示 -->
 <t-badge count="···">
   <text style="padding: 0 10px">消息</text>
 </t-badge>
+
 <!-- 按钮提示 -->
 <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
+```
+
+cell 徽标
+
+![cell徽标 demo](图片链接 'optional title')
+
+```html
 <!-- 单元格提示 -->
 <t-cell title="单行标题" hover arrow>
   <view class="cell-badge-wrap" slot="note">
     <t-badge dot />
   </view>
 </t-cell>
+```
+
+tabbar 徽标
+
+![tabbar徽标 demo](图片链接 'optional title')
+
+```html
 <!-- tabbar提示 -->
 <t-tab-bar value="label1" bindchange="onChange" class="mb-12" t-class="tab-bar-wrapper">
   <t-tab-bar-item badge-props="{{{count: 16}}}" value="label1" icon="app">文字</t-tab-bar-item>
@@ -52,29 +70,6 @@
   <t-tab-bar-item badge-props="{{{count: 'New'}}}" value="label3" icon="app">文字 </t-tab-bar-item>
   <t-tab-bar-item badge-props="{{{count: '···'}}}" value="label4" icon="app">文字 </t-tab-bar-item>
 </t-tab-bar>
-```
-
-```less
-.size-mini {
-  width: 120rpx;
-  height: 60rpx !important;
-}
-
-.cell-badge-wrap {
-  padding-bottom: 8rpx;
-}
-
-.tab-bar-wrapper {
-  &::after {
-    content: '标签栏带徽标';
-    position: absolute;
-    top: -34px;
-    left: 16px;
-    line-height: 20px;
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 12px;
-  }
-}
 ```
 
 ## API

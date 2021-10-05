@@ -24,12 +24,16 @@
 
 ```html
 <!-- 基础页脚 只有版权信息 -->
-<t-footer theme="text" copyright="{{copyright}}" class="t-footer-demo" />
+<t-footer
+  theme="text"
+  copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+  class="t-footer-demo"
+/>
 
 <!-- 基础加连接页脚 -->
 <t-footer
   theme="text"
-  copyright="{{copyright}}"
+  copyright="Copyright © 2021-2031 TD.All Rights Reserved."
   textLinkList="{{textLinkListTwo}}"
   class="footer"
 />
@@ -40,7 +44,6 @@
 
 ```js
 data: {
-  copyright: 'Copyright © 2021-2031 TD.All Rights Reserved.',
   textLinkListTwo: [
     {
       name: '底部链接',
@@ -54,17 +57,6 @@ data: {
     },
   ],
 },
-```
-
-```less
-.t-footer-demo {
-  margin: 16rpx 0;
-  font-size: 24rpx;
-
-  &--divider {
-    height: 32rpx;
-  }
-}
 ```
 
 ## API
