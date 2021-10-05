@@ -9,7 +9,6 @@
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
-// app.json 或 index.json
 "usingComponents": {
   "t-grid": "@tencent/tdesign-miniprogram/grid/grid",
   "t-grid-item": "@tencent/tdesign-miniprogram/grid/grid-item"
@@ -18,68 +17,292 @@
 
 ## 代码演示
 
-### 01 基本用法
+### 类型
+
+![一行三个/一行四个/一行二个带说明宫格/带徽标宫格 demo](图片链接 'optional title')
 
 ```html
-<view>一行三个（border）</view>
-<view>
-  <t-grid border="{{true}}" column="{{3}}">
-    <t-grid-item text="标题文字">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-    <t-grid-item text="标题文字">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-    <t-grid-item text="标题最多六字">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-  </t-grid>
-</view>
+<!-- 一行三个（border） -->
+<t-grid border="{{true}}" class="three-border" column="{{3}}">
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+  <t-grid-item text="标题最多六字" class="t-grid-item" t-class-text="text">
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+</t-grid>
 
-<view>一行二个带说明宫格</view>
-<view>
-  <t-grid column="{{2}}">
-    <t-grid-item text="标题文字" description="说明文字">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-    <t-grid-item text="标题最多六字" description="说明文字最多八字">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-  </t-grid>
-</view>
+<!-- 一行四个 -->
+<t-grid class="four">
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+  <t-grid-item text="标题五字内" class="t-grid-item" t-class-text="text">
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+</t-grid>
 
-<view>带徽标宫格</view>
-<view>
-  <t-grid column="{{1}}">
-    <t-grid-item text="标题文字">
-      <t-badge count="{{16}}" slot="image">
-        <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-      </t-badge>
-    </t-grid-item>
-  </t-grid>
-</view>
-<view>自定义宫格布局（border重合）</view>
-<view>
-  <t-grid border="{{true}}" column="{{2}}">
-    <t-grid-item text="标题文字">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-    <t-grid-item text="标题文字">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-  </t-grid>
-</view>
-<view>自定义宫格布局（border分离）</view>
-<view>
-  <t-grid border="{{true}}" gutter="{{20}}" column="{{2}}">
-    <t-grid-item text="标题文字" t-class-text="text">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-    <t-grid-item text="标题文字" t-class-text="text">
-      <image src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
-    </t-grid-item>
-  </t-grid>
-</view>
+<!-- 一行二个带说明宫格 -->
+<t-grid class="two-des" column="{{2}}" align="left">
+  <t-grid-item
+    text="标题文字"
+    class="t-grid-item"
+    t-class-text="text"
+    t-class-description="description"
+    description="说明文字"
+    layout="horizontal"
+  >
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+  <t-grid-item
+    text="标题最多六字"
+    class="t-grid-item"
+    t-class-text="text"
+    t-class-description="description"
+    description="说明文字最多八字"
+    layout="horizontal"
+  >
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+</t-grid>
+
+<!-- 一行三个带说明宫格 -->
+<t-grid class="three-des" column="{{3}}">
+  <t-grid-item
+    text="标题文字"
+    class="t-grid-item"
+    t-class-text="text"
+    t-class-description="description"
+    description="说明文字"
+  >
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+  <t-grid-item
+    text="标题文字"
+    class="t-grid-item"
+    t-class-text="text"
+    t-class-description="description"
+    description="说明文字"
+  >
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+  <t-grid-item
+    text="标题最多六字"
+    class="t-grid-item"
+    t-class-text="text"
+    t-class-description="description"
+    description="说明最多六字"
+  >
+    <image
+      class="image-icon"
+      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      slot="image"
+    />
+  </t-grid-item>
+</t-grid>
+
+<!-- 带徽标宫格 -->
+<t-grid class="t-grid badge">
+  <t-grid-item text="标题文字" t-class-text="text">
+    <t-badge count="{{16}}" slot="image" t-class="badge-item">
+      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
+    </t-badge>
+  </t-grid-item>
+  <t-grid-item text="标题文字" t-class-text="text">
+    <t-badge dot slot="image" t-class="badge-item">
+      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
+    </t-badge>
+  </t-grid-item>
+  <t-grid-item text="标题文字" t-class-text="text"
+    >>
+    <t-badge count="New" slot="image" t-class="badge-item" t-class-text="text">
+      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
+    </t-badge>
+  </t-grid-item>
+  <t-grid-item text="标题五字内" t-class-text="text">
+    <t-badge count="slot" slot="image" t-class="badge-item">
+      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
+      <view slot="count" class="badge-circle">
+        <view class="badge-circle-container">
+          <view class="circle" />
+          <view class="circle" />
+          <view class="circle" />
+        </view>
+      </view>
+    </t-badge>
+  </t-grid-item>
+</t-grid>
+```
+
+```less
+.three-border {
+  .text {
+    margin-bottom: 24rpx;
+    padding-top: 8rpx;
+  }
+
+  .image-icon {
+    padding-top: 24rpx;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.four {
+  .text {
+    margin-bottom: 32rpx;
+    font-size: 24rpx;
+    padding-top: 10rpx;
+  }
+
+  .image-icon {
+    padding-top: 32rpx;
+    width: 64rpx;
+    height: 64rpx;
+  }
+}
+
+.two-des {
+  .image-icon {
+    padding-top: 24rpx;
+    width: 96rpx;
+    height: 96rpx;
+    padding-left: 24rpx;
+    padding-bottom: 32rpx;
+  }
+
+  .t-grid-item-image-wapper {
+    width: 120rpx;
+    height: 160rpx;
+    flex-grow: 0;
+  }
+
+  .text {
+    margin-top: 24rpx;
+    padding-left: 25rpx;
+  }
+
+  .t-grid-item {
+    display: block !important;
+  }
+
+  .description {
+    padding-left: 25rpx;
+    padding-top: 8rpx;
+  }
+}
+
+.three-des {
+  .text {
+    font-size: 28rpx;
+  }
+
+  .image-icon {
+    padding-top: 24rpx;
+    width: 96rpx;
+    height: 96rpx;
+  }
+
+  .description {
+    margin-top: 8rpx;
+    margin-bottom: 24rpx;
+  }
+}
+
+.badge {
+  .text {
+    margin-bottom: 32rpx;
+    font-size: 24rpx;
+  }
+
+  .image-icon {
+    width: 64rpx;
+    height: 64rpx;
+  }
+
+  .badge-item {
+    margin-top: 32rpx;
+  }
+
+  .badge-circle {
+    display: flex;
+    justify-content: center;
+    background-color: #e34d59;
+    border-radius: 15rpx;
+    width: 36rpx;
+    height: 32rpx;
+    align-items: center;
+    position: absolute;
+    top: -15rpx;
+    left: 46rpx;
+
+    .circle {
+      width: 4rpx;
+      height: 4rpx;
+      border-radius: 2rpx;
+      background-color: white;
+      margin-left: 4rpx;
+    }
+
+    .badge-circle-container {
+      margin-left: -4rpx;
+      display: flex;
+    }
+  }
+}
 ```
 
 ## API

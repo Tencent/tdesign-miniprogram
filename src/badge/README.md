@@ -4,15 +4,11 @@
 
 用于告知用户，该区域的状态变化或者待处理任务的数量。
 
-### 特性及兼容性
-
-无
-
 ## 引入
 
 ### 引入组件
 
-在 `app.json` 或 `page.json` 中引入组件：
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
@@ -20,13 +16,65 @@
 }
 ```
 
-## 用法
+## 代码演示
 
-### 组件方式
+### 类型
+
+徽标主要分红点、数字、文字和角标提醒
+
+![demo图](图片链接 'optional title')
 
 ```html
-<!-- page.wxml -->
-<t-badge count="10" size="medium"> </t-badge>
+<!-- 红点提示 -->
+<t-badge dot content="消息" />
+<!-- 数字提示 -->
+<t-badge count="{{16}}" content="消息" />
+<!-- 文字提示 -->
+<t-badge count="New">
+  <text style="padding: 0 10px">消息</text>
+</t-badge>
+<!-- 角标提示 -->
+<t-badge count="···">
+  <text style="padding: 0 10px">消息</text>
+</t-badge>
+<!-- 按钮提示 -->
+<t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
+<!-- 单元格提示 -->
+<t-cell title="单行标题" hover arrow>
+  <view class="cell-badge-wrap" slot="note">
+    <t-badge dot />
+  </view>
+</t-cell>
+<!-- tabbar提示 -->
+<t-tab-bar value="label1" bindchange="onChange" class="mb-12" t-class="tab-bar-wrapper">
+  <t-tab-bar-item badge-props="{{{count: 16}}}" value="label1" icon="app">文字</t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{{dot: true}}}" value="label2" icon="app">文字 </t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{{count: 'New'}}}" value="label3" icon="app">文字 </t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{{count: '···'}}}" value="label4" icon="app">文字 </t-tab-bar-item>
+</t-tab-bar>
+```
+
+```less
+.size-mini {
+  width: 120rpx;
+  height: 60rpx !important;
+}
+
+.cell-badge-wrap {
+  padding-bottom: 8rpx;
+}
+
+.tab-bar-wrapper {
+  &::after {
+    content: '标签栏带徽标';
+    position: absolute;
+    top: -34px;
+    left: 16px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 12px;
+  }
+}
 ```
 
 ## API

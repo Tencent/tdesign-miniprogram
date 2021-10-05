@@ -9,7 +9,6 @@
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
-// app.json 或 index.json
 "usingComponents": {
   "t-empty": "@tencent/tdesign-miniprogram/empty/empty"
 }
@@ -17,28 +16,62 @@
 
 ## 代码演示
 
-### 基础用法
+### 类型
+
+![demo](图片链接 'optional title')
 
 ```html
-<t-empty t-class="empty-cls" image="{{emptyBag}}" size="224rpx" description="描述文字"></t-empty>
+<!-- 图标空状态 -->
+<t-empty icon="info-circle-filled" description="描述文字" />
 
-<t-empty t-class="empty-cls" image="{{emptyCart}}" size="224rpx" description="描述文字">
-  <t-button t-class="empty-button" bind:tap="toHome">按钮</t-button>
+<!-- 自定义图片空状态 -->
+<t-empty t-class-image="t-empty__image" image="{{'xxx.jpg'}}" description="描述文字" />
+
+<!-- 带操作空状态 -->
+<t-empty icon="info-circle-filled" description="描述文字">
+  <t-button slot="action" t-class="t-empty__button" theme="primary">操作按钮</t-button>
 </t-empty>
+
+<!-- 空页面 -->
+<view class="page">
+  <t-empty
+    t-class="empty-cls"
+    t-class-actions="t-empty__actions"
+    icon="info-circle-filled"
+    description="描述文字"
+  >
+    <t-button slot="action" variant="plain">按钮</t-button>
+  </t-empty>
+</view>
 ```
 
-```js
-Page({
-  data: {
-    emptyBag: 'https://cdn-we-retail.ym.tencent.com/retail-ui/components/error/emptybag.png',
-    emptyCart: 'https://cdn-we-retail.ym.tencent.com/retail-ui/components/error/emptycart.png',
-  },
-  toHome() {
-    wx.reLaunch({
-      url: '/components-exp/index/index',
-    });
-  },
-});
+```less
+.t-empty {
+  &__image {
+    width: 240rpx !important;
+    height: 240rpx !important;
+  }
+
+  &__button {
+    width: 320rpx !important;
+    height: 72rpx !important;
+    line-height: 72rpx !important;
+  }
+}
+
+page {
+  background-color: #fff;
+}
+
+.page {
+  padding-top: 240rpx;
+}
+
+.t-empty {
+  &__actions {
+    margin-top: 128rpx !important;
+  }
+}
 ```
 
 ## API
