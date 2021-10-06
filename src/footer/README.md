@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。
+用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/footer.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/footer.png)
 
 ## 引入
 
@@ -21,8 +23,6 @@
 ## 代码演示
 
 ### 类型
-
-![demo页](图片链接 'optional title')
 
 ```html
 <!-- 基础页脚 只有版权信息 -->

@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于告知用户，该区域的状态变化或者待处理任务的数量。
+用于告知用户，该区域的状态变化或者待处理任务的数量。<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/badge.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/badge.png)
 
 ## 引入
 
@@ -14,7 +16,7 @@
 
 ```json
 "usingComponents": {
-  "t-icon": "@tencent/tdesign-miniprogram/badge/badge"
+  "t-badge": "@tencent/tdesign-miniprogram/badge/badge"
 }
 ```
 
@@ -23,8 +25,6 @@
 ### 类型
 
 #### 普通徽标
-
-![普通徽标 demo](图片链接 'optional title')
 
 ```html
 <!-- 红点提示 -->
@@ -49,8 +49,6 @@
 
 #### cell 徽标
 
-![cell徽标 demo](图片链接 'optional title')
-
 ```html
 <!-- 单元格提示 -->
 <t-cell title="单行标题" hover arrow>
@@ -61,8 +59,6 @@
 ```
 
 #### tabbar 徽标
-
-![tabbar徽标 demo](图片链接 'optional title')
 
 ```html
 <!-- tabbar提示 -->

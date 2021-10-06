@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于空状态时的占位提示。
+用于空状态时的占位提示。<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/empty.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/empty.png)
 
 ## 引入
 
@@ -22,8 +24,6 @@
 
 #### 空状态
 
-![图标空状态/自定义图片空状态/带操作空状态 demo](图片链接 'optional title')
-
 ```html
 <!-- 图标空状态 -->
 <t-empty icon="info-circle-filled" description="描述文字" />
@@ -38,8 +38,6 @@
 ```
 
 #### 空页面
-
-![空页面 demo](图片链接 'optional title')
 
 ```html
 <!-- 空页面 -->

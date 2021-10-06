@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于各个类别行的信息展示。
+用于各个类别行的信息展示。<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/cell.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/cell.png)
 
 ## 引入
 
@@ -23,8 +25,6 @@
 ### 类型
 
 #### 单行
-
-![单行 demo](图片链接 'optional title')
 
 ```html
 <!-- 单行 默认 -->
@@ -51,8 +51,6 @@
 ```
 
 #### 多行
-
-![多行 demo](图片链接 'optional title')
 
 ```html
 <!-- 多行 -->
