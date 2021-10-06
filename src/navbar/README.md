@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。
+用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。<br/><br/>
 
-![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/navbar.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/navbar.png)
 
 ## 引入
 
@@ -23,14 +25,10 @@
 
 导航栏，可以带返回，主页按钮，或自定义展示内容
 
-![Alt text](图片链接 'optional title')
-
 ```html
 <!-- 基础导航栏 -->
 <t-navbar title="标题" t-class-title="nav-title" />
 ```
-
-![Alt text](图片链接 'optional title')
 
 ```html
 <!-- 带返回，主页按钮导航栏 -->
@@ -44,8 +42,6 @@
   t-class-title="nav-title"
 />
 ```
-
-![Alt text](图片链接 'optional title')
 
 ```html
 <!-- 自定义插槽导航栏 -->

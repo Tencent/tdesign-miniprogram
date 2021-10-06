@@ -2,9 +2,11 @@
 
 ### 介绍
 
-用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。
+用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/grid.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/grid.png)
 
 ## 引入
 
@@ -22,8 +24,6 @@
 ### 类型
 
 #### 一行三个
-
-![一行三个 demo](图片链接 'optional title')
 
 ```html
 <!-- 一行三个（border） -->
@@ -53,8 +53,6 @@
 ```
 
 #### 一行二个带说明宫格
-
-![一行二个带说明宫格 demo](图片链接 'optional title')
 
 ```html
 <!-- 一行二个带说明宫格 -->
@@ -91,8 +89,6 @@
 ```
 
 #### 带徽标宫格
-
-![带徽标宫格 demo](图片链接 'optional title')
 
 ```html
 <!-- 带徽标宫格 -->

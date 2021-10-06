@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于多行文本信息输入。
+用于多行文本信息输入。<br/><br/>
 
-![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/textarea.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/textarea.png)
 
 ## 引入
 
@@ -21,8 +23,6 @@
 ### 类型
 
 基础多行文本信息输入
-
-![Alt text](图片链接 'optional title')
 
 ```html
 <t-textarea name="标签文字" placeholder="请输入文字" />

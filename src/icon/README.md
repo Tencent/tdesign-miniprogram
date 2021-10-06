@@ -2,9 +2,11 @@
 
 ## 介绍
 
-图标
+图标<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/icon.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/icon.png)
 
 ## 引入
 

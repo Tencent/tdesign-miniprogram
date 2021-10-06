@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。
+用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/loading.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/loading.png)
 
 ## 引入
 
@@ -24,8 +26,6 @@
 
 纯 icon
 
-![纯icon](图片链接 'optional title')
-
 ```html
 <t-loading theme="circular" size="40rpx" loading t-class-indicator="indicator-blue"></t-loading>
 <t-loading theme="spinner" size="40rpx" loading></t-loading>
@@ -33,8 +33,6 @@
 ```
 
 icon 加文字横向
-
-![icon加文字横向](图片链接 'optional title')
 
 ```html
 <t-loading
@@ -51,8 +49,6 @@ icon 加文字横向
 ```
 
 icon 加文字竖向
-
-![icon加文字横向](图片链接 'optional title')
 
 ```html
 <t-loading
@@ -71,8 +67,6 @@ icon 加文字竖向
 ```
 
 进度条加载
-
-![进度条加载](图片链接 'optional title')
 
 ```html
 <t-loading theme="bar" progress="{{progress}}" loading="{{isLoading}}"></t-loading>
@@ -106,8 +100,6 @@ Page({
 ### 状态
 
 延迟显示进度条加载
-
-![延迟显示](图片链接 'optional title')
 
 ```html
 <t-loading
