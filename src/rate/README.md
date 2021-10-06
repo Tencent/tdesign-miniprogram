@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于对某行为/事物进行打分。
+用于对某行为/事物进行打分。<br/><br/>
 
-![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/rate.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/rate.png)
 
 ## 引入
 
@@ -24,8 +26,6 @@
 ### 类型
 
 实心评分
-
-![Alt text](图片链接 'optional title')
 
 ```html
 <t-rate size="{{48}}" value="{{3}}" variant="filled" bind:change="onChange"></t-rate>

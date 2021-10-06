@@ -2,9 +2,11 @@
 
 ### 特性及兼容性
 
-抽屉从父窗体边缘滑入，覆盖住部分父窗体内容。用户在抽屉内操作时不必离开当前任务，操作完成后，可以平滑地回到到原任务，常用于侧边栏导航
+抽屉从父窗体边缘滑入，覆盖住部分父窗体内容。用户在抽屉内操作时不必离开当前任务，操作完成后，可以平滑地回到到原任务，常用于侧边栏导航<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/drawer.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/drawer.png)
 
 ## 引入
 

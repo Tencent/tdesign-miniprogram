@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于轻量级反馈或提示，不会打断用户操作。
+用于轻量级反馈或提示，不会打断用户操作。<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/toast.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/toast.png)
 
 ## 引入
 
@@ -34,8 +36,6 @@ import Toast from '@tencent/tdesign-miniprogram/toast/index';
 
 纯文本
 
-![纯文本](图片链接 'optional title')
-
 ```js
 Toast({
   context: this,
@@ -45,8 +45,6 @@ Toast({
 ```
 
 带图标-横向
-
-![带图标-横向](图片链接 'optional title')
 
 ```js
 Toast({
@@ -59,8 +57,6 @@ Toast({
 
 带图标-竖向
 
-![带图标-竖向](图片链接 'optional title')
-
 ```js
 Toast({
   context: this,
@@ -72,8 +68,6 @@ Toast({
 ```
 
 ### 默认提示
-
-![默认提示](图片链接 'optional title')
 
 ```js
 Toast({

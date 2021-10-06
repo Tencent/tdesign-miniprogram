@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于当页面过长往下滑动时，帮助用户快速回到页面顶部。
+用于当页面过长往下滑动时，帮助用户快速回到页面顶部。<br/><br/>
 
-![](https://tdesign.gtimg.com/miniprogram/qrcode/back-top.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/back-top.png)
 
 ## 引入
 
@@ -23,8 +25,6 @@
 
 圆型返回顶部。
 
-![圆型](图片链接 'optional title')
-
 ```html
 <!-- 圆白底 -->
 <t-back-top theme="round" text="顶部"></t-back-top>
@@ -37,8 +37,6 @@
 ```
 
 半圆型返回顶部。
-
-![半圆型](图片链接 'optional title')
 
 ```html
 <!-- 半圆白底 -->

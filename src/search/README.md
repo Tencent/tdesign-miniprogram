@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于用户输入搜索信息，并进行页面内容搜索。
+用于用户输入搜索信息，并进行页面内容搜索。<br/><br/>
 
-![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/search.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/search.png)
 
 ## 引入
 
@@ -21,8 +23,6 @@
 ### 类型
 
 基础搜索框。
-
-![Alt text](图片链接 'optional title')
 
 ```html
 <t-search placeholder="搜索预设文案" center="{{true}}" />

@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于单行文本信息输入。
+用于单行文本信息输入。<br/><br/>
 
-![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/input.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/input.png)
 
 ## 引入
 
@@ -21,8 +23,6 @@
 ### 类型
 
 基础文本框
-
-![Alt text](图片链接 'optional title')
 
 ```html
 <t-input name="标签文字" placeholder="请输入文字" />

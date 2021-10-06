@@ -2,9 +2,11 @@
 
 ## 介绍
 
-用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
+用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。<br/><br/>
 
-![Alt text](https://tdesign.gtimg.com/miniprogram/qrcode/button.png)
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/button.png)
 
 ## 引入
 
@@ -21,8 +23,6 @@
 ### 类型
 
 基础按钮
-
-![Alt text](图片链接 'optional title')
 
 ```html
 <t-button theme="primary" size="large">强按钮</t-button>
@@ -46,8 +46,6 @@
 
 按钮禁用态
 
-![Alt text](图片链接 'optional title')
-
 ```html
 <t-button theme="primary" size="large" disabled>强按钮</t-button>
 <t-button theme="primary" size="large" variant="plain" disabled>弱按钮</t-button>
@@ -69,8 +67,6 @@
 ### 规格
 
 按钮尺寸
-
-![Alt text](图片链接 'optional title')
 
 ```html
 <t-button theme="primary" size="large">按钮 44</t-button>
