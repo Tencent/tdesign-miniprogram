@@ -14,6 +14,10 @@ Page({
     time: '',
     timeText: '',
 
+    monthDateVisible: false,
+    monthDate: '09-21',
+    monthDateText: '',
+
     datetimeVisible: false,
     datetime: '2021-06-06 12:11:11',
     datetimeText: '',

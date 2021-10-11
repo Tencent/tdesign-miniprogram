@@ -2,7 +2,11 @@
 
 ## 介绍
 
-菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。
+菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。<br/><br/>
+
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/dropdown-menu.png)
 
 ### 特性及兼容性
 
@@ -16,7 +20,7 @@
 
 ```json
 "usingComponents": {
-   "t-dropdown-item": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-item"
+   "t-dropdown-item": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-item",
    "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu"
 }
 ```

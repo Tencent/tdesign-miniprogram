@@ -1,5 +1,5 @@
 <view class="demo-title">Badge 徽标</view>
-<view class="demo-desc">展示新增内容的提示，用警示红色为主色，包含数字或文字提示内容</view>
+<view class="demo-desc">用于告知用户，该区域的状态变化或者待处理任务的数量。</view>
 <t-demo title="01 类型" desc="徽标主要分红点、数字、文字和角标提醒">
   <view class="demo-grid">
     <t-badge dot class="badge-item" content="消息" />
@@ -13,7 +13,7 @@
     <t-badge dot class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
-    <t-badge count="{{200}}" class="badge-item">
+    <t-badge count="{{16}}" class="badge-item">
       <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
     </t-badge>
     <t-badge count="New" class="badge-item">
@@ -37,7 +37,6 @@
     <t-cell title="单行标题" hover arrow>
       <view class="cell-badge-wrap" slot="note">
         <t-badge count="New" shape="square" class="cell-badge" />
-        <t-badge count="New" shape="round" class="cell-badge" />
         <t-badge count="New" class="cell-badge" />
       </view>
     </t-cell>

@@ -78,10 +78,6 @@ const display = {
       name: 'Sticky',
       label: '吸顶',
     },
-    {
-      name: 'ScrollView',
-      label: '滚动容器',
-    },
   ],
 };
 

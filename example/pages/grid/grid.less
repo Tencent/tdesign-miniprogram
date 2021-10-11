@@ -1,10 +1,6 @@
 @gutter-row-height: 32rpx;
 
 page {
-  .t-grid-item {
-    flex: 1;
-  }
-
   .demo {
     min-height: 100vh;
     overflow: hidden;
@@ -34,6 +30,7 @@ page {
   .three-border {
     .text {
       margin-bottom: 24rpx;
+      padding-top: 8rpx;
     }
 
     .image-icon {
@@ -47,6 +44,7 @@ page {
     .text {
       margin-bottom: 32rpx;
       font-size: 24rpx;
+      padding-top: 16rpx;
     }
 
     .image-icon {
@@ -58,6 +56,7 @@ page {
 
   .five {
     .text {
+      padding-top: 20rpx;
       margin-bottom: 32rpx;
       font-size: 24rpx;
     }
@@ -82,6 +81,7 @@ page {
       }
 
       .text {
+        padding-top: 20rpx;
         margin-bottom: 20rpx;
         font-size: 24rpx;
       }
@@ -92,6 +92,7 @@ page {
     .text {
       margin-bottom: 24rpx;
       font-size: 28rpx;
+      padding-top: 9rpx;
     }
 
     .image-icon {
@@ -102,22 +103,27 @@ page {
   }
 
   .two-des {
-    display: block !important;
-
     .image-icon {
       padding-top: 24rpx;
       width: 96rpx;
       height: 96rpx;
-      float: left;
       padding-left: 24rpx;
       padding-bottom: 32rpx;
     }
 
+    .t-grid-item-image-wapper {
+      width: 120rpx;
+      height: 160rpx;
+      flex-grow: 0;
+    }
+
+    .t-grid-item-words-wapper {
+      display: block;
+    }
+
     .text {
-      float: left;
       margin-top: 24rpx;
-      margin-left: 16rpx;
-      width: 50%;
+      padding-left: 25rpx;
     }
 
     .t-grid-item {
@@ -125,15 +131,14 @@ page {
     }
 
     .description {
-      float: left;
-      width: 50%;
-      padding-left: 16rpx;
-      font-size: 22rpx;
+      padding-left: 25rpx;
+      padding-top: 8rpx;
     }
   }
 
   .three-des {
     .text {
+      padding-top: 7rpx;
       font-size: 28rpx;
     }
 
@@ -144,18 +149,21 @@ page {
     }
 
     .description {
+      margin-top: 8rpx;
       margin-bottom: 24rpx;
     }
   }
 
   .badge {
     .text {
+      padding-top: 16rpx;
       margin-bottom: 32rpx;
+      font-size: 24rpx;
     }
 
     .image-icon {
-      width: 96rpx;
-      height: 96rpx;
+      width: 64rpx;
+      height: 64rpx;
     }
 
     .badge-item {
@@ -172,7 +180,7 @@ page {
       align-items: center;
       position: absolute;
       top: -15rpx;
-      left: 80rpx;
+      left: 46rpx;
 
       .circle {
         width: 4rpx;
@@ -185,23 +193,6 @@ page {
       .badge-circle-container {
         margin-left: -4rpx;
         display: flex;
-      }
-    }
-  }
-
-  .four-custom-border {
-    .t-grid-item {
-      .image-icon {
-        width: 56rpx;
-        height: 56rpx;
-        padding-top: 32rpx;
-      }
-
-      .text {
-        font-size: 24rpx;
-        padding-bottom: 32rpx;
-        width: 150rpx;
-        text-align: center;
       }
     }
   }

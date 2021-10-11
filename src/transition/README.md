@@ -2,7 +2,11 @@
 
 ## 介绍
 
-过渡组件
+过渡组件<br/><br/>
+
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/transition.png)
 
 ## 引入
 

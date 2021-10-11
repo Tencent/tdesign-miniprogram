@@ -1,5 +1,5 @@
 <view class="title">Image 图片</view>
-<view class="desc">图片主要为上下左右居中裁切、拉伸、平铺等方式</view>
+<view class="desc">用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。</view>
 <t-demo title="01 类型" desc="裁切样式">
   <view class="desc">
     <view class="row">

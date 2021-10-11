@@ -2,7 +2,11 @@
 
 ## 介绍
 
-进度条
+进度条<br/><br/>
+
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/progress.png)
 
 ### 特性和兼容性
 

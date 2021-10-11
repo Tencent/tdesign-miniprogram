@@ -1,8 +1,6 @@
 <view class="demo">
   <view class="demo-title">Search 搜索</view>
-  <view class="demo-desc">
-    很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字
-  </view>
+  <view class="demo-desc">用于用户输入搜索信息，并进行页面内容搜索。 </view>
   <t-demo title="01 类型">
     <view class="demo-section__desc">基础搜索框</view>
     <view class="demo-section__wrapper">

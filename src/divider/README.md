@@ -2,11 +2,15 @@
 
 ## 介绍
 
-用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。
+用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。<br/><br/>
+
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/divider.png)
 
 ## 引入
 
-在`app.json`或`page.json`中引入组件
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
@@ -16,106 +20,41 @@
 
 ## 代码演示
 
-### 基础用法
+### 类型
 
-通过 slot 传入分割线文案或者其他自定义内容，使用`align`属性控制文本是居中、偏左或者偏右。  
-`line-color`属性可定义线条颜色，不需要显示线条时，传入`border-color`的值为`transparent`即可。
+分割符主要是由直线和文字组成，通过`slot`传入分割线文案或者其他自定义内容，通过`layout`控制分隔符是垂直还是横向，`line-color`属性可定义线条颜色
 
 ```html
-<view class="t-divider-list">
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">直线拉通</view>
-    <t-divider dashed></t-divider>
-  </view>
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">虚线拉通</view>
-    <t-divider dashed></t-divider>
-  </view>
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">左右间距</view>
-    <t-divider t-class="demo-2"></t-divider>
-  </view>
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">右侧拉通</view>
-    <t-divider t-class="demo-3"></t-divider>
-  </view>
+<!-- 直线拉通 -->
+<t-divider></t-divider>
 
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">自定义左侧间距</view>
-    <t-divider t-class="demo-4"></t-divider>
-  </view>
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">文字+直线</view>
-    <t-divider t-class="demo-5" t-class-content="t-class-content">
-      <text slot="content">文字信息</text>
-    </t-divider>
-  </view>
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">文字+虚线</view>
-    <t-divider t-class="demo-5" t-class-content="t-class-content" dashed content="文字信息">
-    </t-divider>
-  </view>
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">纯文字</view>
-    <t-divider lineColor="transparent">
-      <text slot="content">没有更多了~</text>
-    </t-divider>
-  </view>
-  <view class="t-divider-demo">
-    <view class="t-divider-demo__title">垂直分割</view>
-    <view class="demo-6">
-      <text>雨纷纷</text>
-      <t-divider theme="vertical"></t-divider>
-      <text>雨纷纷</text>
-      <t-divider theme="vertical"></t-divider>
-      <text>雨纷纷</text>
-      <t-divider theme="vertical"></t-divider>
-      <text>雨纷纷</text>
-    </view>
-  </view>
+<!-- 虚线拉通 -->
+<t-divider dashed></t-divider>
+
+<!-- 左右间距 -->
+<t-divider t-class="demo-1"></t-divider>
+
+<!-- 自定义左侧间距 -->
+<t-divider t-class="demo-2"></t-divider>
+
+<!-- 文字+直线 -->
+<t-divider t-class="demo-1" t-class-content="t-class-content">
+  <text slot="content">文字信息</text>
+</t-divider>
+
+<!-- 纯文字 -->
+<t-divider lineColor="transparent">
+  <text slot="content">没有更多了~</text>
+</t-divider>
+
+<!-- 垂直分割 -->
+<view class="demo-3">
+  <text class="demo-3--text-color">文字信息</text>
+  <t-divider layout="vertical"></t-divider>
+  <text class="demo-3--text-color">文字信息</text>
+  <t-divider layout="vertical"></t-divider>
+  <text class="demo-3--text-color">文字信息</text>
 </view>
-```
-
-```less
-.t-divider-demo {
-  margin: 0 0 32rpx;
-  font-size: 24rpx;
-
-  &__title {
-    color: #000;
-    opacity: 40%;
-    margin: 0 32rpx 36rpx;
-  }
-}
-
-.t-class-content {
-  margin-right: 20rpx;
-  margin-left: 20rpx;
-}
-
-.demo-2 {
-  margin: 0 32rpx;
-}
-
-.demo-3 {
-  margin-left: 32rpx;
-}
-
-.demo-4 {
-  margin-left: 152rpx;
-}
-
-.demo-5 {
-  margin: 0 32rpx;
-}
-
-.demo-6 {
-  display: flex;
-  margin: 0 32rpx;
-  font-size: 12px;
-  color: #000;
-  opacity: 40%;
-}
 ```
 
 ## API

@@ -31,9 +31,9 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          isCustomElement: tag => tag.startsWith('td-')
-        }
-      }
+          isCustomElement: (tag) => tag.startsWith('td-'),
+        },
+      },
     }),
     vueJsx(),
     createTDesignPlugin(),

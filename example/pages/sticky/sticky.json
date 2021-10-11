@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "Sticky 吸顶组件"
+  "navigationBarTitleText": "Sticky",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
 }

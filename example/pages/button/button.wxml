@@ -1,6 +1,6 @@
 <view class="demo">
   <view class="demo-title">Button 按钮</view>
-  <div class="demo-desc">可点击的按钮，常用于表单</div>
+  <view class="demo-desc">用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。</view>
   <t-demo title="01 类型">
     <view class="demo-section__desc">基础按钮</view>
     <t-button theme="primary" size="large">强按钮</t-button>

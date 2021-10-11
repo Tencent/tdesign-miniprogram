@@ -2,11 +2,15 @@
 
 ## 介绍
 
-用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。
+用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。<br/><br/>
+
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/image.png)
 
 ## 引入
 
-在`app.json`或`index.json`中引入组件，详细介绍见[快速上手](/#/ui/components/ui/README?id=按需引入)
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
@@ -16,145 +20,47 @@
 
 ## 代码演示
 
-### 01 类型
+### 类型
 
-#### 裁切样式
-
-`mode`属性控制图片的缩放/裁剪模式。
+`mode`属性控制图片的缩放/裁剪模式，并可通过`class`设置图片圆角样式
 
 ```html
-<t-image
-  class="size-l radius-m"
-  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-l radius-m"
-  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
-  mode="heightFix"
-></t-image>
-<t-image
-  class="size-l radius-m"
-  src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image.jpg"
-  mode="scaleToFill"
-></t-image>
+<!-- 裁切样式 裁切 -->
+<t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
+
+<!-- 圆角样式 圆角方形 -->
+<t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
 ```
 
-#### 圆角样式
+### 状态
 
-这里通过样式覆盖来自定义图片圆角。
+加载中/加载失败提示
 
 ```html
-<t-image class="size-l" src="../../../assests-exp/image/image.jpg" mode="aspectFill"></t-image>
-<t-image
-  class="size-l radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-l radius-round"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-```
-
-```less
-.t-image {
-  border-radius: 0;
-}
-.radius-m .t-image {
-  border-radius: 4rpx * 2;
-}
-.radius-round .t-image {
-  border-radius: 999px;
-}
-```
-
-### 03 状态
-
-可以通过`loading`、`load-failed`属性分别定义加载失败、加载中的提示。值为 'default' 则表示使用默认加载风格，值为空或者 'slot' 表示使用插槽渲染，值为其他则表示普通文本内容。
-
-```html
+<!-- 加载中 默认提示 -->
 <t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill"></t-image>
+
+<!-- 加载中 自定义提示 -->
 <t-image id="loading-img-custom" class="size-l radius-m" src="" mode="aspectFill" loading="slot">
-  <t-loading slot="loading" theme="circular" size="40rpx" loading style="opacity: 0.6"></t-loading>
+  <t-loading
+    slot="loading"
+    theme="circular"
+    size="40rpx"
+    loading
+    style="opacity: 0.6"
+    t-class-text="loading-text"
+    t-class="loading-container"
+    class="custom-loading"
+  ></t-loading>
 </t-image>
-<t-image class="size-l radius-m" src="" mode="aspectFill" use-load-failed-slot>
-  <view slot="failed" class="custom-loading-failed">加载失败</view>
-</t-image>
+
+<!-- 加载失败 默认提示 -->
 <t-image class="size-l radius-m" src="" mode="aspectFill"></t-image>
+
+<!-- 加载失败 自定义提示 -->
 <t-image class="size-l radius-m" src="" mode="aspectFill" loadFailed="slot">
   <view slot="loadFailed" class="custom-loading-failed">加载失败</view>
 </t-image>
-```
-
-### 04 规格
-
-这里通过样式覆盖来自定义几个常用的图片尺寸。
-
-```html
-<t-image
-  class="size-m radius-m"
-  src="../../../assests-exp/image/image.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-s radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-xs radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-xss radius-s"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-xl radius-l"
-  src="../../../assests-exp/image/image.jpg"
-  mode="aspectFill"
-></t-image>
-<t-image
-  class="size-l radius-m"
-  src="../../../assests-exp/image/image-2.jpg"
-  mode="aspectFill"
-></t-image>
-```
-
-```less
-.size-xl .t-image {
-  width: 120rpx * 2;
-  height: 120rpx * 2;
-}
-
-.size-l .t-image {
-  width: 72rpx * 2;
-  height: 72rpx * 2;
-}
-
-.size-m .t-image {
-  width: 56rpx * 2;
-  height: 56rpx * 2;
-}
-
-.size-s .t-image {
-  width: 48rpx * 2;
-  height: 48rpx * 2;
-}
-
-.size-xs .t-image {
-  width: 32rpx * 2;
-  height: 32rpx * 2;
-}
-
-.size-xss .t-image {
-  width: 24rpx * 2;
-  height: 24rpx * 2;
-}
 ```
 
 ## API

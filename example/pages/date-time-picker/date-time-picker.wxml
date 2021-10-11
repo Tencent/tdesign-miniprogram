@@ -1,6 +1,6 @@
 <view class="demo">
   <view class="demo-title">DateTimePicker 时间选择器</view>
-  <view class="demo-desc">用于选择某一具体日期</view>
+  <view class="demo-desc">用于选择一个时间点或者一个时间段。</view>
   <t-demo title="01 类型" desc="基础时间选择器" />
   <t-cell
     title="选择日期(年月日)"
@@ -21,6 +21,16 @@
     bindtap="showPicker"
     t-class="pannel-item"
     t-class-note="{{monthText ? 'sub-text' : 'empty'}}"
+  />
+  <t-cell
+    title="选择日期(月日)"
+    hover
+    note="{{monthDateText || '月 日'}}"
+    arrow
+    data-mode="monthDate"
+    bindtap="showPicker"
+    t-class="pannel-item"
+    t-class-note="{{monthDateText ? 'sub-text' : 'empty'}}"
   />
   <t-cell
     title="选择时间(时分)"
@@ -63,6 +73,17 @@
   mode="{{['month']}}"
   value="{{month}}"
   format="YYYY-MM"
+  bindconfirm="onConfirm"
+  bindcancel="hidePicker"
+></t-date-time-picker>
+
+<!-- 月日 -->
+<t-date-time-picker
+  title="选择日期"
+  visible="{{monthDateVisible}}"
+  mode="{{['month','date']}}"
+  value="{{monthDate}}"
+  format="MM-DD"
   bindconfirm="onConfirm"
   bindcancel="hidePicker"
 ></t-date-time-picker>

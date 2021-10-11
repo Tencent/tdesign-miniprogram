@@ -24,6 +24,7 @@ export default class GridItem extends SuperComponent {
       type: 'ancestor' as 'ancestor',
       linked(this: GridItem, target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
+        this.updateStyle();
       },
     },
   };
@@ -33,59 +34,55 @@ export default class GridItem extends SuperComponent {
   data = {
     classPrefix: name,
     gridItemStyle: '',
+    gridItemWrapperStyle: '',
+    gridItemContentStyle: '',
+    align: 'center',
+    layout: 'vertical',
   };
 
   updateStyle() {
-    const { hover } = this.parent.properties;
+    const { hover, align } = this.parent.properties;
     const gridItemStyles = [];
+    const gridItemWrapperStyles = [];
+    const gridItemContentStyles = [];
+    const widthStyle = this.getWidthStyle();
+    const paddingStyle = this.getPaddingStyle();
     const borderStyle = this.getBorderStyle();
-    const marginStyle = this.getMarginStyle();
-    const justifyContentStyle = this.getAlignItemsStyle();
-    borderStyle && gridItemStyles.push(borderStyle);
-    marginStyle && gridItemStyles.push(marginStyle);
-    justifyContentStyle && gridItemStyles.push(justifyContentStyle);
+    widthStyle && gridItemStyles.push(widthStyle);
+    paddingStyle && gridItemWrapperStyles.push(paddingStyle);
+    borderStyle && gridItemContentStyles.push(borderStyle);
     this.setData({
       gridItemStyle: gridItemStyles.join(';'),
+      gridItemWrapperStyle: gridItemWrapperStyles.join(';'),
+      gridItemContentStyle: gridItemContentStyles.join(';'),
       hover,
+      layout: this.properties.layout,
+      align: align,
     });
   }
 
-  // 判断border在grid-item上的css属性
+  // 判断应该加在gridItem上的宽度
+  getWidthStyle() {
+    const { column = 4 } = this.parent.properties;
+    return `width:${(1 / column) * 100}%`;
+  }
+
+  // 获取应该加在gridWrap上的padding
+  getPaddingStyle() {
+    const { gutter } = this.parent.properties;
+    if (gutter) return `padding-left:${gutter}rpx;padding-top:${gutter}rpx`;
+    return '';
+  }
+
+  // 判断border在grid-item-content上的css属性
   getBorderStyle() {
-    const { gutter, justifyContent } = this.parent.properties;
+    const { gutter } = this.parent.properties;
     let { border } = this.parent.properties;
     if (!border) return ''; // 如果border的值没传或者是border的值为false
     if (!isObject(border)) border = {} as any;
     const { color = '#266FE8', width = 2, style = 'solid' } = border as any;
-    if (
-      // 如果justifyContent的值是around或者between
-      (justifyContent as any) === 'space-between' ||
-      (justifyContent as any) === 'space-around'
-    ) {
-      if (!this.parent.isNext) return `border:${width}rpx ${style} ${color}`; // 如果没有接壤就不考虑双倍border的情况
-      return `border:${width}rpx ${style} ${color};border-right:0rpx`;
-    }
     if (gutter) return `border:${width}rpx ${style} ${color}`;
-    return `border:${width}rpx ${style} ${color};border-right:0rpx`;
-  }
-
-  // 通过gutter的值判断item的margin
-  getMarginStyle() {
-    const { gutter, justifyContent } = this.parent.properties;
-    if (
-      // 如果justifyContent的值是around或者between
-      (justifyContent as any) === 'space-between' ||
-      (justifyContent as any) === 'space-around' ||
-      !gutter
-    )
-      return '';
-    return `margin-left:${gutter}rpx`;
-  }
-
-  getAlignItemsStyle() {
-    const { align } = this.parent.properties;
-    if (align === 'center' || !align) return 'align-items:center';
-    return 'align-items:flex-start';
+    return `border-top:${width}rpx ${style} ${color};border-left:${width}rpx ${style} ${color}`;
   }
 
   onClick(e) {

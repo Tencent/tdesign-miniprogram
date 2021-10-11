@@ -1,8 +1,6 @@
 <view class="demo">
   <view class="demo-title">Rate 评分</view>
-  <view class="demo-desc"
-    >评分组件，对内容进行快速评级操作，或内容评价的等级展示，目前常用为五星实心评</view
-  >
+  <view class="demo-desc">用于对某行为/事物进行打分。</view>
   <t-demo title="01 类型">
     <view class="demo-section__desc">实心评分</view>
     <view class="item">
