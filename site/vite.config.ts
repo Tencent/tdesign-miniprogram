@@ -7,6 +7,7 @@ import createTDesignPlugin from './plugin-tdoc';
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/miniprogram/' : './',
+  root: path.resolve(__dirname),
   resolve: {
     alias: {
       '~': path.resolve(__dirname, '..'),
@@ -21,11 +22,8 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: [
-        /.*\.md$/,
-      ],
       input: {
-        site: './index.html',
+        site: path.resolve(__dirname, 'index.html'),
       },
     },
   },
