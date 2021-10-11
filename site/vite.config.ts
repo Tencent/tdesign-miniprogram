@@ -2,6 +2,7 @@ import * as path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import rollupResolve from '@rollup/plugin-node-resolve';
 import createTDesignPlugin from './plugin-tdoc';
 
 // https://vitejs.dev/config/
@@ -25,6 +26,13 @@ export default defineConfig({
       input: {
         site: path.resolve(__dirname, 'index.html'),
       },
+      plugins: [
+        rollupResolve({
+          moduleDirectories: [
+            path.resolve(__dirname, 'node_modules')
+          ]
+        }),
+      ],
     },
   },
   plugins: [

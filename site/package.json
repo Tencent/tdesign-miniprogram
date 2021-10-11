@@ -11,6 +11,7 @@
     "vue-router": "^4.0.11"
   },
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.5",
     "@types/markdown-it": "^12.2.0",
     "@types/markdown-it-container": "^2.0.4",
     "@vitejs/plugin-vue": "^1.4.0",
