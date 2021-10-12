@@ -24,7 +24,9 @@
   import Prismjs from 'prismjs';
   import 'prismjs/components/prism-bash.js';
   import 'prismjs/components/prism-javascript.js';
-  import './prism-theme.css';
+  import 'prismjs/components/prism-json.js';
+  import '@common/site/src/styles/prism-theme.less';
+  import '@common/site/src/styles/prism-theme-dark.less';
 
   export default defineComponent({
     props: {
@@ -51,17 +53,7 @@
       const { tdDocContent, tdDocHeader, tdDocPhone, tdDocTabs, tdContributors } = this.$refs;
       const completeUrl = location.origin + info.mobileUrl;
 
-      if (info.isComponent) {
-        tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
-        tdDocHeader.issueInfo = info.issueInfo || {};
-        tdContributors.contributors = info.contributors || [];
-        document.querySelectorAll('td-doc-demo').forEach((item: any) => {
-          const { demo } = item.dataset;
-          item.code = this.demos[demo];
-        });
-      } else {
-         Prismjs.highlightAll();
-      }
+      Prismjs.highlightAll();
 
       tdDocHeader.docType = docType;
       tdDocHeader.docInfo = { title: info.title, desc: info.description };
