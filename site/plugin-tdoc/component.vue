@@ -1,5 +1,5 @@
 <template>
-  <td-doc-content ref="tdDocContent" slot="doc-content" page-status="hidden">
+  <td-doc-content ref="tdDocContent" slot="doc-content" page-status="hidden" platform="mobile">
     <td-doc-header slot="doc-header" ref="tdDocHeader"></td-doc-header>
     <template v-if="info.isComponent">
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
@@ -47,7 +47,7 @@
     },
 
     mounted() {
-      const { info } = this;
+      const { docType, info } = this;
       const { tdDocContent, tdDocHeader, tdDocPhone, tdDocTabs, tdContributors } = this.$refs;
       const completeUrl = location.origin + info.mobileUrl;
 
@@ -63,7 +63,7 @@
          Prismjs.highlightAll();
       }
 
-      tdDocHeader.docType = info.docType;
+      tdDocHeader.docType = docType;
       tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
       (document.querySelector('td-doc-content') as any).initAnchorHighlight();

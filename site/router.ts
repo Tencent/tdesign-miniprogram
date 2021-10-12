@@ -36,12 +36,11 @@ const getDocsRoutes = (docs: any[], type: string): RouteRecordRaw[] => {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
     redirect: '/miniprogram/components/icon',
   },
   {
     path: '/:catchAll(.*)',
-    redirect: 'home',
+    redirect: '/miniprogram/components/icon',
   },
   ...getDocsRoutes(docs, 'document'),
   ...getDocsRoutes(docs, 'component'),
