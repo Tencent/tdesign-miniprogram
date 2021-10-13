@@ -102,12 +102,12 @@ export default class Slider extends SuperComponent {
    * @param newValue
    */
   handlePropsChange(newValue: number | number[]) {
-    const _value = trimValue(newValue, this.properties);
+    const value = trimValue(newValue, this.properties);
 
     const setValueAndTrigger = () => {
       this.setData(
         {
-          _value,
+          _value: value,
         },
         this.triggerValue,
       );
