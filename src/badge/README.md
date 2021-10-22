@@ -26,6 +26,8 @@
 
 #### 普通徽标
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-1.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <!-- 红点提示 -->
 <t-badge dot content="消息" />
@@ -49,6 +51,8 @@
 
 #### cell 徽标
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-2.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <!-- 单元格提示 -->
 <t-cell title="单行标题" hover arrow>
@@ -59,6 +63,8 @@
 ```
 
 #### tabbar 徽标
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-3.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- tabbar提示 -->

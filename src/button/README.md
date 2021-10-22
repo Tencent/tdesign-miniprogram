@@ -24,6 +24,8 @@
 
 基础按钮
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/button-1.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <t-button theme="primary" size="large">强按钮</t-button>
 <t-button theme="primary" size="large" variant="plain">弱按钮</t-button>
@@ -46,6 +48,8 @@
 
 按钮禁用态
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/button-2.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <t-button theme="primary" size="large" disabled>强按钮</t-button>
 <t-button theme="primary" size="large" variant="plain" disabled>弱按钮</t-button>
@@ -67,6 +71,8 @@
 ### 规格
 
 按钮尺寸
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/button-3.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <t-button theme="primary" size="large">按钮 44</t-button>

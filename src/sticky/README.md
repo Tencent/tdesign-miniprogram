@@ -24,6 +24,8 @@
 
 将内容包裹在`Sticky`组件内
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/sticky.gif" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <t-sticky offset-top="{{40}}">
   <t-button class="box2" theme="danger" t-class="inner-box" size="small">吸顶距离</t-button>

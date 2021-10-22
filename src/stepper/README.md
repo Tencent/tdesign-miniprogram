@@ -25,6 +25,8 @@
 
 带单位步进器。
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/stepper.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <t-stepper label="标题文字（单位）" step="2" />
 ```

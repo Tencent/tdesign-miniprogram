@@ -24,6 +24,8 @@
 
 #### 空状态
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/empty-1.png" width="30%" height="30%" style="margin-top: 10px">
+
 ```html
 <!-- 图标空状态 -->
 <t-empty icon="info-circle-filled" description="描述文字" />
@@ -38,6 +40,8 @@
 ```
 
 #### 空页面
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/empty-2.png" width="30%" height="30%" style="margin-top: 10px">
 
 ```html
 <!-- 空页面 -->
