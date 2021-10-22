@@ -107,8 +107,7 @@ Page({
         Message.info({
           offset: [20, 32],
           duration: 5000,
-          icon: false,
-          content: '这是一条纯文字的消息通知 5s消失',
+          content: '这是一条普通通知信息',
         });
         break;
       }
