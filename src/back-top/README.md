@@ -25,6 +25,8 @@
 
 圆型返回顶部。
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-1.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <!-- 圆白底 -->
 <t-back-top theme="round" text="顶部"></t-back-top>
@@ -37,6 +39,8 @@
 ```
 
 半圆型返回顶部。
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-2.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 半圆白底 -->

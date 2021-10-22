@@ -24,6 +24,8 @@
 
 `mode`属性控制图片的缩放/裁剪模式，并可通过`class`设置图片圆角样式
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/image-1.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <!-- 裁切样式 裁切 -->
 <t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
@@ -35,6 +37,8 @@
 ### 状态
 
 加载中/加载失败提示
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/image-2.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 加载中 默认提示 -->

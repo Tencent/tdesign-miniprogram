@@ -24,6 +24,8 @@
 
 基础多行文本信息输入
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/input-2.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <t-textarea name="标签文字" placeholder="请输入文字" />
 ```

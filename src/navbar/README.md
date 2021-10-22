@@ -25,10 +25,14 @@
 
 导航栏，可以带返回，主页按钮，或自定义展示内容
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navbar-1.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <!-- 基础导航栏 -->
 <t-navbar title="标题" t-class-title="nav-title" />
 ```
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navbar-2.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 带返回，主页按钮导航栏 -->
@@ -42,6 +46,8 @@
   t-class-title="nav-title"
 />
 ```
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navnar-3.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 自定义插槽导航栏 -->

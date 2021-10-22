@@ -24,6 +24,8 @@
 
 ### 类型
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/footer.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <!-- 基础页脚 只有版权信息 -->
 <t-footer

@@ -25,6 +25,8 @@
 
 #### 一行三个
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-2.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <!-- 一行三个（border） -->
 <t-grid border="{{true}}" class="three-border" column="{{3}}">
@@ -53,6 +55,8 @@
 ```
 
 #### 一行二个带说明宫格
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-3.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 一行二个带说明宫格 -->
@@ -89,6 +93,8 @@
 ```
 
 #### 带徽标宫格
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-1.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 带徽标宫格 -->

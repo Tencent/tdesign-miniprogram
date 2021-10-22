@@ -26,6 +26,8 @@
 
 #### 单行
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/cell-1.png" width="50%" height="50%" style="margin-top: 10px">
+
 ```html
 <!-- 单行 默认 -->
 <t-cell title="单行标题" hover />
@@ -51,6 +53,8 @@
 ```
 
 #### 多行
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/cell-2.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 多行 -->
