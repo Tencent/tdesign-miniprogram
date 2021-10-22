@@ -4,7 +4,7 @@ Page({
   data: {
     operList1: [
       {
-        title: '弹窗内容为存文本、标题和副标题、带输入框',
+        title: '弹窗内容为纯文本、标题和副标题、带输入框',
         btns: [
           {
             type: 'text',
@@ -31,7 +31,7 @@ Page({
     ],
     operList2: [
       {
-        title: '窗内容为存文本、标题和副标题、带输入框',
+        title: '弹窗状态为普通弹窗、警示提示弹窗、成功提示弹窗、错误提示弹窗。',
         btns: [
           {
             type: 'info',
@@ -107,8 +107,7 @@ Page({
         Message.info({
           offset: [20, 32],
           duration: 5000,
-          icon: false,
-          content: '这是一条纯文字的消息通知 5s消失',
+          content: '这是一条普通通知信息',
         });
         break;
       }

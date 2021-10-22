@@ -2,7 +2,11 @@
 
 ## 介绍
 
-用于对某行为/事物进行打分。
+用于对某行为/事物进行打分。<br/><br/>
+
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/rate.png)
 
 ## 引入
 
@@ -17,7 +21,13 @@
 }
 ```
 
-### 基础（实心样式）：
+## 代码演示
+
+### 类型
+
+实心评分
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/rate.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <t-rate size="{{48}}" value="{{3}}" variant="filled" bind:change="onChange"></t-rate>

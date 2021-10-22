@@ -2,7 +2,11 @@
 
 ## 介绍
 
-用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。
+用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。<br/><br/>
+
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/navbar.png)
 
 ## 引入
 
@@ -14,6 +18,61 @@
   "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar",
 }
 ```
+
+## 代码演示
+
+### 类型
+
+导航栏，可以带返回，主页按钮，或自定义展示内容
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navbar-1.png" width="50%" height="50%" style="margin-top: 10px">
+
+```html
+<!-- 基础导航栏 -->
+<t-navbar title="标题" t-class-title="nav-title" />
+```
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navbar-2.png" width="50%" height="50%" style="margin-top: 10px">
+
+```html
+<!-- 带返回，主页按钮导航栏 -->
+<t-navbar
+  title="标题"
+  leftIcon="chevron-left"
+  homeIcon="home"
+  bindgohome="onGoHome"
+  t-class-left-icon="left-icon-back"
+  t-class-home-icon="home-icon"
+  t-class-title="nav-title"
+/>
+```
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navnar-3.png" width="50%" height="50%" style="margin-top: 10px">
+
+```html
+<!-- 自定义插槽导航栏 -->
+<t-navbar leftIcon="slot">
+  <t-image
+    t-class="img"
+    class="size-l radius-m slot-left"
+    src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%8D%A0%E4%BD%8D%E5%9B%BE%402x.png"
+    mode="aspectFill"
+    slot="left-icon"
+  ></t-image>
+</t-navbar>
+```
+
+```js
+  onGoHome() {
+    wx.navigateTo({
+      url: '/pages/index',
+    });
+  },
+```
+
+## 代码演示
+
+### 类型
 
 ### Navbar Props
 

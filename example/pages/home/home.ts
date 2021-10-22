@@ -38,7 +38,7 @@ Page({
       url: path,
       fail: () => {
         wx.navigateTo({
-          url: `/pages/home/navigateFail/navigateFail`,
+          url: '/pages/home/navigateFail/navigateFail',
         });
       },
     });

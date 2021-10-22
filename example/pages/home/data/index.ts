@@ -4,6 +4,4 @@ import display from './display';
 import form from './form';
 import ux from './ux';
 
-const list = [base, nav, display, form, ux];
-
-export default list;
+export default [base, nav, display, form, ux];

@@ -1,5 +1,5 @@
 <template>
-  <td-doc-content ref="tdDocContent" slot="doc-content" page-status="hidden">
+  <td-doc-content ref="tdDocContent" slot="doc-content" page-status="hidden" platform="mobile">
     <td-doc-header slot="doc-header" ref="tdDocHeader"></td-doc-header>
     <template v-if="info.isComponent">
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
@@ -24,7 +24,9 @@
   import Prismjs from 'prismjs';
   import 'prismjs/components/prism-bash.js';
   import 'prismjs/components/prism-javascript.js';
-  import './prism-theme.css';
+  import 'prismjs/components/prism-json.js';
+  import '@common/site/src/styles/prism-theme.less';
+  import '@common/site/src/styles/prism-theme-dark.less';
 
   export default defineComponent({
     props: {
@@ -47,23 +49,13 @@
     },
 
     mounted() {
-      const { info } = this;
+      const { docType, info } = this;
       const { tdDocContent, tdDocHeader, tdDocPhone, tdDocTabs, tdContributors } = this.$refs;
       const completeUrl = location.origin + info.mobileUrl;
 
-      if (info.isComponent) {
-        tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
-        tdDocHeader.issueInfo = info.issueInfo || {};
-        tdContributors.contributors = info.contributors || [];
-        document.querySelectorAll('td-doc-demo').forEach((item: any) => {
-          const { demo } = item.dataset;
-          item.code = this.demos[demo];
-        });
-      } else {
-         Prismjs.highlightAll();
-      }
+      Prismjs.highlightAll();
 
-      tdDocHeader.docType = info.docType;
+      tdDocHeader.docType = docType;
       tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
       (document.querySelector('td-doc-content') as any).initAnchorHighlight();

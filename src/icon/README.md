@@ -2,17 +2,15 @@
 
 ## 介绍
 
-图标
+图标<br/><br/>
 
-### 特性及兼容性
+请使用微信扫码预览 ↓<br/><br/>
 
-无
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/icon.png)
 
 ## 引入
 
-### 引入组件
-
-在 `app.json` 或 `page.json` 中引入组件：
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
 "usingComponents": {
@@ -20,9 +18,7 @@
 }
 ```
 
-## 用法
-
-### 组件方式
+## 代码演示
 
 ```html
 <!-- page.wxml -->
@@ -30,10 +26,6 @@
 ```
 
 ## API
-
-### `<t-icon>` 组件
-
-组件路径：`@tencent/tdesign-miniprogram/icon/icon`
 
 #### Props
 

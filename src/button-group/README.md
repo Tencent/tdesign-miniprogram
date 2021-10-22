@@ -2,7 +2,11 @@
 
 ## 介绍
 
-按钮组
+按钮组<br/><br/>
+
+请使用微信扫码预览 ↓<br/><br/>
+
+![预览](https://tdesign.gtimg.com/miniprogram/qrcode/button-group.png)
 
 ### 特性及兼容性
 
