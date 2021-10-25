@@ -74,7 +74,7 @@ icon 加文字竖向
 
 进度条加载
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-4.png" width="30%" height="30%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-4.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <t-loading theme="bar" progress="{{progress}}" loading="{{isLoading}}"></t-loading>
