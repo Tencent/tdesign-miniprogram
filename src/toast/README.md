@@ -36,7 +36,7 @@ import Toast from '@tencent/tdesign-miniprogram/toast/index';
 
 纯文本
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-1.png" width="20%" height="10%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-1.png" width="20%" height="20%" style="margin-top: 10px">
 
 ```js
 Toast({

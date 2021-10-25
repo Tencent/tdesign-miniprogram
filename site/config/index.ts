@@ -16,11 +16,11 @@ export default {
           name: 'develop',
           meta: { docType: 'explain' },
           path: '/miniprogram/develop',
-          component: () => import('~/CONTRIBUTING.md'),
+          component: () => import('@/../CONTRIBUTING.md'),
         },
         {
           title: '谁在用',
-          name: 'develop',
+          name: 'used',
           meta: { docType: 'explain' },
           path: '/miniprogram/used',
           component: () => import('@/../USED.md'),

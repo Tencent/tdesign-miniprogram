@@ -24,7 +24,7 @@
 
 #### 空状态
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/empty-1.png" width="30%" height="30%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/empty-1.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 图标空状态 -->
@@ -41,7 +41,7 @@
 
 #### 空页面
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/empty-2.png" width="30%" height="30%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/empty-2.png" width="50%" height="50%" style="margin-top: 10px">
 
 ```html
 <!-- 空页面 -->
