@@ -11,25 +11,26 @@
     </view>
     <view class="pannel-item" bind:tap="onClickPicker" data-index="{{2}}">
       <view class="pannel-label">年份和季节</view>
-      <view class="pannel-text {{selectedYears ? '' : 'empty'}}">
-        {{selectedYears}} {{selectedSeason}} {{ !selectedYears ? '选择年份和季节' : ''}}</view
+      <view class="pannel-text {{selectedYearsWithSeason ? '' : 'empty'}}">
+        {{selectedYearsWithSeason}} {{selectedSeason}} {{ !selectedYearsWithSeason ?
+        '选择年份和季节' : ''}}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
     <view class="pannel-item last" bind:tap="onClickPicker" data-index="{{3}}">
       <view class="pannel-label">日期</view>
-      <view class="pannel-text {{selectedYears ? '' : 'empty'}}">
-        {{selectedYears}} {{selectedMonth}} {{selectedDay}} {{!selectedYears ? '选择日期' :
-        ''}}</view
+      <view class="pannel-text {{selectedYearsWithDate ? '' : 'empty'}}">
+        {{selectedYearsWithDate}} {{selectedMonth}} {{selectedDay}} {{!selectedYearsWithDate ?
+        '选择日期' : ''}}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
   </t-demo>
   <t-demo desc="带标题选择器">
-    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择城市" data-index="{{1}}">
+    <view class="pannel-item" bind:tap="onClickPicker" data-index="{{4}}">
       <view class="pannel-label">城市</view>
-      <view class="pannel-text {{selectedCityValue ? '' : 'empty'}}"
-        >{{selectedCityValue || '选择城市'}}</view
+      <view class="pannel-text {{selectedCityValue2 ? '' : 'empty'}}"
+        >{{selectedCityValue2 || '选择城市'}}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
@@ -37,24 +38,26 @@
       class="pannel-item"
       bind:tap="onClickPicker"
       data-title="选择年份和季节"
-      data-index="{{2}}"
+      data-index="{{5}}"
     >
       <view class="pannel-label">年份和季节</view>
-      <view class="pannel-text {{selectedYears ? '' : 'empty'}}">
-        {{selectedYears}} {{selectedSeason}} {{ !selectedYears ? '选择年份和季节' : ''}}</view
+      <view class="pannel-text {{selectedYearsWithSeason2 ? '' : 'empty'}}">
+        {{selectedYearsWithSeason2}} {{selectedSeason2}} {{ !selectedYearsWithSeason2 ?
+        '选择年份和季节' : ''}}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
-    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择日期" data-index="{{3}}">
+    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择日期" data-index="{{6}}">
       <view class="pannel-label">日期</view>
-      <view class="pannel-text {{selectedYears ? '' : 'empty'}}">
-        {{selectedYears}} {{selectedMonth}} {{selectedDay}} {{!selectedYears ? '选择日期' :
-        ''}}</view
+      <view class="pannel-text {{selectedYearsWithDate2 ? '' : 'empty'}}">
+        {{selectedYearsWithDate2}} {{selectedMonth2}} {{selectedDay2}} {{!selectedYearsWithDate2 ?
+        '选择日期' : ''}}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
   </t-demo>
 
+  <!-- 城市不带标题 -->
   <t-picker
     visible="{{picker1Visible}}"
     title="{{pickerTitle}}"
@@ -68,6 +71,8 @@
       bindchange="onColumnChange"
     ></t-picker-column>
   </t-picker>
+
+  <!-- 年+ 季节 不带标题 -->
   <t-picker
     visible="{{picker2Visible}}"
     title="{{pickerTitle}}"
@@ -77,7 +82,7 @@
   >
     <t-picker-column
       options="{{years}}"
-      value="{{selectedYears}}"
+      value="{{selectedYearsWithSeason}}"
       bindchange="onColumnChange"
     ></t-picker-column>
     <t-picker-column
@@ -86,6 +91,8 @@
       bindchange="onColumnChange"
     ></t-picker-column>
   </t-picker>
+
+  <!-- 年月日 不带标题 -->
   <t-picker
     visible="{{picker3Visible}}"
     title="{{pickerTitle}}"
@@ -95,7 +102,7 @@
   >
     <t-picker-column
       options="{{years}}"
-      value="{{selectedYears}}"
+      value="{{selectedYearsWithDate}}"
       bindchange="onColumnChange"
     ></t-picker-column>
     <t-picker-column
@@ -106,6 +113,66 @@
     <t-picker-column
       options="{{days}}"
       value="{{selectedDay}}"
+      bindchange="onColumnChange"
+    ></t-picker-column>
+  </t-picker>
+
+  <!-- 城市带标题 -->
+  <t-picker
+    visible="{{picker4Visible}}"
+    title="选中城市"
+    bindchange="onPickerChange"
+    bindconfirm="onPicker4Confirm"
+    bindcancel="onPicker4Cancel"
+  >
+    <t-picker-column
+      options="{{citys}}"
+      value="{{selectedCityValue2}}"
+      bindchange="onColumnChange"
+    ></t-picker-column>
+  </t-picker>
+
+  <!-- 年+季节 带标题 -->
+  <t-picker
+    visible="{{picker5Visible}}"
+    title="选择年份和季节"
+    bindchange="onPickerChange"
+    bindconfirm="onPicker5Confirm"
+    bindcancel="onPicker5Cancel"
+  >
+    <t-picker-column
+      options="{{years}}"
+      value="{{selectedYearsWithSeason2}}"
+      bindchange="onColumnChange"
+    ></t-picker-column>
+    <t-picker-column
+      options="{{seasons}}"
+      value="{{selectedSeason2}}"
+      bindchange="onColumnChange"
+    ></t-picker-column>
+  </t-picker>
+
+  <!-- 年月日带标题 -->
+  <t-picker
+    visible="{{picker6Visible}}"
+    title="选择日期"
+    bindchange="onPickerChange"
+    bindconfirm="onPicker6Confirm"
+    bindcancel="onPicker6Cancel"
+  >
+    <t-picker-column
+      options="{{years}}"
+      value="{{selectedYearsWithDate2}}"
+      bindchange="onColumnChange"
+    ></t-picker-column>
+    <t-picker-column
+      options="{{months}}"
+      value="{{selectedMonth2}}"
+      bindchange="onColumnChange"
+    ></t-picker-column>
+    <t-picker-column
+      options="{{days}}"
+      value="{{selectedDay2}}"
       bindchange="onColumnChange"
     ></t-picker-column>
   </t-picker>
