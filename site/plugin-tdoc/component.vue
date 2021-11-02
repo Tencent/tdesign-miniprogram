@@ -61,7 +61,7 @@
          Prismjs.highlightAll();
       }
       
-      tdDocHeader.docType = info.docType;
+      tdDocHeader.docType = this.docType;
       tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
       // @ts-ignore
