@@ -55,7 +55,10 @@ export default {
 
     return source;
   },
-  after(_source: string, _id: string, renderInfo: any, md: markdownIt) {
+  after(_source: string, id: string, renderInfo: any, md: markdownIt) {
+    const reg = id.match(/src\/(\w+-?\w+)\/\w+-?\w+\.md/);
+    const componentName = reg ? reg[1] : '';
+
     const demoCodeImportsStr = Object.keys(demoCodeImports).map(demoCodeDefName => demoCodeImports[demoCodeDefName]).join('\n');
     const demoCodeDefsStr = Object.keys(demoCodeImports).join(',');
 
@@ -67,7 +70,7 @@ export default {
       mobileUrl,
       isComponent,
       issueInfo: {},
-      contributors: getContributors(),
+      contributors: getContributors(componentName),
       docMd: md.render.call(md, docMd),
       apiMd: md.render.call(md, apiMd),
       demoMd: md.render.call(md, demoMd),

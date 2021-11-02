@@ -22,7 +22,7 @@ const customRenderInfo = (source: string, id: string) => {
   };
   const titleLocation = source.search(/[\r\n]/);
   const describeLocation = source.split(/[\r\n]#+\s|:::\s/)[0].length || titleLocation;
-  const propsRegLocation = source.search(/#+\s*属性配置\n|(#+\s*\S*\s*props\n)/i);
+  const propsRegLocation = source.search(/#+\s*API\n|(#+\s*\S*\s*props\n)/i);
 
   mdSegment.title = source.slice(2, titleLocation) || '';
   mdSegment.description = source.slice(titleLocation, describeLocation).trim() || '';
