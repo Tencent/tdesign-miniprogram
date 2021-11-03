@@ -9,7 +9,6 @@
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
-// app.json 或 index.json
 "usingComponents": {
   "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar",
 }
