@@ -1,7 +1,7 @@
 <template>
   <td-doc-layout>
     <td-header ref="tdHeader" slot="header"></td-header>
-    <td-doc-aside ref="tdDocAside" title="WeChat Miniprogram"></td-doc-aside>
+    <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram"></td-doc-aside>
 
     <router-view :style="contentStyle" @loaded="contentLoaded" :docType="docType" />
   </td-doc-layout>

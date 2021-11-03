@@ -27,7 +27,7 @@ export default defineComponent({
     const handleScroll = () => {
       const { scrollTop } = document.documentElement;
 
-      if (scrollTop > 256) {
+      if (scrollTop > 258) {
         if (!isFixed.value && !fixedPos.top) {
           const { top, left } = $wrapper.value.getBoundingClientRect();
           fixedPos.top = top + 'px';
