@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "prismjs": "^1.24.1",
+    "vue": "^3.2.4",
+    "vue-router": "^4.0.11"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@types/markdown-it": "^12.2.0",
+    "@types/markdown-it-container": "^2.0.4",
+    "@vitejs/plugin-vue": "^1.4.0",
+    "@vitejs/plugin-vue-jsx": "^1.1.7",
+    "@vue/compiler-sfc": "^3.2.4",
+    "less": "^4.1.1",
+    "markdown-it": "^12.2.0",
+    "markdown-it-container": "^3.0.0",
+    "typescript": "^4.3.5",
+    "vite": "^2.5.0",
+    "vite-plugin-tdoc": "^1.0.5"
+  }
+}

@@ -1,0 +1,18 @@
+<view class="{{ classPrefix }}">
+  <view class="{{ classPrefix }}__bar" id="t-bar">
+    <view
+      wx:for="{{menus}}"
+      wx:key="item"
+      class="{{ classPrefix }}__item {{ activeIdx == index ? classBasePrefix + '-is-active' : ''}}"
+    >
+      <view
+        class="{{ classPrefix }}__title {{ item.disabled ? classBasePrefix + '-is-disabled' : ''}}"
+        bindtap="_toggleDropdown"
+        data-index="{{index}}"
+      >
+        {{item.title}}
+      </view>
+    </view>
+  </view>
+  <slot></slot>
+</view>

@@ -1,0 +1,29 @@
+module.exports = {
+  getText: function (texts, val, defaultTexts) {
+    if (!texts.length) {
+      texts = defaultTexts;
+    }
+    var curVal = Math.floor(val - 1);
+    return texts[curVal];
+  },
+  getIconName: function (defaultValue, value, index, allowHalf, icon, halfIcon, variant) {
+    var curVal = value ? value : defaultValue;
+    if (curVal - index >= 1) {
+      return icon;
+    } else if (allowHalf && curVal - index > 0) {
+      return halfIcon;
+    } else {
+      return variant === 'outline' ? 'star' : 'star-filled';
+    }
+  },
+  getIconColor: function (defaultValue, value, index, allowHalf, disabled, color, disabledColor) {
+    var curVal = value ? value : defaultValue;
+    if (curVal - index >= 1) {
+      return disabled ? disabledColor : color;
+    } else if (allowHalf && curVal - index > 0) {
+      return 'transparent';
+    } else {
+      return '#E3E6EB';
+    }
+  },
+};

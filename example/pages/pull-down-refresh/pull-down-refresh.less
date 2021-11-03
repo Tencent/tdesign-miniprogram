@@ -1,0 +1,120 @@
+page {
+  background: #fff;
+}
+
+.t-pulldown-reflesh {
+  &_title,
+  &_desc {
+    margin: 0 32rpx;
+  }
+
+  &_title {
+    padding-top: 48rpx;
+    font-size: 40rpx;
+    font-weight: bold;
+    line-height: 64rpx;
+    color: rgba(0, 0, 0, .9);
+  }
+
+  &_desc {
+    color: rgba(0, 0, 0, .4);
+    margin-top: 8rpx;
+    font-size: 24rpx;
+    line-height: 36rpx;
+  }
+}
+
+.t-pulldown-reflesh_wrapper {
+  &-title,
+  &-desc {
+    margin: 0 32rpx;
+  }
+
+  &-title {
+    color: rgba(0, 0, 0, .9);
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-top: 64rpx;
+  }
+
+  &-desc {
+    margin-top: 8rpx;
+    color: rgba(0, 0, 0, .4);
+    font-size: 24rpx;
+    line-height: 40rpx;
+    white-space: pre-line;
+  }
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pulldown-reflesh_content {
+  justify-content: space-between;
+  margin: 0 24rpx;
+  flex-wrap: wrap;
+  padding-bottom: 32rpx;
+  position: relative;
+
+  .text {
+    position: absolute;
+    top: 178rpx;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 32rpx;
+    color: rgba(0, 0, 0, .26);
+    width: 686rpx;
+  }
+}
+
+.skeletion-item {
+  padding: 0 !important;
+  margin-top: 32rpx;
+}
+
+.skeletion-row {
+  border-radius: 16rpx;
+}
+
+// 以下覆盖pull-down-refresh内部样式
+page {
+  background-color: #fff;
+
+  .refresh-bar__content {
+    flex-direction: column; // 与组件默认样式不同，这里按照设计稿改成竖向结构
+
+    .refresh-bar__text {
+      margin: 16rpx 0 0;
+    }
+  }
+
+  .refresh-bar.success {
+    .refresh-bar__loading {
+      // 刷新成功后loading隐藏但是仍然占位，避免文字跳动（默认横向结构下不占位）
+      display: flex !important;
+      visibility: hidden;
+    }
+  }
+}
+
+.indicator-blue {
+  color: #0052d9;
+}
+
+.text-class {
+  .refresh-bar__text {
+    color: red;
+    font-size: 36rpx;
+  }
+}
+
+.loading-class {
+  background-color: blue;
+}
+
+.skeleton-text {
+  border-radius: 16rpx;
+}

@@ -1,0 +1,118 @@
+// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@picker-font-size: 32rpx;
+@picker-font-weight: 500;
+@picker-toolbar-height: 96rpx;
+@picker-button-padding: 32rpx;
+@picker-column-height: 80rpx;
+@picker-color-top: #fff;
+@picker-background-color: rgba(255, 255, 255, 1);
+@picker-mask-color-top: hsla(0, 0%, 100%, .92);
+@picker-mask-color-bottom: hsla(0, 0%, 100%, .4);
+
+.@{prefix}-picker {
+  position: relative;
+  background-color: @picker-background-color;
+  font-size: @picker-font-size;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    height: @picker-toolbar-height;
+    box-shadow: inset 0 -1rpx 0 0 @border-level-1-color;
+  }
+
+  &__title {
+    color: @text-level-1-color;
+    font-weight: @picker-font-weight;
+  }
+
+  &__cancel,
+  &__confirm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-size: @picker-font-size;
+    height: 100%;
+    padding: 0 @picker-button-padding;
+
+    &:active {
+      opacity: .5;
+    }
+  }
+
+  &__cancel {
+    color: @text-level-2-color;
+  }
+
+  &__confirm {
+    color: @primary-color;
+  }
+
+  &__main {
+    position: relative;
+    display: flex;
+  }
+
+  &__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    z-index: 3;
+
+    background-image: linear-gradient(top, @picker-color-top, @picker-mask-color-bottom),
+      -webkit-linear-gradient(bottom, @picker-mask-color-top, @picker-mask-color-bottom);
+    background-image: linear-gradient(180deg, @picker-mask-color-top, @picker-mask-color-bottom),
+      linear-gradient(0deg, @picker-mask-color-top, @picker-mask-color-bottom);
+    background-position: top, bottom;
+    background-size: 100% @picker-column-height * 2;
+    background-repeat: no-repeat;
+    background-position: top, bottom;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    pointer-events: none;
+  }
+
+  &__indicator {
+    width: 100%;
+    height: @picker-column-height;
+    position: absolute;
+    left: 0;
+    top: @picker-column-height * 2;
+    z-index: 3;
+    pointer-events: none;
+
+    &::before {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1rpx;
+      border-top: 1rpx solid @border-level-1-color;
+      color: @border-level-1-color;
+      transform-origin: 0 0;
+    }
+
+    &::after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 1rpx;
+      transform-origin: 0 100%;
+      color: @border-level-1-color;
+      border-bottom: 1rpx solid @border-level-1-color;
+    }
+  }
+}

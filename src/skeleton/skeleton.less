@@ -1,0 +1,72 @@
+// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@h-space-sm: 32rpx;
+@h-space-nest: 24rpx;
+// skeleton
+@skeleton-row-background-color: rgba(238, 238, 238, 1);
+@skeleton-row-margin-top: @h-space-nest;
+@skeleton-avatar-background-color: rgba(238, 238, 238, 1);
+@skeleton-animation-duration: .6s;
+
+.@{prefix}-skeleton {
+  display: flex;
+  box-sizing: border-box;
+
+  &__avatar {
+    flex-shrink: 0;
+    background-color: @skeleton-avatar-background-color;
+    height: 64rpx;
+    width: 64rpx;
+  }
+
+  &__item {
+    background-color: @skeleton-row-background-color;
+  }
+
+  &__row {
+    display: flex;
+
+    &:not(:first-child) {
+      margin-top: @skeleton-row-margin-top;
+    }
+  }
+}
+
+.animate-flashed {
+  animation: t-flashed @skeleton-animation-duration infinite alternate;
+}
+
+@keyframes t-flashed {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: .6;
+  }
+}
+
+.animate-gradient {
+  .t-skeleton__item {
+    background: linear-gradient(
+      to right,
+      rgba(238, 238, 238, 1) 10%,
+      rgba(238, 238, 238, .4) 20%,
+      rgba(238, 238, 238, 1) 30%
+    );
+    background-size: 400% 50%;
+    width: 100%;
+    animation: t-gradient 1s ease-in-out infinite;
+  }
+}
+
+@keyframes t-gradient {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

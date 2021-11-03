@@ -1,0 +1,23 @@
+<wxs src="./rate.wxs" module="this" />
+<view class="{{ classPrefix }}">
+  <view
+    class="{{ classPrefix }}__wrapper t-class"
+    style="font-size:{{ size }}rpx;"
+    bind:touchmove="{{ !disabled && !readonly && value ? 'onTouch' : '' }}"
+    bind:touchstart="{{ !disabled && !readonly && value ? 'onTouch' : '' }}"
+  >
+    <t-icon
+      wx:for="{{ count }}"
+      wx:key="*this"
+      t-class="{{ classPrefix }}__star t-class-icon"
+      name="{{this.getIconName(defaultValue, value, index, allowHalf, icon, halfIcon, variant)}}"
+      color="{{this.getIconColor(defaultValue, value, index, allowHalf, disabled, color, disabledColor)}}"
+      size="{{ size }}"
+      style="margin-right:{{ count - index > 1 ? gap : 0 }}rpx;"
+      custom-style="background:linear-gradient(to right, {{ disabled ? disabledColor : color }} 0%,  {{ disabled ? disabledColor : color }} 50%,  #E3E6EB 51%,  #E3E6EB 100%);-webkit-background-clip:text;background-clip:text;"
+    />
+  </view>
+  <text wx:if="{{showText}}" class="{{ classPrefix }}__desc t-class-desc"
+    >{{this.getText(texts,value,defaultTexts)}}</text
+  >
+</view>

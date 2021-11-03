@@ -1,0 +1,136 @@
+@import '../common/style/index.less';
+
+.@{prefix}-tabs {
+  display: flex;
+  font-size: 28rpx;
+
+  &-item {
+    flex: 1;
+    font-weight: 400;
+
+    &.t-tabs-is-active {
+      font-weight: 700;
+      color: #0052d9;
+    }
+
+    &--disabled {
+      color: #c8c9cc;
+    }
+  }
+
+  &-content {
+    overflow: hidden;
+  }
+
+  &-nav {
+    position: relative;
+    z-index: 0;
+    user-select: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  &-track {
+    position: absolute;
+    font-weight: 600;
+    z-index: 1;
+  }
+
+  & &-content-inner {
+    display: block;
+  }
+
+  &.@{prefix}-tabs-top,
+  &.@{prefix}-tabs-bottom {
+    flex-wrap: wrap;
+
+    .@{prefix}-tabs-content-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transition-property: transform;
+    }
+
+    .@{prefix}-tabs-scroll {
+      position: relative;
+
+      &::after {
+        content: '';
+      }
+    }
+
+    .@{prefix}-tabs-item {
+      text-align: center;
+      min-width: 162rpx;
+    }
+
+    .@{prefix}-tabs-track {
+      left: 0;
+      bottom: 0;
+      height: 4rpx;
+    }
+
+    .@{prefix}-tabs-content {
+      width: 100%;
+    }
+  }
+
+  &.@{prefix}-tabs-top {
+    .@{prefix}-tabs-scroll {
+      border-bottom: solid 1rpx rgba(150, 95, 95, .12);
+    }
+  }
+
+  &.@{prefix}-tabs-bottom {
+    flex-direction: column-reverse;
+  }
+
+  &.@{prefix}-tabs-left,
+  &.@{prefix}-tabs-right {
+    .@{prefix}-tabs-content-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition-property: transform;
+    }
+
+    .@{prefix}-tabs-scroll {
+      width: auto;
+    }
+
+    .@{prefix}-tabs-nav {
+      flex-direction: column;
+    }
+
+    .@{prefix}-tabs-item {
+      text-align: center;
+    }
+
+    .@{prefix}-tabs-content {
+      width: 100%;
+    }
+  }
+
+  &.@{prefix}-tabs-left {
+    .@{prefix}-tabs-track {
+      left: 0;
+      top: 0;
+      width: 4rpx;
+    }
+  }
+
+  &.@{prefix}-tabs-right {
+    flex-direction: row-reverse;
+
+    .@{prefix}-tabs-track {
+      right: 0;
+      top: 0;
+      width: 4rpx;
+    }
+  }
+}

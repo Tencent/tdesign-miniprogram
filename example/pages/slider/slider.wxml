@@ -1,0 +1,49 @@
+<view class="t-slider-title">Slider 滑动选择器</view>
+<view class="t-slider-desc">用于选择横轴上的数值、区间、档位。</view>
+
+<t-demo title="01 类型" desc="基础滑动选择器">
+  <view class="space"><t-slider /></view>
+  <view class="t-slider-wrapper-desc">带数值滑动选择器</view>
+  <view class="space-left"
+    ><t-slider value="{{value3}}" label="${value}%" bind:change="valueChange1"></t-slider
+  ></view>
+
+  <view class="t-slider-wrapper-desc">起始非零滑动选择器</view>
+  <view class="space-left"
+    ><t-slider min="{{30}}" max="{{200}}" label bind:change="valueChange2"></t-slider
+  ></view>
+
+  <view class="t-slider-wrapper-desc">带刻度滑动选择器</view>
+  <view class="space"><t-slider marks="{{mask3}}" step="{{50}}" value="{{50}}"></t-slider></view>
+
+  <view class="t-slider-wrapper-desc">区间滑动选择器</view>
+  <t-slider range label showExtremeValue value="{{[30, 70]}}" bind:change="valueChange3"></t-slider>
+</t-demo>
+<t-demo title="02 状态" desc="滑动选择器禁用状态">
+  <view class="space-container">
+    <t-slider disabled value="{{60}}" label></t-slider>
+  </view>
+  <view class="space-container">
+    <t-slider disabled value="{{50}}" marks="{{mask3}}"></t-slider>
+  </view>
+  <view class="space-container">
+    <t-slider
+      disabled
+      label
+      range
+      showExtremeValue
+      value="{{[30, 70]}}"
+      colors="{{['red', 'rgba(220, 220, 220, 1)']}}"
+    ></t-slider>
+  </view>
+</t-demo>
+<t-demo title="03 规格" desc="无标题滑动选择器">
+  <view class="space-container">
+    <view class="space"><t-slider /></view>
+  </view>
+</t-demo>
+<t-demo desc="有标题滑动选择器">
+  <view class="space-container label">
+    <view>选择器标题</view><t-slider class="label-class" />
+  </view>
+</t-demo>

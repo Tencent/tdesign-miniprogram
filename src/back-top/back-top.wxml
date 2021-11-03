@@ -1,0 +1,5 @@
+<view class="t-class {{classPrefix}} {{fixed && 'fixed'}} {{theme}}" bindtap="toTop">
+  <t-icon wx:if="{{!!icon}}" class="icon t-class-icon" name="{{icon}}" />
+  <view wx:if="{{ !!text }}" class="text t-class-text"> {{ text }} </view>
+  <slot />
+</view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "footer 页脚",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}

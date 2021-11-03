@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "radio 单选框",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}

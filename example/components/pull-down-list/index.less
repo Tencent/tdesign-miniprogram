@@ -1,0 +1,59 @@
+.pullDownList {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 8rpx;
+  margin-bottom: 12rpx * 2;
+  overflow: hidden;
+
+  .switchBox {
+    height: 60rpx * 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16rpx * 2;
+    font-size: 16rpx * 2;
+    line-height: 24rpx * 2;
+    color: #333;
+  }
+
+  .name,
+  .icon {
+    transition: opacity .3s;
+  }
+
+  &.actived {
+    .name {
+      opacity: .5;
+    }
+
+    .icon {
+      opacity: .6;
+    }
+  }
+
+  .icon {
+    width: 24rpx * 2;
+    height: 24rpx * 2;
+  }
+
+  .childBox {
+    transition: height .3s;
+
+    .child {
+      box-sizing: border-box;
+      border-bottom: 1rpx solid #e5e5e5;
+      height: 56rpx * 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 16rpx * 2;
+      margin-right: 16rpx * 2;
+      font-size: 16rpx * 2;
+
+      &:last-of-type {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}

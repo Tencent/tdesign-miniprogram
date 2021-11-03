@@ -1,0 +1,20 @@
+<t-transition
+ visible="{{visible}}"
+ custom-class="{{className}}"
+ name="{{dataTransitionProps.name}}"
+ appear="{{dataTransitionProps.appear}}"
+ durations="{{dataTransitionProps.durations}}"
+ destoryOnHide="{{destroyOnClose}}"
+ catch:touchmove="{{preventScrollThrough ? 'preventEvent' : ''}}"
+>
+	<view class="t-popup__overlay t-class-overlay" bind:tap="onOverlayClick" style="z-index:{{zIndex -1}}" />
+	<view class="t-popup__content t-class-content" style="z-index:{{zIndex}}">
+		{{content}}
+		<view class="t-popup__close">
+			<t-icon name="close" wx:if="{{closeBtn}}" bind:tap="onCloseClick" size="64rpx" />
+			<slot name="closeBtn" class="t-popup__close" />
+		</view>
+		<slot name="content" />
+	</view>
+</t-transition>
+

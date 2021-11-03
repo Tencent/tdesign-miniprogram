@@ -1,0 +1,37 @@
+<view style="width: 100%">
+  <view style="margin: 20px 16px">
+    <t-progress percentage="0"></t-progress>
+    <view style="height: 19px; clear: both"></view>
+    <t-progress percentage="88"></t-progress>
+    <view style="height: 19px; clear: both"></view>
+    <t-progress
+      percentage="88"
+      activeColor="{{activeColor}}"
+      bgColor="{{bgColor}}"
+      textColor="{{textColor}}"
+    ></t-progress>
+    <view style="height: 19px; clear: both"></view>
+    <t-progress percentage="100"></t-progress>
+    <view style="height: 19px; clear: both"></view>
+    <t-progress percentage="50" type="error"></t-progress>
+  </view>
+
+  <view style="margin: 20px 16px">
+    <t-progress percentage="0" showInfo="{{showInfo}}"></t-progress>
+    <view style="height: 32px; clear: both"></view>
+    <t-progress percentage="88" showInfo="{{showInfo}}"></t-progress>
+    <view style="height: 32px; clear: both"></view>
+    <t-progress
+      percentage="88"
+      showInfo="{{showInfo}}"
+      activeColor="{{activeColor}}"
+      bgColor="{{bgColor}}"
+      textColor="{{textColor}}"
+    ></t-progress>
+    <view style="height: 32px; clear: both"></view>
+    <t-progress percentage="100" showInfo="{{showInfo}}"></t-progress>
+    <view style="height: 32px; clear: both"></view>
+    <t-progress percentage="50" type="error" showInfo="{{showInfo}}"></t-progress>
+  </view>
+  <!-- <button class="t-button" bindtap="toggleInfo">隐藏数值</button> -->
+</view>

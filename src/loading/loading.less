@@ -1,0 +1,208 @@
+.t-loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &__spinner {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    animation: rotate .8s linear infinite;
+
+    &.reverse {
+      animation-name: rotateReverse;
+    }
+
+    &--spinner {
+      animation-timing-function: steps(12);
+
+      .loading__dot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        &::before {
+          display: block;
+          width: 5rpx;
+          height: 25%;
+          margin: 0 auto;
+          background-color: currentColor;
+          border-radius: 40%;
+          content: ' ';
+        }
+      }
+    }
+
+    &--circular {
+      .loading__circular {
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+        background: conic-gradient(
+          from 180deg at 50% 50%,
+          rgba(255, 255, 255, 0) 0deg,
+          rgba(255, 255, 255, 0) 60deg,
+          currentColor 330deg,
+          rgba(255, 255, 255, 0) 360deg
+        );
+        mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
+
+        /* stylelint-disable-next-line */
+        -webkit-mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
+      }
+    }
+
+    &--dots {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: none;
+
+      .dot {
+        width: 20%;
+        height: 20%;
+        border-radius: 50%;
+        background-color: currentColor;
+        animation-duration: 1.8s;
+        animation-name: dotting;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+      }
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+
+    .loading-text {
+      margin-top: 12rpx;
+    }
+  }
+
+  &--horizontal {
+    flex-direction: row;
+
+    .loading-text {
+      margin-left: 16rpx;
+    }
+  }
+}
+
+.refreshBtn {
+  margin-left: 16rpx;
+  color: #0052d9;
+}
+
+.t-loading__bar {
+  height: 6rpx;
+  width: 80%;
+  transition: .5s;
+  background-color: #0052d9;
+  display: none;
+}
+
+.t-loading__bar-static {
+  display: block;
+}
+
+.t-loading__bar-animation {
+  animation: t-bar 8s linear;
+  display: block;
+}
+
+.t-loading__bar-loaded {
+  opacity: 0;
+  height: 0;
+  animation: t-bar-loaded 1s ease-out;
+}
+
+@keyframes t-bar {
+  0% {
+    width: 0;
+  }
+
+  50% {
+    width: 70%;
+  }
+
+  100% {
+    width: 80%;
+  }
+}
+
+@keyframes t-bar-loaded {
+  0% {
+    height: 6rpx;
+    opacity: 1;
+    width: 90%;
+  }
+
+  50% {
+    height: 6rpx;
+    opacity: 1;
+    width: 100%;
+  }
+
+  100% {
+    height: 0;
+    opacity: 0;
+    width: 100%;
+  }
+}
+
+.generate(@n, @i: 1) when (@i =< @n) {
+  .loading__dot:nth-of-type(@{i}) {
+    transform: rotate(@i * 30deg);
+    opacity: (1 / 12) * (@i - 1);
+  }
+  .generate(@n, (@i + 1));
+}
+.generate(12);
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes dotting {
+  0% {
+    opacity: .4;
+  }
+
+  1% {
+    opacity: .8;
+  }
+
+  33% {
+    opacity: .8;
+  }
+
+  34% {
+    opacity: .4;
+  }
+
+  100% {
+    opacity: .4;
+  }
+}

@@ -1,0 +1,10 @@
+<wxs src="./check-tag.wxs" module="this" />
+
+<view
+  class="{{  this.getTagClass({classPrefix, classBasePrefix, size, checked, shape, disabled, closable}) }}"
+  style="{{this.getTagStyle(maxWidth)}}"
+>
+  <t-icon wx-if="{{icon}}" name="{{icon}}" />
+  <slot />
+  <t-icon wx:if="{{ closeable && !disabled }}" name="close" bind:click="onClickClose" />
+</view>

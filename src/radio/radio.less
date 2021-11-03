@@ -1,0 +1,96 @@
+// @import (css) '../common/index.wxss';
+@btn-width: 48rpx;
+
+.t-radio {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding: 32rpx 32rpx;
+  font-size: 32rpx;
+  background: white;
+
+  position: relative;
+
+  .limit-title-row {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &__icon-left {
+    margin-right: 20rpx;
+    width: @btn-width;
+  }
+
+  &__icon-right {
+    margin-left: auto;
+    width: @btn-width;
+  }
+
+  &__image {
+    line-height: @btn-width;
+  }
+
+  &-icon__image {
+    height: @btn-width;
+    width: @btn-width;
+    vertical-align: sub;
+  }
+
+  &__btn {
+    font-size: @btn-width;
+    height: @btn-width;
+    line-height: 40rpx;
+    color: #dcdcdc;
+    display: block;
+  }
+
+  &__content {
+    flex: 1;
+    line-height: @btn-width;
+    margin-right: 10px;
+  }
+
+  &__title {
+    .limit-title-row();
+  }
+
+  &__description {
+    color: rgba(0, 0, 0, .4);
+    .limit-title-row();
+    font-size: 28rpx;
+    line-height: 44rpx;
+  }
+
+  &-is-checked {
+    color: #0052d9;
+  }
+
+  &-is-disabled {
+    cursor: not-allowed;
+    color: #dcdcdc;
+  }
+
+  &-is-disabled-context {
+    cursor: not-allowed;
+    color: rgba(0, 0, 0, .26);
+  }
+
+  &-border {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    border-top: 1rpx solid #e7e7e7;
+    width: 100%;
+  }
+
+  &-border-left {
+    left: 80rpx;
+    width: calc(100% - 80rpx);
+  }
+
+  &-border-right {
+    right: 80rpx;
+    width: calc(100% - 80rpx);
+  }
+}

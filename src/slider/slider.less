@@ -1,0 +1,167 @@
+// @import (css) '../common/index.wxss';
+
+@bar-height: 2rpx;
+@block-color: #fff;
+@block-size: 16px;
+
+.t-slider__container {
+  font-size: 14px;
+
+  &.bottom {
+    padding-bottom: 40rpx;
+  }
+
+  .t-slider-value,
+  .t-slider-range-extrem,
+  .t-slider-dot-value {
+    color: rgba(0, 0, 0, .4);
+  }
+
+  &.disabled {
+    .t-slider-value,
+    .t-slider-range-extrem,
+    .t-slider-dot-value,
+    .scale-desc {
+      color: rgba(0, 0, 0, .26);
+    }
+  }
+
+  .t-slider-value__active {
+    text-align: center;
+  }
+}
+
+.t-slider__wrapper {
+  display: flex;
+  align-items: center;
+  height: 96rpx;
+
+  // 单点滑块样式
+  .t-slider__main {
+    position: relative;
+    margin: 0 32rpx;
+    flex: 10;
+    padding: 16rpx 0;
+    background-clip: content-box;
+    height: @bar-height * 2;
+    border-radius: @bar-height;
+    display: inline-block;
+
+    .t-slider-line {
+      position: absolute;
+      top: 8px;
+      height: @bar-height * 2;
+      border-radius: @bar-height;
+    }
+
+    .t-slider-dot {
+      border-radius: 50%;
+      border: 2rpx solid #dcdcdc;
+      position: absolute;
+      background-color: @block-color;
+      width: @block-size;
+      height: @block-size;
+      top: @bar-height - @block-size - 2;
+      z-index: 2;
+    }
+  }
+
+  .t-slider-value {
+    display: inline-block;
+  }
+
+  .t-slider-value__min {
+    margin-left: 16px;
+  }
+
+  .t-slider-value__max {
+    margin-right: 16px;
+  }
+
+  .t-slider-value__right {
+    flex-basis: 80rpx;
+  }
+
+  .t-slider-active {
+    width: 100%;
+  }
+}
+
+// 范围滑块样式
+.t-slider-range-container {
+  display: flex;
+  padding: @block-size * 1.4 0 0 0;
+
+  .t-slider-range-extrem {
+    display: inline-block;
+  }
+
+  .t-slider-range-min {
+    margin-left: 32rpx;
+    text-align: left;
+  }
+
+  .t-slider-range-max {
+    margin-right: 32rpx;
+    text-align: right;
+  }
+
+  .t-slider-bar {
+    margin: 0 32rpx;
+    flex: 10;
+    padding: 16rpx 0;
+    background-clip: content-box;
+    height: @bar-height * 2;
+    border-radius: @bar-height;
+    position: relative;
+    display: inline-block;
+
+    .t-slider-dot {
+      border-radius: 50%;
+      border: 2rpx solid #dcdcdc;
+      position: absolute;
+      z-index: 2;
+      background-color: @block-color;
+      width: @block-size;
+      height: @block-size;
+      top: @bar-height - @block-size + 16;
+
+      &__left {
+        left: 0;
+      }
+
+      &__right {
+        right: 0;
+      }
+
+      &-value {
+        position: relative;
+        top: -26px;
+        text-align: center;
+      }
+    }
+
+    .t-slider-line {
+      position: absolute;
+      top: 8px;
+      height: 5rpx;
+    }
+  }
+}
+
+// 刻度样式
+.t-slider-scale-item {
+  background-color: #0052d9;
+  width: @bar-height * 2;
+  height: 14rpx;
+  position: absolute;
+  bottom: 6rpx;
+  z-index: 1;
+
+  .scale-desc {
+    position: absolute;
+    color: rgba(0, 0, 0, .4);
+    transform: translateX(-50%);
+    top: 20rpx;
+  }
+}

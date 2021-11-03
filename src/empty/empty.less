@@ -1,0 +1,30 @@
+// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@empty-text-color: rgba(0, 0, 0, .4);
+
+.@{prefix}-empty {
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    text-align: center;
+  }
+
+  &__img {
+    width: 100rpx;
+    height: 100rpx;
+  }
+
+  &__description {
+    margin-top: 48rpx;
+    text-align: center;
+    color: @empty-text-color;
+    font-size: 28rpx;
+    line-height: 44rpx;
+  }
+
+  &__description + &__actions:not(:empty) {
+    margin-top: 48rpx;
+  }
+}

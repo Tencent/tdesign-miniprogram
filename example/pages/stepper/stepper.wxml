@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="t-stepper-title">Stepper 步进器</view>
+  <view class="t-stepper-desc">用于数量的增减。</view>
+  <t-demo title="01 类型" desc="基本步进器">
+    <t-stepper label="标题文字" />
+    <view class="t-stepper-wrapper-desc">带单位步进器</view>
+    <t-stepper label="标题文字（单位）" step="2" />
+    <view class="t-stepper-wrapper-desc">纯步进器</view>
+    <view class="pure-stepper-container">
+      <t-stepper value="{{3}}" theme="mode" />
+    </view>
+  </t-demo>
+
+  <t-demo title="02 状态" desc="步进器状态">
+    <view class="stepper-content">
+      <t-stepper label="禁用" disabled="true" />
+      <view class="interval" />
+      <t-stepper label="禁用（单位）" step="2" disabled="true" />
+      <view class="interval" />
+      <t-stepper label="最小值 (5)" min="5" />
+      <view class="interval" />
+      <t-stepper label="最大值 (999)" value="999" max="999" />
+      <view class="interval" />
+      <view class="pure-stepper-container">
+        <t-stepper disabled value="3" theme="mode" />
+        <t-stepper max="99" theme="mode" />
+        <t-stepper value="100" theme="mode" />
+      </view>
+      <view class="interval" />
+      <view class="interval" />
+    </view>
+  </t-demo>
+</view>

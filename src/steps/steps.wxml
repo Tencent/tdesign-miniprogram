@@ -1,0 +1,5 @@
+<view
+  class="{{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}--{{type}}-anchor {{readonly ? classPrefix + '--readonly' : ''}} t-class"
+>
+  <slot />
+</view>

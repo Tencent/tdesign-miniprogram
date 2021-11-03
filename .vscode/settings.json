@@ -1,0 +1,36 @@
+{
+  "editor.formatOnSave": true,
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true,
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "minapp-vscode.reserveTags": ["text"],
+  "files.associations": {
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "minapp-vscode.wxmlFormatter": "prettier",
+  "[wxml]": {
+    "editor.defaultFormatter": "qiu8310.minapp-vscode"
+  },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "[less]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "cSpell.words": ["stylelint"]
+}

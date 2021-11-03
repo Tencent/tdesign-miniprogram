@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-loading": "@tencent/tdesign-miniprogram/loading/loading",
+    "t-icon": "@tencent/tdesign-miniprogram/icon/icon"
+  }
+}

@@ -1,0 +1,7 @@
+**/**
+!LICENSE
+!README.md
+!CHANGELOG.md
+
+# 对发布的组件进行筛选
+!miniprogram_dist/**/**

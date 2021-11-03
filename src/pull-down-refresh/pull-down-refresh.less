@@ -1,0 +1,67 @@
+.t-pull-down-refresh {
+  .refresh-bar {
+    overflow: hidden;
+    position: relative;
+    background: #f6f6f6;
+    color: #bbb;
+    font-size: 24rpx;
+
+    &.refreshing {
+      transition: height .5s;
+
+      .refresh-bar__loading {
+        animation: rotateLoading .5s linear infinite;
+      }
+    }
+
+    &.success {
+      .refresh-bar__loading {
+        display: none;
+      }
+    }
+
+    &.finishing {
+      transition: height 1s;
+
+      .refresh-bar__loading {
+        visibility: hidden;
+      }
+    }
+
+    &__content {
+      margin-top: 55rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__loading {
+      position: relative;
+      box-sizing: border-box;
+      width: auto;
+      height: auto;
+    }
+
+    &__text {
+      margin-top: 10rpx;
+    }
+  }
+
+  &__content {
+    position: relative;
+  }
+}
+
+.indicator-blue {
+  color: #0052d9;
+}
+
+@keyframes rotateLoading {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

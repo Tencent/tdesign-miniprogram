@@ -1,0 +1,57 @@
+@import '../common/style/index.less';
+
+.@{prefix}-grid-item {
+  box-sizing: border-box;
+  height: 100%;
+  float: left;
+
+  &-hover:active {
+    background-color: #f2f3f5;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .horizontal-content {
+    flex-direction: row;
+  }
+
+  &-words-wapper {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .horizontal-words {
+    flex-direction: row;
+  }
+
+  &-image-wapper {
+    display: flex;
+    flex: 1;
+  }
+
+  &-text {
+    font-size: 28rpx;
+  }
+
+  &-description {
+    font-size: 24rpx;
+    color: rgba(0, 0, 0, .4);
+  }
+
+  .align-center {
+    justify-content: center;
+  }
+
+  .align-left {
+    justify-content: flex-start;
+  }
+}

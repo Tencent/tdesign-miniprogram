@@ -6,11 +6,7 @@ const src = 'src';
 const dist = 'miniprogram_dist';
 
 /* base tasks */
-const {
-  clear,
-  build: baseBuild,
-  watch: baseWatch,
-} = base(src, dist, 'dist');
+const { clear, build: baseBuild, watch: baseWatch } = base(src, dist, 'dist');
 
 /** `gulp build`
  * 构建

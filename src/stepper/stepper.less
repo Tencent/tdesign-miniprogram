@@ -1,0 +1,61 @@
+.t-stepper {
+  &-normal {
+    .t-stepper__right-container {
+      display: flex;
+      align-items: center;
+      width: 200rpx;
+      justify-content: flex-end;
+    }
+
+    .t-stepper__input {
+      display: block;
+      font-size: 16px;
+      color: #000;
+      text-align: center;
+      border: 0;
+      vertical-align: top;
+      background: 0;
+    }
+
+    .t-stepper__minus,
+    .t-stepper__plus {
+      display: block;
+      margin-bottom: 8rpx;
+    }
+
+    &.t-is-disabled {
+      .t-stepper__input {
+        color: rgba(0, 0, 0, .26);
+      }
+    }
+  }
+
+  // 简洁模式样式
+  &-pure {
+    display: flex;
+    align-items: center;
+
+    .t-stepper__input {
+      border-radius: 2px;
+      height: 48rpx;
+      margin: 0 5px;
+      background-color: #f1f2f5;
+      text-align: center;
+      font-size: 24rpx;
+    }
+
+    .t-stepper__minus,
+    .t-stepper__plus {
+      border-radius: 2px;
+      background-color: #f1f2f5;
+      padding: 0 5px;
+      height: 48rpx;
+    }
+
+    &.t-is-disabled {
+      .t-stepper__input {
+        color: rgba(0, 0, 0, .26);
+      }
+    }
+  }
+}

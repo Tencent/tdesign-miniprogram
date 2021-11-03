@@ -1,0 +1,31 @@
+.cell-badge {
+  margin-left: 16rpx;
+}
+
+.cell-badge-wrap {
+  padding-bottom: 8rpx;
+}
+
+.demo-grid {
+  display: grid;
+  margin: 32rpx 32rpx 0rpx;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 92rpx;
+}
+
+.size-mini {
+  width: 120rpx;
+  height: 60rpx !important;
+}
+
+.tab-bar-wrapper {
+  &::after {
+    content: '标签栏带徽标';
+    position: absolute;
+    top: -34px;
+    left: 16px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, .4);
+    font-size: 12px;
+  }
+}
