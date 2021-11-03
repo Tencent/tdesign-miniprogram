@@ -1,5 +1,5 @@
 <template>
-  <td-doc-content ref="tdDocContent" slot="doc-content" page-status="hidden" platform="mobile">
+  <td-doc-content ref="tdDocContent" page-status="hidden" platform="mobile">
     <td-doc-header slot="doc-header" ref="tdDocHeader"></td-doc-header>
     <template v-if="info.isComponent">
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
