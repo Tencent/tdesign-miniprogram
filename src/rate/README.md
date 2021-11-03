@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于对某行为/事物进行打分。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/rate.png)
+用于对某行为/事物进行打分。
 
 ## 引入
 

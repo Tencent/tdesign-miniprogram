@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于用户输入搜索信息，并进行页面内容搜索。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/search.png)
+用于用户输入搜索信息，并进行页面内容搜索。
 
 ## 引入
 

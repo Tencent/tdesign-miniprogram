@@ -2,11 +2,7 @@
 
 ## 介绍
 
-组合单选框<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/radio-group.png)
+组合单选框。
 
 ### 特性及兼容性
 

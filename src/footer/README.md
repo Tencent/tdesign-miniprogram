@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/footer.png)
+用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。
 
 ## 引入
 

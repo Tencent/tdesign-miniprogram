@@ -284,7 +284,7 @@ export default {
           title: 'TabBar 标签栏',
           name: 'tabbar',
           meta: { docType: 'navigation' },
-          path: '/miniprogram/components/tabbar',
+          path: '/miniprogram/components/tab-bar',
           component: () => import('@/tab-bar/README.md'),
         },
         // {

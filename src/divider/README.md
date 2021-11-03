@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/divider.png)
+用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。
 
 ## 引入
 

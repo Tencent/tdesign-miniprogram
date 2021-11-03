@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于当页面过长往下滑动时，帮助用户快速回到页面顶部。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/back-top.png)
+用于当页面过长往下滑动时，帮助用户快速回到页面顶部。
 
 ## 引入
 
