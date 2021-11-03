@@ -2,18 +2,13 @@
 
 ## 介绍
 
-用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/navbar.png)
+用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。
 
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
-// app.json 或 index.json
 "usingComponents": {
   "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar",
 }

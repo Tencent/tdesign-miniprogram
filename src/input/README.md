@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于单行文本信息输入。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/input.png)
+用于单行文本信息输入。
 
 ## 引入
 

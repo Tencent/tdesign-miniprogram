@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于各个类别行的信息展示。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/cell.png)
+用于各个类别行的信息展示。
 
 ## 引入
 

@@ -1,14 +1,15 @@
 <template>
-  <td-doc-content ref="tdDocContent" slot="doc-content" page-status="hidden" platform="mobile">
+  <td-doc-content ref="tdDocContent" page-status="hidden" platform="mobile">
     <td-doc-header slot="doc-header" ref="tdDocHeader"></td-doc-header>
     <template v-if="info.isComponent">
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
-      <div v-show="tab === 'demo'">
+      <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
 
         <!-- <td-doc-phone ref="tdDocPhone"> -->
           <!-- <iframe :src="info.mobileUrl" frameborder="0" width="100%" height="100%" style="border-radius: 0 0 6px 6px;"></iframe> -->
         <!-- </td-doc-phone> -->
+        <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${compName}.png`" />
         <td-contributors ref="tdContributors"></td-contributors>
       </div>
       <div v-show="tab === 'api'" name="API" v-html="info.apiMd"></div>
@@ -28,12 +29,24 @@
   import '@common/site/src/styles/prism-theme.less';
   import '@common/site/src/styles/prism-theme-dark.less';
 
+  import QrCode from '@components/qrcode.vue';
+
   export default defineComponent({
     props: {
       docType: String,
     },
 
+    data() {
+      return {
+        compName: 'button',
+      }
+    },
+
     inject: ['info', 'demos'],
+
+    components: {
+      QrCode,
+    },
 
     computed: {
       tab: {
@@ -60,6 +73,10 @@
       } else {
          Prismjs.highlightAll();
       }
+
+      const { path } = this.$route;
+      this.compName = path.slice(path.lastIndexOf('/'));
+      
       
       tdDocHeader.docType = this.docType;
       tdDocHeader.docInfo = { title: info.title, desc: info.description };
@@ -84,3 +101,9 @@
     },
   });
 </script>
+
+<style lang="less">
+.td-doc-main {
+  position: relative;
+}
+</style>

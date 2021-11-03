@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于多行文本信息输入。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/textarea.png)
+用于多行文本信息输入。
 
 ## 引入
 

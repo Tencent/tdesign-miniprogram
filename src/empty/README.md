@@ -2,12 +2,7 @@
 
 ## 介绍
 
-用于空状态时的占位提示。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/empty.png)
-
+用于空状态时的占位提示。
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
