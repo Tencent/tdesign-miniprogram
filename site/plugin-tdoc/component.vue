@@ -5,10 +5,6 @@
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
       <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
-
-        <!-- <td-doc-phone ref="tdDocPhone"> -->
-          <!-- <iframe :src="info.mobileUrl" frameborder="0" width="100%" height="100%" style="border-radius: 0 0 6px 6px;"></iframe> -->
-        <!-- </td-doc-phone> -->
         <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${compName}.png`" />
         <td-contributors ref="tdContributors"></td-contributors>
       </div>
@@ -63,32 +59,24 @@
 
     mounted() {
       const { info } = this;
-      const { tdDocContent, tdDocHeader, tdDocPhone, tdDocTabs, tdContributors } = this.$refs;
-      const completeUrl = location.origin + info.mobileUrl;
+      const { tdDocContent, tdDocHeader, tdDocTabs, tdContributors } = this.$refs;
 
       if (info.isComponent) {
         tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
         tdDocHeader.issueInfo = info.issueInfo || {};
         tdContributors.contributors = info.contributors || [];
-      } else {
-         Prismjs.highlightAll();
       }
+      
+      Prismjs.highlightAll();
 
       const { path } = this.$route;
       this.compName = path.slice(path.lastIndexOf('/'));
-      
       
       tdDocHeader.docType = this.docType;
       tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
       // @ts-ignore
       document.querySelector('td-doc-content').initAnchorHighlight();
-
-      tdDocPhone && tdDocPhone.QRCode.toCanvas(
-        tdDocPhone.qrCanvas,
-        completeUrl,
-        { width: 84, height: 84 }
-      );
 
       this.$emit('loaded', () => {
         tdDocContent.pageStatus = 'show';
@@ -103,7 +91,18 @@
 </script>
 
 <style lang="less">
-.td-doc-main {
-  position: relative;
+.td-doc {
+  &-main {
+    position: relative;
+  }
+
+  &__image-wrapper {
+    margin: 16px 0;
+    padding: 16px 0;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #DCDCDC;
+  }
 }
 </style>
