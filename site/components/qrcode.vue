@@ -1,5 +1,5 @@
 <template>
-  <div ref="$wrapper" :class="wrapperClass" :style="{ '--fixed-pos-top': fixedPos.top, '--fixed-pos-left': fixedPos.left }">
+  <div ref="wrapper" :class="wrapperClass" :style="{ '--fixed-pos-top': fixedPos.top, '--fixed-pos-left': fixedPos.left }">
     <h3 class="tdesign-doc-qrcode__title">扫码体验组件</h3>
     <img :src="src" alt="qrcode" class="tdesign-doc-qrcode__img" />
   </div>
@@ -15,7 +15,7 @@ export default defineComponent({
 
   setup() {
     const isFixed = ref(false);
-    const $wrapper = ref(null);
+    const wrapper = ref(null);
     const fixedPos = reactive({});
     const wrapperClass = computed(() => ([
       'tdesign-doc-qrcode',
@@ -29,8 +29,8 @@ export default defineComponent({
 
       if (scrollTop > 258) {
         if (!isFixed.value && !fixedPos.top) {
-          const { top, left } = $wrapper.value.getBoundingClientRect();
-          fixedPos.top = top + 'px';
+          const { top, left } = wrapper.value.getBoundingClientRect();
+          fixedPos.top = 150 + 'px';
           fixedPos.left = left + 'px';
         }
         isFixed.value = true;
@@ -49,7 +49,7 @@ export default defineComponent({
 
     return {
       isFixed,
-      $wrapper,
+      wrapper,
       fixedPos,
       wrapperClass,
     }
