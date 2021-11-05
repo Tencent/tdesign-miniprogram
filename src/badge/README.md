@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于告知用户，该区域的状态变化或者待处理任务的数量。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/badge.png)
+用于告知用户，该区域的状态变化或者待处理任务的数量。
 
 ## 引入
 

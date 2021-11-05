@@ -1,14 +1,11 @@
 <template>
-  <td-doc-content ref="tdDocContent" slot="doc-content" page-status="hidden" platform="mobile">
+  <td-doc-content ref="tdDocContent" page-status="hidden" platform="mobile">
     <td-doc-header slot="doc-header" ref="tdDocHeader"></td-doc-header>
     <template v-if="info.isComponent">
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
-      <div v-show="tab === 'demo'">
+      <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
-
-        <!-- <td-doc-phone ref="tdDocPhone"> -->
-          <!-- <iframe :src="info.mobileUrl" frameborder="0" width="100%" height="100%" style="border-radius: 0 0 6px 6px;"></iframe> -->
-        <!-- </td-doc-phone> -->
+        <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${compName}.png`" />
         <td-contributors ref="tdContributors"></td-contributors>
       </div>
       <div v-show="tab === 'api'" name="API" v-html="info.apiMd"></div>
@@ -20,67 +17,92 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import Prismjs from 'prismjs';
-  import 'prismjs/components/prism-bash.js';
-  import 'prismjs/components/prism-javascript.js';
-  import 'prismjs/components/prism-json.js';
-  import '@common/site/src/styles/prism-theme.less';
-  import '@common/site/src/styles/prism-theme-dark.less';
+import { defineComponent } from 'vue';
+import Prismjs from 'prismjs';
+import 'prismjs/components/prism-bash.js';
+import 'prismjs/components/prism-javascript.js';
+import 'prismjs/components/prism-json.js';
+import '@common/site/src/styles/prism-theme.less';
+import '@common/site/src/styles/prism-theme-dark.less';
 
-  export default defineComponent({
-    props: {
-      docType: String,
-    },
+import QrCode from '@components/qrcode.vue';
 
-    inject: ['info', 'demos'],
+export default defineComponent({
+  props: {
+    docType: String,
+  },
 
-    computed: {
-      tab: {
-        get() {
-          return this.$route.query.tab || 'demo';
-        },
-        set(v) {
-          if (this.$route.query.tab !== v) {
-            this.$router.push({ query: { tab: v } });
-          }
+  data() {
+    return {
+      compName: 'button',
+    };
+  },
+
+  inject: ['info', 'demos'],
+
+  components: {
+    QrCode,
+  },
+
+  computed: {
+    tab: {
+      get() {
+        return this.$route.query.tab || 'demo';
+      },
+      set(v) {
+        if (this.$route.query.tab !== v) {
+          this.$router.push({ query: { tab: v } });
         }
       },
     },
+  },
 
-    mounted() {
-      const { info } = this;
-      const { tdDocContent, tdDocHeader, tdDocPhone, tdDocTabs, tdContributors } = this.$refs;
-      const completeUrl = location.origin + info.mobileUrl;
+  mounted() {
+    const { info } = this;
+    const { tdDocContent, tdDocHeader, tdDocTabs, tdContributors } = this.$refs;
 
-      if (info.isComponent) {
-        tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
-        tdDocHeader.issueInfo = info.issueInfo || {};
-        tdContributors.contributors = info.contributors || [];
-      } else {
-         Prismjs.highlightAll();
-      }
-      
-      tdDocHeader.docType = this.docType;
-      tdDocHeader.docInfo = { title: info.title, desc: info.description };
+    if (info.isComponent) {
+      tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
+      tdDocHeader.issueInfo = info.issueInfo || {};
+      tdContributors.contributors = info.contributors || [];
+    }
+    
+    Prismjs.highlightAll();
 
-      // @ts-ignore
-      document.querySelector('td-doc-content').initAnchorHighlight();
+    const { path } = this.$route;
+    this.compName = path.slice(path.lastIndexOf('/'));
+    
+    tdDocHeader.docType = this.docType;
+    tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
-      tdDocPhone && tdDocPhone.QRCode.toCanvas(
-        tdDocPhone.qrCanvas,
-        completeUrl,
-        { width: 84, height: 84 }
-      );
+    // @ts-ignore
+    document.querySelector('td-doc-content').initAnchorHighlight();
 
-      this.$emit('loaded', () => {
-        tdDocContent.pageStatus = 'show';
-      });
-    },
+    this.$emit('loaded', () => {
+      tdDocContent.pageStatus = 'show';
+    });
+  },
 
-    beforeDestroy() {
-      // @ts-ignore
-      document.querySelector('td-doc-content').resetAnchorHighlight();
-    },
+  beforeDestroy() {
+    // @ts-ignore
+    document.querySelector('td-doc-content').resetAnchorHighlight();
+  },
   });
 </script>
+
+<style lang="less">
+.td-doc {
+  &-main {
+    position: relative;
+  }
+
+  &__image-wrapper {
+    margin: 16px 0;
+    padding: 16px 0;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #DCDCDC;
+  }
+}
+</style>

@@ -2,11 +2,7 @@
 
 ## 介绍
 
-悬浮按钮<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/fab.png)
+悬浮按钮。
 
 ### 特性及兼容性
 

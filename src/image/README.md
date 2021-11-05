@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/image.png)
+用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。
 
 ## 引入
 

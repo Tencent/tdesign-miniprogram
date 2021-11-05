@@ -2,11 +2,7 @@
 
 ## 介绍
 
-用于轻量级反馈或提示，不会打断用户操作。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/toast.png)
+用于轻量级反馈或提示，不会打断用户操作。
 
 ## 引入
 

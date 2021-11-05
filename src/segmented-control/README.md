@@ -2,11 +2,7 @@
 
 ## 介绍
 
-分段器<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/segmented-control.png)
+分段器。
 
 ### 特性及兼容性
 

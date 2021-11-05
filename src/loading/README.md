@@ -2,13 +2,7 @@
 
 ## 介绍
 
-用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/loading.png)
-
-## 引入
+用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。
 
 ## 引入
 
@@ -24,7 +18,7 @@
 
 ### 类型
 
-纯 icon
+#### 纯图标
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/loading-1.png" width="50%" height="50%" style="margin-top: 10px">
 
@@ -34,7 +28,7 @@
 <t-loading theme="dots" size="80rpx" loading></t-loading>
 ```
 
-icon 加文字横向
+#### 图标加横向文字
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/loading-2.png" width="50%" height="50%" style="margin-top: 10px">
 
@@ -52,7 +46,7 @@ icon 加文字横向
 </t-loading>
 ```
 
-icon 加文字竖向
+#### 图标加竖向文字
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/loading-3.png" width="50%" height="50%" style="margin-top: 10px">
 
@@ -72,7 +66,7 @@ icon 加文字竖向
 <t-loading theme="error" class="loading-style" loading bind:reload="reloadPage"></t-loading>
 ```
 
-进度条加载
+#### 进度条加载
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/loading-4.png" width="50%" height="50%" style="margin-top: 10px">
 
