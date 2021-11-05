@@ -17,76 +17,76 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import Prismjs from 'prismjs';
-  import 'prismjs/components/prism-bash.js';
-  import 'prismjs/components/prism-javascript.js';
-  import 'prismjs/components/prism-json.js';
-  import '@common/site/src/styles/prism-theme.less';
-  import '@common/site/src/styles/prism-theme-dark.less';
+import { defineComponent } from 'vue';
+import Prismjs from 'prismjs';
+import 'prismjs/components/prism-bash.js';
+import 'prismjs/components/prism-javascript.js';
+import 'prismjs/components/prism-json.js';
+import '@common/site/src/styles/prism-theme.less';
+import '@common/site/src/styles/prism-theme-dark.less';
 
-  import QrCode from '@components/qrcode.vue';
+import QrCode from '@components/qrcode.vue';
 
-  export default defineComponent({
-    props: {
-      docType: String,
-    },
+export default defineComponent({
+  props: {
+    docType: String,
+  },
 
-    data() {
-      return {
-        compName: 'button',
-      }
-    },
+  data() {
+    return {
+      compName: 'button',
+    };
+  },
 
-    inject: ['info', 'demos'],
+  inject: ['info', 'demos'],
 
-    components: {
-      QrCode,
-    },
+  components: {
+    QrCode,
+  },
 
-    computed: {
-      tab: {
-        get() {
-          return this.$route.query.tab || 'demo';
-        },
-        set(v) {
-          if (this.$route.query.tab !== v) {
-            this.$router.push({ query: { tab: v } });
-          }
+  computed: {
+    tab: {
+      get() {
+        return this.$route.query.tab || 'demo';
+      },
+      set(v) {
+        if (this.$route.query.tab !== v) {
+          this.$router.push({ query: { tab: v } });
         }
       },
     },
+  },
 
-    mounted() {
-      const { info } = this;
-      const { tdDocContent, tdDocHeader, tdDocTabs, tdContributors } = this.$refs;
+  mounted() {
+    const { info } = this;
+    const { tdDocContent, tdDocHeader, tdDocTabs, tdContributors } = this.$refs;
 
-      if (info.isComponent) {
-        tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
-        tdDocHeader.issueInfo = info.issueInfo || {};
-        tdContributors.contributors = info.contributors || [];
-      }
-      
-      Prismjs.highlightAll();
+    if (info.isComponent) {
+      tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
+      tdDocHeader.issueInfo = info.issueInfo || {};
+      tdContributors.contributors = info.contributors || [];
+    }
+    
+    Prismjs.highlightAll();
 
-      const { path } = this.$route;
-      this.compName = path.slice(path.lastIndexOf('/'));
-      
-      tdDocHeader.docType = this.docType;
-      tdDocHeader.docInfo = { title: info.title, desc: info.description };
+    const { path } = this.$route;
+    this.compName = path.slice(path.lastIndexOf('/'));
+    
+    tdDocHeader.docType = this.docType;
+    tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
-      // @ts-ignore
-      document.querySelector('td-doc-content').initAnchorHighlight();
+    // @ts-ignore
+    document.querySelector('td-doc-content').initAnchorHighlight();
 
-      this.$emit('loaded', () => {
-        tdDocContent.pageStatus = 'show';
-      });
-    },
+    this.$emit('loaded', () => {
+      tdDocContent.pageStatus = 'show';
+    });
+  },
 
-    beforeDestroy() {
-      // @ts-ignore
-      document.querySelector('td-doc-content').resetAnchorHighlight();
-    },
+  beforeDestroy() {
+    // @ts-ignore
+    document.querySelector('td-doc-content').resetAnchorHighlight();
+  },
   });
 </script>
 
