@@ -6,8 +6,6 @@
 
 ## 引入
 
-## 引入
-
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
@@ -20,7 +18,7 @@
 
 ### 类型
 
-纯 icon
+#### 纯图标
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/loading-1.png" width="50%" height="50%" style="margin-top: 10px">
 
@@ -30,7 +28,7 @@
 <t-loading theme="dots" size="80rpx" loading></t-loading>
 ```
 
-icon 加文字横向
+#### 图标加横向文字
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/loading-2.png" width="50%" height="50%" style="margin-top: 10px">
 
@@ -48,7 +46,7 @@ icon 加文字横向
 </t-loading>
 ```
 
-icon 加文字竖向
+#### 图标加竖向文字
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/loading-3.png" width="50%" height="50%" style="margin-top: 10px">
 
@@ -68,7 +66,7 @@ icon 加文字竖向
 <t-loading theme="error" class="loading-style" loading bind:reload="reloadPage"></t-loading>
 ```
 
-进度条加载
+#### 进度条加载
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/loading-4.png" width="50%" height="50%" style="margin-top: 10px">
 
