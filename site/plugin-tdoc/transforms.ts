@@ -56,7 +56,7 @@ export default {
     return source;
   },
   after(_source: string, id: string, renderInfo: any, md: markdownIt) {
-    const reg = id.match(/src\/(\w+-?\w+)\/\w+-?\w+\.md/);
+    const reg = id.match(/src\/([\w-]+)\/\w+-?\w+\.md/);
     const componentName = reg ? reg[1] : '';
 
     const demoCodeImportsStr = Object.keys(demoCodeImports).map(demoCodeDefName => demoCodeImports[demoCodeDefName]).join('\n');
