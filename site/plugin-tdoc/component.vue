@@ -103,6 +103,14 @@ export default defineComponent({
     background-color: #fff;
     border-radius: 6px;
     border: 1px solid #DCDCDC;
+    
+    &--gray {
+      background-color: #eee;
+    }
+
+    img {
+      background-color: #fff;
+    }
   }
 }
 </style>

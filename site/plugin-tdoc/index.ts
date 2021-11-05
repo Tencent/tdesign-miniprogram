@@ -1,11 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import type markdownIt from 'markdown-it';
 
 import vitePluginTdoc from 'vite-plugin-tdoc';
 import createVuePlugin from '@vitejs/plugin-vue';
 
-import renderDemo from './render-demo';
 import transforms from './transforms';
 
 // 解析 markdown 内容
@@ -63,20 +61,5 @@ export default function createTDesignPlugin() {
     plugins: [vuePlugin],
     customRenderInfo,
     transforms, // 解析markdown 数据
-    markdownItSetup(md: markdownIt) {
-
-      md.renderer.rules.html_block = function (tokens, idx) {
-        const { content } = tokens[idx];
-        
-        if (content.startsWith('<img')) {
-          return `<div class="td-doc__image-wrapper">
-            ${content}
-          </div>`
-        }
-
-        return content;
-      };
-      renderDemo(md);
-    },
   });
 };

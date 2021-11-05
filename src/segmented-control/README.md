@@ -1,7 +1,5 @@
 # SegmentedControl
 
-## 介绍
-
 分段器。
 
 ### 特性及兼容性
