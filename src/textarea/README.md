@@ -24,6 +24,25 @@
 <t-textarea name="标签文字" placeholder="请输入文字" maxlength="500" />
 ```
 
+带标题多行文本框
+
+```html
+<t-textarea name="标签文字" placeholder="请输入文字" />
+```
+
+自动增高多行文本框
+
+```html
+<t-textarea name="标签文字" placeholder="请输入文字" autosize />
+```
+
+设置最大字符个数多行文本框
+
+```html
+<t-textarea name="标签文字" placeholder="请输入文字" maxlength="100" />
+<t-textarea name="标签文字" placeholder="请输入文字" maxcharacter="100" /> // 一个汉字表示两个字符
+```
+
 ## API
 
 ### Props

@@ -24,6 +24,26 @@
 <t-input name="标签文字" placeholder="请输入文字" />
 ```
 
+必填文本框
+
+```html
+<t-input name="slot" placeholder="请输入文字">
+  <text slot="name">标签文字<text style="color: #e34d59"> *</text> </text>
+</t-input>
+```
+
+带信息提示文本框
+
+```html
+<t-input name="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" />
+```
+
+带错误提示文本框
+
+```html
+<t-input name="标签文字" value="一段错误填写的内容" error-message="提示信息" />
+```
+
 ## API
 
 ### Props
