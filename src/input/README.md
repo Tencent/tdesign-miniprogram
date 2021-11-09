@@ -18,7 +18,7 @@
 
 基础文本框
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/input-1.png" width="50%" height="50%">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/input-1.png" width="375px" height="50%">
 
 ```html
 <t-input name="标签文字" placeholder="请输入文字" />
