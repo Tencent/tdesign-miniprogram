@@ -24,26 +24,6 @@
 <t-input name="标签文字" placeholder="请输入文字" />
 ```
 
-必填文本框
-
-```html
-<t-input name="slot" placeholder="请输入文字">
-  <text slot="name">标签文字<text style="color: #e34d59"> *</text> </text>
-</t-input>
-```
-
-带信息提示文本框
-
-```html
-<t-input name="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" />
-```
-
-带错误提示文本框
-
-```html
-<t-input name="标签文字" value="一段错误填写的内容" error-message="提示信息" />
-```
-
 ## API
 
 ### Props
@@ -55,9 +35,9 @@
 | errorMessage   | `String`            | -       | N    | 错误提示文本                                                                                 |
 | suffixIcon     | `String`            | -       | N    | 组件后置图标                                                                                 |
 | suffix         | `String`            | -       | N    | 后置文本内容                                                                                 |
-| algin          | `String`            | -       | N    | 输入框文本对其，可选值：`left`/`center`/`right`                                              |
-| type           | `TTypeValue`        | `text`  | N    | 输入框类型，可选值：`text`/`number`/`idcard`/`digit`/`safe-password`/`password`              |
-| size           | `TSizeValue`        | `small` | N    | 文本框规格，可选值：`middle`/`small`                                                         |
+| algin          | `String`            | -       | N    | 输入框文本对其，'left'、'center'、'right'                                                    |
+| type           | `TTypeValue`        | `text`  | N    | 输入框类型，'text'、'number'、 'idcard' 、 'digit' 、'safe-password'、'password'             |
+| size           | `TSizeValue`        | `small` | N    | 文本框规格 'medium'、 'small'                                                                |
 | clearable      | `Boolean`           | `false` | N    | 是否可清空                                                                                   |
 | disabled       | `Boolean`           | `false` | N    | 是否禁用输入框                                                                               |
 | placeholder    | `String`            | -       | N    | 输入框为空时的占位符                                                                         |
@@ -65,7 +45,7 @@
 | maxcharacter   | `Number`            | -       | N    | 输入框输入文本的最大长度,一个中文汉字表示两个字符                                            |
 | focus          | `Boolean`           | `false` | N    | 是否获取焦点                                                                                 |
 | autofocus      | `Boolean`           | `false` | N    | 自动聚焦，拉起键盘                                                                           |
-| confirmType    | `TConfirmTypeValue` | -       | N    | 设置键盘右下角按钮的文字，仅在 type='text'时生效，可选值：`send`/`search`/`next`/`go`/`done` |
+| confirmType    | `TConfirmTypeValue` | -       | N    | 设置键盘右下角按钮的文字，仅在 type='text'时生效,'send'、 'search' 、 'next' 、'go' 、'done' |
 | confirmHold    | `Boolean`           | `false` | N    | 点击键盘右下角按钮时是否保持键盘不收起点                                                     |
 | adjustPosition | `Boolean`           | `true`  | N    | 键盘弹起时，是否自动上推页面                                                                 |
 
