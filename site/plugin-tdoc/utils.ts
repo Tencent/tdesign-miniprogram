@@ -8,7 +8,7 @@ const getContributors = (componentName?: string) => {
   }
 
   let { tasks } = componentInfo;
-  tasks = tasks.filter((item) => item.name.search(/react|angular/) === -1 && item.contributors.length > 0);
+  tasks = tasks.filter((item) => item.name.indexOf('wx') > -1 && item.contributors.length > 0);
 
   const members: Record<string, {
     role: string[],

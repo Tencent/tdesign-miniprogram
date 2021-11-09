@@ -1,19 +1,12 @@
 # Navbar 导航栏
 
-## 介绍
-
-用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/navbar.png)
+用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。
 
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
-// app.json 或 index.json
 "usingComponents": {
   "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar",
 }
@@ -25,10 +18,14 @@
 
 导航栏，可以带返回，主页按钮，或自定义展示内容
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navbar-1.png" width="50%" height="50%">
+
 ```html
 <!-- 基础导航栏 -->
 <t-navbar title="标题" t-class-title="nav-title" />
 ```
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navbar-2.png" width="50%" height="50%">
 
 ```html
 <!-- 带返回，主页按钮导航栏 -->
@@ -42,6 +39,8 @@
   t-class-title="nav-title"
 />
 ```
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/navnar-3.png" width="50%" height="50%">
 
 ```html
 <!-- 自定义插槽导航栏 -->
@@ -63,10 +62,6 @@
     });
   },
 ```
-
-## 代码演示
-
-### 类型
 
 ### Navbar Props
 

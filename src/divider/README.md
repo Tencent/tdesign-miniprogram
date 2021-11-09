@@ -1,12 +1,6 @@
 # Divider 分割符
 
-## 介绍
-
-用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/divider.png)
+用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。
 
 ## 引入
 
@@ -23,6 +17,8 @@
 ### 类型
 
 分割符主要是由直线和文字组成，通过`slot`传入分割线文案或者其他自定义内容，通过`layout`控制分隔符是垂直还是横向，`line-color`属性可定义线条颜色
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/divider.png" width="50%" height="50%">
 
 ```html
 <!-- 直线拉通 -->

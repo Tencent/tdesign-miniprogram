@@ -1,11 +1,9 @@
 import fs from 'fs';
 import path from 'path';
-import type markdownIt from 'markdown-it';
 
 import vitePluginTdoc from 'vite-plugin-tdoc';
 import createVuePlugin from '@vitejs/plugin-vue';
 
-import renderDemo from './render-demo';
 import transforms from './transforms';
 
 // 解析 markdown 内容
@@ -22,7 +20,7 @@ const customRenderInfo = (source: string, id: string) => {
   };
   const titleLocation = source.search(/[\r\n]/);
   const describeLocation = source.split(/[\r\n]#+\s|:::\s/)[0].length || titleLocation;
-  const propsRegLocation = source.search(/#+\s*属性配置\n|(#+\s*\S*\s*props\n)/i);
+  const propsRegLocation = source.search(/#+\s*API\n|(#+\s*\S*\s*props\n)/i);
 
   mdSegment.title = source.slice(2, titleLocation) || '';
   mdSegment.description = source.slice(titleLocation, describeLocation).trim() || '';
@@ -63,8 +61,5 @@ export default function createTDesignPlugin() {
     plugins: [vuePlugin],
     customRenderInfo,
     transforms, // 解析markdown 数据
-    markdownItSetup(md: markdownIt) {
-      renderDemo(md);
-    },
   });
 };

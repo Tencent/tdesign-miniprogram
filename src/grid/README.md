@@ -1,12 +1,6 @@
 # Grid 宫格
 
-### 介绍
-
-用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/grid.png)
+用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。
 
 ## 引入
 
@@ -24,6 +18,8 @@
 ### 类型
 
 #### 一行三个
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-2.png" width="50%" height="50%">
 
 ```html
 <!-- 一行三个（border） -->
@@ -53,6 +49,8 @@
 ```
 
 #### 一行二个带说明宫格
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-3.png" width="50%" height="50%">
 
 ```html
 <!-- 一行二个带说明宫格 -->
@@ -89,6 +87,8 @@
 ```
 
 #### 带徽标宫格
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-1.png" width="50%" height="50%">
 
 ```html
 <!-- 带徽标宫格 -->

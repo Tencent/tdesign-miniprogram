@@ -1,16 +1,8 @@
 # Footer 页脚
 
-## 介绍
-
-用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/footer.png)
+用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。
 
 ## 引入
-
-### 引入组件
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
@@ -23,6 +15,8 @@
 ## 代码演示
 
 ### 类型
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/footer.png" width="50%" height="50%">
 
 ```html
 <!-- 基础页脚 只有版权信息 -->

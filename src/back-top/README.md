@@ -1,19 +1,12 @@
 # BackTop 返回顶部
 
-## 介绍
-
-用于当页面过长往下滑动时，帮助用户快速回到页面顶部。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/back-top.png)
+用于当页面过长往下滑动时，帮助用户快速回到页面顶部。
 
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
 ```json
-// app.json 或 index.json
 "usingComponents": {
 "t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top",
 }
@@ -24,6 +17,8 @@
 ### 类型
 
 圆型返回顶部。
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-1.png" width="50%" height="50%">
 
 ```html
 <!-- 圆白底 -->
@@ -37,6 +32,8 @@
 ```
 
 半圆型返回顶部。
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-2.png" width="50%" height="50%">
 
 ```html
 <!-- 半圆白底 -->

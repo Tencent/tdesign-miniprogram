@@ -1,16 +1,8 @@
 # Cell 单元格
 
-## 介绍
-
-用于各个类别行的信息展示。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/cell.png)
+用于各个类别行的信息展示。
 
 ## 引入
-
-### 引入组件
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
@@ -25,6 +17,8 @@
 ### 类型
 
 #### 单行
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/cell-1.png" width="50%" height="50%">
 
 ```html
 <!-- 单行 默认 -->
@@ -51,6 +45,8 @@
 ```
 
 #### 多行
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/cell-2.png" width="50%" height="50%">
 
 ```html
 <!-- 多行 -->

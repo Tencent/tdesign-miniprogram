@@ -1,12 +1,6 @@
 # Sticky 吸顶容器
 
-## 介绍
-
-用于常驻页面顶部的信息、操作展示。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/sticky.png)
+用于常驻页面顶部的信息、操作展示。
 
 ## 引入
 
@@ -23,6 +17,8 @@
 ### 类型
 
 将内容包裹在`Sticky`组件内
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/sticky.gif" width="50%" height="50%">
 
 ```html
 <t-sticky offset-top="{{40}}">

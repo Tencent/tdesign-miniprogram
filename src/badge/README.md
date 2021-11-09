@@ -1,16 +1,8 @@
 # Badge 徽标
 
-## 介绍
-
-用于告知用户，该区域的状态变化或者待处理任务的数量。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/badge.png)
+用于告知用户，该区域的状态变化或者待处理任务的数量。
 
 ## 引入
-
-### 引入组件
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
@@ -25,6 +17,8 @@
 ### 类型
 
 #### 普通徽标
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-1.png" width="50%" height="50%">
 
 ```html
 <!-- 红点提示 -->
@@ -49,6 +43,8 @@
 
 #### cell 徽标
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-2.png" width="50%" height="50%">
+
 ```html
 <!-- 单元格提示 -->
 <t-cell title="单行标题" hover arrow>
@@ -59,6 +55,8 @@
 ```
 
 #### tabbar 徽标
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-3.png" width="50%" height="50%">
 
 ```html
 <!-- tabbar提示 -->

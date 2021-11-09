@@ -1,16 +1,8 @@
 # Toast 轻提示
 
-## 介绍
-
-用于轻量级反馈或提示，不会打断用户操作。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/toast.png)
+用于轻量级反馈或提示，不会打断用户操作。
 
 ## 引入
-
-### 引入组件
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
@@ -36,6 +28,8 @@ import Toast from '@tencent/tdesign-miniprogram/toast/index';
 
 纯文本
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-1.png" width="20%" height="20%">
+
 ```js
 Toast({
   context: this,
@@ -45,6 +39,8 @@ Toast({
 ```
 
 带图标-横向
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-3.png" width="20%" height="20%">
 
 ```js
 Toast({
@@ -57,6 +53,8 @@ Toast({
 
 带图标-竖向
 
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-4.png" width="20%" height="20%">
+
 ```js
 Toast({
   context: this,
@@ -68,6 +66,8 @@ Toast({
 ```
 
 ### 默认提示
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-2.png" width="20%" height="20%">
 
 ```js
 Toast({

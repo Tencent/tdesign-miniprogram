@@ -8,8 +8,13 @@ const componentPath = path.join(__dirname, './component.vue');
 let demoImports: Record<string, string> = {};
 let demoCodeImports: Record<string, string> = {};
 
+const compLists = ['badge', 'cell', 'grid',
+'checkbox', 'date-time-picker', 'input', 'picker', 'radio', 'rate', 'stepper', 'switch', 'textarea',
+'indexes', 'navbar', 'tab-bar', 'tabs',
+'dialog', 'loading', 'popup', 'swiper-cell']
+
 export default {
-  before(source: string, id: string) {
+  before(source: string, id: string, md: markdownIt) {
     const resouceDir = path.dirname(id);
     const reg = id.match(/src\/(\w+-?\w+)\/\w+-?\w+\.md/);
     const name = reg ? reg[1] : null;
@@ -26,6 +31,20 @@ export default {
         console.error(`未找到 ${docPath} 文件`);
       }
     }
+
+    // 增加渲染规则
+    md.renderer.rules.html_block = function (tokens, idx) {
+      const { content } = tokens[idx];
+      const hit = compLists.indexOf(name as string) > -1;
+      
+      if (content.startsWith('<img')) {
+        return `<div class="td-doc__image-wrapper ${hit ? 'td-doc__image-wrapper--gray' : ''}">
+          ${content}
+        </div>`
+      }
+
+      return content;
+    };
 
     // 替换成对应 demo 文件
     source = source.replace(/\{\{\s+(.+)\s+\}\}/g, (demoStr, demoFileName) => {
@@ -55,7 +74,10 @@ export default {
 
     return source;
   },
-  after(_source: string, _id: string, renderInfo: any, md: markdownIt) {
+  after(_source: string, id: string, renderInfo: any, md: markdownIt) {
+    const reg = id.match(/src\/([\w-]+)\/\w+-?\w+\.md/);
+    const componentName = reg ? reg[1] : '';
+
     const demoCodeImportsStr = Object.keys(demoCodeImports).map(demoCodeDefName => demoCodeImports[demoCodeDefName]).join('\n');
     const demoCodeDefsStr = Object.keys(demoCodeImports).join(',');
 
@@ -67,7 +89,7 @@ export default {
       mobileUrl,
       isComponent,
       issueInfo: {},
-      contributors: getContributors(),
+      contributors: getContributors(componentName),
       docMd: md.render.call(md, docMd),
       apiMd: md.render.call(md, apiMd),
       demoMd: md.render.call(md, demoMd),

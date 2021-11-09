@@ -1,12 +1,6 @@
 # Textarea 多行输入框
 
-## 介绍
-
-用于多行文本信息输入。<br/><br/>
-
-请使用微信扫码预览 ↓<br/><br/>
-
-![预览](https://tdesign.gtimg.com/miniprogram/qrcode/textarea.png)
+用于多行文本信息输入。
 
 ## 引入
 
@@ -23,6 +17,8 @@
 ### 类型
 
 基础多行文本信息输入
+
+<img src="https://tdesign.gtimg.com/miniprogram/readme/input-2.png" width="50%" height="50%">
 
 ```html
 <t-textarea name="标签文字" placeholder="请输入文字" />

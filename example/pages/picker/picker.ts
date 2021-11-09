@@ -3,6 +3,10 @@ Page({
     picker1Visible: false,
     picker2Visible: false,
     picker3Visible: false,
+    picker4Visible: false,
+    picker5Visible: false,
+    picker6Visible: false,
+
     pickerTitle: '',
     citys: [
       { label: '北京', value: '北京' },
@@ -28,10 +32,19 @@ Page({
       { label: '冬', value: '冬' },
     ],
     selectedCityValue: '广州',
-    selectedYears: '',
+    selectedYearsWithSeason: '',
+    selectedYearsWithDate: '',
     selectedSeason: '',
     selectedMonth: '',
     selectedDay: '',
+
+    // 带标题的选中值
+    selectedCityValue2: '广州',
+    selectedYearsWithSeason2: '',
+    selectedYearsWithDate2: '',
+    selectedSeason2: '',
+    selectedMonth2: '',
+    selectedDay2: '',
   },
 
   onColumnChange(e) {
@@ -39,10 +52,9 @@ Page({
   },
 
   onClickPicker(e) {
-    const { index, title } = e?.currentTarget?.dataset;
+    const { index } = e?.currentTarget?.dataset;
 
     this.setData({
-      pickerTitle: title || '',
       [`picker${index}Visible`]: true,
     });
   },
@@ -72,7 +84,7 @@ Page({
     console.log('picker2 confirm:', e.detail);
     this.setData({
       picker2Visible: false,
-      selectedYears: e.detail.value[0]?.value,
+      selectedYearsWithSeason: e.detail.value[0]?.value,
       selectedSeason: e.detail.value[1]?.value,
     });
   },
@@ -84,12 +96,12 @@ Page({
   },
   /** **********************Picker2*************************** */
 
-  /** **********************Picker2*************************** */
+  /** **********************Picker3*************************** */
   onPicker3Confirm(e) {
     console.log('picker3 confirm:', e.detail);
     this.setData({
       picker3Visible: false,
-      selectedYears: e.detail.value[0]?.value,
+      selectedYearsWithDate: e.detail.value[0]?.value,
       selectedMonth: e.detail.value[1]?.value,
       selectedDay: e.detail.value[2]?.value,
     });
@@ -101,5 +113,48 @@ Page({
       picker3Visible: false,
     });
   },
-  /** **********************Picker2*************************** */
+  /** **********************Picker3*************************** */
+
+  /** **********************Picker4*************************** */
+  onPicker4Confirm(e) {
+    console.log(4);
+    this.setData({
+      picker4Visible: false,
+      selectedCityValue2: e.detail.value[0].value,
+    });
+  },
+  onPicker4Cancel() {
+    this.setData({
+      picker4Visible: false,
+    });
+  },
+
+  /** **********************Picker5*************************** */
+  onPicker5Confirm(e) {
+    this.setData({
+      picker5Visible: false,
+      selectedYearsWithSeason2: e.detail.value[0]?.value,
+      selectedSeason2: e.detail.value[1]?.value,
+    });
+  },
+  onPicker5Cancel() {
+    this.setData({
+      picker5Visible: false,
+    });
+  },
+  /** **********************Picker6*************************** */
+  onPicker6Confirm(e) {
+    this.setData({
+      picker6Visible: false,
+      selectedYearsWithDate2: e.detail.value[0]?.value,
+      selectedMonth2: e.detail.value[1]?.value,
+      selectedDay2: e.detail.value[2]?.value,
+    });
+  },
+
+  onPicker6Cancel() {
+    this.setData({
+      picker6Visible: false,
+    });
+  },
 });
