@@ -98,7 +98,7 @@ export default defineComponent({
 
   &__image-wrapper {
     margin: 16px 0 -1px;
-    padding: 16px 0;
+    padding: 24px 0;
     text-align: center;
     background-color: #fff;
     border-radius: 6px 6px 0 0;
@@ -106,10 +106,6 @@ export default defineComponent({
     
     &--gray {
       background-color: #eee;
-    }
-
-    img {
-      background-color: #fff;
     }
 
     div[name=DEMO] & + pre {
