@@ -84,7 +84,8 @@ export default defineComponent({
     border-radius: 6px;
     border: 1px solid #dcdcdc;
     background-color: #fff;
-    width: 100%;
+    width: 200px;
+    box-sizing: border-box;
   }
 }
 </style>

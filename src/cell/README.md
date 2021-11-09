@@ -18,7 +18,7 @@
 
 #### 单行
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/cell-1.png" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/cell-1.png" width="375px" height="50%">
 
 ```html
 <!-- 单行 默认 -->
@@ -46,7 +46,7 @@
 
 #### 多行
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/cell-2.png" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/cell-2.png" width="375px" height="50%">
 
 ```html
 <!-- 多行 -->

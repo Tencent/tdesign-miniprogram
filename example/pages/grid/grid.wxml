@@ -7,7 +7,7 @@
     <view class="t-grid-list">
       <view class="demo-section__desc">一行三个（border）</view>
       <view class="demo-section__wrapper">
-        <t-grid border="{{true}}" class="three-border" column="{{3}}">
+        <t-grid border="{{border}}" class="three-border" column="{{3}}">
           <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
             <image
               class="image-icon"

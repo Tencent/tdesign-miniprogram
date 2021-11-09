@@ -18,7 +18,7 @@
 
 将内容包裹在`Sticky`组件内
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/sticky.gif" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/sticky.gif" width="375px" height="50%">
 
 ```html
 <t-sticky offset-top="{{40}}">

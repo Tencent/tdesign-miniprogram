@@ -18,7 +18,7 @@
 
 基础搜索框。
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/search.png" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/search.png" width="375px" height="50%">
 
 ```html
 <t-search placeholder="搜索预设文案" center="{{true}}" />

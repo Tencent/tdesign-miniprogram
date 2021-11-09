@@ -18,7 +18,7 @@
 
 圆型返回顶部。
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-1.png" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-1.png" width="375px" height="50%">
 
 ```html
 <!-- 圆白底 -->
@@ -33,7 +33,7 @@
 
 半圆型返回顶部。
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-2.png" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-2.png" width="375px" height="50%">
 
 ```html
 <!-- 半圆白底 -->

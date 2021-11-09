@@ -28,7 +28,7 @@ import Toast from '@tencent/tdesign-miniprogram/toast/index';
 
 纯文本
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-1.png" width="20%" height="20%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-1.png" width="20%" height="20%">
 
 ```js
 Toast({
@@ -40,7 +40,7 @@ Toast({
 
 带图标-横向
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-3.png" width="20%" height="20%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-3.png" width="20%" height="20%">
 
 ```js
 Toast({
@@ -53,7 +53,7 @@ Toast({
 
 带图标-竖向
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-4.png" width="20%" height="20%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-4.png" width="20%" height="20%">
 
 ```js
 Toast({
@@ -67,7 +67,7 @@ Toast({
 
 ### 默认提示
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-2.png" width="20%" height="20%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-2.png" width="20%" height="20%">
 
 ```js
 Toast({
