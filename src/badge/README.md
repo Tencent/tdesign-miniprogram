@@ -18,7 +18,7 @@
 
 #### 普通徽标
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-1.png" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-1.png" width="50%" height="50%">
 
 ```html
 <!-- 红点提示 -->
@@ -43,7 +43,7 @@
 
 #### cell 徽标
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-2.png" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-2.png" width="50%" height="50%">
 
 ```html
 <!-- 单元格提示 -->
@@ -56,7 +56,7 @@
 
 #### tabbar 徽标
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-3.png" width="50%" height="50%" style="margin-top: 10px">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-3.png" width="50%" height="50%">
 
 ```html
 <!-- tabbar提示 -->
