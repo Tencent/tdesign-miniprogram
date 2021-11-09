@@ -1,12 +1,12 @@
 const gulp = require('gulp');
 const changed = require('gulp-changed');
-const base = require('./gulpfile.base');
-const packageJSON = require('../package.json');
 const rename = require('gulp-rename');
 const gulpLess = require('gulp-less');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
 const path = require('path');
+const packageJSON = require('../package.json');
+const base = require('./gulpfile.base');
 
 /* config */
 const src = 'example';
