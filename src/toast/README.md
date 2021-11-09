@@ -67,7 +67,7 @@ Toast({
 
 ### 默认提示
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-2.png" width="20%" height="20%">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-2.png" width="375px" height="20%">
 
 ```js
 Toast({
