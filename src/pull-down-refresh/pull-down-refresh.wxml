@@ -1,8 +1,8 @@
 <view
   class="{{classPrefix}} t-class"
-  bind:touchstart="onTouchStart"
-  bind:touchmove="onTouchMove"
-  bind:touchend="onTouchEnd"
+  catch:touchstart="onTouchStart"
+  catch:touchmove="onTouchMove"
+  catch:touchend="onTouchEnd"
 >
   <view
     id="refresh-bar"
