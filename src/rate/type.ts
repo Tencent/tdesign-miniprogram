@@ -61,8 +61,8 @@ export interface TdRateProps {
     value?: string;
   };
   /**
-   * 自定义评分等级对应的辅助文字。值为 false 或者 [] 表示不显示，值为 true 则使用组件内置的值：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']
-   * @default false
+   * 自定义评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']TS 类型定义：Array<string>。
+   * @default []
    */
   texts?: {
     type: ArrayConstructor;
