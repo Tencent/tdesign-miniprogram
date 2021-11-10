@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-28 15:26:24
+ * updated at 2021-11-10 14:24:36
  * */
 
 import { BadgeProps } from '../badge/type';
@@ -26,7 +26,7 @@ export interface TdAvatarProps {
     required?: boolean;
   };
   /**
-   * 组件类名，用于设置组件外层元素元素类名
+   * 组件类名，用于设置组件外层元素类名
    */
   externalClasses?: {
     type: ArrayConstructor;
@@ -98,7 +98,7 @@ export interface TdAvatarGroupProps {
     required?: boolean;
   };
   /**
-   * 组件类名，用于设置组件外层元素元素类名
+   * 组件类名，用于设置组件外层元素类名
    */
   externalClasses?: {
     type: ArrayConstructor;
@@ -115,7 +115,7 @@ export interface TdAvatarGroupProps {
   };
   /**
    * 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size
-   * @default ''
+   * @default medium
    */
   size?: {
     type: StringConstructor;

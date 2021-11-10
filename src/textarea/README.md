@@ -18,29 +18,10 @@
 
 基础多行文本信息输入
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/input-2.png" width="50%" height="50%">
-
-```html
-<t-textarea name="标签文字" placeholder="请输入文字" maxlength="500" />
-```
-
-带标题多行文本框
+<img src="https://tdesign.gtimg.com/miniprogram/readme/input-2.png" width="375px" height="50%">
 
 ```html
 <t-textarea name="标签文字" placeholder="请输入文字" />
-```
-
-自动增高多行文本框
-
-```html
-<t-textarea name="标签文字" placeholder="请输入文字" autosize />
-```
-
-设置最大字符个数多行文本框
-
-```html
-<t-textarea name="标签文字" placeholder="请输入文字" maxlength="100" />
-<t-textarea name="标签文字" placeholder="请输入文字" maxcharacter="100" /> // 一个汉字表示两个字符
 ```
 
 ## API
@@ -58,7 +39,7 @@
 | focus          | `Boolean`           | `false` | N    | 是否获取焦点                                                                                 |
 | autofocus      | `Boolean`           | `false` | N    | 自动聚焦，拉起键盘                                                                           |
 | autosize       | `Boolean`           | `false` | N    | 是否自动增高，设置 auto-height 时，style.height 不生效                                       |
-| confirmType    | `TConfirmTypeValue` | -       | N    | 设置键盘右下角按钮的文字，仅在 type='text'时生效，可选值：`send`/`search`/`next`/`go`/`done` |
+| confirmType    | `TConfirmTypeValue` | -       | N    | 设置键盘右下角按钮的文字，仅在 type='text'时生效,'send'、 'search' 、 'next' 、'go' 、'done' |
 | confirmHold    | `Boolean`           | `false` | N    | 点击键盘右下角按钮时是否保持键盘不收起点                                                     |
 | adjustPosition | `Boolean`           | `true`  | N    | 键盘弹起时，是否自动上推页面                                                                 |
 

@@ -18,7 +18,7 @@
 
 #### 纯图标
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-1.png" width="50%" height="50%">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-1.png" width="375px" height="50%">
 
 ```html
 <t-loading theme="circular" size="40rpx" loading t-class-indicator="indicator-blue"></t-loading>
@@ -28,7 +28,7 @@
 
 #### 图标加横向文字
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-2.png" width="50%" height="50%">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-2.png" width="375px" height="50%">
 
 ```html
 <t-loading
@@ -46,7 +46,7 @@
 
 #### 图标加竖向文字
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-3.png" width="50%" height="50%">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-3.png" width="375px" height="50%">
 
 ```html
 <t-loading
@@ -66,7 +66,7 @@
 
 #### 进度条加载
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-4.png" width="50%" height="50%">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/loading-4.png" width="375px" height="50%">
 
 ```html
 <t-loading theme="bar" progress="{{progress}}" loading="{{isLoading}}"></t-loading>

@@ -18,7 +18,7 @@
 
 分割符主要是由直线和文字组成，通过`slot`传入分割线文案或者其他自定义内容，通过`layout`控制分隔符是垂直还是横向，`line-color`属性可定义线条颜色
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/divider.png" width="50%" height="50%">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/divider.png" width="375px" height="50%">
 
 ```html
 <!-- 直线拉通 -->

@@ -16,7 +16,7 @@
 
 ### 类型
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/footer.png" width="50%" height="50%">
+<img src="https://tdesign.gtimg.com/miniprogram/readme/footer.png" width="375px" height="50%">
 
 ```html
 <!-- 基础页脚 只有版权信息 -->
