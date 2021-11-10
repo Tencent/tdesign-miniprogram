@@ -8,15 +8,15 @@ const componentPath = path.join(__dirname, './component.vue');
 let demoImports: Record<string, string> = {};
 let demoCodeImports: Record<string, string> = {};
 
-const compLists = ['badge', 'cell', 'grid',
-'checkbox', 'date-time-picker', 'input', 'picker', 'radio', 'rate', 'stepper', 'switch', 'textarea',
+const compLists = ['badge', 'cell', 'empty',
+'checkbox', 'date-time-picker', 'input', 'picker', 'radio', 'rate', 'search', 'stepper', 'switch', 'textarea', 'upload',
 'indexes', 'navbar', 'tab-bar', 'tabs',
-'dialog', 'loading', 'popup', 'swiper-cell']
+'dialog', 'popup', 'swipe-cell']
 
 export default {
   before(source: string, id: string, md: markdownIt) {
     const resouceDir = path.dirname(id);
-    const reg = id.match(/src\/(\w+-?\w+)\/\w+-?\w+\.md/);
+    const reg = id.match(/src\/([\w-]+)\/\w+-?\w+\.md/);
     const name = reg ? reg[1] : null;
     demoImports = {};
     demoCodeImports = {};
