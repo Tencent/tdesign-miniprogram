@@ -2,12 +2,12 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-31 10:45:38
+ * updated at 2021-11-10 15:52:25
  * */
 
 export interface TdStepperProps {
   /**
-   * 禁用
+   * 禁用全部操作
    * @default false
    */
   disabled?: {
@@ -25,20 +25,19 @@ export interface TdStepperProps {
     required?: boolean;
   };
   /**
+   * 组件类名，分别用于表示组件外层元素、输入框、右侧递增号、左侧递减号等元素类名
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-input', 't-class-add', 't-class-minus'];
+    required?: boolean;
+  };
+  /**
    * 输入框宽度
    */
   inputWidth?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
-  };
-  /**
-   * 标签
-   * @default ''
-   */
-  label?: {
-    type: StringConstructor;
-    value?: string;
     required?: boolean;
   };
   /**
@@ -60,7 +59,7 @@ export interface TdStepperProps {
     required?: boolean;
   };
   /**
-   * 步进
+   * 步长
    * @default 1
    */
   step?: {
@@ -74,7 +73,7 @@ export interface TdStepperProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: 'normal' | 'mode';
+    value?: 'normal' | 'grey';
     required?: boolean;
   };
   /**
