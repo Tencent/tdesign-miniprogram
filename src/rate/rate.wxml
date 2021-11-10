@@ -1,4 +1,4 @@
-<wxs src="./rate.wxs" module="this" />
+<wxs src="./rate.wxs" module="utils" />
 <view class="{{ classPrefix }}">
   <view
     class="{{ classPrefix }}__wrapper t-class"
@@ -10,14 +10,14 @@
       wx:for="{{ count }}"
       wx:key="*this"
       t-class="{{ classPrefix }}__star t-class-icon"
-      name="{{this.getIconName(defaultValue, value, index, allowHalf, icon, halfIcon, variant)}}"
-      color="{{this.getIconColor(defaultValue, value, index, allowHalf, disabled, color, disabledColor)}}"
+      name="{{utils.getIconName(defaultValue, value, index, allowHalf, icon, halfIcon, variant)}}"
+      color="{{utils.getIconColor(defaultValue, value, index, allowHalf, disabled, color, disabledColor)}}"
       size="{{ size }}"
       style="margin-right:{{ count - index > 1 ? gap : 0 }}rpx;"
-      custom-style="{{this.getBackgroundColor(disabled, color, disabledColor)}}"
+      custom-style="{{utils.getBackgroundColor(disabled, color, disabledColor)}}"
     />
   </view>
   <text wx:if="{{showText}}" class="{{ classPrefix }}__desc t-class-desc"
-    >{{this.getText(texts,value,defaultTexts)}}</text
+    >{{utils.getText(texts,value,defaultTexts)}}</text
   >
 </view>
