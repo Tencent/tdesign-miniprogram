@@ -1,8 +1,6 @@
-/* eslint-disable */
-
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 11:17:44
+ * updated at 2021-11-10 15:44:10
  * */
 
 export interface TdRateProps {
@@ -13,16 +11,14 @@ export interface TdRateProps {
   allowHalf?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 评分图标的颜色
-   * @default #ED7B2F
+   * 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，两个值表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色。示例：['#ED7B2F', '#999999']
    */
   color?: {
     type: StringConstructor;
-    value?: string;
-    required?: boolean;
+    optionalTypes: Array<StringConstructor | ArrayConstructor>;
+    value?: string | Array<string>;
   };
   /**
    * 评分的数量
@@ -31,7 +27,6 @@ export interface TdRateProps {
   count?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 是否禁用评分
@@ -40,16 +35,6 @@ export interface TdRateProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
-  };
-  /**
-   * 禁用图标的颜色
-   * @default #999999
-   */
-  disabledColor?: {
-    type: StringConstructor;
-    value?: string;
-    required?: boolean;
   };
   /**
    * 评分图标的间距
@@ -58,50 +43,38 @@ export interface TdRateProps {
   gap?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
-   * 是否为只读
-   * @default false
-   */
-  readonly?: {
-    type: BooleanConstructor;
-    value?: boolean;
-    required?: boolean;
-  };
-  /**
-   * 是否显示辅助文字
+   * 是否显示对应的辅助文字
    * @default false
    */
   showText?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 评分图标的大小
-   * @default 40
+   * 评分图标的大小，示例：`20`
+   * @default ''
    */
   size?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
-   * 自定义评分等级对应的辅助文字，组件内部默认为：['极差', '失望', '一般', '满意', '惊喜']
+   * 自定义评分等级对应的辅助文字。值为 false 或者 [] 表示不显示，值为 true 则使用组件内置的值：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']
+   * @default false
    */
   texts?: {
     type: ArrayConstructor;
     value?: Array<string>;
-    required?: boolean;
   };
   /**
    * 选择评分的值
+   * @default 0
    */
   value: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 形状类型，有描边类型和填充类型两种
@@ -110,6 +83,5 @@ export interface TdRateProps {
   variant?: {
     type: StringConstructor;
     value?: 'outline' | 'filled';
-    required?: boolean;
   };
 }
