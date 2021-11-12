@@ -61,22 +61,6 @@
         showText="{{true}}"
       />
     </view>
-    <view class="item">
-      <view class="item__title">请点击评分</view>
-      <t-rate value="{{value[5]}}" data-index="{{5}}" bind:change="onChange" showText="{{true}}" />
-    </view>
-
-    <view class="demo-section__desc">展示型评分</view>
-    <view class="item item__transparent">
-      <t-rate
-        value="{{value[6]}}"
-        data-index="{{6}}"
-        allowHalf="{{true}}"
-        bind:change="onChange"
-        readonly
-        variant="filled"
-      />
-    </view>
   </t-demo>
   <t-demo title="02 规格">
     <view class="demo-section__desc">评价规格</view>

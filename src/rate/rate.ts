@@ -1,3 +1,11 @@
+/*
+ * @Author: rileycai
+ * @Date: 2021-09-21 19:01:54
+ * @LastEditTime: 2021-11-10 14:30:02
+ * @LastEditors: rileycai
+ * @Description: Rate组件
+ * @FilePath: /tdesign-miniprogram/src/rate/rate.ts
+ */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
@@ -26,6 +34,7 @@ export default class Rate extends SuperComponent {
     icon: 'star-filled',
     halfIcon: 'star-filled',
     defaultTexts: ['极差', '失望', '一般', '满意', '惊喜'],
+    disabledColor: '#999999',
   };
 
   onTouch(e: any) {

@@ -50,4 +50,4 @@ export interface TdCountDownProps {
     value?: number;
     required?: boolean;
   };
-};
+}
