@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 16:31:13
+ * updated at 2021-11-12 19:13:59
  * */
 
 import { TdCellProps } from './type';
@@ -41,7 +41,7 @@ const props: TdCellProps = {
   /** 链接跳转类型 */
   jumpType: {
     type: String,
-    value: 'navigateTo',
+    value: 'navigate-to',
   },
   /** 左侧图标，出现在单元格标题的左侧 */
   leftIcon: {

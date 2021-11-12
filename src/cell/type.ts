@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 16:31:13
+ * updated at 2021-11-12 19:13:59
  * */
 
 export interface TdCellProps {
@@ -46,16 +46,7 @@ export interface TdCellProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-title',
-      't-class-note',
-      't-class-description',
-      't-class-thumb',
-      't-class-hover',
-      't-class-left',
-      't-class-right',
-    ];
+    value?: ['t-class', 't-class-title', 't-class-note', 't-class-description', 't-class-thumb', 't-class-hover', 't-class-left', 't-class-right'];
     required?: boolean;
   };
   /**
@@ -76,7 +67,7 @@ export interface TdCellProps {
   };
   /**
    * 链接跳转类型
-   * @default navigateTo
+   * @default navigate-to
    */
   jumpType?: {
     type: StringConstructor;
@@ -133,4 +124,4 @@ export interface TdCellProps {
     value?: string;
     required?: boolean;
   };
-}
+};
