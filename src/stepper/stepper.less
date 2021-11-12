@@ -1,11 +1,7 @@
 .t-stepper {
   &-normal {
-    .t-stepper__right-container {
-      display: flex;
-      align-items: center;
-      width: 200rpx;
-      justify-content: flex-end;
-    }
+    display: flex;
+    align-items: center;
 
     .t-stepper__input {
       display: block;
@@ -15,12 +11,15 @@
       border: 0;
       vertical-align: top;
       background: 0;
+      height: 48rpx;
     }
 
     .t-stepper__minus,
     .t-stepper__plus {
       display: block;
-      margin-bottom: 8rpx;
+      box-sizing: border-box;
+      height: 48rpx;
+      padding-top: 5rpx;
     }
 
     &.t-is-disabled {
@@ -46,9 +45,10 @@
 
     .t-stepper__minus,
     .t-stepper__plus {
+      box-sizing: border-box;
       border-radius: 2px;
       background-color: #f1f2f5;
-      padding: 0 5px;
+      padding: 5rpx 10rpx;
       height: 48rpx;
     }
 

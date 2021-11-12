@@ -2,12 +2,12 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-31 10:45:38
+ * updated at 2021-11-10 15:52:25
  * */
 
 import { TdStepperProps } from './type';
 const props: TdStepperProps = {
-  /** 禁用 */
+  /** 禁用全部操作 */
   disabled: {
     type: Boolean,
     value: false,
@@ -17,14 +17,13 @@ const props: TdStepperProps = {
     type: Boolean,
     value: false,
   },
+  /** 组件类名，分别用于表示组件外层元素、输入框、右侧递增号、左侧递减号等元素类名 */
+  externalClasses: {
+    type: Array,
+  },
   /** 输入框宽度 */
   inputWidth: {
     type: Number,
-  },
-  /** 标签 */
-  label: {
-    type: String,
-    value: '',
   },
   /** 最大值 */
   max: {
@@ -36,7 +35,7 @@ const props: TdStepperProps = {
     type: Number,
     value: 0,
   },
-  /** 步进 */
+  /** 步长 */
   step: {
     type: Number,
     value: 1,
