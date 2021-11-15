@@ -12,7 +12,7 @@ export default class Dailog extends SuperComponent {
     addGlobalClass: true,
   };
 
-  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-actiont'];
+  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-action'];
 
   properties = props;
 
