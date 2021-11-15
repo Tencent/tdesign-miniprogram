@@ -9,9 +9,10 @@ const name = `${prefix}-dialog`;
 export default class Dailog extends SuperComponent {
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+    addGlobalClass: true,
   };
 
-  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel'];
+  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-actiont'];
 
   properties = props;
 
