@@ -18,12 +18,35 @@ module.exports = {
   },
   getIconColor: function (defaultValue, value, index, allowHalf, disabled, color, disabledColor) {
     var curVal = value ? value : defaultValue;
+    var colorIndex = color.indexOf(',');
+    var primaryColor = colorIndex !== -1 ? color.slice(0, colorIndex) : color;
+    var defaultColor =
+      colorIndex !== -1 ? color.slice(colorIndex + 1, colorIndex * 2 + 1) : '#E3E6EB';
     if (curVal - index >= 1) {
-      return disabled ? disabledColor : color;
+      return disabled ? disabledColor : primaryColor;
     } else if (allowHalf && curVal - index > 0) {
       return 'transparent';
     } else {
-      return '#E3E6EB';
+      return defaultColor;
     }
+  },
+  getBackgroundColor: function (disabled, color, disabledColor) {
+    var colorIndex = color.indexOf(',');
+    var primaryColor = colorIndex !== -1 ? color.slice(0, colorIndex) : color;
+    var defaultColor =
+      colorIndex !== -1 ? color.slice(colorIndex + 1, colorIndex * 2 + 1) : '#E3E6EB';
+
+    var color = disabled ? disabledColor : primaryColor;
+    return (
+      'background:linear-gradient(to right, ' +
+      color +
+      ' 0%,' +
+      color +
+      ' 50%, ' +
+      defaultColor +
+      ' 51%, ' +
+      defaultColor +
+      ' 100%);-webkit-background-clip:text;background-clip:text;'
+    );
   },
 };
