@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "experimentalDecorators": true,
-    "target": "es5",
-    "lib": ["es2015", "es2017", "dom"],
+    "target": "es6",
     "outDir": "dist",
     "types": ["miniprogram-api-typings"],
     "skipLibCheck": true,
