@@ -1,5 +1,4 @@
-import ContributorsData from '../../common/contributors/component-contributors.json';
-import ContributorsInfo from '../../common/contributors/contributors-info.json';
+import ContributorsData from '../../common/contributors/github-contributors.json';
 
 const getContributors = (componentName?: string) => {
   const componentInfo = ContributorsData.mobile.find((item) => item.name === componentName);
@@ -29,17 +28,10 @@ const getContributors = (componentName?: string) => {
   });
 
   return Object.keys(members).map((username) => {
-    const userInfo = (ContributorsInfo as any)[username] || {};
-    if (userInfo.bgName) {
-      const match = userInfo.bgName.match(/^[a-z]+/i);
-      userInfo.bgName = match ? match[0] : userInfo.bgName;
-      userInfo.department = `${userInfo.bgName}/${userInfo.departmentName}`;
-    }
     return {
-      username,
+      username: username.split(/github_/).slice(-1)[0],
       roleNames: members[username].roleName.join('/'),
       ...members[username],
-      ...userInfo,
     };
   });
 };
