@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-11 16:34:26
+ * updated at 2021-11-18 20:52:41
  * */
 
 import { TdCheckboxProps } from './type';
@@ -21,6 +21,11 @@ const props: TdCheckboxProps = {
   checked: {
     type: Boolean,
     value: false,
+  },
+  /** 复选框颜色 */
+  color: {
+    type: String,
+    value: '#0052d9',
   },
   /** 复选框内容 */
   content: {
@@ -62,7 +67,7 @@ const props: TdCheckboxProps = {
     type: Number,
     value: 3,
   },
-  /** HTM 元素原生属性 */
+  /** HTML 元素原生属性 */
   name: {
     type: String,
     value: '',

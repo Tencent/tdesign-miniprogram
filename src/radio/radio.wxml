@@ -17,6 +17,7 @@
     </block>
     <block wx:else>
       <t-icon
+        color="{{active&&!disabled ? color:''}}"
         name="{{active ? iconVal[0] : iconVal[1]}}"
         class="{{classPrefix}}__btn {{disabled ? classPrefix + '-is-disabled' : ''}} {{active ? classPrefix + '-is-checked' : ''}}"
       />
@@ -59,6 +60,7 @@
     </block>
     <block wx:else>
       <t-icon
+        color="{{active&&!disabled ? color:''}}"
         name="{{active ? iconVal[0] : iconVal[1]}}"
         class="{{classPrefix}}__btn {{disabled ? classPrefix + '-is-disabled' : ''}} {{active ? classPrefix + '-is-checked' : ''}}"
       />

@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-11 16:34:42
+ * updated at 2021-11-18 20:52:30
  * */
 
 import { TdRadioProps } from './type';
@@ -15,6 +15,11 @@ const props: TdRadioProps = {
   /** 是否选中 */
   checked: {
     type: Boolean,
+  },
+  /** 单选按钮颜色 */
+  color: {
+    type: String,
+    value: '#0052d9',
   },
   /** 单选内容 */
   content: {
@@ -61,7 +66,8 @@ const props: TdRadioProps = {
   /** 单选按钮的值 */
   value: {
     type: String,
-    optionalTypes: [Number],
+    optionalTypes: [Number, Boolean],
+    value: undefined,
   },
 };
 
