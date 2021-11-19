@@ -31,6 +31,12 @@ export default class RadioGroup extends SuperComponent {
     },
   };
 
+  observers = {
+    value: function () {
+      this.updateChildren();
+    },
+  };
+
   methods = {
     updateChildren() {
       let items = this.getRelationNodes('../radio/radio');

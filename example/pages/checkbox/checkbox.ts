@@ -4,6 +4,7 @@ Page({
     demoCheckbox2: ['checkbox2', 'checkbox3'],
     demoCheckboxMax: ['checkbox1', 'checkbox2'],
     demoCheckbox3: ['checkbox2', 'checkbox4'],
+    controledData: [],
     options: [
       { label: '全选', checkAll: true },
       '多选1',
@@ -34,6 +35,14 @@ Page({
     console.log('checkbox', e.detail);
     this.setData({
       check5: e.detail,
+    });
+  },
+  handleControled() {
+    const data = !this.data.controledData.length
+      ? ['checkbox1', 'checkbox3', 'checkbox2', 'checkbox4', 'checkbox5']
+      : [];
+    this.setData({
+      controledData: data,
     });
   },
 });
