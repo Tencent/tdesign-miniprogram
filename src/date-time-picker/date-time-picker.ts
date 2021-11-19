@@ -459,7 +459,7 @@ export default class DateTimePicker extends SuperComponent {
 
   onCancel() {
     const { value } = this.properties;
-    const parseDate = dayjs(value);
+    const parseDate = dayjs(value || DEFAULT_MIN_DATE);
 
     this.setData({
       date: parseDate,

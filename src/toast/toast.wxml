@@ -7,6 +7,7 @@
     <t-icon
       wx:if="{{typeMapIcon!=='loading' || icon}}"
       name="{{typeMapIcon || icon}}"
+      class="{{direction === 'row'?'row-icon':'column-icon'}}"
       color="#ffffff"
       size="{{direction === 'row' ? '42rpx' : '96rpx'}}"
     />

@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-11 16:34:42
+ * updated at 2021-11-18 20:52:30
  * */
 
 export interface TdRadioProps {
@@ -21,6 +21,15 @@ export interface TdRadioProps {
   checked?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 单选按钮颜色
+   * @default #0052d9
+   */
+  color?: {
+    type: StringConstructor;
+    value?: string;
     required?: boolean;
   };
   /**
@@ -105,7 +114,7 @@ export interface TdRadioProps {
    */
   value?: {
     type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
     value?: RadioValue;
     required?: boolean;
   };
@@ -142,13 +151,13 @@ export interface TdRadioGroupProps {
    */
   value?: {
     type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
     value?: RadioValue;
     required?: boolean;
   };
 }
 
-export type RadioValue = string | number;
+export type RadioValue = string | number | boolean;
 
 export type RadioOption = string | number | RadioOptionObj;
 

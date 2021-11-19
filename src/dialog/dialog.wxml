@@ -24,7 +24,7 @@
         wx:for="{{actions}}"
         wx:key="action"
         data-index="{{index}}"
-        t-class="{{ classPrefix }}__button {{ classPrefix }}__button-{{item.primary ? 'confirm' : 'cancel'}} t-class-actiont"
+        t-class="{{ classPrefix }}__button {{ classPrefix }}__button-{{item.primary ? 'confirm' : 'cancel'}} t-class-action"
         bindtap="onActionTap"
       >
         {{item.name}}

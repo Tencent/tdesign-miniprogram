@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-11 16:34:26
+ * updated at 2021-11-18 20:52:41
  * */
 
 export interface TdCheckboxProps {
@@ -31,6 +31,15 @@ export interface TdCheckboxProps {
   checked?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 复选框颜色
+   * @default #0052d9
+   */
+  color?: {
+    type: StringConstructor;
+    value?: string;
     required?: boolean;
   };
   /**
@@ -109,7 +118,7 @@ export interface TdCheckboxProps {
     required?: boolean;
   };
   /**
-   * HTM 元素原生属性
+   * HTML 元素原生属性
    * @default ''
    */
   name?: {

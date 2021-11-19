@@ -5,8 +5,8 @@ import router from './router';
 // import '../styles/sites/index.less';
 
 // import site webcomponents
-import '~/common/site/lib/site.es.js';
-import '~/common/site/lib/style.css';
+import 'tdesign-site-components/lib/site.es.js';
+import 'tdesign-site-components/lib/styles/style.css';
 
 createApp(app)
   .use(router)

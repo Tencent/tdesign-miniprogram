@@ -6,7 +6,7 @@
       <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
         <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${compName}.png`" />
-        <td-contributors ref="tdContributors"></td-contributors>
+        <td-contributors-gpl ref="tdContributors"></td-contributors-gpl>
       </div>
       <div v-show="tab === 'api'" name="API" v-html="info.apiMd"></div>
       <div v-show="tab === 'design'" name="DESIGN" v-html="info.designMd"></div>
@@ -22,8 +22,8 @@ import Prismjs from 'prismjs';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-javascript.js';
 import 'prismjs/components/prism-json.js';
-import '@common/site/src/styles/prism-theme.less';
-import '@common/site/src/styles/prism-theme-dark.less';
+import 'tdesign-site-components/lib/styles/prism-theme.less';
+import 'tdesign-site-components/lib/styles/prism-theme-dark.less';
 
 import QrCode from '@components/qrcode.vue';
 
