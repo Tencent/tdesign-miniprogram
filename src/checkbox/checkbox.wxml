@@ -14,7 +14,7 @@
     </block>
     <block wx:else>
       <t-icon
-        color="{{active&&!disabled ? color:''}}"
+        color="{{active && !disabled ? color : ''}}"
         name="{{active ? (halfChecked ? 'minus-circle-filled' : 'check-circle-filled') : 'circle'}}"
         class="{{classPrefix}}__btn {{active ? classPrefix + '-is-checked' : ''}} {{disabled ? classPrefix + '-is-disabled' : ''}}"
       />
@@ -53,7 +53,7 @@
     </block>
     <block wx:else>
       <t-icon
-        color="{{active&&!disabled ? color:''}}"
+        color="{{active && !disabled ? color : ''}}"
         name="{{active ? (halfChecked ? 'minus-circle-filled' : 'check-circle-filled') : 'circle'}}"
         class="{{classPrefix}}__btn {{disabled ? classPrefix + '-is-disabled' : ''}} {{active ? classPrefix + '-is-checked' : ''}}"
       />
@@ -61,6 +61,6 @@
   </view>
   <!-- 内置下边框 -->
   <view
-    class="{{classPrefix}}-border {{classPrefix}}{{align==='left'?'-border-left':'-border-right'}}"
+    class="{{classPrefix}}-border {{classPrefix}}{{align === 'left' ? '-border-left' : '-border-right'}}"
   ></view>
 </view>
