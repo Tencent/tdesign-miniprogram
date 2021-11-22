@@ -87,7 +87,7 @@ export default defineComponent({
     // @ts-ignore
     document.querySelector('td-doc-content').resetAnchorHighlight();
   },
-  });
+});
 </script>
 
 <style lang="less">
