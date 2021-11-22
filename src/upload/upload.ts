@@ -1,6 +1,6 @@
 import { isObject, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
-import { MediaType, UploadConfig, UploadFile } from './type';
+import { MediaType, UploadMpConfig, UploadFile } from './type';
 
 @wxComponent()
 export default class Upload extends SuperComponent {
@@ -18,7 +18,7 @@ export default class Upload extends SuperComponent {
     customLimit: 0, // 内部动态修改的limit
     mediaType: [] as MediaType[], // 这里由于小程序api问题目前不支持同时上传视频和图片
     // 以下是声明properties
-    config: {} as UploadConfig,
+    config: {} as UploadMpConfig,
     files: [] as UploadFile[],
     max: 0,
     sizeLimit: 0,
