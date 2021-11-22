@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-10-01 19:05:22
+ * updated at 2021-11-22 19:36:17
  * */
 
 export interface TdUploadProps {
@@ -19,7 +19,7 @@ export interface TdUploadProps {
    */
   config?: {
     type: ObjectConstructor;
-    value?: UploadConfig;
+    value?: UploadMpConfig;
     required?: boolean;
   };
   /**
@@ -96,7 +96,7 @@ export interface TdUploadProps {
   };
 }
 
-export type UploadConfig = ImageConfig | VideoConfig;
+export type UploadMpConfig = ImageConfig | VideoConfig;
 
 export interface ImageConfig {
   count?: number;
