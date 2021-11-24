@@ -2,13 +2,12 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-01 15:19:49
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdSwitchProps {
   /**
-   * 自定义颜色，[打开时的颜色，关闭时的颜色]。示例：[blue, gray]
-   * @default ['#0052d9', 'rgba(0, 0, 0, .26']
+   * 自定义颜色，[打开时的颜色，关闭时的颜色]。组件默认颜色为 ['#0052d9', 'rgba(0, 0, 0, .26']。示例：[blue, gray]
    */
   colors?: {
     type: ArrayConstructor;

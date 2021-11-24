@@ -46,8 +46,8 @@ export default class Switch extends SuperComponent {
       this.handleColorChange();
     },
     handleColorChange() {
-      const { disabled, colors } = this.data;
-      const [activedColor, inactivedColor] = colors;
+      const { disabled, colors = [] } = this.data;
+      const [activedColor = '#0052d9', inactivedColor = 'rgba(0, 0, 0, .26)'] = colors;
       if (!disabled) {
         this.setData({
           bodyStyle: `background-color: ${this.data.isActive ? activedColor : inactivedColor}`,

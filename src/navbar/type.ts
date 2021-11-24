@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-07 16:53:17
+ * updated at 2021-11-24 16:14:46
  * */
 
 export interface TdNavbarProps {
@@ -38,13 +38,7 @@ export interface TdNavbarProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-title',
-      't-class-left-icon',
-      't-class-home-icon',
-      't-class-capsule',
-    ];
+    value?: ['t-class', 't-class-title', 't-class-left-icon', 't-class-home-icon', 't-class-capsule'];
     required?: boolean;
   };
   /**
@@ -97,4 +91,4 @@ export interface TdNavbarProps {
     value?: boolean;
     required?: boolean;
   };
-}
+};

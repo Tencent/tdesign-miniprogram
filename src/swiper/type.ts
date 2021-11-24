@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-14 17:05:26
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdSwiperProps {
@@ -26,13 +26,9 @@ export interface TdSwiperProps {
   };
   /**
    * 当前轮播在哪一项（下标）
+   * @default 0
    */
   current?: {
-    type: NumberConstructor;
-    value?: number;
-    required?: boolean;
-  };
-  defaultCurrent?: {
     type: NumberConstructor;
     value?: number;
     required?: boolean;
@@ -80,12 +76,8 @@ export interface TdSwiperProps {
     value?: Navigation;
     required?: boolean;
   };
-}
+};
 
-export interface Navigation {
-  type?: NavigationVariant;
-  minShowNum?: number;
-  showSlideBtn?: boolean;
-}
+export interface Navigation { type?: NavigationVariant; minShowNum?: number; showSlideBtn?: boolean  };
 
 export type NavigationVariant = 'dots' | 'dots-bar' | 'fraction';

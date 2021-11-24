@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-14 17:05:26
+ * updated at 2021-11-24 10:58:05
  * */
 
 import { TdSwiperProps } from './type';
@@ -15,13 +15,10 @@ const props: TdSwiperProps = {
   /** 是否自动播放 */
   autoplay: {
     type: Boolean,
+    value: true,
   },
   /** 当前轮播在哪一项（下标） */
   current: {
-    type: Number,
-    value: null,
-  },
-  defaultCurrent: {
     type: Number,
     value: 0,
   },

@@ -33,12 +33,12 @@ export default class Steps extends SuperComponent {
 
       if (len > 0) {
         items.forEach((item, index) => {
-          item.updateStatus(current, index, this.data.theme, this.data.direction, items);
+          item.updateStatus(current, index, this.data.theme, this.data.layout, items);
         });
       }
     },
     handleClick(index) {
-      if (this.data.direction === 'vertical') {
+      if (this.data.layout === 'vertical') {
         return;
       }
       if (!this.data.readonly) {

@@ -1,5 +1,5 @@
 <view
-  class="{{prefix}}-step {{prefix}}-step--{{direction}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} t-class"
+  class="{{prefix}}-step {{prefix}}-step--{{layout}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} t-class"
 >
   <view class="{{classPrefix}} {{classPrefix}}--{{curStatus}}">
     <view class="{{classPrefix}}__inner {{icon ? classPrefix + '__inner--icon' : '' }}">

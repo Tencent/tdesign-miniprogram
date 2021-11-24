@@ -35,7 +35,7 @@ export default class StepItem extends SuperComponent {
     index: 0,
     isDot: false,
     curStatus: '',
-    direction: 'vertical',
+    layout: 'vertical',
     type: 'default',
     isLastChild: false,
   };
@@ -53,7 +53,7 @@ export default class StepItem extends SuperComponent {
   };
 
   methods = {
-    updateStatus(current, index, theme, direction, steps) {
+    updateStatus(current, index, theme, layout, steps) {
       const { status } = this.data;
       let newStatus = status;
 
@@ -74,8 +74,8 @@ export default class StepItem extends SuperComponent {
       this.setData({
         curStatus: newStatus,
         index,
-        isDot: theme === 'dot' && direction === 'vertical',
-        direction,
+        isDot: theme === 'dot' && layout === 'vertical',
+        layout,
         theme,
         isLastChild: steps.length - 1 === index,
       });

@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-10-05 11:28:11
+ * updated at 2021-11-24 16:40:31
  * */
 
 import { TdSwipeCellProps } from './type';
@@ -21,7 +21,7 @@ const props: TdSwipeCellProps = {
     optionalTypes: [Array],
     value: false,
   },
-  /** 右侧滑动操作项。有两种定义方式，一种是使用数组，二种是使用插槽。`right.text` 表示操作文本，`right.className` 表示操作项类名，`right.style` 表示操作项样式，`right.onClick` 表示点击操作项后执行的回调函数。示例：[{ text: '删除', style: 'background-color: red', onClick: () => { } }]` */
+  /** 右侧滑动操作项。有两种定义方式，一种是使用数组，二种是使用插槽。`right.text` 表示操作文本，`right.className` 表示操作项类名，`right.style` 表示操作项样式，`right.onClick` 表示点击操作项后执行的回调函数。示例：`[{ text: '删除', style: 'background-color: red', onClick: () => { /** TO DO */ } }]` */
   right: {
     type: Array,
   },
