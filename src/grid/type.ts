@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-10-01 19:03:47
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdGridProps {
@@ -22,13 +22,7 @@ export interface TdGridProps {
   border?: {
     type: BooleanConstructor;
     optionalTypes: Array<ObjectConstructor>;
-    value?:
-      | boolean
-      | {
-          color?: string;
-          width?: string;
-          style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset';
-        };
+    value?: boolean | { color?: string; width?: string; style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' };
     required?: boolean;
   };
   /**
@@ -65,7 +59,7 @@ export interface TdGridProps {
     value?: boolean;
     required?: boolean;
   };
-}
+};
 
 export interface TdGridItemProps {
   /**
@@ -127,4 +121,4 @@ export interface TdGridItemProps {
     value?: string;
     required?: boolean;
   };
-}
+};

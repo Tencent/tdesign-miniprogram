@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-29 15:40:19
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdSliderProps {
@@ -38,17 +38,11 @@ export interface TdSliderProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-bar',
-      't-class-bar-active',
-      't-class-bar-disabled',
-      't-class-cursor',
-    ];
+    value?: ['t-class', 't-class-bar', 't-class-bar-active', 't-class-bar-disabled', 't-class-cursor'];
     required?: boolean;
   };
   /**
-   * 滑块当前值文本。值为 true 显示默认文案，值为 false 不显示滑块当前值文本，值为 `${value}%` 则表示组件会根据占位符渲染文案
+   * 滑块当前值文本。值为 true 显示默认文案，值为 false 不显示滑块当前值文本，值为 `\${value}%` 则表示组件会根据占位符渲染文案
    */
   label?: {
     type: StringConstructor;
@@ -120,6 +114,6 @@ export interface TdSliderProps {
     value?: SliderValue;
     required?: boolean;
   };
-}
+};
 
 export type SliderValue = number | Array<number>;

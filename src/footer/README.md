@@ -57,33 +57,10 @@ data: {
 
 ## API
 
-#### Props
-
-|     参数     |                                                                                                            说明                                                                                                            |     类型     | 默认值 | 必填 |
-| :----------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------: | :----: | :--: |
-|    theme     |                                                                                                        页脚展示类型                                                                                                        | `FooterType` | `text` |  是  |
-|  Copyright   |                                                                                                版权信息，theme 为`text`生效                                                                                                |   `String`   |   -    |  否  |
-| textLinkList |                                                                                                链接列表，theme 为`text`生效                                                                                                | `LinkObj[]`  |   []   |  否  |
-|     logo     | 图标配置，theme 为`logo`生效。`logo.icon` 表示图标链接地址，`logo.title` 表示标题文本，`logo.url` 表示链接跳转地址 TS 类型定义：`FooterLogo【interface FooterLogo { icon: string; title?: string; titleUrl?: string }】`。 |   `object`   |   -    |  否  |
-
-- 注意： `logo.title`与`logo.url`二选一，且`logo.title`优先级高于`logo.url`
-
-- `FooterType`参数说明：
-
-```javascript
-// 页脚展示类型有两种，文本或图标，默认值为文本。
-type FooterType = `text` | `logo`;
-```
-
-- `LinkObj`参数说明：使用 navigator 组件跳转，详见：[微信官方文档 navigator](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html)
-
-```javascript
-interface LinkObj {
-  name: String; // 链接名称
-  url: String; // 链接page路径，目前只支持小程序内部跳转
-  openType: OpenTypeVal; // 跳转方式
-}
-
-// openType合法值：
-type OpenTypeVal = 'navigate' | 'redirect' | 'relaunch' | 'switchTab' | 'navigateBack';
-```
+### Footer Props
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+copyright | String | '' | 版权信息，type 为`text`生效 | N
+logo | Object | - | 图标配置，type 为`logo`生效。`logo.icon` 表示图标链接地址，`logo.title` 表示标题文本，`logo.url` 表示链接跳转地址。TS 类型：`FooterLogo`。[详细类型定义](https://github.com/TDesignOteam/tdesign-miniprogram/tree/develop/src/footer/type.ts) | N
+text-link-list | Array | [] | 链接列表，type 为`text`生效。name 表示链接名称， url 表示链接 page 路径，目前只支持小程序内部跳转，openType 表示跳转方式。TS 类型：`Array<LinkObj>`。[详细类型定义](https://github.com/TDesignOteam/tdesign-miniprogram/tree/develop/src/footer/type.ts) | N
+theme | String | 'text' | 页脚展示类型。可选项：text/logo | N

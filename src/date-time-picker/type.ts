@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-22 20:51:26
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdDateTimePickerProps {
@@ -17,7 +17,7 @@ export interface TdDateTimePickerProps {
   };
   /**
    * 确定按钮文字
-   * @default 确定
+   * @default ''
    */
   confirmBtn?: {
     type: StringConstructor;
@@ -96,7 +96,7 @@ export interface TdDateTimePickerProps {
     value?: boolean;
     required?: boolean;
   };
-}
+};
 
 export interface TdDateTimeRangePickerProps {
   /**
@@ -110,7 +110,7 @@ export interface TdDateTimeRangePickerProps {
   };
   /**
    * 确定按钮文字
-   * @default 确定
+   * @default ''
    */
   confirmBtn?: {
     type: StringConstructor;
@@ -187,27 +187,19 @@ export interface TdDateTimeRangePickerProps {
     value?: boolean;
     required?: boolean;
   };
-}
+};
 
 export type DisableDate = Array<DateValue> | DisableDateObj | ((date: DateValue) => boolean);
 
-export interface DisableDateObj {
-  from?: string;
-  to?: string;
-  before?: string;
-  after?: string;
-}
+export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string };
 
-export type DateTimePickerMode = TimeModeValues | Array<TimeModeValues>;
+export type DateTimePickerMode = TimeModeValues | Array<TimeModeValues> ;
 
 export type TimeModeValues = 'year' | 'month' | 'date' | 'hour' | 'minutes' | 'second';
 
 export type DateValue = string | number;
 
-export type DisableRangeDate =
-  | Array<DateValue>
-  | DisableDateObj
-  | ((context: { date: DateRangeValue; partial: DateRangePickerPartial }) => boolean);
+export type DisableRangeDate = Array<DateValue> | DisableDateObj | ((context: { date: DateRangeValue; partial: DateRangePickerPartial }) => boolean);
 
 export type DateRangePickerPartial = 'start' | 'end';
 

@@ -44,31 +44,16 @@
 
 ## API
 
-### Props
+### BackTop Props
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+external-classes | Array | - | 组件类名，分别用于设置外层元素、图标、文本内容等元素类名。`['t-class', 't-class-icon', 't-class-text']` | N
+fixed | Boolean | true | 是否绝对定位固定到屏幕右下方 | N
+icon | String / Slot | 'backtop' | 图标 | N
+text | String | '' | 文案 | N
+theme | String | round | 预设的样式类型。可选项：round/half-round/round-dark/half-round-dark | N
 
-| 参数  | 说明                                                                       | 类型    | 默认值 | 版本      |
-| ----- | -------------------------------------------------------------------------- | ------- | ------ | --------- |
-| theme | 预设的样式类型，可选值 `round` `hafl-round` `round-dark` `half-round-dark` | String  | -      | -         |
-| fixed | 是否绝对定位固定到屏幕右下方                                               | boolean | `true` | -         |
-| text  | 文案                                                                       | String  | -      | -         |
-| icon  | 图标                                                                       | String  | -      | `backtop` |
-
-### tab Event
-
-| 事件名 | 说明     | 参数 |
-| ------ | -------- | ---- |
-| toTop  | 点击触发 | 无   |
-
-### Slots
-
-| 名称 | 说明                     |
-| ---- | ------------------------ |
-| -    | 默认插槽，可以自定义内容 |
-
-### 外部样式类
-
-| 类名         | 说明            |
-| ------------ | --------------- |
-| t-class      | 根节点样式类    |
-| t-class-icon | icon 部分样式类 |
-| t-class-text | 文字部分样式类  |
+### BackTop Events
+名称 | 参数 | 描述
+-- | -- | --
+to-top | - | 点击触发

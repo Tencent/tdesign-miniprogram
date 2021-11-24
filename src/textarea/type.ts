@@ -1,6 +1,8 @@
+/* eslint-disable */
+
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-27 16:40:47
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdTextareaProps {
@@ -11,6 +13,7 @@ export interface TdTextareaProps {
   adjustPosition?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 自动聚焦，拉起键盘
@@ -19,6 +22,7 @@ export interface TdTextareaProps {
   autofocus?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 是否自动增高，值为 autosize 时，style.height 不生效
@@ -27,6 +31,7 @@ export interface TdTextareaProps {
   autosize?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 点击键盘右下角按钮时是否保持键盘不收起点
@@ -35,6 +40,7 @@ export interface TdTextareaProps {
   confirmHold?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 设置键盘右下角按钮的文字，仅在 type='text'时生效
@@ -43,6 +49,7 @@ export interface TdTextareaProps {
   confirmType?: {
     type: StringConstructor;
     value?: 'send' | 'search' | 'next' | 'go' | 'done';
+    required?: boolean;
   };
   /**
    * 是否禁用文本框
@@ -51,6 +58,7 @@ export interface TdTextareaProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 自动聚焦
@@ -59,6 +67,7 @@ export interface TdTextareaProps {
   focus?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度
@@ -66,6 +75,7 @@ export interface TdTextareaProps {
   maxcharacter?: {
     type: NumberConstructor;
     value?: number;
+    required?: boolean;
   };
   /**
    * 用户最多可以输入的字符个数
@@ -73,6 +83,7 @@ export interface TdTextareaProps {
   maxlength?: {
     type: NumberConstructor;
     value?: number;
+    required?: boolean;
   };
   /**
    * 名称
@@ -81,6 +92,7 @@ export interface TdTextareaProps {
   name?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 占位符
@@ -89,6 +101,7 @@ export interface TdTextareaProps {
   placeholder?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 文本框值
@@ -97,5 +110,6 @@ export interface TdTextareaProps {
   value?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
-}
+};

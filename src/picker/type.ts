@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-30 17:06:26
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdPickerProps {
@@ -17,7 +17,7 @@ export interface TdPickerProps {
   };
   /**
    * 确定按钮文字
-   * @default 确定
+   * @default ''
    */
   confirmBtn?: {
     type: StringConstructor;
@@ -50,7 +50,7 @@ export interface TdPickerProps {
     value?: boolean;
     required?: boolean;
   };
-}
+};
 
 export interface TdPickerItemProps {
   /**
@@ -71,11 +71,8 @@ export interface TdPickerItemProps {
     value?: string | number;
     required?: boolean;
   };
-}
+};
 
 export type PickerValue = string | number;
 
-export interface PickerItemOption {
-  label: string;
-  value: string | number;
-}
+export interface PickerItemOption { label: string; value: string | number };

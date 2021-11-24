@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-18 20:52:41
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdCheckboxProps {
@@ -144,7 +144,7 @@ export interface TdCheckboxProps {
     value?: string | number;
     required?: boolean;
   };
-}
+};
 
 export interface TdCheckboxGroupProps {
   /**
@@ -191,15 +191,10 @@ export interface TdCheckboxGroupProps {
     value?: CheckboxGroupValue;
     required?: boolean;
   };
-}
+};
 
 export type CheckboxOption = string | number | CheckboxOptionObj;
 
-export interface CheckboxOptionObj {
-  label?: string;
-  value?: string | number;
-  disabled?: boolean;
-  checkAll?: true;
-}
+export interface CheckboxOptionObj { label?: string; value?: string | number; disabled?: boolean; checkAll?: true };
 
 export type CheckboxGroupValue = Array<string | number> | string | number;

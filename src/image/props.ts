@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-18 11:06:33
+ * updated at 2021-11-24 10:58:05
  * */
 
 import { TdImageProps } from './type';
@@ -41,7 +41,7 @@ const props: TdImageProps = {
     type: Boolean,
     value: false,
   },
-  /** 开启长按图片显示识别小程序码菜单 */
+  /** 长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单。<br>支持识别的码：小程序码 <br>仅小程序支持识别的码：微信个人码、微信群码、企业微信个人码、 企业微信群码与企业微信互通群码； */
   showMenuByLongpress: {
     type: Boolean,
     value: false,

@@ -1,10 +1,11 @@
+/* eslint-disable */
+
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-08-05 13:36:03
+ * updated at 2021-11-24 10:58:05
  * */
 
 import { TdDividerProps } from './type';
-
 const props: TdDividerProps = {
   /** 文本位置（仅在水平分割线有效） */
   align: {
@@ -24,13 +25,18 @@ const props: TdDividerProps = {
   externalClasses: {
     type: Array,
   },
+  /** 分隔线类型有两种：水平和垂直 */
+  layout: {
+    type: String,
+    value: 'horizontal',
+  },
   /** 分隔线颜色 */
   lineColor: {
     type: String,
     value: '',
   },
-  /** 分隔线类型有两种：水平和垂直 */
-  layout: {
+  /** 已废弃。请更为使用 `layout`。分隔线类型有两种：水平和垂直 */
+  theme: {
     type: String,
     value: 'horizontal',
   },

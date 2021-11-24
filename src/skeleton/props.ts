@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-29 15:03:15
+ * updated at 2021-11-24 10:58:05
  * */
 
 import { TdSkeletonProps } from './type';

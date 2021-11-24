@@ -1,10 +1,11 @@
+/* eslint-disable */
+
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-27 17:32:54
+ * updated at 2021-11-24 10:58:05
  * */
 
 import { TdInputProps } from './type';
-
 const props: TdInputProps = {
   /** 键盘弹起时，是否自动上推页面 */
   adjustPosition: {
@@ -41,10 +42,14 @@ const props: TdInputProps = {
     type: Boolean,
     value: false,
   },
-  /** 错误提示文本 */
+  /** 错误提示文本，值为空不显示 */
   errorMessage: {
     type: String,
     value: '',
+  },
+  /** 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名 */
+  externalClasses: {
+    type: Array,
   },
   /** 自动聚焦 */
   focus: {
@@ -91,7 +96,7 @@ const props: TdInputProps = {
   /** 输入框的值 */
   value: {
     type: String,
-    optionalTypes: [String, Number],
+    optionalTypes: [Number],
   },
 };
 

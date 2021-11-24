@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-03 11:41:35
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdFooterProps {
@@ -41,16 +41,8 @@ export interface TdFooterProps {
     value?: 'text' | 'logo';
     required?: boolean;
   };
-}
+};
 
-export interface FooterLogo {
-  icon: string;
-  title?: string;
-  titleUrl?: string;
-}
+export interface FooterLogo { icon: string; title?: string; titleUrl?: string };
 
-export interface LinkObj {
-  name: string;
-  url?: string;
-  openType?: 'navigate' | 'redirect' | 'relaunch' | 'switchTab' | 'navigateBack';
-}
+export interface LinkObj { name: string; url?: string; openType?: 'navigate' | 'redirect' | 'relaunch' | 'switchTab' | 'navigateBack' };

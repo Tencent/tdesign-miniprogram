@@ -26,38 +26,27 @@
 
 ## API
 
-### Props
+### Textarea Props
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+adjust-position | Boolean | true | 键盘弹起时，是否自动上推页面 | N
+autofocus | Boolean | false | 自动聚焦，拉起键盘 | N
+autosize | Boolean | false | 是否自动增高，值为 autosize 时，style.height 不生效 | N
+confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键盘不收起点 | N
+confirm-type | String | done | 设置键盘右下角按钮的文字，仅在 type='text'时生效。可选项：send/search/next/go/done。TS 类型：`'send' | 'search' | 'next' | 'go' | 'done'` | N
+disabled | Boolean | false | 是否禁用文本框 | N
+focus | Boolean | false | 自动聚焦 | N
+maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 | N
+maxlength | Number | - | 用户最多可以输入的字符个数 | N
+name | String | - | 名称 | N
+placeholder | String | - | 占位符 | N
+value | String | - | 文本框值 | N
 
-| 属性           | 值类型              | 默认值  | 必传 | 说明                                                                                         |
-| -------------- | ------------------- | ------- | ---- | -------------------------------------------------------------------------------------------- |
-| name           | `String`            | -       | N    | 标签名称                                                                                     |
-| value          | `String`            | -       | N    | 输入框的值                                                                                   |
-| disabled       | `Boolean`           | `false` | N    | 是否禁用输入框                                                                               |
-| placeholder    | `String`            | -       | N    | 输入框为空时的占位符                                                                         |
-| maxlength      | `Number`            | -       | N    | 输入框输入文本的最大长度                                                                     |
-| maxcharacter   | `Number`            | -       | N    | 输入框输入文本的最大长度,一个中文汉字表示两个字符                                            |
-| focus          | `Boolean`           | `false` | N    | 是否获取焦点                                                                                 |
-| autofocus      | `Boolean`           | `false` | N    | 自动聚焦，拉起键盘                                                                           |
-| autosize       | `Boolean`           | `false` | N    | 是否自动增高，设置 auto-height 时，style.height 不生效                                       |
-| confirmType    | `TConfirmTypeValue` | -       | N    | 设置键盘右下角按钮的文字，仅在 type='text'时生效,'send'、 'search' 、 'next' 、'go' 、'done' |
-| confirmHold    | `Boolean`           | `false` | N    | 点击键盘右下角按钮时是否保持键盘不收起点                                                     |
-| adjustPosition | `Boolean`           | `true`  | N    | 键盘弹起时，是否自动上推页面                                                                 |
-
-### Events
-
-| 事件       | event.detail | 说明                     |
-| ---------- | ------------ | ------------------------ |
-| change     | -            | 键盘输入时触发           |
-| focus      | -            | 键盘聚焦时触发           |
-| blur       | -            | 键盘失去焦点时触发       |
-| enter      | -            | 点击完成按钮时触发       |
-| lineChange | -            | 文本框行高发生变化时触发 |
-
-### External Class
-
-| 类名                | 说明                        |
-| ------------------- | --------------------------- |
-| t-class             | 外部包裹的拓展类            |
-| t-class-textarea    | 输入框的拓展类              |
-| t-class-placeholder | 输入框 placeholder 的拓展类 |
-| t-class-name        | 标签的拓展类                |
+### Textarea Events
+名称 | 参数 | 描述
+-- | -- | --
+blur | `(value: TextareaValue, context: { e: FocusEvent })` | 失去焦点时触发
+change | `(value: TextareaValue, context?: { e?: InputEvent })` | 输入内容变化时触发
+enter | `(value: TextareaValue)` | 点击完成时触发
+focus | `(value: TextareaValue, context: { e: FocusEvent })` | 获得焦点时触发
+line-change | `(value: TextareaValue)` | 行高发生变化时触发

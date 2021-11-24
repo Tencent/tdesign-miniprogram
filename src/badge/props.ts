@@ -1,10 +1,11 @@
+/* eslint-disable */
+
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-27 15:18:11
+ * updated at 2021-11-24 10:58:05
  * */
 
 import { TdBadgeProps } from './type';
-
 const props: TdBadgeProps = {
   /** 颜色 */
   color: {
@@ -19,7 +20,7 @@ const props: TdBadgeProps = {
   /** 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为空表示使用插槽渲染 */
   count: {
     type: String,
-    optionalTypes: [String, Number],
+    optionalTypes: [Number],
     value: 0,
   },
   /** 是否为红点 */
@@ -39,22 +40,21 @@ const props: TdBadgeProps = {
   /** 设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem'] */
   offset: {
     type: Array,
-    value: [0, 0],
   },
   /** 形状 */
   shape: {
     type: String,
     value: 'circle',
   },
+  /** 当数值为 0 时，是否展示徽标 */
+  showZero: {
+    type: Boolean,
+    value: false,
+  },
   /** 尺寸 */
   size: {
     type: String,
     value: 'medium',
-  },
-  /** 当数值为 0 时，是否展示徽标 */
-  visible: {
-    type: Boolean,
-    value: false,
   },
 };
 

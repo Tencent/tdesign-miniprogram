@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-22 19:36:17
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdUploadProps {
@@ -44,10 +44,10 @@ export interface TdUploadProps {
   gridConfig?: {
     type: ObjectConstructor;
     value?: {
-      column?: number;
-      width?: number;
-      height?: number;
-    };
+  column?: number;
+  width?: number;
+  height?: number;
+};
     required?: boolean;
   };
   /**
@@ -94,41 +94,22 @@ export interface TdUploadProps {
     value?: number | SizeLimitObj;
     required?: boolean;
   };
-}
+};
 
 export type UploadMpConfig = ImageConfig | VideoConfig;
 
-export interface ImageConfig {
-  count?: number;
-  sizeType?: Array<SizeTypeValues>;
-  sourceType?: Array<SourceTypeValues>;
-}
+export interface ImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> };
 
 export type SizeTypeValues = 'original' | 'compressed';
 
 export type SourceTypeValues = 'album' | 'camera';
 
-export interface VideoConfig {
-  sourceType?: Array<SourceTypeValues>;
-  compressed?: boolean;
-  maxDuration?: number;
-  camera?: 'back' | 'front';
-}
+export interface VideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' | 'front' };
 
-export interface UploadFile {
-  url: string;
-  name?: string;
-  size?: number;
-  type?: 'image' | 'video';
-  percent?: number;
-}
+export interface UploadFile { url: string; name?: string; size?: number; type?: 'image' | 'video'; percent?: number };
 
 export type MediaType = 'image' | 'video';
 
-export interface SizeLimitObj {
-  size: number;
-  unit: SizeUnit;
-  message?: string;
-}
+export interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string };
 
 export type SizeUnit = 'B' | 'KB' | 'MB' | 'GB';

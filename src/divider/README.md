@@ -55,26 +55,13 @@
 
 ## API
 
-### Props
-
-| 参数            | 类型          | 默认值     | 说明                                                                                 | 必传 |
-| --------------- | ------------- | ---------- | ------------------------------------------------------------------------------------ | ---- |
-| align           | String        | center     | 文本位置（仅在水平分割线有效）。可选值：left/right/center                            | N    |
-| content         | String / Slot | -          | 子元素。                                                                             | N    |
-| dashed          | Boolean       | false      | 是否虚线（仅在水平分割线有效）                                                       | N    |
-| lineColor       | String        | -          | 分隔线颜色                                                                           | N    |
-| theme           | String        | horizontal | 分隔线类型有两种：水平和垂直。可选值：horizontal/vertical                            | N    |
-| externalClasses | Array         | -          | 组件类名，分别用于设置 组件外层类名、分隔线类名 等。`['t-class', 't-class-content']` | N    |
-
-### Slot
-
-| 名称    | 说明           |
-| ------- | -------------- |
-| content | 自定义文本内容 |
-
-### 外部样式类
-
-| 类名            | 说明               |
-| --------------- | ------------------ |
-| t-class         | 根节点样式类       |
-| t-class-content | content 部分样式类 |
+### Divider Props
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+align | String | center | 文本位置（仅在水平分割线有效）。可选项：left/right/center | N
+content | String / Slot | - | 子元素 | N
+dashed | Boolean | false | 是否虚线（仅在水平分割线有效） | N
+external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、分隔线类名 等。`['t-class', 't-class-line', 't-class-content']` | N
+layout | String | horizontal | 分隔线类型有两种：水平和垂直。可选项：horizontal/vertical | N
+line-color | String | - | 分隔线颜色 | N
+theme | String | horizontal | 已废弃。请更为使用 `layout`。分隔线类型有两种：水平和垂直。可选项：horizontal/vertical | N

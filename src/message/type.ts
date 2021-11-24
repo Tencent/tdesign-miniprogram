@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-26 15:53:45
+ * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdMessageProps {
@@ -111,12 +111,8 @@ export interface TdMessageProps {
     value?: number;
     required?: boolean;
   };
-}
+};
 
-export interface DrawMarquee {
-  speed?: number;
-  loop?: number;
-  delay?: number;
-}
+export interface DrawMarquee { speed?: number; loop?: number; delay?: number };
 
 export type MessageThemeList = 'info' | 'success' | 'warning' | 'error';
