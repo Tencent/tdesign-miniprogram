@@ -34,13 +34,15 @@ export interface TdNavbarProps {
     required?: boolean;
   };
   /**
-   * 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、导航按钮、胶囊容器等元素类名
+   * 组件类名，分别用于设置组件外层元素、标题、左侧区域、中间区域、左侧(后退)图标、首页图标、导航按钮、胶囊容器等元素类名
    */
   externalClasses?: {
     type: ArrayConstructor;
     value?: [
       't-class',
       't-class-title',
+      't-class-left',
+      't-class-center',
       't-class-left-icon',
       't-class-home-icon',
       't-class-capsule',
@@ -53,15 +55,6 @@ export interface TdNavbarProps {
    * @default true
    */
   fixed?: {
-    type: BooleanConstructor;
-    value?: boolean;
-    required?: boolean;
-  };
-  /**
-   * 左侧胶囊位置是否启用插槽
-   * @default false
-   */
-  capsuleSlot: {
     type: BooleanConstructor;
     value?: boolean;
     required?: boolean;
