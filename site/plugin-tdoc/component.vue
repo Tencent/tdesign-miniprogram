@@ -6,7 +6,7 @@
       <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
         <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${compName}.png`" />
-        <td-contributors-gpl ref="tdContributors"></td-contributors-gpl>
+        <td-contributors ref="tdContributors"></td-contributors>
       </div>
       <div v-show="tab === 'api'" name="API" v-html="info.apiMd"></div>
       <div v-show="tab === 'design'" name="DESIGN" v-html="info.designMd"></div>
