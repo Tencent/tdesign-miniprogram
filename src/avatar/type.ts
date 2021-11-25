@@ -5,7 +5,7 @@
  * updated at 2021-11-24 10:58:05
  * */
 
-import { BadgeProps } from '../badge/type';
+import { TdBadgeProps } from '../badge/type';
 
 export interface TdAvatarProps {
   /**
@@ -22,7 +22,7 @@ export interface TdAvatarProps {
    */
   badgeProps?: {
     type: ObjectConstructor;
-    value?: BadgeProps;
+    value?: TdBadgeProps;
     required?: boolean;
   };
   /**
