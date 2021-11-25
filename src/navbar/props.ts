@@ -31,6 +31,11 @@ const props: TdNavbarProps = {
     type: Boolean,
     value: true,
   },
+  /** 左侧胶囊位置是否启用插槽 */
+  capsuleSlot: {
+    type: Boolean,
+    value: false,
+  },
   /** 首页图标地址。值为 '' 或者 undefiend 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 */
   homeIcon: {
     type: String,

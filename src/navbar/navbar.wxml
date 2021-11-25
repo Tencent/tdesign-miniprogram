@@ -3,10 +3,13 @@
   <view class="{{classPrefix}}__content" style="{{contentStyle}}">
     <block>
       <view class="{{classPrefix}}__left">
+        <block wx:if="{{capsuleSlot}}">
+          <slot name="capsule"></slot>
+        </block>
         <!-- 如果传入leftIcon和homeIcon则展示胶囊 -->
-        <block wx:if="{{hasBackIcon && hasHomeIcon}}">
+        <block wx:elif="{{hasBackIcon && hasHomeIcon}}">
           <view class="{{classPrefix}}__capsule t-class-capsule">
-            <view class="{{classPrefix}}__btn" bindtap="goBack">
+            <view class="{{classPrefix}}__btn t-class-nav-btn" bindtap="goBack">
               <t-icon
                 wx:if="{{leftIcon!=='slot'}}"
                 name="{{leftIcon}}"
@@ -14,7 +17,7 @@
               />
               <slot name="left-icon" class="t-class-left-icon"></slot>
             </view>
-            <view class="{{classPrefix}}__btn" bindtap="goHome">
+            <view class="{{classPrefix}}__btn t-class-nav-btn" bindtap="goHome">
               <t-icon
                 wx:if="{{homeIcon!=='slot'}}"
                 name="{{homeIcon}}"
@@ -26,20 +29,18 @@
         </block>
         <!-- 否则无胶囊展示 -->
         <block wx:else>
-          <view wx:if="{{hasBackIcon}}" class="{{classPrefix}}__btn">
+          <view wx:if="{{hasBackIcon}}" class="{{classPrefix}}__btn" bindtap="goBack">
             <t-icon
               wx:if="{{leftIcon!=='slot'}}"
               name="{{leftIcon}}"
-              bindtap="goBack"
               class="{{classPrefix}}__capsule__icon t-class-left-icon"
             />
             <slot name="left-icon" class="t-class-left-icon"></slot>
           </view>
-          <view wx:if="{{hasHomeIcon}}" class="{{classPrefix}}__btn">
+          <view wx:if="{{hasHomeIcon}}" class="{{classPrefix}}__btn" bindtap="goHome">
             <t-icon
               wx:if="{{homeIcon!=='slot'}}"
               name="{{homeIcon}}"
-              bindtap="goHome"
               class="{{classPrefix}}__capsule__icon t-class-home-icon"
             />
             <slot name="home-icon" class="t-class-home-icon"></slot>

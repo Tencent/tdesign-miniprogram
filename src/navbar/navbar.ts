@@ -13,6 +13,7 @@ export default class Navbar extends SuperComponent {
     't-class-left-icon',
     't-class-home-icon',
     't-class-capsule',
+    't-class-nav-btn',
   ];
 
   timer = null;

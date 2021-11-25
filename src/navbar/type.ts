@@ -38,7 +38,13 @@ export interface TdNavbarProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class', 't-class-title', 't-class-left-icon', 't-class-home-icon', 't-class-capsule'];
+    value?: [
+      't-class',
+      't-class-title',
+      't-class-left-icon',
+      't-class-home-icon',
+      't-class-capsule',
+    ];
     required?: boolean;
   };
   /**
@@ -46,6 +52,15 @@ export interface TdNavbarProps {
    * @default true
    */
   fixed?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 左侧胶囊位置是否启用插槽
+   * @default false
+   */
+  capsuleSlot: {
     type: BooleanConstructor;
     value?: boolean;
     required?: boolean;
@@ -91,4 +106,4 @@ export interface TdNavbarProps {
     value?: boolean;
     required?: boolean;
   };
-};
+}
