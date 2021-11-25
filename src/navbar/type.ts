@@ -34,7 +34,7 @@ export interface TdNavbarProps {
     required?: boolean;
   };
   /**
-   * 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、胶囊等元素类名
+   * 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、导航按钮、胶囊容器等元素类名
    */
   externalClasses?: {
     type: ArrayConstructor;
@@ -44,6 +44,7 @@ export interface TdNavbarProps {
       't-class-left-icon',
       't-class-home-icon',
       't-class-capsule',
+      't-class-nav-btn',
     ];
     required?: boolean;
   };
