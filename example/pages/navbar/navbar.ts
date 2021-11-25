@@ -36,6 +36,10 @@ Page({
             type: 'base-brand-long',
             text: '品牌超长文字导航栏',
           },
+          {
+            type: 'custom-capsule',
+            text: '自定义导航胶囊',
+          },
         ],
       },
     ],

@@ -10,9 +10,12 @@ export default class Navbar extends SuperComponent {
   externalClasses = [
     't-class',
     't-class-title',
+    't-class-left',
+    't-class-center',
     't-class-left-icon',
     't-class-home-icon',
     't-class-capsule',
+    't-class-nav-btn',
   ];
 
   timer = null;
