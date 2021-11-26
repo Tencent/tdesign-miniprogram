@@ -1,9 +1,38 @@
-import {
-  Context,
-  DialogAlertOptionsType,
-  DialogComfirmOptionsType,
-  DialogActionOptionsType,
-} from './type';
+type Context =
+  | WechatMiniprogram.Page.TrivialInstance
+  | WechatMiniprogram.Component.TrivialInstance;
+
+interface DialogAlertOptionsType {
+  context?: Context;
+  selector?: string;
+  title?: string;
+  content: string;
+  zIndex?: number;
+  asyncClose?: boolean;
+  confirmButtonText?: string;
+  textAlign?: string;
+}
+
+interface DialogComfirmOptionsType extends DialogAlertOptionsType {
+  cancelButtonText?: string;
+}
+
+interface Action {
+  name: string;
+  primary?: boolean;
+  style?: string;
+}
+
+interface DialogActionOptionsType {
+  context?: Context;
+  selector?: string;
+  title?: string;
+  content: string;
+  zIndex?: number;
+  asyncClose?: boolean;
+  actions?: Action[]; // 自定义多选项，优先级高于默认的确定、取消按钮，触发后返回按钮的index
+  buttonLayout?: 'vertical' | 'horizontal'; // 多按钮排列方式，可选值：horizontal/vertical。
+}
 
 const getDialogInstance = function (context?: Context, selector = '#t-dialog') {
   if (!context) {

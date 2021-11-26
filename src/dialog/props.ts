@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-07 14:27:52
+ * updated at 2021-11-26 17:01:46
  * */
 
 import { TdDialogProps } from './type';
@@ -60,7 +60,7 @@ const props: TdDialogProps = {
     type: Boolean,
     value: false,
   },
-  /** 对话框层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500 */
+  /** 对话框层级，Web 侧样式默认为 2500，移动端和小程序样式默认为 1500 */
   zIndex: {
     type: Number,
   },

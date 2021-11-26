@@ -2,10 +2,10 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-07 14:27:52
+ * updated at 2021-11-26 17:01:46
  * */
 
-//import { ButtonProps } from '../button/type';
+import { TdButtonProps } from '../button/type';
 
 export interface TdDialogProps {
   /**
@@ -13,7 +13,7 @@ export interface TdDialogProps {
    */
   actions?: {
     type: ArrayConstructor;
-    value?: ArrayConstructor; // Array<ButtonProps>;
+    value?: Array<TdButtonProps>;
     required?: boolean;
   };
   /**
@@ -32,7 +32,7 @@ export interface TdDialogProps {
   cancelBtn?: {
     type: StringConstructor;
     optionalTypes: Array<ObjectConstructor>;
-    value?: string; // | ButtonProps ;
+    value?: string | TdButtonProps;
     required?: boolean;
   };
   /**
@@ -51,7 +51,7 @@ export interface TdDialogProps {
   confirmBtn?: {
     type: StringConstructor;
     optionalTypes: Array<ObjectConstructor>;
-    value?: string; // | ButtonProps ;
+    value?: string | TdButtonProps;
     required?: boolean;
   };
   /**
@@ -106,47 +106,11 @@ export interface TdDialogProps {
     required?: boolean;
   };
   /**
-   * 对话框层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500
+   * 对话框层级，Web 侧样式默认为 2500，移动端和小程序样式默认为 1500
    */
   zIndex?: {
     type: NumberConstructor;
     value?: number;
     required?: boolean;
   };
-}
-
-export type Context =
-  | WechatMiniprogram.Page.TrivialInstance
-  | WechatMiniprogram.Component.TrivialInstance;
-
-export interface DialogAlertOptionsType {
-  context?: Context;
-  selector?: string;
-  title?: string;
-  content: string;
-  zIndex?: number;
-  asyncClose?: boolean;
-  confirmButtonText?: string;
-  textAlign?: string;
-}
-
-export interface DialogComfirmOptionsType extends DialogAlertOptionsType {
-  cancelButtonText?: string;
-}
-
-export interface Action {
-  name: string;
-  primary?: boolean;
-  style?: string;
-}
-
-export interface DialogActionOptionsType {
-  context?: Context;
-  selector?: string;
-  title?: string;
-  content: string;
-  zIndex?: number;
-  asyncClose?: boolean;
-  actions?: Action[]; // 自定义多选项，优先级高于默认的确定、取消按钮，触发后返回按钮的index
-  buttonLayout?: 'vertical' | 'horizontal'; // 多按钮排列方式，可选值：horizontal/vertical。
-}
+};
