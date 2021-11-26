@@ -25,13 +25,13 @@ export default {
           path: '/miniprogram/used',
           component: () => import('@/../USED.md'),
         },
-        // {
-        //   title: '更新日志',
-        //   name: 'changelog',
-        //   meta: { docType: 'explain' },
-        //   path: '/miniprogram/changelog',
-        //   component: () => import('@/CHANGELOG.md'),
-        // },
+        {
+          title: '更新日志',
+          name: 'changelog',
+          meta: { docType: 'explain' },
+          path: '/miniprogram/changelog',
+          component: () => import('~/CHANGELOG.md'),
+        },
       ],
     },
     {
