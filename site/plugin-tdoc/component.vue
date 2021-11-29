@@ -5,8 +5,8 @@
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
       <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
-        <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${compName}.png`" />
-        <td-contributors ref="tdContributors"></td-contributors>
+        <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" />
+        <td-contributors platform="miniprogram" framework="wx" :component-name="name"></td-contributors>
       </div>
       <div v-show="tab === 'api'" name="API" v-html="info.apiMd"></div>
       <div v-show="tab === 'design'" name="DESIGN" v-html="info.designMd"></div>
@@ -32,12 +32,6 @@ export default defineComponent({
     docType: String,
   },
 
-  data() {
-    return {
-      compName: 'button',
-    };
-  },
-
   inject: ['info', 'demos'],
 
   components: {
@@ -55,22 +49,22 @@ export default defineComponent({
         }
       },
     },
+    name() {
+      const { path } = this.$route;
+      return path.slice(path.lastIndexOf('/') + 1)
+    }
   },
 
   mounted() {
     const { info } = this;
-    const { tdDocContent, tdDocHeader, tdDocTabs, tdContributors } = this.$refs;
+    const { tdDocContent, tdDocHeader, tdDocTabs } = this.$refs;
 
     if (info.isComponent) {
       tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
       tdDocHeader.issueInfo = info.issueInfo || {};
-      tdContributors.contributors = info.contributors || [];
     }
     
     Prismjs.highlightAll();
-
-    const { path } = this.$route;
-    this.compName = path.slice(path.lastIndexOf('/'));
     
     tdDocHeader.docType = this.docType;
     tdDocHeader.docInfo = { title: info.title, desc: info.description };
