@@ -1,6 +1,7 @@
 Page({
   data: {
-    fruits: [
+    show: true,
+    items: [
       {
         name: '已点击',
         checked: true,
@@ -16,11 +17,16 @@ Page({
       },
     ],
   },
-  onClickFruit(e: WechatMiniprogram.BaseEvent) {
+  handleClick(e: WechatMiniprogram.BaseEvent) {
     const { index } = e.currentTarget.dataset;
-    const value = this.data.fruits[index].checked;
+    const value = this.data.items[index].checked;
     this.setData({
-      [`fruits[${index}].checked`]: !value,
+      [`items[${index}].checked`]: !value,
+    });
+  },
+  handleClose() {
+    this.setData({
+      show: false,
     });
   },
 });

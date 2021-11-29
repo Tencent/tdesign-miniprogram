@@ -23,7 +23,7 @@
     </view>
 
     <view class="group">
-      <t-tag closable theme="primary">标签</t-tag>
+      <t-tag wx:if="{{show}}" bind:close="handleClose" closable theme="primary">标签</t-tag>
     </view>
 
     <view class="group">
@@ -36,15 +36,14 @@
   <t-demo title="02 状态" desc="标签状态">
     <view class="group">
       <t-check-tag
-        wx:for="{{fruits}}"
-        wx:for-item="fruit"
+        wx:for="{{items}}"
         wx:for-index="index"
         wx:key="index"
-        checked="{{fruit.checked}}"
-        disabled="{{fruit.disabled}}"
+        checked="{{item.checked}}"
+        disabled="{{item.disabled}}"
         data-index="{{index}}"
-        bind:tap="onClickFruit"
-        >{{fruit.name}}</t-check-tag
+        bind:tap="handleClick"
+        >{{item.name}}</t-check-tag
       >
     </view>
   </t-demo>
