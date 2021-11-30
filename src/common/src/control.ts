@@ -43,6 +43,7 @@ type ControlOption = {
  * @param valueKey 自定义value的可以
  * @param defaultValueKey 自定义value默认key
  * @param changeEventName 自定义change事件名称
+ * @param disControl 强制关闭受控模式
  * @returns
  */
 function useControl(
@@ -50,13 +51,14 @@ function useControl(
   valueKey = 'value',
   defaultValueKey = 'defaultValue',
   changeEventName = 'change',
+  disControl = false,
 ): ControlOption {
   const props = this.properties || {};
   const value = props[valueKey];
   const defaultValue = props[defaultValueKey];
   let controlled = false;
   // 检查受控属性，判断是否受控
-  if (typeof value !== 'undefined' && value !== null) {
+  if (typeof value !== 'undefined' && value !== null && !disControl) {
     controlled = true;
   }
   const set = (newVal, extObj?, fn?) => {
