@@ -3,7 +3,7 @@
  * 因原生swiper受限，基于wxs重新实现，后期可以扩展更多丰富的功能
  * todo：无限循环，3D动效等
  */
-import { SuperComponent, wxComponent, ControlOption, useControl } from '../common/src/index';
+import { SuperComponent, wxComponent, ControlInstance, useControl } from '../common/src/index';
 import config from '../common/config';
 import { DIRECTION, NavTypes } from './common/constants';
 import props from './props';
@@ -81,7 +81,7 @@ export default class Swiper extends SuperComponent {
   timer = null;
 
   // 受控属性
-  control: ControlOption = null;
+  control: ControlInstance = null;
 
   relations = {
     './swiper-item': {
@@ -116,9 +116,16 @@ export default class Swiper extends SuperComponent {
   };
 
   attached() {
-    // 暂停受控模式，待TD全量支持受控后，再开启
-    // this.control = useControl.call(this, 'current', 'defaultCurrent');
-    this.control = useControl.call(this, 'current', 'current', 'change', true);
+    // 暂停完全受控模式，待TD全量支持受控后，再开启
+    // this.control = useControl.call(this, {
+    //   valueKey: 'current',
+    //   defaultValueKey: 'defaultCurrent',
+    // });
+    // 启用半受控模式
+    this.control = useControl.call(this, {
+      valueKey: 'current',
+      strict: false,
+    });
     this.createSelectorQuery()
       .select('#swiper')
       .boundingClientRect((rect) => {

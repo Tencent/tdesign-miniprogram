@@ -1,4 +1,4 @@
-type ControlOption = {
+type ControlInstance = {
   /**
    * 受控状态
    */
@@ -27,6 +27,22 @@ type ControlOption = {
   change(newVal: any, customChangeData?: any, customUpdateFn?: any): void;
 };
 
+type ControlOption = {
+  valueKey?: string;
+  defaultValueKey?: string;
+  changeEventName?: string;
+  /**
+   * 完全受控模式，默认true。半受控为false
+   */
+  strict?: boolean;
+};
+
+const defaultOption: ControlOption = {
+  valueKey: 'value',
+  defaultValueKey: 'defaultValue',
+  changeEventName: 'change',
+  strict: true,
+};
 /**
  * 受控函数
  * 用法示例：
@@ -46,19 +62,18 @@ type ControlOption = {
  * @param disControl 强制关闭受控模式
  * @returns
  */
-function useControl(
-  this: any,
-  valueKey = 'value',
-  defaultValueKey = 'defaultValue',
-  changeEventName = 'change',
-  disControl = false,
-): ControlOption {
+function useControl(this: any, option: ControlOption = {}): ControlInstance {
+  const { valueKey, defaultValueKey, changeEventName, strict } = {
+    ...defaultOption,
+    ...option,
+  };
   const props = this.properties || {};
   const value = props[valueKey];
-  const defaultValue = props[defaultValueKey];
+  // 半受控时，不需要defaultValueKey，默认值与valueKey相同
+  const defaultValue = props[strict ? defaultValueKey : valueKey];
   let controlled = false;
-  // 检查受控属性，判断是否受控
-  if (typeof value !== 'undefined' && value !== null && !disControl) {
+  // 完全受控模式：检查受控属性，判断是否受控
+  if (strict && typeof value !== 'undefined' && value !== null) {
     controlled = true;
   }
   const set = (newVal, extObj?, fn?) => {
@@ -82,7 +97,7 @@ function useControl(
         changeEventName,
         typeof customChangeData !== 'undefined' ? customChangeData : newVal,
       );
-      // 使用了受控属性，必须配合change事件来更新
+      // 完全受控模式，使用了受控属性，必须配合change事件来更新
       if (controlled) {
         return;
       }
@@ -95,4 +110,4 @@ function useControl(
   };
 }
 
-export { ControlOption, useControl };
+export { ControlOption, ControlInstance, useControl };
