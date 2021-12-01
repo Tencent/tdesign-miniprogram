@@ -131,6 +131,10 @@ export default class Swiper extends SuperComponent {
       .exec();
   }
 
+  detached() {
+    this.pause();
+  }
+
   ready() {
     this.initItem();
     this.initNav();
