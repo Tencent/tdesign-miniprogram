@@ -28,11 +28,20 @@ type ControlInstance = {
 };
 
 type ControlOption = {
+  /**
+   * 自定义value的key。默认为value
+   */
   valueKey?: string;
+  /**
+   * 自定义value默认值的key。默认为defaultValue
+   */
   defaultValueKey?: string;
+  /**
+   * 自定义change事件名称。默认为change
+   */
   changeEventName?: string;
   /**
-   * 完全受控模式，默认true。半受控为false
+   * 是否严格受控。默认true为完全受控模式。半受控模式为false。
    */
   strict?: boolean;
 };
@@ -56,10 +65,7 @@ const defaultOption: ControlOption = {
  * 2：value默认值：小程序number类型未传值（undefined）会初始化为0，导致无法判断。建议默认值设置为null
  * 3：prop变化：需要开发者自己监听，observers = { value(val):{ this.control.set(val) } }
  * @param this 页面实例
- * @param valueKey 自定义value的可以
- * @param defaultValueKey 自定义value默认key
- * @param changeEventName 自定义change事件名称
- * @param disControl 强制关闭受控模式
+ * @param option 配置项 参见ControlOption
  * @returns
  */
 function useControl(this: any, option: ControlOption = {}): ControlInstance {
