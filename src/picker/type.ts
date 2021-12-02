@@ -17,7 +17,7 @@ export interface TdPickerProps {
   };
   /**
    * 确定按钮文字
-   * @default ''
+   * @default 确认
    */
   confirmBtn?: {
     type: StringConstructor;

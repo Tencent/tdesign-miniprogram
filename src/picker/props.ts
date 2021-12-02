@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
+ * updated at 2021-12-02 14:47:59
  * */
 
 import { TdPickerProps } from './type';
@@ -10,12 +10,12 @@ const props: TdPickerProps = {
   /** 取消按钮文字 */
   cancelBtn: {
     type: String,
-    value: '',
+    value: '取消',
   },
   /** 确定按钮文字 */
   confirmBtn: {
     type: String,
-    value: '',
+    value: '确认',
   },
   /** 标题 */
   title: {
