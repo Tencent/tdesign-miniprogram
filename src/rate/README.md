@@ -9,7 +9,7 @@
 ```json
 {
   "usingComponents": {
-    "t-rate": "@tencent/tdesign-miniprogram/rate/rate"
+    "t-rate": "tdesign-miniprogram/rate/rate"
   }
 }
 ```

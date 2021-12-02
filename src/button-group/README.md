@@ -14,7 +14,7 @@
 
 ```json
 "usingComponents": {
-  "t-button-group": "@tencent/tdesign-miniprogram/button-group/button-group"
+  "t-button-group": "tdesign-miniprogram/button-group/button-group"
 }
 ```
 
@@ -34,7 +34,7 @@
 
 ### `<t-button-group>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/button-group/button-group`
+组件路径：`tdesign-miniprogram/button-group/button-group`
 
 #### Props
 

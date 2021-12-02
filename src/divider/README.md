@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-divider": "@tencent/tdesign-miniprogram/divider/divider"
+  "t-divider": "tdesign-miniprogram/divider/divider"
 }
 ```
 

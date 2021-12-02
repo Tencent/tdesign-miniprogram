@@ -14,8 +14,8 @@
 
 ```json
 "usingComponents": {
-  "t-radio": "@tencent/tdesign-miniprogram/radio/radio",
-  "t-radio-group": "@tencent/tdesign-miniprogram/radio-group/radio-group"
+  "t-radio": "tdesign-miniprogram/radio/radio",
+  "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
 }
 ```
 
@@ -35,7 +35,7 @@
 
 ### `<t-radio-group>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/radio-group/radio-group`
+组件路径：`tdesign-miniprogram/radio-group/radio-group`
 
 #### Props
 

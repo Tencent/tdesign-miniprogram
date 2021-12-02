@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-badge": "@tencent/tdesign-miniprogram/badge/badge"
+  "t-badge": "tdesign-miniprogram/badge/badge"
 }
 ```
 

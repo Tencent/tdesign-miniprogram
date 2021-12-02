@@ -8,7 +8,7 @@
     "declaration": true,
     "baseUrl": ".",
     "paths": {
-      "@tencent/tdesign-miniprogram/*": ["miniprogram_dist/*"]
+      "tdesign-miniprogram/*": ["miniprogram_dist/*"]
     }
   },
   "include": ["src/**/*", "example/**/*", "site/**/*", "typing.d.ts"]

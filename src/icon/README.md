@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-icon": "@tencent/tdesign-miniprogram/icon/icon"
+  "t-icon": "tdesign-miniprogram/icon/icon"
 }
 ```
 

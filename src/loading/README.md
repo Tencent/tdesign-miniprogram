@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-loading": "@tencent/tdesign-miniprogram/loading/loading"
+  "t-loading": "tdesign-miniprogram/loading/loading"
 }
 ```
 

@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "stepper": "@tencent/tdesign-miniprogram/stepper/stepper"
+  "stepper": "tdesign-miniprogram/stepper/stepper"
 }
 ```
 

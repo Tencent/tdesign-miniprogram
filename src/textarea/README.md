@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-textarea": "@tencent/tdesign-miniprogram/textarea/textarea"
+  "t-textarea": "tdesign-miniprogram/textarea/textarea"
 }
 ```
 

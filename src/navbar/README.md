@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-navbar": "@tencent/tdesign-miniprogram/navbar/navbar",
+  "t-navbar": "tdesign-miniprogram/navbar/navbar",
 }
 ```
 

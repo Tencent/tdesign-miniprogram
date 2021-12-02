@@ -14,8 +14,8 @@
 
 ```json
 "usingComponents": {
-   "t-dropdown-item": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-item",
-   "t-dropdown-menu": "@tencent/tdesign-miniprogram/dropdown-menu/dropdown-menu"
+   "t-dropdown-item": "tdesign-miniprogram/dropdown-menu/dropdown-item",
+   "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu"
 }
 ```
 
@@ -46,7 +46,7 @@
 
 ### `<t-dropdown-menu>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/dropdown-menu/dropdown-item`
+组件路径：`tdesign-miniprogram/dropdown-menu/dropdown-item`
 
 ### DropdownMenu Props
 
@@ -58,7 +58,7 @@
 
 ### `<t-dropdown-item>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/dropdown-menu/dropdown-item`
+组件路径：`tdesign-miniprogram/dropdown-menu/dropdown-item`
 
 ### DropdownItem Props
 

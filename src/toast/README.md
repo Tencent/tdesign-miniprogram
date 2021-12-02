@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-toast": "@tencent/tdesign-miniprogram/toast/toast"
+  "t-toast": "tdesign-miniprogram/toast/toast"
 }
 ```
 
@@ -23,7 +23,7 @@
 ```
 
 ```js
-import Toast from '@tencent/tdesign-miniprogram/toast/index';
+import Toast from 'tdesign-miniprogram/toast/index';
 ```
 
 纯文本

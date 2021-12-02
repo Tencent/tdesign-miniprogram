@@ -12,7 +12,7 @@
 
 ```json
 "usingComponents": {
-  "t-drawer": "@tencent/tdesign-miniprogram/drawer/drawer"
+  "t-drawer": "tdesign-miniprogram/drawer/drawer"
 }
 ```
 
@@ -21,7 +21,7 @@
 若以 API 形式调用 Drawer，则需在页面 `page.js` 中引入组件 API：
 
 ```js
-import Drawer from '@tencent/tdesign-miniprogram/drawer/drawer';
+import Drawer from 'tdesign-miniprogram/drawer/drawer';
 ```
 
 ## 用法
@@ -64,7 +64,7 @@ Page({
 
 ### `<Drawer>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/drawer/drawer`
+组件路径：`tdesign-miniprogram/drawer/drawer`
 
 #### Props
 

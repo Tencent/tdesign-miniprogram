@@ -14,7 +14,7 @@
 
 ```json
 "usingComponents": {
-  "t-fab": "@tencent/tdesign-miniprogram/fab/fab"
+  "t-fab": "tdesign-miniprogram/fab/fab"
 }
 ```
 
@@ -31,7 +31,7 @@
 
 ### `<t-fab>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/fab/fab`
+组件路径：`tdesign-miniprogram/fab/fab`
 
 #### Props
 

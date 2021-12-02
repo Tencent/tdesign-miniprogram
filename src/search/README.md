@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-search": "@tencent/tdesign-miniprogram/search/search"
+  "t-search": "tdesign-miniprogram/search/search"
 }
 ```
 

@@ -8,8 +8,8 @@
 
 ```json
 "usingComponents": {
-  "t-grid": "@tencent/tdesign-miniprogram/grid/grid",
-  "t-grid-item": "@tencent/tdesign-miniprogram/grid/grid-item"
+  "t-grid": "tdesign-miniprogram/grid/grid",
+  "t-grid-item": "tdesign-miniprogram/grid/grid-item"
 }
 ```
 

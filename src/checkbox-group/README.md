@@ -14,8 +14,8 @@
 
 ```json
 "usingComponents": {
-  "t-checkbox": "@tencent/tdesign-miniprogram/checkbox/checkbox",
-  "t-checkbox-group": "@tencent/tdesign-miniprogram/checkbox-group/checkbox-group"
+  "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
+  "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group"
 }
 ```
 
@@ -35,7 +35,7 @@
 
 ### `<t-checkbox-group>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/checkbox-group/checkbox-group`
+组件路径：`tdesign-miniprogram/checkbox-group/checkbox-group`
 
 #### Props
 

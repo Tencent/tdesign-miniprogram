@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-empty": "@tencent/tdesign-miniprogram/empty/empty"
+  "t-empty": "tdesign-miniprogram/empty/empty"
 }
 ```
 

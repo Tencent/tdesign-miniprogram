@@ -14,7 +14,7 @@
 
 ```json
 "usingComponents": {
-  "t-progress": "@tencent/tdesign-miniprogram/progress/progress"
+  "t-progress": "tdesign-miniprogram/progress/progress"
 }
 ```
 
@@ -22,7 +22,7 @@
 
 ### `<Progress>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/progress/progress`
+组件路径：`tdesign-miniprogram/progress/progress`
 
 #### Props
 

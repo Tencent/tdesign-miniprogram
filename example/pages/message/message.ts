@@ -1,4 +1,4 @@
-import Message from '@tencent/tdesign-miniprogram/message/index';
+import Message from 'tdesign-miniprogram/message/index';
 
 Page({
   data: {

@@ -1,7 +1,4 @@
 {
   "navigationBarTitleText": "Indexes 索引",
-  "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {
-    "t-indexes": "@tencent/tdesign-miniprogram/indexes/indexes"
-  }
+  "navigationBarBackgroundColor": "#fff"
 }

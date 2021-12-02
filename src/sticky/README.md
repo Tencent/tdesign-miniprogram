@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-sticky": "@tencent/tdesign-miniprogram/sticky/sticky"
+  "t-sticky": "tdesign-miniprogram/sticky/sticky"
 }
 ```
 

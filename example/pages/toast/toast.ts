@@ -1,4 +1,4 @@
-import Toast from '@tencent/tdesign-miniprogram/toast/index';
+import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {

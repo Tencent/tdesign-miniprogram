@@ -14,7 +14,7 @@
 
 ```json
 "usingComponents": {
-  "t-message": "@tencent/tdesign-miniprogram/message/message"
+  "t-message": "tdesign-miniprogram/message/message"
 }
 ```
 
@@ -23,7 +23,7 @@
 若以 API 形式调用 Message，则需在页面 `page.js` 中引入组件 API：
 
 ```js
-import Message from '@tencent/tdesign-miniprogram/message/index';
+import Message from 'tdesign-miniprogram/message/index';
 ```
 
 ## 用法
@@ -48,7 +48,7 @@ Message.info({
 
 ### `<Message>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/message/message`
+组件路径：`tdesign-miniprogram/message/message`
 
 #### Props
 

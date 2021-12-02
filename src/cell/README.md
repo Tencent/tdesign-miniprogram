@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-cell": "@tencent/tdesign-miniprogram/cell/cell"
+  "t-cell": "tdesign-miniprogram/cell/cell"
 }
 ```
 

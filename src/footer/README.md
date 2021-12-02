@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-footer": "@tencent/tdesign-miniprogram/footer/footer"
+  "t-footer": "tdesign-miniprogram/footer/footer"
 }
 ```
 

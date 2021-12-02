@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-"t-back-top": "@tencent/tdesign-miniprogram/back-top/back-top",
+"t-back-top": "tdesign-miniprogram/back-top/back-top",
 }
 ```
 

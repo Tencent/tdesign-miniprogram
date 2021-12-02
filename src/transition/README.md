@@ -10,7 +10,7 @@
 
 ```json
 "usingComponents": {
-  "t-transition": "@tencent/tdesign-miniprogram/transition/transition"
+  "t-transition": "tdesign-miniprogram/transition/transition"
 }
 ```
 
@@ -32,7 +32,7 @@
 
 ### `<transition>` 组件
 
-组件路径：`@tencent/tdesign-miniprogram/transition/transition`
+组件路径：`tdesign-miniprogram/transition/transition`
 
 ### 过渡类名
 

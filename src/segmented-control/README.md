@@ -14,7 +14,7 @@
 
 ```json
 "usingComponents": {
-  "t-segmented-control": "@tencent/tdesign-miniprogram/segmented-control/segmented-control"
+  "t-segmented-control": "tdesign-miniprogram/segmented-control/segmented-control"
 }
 ```
 

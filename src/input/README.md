@@ -8,7 +8,7 @@
 
 ```json
 "usingComponents": {
-  "t-input": "@tencent/tdesign-miniprogram/input/input"
+  "t-input": "tdesign-miniprogram/input/input"
 }
 ```
 
