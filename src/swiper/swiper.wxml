@@ -11,8 +11,8 @@
     bindtouchcancel="{{swiper.endDrag}}"
     offsetX="{{offsetX}}"
     offsetY="{{offsetY}}"
-    width="{{width}}"
-    height="{{height}}"
+    width="{{_width}}"
+    height="{{_height}}"
     direction="{{direction}}"
     total="{{total}}"
     currentInited="{{currentInited}}"
@@ -28,10 +28,10 @@
   </view>
   <t-swiper-nav
     id="swiperNav"
-    wx:if="{{navigation}}"
-    type="{{navigation.type}}"
-    minShowNum="{{navigation.minShowNum}}"
-    hasNavBtn="{{navigation.hasNavBtn}}"
+    wx:if="{{_navigation}}"
+    type="{{_navigation.type}}"
+    minShowNum="{{_navigation.minShowNum}}"
+    hasNavBtn="{{_navigation.hasNavBtn}}"
     bind:navBtnChange="onSwiperNavBtnChange"
   />
   <!-- 同时支持插槽组合 -->

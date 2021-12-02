@@ -35,17 +35,12 @@ Page({
     const {
       detail: { current, source },
     } = e;
-    console.log('受控模式', current, source);
-    // 受控模式
-    this.setData({
-      current,
-    });
+    console.log(current, source);
     // if (source === 'touch') {
     //   this.setData({
     //     current,
     //   });
     // }
-    // wx.showToast({ title: '你点击了选择', icon: 'none' });
   },
   onAutoplayChange(e) {
     this.setData({

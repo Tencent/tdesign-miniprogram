@@ -3,7 +3,7 @@
  * 因原生swiper受限，基于wxs重新实现，后期可以扩展更多丰富的功能
  * todo：无限循环，3D动效等
  */
-import { SuperComponent, wxComponent, ControlOption, useControl } from '../common/src/index';
+import { SuperComponent, wxComponent, ControlInstance, useControl } from '../common/src/index';
 import config from '../common/config';
 import { DIRECTION, NavTypes } from './common/constants';
 import props from './props';
@@ -46,7 +46,7 @@ export default class Swiper extends SuperComponent {
   observers = {
     navigation(val) {
       this.setData({
-        navigation: { ...defaultNavigation, ...val },
+        _navigation: { ...defaultNavigation, ...val },
       });
     },
     current(val) {
@@ -81,7 +81,7 @@ export default class Swiper extends SuperComponent {
   timer = null;
 
   // 受控属性
-  control: ControlOption = null;
+  control: ControlInstance = null;
 
   relations = {
     './swiper-item': {
@@ -96,11 +96,11 @@ export default class Swiper extends SuperComponent {
     // 内部状态：当前临时索引
     _current: 0,
     // 内部取默认值后的配置
-    navigation: null,
+    _navigation: null,
     // 容器宽
-    width: 0,
+    _width: 0,
     // 容器高
-    height: 0,
+    _height: 0,
     offsetX: 0,
     // todo
     offsetY: 0,
@@ -116,17 +116,30 @@ export default class Swiper extends SuperComponent {
   };
 
   attached() {
-    this.control = useControl.call(this, 'current', 'defaultCurrent');
+    // 暂停完全受控模式，待TD全量支持受控后，再开启
+    // this.control = useControl.call(this, {
+    //   valueKey: 'current',
+    //   defaultValueKey: 'defaultCurrent',
+    // });
+    // 启用半受控模式
+    this.control = useControl.call(this, {
+      valueKey: 'current',
+      strict: false,
+    });
     this.createSelectorQuery()
       .select('#swiper')
       .boundingClientRect((rect) => {
         this.setData({
-          width: rect.width,
-          height: rect.height,
+          _width: rect.width,
+          _height: rect.height,
         });
         this.initCurrent();
       })
       .exec();
+  }
+
+  detached() {
+    this.pause();
   }
 
   ready() {
@@ -152,8 +165,8 @@ export default class Swiper extends SuperComponent {
    * 初始化 swiper-nav
    */
   initNav() {
-    const { navigation } = this.data;
-    if (navigation) {
+    const { _navigation } = this.data;
+    if (_navigation) {
       // 启用内部导航器
       this.$nav = this.selectComponent('#swiperNav');
     } else {
@@ -213,6 +226,10 @@ export default class Swiper extends SuperComponent {
    * @returns
    */
   goto(index: number, source: string) {
+    if (this.control.get() === index) {
+      this.update(index);
+      return;
+    }
     this.control.change(
       index,
       {
@@ -260,14 +277,14 @@ export default class Swiper extends SuperComponent {
 
   calcOffset(index: number) {
     const { direction } = this.properties;
-    const { width, height } = this.data;
+    const { _width, _height } = this.data;
     if ((direction as any) === DIRECTION.HOR) {
       return {
-        offsetX: -index * width,
+        offsetX: -index * _width,
       };
     }
     return {
-      offsetY: -index * height,
+      offsetY: -index * _height,
     };
   }
 

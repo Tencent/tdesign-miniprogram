@@ -24,7 +24,7 @@
     <view class="swiper-demo-space" />
     <view class="swiper-box">
       <t-swiper
-        defaultCurrent="{{2}}"
+        current="2"
         autoplay="{{autoplay}}"
         duration="{{duration}}"
         interval="{{interval}}"
@@ -38,7 +38,7 @@
     <view class="swiper-demo-space" />
     <view class="swiper-box swiper-box2">
       <t-swiper
-        defaultCurrent="{{1}}"
+        current="{{1}}"
         autoplay="{{autoplay}}"
         duration="{{duration}}"
         interval="{{interval}}"
@@ -53,7 +53,7 @@
     <view class="swiper-demo-space" />
     <view class="swiper-box">
       <t-swiper
-        defaultCurrent="{{3}}"
+        current="{{3}}"
         autoplay="{{autoplay}}"
         duration="{{duration}}"
         interval="{{interval}}"
@@ -67,7 +67,7 @@
     <t-demo title="02 垂直" desc="轮播图垂直样式"></t-demo>
     <view class="swiper-box swiper-box-vertical">
       <t-swiper
-        defaultCurrent="{{1}}"
+        current="{{1}}"
         autoplay="{{autoplay}}"
         duration="{{duration}}"
         interval="{{interval}}"
