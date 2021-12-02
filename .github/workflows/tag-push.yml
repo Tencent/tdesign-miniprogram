@@ -1,0 +1,22 @@
+name: All_ON_PUSH
+
+on: create
+
+jobs:
+  All_ON_PUSH:
+    runs-on: ubuntu-latest
+    if: github.event.ref_type == 'tag'
+    steps:
+      - uses: actions/install-dep@main
+      - uses: actions/build-publish@main
+      - name: publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          # tag: ${{ github.ref }}
+      - if: steps.publish.outputs.type != 'none'
+        run: |
+          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+      - run: npm run site:preview
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
