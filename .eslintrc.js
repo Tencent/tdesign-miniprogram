@@ -83,6 +83,7 @@ module.exports = {
         allow: ['warn', 'error'],
       },
     ],
+    'no-undef': 0,
     'no-proto': 0,
   },
   globals,
