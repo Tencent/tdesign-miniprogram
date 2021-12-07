@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/workflows/install-dep.yml
+      - uses: ./.github/actions/install-dep
       - name: lint 检查
         run: npm run lint

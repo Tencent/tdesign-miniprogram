@@ -8,7 +8,7 @@ jobs:
     if: github.event.ref_type == 'tag'
     steps:
       - uses: actions/setup-node@v2
-      - uses: ./.github/workflows/install-dep.yml
+      - uses: ./.github/actions/install-dep
       - run: npm run build
         shell: bash
       - name: release miniprogram
