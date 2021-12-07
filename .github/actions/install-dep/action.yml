@@ -14,6 +14,5 @@ runs:
     - uses: actions/setup-node@v2
       with:
         node-version: ${{ inputs.nodeVersion }}
-        cache: 'npm'
     - run: npm install
       shell: bash
