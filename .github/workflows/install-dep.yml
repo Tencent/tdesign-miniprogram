@@ -1,0 +1,19 @@
+name: 'Install Dependencies'
+
+on:
+  workflow_call:
+    inputs:
+      nodeVersion:
+        required: false
+        type: string
+        default: '12'
+
+runs:
+  using: "composite"
+  steps: 
+    - uses: actions/setup-node@v2
+      with:
+        node-version: ${{ inputs.nodeVersion }}
+        cache: 'npm'
+    - run: npm install
+      shell: bash

@@ -7,16 +7,26 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.ref_type == 'tag'
     steps:
-      - uses: actions/install-dep@main
-      - uses: actions/build-publish@main
-      - name: publish
+      - uses: actions/setup-node@v2
+      - uses: ./.github/workflows/install-dep.yml
+      - run: npm run build
+        shell: bash
+      - name: release miniprogram
+        uses: echoings/actions.mini-program@0.0.3
+        with:
+          project_type: miniprogram
+          action_type: upload
+          project_path: ./_example
+          version: ${{ github.ref_name }}
+        env: 
+          MINI_APP_ID: ${{ secrets.APP_ID }}
+          MINI_APP_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      - id: publish
+        name: publish NPM
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-          # tag: ${{ github.ref }}
       - if: steps.publish.outputs.type != 'none'
         run: |
           echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
-      - run: npm run site:preview
-      - run: echo "🍏 This job's status is ${{ job.status }}."
 

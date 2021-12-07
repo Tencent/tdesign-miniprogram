@@ -3,11 +3,13 @@ name: MAIN_PULL_REQUEST
 on:
   pull_request: 
     branches: [develop, main]
+    types: [opened, synchronize, reopened]
 
 jobs:
   MAIN_PULL_REQUEST:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/install-dep@main
+      - uses: actions/checkout@v2
+      - uses: ./.github/workflows/install-dep.yml
       - name: lint 检查
         run: npm run lint
