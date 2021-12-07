@@ -35,7 +35,7 @@ Component({
         childBoxHeight: childBoxHeight > 0 ? 0 : childArr.length * itemHeight,
       });
     },
-    tapChild(e: AnyObject) {
+    tapChild(e: any) {
       this.triggerEvent('click', e.target.dataset);
     },
   },
