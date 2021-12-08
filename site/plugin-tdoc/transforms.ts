@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import type markdownIt from 'markdown-it';
-import { getContributors } from './utils';
 
 const componentPath = path.join(__dirname, './component.vue');
 
@@ -75,9 +74,6 @@ export default {
     return source;
   },
   after(_source: string, id: string, renderInfo: any, md: markdownIt) {
-    const reg = id.match(/src\/([\w-]+)\/\w+-?\w+\.md/);
-    const componentName = reg ? reg[1] : '';
-
     const demoCodeImportsStr = Object.keys(demoCodeImports).map(demoCodeDefName => demoCodeImports[demoCodeDefName]).join('\n');
     const demoCodeDefsStr = Object.keys(demoCodeImports).join(',');
 
@@ -89,7 +85,6 @@ export default {
       mobileUrl,
       isComponent,
       issueInfo: {},
-      contributors: getContributors(componentName),
       docMd: md.render.call(md, docMd),
       apiMd: md.render.call(md, apiMd),
       demoMd: md.render.call(md, demoMd),
