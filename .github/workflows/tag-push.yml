@@ -1,23 +1,28 @@
-name: All_ON_PUSH
+name: Publish
 
 on: create
 
 jobs:
-  All_ON_PUSH:
+  Publish:
     runs-on: ubuntu-latest
     if: github.event.ref_type == 'tag'
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v2
       - uses: ./.github/actions/install-dep
+        with:
+          nodeVersion: '14.6.0'
       - run: npm run build
         shell: bash
       - name: release miniprogram
-        uses: echoings/actions.mini-program@0.0.3
+        uses: LeeJim/setup-miniprogram@main
         with:
-          project_type: miniprogram
+          project_type: miniProgram
           action_type: upload
           project_path: ./_example
           version: ${{ github.ref_name }}
+          es6: true
+          es7: true
+          minify: true
         env: 
           MINI_APP_ID: ${{ secrets.APP_ID }}
           MINI_APP_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
