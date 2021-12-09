@@ -5,11 +5,11 @@ export default {
       type: 'document', // 普通文档
       children: [
         {
-          title: '说明',
-          name: 'explain',
+          title: '快速开始',
+          name: 'getting-started',
           meta: { docType: 'explain' },
-          path: '/miniprogram/explain',
-          component: () => import('~/README.md'),
+          path: '/miniprogram/getting-started',
+          component: () => import('@docs/getting-started.md'),
         },
         {
           title: '贡献指南',
