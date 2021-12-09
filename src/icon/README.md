@@ -14,6 +14,8 @@
 
 ## 代码演示
 
+### 基础图标
+
 ```html
 <!-- page.wxml -->
 <t-icon name="primary" size="xl" bind:click="someFunction"> </t-icon>

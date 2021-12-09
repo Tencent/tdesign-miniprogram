@@ -14,9 +14,7 @@
 
 ## 代码演示
 
-### 类型
-
-#### 空状态
+### 基础空内容
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/empty-1.png" width="375px" height="50%">
 
@@ -33,7 +31,7 @@
 </t-empty>
 ```
 
-#### 空页面
+### 页面级空内容
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/empty-2.png" width="375px" height="50%">
 
@@ -54,10 +52,11 @@
 ## API
 
 ### Empty Props
-名称 | 类型 | 默认值 | 说明 | 必传
--- | -- | -- | -- | --
-action | Slot | - | 操作按钮 | N
-description | String / Slot | - | 描述文字 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-description', 't-class-image', 't-class-actions']` | N
-icon | String | - | 图标名称 | N
-image | String / Slot | - | 图片地址 | N
+
+| 名称             | 类型          | 默认值 | 说明                                                                                                                                                | 必传 |
+| ---------------- | ------------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| action           | Slot          | -      | 操作按钮                                                                                                                                            | N    |
+| description      | String / Slot | -      | 描述文字                                                                                                                                            | N    |
+| external-classes | Array         | -      | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-description', 't-class-image', 't-class-actions']` | N    |
+| icon             | String        | -      | 图标名称                                                                                                                                            | N    |
+| image            | String / Slot | -      | 图片地址                                                                                                                                            | N    |

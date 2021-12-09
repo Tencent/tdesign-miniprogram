@@ -26,7 +26,7 @@ import Drawer from 'tdesign-miniprogram/drawer/drawer';
 
 ## 用法
 
-### 基础用法
+### 基础抽屉
 
 ```html
 <!-- page.wxml -->
@@ -47,7 +47,7 @@ Page({
 });
 ```
 
-### 自定义 title、content、以及 footer
+### 不同状态的抽屉
 
 `Drawer`组件支持通过 slot 的方式自定义头部、内容、底部
 
