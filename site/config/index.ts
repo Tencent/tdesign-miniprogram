@@ -151,7 +151,7 @@ export default {
           component: () => import('@/skeleton/README.md'),
         },
         {
-          title: 'Sticky 吸顶',
+          title: 'Sticky 吸顶容器',
           name: 'sticky',
           meta: { docType: 'data' },
           path: '/miniprogram/components/sticky',
@@ -358,7 +358,7 @@ export default {
           component: () => import('@/loading/README.md'),
         },
         {
-          title: 'Message 消息',
+          title: 'Message 消息通知',
           name: 'message',
           meta: { docType: 'message' },
           path: '/miniprogram/components/message',

@@ -14,9 +14,9 @@
 
 ## 代码演示
 
-### 基本用法
+### 基础轻提示
 
-基础提示，用 API `Toast` 方法调用轻提示。
+用 API `Toast` 方法调用轻提示。
 
 ```html
 <t-toast id="t-toast" />
@@ -26,7 +26,7 @@
 import Toast from 'tdesign-miniprogram/toast/index';
 ```
 
-纯文本
+### 纯文本的轻提示
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/toast-1.png" width="20%" height="20%">
 
@@ -38,7 +38,7 @@ Toast({
 });
 ```
 
-带图标-横向
+### 带横向图标的轻提示
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/toast-3.png" width="20%" height="20%">
 
@@ -51,7 +51,7 @@ Toast({
 });
 ```
 
-带图标-竖向
+### 带竖向图标的轻提示
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/toast-4.png" width="20%" height="20%">
 
@@ -65,7 +65,7 @@ Toast({
 });
 ```
 
-### 默认提示
+### 默认轻提示
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/toast-2.png" width="375px" height="20%">
 
@@ -93,7 +93,7 @@ Toast({
 });
 ```
 
-### 显示位置和展示时间
+### 不同位置的轻提示
 
 ```js
 Toast({
@@ -126,13 +126,14 @@ Toast({
 ## API
 
 ### Toast Props
-名称 | 类型 | 默认值 | 说明 | 必传
--- | -- | -- | -- | --
-direction | String | row | 图标排列方式。可选项：row/column | N
-duration | Number | 2000 | 弹窗显示毫秒数 | N
-external-classes | Array | - | 组件类名。`['t-class']` | N
-icon | String | - | 自定义图标 | N
-message | String / Slot | - | 弹窗显示文字 | N
-placement | String | middle | 弹窗展示位置。可选项： top/middle/bottom | N
-prevent-scroll-through | Boolean | false | 防止滚动穿透，即不允许点击和滚动 | N
-theme | String | - | 提示类型。可选项：loading/success/fail | N
+
+| 名称                   | 类型          | 默认值 | 说明                                     | 必传 |
+| ---------------------- | ------------- | ------ | ---------------------------------------- | ---- |
+| direction              | String        | row    | 图标排列方式。可选项：row/column         | N    |
+| duration               | Number        | 2000   | 弹窗显示毫秒数                           | N    |
+| external-classes       | Array         | -      | 组件类名。`['t-class']`                  | N    |
+| icon                   | String        | -      | 自定义图标                               | N    |
+| message                | String / Slot | -      | 弹窗显示文字                             | N    |
+| placement              | String        | middle | 弹窗展示位置。可选项： top/middle/bottom | N    |
+| prevent-scroll-through | Boolean       | false  | 防止滚动穿透，即不允许点击和滚动         | N    |
+| theme                  | String        | -      | 提示类型。可选项：loading/success/fail   | N    |

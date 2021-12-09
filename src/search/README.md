@@ -14,9 +14,7 @@
 
 ## 代码演示
 
-### 类型
-
-基础搜索框。
+### 基础搜索框
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/search.png" width="375px" height="50%">
 

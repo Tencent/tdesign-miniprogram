@@ -16,9 +16,7 @@
 
 ## 代码演示
 
-### 类型
-
-实心评分
+### 基础评分
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/rate.png" width="375px" height="50%">
 
