@@ -61,7 +61,6 @@ export default class Tabs extends SuperComponent {
     isScrollY: false,
     direction: 'X',
     animate: { duration: 0 },
-    triggerChange: false,
   };
 
   created() {
@@ -117,14 +116,7 @@ export default class Tabs extends SuperComponent {
     this.setData({
       currentIndex: index,
     });
-    if (this.data.triggerChange) {
-      wx.nextTick(() => {
-        this.setTrack();
-        this.trigger('change', index);
-      });
-    } else {
-      this.setData({ triggerChange: true });
-    }
+    this.setTrack();
   }
 
   getCurrentName() {
@@ -187,8 +179,11 @@ export default class Tabs extends SuperComponent {
   onTabTap(event: any) {
     const { index } = event.currentTarget.dataset;
     const currentTab = this.data.tabs[index];
-    if (!currentTab.disabled) {
+    if (!currentTab.disabled && index !== this.data.currentIndex) {
       this.setCurrentIndex(+index);
+      wx.nextTick(() => {
+        this.trigger('change', index);
+      });
     }
   }
 
