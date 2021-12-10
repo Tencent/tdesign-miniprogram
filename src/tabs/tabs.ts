@@ -187,13 +187,8 @@ export default class Tabs extends SuperComponent {
   onTabTap(event: any) {
     const { index } = event.currentTarget.dataset;
     const currentTab = this.data.tabs[index];
-    if (currentTab.disabled) {
-      this.trigger('disabled', index);
-    } else {
+    if (!currentTab.disabled) {
       this.setCurrentIndex(+index);
-      wx.nextTick(() => {
-        this.trigger('click', index);
-      });
     }
   }
 
