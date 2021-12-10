@@ -116,10 +116,7 @@ export default class Tabs extends SuperComponent {
     this.setData({
       currentIndex: index,
     });
-    wx.nextTick(() => {
-      this.setTrack();
-      this.trigger('change', index);
-    });
+    this.setTrack();
   }
 
   getCurrentName() {
@@ -182,12 +179,10 @@ export default class Tabs extends SuperComponent {
   onTabTap(event: any) {
     const { index } = event.currentTarget.dataset;
     const currentTab = this.data.tabs[index];
-    if (currentTab.disabled) {
-      this.trigger('disabled', index);
-    } else {
+    if (!currentTab.disabled && index !== this.data.currentIndex) {
       this.setCurrentIndex(+index);
       wx.nextTick(() => {
-        this.trigger('click', index);
+        this.trigger('change', index);
       });
     }
   }

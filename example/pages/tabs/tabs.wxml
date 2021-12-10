@@ -5,7 +5,6 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       class="t-tabs-horizontal"
       t-class-item="scroll-item-horizontal"
       t-class="tabs-contianer"
@@ -18,7 +17,6 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       class="t-tabs-horizontal"
       t-class-item="scroll-item-horizontal"
     >
@@ -31,7 +29,6 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       class="t-tabs-horizontal"
       t-class-item="scroll-item-horizontal"
     >
@@ -45,7 +42,6 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       class="t-tabs-horizontal"
       t-class-item="scroll-item-horizontal"
     >
@@ -61,7 +57,6 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       showBottomLine="{{false}}"
       class="t-tabs-horizontal"
       t-class-item="scroll-item-horizontal"
@@ -76,7 +71,6 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       class="t-tabs-horizontal"
       t-class-item="scroll-item-horizontal"
       animation="{{animation}}"
@@ -91,7 +85,6 @@
     <t-tabs
       value="0"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       t-class-item="scroll-item-horizontal"
       class="t-tabs-horizontal"
     >
@@ -105,7 +98,6 @@
       value="{{1}}"
       placement="left"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       t-class-item="scroll-item-vertical"
       t-class-active="tabs-vertical-active"
       t-class="t-tabs-vertical"
@@ -131,7 +123,6 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       t-class-item="scroll-item-horizontal"
       t-class="t-tabs-horizontal"
       t-class-active="active-item"
@@ -146,7 +137,6 @@
     <t-tabs
       value="{{0}}"
       bind:change="onTabsChange"
-      bind:click="onTabsChange"
       t-class-item="scroll-item-horizontal"
       t-class="t-tabs-horizontal"
     >
