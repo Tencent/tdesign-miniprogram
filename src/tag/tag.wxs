@@ -28,5 +28,14 @@ var getTagStyle = function (maxWidth) {
   var width = !isNaN(maxWidth) ? maxWidth + 'px' : maxWidth;
   return 'max-width:' + width + ';';
 };
+var getIconSize = function(size) {
+  var sizeMap = {
+    'small': '12px',
+    'medium': '16px',
+    'large': '20px'
+  };
+  return sizeMap[size];
+}
 module.exports.getTagClass = getTagClass;
 module.exports.getTagStyle = getTagStyle;
+module.exports.getIconSize = getIconSize;

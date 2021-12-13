@@ -11,6 +11,7 @@
     wx:if="{{ closable && !disabled }}"
     class="{{classPrefix}}__icon-close"
     name="close"
+    size="{{this.getIconSize(size)}}"
     bind:tap="onClickClose"
   />
 </view>
