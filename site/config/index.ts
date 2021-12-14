@@ -46,6 +46,13 @@ export default {
           component: () => import('@/button/README.md'),
         },
         {
+          title: 'Divider 分割线',
+          name: 'divider',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/divider',
+          component: () => import('@/divider/README.md'),
+        },
+        {
           title: 'Icon 图标',
           name: 'icon',
           meta: { docType: 'base' },
@@ -94,13 +101,6 @@ export default {
         //   path: '/miniprogram/components/collapse',
         //   component: () => import('@/collapse/README.md'),
         // },
-        {
-          title: 'Divider 分割线',
-          name: 'divider',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/divider',
-          component: () => import('@/divider/README.md'),
-        },
         // {
         //   title: 'DropdownMenu 下拉菜单',
         //   name: 'dropdown-menu',
