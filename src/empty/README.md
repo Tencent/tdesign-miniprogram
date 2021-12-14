@@ -1,6 +1,9 @@
-# Empty 空内容
-
-用于空状态时的占位提示。
+---
+title: Empty 空内容
+description: 用于空状态时的占位提示。
+spline: data
+isComponent: true
+---
 
 ## 引入
 

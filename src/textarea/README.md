@@ -1,6 +1,9 @@
-# Textarea 多行输入框
-
-用于多行文本信息输入。
+---
+title: Textarea 多行输入框
+description: 用于多行文本信息输入。
+spline: form
+isComponent: true
+---
 
 ## 引入
 

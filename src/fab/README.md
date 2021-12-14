@@ -1,6 +1,9 @@
-# Fab
-
-悬浮按钮。
+---
+title: Fab
+description: 悬浮按钮。
+spline: form
+isComponent: true
+---
 
 ### 特性及兼容性
 

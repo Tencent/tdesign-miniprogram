@@ -1,6 +1,9 @@
-# stepper 步进器
-
-用于数量的增减。
+---
+title: Stepper 步进器
+description: 用于数量的增减。
+spline: form
+isComponent: true
+---
 
 ## 引入
 

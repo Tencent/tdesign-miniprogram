@@ -1,6 +1,9 @@
-# Rate 评分
-
-用于对某行为/事物进行打分。
+---
+title: Rate 评分
+description: 用于对某行为/事物进行打分。
+spline: form
+isComponent: true
+---
 
 ## 引入
 

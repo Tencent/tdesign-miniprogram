@@ -1,6 +1,9 @@
-# radio-group
-
-组合单选框。
+---
+title: radio-group
+description: 组合单选框。
+spline: form
+isComponent: true
+---
 
 ### 特性及兼容性
 

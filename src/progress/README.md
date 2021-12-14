@@ -1,6 +1,9 @@
-# Progress
-
-进度条。
+---
+title: Progress
+description: 进度条。
+spline: message
+isComponent: true
+---
 
 ### 特性和兼容性
 

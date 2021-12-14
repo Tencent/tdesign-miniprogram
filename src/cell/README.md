@@ -1,6 +1,9 @@
-# Cell 单元格
-
-用于各个类别行的信息展示。
+---
+title: Cell 单元格
+description: 用于各个类别行的信息展示。
+spline: data
+isComponent: true
+---
 
 ## 引入
 

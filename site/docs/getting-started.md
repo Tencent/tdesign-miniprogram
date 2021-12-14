@@ -1,6 +1,8 @@
-# TDesign MiniProgram
-
-TDesign官方小程序版本。
+---
+title: TDesign MiniProgram
+description: TDesign官方小程序版本。
+spline: explain
+---
 
 ## 预览
 

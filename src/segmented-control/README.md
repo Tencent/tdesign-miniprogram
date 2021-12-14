@@ -1,6 +1,9 @@
-# SegmentedControl
-
-分段器。
+---
+title: SegmentedControl
+description: 分段器。
+spline: navigation
+isComponent: true
+---
 
 ### 特性及兼容性
 
