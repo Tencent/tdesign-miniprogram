@@ -11,7 +11,7 @@
     "miniprogram"
   ],
   "scripts": {
-    "start": "npm run dev & npm run site:dev",
+    "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development gulp dev --gulpfile script/gulpfile.js --cwd ./",
     "build": "cross-env NODE_ENV=production gulp build --gulpfile script/gulpfile.js --cwd ./",
     "build:dist": "gulp --gulpfile script/gulpfile.dist.js --cwd ./",
@@ -19,8 +19,8 @@
     "lintfix": "eslint '{src,example}/**/*.{js,ts}' --fix",
     "lint": "eslint '{src,example}/**/*.{js,ts}'",
     "format": "prettier {src,example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",
-    "site:dev": "cd site && npm run dev",
     "site": "cd site && npm run build",
+    "site:dev": "cd site && npm run dev",
     "test": "jest -c jest.unit.config.js && jest -c jest.e2e.config.js",
     "test:unit": "jest -c jest.unit.config.js",
     "test:e2e": "jest -c jest.e2e.config.js"
