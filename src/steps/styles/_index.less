@@ -2,6 +2,8 @@
 @import './_var.less';
 @import './_mixin.less';
 
+@this: ~"@{prefix}-steps";
+
 @{prefix}-steps {
   display: flex;
 }
@@ -51,6 +53,11 @@
           color: @title-color--default;
         }
       }
+    }
+
+    .@{this}-item-icon__icon {
+      width: @connector-icon-icon-width;
+      height: @connector-icon-icon-width;
     }
 
     .connector-default(horizontal);

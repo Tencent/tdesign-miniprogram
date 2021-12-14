@@ -63,15 +63,22 @@
 .connector-default(@direction; @isReverse:false) {
   & when (@direction = horizontal) {
     &.@{prefix}-step--not-last-child {
-      .@{prefix}-steps-item__inner:after {
-        content: '';
-        display: block;
-        height: 1px;
-        background: @border-level-2-color;
-        position: absolute;
-        width: calc(100% - @connector-default-icon-width - 2px);
-        left: calc(50% + @connector-default-icon-width / 2 + 1px);
-        top: (@connector-default-icon-width / 2 + 1px);
+      .@{prefix}-steps-item__inner {
+        &:after {
+          content: '';
+          display: block;
+          height: 1px;
+          background: @border-level-2-color;
+          position: absolute;
+          width: calc(100% - @connector-default-icon-width - 2px);
+          left: calc(50% + @connector-default-icon-width / 2 + 1px);
+          top: (@connector-default-icon-width / 2 + 1px);
+        }
+        &.@{prefix}-steps-item__inner--icon:after {
+          top: calc(@connector-icon-icon-width / 2);
+          width: calc(100% - @connector-icon-icon-width - 2px);
+          left: calc(50% + @connector-icon-icon-width / 2 + 1px);
+        }
       }
 
       .@{prefix}-steps-item--finish,

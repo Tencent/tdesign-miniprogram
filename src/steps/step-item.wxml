@@ -6,7 +6,7 @@
       <view class="{{classPrefix}}-icon" bindtap="click">
         <view wx:if="{{isDot}}" class="{{classPrefix}}-icon__dot"></view>
         <view wx:elif="{{icon}}" class="{{classPrefix}}-icon__number {{classPrefix}}-icon__icon">
-          <t-icon name="{{icon}}" size="large"></t-icon>
+          <t-icon name="{{icon}}" size="{{ layout == 'horizontal' ? '24px' : '16px' }}"></t-icon>
         </view>
         <view wx:else class="{{classPrefix}}-icon__number">{{index + 1}}</view>
       </view>
