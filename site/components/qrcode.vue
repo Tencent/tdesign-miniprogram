@@ -62,7 +62,7 @@ export default defineComponent({
 .tdesign-doc-qrcode {
   position: absolute;
   top: 0;
-  left: calc(100% + 114px);
+  left: calc(100% + 48px);
   width: 252px;
 
   &--fixed {
@@ -75,7 +75,7 @@ export default defineComponent({
     font-size: 20px;
     line-height: 28px;
     font-weight: 700;
-    color: rgba(0, 0, 0, .9);
+    color: var(--text-primary);
     margin-bottom: 16px;
   }
 

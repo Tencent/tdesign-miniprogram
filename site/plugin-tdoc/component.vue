@@ -94,6 +94,10 @@ export default defineComponent({
       background-color: #eee;
     }
 
+    :root[theme-mode="dark"] & img {
+      filter: unset;
+    }
+
     div[name=DEMO] & + pre {
       margin-top: 0;
       border-top-left-radius: 0;
