@@ -1,5 +1,5 @@
 /** ****************************************************************
- MIT License http://www.opensource.org/licenses/mit-license.php
+ MIT License https://github.com/qiu8310/minapp/blob/v1.0.0-alpha.1/packages/minapp-core/src/system/util/object.ts
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
 ****************************************************************** */
 
