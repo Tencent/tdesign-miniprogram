@@ -1,6 +1,9 @@
-# BackTop 返回顶部
-
-用于当页面过长往下滑动时，帮助用户快速回到页面顶部。
+---
+title: BackTop 返回顶部
+description: 用于当页面过长往下滑动时，帮助用户快速回到页面顶部。
+spline: navigation
+isComponent: true
+---
 
 ## 引入
 

@@ -1,6 +1,9 @@
-# DropdownMenu 下拉菜单
-
-菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。
+---
+title: DropdownMenu 下拉菜单
+description: 菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。
+spline: message
+isComponent: true
+---
 
 ### 特性及兼容性
 

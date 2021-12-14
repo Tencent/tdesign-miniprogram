@@ -1,6 +1,9 @@
-# checkbox-group
-
-组合多选框
+---
+title: checkbox-group
+description: 组合多选框
+spline: form
+isComponent: true
+---
 
 ### 特性及兼容性
 

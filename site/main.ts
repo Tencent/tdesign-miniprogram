@@ -7,6 +7,8 @@ import router from './router';
 // import site webcomponents
 import 'tdesign-site-components/lib/site.es.js';
 import 'tdesign-site-components/lib/styles/style.css';
+import 'tdesign-site-components/lib/styles/prism-theme.less';
+import 'tdesign-site-components/lib/styles/prism-theme-dark.less';
 
 createApp(app)
   .use(router)

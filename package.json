@@ -11,7 +11,7 @@
     "miniprogram"
   ],
   "scripts": {
-    "start": "npm run dev",
+    "start": "npm run dev & npm run site:dev",
     "dev": "cross-env NODE_ENV=development gulp dev --gulpfile script/gulpfile.js --cwd ./",
     "build": "cross-env NODE_ENV=production gulp build --gulpfile script/gulpfile.js --cwd ./",
     "build:dist": "gulp --gulpfile script/gulpfile.dist.js --cwd ./",
@@ -19,8 +19,8 @@
     "lintfix": "eslint '{src,example}/**/*.{js,ts}' --fix",
     "lint": "eslint '{src,example}/**/*.{js,ts}'",
     "format": "prettier {src,example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",
-    "site": "cd site && npm start",
-    "site:build": "cd site && npm run build",
+    "site:dev": "cd site && npm run dev",
+    "site": "cd site && npm run build",
     "test": "jest -c jest.unit.config.js && jest -c jest.e2e.config.js",
     "test:unit": "jest -c jest.unit.config.js",
     "test:e2e": "jest -c jest.e2e.config.js"
@@ -42,6 +42,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
+    "gray-matter": "^4.0.3",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.2",
     "gulp-less": "^4.0.1",
@@ -84,5 +85,7 @@
     "lodash": "^4.17.21",
     "vite": "^2.5.10"
   },
-  "workspaces": ["./site"]
+  "workspaces": [
+    "./site"
+  ]
 }

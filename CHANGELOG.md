@@ -1,4 +1,8 @@
-# CHANGELOG
+---
+title: CHANGELOG
+# description: 
+spline: explain
+---
 
 ## 0.1.0-alpha.1（2021-12-8）
 

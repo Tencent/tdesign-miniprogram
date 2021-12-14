@@ -1,6 +1,9 @@
-# transition 过渡
-
-过渡组件。
+---
+title: Transition 过渡
+description: 过渡组件。
+spline: message
+isComponent: true
+---
 
 ## 引入
 

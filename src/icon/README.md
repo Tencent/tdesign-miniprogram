@@ -1,6 +1,9 @@
-# Icon 图标
-
-图标。
+---
+title: Icon 图标
+description: 图标。
+spline: base
+isComponent: true
+---
 
 ## 引入
 

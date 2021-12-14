@@ -1,6 +1,9 @@
-# Divider 分割符
-
-用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。
+---
+title: Divider 分割符
+description: 用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。
+spline: message
+isComponent: true
+---
 
 ## 引入
 

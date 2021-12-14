@@ -1,6 +1,6 @@
 <template>
   <td-doc-content ref="tdDocContent" page-status="hidden">
-    <td-doc-header slot="doc-header" ref="tdDocHeader"></td-doc-header>
+    <td-doc-header v-if="info.tdDocHeader" slot="doc-header" ref="tdDocHeader"></td-doc-header>
     <template v-if="info.isComponent">
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
       <div class="td-doc-main" v-show="tab === 'demo'">
@@ -20,18 +20,11 @@
 import { defineComponent } from 'vue';
 import Prismjs from 'prismjs';
 import 'prismjs/components/prism-bash.js';
-import 'prismjs/components/prism-javascript.js';
 import 'prismjs/components/prism-json.js';
-import 'tdesign-site-components/lib/styles/prism-theme.less';
-import 'tdesign-site-components/lib/styles/prism-theme-dark.less';
 
 import QrCode from '@components/qrcode.vue';
 
 export default defineComponent({
-  props: {
-    docType: String,
-  },
-
   inject: ['info', 'demos'],
 
   components: {
@@ -61,16 +54,15 @@ export default defineComponent({
 
     if (info.isComponent) {
       tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
-      tdDocHeader.issueInfo = info.issueInfo || {};
     }
     
     Prismjs.highlightAll();
     
-    tdDocHeader.docType = this.docType;
+    tdDocHeader.spline = info.spline;
     tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
     // @ts-ignore
-    document.querySelector('td-doc-content').initAnchorHighlight();
+    tdDocContent.initAnchorHighlight();
 
     this.$emit('loaded', () => {
       tdDocContent.pageStatus = 'show';
@@ -79,7 +71,7 @@ export default defineComponent({
 
   beforeDestroy() {
     // @ts-ignore
-    document.querySelector('td-doc-content').resetAnchorHighlight();
+    this.$refs.tdDocContent.resetAnchorHighlight();
   },
 });
 </script>

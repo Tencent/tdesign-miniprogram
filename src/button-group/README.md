@@ -1,6 +1,9 @@
-# ButtonGroup
-
-按钮组
+---
+title: ButtonGroup
+description: 按钮组
+spline: base
+isComponent: true
+---
 
 ### 特性及兼容性
 
