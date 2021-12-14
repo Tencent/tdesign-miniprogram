@@ -144,7 +144,7 @@ export default class IndexBar extends SuperComponent {
       clearInterval(this.timer);
       this.timer = setTimeout(() => {
         switchFun(false);
-      }, 1000);
+      }, 300);
     } else {
       switchFun(true);
     }
