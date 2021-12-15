@@ -62,6 +62,6 @@
   </view>
   <!-- 内置下边框 -->
   <view
-    class="{{classPrefix}}__border {{classPrefix}}{{align === 'left' ? '__border-left' : '__border-right'}}"
+    class="{{classPrefix}}__bordered {{classPrefix}}{{align === 'left' ? '__bordered--left' : '__bordered--right'}}"
   />
 </view>
