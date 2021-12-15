@@ -5,7 +5,10 @@
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
       <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
-        <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" />
+        <!-- <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" /> -->
+        <td-doc-phone headless>
+          <iframe :src="liveUrl" frameborder="0" width="100%" height="100%" style="border-radius: 0 0 6px 6px;"></iframe>
+        </td-doc-phone>
         <td-contributors platform="miniprogram" framework="wx" :component-name="name"></td-contributors>
       </div>
       <div v-show="tab === 'api'" name="API" v-html="info.apiMd"></div>
@@ -45,6 +48,9 @@ export default defineComponent({
     name() {
       const { path } = this.$route;
       return path.slice(path.lastIndexOf('/') + 1)
+    },
+    liveUrl() {
+      return `//tdesign.tencent.com/miniprogram-live/m2w/program/miniprogram/#!pages/${this.name}/${this.name}.html`
     }
   },
 
@@ -78,9 +84,9 @@ export default defineComponent({
 
 <style lang="less">
 .td-doc {
-  &-main {
-    position: relative;
-  }
+  // &-main {
+  //   position: relative;
+  // }
 
   &__image-wrapper {
     margin: 16px 0 -1px;
