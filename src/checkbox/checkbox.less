@@ -1,11 +1,10 @@
+@import '../common/style/index.less';
 @btn-width: 48rpx;
 
-.t-checkbox {
-  // width: 100%;
+.@{prefix}-checkbox {
   position: relative;
   display: flex;
   flex-direction: row;
-  // align-items: center;
   font-size: 32rpx;
   padding: 32rpx 32rpx;
   position: relative;
@@ -34,13 +33,13 @@
     .image-center();
   }
 
-  &-icon__image {
+  &__icon-image {
     width: @btn-width;
     height: @btn-width;
     vertical-align: sub;
   }
 
-  &__image {
+  &__icon {
     line-height: @btn-width;
   }
 
@@ -63,27 +62,27 @@
   }
 
   &__description {
-    color: rgba(0, 0, 0, .4);
+    color: rgba(0, 0, 0, 0.4);
     .limit-title-row();
     font-size: 28rpx;
     line-height: 44rpx;
   }
 
-  &-is-checked {
+  &__btn.@{prefix}-is-checked {
     color: #0052d9;
   }
 
-  &-is-disabled {
+  &__btn.@{prefix}-is-disabled {
     cursor: not-allowed;
     color: #dcdcdc;
   }
 
-  &-is-disabled-context {
+  &__content.@{prefix}-is-disabled {
     cursor: not-allowed;
-    color: rgba(0, 0, 0, .26);
+    color: rgba(0, 0, 0, 0.26);
   }
 
-  &-border {
+  &__bordered {
     position: absolute;
     bottom: 0;
     display: block;
@@ -91,12 +90,12 @@
     width: 100%;
   }
 
-  &-border-left {
+  &__bordered--left {
     left: 80rpx;
     width: calc(100% - 80rpx);
   }
 
-  &-border-right {
+  &__bordered--right {
     right: 80rpx;
     width: calc(100% - 80rpx);
   }
