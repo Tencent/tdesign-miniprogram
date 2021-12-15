@@ -4,6 +4,13 @@ description: TDesign官方小程序版本。
 spline: explain
 ---
 
+<div style="background: #d4e3fc; display: flex; align-items: center; line-height: 20px; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <svg fill="none" viewBox="0 0 16 16" width="16px" height="16px" style="margin-right: 5px">
+    <path fill="rgb(0, 82, 217)" d="M8 15A7 7 0 108 1a7 7 0 000 14zM7.4 4h1.2v1.2H7.4V4zm.1 2.5h1V12h-1V6.5z" fillOpacity="0.9"></path>
+  </svg>
+  目前组件库处于 Alpha 阶段，快速迭代中，请留意版本变化。
+</div>
+
 ## 预览
 
 小程序组件示例小程序，请使用微信扫码预览 ↓
