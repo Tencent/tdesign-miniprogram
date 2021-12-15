@@ -5,7 +5,7 @@
   >
   <t-demo title="01 类型">
     <view class="t-grid-list">
-      <view class="demo-section__desc">一行三个（border）</view>
+      <view class="demo-section__desc">一行三个带边框</view>
       <view class="demo-section__wrapper">
         <t-grid border="{{border}}" class="three-border" column="{{3}}">
           <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
@@ -174,7 +174,7 @@
         </t-grid>
       </view>
 
-      <view class="demo-section__desc">一行二个带说明宫格</view>
+      <view class="demo-section__desc">一行二个带说明</view>
       <view class="demo-section__wrapper">
         <t-grid class="two-des" column="{{2}}" align="left">
           <t-grid-item
@@ -208,7 +208,7 @@
         </t-grid>
       </view>
 
-      <view class="demo-section__desc">一行三个带说明宫格</view>
+      <view class="demo-section__desc">一行三个带说明</view>
       <view class="demo-section__wrapper">
         <t-grid class="three-des" column="{{3}}">
           <t-grid-item
@@ -253,7 +253,7 @@
         </t-grid>
       </view>
 
-      <view class="demo-section__desc">带徽标宫格</view>
+      <view class="demo-section__desc">带徽标</view>
       <view class="demo-section__wrapper">
         <t-grid class="t-grid badge">
           <t-grid-item text="标题文字" t-class-text="text">
