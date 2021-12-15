@@ -8,7 +8,7 @@
   >
     <block wx:if="{{icon.length > 0}}">
       <!-- <slot name="icon"></slot> -->
-      <view class="{{classPrefix}}__image">
+      <view class="{{classPrefix}}__icon">
         <image src="{{active ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
       </view>
     </block>
@@ -48,7 +48,7 @@
   >
     <block wx:if="{{icon.length>0}}">
       <!-- <slot name="icon"></slot> -->
-      <view class="{{classPrefix}}__image">
+      <view class="{{classPrefix}}__icon">
         <image src="{{active ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
       </view>
     </block>
@@ -63,5 +63,5 @@
   <!-- 内置下边框 -->
   <view
     class="{{classPrefix}}__border {{classPrefix}}{{align === 'left' ? '__border-left' : '__border-right'}}"
-  ></view>
+  />
 </view>
