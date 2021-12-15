@@ -1,13 +1,16 @@
 <template>
-  <td-doc-content ref="tdDocContent" page-status="hidden">
-    <td-doc-header v-if="info.tdDocHeader" slot="doc-header" ref="tdDocHeader"></td-doc-header>
+  <td-doc-content ref="tdDocContent" platform="mobile" page-status="hidden">
+    <td-doc-header v-if="info.tdDocHeader" platform="mobile" slot="doc-header" ref="tdDocHeader"></td-doc-header>
     <template v-if="info.isComponent">
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
       <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
         <!-- <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" /> -->
-        <td-doc-phone headless>
-          <iframe :src="liveUrl" frameborder="0" width="100%" height="100%" style="border-radius: 0 0 6px 6px;"></iframe>
+        <td-doc-phone>
+          <div class="qrcode__wrapper" slot="qrcode">
+            <img class="qrcode" :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" />
+          </div>
+          <iframe :src="liveUrl" frameborder="0" width="100%" height="100%" style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden; border-top: 8px solid #f8f8f8;"></iframe>
         </td-doc-phone>
         <td-contributors platform="miniprogram" framework="wx" :component-name="name"></td-contributors>
       </div>
@@ -15,7 +18,7 @@
       <div v-show="tab === 'design'" name="DESIGN" v-html="info.designMd"></div>
     </template>
     <div name="DOC" v-else v-html="info.docMd"></div>
-    <td-doc-footer slot="doc-footer"></td-doc-footer>
+    <td-doc-footer slot="doc-footer" platform="mobile"></td-doc-footer>
   </td-doc-content>
 </template>
 
@@ -109,6 +112,17 @@ export default defineComponent({
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+  }
+}
+
+.qrcode {
+  width: 100%;
+
+  &__wrapper {
+    width: 128px;
+    height: 128px;
+    padding: 4px;
+    box-sizing: border-box;
   }
 }
 </style>
