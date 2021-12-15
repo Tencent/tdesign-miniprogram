@@ -74,7 +74,7 @@
         max="5"
         cascading="left-up"
         collapseAvatar="+5"
-        size="medium"
+        size="large"
         class="border-example-show"
       >
         <t-avatar
@@ -82,8 +82,8 @@
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="img-medium"
-          t-class="medium"
+          t-class-image="img-large"
+          t-class="large"
         />
       </t-avatar-group>
     </view>

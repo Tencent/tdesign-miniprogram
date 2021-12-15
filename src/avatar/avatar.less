@@ -9,7 +9,7 @@
   border: 0 solid;
   border-radius: 999rpx;
 
-  &--wrapper {
+  &__wrapper {
     float: left;
     position: relative;
 
@@ -26,6 +26,27 @@
       top: -5%;
       right: -5%;
     }
+  }
+
+  &.t-size-l {
+    width: 128rpx;
+    height: 128rpx;
+    font-weight: 600;
+    font-size: 36rpx;
+  }
+
+  &.t-size-m {
+    width: 96rpx;
+    height: 96rpx;
+    font-weight: 600;
+    font-size: 32rpx;
+  }
+
+  &.t-size-s {
+    width: 64rpx;
+    height: 64rpx;
+    font-weight: 600;
+    font-size: 24rpx;
   }
 
   .t-image-component {
@@ -46,27 +67,6 @@
   &--round {
     border-radius: 5px;
     overflow: hidden;
-  }
-
-  &--large {
-    width: 128rpx;
-    height: 128rpx;
-    font-weight: 600;
-    font-size: 36rpx;
-  }
-
-  &--medium {
-    width: 96rpx;
-    height: 96rpx;
-    font-weight: 600;
-    font-size: 32rpx;
-  }
-
-  &--small {
-    width: 64rpx;
-    height: 64rpx;
-    font-weight: 600;
-    font-size: 24rpx;
   }
 
   &__text,
