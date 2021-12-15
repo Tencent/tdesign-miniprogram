@@ -9,6 +9,8 @@ const topOffset = 40; // 滑动选中高亮的顶部偏移(px)
 
 @wxComponent()
 export default class IndexBar extends SuperComponent {
+  externalClasses = ['t-class', 't-class-index'];
+
   properties = props;
 
   observers = {
@@ -61,7 +63,7 @@ export default class IndexBar extends SuperComponent {
 
   getDomInfo() {
     const query = this.createSelectorQuery();
-    query.select(`#${classPrefix}__btn-bar`).boundingClientRect();
+    query.select(`#id-${classPrefix}__bar`).boundingClientRect();
     query.selectAll(`.${classPrefix}__group`).boundingClientRect();
     query.exec((res) => {
       if (!res[0]) return;

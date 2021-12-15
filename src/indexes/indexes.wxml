@@ -1,4 +1,4 @@
-<view class="{{classPrefix}}">
+<view class="{{classPrefix}} t-class">
   <scroll-view
     class="{{classPrefix}}__content"
     scroll-y
@@ -29,10 +29,10 @@
       ></t-cell>
     </t-cell-group>
   </scroll-view>
-  <view class="{{classPrefix}}__index">
+  <view class="{{classPrefix}}__index t-class-index">
     <view
-      class="{{classPrefix}}__btn-bar"
-      id="{{classPrefix}}__btn-bar"
+      class="{{classPrefix}}__bar"
+      id="id-{{classPrefix}}__bar"
       catch:touchstart="onTouchStart"
       catch:touchmove="onTouchMove"
       catch:touchcancel="onTouchCancel"
