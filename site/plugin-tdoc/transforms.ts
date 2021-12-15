@@ -18,12 +18,13 @@ export default {
     // 增加渲染规则
     md.renderer.rules.html_block = function (tokens, idx) {
       const { content } = tokens[idx];
-      const hit = compLists.indexOf(name as string) > -1;
+      // const hit = compLists.indexOf(name as string) > -1;
       
-      if (content.startsWith('<img')) {
-        return `<div class="td-doc__image-wrapper ${hit ? 'td-doc__image-wrapper--gray' : ''}">
-          ${content}
-        </div>`
+      if (content.startsWith('<img') && content.indexOf('qrcode') === -1) {
+        return  '';
+        // return `<div class="td-doc__image-wrapper ${hit ? 'td-doc__image-wrapper--gray' : ''}">
+        //   ${content}
+        // </div>`
       }
 
       return content;
