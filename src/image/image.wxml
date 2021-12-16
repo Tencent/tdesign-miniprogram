@@ -9,11 +9,11 @@
     size="40rpx"
     loading
     class="t-class-load"
-    t-class-text="{{classPrefix}}-loading-text"
+    t-class-text="{{classPrefix}}--loading-text"
   ></t-loading>
   <view
     wx:elif="{{loading !== 'slot' && loading !== ''}}"
-    class="{{classPrefix}}-common t-class-load"
+    class="{{classPrefix}}__common t-class-load"
   >
     {{loading}}
   </view>
@@ -33,7 +33,7 @@
   </view>
   <view
     wx:elif="{{loadFailed !== 'slot' && loadFailed !== ''}}"
-    class="{{classPrefix}}-common t-class-load"
+    class="{{classPrefix}}__common t-class-load"
   >
     {{loadFailed}}
   </view>
