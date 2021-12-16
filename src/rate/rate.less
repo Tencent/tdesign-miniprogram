@@ -1,11 +1,13 @@
-.t-rate {
+@import '../common/style/index.less';
+
+.@{prefix}-rate {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 
   &__wrapper {
     line-height: 1em;
-    display: inline-block;
+    display: inline-flex;
   }
 
   &__star {
@@ -14,7 +16,7 @@
 
   &__desc {
     font-size: 32rpx;
-    color: rgba(0, 0, 0, .26);
+    color: @text-placeholder-color;
     padding-left: 32rpx;
     vertical-align: middle;
   }
