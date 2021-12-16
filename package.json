@@ -75,9 +75,6 @@
     ],
     "{src,example}/**/*.{js,ts}": [
       "eslint --fix"
-    ],
-    "{src,example}/**/*.less": [
-      "stylelint --fix"
     ]
   },
   "dependencies": {
