@@ -2,9 +2,9 @@
 @import '../common/style/index.less';
 
 @link-color: #266fe8;
-@footer-info-font-size: 24rpx;
-@footer-item-font-size: 24rpx;
-@footer-title-font-size: 32rpx;
+@footer-info-font-size: @font-size-s;
+@footer-item-font-size: @font-size-s;
+@footer-title-font-size: @font-size-m;
 @footer-info-line-height: 32rpx;
 @footer-item-line-height: 40rpx;
 @footer-title-line-height: 48rpx;
@@ -37,7 +37,7 @@
     margin-bottom: @footer-link-list-margin-bottom;
   }
 
-  &__item {
+  &__link-item {
     color: @footer-item-color;
     font-size: @footer-item-font-size;
     line-height: @footer-item-line-height;
@@ -45,7 +45,7 @@
     text-decoration: underline;
   }
 
-  &__item:not(:last-child)::after {
+  &__link-item:not(:last-child)::after {
     content: '|';
     color: @footer-item-color;
     display: inline-block;
