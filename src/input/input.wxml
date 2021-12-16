@@ -1,11 +1,11 @@
 <view
-  class="{{classPrefix}} {{!!errorMessage ? classPrefix + '__error' : ''}}  t-input--size-{{size}} {{classPrefix + '--bordered'}} t-class"
+  class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + '--bordered'}} t-class"
 >
   <view wx:if="{{name}}" class="{{classPrefix + '__name'}}">
     <slot name="name" wx:if="{{name === 'slot'}}" />
     <text wx:else>{{name}}</text>
   </view>
-  <view class="{{classPrefix}}-wrap">
+  <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content">
       <input
         maxlength="{{maxlength || -1}}"
@@ -24,22 +24,22 @@
         confirm-type="{{confirmType}}"
         confirm-hold="{{confirmHold}}"
         adjust-position="{{adjustPosition}}"
-        class="{{classPrefix}}--control {{suffix || align ==='right' ? classPrefix + '--control__right':''}} {{align === 'center' ? classPrefix + '--control__center':''}}  t-class-input"
+        class="{{classPrefix}}__control {{suffix || align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  t-class-input"
       />
       <view
         wx:if="{{ clearable && (inputValue.length > 0 || characterLength > 0)}}"
-        class="{{classPrefix}}-wrap--icon"
+        class="{{classPrefix}}__wrap--icon"
         bind:tap="clearInput"
       >
         <t-icon name="close-circle-filled" customStyle="font-size: 39rpx" />
       </view>
-      <view class="{{classPrefix}}-wrap--suffix">
+      <view class="{{classPrefix}}__wrap--suffix">
         <slot name="suffix" />
       </view>
-      <view wx:if="{{suffix}}" class="{{classPrefix}}-wrap--suffix-text">
+      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text">
         <text>{{suffix}}</text>
       </view>
-      <view wx:if="{{suffixIcon}}" class="{{classPrefix}}-wrap--icon">
+      <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon">
         <t-icon name="{{suffixIcon}}" customStyle="font-size: 39rpx" />
       </view>
     </view>
