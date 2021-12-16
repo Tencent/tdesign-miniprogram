@@ -8,7 +8,7 @@
     style="{{gridItemWrapperStyle}}"
   >
     <view
-      class="{{classPrefix}}__content  {{align === 'center' ? classPrefix + '--center' : classPrefix + '--left'}} "
+      class="{{classPrefix}}__content {{classPrefix + '--' + (align === 'center' ? 'center' + 'left)}}"
       style="{{gridItemContentStyle}}"
     >
       <view class="{{classPrefix}}__image">
