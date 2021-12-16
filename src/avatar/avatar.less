@@ -1,4 +1,6 @@
-.t-avatar {
+@import '../common/style/index.less';
+
+.@{prefix}-avatar {
   font-weight: 600;
   font-size: 28rpx;
   display: flex;
@@ -13,18 +15,20 @@
     float: left;
     position: relative;
 
-    t-badge {
+    @{prefix}-badge {
       position: absolute;
     }
 
-    .t-badge__round {
-      top: -10%;
-      right: -10%;
-    }
+    .@{prefix}-badge {
+      &__round {
+        top: -10%;
+        right: -10%;
+      }
 
-    .t-badge__circle {
-      top: -5%;
-      right: -5%;
+      &__circle {
+        top: -5%;
+        right: -5%;
+      }
     }
   }
 
@@ -60,12 +64,12 @@
   }
 
   &--circle {
-    border-radius: 999px;
+    border-radius: 999rpx;
     overflow: hidden;
   }
 
   &--round {
-    border-radius: 5px;
+    border-radius: 10rpx;
     overflow: hidden;
   }
 

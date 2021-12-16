@@ -1,7 +1,6 @@
 @import '../common/style/index.less';
 
 .@{prefix}-avatar-group {
-  // display: flex;
   display: block;
 
   &--content {
@@ -35,17 +34,17 @@
     }
   }
 
-  .slot-collapse-avatar {
+  &__collapse--slot {
     float: left;
   }
 
-  .slot-collapse-avatar:empty + .default-collapse-avatar {
-    display: block;
-    float: left;
-  }
-
-  .slot-collapse-avatar:not(:empty) + .default-collapse-avatar {
+  &__collapse--slot:not(:empty) + &__collapse--default {
     display: none;
+    float: left;
+  }
+
+  &__collapse--slot:empty + &__collapse--default {
+    display: block;
     float: left;
   }
 

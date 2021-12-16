@@ -58,7 +58,8 @@ export default class AvatarGroup extends SuperComponent {
      */
     handleChildSlot(max, children, f) {
       const query = this.createSelectorQuery();
-      query.select('.slot-collapse-avatar').boundingClientRect();
+      const slotName = `.${this.data.classPrefix}__collapse--slot`;
+      query.select(slotName).boundingClientRect();
       query.exec((res) => {
         const isSlot = !!res[0].width;
         f(max, children, isSlot);
