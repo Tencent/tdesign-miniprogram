@@ -15,7 +15,7 @@ Page({
     timeText: '',
 
     monthDateVisible: false,
-    monthDate: '09-21',
+    monthDate: '2019-09-21', // 需要传入年 不然无法确定是哪一年的
     monthDateText: '',
 
     datetimeVisible: false,
