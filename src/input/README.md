@@ -30,7 +30,7 @@ isComponent: true
 ### Input Props
 
 | 名称             | 类型            | 默认值 | 说明                                                                                                                                           | 必传     |
-| ---------------- | --------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --- |
+| ---------------- | --------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | adjust-position  | Boolean         | true   | 键盘弹起时，是否自动上推页面                                                                                                                   | N        |
 | align            | String          | left   | 文本内容位置，居左/居中/居右。可选项：left/center/right                                                                                        | N        |
 | autofocus        | Boolean         | false  | 自动聚焦                                                                                                                                       | N        |
@@ -49,7 +49,7 @@ isComponent: true
 | suffix           | String          | -      | 后置文本内容                                                                                                                                   | N        |
 | suffix-icon      | String / Slot   | -      | 组件后置图标                                                                                                                                   | N        |
 | type             | String          | text   | 输入框类型。可选项：text/number/idcard/digit/safe-password/password                                                                            | N        |
-| value            | String / Number | -      | 输入框的值。TS 类型：`InputValue`。[详细类型定义](https://github.com/TDesignOteam/tdesign-miniprogram/tree/develop/src/input/type.ts)          | N        |
+| value            | String / Number | -      | 输入框的值。TS 类型：`InputValue`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts)          | N        |
 
 ### Input Events
 

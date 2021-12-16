@@ -27,6 +27,8 @@ isComponent: true
 <t-rate size="{{48}}" value="{{3}}" variant="filled" bind:change="onChange"></t-rate>
 ```
 
+## API
+
 ### Rate Props
 
 | 名称       | 类型    | 默认值  | 说明                                                                                                                                                                      | 必传 |

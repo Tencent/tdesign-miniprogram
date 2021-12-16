@@ -34,12 +34,12 @@ npm i tdesign-miniprogram -S --production
 
 ### 通过 Git Clone
 
-克隆到 TDesign-miniprogram 的源代码之后，需要执行 `npm run build` 进行构建
+克隆到源代码之后，需要执行 `npm run build` 进行构建
 
 然后将 `miniprogram_dist` 目录拷贝到自己的项目中
 
 ```bash
-git clone git@github.com:TDesignOteam/tdesign-miniprogram.git
+git clone git@github.com:Tencent/tdesign-miniprogram.git
 ```
 
 ## 使用组件
