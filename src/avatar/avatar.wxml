@@ -1,6 +1,6 @@
 <wxs src="./avatar.wxs" module="this" />
 <view
-  class="{{ classPrefix }}--wrapper {{this.getTClass(size,classPrefix)}} t-class"
+  class="{{ classPrefix }}__wrapper {{this.getTClass(size,classPrefix)}} t-class"
   style="{{this.getStyles(isShow, zIndex)}}"
 >
   <view

@@ -1,14 +1,14 @@
 module.exports = {
   getTClass: function (size, classPrefix) {
     var isIncludePx = size.indexOf('px') > -1;
-    return isIncludePx ? '' : classPrefix + '--' + (size || 'medium');
+    return isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1);
   },
   getAvatarOuterClass: function (classPrefix, size, shape) {
     var isIncludePx = size.indexOf('px') > -1;
     var classNames = [
       classPrefix,
       classPrefix + (shape === 'round' ? '--round' : '--circle'),
-      isIncludePx ? '' : classPrefix + '--' + (size || 'medium'),
+      isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1),
     ];
     return classNames.join(' ');
   },

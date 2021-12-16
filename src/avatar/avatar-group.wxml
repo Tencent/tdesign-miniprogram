@@ -6,11 +6,11 @@
 >
   <slot />
   <!-- 自定义折叠元素 -->
-  <view class="slot-collapse-avatar {{collapseAvatar ? 'hide-collapse-avatar' : ''}}">
+  <view class="{{classPrefix}}__collapse--slot {{collapseAvatar ? 't-is-hidden' : ''}}">
     <slot name="collapseAvatar" />
   </view>
   <!-- 默认折叠元素 -->
-  <view class="default-collapse-avatar" wx:if="{{max && (max < length)}}">
+  <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">
     <t-avatar
       alt="{{collapseAvatar || '+N'}}"
       t-class-image="border-example-1"
