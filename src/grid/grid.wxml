@@ -1,5 +1,5 @@
-<view class="{{classPrefix}} t-class" style="{{ gridStyle}}">
-  <view class="{{classPrefix}}-content" style="{{ contentStyle }}">
+<view class="{{classPrefix}} t-class">
+  <view class="{{classPrefix}}__content">
     <slot />
   </view>
 </view>
