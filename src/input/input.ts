@@ -27,6 +27,7 @@ export default class Input extends SuperComponent {
   data = {
     inputValue: '',
     classPrefix: name,
+    classBasePrefix: prefix,
     characterLength: 0,
   };
 

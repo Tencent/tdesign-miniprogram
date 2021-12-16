@@ -35,10 +35,6 @@
     flex: none;
   }
 
-  &__required {
-    color: @input-error-text-color;
-  }
-
   &__content {
     display: flex;
     align-items: center;
@@ -46,7 +42,7 @@
     font-size: @input-font-size;
   }
 
-  &-wrap {
+  &__wrap {
     display: flex;
     flex-wrap: wrap;
     flex: auto;
@@ -84,7 +80,7 @@
     }
   }
 
-  &--control {
+  &__control {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -115,11 +111,11 @@
       cursor: default;
     }
 
-    &__right {
+    &--right {
       text-align: right;
     }
 
-    &__center {
+    &--center {
       text-align: center;
     }
   }
@@ -127,18 +123,13 @@
   &__placeholder {
     color: @input-placeholder-text-color;
   }
-
-  &--count {
-    text-align: right;
-    color: @input-placeholder-text-color;
-  }
 }
 
-.@{prefix}-input__error {
+.@{prefix}-input.@{prefix}-is-error {
   align-items: flex-start;
 
   .@{prefix}-input {
-    &--control {
+    &__control {
       color: @input-error-text-color;
 
       &::placeholder {
@@ -159,10 +150,6 @@
       width: 100%;
     }
   }
-}
-
-.@{prefix}-input__disabled {
-  color: @input-disabled-text-color;
 }
 
 .@{prefix}-input--size-medium {
