@@ -1,13 +1,9 @@
-/*
- * @Author: rileycai
- * @Date: 2021-06-30 11:22:22
- * @LastEditTime: 2021-09-27 15:54:47
- * @LastEditors: Please set LastEditors
- * @Description: 第一次走查问题修复
- * @FilePath: /tdesign-miniprogram/src/badge/badge.ts
- */
 import { SuperComponent, wxComponent } from '../common/src/index';
+import config from '../common/config';
 import props from './props';
+
+const { prefix } = config;
+const name = `${prefix}-badge`;
 
 @wxComponent()
 export default class Badge extends SuperComponent {
@@ -20,6 +16,7 @@ export default class Badge extends SuperComponent {
   properties = props;
 
   data = {
+    classPrefix: name,
     value: '',
   };
 }

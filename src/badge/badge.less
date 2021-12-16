@@ -36,7 +36,7 @@
   }
 
   &--small {
-    transform: translate(50%, -50%) scale(.75);
+    transform: translate(50%, -50%) scale(0.75);
   }
 
   &--circle {
@@ -81,7 +81,7 @@
     }
   }
 
-  .content-slot:not(:empty) + .has-count {
+  &__content:not(:empty) + .t-has-count {
     transform: translate(50%, -50%);
     position: absolute;
     right: 0;
