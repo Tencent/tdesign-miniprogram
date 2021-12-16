@@ -11,7 +11,7 @@
               <t-icon
                 wx:if="{{leftIcon!=='slot'}}"
                 name="{{leftIcon}}"
-                class="{{classPrefix}}__capsule__icon t-class-left-icon"
+                class="{{classPrefix}}__capsule-icon t-class-left-icon"
               />
               <slot name="left-icon" class="t-class-left-icon"></slot>
             </view>
@@ -19,7 +19,7 @@
               <t-icon
                 wx:if="{{homeIcon!=='slot'}}"
                 name="{{homeIcon}}"
-                class="{{classPrefix}}__capsule__icon t-class-home-icon"
+                class="{{classPrefix}}__capsule-icon t-class-home-icon"
               />
               <slot name="home-icon" class="t-class-home-icon"></slot>
             </view>
@@ -31,7 +31,7 @@
             <t-icon
               wx:if="{{leftIcon!=='slot'}}"
               name="{{leftIcon}}"
-              class="{{classPrefix}}__capsule__icon t-class-left-icon"
+              class="{{classPrefix}}__capsule-icon t-class-left-icon"
             />
             <slot name="left-icon" class="t-class-left-icon"></slot>
           </view>
@@ -39,7 +39,7 @@
             <t-icon
               wx:if="{{homeIcon!=='slot'}}"
               name="{{homeIcon}}"
-              class="{{classPrefix}}__capsule__icon t-class-home-icon"
+              class="{{classPrefix}}__capsule-icon t-class-home-icon"
             />
             <slot name="home-icon" class="t-class-home-icon"></slot>
           </view>
@@ -48,7 +48,7 @@
       <view class="{{classPrefix}}__center t-class-center">
         <block wx:if="{{title}}">
           <slot wx:if="{{title === 'slot'}}" name="title" class="t-class-title"></slot>
-          <text wx:else class="{{classPrefix}}__center_title t-class-title">{{showTitle}}</text>
+          <text wx:else class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
         </block>
       </view>
     </block>
