@@ -4,6 +4,7 @@ import props from './props';
 import { isSameSecond, parseFormat, parseTimeData } from './utils';
 
 const { prefix } = config;
+const name = `${prefix}-count-down`;
 const simpleTick = function (fn: (...args: any[]) => void): any {
   return setTimeout(fn, 30);
 };
@@ -21,7 +22,7 @@ export default class CountDown extends SuperComponent {
   };
 
   data = {
-    prefix,
+    classPrefix: name,
     timeData: parseTimeData(0),
     formattedTime: '0',
   };
@@ -107,7 +108,7 @@ export default class CountDown extends SuperComponent {
     this.remain = remain;
     const timeData = parseTimeData(remain);
     this.triggerEvent('change', timeData);
-    const { timeText } = parseFormat(remain, (this.properties.format as any) as string);
+    const { timeText } = parseFormat(remain, this.properties.format as any as string);
     this.setData({
       formattedTime: timeText.replace(/:/g, ' : '),
     });
