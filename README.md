@@ -25,7 +25,7 @@ TDesign 适配微信小程序的组件库。
 小程序组件示例小程序，请使用微信扫码预览 ↓
 <br/>
 
-<img width="260" src="https://tdesign.gtimg.com/site/qrcode.jpeg" />
+<img width="260" src="https://user-images.githubusercontent.com/7017290/146479952-b05298e8-f6ac-44a1-b73c-7abd8b9b3914.jpeg" />
 
 ## 安装
 
