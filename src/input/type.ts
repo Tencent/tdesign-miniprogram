@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
+ * updated at 2021-12-17 15:05:46
  * */
 
 export interface TdInputProps {
@@ -112,19 +112,18 @@ export interface TdInputProps {
     required?: boolean;
   };
   /**
-   * 名称
+   * 占位符
    * @default ''
    */
-  name?: {
+  placeholder?: {
     type: StringConstructor;
     value?: string;
     required?: boolean;
   };
   /**
-   * 占位符
-   * @default ''
+   * 组件前置图标
    */
-  placeholder?: {
+  prefixIcon?: {
     type: StringConstructor;
     value?: string;
     required?: boolean;
@@ -140,15 +139,6 @@ export interface TdInputProps {
   };
   /**
    * 后置文本内容
-   * @default ''
-   */
-  suffix?: {
-    type: StringConstructor;
-    value?: string;
-    required?: boolean;
-  };
-  /**
-   * 组件后置图标
    */
   suffixIcon?: {
     type: StringConstructor;
@@ -173,6 +163,15 @@ export interface TdInputProps {
     value?: InputValue;
     required?: boolean;
   };
-};
+  /**
+   * 输入框的值，非受控属性
+   */
+  defaultValue?: {
+    type: StringConstructor;
+    optionalTypes: Array<NumberConstructor>;
+    value?: InputValue;
+    required?: boolean;
+  };
+}
 
 export type InputValue = string | number;

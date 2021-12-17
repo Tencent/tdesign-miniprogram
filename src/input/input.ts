@@ -1,11 +1,3 @@
-/*
- * @Author: rileycai
- * @Date: 2021-09-21 19:10:10
- * @LastEditTime: 2021-09-28 10:26:57
- * @LastEditors: Please set LastEditors
- * @Description: textarea从input组件拆分出去
- * @FilePath: /tdesign-miniprogram/src/input/input.ts
- */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';

@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
+ * updated at 2021-12-17 15:05:46
  * */
 
 import { TdInputProps } from './type';
@@ -64,15 +64,14 @@ const props: TdInputProps = {
   maxlength: {
     type: Number,
   },
-  /** 名称 */
-  name: {
-    type: String,
-    value: '',
-  },
   /** 占位符 */
   placeholder: {
     type: String,
     value: '',
+  },
+  /** 组件前置图标 */
+  prefixIcon: {
+    type: String,
   },
   /** 输入框尺寸 */
   size: {
@@ -80,11 +79,6 @@ const props: TdInputProps = {
     value: 'small',
   },
   /** 后置文本内容 */
-  suffix: {
-    type: String,
-    value: '',
-  },
-  /** 组件后置图标 */
   suffixIcon: {
     type: String,
   },
@@ -95,6 +89,12 @@ const props: TdInputProps = {
   },
   /** 输入框的值 */
   value: {
+    type: String,
+    optionalTypes: [Number],
+    value: null,
+  },
+  /** 输入框的值，非受控属性 */
+  defaultValue: {
     type: String,
     optionalTypes: [Number],
   },

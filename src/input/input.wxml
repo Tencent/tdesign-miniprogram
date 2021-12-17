@@ -1,9 +1,9 @@
 <view
   class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + '--bordered'}} t-class"
 >
-  <view wx:if="{{name}}" class="{{classPrefix + '__name'}}">
-    <slot name="name" wx:if="{{name === 'slot'}}" />
-    <text wx:else>{{name}}</text>
+  <view wx:if="{{prefixIcon}}" class="{{classPrefix + '__prefix'}}">
+    <slot name="prefixIcon" wx:if="{{prefixIcon === 'slot'}}" />
+    <t-icon wx:else name="{{prefixIcon}}" customStyle="font-size: 39rpx" />
   </view>
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content">
@@ -24,7 +24,7 @@
         confirm-type="{{confirmType}}"
         confirm-hold="{{confirmHold}}"
         adjust-position="{{adjustPosition}}"
-        class="{{classPrefix}}__control {{suffix || align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  t-class-input"
+        class="{{classPrefix}}__control {{  align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  t-class-input"
       />
       <view
         wx:if="{{ clearable && (inputValue.length > 0 || characterLength > 0)}}"
@@ -33,14 +33,13 @@
       >
         <t-icon name="close-circle-filled" customStyle="font-size: 39rpx" />
       </view>
-      <view class="{{classPrefix}}__wrap--suffix">
-        <slot name="suffix" />
-      </view>
-      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text">
-        <text>{{suffix}}</text>
-      </view>
-      <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon">
-        <t-icon name="{{suffixIcon}}" customStyle="font-size: 39rpx" />
+      <view wx:if="{{suffixIcon}}">
+        <view class="{{classPrefix}}__wrap--suffix" wx:if="{{suffixIcon==='slot'}}">
+          <slot name="suffixIcon" />
+        </view>
+        <view wx:else class="{{classPrefix}}__wrap--icon">
+          <t-icon name="{{suffixIcon}}" customStyle="font-size: 39rpx" />
+        </view>
       </view>
     </view>
     <view
