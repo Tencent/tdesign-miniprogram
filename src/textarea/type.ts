@@ -120,13 +120,4 @@ export interface TdTextareaProps {
     value?: string;
     required?: boolean;
   };
-  /**
-   * 文本框值，非受控属性
-   * @default ''
-   */
-  defaultValue?: {
-    type: StringConstructor;
-    value?: string;
-    required?: boolean;
-  };
-};
+}

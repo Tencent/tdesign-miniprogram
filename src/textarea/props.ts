@@ -69,11 +69,6 @@ const props: TdTextareaProps = {
     type: String,
     value: null,
   },
-  /** 文本框值，非受控属性 */
-  defaultValue: {
-    type: String,
-    value: '',
-  },
 };
 
 export default props;
