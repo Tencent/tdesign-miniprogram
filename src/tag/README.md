@@ -12,6 +12,7 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-tag": "tdesign-miniprogram/tag/tag"
+  "t-check-tag": "tdesign-miniprogram/check-tag/check-tag"
 }
 ```
 
