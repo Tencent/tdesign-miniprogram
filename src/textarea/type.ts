@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
+ * updated at 2021-12-20 13:31:40
  * */
 
 export interface TdTextareaProps {
@@ -61,6 +61,14 @@ export interface TdTextareaProps {
     required?: boolean;
   };
   /**
+   * 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-textarea', 't-class-placeholder', 't-class-name'];
+    required?: boolean;
+  };
+  /**
    * 自动聚焦
    * @default false
    */
@@ -86,7 +94,7 @@ export interface TdTextareaProps {
     required?: boolean;
   };
   /**
-   * 名称
+   * 名称，HTML 元素原生属性
    * @default ''
    */
   name?: {
@@ -108,6 +116,15 @@ export interface TdTextareaProps {
    * @default ''
    */
   value?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
+   * 文本框值，非受控属性
+   * @default ''
+   */
+  defaultValue?: {
     type: StringConstructor;
     value?: string;
     required?: boolean;

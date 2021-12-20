@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
+ * updated at 2021-12-20 13:31:40
  * */
 
 import { TdTextareaProps } from './type';
@@ -37,6 +37,10 @@ const props: TdTextareaProps = {
     type: Boolean,
     value: false,
   },
+  /** 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名 */
+  externalClasses: {
+    type: Array,
+  },
   /** 自动聚焦 */
   focus: {
     type: Boolean,
@@ -50,7 +54,7 @@ const props: TdTextareaProps = {
   maxlength: {
     type: Number,
   },
-  /** 名称 */
+  /** 名称，HTML 元素原生属性 */
   name: {
     type: String,
     value: '',
@@ -62,6 +66,11 @@ const props: TdTextareaProps = {
   },
   /** 文本框值 */
   value: {
+    type: String,
+    value: null,
+  },
+  /** 文本框值，非受控属性 */
+  defaultValue: {
     type: String,
     value: '',
   },
