@@ -93,11 +93,6 @@ const props: TdInputProps = {
     optionalTypes: [Number],
     value: null,
   },
-  /** 输入框的值，非受控属性 */
-  defaultValue: {
-    type: String,
-    optionalTypes: [Number],
-  },
 };
 
 export default props;

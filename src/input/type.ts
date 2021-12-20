@@ -163,15 +163,6 @@ export interface TdInputProps {
     value?: InputValue;
     required?: boolean;
   };
-  /**
-   * 输入框的值，非受控属性
-   */
-  defaultValue?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: InputValue;
-    required?: boolean;
-  };
 }
 
 export type InputValue = string | number;
