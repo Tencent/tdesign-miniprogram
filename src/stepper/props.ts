@@ -51,12 +51,6 @@ const props: TdStepperProps = {
     optionalTypes: [Number],
     value: null,
   },
-  /** 值，非受控属性 */
-  defaultValue: {
-    type: String,
-    optionalTypes: [Number],
-    value: 0,
-  },
 };
 
 export default props;
