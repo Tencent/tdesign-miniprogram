@@ -12,7 +12,7 @@ isComponent: true
 ```json
 "usingComponents": {
   "steps": "tdesign-miniprogram/steps/steps",
-  "step": "tdesign-miniprogram/step/step"
+  "step": "tdesign-miniprogram/step-item/step-item"
 }
 ```
 
