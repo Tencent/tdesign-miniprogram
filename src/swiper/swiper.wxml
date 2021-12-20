@@ -3,7 +3,7 @@
 <view id="swiper" class="t-class {{classPrefix}}" style="{{height?'height:'+height+'rpx':''}}">
   <view
     id="swiperContainer"
-    class="{{classPrefix}}-container {{inited?'swiper-ani':'hidden'}}"
+    class="{{classPrefix}}__container {{inited? 't-in-animation' : 't-is-hidden'}}"
     style="transition-duration: {{duration/1000}}s;transition-timing-function:{{easings.linear}};"
     bindtouchstart="{{swiper.startDrag}}"
     capture-catch:touchmove="{{swiper.onDrag}}"

@@ -1,17 +1,20 @@
-<view class="t-class {{classPrefix}} {{classPrefix}}-{{direction}}" wx:if="{{total>=minShowNum}}">
-  <view wx:if="{{ type==='dots' || type==='dots-bar'}}" class="{{classPrefix}}-{{type}}">
+<view
+  class="t-class {{classPrefix}} {{classPrefix}}--{{direction}}"
+  wx:if="{{total >= minShowNum}}"
+>
+  <view wx:if="{{ type === 'dots' || type === 'dots-bar'}}" class="{{classPrefix}}__{{type}}">
     <view
       wx:for="{{total}}"
       wx:for-index="idx"
       wx:key="idx"
-      class="{{classPrefix}}-{{type}}-item {{index===idx?'active':''}}"
+      class="{{classPrefix}}__{{type}}-item {{index === idx ? 't-is-active' : ''}}"
     />
   </view>
-  <view wx:if="{{ type==='fraction'}}" class="{{classPrefix}}-fraction">
+  <view wx:if="{{ type === 'fraction'}}" class="{{classPrefix}}__fraction">
     {{index+1}}/{{total}}
   </view>
-  <view wx:if="{{hasNavBtn}}" class="{{classPrefix}}-btn">
-    <view class="{{classPrefix}}-btn-prev" bind:tap="nav" data-dir="prev" />
-    <view class="{{classPrefix}}-btn-next" bind:tap="nav" data-dir="next" />
+  <view wx:if="{{hasNavBtn}}" class="{{classPrefix}}__btn">
+    <view class="{{classPrefix}}__btn--prev" bind:tap="nav" data-dir="prev" />
+    <view class="{{classPrefix}}__btn--next" bind:tap="nav" data-dir="next" />
   </view>
 </view>
