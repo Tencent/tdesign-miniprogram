@@ -5,10 +5,6 @@ spline: form
 isComponent: true
 ---
 
-# Checkbox 复选框
-
-用于预设的一组选项中执行多项选择，并呈现选择结果。
-
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
