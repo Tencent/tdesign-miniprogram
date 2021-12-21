@@ -8,7 +8,7 @@
       disabled="{{disabled}}"
       placeholder="{{placeholder}}"
       class="t-class-textarea"
-      placeholder-class="{{classPrefix}}__wrapper__placeholder t-class-placeholder"
+      placeholder-class="{{classPrefix}}__placeholder t-class-placeholder"
       value="{{value}}"
       auto-focus="{{autofocus}}"
       focus="{{focus}}"
@@ -22,10 +22,10 @@
       bindconfirm="onConfirm"
       bindlinechange="onLineChange"
     />
-    <view class="{{classPrefix}}__wrapper__count" wx:if="{{maxlength}}">
+    <view class="{{classPrefix}}__count" wx:if="{{maxlength}}">
       {{inputValue.length}} / {{maxlength}}
     </view>
-    <view class="{{classPrefix}}__wrapper__count" wx:elif="{{maxcharacter}}">
+    <view class="{{classPrefix}}__count" wx:elif="{{maxcharacter}}">
       {{characterLength}} / {{maxcharacter}}
     </view>
   </view>
