@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
+ * updated at 2021-12-21 10:54:37
  * */
 
 import { TdStepItemProps } from './type';
@@ -16,7 +16,7 @@ const props: TdStepItemProps = {
   externalClasses: {
     type: Array,
   },
-  /** 图标 */
+  /** 图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标 */
   icon: {
     type: String,
   },
