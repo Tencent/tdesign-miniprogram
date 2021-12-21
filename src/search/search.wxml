@@ -1,6 +1,6 @@
 <view class="{{classPrefix}} t-class">
   <view
-    class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'is-not-focused'}} {{classPrefix}}__input-box--{{center && !localValue.keyword && 'center'}} {{classPrefix}}__input-box--{{shape}} "
+    class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center && !localValue.keyword && 'center'}} {{classPrefix}}__input-box--{{shape}} "
     bind:tap="tapWhenCenterActiveHandle"
   >
     <view wx:if="{{ label }}" class="{{classPrefix}}__label t-class-label">{{ label }}</view>
