@@ -32,7 +32,7 @@
     background: @search-input-bg;
     padding: @search-input-padding-vertical @search-input-padding-horizontal;
 
-    &.t-is-focused {
+    &.@{prefix}-is-focused {
       border-color: @search-input-bg;
     }
 
@@ -44,11 +44,11 @@
       border-radius: @search-input-radius-square;
     }
 
-    &--center.t-is-not-focused {
+    &--center.@{prefix}-is-not-focused {
       justify-content: center;
     }
 
-    .t-input__keyword {
+    .@{prefix}-input__keyword {
       display: inline-block;
       flex: 1;
       color: @search-input-text-color;
@@ -56,7 +56,7 @@
       padding-left: @h-space-nest;
     }
 
-    .t-icon {
+    .@{prefix}-icon {
       color: @search-input-text-disable;
     }
   }

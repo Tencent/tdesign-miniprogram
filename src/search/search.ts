@@ -31,7 +31,7 @@ export default class Search extends SuperComponent {
 
   data = {
     classPrefix: name,
-    prefix: prefix,
+    prefix,
     localValue: {
       keyword: '',
       focus: false,
