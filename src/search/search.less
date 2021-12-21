@@ -1,8 +1,8 @@
 @import '../common/style/index.less';
 
 @search-input-height: 80rpx;
-@search-input-text-color: rgba(0, 0, 0, .9);
-@search-input-text-disable: rgba(0, 0, 0, .26);
+@search-input-text-color: rgba(0, 0, 0, 0.9);
+@search-input-text-disable: rgba(0, 0, 0, 0.26);
 @search-input-bg: rgba(243, 243, 243, 1);
 @search-label-padding-right: 8rpx;
 @search-input-padding-vertical: 16rpx;
@@ -17,12 +17,12 @@
   justify-content: space-between;
   align-items: center;
 
-  &--label {
+  &__label {
     padding: @search-label-padding-right;
     color: @search-input-text-color;
   }
 
-  &--input-box {
+  &__input-box {
     flex: 1;
     box-sizing: border-box;
     display: flex;
@@ -32,23 +32,23 @@
     background: @search-input-bg;
     padding: @search-input-padding-vertical @search-input-padding-horizontal;
 
-    &.focus {
+    &.t-is-focused {
       border-color: @search-input-bg;
     }
 
-    &.round {
+    &--round {
       border-radius: @search-input-radius-round;
     }
 
-    &.square {
+    &--square {
       border-radius: @search-input-radius-square;
     }
 
-    &.center.not-focus {
+    &--center.t-is-not-focused {
       justify-content: center;
     }
 
-    .keyword {
+    .t-input__keyword {
       display: inline-block;
       flex: 1;
       color: @search-input-text-color;
@@ -56,19 +56,18 @@
       padding-left: @h-space-nest;
     }
 
-    .left-icon,
-    .right-icon {
+    .t-icon {
       color: @search-input-text-disable;
     }
   }
 
-  &--search-action {
+  &__search-action {
     margin-left: 30rpx;
     font-size: @search-input-font-size;
     color: @search-input-text-disable;
   }
 
-  &--placeholder-center {
+  &__placeholder-center {
     font-size: @search-input-font-size;
     color: @search-input-text-disable;
     margin-left: @h-space-nest;
