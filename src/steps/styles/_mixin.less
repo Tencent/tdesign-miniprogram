@@ -1,5 +1,5 @@
 .step-item-basic() {
-  .@{prefix}-steps-item {
+  .@{item} {
     flex: 1;
     vertical-align: top;
     position: relative;
@@ -12,13 +12,13 @@
       align-items: center;
     }
 
-    &-icon {
+    &__icon {
       vertical-align: top;
       font-size: @font-size-base;
       position: relative;
       color: @border-level-2-color;
 
-      &__number {
+      &--number {
         display: block;
         display: flex;
         justify-content: center;
@@ -32,11 +32,11 @@
       }
     }
 
-    &-content {
+    &__content {
       text-align: center;
     }
 
-    &-title {
+    &__title {
       position: relative;
       color: @title-color;
       text-align: center;
@@ -47,13 +47,13 @@
       font-weight: 700;
     }
 
-    &-description {
+    &__description {
       color: @text-level-3-color;
       line-height: 20px;
       font-size: @font-size-s;
     }
 
-    &-extra:not(:empty) {
+    &__extra:not(:empty) {
       margin-top: @spacer;
     }
   }
@@ -62,8 +62,8 @@
 // 连接线
 .connector-default(@direction; @isReverse:false) {
   & when (@direction = horizontal) {
-    &.@{prefix}-step--not-last-child {
-      .@{prefix}-steps-item__inner {
+    &.@{step}--not-last-child {
+      .@{item}__inner {
         &:after {
           content: '';
           display: block;
@@ -74,24 +74,24 @@
           left: calc(50% + @connector-default-icon-width / 2 + 1px);
           top: (@connector-default-icon-width / 2 + 1px);
         }
-        &.@{prefix}-steps-item__inner--icon:after {
+        &.@{item}__inner--icon:after {
           top: calc(@connector-icon-icon-width / 2);
           width: calc(100% - @connector-icon-icon-width - 2px);
           left: calc(50% + @connector-icon-icon-width / 2 + 1px);
         }
       }
 
-      .@{prefix}-steps-item--finish,
-      .@{prefix}-steps-item--default {
-        .@{prefix}-steps-item__inner:after {
+      .@{item}--finish,
+      .@{item}--default {
+        .@{item}__inner:after {
           background: @primary-color;
         }
       }
     }
   }
   & when(@direction = vertical) {
-    &.@{prefix}-step--not-last-child {
-      .@{prefix}-steps-item__inner::after {
+    &.@{step}--not-last-child {
+      .@{item}__inner::after {
         content: '';
         display: block;
         height: calc(100% - @connector-default-icon-width - 2px);
@@ -102,9 +102,9 @@
         top: @connector-default-icon-width + 2px;
       }
 
-      .@{prefix}-steps-item--finish,
-      .@{prefix}-steps-item--default {
-        .@{prefix}-steps-item__inner:after {
+      .@{item}--finish,
+      .@{item}--default {
+        .@{item}__inner:after {
           background: @primary-color;
         }
       }
@@ -114,26 +114,26 @@
 
 .default-number-status(@anchor-status) {
   & when(@anchor-status = default) {
-    .@{prefix}-steps-item-icon__number {
+    .@{item}__icon--number {
       border-color: @primary-color;
       color: @primary-color;
     }
   }
   & when(@anchor-status = finish) {
-    .@{prefix}-steps-item-icon__number {
+    .@{item}__icon--number {
       border-color: @primary-color;
       color: @primary-color;
     }
   }
   & when(@anchor-status = process) {
-    .@{prefix}-steps-item-icon__number {
+    .@{item}__icon--number {
       background: @primary-color;
       color: @text-anti-primary-color;
       border-color: @primary-color;
     }
   }
   & when(@anchor-status = error) {
-    .@{prefix}-steps-item-icon__number {
+    .@{item}__icon--number {
       background: @step-error-bg-color;
       color: @text-anti-primary-color;
       border-color: @step-error-bg-color;

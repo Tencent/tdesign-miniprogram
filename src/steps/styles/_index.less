@@ -2,13 +2,11 @@
 @import './_var.less';
 @import './_mixin.less';
 
-@this: ~"@{prefix}-steps";
-
-@{prefix}-steps {
+@{steps} {
   display: flex;
 }
 
-@{prefix}-step {
+@{step} {
   flex: 1;
   vertical-align: top;
   position: relative;
@@ -17,15 +15,15 @@
 
 .step-item-basic();
 
-.@{prefix}-step {
+.@{step} {
   &--horizontal {
     // 内容最大宽度
-    .@{prefix}-steps-item-content {
+    .@{item}__content {
       max-width: 80px;
       margin-top: @spacer;
     }
 
-    .@{prefix}-steps-item {
+    .@{item} {
       &--default {
         .default-number-status(default);
       }
@@ -36,26 +34,26 @@
 
       &--process {
         .default-number-status(process);
-        .@{prefix}-steps-item-title {
+        .@{item}__title {
           color: @primary-color;
         }
       }
 
       &--error {
         .default-number-status(error);
-        .@{prefix}-steps-item-title {
+        .@{item}__title {
           color: @step-error-title-color;
         }
       }
 
       &--wait {
-        .@{prefix}-steps-item-title, .@{prefix}-steps-item-description {
+        .@{item}__title, .@{item}__description {
           color: @title-color--default;
         }
       }
     }
 
-    .@{this}-item-icon__icon {
+    .@{item}__icon--icon {
       width: @connector-icon-icon-width;
       height: @connector-icon-icon-width;
     }
@@ -66,7 +64,7 @@
   &--vertical {
     padding-right: 32rpx;
 
-    .@{prefix}-steps-item {
+    .@{item} {
       position: relative;
 
       &__inner {
@@ -75,26 +73,26 @@
         justify-content: flex-start;
       }
 
-      &-content {
+      &__content {
         margin-left: @spacer;
         flex: 1;
         padding-bottom: 50rpx;
       }
 
-      &-title {
+      &__title {
         text-align: left;
         margin-top: @title-content-margin-top;
         line-height: @font-size-base;
         margin-bottom: @spacer;
       }
 
-      &-description {
+      &__description {
         text-align: left;
       }
     }
 
     &.@{prefix}-step--default-anchor {
-      .@{prefix}-steps-item {
+      .@{item} {
         &--default {
           .default-number-status(default);
         }
@@ -105,20 +103,20 @@
 
         &--process {
           .default-number-status(process);
-          .@{prefix}-steps-item-title {
+          .@{item}__title {
             color: @primary-color;
           }
         }
 
         &--error {
           .default-number-status(error);
-          .@{prefix}-steps-item-title {
+          .@{item}__title {
             color: @error-color;
           }
         }
 
         &--wait {
-          .@{prefix}-steps-item-title, .@{prefix}-steps-item-description {
+          .@{item}__title, .@{item}__description {
             color: @title-color--default;
           }
         }
@@ -127,10 +125,10 @@
       .connector-default(vertical);
     }
 
-    &.@{prefix}-step--dot-anchor {
-      .@{prefix}-steps-item {
-        &-icon {
-          &__dot {
+    &.@{step}--dot-anchor {
+      .@{item} {
+        &__icon {
+          &--dot {
             display: block;
             width: @dot-steps-anchor-width;
             height: @dot-steps-anchor-width;
@@ -141,12 +139,12 @@
           }
         }
 
-        &-title {
+        &__title {
           margin-top: 0;
         }
       }
-      &.@{prefix}-step--not-last-child {
-        .@{prefix}-steps-item__inner::after {
+      &.@{step}--not-last-child {
+        .@{item}__inner::after {
           content: '';
           display: block;
           height: calc(100% - @dot-steps-anchor-width);
@@ -161,7 +159,7 @@
   }
 }
 
-.@{prefix}-steps {
+.@{steps} {
   display: flex;
   width: 100%;
 
@@ -169,7 +167,7 @@
   &--vertical {
     flex-direction: column;
 
-    @{prefix}-step {
+    @{step} {
       width: 100%;
     }
   }
