@@ -39,7 +39,7 @@ npm i tdesign-miniprogram -S --production
 
 ### 通过 Git Clone
 
-克隆到 TDesign-miniprogram 的源代码之后，需要执行 `npm run build` 进行构建
+克隆到源代码之后，需要执行 `npm run build` 进行构建
 
 然后将 `miniprogram_dist` 目录拷贝到自己的项目中
 
@@ -77,9 +77,9 @@ npm run dev
 
 ## 其他技术栈实现
 
-- 桌面端 Vue 2 实现： [web-react](https://github.com/Tencent/tdesign-vue)
+- 桌面端 Vue 2 实现：[web-react](https://github.com/Tencent/tdesign-vue)
 - 桌面端 Vue 3 实现：[web-vue-next](https://github.com/Tencent/tdesign-vue-next)
-- 桌面端 React 实现： [web-react](https://github.com/Tencent/tdesign-react)
+- 桌面端 React 实现：[web-react](https://github.com/Tencent/tdesign-react)
 
 ## 开源协议
 

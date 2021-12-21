@@ -1,7 +1,7 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "0.1.0-alpha.1",
+  "version": "0.2.0",
   "description": "tdesign-miniprogram",
   "title": "tdesign-miniprogram",
   "main": "miniprogram_dist/index.js",
@@ -70,7 +70,7 @@
     }
   },
   "lint-staged": {
-    "{src,example,script}/**/*.{js,ts,wxml,html,json,md,wxs}": [
+    "{src,example,script}/**/*.{js,ts,wxml,html,json,wxs}": [
       "prettier --write"
     ],
     "{src,example}/**/*.{js,ts}": [
