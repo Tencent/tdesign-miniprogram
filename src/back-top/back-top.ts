@@ -18,6 +18,7 @@ export default class BackTop extends SuperComponent {
    * Component initial data
    */
   data = {
+    prefix,
     classPrefix: name,
   };
 
