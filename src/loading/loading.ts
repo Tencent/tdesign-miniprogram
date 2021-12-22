@@ -9,6 +9,7 @@ export default class Loading extends SuperComponent {
   externalClasses = ['t-class', 't-class-text', 't-class-indicator'];
 
   data = {
+    prefix,
     classPrefix: name,
     show: false,
   };
