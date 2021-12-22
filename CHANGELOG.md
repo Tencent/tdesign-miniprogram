@@ -1,10 +1,11 @@
 ---
 title: CHANGELOG
-# description: 
 spline: explain
+toc: false
+docClass: timeline
 ---
 
-## 0.2.0（2021-12-20）
+## 0.2.0 `2021-12-20`
 
 ### BREAKING CHANGES
 
@@ -34,7 +35,7 @@ spline: explain
 
 * Tag: 支持不同尺寸的 icon [[574cc3c]](https://github.com/Tencent/tdesign-miniprogram/commit/6eee831f4308d205cc2e7187886909922) [@LeeJim](https://github.com/Tencent/tdesign-miniprogram/commits?author=LeeJim)
 
-## 0.1.0-alpha.1（2021-12-8）
+## 0.1.0-alpha.1 `2021-12-8`
 
 ### Bug Fixes
 

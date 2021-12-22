@@ -56,6 +56,7 @@ function customRender({ source, file, md }: any) {
     tdDocHeader: true,
     tdDocTabs: DEAULT_TABS,
     apiFlag: /#+\s*API\n/i,
+    docClass: '',
     ...data,
   };
 
