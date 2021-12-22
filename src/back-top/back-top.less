@@ -1,11 +1,12 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
+@backtop: ~"@{prefix}-back-top";
 @back-top-text-font-size: @font-size;
 @back-top-icon-font-size: 32rpx;
 @back-top-default-color: #666;
 
-.@{prefix}-back-top {
+.@{backtop} {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,83 +17,83 @@
   transition: height .2s;
   height: auto;
 
-  &.fixed {
+  &.@{prefix}-is-fixed {
     position: fixed;
     right: 32rpx;
     bottom: 133rpx;
   }
 
-  &.round,
-  &.round-dark {
+  &.@{prefix}-is-round,
+  &.@{prefix}-is-round-dark {
     width: 96rpx;
     height: 96rpx;
     border-radius: 50%;
 
-    .icon {
+    .@{backtop}__icon {
       margin: 0;
       // border: none;
       border-radius: 0;
       background-color: transparent;
     }
 
-    .text {
+    .@{backtop}__text {
       padding: 0;
       margin-top: 0;
     }
   }
 
-  &.round,
-  &.half-round {
+  &.@{prefix}-is-round,
+  &.@{prefix}-is-half-round {
     background-color: rgb(255, 255, 255);
     color: #333;
     border: 1rpx solid;
     border-color: #ddd;
 
-    .icon,
-    .text {
+    .@{backtop}__icon,
+    .@{backtop}__text {
       color: #333;
     }
   }
 
-  &.round-dark,
-  &.half-round-dark {
+  &.@{prefix}-is-round-dark,
+  &.@{prefix}-is-half-round-dark {
     background-color: #000;
     color: #fff;
 
-    .icon,
-    .text {
+    .@{backtop}__icon,
+    .@{backtop}__text {
       color: #fff;
     }
   }
 
-  &.half-round,
-  &.half-round-dark {
+  &.@{prefix}-is-half-round,
+  &.@{prefix}-is-half-round-dark {
     width: 120rpx;
     height: 80rpx;
     border-radius: 120rpx 0 0 120rpx;
     flex-direction: row;
     right: 0;
 
-    .icon {
+    .@{backtop}__icon {
       margin: 0;
       border-radius: 0;
       background-color: transparent;
     }
 
-    .text {
+    .@{backtop}__text {
       padding: 0;
       margin-left: 8rpx;
       width: 2em;
     }
   }
 
-  .text {
+  &__text {
     font-size: @back-top-text-font-size;
     color: @back-top-default-color;
     line-height: 24rpx;
   }
 
-  .icon {
+  &__icon {
     display: flex;
     justify-content: center;
     align-items: center;
