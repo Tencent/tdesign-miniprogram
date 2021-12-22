@@ -1,6 +1,6 @@
 <view
   wx:if="{{ loading }}"
-  class="t-class {{classPrefix}} {{ animation ? classPrefix + '__animate-' + animation : '' }}"
+  class="t-class {{classPrefix}} {{ animation ? classPrefix + '--animate-' + animation : '' }}"
 >
   <view wx:if="{{ theme === 'avatar-text' }}" class="t-class-avatar {{classPrefix}}__avatar " />
   <view wx:if="{{theme === 'avatar-text' || 'text' }}" class="{{classPrefix}}__content">
