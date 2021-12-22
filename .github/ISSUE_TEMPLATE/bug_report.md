@@ -8,10 +8,10 @@ assignees: ''
 ---
 
 **Describe Framework**
-- [x] tdesign-vue
+- [ ] tdesign-vue
 - [ ] tdesign-vue-next
 - [ ] tdesign-react
-- [ ] tdesign-miniprogram
+- [x] tdesign-miniprogram
 
 **Describe Environment**
 
