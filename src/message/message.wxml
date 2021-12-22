@@ -1,38 +1,38 @@
 <wxs src="./message.wxs" module="this"></wxs>
 
-<block wx:if="{{ visible }}">
+<block wx:if="{{visible}}">
   <view
-    class=" {{ classPrefix }} t-class {{ classPrefix }}--{{ theme }} "
-    style="z-index: {{ zIndex }};{{this.getMessageStylesOffset({ offset })}};transform: translateY({{wrapTop}}px)"
+    class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{theme}}"
+    style="z-index: {{zIndex}};{{this.getMessageStylesOffset({ offset })}};transform: translateY({{wrapTop}}px)"
     animation="{{showAnimation}}"
     id="{{classPrefix}}"
   >
     <t-icon
       wx:if="{{iconName}}"
       name="{{iconName}}"
-      class="{{ classPrefix }}--left-icon t-class-icon"
+      class="{{classPrefix}}__icon--left {{prefix}}-class-icon"
       size="44rpx"
     />
     <slot name="icon" />
 
     <view
-      class="{{ classPrefix }}--text-wrap {{ marquee ? '{{ classPrefix }}--text-nowrap' : '' }} "
+      class="{{classPrefix}}__text-wrap {{marquee ? '{{classPrefix}}__text-nowrap' : ''}}"
       style="text-align: {{align}}"
-      id="{{ classPrefix }}--text-wrap"
+      id="{{classPrefix}}__text-wrap"
     >
       <view
-        class="{{ classPrefix }}--text t-class-content"
-        id="{{ classPrefix }}--text"
+        class="{{classPrefix}}__text {{prefix}}-class-content"
+        id="{{classPrefix}}__text"
         animation="{{animation}}"
       >
-        <view wx:if="{{content}}"> {{ content }} </view>
+        <view wx:if="{{content}}">{{content}}</view>
         <slot name="content"></slot>
       </view>
     </view>
 
     <t-button
-      wx:if="{{ action }}"
-      t-class="{{ classPrefix }}--right-btn t-class-action"
+      wx:if="{{action}}"
+      t-class="{{classPrefix}}__btn--right {{prefix}}-class-action"
       size="small"
       bind:tap="handleBtnClick"
       >{{action}}</t-button
@@ -40,8 +40,8 @@
     <slot name="action" />
 
     <t-icon
-      wx:if="{{ closeBtn }}"
-      class="{{ classPrefix }}--right-icon t-class-close-btn"
+      wx:if="{{closeBtn}}"
+      class="{{classPrefix}}__icon--right {{prefix}}-class-close-btn"
       name="close"
       size="20px"
       bind:tap="handleClose"
