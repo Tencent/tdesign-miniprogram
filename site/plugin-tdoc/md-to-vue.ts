@@ -57,6 +57,7 @@ function customRender({ source, file, md }: any) {
     tdDocTabs: DEAULT_TABS,
     apiFlag: /#+\s*API\n/i,
     docClass: '',
+    lastUpdated: Math.round(fs.statSync(file).mtimeMs),
     ...data,
   };
 

@@ -18,6 +18,9 @@
       <div v-show="tab === 'design'" name="DESIGN" v-html="info.designMd"></div>
     </template>
     <div name="DOC" :class="info.docClass" v-else v-html="info.docMd"></div>
+    <div style="margin-top: 48px;">
+      <td-doc-history :time="info.lastUpdated"></td-doc-history>
+    </div>
     <td-doc-footer slot="doc-footer" platform="mobile"></td-doc-footer>
   </td-doc-content>
 </template>
