@@ -26,6 +26,8 @@ export default class Popup extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
+    classPrefix: name,
     className: name,
     dataTransitionProps: { ...defaultTransitionProps },
   };
