@@ -1,19 +1,19 @@
 @import '../common/index.less';
 
-@tab-bar-cls: ~'@{prefix}-tab-bar';
+@item: ~'@{prefix}-tab-bar-item';
 @tab-bar-height: 48px;
 @tab-bar-bg-color: @bg-color-block;
 @tab-bar-border-color: @border-level-1-color;
 @tab-bar-hover-bg-color: rgba(0, 0, 0, .05);
 @tab-bar-active-color: @primary-color;
 
-@{tab-bar-cls}-item {
+@{item} {
   height: 100%;
   flex-basis: 0;
   flex-grow: 1;
 }
 
-.@{tab-bar-cls}-item {
+.@{item} {
   height: 100%;
   box-sizing: border-box;
   user-select: none;
@@ -39,13 +39,13 @@
 
     &.@{prefix}-is-checked {
       color: @tab-bar-active-color;
-      .@{tab-bar-cls}-item__icon-menu {
+      .@{item}__icon-menu {
         background-color: @tab-bar-active-color;
       }
     }
   }
 
-  .badge-class {
+  .@{prefix}-badge-class {
     transform: translate(50%, -10%) !important; // stylelint-disable-line
   }
 
@@ -57,6 +57,10 @@
       font-size: 10px;
       line-height: 18px;
     }
+  }
+
+  &__icon {
+    height: 24px;
   }
 
   &__icon-menu {
@@ -119,7 +123,7 @@
         background-color: @tab-bar-hover-bg-color;
       }
 
-      & + .@{tab-bar-cls}-item__spread-item {
+      & + .@{item}__spread-item {
         position: relative;
 
         &:before {
