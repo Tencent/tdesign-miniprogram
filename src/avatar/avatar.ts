@@ -12,6 +12,7 @@ export default class Avatar extends SuperComponent {
   properties = avatarProps;
 
   data = {
+    prefix,
     classPrefix: name,
     isShow: true,
     zIndex: 0,
