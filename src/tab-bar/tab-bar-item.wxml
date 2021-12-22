@@ -1,7 +1,7 @@
-<view class="{{classPrefix}} {{icon ? '' : prefix+'-is-bordered'}}">
+<view class="{{classPrefix}} {{icon ? '' : prefix + '-is-bordered'}}">
   <view
-    class="{{classPrefix}}__content {{isChecked ? prefix+'-is-checked' : ''}}"
-    style="color: {{isChecked ? activeColor: color}}"
+    class="{{classPrefix}}__content {{isChecked ? prefix + '-is-checked' : ''}}"
+    style="color: {{isChecked ? activeColor : color}}"
     bindtap="toggle"
   >
     <view class="{{classPrefix}}__icon" wx:if="{{icon}}">
@@ -14,13 +14,13 @@
         size="{{badgeProps.size}}"
         visible="{{badgeProps.visible}}"
         offset="{{badgeProps.offset || [0,0]}}"
-        t-class-count="badge-class"
+        t-class-count="{{prefix + '-badge-class'}}"
       >
         <t-icon name="{{icon}}" size="24px" />
       </t-badge>
       <t-icon wx:else name="{{icon}}" size="24px" />
     </view>
-    <view class="{{classPrefix}}__text {{icon ? prefix+'-size-s' : ''}}">
+    <view class="{{classPrefix}}__text {{icon ? prefix + '-size-s' : ''}}">
       <view class="{{classPrefix}}__icon-menu" wx:if="{{hasChildren}}" />
       <slot />
     </view>

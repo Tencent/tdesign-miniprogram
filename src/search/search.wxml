@@ -1,30 +1,32 @@
 <view class="{{classPrefix}} t-class">
   <view
-    class="{{classPrefix}}--input-box {{localValue.focus ? 'focus' : 'not-focus'}} {{center && !localValue.keyword && 'center'}} {{shape}} "
+    class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center && !localValue.keyword && 'center'}} {{classPrefix}}__input-box--{{shape}} "
     bind:tap="tapWhenCenterActiveHandle"
   >
-    <view wx:if="{{ label }}" class="{{classPrefix}}--label t-class-label">{{ label }}</view>
+    <view wx:if="{{ label }}" class="{{classPrefix}}__label t-class-label">{{ label }}</view>
     <slot wx:else name="label" />
 
     <t-icon
       wx:if=" {{ leftIcon }}"
       name="{{leftIcon}}"
       size="20px"
-      class="left-icon t-class-left"
-    ></t-icon>
+      class="{{prefix}}-icon t-class-left"
+    >
+    </t-icon>
     <slot wx:else name="left-icon" />
 
     <view
       wx:if="{{center && !localValue.focus && !localValue.keyword}}"
-      class="{{classPrefix}}--placeholder-center {{!localValue.keyword && placeholder-class}}"
-      >{{localValue.keyword||placeholder}}</view
+      class="{{classPrefix}}__placeholder-center {{!localValue.keyword && placeholder-class}}"
     >
+      {{localValue.keyword || placeholder}}
+    </view>
     <input
       wx:else
       type="text"
       name="input"
       disabled="{{disabled}}"
-      class="keyword t-class-input"
+      class="{{prefix}}-input__keyword t-class-input"
       focus="{{localValue.focus}}"
       value="{{localValue.keyword}}"
       confirm-type="search"
@@ -38,22 +40,23 @@
     <block wx:if="{{localValue.keyword!=='' && (!center || focus)}}">
       <t-icon
         wx:if="{{rightIcon}}"
-        class="left-icon t-class-right"
+        class="{{prefix}}-icon t-class-right"
         name="{{rightIcon}}"
         size="18px"
         color="rgba(187,187,187,1)"
         bindtap="onClear"
-      ></t-icon>
+      >
+      </t-icon>
       <slot wx:else name="right-icon" />
     </block>
   </view>
 
   <view
     wx:if="{{actionText}}"
-    class="{{classPrefix}}--search-action t-class-cancel"
+    class="{{classPrefix}}__search-action t-class-cancel"
     bindtap="onCancel"
   >
     {{actionText}}
   </view>
-  <slot wx:else name="action-text"></slot>
+  <slot wx:else name="action-text" />
 </view>

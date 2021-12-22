@@ -1,5 +1,5 @@
 ---
-title: Textarea 多行输入框
+title: Textarea 多行文本框
 description: 用于多行文本信息输入。
 spline: form
 isComponent: true
@@ -17,7 +17,7 @@ isComponent: true
 
 ## 代码演示
 
-### 基础多行输入框
+### 基础多行文本框
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/input-2.png" width="375px" height="50%">
 

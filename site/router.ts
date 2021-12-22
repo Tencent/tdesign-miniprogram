@@ -36,11 +36,11 @@ const getDocsRoutes = (docs: any[], type: string): RouteRecordRaw[] => {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/miniprogram/components/button',
+    redirect: '/miniprogram/overview',
   },
   {
     path: '/:catchAll(.*)',
-    redirect: '/miniprogram/components/button',
+    redirect: '/miniprogram/overview',
   },
   ...getDocsRoutes(docs, 'document'),
   ...getDocsRoutes(docs, 'component'),
@@ -50,11 +50,6 @@ const routerConfig: RouterOptions = {
   routes,
   history: createWebHistory('/'),
 };
-
-// 本地开发用hash路由
-if (process.env.NODE_ENV === 'development') {
-  routerConfig.history = createWebHashHistory('/');
-}
 
 const router = createRouter(routerConfig);
 

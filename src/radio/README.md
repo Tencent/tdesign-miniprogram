@@ -11,7 +11,8 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-radio": "tdesign-miniprogram/radio/radio"
+  "t-radio": "tdesign-miniprogram/radio/radio",
+  "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
 }
 ```
 
