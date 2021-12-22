@@ -1,6 +1,8 @@
 <template>
   <td-doc-layout>
-    <td-header ref="tdHeader" slot="header"></td-header>
+    <td-header ref="tdHeader" slot="header">
+      <td-doc-search slot="search" ref="tdDocSearch"></td-doc-search>
+    </td-header>
     <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram"></td-doc-aside>
 
     <router-view :style="contentStyle" @loaded="contentLoaded" :docType="docType" />
@@ -40,6 +42,7 @@ export default defineComponent({
       this.$router.push({ path: detail });
       window.scrollTo(0, 0);
     };
+    this.$refs.tdDocSearch.docsearchInfo = { indexName: 'tdesign_doc_miniprogram' };
   },
 
   watch: {
