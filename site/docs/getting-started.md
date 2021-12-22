@@ -1,6 +1,6 @@
 ---
-title: TDesign MiniProgram
-description: TDesign官方小程序版本。
+title: Wechat MiniProgram
+description: TDesign 微信小程序组件库。
 spline: explain
 ---
 
