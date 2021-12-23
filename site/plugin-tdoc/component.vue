@@ -66,6 +66,7 @@ export default defineComponent({
 
     if (info.isComponent) {
       tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
+      tdDocHeader.componentName = info.componentName;
     }
     
     Prismjs.highlightAll();
