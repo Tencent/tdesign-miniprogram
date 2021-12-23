@@ -1,6 +1,7 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
+@skeleton: ~"@{prefix}-skeleton";
 @h-space-sm: 32rpx;
 @h-space-nest: 24rpx;
 // skeleton
@@ -9,7 +10,7 @@
 @skeleton-avatar-background-color: rgba(238, 238, 238, 1);
 @skeleton-animation-duration: .6s;
 
-.@{prefix}-skeleton {
+.@{skeleton} {
   display: flex;
   box-sizing: border-box;
 
@@ -33,7 +34,7 @@
   }
 }
 
-.animate-flashed {
+.@{skeleton}--animate-flashed {
   animation: t-flashed @skeleton-animation-duration infinite alternate;
 }
 
@@ -47,7 +48,7 @@
   }
 }
 
-.animate-gradient {
+.@{skeleton}--animate-gradient {
   .t-skeleton__item {
     background: linear-gradient(
       to right,
