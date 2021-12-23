@@ -1,5 +1,10 @@
-// @import (css) '../common/index.wxss';
-.t-popup {
+@import '../common/style/index.less';
+
+@popup: ~"@{prefix}-popup";
+@popup-position: ~"@{popup}--position";
+@popup-transition: ~"@{popup}--transition";
+
+.@{popup} {
   position: fixed;
   z-index: 2500;
   top: 0;
@@ -60,145 +65,145 @@
     height: 100vh;
   }
 
-  &.t-popup--transition-enter {
-    .t-popup__overlay {
+  &.@{popup-transition}-enter {
+    .@{popup}__overlay {
       opacity: 0;
     }
 
-    .t-popup__content {
+    .@{popup}__content {
       opacity: 0;
       transform: scale(.8);
     }
 
-    &.t-popup--position-top {
-      .t-popup__content {
+    &.@{popup-position}-top {
+      .@{popup}__content {
         transform: translateY(-100%);
       }
     }
 
-    &.t-popup--position-bottom {
-      .t-popup__content {
+    &.@{popup-position}-bottom {
+      .@{popup}__content {
         transform: translateY(100%);
       }
     }
 
-    &.t-popup--position-left {
-      .t-popup__content {
+    &.@{popup-position}-left {
+      .@{popup}__content {
         transform: translateX(-100%);
       }
     }
 
-    &.t-popup--position-right {
-      .t-popup__content {
+    &.@{popup-position}-right {
+      .@{popup}__content {
         transform: translateX(100%);
       }
     }
   }
 
-  &.t-popup--transition-enter-to {
-    .t-popup__overlay {
+  &.@{popup-transition}-enter-to {
+    .@{popup}__overlay {
       opacity: 1;
       transition: opacity .3s;
     }
 
-    .t-popup__content {
+    .@{popup}__content {
       opacity: 1;
       transform: none;
       transition: opacity .3s, transform .3s;
     }
 
-    &.t-popup--position-top {
-      .t-popup__content {
+    &.@{popup-position}-top {
+      .@{popup}__content {
         transform: none;
       }
     }
 
-    &.t-popup--position-bottom {
-      .t-popup__content {
+    &.@{popup-position}-bottom {
+      .@{popup}__content {
         transform: none;
       }
     }
 
-    &.t-popup--position-left {
-      .t-popup__content {
+    &.@{popup-position}-left {
+      .@{popup}__content {
         transform: none;
       }
     }
 
-    &.t-popup--position-right {
-      .t-popup__content {
+    &.@{popup-position}-right {
+      .@{popup}__content {
         transform: none;
       }
     }
   }
 
-  &.t-popup--transition-leave {
-    .t-popup__overlay {
+  &.@{popup-transition}-leave {
+    .@{popup}__overlay {
       opacity: 1;
     }
 
-    .t-popup__content {
+    .@{popup}__content {
       opacity: 1;
       transform: none;
     }
 
-    &.t-popup--position-top {
-      .t-popup__content {
+    &.@{popup-position}-top {
+      .@{popup}__content {
         transform: none;
       }
     }
 
-    &.t-popup--position-bottom {
-      .t-popup__content {
+    &.@{popup-position}-bottom {
+      .@{popup}__content {
         transform: none;
       }
     }
 
-    &.t-popup--position-left {
-      .t-popup__content {
+    &.@{popup-position}-left {
+      .@{popup}__content {
         transform: none;
       }
     }
 
-    &.t-popup--position-right {
-      .t-popup__content {
+    &.@{popup-position}-right {
+      .@{popup}__content {
         transform: none;
       }
     }
   }
 
-  &.t-popup--transition-leave-to {
-    .t-popup__overlay {
+  &.@{popup-transition}-leave-to {
+    .@{popup}__overlay {
       opacity: 0;
       transition: opacity .3s;
     }
 
-    .t-popup__content {
+    .@{popup}__content {
       opacity: 0;
       transform: scale(.8);
       transition: opacity .3s, transform .3s;
     }
 
-    &.t-popup--position-top {
-      .t-popup__content {
+    &.@{popup-position}-top {
+      .@{popup}__content {
         transform: translateY(-100%);
       }
     }
 
-    &.t-popup--position-bottom {
-      .t-popup__content {
+    &.@{popup-position}-bottom {
+      .@{popup}__content {
         transform: translateY(100%);
       }
     }
 
-    &.t-popup--position-left {
-      .t-popup__content {
+    &.@{popup-position}-left {
+      .@{popup}__content {
         transform: translateX(-100%);
       }
     }
 
-    &.t-popup--position-right {
-      .t-popup__content {
+    &.@{popup-position}-right {
+      .@{popup}__content {
         transform: translateX(100%);
       }
     }
