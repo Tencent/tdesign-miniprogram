@@ -59,8 +59,7 @@ Page({
   // 监听页面滚动事件，并调用pull-down-refresh组件的onPageScroll方法
   // 组件内根据页面滚动距离来判定页面是否到顶部，页面回到顶部后才能下拉刷新
   onPageScroll(e) {
-    this.pullDownRefresh0 && this.pullDownRefresh0.onPageScroll(e);
-    this.pullDownRefresh1 && this.pullDownRefresh1.onPageScroll(e);
+    this.pullDownRefresh && this.pullDownRefresh.onPageScroll(e);
   },
   onPullDownRefresh(e: WechatMiniprogram.Event<{ callback: () => void }>) {
     // 模拟1秒刷新完成
@@ -70,27 +69,6 @@ Page({
     }, 1000);
   },
 });
-```
-
-```css
-// 以下覆盖pull-down-refresh内部样式
-page {
-  .refresh-bar__content {
-    flex-direction: column; // 与组件默认样式不同，这里按照设计稿改成竖向结构
-
-    .refresh-bar__text {
-      margin: 16rpx 0 0;
-    }
-  }
-
-  .refresh-bar.success {
-    .refresh-bar__loading {
-      // 刷新成功后loading隐藏但是仍然占位，避免文字跳动（默认横向结构下不占位）
-      display: flex !important;
-      visibility: hidden;
-    }
-  }
-}
 ```
 
 ## API

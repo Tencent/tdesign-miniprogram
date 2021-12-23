@@ -35,9 +35,12 @@ Page({
   onPullDownRefresh0(e) {
     // 模拟1秒刷新完成
     const { callback } = e.detail;
-    setTimeout(() => {
-      callback?.();
-    }, 3000);
+
+    if (callback) {
+      setTimeout(() => {
+        callback();
+      }, 1000);
+    }
   },
 
   timeoutCallback() {
@@ -47,9 +50,12 @@ Page({
   onPullDownRefresh1(e) {
     // 模拟2秒刷新完成
     const { callback } = e.detail;
-    setTimeout(() => {
-      callback?.();
-    }, 2000);
+
+    if (callback) {
+      setTimeout(() => {
+        callback();
+      }, 2000);
+    }
   },
 
   toggleError() {

@@ -34,7 +34,6 @@ export default defineComponent({
   mounted() {
     this.docType = this.$route.meta.docType;
     this.$refs.tdHeader.framework = 'miniprogram';
-    this.$refs.tdHeader.platform = 'mobile';
     this.$refs.tdDocAside.routerList = routerList;
     this.$refs.tdDocAside.onchange = ({ detail }) => {
       if (this.$route.path === detail) return;
