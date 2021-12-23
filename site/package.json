@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.5",
-    "@vitejs/plugin-vue": "^1.4.0",
+    "@vitejs/plugin-vue": "^2.0.1",
     "@vitejs/plugin-vue-jsx": "^1.1.7",
     "@vue/compiler-sfc": "^3.2.4",
     "less": "^4.1.1",
