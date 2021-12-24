@@ -1,20 +1,19 @@
 <view
-  class="{{theme === 'grey' ? 't-stepper-pure' : 't-stepper-normal'}} {{ disabled ? 't-is-disabled': ''}} t-class"
+  class="{{classPrefix}} {{classPrefix}}--{{theme === 'grey' ? 'pure' : 'normal'}} {{ disabled ? prefix + '-is-disabled': ''}} {{prefix}}-class"
 >
   <view
-    class="t-stepper__minus t-class-minus {{ disabled || disableMinus || currentValue <= min ? 't-is-disabled': ''}}"
+    class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}}"
     bindtap="minusValue"
   >
     <t-icon
       name="remove"
       color="{{ disabled || disableMinus || currentValue <= min ? '#ccc': '#444'}}"
       size="{{theme === 'grey' ? '16px' : '20px'}}"
-      t-class="stepper__minus__icon"
     />
   </view>
 
   <input
-    class="t-stepper__input t-class-input"
+    class="{{classPrefix}}__input {{prefix}}-class-input"
     style="width: {{inputWidth || 100}}rpx"
     disabled="{{ disabled || disableInput }}"
     type="number"
@@ -22,14 +21,13 @@
     bindblur="blurHandler"
   />
   <view
-    class="t-stepper__plus t-class-plus {{ disabled || disablePlus|| currentValue >= max ? 't-is-disabled': ''}}"
+    class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}}"
     bindtap="plusValue"
   >
     <t-icon
       name="add"
       color="{{ disabled || disablePlus|| currentValue >= max ? '#ccc': '#444'}}"
       size="{{theme === 'grey' ? '16px' : '20px'}}"
-      t-class="stepper__minus__icon"
     />
   </view>
 </view>

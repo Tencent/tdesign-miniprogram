@@ -6,7 +6,12 @@ const { prefix } = config;
 
 @wxComponent()
 export default class Stepper extends SuperComponent {
-  externalClasses = ['t-class', 't-class-input', 't-class-minus', 't-class-plus'];
+  externalClasses = [
+    `${{ prefix }}-class`,
+    `${{ prefix }}-class-input`,
+    `${{ prefix }}-class-minus`,
+    `${{ prefix }}-class-plus`,
+  ];
 
   options = {
     addGlobalClass: true,
@@ -25,9 +30,11 @@ export default class Stepper extends SuperComponent {
   data: {
     currentValue: Number;
     classPrefix: String;
+    prefix: String;
   } = {
     currentValue: 0,
     classPrefix: `${prefix}-stepper`,
+    prefix,
   };
 
   attached() {
