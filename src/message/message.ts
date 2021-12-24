@@ -150,8 +150,8 @@ export default class Message extends SuperComponent {
       this.clearMessageAnimation();
     }
 
-    const warpID = '#t-message__text-wrap';
-    const nodeID = '#t-message__text';
+    const warpID = `#${name}__text-wrap`;
+    const nodeID = `#${name}__text`;
     Promise.all([this.queryWidth(nodeID), this.queryWidth(warpID)]).then(
       ([nodeWidth, warpWidth]) => {
         this.setData(
@@ -228,7 +228,7 @@ export default class Message extends SuperComponent {
       }, duration) as unknown as number;
     }
 
-    const wrapID = '#t-message';
+    const wrapID = `#${name}`;
     this.queryHeight(wrapID).then((wrapHeight) => {
       this.setData({ showAnimation: this.showAnimation, wrapTop: -wrapHeight });
     });
