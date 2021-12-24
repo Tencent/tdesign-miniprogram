@@ -1,43 +1,39 @@
-// @import (css) '../common/index.wxss';
+@import '../common/style/index.less';
 
 @bar-height: 2rpx;
 @block-color: #fff;
 @block-size: 16px;
 
-.t-slider__container {
+.@{prefix}-slider__container {
   font-size: 14px;
 
-  &.bottom {
+  .@{prefix}-slider--bottom {
     padding-bottom: 40rpx;
   }
 
-  .t-slider-value,
-  .t-slider-range-extrem,
-  .t-slider-dot-value {
-    color: rgba(0, 0, 0, .4);
+  .@{prefix}-slider__value,
+  .@{prefix}-slider__range-extreme,
+  .@{prefix}-slider__dot-value {
+    color: rgba(0, 0, 0, 0.4);
   }
 
-  &.disabled {
-    .t-slider-value,
-    .t-slider-range-extrem,
-    .t-slider-dot-value,
-    .scale-desc {
-      color: rgba(0, 0, 0, .26);
+  &.@{prefix}-is-disabled {
+    .@{prefix}-slider__value,
+    .@{prefix}-slider__range-extreme,
+    .@{prefix}-slider__dot-value,
+    .@{prefix}-slider__scale-desc {
+      color: rgba(0, 0, 0, 0.26);
     }
-  }
-
-  .t-slider-value__active {
-    text-align: center;
   }
 }
 
-.t-slider__wrapper {
+.@{prefix}-slider__wrapper {
   display: flex;
   align-items: center;
   height: 96rpx;
 
   // 单点滑块样式
-  .t-slider__main {
+  .@{prefix}-slider__main {
     position: relative;
     margin: 0 32rpx;
     flex: 10;
@@ -47,14 +43,14 @@
     border-radius: @bar-height;
     display: inline-block;
 
-    .t-slider-line {
+    .@{prefix}-slider__line {
       position: absolute;
       top: 8px;
       height: @bar-height * 2;
       border-radius: @bar-height;
     }
 
-    .t-slider-dot {
+    .@{prefix}-slider__dot {
       border-radius: 50%;
       border: 2rpx solid #dcdcdc;
       position: absolute;
@@ -66,47 +62,43 @@
     }
   }
 
-  .t-slider-value {
+  .@{prefix}-slider__value {
     display: inline-block;
   }
 
-  .t-slider-value__min {
+  .@{prefix}-slider__value--min {
     margin-left: 16px;
   }
 
-  .t-slider-value__max {
+  .@{prefix}-slider__value--max {
     margin-right: 16px;
   }
 
-  .t-slider-value__right {
+  .@{prefix}-slider__value--right {
     flex-basis: 80rpx;
-  }
-
-  .t-slider-active {
-    width: 100%;
   }
 }
 
 // 范围滑块样式
-.t-slider-range-container {
+.@{prefix}-slider__range-container {
   display: flex;
   padding: @block-size * 1.4 0 0 0;
 
-  .t-slider-range-extrem {
+  .@{prefix}-slider__range-extreme {
     display: inline-block;
   }
 
-  .t-slider-range-min {
+  .@{prefix}-slider__range-extreme--min {
     margin-left: 32rpx;
     text-align: left;
   }
 
-  .t-slider-range-max {
+  .@{prefix}-slider__range-extreme--max {
     margin-right: 32rpx;
     text-align: right;
   }
 
-  .t-slider-bar {
+  .@{prefix}-slider__bar {
     margin: 0 32rpx;
     flex: 10;
     padding: 16rpx 0;
@@ -116,7 +108,7 @@
     position: relative;
     display: inline-block;
 
-    .t-slider-dot {
+    .@{prefix}-slider__dot {
       border-radius: 50%;
       border: 2rpx solid #dcdcdc;
       position: absolute;
@@ -126,11 +118,11 @@
       height: @block-size;
       top: @bar-height - @block-size + 16;
 
-      &__left {
+      &--left {
         left: 0;
       }
 
-      &__right {
+      &--right {
         right: 0;
       }
 
@@ -141,7 +133,7 @@
       }
     }
 
-    .t-slider-line {
+    .@{prefix}-slider__line {
       position: absolute;
       top: 8px;
       height: 5rpx;
@@ -150,7 +142,7 @@
 }
 
 // 刻度样式
-.t-slider-scale-item {
+.@{prefix}-slider__scale-item {
   background-color: #0052d9;
   width: @bar-height * 2;
   height: 14rpx;
@@ -158,9 +150,9 @@
   bottom: 6rpx;
   z-index: 1;
 
-  .scale-desc {
+  .@{prefix}-slider__scale-desc {
     position: absolute;
-    color: rgba(0, 0, 0, .4);
+    color: rgba(0, 0, 0, 0.4);
     transform: translateX(-50%);
     top: 20rpx;
   }
