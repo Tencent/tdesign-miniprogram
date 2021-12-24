@@ -1,5 +1,5 @@
 <view
-  class="t-class {{classPrefix}} {{classPrefix}}--{{direction}}"
+  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{direction}}"
   wx:if="{{total >= minShowNum}}"
 >
   <view wx:if="{{ type === 'dots' || type === 'dots-bar'}}" class="{{classPrefix}}__{{type}}">
@@ -7,7 +7,7 @@
       wx:for="{{total}}"
       wx:for-index="idx"
       wx:key="idx"
-      class="{{classPrefix}}__{{type}}-item {{index === idx ? 't-is-active' : ''}}"
+      class="{{classPrefix}}__{{type}}-item {{index === idx ? '{{prefix}}-is-active' : ''}}"
     />
   </view>
   <view wx:if="{{ type === 'fraction'}}" class="{{classPrefix}}__fraction">

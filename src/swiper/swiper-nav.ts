@@ -49,6 +49,7 @@ export default class SwiperNav extends SuperComponent {
     index: 0,
     total: 0,
     direction: DIRECTION.HOR,
+    prefix,
     classPrefix: `.${prefix}-swiper-nav`,
   };
 
