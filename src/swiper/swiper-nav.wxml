@@ -7,7 +7,7 @@
       wx:for="{{total}}"
       wx:for-index="idx"
       wx:key="idx"
-      class="{{classPrefix}}__{{type}}-item {{index === idx ? '{{prefix}}-is-active' : ''}}"
+      class="{{classPrefix}}__{{type}}-item {{index === idx ? prefix + '-is-active' : ''}}"
     />
   </view>
   <view wx:if="{{ type === 'fraction'}}" class="{{classPrefix}}__fraction">
