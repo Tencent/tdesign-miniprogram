@@ -1,6 +1,6 @@
 <wxs src="./slider.wxs" module="utils" />
 <view
-  class="{{classPrefix}}__container {{isScale && scaleTextArray.length ? classPrefix + '--bottom' : ''}} t-class {{disabled ? prefix + '-is-disabled t-class-bar-disabled' : ''}}"
+  class="{{classPrefix}}__container {{isScale && scaleTextArray.length ? classPrefix + '--bottom' : ''}} {{prefix}}-class {{disabled ? prefix + '-is-disabled ' + prefix + '-class-bar-disabled' : ''}}"
 >
   <block wx:if="{{!range}}">
     <view class="{{classPrefix}}__wrapper">
@@ -9,7 +9,7 @@
       </text>
       <view
         id="sliderLine"
-        class="{{classPrefix}}__main t-class-bar"
+        class="{{classPrefix}}__main {{prefix}}-class-bar"
         style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
         bindtap="onSingleLineTap"
       >
@@ -27,13 +27,13 @@
           </view>
         </block>
         <view
-          class="{{classPrefix}}__line t-class-bar-active"
+          class="{{classPrefix}}__line {{prefix}}-class-bar-active"
           style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; width: {{lineBarWidth}};"
           bindtap="onSingleLineTap"
         >
           <view
             id="singleDot"
-            class="{{classPrefix}}__dot t-class-cursor"
+            class="{{classPrefix}}__dot {{prefix}}-class-cursor"
             style="left: {{activeLeft}}px"
             bindtouchmove="onSingleTouchMove"
             bind:touchend="onTouchEnd"
@@ -61,7 +61,7 @@
       <view
         id="sliderLine"
         bindtap="onLineTap"
-        class="{{classPrefix}}__bar t-class-bar"
+        class="{{classPrefix}}__bar {{prefix}}-class-bar"
         style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
       >
         <block wx:if="{{isScale}}">
@@ -76,7 +76,7 @@
           </view>
         </block>
         <view
-          class="{{classPrefix}}__line t-class-bar-active"
+          class="{{classPrefix}}__line {{prefix}}-class-bar-active"
           bindtap="onLineTap"
           style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; right: {{lineRight}}px;"
         />
@@ -85,7 +85,7 @@
           bindtouchmove="onTouchMoveLeft"
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
-          class="{{classPrefix}}__dot {{classPrefix}}__dot--left t-class-cursor"
+          class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
           style="left: {{activeLeft}}px"
         >
           <view wx:if="{{label}}" class="{{classPrefix}}__dot-value">
@@ -97,7 +97,7 @@
           bindtouchmove="onTouchMoveRight"
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
-          class="{{classPrefix}}__dot {{classPrefix}}__dot--right t-class-cursor"
+          class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
           style="right: {{activeRight}}px"
         >
           <view wx:if="{{label}}" class="{{classPrefix}}__dot-value">
