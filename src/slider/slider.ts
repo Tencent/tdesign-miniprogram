@@ -34,6 +34,7 @@ export default class Slider extends SuperComponent {
     scaleArray: any[];
     scaleTextArray: any[];
     _value: number | number[];
+    prefix: string;
   } = {
     // 按钮样式列表
     sliderStyles: '',
@@ -51,6 +52,7 @@ export default class Slider extends SuperComponent {
     isScale: false,
     scaleArray: [],
     scaleTextArray: [],
+    prefix,
   };
 
   observers = {
