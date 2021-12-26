@@ -10,6 +10,7 @@ export default class AvatarGroup extends SuperComponent {
   properties = avatarGroupProps;
 
   data = {
+    prefix,
     classPrefix: name,
     hasChild: true,
     length: 0,
