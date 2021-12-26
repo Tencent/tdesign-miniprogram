@@ -53,4 +53,21 @@ const routerConfig: RouterOptions = {
 
 const router = createRouter(routerConfig);
 
+router.beforeEach((to, from, next) => {
+  // @ts-ignore
+  if (typeof NProgress !== 'undefined') {
+    // @ts-ignore
+    NProgress.start();
+  }
+  next();
+});
+
+router.afterEach(() => {
+  // @ts-ignore
+  if (typeof NProgress !== 'undefined') {
+    // @ts-ignore
+    NProgress.done();
+  }
+});
+
 export default router;

@@ -1,9 +1,11 @@
-.t-stepper {
-  &-normal {
-    display: flex;
-    align-items: center;
+@import '../common/style/index.less';
 
-    .t-stepper__input {
+.@{prefix}-stepper {
+  display: flex;
+  align-items: center;
+
+  &.@{prefix}-stepper--normal {
+    .@{prefix}-stepper__input {
       display: block;
       font-size: 16px;
       color: #000;
@@ -14,27 +16,18 @@
       height: 48rpx;
     }
 
-    .t-stepper__minus,
-    .t-stepper__plus {
+    .@{prefix}-stepper__minus,
+    .@{prefix}-stepper__plus {
       display: block;
       box-sizing: border-box;
       height: 48rpx;
       padding-top: 5rpx;
     }
-
-    &.t-is-disabled {
-      .t-stepper__input {
-        color: rgba(0, 0, 0, .26);
-      }
-    }
   }
 
   // 简洁模式样式
-  &-pure {
-    display: flex;
-    align-items: center;
-
-    .t-stepper__input {
+  &.@{prefix}-stepper--pure {
+    .@{prefix}-stepper__input {
       border-radius: 2px;
       height: 48rpx;
       margin: 0 5px;
@@ -43,19 +36,19 @@
       font-size: 24rpx;
     }
 
-    .t-stepper__minus,
-    .t-stepper__plus {
+    .@{prefix}-stepper__minus,
+    .@{prefix}-stepper__plus {
       box-sizing: border-box;
       border-radius: 2px;
       background-color: #f1f2f5;
       padding: 5rpx 10rpx;
       height: 48rpx;
     }
+  }
 
-    &.t-is-disabled {
-      .t-stepper__input {
-        color: rgba(0, 0, 0, .26);
-      }
+  .@{prefix}-is-disabled{
+    .@{prefix}-stepper__input {
+      color: rgba(0, 0, 0, 0.26);
     }
   }
 }

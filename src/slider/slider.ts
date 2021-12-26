@@ -7,12 +7,12 @@ const { prefix } = config;
 const name = `${prefix}-slider`;
 @wxComponent()
 export default class Slider extends SuperComponent {
-  externalClasses: [
-    't-class',
-    't-class-bar',
-    't-class-bar-active',
-    't-class-bar-disabled',
-    't-class-cursor',
+  externalClasses = [
+    `${{ prefix }}-class`,
+    `${{ prefix }}-class-bar`,
+    `${{ prefix }}-class-bar-active`,
+    `${{ prefix }}-class-bar-disabled`,
+    `${{ prefix }}-class-cursor`,
   ];
 
   properties = props;
@@ -34,6 +34,7 @@ export default class Slider extends SuperComponent {
     scaleArray: any[];
     scaleTextArray: any[];
     _value: number | number[];
+    prefix: string;
   } = {
     // 按钮样式列表
     sliderStyles: '',
@@ -51,6 +52,7 @@ export default class Slider extends SuperComponent {
     isScale: false,
     scaleArray: [],
     scaleTextArray: [],
+    prefix,
   };
 
   observers = {
