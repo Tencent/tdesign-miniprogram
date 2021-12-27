@@ -1,0 +1,8 @@
+<view
+  class="{{ className }}"
+  wx:if="{{ !(destroyOnHide && !dataVisible) }}"
+  style="{{ dataVisible ? '' : 'display: none' }}"
+  bindtransitionend="onTransitionEnd"
+>
+  <slot />
+</view>

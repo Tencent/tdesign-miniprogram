@@ -1,0 +1,30 @@
+var getTagClass = function (props) {
+  var baseClass = props.classPrefix || '';
+  var prefix = props.classBasePrefix || '';
+  var size = props.size || 'medium';
+  var shape = props.shape || 'square';
+  var closable = props.closable || false;
+  var disabled = props.disabled || false;
+  var checked = props.checked || false;
+  var tagClass = [
+    baseClass,
+    baseClass + '--checkable',
+    closable ? baseClass + '--closable ' + prefix + '-is-closable' : '',
+    disabled ? baseClass + '--disabled ' + prefix + '-is-disabled' : '',
+    checked ? baseClass + '--checked ' + prefix + '-is-checked' : '',
+    baseClass + '--size-' + size,
+    shape === 'shape' ? baseClass + '--square' : '',
+    shape === 'round' ? baseClass + '--round' : '',
+    shape === 'circle' ? baseClass + '--circle' : '',
+  ];
+  return tagClass.join(' ');
+};
+var getTagStyle = function (maxWidth) {
+  if (!maxWidth) {
+    return '';
+  }
+  var width = typeof maxWidth === 'number' ? maxWidth + 'px' : maxWidth;
+  return 'maxWidth:' + width + ';';
+};
+module.exports.getTagClass = getTagClass;
+module.exports.getTagStyle = getTagStyle;

@@ -1,0 +1,36 @@
+<wxs src="./tabs.wxs" module="filters" />
+<view class="t-class {{classPrefix}} {{classPrefix}}--{{placement}}">
+  <scroll-view
+    class="{{classPrefix}}__scroll"
+    enable-flex
+    scroll-x="{{isScrollX}}"
+    scroll-y="{{isScrollY}}"
+  >
+    <view class="{{classPrefix}}__nav">
+      <view
+        wx:for="{{tabs}}"
+        wx:key="index"
+        data-index="{{index}}"
+        class="t-class-item {{classPrefix}}__item  {{item.disabled ? 't-is-disabled' : '' }} {{currentIndex === index ? 't-is-active t-class-active' : ''}}"
+        bind:tap="onTabTap"
+      >
+        {{item.label}}
+      </view>
+      <view class="{{classPrefix}}__track" style="{{trackStyle}}" />
+    </view>
+  </scroll-view>
+  <view
+    class="{{classPrefix}}__content"
+    bind:touchstart="onTouchStart"
+    bind:touchmove="onTouchMove"
+    bind:touchend="onTouchEnd"
+    bind:touchcancel="onTouchEnd"
+  >
+    <view
+      class="{{classPrefix}}__content-inner "
+      style="{{ filters.animate({duration: animate.duration,currentIndex:currentIndex, direction}) }}"
+    >
+      <slot />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<wxs src="./avatar-group.wxs" module="this" />
+
+<view
+  class="{{classPrefix}} {{this.getAvatarGroupOuterClass(classPrefix, size)}} {{prefix}}-class"
+  style="{{this.getAvatarGroupSizePx(size)}}"
+>
+  <slot />
+  <!-- 自定义折叠元素 -->
+  <view class="{{classPrefix}}__collapse--slot {{collapseAvatar ? '{{prefix}}-is-hidden' : ''}}">
+    <slot name="collapseAvatar" />
+  </view>
+  <!-- 默认折叠元素 -->
+  <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">
+    <t-avatar
+      alt="{{collapseAvatar || '+N'}}"
+      t-class-image="border-example-1"
+      t-class-alt="alt-example"
+      size="{{size}}"
+    />
+  </view>
+</view>

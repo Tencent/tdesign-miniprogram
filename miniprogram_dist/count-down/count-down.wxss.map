@@ -1,0 +1,1 @@
+{"version":3,"sources":["count-down/count-down.less"],"names":[],"mappings":"AAAA;EACE,cAAA;EACA,gBAAA;EACA,kBAAA;EACA,aAAa,iBAAiB,iCAA9B","sourcesContent":[".t-count-down {\n  color: #323233;\n  font-size: 24rpx;\n  line-height: 34rpx;\n  font-family: 'DIN Alternate', 'Courier New', Courier, monospace;\n}\n"],"file":"count-down.wxss"}

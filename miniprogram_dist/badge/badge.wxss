@@ -1,0 +1,80 @@
+.t-float-left {
+  float: left;
+}
+.t-float-right {
+  float: right;
+}
+@keyframes tdesign-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.t-badge {
+  position: relative;
+  display: inline-block;
+}
+.t-badge--basic {
+  display: inline-block;
+  z-index: 100;
+  font-size: 20rpx;
+  color: #fff;
+  background-color: #e34d59;
+  height: 32rpx;
+  padding: 0 8rpx;
+  text-align: center;
+  line-height: 32rpx;
+  font-weight: normal;
+}
+.t-badge--dot {
+  height: 20rpx;
+  border-radius: 8rpx;
+  min-width: 20rpx;
+  padding: 0;
+}
+.t-badge--small {
+  transform: translate(50%, -50%) scale(0.75);
+}
+.t-badge--circle {
+  border-radius: 16rpx;
+}
+.t-badge--round {
+  border-radius: 8rpx;
+}
+.t-badge__ribbon--outer {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.t-badge--ribbon {
+  transform: rotate(45deg);
+  padding: 0;
+}
+.t-badge--ribbon::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  left: -32rpx;
+  border-bottom: 32rpx solid #e34d59;
+  border-left: 32rpx solid transparent;
+}
+.t-badge--ribbon::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 0;
+  right: -32rpx;
+  border-bottom: 32rpx solid #e34d59;
+  border-right: 32rpx solid transparent;
+}
+.t-badge__content:not(:empty) + .t-has-count {
+  transform: translate(50%, -50%);
+  position: absolute;
+  right: 0;
+  top: 0;
+}

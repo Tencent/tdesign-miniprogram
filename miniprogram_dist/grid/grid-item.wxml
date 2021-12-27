@@ -1,0 +1,33 @@
+<view
+  class="{{classPrefix}} {{hover? classPrefix + '--hover':''}} t-class"
+  style="{{ gridItemStyle }}"
+  bindtap="onClick"
+>
+  <view
+    class="{{classPrefix}}__wrapper {{layout==='horizontal' ? classPrefix + '--horizontal' : ''}}"
+    style="{{gridItemWrapperStyle}}"
+  >
+    <view
+      class="{{classPrefix}}__content {{classPrefix + '--' + (align === 'center' ? 'center' : 'left')}}"
+      style="{{gridItemContentStyle}}"
+    >
+      <view class="{{classPrefix}}__image">
+        <t-image wx:if="{{image && image!== 'slot'}}" src="{{image}}" class="t-class-image" />
+        <slot wx:else name="image" class="t-class-image"></slot>
+      </view>
+      <view class="{{classPrefix}}__words">
+        <view wx:if="{{text && text !== 'slot'}}" class="{{classPrefix}}__text t-class-text">
+          {{text}}
+        </view>
+        <slot wx:else name="text" class="t-class-text"></slot>
+        <view
+          wx:if="{{description && description!== 'slot'}}"
+          class="{{classPrefix}}__description t-class-description"
+        >
+          {{description}}
+        </view>
+        <slot wx:else name="description" class="t-class-description"></slot>
+      </view>
+    </view>
+  </view>
+</view>

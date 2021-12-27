@@ -1,0 +1,17 @@
+<t-picker
+  visible="{{visible}}"
+  bindchange="onColumnChange"
+  bindconfirm="onConfirm"
+  bindcancel="onCancel"
+  title="{{title}}"
+  confirmBtn="{{confirmBtn || locale.confirm}}"
+  cancelBtn="{{cancelBtn || locale.cancel}}"
+>
+  <t-picker-column
+    wx:for="{{columns}}"
+    wx:key="index"
+    options="{{item}}"
+    index="{{index}}"
+    value="{{columnsValue[index]}}"
+  ></t-picker-column>
+</t-picker>

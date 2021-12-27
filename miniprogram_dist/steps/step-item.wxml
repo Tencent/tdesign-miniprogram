@@ -1,0 +1,33 @@
+<view
+  class="{{prefix}}-step {{prefix}}-step--{{layout}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} t-class"
+>
+  <view class="{{classPrefix}} {{classPrefix}}--{{curStatus}}">
+    <view class="{{classPrefix}}__inner {{icon ? classPrefix + '__inner--icon' : '' }}">
+      <view class="{{classPrefix}}-icon" bindtap="click">
+        <view wx:if="{{isDot}}" class="{{classPrefix}}-icon__dot"></view>
+        <view wx:elif="{{icon}}" class="{{classPrefix}}-icon__number {{classPrefix}}-icon__icon">
+          <slot wx:if="{{icon === 'slot'}}" name="icon" />
+          <t-icon
+            wx:else
+            name="{{icon}}"
+            size="{{layout == 'horizontal' ? '24px' : '16px'}}"
+          ></t-icon>
+        </view>
+        <view wx:else class="{{classPrefix}}-icon__number">{{index + 1}}</view>
+      </view>
+      <view class="{{classPrefix}}-content t-class-content">
+        <view class="{{classPrefix}}-title t-class-title">
+          {{ title }}
+          <slot name="title"></slot>
+        </view>
+        <view class="{{classPrefix}}-description t-class-description">
+          {{ content }}
+          <slot name="content" />
+        </view>
+        <view class="{{classPrefix}}-extra t-class-extra">
+          <slot name="extra" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,1 @@
+{"version":3,"sources":["common/style/utilities/_float.less"],"names":[],"mappings":"AAAC;EAIC,WAAA;;AAJD;EAQC,YAAA","sourcesContent":["// 公共前缀\n@prefix: t;\n\n.@{prefix}-float-left {\n  float: left;\n}\n\n.@{prefix}-float-right {\n  float: right;\n}\n"],"file":"_float.wxss"}

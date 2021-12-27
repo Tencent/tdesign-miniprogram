@@ -1,0 +1,43 @@
+<wxs src="./swiper.wxs" module="swiper" />
+<!-- 支持传入height指定容器高度，单位rpx -->
+<view
+  id="swiper"
+  class="{{prefix}}-class {{classPrefix}}"
+  style="{{height?'height:'+height+'rpx':''}}"
+>
+  <view
+    id="swiperContainer"
+    class="{{classPrefix}}__container {{inited? '{{prefix}}-in-animation' : '{{prefix}}-is-hidden'}}"
+    style="transition-duration: {{duration/1000}}s;transition-timing-function:{{easings.linear}};"
+    bindtouchstart="{{swiper.startDrag}}"
+    capture-catch:touchmove="{{swiper.onDrag}}"
+    bindtouchend="{{swiper.endDrag}}"
+    bindtouchcancel="{{swiper.endDrag}}"
+    offsetX="{{offsetX}}"
+    offsetY="{{offsetY}}"
+    width="{{_width}}"
+    height="{{_height}}"
+    direction="{{direction}}"
+    total="{{total}}"
+    currentInited="{{currentInited}}"
+    change:offsetX="{{swiper.changeOffsetX}}"
+    change:offsetY="{{swiper.changeOffsetY}}"
+    change:width="{{swiper.changeWidth}}"
+    change:height="{{swiper.changeHeight}}"
+    change:direction="{{swiper.changeDirection}}"
+    change:total="{{swiper.changeTotal}}"
+    change:currentInited="{{swiper.changeCurrentInited}}"
+  >
+    <slot />
+  </view>
+  <t-swiper-nav
+    id="swiperNav"
+    wx:if="{{_navigation}}"
+    type="{{_navigation.type}}"
+    minShowNum="{{_navigation.minShowNum}}"
+    hasNavBtn="{{_navigation.hasNavBtn}}"
+    bind:navBtnChange="onSwiperNavBtnChange"
+  />
+  <!-- 同时支持插槽组合 -->
+  <slot name="nav" />
+</view>
