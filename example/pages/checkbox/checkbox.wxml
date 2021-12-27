@@ -77,4 +77,5 @@
     </t-checkbox>
     <t-checkbox value="checkbox2" t-class="t-checkbox-demo" label="多选H56" checked> </t-checkbox>
   </t-demo>
+  <view style="height: 74rpx"></view>
 </view>
