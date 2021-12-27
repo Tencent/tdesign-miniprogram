@@ -53,11 +53,6 @@
       }
     }
 
-    .@{item}__icon--icon {
-      width: @connector-icon-icon-width;
-      height: @connector-icon-icon-width;
-    }
-
     .connector-default(horizontal);
   }
 
@@ -162,6 +157,11 @@
 .@{steps} {
   display: flex;
   width: 100%;
+
+  &-item__icon--large {
+    width: @connector-normal-icon-width;
+    height: @connector-normal-icon-width;
+  }
 
   // 垂直
   &--vertical {

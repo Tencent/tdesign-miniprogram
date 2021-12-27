@@ -5,7 +5,10 @@
     <view class="{{classPrefix}}__inner {{icon ? classPrefix + '__inner--icon' : '' }}">
       <view class="{{classPrefix}}__icon" bindtap="click">
         <view wx:if="{{isDot}}" class="{{classPrefix}}__icon--dot"></view>
-        <view wx:elif="{{icon}}" class="{{classPrefix}}__icon--number {{classPrefix}}__icon--icon">
+        <view
+          wx:elif="{{icon}}"
+          class="{{classPrefix}}__icon--number {{layout === 'horizontal' ? (classPrefix + '__icon--large') : ''}}"
+        >
           <slot wx:if="{{icon === 'slot'}}" name="icon" />
           <t-icon
             wx:else
@@ -15,16 +18,16 @@
         </view>
         <view wx:else class="{{classPrefix}}__icon--number">{{index + 1}}</view>
       </view>
-      <view class="{{classPrefix}}__content t-class-content">
-        <view class="{{classPrefix}}__title t-class-title">
+      <view class="{{classPrefix}}__content {{prefix}}-class-content">
+        <view class="{{classPrefix}}__title {{prefix}}-class-title">
           {{ title }}
-          <slot name="title"></slot>
+          <slot name="title" />
         </view>
-        <view class="{{classPrefix}}__description t-class-description">
+        <view class="{{classPrefix}}__description {{prefix}}-class-description">
           {{ content }}
           <slot name="content" />
         </view>
-        <view class="{{classPrefix}}__extra t-class-extra">
+        <view class="{{classPrefix}}__extra {{prefix}}-class-extra">
           <slot name="extra" />
         </view>
       </view>
