@@ -20,6 +20,11 @@
   bindopensetting="opensetting"
   bindlaunchapp="launchapp"
 >
-  <t-icon class="t-button__icon t-class" wx:if="{{icon}}" name="{{icon}}" size="44rpx"></t-icon>
+  <t-icon
+    wx:if="{{icon}}"
+    name="{{icon}}"
+    size="44rpx"
+    class="{{classPrefix}}__icon {{prefix}}-class"
+  ></t-icon>
   <slot />
 </button>
