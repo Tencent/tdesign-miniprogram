@@ -35,7 +35,7 @@ const defaultNavigation = {
 
 @wxComponent()
 export default class Swiper extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   options = {
     multipleSlots: true,
