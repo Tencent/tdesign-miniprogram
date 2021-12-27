@@ -92,6 +92,7 @@
     <t-radio value="radio1" label="单选H48" t-class="t-radio-padding" checked />
     <t-radio value="radio2" label="单选H56" t-class="t-radio-demo" checked />
   </t-demo>
+  <view style="height: 74rpx"></view>
   <!-- <t-demo>
   <t-radio-group options="{{options}}" value="数字" bindchange="onChange"></t-radio-group>
 </t-demo> -->

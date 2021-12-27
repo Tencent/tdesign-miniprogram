@@ -10,7 +10,7 @@ const iconDefault = {
   'stroke-line': ['check', ''],
 };
 @wxComponent()
-export default class PullDownRefresh extends SuperComponent {
+export default class Radio extends SuperComponent {
   externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
 
   relations = {
