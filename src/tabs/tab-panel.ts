@@ -16,6 +16,7 @@ export default class TabPanel extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
     active: false,
     hide: true,
