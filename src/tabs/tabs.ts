@@ -53,6 +53,7 @@ export default class Tabs extends SuperComponent {
   };
 
   data = {
+    prefix,
     classPrefix: name,
     tabs: [],
     currentIndex: -1,
