@@ -11,8 +11,8 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "steps": "tdesign-miniprogram/steps/steps",
-  "step": "tdesign-miniprogram/step-item/step-item"
+  "t-steps": "tdesign-miniprogram/steps/steps",
+  "t-step": "tdesign-miniprogram/steps/step-item"
 }
 ```
 
