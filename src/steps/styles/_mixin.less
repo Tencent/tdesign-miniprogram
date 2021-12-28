@@ -18,7 +18,7 @@
       position: relative;
       color: @border-level-2-color;
 
-      &--number {
+      &-number {
         display: block;
         display: flex;
         justify-content: center;
@@ -114,26 +114,26 @@
 
 .default-number-status(@anchor-status) {
   & when(@anchor-status = default) {
-    .@{item}__icon--number {
+    .@{item}__icon-number {
       border-color: @primary-color;
       color: @primary-color;
     }
   }
   & when(@anchor-status = finish) {
-    .@{item}__icon--number {
+    .@{item}__icon-number {
       border-color: @primary-color;
       color: @primary-color;
     }
   }
   & when(@anchor-status = process) {
-    .@{item}__icon--number {
+    .@{item}__icon-number {
       background: @primary-color;
       color: @text-anti-primary-color;
       border-color: @primary-color;
     }
   }
   & when(@anchor-status = error) {
-    .@{item}__icon--number {
+    .@{item}__icon-number {
       background: @step-error-bg-color;
       color: @text-anti-primary-color;
       border-color: @step-error-bg-color;
