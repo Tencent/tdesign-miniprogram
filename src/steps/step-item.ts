@@ -17,11 +17,11 @@ export default class StepItem extends SuperComponent {
   };
 
   externalClasses = [
-    't-class',
-    't-class-content',
-    't-class-title',
-    't-class-description',
-    't-class-extra',
+    `${prefix}-class`,
+    `${prefix}-class-content`,
+    `${prefix}-class-title`,
+    `${prefix}-class-description`,
+    `${prefix}-class-extra`,
   ];
 
   properties = props;

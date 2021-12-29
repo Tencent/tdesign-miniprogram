@@ -16,12 +16,13 @@ export default class Steps extends SuperComponent {
     },
   };
 
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   properties = props;
 
   // 组件的内部数据
   data = {
+    prefix,
     classPrefix: name,
   };
 
