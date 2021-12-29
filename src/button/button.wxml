@@ -1,5 +1,5 @@
 <button
-  class="{{className}}"
+  class="{{className}} {{prefix}}-class"
   form-type="{{formType}}"
   open-type="{{openType}}"
   hover-stop-propagation="{{hoverStopPropagation}}"
@@ -20,6 +20,11 @@
   bindopensetting="opensetting"
   bindlaunchapp="launchapp"
 >
-  <t-icon class="t-button__icon t-class" wx:if="{{icon}}" name="{{icon}}" size="44rpx"></t-icon>
+  <t-icon
+    wx:if="{{icon}}"
+    name="{{icon}}"
+    size="44rpx"
+    class="{{classPrefix}}__icon {{prefix}}-class-icon"
+  ></t-icon>
   <slot />
 </button>
