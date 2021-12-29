@@ -6,17 +6,23 @@ const { prefix } = config;
 const name = `${prefix}-dialog`;
 
 @wxComponent()
-export default class Dailog extends SuperComponent {
+export default class Dialog extends SuperComponent {
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
     addGlobalClass: true,
   };
 
-  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-action'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-confirm`,
+    `${prefix}-class-cancel`,
+    `${prefix}-class-action`,
+  ];
 
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
   };
 
@@ -48,11 +54,11 @@ export default class Dailog extends SuperComponent {
   }
 
   onActionTap(e: any) {
+    const { index } = e.currentTarget.dataset;
+
     this.setData({
       visible: false,
     });
-
-    const { index } = e.currentTarget.dataset;
     this.triggerEvent('action', { index });
     this._onAction && this._onAction({ index });
   }
