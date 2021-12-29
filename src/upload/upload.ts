@@ -1,19 +1,23 @@
 import { isObject, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import { MediaType, UploadMpConfig, UploadFile } from './type';
+import config from '../common/config';
 
+const { prefix } = config;
+const name = `${prefix}-upload`;
 @wxComponent()
 export default class Upload extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   options = {
     multipleSlots: true,
   };
 
   data = {
+    classPrefix: name,
+    prefix,
     current: false,
     proofs: [],
-    // showPop: false,
     customFiles: [] as UploadFile[], // 内部动态修改的files
     customLimit: 0, // 内部动态修改的limit
     mediaType: [] as MediaType[], // 这里由于小程序api问题目前不支持同时上传视频和图片
