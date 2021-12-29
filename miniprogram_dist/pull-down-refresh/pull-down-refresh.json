@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-loading": "tdesign-miniprogram/loading/loading"
-  }
-}
