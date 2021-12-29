@@ -20,7 +20,6 @@
         password="{{type === 'password'}}"
         type="{{type === 'password' ? 'text' : type}}"
         focus="{{focus}}"
-        auto-focus="{{autofocus}}"
         confirm-type="{{confirmType}}"
         confirm-hold="{{confirmHold}}"
         adjust-position="{{adjustPosition}}"
