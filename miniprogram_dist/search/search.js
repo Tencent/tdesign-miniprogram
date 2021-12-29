@@ -12,7 +12,13 @@ const name = `${prefix}-search`;
 let Search = class Search extends SuperComponent {
     constructor() {
         super(...arguments);
-        this.externalClasses = ['t-class', 't-class-input', 't-class-cancel', 't-class-left', 't-class-right'];
+        this.externalClasses = [
+            `${prefix}-class`,
+            `${prefix}-class-input`,
+            `${prefix}-class-cancel`,
+            `${prefix}-class-left`,
+            `${prefix}-class-right`,
+        ];
         this.options = {
             multipleSlots: true,
         };

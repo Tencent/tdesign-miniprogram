@@ -4,7 +4,9 @@ export default class Button extends SuperComponent {
     behaviors: string[];
     properties: import("./type").TdButtonProps;
     data: {
+        prefix: string;
         className: string;
+        classPrefix: string;
     };
     observers: {
         'theme, size, plain, block, shape, disabled, loading'(): void;

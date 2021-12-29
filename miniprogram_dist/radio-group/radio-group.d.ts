@@ -2,6 +2,7 @@ import { SuperComponent } from '../common/src/index';
 export default class RadioGroup extends SuperComponent {
     externalClasses: string[];
     data: {
+        prefix: string;
         classPrefix: string;
         radioOptions: any[];
     };

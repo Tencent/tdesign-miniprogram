@@ -7,6 +7,7 @@ export default class TabPanel extends SuperComponent {
     };
     properties: import("./type").TdTabPanelProps;
     data: {
+        prefix: string;
         classPrefix: string;
         active: boolean;
         hide: boolean;

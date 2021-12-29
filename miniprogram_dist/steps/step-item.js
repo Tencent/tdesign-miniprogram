@@ -20,11 +20,11 @@ let StepItem = class StepItem extends SuperComponent {
             },
         };
         this.externalClasses = [
-            't-class',
-            't-class-content',
-            't-class-title',
-            't-class-description',
-            't-class-extra',
+            `${prefix}-class`,
+            `${prefix}-class-content`,
+            `${prefix}-class-title`,
+            `${prefix}-class-description`,
+            `${prefix}-class-extra`,
         ];
         this.properties = props;
         // 组件的内部数据

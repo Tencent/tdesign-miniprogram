@@ -6,17 +6,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { isObject, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
+import config from '../common/config';
+const { prefix } = config;
+const name = `${prefix}-upload`;
 let Upload = class Upload extends SuperComponent {
     constructor() {
         super(...arguments);
-        this.externalClasses = ['t-class'];
+        this.externalClasses = [`${prefix}-class`];
         this.options = {
             multipleSlots: true,
         };
         this.data = {
+            classPrefix: name,
+            prefix,
             current: false,
             proofs: [],
-            // showPop: false,
             customFiles: [],
             customLimit: 0,
             mediaType: [],

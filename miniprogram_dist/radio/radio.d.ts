@@ -14,6 +14,7 @@ export default class Radio extends SuperComponent {
     };
     properties: import("./type").TdRadioProps;
     data: {
+        prefix: string;
         active: boolean;
         classPrefix: string;
         classBasePrefix: string;

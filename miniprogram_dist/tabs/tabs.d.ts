@@ -15,6 +15,7 @@ export default class Tabs extends SuperComponent {
         animation(v: any): void;
     };
     data: {
+        prefix: string;
         classPrefix: string;
         tabs: any[];
         currentIndex: number;

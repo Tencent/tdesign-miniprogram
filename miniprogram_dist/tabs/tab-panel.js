@@ -19,6 +19,7 @@ let TabPanel = class TabPanel extends SuperComponent {
         };
         this.properties = props;
         this.data = {
+            prefix,
             classPrefix: name,
             active: false,
             hide: true,

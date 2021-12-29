@@ -4,6 +4,7 @@ export default class Steps extends SuperComponent {
     externalClasses: string[];
     properties: import("./type").TdStepsProps;
     data: {
+        prefix: string;
         classPrefix: string;
     };
     methods: {

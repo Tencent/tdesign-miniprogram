@@ -20,10 +20,11 @@ let Steps = class Steps extends SuperComponent {
                 },
             },
         };
-        this.externalClasses = ['t-class'];
+        this.externalClasses = [`${prefix}-class`];
         this.properties = props;
         // 组件的内部数据
         this.data = {
+            prefix,
             classPrefix: name,
         };
         this.methods = {

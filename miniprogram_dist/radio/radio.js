@@ -16,7 +16,7 @@ const iconDefault = {
 let Radio = class Radio extends SuperComponent {
     constructor() {
         super(...arguments);
-        this.externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
+        this.externalClasses = [`${prefix}-class`, `${prefix}-class-label`, `${prefix}-class-icon`, `${prefix}-class-content`];
         this.relations = {
             '../radio-group/radio-group': {
                 type: 'ancestor',
@@ -32,6 +32,7 @@ let Radio = class Radio extends SuperComponent {
         };
         this.properties = Props;
         this.data = {
+            prefix,
             active: false,
             classPrefix: name,
             classBasePrefix: prefix,

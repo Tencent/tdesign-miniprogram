@@ -115,7 +115,7 @@
   background-color: transparent;
   color: #f8b9be;
 }
-.t-button--size-large {
+.t-button.t-size-l {
   display: flex;
   margin: 0 32rpx;
   height: 88rpx;
@@ -123,20 +123,20 @@
   padding-left: 48rpx;
   padding-right: 48rpx;
 }
-.t-button--size-medium {
+.t-button.t-size-m {
   width: 480rpx;
   height: 80rpx;
   line-height: 1.5;
   padding-left: 32rpx;
   padding-right: 32rpx;
 }
-.t-button--size-small {
+.t-button.t-size-s {
   height: 72rpx;
   line-height: 72rpx;
   padding-left: 40rpx;
   padding-right: 40rpx;
 }
-.t-button--size-small .t-button__icon {
+.t-button.t-size-s .t-button__icon {
   font-size: 28rpx;
 }
 .t-button__icon {

@@ -1,3 +1,22 @@
+.t-float-left {
+  float: left;
+}
+.t-float-right {
+  float: right;
+}
+@keyframes tdesign-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.limit-title-row {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .t-radio {
   display: flex;
   flex-direction: row;
@@ -6,18 +25,17 @@
   background: white;
   position: relative;
 }
-.t-radio .limit-title-row {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.t-radio--right {
+  flex-direction: row-reverse;
 }
-.t-radio__icon-left {
+.t-radio__icon {
+  width: 48rpx;
+}
+.t-radio__icon--left {
   margin-right: 20rpx;
-  width: 48rpx;
 }
-.t-radio__icon-right {
+.t-radio__icon--right {
   margin-left: auto;
-  width: 48rpx;
 }
 .t-radio__image {
   line-height: 48rpx;
@@ -39,6 +57,10 @@
   line-height: 48rpx;
   margin-right: 10px;
 }
+.t-radio__content--disabled {
+  cursor: not-allowed;
+  color: rgba(0, 0, 0, 0.26);
+}
 .t-radio__title {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -59,22 +81,18 @@
   cursor: not-allowed;
   color: #dcdcdc;
 }
-.t-radio-is-disabled-context {
-  cursor: not-allowed;
-  color: rgba(0, 0, 0, 0.26);
-}
-.t-radio-border {
+.t-radio__border {
   position: absolute;
   bottom: 0;
   display: block;
   border-top: 1rpx solid #e7e7e7;
   width: 100%;
 }
-.t-radio-border-left {
+.t-radio__border--left {
   left: 80rpx;
   width: calc(100% - 80rpx);
 }
-.t-radio-border-right {
+.t-radio__border--right {
   right: 80rpx;
   width: calc(100% - 80rpx);
 }

@@ -23,7 +23,7 @@ let Tabs = class Tabs extends SuperComponent {
     constructor() {
         super(...arguments);
         this.behaviors = [dom, touch];
-        this.externalClasses = ['t-class', 't-class-item', 't-class-active'];
+        this.externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`];
         this.relations = {
             './tab-panel': {
                 type: 'descendant',
@@ -53,6 +53,7 @@ let Tabs = class Tabs extends SuperComponent {
             },
         };
         this.data = {
+            prefix,
             classPrefix: name,
             tabs: [],
             currentIndex: -1,
@@ -133,7 +134,7 @@ let Tabs = class Tabs extends SuperComponent {
         const { currentIndex, isScrollX, direction } = this.data;
         if (currentIndex <= -1)
             return;
-        this.gettingBoundingClientRect('.t-tabs-item', true).then((res) => {
+        this.gettingBoundingClientRect(`.${prefix}-tabs__item`, true).then((res) => {
             const rect = res[currentIndex];
             if (!rect)
                 return;

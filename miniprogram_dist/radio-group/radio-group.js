@@ -12,8 +12,9 @@ const name = `${prefix}-radio-group`;
 let RadioGroup = class RadioGroup extends SuperComponent {
     constructor() {
         super(...arguments);
-        this.externalClasses = ['t-class'];
+        this.externalClasses = [`${prefix}-class`];
         this.data = {
+            prefix,
             classPrefix: name,
             radioOptions: [],
         };
@@ -40,7 +41,7 @@ let RadioGroup = class RadioGroup extends SuperComponent {
             updateChildren() {
                 let items = this.getRelationNodes('../radio/radio');
                 if (!items.length) {
-                    items = this.selectAllComponents('.t-radio-option');
+                    items = this.selectAllComponents(`.${prefix}-radio-option`);
                 }
                 const { value, disabled } = this.data;
                 if (items.length > 0) {
@@ -64,7 +65,7 @@ let RadioGroup = class RadioGroup extends SuperComponent {
                     value: name,
                 });
                 this.triggerEvent('change', name);
-                const items = this.selectAllComponents('.t-radio-option');
+                const items = this.selectAllComponents(`.${prefix}-radio-option`);
                 if (items.length > 0) {
                     items.forEach((item) => {
                         item.changeActive(name === item.data.value);
@@ -73,7 +74,7 @@ let RadioGroup = class RadioGroup extends SuperComponent {
             },
             // 设置option选项
             handleOptionLinked() {
-                const items = this.selectAllComponents('.t-radio-option');
+                const items = this.selectAllComponents(`.${prefix}-radio-option`);
                 if (this.data.radioOptions.length) {
                     items.forEach((item) => {
                         item.setOptionLinked(true);

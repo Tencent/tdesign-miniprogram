@@ -12,14 +12,16 @@ const name = `${prefix}-button`;
 let Button = class Button extends SuperComponent {
     constructor() {
         super(...arguments);
-        this.externalClasses = ['t-class'];
+        this.externalClasses = [`${prefix}-class`, `${prefix}-class-icon`];
         this.behaviors = ['wx://form-field-button'];
         // 组件的对外属性
         this.properties = props;
         // 组件的内部数据
         this.data = {
             // 按钮样式列表
+            prefix,
             className: '',
+            classPrefix: name,
         };
         this.observers = {
             'theme, size, plain, block, shape, disabled, loading'() {
@@ -46,9 +48,9 @@ let Button = class Button extends SuperComponent {
             setClass() {
                 const classList = [
                     name,
-                    't-class',
+                    `${prefix}-class`,
                     `${name}--${this.data.theme || 'default'}`,
-                    `${name}--size-${this.data.size}`,
+                    `${prefix}-size-${this.data.size.slice(0, 1)}`,
                 ];
                 classList.push(`${name}--${this.data.shape}`);
                 if (this.data.block) {

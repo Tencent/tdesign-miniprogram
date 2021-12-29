@@ -10,11 +10,6 @@ const props = {
         type: String,
         value: 'left',
     },
-    /** 自动聚焦 */
-    autofocus: {
-        type: Boolean,
-        value: false,
-    },
     /** 是否可清空 */
     clearable: {
         type: Boolean,

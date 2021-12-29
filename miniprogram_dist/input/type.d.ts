@@ -22,15 +22,6 @@ export interface TdInputProps {
         required?: boolean;
     };
     /**
-     * 自动聚焦
-     * @default false
-     */
-    autofocus?: {
-        type: BooleanConstructor;
-        value?: boolean;
-        required?: boolean;
-    };
-    /**
      * 是否可清空
      * @default false
      */

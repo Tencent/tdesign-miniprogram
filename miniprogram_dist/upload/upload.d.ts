@@ -6,6 +6,8 @@ export default class Upload extends SuperComponent {
         multipleSlots: boolean;
     };
     data: {
+        classPrefix: string;
+        prefix: string;
         current: boolean;
         proofs: any[];
         customFiles: UploadFile[];
