@@ -8,18 +8,18 @@
       t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
       t-class-content="{{classPrefix}}__grid-content"
     >
-      <view class="{{classPrefix}}__grid-item-wrapper" slot="image" style="{{gridItemStyle}}">
+      <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
         <image
           wx:if="{{file.type !== 'video'}}"
           bindtap="onProofTap"
           data-index="{{index}}"
-          class="{{classPrefix}}__grid-file-thumbnail"
+          class="{{classPrefix}}__thumbnail"
           src="{{file.url}}"
           mode="scaleToFill"
         />
         <video
           wx:if="{{file.type === 'video'}}"
-          class="{{classPrefix}}__grid-file-thumbnail"
+          class="{{classPrefix}}__thumbnail"
           src="{{file.url}}"
           controls
           autoplay="{{false}}"
@@ -37,11 +37,7 @@
           <view wx:else class="{{classPrefix}}__progress-value">{{file.percent}}%</view>
         </view>
         <!-- 删除 -->
-        <view
-          class="{{classPrefix}}__grid-file__close-btn"
-          bindtap="onDelete"
-          data-index="{{index}}"
-        >
+        <view class="{{classPrefix}}__close-btn" bindtap="onDelete" data-index="{{index}}">
           <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
           <t-icon wx:else name="close" size="34rpx" color="#fff" />
         </view>
@@ -54,8 +50,8 @@
       t-class-content="{{classPrefix}}__grid-content"
       bindclick="onAddTap"
     >
-      <view class="{{classPrefix}}__grid-item-wrapper" slot="image" style="{{gridItemStyle}}">
-        <view class="{{classPrefix}}__grid--add-btn__icon">
+      <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
+        <view class="{{classPrefix}}__add-icon">
           <slot wx:if="{{addContent === 'slot'}}" name="addContent" />
           <t-icon wx:else name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
         </view>
