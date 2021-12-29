@@ -1,4 +1,5 @@
 _site
+miniprogram_dist
 dist
 _example
 test/e2e
