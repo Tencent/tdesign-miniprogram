@@ -3,13 +3,11 @@
     class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center && !localValue.keyword && 'center'}} {{classPrefix}}__input-box--{{shape}} "
     bind:tap="tapWhenCenterActiveHandle"
   >
-    <view wx:if="{{ label }}" class="{{classPrefix}}__label {{prefix}}-class-label">
-      {{ label }}
-    </view>
+    <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label"> {{label}} </view>
     <slot wx:else name="label" />
 
     <t-icon
-      wx:if=" {{ leftIcon }}"
+      wx:if="{{leftIcon}}"
       name="{{leftIcon}}"
       size="20px"
       class="{{prefix}}-icon {{prefix}}-class-left"
