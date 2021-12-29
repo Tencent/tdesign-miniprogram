@@ -7,7 +7,7 @@ const name = `${prefix}-button`;
 
 @wxComponent()
 export default class Button extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`];
 
   behaviors = ['wx://form-field-button'];
 

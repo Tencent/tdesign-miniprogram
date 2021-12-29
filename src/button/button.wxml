@@ -1,5 +1,5 @@
 <button
-  class="{{className}}"
+  class="{{className}} {{prefix}}-class"
   form-type="{{formType}}"
   open-type="{{openType}}"
   hover-stop-propagation="{{hoverStopPropagation}}"
@@ -24,7 +24,7 @@
     wx:if="{{icon}}"
     name="{{icon}}"
     size="44rpx"
-    class="{{classPrefix}}__icon {{prefix}}-class"
+    class="{{classPrefix}}__icon {{prefix}}-class-icon"
   ></t-icon>
   <slot />
 </button>
