@@ -11,7 +11,7 @@
         wx:for="{{tabs}}"
         wx:key="index"
         data-index="{{index}}"
-        class="{{prefix}}-class-item {{classPrefix}}__item  {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
+        class="{{classPrefix}}__item {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
         bind:tap="onTabTap"
       >
         {{item.label}}

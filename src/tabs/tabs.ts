@@ -161,7 +161,7 @@ export default class Tabs extends SuperComponent {
       this.setData({
         trackStyle,
       });
-    });
+    }).catch(console.log);
   }
 
   trigger(eventName: string, index: number) {
