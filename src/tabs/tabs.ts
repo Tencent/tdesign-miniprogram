@@ -18,7 +18,7 @@ const trackLineWidth = 30;
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
 
-  externalClasses = ['t-class', 't-class-item', 't-class-active'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`];
 
   relations = {
     './tab-panel': {
@@ -53,6 +53,7 @@ export default class Tabs extends SuperComponent {
   };
 
   data = {
+    prefix,
     classPrefix: name,
     tabs: [],
     currentIndex: -1,
@@ -134,7 +135,7 @@ export default class Tabs extends SuperComponent {
     if (!children) return;
     const { currentIndex, isScrollX, direction } = this.data;
     if (currentIndex <= -1) return;
-    this.gettingBoundingClientRect('.t-tabs-item', true).then((res: any) => {
+    this.gettingBoundingClientRect(`.${prefix}-tabs__item`, true).then((res: any) => {
       const rect = res[currentIndex];
       if (!rect) return;
       let count = 0;
@@ -160,7 +161,7 @@ export default class Tabs extends SuperComponent {
       this.setData({
         trackStyle,
       });
-    });
+    }).catch(console.log);
   }
 
   trigger(eventName: string, index: number) {

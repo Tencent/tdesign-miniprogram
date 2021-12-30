@@ -7,7 +7,13 @@ const name = `${prefix}-search`;
 
 @wxComponent()
 export default class Search extends SuperComponent {
-  externalClasses = ['t-class', 't-class-input', 't-class-cancel', 't-class-left', 't-class-right'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-input`,
+    `${prefix}-class-cancel`,
+    `${prefix}-class-left`,
+    `${prefix}-class-right`,
+  ];
 
   options = {
     multipleSlots: true,

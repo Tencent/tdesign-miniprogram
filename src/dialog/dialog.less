@@ -1,6 +1,6 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
+@dialog: ~"@{prefix}-dialog";
 // size
 @dialog-width: 322rpx * 2;
 @dialog-body-min-height: 88rpx * 2;
@@ -14,7 +14,7 @@
 @dialog-input-bg-color: #f0f0f0;
 
 page {
-  .@{prefix}-dialog {
+  .@{dialog} {
     overflow: hidden;
     width: @dialog-width;
     border-radius: @border-radius;
@@ -48,7 +48,7 @@ page {
       color: @text-level-3-color;
       margin-top: @spacer-2;
 
-      &.no-title {
+      &--without-title {
         margin-top: 0;
       }
 
@@ -71,7 +71,7 @@ page {
       &--column {
         flex-flow: column-reverse;
 
-        .t-dialog__button {
+        .@{dialog}__button {
           width: 100%;
         }
       }
@@ -84,7 +84,6 @@ page {
       flex: 1;
       font-size: @font-size-m;
       padding: 0 @spacer-3;
-
       background-color: @bg-color-block;
       width: @dialog-width;
       height: @dialog-btn-height;

@@ -1,7 +1,7 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "tdesign-miniprogram",
   "title": "tdesign-miniprogram",
   "main": "miniprogram_dist/index.js",
@@ -45,7 +45,7 @@
     "gray-matter": "^4.0.3",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.2",
-    "gulp-less": "^4.0.1",
+    "gulp-less": "^5.0.0",
     "gulp-mp-npm": "^1.9.7",
     "gulp-plumber": "^1.2.1",
     "gulp-rename": "^2.0.0",
@@ -76,9 +76,6 @@
     ],
     "{src,example}/**/*.{js,ts}": [
       "eslint --fix"
-    ],
-    "{src,example}/**/*.less": [
-      "stylelint --fix"
     ]
   },
   "dependencies": {

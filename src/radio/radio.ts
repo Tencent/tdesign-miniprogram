@@ -10,8 +10,8 @@ const iconDefault = {
   'stroke-line': ['check', ''],
 };
 @wxComponent()
-export default class PullDownRefresh extends SuperComponent {
-  externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
+export default class Radio extends SuperComponent {
+  externalClasses = [`${prefix}-class`, `${prefix}-class-label`, `${prefix}-class-icon`, `${prefix}-class-content`];
 
   relations = {
     '../radio-group/radio-group': {
@@ -32,6 +32,7 @@ export default class PullDownRefresh extends SuperComponent {
   properties = Props;
 
   data = {
+    prefix,
     active: false,
     classPrefix: name,
     classBasePrefix: prefix,

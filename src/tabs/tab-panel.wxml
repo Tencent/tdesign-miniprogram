@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="utils" />
 <view
   wx:if="{{!(destroyOnHide && hide)}}"
-  class="{{classPrefix}} {{active ? 't-is-active': ''}}"
+  class="{{classPrefix}} {{active ? prefix + '-is-active': ''}}"
   style="{{hide ? 'display:none;' :''}}"
 >
   <view wx:if="{{panel}}">{{panel}}</view>

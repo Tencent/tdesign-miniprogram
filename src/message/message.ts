@@ -24,10 +24,11 @@ export default class Message extends SuperComponent {
   };
 
   // 组件的对外属性
-  properties: MessageProps = ({ ...props } as unknown) as MessageProps;
+  properties: MessageProps = { ...props } as unknown as MessageProps;
 
   // 组件的内部数据
   data = {
+    prefix,
     classPrefix: name,
     visible: false,
     loop: -1,
@@ -149,8 +150,8 @@ export default class Message extends SuperComponent {
       this.clearMessageAnimation();
     }
 
-    const warpID = '#t-message--text-wrap';
-    const nodeID = '#t-message--text';
+    const warpID = `#${name}__text-wrap`;
+    const nodeID = `#${name}__text`;
     Promise.all([this.queryWidth(nodeID), this.queryWidth(warpID)]).then(
       ([nodeWidth, warpWidth]) => {
         this.setData(
@@ -171,10 +172,10 @@ export default class Message extends SuperComponent {
             // 这里就只能用 setTimeout/20, nextTick 没用
             // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
             setTimeout(() => {
-              this.nextAnimationContext = (setTimeout(
+              this.nextAnimationContext = setTimeout(
                 this.checkAnimation.bind(this),
                 durationTime,
-              ) as unknown) as number;
+              ) as unknown as number;
 
               this.setData({ animation: nextAnimation });
             }, 20);
@@ -221,13 +222,13 @@ export default class Message extends SuperComponent {
     this.setIcon(icon);
     this.checkAnimation();
     if (duration && duration > 0) {
-      this.closeTimeoutContext = (setTimeout(() => {
+      this.closeTimeoutContext = setTimeout(() => {
         this.hide();
         this.triggerEvent('durationEnd', { self: this });
-      }, duration) as unknown) as number;
+      }, duration) as unknown as number;
     }
 
-    const wrapID = '#t-message';
+    const wrapID = `#${name}`;
     this.queryHeight(wrapID).then((wrapHeight) => {
       this.setData({ showAnimation: this.showAnimation, wrapTop: -wrapHeight });
     });

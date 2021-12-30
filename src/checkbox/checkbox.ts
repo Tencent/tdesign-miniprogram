@@ -5,7 +5,7 @@ import Props from './props';
 const { prefix } = config;
 const currentComponent = `${prefix}-checkbox`;
 @wxComponent()
-export default class Checkbox extends SuperComponent {
+export default class CheckBox extends SuperComponent {
   externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
 
   relations = {
