@@ -46,7 +46,7 @@ isComponent: true
   max="5"
   collapseAvatar="+5"
   size="small"
-  class="border-example-show"
+  t-class="border-example-show"
 >
   <t-avatar
     wx:for="{{['aaa.jpg', 'bbb.jpg', 'ccc.jpg', 'ddd.jpg', 'eee.jpg', 'fff.jpg']}}"

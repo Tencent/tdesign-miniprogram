@@ -7,6 +7,8 @@ const name = `${prefix}-avatar-group`;
 
 @wxComponent()
 export default class AvatarGroup extends SuperComponent {
+  externalClasses = ['t-class'];
+
   properties = avatarGroupProps;
 
   data = {
