@@ -203,6 +203,9 @@ export default class Tabs extends SuperComponent {
       const index = this.getAvailableTabIndex(deltaX);
       if (index !== -1) {
         this.setCurrentIndex(index);
+        wx.nextTick(() => {
+          this.trigger('change', index);
+        });
       }
     }
   }
