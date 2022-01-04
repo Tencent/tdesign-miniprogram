@@ -7,6 +7,10 @@
     "skipLibCheck": true,
     "declaration": true,
     "baseUrl": ".",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "tdesign-miniprogram/*": ["miniprogram_dist/*"]
     }
