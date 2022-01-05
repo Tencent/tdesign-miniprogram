@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
+ * updated at 2022-01-05 17:42:37
  * */
 
 export interface TdInputProps {
@@ -87,7 +87,15 @@ export interface TdInputProps {
     required?: boolean;
   };
   /**
-   * 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度
+   * 左侧文本
+   */
+  label?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
+   * 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用
    */
   maxcharacter?: {
     type: NumberConstructor;
@@ -95,7 +103,7 @@ export interface TdInputProps {
     required?: boolean;
   };
   /**
-   * 用户最多可以输入的文本长度。值小于等于 0 的时候，则不限制输入长度
+   * 用户最多可以输入的文本长度。值小于等于 0 的时候，则不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用
    */
   maxlength?: {
     type: NumberConstructor;
@@ -103,19 +111,17 @@ export interface TdInputProps {
     required?: boolean;
   };
   /**
-   * 名称
-   * @default ''
+   * 占位符
    */
-  name?: {
+  placeholder?: {
     type: StringConstructor;
     value?: string;
     required?: boolean;
   };
   /**
-   * 占位符
-   * @default ''
+   * 组件前置图标，值为字符串则表示图标名称
    */
-  placeholder?: {
+  prefixIcon?: {
     type: StringConstructor;
     value?: string;
     required?: boolean;
@@ -130,8 +136,7 @@ export interface TdInputProps {
     required?: boolean;
   };
   /**
-   * 后置文本内容
-   * @default ''
+   * 后置图标前的后置内容
    */
   suffix?: {
     type: StringConstructor;
@@ -139,7 +144,7 @@ export interface TdInputProps {
     required?: boolean;
   };
   /**
-   * 组件后置图标
+   * 后置文本内容，值为字符串则表示图标名称
    */
   suffixIcon?: {
     type: StringConstructor;
@@ -164,6 +169,6 @@ export interface TdInputProps {
     value?: InputValue;
     required?: boolean;
   };
-};
+}
 
 export type InputValue = string | number;
