@@ -27,4 +27,6 @@
     class="{{classPrefix}}__icon {{prefix}}-class-icon"
   ></t-icon>
   <slot />
+  <slot name="content" />
+  {{content || ''}}
 </button>

@@ -18,6 +18,14 @@ export interface TdButtonProps {
     required?: boolean;
   };
   /**
+   * 按钮内容
+   */
+  content?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
    * 是否禁用按钮
    * @default false
    */

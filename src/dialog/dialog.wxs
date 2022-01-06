@@ -1,0 +1,3 @@
+module.exports.getTypeof = function (obj) {
+  return typeof obj;
+};
