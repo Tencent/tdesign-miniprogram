@@ -51,7 +51,7 @@ export default class Button extends SuperComponent {
         name,
         `${prefix}-class`,
         `${name}--${this.data.theme || 'default'}`,
-        `${prefix}-size-${this.data.size.slice(0, 1)}`,
+        `${name}--size-${this.data.size.slice(0, 1)}`,
       ];
 
       classList.push(`${name}--${this.data.shape}`);
