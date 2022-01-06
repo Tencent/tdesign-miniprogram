@@ -1,3 +1,6 @@
+<import src="../common/template/button.wxml" />
+<wxs src="./dialog.wxs" module="_" />
+
 <t-popup
   visible="{{visible}}"
   showOverlay="{{showOverlay}}"
@@ -34,18 +37,23 @@
       </t-button>
       <slot name="actions" />
       <t-button
-        wx:if="{{cancelBtn}}"
+        wx:if="{{cancelBtn && _.getTypeof(cancelBtn) == 'string'}}"
         t-class="{{classPrefix}}__button {{classPrefix}}__button-cancel {{confirmBtn ? classPrefix + '__button-half' : ''}} {{prefix}}-class-cancel"
         bindtap="onCancel"
       >
         {{cancelBtn}}
       </t-button>
+      <block wx:elif="{{_.getTypeof(cancelBtn) == 'object'}}">
+        <template
+          is="button"
+          data="{{...confirmBtn, type: 'cancel', externalClass: classPrefix + '__button ' + classPrefix + '__button-cancel ' + (cancelBtn ? classPrefix + '__button-half ' : ' ') + prefix + '-class-cancel'}}"
+        ></template>
+      </block>
       <slot name="cancelBtn" />
       <t-button
-        wx:if="{{confirmBtn}}"
+        wx:if="{{confirmBtn && _.getTypeof(confirmBtn) == 'string'}}"
         t-class="{{classPrefix}}__button {{classPrefix}}__button-confirm {{cancelBtn ? classPrefix + '__button-half' : ''}} {{prefix}}-class-confirm"
-        bindtap="onConfirm"
-        open-type="{{confirmBtn.openType}}"
+        bind:tap="onConfirm"
         bind:getuserinfo="openValueCBHandle"
         bind:contact="openValueCBHandle"
         bind:getphonenumber="openValueCBHandle"
@@ -55,6 +63,12 @@
       >
         {{confirmBtn}}
       </t-button>
+      <block wx:elif="{{_.getTypeof(confirmBtn) == 'object'}}">
+        <template
+          is="button"
+          data="{{...confirmBtn, type: 'confirm', externalClass: classPrefix + '__button ' + classPrefix + '__button-confirm ' + (cancelBtn ? classPrefix + '__button-half ' : ' ') + prefix + '-class-confirm'}}"
+        ></template>
+      </block>
       <slot name="confirmBtn" />
     </view>
   </view>
