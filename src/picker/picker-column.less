@@ -1,11 +1,17 @@
 @import '../common/style/index.less';
 
+@column: ~"@{prefix}-picker-column";
 @picker-group-height: 400rpx;
 @picker-column-height: 80rpx;
 @picker-column-line-height: 80rpx;
 @picker-column-text-color: #000000;
 
-.@{prefix}-picker-column {
+@{column} {
+  display: flex;
+  flex: 1;
+}
+
+.@{column} {
   &__group {
     height: @picker-group-height;
     overflow: hidden;
@@ -24,9 +30,4 @@
     line-height: @picker-column-line-height;
     color: @picker-column-text-color;
   }
-}
-
-:host {
-  display: flex;
-  flex: 1;
 }

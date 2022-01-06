@@ -46,7 +46,7 @@ isComponent: true
   max="5"
   collapseAvatar="+5"
   size="small"
-  class="border-example-show"
+  t-class="border-example-show"
 >
   <t-avatar
     wx:for="{{['aaa.jpg', 'bbb.jpg', 'ccc.jpg', 'ddd.jpg', 'eee.jpg', 'fff.jpg']}}"
@@ -107,32 +107,31 @@ onAddTap() {
 ```
 
 ## API
-
 ### Avatar Props
 
-| 名称                | 类型          | 默认值 | 说明                                                                                                                                                                                            | 必传 |
-| ------------------- | ------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
-| alt                 | String        | -      | 头像替换文本                                                                                                                                                                                    | N    |
-| badge-props         | Object        | -      | 头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字。TS 类型：`BadgeProps`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N    |
-| external-classes    | Array         | -      | 组件类名，用于设置组件外层元素类名。`['t-class']`                                                                                                                                               | N    |
-| hide-on-load-failed | Boolean       | false  | 加载失败时隐藏图片                                                                                                                                                                              | N    |
-| icon                | String / Slot | -      | 图标                                                                                                                                                                                            | N    |
-| image               | String        | -      | 图片地址                                                                                                                                                                                        | N    |
-| shape               | String        | circle | 形状。可选项：circle/round。TS 类型：`ShapeEnum `。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts)                                          | N    |
-| size                | String        | -      | 尺寸，示例值：small/medium/large/24px/38px 等，默认为 large                                                                                                                                     | N    |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+alt | String | - | 头像替换文本 | N
+badge-props | Object | - | 头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字。TS 类型：`TdBadgeProps`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
+external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class', 't-class-image', 't-class-icon', 't-class-alt]` | N
+hide-on-load-failed | Boolean | false | 加载失败时隐藏图片 | N
+icon | String / Slot | - | 图标 | N
+image | String | - | 图片地址 | N
+shape | String | circle | 形状。可选项：circle/round。TS 类型：`ShapeEnum `。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
+size | String | - | 尺寸，示例值：small/medium/large/24px/38px 等，默认为 large | N
 
 ### Avatar Events
 
-| 名称  | 参数 | 描述               |
-| ----- | ---- | ------------------ |
-| error | -    | 图片加载失败时触发 |
+名称 | 参数 | 描述
+-- | -- | --
+error | - | 图片加载失败时触发
 
 ### AvatarGroup Props
 
-| 名称             | 类型          | 默认值     | 说明                                                                                                                                                                                                             | 必传 |
-| ---------------- | ------------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
-| cascading        | String        | 'right-up' | 图片之间的层叠关系，可选值：左侧图片在上和右侧图片在上。可选项：left-up/right-up。TS 类型：`CascadingValue`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N    |
-| collapse-avatar  | String / Slot | -          | 头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多`                                                                                                               | N    |
-| external-classes | Array         | -          | 组件类名，用于设置组件外层元素类名。`['t-class']`                                                                                                                                                                | N    |
-| max              | Number        | -          | 能够同时显示的最多头像数量                                                                                                                                                                                       | N    |
-| size             | String        | medium     | 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size                                                                                                                                            | N    |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+cascading | String | 'right-up' | 图片之间的层叠关系，可选值：左侧图片在上和右侧图片在上。可选项：left-up/right-up。TS 类型：`CascadingValue`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
+collapse-avatar | String / Slot | - | 头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多` | N
+external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class']` | N
+max | Number | - | 能够同时显示的最多头像数量 | N
+size | String | medium | 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size | N
