@@ -32,6 +32,8 @@ spline: explain
 npm i tdesign-miniprogram -S --production
 ```
 
+> 安装完之后，需要在微信开发者工具中对 npm 进行构建：`工具 -  构建 npm`
+
 ### 通过 Git Clone
 
 克隆到源代码之后，然后将 `miniprogram_dist` 目录拷贝到自己的项目中
