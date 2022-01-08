@@ -1,0 +1,22 @@
+.t-float-left {
+  float: left;
+}
+.t-float-right {
+  float: right;
+}
+@keyframes tdesign-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.t-grid {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+}
+.t-grid__content {
+  width: auto;
+}

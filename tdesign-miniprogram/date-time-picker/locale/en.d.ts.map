@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/date-time-picker/locale/en.ts"],"names":[],"mappings":";;;;;;;;;;;AAAA,wBAUE","file":"en.d.ts","sourcesContent":["export default {\n  year: '',\n  month: '',\n  day: '',\n  hour: '',\n  minute: '',\n  am: 'AM',\n  pm: 'PM',\n  confirm: 'confirm',\n  cancel: 'cancel',\n};\n"]}

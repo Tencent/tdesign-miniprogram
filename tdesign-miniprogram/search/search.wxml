@@ -1,0 +1,62 @@
+<view class="{{classPrefix}} {{prefix}}-class">
+  <view
+    class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center && !localValue.keyword && 'center'}} {{classPrefix}}__input-box--{{shape}} "
+    bind:tap="tapWhenCenterActiveHandle"
+  >
+    <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label"> {{label}} </view>
+    <slot wx:else name="label" />
+
+    <t-icon
+      wx:if="{{leftIcon}}"
+      name="{{leftIcon}}"
+      size="20px"
+      class="{{prefix}}-icon {{prefix}}-class-left"
+    >
+    </t-icon>
+    <slot wx:else name="left-icon" />
+
+    <view
+      wx:if="{{center && !localValue.focus && !localValue.keyword}}"
+      class="{{classPrefix}}__placeholder-center {{!localValue.keyword && placeholder-class}}"
+    >
+      {{localValue.keyword || placeholder}}
+    </view>
+    <input
+      wx:else
+      type="text"
+      name="input"
+      disabled="{{disabled}}"
+      class="{{prefix}}-input__keyword {{prefix}}-class-input"
+      focus="{{localValue.focus}}"
+      value="{{localValue.keyword}}"
+      confirm-type="search"
+      placeholder="{{placeholder}}"
+      placeholder-class="{{classPrefix}}__placeholder"
+      bindinput="onInput"
+      bindfocus="onFocus"
+      bindblur="onBlur"
+      bindconfirm="onConfirm"
+    />
+    <block wx:if="{{localValue.keyword!=='' && (!center || focus)}}">
+      <t-icon
+        wx:if="{{rightIcon}}"
+        class="{{prefix}}-icon {{prefix}}-class-right"
+        name="{{rightIcon}}"
+        size="18px"
+        color="rgba(187,187,187,1)"
+        bindtap="onClear"
+      >
+      </t-icon>
+      <slot wx:else name="right-icon" />
+    </block>
+  </view>
+
+  <view
+    wx:if="{{actionText}}"
+    class="{{classPrefix}}__search-action {{prefix}}-class-cancel"
+    bindtap="onCancel"
+  >
+    {{actionText}}
+  </view>
+  <slot wx:else name="action-text" />
+</view>

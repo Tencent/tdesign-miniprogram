@@ -1,0 +1,11 @@
+<view class="{{layout==='vertical'? classPrefix + '--vertical-center' : ''}}">
+  <view
+    class="t-class {{classPrefix}} {{classPrefix}}--{{layout}} {{classPrefix}}--{{align}} {{dashed? classPrefix + '--dashed' : ''}} "
+    style="{{ lineColor  ? 'border-color: ' + lineColor + ';' : '' }}"
+  >
+    <view class="t-class-content {{classPrefix}}__content">
+      <view wx:if="{{content}}"> {{content}} </view>
+      <slot wx:else name="content" />
+    </view>
+  </view>
+</view>

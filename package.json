@@ -16,6 +16,7 @@
     "build": "cross-env NODE_ENV=production gulp build --gulpfile script/gulpfile.js --cwd ./",
     "build:dist": "gulp --gulpfile script/gulpfile.dist.js --cwd ./",
     "build:example": "gulp --gulpfile script/gulpfile.example.js --cwd ./",
+    "build:assets": "cross-env NODE_ENV=production gulp assets:build --gulpfile script/gulpfile.dist.js --cwd ./",
     "lintfix": "eslint '{src,example}/**/*.{js,ts}' --fix",
     "lint": "eslint '{src,example}/**/*.{js,ts}'",
     "format": "prettier {src,example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",
