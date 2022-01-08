@@ -1,0 +1,37 @@
+<view
+  class="{{classPrefix}} t-class"
+  bind:touchstart="onTouchStart"
+  bind:touchmove="onTouchMove"
+  bind:touchend="onTouchEnd"
+>
+  <view
+    class="{{classPrefix}}__bar {{classPrefix + '__bar--' + refreshTypes[refreshStatus]}}"
+    style="height: {{barHeight + 'rpx'}};"
+  >
+    <view class="{{classPrefix}}__content">
+      <view
+        class="{{classPrefix}}__loading t-class-loading"
+        style="width: {{loadingProps.size || '50rpx'}}; height: {{loadingProps.size || '50rpx'}}; transform: rotate({{rotate}}deg);"
+      >
+        <t-loading
+          delay="{{loadingProps.delay || 0}}"
+          duration="{{loadingProps.duration || 800}}"
+          indicator="{{loadingProps.indicator || true}}"
+          layout="{{loadingProps.layout || 'horizontal'}}"
+          loading="{{loadingProps.loading || true}}"
+          pause="{{loadingProps.pause || true}}"
+          progress="{{loadingProps.progress}}"
+          reverse="{{loadingProps.reverse}}"
+          size="{{loadingProps.size || '50rpx'}}"
+          text="{{loadingProps.text}}"
+          theme="{{loadingProps.theme || 'circular'}}"
+          t-class-indicator="t-class-indicator"
+        ></t-loading>
+      </view>
+      <view class="{{classPrefix}}__text t-class-text">{{loadingTexts[refreshStatus]}}</view>
+    </view>
+  </view>
+  <view class="{{classPrefix}}__wrap">
+    <slot />
+  </view>
+</view>

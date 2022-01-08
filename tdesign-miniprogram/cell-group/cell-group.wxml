@@ -1,0 +1,4 @@
+<view wx:if="{{ title }}" class="{{ classPrefix }}__title"> {{ title }} </view>
+<view class="t-class {{ classPrefix }} {{ bordered ? classPrefix + '--bordered' : '' }}">
+  <slot />
+</view>

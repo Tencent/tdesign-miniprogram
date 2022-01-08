@@ -1,0 +1,25 @@
+module.exports = {
+  getTClass: function (size, classPrefix) {
+    var isIncludePx = size.indexOf('px') > -1;
+    return isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1);
+  },
+  getAvatarOuterClass: function (classPrefix, size, shape) {
+    var isIncludePx = size.indexOf('px') > -1;
+    var classNames = [
+      classPrefix,
+      classPrefix + (shape === 'round' ? '--round' : '--circle'),
+      isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1),
+    ];
+    return classNames.join(' ');
+  },
+  getAvatarSizePx: function (size) {
+    var isIncludePx = size.indexOf('px') > -1;
+    if (isIncludePx) {
+      return 'width:' + size + ';height:' + size + ';';
+    }
+  },
+  getStyles: function (isShow, zIndex) {
+    var styles = 'z-index:' + zIndex + ';';
+    return styles + (isShow ? '' : 'display: none;');
+  },
+};

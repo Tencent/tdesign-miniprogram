@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-grid": "../grid/grid",
+    "t-grid-item": "../grid/grid-item",
+    "t-popup": "../popup/popup",
+    "t-icon": "../icon/icon"
+  }
+}

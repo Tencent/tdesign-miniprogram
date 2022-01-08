@@ -36,7 +36,7 @@ npm i tdesign-miniprogram -S --production
 
 ### 通过 Git Clone
 
-克隆到源代码之后，然后将 `miniprogram_dist` 目录拷贝到自己的项目中
+克隆到源代码之后，然后将 `tdesign-miniprogram` 目录拷贝到自己的项目中
 
 ```bash
 git clone git@github.com:Tencent/tdesign-miniprogram.git

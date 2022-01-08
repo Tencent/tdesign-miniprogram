@@ -1,0 +1,13 @@
+<view class="t-class {{classPrefix}}">
+  <view wx:if="{{label}}" class="{{classPrefix}}__label t-class-label">{{label}}</view>
+  <view
+    class="{{classPrefix}}__body t-class-body {{isActive ? classPrefix + '__body--active' : ''}} {{disabled ? classPrefix + '__body--disabled' : ''}}"
+    style="{{bodyStyle}}"
+    bindtap="onTapBackground"
+  >
+    <view
+      class="{{classPrefix}}__dot t-class-dot  {{isActive ? classPrefix + '__dot--active' : ''}}"
+      catchtap="onTapDot"
+    />
+  </view>
+</view>

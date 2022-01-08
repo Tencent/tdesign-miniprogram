@@ -1,0 +1,21 @@
+<wxs src="./empty.wxs" module="utils" />
+
+<view class="t-class {{classPrefix}}">
+  <view class="{{classPrefix}}__content">
+    <image
+      wx:if="{{image}}"
+      class="{{classPrefix}}__img t-class-image"
+      src="{{image}}"
+      mode="aspectFit"
+    />
+    <t-icon wx:elif="{{icon}}" size="192rpx" name="{{icon}}" color="rgba(0, 0, 0, .26)" />
+    <slot wx:else name="image" class="{{classPrefix}}__img t-class-image" />
+    <view wx:if="{{description}}" class="{{classPrefix}}__description t-class-description"
+      >{{description}}</view
+    >
+    <slot wx:else name="description" class="{{classPrefix}}__description t-class-description}" />
+    <view class="{{classPrefix}}__actions t-class-actions">
+      <slot name="action" />
+    </view>
+  </view>
+</view>

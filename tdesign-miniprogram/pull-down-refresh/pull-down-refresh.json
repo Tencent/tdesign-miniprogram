@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-loading": "../loading/loading"
+  }
+}

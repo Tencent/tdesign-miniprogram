@@ -1,0 +1,32 @@
+.t-float-left {
+  float: left;
+}
+.t-float-right {
+  float: right;
+}
+@keyframes tdesign-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.t-rate {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.t-rate__wrapper {
+  line-height: 1em;
+  display: inline-flex;
+}
+.t-rate__star {
+  line-height: 1em;
+}
+.t-rate__desc {
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.4);
+  padding-left: 32rpx;
+  vertical-align: middle;
+}
