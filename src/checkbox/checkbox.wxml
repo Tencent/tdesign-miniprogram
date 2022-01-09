@@ -29,6 +29,7 @@
     <!-- title -->
     <view class="{{classPrefix}}__title t-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
       {{label}}
+      <slot name="label" />
     </view>
     <!-- content -->
     <view
@@ -37,6 +38,7 @@
     >
       {{content}}
       <slot />
+      <slot name="content" />
     </view>
   </view>
   <!-- icon right -->
