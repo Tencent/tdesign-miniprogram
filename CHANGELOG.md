@@ -4,6 +4,14 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.4.2 `2021-1-10`
+
+### Bug Fixes
+
+- Popup: 修复事件参数错误的问题 [#91](https://github.com/Tencent/tdesign-miniprogram/pull/91) [@LeeJim](https://github.com/LeeJim)
+- Checkbox: 完善缺失的插槽(label、content) [#95](https://github.com/Tencent/tdesign-miniprogram/pull/95) [@LeeJim](https://github.com/LeeJim)
+- Dialog: 修复按钮宽度计算错误的问题 [#100](https://github.com/Tencent/tdesign-miniprogram/pull/100) [@LeeJim](https://github.com/LeeJim)
+- Button: 修复在 `{ style: "v2" }` 的情况下，按钮宽度异常的问题 [#79](https://github.com/Tencent/tdesign-miniprogram/pull/79) [@vhxubo](https://github.com/vhxubo)
 
 ## 0.4.1 `2021-1-6`
 ### Bug Fixes
