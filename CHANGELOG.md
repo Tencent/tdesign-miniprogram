@@ -4,7 +4,7 @@ spline: explain
 toc: false
 docClass: timeline
 ---
-## 0.4.2 `2021-1-10`
+## 0.4.2 `2022-1-10`
 
 ### Bug Fixes
 
@@ -13,7 +13,7 @@ docClass: timeline
 - Dialog: 修复按钮宽度计算错误的问题 [#100](https://github.com/Tencent/tdesign-miniprogram/pull/100) [@LeeJim](https://github.com/LeeJim)
 - Button: 修复在 `{ style: "v2" }` 的情况下，按钮宽度异常的问题 [#79](https://github.com/Tencent/tdesign-miniprogram/pull/79) [@vhxubo](https://github.com/vhxubo)
 
-## 0.4.1 `2021-1-6`
+## 0.4.1 `2022-1-6`
 ### Bug Fixes
 
 - Tabs: 修复滑动切换时，不会触发 `change` 事件的问题 [#65](https://github.com/Tencent/tdesign-miniprogram/pull/65)  [@BeanCookie](https://github.com/BeanCookie)
