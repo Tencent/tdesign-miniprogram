@@ -1,0 +1,123 @@
+<view
+  class="{{classPrefix}} {{show ? classBasePrefix + '-is-expanded' : ''}}"
+  style="top:{{top}}px"
+>
+  <view
+    wx:if="{{show}}"
+    class="t-mask"
+    bindtap="clickOverlay"
+    catchtouchmove="catchtouchmove"
+  ></view>
+  <view class="{{contentClasses}} {{classPrefix}}__content" style="transition: all 200ms ease">
+    <view class="{{classPrefix}}__bd" wx:if="{{show}}">
+      <block wx:if="{{optionsLayout === 'columns'}}">
+        <!-- 单选列表 -->
+        <t-cell-group wx:if="{{selectMode === 'single'}}" bordered="{{false}}">
+          <t-radio-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
+            <t-radio
+              wx:for="{{options}}"
+              wx:key="index"
+              name="{{item.value}}"
+              title="{{item.title}}"
+              disabled="{{item.disabled}}"
+            ></t-radio>
+          </t-radio-group>
+        </t-cell-group>
+        <!-- 多选列表 -->
+        <t-cell-group wx:if="{{selectMode === 'multi'}}" bordered="{{false}}">
+          <t-checkbox-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
+            <view class="{{classBasePrefix}}-checkbox-wrap" wx:for="{{options}}" wx:key="index">
+              <t-checkbox
+                name="{{item.value}}"
+                title="{{item.title}}"
+                disabled="{{item.disabled}}"
+              ></t-checkbox>
+            </view>
+          </t-checkbox-group>
+        </t-cell-group>
+      </block>
+      <block wx:elif="{{optionsLayout === 'tree'}}">
+        <!-- 树形列表 ST -->
+        <!-- TODO 逻辑待实现 -->
+        <t-cell-group
+          class="{{classBasePrefix}}-tree-cell-group"
+          wx:for="{{treeOptions}}"
+          wx:key="level"
+          wx:for-index="level"
+        >
+          <t-radio-group
+            wx:if="{{level < treeState.leafLevel}}"
+            value="{{treeState.selectList[level]}}"
+            data-level="{{level}}"
+            bind:change="selectTreeNode"
+          >
+            <t-radio
+              wx:for="{{treeOptions[level]}}"
+              wx:key="index"
+              name="{{item.value}}"
+              bordered="{{false}}"
+              title="{{item.title}}"
+            ></t-radio>
+          </t-radio-group>
+          <block wx:else>
+            <block wx:if="{{selectMode === 'single'}}">
+              <!-- 树形列表 - 叶子节点（单选） ST -->
+              <t-radio-group
+                data-level="{{level}}"
+                value="{{treeState.selectList[level]}}"
+                bind:change="updateSelected"
+              >
+                <t-radio
+                  wx:for="{{treeOptions[level]}}"
+                  wx:key="index"
+                  name="{{item.value}}"
+                  bordered="{{false}}"
+                  title="{{item.title}}"
+                ></t-radio>
+              </t-radio-group>
+              <!-- 树形列表 - 叶子节点（单选） ED -->
+            </block>
+            <block wx:elif="{{selectMode === 'multi'}}">
+              <!-- 树形列表 - 叶子节点（多选） ST -->
+              <t-checkbox-group
+                value="{{treeState.selectList[level]}}"
+                bordered="{{false}}"
+                bind:change="updateSelected"
+                data-level="{{level}}"
+              >
+                <view
+                  class="{{classBasePrefix}}-checkbox-wrap"
+                  wx:for="{{treeOptions[level]}}"
+                  wx:key="index"
+                >
+                  <t-checkbox name="{{item.value}}" title="{{item.title}}"></t-checkbox>
+                </view>
+              </t-checkbox-group>
+              <!-- 树形列表 - 叶子节点（多选） ED -->
+            </block>
+            <!-- 树形列表 - 叶子节点 ED -->
+          </block>
+        </t-cell-group>
+        <!-- 树形列表 ED -->
+      </block>
+      <block wx:elif="{{optionsLayout === 'slot'}}">
+        <slot></slot>
+      </block>
+    </view>
+    <view
+      class="{{classPrefix}}__ft"
+      wx:if="{{selectMode === 'multi' || optionsLayout === 'tree'}}"
+    >
+      <t-button class="t-button" theme="default" disabled="{{isBtnDisabled}}" bindtap="resetSelect"
+        >重置</t-button
+      >
+      <t-button
+        class="t-button"
+        theme="primary"
+        disabled="{{isBtnDisabled}}"
+        bindtap="confirmSelect"
+        >确定</t-button
+      >
+    </view>
+  </view>
+</view>

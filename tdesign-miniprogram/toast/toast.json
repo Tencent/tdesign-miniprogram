@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-icon": "../icon/icon",
+    "t-loading": "../loading/loading"
+  }
+}

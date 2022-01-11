@@ -7,6 +7,7 @@ const dist = 'miniprogram_dist';
 
 /* base tasks */
 const { clear, build: baseBuild, watch: baseWatch } = base(src, dist, 'dist');
+const { build: buildAssets } = base(src, 'tdesign-miniprogram', 'assets');
 
 /** `gulp build`
  * 构建
@@ -22,6 +23,7 @@ const watch = gulp.parallel(baseWatch);
 module.exports = {
   clear,
   build,
+  buildAssets,
   watch,
   default: build,
 };

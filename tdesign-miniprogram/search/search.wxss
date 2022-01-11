@@ -1,0 +1,68 @@
+.t-float-left {
+  float: left;
+}
+.t-float-right {
+  float: right;
+}
+@keyframes tdesign-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.t-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.t-search__label {
+  padding: 8rpx;
+  color: rgba(0, 0, 0, 0.9);
+}
+.t-search__input-box {
+  flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  border: 2rpx solid #f3f3f3;
+  background: #f3f3f3;
+  padding: 16rpx 24rpx;
+}
+.t-search__input-box.t-is-focused {
+  border-color: #f3f3f3;
+}
+.t-search__input-box--round {
+  border-radius: 80rpx / 2;
+}
+.t-search__input-box--square {
+  border-radius: 8rpx;
+}
+.t-search__input-box--center.t-not-focused {
+  justify-content: center;
+}
+.t-search__input-box .t-input__keyword {
+  display: inline-block;
+  flex: 1;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 32rpx;
+  padding-left: 16rpx;
+}
+.t-search__input-box .t-icon {
+  color: rgba(0, 0, 0, 0.26);
+}
+.t-search__search-action {
+  margin-left: 30rpx;
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.26);
+}
+.t-search__placeholder-center {
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.26);
+  margin-left: 16rpx;
+}
+.t-search__placeholder {
+  color: rgba(0, 0, 0, 0.26);
+}

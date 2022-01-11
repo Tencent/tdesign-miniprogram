@@ -1,0 +1,116 @@
+<wxs src="./slider.wxs" module="utils" />
+<view
+  class="{{classPrefix}}__container {{isScale && scaleTextArray.length ? classPrefix + '--bottom' : ''}} {{prefix}}-class {{disabled ? prefix + '-is-disabled ' + prefix + '-class-bar-disabled' : ''}}"
+>
+  <block wx:if="{{!range}}">
+    <view class="{{classPrefix}}__wrapper">
+      <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--min">
+        {{ label ? utils.getValue(label, min) : min}}
+      </text>
+      <view
+        id="sliderLine"
+        class="{{classPrefix}}__main {{prefix}}-class-bar"
+        style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
+        bindtap="onSingleLineTap"
+      >
+        <block wx:if="{{isScale}}">
+          <view
+            class="{{classPrefix}}__scale-item"
+            wx:for="{{scaleArray}}"
+            wx:for-index="index"
+            wx:key="index"
+            style="background:{{_value < item ? (disabled ? disabledColor[1] : colors[1]) : ( disabled ? disabledColor[0] : colors[0])}}; left:{{item}}%; transform:translateX({{- item}}%);"
+          >
+            <view wx:if="{{scaleTextArray.length}}" class="{{classPrefix}}__scale-desc">
+              {{scaleTextArray[index]}}
+            </view>
+          </view>
+        </block>
+        <view
+          class="{{classPrefix}}__line {{prefix}}-class-bar-active"
+          style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; width: {{lineBarWidth}};"
+          bindtap="onSingleLineTap"
+        >
+          <view
+            id="singleDot"
+            class="{{classPrefix}}__dot {{prefix}}-class-cursor"
+            style="left: {{activeLeft}}px"
+            bindtouchmove="onSingleTouchMove"
+            bind:touchend="onTouchEnd"
+            bind:touchcancel="onTouchEnd"
+          />
+        </view>
+      </view>
+      <text wx:if="{{label}}" class="{{classPrefix}}__value {{classPrefix}}__value--right">
+        {{utils.getValue(label, _value)}}
+      </text>
+      <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--max">
+        {{ label ? utils.getValue(label, max) : max}}
+      </text>
+    </view>
+  </block>
+  <!-- range选择器自定义 -->
+  <block wx:if="{{range}}">
+    <view class="{{classPrefix}}__range-container">
+      <view
+        wx:if="{{showExtremeValue}}"
+        class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--min"
+      >
+        {{min}}
+      </view>
+      <view
+        id="sliderLine"
+        bindtap="onLineTap"
+        class="{{classPrefix}}__bar {{prefix}}-class-bar"
+        style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
+      >
+        <block wx:if="{{isScale}}">
+          <view
+            class="{{classPrefix}}__scale-item"
+            wx:for="{{scaleArray}}"
+            wx:for-index="index"
+            wx:key="index"
+            style="background:{{dotTopValue[1] < item || item < dotTopValue[0] ? (disabled ? disabledColor[1] : colors[1]) : ( disabled ? disabledColor[0] : colors[0])}};left: {{item}}%;transform:translateX({{- item}}%);"
+          >
+            <view wx:if="{{scaleTextArray.length}}"> {{scaleTextArray[index]}} </view>
+          </view>
+        </block>
+        <view
+          class="{{classPrefix}}__line {{prefix}}-class-bar-active"
+          bindtap="onLineTap"
+          style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; right: {{lineRight}}px;"
+        />
+        <view
+          id="leftDot"
+          bindtouchmove="onTouchMoveLeft"
+          bind:touchend="onTouchEnd"
+          bind:touchcancel="onTouchEnd"
+          class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
+          style="left: {{activeLeft}}px"
+        >
+          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value">
+            {{utils.getValue(label, dotTopValue[0])}}
+          </view>
+        </view>
+        <view
+          id="rightDot"
+          bindtouchmove="onTouchMoveRight"
+          bind:touchend="onTouchEnd"
+          bind:touchcancel="onTouchEnd"
+          class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
+          style="right: {{activeRight}}px"
+        >
+          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value">
+            {{utils.getValue(label, dotTopValue[1])}}
+          </view>
+        </view>
+      </view>
+      <view
+        wx:if="{{showExtremeValue}}"
+        class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--max"
+      >
+        {{max}}
+      </view>
+    </view>
+  </block>
+</view>
