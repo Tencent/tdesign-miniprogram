@@ -24,4 +24,7 @@ export type ClassName = { [className: string]: any } | ClassName[] | string;
 
 export type CSSSelector = string;
 
-export interface KeysType { value?: string; label?: string };
+export interface KeysType {
+  value?: string;
+  label?: string;
+}
