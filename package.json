@@ -24,7 +24,8 @@
     "site:dev": "cd site && npm run dev",
     "test": "jest -c jest.unit.config.js && jest -c jest.e2e.config.js",
     "test:unit": "jest -c jest.unit.config.js",
-    "test:e2e": "jest -c jest.e2e.config.js"
+    "test:e2e": "jest -c jest.e2e.config.js",
+    "prepare": "husky install"
   },
   "author": "tdesign",
   "license": "MIT",
@@ -58,7 +59,7 @@
     "gulp-replace-task": "^2.0.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "husky": "^4.2.3",
+    "husky": "^7.0.4",
     "jest": "^26.6.3",
     "jest-html-reporter": "^3.3.0",
     "lint-staged": "^10.0.0-1",
@@ -73,13 +74,6 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
