@@ -1,3 +1,5 @@
+import icons from './data.js';
+
 Page({
   data: {
     icons: [
@@ -27,9 +29,12 @@ Page({
       'chart-bar',
       'chart-bubble',
       'chart-pie',
-      'chart',
-      'chat',
     ],
+  },
+  onLoad() {
+    this.setData({
+      icons,
+    });
   },
   onIconTap(event: any) {
     const { icons } = this.data;
