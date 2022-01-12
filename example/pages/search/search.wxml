@@ -8,7 +8,7 @@
     </view>
   </t-demo>
 
-  <t-demo title="01 状态">
+  <t-demo title="02 状态">
     <block wx:for="{{searchBoxGroup}}" wx:key="id">
       <view class="demo-section__desc">{{item.title}}</view>
       <view class="demo-section__wrapper">
