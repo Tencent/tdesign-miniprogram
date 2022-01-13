@@ -29,6 +29,8 @@ Page({
       'chart-bar',
       'chart-bubble',
       'chart-pie',
+      'chart',
+      'chat',
     ],
   },
   onLoad() {
