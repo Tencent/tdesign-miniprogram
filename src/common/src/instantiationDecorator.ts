@@ -3,16 +3,23 @@ import { isPlainObject, toObject } from './flatTool';
 import { SuperComponent } from './superComponent';
 
 // 将 on 开头的生命周期函数转变成非 on 开头的
-const RawLifeCycles = ['Created', 'Attached', 'Ready', 'Moved', 'Detached'];
+const RawLifeCycles = ['Created', 'Attached', 'Ready', 'Moved', 'Detached', 'Error'];
 const NativeLifeCycles = RawLifeCycles.map((k) => k.toLowerCase());
 
 const ComponentNativeProps = [
-  'externalClasses',
   'properties',
   'data',
-  'options',
-  'relations',
+  'observers',
+  'methods',
   'behaviors',
+  // life times properties
+  ...NativeLifeCycles,
+  'relations',
+  'externalClasses',
+  'options',
+  'lifetimes',
+  'pageLifeTimes',
+  'definitionFilter',
 ];
 
 /**
@@ -35,7 +42,12 @@ export const toComponent = function toComponent(options: { [key: string]: any })
 
   // 处理自定义的方法和生命周期函数
   if (!options.methods) options.methods = {} as any;
+
+  // 使用 lifetimes 处理生命周期函数
+  if (!options.lifetimes) options.lifetimes = {};
+
   const inits: { [key: string]: PropertyDescriptor } = {};
+
   Object.getOwnPropertyNames(options).forEach((k) => {
     const desc = Object.getOwnPropertyDescriptor(options, k);
     if (!desc) return;
@@ -47,12 +59,16 @@ export const toComponent = function toComponent(options: { [key: string]: any })
       // 非函数，也非组件内部属性
       // 由于小程序组件会忽略不能识别的字段，需要这里需要把这些字段配置在组件 created 的时候赋值
       inits[k] = desc;
+    } else if (NativeLifeCycles.indexOf(k) >= 0) {
+      options.lifetimes[k] = options[k];
     }
   });
 
   if (Object.keys(inits).length) {
-    const oldCreated = options.created as any;
-    options.created = function () {
+    const oldCreated = options.lifetimes.created as any;
+    const { controlledProps = [] } = options;
+
+    options.lifetimes.created = function () {
       Object.defineProperties(this, inits);
       // eslint-disable-next-line prefer-rest-params
       if (oldCreated) oldCreated.apply(this, arguments);
@@ -69,17 +85,7 @@ export const toComponent = function toComponent(options: { [key: string]: any })
 export const wxComponent = function wxComponent() {
   return function (constructor: new () => SuperComponent): void {
     class WxComponent extends constructor {
-      created() {
-        super.created && super.created();
-      }
-
-      attached() {
-        super.attached && super.attached();
-      }
-
-      detached() {
-        super.detached && super.detached();
-      }
+      // 暂时移除了冗余的代码，后续补充
     }
 
     const current = new WxComponent();
