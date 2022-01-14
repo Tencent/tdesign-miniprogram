@@ -4,7 +4,7 @@
   <view class="desc">
     <view class="row">
       <view class="avatar-example">
-        <t-avatar icon="user" t-class-icon="default-user" />
+        <t-avatar icon="user" />
         <text class="avatar-word">默认</text>
       </view>
       <view class="gutter-column-24"></view>
