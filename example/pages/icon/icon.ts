@@ -30,10 +30,14 @@ Page({
       'chart',
       'chat',
     ],
+    prefixIcons: ['0', '1h', '2h', '3h'],
   },
   onIconTap(event: any) {
     const { icons } = this.data;
-    const { index } = event.currentTarget.dataset;
+    const { index, type } = event.currentTarget.dataset;
+    if (type === 'prefix') {
+      return
+    }
     wx.setClipboardData({
       data: icons[index],
     });
