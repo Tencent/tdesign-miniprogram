@@ -34,7 +34,7 @@
         wx:for="{{prefixIcons}}"
         wx:key="index"
         is="iconCard"
-        data="{{name:item, size:'48rpx',index,prefix:'icon-a',type:'prefix'}}"
+        data="{{name:item, size:'48rpx',index,prefix:'icon',type:'prefix'}}"
       />
     </view>
   </t-demo>

@@ -28,21 +28,16 @@ isComponent: true
 
 ```html
 <!-- page.wxml -->
-<t-icon prefix="icon-a" name="1h" size="xl" bind:click="someFunction"> </t-icon>
+<t-icon prefix="icon" name="a-1h" size="xl" bind:click="someFunction"> </t-icon>
 ```
 
-由于微信小程序不支持本地 ttf 文件, 需要将图标文件上传到网络或者转换为 Base64 格式
+以 iconfont 为例：
 
-以转换为 Base64 为例:
-
-- 下载图标字体代码, 提取 iconfont.ttf 和 iconfont.css 文件
-- 使用 [Online @font-face generator — Transfonter](https://transfonter.org/) 将 ttf 文件转换为 Base64, 用来替换 iconfont.css 中的 src 属性
-- 修改 iconfont.css 中的 iconfont 类名, 譬如: iconfont.css 中图标类名为 `.icon-a-app:before`, 则该图标字体的前缀为 icon-a, `.iconfont` 应修改为 `.icon-a`
-- iconfont.css 后缀名改为 wxss
-- 在 app.wxss 或者指定 page 下的 wxss 中引入 iconfont.wxss
-- 配置 Icon 组件, 使用 prefix 属性指定图标前缀, 譬如: `prefix="icon-a"`
-
-[整理后的 iconfont.wxss](https://github.com/Tencent/tdesign-miniprogram/tree/develop/example/pages/icon/iconfont.wxss)
+- 在 iconfont 资源管理中打开我的项目
+- 配置项目设置，统一 FontClass/Symbol 前缀 与 Font Family，如：`icon-` 与 `icon`
+- 使用浏览器打开生成的 Font class 代码链接（以 `.css` 结尾），保存到小程序项目中，并将后缀名改为 `.wxss`
+- 在 app.wxss 或者 page 对应的 .wxss 中，使用 `@import` 引入该 .wxss 文件
+- 使用时，与前面设置的 Font Family 保持一致，即 `prefix="icon"`
 
 ## API
 
