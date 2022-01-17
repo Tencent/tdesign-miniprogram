@@ -22,4 +22,9 @@ module.exports = {
     var styles = 'z-index:' + zIndex + ';';
     return styles + (isShow ? '' : 'display: none;');
   },
+  getIconClass: function (classPrefix, size) {
+    console.log('size: ', size);
+    if (size.indexOf('px') > -1) return;
+    return classPrefix + '__icon--default-' + (size || 'medium').slice(0, 1);
+  },
 };

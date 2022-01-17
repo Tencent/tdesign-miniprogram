@@ -13,8 +13,9 @@
   <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">
     <t-avatar
       alt="{{collapseAvatar || '+N'}}"
-      t-class-image="border-example-1"
-      t-class-alt="alt-example"
+      t-class-image="t-class-image"
+      t-class-alt="t-class-alt"
+      t-class-icon="t-class-icon"
       size="{{size}}"
     />
   </view>

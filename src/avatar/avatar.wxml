@@ -16,7 +16,10 @@
       binderror="onLoadError"
     />
     <view wx:if="{{!!alt}}" class="{{classPrefix}}__text {{prefix}}-class-alt">{{alt}}</view>
-    <view wx:if="{{!!icon}}" class="{{classPrefix}}__icon {{prefix}}-class-icon">
+    <view
+      wx:if="{{!!icon}}"
+      class="{{classPrefix}}__icon {{this.getIconClass(classPrefix, size)}} {{prefix}}-class-icon"
+    >
       <t-icon name="{{icon}}" />
     </view>
   </view>
