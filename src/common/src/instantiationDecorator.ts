@@ -27,11 +27,11 @@ const ComponentNativeProps = [
  * 在这里需要对一些方法进行操作
  * @param options {}
  */
-export const toComponent = function toComponent(options: { [key: string]: any }): any {
+export const toComponent = function toComponent(options: Record<string, any>) {
   // 处理 properties 属性
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
-      let opt: any = options.properties[k];
+      let opt = options.properties[k];
       // 如何不是 Object 类型，则默认指定 type = options.properties[k]；
       if (!isPlainObject(opt)) {
         opt = { type: opt };
@@ -41,7 +41,7 @@ export const toComponent = function toComponent(options: { [key: string]: any })
   }
 
   // 处理自定义的方法和生命周期函数
-  if (!options.methods) options.methods = {} as any;
+  if (!options.methods) options.methods = {};
 
   // 使用 lifetimes 处理生命周期函数
   if (!options.lifetimes) options.lifetimes = {};
