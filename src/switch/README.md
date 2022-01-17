@@ -23,7 +23,12 @@ isComponent: true
 
 ```html
 <!-- page.wxml -->
+
+<!-- 受控用法 -->
 <t-switch value="{{value}}" bindchange="onChange"></t-switch>
+
+<!-- 非受控用法 -->
+<t-switch defaultValue="{{value}}"></t-switch>
 ```
 
 ## API
