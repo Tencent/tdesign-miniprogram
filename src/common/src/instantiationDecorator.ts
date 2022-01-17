@@ -65,13 +65,45 @@ export const toComponent = function toComponent(options: { [key: string]: any })
   });
 
   if (Object.keys(inits).length) {
-    const oldCreated = options.lifetimes.created as any;
+    const oldCreated = options.lifetimes.created;
+    const oldAttached = options.lifetimes.attached;
     const { controlledProps = [] } = options;
 
-    options.lifetimes.created = function () {
+    options.lifetimes.created = function (...args) {
       Object.defineProperties(this, inits);
-      // eslint-disable-next-line prefer-rest-params
-      if (oldCreated) oldCreated.apply(this, arguments);
+      if (oldCreated) oldCreated.apply(this, args);
+    };
+
+    options.lifetimes.attached = function (...args) {
+      if (oldAttached) oldAttached.apply(this, args);
+
+      controlledProps.forEach(({ key }) => {
+        const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
+        const props = this.properties;
+
+        if (props[defaultKey] != null) {
+          // props[defaultKey] 的默认值需设置成 undefined
+          this.setData({
+            [key]: props[defaultKey],
+          });
+        }
+      });
+    };
+
+    options.methods._trigger = function (evtName, detail, opts) {
+      const target = controlledProps.find((item) => item.event == evtName);
+      if (target) {
+        const { key } = target;
+        const props = this.properties;
+        const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
+
+        if (props[defaultKey] != null) {
+          this.setData({
+            [key]: detail[key],
+          });
+        }
+      }
+      this.triggerEvent(evtName, detail, opts);
     };
   }
 
