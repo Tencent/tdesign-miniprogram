@@ -62,7 +62,16 @@ export interface TdTabBarProps {
     value?: string | number;
     required?: boolean;
   };
-};
+  /**
+   * 是否需要分割线
+   * @default true
+   */
+  split?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+}
 
 export interface TdTabBarItemProps {
   /**
@@ -86,7 +95,7 @@ export interface TdTabBarItemProps {
    */
   subTabBar?: {
     type: ArrayConstructor;
-    value?: SubTabBarItem[] ;
+    value?: SubTabBarItem[];
     required?: boolean;
   };
   /**
@@ -98,6 +107,9 @@ export interface TdTabBarItemProps {
     value?: string | number;
     required?: boolean;
   };
-};
+}
 
-export interface SubTabBarItem { value: string; label: string };
+export interface SubTabBarItem {
+  value: string;
+  label: string;
+}

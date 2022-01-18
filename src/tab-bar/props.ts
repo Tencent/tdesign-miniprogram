@@ -37,6 +37,11 @@ const props: TdTabBarProps = {
     optionalTypes: [Number],
     value: 0,
   },
+  /** 是否需要分割线 */
+  split: {
+    type: Boolean,
+    value: true,
+  },
 };
 
 export default props;
