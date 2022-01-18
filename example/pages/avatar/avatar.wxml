@@ -38,7 +38,7 @@
         max="5"
         collapseAvatar="+5"
         size="small"
-        t-class-image="border-size-4"
+        t-class-image="border-size-2"
       >
         <t-avatar
           wx:for="{{pics6}}"
@@ -46,8 +46,8 @@
           wx:key="index"
           image="{{pic}}"
           size="small"
-          t-class-image="border-size-4"
-          t-class="font-size-32 excursion-right-12"
+          t-class-image="border-size-2"
+          t-class="excursion-right-8"
         />
       </t-avatar-group>
     </view>
@@ -57,15 +57,15 @@
         cascading="left-up"
         collapseAvatar="+5"
         size="40px"
-        t-class-image="border-size-6"
+        t-class-image="border-size-3"
       >
         <t-avatar
           wx:for="{{pics6}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-size-6"
-          t-class="font-size-40 excursion-right-12"
+          t-class-image="border-size-3"
+          t-class="excursion-right-8"
         />
       </t-avatar-group>
     </view>
@@ -75,15 +75,15 @@
         cascading="left-up"
         collapseAvatar="+5"
         size="medium"
-        t-class-image="border-size-6"
+        t-class-image="border-size-4"
       >
         <t-avatar
           wx:for="{{pics6}}"
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-size-6"
-          t-class="font-size-48 excursion-right-16"
+          t-class-image="border-size-4"
+          t-class="excursion-right-8"
         />
       </t-avatar-group>
     </view>
@@ -98,16 +98,15 @@
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-size-4"
-          t-class="excursion-right-12"
+          t-class-image="border-size-2"
+          t-class="excursion-right-8"
         />
         <t-avatar
           slot="collapseAvatar"
           icon="user-add"
           bindtap="onAddTap"
-          t-class-image="border-size-4"
-          t-class-icon="font-size-32"
-          t-class="excursion-right-12 font-size-32"
+          t-class-image="border-size-2"
+          t-class="excursion-right-8"
         />
       </t-avatar-group>
     </view>
@@ -120,16 +119,16 @@
           wx:for-item="pic"
           wx:key="index"
           image="{{pic}}"
-          t-class-image="border-size-6"
-          t-class="excursion-right-12"
+          t-class-image="border-size-3"
+          t-class="excursion-right-8"
         />
         <t-avatar
           slot="collapseAvatar"
           icon="user-add"
           bindtap="onAddTap"
-          t-class-image="border-size-6"
-          t-class-icon="font-size-40"
-          t-class="excursion-right-12 font-size-40"
+          t-class-image="border-size-3"
+          t-class-icon="font-size-20"
+          t-class="excursion-right-8"
         />
       </t-avatar-group>
     </view>
@@ -143,16 +142,15 @@
             wx:for-item="pic"
             wx:key="index"
             image="{{pic}}"
-            t-class-image="border-size-8"
-            t-class="excursion-right-20"
+            t-class-image="border-size-4"
+            t-class="excursion-right-8"
           />
           <t-avatar
             slot="collapseAvatar"
             icon="user-add"
             bindtap="onAddTap"
-            t-class-icon="font-size-48"
-            t-class-image="border-size-8"
-            t-class="excursion-right-20 font-size-48"
+            t-class-image="border-size-4"
+            t-class="excursion-right-8"
           />
         </t-avatar-group>
       </view>
