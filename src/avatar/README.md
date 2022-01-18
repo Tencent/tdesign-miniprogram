@@ -26,7 +26,7 @@ isComponent: true
 
 ```html
 <!-- 默认 -->
-<t-avatar icon="user" t-class-icon="default-user" />
+<t-avatar icon="user" />
 
 <!-- 圆形 + 用户头像图 -->
 <t-avatar shape="circle" image="{{xxxx.jpg}}" />
