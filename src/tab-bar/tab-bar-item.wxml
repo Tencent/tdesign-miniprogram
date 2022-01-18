@@ -1,4 +1,6 @@
-<view class="{{classPrefix}} {{icon ? '' : prefix + '-is-bordered'}}">
+<view
+  class="{{classPrefix}} {{icon ? '' : prefix + '-is-bordered'}} {{split ? prefix + '-is-split' : ''}}"
+>
   <view
     class="{{classPrefix}}__content {{isChecked ? prefix + '-is-checked' : ''}}"
     style="color: {{isChecked ? activeColor : color}}"
