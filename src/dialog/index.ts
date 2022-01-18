@@ -1,6 +1,4 @@
-type Context =
-  | WechatMiniprogram.Page.TrivialInstance
-  | WechatMiniprogram.Component.TrivialInstance;
+type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
 interface DialogAlertOptionsType {
   context?: Context;
@@ -96,7 +94,7 @@ export default {
     return new Promise((resolve) => {
       instance.setData({
         actions,
-        direction: 'vertical',
+        buttonLayout: 'vertical',
         ...otherOptions,
         visible: true,
       });
