@@ -79,7 +79,6 @@ export default class Search extends SuperComponent {
     const { value } = e.detail;
     this.setData({ 'localValue.focus': false });
     this.triggerEvent('blur', { value });
-
     if (this.properties.center) {
       this.ignoreFocusEvtAfterBlurInCenterMode = true;
     }
