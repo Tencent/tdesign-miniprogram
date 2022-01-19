@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { SizeEnum } from '../common/common';
@@ -72,15 +71,15 @@ export interface TdTagProps {
     required?: boolean;
   };
   /**
-   * 影响标签风格（theme）
+   * 标签风格变体
    * @default dark
    */
   variant?: {
     type: StringConstructor;
-    value?: 'dark' | 'light' | 'plain';
+    value?: 'dark' | 'light' | 'outline' | 'light-outline';
     required?: boolean;
   };
-};
+}
 
 export interface TdCheckTagProps {
   /**
@@ -88,6 +87,15 @@ export interface TdCheckTagProps {
    * @default false
    */
   checked?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 标签选中的状态，默认风格（theme=default）才有选中态，非受控属性
+   * @default false
+   */
+  defaultChecked?: {
     type: BooleanConstructor;
     value?: boolean;
     required?: boolean;
@@ -146,6 +154,6 @@ export interface TdCheckTagProps {
     value?: SizeEnum;
     required?: boolean;
   };
-};
+}
 
 export type CSSProperties = Partial<CSSStyleDeclaration>;

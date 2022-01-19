@@ -17,12 +17,8 @@ Page({
       },
     ],
   },
-  handleClick(e: WechatMiniprogram.BaseEvent) {
-    const { index } = e.currentTarget.dataset;
-    const value = this.data.items[index].checked;
-    this.setData({
-      [`items[${index}].checked`]: !value,
-    });
+  handleCheckTagChange(e) {
+    console.log(e.detail.checked);
   },
   handleClose() {
     this.setData({
