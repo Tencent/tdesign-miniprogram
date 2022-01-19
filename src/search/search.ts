@@ -65,18 +65,20 @@ export default class Search extends SuperComponent {
     this.triggerEvent('change', { value });
   }
 
-  onFocus() {
+  onFocus(e) {
+    const { value } = e.detail;
     if (this.ignoreFocusEvtAfterBlurInCenterMode) {
       this.ignoreFocusEvtAfterBlurInCenterMode = false;
       return;
     }
     this.setData({ 'localValue.focus': true });
-    this.triggerEvent('focus');
+    this.triggerEvent('focus', { value });
   }
 
-  onBlur() {
+  onBlur(e) {
+    const { value } = e.detail;
     this.setData({ 'localValue.focus': false });
-    this.triggerEvent('blur');
+    this.triggerEvent('blur', { value });
 
     if (this.properties.center) {
       this.ignoreFocusEvtAfterBlurInCenterMode = true;
@@ -97,10 +99,10 @@ export default class Search extends SuperComponent {
     this.triggerEvent('cancel');
   }
 
-  tapWhenCenterActiveHandle() {
+  tapWhenCenterActiveHandle(e) {
     if (this.properties.center) {
       this.ignoreFocusEvtAfterBlurInCenterMode = false;
-      this.onFocus();
+      this.onFocus(e);
     }
   }
 }
