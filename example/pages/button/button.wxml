@@ -24,7 +24,7 @@
     <t-button theme="primary" size="large" disabled>强按钮</t-button>
     <t-button theme="primary" size="large" variant="plain" disabled>弱按钮</t-button>
     <t-button size="large" variant="plain" disabled>次按钮</t-button>
-    <t-button theme="primary" size="large" icon="app" disabled>带图标按钮</t-button>
+    <t-button theme="primary" size="large" icon="app" variant="plain" disabled>带图标按钮</t-button>
     <t-button theme="danger" size="large" disabled>强告警按钮</t-button>
     <t-button theme="danger" size="large" variant="plain" disabled>弱告警按钮</t-button>
     <view class="box">
