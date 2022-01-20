@@ -66,11 +66,17 @@ export default class Popup extends SuperComponent {
   onOverlayClick() {
     const { closeOnOverlayClick } = this.properties;
     if (closeOnOverlayClick) {
+      this.setData({
+        visible: false,
+      });
       this.triggerEvent('visible-change', { visible: false });
     }
   }
 
   onCloseClick() {
+    this.setData({
+      visible: false,
+    });
     this.triggerEvent('visible-change', { visible: false });
   }
 
