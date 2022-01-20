@@ -25,6 +25,12 @@ isComponent: true
 <t-input name="标签文字" placeholder="请输入文字" />
 ```
 
+### 双向绑定
+
+```html
+<t-input model:value="{{value}}" />
+```
+
 ## API
 
 ### Input Props
