@@ -69,6 +69,15 @@ export interface TdSwitchProps {
     value?: SwitchValue;
     required?: boolean;
   };
-};
+  /**
+   * 开关值
+   * @default false
+   */
+  defaultValue?: {
+    type: StringConstructor;
+    value?: SwitchValue;
+    required?: boolean;
+  };
+}
 
 export type SwitchValue = string | number | boolean;
