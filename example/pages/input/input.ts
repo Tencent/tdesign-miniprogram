@@ -1,5 +1,6 @@
 Page({
   data: {
+    firstValue: '',
     textPassword: '123456',
     phoneError: false,
     phoneNumber: '17600600600',
