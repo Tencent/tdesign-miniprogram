@@ -3,7 +3,7 @@ import config from '../common/config';
 import Props from './props';
 
 const { prefix } = config;
-const currentComponent = `${prefix}-checkbox`;
+const classPrefix = `${prefix}-checkbox`;
 @wxComponent()
 export default class CheckBox extends SuperComponent {
   externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
@@ -22,7 +22,7 @@ export default class CheckBox extends SuperComponent {
 
   // 组件的内部数据
   data = {
-    classPrefix: currentComponent,
+    classPrefix,
     classBasePrefix: prefix,
     active: false,
     halfChecked: false,

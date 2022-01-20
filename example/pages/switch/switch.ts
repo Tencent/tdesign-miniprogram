@@ -1,29 +1,10 @@
 Page({
   data: {
-    value: true,
-    valueSmall: 2,
-    valueDefault: 'baby',
-    valueLarge: false,
+    defaultVal: true,
   },
-  onLoad() {},
-  onswitchchange(e) {
+  handleChange(e) {
     this.setData({
-      value: e.detail.value,
-    });
-  },
-  onswitchchangesmall(e) {
-    this.setData({
-      valueSmall: e.detail.value,
-    });
-  },
-  onswitchchangedefault(e) {
-    this.setData({
-      valueDefault: e.detail.value,
-    });
-  },
-  onswitchchangelarge(e) {
-    this.setData({
-      valueLarge: e.detail.value,
+      defaultVal: e.detail.value,
     });
   },
 });

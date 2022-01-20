@@ -28,6 +28,11 @@ const props: TdIconProps = {
     type: String,
     value: undefined,
   },
+  /** 自定义图标前缀 */
+  prefix: {
+    type: String,
+    value: undefined,
+  },
 };
 
 export default props;

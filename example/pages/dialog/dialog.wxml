@@ -19,6 +19,7 @@
   actions="{{dialogConfig.actions}}"
   bind:confirm="confirmHandle"
   bind:cancel="closeHandle"
+  bind:action="closeHandle"
 >
   <scroll-view
     wx:if="{{currentKey === 'multiTextAndTitle'}}"
