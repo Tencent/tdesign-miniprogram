@@ -9,9 +9,7 @@
   font-style: normal;
 }
 
-.t-icon {
-  /* stylelint-disable-next-line declaration-no-important */
-  font-family: 't' !important; /* prevent issues with browser extensions that change fonts */
+.t-icon-base {
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -22,6 +20,11 @@
   display: block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.t-icon {
+  /* stylelint-disable-next-line declaration-no-important */
+  font-family: 't' !important; /* prevent issues with browser extensions that change fonts */
 }
 
 .t-icon-add-circle:before {

@@ -6,6 +6,8 @@
       color="{{color}}"
       bind:click="onIconTap"
       data-index="{{index}}"
+      data-type="{{type}}"
+      prefix="{{prefix}}"
     />
     <view class="demo__card-name">{{name}}</view>
   </view>
@@ -23,6 +25,16 @@
         wx:key="index"
         is="iconCard"
         data="{{name:item, size: '48rpx',index}}"
+      />
+    </view>
+  </t-demo>
+  <t-demo title="02 自定义组件图标">
+    <view class="demo__list">
+      <template
+        wx:for="{{prefixIcons}}"
+        wx:key="index"
+        is="iconCard"
+        data="{{name:item, size:'48rpx',index,prefix:'icon',type:'prefix'}}"
       />
     </view>
   </t-demo>
