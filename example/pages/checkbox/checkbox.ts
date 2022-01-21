@@ -5,6 +5,7 @@ Page({
     demoCheckboxMax: ['checkbox1', 'checkbox2'],
     demoCheckbox3: ['checkbox2', 'checkbox4'],
     controledData: [],
+    checked: true,
     options: [
       { label: '全选', checkAll: true },
       '多选1',
@@ -43,6 +44,15 @@ Page({
       : [];
     this.setData({
       controledData: data,
+    });
+  },
+  testControll(val) {
+    console.log(val.detail);
+  },
+  buttonControl() {
+    console.log(!this.data.checked);
+    this.setData({
+      checked: !this.data.checked,
     });
   },
 });

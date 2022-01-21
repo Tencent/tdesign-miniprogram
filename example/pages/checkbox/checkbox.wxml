@@ -1,6 +1,10 @@
 <view class="checkbox-demo">
   <view class="demo-title">Checkbox多选框</view>
   <view class="demo-desc">用于预设的一组选项中执行多项选择，并呈现选择结果。</view>
+  <!-- <t-demo title="测试受控 checked">
+    <t-checkbox checked="{{checked}}" label="多选" bind:change="testControll" />
+    <button bind:tap="buttonControl">dede</button>
+  </t-demo> -->
   <t-demo title="01 类型" desc="基础多选框">
     <t-checkbox-group value="{{demoCheckbox1}}" bind:change="onChange">
       <t-checkbox value="checkbox1" label="多选" />

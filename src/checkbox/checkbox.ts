@@ -29,8 +29,14 @@ export default class Checkbox extends SuperComponent {
     optionLinked: false,
   };
 
-  lifetimes = {
-    attached() {
+  // lifetimes = {
+  //   attached() {
+  //     this.initStatus();
+  //   },
+  // };
+
+  observers = {
+    checked: function () {
       this.initStatus();
     },
   };
