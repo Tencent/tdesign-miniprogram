@@ -11,7 +11,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "stepper": "tdesign-miniprogram/stepper/stepper"
+  "t-stepper": "tdesign-miniprogram/stepper/stepper"
 }
 ```
 
