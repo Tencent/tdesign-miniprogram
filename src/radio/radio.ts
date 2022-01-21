@@ -23,8 +23,13 @@ export default class PullDownRefresh extends SuperComponent {
     multipleSlots: true,
   };
 
-  lifetimes = {
-    attached() {
+  // lifetimes = {
+  //   attached() {
+  //     this.handleInitStatus();
+  //   },
+  // };
+  observers = {
+    checked: function () {
       this.handleInitStatus();
     },
   };
