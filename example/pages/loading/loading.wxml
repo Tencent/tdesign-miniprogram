@@ -7,27 +7,27 @@
   <t-demo title="01 类型">
     <view class="demo-section__desc">纯icon</view>
     <view class="loading-container-flex">
+      <t-loading theme="circular" size="40rpx" loading></t-loading>
       <t-loading
-        theme="circular"
+        theme="spinner"
         size="40rpx"
         loading
-        t-class-indicator="indicator-blue"
+        t-class-indicator="indicator-black"
       ></t-loading>
-      <t-loading theme="spinner" size="40rpx" loading></t-loading>
-      <t-loading theme="dots" size="80rpx" loading></t-loading>
+      <t-loading theme="dots" size="80rpx" loading t-class-indicator="indicator-black"></t-loading>
     </view>
     <view class="demo-section__desc">icon加文字横向</view>
     <view class="loading-container-flex">
+      <t-loading theme="circular" size="40rpx" loading text="加载中..."></t-loading>
       <t-loading
-        theme="circular"
+        theme="spinner"
         size="40rpx"
         loading
         text="加载中..."
-        t-class-indicator="indicator-blue"
+        t-class-indicator="indicator-black"
       ></t-loading>
-      <t-loading theme="spinner" size="40rpx" loading text="加载中..."></t-loading>
-      <t-loading theme="circular" size="40rpx" loading style="color: #0052d9">
-        <span slot="text">加载中...</span>
+      <t-loading theme="circular" size="40rpx" loading>
+        <span slot="text" style="color: #0052d9">加载中...</span>
       </t-loading>
     </view>
     <view class="demo-section__desc">icon加文字竖向</view>
@@ -37,7 +37,6 @@
       size="40rpx"
       loading
       text="加载中"
-      t-class-indicator="indicator-blue"
       layout="vertical"
     ></t-loading>
     <view class="demo-section__desc">纯文字</view>
@@ -55,11 +54,11 @@
       <t-switch
         value="{{isCheck}}"
         bindchange="switchChange"
-        colors="{{['#00A870', 'rgba(0,0,0,0.26)']}}"
+        colors="{{['#00A870']}}"
         slot="note"
       />
       <span class="text-info">
-        {{isLoading?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
+        {{isCheck?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
       </span>
     </view>
     <t-loading
@@ -67,9 +66,8 @@
       theme="circular"
       size="40rpx"
       text="加载中..."
-      loading="{{isLoading}}"
+      loading="{{isCheck}}"
       delay="{{1000}}"
-      t-class-indicator="indicator-blue"
     ></t-loading>
   </t-demo>
 
@@ -81,7 +79,6 @@
         text="加载中..."
         loading
         t-class-text="text-l"
-        t-class-indicator="indicator-blue"
         duration="{{duration}}"
       ></t-loading>
     </view>
@@ -101,20 +98,13 @@
   <t-demo title="04 规格">
     <view class="demo-section__desc">支持自定义加载规格</view>
     <view class="loading-container-flex-column">
-      <t-loading
-        theme="circular"
-        size="40rpx"
-        text="加载中(小)..."
-        loading
-        t-class-indicator="indicator-blue"
-      ></t-loading>
+      <t-loading theme="circular" size="40rpx" text="加载中(小)..." loading></t-loading>
       <t-loading
         theme="circular"
         size="48rpx"
         text="加载(中)..."
         loading
         t-class-text="text-m"
-        t-class-indicator="indicator-blue"
       ></t-loading>
       <t-loading
         theme="circular"
@@ -122,7 +112,6 @@
         text="加载中(大)..."
         loading
         t-class-text="text-l"
-        t-class-indicator="indicator-blue"
       ></t-loading>
     </view>
   </t-demo>

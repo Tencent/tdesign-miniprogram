@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@loading: ~"@{prefix}-loading";
+@loading: ~'@{prefix}-loading';
 
 .@{loading} {
   display: inline-flex;
@@ -14,7 +14,8 @@
     height: 100%;
     max-width: 100%;
     max-height: 100%;
-    animation: rotate .8s linear infinite;
+    animation: rotate 0.8s linear infinite;
+    color: #0052d9;
 
     &.reverse {
       animation-name: rotateReverse;
@@ -105,7 +106,7 @@
   &__bar {
     height: 6rpx;
     width: 80%;
-    transition: .5s;
+    transition: 0.5s;
     background-color: #0052d9;
     display: none;
 
@@ -191,22 +192,22 @@
 
 @keyframes dotting {
   0% {
-    opacity: .4;
+    opacity: 0.4;
   }
 
   1% {
-    opacity: .8;
+    opacity: 0.8;
   }
 
   33% {
-    opacity: .8;
+    opacity: 0.8;
   }
 
   34% {
-    opacity: .4;
+    opacity: 0.4;
   }
 
   100% {
-    opacity: .4;
+    opacity: 0.4;
   }
 }
