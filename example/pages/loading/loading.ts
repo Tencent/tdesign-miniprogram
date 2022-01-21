@@ -1,13 +1,12 @@
 Page({
   data: {
-    isLoading: false,
     isCheck: false,
     duration: 800,
   },
 
   switchChange() {
-    const { isLoading } = this.data;
-    this.setData({ isLoading: !isLoading });
+    const { isCheck } = this.data;
+    this.setData({ isCheck: !isCheck });
   },
 
   durationChange(e) {

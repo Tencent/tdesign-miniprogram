@@ -26,8 +26,8 @@
         text="加载中..."
         t-class-indicator="indicator-black"
       ></t-loading>
-      <t-loading theme="circular" size="40rpx" loading style="color: #0052d9">
-        <span slot="text">加载中...</span>
+      <t-loading theme="circular" size="40rpx" loading>
+        <span slot="text" style="color: #0052d9">加载中...</span>
       </t-loading>
     </view>
     <view class="demo-section__desc">icon加文字竖向</view>
@@ -54,11 +54,11 @@
       <t-switch
         value="{{isCheck}}"
         bindchange="switchChange"
-        colors="{{['#00A870', 'rgba(0,0,0,0.26)']}}"
+        colors="{{['#00A870']}}"
         slot="note"
       />
       <span class="text-info">
-        {{isLoading?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
+        {{isCheck?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
       </span>
     </view>
     <t-loading
@@ -66,7 +66,7 @@
       theme="circular"
       size="40rpx"
       text="加载中..."
-      loading="{{isLoading}}"
+      loading="{{isCheck}}"
       delay="{{1000}}"
     ></t-loading>
   </t-demo>
