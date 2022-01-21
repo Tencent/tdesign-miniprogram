@@ -27,6 +27,7 @@ export default class Checkbox extends SuperComponent {
     active: false,
     halfChecked: false,
     optionLinked: false,
+    canCancel: false,
   };
 
   lifetimes = {
@@ -51,14 +52,14 @@ export default class Checkbox extends SuperComponent {
       if (target === 'text' && contentDisabled) {
         return;
       }
-      const { value, active, checkAll, optionLinked } = this.data;
+      const { value, active, checkAll, optionLinked, canCancel } = this.data;
       const item = { name: value, checked: !active, checkAll };
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
       if (parent) {
         if (checkAll || optionLinked) {
           parent.handleCheckAll({
             type: 'slot',
-            checked: !active,
+            checked: !active || (this.data.halfChecked && !canCancel),
             option: !checkAll,
             name: value,
           });
@@ -68,7 +69,7 @@ export default class Checkbox extends SuperComponent {
       } else if (checkAll || optionLinked) {
         this.triggerEvent('toggleAll', {
           type: 'not-slot',
-          checked: !active,
+          checked: !active || (this.data.halfChecked && !canCancel),
           option: !checkAll,
           name: value,
         });
@@ -96,6 +97,11 @@ export default class Checkbox extends SuperComponent {
       const { active } = this.data;
       this.setData({
         active: !active,
+      });
+    },
+    setCancel(cancel: boolean) {
+      this.setData({
+        canCancel: cancel,
       });
     },
     setDisabled(disabled: Boolean) {

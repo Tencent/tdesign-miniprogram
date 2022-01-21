@@ -125,7 +125,7 @@ export default class CheckboxGroup extends SuperComponent {
           value: items
             .map((item) => {
               if (item.data.disabled) {
-                return '';
+                return this.data.value.includes(item.data.value) ? item.data.value : '';
               }
               item.changeActive(checked);
               return checked && !item.data.checkAll ? item.data.value : '';
@@ -147,11 +147,15 @@ export default class CheckboxGroup extends SuperComponent {
         items = this.getRelationNodes('../checkbox/checkbox');
       }
       const all = items.filter((i) => !i.data.checkAll).map((item) => item.data.value);
+      const excludeDisableArr = items
+        .filter((i) => !i.data.checkAll && i.data.value && !i.data.disabled)
+        .map((item) => item.data.value);
       const currentVal = Array.from(new Set(this.data.value.filter((i) => all.indexOf(i) > -1)));
       const element = items.find((item) => item.data.checkAll);
       if (currentVal.length) {
         element?.changeActive(true);
         element?.changeCheckAllHalfStatus(currentVal.length !== len - 1);
+        element?.setCancel(currentVal.length >= excludeDisableArr.length);
       } else {
         element?.changeActive(false);
       }
