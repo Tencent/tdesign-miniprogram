@@ -26,6 +26,13 @@ export default class RadioGroup extends SuperComponent {
 
   properties = Props;
 
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
   lifetimes = {
     attached() {
       this.handleCreateMulRadio();
@@ -33,7 +40,7 @@ export default class RadioGroup extends SuperComponent {
   };
 
   observers = {
-    value: function () {
+    value() {
       this.updateChildren();
     },
   };
@@ -53,11 +60,7 @@ export default class RadioGroup extends SuperComponent {
       }
     },
     updateValue(item) {
-      this.setData({
-        value: item.name,
-      });
-      this.updateChildren();
-      this.triggerEvent('change', item.name);
+      this._trigger('change', { value: item.name });
     },
     // 处理 group选项
     handleGroupSelect(e) {

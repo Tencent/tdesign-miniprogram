@@ -1,9 +1,8 @@
-<view class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}}">
+<view class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}}" bind:tap="handleTap">
   <!-- 图标 -->
   <view
     class="{{classPrefix}}__icon {{classPrefix}}__icon--{{align}} {{prefix}}-class-icon"
     data-target="icon"
-    bind:tap="onChange"
   >
     <view wx:if="{{customIcon}}" class="{{classPrefix}}__image">
       <image src="{{active ? iconVal[0] : iconVal[1]}}" class="{{classPrefix}}-icon__image" webp />
@@ -19,7 +18,6 @@
   <view
     class="{{classPrefix}}__content {{disabled ? classPrefix + '__content--disabled' : ''}}"
     data-target="text"
-    bind:tap="onChange"
   >
     <!-- 主文本 -->
     <view

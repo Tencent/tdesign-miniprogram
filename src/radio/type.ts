@@ -24,6 +24,14 @@ export interface TdRadioProps {
     required?: boolean;
   };
   /**
+   * 是否选中
+   */
+  defaultChecked?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+  /**
    * 单选按钮颜色
    * @default #0052d9
    */
@@ -118,7 +126,7 @@ export interface TdRadioProps {
     value?: RadioValue;
     required?: boolean;
   };
-};
+}
 
 export interface TdRadioGroupProps {
   /**
@@ -155,10 +163,22 @@ export interface TdRadioGroupProps {
     value?: RadioValue;
     required?: boolean;
   };
-};
+  /**
+   * 选中的值
+   */
+  defaultValue?: {
+    type: StringConstructor;
+    value?: RadioValue;
+    required?: boolean;
+  };
+}
 
 export type RadioValue = string | number | boolean;
 
 export type RadioOption = string | number | RadioOptionObj;
 
-export interface RadioOptionObj { label?: string; value?: string | number; disabled?: boolean };
+export interface RadioOptionObj {
+  label?: string;
+  value?: string | number;
+  disabled?: boolean;
+}

@@ -11,7 +11,12 @@ const iconDefault = {
 };
 @wxComponent()
 export default class Radio extends SuperComponent {
-  externalClasses = [`${prefix}-class`, `${prefix}-class-label`, `${prefix}-class-icon`, `${prefix}-class-content`];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-label`,
+    `${prefix}-class-icon`,
+    `${prefix}-class-content`,
+  ];
 
   relations = {
     '../radio-group/radio-group': {
@@ -31,6 +36,13 @@ export default class Radio extends SuperComponent {
 
   properties = Props;
 
+  controlledProps = [
+    {
+      key: 'checked',
+      event: 'change',
+    },
+  ];
+
   data = {
     prefix,
     active: false,
@@ -42,7 +54,7 @@ export default class Radio extends SuperComponent {
   };
 
   methods = {
-    onChange(e) {
+    handleTap(e) {
       if (this.data.disabled) return;
       const { target } = e.currentTarget.dataset;
       const { contentDisabled } = this.data;
@@ -58,7 +70,7 @@ export default class Radio extends SuperComponent {
           this.triggerEvent('toggleGroupSelect', { name: value });
           return;
         }
-        this.triggerEvent('change', !active);
+        this._trigger('change', { checked: !active });
         this.toggle();
       }
     },

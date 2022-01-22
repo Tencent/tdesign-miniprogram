@@ -16,6 +16,11 @@ const props: TdRadioProps = {
   checked: {
     type: Boolean,
   },
+  /** 是否选中 */
+  defaultChecked: {
+    type: null,
+    value: undefined,
+  },
   /** 单选按钮颜色 */
   color: {
     type: String,
@@ -66,7 +71,7 @@ const props: TdRadioProps = {
   /** 单选按钮的值 */
   value: {
     type: String,
-    optionalTypes: [Number,Boolean],
+    optionalTypes: [Number, Boolean],
     value: undefined,
   },
 };
