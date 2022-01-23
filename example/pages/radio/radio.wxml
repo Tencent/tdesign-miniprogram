@@ -16,7 +16,7 @@
   </t-demo>
 
   <t-demo title="" desc="右侧圆形单选框">
-    <t-radio-group bind:change="onChange" value="radio1">
+    <t-radio-group bind:change="onChange" defaultValue="radio1">
       <t-radio value="radio1" label="单选" align="right" />
       <t-radio value="radio2" label="单选" align="right" />
       <t-radio value="radio3" align="right" label="多选"></t-radio>
@@ -31,7 +31,7 @@
   </t-demo>
 
   <t-demo title="" desc="左侧勾形单选框">
-    <t-radio-group value="radio4" bind:change="onChange">
+    <t-radio-group defaultValue="radio4" bind:change="onChange">
       <t-radio value="radio1" label="单选" icon="stroke-line"> </t-radio>
       <t-radio value="radio2" icon="stroke-line" label="单选"> </t-radio>
       <t-radio
@@ -47,7 +47,7 @@
   </t-demo>
 
   <t-demo title="" desc="右侧勾形单选框">
-    <t-radio-group value="radio4" bind:change="onChange">
+    <t-radio-group defaultValue="radio4" bind:change="onChange">
       <t-radio value="radio1" label="单选" icon="stroke-line" align="right"> </t-radio>
       <t-radio value="radio2" label="单选" icon="stroke-line" align="right"> </t-radio>
       <t-radio value="radio3" icon="stroke-line" align="right" label="单选"> </t-radio>
@@ -63,7 +63,7 @@
   </t-demo>
 
   <t-demo title="02 状态" desc="单选框禁状态">
-    <t-radio-group value="radio2" disabled="{{true}}">
+    <t-radio-group defaultValue="radio2" disabled="{{true}}">
       <t-radio value="radio1" label="单选" />
       <t-radio value="radio2" label="单选" />
     </t-radio-group>
@@ -82,7 +82,7 @@
   </t-demo>
 
   <t-demo title="03 特殊类型" desc="自定义图标单选框">
-    <t-radio-group value="radio1">
+    <t-radio-group defaultValue="radio1">
       <t-radio value="radio1" label="单选" icon="{{[activeImage,inActiveImage]}}" />
       <t-radio value="radio2" label="单选" icon="{{[activeImage,inActiveImage]}}" />
     </t-radio-group>
@@ -93,7 +93,7 @@
     <t-radio value="radio2" label="单选H56" t-class="t-radio-demo" checked />
   </t-demo>
   <view style="height: 74rpx"></view>
-  <!-- <t-demo>
-  <t-radio-group options="{{options}}" value="数字" bindchange="onChange"></t-radio-group>
-</t-demo> -->
+  <t-demo>
+    <t-radio-group options="{{options}}" defaultValue="数字" bind:change="onChange"></t-radio-group>
+  </t-demo>
 </view>
