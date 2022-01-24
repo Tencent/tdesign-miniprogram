@@ -90,29 +90,29 @@ Page({
 ```
 
 ## API
-
 ### Tabs Props
 
-| 名称             | 类型            | 默认值 | 说明                                                                                                                                                                 | 必传 |
-| ---------------- | --------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
-| animation        | Object          | -      | 动画效果设置。其中 duration 表示动画时长。TS 类型：`TabAnimation`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N    |
-| external-classes | Array           | -      | 组件类名，分别用于设置 组件外层元素 等类名。`['t-class']`                                                                                                            | N    |
-| placement        | String          | top    | 选项卡位置。可选项：left/top                                                                                                                                         | N    |
-| show-bottom-line | Boolean         | true   | 是否展示底部激活线条                                                                                                                                                 | N    |
-| value            | String / Number | -      | 激活的选项卡值。TS 类型：`TabValue`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts)                               | N    |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+animation | Object | - | 动画效果设置。其中 duration 表示动画时长。TS 类型：`TabAnimation`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
+external-classes | Array | - | 组件类名，分别用于设置 组件外层元素 等类名。`['t-class']` | N
+placement | String | top | 选项卡位置。可选项：left/top | N
+show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
+value | String / Number | - | 激活的选项卡值。TS 类型：`TabValue`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
+defaultValue | String / Number | - | （非受控）激活的选项卡值。TS 类型：`TabValue`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 
 ### Tabs Events
 
-| 名称   | 参数                | 描述                       |
-| ------ | ------------------- | -------------------------- |
-| change | `(value: TabValue)` | 激活的选项卡发生变化时触发 |
+名称 | 参数 | 描述
+-- | -- | --
+change | `(value: TabValue)` | 激活的选项卡发生变化时触发
 
 ### TabPanel Props
 
-| 名称            | 类型            | 默认值 | 说明                                      | 必传 |
-| --------------- | --------------- | ------ | ----------------------------------------- | ---- |
-| destroy-on-hide | Boolean         | true   | 选项卡内容隐藏时是否销毁                  | N    |
-| disabled        | Boolean         | false  | 是否禁用当前选项卡                        | N    |
-| label           | String / Slot   | -      | 选项卡名称，可自定义选项卡导航内容        | N    |
-| panel           | String / Slot   | -      | 用于自定义选项卡面板内容                  | N    |
-| value           | String / Number | -      | 选项卡的值，唯一标识。TS 类型：`TabValue` | N    |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+destroy-on-hide | Boolean | true | 选项卡内容隐藏时是否销毁 | N
+disabled | Boolean | false | 是否禁用当前选项卡 | N
+label | String / Slot | - | 选项卡名称，可自定义选项卡导航内容 | N
+panel | String / Slot | - | 用于自定义选项卡面板内容 | N
+value | String / Number | - | 选项卡的值，唯一标识。TS 类型：`TabValue` | N
