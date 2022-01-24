@@ -20,10 +20,23 @@ export default class Steps extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'current',
+      event: 'change',
+    },
+  ];
+
   // 组件的内部数据
   data = {
     prefix,
     classPrefix: name,
+  };
+
+  observers = {
+    current() {
+      this.updateChildren();
+    },
   };
 
   methods = {
@@ -44,15 +57,7 @@ export default class Steps extends SuperComponent {
       }
       if (!this.data.readonly) {
         const preIndex = this.data.current;
-        this.setData(
-          {
-            current: index,
-          },
-          () => {
-            this.updateChildren();
-          },
-        );
-        this.triggerEvent('change', {
+        this._trigger('change', {
           previous: preIndex,
           current: index,
         });
