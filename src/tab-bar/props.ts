@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdTabBarProps } from './type';
@@ -31,16 +30,22 @@ const props: TdTabBarProps = {
     type: Boolean,
     value: true,
   },
-  /** 当前选中标签的索引 */
-  value: {
-    type: String,
-    optionalTypes: [Number],
-    value: 0,
-  },
   /** 是否需要分割线 */
   split: {
     type: Boolean,
     value: true,
+  },
+  /** 当前选中标签的索引 */
+  value: {
+    type: String,
+    optionalTypes: [Number, Array],
+    value: null,
+  },
+  /** 当前选中标签的索引，非受控属性 */
+  defaultValue: {
+    type: String,
+    optionalTypes: [Number, Array],
+    value: 0,
   },
 };
 

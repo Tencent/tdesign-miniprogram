@@ -7,7 +7,7 @@
       wx:for-item="list"
       wx:for-index="index"
       wx:key="index"
-      value="{{value}}"
+      defaultValue="{{value}}"
       bindchange="onChange"
       class="{{index===demoList_1.length-1?'':'mb-12'}}"
     >
@@ -28,7 +28,7 @@
       wx:for-item="list"
       wx:for-index="index"
       wx:key="index"
-      value="{{value}}"
+      defaultValue="{{value}}"
       bindchange="onChange"
       class="mb-12"
       color="{{['#0052D9', 'rgba(0, 0, 0, .9)']}}"
@@ -45,7 +45,7 @@
       </t-tab-bar-item>
     </t-tab-bar>
     <t-tab-bar
-      value="label1"
+      defaultValue="label1"
       bindchange="onChange"
       class="mb-12"
       color="{{['#0052D9', 'rgba(0, 0, 0, .9)']}}"
@@ -70,7 +70,7 @@
       wx:for-item="list"
       wx:for-index="index"
       wx:key="index"
-      value="{{value}}"
+      defaultValue="{{value}}"
       bindchange="onChange"
       class="{{index===demoList_2.length-1?'':'mb-12'}}"
       color="{{['#0052D9', 'rgba(0, 0, 0, .9)']}}"
@@ -88,7 +88,7 @@
   </t-demo>
   <t-demo desc="双层级纯文本标签栏">
     <view class="demo-word bottom-row">
-      <t-tab-bar value="label_3" bindchange="onChange">
+      <t-tab-bar defaultValue="label_3" bindchange="onChange">
         <t-tab-bar-item
           wx:for="{{list_5}}"
           wx:for-item="item"
