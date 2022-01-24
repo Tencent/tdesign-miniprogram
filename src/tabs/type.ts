@@ -49,7 +49,15 @@ export interface TdTabsProps {
     value?: TabValue;
     required?: boolean;
   };
-};
+  /**
+   * 激活的选项卡值 非受控
+   */
+  defaultValue?: {
+    type: StringConstructor;
+    value?: TabValue;
+    required?: boolean;
+  };
+}
 
 export interface TdTabPanelProps {
   /**
@@ -95,7 +103,7 @@ export interface TdTabPanelProps {
     value?: TabValue;
     required?: boolean;
   };
-};
+}
 
 export type TabAnimation = { duration: number } & Record<string, any>;
 

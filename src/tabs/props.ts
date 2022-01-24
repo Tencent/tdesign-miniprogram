@@ -30,6 +30,11 @@ const props: TdTabsProps = {
     type: String,
     optionalTypes: [Number],
   },
+  /** 激活的选项卡值 - 非受控 */
+  defaultValue: {
+    type: null,
+    value: undefined,
+  },
 };
 
 export default props;
