@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdRadioGroupProps } from './type';
@@ -27,7 +26,7 @@ const props: TdRadioGroupProps = {
     optionalTypes: [Number, Boolean],
     value: undefined,
   },
-  /** 选中的值 */
+  /** 选中的值，非受控属性 */
   defaultValue: {
     type: null,
     value: undefined,
