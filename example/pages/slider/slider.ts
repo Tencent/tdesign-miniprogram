@@ -19,14 +19,4 @@ Page({
       100: '大',
     },
   },
-  onLoad() {},
-  valueChange1(e: any) {
-    console.log('带数值滑动选择器', e.detail.value);
-  },
-  valueChange2(e: any) {
-    console.log('起始非零滑动选择器', e.detail.value);
-  },
-  valueChange3(e: any) {
-    console.log('区间滑动选择器', e.detail.value);
-  },
 });

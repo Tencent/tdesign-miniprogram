@@ -4,20 +4,16 @@
 <t-demo title="01 类型" desc="基础滑动选择器">
   <view class="space"><t-slider /></view>
   <view class="t-slider-wrapper-desc">带数值滑动选择器</view>
-  <view class="space-left"
-    ><t-slider value="{{value3}}" label="${value}%" bind:change="valueChange1"></t-slider
-  ></view>
+  <view class="space-left"><t-slider value="{{value3}}" label="${value}%"></t-slider></view>
 
   <view class="t-slider-wrapper-desc">起始非零滑动选择器</view>
-  <view class="space-left"
-    ><t-slider min="{{30}}" max="{{200}}" label bind:change="valueChange2"></t-slider
-  ></view>
+  <view class="space-left"><t-slider min="{{30}}" max="{{200}}" label></t-slider></view>
 
   <view class="t-slider-wrapper-desc">带刻度滑动选择器</view>
   <view class="space"><t-slider marks="{{mask3}}" step="{{50}}" value="{{50}}"></t-slider></view>
 
   <view class="t-slider-wrapper-desc">区间滑动选择器</view>
-  <t-slider range label showExtremeValue value="{{[30, 70]}}" bind:change="valueChange3"></t-slider>
+  <t-slider range label showExtremeValue value="{{[30, 70]}}"></t-slider>
 </t-demo>
 <t-demo title="02 状态" desc="滑动选择器禁用状态">
   <view class="space-container">
