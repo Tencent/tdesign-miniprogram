@@ -18,7 +18,13 @@ export default class CheckBox extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = Props;
+  properties = {
+    ...Props,
+    defaultChecked: {
+      type: null,
+      value: undefined,
+    },
+  };
 
   // 组件的内部数据
   data = {
@@ -37,10 +43,20 @@ export default class CheckBox extends SuperComponent {
   };
 
   observers = {
-    checked: function () {
+    checked: function (isChecked) {
       this.initStatus();
+      this.setData({
+        active: isChecked,
+      });
     },
   };
+
+  controlledProps = [
+    {
+      key: 'checked',
+      event: 'change',
+    },
+  ];
 
   /* Methods */
   methods = {
@@ -74,30 +90,31 @@ export default class CheckBox extends SuperComponent {
           name: value,
         });
       } else {
-        this.triggerEvent('change', !active);
-        this.toggle();
+        this._trigger('change', { checked: !active });
+        // this.triggerEvent('change', !active);
+        // this.toggle();
       }
     },
     initStatus() {
       if (!this.data.optionLinked) {
         if (this.data.indeterminate) {
           this.setData({
-            active: true,
+            // active: true,
             halfChecked: true,
           });
         } else {
           this.setData({
-            active: this.data.checked,
+            // active: this.data.checked,
             halfChecked: this.data.indeterminate,
           });
         }
       }
     },
     toggle() {
-      const { active } = this.data;
-      this.setData({
-        active: !active,
-      });
+      // const { active } = this.data;
+      // this.setData({
+      //   active: !active,
+      // });
     },
     setCancel(cancel: boolean) {
       this.setData({
@@ -109,11 +126,7 @@ export default class CheckBox extends SuperComponent {
         disabled: this.data.disabled || disabled,
       });
     },
-    changeActive(active: boolean) {
-      this.setData({
-        active,
-      });
-    },
+
     // 半选
     changeCheckAllHalfStatus(active: boolean) {
       this.setData({
