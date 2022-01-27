@@ -1,0 +1,55 @@
+<!-- 加载中占位 -->
+<view
+  wx:if="{{isLoading}}"
+  class="t-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading"
+>
+  <t-loading
+    wx:if="{{loading === 'default'}}"
+    theme="dots"
+    size="40rpx"
+    loading
+    class="t-class-load"
+    t-class-text="{{classPrefix}}--loading-text"
+  ></t-loading>
+  <view
+    wx:elif="{{loading !== 'slot' && loading !== ''}}"
+    class="{{classPrefix}}__common t-class-load"
+  >
+    {{loading}}
+  </view>
+  <slot wx:else name="loading" class="t-class-load" />
+</view>
+<!-- 加载失败占位 -->
+<view
+  wx:elif="{{isFailed}}"
+  class="t-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--faild"
+>
+  <view
+    wx:if="{{loadFailed === 'default'}}"
+    style="font-size: 40rpx; color: #999"
+    class="t-class-load"
+  >
+    <t-icon name="close" />
+  </view>
+  <view
+    wx:elif="{{loadFailed !== 'slot' && loadFailed !== ''}}"
+    class="{{classPrefix}}__common t-class-load"
+  >
+    {{loadFailed}}
+  </view>
+  <slot wx:else name="loadFailed" class="t-class-load"></slot>
+</view>
+<!-- 图片 -->
+<image
+  id="image"
+  hidden="{{isLoading || isFailed}}"
+  class="t-class {{classPrefix}}"
+  src="{{src}}"
+  style="{{widthStyle}}"
+  mode="{{mode}}"
+  webp="{{webp}}"
+  lazy-load="{{lazyLoad}}"
+  bindload="onLoaded"
+  binderror="onLoadError"
+  show-menu-by-longpress="{{showMenuByLongpress}}"
+/>

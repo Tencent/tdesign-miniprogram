@@ -1,0 +1,56 @@
+<view class="{{classPrefix}} {{fixedClass}} {{visibleClass}} t-class" style="{{boxStyle}}">
+  <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder"></view>
+  <view class="{{classPrefix}}__content" style="{{contentStyle}}">
+    <block>
+      <view class="{{classPrefix}}__left t-class-left">
+        <slot name="capsule" />
+        <!-- 如果传入leftIcon和homeIcon则展示胶囊 -->
+        <block wx:if="{{hasBackIcon && hasHomeIcon}}">
+          <view class="{{classPrefix}}__capsule t-class-capsule">
+            <view class="{{classPrefix}}__btn t-class-nav-btn" bindtap="goBack">
+              <t-icon
+                wx:if="{{leftIcon!=='slot'}}"
+                name="{{leftIcon}}"
+                class="{{classPrefix}}__capsule-icon t-class-left-icon"
+              />
+              <slot name="left-icon" class="t-class-left-icon"></slot>
+            </view>
+            <view class="{{classPrefix}}__btn t-class-nav-btn" bindtap="goHome">
+              <t-icon
+                wx:if="{{homeIcon!=='slot'}}"
+                name="{{homeIcon}}"
+                class="{{classPrefix}}__capsule-icon t-class-home-icon"
+              />
+              <slot name="home-icon" class="t-class-home-icon"></slot>
+            </view>
+          </view>
+        </block>
+        <!-- 否则无胶囊展示 -->
+        <block wx:else>
+          <view wx:if="{{hasBackIcon}}" class="{{classPrefix}}__btn" bindtap="goBack">
+            <t-icon
+              wx:if="{{leftIcon!=='slot'}}"
+              name="{{leftIcon}}"
+              class="{{classPrefix}}__capsule-icon t-class-left-icon"
+            />
+            <slot name="left-icon" class="t-class-left-icon"></slot>
+          </view>
+          <view wx:if="{{hasHomeIcon}}" class="{{classPrefix}}__btn" bindtap="goHome">
+            <t-icon
+              wx:if="{{homeIcon!=='slot'}}"
+              name="{{homeIcon}}"
+              class="{{classPrefix}}__capsule-icon t-class-home-icon"
+            />
+            <slot name="home-icon" class="t-class-home-icon"></slot>
+          </view>
+        </block>
+      </view>
+      <view class="{{classPrefix}}__center t-class-center">
+        <block wx:if="{{title}}">
+          <slot wx:if="{{title === 'slot'}}" name="title" class="t-class-title"></slot>
+          <text wx:else class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
+        </block>
+      </view>
+    </block>
+  </view>
+</view>

@@ -29,6 +29,13 @@ export default class Rate extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
   data = {
     classPrefix: name,
     icon: 'star-filled',
@@ -58,7 +65,7 @@ export default class Rate extends SuperComponent {
           value = 0;
         }
         if (value !== currentValue) {
-          this.triggerEvent('change', { value });
+          this._trigger('change', { value });
         }
       })
       .exec();

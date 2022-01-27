@@ -1,0 +1,80 @@
+.t-float-left {
+  float: left;
+}
+.t-float-right {
+  float: right;
+}
+@keyframes tdesign-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.t-avatar {
+  font-weight: 600;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 0 solid;
+  border-radius: 999rpx;
+}
+.t-avatar__wrapper {
+  float: left;
+  position: relative;
+}
+.t-avatar__wrapper t-badge {
+  position: absolute;
+}
+.t-avatar__wrapper .t-badge__round {
+  top: -10%;
+  right: -10%;
+}
+.t-avatar__wrapper .t-badge__circle {
+  top: -5%;
+  right: -5%;
+}
+.t-avatar.t-size-l {
+  width: 128rpx;
+  height: 128rpx;
+  font-weight: 600;
+  font-size: 36rpx;
+}
+.t-avatar.t-size-m {
+  width: 96rpx;
+  height: 96rpx;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+.t-avatar.t-size-s {
+  width: 64rpx;
+  height: 64rpx;
+  font-weight: 600;
+  font-size: 24rpx;
+}
+.t-avatar .t-image,
+.t-avatar__image {
+  width: 100%;
+  height: 100%;
+}
+.t-avatar--circle {
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+.t-avatar--round {
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+.t-avatar__text,
+.t-avatar__icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999rpx;
+}

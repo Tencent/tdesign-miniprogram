@@ -24,9 +24,26 @@ isComponent: true
 <img src="https://tdesign.gtimg.com/miniprogram/readme/rate.png" width="375px" height="50%">
 
 ```html
-<t-rate size="{{48}}" value="{{3}}" variant="filled" bind:change="onChange"></t-rate>
+<t-rate defaultValue="{{value}}" variant="filled"></t-rate>
 ```
 
+### 受控用法
+
+```html
+<t-rate value="{{value}}" variant="filled" bind:change="onChange"></t-rate>
+```
+
+```js
+Page({
+  data: {
+    value: 3
+  },
+  onChange(e) {
+    const { value } = e.detail;
+    this.setData({ value })
+  }
+})
+```
 ## API
 
 ### Rate Props
@@ -41,7 +58,8 @@ isComponent: true
 | showText   | Boolean | false   | 是否显示辅助文字                                                                                                                                                          | N    |
 | size       | String  | 40      | 评分图标的大小                                                                                                                                                            | N    |
 | texts      | Array   | -       | 自定义评分等级对应的辅助文字，组件内部默认为：['极差', '失望', '一般', '满意', '惊喜']。TS 类型：`Array<string>`                                                          | N    |
-| value      | Number  | -       | 选择评分的值                                                                                                                                                              | Y    |
+| value      | Number  | -       | 选择评分的值                                                                                                                                                              | N    |
+| defaultValue      | Number  | -       | （非受控）选择评分的值                                                                                                                                                              | N    |
 | variant    | String  | outline | 形状类型，有描边类型和填充类型两种。可选项：`outline`/`filled`                                                                                                            | N    |
 
 ### Rate Events

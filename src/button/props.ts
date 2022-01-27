@@ -12,6 +12,11 @@ const props: TdButtonProps = {
     type: Boolean,
     value: false,
   },
+  /** 按钮内容 */
+  content: {
+    type: String,
+    value: '',
+  },
   /** 是否禁用按钮 */
   disabled: {
     type: Boolean,

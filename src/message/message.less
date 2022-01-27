@@ -11,7 +11,9 @@
 @message-z-index: 5000;
 @gutter: 16rpx;
 
-.@{prefix}-message {
+@message: ~"@{prefix}-message";
+
+.@{message} {
   position: fixed;
   top: 0;
   left: 0;
@@ -30,18 +32,18 @@
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .2);
   opacity: 0;
 
-  &--text {
+  &__text {
     display: inline-block;
   }
 
-  &--text-wrap {
+  &__text-wrap {
     flex: 1 1 auto;
     overflow-x: hidden;
     text-overflow: ellipsis;
     line-height: @message-line-height;
   }
 
-  &--text-nowrap {
+  &__text-nowrap {
     word-break: keep-all;
     white-space: nowrap;
   }
@@ -62,17 +64,17 @@
     color: @error-color;
   }
 
-  .t-message--left-icon {
+  .@{message}__icon--left {
     margin-right: @gutter;
   }
 
-  .t-message--right-icon,
-  .t-message--right-btn {
+  .@{message}__icon--right,
+  .@{message}__btn--right {
     flex: 0 0 auto;
     margin-left: @gutter;
   }
 
-  .t-message--right-btn {
+  .@{message}__btn--right  {
     font-size: inherit;
     line-height: inherit;
     height: 44rpx;

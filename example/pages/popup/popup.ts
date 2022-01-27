@@ -46,13 +46,13 @@ Page({
   },
 
   onVisibleChange({ detail }) {
-    const { visiable } = detail;
+    const { visible } = detail;
     this.setData({
-      top: visiable,
-      bottom: visiable,
-      center: visiable,
-      left: visiable,
-      right: visiable,
+      top: visible,
+      bottom: visible,
+      center: visible,
+      left: visible,
+      right: visible,
     });
   },
 

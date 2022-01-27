@@ -1,0 +1,17 @@
+@import '../common/index.wxss';
+.hairline--top-bottom:after {
+  position: absolute;
+  box-sizing: border-box;
+  transform-origin: center;
+  content: ' ';
+  pointer-events: none;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+  border: 0 solid #eee;
+  transform: scale(0.5);
+}
+.hairline--top-bottom:after {
+  border-width: 1px 0;
+}

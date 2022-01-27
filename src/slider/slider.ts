@@ -5,6 +5,25 @@ import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-slider`;
+
+type dataType = {
+  sliderStyles: string;
+  classPrefix: string;
+  initialLeft: number | null;
+  initialRight: number | null;
+  activeLeft: number;
+  activeRight: number;
+  maxRange: number;
+  lineLeft: number;
+  lineRight: number;
+  dotTopValue: number[];
+  blockSize: number;
+  isScale: boolean;
+  scaleArray: any[];
+  scaleTextArray: any[];
+  _value: number | number[];
+  prefix: string;
+};
 @wxComponent()
 export default class Slider extends SuperComponent {
   externalClasses = [
@@ -17,25 +36,15 @@ export default class Slider extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
   // 组件的内部数据
-  data: {
-    sliderStyles: string;
-    classPrefix: string;
-    initialLeft: number | null;
-    initialRight: number | null;
-    activeLeft: number;
-    activeRight: number;
-    maxRange: number;
-    lineLeft: number;
-    lineRight: number;
-    dotTopValue: number[];
-    blockSize: number;
-    isScale: boolean;
-    scaleArray: any[];
-    scaleTextArray: any[];
-    _value: number | number[];
-    prefix: string;
-  } = {
+  data: dataType = {
     // 按钮样式列表
     sliderStyles: '',
     classPrefix: name,
@@ -94,7 +103,7 @@ export default class Slider extends SuperComponent {
   triggerValue(value?: number | number[]) {
     value = trimValue(value || this.data._value, this.properties);
 
-    this.triggerEvent('change', {
+    this._trigger('change', {
       value,
     });
   }
@@ -107,12 +116,9 @@ export default class Slider extends SuperComponent {
     const value = trimValue(newValue, this.properties);
 
     const setValueAndTrigger = () => {
-      this.setData(
-        {
-          _value: value,
-        },
-        this.triggerValue,
-      );
+      this.setData({
+        _value: value,
+      });
     };
 
     // 基本样式未初始化，等待初始化后在改变数据。
@@ -301,12 +307,8 @@ export default class Slider extends SuperComponent {
           // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
           const left = pageX - initialLeft - halfBlock;
           const leftValue = this.convertPosToValue(left, 0);
-          this.setData(
-            {
-              _value: [this.stepValue(leftValue), this.data._value[1]],
-            },
-            this.triggerValue,
-          );
+
+          this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
         } else {
           const right = -(pageX - initialRight) - halfBlock;
           const rightValue = this.convertPosToValue(right, 1);
@@ -314,12 +316,8 @@ export default class Slider extends SuperComponent {
             [this.data._value[0], this.stepValue(rightValue)],
             this.properties,
           );
-          this.setData(
-            {
-              _value: newValue,
-            },
-            this.triggerValue,
-          );
+
+          this.triggerValue(newValue);
         }
       });
     });

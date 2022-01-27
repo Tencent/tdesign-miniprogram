@@ -33,7 +33,9 @@
 @button-icon-spacer: @spacer;
 @button-icon-border-radius: 8rpx;
 
-.@{prefix}-button {
+@button: ~"@{prefix}-button";
+
+.@{button} {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -155,8 +157,9 @@
   }
 
   &--size {
-    &-large {
+    &-l {
       display: flex;
+      width: auto;
       margin: 0 32rpx;
       height: @button-large-height;
       line-height: @button-large-height;
@@ -164,7 +167,7 @@
       padding-right: @spacer*3;
     }
 
-    &-medium {
+    &-m {
       width: 480rpx;
       height: @button-default-height;
       line-height: @button-default-line-height;
@@ -172,7 +175,7 @@
       padding-right: @spacer*2;
     }
 
-    &-small {
+    &-s {
       height: @button-small-height;
       line-height: @button-small-line-height;
       padding-left: 40rpx;

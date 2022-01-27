@@ -11,8 +11,8 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "steps": "tdesign-miniprogram/steps/steps",
-  "step": "tdesign-miniprogram/step-item/step-item"
+  "t-steps": "tdesign-miniprogram/steps/steps",
+  "t-step": "tdesign-miniprogram/steps/step-item"
 }
 ```
 
@@ -25,27 +25,27 @@ isComponent: true
 <img src="https://tdesign.gtimg.com/miniprogram/readme/steps-4.png" width="375px" height="50%">
 
 ```html
-<!-- 横向可操作步骤条 -->
-<t-steps current="1">
+<t-steps defaultCurrent="1">
   <t-step title="步骤描述" />
   <t-step title="选中步骤" />
 </t-steps>
 ```
 
+#### 横向只读步骤条
+
 <img src="https://tdesign.gtimg.com/miniprogram/readme/steps-3.png" width="375px" height="50%">
 
 ```html
-<!-- 横向只读步骤条 -->
 <t-steps current="0" readonly="true">
   <t-step title="当前步骤" />
   <t-step title="未完成步骤" />
 </t-steps>
 ```
+#### 竖向只读步骤条
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/steps-2.png" width="375px" height="50%">
 
 ```html
-<!-- 竖向只读步骤条 -->
 <t-steps current="1" readonly="true" direction="vertical">
   <t-step title="已完成步骤" />
   <t-step title="当前步骤" />
@@ -53,10 +53,11 @@ isComponent: true
 </t-steps>
 ```
 
+#### 自定义内容步骤条
+
 <img src="https://tdesign.gtimg.com/miniprogram/readme/steps-1.png" width="375px" height="50%">
 
 ```html
-<!-- 自定义内容步骤条 -->
 <t-steps current="1" readonly="true" direction="vertical">
   <t-step title="已完成步骤">
     <view slot="content">可自定义此处内容</view>
@@ -73,12 +74,34 @@ isComponent: true
 </t-steps>
 ```
 
+### 受控用法
+
+```html
+<t-steps current="{{current}}" bind:change="onChange">
+  <t-step title="步骤描述" />
+  <t-step title="选中步骤" />
+</t-steps>
+```
+
+```js
+Page({
+  data: {
+    current: 0
+  },
+  onChange(e) {
+    const { current } = e.detail;
+    this.setData({ current });
+  },
+})
+```
+
 ## API
 ### Steps Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 current | String / Number | - | 当前步骤，即整个步骤条进度。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。如果每个步骤没有设置 value，current 值为步骤长度则表示所有步骤已完成。如果每个步骤设置了自定义 value，则 current = 'FINISH' 表示所有状态完成 | N
+defaultCurrent | String / Number | - | （非受控）当前步骤，即整个步骤条进度 | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素元素类名。`['t-class']` | N
 layout | String | horizontal | 步骤条方向，有两种：横向和纵向。可选项：horizontal/vertical | N
 readonly | Boolean | false | 是否只读 | N

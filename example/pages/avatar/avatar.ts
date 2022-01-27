@@ -1,19 +1,19 @@
 Page({
   data: {
     pics6: [
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-2.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-3.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-4.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-5.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-5.jpg',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png',
     ],
     pics: [
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-1.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-2.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-3.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-4.jpg',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-5.jpg',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png',
+      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png',
     ],
   },
   onAddTap() {

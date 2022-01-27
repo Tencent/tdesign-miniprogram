@@ -1,0 +1,4 @@
+<view class="t-class {{classPrefix}}">
+  <slot wx:if="{{ content !== 'default' }}" />
+  <block wx:else>{{ formattedTime }}</block>
+</view>

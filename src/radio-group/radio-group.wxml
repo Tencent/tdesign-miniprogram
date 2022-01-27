@@ -1,12 +1,13 @@
-<view class="{{classPrefix}} t-class">
+<view class="{{classPrefix}} {{prefix}}-class">
   <slot />
   <block wx:for="{{radioOptions}}" wx:key="value">
     <t-radio
-      class="t-radio-option"
+      class="{{prefix}}-radio-option"
       label="{{item.label}}"
       value="{{item.value}}"
+      data-value="{{item.value}}"
       disabled="{{item.disabled}}"
-      bind:toggleGroupSelect="handleGroupSelect"
+      bind:change="handleRadioChange"
     />
   </block>
 </view>

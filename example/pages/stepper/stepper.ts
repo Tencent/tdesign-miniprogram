@@ -3,10 +3,12 @@ Page({
     value: 20,
   },
 
-  stepperChangeHandler(e) {
-    console.log(e);
+  handleChange(e) {
+    const { value } = e.detail;
+
+    console.log(value);
     this.setData({
-      value: e.detail.value,
+      value,
     });
   },
 });
