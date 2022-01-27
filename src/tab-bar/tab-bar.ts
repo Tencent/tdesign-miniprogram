@@ -22,6 +22,13 @@ export default class Tabbar extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
   observers = {
     value() {
       this.updateChildren();
@@ -60,15 +67,7 @@ export default class Tabbar extends SuperComponent {
       }
     },
     updateValue(value) {
-      this.setData(
-        {
-          value,
-        },
-        () => {
-          this.updateChildren();
-        },
-      );
-      this.triggerEvent('change', value);
+      this._trigger('change', { value });
     },
     changeOtherSpread(value) {
       const items = this.getRelationNodes('./tab-bar-item');
