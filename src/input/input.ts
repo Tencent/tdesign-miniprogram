@@ -24,18 +24,17 @@ export default class Input extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
   data = {
-    inputValue: '',
     classPrefix: name,
     classBasePrefix: prefix,
     characterLength: 0,
-  };
-
-  /* 组件生命周期 */
-  lifetimes = {
-    ready() {
-      this.setData({ inputValue: this.data.value });
-    },
   };
 
   methods = {
@@ -44,38 +43,27 @@ export default class Input extends SuperComponent {
       const { maxcharacter } = this.properties;
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { characters = '', length = 0 } = getCharacterLength(value, maxcharacter);
+
+        this._trigger('change', { value: characters });
         this.setData({
-          value: characters,
           characterLength: length,
         });
       } else {
-        this.setData({ inputValue: value });
+        this._trigger('change', { value });
       }
-
-      this.triggerEvent('change', {
-        ...event.detail,
-      });
     },
     onFocus(event) {
-      this.triggerEvent('focus', {
-        ...event.detail,
-      });
+      this.triggerEvent('focus', event.detail);
     },
     onBlur(event) {
-      this.triggerEvent('blur', {
-        ...event.detail,
-      });
+      this.triggerEvent('blur', event.detail);
     },
     onConfirm(event) {
-      this.triggerEvent('enter', {
-        ...event.detail,
-      });
+      this.triggerEvent('enter', event.detail);
     },
     clearInput(event) {
-      this.setData({ inputValue: '', value: '' });
-      this.triggerEvent('clear', {
-        ...event.detail,
-      });
+      this.triggerEvent('clear', event.detail);
+      this._trigger('change', { value: '' });
     },
   };
 }
