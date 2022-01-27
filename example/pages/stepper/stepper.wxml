@@ -4,18 +4,18 @@
   <t-demo title="01 类型" desc="基本步进器">
     <t-cell title="标题文字">
       <view class="cell-badge-wrap" slot="note">
-        <t-stepper />
+        <t-stepper defaultValue="0" />
       </view>
     </t-cell>
     <view class="t-stepper-wrapper-desc">带单位步进器</view>
     <t-cell title="标题文字（单位）">
       <view class="cell-badge-wrap" slot="note">
-        <t-stepper step="2" />
+        <t-stepper defaultValue="0" step="2" />
       </view>
     </t-cell>
     <view class="t-stepper-wrapper-desc">纯步进器</view>
     <view class="pure-stepper-container">
-      <t-stepper value="{{3}}" theme="grey" inputWidth="{{72}}" />
+      <t-stepper value="{{value}}" bind:change="handleChange" theme="grey" inputWidth="{{72}}" />
     </view>
   </t-demo>
 
@@ -35,20 +35,20 @@
       <view class="interval" />
       <t-cell title="最小值 (5)">
         <view class="cell-badge-wrap" slot="note">
-          <t-stepper min="5" />
+          <t-stepper defaultValue="5" min="5" />
         </view>
       </t-cell>
       <view class="interval" />
       <t-cell title="最大值 (999)">
         <view class="cell-badge-wrap" slot="note">
-          <t-stepper value="999" max="999" />
+          <t-stepper defaultValue="999" max="999" />
         </view>
       </t-cell>
       <view class="interval" />
       <view class="pure-stepper-container">
         <t-stepper disabled value="3" theme="grey" inputWidth="{{72}}" />
-        <t-stepper max="99" theme="grey" inputWidth="{{72}}" />
-        <t-stepper value="100" theme="grey" inputWidth="{{72}}" />
+        <t-stepper defaultValue="0" max="99" theme="grey" inputWidth="{{72}}" />
+        <t-stepper defaultValue="100" theme="grey" inputWidth="{{72}}" />
       </view>
       <view class="interval" />
       <view class="interval" />
