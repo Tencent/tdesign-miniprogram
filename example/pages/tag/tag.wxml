@@ -12,9 +12,9 @@
     </view>
 
     <view class="group">
-      <t-tag theme="primary" variant="plain">镂空标签</t-tag>
+      <t-tag theme="primary" variant="outline">镂空标签</t-tag>
       <t-tag theme="primary" variant="light">浅底标签</t-tag>
-      <t-tag theme="primary" variant="mixed">标签</t-tag>
+      <t-tag theme="primary" variant="light-outline">标签</t-tag>
     </view>
 
     <view class="group">
@@ -39,10 +39,10 @@
         wx:for="{{items}}"
         wx:for-index="index"
         wx:key="index"
-        checked="{{item.checked}}"
+        defaultChecked="{{item.checked}}"
         disabled="{{item.disabled}}"
         data-index="{{index}}"
-        bind:tap="handleClick"
+        bind:change="handleCheckTagChange"
         >{{item.name}}</t-check-tag
       >
     </view>

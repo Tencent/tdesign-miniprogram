@@ -7,7 +7,7 @@ const name = `${prefix}-button`;
 
 @wxComponent()
 export default class Button extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`];
 
   behaviors = ['wx://form-field-button'];
 
@@ -17,7 +17,9 @@ export default class Button extends SuperComponent {
   // 组件的内部数据
   data = {
     // 按钮样式列表
+    prefix,
     className: '',
+    classPrefix: name,
   };
 
   observers = {
@@ -47,9 +49,9 @@ export default class Button extends SuperComponent {
     setClass() {
       const classList = [
         name,
-        't-class',
+        `${prefix}-class`,
         `${name}--${this.data.theme || 'default'}`,
-        `${name}--size-${this.data.size}`,
+        `${name}--size-${this.data.size.slice(0, 1)}`,
       ];
 
       classList.push(`${name}--${this.data.shape}`);
@@ -90,6 +92,11 @@ export default class Button extends SuperComponent {
     },
     launchapp(e) {
       this.triggerEvent('launchapp', e.detail);
+    },
+    handleTap(e) {
+      if (this.data.disabled) return;
+
+      this.triggerEvent('tap', e.detail);
     },
   };
 }

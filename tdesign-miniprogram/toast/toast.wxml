@@ -1,0 +1,31 @@
+<block>
+  <view
+    wx:if="{{inserted}}"
+    class="{{classPrefix}}__content t-class {{classPrefix + '__' + direction}} {{classPrefix + '--' + show ? 'enter' : 'leave'}}"
+    style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}}"
+  >
+    <t-icon
+      wx:if="{{typeMapIcon!=='loading' || icon}}"
+      name="{{typeMapIcon || icon}}"
+      class="{{classPrefix + '__' + direction}}-icon"
+      color="#ffffff"
+      size="{{direction === 'row' ? '42rpx' : '96rpx'}}"
+    />
+    <t-loading
+      wx:if="{{typeMapIcon === 'loading'}}"
+      theme="circular"
+      size="{{direction === 'row' ? '42rpx' : '96rpx'}}"
+      loading
+      t-class-indicator="indicator-blue"
+      layout="vertical"
+    ></t-loading>
+    <slot name="icon"></slot>
+    <view class="{{classPrefix}}__text {{classPrefix + '__' + direction}}-text">{{message}}</view>
+    <slot name="message" />
+  </view>
+  <view
+    class="{{classPrefix}}__bg"
+    catchtouchmove="true"
+    wx:if="{{preventScrollThrough &&  inserted}}"
+  />
+</block>

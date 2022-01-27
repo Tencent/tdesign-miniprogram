@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["common/style/mixins/_clearfix.less"],"sourcesContent":[".clearfix() {\n  &::after {\n    display: table;\n    clear: both;\n    content: '';\n  }\n}\n"],"file":"_clearfix.wxss"}

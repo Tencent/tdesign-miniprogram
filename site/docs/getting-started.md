@@ -32,15 +32,21 @@ spline: explain
 npm i tdesign-miniprogram -S --production
 ```
 
+> 安装完之后，需要在微信开发者工具中对 npm 进行构建：`工具 -  构建 npm`
+
 ### 通过 Git Clone
 
-克隆到源代码之后，需要执行 `npm run build` 进行构建
-
-然后将 `miniprogram_dist` 目录拷贝到自己的项目中
+克隆到源代码之后，然后将 `tdesign-miniprogram` 目录拷贝到自己的项目中
 
 ```bash
 git clone git@github.com:Tencent/tdesign-miniprogram.git
 ```
+
+## 修改 app.json
+
+将 `app.json` 中的 `"style": "v2"` 移除。
+
+> 因为 [该配置](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#style) 表示启用新版组件样式，将会导致 TDesign 的组件样式错乱。
 
 ## 使用组件
 

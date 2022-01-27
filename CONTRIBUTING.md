@@ -86,3 +86,24 @@ npm run test
 ```bash
 npm run test:e2e
 ```
+
+## 发布
+
+发布版本，需要确认当前需要升级到什么版本，参考：[About semantic versioning](https://docs.npmjs.com/about-semantic-versioning)
+
+发布步骤如下：
+1. 更新 `package.json` 的版本
+2. 更新 `CHANGELOG` ，添加本次发布的变更信息
+3. 打包可直接使用的代码： `npm run build:assets`
+4. 在 develop 分支打上 tag（纯数字版本，如`0.1.0`）
+5. 提交 commit 并推送到 origin
+
+> 即会触发 CI/CD 流程：
+    - 发布 npm 包
+    - 上传小程序包
+    - 更新 TDesign 官网
+
+之后，还需要完成小程序的发布：
+1. 在 TDesign 小程序体验版里面测试一下对应的变更是否正常
+2. 通过之后需要到 [微信公众平台](https://mp.weixin.qq.com/) 将刚上传的版本提交审核
+3. 等待审核通过之后需要点击发布，即完成本次发布

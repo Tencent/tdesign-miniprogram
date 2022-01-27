@@ -18,7 +18,7 @@ const trackLineWidth = 30;
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
 
-  externalClasses = ['t-class', 't-class-item', 't-class-active'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`];
 
   relations = {
     './tab-panel': {
@@ -53,6 +53,7 @@ export default class Tabs extends SuperComponent {
   };
 
   data = {
+    prefix,
     classPrefix: name,
     tabs: [],
     currentIndex: -1,
@@ -134,33 +135,37 @@ export default class Tabs extends SuperComponent {
     if (!children) return;
     const { currentIndex, isScrollX, direction } = this.data;
     if (currentIndex <= -1) return;
-    this.gettingBoundingClientRect('.t-tabs-item', true).then((res: any) => {
-      const rect = res[currentIndex];
-      if (!rect) return;
-      let count = 0;
-      let distance = 0;
-      // eslint-disable-next-line no-restricted-syntax
-      for (const item of res) {
-        if (count < currentIndex) {
-          distance += isScrollX ? item.width : item.height;
-          count += 1;
+    this.gettingBoundingClientRect(`.${prefix}-tabs__item`, true)
+      .then((res: any) => {
+        const rect = res[currentIndex];
+        if (!rect) return;
+        let count = 0;
+        let distance = 0;
+        // eslint-disable-next-line no-restricted-syntax
+        for (const item of res) {
+          if (count < currentIndex) {
+            distance += isScrollX ? item.width : item.height;
+            count += 1;
+          }
         }
-      }
 
-      if (isScrollX) {
-        distance += (rect.width - trackLineWidth) / 2;
-      }
-      let trackStyle = `background-color: ${color};
+        if (isScrollX) {
+          distance += (rect.width - trackLineWidth) / 2;
+        }
+        let trackStyle = `background-color: ${color};
         -webkit-transform: translate${direction}(${distance}px);
         transform: translate${direction}(${distance}px);
         -webkit-transition-duration: 0.3s;
         transition-duration: 0.3s;
       `;
-      trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
-      this.setData({
-        trackStyle,
+        trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
+        this.setData({
+          trackStyle,
+        });
+      })
+      .catch((err) => {
+        this.triggerEvent('error', err);
       });
-    });
   }
 
   trigger(eventName: string, index: number) {
@@ -202,6 +207,9 @@ export default class Tabs extends SuperComponent {
       const index = this.getAvailableTabIndex(deltaX);
       if (index !== -1) {
         this.setCurrentIndex(index);
+        wx.nextTick(() => {
+          this.trigger('change', index);
+        });
       }
     }
   }

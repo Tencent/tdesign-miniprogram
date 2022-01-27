@@ -11,8 +11,8 @@ var getBadgeValue = function (props) {
 var getBadgeStyles = function (props) {
   var styleStr = '';
   styleStr += 'background:' + props.color + ';';
-  styleStr += 'top:' + props.offset[0] + ';';
-  styleStr += 'right:' + props.offset[1] + ';';
+  props.offset[0] && (styleStr += 'top:' + props.offset[0] + ';');
+  props.offset[1] && (styleStr += 'right:' + props.offset[1] + ';');
   return styleStr;
 };
 
@@ -29,6 +29,7 @@ var getBadgeInnerClass = function (props) {
     props.dot ? baseClass + '--dot' : '',
     props.size === 'small' ? baseClass + '--small' : '',
     baseClass + '--' + props.shape,
+    !props.dot && props.count ? baseClass + '--count' : '',
   ];
   return classNames.join(' ');
 };

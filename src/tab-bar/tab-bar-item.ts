@@ -16,6 +16,7 @@ export default class TabbarItem extends SuperComponent {
           parent,
           color,
           activeColor,
+          split: parent.data.split,
           currentName: this.properties.value ? this.properties.value : parent.initName(),
         });
         parent.updateChildren();
@@ -33,6 +34,7 @@ export default class TabbarItem extends SuperComponent {
     currentName: '',
     color: '',
     activeColor: '',
+    split: true,
   };
 
   properties = props;

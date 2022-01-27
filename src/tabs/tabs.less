@@ -1,8 +1,13 @@
 @import '../common/style/index.less';
 
+@tab-item-height--horizontal: 92rpx;
+@tab-item-height--vertical: 108rpx;
+@tab-item-width--vertical: 208rpx;
+
 .@{prefix}-tabs {
   display: flex;
   font-size: 28rpx;
+  background-color: #fff;
 
   .@{prefix}-is-active {
     font-weight: 700;
@@ -63,6 +68,8 @@
     }
 
     .@{prefix}-tabs__item {
+      height: @tab-item-height--horizontal;
+      line-height: @tab-item-height--horizontal;
       text-align: center;
       min-width: 162rpx;
     }
@@ -109,6 +116,14 @@
 
     .@{prefix}-tabs__item {
       text-align: center;
+      height: @tab-item-height--vertical;
+      line-height: @tab-item-height--vertical;
+      width: @tab-item-width--vertical;
+      background-color: rgb(243, 243, 243);
+
+      &.@{prefix}-is-active {
+        background-color: #fff;
+      }
     }
 
     .@{prefix}-tabs__content {

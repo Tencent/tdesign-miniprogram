@@ -1,0 +1,31 @@
+.t-float-left {
+  float: left;
+}
+.t-float-right {
+  float: right;
+}
+@keyframes tdesign-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.t-swiper {
+  position: relative;
+  overflow: hidden;
+  height: 300rpx;
+}
+.t-swiper__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.t-swiper__container.t-in-animation {
+  transition-property: transform;
+}
+.t-swiper__container.t-is-hidden {
+  visibility: hidden;
+  transition-property: none;
+}

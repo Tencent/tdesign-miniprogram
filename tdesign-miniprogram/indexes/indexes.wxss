@@ -1,0 +1,72 @@
+.t-indexes {
+  background-color: #f8f8f8;
+  position: relative;
+  /* 覆盖weUI样式 */
+}
+.t-indexes__row {
+  font-size: 32rpx;
+  color: #000;
+  background-color: white;
+  height: 112rpx;
+  display: flex;
+  align-items: center;
+}
+.t-indexes__row::after {
+  display: none;
+}
+.t-indexes__index {
+  font-size: 32rpx;
+  position: absolute;
+  top: 60rpx;
+  right: 0;
+  width: 100rpx;
+  color: #000;
+  font-size: 24rpx;
+  line-height: 48rpx;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.t-indexes__index .index-icon {
+  font-size: 32rpx;
+}
+.t-indexes__bar {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.t-indexes__btn {
+  position: relative;
+}
+.t-indexes__btn.is-actived {
+  color: #0052d9;
+  font-size: 32rpx;
+  line-height: 56rpx;
+}
+.t-indexes__tips {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: white;
+  background-color: #0052d9;
+  border-radius: 40rpx 40rpx 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 88rpx;
+  margin: auto;
+  transform: rotate(-45deg);
+}
+.t-indexes__tips-text {
+  transform: rotate(45deg);
+}
+.t-indexes .weui-cells__title {
+  font-size: 28rpx;
+  font-weight: 800;
+  color: #000;
+}

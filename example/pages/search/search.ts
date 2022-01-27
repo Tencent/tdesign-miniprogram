@@ -31,7 +31,7 @@ Page({
     },
   }) {
     this.setData({
-      [`searchBoxGroup[${idx}].keyword`]: detail,
+      [`searchBoxGroup[${idx}].keyword`]: detail.value,
     });
   },
 

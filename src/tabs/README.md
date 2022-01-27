@@ -11,7 +11,8 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-tabs": "tdesign-miniprogram/tabs/tabs"
+  "t-tabs": "tdesign-miniprogram/tabs/tabs",
+  "t-tab-panel": "tdesign-miniprogram/tabs/tab-panel"
 }
 ```
 

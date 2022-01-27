@@ -1,0 +1,182 @@
+/**
+ * 轮播触屏脚本
+ */
+// 轮播容器ID
+var containerId = '#swiperContainer';
+// 移动阈值
+var moveThreshold = 0.3;
+// 轮播方向
+var DIRECTION = {
+  // 水平
+  HOR: 'horizontal',
+  // 垂直
+  VER: 'vertical',
+};
+
+function updateMoveInfo(state, event) {
+  var touchPoint = event.touches[0];
+  state.moveX = touchPoint.clientX - state.startX;
+  state.moveY = touchPoint.clientY - state.startY;
+}
+
+function moveContainer(state, reset) {
+  if (state.direction === DIRECTION.HOR) {
+    var offset = reset ? state.offsetX : state.offsetX + state.moveX;
+    // console.log(DIRECTION.HOR, state.moveX);
+    if (offset > 0) {
+      offset = Math.min(state.width * moveThreshold, offset);
+    } else {
+      offset = Math.max(-state.width * (state.total - (1 - moveThreshold)), offset);
+    }
+    setOffset(state, offset, 0, !reset);
+  } else {
+    var offset = reset ? state.offsetY : state.offsetY + state.moveY;
+    // console.log(DIRECTION.VER, state.moveY);
+    if (offset > 0) {
+      offset = Math.min(state.height * moveThreshold, offset);
+    } else {
+      offset = Math.max(-state.height * (state.total - (1 - moveThreshold)), offset);
+    }
+    setOffset(state, 0, offset, !reset);
+  }
+}
+
+function setOffset(state, offsetX, offsetY, disAni) {
+  var transform = 'translate3d(' + (offsetX || 0) + 'px, ' + (offsetY || 0) + 'px, 0)';
+  var styles = {
+    // '-webkit-transform': transform,
+    transform: transform,
+  };
+  if (disAni) {
+    styles['transition'] = 'none';
+  }
+  state.container.setStyle(styles);
+}
+
+function initContainer(ownerInstance) {
+  var state = ownerInstance.getState();
+  state.container = state.container || ownerInstance.selectComponent(containerId);
+}
+
+function startDrag(event, ownerInstance) {
+  initContainer(ownerInstance);
+  var state = ownerInstance.getState();
+  var touchPoint = event.touches[0];
+  state.startX = touchPoint.clientX;
+  state.startY = touchPoint.clientY;
+  ownerInstance.callMethod('pause');
+}
+
+function onDrag(event, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.dragging = true;
+  updateMoveInfo(state, event);
+  moveContainer(state);
+}
+
+function endDrag(event, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.dragging = false;
+  ownerInstance.callMethod('replay');
+  var pageDir = '';
+  if (state.direction === DIRECTION.HOR) {
+    pageDir = getPageDir(state.moveX, state.width);
+  } else {
+    pageDir = getPageDir(state.moveY, state.height);
+  }
+  if (pageDir) {
+    ownerInstance.callMethod(pageDir, { source: 'touch' });
+    return;
+  }
+  // 重置
+  moveContainer(state, true);
+}
+/**
+ * 返回分页操作的方向
+ * @param move 移动距离
+ * @param size 容器尺寸
+ * @returns
+ */
+function getPageDir(move, size) {
+  if (move > 0) {
+    // 右滑超过阈值
+    if (move > size * moveThreshold) {
+      return 'prev';
+    }
+  } else {
+    // 左滑超过阈值
+    if (-move > size * moveThreshold) {
+      return 'next';
+    }
+  }
+}
+
+function changeOffsetByDirection(direction, newVal, ownerInstance) {
+  initContainer(ownerInstance);
+  var state = ownerInstance.getState();
+  if (state.direction !== direction) return;
+  var needInit = !state.inited && state.currentInited;
+  if (direction === DIRECTION.HOR) {
+    setOffset(state, state.offsetX, 0, needInit);
+  } else {
+    setOffset(state, 0, state.offsetY, needInit);
+  }
+
+  if (needInit) {
+    state.inited = true;
+    ownerInstance.callMethod('inited');
+  }
+}
+
+function changeOffsetX(newVal, oldVal, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.offsetX = newVal;
+  changeOffsetByDirection(DIRECTION.HOR, newVal, ownerInstance);
+}
+
+function changeOffsetY(newVal, oldVal, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.offsetY = newVal;
+  changeOffsetByDirection(DIRECTION.VER, newVal, ownerInstance);
+}
+function changeWidth(newVal, oldVal, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.width = newVal;
+}
+
+function changeHeight(newVal, oldVal, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.height = newVal;
+}
+
+function changeDirection(newVal, oldVal, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.direction = newVal;
+  if (oldVal && newVal !== oldVal) {
+    state.inited = false;
+    changeOffsetByDirection(newVal, state.offsetY, ownerInstance);
+  }
+}
+
+function changeTotal(newVal, oldVal, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.total = newVal;
+}
+
+function changeCurrentInited(newVal, oldVal, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.currentInited = newVal;
+}
+
+module.exports = {
+  startDrag: startDrag,
+  onDrag: onDrag,
+  endDrag: endDrag,
+  changeOffsetX: changeOffsetX,
+  changeOffsetY: changeOffsetY,
+  changeWidth: changeWidth,
+  changeHeight: changeHeight,
+  changeDirection: changeDirection,
+  changeTotal: changeTotal,
+  changeCurrentInited: changeCurrentInited,
+};

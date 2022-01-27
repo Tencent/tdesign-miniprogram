@@ -1,0 +1,58 @@
+<wxs src="../common/utils.wxs" module="utils" />
+
+<view
+  class="{{ classPrefix }} custom-class {{ index !== 0 ? classBasePrefix + '-hairline--top' : '' }}"
+>
+  <t-cell
+    title="{{ title }}"
+    title-class="title-class"
+    rightIcon="{{ icon }}"
+    value="{{ extra }}"
+    label="{{ label }}"
+    is-link="{{ isLink }}"
+    clickable="{{ clickable }}"
+    border="{{ border && expanded }}"
+    class="{{ classPrefix }}__title {{disabled? classPrefix + '__title--disabled':''}} {{expanded? classPrefix + '__title--expanded':''}}"
+    right-icon-class=" {{ classBasePrefix }}-cell__right-icon"
+    custom-class="{{ classBasePrefix }}-cell"
+    hover-class="{{ classBasePrefix }}-cell--hover"
+    bind:click="onClick"
+  >
+    <slot name="title" slot="title" />
+    <slot name="icon" slot="icon" />
+    <slot name="extra" />
+    <slot name="right-icon" slot="right-icon" />
+  </t-cell>
+  <view
+    class="{{ classPrefix }}__wrapper {{transition? classPrefix+'__title--transition':''}}"
+    style="height: {{ contentHeight }};"
+    bind:transitionend="onTransitionEnd"
+  >
+    <view class="{{ classPrefix }}__content content-class">
+      <view class="collapse-panel-item" wx:if="{{content && utils.isArray(content)}}">
+        <view
+          wx:for="{{content}}"
+          class="collapse-panel-item-container"
+          wx:key="index"
+          wx:for-index="index"
+        >
+          <block wx:if="{{utils.isObject(item)}}">
+            <view class="panel-label" style="{{labelWidth ? 'width:' + labelWidth + 'rpx' : ''}}">
+              {{item.label}}
+            </view>
+            <view class="panel-content"> {{item.content}}</view>
+          </block>
+          <block wx:else>
+            <view class="panel-content"> {{item}}</view>
+          </block>
+        </view>
+      </view>
+      <view class="collapse-panel-single-item" wx:if="{{content && !utils.isArray(content)}}">
+        {{content}}
+      </view>
+      <block wx:else>
+        <slot />
+      </block>
+    </view>
+  </view>
+</view>

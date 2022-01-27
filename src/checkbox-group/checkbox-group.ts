@@ -5,7 +5,7 @@ import Props from '../checkbox/checkbox-group-props';
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
 @wxComponent()
-export default class CheckboxGroup extends SuperComponent {
+export default class CheckBoxGroup extends SuperComponent {
   externalClasses = ['t-class'];
 
   relations = {

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/common/config.ts"],"names":[],"mappings":";;;AAAA,wBAEE","file":"config.d.ts","sourcesContent":["export default {\n  prefix: \"t\",\n};\n"]}

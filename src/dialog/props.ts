@@ -2,7 +2,7 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-26 17:01:46
+ * updated at 2021-12-28 16:46:06
  * */
 
 import { TdDialogProps } from './type';
@@ -16,10 +16,10 @@ const props: TdDialogProps = {
     type: String,
     value: 'horizontal',
   },
-  /** 取消按钮，可自定义。值为 undefined 或 null 则不显示取消按钮。值类型为 Object 则表示透传 Button 组件属性 */
+  /** 取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件 */
   cancelBtn: {
-    type: String,
-    optionalTypes: [Object],
+    type: [String, Object],
+    // optionalTypes: [Object],
     value: '',
   },
   /** 点击蒙层时是否触发关闭事件 */
@@ -27,10 +27,10 @@ const props: TdDialogProps = {
     type: Boolean,
     value: true,
   },
-  /** 确认按钮，可自定义。值为 undefined 或 null 则不显示确认按钮 */
+  /** 确认按钮。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件 */
   confirmBtn: {
-    type: String,
-    optionalTypes: [Object],
+    type: [String, Object],
+    // optionalTypes: [Object],
     value: '',
   },
   /** 内容 */

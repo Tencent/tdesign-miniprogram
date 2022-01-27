@@ -1,3 +1,5 @@
+import icons from './data.js';
+
 Page({
   data: {
     icons: [
@@ -30,10 +32,19 @@ Page({
       'chart',
       'chat',
     ],
+    prefixIcons: ['a-0', 'a-1h', 'a-2h', 'a-3h'],
+  },
+  onLoad() {
+    this.setData({
+      icons,
+    });
   },
   onIconTap(event: any) {
     const { icons } = this.data;
-    const { index } = event.currentTarget.dataset;
+    const { index, type } = event.currentTarget.dataset;
+    if (type === 'prefix') {
+      return;
+    }
     wx.setClipboardData({
       data: icons[index],
     });
