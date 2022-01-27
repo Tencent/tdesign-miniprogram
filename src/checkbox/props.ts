@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdCheckboxProps } from './type';
@@ -12,13 +11,18 @@ const props: TdCheckboxProps = {
     type: String,
     value: 'left',
   },
-  /** 用于标识是否为「全选选项」 */
+  /** 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 */
   checkAll: {
     type: Boolean,
     value: false,
   },
   /** 是否选中 */
   checked: {
+    type: Boolean,
+    value: null,
+  },
+  /** 是否选中，非受控属性 */
+  defaultChecked: {
     type: Boolean,
     value: false,
   },
