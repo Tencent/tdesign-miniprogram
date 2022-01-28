@@ -13,7 +13,6 @@ Page({
       // { label: 'object1', value: 'value1', disabled: true },
       { label: '对象', value: 'value2', disabled: true },
     ],
-    checked: true,
   },
   onChange(event) {
     console.log('radio', event.detail);
@@ -22,12 +21,6 @@ Page({
     console.log('radio', e.detail);
     this.setData({
       check5: e.detail,
-    });
-  },
-  onClick() {
-    console.log(!this.data.checked);
-    this.setData({
-      checked: !this.data.checked,
     });
   },
 });

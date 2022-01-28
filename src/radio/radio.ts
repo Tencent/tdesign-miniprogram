@@ -34,12 +34,6 @@ export default class Radio extends SuperComponent {
     },
   };
 
-  observers = {
-    checked: function () {
-      this.handleInitStatus();
-    },
-  };
-
   properties = Props;
 
   controlledProps = [
