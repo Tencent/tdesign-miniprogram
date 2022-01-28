@@ -28,12 +28,12 @@ isComponent: true
 
 ```html
 <!-- page.wxml -->
-<t-checkbox-group bordered value="checkbox1" bind:change="onChange">
-  <t-checkbox title="单行标题" name="checkbox1" />
-  <t-checkbox title="单行标题" label="辅助信息" name="checkbox2" />
+<t-checkbox-group bordered defaultValue="checkbox1" bind:change="onChange">
+  <t-checkbox title="单行标题" value="checkbox1" />
+  <t-checkbox title="单行标题" label="辅助信息" value="checkbox2" />
 </t-checkbox-group>
 ```
-
+ <t-checkbox title="单行标题" value="checkbox1" defaultChecked="{{true}}"/>
 ## API
 
 ### `<t-checkbox-group>` 组件
