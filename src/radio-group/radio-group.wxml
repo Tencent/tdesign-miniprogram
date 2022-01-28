@@ -5,8 +5,9 @@
       class="{{prefix}}-radio-option"
       label="{{item.label}}"
       value="{{item.value}}"
+      data-value="{{item.value}}"
       disabled="{{item.disabled}}"
-      bind:toggleGroupSelect="handleGroupSelect"
+      bind:change="handleRadioChange"
     />
   </block>
 </view>

@@ -12,7 +12,7 @@
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholder-class="{{classPrefix}}__placeholder t-class-placeholder"
-        value="{{value}}"
+        model:value="{{value}}"
         bindinput="onInput"
         bindfocus="onFocus"
         bindblur="onBlur"
@@ -26,7 +26,7 @@
         class="{{classPrefix}}__control {{suffix || align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  t-class-input"
       />
       <view
-        wx:if="{{ clearable && (inputValue.length > 0 || characterLength > 0)}}"
+        wx:if="{{ clearable && (value.length > 0 || characterLength > 0)}}"
         class="{{classPrefix}}__wrap--icon"
         bind:tap="clearInput"
       >

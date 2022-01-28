@@ -4,8 +4,9 @@
 @badge-color: #e34d59;
 @badge-font-size: @font-size-xs;
 @badge-height: 32rpx;
+@badge-width: 32rpx;
 @badge-font-weight: normal;
-@badge-circle-border-radius: 16rpx;
+@badge-circle-border-radius: 32rpx;
 @badge-round-border-radius: 8rpx;
 @badge-dot-height: 20rpx;
 @badge-dot-border-radius: 8rpx;
@@ -35,6 +36,12 @@
     padding: 0;
   }
 
+  &--count {
+    min-width: @badge-width;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
   &--small {
     transform: translate(50%, -50%) scale(0.75);
   }
@@ -56,7 +63,7 @@
 
   &--ribbon {
     transform: rotate(45deg);
-    padding: 0;
+    // padding: 0;
 
     &::before {
       content: '';

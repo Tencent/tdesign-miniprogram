@@ -17,13 +17,30 @@ export default class Switch extends SuperComponent {
     bodyStyle: '',
   };
 
-  lifetimes = {
-    attached() {
-      const { value, customValue } = this.data;
-      const [activeValue] = customValue;
+  // lifetimes = {
+  //   attached() {
+  //     const { value, customValue } = this.data;
+  //     const [activeValue] = customValue;
+
+  //     this.setData({
+  //       isActive: value === activeValue,
+  //     });
+
+  //   },
+  // };
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
+  observers = {
+    value(val) {
+      const [activeValue] = this.data.customValue;
 
       this.setData({
-        isActive: value === activeValue,
+        isActive: val === activeValue,
       });
       this.handleColorChange();
     },
@@ -31,19 +48,13 @@ export default class Switch extends SuperComponent {
 
   methods = {
     switchChange() {
-      const { disabled, value, customValue, isActive } = this.data;
+      const { disabled, value, customValue } = this.data;
       const [activeValue, inactiveValue] = customValue;
       if (disabled) return;
 
-      this.setData({
+      this._trigger('change', {
         value: value === activeValue ? inactiveValue : activeValue,
-        isActive: !isActive,
       });
-
-      this.triggerEvent('change', {
-        value: this.data.value,
-      });
-      this.handleColorChange();
     },
     handleColorChange() {
       const { disabled, colors = [] } = this.data;

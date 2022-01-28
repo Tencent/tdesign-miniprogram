@@ -93,5 +93,10 @@ export default class Button extends SuperComponent {
     launchapp(e) {
       this.triggerEvent('launchapp', e.detail);
     },
+    handleTap(e) {
+      if (this.data.disabled) return;
+
+      this.triggerEvent('tap', e.detail);
+    },
   };
 }

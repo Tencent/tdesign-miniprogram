@@ -4,6 +4,47 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+
+## 0.5.0 `2022-1-28`
+
+### Bug Fixes
+
+- 修复基础样式丢失的问题：
+  - Loading [#140](https://github.com/Tencent/tdesign-miniprogram/pull/140) [@JJunYang](https://github.com/JJunYang)
+  - Badge [#131](https://github.com/Tencent/tdesign-miniprogram/pull/131) [@Perisiguiendo](https://github.com/Perisiguiendo)
+  - Avatar [#116](https://github.com/Tencent/tdesign-miniprogram/pull/116) [@Perisiguiendo](https://github.com/Perisiguiendo)
+- Button: 修复 Disabled 失效的问题 [#134](https://github.com/Tencent/tdesign-miniprogram/pull/134) [@LeeJim](https://github.com/LeeJim)
+- Search: 修复事件参数错误的问题 [#132](https://github.com/Tencent/tdesign-miniprogram/pull/132) [@Perisiguiendo](https://github.com/Perisiguiendo)
+- Dialog: 修复 Dialog.action 显示错误的问题 [#124](https://github.com/Tencent/tdesign-miniprogram/pull/124) [@LeeJim](https://github.com/LeeJim)
+
+### BREAKING CHANGES
+
+- 组件支持受控用法，对应的非受控属性增加了 `default` 前缀。支持受控的组件如下：
+  - Checkbox [#158](https://github.com/Tencent/tdesign-miniprogram/pull/158) [@amberlwan](https://github.com/amberlwan)
+  - Upload [#156](https://github.com/Tencent/tdesign-miniprogram/pull/156) [@LeeJim](https://github.com/LeeJim)
+  - Search [#152](https://github.com/Tencent/tdesign-miniprogram/pull/152) [@LeeJim](https://github.com/LeeJim)
+  - Slider [#151](https://github.com/Tencent/tdesign-miniprogram/pull/151) [@LeeJim](https://github.com/LeeJim)
+  - Stepper [#150](https://github.com/Tencent/tdesign-miniprogram/pull/150) [@LeeJim](https://github.com/LeeJim)
+  - Rate [#149](https://github.com/Tencent/tdesign-miniprogram/pull/149) [@LeeJim](https://github.com/LeeJim)
+  - Tabbar [#148](https://github.com/Tencent/tdesign-miniprogram/pull/148) [@LeeJim](https://github.com/LeeJim)
+  - Tabs [#147](https://github.com/Tencent/tdesign-miniprogram/pull/147) [@LeeJim](https://github.com/LeeJim)
+  - Steps [#146](https://github.com/Tencent/tdesign-miniprogram/pull/146) [@LeeJim](https://github.com/LeeJim)
+  - Radio [#143](https://github.com/Tencent/tdesign-miniprogram/pull/143) [@LeeJim](https://github.com/LeeJim)
+  - Tag [#130](https://github.com/Tencent/tdesign-miniprogram/pull/130) [@LeeJim](https://github.com/LeeJim)
+  - Dialog [#124](https://github.com/Tencent/tdesign-miniprogram/pull/124) [@LeeJim](https://github.com/LeeJim)
+  - Switch [#122](https://github.com/Tencent/tdesign-miniprogram/pull/122) [@LeeJim](https://github.com/LeeJim)
+- Textarea: 属性变更：`name` -> `label` [#157](https://github.com/Tencent/tdesign-miniprogram/pull/157) [@LeeJim](https://github.com/LeeJim)
+- Input: 属性变更：`name` -> `label` [#153](https://github.com/Tencent/tdesign-miniprogram/pull/153) [@LeeJim](https://github.com/LeeJim)
+- Search: 属性变更：[#152](https://github.com/Tencent/tdesign-miniprogram/pull/152) [@LeeJim](https://github.com/LeeJim)
+  - `actionText` -> `action`
+  - `keyword` -> `value`
+
+
+### Feature
+
+- Input: 支持双向绑定 [#133](https://github.com/Tencent/tdesign-miniprogram/pull/133) [@LeeJim](https://github.com/LeeJim)
+- Tabbar:  新增 split 属性控制是否展示分割线 [#126](https://github.com/Tencent/tdesign-miniprogram/pull/126) [@LeeJim](https://github.com/LeeJim)
+- Icon: 支持自定义 prefix [#117](https://github.com/Tencent/tdesign-miniprogram/pull/117) [@vhxubo](https://github.com/vhxubo)
 ## 0.4.2 `2022-1-10`
 
 ### Bug Fixes

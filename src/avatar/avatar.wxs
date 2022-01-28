@@ -1,5 +1,5 @@
 module.exports = {
-  getTClass: function (size, classPrefix) {
+  getTClass: function (size) {
     var isIncludePx = size.indexOf('px') > -1;
     return isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1);
   },
@@ -21,5 +21,9 @@ module.exports = {
   getStyles: function (isShow, zIndex) {
     var styles = 'z-index:' + zIndex + ';';
     return styles + (isShow ? '' : 'display: none;');
+  },
+  getIconClass: function (classPrefix, size) {
+    if (size.indexOf('px') > -1) return;
+    return classPrefix + '__icon--default-' + (size || 'medium').slice(0, 1);
   },
 };

@@ -226,6 +226,5 @@ Page({
       show: false,
       useSlot: false,
     });
-    Dialog.close();
   },
 });

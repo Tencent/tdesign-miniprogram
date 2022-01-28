@@ -3,7 +3,7 @@ import config from '../common/config';
 import Props from './props';
 
 const { prefix } = config;
-const currentComponent = `${prefix}-checkbox`;
+const classPrefix = `${prefix}-checkbox`;
 @wxComponent()
 export default class CheckBox extends SuperComponent {
   externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
@@ -18,15 +18,22 @@ export default class CheckBox extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = Props;
+  properties = {
+    ...Props,
+    defaultChecked: {
+      type: null,
+      value: undefined,
+    },
+  };
 
   // 组件的内部数据
   data = {
-    classPrefix: currentComponent,
+    classPrefix,
     classBasePrefix: prefix,
     active: false,
     halfChecked: false,
     optionLinked: false,
+    canCancel: false,
   };
 
   lifetimes = {
@@ -34,6 +41,22 @@ export default class CheckBox extends SuperComponent {
       this.initStatus();
     },
   };
+
+  observers = {
+    checked: function (isChecked) {
+      this.initStatus();
+      this.setData({
+        active: isChecked,
+      });
+    },
+  };
+
+  controlledProps = [
+    {
+      key: 'checked',
+      event: 'change',
+    },
+  ];
 
   /* Methods */
   methods = {
@@ -45,14 +68,14 @@ export default class CheckBox extends SuperComponent {
       if (target === 'text' && contentDisabled) {
         return;
       }
-      const { value, active, checkAll, optionLinked } = this.data;
+      const { value, active, checkAll, optionLinked, canCancel } = this.data;
       const item = { name: value, checked: !active, checkAll };
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
       if (parent) {
         if (checkAll || optionLinked) {
           parent.handleCheckAll({
             type: 'slot',
-            checked: !active,
+            checked: !active || (this.data.halfChecked && !canCancel),
             option: !checkAll,
             name: value,
           });
@@ -62,34 +85,40 @@ export default class CheckBox extends SuperComponent {
       } else if (checkAll || optionLinked) {
         this.triggerEvent('toggleAll', {
           type: 'not-slot',
-          checked: !active,
+          checked: !active || (this.data.halfChecked && !canCancel),
           option: !checkAll,
           name: value,
         });
       } else {
-        this.triggerEvent('change', !active);
-        this.toggle();
+        this._trigger('change', { checked: !active });
+        // this.triggerEvent('change', !active);
+        // this.toggle();
       }
     },
     initStatus() {
       if (!this.data.optionLinked) {
         if (this.data.indeterminate) {
           this.setData({
-            active: true,
+            // active: true,
             halfChecked: true,
           });
         } else {
           this.setData({
-            active: this.data.checked,
+            // active: this.data.checked,
             halfChecked: this.data.indeterminate,
           });
         }
       }
     },
     toggle() {
-      const { active } = this.data;
+      // const { active } = this.data;
+      // this.setData({
+      //   active: !active,
+      // });
+    },
+    setCancel(cancel: boolean) {
       this.setData({
-        active: !active,
+        canCancel: cancel,
       });
     },
     setDisabled(disabled: Boolean) {
@@ -97,11 +126,7 @@ export default class CheckBox extends SuperComponent {
         disabled: this.data.disabled || disabled,
       });
     },
-    changeActive(active: boolean) {
-      this.setData({
-        active,
-      });
-    },
+
     // 半选
     changeCheckAllHalfStatus(active: boolean) {
       this.setData({

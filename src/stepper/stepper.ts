@@ -19,6 +19,13 @@ export default class Stepper extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
   observers = {
     value(v) {
       this.setData({
@@ -27,11 +34,7 @@ export default class Stepper extends SuperComponent {
     },
   };
 
-  data: {
-    currentValue: Number;
-    classPrefix: String;
-    prefix: String;
-  } = {
+  data = {
     currentValue: 0,
     classPrefix: `${prefix}-stepper`,
     prefix,
@@ -66,10 +69,7 @@ export default class Stepper extends SuperComponent {
   }
 
   setValue(value) {
-    this.setData({
-      currentValue: value,
-    });
-    this.triggerEvent('change', { value });
+    this._trigger('change', { value });
   }
 
   minusValue() {

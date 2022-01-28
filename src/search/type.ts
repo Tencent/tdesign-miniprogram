@@ -1,16 +1,18 @@
+/* eslint-disable */
+
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-01 16:35:36
  * */
 
 export interface TdSearchProps {
   /**
-   * 自定义右侧cancel文字
+   * 自定义右侧操作按钮文字
    * @default ''
    */
-  actionText?: {
+  action?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 是否居中
@@ -19,6 +21,7 @@ export interface TdSearchProps {
   center?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 是否禁用
@@ -27,6 +30,15 @@ export interface TdSearchProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 组件外部样式类名，分别用于设置组件外层类名、组件 input 类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-input', 't-class-cancel', 't-class-left', 't-class-right'];
+    required?: boolean;
   };
   /**
    * 是否聚焦
@@ -35,14 +47,7 @@ export interface TdSearchProps {
   focus?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 值
-   * @default ''
-   */
-  keyword?: {
-    type: StringConstructor;
-    value?: string;
+    required?: boolean;
   };
   /**
    * 左侧文本
@@ -51,6 +56,7 @@ export interface TdSearchProps {
   label?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 左侧图标
@@ -59,6 +65,7 @@ export interface TdSearchProps {
   leftIcon?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 占位符
@@ -67,6 +74,7 @@ export interface TdSearchProps {
   placeholder?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 右侧图标
@@ -75,6 +83,7 @@ export interface TdSearchProps {
   rightIcon?: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 搜索框形状
@@ -83,5 +92,24 @@ export interface TdSearchProps {
   shape?: {
     type: StringConstructor;
     value?: 'square' | 'round';
+    required?: boolean;
+  };
+  /**
+   * 值
+   * @default ''
+   */
+  value?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
+   * 值
+   * @default ''
+   */
+  defaultValue?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
   };
 }
