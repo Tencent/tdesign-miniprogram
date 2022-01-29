@@ -11,6 +11,7 @@ export default class TabbarItem extends SuperComponent {
         currentName: string;
         color: string;
         activeColor: string;
+        split: boolean;
     };
     properties: import("./type").TdTabBarItemProps;
     observers: {

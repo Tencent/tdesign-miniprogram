@@ -76,6 +76,14 @@ export interface TdRateProps {
         value?: number;
     };
     /**
+     * 选择评分的值-非受控
+     * @default 0
+     */
+    defaultValue: {
+        type: NumberConstructor;
+        value?: number;
+    };
+    /**
      * 形状类型，有描边类型和填充类型两种
      * @default outline
      */

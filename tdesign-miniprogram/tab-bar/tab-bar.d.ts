@@ -7,6 +7,10 @@ export default class Tabbar extends SuperComponent {
         defaultNameIndex: number;
     };
     properties: import("./type").TdTabBarProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     observers: {
         value(): void;
     };

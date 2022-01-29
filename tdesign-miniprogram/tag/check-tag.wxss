@@ -90,62 +90,62 @@
   border-color: #fcedee;
   color: #e34d59;
 }
-.t-tag--variant-plain.t-tag--theme-default {
+.t-tag--variant-outline.t-tag--theme-default {
   color: #444;
   border-color: #f5f5f5;
   background-color: #f5f5f5;
 }
-.t-tag--variant-plain.t-tag--theme-primary {
+.t-tag--variant-outline.t-tag--theme-primary {
   background-color: #ffffff;
   border-color: #80a9ec;
   color: #0052d9;
 }
-.t-tag--variant-plain.t-tag--theme-success {
+.t-tag--variant-outline.t-tag--theme-success {
   background-color: #ffffff;
   border-color: #80d4b8;
   color: #00a870;
 }
-.t-tag--variant-plain.t-tag--theme-warning {
+.t-tag--variant-outline.t-tag--theme-warning {
   background-color: #ffffff;
   border-color: #f6bd97;
   color: #ed7b2f;
 }
-.t-tag--variant-plain.t-tag--theme-info {
+.t-tag--variant-outline.t-tag--theme-info {
   background-color: #ffffff;
   border-color: #dddddd;
   color: #bbbbbb;
 }
-.t-tag--variant-plain.t-tag--theme-danger {
+.t-tag--variant-outline.t-tag--theme-danger {
   background-color: #ffffff;
   border-color: #f1a6ac;
   color: #e34d59;
 }
-.t-tag--variant-mixed.t-tag--theme-default {
+.t-tag--variant-light-outline.t-tag--theme-default {
   color: #444;
   border-color: #f5f5f5;
   background-color: #f5f5f5;
 }
-.t-tag--variant-mixed.t-tag--theme-primary {
+.t-tag--variant-light-outline.t-tag--theme-primary {
   background-color: #e6eefb;
   border-color: #80a9ec;
   color: #0052d9;
 }
-.t-tag--variant-mixed.t-tag--theme-success {
+.t-tag--variant-light-outline.t-tag--theme-success {
   background-color: #e6f6f1;
   border-color: #80d4b8;
   color: #00a870;
 }
-.t-tag--variant-mixed.t-tag--theme-warning {
+.t-tag--variant-light-outline.t-tag--theme-warning {
   background-color: #fdf2ea;
   border-color: #f6bd97;
   color: #ed7b2f;
 }
-.t-tag--variant-mixed.t-tag--theme-info {
+.t-tag--variant-light-outline.t-tag--theme-info {
   background-color: #f8f8f8;
   border-color: #dddddd;
   color: #bbbbbb;
 }
-.t-tag--variant-mixed.t-tag--theme-danger {
+.t-tag--variant-light-outline.t-tag--theme-danger {
   background-color: #fcedee;
   border-color: #f1a6ac;
   color: #e34d59;

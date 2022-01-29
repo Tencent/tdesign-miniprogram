@@ -13,6 +13,14 @@ export interface TdStepsProps {
         required?: boolean;
     };
     /**
+     * 当前步骤
+     */
+    defaultCurrent?: {
+        type: StringConstructor;
+        value?: string | number;
+        required?: boolean;
+    };
+    /**
      * 组件类名，用于设置组件外层元素元素类名
      */
     externalClasses?: {

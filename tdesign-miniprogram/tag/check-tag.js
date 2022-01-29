@@ -17,9 +17,20 @@ let CheckTag = class CheckTag extends SuperComponent {
             classBasePrefix: prefix,
         };
         this.properties = props;
+        this.controlledProps = [
+            {
+                key: 'checked',
+                event: 'change',
+            },
+        ];
         this.methods = {
             onClickClose(e) {
                 this.triggerEvent('close', e);
+            },
+            handleChange() {
+                if (this.data.disabled)
+                    return;
+                this._trigger('change', { checked: !this.data.checked });
             },
         };
     }

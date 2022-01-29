@@ -153,10 +153,10 @@
   margin-left: 16rpx;
 }
 .t-button--round {
-  border-radius: 88rpx / 2;
+  border-radius: 44rpx;
 }
 .t-button--round::after {
-  border-radius: 88rpx / 2;
+  border-radius: 44rpx;
 }
 .t-button--circle {
   border-radius: 999px;

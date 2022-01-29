@@ -12,6 +12,7 @@ export default class Cell extends SuperComponent {
      * Component initial data
      */
     data: {
+        prefix: string;
         classPrefix: string;
     };
     /**

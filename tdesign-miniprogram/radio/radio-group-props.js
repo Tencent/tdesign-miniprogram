@@ -20,6 +20,11 @@ const props = {
         optionalTypes: [Number, Boolean],
         value: undefined,
     },
+    /** 选中的值，非受控属性 */
+    defaultValue: {
+        type: null,
+        value: undefined,
+    },
 };
 export default props;
 

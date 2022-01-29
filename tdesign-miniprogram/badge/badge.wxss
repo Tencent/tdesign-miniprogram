@@ -34,11 +34,16 @@
   min-width: 20rpx;
   padding: 0;
 }
+.t-badge--count {
+  min-width: 32rpx;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
 .t-badge--small {
   transform: translate(50%, -50%) scale(0.75);
 }
 .t-badge--circle {
-  border-radius: 16rpx;
+  border-radius: 32rpx;
 }
 .t-badge--round {
   border-radius: 8rpx;
@@ -50,7 +55,6 @@
 }
 .t-badge--ribbon {
   transform: rotate(45deg);
-  padding: 0;
 }
 .t-badge--ribbon::before {
   content: '';

@@ -21,68 +21,53 @@ let RadioGroup = class RadioGroup extends SuperComponent {
         this.relations = {
             '../radio/radio': {
                 type: 'descendant',
-                linked() {
-                    this.updateChildren();
+                linked(target) {
+                    const { value, disabled } = this.data;
+                    target.setData({
+                        checked: value === target.data.value,
+                    });
+                    target.setDisabled(disabled);
                 },
             },
         };
         this.properties = Props;
+        this.controlledProps = [
+            {
+                key: 'value',
+                event: 'change',
+            },
+        ];
         this.lifetimes = {
             attached() {
-                this.handleCreateMulRadio();
+                this.initWithOptions();
             },
         };
         this.observers = {
-            value: function () {
-                this.updateChildren();
+            value() {
+                this.getChilds().forEach((item) => {
+                    item.setData({
+                        checked: this.data.value === item.data.value,
+                    });
+                });
             },
         };
         this.methods = {
-            updateChildren() {
+            getChilds() {
                 let items = this.getRelationNodes('../radio/radio');
                 if (!items.length) {
                     items = this.selectAllComponents(`.${prefix}-radio-option`);
                 }
-                const { value, disabled } = this.data;
-                if (items.length > 0) {
-                    items.forEach((item) => {
-                        item.changeActive(value === item.data.value);
-                        item.setDisabled(disabled);
-                    });
-                }
+                return items;
             },
-            updateValue(item) {
-                this.setData({
-                    value: item.name,
-                });
-                this.updateChildren();
-                this.triggerEvent('change', item.name);
+            updateValue(value) {
+                this._trigger('change', { value });
             },
-            // 处理 group选项
-            handleGroupSelect(e) {
-                const { name } = e.detail;
-                this.setData({
-                    value: name,
-                });
-                this.triggerEvent('change', name);
-                const items = this.selectAllComponents(`.${prefix}-radio-option`);
-                if (items.length > 0) {
-                    items.forEach((item) => {
-                        item.changeActive(name === item.data.value);
-                    });
-                }
-            },
-            // 设置option选项
-            handleOptionLinked() {
-                const items = this.selectAllComponents(`.${prefix}-radio-option`);
-                if (this.data.radioOptions.length) {
-                    items.forEach((item) => {
-                        item.setOptionLinked(true);
-                    });
-                }
+            handleRadioChange(e) {
+                const { value } = e.target.dataset;
+                this.updateValue(value);
             },
             // 支持自定义options
-            handleCreateMulRadio() {
+            initWithOptions() {
                 const { options } = this.data;
                 // 数字数组｜字符串数组｜对像数组
                 if (!(options === null || options === void 0 ? void 0 : options.length) || !Array.isArray(options)) {
@@ -105,8 +90,6 @@ let RadioGroup = class RadioGroup extends SuperComponent {
                     this.setData({
                         radioOptions: optionsValue,
                     });
-                    this.handleOptionLinked();
-                    this.updateChildren();
                 }
                 catch (error) {
                     console.error('error', error);

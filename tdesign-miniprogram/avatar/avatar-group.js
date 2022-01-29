@@ -12,7 +12,7 @@ const name = `${prefix}-avatar-group`;
 let AvatarGroup = class AvatarGroup extends SuperComponent {
     constructor() {
         super(...arguments);
-        this.externalClasses = [`${prefix}-class`];
+        this.externalClasses = [`${prefix}-class`, `${prefix}-class-alt`, `${prefix}-class-image`];
         this.properties = avatarGroupProps;
         this.data = {
             prefix,
