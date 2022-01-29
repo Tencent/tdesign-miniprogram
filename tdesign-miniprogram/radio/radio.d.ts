@@ -13,6 +13,13 @@ export default class Radio extends SuperComponent {
         attached(): void;
     };
     properties: import("./type").TdRadioProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
+    observers: {
+        checked(isChecked: Boolean): void;
+    };
     data: {
         prefix: string;
         active: boolean;
@@ -23,11 +30,8 @@ export default class Radio extends SuperComponent {
         iconVal: any[];
     };
     methods: {
-        onChange(e: any): void;
-        handleInitStatus(): void;
-        toggle(): void;
-        changeActive(active: boolean): void;
+        handleTap(e: any): void;
+        initStatus(): void;
         setDisabled(disabled: Boolean): void;
-        setOptionLinked(linked: Boolean): void;
     };
 }

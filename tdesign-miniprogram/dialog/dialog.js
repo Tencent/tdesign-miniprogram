@@ -36,35 +36,36 @@ let Dialog = class Dialog extends SuperComponent {
                 }
             },
             onConfirm() {
-                this.setData({
-                    visible: false,
-                });
                 this.triggerEvent('confirm');
-                this._onComfirm && this._onComfirm();
+                if (this._onComfirm) {
+                    this._onComfirm();
+                    this.close();
+                }
             },
             onCancel() {
-                this.close();
+                this.triggerEvent('close');
                 this.triggerEvent('cancel');
+                if (this._onCancel) {
+                    this._onCancel();
+                    this.close();
+                }
             },
             close() {
-                this.setData({
-                    visible: false,
-                });
-                this.triggerEvent('close');
+                this.setData({ visible: false });
             },
             overlayClick() {
                 if (this.properties.closeOnOverlayClick) {
-                    this.close();
+                    this.triggerEvent('close');
                 }
                 this.triggerEvent('overlayClick');
             },
             onActionTap(e) {
                 const { index } = e.currentTarget.dataset;
-                this.setData({
-                    visible: false,
-                });
                 this.triggerEvent('action', { index });
-                this._onAction && this._onAction({ index });
+                if (this._onAction) {
+                    this._onAction({ index });
+                    this.close();
+                }
             },
             openValueCBHandle(e) {
                 this.triggerEvent('open-type-event', e.detail);

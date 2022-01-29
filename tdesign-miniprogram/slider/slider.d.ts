@@ -1,25 +1,30 @@
 import { SuperComponent } from '../common/src/index';
+declare type dataType = {
+    sliderStyles: string;
+    classPrefix: string;
+    initialLeft: number | null;
+    initialRight: number | null;
+    activeLeft: number;
+    activeRight: number;
+    maxRange: number;
+    lineLeft: number;
+    lineRight: number;
+    dotTopValue: number[];
+    blockSize: number;
+    isScale: boolean;
+    scaleArray: any[];
+    scaleTextArray: any[];
+    _value: number | number[];
+    prefix: string;
+};
 export default class Slider extends SuperComponent {
     externalClasses: string[];
     properties: import("./type").TdSliderProps;
-    data: {
-        sliderStyles: string;
-        classPrefix: string;
-        initialLeft: number | null;
-        initialRight: number | null;
-        activeLeft: number;
-        activeRight: number;
-        maxRange: number;
-        lineLeft: number;
-        lineRight: number;
-        dotTopValue: number[];
-        blockSize: number;
-        isScale: boolean;
-        scaleArray: any[];
-        scaleTextArray: any[];
-        _value: number | number[];
-        prefix: string;
-    };
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
+    data: dataType;
     observers: {
         'value, min, max'(this: Slider, newValue: number | number[]): void;
         _value(this: Slider, newValue: number | number[]): void;
@@ -64,3 +69,4 @@ export default class Slider extends SuperComponent {
     setLineStyle(): void;
     onTouchEnd(): void;
 }
+export {};

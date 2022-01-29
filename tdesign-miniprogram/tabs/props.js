@@ -22,6 +22,12 @@ const props = {
     value: {
         type: String,
         optionalTypes: [Number],
+        value: null,
+    },
+    /** 激活的选项卡值，非受控属性 */
+    defaultValue: {
+        type: null,
+        value: undefined,
     },
 };
 export default props;

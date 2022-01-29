@@ -26,17 +26,16 @@ let Input = class Input extends SuperComponent {
         };
         this.externalClasses = ['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg'];
         this.properties = props;
+        this.controlledProps = [
+            {
+                key: 'value',
+                event: 'change',
+            },
+        ];
         this.data = {
-            inputValue: '',
             classPrefix: name,
             classBasePrefix: prefix,
             characterLength: 0,
-        };
-        /* 组件生命周期 */
-        this.lifetimes = {
-            ready() {
-                this.setData({ inputValue: this.data.value });
-            },
         };
         this.methods = {
             onInput(event) {
@@ -44,28 +43,27 @@ let Input = class Input extends SuperComponent {
                 const { maxcharacter } = this.properties;
                 if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
                     const { characters = '', length = 0 } = getCharacterLength(value, maxcharacter);
+                    this._trigger('change', { value: characters });
                     this.setData({
-                        value: characters,
                         characterLength: length,
                     });
                 }
                 else {
-                    this.setData({ inputValue: value });
+                    this._trigger('change', { value });
                 }
-                this.triggerEvent('change', Object.assign({}, event.detail));
             },
             onFocus(event) {
-                this.triggerEvent('focus', Object.assign({}, event.detail));
+                this.triggerEvent('focus', event.detail);
             },
             onBlur(event) {
-                this.triggerEvent('blur', Object.assign({}, event.detail));
+                this.triggerEvent('blur', event.detail);
             },
             onConfirm(event) {
-                this.triggerEvent('enter', Object.assign({}, event.detail));
+                this.triggerEvent('enter', event.detail);
             },
             clearInput(event) {
-                this.setData({ inputValue: '', value: '' });
-                this.triggerEvent('clear', Object.assign({}, event.detail));
+                this.triggerEvent('clear', event.detail);
+                this._trigger('change', { value: '' });
             },
         };
     }

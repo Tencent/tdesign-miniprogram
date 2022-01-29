@@ -35,7 +35,7 @@ const props = {
         type: String,
         value: 'default',
     },
-    /** 影响标签风格（theme） */
+    /** 标签风格变体 */
     variant: {
         type: String,
         value: 'dark',

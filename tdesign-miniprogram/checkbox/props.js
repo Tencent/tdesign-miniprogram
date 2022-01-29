@@ -5,13 +5,18 @@ const props = {
         type: String,
         value: 'left',
     },
-    /** 用于标识是否为「全选选项」 */
+    /** 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 */
     checkAll: {
         type: Boolean,
         value: false,
     },
     /** 是否选中 */
     checked: {
+        type: Boolean,
+        value: null,
+    },
+    /** 是否选中，非受控属性 */
+    defaultChecked: {
         type: Boolean,
         value: false,
     },

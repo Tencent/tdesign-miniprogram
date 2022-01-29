@@ -22,10 +22,21 @@ let Steps = class Steps extends SuperComponent {
         };
         this.externalClasses = [`${prefix}-class`];
         this.properties = props;
+        this.controlledProps = [
+            {
+                key: 'current',
+                event: 'change',
+            },
+        ];
         // 组件的内部数据
         this.data = {
             prefix,
             classPrefix: name,
+        };
+        this.observers = {
+            current() {
+                this.updateChildren();
+            },
         };
         this.methods = {
             updateChildren() {
@@ -44,12 +55,7 @@ let Steps = class Steps extends SuperComponent {
                 }
                 if (!this.data.readonly) {
                     const preIndex = this.data.current;
-                    this.setData({
-                        current: index,
-                    }, () => {
-                        this.updateChildren();
-                    });
-                    this.triggerEvent('change', {
+                    this._trigger('change', {
                         previous: preIndex,
                         current: index,
                     });

@@ -34,7 +34,7 @@ const props = {
     /** 链接跳转类型 */
     jumpType: {
         type: String,
-        value: 'navigate-to',
+        value: 'navigateTo',
     },
     /** 左侧图标，出现在单元格标题的左侧 */
     leftIcon: {

@@ -1,7 +1,7 @@
 <button
   class="{{className}} {{prefix}}-class"
   form-type="{{formType}}"
-  open-type="{{openType}}"
+  open-type="{{disabled ? '' : openType}}"
   hover-stop-propagation="{{hoverStopPropagation}}"
   hover-start-time="{{hoverStartTime}}"
   hover-stay-time="{{hoverStayTime}}"
@@ -13,12 +13,13 @@
   send-message-img="{{sendMessageImg}}"
   app-parameter="{{appParameter}}"
   show-message-card="{{showMessageCard}}"
-  bindgetuserinfo="getuserinfo"
-  bindcontact="contact"
-  bindgetphonenumber="getphonenumber"
-  binderror="error"
-  bindopensetting="opensetting"
-  bindlaunchapp="launchapp"
+  catch:tap="handleTap"
+  bind:getuserinfo="getuserinfo"
+  bind:contact="contact"
+  bind:getphonenumber="getphonenumber"
+  bind:error="error"
+  bind:opensetting="opensetting"
+  bind:launchapp="launchapp"
 >
   <t-icon
     wx:if="{{icon}}"

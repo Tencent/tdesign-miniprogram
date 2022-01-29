@@ -61,7 +61,7 @@ export default {
             console.warn('action 数量建议控制在1至7个');
         }
         return new Promise((resolve) => {
-            instance.setData(Object.assign(Object.assign({ actions, direction: 'vertical' }, otherOptions), { visible: true }));
+            instance.setData(Object.assign(Object.assign({ actions, buttonLayout: 'vertical' }, otherOptions), { visible: true }));
             instance._onAction = resolve;
         });
     },
