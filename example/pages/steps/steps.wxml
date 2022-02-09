@@ -6,23 +6,10 @@
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1">
         <t-step title="步骤描述" />
-        <t-step title="选中步骤" />
+        <t-step title="步骤描述" />
       </t-steps>
       <t-steps class="demo-steps" bind:change="handleChange" current="{{current}}">
         <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="选中步骤" content="辅助信息文字最多两行" />
-      </t-steps>
-    </view>
-
-    <view class="group">
-      <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" />
-        <t-step title="选中步骤" />
-        <t-step title="步骤描述" />
-      </t-steps>
-      <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="选中步骤" content="辅助信息文字最多两行" />
         <t-step title="步骤描述" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
@@ -30,13 +17,26 @@
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1">
         <t-step title="步骤描述" />
-        <t-step title="选中步骤" />
         <t-step title="步骤描述" />
         <t-step title="步骤描述" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1">
         <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="选中步骤" content="辅助信息文字最多两行" />
+        <t-step title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step title="步骤描述" content="辅助信息文字最多两行" />
+      </t-steps>
+    </view>
+
+    <view class="group">
+      <t-steps class="demo-steps" defaultCurrent="1">
+        <t-step title="步骤描述" />
+        <t-step title="步骤描述" />
+        <t-step title="步骤描述" />
+        <t-step title="步骤描述" />
+      </t-steps>
+      <t-steps class="demo-steps" defaultCurrent="1">
+        <t-step title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step title="步骤描述" content="辅助信息文字最多两行" />
         <t-step title="步骤描述" content="辅助信息文字最多两行" />
         <t-step title="步骤描述" content="辅助信息文字最多两行" />
       </t-steps>
@@ -47,12 +47,12 @@
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1">
         <t-step title="步骤描述" icon="user"></t-step>
-        <t-step title="选中步骤" icon="location" />
+        <t-step title="步骤描述" icon="location" />
         <t-step title="步骤描述" icon="time" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1">
         <t-step title="步骤描述" icon="user" content="辅助信息文字最多两行"></t-step>
-        <t-step title="选中步骤" icon="location" content="辅助信息文字最多两行" />
+        <t-step title="步骤描述" icon="location" content="辅助信息文字最多两行" />
         <t-step title="步骤描述" icon="time" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
