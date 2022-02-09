@@ -12,10 +12,10 @@
   <!-- 默认折叠元素 -->
   <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">
     <t-avatar
-      alt="{{collapseAvatar || '+N'}}"
       t-class-image="{{prefix}}-class-image"
-      t-class-alt="{{prefix}}-class-alt"
+      t-class-content="{{prefix}}-class-content"
       size="{{size}}"
-    />
+      >{{collapseAvatar || '+N'}}</t-avatar
+    >
   </view>
 </view>
