@@ -7,20 +7,21 @@
       <t-search placeholder="搜索预设文案" center="{{true}}" />
     </view>
   </t-demo>
-
   <t-demo title="02 状态">
     <block wx:for="{{searchBoxGroup}}" wx:key="id">
       <view class="demo-section__desc">{{item.title}}</view>
       <view class="demo-section__wrapper">
         <t-search
           t-class-cancel="t-class-cancel"
-          keyword="{{item.keyword}}"
+          value="{{item.keyword}}"
           placeholder="{{item.placeholder}}"
           action-text="{{item.actionText}}"
           data-idx="{{index}}"
           bind:blur="blurHandle"
           bind:focus="focusHandle"
           bind:cancel="cancelHandle"
+          bind:clear="clearHandle"
+          bind:change="changeHandle"
         />
       </view>
     </block>

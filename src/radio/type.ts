@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdRadioProps {
@@ -19,6 +18,14 @@ export interface TdRadioProps {
    * 是否选中
    */
   checked?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 是否选中，非受控属性
+   */
+  defaultChecked?: {
     type: BooleanConstructor;
     value?: boolean;
     required?: boolean;
@@ -101,7 +108,7 @@ export interface TdRadioProps {
     required?: boolean;
   };
   /**
-   * HTM 元素原生属性
+   * HTML 元素原生属性
    * @default ''
    */
   name?: {
@@ -118,7 +125,7 @@ export interface TdRadioProps {
     value?: RadioValue;
     required?: boolean;
   };
-};
+}
 
 export interface TdRadioGroupProps {
   /**
@@ -155,10 +162,22 @@ export interface TdRadioGroupProps {
     value?: RadioValue;
     required?: boolean;
   };
-};
+  /**
+   * 选中的值，非受控属性
+   */
+  defaultValue?: {
+    type: StringConstructor;
+    value?: RadioValue;
+    required?: boolean;
+  };
+}
 
 export type RadioValue = string | number | boolean;
 
 export type RadioOption = string | number | RadioOptionObj;
 
-export interface RadioOptionObj { label?: string; value?: string | number; disabled?: boolean };
+export interface RadioOptionObj {
+  label?: string;
+  value?: string | number;
+  disabled?: boolean;
+}

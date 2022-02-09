@@ -9,6 +9,11 @@ const props = {
     checked: {
         type: Boolean,
     },
+    /** 是否选中，非受控属性 */
+    defaultChecked: {
+        type: null,
+        value: undefined,
+    },
     /** 单选按钮颜色 */
     color: {
         type: String,

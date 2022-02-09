@@ -25,10 +25,13 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
             classPrefix: name,
             checkboxOptions: [],
         };
-        this.properties = Props;
+        this.properties = Object.assign(Object.assign({}, Props), { defaultValue: {
+                type: null,
+                value: undefined,
+            } });
         this.observers = {
             value: function () {
-                this.updateChildren('slot');
+                this.updateChildren();
             },
         };
         this.lifetimes = {
@@ -36,20 +39,30 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                 this.handleCreateMulCheckbox();
             },
         };
+        this.controlledProps = [
+            {
+                key: 'value',
+                event: 'change',
+            },
+        ];
         this.methods = {
-            // slot插入选项
-            updateChildren(type = 'slot') {
-                let items = [];
-                if (type === 'not-slot') {
+            getChilds() {
+                let items = this.getRelationNodes('../checkbox/checkbox');
+                if (!items.length) {
                     items = this.selectAllComponents('.t-checkbox-option');
                 }
-                else {
-                    items = this.getRelationNodes('../checkbox/checkbox');
-                }
+                return items || [];
+            },
+            // slot插入选项
+            updateChildren() {
+                const items = this.getChilds();
                 const { value, disabled } = this.data;
                 if (items.length > 0) {
                     items.forEach((item) => {
-                        !item.data.checkAll && item.changeActive(value.indexOf(item.data.value) > -1);
+                        !item.data.checkAll &&
+                            item.setData({
+                                checked: (value === null || value === void 0 ? void 0 : value.indexOf(item.data.value)) > -1,
+                            });
                         item.setDisabled(disabled);
                     });
                     // 关联可全选项
@@ -57,11 +70,11 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                         items.forEach((item) => {
                             item.setOptionLinked(true);
                         });
-                        this.handleHalfCheck(type, items.length);
+                        this.handleHalfCheck(items.length);
                     }
                 }
             },
-            updateValue({ name, checked }, type = 'slot') {
+            updateValue({ name, checked }) {
                 const { value, max } = this.data;
                 let newValue = value;
                 if (max && checked && newValue.length === max) {
@@ -74,11 +87,11 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                     const index = newValue.findIndex((v) => v === name);
                     newValue.splice(index, 1);
                 }
-                this.setData({
-                    value: newValue,
-                });
-                this.updateChildren(type);
-                this.triggerEvent('change', newValue);
+                // this.setData({
+                //   value: newValue,
+                // });
+                // this.updateChildren();
+                this._trigger('change', { value: newValue });
             },
             // 支持自定义options
             handleCreateMulCheckbox() {
@@ -104,7 +117,7 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                     this.setData({
                         checkboxOptions: optionsValue,
                     });
-                    this.updateChildren('not-slot');
+                    this.updateChildren();
                 }
                 catch (error) {
                     console.error('error', error);
@@ -112,54 +125,57 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
             },
             // 处理全选
             handleCheckAll(e) {
-                const { checked, option, name, type } = e.detail || e;
-                let items = [];
-                if (type === 'not-slot') {
-                    items = this.selectAllComponents('.t-checkbox-option');
-                }
-                else {
-                    items = this.getRelationNodes('../checkbox/checkbox');
-                }
+                const { checked, option, name } = e.detail || e;
+                const items = this.getChilds();
                 if (!option) {
                     if (!(items === null || items === void 0 ? void 0 : items.length)) {
                         return;
                     }
-                    this.setData({
+                    // this.setData({
+                    //   value: items
+                    //     .map((item) => {
+                    //       if (item.data.disabled) {
+                    //         return this.data.value.includes(item.data.value) ? item.data.value : '';
+                    //       }
+                    //       item.changeActive(checked);
+                    //       return checked && !item.data.checkAll ? item.data.value : '';
+                    //     })
+                    //     .filter((val) => val),
+                    // });
+                    this._trigger('change', {
                         value: items
                             .map((item) => {
                             if (item.data.disabled) {
-                                return '';
+                                return this.data.value.includes(item.data.value) ? item.data.value : '';
                             }
-                            item.changeActive(checked);
+                            // item.changeActive(checked);
                             return checked && !item.data.checkAll ? item.data.value : '';
                         })
                             .filter((val) => val),
                     });
-                    this.triggerEvent('change', this.data.value);
-                    this.handleHalfCheck(type, items.length);
+                    // this.handleHalfCheck(items.length);
                 }
                 else {
-                    this.updateValue({ name, checked }, type);
+                    this.updateValue({ name, checked });
                 }
             },
             // 处理options半选
-            handleHalfCheck(type, len) {
-                let items = [];
-                if (type === 'not-slot') {
-                    items = this.selectAllComponents('.t-checkbox-option');
-                }
-                else {
-                    items = this.getRelationNodes('../checkbox/checkbox');
-                }
+            handleHalfCheck(len) {
+                var _a;
+                const items = this.getChilds();
                 const all = items.filter((i) => !i.data.checkAll).map((item) => item.data.value);
-                const currentVal = Array.from(new Set(this.data.value.filter((i) => all.indexOf(i) > -1)));
+                const excludeDisableArr = items
+                    .filter((i) => !i.data.checkAll && i.data.value && !i.data.disabled)
+                    .map((item) => item.data.value);
+                const currentVal = Array.from(new Set((_a = this.data.value) === null || _a === void 0 ? void 0 : _a.filter((i) => all.indexOf(i) > -1)));
                 const element = items.find((item) => item.data.checkAll);
                 if (currentVal.length) {
-                    element === null || element === void 0 ? void 0 : element.changeActive(true);
+                    element === null || element === void 0 ? void 0 : element.setData({ checked: true });
                     element === null || element === void 0 ? void 0 : element.changeCheckAllHalfStatus(currentVal.length !== len - 1);
+                    element === null || element === void 0 ? void 0 : element.setCancel(currentVal.length >= excludeDisableArr.length);
                 }
                 else {
-                    element === null || element === void 0 ? void 0 : element.changeActive(false);
+                    element === null || element === void 0 ? void 0 : element.setData({ checked: false });
                 }
             },
             // 设置可全选option选项

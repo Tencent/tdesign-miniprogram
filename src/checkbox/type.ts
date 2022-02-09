@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdCheckboxProps {
@@ -16,7 +15,7 @@ export interface TdCheckboxProps {
     required?: boolean;
   };
   /**
-   * 用于标识是否为「全选选项」
+   * 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用
    * @default false
    */
   checkAll?: {
@@ -29,6 +28,15 @@ export interface TdCheckboxProps {
    * @default false
    */
   checked?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 是否选中，非受控属性
+   * @default false
+   */
+  defaultChecked?: {
     type: BooleanConstructor;
     value?: boolean;
     required?: boolean;
@@ -144,7 +152,7 @@ export interface TdCheckboxProps {
     value?: string | number;
     required?: boolean;
   };
-};
+}
 
 export interface TdCheckboxGroupProps {
   /**
@@ -174,7 +182,7 @@ export interface TdCheckboxGroupProps {
     required?: boolean;
   };
   /**
-   * 以配置形式设置子元素。示例1：['北京', '上海'] ，示例2: [{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]。checkAll 值为 true 表示当前选项为「全选选项」
+   * 以配置形式设置子元素。示例1：`['北京', '上海']` ，示例2: `[{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]`。checkAll 值为 true 表示当前选项为「全选选项」
    * @default []
    */
   options?: {
@@ -191,10 +199,24 @@ export interface TdCheckboxGroupProps {
     value?: CheckboxGroupValue;
     required?: boolean;
   };
-};
+  /**
+   * 选中值，非受控属性
+   * @default []
+   */
+  defaultValue?: {
+    type: ArrayConstructor;
+    value?: CheckboxGroupValue;
+    required?: boolean;
+  };
+}
 
 export type CheckboxOption = string | number | CheckboxOptionObj;
 
-export interface CheckboxOptionObj { label?: string; value?: string | number; disabled?: boolean; checkAll?: true };
+export interface CheckboxOptionObj {
+  label?: string;
+  value?: string | number;
+  disabled?: boolean;
+  checkAll?: true;
+}
 
-export type CheckboxGroupValue = Array<string | number> | string | number;
+export type CheckboxGroupValue = Array<string | number>;

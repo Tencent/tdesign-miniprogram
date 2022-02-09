@@ -35,4 +35,12 @@ export interface TdIconProps {
         value?: string;
         required?: boolean;
     };
+    /**
+     * 自定义图标前缀
+     */
+    prefix?: {
+        type: StringConstructor;
+        value?: string;
+        reuqired?: boolean;
+    };
 }

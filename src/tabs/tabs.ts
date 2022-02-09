@@ -40,6 +40,13 @@ export default class Tabs extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
   observers = {
     value(name) {
       if (name !== this.getCurrentName()) {
@@ -168,28 +175,10 @@ export default class Tabs extends SuperComponent {
       });
   }
 
-  trigger(eventName: string, index: number) {
-    const currentIndex = index || this.data.currentIndex;
-    const currentTab = this.data.tabs[currentIndex];
-    if (currentTab) {
-      const { value, label } = currentTab;
-      this.triggerEvent(eventName, {
-        value,
-        label,
-        index: currentIndex,
-      });
-    }
-  }
-
   onTabTap(event: any) {
     const { index } = event.currentTarget.dataset;
-    const currentTab = this.data.tabs[index];
-    if (!currentTab.disabled && index !== this.data.currentIndex) {
-      this.setCurrentIndex(+index);
-      wx.nextTick(() => {
-        this.trigger('change', index);
-      });
-    }
+
+    this.changeIndex(index);
   }
 
   onTouchStart(event: any) {
@@ -205,12 +194,14 @@ export default class Tabs extends SuperComponent {
     const minSwipeDistance = 50;
     if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
       const index = this.getAvailableTabIndex(deltaX);
-      if (index !== -1) {
-        this.setCurrentIndex(index);
-        wx.nextTick(() => {
-          this.trigger('change', index);
-        });
-      }
+      this.changeIndex(index);
+    }
+  }
+
+  changeIndex(index) {
+    const currentTab = this.data.tabs[index];
+    if (!currentTab?.disabled && index !== this.data.currentIndex) {
+      this._trigger('change', { value: currentTab.value });
     }
   }
 

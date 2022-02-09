@@ -16,6 +16,14 @@ export interface TdStepsProps {
     required?: boolean;
   };
   /**
+   * 当前步骤
+   */
+  defaultCurrent?: {
+    type: StringConstructor;
+    value?: string | number;
+    required?: boolean;
+  };
+  /**
    * 组件类名，用于设置组件外层元素元素类名
    */
   externalClasses?: {
@@ -50,7 +58,7 @@ export interface TdStepsProps {
     value?: 'default' | 'dot';
     required?: boolean;
   };
-};
+}
 
 export interface TdStepItemProps {
   /**
@@ -96,6 +104,6 @@ export interface TdStepItemProps {
     value?: string;
     required?: boolean;
   };
-};
+}
 
 export type StepStatus = 'default' | 'process' | 'finish' | 'error';

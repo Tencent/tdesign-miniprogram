@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-12-20 13:31:40
  * */
 
 import { TdTextareaProps } from './type';
@@ -46,6 +45,10 @@ const props: TdTextareaProps = {
     type: Boolean,
     value: false,
   },
+  /** 左侧文本 */
+  label: {
+    type: String,
+  },
   /** 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 */
   maxcharacter: {
     type: Number,
@@ -54,15 +57,10 @@ const props: TdTextareaProps = {
   maxlength: {
     type: Number,
   },
-  /** 名称，HTML 元素原生属性 */
-  name: {
-    type: String,
-    value: '',
-  },
   /** 占位符 */
   placeholder: {
     type: String,
-    value: '',
+    value: undefined,
   },
   /** 文本框值 */
   value: {

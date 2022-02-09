@@ -42,6 +42,12 @@ let Tabs = class Tabs extends SuperComponent {
             },
         };
         this.properties = props;
+        this.controlledProps = [
+            {
+                key: 'value',
+                event: 'change',
+            },
+        ];
         this.observers = {
             value(name) {
                 if (name !== this.getCurrentName()) {
@@ -166,27 +172,9 @@ let Tabs = class Tabs extends SuperComponent {
             this.triggerEvent('error', err);
         });
     }
-    trigger(eventName, index) {
-        const currentIndex = index || this.data.currentIndex;
-        const currentTab = this.data.tabs[currentIndex];
-        if (currentTab) {
-            const { value, label } = currentTab;
-            this.triggerEvent(eventName, {
-                value,
-                label,
-                index: currentIndex,
-            });
-        }
-    }
     onTabTap(event) {
         const { index } = event.currentTarget.dataset;
-        const currentTab = this.data.tabs[index];
-        if (!currentTab.disabled && index !== this.data.currentIndex) {
-            this.setCurrentIndex(+index);
-            wx.nextTick(() => {
-                this.trigger('change', index);
-            });
-        }
+        this.changeIndex(index);
     }
     onTouchStart(event) {
         this.touchStart(event);
@@ -199,12 +187,13 @@ let Tabs = class Tabs extends SuperComponent {
         const minSwipeDistance = 50;
         if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
             const index = this.getAvailableTabIndex(deltaX);
-            if (index !== -1) {
-                this.setCurrentIndex(index);
-                wx.nextTick(() => {
-                    this.trigger('change', index);
-                });
-            }
+            this.changeIndex(index);
+        }
+    }
+    changeIndex(index) {
+        const currentTab = this.data.tabs[index];
+        if (!(currentTab === null || currentTab === void 0 ? void 0 : currentTab.disabled) && index !== this.data.currentIndex) {
+            this._trigger('change', { value: currentTab.value });
         }
     }
     getAvailableTabIndex(deltaX) {

@@ -1,6 +1,5 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 import { TdBadgeProps } from '../badge/type';
 export interface TdTabBarProps {
@@ -49,13 +48,32 @@ export interface TdTabBarProps {
         required?: boolean;
     };
     /**
+     * 是否需要分割线
+     * @default true
+     */
+    split?: {
+        type: BooleanConstructor;
+        value?: boolean;
+        required?: boolean;
+    };
+    /**
      * 当前选中标签的索引
      * @default 0
      */
     value?: {
         type: StringConstructor;
-        optionalTypes: Array<NumberConstructor>;
-        value?: string | number;
+        optionalTypes: Array<NumberConstructor | ArrayConstructor>;
+        value?: string | number | Array<string | number>;
+        required?: boolean;
+    };
+    /**
+     * 当前选中标签的索引，非受控属性
+     * @default 0
+     */
+    defaultValue?: {
+        type: StringConstructor;
+        optionalTypes: Array<NumberConstructor | ArrayConstructor>;
+        value?: string | number | Array<string | number>;
         required?: boolean;
     };
 }

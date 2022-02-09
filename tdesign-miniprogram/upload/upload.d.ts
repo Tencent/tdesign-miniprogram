@@ -22,6 +22,10 @@ export default class Upload extends SuperComponent {
         column: number;
     };
     properties: import("./type").TdUploadProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     observers: {
         files(files: UploadFile): void;
         max(max: any): void;

@@ -5,6 +5,11 @@ const props = {
         type: String,
         optionalTypes: [Number],
     },
+    /** 当前步骤 */
+    defaultCurrent: {
+        type: null,
+        value: undefined,
+    },
     /** 组件类名，用于设置组件外层元素元素类名 */
     externalClasses: {
         type: Array,

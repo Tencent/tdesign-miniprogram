@@ -21,10 +21,14 @@ export default class Search extends SuperComponent {
 
   properties = props;
 
-  observers = {
-    keyword(this: Search, nextValue: string) {
-      this.setData({ 'localValue.keyword': nextValue });
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
     },
+  ];
+
+  observers = {
     focus(this: Search, nextValue: boolean) {
       this.setData({ 'localValue.focus': nextValue });
     },
@@ -39,7 +43,6 @@ export default class Search extends SuperComponent {
     classPrefix: name,
     prefix,
     localValue: {
-      keyword: '',
       focus: false,
     },
   };
@@ -52,17 +55,10 @@ export default class Search extends SuperComponent {
    */
   ignoreFocusEvtAfterBlurInCenterMode = false;
 
-  attached() {
-    this.setData({
-      'localValue.keyword': this.properties.keyword,
-      'localValue.focus': this.properties.focus,
-    });
-  }
-
   onInput(e) {
     const { value } = e.detail;
-    this.setData({ 'localValue.keyword': value });
-    this.triggerEvent('change', { value });
+    // this.setData({ 'localValue.keyword': value });
+    this._trigger('change', { value });
   }
 
   onFocus(e) {
@@ -85,13 +81,14 @@ export default class Search extends SuperComponent {
   }
 
   onClear() {
-    this.setData({ 'localValue.keyword': '' });
+    // this.setData({ 'localValue.keyword': '' });
     this.triggerEvent('clear', { value: '' });
+    this._trigger('change', { value: '' });
   }
 
   onConfirm(e) {
     const value = e.detail;
-    this.triggerEvent('submit', value);
+    this.triggerEvent('submit', { value });
   }
 
   onCancel() {

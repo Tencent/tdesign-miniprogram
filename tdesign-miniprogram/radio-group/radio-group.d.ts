@@ -9,21 +9,24 @@ export default class RadioGroup extends SuperComponent {
     relations: {
         '../radio/radio': {
             type: "descendant";
-            linked(): void;
+            linked(target: any): void;
         };
     };
     properties: import("../radio/type").TdRadioGroupProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     lifetimes: {
         attached(): void;
     };
     observers: {
-        value: () => void;
+        value(): void;
     };
     methods: {
-        updateChildren(): void;
-        updateValue(item: any): void;
-        handleGroupSelect(e: any): void;
-        handleOptionLinked(): void;
-        handleCreateMulRadio(): void;
+        getChilds(): any;
+        updateValue(value: any): void;
+        handleRadioChange(e: any): void;
+        initWithOptions(): void;
     };
 }

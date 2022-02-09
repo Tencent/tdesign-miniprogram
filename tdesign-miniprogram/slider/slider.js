@@ -30,6 +30,12 @@ let Slider = class Slider extends SuperComponent {
             `${{ prefix }}-class-cursor`,
         ];
         this.properties = props;
+        this.controlledProps = [
+            {
+                key: 'value',
+                event: 'change',
+            },
+        ];
         // 组件的内部数据
         this.data = {
             // 按钮样式列表
@@ -87,7 +93,7 @@ let Slider = class Slider extends SuperComponent {
      */
     triggerValue(value) {
         value = trimValue(value || this.data._value, this.properties);
-        this.triggerEvent('change', {
+        this._trigger('change', {
             value,
         });
     }
@@ -100,7 +106,7 @@ let Slider = class Slider extends SuperComponent {
         const setValueAndTrigger = () => {
             this.setData({
                 _value: value,
-            }, this.triggerValue);
+            });
         };
         // 基本样式未初始化，等待初始化后在改变数据。
         if (this.data.maxRange === 0) {
@@ -265,17 +271,13 @@ let Slider = class Slider extends SuperComponent {
                     // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
                     const left = pageX - initialLeft - halfBlock;
                     const leftValue = this.convertPosToValue(left, 0);
-                    this.setData({
-                        _value: [this.stepValue(leftValue), this.data._value[1]],
-                    }, this.triggerValue);
+                    this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
                 }
                 else {
                     const right = -(pageX - initialRight) - halfBlock;
                     const rightValue = this.convertPosToValue(right, 1);
                     const newValue = trimValue([this.data._value[0], this.stepValue(rightValue)], this.properties);
-                    this.setData({
-                        _value: newValue,
-                    }, this.triggerValue);
+                    this.triggerValue(newValue);
                 }
             });
         });

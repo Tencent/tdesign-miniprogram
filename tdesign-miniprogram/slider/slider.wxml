@@ -11,7 +11,7 @@
         id="sliderLine"
         class="{{classPrefix}}__main {{prefix}}-class-bar"
         style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
-        bindtap="onSingleLineTap"
+        bind:tap="onSingleLineTap"
       >
         <block wx:if="{{isScale}}">
           <view
@@ -29,13 +29,13 @@
         <view
           class="{{classPrefix}}__line {{prefix}}-class-bar-active"
           style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; width: {{lineBarWidth}};"
-          bindtap="onSingleLineTap"
+          bind:tap="onSingleLineTap"
         >
           <view
             id="singleDot"
             class="{{classPrefix}}__dot {{prefix}}-class-cursor"
             style="left: {{activeLeft}}px"
-            bindtouchmove="onSingleTouchMove"
+            bind:touchmove="onSingleTouchMove"
             bind:touchend="onTouchEnd"
             bind:touchcancel="onTouchEnd"
           />
@@ -60,7 +60,7 @@
       </view>
       <view
         id="sliderLine"
-        bindtap="onLineTap"
+        bind:tap="onLineTap"
         class="{{classPrefix}}__bar {{prefix}}-class-bar"
         style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
       >
@@ -77,12 +77,12 @@
         </block>
         <view
           class="{{classPrefix}}__line {{prefix}}-class-bar-active"
-          bindtap="onLineTap"
+          bind:tap="onLineTap"
           style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; right: {{lineRight}}px;"
         />
         <view
           id="leftDot"
-          bindtouchmove="onTouchMoveLeft"
+          bind:touchmove="onTouchMoveLeft"
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
@@ -94,7 +94,7 @@
         </view>
         <view
           id="rightDot"
-          bindtouchmove="onTouchMoveRight"
+          bind:touchmove="onTouchMoveRight"
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"

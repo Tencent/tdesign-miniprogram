@@ -10,6 +10,10 @@ export default class Tabs extends SuperComponent {
         };
     };
     properties: import("./type").TdTabsProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     observers: {
         value(name: any): void;
         animation(v: any): void;
@@ -34,10 +38,10 @@ export default class Tabs extends SuperComponent {
     setCurrentIndex(index: number): void;
     getCurrentName(): any;
     setTrack(color?: string): void;
-    trigger(eventName: string, index: number): void;
     onTabTap(event: any): void;
     onTouchStart(event: any): void;
     onTouchMove(event: any): void;
     onTouchEnd(): void;
+    changeIndex(index: any): void;
     getAvailableTabIndex(deltaX: number): number;
 }

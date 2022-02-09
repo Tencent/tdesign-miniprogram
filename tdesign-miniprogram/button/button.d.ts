@@ -22,5 +22,6 @@ export default class Button extends SuperComponent {
         error(e: any): void;
         opensetting(e: any): void;
         launchapp(e: any): void;
+        handleTap(e: any): void;
     };
 }

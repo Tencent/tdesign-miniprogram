@@ -21,6 +21,7 @@ let TabbarItem = class TabbarItem extends SuperComponent {
                         parent,
                         color,
                         activeColor,
+                        split: parent.data.split,
                         currentName: this.properties.value ? this.properties.value : parent.initName(),
                     });
                     parent.updateChildren();
@@ -37,6 +38,7 @@ let TabbarItem = class TabbarItem extends SuperComponent {
             currentName: '',
             color: '',
             activeColor: '',
+            split: true,
         };
         this.properties = props;
         this.observers = {
