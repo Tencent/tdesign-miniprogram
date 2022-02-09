@@ -27,11 +27,11 @@ type dataType = {
 @wxComponent()
 export default class Slider extends SuperComponent {
   externalClasses = [
-    `${{ prefix }}-class`,
-    `${{ prefix }}-class-bar`,
-    `${{ prefix }}-class-bar-active`,
-    `${{ prefix }}-class-bar-disabled`,
-    `${{ prefix }}-class-cursor`,
+    `${prefix}-class`,
+    `${prefix}-class-bar`,
+    `${prefix}-class-bar-active`,
+    `${prefix}-class-bar-disabled`,
+    `${prefix}-class-cursor`,
   ];
 
   properties = props;
