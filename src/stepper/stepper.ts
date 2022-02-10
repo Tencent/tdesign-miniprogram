@@ -7,10 +7,10 @@ const { prefix } = config;
 @wxComponent()
 export default class Stepper extends SuperComponent {
   externalClasses = [
-    `${{ prefix }}-class`,
-    `${{ prefix }}-class-input`,
-    `${{ prefix }}-class-minus`,
-    `${{ prefix }}-class-plus`,
+    `${prefix}-class`,
+    `${prefix}-class-input`,
+    `${prefix}-class-minus`,
+    `${prefix}-class-plus`,
   ];
 
   options = {
