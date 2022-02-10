@@ -1,6 +1,134 @@
-.t-count-down {
+@import '../common/style/index.less';
+
+@countdown: ~"@{prefix}-count-down";
+@item: ~"@{countdown}__item";
+@split: ~"@{countdown}__split";
+
+@red: #e34d59;
+@gray: rgba(0, 0, 0, .4);
+
+.@{countdown} {
   color: #323233;
   font-size: 24rpx;
   line-height: 34rpx;
   font-family: 'DIN Alternate', 'Courier New', Courier, monospace;
+
+  &--square {
+    .@{item} {
+      border-radius: 8rpx;
+    }
+  }
+
+  &--round {
+    .@{item} {
+      border-radius: 50%;
+    }
+  }
+
+  &--square,
+  &--round {
+    .@{item} {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;  
+      color: #fff;
+      background: @red;
+    }
+
+    .@{split} {
+      display: inline-flex;
+      align-items: center;
+      height: 40rpx;
+      margin: 0 8rpx;
+      font-size: 28rpx;
+      color: @red;
+      font-weight: 600;
+    }
+
+    .@{split}--text {
+      color: #333;
+      margin: 0 10rpx;
+      font-size: 20rpx;
+      font-weight: normal;
+    }
+  }
+
+  &--small {
+    .@{item} {
+      width: 40rpx;
+      height: 40rpx;
+      font-size: 24rpx;
+    }
+  }
+
+  &--middle {
+    .@{item} {
+      width: 48rpx;
+      height: 48rpx;
+      font-size: 28rpx;
+    }
+
+    .@{split} {
+      font-size: 32rpx;
+      font-weight: 600;
+    }
+  }
+
+  &--large {
+    .@{item} {
+      width: 56rpx;
+      height: 56rpx;
+      font-size: 32rpx;
+    }
+
+    .@{split} {
+      font-size: 36rpx;
+      font-weight: 600;
+    }
+  }
+
+  &--highlight {
+    .@{item} {
+      width: 40rpx;
+      height: 48rpx;
+      color: @red;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32rpx;
+    }
+
+    .@{split} {
+      color: #333;
+      height: 48rpx;
+      display: inline-flex;
+      align-items: center;
+      margin: 0 6rpx;
+      font-size: 20rpx;
+    }
+  }
+}
+
+.base-time-square-l {
+  .item-dot {
+    color: @red;
+    height: 56rpx;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 8rpx;
+    font-size: 36rpx;
+    font-weight: 600;
+  }
+}
+
+.base-time-square-m {
+  .item-dot {
+    color: @red;
+    height: 48rpx;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 8rpx;
+    font-size: 32rpx;
+    font-weight: 600;
+  }
 }
