@@ -18,16 +18,15 @@
       binderror="onLoadError"
       loadFailed="{{alt}}"
     />
-    <view wx:elif="{{!icon}}" class="{{classPrefix}}__text {{prefix}}-class-content">
-      <slot />
-    </view>
     <view
-      wx:if="{{icon}}"
+      wx:elif="{{icon}}"
       class="{{classPrefix}}__icon {{this.getIconClass(classPrefix, size)}} {{prefix}}-class-icon"
     >
       <t-icon name="{{icon}}" />
     </view>
-    <slot wx:else name="icon" />
+    <view wx:else class="{{classPrefix}}__text {{prefix}}-class-content">
+      <slot />
+    </view>
   </view>
   <t-badge
     class="{{prefix}}-badge__{{shape === 'circle' ? 'circle' : 'round'}}"
