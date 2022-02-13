@@ -8,7 +8,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import Props from './props';
 const { prefix } = config;
-const currentComponent = `${prefix}-checkbox`;
+const classPrefix = `${prefix}-checkbox`;
 let CheckBox = class CheckBox extends SuperComponent {
     constructor() {
         super(...arguments);
@@ -21,20 +21,38 @@ let CheckBox = class CheckBox extends SuperComponent {
         this.options = {
             multipleSlots: true,
         };
-        this.properties = Props;
+        this.properties = Object.assign(Object.assign({}, Props), { defaultChecked: {
+                type: null,
+                value: undefined,
+            } });
         // 组件的内部数据
         this.data = {
-            classPrefix: currentComponent,
+            classPrefix,
             classBasePrefix: prefix,
             active: false,
             halfChecked: false,
             optionLinked: false,
+            canCancel: false,
         };
         this.lifetimes = {
             attached() {
                 this.initStatus();
             },
         };
+        this.observers = {
+            checked: function (isChecked) {
+                this.initStatus();
+                this.setData({
+                    active: isChecked,
+                });
+            },
+        };
+        this.controlledProps = [
+            {
+                key: 'checked',
+                event: 'change',
+            },
+        ];
         /* Methods */
         this.methods = {
             onChange(e) {
@@ -46,14 +64,14 @@ let CheckBox = class CheckBox extends SuperComponent {
                 if (target === 'text' && contentDisabled) {
                     return;
                 }
-                const { value, active, checkAll, optionLinked } = this.data;
+                const { value, active, checkAll, optionLinked, canCancel } = this.data;
                 const item = { name: value, checked: !active, checkAll };
                 const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
                 if (parent) {
                     if (checkAll || optionLinked) {
                         parent.handleCheckAll({
                             type: 'slot',
-                            checked: !active,
+                            checked: !active || (this.data.halfChecked && !canCancel),
                             option: !checkAll,
                             name: value,
                         });
@@ -65,46 +83,47 @@ let CheckBox = class CheckBox extends SuperComponent {
                 else if (checkAll || optionLinked) {
                     this.triggerEvent('toggleAll', {
                         type: 'not-slot',
-                        checked: !active,
+                        checked: !active || (this.data.halfChecked && !canCancel),
                         option: !checkAll,
                         name: value,
                     });
                 }
                 else {
-                    this.triggerEvent('change', !active);
-                    this.toggle();
+                    this._trigger('change', { checked: !active });
+                    // this.triggerEvent('change', !active);
+                    // this.toggle();
                 }
             },
             initStatus() {
                 if (!this.data.optionLinked) {
                     if (this.data.indeterminate) {
                         this.setData({
-                            active: true,
+                            // active: true,
                             halfChecked: true,
                         });
                     }
                     else {
                         this.setData({
-                            active: this.data.checked,
+                            // active: this.data.checked,
                             halfChecked: this.data.indeterminate,
                         });
                     }
                 }
             },
             toggle() {
-                const { active } = this.data;
+                // const { active } = this.data;
+                // this.setData({
+                //   active: !active,
+                // });
+            },
+            setCancel(cancel) {
                 this.setData({
-                    active: !active,
+                    canCancel: cancel,
                 });
             },
             setDisabled(disabled) {
                 this.setData({
                     disabled: this.data.disabled || disabled,
-                });
-            },
-            changeActive(active) {
-                this.setData({
-                    active,
                 });
             },
             // 半选

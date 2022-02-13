@@ -35,6 +35,11 @@ const props = {
         optionalTypes: [Number, Boolean],
         value: false,
     },
+    /** 开关值 */
+    defaultValue: {
+        type: null,
+        value: undefined,
+    },
 };
 export default props;
 

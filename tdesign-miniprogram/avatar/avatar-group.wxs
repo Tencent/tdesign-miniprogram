@@ -11,7 +11,6 @@ module.exports = {
     }
   },
   getZIndex: function (cascading) {
-    console.log(cascading);
     var zIndex = cascading === 'right-up' ? 100 : 0;
     return 'z-index:' + zIndex + ';';
   },

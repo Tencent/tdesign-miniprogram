@@ -15,6 +15,12 @@ const props = {
     /** 已上传文件列表 */
     files: {
         type: Array,
+        value: null,
+    },
+    /** 已上传文件列表，非受控属性 */
+    defaultFiles: {
+        type: null,
+        value: undefined,
     },
     /** upload组件每行上传图片列数以及图片的宽度和高度 */
     gridConfig: {

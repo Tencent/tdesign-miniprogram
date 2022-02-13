@@ -26,7 +26,7 @@ t-tab-bar-item {
 .t-tab-bar-item:active {
   background-color: rgba(0, 0, 0, 0.05);
 }
-.t-tab-bar-item.t-is-bordered:before {
+.t-tab-bar-item.t-is-split:before {
   position: absolute;
   box-sizing: border-box;
   content: ' ';

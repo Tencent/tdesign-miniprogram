@@ -25,6 +25,7 @@
   max-width: 100%;
   max-height: 100%;
   animation: rotate 0.8s linear infinite;
+  color: #0052d9;
 }
 .t-loading__spinner.reverse {
   animation-name: rotateReverse;

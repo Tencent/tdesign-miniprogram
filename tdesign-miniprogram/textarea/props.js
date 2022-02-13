@@ -39,6 +39,10 @@ const props = {
         type: Boolean,
         value: false,
     },
+    /** 左侧文本 */
+    label: {
+        type: String,
+    },
     /** 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 */
     maxcharacter: {
         type: Number,
@@ -47,15 +51,10 @@ const props = {
     maxlength: {
         type: Number,
     },
-    /** 名称，HTML 元素原生属性 */
-    name: {
-        type: String,
-        value: '',
-    },
     /** 占位符 */
     placeholder: {
         type: String,
-        value: '',
+        value: undefined,
     },
     /** 文本框值 */
     value: {

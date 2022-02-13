@@ -5,8 +5,11 @@ export default class Search extends SuperComponent {
         multipleSlots: boolean;
     };
     properties: import("./type").TdSearchProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     observers: {
-        keyword(this: Search, nextValue: string): void;
         focus(this: Search, nextValue: boolean): void;
         center(this: Search, nextValue: boolean): void;
     };
@@ -14,7 +17,6 @@ export default class Search extends SuperComponent {
         classPrefix: string;
         prefix: string;
         localValue: {
-            keyword: string;
             focus: boolean;
         };
     };
@@ -25,12 +27,11 @@ export default class Search extends SuperComponent {
      * 3. 如果没有这个变量拦截，onFocus会被短时间后被调用，猜测是input的onFocus触发是非同步的
      */
     ignoreFocusEvtAfterBlurInCenterMode: boolean;
-    attached(): void;
     onInput(e: any): void;
-    onFocus(): void;
-    onBlur(): void;
+    onFocus(e: any): void;
+    onBlur(e: any): void;
     onClear(): void;
     onConfirm(e: any): void;
     onCancel(): void;
-    tapWhenCenterActiveHandle(): void;
+    tapWhenCenterActiveHandle(e: any): void;
 }

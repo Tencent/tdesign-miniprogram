@@ -50,12 +50,16 @@
 .t-avatar-group .t-is-hidden {
   display: none;
 }
-.t-avatar-group .border-example-1 {
-  border-width: 4rpx;
-  border-color: white;
+.t-avatar-group .alt-default {
+  background-color: #d4e3fc;
+  color: #0052d9;
 }
-.t-avatar-group .alt-example {
-  background-color: #e5e5e5;
-  color: #bbb;
-  font-size: 30rpx;
+.t-avatar-group .alt-default-l {
+  font-size: 64rpx;
+}
+.t-avatar-group .alt-default-m {
+  font-size: 48rpx;
+}
+.t-avatar-group .alt-default-s {
+  font-size: 32rpx;
 }

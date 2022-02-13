@@ -21,6 +21,12 @@ let Stepper = class Stepper extends SuperComponent {
             addGlobalClass: true,
         };
         this.properties = props;
+        this.controlledProps = [
+            {
+                key: 'value',
+                event: 'change',
+            },
+        ];
         this.observers = {
             value(v) {
                 this.setData({
@@ -60,10 +66,7 @@ let Stepper = class Stepper extends SuperComponent {
         return Math.max(Math.min(max, value, Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER);
     }
     setValue(value) {
-        this.setData({
-            currentValue: value,
-        });
-        this.triggerEvent('change', { value });
+        this._trigger('change', { value });
     }
     minusValue() {
         if (this.isDisabled('minus')) {

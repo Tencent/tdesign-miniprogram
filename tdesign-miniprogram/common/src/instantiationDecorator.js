@@ -1,14 +1,21 @@
 import { isPlainObject, toObject } from './flatTool';
 // 将 on 开头的生命周期函数转变成非 on 开头的
-const RawLifeCycles = ['Created', 'Attached', 'Ready', 'Moved', 'Detached'];
+const RawLifeCycles = ['Created', 'Attached', 'Ready', 'Moved', 'Detached', 'Error'];
 const NativeLifeCycles = RawLifeCycles.map((k) => k.toLowerCase());
 const ComponentNativeProps = [
-    'externalClasses',
     'properties',
     'data',
-    'options',
-    'relations',
+    'observers',
+    'methods',
     'behaviors',
+    // life times properties
+    ...NativeLifeCycles,
+    'relations',
+    'externalClasses',
+    'options',
+    'lifetimes',
+    'pageLifeTimes',
+    'definitionFilter',
 ];
 /**
  * 将一个普通的 options 对象转化处理为 Component 支持的对象
@@ -30,6 +37,9 @@ export const toComponent = function toComponent(options) {
     // 处理自定义的方法和生命周期函数
     if (!options.methods)
         options.methods = {};
+    // 使用 lifetimes 处理生命周期函数
+    if (!options.lifetimes)
+        options.lifetimes = {};
     const inits = {};
     Object.getOwnPropertyNames(options).forEach((k) => {
         const desc = Object.getOwnPropertyDescriptor(options, k);
@@ -45,14 +55,54 @@ export const toComponent = function toComponent(options) {
             // 由于小程序组件会忽略不能识别的字段，需要这里需要把这些字段配置在组件 created 的时候赋值
             inits[k] = desc;
         }
+        else if (NativeLifeCycles.indexOf(k) >= 0) {
+            options.lifetimes[k] = options[k];
+        }
     });
     if (Object.keys(inits).length) {
-        const oldCreated = options.created;
-        options.created = function () {
+        const oldCreated = options.lifetimes.created;
+        const oldAttached = options.lifetimes.attached;
+        const { controlledProps = [] } = options;
+        options.lifetimes.created = function (...args) {
             Object.defineProperties(this, inits);
-            // eslint-disable-next-line prefer-rest-params
             if (oldCreated)
-                oldCreated.apply(this, arguments);
+                oldCreated.apply(this, args);
+        };
+        options.lifetimes.attached = function (...args) {
+            if (oldAttached)
+                oldAttached.apply(this, args);
+            controlledProps.forEach(({ key }) => {
+                const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
+                const props = this.properties;
+                if (props[defaultKey] != null) {
+                    // props[defaultKey] 的默认值需设置成 undefined
+                    this.setData({
+                        [key]: props[defaultKey],
+                    });
+                }
+            });
+        };
+        options.methods._trigger = function (evtName, detail, opts) {
+            const target = controlledProps.find((item) => item.event == evtName);
+            if (target) {
+                const { key } = target;
+                const props = this.properties;
+                const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
+                if (props[defaultKey] != null) {
+                    const ans = {};
+                    if (Array.isArray(props[key])) {
+                        ans[key] = props[key].concat(detail[key]);
+                    }
+                    else if (typeof props[key] === 'object') {
+                        ans[key] = Object.assign(Object.assign({}, props[key]), detail[key]);
+                    }
+                    else {
+                        ans[key] = detail[key];
+                    }
+                    this.setData(ans);
+                }
+            }
+            this.triggerEvent(evtName, detail, opts);
         };
     }
     return options;
@@ -64,15 +114,6 @@ export const toComponent = function toComponent(options) {
 export const wxComponent = function wxComponent() {
     return function (constructor) {
         class WxComponent extends constructor {
-            created() {
-                super.created && super.created();
-            }
-            attached() {
-                super.attached && super.attached();
-            }
-            detached() {
-                super.detached && super.detached();
-            }
         }
         const current = new WxComponent();
         // 所有组件默认都开启css作用域

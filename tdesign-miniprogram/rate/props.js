@@ -49,6 +49,11 @@ const props = {
         type: Number,
         value: 0,
     },
+    /** 选择评分的值-非受控 */
+    defaultValue: {
+        type: null,
+        value: undefined,
+    },
     /** 形状类型，有描边类型和填充类型两种 */
     variant: {
         type: String,

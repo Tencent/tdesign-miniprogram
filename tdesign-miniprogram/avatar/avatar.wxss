@@ -20,12 +20,14 @@
   justify-content: center;
   box-sizing: border-box;
   overflow: hidden;
-  border: 0 solid;
   border-radius: 999rpx;
 }
 .t-avatar__wrapper {
   float: left;
   position: relative;
+  background-color: #d4e3fc;
+  color: #0052d9;
+  border-radius: 999rpx;
 }
 .t-avatar__wrapper t-badge {
   position: absolute;
@@ -77,4 +79,13 @@
   align-items: center;
   justify-content: center;
   border-radius: 999rpx;
+}
+.t-avatar__icon--default-l {
+  font-size: 64rpx;
+}
+.t-avatar__icon--default-m {
+  font-size: 48rpx;
+}
+.t-avatar__icon--default-s {
+  font-size: 32rpx;
 }

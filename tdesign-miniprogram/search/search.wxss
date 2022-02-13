@@ -35,7 +35,7 @@
   border-color: #f3f3f3;
 }
 .t-search__input-box--round {
-  border-radius: 80rpx / 2;
+  border-radius: 40rpx;
 }
 .t-search__input-box--square {
   border-radius: 8rpx;
