@@ -28,6 +28,10 @@ export default class CheckBoxGroup extends SuperComponent {
       type: null,
       value: undefined,
     },
+    bordered: {
+      type: Boolean,
+      value: false,
+    },
   };
 
   observers = {
@@ -62,7 +66,7 @@ export default class CheckBoxGroup extends SuperComponent {
     updateChildren() {
       const items = this.getChilds();
 
-      const { value, disabled } = this.data;
+      const { value, disabled, bordered } = this.data;
       if (items.length > 0) {
         items.forEach((item: any) => {
           !item.data.checkAll &&
@@ -70,6 +74,7 @@ export default class CheckBoxGroup extends SuperComponent {
               checked: value?.indexOf(item.data.value) > -1,
             });
           item.setDisabled(disabled);
+          item.setBordered(bordered);
         });
         // 关联可全选项
         if (items.findIndex((item) => item.data.checkAll) > -1) {
@@ -92,10 +97,6 @@ export default class CheckBoxGroup extends SuperComponent {
         const index = newValue.findIndex((v: string) => v === name);
         newValue.splice(index, 1);
       }
-      // this.setData({
-      //   value: newValue,
-      // });
-      // this.updateChildren();
       this._trigger('change', { value: newValue });
     },
     // 支持自定义options
@@ -137,29 +138,16 @@ export default class CheckBoxGroup extends SuperComponent {
         if (!items?.length) {
           return;
         }
-        // this.setData({
-        //   value: items
-        //     .map((item) => {
-        //       if (item.data.disabled) {
-        //         return this.data.value.includes(item.data.value) ? item.data.value : '';
-        //       }
-        //       item.changeActive(checked);
-        //       return checked && !item.data.checkAll ? item.data.value : '';
-        //     })
-        //     .filter((val) => val),
-        // });
         this._trigger('change', {
           value: items
             .map((item) => {
               if (item.data.disabled) {
                 return this.data.value.includes(item.data.value) ? item.data.value : '';
               }
-              // item.changeActive(checked);
               return checked && !item.data.checkAll ? item.data.value : '';
             })
             .filter((val) => val),
         });
-        // this.handleHalfCheck(items.length);
       } else {
         this.updateValue({ name, checked });
       }
@@ -167,16 +155,18 @@ export default class CheckBoxGroup extends SuperComponent {
     // 处理options半选
     handleHalfCheck(len: number) {
       const items = this.getChilds();
-      const all = items.filter((i) => !i.data.checkAll).map((item) => item.data.value);
-      const excludeDisableArr = items
-        .filter((i) => !i.data.checkAll && i.data.value && !i.data.disabled)
+      const checkboxOptions = items.filter((i) => !i.data.checkAll);
+      const all = checkboxOptions.map((item) => item.data.value);
+      const enableValue = checkboxOptions
+        .filter((i) => !i.data.disabled)
         .map((item) => item.data.value);
       const currentVal = Array.from(new Set(this.data.value?.filter((i) => all.indexOf(i) > -1)));
       const element = items.find((item) => item.data.checkAll);
       if (currentVal.length) {
         element?.setData({ checked: true });
         element?.changeCheckAllHalfStatus(currentVal.length !== len - 1);
-        element?.setCancel(currentVal.length >= excludeDisableArr.length);
+        // 取消全选
+        element?.setCancel(enableValue.every((val) => currentVal.includes(val)));
       } else {
         element?.setData({ checked: false });
       }

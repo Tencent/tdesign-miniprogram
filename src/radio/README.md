@@ -98,6 +98,7 @@ label | String / Slot | - | 主文案 | N
 max-content-row | Number | 5 | 内容最大行数限制 | N
 max-label-row | Number | 3 | 主文案最大行数限制 | N
 name | String | - | HTML 元素原生属性 | N
+bordered | Boolean | false | 是否添加下边框 | N
 value | String / Number / Boolean | undefined | 单选按钮的值。TS 类型：`RadioValue`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio/type.ts) | N
 
 ### Radio Events
@@ -111,6 +112,7 @@ change | `(checked: boolean)` | 值变化时触发
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 disabled | Boolean | undefined | 是否禁用全部子单选框 | N
+bordered | Boolean | false | 是否添加下边框 | N
 name | String | - | HTML 元素原生属性 | N
 options | Array | - | 单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同。TS 类型：`Array<RadioOption>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio/type.ts) | N
 value | String / Number / Boolean | undefined | 选中的值。TS 类型：`RadioValue` | N

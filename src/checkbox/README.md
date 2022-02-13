@@ -70,6 +70,7 @@ label | String / Slot | - | 主文案 | N
 max-content-row | Number | 5 | 内容最大行数限制 | N
 max-label-row | Number | 3 | 主文案最大行数限制 | N
 name | String | - | HTML 元素原生属性 | N
+bordered | Boolean | false | 是否添加下边框 | N
 readonly | Boolean | false | 组件是否只读 | N
 value | String / Number | - | 复选框的值。TS 类型：`string | number` | N
 

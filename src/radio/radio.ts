@@ -34,7 +34,13 @@ export default class Radio extends SuperComponent {
     },
   };
 
-  properties = Props;
+  properties = {
+    ...Props,
+    bordered: {
+      type: Boolean,
+      value: false,
+    },
+  };
 
   controlledProps = [
     {
@@ -91,6 +97,11 @@ export default class Radio extends SuperComponent {
     setDisabled(disabled: Boolean) {
       this.setData({
         disabled: this.data.disabled || disabled,
+      });
+    },
+    setBordered(bordered) {
+      this.setData({
+        bordered,
       });
     },
   };

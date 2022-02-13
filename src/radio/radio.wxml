@@ -38,5 +38,8 @@
     </view>
   </view>
   <!-- 预制下边框 -->
-  <view class="{{classPrefix}}__border {{classPrefix}}__border--{{align}}"></view>
+  <view
+    hidden="{{!bordered}}"
+    class="{{classPrefix}}__border {{classPrefix}}__border--{{align}}"
+  ></view>
 </view>

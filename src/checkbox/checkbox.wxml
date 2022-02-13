@@ -64,6 +64,7 @@
   </view>
   <!-- 内置下边框 -->
   <view
+    hidden="{{!bordered}}"
     class="{{classPrefix}}__bordered {{classPrefix}}{{align === 'left' ? '__bordered--left' : '__bordered--right'}}"
   />
 </view>

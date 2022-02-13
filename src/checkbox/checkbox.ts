@@ -24,6 +24,10 @@ export default class CheckBox extends SuperComponent {
       type: null,
       value: undefined,
     },
+    bordered: {
+      type: Boolean,
+      value: false,
+    },
   };
 
   // 组件的内部数据
@@ -110,12 +114,7 @@ export default class CheckBox extends SuperComponent {
         }
       }
     },
-    toggle() {
-      // const { active } = this.data;
-      // this.setData({
-      //   active: !active,
-      // });
-    },
+
     setCancel(cancel: boolean) {
       this.setData({
         canCancel: cancel,
@@ -137,6 +136,12 @@ export default class CheckBox extends SuperComponent {
     setOptionLinked(linked: Boolean) {
       this.setData({
         optionLinked: linked,
+      });
+    },
+    // 处理下划线
+    setBordered(bordered: Boolean) {
+      this.setData({
+        bordered,
       });
     },
   };
