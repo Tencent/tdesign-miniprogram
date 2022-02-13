@@ -5,13 +5,17 @@ export default class Stepper extends SuperComponent {
         addGlobalClass: boolean;
     };
     properties: import("./type").TdStepperProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     observers: {
         value(v: any): void;
     };
     data: {
-        currentValue: Number;
-        classPrefix: String;
-        prefix: String;
+        currentValue: number;
+        classPrefix: string;
+        prefix: string;
     };
     attached(): void;
     isDisabled(type: any): boolean;

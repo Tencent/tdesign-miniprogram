@@ -6,32 +6,32 @@
       <view class="demo-block">
         <view class="demo-block__desc">直线拉通</view>
         <view class="demo-block__wrapper">
-          <t-divider></t-divider>
+          <t-divider />
         </view>
       </view>
       <view class="demo-block">
         <view class="demo-block__desc">虚线拉通</view>
         <view class="demo-block__wrapper">
-          <t-divider dashed></t-divider>
+          <t-divider dashed />
         </view>
       </view>
       <view class="demo-block">
         <view class="demo-block__desc">左右间距</view>
         <view class="demo-block__wrapper">
-          <t-divider t-class="demo-2"></t-divider>
+          <t-divider t-class="demo-2" />
         </view>
       </view>
       <view class="demo-block">
         <view class="demo-block__desc">右侧拉通</view>
         <view class="demo-block__wrapper">
-          <t-divider t-class="demo-3"></t-divider>
+          <t-divider t-class="demo-3" />
         </view>
       </view>
 
       <view class="demo-block">
         <view class="demo-block__desc">自定义左侧间距</view>
         <view class="demo-block__wrapper">
-          <t-divider t-class="demo-4"></t-divider>
+          <t-divider t-class="demo-4" />
         </view>
       </view>
       <view class="demo-block">
@@ -45,8 +45,7 @@
       <view class="demo-block">
         <view class="demo-block__desc">文字+虚线</view>
         <view class="demo-block__wrapper">
-          <t-divider t-class="demo-5" t-class-content="t-class-content" dashed content="文字信息">
-          </t-divider>
+          <t-divider t-class="demo-5" t-class-content="t-class-content" dashed content="文字信息" />
         </view>
       </view>
       <view class="demo-block">
@@ -61,9 +60,9 @@
         <view class="demo-block__desc">垂直分割</view>
         <view class="demo-6">
           <text class="demo-6--text-color">文字信息</text>
-          <t-divider layout="vertical"></t-divider>
+          <t-divider layout="vertical" />
           <text class="demo-6--text-color">文字信息</text>
-          <t-divider layout="vertical"></t-divider>
+          <t-divider layout="vertical" />
           <text class="demo-6--text-color">文字信息</text>
         </view>
       </view>

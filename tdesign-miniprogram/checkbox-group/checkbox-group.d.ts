@@ -11,22 +11,57 @@ export default class CheckBoxGroup extends SuperComponent {
         classPrefix: string;
         checkboxOptions: any[];
     };
-    properties: import("../checkbox/type").TdCheckboxGroupProps;
+    properties: {
+        defaultValue: {
+            type: any;
+            value: any;
+        };
+        disabled?: {
+            type: BooleanConstructor;
+            value?: boolean;
+            required?: boolean;
+        };
+        max?: {
+            type: NumberConstructor;
+            value?: number;
+            required?: boolean;
+        };
+        name?: {
+            type: StringConstructor;
+            value?: string;
+            required?: boolean;
+        };
+        options?: {
+            type: ArrayConstructor;
+            value?: import("../checkbox/type").CheckboxOption[];
+            required?: boolean;
+        };
+        value?: {
+            type: ArrayConstructor;
+            value?: import("../checkbox/type").CheckboxGroupValue;
+            required?: boolean;
+        };
+    };
     observers: {
         value: () => void;
     };
     lifetimes: {
         attached(): void;
     };
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     methods: {
-        updateChildren(type?: string): void;
+        getChilds(): any;
+        updateChildren(): void;
         updateValue({ name, checked }: {
             name: any;
             checked: any;
-        }, type?: string): void;
+        }): void;
         handleCreateMulCheckbox(): void;
         handleCheckAll(e: any): void;
-        handleHalfCheck(type: string, len: number): void;
+        handleHalfCheck(len: number): void;
         handleOptionLinked(): void;
     };
 }

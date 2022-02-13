@@ -7,8 +7,12 @@ export default class Switch extends SuperComponent {
         isActive: boolean;
         bodyStyle: string;
     };
-    lifetimes: {
-        attached(): void;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
+    observers: {
+        value(val: any): void;
     };
     methods: {
         switchChange(): void;

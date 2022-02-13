@@ -114,7 +114,6 @@ export default class CheckBox extends SuperComponent {
         }
       }
     },
-
     setCancel(cancel: boolean) {
       this.setData({
         canCancel: cancel,

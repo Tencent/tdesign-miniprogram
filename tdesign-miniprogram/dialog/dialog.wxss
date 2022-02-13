@@ -82,7 +82,7 @@ page .t-dialog__button {
   border-bottom: 0;
 }
 page .t-dialog__button-half {
-  width: 644rpx / 2;
+  width: 322rpx;
 }
 page .t-dialog__button-confirm {
   color: #0052D9;
@@ -116,7 +116,7 @@ page .t-dialog__input {
   background-color: #f0f0f0;
   font-size: 32rpx;
   color: #000000;
-  border-radius: 16rpx / 2;
+  border-radius: 8rpx;
   height: 96rpx;
   line-height: 1.5;
   padding: 24rpx;

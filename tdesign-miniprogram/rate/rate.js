@@ -31,6 +31,12 @@ let Rate = class Rate extends SuperComponent {
         super(...arguments);
         this.externalClasses = ['t-class', 't-class-icon', 't-class-desc'];
         this.properties = props;
+        this.controlledProps = [
+            {
+                key: 'value',
+                event: 'change',
+            },
+        ];
         this.data = {
             classPrefix: name,
             icon: 'star-filled',
@@ -61,7 +67,7 @@ let Rate = class Rate extends SuperComponent {
                 value = 0;
             }
             if (value !== currentValue) {
-                this.triggerEvent('change', { value });
+                this._trigger('change', { value });
             }
         })
             .exec();

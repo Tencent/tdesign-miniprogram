@@ -24,10 +24,21 @@ const props = {
         type: Boolean,
         value: true,
     },
+    /** 是否需要分割线 */
+    split: {
+        type: Boolean,
+        value: true,
+    },
     /** 当前选中标签的索引 */
     value: {
         type: String,
-        optionalTypes: [Number],
+        optionalTypes: [Number, Array],
+        value: null,
+    },
+    /** 当前选中标签的索引，非受控属性 */
+    defaultValue: {
+        type: String,
+        optionalTypes: [Number, Array],
         value: 0,
     },
 };

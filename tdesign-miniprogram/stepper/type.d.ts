@@ -83,4 +83,13 @@ export interface TdStepperProps {
         value?: string | number;
         required?: boolean;
     };
+    /**
+     * 值
+     * @default 0
+     */
+    defaultValue?: {
+        type: StringConstructor;
+        value?: string | number;
+        required?: boolean;
+    };
 }

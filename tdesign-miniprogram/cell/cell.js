@@ -16,14 +16,14 @@ let Cell = class Cell extends SuperComponent {
          * Component properties
          */
         this.externalClasses = [
-            't-class',
-            't-class-title',
-            't-class-description',
-            't-class-note',
-            't-class-hover',
-            't-class-image',
-            't-class-left',
-            't-class-right',
+            `${prefix}-class`,
+            `${prefix}-class-title`,
+            `${prefix}-class-description`,
+            `${prefix}-class-note`,
+            `${prefix}-class-hover`,
+            `${prefix}-class-image`,
+            `${prefix}-class-left`,
+            `${prefix}-class-right`,
         ];
         this.options = {
             multipleSlots: true,
@@ -33,6 +33,7 @@ let Cell = class Cell extends SuperComponent {
          * Component initial data
          */
         this.data = {
+            prefix,
             classPrefix: name,
         };
     }

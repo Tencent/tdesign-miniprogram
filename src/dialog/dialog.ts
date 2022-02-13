@@ -14,6 +14,7 @@ export default class Dialog extends SuperComponent {
 
   externalClasses = [
     `${prefix}-class`,
+    `${prefix}-class-content`,
     `${prefix}-class-confirm`,
     `${prefix}-class-cancel`,
     `${prefix}-class-action`,

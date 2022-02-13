@@ -3,7 +3,12 @@ const props = {
     /** 标签选中的状态，默认风格（theme=default）才有选中态 */
     checked: {
         type: Boolean,
-        value: false,
+        value: null,
+    },
+    /** 标签选中的状态，默认风格（theme=default）才有选中态，非受控属性 */
+    defaultChecked: {
+        type: null,
+        value: undefined,
     },
     /** 是否可以关闭 */
     closable: {

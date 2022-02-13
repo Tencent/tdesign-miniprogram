@@ -5,7 +5,12 @@ export default class CheckTag extends SuperComponent {
         classBasePrefix: string;
     };
     properties: import("./type").TdCheckTagProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     methods: {
         onClickClose(e: WechatMiniprogram.BaseEvent): void;
+        handleChange(): void;
     };
 }

@@ -23,8 +23,9 @@ const props = {
     label: {
         type: String,
         optionalTypes: [Boolean],
+        value: false,
     },
-    /** 刻度标记，示例：[0, 10, 40, 200] 或者 { 5:  '5¥', 10: '10%' } */
+    /** 刻度标记，示例：`[0, 10, 40, 200]` 或者 `{ 5:  '5¥', 10: '10%' }` */
     marks: {
         type: Object,
         optionalTypes: [Array],
@@ -59,6 +60,12 @@ const props = {
     value: {
         type: Number,
         optionalTypes: [Array],
+        value: null,
+    },
+    /** 滑块值，非受控属性 */
+    defaultValue: {
+        type: null,
+        value: undefined,
     },
 };
 export default props;

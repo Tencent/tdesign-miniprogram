@@ -5,14 +5,14 @@ export default class Input extends SuperComponent {
     };
     externalClasses: string[];
     properties: import("./type").TdInputProps;
+    controlledProps: {
+        key: string;
+        event: string;
+    }[];
     data: {
-        inputValue: string;
         classPrefix: string;
         classBasePrefix: string;
         characterLength: number;
-    };
-    lifetimes: {
-        ready(): void;
     };
     methods: {
         onInput(event: any): void;

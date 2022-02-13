@@ -23,10 +23,13 @@ let Search = class Search extends SuperComponent {
             multipleSlots: true,
         };
         this.properties = props;
-        this.observers = {
-            keyword(nextValue) {
-                this.setData({ 'localValue.keyword': nextValue });
+        this.controlledProps = [
+            {
+                key: 'value',
+                event: 'change',
             },
+        ];
+        this.observers = {
             focus(nextValue) {
                 this.setData({ 'localValue.focus': nextValue });
             },
@@ -40,7 +43,6 @@ let Search = class Search extends SuperComponent {
             classPrefix: name,
             prefix,
             localValue: {
-                keyword: '',
                 focus: false,
             },
         };
@@ -52,47 +54,44 @@ let Search = class Search extends SuperComponent {
          */
         this.ignoreFocusEvtAfterBlurInCenterMode = false;
     }
-    attached() {
-        this.setData({
-            'localValue.keyword': this.properties.keyword,
-            'localValue.focus': this.properties.focus,
-        });
-    }
     onInput(e) {
         const { value } = e.detail;
-        this.setData({ 'localValue.keyword': value });
-        this.triggerEvent('change', { value });
+        // this.setData({ 'localValue.keyword': value });
+        this._trigger('change', { value });
     }
-    onFocus() {
+    onFocus(e) {
+        const { value } = e.detail;
         if (this.ignoreFocusEvtAfterBlurInCenterMode) {
             this.ignoreFocusEvtAfterBlurInCenterMode = false;
             return;
         }
         this.setData({ 'localValue.focus': true });
-        this.triggerEvent('focus');
+        this.triggerEvent('focus', { value });
     }
-    onBlur() {
+    onBlur(e) {
+        const { value } = e.detail;
         this.setData({ 'localValue.focus': false });
-        this.triggerEvent('blur');
+        this.triggerEvent('blur', { value });
         if (this.properties.center) {
             this.ignoreFocusEvtAfterBlurInCenterMode = true;
         }
     }
     onClear() {
-        this.setData({ 'localValue.keyword': '' });
+        // this.setData({ 'localValue.keyword': '' });
         this.triggerEvent('clear', { value: '' });
+        this._trigger('change', { value: '' });
     }
     onConfirm(e) {
         const value = e.detail;
-        this.triggerEvent('submit', value);
+        this.triggerEvent('submit', { value });
     }
     onCancel() {
         this.triggerEvent('cancel');
     }
-    tapWhenCenterActiveHandle() {
+    tapWhenCenterActiveHandle(e) {
         if (this.properties.center) {
             this.ignoreFocusEvtAfterBlurInCenterMode = false;
-            this.onFocus();
+            this.onFocus(e);
         }
     }
 };

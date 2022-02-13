@@ -33,6 +33,13 @@ export default class Upload extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'files',
+      event: 'success',
+    },
+  ];
+
   observers = {
     files(files: UploadFile) {
       this.handleLimit(files, this.data.max);
@@ -69,7 +76,7 @@ export default class Upload extends SuperComponent {
       }
     });
     this.setData({
-      customFiles: customFiles,
+      customFiles,
       proofs,
       customLimit: max === 0 ? Number.MAX_SAFE_INTEGER : max - customFiles.length,
     });
@@ -98,27 +105,28 @@ export default class Upload extends SuperComponent {
   /** 选择图片 */
   chooseImg() {
     const { config, max, sizeLimit } = this.data;
-    wx.chooseImage({
+    wx.chooseMedia({
       count: max,
+      mediaType: ['image'],
       ...config,
       success: (res) => {
-        const tempFiles = [];
+        const files = [];
         res.tempFiles.forEach((temp) => {
           if (sizeLimit && temp.size > sizeLimit) {
             wx.showToast({ icon: 'none', title: '图片大小超过限制' });
             return;
           }
-          const name = this.getRandFileName(temp.path);
-          tempFiles.push({
+          const name = this.getRandFileName(temp.tempFilePath);
+          files.push({
             name,
             type: 'image',
-            url: temp.path,
+            url: temp.tempFilePath,
             size: temp.size,
             progress: 0,
           });
         });
-        this.triggerEvent('success', res);
-        this.startUpload(tempFiles);
+        this._trigger('success', { files });
+        this.startUpload(files);
       },
       fail: (err) => {
         this.triggerEvent('fail', err);
@@ -131,16 +139,28 @@ export default class Upload extends SuperComponent {
 
   /** 选择视频 */
   chooseVideo() {
-    const { config } = this.data;
-    wx.chooseVideo({
+    const { config, sizeLimit } = this.data;
+    wx.chooseMedia({
+      mediaType: ['video'],
       ...config,
       success: (res) => {
-        if (this.data.sizeLimit && res.size > this.data.sizeLimit) {
-          wx.showToast({ icon: 'none', title: '视频大小超过限制' });
-          return;
-        }
-        this.triggerEvent('success', res);
-        this.startUpload(this.data.customFiles);
+        const files = [];
+        res.tempFiles.forEach((temp) => {
+          if (sizeLimit && temp.size > sizeLimit) {
+            wx.showToast({ icon: 'none', title: '视频大小超过限制' });
+            return;
+          }
+          const name = this.getRandFileName(temp.tempFilePath);
+          files.push({
+            name,
+            type: 'video',
+            url: temp.tempFilePath,
+            size: temp.size,
+            progress: 0,
+          });
+        });
+        this._trigger('success', { files });
+        this.startUpload(files);
       },
       fail: (err) => {
         this.triggerEvent('fail', err);

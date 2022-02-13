@@ -44,6 +44,11 @@ const props = {
         optionalTypes: [Number],
         value: null,
     },
+    /** 值 - 非受控 */
+    defaultValue: {
+        type: null,
+        value: undefined,
+    },
 };
 export default props;
 

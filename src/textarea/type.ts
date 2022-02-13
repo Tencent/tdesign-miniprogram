@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-12-20 13:31:40
  * */
 
 export interface TdTextareaProps {
@@ -78,6 +77,14 @@ export interface TdTextareaProps {
     required?: boolean;
   };
   /**
+   * 左侧文本
+   */
+  label?: {
+    type: StringConstructor;
+    value?: string;
+    required?: boolean;
+  };
+  /**
    * 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度
    */
   maxcharacter?: {
@@ -94,17 +101,7 @@ export interface TdTextareaProps {
     required?: boolean;
   };
   /**
-   * 名称，HTML 元素原生属性
-   * @default ''
-   */
-  name?: {
-    type: StringConstructor;
-    value?: string;
-    required?: boolean;
-  };
-  /**
    * 占位符
-   * @default ''
    */
   placeholder?: {
     type: StringConstructor;
