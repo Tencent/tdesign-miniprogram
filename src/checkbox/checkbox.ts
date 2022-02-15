@@ -100,18 +100,11 @@ export default class CheckBox extends SuperComponent {
       }
     },
     initStatus() {
-      if (!this.data.optionLinked) {
-        if (this.data.indeterminate) {
-          this.setData({
-            // active: true,
-            halfChecked: true,
-          });
-        } else {
-          this.setData({
-            // active: this.data.checked,
-            halfChecked: this.data.indeterminate,
-          });
-        }
+      const { optionLinked, indeterminate } = this.data;
+      if (!optionLinked) {
+        this.setData({
+          halfChecked: indeterminate,
+        });
       }
     },
     setCancel(cancel: boolean) {
