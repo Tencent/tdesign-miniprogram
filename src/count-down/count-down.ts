@@ -110,6 +110,7 @@ export default class CountDown extends SuperComponent {
     this.triggerEvent('change', timeData);
     const { timeText } = parseFormat(remain, this.properties.format as any as string);
     this.setData({
+      timeData,
       formattedTime: timeText.replace(/:/g, ' : '),
     });
 
