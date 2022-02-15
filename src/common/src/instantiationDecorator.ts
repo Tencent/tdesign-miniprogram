@@ -98,15 +98,9 @@ export const toComponent = function toComponent(options: Record<string, any>) {
         const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
 
         if (props[defaultKey] != null) {
-          const ans = {};
-          if (Array.isArray(props[key])) {
-            ans[key] = props[key].concat(detail[key]);
-          } else if (typeof props[key] === 'object') {
-            ans[key] = { ...props[key], ...detail[key] };
-          } else {
-            ans[key] = detail[key];
-          }
-          this.setData(ans);
+          this.setData({
+            [key]: detail[key],
+          });
         }
       }
       this.triggerEvent(evtName, detail, opts);

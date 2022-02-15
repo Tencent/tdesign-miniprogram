@@ -7,9 +7,8 @@
       <view class="upload-wrapper">
         <t-upload
           media-type="{{['image']}}"
-          files="{{originFiles1}}"
+          defaultFiles="{{originFiles1}}"
           bind:remove="handleRemove"
-          bind:success="handleSuccess"
           gridConfig="{{gridConfig}}"
         >
           <t-icon slot="addContent" name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
