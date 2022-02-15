@@ -16,6 +16,7 @@ export default class Radio extends SuperComponent {
     `${prefix}-class-label`,
     `${prefix}-class-icon`,
     `${prefix}-class-content`,
+    `${prefix}-class-border`,
   ];
 
   relations = {
@@ -36,10 +37,6 @@ export default class Radio extends SuperComponent {
 
   properties = {
     ...Props,
-    bordered: {
-      type: Boolean,
-      value: false,
-    },
   };
 
   controlledProps = [
@@ -97,11 +94,6 @@ export default class Radio extends SuperComponent {
     setDisabled(disabled: Boolean) {
       this.setData({
         disabled: this.data.disabled || disabled,
-      });
-    },
-    setBordered(bordered) {
-      this.setData({
-        bordered,
       });
     },
   };

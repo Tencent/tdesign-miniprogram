@@ -28,10 +28,6 @@ export default class CheckBoxGroup extends SuperComponent {
       type: null,
       value: undefined,
     },
-    bordered: {
-      type: Boolean,
-      value: false,
-    },
   };
 
   observers = {
@@ -66,7 +62,7 @@ export default class CheckBoxGroup extends SuperComponent {
     updateChildren() {
       const items = this.getChilds();
 
-      const { value, disabled, bordered } = this.data;
+      const { value, disabled } = this.data;
       if (items.length > 0) {
         items.forEach((item: any) => {
           !item.data.checkAll &&
@@ -74,7 +70,6 @@ export default class CheckBoxGroup extends SuperComponent {
               checked: value?.indexOf(item.data.value) > -1,
             });
           item.setDisabled(disabled);
-          item.setBordered(bordered);
         });
         // 关联可全选项
         if (items.findIndex((item) => item.data.checkAll) > -1) {

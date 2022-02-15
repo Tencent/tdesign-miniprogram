@@ -6,7 +6,13 @@ const { prefix } = config;
 const classPrefix = `${prefix}-checkbox`;
 @wxComponent()
 export default class CheckBox extends SuperComponent {
-  externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-label`,
+    `${prefix}-class-icon`,
+    `${prefix}-class-content`,
+    `${prefix}-class-border`,
+  ];
 
   relations = {
     '../checkbox-group/checkbox-group': {
@@ -23,10 +29,6 @@ export default class CheckBox extends SuperComponent {
     defaultChecked: {
       type: null,
       value: undefined,
-    },
-    bordered: {
-      type: Boolean,
-      value: false,
     },
   };
 
@@ -128,12 +130,6 @@ export default class CheckBox extends SuperComponent {
     setOptionLinked(linked: Boolean) {
       this.setData({
         optionLinked: linked,
-      });
-    },
-    // 处理下划线
-    setBordered(bordered: Boolean) {
-      this.setData({
-        bordered,
       });
     },
   };

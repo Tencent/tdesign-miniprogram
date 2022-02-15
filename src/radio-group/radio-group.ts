@@ -19,22 +19,17 @@ export default class RadioGroup extends SuperComponent {
     '../radio/radio': {
       type: 'descendant' as 'descendant',
       linked(target) {
-        const { value, disabled, bordered } = this.data;
+        const { value, disabled } = this.data;
         target.setData({
           checked: value === target.data.value,
         });
         target.setDisabled(disabled);
-        target.setBordered(bordered);
       },
     },
   };
 
   properties = {
     ...Props,
-    bordered: {
-      type: Boolean,
-      value: false,
-    },
   };
 
   controlledProps = [

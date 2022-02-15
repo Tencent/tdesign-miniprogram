@@ -17,7 +17,7 @@
   </t-demo> -->
 
   <t-demo title="01 类型" desc="基础多选框">
-    <t-checkbox-group bordered="{{true}}" value="{{demoCheckbox1}}" bind:change="handleGroupChange">
+    <t-checkbox-group value="{{demoCheckbox1}}" bind:change="handleGroupChange">
       <t-checkbox value="checkbox1" label="多选" />
       <t-checkbox value="checkbox2" label="多选" />
       <t-checkbox value="checkbox3" label="多选" />
@@ -33,7 +33,7 @@
   </t-demo>
 
   <t-demo title="" desc="右侧多选框">
-    <t-checkbox-group bordered="{{true}}" defaultValue="{{demoCheckbox2}}" bind:change="onChange">
+    <t-checkbox-group defaultValue="{{demoCheckbox2}}" bind:change="onChange">
       <t-checkbox value="checkbox1" label="多选" align="right" />
       <t-checkbox value="checkbox2" label="多选" align="right"></t-checkbox>
       <t-checkbox value="checkbox3" label="多选" align="right"></t-checkbox>
@@ -49,7 +49,6 @@
 
   <t-demo title="" desc="带全选多选框">
     <t-checkbox-group
-      bordered="{{true}}"
       options="{{options}}"
       defaultValue="{{checkAllValues}}"
       bind:change="onCheckAllChange"
@@ -57,12 +56,7 @@
   </t-demo>
 
   <t-demo title="" desc="限制最多可选数量">
-    <t-checkbox-group
-      bordered="{{true}}"
-      max="{{2}}"
-      bind:change="onChange"
-      defaultValue="{{demoCheckboxMax}}"
-    >
+    <t-checkbox-group max="{{2}}" bind:change="onChange" defaultValue="{{demoCheckboxMax}}">
       <t-checkbox value="checkbox1" label="多选" />
       <t-checkbox value="checkbox2" label="多选" />
       <t-checkbox value="checkbox3" label="多选" />
@@ -70,7 +64,7 @@
   </t-demo>
 
   <t-demo title="02 禁用状态" desc="多选框禁用态">
-    <t-checkbox-group bordered="{{true}}" defaultValue="{{demoCheckbox3}}" disabled>
+    <t-checkbox-group defaultValue="{{demoCheckbox3}}" disabled>
       <t-checkbox value="checkbox1" label="多选" />
       <t-checkbox value="checkbox2" label="多选" />
       <t-checkbox value="checkbox3" label="多选" align="right" />
@@ -79,17 +73,11 @@
   </t-demo>
 
   <t-demo title="" desc="多选半选态">
-    <t-checkbox
-      bordered="{{true}}"
-      label="半选"
-      indeterminate
-      readonly
-      defaultChecked="{{true}}"
-    ></t-checkbox>
+    <t-checkbox label="半选" indeterminate readonly defaultChecked="{{true}}"></t-checkbox>
   </t-demo>
 
   <t-demo title="03 特殊类型" desc="自定义图标多选框">
-    <t-checkbox-group bordered="{{true}}" defaultValue="{{demoCheckbox2}}" bindchange="onChange">
+    <t-checkbox-group defaultValue="{{demoCheckbox2}}" bindchange="onChange">
       <t-checkbox value="checkbox1" label="多选" icon="{{[activeImage,inActiveImage]}}">
       </t-checkbox>
       <t-checkbox value="checkbox2" label="多选" icon="{{[activeImage,inActiveImage]}}">
@@ -103,7 +91,6 @@
     <t-checkbox
       value="checkbox1"
       label="多选H48"
-      bordered="{{true}}"
       t-class="t-checkbox-padding"
       checked="{{checked}}"
       bind:change="changeChecked"
@@ -112,7 +99,6 @@
     <t-checkbox
       value="checkbox2"
       t-class="t-checkbox-demo"
-      bordered="{{true}}"
       label="多选H56"
       defaultChecked="{{checked}}"
     >
