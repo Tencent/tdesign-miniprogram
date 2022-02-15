@@ -28,7 +28,9 @@ export default class RadioGroup extends SuperComponent {
     },
   };
 
-  properties = Props;
+  properties = {
+    ...Props,
+  };
 
   controlledProps = [
     {

@@ -89,11 +89,16 @@
   </t-demo>
 
   <t-demo title="04 规格" desc="单选框尺寸规格">
-    <t-radio value="radio1" label="单选H48" t-class="t-radio-padding" checked />
-    <t-radio value="radio2" label="单选H56" t-class="t-radio-demo" checked />
+    <t-radio value="radio1" label="单选H48" t-class="t-radio-padding" defaultChecked />
+    <t-radio value="radio2" label="单选H56" t-class="t-radio-demo" defaultChecked />
   </t-demo>
   <view style="height: 74rpx"></view>
-  <t-demo>
-    <t-radio-group options="{{options}}" defaultValue="数字" bind:change="onChange"></t-radio-group>
-  </t-demo>
+  <!-- <t-demo>
+    <t-radio-group
+
+      options="{{options}}"
+      defaultValue="数字"
+      bind:change="onChange"
+    ></t-radio-group>
+  </t-demo> -->
 </view>

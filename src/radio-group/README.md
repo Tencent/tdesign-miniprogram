@@ -28,7 +28,7 @@ isComponent: true
 
 ```html
 <!-- page.wxml -->
-<t-radio-group bordered value="radio1" bind:change="onChange">
+<t-radio-group  value="radio1" bind:change="onChange">
   <t-radio title="单行标题" name="radio1" />
   <t-radio title="单行标题" label="辅助信息" name="radio2" />
 </t-radio-group>
@@ -46,7 +46,6 @@ isComponent: true
 | -------- | --------- | ------ | ---- | ---------------------- |
 | value    | `String`  | -      | N    | 当前选中项的标识符     |
 | name     | `String`  | -      | N    | 在表单内提交时的标识符 |
-| bordered | `Boolean` | `true` | N    | 是否显示外边框         |
 
 ### Slots
 
