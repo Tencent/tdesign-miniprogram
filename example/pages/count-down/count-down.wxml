@@ -11,121 +11,47 @@
     <view class="base-time-text"> 带毫秒 </view>
   </view>
   <view class="flex base-time">
-    <t-count-down
-      t-class="base-time-square"
-      content="slot"
-      time="{{ time }}"
-      bind:change="onChange"
-    >
-      <text class="item">{{ timeData.hours }}</text>
-      <text class="item-dot">:</text>
-      <text class="item">{{ timeData.minutes }}</text>
-      <text class="item-dot">:</text>
-      <text class="item">{{ timeData.seconds }}</text>
-    </t-count-down>
+    <t-count-down content="default" time="{{ time }}" theme="square"> </t-count-down>
     <view class="base-time-text"> 带方形底 </view>
   </view>
   <view class="flex base-time">
-    <t-count-down
-      t-class="base-time-circle"
-      content="slot"
-      time="{{ time }}"
-      bind:change="onChange"
-    >
-      <text class="item">{{ timeData.hours }}</text>
-      <text class="item-dot">:</text>
-      <text class="item">{{ timeData.minutes }}</text>
-      <text class="item-dot">:</text>
-      <text class="item">{{ timeData.seconds }}</text>
-    </t-count-down>
+    <t-count-down content="default" time="{{ time }}" theme="round"> </t-count-down>
     <view class="base-time-text"> 带圆形底 </view>
   </view>
   <view class="flex base-time">
-    <t-count-down
-      t-class="base-time-square"
-      content="slot"
-      time="{{ time }}"
-      bind:change="onChange"
-    >
-      <text class="item">{{ timeData.hours }}</text>
-      <text class="item-text">时</text>
-      <text class="item">{{ timeData.minutes }}</text>
-      <text class="item-text">分</text>
-      <text class="item">{{ timeData.seconds }}</text>
-      <text class="item-text">秒</text>
-    </t-count-down>
+    <t-count-down content="default" time="{{ time }}" splitWithUnit theme="round" />
     <view class="base-time-text"> 带单位 </view>
   </view>
   <view class="flex base-time">
-    <t-count-down t-class="base-time-trans" content="slot" time="{{ time }}" bind:change="onChange">
-      <text class="item">{{ timeData.hours }}</text>
-      <text class="item-text">时</text>
-      <text class="item">{{ timeData.minutes }}</text>
-      <text class="item-text">分</text>
-      <text class="item">{{ timeData.seconds }}</text>
-      <text class="item-text">秒</text>
-    </t-count-down>
+    <t-count-down content="default" time="{{ time }}" splitWithUnit theme="highlight" />
     <view class="base-time-text"> 无底色带单位 </view>
   </view>
 </t-demo>
 <t-demo padding title="02 规格" desc="动倒计时带底色和无底色各尺寸规格">
   <view class="flex spec-item">
     <view class="spec-item-left">
-      <t-count-down
-        t-class="base-time-square"
-        content="slot"
-        time="{{ time }}"
-        bind:change="onChange"
-      >
-        <text class="item">{{ timeData.hours }}</text>
-        <text class="item-dot">:</text>
-        <text class="item">{{ timeData.minutes }}</text>
-        <text class="item-dot">:</text>
-        <text class="item">{{ timeData.seconds }}</text>
-      </t-count-down>
+      <t-count-down content="default" time="{{ time }}" theme="square" />
     </view>
     <view class="spec-item-right">
-      <t-count-down t-class="base-time-cls" time="{{ time }}" />
+      <t-count-down time="{{ time }}" />
     </view>
     <view class="spec-item-after"> S </view>
   </view>
   <view class="flex spec-item">
     <view class="spec-item-left">
-      <t-count-down
-        t-class="base-time-square-m t-count-down--middle"
-        content="slot"
-        time="{{ time }}"
-        bind:change="onChange"
-      >
-        <text class="item">{{ timeData.hours }}</text>
-        <text class="item-dot">:</text>
-        <text class="item">{{ timeData.minutes }}</text>
-        <text class="item-dot">:</text>
-        <text class="item">{{ timeData.seconds }}</text>
-      </t-count-down>
+      <t-count-down content="default" time="{{ time }}" theme="square" size="middle" />
     </view>
     <view class="spec-item-right">
-      <t-count-down t-class="base-time-cls t-count-down--middle" time="{{ time }}" />
+      <t-count-down size="middle" time="{{ time }}" />
     </view>
     <view class="spec-item-after"> M </view>
   </view>
   <view class="flex spec-item last-padding">
     <view class="spec-item-left">
-      <t-count-down
-        t-class="base-time-square-l t-count-down--large"
-        content="slot"
-        time="{{ time }}"
-        bind:change="onChange"
-      >
-        <text class="item">{{ timeData.hours }}</text>
-        <text class="item-dot">:</text>
-        <text class="item">{{ timeData.minutes }}</text>
-        <text class="item-dot">:</text>
-        <text class="item">{{ timeData.seconds }}</text>
-      </t-count-down>
+      <t-count-down content="default" time="{{ time }}" theme="square" size="large"> </t-count-down>
     </view>
     <view class="spec-item-right">
-      <t-count-down t-class="base-time-cls t-count-down--large" time="{{ time }}" />
+      <t-count-down size="large" time="{{ time }}" />
     </view>
     <view class="spec-item-after"> L </view>
   </view>
