@@ -38,6 +38,30 @@ export default class StepItem extends SuperComponent {
     layout: 'vertical',
     type: 'default',
     isLastChild: false,
+    isLarge: false,
+    readonly: false,
+    computedIcon: '',
+  };
+
+  observers = {
+    icon(val) {
+      this.setData({
+        computedIcon: val,
+      });
+    },
+    curStatus(val) {
+      if (this.data.readonly) {
+        if (val === 'finish') {
+          this.setData({
+            computedIcon: 'check',
+          });
+        } else if (val === 'error') {
+          this.setData({
+            computedIcon: 'close',
+          });
+        }
+      }
+    },
   };
 
   lifetimes = {
@@ -53,7 +77,7 @@ export default class StepItem extends SuperComponent {
   };
 
   methods = {
-    updateStatus(current, index, theme, layout, steps) {
+    updateStatus(current, index, theme, layout, steps, readonly) {
       const { status } = this.data;
       let newStatus = status;
 
@@ -65,7 +89,7 @@ export default class StepItem extends SuperComponent {
         } else if (index == current) {
           // 2. 本步骤序号等于当前步骤. 默认为process
           newStatus = 'process';
-        } else {
+        } else if (readonly) {
           // 3. 本步骤序号大于当前步骤，默认为wait
           newStatus = 'wait';
         }

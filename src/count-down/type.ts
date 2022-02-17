@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdCountDownProps {
@@ -43,6 +42,33 @@ export interface TdCountDownProps {
     required?: boolean;
   };
   /**
+   * 倒计时尺寸
+   * @default 'small'
+   */
+  size?: {
+    type: StringConstructor;
+    value?: 'small' | 'medium' | 'large';
+    required?: boolean;
+  };
+  /**
+   * 使用时间单位分割
+   * @default false
+   */
+  splitWithUnit?: {
+    type: BooleanConstructor;
+    value?: boolean;
+    required?: boolean;
+  };
+  /**
+   * 倒计时风格
+   * @default 'default'
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'default' | 'round' | 'square';
+    required?: boolean;
+  };
+  /**
    * 倒计时时长，单位毫秒
    */
   time: {
@@ -50,4 +76,4 @@ export interface TdCountDownProps {
     value?: number;
     required?: boolean;
   };
-};
+}

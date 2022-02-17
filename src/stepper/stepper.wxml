@@ -2,7 +2,7 @@
   class="{{classPrefix}} {{classPrefix}}--{{theme === 'grey' ? 'pure' : 'normal'}} {{ disabled ? prefix + '-is-disabled': ''}} {{prefix}}-class"
 >
   <view
-    class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}}"
+    class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}} hotspot-expanded"
     bindtap="minusValue"
   >
     <t-icon
@@ -21,7 +21,7 @@
     bindblur="blurHandler"
   />
   <view
-    class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}}"
+    class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}} hotspot-expanded"
     bindtap="plusValue"
   >
     <t-icon

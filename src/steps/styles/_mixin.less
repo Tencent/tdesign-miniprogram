@@ -48,7 +48,7 @@
     }
 
     &__description {
-      color: @text-level-3-color;
+      color: @step-item-descrition-color;
       line-height: 20px;
       font-size: @font-size-s;
     }
@@ -68,23 +68,26 @@
           content: '';
           display: block;
           height: 1px;
-          background: @border-level-2-color;
+          background: @primary-color;
           position: absolute;
           width: calc(100% - @connector-default-icon-width - 2px);
           left: calc(50% + @connector-default-icon-width / 2 + 1px);
           top: (@connector-default-icon-width / 2 + 1px);
         }
-        &.@{item}__inner--icon:after {
+        &.@{item}__inner--large:after {
           top: calc(@connector-normal-icon-width / 2);
           width: calc(100% - @connector-normal-icon-width - 2px);
           left: calc(50% + @connector-normal-icon-width / 2 + 1px);
         }
       }
 
-      .@{item}--finish,
-      .@{item}--default {
-        .@{item}__inner:after {
-          background: @primary-color;
+      &.@{step}--readonly {
+        .@{item}--process,
+        .@{item}--error,
+        .@{item}--wait {
+          .@{item}__inner:after {
+            background: @step-line-color;
+          }
         }
       }
     }
@@ -96,7 +99,7 @@
         display: block;
         height: calc(100% - @connector-default-icon-width - 2px);
         width: 1px;
-        background: @border-level-2-color;
+        background: @step-line-color;
         position: absolute;
         left: (@connector-default-icon-width / 2 + 1px);
         top: @connector-default-icon-width + 2px;
@@ -134,8 +137,7 @@
   }
   & when(@anchor-status = error) {
     .@{item}__icon-number {
-      background: @step-error-bg-color;
-      color: @text-anti-primary-color;
+      color: @step-error-bg-color;
       border-color: @step-error-bg-color;
     }
   }

@@ -72,14 +72,14 @@ Page({
     const { originFiles1 } = this.data;
 
     // 图片上传处理
-    const { tempFiles } = e.detail;
+    const { files } = e.detail;
 
-    tempFiles.forEach((temp) => {
-      const name = this.getRandFileName(temp.path);
+    files.forEach((temp) => {
+      const name = this.getRandFileName(temp.url);
       originFiles1.push({
         name,
         type: 'image',
-        url: temp.path,
+        url: temp.url,
         size: temp.size,
       });
     });
@@ -100,13 +100,13 @@ Page({
     const { originFiles2 } = this.data;
 
     // 图片上传处理
-    const { tempFiles } = e.detail;
-    tempFiles.forEach((temp) => {
-      const name = this.getRandFileName(temp.path);
+    const { files } = e.detail;
+    files.forEach((temp) => {
+      const name = this.getRandFileName(temp.url);
       originFiles2.push({
         name,
         type: 'image',
-        url: temp.path,
+        url: temp.url,
         size: temp.size,
       });
     });

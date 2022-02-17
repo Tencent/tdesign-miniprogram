@@ -4,6 +4,30 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.5.2 `2022-2-15`
+
+### Bug Fixes
+- 修复 Stepper 标签过长时的遮挡问题 [#175](https://github.com/Tencent/tdesign-miniprogram/pull/175) [@GAOGAO1994](https://github.com/GAOGAO1994)
+- 修复 Upload 的 success 事件，返回当前选择的所有文件 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
+- 修复 Checkbox 选择异常的问题 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
+### Feature
+- Upload 新增 add 事件，返回当前选择的文件 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
+
+## 0.5.1 `2022-2-15`
+
+### Bug Fixes
+
+- 修复 Stepper 外部样式类失效的问题 [#168](https://github.com/Tencent/tdesign-miniprogram/pull/168) [@walkerliu01](https://github.com/walkerliu01)
+- 修复 Stepper 修复点击热区过于小的问题 [#169](https://github.com/Tencent/tdesign-miniprogram/pull/169) [@LeeJim](https://github.com/LeeJim)
+- 修复 Cell 基础样式丢失的问题 [#171](https://github.com/Tencent/tdesign-miniprogram/pull/171) [@LeeJim](https://github.com/LeeJim)
+- 修复 CountDown 基础样式丢失的问题 [#172](https://github.com/Tencent/tdesign-miniprogram/pull/172) [@LeeJim](https://github.com/LeeJim)
+- 修复 Divider 基础样式丢失的问题 [#173](https://github.com/Tencent/tdesign-miniprogram/pull/173) [@LeeJim](https://github.com/LeeJim)
+- 修复 Checkbox 禁用状态下的选中态 [#175](https://github.com/Tencent/tdesign-miniprogram/pull/175) [@amberlwan](https://github.com/amberlwan)
+### Feature
+
+- Steps 升级新版视觉 [#167](https://github.com/Tencent/tdesign-miniprogram/pull/167) [@LeeJim](https://github.com/LeeJim)
+- Dialog 新增外部样式类 [#170](https://github.com/Tencent/tdesign-miniprogram/pull/170) [@LeeJim](https://github.com/LeeJim)
+- CountDown 新增 3 个属性：`size`、`theme`、`splitWithUnit` [#172](https://github.com/Tencent/tdesign-miniprogram/pull/172) [@LeeJim](https://github.com/LeeJim)
 
 ## 0.5.0 `2022-1-28`
 

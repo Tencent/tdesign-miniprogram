@@ -10,8 +10,20 @@ export default class Steps extends SuperComponent {
   relations: RelationsOptions = {
     './step-item': {
       type: 'descendant',
-      linked() {
+      linked(child) {
         this.updateChildren();
+
+        const { readonly, layout } = this.data;
+        let isLarge = false;
+
+        if (!readonly && layout === 'horizontal') {
+          isLarge = !!child.data.icon;
+        }
+
+        child.setData({
+          readonly,
+          isLarge,
+        });
       },
     },
   };
@@ -43,11 +55,11 @@ export default class Steps extends SuperComponent {
     updateChildren() {
       const items = this.getRelationNodes('./step-item');
       const len = items.length;
-      const { current } = this.data;
+      const { current, readonly } = this.data;
 
       if (len > 0) {
         items.forEach((item, index) => {
-          item.updateStatus(current, index, this.data.theme, this.data.layout, items);
+          item.updateStatus(current, index, this.data.theme, this.data.layout, items, readonly);
         });
       }
     },

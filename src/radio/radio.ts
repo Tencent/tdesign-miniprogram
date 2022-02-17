@@ -16,6 +16,7 @@ export default class Radio extends SuperComponent {
     `${prefix}-class-label`,
     `${prefix}-class-icon`,
     `${prefix}-class-content`,
+    `${prefix}-class-border`,
   ];
 
   relations = {
@@ -34,7 +35,9 @@ export default class Radio extends SuperComponent {
     },
   };
 
-  properties = Props;
+  properties = {
+    ...Props,
+  };
 
   controlledProps = [
     {

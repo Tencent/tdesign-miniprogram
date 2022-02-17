@@ -13,7 +13,7 @@
         <t-badge count="{{16}}" slot="note" />
       </t-cell>
       <t-cell title="单行标题">
-        <t-switch bindchange="onswitchchangesmall" value="{{true}}" slot="note" />
+        <t-switch defaultValue="{{false}}" slot="note" />
       </t-cell>
       <t-cell title="单行标题" hover>
         <t-icon name="app" slot="left-icon" />
@@ -30,14 +30,9 @@
         arrow
         t-class-left="t-class-left"
       >
-        <t-icon class="icon-center title-icon" name="app" slot="left-icon" />
+        <t-icon name="app" slot="left-icon" />
       </t-cell>
-      <t-cell
-        title="多行带头像"
-        arrow
-        description="一段很长很长很长的内容文字"
-        t-class-image="title-image"
-      >
+      <t-cell title="多行带头像" arrow description="一段很长很长很长的内容文字">
         <view class="avatar" slot="left-icon">
           <open-data type="userAvatarUrl" />
         </view>
@@ -46,7 +41,6 @@
         title="多行带图片"
         description="一段很长很长的内容文字"
         align="top"
-        t-class-image="title-image-large"
         image="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
       />
       <t-cell
