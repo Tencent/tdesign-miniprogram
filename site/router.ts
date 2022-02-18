@@ -1,5 +1,6 @@
-import { RouteRecordRaw, createRouter, createWebHistory, createWebHashHistory, RouterOptions } from 'vue-router';
-import siteConfig from './config';
+import { RouteRecordRaw, createRouter, createWebHistory, RouterOptions } from 'vue-router';
+// @ts-ignore
+import siteConfig from './site.config';
 
 const { docs } = siteConfig;
 
