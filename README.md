@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/npm/v/tdesign-miniprogram.svg?sanitize=true" alt="Version">
   </a>
   <a href="https://www.npmjs.com/package/tdesign-miniprogram">
-    <img src="https://img.shields.io/npm/dt/tdesign-miniprogram" alt="Downloads">
+    <img src="https://img.shields.io/npm/dw/tdesign-miniprogram" alt="Downloads">
   </a>
 </p>
 
