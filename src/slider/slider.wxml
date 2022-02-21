@@ -29,7 +29,6 @@
         <view
           class="{{classPrefix}}__line {{prefix}}-class-bar-active"
           style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; width: {{lineBarWidth}};"
-          bind:tap="onSingleLineTap"
         >
           <view
             id="singleDot"
@@ -72,12 +71,11 @@
             wx:key="index"
             style="background:{{dotTopValue[1] < item || item < dotTopValue[0] ? (disabled ? disabledColor[1] : colors[1]) : ( disabled ? disabledColor[0] : colors[0])}};left: {{item}}%;transform:translateX({{- item}}%);"
           >
-            <view wx:if="{{scaleTextArray.length}}"> {{scaleTextArray[index]}} </view>
+            <view wx:if="{{scaleTextArray.length}}">{{scaleTextArray[index]}}</view>
           </view>
         </block>
         <view
           class="{{classPrefix}}__line {{prefix}}-class-bar-active"
-          bind:tap="onLineTap"
           style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; right: {{lineRight}}px;"
         />
         <view
