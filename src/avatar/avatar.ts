@@ -7,11 +7,16 @@ const name = `${prefix}-avatar`;
 
 @wxComponent()
 export default class Avatar extends SuperComponent {
+  options = {
+    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+  };
+
   externalClasses = [
     `${prefix}-class`,
     `${prefix}-class-image`,
     `${prefix}-class-icon`,
     `${prefix}-class-alt`,
+    `${prefix}-class-content`,
   ];
 
   properties = avatarProps;
