@@ -226,10 +226,6 @@ export default class Slider extends SuperComponent {
     return closestStep as number;
   }
 
-  onSingleTouchMove(e: any) {
-    this.getSingleChangeValue(e);
-  }
-
   // 点击滑动条的事件
   onSingleLineTap(e: any) {
     const value = this.getSingleChangeValue(e);
@@ -257,12 +253,12 @@ export default class Slider extends SuperComponent {
         (currentLeft / (maxRange + Number(blockSize))) * (Number(max) - Number(min)) + Number(min),
       );
     }
-    const stapValue = this.stepValue(value);
-    this.setData({
-      _value: stapValue,
-    });
-    this.getSingleBarWidth(stapValue);
-    return stapValue;
+    // const stapValue = this.stepValue(value);
+    // this.setData({
+    //   _value: stapValue,
+    // });
+    // this.getSingleBarWidth(stapValue);
+    return this.stepValue(value);
   }
 
   /**
@@ -338,9 +334,10 @@ export default class Slider extends SuperComponent {
     const leftValue = this.convertPosToValue(currentLeft, 0);
     newData[0] = this.stepValue(leftValue);
 
-    this.setData({
-      _value: newData,
-    });
+    this.triggerValue(newData);
+    // this.setData({
+    //   _value: newData,
+    // });
   }
 
   onTouchMoveRight(e: any) {
@@ -358,9 +355,10 @@ export default class Slider extends SuperComponent {
     const rightValue = this.convertPosToValue(currentRight, 1);
     newData[1] = this.stepValue(rightValue);
 
-    this.setData({
-      _value: newData,
-    });
+    this.triggerValue(newData);
+    // this.setData({
+    //   _value: newData,
+    // });
   }
 
   setLineStyle() {
