@@ -21,14 +21,14 @@ isComponent: true
 
 ```html
 <!-- page.wxml -->
-<t-icon name="primary" size="xl" bind:click="someFunction"> </t-icon>
+<t-icon name="primary" size="xl" bind:tap="someFunction"> </t-icon>
 ```
 
 ### 自定义图标
 
 ```html
 <!-- page.wxml -->
-<t-icon prefix="icon" name="a-1h" size="xl" bind:click="someFunction"> </t-icon>
+<t-icon prefix="icon" name="a-1h" size="xl" bind:tap="someFunction"> </t-icon>
 ```
 
 以 iconfont 为例：
@@ -50,9 +50,3 @@ isComponent: true
 | color       | `String` | `initial` | N    | 图标颜色                                                          |
 | prefix      | `String` | -         | N    | 自定义图标前缀                                                          |
 | customStyle | `String` | -         | N    | 自定义样式                                                        |
-
-#### Events
-
-| 事件       | event.detail | 说明           |
-| ---------- | ------------ | -------------- |
-| bind:click | -            | 点击图标时触发 |

@@ -35,10 +35,4 @@ export default class Icon extends SuperComponent {
       this.setData({ fontSize });
     },
   };
-
-  methods = {
-    onTap(event: any) {
-      this.triggerEvent('click', event.detail);
-    },
-  };
 }
