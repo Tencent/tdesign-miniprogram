@@ -34,7 +34,7 @@
             id="singleDot"
             class="{{classPrefix}}__dot {{prefix}}-class-cursor"
             style="left: {{activeLeft}}px"
-            bind:touchmove="onSingleTouchMove"
+            bind:touchmove="onSingleLineTap"
             bind:touchend="onTouchEnd"
             bind:touchcancel="onTouchEnd"
           />

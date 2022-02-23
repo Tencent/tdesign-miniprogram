@@ -101,10 +101,8 @@ export default class Slider extends SuperComponent {
    * @memberof Slider
    */
   triggerValue(value?: number | number[]) {
-    value = trimValue(value || this.data._value, this.properties);
-
     this._trigger('change', {
-      value,
+      value: trimValue(value, this.properties),
     });
   }
 
@@ -226,10 +224,6 @@ export default class Slider extends SuperComponent {
     return closestStep as number;
   }
 
-  onSingleTouchMove(e: any) {
-    this.getSingleChangeValue(e);
-  }
-
   // 点击滑动条的事件
   onSingleLineTap(e: any) {
     const value = this.getSingleChangeValue(e);
@@ -257,12 +251,7 @@ export default class Slider extends SuperComponent {
         (currentLeft / (maxRange + Number(blockSize))) * (Number(max) - Number(min)) + Number(min),
       );
     }
-    const stapValue = this.stepValue(value);
-    this.setData({
-      _value: stapValue,
-    });
-    this.getSingleBarWidth(stapValue);
-    return stapValue;
+    return this.stepValue(value);
   }
 
   /**
@@ -338,9 +327,7 @@ export default class Slider extends SuperComponent {
     const leftValue = this.convertPosToValue(currentLeft, 0);
     newData[0] = this.stepValue(leftValue);
 
-    this.setData({
-      _value: newData,
-    });
+    this.triggerValue(newData);
   }
 
   onTouchMoveRight(e: any) {
@@ -358,9 +345,7 @@ export default class Slider extends SuperComponent {
     const rightValue = this.convertPosToValue(currentRight, 1);
     newData[1] = this.stepValue(rightValue);
 
-    this.setData({
-      _value: newData,
-    });
+    this.triggerValue(newData);
   }
 
   setLineStyle() {
@@ -377,10 +362,5 @@ export default class Slider extends SuperComponent {
         lineRight: maxRange - activeLeft + halfBlock * 1.5, //eslint-disable-line
       });
     }
-  }
-
-  onTouchEnd() {
-    // touchMove未trigger，在end事件统一trigger
-    this.triggerValue();
   }
 }
