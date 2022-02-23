@@ -25,10 +25,12 @@ isComponent: true
 <t-search placeholder="搜索预设文案" center="{{true}}" />
 ```
 
-### 受控用法
+### 双向绑定用法
+
+通过双向绑定，在输入框里输入文字时，`value` 的值也会同时跟着变化。
 
 ```html
-<t-search value="{{value}}" bind:change="handleChange" placeholder="搜索预设文案" center="{{true}}" />
+<t-search model:value="{{value}}" placeholder="搜索预设文案" center="{{true}}" />
 ```
 
 ```js
@@ -36,9 +38,6 @@ Page({
   data: {
     value: ''
   },
-  handleChange(e) {
-    this.setData({ value: e.detail.value })
-  }
 })
 ```
 ## API
