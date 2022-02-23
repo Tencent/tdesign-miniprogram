@@ -127,6 +127,10 @@ export default class Upload extends SuperComponent {
             progress: 0,
           });
         });
+        this._trigger('select-change', {
+          value: [...this.data.customFiles],
+          currentSelectedFiles: [files]
+        });
         this._trigger('add', { files });
         this._trigger('success', { files: [...this.data.customFiles, ...files] });
         this.startUpload(files);
@@ -165,6 +169,10 @@ export default class Upload extends SuperComponent {
             thumb: temp.thumbTempFilePath,
             progress: 0,
           });
+        });
+        this._trigger('select-change', {
+          value: [...this.data.customFiles],
+          currentSelectedFiles: [files]
         });
         this._trigger('add', { files });
         this._trigger('success', { files: [...this.data.customFiles, ...files] });

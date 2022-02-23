@@ -105,38 +105,19 @@ export interface TdUploadProps {
 
 export type UploadMpConfig = ImageConfig | VideoConfig;
 
-export interface ImageConfig {
-  count?: number;
-  sizeType?: Array<SizeTypeValues>;
-  sourceType?: Array<SourceTypeValues>;
-}
+export interface ImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> };
 
 export type SizeTypeValues = 'original' | 'compressed';
 
 export type SourceTypeValues = 'album' | 'camera';
 
-export interface VideoConfig {
-  sourceType?: Array<SourceTypeValues>;
-  compressed?: boolean;
-  maxDuration?: number;
-  camera?: 'back' | 'front';
-}
+export interface VideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' | 'front' };
 
-export interface UploadFile {
-  url: string;
-  name?: string;
-  size?: number;
-  type?: 'image' | 'video';
-  percent?: number;
-}
+export interface UploadFile { url: string; name?: string; size?: number; type?: 'image' | 'video'; percent?: number };
 
 export type MediaType = 'image' | 'video';
 
-export interface SizeLimitObj {
-  size: number;
-  unit: SizeUnit;
-  message?: string;
-}
+export interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string };
 
 export type SizeUnitArray = ['B', 'KB', 'MB', 'GB'];
 
