@@ -6,7 +6,7 @@
 
 import { TdAvatarProps } from './type';
 const props: TdAvatarProps = {
-  /** 头像替换文本 */
+  /** 头像替换文本，仅当图片加载失败时有效 */
   alt: {
     type: String,
     value: '',

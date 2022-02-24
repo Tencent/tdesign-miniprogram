@@ -19,4 +19,12 @@ Page({
       100: '大',
     },
   },
+  handleChange(e) {
+    this.setData({
+      value3: e.detail.value,
+    });
+  },
+  handleChange2(e) {
+    console.log(e);
+  },
 });

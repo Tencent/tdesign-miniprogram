@@ -2,7 +2,7 @@
   class="{{classPrefix}} {{classPrefix}}--{{theme === 'grey' ? 'pure' : 'normal'}} {{ disabled ? prefix + '-is-disabled': ''}} {{prefix}}-class"
 >
   <view
-    class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}} hotspot-expanded"
+    class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
     bindtap="minusValue"
   >
     <t-icon
@@ -11,7 +11,6 @@
       size="{{theme === 'grey' ? '16px' : '20px'}}"
     />
   </view>
-
   <input
     class="{{classPrefix}}__input {{prefix}}-class-input"
     style="width: {{inputWidth || 100}}rpx"
@@ -21,7 +20,7 @@
     bindblur="blurHandler"
   />
   <view
-    class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}} hotspot-expanded"
+    class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
     bindtap="plusValue"
   >
     <t-icon
