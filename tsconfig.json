@@ -2,6 +2,7 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "target": "es6",
+    "lib": ["es6", "dom", "ES2016.Array.Include"],
     "outDir": "dist",
     "types": ["miniprogram-api-typings"],
     "skipLibCheck": true,
