@@ -120,7 +120,6 @@ export default class PickerColumn extends SuperComponent {
   /**
    * 将屏幕滑动距离换算为视图偏移量 模拟渐进式滚动
    * @param touchDeltaY 屏幕滑动距离
-   * @returns
    */
   calculateViewDeltaY(touchDeltaY: number): number {
     return Math.abs(touchDeltaY) > itemHeight ? 1.3 * touchDeltaY : touchDeltaY;
