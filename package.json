@@ -41,7 +41,7 @@
     "@types/jest": "^27.0.3",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
-    "@vitejs/plugin-vue": "^1.4.0",
+    "@vitejs/plugin-vue": "^2.2.4",
     "@vitejs/plugin-vue-jsx": "^1.1.7",
     "@vue/compiler-sfc": "^3.2.4",
     "babel-jest": "^26.6.3",
