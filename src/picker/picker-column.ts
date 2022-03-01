@@ -3,7 +3,7 @@ import config from '../common/config';
 import props from './picker-item-props';
 
 const itemHeight = 80;
-const DefaultDuration = 200;
+const DefaultDuration = 600;
 
 const { windowWidth } = wx.getSystemInfoSync();
 
@@ -47,10 +47,14 @@ export default class PickerColumn extends SuperComponent {
 
     onTouchMove(event) {
       const { StartY, StartOffset, itemHeight } = this;
-      // 偏移增量
-      const deltaY = event.touches[0].clientY - StartY;
+
+      // touch偏移增量
+      const touchDeltaY = event.touches[0].clientY - StartY;
+      const deltaY = this.calculateViewDeltaY(touchDeltaY);
+
       this.setData({
         offset: range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0),
+        duration: DefaultDuration,
       });
     },
 
@@ -64,7 +68,6 @@ export default class PickerColumn extends SuperComponent {
       // 调整偏移量
       const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
       this.setData({
-        duration: DefaultDuration,
         offset: -index * this.itemHeight,
       });
 
@@ -113,6 +116,15 @@ export default class PickerColumn extends SuperComponent {
       return this.data?.options?.length;
     },
   };
+
+  /**
+   * 将屏幕滑动距离换算为视图偏移量 模拟渐进式滚动
+   * @param touchDeltaY 屏幕滑动距离
+   * @returns
+   */
+  calculateViewDeltaY(touchDeltaY: number): number {
+    return Math.abs(touchDeltaY) > itemHeight ? 1.3 * touchDeltaY : touchDeltaY;
+  }
 
   created() {
     this.StartY = 0;
