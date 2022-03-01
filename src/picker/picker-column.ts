@@ -122,7 +122,7 @@ export default class PickerColumn extends SuperComponent {
    * @param touchDeltaY 屏幕滑动距离
    */
   calculateViewDeltaY(touchDeltaY: number): number {
-    return Math.abs(touchDeltaY) > itemHeight ? 1.3 * touchDeltaY : touchDeltaY;
+    return Math.abs(touchDeltaY) > itemHeight ? 1.2 * touchDeltaY : touchDeltaY;
   }
 
   created() {
