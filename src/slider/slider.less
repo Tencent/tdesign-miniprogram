@@ -3,6 +3,8 @@
 @bar-height: 2rpx;
 @block-color: #fff;
 @block-size: 16px;
+@dot-color: #0052D9;
+@dot-disable-color: #BBD3FB;
 
 .@{prefix}-slider__container {
   font-size: 14px;
@@ -14,7 +16,7 @@
   .@{prefix}-slider__value,
   .@{prefix}-slider__range-extreme,
   .@{prefix}-slider__dot-value {
-    color: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, .9);
   }
 
   &.@{prefix}-is-disabled {
@@ -22,7 +24,7 @@
     .@{prefix}-slider__range-extreme,
     .@{prefix}-slider__dot-value,
     .@{prefix}-slider__scale-desc {
-      color: rgba(0, 0, 0, 0.26);
+      color: rgba(0, 0, 0, .4);
     }
   }
 }
@@ -52,13 +54,17 @@
 
     .@{prefix}-slider__dot {
       border-radius: 50%;
-      border: 2rpx solid #dcdcdc;
+      border: 4rpx solid @dot-color;
       position: absolute;
       background-color: @block-color;
       width: @block-size;
       height: @block-size;
       top: @bar-height - @block-size - 2;
       z-index: 2;
+    }
+    
+    .@{prefix}-slider__dot--disable {
+      border: 4rpx solid @dot-disable-color;
     }
   }
 
@@ -67,15 +73,21 @@
   }
 
   .@{prefix}-slider__value--min {
-    margin-left: 16px;
+    margin-left: 32rpx;
   }
 
   .@{prefix}-slider__value--max {
-    margin-right: 16px;
+    margin-right: 32rpx;
   }
 
   .@{prefix}-slider__value--right {
     flex-basis: 80rpx;
+
+    text{
+      margin-right: 32rpx; 
+      text-align: right; 
+      display: block;
+    }
   }
 }
 
@@ -110,13 +122,13 @@
 
     .@{prefix}-slider__dot {
       border-radius: 50%;
-      border: 2rpx solid #dcdcdc;
+      border: 4rpx solid @dot-color;
       position: absolute;
       z-index: 2;
       background-color: @block-color;
       width: @block-size;
       height: @block-size;
-      top: @bar-height - @block-size + 16;
+      top: @bar-height - @block-size + 16; 
 
       &--left {
         left: 0;
@@ -128,14 +140,23 @@
 
       &-value {
         position: relative;
-        top: -26px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -52rpx;
         text-align: center;
+        width: 48rpx;
+        height: 44rpx;
+        line-height: 44rpx;
+      }
+
+      .@{prefix}-slider__dot--disable {
+        border: 4rpx solid @dot-disable-color;
       }
     }
 
     .@{prefix}-slider__line {
       position: absolute;
-      top: 8px;
+      top: 16rpx;
       height: 5rpx;
     }
   }
@@ -147,13 +168,14 @@
   width: @bar-height * 2;
   height: 14rpx;
   position: absolute;
-  bottom: 6rpx;
+  top: 6rpx;
   z-index: 1;
 
   .@{prefix}-slider__scale-desc {
     position: absolute;
-    color: rgba(0, 0, 0, 0.4);
+    left: 50%;
+    color: rgba(0, 0, 0, .9);
     transform: translateX(-50%);
-    top: 20rpx;
+    bottom: 20rpx;
   }
 }

@@ -18,6 +18,7 @@ type dataType = {
   lineRight: number;
   dotTopValue: number[];
   blockSize: number;
+  blockBorderSize: number;
   isScale: boolean;
   scaleArray: any[];
   scaleTextArray: any[];
@@ -58,6 +59,7 @@ export default class Slider extends SuperComponent {
     dotTopValue: [0, 0],
     _value: 0,
     blockSize: 16,
+    blockBorderSize: 2,
     isScale: false,
     scaleArray: [],
     scaleTextArray: [],
@@ -70,8 +72,8 @@ export default class Slider extends SuperComponent {
     },
     _value(this: Slider, newValue: number | number[]) {
       const { min, max, range } = this.properties;
-      const { maxRange, blockSize } = this.data;
-      const fullLineWidth = maxRange + Number(blockSize);
+      const { maxRange, blockSize, blockBorderSize } = this.data;
+      const fullLineWidth = maxRange + Number(blockSize + blockBorderSize * 2);
 
       if (range) {
         const left = (fullLineWidth * (newValue[0] - Number(min))) / (Number(max) - Number(min));
@@ -174,10 +176,10 @@ export default class Slider extends SuperComponent {
 
   async getInitialStyle() {
     const line: { right: number; left: number } = await this.getSelectorQuery('sliderLine');
-    const { blockSize } = this.data;
-    const halfBlock: number = Number(blockSize) / 2;
+    const { blockSize, blockBorderSize } = this.data;
+    const halfBlock: number = Number(blockSize + blockBorderSize * 2) / 2;
     this.setData({
-      maxRange: line.right - line.left - Number(blockSize),
+      maxRange: line.right - line.left - Number(blockSize + blockBorderSize * 2),
       initialLeft: line.left - halfBlock,
       initialRight: line.right + halfBlock,
     });
@@ -185,8 +187,8 @@ export default class Slider extends SuperComponent {
 
   setDotStyle(left: number, right: number) {
     const { range } = this.properties;
-    const { blockSize } = this.data;
-    const halfBlock = Number(blockSize) / 2;
+    const { blockSize, blockBorderSize } = this.data;
+    const halfBlock = Number(blockSize + blockBorderSize * 2) / 2;
     if (left !== null) {
       this.setData({
         activeLeft: left - halfBlock,
@@ -232,23 +234,25 @@ export default class Slider extends SuperComponent {
 
   getSingleChangeValue(e: any) {
     const { disabled, min, max } = this.properties;
-    const { initialLeft, maxRange, blockSize } = this.data;
+    const { initialLeft, maxRange, blockSize, blockBorderSize } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
     const { pageX } = touch;
-    const halfBlock = Number(blockSize) / 2;
+    const halfBlock = Number(blockSize + blockBorderSize * 2) / 2;
 
     const currentLeft = pageX - initialLeft - halfBlock;
     let value = 0;
 
     if (currentLeft <= 0) {
       value = Number(min);
-    } else if (currentLeft >= maxRange + Number(blockSize)) {
+    } else if (currentLeft >= maxRange + Number(blockSize + blockBorderSize * 2)) {
       value = Number(max);
     } else {
       value = Math.round(
-        (currentLeft / (maxRange + Number(blockSize))) * (Number(max) - Number(min)) + Number(min),
+        (currentLeft / (maxRange + Number(blockSize + blockBorderSize * 2))) *
+          (Number(max) - Number(min)) +
+          Number(min),
       );
     }
     return this.stepValue(value);
@@ -263,9 +267,9 @@ export default class Slider extends SuperComponent {
    * @memberof Slider
    */
   convertPosToValue(posValue: number, dir: 0 | 1): number {
-    const { maxRange, blockSize } = this.data;
+    const { maxRange, blockSize, blockBorderSize } = this.data;
     const { max, min } = this.properties;
-    const fullLineWidth = maxRange + blockSize;
+    const fullLineWidth = maxRange + blockSize + blockBorderSize * 2;
     return dir === 0
       ? (posValue / fullLineWidth) * (Number(max) - Number(min)) + Number(min)
       : Number(max) - (posValue / fullLineWidth) * (Number(max) - Number(min));
@@ -274,15 +278,15 @@ export default class Slider extends SuperComponent {
   // 点击范围选择滑动条的事件
   onLineTap(e: any) {
     const { disabled } = this.properties;
-    const { initialLeft, initialRight, maxRange, blockSize } = this.data;
+    const { initialLeft, initialRight, maxRange, blockSize, blockBorderSize } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
     const { pageX } = touch;
-    const halfBlock = Number(blockSize) / 2;
+    const halfBlock = Number(blockSize + blockBorderSize * 2) / 2;
 
     const currentLeft = pageX - initialLeft - halfBlock;
-    if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
+    if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize + blockBorderSize * 2)) return;
 
     this.getSelectorQuery('leftDot').then((leftDot: { left: number; right: number }) => {
       this.getSelectorQuery('rightDot').then((rightDot: { left: number; right: number }) => {
@@ -296,7 +300,6 @@ export default class Slider extends SuperComponent {
           // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
           const left = pageX - initialLeft - halfBlock;
           const leftValue = this.convertPosToValue(left, 0);
-
           this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
         } else {
           const right = -(pageX - initialRight) - halfBlock;
@@ -314,17 +317,18 @@ export default class Slider extends SuperComponent {
 
   onTouchMoveLeft(e: any) {
     const { disabled } = this.properties;
-    const { initialLeft, blockSize, _value } = this.data;
+    const { initialLeft, blockSize, blockBorderSize, _value } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
     const { pageX } = touch;
 
-    const halfBlock = Number(blockSize) / 2;
+    const halfBlock = Number(blockSize + blockBorderSize * 2) / 2;
     const currentLeft = pageX - initialLeft - halfBlock;
 
     const newData = [...(_value as number[])];
     const leftValue = this.convertPosToValue(currentLeft, 0);
+
     newData[0] = this.stepValue(leftValue);
 
     this.triggerValue(newData);
@@ -332,13 +336,13 @@ export default class Slider extends SuperComponent {
 
   onTouchMoveRight(e: any) {
     const { disabled } = this.properties;
-    const { initialRight, blockSize, _value } = this.data;
+    const { initialRight, blockSize, blockBorderSize, _value } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
     const { pageX } = touch;
 
-    const halfBlock = Number(blockSize) / 2;
+    const halfBlock = Number(blockSize + blockBorderSize * 2) / 2;
     const currentRight = -(pageX - initialRight) - halfBlock;
 
     const newData = [...(_value as number[])];
@@ -349,8 +353,8 @@ export default class Slider extends SuperComponent {
   }
 
   setLineStyle() {
-    const { activeLeft, activeRight, maxRange, blockSize } = this.data;
-    const halfBlock = Number(blockSize) / 2;
+    const { activeLeft, activeRight, maxRange, blockSize, blockBorderSize } = this.data;
+    const halfBlock = Number(blockSize + blockBorderSize * 2) / 2;
     if (activeLeft + activeRight <= maxRange) {
       this.setData({
         lineLeft: activeLeft + halfBlock,
