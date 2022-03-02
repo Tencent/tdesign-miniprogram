@@ -42,7 +42,7 @@
       </view>
 
       <view wx:if="{{label}}" class="{{classPrefix}}__value {{classPrefix}}__value--right">
-        <text> {{utils.getValue(label, _value)}}</text>
+        <text class="{{classPrefix}}__value--text"> {{utils.getValue(label, _value)}}</text>
       </view>
       <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--max">
         {{ label ? utils.getValue(label, max) : max}}
