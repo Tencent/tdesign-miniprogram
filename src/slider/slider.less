@@ -62,7 +62,7 @@
       top: @bar-height - @block-size - 2;
       z-index: 2;
     }
-    
+
     .@{prefix}-slider__dot--disable {
       border: 4rpx solid @dot-disable-color;
     }
@@ -83,9 +83,9 @@
   .@{prefix}-slider__value--right {
     flex-basis: 80rpx;
 
-    text{
-      margin-right: 32rpx; 
-      text-align: right; 
+    .@{prefix}-slider__value--text {
+      margin-right: 32rpx;
+      text-align: right;
       display: block;
     }
   }
@@ -128,7 +128,7 @@
       background-color: @block-color;
       width: @block-size;
       height: @block-size;
-      top: @bar-height - @block-size + 16; 
+      top: @bar-height - @block-size + 16;
 
       &--left {
         left: 0;
