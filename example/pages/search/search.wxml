@@ -15,7 +15,7 @@
           t-class-cancel="t-class-cancel"
           value="{{item.keyword}}"
           placeholder="{{item.placeholder}}"
-          action-text="{{item.actionText}}"
+          action="{{item.actionText}}"
           data-idx="{{index}}"
           bind:blur="blurHandle"
           bind:focus="focusHandle"
