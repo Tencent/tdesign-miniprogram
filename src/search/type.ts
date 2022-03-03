@@ -33,11 +33,18 @@ export interface TdSearchProps {
     required?: boolean;
   };
   /**
-   * 组件外部样式类名，分别用于设置组件外层类名、组件 input 类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型
+   * 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class', 't-class-input', 't-class-cancel', 't-class-left', 't-class-right'];
+    value?: [
+      't-class',
+      't-class-input',
+      't-class-input-container',
+      't-class-cancel',
+      't-class-left',
+      't-class-right',
+    ];
     required?: boolean;
   };
   /**
@@ -99,15 +106,6 @@ export interface TdSearchProps {
    * @default ''
    */
   value?: {
-    type: StringConstructor;
-    value?: string;
-    required?: boolean;
-  };
-  /**
-   * 值
-   * @default ''
-   */
-  defaultValue?: {
     type: StringConstructor;
     value?: string;
     required?: boolean;
