@@ -51,7 +51,7 @@
     "del": "^5.1.0",
     "eslint": "^7.0.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
     "gray-matter": "^4.0.3",
