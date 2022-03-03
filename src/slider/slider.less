@@ -3,8 +3,7 @@
 @bar-height: 2rpx;
 @block-color: #fff;
 @block-size: 16px;
-@dot-color: #0052D9;
-@dot-disable-color: #BBD3FB;
+@dot-color: #0052d9;
 
 .@{prefix}-slider__container {
   font-size: 14px;
@@ -61,10 +60,6 @@
       height: @block-size;
       top: @bar-height - @block-size - 2;
       z-index: 2;
-    }
-
-    .@{prefix}-slider__dot--disable {
-      border: 4rpx solid @dot-disable-color;
     }
   }
 
@@ -147,10 +142,6 @@
         width: 48rpx;
         height: 44rpx;
         line-height: 44rpx;
-      }
-
-      .@{prefix}-slider__dot--disable {
-        border: 4rpx solid @dot-disable-color;
       }
     }
 
