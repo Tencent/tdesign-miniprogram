@@ -33,16 +33,17 @@
           <view
             id="singleDot"
             class="{{classPrefix}}__dot {{prefix}}-class-cursor"
-            style="left: {{activeLeft}}px"
+            style="left: {{activeLeft}}px; border-color: {{disabled ? disabledColor[0] : ''}}"
             bind:touchmove="onSingleLineTap"
             bind:touchend="onTouchEnd"
             bind:touchcancel="onTouchEnd"
           />
         </view>
       </view>
-      <text wx:if="{{label}}" class="{{classPrefix}}__value {{classPrefix}}__value--right">
-        {{utils.getValue(label, _value)}}
-      </text>
+
+      <view wx:if="{{label}}" class="{{classPrefix}}__value {{classPrefix}}__value--right">
+        <text class="{{classPrefix}}__value--text"> {{utils.getValue(label, _value)}}</text>
+      </view>
       <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--max">
         {{ label ? utils.getValue(label, max) : max}}
       </text>
@@ -84,7 +85,7 @@
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
-          style="left: {{activeLeft}}px"
+          style="left: {{activeLeft}}px; border-color: {{disabled ? disabledColor[0] : ''}}"
         >
           <view wx:if="{{label}}" class="{{classPrefix}}__dot-value">
             {{utils.getValue(label, dotTopValue[0])}}
@@ -96,7 +97,7 @@
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
-          style="right: {{activeRight}}px"
+          style="right: {{activeRight}}px; border-color: {{disabled ? disabledColor[0] : ''}}"
         >
           <view wx:if="{{label}}" class="{{classPrefix}}__dot-value">
             {{utils.getValue(label, dotTopValue[1])}}
