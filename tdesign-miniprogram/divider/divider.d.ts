@@ -13,6 +13,7 @@ export default class Divider extends SuperComponent {
      * 组件的初始数据
      */
     data: {
+        prefix: string;
         classPrefix: string;
     };
 }

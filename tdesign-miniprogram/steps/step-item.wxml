@@ -1,20 +1,16 @@
 <view
-  class="{{prefix}}-step {{prefix}}-step--{{layout}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} t-class"
+  class="{{prefix}}-step {{prefix}}-step--{{layout}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} {{prefix}}-class {{readonly ? prefix + '-step--readonly' : ''}}"
 >
   <view class="{{classPrefix}} {{classPrefix}}--{{curStatus}}">
-    <view class="{{classPrefix}}__inner {{icon ? classPrefix + '__inner--icon' : '' }}">
+    <view class="{{classPrefix}}__inner {{isLarge ? classPrefix + '__inner--large' : '' }}">
       <view class="{{classPrefix}}__icon" bindtap="click">
         <view wx:if="{{isDot}}" class="{{classPrefix}}__icon-dot"></view>
         <view
-          wx:elif="{{icon}}"
-          class="{{classPrefix}}__icon-number {{layout === 'horizontal' ? (classPrefix + '__icon-number--large') : ''}}"
+          wx:elif="{{computedIcon}}"
+          class="{{classPrefix}}__icon-number {{isLarge ? (classPrefix + '__icon-number--large') : ''}}"
         >
-          <slot wx:if="{{icon === 'slot'}}" name="icon" />
-          <t-icon
-            wx:else
-            name="{{icon}}"
-            size="{{layout == 'horizontal' ? '24px' : '16px'}}"
-          ></t-icon>
+          <slot wx:if="{{computedIcon === 'slot'}}" name="icon" />
+          <t-icon wx:else name="{{computedIcon}}" size="{{isLarge ? '24px' : '16px'}}" />
         </view>
         <view wx:else class="{{classPrefix}}__icon-number">{{index + 1}}</view>
       </view>

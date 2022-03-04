@@ -12,7 +12,80 @@ export default class Radio extends SuperComponent {
     lifetimes: {
         attached(): void;
     };
-    properties: import("./type").TdRadioProps;
+    properties: {
+        align?: {
+            type: StringConstructor;
+            value?: "left" | "right";
+            required?: boolean;
+        };
+        checked?: {
+            type: BooleanConstructor;
+            value?: boolean;
+            required?: boolean;
+        };
+        defaultChecked?: {
+            type: BooleanConstructor;
+            value?: boolean;
+            required?: boolean;
+        };
+        color?: {
+            type: StringConstructor;
+            value?: string;
+            required?: boolean;
+        };
+        content?: {
+            type: StringConstructor;
+            value?: string;
+            required?: boolean;
+        };
+        contentDisabled?: {
+            type: BooleanConstructor;
+            value?: boolean;
+            required?: boolean;
+        };
+        disabled?: {
+            type: BooleanConstructor;
+            value?: boolean;
+            required?: boolean;
+        };
+        externalClasses?: {
+            type: ArrayConstructor;
+            value?: ["t-class", "t-class-icon", "t-class-label", "t-class-content"];
+            required?: boolean;
+        };
+        icon?: {
+            type: StringConstructor;
+            optionalTypes: ArrayConstructor[];
+            value?: string[] | "fill-circle" | "stroke-line";
+            required?: boolean;
+        };
+        label?: {
+            type: StringConstructor;
+            value?: string;
+            required?: boolean;
+        };
+        maxContentRow?: {
+            type: NumberConstructor;
+            value?: number;
+            required?: boolean;
+        };
+        maxLabelRow?: {
+            type: NumberConstructor;
+            value?: number;
+            required?: boolean;
+        };
+        name?: {
+            type: StringConstructor;
+            value?: string;
+            required?: boolean;
+        };
+        value?: {
+            type: StringConstructor;
+            optionalTypes: (NumberConstructor | BooleanConstructor)[];
+            value?: import("./type").RadioValue;
+            required?: boolean;
+        };
+    };
     controlledProps: {
         key: string;
         event: string;
