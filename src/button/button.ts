@@ -65,9 +65,7 @@ export default class Button extends SuperComponent {
       if (this.data.loading) {
         classList.push(`${prefix}-is-loading`);
       }
-      if (this.data.variant !== 'base') {
-        classList.push(`${name}--${this.data.variant}`);
-      }
+      classList.push(`${name}--${this.data.variant}`);
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);
       }
