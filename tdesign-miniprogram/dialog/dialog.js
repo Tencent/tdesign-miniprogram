@@ -18,6 +18,7 @@ let Dialog = class Dialog extends SuperComponent {
         };
         this.externalClasses = [
             `${prefix}-class`,
+            `${prefix}-class-content`,
             `${prefix}-class-confirm`,
             `${prefix}-class-cancel`,
             `${prefix}-class-action`,

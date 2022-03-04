@@ -23,11 +23,11 @@ let Slider = class Slider extends SuperComponent {
     constructor() {
         super(...arguments);
         this.externalClasses = [
-            `${{ prefix }}-class`,
-            `${{ prefix }}-class-bar`,
-            `${{ prefix }}-class-bar-active`,
-            `${{ prefix }}-class-bar-disabled`,
-            `${{ prefix }}-class-cursor`,
+            `${prefix}-class`,
+            `${prefix}-class-bar`,
+            `${prefix}-class-bar-active`,
+            `${prefix}-class-bar-disabled`,
+            `${prefix}-class-cursor`,
         ];
         this.properties = props;
         this.controlledProps = [
@@ -50,7 +50,7 @@ let Slider = class Slider extends SuperComponent {
             lineRight: 0,
             dotTopValue: [0, 0],
             _value: 0,
-            blockSize: 16,
+            blockSize: 20,
             isScale: false,
             scaleArray: [],
             scaleTextArray: [],
@@ -92,9 +92,8 @@ let Slider = class Slider extends SuperComponent {
      * @memberof Slider
      */
     triggerValue(value) {
-        value = trimValue(value || this.data._value, this.properties);
         this._trigger('change', {
-            value,
+            value: trimValue(value, this.properties),
         });
     }
     /**
@@ -197,9 +196,6 @@ let Slider = class Slider extends SuperComponent {
         const closestStep = trimSingleValue(Math.round(value / Number(step)) * Number(step), Number(min), Number(max));
         return closestStep;
     }
-    onSingleTouchMove(e) {
-        this.getSingleChangeValue(e);
-    }
     // 点击滑动条的事件
     onSingleLineTap(e) {
         const value = this.getSingleChangeValue(e);
@@ -224,12 +220,7 @@ let Slider = class Slider extends SuperComponent {
         else {
             value = Math.round((currentLeft / (maxRange + Number(blockSize))) * (Number(max) - Number(min)) + Number(min));
         }
-        const stapValue = this.stepValue(value);
-        this.setData({
-            _value: stapValue,
-        });
-        this.getSingleBarWidth(stapValue);
-        return stapValue;
+        return this.stepValue(value);
     }
     /**
      * 将位置转换为值
@@ -294,9 +285,7 @@ let Slider = class Slider extends SuperComponent {
         const newData = [..._value];
         const leftValue = this.convertPosToValue(currentLeft, 0);
         newData[0] = this.stepValue(leftValue);
-        this.setData({
-            _value: newData,
-        });
+        this.triggerValue(newData);
     }
     onTouchMoveRight(e) {
         const { disabled } = this.properties;
@@ -310,9 +299,7 @@ let Slider = class Slider extends SuperComponent {
         const newData = [..._value];
         const rightValue = this.convertPosToValue(currentRight, 1);
         newData[1] = this.stepValue(rightValue);
-        this.setData({
-            _value: newData,
-        });
+        this.triggerValue(newData);
     }
     setLineStyle() {
         const { activeLeft, activeRight, maxRange, blockSize } = this.data;
@@ -329,10 +316,6 @@ let Slider = class Slider extends SuperComponent {
                 lineRight: maxRange - activeLeft + halfBlock * 1.5, //eslint-disable-line
             });
         }
-    }
-    onTouchEnd() {
-        // touchMove未trigger，在end事件统一trigger
-        this.triggerValue();
     }
 };
 Slider = __decorate([

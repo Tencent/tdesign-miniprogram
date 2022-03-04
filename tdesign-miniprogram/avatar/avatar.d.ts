@@ -1,5 +1,8 @@
 import { SuperComponent } from '../common/src/index';
 export default class Avatar extends SuperComponent {
+    options: {
+        multipleSlots: boolean;
+    };
     externalClasses: string[];
     properties: import("./type").TdAvatarProps;
     data: {

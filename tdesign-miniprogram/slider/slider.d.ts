@@ -51,7 +51,6 @@ export default class Slider extends SuperComponent {
     getInitialStyle(): Promise<void>;
     setDotStyle(left: number, right: number): void;
     stepValue(value: number): number;
-    onSingleTouchMove(e: any): void;
     onSingleLineTap(e: any): void;
     getSingleChangeValue(e: any): number;
     /**
@@ -67,6 +66,5 @@ export default class Slider extends SuperComponent {
     onTouchMoveLeft(e: any): void;
     onTouchMoveRight(e: any): void;
     setLineStyle(): void;
-    onTouchEnd(): void;
 }
 export {};

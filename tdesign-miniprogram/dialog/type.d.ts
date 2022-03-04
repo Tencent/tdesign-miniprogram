@@ -63,7 +63,7 @@ export interface TdDialogProps {
      */
     externalClasses?: {
         type: ArrayConstructor;
-        value?: ['t-class', 't-class-confirm', 't-class-cancel'];
+        value?: ['t-class', 't-class-content', 't-class-confirm', 't-class-cancel'];
         required?: boolean;
     };
     /**

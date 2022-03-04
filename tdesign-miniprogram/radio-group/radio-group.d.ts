@@ -12,7 +12,34 @@ export default class RadioGroup extends SuperComponent {
             linked(target: any): void;
         };
     };
-    properties: import("../radio/type").TdRadioGroupProps;
+    properties: {
+        disabled?: {
+            type: BooleanConstructor;
+            value?: boolean;
+            required?: boolean;
+        };
+        name?: {
+            type: StringConstructor;
+            value?: string;
+            required?: boolean;
+        };
+        options?: {
+            type: ArrayConstructor;
+            value?: import("../radio/type").RadioOption[];
+            required?: boolean;
+        };
+        value?: {
+            type: StringConstructor;
+            optionalTypes: (NumberConstructor | BooleanConstructor)[];
+            value?: import("../radio/type").RadioValue;
+            required?: boolean;
+        };
+        defaultValue?: {
+            type: StringConstructor;
+            value?: import("../radio/type").RadioValue;
+            required?: boolean;
+        };
+    };
     controlledProps: {
         key: string;
         event: string;

@@ -21,6 +21,7 @@ let Radio = class Radio extends SuperComponent {
             `${prefix}-class-label`,
             `${prefix}-class-icon`,
             `${prefix}-class-content`,
+            `${prefix}-class-border`,
         ];
         this.relations = {
             '../radio-group/radio-group': {
@@ -35,7 +36,7 @@ let Radio = class Radio extends SuperComponent {
                 this.initStatus();
             },
         };
-        this.properties = Props;
+        this.properties = Object.assign({}, Props);
         this.controlledProps = [
             {
                 key: 'checked',

@@ -87,10 +87,6 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                     const index = newValue.findIndex((v) => v === name);
                     newValue.splice(index, 1);
                 }
-                // this.setData({
-                //   value: newValue,
-                // });
-                // this.updateChildren();
                 this._trigger('change', { value: newValue });
             },
             // 支持自定义options
@@ -131,29 +127,16 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
                     if (!(items === null || items === void 0 ? void 0 : items.length)) {
                         return;
                     }
-                    // this.setData({
-                    //   value: items
-                    //     .map((item) => {
-                    //       if (item.data.disabled) {
-                    //         return this.data.value.includes(item.data.value) ? item.data.value : '';
-                    //       }
-                    //       item.changeActive(checked);
-                    //       return checked && !item.data.checkAll ? item.data.value : '';
-                    //     })
-                    //     .filter((val) => val),
-                    // });
                     this._trigger('change', {
                         value: items
                             .map((item) => {
                             if (item.data.disabled) {
                                 return this.data.value.includes(item.data.value) ? item.data.value : '';
                             }
-                            // item.changeActive(checked);
                             return checked && !item.data.checkAll ? item.data.value : '';
                         })
                             .filter((val) => val),
                     });
-                    // this.handleHalfCheck(items.length);
                 }
                 else {
                     this.updateValue({ name, checked });
@@ -163,16 +146,18 @@ let CheckBoxGroup = class CheckBoxGroup extends SuperComponent {
             handleHalfCheck(len) {
                 var _a;
                 const items = this.getChilds();
-                const all = items.filter((i) => !i.data.checkAll).map((item) => item.data.value);
-                const excludeDisableArr = items
-                    .filter((i) => !i.data.checkAll && i.data.value && !i.data.disabled)
+                const checkboxOptions = items.filter((i) => !i.data.checkAll);
+                const all = checkboxOptions.map((item) => item.data.value);
+                const enableValue = checkboxOptions
+                    .filter((i) => !i.data.disabled)
                     .map((item) => item.data.value);
                 const currentVal = Array.from(new Set((_a = this.data.value) === null || _a === void 0 ? void 0 : _a.filter((i) => all.indexOf(i) > -1)));
                 const element = items.find((item) => item.data.checkAll);
                 if (currentVal.length) {
                     element === null || element === void 0 ? void 0 : element.setData({ checked: true });
                     element === null || element === void 0 ? void 0 : element.changeCheckAllHalfStatus(currentVal.length !== len - 1);
-                    element === null || element === void 0 ? void 0 : element.setCancel(currentVal.length >= excludeDisableArr.length);
+                    // 取消全选
+                    element === null || element === void 0 ? void 0 : element.setCancel(enableValue.every((val) => currentVal.includes(val)));
                 }
                 else {
                     element === null || element === void 0 ? void 0 : element.setData({ checked: false });
