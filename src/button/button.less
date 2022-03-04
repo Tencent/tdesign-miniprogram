@@ -33,6 +33,18 @@
 @button-icon-spacer: @spacer;
 @button-icon-border-radius: 8rpx;
 
+// padding
+@button-padding-horizontal-s: 8px;
+@button-padding-horizontal-default: 12px;
+@button-padding-horizontal-l: 16px;
+
+// 图标大小
+@button-icon-size-s: 36rpx;
+@button-icon-size-default: 40rpx;
+@button-icon-size-l: 44rpx;
+
+
+
 @button: ~"@{prefix}-button";
 
 .@{button} {
@@ -73,6 +85,12 @@
 
   &:not(.@{prefix}-is-disabled):active::after {
     opacity: .1;
+  }
+
+  &__content {
+    display:flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &--default {
@@ -156,77 +174,119 @@
     }
   }
 
+  &--base {
+    height: @button-default-height;
+    line-height: @button-default-height;
+    padding-left: (@button-padding-horizontal-default - @button-border-width);
+    padding-right: (@button-padding-horizontal-default - @button-border-width);
+    font-size: @button-default-font-size;
+  }
+
   &--size {
     &-l {
-      display: flex;
-      width: auto;
-      margin: 0 32rpx;
       height: @button-large-height;
       line-height: @button-large-height;
-      padding-left: @spacer*3;
-      padding-right: @spacer*3;
+      padding-left: (@button-padding-horizontal-l - @button-border-width);
+      padding-right: (@button-padding-horizontal-l - @button-border-width);
+
+      & .@{prefix}-button__icon {
+        font-size: @button-icon-size-l;
+      }
     }
 
     &-m {
-      width: 480rpx;
-      height: @button-default-height;
-      line-height: @button-default-line-height;
-      padding-left: @spacer*2;
-      padding-right: @spacer*2;
+
+      & .@{prefix}-button__icon {
+        font-size: @button-icon-size-default;
+      }
     }
 
     &-s {
       height: @button-small-height;
-      line-height: @button-small-line-height;
-      padding-left: 40rpx;
-      padding-right: 40rpx;
+      line-height: @button-small-height;
+      padding-left: (@button-padding-horizontal-s - @button-border-width);
+      padding-right: (@button-padding-horizontal-s - @button-border-width);
 
       & .@{prefix}-button__icon {
-        font-size: @button-default-font-size;
+        font-size: @button-icon-size-s;
       }
     }
   }
 
   &__icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 16rpx;
-    font-size: 1.2em;
     border-radius: @button-icon-border-radius;
-    line-height: inherit;
   }
 
-  &__icon + &__text {
-    margin-left: @spacer;
-  }
-
+  // 圆角长方形
   &--round {
-    border-radius: @button-large-height / 2;
+    &.@{prefix}-button--size {
+      &-l {
+        border-radius: (@button-large-height / 2);
+      }
 
-    &::after {
-      border-radius: @button-large-height / 2;
+      &-m {
+        border-radius: (@button-default-height / 2);
+      }
+
+      &-s {
+        border-radius: (@button-small-height / 2);
+      }
     }
   }
 
+  // 正方形
+  &--square {
+    padding: 0;
+
+    &.@{prefix}-button--size {
+      &-l {
+        width: @button-large-height;
+      }
+
+      &-m {
+        width: @button-default-height;
+      }
+
+      &-s {
+        width: @button-small-height;
+      }
+    }
+  }
+
+  // 长方形 默认
+  &--rectangle {
+
+  }
+
+  // 圆形
   &--circle {
-    border-radius: 999px;
+    padding: 0;
+
+    &.@{prefix}-button--size {
+      &-l {
+        border-radius: (@button-large-height / 2);
+        width: @button-large-height;
+
+      }
+
+      &-m {
+        border-radius: (@button-default-height / 2);
+        width: @button-default-height;
+
+      }
+
+      &-s {
+        border-radius: (@button-small-height / 2);
+        width: @button-small-height;
+
+      }
+    }
   }
 
   &.@{prefix}-is {
     &-block {
-      display: flex;
+      display: block;
       width: 100%;
-      border: 0;
-      margin-left: 0;
-      margin-right: 0;
-      height: 88rpx;
-      line-height: 88rpx;
-      border-radius: 0;
-
-      &::after {
-        border-radius: 0;
-      }
     }
 
     &-disabled {
@@ -241,10 +301,10 @@
   &.button-hover:after {
     border-radius: 8rpx;
   }
+
 }
 
-
-// button group 
+// button group
 .@{prefix}-button-group {
   & .@{prefix}-button {
     border: 0;

@@ -65,9 +65,13 @@ export default class Button extends SuperComponent {
       if (this.data.loading) {
         classList.push(`${prefix}-is-loading`);
       }
-      if (this.data.variant !== 'base') {
-        classList.push(`${name}--${this.data.variant}`);
+      classList.push(`${name}--${this.data.variant}`);
+
+      // 如果icon存在
+      if (this.data.icon) {
+        classList.push(`${name}--icon`);
       }
+
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);
       }
