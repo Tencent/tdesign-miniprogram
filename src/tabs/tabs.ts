@@ -18,7 +18,12 @@ const trackLineWidth = 30;
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
 
-  externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-item`,
+    `${prefix}-class-active`,
+    `${prefix}-class-track`,
+  ];
 
   relations = {
     './tab-panel': {
