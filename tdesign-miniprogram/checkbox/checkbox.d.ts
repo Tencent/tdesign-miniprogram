@@ -117,7 +117,6 @@ export default class CheckBox extends SuperComponent {
     methods: {
         onChange(e: any): void;
         initStatus(): void;
-        toggle(): void;
         setCancel(cancel: boolean): void;
         setDisabled(disabled: Boolean): void;
         changeCheckAllHalfStatus(active: boolean): void;

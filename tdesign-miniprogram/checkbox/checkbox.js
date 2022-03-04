@@ -12,7 +12,13 @@ const classPrefix = `${prefix}-checkbox`;
 let CheckBox = class CheckBox extends SuperComponent {
     constructor() {
         super(...arguments);
-        this.externalClasses = ['t-class', 't-class-label', 't-class-icon', 't-class-content'];
+        this.externalClasses = [
+            `${prefix}-class`,
+            `${prefix}-class-label`,
+            `${prefix}-class-icon`,
+            `${prefix}-class-content`,
+            `${prefix}-class-border`,
+        ];
         this.relations = {
             '../checkbox-group/checkbox-group': {
                 type: 'ancestor',
@@ -95,26 +101,12 @@ let CheckBox = class CheckBox extends SuperComponent {
                 }
             },
             initStatus() {
-                if (!this.data.optionLinked) {
-                    if (this.data.indeterminate) {
-                        this.setData({
-                            // active: true,
-                            halfChecked: true,
-                        });
-                    }
-                    else {
-                        this.setData({
-                            // active: this.data.checked,
-                            halfChecked: this.data.indeterminate,
-                        });
-                    }
+                const { optionLinked, indeterminate } = this.data;
+                if (!optionLinked) {
+                    this.setData({
+                        halfChecked: indeterminate,
+                    });
                 }
-            },
-            toggle() {
-                // const { active } = this.data;
-                // this.setData({
-                //   active: !active,
-                // });
             },
             setCancel(cancel) {
                 this.setData({

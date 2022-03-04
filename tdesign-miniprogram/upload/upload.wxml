@@ -37,7 +37,11 @@
           <view wx:else class="{{classPrefix}}__progress-value">{{file.percent}}%</view>
         </view>
         <!-- 删除 -->
-        <view class="{{classPrefix}}__close-btn" bindtap="onDelete" data-index="{{index}}">
+        <view
+          class="{{classPrefix}}__close-btn hotspot-expanded"
+          bindtap="onDelete"
+          data-index="{{index}}"
+        >
           <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
           <t-icon wx:else name="close" size="34rpx" color="#fff" />
         </view>

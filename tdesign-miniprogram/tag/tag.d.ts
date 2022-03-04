@@ -6,6 +6,6 @@ export default class Tag extends SuperComponent {
     };
     properties: import("./type").TdTagProps;
     methods: {
-        onClickClose(e: WechatMiniprogram.BaseEvent): void;
+        hangleClose(e: WechatMiniprogram.BaseEvent): void;
     };
 }

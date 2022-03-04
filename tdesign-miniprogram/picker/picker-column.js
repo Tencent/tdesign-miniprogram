@@ -8,7 +8,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './picker-item-props';
 const itemHeight = 80;
-const DefaultDuration = 200;
+const DefaultDuration = 600;
 const { windowWidth } = wx.getSystemInfoSync();
 const rpx2px = (rpx) => Math.floor((windowWidth * rpx) / 750);
 const range = function (num, min, max) {
@@ -44,10 +44,12 @@ let PickerColumn = class PickerColumn extends SuperComponent {
             },
             onTouchMove(event) {
                 const { StartY, StartOffset, itemHeight } = this;
-                // 偏移增量
-                const deltaY = event.touches[0].clientY - StartY;
+                // touch偏移增量
+                const touchDeltaY = event.touches[0].clientY - StartY;
+                const deltaY = this.calculateViewDeltaY(touchDeltaY);
                 this.setData({
                     offset: range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0),
+                    duration: DefaultDuration,
                 });
             },
             onTouchEnd() {
@@ -59,7 +61,6 @@ let PickerColumn = class PickerColumn extends SuperComponent {
                 // 调整偏移量
                 const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
                 this.setData({
-                    duration: DefaultDuration,
                     offset: -index * this.itemHeight,
                 });
                 if (index === this._selectedIndex) {
@@ -97,6 +98,13 @@ let PickerColumn = class PickerColumn extends SuperComponent {
                 return (_b = (_a = this.data) === null || _a === void 0 ? void 0 : _a.options) === null || _b === void 0 ? void 0 : _b.length;
             },
         };
+    }
+    /**
+     * 将屏幕滑动距离换算为视图偏移量 模拟渐进式滚动
+     * @param touchDeltaY 屏幕滑动距离
+     */
+    calculateViewDeltaY(touchDeltaY) {
+        return Math.abs(touchDeltaY) > itemHeight ? 1.2 * touchDeltaY : touchDeltaY;
     }
     created() {
         this.StartY = 0;

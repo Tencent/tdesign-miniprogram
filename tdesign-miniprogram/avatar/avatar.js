@@ -12,11 +12,15 @@ const name = `${prefix}-avatar`;
 let Avatar = class Avatar extends SuperComponent {
     constructor() {
         super(...arguments);
+        this.options = {
+            multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+        };
         this.externalClasses = [
             `${prefix}-class`,
             `${prefix}-class-image`,
             `${prefix}-class-icon`,
             `${prefix}-class-alt`,
+            `${prefix}-class-content`,
         ];
         this.properties = avatarProps;
         this.data = {

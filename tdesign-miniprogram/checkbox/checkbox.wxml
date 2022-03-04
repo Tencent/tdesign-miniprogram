@@ -1,7 +1,7 @@
-<view class="{{classPrefix}} t-class ">
+<view class="{{classPrefix}} {{prefix}}-class ">
   <!-- icon left -->
   <view
-    class="{{classPrefix}}__icon-left t-class-icon"
+    class="{{classPrefix}}__icon-left {{prefix}}-class-icon"
     data-target="icon"
     bind:tap="onChange"
     wx:if="{{align === 'left'}}"
@@ -27,13 +27,16 @@
     bind:tap="onChange"
   >
     <!-- title -->
-    <view class="{{classPrefix}}__title t-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
+    <view
+      class="{{classPrefix}}__title {{prefix}}-class-label"
+      style="-webkit-line-clamp:{{maxLabelRow}}"
+    >
       {{label}}
       <slot name="label" />
     </view>
     <!-- content -->
     <view
-      class="{{classPrefix}}__description t-class-content "
+      class="{{classPrefix}}__description {{prefix}}-class-content "
       style="-webkit-line-clamp:{{maxContentRow}}"
     >
       {{content}}
@@ -43,7 +46,7 @@
   </view>
   <!-- icon right -->
   <view
-    class="{{classPrefix}}__icon-right t-class-icon"
+    class="{{classPrefix}}__icon-right {{prefix}}-class-icon"
     data-target="icon"
     bind:tap="onChange"
     wx:if="{{align === 'right'}}"
@@ -64,6 +67,6 @@
   </view>
   <!-- 内置下边框 -->
   <view
-    class="{{classPrefix}}__bordered {{classPrefix}}{{align === 'left' ? '__bordered--left' : '__bordered--right'}}"
+    class="{{classPrefix}}__bordered {{classPrefix}}{{align === 'left' ? '__bordered--left' : '__bordered--right'}} {{prefix}}-class-border"
   />
 </view>

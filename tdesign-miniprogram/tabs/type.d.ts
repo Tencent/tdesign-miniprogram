@@ -11,11 +11,11 @@ export interface TdTabsProps {
         required?: boolean;
     };
     /**
-     * 组件类名，分别用于设置 组件外层元素 等类名
+     * 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名
      */
     externalClasses?: {
         type: ArrayConstructor;
-        value?: ['t-class'];
+        value?: ['t-class', 't-class-item', 't-class-active', 't-class-track'];
         required?: boolean;
     };
     /**
@@ -50,6 +50,7 @@ export interface TdTabsProps {
      */
     defaultValue?: {
         type: StringConstructor;
+        optionalTypes: Array<NumberConstructor>;
         value?: TabValue;
         required?: boolean;
     };

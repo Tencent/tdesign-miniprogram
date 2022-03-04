@@ -57,7 +57,7 @@ export default class Slider extends SuperComponent {
     lineRight: 0,
     dotTopValue: [0, 0],
     _value: 0,
-    blockSize: 16,
+    blockSize: 20,
     isScale: false,
     scaleArray: [],
     scaleTextArray: [],
@@ -296,7 +296,6 @@ export default class Slider extends SuperComponent {
           // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
           const left = pageX - initialLeft - halfBlock;
           const leftValue = this.convertPosToValue(left, 0);
-
           this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
         } else {
           const right = -(pageX - initialRight) - halfBlock;
@@ -325,6 +324,7 @@ export default class Slider extends SuperComponent {
 
     const newData = [...(_value as number[])];
     const leftValue = this.convertPosToValue(currentLeft, 0);
+
     newData[0] = this.stepValue(leftValue);
 
     this.triggerValue(newData);

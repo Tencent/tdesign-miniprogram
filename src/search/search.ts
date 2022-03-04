@@ -9,6 +9,7 @@ const name = `${prefix}-search`;
 export default class Search extends SuperComponent {
   externalClasses = [
     `${prefix}-class`,
+    `${prefix}-class-input-container`,
     `${prefix}-class-input`,
     `${prefix}-class-cancel`,
     `${prefix}-class-left`,
