@@ -4,6 +4,15 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.5.4 `2022-3-4`
+### Bug Fixes
+- Slider: 视觉调整 & demo无法滑动问题修复[#200](https://github.com/Tencent/tdesign-miniprogram/pull/200) [@anlyyao](https://github.com/anlyyao)
+- Search: 修复圆角样式不生效问题[#208](https://github.com/Tencent/tdesign-miniprogram/pull/208) [@JJunYang](https://github.com/JJunYang)
+- Tab-bar: 修复value不生效问题[#211](https://github.com/Tencent/tdesign-miniprogram/pull/211) [@LeeJim](https://github.com/LeeJim)
+### Feature
+- Picker: 支持渐进式滚动[#203](https://github.com/Tencent/tdesign-miniprogram/pull/203) [@wutianSweet](https://github.com/wutianSweet)
+- Tabs: 添加滚动条外部样式类[#213](https://github.com/Tencent/tdesign-miniprogram/pull/213) [@JJunYang](https://github.com/JJunYang)
+  
 ## 0.5.3 `2022-2-24`
 ### Bug Fixes
 - Input: 修复 label 不生效的问题 [#190](https://github.com/Tencent/tdesign-miniprogram/pull/190) [@zhenzhencai](https://github.com/zhenzhencai)
