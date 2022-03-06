@@ -24,7 +24,23 @@ isComponent: true
 <img src="https://tdesign.gtimg.com/miniprogram/readme/rate.png" width="375px" height="50%">
 
 ```html
+<!-- 实心评分 设置属性：variant-->
 <t-rate defaultValue="{{value}}" variant="filled"></t-rate>
+
+<!-- 空心评分 设置属性：variant-->
+<t-rate defaultValue="{{value}}" variant="outline"></t-rate>
+
+<!-- 自定义评分数量 设置属性：count-->
+<t-rate defaultValue="{{value}}" variant="outline" count="{{6}}"></t-rate>
+
+<!-- 半星评分 设置属性：allowHalf -->
+<t-rate defaultValue="{{value}}" variant="filled" allowHalf></t-rate>
+
+<!-- 带描述评分 设置属性：showText-->
+<t-rate defaultValue="{{value}}" variant="outline" showText></t-rate>
+
+<!-- 自定义带描述评分， 设置属性：texts -->
+<t-rate defaultValue="{{value}}" variant="outline" showText texts="{{texts}}"></t-rate>
 ```
 
 ### 受控用法

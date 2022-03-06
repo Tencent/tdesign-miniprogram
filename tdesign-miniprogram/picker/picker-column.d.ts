@@ -23,5 +23,10 @@ export default class PickerColumn extends SuperComponent {
         resetOrigin(): void;
         getCount(): any;
     };
+    /**
+     * 将屏幕滑动距离换算为视图偏移量 模拟渐进式滚动
+     * @param touchDeltaY 屏幕滑动距离
+     */
+    calculateViewDeltaY(touchDeltaY: number): number;
     created(): void;
 }

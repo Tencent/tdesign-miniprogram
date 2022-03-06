@@ -12,6 +12,19 @@
     opacity: 0;
   }
 }
+.hotspot-expanded.relative {
+  position: relative;
+}
+.hotspot-expanded::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: scale(1.5);
+}
 .t-avatar {
   font-weight: 600;
   font-size: 28rpx;
@@ -79,6 +92,11 @@
   align-items: center;
   justify-content: center;
   border-radius: 999rpx;
+}
+.t-avatar__text:empty,
+.t-avatar__icon:empty {
+  width: 0;
+  height: 0;
 }
 .t-avatar__icon--default-l {
   font-size: 64rpx;

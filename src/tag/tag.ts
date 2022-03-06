@@ -15,7 +15,7 @@ export default class Tag extends SuperComponent {
   properties = props;
 
   methods = {
-    onClickClose(e: WechatMiniprogram.BaseEvent) {
+    hangleClose(e: WechatMiniprogram.BaseEvent) {
       this.triggerEvent('close', e);
     },
   };

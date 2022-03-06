@@ -85,15 +85,13 @@ let DateTimePicker = class DateTimePicker extends SuperComponent {
                 return mode.join('+');
             },
             getMinDate() {
-                var _a;
                 const { disableDate } = this.properties;
-                const startDate = (_a = disableDate) === null || _a === void 0 ? void 0 : _a.before;
+                const startDate = disableDate === null || disableDate === void 0 ? void 0 : disableDate.before;
                 return startDate ? dayjs(startDate) : DEFAULT_MIN_DATE;
             },
             getMaxDate() {
-                var _a;
                 const { disableDate } = this.properties;
-                const endDate = (_a = disableDate) === null || _a === void 0 ? void 0 : _a.after;
+                const endDate = disableDate === null || disableDate === void 0 ? void 0 : disableDate.after;
                 return endDate ? dayjs(endDate) : DEFAULT_MAX_DATE;
             },
             getMinYear() {

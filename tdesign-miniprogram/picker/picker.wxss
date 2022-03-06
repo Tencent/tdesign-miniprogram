@@ -12,6 +12,19 @@
     opacity: 0;
   }
 }
+.hotspot-expanded.relative {
+  position: relative;
+}
+.hotspot-expanded::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transform: scale(1.5);
+}
 .t-picker {
   position: relative;
   background-color: #ffffff;
@@ -40,10 +53,6 @@
   font-size: 32rpx;
   height: 100%;
   padding: 0 32rpx;
-}
-.t-picker__cancel:active,
-.t-picker__confirm:active {
-  opacity: 0.5;
 }
 .t-picker__cancel {
   color: #444444;

@@ -25,10 +25,12 @@ isComponent: true
 <t-search placeholder="搜索预设文案" center="{{true}}" />
 ```
 
-### 受控用法
+### 双向绑定用法
+
+通过双向绑定，在输入框里输入文字时，`value` 的值也会同时跟着变化。
 
 ```html
-<t-search value="{{value}}" bind:change="handleChange" placeholder="搜索预设文案" center="{{true}}" />
+<t-search model:value="{{value}}" placeholder="搜索预设文案" center="{{true}}" />
 ```
 
 ```js
@@ -36,9 +38,6 @@ Page({
   data: {
     value: ''
   },
-  handleChange(e) {
-    this.setData({ value: e.detail.value })
-  }
 })
 ```
 ## API
@@ -49,7 +48,7 @@ Page({
 action | String / Slot | '' | 自定义右侧操作按钮文字 | N
 center | Boolean | false | 是否居中 | N
 disabled | Boolean | false | 是否禁用 | N
-external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、组件 input 类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class','t-class-input','t-class-cancel','t-class-left','t-class-right']` | N
+external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-cancel','t-class-left','t-class-right']` | N
 focus | Boolean | false | 是否聚焦 | N
 label | String | '' | 左侧文本 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
@@ -57,7 +56,6 @@ placeholder | String | '' | 占位符 | N
 right-icon | String / Slot | 'close' | 右侧图标 | N
 shape | String | 'square' | 搜索框形状。可选项：square/round | N
 value | String | '' | 值 | N
-defaultValue | String | '' | （非受控）值 | N
 
 ### Search Events
 

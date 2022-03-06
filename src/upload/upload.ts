@@ -121,11 +121,18 @@ export default class Upload extends SuperComponent {
             name,
             type: 'image',
             url: temp.tempFilePath,
+            width: temp.width,
+            height: temp.height,
             size: temp.size,
             progress: 0,
           });
         });
-        this._trigger('success', { files });
+        this._trigger('select-change', {
+          files: [...this.data.customFiles],
+          currentSelectedFiles: [files]
+        });
+        this._trigger('add', { files });
+        this._trigger('success', { files: [...this.data.customFiles, ...files] });
         this.startUpload(files);
       },
       fail: (err) => {
@@ -156,10 +163,19 @@ export default class Upload extends SuperComponent {
             type: 'video',
             url: temp.tempFilePath,
             size: temp.size,
+            width: temp.width,
+            height: temp.height,
+            duration: temp.duration,
+            thumb: temp.thumbTempFilePath,
             progress: 0,
           });
         });
-        this._trigger('success', { files });
+        this._trigger('select-change', {
+          files: [...this.data.customFiles],
+          currentSelectedFiles: [files]
+        });
+        this._trigger('add', { files });
+        this._trigger('success', { files: [...this.data.customFiles, ...files] });
         this.startUpload(files);
       },
       fail: (err) => {

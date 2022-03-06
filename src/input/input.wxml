@@ -1,10 +1,11 @@
 <view
   class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + '--bordered'}} t-class"
 >
-  <view wx:if="{{name}}" class="{{classPrefix + '__name'}}">
-    <slot name="name" wx:if="{{name === 'slot'}}" />
-    <text wx:else>{{name}}</text>
+  <view wx:if="{{label}}" class="{{classPrefix + '__name'}}">
+    <slot name="label" wx:if="{{label === 'slot'}}" />
+    <text wx:else>{{label}}</text>
   </view>
+
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content">
       <input

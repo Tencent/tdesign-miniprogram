@@ -9,22 +9,22 @@
       </view>
       <view class="gutter-column-24" />
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" />
+        <t-avatar image="{{pics6[0]}}" alt="avatar" />
         <text class="avatar-word">用户</text>
       </view>
       <view class="gutter-column-24" />
       <view class="avatar-example">
-        <t-avatar shape="circle" image="{{pics[0]}}" />
+        <t-avatar shape="circle" image="{{pics6[0]}}" alt="avatar" />
         <text class="avatar-word">圆形</text>
       </view>
       <view class="gutter-column-24" />
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" />
+        <t-avatar shape="round" image="{{pics6[0]}}" />
         <text class="avatar-word">方形</text>
       </view>
       <view class="gutter-column-24" />
       <view class="avatar-example text">
-        <t-avatar alt="A" t-class-alt="alt-example" />
+        <t-avatar t-class-content="alt-example">A</t-avatar>
         <text class="avatar-word">自定义文字</text>
       </view>
     </view>
@@ -181,41 +181,41 @@
     </view>
     <view class="row">
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="large" badge-props="{{ {count: 16} }}" />
+        <t-avatar image="{{pics6[0]}}" size="large" badge-props="{{ {count: 16} }}" />
       </view>
       <view class="gutter-column-32" />
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="medium" badge-props="{{ {count: 8} }}" />
+        <t-avatar image="{{pics6[0]}}" size="medium" badge-props="{{ {count: 8} }}" />
       </view>
       <view class="gutter-column-32" />
       <view class="avatar-example">
-        <t-avatar image="{{pics[0]}}" size="small" badge-props="{{ {dot: true} }}" />
+        <t-avatar image="{{pics6[0]}}" size="small" badge-props="{{ {dot: true} }}" />
       </view>
     </view>
     <view class="row">
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {count: 16} }}" size="large" />
+        <t-avatar shape="round" image="{{pics6[0]}}" badge-props="{{ {count: 16} }}" size="large" />
       </view>
       <view class="gutter-column-32" />
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {count: 8} }}" size="medium" />
+        <t-avatar shape="round" image="{{pics6[0]}}" badge-props="{{ {count: 8} }}" size="medium" />
       </view>
       <view class="gutter-column-32" />
       <view class="avatar-example">
-        <t-avatar shape="round" image="{{pics[0]}}" badge-props="{{ {dot: true} }}" size="small" />
+        <t-avatar shape="round" image="{{pics6[0]}}" badge-props="{{ {dot: true} }}" size="small" />
       </view>
     </view>
     <view class="row bottom-row">
       <view class="avatar-example">
-        <t-avatar alt="A" t-class-alt="alt-example alt-example2" size="large" />
+        <t-avatar t-class-content="alt-example" size="large">A</t-avatar>
       </view>
       <view class="gutter-column-32" />
       <view class="avatar-example">
-        <t-avatar alt="A" t-class-alt="alt-example alt-example3" size="medium" />
+        <t-avatar t-class-content="alt-example" size="medium">A</t-avatar>
       </view>
       <view class="gutter-column-32" />
       <view class="avatar-example">
-        <t-avatar alt="A" t-class-alt="alt-example alt-example4" size="small" />
+        <t-avatar t-class-content="alt-example" size="small">A</t-avatar>
       </view>
     </view>
   </view>

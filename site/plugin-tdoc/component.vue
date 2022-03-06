@@ -74,17 +74,9 @@ export default defineComponent({
     tdDocHeader.spline = info.spline;
     tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
-    // @ts-ignore
-    tdDocContent.initAnchorHighlight();
-
     this.$emit('loaded', () => {
       tdDocContent.pageStatus = 'show';
     });
-  },
-
-  beforeDestroy() {
-    // @ts-ignore
-    this.$refs.tdDocContent.resetAnchorHighlight();
   },
 });
 </script>

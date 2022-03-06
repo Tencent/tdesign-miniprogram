@@ -15,7 +15,7 @@ const props = {
         type: Boolean,
         value: false,
     },
-    /** 组件外部样式类名，分别用于设置组件外层类名、组件 input 类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型 */
+    /** 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型 */
     externalClasses: {
         type: Array,
     },
@@ -53,11 +53,6 @@ const props = {
     value: {
         type: String,
         value: '',
-    },
-    /** 值 - 非受控 */
-    defaultValue: {
-        type: null,
-        value: undefined,
     },
 };
 export default props;

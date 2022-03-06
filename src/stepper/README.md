@@ -23,7 +23,7 @@ isComponent: true
 
 ```html
 <t-cell title="标题文字（单位）">
-  <view class="cell-badge-wrap" slot="note">
+  <view class="cell-badge-wrap" slot="right-icon">
     <t-stepper defaultValue="0" step="2" />
   </view>
 </t-cell>

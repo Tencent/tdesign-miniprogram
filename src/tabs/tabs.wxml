@@ -16,7 +16,7 @@
       >
         {{item.label}}
       </view>
-      <view class="{{classPrefix}}__track" style="{{trackStyle}}" />
+      <view class="{{classPrefix}}__track {{prefix}}-class-track" style="{{trackStyle}}" />
     </view>
   </scroll-view>
   <view
