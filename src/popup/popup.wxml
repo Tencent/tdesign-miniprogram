@@ -17,6 +17,7 @@
       <t-icon name="close" wx:if="{{closeBtn}}" bind:tap="onCloseClick" size="64rpx" />
       <slot name="closeBtn" class="{{classPrefix}}-slot" />
     </view>
+    <slot name="content" />
     <slot />
   </view>
 </t-transition>
