@@ -21,6 +21,8 @@ export default class Image extends SuperComponent {
     classPrefix: name,
   };
 
+  preSrc = ''; // 保留上一次的src,防止在src相同时重复update
+
   lifetimes = {
     attached(this: Image) {
       this.update();
@@ -29,6 +31,7 @@ export default class Image extends SuperComponent {
 
   observers = {
     src() {
+      if (this.preSrc === this.properties.src) return;
       this.update();
     },
   };
@@ -74,6 +77,7 @@ export default class Image extends SuperComponent {
 
   update() {
     const { src } = this.properties as any;
+    this.preSrc = src;
     if (!src) {
       // 链接为空时直接触发加载失败
       this.onLoadError({ errMsg: '图片链接为空' });
