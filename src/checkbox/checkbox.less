@@ -10,6 +10,9 @@
   position: relative;
   background: white;
 
+  &--right {
+    flex-direction: row-reverse;
+  }
   .limit-title-row {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -82,21 +85,20 @@
     color: rgba(0, 0, 0, 0.26);
   }
 
-  &__bordered {
+  &__border {
     position: absolute;
     bottom: 0;
-    // display: block;
     border-top: 1rpx solid #e7e7e7;
     width: 100%;
-  }
 
-  &__bordered--left {
-    left: 80rpx;
-    width: calc(100% - 80rpx);
-  }
+    &--left {
+      left: 80rpx;
+      width: calc(100% - 80rpx);
+    }
 
-  &__bordered--right {
-    right: 80rpx;
-    width: calc(100% - 80rpx);
+    &--right {
+      right: 80rpx;
+      width: calc(100% - 80rpx);
+    }
   }
 }

@@ -58,7 +58,6 @@ export default class Radio extends SuperComponent {
     prefix,
     active: false,
     classPrefix: name,
-    classBasePrefix: prefix,
     customIcon: false,
     optionLinked: false,
     iconVal: [],
