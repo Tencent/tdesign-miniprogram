@@ -26,6 +26,14 @@ export interface TdTagProps {
     required?: boolean;
   };
   /**
+   * 组件类名，用于设置 组件外层元素元素类名
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class'];
+    required?: boolean;
+  };
+  /**
    * 标签中的图标，可自定义图标呈现
    * @default ''
    */
@@ -84,7 +92,6 @@ export interface TdTagProps {
 export interface TdCheckTagProps {
   /**
    * 标签选中的状态，默认风格（theme=default）才有选中态
-   * @default false
    */
   checked?: {
     type: BooleanConstructor;
@@ -93,7 +100,6 @@ export interface TdCheckTagProps {
   };
   /**
    * 标签选中的状态，默认风格（theme=default）才有选中态，非受控属性
-   * @default false
    */
   defaultChecked?: {
     type: BooleanConstructor;
@@ -155,5 +161,3 @@ export interface TdCheckTagProps {
     required?: boolean;
   };
 }
-
-export type CSSProperties = Partial<CSSStyleDeclaration>;

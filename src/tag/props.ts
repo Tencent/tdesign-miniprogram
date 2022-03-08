@@ -16,6 +16,10 @@ const props: TdTagProps = {
     type: Boolean,
     value: false,
   },
+  /** 组件类名，用于设置 组件外层元素元素类名 */
+  externalClasses: {
+    type: Array,
+  },
   /** 标签中的图标，可自定义图标呈现 */
   icon: {
     type: String,
