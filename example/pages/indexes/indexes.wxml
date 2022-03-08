@@ -2,11 +2,13 @@
   <view class="demo-title">Indexes 索引</view>
   <view class="demo-desc">用于页面中信息快速检索，可以根据目录中的页码快速找到所需的内容。</view>
   <t-demo title="01 类型" desc="基础索引类型">
-    <t-button t-class="type-button" size="large" bind:tap="tapShowLetter">
-      <navigator url="/pages/indexes/display">字母索引</navigator>
-    </t-button>
-    <t-button t-class="type-button" size="large" bind:tap="tapShowNumber">
-      <navigator url="/pages/indexes/display">数字索引</navigator>
-    </t-button>
+    <view class="box">
+      <t-button t-class="type-button" variant="plain" size="large" block bind:tap="tapShowLetter">
+        <navigator url="/pages/indexes/display">字母索引</navigator>
+      </t-button>
+      <t-button t-class="type-button" variant="plain" size="large" block bind:tap="tapShowNumber">
+        <navigator url="/pages/indexes/display">数字索引</navigator>
+      </t-button>
+    </view>
   </t-demo>
 </view>
