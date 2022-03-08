@@ -86,12 +86,6 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      icon: '',
-      theme: '',
-      direction: 'row',
-      placement: 'middle',
-      preventScrollThrough: false,
-      duration: 2000,
       ...option,
     });
   },

@@ -33,7 +33,17 @@ export default class Toast extends SuperComponent {
 
   properties = Props;
 
-  show(options: TdToastProps) {
+  show(userOptions: TdToastProps) {
+    const options = {
+      message: '',
+      icon: '',
+      theme: '',
+      direction: 'row',
+      placement: 'middle',
+      preventScrollThrough: false,
+      duration: 2000,
+      ...userOptions,
+    };
     if (this.hideTimer) clearTimeout(this.hideTimer);
     if (this.removeTimer) clearTimeout(this.removeTimer);
     const typeMapIcon =
