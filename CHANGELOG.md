@@ -4,6 +4,22 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.6.0 `2022-3-8`
+### Bug Fixes
+- Stepper: 修复stepper组件事件向上冒泡[#216](https://github.com/Tencent/tdesign-miniprogram/pull/216) [@zhenzhencai](https://github.com/zhenzhencai)
+- Checkbox: 修复prefix问题[#218](https://github.com/Tencent/tdesign-miniprogram/pull/218)[@amberlwan](https://github.com/amberlwan)
+- Popup: 支持默认slot[#219](https://github.com/Tencent/tdesign-miniprogram/pull/219)[@Perisiguiendo](https://github.com/Perisiguiendo)
+- Image: 记录image组件传入的src防止src相同时重复刷新[#221](https://github.com/Tencent/tdesign-miniprogram/pull/221)[@xihangzhou](https://github.com/xihangzhou)
+- Tag: 增加外部样式类[#223](https://github.com/Tencent/tdesign-miniprogram/pull/223)[@xihangzhou](https://github.com/xihangzhou)
+- Button: 修改对Button组件的使用demo[#229](https://github.com/Tencent/tdesign-miniprogram/pull/229)[@anlyyao](https://github.com/anlyyao)
+- Toast: 修改未传入的参数为默认值[#230](https://github.com/Tencent/tdesign-miniprogram/pull/230)[@scshsy](https://github.com/scshsy)
+- Toast: 修复z-index 低于popup问题[#231](https://github.com/Tencent/tdesign-miniprogram/pull/231)[@LeeJim](https://github.com/LeeJim)
+
+### BREAKING CHANGES
+- Button: [#212](https://github.com/Tencent/tdesign-miniprogram/pull/212)[@anlyyao](https://github.com/anlyyao)
+  - 重构 shape 的实现，新增支持 rectangle、circle 类型
+  - 修复 shape = round 样式不对的问题
+  - 支持纯图标按钮
 ## 0.5.4 `2022-3-4`
 ### Bug Fixes
 - Slider: 视觉调整 & demo无法滑动问题修复[#200](https://github.com/Tencent/tdesign-miniprogram/pull/200) [@anlyyao](https://github.com/anlyyao)
