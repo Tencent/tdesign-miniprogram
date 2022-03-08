@@ -3,7 +3,7 @@
 >
   <view
     class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
-    bindtap="minusValue"
+    catchtap="minusValue"
   >
     <t-icon
       name="remove"
@@ -17,11 +17,11 @@
     disabled="{{ disabled || disableInput }}"
     type="number"
     value="{{ currentValue }}"
-    bindblur="blurHandler"
+    catchblur="blurHandler"
   />
   <view
     class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
-    bindtap="plusValue"
+    catchtap="plusValue"
   >
     <t-icon
       name="add"

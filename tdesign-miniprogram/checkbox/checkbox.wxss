@@ -33,6 +33,9 @@
   position: relative;
   background: white;
 }
+.t-checkbox--right {
+  flex-direction: row-reverse;
+}
 .t-checkbox .limit-title-row {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -98,17 +101,17 @@
   cursor: not-allowed;
   color: rgba(0, 0, 0, 0.26);
 }
-.t-checkbox__bordered {
+.t-checkbox__border {
   position: absolute;
   bottom: 0;
   border-top: 1rpx solid #e7e7e7;
   width: 100%;
 }
-.t-checkbox__bordered--left {
+.t-checkbox__border--left {
   left: 80rpx;
   width: calc(100% - 80rpx);
 }
-.t-checkbox__bordered--right {
+.t-checkbox__border--right {
   right: 80rpx;
   width: calc(100% - 80rpx);
 }

@@ -98,7 +98,7 @@ export default class CheckBox extends SuperComponent {
     };
     data: {
         classPrefix: string;
-        classBasePrefix: string;
+        prefix: string;
         active: boolean;
         halfChecked: boolean;
         optionLinked: boolean;

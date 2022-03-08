@@ -34,7 +34,7 @@ let CheckBox = class CheckBox extends SuperComponent {
         // 组件的内部数据
         this.data = {
             classPrefix,
-            classBasePrefix: prefix,
+            prefix,
             active: false,
             halfChecked: false,
             optionLinked: false,
