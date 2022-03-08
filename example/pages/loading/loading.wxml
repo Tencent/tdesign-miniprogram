@@ -44,9 +44,11 @@
     <view class="demo-section__desc">加载失败</view>
     <t-loading theme="error" class="loading-style" loading bind:reload="reloadPage"></t-loading>
     <view class="demo-section__desc">进度条加载</view>
-    <t-button size="large" plain class="progress-btn" bind:tap="goToProgress"
-      >页面进度条加载</t-button
-    >
+    <view class="box">
+      <t-button size="large" plain class="progress-btn" block bind:tap="goToProgress"
+        >页面进度条加载</t-button
+      >
+    </view>
   </t-demo>
 
   <t-demo title="02 状态" desc="如果加载状态在延迟内结束，则不显示">
