@@ -8,10 +8,10 @@
 @message-align: flex-start;
 @message-icon-size: @icon-l;
 @message-border-radius: 8rpx;
-@message-z-index: 5000;
+@message-z-index: 15000;
 @gutter: 16rpx;
 
-@message: ~"@{prefix}-message";
+@message: ~'@{prefix}-message';
 
 .@{message} {
   position: fixed;
@@ -29,7 +29,7 @@
   font-size: @message-font-size;
   line-height: 1;
   background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .2);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
   opacity: 0;
 
   &__text {
@@ -74,7 +74,7 @@
     margin-left: @gutter;
   }
 
-  .@{message}__btn--right  {
+  .@{message}__btn--right {
     font-size: inherit;
     line-height: inherit;
     height: 44rpx;
