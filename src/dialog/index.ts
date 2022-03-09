@@ -1,3 +1,5 @@
+import props from './props';
+
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
 interface DialogAlertOptionsType {
@@ -9,6 +11,8 @@ interface DialogAlertOptionsType {
   asyncClose?: boolean;
   confirmButtonText?: string;
   textAlign?: string;
+  cancelBtn?: string | object;
+  confirmBtn?: string | object;
 }
 
 interface DialogComfirmOptionsType extends DialogAlertOptionsType {
@@ -32,6 +36,19 @@ interface DialogActionOptionsType {
   buttonLayout?: 'vertical' | 'horizontal'; // 多按钮排列方式，可选值：horizontal/vertical。
 }
 
+const defaultOptions = {
+  actions: false,
+  buttonLayout: props.buttonLayout.value,
+  cancelBtn: props.cancelBtn.value,
+  closeOnOverlayClick: props.closeOnOverlayClick.value,
+  confirmBtn: props.confirmBtn.value,
+  content: '',
+  preventScrollThrough: props.preventScrollThrough.value,
+  showOverlay: props.showOverlay.value,
+  title: '',
+  visible: props.visible.value,
+};
+
 const getDialogInstance = function (context?: Context, selector = '#t-dialog') {
   if (!context) {
     const pages = getCurrentPages();
@@ -48,7 +65,7 @@ const getDialogInstance = function (context?: Context, selector = '#t-dialog') {
 
 export default {
   alert(options: DialogAlertOptionsType) {
-    const { context, selector, ...otherOptions } = options;
+    const { context, selector, ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getDialogInstance(context, selector);
     if (!instance) return Promise.reject();
 
@@ -62,7 +79,7 @@ export default {
     });
   },
   confirm(options: DialogComfirmOptionsType) {
-    const { context, selector, ...otherOptions } = options;
+    const { context, selector, ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getDialogInstance(context, selector);
     if (!instance) return Promise.reject();
 
@@ -84,10 +101,10 @@ export default {
     return Promise.reject();
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
-    const { context, selector, actions, ...otherOptions } = options;
+    const { context, selector, actions, ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getDialogInstance(context, selector);
     if (!instance) return Promise.reject();
-    if (!actions || actions.length === 0 || actions.length > 7) {
+    if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > 7))) {
       console.warn('action 数量建议控制在1至7个');
     }
 

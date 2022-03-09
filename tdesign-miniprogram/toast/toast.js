@@ -31,7 +31,8 @@ let Toast = class Toast extends SuperComponent {
         };
         this.properties = Props;
     }
-    show(options) {
+    show(userOptions) {
+        const options = Object.assign({ message: '', icon: '', theme: '', direction: 'row', placement: 'middle', preventScrollThrough: false, duration: 2000 }, userOptions);
         if (this.hideTimer)
             clearTimeout(this.hideTimer);
         if (this.removeTimer)

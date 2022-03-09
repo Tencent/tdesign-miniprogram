@@ -62,6 +62,11 @@
 .t-button:not(.t-is-disabled):active::after {
   opacity: 0.1;
 }
+.t-button__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .t-button--default {
   color: rgba(0, 0, 0, 0.9);
   background-color: #ffffff;
@@ -128,64 +133,76 @@
   background-color: transparent;
   color: #f8b9be;
 }
+.t-button--base {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 11px;
+  padding-right: 11px;
+  font-size: 28rpx;
+}
 .t-button--size-l {
-  display: flex;
-  width: auto;
-  margin: 0 32rpx;
   height: 88rpx;
   line-height: 88rpx;
-  padding-left: 48rpx;
-  padding-right: 48rpx;
+  padding-left: 15px;
+  padding-right: 15px;
 }
-.t-button--size-m {
-  width: 480rpx;
-  height: 80rpx;
-  line-height: 1.5;
-  padding-left: 32rpx;
-  padding-right: 32rpx;
+.t-button--size-l .t-button__icon {
+  font-size: 44rpx;
+}
+.t-button--size-m .t-button__icon {
+  font-size: 40rpx;
 }
 .t-button--size-s {
   height: 72rpx;
   line-height: 72rpx;
-  padding-left: 40rpx;
-  padding-right: 40rpx;
+  padding-left: 7px;
+  padding-right: 7px;
 }
 .t-button--size-s .t-button__icon {
-  font-size: 28rpx;
+  font-size: 36rpx;
 }
 .t-button__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 16rpx;
-  font-size: 1.2em;
   border-radius: 8rpx;
-  line-height: inherit;
 }
-.t-button__icon + .t-button__text {
-  margin-left: 16rpx;
+.t-button--round.t-button--size-l {
+  border-radius: 50%;
 }
-.t-button--round {
-  border-radius: 88rpx / 2;
+.t-button--round.t-button--size-m {
+  border-radius: 50%;
 }
-.t-button--round::after {
-  border-radius: 88rpx / 2;
+.t-button--round.t-button--size-s {
+  border-radius: 50%;
+}
+.t-button--square {
+  padding: 0;
+}
+.t-button--square.t-button--size-l {
+  width: 88rpx;
+}
+.t-button--square.t-button--size-m {
+  width: 80rpx;
+}
+.t-button--square.t-button--size-s {
+  width: 72rpx;
 }
 .t-button--circle {
-  border-radius: 999px;
+  padding: 0;
+}
+.t-button--circle.t-button--size-l {
+  border-radius: 50%;
+  width: 88rpx;
+}
+.t-button--circle.t-button--size-m {
+  border-radius: 50%;
+  width: 80rpx;
+}
+.t-button--circle.t-button--size-s {
+  border-radius: 50%;
+  width: 72rpx;
 }
 .t-button.t-is-block {
-  display: flex;
+  display: block;
   width: 100%;
-  border: 0;
-  margin-left: 0;
-  margin-right: 0;
-  height: 88rpx;
-  line-height: 88rpx;
-  border-radius: 0;
-}
-.t-button.t-is-block::after {
-  border-radius: 0;
 }
 .t-button.t-is-disabled {
   cursor: not-allowed;
