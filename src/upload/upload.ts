@@ -1,6 +1,6 @@
 import { isObject, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
-import { MediaType, UploadMpConfig, UploadFile } from './type';
+import { UploadMpConfig, UploadFile } from './type';
 import config from '../common/config';
 
 const { prefix } = config;
@@ -20,7 +20,6 @@ export default class Upload extends SuperComponent {
     proofs: [],
     customFiles: [] as UploadFile[], // 内部动态修改的files
     customLimit: 0, // 内部动态修改的limit
-    mediaType: [] as MediaType[], // 这里由于小程序api问题目前不支持同时上传视频和图片
     // 以下是声明properties
     config: {} as UploadMpConfig,
     files: [] as UploadFile[],
@@ -106,7 +105,7 @@ export default class Upload extends SuperComponent {
   chooseImg() {
     const { config, max, sizeLimit } = this.data;
     wx.chooseMedia({
-      count: max,
+      count: max === 0 ? 9 : max, // 在 iOS 里，0 是无效的，会导致抛异常
       mediaType: ['image'],
       ...config,
       success: (res) => {
@@ -129,7 +128,7 @@ export default class Upload extends SuperComponent {
         });
         this._trigger('select-change', {
           files: [...this.data.customFiles],
-          currentSelectedFiles: [files]
+          currentSelectedFiles: [files],
         });
         this._trigger('add', { files });
         this._trigger('success', { files: [...this.data.customFiles, ...files] });
@@ -172,7 +171,7 @@ export default class Upload extends SuperComponent {
         });
         this._trigger('select-change', {
           files: [...this.data.customFiles],
-          currentSelectedFiles: [files]
+          currentSelectedFiles: [files],
         });
         this._trigger('add', { files });
         this._trigger('success', { files: [...this.data.customFiles, ...files] });
@@ -191,9 +190,7 @@ export default class Upload extends SuperComponent {
   getRandFileName(filePath) {
     const extIndex = filePath.lastIndexOf('.');
     const extName = extIndex === -1 ? '' : filePath.substr(extIndex);
-    return (
-      parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName
-    );
+    return parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName;
   }
 
   closePop() {
@@ -201,7 +198,7 @@ export default class Upload extends SuperComponent {
   }
 
   onAddTap() {
-    const { mediaType } = this.data;
+    const { mediaType } = this.properties;
     // if (mediaType.length > 1) {
     //   this.setData({ showPop: true });
     //   return;
