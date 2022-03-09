@@ -18,7 +18,7 @@ docClass: timeline
 - Dialog: 
   - 修复调用时没重复默认值问题[#235](https://github.com/Tencent/tdesign-miniprogram/pull/235)[@scshsy](https://github.com/scshsy)
   - 修复dialog内Button样式错误[#236](https://github.com/Tencent/tdesign-miniprogram/pull/236)[@anlyyao](https://github.com/anlyyao)
-- Upload: 修复在IOS上无法选择的问题[#239](https://github.com/Tencent/tdesign-miniprogram/pull/239)[@LeeJim](https://github.com/LeeJim)
+- Upload: 修复在iOS上无法选择的问题[#239](https://github.com/Tencent/tdesign-miniprogram/pull/239)[@LeeJim](https://github.com/LeeJim)
 
 ### BREAKING CHANGES
 - Button: [#212](https://github.com/Tencent/tdesign-miniprogram/pull/212)[@anlyyao](https://github.com/anlyyao)[#240](https://github.com/Tencent/tdesign-miniprogram/pull/240)[@anlyyao](https://github.com/anlyyao)
