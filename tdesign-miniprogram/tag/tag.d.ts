@@ -4,6 +4,7 @@ export default class Tag extends SuperComponent {
         classPrefix: string;
         classBasePrefix: string;
     };
+    externalClasses: string[];
     properties: import("./type").TdTagProps;
     methods: {
         hangleClose(e: WechatMiniprogram.BaseEvent): void;
