@@ -5,7 +5,7 @@
     <view class="demo-section__desc">实心评分</view>
     <view class="item">
       <view class="item__title">请点击评分</view>
-      <t-rate value="{{value[0]}}" data-index="{{0}}" variant="filled" />
+      <t-rate value="{{value[0]}}" data-index="{{0}}" variant="filled" bind:change="onChange" />
     </view>
 
     <view class="demo-section__desc">空心评分</view>
@@ -59,6 +59,17 @@
         data-index="{{5}}"
         bind:change="onChange"
         showText="{{true}}"
+      />
+    </view>
+    <view class="demo-section__desc">禁用评分</view>
+    <view class="item">
+      <view class="item__title">仅展示</view>
+      <t-rate
+        value="{{value[10]}}"
+        data-index="{{10}}"
+        variant="filled"
+        disabled
+        bind:change="onChange"
       />
     </view>
   </t-demo>

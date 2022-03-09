@@ -28,7 +28,7 @@ isComponent: true
 <t-rate defaultValue="{{value}}" variant="filled"></t-rate>
 
 <!-- 空心评分 设置属性：variant-->
-<t-rate defaultValue="{{value}}" variant="outline"></t-rate>
+<t-rate defaultValue="{{value}}" variant="outline"  bind:change="changeValue"></t-rate>
 
 <!-- 自定义评分数量 设置属性：count-->
 <t-rate defaultValue="{{value}}" variant="outline" count="{{6}}"></t-rate>
@@ -41,6 +41,9 @@ isComponent: true
 
 <!-- 自定义带描述评分， 设置属性：texts -->
 <t-rate defaultValue="{{value}}" variant="outline" showText texts="{{texts}}"></t-rate>
+
+<!-- 禁用评分： 设置属性：disabled -->
+<t-rate defaultValue="{{value}}" variant="filled" disabled></t-rate>
 ```
 
 ### 受控用法
