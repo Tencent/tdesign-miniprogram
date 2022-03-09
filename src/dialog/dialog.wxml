@@ -2,6 +2,7 @@
 <wxs src="./dialog.wxs" module="_" />
 
 <t-popup
+  class="page"
   visible="{{visible}}"
   showOverlay="{{showOverlay}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
