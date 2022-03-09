@@ -4,7 +4,7 @@ type ToastType = 'loading' | 'success' | 'fail';
 type ToastPositionType = 'top' | 'middle' | 'bottom';
 type ToastDirectionType = 'row' | 'column';
 
-type ToastOptionsType = {
+export type ToastOptionsType = {
   context?: Context;
   selector?: string;
   icon?: string;
