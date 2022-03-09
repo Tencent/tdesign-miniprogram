@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@dialog: ~"@{prefix}-dialog";
+@dialog: ~'@{prefix}-dialog';
 // size
 @dialog-width: 322rpx * 2;
 @dialog-body-min-height: 88rpx * 2;
@@ -9,7 +9,7 @@
 @dialog-input-height: 48rpx * 2;
 
 // color
-@dialog-btn-bg-color-active: rgba(0, 0, 0, .05);
+@dialog-btn-bg-color-active: rgba(0, 0, 0, 0.05);
 @dialog-btn-border-color: #eee;
 @dialog-input-bg-color: #f0f0f0;
 
@@ -68,6 +68,10 @@ page {
     &__footer {
       display: flex;
 
+      .@{prefix}-button {
+        width: 100%;
+      }
+
       &--column {
         flex-flow: column-reverse;
 
@@ -94,7 +98,7 @@ page {
       border-bottom: 0;
 
       &-half {
-        width: (@dialog-width / 2 );
+        width: (@dialog-width / 2);
       }
 
       &-confirm {
@@ -108,12 +112,12 @@ page {
       }
 
       &-bounce-enter {
-        transform: translate3d(-50%, -50%, 0) scale(.7);
+        transform: translate3d(-50%, -50%, 0) scale(0.7);
         opacity: 0;
       }
 
       &-bounce-leave-active {
-        transform: translate3d(-50%, -50%, 0) scale(.9);
+        transform: translate3d(-50%, -50%, 0) scale(0.9);
         opacity: 0;
       }
 
