@@ -12,14 +12,20 @@ docClass: timeline
 - Image: 记录image组件传入的src防止src相同时重复刷新[#221](https://github.com/Tencent/tdesign-miniprogram/pull/221)[@xihangzhou](https://github.com/xihangzhou)
 - Tag: 增加外部样式类[#223](https://github.com/Tencent/tdesign-miniprogram/pull/223)[@xihangzhou](https://github.com/xihangzhou)
 - Button: 修改对Button组件的使用demo[#229](https://github.com/Tencent/tdesign-miniprogram/pull/229)[@anlyyao](https://github.com/anlyyao)
-- Toast: 修改未传入的参数为默认值[#230](https://github.com/Tencent/tdesign-miniprogram/pull/230)[@scshsy](https://github.com/scshsy)
-- Toast: 修复z-index 低于popup问题[#231](https://github.com/Tencent/tdesign-miniprogram/pull/231)[@LeeJim](https://github.com/LeeJim)
+- Toast: 
+  - 修改未传入的参数为默认值[#230](https://github.com/Tencent/tdesign-miniprogram/pull/230)[@scshsy](https://github.com/scshsy)
+  -  修复z-index 低于popup问题[#233](https://github.com/Tencent/tdesign-miniprogram/pull/233)[@LeeJim](https://github.com/LeeJim)
+- Dialog: 
+  - 修复调用时没重复默认值问题[#235](https://github.com/Tencent/tdesign-miniprogram/pull/235)[@scshsy](https://github.com/scshsy)
+  - 修复dialog内Button样式错误[#236](https://github.com/Tencent/tdesign-miniprogram/pull/236)[@anlyyao](https://github.com/anlyyao)
+- Upload: 修复在IOS上无法选择的问题[#239](https://github.com/Tencent/tdesign-miniprogram/pull/239)[@LeeJim](https://github.com/LeeJim)
 
 ### BREAKING CHANGES
-- Button: [#212](https://github.com/Tencent/tdesign-miniprogram/pull/212)[@anlyyao](https://github.com/anlyyao)
+- Button: [#212](https://github.com/Tencent/tdesign-miniprogram/pull/212)[@anlyyao](https://github.com/anlyyao)[#240](https://github.com/Tencent/tdesign-miniprogram/pull/240)[@anlyyao](https://github.com/anlyyao)
   - 重构 shape 的实现，新增支持 rectangle、circle 类型
   - 修复 shape = round 样式不对的问题
   - 支持纯图标按钮
+  - shape默认值为rectangle
 ## 0.5.4 `2022-3-4`
 ### Bug Fixes
 - Slider: 视觉调整 & demo无法滑动问题修复[#200](https://github.com/Tencent/tdesign-miniprogram/pull/200) [@anlyyao](https://github.com/anlyyao)
