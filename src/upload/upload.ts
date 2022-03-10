@@ -102,28 +102,117 @@ export default class Upload extends SuperComponent {
   }
 
   /** 选择图片 */
-  chooseImg() {
-    const { config, max, sizeLimit } = this.data;
+  // chooseImg() {
+  //   const { config, max, sizeLimit } = this.data;
+  //   wx.chooseMedia({
+  //     count: max === 0 ? 9 : max, // 在 iOS 里，0 是无效的，会导致抛异常
+  //     mediaType: ['image'],
+  //     ...config,
+  //     success: (res) => {
+  //       const files = [];
+  //       res.tempFiles.forEach((temp) => {
+  //         if (sizeLimit && temp.size > sizeLimit) {
+  //           wx.showToast({ icon: 'none', title: '图片大小超过限制' });
+  //           return;
+  //         }
+  //         const name = this.getRandFileName(temp.tempFilePath);
+  //         files.push({
+  //           name,
+  //           type: 'image',
+  //           url: temp.tempFilePath,
+  //           width: temp.width,
+  //           height: temp.height,
+  //           size: temp.size,
+  //           progress: 0,
+  //         });
+  //       });
+  //       this._trigger('select-change', {
+  //         files: [...this.data.customFiles],
+  //         currentSelectedFiles: [files],
+  //       });
+  //       this._trigger('add', { files });
+  //       this._trigger('success', { files: [...this.data.customFiles, ...files] });
+  //       this.startUpload(files);
+  //     },
+  //     fail: (err) => {
+  //       this.triggerEvent('fail', err);
+  //     },
+  //     complete: (res) => {
+  //       this.triggerEvent('complete', res);
+  //     },
+  //   });
+  // }
+
+  /** 选择视频 */
+  // chooseVideo() {
+  //   const { config, sizeLimit } = this.data;
+  //   wx.chooseMedia({
+  //     mediaType: ['video'],
+  //     ...config,
+  //     success: (res) => {
+  //       const files = [];
+  //       res.tempFiles.forEach((temp) => {
+  //         if (sizeLimit && temp.size > sizeLimit) {
+  //           wx.showToast({ icon: 'none', title: '视频大小超过限制' });
+  //           return;
+  //         }
+  //         const name = this.getRandFileName(temp.tempFilePath);
+  //         files.push({
+  //           name,
+  //           type: 'video',
+  //           url: temp.tempFilePath,
+  //           size: temp.size,
+  //           width: temp.width,
+  //           height: temp.height,
+  //           duration: temp.duration,
+  //           thumb: temp.thumbTempFilePath,
+  //           progress: 0,
+  //         });
+  //       });
+  //       this._trigger('select-change', {
+  //         files: [...this.data.customFiles],
+  //         currentSelectedFiles: [files],
+  //       });
+  //       this._trigger('add', { files });
+  //       this._trigger('success', { files: [...this.data.customFiles, ...files] });
+  //       this.startUpload(files);
+  //     },
+  //     fail: (err) => {
+  //       this.triggerEvent('fail', err);
+  //     },
+  //     complete: (res) => {
+  //       this.triggerEvent('complete', res);
+  //     },
+  //   });
+  // }
+
+  /** 选择媒体素材 */
+  chooseMedia(mediaType) {
+    const { config, sizeLimit, max } = this.data;
     wx.chooseMedia({
       count: max === 0 ? 9 : max, // 在 iOS 里，0 是无效的，会导致抛异常
-      mediaType: ['image'],
+      mediaType,
       ...config,
       success: (res) => {
         const files = [];
         res.tempFiles.forEach((temp) => {
-          if (sizeLimit && temp.size > sizeLimit) {
-            wx.showToast({ icon: 'none', title: '图片大小超过限制' });
+          const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
+          if (sizeLimit && size > sizeLimit) {
+            wx.showToast({ icon: 'none', title: `${fileType === 'image' ? '图片' : '视频'}大小超过限制` });
             return;
           }
-          const name = this.getRandFileName(temp.tempFilePath);
+          const name = this.getRandFileName(tempFilePath);
           files.push({
             name,
-            type: 'image',
-            url: temp.tempFilePath,
-            width: temp.width,
-            height: temp.height,
-            size: temp.size,
+            type: this.getFileType(mediaType, tempFilePath, fileType),
+            url: tempFilePath,
+            size: size,
+            width: width,
+            height: height,
+            duration: duration,
+            thumb: thumbTempFilePath,
             progress: 0,
+            ...res,
           });
         });
         this._trigger('select-change', {
@@ -143,47 +232,27 @@ export default class Upload extends SuperComponent {
     });
   }
 
-  /** 选择视频 */
-  chooseVideo() {
-    const { config, sizeLimit } = this.data;
-    wx.chooseMedia({
-      mediaType: ['video'],
-      ...config,
-      success: (res) => {
-        const files = [];
-        res.tempFiles.forEach((temp) => {
-          if (sizeLimit && temp.size > sizeLimit) {
-            wx.showToast({ icon: 'none', title: '视频大小超过限制' });
-            return;
-          }
-          const name = this.getRandFileName(temp.tempFilePath);
-          files.push({
-            name,
-            type: 'video',
-            url: temp.tempFilePath,
-            size: temp.size,
-            width: temp.width,
-            height: temp.height,
-            duration: temp.duration,
-            thumb: temp.thumbTempFilePath,
-            progress: 0,
-          });
-        });
-        this._trigger('select-change', {
-          files: [...this.data.customFiles],
-          currentSelectedFiles: [files],
-        });
-        this._trigger('add', { files });
-        this._trigger('success', { files: [...this.data.customFiles, ...files] });
-        this.startUpload(files);
-      },
-      fail: (err) => {
-        this.triggerEvent('fail', err);
-      },
-      complete: (res) => {
-        this.triggerEvent('complete', res);
-      },
-    });
+  /**
+   * 由于小程序暂时在ios上不支持返回上传文件的fileType，这里用文件的后缀来判断
+   * @param mediaType
+   * @param tempFilePath
+   * @returns string
+   * @link https://developers.weixin.qq.com/community/develop/doc/00042820b28ee8fb41fc4d0c254c00
+   */
+  getFileType(mediaType: string[], tempFilePath: string, fileType?: string) {
+    if (fileType) return fileType; // 如果有返回fileType就直接用
+    if (mediaType.length === 1) {
+      // 在单选媒体类型的时候直接使用单选媒体类型
+      return mediaType[0];
+    }
+    // 否则根据文件后缀进行判读
+    const videoType = ['avi', 'wmv', 'mkv', 'mp4', 'mov', 'rm', '3gp', 'flv', 'mpg', 'rmvb'];
+    const temp = tempFilePath.split('.');
+    const postfix = temp[temp.length - 1];
+    if (videoType.includes(postfix.toLocaleLowerCase())) {
+      return 'video';
+    }
+    return 'image';
   }
 
   // 选中文件之后，计算一个随机的短文件名
@@ -199,22 +268,18 @@ export default class Upload extends SuperComponent {
 
   onAddTap() {
     const { mediaType } = this.properties;
-    // if (mediaType.length > 1) {
-    //   this.setData({ showPop: true });
-    //   return;
+    this.chooseMedia(mediaType);
+    // switch (mediaType[0]) {
+    //   case 'video':
+    //     this.chooseVideo();
+    //     break;
+    //   case 'image':
+    //     this.chooseImg();
+    //     break;
+    //   default:
+    //     // 后续可能有file等类型
+    //     break;
     // }
-
-    switch (mediaType[0]) {
-      case 'video':
-        this.chooseVideo();
-        break;
-      case 'image':
-        this.chooseImg();
-        break;
-      default:
-        // 后续可能有file等类型
-        break;
-    }
   }
 
   onChooseImage() {
