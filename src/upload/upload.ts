@@ -101,91 +101,6 @@ export default class Upload extends SuperComponent {
     return Promise.resolve();
   }
 
-  /** 选择图片 */
-  // chooseImg() {
-  //   const { config, max, sizeLimit } = this.data;
-  //   wx.chooseMedia({
-  //     count: max === 0 ? 9 : max, // 在 iOS 里，0 是无效的，会导致抛异常
-  //     mediaType: ['image'],
-  //     ...config,
-  //     success: (res) => {
-  //       const files = [];
-  //       res.tempFiles.forEach((temp) => {
-  //         if (sizeLimit && temp.size > sizeLimit) {
-  //           wx.showToast({ icon: 'none', title: '图片大小超过限制' });
-  //           return;
-  //         }
-  //         const name = this.getRandFileName(temp.tempFilePath);
-  //         files.push({
-  //           name,
-  //           type: 'image',
-  //           url: temp.tempFilePath,
-  //           width: temp.width,
-  //           height: temp.height,
-  //           size: temp.size,
-  //           progress: 0,
-  //         });
-  //       });
-  //       this._trigger('select-change', {
-  //         files: [...this.data.customFiles],
-  //         currentSelectedFiles: [files],
-  //       });
-  //       this._trigger('add', { files });
-  //       this._trigger('success', { files: [...this.data.customFiles, ...files] });
-  //       this.startUpload(files);
-  //     },
-  //     fail: (err) => {
-  //       this.triggerEvent('fail', err);
-  //     },
-  //     complete: (res) => {
-  //       this.triggerEvent('complete', res);
-  //     },
-  //   });
-  // }
-
-  /** 选择视频 */
-  // chooseVideo() {
-  //   const { config, sizeLimit } = this.data;
-  //   wx.chooseMedia({
-  //     mediaType: ['video'],
-  //     ...config,
-  //     success: (res) => {
-  //       const files = [];
-  //       res.tempFiles.forEach((temp) => {
-  //         if (sizeLimit && temp.size > sizeLimit) {
-  //           wx.showToast({ icon: 'none', title: '视频大小超过限制' });
-  //           return;
-  //         }
-  //         const name = this.getRandFileName(temp.tempFilePath);
-  //         files.push({
-  //           name,
-  //           type: 'video',
-  //           url: temp.tempFilePath,
-  //           size: temp.size,
-  //           width: temp.width,
-  //           height: temp.height,
-  //           duration: temp.duration,
-  //           thumb: temp.thumbTempFilePath,
-  //           progress: 0,
-  //         });
-  //       });
-  //       this._trigger('select-change', {
-  //         files: [...this.data.customFiles],
-  //         currentSelectedFiles: [files],
-  //       });
-  //       this._trigger('add', { files });
-  //       this._trigger('success', { files: [...this.data.customFiles, ...files] });
-  //       this.startUpload(files);
-  //     },
-  //     fail: (err) => {
-  //       this.triggerEvent('fail', err);
-  //     },
-  //     complete: (res) => {
-  //       this.triggerEvent('complete', res);
-  //     },
-  //   });
-  // }
-
   /** 选择媒体素材 */
   chooseMedia(mediaType) {
     const { config, sizeLimit, max } = this.data;
@@ -269,17 +184,6 @@ export default class Upload extends SuperComponent {
   onAddTap() {
     const { mediaType } = this.properties;
     this.chooseMedia(mediaType);
-    // switch (mediaType[0]) {
-    //   case 'video':
-    //     this.chooseVideo();
-    //     break;
-    //   case 'image':
-    //     this.chooseImg();
-    //     break;
-    //   default:
-    //     // 后续可能有file等类型
-    //     break;
-    // }
   }
 
   onChooseImage() {
