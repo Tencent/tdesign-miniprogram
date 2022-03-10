@@ -31,6 +31,9 @@ Page({
       width: 160,
       height: 160,
     },
+    config1: {
+      count: 1,
+    },
   },
   // onLoad() {
   //   this.setData({
@@ -64,28 +67,13 @@ Page({
   getRandFileName(filePath) {
     const extIndex = filePath.lastIndexOf('.');
     const extName = extIndex === -1 ? '' : filePath.substr(extIndex);
-    return (
-      parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName
-    );
+    return parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName;
   },
   handleSuccess(e) {
-    const { originFiles1 } = this.data;
-
-    // 图片上传处理
     const { files } = e.detail;
 
-    files.forEach((temp) => {
-      const name = this.getRandFileName(temp.url);
-      originFiles1.push({
-        name,
-        type: 'image',
-        url: temp.url,
-        size: temp.size,
-      });
-    });
-
     this.setData({
-      originFiles1,
+      originFiles1: files,
     });
   },
   handleRemove(e) {
@@ -97,22 +85,10 @@ Page({
     });
   },
   handleSuccess2(e) {
-    const { originFiles2 } = this.data;
-
-    // 图片上传处理
     const { files } = e.detail;
-    files.forEach((temp) => {
-      const name = this.getRandFileName(temp.url);
-      originFiles2.push({
-        name,
-        type: 'image',
-        url: temp.url,
-        size: temp.size,
-      });
-    });
 
     this.setData({
-      originFiles2,
+      originFiles2: files,
     });
   },
   handleRemove2(e) {

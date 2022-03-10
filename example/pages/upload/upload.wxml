@@ -6,10 +6,12 @@
       <view class="item__title">上传图片</view>
       <view class="upload-wrapper">
         <t-upload
-          media-type="{{['image']}}"
-          defaultFiles="{{originFiles1}}"
+          mediaType="{{['video','image']}}"
+          files="{{originFiles1}}"
           bind:remove="handleRemove"
+          bind:success="handleSuccess"
           gridConfig="{{gridConfig}}"
+          config="{{config1}}"
         >
           <t-icon slot="addContent" name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
         </t-upload>
@@ -21,7 +23,7 @@
       <view class="item__title">上传图片</view>
       <view class="upload-wrapper">
         <t-upload
-          media-type="{{['image']}}"
+          media-type="{{['video','image']}}"
           bind:remove="handleRemove2"
           bind:success="handleSuccess2"
           files="{{originFiles2}}"
