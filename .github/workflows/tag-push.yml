@@ -1,6 +1,9 @@
 name: TAG_PUSH
 
-on: create
+on:
+  create
+    branches:    
+      - develop
 
 jobs:
   TAG_PUSH:
