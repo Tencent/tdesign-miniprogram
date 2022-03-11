@@ -30,7 +30,7 @@ let RadioGroup = class RadioGroup extends SuperComponent {
                 },
             },
         };
-        this.properties = Props;
+        this.properties = Object.assign({}, Props);
         this.controlledProps = [
             {
                 key: 'value',

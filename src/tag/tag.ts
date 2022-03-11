@@ -12,6 +12,8 @@ export default class Tag extends SuperComponent {
     classBasePrefix: prefix,
   };
 
+  externalClasses = [`${prefix}-class`];
+
   properties = props;
 
   methods = {

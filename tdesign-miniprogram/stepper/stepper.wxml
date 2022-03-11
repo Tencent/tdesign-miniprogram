@@ -2,8 +2,8 @@
   class="{{classPrefix}} {{classPrefix}}--{{theme === 'grey' ? 'pure' : 'normal'}} {{ disabled ? prefix + '-is-disabled': ''}} {{prefix}}-class"
 >
   <view
-    class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}}"
-    bindtap="minusValue"
+    class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
+    catchtap="minusValue"
   >
     <t-icon
       name="remove"
@@ -11,18 +11,17 @@
       size="{{theme === 'grey' ? '16px' : '20px'}}"
     />
   </view>
-
   <input
     class="{{classPrefix}}__input {{prefix}}-class-input"
     style="width: {{inputWidth || 100}}rpx"
     disabled="{{ disabled || disableInput }}"
     type="number"
     value="{{ currentValue }}"
-    bindblur="blurHandler"
+    catchblur="blurHandler"
   />
   <view
-    class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}}"
-    bindtap="plusValue"
+    class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
+    catchtap="plusValue"
   >
     <t-icon
       name="add"

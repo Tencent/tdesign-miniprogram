@@ -4,30 +4,77 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+
+## 0.6.1 `2022-3-10`
+
+### Bug Fixes
+- Dialog: 
+  - 修复调用时没重复默认值问题 [#235](https://github.com/Tencent/tdesign-miniprogram/pull/235) [@scshsy](https://github.com/scshsy)
+  - 修复内部 Button 样式错误 [#236](https://github.com/Tencent/tdesign-miniprogram/pull/236) [@anlyyao](https://github.com/anlyyao)
+- Upload: 修复在 iOS 上无法选择的问题 [#239](https://github.com/Tencent/tdesign-miniprogram/pull/239) [@LeeJim](https://github.com/LeeJim)
+- Button: 属性 shape 的默认值改为 rectangle [#240](https://github.com/Tencent/tdesign-miniprogram/pull/240) [@anlyyao](https://github.com/anlyyao)
+- Rate: 修复 `value = 0` 时无法点击的问题 [#242](https://github.com/Tencent/tdesign-miniprogram/pull/242) [@zhenzhencai](https://github.com/zhenzhencai)
+- Grid: 修复样式问题 [#243](https://github.com/Tencent/tdesign-miniprogram/pull/243) [@xihangzhou](https://github.com/xihangzhou)
+## 0.6.0 `2022-3-8`
+### Bug Fixes
+- Stepper: 修复 Stepper 组件事件向上冒泡 [#216](https://github.com/Tencent/tdesign-miniprogram/pull/216) [@zhenzhencai](https://github.com/zhenzhencai)
+- Checkbox: 修复 prefix 问题 [#218](https://github.com/Tencent/tdesign-miniprogram/pull/218) [@amberlwan](https://github.com/amberlwan)
+- Popup: 支持默认 slot [#219](https://github.com/Tencent/tdesign-miniprogram/pull/219) [@Perisiguiendo](https://github.com/Perisiguiendo)
+- Image: 记录 Image 组件传入的 src, 防止 src 相同时重复刷新 [#221](https://github.com/Tencent/tdesign-miniprogram/pull/221) [@xihangzhou](https://github.com/xihangzhou)
+- Tag: 增加外部样式类 [#223](https://github.com/Tencent/tdesign-miniprogram/pull/223) [@xihangzhou](https://github.com/xihangzhou)
+- Button: 修改对 Button 组件的使用 demo [#229](https://github.com/Tencent/tdesign-miniprogram/pull/229) [@anlyyao](https://github.com/anlyyao)
+- Toast: 
+  - 修改未传入的参数为默认值 [#230](https://github.com/Tencent/tdesign-miniprogram/pull/230) [@scshsy](https://github.com/scshsy)
+  -  修复 z-index 低于 Popup 问题 [#233](https://github.com/Tencent/tdesign-miniprogram/pull/233) [@LeeJim](https://github.com/LeeJim)
+
+### BREAKING CHANGES
+- Button: [#212](https://github.com/Tencent/tdesign-miniprogram/pull/212) [@anlyyao](https://github.com/anlyyao)
+  - 重构 shape 的实现，新增支持 rectangle、circle 类型
+  - 修复 shape = round 样式不对的问题
+  - 支持纯图标按钮
+
+## 0.5.4 `2022-3-4`
+### Bug Fixes
+- Slider: 视觉调整 & demo无法滑动问题修复[#200](https://github.com/Tencent/tdesign-miniprogram/pull/200) [@anlyyao](https://github.com/anlyyao)
+- Search: 修复圆角样式不生效问题[#208](https://github.com/Tencent/tdesign-miniprogram/pull/208) [@JJunYang](https://github.com/JJunYang)
+- Tab-bar: 修复value不生效问题[#211](https://github.com/Tencent/tdesign-miniprogram/pull/211) [@LeeJim](https://github.com/LeeJim)
+### Feature
+- Picker: 支持渐进式滚动[#203](https://github.com/Tencent/tdesign-miniprogram/pull/203) [@wutianSweet](https://github.com/wutianSweet)
+- Tabs: 添加滚动条外部样式类[#213](https://github.com/Tencent/tdesign-miniprogram/pull/213) [@JJunYang](https://github.com/JJunYang)
+  
+## 0.5.3 `2022-2-24`
+### Bug Fixes
+- Input: 修复 label 不生效的问题 [#190](https://github.com/Tencent/tdesign-miniprogram/pull/190) [@zhenzhencai](https://github.com/zhenzhencai)
+- Slider: 修复 value 不受控的问题 [#193](https://github.com/Tencent/tdesign-miniprogram/pull/193) [@LeeJim](https://github.com/LeeJim)
+- Search: [#195](https://github.com/Tencent/tdesign-miniprogram/pull/195) [@LeeJim](https://github.com/LeeJim)
+  - 移除受控用法
+  - 支持双向绑定
+  - 修复 placeholder 展示错误的问题
 ## 0.5.2 `2022-2-15`
 
 ### Bug Fixes
-- 修复 Stepper 标签过长时的遮挡问题 [#175](https://github.com/Tencent/tdesign-miniprogram/pull/175) [@GAOGAO1994](https://github.com/GAOGAO1994)
-- 修复 Upload 的 success 事件，返回当前选择的所有文件 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
-- 修复 Checkbox 选择异常的问题 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
+- Stepper: 修复标签过长时的遮挡问题 [#175](https://github.com/Tencent/tdesign-miniprogram/pull/175) [@GAOGAO1994](https://github.com/GAOGAO1994)
+- Upload: 修复 success 事件，返回当前选择的所有文件 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
+- Checkbox: 修复选择异常的问题 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
 ### Feature
-- Upload 新增 add 事件，返回当前选择的文件 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
+- Upload: 新增 add 事件，返回当前选择的文件 [#181](https://github.com/Tencent/tdesign-miniprogram/pull/181) [@LeeJim](https://github.com/LeeJim)
 
 ## 0.5.1 `2022-2-15`
 
 ### Bug Fixes
 
-- 修复 Stepper 外部样式类失效的问题 [#168](https://github.com/Tencent/tdesign-miniprogram/pull/168) [@walkerliu01](https://github.com/walkerliu01)
-- 修复 Stepper 修复点击热区过于小的问题 [#169](https://github.com/Tencent/tdesign-miniprogram/pull/169) [@LeeJim](https://github.com/LeeJim)
-- 修复 Cell 基础样式丢失的问题 [#171](https://github.com/Tencent/tdesign-miniprogram/pull/171) [@LeeJim](https://github.com/LeeJim)
-- 修复 CountDown 基础样式丢失的问题 [#172](https://github.com/Tencent/tdesign-miniprogram/pull/172) [@LeeJim](https://github.com/LeeJim)
-- 修复 Divider 基础样式丢失的问题 [#173](https://github.com/Tencent/tdesign-miniprogram/pull/173) [@LeeJim](https://github.com/LeeJim)
-- 修复 Checkbox 禁用状态下的选中态 [#175](https://github.com/Tencent/tdesign-miniprogram/pull/175) [@amberlwan](https://github.com/amberlwan)
+- Stepper 
+  - 修复外部样式类失效的问题 [#168](https://github.com/Tencent/tdesign-miniprogram/pull/168) [@walkerliu01](https://github.com/walkerliu01)
+  - 修复点击热区过于小的问题 [#169](https://github.com/Tencent/tdesign-miniprogram/pull/169) [@LeeJim](https://github.com/LeeJim)
+- Cell: 修复基础样式丢失的问题 [#171](https://github.com/Tencent/tdesign-miniprogram/pull/171) [@LeeJim](https://github.com/LeeJim)
+- CountDown: 修复基础样式丢失的问题 [#172](https://github.com/Tencent/tdesign-miniprogram/pull/172) [@LeeJim](https://github.com/LeeJim)
+- Divider: 修复基础样式丢失的问题 [#173](https://github.com/Tencent/tdesign-miniprogram/pull/173) [@LeeJim](https://github.com/LeeJim)
+- Checkbox: 修复禁用状态下的选中态 [#175](https://github.com/Tencent/tdesign-miniprogram/pull/175) [@amberlwan](https://github.com/amberlwan)
 ### Feature
 
-- Steps 升级新版视觉 [#167](https://github.com/Tencent/tdesign-miniprogram/pull/167) [@LeeJim](https://github.com/LeeJim)
-- Dialog 新增外部样式类 [#170](https://github.com/Tencent/tdesign-miniprogram/pull/170) [@LeeJim](https://github.com/LeeJim)
-- CountDown 新增 3 个属性：`size`、`theme`、`splitWithUnit` [#172](https://github.com/Tencent/tdesign-miniprogram/pull/172) [@LeeJim](https://github.com/LeeJim)
+- Steps: 升级新版视觉 [#167](https://github.com/Tencent/tdesign-miniprogram/pull/167) [@LeeJim](https://github.com/LeeJim)
+- Dialog: 新增外部样式类 [#170](https://github.com/Tencent/tdesign-miniprogram/pull/170) [@LeeJim](https://github.com/LeeJim)
+- CountDown: 新增 3 个属性：`size`、`theme`、`splitWithUnit` [#172](https://github.com/Tencent/tdesign-miniprogram/pull/172) [@LeeJim](https://github.com/LeeJim)
 
 ## 0.5.0 `2022-1-28`
 

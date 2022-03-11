@@ -14,6 +14,7 @@ let Search = class Search extends SuperComponent {
         super(...arguments);
         this.externalClasses = [
             `${prefix}-class`,
+            `${prefix}-class-input-container`,
             `${prefix}-class-input`,
             `${prefix}-class-cancel`,
             `${prefix}-class-left`,
@@ -23,20 +24,9 @@ let Search = class Search extends SuperComponent {
             multipleSlots: true,
         };
         this.properties = props;
-        this.controlledProps = [
-            {
-                key: 'value',
-                event: 'change',
-            },
-        ];
         this.observers = {
             focus(nextValue) {
                 this.setData({ 'localValue.focus': nextValue });
-            },
-            center(nextValue) {
-                if (!nextValue) {
-                    this.ignoreFocusEvtAfterBlurInCenterMode = false;
-                }
             },
         };
         this.data = {
@@ -46,25 +36,14 @@ let Search = class Search extends SuperComponent {
                 focus: false,
             },
         };
-        /**
-         * 场景：
-         * 1. center模式启用
-         * 2. 在点击激活input focus之后快速点击别的地方blur掉input
-         * 3. 如果没有这个变量拦截，onFocus会被短时间后被调用，猜测是input的onFocus触发是非同步的
-         */
-        this.ignoreFocusEvtAfterBlurInCenterMode = false;
     }
     onInput(e) {
         const { value } = e.detail;
-        // this.setData({ 'localValue.keyword': value });
-        this._trigger('change', { value });
+        this.setData({ value });
+        this.triggerEvent('change', { value });
     }
     onFocus(e) {
         const { value } = e.detail;
-        if (this.ignoreFocusEvtAfterBlurInCenterMode) {
-            this.ignoreFocusEvtAfterBlurInCenterMode = false;
-            return;
-        }
         this.setData({ 'localValue.focus': true });
         this.triggerEvent('focus', { value });
     }
@@ -72,14 +51,10 @@ let Search = class Search extends SuperComponent {
         const { value } = e.detail;
         this.setData({ 'localValue.focus': false });
         this.triggerEvent('blur', { value });
-        if (this.properties.center) {
-            this.ignoreFocusEvtAfterBlurInCenterMode = true;
-        }
     }
-    onClear() {
-        // this.setData({ 'localValue.keyword': '' });
+    handleClear() {
+        this.setData({ value: '' });
         this.triggerEvent('clear', { value: '' });
-        this._trigger('change', { value: '' });
     }
     onConfirm(e) {
         const value = e.detail;
@@ -87,12 +62,6 @@ let Search = class Search extends SuperComponent {
     }
     onCancel() {
         this.triggerEvent('cancel');
-    }
-    tapWhenCenterActiveHandle(e) {
-        if (this.properties.center) {
-            this.ignoreFocusEvtAfterBlurInCenterMode = false;
-            this.onFocus(e);
-        }
     }
 };
 Search = __decorate([

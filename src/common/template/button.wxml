@@ -1,5 +1,6 @@
 <template name="button">
   <t-button
+    block="{{block}}"
     t-class="{{externalClass}}"
     disabled="{{disabled}}"
     data-type="{{type}}"

@@ -23,7 +23,12 @@ let Tabs = class Tabs extends SuperComponent {
     constructor() {
         super(...arguments);
         this.behaviors = [dom, touch];
-        this.externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`];
+        this.externalClasses = [
+            `${prefix}-class`,
+            `${prefix}-class-item`,
+            `${prefix}-class-active`,
+            `${prefix}-class-track`,
+        ];
         this.relations = {
             './tab-panel': {
                 type: 'descendant',

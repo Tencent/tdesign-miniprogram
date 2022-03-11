@@ -3,8 +3,8 @@
   <view
     class="{{ classPrefix }}__wrapper t-class"
     style="font-size:{{ size }}rpx;"
-    bind:touchmove="{{ !disabled  && value ? 'onTouch' : '' }}"
-    bind:touchstart="{{ !disabled  && value ? 'onTouch' : '' }}"
+    catch:touchmove="{{ !disabled ? 'onTouch' : '' }}"
+    catch:touchstart="{{ !disabled ? 'onTouch' : '' }}"
   >
     <t-icon
       wx:for="{{ count }}"

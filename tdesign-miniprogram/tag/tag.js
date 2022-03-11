@@ -16,9 +16,10 @@ let Tag = class Tag extends SuperComponent {
             classPrefix: name,
             classBasePrefix: prefix,
         };
+        this.externalClasses = [`${prefix}-class`];
         this.properties = props;
         this.methods = {
-            onClickClose(e) {
+            hangleClose(e) {
                 this.triggerEvent('close', e);
             },
         };

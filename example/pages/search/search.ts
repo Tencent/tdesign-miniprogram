@@ -2,6 +2,7 @@ const placeholder = '搜索预设文案';
 const actionText = '取消';
 Page({
   data: {
+    first: '',
     searchBoxGroup: [
       {
         id: `${Math.random()}`,

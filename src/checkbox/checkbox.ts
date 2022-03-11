@@ -35,7 +35,7 @@ export default class CheckBox extends SuperComponent {
   // 组件的内部数据
   data = {
     classPrefix,
-    classBasePrefix: prefix,
+    prefix,
     active: false,
     halfChecked: false,
     optionLinked: false,

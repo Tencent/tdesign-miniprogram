@@ -25,6 +25,7 @@ let Divider = class Divider extends SuperComponent {
          * 组件的初始数据
          */
         this.data = {
+            prefix,
             classPrefix: name,
         };
     }

@@ -23,6 +23,7 @@ let Image = class Image extends SuperComponent {
             widthStyle: '',
             classPrefix: name,
         };
+        this.preSrc = ''; // 保留上一次的src,防止在src相同时重复update
         this.lifetimes = {
             attached() {
                 this.update();
@@ -30,6 +31,8 @@ let Image = class Image extends SuperComponent {
         };
         this.observers = {
             src() {
+                if (this.preSrc === this.properties.src)
+                    return;
                 this.update();
             },
         };
@@ -71,6 +74,7 @@ let Image = class Image extends SuperComponent {
     }
     update() {
         const { src } = this.properties;
+        this.preSrc = src;
         if (!src) {
             // 链接为空时直接触发加载失败
             this.onLoadError({ errMsg: '图片链接为空' });

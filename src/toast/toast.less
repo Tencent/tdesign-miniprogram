@@ -9,14 +9,14 @@
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0);
-    z-index: 2000;
+    z-index: 12000;
   }
 
   &__content {
     position: fixed;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, .6);
+    background-color: rgba(0, 0, 0, 0.6);
     align-items: center;
     border-radius: 8rpx;
     font-size: 28rpx;
@@ -65,11 +65,11 @@
   }
 
   &--enter {
-    animation: fade-enter .5s;
+    animation: fade-enter 0.5s;
   }
 
   &--leave {
-    animation: fade-leave .5s;
+    animation: fade-leave 0.5s;
   }
 }
 
@@ -88,13 +88,13 @@
 @keyframes scale-enter {
   from {
     opacity: 0;
-    transform: translate3d(-50%, -50%, 0) scale(.9);
+    transform: translate3d(-50%, -50%, 0) scale(0.9);
   }
 }
 
 @keyframes scale-leave {
   to {
     opacity: 0;
-    transform: translate3d(-50%, -50%, 0) scale(.9);
+    transform: translate3d(-50%, -50%, 0) scale(0.9);
   }
 }

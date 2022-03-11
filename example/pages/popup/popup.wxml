@@ -3,7 +3,7 @@
 <view class="tdesign-demo-popup">
   <t-demo title="01 类型" operList="{{operList}}" bindclickoper="clickHandle">
     <t-popup visible="{{top}}" bind:visible-change="onVisibleChange" placement="top">
-      <view slot="content" class="block block--top" />
+      <view class="block block--top" />
     </t-popup>
     <t-popup
       visible="{{bottom}}"
@@ -11,16 +11,16 @@
       placement="bottom"
       close-btn
     >
-      <view slot="content" class="block block--bottom" />
+      <view class="block block--bottom" />
     </t-popup>
     <t-popup visible="{{center}}" bind:visible-change="onVisibleChange" placement="center">
-      <view slot="content" class="block" />
+      <view class="block block--middle" />
     </t-popup>
     <t-popup visible="{{left}}" bind:visible-change="onVisibleChange" placement="left">
-      <view slot="content" class="block block--left" />
+      <view class="block block--left" />
     </t-popup>
     <t-popup visible="{{right}}" bind:visible-change="onVisibleChange" placement="right">
-      <view slot="content" class="block block--right" />
+      <view class="block block--right" />
     </t-popup>
   </t-demo>
 </view>

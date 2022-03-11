@@ -11,6 +11,7 @@ export default class Image extends SuperComponent {
         widthStyle: string;
         classPrefix: string;
     };
+    preSrc: string;
     lifetimes: {
         attached(this: Image): void;
     };

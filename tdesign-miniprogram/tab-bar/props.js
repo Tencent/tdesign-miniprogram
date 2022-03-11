@@ -37,9 +37,9 @@ const props = {
     },
     /** 当前选中标签的索引，非受控属性 */
     defaultValue: {
-        type: String,
+        type: null,
         optionalTypes: [Number, Array],
-        value: 0,
+        value: undefined,
     },
 };
 export default props;

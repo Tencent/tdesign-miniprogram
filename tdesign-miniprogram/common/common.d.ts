@@ -23,3 +23,6 @@ export interface KeysType {
     value?: string;
     label?: string;
 }
+export interface HTMLElementAttributes {
+    [css: string]: string;
+}

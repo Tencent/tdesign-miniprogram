@@ -98,6 +98,7 @@ let CountDown = class CountDown extends SuperComponent {
         this.triggerEvent('change', timeData);
         const { timeText } = parseFormat(remain, this.properties.format);
         this.setData({
+            timeData,
             formattedTime: timeText.replace(/:/g, ' : '),
         });
         if (remain === 0) {

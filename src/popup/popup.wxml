@@ -13,11 +13,11 @@
     style="z-index:{{zIndex -1}}"
   />
   <view class="{{classPrefix}}__content {{prefix}}-class-content" style="z-index:{{zIndex}}">
-    {{content}}
     <view class="{{classPrefix}}__close">
       <t-icon name="close" wx:if="{{closeBtn}}" bind:tap="onCloseClick" size="64rpx" />
       <slot name="closeBtn" class="{{classPrefix}}-slot" />
     </view>
     <slot name="content" />
+    <slot />
   </view>
 </t-transition>

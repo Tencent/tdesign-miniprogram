@@ -98,7 +98,7 @@ export default class CheckBox extends SuperComponent {
     };
     data: {
         classPrefix: string;
-        classBasePrefix: string;
+        prefix: string;
         active: boolean;
         halfChecked: boolean;
         optionLinked: boolean;
@@ -117,7 +117,6 @@ export default class CheckBox extends SuperComponent {
     methods: {
         onChange(e: any): void;
         initStatus(): void;
-        toggle(): void;
         setCancel(cancel: boolean): void;
         setDisabled(disabled: Boolean): void;
         changeCheckAllHalfStatus(active: boolean): void;

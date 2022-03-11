@@ -17,12 +17,19 @@ export default class StepItem extends SuperComponent {
         layout: string;
         type: string;
         isLastChild: boolean;
+        isLarge: boolean;
+        readonly: boolean;
+        computedIcon: string;
+    };
+    observers: {
+        icon(val: any): void;
+        curStatus(val: any): void;
     };
     lifetimes: {
         ready(): void;
     };
     methods: {
-        updateStatus(current: any, index: any, theme: any, layout: any, steps: any): void;
+        updateStatus(current: any, index: any, theme: any, layout: any, steps: any, readonly: any): void;
         click(): void;
     };
 }

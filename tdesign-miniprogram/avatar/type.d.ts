@@ -4,7 +4,7 @@
 import { TdBadgeProps } from '../badge/type';
 export interface TdAvatarProps {
     /**
-     * 头像替换文本
+     * 头像替换文本，仅当图片加载失败时有效
      * @default ''
      */
     alt?: {
@@ -96,7 +96,7 @@ export interface TdAvatarGroupProps {
      */
     externalClasses?: {
         type: ArrayConstructor;
-        value?: ['t-class', 't-class-image', 't-class-alt'];
+        value?: ['t-class', 't-class-image', 't-class-content'];
         required?: boolean;
     };
     /**
