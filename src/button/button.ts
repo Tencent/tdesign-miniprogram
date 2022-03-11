@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { canIUseFormFieldButton } from '../common/version';
 
 const { prefix } = config;
 const name = `${prefix}-button`;
@@ -9,7 +10,7 @@ const name = `${prefix}-button`;
 export default class Button extends SuperComponent {
   externalClasses = [`${prefix}-class`, `${prefix}-class-icon`];
 
-  behaviors = ['wx://form-field-button'];
+  behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
 
   // 组件的对外属性
   properties = props;
