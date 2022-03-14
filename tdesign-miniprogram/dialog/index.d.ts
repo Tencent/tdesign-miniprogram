@@ -9,6 +9,8 @@ interface DialogAlertOptionsType {
     asyncClose?: boolean;
     confirmButtonText?: string;
     textAlign?: string;
+    cancelBtn?: string | object;
+    confirmBtn?: string | object;
 }
 interface DialogComfirmOptionsType extends DialogAlertOptionsType {
     cancelButtonText?: string;

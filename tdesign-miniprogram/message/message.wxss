@@ -33,7 +33,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  z-index: 5000;
+  z-index: 15000;
   color: #0052d9;
   padding: 24rpx 32rpx;
   box-sizing: border-box;

@@ -4,7 +4,23 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.6.2 `2022-3-14`
 
+### Bug Fixes
+
+- Button: 
+  - 兼容不支持 `wx://form-field-button` 的版本 [#249](https://github.com/Tencent/tdesign-miniprogram/pull/249) [@anlyyao](https://github.com/anlyyao)
+  - 修正 type 属性的正确实现 [#250](https://github.com/Tencent/tdesign-miniprogram/pull/250) [@anlyyao](https://github.com/anlyyao)
+- 修复在 form 下无法获取值的问题:
+  - Input [#256](https://github.com/Tencent/tdesign-miniprogram/pull/256) [@anlyyao](https://github.com/anlyyao)
+  - Checkbox、Radio、Switch [#257](https://github.com/Tencent/tdesign-miniprogram/pull/257) [@anlyyao](https://github.com/anlyyao)
+- Upload: 修复关闭按钮层级过低的问题 [#246](https://github.com/Tencent/tdesign-miniprogram/pull/246) [@Winfans ](https://github.com/Winfans )
+- Toast: 修复层级过低的问题 [f4f6b5b](https://github.com/Tencent/tdesign-miniprogram/commit/f4f6b5be9c0f770c54c9c3ac976dce3f57ca2591) [@LeeJim](https://github.com/LeeJim)
+
+### Feature
+
+- Button:
+  -  新增 `customDataset` 属性，可通过 `event.currentTarget.dataset.custom` 获取 [#259](https://github.com/Tencent/tdesign-miniprogram/pull/259) [@anlyyao](https://github.com/anlyyao)
 ## 0.6.1 `2022-3-10`
 
 ### Bug Fixes
@@ -15,8 +31,10 @@ docClass: timeline
 - Button: 属性 shape 的默认值改为 rectangle [#240](https://github.com/Tencent/tdesign-miniprogram/pull/240) [@anlyyao](https://github.com/anlyyao)
 - Rate: 修复 `value = 0` 时无法点击的问题 [#242](https://github.com/Tencent/tdesign-miniprogram/pull/242) [@zhenzhencai](https://github.com/zhenzhencai)
 - Grid: 修复样式问题 [#243](https://github.com/Tencent/tdesign-miniprogram/pull/243) [@xihangzhou](https://github.com/xihangzhou)
+
 ## 0.6.0 `2022-3-8`
 ### Bug Fixes
+
 - Stepper: 修复 Stepper 组件事件向上冒泡 [#216](https://github.com/Tencent/tdesign-miniprogram/pull/216) [@zhenzhencai](https://github.com/zhenzhencai)
 - Checkbox: 修复 prefix 问题 [#218](https://github.com/Tencent/tdesign-miniprogram/pull/218) [@amberlwan](https://github.com/amberlwan)
 - Popup: 支持默认 slot [#219](https://github.com/Tencent/tdesign-miniprogram/pull/219) [@Perisiguiendo](https://github.com/Perisiguiendo)
@@ -28,6 +46,7 @@ docClass: timeline
   -  修复 z-index 低于 Popup 问题 [#233](https://github.com/Tencent/tdesign-miniprogram/pull/233) [@LeeJim](https://github.com/LeeJim)
 
 ### BREAKING CHANGES
+
 - Button: [#212](https://github.com/Tencent/tdesign-miniprogram/pull/212) [@anlyyao](https://github.com/anlyyao)
   - 重构 shape 的实现，新增支持 rectangle、circle 类型
   - 修复 shape = round 样式不对的问题

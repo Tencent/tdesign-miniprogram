@@ -25,6 +25,7 @@ let Input = class Input extends SuperComponent {
             multipleSlots: true, // 在组件定义时的选项中启用多slot支持
         };
         this.externalClasses = ['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg'];
+        this.behaviors = ['wx://form-field'];
         this.properties = props;
         this.controlledProps = [
             {

@@ -27,7 +27,7 @@
 }
 .t-popup {
   position: fixed;
-  z-index: 1500;
+  z-index: 11500;
   top: 0;
   left: 0;
   display: flex;

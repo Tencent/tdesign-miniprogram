@@ -66,11 +66,6 @@
   color: #bbbbbb;
   font-size: 32rpx;
 }
-.t-input__wrap--suffix i,
-.t-input__wrap--icon i {
-  font-size: 32rpx;
-  color: #bbbbbb;
-}
 .t-input__wrap--suffix:empty,
 .t-input__wrap--icon:empty {
   display: none;

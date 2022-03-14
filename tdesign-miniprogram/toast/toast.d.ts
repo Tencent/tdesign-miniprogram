@@ -1,22 +1,26 @@
+/// <reference types="node" />
 import { SuperComponent } from '../common/src/index';
-import { TdToastProps } from './type';
+import { ToastOptionsType } from './index';
+declare type Timer = NodeJS.Timeout | null;
 export default class Toast extends SuperComponent {
     externalClasses: string[];
     options: {
         multipleSlots: boolean;
     };
-    hideTimer: number | null;
-    removeTimer: number | null;
-    typeMapIcon: Record<string, string>;
+    hideTimer: Timer;
+    removeTimer: Timer;
     data: {
         inserted: boolean;
         show: boolean;
         classPrefix: string;
         typeMapIcon: string;
     };
-    properties: TdToastProps;
-    show(userOptions: TdToastProps): void;
-    clear(): void;
+    properties: import("./type").TdToastProps;
     detached(): void;
-    destroyed(): void;
+    methods: {
+        show(options: ToastOptionsType): void;
+        clear(): void;
+        destroyed(): void;
+    };
 }
+export {};

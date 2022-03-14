@@ -13,6 +13,7 @@ let Switch = class Switch extends SuperComponent {
     constructor() {
         super(...arguments);
         this.externalClasses = ['t-class', 't-class-label', 't-class-body', 't-class-dot'];
+        this.behaviors = ['wx://form-field'];
         this.properties = props;
         // 组件的内部数据
         this.data = {

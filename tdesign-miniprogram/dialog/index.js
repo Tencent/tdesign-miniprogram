@@ -9,6 +9,19 @@ var __rest = (this && this.__rest) || function (s, e) {
         }
     return t;
 };
+import props from './props';
+const defaultOptions = {
+    actions: false,
+    buttonLayout: props.buttonLayout.value,
+    cancelBtn: props.cancelBtn.value,
+    closeOnOverlayClick: props.closeOnOverlayClick.value,
+    confirmBtn: props.confirmBtn.value,
+    content: '',
+    preventScrollThrough: props.preventScrollThrough.value,
+    showOverlay: props.showOverlay.value,
+    title: '',
+    visible: props.visible.value,
+};
 const getDialogInstance = function (context, selector = '#t-dialog') {
     if (!context) {
         const pages = getCurrentPages();
@@ -24,7 +37,7 @@ const getDialogInstance = function (context, selector = '#t-dialog') {
 };
 export default {
     alert(options) {
-        const { context, selector } = options, otherOptions = __rest(options, ["context", "selector"]);
+        const _a = Object.assign(Object.assign({}, defaultOptions), options), { context, selector } = _a, otherOptions = __rest(_a, ["context", "selector"]);
         const instance = getDialogInstance(context, selector);
         if (!instance)
             return Promise.reject();
@@ -34,7 +47,7 @@ export default {
         });
     },
     confirm(options) {
-        const { context, selector } = options, otherOptions = __rest(options, ["context", "selector"]);
+        const _a = Object.assign(Object.assign({}, defaultOptions), options), { context, selector } = _a, otherOptions = __rest(_a, ["context", "selector"]);
         const instance = getDialogInstance(context, selector);
         if (!instance)
             return Promise.reject();
@@ -53,11 +66,11 @@ export default {
         return Promise.reject();
     },
     action(options) {
-        const { context, selector, actions } = options, otherOptions = __rest(options, ["context", "selector", "actions"]);
+        const _a = Object.assign(Object.assign({}, defaultOptions), options), { context, selector, actions } = _a, otherOptions = __rest(_a, ["context", "selector", "actions"]);
         const instance = getDialogInstance(context, selector);
         if (!instance)
             return Promise.reject();
-        if (!actions || actions.length === 0 || actions.length > 7) {
+        if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > 7))) {
             console.warn('action 数量建议控制在1至7个');
         }
         return new Promise((resolve) => {
