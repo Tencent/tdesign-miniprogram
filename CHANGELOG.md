@@ -16,11 +16,11 @@ docClass: timeline
   - Checkbox、Radio、Switch [#257](https://github.com/Tencent/tdesign-miniprogram/pull/257) [@anlyyao](https://github.com/anlyyao)
 - Upload: 修复关闭按钮层级过低的问题 [#246](https://github.com/Tencent/tdesign-miniprogram/pull/246) [@Winfans ](https://github.com/Winfans )
 - Toast: 修复层级过低的问题 [f4f6b5b](https://github.com/Tencent/tdesign-miniprogram/commit/f4f6b5be9c0f770c54c9c3ac976dce3f57ca2591) [@LeeJim](https://github.com/LeeJim)
-
+- Rate: 修复 iOS 下颜色失效的问题 [#244](https://github.com/Tencent/tdesign-miniprogram/pull/244) [@zhenzhencai ](https://github.com/zhenzhencai )
 ### Feature
 
-- Button:
-  -  新增 `customDataset` 属性，可通过 `event.currentTarget.dataset.custom` 获取 [#259](https://github.com/Tencent/tdesign-miniprogram/pull/259) [@anlyyao](https://github.com/anlyyao)
+- Button: 新增 `customDataset` 属性，可通过 `event.currentTarget.dataset.custom` 获取 [#259](https://github.com/Tencent/tdesign-miniprogram/pull/259) [@anlyyao](https://github.com/anlyyao)
+- Upload: 支持对图片和视频的同时上传 [#245](https://github.com/Tencent/tdesign-miniprogram/pull/245) [@xihangzhou](https://github.com/xihangzhou)
 ## 0.6.1 `2022-3-10`
 
 ### Bug Fixes
