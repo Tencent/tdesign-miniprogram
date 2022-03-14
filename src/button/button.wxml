@@ -1,4 +1,5 @@
 <button
+  data-custom="{{ customDataset }}"
   class="{{className}} {{prefix}}-class"
   form-type="{{type}}"
   open-type="{{disabled ? '' : openType}}"

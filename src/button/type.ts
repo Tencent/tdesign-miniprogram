@@ -25,6 +25,14 @@ export interface TdButtonProps {
     required?: boolean;
   };
   /**
+   * 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取
+   */
+  customDataset?: {
+    type: ObjectConstructor;
+    value?: any;
+    required?: boolean;
+  };
+  /**
    * 是否禁用按钮
    * @default false
    */
