@@ -22,10 +22,12 @@
   bind:opensetting="opensetting"
   bind:launchapp="launchapp"
 >
-  <view class="{{classPrefix}}__content">
+  <view class="{{classPrefix}}__wrapper">
     <t-icon wx:if="{{icon}}" name="{{icon}}" class="{{classPrefix}}__icon {{prefix}}-class-icon"></t-icon>
-    <slot />
-    <slot name="content" />
-    {{content || ''}}
+    <view class="{{classPrefix}}__content">
+      <slot />
+      <slot name="content" />
+      <block>{{content}}</block>
+    </view>
   </view>
 </button>

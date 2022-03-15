@@ -6,8 +6,8 @@
 @button-default-height: 40 * 2rpx;
 @button-default-line-height: @text-line-height;
 @button-default-font-size: @font-size * 1.4;
-@button-default-color: rgba(0, 0, 0, .9);
-@button-default-color--disabled: rgba(0, 0, 0, .26);
+@button-default-color: rgba(0, 0, 0, 0.9);
+@button-default-color--disabled: rgba(0, 0, 0, 0.26);
 @button-default-bg-color: #ffffff;
 @button-default-border-color: #dcdcdc;
 @button-anti-primary-color: @text-anti-primary-color;
@@ -17,7 +17,7 @@
 @button-danger-color--disabled: @danger-color-disabled;
 @button-ghost-color: #fff;
 @button-ghost-border-color: @button-ghost-color;
-@button-ghost-color--disabled: rgba(255, 255, 255, .35);
+@button-ghost-color--disabled: rgba(255, 255, 255, 0.35);
 @button-text-color: @primary-color;
 @button-text-color--disabled: @primary-color-disabled;
 @button-border-width: 1px;
@@ -43,8 +43,7 @@
 @button-icon-size-m: 40rpx;
 @button-icon-size-l: 44rpx;
 
-
-@button: ~"@{prefix}-button";
+@button: ~'@{prefix}-button';
 
 .@{button} {
   display: inline-flex;
@@ -56,7 +55,7 @@
   background-image: none;
   border: @button-border-width solid transparent;
   cursor: pointer;
-  transition: all .3s;
+  transition: all 0.3s;
   user-select: none;
   touch-action: manipulation;
   font-size: @button-default-font-size;
@@ -83,11 +82,11 @@
   }
 
   &:not(.@{prefix}-is-disabled):active::after {
-    opacity: .1;
+    opacity: 0.1;
   }
 
-  &__content {
-    display:flex;
+  &__wrapper {
+    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -191,11 +190,19 @@
       & .@{prefix}-button__icon {
         font-size: @button-icon-size-l;
       }
+
+      .@{prefix}-button__icon + .@{prefix}-button__content:not(:empty) {
+        margin-left: 16rpx;
+      }
     }
 
     &-m {
       & .@{prefix}-button__icon {
         font-size: @button-icon-size-m;
+      }
+
+      .@{prefix}-button__icon + .@{prefix}-button__content:not(:empty) {
+        margin-left: 16rpx;
       }
     }
 
@@ -259,13 +266,11 @@
       &-l {
         border-radius: 50%;
         width: @button-large-height;
-
       }
 
       &-m {
         border-radius: 50%;
         width: @button-default-height;
-
       }
 
       &-s {

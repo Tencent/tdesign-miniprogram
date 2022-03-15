@@ -9,15 +9,7 @@
       <t-button size="large" variant="plain" block>次按钮</t-button>
       <t-button theme="danger" size="large" block>强告警按钮</t-button>
       <t-button theme="danger" size="large" variant="plain" block>弱告警按钮</t-button>
-      <t-button
-        theme="primary"
-        size="large"
-        icon="app"
-        variant="plain"
-        block
-        t-class-icon="icon-margin-right"
-        >带图标按钮</t-button
-      >
+      <t-button theme="primary" size="large" icon="app" variant="plain" block>带图标按钮</t-button>
     </view>
 
     <view class="full-width">
@@ -30,48 +22,22 @@
       <t-button variant="text" size="large" block>文字按钮</t-button>
     </view>
 
-    <t-button t-class="no-border-radius" class="" theme="primary" size="large" block
-      >通栏按钮</t-button
-    >
+    <t-button t-class="no-border-radius" class="" theme="primary" size="large" block>通栏按钮</t-button>
     <t-button-group>
       <t-button t-class="no-border-radius no-border" size="large" block>次按钮</t-button>
       <t-button t-class="no-border-radius" theme="primary" size="large" block>主按钮</t-button>
     </t-button-group>
 
     <view class="box">
-      <t-button
-        class="content-margin-right"
-        theme="primary"
-        size="large"
-        icon="app"
-        shape="circle"
-      ></t-button>
+      <t-button class="content-margin-right" theme="primary" size="large" icon="app" shape="circle"></t-button>
       <t-button class="content-margin-right" theme="primary" icon="app" shape="circle"></t-button>
-      <t-button
-        class="content-margin-right"
-        theme="primary"
-        size="small"
-        icon="app"
-        shape="circle"
-      ></t-button>
+      <t-button class="content-margin-right" theme="primary" size="small" icon="app" shape="circle"></t-button>
     </view>
 
     <view class="box">
-      <t-button
-        class="content-margin-right"
-        theme="primary"
-        size="large"
-        icon="app"
-        shape="square"
-      ></t-button>
+      <t-button class="content-margin-right" theme="primary" size="large" icon="app" shape="square"></t-button>
       <t-button class="content-margin-right" theme="primary" icon="app" shape="square"></t-button>
-      <t-button
-        class="content-margin-right"
-        theme="primary"
-        size="small"
-        icon="app"
-        shape="square"
-      ></t-button>
+      <t-button class="content-margin-right" theme="primary" size="small" icon="app" shape="square"></t-button>
     </view>
 
     <view class="box">
@@ -81,17 +47,11 @@
         size="large"
         icon="app"
         shape="rectangle"
+        content="带图标按钮"
       >
-        <text class="text-margin-left" slot="content">带图标按钮</text>
       </t-button>
-      <t-button
-        class="content-margin-right"
-        theme="primary"
-        size="small"
-        icon="app"
-        shape="rectangle"
-      >
-        <text class="text-margin-left" slot="content">带图标按钮</text>
+      <t-button class="content-margin-right" theme="primary" size="small" icon="app" shape="rectangle">
+        <text slot="content">带图标按钮</text>
       </t-button>
     </view>
   </t-demo>
@@ -99,13 +59,9 @@
   <t-demo title="03 规格">
     <view class="demo-section__desc">按钮尺寸</view>
     <view class="box">
-      <t-button class="content-margin-right" theme="primary" size="large" shape="rectangle"
-        >按钮 44</t-button
-      >
+      <t-button class="content-margin-right" theme="primary" size="large" shape="rectangle">按钮 44</t-button>
       <t-button class="content-margin-right" theme="primary" shape="rectangle">按钮 40</t-button>
-      <t-button class="content-margin-right" theme="primary" size="small" shape="rectangle"
-        >按钮 36</t-button
-      >
+      <t-button class="content-margin-right" theme="primary" size="small" shape="rectangle">按钮 36</t-button>
     </view>
   </t-demo>
 </view>
