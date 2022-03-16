@@ -27,7 +27,9 @@ export default class SwiperCell extends SuperComponent {
 
   attached() {
     ARRAY.push(this as WechatMiniprogram.Component.TrivialInstance);
-    this.setSwipeWidth();
+    wx.nextTick(() => {
+      this.setSwipeWidth();
+    });
   }
 
   async setSwipeWidth() {
