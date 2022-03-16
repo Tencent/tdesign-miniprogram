@@ -1,0 +1,1906 @@
+{
+    "components": [
+        {
+            "key": "t-avatar",
+            "icon": "",
+            "label": "头像",
+            "properties": [
+                {
+                    "key": "alt",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "badgeProps"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "hideOnLoadFailed",
+                    "defaultValue": false
+                },
+                {
+                    "key": "icon"
+                },
+                {
+                    "key": "image",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "shape",
+                    "defaultValue": "circle"
+                },
+                {
+                    "key": "size",
+                    "defaultValue": ""
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon",
+                "t-badge": "../badge/badge",
+                "t-image": "../image/image"
+            }
+        },
+        {
+            "key": "t-back-top",
+            "icon": "",
+            "label": "返回顶部",
+            "properties": [
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "fixed",
+                    "defaultValue": true
+                },
+                {
+                    "key": "icon",
+                    "defaultValue": "backtop"
+                },
+                {
+                    "key": "text",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "round"
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-badge",
+            "icon": "",
+            "label": "徽标",
+            "properties": [
+                {
+                    "key": "color",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "content",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "count",
+                    "defaultValue": 0
+                },
+                {
+                    "key": "dot",
+                    "defaultValue": false
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "maxCount",
+                    "defaultValue": 99
+                },
+                {
+                    "key": "offset"
+                },
+                {
+                    "key": "shape",
+                    "defaultValue": "circle"
+                },
+                {
+                    "key": "showZero",
+                    "defaultValue": false
+                },
+                {
+                    "key": "size",
+                    "defaultValue": "medium"
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-behaviors",
+            "icon": "",
+            "label": "",
+            "properties": [],
+            "require": {}
+        },
+        {
+            "key": "t-button",
+            "icon": "",
+            "label": "按钮",
+            "properties": [
+                {
+                    "key": "block",
+                    "defaultValue": false
+                },
+                {
+                    "key": "content",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "ghost",
+                    "defaultValue": false
+                },
+                {
+                    "key": "icon",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "loading",
+                    "defaultValue": false
+                },
+                {
+                    "key": "shape",
+                    "defaultValue": "square"
+                },
+                {
+                    "key": "size",
+                    "defaultValue": "medium"
+                },
+                {
+                    "key": "theme"
+                },
+                {
+                    "key": "type"
+                },
+                {
+                    "key": "variant",
+                    "defaultValue": "base"
+                },
+                {
+                    "key": "openType"
+                },
+                {
+                    "key": "hoverStopPropagation",
+                    "defaultValue": false
+                },
+                {
+                    "key": "hoverStartTime",
+                    "defaultValue": 20
+                },
+                {
+                    "key": "hoverStayTime",
+                    "defaultValue": 70
+                },
+                {
+                    "key": "lang",
+                    "defaultValue": "en"
+                },
+                {
+                    "key": "sessionFrom",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "sendMessageTitle",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "sendMessagePath",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "sendMessageImg",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "appParameter",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "showMessageCard",
+                    "defaultValue": false
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-button-group",
+            "icon": "",
+            "label": "按钮组",
+            "properties": [],
+            "require": {}
+        },
+        {
+            "key": "t-cell",
+            "icon": "",
+            "label": "单元格",
+            "properties": [
+                {
+                    "key": "align",
+                    "defaultValue": "middle"
+                },
+                {
+                    "key": "arrow",
+                    "defaultValue": false
+                },
+                {
+                    "key": "bordered",
+                    "defaultValue": true
+                },
+                {
+                    "key": "description"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "hover"
+                },
+                {
+                    "key": "image"
+                },
+                {
+                    "key": "jumpType",
+                    "defaultValue": "navigateTo"
+                },
+                {
+                    "key": "leftIcon"
+                },
+                {
+                    "key": "note"
+                },
+                {
+                    "key": "required",
+                    "defaultValue": false
+                },
+                {
+                    "key": "rightIcon"
+                },
+                {
+                    "key": "title"
+                },
+                {
+                    "key": "url",
+                    "defaultValue": ""
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-cell-group",
+            "icon": "",
+            "label": "",
+            "properties": [
+                {
+                    "key": "bordered"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "title",
+                    "defaultValue": ""
+                }
+            ]
+        },
+        {
+            "key": "t-checkbox",
+            "icon": "",
+            "label": "复选框",
+            "properties": [
+                {
+                    "key": "align",
+                    "defaultValue": "left"
+                },
+                {
+                    "key": "checkAll",
+                    "defaultValue": false
+                },
+                {
+                    "key": "checked",
+                    "defaultValue": null
+                },
+                {
+                    "key": "defaultChecked",
+                    "defaultValue": false
+                },
+                {
+                    "key": "color",
+                    "defaultValue": "#0052d9"
+                },
+                {
+                    "key": "content"
+                },
+                {
+                    "key": "contentDisabled"
+                },
+                {
+                    "key": "disabled"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "icon"
+                },
+                {
+                    "key": "indeterminate",
+                    "defaultValue": false
+                },
+                {
+                    "key": "label"
+                },
+                {
+                    "key": "maxContentRow",
+                    "defaultValue": 5
+                },
+                {
+                    "key": "maxLabelRow",
+                    "defaultValue": 3
+                },
+                {
+                    "key": "name",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "readonly",
+                    "defaultValue": false
+                },
+                {
+                    "key": "value"
+                }
+            ],
+            "require": {
+                "t-cell": "../cell/cell",
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-checkbox-group",
+            "icon": "",
+            "label": "组合多选框",
+            "properties": [],
+            "require": {
+                "t-checkbox": "../checkbox/checkbox"
+            }
+        },
+        {
+            "key": "t-collapse",
+            "icon": "",
+            "label": "",
+            "properties": []
+        },
+        {
+            "key": "t-collapse-panel",
+            "icon": "",
+            "label": "",
+            "properties": [],
+            "require": {
+                "t-cell": "../cell/cell"
+            }
+        },
+        {
+            "key": "t-common",
+            "icon": "",
+            "label": "",
+            "properties": [],
+            "require": {}
+        },
+        {
+            "key": "t-count-down",
+            "icon": "",
+            "label": "倒计时",
+            "properties": [
+                {
+                    "key": "autoStart",
+                    "defaultValue": true
+                },
+                {
+                    "key": "content",
+                    "defaultValue": "default"
+                },
+                {
+                    "key": "format",
+                    "defaultValue": "HH:mm:ss"
+                },
+                {
+                    "key": "millisecond",
+                    "defaultValue": false
+                },
+                {
+                    "key": "size",
+                    "defaultValue": "small"
+                },
+                {
+                    "key": "splitWithUnit",
+                    "defaultValue": false
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "default"
+                },
+                {
+                    "key": "time"
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-date-time-picker",
+            "icon": "",
+            "label": "时间选择器",
+            "properties": [
+                {
+                    "key": "cancelBtn",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "confirmBtn",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "disableDate"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "format",
+                    "defaultValue": "YYYY-MM-DD"
+                },
+                {
+                    "key": "mode",
+                    "defaultValue": "date"
+                },
+                {
+                    "key": "showWeek",
+                    "defaultValue": false
+                },
+                {
+                    "key": "title",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "value"
+                },
+                {
+                    "key": "visible",
+                    "defaultValue": false
+                }
+            ],
+            "require": {
+                "t-picker": "../picker/picker",
+                "t-picker-column": "../picker/picker-column"
+            }
+        },
+        {
+            "key": "t-dialog",
+            "icon": "",
+            "label": "对话框",
+            "properties": [
+                {
+                    "key": "actions"
+                },
+                {
+                    "key": "buttonLayout",
+                    "defaultValue": "horizontal"
+                },
+                {
+                    "key": "cancelBtn",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "closeOnOverlayClick",
+                    "defaultValue": true
+                },
+                {
+                    "key": "confirmBtn",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "content"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "preventScrollThrough",
+                    "defaultValue": true
+                },
+                {
+                    "key": "showOverlay",
+                    "defaultValue": true
+                },
+                {
+                    "key": "title"
+                },
+                {
+                    "key": "visible",
+                    "defaultValue": false
+                },
+                {
+                    "key": "zIndex"
+                }
+            ],
+            "require": {
+                "t-popup": "../popup/popup",
+                "t-button": "../button/button"
+            }
+        },
+        {
+            "key": "t-divider",
+            "icon": "",
+            "label": "分割符",
+            "properties": [
+                {
+                    "key": "align",
+                    "defaultValue": "center"
+                },
+                {
+                    "key": "content"
+                },
+                {
+                    "key": "dashed",
+                    "defaultValue": false
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "layout",
+                    "defaultValue": "horizontal"
+                },
+                {
+                    "key": "lineColor",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "horizontal"
+                }
+            ]
+        },
+        {
+            "key": "t-drawer",
+            "icon": "",
+            "label": "抽屉",
+            "properties": [],
+            "require": {
+                "t-popup": "../popup/popup"
+            }
+        },
+        {
+            "key": "t-dropdown-menu",
+            "icon": "",
+            "label": "下拉菜单",
+            "properties": [],
+            "require": {}
+        },
+        {
+            "key": "t-empty",
+            "icon": "",
+            "label": "空内容",
+            "properties": [
+                {
+                    "key": "description"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "icon",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "image"
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-fab",
+            "icon": "",
+            "label": "悬浮按钮",
+            "properties": [],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-footer",
+            "icon": "",
+            "label": "页脚",
+            "properties": [
+                {
+                    "key": "copyright",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "logo"
+                },
+                {
+                    "key": "textLinkList",
+                    "defaultValue": []
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "text"
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-grid",
+            "icon": "",
+            "label": "宫格",
+            "properties": [
+                {
+                    "key": "align",
+                    "defaultValue": "center"
+                },
+                {
+                    "key": "border",
+                    "defaultValue": false
+                },
+                {
+                    "key": "column",
+                    "defaultValue": 4
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "gutter"
+                },
+                {
+                    "key": "hover",
+                    "defaultValue": false
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-icon",
+            "icon": "",
+            "label": "图标",
+            "properties": [
+                {
+                    "key": "customStyle",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "color",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "name",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "size"
+                },
+                {
+                    "key": "prefix"
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-image",
+            "icon": "",
+            "label": "图片",
+            "properties": [
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "loadFailed",
+                    "defaultValue": "default"
+                },
+                {
+                    "key": "loading",
+                    "defaultValue": "default"
+                },
+                {
+                    "key": "src",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "mode",
+                    "defaultValue": "scaleToFill"
+                },
+                {
+                    "key": "webp",
+                    "defaultValue": false
+                },
+                {
+                    "key": "lazyLoad",
+                    "defaultValue": false
+                },
+                {
+                    "key": "showMenuByLongpress",
+                    "defaultValue": false
+                }
+            ],
+            "require": {
+                "t-loading": "../loading/loading",
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-indexes",
+            "icon": "",
+            "label": "索引",
+            "properties": [
+                {
+                    "key": "height"
+                },
+                {
+                    "key": "list",
+                    "defaultValue": []
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon",
+                "t-cell": "../cell/cell",
+                "t-cell-group": "../cell-group/cell-group"
+            }
+        },
+        {
+            "key": "t-input",
+            "icon": "",
+            "label": "输入框",
+            "properties": [
+                {
+                    "key": "adjustPosition",
+                    "defaultValue": true
+                },
+                {
+                    "key": "align",
+                    "defaultValue": "left"
+                },
+                {
+                    "key": "clearable",
+                    "defaultValue": false
+                },
+                {
+                    "key": "confirmHold",
+                    "defaultValue": false
+                },
+                {
+                    "key": "confirmType",
+                    "defaultValue": "done"
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "errorMessage",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "focus",
+                    "defaultValue": false
+                },
+                {
+                    "key": "label"
+                },
+                {
+                    "key": "maxcharacter"
+                },
+                {
+                    "key": "maxlength"
+                },
+                {
+                    "key": "placeholder"
+                },
+                {
+                    "key": "prefixIcon"
+                },
+                {
+                    "key": "size",
+                    "defaultValue": "small"
+                },
+                {
+                    "key": "suffix"
+                },
+                {
+                    "key": "suffixIcon"
+                },
+                {
+                    "key": "type",
+                    "defaultValue": "text"
+                },
+                {
+                    "key": "value",
+                    "defaultValue": null
+                },
+                {
+                    "key": "defaultValue"
+                }
+            ],
+            "require": {
+                "t-cell": "../cell/cell",
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-loading",
+            "icon": "",
+            "label": "加载",
+            "properties": [
+                {
+                    "key": "delay",
+                    "defaultValue": 0
+                },
+                {
+                    "key": "duration",
+                    "defaultValue": 800
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "indicator",
+                    "defaultValue": true
+                },
+                {
+                    "key": "layout",
+                    "defaultValue": "horizontal"
+                },
+                {
+                    "key": "loading",
+                    "defaultValue": true
+                },
+                {
+                    "key": "pause",
+                    "defaultValue": false
+                },
+                {
+                    "key": "progress"
+                },
+                {
+                    "key": "reverse"
+                },
+                {
+                    "key": "size",
+                    "defaultValue": "40rpx"
+                },
+                {
+                    "key": "text"
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "circular"
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-message",
+            "icon": "",
+            "label": "消息通知",
+            "properties": [
+                {
+                    "key": "action"
+                },
+                {
+                    "key": "align",
+                    "defaultValue": "left"
+                },
+                {
+                    "key": "closeBtn"
+                },
+                {
+                    "key": "content"
+                },
+                {
+                    "key": "duration",
+                    "defaultValue": 3000
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "icon",
+                    "defaultValue": true
+                },
+                {
+                    "key": "marquee",
+                    "defaultValue": false
+                },
+                {
+                    "key": "offset"
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "info"
+                },
+                {
+                    "key": "visible",
+                    "defaultValue": false
+                },
+                {
+                    "key": "zIndex"
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon",
+                "t-button": "../button/button"
+            }
+        },
+        {
+            "key": "t-navbar",
+            "icon": "",
+            "label": "导航栏",
+            "properties": [
+                {
+                    "key": "animation",
+                    "defaultValue": true
+                },
+                {
+                    "key": "background",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "delta",
+                    "defaultValue": 1
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "fixed",
+                    "defaultValue": true
+                },
+                {
+                    "key": "homeIcon"
+                },
+                {
+                    "key": "leftIcon"
+                },
+                {
+                    "key": "title"
+                },
+                {
+                    "key": "titleMaxLength"
+                },
+                {
+                    "key": "visible",
+                    "defaultValue": true
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-picker",
+            "icon": "",
+            "label": "选择器",
+            "properties": [
+                {
+                    "key": "cancelBtn",
+                    "defaultValue": "取消"
+                },
+                {
+                    "key": "confirmBtn",
+                    "defaultValue": "确认"
+                },
+                {
+                    "key": "title",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "value"
+                },
+                {
+                    "key": "visible",
+                    "defaultValue": false
+                }
+            ],
+            "require": {
+                "t-popup": "../popup/popup"
+            }
+        },
+        {
+            "key": "t-popup",
+            "icon": "",
+            "label": "弹出层",
+            "properties": [
+                {
+                    "key": "closeBtn"
+                },
+                {
+                    "key": "closeOnOverlayClick",
+                    "defaultValue": true
+                },
+                {
+                    "key": "content"
+                },
+                {
+                    "key": "destroyOnClose",
+                    "defaultValue": false
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "placement",
+                    "defaultValue": "top"
+                },
+                {
+                    "key": "preventScrollThrough",
+                    "defaultValue": true
+                },
+                {
+                    "key": "showOverlay",
+                    "defaultValue": true
+                },
+                {
+                    "key": "transitionProps"
+                },
+                {
+                    "key": "visible",
+                    "defaultValue": false
+                },
+                {
+                    "key": "zIndex"
+                }
+            ],
+            "require": {
+                "t-transition": "../transition/transition",
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-progress",
+            "icon": "",
+            "label": "进度条",
+            "properties": [],
+            "require": {}
+        },
+        {
+            "key": "t-pull-down-refresh",
+            "icon": "",
+            "label": "下拉刷新",
+            "properties": [
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "loadingBarHeight",
+                    "defaultValue": 200
+                },
+                {
+                    "key": "loadingProps"
+                },
+                {
+                    "key": "loadingTexts",
+                    "defaultValue": []
+                },
+                {
+                    "key": "maxBarHeight",
+                    "defaultValue": 272
+                },
+                {
+                    "key": "refreshTimeout",
+                    "defaultValue": 3000
+                }
+            ],
+            "require": {
+                "t-loading": "../loading/loading"
+            }
+        },
+        {
+            "key": "t-radio",
+            "icon": "",
+            "label": "单选框",
+            "properties": [
+                {
+                    "key": "align",
+                    "defaultValue": "left"
+                },
+                {
+                    "key": "checked"
+                },
+                {
+                    "key": "defaultChecked"
+                },
+                {
+                    "key": "color",
+                    "defaultValue": "#0052d9"
+                },
+                {
+                    "key": "content"
+                },
+                {
+                    "key": "contentDisabled"
+                },
+                {
+                    "key": "disabled"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "icon",
+                    "defaultValue": "fill-circle"
+                },
+                {
+                    "key": "label"
+                },
+                {
+                    "key": "maxContentRow",
+                    "defaultValue": 5
+                },
+                {
+                    "key": "maxLabelRow",
+                    "defaultValue": 3
+                },
+                {
+                    "key": "name",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "value"
+                }
+            ],
+            "require": {
+                "t-cell": "../cell/cell",
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-radio-group",
+            "icon": "",
+            "label": "组合单选框",
+            "properties": [],
+            "require": {
+                "t-radio": "../radio/radio"
+            }
+        },
+        {
+            "key": "t-rate",
+            "icon": "",
+            "label": "评分",
+            "properties": [
+                {
+                    "key": "allowHalf",
+                    "defaultValue": false
+                },
+                {
+                    "key": "color",
+                    "defaultValue": "#ED7B2F"
+                },
+                {
+                    "key": "count",
+                    "defaultValue": 5
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "gap",
+                    "defaultValue": 6
+                },
+                {
+                    "key": "showText",
+                    "defaultValue": false
+                },
+                {
+                    "key": "size",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "texts",
+                    "defaultValue": []
+                },
+                {
+                    "key": "value",
+                    "defaultValue": 0
+                },
+                {
+                    "key": "defaultValue"
+                },
+                {
+                    "key": "variant",
+                    "defaultValue": "outline"
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-search",
+            "icon": "",
+            "label": "搜索框",
+            "properties": [
+                {
+                    "key": "action",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "center",
+                    "defaultValue": false
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "focus",
+                    "defaultValue": false
+                },
+                {
+                    "key": "label",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "leftIcon",
+                    "defaultValue": "search"
+                },
+                {
+                    "key": "placeholder",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "rightIcon",
+                    "defaultValue": "close"
+                },
+                {
+                    "key": "shape",
+                    "defaultValue": "square"
+                },
+                {
+                    "key": "value",
+                    "defaultValue": ""
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-segmented-control",
+            "icon": "",
+            "label": "分段器",
+            "properties": []
+        },
+        {
+            "key": "t-skeleton",
+            "icon": "",
+            "label": "骨架屏",
+            "properties": [
+                {
+                    "key": "animation"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "loading"
+                },
+                {
+                    "key": "rowCol",
+                    "defaultValue": [
+                        1,
+                        1,
+                        1,
+                        {
+                            "width": "70%"
+                        }
+                    ]
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "text"
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-slider",
+            "icon": "",
+            "label": "滑动选择器",
+            "properties": [
+                {
+                    "key": "colors",
+                    "defaultValue": [
+                        "#0052D9",
+                        "rgba(220, 220, 220, 1)"
+                    ]
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "disabledColor",
+                    "defaultValue": [
+                        "#bbd3fb",
+                        "#dcdcdc"
+                    ]
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "label",
+                    "defaultValue": false
+                },
+                {
+                    "key": "marks",
+                    "defaultValue": {}
+                },
+                {
+                    "key": "max",
+                    "defaultValue": 100
+                },
+                {
+                    "key": "min",
+                    "defaultValue": 0
+                },
+                {
+                    "key": "range",
+                    "defaultValue": false
+                },
+                {
+                    "key": "showExtremeValue",
+                    "defaultValue": false
+                },
+                {
+                    "key": "step",
+                    "defaultValue": 1
+                },
+                {
+                    "key": "value",
+                    "defaultValue": null
+                },
+                {
+                    "key": "defaultValue"
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-stepper",
+            "icon": "",
+            "label": "步进器",
+            "properties": [
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "disableInput",
+                    "defaultValue": false
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "inputWidth"
+                },
+                {
+                    "key": "max",
+                    "defaultValue": 100
+                },
+                {
+                    "key": "min",
+                    "defaultValue": 0
+                },
+                {
+                    "key": "step",
+                    "defaultValue": 1
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "normal"
+                },
+                {
+                    "key": "value",
+                    "defaultValue": null
+                },
+                {
+                    "key": "defaultValue"
+                }
+            ],
+            "require": {
+                "t-cell": "../cell/cell",
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-steps",
+            "icon": "",
+            "label": "步骤条",
+            "properties": [
+                {
+                    "key": "current"
+                },
+                {
+                    "key": "defaultCurrent"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "layout",
+                    "defaultValue": "horizontal"
+                },
+                {
+                    "key": "readonly",
+                    "defaultValue": false
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "default"
+                }
+            ],
+            "require": {
+                "t-step": "./step-item"
+            }
+        },
+        {
+            "key": "t-sticky",
+            "icon": "",
+            "label": "吸顶容器",
+            "properties": [
+                {
+                    "key": "container"
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "offsetTop",
+                    "defaultValue": 0
+                },
+                {
+                    "key": "zIndex",
+                    "defaultValue": 99
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-swipe-cell",
+            "icon": "",
+            "label": "滑动操作",
+            "properties": [
+                {
+                    "key": "disabled"
+                },
+                {
+                    "key": "left"
+                },
+                {
+                    "key": "opened",
+                    "defaultValue": false
+                },
+                {
+                    "key": "right"
+                }
+            ]
+        },
+        {
+            "key": "t-swiper",
+            "icon": "",
+            "label": "轮播图",
+            "properties": [
+                {
+                    "key": "animation",
+                    "defaultValue": "slide"
+                },
+                {
+                    "key": "autoplay",
+                    "defaultValue": true
+                },
+                {
+                    "key": "current",
+                    "defaultValue": 0
+                },
+                {
+                    "key": "direction",
+                    "defaultValue": "horizontal"
+                },
+                {
+                    "key": "duration",
+                    "defaultValue": 300
+                },
+                {
+                    "key": "height"
+                },
+                {
+                    "key": "interval",
+                    "defaultValue": 5000
+                },
+                {
+                    "key": "navigation"
+                }
+            ],
+            "require": {
+                "t-swiper-item": "./swiper-item",
+                "t-swiper-nav": "./swiper-nav"
+            }
+        },
+        {
+            "key": "t-switch",
+            "icon": "",
+            "label": "开关",
+            "properties": [
+                {
+                    "key": "colors"
+                },
+                {
+                    "key": "customValue",
+                    "defaultValue": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "label",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "loading",
+                    "defaultValue": false
+                },
+                {
+                    "key": "size",
+                    "defaultValue": "medium"
+                },
+                {
+                    "key": "value",
+                    "defaultValue": false
+                },
+                {
+                    "key": "defaultValue"
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-tab-bar",
+            "icon": "",
+            "label": "标签栏",
+            "properties": [
+                {
+                    "key": "bordered",
+                    "defaultValue": true
+                },
+                {
+                    "key": "color",
+                    "defaultValue": [
+                        "#0052D9",
+                        "rgba(0, 0, 0, .6)"
+                    ]
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "fixed",
+                    "defaultValue": true
+                },
+                {
+                    "key": "safeAreaInsetBottom",
+                    "defaultValue": true
+                },
+                {
+                    "key": "split",
+                    "defaultValue": true
+                },
+                {
+                    "key": "value",
+                    "defaultValue": null
+                },
+                {
+                    "key": "defaultValue"
+                }
+            ],
+            "require": {
+                "t-tab-bar-item": "./tab-bar-item"
+            }
+        },
+        {
+            "key": "t-tabs",
+            "icon": "",
+            "label": "选项卡",
+            "properties": [
+                {
+                    "key": "animation"
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "placement",
+                    "defaultValue": "top"
+                },
+                {
+                    "key": "showBottomLine",
+                    "defaultValue": true
+                },
+                {
+                    "key": "value",
+                    "defaultValue": null
+                },
+                {
+                    "key": "defaultValue"
+                }
+            ]
+        },
+        {
+            "key": "t-tag",
+            "icon": "",
+            "label": "标签",
+            "properties": [
+                {
+                    "key": "closable",
+                    "defaultValue": false
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "icon",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "maxWidth"
+                },
+                {
+                    "key": "shape",
+                    "defaultValue": "square"
+                },
+                {
+                    "key": "size",
+                    "defaultValue": "medium"
+                },
+                {
+                    "key": "theme",
+                    "defaultValue": "default"
+                },
+                {
+                    "key": "variant",
+                    "defaultValue": "dark"
+                }
+            ],
+            "require": {
+                "t-icon": ".././icon/icon"
+            }
+        },
+        {
+            "key": "t-textarea",
+            "icon": "",
+            "label": "多行文本框",
+            "properties": [
+                {
+                    "key": "adjustPosition",
+                    "defaultValue": true
+                },
+                {
+                    "key": "autofocus",
+                    "defaultValue": false
+                },
+                {
+                    "key": "autosize",
+                    "defaultValue": false
+                },
+                {
+                    "key": "confirmHold",
+                    "defaultValue": false
+                },
+                {
+                    "key": "confirmType",
+                    "defaultValue": "done"
+                },
+                {
+                    "key": "disabled",
+                    "defaultValue": false
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "focus",
+                    "defaultValue": false
+                },
+                {
+                    "key": "label"
+                },
+                {
+                    "key": "maxcharacter"
+                },
+                {
+                    "key": "maxlength"
+                },
+                {
+                    "key": "placeholder"
+                },
+                {
+                    "key": "value",
+                    "defaultValue": null
+                }
+            ],
+            "require": {
+                "t-cell": "../cell/cell",
+                "t-icon": "../icon/icon"
+            }
+        },
+        {
+            "key": "t-toast",
+            "icon": "",
+            "label": "轻提示",
+            "properties": [
+                {
+                    "key": "direction",
+                    "defaultValue": "row"
+                },
+                {
+                    "key": "duration",
+                    "defaultValue": 2000
+                },
+                {
+                    "key": "externalClasses"
+                },
+                {
+                    "key": "icon",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "message"
+                },
+                {
+                    "key": "placement",
+                    "defaultValue": "middle"
+                },
+                {
+                    "key": "preventScrollThrough",
+                    "defaultValue": false
+                },
+                {
+                    "key": "theme"
+                }
+            ],
+            "require": {
+                "t-icon": "../icon/icon",
+                "t-loading": "../loading/loading"
+            }
+        },
+        {
+            "key": "t-transition",
+            "icon": "",
+            "label": "过渡",
+            "properties": [
+                {
+                    "key": "appear",
+                    "defaultValue": false
+                },
+                {
+                    "key": "customClass",
+                    "defaultValue": ""
+                },
+                {
+                    "key": "destoryOnClose",
+                    "defaultValue": false
+                },
+                {
+                    "key": "duration"
+                },
+                {
+                    "key": "name",
+                    "defaultValue": "t-transition"
+                },
+                {
+                    "key": "visible",
+                    "defaultValue": false
+                }
+            ],
+            "require": {}
+        },
+        {
+            "key": "t-upload",
+            "icon": "",
+            "label": "上传",
+            "properties": [
+                {
+                    "key": "addContent"
+                },
+                {
+                    "key": "config"
+                },
+                {
+                    "key": "deleteBtn"
+                },
+                {
+                    "key": "files",
+                    "defaultValue": null
+                },
+                {
+                    "key": "defaultFiles"
+                },
+                {
+                    "key": "gridConfig"
+                },
+                {
+                    "key": "gutter",
+                    "defaultValue": 16
+                },
+                {
+                    "key": "max",
+                    "defaultValue": 0
+                },
+                {
+                    "key": "mediaType",
+                    "defaultValue": [
+                        "image",
+                        "video"
+                    ]
+                },
+                {
+                    "key": "requestMethod"
+                },
+                {
+                    "key": "sizeLimit"
+                }
+            ],
+            "require": {
+                "t-grid": "../grid/grid",
+                "t-grid-item": "../grid/grid-item",
+                "t-popup": "../popup/popup",
+                "t-icon": "../icon/icon"
+            }
+        }
+    ],
+    "common": {
+        "properties": {},
+        "events": {}
+    },
+    "menu": []
+}
