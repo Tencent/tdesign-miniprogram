@@ -34,14 +34,12 @@
 @button-icon-border-radius: 8rpx;
 
 // padding
-@button-padding-horizontal-s: 8px;
-@button-padding-horizontal-m: 12px;
-@button-padding-horizontal-l: 16px;
+@button-padding-horizontal: 32rpx;
 
 // 图标大小
-@button-icon-size-s: 36rpx;
-@button-icon-size-m: 40rpx;
-@button-icon-size-l: 44rpx;
+@button-icon-size-s: 40rpx;
+@button-icon-size-m: 44rpx;
+@button-icon-size-l: 48rpx;
 
 @button: ~'@{prefix}-button';
 
@@ -175,8 +173,8 @@
   &--base {
     height: @button-default-height;
     line-height: @button-default-height;
-    padding-left: (@button-padding-horizontal-m - @button-border-width);
-    padding-right: (@button-padding-horizontal-m - @button-border-width);
+    padding-left: (@button-padding-horizontal - @button-border-width);
+    padding-right: (@button-padding-horizontal - @button-border-width);
     font-size: @button-default-font-size;
   }
 
@@ -184,13 +182,16 @@
     &-l {
       height: @button-large-height;
       line-height: @button-large-height;
-      padding-left: (@button-padding-horizontal-l - @button-border-width);
-      padding-right: (@button-padding-horizontal-l - @button-border-width);
-
       & .@{prefix}-button__icon {
         font-size: @button-icon-size-l;
       }
 
+      & .@{prefix}-button--loading {
+        width: @button-icon-size-l;
+        height: @button-icon-size-l;
+      }
+
+      .@{prefix}-button--loading + .@{prefix}-button__content:not(:empty),
       .@{prefix}-button__icon + .@{prefix}-button__content:not(:empty) {
         margin-left: 16rpx;
       }
@@ -201,19 +202,33 @@
         font-size: @button-icon-size-m;
       }
 
+      & .@{prefix}-button--loading {
+        width: @button-icon-size-m;
+        height: @button-icon-size-m;
+      }
+
+      .@{prefix}-button--loading + .@{prefix}-button__content:not(:empty),
       .@{prefix}-button__icon + .@{prefix}-button__content:not(:empty) {
-        margin-left: 16rpx;
+        margin-left: 8rpx;
       }
     }
 
     &-s {
       height: @button-small-height;
       line-height: @button-small-height;
-      padding-left: (@button-padding-horizontal-s - @button-border-width);
-      padding-right: (@button-padding-horizontal-s - @button-border-width);
 
       & .@{prefix}-button__icon {
         font-size: @button-icon-size-s;
+      }
+
+      & .@{prefix}-button--loading {
+        width: @button-icon-size-s;
+        height: @button-icon-size-s;
+      }
+
+      .@{prefix}-button--loading + .@{prefix}-button__content:not(:empty),
+      .@{prefix}-button__icon + .@{prefix}-button__content:not(:empty) {
+        margin-left: 8rpx;
       }
     }
   }
@@ -226,15 +241,15 @@
   &--round {
     &.@{prefix}-button--size {
       &-l {
-        border-radius: 50%;
+        border-radius: (@button-large-height / 2);
       }
 
       &-m {
-        border-radius: 50%;
+        border-radius: (@button-default-height / 2);
       }
 
       &-s {
-        border-radius: 50%;
+        border-radius: (@button-small-height / 2);
       }
     }
   }
@@ -289,9 +304,26 @@
     &-disabled {
       cursor: not-allowed;
     }
+  }
 
-    &-loading {
-      //TODO: 缺少动画
+  &--loading {
+    box-sizing: border-box;
+    animation: rotate 0.8s linear infinite;
+    .@{prefix}-button__circular {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      background: conic-gradient(
+        from 90deg at 50% 50%,
+        rgba(255, 255, 255, 0) 0% 0deg,
+        currentColor 360deg,
+        rgba(255, 255, 255, 1) 100% 360deg
+      );
+      mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
+
+      /* stylelint-disable-next-line */
+      -webkit-mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
     }
   }
 
