@@ -8,7 +8,7 @@ const name = `${prefix}-button`;
 
 @wxComponent()
 export default class Button extends SuperComponent {
-  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
 
   behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
 
@@ -63,9 +63,9 @@ export default class Button extends SuperComponent {
       if (this.data.disabled) {
         classList.push(`${prefix}-is-disabled`);
       }
-      if (this.data.loading) {
-        classList.push(`${prefix}-is-loading`);
-      }
+      // if (this.data.loading) {
+      //   classList.push(`${prefix}-is-loading`);
+      // }
       classList.push(`${name}--${this.data.variant}`);
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);
