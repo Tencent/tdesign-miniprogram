@@ -1,1 +1,140 @@
-@import './styles/_index.less';
+@import '../common/index.less';
+
+@color-white: #fff;
+
+@tag-default-color: #444;
+@tag-default-background-color: #f5f5f5;
+@tag-default-border-color: #f5f5f5;
+
+@tag-disabled-color: #bbb;
+@tag-disabled-background-color: #f5f5f5;
+@tag-disabled-border-color: #f5f5f5;
+
+@tag-primary-color: @primary-color;
+
+@tag-checked-color: @primary-color;
+@tag-checked-border-color: @primary-color;
+@tag-checked-background-color: @primary-color;
+
+@tag-small-font-size: 20rpx;
+@tag-medium-font-size: 24rpx;
+@tag-large-font-size: 28rpx;
+
+@border-radius-square: 2px;
+@border-radius-round: 4px;
+@border-radius-circle: 999px;
+
+.@{prefix}-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 2rpx solid transparent;
+  box-sizing: border-box;
+  border-radius: @border-radius-square;
+  padding: 0 24rpx;
+  font-size: 24rpx;
+  // max-width: 240rpx;
+  user-select: none;
+
+  &__text {
+    word-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 48rpx;
+    line-height: 48rpx;
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  .@{prefix}__icon {
+    font-size: @tag-medium-font-size;
+  }
+
+  &__icon-close {
+    display: flex;
+    align-items: center;
+    margin-left: 16rpx;
+  }
+
+  &.@{prefix}-tag--size {
+    &-small {
+      height: 44rpx;
+      line-height: 40rpx;
+      padding: 0 16rpx;
+      font-size: @tag-small-font-size;
+
+      .@{prefix}-icon {
+        font-size: @tag-small-font-size;
+      }
+    }
+
+    &-medium {
+      height: 48rpx;
+      line-height: 44rpx;
+      padding: 0 24rpx;
+      font-size: @tag-medium-font-size;
+
+      .@{prefix}-icon {
+        font-size: @tag-medium-font-size;
+      }
+    }
+
+    &-large {
+      height: 60rpx;
+      line-height: 56rpx;
+      padding: 0 24rpx;
+      font-size: @tag-large-font-size;
+
+      .@{prefix}-icon {
+        font-size: @tag-large-font-size;
+      }
+    }
+  }
+
+  &.@{prefix}-tag--square {
+    border-radius: @border-radius-square;
+  }
+
+  &.@{prefix}-tag--round {
+    border-radius: @border-radius-round;
+  }
+
+  &.@{prefix}-tag--circle {
+    border-radius: @border-radius-circle;
+  }
+
+  &.@{prefix}-tag--half-circle {
+    border-radius: 0 @border-radius-circle @border-radius-circle 0;
+  }
+
+  &.@{prefix}-tag--checkable {
+    cursor: pointer;
+    color: @tag-default-color;
+    background-color: @tag-default-background-color;
+    border-color: @tag-default-border-color;
+
+    &.@{prefix}-tag--checked {
+      color: @color-white;
+      background-color: @tag-primary-color;
+      border-color: @tag-primary-color;
+    }
+
+    &.@{prefix}-tag--disabled {
+      cursor: not-allowed;
+      color: @tag-disabled-color;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-border-color;
+    }
+  }
+
+  &.@{prefix}-tag--closable {
+    &.@{prefix}-tag--disabled {
+      cursor: not-allowed;
+      color: @tag-disabled-color;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-border-color;
+    }
+  }
+}
