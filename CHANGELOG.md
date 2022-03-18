@@ -4,6 +4,25 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+
+## 0.7.0 `2022-3-18`
+
+### BREAKING CHANGES
+
+- Image:
+  - 属性 `load-failed` 变更为 `error` [#265](https://github.com/Tencent/tdesign-miniprogram/pull/265) [@xihangzhou](https://github.com/xihangzhou)
+  - 属性 `lazy-load` 变更为 `lazy` [#269](https://github.com/Tencent/tdesign-miniprogram/pull/269) [@xihangzhou](https://github.com/xihangzhou)
+
+### Bug Fixes
+
+- Button: 样式调整 [#262](https://github.com/Tencent/tdesign-miniprogram/pull/262) [@anlyyao](https://github.com/anlyyao)
+- Tag: 修复样式文件冗余的问题 [#267](https://github.com/Tencent/tdesign-miniprogram/pull/267) [@LeeJim](https://github.com/LeeJim)
+- Steps: 修复样式文件冗余的问题 [#268](https://github.com/Tencent/tdesign-miniprogram/pull/268) [@LeeJim](https://github.com/LeeJim)
+
+### Feature
+
+- Image: 新增 `shape` 属性 [#265](https://github.com/Tencent/tdesign-miniprogram/pull/265) [@xihangzhou](https://github.com/xihangzhou)
+
 ## 0.6.2 `2022-3-14`
 
 ### Bug Fixes
