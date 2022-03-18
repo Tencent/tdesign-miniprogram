@@ -11,7 +11,7 @@ docClass: timeline
 
 - Image:
   - 属性 `load-failed` 变更为 `error` [#265](https://github.com/Tencent/tdesign-miniprogram/pull/265) [@xihangzhou](https://github.com/xihangzhou)
-  - 属性 `lazy-load` 变更为 `lazy` [#269](https://github.com/Tencent/tdesign-miniprogram/pull/269) [@xihangzhou](https://github.com/xihangzhou)
+  - 属性 `lazy-load` 变更为 `lazy` [#269](https://github.com/Tencent/tdesign-miniprogram/pull/269) [@LeeJim](https://github.com/LeeJim)
 
 ### Bug Fixes
 
