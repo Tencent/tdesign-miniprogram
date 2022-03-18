@@ -19,10 +19,12 @@ function isExistFile(path) {
   return fs.existsSync(path);
 }
 
+// 生成配置文件内容
 gulp.task('wechatide:components', (cb) => {
   const componentsFolder = fs.readdirSync(wechatideFolder);
   const src = path.resolve(__dirname, '../src');
 
+  // 根据生成的组件信息转换整合成配置文件内容
   componentsFolder.forEach((componentName) => {
     const cmpInfoPath = `${wechatideFolder}/${componentName}`;
     const cmpInfo = fs.readFileSync(cmpInfoPath);
@@ -56,14 +58,17 @@ gulp.task('wechatide:components', (cb) => {
   cb();
 });
 
-gulp.task('wechatide:menu', (cb) => {
-  cb();
-});
+// 预留添加 menu 内容
+// gulp.task('wechatide:menu', (cb) => {
+//   cb();
+// });
 
-gulp.task('wechatide:common', (cb) => {
-  cb();
-});
+// 预留添加 common 内容
+// gulp.task('wechatide:common', (cb) => {
+//   cb();
+// });
 
+// 生成配置文件
 gulp.task('wechatide:generate', (cb) => {
   const base = path.join(__dirname, '../');
   const data = JSON.stringify(wechatideConfig, null, 2);
@@ -71,8 +76,10 @@ gulp.task('wechatide:generate', (cb) => {
   cb();
 });
 
+// 文件生成调用入口
 const generate = gulp.series(
-  gulp.parallel('wechatide:common', 'wechatide:components', 'wechatide:menu'),
+  'wechatide:components',
+  // gulp.parallel('wechatide:common', 'wechatide:components', 'wechatide:menu'),
   'wechatide:generate',
 );
 
