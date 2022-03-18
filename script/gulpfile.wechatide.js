@@ -21,28 +21,31 @@ function isExistFile(path) {
 
 gulp.task('wechatide:components', (cb) => {
   const componentsFolder = fs.readdirSync(wechatideFolder);
+  const src = path.resolve(__dirname, '../src');
 
   componentsFolder.forEach((componentName) => {
     const cmpInfoPath = `${wechatideFolder}/${componentName}`;
     const cmpInfo = fs.readFileSync(cmpInfoPath);
     const cmpInfoJson = JSON.parse(cmpInfo.toString());
+    // 组件key值替换
+    const cmpKey = componentName.split('.')[0];
+    cmpInfoJson.key = `t-${cmpKey}`;
+
+    const componentJsonFilePath = `${src}/${cmpKey}/${cmpKey}.json`;
+    if (isExistFile(componentJsonFilePath)) {
+      const componentJsonFile = fs.readFileSync(componentJsonFilePath);
+      const componentJson = JSON.parse(componentJsonFile.toString());
+      // console.log(componentJson.usingComponents);
+      cmpInfoJson.require = componentJson.usingComponents;
+    }
+
     wechatideConfig.components.push(cmpInfoJson);
-
-    // Todo 处理组件json文件 获取依赖
-    // const componentJsonFilePath = `${base}/${componentName}/${componentName}.json`;
-    // if (isExistFile(componentJsonFilePath)) {
-    //   const componentJsonFile = fs.readFileSync(componentJsonFilePath);
-    //   const componentJson = JSON.parse(componentJsonFile.toString());
-    //   // console.log(componentJson.usingComponents);
-    //   component.require = componentJson.usingComponents;
-    // }
-
-    // wechatideConfig.components.push(component);
-    // console.log(component);
   });
 
   cb();
 });
+
+gulp.task('wechatide:dep', (cb) => {});
 
 gulp.task('wechatide:menu', (cb) => {
   cb();
@@ -54,7 +57,7 @@ gulp.task('wechatide:common', (cb) => {
 
 gulp.task('wechatide:generate', (cb) => {
   const base = path.join(__dirname, '../');
-  const data = JSON.stringify(wechatideConfig, null, 4);
+  const data = JSON.stringify(wechatideConfig, null, 2);
   fs.writeFileSync(`${base}/.wechatide.ib.json`, data);
   cb();
 });
