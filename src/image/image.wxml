@@ -30,7 +30,7 @@
   style="{{widthStyle}}"
   mode="{{mode}}"
   webp="{{webp}}"
-  lazy-load="{{lazyLoad || lazy}}"
+  lazy-load="{{lazy}}"
   bindload="onLoaded"
   binderror="onLoadError"
   show-menu-by-longpress="{{showMenuByLongpress}}"
