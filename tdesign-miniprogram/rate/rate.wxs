@@ -18,10 +18,9 @@ module.exports = {
   },
   getIconColor: function (defaultValue, value, index, allowHalf, disabled, color, disabledColor) {
     var curVal = value ? value : defaultValue;
-    var colorIndex = color.indexOf(',');
-    var primaryColor = colorIndex !== -1 ? color.slice(0, colorIndex) : color;
-    var defaultColor =
-      colorIndex !== -1 ? color.slice(colorIndex + 1, colorIndex * 2 + 1) : '#E3E6EB';
+    var colorList = color.split(',');
+    var primaryColor = colorList[0] || color;
+    var defaultColor = colorList[1] || '#E3E6EB';
     if (curVal - index >= 1) {
       return disabled ? disabledColor : primaryColor;
     } else if (allowHalf && curVal - index > 0) {
@@ -31,17 +30,15 @@ module.exports = {
     }
   },
   getBackgroundColor: function (disabled, color, disabledColor) {
-    var colorIndex = color.indexOf(',');
-    var primaryColor = colorIndex !== -1 ? color.slice(0, colorIndex) : color;
-    var defaultColor =
-      colorIndex !== -1 ? color.slice(colorIndex + 1, colorIndex * 2 + 1) : '#E3E6EB';
-
-    var color = disabled ? disabledColor : primaryColor;
+    var colorList = color.split(',');
+    var primaryColor = colorList[0] || color;
+    var defaultColor = colorList[1] || '#E3E6EB';
+    var linearColor = disabled ? disabledColor : primaryColor;
     return (
       'background:linear-gradient(to right, ' +
-      color +
+      linearColor +
       ' 0%,' +
-      color +
+      linearColor +
       ' 50%, ' +
       defaultColor +
       ' 51%, ' +

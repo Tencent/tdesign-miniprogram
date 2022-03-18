@@ -25,13 +25,13 @@
   bottom: 0;
   transform: scale(1.5);
 }
-page .t-dialog {
+.t-dialog__wrapper .t-dialog {
   overflow: hidden;
   width: 644rpx;
   border-radius: 16rpx;
   background-color: #fff;
 }
-page .t-dialog__content {
+.t-dialog__wrapper .t-dialog__content {
   padding: 64rpx 48rpx;
   min-height: 176rpx;
   max-height: 776rpx;
@@ -42,14 +42,14 @@ page .t-dialog__content {
   font-size: 32rpx;
   line-height: 1.5;
 }
-page .t-dialog__header {
+.t-dialog__wrapper .t-dialog__header {
   text-align: center;
   font-weight: bold;
   font-size: 32rpx;
   line-height: 1.5;
   color: #000000;
 }
-page .t-dialog__body {
+.t-dialog__wrapper .t-dialog__body {
   overflow-y: scroll;
   text-align: center;
   -webkit-overflow-scrolling: touch;
@@ -57,28 +57,31 @@ page .t-dialog__body {
   color: #888888;
   margin-top: 32rpx;
 }
-page .t-dialog__body--without-title {
+.t-dialog__wrapper .t-dialog__body--without-title {
   margin-top: 0;
 }
-page .t-dialog__body-text {
+.t-dialog__wrapper .t-dialog__body-text {
   word-wrap: break-word;
 }
-page .t-dialog__body--left {
+.t-dialog__wrapper .t-dialog__body--left {
   text-align: left;
 }
-page .t-dialog__body--right {
+.t-dialog__wrapper .t-dialog__body--right {
   text-align: right;
 }
-page .t-dialog__footer {
+.t-dialog__wrapper .t-dialog__footer {
   display: flex;
 }
-page .t-dialog__footer--column {
-  flex-flow: column-reverse;
-}
-page .t-dialog__footer--column .t-dialog__button {
+.t-dialog__wrapper .t-dialog__footer-button-host {
   width: 100%;
 }
-page .t-dialog__button {
+.t-dialog__wrapper .t-dialog__footer--column {
+  flex-flow: column-reverse;
+}
+.t-dialog__wrapper .t-dialog__footer--column .t-dialog__button {
+  width: 100%;
+}
+.t-dialog__wrapper .t-dialog__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,42 +97,42 @@ page .t-dialog__button {
   border-left: 0;
   border-bottom: 0;
 }
-page .t-dialog__button-half {
+.t-dialog__wrapper .t-dialog__button-half {
   width: 322rpx;
 }
-page .t-dialog__button-confirm {
+.t-dialog__wrapper .t-dialog__button-confirm {
   color: #0052D9;
   font-weight: bold;
 }
-page .t-dialog__button-cancel {
+.t-dialog__wrapper .t-dialog__button-cancel {
   color: #000000;
   font-weight: normal;
 }
-page .t-dialog__button-bounce-enter {
+.t-dialog__wrapper .t-dialog__button-bounce-enter {
   transform: translate3d(-50%, -50%, 0) scale(0.7);
   opacity: 0;
 }
-page .t-dialog__button-bounce-leave-active {
+.t-dialog__wrapper .t-dialog__button-bounce-leave-active {
   transform: translate3d(-50%, -50%, 0) scale(0.9);
   opacity: 0;
 }
-page .t-dialog__button::after {
+.t-dialog__wrapper .t-dialog__button::after {
   border-radius: 0;
   border-color: rgba(0, 0, 0, 0.05);
 }
-page .t-dialog__button--active,
-page .t-dialog__button:active {
+.t-dialog__wrapper .t-dialog__button--active,
+.t-dialog__wrapper .t-dialog__button:active {
   background-color: rgba(0, 0, 0, 0.05);
 }
-page .t-dialog__text + .t-dialog__input {
+.t-dialog__wrapper .t-dialog__text + .t-dialog__input {
   margin-top: 48rpx;
 }
-page .t-dialog__input {
+.t-dialog__wrapper .t-dialog__input {
   width: 100%;
   background-color: #f0f0f0;
   font-size: 32rpx;
   color: #000000;
-  border-radius: 16rpx / 2;
+  border-radius: 8rpx;
   height: 96rpx;
   line-height: 1.5;
   padding: 24rpx;
@@ -137,6 +140,6 @@ page .t-dialog__input {
   box-sizing: border-box;
   text-align: left;
 }
-page .t-dialog__input-placeholder {
+.t-dialog__wrapper .t-dialog__input-placeholder {
   color: #bbbbbb;
 }

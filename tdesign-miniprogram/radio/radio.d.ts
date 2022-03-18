@@ -1,6 +1,7 @@
 import { SuperComponent } from '../common/src/index';
 export default class Radio extends SuperComponent {
     externalClasses: string[];
+    behaviors: string[];
     relations: {
         '../radio-group/radio-group': {
             type: "ancestor";

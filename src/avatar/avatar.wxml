@@ -29,7 +29,7 @@
     </view>
   </view>
   <t-badge
-    class="{{prefix}}-badge__{{shape === 'circle' ? 'circle' : 'round'}}"
+    class="{{prefix}}-badge-host {{prefix}}-badge__{{shape === 'circle' ? 'circle' : 'round'}}"
     wx:if="{{badgeProps.dot || badgeProps.count}}"
     color="{{badgeProps.color}}"
     count="{{badgeProps.count}}"

@@ -3,7 +3,7 @@ declare type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogra
 declare type ToastType = 'loading' | 'success' | 'fail';
 declare type ToastPositionType = 'top' | 'middle' | 'bottom';
 declare type ToastDirectionType = 'row' | 'column';
-declare type ToastOptionsType = {
+export declare type ToastOptionsType = {
     context?: Context;
     selector?: string;
     icon?: string;

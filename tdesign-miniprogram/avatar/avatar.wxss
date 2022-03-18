@@ -42,7 +42,7 @@
   color: #0052d9;
   border-radius: 999rpx;
 }
-.t-avatar__wrapper t-badge {
+.t-avatar__wrapper .t-badge-host {
   position: absolute;
 }
 .t-avatar__wrapper .t-badge__round {

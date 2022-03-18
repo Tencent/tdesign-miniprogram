@@ -32,7 +32,7 @@
 }
 .t-button-group--menu t-button:not(:first-child)::before {
   position: absolute;
-  top: 20px/2;
+  top: 10px;
   height: 24px;
   left: 0;
   content: '';

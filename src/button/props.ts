@@ -15,6 +15,10 @@ const props: TdButtonProps = {
   content: {
     type: String,
   },
+  /** 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取 */
+  customDataset: {
+    type: null,
+  },
   /** 是否禁用按钮 */
   disabled: {
     type: Boolean,

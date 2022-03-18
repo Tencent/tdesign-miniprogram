@@ -19,6 +19,7 @@ let CheckBox = class CheckBox extends SuperComponent {
             `${prefix}-class-content`,
             `${prefix}-class-border`,
         ];
+        this.behaviors = ['wx://form-field'];
         this.relations = {
             '../checkbox-group/checkbox-group': {
                 type: 'ancestor',

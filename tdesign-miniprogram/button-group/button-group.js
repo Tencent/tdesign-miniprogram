@@ -1,9 +1,10 @@
 import TComponent from '../common/component';
 import config from '../common/config';
+import { canIUseFormFieldButton } from '../common/version';
 const { prefix } = config;
 const name = `${prefix}-button-group`;
 TComponent({
-    behaviors: ['wx://form-field-button'],
+    behaviors: canIUseFormFieldButton() ? ['wx://form-field-button'] : [],
     // 组件的对外属性
     properties: {
         type: {

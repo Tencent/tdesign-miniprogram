@@ -16,7 +16,7 @@ export interface TdRateProps {
      */
     color?: {
         type: StringConstructor;
-        optionalTypes: Array<StringConstructor | ArrayConstructor>;
+        optionalTypes: Array<StringConstructor> | StringConstructor;
         value?: string | Array<string>;
     };
     /**

@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0);
-  z-index: 2000;
+  z-index: 12000;
 }
 .t-toast__content {
   position: fixed;
@@ -21,7 +21,7 @@
   max-width: 374rpx;
   line-height: 44rpx;
   box-sizing: border-box;
-  z-index: 2001;
+  z-index: 12001;
 }
 .t-toast__row {
   display: flex;

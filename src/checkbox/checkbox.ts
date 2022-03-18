@@ -14,6 +14,8 @@ export default class CheckBox extends SuperComponent {
     `${prefix}-class-border`,
   ];
 
+  behaviors = ['wx://form-field'];
+
   relations = {
     '../checkbox-group/checkbox-group': {
       type: 'ancestor' as 'ancestor',

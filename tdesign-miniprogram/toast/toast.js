@@ -6,7 +6,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
-import Props from './props';
+import props from './props';
 const { prefix } = config;
 const name = `${prefix}-toast`;
 let Toast = class Toast extends SuperComponent {
@@ -18,55 +18,63 @@ let Toast = class Toast extends SuperComponent {
         };
         this.hideTimer = null;
         this.removeTimer = null;
-        this.typeMapIcon = {
-            loading: 'loading',
-            success: 'check-circle',
-            fail: 'error-circle',
-        };
         this.data = {
             inserted: false,
             show: false,
             classPrefix: name,
             typeMapIcon: '',
         };
-        this.properties = Props;
-    }
-    show(userOptions) {
-        const options = Object.assign({ message: '', icon: '', theme: '', direction: 'row', placement: 'middle', preventScrollThrough: false, duration: 2000 }, userOptions);
-        if (this.hideTimer)
-            clearTimeout(this.hideTimer);
-        if (this.removeTimer)
-            clearTimeout(this.removeTimer);
-        const typeMapIcon = Object.keys(this.typeMapIcon).indexOf(options === null || options === void 0 ? void 0 : options.theme) !== -1
-            ? this.typeMapIcon[options === null || options === void 0 ? void 0 : options.theme]
-            : '';
-        const data = Object.assign(Object.assign({}, options), { show: true, typeMapIcon, inserted: true });
-        const { duration } = data;
-        this.setData(data);
-        this.hideTimer = setTimeout(() => {
-            this.clear();
-        }, duration);
-    }
-    clear() {
-        this.setData({ show: false });
-        this.removeTimer = setTimeout(() => {
-            this.setData({
-                inserted: false,
-            });
-        }, 300);
+        this.properties = props;
+        this.methods = {
+            show(options) {
+                if (this.hideTimer)
+                    clearTimeout(this.hideTimer);
+                if (this.removeTimer)
+                    clearTimeout(this.removeTimer);
+                const iconMap = {
+                    loading: 'loading',
+                    success: 'check-circle',
+                    fail: 'error-circle',
+                };
+                const typeMapIcon = iconMap[options === null || options === void 0 ? void 0 : options.theme] || '';
+                const defaultOptions = {
+                    direction: props.direction.value,
+                    duration: props.duration.value,
+                    icon: props.icon.value,
+                    message: props.message.value,
+                    placement: props.placement.value,
+                    preventScrollThrough: props.preventScrollThrough.value,
+                    theme: props.theme.value,
+                };
+                const data = Object.assign(Object.assign(Object.assign({}, defaultOptions), options), { show: true, typeMapIcon, inserted: true });
+                const { duration } = data;
+                this.setData(data);
+                this.hideTimer = setTimeout(() => {
+                    this.clear();
+                }, duration);
+            },
+            clear() {
+                this.setData({ show: false });
+                this.removeTimer = setTimeout(() => {
+                    this.setData({
+                        inserted: false,
+                    });
+                }, 300);
+            },
+            destroyed() {
+                if (this.removeTimer) {
+                    clearTimeout(this.removeTimer);
+                    this.removeTimer = null;
+                }
+                if (this.hideTimer) {
+                    clearTimeout(this.hideTimer);
+                    this.hideTimer = null;
+                }
+            },
+        };
     }
     detached() {
         this.destroyed();
-    }
-    destroyed() {
-        if (this.removeTimer) {
-            clearTimeout(this.removeTimer);
-            this.removeTimer = null;
-        }
-        if (this.hideTimer) {
-            clearTimeout(this.hideTimer);
-            this.hideTimer = null;
-        }
     }
 };
 Toast = __decorate([

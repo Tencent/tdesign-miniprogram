@@ -4,6 +4,7 @@ export default class Input extends SuperComponent {
         multipleSlots: boolean;
     };
     externalClasses: string[];
+    behaviors: string[];
     properties: import("./type").TdInputProps;
     controlledProps: {
         key: string;

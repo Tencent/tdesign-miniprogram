@@ -55,7 +55,7 @@
   font-size: 32rpx;
   color: #000000;
 }
-.t-textarea__wrapper textarea {
+.t-textarea__wrapper-textarea {
   display: block;
   box-sizing: border-box;
   width: 100%;

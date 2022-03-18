@@ -1,5 +1,5 @@
 import { SuperComponent } from '../common/src/index';
-import { MediaType, UploadMpConfig, UploadFile } from './type';
+import { UploadMpConfig, UploadFile } from './type';
 export default class Upload extends SuperComponent {
     externalClasses: string[];
     options: {
@@ -12,7 +12,6 @@ export default class Upload extends SuperComponent {
         proofs: any[];
         customFiles: UploadFile[];
         customLimit: number;
-        mediaType: MediaType[];
         config: UploadMpConfig;
         files: UploadFile[];
         max: number;
@@ -36,10 +35,16 @@ export default class Upload extends SuperComponent {
     handleLimit(customFiles: UploadFile[], max: number): void;
     uploadFiles(files: UploadFile[]): Promise<unknown>;
     startUpload(files: UploadFile[]): Promise<unknown>;
-    /** 选择图片 */
-    chooseImg(): void;
-    /** 选择视频 */
-    chooseVideo(): void;
+    /** 选择媒体素材 */
+    chooseMedia(mediaType: any): void;
+    /**
+     * 由于小程序暂时在ios上不支持返回上传文件的fileType，这里用文件的后缀来判断
+     * @param mediaType
+     * @param tempFilePath
+     * @returns string
+     * @link https://developers.weixin.qq.com/community/develop/doc/00042820b28ee8fb41fc4d0c254c00
+     */
+    getFileType(mediaType: string[], tempFilePath: string, fileType?: string): string;
     getRandFileName(filePath: any): string;
     closePop(): void;
     onAddTap(): void;

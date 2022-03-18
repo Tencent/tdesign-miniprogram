@@ -23,6 +23,7 @@ let Radio = class Radio extends SuperComponent {
             `${prefix}-class-content`,
             `${prefix}-class-border`,
         ];
+        this.behaviors = ['wx://form-field'];
         this.relations = {
             '../radio-group/radio-group': {
                 type: 'ancestor',

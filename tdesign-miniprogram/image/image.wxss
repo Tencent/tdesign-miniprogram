@@ -40,3 +40,11 @@
   width: 100%;
   height: 100%;
 }
+.round {
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+.circle {
+  border-radius: 50%;
+  overflow: hidden;
+}

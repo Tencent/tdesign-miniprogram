@@ -19,6 +19,8 @@ export default class Radio extends SuperComponent {
     `${prefix}-class-border`,
   ];
 
+  behaviors = ['wx://form-field'];
+
   relations = {
     '../radio-group/radio-group': {
       type: 'ancestor' as 'ancestor',
