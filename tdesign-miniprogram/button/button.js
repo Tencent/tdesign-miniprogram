@@ -13,7 +13,7 @@ const name = `${prefix}-button`;
 let Button = class Button extends SuperComponent {
     constructor() {
         super(...arguments);
-        this.externalClasses = [`${prefix}-class`, `${prefix}-class-icon`];
+        this.externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
         this.behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
         // 组件的对外属性
         this.properties = props;
@@ -60,9 +60,9 @@ let Button = class Button extends SuperComponent {
                 if (this.data.disabled) {
                     classList.push(`${prefix}-is-disabled`);
                 }
-                if (this.data.loading) {
-                    classList.push(`${prefix}-is-loading`);
-                }
+                // if (this.data.loading) {
+                //   classList.push(`${prefix}-is-loading`);
+                // }
                 classList.push(`${name}--${this.data.variant}`);
                 if (this.data.ghost) {
                     classList.push(`${name}--ghost`);

@@ -213,23 +213,6 @@
 .t-tag.t-tag--half-circle {
   border-radius: 0 999px 999px 0;
 }
-.t-tag.t-tag--checkable {
-  cursor: pointer;
-  color: #444;
-  background-color: #f5f5f5;
-  border-color: #f5f5f5;
-}
-.t-tag.t-tag--checkable.t-tag--checked {
-  color: #fff;
-  background-color: #0052D9;
-  border-color: #0052D9;
-}
-.t-tag.t-tag--checkable.t-tag--disabled {
-  cursor: not-allowed;
-  color: #bbb;
-  background-color: #f5f5f5;
-  border-color: #f5f5f5;
-}
 .t-tag.t-tag--closable.t-tag--disabled {
   cursor: not-allowed;
   color: #bbb;
