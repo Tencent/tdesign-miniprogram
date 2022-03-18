@@ -31,12 +31,23 @@ gulp.task('wechatide:components', (cb) => {
     const cmpKey = componentName.split('.')[0];
     cmpInfoJson.key = `t-${cmpKey}`;
 
-    const componentJsonFilePath = `${src}/${cmpKey}/${cmpKey}.json`;
+    let componentJsonFilePath = `${src}/${cmpKey}/${cmpKey}.json`;
+    // 获取存放在父组件目录中的子组件json文件地址
+    const srcFolder = fs.readdirSync(src);
+    srcFolder.forEach((cmp) => {
+      if (isExistFile(`${src}/${cmp}/${cmpKey}.json`)) {
+        componentJsonFilePath = `${src}/${cmp}/${cmpKey}.json`;
+      }
+    });
+
+    // 获取到组件依赖组件并录入json
     if (isExistFile(componentJsonFilePath)) {
       const componentJsonFile = fs.readFileSync(componentJsonFilePath);
       const componentJson = JSON.parse(componentJsonFile.toString());
-      // console.log(componentJson.usingComponents);
-      cmpInfoJson.require = componentJson.usingComponents;
+      // usingComponents为空时忽略
+      if (componentJson.usingComponents && Object.keys(componentJson.usingComponents).length > 0) {
+        cmpInfoJson.require = componentJson.usingComponents;
+      }
     }
 
     wechatideConfig.components.push(cmpInfoJson);
@@ -44,8 +55,6 @@ gulp.task('wechatide:components', (cb) => {
 
   cb();
 });
-
-gulp.task('wechatide:dep', (cb) => {});
 
 gulp.task('wechatide:menu', (cb) => {
   cb();

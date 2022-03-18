@@ -51,7 +51,10 @@
           "desc": "尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size",
           "label": ""
         }
-      ]
+      ],
+      "require": {
+        "t-avatar": "./avatar"
+      }
     },
     {
       "key": "t-avatar",
@@ -305,8 +308,7 @@
           "desc": "尺寸",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-button",
@@ -710,7 +712,10 @@
           "desc": "点击标签时触发",
           "label": ""
         }
-      ]
+      ],
+      "require": {
+        "t-icon": ".././icon/icon"
+      }
     },
     {
       "key": "t-checkbox-group",
@@ -1917,8 +1922,7 @@
           "desc": "页脚展示类型",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-grid-item",
@@ -2000,7 +2004,10 @@
           "desc": "点击后的跳转链接",
           "label": ""
         }
-      ]
+      ],
+      "require": {
+        "t-image": "../image/image"
+      }
     },
     {
       "key": "t-grid",
@@ -2062,8 +2069,7 @@
           "desc": "是否开启点击反馈",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-icon-svg",
@@ -2167,8 +2173,7 @@
           "desc": "图标名称",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-iconfont",
@@ -2692,8 +2697,7 @@
           "desc": "加载组件类型",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-message",
@@ -3259,8 +3263,7 @@
           "desc": "进度条未完成部分颜色",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-pull-down-refresh",
@@ -3878,8 +3881,7 @@
           "desc": "骨架图风格，有基础、头像组合等两大类",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-slider",
@@ -4005,8 +4007,7 @@
           "desc": "滑块值变化时触发",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-step-item",
@@ -4061,7 +4062,10 @@
           "desc": "标题",
           "label": ""
         }
-      ]
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
     },
     {
       "key": "t-stepper",
@@ -4294,8 +4298,7 @@
           "desc": "滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-swipe-cell",
@@ -4526,8 +4529,7 @@
           "desc": "数据发生变化时触发",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-tab-bar-item",
@@ -4572,7 +4574,11 @@
           "desc": "标识符",
           "label": ""
         }
-      ]
+      ],
+      "require": {
+        "t-icon": "../icon/icon",
+        "t-badge": "../badge/badge"
+      }
     },
     {
       "key": "t-tab-bar",
@@ -5174,8 +5180,7 @@
           "desc": "是否显示",
           "label": ""
         }
-      ],
-      "require": {}
+      ]
     },
     {
       "key": "t-upload",
