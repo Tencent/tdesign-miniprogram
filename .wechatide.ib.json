@@ -17,20 +17,10 @@
         {
           "key": "collapseAvatar",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多`",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，用于设置组件外层元素类名",
           "label": ""
         },
         {
@@ -80,15 +70,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，用于设置组件外层元素类名",
-          "label": ""
-        },
-        {
           "key": "hideOnLoadFailed",
           "type": [
             "Boolean"
@@ -100,8 +81,7 @@
         {
           "key": "icon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "图标",
@@ -154,15 +134,6 @@
       "icon": "",
       "properties": [
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置外层元素、图标、文本内容等元素类名",
-          "label": ""
-        },
-        {
           "key": "fixed",
           "type": [
             "Boolean"
@@ -174,8 +145,7 @@
         {
           "key": "icon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "'backtop'",
           "desc": "图标",
@@ -238,8 +208,7 @@
           "key": "count",
           "type": [
             "String",
-            "Number",
-            "TNode"
+            "Number"
           ],
           "defaultValue": "0",
           "desc": "徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为空表示使用插槽渲染",
@@ -252,15 +221,6 @@
           ],
           "defaultValue": "false",
           "desc": "是否为红点",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置外层元素、默认内容、右上角内容等元素类名",
           "label": ""
         },
         {
@@ -327,8 +287,7 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "按钮内容",
@@ -350,15 +309,6 @@
           ],
           "defaultValue": "false",
           "desc": "是否禁用按钮",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名",
           "label": ""
         },
         {
@@ -460,15 +410,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名",
-          "label": ""
-        },
-        {
           "key": "title",
           "type": [
             "String"
@@ -514,20 +455,10 @@
         {
           "key": "description",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "下方内容描述",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层类名、标题类名、右侧说明文字类名、下方描述内容类名、图片类名、激活态类名、左侧图标类名、右侧图标类名 等",
           "label": ""
         },
         {
@@ -542,8 +473,7 @@
         {
           "key": "image",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "主图",
@@ -561,8 +491,7 @@
         {
           "key": "leftIcon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "左侧图标，出现在单元格标题的左侧",
@@ -571,8 +500,7 @@
         {
           "key": "note",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "和标题同行的说明文字",
@@ -590,8 +518,7 @@
         {
           "key": "rightIcon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "最右侧图标",
@@ -600,8 +527,7 @@
         {
           "key": "title",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "标题",
@@ -656,8 +582,7 @@
           "key": "content",
           "type": [
             "String",
-            "Number",
-            "TNode"
+            "Number"
           ],
           "defaultValue": "",
           "desc": "组件子元素",
@@ -675,8 +600,7 @@
         {
           "key": "icon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "标签图标",
@@ -823,8 +747,7 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "复选框内容",
@@ -849,15 +772,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层、复选框图标、主文案、内容 等元素类名",
-          "label": ""
-        },
-        {
           "key": "icon",
           "type": [
             "Array"
@@ -878,8 +792,7 @@
         {
           "key": "label",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "主文案",
@@ -952,8 +865,7 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "折叠面板内容",
@@ -980,8 +892,7 @@
         {
           "key": "expandIcon",
           "type": [
-            "Boolean",
-            "TNode"
+            "Boolean"
           ],
           "defaultValue": "",
           "desc": "当前折叠面板展开图标，优先级大于 Collapse 的同名属性",
@@ -990,8 +901,7 @@
         {
           "key": "header",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "面板头内容",
@@ -1000,8 +910,7 @@
         {
           "key": "headerRightContent",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "面板头的右侧区域，一般用于呈现面板操作",
@@ -1047,8 +956,7 @@
         {
           "key": "expandIcon",
           "type": [
-            "Boolean",
-            "TNode"
+            "Boolean"
           ],
           "defaultValue": "",
           "desc": "展开图标。值为 undefined 或 false 则不显示展开图标；值为 true 显示默认图标；值类型为函数，则表示完全自定义展开图标",
@@ -1109,8 +1017,7 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "'default'",
           "desc": "最终倒计时的展示内容，值为'default'时使用默认的格式，否则使用自定义样式插槽",
@@ -1214,20 +1121,10 @@
           "key": "disableDate",
           "type": [
             "Object",
-            "Array",
-            "Function"
-          ],
-          "defaultValue": "",
-          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
             "Array"
           ],
           "defaultValue": "",
-          "desc": "组件类名，分别用于设置组件外层元素、确认按钮、取消按钮、标题等元素类名",
+          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
           "label": ""
         },
         {
@@ -1341,20 +1238,10 @@
           "key": "disableDate",
           "type": [
             "Object",
-            "Array",
-            "Function"
-          ],
-          "defaultValue": "",
-          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
             "Array"
           ],
           "defaultValue": "",
-          "desc": "组件类名，分别用于设置组件外层元素、确认按钮、取消按钮、标题等元素类名",
+          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
           "label": ""
         },
         {
@@ -1443,8 +1330,7 @@
         {
           "key": "actions",
           "type": [
-            "Array",
-            "TNode"
+            "Array"
           ],
           "defaultValue": "",
           "desc": "操作栏",
@@ -1463,8 +1349,7 @@
           "key": "cancelBtn",
           "type": [
             "String",
-            "Object",
-            "TNode"
+            "Object"
           ],
           "defaultValue": "''",
           "desc": "取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件",
@@ -1483,8 +1368,7 @@
           "key": "confirmBtn",
           "type": [
             "String",
-            "Object",
-            "TNode"
+            "Object"
           ],
           "defaultValue": "''",
           "desc": "确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件",
@@ -1493,20 +1377,10 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "内容",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层元素、组件内容部分、确认按钮、取消按钮 等元素类名",
           "label": ""
         },
         {
@@ -1530,8 +1404,7 @@
         {
           "key": "title",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "标题",
@@ -1595,8 +1468,7 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "子元素",
@@ -1609,15 +1481,6 @@
           ],
           "defaultValue": "false",
           "desc": "是否虚线（仅在水平分割线有效）",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层类名、分隔线类名 等",
           "label": ""
         },
         {
@@ -1648,8 +1511,7 @@
         {
           "key": "attach",
           "type": [
-            "String",
-            "Function"
+            "String"
           ],
           "defaultValue": "''",
           "desc": "抽屉挂载的节点，默认挂在组件本身的位置。数据类型为 String 时，会被当作选择器处理，进行节点查询。示例：'body' 或 () => document.body",
@@ -1659,8 +1521,7 @@
           "key": "cancelBtn",
           "type": [
             "String",
-            "Object",
-            "TNode"
+            "Object"
           ],
           "defaultValue": "''",
           "desc": "取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件",
@@ -1670,8 +1531,7 @@
           "key": "closeBtn",
           "type": [
             "String",
-            "Boolean",
-            "TNode"
+            "Boolean"
           ],
           "defaultValue": "undefined",
           "desc": "关闭按钮，可以自定义。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string 则直接显示值，如：“关闭”。值类型为 TNode，则表示呈现自定义按钮示例",
@@ -1699,8 +1559,7 @@
           "key": "confirmBtn",
           "type": [
             "String",
-            "Object",
-            "TNode"
+            "Object"
           ],
           "defaultValue": "''",
           "desc": "确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件",
@@ -1832,7 +1691,7 @@
         {
           "key": "action",
           "type": [
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "操作按钮",
@@ -1841,20 +1700,10 @@
         {
           "key": "description",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "描述文字",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名",
           "label": ""
         },
         {
@@ -1869,8 +1718,7 @@
         {
           "key": "image",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "图片地址",
@@ -1941,27 +1789,16 @@
         {
           "key": "description",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点",
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名",
-          "label": ""
-        },
-        {
           "key": "image",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "图片，可以是图片地址，也可以自定义图片节点",
@@ -1988,8 +1825,7 @@
         {
           "key": "text",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "文本，可以通过 Props 传入文本，也可以自定义标题节点",
@@ -2040,15 +1876,6 @@
           ],
           "defaultValue": "4",
           "desc": "每一行的列数量",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，用于设置组件外层元素类名",
           "label": ""
         },
         {
@@ -2243,20 +2070,10 @@
         {
           "key": "error",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "'default'",
           "desc": "加载失败时显示的内容。值为 `default` 则表示使用默认加载失败风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `error`；值为其他则表示普通文本内容，如“加载失败”",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置加载组件外层元素，中间内容等元素类名",
           "label": ""
         },
         {
@@ -2271,8 +2088,7 @@
         {
           "key": "loading",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "'default'",
           "desc": "加载态内容。值为 `default` 则表示使用默认加载中风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `loading`；值为其他则表示普通文本内容，如“加载中”",
@@ -2429,15 +2245,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名",
-          "label": ""
-        },
-        {
           "key": "focus",
           "type": [
             "Boolean"
@@ -2449,8 +2256,7 @@
         {
           "key": "label",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "左侧文本",
@@ -2486,8 +2292,7 @@
         {
           "key": "prefixIcon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "组件前置图标，值为字符串则表示图标名称",
@@ -2505,8 +2310,7 @@
         {
           "key": "suffix",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "后置图标前的后置内容",
@@ -2515,8 +2319,7 @@
         {
           "key": "suffixIcon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "后置文本内容，值为字符串则表示图标名称",
@@ -2598,15 +2401,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置加载组件外层元素，加载组件文本，加载组件指示符，加载指示符内侧同心圆等元素类名",
-          "label": ""
-        },
-        {
           "key": "indicator",
           "type": [
             "Boolean"
@@ -2681,8 +2475,7 @@
         {
           "key": "text",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "加载提示文案",
@@ -2707,8 +2500,7 @@
         {
           "key": "action",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "操作",
@@ -2727,8 +2519,7 @@
           "key": "closeBtn",
           "type": [
             "String",
-            "Boolean",
-            "TNode"
+            "Boolean"
           ],
           "defaultValue": "undefined",
           "desc": "关闭按钮，可以自定义。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string 则直接显示值，如：“关闭”。也可以完全自定义按钮",
@@ -2737,8 +2528,7 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "用于自定义消息弹出内容",
@@ -2754,20 +2544,10 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "样式类名，分别用于设置 组件外层、消息内容、左侧图标、操作按钮、关闭按钮等元素类名",
-          "label": ""
-        },
-        {
           "key": "icon",
           "type": [
             "String",
-            "Boolean",
-            "TNode"
+            "Boolean"
           ],
           "defaultValue": "true",
           "desc": "消息提醒前面的图标。值为 true 则根据 theme 显示对应的图标，值为 false 则不显示图标。值为 'info' 或 'bell' 则显示组件内置图标。也可以完全自定义图标节点",
@@ -2875,15 +2655,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、胶囊等元素类名",
-          "label": ""
-        },
-        {
           "key": "fixed",
           "type": [
             "Boolean"
@@ -2895,8 +2666,7 @@
         {
           "key": "homeIcon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "首页图标地址。值为 '' 或者 undefiend 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址",
@@ -2905,8 +2675,7 @@
         {
           "key": "leftIcon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "左侧图标地址，值为 '' 或者 undefiend 则表示不显示返回图标，值为 'arrow-left' 表示显示返回图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址",
@@ -2915,8 +2684,7 @@
         {
           "key": "title",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "页面标题",
@@ -3078,8 +2846,7 @@
         {
           "key": "closeBtn",
           "type": [
-            "Boolean",
-            "TNode"
+            "Boolean"
           ],
           "defaultValue": "",
           "desc": "关闭按钮，值类型为 Boolean 时表示是否显示关闭按钮。也可以自定义关闭按钮",
@@ -3097,20 +2864,10 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "浮层里面的内容",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名",
           "label": ""
         },
         {
@@ -3200,8 +2957,7 @@
           "key": "label",
           "type": [
             "String",
-            "Boolean",
-            "TNode"
+            "Boolean"
           ],
           "defaultValue": "true",
           "desc": "进度百分比，可自定义",
@@ -3270,15 +3026,6 @@
       "label": "下拉刷新",
       "icon": "",
       "properties": [
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "加载loading样式",
-          "label": ""
-        },
         {
           "key": "loadingBarHeight",
           "type": [
@@ -3440,8 +3187,7 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "单选内容",
@@ -3466,15 +3212,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层、单选图标、主文案、内容 等元素类名",
-          "label": ""
-        },
-        {
           "key": "icon",
           "type": [
             "String",
@@ -3487,8 +3224,7 @@
         {
           "key": "label",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "主文案",
@@ -3652,8 +3388,7 @@
         {
           "key": "action",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "''",
           "desc": "自定义右侧操作按钮文字",
@@ -3678,15 +3413,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型",
-          "label": ""
-        },
-        {
           "key": "focus",
           "type": [
             "Boolean"
@@ -3707,8 +3433,7 @@
         {
           "key": "leftIcon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "'search'",
           "desc": "左侧图标",
@@ -3726,8 +3451,7 @@
         {
           "key": "rightIcon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "'close'",
           "desc": "右侧图标",
@@ -3846,15 +3570,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置组件外层元素、头像、图片、文本等元素类名",
-          "label": ""
-        },
-        {
           "key": "loading",
           "type": [
             "Boolean"
@@ -3916,20 +3631,10 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名",
-          "label": ""
-        },
-        {
           "key": "label",
           "type": [
             "String",
-            "Boolean",
-            "TNode"
+            "Boolean"
           ],
           "defaultValue": "false",
           "desc": "滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值",
@@ -4017,27 +3722,16 @@
         {
           "key": "content",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "''",
           "desc": "步骤描述",
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，用于设置组件外层元素元素类名",
-          "label": ""
-        },
-        {
           "key": "icon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标",
@@ -4055,8 +3749,7 @@
         {
           "key": "title",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "''",
           "desc": "标题",
@@ -4088,15 +3781,6 @@
           ],
           "defaultValue": "false",
           "desc": "禁用输入框",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于表示组件外层元素、输入框、右侧递增号、左侧递减号等元素类名",
           "label": ""
         },
         {
@@ -4193,15 +3877,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，用于设置组件外层元素元素类名",
-          "label": ""
-        },
-        {
           "key": "layout",
           "type": [
             "String"
@@ -4248,7 +3923,7 @@
         {
           "key": "container",
           "type": [
-            "Function"
+            "String"
           ],
           "defaultValue": "",
           "desc": "函数返回容器对应的 NodesRef 节点，将对应节点指定为组件的外部容器，滚动时组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置。",
@@ -4261,15 +3936,6 @@
           ],
           "defaultValue": "false",
           "desc": "是否禁用组件",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "根结点外部样式",
           "label": ""
         },
         {
@@ -4326,8 +3992,7 @@
         {
           "key": "left",
           "type": [
-            "Array",
-            "TNode"
+            "Array"
           ],
           "defaultValue": "",
           "desc": "左侧滑动操作项。所有行为同 `right`",
@@ -4336,8 +4001,7 @@
         {
           "key": "right",
           "type": [
-            "Array",
-            "TNode"
+            "Array"
           ],
           "defaultValue": "",
           "desc": "右侧滑动操作项。有两种定义方式，一种是使用数组，二种是使用插槽。`right.text` 表示操作文本，`right.className` 表示操作项类名，`right.style` 表示操作项样式，`right.onClick` 表示点击操作项后执行的回调函数。示例：`[{ text: '删除', style: 'background-color: red', onClick: () => {} }]`",
@@ -4432,8 +4096,7 @@
         {
           "key": "navigation",
           "type": [
-            "Object",
-            "TNode"
+            "Object"
           ],
           "defaultValue": "",
           "desc": "导航器全部配置",
@@ -4548,8 +4211,7 @@
         {
           "key": "icon",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "图标名称",
@@ -4601,15 +4263,6 @@
           ],
           "defaultValue": "['#0052D9', 'rgba(0, 0, 0, .6)']",
           "desc": "标签颜色设置。示例：[选中标签的颜色, 未选中的标签颜色]",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，用于设置外层元素类名",
           "label": ""
         },
         {
@@ -4688,8 +4341,7 @@
         {
           "key": "label",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "选项卡名称，可自定义选项卡导航内容",
@@ -4698,8 +4350,7 @@
         {
           "key": "panel",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "用于自定义选项卡面板内容",
@@ -4729,15 +4380,6 @@
           ],
           "defaultValue": "",
           "desc": "动画效果设置。其中 duration 表示动画时长",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名",
           "label": ""
         },
         {
@@ -4798,15 +4440,6 @@
           ],
           "defaultValue": "false",
           "desc": "标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态",
-          "label": ""
-        },
-        {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，用于设置 组件外层元素元素类名",
           "label": ""
         },
         {
@@ -4941,15 +4574,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名",
-          "label": ""
-        },
-        {
           "key": "focus",
           "type": [
             "Boolean"
@@ -4961,8 +4585,7 @@
         {
           "key": "label",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "左侧文本",
@@ -5061,15 +4684,6 @@
           "label": ""
         },
         {
-          "key": "externalClasses",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "组件类名",
-          "label": ""
-        },
-        {
           "key": "icon",
           "type": [
             "String"
@@ -5081,8 +4695,7 @@
         {
           "key": "message",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "弹窗显示文字",
@@ -5190,8 +4803,7 @@
         {
           "key": "addContent",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "添加按钮内容。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。",
@@ -5209,8 +4821,7 @@
         {
           "key": "deleteBtn",
           "type": [
-            "String",
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。",
@@ -5219,7 +4830,7 @@
         {
           "key": "fileListDisplay",
           "type": [
-            "TNode"
+            "String"
           ],
           "defaultValue": "",
           "desc": "【开发中】用于完全自定义文件列表内容",
@@ -5273,7 +4884,7 @@
         {
           "key": "requestMethod",
           "type": [
-            "Function"
+            "String"
           ],
           "defaultValue": "",
           "desc": "自定义上传方法",
