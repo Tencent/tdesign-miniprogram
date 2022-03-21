@@ -25,10 +25,6 @@
 
     &__inner {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
     &__icon {
@@ -162,6 +158,42 @@
   }
 }
 
+// 子步骤状态
+.default-child-status(@status) {
+  & when(@status = default) {
+    color: #c5c5c5;
+    .@{item}-child-dot {
+      &-item {
+        background-color: #c5c5c5;
+      }
+    }
+  }
+  & when(@status = finish) {
+    color: #000000;
+    .@{item}-child-dot {
+      &-item {
+        background-color: @primary-color;
+      }
+    }
+  }
+  & when(@status = process) {
+    color: @primary-color;
+    .@{item}-child-dot {
+      &-item {
+        background-color: @primary-color;
+      }
+    }
+  }
+  & when(@status = error) {
+    color: @step-error-bg-color;
+    .@{item}-child-dot {
+      &-item {
+        background-color: @step-error-bg-color;
+      }
+    }
+  }
+}
+
 .step-item-basic();
 
 .@{step} {
@@ -173,6 +205,14 @@
     }
 
     .@{item} {
+      &__inner {
+        .@{item}-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
       &--default {
         .default-number-status(default);
       }
@@ -210,16 +250,83 @@
     .@{item} {
       position: relative;
 
-      &__inner {
+      &__inner :only-child.@{item}-wrapper {
+        padding-bottom: 50rpx;
+      }
+
+      &-wrapper {
+        display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
       }
 
+      &-wrapper + .@{item}-wrapper-child:not(:empty) {
+        padding-top: 32rpx;
+        padding-bottom: 48rpx;
+      }
+
+      &-child {
+        display: flex;
+        width: 100%;
+        height: 40rpx;
+        align-items: center;
+        padding-bottom: 8rpx;
+        font-size: 24rpx;
+        color: @primary-color;
+        font-weight: 500;
+
+        &-dot {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: @connector-default-icon-width;
+          height: @connector-default-icon-width;
+          text-align: center;
+          border: 1px solid transparent;
+          color: @step-item-icon-color;
+          z-index: 2;
+          // background-color: #866f6f;
+
+          &-item {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: @primary-color;
+          }
+        }
+
+        .@{item}__content-child {
+          margin-left: @spacer;
+        }
+      }
+
+      &-child-status {
+        // 'default' | 'process' | 'finish' | 'error';
+        &--default {
+          .default-child-status(default);
+        }
+        &--finish {
+          .default-child-status(finish);
+        }
+
+        &--process {
+          .default-child-status(process);
+        }
+
+        &--error {
+          .default-child-status(error);
+        }
+      }
+
+      .@{item}-child:last-child {
+        padding-bottom: 0rpx;
+      }
+
       &__content {
         margin-left: @spacer;
+        margin-right: @spacer * 2;
         flex: 1;
-        padding-bottom: 50rpx;
       }
 
       &__title {
@@ -283,6 +390,16 @@
           }
         }
 
+        //  子步骤dot宽度要和icon部分保持一致
+        &-child {
+          &-dot {
+            width: @dot-steps-anchor-width;
+            height: @dot-steps-anchor-width;
+            box-sizing: border-box;
+            border: 2px solid transparent;
+          }
+        }
+
         &__title {
           margin-top: 0;
         }
@@ -295,8 +412,8 @@
           width: 1px;
           background: @border-level-2-color;
           position: absolute;
-          left: calc(@dot-steps-anchor-width / 2 - 1rpx);
-          top: calc(@dot-steps-anchor-width + 1px);
+          left: (@dot-steps-anchor-width / 2 - 1rpx);
+          top: @dot-steps-anchor-width + 1px;
         }
       }
     }

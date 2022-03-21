@@ -104,6 +104,14 @@ export interface TdStepItemProps {
     value?: string;
     required?: boolean;
   };
+  /**
+   * 当前步骤的子步骤条数据
+   * @default  '''
+   */
+  childStepData?: {
+    type: ArrayConstructor;
+    required?: boolean;
+  };
 }
 
 export type StepStatus = 'default' | 'process' | 'finish' | 'error';

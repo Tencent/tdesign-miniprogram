@@ -61,6 +61,26 @@ export default class Steps extends SuperComponent {
         items.forEach((item, index) => {
           item.updateStatus(current, index, this.data.theme, this.data.layout, items, readonly);
         });
+
+        // 检测step完成态：判断子步骤是否全部完成，检查当前step的status状态
+        let _current = current;
+        for (let i = 0; i < items.length; i += 1) {
+          const childList = items[i].data.childStepData;
+          const stepStatus = items[i].data.status;
+          if (
+            (childList.length && childList.every((itemChild) => itemChild.status === 'finish')) ||
+            stepStatus === 'finish'
+          ) {
+            items[i].data.status = 'finish';
+            _current = i + 1;
+          }
+        }
+        // 更新current，开启下一个step
+        if (current !== _current) {
+          this.setData({
+            current: _current,
+          });
+        }
       }
     },
     handleClick(index) {

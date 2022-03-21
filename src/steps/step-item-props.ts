@@ -30,6 +30,10 @@ const props: TdStepItemProps = {
     type: String,
     value: '',
   },
+  /** 子步骤条数据 */
+  childStepData: {
+    type: Array,
+  },
 };
 
 export default props;
