@@ -28,7 +28,8 @@
     "test": "jest -c jest.unit.config.js && jest -c jest.e2e.config.js",
     "test:unit": "jest -c jest.unit.config.js",
     "test:e2e": "jest -c jest.e2e.config.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./"
   },
   "author": "tdesign",
   "license": "MIT",
