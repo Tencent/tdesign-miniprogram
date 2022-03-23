@@ -1,8 +1,8 @@
-/* eslint-disable global-require */
 /* eslint-disable no-console */
 const gulp = require('gulp');
 const path = require('path');
 const fs = require('fs');
+const config = require('./config.js');
 
 const wechatideConfig = {
   components: [],
@@ -12,6 +12,14 @@ const wechatideConfig = {
   },
   menu: [],
 };
+
+const menuConfig = [
+  { key: 'basic', label: '基础' },
+  { key: 'nav', label: '导航' },
+  { key: 'input', label: '输入' },
+  { key: 'data', label: '数据展示' },
+  { key: 'info', label: '消息提醒' },
+];
 
 const wechatideFolder = path.join(__dirname, '../_wechatide');
 
@@ -59,9 +67,31 @@ gulp.task('wechatide:components', (cb) => {
 });
 
 // 预留添加 menu 内容
-// gulp.task('wechatide:menu', (cb) => {
-//   cb();
-// });
+gulp.task('wechatide:menu', (cb) => {
+  const menuFilePath = path.resolve(__dirname, '../site/site.config.mjs');
+  (async () => {
+    await import(menuFilePath).then((data) => {
+      data.default.docs.forEach((item) => {
+        if (item.type !== 'component') return;
+        const menuFirst = { key: '', label: '', submenu: [] };
+        const { key } = menuConfig.find((i) => i.label === item.title);
+        menuFirst.key = key;
+        menuFirst.label = item.title;
+        item.children.forEach((subItem) => {
+          menuFirst.submenu.push({
+            key: subItem.name,
+            label: subItem.title.split(' ')[1],
+            components: [
+              `${config.CONFIG_PREFIX}-${subItem.name.replace(/([A-Z])/g, '-$1').toLowerCase()}`,
+            ],
+          });
+        });
+        wechatideConfig.menu.push(menuFirst);
+      });
+      cb();
+    });
+  })();
+});
 
 // 预留添加 common 内容
 // gulp.task('wechatide:common', (cb) => {
@@ -78,7 +108,7 @@ gulp.task('wechatide:generate', (cb) => {
 
 // 文件生成调用入口
 const generate = gulp.series(
-  'wechatide:components',
+  gulp.parallel('wechatide:components', 'wechatide:menu'),
   // gulp.parallel('wechatide:common', 'wechatide:components', 'wechatide:menu'),
   'wechatide:generate',
 );

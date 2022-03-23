@@ -3301,7 +3301,7 @@
             "String",
             "Array"
           ],
-          "defaultValue": "",
+          "defaultValue": "'#ED7B2F'",
           "desc": "评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，两个值表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色。示例：['#ED7B2F', '#999999']",
           "label": ""
         },
@@ -3355,7 +3355,7 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
+          "defaultValue": "[]",
           "desc": "评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']",
           "label": ""
         },
@@ -3364,8 +3364,17 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
+          "defaultValue": "0",
           "desc": "选择评分的值",
+          "label": ""
+        },
+        {
+          "key": "variant",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "outline",
+          "desc": "形状类型，有描边类型和填充类型两种",
           "label": ""
         }
       ],
@@ -4864,6 +4873,15 @@
           "label": ""
         },
         {
+          "key": "imageProps",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "透传 Image 组件全部属性",
+          "label": ""
+        },
+        {
           "key": "max",
           "type": [
             "Number"
@@ -4945,5 +4963,316 @@
     "properties": {},
     "events": {}
   },
-  "menu": []
+  "menu": [
+    {
+      "key": "basic",
+      "label": "基础",
+      "submenu": [
+        {
+          "key": "button",
+          "label": "按钮",
+          "components": [
+            "t-button"
+          ]
+        },
+        {
+          "key": "divider",
+          "label": "分割线",
+          "components": [
+            "t-divider"
+          ]
+        },
+        {
+          "key": "icon",
+          "label": "图标",
+          "components": [
+            "t-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "nav",
+      "label": "导航",
+      "submenu": [
+        {
+          "key": "indexes",
+          "label": "索引",
+          "components": [
+            "t-indexes"
+          ]
+        },
+        {
+          "key": "navbar",
+          "label": "导航条",
+          "components": [
+            "t-navbar"
+          ]
+        },
+        {
+          "key": "steps",
+          "label": "步骤条",
+          "components": [
+            "t-steps"
+          ]
+        },
+        {
+          "key": "tabbar",
+          "label": "标签栏",
+          "components": [
+            "t-tabbar"
+          ]
+        },
+        {
+          "key": "tabs",
+          "label": "选项卡",
+          "components": [
+            "t-tabs"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "input",
+      "label": "输入",
+      "submenu": [
+        {
+          "key": "checkbox",
+          "label": "复选框",
+          "components": [
+            "t-checkbox"
+          ]
+        },
+        {
+          "key": "dateTimePicker",
+          "label": "时间选择器",
+          "components": [
+            "t-date-time-picker"
+          ]
+        },
+        {
+          "key": "input",
+          "label": "输入框",
+          "components": [
+            "t-input"
+          ]
+        },
+        {
+          "key": "picker",
+          "label": "选择器",
+          "components": [
+            "t-picker"
+          ]
+        },
+        {
+          "key": "radio",
+          "label": "单选框",
+          "components": [
+            "t-radio"
+          ]
+        },
+        {
+          "key": "rate",
+          "label": "评分",
+          "components": [
+            "t-rate"
+          ]
+        },
+        {
+          "key": "search",
+          "label": "搜索框",
+          "components": [
+            "t-search"
+          ]
+        },
+        {
+          "key": "slider",
+          "label": "滑动选择器",
+          "components": [
+            "t-slider"
+          ]
+        },
+        {
+          "key": "stepper",
+          "label": "步进器",
+          "components": [
+            "t-stepper"
+          ]
+        },
+        {
+          "key": "switch",
+          "label": "开关",
+          "components": [
+            "t-switch"
+          ]
+        },
+        {
+          "key": "textarea",
+          "label": "多行文本框",
+          "components": [
+            "t-textarea"
+          ]
+        },
+        {
+          "key": "upload",
+          "label": "上传",
+          "components": [
+            "t-upload"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "data",
+      "label": "数据展示",
+      "submenu": [
+        {
+          "key": "avatar",
+          "label": "头像",
+          "components": [
+            "t-avatar"
+          ]
+        },
+        {
+          "key": "badge",
+          "label": "徽标",
+          "components": [
+            "t-badge"
+          ]
+        },
+        {
+          "key": "cell",
+          "label": "单元格",
+          "components": [
+            "t-cell"
+          ]
+        },
+        {
+          "key": "countdown",
+          "label": "倒计时",
+          "components": [
+            "t-countdown"
+          ]
+        },
+        {
+          "key": "empty",
+          "label": "空状态",
+          "components": [
+            "t-empty"
+          ]
+        },
+        {
+          "key": "footer",
+          "label": "页脚",
+          "components": [
+            "t-footer"
+          ]
+        },
+        {
+          "key": "grid",
+          "label": "宫格",
+          "components": [
+            "t-grid"
+          ]
+        },
+        {
+          "key": "image",
+          "label": "图片",
+          "components": [
+            "t-image"
+          ]
+        },
+        {
+          "key": "skeleton",
+          "label": "骨架屏",
+          "components": [
+            "t-skeleton"
+          ]
+        },
+        {
+          "key": "sticky",
+          "label": "吸顶容器",
+          "components": [
+            "t-sticky"
+          ]
+        },
+        {
+          "key": "swiper",
+          "label": "轮播图",
+          "components": [
+            "t-swiper"
+          ]
+        },
+        {
+          "key": "tag",
+          "label": "标签",
+          "components": [
+            "t-tag"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "info",
+      "label": "消息提醒",
+      "submenu": [
+        {
+          "key": "back-top",
+          "label": "返回顶部",
+          "components": [
+            "t-back-top"
+          ]
+        },
+        {
+          "key": "dialog",
+          "label": "弹出框",
+          "components": [
+            "t-dialog"
+          ]
+        },
+        {
+          "key": "loading",
+          "label": "加载",
+          "components": [
+            "t-loading"
+          ]
+        },
+        {
+          "key": "message",
+          "label": "消息通知",
+          "components": [
+            "t-message"
+          ]
+        },
+        {
+          "key": "popup",
+          "label": "弹出层",
+          "components": [
+            "t-popup"
+          ]
+        },
+        {
+          "key": "pullDownRefresh",
+          "label": "下拉刷新",
+          "components": [
+            "t-pull-down-refresh"
+          ]
+        },
+        {
+          "key": "swipeCell",
+          "label": "滑动操作",
+          "components": [
+            "t-swipe-cell"
+          ]
+        },
+        {
+          "key": "toast",
+          "label": "轻提示",
+          "components": [
+            "t-toast"
+          ]
+        }
+      ]
+    }
+  ]
 }
