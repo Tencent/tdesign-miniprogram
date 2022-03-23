@@ -39,7 +39,7 @@ TDesign 适配微信小程序的组件库。
 npm i tdesign-miniprogram -S --production
 ```
 
-> 建议使用 NPM，不再推荐使用源码拷贝的方式使用
+> 建议使用 NPM，不再推荐“源码拷贝的方式”
 
 ## 使用组件
 
@@ -48,7 +48,7 @@ npm i tdesign-miniprogram -S --production
 ```json
 {
   "usingComponents": {
-    "t-button": "tdesign-miniprogram/dist/button/index"
+    "t-button": "tdesign-miniprogram/button/button"
   }
 }
 ```
