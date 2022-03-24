@@ -20,6 +20,8 @@ export default class Textarea extends SuperComponent {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
+  behaviors = ['wx://form-field'];
+
   externalClasses = ['t-class', 't-class-textarea', 't-class-placeholder', 't-class-name'];
 
   properties = props;
