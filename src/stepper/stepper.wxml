@@ -7,8 +7,9 @@
   >
     <t-icon
       name="remove"
+      class="{{classPrefix}}__minus-icon"
       color="{{ disabled || disableMinus || currentValue <= min ? '#ccc': '#444'}}"
-      size="{{theme === 'grey' ? '16px' : '20px'}}"
+      size="{{theme === 'grey' ? '32rpx' : '40rpx'}}"
     />
   </view>
   <input
@@ -25,8 +26,9 @@
   >
     <t-icon
       name="add"
+      class="{{classPrefix}}__plus-icon"
       color="{{ disabled || disablePlus|| currentValue >= max ? '#ccc': '#444'}}"
-      size="{{theme === 'grey' ? '16px' : '20px'}}"
+      size="{{theme === 'grey' ? '32rpx' : '40rpx'}}"
     />
   </view>
 </view>
