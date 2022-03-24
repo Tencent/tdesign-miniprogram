@@ -75,12 +75,12 @@ gulp.task('wechatide:menu', (cb) => {
         if (item.type !== 'component') return;
         const menuFirst = { key: '', label: '', submenu: [] };
         const { key } = menuConfig.find((i) => i.label === item.title);
-        menuFirst.key = key;
+        menuFirst.key = `menu-${key}`;
         menuFirst.label = item.title;
         menuFirst.submenu = item.children.map((subItem) => {
           return {
-            key: subItem.name,
-            label: subItem.title.split(' ')[1],
+            key: `subMenu-${subItem.name}`,
+            label: subItem.title,
             components: [
               `${config.CONFIG_PREFIX}-${subItem.name.replace(/([A-Z])/g, '-$1').toLowerCase()}`,
             ],
