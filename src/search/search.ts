@@ -67,7 +67,8 @@ export default class Search extends SuperComponent {
     this.triggerEvent('submit', { value });
   }
 
-  onCancel() {
+  onActionClick() {
     this.triggerEvent('cancel');
+    this.triggerEvent('action-click');
   }
 }
