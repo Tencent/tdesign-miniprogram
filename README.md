@@ -31,19 +31,15 @@ TDesign 适配微信小程序的组件库。
 
 ### 使用 NPM
 
-小程序已经支持使用 NPM 安装第三方包，详见 [NPM 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)
+小程序已经支持使用 NPM 安装第三方包。
+
+具体使用方式，可以参考小程序官网文档： [《NPM 支持》](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)
 
 ```bash
 npm i tdesign-miniprogram -S --production
 ```
 
-### 通过 Git Clone
-
-克隆到源代码之后，将 `tdesign-miniprogram` 目录拷贝到自己的项目中
-
-```bash
-git clone git@github.com:Tencent/tdesign-miniprogram.git
-```
+> 建议使用 NPM，不再推荐“源码拷贝的方式”
 
 ## 使用组件
 
@@ -52,7 +48,7 @@ git clone git@github.com:Tencent/tdesign-miniprogram.git
 ```json
 {
   "usingComponents": {
-    "t-button": "/path/to/tdesign-miniprogram/dist/button/index"
+    "t-button": "tdesign-miniprogram/button/button"
   }
 }
 ```

@@ -7,7 +7,7 @@
   &.@{prefix}-stepper--normal {
     .@{prefix}-stepper__input {
       display: block;
-      font-size: 16px;
+      font-size: 32rpx;
       color: #000;
       text-align: center;
       border: 0;
@@ -28,9 +28,9 @@
   // 简洁模式样式
   &.@{prefix}-stepper--pure {
     .@{prefix}-stepper__input {
-      border-radius: 2px;
+      border-radius: 4rpx;
       height: 48rpx;
-      margin: 0 5px;
+      margin: 0 10rpx;
       background-color: #f1f2f5;
       text-align: center;
       font-size: 24rpx;
@@ -39,14 +39,22 @@
     .@{prefix}-stepper__minus,
     .@{prefix}-stepper__plus {
       box-sizing: border-box;
-      border-radius: 2px;
+      border-radius: 4rpx;
       background-color: #f1f2f5;
-      padding: 5rpx 10rpx;
       height: 48rpx;
+      width: 48rpx;
+    }
+
+    .@{prefix}-stepper__minus-icon,
+    .@{prefix}-stepper__plus-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 
-  .@{prefix}-is-disabled{
+  .@{prefix}-is-disabled {
     .@{prefix}-stepper__input {
       color: rgba(0, 0, 0, 0.26);
     }

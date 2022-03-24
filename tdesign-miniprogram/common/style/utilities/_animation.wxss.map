@@ -1,1 +1,0 @@
-{"version":3,"sources":["common/style/utilities/_animation.less"],"names":[],"mappings":"AAAA;EACE;IACE,UAAA;;EAGF;IACE,UAAA","sourcesContent":["@keyframes tdesign-fade-out {\n  from {\n    opacity: 1;\n  }\n\n  to {\n    opacity: 0;\n  }\n}\n"],"file":"_animation.wxss"}
