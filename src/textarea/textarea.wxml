@@ -9,7 +9,7 @@
       placeholder="{{placeholder}}"
       class="{{classPrefix}}__wrapper-textarea t-class-textarea"
       placeholder-class="{{classPrefix}}__placeholder t-class-placeholder"
-      value="{{value}}"
+      model:value="{{value}}"
       auto-focus="{{autofocus}}"
       focus="{{focus}}"
       auto-height="{{autosize}}"
