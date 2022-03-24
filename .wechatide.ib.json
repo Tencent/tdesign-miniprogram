@@ -3301,7 +3301,7 @@
             "String",
             "Array"
           ],
-          "defaultValue": "",
+          "defaultValue": "'#ED7B2F'",
           "desc": "评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，两个值表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色。示例：['#ED7B2F', '#999999']",
           "label": ""
         },
@@ -3355,7 +3355,7 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
+          "defaultValue": "[]",
           "desc": "评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']",
           "label": ""
         },
@@ -3364,8 +3364,17 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
+          "defaultValue": "0",
           "desc": "选择评分的值",
+          "label": ""
+        },
+        {
+          "key": "variant",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "outline",
+          "desc": "形状类型，有描边类型和填充类型两种",
           "label": ""
         }
       ],
@@ -4864,6 +4873,15 @@
           "label": ""
         },
         {
+          "key": "imageProps",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "透传 Image 组件全部属性",
+          "label": ""
+        },
+        {
           "key": "max",
           "type": [
             "Number"
@@ -4945,5 +4963,316 @@
     "properties": {},
     "events": {}
   },
-  "menu": []
+  "menu": [
+    {
+      "key": "menu-basic",
+      "label": "基础",
+      "submenu": [
+        {
+          "key": "subMenu-button",
+          "label": "Button 按钮",
+          "components": [
+            "t-button"
+          ]
+        },
+        {
+          "key": "subMenu-divider",
+          "label": "Divider 分割线",
+          "components": [
+            "t-divider"
+          ]
+        },
+        {
+          "key": "subMenu-icon",
+          "label": "Icon 图标",
+          "components": [
+            "t-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "menu-nav",
+      "label": "导航",
+      "submenu": [
+        {
+          "key": "subMenu-indexes",
+          "label": "Indexes 索引",
+          "components": [
+            "t-indexes"
+          ]
+        },
+        {
+          "key": "subMenu-navbar",
+          "label": "Navbar 导航条",
+          "components": [
+            "t-navbar"
+          ]
+        },
+        {
+          "key": "subMenu-steps",
+          "label": "Steps 步骤条",
+          "components": [
+            "t-steps"
+          ]
+        },
+        {
+          "key": "subMenu-tabbar",
+          "label": "TabBar 标签栏",
+          "components": [
+            "t-tabbar"
+          ]
+        },
+        {
+          "key": "subMenu-tabs",
+          "label": "Tabs 选项卡",
+          "components": [
+            "t-tabs"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "menu-input",
+      "label": "输入",
+      "submenu": [
+        {
+          "key": "subMenu-checkbox",
+          "label": "CheckBox 复选框",
+          "components": [
+            "t-checkbox"
+          ]
+        },
+        {
+          "key": "subMenu-dateTimePicker",
+          "label": "DateTimePicker 时间选择器",
+          "components": [
+            "t-date-time-picker"
+          ]
+        },
+        {
+          "key": "subMenu-input",
+          "label": "Input 输入框",
+          "components": [
+            "t-input"
+          ]
+        },
+        {
+          "key": "subMenu-picker",
+          "label": "Picker 选择器",
+          "components": [
+            "t-picker"
+          ]
+        },
+        {
+          "key": "subMenu-radio",
+          "label": "Radio 单选框",
+          "components": [
+            "t-radio"
+          ]
+        },
+        {
+          "key": "subMenu-rate",
+          "label": "Rate 评分",
+          "components": [
+            "t-rate"
+          ]
+        },
+        {
+          "key": "subMenu-search",
+          "label": "Search 搜索框",
+          "components": [
+            "t-search"
+          ]
+        },
+        {
+          "key": "subMenu-slider",
+          "label": "Slider 滑动选择器",
+          "components": [
+            "t-slider"
+          ]
+        },
+        {
+          "key": "subMenu-stepper",
+          "label": "Stepper 步进器",
+          "components": [
+            "t-stepper"
+          ]
+        },
+        {
+          "key": "subMenu-switch",
+          "label": "Switch 开关",
+          "components": [
+            "t-switch"
+          ]
+        },
+        {
+          "key": "subMenu-textarea",
+          "label": "Textarea 多行文本框",
+          "components": [
+            "t-textarea"
+          ]
+        },
+        {
+          "key": "subMenu-upload",
+          "label": "UpLoad 上传",
+          "components": [
+            "t-upload"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "menu-data",
+      "label": "数据展示",
+      "submenu": [
+        {
+          "key": "subMenu-avatar",
+          "label": "Avatar 头像",
+          "components": [
+            "t-avatar"
+          ]
+        },
+        {
+          "key": "subMenu-badge",
+          "label": "Badge 徽标",
+          "components": [
+            "t-badge"
+          ]
+        },
+        {
+          "key": "subMenu-cell",
+          "label": "Cell 单元格",
+          "components": [
+            "t-cell"
+          ]
+        },
+        {
+          "key": "subMenu-countdown",
+          "label": "CountDown 倒计时",
+          "components": [
+            "t-countdown"
+          ]
+        },
+        {
+          "key": "subMenu-empty",
+          "label": "Empty 空状态",
+          "components": [
+            "t-empty"
+          ]
+        },
+        {
+          "key": "subMenu-footer",
+          "label": "Footer 页脚",
+          "components": [
+            "t-footer"
+          ]
+        },
+        {
+          "key": "subMenu-grid",
+          "label": "Grid 宫格",
+          "components": [
+            "t-grid"
+          ]
+        },
+        {
+          "key": "subMenu-image",
+          "label": "Image 图片",
+          "components": [
+            "t-image"
+          ]
+        },
+        {
+          "key": "subMenu-skeleton",
+          "label": "Skeleton 骨架屏",
+          "components": [
+            "t-skeleton"
+          ]
+        },
+        {
+          "key": "subMenu-sticky",
+          "label": "Sticky 吸顶容器",
+          "components": [
+            "t-sticky"
+          ]
+        },
+        {
+          "key": "subMenu-swiper",
+          "label": "Swiper 轮播图",
+          "components": [
+            "t-swiper"
+          ]
+        },
+        {
+          "key": "subMenu-tag",
+          "label": "Tag 标签",
+          "components": [
+            "t-tag"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "menu-info",
+      "label": "消息提醒",
+      "submenu": [
+        {
+          "key": "subMenu-back-top",
+          "label": "BackTop 返回顶部",
+          "components": [
+            "t-back-top"
+          ]
+        },
+        {
+          "key": "subMenu-dialog",
+          "label": "Dialog 弹出框",
+          "components": [
+            "t-dialog"
+          ]
+        },
+        {
+          "key": "subMenu-loading",
+          "label": "Loading 加载",
+          "components": [
+            "t-loading"
+          ]
+        },
+        {
+          "key": "subMenu-message",
+          "label": "Message 消息通知",
+          "components": [
+            "t-message"
+          ]
+        },
+        {
+          "key": "subMenu-popup",
+          "label": "Popup 弹出层",
+          "components": [
+            "t-popup"
+          ]
+        },
+        {
+          "key": "subMenu-pullDownRefresh",
+          "label": "PullDownRefresh 下拉刷新",
+          "components": [
+            "t-pull-down-refresh"
+          ]
+        },
+        {
+          "key": "subMenu-swipeCell",
+          "label": "SwipeCell 滑动操作",
+          "components": [
+            "t-swipe-cell"
+          ]
+        },
+        {
+          "key": "subMenu-toast",
+          "label": "Toast 轻提示",
+          "components": [
+            "t-toast"
+          ]
+        }
+      ]
+    }
+  ]
 }
