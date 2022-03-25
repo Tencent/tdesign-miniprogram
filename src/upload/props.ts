@@ -21,7 +21,6 @@ const props: TdUploadProps = {
   /** 已上传文件列表 */
   files: {
     type: Array,
-    value: null,
   },
   /** 已上传文件列表，非受控属性 */
   defaultFiles: {
@@ -36,6 +35,10 @@ const props: TdUploadProps = {
   gutter: {
     type: Number,
     value: 16,
+  },
+  /** 透传 Image 组件全部属性 */
+  imageProps: {
+    type: Object,
   },
   /** 用于控制文件上传数量，值为 0 则不限制 */
   max: {
