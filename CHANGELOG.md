@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 0.7.1 `2022-3-25`
+### Bug Fixes
+
+- Loading: 修复 `loading` 默认值为 `true` 但不显示的问题 [#272](https://github.com/Tencent/tdesign-miniprogram/pull/272) [@JJunYang](https://github.com/JJunYang)
+- Stepper: 修复图标偏移的问题 [#280](https://github.com/Tencent/tdesign-miniprogram/pull/280) [@Winfans](https://github.com/Winfans)
+- Search: 修复 `action-click` 事件不生效的问题 [#283](https://github.com/Tencent/tdesign-miniprogram/pull/283) [@LeeJim](https://github.com/LeeJim)
+- Textarea: 修复 `Form` 无法获取值的问题 [#284](https://github.com/Tencent/tdesign-miniprogram/pull/284) [@anlyyao](https://github.com/anlyyao)
+
+### Feature
+
+- 增加点击态：[#279](https://github.com/Tencent/tdesign-miniprogram/pull/279) [@Perisiguiendo](https://github.com/Perisiguiendo)
+  - Grid
+  - Tabbar
+- Upload: 使用 `t-image` 封装，并支持 `image-props` 用于属性透传 [#289](https://github.com/Tencent/tdesign-miniprogram/pull/289) [@xihangzhou](https://github.com/xihangzhou)
+
 ## 0.7.0 `2022-3-18`
 
 ### BREAKING CHANGES
