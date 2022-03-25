@@ -71,9 +71,10 @@ npm run dev
 
 ## 其他技术栈实现
 
-- 桌面端 Vue 2 实现：[web-vue](https://github.com/Tencent/tdesign-vue)
-- 桌面端 Vue 3 实现：[web-vue-next](https://github.com/Tencent/tdesign-vue-next)
-- 桌面端 React 实现：[web-react](https://github.com/Tencent/tdesign-react)
+- 💻 桌面端 Vue 2 实现：[web-vue](https://github.com/Tencent/tdesign-vue)
+- 💻 桌面端 Vue 3 实现：[web-vue-next](https://github.com/Tencent/tdesign-vue-next)
+- 💻 桌面端 React 实现：[web-react](https://github.com/Tencent/tdesign-react)
+- 📱 移动端 Vue 3 实现：[mobile-vue](https://github.com/Tencent/tdesign-mobile-vue)
 
 ## 开源协议
 
