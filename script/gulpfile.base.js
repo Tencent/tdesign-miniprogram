@@ -9,8 +9,26 @@ const gulpLess = require('gulp-less');
 const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
 const mpNpm = require('gulp-mp-npm');
+const gulpIf = require('gulp-if');
+const minimist = require('minimist');
 
 const config = require('./config');
+
+const { env } = minimist(process.argv);
+
+const isQQEnv = env === 'qq';
+
+// replace somethings for qq miniprogram
+const replaceForQQMiniprogram = () => {
+  return replaceTask({
+    patterns: [
+      {
+        match: /'wx:\/\/[a-zA-Z-_]*'/g,
+        replacement: 'wx://form-field', // qq 小程序基础库 1.47.0 以上支持
+      },
+    ],
+  });
+};
 
 // set displayName
 const setDisplayName = (tasks, moduleName) => {
@@ -87,8 +105,7 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp resetError`
    * 重置gulpError
    * */
-  tasks.resetError = () =>
-    gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
+  tasks.resetError = () => gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
 
   /** `gulp copy`
    * 清理
@@ -114,6 +131,7 @@ module.exports = (src, dist, moduleName) => {
         }),
       )
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
+      .pipe(gulpIf(isQQEnv, replaceForQQMiniprogram()))
       .pipe(sourcemaps.init())
       .pipe(tsProject()) // 编译ts
       .pipe(mpNpm())
@@ -127,6 +145,7 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
+      .pipe(gulpIf(isQQEnv, replaceForQQMiniprogram()))
       .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
@@ -136,13 +155,13 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.wxs, { ...srcOptions, since: since(tasks.wxs) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
+      .pipe(gulpIf(isQQEnv, replaceForQQMiniprogram()))
       .pipe(gulp.dest(dist));
 
   /** `gulp json`
    * 处理json
    * */
-  tasks.json = () =>
-    gulp.src(globs.json, { ...srcOptions, since: since(tasks.json) }).pipe(gulp.dest(dist));
+  tasks.json = () => gulp.src(globs.json, { ...srcOptions, since: since(tasks.json) }).pipe(gulp.dest(dist));
 
   /** `gulp less`
    * 处理less
@@ -168,14 +187,12 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp wxss`
    * 处理wxss
    * */
-  tasks.wxss = () =>
-    gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
+  tasks.wxss = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
 
   /** `gulp common`
    * 拷贝common中样式
    */
-  tasks.common = () =>
-    gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
+  tasks.common = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
 
   // set displayName
   setDisplayName(tasks, moduleName);
