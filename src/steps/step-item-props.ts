@@ -31,7 +31,7 @@ const props: TdStepItemProps = {
     value: '',
   },
   /** 子步骤条数据 */
-  childStepData: {
+  subStep: {
     type: Array,
   },
 };

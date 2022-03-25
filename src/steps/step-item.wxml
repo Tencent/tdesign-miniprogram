@@ -35,11 +35,11 @@
       <!-- 垂直 子步骤条 -->
       <view
         class="{{classPrefix}}-wrapper-child"
-        wx:if="{{ layout === 'vertical' && childStepData.length && !isLastChild}}"
+        wx:if="{{ layout === 'vertical' && curSubStep.length && !isLastChild}}"
       >
         <view
-          class="{{classPrefix}}-child {{classPrefix}}-child-status--{{item.status}}"
-          wx:for="{{childStepData}}"
+          class="{{classPrefix}}-child {{classPrefix}}-child-status--{{item._status}}"
+          wx:for="{{curSubStep}}"
           wx:key="key"
           wx:item="item"
         >

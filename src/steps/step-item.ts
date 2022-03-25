@@ -35,6 +35,7 @@ export default class StepItem extends SuperComponent {
     index: 0,
     isDot: false,
     curStatus: '',
+    curSubStep: [],
     layout: 'vertical',
     type: 'default',
     isLastChild: false,
@@ -48,19 +49,6 @@ export default class StepItem extends SuperComponent {
       this.setData({
         computedIcon: val,
       });
-    },
-    curStatus(val) {
-      if (this.data.readonly) {
-        if (val === 'finish') {
-          this.setData({
-            computedIcon: 'check',
-          });
-        } else if (val === 'error') {
-          this.setData({
-            computedIcon: 'close',
-          });
-        }
-      }
     },
   };
 
@@ -77,51 +65,20 @@ export default class StepItem extends SuperComponent {
   };
 
   methods = {
-    updateStatus(current, index, theme, layout, steps, readonly) {
-      const { status, childStepData } = this.data;
-      let newStatus = status;
-
-      // 默认开启
-      if (newStatus === 'default') {
-        if (index < current) {
-          // 1. 本步骤序号小于当前步骤并且没有设定任何步骤序号，设定状态为 finish
-          newStatus = 'finish';
-
-          //  1.1 一级步骤条finish，其子步骤条默认全部finish
-          childStepData.forEach((item) => {
-            item.status = 'finish';
-          });
-          this.setData({
-            childStepData: childStepData,
-          });
-
-          // eslint-disable-next-line
-        } else if (index == current) {
-          // 2. 本步骤序号等于当前步骤. 默认为process
-          newStatus = 'process';
-
-          // 2.1  当前一级步骤所属子步骤若存在error子步骤，则一级步骤error
-          // 2.2  当前一级步骤所属子步骤若存全部finish，则一级步骤finish
-          if (childStepData.some((item) => item.status === 'error')) {
-            newStatus = 'error';
-          } else if (childStepData.length && childStepData.every((item) => item.status === 'finish')) {
-            newStatus = 'finish';
-          }
-        } else if (readonly) {
-          // 3. 本步骤序号大于当前步骤，默认为wait
-          newStatus = 'wait';
-          // 3.1 本步骤条大于当前步骤，所有子步骤statue全部变default
-          childStepData.forEach((item) => {
-            item.status = 'default';
-          });
-          this.setData({
-            childStepData: childStepData,
-          });
+    updateStatus(current, currentStatus, index, theme, layout, steps, step, readonly) {
+      let iconStatus = '';
+      if (readonly) {
+        if (step.data._status === 'finish') {
+          iconStatus = 'check';
+        } else if (step.data._status === 'error') {
+          iconStatus = 'close';
         }
       }
 
       this.setData({
-        curStatus: newStatus,
+        curStatus: step.data.status === 'default' ? step.data._status : step.data.status,
+        curSubStep: step.data.subStep,
+        computedIcon: iconStatus || this.data.icon,
         index,
         isDot: theme === 'dot' && layout === 'vertical',
         layout,

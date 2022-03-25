@@ -52,35 +52,68 @@ export default class Steps extends SuperComponent {
   };
 
   methods = {
+    formatTagTreeData(data, index) {
+      data.tag = `${index + 1}`;
+      data.subStep &&
+        data.subStep.length &&
+        data.subStep.forEach((subItem, subIndex) => {
+          subItem.tag = `${index + 1}.${subIndex + 1}`;
+        });
+    },
+
+    jugdeStatus(data, current, currentStatus, firstStep) {
+      if (Number(data.tag) === firstStep || data.tag === current) {
+        data._status = currentStatus;
+      } else if (Number(data.tag) < current) {
+        data._status = 'finish';
+      } else if (Number(data.tag) > current) {
+        data._status = 'default';
+      }
+      return data;
+    },
+
     updateChildren() {
       const items = this.getRelationNodes('./step-item');
       const len = items.length;
-      const { current, readonly } = this.data;
+      const { current, currentStatus, readonly } = this.data;
+      const firstStep = Math.floor(Number(current));
 
-      if (len > 0) {
+      if (len) {
+        // 1. 给数组 按层级打上tag
         items.forEach((item, index) => {
-          item.updateStatus(current, index, this.data.theme, this.data.layout, items, readonly);
+          this.formatTagTreeData(item.data, index);
         });
 
-        // 检测step完成态：判断子步骤是否全部完成，检查当前step的status状态
-        let _current = current;
-        for (let i = 0; i < items.length; i += 1) {
-          const childList = items[i].data.childStepData;
-          const stepStatus = items[i].data.status;
-          if (
-            (childList.length && childList.every((itemChild) => itemChild.status === 'finish')) ||
-            stepStatus === 'finish'
-          ) {
-            items[i].data.status = 'finish';
-            _current = i + 1;
+        // 2. 遍历 判断每个节点的状态
+        items.forEach((item) => {
+          this.jugdeStatus(item.data, current, currentStatus, firstStep);
+          item.data.subStep &&
+            item.data.subStep.length &&
+            item.data.subStep.forEach((subItem) => {
+              this.jugdeStatus(subItem, current, currentStatus, firstStep);
+            });
+        });
+
+        // 3. 检测currentStatus层级的status状态是否为finish，若是，则更新current: current=firstStep+1
+        let _current = '';
+        items.forEach((item, index) => {
+          if (index === firstStep - 1) {
+            if (item.data._status === 'finish') {
+              // 更新current，开启下一个step和子步骤，状态为process
+              item.data.subStep && item.data.subStep.length
+                ? (_current = `${firstStep + 1}`)
+                : (_current = `${firstStep + 1}.${1}`);
+              this.setData({
+                current: _current,
+                currentStatus: 'process',
+              });
+            }
           }
-        }
-        // 更新current，开启下一个step
-        if (current !== _current) {
-          this.setData({
-            current: _current,
-          });
-        }
+        });
+
+        items.forEach((item, index) => {
+          item.updateStatus(current, currentStatus, index, this.data.theme, this.data.layout, items, item, readonly);
+        });
       }
     },
     handleClick(index) {
@@ -91,7 +124,7 @@ export default class Steps extends SuperComponent {
         const preIndex = this.data.current;
         this._trigger('change', {
           previous: preIndex,
-          current: index,
+          current: index + 1,
         });
       }
     },

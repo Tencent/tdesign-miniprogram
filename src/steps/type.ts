@@ -16,6 +16,14 @@ export interface TdStepsProps {
     required?: boolean;
   };
   /**
+   * 当前步骤 状态
+   */
+  currentStatus?: {
+    type: StringConstructor;
+    value?: StepStatus;
+    required?: boolean;
+  };
+  /**
    * 当前步骤
    */
   defaultCurrent?: {
@@ -108,7 +116,7 @@ export interface TdStepItemProps {
    * 当前步骤的子步骤条数据
    * @default  '''
    */
-  childStepData?: {
+  subStep?: {
     type: ArrayConstructor;
     required?: boolean;
   };

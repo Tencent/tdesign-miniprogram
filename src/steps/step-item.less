@@ -9,6 +9,8 @@
 @title-color--default: rgba(0, 0, 0, 0.26);
 @step-error-title-color: @error-color;
 @step-error-bg-color: @error-color;
+@step-default-bg-color: #c5c5c5;
+
 @step-item-icon-color: #c5c5c5;
 @step-item-descrition-color: rgba(0, 0, 0, 0.4);
 @step-line-color: #c5c5c5;
@@ -53,7 +55,8 @@
 
     &__title {
       position: relative;
-      color: @title-color;
+      // color: @title-color;
+      color: @title-color--default;
       text-align: center;
       line-height: 22px;
       font-size: @font-size-base;
@@ -99,7 +102,7 @@
       &.@{step}--readonly {
         .@{item}--process,
         .@{item}--error,
-        .@{item}--wait {
+        .@{item}--default {
           .@{item}__inner:after {
             background: @step-line-color;
           }
@@ -120,10 +123,15 @@
         top: @connector-default-icon-width + 2px;
       }
 
-      .@{item}--finish,
-      .@{item}--default {
+      .@{item}--finish {
         .@{item}__inner:after {
           background: @primary-color;
+        }
+      }
+
+      .@{item}--default {
+        .@{item}__inner:after {
+          background: @step-default-bg-color;
         }
       }
     }
@@ -133,8 +141,8 @@
 .default-number-status(@anchor-status) {
   & when(@anchor-status = default) {
     .@{item}__icon-number {
-      border-color: @primary-color;
-      color: @primary-color;
+      border-color: @step-default-bg-color;
+      color: @step-default-bg-color;
     }
   }
   & when(@anchor-status = finish) {
@@ -213,12 +221,12 @@
           align-items: center;
         }
       }
-      &--default {
-        .default-number-status(default);
-      }
 
       &--finish {
         .default-number-status(finish);
+        .@{item}__title {
+          color: @title-color;
+        }
       }
 
       &--process {
@@ -235,7 +243,8 @@
         }
       }
 
-      &--wait {
+      &--default {
+        .default-number-status(default);
         .@{item}__title,
         .@{item}__description {
           color: @title-color--default;
@@ -349,6 +358,9 @@
 
         &--finish {
           .default-number-status(finish);
+          .@{item}__title {
+            color: @title-color;
+          }
         }
 
         &--process {
@@ -362,13 +374,6 @@
           .default-number-status(error);
           .@{item}__title {
             color: @error-color;
-          }
-        }
-
-        &--wait {
-          .@{item}__title,
-          .@{item}__description {
-            color: @title-color--default;
           }
         }
       }
@@ -402,8 +407,10 @@
 
         &__title {
           margin-top: 0;
+          color: @title-color;
         }
       }
+
       &.@{step}--not-last-child {
         .@{item}__inner::after {
           content: '';

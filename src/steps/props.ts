@@ -12,6 +12,11 @@ const props: TdStepsProps = {
     type: String,
     optionalTypes: [Number],
   },
+  /** 当前步骤的状态，有四种：process / finish / error / default ，默认process */
+  currentStatus: {
+    type: String,
+    value: 'process',
+  },
   /** 当前步骤 */
   defaultCurrent: {
     type: null,
