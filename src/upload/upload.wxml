@@ -9,13 +9,19 @@
       t-class-content="{{classPrefix}}__grid-content"
     >
       <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
-        <image
+        <t-image
           wx:if="{{file.type !== 'video'}}"
           bindtap="onProofTap"
           data-index="{{index}}"
-          class="{{classPrefix}}__thumbnail"
+          t-class="{{classPrefix}}__thumbnail"
           src="{{file.url}}"
-          mode="scaleToFill"
+          mode="{{imageProps.mode}}"
+          error="{{imageProps.error}}"
+          lazy="{{imageProps.lazy}}"
+          loading="{{imageProps.loading}}"
+          shape="{{imageProps.shape}}"
+          webp="{{imageProps.webp}}"
+          showMenuByLongpress="{{image.showMenuByLongpress}}"
         />
         <video
           wx:if="{{file.type === 'video'}}"
@@ -37,11 +43,7 @@
           <view wx:else class="{{classPrefix}}__progress-value">{{file.percent}}%</view>
         </view>
         <!-- 删除 -->
-        <view
-          class="{{classPrefix}}__close-btn hotspot-expanded"
-          bindtap="onDelete"
-          data-index="{{index}}"
-        >
+        <view class="{{classPrefix}}__close-btn hotspot-expanded" bindtap="onDelete" data-index="{{index}}">
           <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
           <t-icon wx:else name="close" size="34rpx" color="#fff" />
         </view>
