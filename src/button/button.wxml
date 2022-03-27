@@ -13,6 +13,16 @@
   send-message-img="{{sendMessageImg}}"
   app-parameter="{{appParameter}}"
   show-message-card="{{showMessageCard}}"
+  share-mode="{{shareMode}}"
+  group-id="{{groupId}}"
+  guild-id="{{guildId}}"
+  public-id="{{publicId}}"
+  open-id="{{openId}}"
+  share-message-friend-info="{{shareMessageFriendInfo}}"
+  share-message-title="{{shareMessageTitle}}"
+  share-message-img="{{shareMessageImg}}"
+  bind:addfriend="addfriend"
+  bind:addgroupapp="addgroupapp"
   catch:tap="handleTap"
   bind:getuserinfo="getuserinfo"
   bind:contact="contact"
@@ -22,11 +32,7 @@
   bind:launchapp="launchapp"
 >
   <view class="{{classPrefix}}__content">
-    <t-icon
-      wx:if="{{icon}}"
-      name="{{icon}}"
-      class="{{classPrefix}}__icon {{prefix}}-class-icon"
-    ></t-icon>
+    <t-icon wx:if="{{icon}}" name="{{icon}}" class="{{classPrefix}}__icon {{prefix}}-class-icon"></t-icon>
     <slot />
     <slot name="content" />
     {{content || ''}}

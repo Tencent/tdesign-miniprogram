@@ -117,6 +117,44 @@ const props: TdButtonProps = {
     type: Boolean,
     value: false,
   },
+  /** 分享类型集合 */
+  shareMode: {
+    type: Array,
+  },
+  /** 打开群资料卡时，传递的群号 */
+  groupId: {
+    type: String,
+    value: '',
+  },
+  /** 打开频道页面时，传递的频道号 */
+  guildId: {
+    type: String,
+    value: '',
+  },
+  /** 打开公众号资料卡时，传递的号码 */
+  publicId: {
+    type: String,
+    value: '',
+  },
+  /** 添加好友时，对方的 openid */
+  openId: {
+    type: String,
+    value: '',
+  },
+  /** 转发标题，不传则默认使用当前小程序的昵称 */
+  shareMessageTitle: {
+    type: String,
+    value: '',
+  },
+  /** 转发显示图片的链接，可以是网络图片路径 */
+  shareMessageImg: {
+    type: String,
+    value: '',
+  },
+  /** 发送对象的 FriendInfo */
+  shareMessageFriendInfo: {
+    type: Object,
+  },
 };
 
 export default props;

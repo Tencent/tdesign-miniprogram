@@ -91,6 +91,12 @@ export default class Button extends SuperComponent {
     launchapp(e) {
       this.triggerEvent('launchapp', e.detail);
     },
+    addfriend(e) {
+      this.triggerEvent('addfriend', e.detail);
+    },
+    addgroupapp(e) {
+      this.triggerEvent('addgroupapp', e.detail);
+    },
     handleTap(e) {
       if (this.data.disabled) return;
 
