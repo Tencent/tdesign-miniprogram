@@ -37,8 +37,9 @@
         class="{{classPrefix}}-wrapper-child"
         wx:if="{{ layout === 'vertical' && curSubStep.length && !isLastChild}}"
       >
+        <!-- 子步骤条默认状态:default -->
         <view
-          class="{{classPrefix}}-child {{classPrefix}}-child-status--{{item._status}}"
+          class="{{classPrefix}}-child {{classPrefix}}-child-status--default {{classPrefix}}-child-status--{{item._status}}"
           wx:for="{{curSubStep}}"
           wx:key="key"
           wx:item="item"

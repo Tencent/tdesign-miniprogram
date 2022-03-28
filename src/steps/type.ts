@@ -113,8 +113,8 @@ export interface TdStepItemProps {
     required?: boolean;
   };
   /**
-   * 当前步骤的子步骤条数据
-   * @default  '''
+   * 当前步骤的子步骤条数据， 默认状态default
+   * @default  ''
    */
   subStep?: {
     type: ArrayConstructor;

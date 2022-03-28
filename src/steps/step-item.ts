@@ -65,7 +65,60 @@ export default class StepItem extends SuperComponent {
   };
 
   methods = {
+    // 判断对象的attr属性存在 && attr数组长度不为0
+    judgeObjAttr(data, attr: string) {
+      return data[attr] && data[attr].length;
+    },
+
+    changeStatus(data, attr, attr2, status) {
+      data[attr].forEach((item) => {
+        item[attr2] = status;
+      });
+    },
+
     updateStatus(current, currentStatus, index, theme, layout, steps, step, readonly) {
+      const { status } = this.data;
+      const _current = String(current);
+      const firstStep = Number(_current.split('.')[0]);
+      const secondStep = Number(_current.split('.')[1] ? _current.split('.')[1] : undefined);
+
+      // 1. 拷贝一份 substep
+      if (this.judgeObjAttr(step.data, 'subStep')) {
+        const _subStep = JSON.parse(JSON.stringify(step.data.subStep));
+        step.data._subStep = _subStep;
+      }
+
+      // 2. 优先指定的statue && 判断step及子步骤状态
+      if (status !== 'default') {
+        step.data._status = status;
+        status === 'finish' &&
+          this.judgeObjAttr(step.data, '_subStep') &&
+          this.changeStatus(step.data, '_subStep', '_status', 'finish');
+      } else if (status === 'default') {
+        if (index < firstStep) {
+          step.data._status = 'finish';
+          this.judgeObjAttr(step.data, '_subStep') && this.changeStatus(step.data, '_subStep', '_status', 'finish');
+        } else if (index === firstStep) {
+          step.data._status = currentStatus;
+          this.judgeObjAttr(step.data, '_subStep') &&
+            step.data._subStep.forEach((subItem, subIndex) => {
+              if (subIndex < secondStep) {
+                subItem._status = 'finish';
+              } else if (subIndex === secondStep) {
+                subItem._status = currentStatus;
+              }
+            });
+
+          currentStatus === 'finish' &&
+            this.judgeObjAttr(step.data, '_subStep') &&
+            this.changeStatus(step.data, '_subStep', '_status', 'finish');
+        } else if (index > firstStep) {
+          step.data._status = 'default';
+          this.judgeObjAttr(step.data, '_subStep') && this.changeStatus(step.data, '_subStep', '_status', 'default');
+        }
+      }
+
+      // update icon
       let iconStatus = '';
       if (readonly) {
         if (step.data._status === 'finish') {
@@ -76,8 +129,8 @@ export default class StepItem extends SuperComponent {
       }
 
       this.setData({
-        curStatus: step.data.status === 'default' ? step.data._status : step.data.status,
-        curSubStep: step.data.subStep,
+        curStatus: step.data._status || step.data.status,
+        curSubStep: step.data._subStep || [],
         computedIcon: iconStatus || this.data.icon,
         index,
         isDot: theme === 'dot' && layout === 'vertical',

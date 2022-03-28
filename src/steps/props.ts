@@ -7,10 +7,11 @@
 
 import { TdStepsProps } from './type';
 const props: TdStepsProps = {
-  /** 当前步骤 */
+  /** 当前步骤, 默认0 */
   current: {
     type: String,
     optionalTypes: [Number],
+    value: 0,
   },
   /** 当前步骤的状态，有四种：process / finish / error / default ，默认process */
   currentStatus: {
