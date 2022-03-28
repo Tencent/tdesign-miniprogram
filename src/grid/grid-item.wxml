@@ -1,6 +1,8 @@
 <view
-  class="{{classPrefix}} {{hover? classPrefix + '--hover':''}} t-class"
+  class="{{classPrefix}} t-class"
   style="{{ gridItemStyle }}"
+  hover-class="{{hover ? classPrefix + '--hover':''}}"
+  hover-stay-time="{{200}}"
   bindtap="onClick"
 >
   <view
@@ -16,14 +18,9 @@
         <slot wx:else name="image" class="t-class-image"></slot>
       </view>
       <view class="{{classPrefix}}__words">
-        <view wx:if="{{text && text !== 'slot'}}" class="{{classPrefix}}__text t-class-text">
-          {{text}}
-        </view>
+        <view wx:if="{{text && text !== 'slot'}}" class="{{classPrefix}}__text t-class-text"> {{text}} </view>
         <slot wx:else name="text" class="t-class-text"></slot>
-        <view
-          wx:if="{{description && description!== 'slot'}}"
-          class="{{classPrefix}}__description t-class-description"
-        >
+        <view wx:if="{{description && description!== 'slot'}}" class="{{classPrefix}}__description t-class-description">
           {{description}}
         </view>
         <slot wx:else name="description" class="t-class-description"></slot>

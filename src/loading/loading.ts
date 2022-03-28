@@ -11,7 +11,7 @@ export default class Loading extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    show: false,
+    show: true,
   };
 
   options = {

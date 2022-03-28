@@ -1,15 +1,16 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { canIUseFormFieldButton } from '../common/version';
 
 const { prefix } = config;
 const name = `${prefix}-button`;
 
 @wxComponent()
 export default class Button extends SuperComponent {
-  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
 
-  behaviors = ['wx://form-field-button'];
+  behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
 
   // 组件的对外属性
   properties = props;
@@ -62,12 +63,10 @@ export default class Button extends SuperComponent {
       if (this.data.disabled) {
         classList.push(`${prefix}-is-disabled`);
       }
-      if (this.data.loading) {
-        classList.push(`${prefix}-is-loading`);
-      }
-      if (this.data.variant !== 'base') {
-        classList.push(`${name}--${this.data.variant}`);
-      }
+      // if (this.data.loading) {
+      //   classList.push(`${prefix}-is-loading`);
+      // }
+      classList.push(`${name}--${this.data.variant}`);
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);
       }

@@ -21,6 +21,8 @@ export default class Image extends SuperComponent {
     classPrefix: name,
   };
 
+  preSrc = ''; // 保留上一次的src,防止在src相同时重复update
+
   lifetimes = {
     attached(this: Image) {
       this.update();
@@ -29,6 +31,7 @@ export default class Image extends SuperComponent {
 
   observers = {
     src() {
+      if (this.preSrc === this.properties.src) return;
       this.update();
     },
   };
@@ -42,7 +45,7 @@ export default class Image extends SuperComponent {
       (versionArray[0] === 2 && versionArray[1] < 10) ||
       (versionArray[0] === 2 && versionArray[1] === 10 && versionArray[2] < 3)
     ) {
-      const mode = (this.properties.mode as any) as string;
+      const mode = this.properties.mode as any as string;
       if (mode === 'heightFix') {
         // 实现heightFix模式，保持高度和宽高比，设置对应的宽度
         const { height: picHeight, width: picWidth } = e.detail;
@@ -74,6 +77,7 @@ export default class Image extends SuperComponent {
 
   update() {
     const { src } = this.properties as any;
+    this.preSrc = src;
     if (!src) {
       // 链接为空时直接触发加载失败
       this.onLoadError({ errMsg: '图片链接为空' });

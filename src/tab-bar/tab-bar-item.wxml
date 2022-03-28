@@ -1,5 +1,7 @@
 <view
   class="{{classPrefix}} {{icon ? '' : prefix + '-is-bordered'}} {{split ? prefix + '-is-split' : ''}}"
+  hover-class="{{classPrefix}}--active"
+  hover-stay-time="{{200}}"
 >
   <view
     class="{{classPrefix}}__content {{isChecked ? prefix + '-is-checked' : ''}}"
@@ -31,6 +33,8 @@
   <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}">
     <view
       class="{{classPrefix}}__spread-item"
+      hover-class="{{classPrefix}}__spread-item--active"
+      hover-stay-time="{{200}}"
       wx:for="{{subTabBar}}"
       wx:for-item="child"
       wx:for-index="index"

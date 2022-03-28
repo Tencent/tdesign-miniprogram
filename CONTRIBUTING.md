@@ -94,7 +94,7 @@ npm run test:e2e
 发布步骤如下：
 1. 更新 `package.json` 的版本
 2. 更新 `CHANGELOG` ，添加本次发布的变更信息
-3. 打包可直接使用的代码： `npm run build:assets`
+3. ~~打包可直接使用的代码： `npm run build:assets`~~ `于 0.7.0 移除` 
 4. 在 develop 分支打上 tag（纯数字版本，如`0.1.0`）
 5. 提交 commit 并推送到 origin
 

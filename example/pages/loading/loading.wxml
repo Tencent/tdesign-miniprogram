@@ -7,59 +7,34 @@
   <t-demo title="01 类型">
     <view class="demo-section__desc">纯icon</view>
     <view class="loading-container-flex">
-      <t-loading theme="circular" size="40rpx" loading></t-loading>
-      <t-loading
-        theme="spinner"
-        size="40rpx"
-        loading
-        t-class-indicator="indicator-black"
-      ></t-loading>
-      <t-loading theme="dots" size="80rpx" loading t-class-indicator="indicator-black"></t-loading>
+      <t-loading theme="circular" size="40rpx"></t-loading>
+      <t-loading theme="spinner" size="40rpx" t-class-indicator="indicator-black"></t-loading>
+      <t-loading theme="dots" size="80rpx" t-class-indicator="indicator-black"></t-loading>
     </view>
     <view class="demo-section__desc">icon加文字横向</view>
     <view class="loading-container-flex">
-      <t-loading theme="circular" size="40rpx" loading text="加载中..."></t-loading>
-      <t-loading
-        theme="spinner"
-        size="40rpx"
-        loading
-        text="加载中..."
-        t-class-indicator="indicator-black"
-      ></t-loading>
-      <t-loading theme="circular" size="40rpx" loading>
+      <t-loading theme="circular" size="40rpx" text="加载中..."></t-loading>
+      <t-loading theme="spinner" size="40rpx" text="加载中..." t-class-indicator="indicator-black"></t-loading>
+      <t-loading theme="circular" size="40rpx">
         <span slot="text" style="color: #0052d9">加载中...</span>
       </t-loading>
     </view>
     <view class="demo-section__desc">icon加文字竖向</view>
-    <t-loading
-      class="loading-style"
-      theme="circular"
-      size="40rpx"
-      loading
-      text="加载中"
-      layout="vertical"
-    ></t-loading>
+    <t-loading class="loading-style" theme="circular" size="40rpx" text="加载中" layout="vertical"></t-loading>
     <view class="demo-section__desc">纯文字</view>
-    <t-loading class="loading-style" indicator="{{false}}" text="加载中..." loading></t-loading>
+    <t-loading class="loading-style" indicator="{{false}}" text="加载中..."></t-loading>
     <view class="demo-section__desc">加载失败</view>
-    <t-loading theme="error" class="loading-style" loading bind:reload="reloadPage"></t-loading>
+    <t-loading theme="error" class="loading-style" bind:reload="reloadPage"></t-loading>
     <view class="demo-section__desc">进度条加载</view>
-    <t-button size="large" plain class="progress-btn" bind:tap="goToProgress"
-      >页面进度条加载</t-button
-    >
+    <view class="box">
+      <t-button size="large" plain class="progress-btn" block bind:tap="goToProgress">页面进度条加载</t-button>
+    </view>
   </t-demo>
 
   <t-demo title="02 状态" desc="如果加载状态在延迟内结束，则不显示">
     <view class="loading-container-flex">
-      <t-switch
-        value="{{isCheck}}"
-        bindchange="switchChange"
-        colors="{{['#00A870']}}"
-        slot="note"
-      />
-      <span class="text-info">
-        {{isCheck?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}}
-      </span>
+      <t-switch value="{{isCheck}}" bindchange="switchChange" colors="{{['#00A870']}}" slot="note" />
+      <span class="text-info"> {{isCheck?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}} </span>
     </view>
     <t-loading
       class="loading-style"
@@ -77,7 +52,6 @@
         theme="circular"
         size="52rpx"
         text="加载中..."
-        loading
         t-class-text="text-l"
         duration="{{duration}}"
       ></t-loading>
@@ -98,21 +72,9 @@
   <t-demo title="04 规格">
     <view class="demo-section__desc">支持自定义加载规格</view>
     <view class="loading-container-flex-column">
-      <t-loading theme="circular" size="40rpx" text="加载中(小)..." loading></t-loading>
-      <t-loading
-        theme="circular"
-        size="48rpx"
-        text="加载(中)..."
-        loading
-        t-class-text="text-m"
-      ></t-loading>
-      <t-loading
-        theme="circular"
-        size="52rpx"
-        text="加载中(大)..."
-        loading
-        t-class-text="text-l"
-      ></t-loading>
+      <t-loading theme="circular" size="40rpx" text="加载中(小)..."></t-loading>
+      <t-loading theme="circular" size="48rpx" text="加载(中)..." t-class-text="text-m"></t-loading>
+      <t-loading theme="circular" size="52rpx" text="加载中(大)..." t-class-text="text-l"></t-loading>
     </view>
   </t-demo>
 </view>

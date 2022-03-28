@@ -1,5 +1,0 @@
-<view class="{{classPrefix}} {{prefix}}-class" style="z-index:{{ zIndex }};{{ containerStyle }}">
-  <view class="{{classPrefix}}__content" style="z-index:{{ zIndex }};{{ contentStyle }}">
-    <slot />
-  </view>
-</view>

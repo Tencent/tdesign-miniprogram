@@ -1,6 +1,0 @@
-<label
-  class="t-class {{ prefix?prefix:classPrefix}} {{ prefix?prefix:classPrefix }}-{{ name }} {{ classPrefix }}-base"
-  style="{{ color ? 'color:' + color : '' }};{{ fontSize ? 'font-size:'+ fontSize : '' }};{{ customStyle }}"
-  bind:tap="onTap"
->
-</label>

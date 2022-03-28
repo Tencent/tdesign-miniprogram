@@ -1,0 +1,5278 @@
+{
+  "components": [
+    {
+      "key": "t-avatar-group",
+      "label": "头像组",
+      "icon": "",
+      "properties": [
+        {
+          "key": "cascading",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'right-up'",
+          "desc": "图片之间的层叠关系，可选值：左侧图片在上和右侧图片在上",
+          "label": ""
+        },
+        {
+          "key": "collapseAvatar",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多`",
+          "label": ""
+        },
+        {
+          "key": "max",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "能够同时显示的最多头像数量",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "medium",
+          "desc": "尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-avatar": "./avatar"
+      }
+    },
+    {
+      "key": "t-avatar",
+      "label": "头像",
+      "icon": "",
+      "properties": [
+        {
+          "key": "alt",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "头像替换文本，仅当图片加载失败时有效",
+          "label": ""
+        },
+        {
+          "key": "badgeProps",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字",
+          "label": ""
+        },
+        {
+          "key": "hideOnLoadFailed",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "加载失败时隐藏图片",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标",
+          "label": ""
+        },
+        {
+          "key": "image",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图片地址",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "circle",
+          "desc": "形状",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "尺寸，示例值：small/medium/large/24px/38px 等，默认为 large",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "error",
+          "desc": "图片加载失败时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon",
+        "t-badge": "../badge/badge",
+        "t-image": "../image/image"
+      }
+    },
+    {
+      "key": "t-back-top",
+      "label": "回到顶部",
+      "icon": "",
+      "properties": [
+        {
+          "key": "fixed",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否绝对定位固定到屏幕右下方",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'backtop'",
+          "desc": "图标",
+          "label": ""
+        },
+        {
+          "key": "text",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "文案",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "round",
+          "desc": "预设的样式类型",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "toTop",
+          "desc": "点击触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-badge",
+      "label": "徽标数",
+      "icon": "",
+      "properties": [
+        {
+          "key": "color",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "颜色",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "徽标内容，示例：`content='自定义内容'`。也可以使用默认插槽定义",
+          "label": ""
+        },
+        {
+          "key": "count",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为空表示使用插槽渲染",
+          "label": ""
+        },
+        {
+          "key": "dot",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否为红点",
+          "label": ""
+        },
+        {
+          "key": "maxCount",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "99",
+          "desc": "封顶的数字值",
+          "label": ""
+        },
+        {
+          "key": "offset",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem']",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "circle",
+          "desc": "形状",
+          "label": ""
+        },
+        {
+          "key": "showZero",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "当数值为 0 时，是否展示徽标",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "medium",
+          "desc": "尺寸",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-button",
+      "label": "按钮",
+      "icon": "",
+      "properties": [
+        {
+          "key": "block",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否为块级元素",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "按钮内容",
+          "label": ""
+        },
+        {
+          "key": "customDataset",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "自定义 dataset，可通过 event.currentTarget.dataset.custom 获取",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用按钮",
+          "label": ""
+        },
+        {
+          "key": "ghost",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否为幽灵按钮（镂空按钮）",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标名称",
+          "label": ""
+        },
+        {
+          "key": "loading",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示为加载状态",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "rectangle",
+          "desc": "按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "medium",
+          "desc": "组件尺寸",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "default",
+          "desc": "组件风格，依次为品牌色、危险色",
+          "label": ""
+        },
+        {
+          "key": "type",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "同小程序的 formType",
+          "label": ""
+        },
+        {
+          "key": "variant",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "base",
+          "desc": "按钮形式，基础、线框、文字",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "click",
+          "desc": "点击时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-cell-group",
+      "label": "单元格组",
+      "icon": "",
+      "properties": [
+        {
+          "key": "bordered",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "是否显示组边框",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "单元格组标题",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-cell",
+      "label": "单元格",
+      "icon": "",
+      "properties": [
+        {
+          "key": "align",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "middle",
+          "desc": "内容的对齐方式，默认居中对齐",
+          "label": ""
+        },
+        {
+          "key": "arrow",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示右侧箭头",
+          "label": ""
+        },
+        {
+          "key": "bordered",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否显示下边框",
+          "label": ""
+        },
+        {
+          "key": "description",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "下方内容描述",
+          "label": ""
+        },
+        {
+          "key": "hover",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "是否开启点击反馈",
+          "label": ""
+        },
+        {
+          "key": "image",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "主图",
+          "label": ""
+        },
+        {
+          "key": "jumpType",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "navigateTo",
+          "desc": "链接跳转类型",
+          "label": ""
+        },
+        {
+          "key": "leftIcon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "左侧图标，出现在单元格标题的左侧",
+          "label": ""
+        },
+        {
+          "key": "note",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "和标题同行的说明文字",
+          "label": ""
+        },
+        {
+          "key": "required",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示表单必填星号",
+          "label": ""
+        },
+        {
+          "key": "rightIcon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "最右侧图标",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "标题",
+          "label": ""
+        },
+        {
+          "key": "url",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "点击后跳转链接地址。如果值为空，则表示不需要跳转",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "click",
+          "desc": "右侧内容",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-check-tag",
+      "label": "可选标签",
+      "icon": "",
+      "properties": [
+        {
+          "key": "checked",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "undefined",
+          "desc": "标签选中的状态，默认风格（theme=default）才有选中态",
+          "label": ""
+        },
+        {
+          "key": "closable",
+          "type": [
+            "String",
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否可以关闭",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "组件子元素",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "标签图标",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "square",
+          "desc": "标签类型，有三种：方形、圆角方形、标记型",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "medium",
+          "desc": "标签尺寸",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "组件子元素",
+          "label": ""
+        },
+        {
+          "key": "click",
+          "desc": "点击标签时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": ".././icon/icon"
+      }
+    },
+    {
+      "key": "t-checkbox-group",
+      "label": "多选框组",
+      "icon": "",
+      "properties": [
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用组件",
+          "label": ""
+        },
+        {
+          "key": "max",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "undefined",
+          "desc": "支持最多选中的数量",
+          "label": ""
+        },
+        {
+          "key": "name",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "统一设置内部复选框 HTML 属性",
+          "label": ""
+        },
+        {
+          "key": "options",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "[]",
+          "desc": "以配置形式设置子元素。示例1：`['北京', '上海']` ，示例2: `[{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]`。checkAll 值为 true 表示当前选项为「全选选项」",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "[]",
+          "desc": "选中值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "值变化时触发。`context.current` 表示当前变化的数据项，如果是全选则为空；`context.type` 表示引起选中数据变化的是选中或是取消选中",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-checkbox": "../checkbox/checkbox"
+      }
+    },
+    {
+      "key": "t-checkbox",
+      "label": "多选框",
+      "icon": "",
+      "properties": [
+        {
+          "key": "align",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "left",
+          "desc": "复选框和内容相对位置",
+          "label": ""
+        },
+        {
+          "key": "checkAll",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用",
+          "label": ""
+        },
+        {
+          "key": "checked",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否选中",
+          "label": ""
+        },
+        {
+          "key": "color",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "#0052d9",
+          "desc": "复选框颜色",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "复选框内容",
+          "label": ""
+        },
+        {
+          "key": "contentDisabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "是否禁用组件内容（content）触发选中",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "undefined",
+          "desc": "是否禁用组件",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "自定义选中图标和非选中图标。示例：[选中态图标地址，非选中态图标地址]",
+          "label": ""
+        },
+        {
+          "key": "indeterminate",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否为半选",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "主文案",
+          "label": ""
+        },
+        {
+          "key": "maxContentRow",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "5",
+          "desc": "内容最大行数限制",
+          "label": ""
+        },
+        {
+          "key": "maxLabelRow",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "3",
+          "desc": "主文案最大行数限制",
+          "label": ""
+        },
+        {
+          "key": "name",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "HTML 元素原生属性",
+          "label": ""
+        },
+        {
+          "key": "readonly",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "只读状态",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "复选框的值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "值变化时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-cell": "../cell/cell",
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-collapse-panel",
+      "label": "折叠面板",
+      "icon": "",
+      "properties": [
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "折叠面板内容",
+          "label": ""
+        },
+        {
+          "key": "destroyOnCollapse",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "当前面板处理折叠状态时，是否销毁面板内容",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "undefined",
+          "desc": "禁止当前面板展开，优先级大于 Collapse 的同名属性",
+          "label": ""
+        },
+        {
+          "key": "expandIcon",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "当前折叠面板展开图标，优先级大于 Collapse 的同名属性",
+          "label": ""
+        },
+        {
+          "key": "header",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "面板头内容",
+          "label": ""
+        },
+        {
+          "key": "headerRightContent",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "面板头的右侧区域，一般用于呈现面板操作",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-cell": "../cell/cell"
+      }
+    },
+    {
+      "key": "t-collapse",
+      "label": "折叠",
+      "icon": "",
+      "properties": [
+        {
+          "key": "borderless",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否为无边框模式",
+          "label": ""
+        },
+        {
+          "key": "defaultExpandAll",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "默认是否展开全部",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "是否禁用全部面板展开",
+          "label": ""
+        },
+        {
+          "key": "expandIcon",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "展开图标。值为 undefined 或 false 则不显示展开图标；值为 true 显示默认图标；值类型为函数，则表示完全自定义展开图标",
+          "label": ""
+        },
+        {
+          "key": "expandIconPlacement",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "right",
+          "desc": "展开图标的位置，左侧或右侧",
+          "label": ""
+        },
+        {
+          "key": "expandMutex",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "每个面板互斥展开，每次只展开一个面板",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number",
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "展开的面板集合",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "切换面板时触发，返回变化的值",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-count-down",
+      "label": "倒计时",
+      "icon": "",
+      "properties": [
+        {
+          "key": "autoStart",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否自动开始倒计时",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'default'",
+          "desc": "最终倒计时的展示内容，值为'default'时使用默认的格式，否则使用自定义样式插槽",
+          "label": ""
+        },
+        {
+          "key": "format",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "HH:mm:ss",
+          "desc": "时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒",
+          "label": ""
+        },
+        {
+          "key": "millisecond",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否开启毫秒级渲染",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'small'",
+          "desc": "倒计时尺寸",
+          "label": ""
+        },
+        {
+          "key": "splitWithUnit",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "使用时间单位分割",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'default'",
+          "desc": "倒计时风格",
+          "label": ""
+        },
+        {
+          "key": "time",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "倒计时时长，单位毫秒",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "时间变化时触发",
+          "label": ""
+        },
+        {
+          "key": "finish",
+          "desc": "倒计时结束时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-date-time-picker",
+      "label": "日期时间选择器",
+      "icon": "",
+      "properties": [
+        {
+          "key": "cancelBtn",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "取消",
+          "desc": "取消按钮文字",
+          "label": ""
+        },
+        {
+          "key": "confirmBtn",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "确定按钮文字",
+          "label": ""
+        },
+        {
+          "key": "disableDate",
+          "type": [
+            "Object",
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
+          "label": ""
+        },
+        {
+          "key": "format",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'YYYY-MM-DD'",
+          "desc": "用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format)",
+          "label": ""
+        },
+        {
+          "key": "mode",
+          "type": [
+            "String",
+            "Array"
+          ],
+          "defaultValue": "['year', 'month', 'date']",
+          "desc": "选择器模式，用于表示可以选择到哪一个层级。【示例一】year 或者 ['year'] 表示纯日期选择器，只能选择到年份，只显示年份。【示例二】'hour' 或 ['hour'] 表示纯时间选择器，只能选择到小时维度。【示例三】['year', 'month', 'date', 'hour', 'minute'] 表示，日期和时间 混合选择器，可以选择到具体哪一分钟，显示全部时间：年/月/日/时/分",
+          "label": ""
+        },
+        {
+          "key": "showWeek",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否在日期旁边显示周几（如周一，周二，周日等）",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "标题",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "选中值",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "cancel",
+          "desc": "取消按钮点击时触发",
+          "label": ""
+        },
+        {
+          "key": "change",
+          "desc": "选中值发生变化时触发",
+          "label": ""
+        },
+        {
+          "key": "columnChange",
+          "desc": "每一列选中数据变化时触发",
+          "label": ""
+        },
+        {
+          "key": "confirm",
+          "desc": "确认按钮点击时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-picker": "../picker/picker",
+        "t-picker-column": "../picker/picker-column"
+      }
+    },
+    {
+      "key": "t-date-time-range-picker",
+      "label": "日期时间范围选择器",
+      "icon": "",
+      "properties": [
+        {
+          "key": "cancelBtn",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "取消",
+          "desc": "取消按钮文字",
+          "label": ""
+        },
+        {
+          "key": "confirmBtn",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "确定按钮文字",
+          "label": ""
+        },
+        {
+          "key": "disableDate",
+          "type": [
+            "Object",
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
+          "label": ""
+        },
+        {
+          "key": "format",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'YYYY-MM-DD'",
+          "desc": "用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format)",
+          "label": ""
+        },
+        {
+          "key": "mode",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "date",
+          "desc": "选择器模式，用于表示可以选择到哪一个层级",
+          "label": ""
+        },
+        {
+          "key": "showWeek",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否在日期旁边显示周几（如周一，周二，周日等）",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "标题",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "选中值",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "cancel",
+          "desc": "取消按钮点击时触发",
+          "label": ""
+        },
+        {
+          "key": "change",
+          "desc": "选中值发生变化时触发",
+          "label": ""
+        },
+        {
+          "key": "columnChange",
+          "desc": "每一列选中数据变化时触发",
+          "label": ""
+        },
+        {
+          "key": "confirm",
+          "desc": "确认按钮点击时触发",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-dialog",
+      "label": "对话框",
+      "icon": "",
+      "properties": [
+        {
+          "key": "actions",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "操作栏",
+          "label": ""
+        },
+        {
+          "key": "buttonLayout",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "horizontal",
+          "desc": "多按钮排列方式",
+          "label": ""
+        },
+        {
+          "key": "cancelBtn",
+          "type": [
+            "String",
+            "Object"
+          ],
+          "defaultValue": "''",
+          "desc": "取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件",
+          "label": ""
+        },
+        {
+          "key": "closeOnOverlayClick",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "点击蒙层时是否触发关闭事件",
+          "label": ""
+        },
+        {
+          "key": "confirmBtn",
+          "type": [
+            "String",
+            "Object"
+          ],
+          "defaultValue": "''",
+          "desc": "确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "内容",
+          "label": ""
+        },
+        {
+          "key": "preventScrollThrough",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "防止滚动穿透",
+          "label": ""
+        },
+        {
+          "key": "showOverlay",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否显示遮罩层",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "标题",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "控制对话框是否显示",
+          "label": ""
+        },
+        {
+          "key": "zIndex",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "对话框层级，Web 侧样式默认为 2500，移动端和小程序样式默认为 1500",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "cancel",
+          "desc": "如果“取消”按钮存在，则点击“取消”按钮时触发，同时触发关闭事件",
+          "label": ""
+        },
+        {
+          "key": "close",
+          "desc": "关闭事件，点击 取消按钮 或 点击蒙层 时触发",
+          "label": ""
+        },
+        {
+          "key": "overlayClick",
+          "desc": "如果蒙层存在，点击蒙层时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-popup": "../popup/popup",
+        "t-button": "../button/button"
+      }
+    },
+    {
+      "key": "t-divider",
+      "label": "分割线",
+      "icon": "",
+      "properties": [
+        {
+          "key": "align",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "center",
+          "desc": "文本位置（仅在水平分割线有效）",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "子元素",
+          "label": ""
+        },
+        {
+          "key": "dashed",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否虚线（仅在水平分割线有效）",
+          "label": ""
+        },
+        {
+          "key": "layout",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "horizontal",
+          "desc": "分隔线类型有两种：水平和垂直",
+          "label": ""
+        },
+        {
+          "key": "lineColor",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "分隔线颜色",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-drawer",
+      "label": "模态抽屉",
+      "icon": "",
+      "properties": [
+        {
+          "key": "attach",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "抽屉挂载的节点，默认挂在组件本身的位置。数据类型为 String 时，会被当作选择器处理，进行节点查询。示例：'body' 或 () => document.body",
+          "label": ""
+        },
+        {
+          "key": "cancelBtn",
+          "type": [
+            "String",
+            "Object"
+          ],
+          "defaultValue": "''",
+          "desc": "取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件",
+          "label": ""
+        },
+        {
+          "key": "closeBtn",
+          "type": [
+            "String",
+            "Boolean"
+          ],
+          "defaultValue": "undefined",
+          "desc": "关闭按钮，可以自定义。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string 则直接显示值，如：“关闭”。值类型为 TNode，则表示呈现自定义按钮示例",
+          "label": ""
+        },
+        {
+          "key": "closeOnEscKeydown",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "按下 ESC 时是否触发抽屉关闭事件",
+          "label": ""
+        },
+        {
+          "key": "closeOnOverlayClick",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "点击蒙层时是否触发抽屉关闭事件",
+          "label": ""
+        },
+        {
+          "key": "confirmBtn",
+          "type": [
+            "String",
+            "Object"
+          ],
+          "defaultValue": "''",
+          "desc": "确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件",
+          "label": ""
+        },
+        {
+          "key": "destroyOnClose",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "抽屉关闭时是否销毁节点",
+          "label": ""
+        },
+        {
+          "key": "mode",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "overlay",
+          "desc": "展开方式，有两种：直接展示在内容上方 和 推开内容区域",
+          "label": ""
+        },
+        {
+          "key": "placement",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "right",
+          "desc": "抽屉方向",
+          "label": ""
+        },
+        {
+          "key": "showInAttachedElement",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "仅在挂载元素中显示抽屉，默认在浏览器可视区域显示。父元素需要有定位属性，如：position: relative",
+          "label": ""
+        },
+        {
+          "key": "showOverlay",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否显示遮罩层",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "small",
+          "desc": "尺寸，支持 'small', 'medium', 'large'，'35px', '30%',  '3em' 等。纵向抽屉调整的是抽屉宽度，横向抽屉调整的是抽屉高度",
+          "label": ""
+        },
+        {
+          "key": "sizeDraggable",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "抽屉大小可拖拽调整，横向抽屉调整宽度，纵向抽屉调整高度",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "组件是否可见",
+          "label": ""
+        },
+        {
+          "key": "zIndex",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "抽屉层级，样式默认为 1500",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "cancel",
+          "desc": "如果“取消”按钮存在，点击“取消”按钮时触发，同时触发关闭事件",
+          "label": ""
+        },
+        {
+          "key": "close",
+          "desc": "关闭事件，取消按钮点击时、关闭按钮点击时、ESC 按下时、点击蒙层时均会触发",
+          "label": ""
+        },
+        {
+          "key": "closeBtnClick",
+          "desc": "如果关闭按钮存在，点击关闭按钮时触发该事件，同时触发关闭事件",
+          "label": ""
+        },
+        {
+          "key": "confirm",
+          "desc": "如果“确认”按钮存在，则点击“确认”按钮时触发",
+          "label": ""
+        },
+        {
+          "key": "escKeydown",
+          "desc": "按下 ESC 键时触发",
+          "label": ""
+        },
+        {
+          "key": "overlayClick",
+          "desc": "如果蒙层存在，点击蒙层时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-popup": "../popup/popup"
+      }
+    },
+    {
+      "key": "t-empty",
+      "label": "空状态",
+      "icon": "",
+      "properties": [
+        {
+          "key": "action",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "操作按钮",
+          "label": ""
+        },
+        {
+          "key": "description",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "描述文字",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标名称",
+          "label": ""
+        },
+        {
+          "key": "image",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图片地址",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-footer",
+      "label": "布局-底部内容",
+      "icon": "",
+      "properties": [
+        {
+          "key": "copyright",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "版权信息，type 为`text`生效",
+          "label": ""
+        },
+        {
+          "key": "logo",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "图标配置，type 为`logo`生效。`logo.icon` 表示图标链接地址，`logo.title` 表示标题文本，`logo.url` 表示链接跳转地址",
+          "label": ""
+        },
+        {
+          "key": "textLinkList",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "[]",
+          "desc": "链接列表，type 为`text`生效。name 表示链接名称， url 表示链接 page 路径，目前只支持小程序内部跳转，openType 表示跳转方式",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'text'",
+          "desc": "页脚展示类型",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-grid-item",
+      "label": "宫格子项",
+      "icon": "",
+      "properties": [
+        {
+          "key": "badgeProps",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字",
+          "label": ""
+        },
+        {
+          "key": "description",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点",
+          "label": ""
+        },
+        {
+          "key": "image",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图片，可以是图片地址，也可以自定义图片节点",
+          "label": ""
+        },
+        {
+          "key": "jumpType",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "navigate-to",
+          "desc": "链接跳转类型",
+          "label": ""
+        },
+        {
+          "key": "layout",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "vertical",
+          "desc": "内容布局方式",
+          "label": ""
+        },
+        {
+          "key": "text",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "文本，可以通过 Props 传入文本，也可以自定义标题节点",
+          "label": ""
+        },
+        {
+          "key": "url",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "点击后的跳转链接",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-image": "../image/image"
+      }
+    },
+    {
+      "key": "t-grid",
+      "label": "栅格",
+      "icon": "",
+      "properties": [
+        {
+          "key": "align",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "center",
+          "desc": "内容对齐方式",
+          "label": ""
+        },
+        {
+          "key": "border",
+          "type": [
+            "Boolean",
+            "Object"
+          ],
+          "defaultValue": "false",
+          "desc": "边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式",
+          "label": ""
+        },
+        {
+          "key": "column",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "4",
+          "desc": "每一行的列数量",
+          "label": ""
+        },
+        {
+          "key": "gutter",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "间隔大小",
+          "label": ""
+        },
+        {
+          "key": "hover",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否开启点击反馈",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-icon-svg",
+      "label": "图标（IconSVG）",
+      "icon": "",
+      "properties": [
+        {
+          "key": "name",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标名称",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "undefined",
+          "desc": "图标尺寸，支持 'small', 'medium', 'large'，'35px', '3em' 等",
+          "label": ""
+        },
+        {
+          "key": "style",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "可用于设置图标颜色，如：style=\"color: red\"",
+          "label": ""
+        },
+        {
+          "key": "url",
+          "type": [
+            "String",
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "图标地址，地址内容参考[组件内部默认加载图标](https://tdesign.gtimg.com/icon/web/index.js)",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "click",
+          "desc": "点击时触发",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-icon",
+      "label": "图标",
+      "icon": "",
+      "properties": [
+        {
+          "key": "classPrefix",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "自定义icon前缀",
+          "label": ""
+        },
+        {
+          "key": "color",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标颜色",
+          "label": ""
+        },
+        {
+          "key": "customStyle",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "自定义样式",
+          "label": ""
+        },
+        {
+          "key": "name",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标名称",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "图标名称",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-iconfont",
+      "label": "图标（Iconfont）",
+      "icon": "",
+      "properties": [
+        {
+          "key": "name",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标名称",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "undefined",
+          "desc": "图标尺寸，支持 'small', 'medium', 'large'，'35px', '3em' 等",
+          "label": ""
+        },
+        {
+          "key": "style",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "可用于设置图标颜色，如：style=\"color: red\"",
+          "label": ""
+        },
+        {
+          "key": "tag",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "i",
+          "desc": "图标 DOM 元素，可选值：i/span/div/...",
+          "label": ""
+        },
+        {
+          "key": "url",
+          "type": [
+            "String",
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "图标地址，地址内容参考[组件内部默认加载图标](https://tdesign.gtimg.com/icon/web/index.css)。也可以在 index.html 中引入图标地址",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "click",
+          "desc": "点击时触发",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-image",
+      "label": "图片",
+      "icon": "",
+      "properties": [
+        {
+          "key": "error",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'default'",
+          "desc": "加载失败时显示的内容。值为 `default` 则表示使用默认加载失败风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `error`；值为其他则表示普通文本内容，如“加载失败”",
+          "label": ""
+        },
+        {
+          "key": "lazy",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否开启图片懒加载",
+          "label": ""
+        },
+        {
+          "key": "loading",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'default'",
+          "desc": "加载态内容。值为 `default` 则表示使用默认加载中风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `loading`；值为其他则表示普通文本内容，如“加载中”",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "square",
+          "desc": "图片圆角类型",
+          "label": ""
+        },
+        {
+          "key": "src",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图片链接",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "error",
+          "desc": "图片加载失败时触发",
+          "label": ""
+        },
+        {
+          "key": "load",
+          "desc": "图片加载完成时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-loading": "../loading/loading",
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-indexes",
+      "label": "索引",
+      "icon": "",
+      "properties": [
+        {
+          "key": "height",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "列表高度，未设置默认占满设备高度",
+          "label": ""
+        },
+        {
+          "key": "list",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "[]",
+          "desc": "索引列表的列表数据。每个元素包含三个字元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "select",
+          "desc": "点击行元素时触发事件",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon",
+        "t-cell": "../cell/cell",
+        "t-cell-group": "../cell-group/cell-group"
+      }
+    },
+    {
+      "key": "t-input",
+      "label": "输入框",
+      "icon": "",
+      "properties": [
+        {
+          "key": "adjustPosition",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "键盘弹起时，是否自动上推页面",
+          "label": ""
+        },
+        {
+          "key": "align",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "left",
+          "desc": "文本内容位置，居左/居中/居右",
+          "label": ""
+        },
+        {
+          "key": "borderless",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "【开发中】是否开启无边框模式",
+          "label": ""
+        },
+        {
+          "key": "clearable",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否可清空",
+          "label": ""
+        },
+        {
+          "key": "confirmHold",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "点击键盘右下角按钮时是否保持键盘不收起点",
+          "label": ""
+        },
+        {
+          "key": "confirmType",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "done",
+          "desc": "设置键盘右下角按钮的文字，仅在 type='text'时生效",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用输入框",
+          "label": ""
+        },
+        {
+          "key": "errorMessage",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "错误提示文本，值为空不显示",
+          "label": ""
+        },
+        {
+          "key": "focus",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "自动聚焦",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "左侧文本",
+          "label": ""
+        },
+        {
+          "key": "maxcharacter",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用",
+          "label": ""
+        },
+        {
+          "key": "maxlength",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "用户最多可以输入的文本长度，一个中文等于一个计数长度。值小于等于 0 的时候，则表示不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用",
+          "label": ""
+        },
+        {
+          "key": "placeholder",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "undefined",
+          "desc": "占位符",
+          "label": ""
+        },
+        {
+          "key": "prefixIcon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "组件前置图标，值为字符串则表示图标名称",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "small",
+          "desc": "输入框尺寸",
+          "label": ""
+        },
+        {
+          "key": "suffix",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "后置图标前的后置内容",
+          "label": ""
+        },
+        {
+          "key": "suffixIcon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "后置文本内容，值为字符串则表示图标名称",
+          "label": ""
+        },
+        {
+          "key": "type",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "text",
+          "desc": "输入框类型",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "输入框的值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "blur",
+          "desc": "失去焦点时触发",
+          "label": ""
+        },
+        {
+          "key": "change",
+          "desc": "输入框值发生变化时触发",
+          "label": ""
+        },
+        {
+          "key": "clear",
+          "desc": "清空按钮点击时触发",
+          "label": ""
+        },
+        {
+          "key": "enter",
+          "desc": "回车键按下时触发",
+          "label": ""
+        },
+        {
+          "key": "focus",
+          "desc": "获得焦点时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-cell": "../cell/cell",
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-loading",
+      "label": "加载中",
+      "icon": "",
+      "properties": [
+        {
+          "key": "delay",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒",
+          "label": ""
+        },
+        {
+          "key": "duration",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "800",
+          "desc": "加载动画执行完成一次的时间，单位：毫秒",
+          "label": ""
+        },
+        {
+          "key": "indicator",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否显示加载指示符",
+          "label": ""
+        },
+        {
+          "key": "inheritColor",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否继承父元素颜色",
+          "label": ""
+        },
+        {
+          "key": "layout",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "horizontal",
+          "desc": "对齐方式",
+          "label": ""
+        },
+        {
+          "key": "loading",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否处于加载状态",
+          "label": ""
+        },
+        {
+          "key": "pause",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否暂停动画",
+          "label": ""
+        },
+        {
+          "key": "progress",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "加载进度",
+          "label": ""
+        },
+        {
+          "key": "reverse",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "加载动画是否反向",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'40rpx'",
+          "desc": "尺寸，示例：40rpx/20px",
+          "label": ""
+        },
+        {
+          "key": "text",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "加载提示文案",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "circular",
+          "desc": "加载组件类型",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-message",
+      "label": "全局提醒",
+      "icon": "",
+      "properties": [
+        {
+          "key": "action",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "操作",
+          "label": ""
+        },
+        {
+          "key": "align",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "left",
+          "desc": "文本对齐方式",
+          "label": ""
+        },
+        {
+          "key": "closeBtn",
+          "type": [
+            "String",
+            "Boolean"
+          ],
+          "defaultValue": "undefined",
+          "desc": "关闭按钮，可以自定义。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string 则直接显示值，如：“关闭”。也可以完全自定义按钮",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "用于自定义消息弹出内容",
+          "label": ""
+        },
+        {
+          "key": "duration",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "3000",
+          "desc": "消息内置计时器，计时到达时会触发 duration-end 事件。单位：毫秒。值为 0 则表示没有计时器。",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String",
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "消息提醒前面的图标。值为 true 则根据 theme 显示对应的图标，值为 false 则不显示图标。值为 'info' 或 'bell' 则显示组件内置图标。也可以完全自定义图标节点",
+          "label": ""
+        },
+        {
+          "key": "marquee",
+          "type": [
+            "Boolean",
+            "Object"
+          ],
+          "defaultValue": "false",
+          "desc": "跑马灯效果。speed 指速度控制；loop 指循环播放次数，值为 -1 表示循环播放，值为 0 表示不循环播放；delay 表示延迟多久开始播放",
+          "label": ""
+        },
+        {
+          "key": "offset",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "相对于 placement 的偏移量，示例：[-10, 20] 或 ['10rpx', '8rpx']",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "info",
+          "desc": "消息组件风格",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示，隐藏时默认销毁组件",
+          "label": ""
+        },
+        {
+          "key": "zIndex",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "元素层级，样式默认为 5000",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "actionBtnClick",
+          "desc": "当操作按钮存在时，用户点击操作按钮时触发",
+          "label": ""
+        },
+        {
+          "key": "closeBtnClick",
+          "desc": "当关闭按钮存在时，用户点击关闭按钮触发",
+          "label": ""
+        },
+        {
+          "key": "durationEnd",
+          "desc": "计时结束后触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon",
+        "t-button": "../button/button"
+      }
+    },
+    {
+      "key": "t-navbar",
+      "label": "导航条",
+      "icon": "",
+      "properties": [
+        {
+          "key": "animation",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否添加动画效果",
+          "label": ""
+        },
+        {
+          "key": "background",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "背景",
+          "label": ""
+        },
+        {
+          "key": "delta",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "1",
+          "desc": "后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack，只会触发一个 goback 事件供自行处理。",
+          "label": ""
+        },
+        {
+          "key": "fixed",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否固定在顶部",
+          "label": ""
+        },
+        {
+          "key": "homeIcon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "首页图标地址。值为 '' 或者 undefiend 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址",
+          "label": ""
+        },
+        {
+          "key": "leftIcon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "左侧图标地址，值为 '' 或者 undefiend 则表示不显示返回图标，值为 'arrow-left' 表示显示返回图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "页面标题",
+          "label": ""
+        },
+        {
+          "key": "titleMaxLength",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "标题文字最大长度，超出的范围使用 `...` 表示",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否显示",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "complete",
+          "desc": "navigateBack 执行完成后触发（失败或成功均会触发）",
+          "label": ""
+        },
+        {
+          "key": "fail",
+          "desc": "navigateBack 执行失败后触发",
+          "label": ""
+        },
+        {
+          "key": "goBack",
+          "desc": "delta 值为 0 时，点击返回，触发该事件",
+          "label": ""
+        },
+        {
+          "key": "goHome",
+          "desc": "点击 Home 触发",
+          "label": ""
+        },
+        {
+          "key": "success",
+          "desc": "navigateBack 执行成功后触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-picker-item",
+      "label": "选择器子项",
+      "icon": "",
+      "properties": [
+        {
+          "key": "options",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "[]",
+          "desc": "数据源",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "默认选中的选项",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-picker",
+      "label": "选择器",
+      "icon": "",
+      "properties": [
+        {
+          "key": "cancelBtn",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "取消",
+          "desc": "取消按钮文字",
+          "label": ""
+        },
+        {
+          "key": "confirmBtn",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "确认",
+          "desc": "确定按钮文字",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "标题",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "选中值",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "cancel",
+          "desc": "点击取消按钮时触发",
+          "label": ""
+        },
+        {
+          "key": "change",
+          "desc": "选中变化时候触发",
+          "label": ""
+        },
+        {
+          "key": "confirm",
+          "desc": "点击确认确认按钮时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-popup": "../popup/popup"
+      }
+    },
+    {
+      "key": "t-popup",
+      "label": "气泡框",
+      "icon": "",
+      "properties": [
+        {
+          "key": "closeBtn",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "关闭按钮，值类型为 Boolean 时表示是否显示关闭按钮。也可以自定义关闭按钮",
+          "label": ""
+        },
+        {
+          "key": "closeOnOverlayClick",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "点击遮罩层是否关闭",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "浮层里面的内容",
+          "label": ""
+        },
+        {
+          "key": "placement",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "top",
+          "desc": "浮层出现位置",
+          "label": ""
+        },
+        {
+          "key": "preventScrollThrough",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "防止滚动穿透",
+          "label": ""
+        },
+        {
+          "key": "showOverlay",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否显示遮罩层",
+          "label": ""
+        },
+        {
+          "key": "transitionProps",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "动画效果定义",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示浮层",
+          "label": ""
+        },
+        {
+          "key": "zIndex",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "visibleChange",
+          "desc": "当浮层隐藏或显示时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-transition": "../transition/transition",
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-progress",
+      "label": "进度条",
+      "icon": "",
+      "properties": [
+        {
+          "key": "color",
+          "type": [
+            "String",
+            "Object",
+            "Array"
+          ],
+          "defaultValue": "''",
+          "desc": "进度条颜色。示例：'#ED7B2F' 或 'orange' 或 `['#f00', '#0ff', '#f0f']` 或 `{ '0%': '#f00', '100%': '#0ff' }` 或  `{ from: '#000', to: '#000' }` 等",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String",
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "进度百分比，可自定义",
+          "label": ""
+        },
+        {
+          "key": "percentage",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "进度条百分比",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "'medium'",
+          "desc": "进度条尺寸，示例：small/medium/large/240。small 值为 72； medium 值为 112；large 值为 160",
+          "label": ""
+        },
+        {
+          "key": "status",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "进度条状态",
+          "label": ""
+        },
+        {
+          "key": "strokeWidth",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "进度条线宽。宽度数值不能超过 size 的一半，否则不能输出环形进度",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "line",
+          "desc": "进度条风格。值为 line，标签（label）显示在进度条右侧；值为 plump，标签（label）显示在进度条里面；值为 circle，标签（label）显示在进度条正中间",
+          "label": ""
+        },
+        {
+          "key": "trackColor",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "进度条未完成部分颜色",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-pull-down-refresh",
+      "label": "下拉刷新",
+      "icon": "",
+      "properties": [
+        {
+          "key": "loadingBarHeight",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "200",
+          "desc": "加载中下拉高度",
+          "label": ""
+        },
+        {
+          "key": "loadingProps",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "加载loading样式",
+          "label": ""
+        },
+        {
+          "key": "loadingTexts",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "[]",
+          "desc": "提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']",
+          "label": ""
+        },
+        {
+          "key": "maxBarHeight",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "272",
+          "desc": "最大下拉高度",
+          "label": ""
+        },
+        {
+          "key": "refreshTimeout",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "3000",
+          "desc": "刷新超时时间",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "refresh",
+          "desc": "结束下拉时触发",
+          "label": ""
+        },
+        {
+          "key": "timeout",
+          "desc": "刷新超时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-loading": "../loading/loading"
+      }
+    },
+    {
+      "key": "t-radio-group",
+      "label": "单选框组",
+      "icon": "",
+      "properties": [
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "undefined",
+          "desc": "是否禁用全部子单选框",
+          "label": ""
+        },
+        {
+          "key": "name",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "HTML 元素原生属性",
+          "label": ""
+        },
+        {
+          "key": "options",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number",
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "选中的值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "选中值发生变化时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-radio": "../radio/radio"
+      }
+    },
+    {
+      "key": "t-radio",
+      "label": "单选框",
+      "icon": "",
+      "properties": [
+        {
+          "key": "align",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "left",
+          "desc": "复选框和内容相对位置",
+          "label": ""
+        },
+        {
+          "key": "allowUncheck",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否允许取消选中",
+          "label": ""
+        },
+        {
+          "key": "checked",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否选中",
+          "label": ""
+        },
+        {
+          "key": "color",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "#0052d9",
+          "desc": "单选按钮颜色",
+          "label": ""
+        },
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "单选内容",
+          "label": ""
+        },
+        {
+          "key": "contentDisabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用组件内容（content）触发选中",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "undefined",
+          "desc": "是否为禁用态",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String",
+            "Array"
+          ],
+          "defaultValue": "'fill-circle'",
+          "desc": "自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "主文案",
+          "label": ""
+        },
+        {
+          "key": "maxContentRow",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "5",
+          "desc": "内容最大行数限制",
+          "label": ""
+        },
+        {
+          "key": "maxLabelRow",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "3",
+          "desc": "主文案最大行数限制",
+          "label": ""
+        },
+        {
+          "key": "name",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "HTML 元素原生属性",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number",
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "单选按钮的值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "值变化时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-cell": "../cell/cell",
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-rate",
+      "label": "评分",
+      "icon": "",
+      "properties": [
+        {
+          "key": "allowHalf",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否允许半选",
+          "label": ""
+        },
+        {
+          "key": "color",
+          "type": [
+            "String",
+            "Array"
+          ],
+          "defaultValue": "'#ED7B2F'",
+          "desc": "评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，两个值表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色。示例：['#ED7B2F', '#999999']",
+          "label": ""
+        },
+        {
+          "key": "count",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "5",
+          "desc": "评分的数量",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用评分",
+          "label": ""
+        },
+        {
+          "key": "gap",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "6",
+          "desc": "评分图标的间距",
+          "label": ""
+        },
+        {
+          "key": "showText",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示对应的辅助文字",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "评分图标的大小，示例：`20`",
+          "label": ""
+        },
+        {
+          "key": "texts",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "[]",
+          "desc": "评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "选择评分的值",
+          "label": ""
+        },
+        {
+          "key": "variant",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "outline",
+          "desc": "形状类型，有描边类型和填充类型两种",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "评分数改变时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-search",
+      "label": "搜索",
+      "icon": "",
+      "properties": [
+        {
+          "key": "action",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "自定义右侧操作按钮文字",
+          "label": ""
+        },
+        {
+          "key": "center",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否居中",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用",
+          "label": ""
+        },
+        {
+          "key": "focus",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否聚焦",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "左侧文本",
+          "label": ""
+        },
+        {
+          "key": "leftIcon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'search'",
+          "desc": "左侧图标",
+          "label": ""
+        },
+        {
+          "key": "placeholder",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "占位符",
+          "label": ""
+        },
+        {
+          "key": "rightIcon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'close'",
+          "desc": "右侧图标",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'square'",
+          "desc": "搜索框形状",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "actionClick",
+          "desc": "点击右侧操作按钮文字时触发",
+          "label": ""
+        },
+        {
+          "key": "blur",
+          "desc": "失去焦点时触发",
+          "label": ""
+        },
+        {
+          "key": "change",
+          "desc": "值发生变化时触发",
+          "label": ""
+        },
+        {
+          "key": "clear",
+          "desc": "点击清除时触发",
+          "label": ""
+        },
+        {
+          "key": "focus",
+          "desc": "聚焦时触发",
+          "label": ""
+        },
+        {
+          "key": "submit",
+          "desc": "提交时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-segmented-control",
+      "label": "分段器",
+      "icon": "",
+      "properties": [
+        {
+          "key": "list",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "分段器选项",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number",
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "选中值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "选中值变化时触发",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-skeleton",
+      "label": "骨架屏",
+      "icon": "",
+      "properties": [
+        {
+          "key": "animation",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "动画效果，有「渐变加载动画」和「闪烁加载动画」两种。值为空则表示没有动画",
+          "label": ""
+        },
+        {
+          "key": "delay",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "【开发中】延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒",
+          "label": ""
+        },
+        {
+          "key": "loading",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否为加载状态，如果是则显示骨架图，如果不是则显示加载完成的内容",
+          "label": ""
+        },
+        {
+          "key": "rowCol",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "[1, 1, 1, { width: '70%' }]",
+          "desc": "用于设置行列数量、宽度高度、间距等。【示例一】，`[1, 1, 2]` 表示输出三行骨架图，第一行一列，第二行一列，第三行两列。【示例二】，`[1, 1, { width: '100px' }]` 表示自定义第三行的宽度为 `100px`。【示例三】，`[1, 2, [{ width, height }, { width, height, marginLeft }]]` 表示第三行有两列，且自定义宽度、高度和间距",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "text",
+          "desc": "骨架图风格，有基础、头像组合等两大类",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-slider",
+      "label": "滑块",
+      "icon": "",
+      "properties": [
+        {
+          "key": "colors",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "['#0052D9', 'rgba(220, 220, 220, 1)']",
+          "desc": "颜色（已选择&未选择）",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用组件",
+          "label": ""
+        },
+        {
+          "key": "disabledColor",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "['#bbd3fb', '#dcdcdc']",
+          "desc": "禁用状态滑动条的颜色（已选、未选）",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String",
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值",
+          "label": ""
+        },
+        {
+          "key": "marks",
+          "type": [
+            "Object",
+            "Array"
+          ],
+          "defaultValue": "{}",
+          "desc": "刻度标记，示例：`[0, 10, 40, 200]` 或者 `{ 5:  '5¥', 10: '10%' }`",
+          "label": ""
+        },
+        {
+          "key": "max",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "100",
+          "desc": "滑块范围最大值",
+          "label": ""
+        },
+        {
+          "key": "min",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "滑块范围最小值",
+          "label": ""
+        },
+        {
+          "key": "range",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "双游标滑块",
+          "label": ""
+        },
+        {
+          "key": "showExtremeValue",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否边界值",
+          "label": ""
+        },
+        {
+          "key": "step",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "1",
+          "desc": "步长",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "Number",
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "滑块值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "滑块值变化时触发",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-step-item",
+      "label": "步骤",
+      "icon": "",
+      "properties": [
+        {
+          "key": "content",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "步骤描述",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标",
+          "label": ""
+        },
+        {
+          "key": "status",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "default",
+          "desc": "当前步骤的状态",
+          "label": ""
+        },
+        {
+          "key": "title",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "标题",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-stepper",
+      "label": "步进器",
+      "icon": "",
+      "properties": [
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "禁用全部操作",
+          "label": ""
+        },
+        {
+          "key": "disableInput",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "禁用输入框",
+          "label": ""
+        },
+        {
+          "key": "inputWidth",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "输入框宽度",
+          "label": ""
+        },
+        {
+          "key": "max",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "100",
+          "desc": "最大值",
+          "label": ""
+        },
+        {
+          "key": "min",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "最小值",
+          "label": ""
+        },
+        {
+          "key": "step",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "1",
+          "desc": "步长",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "normal",
+          "desc": "组件风格",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "blur",
+          "desc": "输入框失去焦点时触发",
+          "label": ""
+        },
+        {
+          "key": "change",
+          "desc": "数值发生变更时触发",
+          "label": ""
+        },
+        {
+          "key": "overlimit",
+          "desc": "数值超出限制时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-cell": "../cell/cell",
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-steps",
+      "label": "步骤条",
+      "icon": "",
+      "properties": [
+        {
+          "key": "current",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "当前步骤，即整个步骤条进度。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。如果每个步骤没有设置 value，current 值为步骤长度则表示所有步骤已完成。如果每个步骤设置了自定义 value，则 current = 'FINISH' 表示所有状态完成",
+          "label": ""
+        },
+        {
+          "key": "layout",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "horizontal",
+          "desc": "步骤条方向，有两种：横向和纵向",
+          "label": ""
+        },
+        {
+          "key": "readonly",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "只读状态",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "default",
+          "desc": "步骤条风格",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "当前步骤发生变化时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-step": "./step-item"
+      }
+    },
+    {
+      "key": "t-sticky",
+      "label": "吸顶容器",
+      "icon": "",
+      "properties": [
+        {
+          "key": "container",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "函数返回容器对应的 NodesRef 节点，将对应节点指定为组件的外部容器，滚动时组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置。",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用组件",
+          "label": ""
+        },
+        {
+          "key": "offsetTop",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "吸顶时与顶部的距离，单位`px`",
+          "label": ""
+        },
+        {
+          "key": "zIndex",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "99",
+          "desc": "吸顶时的 z-index",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "scroll",
+          "desc": "滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-swipe-cell",
+      "label": "滑动操作",
+      "icon": "",
+      "properties": [
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "",
+          "desc": "是否禁用滑动",
+          "label": ""
+        },
+        {
+          "key": "expanded",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "操作项是否呈现为打开态",
+          "label": ""
+        },
+        {
+          "key": "left",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "左侧滑动操作项。所有行为同 `right`",
+          "label": ""
+        },
+        {
+          "key": "right",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "右侧滑动操作项。有两种定义方式，一种是使用数组，二种是使用插槽。`right.text` 表示操作文本，`right.className` 表示操作项类名，`right.style` 表示操作项样式，`right.onClick` 表示点击操作项后执行的回调函数。示例：`[{ text: '删除', style: 'background-color: red', onClick: () => {} }]`",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "click",
+          "desc": "操作项点击时触发（插槽写法组件不触发，业务侧自定义内容和事件）",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-swiper",
+      "label": "轮播",
+      "icon": "",
+      "properties": [
+        {
+          "key": "animation",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "slide",
+          "desc": "轮播切换动画效果类型",
+          "label": ""
+        },
+        {
+          "key": "autoplay",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否自动播放",
+          "label": ""
+        },
+        {
+          "key": "current",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "当前轮播在哪一项（下标）",
+          "label": ""
+        },
+        {
+          "key": "direction",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "horizontal",
+          "desc": "轮播滑动方向，包括横向滑动和纵向滑动两个方向",
+          "label": ""
+        },
+        {
+          "key": "duration",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "300",
+          "desc": "滑动动画时长",
+          "label": ""
+        },
+        {
+          "key": "height",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "当使用垂直方向滚动时的高度",
+          "label": ""
+        },
+        {
+          "key": "interval",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "5000",
+          "desc": "轮播间隔时间",
+          "label": ""
+        },
+        {
+          "key": "loop",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否循环播放",
+          "label": ""
+        },
+        {
+          "key": "navigation",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "导航器全部配置",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "轮播切换时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-swiper-item": "./swiper-item",
+        "t-swiper-nav": "./swiper-nav"
+      }
+    },
+    {
+      "key": "t-switch",
+      "label": "开关",
+      "icon": "",
+      "properties": [
+        {
+          "key": "colors",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "自定义颜色，[打开时的颜色，关闭时的颜色]。组件默认颜色为 ['#0052d9', 'rgba(0, 0, 0, .26']。示例：[blue, gray]",
+          "label": ""
+        },
+        {
+          "key": "customValue",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "开关内容，[打开时的值，关闭时的值]。默认为 [true, false]。示例：[1, 0]",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用组件",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "开关的标签",
+          "label": ""
+        },
+        {
+          "key": "loading",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否处于加载中状态",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "medium",
+          "desc": "开关尺寸",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number",
+            "Boolean"
+          ],
+          "defaultValue": "undefined",
+          "desc": "开关值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "数据发生变化时触发",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-tab-bar-item",
+      "label": "标签栏选项",
+      "icon": "",
+      "properties": [
+        {
+          "key": "badgeProps",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "图标右上角提示信息",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "图标名称",
+          "label": ""
+        },
+        {
+          "key": "subTabBar",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "二级菜单",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "标识符",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon",
+        "t-badge": "../badge/badge"
+      }
+    },
+    {
+      "key": "t-tab-bar",
+      "label": "标签栏",
+      "icon": "",
+      "properties": [
+        {
+          "key": "bordered",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否显示外边框",
+          "label": ""
+        },
+        {
+          "key": "color",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "['#0052D9', 'rgba(0, 0, 0, .6)']",
+          "desc": "标签颜色设置。示例：[选中标签的颜色, 未选中的标签颜色]",
+          "label": ""
+        },
+        {
+          "key": "fixed",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否固定在底部",
+          "label": ""
+        },
+        {
+          "key": "safeAreaInsetBottom",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否为 iPhoneX 留出底部安全距离",
+          "label": ""
+        },
+        {
+          "key": "split",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否需要分割线",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number",
+            "Array"
+          ],
+          "defaultValue": "undefined",
+          "desc": "当前选中标签的索引",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "选中标签切换时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-tab-bar-item": "./tab-bar-item"
+      }
+    },
+    {
+      "key": "t-tab-panel",
+      "label": "选项卡面板",
+      "icon": "",
+      "properties": [
+        {
+          "key": "destroyOnHide",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "选项卡内容隐藏时是否销毁",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用当前选项卡",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "选项卡名称，可自定义选项卡导航内容",
+          "label": ""
+        },
+        {
+          "key": "panel",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "用于自定义选项卡面板内容",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "选项卡的值，唯一标识",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-tabs",
+      "label": "选项卡",
+      "icon": "",
+      "properties": [
+        {
+          "key": "animation",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "动画效果设置。其中 duration 表示动画时长",
+          "label": ""
+        },
+        {
+          "key": "placement",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "top",
+          "desc": "选项卡位置",
+          "label": ""
+        },
+        {
+          "key": "showBottomLine",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "是否展示底部激活线条",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "激活的选项卡值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "change",
+          "desc": "激活的选项卡发生变化时触发",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-tag",
+      "label": "标签",
+      "icon": "",
+      "properties": [
+        {
+          "key": "closable",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "标签是否可关闭",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "标签中的图标，可自定义图标呈现",
+          "label": ""
+        },
+        {
+          "key": "maxWidth",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80",
+          "label": ""
+        },
+        {
+          "key": "shape",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "square",
+          "desc": "标签类型，有三种：方形、圆角方形、标记型",
+          "label": ""
+        },
+        {
+          "key": "size",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "medium",
+          "desc": "标签尺寸",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "default",
+          "desc": "组件风格，用于描述组件不同的应用场景",
+          "label": ""
+        },
+        {
+          "key": "variant",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "dark",
+          "desc": "标签风格变体",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "click",
+          "desc": "点击时触发",
+          "label": ""
+        },
+        {
+          "key": "close",
+          "desc": "如果关闭按钮存在，点击关闭按钮时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": ".././icon/icon"
+      }
+    },
+    {
+      "key": "t-textarea",
+      "label": "文本输入框",
+      "icon": "",
+      "properties": [
+        {
+          "key": "adjustPosition",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "true",
+          "desc": "键盘弹起时，是否自动上推页面",
+          "label": ""
+        },
+        {
+          "key": "autofocus",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "自动聚焦，拉起键盘",
+          "label": ""
+        },
+        {
+          "key": "autosize",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否自动增高，值为 autosize 时，style.height 不生效",
+          "label": ""
+        },
+        {
+          "key": "confirmHold",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "点击键盘右下角按钮时是否保持键盘不收起点",
+          "label": ""
+        },
+        {
+          "key": "confirmType",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "done",
+          "desc": "设置键盘右下角按钮的文字，仅在 type='text'时生效",
+          "label": ""
+        },
+        {
+          "key": "disabled",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否禁用文本框",
+          "label": ""
+        },
+        {
+          "key": "focus",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "自动聚焦",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "左侧文本",
+          "label": ""
+        },
+        {
+          "key": "maxcharacter",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "用户最多可以输入的字符个数，一个中文汉字表示两个字符长度",
+          "label": ""
+        },
+        {
+          "key": "maxlength",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "用户最多可以输入的字符个数",
+          "label": ""
+        },
+        {
+          "key": "placeholder",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "undefined",
+          "desc": "占位符",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "文本框值",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "blur",
+          "desc": "失去焦点时触发",
+          "label": ""
+        },
+        {
+          "key": "change",
+          "desc": "输入内容变化时触发",
+          "label": ""
+        },
+        {
+          "key": "enter",
+          "desc": "点击完成时触发",
+          "label": ""
+        },
+        {
+          "key": "focus",
+          "desc": "获得焦点时触发",
+          "label": ""
+        },
+        {
+          "key": "lineChange",
+          "desc": "行高发生变化时触发",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-cell": "../cell/cell",
+        "t-icon": "../icon/icon"
+      }
+    },
+    {
+      "key": "t-toast",
+      "label": "轻提示",
+      "icon": "",
+      "properties": [
+        {
+          "key": "direction",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "row",
+          "desc": "图标排列方式",
+          "label": ""
+        },
+        {
+          "key": "duration",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "2000",
+          "desc": "弹窗显示毫秒数",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "自定义图标",
+          "label": ""
+        },
+        {
+          "key": "message",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "弹窗显示文字",
+          "label": ""
+        },
+        {
+          "key": "placement",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "middle",
+          "desc": "弹窗展示位置",
+          "label": ""
+        },
+        {
+          "key": "preventScrollThrough",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "防止滚动穿透，即不允许点击和滚动",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "提示类型",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-icon": "../icon/icon",
+        "t-loading": "../loading/loading"
+      }
+    },
+    {
+      "key": "t-transition",
+      "label": "动画",
+      "icon": "",
+      "properties": [
+        {
+          "key": "appear",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "首次出现是否展示动画",
+          "label": ""
+        },
+        {
+          "key": "customClass",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "''",
+          "desc": "自定义容器类名",
+          "label": ""
+        },
+        {
+          "key": "destoryOnClose",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "隐藏时是否销毁内容",
+          "label": ""
+        },
+        {
+          "key": "duration",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "",
+          "desc": "指定过渡时间",
+          "label": ""
+        },
+        {
+          "key": "name",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "'t-transition'",
+          "desc": "过渡类名",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "defaultValue": "false",
+          "desc": "是否显示",
+          "label": ""
+        }
+      ]
+    },
+    {
+      "key": "t-upload",
+      "label": "上传",
+      "icon": "",
+      "properties": [
+        {
+          "key": "addContent",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "添加按钮内容。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。",
+          "label": ""
+        },
+        {
+          "key": "config",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)",
+          "label": ""
+        },
+        {
+          "key": "deleteBtn",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。",
+          "label": ""
+        },
+        {
+          "key": "fileListDisplay",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "【开发中】用于完全自定义文件列表内容",
+          "label": ""
+        },
+        {
+          "key": "files",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "",
+          "desc": "已上传文件列表",
+          "label": ""
+        },
+        {
+          "key": "gridConfig",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "upload组件每行上传图片列数以及图片的宽度和高度",
+          "label": ""
+        },
+        {
+          "key": "gutter",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "16",
+          "desc": "预览窗格的 gutter 大小，单位 rpx",
+          "label": ""
+        },
+        {
+          "key": "imageProps",
+          "type": [
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "透传 Image 组件全部属性",
+          "label": ""
+        },
+        {
+          "key": "max",
+          "type": [
+            "Number"
+          ],
+          "defaultValue": "0",
+          "desc": "用于控制文件上传数量，值为 0 则不限制",
+          "label": ""
+        },
+        {
+          "key": "mediaType",
+          "type": [
+            "Array"
+          ],
+          "defaultValue": "['image', 'video']",
+          "desc": "支持上传的文件类型，图片或视频",
+          "label": ""
+        },
+        {
+          "key": "requestMethod",
+          "type": [
+            "String"
+          ],
+          "defaultValue": "",
+          "desc": "自定义上传方法",
+          "label": ""
+        },
+        {
+          "key": "sizeLimit",
+          "type": [
+            "Number",
+            "Object"
+          ],
+          "defaultValue": "",
+          "desc": "图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "add",
+          "desc": "上传成功后触发，仅包含本次选择的照片；`context.url` 表示选定视频的临时文件路径 (本地路径)。`context.duration` 表示选定视频的时间长度。`context.size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述",
+          "label": ""
+        },
+        {
+          "key": "complete",
+          "desc": "上传成功或失败后触发",
+          "label": ""
+        },
+        {
+          "key": "fail",
+          "desc": "上传失败后触发",
+          "label": ""
+        },
+        {
+          "key": "remove",
+          "desc": "移除文件时触发",
+          "label": ""
+        },
+        {
+          "key": "selectChange",
+          "desc": "选择文件或图片之后，上传之前，触发该事件。<br />`params.value` 表示之前已经上传完成的文件列表。<br />`params.currentSelectedFiles` 表示本次上传选中的文件列表",
+          "label": ""
+        },
+        {
+          "key": "success",
+          "desc": "上传成功后触发，包含所有上传的文件；`context.url` 表示选定视频的临时文件路径 (本地路径)。`context.duration` 表示选定视频的时间长度。`context.size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述",
+          "label": ""
+        }
+      ],
+      "require": {
+        "t-grid": "../grid/grid",
+        "t-grid-item": "../grid/grid-item",
+        "t-popup": "../popup/popup",
+        "t-icon": "../icon/icon"
+      }
+    }
+  ],
+  "common": {
+    "properties": {},
+    "events": {}
+  },
+  "menu": [
+    {
+      "key": "menu-basic",
+      "label": "基础",
+      "submenu": [
+        {
+          "key": "subMenu-button",
+          "label": "Button 按钮",
+          "components": [
+            "t-button"
+          ]
+        },
+        {
+          "key": "subMenu-divider",
+          "label": "Divider 分割线",
+          "components": [
+            "t-divider"
+          ]
+        },
+        {
+          "key": "subMenu-icon",
+          "label": "Icon 图标",
+          "components": [
+            "t-icon"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "menu-nav",
+      "label": "导航",
+      "submenu": [
+        {
+          "key": "subMenu-indexes",
+          "label": "Indexes 索引",
+          "components": [
+            "t-indexes"
+          ]
+        },
+        {
+          "key": "subMenu-navbar",
+          "label": "Navbar 导航条",
+          "components": [
+            "t-navbar"
+          ]
+        },
+        {
+          "key": "subMenu-steps",
+          "label": "Steps 步骤条",
+          "components": [
+            "t-steps"
+          ]
+        },
+        {
+          "key": "subMenu-tabbar",
+          "label": "TabBar 标签栏",
+          "components": [
+            "t-tabbar"
+          ]
+        },
+        {
+          "key": "subMenu-tabs",
+          "label": "Tabs 选项卡",
+          "components": [
+            "t-tabs"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "menu-input",
+      "label": "输入",
+      "submenu": [
+        {
+          "key": "subMenu-checkbox",
+          "label": "CheckBox 复选框",
+          "components": [
+            "t-checkbox"
+          ]
+        },
+        {
+          "key": "subMenu-dateTimePicker",
+          "label": "DateTimePicker 时间选择器",
+          "components": [
+            "t-date-time-picker"
+          ]
+        },
+        {
+          "key": "subMenu-input",
+          "label": "Input 输入框",
+          "components": [
+            "t-input"
+          ]
+        },
+        {
+          "key": "subMenu-picker",
+          "label": "Picker 选择器",
+          "components": [
+            "t-picker"
+          ]
+        },
+        {
+          "key": "subMenu-radio",
+          "label": "Radio 单选框",
+          "components": [
+            "t-radio"
+          ]
+        },
+        {
+          "key": "subMenu-rate",
+          "label": "Rate 评分",
+          "components": [
+            "t-rate"
+          ]
+        },
+        {
+          "key": "subMenu-search",
+          "label": "Search 搜索框",
+          "components": [
+            "t-search"
+          ]
+        },
+        {
+          "key": "subMenu-slider",
+          "label": "Slider 滑动选择器",
+          "components": [
+            "t-slider"
+          ]
+        },
+        {
+          "key": "subMenu-stepper",
+          "label": "Stepper 步进器",
+          "components": [
+            "t-stepper"
+          ]
+        },
+        {
+          "key": "subMenu-switch",
+          "label": "Switch 开关",
+          "components": [
+            "t-switch"
+          ]
+        },
+        {
+          "key": "subMenu-textarea",
+          "label": "Textarea 多行文本框",
+          "components": [
+            "t-textarea"
+          ]
+        },
+        {
+          "key": "subMenu-upload",
+          "label": "UpLoad 上传",
+          "components": [
+            "t-upload"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "menu-data",
+      "label": "数据展示",
+      "submenu": [
+        {
+          "key": "subMenu-avatar",
+          "label": "Avatar 头像",
+          "components": [
+            "t-avatar"
+          ]
+        },
+        {
+          "key": "subMenu-badge",
+          "label": "Badge 徽标",
+          "components": [
+            "t-badge"
+          ]
+        },
+        {
+          "key": "subMenu-cell",
+          "label": "Cell 单元格",
+          "components": [
+            "t-cell"
+          ]
+        },
+        {
+          "key": "subMenu-countdown",
+          "label": "CountDown 倒计时",
+          "components": [
+            "t-countdown"
+          ]
+        },
+        {
+          "key": "subMenu-empty",
+          "label": "Empty 空状态",
+          "components": [
+            "t-empty"
+          ]
+        },
+        {
+          "key": "subMenu-footer",
+          "label": "Footer 页脚",
+          "components": [
+            "t-footer"
+          ]
+        },
+        {
+          "key": "subMenu-grid",
+          "label": "Grid 宫格",
+          "components": [
+            "t-grid"
+          ]
+        },
+        {
+          "key": "subMenu-image",
+          "label": "Image 图片",
+          "components": [
+            "t-image"
+          ]
+        },
+        {
+          "key": "subMenu-skeleton",
+          "label": "Skeleton 骨架屏",
+          "components": [
+            "t-skeleton"
+          ]
+        },
+        {
+          "key": "subMenu-sticky",
+          "label": "Sticky 吸顶容器",
+          "components": [
+            "t-sticky"
+          ]
+        },
+        {
+          "key": "subMenu-swiper",
+          "label": "Swiper 轮播图",
+          "components": [
+            "t-swiper"
+          ]
+        },
+        {
+          "key": "subMenu-tag",
+          "label": "Tag 标签",
+          "components": [
+            "t-tag"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "menu-info",
+      "label": "消息提醒",
+      "submenu": [
+        {
+          "key": "subMenu-back-top",
+          "label": "BackTop 返回顶部",
+          "components": [
+            "t-back-top"
+          ]
+        },
+        {
+          "key": "subMenu-dialog",
+          "label": "Dialog 弹出框",
+          "components": [
+            "t-dialog"
+          ]
+        },
+        {
+          "key": "subMenu-loading",
+          "label": "Loading 加载",
+          "components": [
+            "t-loading"
+          ]
+        },
+        {
+          "key": "subMenu-message",
+          "label": "Message 消息通知",
+          "components": [
+            "t-message"
+          ]
+        },
+        {
+          "key": "subMenu-popup",
+          "label": "Popup 弹出层",
+          "components": [
+            "t-popup"
+          ]
+        },
+        {
+          "key": "subMenu-pullDownRefresh",
+          "label": "PullDownRefresh 下拉刷新",
+          "components": [
+            "t-pull-down-refresh"
+          ]
+        },
+        {
+          "key": "subMenu-swipeCell",
+          "label": "SwipeCell 滑动操作",
+          "components": [
+            "t-swipe-cell"
+          ]
+        },
+        {
+          "key": "subMenu-toast",
+          "label": "Toast 轻提示",
+          "components": [
+            "t-toast"
+          ]
+        }
+      ]
+    }
+  ]
+}

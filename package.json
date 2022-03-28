@@ -1,7 +1,7 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "0.5.4",
+  "version": "0.7.1",
   "description": "tdesign-miniprogram",
   "title": "tdesign-miniprogram",
   "main": "miniprogram_dist/index.js",
@@ -23,11 +23,13 @@
     "format": "prettier {src,example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",
     "site": "cd site && vite build",
     "site:dev": "cd site && vite",
+    "site:intranet": "cd site && vite build --mode intranet",
     "site:prerender": "node script/prerender.mjs",
     "test": "jest -c jest.unit.config.js && jest -c jest.e2e.config.js",
     "test:unit": "jest -c jest.unit.config.js",
     "test:e2e": "jest -c jest.e2e.config.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./"
   },
   "author": "tdesign",
   "license": "MIT",
@@ -91,7 +93,7 @@
     }
   },
   "lint-staged": {
-    "{src,example,script}/**/*.{js,ts,wxml,html,json,wxs}": [
+    "{src,example,script}/**/*.{js,ts,wxml,html,json,wxs,less}": [
       "prettier --write"
     ],
     "{src,example}/**/*.{js,ts}": [

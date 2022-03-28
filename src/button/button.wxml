@@ -1,6 +1,7 @@
 <button
+  data-custom="{{ customDataset }}"
   class="{{className}} {{prefix}}-class"
-  form-type="{{formType}}"
+  form-type="{{type}}"
   open-type="{{disabled ? '' : openType}}"
   hover-stop-propagation="{{hoverStopPropagation}}"
   hover-start-time="{{hoverStartTime}}"
@@ -21,13 +22,15 @@
   bind:opensetting="opensetting"
   bind:launchapp="launchapp"
 >
-  <t-icon
-    wx:if="{{icon}}"
-    name="{{icon}}"
-    size="44rpx"
-    class="{{classPrefix}}__icon {{prefix}}-class-icon"
-  ></t-icon>
-  <slot />
-  <slot name="content" />
-  {{content || ''}}
+  <view class="{{classPrefix}}__wrapper">
+    <t-icon wx:if="{{icon}}" name="{{icon}}" class="{{classPrefix}}__icon {{prefix}}-class-icon"></t-icon>
+    <view class="{{classPrefix}}--loading {{prefix}}-class-loading" wx:if="{{loading}}">
+      <view class="{{classPrefix}}__circular"></view>
+    </view>
+    <view class="{{classPrefix}}__content">
+      <slot />
+      <slot name="content" />
+      <block>{{content}}</block>
+    </view>
+  </view>
 </button>

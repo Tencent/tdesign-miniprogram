@@ -1,8 +1,0 @@
-<view
-  class="{{prefix}}-class {{classPrefix}} {{fixed ? prefix + '-is-fixed' : ''}} {{prefix + '-is-' + theme}}"
-  bindtap="toTop"
->
-  <t-icon wx:if="{{!!icon}}" class="{{classPrefix}}__icon {{prefix}}-class-icon" name="{{icon}}" />
-  <view wx:if="{{!!text}}" class="{{classPrefix}}__text {{prefix}}-class-text"> {{text}} </view>
-  <slot />
-</view>

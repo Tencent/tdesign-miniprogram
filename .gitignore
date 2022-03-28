@@ -1,5 +1,6 @@
 _site
 miniprogram_dist
+_wechatide
 dist
 _example
 test/e2e
@@ -20,3 +21,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+tdesign-miniprogram
