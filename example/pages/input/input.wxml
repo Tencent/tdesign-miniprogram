@@ -27,7 +27,7 @@
   </t-demo>
   <t-demo title="03 特殊类型" desc="特殊文本类型">
     <view class="cell">
-      <t-input label="输入密码" password value="{{textPassword}}" clearable bind:clear="onClear" />
+      <t-input label="输入密码" password value="{{textPassword}}" clearable />
     </view>
     <view class="cell">
       <t-input placeholder="请输入验证码" label="验证码">
