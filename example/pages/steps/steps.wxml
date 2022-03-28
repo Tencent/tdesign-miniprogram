@@ -4,7 +4,7 @@
 
   <t-demo title="01 类型" desc="横向可操作步骤条">
     <view class="group">
-      <t-steps class="demo-steps" defaultCurrent="1">
+      <t-steps class="demo-steps" defaultCurrent="0">
         <t-step title="步骤描述" />
         <t-step title="步骤描述" />
       </t-steps>
@@ -131,12 +131,12 @@
     <view class="group vertical">
       <t-steps class="demo-steps vertical" current="1.0" readonly="true" layout="vertical">
         <t-step title="已完成步骤" />
-        <t-step title="当前步骤" subStep="{{childData}}" />
+        <t-step title="当前步骤" subStepItems="{{subStepItems}}" />
         <t-step title="未完成步骤" />
       </t-steps>
       <t-steps class="demo-steps vertical" current="1.0" currentStatus="error" readonly="true" layout="vertical">
         <t-step title="已完成步骤" />
-        <t-step title="错误步骤" subStep="{{childData}}" />
+        <t-step title="错误步骤" subStepItems="{{subStepItems}}" />
         <t-step title="未完成步骤" />
       </t-steps>
     </view>
@@ -152,7 +152,7 @@
 
     <view class="demo-section__desc">自定义内容步骤条</view>
     <view class="group vertical">
-      <t-steps class="demo-steps vertical" current="2" readonly="true" layout="vertical">
+      <t-steps class="demo-steps vertical" current="1" readonly="true" layout="vertical">
         <t-step title="已完成步骤">
           <view slot="content">可自定义此处内容</view>
           <view class="extra-img" slot="extra">

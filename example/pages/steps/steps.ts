@@ -1,7 +1,7 @@
 Page({
   data: {
     current: 1,
-    childData: [
+    subStepItems: [
       {
         title: '二级步骤描述',
       },
