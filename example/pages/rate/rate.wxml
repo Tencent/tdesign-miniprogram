@@ -75,12 +75,7 @@
     <view class="demo-section__desc">设置评分颜色</view>
     <view class="item">
       <view class="item__title">空心评分</view>
-      <t-rate
-        value="{{value[11]}}"
-        data-index="{{11}}"
-        color="#FFC51C,#bbbbbb"
-        bind:change="onChange"
-      />
+      <t-rate value="{{value[11]}}" data-index="{{11}}" color="#FFC,#bbb" bind:change="onChange" />
     </view>
     <view class="item">
       <view class="item__title">实心评分</view>
