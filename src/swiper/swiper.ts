@@ -127,16 +127,18 @@ export default class Swiper extends SuperComponent {
       valueKey: 'current',
       strict: false,
     });
-    this.createSelectorQuery()
-      .select('#swiper')
-      .boundingClientRect((rect) => {
-        this.setData({
-          _width: rect.width,
-          _height: rect.height,
-        });
-        this.initCurrent();
-      })
-      .exec();
+    wx.nextTick(() => {
+      this.createSelectorQuery()
+        .select('#swiper')
+        .boundingClientRect((rect) => {
+          this.setData({
+            _width: rect.width,
+            _height: rect.height,
+          });
+          this.initCurrent();
+        })
+        .exec();
+    });
   }
 
   detached() {
