@@ -106,6 +106,7 @@ Toast({
   direction: 'column',
   placement: 'top',
   duration: 1000,
+  icon: 'star',
 });
 
 Toast({
@@ -114,6 +115,7 @@ Toast({
   message: '中间-展示2秒',
   direction: 'column',
   duration: 2000,
+  icon: 'star',
 });
 
 Toast({
@@ -123,6 +125,7 @@ Toast({
   direction: 'column',
   placement: 'bottom',
   duration: 3000,
+  icon: 'star',
 });
 ```
 
@@ -132,11 +135,11 @@ Toast({
 
 | 名称                   | 类型          | 默认值 | 说明                                     | 必传 |
 | ---------------------- | ------------- | ------ | ---------------------------------------- | ---- |
-| direction              | String        | row    | 图标排列方式。可选项：row/column         | N    |
+| direction              | String        | row    | 图标排列方式。可选项：`row`/`column`         | N    |
 | duration               | Number        | 2000   | 弹窗显示毫秒数                           | N    |
 | external-classes       | Array         | -      | 组件类名。`['t-class']`                  | N    |
 | icon                   | String        | -      | 自定义图标                               | N    |
 | message                | String / Slot | -      | 弹窗显示文字                             | N    |
-| placement              | String        | middle | 弹窗展示位置。可选项： top/middle/bottom | N    |
+| placement              | String        | middle | 弹窗展示位置。可选项： `top`/`middle`/`bottom` | N    |
 | prevent-scroll-through | Boolean       | false  | 防止滚动穿透，即不允许点击和滚动         | N    |
-| theme                  | String        | -      | 提示类型。可选项：loading/success/fail   | N    |
+| theme                  | String        | -      | 提示类型。可选项：`loading`/`success`/`fail`   | N    |

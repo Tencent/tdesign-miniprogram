@@ -162,6 +162,7 @@ Page({
           direction: 'column',
           placement: 'top',
           duration: 1000,
+          icon: 'star',
         });
         break;
       }
@@ -170,6 +171,7 @@ Page({
           message: '中间-展示2秒',
           direction: 'column',
           duration: 2000,
+          icon: 'star',
         });
         break;
       }
@@ -179,6 +181,7 @@ Page({
           direction: 'column',
           placement: 'bottom',
           duration: 3000,
+          icon: 'star',
         });
         break;
       }
@@ -189,6 +192,7 @@ Page({
           placement: 'bottom',
           duration: 5000,
           preventScrollThrough: true,
+          icon: 'poweroff',
         });
         break;
       }
