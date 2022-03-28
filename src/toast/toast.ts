@@ -1,3 +1,11 @@
+/*
+ * @Author: rileycai
+ * @Date: 2022-01-12 11:26:38
+ * @LastEditTime: 2022-03-28 15:48:27
+ * @LastEditors: rileycai
+ * @Description: 修复t-toast无法设置最大宽度且无icon不居中的问题
+ * @FilePath: /tdesign-miniprogram/src/toast/toast.ts
+ */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import { TdToastProps } from './type';
 import config from '../common/config';
@@ -14,9 +22,9 @@ export default class Toast extends SuperComponent {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
-  hideTimer: number | null = null;
+  hideTimer: any = null;
 
-  removeTimer: number | null = null;
+  removeTimer: any = null;
 
   typeMapIcon: Record<string, string> = {
     loading: 'loading',
