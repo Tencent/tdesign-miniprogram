@@ -9,6 +9,8 @@
 @title-color--default: rgba(0, 0, 0, 0.26);
 @step-error-title-color: @error-color;
 @step-error-bg-color: @error-color;
+@step-default-bg-color: #c5c5c5;
+
 @step-item-icon-color: #c5c5c5;
 @step-item-descrition-color: rgba(0, 0, 0, 0.4);
 @step-line-color: #c5c5c5;
@@ -25,10 +27,6 @@
 
     &__inner {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
     &__icon {
@@ -57,7 +55,8 @@
 
     &__title {
       position: relative;
-      color: @title-color;
+      // color: @title-color;
+      color: @title-color--default;
       text-align: center;
       line-height: 22px;
       font-size: @font-size-base;
@@ -103,7 +102,7 @@
       &.@{step}--readonly {
         .@{item}--process,
         .@{item}--error,
-        .@{item}--wait {
+        .@{item}--default {
           .@{item}__inner:after {
             background: @step-line-color;
           }
@@ -124,10 +123,15 @@
         top: @connector-default-icon-width + 2px;
       }
 
-      .@{item}--finish,
-      .@{item}--default {
+      .@{item}--finish {
         .@{item}__inner:after {
           background: @primary-color;
+        }
+      }
+
+      .@{item}--default {
+        .@{item}__inner:after {
+          background: @step-default-bg-color;
         }
       }
     }
@@ -137,8 +141,8 @@
 .default-number-status(@anchor-status) {
   & when(@anchor-status = default) {
     .@{item}__icon-number {
-      border-color: @primary-color;
-      color: @primary-color;
+      border-color: @step-default-bg-color;
+      color: @step-default-bg-color;
     }
   }
   & when(@anchor-status = finish) {
@@ -162,6 +166,42 @@
   }
 }
 
+// 子步骤状态
+.default-sub-status(@status) {
+  & when(@status = default) {
+    color: #c5c5c5;
+    .@{item}-sub-dot {
+      &-item {
+        background-color: #c5c5c5;
+      }
+    }
+  }
+  & when(@status = finish) {
+    color: #000000;
+    .@{item}-sub-dot {
+      &-item {
+        background-color: @primary-color;
+      }
+    }
+  }
+  & when(@status = process) {
+    color: @primary-color;
+    .@{item}-sub-dot {
+      &-item {
+        background-color: @primary-color;
+      }
+    }
+  }
+  & when(@status = error) {
+    color: @step-error-bg-color;
+    .@{item}-sub-dot {
+      &-item {
+        background-color: @step-error-bg-color;
+      }
+    }
+  }
+}
+
 .step-item-basic();
 
 .@{step} {
@@ -173,12 +213,20 @@
     }
 
     .@{item} {
-      &--default {
-        .default-number-status(default);
+      &__inner {
+        .@{item}-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
       }
 
       &--finish {
         .default-number-status(finish);
+        .@{item}__title {
+          color: @title-color;
+        }
       }
 
       &--process {
@@ -195,7 +243,8 @@
         }
       }
 
-      &--wait {
+      &--default {
+        .default-number-status(default);
         .@{item}__title,
         .@{item}__description {
           color: @title-color--default;
@@ -210,16 +259,80 @@
     .@{item} {
       position: relative;
 
-      &__inner {
+      &__inner :only-child.@{item}-wrapper {
+        padding-bottom: 50rpx;
+      }
+
+      &-wrapper {
+        display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
       }
 
+      &-wrapper + .@{item}__sub-wrapper:not(:empty) {
+        padding-top: 32rpx;
+        padding-bottom: 48rpx;
+      }
+
+      &-sub {
+        display: flex;
+        width: 100%;
+        height: 40rpx;
+        align-items: center;
+        padding-bottom: 8rpx;
+        font-size: 24rpx;
+        color: @primary-color;
+        font-weight: 500;
+
+        &-dot {
+          display: flex;
+          justify-content: center;
+          width: @connector-default-icon-width;
+          text-align: center;
+          border: 1px solid transparent;
+          color: @step-item-icon-color;
+          z-index: 2;
+
+          &-item {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: @primary-color;
+          }
+        }
+
+        .@{item}-sub__content {
+          margin-left: @spacer;
+        }
+      }
+
+      &-sub-status {
+        // 'default' | 'process' | 'finish' | 'error';
+        &--default {
+          .default-sub-status(default);
+        }
+        &--finish {
+          .default-sub-status(finish);
+        }
+
+        &--process {
+          .default-sub-status(process);
+        }
+
+        &--error {
+          .default-sub-status(error);
+        }
+      }
+
+      .@{item}-sub:last-child {
+        padding-bottom: 0rpx;
+      }
+
       &__content {
         margin-left: @spacer;
+        margin-right: @spacer * 2;
         flex: 1;
-        padding-bottom: 50rpx;
       }
 
       &__title {
@@ -242,6 +355,9 @@
 
         &--finish {
           .default-number-status(finish);
+          .@{item}__title {
+            color: @title-color;
+          }
         }
 
         &--process {
@@ -255,13 +371,6 @@
           .default-number-status(error);
           .@{item}__title {
             color: @error-color;
-          }
-        }
-
-        &--wait {
-          .@{item}__title,
-          .@{item}__description {
-            color: @title-color--default;
           }
         }
       }
@@ -283,10 +392,21 @@
           }
         }
 
+        //  子步骤dot宽度要和icon部分保持一致
+        &-sub {
+          &-dot {
+            width: @dot-steps-anchor-width;
+            box-sizing: border-box;
+            border: 2px solid transparent;
+          }
+        }
+
         &__title {
           margin-top: 0;
+          color: @title-color;
         }
       }
+
       &.@{step}--not-last-child {
         .@{item}__inner::after {
           content: '';
@@ -295,8 +415,8 @@
           width: 1px;
           background: @border-level-2-color;
           position: absolute;
-          left: calc(@dot-steps-anchor-width / 2 - 1rpx);
-          top: calc(@dot-steps-anchor-width + 1px);
+          left: (@dot-steps-anchor-width / 2 - 1rpx);
+          top: @dot-steps-anchor-width + 1px;
         }
       }
     }

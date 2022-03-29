@@ -55,11 +55,11 @@ export default class Steps extends SuperComponent {
     updateChildren() {
       const items = this.getRelationNodes('./step-item');
       const len = items.length;
-      const { current, readonly } = this.data;
+      const { current, currentStatus, readonly } = this.data;
 
-      if (len > 0) {
+      if (len) {
         items.forEach((item, index) => {
-          item.updateStatus(current, index, this.data.theme, this.data.layout, items, readonly);
+          item.updateStatus(current, currentStatus, index, this.data.theme, this.data.layout, items, readonly);
         });
       }
     },
