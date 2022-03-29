@@ -58,7 +58,6 @@ export default class SwiperNav extends SuperComponent {
   }
 
   onChange(opt: NavOptions) {
-    // console.log(opt);
     this.setData({
       ...opt,
     });

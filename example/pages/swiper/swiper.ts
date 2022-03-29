@@ -33,14 +33,6 @@ Page({
     navigation2: { type: 'fraction' },
     navigation3: { type: '', hasNavBtn: true },
   },
-  onLoad() {
-    // 测试items变化
-    // setTimeout(() => {
-    //   this.setData({
-    //     items: [...items, ...items],
-    //   });
-    // }, 8000);
-  },
   onChange(e) {
     const {
       detail: { current, source },

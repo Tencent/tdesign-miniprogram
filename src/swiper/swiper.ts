@@ -163,7 +163,6 @@ export default class Swiper extends SuperComponent {
    * 初始化 swiper-item
    */
   initItem() {
-    // console.log('initItem');
     const { direction } = this.properties;
     this.children = this.getRelationNodes('./swiper-item');
     this.children.forEach((item, index) => {
