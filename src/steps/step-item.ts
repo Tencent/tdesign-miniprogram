@@ -103,7 +103,7 @@ export default class StepItem extends SuperComponent {
           judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'finish');
         } else if (index === firstStep) {
           this.data._status = currentStatus;
-          secondStep &&
+          secondStep !== undefined &&
             judgeObjAttr(this.data, '_subStepItems') &&
             changeStatus(this.data, '_subStepItems', '_status', currentStatus, secondStep);
 
