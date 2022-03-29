@@ -34,20 +34,20 @@
 
       <!-- 垂直 子步骤条 -->
       <view
-        class="{{classPrefix}}-wrapper-child"
+        class="{{classPrefix}}-wrapper-subStepItem"
         wx:if="{{ layout === 'vertical' && curSubStep.length && !isLastChild}}"
       >
         <!-- 子步骤条默认状态:default -->
         <view
-          class="{{classPrefix}}-child {{classPrefix}}-child-status--default {{classPrefix}}-child-status--{{item._status}}"
+          class="{{classPrefix}}-subStepItem {{classPrefix}}-subStepItem-status--default {{classPrefix}}-subStepItem-status--{{item._status}}"
           wx:for="{{curSubStep}}"
           wx:key="key"
           wx:item="item"
         >
-          <view class="{{classPrefix}}-child-dot">
-            <view class="{{classPrefix}}-child-dot-item"></view>
+          <view class="{{classPrefix}}-subStepItem-dot">
+            <view class="{{classPrefix}}-subStepItem-dot-item"></view>
           </view>
-          <view class="{{classPrefix}}__content-child"> {{item.title}}</view>
+          <view class="{{classPrefix}}__content-subStepItem"> {{item.title}}</view>
         </view>
       </view>
     </view>

@@ -57,7 +57,6 @@ export default class Steps extends SuperComponent {
       const len = items.length;
       const { current, currentStatus, readonly } = this.data;
 
-      // todo：判断current是否存在，若不存在则初始化curernt为0
       if (len) {
         items.forEach((item, index) => {
           item.updateStatus(current, currentStatus, index, this.data.theme, this.data.layout, items, item, readonly);

@@ -167,10 +167,10 @@
 }
 
 // 子步骤状态
-.default-child-status(@status) {
+.default-subStepItem-status(@status) {
   & when(@status = default) {
     color: #c5c5c5;
-    .@{item}-child-dot {
+    .@{item}-subStepItem-dot {
       &-item {
         background-color: #c5c5c5;
       }
@@ -178,7 +178,7 @@
   }
   & when(@status = finish) {
     color: #000000;
-    .@{item}-child-dot {
+    .@{item}-subStepItem-dot {
       &-item {
         background-color: @primary-color;
       }
@@ -186,7 +186,7 @@
   }
   & when(@status = process) {
     color: @primary-color;
-    .@{item}-child-dot {
+    .@{item}-subStepItem-dot {
       &-item {
         background-color: @primary-color;
       }
@@ -194,7 +194,7 @@
   }
   & when(@status = error) {
     color: @step-error-bg-color;
-    .@{item}-child-dot {
+    .@{item}-subStepItem-dot {
       &-item {
         background-color: @step-error-bg-color;
       }
@@ -270,12 +270,12 @@
         justify-content: flex-start;
       }
 
-      &-wrapper + .@{item}-wrapper-child:not(:empty) {
+      &-wrapper + .@{item}-wrapper-subStepItem:not(:empty) {
         padding-top: 32rpx;
         padding-bottom: 48rpx;
       }
 
-      &-child {
+      &-subStepItem {
         display: flex;
         width: 100%;
         height: 40rpx;
@@ -302,30 +302,30 @@
           }
         }
 
-        .@{item}__content-child {
+        .@{item}__content-subStepItem {
           margin-left: @spacer;
         }
       }
 
-      &-child-status {
+      &-subStepItem-status {
         // 'default' | 'process' | 'finish' | 'error';
         &--default {
-          .default-child-status(default);
+          .default-subStepItem-status(default);
         }
         &--finish {
-          .default-child-status(finish);
+          .default-subStepItem-status(finish);
         }
 
         &--process {
-          .default-child-status(process);
+          .default-subStepItem-status(process);
         }
 
         &--error {
-          .default-child-status(error);
+          .default-subStepItem-status(error);
         }
       }
 
-      .@{item}-child:last-child {
+      .@{item}-subStepItem:last-child {
         padding-bottom: 0rpx;
       }
 
@@ -393,7 +393,7 @@
         }
 
         //  子步骤dot宽度要和icon部分保持一致
-        &-child {
+        &-subStepItem {
           &-dot {
             width: @dot-steps-anchor-width;
             box-sizing: border-box;
