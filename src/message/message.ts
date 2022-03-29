@@ -219,8 +219,10 @@ export default class Message extends SuperComponent {
 
     const wrapID = `#${name}`;
     this.queryHeight(wrapID).then((wrapHeight) => {
-      this.setData({ wrapTop: -wrapHeight });
-      this.setData({ showAnimation: this.showAnimation });
+      // 先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
+      this.setData({ wrapTop: -wrapHeight }, () => {
+        this.setData({ showAnimation: this.showAnimation });
+      });
     });
   }
 
