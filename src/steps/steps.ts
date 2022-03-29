@@ -59,7 +59,7 @@ export default class Steps extends SuperComponent {
 
       if (len) {
         items.forEach((item, index) => {
-          item.updateStatus(current, currentStatus, index, this.data.theme, this.data.layout, items, item, readonly);
+          item.updateStatus(current, currentStatus, index, this.data.theme, this.data.layout, items, readonly);
         });
       }
     },

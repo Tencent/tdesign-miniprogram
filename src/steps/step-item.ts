@@ -35,7 +35,7 @@ export default class StepItem extends SuperComponent {
     index: 0,
     isDot: false,
     curStatus: '',
-    curSubStep: [],
+    curSubStepItems: [],
     layout: 'vertical',
     type: 'default',
     isLastChild: false,
@@ -65,74 +65,70 @@ export default class StepItem extends SuperComponent {
   };
 
   methods = {
-    // 判断对象的attr属性存在 && attr数组长度不为0
-    judgeObjAttr(data, attr: string) {
-      return data[attr] && data[attr].length;
-    },
-
-    changeStatus(data, attr, attr2, status) {
-      data[attr].forEach((item) => {
-        item[attr2] = status;
-      });
-    },
-
-    updateStatus(current, currentStatus, index, theme, layout, steps, step, readonly) {
+    updateStatus(current, currentStatus, index, theme, layout, steps, readonly) {
       const { status } = this.data;
       const _current = String(current);
-      const firstStep = Number(_current.split('.')[0]);
-      const secondStep = Number(_current.split('.')[1] ? _current.split('.')[1] : undefined);
+      const firstStep = Number(_current.split('-')[0]);
+      const secondStep = Number(_current.split('-')[1] ? _current.split('-')[1] : undefined);
+
+      // 判断对象的attr属性存在 && attr数组长度不为0
+      const judgeObjAttr = (data, attr: string) => {
+        return data[attr] && data[attr].length;
+      };
+
+      const changeStatus = (data, attr, attr2, status, value = data[attr].length) => {
+        data[attr].forEach((item, index) => {
+          if (index < value) {
+            item[attr2] = 'finish';
+          } else if (index === value) {
+            item[attr2] = status;
+          } else if (index > value) {
+            item[attr2] = 'default';
+          }
+        });
+      };
 
       // 1. 拷贝一份 substep
-      if (this.judgeObjAttr(step.data, 'subStepItems')) {
-        const _subStepItems = JSON.parse(JSON.stringify(step.data.subStepItems));
-        step.data._subStepItems = _subStepItems;
+      if (judgeObjAttr(this.data, 'subStepItems')) {
+        const _subStepItems = JSON.parse(JSON.stringify(this.data.subStepItems));
+        this.data._subStepItems = _subStepItems;
       }
 
-      // 2. 优先指定的statue && 判断step及子步骤状态
+      // 2. 优先step的statue && 判断step及subStep状态
       if (status !== 'default') {
-        step.data._status = status;
-        status === 'finish' &&
-          this.judgeObjAttr(step.data, '_subStepItems') &&
-          this.changeStatus(step.data, '_subStepItems', '_status', 'finish');
+        this.data._status = status;
       } else if (status === 'default') {
         if (index < firstStep) {
-          step.data._status = 'finish';
-          this.judgeObjAttr(step.data, '_subStepItems') &&
-            this.changeStatus(step.data, '_subStepItems', '_status', 'finish');
+          this.data._status = 'finish';
+          judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'finish');
         } else if (index === firstStep) {
-          step.data._status = currentStatus;
-          this.judgeObjAttr(step.data, '_subStepItems') &&
-            step.data._subStepItems.forEach((subItem, subIndex) => {
-              if (subIndex < secondStep) {
-                subItem._status = 'finish';
-              } else if (subIndex === secondStep) {
-                subItem._status = currentStatus;
-              }
-            });
+          this.data._status = currentStatus;
+          secondStep &&
+            judgeObjAttr(this.data, '_subStepItems') &&
+            changeStatus(this.data, '_subStepItems', '_status', currentStatus, secondStep);
 
           currentStatus === 'finish' &&
-            this.judgeObjAttr(step.data, '_subStepItems') &&
-            this.changeStatus(step.data, '_subStepItems', '_status', 'finish');
+            judgeObjAttr(this.data, '_subStepItems') &&
+            changeStatus(this.data, '_subStepItems', '_status', currentStatus);
         } else if (index > firstStep) {
-          step.data._status = 'default';
-          this.judgeObjAttr(step.data, '_subStepItems') &&
-            this.changeStatus(step.data, '_subStepItems', '_status', 'default');
+          this.data._status = 'default';
+          judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'default');
         }
       }
 
       // update icon
       let iconStatus = '';
       if (readonly) {
-        if (step.data._status === 'finish') {
+        if (this.data._status === 'finish') {
           iconStatus = 'check';
-        } else if (step.data._status === 'error') {
+        } else if (this.data._status === 'error') {
           iconStatus = 'close';
         }
       }
 
       this.setData({
-        curStatus: step.data._status || step.data.status,
-        curSubStep: step.data._subStepItems || [],
+        curStatus: this.data._status || this.data.status,
+        curSubStepItems: this.data._subStepItems || [],
         computedIcon: iconStatus || this.data.icon,
         index,
         isDot: theme === 'dot' && layout === 'vertical',
