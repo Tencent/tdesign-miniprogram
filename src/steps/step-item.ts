@@ -69,24 +69,32 @@ export default class StepItem extends SuperComponent {
       const { status } = this.data;
       const _current = String(current);
       const firstStep = Number(_current.split('-')[0]);
-      const secondStep = Number(_current.split('-')[1] ? _current.split('-')[1] : undefined);
+      const secondStep = _current.split('-')[1] ? Number(_current.split('-')[1]) : undefined;
 
       // 判断对象的attr属性存在 && attr数组长度不为0
       const judgeObjAttr = (data, attr: string) => {
         return data[attr] && data[attr].length;
       };
 
-      const changeStatus = (data, attr, attr2, status, value = data[attr].length) => {
+      const judgeStepStatus = (itemIndex: number, current: number, status: string) => {
+        if (itemIndex < current) return 'finish';
+        if (itemIndex === current) return status;
+        return 'default';
+      };
+
+      const changeStatus = (
+        data,
+        attr: string,
+        itemAttr: string,
+        status: string,
+        value: number = data[attr].length,
+      ) => {
         data[attr].forEach((item, index) => {
-          if (index < value) {
-            item[attr2] = 'finish';
-          } else if (index === value) {
-            item[attr2] = status;
-          } else if (index > value) {
-            item[attr2] = 'default';
-          }
+          item[itemAttr] = judgeStepStatus(index, value, status);
         });
       };
+
+      const isLastChild = (data, index) => index === data.length - 1;
 
       // 1. 拷贝一份 substep
       if (judgeObjAttr(this.data, 'subStepItems')) {
@@ -103,13 +111,24 @@ export default class StepItem extends SuperComponent {
           judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'finish');
         } else if (index === firstStep) {
           this.data._status = currentStatus;
-          secondStep !== undefined &&
-            judgeObjAttr(this.data, '_subStepItems') &&
+          if (secondStep !== undefined && judgeObjAttr(this.data, '_subStepItems')) {
             changeStatus(this.data, '_subStepItems', '_status', currentStatus, secondStep);
+          }
 
-          currentStatus === 'finish' &&
+          // secondStep存在，子步骤条为default时，其stepItem状态应为process
+          if (
+            secondStep !== undefined &&
+            currentStatus === 'finish' &&
             judgeObjAttr(this.data, '_subStepItems') &&
-            changeStatus(this.data, '_subStepItems', '_status', currentStatus);
+            !isLastChild(this.data._subStepItems, secondStep)
+          ) {
+            this.data._status = 'process';
+          }
+
+          // secondStep存在，子步骤条为finish且不为最后一个子步骤时，其stepItem状态应为proces
+          if (secondStep !== undefined && currentStatus === 'default') {
+            this.data._status = 'process';
+          }
         } else if (index > firstStep) {
           this.data._status = 'default';
           judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'default');
