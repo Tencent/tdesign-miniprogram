@@ -10,13 +10,7 @@ const name = `${prefix}-message`;
 const SHOW_DURATION = 500;
 @wxComponent()
 export default class Message extends SuperComponent {
-  externalClasses = [
-    't-class',
-    't-class-content',
-    't-class-icon',
-    't-class-action',
-    't-class-close-btn',
-  ];
+  externalClasses = ['t-class', 't-class-content', 't-class-icon', 't-class-action', 't-class-close-btn'];
 
   options = {
     styleIsolation: 'apply-shared' as const,
@@ -152,37 +146,32 @@ export default class Message extends SuperComponent {
 
     const warpID = `#${name}__text-wrap`;
     const nodeID = `#${name}__text`;
-    Promise.all([this.queryWidth(nodeID), this.queryWidth(warpID)]).then(
-      ([nodeWidth, warpWidth]) => {
-        this.setData(
-          {
-            animation: this.resetAnimation.translateX(warpWidth).step().export(),
-          },
-          () => {
-            const durationTime = ((nodeWidth + warpWidth) / speeding) * 1000;
-            const nextAnimation = wx
-              .createAnimation({
-                // 默认50px/s
-                duration: durationTime,
-              })
-              .translateX(-nodeWidth)
-              .step()
-              .export();
+    Promise.all([this.queryWidth(nodeID), this.queryWidth(warpID)]).then(([nodeWidth, warpWidth]) => {
+      this.setData(
+        {
+          animation: this.resetAnimation.translateX(warpWidth).step().export(),
+        },
+        () => {
+          const durationTime = ((nodeWidth + warpWidth) / speeding) * 1000;
+          const nextAnimation = wx
+            .createAnimation({
+              // 默认50px/s
+              duration: durationTime,
+            })
+            .translateX(-nodeWidth)
+            .step()
+            .export();
 
-            // 这里就只能用 setTimeout/20, nextTick 没用
-            // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
-            setTimeout(() => {
-              this.nextAnimationContext = setTimeout(
-                this.checkAnimation.bind(this),
-                durationTime,
-              ) as unknown as number;
+          // 这里就只能用 setTimeout/20, nextTick 没用
+          // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
+          setTimeout(() => {
+            this.nextAnimationContext = setTimeout(this.checkAnimation.bind(this), durationTime) as unknown as number;
 
-              this.setData({ animation: nextAnimation });
-            }, 20);
-          },
-        );
-      },
-    );
+            this.setData({ animation: nextAnimation });
+          }, 20);
+        },
+      );
+    });
   }
 
   /** 获取元素宽度 */
@@ -230,7 +219,10 @@ export default class Message extends SuperComponent {
 
     const wrapID = `#${name}`;
     this.queryHeight(wrapID).then((wrapHeight) => {
-      this.setData({ showAnimation: this.showAnimation, wrapTop: -wrapHeight });
+      // 先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
+      this.setData({ wrapTop: -wrapHeight }, () => {
+        this.setData({ showAnimation: this.showAnimation });
+      });
     });
   }
 

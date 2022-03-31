@@ -93,9 +93,21 @@
       height: @dialog-btn-height;
       line-height: @dialog-btn-height;
       border-radius: 0;
-      border: 1rpx solid @border-color;
-      border-left: 0;
-      border-bottom: 0;
+      border: 0;
+
+      &:before {
+        content: ' ';
+        position: absolute;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        border-top: 1px solid @border-color;
+        border-left: 1px solid @border-color;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        width: 200%;
+        height: 200%;
+      }
 
       &-half {
         width: (@dialog-width / 2);

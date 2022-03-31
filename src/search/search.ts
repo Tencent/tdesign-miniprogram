@@ -63,7 +63,7 @@ export default class Search extends SuperComponent {
   }
 
   onConfirm(e) {
-    const value = e.detail;
+    const { value } = e.detail;
     this.triggerEvent('submit', { value });
   }
 

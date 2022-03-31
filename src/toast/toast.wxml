@@ -18,14 +18,12 @@
       loading
       t-class-indicator="indicator-blue"
       layout="vertical"
-    ></t-loading>
-    <slot name="icon"></slot>
-    <view class="{{classPrefix}}__text {{classPrefix + '__' + direction}}-text">{{message}}</view>
+    />
+    <slot name="icon" />
+    <view class="{{classPrefix}}__text {{typeMapIcon || icon ? classPrefix + '__' + direction + '-text' : ''}}"
+      >{{message}}</view
+    >
     <slot name="message" />
   </view>
-  <view
-    class="{{classPrefix}}__bg"
-    catchtouchmove="true"
-    wx:if="{{preventScrollThrough &&  inserted}}"
-  />
+  <view class="{{classPrefix}}__bg" catchtouchmove="true" wx:if="{{preventScrollThrough &&  inserted}}" />
 </block>

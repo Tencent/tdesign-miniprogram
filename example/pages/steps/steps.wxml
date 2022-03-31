@@ -129,27 +129,21 @@
 
     <view class="demo-section__desc">竖向双层级只读步骤条</view>
     <view class="group vertical">
-      <t-steps class="demo-steps vertical" current="1" readonly="true" layout="vertical">
+      <t-steps class="demo-steps vertical" current="1-0" readonly="true" layout="vertical">
         <t-step title="已完成步骤" />
-        <t-step title="当前步骤" />
+        <t-step title="当前步骤" subStepItems="{{subStepItems}}" />
         <t-step title="未完成步骤" />
       </t-steps>
-      <t-steps class="demo-steps vertical" current="1" readonly="true" layout="vertical">
+      <t-steps class="demo-steps vertical" current="1-0" currentStatus="error" readonly="true" layout="vertical">
         <t-step title="已完成步骤" />
-        <t-step title="错误步骤" status="error" />
+        <t-step title="错误步骤" subStepItems="{{subStepItems}}" />
         <t-step title="未完成步骤" />
       </t-steps>
     </view>
 
     <view class="demo-section__desc">竖向简化只读步骤条</view>
     <view class="group vertical">
-      <t-steps
-        class="demo-steps vertical"
-        current="1"
-        readonly="true"
-        layout="vertical"
-        theme="dot"
-      >
+      <t-steps class="demo-steps vertical" current="1" readonly="true" layout="vertical" theme="dot">
         <t-step title="事件描述" />
         <t-step title="事件描述" />
         <t-step title="事件描述" />
