@@ -11,9 +11,10 @@
     <view
       class="{{classPrefix}}__sidebar-item"
       wx:for="{{items}}"
-      wx:key="index"
       wx:item="item"
-      data-info="{{item}}"
+      wx:key="index"
+      data-item="{{item}}"
+      data-index="{{index}}"
       bindtap="itemClick"
     >
       <view wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
