@@ -4,6 +4,21 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.7.2 `2022-3-31`
+
+### Bug Fixes
+
+- Search: 修复 `submit` 事件返回参数错误的问题 [#291](https://github.com/Tencent/tdesign-miniprogram/pull/291) [@anlyyao](https://github.com/anlyyao)
+- Toast: 修复最大宽度和文案没对齐的问题 [#301](https://github.com/Tencent/tdesign-miniprogram/pull/301) [@zhenzhencai](https://github.com/zhenzhencai)
+- Input: 修复设置 `clearable` ，点击不清除内容的问题 [#303](https://github.com/Tencent/tdesign-miniprogram/pull/303) [@LeeJim](https://github.com/LeeJim)
+- Dialog: 修复 1px 边框在 iOS 上消失的问题 [#304](https://github.com/Tencent/tdesign-miniprogram/pull/304) [@jin0209](https://github.com/jin0209)
+- Swiper: 修复延迟设置地址时，显示不正常的问题 [#305](https://github.com/Tencent/tdesign-miniprogram/pull/305) [@esky](https://github.com/esky)
+- Button: 修复文案没有垂直居中的问题 [#311](https://github.com/Tencent/tdesign-miniprogram/pull/311) [@anlyyao](https://github.com/anlyyao)
+
+### Feature
+
+- Fab: 新增支持悬浮按钮 [#310](https://github.com/Tencent/tdesign-miniprogram/pull/310) [@LeeJim](https://github.com/LeeJim)
+- Drawer: 新增支持抽屉 [#308](https://github.com/Tencent/tdesign-miniprogram/pull/308) [@anlyyao](https://github.com/anlyyao)
 
 ## 0.7.1 `2022-3-25`
 ### Bug Fixes
