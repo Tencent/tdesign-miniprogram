@@ -1,12 +1,20 @@
-<t-popup bind:visible-change="onVisibleChange" visible="{{visible}}" placement="left">
+<t-popup
+  bind:visible-change="visibleChange"
+  visible="{{visible}}"
+  zIndex="{{zIndex}}"
+  placement="{{placement}}"
+  showOverlay="{{showOverlay}}"
+  destroyOnClose="{{destroyOnClose}}"
+  closeOnOverlayClick="{{closeOnOverlayClick}}"
+>
   <view class="{{classPrefix}}__sidebar">
     <view
       class="{{classPrefix}}__sidebar-item"
-      wx:for="{{sidebar}}"
+      wx:for="{{items}}"
       wx:key="index"
       wx:item="item"
       data-info="{{item}}"
-      bindtap="click"
+      bindtap="itemClick"
     >
       <view wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
         <t-icon name="{{item.icon}}" size="24px" />

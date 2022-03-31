@@ -1,5 +1,6 @@
 Page({
   data: {
+    placement: 'left',
     sidebar: [],
     baseSidebar: [
       {
@@ -77,7 +78,11 @@ Page({
     });
   },
 
-  getSidebarItem(e) {
+  itemClick(e) {
+    console.log(e.detail);
+  },
+
+  overlayClick(e) {
     console.log(e.detail);
   },
 });

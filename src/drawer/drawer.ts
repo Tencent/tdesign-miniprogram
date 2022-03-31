@@ -16,16 +16,23 @@ export default class Drawer extends SuperComponent {
   };
 
   methods = {
-    onVisibleChange({ detail }) {
+    // closeOnOverlayClick为true时才能触发popup的visible-change事件
+    visibleChange({ detail }) {
       const { visible } = detail;
+      const { showOverlay } = this.data;
+
       this.setData({
         visible: visible,
       });
+
+      if (showOverlay) {
+        this.triggerEvent('overlay-click', { visible: visible });
+      }
     },
 
-    click(detail) {
+    itemClick(detail) {
       const sibarItem = detail.currentTarget.dataset.info;
-      this.triggerEvent('sidebar-item', { sibarItem: sibarItem });
+      this.triggerEvent('item-click', { sibarItem: sibarItem });
     },
   };
 }
