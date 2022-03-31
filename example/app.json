@@ -57,6 +57,7 @@
     "pages/date-time-picker/date-time-picker"
   ],
   "usingComponents": {
+    "t-demo": "../../components/demo-block/index",
     "t-avatar": "tdesign-miniprogram/avatar/avatar",
     "t-avatar-group": "tdesign-miniprogram/avatar/avatar-group",
     "t-badge": "tdesign-miniprogram/badge/badge",

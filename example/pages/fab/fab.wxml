@@ -1,4 +1,6 @@
-<view class="t-fab-wrapper">
-  <t-fab bottom="100px" icon="add" />
-  <t-fab icon="add" text="咨询记录" />
-</view>
+<view class="demo-title">Fab 悬浮按钮</view>
+<view class="demo-desc">当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布</view>
+<t-demo title="01 类型" desc="纯图标悬浮按钮">
+  <t-fab icon="add" bind:click="handleClick" />
+  <!-- <t-fab icon="phone" button-props="{{fabButton}}" bind:click="handleClick" /> -->
+</t-demo>
