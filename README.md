@@ -18,7 +18,7 @@
 </p>
 
 
-TDesign 适配微信小程序的组件库。
+[TDesign](https://github.com/Tencent/tdesign) 适配微信小程序的组件库。
 
 ## 预览
 
@@ -69,12 +69,46 @@ npm run dev
 
 最低基础库版本`^2.6.5`
 
-## 其他技术栈实现
+## 仓库
 
-- 💻 桌面端 Vue 2 实现：[web-vue](https://github.com/Tencent/tdesign-vue)
-- 💻 桌面端 Vue 3 实现：[web-vue-next](https://github.com/Tencent/tdesign-vue-next)
-- 💻 桌面端 React 实现：[web-react](https://github.com/Tencent/tdesign-react)
-- 📱 移动端 Vue 3 实现：[mobile-vue](https://github.com/Tencent/tdesign-mobile-vue)
+TDesign 是一个 `multi-repo`， TDesign 有如下代码仓库：
+
+### 桌面端组件库
+
+| 仓库                                                            | 描述                 | 状态     |
+| --------------------------------------------------------------- | -------------------- | -------- |
+| [tdesign-vue](https://github.com/Tencent/tdesign-vue)           | Vue 2.x 技术栈       | `Beta`   |
+| [tdesign-vue-next](https://github.com/Tencent/tdesign-vue-next) | Vue 3.x 技术栈       | `Alpha`  |
+| [tdesign-react](https://github.com/Tencent/tdesign-react)       | React 16.x 技术栈    | `Alpha`  |
+| tdesign-angular                                                 | 基于 Angular 10 实现 | `待上线` |
+
+### 移动端组件库
+
+| 仓库                                                                  | 描述              | 状态     |
+| --------------------------------------------------------------------- | ----------------- | -------- |
+| [tdesign-miniprogram](https://github.com/Tencent/tdesign-miniprogram) | 微信小程序        | `Alpha`  |
+| [tdesign-mobile-vue](https://github.com/Tencent/tdesign-mobile-vue)   | Vue 3.x 技术栈    | `Alpha` |
+| tdesign-mobile-react                                                  | React 16.x 技术栈 | `待上线` |
+| tdesign-flutter                                                       | 1.17.0            | `待上线` |
+
+### 基础通用仓库
+
+| 仓库                                                        | 描述                 |
+| ----------------------------------------------------------- | -------------------- |
+| [tdesign](https://github.com/Tencent/tdesign)               | TDesign 主仓库和文档 |
+| [tdesign-icons](https://github.com/Tencent/tdesign-icons)   | TDesign 公共图标     |
+| [tdesign-common](https://github.com/Tencent/tdesign-common) | TDesign 公共样式     |
+
+### 解决方案及周边
+
+| 仓库                                                                            | 描述                             |
+| ------------------------------------------------------------------------------- | -------------------------------- |
+| [tdesign-starter-cli](https://github.com/Tencent/tdesign-starter-cli)           | TDesign 解决方案的脚手架         |
+| [tdesign-vue-starter](https://github.com/Tencent/tdesign-vue-starter)           | 基于 tdesign-vue 的解决方案      |
+| [tdesign-vue-next-starter](https://github.com/Tencent/tdesign-vue-next-starter) | 基于 tdesign-vue-next 的解决方案 |
+| [tdesign-react-starter](https://github.com/Tencent/tdesign-react-starter)       | 基于 tdesign-react 的解决方案    |
+| [tdesign-miniprogram-starter-retail](https://github.com/Tencent/tdesign-miniprogram-starter-retail)       | 基于 tdesign-miniprogram 的零售行业解决方案    |
+
 
 ## 开源协议
 
