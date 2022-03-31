@@ -29,7 +29,9 @@
     "test:unit": "jest -c jest.unit.config.js",
     "test:e2e": "jest -c jest.e2e.config.js",
     "prepare": "husky install",
-    "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./"
+    "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./",
+    "changelog": "node script/generate-changelog.js",
+    "robot": "publish-cli robot-msg"
   },
   "author": "tdesign",
   "license": "MIT",
@@ -79,7 +81,9 @@
     "playwright": "^1.19.1",
     "prettier": "^2.0.5",
     "prismjs": "^1.24.1",
+    "standard-changelog": "^2.0.27",
     "stylelint": "^13.13.1",
+    "tdesign-publish-cli": "^0.0.9",
     "tdesign-site-components": "^0.6.1",
     "typescript": "^4.5.2",
     "vite": "^2.7.6",

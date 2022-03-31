@@ -15,7 +15,7 @@ docClass: timeline
 - Swiper: 修复延迟设置地址时，显示不正常的问题 [#305](https://github.com/Tencent/tdesign-miniprogram/pull/305) [@esky](https://github.com/esky)
 - Button: 修复文案没有垂直居中的问题 [#311](https://github.com/Tencent/tdesign-miniprogram/pull/311) [@anlyyao](https://github.com/anlyyao)
 
-### Feature
+### Features
 
 - Fab: 新增支持悬浮按钮 [#310](https://github.com/Tencent/tdesign-miniprogram/pull/310) [@LeeJim](https://github.com/LeeJim)
 - Drawer: 新增支持抽屉 [#308](https://github.com/Tencent/tdesign-miniprogram/pull/308) [@anlyyao](https://github.com/anlyyao)
