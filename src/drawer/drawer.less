@@ -1,1 +1,27 @@
-@import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+.@{prefix}-drawer {
+  &__sidebar {
+    width: calc(100vw * 0.82);
+    height: 100vh;
+    background: #fff;
+  }
+
+  &__sidebar-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1rpx solid #e7e7e7;
+    padding: 24rpx 0;
+    margin-left: 32rpx;
+  }
+
+  &__sidebar-item-name {
+    flex: 1;
+  }
+
+  &__sidebar-item-icon {
+    width: 48rpx;
+    height: 48rpx;
+    padding-right: 16rpx;
+  }
+}

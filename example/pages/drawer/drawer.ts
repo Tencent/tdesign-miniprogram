@@ -1,12 +1,7 @@
 Page({
   data: {
-    leftDemoVisible: false,
-    rightDemoVisible: false,
-    topDemoVisible: false,
-    bottomDemoVisible: false,
-    iconDemoVisible: false,
-    slotDemoVisible: false,
-    currentDirection: 'left',
+    placement: 'left',
+    sidebar: [],
     baseSidebar: [
       {
         name: '菜单一',
@@ -36,50 +31,58 @@ Page({
     iconSidebar: [
       {
         name: '菜单一',
-        icon: 'https://imgcache.qq.com/qcloud/tcloud_dtc/static/static_source_business/7bd23b57-07c1-493b-a482-de78f9874a4f.svg',
+        icon: 'app',
       },
       {
         name: '菜单二',
-        icon: 'https://imgcache.qq.com/qcloud/tcloud_dtc/static/static_source_business/7bd23b57-07c1-493b-a482-de78f9874a4f.svg',
+        icon: 'app',
       },
       {
         name: '菜单三',
-        icon: 'https://imgcache.qq.com/qcloud/tcloud_dtc/static/static_source_business/7bd23b57-07c1-493b-a482-de78f9874a4f.svg',
+        icon: 'app',
+      },
+      {
+        name: '菜单四',
+        icon: 'app',
+      },
+      {
+        name: '菜单五',
+        icon: 'app',
+      },
+      {
+        name: '菜单六',
+        icon: 'app',
+      },
+      {
+        name: '菜单七',
+        icon: 'app',
+      },
+      {
+        name: '菜单八',
+        icon: 'app',
       },
     ],
   },
 
-  openLeftDrawer() {
+  openDrawerBase() {
     this.setData({
-      leftDemoVisible: true,
+      visible: true,
+      sidebar: this.data.baseSidebar,
     });
   },
-  openRightDrawer() {
+
+  openDrawerIcon() {
     this.setData({
-      rightDemoVisible: true,
+      visible: true,
+      sidebar: this.data.iconSidebar,
     });
   },
-  openTopDrawer() {
-    this.setData({
-      topDemoVisible: true,
-    });
+
+  itemClick(e) {
+    console.log(e.detail);
   },
-  openBottomDrawer() {
-    this.setData({
-      bottomDemoVisible: true,
-    });
-  },
-  openDrawer2() {
-    this.setData({
-      iconDemoVisible: true,
-    });
-  },
-  openSlotDrawer() {
-    this.setData({
-      slotDemoVisible: true,
-    });
-  },
-  clickOverlay(e) {
-    console.log('clickOverlay', e);
+
+  overlayClick(e) {
+    console.log(e.detail);
   },
 });

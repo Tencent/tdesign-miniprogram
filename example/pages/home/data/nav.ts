@@ -2,10 +2,10 @@ const nav = {
   name: ' 导航',
   icon: '/assets/view-module@2x.png',
   childArr: [
-    // {
-    //   name: 'Drawer',
-    //   label: '抽屉',
-    // },
+    {
+      name: 'Drawer',
+      label: '抽屉',
+    },
     {
       name: 'Indexes',
       label: '索引',
