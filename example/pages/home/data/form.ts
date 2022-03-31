@@ -14,10 +14,10 @@ const form = {
       name: 'DateTimePicker',
       label: '时间选择器',
     },
-    // {
-    //   name: 'Fab',
-    //   label: '悬浮按钮',
-    // },
+    {
+      name: 'Fab',
+      label: '悬浮按钮',
+    },
     {
       name: 'Input',
       label: '输入框',

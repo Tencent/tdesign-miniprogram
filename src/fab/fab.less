@@ -1,1 +1,35 @@
-@import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@fab-height: 86rpx;
+@fab-min-width: @fab-height;
+@fab-horizontal-padding: 40rpx;
+@fab-text-margin-left: 16rpx;
+
+.@{prefix}-fab {
+  position: absolute;
+  width: auto;
+  min-width: @fab-min-width;
+  height: @fab-height;
+  line-height: normal;
+  padding: 0 @fab-horizontal-padding;
+  box-sizing: border-box;
+  border-radius: 48rpx;
+
+  .@{prefix}-button__text {
+    display: flex;
+    align-items: center;
+  }
+
+  &::after {
+    border-radius: inherit;
+  }
+
+  &__text {
+    margin-left: @fab-text-margin-left;
+  }
+
+  &--icononly {
+    padding: 0;
+    border-radius: @border-radius-50;
+  }
+}
