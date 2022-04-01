@@ -1,4 +1,4 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 
 const { prefix } = config;
@@ -6,17 +6,20 @@ const name = `${prefix}-collapse-panel`;
 
 const nextTick = () => new Promise((resolve) => setTimeout(resolve, 20));
 
-TComponent({
-  externalClasses: [`${prefix}-class`],
-  relations: {
-    '../collapse/collapse': {
+@wxComponent()
+export default class CountDown extends SuperComponent {
+  externalClasses = [`${prefix}-class`];
+
+  relations: RelationsOptions = {
+    './collapse': {
       type: 'ancestor',
       linked(this, target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
       },
     },
-  },
-  properties: {
+  };
+
+  properties = {
     name: null,
     title: null,
     extra: null,
@@ -37,16 +40,17 @@ TComponent({
       value: 80,
     },
     content: null,
-  },
+  };
 
-  data: {
+  data = {
     contentHeight: 0,
     expanded: false,
     transition: false,
     classPrefix: name,
     classBasePrefix: prefix,
-  },
-  methods: {
+  };
+
+  methods = {
     ready() {
       this.updateExpanded();
     },
@@ -97,10 +101,7 @@ TComponent({
           this.setData(data);
         });
     },
-    getRect(
-      selector: string,
-      all?: boolean,
-    ): Promise<WechatMiniprogram.BoundingClientRectCallbackResult> {
+    getRect(selector: string, all?: boolean): Promise<WechatMiniprogram.BoundingClientRectCallbackResult> {
       return new Promise((resolve) => {
         wx.createSelectorQuery()
           .in(this as WechatMiniprogram.Component.TrivialInstance)
@@ -151,5 +152,5 @@ TComponent({
         });
       }
     },
-  },
-});
+  };
+}

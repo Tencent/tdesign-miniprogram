@@ -1,17 +1,20 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-collapse`;
 
-TComponent({
-  options: {
+@wxComponent()
+export default class CountDown extends SuperComponent {
+  options = {
     addGlobalClass: true,
-  },
-  externalClasses: [`${prefix}-class`],
+  };
 
-  relations: {
-    '../collapse-panel/collapse-panel': {
+  externalClasses = [`${prefix}-class`];
+
+  relations: RelationsOptions = {
+    './collapse-panel': {
       type: 'descendant',
       linked(this, target: WechatMiniprogram.Component.TrivialInstance) {
         this.children.push(target);
@@ -20,33 +23,25 @@ TComponent({
         this.children = this.children.filter((item) => item !== target);
       },
     },
-  },
+  };
 
-  properties: {
-    value: {
-      type: null,
-      observer(this) {
-        this.updateExpanded();
-      },
-    },
-    accordion: {
-      type: Boolean,
-      observer(this) {
-        this.updateExpanded();
-      },
-      value: false,
-    },
-    border: {
-      type: Boolean,
-      value: true,
-    },
-  },
+  properties = props;
 
-  data: {
+  observers = {
+    value() {
+      this.updateExpanded();
+    },
+    expandMutex() {
+      // accordion
+      this.updateExpanded();
+    },
+  };
+
+  data = {
     classPrefix: name,
-  },
+  };
 
-  methods: {
+  methods = {
     created() {
       this.children = [];
     },
@@ -57,12 +52,10 @@ TComponent({
       });
     },
     switch(name: any = null, expanded: any = null) {
-      const { accordion, value }: any = this.properties;
+      const { expandMutex, value }: any = this.properties;
       const changeItem = name;
-      if (!accordion) {
-        name = expanded
-          ? (value || []).concat(name)
-          : (value || []).filter((activeName) => activeName !== name);
+      if (!expandMutex) {
+        name = expanded ? (value || []).concat(name) : (value || []).filter((activeName) => activeName !== name);
       } else {
         name = expanded ? name : '';
       }
@@ -74,5 +67,5 @@ TComponent({
       this.triggerEvent('change', name);
       this.triggerEvent('input', name);
     },
-  },
-});
+  };
+}
