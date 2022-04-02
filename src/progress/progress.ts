@@ -35,14 +35,13 @@ export default class Progress extends SuperComponent {
   observers = {
     percentage(percentage) {
       const { status } = this.data;
-      if (percentage > 100) {
+      if (percentage >= 100) {
         percentage = 100;
-      } else if (percentage < 0) {
-        percentage = 0;
-      } else if (percentage === 100) {
         this.setData({
           status: 'success',
         });
+      } else if (percentage < 0) {
+        percentage = 0;
       }
       if (status === 'success' && percentage > 0 && percentage < 100) {
         this.setData({

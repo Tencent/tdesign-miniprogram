@@ -3,9 +3,11 @@
     <view class="{{ classPrefix }}__bar" style="height: {{ strokeWidth }}px; background: {{ trackColor }}">
       <view class="{{ classPrefix }}__bar-percent" style="background:{{ colorBar }}; width:{{ percentageBar }}"> </view>
     </view>
-    <view wx:if="{{ text }}" class="{{ classPrefix }}__text t-class-text" style="color:{{ textColor }}">
-      {{ percentageBar }}
+    <view class="t-class-text">
+      <view wx:if="{{ text }}" class="{{ classPrefix }}__text" style="color:{{ textColor }}">
+        {{ percentageBar }}
+      </view>
+      <slot name="text"></slot>
     </view>
-    <slot name="text"></slot>
   </view>
 </view>

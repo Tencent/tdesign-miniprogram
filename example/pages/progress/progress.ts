@@ -5,13 +5,13 @@ Page({
 
   clickAdd() {
     this.setData({
-      percentage: this.data.percentage + 10 >= 100 ? 100 : this.data.percentage + 10,
+      percentage: Math.min(this.data.percentage + 10, 100),
     });
   },
 
   clickReduce() {
     this.setData({
-      percentage: this.data.percentage - 10 <= 0 ? 0 : this.data.percentage - 10,
+      percentage: Math.max(0, this.data.percentage - 10),
     });
   },
 });
