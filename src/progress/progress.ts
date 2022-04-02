@@ -1,63 +1,69 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+import { getBackgroundColor } from './utils';
 
 const { prefix } = config;
 const name = `${prefix}-progress`;
 
-TComponent({
-  // 组件的对外属性
-  properties: {
-    percentage: {
-      type: Number,
-      value: 0,
-    },
-    showText: {
+@wxComponent()
+export default class Progress extends SuperComponent {
+  externalClasses = ['t-class-text'];
+
+  options = {
+    multipleSlots: true,
+  };
+
+  properties = {
+    ...props,
+    text: {
       type: Boolean,
       value: true,
-    },
-    color: {
-      type: String,
-      value: '',
-    },
-    bgColor: {
-      type: String,
-      value: '',
     },
     textColor: {
       type: String,
       value: '',
     },
-    type: {
-      type: String,
-      value: 'info', // info || error
-    },
-  },
-  // 组件的内部数据
-  data: {
-    percent: 0,
-    barStyle: '100%',
-    classPrefix: name,
-    strokeWidth: 3,
-  },
-  observers: {
-    percentage(percentage) {
-      if (percentage > 100) percentage = 100;
-      else if (percentage < 0) percentage = 0;
-      this.setData({
-        percent: percentage,
-      });
-    },
-    bgColor(bgColor) {
-      let tempStyle = `height: ${this.data.strokeWidth}px;`;
-      if (bgColor) tempStyle += `background-color: ${bgColor}`;
-      this.setData({
-        barStyle: tempStyle,
-      });
-    },
-  },
-  // 组件生命周期
-  lifetimes: {},
+  };
 
-  // Methods
-  methods: {},
-});
+  data = {
+    classPrefix: name,
+    percentageBar: 0,
+    colorBar: '',
+  };
+
+  observers = {
+    percentage(percentage) {
+      const { status } = this.data;
+      if (percentage > 100) {
+        percentage = 100;
+      } else if (percentage < 0) {
+        percentage = 0;
+      } else if (percentage === 100) {
+        this.setData({
+          status: 'success',
+        });
+      }
+      if (status === 'success' && percentage > 0 && percentage < 100) {
+        this.setData({
+          status: '',
+        });
+      }
+      this.setData({
+        percentageBar: `${percentage}%`,
+      });
+    },
+
+    color(color) {
+      this.setData({
+        colorBar: getBackgroundColor(color),
+      });
+    },
+  };
+
+  lifetimes = {
+    ready() {},
+  };
+
+  methods = {};
+}
