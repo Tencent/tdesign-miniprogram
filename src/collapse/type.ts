@@ -22,6 +22,7 @@ export interface TdCollapseProps {
   };
   /**
    * 展开图标。值为 undefined 或 false 则不显示展开图标；值为 true 显示默认图标；值类型为函数，则表示完全自定义展开图标
+   * @default true
    */
   expandIcon?: {
     type: BooleanConstructor;
@@ -39,16 +40,14 @@ export interface TdCollapseProps {
    * 展开的面板集合
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | ArrayConstructor>;
+    type: ArrayConstructor;
     value?: CollapseValue;
   };
   /**
    * 展开的面板集合，非受控属性
    */
   defaultValue?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | ArrayConstructor>;
+    type: ArrayConstructor;
     value?: CollapseValue;
   };
 }
@@ -62,14 +61,6 @@ export interface TdCollapsePanelProps {
     value?: string;
   };
   /**
-   * 当前面板处理折叠状态时，是否销毁面板内容
-   * @default false
-   */
-  destroyOnCollapse?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 禁止当前面板展开，优先级大于 Collapse 的同名属性
    */
   disabled?: {
@@ -78,6 +69,7 @@ export interface TdCollapsePanelProps {
   };
   /**
    * 当前折叠面板展开图标，优先级大于 Collapse 的同名属性
+   * @default true
    */
   expandIcon?: {
     type: BooleanConstructor;
@@ -95,7 +87,8 @@ export interface TdCollapsePanelProps {
    */
   headerRightContent?: {
     type: StringConstructor;
-    value?: string;
+    optionalTypes: Array<BooleanConstructor>;
+    value?: string | boolean;
   };
   /**
    * 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识
@@ -107,4 +100,4 @@ export interface TdCollapsePanelProps {
   };
 }
 
-export type CollapseValue = string | number | Array<CollapseValue>;
+export type CollapseValue = Array<string | number>;

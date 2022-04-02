@@ -18,6 +18,7 @@ const props: TdCollapseProps = {
   /** 展开图标。值为 undefined 或 false 则不显示展开图标；值为 true 显示默认图标；值类型为函数，则表示完全自定义展开图标 */
   expandIcon: {
     type: Boolean,
+    value: true,
   },
   /** 每个面板互斥展开，每次只展开一个面板 */
   expandMutex: {
@@ -26,13 +27,11 @@ const props: TdCollapseProps = {
   },
   /** 展开的面板集合 */
   value: {
-    type: String,
-    optionalTypes: [Number, Array],
+    type: Array,
   },
   /** 展开的面板集合，非受控属性 */
   defaultValue: {
-    type: String,
-    optionalTypes: [Number, Array],
+    type: null,
     value: undefined,
   },
 };

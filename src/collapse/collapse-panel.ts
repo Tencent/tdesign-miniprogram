@@ -1,65 +1,53 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './collapse-panel-props';
+import type { TdCollapsePanelProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-collapse-panel`;
 
 const nextTick = () => new Promise((resolve) => setTimeout(resolve, 20));
 
+export interface CollapsePanelProps extends TdCollapsePanelProps {}
 @wxComponent()
-export default class CountDown extends SuperComponent {
+export default class CollapsePanel extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
   relations: RelationsOptions = {
     './collapse': {
       type: 'ancestor',
-      linked(this, target: WechatMiniprogram.Component.TrivialInstance) {
+      linked(target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
+        const { value, defaultExpandAll, expandMutex, expandIcon, disabled } = target.properties;
+        const activeValues = defaultExpandAll && !expandMutex ? [this.properties.value] : value;
+
+        this.setData({
+          ultimateExpandIcon: expandIcon || this.properties.expandIcon,
+          ultimateDisabled: this.properties.disabled == null ? disabled : this.properties.disabled,
+        });
+        this.updateExpanded(activeValues);
       },
     },
   };
 
-  properties = {
-    name: null,
-    title: null,
-    extra: null,
-    icon: String,
-    label: String,
-    disabled: Boolean,
-    clickable: Boolean,
-    border: {
-      type: Boolean,
-      value: true,
-    },
-    isLink: {
-      type: Boolean,
-      value: true,
-    },
-    labelWidth: {
-      type: Number,
-      value: 80,
-    },
-    content: null,
-  };
+  properties = props;
 
   data = {
     contentHeight: 0,
     expanded: false,
-    transition: false,
     classPrefix: name,
     classBasePrefix: prefix,
+    ultimateExpandIcon: false,
+    ultimateDisabled: false,
   };
 
   methods = {
-    ready() {
-      this.updateExpanded();
-    },
     set(data: Record<string, object | any>) {
       this.setData(data);
 
       return new Promise((resolve) => wx.nextTick(resolve));
     },
-    updateExpanded() {
+    updateExpanded(activeValues) {
       if (!this.parent) {
         return Promise.resolve()
           .then(nextTick)
@@ -72,34 +60,13 @@ export default class CountDown extends SuperComponent {
           });
       }
 
-      const { value, accordion } = this.parent.data;
-      const { children = [] } = this.parent;
-      const { name } = this.properties;
+      const { value } = this.properties;
+      const expanded = activeValues.includes(value);
 
-      const index = children.indexOf(this);
-      const currentName = name == null ? index : name;
+      if (expanded === this.properties.expanded) return;
 
-      const expanded = accordion
-        ? value === currentName
-        : (value || []).some((name: string | number) => name === currentName);
-
-      // const stack: string[] = [];
-      const stack: any = [];
-
-      if (expanded !== this.data.expanded) {
-        stack.push(this.updateStyle(expanded));
-      }
-
-      stack.push(this.set({ index, expanded }));
-      return Promise.all(stack)
-        .then(nextTick)
-        .then(() => {
-          const data: Record<string, boolean | string> = { transition: true };
-          if (this.data.expanded) {
-            data.contentHeight = 'auto';
-          }
-          this.setData(data);
-        });
+      this.setData({ expanded });
+      this.updateStyle(expanded);
     },
     getRect(selector: string, all?: boolean): Promise<WechatMiniprogram.BoundingClientRectCallbackResult> {
       return new Promise((resolve) => {
@@ -135,14 +102,12 @@ export default class CountDown extends SuperComponent {
     },
 
     onClick() {
-      if (this.disabled) {
-        return;
-      }
-      const { name } = this.properties;
-      const { expanded } = this.data;
-      const index = this.parent.children.indexOf(this);
-      const currentName = name == null ? index : name;
-      this.parent.switch(currentName, !expanded);
+      const { ultimateDisabled } = this.data;
+      const { value } = this.properties;
+
+      if (ultimateDisabled) return;
+
+      this.parent.switch(value);
     },
 
     onTransitionEnd() {
