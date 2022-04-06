@@ -35,7 +35,7 @@ isComponent: true
 ></t-dialog>
 ```
 
-> 使用这种方式，对话框的 `visible` 是受控的，需要手动设置额 `visible` 为 `false` 才会关闭对话框。 
+> 使用这种方式，对话框的 `visible` 是受控的，需要手动设置额 `visible` 为 `false` 才会关闭对话框。
 
 ### API 调用方式
 
@@ -52,7 +52,7 @@ Dialog.alert({
   title: '对话框标题',
   content: '告知当前状态、信息和解决方法等内容。',
   confirmBtn: '我知道了',
-}).then(() => { 
+}).then(() => {
   // 点击确定按钮时触发
 });
 ```
@@ -132,10 +132,10 @@ z-index | Number | - | 对话框层级，Web 侧样式默认为 2500，移动端
 
 名称 | 参数 | 描述
 -- | -- | --
-cancel | - | 如果“取消”按钮存在，则点击“取消”按钮时触发，同时触发关闭事件
-close | `(context: DialogCloseContext)` | 关闭事件，点击 取消按钮 或 点击蒙层 时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)
-overlay-click | - | 如果蒙层存在，点击蒙层时触发
+cancel | `()` | 如果“取消”按钮存在，则点击“取消”按钮时触发，同时触发关闭事件
+close | `(trigger: DialogEventSource)` | 关闭事件，点击 取消按钮 或 点击蒙层 时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)。<br/>`type DialogEventSource = 'cancel' | 'overlay'`<br/>
+overlay-click | `()` | 如果蒙层存在，点击蒙层时触发
 confirm | - | 如果“确认”按钮存在，则点击“确认”按钮时触发
 action | `(index: number)` | 操作列表的点击时间，`index` 代表操作列表的顺序
 open-type-event | `(ButtonEventDetail)` | “确认”按钮具有开放能力的话，对应的成功回调
-open-type-error-event | `(ButtonError)` | “确认”按钮具有开放能力的话，对应的失败回调 
+open-type-error-event | `(ButtonError)` | “确认”按钮具有开放能力的话，对应的失败回调
