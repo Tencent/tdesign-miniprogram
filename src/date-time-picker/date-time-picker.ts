@@ -56,6 +56,10 @@ export default class DateTimePicker extends SuperComponent {
 
   externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
 
+  options = {
+    multipleSlots: true,
+  };
+
   observers = {
     // value 变化需要同步 内部 date 实现受控属性
     value() {
@@ -280,21 +284,11 @@ export default class DateTimePicker extends SuperComponent {
       let minMinute = 0;
       let maxMinute = 59;
 
-      if (
-        minDateYear === selYear &&
-        minDateMonth === selMonth &&
-        minDateDay === selDate &&
-        minHour === selHour
-      ) {
+      if (minDateYear === selYear && minDateMonth === selMonth && minDateDay === selDate && minHour === selHour) {
         minMinute = minDateMinute;
       }
 
-      if (
-        maxDateYear === selYear &&
-        maxDateMonth === selMonth &&
-        maxDateDay === selDate &&
-        maxHour === selHour
-      ) {
+      if (maxDateYear === selYear && maxDateMonth === selMonth && maxDateDay === selDate && maxHour === selHour) {
         maxMinute = maxDateMinute;
       }
 
@@ -358,12 +352,7 @@ export default class DateTimePicker extends SuperComponent {
         [`${ModeType.YEAR}`]: [`${date.year()}`],
         [`${ModeType.MONTH}`]: [`${date.year()}`, `${date.month()}`],
         [`${ModeType.DATE}`]: [`${date.year()}`, `${date.month()}`, `${date.date()}`],
-        [`${ModeType.HOUR}`]: [
-          `${date.year()}`,
-          `${date.month()}`,
-          `${date.date()}`,
-          `${date.hour()}`,
-        ],
+        [`${ModeType.HOUR}`]: [`${date.year()}`, `${date.month()}`, `${date.date()}`, `${date.hour()}`],
         [`${ModeType.MINUTE}`]: [
           `${date.year()}`,
           `${date.month()}`,
@@ -375,18 +364,8 @@ export default class DateTimePicker extends SuperComponent {
         [`${ModeType.YEAR_ADD_HOUR}`]: [`${date.year()}`, `${date.hour()}`],
         [`${ModeType.YEAR_ADD_MINUTE}`]: [`${date.year()}`, `${date.hour()}`, `${date.minute()}`],
         [`${ModeType.MONTH_ADD_HOUR}`]: [`${date.year()}`, `${date.month()}`, `${date.hour()}`],
-        [`${ModeType.MONTH_ADD_MINUTE}`]: [
-          `${date.year()}`,
-          `${date.month()}`,
-          `${date.hour()}`,
-          `${date.minute()}`,
-        ],
-        [`${ModeType.DATE_ADD_HOUR}`]: [
-          `${date.year()}`,
-          `${date.month()}`,
-          `${date.date()}`,
-          `${date.hour()}`,
-        ],
+        [`${ModeType.MONTH_ADD_MINUTE}`]: [`${date.year()}`, `${date.month()}`, `${date.hour()}`, `${date.minute()}`],
+        [`${ModeType.DATE_ADD_HOUR}`]: [`${date.year()}`, `${date.month()}`, `${date.date()}`, `${date.hour()}`],
         [`${ModeType.DATE_ADD_MINUTE}`]: [
           `${date.year()}`,
           `${date.month()}`,
