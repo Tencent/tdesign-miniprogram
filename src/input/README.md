@@ -80,10 +80,10 @@ isComponent: true
 
 ### Input Events
 
-| 名称   | 参数                                                 | 描述                   |
-| ------ | ---------------------------------------------------- | ---------------------- |
-| blur   | `(value: InputValue, context: { e: FocusEvent })`    | 失去焦点时触发         |
-| change | `(value: InputValue`                                 | 输入框值发生变化时触发 |
-| clear  | -                                                    | 清空按钮点击时触发     |
-| enter  | `(value: InputValue, context: { e: KeyboardEvent })` | 回车键按下时触发       |
-| focus  | `(value: InputValue, context: { e: FocusEvent })`    | 获得焦点时触发         |
+名称 | 参数 | 描述
+-- | -- | --
+blur | `(value: InputValue)` | 失去焦点时触发
+change | `(value: InputValue)` | 输入框值发生变化时触发
+clear | `()` | 清空按钮点击时触发
+enter | `(value: InputValue)` | 回车键按下时触发
+focus | `(value: InputValue)` | 获得焦点时触发
