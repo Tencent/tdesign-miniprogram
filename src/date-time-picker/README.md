@@ -80,10 +80,10 @@ visible | Boolean | false | 是否显示 | N
 
 名称 | 参数 | 描述
 -- | -- | --
-cancel | - | 取消按钮点击时触发
-change | `(detail: { value: DateValue, formatValue: string})` | 选中值发生变化时触发
-column-change | `(detail: { value: DateValue, index: number })` | 每一列选中数据变化时触发
-confirm | `(detail: { value: DateValue, formatValue: string })` | 确认按钮点击时触发
+cancel | `()` | 取消按钮点击时触发
+change | `(value: DateValue, formatValue: string)` | 选中值发生变化时触发
+column-change | `(value: DateValue, index: number)` | 每一列选中数据变化时触发
+confirm | `(value: DateValue, formatValue: string)` | 确认按钮点击时触发
 
 ### DateTimeRangePicker Props
 
