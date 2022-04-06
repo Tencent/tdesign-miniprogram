@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdPickerProps {
@@ -13,7 +12,6 @@ export interface TdPickerProps {
   cancelBtn?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 确定按钮文字
@@ -22,7 +20,14 @@ export interface TdPickerProps {
   confirmBtn?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
+  };
+  /**
+   * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
+   * @default true
+   */
+  header?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 标题
@@ -31,7 +36,6 @@ export interface TdPickerProps {
   title?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 选中值
@@ -39,7 +43,13 @@ export interface TdPickerProps {
   value?: {
     type: ArrayConstructor;
     value?: Array<PickerValue>;
-    required?: boolean;
+  };
+  /**
+   * 选中值，非受控属性
+   */
+  defaultValue?: {
+    type: ArrayConstructor;
+    value?: Array<PickerValue>;
   };
   /**
    * 是否显示
@@ -48,9 +58,8 @@ export interface TdPickerProps {
   visible?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
-};
+}
 
 export interface TdPickerItemProps {
   /**
@@ -60,19 +69,20 @@ export interface TdPickerItemProps {
   options?: {
     type: ArrayConstructor;
     value?: Array<PickerItemOption>;
-    required?: boolean;
   };
   /**
-   * 默认选中的侯选项
+   * 默认选中的选项
    */
   value?: {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: string | number;
-    required?: boolean;
   };
-};
+}
 
 export type PickerValue = string | number;
 
-export interface PickerItemOption { label: string; value: string | number };
+export interface PickerItemOption {
+  label: string;
+  value: string | number;
+}

@@ -3,10 +3,13 @@
   bindchange="onColumnChange"
   bindconfirm="onConfirm"
   bindcancel="onCancel"
+  header="{{header}}"
   title="{{title}}"
   confirmBtn="{{confirmBtn || locale.confirm}}"
   cancelBtn="{{cancelBtn || locale.cancel}}"
 >
+  <slot slot="header" name="header"> </slot>
+
   <t-picker-column
     wx:for="{{columns}}"
     wx:key="index"
@@ -14,4 +17,6 @@
     index="{{index}}"
     value="{{columnsValue[index]}}"
   ></t-picker-column>
+
+  <slot slot="footer" name="footer"> </slot>
 </t-picker>
