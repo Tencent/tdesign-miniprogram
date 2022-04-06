@@ -1,78 +1,71 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+import type { CollapseValue, TdCollapseProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-collapse`;
 
-TComponent({
-  options: {
+export interface CollapseProps extends TdCollapseProps {}
+
+@wxComponent()
+export default class Collapse extends SuperComponent {
+  options = {
     addGlobalClass: true,
-  },
-  externalClasses: [`${prefix}-class`],
+  };
 
-  relations: {
-    '../collapse-panel/collapse-panel': {
+  externalClasses = [`${prefix}-class`];
+
+  relations: RelationsOptions = {
+    './collapse-panel': {
       type: 'descendant',
-      linked(this, target: WechatMiniprogram.Component.TrivialInstance) {
-        this.children.push(target);
-      },
-      unlinked(this, target: WechatMiniprogram.Component.TrivialInstance) {
-        this.children = this.children.filter((item) => item !== target);
+      linked() {
+        // this.updateExpanded();
       },
     },
-  },
+  };
 
-  properties: {
-    value: {
-      type: null,
-      observer(this) {
-        this.updateExpanded();
-      },
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
     },
-    accordion: {
-      type: Boolean,
-      observer(this) {
-        this.updateExpanded();
-      },
-      value: false,
-    },
-    border: {
-      type: Boolean,
-      value: true,
-    },
-  },
+  ];
 
-  data: {
+  properties = props;
+
+  data = {
     classPrefix: name,
-  },
+  };
 
-  methods: {
-    created() {
-      this.children = [];
+  observers = {
+    'value, expandMutex '() {
+      this.updateExpanded();
     },
+  };
+
+  methods = {
     updateExpanded() {
-      this.children = this.getRelationNodes('../collapse-panel/collapse-panel');
-      this.children.forEach((child: WechatMiniprogram.Component.TrivialInstance) => {
-        child.updateExpanded();
+      const panels = this.getRelationNodes('./collapse-panel');
+
+      if (panels.length === 0) return;
+
+      panels.forEach((child: WechatMiniprogram.Component.TrivialInstance) => {
+        child.updateExpanded(this.properties.value);
       });
     },
-    switch(name: any = null, expanded: any = null) {
-      const { accordion, value }: any = this.properties;
-      const changeItem = name;
-      if (!accordion) {
-        name = expanded
-          ? (value || []).concat(name)
-          : (value || []).filter((activeName) => activeName !== name);
+    switch(panelValue: CollapseValue) {
+      const { expandMutex, value: activeValues } = this.properties;
+      let value = [];
+      const hit = activeValues.indexOf(panelValue);
+
+      if (hit > -1) {
+        value = activeValues.filter((item) => item !== panelValue);
       } else {
-        name = expanded ? name : '';
+        value = expandMutex ? [panelValue] : activeValues.concat(panelValue);
       }
-      if (expanded) {
-        this.triggerEvent('open', changeItem);
-      } else {
-        this.triggerEvent('close', changeItem);
-      }
-      this.triggerEvent('change', name);
-      this.triggerEvent('input', name);
+
+      this._trigger('change', { value });
     },
-  },
-});
+  };
+}

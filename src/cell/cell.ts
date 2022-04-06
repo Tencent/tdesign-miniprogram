@@ -19,6 +19,7 @@ export default class Cell extends SuperComponent {
     `${prefix}-class-image`,
     `${prefix}-class-left`,
     `${prefix}-class-right`,
+    `${prefix}-class-right-icon`,
   ];
 
   options = {

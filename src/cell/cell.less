@@ -5,16 +5,16 @@
 @cell-line-height: 48rpx;
 @cell-vertical-padding: 24rpx;
 @cell-horizontal-padding: 32rpx;
-@cell-text-color: rgba(0, 0, 0, .9);
+@cell-text-color: rgba(0, 0, 0, 0.9);
 @cell-background-color: #ffffff;
 @cell-border-color: #e7e7e7;
 @cell-hover-color: #f2f3f5;
 @cell-required-color: #e34d59;
-@cell-description-color: rgba(0, 0, 0, .4);
+@cell-description-color: rgba(0, 0, 0, 0.4);
 @cell-description-font-size: 28rpx;
 @cell-description-line-height: 44rpx;
 @cell-description-margin-top: 8rpx;
-@cell-note-color: rgba(0, 0, 0, .4);
+@cell-note-color: rgba(0, 0, 0, 0.4);
 @cell-icon-size: 48rpx;
 @cell-right-icon-color: #bbb;
 @cell-gutter: 16rpx;
@@ -79,8 +79,10 @@
     line-height: @cell-line-height;
   }
 
-  &__left{
-    margin-right: 16rpx;
+  &__left {
+    &:not(:empty) {
+      margin-right: 16rpx;
+    }
 
     &-image {
       height: 112rpx;
