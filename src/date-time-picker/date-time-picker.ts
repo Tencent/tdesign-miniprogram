@@ -430,7 +430,7 @@ export default class DateTimePicker extends SuperComponent {
         columnsValue,
       });
 
-      this.triggerEvent('column-change', { column, value });
+      this.triggerEvent('column-change', { index: column, value });
       this.triggerEvent('change', { value: date, formatValue: date.format(format) });
     },
 
