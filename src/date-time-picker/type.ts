@@ -3,9 +3,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
-
-import { TNode } from '../common/common';
-
 export interface TdDateTimePickerProps {
   /**
    * 取消按钮文字
@@ -195,15 +192,23 @@ export interface TdDateTimeRangePickerProps {
 
 export type DisableDate = DateValue | DisableDateObj | ((date: DateValue) => boolean);
 
-export interface DisableDateObj { from?: string; to?: string; before?: string; after?: string };
+export interface DisableDateObj {
+  from?: string;
+  to?: string;
+  before?: string;
+  after?: string;
+}
 
-export type DateTimePickerMode = TimeModeValues | Array<TimeModeValues> ;
+export type DateTimePickerMode = TimeModeValues | Array<TimeModeValues>;
 
 export type TimeModeValues = 'year' | 'month' | 'date' | 'hour' | 'minute' | 'second';
 
 export type DateValue = string | number;
 
-export type DisableRangeDate = Array<DateValue> | DisableDateObj | ((context: { date: DateRangeValue; partial: DateRangePickerPartial }) => boolean);
+export type DisableRangeDate =
+  | Array<DateValue>
+  | DisableDateObj
+  | ((context: { date: DateRangeValue; partial: DateRangePickerPartial }) => boolean);
 
 export type DateRangePickerPartial = 'start' | 'end';
 
