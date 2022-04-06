@@ -414,6 +414,8 @@ export default class DateTimePicker extends SuperComponent {
 
     onColumnChange(e: WechatMiniprogram.CustomEvent) {
       const { value, column } = e?.detail;
+      const { format } = this.properties;
+      const date = this.getDate();
 
       const newValue = this.getNewDate(parseInt(value?.value, 10), value?.type);
 
@@ -429,6 +431,7 @@ export default class DateTimePicker extends SuperComponent {
       });
 
       this.triggerEvent('column-change', { column, value });
+      this.triggerEvent('change', { value: date, formatValue: date.format(format) });
     },
 
     onConfirm() {
