@@ -1,13 +1,10 @@
 <view class="{{ classPrefix }} {{classPrefix}}--status--{{status}}">
   <view class="{{ classPrefix }}__inner">
     <view class="{{ classPrefix }}__bar" style="height: {{ strokeWidth }}px; background: {{ trackColor }}">
-      <view class="{{ classPrefix }}__bar-percent" style="background:{{ colorBar }}; width:{{ percentageBar }}"> </view>
-    </view>
-    <view class="t-class-text">
-      <view wx:if="{{ text }}" class="{{ classPrefix }}__text" style="color:{{ textColor }}">
-        {{ percentageBar }}
+      <view class="{{ classPrefix }}__bar-percent" style="background:{{ colorBar }}; width:{{ percentage + '%'}}">
       </view>
-      <slot name="text"></slot>
     </view>
+    <view wx:if="{{ label }}" class="{{ classPrefix }}__label {{prefix}}-class-label"> {{ percentage + '%' }} </view>
+    <slot name="label"></slot>
   </view>
 </view>

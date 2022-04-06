@@ -14,20 +14,13 @@ const props: TdProgressProps = {
   },
   /** 进度百分比，可自定义 */
   label: {
-    type: String,
-    optionalTypes: [Boolean],
+    type: Boolean,
     value: true,
   },
   /** 进度条百分比 */
   percentage: {
     type: Number,
     value: 0,
-  },
-  /** 进度条尺寸，示例：small/medium/large/240。small 值为 72； medium 值为 112；large 值为 160 */
-  size: {
-    type: String,
-    optionalTypes: [Number],
-    value: 'medium',
   },
   /** 进度条状态 */
   status: {
@@ -37,11 +30,6 @@ const props: TdProgressProps = {
   strokeWidth: {
     type: String,
     optionalTypes: [Number],
-  },
-  /** 进度条风格。值为 line，标签（label）显示在进度条右侧；值为 plump，标签（label）显示在进度条里面；值为 circle，标签（label）显示在进度条正中间 */
-  theme: {
-    type: String,
-    value: 'line',
   },
   /** 进度条未完成部分颜色 */
   trackColor: {

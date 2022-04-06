@@ -19,9 +19,8 @@ export interface TdProgressProps {
    * @default true
    */
   label?: {
-    type: StringConstructor;
-    optionalTypes: Array<BooleanConstructor>;
-    value?: string | boolean;
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 进度条百分比
@@ -30,15 +29,6 @@ export interface TdProgressProps {
   percentage?: {
     type: NumberConstructor;
     value?: number;
-  };
-  /**
-   * 进度条尺寸，示例：small/medium/large/240。small 值为 72； medium 值为 112；large 值为 160
-   * @default 'medium'
-   */
-  size?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
   };
   /**
    * 进度条状态
@@ -54,14 +44,6 @@ export interface TdProgressProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: string | number;
-  };
-  /**
-   * 进度条风格。值为 line，标签（label）显示在进度条右侧；值为 plump，标签（label）显示在进度条里面；值为 circle，标签（label）显示在进度条正中间
-   * @default line
-   */
-  theme?: {
-    type: StringConstructor;
-    value?: ThemeEnum;
   };
   /**
    * 进度条未完成部分颜色

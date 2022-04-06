@@ -67,7 +67,7 @@ isComponent: true
 <t-progress percentage="88"></t-progress>
 
 <!-- 无数值进度条 -->
- <t-progress percentage="72" text="{{false}}"></t-progress>
+ <t-progress percentage="72" label="{{false}}"></t-progress>
 ```
 
 
@@ -77,9 +77,9 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 color | String / Object / Array | '' | 进度条颜色。示例：'#ED7B2F' 或 'orange' 或 `['#f00', '#0ff', '#f0f']` 或 `{ '0%': '#f00', '100%': '#0ff' }` 或  `{ from: '#000', to: '#000' }` 等。TS 类型：`string | Array<string> | Record<string, string>` | N
-text | Boolean  | true | 是否显示进度文字，可通过slot自定义 | N
-textColor | String | '' | 进度文字颜色 ｜ N
+label | Boolean  | true | 是否显示进度文字，可通过slot自定义 | N
 percentage | Number | 0 | 进度条百分比 | N
 status | String | - | 进度条状态。可选项：success/error/warning/active。TS 类型：`StatusEnum` `type StatusEnum = 'success' | 'error' | 'warning' | 'active'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/progress/type.ts) | N
 stroke-width | String / Number | - | 进度条线宽。宽度数值不能超过 size 的一半，否则不能输出环形进度 | N
 track-color | String | '' | 进度条未完成部分颜色 | N
+external-classes | Array | - | 样式类名，分别用于设置 组件外层、进度文字等元素类名。`['t-class', 't-class-label']` | N |
