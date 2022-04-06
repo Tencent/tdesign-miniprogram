@@ -78,6 +78,10 @@ const display = {
       name: 'Sticky',
       label: '吸顶',
     },
+    {
+      name: 'NoticeBar',
+      label: '公告栏',
+    },
   ],
 };
 

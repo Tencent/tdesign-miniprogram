@@ -58,6 +58,16 @@ export const requestAnimationFrame = function (cb: Function) {
     });
 };
 
+export const getRect = function (context: any, selector: string) {
+  return new Promise<WechatMiniprogram.BoundingClientRectCallbackResult>((resolve) => {
+    wx.createSelectorQuery()
+      .in(context)
+      .select(selector)
+      .boundingClientRect()
+      .exec((rect = []) => resolve(rect[0]));
+  });
+};
+
 const isDef = function (value: any): boolean {
   return value !== undefined && value !== null;
 };
