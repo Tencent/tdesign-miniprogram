@@ -1,22 +1,12 @@
-<wxs src="../common/utils.wxs" module="utils" />
-<view class="{{showText ? classPrefix : classPrefix+' '+classPrefix+'--without-text'}}">
-  <view class="{{ classPrefix }}-bar">
-    <view
-      class="{{ classPrefix }}-bar__outer"
-      style="{{ bgColor ? 'height:' + strokeWidth + 'px; background-color: ' + bgColor : 'height: ' + strokeWidth + 'px;'}}"
-    >
-      <view
-        class="{{ classPrefix }}-bar__inner {{ classPrefix }}-bar__inner--{{ type }}"
-        style="{{ color ? 'width: ' +percent + '%;background-color: ' + color :'width: ' + percent + '%;'}}"
-      ></view>
+<view class="{{ classPrefix }} {{classPrefix}}--status--{{status || computedStatus}}">
+  <view class="{{ classPrefix }}__inner">
+    <view class="{{ classPrefix }}__bar" style="height: {{ strokeWidth }}px; background: {{ trackColor }}">
+      <view class="{{ classPrefix }}__bar-percent" style="background:{{ colorBar }}; width:{{ computedProgress + '%'}}">
+      </view>
     </view>
+    <view wx:if="{{ label }}" class="{{ classPrefix }}__label {{prefix}}-class-label">
+      {{ computedProgress + '%' }}
+    </view>
+    <slot name="label"></slot>
   </view>
-  <block wx:if="{{ showText }}">
-    <view wx:if="{{textColor}}" class="{{ classPrefix }}__info" style="color: {{textColor}}"
-      >{{percent + '%'}}</view
-    >
-    <view wx:else class="{{ classPrefix }}__info {{ classPrefix }}__info--{{ type }}"
-      >{{percent + '%'}}</view
-    >
-  </block>
 </view>

@@ -1,63 +1,43 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+import { getBackgroundColor } from './utils';
 
 const { prefix } = config;
-const name = `${prefix}-progress`;
+const classPrefix = `${prefix}-progress`;
 
-TComponent({
-  // 组件的对外属性
-  properties: {
-    percentage: {
-      type: Number,
-      value: 0,
-    },
-    showText: {
-      type: Boolean,
-      value: true,
-    },
-    color: {
-      type: String,
-      value: '',
-    },
-    bgColor: {
-      type: String,
-      value: '',
-    },
-    textColor: {
-      type: String,
-      value: '',
-    },
-    type: {
-      type: String,
-      value: 'info', // info || error
-    },
-  },
-  // 组件的内部数据
-  data: {
-    percent: 0,
-    barStyle: '100%',
-    classPrefix: name,
-    strokeWidth: 3,
-  },
-  observers: {
+@wxComponent()
+export default class Progress extends SuperComponent {
+  externalClasses = [`${prefix}-class-label`];
+
+  options = {
+    multipleSlots: true,
+  };
+
+  properties = props;
+
+  data = {
+    prefix,
+    classPrefix,
+    colorBar: '',
+    computedStatus: '',
+    computedProgress: 0,
+  };
+
+  observers = {
     percentage(percentage) {
-      if (percentage > 100) percentage = 100;
-      else if (percentage < 0) percentage = 0;
-      this.setData({
-        percent: percentage,
-      });
-    },
-    bgColor(bgColor) {
-      let tempStyle = `height: ${this.data.strokeWidth}px;`;
-      if (bgColor) tempStyle += `background-color: ${bgColor}`;
-      this.setData({
-        barStyle: tempStyle,
-      });
-    },
-  },
-  // 组件生命周期
-  lifetimes: {},
+      percentage = Math.max(0, Math.min(percentage, 100));
 
-  // Methods
-  methods: {},
-});
+      this.setData({
+        computedStatus: percentage === 100 ? 'success' : '',
+        computedProgress: percentage,
+      });
+    },
+
+    color(color) {
+      this.setData({
+        colorBar: getBackgroundColor(color),
+      });
+    },
+  };
+}

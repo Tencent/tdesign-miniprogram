@@ -34,10 +34,10 @@ const ux = {
       name: 'Popup',
       label: '弹出层',
     },
-    // {
-    //   name: 'Progress',
-    //   label: '进度条',
-    // },
+    {
+      name: 'Progress',
+      label: '进度条',
+    },
     {
       name: 'PullDownRefresh',
       label: '下拉刷新',
