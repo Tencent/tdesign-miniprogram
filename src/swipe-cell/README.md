@@ -42,6 +42,6 @@ isComponent: true
 
 ### SwipeCell Events
 
-| 名称  | 参数                                 | 描述                                                                                                                                                                    |
-| ----- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| click | `(context: SwipeActionClickContext)` | 操作项点击时触发（插槽写法组件不触发，业务侧自定义内容和事件）。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swipe-cell/type.ts) |
+名称 | 参数 | 描述
+-- | -- | --
+click | `(action: SwipeActionItem, source: SwipeSource)` | 操作项点击时触发（插槽写法组件不触发，业务侧自定义内容和事件）。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swipe-cell/type.ts)。<br/>`type SwipeSource = 'left' | 'right'`<br/>

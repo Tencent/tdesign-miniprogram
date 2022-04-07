@@ -92,6 +92,6 @@ isComponent: true
 
 ### Popup Events
 
-| 名称           | 参数                                                     | 描述                                                   |
-| -------------- | -------------------------------------------------------- | ------------------------------------------------------ |
-| visible-change | `(visible: boolean, context: PopupVisibleChangeContext)` | 当浮层隐藏或显示时触发，`context.trigger` 表示触发来源 |
+名称 | 参数 | 描述
+-- | -- | --
+visible-change | `(visible: boolean, trigger: PopupSource) ` | 当浮层隐藏或显示时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/popup/type.ts)。<br/>`type PopupSource = 'close-btn' | 'overlay'`<br/>

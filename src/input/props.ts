@@ -16,6 +16,11 @@ const props: TdInputProps = {
     type: String,
     value: 'left',
   },
+  /** 【讨论中】是否开启无边框模式 */
+  borderless: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否可清空 */
   clearable: {
     type: Boolean,
@@ -36,7 +41,7 @@ const props: TdInputProps = {
     type: Boolean,
     value: false,
   },
-  /** 错误提示文本，值为空不显示 */
+  /** 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） */
   errorMessage: {
     type: String,
     value: '',
@@ -50,6 +55,10 @@ const props: TdInputProps = {
     type: Boolean,
     value: false,
   },
+  /** 【开发中】指定输入框展示值的格式 */
+  format: {
+    type: null,
+  },
   /** 左侧文本 */
   label: {
     type: String,
@@ -58,7 +67,7 @@ const props: TdInputProps = {
   maxcharacter: {
     type: Number,
   },
-  /** 用户最多可以输入的文本长度。值小于等于 0 的时候，则不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 */
+  /** 用户最多可以输入的文本长度，一个中文等于一个计数长度。值小于等于 0 的时候，则表示不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 */
   maxlength: {
     type: Number,
   },
@@ -71,10 +80,19 @@ const props: TdInputProps = {
   prefixIcon: {
     type: String,
   },
+  /** 只读状态 */
+  readonly: {
+    type: Boolean,
+    value: false,
+  },
   /** 输入框尺寸 */
   size: {
     type: String,
     value: 'small',
+  },
+  /** 输入框状态 */
+  status: {
+    type: String,
   },
   /** 后置图标前的后置内容 */
   suffix: {
@@ -82,6 +100,10 @@ const props: TdInputProps = {
   },
   /** 后置文本内容，值为字符串则表示图标名称 */
   suffixIcon: {
+    type: String,
+  },
+  /** 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式 */
+  tips: {
     type: String,
   },
   /** 输入框类型 */
@@ -97,8 +119,8 @@ const props: TdInputProps = {
   },
   /** 输入框的值，非受控属性 */
   defaultValue: {
-    type: null,
-    value: undefined,
+    type: String,
+    optionalTypes: [Number],
   },
 };
 

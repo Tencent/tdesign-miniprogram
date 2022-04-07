@@ -48,8 +48,8 @@ value | String | - | 文本框值 | N
 
 名称 | 参数 | 描述
 -- | -- | --
-blur | `(value: TextareaValue, context: { e: FocusEvent })` | 失去焦点时触发
-change | `(value: TextareaValue, context?: { e?: InputEvent })` | 输入内容变化时触发
+blur | `(value: TextareaValue)` | 失去焦点时触发
+change | `(value: TextareaValue)` | 输入内容变化时触发
 enter | `(value: TextareaValue)` | 点击完成时触发
-focus | `(value: TextareaValue, context: { e: FocusEvent })` | 获得焦点时触发
+focus | `(value: TextareaValue)` | 获得焦点时触发
 line-change | `(value: TextareaValue)` | 行高发生变化时触发

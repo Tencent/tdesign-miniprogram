@@ -55,12 +55,12 @@ const props: TdDateTimePickerProps = {
   value: {
     type: String,
     optionalTypes: [Number],
+    value: null,
   },
   /** 选中值，非受控属性 */
   defaultValue: {
     type: String,
     optionalTypes: [Number],
-    value: undefined,
   },
   /** 是否显示 */
   visible: {
