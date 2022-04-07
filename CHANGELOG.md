@@ -4,6 +4,23 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+
+## 0.7.3 `2022-4-7`
+
+### Bug Fixes
+
+- Cell: 修复传入 String 类型的 `right-icon` 不生效的问题 [#321](https://github.com/Tencent/tdesign-miniprogram/pull/321) [@LeeJim](https://github.com/LeeJim)
+- Tabs: 属性 `label` 支持 slot [#327](https://github.com/Tencent/tdesign-miniprogram/pull/327) [@LeeJim](https://github.com/LeeJim)
+- Dialog: 完善 `close` 事件返回的参数 [#332](https://github.com/Tencent/tdesign-miniprogram/pull/332) [@LeeJim](https://github.com/LeeJim)
+- 受控优化：支持不传值时默认为非受控用法 [#329](https://github.com/Tencent/tdesign-miniprogram/pull/329) [#331](https://github.com/Tencent/tdesign-miniprogram/pull/331) [@LeeJim](https://github.com/LeeJim)
+### Features
+
+- 新增组件：
+  - Collapse 折叠面板 [#322](https://github.com/Tencent/tdesign-miniprogram/pull/322) [@LeeJim](https://github.com/LeeJim)
+  - Progress 进度条 [#318](https://github.com/Tencent/tdesign-miniprogram/pull/318) [@anlyyao](https://github.com/anlyyao)
+- Picker: 新增属性 `header` 以及 `header` 和 `footer` 的插槽 [#323](https://github.com/Tencent/tdesign-miniprogram/pull/323) [@jin0209](https://github.com/jin0209)
+- DateTimePicker: 新增属性 `header` 以及 `header` 和 `footer` 的插槽 [#323](https://github.com/Tencent/tdesign-miniprogram/pull/323) [@jin0209](https://github.com/jin0209)
+
 ## 0.7.2 `2022-3-31`
 
 ### Bug Fixes
@@ -17,8 +34,9 @@ docClass: timeline
 
 ### Features
 
-- Fab: 新增支持悬浮按钮 [#310](https://github.com/Tencent/tdesign-miniprogram/pull/310) [@LeeJim](https://github.com/LeeJim)
-- Drawer: 新增支持抽屉 [#308](https://github.com/Tencent/tdesign-miniprogram/pull/308) [@anlyyao](https://github.com/anlyyao)
+- 新增组件：
+  - Fab 悬浮按钮 [#310](https://github.com/Tencent/tdesign-miniprogram/pull/310) [@LeeJim](https://github.com/LeeJim)
+  - Drawer 抽屉 [#308](https://github.com/Tencent/tdesign-miniprogram/pull/308) [@anlyyao](https://github.com/anlyyao)
 
 ## 0.7.1 `2022-3-25`
 ### Bug Fixes
