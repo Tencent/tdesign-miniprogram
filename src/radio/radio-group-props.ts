@@ -24,12 +24,13 @@ const props: TdRadioGroupProps = {
   value: {
     type: String,
     optionalTypes: [Number, Boolean],
-    value: undefined,
+    value: null,
   },
   /** 选中的值，非受控属性 */
   defaultValue: {
-    type: null,
-    value: undefined,
+    type: String,
+    optionalTypes: [Number, Boolean],
+    value: false,
   },
 };
 
