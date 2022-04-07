@@ -45,7 +45,7 @@ export interface TdDateTimePickerProps {
     value?: string;
   };
   /**
-   * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
+   * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容
    * @default true
    */
   header?: {

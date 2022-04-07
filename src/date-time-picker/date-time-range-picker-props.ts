@@ -48,11 +48,11 @@ const props: TdDateTimeRangePickerProps = {
   /** 选中值 */
   value: {
     type: Array,
+    value: null,
   },
   /** 选中值，非受控属性 */
   defaultValue: {
-    type: null,
-    value: undefined,
+    type: Array,
   },
   /** 是否显示 */
   visible: {

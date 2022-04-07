@@ -12,7 +12,6 @@ export interface TdInputProps {
   adjustPosition?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 文本内容位置，居左/居中/居右
@@ -21,7 +20,14 @@ export interface TdInputProps {
   align?: {
     type: StringConstructor;
     value?: 'left' | 'center' | 'right';
-    required?: boolean;
+  };
+  /**
+   * 【讨论中】是否开启无边框模式
+   * @default false
+   */
+  borderless?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 是否可清空
@@ -30,7 +36,6 @@ export interface TdInputProps {
   clearable?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 点击键盘右下角按钮时是否保持键盘不收起点
@@ -39,7 +44,6 @@ export interface TdInputProps {
   confirmHold?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 设置键盘右下角按钮的文字，仅在 type='text'时生效
@@ -48,7 +52,6 @@ export interface TdInputProps {
   confirmType?: {
     type: StringConstructor;
     value?: 'send' | 'search' | 'next' | 'go' | 'done';
-    required?: boolean;
   };
   /**
    * 是否禁用输入框
@@ -57,16 +60,15 @@ export interface TdInputProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 错误提示文本，值为空不显示
+   * 错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips）
    * @default ''
+   * @deprecated
    */
   errorMessage?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名
@@ -74,7 +76,6 @@ export interface TdInputProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg'];
-    required?: boolean;
   };
   /**
    * 自动聚焦
@@ -83,7 +84,13 @@ export interface TdInputProps {
   focus?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
+  };
+  /**
+   * 【开发中】指定输入框展示值的格式
+   */
+  format?: {
+    type: null;
+    value?: InputFormatType;
   };
   /**
    * 左侧文本
@@ -91,7 +98,6 @@ export interface TdInputProps {
   label?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用
@@ -99,15 +105,13 @@ export interface TdInputProps {
   maxcharacter?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
-   * 用户最多可以输入的文本长度。值小于等于 0 的时候，则不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用
+   * 用户最多可以输入的文本长度，一个中文等于一个计数长度。值小于等于 0 的时候，则表示不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用
    */
   maxlength?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 占位符
@@ -115,7 +119,6 @@ export interface TdInputProps {
   placeholder?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 组件前置图标，值为字符串则表示图标名称
@@ -123,7 +126,14 @@ export interface TdInputProps {
   prefixIcon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
+  };
+  /**
+   * 只读状态
+   * @default false
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 输入框尺寸
@@ -132,7 +142,13 @@ export interface TdInputProps {
   size?: {
     type: StringConstructor;
     value?: 'medium' | 'small';
-    required?: boolean;
+  };
+  /**
+   * 输入框状态
+   */
+  status?: {
+    type: StringConstructor;
+    value?: 'success' | 'warning' | 'error';
   };
   /**
    * 后置图标前的后置内容
@@ -140,7 +156,6 @@ export interface TdInputProps {
   suffix?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 后置文本内容，值为字符串则表示图标名称
@@ -148,7 +163,13 @@ export interface TdInputProps {
   suffixIcon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
+  };
+  /**
+   * 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式
+   */
+  tips?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 输入框类型
@@ -157,7 +178,6 @@ export interface TdInputProps {
   type?: {
     type: StringConstructor;
     value?: 'text' | 'number' | 'idcard' | 'digit' | 'safe-password' | 'password';
-    required?: boolean;
   };
   /**
    * 输入框的值
@@ -166,16 +186,17 @@ export interface TdInputProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: InputValue;
-    required?: boolean;
   };
   /**
    * 输入框的值，非受控属性
    */
   defaultValue?: {
     type: StringConstructor;
+    optionalTypes: Array<NumberConstructor>;
     value?: InputValue;
-    required?: boolean;
   };
 }
+
+export type InputFormatType = (value: InputValue) => number | string;
 
 export type InputValue = string | number;

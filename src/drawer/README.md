@@ -44,4 +44,4 @@ z-index | Number | - | 抽屉层级，样式默认为 1500 | N
 -- | -- | --
 close | `(trigger: DrawerEventSource)` | 关闭事件，取消按钮点击时、关闭按钮点击时、点击蒙层时均会触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/drawer/type.ts)。<br/>`type DrawerEventSource = 'esc' | 'close-btn' | 'cancel' | 'overlay'`<br/>
 item-click | `(index: number; item: DrawerItem)` | 点击抽屉里的列表项
-overlay-click | `()` | 如果蒙层存在，点击蒙层时触发
+overlay-click | - | 如果蒙层存在，点击蒙层时触发
