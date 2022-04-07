@@ -43,7 +43,6 @@ maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中�
 maxlength | Number | - | 用户最多可以输入的字符个数 | N
 placeholder | String | undefined | 占位符 | N
 value | String | - | 文本框值 | N
-default-value | String | undefined | 文本框值。非受控属性 | N
 
 ### Textarea Events
 
