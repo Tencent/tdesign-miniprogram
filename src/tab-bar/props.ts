@@ -43,7 +43,7 @@ const props: TdTabBarProps = {
   },
   /** 当前选中标签的索引，非受控属性 */
   defaultValue: {
-    type: null,
+    type: String,
     optionalTypes: [Number, Array],
     value: undefined,
   },

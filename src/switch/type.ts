@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdSwitchProps {
@@ -12,16 +11,13 @@ export interface TdSwitchProps {
   colors?: {
     type: ArrayConstructor;
     value?: string[];
-    required?: boolean;
   };
   /**
-   * 开关内容，[打开时的值，关闭时的值]。示例：[1, 0]
-   * @default [true, false]
+   * 开关内容，[打开时的值，关闭时的值]。默认为 [true, false]。示例：[1, 0]
    */
   customValue?: {
     type: ArrayConstructor;
     value?: Array<SwitchValue>;
-    required?: boolean;
   };
   /**
    * 是否禁用组件
@@ -30,7 +26,6 @@ export interface TdSwitchProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 开关的标签
@@ -39,7 +34,6 @@ export interface TdSwitchProps {
   label?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 是否处于加载中状态
@@ -48,7 +42,6 @@ export interface TdSwitchProps {
   loading?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 开关尺寸
@@ -57,26 +50,22 @@ export interface TdSwitchProps {
   size?: {
     type: StringConstructor;
     value?: 'small' | 'medium' | 'large';
-    required?: boolean;
   };
   /**
    * 开关值
-   * @default false
    */
   value?: {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor | BooleanConstructor>;
     value?: SwitchValue;
-    required?: boolean;
   };
   /**
-   * 开关值
-   * @default false
+   * 开关值，非受控属性
    */
   defaultValue?: {
     type: StringConstructor;
+    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
     value?: SwitchValue;
-    required?: boolean;
   };
 }
 

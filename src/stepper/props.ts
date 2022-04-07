@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-12-20 13:08:27
  * */
 
 import { TdStepperProps } from './type';
@@ -51,10 +50,11 @@ const props: TdStepperProps = {
     optionalTypes: [Number],
     value: null,
   },
-  /** 值 - 非受控 */
+  /** 值，非受控属性 */
   defaultValue: {
-    type: null,
-    value: undefined,
+    type: String,
+    optionalTypes: [Number],
+    value: 0,
   },
 };
 

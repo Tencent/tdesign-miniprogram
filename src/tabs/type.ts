@@ -11,7 +11,6 @@ export interface TdTabsProps {
   animation?: {
     type: ObjectConstructor;
     value?: TabAnimation;
-    required?: boolean;
   };
   /**
    * 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名
@@ -19,7 +18,6 @@ export interface TdTabsProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-item', 't-class-active', 't-class-track'];
-    required?: boolean;
   };
   /**
    * 选项卡位置
@@ -28,7 +26,6 @@ export interface TdTabsProps {
   placement?: {
     type: StringConstructor;
     value?: 'left' | 'top';
-    required?: boolean;
   };
   /**
    * 是否展示底部激活线条
@@ -37,7 +34,6 @@ export interface TdTabsProps {
   showBottomLine?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 激活的选项卡值
@@ -46,7 +42,6 @@ export interface TdTabsProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: TabValue;
-    required?: boolean;
   };
   /**
    * 激活的选项卡值，非受控属性
@@ -55,7 +50,6 @@ export interface TdTabsProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: TabValue;
-    required?: boolean;
   };
 }
 
@@ -67,7 +61,6 @@ export interface TdTabPanelProps {
   destroyOnHide?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否禁用当前选项卡
@@ -76,7 +69,6 @@ export interface TdTabPanelProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 选项卡名称，可自定义选项卡导航内容
@@ -84,7 +76,6 @@ export interface TdTabPanelProps {
   label?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 用于自定义选项卡面板内容
@@ -92,7 +83,6 @@ export interface TdTabPanelProps {
   panel?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 选项卡的值，唯一标识
@@ -101,7 +91,6 @@ export interface TdTabPanelProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: TabValue;
-    required?: boolean;
   };
 }
 

@@ -6,7 +6,7 @@
 
 import { TdSliderProps } from './type';
 const props: TdSliderProps = {
-  /** 颜色（已选择&未选择） */
+  /** 颜色，[已选择, 未选择] */
   colors: {
     type: Array,
     value: ['#0052D9', 'rgba(220, 220, 220, 1)'],
@@ -16,7 +16,7 @@ const props: TdSliderProps = {
     type: Boolean,
     value: false,
   },
-  /** 禁用状态滑动条的颜色（已选、未选） */
+  /** 禁用状态滑动条的颜色，[已选, 未选] */
   disabledColor: {
     type: Array,
     value: ['#bbd3fb', '#dcdcdc'],
@@ -25,7 +25,7 @@ const props: TdSliderProps = {
   externalClasses: {
     type: Array,
   },
-  /** 滑块当前值文本。值为 true 显示默认文案，值为 false 不显示滑块当前值文本，值为 `\${value}%` 则表示组件会根据占位符渲染文案 */
+  /** 滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值 */
   label: {
     type: String,
     optionalTypes: [Boolean],
@@ -70,8 +70,8 @@ const props: TdSliderProps = {
   },
   /** 滑块值，非受控属性 */
   defaultValue: {
-    type: null,
-    value: undefined,
+    type: Number,
+    optionalTypes: [Array],
   },
 };
 

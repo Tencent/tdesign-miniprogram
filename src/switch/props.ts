@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdSwitchProps } from './type';
@@ -11,10 +10,9 @@ const props: TdSwitchProps = {
   colors: {
     type: Array,
   },
-  /** 开关内容，[打开时的值，关闭时的值]。示例：[1, 0] */
+  /** 开关内容，[打开时的值，关闭时的值]。默认为 [true, false]。示例：[1, 0] */
   customValue: {
     type: Array,
-    value: [true, false],
   },
   /** 是否禁用组件 */
   disabled: {
@@ -40,11 +38,12 @@ const props: TdSwitchProps = {
   value: {
     type: String,
     optionalTypes: [Number, Boolean],
-    value: false,
+    value: undefined,
   },
-  /** 开关值 */
+  /** 开关值，非受控属性 */
   defaultValue: {
-    type: null,
+    type: String,
+    optionalTypes: [Number, Boolean],
     value: undefined,
   },
 };
