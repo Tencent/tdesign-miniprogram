@@ -46,7 +46,7 @@ export default class Dialog extends SuperComponent {
     },
 
     onCancel() {
-      this.triggerEvent('close');
+      this.triggerEvent('close', { trigger: 'cancel' });
       this.triggerEvent('cancel');
 
       if (this._onCancel) {
@@ -61,7 +61,7 @@ export default class Dialog extends SuperComponent {
 
     overlayClick() {
       if (this.properties.closeOnOverlayClick) {
-        this.triggerEvent('close');
+        this.triggerEvent('close', { trigger: 'overlay' });
       }
       this.triggerEvent('overlayClick');
     },
