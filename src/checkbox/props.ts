@@ -6,7 +6,7 @@
 
 import { TdCheckboxProps } from './type';
 const props: TdCheckboxProps = {
-  /** 复选框和内容相对位置 */
+  /** 多选框和内容相对位置 */
   align: {
     type: String,
     value: 'left',
@@ -26,12 +26,12 @@ const props: TdCheckboxProps = {
     type: Boolean,
     value: false,
   },
-  /** 复选框颜色 */
+  /** 多选框颜色 */
   color: {
     type: String,
     value: '#0052d9',
   },
-  /** 复选框内容 */
+  /** 多选框内容 */
   content: {
     type: String,
   },
@@ -44,7 +44,7 @@ const props: TdCheckboxProps = {
     type: Boolean,
     value: undefined,
   },
-  /** 组件类名，分别用于设置 组件外层、复选框图标、主文案、内容 等元素类名 */
+  /** 组件类名，分别用于设置 组件外层、多选框图标、主文案、内容 等元素类名 */
   externalClasses: {
     type: Array,
   },
@@ -76,12 +76,12 @@ const props: TdCheckboxProps = {
     type: String,
     value: '',
   },
-  /** 组件是否只读 */
+  /** 只读状态 */
   readonly: {
     type: Boolean,
     value: false,
   },
-  /** 复选框的值 */
+  /** 多选框的值 */
   value: {
     type: String,
     optionalTypes: [Number],

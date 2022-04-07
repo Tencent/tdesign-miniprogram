@@ -6,13 +6,12 @@
 
 export interface TdCheckboxProps {
   /**
-   * 复选框和内容相对位置
+   * 多选框和内容相对位置
    * @default left
    */
   align?: {
     type: StringConstructor;
     value?: 'left' | 'right';
-    required?: boolean;
   };
   /**
    * 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用
@@ -21,7 +20,6 @@ export interface TdCheckboxProps {
   checkAll?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否选中
@@ -30,7 +28,6 @@ export interface TdCheckboxProps {
   checked?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否选中，非受控属性
@@ -39,24 +36,21 @@ export interface TdCheckboxProps {
   defaultChecked?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 复选框颜色
+   * 多选框颜色
    * @default #0052d9
    */
   color?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
-   * 复选框内容
+   * 多选框内容
    */
   content?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 是否禁用组件内容（content）触发选中
@@ -64,7 +58,6 @@ export interface TdCheckboxProps {
   contentDisabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否禁用组件
@@ -72,15 +65,13 @@ export interface TdCheckboxProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 组件类名，分别用于设置 组件外层、复选框图标、主文案、内容 等元素类名
+   * 组件类名，分别用于设置 组件外层、多选框图标、主文案、内容 等元素类名
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class', 't-class-icon', 't-class-label', 't-class-content'];
-    required?: boolean;
+    value?: ['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border'];
   };
   /**
    * 自定义选中图标和非选中图标。示例：[选中态图标地址，非选中态图标地址]
@@ -88,7 +79,6 @@ export interface TdCheckboxProps {
   icon?: {
     type: ArrayConstructor;
     value?: Array<string>;
-    required?: boolean;
   };
   /**
    * 是否为半选
@@ -97,7 +87,6 @@ export interface TdCheckboxProps {
   indeterminate?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 主文案
@@ -105,7 +94,6 @@ export interface TdCheckboxProps {
   label?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 内容最大行数限制
@@ -114,7 +102,6 @@ export interface TdCheckboxProps {
   maxContentRow?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 主文案最大行数限制
@@ -123,7 +110,6 @@ export interface TdCheckboxProps {
   maxLabelRow?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * HTML 元素原生属性
@@ -132,25 +118,22 @@ export interface TdCheckboxProps {
   name?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
-   * 组件是否只读
+   * 只读状态
    * @default false
    */
   readonly?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 复选框的值
+   * 多选框的值
    */
   value?: {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: string | number;
-    required?: boolean;
   };
 }
 
@@ -162,7 +145,6 @@ export interface TdCheckboxGroupProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 支持最多选中的数量
@@ -170,7 +152,6 @@ export interface TdCheckboxGroupProps {
   max?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 统一设置内部复选框 HTML 属性
@@ -179,7 +160,6 @@ export interface TdCheckboxGroupProps {
   name?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 以配置形式设置子元素。示例1：`['北京', '上海']` ，示例2: `[{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]`。checkAll 值为 true 表示当前选项为「全选选项」
@@ -188,7 +168,6 @@ export interface TdCheckboxGroupProps {
   options?: {
     type: ArrayConstructor;
     value?: Array<CheckboxOption>;
-    required?: boolean;
   };
   /**
    * 选中值
@@ -197,7 +176,6 @@ export interface TdCheckboxGroupProps {
   value?: {
     type: ArrayConstructor;
     value?: CheckboxGroupValue;
-    required?: boolean;
   };
   /**
    * 选中值，非受控属性
@@ -206,7 +184,6 @@ export interface TdCheckboxGroupProps {
   defaultValue?: {
     type: ArrayConstructor;
     value?: CheckboxGroupValue;
-    required?: boolean;
   };
 }
 

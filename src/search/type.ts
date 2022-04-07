@@ -12,7 +12,6 @@ export interface TdSearchProps {
   action?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 是否居中
@@ -21,7 +20,6 @@ export interface TdSearchProps {
   center?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否禁用
@@ -30,22 +28,13 @@ export interface TdSearchProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-input',
-      't-class-input-container',
-      't-class-cancel',
-      't-class-left',
-      't-class-right',
-    ];
-    required?: boolean;
+    value?: ['t-class', 't-class-input', 't-class-input-container', 't-class-cancel', 't-class-left', 't-class-right'];
   };
   /**
    * 是否聚焦
@@ -54,7 +43,6 @@ export interface TdSearchProps {
   focus?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 左侧文本
@@ -63,7 +51,6 @@ export interface TdSearchProps {
   label?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 左侧图标
@@ -72,7 +59,6 @@ export interface TdSearchProps {
   leftIcon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 占位符
@@ -81,7 +67,6 @@ export interface TdSearchProps {
   placeholder?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 右侧图标
@@ -90,7 +75,6 @@ export interface TdSearchProps {
   rightIcon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 搜索框形状
@@ -99,7 +83,6 @@ export interface TdSearchProps {
   shape?: {
     type: StringConstructor;
     value?: 'square' | 'round';
-    required?: boolean;
   };
   /**
    * 值
@@ -108,6 +91,5 @@ export interface TdSearchProps {
   value?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
 }

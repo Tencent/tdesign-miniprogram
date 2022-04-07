@@ -6,13 +6,12 @@
 
 export interface TdSliderProps {
   /**
-   * 颜色（已选择&未选择）
+   * 颜色，[已选择, 未选择]
    * @default ['#0052D9', 'rgba(220, 220, 220, 1)']
    */
   colors?: {
     type: ArrayConstructor;
     value?: Array<string>;
-    required?: boolean;
   };
   /**
    * 是否禁用组件
@@ -21,40 +20,30 @@ export interface TdSliderProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 禁用状态滑动条的颜色（已选、未选）
+   * 禁用状态滑动条的颜色，[已选, 未选]
    * @default ['#bbd3fb', '#dcdcdc']
    */
   disabledColor?: {
     type: ArrayConstructor;
     value?: Array<string>;
-    required?: boolean;
   };
   /**
    * 组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-bar',
-      't-class-bar-active',
-      't-class-bar-disabled',
-      't-class-cursor',
-    ];
-    required?: boolean;
+    value?: ['t-class', 't-class-bar', 't-class-bar-active', 't-class-bar-disabled', 't-class-cursor'];
   };
   /**
-   * 滑块当前值文本。值为 true 显示默认文案，值为 false 不显示滑块当前值文本，值为 `\${value}%` 则表示组件会根据占位符渲染文案
+   * 滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值
    * @default false
    */
   label?: {
     type: StringConstructor;
     optionalTypes: Array<BooleanConstructor>;
     value?: string | boolean;
-    required?: boolean;
   };
   /**
    * 刻度标记，示例：`[0, 10, 40, 200]` 或者 `{ 5:  '5¥', 10: '10%' }`
@@ -64,7 +53,6 @@ export interface TdSliderProps {
     type: ObjectConstructor;
     optionalTypes: Array<ArrayConstructor>;
     value?: Record<number, string> | Array<number>;
-    required?: boolean;
   };
   /**
    * 滑块范围最大值
@@ -73,7 +61,6 @@ export interface TdSliderProps {
   max?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 滑块范围最小值
@@ -82,7 +69,6 @@ export interface TdSliderProps {
   min?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 双游标滑块
@@ -91,7 +77,6 @@ export interface TdSliderProps {
   range?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否边界值
@@ -100,7 +85,6 @@ export interface TdSliderProps {
   showExtremeValue?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 步长
@@ -109,7 +93,6 @@ export interface TdSliderProps {
   step?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 滑块值
@@ -118,15 +101,14 @@ export interface TdSliderProps {
     type: NumberConstructor;
     optionalTypes: Array<ArrayConstructor>;
     value?: SliderValue;
-    required?: boolean;
   };
   /**
    * 滑块值，非受控属性
    */
   defaultValue?: {
     type: NumberConstructor;
+    optionalTypes: Array<ArrayConstructor>;
     value?: SliderValue;
-    required?: boolean;
   };
 }
 

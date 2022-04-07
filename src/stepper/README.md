@@ -59,7 +59,7 @@ min | Number | 0 | 最小值 | N
 step | Number | 1 | 步长 | N
 theme | String | normal | 组件风格。可选项：normal/grey | N
 value | String / Number | 0 | 值 | N
-defaultValue | String / Number | 0 | （非受控）值 | N
+default-value | String / Number | undefined | 值。非受控属性 | N
 
 ### Stepper Events
 
@@ -67,4 +67,4 @@ defaultValue | String / Number | 0 | （非受控）值 | N
 -- | -- | --
 blur | `({ type: string | number })` | 输入框失去焦点时触发
 change | `({ value: string | number })` | 数值发生变更时触发
-overlimit | `({ type: 'minus' | 'plus' })` | 数值超出限制时触发
+overlimit | `({type: 'minus' | 'plus'})` | 数值超出限制时触发

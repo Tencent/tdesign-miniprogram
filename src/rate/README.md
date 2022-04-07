@@ -72,7 +72,7 @@ Page({
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 allow-half | Boolean | false | 是否允许半选 | N
-color | String / Array | '#ED7B2F' | 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，两个值表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色。示例：['#ED7B2F', '#999999']。TS 类型：`string | Array<string>` | N
+color | String / Array | '#ED7B2F' | 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB']。TS 类型：`string | Array<string>` | N
 count | Number | 5 | 评分的数量 | N
 disabled | Boolean | false | 是否禁用评分 | N
 gap | Number | 6 | 评分图标的间距 | N

@@ -11,7 +11,7 @@ const props: TdRateProps = {
     type: Boolean,
     value: false,
   },
-  /** 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，两个值表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色。示例：['#ED7B2F', '#999999'] */
+  /** 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB'] */
   color: {
     type: String,
     optionalTypes: [Array],
@@ -50,12 +50,12 @@ const props: TdRateProps = {
   /** 选择评分的值 */
   value: {
     type: Number,
-    value: 0,
+    value: null,
   },
   /** 选择评分的值，非受控属性 */
   defaultValue: {
-    type: null,
-    value: undefined,
+    type: Number,
+    value: 0,
   },
   /** 形状类型，有描边类型和填充类型两种 */
   variant: {
