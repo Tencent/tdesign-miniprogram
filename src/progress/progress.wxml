@@ -1,10 +1,12 @@
-<view class="{{ classPrefix }} {{classPrefix}}--status--{{status}}">
+<view class="{{ classPrefix }} {{classPrefix}}--status--{{status || computedStatus}}">
   <view class="{{ classPrefix }}__inner">
     <view class="{{ classPrefix }}__bar" style="height: {{ strokeWidth }}px; background: {{ trackColor }}">
-      <view class="{{ classPrefix }}__bar-percent" style="background:{{ colorBar }}; width:{{ percentage + '%'}}">
+      <view class="{{ classPrefix }}__bar-percent" style="background:{{ colorBar }}; width:{{ computedProgress + '%'}}">
       </view>
     </view>
-    <view wx:if="{{ label }}" class="{{ classPrefix }}__label {{prefix}}-class-label"> {{ percentage + '%' }} </view>
+    <view wx:if="{{ label }}" class="{{ classPrefix }}__label {{prefix}}-class-label">
+      {{ computedProgress + '%' }}
+    </view>
     <slot name="label"></slot>
   </view>
 </view>

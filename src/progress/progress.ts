@@ -4,11 +4,11 @@ import props from './props';
 import { getBackgroundColor } from './utils';
 
 const { prefix } = config;
-const name = `${prefix}-progress`;
+const classPrefix = `${prefix}-progress`;
 
 @wxComponent()
 export default class Progress extends SuperComponent {
-  externalClasses = ['t-class-label'];
+  externalClasses = [`${prefix}-class-label`];
 
   options = {
     multipleSlots: true,
@@ -18,27 +18,20 @@ export default class Progress extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
-    percentageBar: 0,
+    classPrefix,
     colorBar: '',
+    computedStatus: '',
+    computedProgress: 0,
   };
 
   observers = {
     percentage(percentage) {
-      const { status } = this.data;
       percentage = Math.max(0, Math.min(percentage, 100));
 
-      if (percentage === 100 && !['error', 'warning', 'active'].includes(status)) {
-        this.setData({
-          status: 'success',
-        });
-      }
-
-      if (status === 'success' && percentage > 0 && percentage < 100) {
-        this.setData({
-          status: '',
-        });
-      }
+      this.setData({
+        computedStatus: percentage === 100 ? 'success' : '',
+        computedProgress: percentage,
+      });
     },
 
     color(color) {
