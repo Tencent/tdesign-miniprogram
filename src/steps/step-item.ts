@@ -66,73 +66,105 @@ export default class StepItem extends SuperComponent {
 
   methods = {
     updateStatus(current, currentStatus, index, theme, layout, steps, readonly) {
-      const { status } = this.data;
       const _current = String(current);
-      const firstStep = Number(_current.split('-')[0]);
-      const secondStep = _current.split('-')[1] ? Number(_current.split('-')[1]) : undefined;
+      const connectLine = '-';
 
-      // 判断对象的attr属性存在 && attr数组长度不为0
+      /**
+       * 判断对象的attr为数组 && 数组长度大于0
+       */
       const judgeObjAttr = (data, attr: string) => {
-        return data[attr] && data[attr].length;
+        return Array.isArray(data[attr]) && data[attr].length;
       };
 
-      const judgeStepStatus = (itemIndex: number, current: number, status: string) => {
-        if (itemIndex < current) return 'finish';
-        if (itemIndex === current) return status;
-        return 'default';
+      /**
+       * 去除字符串最后一个`connectLine`符号及之后的字符，即1-1 变为1， 1-10-1变为1-10
+       */
+      const RegReplace = (s) => {
+        const reg = new RegExp(`(.*)${connectLine}{1}.*`);
+        return s.replace(reg, '$1');
       };
 
-      const changeStatus = (
-        data,
-        attr: string,
-        itemAttr: string,
-        status: string,
-        value: number = data[attr].length,
-      ) => {
-        data[attr].forEach((item, index) => {
-          item[itemAttr] = judgeStepStatus(index, value, status);
-        });
+      /**
+       * 判断当前步骤条与current指定的步骤是否同级
+       */
+      const sameSteps = (stepsTag: String, current: String) => {
+        return stepsTag.length !== current.length && RegReplace(stepsTag) === RegReplace(current);
       };
 
-      const isLastChild = (data, index) => index === data.length - 1;
+      /**
+       * @param item 步骤条
+       * @param index 步骤条下标
+       * @param itemTag 步骤条位置标记
+       * @param current 指定步骤条
+       * @param currentStatus 指定当前状态
+       * @returns 状态
+       */
+      const stepFinalStatus = (item, index, itemTag, current: String, currentStatus) => {
+        let _status = '';
+        // console.log(item.status);
+        if (item.status !== 'default' && item.status !== undefined) {
+          _status = item.status === '' ? 'default' : item.status;
+        } else if (item.status === 'default' || item.status === undefined) {
+          if (itemTag < current) {
+            _status = 'finish';
+          }
 
-      // 1. 拷贝一份 substep
+          if (itemTag === current || sameSteps(itemTag, current)) {
+            // console.log(itemTag, item.sta);
+            _status = item.status === '' ? 'default' : currentStatus;
+            // 子步骤
+            if (judgeObjAttr(item, '_subStepItems')) {
+              // 1. 获取所有子步骤条的状态
+              const _statusList = [];
+              item._subStepItems.forEach((subItem, subIndex) => {
+                const subItemTag = `${itemTag}${connectLine}${subIndex}`;
+                const subStatus = stepFinalStatus(subItem, subIndex, subItemTag, current, currentStatus);
+                _statusList.push(subStatus);
+              });
+
+              // 2. 根据数组中子步骤条状态，判断当前步骤条状态。优先级：finish>error>process
+              // 2.1. 子步骤条中存在process或current指向子步骤且子步骤全为default，当前步骤process
+              // 2.2. 子步骤条中存在error，当前步骤error
+              // 2.3. 最后一个子步骤条为finish，当前步骤为finish
+              if (_statusList.includes('process') || _statusList.every((item) => item === 'default')) {
+                _status = 'process';
+              }
+              if (_statusList.includes('error')) {
+                _status = 'error';
+              }
+              if (_statusList[_statusList.length - 1] === 'finish') {
+                _status = 'finish';
+              }
+            }
+          }
+          if (itemTag > current) {
+            _status = 'default';
+          }
+        }
+
+        return _status;
+      };
+
+      // 1. 拷贝一份 subStepItems
       if (judgeObjAttr(this.data, 'subStepItems')) {
         const _subStepItems = JSON.parse(JSON.stringify(this.data.subStepItems));
         this.data._subStepItems = _subStepItems;
       }
 
-      // 2. 优先step的statue && 判断step及subStep状态
-      if (status !== 'default') {
-        this.data._status = status;
-      } else if (status === 'default') {
-        if (index < firstStep) {
-          this.data._status = 'finish';
-          judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'finish');
-        } else if (index === firstStep) {
-          this.data._status = currentStatus;
-          if (secondStep !== undefined && judgeObjAttr(this.data, '_subStepItems')) {
-            changeStatus(this.data, '_subStepItems', '_status', currentStatus, secondStep);
-          }
-
-          // secondStep存在，子步骤条为default时，其stepItem状态应为process
-          if (
-            secondStep !== undefined &&
-            currentStatus === 'finish' &&
-            judgeObjAttr(this.data, '_subStepItems') &&
-            !isLastChild(this.data._subStepItems, secondStep)
-          ) {
-            this.data._status = 'process';
-          }
-
-          // secondStep存在，子步骤条为finish且不为最后一个子步骤时，其stepItem状态应为proces
-          if (secondStep !== undefined && currentStatus === 'default') {
-            this.data._status = 'process';
-          }
-        } else if (index > firstStep) {
-          this.data._status = 'default';
-          judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'default');
-        }
+      // 2. 判断status
+      // 2.1 当前步骤条
+      this.data._status = stepFinalStatus(this.data, index, String(index), _current, currentStatus);
+      // 2.1 当前步骤条其子步骤条
+      if (judgeObjAttr(this.data, '_subStepItems')) {
+        this.data._subStepItems.forEach((subItem, subIndex) => {
+          subItem._status = stepFinalStatus(
+            subItem,
+            subIndex,
+            `${index}${connectLine}${subIndex}`,
+            _current,
+            currentStatus,
+          );
+        });
       }
 
       // update icon
@@ -146,7 +178,7 @@ export default class StepItem extends SuperComponent {
       }
 
       this.setData({
-        curStatus: this.data._status || this.data.status,
+        curStatus: this.data._status,
         curSubStepItems: this.data._subStepItems || [],
         computedIcon: iconStatus || this.data.icon,
         index,
