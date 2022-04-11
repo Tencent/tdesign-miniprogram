@@ -80,10 +80,7 @@ export const addUnit = function (value?: string | number): string | undefined {
  * @param maxCharacter 规定最大字符串长度
  * @returns 当没有传入maxCharacter时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
  */
-export const getCharacterLength = (
-  str: string,
-  maxCharacter?: number,
-): { length: number; characters: string } => {
+export const getCharacterLength = (str: string, maxCharacter?: number): { length: number; characters: string } => {
   const hasMaxCharacter = typeof maxCharacter === 'number';
   if (!str || str.length === 0) {
     if (hasMaxCharacter) {
@@ -125,3 +122,6 @@ export const getCharacterLength = (
     characters: '',
   };
 };
+
+export const chunk = (arr: any[], size: number) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));

@@ -1,0 +1,51 @@
+<template name="grid">
+  <block wx:if="{{gridThemeItems.length === 1}}">
+    <view class="{{classPrefix}}__single-wrap">
+      <view
+        class="{{classPrefix}}__square"
+        style="{{gridThemeItemStyle}}"
+        wx:for="{{gridThemeItems[0]}}"
+        wx:key="index"
+        bind:tap="onSelect"
+        data-index="{{index}}"
+      >
+        <t-image lazy class="{{classPrefix}}__square-image" src="{{item.url}}" mode="aspectFill"></t-image>
+        <view style="{{ item.color ? 'color: ' + item.color : '' }}" class="{{classPrefix}}__square-text">
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:elif="{{gridThemeItems.length > 1}}">
+    <view class="{{classPrefix}}__swiper-wrap">
+      <t-swiper autoplay="{{false}}" current="{{currentSwiperIndex}}" bindchange="onSwiperChange">
+        <t-swiper-item wx:for="{{gridThemeItems}}" wx:key="index">
+          <view class="{{classPrefix}}__swiper-item">
+            <view
+              class="{{classPrefix}}__square"
+              style="{{gridThemeItemStyle}}"
+              wx:for="{{item}}"
+              wx:key="index"
+              data-index="{{index}}"
+              bind:tap="onSelect"
+            >
+              <t-image lazy class="{{classPrefix}}__square-image" src="{{item.url}}" mode="aspectFill"></t-image>
+              <view style="{{ item.color ? 'color: ' + item.color : '' }}" class="{{classPrefix}}__square-text">
+                {{item.label}}
+              </view>
+            </view>
+          </view>
+        </t-swiper-item>
+      </t-swiper>
+      <view class="{{classPrefix}}__nav">
+        <view class="{{classPrefix}}__dots">
+          <view
+            wx:for="{{gridThemeItems.length}}"
+            wx:key="index"
+            class="{{classPrefix}}__dots-item {{index === currentSwiperIndex ? prefix + '-is-active' : ''}}"
+          />
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

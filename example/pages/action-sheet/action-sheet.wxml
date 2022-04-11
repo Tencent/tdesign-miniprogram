@@ -1,0 +1,25 @@
+<view class="action-sheet">
+  <view class="demo-title">ActionSheet 动作面板</view>
+  <view class="demo-desc">底部弹起的模态面板，包含与当前情境相关的多个选项。</view>
+  <t-demo title="01 类型" desc="" operList="{{operList1}}" bindclickoper="clickHandle" />
+  <!-- 组件引用demo -->
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="onSelect"
+    bind:cancel="onCancel"
+    bind:close="onClose"
+    items="{{items}}"
+    visible="{{visible}}"
+  />
+  <!-- 组件引用自定义面板demo -->
+  <t-action-sheet id="t-action-shee-slot" visible="{{slotVisible}}" bind:cancel="onCancelBaseSlot">
+    <view class="slot-wrap">我是自定义的内容</view>
+  </t-action-sheet>
+  <!-- 指令式demo -->
+  <t-action-sheet
+    id="t-action-sheet-imperative"
+    bind:cancel="onCancelBaseImperative"
+    bind:selected="onSelectBaseImperative"
+  />
+  <t-toast id="t-toast" />
+</view>

@@ -1,0 +1,18 @@
+var getListThemeItemClass = function (props) {
+  var classPrefix = props.classPrefix;
+  var item = props.item;
+  var prefix = props.prefix;
+  var classList = [classPrefix + '__list-item'];
+  if (item.disabled) {
+    classList.push(prefix + '-is-disabled');
+  }
+  return classList.join(' ');
+};
+
+var getGridThemeItemStyle = function (count) {
+  var row = 100 / Math.floor(count / 2);
+  return 'width: ' + row + '%;' + 'flex: 1 1 ' + row + '%;';
+};
+
+module.exports.getListThemeItemClass = getListThemeItemClass;
+module.exports.getGridThemeItemStyle = getGridThemeItemStyle;

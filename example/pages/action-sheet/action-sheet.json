@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "ActionSheet",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index",
+    "t-toast": "tdesign-miniprogram/toast/toast"
+  }
+}

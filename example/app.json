@@ -54,7 +54,8 @@
     "pages/search/search",
     "pages/home/navigateFail/navigateFail",
     "pages/navbar/navbar",
-    "pages/date-time-picker/date-time-picker"
+    "pages/date-time-picker/date-time-picker",
+    "pages/action-sheet/action-sheet"
   ],
   "usingComponents": {
     "t-demo": "../../components/demo-block/index",
@@ -118,7 +119,8 @@
     "t-image": "tdesign-miniprogram/image/image",
     "t-search": "tdesign-miniprogram/search/search",
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker"
+    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
+    "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet"
   },
   "window": {
     "backgroundTextStyle": "light",
