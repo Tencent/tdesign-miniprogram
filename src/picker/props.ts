@@ -9,12 +9,12 @@ const props: TdPickerProps = {
   /** 取消按钮文字 */
   cancelBtn: {
     type: String,
-    value: '',
+    value: '取消',
   },
   /** 确定按钮文字 */
   confirmBtn: {
     type: String,
-    value: '',
+    value: '确认',
   },
   /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 */
   header: {
@@ -29,11 +29,11 @@ const props: TdPickerProps = {
   /** 选中值 */
   value: {
     type: Array,
+    value: null,
   },
   /** 选中值，非受控属性 */
   defaultValue: {
-    type: null,
-    value: undefined,
+    type: Array,
   },
   /** 是否显示 */
   visible: {
