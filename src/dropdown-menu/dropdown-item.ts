@@ -1,48 +1,28 @@
-import TComponent from '../common/component';
+import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './dropdown-item-props';
+import type { TdDropdownItemProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-dropdown-item`;
 
-TComponent({
-  properties: {
+export interface DropdownItemProps extends TdDropdownItemProps {}
+@wxComponent()
+export default class DropdownMenuItem extends SuperComponent {
+  properties = {
     title: {
       type: String,
       value: '',
-    },
-    options: {
-      type: Array,
-      value: [],
-    },
-    selectMode: {
-      type: String,
-      value: 'single', // single | multi
-    },
-    optionsLayout: {
-      type: String,
-      value: 'columns', // columns | tree | slot
-    },
-    optionsColumns: {
-      type: Number,
-      optionalTypes: [String],
-      value: 1,
-    },
-    value: {
-      type: Array,
-      optionalTypes: [String, Number],
-      value: [],
-    },
-    disabled: {
-      type: Boolean,
-      value: false,
     },
     itemId: {
       type: String,
       value: '',
     },
-  },
-  data: {
-    classBasePrefix: prefix,
+    ...props,
+  };
+
+  data = {
+    prefix,
     classPrefix: name,
     show: false,
     isBtnDisabled: true,
@@ -58,8 +38,9 @@ TComponent({
     },
     treeOptions: [],
     isTree: false,
-  },
-  relations: {
+  };
+
+  relations: RelationsOptions = {
     './dropdown-menu': {
       type: 'parent',
       linked(target) {
@@ -69,39 +50,43 @@ TComponent({
         });
       },
     },
-  },
-  attached() {
-    const { selectMode } = this.data;
-    const { optionsLayout } = this.data;
-    const layoutCol = +this.data.optionsColumns;
-    const isTree = optionsLayout === 'tree';
-    const treeCol = isTree ? +this.data.treeColumns : 0;
-    const contentClassesObj: Object = {
-      [`${prefix}-is-tree`]: isTree,
-      [`${prefix}-is-single`]: !isTree && selectMode === 'single',
-      [`${prefix}-is-multi`]: !isTree && selectMode === 'multi',
-      [`${prefix}-is-col1`]: layoutCol === 1 || treeCol === 1,
-      [`${prefix}-is-col2`]: layoutCol === 2 || treeCol === 2,
-      [`${prefix}-is-col3`]: layoutCol === 3 || treeCol === 3,
-    };
-    const contentClasses = Object.keys(contentClassesObj)
-      .filter((e) => contentClassesObj[e] === true)
-      .join(' ');
-    this.setData({
-      contentClasses,
-      isTree,
-      selected: this.data.value,
-    });
+  };
 
-    if (isTree) {
-      this.data.treeState.selectList = this.data.selected || [];
-      this._buildTreeOptions();
-    }
-    this.updateButtonState();
-  },
-  methods: {
+  lifetimes = {
+    attached() {
+      const { multiple } = this.data;
+      const { optionsLayout } = this.data;
+      const layoutCol = +this.data.optionsColumns;
+      const isTree = optionsLayout === 'tree';
+      const treeCol = isTree ? +this.data.treeColumns : 0;
+      const contentClassesObj: Object = {
+        [`${prefix}-is-tree`]: isTree,
+        [`${prefix}-is-single`]: !isTree && !multiple,
+        [`${prefix}-is-multi`]: !isTree && multiple,
+        [`${prefix}-is-col1`]: layoutCol === 1 || treeCol === 1,
+        [`${prefix}-is-col2`]: layoutCol === 2 || treeCol === 2,
+        [`${prefix}-is-col3`]: layoutCol === 3 || treeCol === 3,
+      };
+      const contentClasses = Object.keys(contentClassesObj)
+        .filter((e) => contentClassesObj[e] === true)
+        .join(' ');
+      this.setData({
+        contentClasses,
+        isTree,
+        selected: this.data.value,
+      });
+
+      if (isTree) {
+        this.data.treeState.selectList = this.data.selected || [];
+        this._buildTreeOptions();
+      }
+      this.updateButtonState();
+    },
+  };
+
+  methods = {
     _buildTreeOptions() {
-      const { options, selectMode } = this.data;
+      const { options, multiple } = this.data;
       const { selectList } = this.data.treeState;
       const newTreeOptions = [];
       let level = -1;
@@ -121,12 +106,11 @@ TComponent({
             node = firstChild;
           } else {
             // 没有子节点，结束处理
-            this._selectTreeNode(level, selectMode === 'multi' ? [] : undefined);
+            this._selectTreeNode(level, multiple ? [] : undefined);
             break;
           }
         } else {
-          const child: any =
-            !Array.isArray(thisValue) && list.find((child: any) => child.value === thisValue);
+          const child: any = !Array.isArray(thisValue) && list.find((child: any) => child.value === thisValue);
           node = child;
         }
       }
@@ -169,17 +153,16 @@ TComponent({
       this._closeDropdown();
     },
     updateSelected(e) {
+      const { multiple } = this.properties;
+
       if (this.data.isTree) {
-        this._selectTreeNode(
-          e.target.dataset.level,
-          this.data.selectMode === 'single' ? e.detail.name : e.detail.names,
-        );
+        this._selectTreeNode(e.target.dataset.level, !multiple ? e.detail.name : e.detail.names);
       } else {
         const data = {
-          selected: this.data.selectMode === 'single' ? e.detail.name : e.detail.names,
+          selected: e.detail.value,
         };
         this.setData(data);
-        if (this.data.bar && this.data.selectMode === 'single') {
+        if (this.data.bar && !multiple) {
           this.confirmSelect();
         }
       }
@@ -187,12 +170,14 @@ TComponent({
       this.updateButtonState();
     },
     updateButtonState() {
+      const { multiple } = this.properties;
+
       if (this.data.isTree) {
         let isEmpty = false;
-        if (this.data.selectMode === 'single') {
+        if (!multiple) {
           isEmpty = this.data.treeState.selectList[this.data.treeState.leafLevel] === undefined;
         }
-        if (this.data.selectMode === 'multi') {
+        if (multiple) {
           const selectList = this.data.treeState.selectList[this.data.treeState.leafLevel] as [];
           isEmpty = selectList && selectList.length <= 0;
         }
@@ -233,5 +218,5 @@ TComponent({
       this._selectTreeNode(e.target.dataset.level, e.detail.name);
       this._buildTreeOptions();
     },
-  },
-});
+  };
+}

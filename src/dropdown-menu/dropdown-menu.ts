@@ -1,38 +1,33 @@
-import TComponent from '../common/component';
+import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+import type { TdDropdownMenuProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-dropdown-menu`;
 
-TComponent({
-  properties: {
-    overlay: {
-      type: Boolean,
-      value: true,
-    },
-    duration: {
-      type: Number,
-      value: 200,
-    },
-    closeOnClickOverlay: {
-      type: Boolean,
-      value: true,
-    },
-  },
-  data: {
+export interface DropdownMenuProps extends TdDropdownMenuProps {}
+
+@wxComponent()
+export default class DropdownMenu extends SuperComponent {
+  properties = props; // todo: zindex activeColor
+
+  data = {
     classBasePrefix: prefix,
     classPrefix: name,
     nodes: null,
     menus: null,
     activeIdx: -1,
     bottom: 0,
-  },
-  relations: {
+  };
+
+  relations: RelationsOptions = {
     './dropdown-item': {
       type: 'child',
     },
-  },
-  methods: {
+  };
+
+  methods = {
     _getAllItems() {
       const nodes = this.getRelationNodes('./dropdown-item');
       const menus = nodes.map((a) => {
@@ -69,8 +64,11 @@ TComponent({
         this.triggerEvent('opened');
       }
     },
-  },
-  ready() {
-    this._getAllItems();
-  },
-});
+  };
+
+  lifetimes = {
+    ready() {
+      this._getAllItems();
+    },
+  };
+}

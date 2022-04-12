@@ -1,50 +1,47 @@
-<view
-  class="{{classPrefix}} {{show ? classBasePrefix + '-is-expanded' : ''}}"
-  style="top:{{top}}px"
->
-  <view
-    wx:if="{{show}}"
-    class="t-mask"
-    bindtap="clickOverlay"
-    catchtouchmove="catchtouchmove"
-  ></view>
+<view class="{{classPrefix}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px">
+  <view wx:if="{{show}}" class="t-mask" bindtap="clickOverlay" catchtouchmove="catchtouchmove"></view>
   <view class="{{contentClasses}} {{classPrefix}}__content" style="transition: all 200ms ease">
     <view class="{{classPrefix}}__bd" wx:if="{{show}}">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
-        <t-cell-group wx:if="{{selectMode === 'single'}}" bordered="{{false}}">
+        <t-cell-group wx:if="{{!multiple}}" bordered="{{false}}">
           <t-radio-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
             <t-radio
               wx:for="{{options}}"
               wx:key="index"
-              name="{{item.value}}"
-              title="{{item.title}}"
+              icon="stroke-line"
+              align="right"
+              value="{{item.value}}"
+              label="{{item.label}}"
               disabled="{{item.disabled}}"
             ></t-radio>
           </t-radio-group>
         </t-cell-group>
         <!-- 多选列表 -->
-        <t-cell-group wx:if="{{selectMode === 'multi'}}" bordered="{{false}}">
-          <t-checkbox-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
-            <view class="{{classBasePrefix}}-checkbox-wrap" wx:for="{{options}}" wx:key="index">
+        <view wx:else>
+          <t-checkbox-group
+            t-class="{{classPrefix}}__checkbox-group"
+            custom-style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
+            value="{{selected}}"
+            bordered="{{false}}"
+            bind:change="updateSelected"
+          >
+            <block wx:for="{{options}}" wx:key="index">
               <t-checkbox
-                name="{{item.value}}"
-                title="{{item.title}}"
+                class="{{classPrefix}}__checkbox-item"
+                theme="tag"
+                value="{{item.value}}"
+                label="{{item.label}}"
                 disabled="{{item.disabled}}"
               ></t-checkbox>
-            </view>
+            </block>
           </t-checkbox-group>
-        </t-cell-group>
+        </view>
       </block>
       <block wx:elif="{{optionsLayout === 'tree'}}">
         <!-- 树形列表 ST -->
         <!-- TODO 逻辑待实现 -->
-        <t-cell-group
-          class="{{classBasePrefix}}-tree-cell-group"
-          wx:for="{{treeOptions}}"
-          wx:key="level"
-          wx:for-index="level"
-        >
+        <t-cell-group class="{{prefix}}-tree-cell-group" wx:for="{{treeOptions}}" wx:key="level" wx:for-index="level">
           <t-radio-group
             wx:if="{{level < treeState.leafLevel}}"
             value="{{treeState.selectList[level]}}"
@@ -54,13 +51,13 @@
             <t-radio
               wx:for="{{treeOptions[level]}}"
               wx:key="index"
-              name="{{item.value}}"
-              bordered="{{false}}"
-              title="{{item.title}}"
+              value="{{item.value}}"
+              borderless
+              label="{{item.label}}"
             ></t-radio>
           </t-radio-group>
           <block wx:else>
-            <block wx:if="{{selectMode === 'single'}}">
+            <block wx:if="{{!multiple}}">
               <!-- 树形列表 - 叶子节点（单选） ST -->
               <t-radio-group
                 data-level="{{level}}"
@@ -71,26 +68,23 @@
                   wx:for="{{treeOptions[level]}}"
                   wx:key="index"
                   name="{{item.value}}"
-                  bordered="{{false}}"
-                  title="{{item.title}}"
+                  borderless
+                  align="right"
+                  label="{{item.label}}"
                 ></t-radio>
               </t-radio-group>
               <!-- 树形列表 - 叶子节点（单选） ED -->
             </block>
-            <block wx:elif="{{selectMode === 'multi'}}">
+            <block wx:elif="{{multiple}}">
               <!-- 树形列表 - 叶子节点（多选） ST -->
               <t-checkbox-group
                 value="{{treeState.selectList[level]}}"
-                bordered="{{false}}"
+                borderless
                 bind:change="updateSelected"
                 data-level="{{level}}"
               >
-                <view
-                  class="{{classBasePrefix}}-checkbox-wrap"
-                  wx:for="{{treeOptions[level]}}"
-                  wx:key="index"
-                >
-                  <t-checkbox name="{{item.value}}" title="{{item.title}}"></t-checkbox>
+                <view class="{{prefix}}-checkbox-wrap" wx:for="{{treeOptions[level]}}" wx:key="index">
+                  <t-checkbox align="right" name="{{item.value}}" label="{{item.label}}"></t-checkbox>
                 </view>
               </t-checkbox-group>
               <!-- 树形列表 - 叶子节点（多选） ED -->
@@ -104,20 +98,25 @@
         <slot></slot>
       </block>
     </view>
-    <view
-      class="{{classPrefix}}__ft"
-      wx:if="{{selectMode === 'multi' || optionsLayout === 'tree'}}"
-    >
-      <t-button class="t-button" theme="default" disabled="{{isBtnDisabled}}" bindtap="resetSelect"
-        >重置</t-button
-      >
-      <t-button
-        class="t-button"
-        theme="primary"
-        disabled="{{isBtnDisabled}}"
-        bindtap="confirmSelect"
-        >确定</t-button
-      >
+    <view class="{{classPrefix}}__foot" wx:if="{{multiple || optionsLayout === 'tree'}}">
+      <t-button-group>
+        <t-button
+          block
+          t-class="button button--reset"
+          theme="default"
+          disabled="{{isBtnDisabled}}"
+          bindtap="resetSelect"
+          >重置</t-button
+        >
+        <t-button
+          block
+          t-class="button button--confirm"
+          theme="primary"
+          disabled="{{isBtnDisabled}}"
+          bindtap="confirmSelect"
+          >确定</t-button
+        >
+      </t-button-group>
     </view>
   </view>
 </view>
