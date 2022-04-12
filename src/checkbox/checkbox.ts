@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 import config from '../common/config';
 import Props from './props';
 
@@ -22,15 +22,20 @@ export default class CheckBox extends SuperComponent {
     },
   };
 
-  options = {
+  options: ComponentsOptionsType = {
     multipleSlots: true,
+    styleIsolation: 'shared',
   };
 
   properties = {
     ...Props,
-    defaultChecked: {
-      type: null,
-      value: undefined,
+    theme: {
+      type: String,
+      value: 'default',
+    },
+    borderless: {
+      type: Boolean,
+      value: false,
     },
   };
 
