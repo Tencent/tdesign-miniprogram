@@ -39,6 +39,10 @@ export default class Radio extends SuperComponent {
 
   properties = {
     ...Props,
+    borderless: {
+      type: Boolean,
+      value: false,
+    },
   };
 
   controlledProps = [
