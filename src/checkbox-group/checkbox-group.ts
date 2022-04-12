@@ -24,6 +24,7 @@ export default class CheckBoxGroup extends SuperComponent {
 
   properties = {
     ...Props,
+    customStyle: String,
     defaultValue: {
       type: null,
       value: undefined,
@@ -31,7 +32,7 @@ export default class CheckBoxGroup extends SuperComponent {
   };
 
   observers = {
-    value: function () {
+    value() {
       this.updateChildren();
     },
   };
@@ -152,9 +153,7 @@ export default class CheckBoxGroup extends SuperComponent {
       const items = this.getChilds();
       const checkboxOptions = items.filter((i) => !i.data.checkAll);
       const all = checkboxOptions.map((item) => item.data.value);
-      const enableValue = checkboxOptions
-        .filter((i) => !i.data.disabled)
-        .map((item) => item.data.value);
+      const enableValue = checkboxOptions.filter((i) => !i.data.disabled).map((item) => item.data.value);
       const currentVal = Array.from(new Set(this.data.value?.filter((i) => all.indexOf(i) > -1)));
       const element = items.find((item) => item.data.checkAll);
       if (currentVal.length) {
