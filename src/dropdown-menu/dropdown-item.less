@@ -74,7 +74,7 @@
     left: @cell-horizontal-padding;
   }
 
-  &__bd {
+  &__body {
     flex: 1;
     background: @dropdown-menu-color-block;
     overflow: auto;
@@ -107,7 +107,22 @@
   }
 
   .@{prefix}-mask {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__column {
+    flex: 1;
+
+    &--ancestor {
+      background: #eee;
+    }
+
+    &--parent {
+      background-color: #f3f3f3;
+    }
   }
 
   // .@{prefix}-cell {
@@ -198,12 +213,23 @@
   }
 
   /** 树形结构 */
+  &__tree {
+    &-item {
+      height: 96rpx;
+      line-height: 96rpx;
+      font-size: 32rpx;
+      padding-left: 32rpx;
+
+      &--active {
+        color: @primary-color;
+      }
+    }
+  }
   .@{prefix}-is-tree {
     max-height: @dropdown-item-height;
 
-    .@{prefix}-dropdown-item__bd {
+    .@{prefix}-dropdown-item__body {
       display: flex;
-      align-items: flex-start;
       overflow: hidden;
 
       .@{prefix}-dropdown-item__tree-group {
@@ -262,7 +288,7 @@
 
   /** multi 多选多列情况 */
   .@{prefix}-is-multi {
-    .@{prefix}-dropdown-item__bd {
+    .@{prefix}-dropdown-item__body {
       padding-top: @spacer;
       padding-bottom: @spacer;
       overflow-y: auto;
@@ -376,4 +402,15 @@
 .button {
   border-radius: 0 !important;
   border: 0 !important;
+}
+
+.radio {
+  padding-top: 24rpx !important;
+  padding-bottom: 24rpx !important;
+
+  &__label {
+    &--active {
+      color: @primary-color !important;
+    }
+  }
 }

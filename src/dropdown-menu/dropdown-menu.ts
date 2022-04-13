@@ -13,7 +13,7 @@ export default class DropdownMenu extends SuperComponent {
   properties = props; // todo: zindex activeColor
 
   data = {
-    classBasePrefix: prefix,
+    prefix,
     classPrefix: name,
     nodes: null,
     menus: null,
@@ -27,48 +27,64 @@ export default class DropdownMenu extends SuperComponent {
     },
   };
 
+  lifetimes = {
+    ready() {
+      this.getAllItems();
+    },
+  };
+
   methods = {
-    _getAllItems() {
+    getAllItems() {
       const nodes = this.getRelationNodes('./dropdown-item');
-      const menus = nodes.map((a) => {
-        const { title, disabled } = a.data;
-        return { title, disabled };
-      });
+      const menus = nodes.map((a) => a.data);
+
       this.setData({
         nodes,
         menus,
       });
     },
-    _toggleDropdown(e) {
-      const idx = e.target.dataset.index;
+    toggleDropdown(e: WechatMiniprogram.BaseEvent) {
+      const { index: idx } = e.target.dataset;
       const { activeIdx } = this.data;
+      const prevItem = this.data.nodes[activeIdx];
+      const currItem = this.data.nodes[idx];
+
+      if (currItem.data.disabled) return;
+
       if (activeIdx !== -1) {
-        this.triggerEvent('close');
-        this.data.nodes[activeIdx].setData({
-          show: false,
-        });
-        this.triggerEvent('closed');
+        prevItem.triggerEvent('close');
+        prevItem.setData(
+          {
+            show: false,
+          },
+          () => {
+            setTimeout(() => {
+              prevItem.triggerEvent('closed');
+            }, 240);
+          },
+        );
       }
+
       if (activeIdx === idx) {
         this.setData({
           activeIdx: -1,
         });
       } else {
-        this.triggerEvent('open');
+        currItem.triggerEvent('open');
         this.setData({
           activeIdx: idx,
         });
-        this.data.nodes[idx].setData({
-          show: true,
-        });
-        this.triggerEvent('opened');
+        currItem.setData(
+          {
+            show: true,
+          },
+          () => {
+            setTimeout(() => {
+              currItem.triggerEvent('opened');
+            }, 240);
+          },
+        );
       }
-    },
-  };
-
-  lifetimes = {
-    ready() {
-      this._getAllItems();
     },
   };
 }

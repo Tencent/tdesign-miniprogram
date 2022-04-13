@@ -24,6 +24,7 @@ const props: TdDropdownItemProps = {
   /** 选项数据 */
   options: {
     type: Array,
+    value: [],
   },
   /** 选项分栏（1-3） */
   optionsColumns: {
@@ -38,13 +39,13 @@ const props: TdDropdownItemProps = {
   },
   /** 选中值 */
   value: {
-    type: String,
+    type: null,
     optionalTypes: [Number, Array],
     value: null,
   },
   /** 选中值，非受控属性 */
   defaultValue: {
-    type: String,
+    type: null,
     optionalTypes: [Number, Array],
     value: null,
   },
