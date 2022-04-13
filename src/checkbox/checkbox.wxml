@@ -30,12 +30,12 @@
     <!-- title -->
     <view class="{{classPrefix}}__title {{prefix}}-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
       {{label}}
+      <slot />
       <slot name="label" />
     </view>
     <!-- content -->
     <view class="{{classPrefix}}__description {{prefix}}-class-content " style="-webkit-line-clamp:{{maxContentRow}}">
       {{content}}
-      <slot />
       <slot name="content" />
     </view>
   </view>
