@@ -84,6 +84,14 @@ export default class CheckBoxGroup extends SuperComponent {
     updateValue({ name, checked }) {
       const { value, max } = this.data;
       let newValue = value;
+      const keySet = this.getChilds()
+        .map((item) => item.data.value)
+        .reduce((set, key) => {
+          set.add(key);
+          return set;
+        }, new Set());
+
+      newValue = newValue.filter((value) => keySet.has(value));
       if (max && checked && newValue.length === max) {
         return;
       }
