@@ -24,11 +24,11 @@
     <!-- 主文本 -->
     <view class="{{classPrefix}}__title {{prefix}}-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
       {{label}}
+      <slot />
     </view>
     <!-- content -->
     <view class="{{classPrefix}}__description {{prefix}}-class-content " style="-webkit-line-clamp:{{maxContentRow}}">
       {{content}}
-      <slot />
     </view>
   </view>
   <!-- 预制下边框 -->
