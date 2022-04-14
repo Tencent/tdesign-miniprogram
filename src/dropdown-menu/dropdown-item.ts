@@ -1,6 +1,7 @@
 import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './dropdown-item-props';
+import menuProps from './props';
 import type { TdDropdownItemProps } from './type';
 import { equal, clone } from '../common/utils';
 
@@ -26,15 +27,23 @@ export default class DropdownMenuItem extends SuperComponent {
     treeOptions: [],
     initValue: null,
     hasChanged: false,
+    duration: menuProps.duration.value,
+    zIndex: menuProps.zIndex.value,
+    overlay: menuProps.overlay.value,
   };
 
   relations: RelationsOptions = {
     './dropdown-menu': {
       type: 'parent',
       linked(target) {
+        const { zIndex, duration, overlay } = target.properties;
+
         this.getParentBottom(target);
         this.setData({
           bar: target,
+          zIndex,
+          duration,
+          overlay,
         });
       },
     },
@@ -166,8 +175,12 @@ export default class DropdownMenuItem extends SuperComponent {
       this._trigger('change', { value });
     },
 
-    clickOverlay() {
-      this.closeDropdown();
+    handleMaskClick() {
+      const { bar } = this.data;
+
+      if (bar && bar.properties.closeOnClickOverlay) {
+        this.closeDropdown();
+      }
     },
 
     handleReset() {
@@ -175,7 +188,7 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     handleConfirm() {
-      this._trigger('change', { value: this.data.value });
+      this._trigger('confirm', { value: this.data.value });
       this.closeDropdown();
     },
   };

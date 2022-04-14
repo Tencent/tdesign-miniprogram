@@ -30,7 +30,6 @@
   right: 0;
   left: 0;
   top: 0;
-  z-index: 1000;
   overflow: hidden;
 
   &.@{prefix}-is-expanded {
@@ -51,7 +50,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    z-index: 1600;
+    z-index: 11600;
     transform: translate(0, -100%);
   }
 
@@ -111,6 +110,7 @@
     top: 0;
     left: 0;
     right: 0;
+    background: rgba(0, 0, 0, 0.6);
   }
 
   &__column {

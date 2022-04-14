@@ -1,14 +1,17 @@
 <wxs module="_" src="./util.wxs" />
 
-<view class="{{classPrefix}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px">
+<view class="{{classPrefix}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
   <view
-    wx:if="{{show}}"
+    wx:if="{{show && overlay}}"
     class="{{prefix}}-mask"
-    bind:tap="clickOverlay"
-    style="height: {{maskHeight}}px"
+    bind:tap="handleMaskClick"
+    style="height: {{maskHeight}}px; z-index: {{zIndex + 1}}"
     catch:touchmove="catchtouchmove"
   ></view>
-  <view class="{{contentClasses}} {{classPrefix}}__content" style="transition: all 240ms ease">
+  <view
+    class="{{contentClasses}} {{classPrefix}}__content"
+    style="transition: all {{duration}}ms ease; z-index: {{zIndex + 1}}"
+  >
     <view class="{{classPrefix}}__body" wx:if="{{show}}">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
@@ -28,7 +31,7 @@
           </t-radio-group>
         </t-cell-group>
         <!-- 多选列表 -->
-        <view wx:else>
+        <block wx:else>
           <t-checkbox-group
             t-class="{{classPrefix}}__checkbox-group"
             custom-style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
@@ -45,7 +48,7 @@
               ></t-checkbox>
             </block>
           </t-checkbox-group>
-        </view>
+        </block>
       </block>
       <block wx:elif="{{optionsLayout === 'tree'}}">
         <scroll-view
@@ -100,9 +103,8 @@
           </block>
         </scroll-view>
       </block>
-      <block wx:elif="{{optionsLayout === 'slot'}}">
-        <slot></slot>
-      </block>
+
+      <slot />
     </view>
     <view class="{{classPrefix}}__foot" wx:if="{{multiple || optionsLayout === 'tree'}}">
       <t-button-group>

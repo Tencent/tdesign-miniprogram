@@ -29,8 +29,8 @@ const props: TdDropdownItemProps = {
   /** 选项分栏（1-3） */
   optionsColumns: {
     type: String,
-    value: 1,
     optionalTypes: [Number],
+    value: 1,
   },
   /** 选项排列 */
   optionsLayout: {

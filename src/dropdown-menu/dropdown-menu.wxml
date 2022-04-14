@@ -1,5 +1,5 @@
 <view class="{{ classPrefix }}">
-  <view class="{{ classPrefix }}__bar" id="t-bar">
+  <view class="{{ classPrefix }}__bar" style="z-index: {{zIndex}}" id="t-bar">
     <view
       wx:for="{{menus}}"
       wx:key="item"

@@ -45,7 +45,7 @@ export default class DropdownMenu extends SuperComponent {
     },
     toggleDropdown(e: WechatMiniprogram.BaseEvent) {
       const { index: idx } = e.target.dataset;
-      const { activeIdx } = this.data;
+      const { activeIdx, duration } = this.data;
       const prevItem = this.data.nodes[activeIdx];
       const currItem = this.data.nodes[idx];
 
@@ -60,7 +60,7 @@ export default class DropdownMenu extends SuperComponent {
           () => {
             setTimeout(() => {
               prevItem.triggerEvent('closed');
-            }, 240);
+            }, duration);
           },
         );
       }
@@ -81,7 +81,7 @@ export default class DropdownMenu extends SuperComponent {
           () => {
             setTimeout(() => {
               currItem.triggerEvent('opened');
-            }, 240);
+            }, duration);
           },
         );
       }

@@ -40,6 +40,7 @@ export interface TdDropdownMenuProps {
   };
   /**
    * 菜单栏 z-index 层级
+   * @default 11600
    */
   zIndex?: {
     type: NumberConstructor;
@@ -74,6 +75,7 @@ export interface TdDropdownItemProps {
   };
   /**
    * 选项数据
+   * @default []
    */
   options?: {
     type: ArrayConstructor;
@@ -81,6 +83,7 @@ export interface TdDropdownItemProps {
   };
   /**
    * 选项分栏（1-3）
+   * @default 1
    */
   optionsColumns?: {
     type: StringConstructor;

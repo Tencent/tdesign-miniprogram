@@ -30,6 +30,7 @@ const props: TdDropdownMenuProps = {
   /** 菜单栏 z-index 层级 */
   zIndex: {
     type: Number,
+    value: 11600,
   },
 };
 
