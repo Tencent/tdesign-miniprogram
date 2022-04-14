@@ -1,13 +1,10 @@
 <wxs src="./action-sheet.wxs" module="this" />
 <import src="./template/action-sheet-list.wxml" />
 <import src="./template/action-sheet-grid.wxml" />
-<view id="{{classPrefix}}" class="{{classPrefix}}">
+<view id="{{classPrefix}}" class="{{classPrefix}} {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
     <block wx:if="{{gridThemeItems.length}}">
-      <template
-        is="grid"
-        data="{{classPrefix, prefix, gridThemeItems, currentSwiperIndex, gridThemeItemStyle: this.getGridThemeItemStyle(count)}}"
-      />
+      <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
     </block>
     <block wx:elif="{{items && items.length}}">
       <view class="{{classPrefix}}__list" wx:for="{{ items }}" wx:key="index">

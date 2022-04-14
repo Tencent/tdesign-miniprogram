@@ -5,6 +5,7 @@
 @action-sheet-gap-bg-color: #f3f3f3;
 @action-sheet-list-item-color--disabled: rgba(0, 0, 0, 0.26);
 @action-sheet-square-image-size: 72rpx;
+@action-sheet-square-image-padding: 10rpx;
 
 .@{action-sheet} {
   .flex-center {
@@ -17,6 +18,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  &__grid {
+    padding: 48rpx 0 16rpx 0;
+    &-item {
+      margin-bottom: 32rpx;
+    }
   }
 
   &__list {
@@ -41,32 +49,18 @@
     }
   }
 
-  &__single-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    height: 316rpx;
-    padding: 60rpx 0 48rpx 0;
-    background-color: @bg-color-block;
-  }
   &__swiper-wrap {
     position: relative;
-    height: 348rpx;
-    padding: 60rpx 0 48rpx 0;
     background-color: @bg-color-block;
   }
-  &__swiper-item {
-    display: flex;
-    flex-wrap: wrap;
-  }
+
   &__square {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
     height: 148rpx;
     margin-bottom: 32rpx;
     &-image {
       width: @action-sheet-square-image-size;
       height: @action-sheet-square-image-size;
+      padding: @action-sheet-square-image-padding;
       image {
         width: @action-sheet-square-image-size;
         height: @action-sheet-square-image-size;

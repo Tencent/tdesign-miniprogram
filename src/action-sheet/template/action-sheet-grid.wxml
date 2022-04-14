@@ -1,40 +1,35 @@
+<import src="./action-sheet-item.wxml" />
 <template name="grid">
   <block wx:if="{{gridThemeItems.length === 1}}">
-    <view class="{{classPrefix}}__single-wrap">
-      <view
+    <t-grid align="center" t-class="{{classPrefix}}__grid" column="{{count / 2}}" class="{{classPrefix}}__single-wrap">
+      <t-grid-item
+        t-class="{{classPrefix}}__grid-item"
         class="{{classPrefix}}__square"
-        style="{{gridThemeItemStyle}}"
         wx:for="{{gridThemeItems[0]}}"
         wx:key="index"
         bind:tap="onSelect"
         data-index="{{index}}"
       >
-        <t-image lazy class="{{classPrefix}}__square-image" src="{{item.url}}" mode="aspectFill"></t-image>
-        <view style="{{ item.color ? 'color: ' + item.color : '' }}" class="{{classPrefix}}__square-text">
-          {{item.label}}
-        </view>
-      </view>
-    </view>
+        <template is="item" data="{{classPrefix, item}}" />
+      </t-grid-item>
+    </t-grid>
   </block>
   <block wx:elif="{{gridThemeItems.length > 1}}">
     <view class="{{classPrefix}}__swiper-wrap">
-      <t-swiper autoplay="{{false}}" current="{{currentSwiperIndex}}" bindchange="onSwiperChange">
+      <t-swiper height="{{456}}" autoplay="{{false}}" current="{{currentSwiperIndex}}" bindchange="onSwiperChange">
         <t-swiper-item wx:for="{{gridThemeItems}}" wx:key="index">
-          <view class="{{classPrefix}}__swiper-item">
-            <view
+          <t-grid align="center" t-class="{{classPrefix}}__grid" column="{{count / 2}}">
+            <t-grid-item
+              t-class="{{classPrefix}}__grid-item"
               class="{{classPrefix}}__square"
-              style="{{gridThemeItemStyle}}"
               wx:for="{{item}}"
               wx:key="index"
               data-index="{{index}}"
               bind:tap="onSelect"
             >
-              <t-image lazy class="{{classPrefix}}__square-image" src="{{item.url}}" mode="aspectFill"></t-image>
-              <view style="{{ item.color ? 'color: ' + item.color : '' }}" class="{{classPrefix}}__square-text">
-                {{item.label}}
-              </view>
-            </view>
-          </view>
+              <template is="item" data="{{classPrefix, item}}" />
+            </t-grid-item>
+          </t-grid>
         </t-swiper-item>
       </t-swiper>
       <view class="{{classPrefix}}__nav">

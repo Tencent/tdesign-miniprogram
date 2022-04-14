@@ -5,7 +5,7 @@
     class="{{listThemeItemClass}}"
     bind:tap="onSelect"
   >
-    <t-icon wx:if="{{item.icon}}" name="{{item.icon}}" class="{{classPrefix}}__list-item-icon" size="24px"></t-icon>
+    <t-icon wx:if="{{item.icon}}" name="{{item.icon}}" class="{{classPrefix}}__list-item-icon" size="48rpx"></t-icon>
     <view class="{{classPrefix}}__list-item-text">{{item.label || item}}</view>
   </view>
 </template>

@@ -9,10 +9,12 @@ var getListThemeItemClass = function (props) {
   return classList.join(' ');
 };
 
-var getGridThemeItemStyle = function (count) {
-  var row = 100 / Math.floor(count / 2);
-  return 'width: ' + row + '%;' + 'flex: 1 1 ' + row + '%;';
+var isImage = function (name) {
+  console.log(name, name.indexOf('/') !== -1);
+  return name.indexOf('/') !== -1;
 };
 
-module.exports.getListThemeItemClass = getListThemeItemClass;
-module.exports.getGridThemeItemStyle = getGridThemeItemStyle;
+module.exports = {
+  getListThemeItemClass: getListThemeItemClass,
+  isImage: isImage,
+};

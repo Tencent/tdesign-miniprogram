@@ -11,9 +11,15 @@ const name = `${prefix}-action-sheet`;
 export default class ActionSheet extends SuperComponent {
   static show: typeof show;
 
-  externalClasses = [];
+  externalClasses = [`${prefix}-class`];
 
-  properties = { ...props };
+  properties = {
+    ...props,
+    defaultVisible: {
+      type: null,
+      value: undefined,
+    },
+  };
 
   data = {
     prefix,
@@ -21,6 +27,13 @@ export default class ActionSheet extends SuperComponent {
     gridThemeItems: [],
     currentSwiperIndex: 0,
   };
+
+  controlledProps = [
+    {
+      key: 'visible',
+      event: 'visible-change',
+    },
+  ];
 
   ready() {
     this.memoInitialData();
@@ -43,6 +56,7 @@ export default class ActionSheet extends SuperComponent {
       });
     },
 
+    /** 指令调用显示 */
     show() {
       this.splitGridThemeActions();
       this.setData({ visible: true });
@@ -59,15 +73,15 @@ export default class ActionSheet extends SuperComponent {
       };
     },
 
+    /** 指令调用隐藏 */
     close() {
       this.setData({ visible: false });
-      this.triggerEvent('close');
     },
 
-    // 默认点击遮罩关闭
+    /** 默认点击遮罩关闭 */
     onPopupVisibleChange({ detail }) {
       if (!detail.visible) {
-        this.close();
+        this._trigger('visible-change', { visible: false });
       }
     },
 
@@ -79,7 +93,7 @@ export default class ActionSheet extends SuperComponent {
       const realIndex = isSwiperMode ? index + currentSwiperIndex * count : index;
       if (item) {
         this.triggerEvent('selected', { selected: item, index: realIndex });
-        this.triggerEvent('close');
+        this._trigger('visible-change', { visible: false });
       }
     },
 

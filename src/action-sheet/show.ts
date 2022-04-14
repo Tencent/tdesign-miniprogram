@@ -2,8 +2,8 @@ export interface ActionSheetItem {
   label: string;
   color?: string;
   disabled?: boolean;
+  /** 图标名称或图片链接 */
   icon?: string;
-  url?: string;
 }
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
