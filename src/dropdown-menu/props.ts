@@ -6,7 +6,7 @@
 
 import { TdDropdownMenuProps } from './type';
 const props: TdDropdownMenuProps = {
-  /** 菜单标题和选项的选中态颜色 */
+  /** 【讨论中】菜单标题和选项的选中态颜色 */
   activeColor: {
     type: String,
     value: '',

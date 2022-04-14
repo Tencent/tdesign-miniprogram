@@ -6,7 +6,7 @@
 
 export interface TdDropdownMenuProps {
   /**
-   * 菜单标题和选项的选中态颜色
+   * 【讨论中】菜单标题和选项的选中态颜色
    * @default ''
    */
   activeColor?: {
@@ -117,7 +117,7 @@ export interface TdDropdownItemProps {
 }
 
 export interface TdDropdownItemOption {
-  title: string;
+  label: string;
   disabled: boolean;
   value: TdDropdownItemOptionValueType;
   [key: string]: any;
