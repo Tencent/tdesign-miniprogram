@@ -4,6 +4,7 @@ import { basicListOption, withIconListOption, grid, withSwiperGrid } from './con
 
 Page({
   data: {
+    visible: false,
     handler: null,
     operList1: [
       {
@@ -72,5 +73,13 @@ Page({
       message: `选中${label}`,
     });
     this.data.handler?.close();
+  },
+  onVisibleChangeBaseImperative(e) {
+    const {
+      detail: { visible },
+    } = e;
+    this.setData({
+      visible,
+    });
   },
 });

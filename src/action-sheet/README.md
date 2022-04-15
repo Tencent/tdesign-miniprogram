@@ -81,6 +81,7 @@ default-visible | Boolean | false | 必需。显示与隐藏。非受控属性 |
 
 名称 | 参数 | 描述
 -- | -- | --
+visible-change | `(visible: boolean)` | 当浮层隐藏或显示时触发。
 cancel | - | 点击取消按钮时触发
 close | - | 关闭时触发
 selected | `{selected: ActionSheetItem | String, index: number}` | 选择菜单项时触发

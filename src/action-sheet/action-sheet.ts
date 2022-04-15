@@ -59,7 +59,7 @@ export default class ActionSheet extends SuperComponent {
     /** 指令调用显示 */
     show() {
       this.splitGridThemeActions();
-      this.setData({ visible: true });
+      this._trigger('visible-change', { visible: true });
     },
 
     resetData(cb: () => void) {
@@ -75,7 +75,7 @@ export default class ActionSheet extends SuperComponent {
 
     /** 指令调用隐藏 */
     close() {
-      this.setData({ visible: false });
+      this._trigger('visible-change', { visible: false });
     },
 
     /** 默认点击遮罩关闭 */

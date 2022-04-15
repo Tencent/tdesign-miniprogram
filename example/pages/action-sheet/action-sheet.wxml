@@ -5,8 +5,10 @@
   <!-- 指令式demo -->
   <t-action-sheet
     id="t-action-sheet-imperative"
+    visible="{{visible}}"
     bind:cancel="onCancelBaseImperative"
     bind:selected="onSelectBaseImperative"
+    bind:visible-change="onVisibleChangeBaseImperative"
   />
   <t-toast id="t-toast" />
 </view>
