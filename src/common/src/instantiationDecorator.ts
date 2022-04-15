@@ -81,7 +81,7 @@ export const toComponent = function toComponent(options: Record<string, any>) {
         const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
         const props = this.properties;
 
-        if (props[key] == null) {
+        if (props[key] == null && props[defaultKey]) {
           // props[defaultKey] 的默认值需设置成 undefined
           this.setData({
             [key]: props[defaultKey],

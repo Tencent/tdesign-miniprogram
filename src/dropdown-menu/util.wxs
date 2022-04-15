@@ -1,0 +1,5 @@
+module.exports.getTreeClass = function (level) {
+  if (level === 0) return 'leaf';
+  if (level === 1) return 'parent';
+  return 'ancestor';
+};

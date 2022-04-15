@@ -1,6 +1,9 @@
-<view class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}}">
+<view
+  class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}} {{classPrefix}}--{{theme}} {{active ? prefix + '-is-actived' : ''}}"
+>
   <!-- icon -->
   <view
+    wx:if="{{theme == 'default'}}"
     class="{{classPrefix}}__icon-{{align}} {{prefix}}-class-icon"
     data-target="icon"
     bind:tap="onChange"
@@ -25,25 +28,20 @@
     bind:tap="onChange"
   >
     <!-- title -->
-    <view
-      class="{{classPrefix}}__title {{prefix}}-class-label"
-      style="-webkit-line-clamp:{{maxLabelRow}}"
-    >
+    <view class="{{classPrefix}}__title {{prefix}}-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
       {{label}}
+      <slot />
       <slot name="label" />
     </view>
     <!-- content -->
-    <view
-      class="{{classPrefix}}__description {{prefix}}-class-content "
-      style="-webkit-line-clamp:{{maxContentRow}}"
-    >
+    <view class="{{classPrefix}}__description {{prefix}}-class-content " style="-webkit-line-clamp:{{maxContentRow}}">
       {{content}}
-      <slot />
       <slot name="content" />
     </view>
   </view>
   <!-- 内置下边框 -->
   <view
+    wx:if="{{theme == 'default' && !borderless}}"
     class="{{classPrefix}}__border {{classPrefix}}__border--{{align}} {{prefix}}-class-border"
   />
 </view>
