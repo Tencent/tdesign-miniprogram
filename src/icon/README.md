@@ -50,14 +50,14 @@ isComponent: true
       }
       ···
     ```
-    - 1.1 添加所需图标，下载图标。图标库一般会提供`在线链接`或者`下载至本地`等使用方式，`在线链接`方式会指向一个`.css`文件，可以下载或复制其内容，将其修改成后缀名为`.wxss`的文件
-    - 1.2 将`.wxss`文件中的`FontClass/Symbol前缀`与`Font Family`两项内容保持一致，如：`FontClass/Symbol`前缀为`icon-`，则`Font Family`为`icon`。
-    - 注：若是采用`下载至本地`方式，需关注`.css`和`.ttf`文件。由于微信小程序不支持处理ttf、woff、eot等文件，但支持base64，首先需要将`.ttf`文件转换为`base64`(借助转换工具(如[transfonter.org](https://transfonter.org/))，会得到一个`stylesheet.css`文件)，然后将`.css`文件中的`@font-face {}`内容替换为`stylesheet.css`中的`base64`内容，最后将`.css`文件修改后缀为`.wxss`,
+    - 1.1 添加所需图标，下载图标。图标库一般会提供 `在线链接` 或者 `下载至本地` 等使用方式， `在线链接` 方式会指向一个 `.css` 文件，可以下载或复制其内容，将其修改成后缀名为 `.wxss` 的文件
+    - 1.2 将 `.wxss` 文件中的 `FontClass/Symbol前缀` 与 `Font Family` 两项内容保持一致，如: `FontClass/Symbol` 前缀为 `icon-`，则 `Font Family` 为 `icon`。
+    - 注：若是采用 `下载至本地` 方式，需关注 `.css` 和 `.ttf` 文件。由于微信小程序不支持处理 `ttf、woff、eot` 等文件，但支持 `base64`，所以需要将 `.ttf` 文件转换为 `base64`  (借助转换工具(如[transfonter.org](https://transfonter.org/))，会得到一个 `stylesheet.css` 文件)，然后将 `.css` 文件中的 `@font-face {}` 内容替换为 `stylesheet.css` 中的 `base64` 内容，最后将 `.css` 文件修改后缀为 `.wxss`,
 2. 引入自定义图标。
-    - 2.1 全局引入：在项目`app.wxss`，使用`@import` 引入上述的`.wxss` 文件
-    - 2.2 局部引入：在`page`对应的`.wxss`中，使用`@import`引入上述的`.wxss` 文件
+    - 2.1 全局引入：在项目 `app.wxss`，使用 `@import` 引入上述的 `.wxss` 文件
+    - 2.2 局部引入：在 `page` 对应的 `.wxss` 中，使用 `@import` 引入上述的 `.wxss` 文件
 3. 自定义图标的使用。
-    - 3.1 `t-icon`组件中的`prefix`属性值与第2步中设置的`Font Family`保持一致，即`prefix="icon"`，`name`属性值为自定义图标名称，如图标的`className`为`icon-a-1h`，则`name="a-1h"`。
+    - 3.1 `<t-icon>` 组件中的 `prefix` 属性值与第2步中设置的 `Font Family` 保持一致，即 `prefix="icon"`，`name` 属性值为自定义图标名称，如图标的 `className` 为 `icon-a-1h`，则 `name="a-1h"`。
 
 
 ## API
