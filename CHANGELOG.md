@@ -4,6 +4,12 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+
+## 0.6.3 `2022-4-15`
+
+### Bug Fixes
+
+- Transition: 在 leave 的时候清除倒计时
 ## 0.6.2 `2022-3-14`
 
 ### Bug Fixes
