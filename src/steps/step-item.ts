@@ -106,14 +106,15 @@ export default class StepItem extends SuperComponent {
                 return stepFinalStatus(subItem, subItemTag, current, currentStatus);
               });
 
+              if (tempStepItemsStatus[tempStepItemsStatus.length - 1] === 'finish') {
+                tempStepStatus = 'finish';
+                return tempStepStatus;
+              }
               if (tempStepItemsStatus.includes('process') || tempStepItemsStatus.every((item) => item === 'default')) {
                 tempStepStatus = 'process';
               }
               if (tempStepItemsStatus.includes('error')) {
                 tempStepStatus = 'error';
-              }
-              if (tempStepItemsStatus[tempStepItemsStatus.length - 1] === 'finish') {
-                tempStepStatus = 'finish';
               }
             }
           }
