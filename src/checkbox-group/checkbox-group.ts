@@ -6,18 +6,24 @@ const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
 @wxComponent()
 export default class CheckBoxGroup extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   relations = {
     '../checkbox/checkbox': {
       type: 'descendant' as 'descendant',
-      linked() {
-        this.updateChildren();
+      linked(child) {
+        const { value, disabled } = this.data;
+
+        child.setData({
+          checked: value.includes(child.data.value),
+          disabled: disabled || child.data.disabled,
+        });
       },
     },
   };
 
   data = {
+    prefix,
     classPrefix: name,
     checkboxOptions: [],
   };
@@ -39,7 +45,7 @@ export default class CheckBoxGroup extends SuperComponent {
 
   lifetimes = {
     attached() {
-      this.handleCreateMulCheckbox();
+      this.initWithOptions();
     },
   };
 
@@ -81,6 +87,7 @@ export default class CheckBoxGroup extends SuperComponent {
         }
       }
     },
+
     updateValue({ name, checked }) {
       const { value, max } = this.data;
       let newValue = value;
@@ -103,36 +110,31 @@ export default class CheckBoxGroup extends SuperComponent {
       }
       this._trigger('change', { value: newValue });
     },
-    // 支持自定义options
-    handleCreateMulCheckbox() {
+
+    initWithOptions() {
       const { options } = this.data;
-      // 数字数组｜字符串数组｜对像数组
+
       if (!options?.length || !Array.isArray(options)) {
         return;
       }
-      const optionsValue = [];
-      try {
-        options.forEach((element) => {
-          const typeName = typeof element;
-          if (typeName === 'number' || typeName === 'string') {
-            optionsValue.push({
-              label: `${element}`,
-              value: element,
-            });
-          } else if (typeName === 'object') {
-            optionsValue.push({
-              ...element,
-            });
-          }
-        });
-        this.setData({
-          checkboxOptions: optionsValue,
-        });
-        this.updateChildren();
-      } catch (error) {
-        console.error('error', error);
-      }
+
+      const checkboxOptions = options.map((item) => {
+        const isLabel = ['number', 'string'].includes(typeof item);
+        return isLabel
+          ? {
+              label: `${item}`,
+              value: item,
+            }
+          : { ...item };
+      });
+
+      this.setData({
+        checkboxOptions,
+      });
+
+      this.updateChildren(); // remove
     },
+
     // 处理全选
     handleCheckAll(e) {
       const { checked, option, name } = e.detail || e;
@@ -156,6 +158,7 @@ export default class CheckBoxGroup extends SuperComponent {
         this.updateValue({ name, checked });
       }
     },
+
     // 处理options半选
     handleHalfCheck(len: number) {
       const items = this.getChilds();
@@ -171,15 +174,6 @@ export default class CheckBoxGroup extends SuperComponent {
         element?.setCancel(enableValue.every((val) => currentVal.includes(val)));
       } else {
         element?.setData({ checked: false });
-      }
-    },
-    // 设置可全选option选项
-    handleOptionLinked() {
-      const items = this.selectAllComponents('.t-checkbox-option');
-      if (this.data.checkboxOptions.length) {
-        items.forEach((item) => {
-          item.setOptionLinked(true);
-        });
       }
     },
   };

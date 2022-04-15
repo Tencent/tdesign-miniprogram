@@ -39,7 +39,6 @@ export default class CheckBox extends SuperComponent {
     },
   };
 
-  // 组件的内部数据
   data = {
     classPrefix,
     prefix,
@@ -56,10 +55,10 @@ export default class CheckBox extends SuperComponent {
   };
 
   observers = {
-    checked: function (isChecked) {
+    checked(active: Boolean) {
       this.initStatus();
       this.setData({
-        active: isChecked,
+        active,
       });
     },
   };
@@ -71,9 +70,8 @@ export default class CheckBox extends SuperComponent {
     },
   ];
 
-  /* Methods */
   methods = {
-    onChange(e) {
+    onChange(e: WechatMiniprogram.TouchEvent) {
       const { disabled, readonly } = this.data;
       if (disabled || readonly) return;
       const { target } = e.currentTarget.dataset;
@@ -121,11 +119,6 @@ export default class CheckBox extends SuperComponent {
         canCancel: cancel,
       });
     },
-    setDisabled(disabled: Boolean) {
-      this.setData({
-        disabled: this.data.disabled || disabled,
-      });
-    },
 
     // 半选
     changeCheckAllHalfStatus(active: boolean) {
@@ -133,7 +126,7 @@ export default class CheckBox extends SuperComponent {
         halfChecked: active,
       });
     },
-    // group option
+
     setOptionLinked(linked: Boolean) {
       this.setData({
         optionLinked: linked,
