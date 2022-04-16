@@ -4,7 +4,7 @@
  * addUnit */
 // 为 css 添加单位
 function addUnit(value) {
-  var REGEXP = getRegExp('^\d+(\.\d+)?$');
+  var REGEXP = getRegExp('^d+(.d+)?$');
   if (value == null) {
     return undefined;
   }
@@ -19,8 +19,21 @@ function isObject(obj) {
   return obj && obj.constructor === 'Object';
 }
 
+function includes(arr, value) {
+  if (!arr || !isArray(arr)) return false;
+
+  var i = 0;
+  var len = arr.length;
+
+  for (; i < len; i++) {
+    if (arr[i] === value) return true;
+  }
+  return false;
+}
+
 module.exports = {
   addUnit: addUnit,
   isArray: isArray,
   isObject: isObject,
+  includes: includes,
 };
