@@ -1,5 +1,5 @@
 <view
-  class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}} {{classPrefix}}--{{theme}} {{active ? prefix + '-is-actived' : ''}}"
+  class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}} {{classPrefix}}--{{theme}} {{checked ? prefix + '-is-actived' : ''}}"
 >
   <!-- icon -->
   <view
@@ -10,14 +10,14 @@
   >
     <block wx:if="{{icon.length > 0}}">
       <view class="{{classPrefix}}__icon">
-        <image src="{{active ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
+        <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
       </view>
     </block>
     <block wx:else>
       <t-icon
-        color="{{active && !disabled ? color : ''}}"
-        name="{{active ? (halfChecked ? 'minus-circle-filled' : 'check-circle-filled') : 'circle'}}"
-        class="{{classPrefix}}__btn {{active ? prefix + '-is-checked' : ''}} {{disabled ? prefix + '-is-disabled' : ''}}"
+        color="{{checked && !disabled ? color : ''}}"
+        name="{{checked ? (indeterminate ? 'minus-circle-filled' : 'check-circle-filled') : 'circle'}}"
+        class="{{classPrefix}}__btn {{checked ? prefix + '-is-checked' : ''}} {{disabled ? prefix + '-is-disabled' : ''}}"
       />
     </block>
   </view>

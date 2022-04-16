@@ -40,27 +40,8 @@ export default class CheckBox extends SuperComponent {
   };
 
   data = {
-    classPrefix,
     prefix,
-    active: false,
-    halfChecked: false,
-    optionLinked: false,
-    canCancel: false,
-  };
-
-  lifetimes = {
-    attached() {
-      this.initStatus();
-    },
-  };
-
-  observers = {
-    checked(active: Boolean) {
-      this.initStatus();
-      this.setData({
-        active,
-      });
-    },
+    classPrefix,
   };
 
   controlledProps = [
@@ -73,64 +54,24 @@ export default class CheckBox extends SuperComponent {
   methods = {
     onChange(e: WechatMiniprogram.TouchEvent) {
       const { disabled, readonly } = this.data;
+
       if (disabled || readonly) return;
+
       const { target } = e.currentTarget.dataset;
       const { contentDisabled } = this.data;
+
       if (target === 'text' && contentDisabled) {
         return;
       }
-      const { value, active, checkAll, optionLinked, canCancel } = this.data;
-      const item = { name: value, checked: !active, checkAll };
+
+      const { value, checked, checkAll } = this.data;
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
+
       if (parent) {
-        if (checkAll || optionLinked) {
-          parent.handleCheckAll({
-            type: 'slot',
-            checked: !active || (this.data.halfChecked && !canCancel),
-            option: !checkAll,
-            name: value,
-          });
-        } else {
-          parent.updateValue(item);
-        }
-      } else if (checkAll || optionLinked) {
-        this.triggerEvent('toggleAll', {
-          type: 'not-slot',
-          checked: !active || (this.data.halfChecked && !canCancel),
-          option: !checkAll,
-          name: value,
-        });
+        parent.updateValue({ key: value, checked: !checked, checkAll });
       } else {
-        this._trigger('change', { checked: !active });
-        // this.triggerEvent('change', !active);
-        // this.toggle();
+        this._trigger('change', { checked: !checked });
       }
-    },
-    initStatus() {
-      const { optionLinked, indeterminate } = this.data;
-      if (!optionLinked) {
-        this.setData({
-          halfChecked: indeterminate,
-        });
-      }
-    },
-    setCancel(cancel: boolean) {
-      this.setData({
-        canCancel: cancel,
-      });
-    },
-
-    // 半选
-    changeCheckAllHalfStatus(active: boolean) {
-      this.setData({
-        halfChecked: active,
-      });
-    },
-
-    setOptionLinked(linked: Boolean) {
-      this.setData({
-        optionLinked: linked,
-      });
     },
   };
 }
