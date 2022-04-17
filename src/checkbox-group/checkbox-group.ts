@@ -11,14 +11,6 @@ export default class CheckBoxGroup extends SuperComponent {
   relations = {
     '../checkbox/checkbox': {
       type: 'descendant' as 'descendant',
-      linked(child) {
-        const { value, disabled } = this.data;
-
-        child.setData({
-          checked: value.includes(child.data.value),
-          disabled: disabled || child.data.disabled,
-        });
-      },
     },
   };
 
@@ -26,7 +18,6 @@ export default class CheckBoxGroup extends SuperComponent {
     prefix,
     classPrefix: name,
     checkboxOptions: [],
-    indeterminate: false,
   };
 
   properties = {
@@ -48,6 +39,9 @@ export default class CheckBoxGroup extends SuperComponent {
     attached() {
       this.initWithOptions();
     },
+    ready() {
+      this.setCheckall();
+    },
   };
 
   controlledProps = [
@@ -68,7 +62,7 @@ export default class CheckBoxGroup extends SuperComponent {
 
     updateChildren() {
       const items = this.getChilds();
-      const { value, options } = this.data;
+      const { value } = this.data;
 
       if (items.length > 0) {
         items.forEach((item: any) => {
@@ -78,8 +72,8 @@ export default class CheckBoxGroup extends SuperComponent {
             });
         });
         // 关联可全选项
-        if (options.some((item) => item.checkAll)) {
-          this.handleCheckall();
+        if (items.some((item) => item.data.checkAll)) {
+          this.setCheckall();
         }
       }
     },
@@ -125,11 +119,11 @@ export default class CheckBoxGroup extends SuperComponent {
     handleInnerChildChange(e) {
       const { item } = e.target.dataset;
       const { checked } = e.detail;
-      const { checkboxOptions, indeterminate } = this.data;
+      const { checkboxOptions } = this.data;
 
       if (item.checkAll) {
         const value =
-          !checked && indeterminate
+          !checked && item.data.indeterminate
             ? checkboxOptions.map((item) => item.value)
             : checkboxOptions
                 .filter((item) => {
@@ -145,17 +139,18 @@ export default class CheckBoxGroup extends SuperComponent {
       }
     },
 
-    handleCheckall() {
-      const { checkboxOptions, value } = this.data;
-      const valueSet = new Set(value);
-      const isCheckall = checkboxOptions.every((item) => (item.checkAll ? true : valueSet.has(item.value)));
-      const items = this.selectAllComponents(`.${prefix}-checkbox-option`);
+    setCheckall() {
+      const items = this.getChilds();
       const $target = items.find((item) => item.data.checkAll);
+
+      if (!$target) return;
+
+      const { value } = this.data;
+      const valueSet = new Set(value);
+      const isCheckall = items.every((item) => (item.data.checkAll ? true : valueSet.has(item.data.value)));
 
       $target.setData({
         checked: valueSet.size > 0,
-      });
-      this.setData({
         indeterminate: !isCheckall,
       });
     },

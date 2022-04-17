@@ -6,7 +6,6 @@
       label="{{item.label || item.text || ''}}"
       value="{{item.value || ''}}"
       check-all="{{item.checkAll}}"
-      indeterminate="{{item.checkAll && indeterminate}}"
       disabled="{{item.disabled}}"
       data-item="{{item}}"
       bind:change="handleInnerChildChange"
