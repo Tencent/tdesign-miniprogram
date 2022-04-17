@@ -80,13 +80,13 @@ export default class CheckBox extends SuperComponent {
         return;
       }
 
-      const { value, checked, checkAll } = this.data;
+      const checked = !this.data.checked;
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
 
       if (parent) {
-        parent.updateValue({ key: value, checked: !checked, checkAll });
+        parent.updateValue({ ...this.data, checked });
       } else {
-        this._trigger('change', { checked: !checked });
+        this._trigger('change', { checked });
       }
     },
   };

@@ -23,10 +23,6 @@ export default class CheckBoxGroup extends SuperComponent {
   properties = {
     ...Props,
     customStyle: String,
-    defaultValue: {
-      type: null,
-      value: undefined,
-    },
   };
 
   observers = {
@@ -50,6 +46,8 @@ export default class CheckBoxGroup extends SuperComponent {
       event: 'change',
     },
   ];
+
+  $checkAll = null; // 全选复选框
 
   methods = {
     getChilds() {
@@ -78,21 +76,35 @@ export default class CheckBoxGroup extends SuperComponent {
       }
     },
 
-    updateValue({ key, checked }) {
-      const { value, max } = this.data;
-      let newValue = value;
+    updateValue({ value, checked, checkAll, indeterminate }) {
+      let { value: newValue } = this.data;
+      const { max } = this.data;
       const keySet = new Set(this.getChilds().map((item) => item.data.value));
 
       newValue = newValue.filter((value) => keySet.has(value));
 
       if (max && checked && newValue.length === max) return;
 
-      if (checked) {
-        newValue = newValue.concat(key);
+      if (checkAll) {
+        const items = this.getChilds();
+        newValue =
+          !checked && indeterminate
+            ? items.map((item) => item.data.value)
+            : items
+                .filter(({ data }) => {
+                  if (data.disabled) {
+                    return newValue.includes(data.value);
+                  }
+                  return checked && !data.checkAll;
+                })
+                .map(({ data }) => data.value);
+      } else if (checked) {
+        newValue = newValue.concat(value);
       } else {
-        const index = newValue.findIndex((v: string) => v === key);
+        const index = newValue.findIndex((v: string) => v === value);
         newValue.splice(index, 1);
       }
+
       this._trigger('change', { value: newValue });
     },
 
@@ -119,37 +131,29 @@ export default class CheckBoxGroup extends SuperComponent {
     handleInnerChildChange(e) {
       const { item } = e.target.dataset;
       const { checked } = e.detail;
-      const { checkboxOptions } = this.data;
+      const rect: any = {};
 
       if (item.checkAll) {
-        const value =
-          !checked && item.data.indeterminate
-            ? checkboxOptions.map((item) => item.value)
-            : checkboxOptions
-                .filter((item) => {
-                  if (item.disabled) {
-                    return this.data.value.includes(item.value);
-                  }
-                  return checked && !item.checkAll;
-                })
-                .map((item) => item.value);
-        this._trigger('change', { value });
-      } else {
-        this.updateValue({ key: item.value, checked });
+        rect.indeterminate = this.$checkAll?.data.indeterminate;
       }
+
+      this.updateValue({ ...item, checked, ...rect });
     },
 
     setCheckall() {
       const items = this.getChilds();
-      const $target = items.find((item) => item.data.checkAll);
 
-      if (!$target) return;
+      if (!this.$checkAll) {
+        this.$checkAll = items.find((item) => item.data.checkAll);
+      }
+
+      if (!this.$checkAll) return;
 
       const { value } = this.data;
-      const valueSet = new Set(value);
+      const valueSet = new Set(value.filter((val) => val !== this.$checkAll.data.value));
       const isCheckall = items.every((item) => (item.data.checkAll ? true : valueSet.has(item.data.value)));
 
-      $target.setData({
+      this.$checkAll.setData({
         checked: valueSet.size > 0,
         indeterminate: !isCheckall,
       });
