@@ -267,13 +267,13 @@ export default {
           path: '/miniprogram/components/collapse',
           component: () => import('@/collapse/README.md'),
         },
-        // {
-        //   title: 'DropdownMenu 下拉菜单',
-        //   name: 'dropdown-menu',
-        //   meta: { docType: 'data' },
-        //   path: '/miniprogram/components/dropdown-menu',
-        //   component: () => import('@/dropdown-menu/README.md'),
-        // },
+        {
+          title: 'DropdownMenu 下拉菜单',
+          name: 'dropdown-menu',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/dropdown-menu',
+          component: () => import('@/dropdown-menu/README.md'),
+        },
         {
           title: 'Empty 空状态',
           name: 'empty',
@@ -336,13 +336,13 @@ export default {
       title: '消息提醒',
       type: 'component', // 组件文档
       children: [
-        // {
-        //   title: 'ActionSheet 动作面板',
-        //   name: 'actionsheet',
-        //   meta: { docType: 'message' },
-        //   path: '/miniprogram/components/actionsheet',
-        //   component: () => import('@/action-sheet/README.md'),
-        // },
+        {
+          title: 'ActionSheet 动作面板',
+          name: 'actionsheet',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/actionsheet',
+          component: () => import('@/action-sheet/README.md'),
+        },
         {
           title: 'BackTop 返回顶部',
           name: 'back-top',
