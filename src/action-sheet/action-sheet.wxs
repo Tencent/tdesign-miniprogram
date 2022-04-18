@@ -10,7 +10,6 @@ var getListThemeItemClass = function (props) {
 };
 
 var isImage = function (name) {
-  console.log(name, name.indexOf('/') !== -1);
   return name.indexOf('/') !== -1;
 };
 

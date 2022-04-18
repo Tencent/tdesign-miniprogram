@@ -15,10 +15,6 @@ export default class ActionSheet extends SuperComponent {
 
   properties = {
     ...props,
-    defaultVisible: {
-      type: null,
-      value: undefined,
-    },
   };
 
   data = {

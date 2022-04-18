@@ -20,13 +20,13 @@ isComponent: true
 ### 基础用法
 
 ```html
-<t-action-sheet id="t-action-sheet" bind:selected="onSelect" bind:cancel="onCancel" bind:close="onClose" items="{{items}}" visible="{{visible}}" />
+<t-action-sheet id="t-action-sheet" items="{{items}}" visible="{{visible}}" bind:selected="onSelect" bind:cancel="onCancel" bind:close="onClose" bind:visible-change="onVisibleChange" />
 ```
 
 ### 支持自定义
 
 ```html
-<t-action-sheet id="t-action-shee-slot" visible="{{slotVisible}}" bind:cancel="onCancelBaseSlot">
+<t-action-sheet id="t-action-sheet-slot" visible="{{visible}}" bind:selected="onSelect" bind:cancel="onCancel" bind:close="onClose"  bind:visible-change="onVisibleChange">
   <view class="slot-wrap">我是自定义的内容</view>
 </t-action-sheet>
 ```
@@ -81,8 +81,8 @@ default-visible | Boolean | false | 必需。显示与隐藏。非受控属性 |
 
 名称 | 参数 | 描述
 -- | -- | --
-visible-change | `(visible: boolean)` | 当浮层隐藏或显示时触发。
+visible-change | `(visible: Boolean)` | 当浮层隐藏或显示时触发。
 cancel | - | 点击取消按钮时触发
 close | - | 关闭时触发
-selected | `{selected: ActionSheetItem | String, index: number}` | 选择菜单项时触发
+selected | `(selected: ActionSheetItem | String, index: Number)` | 选择菜单项时触发
 
