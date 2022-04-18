@@ -95,9 +95,8 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       if (target) {
         const { key } = target;
         const props = this.properties;
-        const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
 
-        if (props[defaultKey] != null) {
+        if (props[key] == null) {
           this.setData({
             [key]: detail[key],
           });
