@@ -11,14 +11,6 @@ export default class CheckBoxGroup extends SuperComponent {
   relations = {
     '../checkbox/checkbox': {
       type: 'descendant' as 'descendant',
-      linked(child) {
-        const { value, disabled } = this.data;
-
-        child.setData({
-          checked: value.includes(child.data.value),
-          disabled: disabled || child.data.disabled,
-        });
-      },
     },
   };
 
@@ -26,16 +18,11 @@ export default class CheckBoxGroup extends SuperComponent {
     prefix,
     classPrefix: name,
     checkboxOptions: [],
-    indeterminate: false,
   };
 
   properties = {
     ...Props,
     customStyle: String,
-    defaultValue: {
-      type: null,
-      value: undefined,
-    },
   };
 
   observers = {
@@ -48,6 +35,9 @@ export default class CheckBoxGroup extends SuperComponent {
     attached() {
       this.initWithOptions();
     },
+    ready() {
+      this.setCheckall();
+    },
   };
 
   controlledProps = [
@@ -56,6 +46,8 @@ export default class CheckBoxGroup extends SuperComponent {
       event: 'change',
     },
   ];
+
+  $checkAll = null; // 全选复选框
 
   methods = {
     getChilds() {
@@ -68,7 +60,7 @@ export default class CheckBoxGroup extends SuperComponent {
 
     updateChildren() {
       const items = this.getChilds();
-      const { value, options } = this.data;
+      const { value } = this.data;
 
       if (items.length > 0) {
         items.forEach((item: any) => {
@@ -78,27 +70,41 @@ export default class CheckBoxGroup extends SuperComponent {
             });
         });
         // 关联可全选项
-        if (options.some((item) => item.checkAll)) {
-          this.handleCheckall();
+        if (items.some((item) => item.data.checkAll)) {
+          this.setCheckall();
         }
       }
     },
 
-    updateValue({ key, checked }) {
-      const { value, max } = this.data;
-      let newValue = value;
+    updateValue({ value, checked, checkAll, indeterminate }) {
+      let { value: newValue } = this.data;
+      const { max } = this.data;
       const keySet = new Set(this.getChilds().map((item) => item.data.value));
 
       newValue = newValue.filter((value) => keySet.has(value));
 
       if (max && checked && newValue.length === max) return;
 
-      if (checked) {
-        newValue = newValue.concat(key);
+      if (checkAll) {
+        const items = this.getChilds();
+        newValue =
+          !checked && indeterminate
+            ? items.map((item) => item.data.value)
+            : items
+                .filter(({ data }) => {
+                  if (data.disabled) {
+                    return newValue.includes(data.value);
+                  }
+                  return checked && !data.checkAll;
+                })
+                .map(({ data }) => data.value);
+      } else if (checked) {
+        newValue = newValue.concat(value);
       } else {
-        const index = newValue.findIndex((v: string) => v === key);
+        const index = newValue.findIndex((v: string) => v === value);
         newValue.splice(index, 1);
       }
+
       this._trigger('change', { value: newValue });
     },
 
@@ -125,37 +131,30 @@ export default class CheckBoxGroup extends SuperComponent {
     handleInnerChildChange(e) {
       const { item } = e.target.dataset;
       const { checked } = e.detail;
-      const { checkboxOptions, indeterminate } = this.data;
+      const rect: any = {};
 
       if (item.checkAll) {
-        const value =
-          !checked && indeterminate
-            ? checkboxOptions.map((item) => item.value)
-            : checkboxOptions
-                .filter((item) => {
-                  if (item.disabled) {
-                    return this.data.value.includes(item.value);
-                  }
-                  return checked && !item.checkAll;
-                })
-                .map((item) => item.value);
-        this._trigger('change', { value });
-      } else {
-        this.updateValue({ key: item.value, checked });
+        rect.indeterminate = this.$checkAll?.data.indeterminate;
       }
+
+      this.updateValue({ ...item, checked, ...rect });
     },
 
-    handleCheckall() {
-      const { checkboxOptions, value } = this.data;
-      const valueSet = new Set(value);
-      const isCheckall = checkboxOptions.every((item) => (item.checkAll ? true : valueSet.has(item.value)));
-      const items = this.selectAllComponents(`.${prefix}-checkbox-option`);
-      const $target = items.find((item) => item.data.checkAll);
+    setCheckall() {
+      const items = this.getChilds();
 
-      $target.setData({
+      if (!this.$checkAll) {
+        this.$checkAll = items.find((item) => item.data.checkAll);
+      }
+
+      if (!this.$checkAll) return;
+
+      const { value } = this.data;
+      const valueSet = new Set(value.filter((val) => val !== this.$checkAll.data.value));
+      const isCheckall = items.every((item) => (item.data.checkAll ? true : valueSet.has(item.data.value)));
+
+      this.$checkAll.setData({
         checked: valueSet.size > 0,
-      });
-      this.setData({
         indeterminate: !isCheckall,
       });
     },

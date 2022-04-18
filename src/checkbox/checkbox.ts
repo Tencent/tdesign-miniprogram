@@ -19,6 +19,22 @@ export default class CheckBox extends SuperComponent {
   relations = {
     '../checkbox-group/checkbox-group': {
       type: 'ancestor' as 'ancestor',
+      linked(parent) {
+        const { value, disabled } = parent.data;
+        const valueSet = new Set(value);
+        const data: any = {
+          disabled: disabled || this.data.disabled,
+        };
+
+        data.checked = valueSet.has(this.data.value);
+
+        if (this.data.checkAll) {
+          data.checked = valueSet.size > 0;
+          // data.indeterminate =
+        }
+
+        this.setData(data);
+      },
     },
   };
 
@@ -64,13 +80,13 @@ export default class CheckBox extends SuperComponent {
         return;
       }
 
-      const { value, checked, checkAll } = this.data;
+      const checked = !this.data.checked;
       const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
 
       if (parent) {
-        parent.updateValue({ key: value, checked: !checked, checkAll });
+        parent.updateValue({ ...this.data, checked });
       } else {
-        this._trigger('change', { checked: !checked });
+        this._trigger('change', { checked });
       }
     },
   };

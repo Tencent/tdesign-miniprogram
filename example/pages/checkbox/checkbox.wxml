@@ -78,12 +78,9 @@
 
   <t-demo title="03 特殊类型" desc="自定义图标多选框">
     <t-checkbox-group defaultValue="{{demoCheckbox2}}" bindchange="onChange">
-      <t-checkbox value="checkbox1" label="多选" icon="{{[activeImage,inActiveImage]}}">
-      </t-checkbox>
-      <t-checkbox value="checkbox2" label="多选" icon="{{[activeImage,inActiveImage]}}">
-      </t-checkbox>
-      <t-checkbox value="checkbox3" label="多选" icon="{{[activeImage,inActiveImage]}}">
-      </t-checkbox>
+      <t-checkbox value="checkbox1" label="多选" icon="{{[activeImage,inActiveImage]}}"> </t-checkbox>
+      <t-checkbox value="checkbox2" label="多选" icon="{{[activeImage,inActiveImage]}}"> </t-checkbox>
+      <t-checkbox value="checkbox3" label="多选" icon="{{[activeImage,inActiveImage]}}"> </t-checkbox>
     </t-checkbox-group>
   </t-demo>
 
@@ -96,13 +93,7 @@
       bind:change="changeChecked"
     >
     </t-checkbox>
-    <t-checkbox
-      value="checkbox2"
-      t-class="t-checkbox-demo"
-      label="多选H56"
-      defaultChecked="{{checked}}"
-    >
-    </t-checkbox>
+    <t-checkbox value="checkbox2" t-class="t-checkbox-demo" label="多选H56" defaultChecked="{{checked}}"> </t-checkbox>
   </t-demo>
   <view style="height: 74rpx"></view>
 </view>
