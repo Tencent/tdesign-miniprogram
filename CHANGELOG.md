@@ -4,6 +4,32 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.8.0 `2022-4-15`
+
+### BREAKING CHANGES
+
+- CheckboxGroup: change 事件返回的 value 将会过滤非 checkbox 的值 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
+### Bug Fixes
+
+- Steps: 修复子步骤条不支持 status 的问题 [#334](https://github.com/Tencent/tdesign-miniprogram/pull/334) [@anlyyao](https://github.com/anlyyao)
+- Picker: 修复出现空白的取消和确认按钮 [#342](https://github.com/Tencent/tdesign-miniprogram/pull/342) [@jin0209](https://github.com/jin0209)
+- Swiper: 修复点击误触发翻页问题 [#343](https://github.com/Tencent/tdesign-miniprogram/pull/343) [@esky](https://github.com/esky)
+- Radio: 修复 label 错误的渲染位置 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
+- Checkbox: 修复 label 错误的渲染位置 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
+- Textarea: 
+    - 修复缺失的 label 插槽 [#348](https://github.com/Tencent/tdesign-miniprogram/pull/348) [@anlyyao](https://github.com/anlyyao)
+    - 修复传入 adjust-position 不生效的问题 [#349](https://github.com/Tencent/tdesign-miniprogram/pull/349) [@anlyyao](https://github.com/anlyyao)
+- Transition: 修复动画过程中触发 leave 会导致界面卡死的问题 [#356](https://github.com/Tencent/tdesign-miniprogram/pull/356) [@esky](https://github.com/esky)
+### Features
+
+- DropdownMenu: 新增下拉菜单组件 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
+- Radio: 新增 borderless 属性 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
+- Checkbox: 
+    - 新增 borderless 属性 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
+    - 新增 theme 属性，添加 tag 类型，默认值为 default [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
+- CheckboxGroup: 新增 customStyle 属性，透传 style 至根元素 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
+
+
 
 ## 0.7.3 `2022-4-7`
 

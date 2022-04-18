@@ -34,10 +34,10 @@ const display = {
       name: 'Divider',
       label: '分割线',
     },
-    // {
-    //   name: 'DropdownMenu',
-    //   label: '下拉菜单',
-    // },
+    {
+      name: 'DropdownMenu',
+      label: '下拉菜单',
+    },
     {
       name: 'Empty',
       label: '空状态',

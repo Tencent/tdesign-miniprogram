@@ -13,6 +13,7 @@ const props: TdSwitchProps = {
   /** 开关内容，[打开时的值，关闭时的值]。默认为 [true, false]。示例：[1, 0] */
   customValue: {
     type: Array,
+    value: [true, false],
   },
   /** 是否禁用组件 */
   disabled: {
@@ -38,13 +39,13 @@ const props: TdSwitchProps = {
   value: {
     type: String,
     optionalTypes: [Number, Boolean],
-    value: undefined,
+    value: null,
   },
   /** 开关值，非受控属性 */
   defaultValue: {
     type: String,
     optionalTypes: [Number, Boolean],
-    value: undefined,
+    value: null,
   },
 };
 

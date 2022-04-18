@@ -39,7 +39,7 @@
       >
         <!-- 子步骤条默认状态:default -->
         <view
-          class="{{classPrefix}}-sub {{classPrefix}}-sub-status--default {{classPrefix}}-sub-status--{{item._status}}"
+          class="{{classPrefix}}-sub {{classPrefix}}-sub-status--default {{classPrefix}}-sub-status--{{curSubStepItemsStatus[index]}}"
           wx:for="{{curSubStepItems}}"
           wx:key="key"
           wx:item="item"

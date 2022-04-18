@@ -105,6 +105,7 @@
     "t-steps": "tdesign-miniprogram/steps/steps",
     "t-step": "tdesign-miniprogram/steps/step-item",
     "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
+    "t-dropdown-item": "tdesign-miniprogram/dropdown-menu/dropdown-item",
     "t-drawer": "tdesign-miniprogram/drawer/drawer",
     "t-pull-down-refresh": "tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
     "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",

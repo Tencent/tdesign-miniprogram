@@ -1,123 +1,125 @@
-<view
-  class="{{classPrefix}} {{show ? classBasePrefix + '-is-expanded' : ''}}"
-  style="top:{{top}}px"
->
+<wxs module="_" src="./util.wxs" />
+
+<view class="{{classPrefix}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
   <view
-    wx:if="{{show}}"
-    class="t-mask"
-    bindtap="clickOverlay"
-    catchtouchmove="catchtouchmove"
+    wx:if="{{show && overlay}}"
+    class="{{prefix}}-mask"
+    bind:tap="handleMaskClick"
+    style="height: {{maskHeight}}px; z-index: {{zIndex + 1}}"
+    catch:touchmove="catchtouchmove"
   ></view>
-  <view class="{{contentClasses}} {{classPrefix}}__content" style="transition: all 200ms ease">
-    <view class="{{classPrefix}}__bd" wx:if="{{show}}">
+  <view
+    class="{{contentClasses}} {{classPrefix}}__content"
+    style="transition: all {{duration}}ms ease; z-index: {{zIndex + 1}}"
+  >
+    <view class="{{classPrefix}}__body" wx:if="{{show}}">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
-        <t-cell-group wx:if="{{selectMode === 'single'}}" bordered="{{false}}">
-          <t-radio-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
+        <t-cell-group wx:if="{{!multiple}}">
+          <t-radio-group value="{{value}}" bind:change="handleRadioChange">
             <t-radio
               wx:for="{{options}}"
               wx:key="index"
-              name="{{item.value}}"
-              title="{{item.title}}"
+              icon="stroke-line"
+              align="right"
+              t-class="radio"
+              t-class-label="radio__label radio__label--{{value == item.value ? 'active' : ''}}"
+              value="{{item.value}}"
+              label="{{item.label}}"
               disabled="{{item.disabled}}"
             ></t-radio>
           </t-radio-group>
         </t-cell-group>
         <!-- 多选列表 -->
-        <t-cell-group wx:if="{{selectMode === 'multi'}}" bordered="{{false}}">
-          <t-checkbox-group value="{{selected}}" bordered="{{false}}" bind:change="updateSelected">
-            <view class="{{classBasePrefix}}-checkbox-wrap" wx:for="{{options}}" wx:key="index">
+        <block wx:else>
+          <t-checkbox-group
+            t-class="{{classPrefix}}__checkbox-group"
+            custom-style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
+            value="{{value}}"
+            bind:change="handleRadioChange"
+          >
+            <block wx:for="{{options}}" wx:key="index">
               <t-checkbox
-                name="{{item.value}}"
-                title="{{item.title}}"
+                class="{{classPrefix}}__checkbox-item"
+                theme="tag"
+                value="{{item.value}}"
+                label="{{item.label}}"
                 disabled="{{item.disabled}}"
               ></t-checkbox>
-            </view>
+            </block>
           </t-checkbox-group>
-        </t-cell-group>
+        </block>
       </block>
       <block wx:elif="{{optionsLayout === 'tree'}}">
-        <!-- 树形列表 ST -->
-        <!-- TODO 逻辑待实现 -->
-        <t-cell-group
-          class="{{classBasePrefix}}-tree-cell-group"
+        <scroll-view
+          scroll-y
+          class="{{classPrefix}}__column {{classPrefix}}__column--{{_.getTreeClass(leafLevel - level)}}"
           wx:for="{{treeOptions}}"
           wx:key="level"
           wx:for-index="level"
         >
-          <t-radio-group
-            wx:if="{{level < treeState.leafLevel}}"
-            value="{{treeState.selectList[level]}}"
-            data-level="{{level}}"
-            bind:change="selectTreeNode"
-          >
-            <t-radio
+          <block wx:if="{{level < leafLevel}}">
+            <view
               wx:for="{{treeOptions[level]}}"
               wx:key="index"
-              name="{{item.value}}"
-              bordered="{{false}}"
-              title="{{item.title}}"
-            ></t-radio>
-          </t-radio-group>
+              bind:tap="handleTreeClick"
+              data-level="{{level}}"
+              data-value="{{item.value}}"
+              class="{{classPrefix}}__tree-item {{item.value === value[level] ? classPrefix + '__tree-item--active' : '' }}"
+            >
+              {{item.label}}
+            </view>
+          </block>
+
           <block wx:else>
-            <block wx:if="{{selectMode === 'single'}}">
-              <!-- 树形列表 - 叶子节点（单选） ST -->
-              <t-radio-group
-                data-level="{{level}}"
-                value="{{treeState.selectList[level]}}"
-                bind:change="updateSelected"
-              >
+            <block wx:if="{{!multiple}}">
+              <t-radio-group data-level="{{level}}" value="{{value[level]}}" bind:change="handleRadioChange">
                 <t-radio
                   wx:for="{{treeOptions[level]}}"
-                  wx:key="index"
-                  name="{{item.value}}"
-                  bordered="{{false}}"
-                  title="{{item.title}}"
-                ></t-radio>
-              </t-radio-group>
-              <!-- 树形列表 - 叶子节点（单选） ED -->
-            </block>
-            <block wx:elif="{{selectMode === 'multi'}}">
-              <!-- 树形列表 - 叶子节点（多选） ST -->
-              <t-checkbox-group
-                value="{{treeState.selectList[level]}}"
-                bordered="{{false}}"
-                bind:change="updateSelected"
-                data-level="{{level}}"
-              >
-                <view
-                  class="{{classBasePrefix}}-checkbox-wrap"
-                  wx:for="{{treeOptions[level]}}"
-                  wx:key="index"
+                  wx:key="value"
+                  t-class="radio"
+                  t-class-label="radio__label radio__label--{{value[level] === item.value ? 'active' : ''}}"
+                  value="{{item.value}}"
+                  borderless
+                  align="right"
+                  >{{item.label}}</t-radio
                 >
-                  <t-checkbox name="{{item.value}}" title="{{item.title}}"></t-checkbox>
-                </view>
-              </t-checkbox-group>
-              <!-- 树形列表 - 叶子节点（多选） ED -->
+              </t-radio-group>
             </block>
-            <!-- 树形列表 - 叶子节点 ED -->
+            <block wx:elif="{{multiple}}">
+              <t-checkbox-group value="{{value[level]}}" bind:change="handleRadioChange" data-level="{{level}}">
+                <t-checkbox
+                  wx:for="{{treeOptions[level]}}"
+                  wx:key="value"
+                  align="right"
+                  t-class="radio"
+                  t-class-label="radio__label radio__label--{{value[level] === item.value ? 'active' : ''}}"
+                  borderless
+                  value="{{item.value}}"
+                  >{{item.label}}</t-checkbox
+                >
+              </t-checkbox-group>
+            </block>
           </block>
-        </t-cell-group>
-        <!-- 树形列表 ED -->
+        </scroll-view>
       </block>
-      <block wx:elif="{{optionsLayout === 'slot'}}">
-        <slot></slot>
-      </block>
+
+      <slot />
     </view>
-    <view
-      class="{{classPrefix}}__ft"
-      wx:if="{{selectMode === 'multi' || optionsLayout === 'tree'}}"
-    >
-      <t-button class="t-button" theme="default" disabled="{{isBtnDisabled}}" bindtap="resetSelect"
-        >重置</t-button
-      >
-      <t-button
-        class="t-button"
-        theme="primary"
-        disabled="{{isBtnDisabled}}"
-        bindtap="confirmSelect"
-        >确定</t-button
-      >
+    <view class="{{classPrefix}}__foot" wx:if="{{multiple || optionsLayout === 'tree'}}">
+      <t-button-group>
+        <t-button block t-class="button button--reset" theme="default" disabled="{{!hasChanged}}" bindtap="handleReset"
+          >重置</t-button
+        >
+        <t-button
+          block
+          t-class="button button--confirm"
+          theme="primary"
+          disabled="{{!hasChanged}}"
+          bindtap="handleConfirm"
+          >确定</t-button
+        >
+      </t-button-group>
     </view>
   </view>
 </view>

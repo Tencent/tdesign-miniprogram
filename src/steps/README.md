@@ -46,7 +46,7 @@ isComponent: true
 <img src="https://tdesign.gtimg.com/miniprogram/readme/steps-2.png" width="375px" height="50%">
 
 ```html
-<t-steps current="1" readonly="true" direction="vertical">
+<t-steps current="1" readonly="true" layout="vertical">
   <t-step title="已完成步骤" />
   <t-step title="当前步骤" />
   <t-step title="未完成步骤" />
@@ -55,7 +55,7 @@ isComponent: true
 
 #### 竖向双层级只读步骤条
 ```html
-<t-steps class="demo-steps vertical" current="1.0" readonly="true" layout="vertical">
+<t-steps class="demo-steps vertical" current="1-0" readonly="true" layout="vertical">
   <t-step title="已完成步骤" />
   <t-step title="当前步骤" subStepItems="{{subStepItems}}" />
   <t-step title="未完成步骤" />
@@ -67,7 +67,7 @@ isComponent: true
 <img src="https://tdesign.gtimg.com/miniprogram/readme/steps-1.png" width="375px" height="50%">
 
 ```html
-<t-steps current="1" readonly="true" direction="vertical">
+<t-steps current="1" readonly="true" layout="vertical">
   <t-step title="已完成步骤">
     <view slot="content">可自定义此处内容</view>
     <view class="extra-img" slot="extra">
@@ -109,7 +109,7 @@ Page({
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-current | String / Number | 0 | 当前步骤，即整个步骤条进度。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。如果每个步骤没有设置 value，current 值为步骤长度则表示所有步骤已完成。如果每个步骤设置了自定义 value，则 current = 'FINISH' 表示所有状态完成 | N
+current | String / Number | 0 | 当前步骤，即整个步骤条进度，格式为`1`、`1-0`或`1-1`。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。若当前步骤条存在子步骤条，则会根据子步骤条重新判断当前步骤状态（子步骤条中存在error，则当前步骤error，子步骤条中存在process，当前步骤process，若最后一个子步骤条finish，当前步骤finish，优先级为`finish>error>process`）。注意：如果每个步骤条单独设置了status，则步骤条为设定的status，若传入`status:''`,将默认为未开始状态,传入的status优先级最高。 | N
 default-current | String / Number | undefined | 当前步骤，即整个步骤条进度。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。如果每个步骤没有设置 value，current 值为步骤长度则表示所有步骤已完成。如果每个步骤设置了自定义 value，则 current = 'FINISH' 表示所有状态完成。非受控属性 | N
 current-status | String | process | 用于控制 current 指向的步骤条的状态。可选项：default/process/finish/error | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素元素类名。`['t-class']` | N

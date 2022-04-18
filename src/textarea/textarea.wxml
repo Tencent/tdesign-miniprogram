@@ -1,19 +1,20 @@
-<view class="{{classPrefix}} t-class">
-  <view wx:if="{{ label && label.length > 0 }}" class="{{classPrefix}}__name t-class-name">
-    <view>{{ label }}</view>
+<view class="{{classPrefix}} {{prefix}}-class">
+  <view class="{{classPrefix}}__name {{prefix}}-class-label">
+    <view wx:if="{{ label && label.length > 0 }}">{{ label }}</view>
+    <slot wx:else name="label" />
   </view>
   <view class="{{classPrefix}}__wrapper">
     <textarea
       maxlength="{{maxlength || -1}}"
       disabled="{{disabled}}"
       placeholder="{{placeholder}}"
-      class="{{classPrefix}}__wrapper-textarea t-class-textarea"
-      placeholder-class="{{classPrefix}}__placeholder t-class-placeholder"
+      class="{{classPrefix}}__wrapper-textarea {{prefix}}-class-textarea"
+      placeholder-class="{{classPrefix}}__placeholder {{prefix}}-class-placeholder"
       model:value="{{value}}"
       auto-focus="{{autofocus}}"
       focus="{{focus}}"
       auto-height="{{autosize}}"
-      adjust-position="{{aujustPosition}}"
+      adjust-position="{{adjustPosition}}"
       confirm-type="{{confirmType}}"
       confirm-hold="{{confirmHold}}"
       bindinput="onInput"

@@ -123,5 +123,22 @@ export const getCharacterLength = (str: string, maxCharacter?: number): { length
   };
 };
 
+
 export const chunk = (arr: any[], size: number) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
+
+export const equal = (v1, v2) => {
+  if (Array.isArray(v1) && Array.isArray(v2)) {
+    if (v1.length !== v2.length) return false;
+    return v1.every((item, index) => equal(item, v2[index]));
+  }
+  return v1 === v2;
+};
+
+export const clone = (val) => {
+  if (Array.isArray(val)) {
+    return val.map((item) => clone(item));
+  }
+  return val;
+};
+
