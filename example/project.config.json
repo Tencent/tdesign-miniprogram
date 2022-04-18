@@ -80,6 +80,12 @@
           "name": "swiper",
           "pathName": "pages/swiper/swiper",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "actionSheet",
+          "pathName": "pages/action-sheet/action-sheet",
+          "scene": null
         }
       ]
     }

@@ -1,0 +1,118 @@
+@import '../common/style/index.less';
+
+@action-sheet: ~'@{prefix}-action-sheet';
+@action-sheet-list-item-height: 96rpx;
+@action-sheet-gap-bg-color: #f3f3f3;
+@action-sheet-list-item-color--disabled: rgba(0, 0, 0, 0.26);
+@action-sheet-square-image-size: 72rpx;
+@action-sheet-square-image-padding: 10rpx;
+
+.@{action-sheet} {
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ellipsis {
+    word-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__grid {
+    padding: 48rpx 0 16rpx 0;
+    &-item {
+      margin-bottom: 32rpx;
+    }
+  }
+
+  &__list {
+    background-color: @bg-color-block;
+    border-bottom: 1rpx solid #f6f6f6;
+    &:last-child {
+      border-bottom: none;
+    }
+    &-item {
+      height: @action-sheet-list-item-height;
+      .flex-center();
+      &.@{prefix}-is-disabled {
+        color: @action-sheet-list-item-color--disabled;
+      }
+      &-text {
+        font-size: @font-size-m;
+        .ellipsis();
+      }
+      &-icon {
+        margin-right: 16rpx;
+      }
+    }
+  }
+
+  &__swiper-wrap {
+    position: relative;
+    background-color: @bg-color-block;
+  }
+
+  &__square {
+    height: 148rpx;
+    margin-bottom: 32rpx;
+    &-image {
+      width: @action-sheet-square-image-size;
+      height: @action-sheet-square-image-size;
+      padding: @action-sheet-square-image-padding;
+      image {
+        width: @action-sheet-square-image-size;
+        height: @action-sheet-square-image-size;
+      }
+    }
+    &-text {
+      width: 100%;
+      margin-top: 10rpx;
+      font-size: 28rpx;
+      color: rgba(0, 0, 0, 0.9);
+      text-align: center;
+      .ellipsis();
+    }
+  }
+
+  &__footer {
+    background-color: @bg-color-block;
+  }
+  &__gap-list {
+    height: 16rpx;
+    background-color: @action-sheet-gap-bg-color;
+  }
+  &__gap-grid {
+    height: 1rpx;
+    background-color: @action-sheet-gap-bg-color;
+  }
+  &__cancel {
+    .flex-center();
+    height: @action-sheet-list-item-height;
+  }
+  &__dots {
+    position: absolute;
+    left: 50%;
+    bottom: 32rpx;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    &-item {
+      width: 16rpx;
+      height: 16rpx;
+      background-color: #dcdcdc;
+      border-radius: 50%;
+      margin: 0 16rpx;
+      transition: all 0.4s ease-in;
+
+      &.@{prefix}-is-active {
+        background-color: #0052d9;
+      }
+    }
+  }
+  &__safe {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
