@@ -1,33 +1,32 @@
-import TComponent from '../common/component';
-import config from '../common/config';
-import { canIUseFormFieldButton } from '../common/version';
+import { SuperComponent } from '../../common/src/index';
+import config from '../../common/config';
 
 const { prefix } = config;
 const name = `${prefix}-button-group`;
 
-TComponent({
-  behaviors: canIUseFormFieldButton() ? ['wx://form-field-button'] : [],
+export default class BaseGroupButton extends SuperComponent {
   // 组件的对外属性
-  properties: {
+  properties = {
     type: {
       type: String,
       value: 'default',
     },
-  },
+  };
+
   // 组件的内部数据
-  data: {
+  data = {
     // 按钮样式列表
     className: '',
-  },
+  };
 
-  observers: {
+  observers = {
     type() {
       this.setClass();
     },
-  },
+  };
 
   /* 组件生命周期 */
-  lifetimes: {
+  lifetimes = {
     // 组件实例被创建
     // created() {},
     // 组件实例进入页面节点树
@@ -40,15 +39,15 @@ TComponent({
     // moved() {},
     // 组件实例被从页面节点树移除
     // detached() { },
-  },
+  };
 
   /* Methods */
-  methods: {
+  methods = {
     setClass() {
       const classList = [`${name}`, `${name}--${this.data.type}`];
       this.setData({
         className: classList.join(' '),
       });
     },
-  },
-});
+  };
+}

@@ -9,8 +9,10 @@ const gulpLess = require('gulp-less');
 const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
 const mpNpm = require('gulp-mp-npm');
+const gulpFilter = require('gulp-filter');
+const gulpIf = require('gulp-if');
 
-const config = require('./config');
+const config = require('../config');
 
 // set displayName
 const setDisplayName = (tasks, moduleName) => {
@@ -20,6 +22,37 @@ const setDisplayName = (tasks, moduleName) => {
     }
   });
 };
+
+const fileter = () => {
+  return gulpFilter((file) => {
+    return !/\/(qq)\//.test(file.relative);
+  });
+};
+
+const renameFilePath = () => {
+  return rename((file) => {
+    if (/\/wechat/.test(file.dirname)) {
+      const newDirname = file.dirname.split('/')[0];
+      return {
+        dirname: newDirname,
+        basename: file.basename,
+        extname: file.extname,
+      };
+    }
+  });
+};
+
+const isNeedReplacePath = function (file) {
+  return /\/wechat\//.test(file.relative);
+};
+
+function replaceBasePath() {
+  return gulpIf(isNeedReplacePath, replace('../base/', './base/'));
+}
+
+function replaceCommonPath() {
+  return gulpIf(isNeedReplacePath, replace('../common/', './common/'));
+}
 
 // generate config replace task
 const generateConfigReplaceTask = (replaceConfig, options = {}) => {
@@ -50,6 +83,7 @@ module.exports = (src, dist, moduleName) => {
     less: `${src}/**/*.less`, // 匹配 less 文件
     wxss: `${src}/**/*.wxss`, // 匹配 wxss 文件
     md: `${src}/**/*.md`, // 匹配 md 文件
+    wxml: `${src}/**/*.wxml`,
   };
   // 匹配需要拷贝的文件
   globs.copy = [
@@ -61,6 +95,7 @@ module.exports = (src, dist, moduleName) => {
     `!${globs.less}`,
     `!${globs.wxss}`,
     `!${globs.md}`,
+    `!${globs.wxml}`,
   ];
 
   // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
@@ -75,6 +110,10 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.clear = () => del(`${dist}/**`);
 
+  tasks.clearUnusedFolder = () => {
+    return del([`${dist}/*/qq`, `${dist}/*/wechat`]);
+  };
+
   /** `gulp handleError`
    * 输出错误到小程序
    * */
@@ -87,8 +126,7 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp resetError`
    * 重置gulpError
    * */
-  tasks.resetError = () =>
-    gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
+  tasks.resetError = () => gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
 
   /** `gulp copy`
    * 清理
@@ -108,7 +146,6 @@ module.exports = (src, dist, moduleName) => {
       .pipe(
         plumber({
           errorHandler: (err) => {
-            console.log(err);
             tasks.handleError(err.message);
           },
         }),
@@ -118,6 +155,10 @@ module.exports = (src, dist, moduleName) => {
       .pipe(tsProject()) // 编译ts
       .pipe(mpNpm())
       .pipe(sourcemaps.write('.'))
+      .pipe(fileter())
+      .pipe(replaceBasePath())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp js`
@@ -127,6 +168,10 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
+      .pipe(fileter())
+      .pipe(replaceBasePath())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
@@ -136,13 +181,23 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.wxs, { ...srcOptions, since: since(tasks.wxs) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
+      .pipe(fileter())
+      .pipe(replaceBasePath())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp json`
    * 处理json
    * */
   tasks.json = () =>
-    gulp.src(globs.json, { ...srcOptions, since: since(tasks.json) }).pipe(gulp.dest(dist));
+    gulp
+      .src(globs.json, { ...srcOptions, since: since(tasks.json) })
+      .pipe(fileter())
+      .pipe(replaceBasePath())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
+      .pipe(gulp.dest(dist));
 
   /** `gulp less`
    * 处理less
@@ -153,7 +208,6 @@ module.exports = (src, dist, moduleName) => {
       .pipe(
         plumber({
           errorHandler: (err) => {
-            console.log(err);
             tasks.handleError(err.message);
           },
         }),
@@ -163,19 +217,40 @@ module.exports = (src, dist, moduleName) => {
       .pipe(gulpLess()) // 编译less
       .pipe(rename({ extname: '.wxss' }))
       .pipe(sourcemaps.write('.'))
+      .pipe(fileter())
+      .pipe(replaceBasePath())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp wxss`
    * 处理wxss
    * */
   tasks.wxss = () =>
-    gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
+    gulp
+      .src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) })
+      .pipe(fileter())
+      .pipe(replaceBasePath())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
+      .pipe(gulp.dest(dist));
+
+  /** gulp wxml
+   * 处理 wxml
+   */
+  tasks.wxml = () =>
+    gulp
+      .src(globs.wxml, { ...srcOptions, since: since(tasks.wxml) })
+      .pipe(fileter())
+      .pipe(replaceBasePath())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
+      .pipe(gulp.dest(dist));
 
   /** `gulp common`
    * 拷贝common中样式
    */
-  tasks.common = () =>
-    gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
+  // tasks.common = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
 
   // set displayName
   setDisplayName(tasks, moduleName);
@@ -186,7 +261,8 @@ module.exports = (src, dist, moduleName) => {
   tasks.build = gulp.series(
     tasks.clear,
     tasks.resetError,
-    gulp.parallel(tasks.copy, tasks.ts, tasks.js, tasks.wxs, tasks.json, tasks.less, tasks.wxss),
+    gulp.parallel(tasks.copy, tasks.ts, tasks.js, tasks.wxs, tasks.json, tasks.less, tasks.wxss, tasks.wxml),
+    tasks.clearUnusedFolder,
   );
 
   /** `gulp watch`

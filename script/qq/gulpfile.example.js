@@ -5,7 +5,7 @@ const gulpLess = require('gulp-less');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
 const path = require('path');
-const packageJSON = require('../package.json');
+const packageJSON = require('../../package.json');
 const base = require('./gulpfile.base');
 
 /* config */
@@ -13,13 +13,7 @@ const src = 'example';
 const dist = '_example';
 
 /* base tasks */
-const {
-  clear,
-  build: baseBuild,
-  watch: baseWatch,
-  handleError,
-  resetError,
-} = base(src, dist, 'example');
+const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
 
 // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
 // https://github.com/gulpjs/vinyl-fs/issues/226

@@ -1,19 +1,11 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
-import config from '../common/config';
-import props from './props';
-import { canIUseFormFieldButton } from '../common/version';
+import { SuperComponent } from '../../common/src/index';
+import config from '../../common/config';
 
 const { prefix } = config;
 const name = `${prefix}-button`;
 
-@wxComponent()
-export default class Button extends SuperComponent {
+export default class BaseButton extends SuperComponent {
   externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
-
-  behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
-
-  // 组件的对外属性
-  properties = props;
 
   // 组件的内部数据
   data = {
@@ -79,9 +71,6 @@ export default class Button extends SuperComponent {
     },
     contact(e) {
       this.triggerEvent('contact', e.detail);
-    },
-    getphonenumber(e) {
-      this.triggerEvent('getphonenumber', e.detail);
     },
     error(e) {
       this.triggerEvent('error', e.detail);

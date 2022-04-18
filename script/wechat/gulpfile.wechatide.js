@@ -2,7 +2,7 @@
 const gulp = require('gulp');
 const path = require('path');
 const fs = require('fs');
-const config = require('./config.js');
+const config = require('../config.js');
 
 const wechatideConfig = {
   components: [],
@@ -81,9 +81,7 @@ gulp.task('wechatide:menu', (cb) => {
           return {
             key: `subMenu-${subItem.name}`,
             label: subItem.title,
-            components: [
-              `${config.CONFIG_PREFIX}-${subItem.name.replace(/([A-Z])/g, '-$1').toLowerCase()}`,
-            ],
+            components: [`${config.CONFIG_PREFIX}-${subItem.name.replace(/([A-Z])/g, '-$1').toLowerCase()}`],
           };
         });
         wechatideConfig.menu.push(menuFirst);
