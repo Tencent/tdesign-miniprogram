@@ -2,12 +2,13 @@
 
 @step: ~'@{prefix}-step';
 @steps: ~'@{step}s';
+@item: ~'@{step}-item';
 
 @{steps} {
   display: flex;
 }
 
-@{step} {
+@{item} {
   flex: 1;
   vertical-align: top;
   position: relative;
@@ -28,7 +29,7 @@
   &--vertical {
     flex-direction: column;
 
-    @{step} {
+    @{item} {
       width: 100%;
     }
   }
