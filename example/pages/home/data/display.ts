@@ -31,10 +31,6 @@ const display = {
       label: '倒计时',
     },
     {
-      name: 'Divider',
-      label: '分割线',
-    },
-    {
       name: 'DropdownMenu',
       label: '下拉菜单',
     },

@@ -3,20 +3,12 @@ const form = {
   icon: '/assets/bulletpoint@2x.png',
   childArr: [
     {
-      name: 'Button',
-      label: '按钮',
-    },
-    {
       name: 'Checkbox',
       label: '多选框',
     },
     {
       name: 'DateTimePicker',
       label: '时间选择器',
-    },
-    {
-      name: 'Fab',
-      label: '悬浮按钮',
     },
     {
       name: 'Input',
