@@ -60,6 +60,13 @@ export default {
           component: () => import('@/divider/README.md'),
         },
         {
+          title: 'Fab 悬浮按钮',
+          name: 'fab',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/fab',
+          component: () => import('@/fab/README.md'),
+        },
+        {
           title: 'Icon 图标',
           name: 'icon',
           meta: { docType: 'base' },
@@ -147,13 +154,6 @@ export default {
           meta: { docType: 'form' },
           path: '/miniprogram/components/date-time-picker',
           component: () => import('@/date-time-picker/README.md'),
-        },
-        {
-          title: 'Fab 悬浮按钮',
-          name: 'fab',
-          meta: { docType: 'form' },
-          path: '/miniprogram/components/fab',
-          component: () => import('@/fab/README.md'),
         },
         {
           title: 'Input 输入框',
@@ -254,18 +254,18 @@ export default {
           component: () => import('@/cell/README.md'),
         },
         {
-          title: 'CountDown 倒计时',
-          name: 'countdown',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/count-down',
-          component: () => import('@/count-down/README.md'),
-        },
-        {
           title: 'Collapse 折叠面板',
           name: 'collapse',
           meta: { docType: 'data' },
           path: '/miniprogram/components/collapse',
           component: () => import('@/collapse/README.md'),
+        },
+        {
+          title: 'CountDown 倒计时',
+          name: 'countdown',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/count-down',
+          component: () => import('@/count-down/README.md'),
         },
         {
           title: 'DropdownMenu 下拉菜单',

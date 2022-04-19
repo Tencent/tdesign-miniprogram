@@ -4,7 +4,7 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">3</em></h3>
+<h3>基础<em class="tag">4</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/button">
@@ -23,6 +23,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/fab">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-fab.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-fab-dark.png" />
+      <p class="name">Fab 悬浮按钮</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/icon">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-icon.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-icon-dark.png" />
@@ -31,8 +39,15 @@ spline: explain
   </div>
 </section>
 
-<h3>导航<em class="tag">5</em></h3>
+<h3>导航<em class="tag">6</em></h3>
 <section class="image-group">
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/drawer">
+      <img  class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-drawer.png" />
+      <img  class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-drawer-dark.png" />
+      <p class="name">Drawer 抽屉</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/indexes">
       <img  class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-indexes.png" />
@@ -159,7 +174,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">12</em></h3>
+<h3>数据展示<em class="tag">14</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar">
@@ -186,10 +201,26 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/collapse">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-collapse.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-collapse-dark.png" />
+      <p class="name">Collapse 折叠面板</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/count-down">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-countdown.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-countdown-dark.png" />
       <p class="name">CountDown 倒计时</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/dropdown-menu">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-dropdownmenu.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-dropdownmenu-dark.png" />
+      <p class="name">DropdownMenu 下拉菜单</p>
     </a>
   </div>
 
@@ -225,6 +256,14 @@ spline: explain
     </a>
   </div>
 
+  <!-- <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/imageviewer">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-imageviewer.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-imageviewer-dark.png" />
+      <p class="name">ImageViewer 图片预览</p>
+    </a>
+  </div> -->
+
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/skeleton">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-skeleton.png" />
@@ -258,8 +297,15 @@ spline: explain
   </div>
 </section>
 
-<h3>消息提醒<em class="tag">8</em></h3>
+<h3>消息提醒<em class="tag">10</em></h3>
 <section class="image-group">
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/actionsheet">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-actionsheet.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-actionsheet-dark.png" />
+      <p class="name">ActionSheet 动作面板</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/back-top">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-backtop.png" />
@@ -289,11 +335,27 @@ spline: explain
       <p class="name">Message 全局提示</p>
     </a>
   </div>
+
+  <!-- <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/notice-bar">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-noticebar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-noticebar-dark.png" />
+      <p class="name">NoticeBar 消息提醒</p>
+    </a>
+  </div> -->
+
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/popup">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-popup.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-popup-dark.png" />
       <p class="name">Popup 弹出层</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/progress">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-progress.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-progress-dark.png" />
+      <p class="name">Progress 进度条</p>
     </a>
   </div>
   <div class="image-wrapper">
