@@ -43,7 +43,9 @@ export default class NoticeBar extends SuperComponent {
     },
 
     visible(visible) {
-      if (!visible) {
+      if (visible) {
+        this.show();
+      } else {
         this.clearNoticeBarAnimation();
       }
     },
@@ -55,10 +57,6 @@ export default class NoticeBar extends SuperComponent {
         duration: 0,
         timingFunction: 'linear',
       });
-    },
-
-    ready() {
-      this.show();
     },
 
     detached() {
@@ -171,12 +169,20 @@ export default class NoticeBar extends SuperComponent {
       }
     },
 
-    handleSuffixIcon() {
-      this.triggerEvent('suffix-icon', { self: this });
+    clickPrefixIcon() {
+      this.triggerEvent('click', { trigger: 'prefix-icon' });
     },
 
-    handleExtre() {
-      this.triggerEvent('extre', { self: this });
+    clickContent() {
+      this.triggerEvent('click', { trigger: 'content' });
+    },
+
+    clickSuffixIcon() {
+      this.triggerEvent('click', { trigger: 'suffix-icon' });
+    },
+
+    clickExtra() {
+      this.triggerEvent('click', { trigger: 'extra' });
     },
   };
 }

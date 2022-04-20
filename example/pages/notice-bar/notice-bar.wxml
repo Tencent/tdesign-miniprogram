@@ -21,18 +21,13 @@
         visible="{{true}}"
         suffixIcon="chevron-right"
         content="提示文字描述提示文字描述提示文字描述"
-        bind:suffix-icon="handleSuffixIconLink"
+        bind:click="click"
       />
     </view>
     <view class="box">
-      <t-notice-bar
-        visible="{{visible}}"
-        suffixIcon="close"
-        bind:extre="handleExtreText"
-        bind:suffix-icon="handleSuffixIconCloseDemo"
-      >
+      <t-notice-bar visible="{{visible}}" suffixIcon="close" bind:click="click">
         <view slot="content"> 提示文字描述提示文字描述 </view>
-        <view slot="extre" class="extre">详情</view>
+        <view slot="extra" class="extra">详情</view>
       </t-notice-bar>
     </view>
 
@@ -94,16 +89,15 @@
       <t-notice-bar
         visible="{{true}}"
         suffixIcon="chevron-right"
-        bind:suffix-icon="handleSuffixIconLink"
         content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
       />
     </view>
     <view class="box">
       <!-- slot实现自定义content内容 -->
-      <t-notice-bar visible="{{true}}" bind:suffix-icon="handleSuffixIconClose">
+      <t-notice-bar visible="{{true}}">
         <view slot="content">
           提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
-          <view class="extre" bind:tap="clickDetail"> 详情 </view>
+          <view class="extra" bind:tap="clickDetail"> 详情 </view>
         </view>
         <view slot="suffixIcon">
           <t-icon name="close"></t-icon>

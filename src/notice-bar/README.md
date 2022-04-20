@@ -24,7 +24,7 @@ isComponent: true
 
 ### 带图标静态公告栏
 ```xml
-<t-notice-bar visible="{{true}}" content="带图标静态公告栏"></t-notice-bar>
+<t-notice-bar visible="{{true}}" content="带图标静态公告栏"/>
 <t-notice-bar visible="{{true}}" content="提示文字描述提示文字描述提示文字描述">
   <view slot="prefixIcon">
     <t-icon name="error-circle-filled"></t-icon>
@@ -38,8 +38,10 @@ isComponent: true
   visible="{{true}}"
   suffixIcon="chevron-right"
   content="提示文字描述提示文字描述提示文字描述"
+  bind:prefix-icon="handlePrefixIcon"
+  bind:content="handleContent"
   bind:suffix-icon="handleSuffixIconLink"
-></t-notice-bar>
+/>
 
 <t-notice-bar
   visible="{{visible}}"
@@ -132,18 +134,15 @@ isComponent: true
 ## API
 ### NoticeBar Props
 
-| 名称            | 类型             | 默认值    | 说明                                                                                                                                                                                                                                                                                                                                       | 必传 |
-| --------------- | ---------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---- |
-| content         | String / Slot    | -         | 文本内容                                                                                                                                                                                                                                                                                                                                   | N    |
-| delay           | Number           | 0         | 当 marquee = true 时，延迟滚动的时间，单位 ms                                                                                                                                                                                                                                                                                              | N    |
-| extra           | String / Slot    | -         | 右侧额外信息                                                                                                                                                                                                                                                                                                                               | N    |
+| 名称 | 类型 | 默认值 | 说明 | 必传 |
+| ---- | ---- | ------ | ---- ||
+| content         | String / Slot    | -         | 文本内容  | N    |
+| extra           | String / Slot    | -         | 右侧额外信息| N   |
 | marquee         | Boolean / Object | false     | 跑马灯效果。speed 指速度控制；loop 指循环播放次数，值为 -1 表示循环播放，值为 0 表示不循环播放；delay 表示延迟多久开始播放。TS 类型：`boolean | DrawMarquee` `interface DrawMarquee { speed?: number; loop?: number; delay?: number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/notice-bar/type.ts) | N    |
-| prefix-icon     | String           | -         | 左边图标                                                                                                                                                                                                                                                                                                                                   | N    |
-| speed           | Number           | 50        | 当 marquee = true 时，文字滚动的速度，默认50px/s                                                                                                                                                                                                                                                                                           | N    |
-| suffix-icon     | String           | -         | 后缀图标                                                                                                                                                                                                                                                                                                                                   | N    |
-| theme           | String           | info      | 内置主题。可选项：info/success/warning/error                                                                                                                                                                                                                                                                                               | N    |
-| visible         | Boolean          | false     | 显示/隐藏                                                                                                                                                                                                                                                                                                                                  | N    |
-| default-visible | Boolean          | undefined | 显示/隐藏。非受控属性                                                                                                                                                                                                                                                                                                                      | N    |
+| prefix-icon     | String           | -         | 左边图标  | N    |
+| suffix-icon     | String           | -         | 后缀图标  | N    |
+| theme           | String           | info      | 内置主题。可选项：info/success/warning/error | N    |
+| visible         | Boolean          | false     | 显示/隐藏 | N    |
 
 ### NoticeBar Events
 

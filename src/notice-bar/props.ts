@@ -10,11 +10,6 @@ const props: TdNoticeBarProps = {
   content: {
     type: String,
   },
-  /** 当 marquee = true 时，延迟滚动的时间，单位 ms */
-  delay: {
-    type: Number,
-    value: 0,
-  },
   /** 右侧额外信息 */
   extra: {
     type: String,
@@ -30,11 +25,6 @@ const props: TdNoticeBarProps = {
     type: String,
     value: '',
   },
-  /** 当 marquee = true 时，文字滚动的速度，默认50px/s */
-  speed: {
-    type: Number,
-    value: 50,
-  },
   /** 后缀图标 */
   suffixIcon: {
     type: String,
@@ -49,11 +39,6 @@ const props: TdNoticeBarProps = {
   visible: {
     type: Boolean,
     value: null,
-  },
-  /** 显示/隐藏，非受控属性 */
-  defaultVisible: {
-    type: Boolean,
-    value: false,
   },
 };
 

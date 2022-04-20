@@ -13,14 +13,6 @@ export interface TdNoticeBarProps {
     value?: string;
   };
   /**
-   * 当 marquee = true 时，延迟滚动的时间，单位 ms
-   * @default 0
-   */
-  delay?: {
-    type: NumberConstructor;
-    value?: number;
-  };
-  /**
    * 右侧额外信息
    */
   extra?: {
@@ -43,14 +35,6 @@ export interface TdNoticeBarProps {
   prefixIcon?: {
     type: StringConstructor;
     value?: string;
-  };
-  /**
-   * 当 marquee = true 时，文字滚动的速度，默认50px/s
-   * @default 50
-   */
-  speed?: {
-    type: NumberConstructor;
-    value?: number;
   };
   /**
    * 后缀图标
@@ -76,14 +60,10 @@ export interface TdNoticeBarProps {
     type: BooleanConstructor;
     value?: boolean;
   };
-  /**
-   * 显示/隐藏，非受控属性
-   * @default false
-   */
-  defaultVisible?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
 }
 
-export interface DrawMarquee { speed?: number; loop?: number; delay?: number };
+export interface DrawMarquee {
+  speed?: number;
+  loop?: number;
+  delay?: number;
+}

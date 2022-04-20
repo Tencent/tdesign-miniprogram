@@ -3,7 +3,7 @@ Page({
     visible: true,
     marquee1: {
       speed: 80,
-      loop: 2,
+      loop: -1,
       delay: 0,
     },
     marquee2: {
@@ -20,23 +20,17 @@ Page({
      * */
   },
 
-  handleExtreText(e) {
-    console.log('click extre text', e);
-  },
-
-  handleSuffixIconCloseDemo(e) {
-    console.log('click suffix-icon close', e);
-    this.setData({
-      visible: false,
-    });
-  },
-
-  handleSuffixIconClose(e) {
-    console.log('click suffix-icon close', e);
-  },
-
-  handleSuffixIconLink(e) {
-    console.log('click suffix-icon link', e);
+  click(e) {
+    const { trigger } = e.detail;
+    if (trigger === 'prefix-icon') {
+      console.log('click prefix-icon text');
+    } else if (trigger === 'content') {
+      console.log('click content text');
+    } else if (trigger === 'extra') {
+      console.log('click extra text');
+    } else if (trigger === 'suffix-icon') {
+      console.log('click suffix-icon text');
+    }
   },
 
   clickDetail() {
