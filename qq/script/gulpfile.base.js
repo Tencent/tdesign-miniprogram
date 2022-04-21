@@ -9,8 +9,9 @@ const gulpLess = require('gulp-less');
 const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
 const mpNpm = require('gulp-mp-npm');
-const gulpIf = require('gulp-if');
 const gulpFilter = require('gulp-filter');
+const gulpIf = require('gulp-if');
+const fs = require('fs');
 
 const config = require('./config');
 
@@ -27,9 +28,33 @@ const setDisplayName = (tasks, moduleName) => {
 
 const fileter = () => {
   return gulpFilter((file) => {
-    return !/\/(qq)\//.test(file.relative);
+    if (fs.existsSync(`src/${file.relative.split('/')[0]}/qq`)) {
+      return /\/(qq)\//.test(file.relative);
+    }
+    return true;
   });
 };
+
+const renameFilePath = () => {
+  return rename((file) => {
+    if (/\/qq/.test(file.dirname)) {
+      const newDirname = file.dirname.split('/')[0];
+      return {
+        dirname: newDirname,
+        basename: file.basename,
+        extname: file.extname,
+      };
+    }
+  });
+};
+
+const isNeedReplacePath = function (file) {
+  return /\/qq\//.test(file.relative);
+};
+
+function replaceCommonPath() {
+  return gulpIf(isNeedReplacePath, replace('../common/', './common/'));
+}
 
 // generate config replace task
 const generateConfigReplaceTask = (replaceConfig, options = {}) => {
@@ -63,6 +88,7 @@ module.exports = (src, dist, moduleName) => {
     less: `${src}/**/*.less`, // 匹配 less 文件
     wxss: `${src}/**/*.wxss`, // 匹配 wxss 文件
     md: `${src}/**/*.md`, // 匹配 md 文件
+    wxml: `${src}/**/*.wxml`,
   };
   // 匹配需要拷贝的文件
   globs.copy = [
@@ -74,6 +100,7 @@ module.exports = (src, dist, moduleName) => {
     `!${globs.less}`,
     `!${globs.wxss}`,
     `!${globs.md}`,
+    `!${globs.wxml}`,
   ];
 
   // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
@@ -134,6 +161,8 @@ module.exports = (src, dist, moduleName) => {
       .pipe(mpNpm())
       .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
       .pipe(fileter())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp js`
@@ -144,6 +173,8 @@ module.exports = (src, dist, moduleName) => {
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(fileter())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
@@ -154,6 +185,8 @@ module.exports = (src, dist, moduleName) => {
       .src(globs.wxs, { ...srcOptions, since: since(tasks.wxs) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(fileter())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp json`
@@ -163,6 +196,8 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.json, { ...srcOptions, since: since(tasks.json) })
       .pipe(fileter())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp less`
@@ -184,6 +219,8 @@ module.exports = (src, dist, moduleName) => {
       .pipe(rename({ extname: '.wxss' }))
       .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
       .pipe(fileter())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp wxss`
@@ -193,12 +230,25 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) })
       .pipe(fileter())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
+      .pipe(gulp.dest(dist));
+
+  /** gulp wxml
+   * 处理 wxml
+   */
+  tasks.wxml = () =>
+    gulp
+      .src(globs.wxml, { ...srcOptions, since: since(tasks.wxml) })
+      .pipe(fileter())
+      .pipe(replaceCommonPath())
+      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp common`
    * 拷贝common中样式
    */
-  tasks.common = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
+  // tasks.common = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
 
   // set displayName
   setDisplayName(tasks, moduleName);
@@ -209,7 +259,7 @@ module.exports = (src, dist, moduleName) => {
   tasks.build = gulp.series(
     tasks.clear,
     tasks.resetError,
-    gulp.parallel(tasks.copy, tasks.ts, tasks.js, tasks.wxs, tasks.json, tasks.less, tasks.wxss),
+    gulp.parallel(tasks.copy, tasks.ts, tasks.js, tasks.wxs, tasks.json, tasks.less, tasks.wxss, tasks.wxml),
     tasks.clearUnusedFolder,
   );
 
