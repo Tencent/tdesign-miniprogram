@@ -4,6 +4,22 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+
+## 0.9.0 `2022-4-21`
+
+### BREAKING CHANGES
+
+- Steps: 子组件名称从 `t-step` 改成 `t-step-item` [#373](https://github.com/Tencent/tdesign-miniprogram/pull/373) [@anlyyao](https://github.com/anlyyao)
+### Bug Fixes
+
+- Checkbox: 优化渲染性能 [#358](https://github.com/Tencent/tdesign-miniprogram/pull/358) [@LeeJim](https://github.com/LeeJim)
+- Switch: 修复无法选择的问题 [#362](https://github.com/Tencent/tdesign-miniprogram/pull/362) [@LeeJim](https://github.com/LeeJim)
+
+### Features
+
+- ActionSheet: 新增动作面板组件 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@NuoHui](https://github.com/NuoHui)
+- NoticeBar: 新增公告栏组件 [#354](https://github.com/Tencent/tdesign-miniprogram/pull/354) [@anlyyao](https://github.com/anlyyao)
+
 ## 0.8.0 `2022-4-15`
 
 ### BREAKING CHANGES
