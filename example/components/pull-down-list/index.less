@@ -19,26 +19,25 @@
 
   .name,
   .icon {
-    transition: opacity .3s;
+    transition: opacity 0.3s;
+  }
+
+  .name {
+    opacity: 0.9;
   }
 
   &.actived {
     .name {
-      opacity: .5;
+      opacity: 0.4;
     }
 
     .icon {
-      opacity: .6;
+      opacity: 0.4;
     }
   }
 
-  .icon {
-    width: 24rpx * 2;
-    height: 24rpx * 2;
-  }
-
   .childBox {
-    transition: height .3s;
+    transition: height 0.3s;
 
     .child {
       box-sizing: border-box;
@@ -50,6 +49,7 @@
       margin-left: 16rpx * 2;
       margin-right: 16rpx * 2;
       font-size: 16rpx * 2;
+      opacity: 0.9;
 
       &:last-of-type {
         border-bottom-color: transparent;
