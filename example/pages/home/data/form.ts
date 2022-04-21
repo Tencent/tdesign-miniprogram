@@ -1,6 +1,6 @@
 const form = {
   name: '表单',
-  icon: '/assets/bulletpoint@2x.png',
+  icon: 'bulletpoint',
   childArr: [
     {
       name: 'Checkbox',
