@@ -39,6 +39,7 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
 module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json', {
     declaration: !isProduction,
+    removeComments: isProduction,
   });
 
   // options
@@ -112,7 +113,6 @@ module.exports = (src, dist, moduleName) => {
       .pipe(
         plumber({
           errorHandler: (err) => {
-            console.log(err);
             tasks.handleError(err.message);
           },
         }),
