@@ -1,8 +1,8 @@
-import { ActionSheetShowOption, ActionSheetTheme } from 'tdesign-miniprogram/action-sheet/index';
+import { ActionSheetTheme } from 'tdesign-miniprogram/action-sheet/index';
 
 const singleCharItems = ['默认选项1', '默认选项2', '默认选项3'];
 
-const basicListOption: ActionSheetShowOption = {
+const basicListOption = {
   theme: ActionSheetTheme.List,
   selector: '#t-action-sheet-imperative',
   items: [
@@ -24,7 +24,7 @@ const basicListOption: ActionSheetShowOption = {
   ],
 };
 
-const withIconListOption: ActionSheetShowOption = {
+const withIconListOption = {
   theme: ActionSheetTheme.List,
   selector: '#t-action-sheet-imperative',
   items: [
@@ -50,7 +50,7 @@ const withIconListOption: ActionSheetShowOption = {
   ],
 };
 
-const grid: ActionSheetShowOption = {
+const grid = {
   theme: ActionSheetTheme.Grid,
   selector: '#t-action-sheet-imperative',
   items: [
@@ -89,7 +89,7 @@ const grid: ActionSheetShowOption = {
   ],
 };
 
-const withSwiperGrid: ActionSheetShowOption = {
+const withSwiperGrid = {
   theme: ActionSheetTheme.Grid,
   selector: '#t-action-sheet-imperative',
   items: [
