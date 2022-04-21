@@ -36,6 +36,7 @@ export default class StepItem extends SuperComponent {
     isDot: false,
     curStatus: '',
     curSubStepItems: [],
+    curSubStepItemsStatus: [],
     layout: 'vertical',
     type: 'default',
     isLastChild: false,
@@ -66,88 +67,84 @@ export default class StepItem extends SuperComponent {
 
   methods = {
     updateStatus(current, currentStatus, index, theme, layout, steps, readonly) {
-      const { status } = this.data;
       const _current = String(current);
-      const firstStep = Number(_current.split('-')[0]);
-      const secondStep = _current.split('-')[1] ? Number(_current.split('-')[1]) : undefined;
+      const connectLine = '-';
 
-      // 判断对象的attr属性存在 && attr数组长度不为0
       const judgeObjAttr = (data, attr: string) => {
-        return data[attr] && data[attr].length;
+        return Array.isArray(data[attr]) && data[attr].length;
       };
 
-      const judgeStepStatus = (itemIndex: number, current: number, status: string) => {
-        if (itemIndex < current) return 'finish';
-        if (itemIndex === current) return status;
-        return 'default';
+      const getStepLevel = (s) => {
+        const reg = new RegExp(`(.*)${connectLine}{1}.*`);
+        return s.replace(reg, '$1');
       };
 
-      const changeStatus = (
-        data,
-        attr: string,
-        itemAttr: string,
-        status: string,
-        value: number = data[attr].length,
-      ) => {
-        data[attr].forEach((item, index) => {
-          item[itemAttr] = judgeStepStatus(index, value, status);
-        });
+      const isSameLevelStep = (stepsTag: string, current: string) => {
+        return stepsTag.length < current.length && getStepLevel(stepsTag) === getStepLevel(current);
       };
 
-      const isLastChild = (data, index) => index === data.length - 1;
-
-      // 1. 拷贝一份 substep
-      if (judgeObjAttr(this.data, 'subStepItems')) {
-        const _subStepItems = JSON.parse(JSON.stringify(this.data.subStepItems));
-        this.data._subStepItems = _subStepItems;
-      }
-
-      // 2. 优先step的statue && 判断step及subStep状态
-      if (status !== 'default') {
-        this.data._status = status;
-      } else if (status === 'default') {
-        if (index < firstStep) {
-          this.data._status = 'finish';
-          judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'finish');
-        } else if (index === firstStep) {
-          this.data._status = currentStatus;
-          if (secondStep !== undefined && judgeObjAttr(this.data, '_subStepItems')) {
-            changeStatus(this.data, '_subStepItems', '_status', currentStatus, secondStep);
+      /**
+       * 步骤条状态优先级：status > currentStatus > 子步骤影响
+       * 子步骤影响优先级： finish > error > process
+       */
+      const stepFinalStatus = (item, itemTag, current: string, currentStatus) => {
+        let tempStepStatus = '';
+        if (item.status !== 'default' && item.status !== undefined) {
+          tempStepStatus = item.status === '' ? 'default' : item.status;
+        } else {
+          tempStepStatus = 'default';
+          if (itemTag < current) {
+            tempStepStatus = 'finish';
+          } else if (itemTag === current && item.status !== '') {
+            tempStepStatus = currentStatus;
           }
 
-          // secondStep存在，子步骤条为default时，其stepItem状态应为process
-          if (
-            secondStep !== undefined &&
-            currentStatus === 'finish' &&
-            judgeObjAttr(this.data, '_subStepItems') &&
-            !isLastChild(this.data._subStepItems, secondStep)
-          ) {
-            this.data._status = 'process';
-          }
+          if (isSameLevelStep(itemTag, current)) {
+            if (judgeObjAttr(item, 'subStepItems')) {
+              const tempStepItemsStatus = item.subStepItems.map((subItem, subIndex) => {
+                const subItemTag = `${itemTag}${connectLine}${subIndex}`;
+                return stepFinalStatus(subItem, subItemTag, current, currentStatus);
+              });
 
-          // secondStep存在，子步骤条为finish且不为最后一个子步骤时，其stepItem状态应为proces
-          if (secondStep !== undefined && currentStatus === 'default') {
-            this.data._status = 'process';
+              if (tempStepItemsStatus[tempStepItemsStatus.length - 1] === 'finish') {
+                tempStepStatus = 'finish';
+                return tempStepStatus;
+              }
+              if (tempStepItemsStatus.includes('process') || tempStepItemsStatus.every((item) => item === 'default')) {
+                tempStepStatus = 'process';
+              }
+              if (tempStepItemsStatus.includes('error')) {
+                tempStepStatus = 'error';
+              }
+            }
           }
-        } else if (index > firstStep) {
-          this.data._status = 'default';
-          judgeObjAttr(this.data, '_subStepItems') && changeStatus(this.data, '_subStepItems', '_status', 'default');
         }
+        return tempStepStatus;
+      };
+
+      // step status
+      this.data.tempStatus = stepFinalStatus(this.data, String(index), _current, currentStatus);
+      const tempStatusList = [];
+      if (judgeObjAttr(this.data, 'subStepItems')) {
+        this.data.subStepItems.forEach((subItem, subIndex) => {
+          tempStatusList.push(stepFinalStatus(subItem, `${index}${connectLine}${subIndex}`, _current, currentStatus));
+        });
       }
 
       // update icon
+      const tempIcon = new Map([
+        ['finish', 'check'],
+        ['error', 'close'],
+      ]);
       let iconStatus = '';
-      if (readonly) {
-        if (this.data._status === 'finish') {
-          iconStatus = 'check';
-        } else if (this.data._status === 'error') {
-          iconStatus = 'close';
-        }
+      if (readonly && tempIcon.has(this.data.tempStatus)) {
+        iconStatus = tempIcon.get(this.data.tempStatus);
       }
 
       this.setData({
-        curStatus: this.data._status || this.data.status,
-        curSubStepItems: this.data._subStepItems || [],
+        curStatus: this.data.tempStatus,
+        curSubStepItems: this.data.subStepItems || [],
+        curSubStepItemsStatus: tempStatusList || [],
         computedIcon: iconStatus || this.data.icon,
         index,
         isDot: theme === 'dot' && layout === 'vertical',

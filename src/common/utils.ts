@@ -58,6 +58,16 @@ export const requestAnimationFrame = function (cb: Function) {
     });
 };
 
+export const getRect = function (context: any, selector: string) {
+  return new Promise<WechatMiniprogram.BoundingClientRectCallbackResult>((resolve) => {
+    wx.createSelectorQuery()
+      .in(context)
+      .select(selector)
+      .boundingClientRect()
+      .exec((rect = []) => resolve(rect[0]));
+  });
+};
+
 const isDef = function (value: any): boolean {
   return value !== undefined && value !== null;
 };
@@ -80,10 +90,7 @@ export const addUnit = function (value?: string | number): string | undefined {
  * @param maxCharacter 规定最大字符串长度
  * @returns 当没有传入maxCharacter时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
  */
-export const getCharacterLength = (
-  str: string,
-  maxCharacter?: number,
-): { length: number; characters: string } => {
+export const getCharacterLength = (str: string, maxCharacter?: number): { length: number; characters: string } => {
   const hasMaxCharacter = typeof maxCharacter === 'number';
   if (!str || str.length === 0) {
     if (hasMaxCharacter) {
@@ -125,3 +132,23 @@ export const getCharacterLength = (
     characters: '',
   };
 };
+
+
+export const chunk = (arr: any[], size: number) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
+
+export const equal = (v1, v2) => {
+  if (Array.isArray(v1) && Array.isArray(v2)) {
+    if (v1.length !== v2.length) return false;
+    return v1.every((item, index) => equal(item, v2[index]));
+  }
+  return v1 === v2;
+};
+
+export const clone = (val) => {
+  if (Array.isArray(val)) {
+    return val.map((item) => clone(item));
+  }
+  return val;
+};
+

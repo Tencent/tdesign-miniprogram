@@ -1,142 +1,137 @@
-import TComponent from '../common/component';
+import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './dropdown-item-props';
+import menuProps from './props';
+import type { TdDropdownItemProps } from './type';
+import { equal, clone } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-dropdown-item`;
 
-TComponent({
-  properties: {
-    title: {
-      type: String,
-      value: '',
-    },
-    options: {
-      type: Array,
-      value: [],
-    },
-    selectMode: {
-      type: String,
-      value: 'single', // single | multi
-    },
-    optionsLayout: {
-      type: String,
-      value: 'columns', // columns | tree | slot
-    },
-    optionsColumns: {
-      type: Number,
-      optionalTypes: [String],
-      value: 1,
-    },
-    value: {
-      type: Array,
-      optionalTypes: [String, Number],
-      value: [],
-    },
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    itemId: {
-      type: String,
-      value: '',
-    },
-  },
-  data: {
-    classBasePrefix: prefix,
+export interface DropdownItemProps extends TdDropdownItemProps {}
+@wxComponent()
+export default class DropdownMenuItem extends SuperComponent {
+  properties = {
+    ...props,
+  };
+
+  data = {
+    prefix,
     classPrefix: name,
     show: false,
-    isBtnDisabled: true,
     bar: null,
     top: 0,
+    maskHeight: 0,
     contentClasses: '',
-    treeColumns: 3,
-    selected: [],
-    treeState: {
-      leafLevel: 0,
-      selectList: [],
-      select: [],
-    },
+    leafLevel: 0,
     treeOptions: [],
-    isTree: false,
-  },
-  relations: {
+    initValue: null,
+    hasChanged: false,
+    duration: menuProps.duration.value,
+    zIndex: menuProps.zIndex.value,
+    overlay: menuProps.overlay.value,
+  };
+
+  relations: RelationsOptions = {
     './dropdown-menu': {
       type: 'parent',
       linked(target) {
-        this._getParentBottom(target);
+        const { zIndex, duration, overlay } = target.properties;
+
+        this.getParentBottom(target);
         this.setData({
           bar: target,
+          zIndex,
+          duration,
+          overlay,
         });
       },
     },
-  },
-  attached() {
-    const { selectMode } = this.data;
-    const { optionsLayout } = this.data;
-    const layoutCol = +this.data.optionsColumns;
-    const isTree = optionsLayout === 'tree';
-    const treeCol = isTree ? +this.data.treeColumns : 0;
-    const contentClassesObj: Object = {
-      [`${prefix}-is-tree`]: isTree,
-      [`${prefix}-is-single`]: !isTree && selectMode === 'single',
-      [`${prefix}-is-multi`]: !isTree && selectMode === 'multi',
-      [`${prefix}-is-col1`]: layoutCol === 1 || treeCol === 1,
-      [`${prefix}-is-col2`]: layoutCol === 2 || treeCol === 2,
-      [`${prefix}-is-col3`]: layoutCol === 3 || treeCol === 3,
-    };
-    const contentClasses = Object.keys(contentClassesObj)
-      .filter((e) => contentClassesObj[e] === true)
-      .join(' ');
-    this.setData({
-      contentClasses,
-      isTree,
-      selected: this.data.value,
-    });
+  };
 
-    if (isTree) {
-      this.data.treeState.selectList = this.data.selected || [];
-      this._buildTreeOptions();
-    }
-    this.updateButtonState();
-  },
-  methods: {
-    _buildTreeOptions() {
-      const { options, selectMode } = this.data;
-      const { selectList } = this.data.treeState;
-      const newTreeOptions = [];
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
+  observers = {
+    value(v) {
+      if (this.data.multiple) {
+        if (!Array.isArray(v)) throw TypeError('应传入数组类型的 value');
+      }
+
+      if (this.data.optionsLayout === 'tree') {
+        this.buildTreeOptions();
+      }
+    },
+    'initValue, value'(v1, v2) {
+      this.setData({
+        hasChanged: !equal(v1, v2),
+      });
+    },
+  };
+
+  lifetimes = {
+    attached() {
+      const { multiple, optionsLayout, value, defaultValue } = this.data;
+      const isTree = optionsLayout === 'tree';
+      const contentClassesObj = {
+        [`${prefix}-is-tree`]: isTree,
+        [`${prefix}-is-single`]: !isTree && !multiple,
+        [`${prefix}-is-multi`]: !isTree && multiple,
+      };
+      const contentClasses = Object.keys(contentClassesObj)
+        .filter((e) => contentClassesObj[e] === true)
+        .join(' ');
+
+      this.setData({
+        contentClasses,
+        initValue: clone(value || defaultValue),
+      });
+    },
+  };
+
+  methods = {
+    buildTreeOptions() {
+      const { options, value, multiple } = this.data;
+      const treeOptions = [];
       let level = -1;
       let node = { options };
-      while (node.options) {
-        // 当前层级节点的列表
-        const list = node.options;
-        newTreeOptions.push([...list]);
+
+      while (node && node.options) {
         level += 1;
-        // 当前层级列表选中项
-        const thisValue: [] | string | number | null = selectList[level];
-        if (thisValue === undefined) {
+        const list = node.options;
+        const thisValue = value?.[level];
+
+        treeOptions.push([...list]);
+
+        if (thisValue == null) {
           const [firstChild] = list;
-          if (firstChild.options) {
-            // 还有子节点，当前层级作为单选处理
-            this._selectTreeNode(level, firstChild.value);
-            node = firstChild;
-          } else {
-            // 没有子节点，结束处理
-            this._selectTreeNode(level, selectMode === 'multi' ? [] : undefined);
-            break;
-          }
+          node = firstChild;
         } else {
-          const child: any =
-            !Array.isArray(thisValue) && list.find((child: any) => child.value === thisValue);
-          node = child;
+          const child = list.find((child) => child.value === thisValue);
+          node = child ?? list[0];
         }
       }
+
+      const leafLevel = Math.max(0, level);
+
+      if (multiple) {
+        const finalValue = this.data.value || this.data.defaultValue;
+        if (!Array.isArray(finalValue[leafLevel])) {
+          throw TypeError('应传入数组类型的 value');
+        }
+      }
+
       this.setData({
-        'treeState.leafLevel': Math.max(0, level),
-        treeOptions: newTreeOptions,
+        leafLevel,
+        treeOptions,
       });
     },
 
-    _closeDropdown() {
+    closeDropdown() {
       this.data.bar.setData({
         activeIdx: -1,
       });
@@ -144,94 +139,57 @@ TComponent({
         show: false,
       });
     },
-    _getParentBottom(parent) {
+
+    getParentBottom(parent) {
       const query = wx.createSelectorQuery().in(parent);
       query
         .select(`#${prefix}-bar`)
         .boundingClientRect((res) => {
           this.setData({
             top: res.bottom,
+            maskHeight: res.top,
           });
         })
         .exec();
     },
 
-    _selectTreeNode(level: number, value: any) {
-      // console.log('level:', level, 'value:', value);
-      // 当前节点
-      const tempValue: any = this.data.treeState.selectList.slice(0, level);
-      tempValue[level] = value;
-      this.setData({
-        'treeState.selectList': tempValue,
-      });
+    handleTreeClick(e) {
+      const { level, value: itemValue } = e.currentTarget.dataset;
+      const { value } = this.data;
+
+      value[level] = itemValue;
+      this._trigger('change', { value });
     },
-    clickOverlay() {
-      this._closeDropdown();
-    },
-    updateSelected(e) {
-      if (this.data.isTree) {
-        this._selectTreeNode(
-          e.target.dataset.level,
-          this.data.selectMode === 'single' ? e.detail.name : e.detail.names,
-        );
+
+    handleRadioChange(e) {
+      let { value } = this.data;
+      const { value: itemValue } = e.detail;
+      const { level } = e.target.dataset;
+
+      if (this.data.optionsLayout === 'tree') {
+        value[level] = itemValue;
       } else {
-        const data = {
-          selected: this.data.selectMode === 'single' ? e.detail.name : e.detail.names,
-        };
-        this.setData(data);
-        if (this.data.bar && this.data.selectMode === 'single') {
-          this.confirmSelect();
-        }
+        value = itemValue;
       }
 
-      this.updateButtonState();
+      this._trigger('change', { value });
     },
-    updateButtonState() {
-      if (this.data.isTree) {
-        let isEmpty = false;
-        if (this.data.selectMode === 'single') {
-          isEmpty = this.data.treeState.selectList[this.data.treeState.leafLevel] === undefined;
-        }
-        if (this.data.selectMode === 'multi') {
-          const selectList = this.data.treeState.selectList[this.data.treeState.leafLevel] as [];
-          isEmpty = selectList && selectList.length <= 0;
-        }
-        this.setData({
-          isBtnDisabled: isEmpty,
-        });
-      } else {
-        const isEmpty = this.data.selected?.length === 0;
-        this.setData({
-          isBtnDisabled: isEmpty,
-        });
+
+    handleMaskClick() {
+      const { bar } = this.data;
+
+      if (bar && bar.properties.closeOnClickOverlay) {
+        this.closeDropdown();
       }
     },
-    resetSelect() {
-      if (this.data.isTree) {
-        this.setData({
-          treeState: {
-            leafLevel: 0,
-            selectList: [],
-            select: [],
-          },
-        });
-        this._buildTreeOptions();
-        this.updateButtonState();
-      } else {
-        this.updateSelected({ detail: { names: [], name: null } });
-      }
+
+    handleReset() {
+      this._trigger('change', { value: clone(this.data.initValue) });
     },
-    confirmSelect() {
-      if (this.data.isTree) {
-        this.triggerEvent('change', this.data.treeState.selectList);
-      } else {
-        this.triggerEvent('change', this.data.selected);
-      }
-      this._closeDropdown();
+
+    handleConfirm() {
+      this._trigger('confirm', { value: this.data.value });
+      this.closeDropdown();
     },
-    selectTreeNode(e) {
-      this._selectTreeNode(e.target.dataset.level, e.detail.name);
-      this._buildTreeOptions();
-    },
-  },
-});
+  };
+}

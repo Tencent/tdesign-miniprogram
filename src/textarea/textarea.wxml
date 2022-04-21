@@ -14,7 +14,7 @@
       auto-focus="{{autofocus}}"
       focus="{{focus}}"
       auto-height="{{autosize}}"
-      adjust-position="{{aujustPosition}}"
+      adjust-position="{{adjustPosition}}"
       confirm-type="{{confirmType}}"
       confirm-hold="{{confirmHold}}"
       bindinput="onInput"

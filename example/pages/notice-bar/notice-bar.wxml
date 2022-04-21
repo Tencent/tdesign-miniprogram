@@ -1,0 +1,108 @@
+<view class="demo">
+  <view class="demo-title">NoticeBar 公告栏</view>
+  <view class="demo-desc"> 在导航栏下方，用于给用户显示提示消息 </view>
+  <t-demo title="01 类型" desc="基础静态公告栏">
+    <view class="box">
+      <t-notice-bar visible="{{true}}" prefixIcon="null" content="提示文字描述提示文字描述提示文字描述" />
+    </view>
+
+    <view class="demo-section__desc">带图标静态公告栏</view>
+    <view class="box">
+      <t-notice-bar visible="{{true}}" content="提示文字描述提示文字描述提示文字描述">
+        <view slot="prefixIcon">
+          <t-icon name="error-circle-filled"></t-icon>
+        </view>
+      </t-notice-bar>
+    </view>
+
+    <view class="demo-section__desc">带操作公告栏</view>
+    <view class="box">
+      <t-notice-bar
+        visible="{{true}}"
+        suffixIcon="chevron-right"
+        content="提示文字描述提示文字描述提示文字描述"
+        bind:click="click"
+      />
+    </view>
+    <view class="box">
+      <t-notice-bar visible="{{visible}}" suffixIcon="close" bind:click="click">
+        <view slot="content"> 提示文字描述提示文字描述 </view>
+        <view slot="extra" class="extra">详情</view>
+      </t-notice-bar>
+    </view>
+
+    <view class="demo-section__desc">滚动公告栏</view>
+    <view class="box">
+      <t-notice-bar
+        visible="{{true}}"
+        prefixIcon="null"
+        marquee="{{marquee1}}"
+        content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+      />
+    </view>
+    <view class="box">
+      <t-notice-bar
+        visible="{{true}}"
+        marquee="{{marquee2}}"
+        content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+      />
+    </view>
+    <view class="demo-section__desc">自定义样式</view>
+    <view class="box">
+      <t-notice-bar
+        visible="{{true}}"
+        prefixIcon="sound"
+        content="提示文字描述提示文字描述提示文字描述"
+        t-class="t-class"
+      />
+    </view>
+  </t-demo>
+  <t-demo title="02 状态" desc="多行文字消息栏">
+    <view class="box">
+      <t-notice-bar visible="{{true}}" content="默认状态公告栏默认状态公告栏" />
+    </view>
+    <view class="box">
+      <t-notice-bar visible="{{true}}" theme="success" content="成功状态公告栏成功状态公告栏" />
+    </view>
+    <view class="box">
+      <t-notice-bar visible="{{true}}" theme="warning" content="警示状态公告栏警示状态公告栏" />
+    </view>
+    <view class="box">
+      <t-notice-bar visible="{{true}}" theme="error" content="错误状态公告栏错误状态公告栏" />
+    </view>
+
+    <view class="demo-section__desc">自定义样式</view>
+    <view class="box">
+      <t-notice-bar
+        visible="{{true}}"
+        prefixIcon="null"
+        content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+      />
+    </view>
+    <view class="box">
+      <t-notice-bar
+        visible="{{true}}"
+        content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+      />
+    </view>
+    <view class="box">
+      <t-notice-bar
+        visible="{{true}}"
+        suffixIcon="chevron-right"
+        content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+      />
+    </view>
+    <view class="box">
+      <!-- slot实现自定义content内容 -->
+      <t-notice-bar visible="{{true}}">
+        <view slot="content">
+          提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
+          <view class="extra" bind:tap="clickDetail"> 详情 </view>
+        </view>
+        <view slot="suffixIcon">
+          <t-icon name="close"></t-icon>
+        </view>
+      </t-notice-bar>
+    </view>
+  </t-demo>
+</view>

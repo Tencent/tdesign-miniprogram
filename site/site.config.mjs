@@ -60,6 +60,13 @@ export default {
           component: () => import('@/divider/README.md'),
         },
         {
+          title: 'Fab 悬浮按钮',
+          name: 'fab',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/fab',
+          component: () => import('@/fab/README.md'),
+        },
+        {
           title: 'Icon 图标',
           name: 'icon',
           meta: { docType: 'base' },
@@ -147,13 +154,6 @@ export default {
           meta: { docType: 'form' },
           path: '/miniprogram/components/date-time-picker',
           component: () => import('@/date-time-picker/README.md'),
-        },
-        {
-          title: 'Fab 悬浮按钮',
-          name: 'fab',
-          meta: { docType: 'form' },
-          path: '/miniprogram/components/fab',
-          component: () => import('@/fab/README.md'),
         },
         {
           title: 'Input 输入框',
@@ -254,6 +254,13 @@ export default {
           component: () => import('@/cell/README.md'),
         },
         {
+          title: 'Collapse 折叠面板',
+          name: 'collapse',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/collapse',
+          component: () => import('@/collapse/README.md'),
+        },
+        {
           title: 'CountDown 倒计时',
           name: 'countdown',
           meta: { docType: 'data' },
@@ -261,19 +268,12 @@ export default {
           component: () => import('@/count-down/README.md'),
         },
         {
-          title: 'Collapse 折叠面板',
-          name: 'collapse',
+          title: 'DropdownMenu 下拉菜单',
+          name: 'dropdown-menu',
           meta: { docType: 'data' },
-          path: '/miniprogram/components/collapse',
-          component: () => import('@/collapse/README.md'),
+          path: '/miniprogram/components/dropdown-menu',
+          component: () => import('@/dropdown-menu/README.md'),
         },
-        // {
-        //   title: 'DropdownMenu 下拉菜单',
-        //   name: 'dropdown-menu',
-        //   meta: { docType: 'data' },
-        //   path: '/miniprogram/components/dropdown-menu',
-        //   component: () => import('@/dropdown-menu/README.md'),
-        // },
         {
           title: 'Empty 空状态',
           name: 'empty',
@@ -336,13 +336,13 @@ export default {
       title: '消息提醒',
       type: 'component', // 组件文档
       children: [
-        // {
-        //   title: 'ActionSheet 动作面板',
-        //   name: 'actionsheet',
-        //   meta: { docType: 'message' },
-        //   path: '/miniprogram/components/actionsheet',
-        //   component: () => import('@/action-sheet/README.md'),
-        // },
+        {
+          title: 'ActionSheet 动作面板',
+          name: 'actionsheet',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/actionsheet',
+          component: () => import('@/action-sheet/README.md'),
+        },
         {
           title: 'BackTop 返回顶部',
           name: 'back-top',

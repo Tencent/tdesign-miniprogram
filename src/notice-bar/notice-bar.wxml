@@ -1,0 +1,30 @@
+<view wx:if="{{visible}}" class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class">
+  <!-- prefixIcon -->
+  <view class="{{classPrefix}}__prefix-icon {{prefix}}-class-prefix-icon" bind:tap="clickPrefixIcon">
+    <t-icon wx:if="{{ iconName }}" name="{{ iconName }}" />
+    <slot wx:else name="prefixIcon" />
+  </view>
+
+  <!-- conten -->
+  <view class="{{classPrefix}}__content-wrap" bind:tap="clickContent">
+    <view
+      class="{{classPrefix}}__content {{prefix}}-class-content {{ !marquee ? classPrefix + '__content-wrapable' : ''}}"
+      animation="{{ animationData }}"
+    >
+      <view wx:if="{{content}}"> {{content}} </view>
+      <slot wx:else name="content" />
+    </view>
+  </view>
+
+  <!-- extra -->
+  <view class="{{classPrefix}}__extra {{prefix}}-class-extra" bind:tap="clickExtra">
+    <view wx:if="{{ extra }}"> {{extra}} </view>
+    <slot wx:else name="extra" />
+  </view>
+
+  <!-- suffixIcon -->
+  <view class="{{classPrefix}}__suffix-icon {{prefix}}-class-suffix-icon" bind:tap="clickSuffixIcon">
+    <t-icon wx:if="{{ suffixIcon }}" name="{{suffixIcon}}" />
+    <slot wx:else name="suffixIcon" />
+  </view>
+</view>

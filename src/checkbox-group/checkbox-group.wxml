@@ -1,13 +1,14 @@
-<view class="{{ classPrefix }} t-class">
+<view class="{{ classPrefix }} {{prefix}}-class" style="{{customStyle}}">
   <slot />
   <block wx:for="{{checkboxOptions}}" wx:key="value">
     <t-checkbox
-      class="t-checkbox-option"
+      class="{{prefix}}-checkbox-option"
       label="{{item.label || item.text || ''}}"
       value="{{item.value || ''}}"
       check-all="{{item.checkAll}}"
       disabled="{{item.disabled}}"
-      bind:toggleAll="handleCheckAll"
+      data-item="{{item}}"
+      bind:change="handleInnerChildChange"
     ></t-checkbox>
   </block>
 </view>

@@ -48,7 +48,7 @@ export interface TdTagProps {
   maxWidth?: {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
-    value?: CSSProperties['maxWidth'] | number;
+    value?: string | number;
     required?: boolean;
   };
   /**

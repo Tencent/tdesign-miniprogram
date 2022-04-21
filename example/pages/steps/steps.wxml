@@ -5,40 +5,40 @@
   <t-demo title="01 类型" desc="横向可操作步骤条">
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" />
-        <t-step title="步骤描述" />
+        <t-step-item title="步骤描述" />
+        <t-step-item title="步骤描述" />
       </t-steps>
       <t-steps class="demo-steps" bind:change="handleChange" current="{{current}}">
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
 
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" />
-        <t-step title="步骤描述" />
-        <t-step title="步骤描述" />
+        <t-step-item title="步骤描述" />
+        <t-step-item title="步骤描述" />
+        <t-step-item title="步骤描述" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
 
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" />
-        <t-step title="步骤描述" />
-        <t-step title="步骤描述" />
-        <t-step title="步骤描述" />
+        <t-step-item title="步骤描述" />
+        <t-step-item title="步骤描述" />
+        <t-step-item title="步骤描述" />
+        <t-step-item title="步骤描述" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
-        <t-step title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
 
@@ -46,14 +46,14 @@
 
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" icon="user"></t-step>
-        <t-step title="步骤描述" icon="location" />
-        <t-step title="步骤描述" icon="time" />
+        <t-step-item title="步骤描述" icon="user"></t-step-item>
+        <t-step-item title="步骤描述" icon="location" />
+        <t-step-item title="步骤描述" icon="time" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1">
-        <t-step title="步骤描述" icon="user" content="辅助信息文字最多两行"></t-step>
-        <t-step title="步骤描述" icon="location" content="辅助信息文字最多两行" />
-        <t-step title="步骤描述" icon="time" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" icon="user" content="辅助信息文字最多两行"></t-step-item>
+        <t-step-item title="步骤描述" icon="location" content="辅助信息文字最多两行" />
+        <t-step-item title="步骤描述" icon="time" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
 
@@ -61,99 +61,99 @@
 
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="0" readonly="true">
-        <t-step title="当前步骤" />
-        <t-step title="未完成步骤" />
+        <t-step-item title="当前步骤" />
+        <t-step-item title="未完成步骤" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="0" readonly="true">
-        <t-step title="当前步骤" content="辅助信息文字最多两行" />
-        <t-step title="未完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="当前步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="未完成步骤" content="辅助信息文字最多两行" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="0" readonly="true">
-        <t-step title="错误步骤" status="error" content="辅助信息文字最多两行" />
-        <t-step title="未完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="错误步骤" status="error" content="辅助信息文字最多两行" />
+        <t-step-item title="未完成步骤" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
 
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1" readonly="true">
-        <t-step title="已完成步骤" />
-        <t-step title="当前步骤" />
-        <t-step title="未完成步骤" />
+        <t-step-item title="已完成步骤" />
+        <t-step-item title="当前步骤" />
+        <t-step-item title="未完成步骤" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1" readonly="true">
-        <t-step title="已完成步骤" content="辅助信息文字最多两行" />
-        <t-step title="当前步骤" content="辅助信息文字最多两行" />
-        <t-step title="未完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="已完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="当前步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="未完成步骤" content="辅助信息文字最多两行" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1" readonly="true">
-        <t-step title="已完成步骤" content="辅助信息文字最多两行" />
-        <t-step title="错误步骤" status="error" content="辅助信息文字最多两行" />
-        <t-step title="未完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="已完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="错误步骤" status="error" content="辅助信息文字最多两行" />
+        <t-step-item title="未完成步骤" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
 
     <view class="group">
       <t-steps class="demo-steps" defaultCurrent="1" readonly="true">
-        <t-step title="已完成步骤" />
-        <t-step title="当前步骤" />
-        <t-step title="未完成步骤" />
-        <t-step title="未完成步骤" />
+        <t-step-item title="已完成步骤" />
+        <t-step-item title="当前步骤" />
+        <t-step-item title="未完成步骤" />
+        <t-step-item title="未完成步骤" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1" readonly="true">
-        <t-step title="已完成步骤" content="辅助信息文字最多两行" />
-        <t-step title="当前步骤" content="辅助信息文字最多两行" />
-        <t-step title="未完成步骤" content="辅助信息文字最多两行" />
-        <t-step title="未完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="已完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="当前步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="未完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="未完成步骤" content="辅助信息文字最多两行" />
       </t-steps>
       <t-steps class="demo-steps" defaultCurrent="1" readonly="true">
-        <t-step title="已完成步骤" content="辅助信息文字最多两行" />
-        <t-step title="错误步骤" status="error" content="辅助信息文字最多两行" />
-        <t-step title="未完成步骤" content="辅助信息文字最多两行" />
-        <t-step title="未完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="已完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="错误步骤" status="error" content="辅助信息文字最多两行" />
+        <t-step-item title="未完成步骤" content="辅助信息文字最多两行" />
+        <t-step-item title="未完成步骤" content="辅助信息文字最多两行" />
       </t-steps>
     </view>
 
     <view class="demo-section__desc">竖向只读步骤条</view>
     <view class="group vertical">
       <t-steps class="demo-steps vertical" current="1" readonly="true" layout="vertical">
-        <t-step title="已完成步骤" />
-        <t-step title="当前步骤" />
-        <t-step title="未完成步骤" />
+        <t-step-item title="已完成步骤" />
+        <t-step-item title="当前步骤" />
+        <t-step-item title="未完成步骤" />
       </t-steps>
       <t-steps class="demo-steps vertical" current="1" readonly="true" layout="vertical">
-        <t-step title="已完成步骤" />
-        <t-step title="错误步骤" status="error" />
-        <t-step title="未完成步骤" />
+        <t-step-item title="已完成步骤" />
+        <t-step-item title="错误步骤" status="error" />
+        <t-step-item title="未完成步骤" />
       </t-steps>
     </view>
 
     <view class="demo-section__desc">竖向双层级只读步骤条</view>
     <view class="group vertical">
       <t-steps class="demo-steps vertical" current="1-0" readonly="true" layout="vertical">
-        <t-step title="已完成步骤" />
-        <t-step title="当前步骤" subStepItems="{{subStepItems}}" />
-        <t-step title="未完成步骤" />
+        <t-step-item title="已完成步骤" />
+        <t-step-item title="当前步骤" subStepItems="{{subStepItems}}" />
+        <t-step-item title="未完成步骤" />
       </t-steps>
       <t-steps class="demo-steps vertical" current="1-0" currentStatus="error" readonly="true" layout="vertical">
-        <t-step title="已完成步骤" />
-        <t-step title="错误步骤" subStepItems="{{subStepItems}}" />
-        <t-step title="未完成步骤" />
+        <t-step-item title="已完成步骤" />
+        <t-step-item title="错误步骤" subStepItems="{{subStepItems}}" />
+        <t-step-item title="未完成步骤" />
       </t-steps>
     </view>
 
     <view class="demo-section__desc">竖向简化只读步骤条</view>
     <view class="group vertical">
       <t-steps class="demo-steps vertical" current="1" readonly="true" layout="vertical" theme="dot">
-        <t-step title="事件描述" />
-        <t-step title="事件描述" />
-        <t-step title="事件描述" />
+        <t-step-item title="事件描述" />
+        <t-step-item title="事件描述" />
+        <t-step-item title="事件描述" />
       </t-steps>
     </view>
 
     <view class="demo-section__desc">自定义内容步骤条</view>
     <view class="group vertical">
       <t-steps class="demo-steps vertical" current="1" readonly="true" layout="vertical">
-        <t-step title="已完成步骤">
+        <t-step-item title="已完成步骤">
           <view slot="content">可自定义此处内容</view>
           <view class="extra-img" slot="extra">
             <image
@@ -163,13 +163,13 @@
               mode="widthFix"
             />
           </view>
-        </t-step>
-        <t-step title="当前步骤">
+        </t-step-item>
+        <t-step-item title="当前步骤">
           <view slot="content">可自定义此处内容</view>
-        </t-step>
-        <t-step title="未完成步骤">
+        </t-step-item>
+        <t-step-item title="未完成步骤">
           <view slot="content">可自定义此处内容</view>
-        </t-step>
+        </t-step-item>
       </t-steps>
     </view>
   </t-demo>

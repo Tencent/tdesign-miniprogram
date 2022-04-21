@@ -1,6 +1,6 @@
 const display = {
   name: '信息展示',
-  icon: '/assets/image@2x.png',
+  icon: 'image',
   childArr: [
     {
       name: 'Avatar',
@@ -31,13 +31,9 @@ const display = {
       label: '倒计时',
     },
     {
-      name: 'Divider',
-      label: '分割线',
+      name: 'DropdownMenu',
+      label: '下拉菜单',
     },
-    // {
-    //   name: 'DropdownMenu',
-    //   label: '下拉菜单',
-    // },
     {
       name: 'Empty',
       label: '空状态',
@@ -77,6 +73,10 @@ const display = {
     {
       name: 'Sticky',
       label: '吸顶',
+    },
+    {
+      name: 'NoticeBar',
+      label: '公告栏',
     },
   ],
 };

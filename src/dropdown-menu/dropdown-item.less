@@ -1,1 +1,416 @@
-@import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@dropdown-menu-primary-color: @primary-color;
+@dropdown-menu-primary-color-1: @primary-color-1;
+
+@dropdown-menu-color-block: @bg-color-block;
+
+@dropdown-menu-disabled-color: @text-level-4-color;
+
+@dropdown-menu-level-2-color: @text-level-2-color;
+
+@dropdown-menu-level-1-color: @text-level-1-color;
+
+@dropdown-menu-tree-col1-color: #f5f5f5;
+
+@dropdown-menu-tree-col2-color: #f9f9f9;
+
+@dropdown-item-height: 100%;
+
+@dropdown-item-border-radius: @border-radius;
+@cell-vertical-padding: 12px;
+@cell-horizontal-padding: 16px;
+@cell-border-color: @border-level-1-color;
+
+@item: ~'@{prefix}-dropdown-item';
+
+/** dropdown-item */
+.@{item} {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+
+  &.@{prefix}-is-expanded {
+    bottom: 0;
+
+    .@{item}__content {
+      transform: translate(0, 0);
+    }
+  }
+
+  &__content {
+    position: absolute;
+    max-height: @dropdown-item-height;
+    left: 0;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 11600;
+    transform: translate(0, -100%);
+  }
+
+  &__cell {
+    position: relative;
+    width: 100%;
+    padding: @cell-vertical-padding @cell-horizontal-padding;
+    line-height: 24px;
+    font-size: 16px;
+    text-align: left;
+
+    .@{prefix}-icon {
+      float: left;
+    }
+  }
+
+  &__content.@{prefix}-is-single &__cell::after {
+    .hairline-bottom(@cell-border-color);
+
+    left: @cell-horizontal-padding;
+  }
+
+  &__body {
+    flex: 1;
+    background: @dropdown-menu-color-block;
+    overflow: auto;
+  }
+
+  &__foot {
+    background: @dropdown-menu-color-block;
+    position: relative;
+    height: 56px;
+
+    &::before {
+      z-index: 1;
+      .hairline-top();
+    }
+
+    .@{prefix}-button {
+      flex: 1;
+      height: 100%;
+      border-radius: 0;
+      border: 0 none;
+
+      &::after {
+        display: none;
+      }
+
+      &--text {
+        color: @dropdown-menu-level-1-color;
+      }
+    }
+  }
+
+  .@{prefix}-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+  &__column {
+    flex: 1;
+
+    &--ancestor {
+      background: #eee;
+    }
+
+    &--parent {
+      background-color: #f3f3f3;
+    }
+  }
+
+  // .@{prefix}-cell {
+  //   &-group {
+  //     margin: 0;
+
+  //     &-container {
+  //       &::before,
+  //       &::after {
+  //         display: none;
+  //       }
+  //     }
+  //   }
+
+  //   &__value {
+  //     overflow: hidden;
+  //   }
+  // }
+
+  // 重写 radio 和 checkbox 样式
+  .@{prefix}-radio,
+  .@{prefix}-checkbox {
+    flex-direction: row-reverse;
+    white-space: nowrap;
+    padding-left: 0;
+
+    &__content-wrap {
+      width: 100%;
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .@{prefix}-radio__label {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  // 重写 checkbox 样式
+  &__checkbox-group {
+    display: grid;
+    padding: 32rpx;
+    grid-gap: 32rpx;
+  }
+
+  &__checkbox-item {
+    display: block;
+
+    // & + .@{item}__checkbox-item {
+    //   margin-top: 32rpx;
+    // }
+  }
+
+  .@{prefix}-checkbox {
+    &__icon-left {
+      margin-right: 4px;
+    }
+
+    &.@{prefix}-is-checked .@{prefix}-checkbox__label {
+      color: @dropdown-menu-primary-color;
+    }
+
+    &__label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .@{prefix}-dropdown-item__tree-group {
+    flex: 1;
+  }
+
+  // 重写 radio 样式
+  .@{prefix}-radio__content-wrap {
+    margin-left: 0;
+    align-items: center;
+  }
+
+  .@{prefix}-radio__content-inner {
+    margin-top: 0;
+  }
+
+  .@{prefix}-radio__icon-wrap {
+    flex-shrink: 0;
+  }
+
+  /** 树形结构 */
+  &__tree {
+    &-item {
+      height: 96rpx;
+      line-height: 96rpx;
+      font-size: 32rpx;
+      padding-left: 32rpx;
+
+      &--active {
+        color: @primary-color;
+      }
+    }
+  }
+  .@{prefix}-is-tree {
+    max-height: @dropdown-item-height;
+
+    .@{prefix}-dropdown-item__body {
+      display: flex;
+      overflow: hidden;
+
+      .@{prefix}-dropdown-item__tree-group {
+        flex: 1;
+        margin: 0;
+      }
+    }
+
+    .@{prefix}-checkbox-group {
+      .@{prefix}-dropdown-item__cell:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    .@{prefix}-checkbox__content-wrap {
+      overflow: hidden;
+      align-items: center;
+    }
+
+    .@{prefix}-dropdown-item__cell {
+      background: none;
+
+      &::after {
+        display: none;
+      }
+    }
+
+    // 两列样式
+    &.@{prefix}-is-col2 .@{prefix}-dropdown-item__tree-group,
+    &.@{prefix}-is-col3 .@{prefix}-dropdown-item__tree-group {
+      width: 33.33%;
+
+      &:nth-child(1) {
+        background: @dropdown-menu-tree-col1-color;
+
+        .@{prefix}-checkbox__icon-left,
+        .@{prefix}-radio__default-shape {
+          display: none;
+        }
+      }
+    }
+
+    // 三列样式
+    &.@{prefix}-is-col3 .@{prefix}-dropdown-item__tree-group {
+      width: 33.33%;
+
+      &:nth-child(2) {
+        background: @dropdown-menu-tree-col2-color;
+
+        .@{prefix}-checkbox__icon-left {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /** multi 多选多列情况 */
+  .@{prefix}-is-multi {
+    .@{prefix}-dropdown-item__body {
+      padding-top: @spacer;
+      padding-bottom: @spacer;
+      overflow-y: auto;
+    }
+
+    .@{prefix}-dropdown-item__cell {
+      padding-top: @spacer;
+      padding-bottom: @spacer;
+
+      &:not(:last-child)::after {
+        display: none;
+      }
+    }
+
+    // 复选框样式重写
+    .@{prefix}-checkbox {
+      .@{prefix}-checkbox__icon-left {
+        display: none;
+      }
+
+      .@{prefix}-checkbox__label {
+        font-size: @font-size-base;
+      }
+
+      .@{prefix}-checkbox__content-wrap {
+        background-color: @dropdown-menu-tree-col1-color;
+        border-radius: @dropdown-item-border-radius;
+        // padding-left: @spacer;
+        // padding-right: @spacer;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 @spacer;
+        box-sizing: border-box;
+        height: 38px;
+        line-height: 38px;
+      }
+
+      // 重置选中态背景色
+      &.@{prefix}-is-checked .@{prefix}-checkbox__content-wrap {
+        background-color: @dropdown-menu-primary-color-1;
+      }
+    }
+
+    .@{prefix}-check-group {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    // 两列样式
+    &.@{prefix}-is-col2 {
+      .@{prefix}-dropdown-item__cell {
+        width: 50%;
+        display: inline-block;
+        padding-left: @spacer;
+        padding-right: @spacer;
+
+        &-group {
+          padding-left: @spacer;
+          padding-right: @spacer;
+        }
+      }
+    }
+
+    // 三列样式
+    &.@{prefix}-is-col3 {
+      .@{prefix}-dropdown-item__cell {
+        width: 33.33%;
+        display: inline-block;
+        padding-left: @spacer;
+        padding-right: @spacer;
+
+        &-group {
+          padding-left: @spacer;
+          padding-right: @spacer;
+        }
+      }
+    }
+  }
+
+  /** dropRadio */
+  &__radio {
+    // 未知样式？
+    .@{prefix}-radio__default-shape {
+      display: none;
+    }
+
+    // 勾选图标样式重置
+    &.@{prefix}-is-tick {
+      .@{prefix}-icon-check {
+        color: @dropdown-menu-primary-color;
+      }
+    }
+
+    // 单选的选中态效果重写
+    &.@{prefix}-is-checked {
+      .@{prefix}-radio {
+        &__label {
+          color: @dropdown-menu-primary-color;
+        }
+
+        &__content-inner {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+.button {
+  border-radius: 0 !important;
+  border: 0 !important;
+}
+
+.radio {
+  padding-top: 24rpx !important;
+  padding-bottom: 24rpx !important;
+
+  &__label {
+    &--active {
+      color: @primary-color !important;
+    }
+  }
+}

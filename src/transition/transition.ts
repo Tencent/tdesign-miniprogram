@@ -116,6 +116,7 @@ TComponent({
       this.setData({
         transitionClass: `${name}-leave  ${name}-leave-active`,
       });
+      clearTimeout(this.transitionT);
       setTimeout(() => {
         this.setData({
           transitionClass: [`${name}-leave ${name}-leave-active ${name}-leave-to`],
