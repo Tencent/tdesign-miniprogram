@@ -1,16 +1,10 @@
 <view class="pullDownList t-class {{ childBoxHeight > 0 ? 'actived' : '' }}">
   <view class="switchBox" catch:tap="switchHandle">
     <view class="name">{{ name }}</view>
-    <image class="icon" mode="aspectFit" src="{{icon}}" />
+    <t-icon name="{{icon}}" size="48rpx" color="#A6A6A6" t-class="icon" />
   </view>
   <view class="childBox" style="height: {{ childBoxHeight }}rpx">
-    <view
-      class="child"
-      wx:for="{{childArr}}"
-      wx:key="name"
-      data-item="{{item}}"
-      bind:tap="tapChild"
-    >
+    <view class="child" wx:for="{{childArr}}" wx:key="name" data-item="{{item}}" bind:tap="tapChild">
       {{ item.name }} {{ item.label }}
       <t-icon name="chevron-right" color="#bbb" />
     </view>
