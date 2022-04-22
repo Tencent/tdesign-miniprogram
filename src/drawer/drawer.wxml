@@ -20,7 +20,7 @@
       <view wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
         <t-icon name="{{item.icon}}" size="24px" />
       </view>
-      <view class="{{classPrefix}}__sidebar-item-name"> {{item.name}} </view>
+      <view class="{{classPrefix}}__sidebar-item-title"> {{item.title}} </view>
     </view>
   </view>
 </t-popup>
