@@ -18,12 +18,7 @@ const trackLineWidth = 30;
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
 
-  externalClasses = [
-    `${prefix}-class`,
-    `${prefix}-class-item`,
-    `${prefix}-class-active`,
-    `${prefix}-class-track`,
-  ];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`, `${prefix}-class-track`];
 
   relations = {
     './tab-panel': {
@@ -208,6 +203,7 @@ export default class Tabs extends SuperComponent {
     if (!currentTab?.disabled && index !== this.data.currentIndex) {
       this._trigger('change', { value: currentTab.value });
     }
+    this._trigger('click', { value: currentTab.value });
   }
 
   getAvailableTabIndex(deltaX: number) {
