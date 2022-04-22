@@ -1,6 +1,6 @@
 Page({
   data: {
-    failImage: '/assets/error-circle-filled@2x.png',
+    failImage: 'error-circle-filled',
   },
 
   toHome() {

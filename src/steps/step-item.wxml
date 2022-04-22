@@ -2,29 +2,52 @@
   class="{{prefix}}-step {{prefix}}-step--{{layout}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} {{prefix}}-class {{readonly ? prefix + '-step--readonly' : ''}}"
 >
   <view class="{{classPrefix}} {{classPrefix}}--{{curStatus}}">
-    <view class="{{classPrefix}}__inner {{isLarge ? classPrefix + '__inner--large' : '' }}">
-      <view class="{{classPrefix}}__icon" bindtap="click">
-        <view wx:if="{{isDot}}" class="{{classPrefix}}__icon-dot"></view>
-        <view
-          wx:elif="{{computedIcon}}"
-          class="{{classPrefix}}__icon-number {{isLarge ? (classPrefix + '__icon-number--large') : ''}}"
-        >
-          <slot wx:if="{{computedIcon === 'slot'}}" name="icon" />
-          <t-icon wx:else name="{{computedIcon}}" size="{{isLarge ? '24px' : '16px'}}" />
+    <view class=" {{classPrefix}}__inner {{isLarge ? classPrefix + '__inner--large' : '' }}">
+      <view class="{{classPrefix}}-wrapper">
+        <!-- icon  -->
+        <view class="{{classPrefix}}__icon" bindtap="click">
+          <view wx:if="{{isDot}}" class="{{classPrefix}}__icon-dot"></view>
+          <view
+            wx:elif="{{computedIcon}}"
+            class="{{classPrefix}}__icon-number {{isLarge ? (classPrefix + '__icon-number--large') : ''}}"
+          >
+            <slot wx:if="{{computedIcon === 'slot'}}" name="icon" />
+            <t-icon wx:else name="{{computedIcon}}" size="{{isLarge ? '24px' : '16px'}}" />
+          </view>
+          <view wx:else class="{{classPrefix}}__icon-number">{{index + 1}}</view>
         </view>
-        <view wx:else class="{{classPrefix}}__icon-number">{{index + 1}}</view>
+        <!-- content -->
+        <view class="{{classPrefix}}__content {{prefix}}-class-content">
+          <view class="{{classPrefix}}__title {{prefix}}-class-title">
+            {{ title }}
+            <slot name="title" />
+          </view>
+          <view class="{{classPrefix}}__description {{prefix}}-class-description">
+            {{ content }}
+            <slot name="content" />
+          </view>
+          <view class="{{classPrefix}}__extra {{prefix}}-class-extra">
+            <slot name="extra" />
+          </view>
+        </view>
       </view>
-      <view class="{{classPrefix}}__content {{prefix}}-class-content">
-        <view class="{{classPrefix}}__title {{prefix}}-class-title">
-          {{ title }}
-          <slot name="title" />
-        </view>
-        <view class="{{classPrefix}}__description {{prefix}}-class-description">
-          {{ content }}
-          <slot name="content" />
-        </view>
-        <view class="{{classPrefix}}__extra {{prefix}}-class-extra">
-          <slot name="extra" />
+
+      <!-- 垂直 子步骤条 -->
+      <view
+        class="{{classPrefix}}__sub-wrapper"
+        wx:if="{{ layout === 'vertical' && curSubStepItems.length && !isLastChild}}"
+      >
+        <!-- 子步骤条默认状态:default -->
+        <view
+          class="{{classPrefix}}-sub {{classPrefix}}-sub-status--default {{classPrefix}}-sub-status--{{curSubStepItemsStatus[index]}}"
+          wx:for="{{curSubStepItems}}"
+          wx:key="key"
+          wx:item="item"
+        >
+          <view class="{{classPrefix}}-sub-dot">
+            <view class="{{classPrefix}}-sub-dot-item"></view>
+          </view>
+          <view class="{{classPrefix}}-sub__content"> {{item.title}}</view>
         </view>
       </view>
     </view>

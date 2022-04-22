@@ -10,6 +10,11 @@ const props: TdUploadProps = {
   addContent: {
     type: String,
   },
+  /** 是否允许重复上传相同文件名的文件 */
+  allowUploadDuplicateFile: {
+    type: Boolean,
+    value: false,
+  },
   /** 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html) */
   config: {
     type: Object,
@@ -25,8 +30,7 @@ const props: TdUploadProps = {
   },
   /** 已上传文件列表，非受控属性 */
   defaultFiles: {
-    type: null,
-    value: undefined,
+    type: Array,
   },
   /** upload组件每行上传图片列数以及图片的宽度和高度 */
   gridConfig: {
@@ -36,6 +40,10 @@ const props: TdUploadProps = {
   gutter: {
     type: Number,
     value: 16,
+  },
+  /** 透传 Image 组件全部属性 */
+  imageProps: {
+    type: Object,
   },
   /** 用于控制文件上传数量，值为 0 则不限制 */
   max: {

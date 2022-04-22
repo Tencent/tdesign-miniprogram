@@ -24,23 +24,29 @@ isComponent: true
 <img src="https://tdesign.gtimg.com/miniprogram/readme/rate.png" width="375px" height="50%">
 
 ```html
-<!-- 实心评分 设置属性：variant-->
+<!-- 实心评分，设置属性：variant-->
 <t-rate defaultValue="{{value}}" variant="filled"></t-rate>
 
-<!-- 空心评分 设置属性：variant-->
-<t-rate defaultValue="{{value}}" variant="outline"></t-rate>
+<!-- 空心评分，设置属性：variant-->
+<t-rate defaultValue="{{value}}" variant="outline"  bind:change="changeValue"></t-rate>
 
-<!-- 自定义评分数量 设置属性：count-->
+<!-- 自定义评分数量，设置属性：count-->
 <t-rate defaultValue="{{value}}" variant="outline" count="{{6}}"></t-rate>
 
-<!-- 半星评分 设置属性：allowHalf -->
+<!-- 半星评分，设置属性：allowHalf -->
 <t-rate defaultValue="{{value}}" variant="filled" allowHalf></t-rate>
 
-<!-- 带描述评分 设置属性：showText-->
+<!-- 带描述评分，设置属性：showText-->
 <t-rate defaultValue="{{value}}" variant="outline" showText></t-rate>
 
-<!-- 自定义带描述评分， 设置属性：texts -->
+<!-- 自定义带描述评分，设置属性：texts -->
 <t-rate defaultValue="{{value}}" variant="outline" showText texts="{{texts}}"></t-rate>
+
+<!-- 禁用评分，设置属性：disabled -->
+<t-rate defaultValue="{{value}}" variant="filled" disabled></t-rate>
+
+<!-- 设置评分颜色，设置属性： color-->
+<t-rate defaultValue="{{value}}" variant="filled" color="#FFC51C,#DDDDDD"></t-rate>
 ```
 
 ### 受控用法
@@ -61,31 +67,24 @@ Page({
 })
 ```
 ## API
-
 ### Rate Props
 
-| 名称       | 类型    | 默认值  | 说明                                                                                                                                                                      | 必传 |
-| ---------- | ------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
-| allow-half | Boolean | false   | 是否允许半选                                                                                                                                                              | N    |
-| color      | String  | #ED7B2F | 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，两个值表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色。示例：['#ED7B2F', '#999999'] | N    |
-| count      | Number  | 5       | 评分的数量                                                                                                                                                                | N    |
-| disabled   | Boolean | false   | 是否禁用评分                                                                                                                                                              | N    |
-| gap        | Number  | 6       | 评分图标的间距                                                                                                                                                            | N    |
-| showText   | Boolean | false   | 是否显示辅助文字                                                                                                                                                          | N    |
-| size       | String  | 40      | 评分图标的大小                                                                                                                                                            | N    |
-| texts      | Array   | -       | 自定义评分等级对应的辅助文字，组件内部默认为：['极差', '失望', '一般', '满意', '惊喜']。TS 类型：`Array<string>`                                                          | N    |
-| value      | Number  | -       | 选择评分的值                                                                                                                                                              | N    |
-| defaultValue      | Number  | -       | （非受控）选择评分的值                                                                                                                                                              | N    |
-| variant    | String  | outline | 形状类型，有描边类型和填充类型两种。可选项：`outline`/`filled`                                                                                                            | N    |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+allow-half | Boolean | false | 是否允许半选 | N
+color | String / Array | '#ED7B2F' | 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB']。TS 类型：`string | Array<string>` | N
+count | Number | 5 | 评分的数量 | N
+disabled | Boolean | false | 是否禁用评分 | N
+gap | Number | 6 | 评分图标的间距 | N
+show-text | Boolean | false | 是否显示对应的辅助文字 | N
+size | String | - | 评分图标的大小，示例：`20` | N
+texts | Array | [] | 评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']。TS 类型：`Array<string>` | N
+value | Number | 0 | 选择评分的值 | N
+default-value | Number | undefined | 选择评分的值。非受控属性 | N
+variant | String | outline | 形状类型，有描边类型和填充类型两种。可选项：outline/filled | N
 
 ### Rate Events
 
-| 名称   | 参数              | 描述             |
-| ------ | ----------------- | ---------------- |
-| change | `(value: number)` | 评分数改变时触发 |
-
-### rate 外部样式类
-
-| 类名    | 说明         |
-| ------- | ------------ |
-| t-class | 根节点样式类 |
+名称 | 参数 | 描述
+-- | -- | --
+change | `(value: number)` | 评分数改变时触发

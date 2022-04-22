@@ -1,0 +1,77 @@
+@import '../common/style/index.less';
+
+@notice-bar-height: 92rpx;
+@notice-bar-font-size: 28rpx;
+@notice-bar-horizen-padding: 32rpx;
+@notice-bar-vertical-padding: 24rpx;
+@notice-bar-line-height: 44rpx;
+@notice-bar-icon-size: 44rpx;
+
+// color
+@notice-bar-info-background-color: #ecf2fe;
+@notice-bar-info-color: #0052d9;
+@notice-bar-success-background-color: #e8f8f2;
+@notice-bar-success-color: #00a870;
+@notice-bar-warning-background-color: #fef3e6;
+@notice-bar-warning-color: #ed7b2f;
+@notice-bar-error-background-color: #fdecee;
+@notice-bar-error-color: #e34d59;
+
+@notice-bar: ~'@{prefix}-notice-bar';
+
+.@{notice-bar} {
+  display: flex;
+  align-items: flex-start;
+  padding: @notice-bar-vertical-padding @notice-bar-horizen-padding;
+  font-size: @notice-bar-font-size;
+
+  &__content-wrap {
+    flex: 1;
+    overflow-x: hidden;
+    line-height: @notice-bar-line-height;
+  }
+
+  &__content {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  &__content-wrapable {
+    white-space: normal;
+  }
+
+  &__prefix-icon,
+  &__suffix-icon {
+    font-size: 44rpx;
+  }
+
+  &__prefix-icon:not(:empty) {
+    margin-right: 16rpx;
+  }
+
+  &__extrq:not(:empty),
+  &__suffix-icon:not(:empty) {
+    margin-left: 16rpx;
+  }
+
+  // theme
+  &--info {
+    color: @notice-bar-info-color;
+    background-color: @notice-bar-info-background-color;
+  }
+
+  &--success {
+    color: @notice-bar-success-color;
+    background-color: @notice-bar-success-background-color;
+  }
+
+  &--warning {
+    color: @notice-bar-warning-color;
+    background-color: @notice-bar-warning-background-color;
+  }
+
+  &--error {
+    color: @notice-bar-error-color;
+    background-color: @notice-bar-error-background-color;
+  }
+}

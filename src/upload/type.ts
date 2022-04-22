@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { ImageProps } from '../image/index';
+
 export interface TdUploadProps {
   /**
    * 添加按钮内容。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。
@@ -11,7 +13,14 @@ export interface TdUploadProps {
   addContent?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
+  };
+  /**
+   * 是否允许重复上传相同文件名的文件
+   * @default false
+   */
+  allowUploadDuplicateFile?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)
@@ -19,7 +28,6 @@ export interface TdUploadProps {
   config?: {
     type: ObjectConstructor;
     value?: UploadMpConfig;
-    required?: boolean;
   };
   /**
    * 删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。
@@ -27,7 +35,6 @@ export interface TdUploadProps {
   deleteBtn?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 已上传文件列表
@@ -35,7 +42,6 @@ export interface TdUploadProps {
   files?: {
     type: ArrayConstructor;
     value?: Array<UploadFile>;
-    required?: boolean;
   };
   /**
    * 已上传文件列表，非受控属性
@@ -43,7 +49,6 @@ export interface TdUploadProps {
   defaultFiles?: {
     type: ArrayConstructor;
     value?: Array<UploadFile>;
-    required?: boolean;
   };
   /**
    * upload组件每行上传图片列数以及图片的宽度和高度
@@ -55,7 +60,6 @@ export interface TdUploadProps {
       width?: number;
       height?: number;
     };
-    required?: boolean;
   };
   /**
    * 预览窗格的 gutter 大小，单位 rpx
@@ -64,7 +68,13 @@ export interface TdUploadProps {
   gutter?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
+  };
+  /**
+   * 透传 Image 组件全部属性
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: ImageProps;
   };
   /**
    * 用于控制文件上传数量，值为 0 则不限制
@@ -73,7 +83,6 @@ export interface TdUploadProps {
   max?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 支持上传的文件类型，图片或视频
@@ -82,7 +91,6 @@ export interface TdUploadProps {
   mediaType?: {
     type: ArrayConstructor;
     value?: Array<MediaType>;
-    required?: boolean;
   };
   /**
    * 自定义上传方法
@@ -90,7 +98,6 @@ export interface TdUploadProps {
   requestMethod?: {
     type: null;
     value?: null;
-    required?: boolean;
   };
   /**
    * 图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`
@@ -99,25 +106,43 @@ export interface TdUploadProps {
     type: NumberConstructor;
     optionalTypes: Array<ObjectConstructor>;
     value?: number | SizeLimitObj;
-    required?: boolean;
   };
 }
 
 export type UploadMpConfig = ImageConfig | VideoConfig;
 
-export interface ImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> };
+export interface ImageConfig {
+  count?: number;
+  sizeType?: Array<SizeTypeValues>;
+  sourceType?: Array<SourceTypeValues>;
+}
 
 export type SizeTypeValues = 'original' | 'compressed';
 
 export type SourceTypeValues = 'album' | 'camera';
 
-export interface VideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' | 'front' };
+export interface VideoConfig {
+  sourceType?: Array<SourceTypeValues>;
+  compressed?: boolean;
+  maxDuration?: number;
+  camera?: 'back' | 'front';
+}
 
-export interface UploadFile { url: string; name?: string; size?: number; type?: 'image' | 'video'; percent?: number };
+export interface UploadFile {
+  url: string;
+  name?: string;
+  size?: number;
+  type?: 'image' | 'video';
+  percent?: number;
+}
 
 export type MediaType = 'image' | 'video';
 
-export interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string };
+export interface SizeLimitObj {
+  size: number;
+  unit: SizeUnit;
+  message?: string;
+}
 
 export type SizeUnitArray = ['B', 'KB', 'MB', 'GB'];
 

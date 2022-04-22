@@ -1,11 +1,6 @@
 <wxs src="./tabs.wxs" module="filters" />
 <view class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{placement}}">
-  <scroll-view
-    class="{{classPrefix}}__scroll"
-    enable-flex
-    scroll-x="{{isScrollX}}"
-    scroll-y="{{isScrollY}}"
-  >
+  <scroll-view class="{{classPrefix}}__scroll" enable-flex scroll-x="{{isScrollX}}" scroll-y="{{isScrollY}}">
     <view class="{{classPrefix}}__nav">
       <view
         wx:for="{{tabs}}"
@@ -15,6 +10,7 @@
         bind:tap="onTabTap"
       >
         {{item.label}}
+        <slot name="label" />
       </view>
       <view class="{{classPrefix}}__track {{prefix}}-class-track" style="{{trackStyle}}" />
     </view>

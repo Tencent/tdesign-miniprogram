@@ -1,93 +1,86 @@
-<view class="wrapper">
-  <view wx:if="{{tab==0}}">
+<view class="demo">
+  <view class="demo-title">DropdownMenu 下拉菜单</view>
+  <view class="demo-desc">菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。</view>
+  <t-demo title="01 类型" desc="单选下拉菜单">
     <t-dropdown-menu>
       <t-dropdown-item
-        title="单选菜单"
-        options="{{optionsS}}"
-        value="{{selectedS}}"
-        bindchange="singleSelected"
-      ></t-dropdown-item>
-      <t-dropdown-item
-        title="多选菜单"
-        options="{{optionsM}}"
-        value="{{selectedM}}"
-        bindchange="multiSelected"
-        selectMode="multi"
-      ></t-dropdown-item>
+        label="菜单"
+        options="{{singleSelect.options}}"
+        value="{{singleSelect.value}}"
+        bindchange="handleSingleSelect"
+      />
+      <t-dropdown-item label="菜单" options="{{singleSelect.options}}" defaultValue="option_3" />
+      <t-dropdown-item label="菜单" options="{{singleSelect.options}}" defaultValue="option_3" />
+      <t-dropdown-item label="两字溢出" options="{{singleSelect.options}}" defaultValue="option_3" />
     </t-dropdown-menu>
-    <view>单项选择选中项：{{selectedS}}</view>
-    <view>多项选择选中项：{{selectedM}}</view>
-  </view>
+  </t-demo>
 
-  <view wx:if="{{tab==1}}">
-    <t-dropdown-menu>
-      <t-dropdown-item title="禁用菜单" disabled="{{true}}"></t-dropdown-item>
-      <t-dropdown-item
-        title="禁用选项"
-        options="{{optionsD}}"
-        value="{{selectedD}}"
-      ></t-dropdown-item>
-    </t-dropdown-menu>
-    <view>禁用了序号为3的倍数的选项。</view>
-  </view>
-
-  <view wx:if="{{tab==2}}">
+  <t-demo desc="多选下拉菜单">
     <t-dropdown-menu>
       <t-dropdown-item
-        title="两列菜单"
+        label="单列多选"
+        options="{{multipleSelect.options}}"
+        value="{{multipleSelect.value}}"
+        bindchange="handleMultipleSelect"
+        multiple
+      />
+      <t-dropdown-item
+        label="双列多选"
         optionsColumns="2"
-        options="{{optionsM}}"
-        value="{{selectedM}}"
-        bindchange="multiSelected"
-        selectMode="multi"
-      ></t-dropdown-item>
+        options="{{doubleColumnsOptions}}"
+        defaultValue="{{['option_1', 'option_2']}}"
+        multiple
+      />
       <t-dropdown-item
-        title="三列菜单"
+        label="最多四字三列"
         optionsColumns="3"
-        options="{{optionsM}}"
-        value="{{selectedM}}"
-        bindchange="multiSelected"
-        selectMode="multi"
-      ></t-dropdown-item>
+        options="{{tripleColumnsOptions}}"
+        defaultValue="{{['option_1', 'option_2', 'option_3']}}"
+        multiple
+      />
     </t-dropdown-menu>
-    <view>选中项：{{selectedM}}</view>
-  </view>
+  </t-demo>
 
-  <view wx:if="{{tab==3}}">
+  <t-demo desc="树形下拉菜单">
     <t-dropdown-menu>
       <t-dropdown-item
-        title="单选树形选单"
+        label="树形双列"
         optionsLayout="tree"
-        options="{{treeOption}}"
-        value="{{treeValue1}}"
-        bindchange="tree1Selected"
-      ></t-dropdown-item>
+        options="{{doubleColumnsTree.options}}"
+        value="{{doubleColumnsTree.value}}"
+        bindchange="handleTreeSelect"
+      />
       <t-dropdown-item
-        title="多选树形选单"
+        label="选项最多八字树形三列"
         optionsLayout="tree"
-        options="{{treeOption}}"
-        value="{{treeValue2}}"
-        bindchange="tree2Selected"
-        selectMode="multi"
-      ></t-dropdown-item>
+        options="{{tripleColumnsTree.options}}"
+        defaultValue="{{tripleColumnsTree.value}}"
+        multiple
+      />
     </t-dropdown-menu>
-    <view>选中项：{{treeValue1}}</view>
-    <view>选中项：{{treeValue2}}</view>
-  </view>
+  </t-demo>
 
-  <view wx:if="{{tab==4}}">
+  <t-demo title="02 状态" desc="下拉菜单状态">
     <t-dropdown-menu>
-      <t-dropdown-item title="自定义选单" optionsLayout="slot">
-        自定义内容（如按钮等）
-      </t-dropdown-item>
+      <t-dropdown-item disabled label="禁用" />
+      <t-dropdown-item disabled label="禁用" />
+      <t-dropdown-item disabled label="禁用" />
+      <t-dropdown-item disabled label="禁用" />
     </t-dropdown-menu>
-  </view>
-</view>
 
-<view class="buttons">
-  <button class="t-button" bindtap="switchTab" data-tab="0">基础用法</button>
-  <button class="t-button" bindtap="switchTab" data-tab="1">禁用菜单及选项</button>
-  <button class="t-button" bindtap="switchTab" data-tab="2">菜单选项多列</button>
-  <button class="t-button" bindtap="switchTab" data-tab="3">树形选单</button>
-  <button class="t-button" bindtap="switchTab" data-tab="4">自定义选单</button>
+    <view class="spacer" style="height: 32rpx"></view>
+
+    <t-dropdown-menu>
+      <t-dropdown-item disabled label="禁用菜单" />
+      <t-dropdown-item disabled label="禁用菜单" />
+      <t-dropdown-item disabled label="禁用菜单" />
+    </t-dropdown-menu>
+
+    <view class="spacer" style="height: 32rpx"></view>
+
+    <t-dropdown-menu>
+      <t-dropdown-item disabled label="禁用菜单" />
+      <t-dropdown-item disabled label="禁用菜单" />
+    </t-dropdown-menu>
+  </t-demo>
 </view>

@@ -8,6 +8,8 @@ const name = `${prefix}-switch`;
 export default class Switch extends SuperComponent {
   externalClasses = ['t-class', 't-class-label', 't-class-body', 't-class-dot'];
 
+  behaviors = ['wx://form-field'];
+
   properties = props;
 
   // 组件的内部数据

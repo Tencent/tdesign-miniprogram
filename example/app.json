@@ -54,11 +54,12 @@
     "pages/search/search",
     "pages/home/navigateFail/navigateFail",
     "pages/navbar/navbar",
-    "pages/date-time-picker/date-time-picker"
+    "pages/date-time-picker/date-time-picker",
+    "pages/action-sheet/action-sheet",
+    "pages/notice-bar/notice-bar"
   ],
   "usingComponents": {
-    "t-demo": "components/demo-block/index",
-    "pull-down-list": "components/pull-down-list/index",
+    "t-demo": "../../components/demo-block/index",
     "t-avatar": "tdesign-miniprogram/avatar/avatar",
     "t-avatar-group": "tdesign-miniprogram/avatar/avatar-group",
     "t-badge": "tdesign-miniprogram/badge/badge",
@@ -66,7 +67,7 @@
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-collapse": "tdesign-miniprogram/collapse/collapse",
-    "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
+    "t-collapse-panel": "tdesign-miniprogram/collapse/collapse-panel",
     "t-dialog": "tdesign-miniprogram/dialog/dialog",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tabs/tab-panel",
@@ -103,8 +104,9 @@
     "t-popup": "tdesign-miniprogram/popup/popup",
     "t-indexes": "tdesign-miniprogram/indexes/indexes",
     "t-steps": "tdesign-miniprogram/steps/steps",
-    "t-step": "tdesign-miniprogram/steps/step-item",
+    "t-step-item": "tdesign-miniprogram/steps/step-item",
     "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
+    "t-dropdown-item": "tdesign-miniprogram/dropdown-menu/dropdown-item",
     "t-drawer": "tdesign-miniprogram/drawer/drawer",
     "t-pull-down-refresh": "tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
     "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
@@ -119,7 +121,9 @@
     "t-image": "tdesign-miniprogram/image/image",
     "t-search": "tdesign-miniprogram/search/search",
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker"
+    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
+    "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar"
   },
   "window": {
     "backgroundTextStyle": "light",

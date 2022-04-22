@@ -4,12 +4,7 @@
   >
     <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label">{{label}}</view>
     <slot wx:else name="label" />
-    <t-icon
-      wx:if="{{leftIcon}}"
-      name="{{leftIcon}}"
-      size="20px"
-      class="{{prefix}}-icon {{prefix}}-class-left"
-    />
+    <t-icon wx:if="{{leftIcon}}" name="{{leftIcon}}" size="20px" class="{{prefix}}-icon {{prefix}}-class-left" />
     <slot wx:else name="left-icon" />
     <input
       type="text"
@@ -26,11 +21,7 @@
       bind:blur="onBlur"
       bind:confirm="onConfirm"
     />
-    <view
-      wx:if="{{value !==''}}"
-      class="{{classPrefix}}__right {{prefix}}-class-right"
-      bind:tap="handleClear"
-    >
+    <view wx:if="{{value !==''}}" class="{{classPrefix}}__right {{prefix}}-class-right" bind:tap="handleClear">
       <t-icon
         wx:if="{{rightIcon}}"
         name="{{rightIcon}}"
@@ -41,11 +32,7 @@
       <slot wx:else name="right-icon" />
     </view>
   </view>
-  <view
-    wx:if="{{action}}"
-    class="{{classPrefix}}__search-action {{prefix}}-class-cancel"
-    bindtap="onCancel"
-  >
+  <view wx:if="{{action}}" class="{{classPrefix}}__search-action {{prefix}}-class-cancel" bindtap="onActionClick">
     {{action}}
   </view>
   <slot wx:else name="action-text" />

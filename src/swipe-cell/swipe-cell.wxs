@@ -77,7 +77,8 @@ var range = function (num, min, max) {
   return Math.min(Math.max(num, min), max);
 };
 
-var swipeMove = function (_offset = 0) {
+var swipeMove = function (_offset) {
+  if (_offset === undefined) _offset = 0;
   state.offset = range(_offset, -state.rightWidth, +state.leftWidth);
   var transform = 'translate3d(' + state.offset + 'px, 0, 0)';
   var transition = state.dragging ? 'none' : 'transform .6s cubic-bezier(0.18, 0.89, 0.32, 1)';

@@ -1,1 +1,433 @@
-@import './styles/_index.less';
+@import '../common/index.less';
+
+@connector-default-icon-width: 24px;
+@connector-normal-icon-width: 40px;
+@step-item-inner-max-width: 214px;
+@dot-steps-anchor-width: 12px;
+@title-content-margin-top: 5px;
+@title-color: rgba(0, 0, 0, 0.9);
+@title-color--default: rgba(0, 0, 0, 0.26);
+@step-error-title-color: @error-color;
+@step-error-bg-color: @error-color;
+@step-default-bg-color: #c5c5c5;
+
+@step-item-icon-color: #c5c5c5;
+@step-item-descrition-color: rgba(0, 0, 0, 0.4);
+@step-line-color: #c5c5c5;
+
+@step: ~'@{prefix}-step';
+@steps: ~'@{step}s';
+@item: ~'@{steps}-item';
+
+.step-item-basic() {
+  .@{item} {
+    flex: 1;
+    vertical-align: top;
+    position: relative;
+
+    &__inner {
+      position: relative;
+    }
+
+    &__icon {
+      vertical-align: top;
+      font-size: @font-size-base;
+      position: relative;
+      color: @border-level-2-color;
+
+      &-number {
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: @connector-default-icon-width;
+        height: @connector-default-icon-width;
+        text-align: center;
+        border: 1px solid @step-item-icon-color;
+        border-radius: 50%;
+        color: @step-item-icon-color;
+      }
+    }
+
+    &__content {
+      text-align: center;
+    }
+
+    &__title {
+      position: relative;
+      // color: @title-color;
+      color: @title-color--default;
+      text-align: center;
+      line-height: 22px;
+      font-size: @font-size-base;
+      text-align: center;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    &__description {
+      color: @step-item-descrition-color;
+      line-height: 20px;
+      font-size: @font-size-s;
+    }
+
+    &__extra:not(:empty) {
+      margin-top: @spacer;
+    }
+  }
+}
+
+// 连接线
+.connector-default(@direction; @isReverse:false) {
+  & when (@direction = horizontal) {
+    &.@{step}--not-last-child {
+      .@{item}__inner {
+        &:after {
+          content: '';
+          display: block;
+          height: 1px;
+          background: @primary-color;
+          position: absolute;
+          width: calc(100% - @connector-default-icon-width - 2px);
+          left: calc(50% + @connector-default-icon-width / 2 + 1px);
+          top: (@connector-default-icon-width / 2 + 1px);
+        }
+        &.@{item}__inner--large:after {
+          top: calc(@connector-normal-icon-width / 2);
+          width: calc(100% - @connector-normal-icon-width - 2px);
+          left: calc(50% + @connector-normal-icon-width / 2 + 1px);
+        }
+      }
+
+      &.@{step}--readonly {
+        .@{item}--process,
+        .@{item}--error,
+        .@{item}--default {
+          .@{item}__inner:after {
+            background: @step-line-color;
+          }
+        }
+      }
+    }
+  }
+  & when(@direction = vertical) {
+    &.@{step}--not-last-child {
+      .@{item}__inner::after {
+        content: '';
+        display: block;
+        height: calc(100% - @connector-default-icon-width - 2px);
+        width: 1px;
+        background: @step-line-color;
+        transform: translateX(-50%);
+        position: absolute;
+        left: (@connector-default-icon-width / 2 + 1px);
+        top: @connector-default-icon-width + 2px;
+      }
+
+      .@{item}--finish {
+        .@{item}__inner:after {
+          background: @primary-color;
+        }
+      }
+
+      .@{item}--default {
+        .@{item}__inner:after {
+          background: @step-default-bg-color;
+        }
+      }
+    }
+  }
+}
+
+.default-number-status(@anchor-status) {
+  & when(@anchor-status = default) {
+    .@{item}__icon-number {
+      border-color: @step-default-bg-color;
+      color: @step-default-bg-color;
+    }
+  }
+  & when(@anchor-status = finish) {
+    .@{item}__icon-number {
+      border-color: @primary-color;
+      color: @primary-color;
+    }
+  }
+  & when(@anchor-status = process) {
+    .@{item}__icon-number {
+      background: @primary-color;
+      color: @text-anti-primary-color;
+      border-color: @primary-color;
+    }
+  }
+  & when(@anchor-status = error) {
+    .@{item}__icon-number {
+      color: @step-error-bg-color;
+      border-color: @step-error-bg-color;
+    }
+  }
+}
+
+// 子步骤状态
+.default-sub-status(@status) {
+  & when(@status = default) {
+    color: #c5c5c5;
+    .@{item}-sub-dot {
+      &-item {
+        background-color: #c5c5c5;
+      }
+    }
+  }
+  & when(@status = finish) {
+    color: #000000;
+    .@{item}-sub-dot {
+      &-item {
+        background-color: @primary-color;
+      }
+    }
+  }
+  & when(@status = process) {
+    color: @primary-color;
+    .@{item}-sub-dot {
+      &-item {
+        background-color: @primary-color;
+      }
+    }
+  }
+  & when(@status = error) {
+    color: @step-error-bg-color;
+    .@{item}-sub-dot {
+      &-item {
+        background-color: @step-error-bg-color;
+      }
+    }
+  }
+}
+
+.step-item-basic();
+
+.@{step} {
+  &--horizontal {
+    // 内容最大宽度
+    .@{item}__content {
+      max-width: 80px;
+      margin-top: @spacer;
+    }
+
+    .@{item} {
+      &__inner {
+        .@{item}-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      &--finish {
+        .default-number-status(finish);
+        .@{item}__title {
+          color: @title-color;
+        }
+      }
+
+      &--process {
+        .default-number-status(process);
+        .@{item}__title {
+          color: @primary-color;
+        }
+      }
+
+      &--error {
+        .default-number-status(error);
+        .@{item}__title {
+          color: @step-error-title-color;
+        }
+      }
+
+      &--default {
+        .default-number-status(default);
+        .@{item}__title,
+        .@{item}__description {
+          color: @title-color--default;
+        }
+      }
+    }
+
+    .connector-default(horizontal);
+  }
+
+  &--vertical {
+    .@{item} {
+      position: relative;
+
+      &__inner :only-child.@{item}-wrapper {
+        padding-bottom: 50rpx;
+      }
+
+      &-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      &-wrapper + .@{item}__sub-wrapper:not(:empty) {
+        padding-top: 32rpx;
+        padding-bottom: 48rpx;
+      }
+
+      &-sub {
+        display: flex;
+        width: 100%;
+        height: 40rpx;
+        align-items: center;
+        padding-bottom: 8rpx;
+        font-size: 24rpx;
+        color: @primary-color;
+        font-weight: 500;
+
+        &-dot {
+          display: flex;
+          justify-content: center;
+          width: @connector-default-icon-width;
+          text-align: center;
+          border: 1px solid transparent;
+          color: @step-item-icon-color;
+          z-index: 2;
+
+          &-item {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: @primary-color;
+          }
+        }
+
+        .@{item}-sub__content {
+          margin-left: @spacer;
+        }
+      }
+
+      &-sub-status {
+        // 'default' | 'process' | 'finish' | 'error';
+        &--default {
+          .default-sub-status(default);
+        }
+        &--finish {
+          .default-sub-status(finish);
+        }
+
+        &--process {
+          .default-sub-status(process);
+        }
+
+        &--error {
+          .default-sub-status(error);
+        }
+      }
+
+      .@{item}-sub:last-child {
+        padding-bottom: 0rpx;
+      }
+
+      &__content {
+        margin-left: @spacer;
+        margin-right: @spacer * 2;
+        flex: 1;
+      }
+
+      &__title {
+        text-align: left;
+        margin-top: @title-content-margin-top;
+        line-height: @font-size-base;
+        margin-bottom: @spacer;
+      }
+
+      &__description {
+        text-align: left;
+      }
+    }
+
+    &.@{prefix}-step--default-anchor {
+      .@{item} {
+        &--default {
+          .default-number-status(default);
+        }
+
+        &--finish {
+          .default-number-status(finish);
+          .@{item}__title {
+            color: @title-color;
+          }
+        }
+
+        &--process {
+          .default-number-status(process);
+          .@{item}__title {
+            color: @primary-color;
+          }
+        }
+
+        &--error {
+          .default-number-status(error);
+          .@{item}__title {
+            color: @error-color;
+          }
+        }
+      }
+
+      .connector-default(vertical);
+    }
+
+    &.@{step}--dot-anchor {
+      .@{item} {
+        &__icon {
+          &-dot {
+            display: block;
+            width: @dot-steps-anchor-width;
+            height: @dot-steps-anchor-width;
+            box-sizing: border-box;
+            border: 2px solid @primary-color;
+            border-radius: 50%;
+            margin-top: 1px;
+          }
+        }
+
+        //  子步骤dot宽度要和icon部分保持一致
+        &-sub {
+          &-dot {
+            width: @dot-steps-anchor-width;
+            box-sizing: border-box;
+            border: 2px solid transparent;
+          }
+        }
+
+        &__title {
+          margin-top: 0;
+          color: @title-color;
+        }
+      }
+
+      &.@{step}--not-last-child {
+        .@{item}__inner::after {
+          content: '';
+          display: block;
+          height: calc(100% - @dot-steps-anchor-width);
+          width: 1px;
+          background: @border-level-2-color;
+          transform: translateX(50%);
+          position: absolute;
+          left: (@dot-steps-anchor-width / 2 - 1rpx);
+          top: @dot-steps-anchor-width + 1px;
+        }
+      }
+    }
+  }
+}
+
+.@{steps} {
+  &-item__icon-number--large {
+    width: @connector-normal-icon-width;
+    height: @connector-normal-icon-width;
+  }
+}

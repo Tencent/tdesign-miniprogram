@@ -1,11 +1,11 @@
 const ux = {
   name: '反馈提示',
-  icon: '/assets/chat@2x.png',
+  icon: 'chat',
   childArr: [
-    // {
-    //   name: 'ActionSheet',
-    //   label: '动作面板',
-    // },
+    {
+      name: 'ActionSheet',
+      label: '动作面板',
+    },
     {
       name: 'BackTop',
       label: '返回顶部',
@@ -34,10 +34,10 @@ const ux = {
       name: 'Popup',
       label: '弹出层',
     },
-    // {
-    //   name: 'Progress',
-    //   label: '进度条',
-    // },
+    {
+      name: 'Progress',
+      label: '进度条',
+    },
     {
       name: 'PullDownRefresh',
       label: '下拉刷新',

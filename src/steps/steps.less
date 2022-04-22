@@ -1,1 +1,36 @@
-@import './styles/_index.less';
+@import '../common/index.less';
+
+@step: ~'@{prefix}-step';
+@steps: ~'@{step}s';
+@item: ~'@{step}-item';
+
+@{steps} {
+  display: flex;
+}
+
+@{item} {
+  flex: 1;
+  vertical-align: top;
+  position: relative;
+  align-self: flex-start;
+}
+
+.@{step} {
+  &--vertical {
+    padding-right: 32rpx;
+  }
+}
+
+.@{steps} {
+  display: flex;
+  width: 100%;
+
+  // 垂直
+  &--vertical {
+    flex-direction: column;
+
+    @{item} {
+      width: 100%;
+    }
+  }
+}

@@ -5,11 +5,7 @@
   bind:tap="onClick"
 >
   <view class="{{classPrefix}}__left {{prefix}}-class-left">
-    <image
-      wx:if="{{ image }}"
-      class="{{classPrefix}}__left-image t-class-image"
-      src="{{ image }}"
-    />
+    <image wx:if="{{ image }}" class="{{classPrefix}}__left-image t-class-image" src="{{ image }}" />
     <slot wx:else name="left-icon" />
   </view>
   <view class="{{classPrefix}}__title {{prefix}}-class-title">
@@ -22,9 +18,7 @@
     </view>
 
     <view class="{{classPrefix}}__description {{prefix}}-class-description">
-      <view wx:if="{{ description }}" class="{{classPrefix}}__description-text"
-        >{{description}}</view
-      >
+      <view wx:if="{{ description }}" class="{{classPrefix}}__description-text">{{description}}</view>
       <slot wx:else name="description" />
     </view>
   </view>
@@ -35,7 +29,10 @@
   </view>
 
   <view class="{{classPrefix}}__right {{prefix}}-class-right">
-    <t-icon wx:if="{{ arrow }}" name="chevron-right" class="{{classPrefix}}__right-icon" />
-    <slot wx:else name="right-icon" />
+    <t-icon wx:if="{{ arrow }}" name="chevron-right" class="{{classPrefix}}__right-icon {{prefix}}-class-right-icon" />
+    <block wx:else>
+      <t-icon name="{{rightIcon}}" class="{{classPrefix}}__right-icon {{prefix}}-class-right-icon" />
+      <slot name="right-icon" />
+    </block>
   </view>
 </view>

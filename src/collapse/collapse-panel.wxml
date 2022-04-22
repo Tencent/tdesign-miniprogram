@@ -1,0 +1,30 @@
+<wxs src="../common/utils.wxs" module="utils" />
+
+<view class="{{classPrefix}}">
+  <t-cell
+    title="{{header}}"
+    note="{{headerRightContent == 'true' ? (expanded ? '收起' : '展开') : headerRightContent}}"
+    bordered
+    right-icon="{{ ultimateExpandIcon ? (expanded ? 'chevron-up' : 'chevron-down') : '' }}"
+    class="{{classPrefix}}__title"
+    t-class="{{classPrefix}}__header"
+    t-class-title="class-title {{ultimateDisabled ? 'class-title--disabled' : ''}}"
+    t-class-note="class-note {{ultimateDisabled ? 'class-note--disabled' : ''}}"
+    t-class-right-icon="class-right-icon {{ultimateDisabled ? 'class-right-icon--disabled' : ''}}"
+    t-class-hover="class-header-hover"
+    bind:click="onClick"
+  >
+    <slot name="title" slot="title" />
+    <slot name="left-icon" slot="left-icon" />
+    <slot name="note" slot="header-right-content" />
+    <slot name="right-icon" slot="right-icon" />
+  </t-cell>
+  <view class="{{classPrefix}}__wrapper" style="height: {{contentHeight}};" bind:transitionend="onTransitionEnd">
+    <view class="{{classPrefix}}__content {{classPrefix}}__content--{{expanded ? 'active' : ''}} t-class-content">
+      {{content}}
+      <slot />
+      <slot name="content" />
+    </view>
+  </view>
+</view>
+<!-- parentDisabled -->

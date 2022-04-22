@@ -1,20 +1,20 @@
 <t-popup visible="{{visible}}" placement="bottom">
   <view slot="content" class="{{classPrefix}} t-class">
-    <view class="{{classPrefix}}__toolbar">
-      <view class="{{classPrefix}}__cancel t-class-cancel" bindtap="onCancel">{{cancelBtn}}</view>
+    <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
+      <view class="{{classPrefix}}__cancel t-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel">{{cancelBtn}}</view>
       <view class="{{classPrefix}}__title t-class-title">{{title}}</view>
-      <view class="{{classPrefix}}__confirm t-class-confirm" bindtap="onConfirm"
+      <view class="{{classPrefix}}__confirm t-class-confirm" wx:if="{{confirmBtn}}" bindtap="onConfirm"
         >{{confirmBtn}}</view
       >
     </view>
     <!-- 扩展插槽 -->
-    <slot name="before"></slot>
+    <slot name="header"></slot>
     <view class="{{classPrefix}}__main">
       <slot></slot>
       <view class="{{classPrefix}}__mask"></view>
       <view class="{{classPrefix}}__indicator"></view>
     </view>
     <!-- 扩展插槽 -->
-    <slot name="after"></slot>
+    <slot name="footer"></slot>
   </view>
 </t-popup>

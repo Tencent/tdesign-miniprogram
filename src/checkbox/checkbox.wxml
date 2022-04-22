@@ -1,20 +1,23 @@
-<view class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}}">
+<view
+  class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}} {{classPrefix}}--{{theme}} {{checked ? prefix + '-is-actived' : ''}}"
+>
   <!-- icon -->
   <view
+    wx:if="{{theme == 'default'}}"
     class="{{classPrefix}}__icon-{{align}} {{prefix}}-class-icon"
     data-target="icon"
     bind:tap="onChange"
   >
     <block wx:if="{{icon.length > 0}}">
       <view class="{{classPrefix}}__icon">
-        <image src="{{active ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
+        <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
       </view>
     </block>
     <block wx:else>
       <t-icon
-        color="{{active && !disabled ? color : ''}}"
-        name="{{active ? (halfChecked ? 'minus-circle-filled' : 'check-circle-filled') : 'circle'}}"
-        class="{{classPrefix}}__btn {{active ? prefix + '-is-checked' : ''}} {{disabled ? prefix + '-is-disabled' : ''}}"
+        color="{{checked && !disabled ? color : ''}}"
+        name="{{checked ? (indeterminate ? 'minus-circle-filled' : 'check-circle-filled') : 'circle'}}"
+        class="{{classPrefix}}__btn {{checked ? prefix + '-is-checked' : ''}} {{disabled ? prefix + '-is-disabled' : ''}}"
       />
     </block>
   </view>
@@ -25,25 +28,20 @@
     bind:tap="onChange"
   >
     <!-- title -->
-    <view
-      class="{{classPrefix}}__title {{prefix}}-class-label"
-      style="-webkit-line-clamp:{{maxLabelRow}}"
-    >
+    <view class="{{classPrefix}}__title {{prefix}}-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
       {{label}}
+      <slot />
       <slot name="label" />
     </view>
     <!-- content -->
-    <view
-      class="{{classPrefix}}__description {{prefix}}-class-content "
-      style="-webkit-line-clamp:{{maxContentRow}}"
-    >
+    <view class="{{classPrefix}}__description {{prefix}}-class-content " style="-webkit-line-clamp:{{maxContentRow}}">
       {{content}}
-      <slot />
       <slot name="content" />
     </view>
   </view>
   <!-- 内置下边框 -->
   <view
+    wx:if="{{theme == 'default' && !borderless}}"
     class="{{classPrefix}}__border {{classPrefix}}__border--{{align}} {{prefix}}-class-border"
   />
 </view>

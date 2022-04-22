@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdDateTimePickerProps } from './type';
@@ -31,11 +30,16 @@ const props: TdDateTimePickerProps = {
     type: String,
     value: 'YYYY-MM-DD',
   },
-  /** 选择器模式，用于表示可以选择到哪一个层级。【示例一】year 或者 ['year'] 表示纯日期选择器，只能选择到年份，只显示年份。【示例二】'hour' 或 ['hour'] 表示纯时间选择器，只能选择到小时维度。【示例三】['date', 'minutes'] 表示，日期和时间 混合选择器，可以选择到具体哪一分钟，显示全部时间：年/月/日/时/分 */
+  /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 */
+  header: {
+    type: Boolean,
+    value: true,
+  },
+  /** 选择器模式，用于表示可以选择到哪一个层级。【示例一】year 或者 ['year'] 表示纯日期选择器，只能选择到年份，只显示年份。【示例二】'hour' 或 ['hour'] 表示纯时间选择器，只能选择到小时维度。【示例三】['year', 'month', 'date', 'hour', 'minute'] 表示，日期和时间 混合选择器，可以选择到具体哪一分钟，显示全部时间：年/月/日/时/分 */
   mode: {
     type: String,
     optionalTypes: [Array],
-    value: 'date',
+    value: ['year', 'month', 'date'],
   },
   /** 是否在日期旁边显示周几（如周一，周二，周日等） */
   showWeek: {
@@ -49,6 +53,12 @@ const props: TdDateTimePickerProps = {
   },
   /** 选中值 */
   value: {
+    type: String,
+    optionalTypes: [Number],
+    value: null,
+  },
+  /** 选中值，非受控属性 */
+  defaultValue: {
     type: String,
     optionalTypes: [Number],
   },

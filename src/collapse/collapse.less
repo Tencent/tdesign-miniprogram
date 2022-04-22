@@ -1,4 +1,31 @@
-@import (css) '../common/index.wxss';
+@import '../common/index.less';
+
+@collapse-header-text-color: @text-level-1-color;
+@collapse-content-text-color: @text-level-1-color;
+@collapse-header-text-diabled-color: @text-level-4-color;
+@collapse-list-content-text-color: @text-level-1-color;
+
+// font-size
+@collapse-title-font-size: @font-size * 1.6;
+@collapse-extra-font-size: @font-size * 1.6;
+@collapse-content-font-size: @font-size * 1.4;
+
+@collapse-header-height: 48px;
+@collapse-horizontal-padding: 16px;
+@collapse-content-padding: 12px;
+@collapse-content-line-height: 1.5;
+
+@collapse-border: 1px solid #eee;
+@collapse-shadow-bottom: inset 0 -1px 0 0 #eeeeee;
+
+.@{prefix}-collapse {
+  &__title {
+    font-size: @collapse-content-font-size;
+    padding: @collapse-content-padding;
+    padding-top: @collapse-content-padding * 2;
+    color: #999;
+  }
+}
 
 .hairline--top-bottom:after {
   position: absolute;
@@ -12,8 +39,8 @@
   bottom: -50%;
   left: -50%;
   border: 0 solid #eee;
-  transform: scale(.5);
-  transform: scale(.5);
+  transform: scale(0.5);
+  transform: scale(0.5);
 }
 
 .hairline--top-bottom:after {

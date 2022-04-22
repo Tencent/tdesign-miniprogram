@@ -1,6 +1,6 @@
 const display = {
   name: '信息展示',
-  icon: '/assets/image@2x.png',
+  icon: 'image',
   childArr: [
     {
       name: 'Avatar',
@@ -22,22 +22,18 @@ const display = {
       name: 'Cell',
       label: '单元格',
     },
-    // {
-    //   name: 'Collapse',
-    //   label: '折叠面板',
-    // },
+    {
+      name: 'Collapse',
+      label: '折叠面板',
+    },
     {
       name: 'CountDown',
       label: '倒计时',
     },
     {
-      name: 'Divider',
-      label: '分割线',
+      name: 'DropdownMenu',
+      label: '下拉菜单',
     },
-    // {
-    //   name: 'DropdownMenu',
-    //   label: '下拉菜单',
-    // },
     {
       name: 'Empty',
       label: '空状态',
@@ -77,6 +73,10 @@ const display = {
     {
       name: 'Sticky',
       label: '吸顶',
+    },
+    {
+      name: 'NoticeBar',
+      label: '公告栏',
     },
   ],
 };

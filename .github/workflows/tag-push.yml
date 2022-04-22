@@ -1,6 +1,7 @@
 name: TAG_PUSH
 
-on: create
+on:
+  create
 
 jobs:
   TAG_PUSH:

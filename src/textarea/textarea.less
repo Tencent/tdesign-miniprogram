@@ -15,7 +15,7 @@
   position: relative;
   background-color: #fff;
 
-  &__name {
+  &__name:not(:empty) {
     position: relative;
     padding: @textarea-vertical-padding @textarea-horizontal-padding;
     font-size: @textarea-font-size;
@@ -35,7 +35,7 @@
     font-size: @textarea-font-size;
     color: @textarea-text-color;
 
-    textarea {
+    &-textarea {
       display: block;
       box-sizing: border-box;
       width: 100%;

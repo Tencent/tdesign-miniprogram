@@ -1,4 +1,9 @@
-<view class="{{className}}" style="{{styleName}}">
-  <t-icon name="{{icon}}" color="white" size="24px" />
-  <text class="{{textClass}}" wx:if="{{text}}">{{text}}</text>
+<import src="../common/template/button.wxml" />
+
+<view class="{{classPrefix}} {{prefix}}-class" style="{{style}}">
+  <template
+    is="button"
+    class="{{classPrefix}}__button"
+    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-class-button'}}"
+  />
 </view>

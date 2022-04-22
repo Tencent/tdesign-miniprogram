@@ -35,7 +35,7 @@ isComponent: true
 ></t-dialog>
 ```
 
-> 使用这种方式，对话框的 `visible` 是受控的，需要手动设置额 `visible` 为 `false` 才会关闭对话框。 
+> 使用这种方式，对话框的 `visible` 是受控的，需要手动设置额 `visible` 为 `false` 才会关闭对话框。
 
 ### API 调用方式
 
@@ -52,7 +52,7 @@ Dialog.alert({
   title: '对话框标题',
   content: '告知当前状态、信息和解决方法等内容。',
   confirmBtn: '我知道了',
-}).then(() => { 
+}).then(() => {
   // 点击确定按钮时触发
 });
 ```
@@ -115,13 +115,13 @@ Dialog.action({
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-actions | Array / Slot | - | 操作栏。TS 类型：`Array<TdButtonProps>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
+actions | Array / Slot | - | 操作栏。TS 类型：`Array<TdButtonProps>`，[Button API Documents](./button?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
 button-layout | String | horizontal | 多按钮排列方式。可选项：horizontal/vertical | N
 cancel-btn | String / Object / Slot | '' | 取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
 close-on-overlay-click | Boolean | true | 点击蒙层时是否触发关闭事件 | N
-confirm-btn | String / Object / Slot | '' | 确认按钮。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件 | N
+confirm-btn | String / Object / Slot | '' | 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件 | N
 content | String / Slot | - | 内容 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、确认按钮、取消按钮 等元素类名。`['t-class', 't-class-content', 't-class-confirm', 't-class-cancel']` | N
+external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、组件内容部分、确认按钮、取消按钮 等元素类名。`['t-class', 't-class-content', 't-class-confirm', 't-class-cancel']` | N
 prevent-scroll-through | Boolean | true | 防止滚动穿透 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 title | String / Slot | - | 标题 | N
@@ -133,9 +133,9 @@ z-index | Number | - | 对话框层级，Web 侧样式默认为 2500，移动端
 名称 | 参数 | 描述
 -- | -- | --
 cancel | - | 如果“取消”按钮存在，则点击“取消”按钮时触发，同时触发关闭事件
-close | `(context: DialogCloseContext)` | 关闭事件，点击 取消按钮 或 点击蒙层 时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)
+close | `(trigger: DialogEventSource)` | 关闭事件，点击 取消按钮 或 点击蒙层 时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)。<br/>`type DialogEventSource = 'cancel' | 'overlay'`<br/>
 overlay-click | - | 如果蒙层存在，点击蒙层时触发
 confirm | - | 如果“确认”按钮存在，则点击“确认”按钮时触发
 action | `(index: number)` | 操作列表的点击时间，`index` 代表操作列表的顺序
 open-type-event | `(ButtonEventDetail)` | “确认”按钮具有开放能力的话，对应的成功回调
-open-type-error-event | `(ButtonError)` | “确认”按钮具有开放能力的话，对应的失败回调 
+open-type-error-event | `(ButtonError)` | “确认”按钮具有开放能力的话，对应的失败回调

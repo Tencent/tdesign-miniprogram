@@ -1,0 +1,46 @@
+<import src="./action-sheet-item.wxml" />
+<template name="grid">
+  <block wx:if="{{gridThemeItems.length === 1}}">
+    <t-grid align="center" t-class="{{classPrefix}}__grid" column="{{count / 2}}" class="{{classPrefix}}__single-wrap">
+      <t-grid-item
+        t-class="{{classPrefix}}__grid-item"
+        class="{{classPrefix}}__square"
+        wx:for="{{gridThemeItems[0]}}"
+        wx:key="index"
+        bind:tap="onSelect"
+        data-index="{{index}}"
+      >
+        <template is="item" data="{{classPrefix, item}}" />
+      </t-grid-item>
+    </t-grid>
+  </block>
+  <block wx:elif="{{gridThemeItems.length > 1}}">
+    <view class="{{classPrefix}}__swiper-wrap">
+      <t-swiper height="{{456}}" autoplay="{{false}}" current="{{currentSwiperIndex}}" bindchange="onSwiperChange">
+        <t-swiper-item wx:for="{{gridThemeItems}}" wx:key="index">
+          <t-grid align="center" t-class="{{classPrefix}}__grid" column="{{count / 2}}">
+            <t-grid-item
+              t-class="{{classPrefix}}__grid-item"
+              class="{{classPrefix}}__square"
+              wx:for="{{item}}"
+              wx:key="index"
+              data-index="{{index}}"
+              bind:tap="onSelect"
+            >
+              <template is="item" data="{{classPrefix, item}}" />
+            </t-grid-item>
+          </t-grid>
+        </t-swiper-item>
+      </t-swiper>
+      <view class="{{classPrefix}}__nav">
+        <view class="{{classPrefix}}__dots">
+          <view
+            wx:for="{{gridThemeItems.length}}"
+            wx:key="index"
+            class="{{classPrefix}}__dots-item {{index === currentSwiperIndex ? prefix + '-is-active' : ''}}"
+          />
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

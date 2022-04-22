@@ -60,6 +60,13 @@ export default {
           component: () => import('@/divider/README.md'),
         },
         {
+          title: 'Fab 悬浮按钮',
+          name: 'fab',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/fab',
+          component: () => import('@/fab/README.md'),
+        },
+        {
           title: 'Icon 图标',
           name: 'icon',
           meta: { docType: 'base' },
@@ -72,13 +79,13 @@ export default {
       title: '导航',
       type: 'component',
       children: [
-        // {
-        //   title: 'Drawer 抽屉',
-        //   name: 'drawer',
-        //   meta: { docType: 'navigation' },
-        //   path: '/miniprogram/components/drawer',
-        //   component: () => import('@/drawer/README.md'),
-        // },
+        {
+          title: 'Drawer 抽屉',
+          name: 'drawer',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/drawer',
+          component: () => import('@/drawer/README.md'),
+        },
         // {
         //   title: 'ImageViewer 图片预览',
         //   name: 'image-viewer',
@@ -148,13 +155,6 @@ export default {
           path: '/miniprogram/components/date-time-picker',
           component: () => import('@/date-time-picker/README.md'),
         },
-        // {
-        //   title: 'Fab 悬浮按钮',
-        //   name: 'fab',
-        //   meta: { docType: 'form' },
-        //   path: '/miniprogram/components/fab',
-        //   component: () => import('@/fab/README.md'),
-        // },
         {
           title: 'Input 输入框',
           name: 'input',
@@ -245,7 +245,7 @@ export default {
           path: '/miniprogram/components/badge',
           component: () => import('@/badge/README.md'),
         },
-        
+
         {
           title: 'Cell 单元格',
           name: 'cell',
@@ -254,26 +254,26 @@ export default {
           component: () => import('@/cell/README.md'),
         },
         {
+          title: 'Collapse 折叠面板',
+          name: 'collapse',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/collapse',
+          component: () => import('@/collapse/README.md'),
+        },
+        {
           title: 'CountDown 倒计时',
           name: 'countdown',
           meta: { docType: 'data' },
           path: '/miniprogram/components/count-down',
           component: () => import('@/count-down/README.md'),
         },
-        // {
-        //   title: 'Collapse 折叠面板',
-        //   name: 'collapse',
-        //   meta: { docType: 'data' },
-        //   path: '/miniprogram/components/collapse',
-        //   component: () => import('@/collapse/README.md'),
-        // },
-        // {
-        //   title: 'DropdownMenu 下拉菜单',
-        //   name: 'dropdown-menu',
-        //   meta: { docType: 'data' },
-        //   path: '/miniprogram/components/dropdown-menu',
-        //   component: () => import('@/dropdown-menu/README.md'),
-        // },
+        {
+          title: 'DropdownMenu 下拉菜单',
+          name: 'dropdown-menu',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/dropdown-menu',
+          component: () => import('@/dropdown-menu/README.md'),
+        },
         {
           title: 'Empty 空状态',
           name: 'empty',
@@ -336,13 +336,13 @@ export default {
       title: '消息提醒',
       type: 'component', // 组件文档
       children: [
-        // {
-        //   title: 'ActionSheet 动作面板',
-        //   name: 'actionsheet',
-        //   meta: { docType: 'message' },
-        //   path: '/miniprogram/components/actionsheet',
-        //   component: () => import('@/action-sheet/README.md'),
-        // },
+        {
+          title: 'ActionSheet 动作面板',
+          name: 'actionsheet',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/actionsheet',
+          component: () => import('@/action-sheet/README.md'),
+        },
         {
           title: 'BackTop 返回顶部',
           name: 'back-top',
@@ -385,13 +385,13 @@ export default {
           path: '/miniprogram/components/popup',
           component: () => import('@/popup/README.md'),
         },
-        // {
-        //   title: 'Progress 进度条',
-        //   name: 'progress',
-        //   meta: { docType: 'message' },
-        //   path: '/miniprogram/components/progress',
-        //   component: () => import('@/progress/README.md'),
-        // },
+        {
+          title: 'Progress 进度条',
+          name: 'progress',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/progress',
+          component: () => import('@/progress/README.md'),
+        },
         {
           title: 'PullDownRefresh 下拉刷新',
           name: 'pullDownRefresh',

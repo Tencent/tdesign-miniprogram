@@ -9,7 +9,7 @@ const props: TdCheckTagProps = {
   /** 标签选中的状态，默认风格（theme=default）才有选中态 */
   checked: {
     type: Boolean,
-    value: null,
+    value: undefined,
   },
   /** 标签选中的状态，默认风格（theme=default）才有选中态，非受控属性 */
   defaultChecked: {

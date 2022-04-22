@@ -1,60 +1,29 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-fab`;
 
-TComponent({
-  // 组件的对外属性
-  properties: {
-    icon: {
-      type: String,
-      value: 'add', // 默认为 ‘+’
-    },
-    text: {
-      type: String,
-      value: '',
-    },
-    bottom: {
-      type: String,
-      value: '32px',
-    },
-    right: {
-      type: String,
-      value: '16px',
-    },
-  },
-  // 组件的内部数据
-  data: {
-    // 按钮样式列表
-    className: '',
-    styleName: '',
-    textClass: `${name}__text`,
-  },
+@wxComponent()
+export default class Fab extends SuperComponent {
+  properties = props;
 
-  /* 组件生命周期 */
-  lifetimes: {
-    attached() {
-      this.setClass();
-      this.setStyle();
-    },
-  },
+  externalClasses = [`${prefix}-class`, `${prefix}-class-button`];
 
-  /* Methods */
-  methods: {
-    setClass() {
-      const classList = [`${name}`, this.data.text && `${name}--with-text`];
-      this.setData({
-        className: classList.join(' '),
-      });
+  data = {
+    prefix,
+    classPrefix: name,
+    baseButtonProps: {
+      size: 'large',
+      shape: 'circle',
+      theme: 'primary',
     },
-    setStyle() {
-      this.setData({
-        styleName: `
-          bottom: ${this.data.bottom};
-          right: ${this.data.right};
-        `,
-      });
+  };
+
+  methods = {
+    onTplButtonTap(e) {
+      this.triggerEvent('click', e);
     },
-  },
-});
+  };
+}

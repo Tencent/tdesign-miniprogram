@@ -31,13 +31,34 @@ isComponent: true
 <t-icon prefix="icon" name="a-1h" size="xl" bind:click="someFunction"> </t-icon>
 ```
 
-以 iconfont 为例：
+自定义图标用法：`以`iconfont`为例`
 
-- 在 iconfont 资源管理中打开我的项目
-- 配置项目设置，统一 FontClass/Symbol 前缀 与 Font Family，如：`icon-` 与 `icon`
-- 使用浏览器打开生成的 Font class 代码链接（以 `.css` 结尾），保存到小程序项目中，并将后缀名改为 `.wxss`
-- 在 app.wxss 或者 page 对应的 .wxss 中，使用 `@import` 引入该 .wxss 文件
-- 使用时，与前面设置的 Font Family 保持一致，即 `prefix="icon"`
+1. 准备自定义图标文件，文件后缀应为`.wxss`，如下方代码块所示。
+    ```css
+      @font-face {
+        font-family: 'icon';  // 使用自定义的字体名称
+        ···
+      }
+
+      .icon {
+        font-family: 'icon' !important;  // 字体名称
+        ···
+      }
+
+      .icon-a-0:before {  // icon图标。注意FontClass前缀与font-family保持一致
+        content: '\e64d';
+      }
+      ···
+    ```
+    - 1.1 添加所需图标，下载图标。图标库一般会提供 `在线链接` 或者 `下载至本地` 等使用方式， `在线链接` 方式会指向一个 `.css` 文件，可以下载或复制其内容，将其修改成后缀名为 `.wxss` 的文件
+    - 1.2 将 `.wxss` 文件中的 `FontClass/Symbol前缀` 与 `Font Family` 两项内容保持一致，如: `FontClass/Symbol` 前缀为 `icon-`，则 `Font Family` 为 `icon`。
+    - 注：若是采用 `下载至本地` 方式，需关注 `.css` 和 `.ttf` 文件。由于微信小程序不支持处理 `ttf、woff、eot` 等文件，但支持 `base64`，所以需要将 `.ttf` 文件转换为 `base64`  (借助转换工具(如[transfonter.org](https://transfonter.org/))，会得到一个 `stylesheet.css` 文件)，然后将 `.css` 文件中的 `@font-face {}` 内容替换为 `stylesheet.css` 中的 `base64` 内容，最后将 `.css` 文件修改后缀为 `.wxss`,
+2. 引入自定义图标。
+    - 2.1 全局引入：在项目 `app.wxss`，使用 `@import` 引入上述的 `.wxss` 文件
+    - 2.2 局部引入：在 `page` 对应的 `.wxss` 中，使用 `@import` 引入上述的 `.wxss` 文件
+3. 自定义图标的使用。
+    - 3.1 `<t-icon>` 组件中的 `prefix` 属性值与第2步中设置的 `Font Family` 保持一致，即 `prefix="icon"`，`name` 属性值为自定义图标名称，如图标的 `className` 为 `icon-a-1h`，则 `name="a-1h"`。
+
 
 ## API
 
@@ -48,7 +69,7 @@ isComponent: true
 | name        | `String` | -         | Y    | 图标名称                                                          |
 | size        | `String` | `inherit` | N    | 图标大小, 可以'middle' 'small'等关键字， 也可以是字体大小如'20px' |
 | color       | `String` | `initial` | N    | 图标颜色                                                          |
-| prefix      | `String` | -         | N    | 自定义图标前缀                                                          |
+| prefix      | `String` | -         | N    | 自定义图标前缀                                                    |
 | customStyle | `String` | -         | N    | 自定义样式                                                        |
 
 #### Events

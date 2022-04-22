@@ -22,23 +22,18 @@
     bind:tap="handleTap"
   >
     <!-- 主文本 -->
-    <view
-      class="{{classPrefix}}__title {{prefix}}-class-label"
-      style="-webkit-line-clamp:{{maxLabelRow}}"
-    >
+    <view class="{{classPrefix}}__title {{prefix}}-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
       {{label}}
+      <slot />
     </view>
     <!-- content -->
-    <view
-      class="{{classPrefix}}__description {{prefix}}-class-content "
-      style="-webkit-line-clamp:{{maxContentRow}}"
-    >
+    <view class="{{classPrefix}}__description {{prefix}}-class-content " style="-webkit-line-clamp:{{maxContentRow}}">
       {{content}}
-      <slot />
     </view>
   </view>
   <!-- 预制下边框 -->
   <view
+    wx:if="{{!borderless}}"
     class="{{classPrefix}}__border {{classPrefix}}__border--{{align}} {{prefix}}-class-border"
   ></view>
 </view>

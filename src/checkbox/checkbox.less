@@ -1,7 +1,8 @@
 @import '../common/style/index.less';
 @btn-width: 48rpx;
+@checkbox: ~'@{prefix}-checkbox';
 
-.@{prefix}-checkbox {
+.@{checkbox} {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -99,6 +100,24 @@
     &--right {
       right: 80rpx;
       width: calc(100% - 80rpx);
+    }
+  }
+
+  &--tag {
+    font-size: 28rpx;
+    padding-top: 16rpx;
+    padding-bottom: 16rpx;
+    text-align: center;
+    background-color: #f3f3f3;
+    border-radius: 8rpx;
+
+    &.@{prefix}-is-actived {
+      color: #0052d9;
+      background-color: #ecf2fe;
+    }
+
+    .@{checkbox}__content {
+      margin-right: 0;
     }
   }
 }

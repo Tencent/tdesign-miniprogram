@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@dialog: ~"@{prefix}-dialog";
+@dialog: ~'@{prefix}-dialog';
 // size
 @dialog-width: 322rpx * 2;
 @dialog-body-min-height: 88rpx * 2;
@@ -9,11 +9,11 @@
 @dialog-input-height: 48rpx * 2;
 
 // color
-@dialog-btn-bg-color-active: rgba(0, 0, 0, .05);
+@dialog-btn-bg-color-active: rgba(0, 0, 0, 0.05);
 @dialog-btn-border-color: #eee;
 @dialog-input-bg-color: #f0f0f0;
 
-page {
+.@{dialog}__wrapper {
   .@{dialog} {
     overflow: hidden;
     width: @dialog-width;
@@ -68,6 +68,10 @@ page {
     &__footer {
       display: flex;
 
+      &-button-host {
+        width: 100%;
+      }
+
       &--column {
         flex-flow: column-reverse;
 
@@ -89,12 +93,24 @@ page {
       height: @dialog-btn-height;
       line-height: @dialog-btn-height;
       border-radius: 0;
-      border: 1rpx solid @border-color;
-      border-left: 0;
-      border-bottom: 0;
+      border: 0;
+
+      &:before {
+        content: ' ';
+        position: absolute;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        border-top: 1px solid @border-color;
+        border-left: 1px solid @border-color;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        width: 200%;
+        height: 200%;
+      }
 
       &-half {
-        width: (@dialog-width / 2 );
+        width: (@dialog-width / 2);
       }
 
       &-confirm {
@@ -108,23 +124,18 @@ page {
       }
 
       &-bounce-enter {
-        transform: translate3d(-50%, -50%, 0) scale(.7);
+        transform: translate3d(-50%, -50%, 0) scale(0.7);
         opacity: 0;
       }
 
       &-bounce-leave-active {
-        transform: translate3d(-50%, -50%, 0) scale(.9);
+        transform: translate3d(-50%, -50%, 0) scale(0.9);
         opacity: 0;
       }
 
       &::after {
         border-radius: 0;
         border-color: @dialog-btn-bg-color-active;
-      }
-
-      &--active,
-      &:active {
-        background-color: @dialog-btn-bg-color-active;
       }
     }
 

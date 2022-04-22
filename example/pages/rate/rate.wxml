@@ -5,7 +5,7 @@
     <view class="demo-section__desc">实心评分</view>
     <view class="item">
       <view class="item__title">请点击评分</view>
-      <t-rate value="{{value[0]}}" data-index="{{0}}" variant="filled" />
+      <t-rate value="{{value[0]}}" data-index="{{0}}" variant="filled" bind:change="onChange" />
     </view>
 
     <view class="demo-section__desc">空心评分</view>
@@ -17,25 +17,13 @@
     <view class="demo-section__desc">自定义数量评分</view>
     <view class="item">
       <view class="item__title">自定义数量</view>
-      <t-rate
-        value="{{value[2]}}"
-        data-index="{{2}}"
-        variant="filled"
-        count="{{6}}"
-        bind:change="onChange"
-      />
+      <t-rate value="{{value[2]}}" data-index="{{2}}" variant="filled" count="{{6}}" bind:change="onChange" />
     </view>
 
     <view class="demo-section__desc">半星评分</view>
     <view class="item">
       <view class="item__title">半星评价</view>
-      <t-rate
-        value="{{value[3]}}"
-        data-index="{{3}}"
-        variant="filled"
-        allowHalf="{{true}}"
-        bind:change="onChange"
-      />
+      <t-rate value="{{value[3]}}" data-index="{{3}}" variant="filled" allowHalf="{{true}}" bind:change="onChange" />
     </view>
 
     <view class="demo-section__desc">带描述评分</view>
@@ -53,12 +41,27 @@
     </view>
     <view class="item">
       <view class="item__title">请点击评分</view>
+      <t-rate value="{{value[5]}}" variant="filled" data-index="{{5}}" bind:change="onChange" showText="{{true}}" />
+    </view>
+    <view class="demo-section__desc">禁用评分</view>
+    <view class="item">
+      <view class="item__title">仅展示</view>
+      <t-rate value="{{value[10]}}" data-index="{{10}}" variant="filled" disabled bind:change="onChange" />
+    </view>
+    <view class="demo-section__desc">设置评分颜色</view>
+    <view class="item">
+      <view class="item__title">空心评分</view>
+      <t-rate value="{{value[11]}}" data-index="{{11}}" color="#FFC51C,#bbbbbb" bind:change="onChange" />
+    </view>
+    <view class="item">
+      <view class="item__title">实心评分</view>
       <t-rate
-        value="{{value[5]}}"
+        value="{{value[12]}}"
+        allowHalf
         variant="filled"
-        data-index="{{5}}"
+        data-index="{{12}}"
+        color="#FFC51C,#bbbbbb"
         bind:change="onChange"
-        showText="{{true}}"
       />
     </view>
   </t-demo>
@@ -66,23 +69,11 @@
     <view class="demo-section__desc">评价规格</view>
     <view class="item">
       <view class="item__title">规格 20</view>
-      <t-rate
-        value="{{value[8]}}"
-        data-index="{{8}}"
-        variant="filled"
-        bind:change="onChange"
-        size="{{40}}"
-      />
+      <t-rate value="{{value[8]}}" data-index="{{8}}" variant="filled" bind:change="onChange" size="{{40}}" />
     </view>
     <view class="item">
       <view class="item__title">规格 16</view>
-      <t-rate
-        value="{{value[9]}}"
-        data-index="{{9}}"
-        variant="filled"
-        bind:change="onChange"
-        size="{{32}}"
-      />
+      <t-rate value="{{value[9]}}" data-index="{{9}}" variant="filled" bind:change="onChange" size="{{32}}" />
     </view>
   </t-demo>
 </view>

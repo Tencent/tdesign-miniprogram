@@ -98,6 +98,7 @@ onChange(e) {
 
 ### Swiper Events
 
-| 名称   | 参数                                                         | 描述                                                                                                                |
-| ------ | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
-| change | `(current: number, context: { source: SwiperChangeSource })` | 轮播切换时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swiper/type.ts) |
+名称 | 参数 | 描述
+-- | -- | --
+change | `(current: number, source: SwiperChangeSource)` | 轮播切换时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' | 'touch' | ''`<br/>
+

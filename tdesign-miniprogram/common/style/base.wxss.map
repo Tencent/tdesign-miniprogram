@@ -1,1 +1,0 @@
-{"version":3,"names":[],"mappings":"","sources":["common/style/base.less"],"sourcesContent":["// 变量\n@import './_variables.less';\n"],"file":"base.wxss"}

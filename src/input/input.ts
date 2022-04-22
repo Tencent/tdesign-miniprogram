@@ -22,6 +22,8 @@ export default class Input extends SuperComponent {
 
   externalClasses = ['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg'];
 
+  behaviors = ['wx://form-field'];
+
   properties = props;
 
   controlledProps = [
@@ -63,7 +65,7 @@ export default class Input extends SuperComponent {
     },
     clearInput(event) {
       this.triggerEvent('clear', event.detail);
-      this._trigger('change', { value: '' });
+      this.setData({ value: '' });
     },
   };
 }

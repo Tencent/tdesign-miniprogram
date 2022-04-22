@@ -35,6 +35,8 @@ export default class StepItem extends SuperComponent {
     index: 0,
     isDot: false,
     curStatus: '',
+    curSubStepItems: [],
+    curSubStepItemsStatus: [],
     layout: 'vertical',
     type: 'default',
     isLastChild: false,
@@ -48,19 +50,6 @@ export default class StepItem extends SuperComponent {
       this.setData({
         computedIcon: val,
       });
-    },
-    curStatus(val) {
-      if (this.data.readonly) {
-        if (val === 'finish') {
-          this.setData({
-            computedIcon: 'check',
-          });
-        } else if (val === 'error') {
-          this.setData({
-            computedIcon: 'close',
-          });
-        }
-      }
     },
   };
 
@@ -77,26 +66,86 @@ export default class StepItem extends SuperComponent {
   };
 
   methods = {
-    updateStatus(current, index, theme, layout, steps, readonly) {
-      const { status } = this.data;
-      let newStatus = status;
+    updateStatus(current, currentStatus, index, theme, layout, steps, readonly) {
+      const _current = String(current);
+      const connectLine = '-';
 
-      if (newStatus === 'default') {
-        if (index < current) {
-          // 1. 本步骤序号小于当前步骤并且没有设定任何步骤序号，设定状态为 finish
-          newStatus = 'finish';
-          // eslint-disable-next-line
-        } else if (index == current) {
-          // 2. 本步骤序号等于当前步骤. 默认为process
-          newStatus = 'process';
-        } else if (readonly) {
-          // 3. 本步骤序号大于当前步骤，默认为wait
-          newStatus = 'wait';
+      const judgeObjAttr = (data, attr: string) => {
+        return Array.isArray(data[attr]) && data[attr].length;
+      };
+
+      const getStepLevel = (s) => {
+        const reg = new RegExp(`(.*)${connectLine}{1}.*`);
+        return s.replace(reg, '$1');
+      };
+
+      const isSameLevelStep = (stepsTag: string, current: string) => {
+        return stepsTag.length < current.length && getStepLevel(stepsTag) === getStepLevel(current);
+      };
+
+      /**
+       * 步骤条状态优先级：status > currentStatus > 子步骤影响
+       * 子步骤影响优先级： finish > error > process
+       */
+      const stepFinalStatus = (item, itemTag, current: string, currentStatus) => {
+        let tempStepStatus = '';
+        if (item.status !== 'default' && item.status !== undefined) {
+          tempStepStatus = item.status === '' ? 'default' : item.status;
+        } else {
+          tempStepStatus = 'default';
+          if (itemTag < current) {
+            tempStepStatus = 'finish';
+          } else if (itemTag === current && item.status !== '') {
+            tempStepStatus = currentStatus;
+          }
+
+          if (isSameLevelStep(itemTag, current)) {
+            if (judgeObjAttr(item, 'subStepItems')) {
+              const tempStepItemsStatus = item.subStepItems.map((subItem, subIndex) => {
+                const subItemTag = `${itemTag}${connectLine}${subIndex}`;
+                return stepFinalStatus(subItem, subItemTag, current, currentStatus);
+              });
+
+              if (tempStepItemsStatus[tempStepItemsStatus.length - 1] === 'finish') {
+                tempStepStatus = 'finish';
+                return tempStepStatus;
+              }
+              if (tempStepItemsStatus.includes('process') || tempStepItemsStatus.every((item) => item === 'default')) {
+                tempStepStatus = 'process';
+              }
+              if (tempStepItemsStatus.includes('error')) {
+                tempStepStatus = 'error';
+              }
+            }
+          }
         }
+        return tempStepStatus;
+      };
+
+      // step status
+      this.data.tempStatus = stepFinalStatus(this.data, String(index), _current, currentStatus);
+      const tempStatusList = [];
+      if (judgeObjAttr(this.data, 'subStepItems')) {
+        this.data.subStepItems.forEach((subItem, subIndex) => {
+          tempStatusList.push(stepFinalStatus(subItem, `${index}${connectLine}${subIndex}`, _current, currentStatus));
+        });
+      }
+
+      // update icon
+      const tempIcon = new Map([
+        ['finish', 'check'],
+        ['error', 'close'],
+      ]);
+      let iconStatus = '';
+      if (readonly && tempIcon.has(this.data.tempStatus)) {
+        iconStatus = tempIcon.get(this.data.tempStatus);
       }
 
       this.setData({
-        curStatus: newStatus,
+        curStatus: this.data.tempStatus,
+        curSubStepItems: this.data.subStepItems || [],
+        curSubStepItemsStatus: tempStatusList || [],
+        computedIcon: iconStatus || this.data.icon,
         index,
         isDot: theme === 'dot' && layout === 'vertical',
         layout,

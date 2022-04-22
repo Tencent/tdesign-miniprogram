@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "t-button": "../button/button",
+    "t-button-group": "../button-group/button-group",
     "t-cell": "../cell/cell",
     "t-cell-group": "../cell-group/cell-group",
     "t-radio": "../radio/radio",

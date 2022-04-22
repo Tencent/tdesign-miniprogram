@@ -80,12 +80,23 @@ export default class Swiper extends SuperComponent {
 
   timer = null;
 
+  updateTimer = null;
+
   // 受控属性
   control: ControlInstance = null;
 
   relations = {
     './swiper-item': {
       type: 'child' as 'child',
+      linked: function () {
+        // 最后一个触发linked，才执行更新
+        clearTimeout(this.updateTimer);
+        // 若items变化，延迟检查更新
+        this.updateTimer = setTimeout(() => {
+          this.initItem();
+          this.updateNav(this.control.get());
+        });
+      },
     },
     './swiper-nav': {
       type: 'child' as 'child',
@@ -127,16 +138,6 @@ export default class Swiper extends SuperComponent {
       valueKey: 'current',
       strict: false,
     });
-    this.createSelectorQuery()
-      .select('#swiper')
-      .boundingClientRect((rect) => {
-        this.setData({
-          _width: rect.width,
-          _height: rect.height,
-        });
-        this.initCurrent();
-      })
-      .exec();
   }
 
   detached() {
@@ -144,8 +145,18 @@ export default class Swiper extends SuperComponent {
   }
 
   ready() {
-    this.initItem();
-    this.initNav();
+    this.createSelectorQuery()
+      .select('#swiper')
+      .boundingClientRect((rect) => {
+        this.setData({
+          _width: rect.width,
+          _height: rect.height,
+        });
+        this.initItem();
+        this.initNav();
+        this.initCurrent();
+      })
+      .exec();
   }
 
   /**
@@ -191,7 +202,10 @@ export default class Swiper extends SuperComponent {
    * 需要通过wxs更新位置，存在短暂延迟
    */
   initCurrent() {
-    const index = this.control.initValue;
+    let index = +this.control.initValue;
+    // 检查索引初始值超出范围
+    index = Math.min(index, this.children.length - 1);
+    index = Math.max(index, 0);
     this.control.set(index, {
       currentInited: true,
       // 默认为0时，不需要等待wxs计算位置，可直接显示

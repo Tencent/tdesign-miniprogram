@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { TdBadgeProps } from '../badge/type';
+import { BadgeProps } from '../badge/index';
 
 export interface TdTabBarProps {
   /**
@@ -14,7 +14,6 @@ export interface TdTabBarProps {
   bordered?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 标签颜色设置。示例：[选中标签的颜色, 未选中的标签颜色]
@@ -23,7 +22,6 @@ export interface TdTabBarProps {
   color?: {
     type: ArrayConstructor;
     value?: Array<string>;
-    required?: boolean;
   };
   /**
    * 组件类名，用于设置外层元素类名
@@ -31,7 +29,6 @@ export interface TdTabBarProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class'];
-    required?: boolean;
   };
   /**
    * 是否固定在底部
@@ -40,7 +37,6 @@ export interface TdTabBarProps {
   fixed?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否为 iPhoneX 留出底部安全距离
@@ -49,7 +45,6 @@ export interface TdTabBarProps {
   safeAreaInsetBottom?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否需要分割线
@@ -58,27 +53,22 @@ export interface TdTabBarProps {
   split?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 当前选中标签的索引
-   * @default 0
    */
   value?: {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor | ArrayConstructor>;
     value?: string | number | Array<string | number>;
-    required?: boolean;
   };
   /**
    * 当前选中标签的索引，非受控属性
-   * @default 0
    */
   defaultValue?: {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor | ArrayConstructor>;
     value?: string | number | Array<string | number>;
-    required?: boolean;
   };
 }
 
@@ -88,7 +78,7 @@ export interface TdTabBarItemProps {
    */
   badgeProps?: {
     type: ObjectConstructor;
-    value?: TdBadgeProps;
+    value?: BadgeProps;
     required?: boolean;
   };
   /**
@@ -97,7 +87,6 @@ export interface TdTabBarItemProps {
   icon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 二级菜单
@@ -105,7 +94,6 @@ export interface TdTabBarItemProps {
   subTabBar?: {
     type: ArrayConstructor;
     value?: SubTabBarItem[];
-    required?: boolean;
   };
   /**
    * 标识符
@@ -114,7 +102,6 @@ export interface TdTabBarItemProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: string | number;
-    required?: boolean;
   };
 }
 

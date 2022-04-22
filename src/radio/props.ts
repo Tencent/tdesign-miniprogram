@@ -11,14 +11,20 @@ const props: TdRadioProps = {
     type: String,
     value: 'left',
   },
+  /** 是否允许取消选中 */
+  allowUncheck: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否选中 */
   checked: {
     type: Boolean,
+    value: null,
   },
   /** 是否选中，非受控属性 */
   defaultChecked: {
-    type: null,
-    value: undefined,
+    type: Boolean,
+    value: false,
   },
   /** 单选按钮颜色 */
   color: {
@@ -32,6 +38,7 @@ const props: TdRadioProps = {
   /** 是否禁用组件内容（content）触发选中 */
   contentDisabled: {
     type: Boolean,
+    value: false,
   },
   /** 是否为禁用态 */
   disabled: {
@@ -62,7 +69,7 @@ const props: TdRadioProps = {
     type: Number,
     value: 3,
   },
-  /** HTM 元素原生属性 */
+  /** HTML 元素原生属性 */
   name: {
     type: String,
     value: '',
@@ -71,7 +78,7 @@ const props: TdRadioProps = {
   value: {
     type: String,
     optionalTypes: [Number, Boolean],
-    value: undefined,
+    value: false,
   },
 };
 

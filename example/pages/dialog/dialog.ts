@@ -94,6 +94,19 @@ Page({
           },
         ],
       },
+      {
+        title: '命令调用',
+        btns: [
+          {
+            type: 'commandWithCancel',
+            text: '带取消按钮',
+          },
+          {
+            type: 'command',
+            text: '无取消按钮',
+          },
+        ],
+      },
     ],
   },
 
@@ -202,6 +215,23 @@ Page({
             confirmBtn: '确认',
             cancelBtn: '取消',
           }),
+        });
+        return;
+      }
+      case 'commandWithCancel': {
+        Dialog.confirm({
+          title: '弹窗标题',
+          content: '告知当前状态、信息和解决方法等内容。',
+          confirmBtn: '确认按钮',
+          cancelBtn: '取消按钮',
+        });
+        return;
+      }
+      case 'command': {
+        Dialog.confirm({
+          title: '弹窗标题',
+          content: '告知当前状态、信息和解决方法等内容。',
+          confirmBtn: '确认按钮',
         });
         return;
       }

@@ -1,43 +1,24 @@
-<view>
-  <view class="t-drawer-demo">
-    <view class="t-drawer-demo-content">
-      <view class="t-drawer-demo-text">基础抽屉</view>
-      <view class="t-drawer-demo-item">
-        <t-drawer visible="{{leftDemoVisible}}" sidebar="{{baseSidebar}}" size="large" position="left"></t-drawer>
-        <button size="large" bind:tap="openLeftDrawer">从左往右开</button>
+<view class="demo">
+  <view class="demo-title">Drawer 弹出层</view>
+  <view class="demo-desc">用作一组平行关系页面/内容的切换器，相较于Tab，同屏可展示更多的选项数量。</view>
+  <view class="tdesign-demo-popup">
+    <t-drawer
+      visible="{{visible}}"
+      placement="{{placement}}"
+      items="{{sidebar}}"
+      bind:overlay-click="overlayClick"
+      bind:item-click="itemClick"
+    ></t-drawer>
+    <t-demo title="01 类型">
+      <view class="demo-section__desc">基础抽屉</view>
+      <view class="box">
+        <t-button variant="plain" bind:tap="openDrawerBase" block>基础抽屉</t-button>
       </view>
-      <view class="t-drawer-demo-item">
-        <t-drawer visible="{{rightDemoVisible}}" sidebar="{{baseSidebar}}" size="large" position="right"></t-drawer>
-        <button size="large" bind:tap="openRightDrawer">从右往左开</button>
+
+      <view class="demo-section__desc">带图标抽屉</view>
+      <view class="box">
+        <t-button variant="plain" block bind:tap="openDrawerIcon">带图标抽屉</t-button>
       </view>
-      <view class="t-drawer-demo-item">
-        <t-drawer visible="{{topDemoVisible}}" sidebar="{{baseSidebar}}" size="40%" position="top"></t-drawer>
-        <button size="large" bind:tap="openTopDrawer">从上往下开</button>
-      </view>
-      <view class="t-drawer-demo-item">
-        <t-drawer visible="{{bottomDemoVisible}}" sidebar="{{baseSidebar}}" size="40%" position="bottom"></t-drawer>
-        <button size="large" bind:tap="openBottomDrawer">从下往上开</button>
-      </view>
-    </view>
-  </view>
-  <view class="t-drawer-demo">
-    <t-drawer visible="{{iconDemoVisible}}" sidebar="{{iconSidebar}}" size="large"></t-drawer>
-    <view class="t-drawer-demo-content">
-      <view class="t-drawer-demo-text">单层级纯文本标签栏</view>
-      <button size="large" bind:tap="openDrawer2">带图标抽屉</button>
-    </view>
-  </view>
-  <view class="t-drawer-demo">
-    <t-drawer visible="{{slotDemoVisible}}" size="300px" position="top">
-      <view slot="title" class="slot-title">自定义header</view>
-      <view class="slot-content">
-        <view wx:for="{{5}}" wx:key="index">自定义content内容</view>
-      </view>
-      <view slot="footer" class="slot-footer">自定义footer</view>
-    </t-drawer>
-    <view class="t-drawer-demo-content">
-      <view class="t-drawer-demo-text">自定义内容</view>
-      <button size="large" bind:tap="openSlotDrawer">自定义内容抽屉</button>
-    </view>
+    </t-demo>
   </view>
 </view>

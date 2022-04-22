@@ -62,6 +62,8 @@ function startDrag(event, ownerInstance) {
   initContainer(ownerInstance);
   var state = ownerInstance.getState();
   var touchPoint = event.touches[0];
+  state.moveX = 0;
+  state.moveY = 0;
   state.startX = touchPoint.clientX;
   state.startY = touchPoint.clientY;
   ownerInstance.callMethod('pause');

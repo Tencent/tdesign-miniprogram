@@ -1,9 +1,12 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import type { TdLoadingProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-loading`;
+
+export interface LoadingProps extends TdLoadingProps {}
 @wxComponent()
 export default class Loading extends SuperComponent {
   externalClasses = [`${prefix}-class`, `${prefix}-class-text`, `${prefix}-class-indicator`];
@@ -11,7 +14,7 @@ export default class Loading extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    show: false,
+    show: true,
   };
 
   options = {

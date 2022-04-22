@@ -1,11 +1,14 @@
 <template name="button">
   <t-button
+    block="{{block}}"
     t-class="{{externalClass}}"
     disabled="{{disabled}}"
     data-type="{{type}}"
     icon="{{icon}}"
     loading="{{loading}}"
     theme="{{theme}}"
+    shape="{{shape}}"
+    size="{{size}}"
     open-type="{{openType}}"
     hover-stop-propagation="{{hoverStopPropagation}}"
     hover-start-time="{{hoverStartTime}}"
@@ -24,7 +27,6 @@
     bind:error="onTplButtonTap"
     bind:opensetting="onTplButtonTap"
     bind:launchapp="onTplButtonTap"
+    >{{content}}</t-button
   >
-    {{content}}
-  </t-button>
 </template>

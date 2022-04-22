@@ -1,19 +1,14 @@
 ---
 title: Fab
-description: 悬浮按钮。
+description: 当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布。
 spline: form
 isComponent: true
 ---
 
-### 特性及兼容性
-
-无
-
 ## 引入
 
-### 引入组件
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
 
-在 `app.json` 或 `page.json` 中引入组件：
 
 ```json
 "usingComponents": {
@@ -21,30 +16,45 @@ isComponent: true
 }
 ```
 
-## 用法
+## 代码演示
 
-### 组件方式
+### 基础使用
 
 ```html
-<!-- page.wxml -->
-<t-fab icon="add" text="记录" />
+<t-fab icon="add" bind:click="handleClick" />
+```
+
+### 进阶使用
+
+```html
+<t-fab icon="add" button-props="{{fabButton}}" bind:click="handleClick">
+```
+
+```js
+Page({
+  data: {
+    fabButton: {
+      openType: 'getPhoneNumber'
+    }
+  },
+  handleClick(e) {
+    console.log(e)
+  }
+})
 ```
 
 ## API
+### Fab Props
 
-### `<t-fab>` 组件
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+button-props | Object | - | 透传至 Button 组件 | N
+icon | String | - | 图标 | N
+style | String | right: 16px; bottom: 32px; | 悬浮按钮的样式，常用于调整位置 | N
+text | String | - | 文本内容 | N
 
-组件路径：`tdesign-miniprogram/fab/fab`
+### Fab Events
 
-#### Props
-
-| 属性   | 值类型   | 默认值 | 必传  | 说明               |
-| ------ | -------- | ------ | ----- | ------------------ |
-| icon   | 'string' | 'add'  | false | 图标               |
-| text   | 'string' | ''     | false | 文字               |
-| bottom | 'string' | '32px' | false | 离屏幕底部的距离   |
-| right  | 'string' | '16px' | false | 离屏幕右边缘的距离 |
-
-#### Events
-
-无
+名称 | 参数 | 描述
+-- | -- | --
+click | `({e: Event})` | 悬浮按钮点击事件
