@@ -340,7 +340,7 @@ export default {
           title: 'ActionSheet 动作面板',
           name: 'actionsheet',
           meta: { docType: 'message' },
-          path: '/miniprogram/components/actionsheet',
+          path: '/miniprogram/components/action-sheet',
           component: () => import('@/action-sheet/README.md'),
         },
         {

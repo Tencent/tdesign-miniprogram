@@ -32,7 +32,7 @@ isComponent: true
 ```
 ### 支持指令调用
 
-```typescript
+```javascript
 import ActionSheet from 'tdesign-miniprogram/action-sheet/index';
 
 // 指令调用不同于组件引用不需要传入visible
@@ -54,12 +54,12 @@ const basicListOption: ActionSheetShowOption = {
   ],
 };
 
-handler = ActionSheet.show(basicListOption);
+const handler = ActionSheet.show(basicListOption);
 ```
 
 指令调用的关闭如下
 
-```typescript
+```javascript
 handler.close();
 ```
 
