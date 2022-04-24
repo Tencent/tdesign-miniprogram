@@ -68,6 +68,11 @@ npm run dev
 
 最低基础库版本`^2.6.5`
 
+## 反馈&共建
+
+目前TDesign 小程序组件库已在[ github ](https://github.com/Tencent/tdesign-miniprogram)上开源，欢迎大家反馈问题和参与共建：
+<img src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-mp/common/wechat-group.jpg" width = "230" height = "290" alt="模版小程序页面详情" align=center />
+
 ## 仓库
 
 TDesign 是一个 `multi-repo`， TDesign 有如下代码仓库：
