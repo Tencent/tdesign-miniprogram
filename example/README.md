@@ -17,7 +17,6 @@
   </a>
 </p>
 
-
 [TDesign](https://github.com/Tencent/tdesign) 适配微信小程序的组件库。
 
 ## 预览
@@ -87,7 +86,7 @@ TDesign 是一个 `multi-repo`， TDesign 有如下代码仓库：
 | 仓库                                                                  | 描述              | 状态     |
 | --------------------------------------------------------------------- | ----------------- | -------- |
 | [tdesign-miniprogram](https://github.com/Tencent/tdesign-miniprogram) | 微信小程序        | `Alpha`  |
-| [tdesign-mobile-vue](https://github.com/Tencent/tdesign-mobile-vue)   | Vue 3.x 技术栈    | `Alpha` |
+| [tdesign-mobile-vue](https://github.com/Tencent/tdesign-mobile-vue)   | Vue 3.x 技术栈    | `Alpha`  |
 | tdesign-mobile-react                                                  | React 16.x 技术栈 | `待上线` |
 | tdesign-flutter                                                       | 1.17.0            | `待上线` |
 
@@ -101,13 +100,13 @@ TDesign 是一个 `multi-repo`， TDesign 有如下代码仓库：
 
 ### 解决方案及周边
 
-| 仓库                                                                            | 描述                             |
-| ------------------------------------------------------------------------------- | -------------------------------- |
-| [tdesign-starter-cli](https://github.com/Tencent/tdesign-starter-cli)           | TDesign 解决方案的脚手架         |
-| [tdesign-vue-starter](https://github.com/Tencent/tdesign-vue-starter)           | 基于 tdesign-vue 的解决方案      |
-| [tdesign-vue-next-starter](https://github.com/Tencent/tdesign-vue-next-starter) | 基于 tdesign-vue-next 的解决方案 |
-| [tdesign-react-starter](https://github.com/Tencent/tdesign-react-starter)       | 基于 tdesign-react 的解决方案    |
-| [tdesign-miniprogram-starter-retail](https://github.com/Tencent/tdesign-miniprogram-starter-retail)       | 基于 tdesign-miniprogram 的零售行业解决方案    |
+| 仓库                                                                                                | 描述                                        |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| [tdesign-starter-cli](https://github.com/Tencent/tdesign-starter-cli)                               | TDesign 解决方案的脚手架                    |
+| [tdesign-vue-starter](https://github.com/Tencent/tdesign-vue-starter)                               | 基于 tdesign-vue 的解决方案                 |
+| [tdesign-vue-next-starter](https://github.com/Tencent/tdesign-vue-next-starter)                     | 基于 tdesign-vue-next 的解决方案            |
+| [tdesign-react-starter](https://github.com/Tencent/tdesign-react-starter)                           | 基于 tdesign-react 的解决方案               |
+| [tdesign-miniprogram-starter-retail](https://github.com/Tencent/tdesign-miniprogram-starter-retail) | 基于 tdesign-miniprogram 的零售行业解决方案 |
 
 
 ## 开源协议
