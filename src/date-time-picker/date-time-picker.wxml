@@ -10,13 +10,13 @@
 >
   <slot slot="header" name="header"> </slot>
 
-  <t-picker-column
+  <t-picker-item
     wx:for="{{columns}}"
     wx:key="index"
     options="{{item}}"
     index="{{index}}"
     value="{{columnsValue[index]}}"
-  ></t-picker-column>
+  ></t-picker-item>
 
   <slot slot="footer" name="footer"> </slot>
 </t-picker>

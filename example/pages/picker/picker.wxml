@@ -55,7 +55,7 @@
     bindconfirm="onPicker1Confirm"
     bindcancel="onPicker1Cancel"
   >
-    <t-picker-column options="{{citys}}" value="{{selectedCityValue}}" bindchange="onColumnChange"></t-picker-column>
+    <t-picker-item options="{{citys}}" value="{{selectedCityValue}}" bindchange="onColumnChange"></t-picker-item>
   </t-picker>
 
   <!-- 年+ 季节 不带标题 -->
@@ -68,12 +68,8 @@
     bindconfirm="onPicker2Confirm"
     bindcancel="onPicker2Cancel"
   >
-    <t-picker-column
-      options="{{years}}"
-      value="{{selectedYearsWithSeason}}"
-      bindchange="onColumnChange"
-    ></t-picker-column>
-    <t-picker-column options="{{seasons}}" value="{{selectedSeason}}" bindchange="onColumnChange"></t-picker-column>
+    <t-picker-item options="{{years}}" value="{{selectedYearsWithSeason}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{seasons}}" value="{{selectedSeason}}" bindchange="onColumnChange"></t-picker-item>
   </t-picker>
 
   <!-- 年月日 不带标题 -->
@@ -86,13 +82,9 @@
     bindconfirm="onPicker3Confirm"
     bindcancel="onPicker3Cancel"
   >
-    <t-picker-column
-      options="{{years}}"
-      value="{{selectedYearsWithDate}}"
-      bindchange="onColumnChange"
-    ></t-picker-column>
-    <t-picker-column options="{{months}}" value="{{selectedMonth}}" bindchange="onColumnChange"></t-picker-column>
-    <t-picker-column options="{{days}}" value="{{selectedDay}}" bindchange="onColumnChange"></t-picker-column>
+    <t-picker-item options="{{years}}" value="{{selectedYearsWithDate}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{months}}" value="{{selectedMonth}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{days}}" value="{{selectedDay}}" bindchange="onColumnChange"></t-picker-item>
   </t-picker>
 
   <!-- 城市带标题 -->
@@ -105,7 +97,7 @@
     bindconfirm="onPicker4Confirm"
     bindcancel="onPicker4Cancel"
   >
-    <t-picker-column options="{{citys}}" value="{{selectedCityValue2}}" bindchange="onColumnChange"></t-picker-column>
+    <t-picker-item options="{{citys}}" value="{{selectedCityValue2}}" bindchange="onColumnChange"></t-picker-item>
   </t-picker>
 
   <!-- 年+季节 带标题 -->
@@ -118,12 +110,8 @@
     bindconfirm="onPicker5Confirm"
     bindcancel="onPicker5Cancel"
   >
-    <t-picker-column
-      options="{{years}}"
-      value="{{selectedYearsWithSeason2}}"
-      bindchange="onColumnChange"
-    ></t-picker-column>
-    <t-picker-column options="{{seasons}}" value="{{selectedSeason2}}" bindchange="onColumnChange"></t-picker-column>
+    <t-picker-item options="{{years}}" value="{{selectedYearsWithSeason2}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{seasons}}" value="{{selectedSeason2}}" bindchange="onColumnChange"></t-picker-item>
   </t-picker>
 
   <!-- 年月日带标题 -->
@@ -136,12 +124,8 @@
     bindconfirm="onPicker6Confirm"
     bindcancel="onPicker6Cancel"
   >
-    <t-picker-column
-      options="{{years}}"
-      value="{{selectedYearsWithDate2}}"
-      bindchange="onColumnChange"
-    ></t-picker-column>
-    <t-picker-column options="{{months}}" value="{{selectedMonth2}}" bindchange="onColumnChange"></t-picker-column>
-    <t-picker-column options="{{days}}" value="{{selectedDay2}}" bindchange="onColumnChange"></t-picker-column>
+    <t-picker-item options="{{years}}" value="{{selectedYearsWithDate2}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{months}}" value="{{selectedMonth2}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{days}}" value="{{selectedDay2}}" bindchange="onColumnChange"></t-picker-item>
   </t-picker>
 </view>

@@ -1208,7 +1208,7 @@
       ],
       "require": {
         "t-picker": "../picker/picker",
-        "t-picker-column": "../picker/picker-column"
+        "t-picker-item": "../picker/picker-item"
       }
     },
     {

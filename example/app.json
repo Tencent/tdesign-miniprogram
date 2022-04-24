@@ -76,7 +76,7 @@
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-rate": "tdesign-miniprogram/rate/rate",
     "t-picker": "tdesign-miniprogram/picker/picker",
-    "t-picker-column": "tdesign-miniprogram/picker/picker-column",
+    "t-picker-item": "tdesign-miniprogram/picker/picker-item",
     "t-progress": "tdesign-miniprogram/progress/progress",
     "t-input": "tdesign-miniprogram/input/input",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
