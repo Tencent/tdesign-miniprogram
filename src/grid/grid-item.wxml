@@ -13,8 +13,9 @@
       class="{{classPrefix}}__content {{classPrefix + '--' + (align === 'center' ? 'center' : 'left')}}"
       style="{{gridItemContentStyle}}"
     >
+      <slot />
       <view class="{{classPrefix}}__image">
-        <t-image wx:if="{{image && image!== 'slot'}}" src="{{image}}" class="t-class-image" />
+        <t-image wx:if="{{image && image !== 'slot'}}" src="{{image}}" class="t-class-image" />
         <slot wx:else name="image" class="t-class-image"></slot>
       </view>
       <view class="{{classPrefix}}__words">
