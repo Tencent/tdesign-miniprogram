@@ -22,7 +22,7 @@
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-badge.png"
   },
   "t-button": {
-    "tpl": "<t-button theme=\"primary\" block content\"强按钮\"></t-button>",
+    "tpl": "<t-button theme=\"primary\" block content=\"强按钮\"></t-button>",
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-button.png"
   },
   "t-cell": {
