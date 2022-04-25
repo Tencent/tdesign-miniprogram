@@ -1,16 +1,91 @@
 {
-  "components": [
-    {
+  "key": "TDesign",
+  "label": "Tdesign",
+  "components": {
+    "t-action-sheet": {
+      "key": "t-action-sheet",
+      "label": "动作面板",
+      "icon": "",
+      "properties": [
+        {
+          "key": "cancelText",
+          "type": [
+            "String"
+          ],
+          "desc": "设置取消按钮的文本",
+          "label": ""
+        },
+        {
+          "key": "count",
+          "type": [
+            "Number"
+          ],
+          "desc": "设置每页展示菜单的数量，仅当 type=grid 时有效",
+          "label": ""
+        },
+        {
+          "key": "items",
+          "type": [
+            "Array"
+          ],
+          "desc": "菜单项",
+          "label": ""
+        },
+        {
+          "key": "showCancel",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "是否显示取消按钮",
+          "label": ""
+        },
+        {
+          "key": "theme",
+          "type": [
+            "String"
+          ],
+          "desc": "展示类型，列表和表格形式展示",
+          "label": ""
+        },
+        {
+          "key": "visible",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "显示与隐藏",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "cancel",
+          "desc": "点击取消按钮时触发",
+          "label": ""
+        },
+        {
+          "key": "close",
+          "desc": "关闭时触发",
+          "label": ""
+        },
+        {
+          "key": "selected",
+          "desc": "选择菜单项时触发",
+          "label": ""
+        }
+      ],
+      "tpl": "<t-action-sheet id=\"t-action-sheet-imperative\" visible=\"{{false}}\"></t-action-sheet>",
+      "path": "./action-sheet/action-sheet"
+    },
+    "t-avatar-group": {
       "key": "t-avatar-group",
       "label": "头像组",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-avatar.png",
       "properties": [
         {
           "key": "cascading",
           "type": [
             "String"
           ],
-          "defaultValue": "'right-up'",
           "desc": "图片之间的层叠关系，可选值：左侧图片在上和右侧图片在上",
           "label": ""
         },
@@ -19,7 +94,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多`",
           "label": ""
         },
@@ -28,7 +102,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "能够同时显示的最多头像数量",
           "label": ""
         },
@@ -37,26 +110,26 @@
           "type": [
             "String"
           ],
-          "defaultValue": "medium",
           "desc": "尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size",
           "label": ""
         }
       ],
+      "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['xxx.png','xxx.png','xxx.png']}}\" image=\"{{item}}\" /></t-avatar-group>",
       "require": {
-        "t-avatar": "./avatar"
-      }
+        "t-avatar": "./avatar/avatar"
+      },
+      "path": "./avatar/avatar-group"
     },
-    {
+    "t-avatar": {
       "key": "t-avatar",
       "label": "头像",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-avatar.png",
       "properties": [
         {
           "key": "alt",
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "头像替换文本，仅当图片加载失败时有效",
           "label": ""
         },
@@ -65,7 +138,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字",
           "label": ""
         },
@@ -74,7 +146,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "加载失败时隐藏图片",
           "label": ""
         },
@@ -83,7 +154,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图标",
           "label": ""
         },
@@ -92,7 +162,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图片地址",
           "label": ""
         },
@@ -101,7 +170,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "circle",
           "desc": "形状",
           "label": ""
         },
@@ -110,7 +178,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "尺寸，示例值：small/medium/large/24px/38px 等，默认为 large",
           "label": ""
         }
@@ -122,23 +189,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon",
-        "t-badge": "../badge/badge",
-        "t-image": "../image/image"
-      }
+      "tpl": "<t-avatar icon=\"user\" alt=\"avatar\"/>",
+      "path": "./avatar/avatar"
     },
-    {
+    "t-back-top": {
       "key": "t-back-top",
       "label": "回到顶部",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-backtop.png",
       "properties": [
         {
           "key": "fixed",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否绝对定位固定到屏幕右下方",
           "label": ""
         },
@@ -147,7 +210,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'backtop'",
           "desc": "图标",
           "label": ""
         },
@@ -156,7 +218,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "文案",
           "label": ""
         },
@@ -165,7 +226,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "round",
           "desc": "预设的样式类型",
           "label": ""
         }
@@ -177,21 +237,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-back-top />",
+      "path": "./back-top/back-top"
     },
-    {
+    "t-badge": {
       "key": "t-badge",
       "label": "徽标数",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-badge.png",
       "properties": [
         {
           "key": "color",
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "颜色",
           "label": ""
         },
@@ -200,7 +258,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "徽标内容，示例：`content='自定义内容'`。也可以使用默认插槽定义",
           "label": ""
         },
@@ -210,7 +267,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为空表示使用插槽渲染",
           "label": ""
         },
@@ -219,7 +275,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否为红点",
           "label": ""
         },
@@ -228,7 +283,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "99",
           "desc": "封顶的数字值",
           "label": ""
         },
@@ -237,7 +291,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem']",
           "label": ""
         },
@@ -246,7 +299,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "circle",
           "desc": "形状",
           "label": ""
         },
@@ -255,7 +307,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "当数值为 0 时，是否展示徽标",
           "label": ""
         },
@@ -264,23 +315,23 @@
           "type": [
             "String"
           ],
-          "defaultValue": "medium",
           "desc": "尺寸",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-badge content=\"消息\" dot />",
+      "path": "./badge/badge"
     },
-    {
+    "t-button": {
       "key": "t-button",
       "label": "按钮",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-button.png",
       "properties": [
         {
           "key": "block",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否为块级元素",
           "label": ""
         },
@@ -289,7 +340,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "按钮内容",
           "label": ""
         },
@@ -298,7 +348,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "自定义 dataset，可通过 event.currentTarget.dataset.custom 获取",
           "label": ""
         },
@@ -307,7 +356,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用按钮",
           "label": ""
         },
@@ -316,7 +364,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否为幽灵按钮（镂空按钮）",
           "label": ""
         },
@@ -325,7 +372,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图标名称",
           "label": ""
         },
@@ -334,7 +380,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示为加载状态",
           "label": ""
         },
@@ -343,7 +388,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "rectangle",
           "desc": "按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形",
           "label": ""
         },
@@ -352,7 +396,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "medium",
           "desc": "组件尺寸",
           "label": ""
         },
@@ -361,7 +404,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "default",
           "desc": "组件风格，依次为品牌色、危险色",
           "label": ""
         },
@@ -370,7 +412,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "同小程序的 formType",
           "label": ""
         },
@@ -379,7 +420,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "base",
           "desc": "按钮形式，基础、线框、文字",
           "label": ""
         }
@@ -391,21 +431,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-button theme=\"primary\" block content\"强按钮\"></t-button>",
+      "path": "./button/button"
     },
-    {
+    "t-cell-group": {
       "key": "t-cell-group",
       "label": "单元格组",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-cell.png",
       "properties": [
         {
           "key": "bordered",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
           "desc": "是否显示组边框",
           "label": ""
         },
@@ -414,23 +452,26 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "单元格组标题",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-cell-group title=\"01 基础用法\"><t-cell title=\"单行标题\" required /><t-cell title=\"单行标题\" hover note=\"辅助信息\" /><t-cell title=\"单行标题\" hover arrow /><t-cell title=\"单行标题\" hover note=\"辅助信息\" arrow /></t-cell-group>",
+      "require": {
+        "t-cell": "./cell/cell"
+      },
+      "path": "./cell-group/cell-group"
     },
-    {
+    "t-cell": {
       "key": "t-cell",
       "label": "单元格",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-cell.png",
       "properties": [
         {
           "key": "align",
           "type": [
             "String"
           ],
-          "defaultValue": "middle",
           "desc": "内容的对齐方式，默认居中对齐",
           "label": ""
         },
@@ -439,7 +480,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示右侧箭头",
           "label": ""
         },
@@ -448,7 +488,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否显示下边框",
           "label": ""
         },
@@ -457,7 +496,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "下方内容描述",
           "label": ""
         },
@@ -466,7 +504,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
           "desc": "是否开启点击反馈",
           "label": ""
         },
@@ -475,7 +512,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "主图",
           "label": ""
         },
@@ -484,7 +520,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "navigateTo",
           "desc": "链接跳转类型",
           "label": ""
         },
@@ -493,7 +528,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "左侧图标，出现在单元格标题的左侧",
           "label": ""
         },
@@ -502,7 +536,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "和标题同行的说明文字",
           "label": ""
         },
@@ -511,7 +544,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示表单必填星号",
           "label": ""
         },
@@ -520,7 +552,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "最右侧图标",
           "label": ""
         },
@@ -529,7 +560,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "标题",
           "label": ""
         },
@@ -538,7 +568,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "点击后跳转链接地址。如果值为空，则表示不需要跳转",
           "label": ""
         }
@@ -550,11 +579,10 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-cell title=\"单行标题\" hover />",
+      "path": "./cell/cell"
     },
-    {
+    "t-check-tag": {
       "key": "t-check-tag",
       "label": "可选标签",
       "icon": "",
@@ -564,18 +592,15 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "undefined",
           "desc": "标签选中的状态，默认风格（theme=default）才有选中态",
           "label": ""
         },
         {
           "key": "closable",
           "type": [
-            "String",
             "Boolean"
           ],
-          "defaultValue": "false",
-          "desc": "是否可以关闭",
+          "desc": "标签是否可关闭",
           "label": ""
         },
         {
@@ -584,7 +609,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "组件子元素",
           "label": ""
         },
@@ -593,7 +617,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态",
           "label": ""
         },
@@ -602,8 +625,7 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
-          "desc": "标签图标",
+          "desc": "标签中的图标，可自定义图标呈现",
           "label": ""
         },
         {
@@ -611,7 +633,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "square",
           "desc": "标签类型，有三种：方形、圆角方形、标记型",
           "label": ""
         },
@@ -620,7 +641,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "medium",
           "desc": "标签尺寸",
           "label": ""
         }
@@ -637,21 +657,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": ".././icon/icon"
-      }
+      "tpl": "<t-check-tag>check tag</t-check-tag>",
+      "path": "./tag/check-tag"
     },
-    {
+    "t-checkbox-group": {
       "key": "t-checkbox-group",
       "label": "多选框组",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-checkbox.png",
       "properties": [
         {
           "key": "disabled",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用组件",
           "label": ""
         },
@@ -660,7 +678,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "undefined",
           "desc": "支持最多选中的数量",
           "label": ""
         },
@@ -669,7 +686,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "统一设置内部复选框 HTML 属性",
           "label": ""
         },
@@ -678,7 +694,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "[]",
           "desc": "以配置形式设置子元素。示例1：`['北京', '上海']` ，示例2: `[{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]`。checkAll 值为 true 表示当前选项为「全选选项」",
           "label": ""
         },
@@ -687,7 +702,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "[]",
           "desc": "选中值",
           "label": ""
         }
@@ -695,26 +709,27 @@
       "events": [
         {
           "key": "change",
-          "desc": "值变化时触发。`context.current` 表示当前变化的数据项，如果是全选则为空；`context.type` 表示引起选中数据变化的是选中或是取消选中",
+          "desc": "值变化时触发。`context.current` 表示当前变化的数据项，如果是全选则为空；`context.type` 表示引起选中数据变化的是选中或是取消选中，`context.option` 表示当前变化的数据项",
           "label": ""
         }
       ],
+      "tpl": "<t-checkbox-group value=\"{{['checkbox1']}}\"><t-checkbox value=\"checkbox1\" label=\"多选\" /><t-checkbox value=\"checkbox2\" label=\"多选\" /><t-checkbox value=\"checkbox3\" label=\"多选\" /></t-checkbox-group>",
       "require": {
-        "t-checkbox": "../checkbox/checkbox"
-      }
+        "t-checkbox": "./checkbox/checkbox"
+      },
+      "path": "./checkbox-group/checkbox-group"
     },
-    {
+    "t-checkbox": {
       "key": "t-checkbox",
       "label": "多选框",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-checkbox.png",
       "properties": [
         {
           "key": "align",
           "type": [
             "String"
           ],
-          "defaultValue": "left",
-          "desc": "复选框和内容相对位置",
+          "desc": "多选框和内容相对位置",
           "label": ""
         },
         {
@@ -722,7 +737,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用",
           "label": ""
         },
@@ -731,7 +745,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否选中",
           "label": ""
         },
@@ -740,8 +753,7 @@
           "type": [
             "String"
           ],
-          "defaultValue": "#0052d9",
-          "desc": "复选框颜色",
+          "desc": "多选框颜色",
           "label": ""
         },
         {
@@ -749,8 +761,7 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
-          "desc": "复选框内容",
+          "desc": "多选框内容",
           "label": ""
         },
         {
@@ -758,7 +769,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
           "desc": "是否禁用组件内容（content）触发选中",
           "label": ""
         },
@@ -767,7 +777,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "undefined",
           "desc": "是否禁用组件",
           "label": ""
         },
@@ -776,7 +785,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "自定义选中图标和非选中图标。示例：[选中态图标地址，非选中态图标地址]",
           "label": ""
         },
@@ -785,7 +793,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否为半选",
           "label": ""
         },
@@ -794,7 +801,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "主文案",
           "label": ""
         },
@@ -803,7 +809,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "5",
           "desc": "内容最大行数限制",
           "label": ""
         },
@@ -812,7 +817,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "3",
           "desc": "主文案最大行数限制",
           "label": ""
         },
@@ -821,7 +825,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "HTML 元素原生属性",
           "label": ""
         },
@@ -830,7 +833,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "只读状态",
           "label": ""
         },
@@ -840,8 +842,7 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
-          "desc": "复选框的值",
+          "desc": "多选框的值",
           "label": ""
         }
       ],
@@ -852,12 +853,10 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-cell": "../cell/cell",
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-checkbox label=\"多选框\" checked=\"{{true}}\"></t-checkbox>",
+      "path": "./checkbox/checkbox"
     },
-    {
+    "t-collapse-panel": {
       "key": "t-collapse-panel",
       "label": "折叠面板",
       "icon": "",
@@ -867,17 +866,7 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "折叠面板内容",
-          "label": ""
-        },
-        {
-          "key": "destroyOnCollapse",
-          "type": [
-            "Boolean"
-          ],
-          "defaultValue": "false",
-          "desc": "当前面板处理折叠状态时，是否销毁面板内容",
           "label": ""
         },
         {
@@ -885,7 +874,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "undefined",
           "desc": "禁止当前面板展开，优先级大于 Collapse 的同名属性",
           "label": ""
         },
@@ -894,7 +882,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
           "desc": "当前折叠面板展开图标，优先级大于 Collapse 的同名属性",
           "label": ""
         },
@@ -903,7 +890,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "面板头内容",
           "label": ""
         },
@@ -912,35 +898,32 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "面板头的右侧区域，一般用于呈现面板操作",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "desc": "当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识",
           "label": ""
         }
       ],
-      "require": {
-        "t-cell": "../cell/cell"
-      }
+      "tpl": "<t-collapse-panel header=\"折叠面板标题\" value=\"{{0}}\">此处可自定义内容</t-collapse-panel>",
+      "path": "./collapse/collapse-panel"
     },
-    {
+    "t-collapse": {
       "key": "t-collapse",
       "label": "折叠",
       "icon": "",
       "properties": [
         {
-          "key": "borderless",
-          "type": [
-            "Boolean"
-          ],
-          "defaultValue": "false",
-          "desc": "是否为无边框模式",
-          "label": ""
-        },
-        {
           "key": "defaultExpandAll",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "默认是否展开全部",
           "label": ""
         },
@@ -949,8 +932,7 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
-          "desc": "是否禁用全部面板展开",
+          "desc": "是否禁用面板展开/收起操作",
           "label": ""
         },
         {
@@ -958,17 +940,7 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
           "desc": "展开图标。值为 undefined 或 false 则不显示展开图标；值为 true 显示默认图标；值类型为函数，则表示完全自定义展开图标",
-          "label": ""
-        },
-        {
-          "key": "expandIconPlacement",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "right",
-          "desc": "展开图标的位置，左侧或右侧",
           "label": ""
         },
         {
@@ -976,18 +948,14 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "每个面板互斥展开，每次只展开一个面板",
           "label": ""
         },
         {
           "key": "value",
           "type": [
-            "String",
-            "Number",
             "Array"
           ],
-          "defaultValue": "",
           "desc": "展开的面板集合",
           "label": ""
         }
@@ -998,19 +966,23 @@
           "desc": "切换面板时触发，返回变化的值",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-collapse value=\"{{[0]}}\"><t-collapse-panel header=\"折叠面板标题\" value=\"{{0}}\">此处可自定义内容</t-collapse-panel></t-collapse>",
+      "require": {
+        "t-collapse-panel": "./collapse/collapse-panel"
+      },
+      "path": "./collapse/collapse"
     },
-    {
+    "t-count-down": {
       "key": "t-count-down",
       "label": "倒计时",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-countdown.png",
       "properties": [
         {
           "key": "autoStart",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否自动开始倒计时",
           "label": ""
         },
@@ -1019,7 +991,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'default'",
           "desc": "最终倒计时的展示内容，值为'default'时使用默认的格式，否则使用自定义样式插槽",
           "label": ""
         },
@@ -1028,7 +999,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "HH:mm:ss",
           "desc": "时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒",
           "label": ""
         },
@@ -1037,7 +1007,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否开启毫秒级渲染",
           "label": ""
         },
@@ -1046,7 +1015,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'small'",
           "desc": "倒计时尺寸",
           "label": ""
         },
@@ -1055,7 +1023,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "使用时间单位分割",
           "label": ""
         },
@@ -1064,7 +1031,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'default'",
           "desc": "倒计时风格",
           "label": ""
         },
@@ -1073,7 +1039,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "倒计时时长，单位毫秒",
           "label": ""
         }
@@ -1090,21 +1055,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-count-down time=\"{{ 96 * 60 * 1000 }}\" />",
+      "path": "./count-down/count-down"
     },
-    {
+    "t-date-time-picker": {
       "key": "t-date-time-picker",
       "label": "日期时间选择器",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-datetimepicker.png",
       "properties": [
         {
           "key": "cancelBtn",
           "type": [
             "String"
           ],
-          "defaultValue": "取消",
           "desc": "取消按钮文字",
           "label": ""
         },
@@ -1113,7 +1076,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "确定按钮文字",
           "label": ""
         },
@@ -1123,8 +1085,15 @@
             "Object",
             "Array"
           ],
-          "defaultValue": "",
           "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
+          "label": ""
+        },
+        {
+          "key": "footer",
+          "type": [
+            "String"
+          ],
+          "desc": "底部内容",
           "label": ""
         },
         {
@@ -1132,8 +1101,15 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'YYYY-MM-DD'",
           "desc": "用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format)",
+          "label": ""
+        },
+        {
+          "key": "header",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容",
           "label": ""
         },
         {
@@ -1142,7 +1118,6 @@
             "String",
             "Array"
           ],
-          "defaultValue": "['year', 'month', 'date']",
           "desc": "选择器模式，用于表示可以选择到哪一个层级。【示例一】year 或者 ['year'] 表示纯日期选择器，只能选择到年份，只显示年份。【示例二】'hour' 或 ['hour'] 表示纯时间选择器，只能选择到小时维度。【示例三】['year', 'month', 'date', 'hour', 'minute'] 表示，日期和时间 混合选择器，可以选择到具体哪一分钟，显示全部时间：年/月/日/时/分",
           "label": ""
         },
@@ -1151,7 +1126,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否在日期旁边显示周几（如周一，周二，周日等）",
           "label": ""
         },
@@ -1160,7 +1134,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "标题",
           "label": ""
         },
@@ -1170,7 +1143,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "选中值",
           "label": ""
         },
@@ -1179,7 +1151,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示",
           "label": ""
         }
@@ -1206,133 +1177,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-picker": "../picker/picker",
-        "t-picker-column": "../picker/picker-column"
-      }
+      "tpl": "<t-date-time-picker title=\"选择日期\" visible=\"{{true}}\" mode=\"{{['date']}}\" format=\"YYYY-MM-DD\"></t-date-time-picker>",
+      "path": "./date-time-picker/date-time-picker"
     },
-    {
-      "key": "t-date-time-range-picker",
-      "label": "日期时间范围选择器",
-      "icon": "",
-      "properties": [
-        {
-          "key": "cancelBtn",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "取消",
-          "desc": "取消按钮文字",
-          "label": ""
-        },
-        {
-          "key": "confirmBtn",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "",
-          "desc": "确定按钮文字",
-          "label": ""
-        },
-        {
-          "key": "disableDate",
-          "type": [
-            "Object",
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
-          "label": ""
-        },
-        {
-          "key": "format",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "'YYYY-MM-DD'",
-          "desc": "用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format)",
-          "label": ""
-        },
-        {
-          "key": "mode",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "date",
-          "desc": "选择器模式，用于表示可以选择到哪一个层级",
-          "label": ""
-        },
-        {
-          "key": "showWeek",
-          "type": [
-            "Boolean"
-          ],
-          "defaultValue": "false",
-          "desc": "是否在日期旁边显示周几（如周一，周二，周日等）",
-          "label": ""
-        },
-        {
-          "key": "title",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "",
-          "desc": "标题",
-          "label": ""
-        },
-        {
-          "key": "value",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "选中值",
-          "label": ""
-        },
-        {
-          "key": "visible",
-          "type": [
-            "Boolean"
-          ],
-          "defaultValue": "false",
-          "desc": "是否显示",
-          "label": ""
-        }
-      ],
-      "events": [
-        {
-          "key": "cancel",
-          "desc": "取消按钮点击时触发",
-          "label": ""
-        },
-        {
-          "key": "change",
-          "desc": "选中值发生变化时触发",
-          "label": ""
-        },
-        {
-          "key": "columnChange",
-          "desc": "每一列选中数据变化时触发",
-          "label": ""
-        },
-        {
-          "key": "confirm",
-          "desc": "确认按钮点击时触发",
-          "label": ""
-        }
-      ]
-    },
-    {
+    "t-dialog": {
       "key": "t-dialog",
       "label": "对话框",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-dialog.png",
       "properties": [
         {
           "key": "actions",
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "操作栏",
           "label": ""
         },
@@ -1341,7 +1198,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "horizontal",
           "desc": "多按钮排列方式",
           "label": ""
         },
@@ -1351,7 +1207,6 @@
             "String",
             "Object"
           ],
-          "defaultValue": "''",
           "desc": "取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件",
           "label": ""
         },
@@ -1360,7 +1215,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "点击蒙层时是否触发关闭事件",
           "label": ""
         },
@@ -1370,7 +1224,6 @@
             "String",
             "Object"
           ],
-          "defaultValue": "''",
           "desc": "确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件",
           "label": ""
         },
@@ -1379,7 +1232,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "内容",
           "label": ""
         },
@@ -1388,8 +1240,15 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "防止滚动穿透",
+          "label": ""
+        },
+        {
+          "key": "showInAttachedElement",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "【开发中】仅在挂载元素中显示抽屉，默认在浏览器可视区域显示。父元素需要有定位属性，如：position: relative",
           "label": ""
         },
         {
@@ -1397,7 +1256,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否显示遮罩层",
           "label": ""
         },
@@ -1406,7 +1264,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "标题",
           "label": ""
         },
@@ -1415,7 +1272,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "控制对话框是否显示",
           "label": ""
         },
@@ -1424,7 +1280,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "对话框层级，Web 侧样式默认为 2500，移动端和小程序样式默认为 1500",
           "label": ""
         }
@@ -1446,22 +1301,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-popup": "../popup/popup",
-        "t-button": "../button/button"
-      }
+      "tpl": "<t-dialog visible=\"{{true}}\" title=\"对话框标题\" content=\"告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内\" confirm-btn=\"我知道了\" />",
+      "path": "./dialog/dialog"
     },
-    {
+    "t-divider": {
       "key": "t-divider",
       "label": "分割线",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-divider.png",
       "properties": [
         {
           "key": "align",
           "type": [
             "String"
           ],
-          "defaultValue": "center",
           "desc": "文本位置（仅在水平分割线有效）",
           "label": ""
         },
@@ -1470,7 +1322,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "子元素",
           "label": ""
         },
@@ -1479,7 +1330,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否虚线（仅在水平分割线有效）",
           "label": ""
         },
@@ -1488,7 +1338,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "horizontal",
           "desc": "分隔线类型有两种：水平和垂直",
           "label": ""
         },
@@ -1497,72 +1346,24 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "分隔线颜色",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-divider />",
+      "path": "./divider/divider"
     },
-    {
+    "t-drawer": {
       "key": "t-drawer",
       "label": "模态抽屉",
       "icon": "",
       "properties": [
         {
-          "key": "attach",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "''",
-          "desc": "抽屉挂载的节点，默认挂在组件本身的位置。数据类型为 String 时，会被当作选择器处理，进行节点查询。示例：'body' 或 () => document.body",
-          "label": ""
-        },
-        {
-          "key": "cancelBtn",
-          "type": [
-            "String",
-            "Object"
-          ],
-          "defaultValue": "''",
-          "desc": "取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件",
-          "label": ""
-        },
-        {
-          "key": "closeBtn",
-          "type": [
-            "String",
-            "Boolean"
-          ],
-          "defaultValue": "undefined",
-          "desc": "关闭按钮，可以自定义。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string 则直接显示值，如：“关闭”。值类型为 TNode，则表示呈现自定义按钮示例",
-          "label": ""
-        },
-        {
-          "key": "closeOnEscKeydown",
-          "type": [
-            "Boolean"
-          ],
-          "defaultValue": "true",
-          "desc": "按下 ESC 时是否触发抽屉关闭事件",
-          "label": ""
-        },
-        {
           "key": "closeOnOverlayClick",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "点击蒙层时是否触发抽屉关闭事件",
-          "label": ""
-        },
-        {
-          "key": "confirmBtn",
-          "type": [
-            "String",
-            "Object"
-          ],
-          "defaultValue": "''",
-          "desc": "确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件",
           "label": ""
         },
         {
@@ -1570,17 +1371,15 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "抽屉关闭时是否销毁节点",
           "label": ""
         },
         {
-          "key": "mode",
+          "key": "items",
           "type": [
-            "String"
+            "Array"
           ],
-          "defaultValue": "overlay",
-          "desc": "展开方式，有两种：直接展示在内容上方 和 推开内容区域",
+          "desc": "抽屉里的列表项",
           "label": ""
         },
         {
@@ -1588,17 +1387,7 @@
           "type": [
             "String"
           ],
-          "defaultValue": "right",
           "desc": "抽屉方向",
-          "label": ""
-        },
-        {
-          "key": "showInAttachedElement",
-          "type": [
-            "Boolean"
-          ],
-          "defaultValue": "false",
-          "desc": "仅在挂载元素中显示抽屉，默认在浏览器可视区域显示。父元素需要有定位属性，如：position: relative",
           "label": ""
         },
         {
@@ -1606,26 +1395,7 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否显示遮罩层",
-          "label": ""
-        },
-        {
-          "key": "size",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "small",
-          "desc": "尺寸，支持 'small', 'medium', 'large'，'35px', '30%',  '3em' 等。纵向抽屉调整的是抽屉宽度，横向抽屉调整的是抽屉高度",
-          "label": ""
-        },
-        {
-          "key": "sizeDraggable",
-          "type": [
-            "Boolean"
-          ],
-          "defaultValue": "false",
-          "desc": "抽屉大小可拖拽调整，横向抽屉调整宽度，纵向抽屉调整高度",
           "label": ""
         },
         {
@@ -1633,7 +1403,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "组件是否可见",
           "label": ""
         },
@@ -1642,35 +1411,19 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "抽屉层级，样式默认为 1500",
           "label": ""
         }
       ],
       "events": [
         {
-          "key": "cancel",
-          "desc": "如果“取消”按钮存在，点击“取消”按钮时触发，同时触发关闭事件",
-          "label": ""
-        },
-        {
           "key": "close",
-          "desc": "关闭事件，取消按钮点击时、关闭按钮点击时、ESC 按下时、点击蒙层时均会触发",
+          "desc": "关闭事件，取消按钮点击时、关闭按钮点击时、点击蒙层时均会触发",
           "label": ""
         },
         {
-          "key": "closeBtnClick",
-          "desc": "如果关闭按钮存在，点击关闭按钮时触发该事件，同时触发关闭事件",
-          "label": ""
-        },
-        {
-          "key": "confirm",
-          "desc": "如果“确认”按钮存在，则点击“确认”按钮时触发",
-          "label": ""
-        },
-        {
-          "key": "escKeydown",
-          "desc": "按下 ESC 键时触发",
+          "key": "itemClick",
+          "desc": "点击抽屉里的列表项",
           "label": ""
         },
         {
@@ -1679,21 +1432,72 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-popup": "../popup/popup"
-      }
+      "tpl": "<t-drawer visible=\"{{true}}\" placement=\"left\" items=\"{{[{name: '菜单一'},{name: '菜单二'}]}}\"></t-drawer>",
+      "path": "./drawer/drawer"
     },
-    {
+    "t-dropdown-menu": {
+      "key": "t-dropdown-menu",
+      "label": "下拉菜单",
+      "icon": "",
+      "properties": [
+        {
+          "key": "activeColor",
+          "type": [
+            "String"
+          ],
+          "desc": "【讨论中】菜单标题和选项的选中态颜色",
+          "label": ""
+        },
+        {
+          "key": "closeOnClickOverlay",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "是否在点击遮罩层后关闭菜单",
+          "label": ""
+        },
+        {
+          "key": "duration",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "desc": "动画时长",
+          "label": ""
+        },
+        {
+          "key": "overlay",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "是否显示遮罩层",
+          "label": ""
+        },
+        {
+          "key": "zIndex",
+          "type": [
+            "Number"
+          ],
+          "desc": "菜单栏 z-index 层级",
+          "label": ""
+        }
+      ],
+      "tpl": "<t-dropdown-menu><t-dropdown-item label='菜单' options='{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}' defaultValue='option_3' /><t-dropdown-item label='菜单' options='{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}' defaultValue='option_3' /></t-dropdown-menu>",
+      "require": {
+        "t-dropdown-menu": "./dropdown-menu/dropdown-item"
+      },
+      "path": "./dropdown-menu/dropdown-menu"
+    },
+    "t-empty": {
       "key": "t-empty",
       "label": "空状态",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-empty.png",
       "properties": [
         {
           "key": "action",
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "操作按钮",
           "label": ""
         },
@@ -1702,7 +1506,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "描述文字",
           "label": ""
         },
@@ -1711,7 +1514,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图标名称",
           "label": ""
         },
@@ -1720,26 +1522,71 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图片地址",
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-empty icon=\"info-circle-filled\" />",
+      "path": "./empty/empty"
     },
-    {
+    "t-fab": {
+      "key": "t-fab",
+      "label": "悬浮按钮",
+      "icon": "",
+      "properties": [
+        {
+          "key": "buttonProps",
+          "type": [
+            "Object"
+          ],
+          "desc": "透传至 Button 组件",
+          "label": ""
+        },
+        {
+          "key": "icon",
+          "type": [
+            "String"
+          ],
+          "desc": "图标",
+          "label": ""
+        },
+        {
+          "key": "style",
+          "type": [
+            "String"
+          ],
+          "desc": "悬浮按钮的样式，常用于调整位置",
+          "label": ""
+        },
+        {
+          "key": "text",
+          "type": [
+            "String"
+          ],
+          "desc": "文本内容",
+          "label": ""
+        }
+      ],
+      "events": [
+        {
+          "key": "click",
+          "desc": "悬浮按钮点击事件",
+          "label": ""
+        }
+      ],
+      "tpl": "<t-fab icon='add' />",
+      "path": "./fab/fab"
+    },
+    "t-footer": {
       "key": "t-footer",
       "label": "布局-底部内容",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-footer.png",
       "properties": [
         {
           "key": "copyright",
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "版权信息，type 为`text`生效",
           "label": ""
         },
@@ -1748,7 +1595,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "图标配置，type 为`logo`生效。`logo.icon` 表示图标链接地址，`logo.title` 表示标题文本，`logo.url` 表示链接跳转地址",
           "label": ""
         },
@@ -1757,7 +1603,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "[]",
           "desc": "链接列表，type 为`text`生效。name 表示链接名称， url 表示链接 page 路径，目前只支持小程序内部跳转，openType 表示跳转方式",
           "label": ""
         },
@@ -1766,23 +1611,23 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'text'",
           "desc": "页脚展示类型",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-footer theme=\"text\" copyright=\"Copyright © 2021-2031 TD.All Rights Reserved.\" />",
+      "path": "./footer/footer"
     },
-    {
+    "t-grid-item": {
       "key": "t-grid-item",
       "label": "宫格子项",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid.png",
       "properties": [
         {
           "key": "badgeProps",
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字",
           "label": ""
         },
@@ -1791,7 +1636,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点",
           "label": ""
         },
@@ -1800,7 +1644,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图片，可以是图片地址，也可以自定义图片节点",
           "label": ""
         },
@@ -1809,7 +1652,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "navigate-to",
           "desc": "链接跳转类型",
           "label": ""
         },
@@ -1818,7 +1660,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "vertical",
           "desc": "内容布局方式",
           "label": ""
         },
@@ -1827,7 +1668,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "文本，可以通过 Props 传入文本，也可以自定义标题节点",
           "label": ""
         },
@@ -1836,26 +1676,23 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "点击后的跳转链接",
           "label": ""
         }
       ],
-      "require": {
-        "t-image": "../image/image"
-      }
+      "tpl": "<t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item>",
+      "path": "./grid/grid-item"
     },
-    {
+    "t-grid": {
       "key": "t-grid",
       "label": "栅格",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid.png",
       "properties": [
         {
           "key": "align",
           "type": [
             "String"
           ],
-          "defaultValue": "center",
           "desc": "内容对齐方式",
           "label": ""
         },
@@ -1865,7 +1702,6 @@
             "Boolean",
             "Object"
           ],
-          "defaultValue": "false",
           "desc": "边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式",
           "label": ""
         },
@@ -1874,7 +1710,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "4",
           "desc": "每一行的列数量",
           "label": ""
         },
@@ -1883,7 +1718,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "间隔大小",
           "label": ""
         },
@@ -1892,74 +1726,26 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否开启点击反馈",
           "label": ""
         }
-      ]
-    },
-    {
-      "key": "t-icon-svg",
-      "label": "图标（IconSVG）",
-      "icon": "",
-      "properties": [
-        {
-          "key": "name",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "",
-          "desc": "图标名称",
-          "label": ""
-        },
-        {
-          "key": "size",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "undefined",
-          "desc": "图标尺寸，支持 'small', 'medium', 'large'，'35px', '3em' 等",
-          "label": ""
-        },
-        {
-          "key": "style",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "",
-          "desc": "可用于设置图标颜色，如：style=\"color: red\"",
-          "label": ""
-        },
-        {
-          "key": "url",
-          "type": [
-            "String",
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "图标地址，地址内容参考[组件内部默认加载图标](https://tdesign.gtimg.com/icon/web/index.js)",
-          "label": ""
-        }
       ],
-      "events": [
-        {
-          "key": "click",
-          "desc": "点击时触发",
-          "label": ""
-        }
-      ]
+      "tpl": "<t-grid column=\"{{2}}\"><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item></t-grid>",
+      "require": {
+        "t-grid-item": "./grid/grid-item"
+      },
+      "path": "./grid/grid"
     },
-    {
+    "t-icon": {
       "key": "t-icon",
       "label": "图标",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-icon.png",
       "properties": [
         {
           "key": "classPrefix",
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "自定义icon前缀",
           "label": ""
         },
@@ -1968,7 +1754,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图标颜色",
           "label": ""
         },
@@ -1977,7 +1762,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "自定义样式",
           "label": ""
         },
@@ -1986,7 +1770,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图标名称",
           "label": ""
         },
@@ -1996,83 +1779,23 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "图标名称",
-          "label": ""
-        }
-      ]
-    },
-    {
-      "key": "t-iconfont",
-      "label": "图标（Iconfont）",
-      "icon": "",
-      "properties": [
-        {
-          "key": "name",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "",
-          "desc": "图标名称",
-          "label": ""
-        },
-        {
-          "key": "size",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "undefined",
-          "desc": "图标尺寸，支持 'small', 'medium', 'large'，'35px', '3em' 等",
-          "label": ""
-        },
-        {
-          "key": "style",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "",
-          "desc": "可用于设置图标颜色，如：style=\"color: red\"",
-          "label": ""
-        },
-        {
-          "key": "tag",
-          "type": [
-            "String"
-          ],
-          "defaultValue": "i",
-          "desc": "图标 DOM 元素，可选值：i/span/div/...",
-          "label": ""
-        },
-        {
-          "key": "url",
-          "type": [
-            "String",
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "图标地址，地址内容参考[组件内部默认加载图标](https://tdesign.gtimg.com/icon/web/index.css)。也可以在 index.html 中引入图标地址",
           "label": ""
         }
       ],
-      "events": [
-        {
-          "key": "click",
-          "desc": "点击时触发",
-          "label": ""
-        }
-      ]
+      "tpl": "<t-icon name=\"add-circle\" />",
+      "path": "./icon/icon"
     },
-    {
+    "t-image": {
       "key": "t-image",
       "label": "图片",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-image.png",
       "properties": [
         {
           "key": "error",
           "type": [
             "String"
           ],
-          "defaultValue": "'default'",
           "desc": "加载失败时显示的内容。值为 `default` 则表示使用默认加载失败风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `error`；值为其他则表示普通文本内容，如“加载失败”",
           "label": ""
         },
@@ -2081,7 +1804,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否开启图片懒加载",
           "label": ""
         },
@@ -2090,7 +1812,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'default'",
           "desc": "加载态内容。值为 `default` 则表示使用默认加载中风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `loading`；值为其他则表示普通文本内容，如“加载中”",
           "label": ""
         },
@@ -2099,7 +1820,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "square",
           "desc": "图片圆角类型",
           "label": ""
         },
@@ -2108,7 +1828,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图片链接",
           "label": ""
         }
@@ -2125,22 +1844,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-loading": "../loading/loading",
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-image src=\"xxx.jpg\" mode=\"aspectFill\"></t-image>",
+      "path": "./image/image"
     },
-    {
+    "t-indexes": {
       "key": "t-indexes",
       "label": "索引",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-indexes.png",
       "properties": [
         {
           "key": "height",
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "列表高度，未设置默认占满设备高度",
           "label": ""
         },
@@ -2149,8 +1865,7 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "[]",
-          "desc": "索引列表的列表数据。每个元素包含三个字元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。",
+          "desc": "索引列表的列表数据。每个元素包含三个子元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。",
           "label": ""
         }
       ],
@@ -2161,23 +1876,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon",
-        "t-cell": "../cell/cell",
-        "t-cell-group": "../cell-group/cell-group"
-      }
+      "tpl": "<t-indexes list=\"{{ [{ title: 'A开头', index: 'A', children: [{ title: '阿坝' }]},{ title: 'B开头', index: 'B', children: [{ title: '北京' }]}] }}\" />",
+      "path": "./indexes/indexes"
     },
-    {
+    "t-input": {
       "key": "t-input",
       "label": "输入框",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-input.png",
       "properties": [
         {
           "key": "adjustPosition",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "键盘弹起时，是否自动上推页面",
           "label": ""
         },
@@ -2186,7 +1897,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "left",
           "desc": "文本内容位置，居左/居中/居右",
           "label": ""
         },
@@ -2195,8 +1905,7 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
-          "desc": "【开发中】是否开启无边框模式",
+          "desc": "【讨论中】是否开启无边框模式",
           "label": ""
         },
         {
@@ -2204,7 +1913,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否可清空",
           "label": ""
         },
@@ -2213,7 +1921,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "点击键盘右下角按钮时是否保持键盘不收起点",
           "label": ""
         },
@@ -2222,7 +1929,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "done",
           "desc": "设置键盘右下角按钮的文字，仅在 type='text'时生效",
           "label": ""
         },
@@ -2231,7 +1937,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用输入框",
           "label": ""
         },
@@ -2240,8 +1945,7 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
-          "desc": "错误提示文本，值为空不显示",
+          "desc": "错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips）",
           "label": ""
         },
         {
@@ -2249,8 +1953,15 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "自动聚焦",
+          "label": ""
+        },
+        {
+          "key": "format",
+          "type": [
+            "String"
+          ],
+          "desc": "【开发中】指定输入框展示值的格式",
           "label": ""
         },
         {
@@ -2258,7 +1969,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "左侧文本",
           "label": ""
         },
@@ -2267,7 +1977,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用",
           "label": ""
         },
@@ -2276,7 +1985,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "用户最多可以输入的文本长度，一个中文等于一个计数长度。值小于等于 0 的时候，则表示不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用",
           "label": ""
         },
@@ -2285,7 +1993,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "undefined",
           "desc": "占位符",
           "label": ""
         },
@@ -2294,8 +2001,15 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "组件前置图标，值为字符串则表示图标名称",
+          "label": ""
+        },
+        {
+          "key": "readonly",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "只读状态",
           "label": ""
         },
         {
@@ -2303,8 +2017,15 @@
           "type": [
             "String"
           ],
-          "defaultValue": "small",
           "desc": "输入框尺寸",
+          "label": ""
+        },
+        {
+          "key": "status",
+          "type": [
+            "String"
+          ],
+          "desc": "输入框状态",
           "label": ""
         },
         {
@@ -2312,7 +2033,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "后置图标前的后置内容",
           "label": ""
         },
@@ -2321,8 +2041,15 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "后置文本内容，值为字符串则表示图标名称",
+          "label": ""
+        },
+        {
+          "key": "tips",
+          "type": [
+            "String"
+          ],
+          "desc": "输入框下方提示文本，会根据不同的 `status` 呈现不同的样式",
           "label": ""
         },
         {
@@ -2330,7 +2057,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "text",
           "desc": "输入框类型",
           "label": ""
         },
@@ -2340,7 +2066,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "输入框的值",
           "label": ""
         }
@@ -2372,22 +2097,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-cell": "../cell/cell",
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-input placeholder=\"请输入文字\" />",
+      "path": "./input/input"
     },
-    {
+    "t-loading": {
       "key": "t-loading",
       "label": "加载中",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-loading.png",
       "properties": [
         {
           "key": "delay",
           "type": [
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒",
           "label": ""
         },
@@ -2396,7 +2118,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "800",
           "desc": "加载动画执行完成一次的时间，单位：毫秒",
           "label": ""
         },
@@ -2405,7 +2126,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否显示加载指示符",
           "label": ""
         },
@@ -2414,7 +2134,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否继承父元素颜色",
           "label": ""
         },
@@ -2423,7 +2142,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "horizontal",
           "desc": "对齐方式",
           "label": ""
         },
@@ -2432,7 +2150,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否处于加载状态",
           "label": ""
         },
@@ -2441,7 +2158,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否暂停动画",
           "label": ""
         },
@@ -2450,7 +2166,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "加载进度",
           "label": ""
         },
@@ -2459,7 +2174,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
           "desc": "加载动画是否反向",
           "label": ""
         },
@@ -2468,7 +2182,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'40rpx'",
           "desc": "尺寸，示例：40rpx/20px",
           "label": ""
         },
@@ -2477,7 +2190,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "加载提示文案",
           "label": ""
         },
@@ -2486,23 +2198,23 @@
           "type": [
             "String"
           ],
-          "defaultValue": "circular",
           "desc": "加载组件类型",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-loading theme=\"circular\" size=\"40rpx\"></t-loading>",
+      "path": "./loading/loading"
     },
-    {
+    "t-message": {
       "key": "t-message",
       "label": "全局提醒",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-message.png",
       "properties": [
         {
           "key": "action",
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "操作",
           "label": ""
         },
@@ -2511,7 +2223,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "left",
           "desc": "文本对齐方式",
           "label": ""
         },
@@ -2521,7 +2232,6 @@
             "String",
             "Boolean"
           ],
-          "defaultValue": "undefined",
           "desc": "关闭按钮，可以自定义。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string 则直接显示值，如：“关闭”。也可以完全自定义按钮",
           "label": ""
         },
@@ -2530,7 +2240,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "用于自定义消息弹出内容",
           "label": ""
         },
@@ -2539,7 +2248,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "3000",
           "desc": "消息内置计时器，计时到达时会触发 duration-end 事件。单位：毫秒。值为 0 则表示没有计时器。",
           "label": ""
         },
@@ -2549,7 +2257,6 @@
             "String",
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "消息提醒前面的图标。值为 true 则根据 theme 显示对应的图标，值为 false 则不显示图标。值为 'info' 或 'bell' 则显示组件内置图标。也可以完全自定义图标节点",
           "label": ""
         },
@@ -2559,7 +2266,6 @@
             "Boolean",
             "Object"
           ],
-          "defaultValue": "false",
           "desc": "跑马灯效果。speed 指速度控制；loop 指循环播放次数，值为 -1 表示循环播放，值为 0 表示不循环播放；delay 表示延迟多久开始播放",
           "label": ""
         },
@@ -2568,7 +2274,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "相对于 placement 的偏移量，示例：[-10, 20] 或 ['10rpx', '8rpx']",
           "label": ""
         },
@@ -2577,7 +2282,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "info",
           "desc": "消息组件风格",
           "label": ""
         },
@@ -2586,7 +2290,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示，隐藏时默认销毁组件",
           "label": ""
         },
@@ -2595,7 +2298,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "元素层级，样式默认为 5000",
           "label": ""
         }
@@ -2617,22 +2319,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon",
-        "t-button": "../button/button"
-      }
+      "tpl": "<t-message id=\"t-message\" />",
+      "path": "./message/message"
     },
-    {
+    "t-navbar": {
       "key": "t-navbar",
       "label": "导航条",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-navbar.png",
       "properties": [
         {
           "key": "animation",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否添加动画效果",
           "label": ""
         },
@@ -2641,7 +2340,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "背景",
           "label": ""
         },
@@ -2650,7 +2348,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "1",
           "desc": "后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack，只会触发一个 goback 事件供自行处理。",
           "label": ""
         },
@@ -2659,7 +2356,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否固定在顶部",
           "label": ""
         },
@@ -2668,7 +2364,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "首页图标地址。值为 '' 或者 undefiend 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址",
           "label": ""
         },
@@ -2677,7 +2372,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "左侧图标地址，值为 '' 或者 undefiend 则表示不显示返回图标，值为 'arrow-left' 表示显示返回图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址",
           "label": ""
         },
@@ -2686,7 +2380,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "页面标题",
           "label": ""
         },
@@ -2695,7 +2388,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "标题文字最大长度，超出的范围使用 `...` 表示",
           "label": ""
         },
@@ -2704,7 +2396,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否显示",
           "label": ""
         }
@@ -2736,21 +2427,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-navbar title=\"标题\" />",
+      "path": "./navbar/navbar"
     },
-    {
+    "t-picker-item": {
       "key": "t-picker-item",
       "label": "选择器子项",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-picker.png",
       "properties": [
         {
           "key": "options",
           "type": [
             "Array"
           ],
-          "defaultValue": "[]",
           "desc": "数据源",
           "label": ""
         },
@@ -2760,23 +2449,22 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "默认选中的选项",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item>"
     },
-    {
+    "t-picker": {
       "key": "t-picker",
       "label": "选择器",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-picker.png",
       "properties": [
         {
           "key": "cancelBtn",
           "type": [
             "String"
           ],
-          "defaultValue": "取消",
           "desc": "取消按钮文字",
           "label": ""
         },
@@ -2785,8 +2473,23 @@
           "type": [
             "String"
           ],
-          "defaultValue": "确认",
           "desc": "确定按钮文字",
+          "label": ""
+        },
+        {
+          "key": "footer",
+          "type": [
+            "String"
+          ],
+          "desc": "底部内容",
+          "label": ""
+        },
+        {
+          "key": "header",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容",
           "label": ""
         },
         {
@@ -2794,7 +2497,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "标题",
           "label": ""
         },
@@ -2803,7 +2505,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "选中值",
           "label": ""
         },
@@ -2812,7 +2513,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示",
           "label": ""
         }
@@ -2834,21 +2534,22 @@
           "label": ""
         }
       ],
+      "tpl": "<t-picker visible=\"{{true}}\" cancelBtn=\"取消\" confirmBtn=\"确认\"><t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item></t-picker>",
       "require": {
-        "t-popup": "../popup/popup"
-      }
+        "t-picker-item": "./picker/picker-item"
+      },
+      "path": "./picker/picker"
     },
-    {
+    "t-popup": {
       "key": "t-popup",
       "label": "气泡框",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-popup.png",
       "properties": [
         {
           "key": "closeBtn",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
           "desc": "关闭按钮，值类型为 Boolean 时表示是否显示关闭按钮。也可以自定义关闭按钮",
           "label": ""
         },
@@ -2857,7 +2558,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "点击遮罩层是否关闭",
           "label": ""
         },
@@ -2866,7 +2566,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "浮层里面的内容",
           "label": ""
         },
@@ -2875,7 +2574,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "top",
           "desc": "浮层出现位置",
           "label": ""
         },
@@ -2884,7 +2582,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "防止滚动穿透",
           "label": ""
         },
@@ -2893,7 +2590,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否显示遮罩层",
           "label": ""
         },
@@ -2902,7 +2598,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "动画效果定义",
           "label": ""
         },
@@ -2911,7 +2606,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示浮层",
           "label": ""
         },
@@ -2920,7 +2614,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500",
           "label": ""
         }
@@ -2932,12 +2625,10 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-transition": "../transition/transition",
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-popup visible=\"{{false}}\" placement=\"top\"><view slot=\"content\">顶部弹出</view></t-popup>",
+      "path": "./popup/popup"
     },
-    {
+    "t-progress": {
       "key": "t-progress",
       "label": "进度条",
       "icon": "",
@@ -2949,7 +2640,6 @@
             "Object",
             "Array"
           ],
-          "defaultValue": "''",
           "desc": "进度条颜色。示例：'#ED7B2F' 或 'orange' 或 `['#f00', '#0ff', '#f0f']` 或 `{ '0%': '#f00', '100%': '#0ff' }` 或  `{ from: '#000', to: '#000' }` 等",
           "label": ""
         },
@@ -2959,7 +2649,6 @@
             "String",
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "进度百分比，可自定义",
           "label": ""
         },
@@ -2968,7 +2657,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "进度条百分比",
           "label": ""
         },
@@ -2978,7 +2666,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "'medium'",
           "desc": "进度条尺寸，示例：small/medium/large/240。small 值为 72； medium 值为 112；large 值为 160",
           "label": ""
         },
@@ -2987,7 +2674,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "进度条状态",
           "label": ""
         },
@@ -2997,7 +2683,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "进度条线宽。宽度数值不能超过 size 的一半，否则不能输出环形进度",
           "label": ""
         },
@@ -3006,7 +2691,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "line",
           "desc": "进度条风格。值为 line，标签（label）显示在进度条右侧；值为 plump，标签（label）显示在进度条里面；值为 circle，标签（label）显示在进度条正中间",
           "label": ""
         },
@@ -3015,24 +2699,25 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "进度条未完成部分颜色",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-progress></t-progress>",
+      "path": "./progress/progress"
     },
-    {
+    "t-pull-down-refresh": {
       "key": "t-pull-down-refresh",
       "label": "下拉刷新",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-pulldownrefresh.png",
       "properties": [
         {
           "key": "loadingBarHeight",
           "type": [
+            "String",
             "Number"
           ],
-          "defaultValue": "200",
-          "desc": "加载中下拉高度",
+          "desc": "加载中下拉高度，如果值为数字则单位是：'px'",
           "label": ""
         },
         {
@@ -3040,7 +2725,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "加载loading样式",
           "label": ""
         },
@@ -3049,17 +2733,16 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "[]",
           "desc": "提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']",
           "label": ""
         },
         {
           "key": "maxBarHeight",
           "type": [
+            "String",
             "Number"
           ],
-          "defaultValue": "272",
-          "desc": "最大下拉高度",
+          "desc": "最大下拉高度，如果值为数字则单位是：'px'",
           "label": ""
         },
         {
@@ -3067,12 +2750,24 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "3000",
           "desc": "刷新超时时间",
+          "label": ""
+        },
+        {
+          "key": "value",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态",
           "label": ""
         }
       ],
       "events": [
+        {
+          "key": "change",
+          "desc": "下拉或收起时触发，用户手势往下滑动触发下拉状态，手势松开触发收起状态",
+          "label": ""
+        },
         {
           "key": "refresh",
           "desc": "结束下拉时触发",
@@ -3084,11 +2779,10 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-loading": "../loading/loading"
-      }
+      "tpl": "<t-pull-down-refresh id=\"pull-down-refresh\" loadingTexts=\"{{['继续拉哦', '该松手啦', '努力刷新中', '完成~']}}\"><view>拖拽该区域演示 中间下拉刷新</view></t-pull-down-refresh>",
+      "path": "./pull-down-refresh/pull-down-refresh"
     },
-    {
+    "t-radio-group": {
       "key": "t-radio-group",
       "label": "单选框组",
       "icon": "",
@@ -3098,7 +2792,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "undefined",
           "desc": "是否禁用全部子单选框",
           "label": ""
         },
@@ -3107,7 +2800,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "HTML 元素原生属性",
           "label": ""
         },
@@ -3116,7 +2808,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同",
           "label": ""
         },
@@ -3127,7 +2818,6 @@
             "Number",
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "选中的值",
           "label": ""
         }
@@ -3139,21 +2829,22 @@
           "label": ""
         }
       ],
+      "tpl": "<t-radio-group defaultValue=\"radio1\"><t-radio value=\"radio1\" label=\"单选\" /><t-radio value=\"radio2\" label=\"单选\" /></t-radio-group>",
       "require": {
-        "t-radio": "../radio/radio"
-      }
+        "t-radio": "./radio/radio"
+      },
+      "path": "./radio-group/radio-group"
     },
-    {
+    "t-radio": {
       "key": "t-radio",
       "label": "单选框",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-radio.png",
       "properties": [
         {
           "key": "align",
           "type": [
             "String"
           ],
-          "defaultValue": "left",
           "desc": "复选框和内容相对位置",
           "label": ""
         },
@@ -3162,7 +2853,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否允许取消选中",
           "label": ""
         },
@@ -3171,7 +2861,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否选中",
           "label": ""
         },
@@ -3180,7 +2869,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "#0052d9",
           "desc": "单选按钮颜色",
           "label": ""
         },
@@ -3189,7 +2877,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "单选内容",
           "label": ""
         },
@@ -3198,7 +2885,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用组件内容（content）触发选中",
           "label": ""
         },
@@ -3207,7 +2893,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "undefined",
           "desc": "是否为禁用态",
           "label": ""
         },
@@ -3217,7 +2902,6 @@
             "String",
             "Array"
           ],
-          "defaultValue": "'fill-circle'",
           "desc": "自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标",
           "label": ""
         },
@@ -3226,7 +2910,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "主文案",
           "label": ""
         },
@@ -3235,7 +2918,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "5",
           "desc": "内容最大行数限制",
           "label": ""
         },
@@ -3244,7 +2926,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "3",
           "desc": "主文案最大行数限制",
           "label": ""
         },
@@ -3253,7 +2934,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "HTML 元素原生属性",
           "label": ""
         },
@@ -3264,7 +2944,6 @@
             "Number",
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "单选按钮的值",
           "label": ""
         }
@@ -3276,22 +2955,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-cell": "../cell/cell",
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-radio value=\"radio\" label=\"单选\" />",
+      "path": "./radio/radio"
     },
-    {
+    "t-rate": {
       "key": "t-rate",
       "label": "评分",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-rate.png",
       "properties": [
         {
           "key": "allowHalf",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否允许半选",
           "label": ""
         },
@@ -3301,8 +2977,7 @@
             "String",
             "Array"
           ],
-          "defaultValue": "'#ED7B2F'",
-          "desc": "评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，两个值表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色。示例：['#ED7B2F', '#999999']",
+          "desc": "评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB']",
           "label": ""
         },
         {
@@ -3310,7 +2985,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "5",
           "desc": "评分的数量",
           "label": ""
         },
@@ -3319,7 +2993,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用评分",
           "label": ""
         },
@@ -3328,7 +3001,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "6",
           "desc": "评分图标的间距",
           "label": ""
         },
@@ -3337,7 +3009,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示对应的辅助文字",
           "label": ""
         },
@@ -3346,7 +3017,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "评分图标的大小，示例：`20`",
           "label": ""
         },
@@ -3355,7 +3025,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "[]",
           "desc": "评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']",
           "label": ""
         },
@@ -3364,7 +3033,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "选择评分的值",
           "label": ""
         },
@@ -3373,7 +3041,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "outline",
           "desc": "形状类型，有描边类型和填充类型两种",
           "label": ""
         }
@@ -3385,21 +3052,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-rate defaultValue=\"{{4}}\" variant=\"filled\"></t-rate>",
+      "path": "./rate/rate"
     },
-    {
+    "t-search": {
       "key": "t-search",
       "label": "搜索",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-search.png",
       "properties": [
         {
           "key": "action",
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "自定义右侧操作按钮文字",
           "label": ""
         },
@@ -3408,7 +3073,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否居中",
           "label": ""
         },
@@ -3417,7 +3081,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用",
           "label": ""
         },
@@ -3426,7 +3089,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否聚焦",
           "label": ""
         },
@@ -3435,7 +3097,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "左侧文本",
           "label": ""
         },
@@ -3444,7 +3105,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'search'",
           "desc": "左侧图标",
           "label": ""
         },
@@ -3453,7 +3113,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "占位符",
           "label": ""
         },
@@ -3462,7 +3121,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'close'",
           "desc": "右侧图标",
           "label": ""
         },
@@ -3471,7 +3129,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'square'",
           "desc": "搜索框形状",
           "label": ""
         },
@@ -3480,7 +3137,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "值",
           "label": ""
         }
@@ -3517,21 +3173,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-search></t-search>",
+      "path": "./search/search"
     },
-    {
+    "t-segmented-control": {
       "key": "t-segmented-control",
       "label": "分段器",
       "icon": "",
       "properties": [
         {
-          "key": "list",
+          "key": "items",
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "分段器选项",
           "label": ""
         },
@@ -3542,7 +3196,6 @@
             "Number",
             "Array"
           ],
-          "defaultValue": "",
           "desc": "选中值",
           "label": ""
         }
@@ -3553,19 +3206,20 @@
           "desc": "选中值变化时触发",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-segmented-control items=\"{{[{ text: '项目一' }, { text: '项目二' }]}}\"></t-segmented-control>",
+      "path": "./segmented-control/segmented-control"
     },
-    {
+    "t-skeleton": {
       "key": "t-skeleton",
       "label": "骨架屏",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-skeleton.png",
       "properties": [
         {
           "key": "animation",
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "动画效果，有「渐变加载动画」和「闪烁加载动画」两种。值为空则表示没有动画",
           "label": ""
         },
@@ -3574,7 +3228,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "【开发中】延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒",
           "label": ""
         },
@@ -3583,7 +3236,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否为加载状态，如果是则显示骨架图，如果不是则显示加载完成的内容",
           "label": ""
         },
@@ -3592,7 +3244,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "[1, 1, 1, { width: '70%' }]",
           "desc": "用于设置行列数量、宽度高度、间距等。【示例一】，`[1, 1, 2]` 表示输出三行骨架图，第一行一列，第二行一列，第三行两列。【示例二】，`[1, 1, { width: '100px' }]` 表示自定义第三行的宽度为 `100px`。【示例三】，`[1, 2, [{ width, height }, { width, height, marginLeft }]]` 表示第三行有两列，且自定义宽度、高度和间距",
           "label": ""
         },
@@ -3601,24 +3252,24 @@
           "type": [
             "String"
           ],
-          "defaultValue": "text",
           "desc": "骨架图风格，有基础、头像组合等两大类",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-skeleton t-class=\"skeleton-basic\" rowCol=\"{{rowCol1}}\" t-class-text=\"basic-text\" loading></t-skeleton>",
+      "path": "./skeleton/skeleton"
     },
-    {
+    "t-slider": {
       "key": "t-slider",
       "label": "滑块",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-slider.png",
       "properties": [
         {
           "key": "colors",
           "type": [
             "Array"
           ],
-          "defaultValue": "['#0052D9', 'rgba(220, 220, 220, 1)']",
-          "desc": "颜色（已选择&未选择）",
+          "desc": "颜色，[已选择, 未选择]",
           "label": ""
         },
         {
@@ -3626,7 +3277,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用组件",
           "label": ""
         },
@@ -3635,8 +3285,7 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "['#bbd3fb', '#dcdcdc']",
-          "desc": "禁用状态滑动条的颜色（已选、未选）",
+          "desc": "禁用状态滑动条的颜色，[已选, 未选]",
           "label": ""
         },
         {
@@ -3645,7 +3294,6 @@
             "String",
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值",
           "label": ""
         },
@@ -3655,7 +3303,6 @@
             "Object",
             "Array"
           ],
-          "defaultValue": "{}",
           "desc": "刻度标记，示例：`[0, 10, 40, 200]` 或者 `{ 5:  '5¥', 10: '10%' }`",
           "label": ""
         },
@@ -3664,7 +3311,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "100",
           "desc": "滑块范围最大值",
           "label": ""
         },
@@ -3673,7 +3319,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "滑块范围最小值",
           "label": ""
         },
@@ -3682,7 +3327,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "双游标滑块",
           "label": ""
         },
@@ -3691,7 +3335,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否边界值",
           "label": ""
         },
@@ -3700,7 +3343,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "1",
           "desc": "步长",
           "label": ""
         },
@@ -3710,7 +3352,6 @@
             "Number",
             "Array"
           ],
-          "defaultValue": "",
           "desc": "滑块值",
           "label": ""
         }
@@ -3720,20 +3361,31 @@
           "key": "change",
           "desc": "滑块值变化时触发",
           "label": ""
+        },
+        {
+          "key": "dragend",
+          "desc": "结束拖动时触发",
+          "label": ""
+        },
+        {
+          "key": "dragstart",
+          "desc": "开始拖动时触发",
+          "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-slider />",
+      "path": "./slider/slider"
     },
-    {
+    "t-step-item": {
       "key": "t-step-item",
       "label": "步骤",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-steps.png",
       "properties": [
         {
           "key": "content",
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "步骤描述",
           "label": ""
         },
@@ -3742,7 +3394,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标",
           "label": ""
         },
@@ -3751,8 +3402,15 @@
           "type": [
             "String"
           ],
-          "defaultValue": "default",
           "desc": "当前步骤的状态",
+          "label": ""
+        },
+        {
+          "key": "subStepItems",
+          "type": [
+            "Array"
+          ],
+          "desc": "子步骤条，仅支持 layout  = 'vertical' 时",
           "label": ""
         },
         {
@@ -3760,26 +3418,23 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "标题",
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-step-item title=\"步骤描述\"></t-step-item>",
+      "path": "./steps/step-item"
     },
-    {
+    "t-stepper": {
       "key": "t-stepper",
       "label": "步进器",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-stepper.png",
       "properties": [
         {
           "key": "disabled",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "禁用全部操作",
           "label": ""
         },
@@ -3788,7 +3443,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "禁用输入框",
           "label": ""
         },
@@ -3797,7 +3451,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "输入框宽度",
           "label": ""
         },
@@ -3806,7 +3459,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "100",
           "desc": "最大值",
           "label": ""
         },
@@ -3815,7 +3467,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "最小值",
           "label": ""
         },
@@ -3824,7 +3475,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "1",
           "desc": "步长",
           "label": ""
         },
@@ -3833,7 +3483,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "normal",
           "desc": "组件风格",
           "label": ""
         },
@@ -3843,7 +3492,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "值",
           "label": ""
         }
@@ -3865,15 +3513,13 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-cell": "../cell/cell",
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-stepper />",
+      "path": "./stepper/stepper"
     },
-    {
+    "t-steps": {
       "key": "t-steps",
       "label": "步骤条",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-steps.png",
       "properties": [
         {
           "key": "current",
@@ -3881,8 +3527,15 @@
             "String",
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "当前步骤，即整个步骤条进度。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。如果每个步骤没有设置 value，current 值为步骤长度则表示所有步骤已完成。如果每个步骤设置了自定义 value，则 current = 'FINISH' 表示所有状态完成",
+          "label": ""
+        },
+        {
+          "key": "currentStatus",
+          "type": [
+            "String"
+          ],
+          "desc": "用于控制 current 指向的步骤条的状态",
           "label": ""
         },
         {
@@ -3890,7 +3543,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "horizontal",
           "desc": "步骤条方向，有两种：横向和纵向",
           "label": ""
         },
@@ -3899,7 +3551,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "只读状态",
           "label": ""
         },
@@ -3908,7 +3559,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "default",
           "desc": "步骤条风格",
           "label": ""
         }
@@ -3920,21 +3570,22 @@
           "label": ""
         }
       ],
+      "tpl": "<t-steps><t-step-item title=\"步骤描述1\" /><t-step title=\"步骤描述2\" /></t-steps>",
       "require": {
-        "t-step": "./step-item"
-      }
+        "t-step-item": "./steps/step-item"
+      },
+      "path": "./steps/steps"
     },
-    {
+    "t-sticky": {
       "key": "t-sticky",
       "label": "吸顶容器",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-sticky.png",
       "properties": [
         {
           "key": "container",
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "函数返回容器对应的 NodesRef 节点，将对应节点指定为组件的外部容器，滚动时组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置。",
           "label": ""
         },
@@ -3943,7 +3594,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用组件",
           "label": ""
         },
@@ -3953,7 +3603,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "吸顶时与顶部的距离，单位`px`",
           "label": ""
         },
@@ -3962,7 +3611,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "99",
           "desc": "吸顶时的 z-index",
           "label": ""
         }
@@ -3973,19 +3621,20 @@
           "desc": "滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-sticky></sticky>",
+      "path": "./sticky/sticky"
     },
-    {
+    "t-swipe-cell": {
       "key": "t-swipe-cell",
       "label": "滑动操作",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-swipecell.png",
       "properties": [
         {
           "key": "disabled",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "",
           "desc": "是否禁用滑动",
           "label": ""
         },
@@ -3994,7 +3643,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "操作项是否呈现为打开态",
           "label": ""
         },
@@ -4003,7 +3651,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "左侧滑动操作项。所有行为同 `right`",
           "label": ""
         },
@@ -4012,7 +3659,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "右侧滑动操作项。有两种定义方式，一种是使用数组，二种是使用插槽。`right.text` 表示操作文本，`right.className` 表示操作项类名，`right.style` 表示操作项样式，`right.onClick` 表示点击操作项后执行的回调函数。示例：`[{ text: '删除', style: 'background-color: red', onClick: () => {} }]`",
           "label": ""
         }
@@ -4023,19 +3669,23 @@
           "desc": "操作项点击时触发（插槽写法组件不触发，业务侧自定义内容和事件）",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-swipe-cell><t-cell title=\"列表-左滑单操作\" note=\"辅助信息\" /><view slot=\"right\">删除</view></t-swipe-cell>",
+      "require": {
+        "t-cell": "./cell/cell"
+      },
+      "path": "./swipe-cell/swipe-cell"
     },
-    {
+    "t-swiper": {
       "key": "t-swiper",
       "label": "轮播",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-swiper.png",
       "properties": [
         {
           "key": "animation",
           "type": [
             "String"
           ],
-          "defaultValue": "slide",
           "desc": "轮播切换动画效果类型",
           "label": ""
         },
@@ -4044,7 +3694,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否自动播放",
           "label": ""
         },
@@ -4053,7 +3702,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "当前轮播在哪一项（下标）",
           "label": ""
         },
@@ -4062,7 +3710,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "horizontal",
           "desc": "轮播滑动方向，包括横向滑动和纵向滑动两个方向",
           "label": ""
         },
@@ -4071,7 +3718,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "300",
           "desc": "滑动动画时长",
           "label": ""
         },
@@ -4080,7 +3726,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "当使用垂直方向滚动时的高度",
           "label": ""
         },
@@ -4089,7 +3734,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "5000",
           "desc": "轮播间隔时间",
           "label": ""
         },
@@ -4098,7 +3742,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否循环播放",
           "label": ""
         },
@@ -4107,7 +3750,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "导航器全部配置",
           "label": ""
         }
@@ -4119,22 +3761,22 @@
           "label": ""
         }
       ],
+      "tpl": "<t-swiper current=\"{{1}}\" autoplay=\"{{true}}\" duration=\"{{500}}\" interval=\"{{5000}}\" navigation><t-swiper-item wx:for=\"{{[{image: 'https://tdesign.gtimg.com/site/swiper/01.png'},{image: 'https://tdesign.gtimg.com/site/swiper/02.png'}]}}\" wx:key=\"index\"><image src=\"{{item.image}}\" /></t-swiper-item></t-swiper>",
       "require": {
-        "t-swiper-item": "./swiper-item",
-        "t-swiper-nav": "./swiper-nav"
-      }
+        "t-swiper-item": "./swiper/swiper-item"
+      },
+      "path": "./swiper/swiper"
     },
-    {
+    "t-switch": {
       "key": "t-switch",
       "label": "开关",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-switch.png",
       "properties": [
         {
           "key": "colors",
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "自定义颜色，[打开时的颜色，关闭时的颜色]。组件默认颜色为 ['#0052d9', 'rgba(0, 0, 0, .26']。示例：[blue, gray]",
           "label": ""
         },
@@ -4143,7 +3785,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "开关内容，[打开时的值，关闭时的值]。默认为 [true, false]。示例：[1, 0]",
           "label": ""
         },
@@ -4152,7 +3793,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用组件",
           "label": ""
         },
@@ -4161,7 +3801,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "开关的标签",
           "label": ""
         },
@@ -4170,7 +3809,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否处于加载中状态",
           "label": ""
         },
@@ -4179,7 +3817,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "medium",
           "desc": "开关尺寸",
           "label": ""
         },
@@ -4190,7 +3827,6 @@
             "Number",
             "Boolean"
           ],
-          "defaultValue": "undefined",
           "desc": "开关值",
           "label": ""
         }
@@ -4201,19 +3837,20 @@
           "desc": "数据发生变化时触发",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-switch defaultValue=\"{{true}}\" />",
+      "path": "./switch/switch"
     },
-    {
+    "t-tab-bar-item": {
       "key": "t-tab-bar-item",
       "label": "标签栏选项",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabbar.png",
       "properties": [
         {
           "key": "badgeProps",
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "图标右上角提示信息",
           "label": ""
         },
@@ -4222,7 +3859,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "图标名称",
           "label": ""
         },
@@ -4231,7 +3867,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "二级菜单",
           "label": ""
         },
@@ -4241,27 +3876,23 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "标识符",
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon",
-        "t-badge": "../badge/badge"
-      }
+      "tpl": "<t-tab-bar-item wx:for=\"{{[{value: 'label_1',label: '标签栏一',icon: 'app'},{value: 'label_2',label: '标签栏二',icon: 'app'}]}}\" wx:for-item=\"item\" wx:for-index=\"index\" wx:key=\"index\" value=\"{{item.value}}\">{{item.label}}</t-tab-bar-item>",
+      "path": "./tab-bar/tab-bar-item"
     },
-    {
+    "t-tab-bar": {
       "key": "t-tab-bar",
       "label": "标签栏",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabbar.png",
       "properties": [
         {
           "key": "bordered",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否显示外边框",
           "label": ""
         },
@@ -4270,7 +3901,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "['#0052D9', 'rgba(0, 0, 0, .6)']",
           "desc": "标签颜色设置。示例：[选中标签的颜色, 未选中的标签颜色]",
           "label": ""
         },
@@ -4279,7 +3909,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否固定在底部",
           "label": ""
         },
@@ -4288,7 +3917,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否为 iPhoneX 留出底部安全距离",
           "label": ""
         },
@@ -4297,7 +3925,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否需要分割线",
           "label": ""
         },
@@ -4308,7 +3935,6 @@
             "Number",
             "Array"
           ],
-          "defaultValue": "undefined",
           "desc": "当前选中标签的索引",
           "label": ""
         }
@@ -4320,21 +3946,22 @@
           "label": ""
         }
       ],
+      "tpl": "<t-tab-bar value=\"label_1\"><t-tab-bar-item wx:for=\"{{[{value: 'label_1',label: '标签栏一',icon: 'app'},{value: 'label_2',label: '标签栏二',icon: 'app'}]}}\" wx:for-item=\"item\" wx:for-index=\"index\" wx:key=\"index\" value=\"{{item.value}}\">{{item.label}}</t-tab-bar-item></t-tab-bar>",
       "require": {
-        "t-tab-bar-item": "./tab-bar-item"
-      }
+        "t-tab-bar-item": "./tab-bar/tab-bar-item"
+      },
+      "path": "./tab-bar/tab-bar"
     },
-    {
+    "t-tab-panel": {
       "key": "t-tab-panel",
       "label": "选项卡面板",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabs.png",
       "properties": [
         {
           "key": "destroyOnHide",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "选项卡内容隐藏时是否销毁",
           "label": ""
         },
@@ -4343,7 +3970,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用当前选项卡",
           "label": ""
         },
@@ -4352,7 +3978,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "选项卡名称，可自定义选项卡导航内容",
           "label": ""
         },
@@ -4361,7 +3986,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "用于自定义选项卡面板内容",
           "label": ""
         },
@@ -4371,23 +3995,23 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "选项卡的值，唯一标识",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-tab-panel label=\"标签页一\" value=\"0\">标签一内容</t-tab-panel>",
+      "path": "./tabs/tab-panel"
     },
-    {
+    "t-tabs": {
       "key": "t-tabs",
       "label": "选项卡",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabs.png",
       "properties": [
         {
           "key": "animation",
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "动画效果设置。其中 duration 表示动画时长",
           "label": ""
         },
@@ -4396,7 +4020,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "top",
           "desc": "选项卡位置",
           "label": ""
         },
@@ -4405,8 +4028,15 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "是否展示底部激活线条",
+          "label": ""
+        },
+        {
+          "key": "stickyProps",
+          "type": [
+            "Object"
+          ],
+          "desc": "是否支持吸顶",
           "label": ""
         },
         {
@@ -4415,7 +4045,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "激活的选项卡值",
           "label": ""
         }
@@ -4426,19 +4055,23 @@
           "desc": "激活的选项卡发生变化时触发",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-tabs defaultValue=\"{{0}}\"><t-tab-panel label=\"标签页一\" value=\"0\">标签一内容</t-tab-panel><t-tab-panel label=\"标签页二\" value=\"1\">标签二内容</t-tab-panel></t-tabs>",
+      "require": {
+        "t-tab-panel": "./tabs/tab-panel"
+      },
+      "path": "./tabs/tabs"
     },
-    {
+    "t-tag": {
       "key": "t-tag",
       "label": "标签",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tag.png",
       "properties": [
         {
           "key": "closable",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "标签是否可关闭",
           "label": ""
         },
@@ -4447,7 +4080,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态",
           "label": ""
         },
@@ -4456,7 +4088,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "标签中的图标，可自定义图标呈现",
           "label": ""
         },
@@ -4466,7 +4097,6 @@
             "String",
             "Number"
           ],
-          "defaultValue": "",
           "desc": "标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80",
           "label": ""
         },
@@ -4475,7 +4105,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "square",
           "desc": "标签类型，有三种：方形、圆角方形、标记型",
           "label": ""
         },
@@ -4484,7 +4113,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "medium",
           "desc": "标签尺寸",
           "label": ""
         },
@@ -4493,7 +4121,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "default",
           "desc": "组件风格，用于描述组件不同的应用场景",
           "label": ""
         },
@@ -4502,7 +4129,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "dark",
           "desc": "标签风格变体",
           "label": ""
         }
@@ -4519,21 +4145,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": ".././icon/icon"
-      }
+      "tpl": "<t-tag theme=\"primary\">重要</t-tag>",
+      "path": "./tag/tag"
     },
-    {
+    "t-textarea": {
       "key": "t-textarea",
       "label": "文本输入框",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-textarea.png",
       "properties": [
         {
           "key": "adjustPosition",
           "type": [
             "Boolean"
           ],
-          "defaultValue": "true",
           "desc": "键盘弹起时，是否自动上推页面",
           "label": ""
         },
@@ -4542,7 +4166,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "自动聚焦，拉起键盘",
           "label": ""
         },
@@ -4551,7 +4174,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否自动增高，值为 autosize 时，style.height 不生效",
           "label": ""
         },
@@ -4560,7 +4182,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "点击键盘右下角按钮时是否保持键盘不收起点",
           "label": ""
         },
@@ -4569,7 +4190,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "done",
           "desc": "设置键盘右下角按钮的文字，仅在 type='text'时生效",
           "label": ""
         },
@@ -4578,7 +4198,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否禁用文本框",
           "label": ""
         },
@@ -4587,7 +4206,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "自动聚焦",
           "label": ""
         },
@@ -4596,7 +4214,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "左侧文本",
           "label": ""
         },
@@ -4605,7 +4222,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "用户最多可以输入的字符个数，一个中文汉字表示两个字符长度",
           "label": ""
         },
@@ -4614,7 +4230,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "用户最多可以输入的字符个数",
           "label": ""
         },
@@ -4623,7 +4238,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "undefined",
           "desc": "占位符",
           "label": ""
         },
@@ -4632,7 +4246,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "文本框值",
           "label": ""
         }
@@ -4664,22 +4277,19 @@
           "label": ""
         }
       ],
-      "require": {
-        "t-cell": "../cell/cell",
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-textarea />",
+      "path": "./textarea/textarea"
     },
-    {
+    "t-toast": {
       "key": "t-toast",
       "label": "轻提示",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-toast.png",
       "properties": [
         {
           "key": "direction",
           "type": [
             "String"
           ],
-          "defaultValue": "row",
           "desc": "图标排列方式",
           "label": ""
         },
@@ -4688,7 +4298,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "2000",
           "desc": "弹窗显示毫秒数",
           "label": ""
         },
@@ -4697,7 +4306,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "自定义图标",
           "label": ""
         },
@@ -4706,7 +4314,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "弹窗显示文字",
           "label": ""
         },
@@ -4715,7 +4322,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "middle",
           "desc": "弹窗展示位置",
           "label": ""
         },
@@ -4724,7 +4330,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "防止滚动穿透，即不允许点击和滚动",
           "label": ""
         },
@@ -4733,17 +4338,14 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "提示类型",
           "label": ""
         }
       ],
-      "require": {
-        "t-icon": "../icon/icon",
-        "t-loading": "../loading/loading"
-      }
+      "tpl": "<t-toast id=\"t-toast\" />",
+      "path": "./toast/toast"
     },
-    {
+    "t-transition": {
       "key": "t-transition",
       "label": "动画",
       "icon": "",
@@ -4753,7 +4355,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "首次出现是否展示动画",
           "label": ""
         },
@@ -4762,7 +4363,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "''",
           "desc": "自定义容器类名",
           "label": ""
         },
@@ -4771,7 +4371,6 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "隐藏时是否销毁内容",
           "label": ""
         },
@@ -4780,7 +4379,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "",
           "desc": "指定过渡时间",
           "label": ""
         },
@@ -4789,7 +4387,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "'t-transition'",
           "desc": "过渡类名",
           "label": ""
         },
@@ -4798,24 +4395,32 @@
           "type": [
             "Boolean"
           ],
-          "defaultValue": "false",
           "desc": "是否显示",
           "label": ""
         }
-      ]
+      ],
+      "tpl": "<t-transition visible appear></t-transition>",
+      "path": "./transition/transition"
     },
-    {
+    "t-upload": {
       "key": "t-upload",
       "label": "上传",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-upload.png",
       "properties": [
         {
           "key": "addContent",
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "添加按钮内容。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。",
+          "label": ""
+        },
+        {
+          "key": "allowUploadDuplicateFile",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "是否允许重复上传相同文件名的文件",
           "label": ""
         },
         {
@@ -4823,7 +4428,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)",
           "label": ""
         },
@@ -4832,7 +4436,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。",
           "label": ""
         },
@@ -4841,7 +4444,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "【开发中】用于完全自定义文件列表内容",
           "label": ""
         },
@@ -4850,7 +4452,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "",
           "desc": "已上传文件列表",
           "label": ""
         },
@@ -4859,7 +4460,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "upload组件每行上传图片列数以及图片的宽度和高度",
           "label": ""
         },
@@ -4868,7 +4468,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "16",
           "desc": "预览窗格的 gutter 大小，单位 rpx",
           "label": ""
         },
@@ -4877,7 +4476,6 @@
           "type": [
             "Object"
           ],
-          "defaultValue": "",
           "desc": "透传 Image 组件全部属性",
           "label": ""
         },
@@ -4886,7 +4484,6 @@
           "type": [
             "Number"
           ],
-          "defaultValue": "0",
           "desc": "用于控制文件上传数量，值为 0 则不限制",
           "label": ""
         },
@@ -4895,7 +4492,6 @@
           "type": [
             "Array"
           ],
-          "defaultValue": "['image', 'video']",
           "desc": "支持上传的文件类型，图片或视频",
           "label": ""
         },
@@ -4904,7 +4500,6 @@
           "type": [
             "String"
           ],
-          "defaultValue": "",
           "desc": "自定义上传方法",
           "label": ""
         },
@@ -4914,7 +4509,6 @@
             "Number",
             "Object"
           ],
-          "defaultValue": "",
           "desc": "图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`",
           "label": ""
         }
@@ -4922,7 +4516,7 @@
       "events": [
         {
           "key": "add",
-          "desc": "上传成功后触发，仅包含本次选择的照片；`context.url` 表示选定视频的临时文件路径 (本地路径)。`context.duration` 表示选定视频的时间长度。`context.size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述",
+          "desc": "上传成功后触发，仅包含本次选择的照片；`url` 表示选定视频的临时文件路径 (本地路径)。`duration` 表示选定视频的时间长度。`size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述",
           "label": ""
         },
         {
@@ -4942,23 +4536,19 @@
         },
         {
           "key": "selectChange",
-          "desc": "选择文件或图片之后，上传之前，触发该事件。<br />`params.value` 表示之前已经上传完成的文件列表。<br />`params.currentSelectedFiles` 表示本次上传选中的文件列表",
+          "desc": "选择文件或图片之后，上传之前，触发该事件。<br />`files` 表示之前已经上传完成的文件列表。<br />`currentSelectedFiles` 表示本次上传选中的文件列表",
           "label": ""
         },
         {
           "key": "success",
-          "desc": "上传成功后触发，包含所有上传的文件；`context.url` 表示选定视频的临时文件路径 (本地路径)。`context.duration` 表示选定视频的时间长度。`context.size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述",
+          "desc": "上传成功后触发，包含所有上传的文件；`url` 表示选定视频的临时文件路径 (本地路径)。`duration` 表示选定视频的时间长度。`size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述",
           "label": ""
         }
       ],
-      "require": {
-        "t-grid": "../grid/grid",
-        "t-grid-item": "../grid/grid-item",
-        "t-popup": "../popup/popup",
-        "t-icon": "../icon/icon"
-      }
+      "tpl": "<t-upload />",
+      "path": "./upload/upload"
     }
-  ],
+  },
   "common": {
     "properties": {},
     "events": {}
@@ -4983,6 +4573,13 @@
           ]
         },
         {
+          "key": "subMenu-fab",
+          "label": "Fab 悬浮按钮",
+          "components": [
+            "t-fab"
+          ]
+        },
+        {
           "key": "subMenu-icon",
           "label": "Icon 图标",
           "components": [
@@ -4995,6 +4592,13 @@
       "key": "menu-nav",
       "label": "导航",
       "submenu": [
+        {
+          "key": "subMenu-drawer",
+          "label": "Drawer 抽屉",
+          "components": [
+            "t-drawer"
+          ]
+        },
         {
           "key": "subMenu-indexes",
           "label": "Indexes 索引",
@@ -5148,10 +4752,24 @@
           ]
         },
         {
+          "key": "subMenu-collapse",
+          "label": "Collapse 折叠面板",
+          "components": [
+            "t-collapse"
+          ]
+        },
+        {
           "key": "subMenu-countdown",
           "label": "CountDown 倒计时",
           "components": [
             "t-countdown"
+          ]
+        },
+        {
+          "key": "subMenu-dropdown-menu",
+          "label": "DropdownMenu 下拉菜单",
+          "components": [
+            "t-dropdown-menu"
           ]
         },
         {
@@ -5217,6 +4835,13 @@
       "label": "消息提醒",
       "submenu": [
         {
+          "key": "subMenu-actionsheet",
+          "label": "ActionSheet 动作面板",
+          "components": [
+            "t-actionsheet"
+          ]
+        },
+        {
           "key": "subMenu-back-top",
           "label": "BackTop 返回顶部",
           "components": [
@@ -5249,6 +4874,13 @@
           "label": "Popup 弹出层",
           "components": [
             "t-popup"
+          ]
+        },
+        {
+          "key": "subMenu-progress",
+          "label": "Progress 进度条",
+          "components": [
+            "t-progress"
           ]
         },
         {
