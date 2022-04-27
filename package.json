@@ -1,13 +1,14 @@
 {
-  "name": "tdesign-miniprogram",
+  "name": "tdesign-qq-miniprogram",
   "purename": "tdesign",
-  "version": "0.9.0",
-  "description": "tdesign-miniprogram",
-  "title": "tdesign-miniprogram",
+  "version": "0.0.1",
+  "description": "tdesign-qq-miniprogram",
+  "title": "tdesign-qq-miniprogram",
   "main": "miniprogram_dist/index.js",
   "miniprogram": "miniprogram_dist",
   "keywords": [
     "tdesign",
+    "qq",
     "miniprogram"
   ],
   "scripts": {
