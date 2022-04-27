@@ -31,6 +31,10 @@ const ux = {
     //   label: '公告栏',
     // },
     {
+      name: 'Overlay',
+      label: '遮罩层',
+    },
+    {
       name: 'Popup',
       label: '弹出层',
     },
