@@ -5,15 +5,11 @@
     style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
     class="{{prefix}}-class-indicator {{classPrefix}}__bar {{classPrefix}}__bar--{{progress < 0 ? 'animation' : progress < 100 ? 'static': ''}} {{progress >= 100 || !loading ? classPrefix + '__bar--loaded' : ''}}"
   ></view>
-  <view
-    class="{{classPrefix}} {{classPrefix + '--' + layout}}"
-    style="{{show ? '' : 'display:none'}}"
-    wx:else
-  >
+  <view class="{{classPrefix}} {{classPrefix + '--' + layout}}" style="{{show ? '' : 'display:none'}}" wx:else>
     <view
       wx:if="{{ theme !== 'error' }}"
       class="{{prefix}}-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
-      style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+      style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
     >
       <view
         wx:if="{{ theme === 'spinner' }}"
