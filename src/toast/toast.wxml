@@ -16,7 +16,8 @@
       theme="circular"
       size="{{direction === 'row' ? '42rpx' : '96rpx'}}"
       loading
-      t-class-indicator="indicator-blue"
+      inherit-color
+      style="color: white"
       layout="vertical"
     />
     <slot name="icon" />
