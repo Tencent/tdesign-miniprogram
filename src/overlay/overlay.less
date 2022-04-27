@@ -1,0 +1,16 @@
+@import '../common/style/index.less';
+
+@overlay: ~'@{prefix}-overlay';
+
+.@{overlay} {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  background-color: #fff;
+
+  &--active {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
