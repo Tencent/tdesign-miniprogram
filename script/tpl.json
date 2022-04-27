@@ -198,7 +198,7 @@
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-steps.png"
   },
   "t-steps": {
-    "tpl": "<t-steps><t-step-item title=\"步骤描述1\" /><t-step title=\"步骤描述2\" /></t-steps>",
+    "tpl": "<t-steps><t-step-item title=\"步骤描述1\" /><t-step-item title=\"步骤描述2\" /></t-steps>",
     "require": {
       "t-step-item": "./steps/step-item"
     },
