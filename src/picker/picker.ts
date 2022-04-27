@@ -19,7 +19,7 @@ export default class Picker extends SuperComponent {
   };
 
   relations = {
-    './picker-column': {
+    './picker-item': {
       type: 'child' as 'child',
     },
   };
@@ -36,7 +36,7 @@ export default class Picker extends SuperComponent {
    */
   methods = {
     getPickerColumns() {
-      const pickerColumns = this.getRelationNodes('./picker-column');
+      const pickerColumns = this.getRelationNodes('./picker-item');
       if (Array.isArray(pickerColumns)) {
         return pickerColumns;
       }

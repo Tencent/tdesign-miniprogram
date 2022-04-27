@@ -33,7 +33,7 @@ export default class PickerColumn extends SuperComponent {
   };
 
   data = {
-    prefix: `${config.prefix}-picker-column`,
+    prefix: `${config.prefix}-picker-item`,
     offset: 0, // 滚动偏移量
     duration: 0, // 滚动动画延迟
   };
