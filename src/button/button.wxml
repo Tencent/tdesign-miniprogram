@@ -28,9 +28,9 @@
       <view class="{{classPrefix}}__circular"></view>
     </view>
     <view class="{{classPrefix}}__content">
-      <slot />
       <slot name="content" />
       <block>{{content}}</block>
     </view>
   </view>
+  <slot />
 </button>
