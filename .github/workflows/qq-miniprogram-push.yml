@@ -1,0 +1,26 @@
+name: QQ_MINIPROGRAM_PUSH
+
+on:
+  push:
+    branches:
+      - 'qq'
+
+jobs:
+  QQ_MINIPROGRAM_PUSH:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/install-dep
+        with:
+          nodeVersion: '14.6.0'
+      - run: npm run build:qq
+        shell: bash
+      - id: publish
+        name: publish NPM
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.TDESIGN_NPM_TOKEN }}
+      - if: steps.publish.outputs.type != 'none'
+        run: |
+          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+
