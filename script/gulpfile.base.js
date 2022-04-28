@@ -10,7 +10,6 @@ const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
 const mpNpm = require('gulp-mp-npm');
 const gulpIf = require('gulp-if');
-const gulpFilter = require('gulp-filter');
 
 const config = require('./config');
 
@@ -22,12 +21,6 @@ const setDisplayName = (tasks, moduleName) => {
     if (!tasks[key].displayName) {
       tasks[key].displayName = moduleName ? `${moduleName}:${key}` : key;
     }
-  });
-};
-
-const fileter = () => {
-  return gulpFilter((file) => {
-    return !/\/(qq)\//.test(file.relative);
   });
 };
 
@@ -88,10 +81,6 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.clear = () => del(`${dist}/**`);
 
-  tasks.clearUnusedFolder = () => {
-    return del([`${dist}/*/qq`]);
-  };
-
   /** `gulp handleError`
    * 输出错误到小程序
    * */
@@ -133,7 +122,6 @@ module.exports = (src, dist, moduleName) => {
       .pipe(tsProject()) // 编译ts
       .pipe(mpNpm())
       .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
-      .pipe(fileter())
       .pipe(gulp.dest(dist));
 
   /** `gulp js`
@@ -143,7 +131,6 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
-      .pipe(fileter())
       .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
@@ -153,17 +140,12 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.wxs, { ...srcOptions, since: since(tasks.wxs) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
-      .pipe(fileter())
       .pipe(gulp.dest(dist));
 
   /** `gulp json`
    * 处理json
    * */
-  tasks.json = () =>
-    gulp
-      .src(globs.json, { ...srcOptions, since: since(tasks.json) })
-      .pipe(fileter())
-      .pipe(gulp.dest(dist));
+  tasks.json = () => gulp.src(globs.json, { ...srcOptions, since: since(tasks.json) }).pipe(gulp.dest(dist));
 
   /** `gulp less`
    * 处理less
@@ -174,6 +156,7 @@ module.exports = (src, dist, moduleName) => {
       .pipe(
         plumber({
           errorHandler: (err) => {
+            console.log(err);
             tasks.handleError(err.message);
           },
         }),
@@ -183,17 +166,12 @@ module.exports = (src, dist, moduleName) => {
       .pipe(gulpLess()) // 编译less
       .pipe(rename({ extname: '.wxss' }))
       .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
-      .pipe(fileter())
       .pipe(gulp.dest(dist));
 
   /** `gulp wxss`
    * 处理wxss
    * */
-  tasks.wxss = () =>
-    gulp
-      .src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) })
-      .pipe(fileter())
-      .pipe(gulp.dest(dist));
+  tasks.wxss = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
 
   /** `gulp common`
    * 拷贝common中样式
@@ -210,7 +188,6 @@ module.exports = (src, dist, moduleName) => {
     tasks.clear,
     tasks.resetError,
     gulp.parallel(tasks.copy, tasks.ts, tasks.js, tasks.wxs, tasks.json, tasks.less, tasks.wxss),
-    tasks.clearUnusedFolder,
   );
 
   /** `gulp watch`
