@@ -371,13 +371,13 @@ export default {
           path: '/miniprogram/components/message',
           component: () => import('@/message/README.md'),
         },
-        // {
-        //   title: 'NoticeBar 公告栏',
-        //   name: 'noticebar',
-        //   meta: { docType: 'message' },
-        //   path: '/miniprogram/components/noticebar',
-        //   component: () => import('@/noticebar/README.md'),
-        // },
+        {
+          title: 'NoticeBar 公告栏',
+          name: 'noticebar',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/noticebar',
+          component: () => import('@/noticebar/README.md'),
+        },
         {
           title: 'Overlay 遮罩层',
           name: 'overlay',
