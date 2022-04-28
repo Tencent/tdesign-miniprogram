@@ -13,7 +13,8 @@
           wx:for="{{images}}"
           wx:key="index"
           class="{{classPrefix}}__preview-image"
-          bind:tap="onVisibleChange"
+          data-source="overlay"
+          bind:tap="onClose"
         >
           <t-image
             style="{{imagesShape[index].style}}"
@@ -27,16 +28,19 @@
         </t-swiper-item>
       </t-swiper>
     </view>
-    <view class="{{classPrefix}}__nav" wx:if="{{showIndex}}">
+    <view class="{{classPrefix}}__nav">
       <t-icon
         wx:if="{{closeBtn}}"
         name="close"
         size="xl"
         class="{{classPrefix}}__nav-close {{classPrefix}}__nav-icon"
+        data-source="button"
         bind:click="onClose"
       ></t-icon>
       <slot name="closeBtn" />
-      <view class="{{classPrefix}}__nav-index">{{currentSwiperIndex + 1}}/{{images.length}}</view>
+      <view wx:if="{{showIndex}}" class="{{classPrefix}}__nav-index">
+        {{currentSwiperIndex + 1}}/{{images.length}}
+      </view>
       <t-icon
         wx:if="{{deleteBtn}}"
         name="delete"

@@ -30,7 +30,7 @@ export default class ImageViewer extends SuperComponent {
   controlledProps = [
     {
       key: 'visible',
-      event: 'visible-change',
+      event: 'close',
     },
   ];
 
@@ -134,13 +134,13 @@ export default class ImageViewer extends SuperComponent {
       this._trigger('change', { index: current });
     },
 
-    onVisibleChange() {
-      const { visible } = this.data;
-      this._trigger('visible-change', { visible: !visible });
-    },
-
-    onClose() {
-      this._trigger('close', { index: this.data.currentSwiperIndex });
+    onClose(e: WechatMiniprogram.TouchEvent) {
+      const {
+        target: {
+          dataset: { source },
+        },
+      } = e;
+      this._trigger('close', { visible: false, trigger: source, index: this.data.currentSwiperIndex });
     },
 
     onDelete() {

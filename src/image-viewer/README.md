@@ -36,7 +36,7 @@ isComponent: true
   visible="{{visible}}"
   images="{{images}}"
   initialIndex="{{initialIndex}}"
-  bind:visible-change="onVisibleChange"
+  bind:close="onClose"
   bind:change="onChange"
 />
 ```
@@ -51,7 +51,6 @@ isComponent: true
   visible="{{visible}}"
   images="{{images}}"
   initialIndex="{{initialIndex}}"
-  bind:visible-change="onVisibleChange"
   bind:change="onChange"
   bind:delete="onDelete"
   bind:close="onClose"
@@ -66,7 +65,6 @@ isComponent: true
   visible="{{visible}}"
   images="{{images}}"
   initialIndex="{{initialIndex}}"
-  bind:visible-change="onVisibleChange"
   bind:change="onChange"
 />
   <view class="closeBtn">我是自定义的关闭内容</view>
@@ -96,8 +94,7 @@ default-visible | Boolean | undefined | 隐藏/显示预览。非受控属性 | 
 
 名称 | 参数 | 描述
 -- | -- | --
-visible-change | `(visible: Boolean)` | 当浮层隐藏或显示时触发。
 change | `(index: Number)` | 翻页时回调 
-close | `(index: Number)` | 关闭操作时触发 
-delete | `(index: Number)` | 删除时触发 
+close | `(trigger: 'overlay' | 'button' , visible: Boolean, index: Number)` | 点击操作按钮button或者overlay时触发 
+delete | `(index: Number)` | 点击删除操作按钮时触发 
 

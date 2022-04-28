@@ -114,21 +114,23 @@ Page({
 
   onClose(e: any) {
     const {
-      detail: { index },
+      detail: { trigger },
     } = e;
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: `关闭第${index + 1}个`,
-    });
-  },
-
-  onVisibleChange(e: any) {
-    const {
-      detail: { visible },
-    } = e;
+    if (trigger === 'overlay') {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '点击overlay关闭',
+      });
+    } else if (trigger === 'button') {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: `点击button关闭`,
+      });
+    }
     this.setData({
-      visible,
+      visible: false,
     });
   },
 });
