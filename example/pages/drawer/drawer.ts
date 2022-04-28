@@ -4,61 +4,61 @@ Page({
     sidebar: [],
     baseSidebar: [
       {
-        name: '菜单一',
+        title: '菜单一',
       },
       {
-        name: '菜单二',
+        title: '菜单二',
       },
       {
-        name: '菜单三',
+        title: '菜单三',
       },
       {
-        name: '菜单四',
+        title: '菜单四',
       },
       {
-        name: '菜单五',
+        title: '菜单五',
       },
       {
-        name: '菜单六',
+        title: '菜单六',
       },
       {
-        name: '菜单七',
+        title: '菜单七',
       },
       {
-        name: '菜单八',
+        title: '菜单八',
       },
     ],
     iconSidebar: [
       {
-        name: '菜单一',
+        title: '菜单一',
         icon: 'app',
       },
       {
-        name: '菜单二',
+        title: '菜单二',
         icon: 'app',
       },
       {
-        name: '菜单三',
+        title: '菜单三',
         icon: 'app',
       },
       {
-        name: '菜单四',
+        title: '菜单四',
         icon: 'app',
       },
       {
-        name: '菜单五',
+        title: '菜单五',
         icon: 'app',
       },
       {
-        name: '菜单六',
+        title: '菜单六',
         icon: 'app',
       },
       {
-        name: '菜单七',
+        title: '菜单七',
         icon: 'app',
       },
       {
-        name: '菜单八',
+        title: '菜单八',
         icon: 'app',
       },
     ],

@@ -55,7 +55,7 @@ git clone git@github.com:Tencent/tdesign-miniprogram.git
 ```json
 {
   "usingComponents": {
-    "t-button": "/path/to/tdesign-miniprogram/dist/button/index"
+    "t-button": "tdesign-miniprogram/dist/button/index"
   }
 }
 ```

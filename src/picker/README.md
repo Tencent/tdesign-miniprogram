@@ -12,7 +12,7 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-picker": "tdesign-miniprogram/picker/picker",
-   "t-picker-column": "tdesign-miniprogram/picker/picker-column",
+  "t-picker-item": "tdesign-miniprogram/picker/picker-item",
 }
 ```
 
@@ -30,7 +30,7 @@ isComponent: true
   bindconfirm="onPicker1Confirm"
   bindcancel="onPicker1Cancel"
 >
-  <t-picker-column options="{{citys}}" value="{{selectedCityValue}}"></t-picker-column>
+  <t-picker-item options="{{citys}}" value="{{selectedCityValue}}" />
 </t-picker>
 ```
 
