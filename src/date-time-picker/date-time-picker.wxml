@@ -11,6 +11,7 @@
   <slot slot="header" name="header"> </slot>
 
   <t-picker-item
+    class="{{prefix}}-picker-item-host"
     wx:for="{{columns}}"
     wx:key="index"
     options="{{item}}"

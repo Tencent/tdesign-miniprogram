@@ -14,7 +14,7 @@ const range = function (num: number, min: number, max: number) {
 };
 
 @wxComponent()
-export default class PickerColumn extends SuperComponent {
+export default class PickerItem extends SuperComponent {
   relations = {
     './picker': {
       type: 'parent' as 'parent',
@@ -24,10 +24,10 @@ export default class PickerColumn extends SuperComponent {
   properties = props;
 
   observers = {
-    value(this: PickerColumn) {
+    value(this: PickerItem) {
       this.updateColumns();
     },
-    options(this: PickerColumn) {
+    options(this: PickerItem) {
       this.updateColumns();
     },
   };
