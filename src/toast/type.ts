@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdToastProps {
@@ -13,7 +12,6 @@ export interface TdToastProps {
   direction?: {
     type: StringConstructor;
     value?: 'row' | 'column';
-    required?: boolean;
   };
   /**
    * 弹窗显示毫秒数
@@ -22,7 +20,6 @@ export interface TdToastProps {
   duration?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 组件类名
@@ -30,7 +27,6 @@ export interface TdToastProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class'];
-    required?: boolean;
   };
   /**
    * 自定义图标
@@ -39,7 +35,6 @@ export interface TdToastProps {
   icon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 弹窗显示文字
@@ -47,7 +42,14 @@ export interface TdToastProps {
   message?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
+  };
+  /**
+   * 遮罩层属性，透传至 Overlay
+   * @default {}
+   */
+  overlayProps?: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 弹窗展示位置
@@ -56,7 +58,6 @@ export interface TdToastProps {
   placement?: {
     type: StringConstructor;
     value?: 'top' | 'middle' | 'bottom';
-    required?: boolean;
   };
   /**
    * 防止滚动穿透，即不允许点击和滚动
@@ -65,7 +66,14 @@ export interface TdToastProps {
   preventScrollThrough?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
+  };
+  /**
+   * 是否显示遮罩层
+   * @default true
+   */
+  showOverlay?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 提示类型
@@ -73,6 +81,5 @@ export interface TdToastProps {
   theme?: {
     type: StringConstructor;
     value?: 'loading' | 'success' | 'fail';
-    required?: boolean;
   };
-};
+}
