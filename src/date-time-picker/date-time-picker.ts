@@ -78,16 +78,8 @@ export default class DateTimePicker extends SuperComponent {
       this.updateColumns();
     },
     visible(v) {
-      if (v && this.initValue) {
-        const pikcerItems = this.selectAllComponents(`.${prefix}-picker-item-host`);
-        const parseDate = dayjs(this.initValue || DEFAULT_MIN_DATE);
-
-        this.setData({
-          date: parseDate,
-        });
-        if (pikcerItems) {
-          pikcerItems.forEach((item) => item.updateColumns());
-        }
+      if (v) {
+        this.updateColumns();
       }
     },
   };
@@ -115,7 +107,7 @@ export default class DateTimePicker extends SuperComponent {
     updateColumns() {
       const { value, defaultValue } = this.properties;
 
-      const parseDate = dayjs(value || defaultValue || DEFAULT_MIN_DATE);
+      const parseDate = dayjs(this.initValue || value || defaultValue || DEFAULT_MIN_DATE);
 
       this.setData({
         date: parseDate,
