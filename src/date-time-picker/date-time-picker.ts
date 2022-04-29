@@ -1,10 +1,13 @@
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
+import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import defaultLocale from './locale/zh';
 
 import props from './props';
 import { DisableDateObj } from './type';
+
+const { prefix } = config;
 
 /**
  *
@@ -54,11 +57,13 @@ const DEFAULT_MAX_DATE: Dayjs = dayjs('2030-12-31 23:59:59');
 export default class DateTimePicker extends SuperComponent {
   properties = props;
 
-  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`];
 
   options = {
     multipleSlots: true,
   };
+
+  initValue = null;
 
   observers = {
     // value 变化需要同步 内部 date 实现受控属性
@@ -72,9 +77,15 @@ export default class DateTimePicker extends SuperComponent {
       });
       this.updateColumns();
     },
+    visible(v) {
+      if (v) {
+        this.updateColumns();
+      }
+    },
   };
 
   data = {
+    prefix,
     date: null,
     columns: [],
     columnsValue: [],
@@ -82,11 +93,21 @@ export default class DateTimePicker extends SuperComponent {
     locale: defaultLocale,
   };
 
+  lifetimes = {
+    attached() {
+      const { value, defaultValue } = this.properties;
+
+      if (value == null && defaultValue != null) {
+        this.initValue = defaultValue;
+      }
+    },
+  };
+
   methods = {
     updateColumns() {
-      const { value } = this.properties;
+      const { value, defaultValue } = this.properties;
 
-      const parseDate = dayjs(value || DEFAULT_MIN_DATE);
+      const parseDate = dayjs(this.initValue || value || defaultValue || DEFAULT_MIN_DATE);
 
       this.setData({
         date: parseDate,
@@ -423,13 +444,6 @@ export default class DateTimePicker extends SuperComponent {
         date: newValue,
       });
 
-      const { columns, columnsValue } = this.getValueCols();
-
-      this.setData({
-        columns,
-        columnsValue,
-      });
-
       this.triggerEvent('column-change', { index: column, value });
       this.triggerEvent('change', { value: date, formatValue: date.format(format) });
     },
@@ -442,20 +456,6 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     onCancel() {
-      const { value } = this.properties;
-      const parseDate = dayjs(value || DEFAULT_MIN_DATE);
-
-      this.setData({
-        date: parseDate,
-      });
-
-      const { columns, columnsValue } = this.getValueCols();
-
-      this.setData({
-        columns,
-        columnsValue,
-      });
-
       this.triggerEvent('cancel');
     },
   };

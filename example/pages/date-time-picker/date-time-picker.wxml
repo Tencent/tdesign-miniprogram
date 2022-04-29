@@ -59,7 +59,7 @@
   title="选择日期"
   visible="{{dateVisible}}"
   mode="{{['date']}}"
-  value="{{date}}"
+  defaultValue="{{date}}"
   format="YYYY-MM-DD"
   bindconfirm="onConfirm"
   bindcancel="hidePicker"
