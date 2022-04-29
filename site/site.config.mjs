@@ -376,7 +376,7 @@ export default {
           name: 'noticebar',
           meta: { docType: 'message' },
           path: '/miniprogram/components/noticebar',
-          component: () => import('@/noticebar/README.md'),
+          component: () => import('@/notice-bar/README.md'),
         },
         {
           title: 'Overlay 遮罩层',
