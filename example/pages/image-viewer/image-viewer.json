@@ -1,8 +1,6 @@
 {
-  "navigationBarTitleText": "PullDownRefresh 下拉刷新",
+  "navigationBarTitleText": "ImageViewer",
   "navigationBarBackgroundColor": "#fff",
-  "backgroundColor": "#f5f5f5",
-  "disableScroll": true,
   "usingComponents": {
     "t-demo": "../../components/demo-block/index"
   }

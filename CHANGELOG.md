@@ -4,6 +4,27 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.10.0 `2022-4-29`
+
+### BREAKING CHANGES
+
+- Picker: 子组件名称从 `t-picker-column` 改成 `t-picker-item` [#392](https://github.com/Tencent/tdesign-miniprogram/pull/392) [@LeeJim](https://github.com/LeeJim)
+- DateTimePicker: `value` 从非受控改成受控 [#413](https://github.com/Tencent/tdesign-miniprogram/pull/413) [@LeeJim](https://github.com/LeeJim)
+### Bug Fixes
+
+- Drawer: 修复 `items` 标题无法显示的问题 [#388](https://github.com/Tencent/tdesign-miniprogram/pull/388) [@anlyyao](https://github.com/anlyyao)
+- PullDownRefresh: 修复无法使用的问题 [#400](https://github.com/Tencent/tdesign-miniprogram/pull/400) [@LeeJim](https://github.com/LeeJim)
+- Toast: 更正 `Loading` 标志的颜色 [#405](https://github.com/Tencent/tdesign-miniprogram/pull/405) [@LeeJim](https://github.com/LeeJim)
+- DateTimePicker: 修复 `defaultValue` 无法使用的问题 [#413](https://github.com/Tencent/tdesign-miniprogram/pull/413) [@LeeJim](https://github.com/LeeJim)
+
+### Features
+
+- Overlay: 新增遮罩层组件 [#407](https://github.com/Tencent/tdesign-miniprogram/pull/407) [@LeeJim](https://github.com/LeeJim)
+- ImageViewer: 新增图片预览组件 [#408](https://github.com/Tencent/tdesign-miniprogram/pull/408) [@NuoHui](https://github.com/NuoHui)
+- Tabs: 新增 `click` 事件 [#384](https://github.com/Tencent/tdesign-miniprogram/pull/384) [@JJunYang](https://github.com/JJunYang)
+- Grid: 新增 default `slot` [#395](https://github.com/Tencent/tdesign-miniprogram/pull/395) [@LeeJim](https://github.com/LeeJim)
+- Loading: 新增 `inheritColor` 属性，加载标志的颜色继承外部 [#404](https://github.com/Tencent/tdesign-miniprogram/pull/404) [@LeeJim](https://github.com/LeeJim)
+- Toast: 新增遮罩层，通过 `showOverlay` 和 `overlayProps` 控制 [#409](https://github.com/Tencent/tdesign-miniprogram/pull/409) [@LeeJim](https://github.com/LeeJim)
 
 ## 0.9.0 `2022-4-21`
 

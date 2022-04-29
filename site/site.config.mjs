@@ -86,13 +86,6 @@ export default {
           path: '/miniprogram/components/drawer',
           component: () => import('@/drawer/README.md'),
         },
-        // {
-        //   title: 'ImageViewer 图片预览',
-        //   name: 'image-viewer',
-        //   meta: { docType: 'navigation' },
-        //   path: '/miniprogram/components/image-viewer',
-        //   component: () => import('@/image-viewer/README.md'),
-        // },
         {
           title: 'Indexes 索引',
           name: 'indexes',
@@ -301,6 +294,13 @@ export default {
           meta: { docType: 'data' },
           path: '/miniprogram/components/image',
           component: () => import('@/image/README.md'),
+        },
+        {
+          title: 'ImageViewer 图片预览',
+          name: 'image-viewer',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/image-viewer',
+          component: () => import('@/image-viewer/README.md'),
         },
         {
           title: 'Skeleton 骨架屏',

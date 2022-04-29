@@ -1,0 +1,16 @@
+<view class="image-viewer">
+  <view class="demo-title">ImageViewer 图片预览</view>
+  <view class="demo-desc">图片全屏放大预览效果，包含全屏背景色、页码位置样式、增加操作等规范</view>
+  <t-demo title="01 类型" desc="" operList="{{operList1}}" bindclickoper="clickHandle" />
+  <t-toast id="t-toast" />
+  <t-image-viewer
+    deleteBtn="{{deleteBtn}}"
+    closeBtn="{{closeBtn}}"
+    showIndex="{{showIndex}}"
+    visible="{{visible}}"
+    images="{{images}}"
+    bind:change="onChange"
+    bind:delete="onDelete"
+    bind:close="onClose"
+  />
+</view>

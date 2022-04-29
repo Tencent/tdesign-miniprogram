@@ -54,10 +54,10 @@ const display = {
       name: 'Image',
       label: '图片',
     },
-    // {
-    //   name: 'Preview',
-    //   label: '图片预览',
-    // },
+    {
+      name: 'ImageViewer',
+      label: '图片预览',
+    },
     {
       name: 'Swiper',
       label: '轮播图',

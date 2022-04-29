@@ -86,6 +86,12 @@
           "name": "actionSheet",
           "pathName": "pages/action-sheet/action-sheet",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "image-viewer",
+          "pathName": "pages/image-viewer/image-viewer",
+          "scene": null
         }
       ]
     }
