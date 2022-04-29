@@ -25,68 +25,40 @@ isComponent: true
 <img src="https://tdesign.gtimg.com/miniprogram/readme/pullDownRefresh-2.png" width="35%" height="35%">
 
 ```html
-<t-pull-down-refresh
-  id="pull-down-refresh"
-  normal-bar-height="{{200}}"
-  max-bar-height="{{272}}"
-  refreshTimeout="{{3000}}"
-  background="#f5f5f5"
-  use-loading-slot
-  loading-size="60rpx"
-  loading-texts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成', '']}}"
-  bindrefresh="onPullDownRefresh"
->
-  <t-loading
-    slot="loading"
-    type="circular-ext"
-    color="#306AFF"
-    background-color="#f5f5f5"
-    size="60rpx"
-    paused
-  />
-
-  <view class="text">拖拽该区域下拉刷新</view>
-</t-pull-down-refresh>
+<t-pull-down-refresh value="{{loading}}" bindrefresh="handleRefresh" />
 ```
 
 ```js
 Page({
-  pullDownRefresh: null as WechatMiniprogram.Component.TrivialInstance | null,
-  data: {},
-  onLoad() {
-    this.pullDownRefresh = this.selectComponent('#pull-down-refresh');
+  data: {
+    loading: false
   },
-  // 监听页面滚动事件，并调用pull-down-refresh组件的onPageScroll方法
-  // 组件内根据页面滚动距离来判定页面是否到顶部，页面回到顶部后才能下拉刷新
-  onPageScroll(e) {
-    this.pullDownRefresh && this.pullDownRefresh.onPageScroll(e);
-  },
-  onPullDownRefresh(e: WechatMiniprogram.Event<{ callback: () => void }>) {
-    // 模拟1秒刷新完成
-    const { callback } = e.detail;
+  handleRefresh() {
+    // 模拟 1s 加载
     setTimeout(() => {
-      callback && callback();
-    }, 1000);
+      this.setData({ loading: false })
+    }, 1000)
   },
 });
 ```
 
 ## API
-
 ### PullDownRefresh Props
 
-| 名称               | 类型   | 默认值 | 说明                                                                                                                                                         | 必传 |
-| ------------------ | ------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---- |
-| external-classes   | Array  | -      | 加载 loading 样式。`['t-class', 't-class-loading','t-class-text', 't-class-indicator']`                                                                      | N    |
-| loading-bar-height | Number | 200    | 加载中下拉高度                                                                                                                                               | N    |
-| loading-props      | Object | -      | 加载 loading 样式。TS 类型：`TdLoadingProps`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/pull-down-refresh/type.ts) | N    |
-| loading-texts      | Array  | []     | 提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']。TS 类型：`string[]`                                                               | N    |
-| max-bar-height     | Number | 272    | 最大下拉高度                                                                                                                                                 | N    |
-| refresh-timeout    | Number | 3000   | 刷新超时时间                                                                                                                                                 | N    |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+external-classes | Array | - | 加载loading样式。`['t-class', 't-class-loading','t-class-text', 't-class-indicator']` | N
+loading-bar-height | String / Number | 50 | 加载中下拉高度，如果值为数字则单位是：'px' | N
+loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/pull-down-refresh/type.ts) | N
+loading-texts | Array | [] | 提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']。TS 类型：`string[]` | N
+max-bar-height | String / Number | 80 | 最大下拉高度，如果值为数字则单位是：'px' | N
+refresh-timeout | Number | 3000 | 刷新超时时间 | N
+value | Boolean | false | 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态 | N
 
 ### PullDownRefresh Events
 
-| 名称    | 参数 | 描述           |
-| ------- | ---- | -------------- |
-| refresh | -    | 结束下拉时触发 |
-| timeout | -    | 刷新超时触发   |
+名称 | 参数 | 描述
+-- | -- | --
+change | `(value: boolean)` | 下拉或收起时触发，用户手势往下滑动触发下拉状态，手势松开触发收起状态
+refresh | - | 结束下拉时触发
+timeout | - | 刷新超时触发
