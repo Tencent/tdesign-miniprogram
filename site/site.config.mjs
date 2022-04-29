@@ -375,7 +375,7 @@ export default {
           title: 'NoticeBar 公告栏',
           name: 'noticebar',
           meta: { docType: 'message' },
-          path: '/miniprogram/components/noticebar',
+          path: '/miniprogram/components/notice-bar',
           component: () => import('@/notice-bar/README.md'),
         },
         {
