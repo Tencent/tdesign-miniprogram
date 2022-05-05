@@ -1,7 +1,7 @@
 {
   "name": "tdesign-qq-miniprogram",
   "purename": "tdesign",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "tdesign-qq-miniprogram",
   "title": "tdesign-qq-miniprogram",
   "main": "miniprogram_dist/index.js",
