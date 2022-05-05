@@ -10,7 +10,6 @@
         bind:tap="onTabTap"
       >
         {{item.label}}
-        <slot name="label" />
       </view>
       <view class="{{classPrefix}}__track {{prefix}}-class-track" style="{{trackStyle}}" />
     </view>
