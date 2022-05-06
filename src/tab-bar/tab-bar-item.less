@@ -4,13 +4,11 @@
 @tab-bar-height: 48px;
 @tab-bar-bg-color: @bg-color-block;
 @tab-bar-border-color: @border-level-1-color;
-@tab-bar-hover-bg-color: rgba(0, 0, 0, .05);
+@tab-bar-hover-bg-color: rgba(0, 0, 0, 0.05);
 @tab-bar-active-color: @primary-color;
 
-@{item} {
-  height: 100%;
-  flex-basis: 0;
-  flex-grow: 1;
+:host {
+  flex: 1;
 }
 
 .@{item} {
@@ -133,7 +131,7 @@
           pointer-events: none;
           top: 0;
           border-top: 1px solid #e6e6e6;
-          transform: scaleY(.5);
+          transform: scaleY(0.5);
           border-top-width: 1px;
           border-top-style: solid;
           border-top-color: @tab-bar-border-color;
