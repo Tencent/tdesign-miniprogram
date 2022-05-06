@@ -12,10 +12,10 @@ module.exports = {
     ];
     return classNames.join(' ');
   },
-  getAvatarSizePx: function (size) {
-    var isIncludePx = size.indexOf('px') > -1;
-    if (isIncludePx) {
-      return 'width:' + size + ';height:' + size + ';';
+  getAvatarSizePx: function (size = 'medium') {
+    var pxIndex = size.indexOf('px');
+    if (pxIndex > -1) {
+      return 'width:' + size + ';height:' + size + ';font-size:' + ((size.slice(0, pxIndex) / 8) * 3 + 2) + 'px;';
     }
   },
   getStyles: function (isShow, zIndex) {
