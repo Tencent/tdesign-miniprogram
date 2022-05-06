@@ -1,9 +1,3 @@
-var sizeList = {
-  small: '28',
-  medium: '32',
-  large: '36',
-};
-
 module.exports = {
   getTClass: function (size) {
     var isIncludePx = size.indexOf('px') > -1;
@@ -18,12 +12,10 @@ module.exports = {
     ];
     return classNames.join(' ');
   },
-  getAvatarSizePx: function (size) {
+  getAvatarSizePx: function (size = 'medium') {
     var pxIndex = size.indexOf('px');
     if (pxIndex > -1) {
-      return 'width:' + size + ';height:' + size + ';font-size:' + (size.slice(0, pxIndex) / 3) * 2 + 'rpx;';
-    } else if (sizeList[size]) {
-      return 'font-size:' + sizeList[size] + 'rpx';
+      return 'width:' + size + ';height:' + size + ';font-size:' + ((size.slice(0, pxIndex) / 8) * 3 + 2) + 'px;';
     }
   },
   getStyles: function (isShow, zIndex) {
