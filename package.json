@@ -106,6 +106,7 @@
     ]
   },
   "dependencies": {
-    "dayjs": "^1.10.7"
+    "dayjs": "^1.10.7",
+    "tdesign-icons-view": "^0.0.2"
   }
 }
