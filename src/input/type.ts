@@ -6,14 +6,6 @@
 
 export interface TdInputProps {
   /**
-   * 键盘弹起时，是否自动上推页面
-   * @default true
-   */
-  adjustPosition?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 文本内容位置，居左/居中/居右
    * @default left
    */
@@ -38,22 +30,6 @@ export interface TdInputProps {
     value?: boolean;
   };
   /**
-   * 点击键盘右下角按钮时是否保持键盘不收起点
-   * @default false
-   */
-  confirmHold?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 设置键盘右下角按钮的文字，仅在 type='text'时生效
-   * @default done
-   */
-  confirmType?: {
-    type: StringConstructor;
-    value?: 'send' | 'search' | 'next' | 'go' | 'done';
-  };
-  /**
    * 是否禁用输入框
    * @default false
    */
@@ -76,14 +52,6 @@ export interface TdInputProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg'];
-  };
-  /**
-   * 自动聚焦
-   * @default false
-   */
-  focus?: {
-    type: BooleanConstructor;
-    value?: boolean;
   };
   /**
    * 【开发中】指定输入框展示值的格式
@@ -145,10 +113,11 @@ export interface TdInputProps {
   };
   /**
    * 输入框状态
+   * @default default
    */
   status?: {
     type: StringConstructor;
-    value?: 'success' | 'warning' | 'error';
+    value?: 'default' | 'success' | 'warning' | 'error';
   };
   /**
    * 后置图标前的后置内容
@@ -194,6 +163,155 @@ export interface TdInputProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: InputValue;
+  };
+  /**
+   * 指定 placeholder 的样式
+   * @default ''
+   */
+  placeholderStyle: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 指定 placeholder 的样式类
+   * @default input-placeholder
+   */
+  placeholderClass?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离
+   * @default 0
+   */
+  cursorSpacing?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * (即将废弃，请直接使用 focus )自动聚焦，拉起键盘
+   * @default false
+   */
+  autoFocus?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 获取焦点
+   * @default false
+   */
+  focus?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 设置键盘右下角按钮的文字，仅在type='text'时生效。<br />具体释义：<br />`send` 右下角按钮为“发送”；<br />`search` 右下角按钮为“搜索”；<br />`next` 右下角按钮为“下一个”；<br />`go` 右下角按钮为“前往”；<br />`done` 右下角按钮为“完成”。<br />[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/input.html)
+   * @default done
+   */
+  confirmType?: {
+    type: StringConstructor;
+    value?: 'send' | 'search' | 'next' | 'go' | 'done';
+  };
+  /**
+   * 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效)
+   * @default false
+   */
+  alwaysEmbed?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 点击键盘右下角按钮时是否保持键盘不收起
+   * @default false
+   */
+  confirmHold?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 指定focus时的光标位置
+   */
+  cursor: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 光标起始位置，自动聚集时有效，需与selection-end搭配使用
+   * @default -1
+   */
+  selectionStart?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 光标结束位置，自动聚集时有效，需与selection-start搭配使用
+   * @default -1
+   */
+  selectionEnd?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 键盘弹起时，是否自动上推页面
+   * @default true
+   */
+  adjustPosition?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * focus时，点击页面的时候不收起键盘
+   * @default false
+   */
+  holdKeyboard?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 安全键盘加密公钥的路径，只支持包内路径
+   * @default ''
+   */
+  safePasswordCertPath?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 安全键盘输入密码长度
+   */
+  safePasswordLength?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 安全键盘加密时间戳
+   */
+  safePasswordTimeStamp?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 安全键盘加密盐值
+   * @default ''
+   */
+  safePasswordNonce?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 安全键盘计算hash盐值，若指定custom-hash 则无效
+   * @default ''
+   */
+  safePasswordSalt?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 安全键盘计算hash的算法表达式，如 `md5(sha1('foo' + sha256(sm3(password + 'bar'))))`
+   * @default ''
+   */
+  safePasswordCustomHash?: {
+    type: StringConstructor;
+    value?: string;
   };
 }
 
