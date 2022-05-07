@@ -14,7 +14,6 @@ export interface TdAvatarProps {
   alt?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字
@@ -22,7 +21,6 @@ export interface TdAvatarProps {
   badgeProps?: {
     type: ObjectConstructor;
     value?: BadgeProps;
-    required?: boolean;
   };
   /**
    * 组件类名，用于设置组件外层元素类名
@@ -30,7 +28,6 @@ export interface TdAvatarProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class'];
-    required?: boolean;
   };
   /**
    * 加载失败时隐藏图片
@@ -39,7 +36,6 @@ export interface TdAvatarProps {
   hideOnLoadFailed?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 图标
@@ -47,7 +43,6 @@ export interface TdAvatarProps {
   icon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 图片地址
@@ -56,7 +51,6 @@ export interface TdAvatarProps {
   image?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 形状
@@ -65,7 +59,6 @@ export interface TdAvatarProps {
   shape?: {
     type: StringConstructor;
     value?: ShapeEnum;
-    required?: boolean;
   };
   /**
    * 尺寸，示例值：small/medium/large/24px/38px 等，默认为 large
@@ -74,7 +67,6 @@ export interface TdAvatarProps {
   size?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
 }
 
@@ -86,7 +78,6 @@ export interface TdAvatarGroupProps {
   cascading?: {
     type: StringConstructor;
     value?: CascadingValue;
-    required?: boolean;
   };
   /**
    * 头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多`
@@ -94,7 +85,6 @@ export interface TdAvatarGroupProps {
   collapseAvatar?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 组件类名，用于设置组件外层元素类名
@@ -102,7 +92,6 @@ export interface TdAvatarGroupProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-image', 't-class-content'];
-    required?: boolean;
   };
   /**
    * 能够同时显示的最多头像数量
@@ -110,7 +99,6 @@ export interface TdAvatarGroupProps {
   max?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size
@@ -119,7 +107,6 @@ export interface TdAvatarGroupProps {
   size?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
 }
 

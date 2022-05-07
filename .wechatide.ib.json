@@ -3522,40 +3522,6 @@
       }
     },
     {
-      "key": "t-segmented-control",
-      "label": "分段器",
-      "icon": "",
-      "properties": [
-        {
-          "key": "list",
-          "type": [
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "分段器选项",
-          "label": ""
-        },
-        {
-          "key": "value",
-          "type": [
-            "String",
-            "Number",
-            "Array"
-          ],
-          "defaultValue": "",
-          "desc": "选中值",
-          "label": ""
-        }
-      ],
-      "events": [
-        {
-          "key": "change",
-          "desc": "选中值变化时触发",
-          "label": ""
-        }
-      ]
-    },
-    {
       "key": "t-skeleton",
       "label": "骨架屏",
       "icon": "",

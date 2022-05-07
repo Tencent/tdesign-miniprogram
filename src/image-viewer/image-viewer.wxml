@@ -17,6 +17,7 @@
           bind:tap="onClose"
         >
           <t-image
+            t-class="t-class-image"
             style="{{imagesShape[index].style}}"
             mode="{{imagesShape[index].mode}}"
             lazy

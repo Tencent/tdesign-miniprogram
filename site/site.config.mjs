@@ -100,13 +100,6 @@ export default {
           path: '/miniprogram/components/navbar',
           component: () => import('@/navbar/README.md'),
         },
-        // {
-        //   title: 'SegmentedControl 分段器',
-        //   name: 'segmented-control',
-        //   meta: { docType: 'navigation' },
-        //   path: '/miniprogram/components/segmented-control',
-        //   component: () => import('@/segmented-control/README.md'),
-        // },
         {
           title: 'Steps 步骤条',
           name: 'steps',

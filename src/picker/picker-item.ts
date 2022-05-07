@@ -3,7 +3,7 @@ import config from '../common/config';
 import props from './picker-item-props';
 
 const itemHeight = 80;
-const DefaultDuration = 600;
+const DefaultDuration = 240;
 
 const { windowWidth } = wx.getSystemInfoSync();
 

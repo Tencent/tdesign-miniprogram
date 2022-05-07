@@ -22,67 +22,61 @@ isComponent: true
 
 文本标签栏，分为单层双层，可以自定义标签栏内容
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabbar-1.png" width="375px" height="50%">
-
 ```html
-<!-- 单层级纯文本标签栏 -->
-<t-tab-bar
-  wx:for="{{demoList_1}}"
-  wx:for-item="list"
-  wx:for-index="index"
-  wx:key="index"
-  value="{{value}}"
-  bindchange="onChange"
->
-  <t-tab-bar-item wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-    {{item.text}}
+<t-tab-bar defaultValue="home">
+  <t-tab-bar-item wx:for="{{list}}" wx:key="index" icon="{{item.icon}}" value="{{item.value}}">
+    {{item.label}}
   </t-tab-bar-item>
 </t-tab-bar>
 ```
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabbar-4.png" width="375px" height="50%">
+```js
+Page({
+  data: {
+    list: [{
+      icon: 'home',
+      value: 'home',
+      label: '首页',
+    }, {
+      icon: 'user',
+      value: 'user',
+      label: '我的'
+    }]
+  }
+})
+```
+
+### 受控用法
+
 
 ```html
-<!-- 双层级纯文本标签栏 -->
-<t-tab-bar value="{{value}}" bindchange="onChange">
-  <t-tab-bar-item
-    wx:for="{{list_5}}"
-    wx:for-item="item"
-    wx:for-index="index"
-    wx:key="index"
-    name="{{item.name}}"
-    children="{{item.children}}"
-  >
-    {{item.text}}
+<t-tab-bar value="{{activeTab}}" bind:change="onChange">
+  <t-tab-bar-item wx:for="{{list}}" wx:key="index" icon="{{item.icon}}" value="{{item.value}}">
+    {{item.label}}
   </t-tab-bar-item>
 </t-tab-bar>
 ```
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabbar-2.png" width="375px" height="50%">
-
-```html
-<!-- 文本加图标标签栏 -->
-<t-cell-group title="文本加图标标签栏">
-  <t-tab-bar
-    wx:for="{{demoList_2}}"
-    wx:for-item="list"
-    wx:for-index="index"
-    wx:key="index"
-    value="{{value}}"
-    bindchange="onChange"
-  >
-    <t-tab-bar-item
-      wx:for="{{list}}"
-      wx:for-item="item"
-      wx:for-index="index"
-      wx:key="index"
-      icon="{{item.icon}}"
-      name="{{item.name}}"
-    >
-      {{item.text}}
-    </t-tab-bar-item>
-  </t-tab-bar>
-</t-cell-group>
+```js
+Page({
+  data: {
+    activeTab: 'home',
+    list: [{
+      icon: 'home',
+      value: 'home',
+      label: '首页',
+    }, {
+      icon: 'user',
+      value: 'user',
+      label: '我的'
+    }]
+  },
+  onChange(e) {
+    this.setData({
+      activeTab: e.detail.value
+    })
+  }
+})
 ```
 
 ## API
@@ -103,7 +97,7 @@ default-value | String / Number / Array | undefined | 当前选中标签的索�
 
 名称 | 参数 | 描述
 -- | -- | --
-change | - | 选中标签切换时触发
+change | `(value: string | number)` | 选中标签切换时触发
 
 ### TabBarItem Props
 
