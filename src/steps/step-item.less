@@ -205,6 +205,14 @@
 
 .step-item-basic();
 
+:host {
+  flex: 1;
+  vertical-align: top;
+  position: relative;
+  align-self: flex-start;
+  width: inherit;
+}
+
 .@{step} {
   &--horizontal {
     // 内容最大宽度
@@ -260,11 +268,11 @@
     .@{item} {
       position: relative;
 
-      &__inner :only-child.@{item}-wrapper {
-        padding-bottom: 50rpx;
-      }
-
       &-wrapper {
+        &:only-child {
+          padding-bottom: 50rpx;
+        }
+
         display: flex;
         flex-direction: row;
         align-items: flex-start;
