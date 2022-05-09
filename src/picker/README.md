@@ -59,8 +59,8 @@ Page({
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-cancel-btn | String | 取消 | 取消按钮文字 | N
-confirm-btn | String | 确认 | 确定按钮文字 | N
+cancel-btn | String | '' | 取消按钮文字 | N
+confirm-btn | String | '' | 确定按钮文字 | N
 footer | Slot | - | 底部内容 | N
 header | Boolean / Slot | true | 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 | N
 title | String | '' | 标题 | N
