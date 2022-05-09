@@ -72,9 +72,9 @@ visible | Boolean | false | 是否显示 | N
 
 名称 | 参数 | 描述
 -- | -- | --
-cancel | `({})` | 点击取消按钮时触发
+cancel | - | 点击取消按钮时触发
 change | `(value: Array<PickerValue>)` | 选中变化时候触发
-confirm | `({})` | 点击确认确认按钮时触发
+confirm | `(index: number, value: Array<PickerValue>)` | 点击确认确认按钮时触发
 
 ### PickerItem Props
 
