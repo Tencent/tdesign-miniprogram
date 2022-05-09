@@ -14,6 +14,22 @@ const dist = '_example';
 
 /* base tasks */
 const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
+const { build: demoBuild, watch: demoWatch } = base('src/*/_example', '_example/pages', 'demo');
+
+// Demo
+// const demoGlobs = 'src/*/_example/**';
+// const moveDemo = () => {
+//   return gulp
+//     .src(demoGlobs)
+//     .pipe(
+//       rename((path) => {
+//         path.dirname = path.basename;
+//       }),
+//     )
+//     .pipe(gulp.dest('example/pages'));
+// };
+
+// const watchDemo = () => gulp.watch(demoGlobs, moveDemo);
 
 // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
 // https://github.com/gulpjs/vinyl-fs/issues/226
@@ -39,7 +55,7 @@ watchDist.displayName = 'syncDist:watch';
 /** `gulp build`
  * 构建
  * */
-const build = gulp.series(baseBuild, syncDist);
+const build = gulp.series(demoBuild, baseBuild, syncDist);
 
 /** `gulp task`
  * 编译app.less
@@ -74,7 +90,7 @@ const watchCommonLess = () => {
 /** `gulp watch`
  * 监听
  * */
-const watch = gulp.parallel(baseWatch, watchCommonLess, watchDist);
+const watch = gulp.parallel(baseWatch, demoWatch, watchCommonLess, watchDist);
 
 // `gulp --tasks --gulpfile script/gulpfile.example.js` list tasks
 module.exports = {

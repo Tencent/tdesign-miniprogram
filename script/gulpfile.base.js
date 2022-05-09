@@ -43,7 +43,9 @@ module.exports = (src, dist, moduleName) => {
   });
 
   // options
-  const srcOptions = { base: src, ignore: ['**/__test__', '**/__test__/**'] };
+  const ignore = ['**/__test__', '**/__test__/**'];
+  if (moduleName !== 'demo') ignore.push('**/_example/**');
+  const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
   // 文件匹配路径
@@ -74,6 +76,11 @@ module.exports = (src, dist, moduleName) => {
   /* tasks */
   const tasks = {};
 
+  const moveDemo = gulpIf(
+    moduleName === 'demo',
+    rename((path) => (path.dirname = path.basename)),
+  );
+
   /** `gulp clear`
    * 清理文件
    * */
@@ -100,6 +107,7 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.copy, { ...srcOptions, since: since(tasks.copy) })
       .pipe(changed(dist)) // 过滤掉未改变的文件
+      .pipe(moveDemo)
       .pipe(gulp.dest(dist));
 
   /** `gulp ts`
@@ -120,6 +128,7 @@ module.exports = (src, dist, moduleName) => {
       .pipe(tsProject()) // 编译ts
       .pipe(mpNpm())
       .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
+      .pipe(moveDemo)
       .pipe(gulp.dest(dist));
 
   /** `gulp js`
@@ -143,7 +152,11 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp json`
    * 处理json
    * */
-  tasks.json = () => gulp.src(globs.json, { ...srcOptions, since: since(tasks.json) }).pipe(gulp.dest(dist));
+  tasks.json = () =>
+    gulp
+      .src(globs.json, { ...srcOptions, since: since(tasks.json) })
+      .pipe(moveDemo)
+      .pipe(gulp.dest(dist));
 
   /** `gulp less`
    * 处理less
@@ -164,6 +177,7 @@ module.exports = (src, dist, moduleName) => {
       .pipe(gulpLess()) // 编译less
       .pipe(rename({ extname: '.wxss' }))
       .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
+      .pipe(moveDemo)
       .pipe(gulp.dest(dist));
 
   /** `gulp wxss`
