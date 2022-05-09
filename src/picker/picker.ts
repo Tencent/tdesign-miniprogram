@@ -48,12 +48,10 @@ export default class Picker extends SuperComponent {
         return { index: undefined, value: undefined };
       }
 
-      const selectedValues = {
+      return {
         index: pickerColumns.map((pickerColumn) => pickerColumn._selectedIndex),
         value: pickerColumns.map((pickerColumn) => pickerColumn._selectedValue),
       };
-
-      return selectedValues;
     },
     onConfirm() {
       this.triggerEvent('confirm', this.getSelectedValues());
