@@ -18,10 +18,14 @@ export default class StepItem extends SuperComponent {
 
   externalClasses = [
     `${prefix}-class`,
+    `${prefix}-class-inner`,
     `${prefix}-class-content`,
     `${prefix}-class-title`,
     `${prefix}-class-description`,
     `${prefix}-class-extra`,
+    `${prefix}-class-sub`,
+    `${prefix}-class-sub-dot`,
+    `${prefix}-class-sub-content`,
   ];
 
   properties = props;
@@ -145,7 +149,7 @@ export default class StepItem extends SuperComponent {
         curStatus: this.data.tempStatus,
         curSubStepItems: this.data.subStepItems || [],
         curSubStepItemsStatus: tempStatusList || [],
-        computedIcon: iconStatus || this.data.icon,
+        computedIcon: this.data.icon || iconStatus,
         index,
         isDot: theme === 'dot' && layout === 'vertical',
         layout,
