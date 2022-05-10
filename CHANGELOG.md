@@ -5,6 +5,12 @@ toc: false
 docClass: timeline
 ---
 
+## 0.11.1 `2022-5-10`
+
+### Bug Fixes
+
+- 依赖错误的问题 [#438](https://github.com/Tencent/tdesign-miniprogram/pull/438) [@LeeJim](https://github.com/LeeJim)
+
 ## 0.11.0 `2022-5-7`
 
 ### BREAKING CHANGES
