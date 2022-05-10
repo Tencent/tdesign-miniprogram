@@ -2,7 +2,7 @@ _site
 miniprogram_dist
 _wechatide
 dist
-_example
+/_example
 test/e2e
 test/unit
 .DS_Store

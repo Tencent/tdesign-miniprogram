@@ -1,0 +1,38 @@
+.area-picker-demo {
+  height: 100vh;
+  overflow: hidden;
+
+  .demo-section__desc {
+    margin-top: 32rpx;
+    margin-bottom: 32rpx;
+  }
+
+  .pannel-item {
+    display: flex;
+    align-items: center;
+    height: 96rpx;
+    padding: 0 32rpx;
+    font-size: 32rpx;
+    margin-bottom: 32rpx;
+    background-color: #fff;
+
+    &.last {
+      margin-bottom: -13rpx;
+    }
+  }
+
+  .pannel-label {
+    width: 160rpx;
+    margin-right: 32rpx;
+  }
+
+  .pannel-text {
+    flex: 1;
+    color: #000;
+    opacity: 0.9;
+
+    &.empty {
+      opacity: 0.26;
+    }
+  }
+}

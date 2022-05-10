@@ -1,0 +1,150 @@
+<view class="demo swiper-demo">
+  <view class="demo-title">Swiper 轮播</view>
+  <view class="demo-desc"> 用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置。 </view>
+  <view class="demo-section">
+    <t-demo title="01 类型" desc="轮播图的多种样式"></t-demo>
+    <view class="swiper-box">
+      <!-- 受控属性示例 -->
+      <t-swiper
+        t-class="swiper-wrap"
+        current="{{current}}"
+        autoplay="{{autoplay}}"
+        duration="{{duration}}"
+        interval="{{interval}}"
+        bindchange="onChange"
+        navigation
+      >
+        <t-swiper-item wx:for="{{items}}" wx:key="index">
+          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" /></view>
+        </t-swiper-item>
+      </t-swiper>
+    </view>
+    <view class="swiper-demo-space" />
+    <view class="swiper-box">
+      <t-swiper
+        current="2"
+        autoplay="{{autoplay}}"
+        duration="{{duration}}"
+        interval="{{interval}}"
+        navigation="{{navigation2}}"
+      >
+        <t-swiper-item wx:for="{{items}}" wx:key="index">
+          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" /></view>
+        </t-swiper-item>
+      </t-swiper>
+    </view>
+    <view class="swiper-demo-space" />
+    <view class="swiper-box swiper-box2">
+      <t-swiper current="{{1}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}">
+        <t-swiper-item wx:for="{{items}}" wx:key="index">
+          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" /></view>
+        </t-swiper-item>
+        <!-- 使用插槽组合，可自定义nav组件 -->
+        <t-swiper-nav slot="nav" type="dots-bar" />
+      </t-swiper>
+    </view>
+    <view class="swiper-demo-space" />
+    <view class="swiper-box">
+      <t-swiper
+        current="{{3}}"
+        autoplay="{{autoplay}}"
+        duration="{{duration}}"
+        interval="{{interval}}"
+        navigation="{{navigation3}}"
+      >
+        <t-swiper-item wx:for="{{items}}" wx:key="index">
+          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" /></view>
+        </t-swiper-item>
+      </t-swiper>
+    </view>
+    <t-demo title="02 垂直" desc="轮播图垂直样式"></t-demo>
+    <view class="swiper-box swiper-box-vertical">
+      <t-swiper
+        current="{{1}}"
+        autoplay="{{autoplay}}"
+        duration="{{duration}}"
+        interval="{{interval}}"
+        navigation="{{navigation1}}"
+        direction="vertical"
+        height="{{400}}"
+      >
+        <t-swiper-item wx:for="{{items}}" wx:key="index">
+          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" mode="aspectFill" /></view>
+        </t-swiper-item>
+      </t-swiper>
+    </view>
+    <view class="swiper-demo-space" />
+    <view class="swiper-box swiper-box-option">
+      <view class="cell">
+        <view class="label">自动播放</view>
+        <view class="option">
+          <t-switch t-class="swiper-switch" bindchange="onAutoplayChange" value="{{autoplay}}"></t-switch>
+          <view class="option-desc">{{autoplay?'开':'关'}}</view>
+        </view>
+      </view>
+      <view class="cell">
+        <view class="label">自动播放间隔时间(单位毫秒)</view>
+        <view class="option">
+          <t-slider
+            class="swiper-slider"
+            value="{{interval}}"
+            min="{{1000}}"
+            max="{{5000}}"
+            label=""
+            step="{{500}}"
+            bindchange="onIntervalChange"
+          ></t-slider>
+          <view class="option-desc">{{interval}}</view>
+        </view>
+      </view>
+      <view class="cell">
+        <view class="label">动画持续时间(单位毫秒)</view>
+        <view class="option">
+          <t-slider
+            class="swiper-slider"
+            value="{{duration}}"
+            min="{{200}}"
+            max="{{2000}}"
+            label=""
+            step="{{100}}"
+            bindchange="onDurationChange"
+          ></t-slider>
+          <view class="option-desc">{{duration}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="demo-section">
+    <t-demo title="原生swiper" desc="效果对比"></t-demo>
+    <view class="swiper-box">
+      <swiper
+        class="swiper-wrap"
+        autoplay="{{autoplay}}"
+        duration="{{duration}}"
+        interval="{{interval}}"
+        indicator-dots="{{true}}"
+        current="{{current}}"
+      >
+        <swiper-item wx:for="{{items}}" wx:key="index">
+          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" /></view>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="swiper-demo-space" />
+    <view class="swiper-box">
+      <swiper
+        class="swiper-wrap"
+        autoplay="{{autoplay}}"
+        duration="{{duration}}"
+        interval="{{interval}}"
+        indicator-dots
+        vertical
+        current="{{current}}"
+      >
+        <swiper-item wx:for="{{items}}" wx:key="index">
+          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" /></view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view> -->
+</view>
