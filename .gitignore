@@ -3,6 +3,9 @@ miniprogram_dist
 _wechatide
 dist
 /_example
+example/pages/*
+!example/pages/gulp-error
+!example/pages/home
 test/e2e
 test/unit
 .DS_Store

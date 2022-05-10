@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const del = require('del');
 const changed = require('gulp-changed');
 const rename = require('gulp-rename');
 const gulpLess = require('gulp-less');
@@ -14,22 +15,29 @@ const dist = '_example';
 
 /* base tasks */
 const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
-const { build: demoBuild, watch: demoWatch } = base('src/*/_example', '_example/pages', 'demo');
 
-// Demo
-// const demoGlobs = 'src/*/_example/**';
-// const moveDemo = () => {
-//   return gulp
-//     .src(demoGlobs)
-//     .pipe(
-//       rename((path) => {
-//         path.dirname = path.basename;
-//       }),
-//     )
-//     .pipe(gulp.dest('example/pages'));
-// };
+// src component examples
+const srcExampleInput = 'src/**/_example/**/*.*';
+const srcExampleOutput = 'example/pages';
+const copySrcExample = () => {
+  return gulp
+    .src(srcExampleInput)
+    .pipe(changed(srcExampleOutput))
+    .pipe(
+      rename((path) => {
+        const { dirname, extname } = path;
+        const [, realDir] = dirname.split('_example');
+        const reg = /^([\w-]+)/.exec(dirname);
+        const component = reg ? reg[1] : '';
 
-// const watchDemo = () => gulp.watch(demoGlobs, moveDemo);
+        path.dirname = component + (extname ? realDir : '');
+      }),
+    )
+    .pipe(gulp.dest(srcExampleOutput));
+};
+const cleanSrcExample = () => del([`${srcExampleOutput}/**`, `!${srcExampleOutput}/{home,gulp-error}/**`]);
+
+const watchSrcExample = () => gulp.watch(srcExampleInput, copySrcExample);
 
 // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
 // https://github.com/gulpjs/vinyl-fs/issues/226
@@ -55,7 +63,7 @@ watchDist.displayName = 'syncDist:watch';
 /** `gulp build`
  * 构建
  * */
-const build = gulp.series(demoBuild, baseBuild, syncDist);
+const build = gulp.series(cleanSrcExample, copySrcExample, baseBuild, syncDist);
 
 /** `gulp task`
  * 编译app.less
@@ -90,7 +98,7 @@ const watchCommonLess = () => {
 /** `gulp watch`
  * 监听
  * */
-const watch = gulp.parallel(baseWatch, demoWatch, watchCommonLess, watchDist);
+const watch = gulp.parallel(baseWatch, watchSrcExample, watchCommonLess, watchDist);
 
 // `gulp --tasks --gulpfile script/gulpfile.example.js` list tasks
 module.exports = {
