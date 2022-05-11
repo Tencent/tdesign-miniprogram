@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "SwipeCell",
-  "navigationBarBackgroundColor": "#f9f9f9",
-  "backgroundColorTop":"#f9f9f9",
-  "backgroundColorBottom":"#f9f9f9",
-  "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
-  }
-}

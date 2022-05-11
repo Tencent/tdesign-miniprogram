@@ -96,7 +96,7 @@ module.exports = {
       },
     },
     {
-      files: ['example/**'],
+      files: ['example/**', '**/_example/**'],
       rules: {
         'no-console': 0,
       },
