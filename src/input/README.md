@@ -105,7 +105,7 @@ safe-password-custom-hash | String | - | 安全键盘计算hash的算法表达�
 名称 | 参数 | 描述
 -- | -- | --
 blur | `(value: InputValue)` | 失去焦点时触发
-change | `(value: InputValue, cursor: number, keyCode: number)` | 输入框值发生变化时触发
+change | `(value: InputValue, cursor: number, keyCode: number)` | 输入框值发生变化时触发；cursor 为光标位置；keyCode 为键值
 clear | - | 清空按钮点击时触发
 enter | `(value: InputValue)` | 回车键按下时触发
 focus | `(value: InputValue)` | 获得焦点时触发
