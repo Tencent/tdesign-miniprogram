@@ -5,7 +5,7 @@ Page({
 
   clickAdd() {
     this.setData({
-      percentage: this.data.percentage + 10,
+      percentage: Math.min(this.data.percentage + 10, 100),
     });
   },
 
