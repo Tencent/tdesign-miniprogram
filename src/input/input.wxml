@@ -1,5 +1,5 @@
 <view
-  class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + '--bordered'}} {{prefix}}-class"
+  class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + (borderless ? '' : '--bordered')}} {{prefix}}-class"
 >
   <view wx:if="{{label}}" class="{{classPrefix + '__name'}}">
     <slot name="label" wx:if="{{label === 'slot'}}" />

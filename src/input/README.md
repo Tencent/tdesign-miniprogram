@@ -59,7 +59,7 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 align | String | left | 文本内容位置，居左/居中/居右。可选项：left/center/right | N
-borderless | Boolean | false | 【讨论中】是否开启无边框模式 | N
+borderless | Boolean | true | 是否开启无边框模式 | N
 clearable | Boolean | false | 是否可清空 | N
 disabled | Boolean | false | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N

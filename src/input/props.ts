@@ -11,7 +11,7 @@ const props: TdInputProps = {
     type: String,
     value: 'left',
   },
-  /** 【讨论中】是否开启无边框模式 */
+  /** 是否开启无边框模式 */
   borderless: {
     type: Boolean,
     value: false,
