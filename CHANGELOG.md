@@ -22,6 +22,7 @@ docClass: timeline
   - 增加 `hold-keyboard` 属性
   - 增加安全键盘相关属性
 - Button: 增加 `bindchooseavatar` 原生事件，用户选择头像 [#443](https://github.com/Tencent/tdesign-miniprogram/pull/443) [@anlyyao](https://github.com/anlyyao)
+- Input: 支持 `borderless` 属性 [3cd7d58](https://github.com/Tencent/tdesign-miniprogram/commit/3cd7d58beed539914382784701e1b611293ad257) [@LeeJim](https://github.com/LeeJim)
 ## 0.11.1 `2022-5-10`
 
 ### Bug Fixes
