@@ -62,7 +62,7 @@ align | String | left | 文本内容位置，居左/居中/居右。可选项：
 borderless | Boolean | true | 是否开启无边框模式 | N
 clearable | Boolean | false | 是否可清空 | N
 disabled | Boolean | false | 是否禁用输入框 | N
-error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
+error-message | String | - | 错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名。`['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg']` | N
 format | Function | - | 【开发中】指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => number | string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 label | String / Slot | - | 左侧文本 | N
