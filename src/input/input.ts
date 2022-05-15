@@ -20,52 +20,55 @@ export default class Input extends SuperComponent {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
-  externalClasses = ['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-input`,
+    `${prefix}-class-placeholder`,
+    `${prefix}-class-error-msg`,
+  ];
 
   behaviors = ['wx://form-field'];
 
   properties = props;
 
-  controlledProps = [
-    {
-      key: 'value',
-      event: 'change',
-    },
-  ];
-
   data = {
+    prefix,
     classPrefix: name,
     classBasePrefix: prefix,
     characterLength: 0,
   };
 
   methods = {
-    onInput(event) {
-      const { value } = event.detail;
+    onInput(e) {
+      const { value, cursor, keyCode } = e.detail;
       const { maxcharacter } = this.properties;
+
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { characters = '', length = 0 } = getCharacterLength(value, maxcharacter);
 
-        this._trigger('change', { value: characters });
+        this.triggerEvent('change', { value: characters, cursor, keyCode });
         this.setData({
           characterLength: length,
         });
       } else {
-        this._trigger('change', { value });
+        this.triggerEvent('change', { value, cursor, keyCode });
       }
     },
-    onFocus(event) {
-      this.triggerEvent('focus', event.detail);
+    onFocus(e) {
+      this.triggerEvent('focus', e.detail);
     },
-    onBlur(event) {
-      this.triggerEvent('blur', event.detail);
+    onBlur(e) {
+      this.triggerEvent('blur', e.detail);
     },
-    onConfirm(event) {
-      this.triggerEvent('enter', event.detail);
+    onConfirm(e) {
+      this.triggerEvent('enter', e.detail);
     },
-    clearInput(event) {
-      this.triggerEvent('clear', event.detail);
+    clearInput(e) {
+      this.triggerEvent('clear', e.detail);
       this.setData({ value: '' });
+    },
+    onKeyboardHeightChange(e) {
+      this.triggerEvent('keyboardheightchange', e.detail);
     },
   };
 }

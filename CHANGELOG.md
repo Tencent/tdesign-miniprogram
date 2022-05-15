@@ -5,6 +5,30 @@ toc: false
 docClass: timeline
 ---
 
+## 0.11.2 `2022-5-15`
+
+### Bug Fixes
+
+- Picker: 修复在没有取消和确认按钮的时候，标题没居中对齐的问题 [#435](https://github.com/Tencent/tdesign-miniprogram/pull/435) [@LeeJim](https://github.com/LeeJim)
+- Sticky: 修复在极端情况下报错的问题 [#440](https://github.com/Tencent/tdesign-miniprogram/pull/440) [@JJunYang](https://github.com/JJunYang)
+
+### Features
+
+- 完善 Input 原生属性: [#434](https://github.com/Tencent/tdesign-miniprogram/pull/434) [@LeeJim](https://github.com/LeeJim)
+  - 完善 `change` 事件，增加返回 `cursor` 和 `keyCode` 数据
+  - 增加 `keyboardheightchange` 事件，键盘高度发生变化的时候触发
+  - 增加占位符相关属性：`placehoderStyle` 和 `placeholderClass`
+  - 增加光标相关属性：`cursor`、`selection-start`、`selection-end`
+  - 增加 `hold-keyboard` 属性
+  - 增加安全键盘相关属性
+- Button: 增加 `bindchooseavatar` 原生事件，用户选择头像 [#443](https://github.com/Tencent/tdesign-miniprogram/pull/443) [@anlyyao](https://github.com/anlyyao)
+- Input: 支持 `borderless` 属性 [3cd7d58](https://github.com/Tencent/tdesign-miniprogram/commit/3cd7d58beed539914382784701e1b611293ad257) [@LeeJim](https://github.com/LeeJim)
+## 0.11.1 `2022-5-10`
+
+### Bug Fixes
+
+- 依赖错误的问题 [#438](https://github.com/Tencent/tdesign-miniprogram/pull/438) [@LeeJim](https://github.com/LeeJim)
+
 ## 0.11.0 `2022-5-7`
 
 ### BREAKING CHANGES
