@@ -5,11 +5,11 @@
 @picker-font-weight: 500;
 @picker-toolbar-height: 96rpx;
 @picker-button-padding: 32rpx;
-@picker-column-height: 80rpx;
+@picker-item-height: 80rpx;
 @picker-color-top: #fff;
 @picker-background-color: rgba(255, 255, 255, 1);
-@picker-mask-color-top: hsla(0, 0%, 100%, .92);
-@picker-mask-color-bottom: hsla(0, 0%, 100%, .4);
+@picker-mask-color-top: hsla(0, 0%, 100%, 0.92);
+@picker-mask-color-bottom: hsla(0, 0%, 100%, 0.4);
 
 .@{prefix}-picker {
   position: relative;
@@ -28,6 +28,11 @@
   }
 
   &__title {
+    flex: 1;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     color: @text-level-1-color;
     font-weight: @picker-font-weight;
   }
@@ -74,7 +79,7 @@
     background-image: linear-gradient(180deg, @picker-mask-color-top, @picker-mask-color-bottom),
       linear-gradient(0deg, @picker-mask-color-top, @picker-mask-color-bottom);
     background-position: top, bottom;
-    background-size: 100% @picker-column-height * 2;
+    background-size: 100% @picker-item-height * 2;
     background-repeat: no-repeat;
     background-position: top, bottom;
     transform: translateZ(0);
@@ -84,10 +89,10 @@
 
   &__indicator {
     width: 100%;
-    height: @picker-column-height;
+    height: @picker-item-height;
     position: absolute;
     left: 0;
-    top: @picker-column-height * 2;
+    top: @picker-item-height * 2;
     z-index: 3;
     pointer-events: none;
 

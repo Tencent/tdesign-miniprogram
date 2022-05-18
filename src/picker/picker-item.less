@@ -1,0 +1,33 @@
+@import '../common/style/index.less';
+
+@item: ~'@{prefix}-picker-item';
+@picker-group-height: 400rpx;
+@picker-item-height: 80rpx;
+@picker-item-line-height: 80rpx;
+@picker-item-text-color: #000;
+
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.@{item} {
+  &__group {
+    height: @picker-group-height;
+    overflow: hidden;
+    flex: 1;
+  }
+
+  &__wrapper {
+    padding: 160rpx 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: @picker-item-height;
+    line-height: @picker-item-line-height;
+    color: @picker-item-text-color;
+  }
+}

@@ -20,7 +20,6 @@
     "pages/textarea/textarea",
     "pages/message/message",
     "pages/toast/toast",
-    "pages/segmented-control/segmented-control",
     "pages/stepper/stepper",
     "pages/slider/slider",
     "pages/radio/radio",
@@ -50,13 +49,15 @@
     "pages/grid/grid",
     "pages/upload/upload",
     "pages/count-down/count-down",
+    "pages/overlay/overlay",
     "pages/image/image",
     "pages/search/search",
     "pages/home/navigateFail/navigateFail",
     "pages/navbar/navbar",
     "pages/date-time-picker/date-time-picker",
     "pages/action-sheet/action-sheet",
-    "pages/notice-bar/notice-bar"
+    "pages/notice-bar/notice-bar",
+    "pages/image-viewer/image-viewer"
   ],
   "usingComponents": {
     "t-demo": "../../components/demo-block/index",
@@ -76,13 +77,13 @@
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-rate": "tdesign-miniprogram/rate/rate",
     "t-picker": "tdesign-miniprogram/picker/picker",
-    "t-picker-column": "tdesign-miniprogram/picker/picker-column",
+    "t-picker-item": "tdesign-miniprogram/picker/picker-item",
     "t-progress": "tdesign-miniprogram/progress/progress",
     "t-input": "tdesign-miniprogram/input/input",
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "t-message": "tdesign-miniprogram/message/message",
     "t-toast": "tdesign-miniprogram/toast/toast",
-    "t-segmented-control": "tdesign-miniprogram/segmented-control/segmented-control",
+    "t-overlay": "tdesign-miniprogram/overlay/overlay",
     "t-stepper": "tdesign-miniprogram/stepper/stepper",
     "t-slider": "tdesign-miniprogram/slider/slider",
     "t-tag": "tdesign-miniprogram/tag/tag",
@@ -123,7 +124,8 @@
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
     "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
-    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar"
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer"
   },
   "window": {
     "backgroundTextStyle": "light",

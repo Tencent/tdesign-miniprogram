@@ -43,7 +43,7 @@ Page({
   },
   onSelect(e) {
     const { indexes } = e.detail;
-    const group = this.data.groups[indexes[0]];
+    const group = this.data.letter[indexes[0]];
     const city = group.children[indexes[1]];
     wx.showToast({ icon: 'none', title: `你选择了: ${group.title}>${city.title}` });
   },

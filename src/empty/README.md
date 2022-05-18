@@ -47,7 +47,7 @@ isComponent: true
     icon="info-circle-filled"
     description="描述文字"
   >
-    <t-button slot="action" variant="plain">按钮</t-button>
+    <t-button slot="action" t-class="t-empty__button" variant="plain">按钮</t-button>
   </t-empty>
 </view>
 ```

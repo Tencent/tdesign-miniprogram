@@ -1,0 +1,21 @@
+<view class="demo-title">Popup 弹出层</view>
+<view class="demo-desc">由其他控件触发，屏幕滑出或弹出一块自定义内容区域。</view>
+<view class="tdesign-demo-popup">
+  <t-demo title="01 类型" operList="{{operList}}" bindclickoper="clickHandle">
+    <t-popup visible="{{top}}" bind:visible-change="onVisibleChange" placement="top">
+      <view class="block block--top" />
+    </t-popup>
+    <t-popup visible="{{bottom}}" bind:visible-change="onVisibleChange" placement="bottom" close-btn>
+      <view class="block block--bottom" />
+    </t-popup>
+    <t-popup visible="{{center}}" bind:visible-change="onVisibleChange" placement="center">
+      <view class="block block--middle" />
+    </t-popup>
+    <t-popup visible="{{left}}" bind:visible-change="onVisibleChange" placement="left">
+      <view class="block block--left" />
+    </t-popup>
+    <t-popup visible="{{right}}" bind:visible-change="onVisibleChange" placement="right">
+      <view class="block block--right" />
+    </t-popup>
+  </t-demo>
+</view>

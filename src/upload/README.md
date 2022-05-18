@@ -53,11 +53,7 @@ delete-btn | String / Slot | - | 删除图标。值为空，使用默认图标�
 file-list-display | Slot | - | 【开发中】用于完全自定义文件列表内容 | N
 files | Array | - | 已上传文件列表。TS 类型：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' | 'video'; percent?: number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 default-files | Array | undefined | 已上传文件列表。非受控属性。TS 类型：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' | 'video'; percent?: number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
-grid-config | Object | - | upload组件每行上传图片列数以及图片的宽度和高度。TS 类型：`{
-  column?: number;
-  width?: number;
-  height?: number;
-}` | N
+grid-config | Object | - | upload组件每行上传图片列数以及图片的宽度和高度。TS 类型：`{ column?: number; width?: number; height?: number; }` | N
 gutter | Number | 16 | 预览窗格的 gutter 大小，单位 rpx | N
 image-props | Object | - | 透传 Image 组件全部属性。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 max | Number | 0 | 用于控制文件上传数量，值为 0 则不限制 | N

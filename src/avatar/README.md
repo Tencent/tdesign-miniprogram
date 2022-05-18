@@ -112,7 +112,7 @@ onAddTap() {
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 alt | String | - | 头像替换文本，仅当图片加载失败时有效 | N
-badge-props | Object | - | 头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字。TS 类型：`TdBadgeProps` `import { TdBadgeProps } from '@Badge'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
+badge-props | Object | - | 头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class']` | N
 hide-on-load-failed | Boolean | false | 加载失败时隐藏图片 | N
 icon | String / Slot | - | 图标 | N
@@ -124,7 +124,7 @@ size | String | - | 尺寸，示例值：small/medium/large/24px/38px 等，默�
 
 名称 | 参数 | 描述
 -- | -- | --
-error | - | 图片加载失败时触发
+error | \- | 图片加载失败时触发
 
 ### AvatarGroup Props
 

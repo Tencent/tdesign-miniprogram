@@ -1,0 +1,62 @@
+<view class="t-slider-title">Slider 滑动选择器</view>
+<view class="t-slider-desc">用于选择横轴上的数值、区间、档位。</view>
+<t-demo title="01 类型" desc="基础滑动选择器">
+  <view>
+    <t-slider defaultValue="60" colors="{{colors}}" />
+  </view>
+  <view class="t-slider-wrapper-desc">带数值滑动选择器</view>
+  <view>
+    <t-slider value="{{value3}}" bind:change="handleChange" label="${value}" colors="{{colors}}"></t-slider>
+  </view>
+  <view class="t-slider-wrapper-desc">起始非零滑动选择器</view>
+  <view>
+    <t-slider defaultValue="30" min="{{30}}" max="{{200}}" label colors="{{colors}}"></t-slider>
+  </view>
+  <view class="t-slider-wrapper-desc">带刻度滑动选择器</view>
+  <view class="t-slider__mark">
+    <t-slider marks="{{mask3}}" step="{{50}}" defaultValue="{{50}}" bind:change="handleChange2"></t-slider>
+  </view>
+  <view class="t-slider-wrapper-desc">区间滑动选择器</view>
+  <t-slider range label showExtremeValue defaultValue="{{[30, 70]}}" colors="{{colors}}"></t-slider>
+</t-demo>
+<t-demo title="02 状态" desc="基础滑动选择器">
+  <view>
+    <t-slider disabled value="{{60}}" disabledColor="{{disabledColor}}" />
+  </view>
+  <view class="t-slider-wrapper-desc">带数值滑动选择器</view>
+  <view class="space-container">
+    <t-slider disabled value="{{50}}" label disabledColor="{{disabledColor}}"></t-slider>
+  </view>
+  <view class="t-slider-wrapper-desc">起始非零滑动选择器</view>
+  <view>
+    <t-slider disabled value="{{30}}" min="{{30}}" max="{{200}}" label disabledColor="{{disabledColor}}"></t-slider>
+  </view>
+  <view class="t-slider-wrapper-desc">带刻度滑动选择器</view>
+  <view class="t-slider__mark">
+    <t-slider disabled marks="{{mask3}}" step="{{50}}" value="{{50}}" disabledColor="{{disabledColor}}"></t-slider>
+  </view>
+  <view class="t-slider-wrapper-desc">区间滑动选择器</view>
+  <view class="space-container">
+    <t-slider
+      disabled
+      label
+      range
+      showExtremeValue
+      value="{{[30, 70]}}"
+      colors="{{['red', 'rgba(220, 220, 220, 1)']}}"
+    ></t-slider>
+  </view>
+</t-demo>
+<t-demo title="03 规格" desc="无标题滑动选择器">
+  <view class="space-container">
+    <view>
+      <t-slider defaultValue="50" colors="{{colors}}" />
+    </view>
+  </view>
+</t-demo>
+<t-demo desc="有标题滑动选择器">
+  <view class="space-container label">
+    <view>选择器标题</view>
+    <t-slider class="label-class" defaultValue="50" colors="{{colors}}" />
+  </view>
+</t-demo>

@@ -174,7 +174,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">14</em></h3>
+<h3>数据展示<em class="tag">15</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar">
@@ -256,13 +256,13 @@ spline: explain
     </a>
   </div>
 
-  <!-- <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/imageviewer">
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/image-viewer">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-imageviewer.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-imageviewer-dark.png" />
       <p class="name">ImageViewer 图片预览</p>
     </a>
-  </div> -->
+  </div>
 
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/skeleton">
@@ -300,7 +300,7 @@ spline: explain
 <h3>消息提醒<em class="tag">10</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/actionsheet">
+    <a class="item" href="/miniprogram/components/action-sheet">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-actionsheet.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-actionsheet-dark.png" />
       <p class="name">ActionSheet 动作面板</p>

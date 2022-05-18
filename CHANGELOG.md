@@ -5,6 +5,68 @@ toc: false
 docClass: timeline
 ---
 
+## 0.11.2 `2022-5-15`
+
+### Bug Fixes
+
+- Picker: 修复在没有取消和确认按钮的时候，标题没居中对齐的问题 [#435](https://github.com/Tencent/tdesign-miniprogram/pull/435) [@LeeJim](https://github.com/LeeJim)
+- Sticky: 修复在极端情况下报错的问题 [#440](https://github.com/Tencent/tdesign-miniprogram/pull/440) [@JJunYang](https://github.com/JJunYang)
+
+### Features
+
+- 完善 Input 原生属性: [#434](https://github.com/Tencent/tdesign-miniprogram/pull/434) [@LeeJim](https://github.com/LeeJim)
+  - 完善 `change` 事件，增加返回 `cursor` 和 `keyCode` 数据
+  - 增加 `keyboardheightchange` 事件，键盘高度发生变化的时候触发
+  - 增加占位符相关属性：`placehoderStyle` 和 `placeholderClass`
+  - 增加光标相关属性：`cursor`、`selection-start`、`selection-end`
+  - 增加 `hold-keyboard` 属性
+  - 增加安全键盘相关属性
+- Button: 增加 `bindchooseavatar` 原生事件，用户选择头像 [#443](https://github.com/Tencent/tdesign-miniprogram/pull/443) [@anlyyao](https://github.com/anlyyao)
+- Input: 支持 `borderless` 属性 [3cd7d58](https://github.com/Tencent/tdesign-miniprogram/commit/3cd7d58beed539914382784701e1b611293ad257) [@LeeJim](https://github.com/LeeJim)
+## 0.11.1 `2022-5-10`
+
+### Bug Fixes
+
+- 依赖错误的问题 [#438](https://github.com/Tencent/tdesign-miniprogram/pull/438) [@LeeJim](https://github.com/LeeJim)
+
+## 0.11.0 `2022-5-7`
+
+### BREAKING CHANGES
+
+- Tabs: 不再支持 slot 类型的 `label` [#423](https://github.com/Tencent/tdesign-miniprogram/pull/423) [@LeeJim](https://github.com/LeeJim)
+
+### Bug Fixes
+
+- Picker: 修复滑动延迟的问题 [#415](https://github.com/Tencent/tdesign-miniprogram/pull/415) [@LeeJim](https://github.com/LeeJim)
+- Avatar: 修复图标大小不随尺寸变化的问题 [#424](https://github.com/Tencent/tdesign-miniprogram/pull/424) [@Perisiguiendo](https://github.com/Perisiguiendo)
+- Tabbar: 修复样式告警问题 [#426](https://github.com/Tencent/tdesign-miniprogram/pull/426) [@anlyyao](https://github.com/anlyyao)
+- 修复样式告警问题: [#431](https://github.com/Tencent/tdesign-miniprogram/pull/431) [@anlyyao](https://github.com/anlyyao)
+  - ActionSheet
+  - ImageViewer
+  - Picker
+  - Steps
+## 0.10.0 `2022-4-29`
+
+### BREAKING CHANGES
+
+- Picker: 子组件名称从 `t-picker-column` 改成 `t-picker-item` [#392](https://github.com/Tencent/tdesign-miniprogram/pull/392) [@LeeJim](https://github.com/LeeJim)
+- DateTimePicker: `value` 从非受控改成受控 [#413](https://github.com/Tencent/tdesign-miniprogram/pull/413) [@LeeJim](https://github.com/LeeJim)
+### Bug Fixes
+
+- Drawer: 修复 `items` 标题无法显示的问题 [#388](https://github.com/Tencent/tdesign-miniprogram/pull/388) [@anlyyao](https://github.com/anlyyao)
+- PullDownRefresh: 修复无法使用的问题 [#400](https://github.com/Tencent/tdesign-miniprogram/pull/400) [@LeeJim](https://github.com/LeeJim)
+- Toast: 更正 `Loading` 标志的颜色 [#405](https://github.com/Tencent/tdesign-miniprogram/pull/405) [@LeeJim](https://github.com/LeeJim)
+- DateTimePicker: 修复 `defaultValue` 无法使用的问题 [#413](https://github.com/Tencent/tdesign-miniprogram/pull/413) [@LeeJim](https://github.com/LeeJim)
+
+### Features
+
+- Overlay: 新增遮罩层组件 [#407](https://github.com/Tencent/tdesign-miniprogram/pull/407) [@LeeJim](https://github.com/LeeJim)
+- ImageViewer: 新增图片预览组件 [#408](https://github.com/Tencent/tdesign-miniprogram/pull/408) [@NuoHui](https://github.com/NuoHui)
+- Tabs: 新增 `click` 事件 [#384](https://github.com/Tencent/tdesign-miniprogram/pull/384) [@JJunYang](https://github.com/JJunYang)
+- Grid: 新增 default `slot` [#395](https://github.com/Tencent/tdesign-miniprogram/pull/395) [@LeeJim](https://github.com/LeeJim)
+- Loading: 新增 `inheritColor` 属性，加载标志的颜色继承外部 [#404](https://github.com/Tencent/tdesign-miniprogram/pull/404) [@LeeJim](https://github.com/LeeJim)
+- Toast: 新增遮罩层，通过 `showOverlay` 和 `overlayProps` 控制 [#409](https://github.com/Tencent/tdesign-miniprogram/pull/409) [@LeeJim](https://github.com/LeeJim)
+
 ## 0.9.0 `2022-4-21`
 
 ### BREAKING CHANGES

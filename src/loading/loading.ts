@@ -21,7 +21,9 @@ export default class Loading extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = props;
+  properties = {
+    ...props,
+  };
 
   timer = null;
 

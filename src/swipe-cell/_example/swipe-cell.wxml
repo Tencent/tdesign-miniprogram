@@ -1,0 +1,44 @@
+<view class="demo">
+  <view class="demo-title">SwipeCell 滑动操作</view>
+  <view class="demo-desc">用于承载列表中的更多操作，通过左右滑动来展示，按钮的宽度固定高度根据列表高度而变化。</view>
+  <t-demo title="01 类型" desc="左右滑动操作各列表样式">
+    <view class="t-swipe-cell-demo-line__wrapper">
+      <view class="demo-section__desc t-swipe-cell-demo-desc">往左滑动</view>
+
+      <t-swipe-cell>
+        <t-cell title="列表-左滑单操作" note="辅助信息" bordered="{{false}}" />
+        <view slot="right" class="t-swipe-cell-demo-btn delete-btn" bind:tap="onDelete">删除</view>
+      </t-swipe-cell>
+      <view class="t-swipe-cell-demo-divider"></view>
+      <t-swipe-cell right="{{right}}" bind:click="onActionClick">
+        <t-cell title="列表-左滑双操作" note="双操作" bordered="{{false}}" />
+      </t-swipe-cell>
+      <view class="t-swipe-cell-demo-divider"></view>
+      <t-swipe-cell>
+        <t-cell title="列表-左滑多操作" note="多操作" bordered="{{false}}" />
+        <view slot="right" class="t-swipe-cell-demo-btn-wrapper">
+          <view class="t-swipe-cell-demo-btn favor-btn" bind:tap="onFavor">收藏</view>
+          <view class="t-swipe-cell-demo-btn edit-btn" bind:tap="onEdit">编辑</view>
+          <view class="t-swipe-cell-demo-btn delete-btn" bind:tap="onDelete">删除</view>
+        </view>
+      </t-swipe-cell>
+      <view class="t-swipe-cell-demo-divider"></view>
+      <t-swipe-cell>
+        <t-cell
+          bordered="{{false}}"
+          title="左滑大列表"
+          description="一段很长很长的内容文字一段很长很长的内容文字一段很长很长的内容文字"
+          t-class-image="title-image-large"
+          image="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/placeholder/quartet.svg"
+        />
+        <view slot="right" class="t-swipe-cell-demo-btn delete-btn" bind:tap="onDelete">删除</view>
+      </t-swipe-cell>
+      <t-cell-group title="往右滑动">
+        <t-swipe-cell>
+          <t-cell title="列表-右滑单操作" note="辅助信息" bordered="{{false}}" />
+          <view slot="left" class="t-swipe-cell-demo-btn favor-btn" bind:tap="onChoice">选择</view>
+        </t-swipe-cell>
+      </t-cell-group>
+    </view>
+  </t-demo>
+</view>

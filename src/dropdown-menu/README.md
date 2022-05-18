@@ -201,3 +201,4 @@ default-value | String / Number / Array | undefined | 选中值。非受控属�
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: TdDropdownItemOptionValueType | Array<TdDropdownItemOptionValueType>)` | 值改变时触发
+confirm | `(value: TdDropdownItemOptionValueType | Array<TdDropdownItemOptionValueType>)` | 点击确认时触发

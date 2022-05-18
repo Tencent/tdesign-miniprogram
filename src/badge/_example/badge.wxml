@@ -1,0 +1,55 @@
+<view class="demo-title">Badge 徽标</view>
+<view class="demo-desc">用于告知用户，该区域的状态变化或者待处理任务的数量。</view>
+<t-demo title="01 类型" desc="徽标主要分红点、数字、文字和角标提醒">
+  <view class="demo-grid">
+    <t-badge dot class="badge-item" content="消息" />
+    <t-badge count="{{16}}" class="badge-item" content="消息" />
+    <t-badge count="New" class="badge-item">
+      <text style="padding: 0 10px">消息</text>
+    </t-badge>
+    <t-badge count="···" class="badge-item">
+      <text style="padding: 0 10px">消息</text>
+    </t-badge>
+    <t-badge dot class="badge-item">
+      <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
+    </t-badge>
+    <t-badge count="{{16}}" class="badge-item">
+      <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
+    </t-badge>
+    <t-badge count="New" class="badge-item">
+      <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
+    </t-badge>
+    <t-badge count="···" class="badge-item">
+      <t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
+    </t-badge>
+  </view>
+  <t-cell-group style="overflow: hidden">
+    <t-cell title="单行标题" hover arrow>
+      <view class="cell-badge-wrap" slot="note">
+        <t-badge dot />
+      </view>
+    </t-cell>
+    <t-cell title="单行标题" hover arrow>
+      <view class="cell-badge-wrap" slot="note">
+        <t-badge count="{{16}}" />
+      </view>
+    </t-cell>
+    <t-cell title="单行标题" hover arrow>
+      <view class="cell-badge-wrap" slot="note">
+        <t-badge count="New" shape="square" class="cell-badge" />
+        <t-badge count="New" class="cell-badge" />
+      </view>
+    </t-cell>
+    <t-cell title="单行标题">
+      <t-badge count="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+    </t-cell>
+  </t-cell-group>
+</t-demo>
+<view class="bar-wrapper">
+  <t-tab-bar value="label1" bindchange="onChange" class="mb-12" t-class="tab-bar-wrapper">
+    <t-tab-bar-item badge-props="{{ {count: 16} }}" value="label1" icon="app">文字</t-tab-bar-item>
+    <t-tab-bar-item badge-props="{{ {dot: true} }}" value="label2" icon="app">文字 </t-tab-bar-item>
+    <t-tab-bar-item badge-props="{{ {count: 'New'} }}" value="label3" icon="app">文字 </t-tab-bar-item>
+    <t-tab-bar-item badge-props="{{ {count: '···'} }}" value="label4" icon="app">文字 </t-tab-bar-item>
+  </t-tab-bar>
+</view>

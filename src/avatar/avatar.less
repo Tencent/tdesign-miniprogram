@@ -1,14 +1,11 @@
 @import '../common/style/index.less';
 
 .@{prefix}-avatar {
-  font-weight: 600;
-  font-size: 28rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  overflow: hidden;
-  border-radius: 999rpx;
+  font-weight: 600;
 
   &__wrapper {
     float: left;
@@ -37,22 +34,19 @@
   &.@{prefix}-size-l {
     width: 128rpx;
     height: 128rpx;
-    font-weight: 600;
-    font-size: 36rpx;
+    font-size: 52rpx;
   }
 
   &.@{prefix}-size-m {
     width: 96rpx;
     height: 96rpx;
-    font-weight: 600;
-    font-size: 32rpx;
+    font-size: 40rpx;
   }
 
   &.@{prefix}-size-s {
     width: 64rpx;
     height: 64rpx;
-    font-weight: 600;
-    font-size: 24rpx;
+    font-size: 28rpx;
   }
 
   .@{prefix}-image,
@@ -73,30 +67,16 @@
 
   &__text,
   &__icon {
+    font-size: inherit;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 999rpx;
 
     &:empty {
       width: 0;
       height: 0;
-    }
-  }
-
-  &__icon--default {
-    &-l {
-      font-size: 64rpx;
-    }
-
-    &-m {
-      font-size: 48rpx;
-    }
-
-    &-s {
-      font-size: 32rpx;
     }
   }
 }

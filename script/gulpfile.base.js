@@ -43,10 +43,10 @@ module.exports = (src, dist, moduleName) => {
   });
 
   // options
-  const srcOptions = { base: src, ignore: ['**/__test__', '**/__test__/**'] };
+  const ignore = ['**/__test__', '**/__test__/**', '**/_example/**'];
+  const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
-
   // 文件匹配路径
   const globs = {
     ts: `${src}/**/*.ts`, // 匹配 ts 文件
@@ -66,7 +66,7 @@ module.exports = (src, dist, moduleName) => {
     `!${globs.json}`,
     `!${globs.less}`,
     `!${globs.wxss}`,
-    `!${globs.md}`,
+    '!**/_example/**',
   ];
 
   // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准

@@ -86,13 +86,6 @@ export default {
           path: '/miniprogram/components/drawer',
           component: () => import('@/drawer/README.md'),
         },
-        // {
-        //   title: 'ImageViewer 图片预览',
-        //   name: 'image-viewer',
-        //   meta: { docType: 'navigation' },
-        //   path: '/miniprogram/components/image-viewer',
-        //   component: () => import('@/image-viewer/README.md'),
-        // },
         {
           title: 'Indexes 索引',
           name: 'indexes',
@@ -107,13 +100,6 @@ export default {
           path: '/miniprogram/components/navbar',
           component: () => import('@/navbar/README.md'),
         },
-        // {
-        //   title: 'SegmentedControl 分段器',
-        //   name: 'segmented-control',
-        //   meta: { docType: 'navigation' },
-        //   path: '/miniprogram/components/segmented-control',
-        //   component: () => import('@/segmented-control/README.md'),
-        // },
         {
           title: 'Steps 步骤条',
           name: 'steps',
@@ -303,6 +289,13 @@ export default {
           component: () => import('@/image/README.md'),
         },
         {
+          title: 'ImageViewer 图片预览',
+          name: 'image-viewer',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/image-viewer',
+          component: () => import('@/image-viewer/README.md'),
+        },
+        {
           title: 'Skeleton 骨架屏',
           name: 'skeleton',
           meta: { docType: 'data' },
@@ -340,7 +333,7 @@ export default {
           title: 'ActionSheet 动作面板',
           name: 'actionsheet',
           meta: { docType: 'message' },
-          path: '/miniprogram/components/actionsheet',
+          path: '/miniprogram/components/action-sheet',
           component: () => import('@/action-sheet/README.md'),
         },
         {
@@ -371,13 +364,20 @@ export default {
           path: '/miniprogram/components/message',
           component: () => import('@/message/README.md'),
         },
-        // {
-        //   title: 'NoticeBar 公告栏',
-        //   name: 'noticebar',
-        //   meta: { docType: 'message' },
-        //   path: '/miniprogram/components/noticebar',
-        //   component: () => import('@/noticebar/README.md'),
-        // },
+        {
+          title: 'NoticeBar 公告栏',
+          name: 'noticebar',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/notice-bar',
+          component: () => import('@/notice-bar/README.md'),
+        },
+        {
+          title: 'Overlay 遮罩层',
+          name: 'overlay',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/overlay',
+          component: () => import('@/overlay/README.md'),
+        },
         {
           title: 'Popup 弹出层',
           name: 'popup',

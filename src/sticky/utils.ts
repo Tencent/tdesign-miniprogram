@@ -4,10 +4,7 @@ const getCurrentPage = function <T>() {
 };
 
 type IPageScrollOption = WechatMiniprogram.Page.IPageScrollOption;
-type Scroller = (
-  this: WechatMiniprogram.Component.TrivialInstance,
-  event?: IPageScrollOption,
-) => void;
+type Scroller = (this: WechatMiniprogram.Component.TrivialInstance, event?: IPageScrollOption) => void;
 
 const onPageScroll = function (event?: IPageScrollOption) {
   const { pageScroller = [] } = getCurrentPage<{
@@ -41,6 +38,7 @@ export const pageScrollMixin = (scroller: Scroller) =>
 
     detached() {
       const page = getCurrentPage<{ pageScroller: Scroller[] }>();
+      if (!page) return;
       page.pageScroller = page.pageScroller?.filter((item) => item !== scroller) || [];
     },
   });

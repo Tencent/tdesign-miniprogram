@@ -1,0 +1,17 @@
+<view
+  wx:if="{{visible && preventScrollThrough}}"
+  class="{{prefix}}-overlay {{prefix}}-overlay--{{visible ? 'active' : ''}}"
+  style="z-index: {{zIndex}}; transition: background-color {{duration}}ms ease; {{computedStyle}}"
+  bind:tap="handleClick"
+  catchtouchmove="noop"
+>
+  <slot />
+</view>
+<view
+  wx:elif="{{visible}}"
+  class="{{prefix}}-overlay {{prefix}}-overlay--{{visible ? 'active' : ''}}"
+  style="z-index: {{zIndex}}; transition: background-color {{duration}}ms ease; {{computedStyle}}"
+  bind:tap="handleClick"
+>
+  <slot />
+</view>

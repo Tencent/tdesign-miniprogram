@@ -34,14 +34,6 @@ npm i tdesign-miniprogram -S --production
 
 > 安装完之后，需要在微信开发者工具中对 npm 进行构建：`工具 -  构建 npm`
 
-### 通过 Git Clone
-
-克隆到源代码之后，然后将 `tdesign-miniprogram` 目录拷贝到自己的项目中
-
-```bash
-git clone git@github.com:Tencent/tdesign-miniprogram.git
-```
-
 ## 修改 app.json
 
 将 `app.json` 中的 `"style": "v2"` 移除。
@@ -55,7 +47,7 @@ git clone git@github.com:Tencent/tdesign-miniprogram.git
 ```json
 {
   "usingComponents": {
-    "t-button": "/path/to/tdesign-miniprogram/dist/button/index"
+    "t-button": "tdesign-miniprogram/button/button"
   }
 }
 ```
@@ -80,4 +72,4 @@ npm run dev
 
 ## 基础库版本
 
-最低基础库版本`^2.6.1`
+最低基础库版本`^2.6.5`
