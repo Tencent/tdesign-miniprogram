@@ -114,7 +114,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png']}}\" wx:key=\"index\" image=\"{{item}}\" t-class=\"excursion-right-8\" /></t-avatar-group>",
+      "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png']}}\" wx:key=\"index\" image=\"{{item}}\" style=\"margin-right: -16rpx\" /></t-avatar-group>",
       "require": {
         "t-avatar": "./avatar/avatar"
       },
@@ -3223,7 +3223,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-skeleton t-class=\"skeleton-basic\" rowCol=\"{{ [{ width: '686rpx', height: '32rpx' }, 1, 1, { width: '380rpx', height: '32rpx' }]}}\" t-class-text=\"basic-text\" loading></t-skeleton>",
+      "tpl": "<t-skeleton rowCol=\"{{ [{ width: '686rpx', height: '32rpx' }, 1, 1, { width: '380rpx', height: '32rpx' }]}}\" loading></t-skeleton>",
       "path": "./skeleton/skeleton"
     },
     "t-slider": {
