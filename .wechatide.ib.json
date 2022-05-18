@@ -114,7 +114,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['xxx.png','xxx.png','xxx.png']}}\" image=\"{{item}}\" /></t-avatar-group>",
+      "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png']}}\" wx:key=\"index\" image=\"{{item}}\" t-class=\"excursion-right-8\" /></t-avatar-group>",
       "require": {
         "t-avatar": "./avatar/avatar"
       },
@@ -1432,7 +1432,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-drawer visible=\"{{true}}\" placement=\"left\" items=\"{{[{name: '菜单一'},{name: '菜单二'}]}}\"></t-drawer>",
+      "tpl": "<t-drawer visible=\"{{true}}\" placement=\"left\" items=\"{{[{title: '菜单一'},{title: '菜单二'}]}}\"></t-drawer>",
       "path": "./drawer/drawer"
     },
     "t-dropdown-menu": {
@@ -1482,7 +1482,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-dropdown-menu><t-dropdown-item label='菜单' options='{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}' defaultValue='option_3' /><t-dropdown-item label='菜单' options='{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}' defaultValue='option_3' /></t-dropdown-menu>",
+      "tpl": "<t-dropdown-menu><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /></t-dropdown-menu>",
       "require": {
         "t-dropdown-menu": "./dropdown-menu/dropdown-item"
       },
@@ -1574,7 +1574,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-fab icon='add' />",
+      "tpl": "<t-fab icon=\"add\" />",
       "path": "./fab/fab"
     },
     "t-footer": {
@@ -1844,7 +1844,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-image src=\"xxx.jpg\" mode=\"aspectFill\"></t-image>",
+      "tpl": "<t-image src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" mode=\"aspectFill\"></t-image>",
       "path": "./image/image"
     },
     "t-indexes": {
@@ -1876,7 +1876,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-indexes list=\"{{ [{ title: 'A开头', index: 'A', children: [{ title: '阿坝' }]},{ title: 'B开头', index: 'B', children: [{ title: '北京' }]}] }}\" />",
+      "tpl": "<t-indexes id=\"bar\" list=\"{{ [{ title: 'A开头', index: 'A', children: [{ title: '阿坝' }]},{ title: 'B开头', index: 'B', children: [{ title: '北京' }]}] }}\" />",
       "path": "./indexes/indexes"
     },
     "t-input": {
@@ -2453,7 +2453,8 @@
           "label": ""
         }
       ],
-      "tpl": "<t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item>"
+      "tpl": "<t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item>",
+      "path": "./picker/picker-item"
     },
     "t-picker": {
       "key": "t-picker",
@@ -2625,7 +2626,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-popup visible=\"{{false}}\" placement=\"top\"><view slot=\"content\">顶部弹出</view></t-popup>",
+      "tpl": "<t-popup visible=\"{{true}}\" placement=\"top\"><view style=\"width: 100vw; height: 35vh; background: #fff\" /></t-popup>",
       "path": "./popup/popup"
     },
     "t-progress": {
@@ -2779,7 +2780,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-pull-down-refresh id=\"pull-down-refresh\" loadingTexts=\"{{['继续拉哦', '该松手啦', '努力刷新中', '完成~']}}\"><view>拖拽该区域演示 中间下拉刷新</view></t-pull-down-refresh>",
+      "tpl": "<t-pull-down-refresh id=\"pull-down-refresh\" loadingTexts=\"{{['继续拉哦', '该松手啦', '努力刷新中', '完成~']}}\"><view style=\"height: 300rpx; background: #fff; text-align: center\">拖拽该区域演示 中间下拉刷新</view></t-pull-down-refresh>",
       "path": "./pull-down-refresh/pull-down-refresh"
     },
     "t-radio-group": {
@@ -3176,40 +3177,6 @@
       "tpl": "<t-search></t-search>",
       "path": "./search/search"
     },
-    "t-segmented-control": {
-      "key": "t-segmented-control",
-      "label": "分段器",
-      "icon": "",
-      "properties": [
-        {
-          "key": "items",
-          "type": [
-            "Array"
-          ],
-          "desc": "分段器选项",
-          "label": ""
-        },
-        {
-          "key": "value",
-          "type": [
-            "String",
-            "Number",
-            "Array"
-          ],
-          "desc": "选中值",
-          "label": ""
-        }
-      ],
-      "events": [
-        {
-          "key": "change",
-          "desc": "选中值变化时触发",
-          "label": ""
-        }
-      ],
-      "tpl": "<t-segmented-control items=\"{{[{ text: '项目一' }, { text: '项目二' }]}}\"></t-segmented-control>",
-      "path": "./segmented-control/segmented-control"
-    },
     "t-skeleton": {
       "key": "t-skeleton",
       "label": "骨架屏",
@@ -3256,7 +3223,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-skeleton t-class=\"skeleton-basic\" rowCol=\"{{rowCol1}}\" t-class-text=\"basic-text\" loading></t-skeleton>",
+      "tpl": "<t-skeleton t-class=\"skeleton-basic\" rowCol=\"{{ [{ width: '686rpx', height: '32rpx' }, 1, 1, { width: '380rpx', height: '32rpx' }]}}\" t-class-text=\"basic-text\" loading></t-skeleton>",
       "path": "./skeleton/skeleton"
     },
     "t-slider": {
@@ -3570,7 +3537,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-steps><t-step-item title=\"步骤描述1\" /><t-step title=\"步骤描述2\" /></t-steps>",
+      "tpl": "<t-steps><t-step-item title=\"步骤描述1\" /><t-step-item title=\"步骤描述2\" /></t-steps>",
       "require": {
         "t-step-item": "./steps/step-item"
       },
@@ -3622,7 +3589,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-sticky></sticky>",
+      "tpl": "<t-sticky></t-sticky>",
       "path": "./sticky/sticky"
     },
     "t-swipe-cell": {
@@ -3761,7 +3728,7 @@
           "label": ""
         }
       ],
-      "tpl": "<t-swiper current=\"{{1}}\" autoplay=\"{{true}}\" duration=\"{{500}}\" interval=\"{{5000}}\" navigation><t-swiper-item wx:for=\"{{[{image: 'https://tdesign.gtimg.com/site/swiper/01.png'},{image: 'https://tdesign.gtimg.com/site/swiper/02.png'}]}}\" wx:key=\"index\"><image src=\"{{item.image}}\" /></t-swiper-item></t-swiper>",
+      "tpl": "<t-swiper current=\"{{1}}\" autoplay=\"{{true}}\" duration=\"{{500}}\" interval=\"{{5000}}\" navigation><t-swiper-item wx:for=\"{{[{image: 'https://tdesign.gtimg.com/site/swiper/01.png'},{image: 'https://tdesign.gtimg.com/site/swiper/02.png'}]}}\" wx:key=\"index\"><image src=\"{{item.image}}\" style=\"width: 100%; height: 100%\" /></t-swiper-item></t-swiper>",
       "require": {
         "t-swiper-item": "./swiper/swiper-item"
       },
@@ -4801,6 +4768,13 @@
           ]
         },
         {
+          "key": "subMenu-image-viewer",
+          "label": "ImageViewer 图片预览",
+          "components": [
+            "t-image-viewer"
+          ]
+        },
+        {
           "key": "subMenu-skeleton",
           "label": "Skeleton 骨架屏",
           "components": [
@@ -4867,6 +4841,20 @@
           "label": "Message 消息通知",
           "components": [
             "t-message"
+          ]
+        },
+        {
+          "key": "subMenu-noticebar",
+          "label": "NoticeBar 公告栏",
+          "components": [
+            "t-noticebar"
+          ]
+        },
+        {
+          "key": "subMenu-overlay",
+          "label": "Overlay 遮罩层",
+          "components": [
+            "t-overlay"
           ]
         },
         {

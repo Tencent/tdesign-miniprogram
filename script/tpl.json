@@ -3,7 +3,7 @@
     "tpl": "<t-action-sheet id=\"t-action-sheet-imperative\" visible=\"{{false}}\"></t-action-sheet>"
   },
   "t-avatar-group": {
-    "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['xxx.png','xxx.png','xxx.png']}}\" image=\"{{item}}\" /></t-avatar-group>",
+    "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png']}}\" wx:key=\"index\" image=\"{{item}}\" t-class=\"excursion-right-8\" /></t-avatar-group>",
     "require": {
       "t-avatar": "./avatar/avatar"
     },
@@ -76,13 +76,13 @@
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-divider.png"
   },
   "t-drawer": {
-    "tpl": "<t-drawer visible=\"{{true}}\" placement=\"left\" items=\"{{[{name: '菜单一'},{name: '菜单二'}]}}\"></t-drawer>"
+    "tpl": "<t-drawer visible=\"{{true}}\" placement=\"left\" items=\"{{[{title: '菜单一'},{title: '菜单二'}]}}\"></t-drawer>"
   },
   "t-dropdown-item": {
-    "tpl": "<t-dropdown-item label='菜单' options='{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}' defaultValue='option_3' />"
+    "tpl": "<t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" />"
   },
   "t-dropdown-menu": {
-    "tpl": "<t-dropdown-menu><t-dropdown-item label='菜单' options='{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}' defaultValue='option_3' /><t-dropdown-item label='菜单' options='{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}' defaultValue='option_3' /></t-dropdown-menu>",
+    "tpl": "<t-dropdown-menu><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /></t-dropdown-menu>",
     "require": {
       "t-dropdown-menu": "./dropdown-menu/dropdown-item"
     }
@@ -92,7 +92,7 @@
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-empty.png"
   },
   "t-fab": {
-    "tpl": "<t-fab icon='add' />"
+    "tpl": "<t-fab icon=\"add\" />"
   },
   "t-footer": {
     "tpl": "<t-footer theme=\"text\" copyright=\"Copyright © 2021-2031 TD.All Rights Reserved.\" />",
@@ -114,11 +114,11 @@
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-icon.png"
   },
   "t-image": {
-    "tpl": "<t-image src=\"xxx.jpg\" mode=\"aspectFill\"></t-image>",
+    "tpl": "<t-image src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" mode=\"aspectFill\"></t-image>",
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-image.png"
   },
   "t-indexes": {
-    "tpl": "<t-indexes list=\"{{ [{ title: 'A开头', index: 'A', children: [{ title: '阿坝' }]},{ title: 'B开头', index: 'B', children: [{ title: '北京' }]}] }}\" />",
+    "tpl": "<t-indexes id=\"bar\" list=\"{{ [{ title: 'A开头', index: 'A', children: [{ title: '阿坝' }]},{ title: 'B开头', index: 'B', children: [{ title: '北京' }]}] }}\" />",
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-indexes.png"
   },
   "t-input": {
@@ -149,14 +149,14 @@
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-picker.png"
   },
   "t-popup": {
-    "tpl": "<t-popup visible=\"{{false}}\" placement=\"top\"><view slot=\"content\">顶部弹出</view></t-popup>",
+    "tpl": "<t-popup visible=\"{{true}}\" placement=\"top\"><view style=\"width: 100vw; height: 35vh; background: #fff\" /></t-popup>",
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-popup.png"
   },
   "t-progress": {
     "tpl": "<t-progress></t-progress>"
   },
   "t-pull-down-refresh": {
-    "tpl": "<t-pull-down-refresh id=\"pull-down-refresh\" loadingTexts=\"{{['继续拉哦', '该松手啦', '努力刷新中', '完成~']}}\"><view>拖拽该区域演示 中间下拉刷新</view></t-pull-down-refresh>",
+    "tpl": "<t-pull-down-refresh id=\"pull-down-refresh\" loadingTexts=\"{{['继续拉哦', '该松手啦', '努力刷新中', '完成~']}}\"><view style=\"height: 300rpx; background: #fff; text-align: center\">拖拽该区域演示 中间下拉刷新</view></t-pull-down-refresh>",
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-pulldownrefresh.png"
   },
   "t-radio-group": {
@@ -178,11 +178,8 @@
     "tpl": "<t-search></t-search>",
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-search.png"
   },
-  "t-segmented-control": {
-    "tpl": "<t-segmented-control items=\"{{[{ text: '项目一' }, { text: '项目二' }]}}\"></t-segmented-control>"
-  },
   "t-skeleton": {
-    "tpl": "<t-skeleton t-class=\"skeleton-basic\" rowCol=\"{{rowCol1}}\" t-class-text=\"basic-text\" loading></t-skeleton>",
+    "tpl": "<t-skeleton t-class=\"skeleton-basic\" rowCol=\"{{ [{ width: '686rpx', height: '32rpx' }, 1, 1, { width: '380rpx', height: '32rpx' }]}}\" t-class-text=\"basic-text\" loading></t-skeleton>",
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-skeleton.png"
   },
   "t-slider": {
@@ -205,7 +202,7 @@
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-steps.png"
   },
   "t-sticky": {
-    "tpl": "<t-sticky></sticky>",
+    "tpl": "<t-sticky></t-sticky>",
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-sticky.png"
   },
   "t-swipe-cell": {
@@ -216,7 +213,7 @@
     "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-swipecell.png"
   },
   "t-swiper": {
-    "tpl": "<t-swiper current=\"{{1}}\" autoplay=\"{{true}}\" duration=\"{{500}}\" interval=\"{{5000}}\" navigation><t-swiper-item wx:for=\"{{[{image: 'https://tdesign.gtimg.com/site/swiper/01.png'},{image: 'https://tdesign.gtimg.com/site/swiper/02.png'}]}}\" wx:key=\"index\"><image src=\"{{item.image}}\" /></t-swiper-item></t-swiper>",
+    "tpl": "<t-swiper current=\"{{1}}\" autoplay=\"{{true}}\" duration=\"{{500}}\" interval=\"{{5000}}\" navigation><t-swiper-item wx:for=\"{{[{image: 'https://tdesign.gtimg.com/site/swiper/01.png'},{image: 'https://tdesign.gtimg.com/site/swiper/02.png'}]}}\" wx:key=\"index\"><image src=\"{{item.image}}\" style=\"width: 100%; height: 100%\" /></t-swiper-item></t-swiper>",
     "require": {
       "t-swiper-item": "./swiper/swiper-item"
     },
