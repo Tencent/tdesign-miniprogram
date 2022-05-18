@@ -1,41 +1,36 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@skeleton: ~"@{prefix}-skeleton";
-@h-space-sm: 32rpx;
-@h-space-nest: 24rpx;
-// skeleton
-@skeleton-row-background-color: rgba(238, 238, 238, 1);
-@skeleton-row-margin-top: @h-space-nest;
-@skeleton-avatar-background-color: rgba(238, 238, 238, 1);
-@skeleton-animation-duration: .6s;
-
-.@{skeleton} {
+.@{prefix}-skeleton {
   display: flex;
   box-sizing: border-box;
+  margin: 32rpx;
 
   &__avatar {
     flex-shrink: 0;
-    background-color: @skeleton-avatar-background-color;
-    height: 64rpx;
-    width: 64rpx;
+    background-color: rgba(238, 238, 238, 1);
+    height: 96rpx;
+    width: 96rpx;
+    border-radius: 100%;
+    margin-right: 24rpx;
   }
 
   &__item {
-    background-color: @skeleton-row-background-color;
+    background-color: rgba(238, 238, 238, 1);
+    border-radius: 4rpx;
   }
 
   &__row {
     display: flex;
 
     &:not(:first-child) {
-      margin-top: @skeleton-row-margin-top;
+      margin-top: 24rpx;
     }
   }
 }
 
-.@{skeleton}--animate-flashed {
-  animation: t-flashed @skeleton-animation-duration infinite alternate;
+.@{prefix}-skeleton--animate-flashed {
+  animation: t-flashed 0.6s infinite alternate;
 }
 
 @keyframes t-flashed {
@@ -44,16 +39,16 @@
   }
 
   100% {
-    opacity: .6;
+    opacity: 0.6;
   }
 }
 
-.@{skeleton}--animate-gradient {
+.@{prefix}-skeleton--animate-gradient {
   .t-skeleton__item {
     background: linear-gradient(
       to right,
       rgba(238, 238, 238, 1) 10%,
-      rgba(238, 238, 238, .4) 20%,
+      rgba(238, 238, 238, 0.4) 20%,
       rgba(238, 238, 238, 1) 30%
     );
     background-size: 400% 50%;
