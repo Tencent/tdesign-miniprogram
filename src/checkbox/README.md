@@ -11,7 +11,8 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-checkbox": "tdesign-miniprogram/checkbox/checkbox"
+  "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
+  "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group"
 }
 ```
 

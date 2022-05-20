@@ -11,7 +11,8 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-button": "tdesign-miniprogram/button/button"
+  "t-button": "tdesign-miniprogram/button/button",
+  "t-button-group": "tdesign-miniprogram/button-group/button-group"
 }
 ```
 
