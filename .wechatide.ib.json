@@ -114,6 +114,11 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-image",
+        "t-class-content"
+      ],
       "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png']}}\" wx:key=\"index\" image=\"{{item}}\" style=\"margin-right: -16rpx\" /></t-avatar-group>",
       "require": {
         "t-avatar": "./avatar/avatar"
@@ -182,6 +187,9 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class"
+      ],
       "events": [
         {
           "key": "error",
@@ -229,6 +237,11 @@
           "desc": "预设的样式类型",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-icon",
+        "t-class-text"
       ],
       "events": [
         {
@@ -318,6 +331,11 @@
           "desc": "尺寸",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-content",
+        "t-class-count"
       ],
       "tpl": "<t-badge content=\"消息\" dot />",
       "path": "./badge/badge"
@@ -424,6 +442,10 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-icon"
+      ],
       "events": [
         {
           "key": "click",
@@ -455,6 +477,9 @@
           "desc": "单元格组标题",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "tpl": "<t-cell-group title=\"01 基础用法\"><t-cell title=\"单行标题\" required /><t-cell title=\"单行标题\" hover note=\"辅助信息\" /><t-cell title=\"单行标题\" hover arrow /><t-cell title=\"单行标题\" hover note=\"辅助信息\" arrow /></t-cell-group>",
       "require": {
@@ -571,6 +596,16 @@
           "desc": "点击后跳转链接地址。如果值为空，则表示不需要跳转",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-title",
+        "t-class-note",
+        "t-class-description",
+        "t-class-thumb",
+        "t-class-hover",
+        "t-class-left",
+        "t-class-right"
       ],
       "events": [
         {
@@ -846,6 +881,13 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-icon",
+        "t-class-label",
+        "t-class-content",
+        "t-class-border"
+      ],
       "events": [
         {
           "key": "change",
@@ -1080,12 +1122,12 @@
           "label": ""
         },
         {
-          "key": "disableDate",
+          "key": "end",
           "type": [
-            "Object",
-            "Array"
+            "String",
+            "Number"
           ],
-          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
+          "desc": "选择器的结束时间",
           "label": ""
         },
         {
@@ -1126,7 +1168,16 @@
           "type": [
             "Boolean"
           ],
-          "desc": "是否在日期旁边显示周几（如周一，周二，周日等）",
+          "desc": "【开发中】是否在日期旁边显示周几（如周一，周二，周日等）",
+          "label": ""
+        },
+        {
+          "key": "start",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "desc": "选择器的开始时间",
           "label": ""
         },
         {
@@ -1154,6 +1205,12 @@
           "desc": "是否显示",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-confirm",
+        "t-class-cancel",
+        "t-class-title"
       ],
       "events": [
         {
@@ -1284,6 +1341,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-content",
+        "t-class-confirm",
+        "t-class-cancel"
+      ],
       "events": [
         {
           "key": "cancel",
@@ -1349,6 +1412,11 @@
           "desc": "分隔线颜色",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-line",
+        "t-class-content"
       ],
       "tpl": "<t-divider />",
       "path": "./divider/divider"
@@ -1466,7 +1534,7 @@
           "label": ""
         },
         {
-          "key": "overlay",
+          "key": "showOverlay",
           "type": [
             "Boolean"
           ],
@@ -1525,6 +1593,12 @@
           "desc": "图片地址",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-description",
+        "t-class-image",
+        "t-class-actions"
       ],
       "tpl": "<t-empty icon=\"info-circle-filled\" />",
       "path": "./empty/empty"
@@ -1680,6 +1754,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-image",
+        "t-class-text",
+        "t-class-description"
+      ],
       "tpl": "<t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item>",
       "path": "./grid/grid-item"
     },
@@ -1729,6 +1809,9 @@
           "desc": "是否开启点击反馈",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "tpl": "<t-grid column=\"{{2}}\"><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item></t-grid>",
       "require": {
@@ -1832,6 +1915,10 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-load"
+      ],
       "events": [
         {
           "key": "error",
@@ -1867,6 +1954,14 @@
           ],
           "desc": "索引列表的列表数据。每个元素包含三个子元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。",
           "label": ""
+        },
+        {
+          "key": "sticky",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "索引是否吸顶，默认为true",
+          "label": ""
         }
       ],
       "events": [
@@ -1884,14 +1979,6 @@
       "label": "输入框",
       "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-input.png",
       "properties": [
-        {
-          "key": "adjustPosition",
-          "type": [
-            "Boolean"
-          ],
-          "desc": "键盘弹起时，是否自动上推页面",
-          "label": ""
-        },
         {
           "key": "align",
           "type": [
@@ -1917,22 +2004,6 @@
           "label": ""
         },
         {
-          "key": "confirmHold",
-          "type": [
-            "Boolean"
-          ],
-          "desc": "点击键盘右下角按钮时是否保持键盘不收起点",
-          "label": ""
-        },
-        {
-          "key": "confirmType",
-          "type": [
-            "String"
-          ],
-          "desc": "设置键盘右下角按钮的文字，仅在 type='text'时生效",
-          "label": ""
-        },
-        {
           "key": "disabled",
           "type": [
             "Boolean"
@@ -1946,14 +2017,6 @@
             "String"
           ],
           "desc": "错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips）",
-          "label": ""
-        },
-        {
-          "key": "focus",
-          "type": [
-            "Boolean"
-          ],
-          "desc": "自动聚焦",
           "label": ""
         },
         {
@@ -2053,14 +2116,6 @@
           "label": ""
         },
         {
-          "key": "type",
-          "type": [
-            "String"
-          ],
-          "desc": "输入框类型",
-          "label": ""
-        },
-        {
           "key": "value",
           "type": [
             "String",
@@ -2069,6 +2124,12 @@
           "desc": "输入框的值",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-input",
+        "t-class-placeholder",
+        "t-class-error-msg"
       ],
       "events": [
         {
@@ -2202,6 +2263,11 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-text",
+        "t-class-indicator"
+      ],
       "tpl": "<t-loading theme=\"circular\" size=\"40rpx\"></t-loading>",
       "path": "./loading/loading"
     },
@@ -2302,6 +2368,13 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-content",
+        "t-class-icon",
+        "t-class-action",
+        "t-class-close-btn"
+      ],
       "events": [
         {
           "key": "actionBtnClick",
@@ -2400,6 +2473,13 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-title",
+        "t-class-left-icon",
+        "t-class-home-icon",
+        "t-class-capsule"
+      ],
       "events": [
         {
           "key": "complete",
@@ -2436,20 +2516,19 @@
       "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-picker.png",
       "properties": [
         {
+          "key": "format",
+          "type": [
+            "String"
+          ],
+          "desc": "格式化标签",
+          "label": ""
+        },
+        {
           "key": "options",
           "type": [
             "Array"
           ],
           "desc": "数据源",
-          "label": ""
-        },
-        {
-          "key": "value",
-          "type": [
-            "String",
-            "Number"
-          ],
-          "desc": "默认选中的选项",
           "label": ""
         }
       ],
@@ -2464,7 +2543,8 @@
         {
           "key": "cancelBtn",
           "type": [
-            "String"
+            "String",
+            "Object"
           ],
           "desc": "取消按钮文字",
           "label": ""
@@ -2472,7 +2552,8 @@
         {
           "key": "confirmBtn",
           "type": [
-            "String"
+            "String",
+            "Object"
           ],
           "desc": "确定按钮文字",
           "label": ""
@@ -2530,8 +2611,8 @@
           "label": ""
         },
         {
-          "key": "confirm",
-          "desc": "点击确认确认按钮时触发",
+          "key": "pick",
+          "desc": "任何一列选中都会触发，不同的列参数不同。`context.column` 表示第几列变化，`context.index` 表示变化那一列的选中项下标",
           "label": ""
         }
       ],
@@ -2618,6 +2699,11 @@
           "desc": "组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-overlay",
+        "t-class-content"
       ],
       "events": [
         {
@@ -2762,6 +2848,12 @@
           "desc": "组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-loading",
+        "t-class-text",
+        "t-class-indicator"
       ],
       "events": [
         {
@@ -2948,6 +3040,13 @@
           "desc": "单选按钮的值",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-icon",
+        "t-class-label",
+        "t-class-content",
+        "t-class-border"
       ],
       "events": [
         {
@@ -3142,6 +3241,14 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-input",
+        "t-class-input-container",
+        "t-class-cancel",
+        "t-class-left",
+        "t-class-right"
+      ],
       "events": [
         {
           "key": "actionClick",
@@ -3187,7 +3294,7 @@
           "type": [
             "String"
           ],
-          "desc": "动画效果，有「渐变加载动画」和「闪烁加载动画」两种。值为空则表示没有动画",
+          "desc": "动画效果，有「渐变加载动画」和「闪烁加载动画」两种。值为 'none' 则表示没有动画",
           "label": ""
         },
         {
@@ -3222,6 +3329,12 @@
           "desc": "骨架图风格，有基础、头像组合等两大类",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-avatar",
+        "t-class-image",
+        "t-class-text"
       ],
       "tpl": "<t-skeleton rowCol=\"{{ [{ width: '686rpx', height: '32rpx' }, 1, 1, { width: '380rpx', height: '32rpx' }]}}\" loading></t-skeleton>",
       "path": "./skeleton/skeleton"
@@ -3323,6 +3436,13 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-bar",
+        "t-class-bar-active",
+        "t-class-bar-disabled",
+        "t-class-cursor"
+      ],
       "events": [
         {
           "key": "change",
@@ -3388,6 +3508,13 @@
           "desc": "标题",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-content",
+        "t-class-title",
+        "t-class-description",
+        "t-class-extra"
       ],
       "tpl": "<t-step-item title=\"步骤描述\"></t-step-item>",
       "path": "./steps/step-item"
@@ -3463,6 +3590,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-input",
+        "t-class-add",
+        "t-class-minus"
+      ],
       "events": [
         {
           "key": "blur",
@@ -3522,6 +3655,14 @@
           "label": ""
         },
         {
+          "key": "separator",
+          "type": [
+            "String"
+          ],
+          "desc": "步骤条分割符",
+          "label": ""
+        },
+        {
           "key": "theme",
           "type": [
             "String"
@@ -3529,6 +3670,9 @@
           "desc": "步骤条风格",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "events": [
         {
@@ -3581,6 +3725,9 @@
           "desc": "吸顶时的 z-index",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "events": [
         {
@@ -3906,6 +4053,9 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class"
+      ],
       "events": [
         {
           "key": "change",
@@ -3945,7 +4095,7 @@
           "type": [
             "String"
           ],
-          "desc": "选项卡名称，可自定义选项卡导航内容",
+          "desc": "选项卡名称",
           "label": ""
         },
         {
@@ -4015,6 +4165,12 @@
           "desc": "激活的选项卡值",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-item",
+        "t-class-active",
+        "t-class-track"
       ],
       "events": [
         {
@@ -4099,6 +4255,9 @@
           "desc": "标签风格变体",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "events": [
         {
@@ -4217,6 +4376,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-textarea",
+        "t-class-placeholder",
+        "t-class-name"
+      ],
       "events": [
         {
           "key": "blur",
@@ -4285,6 +4450,14 @@
           "label": ""
         },
         {
+          "key": "overlayProps",
+          "type": [
+            "Object"
+          ],
+          "desc": "遮罩层属性，透传至 Overlay",
+          "label": ""
+        },
+        {
           "key": "placement",
           "type": [
             "String"
@@ -4301,6 +4474,14 @@
           "label": ""
         },
         {
+          "key": "showOverlay",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "是否显示遮罩层",
+          "label": ""
+        },
+        {
           "key": "theme",
           "type": [
             "String"
@@ -4308,6 +4489,9 @@
           "desc": "提示类型",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "tpl": "<t-toast id=\"t-toast\" />",
       "path": "./toast/toast"
@@ -4411,7 +4595,7 @@
           "type": [
             "String"
           ],
-          "desc": "【开发中】用于完全自定义文件列表内容",
+          "desc": "用于完全自定义文件列表内容",
           "label": ""
         },
         {
@@ -4435,7 +4619,7 @@
           "type": [
             "Number"
           ],
-          "desc": "预览窗格的 gutter 大小，单位 rpx",
+          "desc": "预览窗格的 `gutter` 大小，单位 rpx",
           "label": ""
         },
         {
