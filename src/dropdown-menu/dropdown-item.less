@@ -46,7 +46,6 @@
     left: 0;
     top: 0;
     width: 100%;
-    bottom: 0;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -106,10 +105,11 @@
   }
 
   .@{prefix}-mask {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    right: 0;
+    bottom: 0;
+    width: 100%;
     background: rgba(0, 0, 0, 0.6);
   }
 
