@@ -13,6 +13,10 @@ export interface CollapsePanelProps extends TdCollapsePanelProps {}
 export default class CollapsePanel extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
+  options = {
+    multipleSlots: true,
+  };
+
   relations: RelationsOptions = {
     './collapse': {
       type: 'ancestor',

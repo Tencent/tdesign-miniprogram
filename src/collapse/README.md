@@ -68,7 +68,7 @@ default-value | Array | undefined | 展开的面板集合。非受控属性。TS
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `({ value: CollapseValue })` | 切换面板时触发，返回变化的值
+change | `(value: CollapseValue)` | 切换面板时触发，返回变化的值
 
 ### CollapsePanel Props
 
@@ -76,7 +76,7 @@ change | `({ value: CollapseValue })` | 切换面板时触发，返回变化的�
 -- | -- | -- | -- | --
 content | String / Slot | - | 折叠面板内容 | N
 disabled | Boolean | undefined | 禁止当前面板展开，优先级大于 Collapse 的同名属性 | N
-expand-icon | Boolean / Slot | true | 当前折叠面板展开图标，优先级大于 Collapse 的同名属性 | N
+expand-icon | Boolean / Slot | undefined | 当前折叠面板展开图标，优先级大于 Collapse 的同名属性 | N
 header | String / Slot | - | 面板头内容 | N
-header-right-content | String / Boolean / Slot | - | 面板头的右侧区域，一般用于呈现面板操作 | N
+header-right-content | String / Slot | - | 面板头的右侧区域，一般用于呈现面板操作 | N
 value | String / Number | - | 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识 | N
