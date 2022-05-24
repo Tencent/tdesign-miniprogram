@@ -12,8 +12,8 @@ export default class TabbarItem extends SuperComponent {
       type: 'ancestor',
       linked(parent) {
         const [activeColor, color] = parent.data.color;
+        this.data.parent = parent;
         this.setData({
-          parent,
           color,
           activeColor,
           split: parent.data.split,
