@@ -23,9 +23,6 @@ isComponent: true
 
 ```html
 <t-skeleton
-  t-class="skeleton-avatar"
-  t-class-avatar="skeleton-avatar-size"
-  t-class-text="basic-text"
   rowCol="{{rowCol}}"
   theme="avatar-text"
   animation="flashed"

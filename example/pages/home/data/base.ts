@@ -1,5 +1,5 @@
 const base = {
-  name: '设计基础',
+  name: '基础',
   icon: 'app',
   childArr: [
     // {

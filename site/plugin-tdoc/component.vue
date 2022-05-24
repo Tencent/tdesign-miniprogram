@@ -5,7 +5,6 @@
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
       <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
-        <!-- <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" /> -->
         <td-doc-phone>
           <div class="qrcode__wrapper" slot="qrcode">
             <img class="qrcode" :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" />

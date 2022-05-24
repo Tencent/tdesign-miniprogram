@@ -49,7 +49,7 @@ function customRender({ source, file, md }: any) {
   // md top data
   const pageData = {
     spline: '',
-    toc: false,
+    toc: true,
     title: '',
     description: '',
     isComponent: false,
@@ -81,7 +81,7 @@ function customRender({ source, file, md }: any) {
   };
 
   if (pageData.isComponent) {
-    mdSegment.demoMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${demoMd.replace(/<!--[\s\S]+?-->/g, '')}`).html;
+    mdSegment.demoMd = md.render.call(md, `${demoMd.replace(/<!--[\s\S]+?-->/g, '')}`).html;
     mdSegment.apiMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${apiMd.replace(/<!--[\s\S]+?-->/g, '')}`).html;
   } else {
     mdSegment.docMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${content.replace(/<!--[\s\S]+?-->/g, '')}`).html;

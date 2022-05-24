@@ -7,9 +7,12 @@ type IPageScrollOption = WechatMiniprogram.Page.IPageScrollOption;
 type Scroller = (this: WechatMiniprogram.Component.TrivialInstance, event?: IPageScrollOption) => void;
 
 const onPageScroll = function (event?: IPageScrollOption) {
-  const { pageScroller = [] } = getCurrentPage<{
+  const page = getCurrentPage<{
     pageScroller: Scroller[];
   }>();
+
+  if (!page) return;
+  const { pageScroller } = page;
 
   pageScroller.forEach((scroller: Scroller) => {
     if (typeof scroller === 'function') {
@@ -19,18 +22,19 @@ const onPageScroll = function (event?: IPageScrollOption) {
   });
 };
 
-export const pageScrollMixin = (scroller: Scroller) =>
-  Behavior({
+export const pageScrollMixin = (scroller: Scroller) => {
+  let bindScroller = scroller;
+  return Behavior({
     attached() {
       const page = getCurrentPage<{ pageScroller: Scroller[] }>();
+      if (!page) return;
+      bindScroller = scroller.bind(this);
 
       if (Array.isArray(page.pageScroller)) {
-        page.pageScroller.push(scroller.bind(this));
+        page.pageScroller.push(bindScroller);
       } else {
         page.pageScroller =
-          typeof page.onPageScroll === 'function'
-            ? [page.onPageScroll.bind(page), scroller.bind(this)]
-            : [scroller.bind(this)];
+          typeof page.onPageScroll === 'function' ? [page.onPageScroll.bind(page), bindScroller] : [bindScroller];
       }
 
       page.onPageScroll = onPageScroll;
@@ -42,6 +46,7 @@ export const pageScrollMixin = (scroller: Scroller) =>
       page.pageScroller = page.pageScroller?.filter((item) => item !== scroller) || [];
     },
   });
+};
 
 export const getRect = function (context: any, selector: string) {
   return new Promise<WechatMiniprogram.BoundingClientRectCallbackResult>((resolve) => {

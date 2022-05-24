@@ -33,12 +33,12 @@ isComponent: true
 ### 支持指令调用
 
 ```javascript
-import ActionSheet from 'tdesign-miniprogram/action-sheet/index';
+import ActionSheet, { ActionSheetTheme } from 'tdesign-miniprogram/action-sheet/index';
 
 // 指令调用不同于组件引用不需要传入visible
 const basicListOption: ActionSheetShowOption = {
   theme: ActionSheetTheme.List,
-  selector: '#t-action-sheet-imperative',
+  selector: '#t-action-sheet',
   items: [
     {
       label: '默认选项',

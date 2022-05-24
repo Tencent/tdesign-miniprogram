@@ -16,7 +16,7 @@ export default class Steps extends SuperComponent {
         const { readonly, layout } = this.data;
         let isLarge = false;
 
-        if (!readonly && layout === 'horizontal') {
+        if (!readonly && layout === 'horizontal' && child.data.icon !== 'slot') {
           isLarge = !!child.data.icon;
         }
 
