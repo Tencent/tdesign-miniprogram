@@ -52,7 +52,7 @@
       <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
     </view>
 
-    <t-back-top wx:if="{{showBackTop}}" theme="{{backTopDemo.theme}}" text="{{backTopDemo.text}}" bindtoTop="onToTop">
+    <t-back-top wx:if="{{showBackTop}}" theme="{{backTopDemo.theme}}" text="{{backTopDemo.text}}" bind:to-top="onToTop">
     </t-back-top>
   </t-demo>
 </view>
