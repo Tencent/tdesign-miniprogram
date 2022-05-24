@@ -31,9 +31,15 @@ export default class Dialog extends SuperComponent {
     onTplButtonTap(e) {
       const evtType = e.type;
       const { type } = e.target.dataset;
+      const button = this.data[`${type}Btn`];
+      const cbName = `bind${evtType}`;
 
-      if (`bind${evtType}` in this.data[`${type}Btn`]) {
-        this.data[`${type}Btn`][`bind${evtType}`](e.detail);
+      if (typeof button[cbName] === 'function') {
+        button[cbName](e);
+      }
+      if (evtType !== 'tap') {
+        const success = e.detail?.errMsg.indexOf('ok') > -1;
+        this.triggerEvent(success ? 'open-type-event' : 'open-type-error-event', e.detail);
       }
     },
 
