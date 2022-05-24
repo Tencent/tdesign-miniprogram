@@ -46,4 +46,8 @@ Page({
     this.setData({ backTopDemo: backTopDemos[index] });
     wx.pageScrollTo({ duration: 300, scrollTop: 1000 });
   },
+
+  onToTop(e: any) {
+    console.log('backToTop', e);
+  },
 });
