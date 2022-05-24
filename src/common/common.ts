@@ -3,7 +3,7 @@ export type Classes = Array<string>;
 export interface Styles {
   [css: string]: string | number;
 }
-/** 通用全局变量 */
+/** 通用全局类型 */
 
 export type OptionData = {
   label?: string;

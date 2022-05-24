@@ -1,3 +1,8 @@
 {
-  "navigationBarTitleText": "Collapse 折叠面板"
+  "navigationBarTitleText": "Collapse 折叠面板",
+  "usingComponents": {
+    "base": "./base",
+    "action": "./action",
+    "accordion": "./accordion"
+  }
 }
