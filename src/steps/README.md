@@ -81,6 +81,28 @@ isComponent: true
     <view slot="content">可自定义此处内容</view>
   </t-step>
 </t-steps>
+
+<!-- 自定义step节点样式 -->
+<t-steps class="demo-steps vertical" current="{{customStepCurrent}}" readonly="true" layout="vertical">
+  <t-step-item
+    wx:for="{{customStepItems}}"
+    wx:key="key"
+    wx:item="item"
+    icon="slot"
+    title="{{item.title}}"
+    content="{{item.content}}"
+    t-class-inner="t-class-inner t-class-inner--{{item.status}}"
+    t-class-title="t-class-title {{item.title? '' : 't-class-title--no'}}"
+    t-class-description="t-class-description"
+    t-class-extra="t-class-extra"
+  >
+    <view
+      slot="icon"
+      class="t-icon-slot t-icon-slot--{{item.status}} {{item.title? '' : 't-icon-slot--child'}}"
+    ></view>
+    <view slot="extra">{{item.extra}}</view>
+  </t-step-item>
+</t-steps>
 ```
 
 ### 受控用法
@@ -128,7 +150,7 @@ change | `({current: string | number, previous: string | number})` | 当前步�
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 content | String / Slot | '' | 步骤描述 | N
-external-classes | Array | - | 组件类名，用于设置组件外层元素元素类名。`['t-class', 't-class-content', 't-class-title', 't-class-description', 't-class-extra']` | N
+external-classes | Array | - | 组件类名，用于设置组件外层元素元素类名。`['t-class', 't-class-inner', 't-class-content', 't-class-title', 't-class-description', 't-class-extra', 't-class-sub', 't-class-sub-dot', 't-class-sub-content']` | N
 icon | String / Slot | - | 图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标 | N
 status | String | default | 当前步骤的状态。可选项：default/process/finish/error。TS 类型：`StepStatus` `type StepStatus = 'default' | 'process' | 'finish' | 'error'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/steps/type.ts) | N
 sub-step-items | Array | [] | 子步骤条，仅支持 layout  = 'vertical' 时。TS 类型：`SubStepItem[]` `interface SubStepItem { status: StepStatus, title: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/steps/type.ts) | N
