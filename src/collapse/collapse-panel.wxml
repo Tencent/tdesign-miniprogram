@@ -14,10 +14,10 @@
     t-class-hover="class-header-hover"
     bind:click="onClick"
   >
-    <slot name="title" slot="title" />
     <slot name="left-icon" slot="left-icon" />
     <slot name="note" slot="header-right-content" />
     <slot name="right-icon" slot="right-icon" />
+    <slot name="header" slot="title" />
   </t-cell>
   <view class="{{classPrefix}}__wrapper" style="height: {{contentHeight}};" bind:transitionend="onTransitionEnd">
     <view class="{{classPrefix}}__content {{classPrefix}}__content--{{expanded ? 'active' : ''}} t-class-content">
