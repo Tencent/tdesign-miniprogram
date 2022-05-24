@@ -26,7 +26,7 @@ export default class BackTop extends SuperComponent {
    * Component methods
    */
   toTop() {
-    this.triggerEvent('toTop');
+    this.triggerEvent('to-top');
     wx.pageScrollTo({
       scrollTop: 0,
       duration: 300,
