@@ -4,6 +4,9 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { ButtonProps } from '../button/index';
+import { TNode } from '../common/common';
+
 export interface TdPickerProps {
   /**
    * 取消按钮文字
@@ -11,7 +14,8 @@ export interface TdPickerProps {
    */
   cancelBtn?: {
     type: StringConstructor;
-    value?: string;
+    optionalTypes: Array<ObjectConstructor>;
+    value?: string | ButtonProps;
   };
   /**
    * 确定按钮文字
@@ -19,7 +23,8 @@ export interface TdPickerProps {
    */
   confirmBtn?: {
     type: StringConstructor;
-    value?: string;
+    optionalTypes: Array<ObjectConstructor>;
+    value?: string | ButtonProps;
   };
   /**
    * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
@@ -63,20 +68,19 @@ export interface TdPickerProps {
 
 export interface TdPickerItemProps {
   /**
+   * 格式化标签
+   */
+  format?: {
+    type: null;
+    value?: (option: PickerItemOption) => string;
+  };
+  /**
    * 数据源
    * @default []
    */
   options?: {
     type: ArrayConstructor;
     value?: Array<PickerItemOption>;
-  };
-  /**
-   * 默认选中的选项
-   */
-  value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
   };
 }
 

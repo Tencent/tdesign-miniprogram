@@ -18,17 +18,17 @@ export default class PickerItem extends SuperComponent {
   relations = {
     './picker': {
       type: 'parent' as 'parent',
+      linked(this: PickerItem, parent) {
+        this.parent = parent;
+      },
     },
   };
 
   properties = props;
 
   observers = {
-    value(this: PickerItem) {
-      this.updateColumns();
-    },
     options(this: PickerItem) {
-      this.updateColumns();
+      this.update();
     },
   };
 
@@ -36,6 +36,8 @@ export default class PickerItem extends SuperComponent {
     prefix: `${config.prefix}-picker-item`,
     offset: 0, // 滚动偏移量
     duration: 0, // 滚动动画延迟
+    value: '',
+    options: [],
   };
 
   methods = {
@@ -76,28 +78,20 @@ export default class PickerItem extends SuperComponent {
       }
 
       wx.nextTick(() => {
-        const changeObj = {
-          index,
-          value: options[index],
-        };
-
         this._selectedIndex = index;
-        this._selectedValue = options[index];
-        this.triggerEvent('change', changeObj);
+        this._selectedValue = options[index]?.value;
 
-        const picker = this.getRelationNodes('./picker')?.[0];
-        if (picker) {
-          picker.triggerChange({
-            ...changeObj,
-            column: this.columnIndex || 0,
-          });
-        }
+        this.parent?.triggerColumnChange({
+          index,
+          column: this.columnIndex || 0,
+        });
       });
     },
 
     // 刷新选中状态
-    updateColumns() {
-      const { options, value } = this.properties;
+    update() {
+      const { options } = this.properties;
+      const { value } = this.data;
 
       const index = options.findIndex((item) => item.value === value);
       const selectedIndex = index > 0 ? index : 0;
@@ -105,11 +99,11 @@ export default class PickerItem extends SuperComponent {
       this.setData({ offset: -selectedIndex * this.itemHeight });
 
       this._selectedIndex = selectedIndex;
-      this._selectedValue = options[selectedIndex];
+      this._selectedValue = options[selectedIndex]?.value;
     },
 
     resetOrigin() {
-      this.updateColumns();
+      this.update();
     },
 
     getCount() {
