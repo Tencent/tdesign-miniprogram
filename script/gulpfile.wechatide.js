@@ -110,7 +110,7 @@ gulp.task('wechatide:menu', (cb) => {
 
 // 生成配置文件
 gulp.task('wechatide:generate', (cb) => {
-  const base = path.join(__dirname, '../');
+  const base = path.join(__dirname, '../src');
   const data = JSON.stringify(wechatideConfig, null, 2);
   fs.writeFileSync(`${base}/.wechatide.ib.json`, data);
   cb();

@@ -52,7 +52,7 @@ module.exports = (src, dist, moduleName) => {
     ts: `${src}/**/*.ts`, // 匹配 ts 文件
     js: `${src}/**/*.js`, // 匹配 js 文件
     wxs: `${src}/**/*.wxs`, // 匹配 wxs 文件
-    json: `${src}/**/*.json`, // 匹配 json 文件
+    json: [`${src}/**/*.json`, `${src}/.wechatide.ib.json`], // 匹配 json 文件
     less: `${src}/**/*.less`, // 匹配 less 文件
     wxss: `${src}/**/*.wxss`, // 匹配 wxss 文件
     md: `${src}/**/*.md`, // 匹配 md 文件
