@@ -19,13 +19,6 @@ export default {
           component: () => import('@/../CONTRIBUTING.md'),
         },
         {
-          title: '谁在用',
-          name: 'used',
-          meta: { docType: 'explain' },
-          path: '/miniprogram/used',
-          component: () => import('@/../USED.md'),
-        },
-        {
           title: '更新日志',
           name: 'changelog',
           meta: { docType: 'explain' },

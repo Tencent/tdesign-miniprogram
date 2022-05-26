@@ -3,7 +3,7 @@
     <td-header ref="tdHeader" slot="header">
       <td-doc-search slot="search" ref="tdDocSearch"></td-doc-search>
     </td-header>
-    <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram"></td-doc-aside>
+    <td-doc-aside ref="tdDocAside" title="QQ MiniProgram"></td-doc-aside>
 
     <router-view :style="contentStyle" @loaded="contentLoaded" :docType="docType" />
   </td-doc-layout>
@@ -48,7 +48,7 @@ export default defineComponent({
     $route(route) {
       if (!route.meta.docType) return;
       this.docType = route.meta.docType;
-    }
+    },
   },
 
   methods: {

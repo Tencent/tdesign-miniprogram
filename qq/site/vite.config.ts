@@ -19,7 +19,7 @@ export default ({ mode }: any) => {
     resolve: {
       alias: {
         '~': path.resolve(__dirname, '..'),
-        '@': path.resolve(__dirname, '../src'),
+        '@': path.resolve(__dirname, '../../src'),
         '@common': path.resolve(__dirname, '../common'),
         '@components': path.resolve(__dirname, './components'),
         '@docs': path.resolve(__dirname, './docs'),

@@ -5,7 +5,7 @@ import { preview } from 'vite';
 import siteConfig from '../site/site.config.mjs';
 
 const prefix = 'http://127.0.0.1:9999';
-const spiderPath = path.resolve('./_static_site');
+const spiderPath = path.resolve('./qq/_static_site');
 
 function initPageList() {
   const pageList = [];
@@ -16,7 +16,7 @@ function initPageList() {
     });
   });
 
-  console.log(pageList)
+  console.log(pageList);
 
   return pageList;
 }
@@ -24,7 +24,7 @@ function initPageList() {
 async function initPreviewServer() {
   const previewServer = await preview({
     preview: { port: 9999, open: false },
-    build: { outDir: './_site' }
+    build: { outDir: './_site' },
   });
 
   previewServer.printUrls();
