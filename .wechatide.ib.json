@@ -58,17 +58,17 @@
       ],
       "events": [
         {
-          "key": "cancel",
+          "key": "bind:cancel",
           "desc": "点击取消按钮时触发",
           "label": ""
         },
         {
-          "key": "close",
+          "key": "bind:close",
           "desc": "关闭时触发",
           "label": ""
         },
         {
-          "key": "selected",
+          "key": "bind:selected",
           "desc": "选择菜单项时触发",
           "label": ""
         }
@@ -113,6 +113,11 @@
           "desc": "尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-image",
+        "t-class-content"
       ],
       "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png']}}\" wx:key=\"index\" image=\"{{item}}\" style=\"margin-right: -16rpx\" /></t-avatar-group>",
       "require": {
@@ -182,9 +187,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class"
+      ],
       "events": [
         {
-          "key": "error",
+          "key": "bind:error",
           "desc": "图片加载失败时触发",
           "label": ""
         }
@@ -230,9 +238,14 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-icon",
+        "t-class-text"
+      ],
       "events": [
         {
-          "key": "toTop",
+          "key": "bind:to-top",
           "desc": "点击触发",
           "label": ""
         }
@@ -318,6 +331,11 @@
           "desc": "尺寸",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-content",
+        "t-class-count"
       ],
       "tpl": "<t-badge content=\"消息\" dot />",
       "path": "./badge/badge"
@@ -424,9 +442,13 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-icon"
+      ],
       "events": [
         {
-          "key": "click",
+          "key": "bind:click",
           "desc": "点击时触发",
           "label": ""
         }
@@ -455,6 +477,9 @@
           "desc": "单元格组标题",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "tpl": "<t-cell-group title=\"01 基础用法\"><t-cell title=\"单行标题\" required /><t-cell title=\"单行标题\" hover note=\"辅助信息\" /><t-cell title=\"单行标题\" hover arrow /><t-cell title=\"单行标题\" hover note=\"辅助信息\" arrow /></t-cell-group>",
       "require": {
@@ -572,9 +597,19 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-title",
+        "t-class-note",
+        "t-class-description",
+        "t-class-thumb",
+        "t-class-hover",
+        "t-class-left",
+        "t-class-right"
+      ],
       "events": [
         {
-          "key": "click",
+          "key": "bind:click",
           "desc": "右侧内容",
           "label": ""
         }
@@ -647,12 +682,12 @@
       ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "组件子元素",
           "label": ""
         },
         {
-          "key": "click",
+          "key": "bind:click",
           "desc": "点击标签时触发",
           "label": ""
         }
@@ -708,7 +743,7 @@
       ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "值变化时触发。`context.current` 表示当前变化的数据项，如果是全选则为空；`context.type` 表示引起选中数据变化的是选中或是取消选中，`context.option` 表示当前变化的数据项",
           "label": ""
         }
@@ -846,9 +881,16 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-icon",
+        "t-class-label",
+        "t-class-content",
+        "t-class-border"
+      ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "值变化时触发",
           "label": ""
         }
@@ -962,7 +1004,7 @@
       ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "切换面板时触发，返回变化的值",
           "label": ""
         }
@@ -1045,12 +1087,12 @@
       ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "时间变化时触发",
           "label": ""
         },
         {
-          "key": "finish",
+          "key": "bind:finish",
           "desc": "倒计时结束时触发",
           "label": ""
         }
@@ -1080,12 +1122,12 @@
           "label": ""
         },
         {
-          "key": "disableDate",
+          "key": "end",
           "type": [
-            "Object",
-            "Array"
+            "String",
+            "Number"
           ],
-          "desc": "禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用",
+          "desc": "选择器的结束时间",
           "label": ""
         },
         {
@@ -1126,7 +1168,16 @@
           "type": [
             "Boolean"
           ],
-          "desc": "是否在日期旁边显示周几（如周一，周二，周日等）",
+          "desc": "【开发中】是否在日期旁边显示周几（如周一，周二，周日等）",
+          "label": ""
+        },
+        {
+          "key": "start",
+          "type": [
+            "String",
+            "Number"
+          ],
+          "desc": "选择器的开始时间",
           "label": ""
         },
         {
@@ -1155,24 +1206,30 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-confirm",
+        "t-class-cancel",
+        "t-class-title"
+      ],
       "events": [
         {
-          "key": "cancel",
+          "key": "bind:cancel",
           "desc": "取消按钮点击时触发",
           "label": ""
         },
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "选中值发生变化时触发",
           "label": ""
         },
         {
-          "key": "columnChange",
+          "key": "bind:column-change",
           "desc": "每一列选中数据变化时触发",
           "label": ""
         },
         {
-          "key": "confirm",
+          "key": "bind:confirm",
           "desc": "确认按钮点击时触发",
           "label": ""
         }
@@ -1284,19 +1341,25 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-content",
+        "t-class-confirm",
+        "t-class-cancel"
+      ],
       "events": [
         {
-          "key": "cancel",
+          "key": "bind:cancel",
           "desc": "如果“取消”按钮存在，则点击“取消”按钮时触发，同时触发关闭事件",
           "label": ""
         },
         {
-          "key": "close",
+          "key": "bind:close",
           "desc": "关闭事件，点击 取消按钮 或 点击蒙层 时触发",
           "label": ""
         },
         {
-          "key": "overlayClick",
+          "key": "bind:overlay-click",
           "desc": "如果蒙层存在，点击蒙层时触发",
           "label": ""
         }
@@ -1349,6 +1412,11 @@
           "desc": "分隔线颜色",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-line",
+        "t-class-content"
       ],
       "tpl": "<t-divider />",
       "path": "./divider/divider"
@@ -1417,17 +1485,17 @@
       ],
       "events": [
         {
-          "key": "close",
+          "key": "bind:close",
           "desc": "关闭事件，取消按钮点击时、关闭按钮点击时、点击蒙层时均会触发",
           "label": ""
         },
         {
-          "key": "itemClick",
+          "key": "bind:item-click",
           "desc": "点击抽屉里的列表项",
           "label": ""
         },
         {
-          "key": "overlayClick",
+          "key": "bind:overlay-click",
           "desc": "如果蒙层存在，点击蒙层时触发",
           "label": ""
         }
@@ -1466,7 +1534,7 @@
           "label": ""
         },
         {
-          "key": "overlay",
+          "key": "showOverlay",
           "type": [
             "Boolean"
           ],
@@ -1526,6 +1594,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-description",
+        "t-class-image",
+        "t-class-actions"
+      ],
       "tpl": "<t-empty icon=\"info-circle-filled\" />",
       "path": "./empty/empty"
     },
@@ -1569,7 +1643,7 @@
       ],
       "events": [
         {
-          "key": "click",
+          "key": "bind:click",
           "desc": "悬浮按钮点击事件",
           "label": ""
         }
@@ -1680,6 +1754,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-image",
+        "t-class-text",
+        "t-class-description"
+      ],
       "tpl": "<t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item>",
       "path": "./grid/grid-item"
     },
@@ -1729,6 +1809,9 @@
           "desc": "是否开启点击反馈",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "tpl": "<t-grid column=\"{{2}}\"><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item></t-grid>",
       "require": {
@@ -1832,14 +1915,18 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-load"
+      ],
       "events": [
         {
-          "key": "error",
+          "key": "bind:error",
           "desc": "图片加载失败时触发",
           "label": ""
         },
         {
-          "key": "load",
+          "key": "bind:load",
           "desc": "图片加载完成时触发",
           "label": ""
         }
@@ -1867,11 +1954,19 @@
           ],
           "desc": "索引列表的列表数据。每个元素包含三个子元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。",
           "label": ""
+        },
+        {
+          "key": "sticky",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "索引是否吸顶，默认为true",
+          "label": ""
         }
       ],
       "events": [
         {
-          "key": "select",
+          "key": "bind:select",
           "desc": "点击行元素时触发事件",
           "label": ""
         }
@@ -1884,14 +1979,6 @@
       "label": "输入框",
       "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-input.png",
       "properties": [
-        {
-          "key": "adjustPosition",
-          "type": [
-            "Boolean"
-          ],
-          "desc": "键盘弹起时，是否自动上推页面",
-          "label": ""
-        },
         {
           "key": "align",
           "type": [
@@ -1917,22 +2004,6 @@
           "label": ""
         },
         {
-          "key": "confirmHold",
-          "type": [
-            "Boolean"
-          ],
-          "desc": "点击键盘右下角按钮时是否保持键盘不收起点",
-          "label": ""
-        },
-        {
-          "key": "confirmType",
-          "type": [
-            "String"
-          ],
-          "desc": "设置键盘右下角按钮的文字，仅在 type='text'时生效",
-          "label": ""
-        },
-        {
           "key": "disabled",
           "type": [
             "Boolean"
@@ -1946,14 +2017,6 @@
             "String"
           ],
           "desc": "错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips）",
-          "label": ""
-        },
-        {
-          "key": "focus",
-          "type": [
-            "Boolean"
-          ],
-          "desc": "自动聚焦",
           "label": ""
         },
         {
@@ -2053,14 +2116,6 @@
           "label": ""
         },
         {
-          "key": "type",
-          "type": [
-            "String"
-          ],
-          "desc": "输入框类型",
-          "label": ""
-        },
-        {
           "key": "value",
           "type": [
             "String",
@@ -2070,29 +2125,35 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-input",
+        "t-class-placeholder",
+        "t-class-error-msg"
+      ],
       "events": [
         {
-          "key": "blur",
+          "key": "bind:blur",
           "desc": "失去焦点时触发",
           "label": ""
         },
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "输入框值发生变化时触发",
           "label": ""
         },
         {
-          "key": "clear",
+          "key": "bind:clear",
           "desc": "清空按钮点击时触发",
           "label": ""
         },
         {
-          "key": "enter",
+          "key": "bind:enter",
           "desc": "回车键按下时触发",
           "label": ""
         },
         {
-          "key": "focus",
+          "key": "bind:focus",
           "desc": "获得焦点时触发",
           "label": ""
         }
@@ -2202,6 +2263,11 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-text",
+        "t-class-indicator"
+      ],
       "tpl": "<t-loading theme=\"circular\" size=\"40rpx\"></t-loading>",
       "path": "./loading/loading"
     },
@@ -2302,19 +2368,26 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-content",
+        "t-class-icon",
+        "t-class-action",
+        "t-class-close-btn"
+      ],
       "events": [
         {
-          "key": "actionBtnClick",
+          "key": "bind:action-btn-click",
           "desc": "当操作按钮存在时，用户点击操作按钮时触发",
           "label": ""
         },
         {
-          "key": "closeBtnClick",
+          "key": "bind:close-btn-click",
           "desc": "当关闭按钮存在时，用户点击关闭按钮触发",
           "label": ""
         },
         {
-          "key": "durationEnd",
+          "key": "bind:duration-end",
           "desc": "计时结束后触发",
           "label": ""
         }
@@ -2400,29 +2473,36 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-title",
+        "t-class-left-icon",
+        "t-class-home-icon",
+        "t-class-capsule"
+      ],
       "events": [
         {
-          "key": "complete",
+          "key": "bind:complete",
           "desc": "navigateBack 执行完成后触发（失败或成功均会触发）",
           "label": ""
         },
         {
-          "key": "fail",
+          "key": "bind:fail",
           "desc": "navigateBack 执行失败后触发",
           "label": ""
         },
         {
-          "key": "goBack",
+          "key": "bind:go-back",
           "desc": "delta 值为 0 时，点击返回，触发该事件",
           "label": ""
         },
         {
-          "key": "goHome",
+          "key": "bind:go-home",
           "desc": "点击 Home 触发",
           "label": ""
         },
         {
-          "key": "success",
+          "key": "bind:success",
           "desc": "navigateBack 执行成功后触发",
           "label": ""
         }
@@ -2436,20 +2516,19 @@
       "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-picker.png",
       "properties": [
         {
+          "key": "format",
+          "type": [
+            "String"
+          ],
+          "desc": "格式化标签",
+          "label": ""
+        },
+        {
           "key": "options",
           "type": [
             "Array"
           ],
           "desc": "数据源",
-          "label": ""
-        },
-        {
-          "key": "value",
-          "type": [
-            "String",
-            "Number"
-          ],
-          "desc": "默认选中的选项",
           "label": ""
         }
       ],
@@ -2464,7 +2543,8 @@
         {
           "key": "cancelBtn",
           "type": [
-            "String"
+            "String",
+            "Object"
           ],
           "desc": "取消按钮文字",
           "label": ""
@@ -2472,7 +2552,8 @@
         {
           "key": "confirmBtn",
           "type": [
-            "String"
+            "String",
+            "Object"
           ],
           "desc": "确定按钮文字",
           "label": ""
@@ -2520,18 +2601,18 @@
       ],
       "events": [
         {
-          "key": "cancel",
+          "key": "bind:cancel",
           "desc": "点击取消按钮时触发",
           "label": ""
         },
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "选中变化时候触发",
           "label": ""
         },
         {
-          "key": "confirm",
-          "desc": "点击确认确认按钮时触发",
+          "key": "bind:pick",
+          "desc": "任何一列选中都会触发，不同的列参数不同。`context.column` 表示第几列变化，`context.index` 表示变化那一列的选中项下标",
           "label": ""
         }
       ],
@@ -2619,9 +2700,14 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-overlay",
+        "t-class-content"
+      ],
       "events": [
         {
-          "key": "visibleChange",
+          "key": "bind:visible-change",
           "desc": "当浮层隐藏或显示时触发",
           "label": ""
         }
@@ -2763,19 +2849,25 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-loading",
+        "t-class-text",
+        "t-class-indicator"
+      ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "下拉或收起时触发，用户手势往下滑动触发下拉状态，手势松开触发收起状态",
           "label": ""
         },
         {
-          "key": "refresh",
+          "key": "bind:refresh",
           "desc": "结束下拉时触发",
           "label": ""
         },
         {
-          "key": "timeout",
+          "key": "bind:timeout",
           "desc": "刷新超时触发",
           "label": ""
         }
@@ -2825,7 +2917,7 @@
       ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "选中值发生变化时触发",
           "label": ""
         }
@@ -2949,9 +3041,16 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-icon",
+        "t-class-label",
+        "t-class-content",
+        "t-class-border"
+      ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "值变化时触发",
           "label": ""
         }
@@ -3048,7 +3147,7 @@
       ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "评分数改变时触发",
           "label": ""
         }
@@ -3142,34 +3241,42 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-input",
+        "t-class-input-container",
+        "t-class-cancel",
+        "t-class-left",
+        "t-class-right"
+      ],
       "events": [
         {
-          "key": "actionClick",
+          "key": "bind:action-click",
           "desc": "点击右侧操作按钮文字时触发",
           "label": ""
         },
         {
-          "key": "blur",
+          "key": "bind:blur",
           "desc": "失去焦点时触发",
           "label": ""
         },
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "值发生变化时触发",
           "label": ""
         },
         {
-          "key": "clear",
+          "key": "bind:clear",
           "desc": "点击清除时触发",
           "label": ""
         },
         {
-          "key": "focus",
+          "key": "bind:focus",
           "desc": "聚焦时触发",
           "label": ""
         },
         {
-          "key": "submit",
+          "key": "bind:submit",
           "desc": "提交时触发",
           "label": ""
         }
@@ -3187,7 +3294,7 @@
           "type": [
             "String"
           ],
-          "desc": "动画效果，有「渐变加载动画」和「闪烁加载动画」两种。值为空则表示没有动画",
+          "desc": "动画效果，有「渐变加载动画」和「闪烁加载动画」两种。值为 'none' 则表示没有动画",
           "label": ""
         },
         {
@@ -3222,6 +3329,12 @@
           "desc": "骨架图风格，有基础、头像组合等两大类",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-avatar",
+        "t-class-image",
+        "t-class-text"
       ],
       "tpl": "<t-skeleton rowCol=\"{{ [{ width: '686rpx', height: '32rpx' }, 1, 1, { width: '380rpx', height: '32rpx' }]}}\" loading></t-skeleton>",
       "path": "./skeleton/skeleton"
@@ -3323,19 +3436,26 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-bar",
+        "t-class-bar-active",
+        "t-class-bar-disabled",
+        "t-class-cursor"
+      ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "滑块值变化时触发",
           "label": ""
         },
         {
-          "key": "dragend",
+          "key": "bind:dragend",
           "desc": "结束拖动时触发",
           "label": ""
         },
         {
-          "key": "dragstart",
+          "key": "bind:dragstart",
           "desc": "开始拖动时触发",
           "label": ""
         }
@@ -3388,6 +3508,13 @@
           "desc": "标题",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class",
+        "t-class-content",
+        "t-class-title",
+        "t-class-description",
+        "t-class-extra"
       ],
       "tpl": "<t-step-item title=\"步骤描述\"></t-step-item>",
       "path": "./steps/step-item"
@@ -3463,19 +3590,25 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-input",
+        "t-class-add",
+        "t-class-minus"
+      ],
       "events": [
         {
-          "key": "blur",
+          "key": "bind:blur",
           "desc": "输入框失去焦点时触发",
           "label": ""
         },
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "数值发生变更时触发",
           "label": ""
         },
         {
-          "key": "overlimit",
+          "key": "bind:overlimit",
           "desc": "数值超出限制时触发",
           "label": ""
         }
@@ -3522,6 +3655,14 @@
           "label": ""
         },
         {
+          "key": "separator",
+          "type": [
+            "String"
+          ],
+          "desc": "步骤条分割符",
+          "label": ""
+        },
+        {
           "key": "theme",
           "type": [
             "String"
@@ -3530,9 +3671,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class"
+      ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "当前步骤发生变化时触发",
           "label": ""
         }
@@ -3582,9 +3726,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class"
+      ],
       "events": [
         {
-          "key": "scroll",
+          "key": "bind:scroll",
           "desc": "滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶",
           "label": ""
         }
@@ -3632,7 +3779,7 @@
       ],
       "events": [
         {
-          "key": "click",
+          "key": "bind:click",
           "desc": "操作项点击时触发（插槽写法组件不触发，业务侧自定义内容和事件）",
           "label": ""
         }
@@ -3723,7 +3870,7 @@
       ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "轮播切换时触发",
           "label": ""
         }
@@ -3800,7 +3947,7 @@
       ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "数据发生变化时触发",
           "label": ""
         }
@@ -3906,9 +4053,12 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class"
+      ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "选中标签切换时触发",
           "label": ""
         }
@@ -3945,7 +4095,7 @@
           "type": [
             "String"
           ],
-          "desc": "选项卡名称，可自定义选项卡导航内容",
+          "desc": "选项卡名称",
           "label": ""
         },
         {
@@ -4016,9 +4166,15 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-item",
+        "t-class-active",
+        "t-class-track"
+      ],
       "events": [
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "激活的选项卡发生变化时触发",
           "label": ""
         }
@@ -4100,14 +4256,17 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class"
+      ],
       "events": [
         {
-          "key": "click",
+          "key": "bind:click",
           "desc": "点击时触发",
           "label": ""
         },
         {
-          "key": "close",
+          "key": "bind:close",
           "desc": "如果关闭按钮存在，点击关闭按钮时触发",
           "label": ""
         }
@@ -4217,29 +4376,35 @@
           "label": ""
         }
       ],
+      "externalClasses": [
+        "t-class",
+        "t-class-textarea",
+        "t-class-placeholder",
+        "t-class-name"
+      ],
       "events": [
         {
-          "key": "blur",
+          "key": "bind:blur",
           "desc": "失去焦点时触发",
           "label": ""
         },
         {
-          "key": "change",
+          "key": "bind:change",
           "desc": "输入内容变化时触发",
           "label": ""
         },
         {
-          "key": "enter",
+          "key": "bind:enter",
           "desc": "点击完成时触发",
           "label": ""
         },
         {
-          "key": "focus",
+          "key": "bind:focus",
           "desc": "获得焦点时触发",
           "label": ""
         },
         {
-          "key": "lineChange",
+          "key": "bind:line-change",
           "desc": "行高发生变化时触发",
           "label": ""
         }
@@ -4285,6 +4450,14 @@
           "label": ""
         },
         {
+          "key": "overlayProps",
+          "type": [
+            "Object"
+          ],
+          "desc": "遮罩层属性，透传至 Overlay",
+          "label": ""
+        },
+        {
           "key": "placement",
           "type": [
             "String"
@@ -4301,6 +4474,14 @@
           "label": ""
         },
         {
+          "key": "showOverlay",
+          "type": [
+            "Boolean"
+          ],
+          "desc": "是否显示遮罩层",
+          "label": ""
+        },
+        {
           "key": "theme",
           "type": [
             "String"
@@ -4308,6 +4489,9 @@
           "desc": "提示类型",
           "label": ""
         }
+      ],
+      "externalClasses": [
+        "t-class"
       ],
       "tpl": "<t-toast id=\"t-toast\" />",
       "path": "./toast/toast"
@@ -4411,7 +4595,7 @@
           "type": [
             "String"
           ],
-          "desc": "【开发中】用于完全自定义文件列表内容",
+          "desc": "用于完全自定义文件列表内容",
           "label": ""
         },
         {
@@ -4435,7 +4619,7 @@
           "type": [
             "Number"
           ],
-          "desc": "预览窗格的 gutter 大小，单位 rpx",
+          "desc": "预览窗格的 `gutter` 大小，单位 rpx",
           "label": ""
         },
         {
@@ -4482,32 +4666,32 @@
       ],
       "events": [
         {
-          "key": "add",
+          "key": "bind:add",
           "desc": "上传成功后触发，仅包含本次选择的照片；`url` 表示选定视频的临时文件路径 (本地路径)。`duration` 表示选定视频的时间长度。`size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述",
           "label": ""
         },
         {
-          "key": "complete",
+          "key": "bind:complete",
           "desc": "上传成功或失败后触发",
           "label": ""
         },
         {
-          "key": "fail",
+          "key": "bind:fail",
           "desc": "上传失败后触发",
           "label": ""
         },
         {
-          "key": "remove",
+          "key": "bind:remove",
           "desc": "移除文件时触发",
           "label": ""
         },
         {
-          "key": "selectChange",
+          "key": "bind:select-change",
           "desc": "选择文件或图片之后，上传之前，触发该事件。<br />`files` 表示之前已经上传完成的文件列表。<br />`currentSelectedFiles` 表示本次上传选中的文件列表",
           "label": ""
         },
         {
-          "key": "success",
+          "key": "bind:success",
           "desc": "上传成功后触发，包含所有上传的文件；`url` 表示选定视频的临时文件路径 (本地路径)。`duration` 表示选定视频的时间长度。`size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述",
           "label": ""
         }
