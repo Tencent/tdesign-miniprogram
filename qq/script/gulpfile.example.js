@@ -9,7 +9,7 @@ const packageJSON = require('../../package.json');
 const base = require('./gulpfile.base');
 
 /* config */
-const src = 'example';
+const src = 'qq/example';
 const dist = '_example';
 
 /* base tasks */

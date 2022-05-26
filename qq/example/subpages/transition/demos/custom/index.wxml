@@ -1,0 +1,4 @@
+<t-button size="large" bindtap="onTriggerClick">Toggle</t-button>
+<t-transition name="translate" visible="{{ visible }}">
+  <view class="block"></view>
+</t-transition>

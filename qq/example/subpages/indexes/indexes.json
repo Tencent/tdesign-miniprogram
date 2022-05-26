@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Indexes 索引",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}

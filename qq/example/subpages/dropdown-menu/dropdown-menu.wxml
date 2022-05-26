@@ -1,0 +1,86 @@
+<view class="demo">
+  <view class="demo-title">DropdownMenu 下拉菜单</view>
+  <view class="demo-desc">菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。</view>
+  <t-demo title="01 类型" desc="单选下拉菜单">
+    <t-dropdown-menu>
+      <t-dropdown-item
+        label="菜单"
+        options="{{singleSelect.options}}"
+        value="{{singleSelect.value}}"
+        bindchange="handleSingleSelect"
+      />
+      <t-dropdown-item label="菜单" options="{{singleSelect.options}}" defaultValue="option_3" />
+      <t-dropdown-item label="菜单" options="{{singleSelect.options}}" defaultValue="option_3" />
+      <t-dropdown-item label="两字溢出" options="{{singleSelect.options}}" defaultValue="option_3" />
+    </t-dropdown-menu>
+  </t-demo>
+
+  <t-demo desc="多选下拉菜单">
+    <t-dropdown-menu>
+      <t-dropdown-item
+        label="单列多选"
+        options="{{multipleSelect.options}}"
+        value="{{multipleSelect.value}}"
+        bindchange="handleMultipleSelect"
+        multiple
+      />
+      <t-dropdown-item
+        label="双列多选"
+        optionsColumns="2"
+        options="{{doubleColumnsOptions}}"
+        defaultValue="{{['option_1', 'option_2']}}"
+        multiple
+      />
+      <t-dropdown-item
+        label="最多四字三列"
+        optionsColumns="3"
+        options="{{tripleColumnsOptions}}"
+        defaultValue="{{['option_1', 'option_2', 'option_3']}}"
+        multiple
+      />
+    </t-dropdown-menu>
+  </t-demo>
+
+  <t-demo desc="树形下拉菜单">
+    <t-dropdown-menu>
+      <t-dropdown-item
+        label="树形双列"
+        optionsLayout="tree"
+        options="{{doubleColumnsTree.options}}"
+        value="{{doubleColumnsTree.value}}"
+        bindchange="handleTreeSelect"
+      />
+      <t-dropdown-item
+        label="选项最多八字树形三列"
+        optionsLayout="tree"
+        options="{{tripleColumnsTree.options}}"
+        defaultValue="{{tripleColumnsTree.value}}"
+        multiple
+      />
+    </t-dropdown-menu>
+  </t-demo>
+
+  <t-demo title="02 状态" desc="下拉菜单状态">
+    <t-dropdown-menu>
+      <t-dropdown-item disabled label="禁用" />
+      <t-dropdown-item disabled label="禁用" />
+      <t-dropdown-item disabled label="禁用" />
+      <t-dropdown-item disabled label="禁用" />
+    </t-dropdown-menu>
+
+    <view class="spacer" style="height: 32rpx"></view>
+
+    <t-dropdown-menu>
+      <t-dropdown-item disabled label="禁用菜单" />
+      <t-dropdown-item disabled label="禁用菜单" />
+      <t-dropdown-item disabled label="禁用菜单" />
+    </t-dropdown-menu>
+
+    <view class="spacer" style="height: 32rpx"></view>
+
+    <t-dropdown-menu>
+      <t-dropdown-item disabled label="禁用菜单" />
+      <t-dropdown-item disabled label="禁用菜单" />
+    </t-dropdown-menu>
+  </t-demo>
+</view>

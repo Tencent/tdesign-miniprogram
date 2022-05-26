@@ -1,0 +1,63 @@
+<view class="demo">
+  <view class="demo-title">Tag 标签</view>
+  <view class="demo-desc">用于表明主体的类目，属性或状态。</view>
+
+  <t-demo title="01 类型" desc="展示型标签">
+    <view class="group">
+      <t-tag theme="primary">重要</t-tag>
+      <t-tag theme="danger">危险</t-tag>
+      <t-tag theme="warning">警告</t-tag>
+      <t-tag theme="success">成功</t-tag>
+      <t-tag theme="info">信息</t-tag>
+    </view>
+
+    <view class="group">
+      <t-tag theme="primary" variant="outline">镂空标签</t-tag>
+      <t-tag theme="primary" variant="light">浅底标签</t-tag>
+      <t-tag theme="primary" variant="light-outline">标签</t-tag>
+    </view>
+
+    <view class="group">
+      <t-tag theme="primary" shape="circle">圆角标签</t-tag>
+      <t-tag theme="primary" shape="half-circle">半圆角标签</t-tag>
+    </view>
+
+    <view class="group">
+      <t-tag wx:if="{{show}}" bind:close="handleClose" closable theme="primary">标签</t-tag>
+    </view>
+
+    <view class="group">
+      <t-tag max-width="150" title="超长省略文本标签超长省略文本标签">超长省略文本标签超长省略文本标签</t-tag>
+    </view>
+  </t-demo>
+
+  <t-demo title="02 状态" desc="标签状态">
+    <view class="group">
+      <t-check-tag
+        wx:for="{{items}}"
+        wx:for-index="index"
+        wx:key="index"
+        defaultChecked="{{item.checked}}"
+        disabled="{{item.disabled}}"
+        data-index="{{index}}"
+        bind:change="handleCheckTagChange"
+        >{{item.name}}</t-check-tag
+      >
+    </view>
+  </t-demo>
+
+  <t-demo title="03 规格" desc="规格标签">
+    <view class="group d-flex">
+      <view class="left">
+        <t-tag size="large" theme="primary">展示标签30</t-tag>
+        <t-tag size="medium" theme="primary">展示标签24</t-tag>
+        <t-tag size="small" theme="primary">展示标签22</t-tag>
+      </view>
+
+      <view class="right">
+        <t-check-tag size="large">点击标签30</t-check-tag>
+        <t-check-tag size="midium">点击标签24</t-check-tag>
+      </view>
+    </view>
+  </t-demo>
+</view>

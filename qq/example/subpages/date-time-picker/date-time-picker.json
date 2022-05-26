@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "DateTimePicker",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}
