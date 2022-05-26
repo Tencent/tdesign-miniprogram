@@ -145,7 +145,8 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp json`
    * 处理json
    * */
-  tasks.json = () => gulp.src(globs.json, { ...srcOptions, since: since(tasks.json) }).pipe(gulp.dest(dist));
+  tasks.json = () =>
+    gulp.src(globs.json, { ...srcOptions, since: since(tasks.json), allowEmpty: true }).pipe(gulp.dest(dist));
 
   /** `gulp less`
    * 处理less
