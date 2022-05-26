@@ -1,5 +1,5 @@
 <view
-  class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + '--bordered'}} t-class"
+  class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + (borderless ? '' : '--bordered')}} {{prefix}}-class"
 >
   <view wx:if="{{label}}" class="{{classPrefix + '__name'}}">
     <slot name="label" wx:if="{{label === 'slot'}}" />
@@ -12,19 +12,34 @@
         maxlength="{{maxlength || -1}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
-        placeholder-class="{{classPrefix}}__placeholder t-class-placeholder"
+        placeholderStyle="{{placeholderStyle}}"
+        placeholder-class="{{classPrefix}}__placeholder t-class-placeholder {{placeholderClass}}"
         model:value="{{value}}"
         bindinput="onInput"
         bindfocus="onFocus"
         bindblur="onBlur"
         bindconfirm="onConfirm"
+        bind:keyboardheightchange="onKeyboardHeightChange"
         password="{{type === 'password'}}"
         type="{{type === 'password' ? 'text' : type}}"
         focus="{{focus}}"
         confirm-type="{{confirmType}}"
         confirm-hold="{{confirmHold}}"
+        cursor="{{cursor}}"
+        cursor-spacing="{{cursorSpacing}}"
         adjust-position="{{adjustPosition}}"
-        class="{{classPrefix}}__control {{suffix || align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  t-class-input"
+        auto-focus="{{autoFocus}}"
+        always-embed="{{alwaysEmbed}}"
+        selection-start="{{selectionStart}}"
+        selection-end="{{selectionEnd}}"
+        hold-keyboard="{{holdKeyboard}}"
+        safe-password-cert-path="{{safePasswordCertPath}}"
+        safe-password-length="{{safePasswordLength}}"
+        safe-password-time-stamp="{{safePasswordTimeStamp}}"
+        safe-password-nonce="{{safePasswordNonce}}"
+        safe-password-salt="{{safePasswordSalt}}"
+        safe-password-custom-hash="{{safePasswordCustomHash}}"
+        class="{{classPrefix}}__control {{suffix || align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  {{prefix}}-class-input"
       />
       <view
         wx:if="{{ clearable && (value.length > 0 || characterLength > 0)}}"
@@ -45,7 +60,7 @@
     </view>
     <view
       wx:if="{{errorMessage && errorMessage.length > 0}}"
-      class="{{classPrefix}}__error-msg t-class-error-msg"
+      class="{{classPrefix}}__error-msg {{prefix}}-class-error-msg"
       >{{errorMessage}}
     </view>
   </view>

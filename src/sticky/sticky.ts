@@ -33,12 +33,13 @@ export default class Sticky extends SuperComponent {
   };
 
   data = {
+    prefix,
     containerStyle: '',
     contentStyle: '',
     classPrefix: `.${prefix}-sticky`,
   };
 
-  mounted() {
+  ready() {
     this.onScroll();
   }
 
@@ -57,29 +58,29 @@ export default class Sticky extends SuperComponent {
     this.scrollTop = scrollTop || this.scrollTop;
 
     if (typeof container === 'function') {
-      Promise.all([getRect(this, ContainerClass), this.getContainerRect()]).then(
-        ([root, container]) => {
-          if (offsetTop + root.height > container.height + container.top) {
-            this.setDataAfterDiff({
-              isFixed: false,
-              transform: container.height - root.height,
-            });
-          } else if (offsetTop >= root.top) {
-            this.setDataAfterDiff({
-              isFixed: true,
-              height: root.height,
-              transform: 0,
-            });
-          } else {
-            this.setDataAfterDiff({ isFixed: false, transform: 0 });
-          }
-        },
-      );
+      Promise.all([getRect(this, ContainerClass), this.getContainerRect()]).then(([root, container]) => {
+        if (!root || !container) return;
+        if (offsetTop + root.height > container.height + container.top) {
+          this.setDataAfterDiff({
+            isFixed: false,
+            transform: container.height - root.height,
+          });
+        } else if (offsetTop >= root.top) {
+          this.setDataAfterDiff({
+            isFixed: true,
+            height: root.height,
+            transform: 0,
+          });
+        } else {
+          this.setDataAfterDiff({ isFixed: false, transform: 0 });
+        }
+      });
 
       return;
     }
 
     getRect(this, ContainerClass).then((root) => {
+      if (!root) return;
       if (offsetTop >= root.top) {
         this.setDataAfterDiff({ isFixed: true, height: root.height });
         this.transform = 0;

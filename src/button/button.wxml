@@ -21,6 +21,7 @@
   bind:error="error"
   bind:opensetting="opensetting"
   bind:launchapp="launchapp"
+  bind:chooseavatar="chooseavatar"
 >
   <t-icon wx:if="{{icon}}" name="{{icon}}" class="{{classPrefix}}__icon {{prefix}}-class-icon"></t-icon>
   <view wx:if="{{loading}}" class="{{classPrefix}}--loading {{prefix}}-class-loading">

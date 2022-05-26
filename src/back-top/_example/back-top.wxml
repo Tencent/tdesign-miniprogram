@@ -1,0 +1,58 @@
+<view class="demo">
+  <view class="demo-title">BackTop 返回顶部</view>
+  <view class="demo-desc"> 用于当页面过长往下滑动时，帮助用户快速回到页面顶部。</view>
+
+  <t-demo title="01 类型">
+    <view class="demo-section__desc">圆型返回顶部</view>
+    <view class="button-group">
+      <view class="button-group-item">
+        <t-button t-class="t-class-button" size="large" block bindtap="onBtnClick" data-index="{{0}}">
+          圆白底
+        </t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button t-class="t-class-button" size="large" block bindtap="onBtnClick" data-index="{{1}}">
+          圆黑底
+        </t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button t-class="t-class-button" size="large" block bindtap="onBtnClick" data-index="{{2}}">
+          圆白底纯图标
+        </t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button t-class="t-class-button" size="large" block bindtap="onBtnClick" data-index="{{3}}">
+          圆黑底纯图标
+        </t-button>
+      </view>
+    </view>
+
+    <view class="demo-section__desc">半圆型返回顶部</view>
+    <view class="button-group">
+      <view class="button-group-item">
+        <t-button t-class="t-class-button" size="large" block bindtap="onBtnClick" data-index="{{4}}">
+          半圆白底
+        </t-button>
+      </view>
+      <view class="button-group-item">
+        <t-button t-class="t-class-button" size="large" block bindtap="onBtnClick" data-index="{{5}}">
+          半圆黑底
+        </t-button>
+      </view>
+    </view>
+
+    <view class="container-flex">
+      <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol3}}" class="skeleton-item" t-class-text="skeleton-text" loading></t-skeleton>
+    </view>
+
+    <t-back-top wx:if="{{showBackTop}}" theme="{{backTopDemo.theme}}" text="{{backTopDemo.text}}" bind:to-top="onToTop">
+    </t-back-top>
+  </t-demo>
+</view>

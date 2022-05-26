@@ -1,0 +1,107 @@
+.demo-steps {
+  padding-top: 80rpx;
+
+  .t-cell-group {
+    background-color: #fbfbfb;
+
+    .mb-12 {
+      margin-bottom: 24rpx;
+      display: block;
+    }
+  }
+}
+
+.demo-steps.vertical {
+  padding-left: 32rpx;
+
+  + .demo-steps {
+    padding-top: 30rpx;
+  }
+}
+
+.group {
+  padding-bottom: 80rpx;
+  margin-top: 32rpx;
+  background: #fff;
+
+  & + .demo-section__desc {
+    margin-top: 32rpx;
+  }
+
+  &.vertical {
+    padding-bottom: 30rpx;
+  }
+}
+
+.extra-img {
+  font-size: 0;
+}
+
+/**
+* 自定义step节点样式：注意权重
+*/
+@default-color: #c5c5c5;
+@finish-color: #0052d9;
+@active-color: rgb(5, 150, 34);
+
+@title-color: #000;
+@description-color: rgb(38, 37, 37);
+@extra-color: #c5c5c5;
+
+.t-icon-slot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: @default-color;
+  &--child {
+    width: 10px;
+    height: 10px;
+  }
+
+  &--finish {
+    background-color: @finish-color;
+  }
+
+  &--active {
+    background-color: @active-color;
+  }
+
+  &--default {
+    background-color: @default-color;
+  }
+}
+/** 自定义line颜色：
+* 方法1: 通过t-class-inner外部样式的 ::after
+* 方法2: 覆盖组件内部样式。
+*/
+.t-class-inner {
+  &--finish::after {
+    background-color: @finish-color !important;
+  }
+
+  &--active::after {
+    background-color: @default-color !important;
+  }
+
+  &--default::after {
+    background-color: @default-color !important;
+  }
+}
+
+.t-class-title {
+  color: @title-color !important;
+  &--no {
+    margin: 0 !important;
+  }
+}
+
+.t-class-description {
+  color: @description-color !important;
+}
+
+.t-class-extra {
+  color: @extra-color;
+  text-align: left;
+  font-size: 20rpx !important;
+  margin-top: 0px !important;
+}

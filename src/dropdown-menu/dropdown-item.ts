@@ -19,7 +19,6 @@ export default class DropdownMenuItem extends SuperComponent {
     prefix,
     classPrefix: name,
     show: false,
-    bar: null,
     top: 0,
     maskHeight: 0,
     contentClasses: '',
@@ -32,15 +31,17 @@ export default class DropdownMenuItem extends SuperComponent {
     overlay: menuProps.overlay.value,
   };
 
+  parent = null;
+
   relations: RelationsOptions = {
     './dropdown-menu': {
       type: 'parent',
       linked(target) {
         const { zIndex, duration, overlay } = target.properties;
 
+        this.parent = target;
         this.getParentBottom(target);
         this.setData({
-          bar: target,
           zIndex,
           duration,
           overlay,
@@ -70,6 +71,9 @@ export default class DropdownMenuItem extends SuperComponent {
       this.setData({
         hasChanged: !equal(v1, v2),
       });
+    },
+    label() {
+      this.parent?.getAllItems();
     },
   };
 
@@ -132,7 +136,7 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     closeDropdown() {
-      this.data.bar.setData({
+      this.parent?.setData({
         activeIdx: -1,
       });
       this.setData({
@@ -176,9 +180,7 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     handleMaskClick() {
-      const { bar } = this.data;
-
-      if (bar && bar.properties.closeOnClickOverlay) {
+      if (this.parent?.properties.closeOnClickOverlay) {
         this.closeDropdown();
       }
     },

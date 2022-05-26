@@ -44,7 +44,7 @@ export default class DropdownMenu extends SuperComponent {
       });
     },
     toggleDropdown(e: WechatMiniprogram.BaseEvent) {
-      const { index: idx } = e.target.dataset;
+      const { index: idx } = e.currentTarget.dataset;
       const { activeIdx, duration } = this.data;
       const prevItem = this.data.nodes[activeIdx];
       const currItem = this.data.nodes[idx];

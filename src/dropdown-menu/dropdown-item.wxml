@@ -2,13 +2,6 @@
 
 <view class="{{classPrefix}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
   <view
-    wx:if="{{show && overlay}}"
-    class="{{prefix}}-mask"
-    bind:tap="handleMaskClick"
-    style="height: {{maskHeight}}px; z-index: {{zIndex + 1}}"
-    catch:touchmove="catchtouchmove"
-  ></view>
-  <view
     class="{{contentClasses}} {{classPrefix}}__content"
     style="transition: all {{duration}}ms ease; z-index: {{zIndex + 1}}"
   >
@@ -122,4 +115,11 @@
       </t-button-group>
     </view>
   </view>
+  <view
+    wx:if="{{show && overlay}}"
+    class="{{prefix}}-mask"
+    bind:tap="handleMaskClick"
+    style="z-index: {{zIndex - 1}}"
+    catch:touchmove="catchtouchmove"
+  />
 </view>

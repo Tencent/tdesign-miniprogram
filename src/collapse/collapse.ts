@@ -35,6 +35,7 @@ export default class Collapse extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
   };
 

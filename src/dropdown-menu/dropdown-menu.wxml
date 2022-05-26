@@ -2,10 +2,11 @@
   <view class="{{ classPrefix }}__bar" style="z-index: {{zIndex}}" id="t-bar">
     <view
       wx:for="{{menus}}"
-      wx:key="item"
+      bindtap="toggleDropdown"
+      data-index="{{index}}"
       class="{{ classPrefix }}__item {{ activeIdx == index ? prefix + '-is-active' : ''}} {{ item.disabled ? prefix + '-is-disabled' : ''}}"
     >
-      <view class="{{ classPrefix }}__title" bindtap="toggleDropdown" data-index="{{index}}"> {{item.label}} </view>
+      <view class="{{ classPrefix }}__title">{{item.label}}</view>
       <t-icon
         name="caret-down-small"
         size="48rpx"

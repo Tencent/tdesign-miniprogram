@@ -2,10 +2,12 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { canIUseFormFieldButton } from '../common/version';
+import type { TdButtonProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-button`;
 
+export interface ButtonProps extends TdButtonProps {}
 @wxComponent()
 export default class Button extends SuperComponent {
   externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
@@ -91,6 +93,9 @@ export default class Button extends SuperComponent {
     },
     launchapp(e) {
       this.triggerEvent('launchapp', e.detail);
+    },
+    chooseavatar(e) {
+      this.triggerEvent('chooseavatar', e.detail);
     },
     handleTap(e) {
       if (this.data.disabled) return;
