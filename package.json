@@ -40,6 +40,7 @@
     "prepare": "husky install",
     "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./",
     "changelog": "node script/generate-changelog.js",
+    "changelog:qq": "node qq/script/generate-changelog.js",
     "robot": "publish-cli robot-msg"
   },
   "author": "tdesign",
