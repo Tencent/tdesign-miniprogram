@@ -8,7 +8,7 @@ import createTDesignPlugin from './plugin-tdoc';
 const publicPathMap: Record<string, string> = {
   preview: '/',
   intranet: '/miniprogram/',
-  production: 'https://static.tdesign.tencent.com/miniprogram/',
+  production: 'https://static.tdesign.tencent.com/qq-miniprogram/',
 };
 
 // https://vitejs.dev/config/
