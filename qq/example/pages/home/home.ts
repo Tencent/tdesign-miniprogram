@@ -5,8 +5,8 @@ Page({
     list,
   },
   onLoad(options) {
-    const { path, q } = options;
-    console.log('🔥', path);
+    const { q } = options;
+    console.info('options', options);
     // 小程序跳转各个小程序组件库
     if (q) {
       // Navigator.gotoPage(path, rest);
@@ -24,7 +24,6 @@ Page({
       name: string;
       path?: string;
     };
-    console.log('🔥', e.detail.item);
     name = name.replace(/^[A-Z]/, (match) => `${match}`.toLocaleLowerCase());
     name = name.replace(/[A-Z]/g, (match) => {
       return `-${match.toLowerCase()}`;
