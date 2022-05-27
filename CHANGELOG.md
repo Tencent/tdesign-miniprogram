@@ -4,6 +4,14 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.12.1 `2022-5-27`
+### Bug Fixes
+
+- Dialog: 修复按钮传入 `openType` 不生效的问题 [#470](https://github.com/Tencent/tdesign-miniprogram/pull/470) [@LeeJim](https://github.com/LeeJim)
+- Collapse: 修复 `t-class` 外部样式类无法使用的问题 [#473](https://github.com/Tencent/tdesign-miniprogram/pull/473) [@LeeJim](https://github.com/LeeJim)
+- DropdownMenu: 修复 `label` 无法实时更新的问题 [#474](https://github.com/Tencent/tdesign-miniprogram/pull/474) [@LeeJim](https://github.com/LeeJim)
+- Sticky: 修复吸顶后 `tabs` 无法滑动的问题 [#475](https://github.com/Tencent/tdesign-miniprogram/pull/475) [@LeeJim](https://github.com/LeeJim)
+- Tabbar: 补充缺失的 `icon` 插槽 [#485](https://github.com/Tencent/tdesign-miniprogram/pull/485) [@LeeJim](https://github.com/LeeJim)
 
 ## 0.12.0 `2022-5-24`
 
