@@ -23,6 +23,7 @@
         <t-icon name="{{icon}}" size="24px" />
       </t-badge>
       <t-icon wx:else name="{{icon}}" size="24px" />
+      <slot name="icon" />
     </view>
     <view class="{{classPrefix}}__text {{icon ? prefix + '-size-s' : ''}}">
       <view class="{{classPrefix}}__icon-menu" wx:if="{{hasChildren}}" />

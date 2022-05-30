@@ -2,7 +2,6 @@
   <view class="{{ classPrefix }}__bar" style="z-index: {{zIndex}}" id="t-bar">
     <view
       wx:for="{{menus}}"
-      wx:key="item"
       bindtap="toggleDropdown"
       data-index="{{index}}"
       class="{{ classPrefix }}__item {{ activeIdx == index ? prefix + '-is-active' : ''}} {{ item.disabled ? prefix + '-is-disabled' : ''}}"

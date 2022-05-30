@@ -33,12 +33,13 @@ export default class Sticky extends SuperComponent {
   };
 
   data = {
+    prefix,
     containerStyle: '',
     contentStyle: '',
     classPrefix: `.${prefix}-sticky`,
   };
 
-  mounted() {
+  ready() {
     this.onScroll();
   }
 
