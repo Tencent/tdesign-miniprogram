@@ -87,12 +87,17 @@
 
   &.@{prefix}-tabs--top {
     .@{prefix}-tabs__scroll {
+      height: @tab-item-height--horizontal;
       border-bottom: solid 1rpx rgba(150, 95, 95, 0.12);
     }
   }
 
   &.@{prefix}-tabs--bottom {
     flex-direction: column-reverse;
+
+    .@{prefix}-tabs__scroll {
+      height: @tab-item-height--horizontal;
+    }
   }
 
   &.@{prefix}-tabs--left,
