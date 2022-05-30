@@ -89,6 +89,35 @@ Page({
 });
 ```
 
+### 与 Popup 使用
+
+```html
+ <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange">
+  <t-tabs id="tabs" defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs">
+    <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
+    <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
+    <t-tab-panel label="标签页三" value="2">标签三内容</t-tab-panel>
+  </t-tabs>
+</t-popup>
+```
+
+```js
+Page({
+  data: {
+    visible: false
+  },
+  showPopup() {
+    this.setData({
+      visible: true
+    }, () => {
+      const tabs = this.selectComponent('tabs');
+
+      tabs.setTrack(); // 这一步很重要，因为小程序的无法正确执行生命周期，所以需要手动设置下 tabs 的滑块
+    })
+  }
+})
+```
+
 ## API
 ### Tabs Props
 
