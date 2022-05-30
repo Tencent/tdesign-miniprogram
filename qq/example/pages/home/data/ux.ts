@@ -15,12 +15,12 @@ const ux = {
     {
       name: 'Dialog',
       label: '对话框',
-      path: 'pages',
+      path: 'subpages',
     },
     {
       name: 'Loading',
       label: '加载',
-      path: 'pages',
+      path: 'subpages',
     },
     // {
     //   name: 'LoadMore',
@@ -43,7 +43,7 @@ const ux = {
     {
       name: 'Progress',
       label: '进度条',
-      path: 'pages',
+      path: 'subpages',
     },
     {
       name: 'PullDownRefresh',

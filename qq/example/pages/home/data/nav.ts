@@ -34,7 +34,7 @@ const nav = {
     {
       name: 'Tabs',
       label: '选项卡',
-      path: 'pages',
+      path: 'subpages',
     },
   ],
 };

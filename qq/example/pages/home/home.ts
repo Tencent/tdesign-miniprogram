@@ -29,7 +29,7 @@ Page({
       return `-${match.toLowerCase()}`;
     });
     if (!path) {
-      path = `/pages/${name}/${name}`;
+      path = `/subpages/${name}/${name}`;
     }
     path = `/${path}/${name}/${name}`;
 

@@ -5,7 +5,7 @@ const display = {
     {
       name: 'Avatar',
       label: '头像',
-      path: 'pages',
+      path: 'subpages',
     },
     {
       name: 'Badge',
@@ -23,7 +23,7 @@ const display = {
     {
       name: 'Cell',
       label: '单元格',
-      path: 'pages',
+      path: 'subpages',
     },
     {
       name: 'Collapse',

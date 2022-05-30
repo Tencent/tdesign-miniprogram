@@ -25,7 +25,7 @@ const form = {
     {
       name: 'Picker',
       label: '选择器',
-      path: 'pages',
+      path: 'subpages',
     },
     {
       name: 'Radio',
@@ -35,7 +35,7 @@ const form = {
     {
       name: 'Rate',
       label: '评分',
-      path: 'pages',
+      path: 'subpages',
     },
     {
       name: 'Search',

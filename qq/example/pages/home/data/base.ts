@@ -17,7 +17,7 @@ const base = {
     {
       name: 'Button',
       label: '按钮',
-      path: 'pages',
+      path: 'subpages',
     },
     {
       name: 'Divider',
@@ -32,7 +32,7 @@ const base = {
     {
       name: 'Icon',
       label: '图标',
-      path: 'pages',
+      path: 'subpages',
     },
     // {
     //   name: 'Layout',

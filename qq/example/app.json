@@ -1,20 +1,8 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/picker/picker",
-    "pages/avatar/avatar",
-    "pages/button/button",
-    "pages/button-group/button-group",
-    "pages/dialog/dialog",
-    "pages/tabs/tabs",
-    "pages/icon/icon",
-    "pages/loading/loading",
-    "pages/loading/loadingProgress/loadingProgress",
-    "pages/rate/rate",
-    "pages/progress/progress",
-    "pages/cell/cell",
-    "pages/cell-group/cell-group",
-    "pages/home/navigateFail/navigateFail"
+    "pages/home/navigateFail/navigateFail",
+    "pages/gulp-error/index"
   ],
   "usingComponents": {
     "t-demo": "../../components/demo-block/index",
@@ -87,6 +75,19 @@
     {
       "root": "subpages",
       "pages": [
+        "picker/picker",
+        "avatar/avatar",
+        "button/button",
+        "button-group/button-group",
+        "dialog/dialog",
+        "tabs/tabs",
+        "icon/icon",
+        "loading/loading",
+        "loading/loadingProgress/loadingProgress",
+        "rate/rate",
+        "progress/progress",
+        "cell/cell",
+        "cell-group/cell-group",
         "collapse/collapse",
         "input/input",
         "badge/badge",
@@ -103,7 +104,6 @@
         "sticky/sticky",
         "tag/tag",
         "checkbox/checkbox",
-        "gulp-error/index",
         "fab/fab",
         "tab-bar/tab-bar",
         "transition/transition",

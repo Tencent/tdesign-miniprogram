@@ -1,8 +1,8 @@
 // @ts-ignore
-// import ActionSheet from 'tdesign-qq-miniprogram/action-sheet/index';
+import ActionSheet from 'tdesign-qq-miniprogram/action-sheet/index';
 // @ts-ignore
 import Toast from 'tdesign-qq-miniprogram/toast/index';
-// import { basicListOption, withIconListOption, grid, withSwiperGrid } from './constants';
+import { basicListOption, withIconListOption, grid, withSwiperGrid } from './constants';
 
 Page({
   data: {
@@ -32,28 +32,28 @@ Page({
       },
     ],
   },
-  clickHandle() {
-    // let handler;
-    // const { detail } = e;
-    // switch (detail) {
-    //   case 'list':
-    //     handler = ActionSheet.show(basicListOption);
-    //     break;
-    //   case 'withIconList':
-    //     handler = ActionSheet.show(withIconListOption);
-    //     break;
-    //   case 'grid':
-    //     handler = ActionSheet.show(grid);
-    //     break;
-    //   case 'withSwiperGrid':
-    //     handler = ActionSheet.show(withSwiperGrid);
-    //     break;
-    //   default:
-    //     break;
-    // }
-    // this.setData({
-    //   handler,
-    // });
+  clickHandle(e) {
+    let handler;
+    const { detail } = e;
+    switch (detail) {
+      case 'list':
+        handler = ActionSheet.show(basicListOption);
+        break;
+      case 'withIconList':
+        handler = ActionSheet.show(withIconListOption);
+        break;
+      case 'grid':
+        handler = ActionSheet.show(grid);
+        break;
+      case 'withSwiperGrid':
+        handler = ActionSheet.show(withSwiperGrid);
+        break;
+      default:
+        break;
+    }
+    this.setData({
+      handler,
+    });
   },
   onCancelBaseImperative() {
     Toast({
