@@ -16,10 +16,10 @@ const props: TdDateTimePickerProps = {
     type: String,
     value: '',
   },
-  /** 禁用日期，示例：['A', 'B'] 表示日期 A 和日期 B 会被禁用。{ from: 'A', to: 'B' } 表示在 A 到 B 之间的日期会被禁用。{ before: 'A', after: 'B' } 表示在 A 之前和在 B 之后的日期都会被禁用。其中 A = '2021-01-01'，B = '2021-02-01'。值类型为 Function 则表示返回值为 true 的日期会被禁用 */
-  disableDate: {
-    type: Object,
-    optionalTypes: [Array, null],
+  /** 选择器的结束时间 */
+  end: {
+    type: String,
+    optionalTypes: [Number],
   },
   /** 组件类名，分别用于设置组件外层元素、确认按钮、取消按钮、标题等元素类名 */
   externalClasses: {
@@ -41,10 +41,15 @@ const props: TdDateTimePickerProps = {
     optionalTypes: [Array],
     value: ['year', 'month', 'date'],
   },
-  /** 是否在日期旁边显示周几（如周一，周二，周日等） */
+  /** 【开发中】是否在日期旁边显示周几（如周一，周二，周日等） */
   showWeek: {
     type: Boolean,
     value: false,
+  },
+  /** 选择器的开始时间 */
+  start: {
+    type: String,
+    optionalTypes: [Number],
   },
   /** 标题 */
   title: {
