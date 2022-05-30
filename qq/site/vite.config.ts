@@ -8,7 +8,7 @@ import createTDesignPlugin from './plugin-tdoc';
 const publicPathMap: Record<string, string> = {
   preview: '/',
   intranet: '/miniprogram/',
-  production: 'https://static.tdesign.tencent.com/miniprogram/',
+  production: 'https://static.tdesign.tencent.com/qq-miniprogram/',
 };
 
 // https://vitejs.dev/config/
@@ -19,7 +19,7 @@ export default ({ mode }: any) => {
     resolve: {
       alias: {
         '~': path.resolve(__dirname, '..'),
-        '@': path.resolve(__dirname, '../src'),
+        '@': path.resolve(__dirname, '../../src'),
         '@common': path.resolve(__dirname, '../common'),
         '@components': path.resolve(__dirname, './components'),
         '@docs': path.resolve(__dirname, './docs'),

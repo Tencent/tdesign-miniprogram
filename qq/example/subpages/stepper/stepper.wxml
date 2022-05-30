@@ -1,0 +1,57 @@
+<view class="page">
+  <view class="t-stepper-title">Stepper 步进器</view>
+  <view class="t-stepper-desc">用于数量的增减。</view>
+  <t-demo title="01 类型" desc="基本步进器">
+    <t-cell title="标题文字">
+      <view class="cell-badge-wrap" slot="right-icon">
+        <t-stepper defaultValue="0" />
+      </view>
+    </t-cell>
+    <view class="t-stepper-wrapper-desc">带单位步进器</view>
+    <t-cell title="标题文字（单位）">
+      <view class="cell-badge-wrap" slot="right-icon">
+        <t-stepper defaultValue="0" step="2" />
+      </view>
+    </t-cell>
+    <view class="t-stepper-wrapper-desc">纯步进器</view>
+    <view class="pure-stepper-container">
+      <t-stepper value="{{value}}" bind:change="handleChange" theme="grey" inputWidth="{{72}}" />
+    </view>
+  </t-demo>
+
+  <t-demo title="02 状态" desc="步进器状态">
+    <view class="stepper-content">
+      <t-cell title="禁用">
+        <view class="cell-badge-wrap" slot="right-icon">
+          <t-stepper disabled="true" />
+        </view>
+      </t-cell>
+      <view class="interval" />
+      <t-cell title="禁用（单位）">
+        <view class="cell-badge-wrap" slot="right-icon">
+          <t-stepper step="2" disabled="true" />
+        </view>
+      </t-cell>
+      <view class="interval" />
+      <t-cell title="最小值 (5)">
+        <view class="cell-badge-wrap" slot="right-icon">
+          <t-stepper defaultValue="5" min="5" />
+        </view>
+      </t-cell>
+      <view class="interval" />
+      <t-cell title="最大值 (999)">
+        <view class="cell-badge-wrap" slot="right-icon">
+          <t-stepper defaultValue="999" max="999" />
+        </view>
+      </t-cell>
+      <view class="interval" />
+      <view class="pure-stepper-container">
+        <t-stepper disabled value="3" theme="grey" inputWidth="{{72}}" />
+        <t-stepper defaultValue="0" max="99" theme="grey" inputWidth="{{72}}" />
+        <t-stepper defaultValue="100" theme="grey" inputWidth="{{72}}" />
+      </view>
+      <view class="interval" />
+      <view class="interval" />
+    </view>
+  </t-demo>
+</view>

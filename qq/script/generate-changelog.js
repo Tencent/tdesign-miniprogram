@@ -58,7 +58,7 @@ async function updateChangeLog() {
   console.log('\x1B[32m%s\x1B[0m', '正在生成 changeLog... \n');
 
   const lastCommit = getLastChangeLogCommit();
-  let initialChangelogStr = fs.readFileSync('CHANGELOG.md', 'utf8');
+  let initialChangelogStr = fs.readFileSync('qq/CHANGELOG.md', 'utf8');
 
   const pageDataStr = initialChangelogStr.match(/---[\s\S]+---/)[0] + '\n';
   const data = initialChangelogStr.split(/---[\s\S]+---/);
@@ -75,11 +75,11 @@ async function updateChangeLog() {
       .on('end', resolve);
   }).then(() => {
     getGitCommitMap(lastCommit);
-    const writeStream = fs.createWriteStream('CHANGELOG.md', 'utf8');
+    const writeStream = fs.createWriteStream('qq/CHANGELOG.md', 'utf8');
     writeStream.write(data.join('\n'));
     writeStream.end();
 
-    console.log('\x1B[32m%s\x1B[0m', '已生成最新 changeLog... 请打开 CHANGELOG.md 确认');
+    console.log('\x1B[32m%s\x1B[0m', '已生成最新 changeLog... 请打开 qq/CHANGELOG.md 确认');
   });
 }
 

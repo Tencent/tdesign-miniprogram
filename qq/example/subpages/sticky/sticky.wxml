@@ -1,0 +1,21 @@
+<view class="demo tdesign-demo-sticky-base">
+  <view class="demo-title">Sticky 吸顶</view>
+  <view class="demo-desc">用于常驻页面顶部的信息、操作展示。</view>
+  <t-demo title="01 类型" desc="基础吸顶">
+    <t-sticky>
+      <t-button class="box1" theme="primary" t-class="inner-box" size="small">基础吸顶</t-button>
+    </t-sticky>
+  </t-demo>
+  <t-demo title="" desc="吸顶距离">
+    <t-sticky offset-top="{{ 40 }}">
+      <t-button class="box2" theme="danger" t-class="inner-box" size="small">吸顶距离</t-button>
+    </t-sticky>
+  </t-demo>
+  <t-demo title="" desc="指定容器">
+    <view class="box-c">
+      <t-sticky container="{{ container }}">
+        <t-button size="small" class="box3" t-class="inner-box green-button">指定容器</t-button>
+      </t-sticky>
+    </view>
+  </t-demo>
+</view>

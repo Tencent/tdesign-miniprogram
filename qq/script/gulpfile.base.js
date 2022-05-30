@@ -17,6 +17,8 @@ const config = require('./config');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const srcExamplePath = 'qq/example';
+
 // set displayName
 const setDisplayName = (tasks, moduleName) => {
   Object.keys(tasks).forEach((key) => {
@@ -77,7 +79,7 @@ module.exports = (src, dist, moduleName) => {
   // options
   const srcOptions = { base: src, ignore: ['**/__test__', '**/__test__/**'] };
   const watchOptions = { events: ['add', 'change'] };
-  const gulpErrorPath = 'example/utils/gulpError.js';
+  const gulpErrorPath = `${srcExamplePath}/utils/gulpError.js`;
 
   // 文件匹配路径
   const globs = {
@@ -124,14 +126,14 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.handleError = (err) =>
     gulp
-      .src(gulpErrorPath, { base: 'example' })
+      .src(gulpErrorPath, { base: srcExamplePath })
       .pipe(replace('gulpErrorPlaceHolder', err))
       .pipe(gulp.dest('_example/'));
 
   /** `gulp resetError`
    * 重置gulpError
    * */
-  tasks.resetError = () => gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
+  tasks.resetError = () => gulp.src(gulpErrorPath, { base: srcExamplePath, allowEmpty: true }).pipe(gulp.dest('_example/'));
 
   /** `gulp copy`
    * 清理

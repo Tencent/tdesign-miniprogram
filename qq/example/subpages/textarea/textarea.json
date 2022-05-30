@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Textarea 多行输入框",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}

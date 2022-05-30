@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "Button 按钮",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}

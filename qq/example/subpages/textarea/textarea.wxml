@@ -1,0 +1,23 @@
+<!--示例页面-->
+<view class="textarea-example">
+  <view class="demo-title">Textarea 多行文本框</view>
+  <view class="demo-desc">用于多行文本信息输入。</view>
+  <t-demo title="01 类型" desc="基础多行文本框">
+    <t-textarea placeholder="请输入文字" />
+  </t-demo>
+  <t-demo title="" desc="带标题多行文本框">
+    <t-textarea label="标签文字" placeholder="请输入文字" />
+  </t-demo>
+  <t-demo title="" desc="自动增高多行文本框">
+    <t-textarea label="标签文字" placeholder="请输入文字" autosize />
+  </t-demo>
+  <t-demo title="02 状态" desc="禁用多行文本框">
+    <t-textarea label="标签文字" placeholder="请输入文字" value="不可编辑文字" disabled />
+  </t-demo>
+  <t-demo title="03 字符限制" desc="设置最大字符个数">
+    <t-textarea label="标签文字" placeholder="请输入文字" maxlength="100" />
+  </t-demo>
+  <t-demo title="" desc="设置最大字符个数，一个汉字表示两个字符">
+    <t-textarea label="标签文字" placeholder="请输入文字" maxcharacter="100" />
+  </t-demo>
+</view>

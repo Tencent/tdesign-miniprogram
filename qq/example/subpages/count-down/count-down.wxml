@@ -1,0 +1,58 @@
+<view class="demo-title">Count down 倒计时</view>
+<view class="demo-desc">用于实时展示倒计时数值。</view>
+
+<t-demo padding title="01 类型" desc="动态倒计时间主要有时间数字和时分秒分割组成">
+  <view class="flex base-time">
+    <t-count-down t-class="base-time-cls" time="{{ time }}" />
+    <view class="base-time-text"> 时分秒 </view>
+  </view>
+  <view class="flex base-time">
+    <t-count-down t-class="base-time-cls" format="HH:mm:ss:SSS" time="{{ time }}" millisecond />
+    <view class="base-time-text"> 带毫秒 </view>
+  </view>
+  <view class="flex base-time">
+    <t-count-down content="default" time="{{ time }}" theme="square"> </t-count-down>
+    <view class="base-time-text"> 带方形底 </view>
+  </view>
+  <view class="flex base-time">
+    <t-count-down content="default" time="{{ time }}" theme="round"> </t-count-down>
+    <view class="base-time-text"> 带圆形底 </view>
+  </view>
+  <view class="flex base-time">
+    <t-count-down content="default" time="{{ time }}" splitWithUnit theme="round" />
+    <view class="base-time-text"> 带单位 </view>
+  </view>
+  <view class="flex base-time">
+    <t-count-down content="default" time="{{ time }}" splitWithUnit theme="highlight" />
+    <view class="base-time-text"> 无底色带单位 </view>
+  </view>
+</t-demo>
+<t-demo padding title="02 规格" desc="动倒计时带底色和无底色各尺寸规格">
+  <view class="flex spec-item">
+    <view class="spec-item-left">
+      <t-count-down content="default" time="{{ time }}" theme="square" />
+    </view>
+    <view class="spec-item-right">
+      <t-count-down time="{{ time }}" />
+    </view>
+    <view class="spec-item-after"> S </view>
+  </view>
+  <view class="flex spec-item">
+    <view class="spec-item-left">
+      <t-count-down content="default" time="{{ time }}" theme="square" size="middle" />
+    </view>
+    <view class="spec-item-right">
+      <t-count-down size="middle" time="{{ time }}" />
+    </view>
+    <view class="spec-item-after"> M </view>
+  </view>
+  <view class="flex spec-item last-padding">
+    <view class="spec-item-left">
+      <t-count-down content="default" time="{{ time }}" theme="square" size="large"> </t-count-down>
+    </view>
+    <view class="spec-item-right">
+      <t-count-down size="large" time="{{ time }}" />
+    </view>
+    <view class="spec-item-after"> L </view>
+  </view>
+</t-demo>

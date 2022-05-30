@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Slider 滑块",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block/index"
+  }
+}

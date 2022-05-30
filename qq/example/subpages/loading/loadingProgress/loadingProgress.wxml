@@ -1,0 +1,1 @@
+<t-loading theme="bar" progress="{{progress}}" loading="{{isLoading}}"></t-loading>

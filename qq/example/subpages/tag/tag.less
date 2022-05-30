@@ -1,0 +1,31 @@
+.group {
+  min-height: 56px;
+  margin: 16px 0;
+  padding: 0 16px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+
+  &.d-flex {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .left {
+    width: 172px;
+  }
+
+  > view {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+
+    .t-tag {
+      margin-bottom: 17px;
+    }
+  }
+
+  .t-tag {
+    margin: 0 4px;
+  }
+}

@@ -1,0 +1,99 @@
+<view class="radio-demo" hover-class="none" hover-stop-propagation="false">
+  <view class="demo-title">radio 单选框</view>
+  <view class="demo-desc">用于在预设的一组选项中执行单项选择，并呈现选择结果。</view>
+  <t-demo title="01 类型" desc="左侧圆形单选框">
+    <t-radio-group bind:change="onChange" defaultValue="radio1">
+      <t-radio value="radio1" label="单选" />
+      <t-radio value="radio2" label="单选" />
+      <t-radio value="radio3" label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选"></t-radio>
+      <t-radio value="radio4" label="单选"> 单选单选单选单选单选单选单选单选单选单选单选单选单选单选 </t-radio>
+    </t-radio-group>
+  </t-demo>
+
+  <t-demo title="" desc="右侧圆形单选框">
+    <t-radio-group bind:change="onChange" defaultValue="radio1">
+      <t-radio value="radio1" label="单选" align="right" />
+      <t-radio value="radio2" label="单选" align="right" />
+      <t-radio value="radio3" align="right" label="多选"></t-radio>
+      <t-radio
+        value="radio4"
+        label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单"
+        align="right"
+        max-label-row="1"
+      >
+      </t-radio>
+    </t-radio-group>
+  </t-demo>
+
+  <t-demo title="" desc="左侧勾形单选框">
+    <t-radio-group defaultValue="radio4" bind:change="onChange">
+      <t-radio value="radio1" label="单选" icon="stroke-line"> </t-radio>
+      <t-radio value="radio2" icon="stroke-line" label="单选"> </t-radio>
+      <t-radio
+        value="radio3"
+        label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选"
+        icon="stroke-line"
+      >
+      </t-radio>
+      <t-radio value="radio4" label="单选" icon="stroke-line">
+        单选单选单选单选单选单选单选单选单选单选单选单选单选单选单
+      </t-radio>
+    </t-radio-group>
+  </t-demo>
+
+  <t-demo title="" desc="右侧勾形单选框">
+    <t-radio-group defaultValue="radio4" bind:change="onChange">
+      <t-radio value="radio1" label="单选" icon="stroke-line" align="right"> </t-radio>
+      <t-radio value="radio2" label="单选" icon="stroke-line" align="right"> </t-radio>
+      <t-radio value="radio3" icon="stroke-line" align="right" label="单选"> </t-radio>
+      <t-radio
+        value="radio4"
+        label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选"
+        max-label-row="1"
+        icon="stroke-line"
+        align="right"
+      >
+      </t-radio>
+    </t-radio-group>
+  </t-demo>
+
+  <t-demo title="02 状态" desc="单选框禁状态">
+    <t-radio-group defaultValue="radio2" disabled="{{true}}">
+      <t-radio value="radio1" label="单选" />
+      <t-radio value="radio2" label="单选" />
+    </t-radio-group>
+    <t-radio-group value="radio2" disabled="{{true}}">
+      <t-radio value="radio1" label="单选" icon="stroke-line" />
+      <t-radio value="radio2" label="单选" icon="stroke-line" />
+    </t-radio-group>
+    <t-radio-group value="radio2" disabled="{{true}}">
+      <t-radio value="radio1" label="单选" align="right" />
+      <t-radio value="radio2" label="单选" align="right" />
+    </t-radio-group>
+    <t-radio-group value="radio1" disabled="{{true}}">
+      <t-radio value="radio1" label="单选" icon="stroke-line" align="right" />
+      <t-radio value="radio2" label="单选" icon="stroke-line" align="right" />
+    </t-radio-group>
+  </t-demo>
+
+  <t-demo title="03 特殊类型" desc="自定义图标单选框">
+    <t-radio-group defaultValue="radio1">
+      <t-radio value="radio1" label="单选" icon="{{[activeImage,inActiveImage]}}" />
+      <t-radio value="radio2" label="单选" icon="{{[activeImage,inActiveImage]}}" />
+    </t-radio-group>
+  </t-demo>
+
+  <t-demo title="04 规格" desc="单选框尺寸规格">
+    <t-radio value="radio1" label="单选H48" t-class="t-radio-padding" defaultChecked />
+    <t-radio value="radio2" label="单选H56" t-class="t-radio-demo" defaultChecked />
+  </t-demo>
+  <view style="height: 74rpx"></view>
+  <!-- <t-demo>
+    <t-radio-group
+
+      options="{{options}}"
+      defaultValue="数字"
+      bind:change="onChange"
+    ></t-radio-group>
+  </t-demo> -->
+</view>
