@@ -5,7 +5,6 @@
  * */
 
 import { ButtonProps } from '../button/index';
-import { TNode } from '../common/common';
 
 export interface TdPickerProps {
   /**

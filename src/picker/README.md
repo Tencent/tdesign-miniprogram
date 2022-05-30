@@ -26,17 +26,19 @@ isComponent: true
 <t-picker
   visible="{{true}}"
   title="请选择城市"
-  bindchange="onPickerChange"
-  bindconfirm="onPicker1Confirm"
-  bindcancel="onPicker1Cancel"
+  value="{{selectedCityValue}}"
+  bindchange="onPickerConfirm"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
 >
-  <t-picker-item options="{{citys}}" value="{{selectedCityValue}}" />
+  <t-picker-item options="{{citys}}"  />
 </t-picker>
 ```
 
 ```js
 Page({
   data: {
+    selectedCityValue: [],
     citys: [
       { label: '广州市', value: '广州市' },
       { label: '韶关市', value: '韶关市' },
@@ -45,11 +47,14 @@ Page({
       { label: '汕头市', value: '汕头市' },
     ],
   },
-  onPicker1Confirm(e) {
-    console.log('picker1 confirm:', e.detail);
+  onPickerConfirm(e) {
+    console.log('picker confirm:', e.detail);
     this.setData({
-      selectedCityValue: e.detail.value?.value,
+      selectedCityValue:  e.detail.value,
     });
+  },
+  onColumnChange(e) {
+    console.log('picker pick:', e);
   },
 });
 ```

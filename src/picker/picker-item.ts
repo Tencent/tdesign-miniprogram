@@ -90,8 +90,7 @@ export default class PickerItem extends SuperComponent {
 
     // 刷新选中状态
     update() {
-      const { options } = this.properties;
-      const { value } = this.data;
+      const { options, value } = this.data;
 
       const index = options.findIndex((item) => item.value === value);
       const selectedIndex = index > 0 ? index : 0;

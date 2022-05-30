@@ -95,9 +95,9 @@
     bindpick="onColumnChange"
     bindcancel="onPickerCancel"
   >
-    <t-picker-item options="{{years}}" value="{{selectedYearsWithDate}}" bindchange="onColumnChange"></t-picker-item>
-    <t-picker-item options="{{months}}" value="{{selectedMonth}}" bindchange="onColumnChange"></t-picker-item>
-    <t-picker-item options="{{days}}" value="{{selectedDay}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{years}}"></t-picker-item>
+    <t-picker-item options="{{months}}"></t-picker-item>
+    <t-picker-item options="{{days}}"></t-picker-item>
   </t-picker>
 
   <!-- 城市带标题 -->
