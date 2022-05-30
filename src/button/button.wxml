@@ -23,7 +23,15 @@
   bind:launchapp="launchapp"
   bind:chooseavatar="chooseavatar"
 >
-  <t-icon wx:if="{{icon}}" name="{{icon}}" class="{{classPrefix}}__icon {{prefix}}-class-icon"></t-icon>
+  <t-icon
+    wx:if="{{icon || iconProps.name}}"
+    name="{{icon || iconProps.name}}"
+    prefix="{{iconProps.prefix}}"
+    size="{{iconProps.size}}"
+    color="{{iconProps.color}}"
+    customStyle="{{iconProps.customStyle}}"
+    class="{{classPrefix}}__icon {{prefix}}-class-icon"
+  ></t-icon>
   <view wx:if="{{loading}}" class="{{classPrefix}}--loading {{prefix}}-class-loading">
     <view class="{{classPrefix}}__circular"></view>
   </view>
