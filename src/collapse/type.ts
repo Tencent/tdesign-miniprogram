@@ -75,6 +75,13 @@ export interface TdCollapsePanelProps {
     value?: boolean;
   };
   /**
+   * 组件类名，用于组件外层元素、标题、内容
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-header', 't-class-content'];
+  };
+  /**
    * 面板头内容
    */
   header?: {
