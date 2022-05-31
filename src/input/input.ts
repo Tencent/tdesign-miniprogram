@@ -48,6 +48,7 @@ export default class Input extends SuperComponent {
 
         this.triggerEvent('change', { value: characters, cursor, keyCode });
         this.setData({
+          value: characters,
           characterLength: length,
         });
       } else {
