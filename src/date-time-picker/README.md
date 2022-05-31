@@ -24,34 +24,31 @@ isComponent: true
 ```html
 <t-date-time-picker
   title="选择日期和时间"
-  visible="{{datetimeVisible}}"
-  mode="{{['minute']}}"
-  value="{{datetime}}"
+  visible="{{dateTimeVisible}}"
+  mode="minute"
+  value="{{dateTime}}"
   format="YYYY-MM-DD HH:mm"
-  bindconfirm="onConfirm"
-  disableDate="{{disableDate}}"
+  bindchange="onConfirm"
+  start="{{start}}"
+  end="{{end}}"
 ></t-date-time-picker>
 ```
 
 ```js
 Page({
   data: {
-    datetimeVisible: true,
-    datetime: '2020-08-10 12:50:00',
-    datetimeText: '',
-
+    dateTimeVisible: true,
+    dateTime: '2020-08-10 12:50:00',
     // 指定选择区间起始值
-    disableDate: {
-      before: '2000-01-01 00:00:00',
-      after: '2022-09-09 12:12:12',
-    },
+    start: '2000-01-01 00:00:00',
+    end: '2050-09-09 12:12:12',
+    
   },
-  onConfirm(e) {
-    const { value, formatValue } = e?.detail;
 
+  onConfirm(e) {
+    const { value } = e?.detail;
     this.setData({
-      datetime: value.valueOf(),
-      datetimeText: formatValue,
+      dateTime: value
     });
   },
 });

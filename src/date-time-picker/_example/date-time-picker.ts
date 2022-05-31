@@ -42,8 +42,8 @@ Page({
     console.log('confim', value);
 
     this.setData({
-      [mode]: value.valueOf(),
-      [`${mode}Text`]: value.valueOf(),
+      [mode]: value,
+      [`${mode}Text`]: value,
     });
 
     this.hidePicker();
