@@ -14,10 +14,6 @@ Page({
     time: '',
     timeText: '',
 
-    monthDateVisible: false,
-    monthDate: '2019-09-21', // 需要传入年 不然无法确定是哪一年的
-    monthDateText: '',
-
     datetimeVisible: false,
     datetime: '2021-06-06 12:11:11',
     datetimeText: '',
@@ -53,5 +49,9 @@ Page({
     });
 
     this.hidePicker();
+  },
+
+  onColumnChange(e) {
+    console.log('pick', e?.detail?.value);
   },
 });

@@ -1,7 +1,8 @@
 <t-picker
   visible="{{visible}}"
-  bindchange="onColumnChange"
-  bindconfirm="onConfirm"
+  value="{{columnsValue}}"
+  bindpick="onColumnChange"
+  bindchange="onConfirm"
   bindcancel="onCancel"
   header="{{header}}"
   title="{{title}}"
@@ -10,13 +11,7 @@
 >
   <slot slot="header" name="header"> </slot>
 
-  <t-picker-item
-    wx:for="{{columns}}"
-    wx:key="index"
-    options="{{item}}"
-    index="{{index}}"
-    value="{{columnsValue[index]}}"
-  ></t-picker-item>
+  <t-picker-item wx:for="{{columns}}" wx:key="index" options="{{item}}" index="{{index}}"></t-picker-item>
 
   <slot slot="footer" name="footer"> </slot>
 </t-picker>
