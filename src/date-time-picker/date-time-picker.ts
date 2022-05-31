@@ -8,23 +8,6 @@ import props from './props';
 
 const { prefix } = config;
 
-/**
- *
-mode 数组 [日期选择器的最后一个时间点，时间选择器的最后一个时间点]
-[year] ------ 年
-[month] ------ 年/月
-[date] ------ 年/月/日
-[hour] ------ 年/月/日/小时
-[minute] ------ 年/月/日/小时/分钟
-
-[year, hour] ------ 年/小时
-[year, minute] ------ 年/小时/分钟
-[month, hour] ------ 年/月/小时
-[month, minute] ------ 年/月/小时/分钟
-[date, hour] ------ 年/月/日/小时
-[date, minute] ------ 年/月/日/小时/分钟
- */
-
 enum ModeItem {
   YEAR = 'year',
   MONTH = 'month',
@@ -37,13 +20,13 @@ const DATE_MODES = ['year', 'month', 'date'];
 const TIME_MODES = ['hour', 'minute'];
 const FULL_MODES = [...DATE_MODES, ...TIME_MODES];
 
+const DEFAULT_MIN_DATE: Dayjs = dayjs().subtract(10, 'year');
+const DEFAULT_MAX_DATE: Dayjs = dayjs().add(10, 'year');
+
 interface ColumnItemValue {
   value: string | number;
   label: string | number;
 }
-
-const DEFAULT_MIN_DATE: Dayjs = dayjs('2000-01-01 00:00:00');
-const DEFAULT_MAX_DATE: Dayjs = dayjs('2030-12-31 23:59:59');
 
 @wxComponent()
 export default class DateTimePicker extends SuperComponent {
@@ -59,7 +42,7 @@ export default class DateTimePicker extends SuperComponent {
 
   observers = {
     // value 变化需要同步 内部 date 实现受控属性
-    'value, disableDate': function () {
+    value: function () {
       this.updateColumns();
     },
     mode(m) {
@@ -110,15 +93,13 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getMinDate(): Dayjs {
-      const { disableDate } = this.properties;
-      const startDate = disableDate?.before;
-      return startDate ? dayjs(startDate) : DEFAULT_MIN_DATE;
+      const { start } = this.properties;
+      return start ? dayjs(start) : DEFAULT_MIN_DATE;
     },
 
     getMaxDate(): Dayjs {
-      const { disableDate } = this.properties;
-      const endDate = disableDate?.after;
-      return endDate ? dayjs(endDate) : DEFAULT_MAX_DATE;
+      const { end } = this.properties;
+      return end ? dayjs(end) : DEFAULT_MAX_DATE;
     },
 
     getMinYear(): number {
@@ -364,8 +345,8 @@ export default class DateTimePicker extends SuperComponent {
         maxDateMonth,
         minDateDay,
         maxDateDay,
-        minHour,
-        maxHour,
+        minDateHour,
+        maxDateHour,
         minDateMinute,
         maxDateMinute,
         selYear,
@@ -378,11 +359,11 @@ export default class DateTimePicker extends SuperComponent {
       let minMinute = 0;
       let maxMinute = 59;
 
-      if (minDateYear === selYear && minDateMonth === selMonth && minDateDay === selDate && minHour === selHour) {
+      if (minDateYear === selYear && minDateMonth === selMonth && minDateDay === selDate && minDateHour === selHour) {
         minMinute = minDateMinute;
       }
 
-      if (maxDateYear === selYear && maxDateMonth === selMonth && maxDateDay === selDate && maxHour === selHour) {
+      if (maxDateYear === selYear && maxDateMonth === selMonth && maxDateDay === selDate && maxDateHour === selHour) {
         maxMinute = maxDateMinute;
       }
 
@@ -392,6 +373,7 @@ export default class DateTimePicker extends SuperComponent {
           label: `${i + locale.minute}`,
         });
       }
+
       return minutes;
     },
 

@@ -54,7 +54,8 @@
   bindchange="onConfirm"
   bindpick="onColumnChange"
   bindcancel="hidePicker"
-  disableDate="{{disableDate}}"
+  start="{{start}}"
+  end="{{end}}"
 ></t-date-time-picker>
 
 <!-- 年月 -->
@@ -67,7 +68,8 @@
   bindchange="onConfirm"
   bindpick="onColumnChange"
   bindcancel="hidePicker"
-  disableDate="{{disableDate}}"
+  start="{{start}}"
+  end="{{end}}"
 ></t-date-time-picker>
 
 <!-- 时分 -->
@@ -80,7 +82,8 @@
   bindchange="onConfirm"
   bindpick="onColumnChange"
   bindcancel="hidePicker"
-  disableDate="{{disableDate}}"
+  start="{{start}}"
+  end="{{end}}"
 ></t-date-time-picker>
 
 <!-- 年月日时分 -->
@@ -93,5 +96,4 @@
   bindchange="onConfirm"
   bindpick="onColumnChange"
   bindcancel="hidePicker"
-  disableDate="{{disableDate}}"
 ></t-date-time-picker>

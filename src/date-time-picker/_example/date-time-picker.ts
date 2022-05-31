@@ -15,14 +15,12 @@ Page({
     timeText: '',
 
     datetimeVisible: false,
-    datetime: '2021-06-06 12:11:11',
+    datetime: new Date().getTime(),
     datetimeText: '',
 
     // 指定选择区间起始值
-    disableDate: {
-      before: '2000-01-01 00:00:00',
-      after: '2022-09-09 12:12:12',
-    },
+    start: '2000-01-01 00:00:00',
+    end: '2030-09-09 12:12:12',
   },
   showPicker(e) {
     const { mode } = e?.currentTarget?.dataset;
