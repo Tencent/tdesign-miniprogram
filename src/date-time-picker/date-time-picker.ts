@@ -41,17 +41,15 @@ export default class DateTimePicker extends SuperComponent {
   initValue = null;
 
   observers = {
-    // value 变化需要同步 内部 date 实现受控属性
-    value: function () {
+    'start, end, value': function () {
       this.updateColumns();
     },
+
     mode(m) {
       const fullModes = this.getFullModeArray(m);
-
       this.setData({
         fullModes,
       });
-
       this.updateColumns();
     },
   };
@@ -78,11 +76,13 @@ export default class DateTimePicker extends SuperComponent {
   methods = {
     updateColumns() {
       const { value, defaultValue } = this.properties;
+      const minDate = this.getMinDate();
 
-      const parseDate = dayjs(this.initValue || value || defaultValue || DEFAULT_MIN_DATE);
+      const parseDate = dayjs(this.initValue || value || defaultValue || minDate);
+      const isDateValid = parseDate.isValid();
 
       this.setData({
-        date: parseDate,
+        date: isDateValid ? parseDate : minDate,
       });
 
       const { columns, columnsValue } = this.getValueCols();
@@ -425,7 +425,7 @@ export default class DateTimePicker extends SuperComponent {
 
     onColumnChange(e: WechatMiniprogram.CustomEvent) {
       const { value, column } = e?.detail;
-      const { fullModes } = this.data;
+      const { fullModes, format } = this.data;
 
       const columnValue = value?.[column];
       const columnType = fullModes?.[column];
@@ -443,14 +443,18 @@ export default class DateTimePicker extends SuperComponent {
         columnsValue,
       });
 
-      this.triggerEvent('pick', { value: this.getDate() });
+      const date = this.getDate();
+      const pickValue = format ? date.format(format) : date.valueOf();
+
+      this.triggerEvent('pick', { value: pickValue });
     },
 
     onConfirm() {
       const { format } = this.properties;
       const date = this.getDate();
 
-      this.triggerEvent('change', { value: date, formatValue: date.format(format) });
+      const value = format ? date.format(format) : date.valueOf();
+      this.triggerEvent('change', { value });
     },
 
     onCancel() {

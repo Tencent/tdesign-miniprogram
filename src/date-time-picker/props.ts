@@ -28,7 +28,7 @@ const props: TdDateTimePickerProps = {
   /** 用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format) */
   format: {
     type: String,
-    value: 'YYYY-MM-DD',
+    value: '',
   },
   /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 */
   header: {
@@ -39,7 +39,7 @@ const props: TdDateTimePickerProps = {
   mode: {
     type: String,
     optionalTypes: [Array],
-    value: ['year', 'month', 'date'],
+    value: 'date',
   },
   /** 【开发中】是否在日期旁边显示周几（如周一，周二，周日等） */
   showWeek: {

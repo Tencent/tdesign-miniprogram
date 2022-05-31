@@ -36,14 +36,14 @@ Page({
     });
   },
   onConfirm(e) {
-    const { value, formatValue } = e?.detail;
+    const { value } = e?.detail;
     const { mode } = this.data;
 
-    console.log(value, formatValue);
+    console.log('confim', value);
 
     this.setData({
       [mode]: value.valueOf(),
-      [`${mode}Text`]: formatValue,
+      [`${mode}Text`]: value.valueOf(),
     });
 
     this.hidePicker();
