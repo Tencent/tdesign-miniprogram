@@ -11,22 +11,16 @@ Page({
     monthText: '',
 
     timeVisible: false,
-    time: '',
+    time: '10:00',
     timeText: '',
 
-    monthDateVisible: false,
-    monthDate: '2019-09-21', // 需要传入年 不然无法确定是哪一年的
-    monthDateText: '',
-
     datetimeVisible: false,
-    datetime: '2021-06-06 12:11:11',
+    datetime: new Date().getTime(),
     datetimeText: '',
 
     // 指定选择区间起始值
-    disableDate: {
-      before: '2000-01-01 00:00:00',
-      after: '2022-09-09 12:12:12',
-    },
+    start: '2000-01-01 00:00:00',
+    end: '2030-09-09 12:12:12',
   },
   showPicker(e) {
     const { mode } = e?.currentTarget?.dataset;
@@ -42,16 +36,20 @@ Page({
     });
   },
   onConfirm(e) {
-    const { value, formatValue } = e?.detail;
+    const { value } = e?.detail;
     const { mode } = this.data;
 
-    console.log(value, formatValue);
+    console.log('confim', value);
 
     this.setData({
-      [mode]: value.valueOf(),
-      [`${mode}Text`]: formatValue,
+      [mode]: value,
+      [`${mode}Text`]: value,
     });
 
     this.hidePicker();
+  },
+
+  onColumnChange(e) {
+    console.log('pick', e?.detail?.value);
   },
 });

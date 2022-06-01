@@ -5,53 +5,28 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import defaultLocale from './locale/zh';
 
 import props from './props';
-import { DisableDateObj } from './type';
 
 const { prefix } = config;
 
-/**
- *
-mode 数组 [日期选择器的最后一个时间点，时间选择器的最后一个时间点]
-[year] ------ 年
-[month] ------ 年/月
-[date] ------ 年/月/日
-[hour] ------ 年/月/日/小时
-[minute] ------ 年/月/日/小时/分钟
-
-[year, hour] ------ 年/小时
-[year, minute] ------ 年/小时/分钟
-[month, hour] ------ 年/月/小时
-[month, minute] ------ 年/月/小时/分钟
-[date, hour] ------ 年/月/日/小时
-[date, minute] ------ 年/月/日/小时/分钟
- */
-
-enum ModeType {
-  YEAR = 'year', // 年
-  MONTH = 'month', // 年/月
-  DATE = 'date', // 年/月/日
-  HOUR = 'hour', //  年/月/日/小时
-  MINUTE = 'minute', // 年/月/日/小时/分钟
-
-  YEAR_ADD_HOUR = 'year+hour', // 年/小时
-  YEAR_ADD_MINUTE = 'year+minute', // 年/小时/分钟
-  MONTH_ADD_HOUR = 'month+hour', // 年/月/小时
-  MONTH_ADD_MINUTE = 'month+minute', // 年/月/小时/分钟
-  MONTH_ADD_DATE = 'month+date', // 月/日
-  DATE_ADD_HOUR = 'date+hour', // 年/月/日/小时
-  DATE_ADD_MINUTE = 'date+minute', // 年/月/日/小时/分钟
-
-  NULL_HOUR = 'null+hour', // 小时
-  NULL_MINUTE = 'null+minute', // 小时 + 分钟
+enum ModeItem {
+  YEAR = 'year',
+  MONTH = 'month',
+  DATE = 'date',
+  HOUR = 'hour',
+  MINUTE = 'minute',
 }
-interface ColumnItemValue {
-  type: string;
-  value: string | number;
-  label: string | number;
-}
+
+const DATE_MODES = ['year', 'month', 'date'];
+const TIME_MODES = ['hour', 'minute'];
+const FULL_MODES = [...DATE_MODES, ...TIME_MODES];
 
 const DEFAULT_MIN_DATE: Dayjs = dayjs('2000-01-01 00:00:00');
 const DEFAULT_MAX_DATE: Dayjs = dayjs('2030-12-31 23:59:59');
+
+interface ColumnItemValue {
+  value: string | number;
+  label: string | number;
+}
 
 @wxComponent()
 export default class DateTimePicker extends SuperComponent {
@@ -66,21 +41,16 @@ export default class DateTimePicker extends SuperComponent {
   initValue = null;
 
   observers = {
-    // value 变化需要同步 内部 date 实现受控属性
-    value() {
+    'start, end, value': function () {
       this.updateColumns();
     },
+
     mode(m) {
-      const modeName = this.getModeNameByPropsMode(m);
+      const fullModes = this.getFullModeArray(m);
       this.setData({
-        modeName,
+        fullModes,
       });
       this.updateColumns();
-    },
-    visible(v) {
-      if (v) {
-        this.updateColumns();
-      }
     },
   };
 
@@ -89,7 +59,7 @@ export default class DateTimePicker extends SuperComponent {
     date: null,
     columns: [],
     columnsValue: [],
-    modeName: 'date',
+    fullModes: [],
     locale: defaultLocale,
   };
 
@@ -105,9 +75,7 @@ export default class DateTimePicker extends SuperComponent {
 
   methods = {
     updateColumns() {
-      const { value, defaultValue } = this.properties;
-
-      const parseDate = dayjs(this.initValue || value || defaultValue || DEFAULT_MIN_DATE);
+      const parseDate = this.getParseDate();
 
       this.setData({
         date: parseDate,
@@ -120,20 +88,33 @@ export default class DateTimePicker extends SuperComponent {
       });
     },
 
-    getModeNameByPropsMode(mode): ModeType {
-      return mode.join('+');
+    getParseDate() {
+      const { value, defaultValue } = this.properties;
+      const minDate = this.getMinDate();
+
+      const isTimeMode = this.isTimeMode();
+      let currentValue = this.initValue || value || defaultValue;
+
+      // 时间需要补齐前缀
+      if (isTimeMode) {
+        const dateStr = dayjs(minDate).format('YYYY-MM-DD');
+        currentValue = dayjs(`${dateStr} ${currentValue}`);
+      }
+
+      const parseDate = dayjs(currentValue || minDate);
+      const isDateValid = parseDate.isValid();
+
+      return isDateValid ? parseDate : minDate;
     },
 
     getMinDate(): Dayjs {
-      const { disableDate } = this.properties;
-      const startDate = (disableDate as DisableDateObj)?.before;
-      return startDate ? dayjs(startDate) : DEFAULT_MIN_DATE;
+      const { start } = this.properties;
+      return start ? dayjs(start) : DEFAULT_MIN_DATE;
     },
 
     getMaxDate(): Dayjs {
-      const { disableDate } = this.properties;
-      const endDate = (disableDate as DisableDateObj)?.after;
-      return endDate ? dayjs(endDate) : DEFAULT_MAX_DATE;
+      const { end } = this.properties;
+      return end ? dayjs(end) : DEFAULT_MAX_DATE;
     },
 
     getMinYear(): number {
@@ -205,10 +186,21 @@ export default class DateTimePicker extends SuperComponent {
       return tempDate.month(month);
     },
 
-    getDateData(): Array<ColumnItemValue[]> {
-      const { modeName, locale } = this.data;
-      const date: Dayjs = this.getDate();
+    getColumnOptions() {
+      const { fullModes } = this.data;
+      const dateParams = this.getCommonDateParams();
 
+      const columnOptions = [];
+      fullModes?.forEach((mode) => {
+        const columnOption = this.getOptionByType(mode, dateParams);
+        columnOptions.push(columnOption);
+      });
+
+      return columnOptions;
+    },
+
+    getCommonDateParams() {
+      const date: Dayjs = this.getDate();
       const selYear = date.year();
       const selMonth = date.month();
       const selDate = date.date();
@@ -226,23 +218,64 @@ export default class DateTimePicker extends SuperComponent {
       const minDateMinute = this.getMinMinute();
       const maxDateMinute = this.getMaxMinute();
 
-      // 年处理
+      return {
+        date,
+        selYear,
+        selMonth,
+        selDate,
+        selHour,
+        minDateYear,
+        maxDateYear,
+        minDateMonth,
+        maxDateMonth,
+        minDateDay,
+        maxDateDay,
+        minDateHour,
+        maxDateHour,
+        minDateMinute,
+        maxDateMinute,
+      };
+    },
+
+    getOptionByType(type, dateParams) {
+      switch (type) {
+        case ModeItem.YEAR:
+          return this.getYearOptions(dateParams);
+        case ModeItem.MONTH:
+          return this.getMonthOptions(dateParams);
+        case ModeItem.DATE:
+          return this.getDayOptions(dateParams);
+        case ModeItem.HOUR:
+          return this.getHourOptions(dateParams);
+        case ModeItem.MINUTE:
+          return this.getMinuteOptions(dateParams);
+        default:
+          break;
+      }
+    },
+
+    getYearOptions(dateParams): ColumnItemValue[] {
+      const { locale } = this.data;
+      const { minDateYear, maxDateYear } = dateParams || {};
+
       const years: ColumnItemValue[] = [];
       for (let i = minDateYear; i <= maxDateYear; i += 1) {
         years.push({
-          type: ModeType.YEAR,
           value: `${i}`,
           label: `${i + locale.year}`,
         });
       }
-      if (modeName === ModeType.YEAR) {
-        return [years];
-      }
+      return years;
+    },
 
-      // 月处理
+    getMonthOptions(dateParams): ColumnItemValue[] {
+      const { locale } = this.data;
+      const { minDateYear, maxDateYear, selYear, minDateMonth, maxDateMonth } = dateParams || {};
       const months: ColumnItemValue[] = [];
+
       let minMonth = 0;
       let maxMonth = 11;
+
       if (minDateYear === selYear) {
         minMonth = minDateMonth;
       }
@@ -252,16 +285,18 @@ export default class DateTimePicker extends SuperComponent {
 
       for (let i = minMonth; i <= maxMonth; i += 1) {
         months.push({
-          type: ModeType.MONTH,
           value: `${i}`,
           label: `${i + 1 + locale.month}`,
         });
       }
-      if (modeName === ModeType.MONTH) {
-        return [years, months];
-      }
 
-      // 日处理
+      return months;
+    },
+
+    getDayOptions(dateParams): ColumnItemValue[] {
+      const { locale } = this.data;
+      const { minDateYear, maxDateYear, minDateMonth, maxDateMonth, minDateDay, maxDateDay, selYear, selMonth, date } =
+        dateParams || {};
       const days: ColumnItemValue[] = [];
       let minDay = 1;
       let maxDay = date.daysInMonth();
@@ -273,16 +308,30 @@ export default class DateTimePicker extends SuperComponent {
       }
       for (let i = minDay; i <= maxDay; i += 1) {
         days.push({
-          type: ModeType.DATE,
           value: `${i}`,
           label: `${i + locale.day}`,
         });
       }
-      if (modeName === ModeType.DATE) {
-        return [years, months, days];
-      }
 
-      // 小时
+      return days;
+    },
+
+    getHourOptions(dateParams) {
+      const { locale } = this.data;
+      const {
+        minDateYear,
+        maxDateYear,
+        minDateMonth,
+        maxDateMonth,
+        minDateDay,
+        minDateHour,
+        maxDateDay,
+        maxDateHour,
+        selYear,
+        selMonth,
+        selDate,
+      } = dateParams || {};
+
       const hours: ColumnItemValue[] = [];
       let minHour = 0;
       let maxHour = 23;
@@ -294,136 +343,92 @@ export default class DateTimePicker extends SuperComponent {
       }
       for (let i = minHour; i <= maxHour; i += 1) {
         hours.push({
-          type: ModeType.HOUR,
           value: `${i}`,
           label: `${i + locale.hour}`,
         });
       }
 
-      // 分钟
+      return hours;
+    },
+
+    getMinuteOptions(dateParams) {
+      const { locale } = this.data;
+      const {
+        minDateYear,
+        maxDateYear,
+        minDateMonth,
+        maxDateMonth,
+        minDateDay,
+        maxDateDay,
+        minDateHour,
+        maxDateHour,
+        minDateMinute,
+        maxDateMinute,
+        selYear,
+        selMonth,
+        selDate,
+        selHour,
+      } = dateParams || {};
+
       const minutes: ColumnItemValue[] = [];
       let minMinute = 0;
       let maxMinute = 59;
 
-      if (minDateYear === selYear && minDateMonth === selMonth && minDateDay === selDate && minHour === selHour) {
+      if (minDateYear === selYear && minDateMonth === selMonth && minDateDay === selDate && minDateHour === selHour) {
         minMinute = minDateMinute;
       }
 
-      if (maxDateYear === selYear && maxDateMonth === selMonth && maxDateDay === selDate && maxHour === selHour) {
+      if (maxDateYear === selYear && maxDateMonth === selMonth && maxDateDay === selDate && maxDateHour === selHour) {
         maxMinute = maxDateMinute;
       }
 
       for (let i = minMinute; i <= maxMinute; i += 1) {
         minutes.push({
-          type: ModeType.MINUTE,
           value: `${i}`,
           label: `${i + locale.minute}`,
         });
       }
 
-      if (modeName === ModeType.MINUTE || modeName === ModeType.DATE_ADD_MINUTE) {
-        return [years, months, days, hours, minutes];
-      }
-
-      if (modeName === ModeType.YEAR_ADD_HOUR) {
-        return [years, hours];
-      }
-
-      if (modeName === ModeType.YEAR_ADD_MINUTE) {
-        return [years, hours, minutes];
-      }
-
-      if (modeName === ModeType.MONTH_ADD_HOUR) {
-        return [years, months, hours];
-      }
-
-      if (modeName === ModeType.MONTH_ADD_MINUTE) {
-        return [years, months, hours, minutes];
-      }
-
-      if (modeName === ModeType.DATE_ADD_HOUR) {
-        return [years, months, days, hours];
-      }
-
-      if (modeName === ModeType.NULL_HOUR) {
-        return [hours];
-      }
-
-      if (modeName === ModeType.NULL_MINUTE) {
-        return [hours, minutes];
-      }
-
-      if (modeName === ModeType.MONTH_ADD_DATE) {
-        return [months, days];
-      }
+      return minutes;
     },
 
     getValueCols(this: DateTimePicker) {
       return {
-        columns: this.getDateData(),
+        columns: this.getColumnOptions(),
         columnsValue: this.getColumnsValue(),
       };
     },
 
     getColumnsValue(): string[] {
-      const { modeName } = this.data;
+      const { fullModes } = this.data;
       const date: Dayjs = this.getDate();
 
-      const mode2Value = {
-        [`${ModeType.YEAR}`]: [`${date.year()}`],
-        [`${ModeType.MONTH}`]: [`${date.year()}`, `${date.month()}`],
-        [`${ModeType.DATE}`]: [`${date.year()}`, `${date.month()}`, `${date.date()}`],
-        [`${ModeType.HOUR}`]: [`${date.year()}`, `${date.month()}`, `${date.date()}`, `${date.hour()}`],
-        [`${ModeType.MINUTE}`]: [
-          `${date.year()}`,
-          `${date.month()}`,
-          `${date.date()}`,
-          `${date.hour()}`,
-          `${date.minute()}`,
-        ],
+      const columnsValue = [];
 
-        [`${ModeType.YEAR_ADD_HOUR}`]: [`${date.year()}`, `${date.hour()}`],
-        [`${ModeType.YEAR_ADD_MINUTE}`]: [`${date.year()}`, `${date.hour()}`, `${date.minute()}`],
-        [`${ModeType.MONTH_ADD_HOUR}`]: [`${date.year()}`, `${date.month()}`, `${date.hour()}`],
-        [`${ModeType.MONTH_ADD_MINUTE}`]: [`${date.year()}`, `${date.month()}`, `${date.hour()}`, `${date.minute()}`],
-        [`${ModeType.DATE_ADD_HOUR}`]: [`${date.year()}`, `${date.month()}`, `${date.date()}`, `${date.hour()}`],
-        [`${ModeType.DATE_ADD_MINUTE}`]: [
-          `${date.year()}`,
-          `${date.month()}`,
-          `${date.date()}`,
-          `${date.hour()}`,
-          `${date.minute()}`,
-        ],
+      fullModes?.forEach((mode) => {
+        columnsValue.push(`${date[mode]()}`);
+      });
 
-        [`${ModeType.NULL_HOUR}`]: [`${date.hour()}`],
-        [`${ModeType.NULL_MINUTE}`]: [`${date.hour()}`, `${date.minute()}`],
-        [`${ModeType.MONTH_ADD_DATE}`]: [`${date.month()}`, `${date.date()}`],
-      };
-
-      if (mode2Value[modeName] === undefined) {
-        throw new Error('mode 输入项有误');
-      }
-
-      return mode2Value[modeName];
+      return columnsValue;
     },
 
-    getNewDate(value: number, type: ModeType): Dayjs {
+    getNewDate(value: number, type: ModeItem): Dayjs {
       let newValue: Dayjs = this.getDate();
 
       switch (type) {
-        case ModeType.YEAR:
+        case ModeItem.YEAR:
           newValue = this.setYear(newValue, value);
           break;
-        case ModeType.MONTH:
+        case ModeItem.MONTH:
           newValue = this.setMonth(newValue, value);
           break;
-        case ModeType.DATE:
+        case ModeItem.DATE:
           newValue = newValue.date(value);
           break;
-        case ModeType.HOUR:
+        case ModeItem.HOUR:
           newValue = newValue.hour(value);
           break;
-        case ModeType.MINUTE:
+        case ModeItem.MINUTE:
           newValue = newValue.minute(value);
           break;
         default:
@@ -435,28 +440,90 @@ export default class DateTimePicker extends SuperComponent {
 
     onColumnChange(e: WechatMiniprogram.CustomEvent) {
       const { value, column } = e?.detail;
-      const { format } = this.properties;
-      const date = this.getDate();
+      const { fullModes, format } = this.data;
 
-      const newValue = this.getNewDate(parseInt(value?.value, 10), value?.type);
+      const columnValue = value?.[column];
+      const columnType = fullModes?.[column];
+
+      const newValue = this.getNewDate(parseInt(columnValue, 10), columnType);
 
       this.setData({
         date: newValue,
       });
 
-      this.triggerEvent('column-change', { index: column, value });
-      this.triggerEvent('change', { value: date, formatValue: date.format(format) });
+      const { columns, columnsValue } = this.getValueCols();
+
+      this.setData({
+        columns,
+        columnsValue,
+      });
+
+      const date = this.getDate();
+      const pickValue = format ? date.format(format) : date.valueOf();
+
+      this.triggerEvent('pick', { value: pickValue });
     },
 
     onConfirm() {
       const { format } = this.properties;
       const date = this.getDate();
 
-      this.triggerEvent('confirm', { value: date, formatValue: date.format(format) });
+      const value = format ? date.format(format) : date.valueOf();
+      this.triggerEvent('change', { value });
     },
 
     onCancel() {
+      const { value } = this.properties;
+      const parseDate = dayjs(value || DEFAULT_MIN_DATE);
+
+      this.setData({
+        date: parseDate,
+      });
+
+      const { columns, columnsValue } = this.getValueCols();
+
+      this.setData({
+        columns,
+        columnsValue,
+      });
+
       this.triggerEvent('cancel');
     },
   };
+
+  // 将简写的 mode 转化成枚举值
+  getFullModeArray(mode) {
+    // 简易模式
+    if (typeof mode === 'string' || mode instanceof String) {
+      return this.getFullModeByModeString(mode, FULL_MODES);
+    }
+
+    // 高级模式
+    if (Array.isArray(mode)) {
+      if (mode?.length === 1) {
+        return this.getFullModeByModeString(mode[0], FULL_MODES);
+      }
+
+      if (mode?.length === 2) {
+        const dateModes = this.getFullModeByModeString(mode[0], DATE_MODES);
+        const timeModes = this.getFullModeByModeString(mode[1], TIME_MODES);
+        return [...dateModes, ...timeModes];
+      }
+    }
+  }
+
+  getFullModeByModeString(modeString, matchModes) {
+    if (!modeString) {
+      return [];
+    }
+
+    const endIndex = matchModes?.findIndex((mode) => modeString === mode);
+    return matchModes?.slice(0, endIndex + 1);
+  }
+
+  // 仅展示时或者时分 需要单独特殊处理
+  isTimeMode() {
+    const { fullModes } = this.data;
+    return fullModes[0] === ModeItem.HOUR;
+  }
 }

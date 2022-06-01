@@ -6,15 +6,14 @@
 
 import { TdPickerItemProps } from './type';
 const props: TdPickerItemProps = {
+  /** 格式化标签 */
+  format: {
+    type: null,
+  },
   /** 数据源 */
   options: {
     type: Array,
     value: [],
-  },
-  /** 默认选中的选项 */
-  value: {
-    type: String,
-    optionalTypes: [Number],
   },
 };
 

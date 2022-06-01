@@ -1,45 +1,52 @@
+<wxs module="util">
+  var joinArray = function (array) { return array.join('-') } ;module.exports = { joinArray: joinArray }
+</wxs>
 <view class="area-picker-demo">
   <view class="demo-title">Picker 选择器</view>
   <view class="demo-desc">用于一组预设数据中的选择。</view>
   <t-demo title="01 类型" desc="基础选择器">
-    <view class="pannel-item" bind:tap="onClickPicker" data-index="{{1}}">
+    <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.CITY}}">
       <view class="pannel-label">城市</view>
-      <view class="pannel-text {{selectedCityValue ? '' : 'empty'}}">{{selectedCityValue || '选择城市'}}</view>
+      <view class="pannel-text {{cityValue.length ? '' : 'empty'}}">{{util.joinArray(cityValue) || '选择城市'}}</view>
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
-    <view class="pannel-item" bind:tap="onClickPicker" data-index="{{2}}">
+    <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.YEAR_SEASONS}}">
       <view class="pannel-label">年份和季节</view>
-      <view class="pannel-text {{selectedYearsWithSeason ? '' : 'empty'}}">
-        {{selectedYearsWithSeason}} {{selectedSeason}} {{ !selectedYearsWithSeason ? '选择年份和季节' : ''}}</view
+      <view class="pannel-text {{yearSeasonsValue.length ? '' : 'empty'}}">
+        {{util.joinArray(yearSeasonsValue) || '选择年份和季节' }}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
-    <view class="pannel-item last" bind:tap="onClickPicker" data-index="{{3}}">
+    <view class="pannel-item last" bind:tap="onClickPicker" data-key="{{PICKER_KEY.DATE}}">
       <view class="pannel-label">日期</view>
-      <view class="pannel-text {{selectedYearsWithDate ? '' : 'empty'}}">
-        {{selectedYearsWithDate}} {{selectedMonth}} {{selectedDay}} {{!selectedYearsWithDate ? '选择日期' : ''}}</view
-      >
+      <view class="pannel-text {{dateValue.length ? '' : 'empty'}}"> {{util.joinArray(dateValue) || '选择日期' }}</view>
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
   </t-demo>
   <t-demo desc="带标题选择器">
-    <view class="pannel-item" bind:tap="onClickPicker" data-index="{{4}}">
+    <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.CITY_TITLE}}">
       <view class="pannel-label">城市</view>
-      <view class="pannel-text {{selectedCityValue2 ? '' : 'empty'}}">{{selectedCityValue2 || '选择城市'}}</view>
-      <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
-    </view>
-    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择年份和季节" data-index="{{5}}">
-      <view class="pannel-label">年份和季节</view>
-      <view class="pannel-text {{selectedYearsWithSeason2 ? '' : 'empty'}}">
-        {{selectedYearsWithSeason2}} {{selectedSeason2}} {{ !selectedYearsWithSeason2 ? '选择年份和季节' : ''}}</view
+      <view class="pannel-text {{cityTitleValue.length ? '' : 'empty'}}"
+        >{{util.joinArray(cityTitleValue) || '选择城市'}}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
-    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择日期" data-index="{{6}}">
+    <view
+      class="pannel-item"
+      bind:tap="onClickPicker"
+      data-title="选择年份和季节"
+      data-key="{{PICKER_KEY.YEAR_SEASONS_TITLE}}"
+    >
+      <view class="pannel-label">年份和季节</view>
+      <view class="pannel-text {{yearSeasonsTitleValue.length ? '' : 'empty'}}">
+        {{ util.joinArray(yearSeasonsTitleValue) || '选择年份和季节' }}</view
+      >
+      <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
+    </view>
+    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择日期" data-key="{{PICKER_KEY.DATE_TITLE}}">
       <view class="pannel-label">日期</view>
-      <view class="pannel-text {{selectedYearsWithDate2 ? '' : 'empty'}}">
-        {{selectedYearsWithDate2}} {{selectedMonth2}} {{selectedDay2}} {{!selectedYearsWithDate2 ? '选择日期' :
-        ''}}</view
+      <view class="pannel-text {{dateTitleValue.length ? '' : 'empty'}}">
+        {{util.joinArray(dateTitleValue) || '选择日期'}}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
     </view>
@@ -47,85 +54,97 @@
 
   <!-- 城市不带标题 -->
   <t-picker
-    visible="{{picker1Visible}}"
+    visible="{{cityVisible}}"
+    value="{{cityValue}}"
+    data-key="city"
     title="{{pickerTitle}}"
     cancelBtn="取消"
     confirmBtn="确认"
     bindchange="onPickerChange"
-    bindconfirm="onPicker1Confirm"
-    bindcancel="onPicker1Cancel"
+    bindpick="onColumnChange"
+    bindcancel="onPickerCancel"
   >
-    <t-picker-item options="{{citys}}" value="{{selectedCityValue}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{citys}}"></t-picker-item>
   </t-picker>
 
   <!-- 年+ 季节 不带标题 -->
   <t-picker
-    visible="{{picker2Visible}}"
+    visible="{{yearSeasonsVisible}}"
+    value="{{yearSeasonsValue}}"
+    data-key="yearSeasons"
     title="{{pickerTitle}}"
     cancelBtn="取消"
     confirmBtn="确认"
     bindchange="onPickerChange"
-    bindconfirm="onPicker2Confirm"
-    bindcancel="onPicker2Cancel"
+    bindpick="onColumnChange"
+    bindcancel="onPickerCancel"
   >
-    <t-picker-item options="{{years}}" value="{{selectedYearsWithSeason}}" bindchange="onColumnChange"></t-picker-item>
-    <t-picker-item options="{{seasons}}" value="{{selectedSeason}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{years}}"></t-picker-item>
+    <t-picker-item options="{{seasons}}"></t-picker-item>
   </t-picker>
 
   <!-- 年月日 不带标题 -->
   <t-picker
-    visible="{{picker3Visible}}"
+    visible="{{dateVisible}}"
+    value="{{dateValue}}"
+    data-key="date"
     title="{{pickerTitle}}"
     cancelBtn="取消"
     confirmBtn="确认"
     bindchange="onPickerChange"
-    bindconfirm="onPicker3Confirm"
-    bindcancel="onPicker3Cancel"
+    bindpick="onColumnChange"
+    bindcancel="onPickerCancel"
   >
-    <t-picker-item options="{{years}}" value="{{selectedYearsWithDate}}" bindchange="onColumnChange"></t-picker-item>
-    <t-picker-item options="{{months}}" value="{{selectedMonth}}" bindchange="onColumnChange"></t-picker-item>
-    <t-picker-item options="{{days}}" value="{{selectedDay}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{years}}"></t-picker-item>
+    <t-picker-item options="{{months}}"></t-picker-item>
+    <t-picker-item options="{{days}}"></t-picker-item>
   </t-picker>
 
   <!-- 城市带标题 -->
   <t-picker
-    visible="{{picker4Visible}}"
+    visible="{{cityTitleVisible}}"
+    value="{{cityTitleValue}}"
+    data-key="cityTitle"
     title="选中城市"
     cancelBtn="取消"
     confirmBtn="确认"
     bindchange="onPickerChange"
-    bindconfirm="onPicker4Confirm"
-    bindcancel="onPicker4Cancel"
+    bindpick="onColumnChange"
+    bindcancel="onPickerCancel"
   >
-    <t-picker-item options="{{citys}}" value="{{selectedCityValue2}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{citys}}"></t-picker-item>
   </t-picker>
 
   <!-- 年+季节 带标题 -->
   <t-picker
-    visible="{{picker5Visible}}"
+    visible="{{yearSeasonsTitleVisible}}"
+    value="{{yearSeasonsTitleValue}}"
+    data-key="yearSeasonsTitle"
     title="选择年份和季节"
     cancelBtn="取消"
     confirmBtn="确认"
     bindchange="onPickerChange"
-    bindconfirm="onPicker5Confirm"
-    bindcancel="onPicker5Cancel"
+    bindpick="onColumnChange"
+    bindcancel="onPickerCancel"
   >
-    <t-picker-item options="{{years}}" value="{{selectedYearsWithSeason2}}" bindchange="onColumnChange"></t-picker-item>
-    <t-picker-item options="{{seasons}}" value="{{selectedSeason2}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{years}}"></t-picker-item>
+    <t-picker-item options="{{seasons}}"></t-picker-item>
   </t-picker>
 
   <!-- 年月日带标题 -->
   <t-picker
-    visible="{{picker6Visible}}"
+    visible="{{dateTitleVisible}}"
+    value="{{dateTitleValue}}"
+    data-key="dateTitle"
     title="选择日期"
     cancelBtn="取消"
     confirmBtn="确认"
     bindchange="onPickerChange"
-    bindconfirm="onPicker6Confirm"
-    bindcancel="onPicker6Cancel"
+    bindpick="onColumnChange"
+    bindcancel="onPickerCancel"
   >
-    <t-picker-item options="{{years}}" value="{{selectedYearsWithDate2}}" bindchange="onColumnChange"></t-picker-item>
-    <t-picker-item options="{{months}}" value="{{selectedMonth2}}" bindchange="onColumnChange"></t-picker-item>
-    <t-picker-item options="{{days}}" value="{{selectedDay2}}" bindchange="onColumnChange"></t-picker-item>
+    <t-picker-item options="{{years}}"></t-picker-item>
+    <t-picker-item options="{{months}}"></t-picker-item>
+    <t-picker-item options="{{days}}"></t-picker-item>
   </t-picker>
 </view>
