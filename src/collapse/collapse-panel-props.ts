@@ -18,7 +18,11 @@ const props: TdCollapsePanelProps = {
   /** 当前折叠面板展开图标，优先级大于 Collapse 的同名属性 */
   expandIcon: {
     type: Boolean,
-    value: null,
+    value: true,
+  },
+  /** 组件类名，用于组件外层元素、标题、内容 */
+  externalClasses: {
+    type: Array,
   },
   /** 面板头内容 */
   header: {

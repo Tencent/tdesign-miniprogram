@@ -4,6 +4,38 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.13.0 `2022-6-1`
+### BREAKING CHANGES
+
+- Picker: [#462](https://github.com/Tencent/tdesign-miniprogram/pull/462) [@wutianSweet](https://github.com/wutianSweet)
+  - 事件 `change` 更名为 `pick`
+  - 事件 `confirm` 更名为 `change`
+- PickerItem: [#462](https://github.com/Tencent/tdesign-miniprogram/pull/462) [@wutianSweet](https://github.com/wutianSweet)
+   - 移除 `value` 属性
+- DateTimePicker: [#462](https://github.com/Tencent/tdesign-miniprogram/pull/462) [@wutianSweet](https://github.com/wutianSweet)
+  - 新增 `start` 和 `end` 属性用于替代 `disable-date` 属性
+  - 移除 `disable-date` 属性
+  - 事件 `change` 更名为 `pick`
+  - 事件 `confirm` 更名为 `change`
+  - 移除 `column-change` 事件
+  - 事件 `format` 默认值改成 `''`
+  - 重构了事件返回参数，在传入了 `format` 属性时，`value` 则是格式化之后的值，否则就是 `picker-item` 的值
+
+### Bug Fixes
+
+- Tabs: 修复在 `popup` 中使用时丢失 `tab-nav` 的问题 [#491](https://github.com/Tencent/tdesign-miniprogram/pull/491) [@LeeJim](https://github.com/LeeJim)
+- Input: 修复 `max-character` 不生效的问题 [#495](https://github.com/Tencent/tdesign-miniprogram/pull/495) [@LeeJim](https://github.com/LeeJim)
+- PullDownRefresh: 修复使用组件之后无法滚动的问题 [#502](https://github.com/Tencent/tdesign-miniprogram/pull/502) [@LeeJim](https://github.com/LeeJim)
+
+### Features
+
+- Tabbar: 新增支持 `icon` 插槽 [#485](https://github.com/Tencent/tdesign-miniprogram/pull/485) [@LeeJim](https://github.com/LeeJim)
+- Button: 新增 `iconProps` 属性透传至 `icon` [#492](https://github.com/Tencent/tdesign-miniprogram/pull/492) [@LeeJim](https://github.com/LeeJim)
+- Collapse: 新增 `t-class-header` & `t-class-content` 外部样式类 [#496](https://github.com/Tencent/tdesign-miniprogram/pull/496) [@LeeJim](https://github.com/LeeJim)
+- Input: 新增 `prefixIcon` 属性和插槽 [#498](https://github.com/Tencent/tdesign-miniprogram/pull/498) [@LeeJim](https://github.com/LeeJim)
+
+### Bug Fixes
+
 ## 0.12.1 `2022-5-27`
 ### Bug Fixes
 

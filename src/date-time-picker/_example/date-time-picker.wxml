@@ -23,16 +23,6 @@
     t-class-note="{{monthText ? 'sub-text' : 'empty'}}"
   />
   <t-cell
-    title="选择日期(月日)"
-    hover
-    note="{{monthDateText || '月 日'}}"
-    arrow
-    data-mode="monthDate"
-    bindtap="showPicker"
-    t-class="pannel-item"
-    t-class-note="{{monthDateText ? 'sub-text' : 'empty'}}"
-  />
-  <t-cell
     title="选择时间(时分)"
     hover
     note="{{timeText || '时 分'}}"
@@ -58,34 +48,28 @@
 <t-date-time-picker
   title="选择日期"
   visible="{{dateVisible}}"
-  mode="{{['date']}}"
+  mode="date"
   defaultValue="{{date}}"
   format="YYYY-MM-DD"
-  bindconfirm="onConfirm"
+  bindchange="onConfirm"
+  bindpick="onColumnChange"
   bindcancel="hidePicker"
-  disableDate="{{disableDate}}"
+  start="{{start}}"
+  end="{{end}}"
 ></t-date-time-picker>
 
 <!-- 年月 -->
 <t-date-time-picker
   title="选择日期"
   visible="{{monthVisible}}"
-  mode="{{['month']}}"
+  mode="month"
   value="{{month}}"
   format="YYYY-MM"
-  bindconfirm="onConfirm"
+  bindchange="onConfirm"
+  bindpick="onColumnChange"
   bindcancel="hidePicker"
-></t-date-time-picker>
-
-<!-- 月日 -->
-<t-date-time-picker
-  title="选择日期"
-  visible="{{monthDateVisible}}"
-  mode="{{['month','date']}}"
-  value="{{monthDate}}"
-  format="MM-DD"
-  bindconfirm="onConfirm"
-  bindcancel="hidePicker"
+  start="{{start}}"
+  end="{{end}}"
 ></t-date-time-picker>
 
 <!-- 时分 -->
@@ -95,7 +79,8 @@
   mode="{{['null', 'minute']}}"
   value="{{time}}"
   format="HH:mm"
-  bindconfirm="onConfirm"
+  bindchange="onConfirm"
+  bindpick="onColumnChange"
   bindcancel="hidePicker"
 ></t-date-time-picker>
 
@@ -103,10 +88,10 @@
 <t-date-time-picker
   title="选择日期和时间"
   visible="{{datetimeVisible}}"
-  mode="{{['minute']}}"
+  mode="minute"
   value="{{datetime}}"
   format="YYYY-MM-DD HH:mm"
-  bindconfirm="onConfirm"
+  bindchange="onConfirm"
+  bindpick="onColumnChange"
   bindcancel="hidePicker"
-  disableDate="{{disableDate}}"
 ></t-date-time-picker>

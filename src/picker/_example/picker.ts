@@ -1,11 +1,22 @@
+const PICKER_KEY = {
+  CITY: 'city',
+  YEAR_SEASONS: 'yearSeasons',
+  DATE: 'date',
+  CITY_TITLE: 'cityTitle',
+  YEAR_SEASONS_TITLE: 'yearSeasonsTitle',
+  DATE_TITLE: 'dateTitle',
+};
+
 Page({
   data: {
-    picker1Visible: false,
-    picker2Visible: false,
-    picker3Visible: false,
-    picker4Visible: false,
-    picker5Visible: false,
-    picker6Visible: false,
+    PICKER_KEY,
+
+    [`${PICKER_KEY.CITY}Visible`]: false,
+    [`${PICKER_KEY.YEAR_SEASONS}Visible`]: false,
+    [`${PICKER_KEY.DATE}Visible`]: false,
+    [`${PICKER_KEY.CITY_TITLE}Visible`]: false,
+    [`${PICKER_KEY.YEAR_SEASONS_TITLE}Visible`]: false,
+    [`${PICKER_KEY.DATE_TITLE}Visible`]: false,
 
     pickerTitle: '',
     citys: [
@@ -31,130 +42,41 @@ Page({
       { label: '秋', value: '秋' },
       { label: '冬', value: '冬' },
     ],
-    selectedCityValue: '广州',
-    selectedYearsWithSeason: '',
-    selectedYearsWithDate: '',
-    selectedSeason: '',
-    selectedMonth: '',
-    selectedDay: '',
 
-    // 带标题的选中值
-    selectedCityValue2: '广州',
-    selectedYearsWithSeason2: '',
-    selectedYearsWithDate2: '',
-    selectedSeason2: '',
-    selectedMonth2: '',
-    selectedDay2: '',
-  },
-
-  onColumnChange(e) {
-    console.log('column change:', e.detail);
+    [`${PICKER_KEY.CITY}Value`]: [],
+    [`${PICKER_KEY.YEAR_SEASONS}Value`]: [],
+    [`${PICKER_KEY.DATE}Value`]: [],
+    [`${PICKER_KEY.CITY_TITLE}Value`]: [],
+    [`${PICKER_KEY.YEAR_SEASONS_TITLE}Value`]: [],
+    [`${PICKER_KEY.DATE_TITLE}Value`]: [],
   },
 
   onClickPicker(e) {
-    const { index } = e?.currentTarget?.dataset;
+    const { key } = e?.currentTarget?.dataset;
 
     this.setData({
-      [`picker${index}Visible`]: true,
+      [`${key}Visible`]: true,
     });
+  },
+
+  onColumnChange(e) {
+    console.log('picker pick:', e);
   },
 
   onPickerChange(e) {
+    const { key } = e?.currentTarget?.dataset;
     console.log('picker change:', e.detail);
-  },
-
-  /** **********************Picker1*************************** */
-  onPicker1Confirm(e) {
-    console.log('picker1 confirm:', e.detail);
     this.setData({
-      picker1Visible: false,
-      selectedCityValue: e.detail.value[0].value,
+      [`${key}Visible`]: false,
+      [`${key}Value`]: e.detail.value,
     });
   },
-  onPicker1Cancel() {
+  onPickerCancel(e) {
+    const { key } = e?.currentTarget?.dataset;
+    console.log(e, '取消');
     console.log('picker1 cancel:');
     this.setData({
-      picker1Visible: false,
-    });
-  },
-  /** **********************Picker1*************************** */
-
-  /** **********************Picker2*************************** */
-  onPicker2Confirm(e) {
-    console.log('picker2 confirm:', e.detail);
-    this.setData({
-      picker2Visible: false,
-      selectedYearsWithSeason: e.detail.value[0]?.value,
-      selectedSeason: e.detail.value[1]?.value,
-    });
-  },
-  onPicker2Cancel() {
-    console.log('picker2 cancel:');
-    this.setData({
-      picker2Visible: false,
-    });
-  },
-  /** **********************Picker2*************************** */
-
-  /** **********************Picker3*************************** */
-  onPicker3Confirm(e) {
-    console.log('picker3 confirm:', e.detail);
-    this.setData({
-      picker3Visible: false,
-      selectedYearsWithDate: e.detail.value[0]?.value,
-      selectedMonth: e.detail.value[1]?.value,
-      selectedDay: e.detail.value[2]?.value,
-    });
-  },
-
-  onPicker3Cancel() {
-    console.log('picker3 cancel:');
-    this.setData({
-      picker3Visible: false,
-    });
-  },
-  /** **********************Picker3*************************** */
-
-  /** **********************Picker4*************************** */
-  onPicker4Confirm(e) {
-    console.log(4);
-    this.setData({
-      picker4Visible: false,
-      selectedCityValue2: e.detail.value[0].value,
-    });
-  },
-  onPicker4Cancel() {
-    this.setData({
-      picker4Visible: false,
-    });
-  },
-
-  /** **********************Picker5*************************** */
-  onPicker5Confirm(e) {
-    this.setData({
-      picker5Visible: false,
-      selectedYearsWithSeason2: e.detail.value[0]?.value,
-      selectedSeason2: e.detail.value[1]?.value,
-    });
-  },
-  onPicker5Cancel() {
-    this.setData({
-      picker5Visible: false,
-    });
-  },
-  /** **********************Picker6*************************** */
-  onPicker6Confirm(e) {
-    this.setData({
-      picker6Visible: false,
-      selectedYearsWithDate2: e.detail.value[0]?.value,
-      selectedMonth2: e.detail.value[1]?.value,
-      selectedDay2: e.detail.value[2]?.value,
-    });
-  },
-
-  onPicker6Cancel() {
-    this.setData({
-      picker6Visible: false,
+      [`${key}Visible`]: false,
     });
   },
 });
