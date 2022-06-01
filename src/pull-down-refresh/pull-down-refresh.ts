@@ -39,6 +39,7 @@ export default class PullDownRefresh extends SuperComponent {
     barHeight: 0,
     refreshStatus: -1,
     loosing: false,
+    enableToRefresh: true,
   };
 
   lifetimes = {
@@ -85,103 +86,115 @@ export default class PullDownRefresh extends SuperComponent {
     },
   };
 
-  onTouchStart(e: WechatMiniprogram.Component.TrivialInstance) {
-    if (this.isPulling) return;
-    const { touches } = e;
-    if (touches.length !== 1) return;
-    const { pageX, pageY } = touches[0];
-
-    this.setData({ loosing: false });
-    this.startPoint = { pageX, pageY };
-    this.isPulling = true;
-  }
-
-  onTouchMove(e: WechatMiniprogram.Component.TrivialInstance) {
-    if (!this.startPoint) return;
-
-    const { touches } = e;
-
-    if (touches.length !== 1) return;
-
-    const { pageY } = touches[0];
-    const offset = pageY - this.startPoint.pageY;
-    const barHeight = this.toRpx(offset);
-
-    if (barHeight > 0) {
-      if (barHeight > this.maxBarHeight) {
-        // 限高
-        this.setRefreshBarHeight(this.maxBarHeight);
-        // this.startPoint.pageY = pageY - this.toPx(this.maxBarHeight); // 限高的同时修正起点，避免触摸点上移时无效果
-      } else {
-        this.setRefreshBarHeight(barHeight);
-      }
-    }
-  }
-
-  onTouchEnd(e: WechatMiniprogram.Component.TrivialInstance) {
-    if (!this.startPoint) return;
-    const { changedTouches } = e;
-    if (changedTouches.length !== 1) return;
-    const { pageY } = changedTouches[0];
-
-    const barHeight = this.toRpx(pageY - this.startPoint.pageY);
-    this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
-
-    this.setData({ loosing: true });
-
-    // 松开时高度超过阈值则触发刷新
-    if (barHeight > this.loadingBarHeight) {
+  methods = {
+    onScrollToTop() {
       this.setData({
-        barHeight: this.loadingBarHeight,
-        refreshStatus: 2,
+        enableToRefresh: true,
       });
+    },
+    onScroll(e) {
+      this.setData({
+        enableToRefresh: e.detail.scrollTop === 0,
+      });
+    },
+    onTouchStart(e: WechatMiniprogram.Component.TrivialInstance) {
+      if (this.isPulling || !this.data.enableToRefresh) return;
+      const { touches } = e;
+      if (touches.length !== 1) return;
+      const { pageX, pageY } = touches[0];
 
-      this.triggerEvent('change', { value: true });
-      this.triggerEvent('refresh');
-      this.maxRefreshAnimateTimeFlag = setTimeout(() => {
-        this.maxRefreshAnimateTimeFlag = null;
+      this.setData({ loosing: false });
+      this.startPoint = { pageX, pageY };
+      this.isPulling = true;
+    },
 
-        if (this.data.refreshStatus === 2) {
-          // 超时回调
-          this.triggerEvent('timeout');
-          this.close(); // 超时仍未被回调，则直接结束下拉
+    onTouchMove(e: WechatMiniprogram.Component.TrivialInstance) {
+      if (!this.startPoint) return;
+
+      const { touches } = e;
+
+      if (touches.length !== 1) return;
+
+      const { pageY } = touches[0];
+      const offset = pageY - this.startPoint.pageY;
+      const barHeight = this.toRpx(offset);
+
+      if (barHeight > 0) {
+        if (barHeight > this.maxBarHeight) {
+          // 限高
+          this.setRefreshBarHeight(this.maxBarHeight);
+          // this.startPoint.pageY = pageY - this.toPx(this.maxBarHeight); // 限高的同时修正起点，避免触摸点上移时无效果
+        } else {
+          this.setRefreshBarHeight(barHeight);
         }
-      }, this.properties.refreshTimeout as any) as any as number;
-    } else {
-      this.close();
-    }
-  }
+      }
+    },
 
-  toRpx(v: number | string): number {
-    if (typeof v === 'number') return v * this.pixelRatio;
-    return parseInt(v, 10);
-  }
+    onTouchEnd(e: WechatMiniprogram.Component.TrivialInstance) {
+      if (!this.startPoint) return;
+      const { changedTouches } = e;
+      if (changedTouches.length !== 1) return;
+      const { pageY } = changedTouches[0];
 
-  toPx(v: number) {
-    return v / this.pixelRatio;
-  }
+      const barHeight = this.toRpx(pageY - this.startPoint.pageY);
+      this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
 
-  setRefreshBarHeight(barHeight: number) {
-    const data: Record<string, any> = { barHeight };
-    if (barHeight >= this.loadingBarHeight) {
-      data.refreshStatus = 1;
-    } else {
-      data.refreshStatus = 0;
-    }
-    return new Promise((resolve) => {
-      this.setData(data, () => resolve(barHeight));
-    });
-  }
+      this.setData({ loosing: true });
 
-  close() {
-    const animationDuration = 240;
+      // 松开时高度超过阈值则触发刷新
+      if (barHeight > this.loadingBarHeight) {
+        this.setData({
+          barHeight: this.loadingBarHeight,
+          refreshStatus: 2,
+        });
 
-    this.setData({ barHeight: 0 });
-    this.triggerEvent('change', { value: false });
-    this.closingAnimateTimeFlag = setTimeout(() => {
-      this.closingAnimateTimeFlag = null;
-      this.setData({ refreshStatus: -1 });
-      this.isPulling = false; // 退出下拉状态
-    }, animationDuration) as any as number;
-  }
+        this.triggerEvent('change', { value: true });
+        this.triggerEvent('refresh');
+        this.maxRefreshAnimateTimeFlag = setTimeout(() => {
+          this.maxRefreshAnimateTimeFlag = null;
+
+          if (this.data.refreshStatus === 2) {
+            // 超时回调
+            this.triggerEvent('timeout');
+            this.close(); // 超时仍未被回调，则直接结束下拉
+          }
+        }, this.properties.refreshTimeout as any) as any as number;
+      } else {
+        this.close();
+      }
+    },
+
+    toRpx(v: number | string): number {
+      if (typeof v === 'number') return v * this.pixelRatio;
+      return parseInt(v, 10);
+    },
+
+    toPx(v: number) {
+      return v / this.pixelRatio;
+    },
+
+    setRefreshBarHeight(barHeight: number) {
+      const data: Record<string, any> = { barHeight };
+      if (barHeight >= this.loadingBarHeight) {
+        data.refreshStatus = 1;
+      } else {
+        data.refreshStatus = 0;
+      }
+      return new Promise((resolve) => {
+        this.setData(data, () => resolve(barHeight));
+      });
+    },
+
+    close() {
+      const animationDuration = 240;
+
+      this.setData({ barHeight: 0 });
+      this.triggerEvent('change', { value: false });
+      this.closingAnimateTimeFlag = setTimeout(() => {
+        this.closingAnimateTimeFlag = null;
+        this.setData({ refreshStatus: -1 });
+        this.isPulling = false; // 退出下拉状态
+      }, animationDuration) as any as number;
+    },
+  };
 }
