@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "PullDownRefresh 下拉刷新",
   "navigationBarBackgroundColor": "#fff",
-  "backgroundColor": "#f5f5f5",
+  "backgroundColor": "#fff",
   "disableScroll": true,
   "usingComponents": {
     "t-demo": "../../components/demo-block/index"

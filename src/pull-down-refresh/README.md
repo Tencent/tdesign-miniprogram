@@ -42,6 +42,8 @@ Page({
 });
 ```
 
+> 在使用 pull-down-refresh 组件的页面，建议开启 `disableScroll: true`
+
 ## API
 ### PullDownRefresh Props
 
