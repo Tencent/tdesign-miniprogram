@@ -64,7 +64,7 @@
     bindpick="onColumnChange"
     bindcancel="onPickerCancel"
   >
-    <t-picker-item options="{{citys}}" value="{{cityValue}}"></t-picker-item>
+    <t-picker-item options="{{citys}}"></t-picker-item>
   </t-picker>
 
   <!-- 年+ 季节 不带标题 -->

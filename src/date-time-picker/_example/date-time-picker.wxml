@@ -82,8 +82,6 @@
   bindchange="onConfirm"
   bindpick="onColumnChange"
   bindcancel="hidePicker"
-  start="{{start}}"
-  end="{{end}}"
 ></t-date-time-picker>
 
 <!-- 年月日时分 -->

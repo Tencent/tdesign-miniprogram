@@ -64,8 +64,8 @@ Page({
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-cancel-btn | String / Object | 取消 | 取消按钮文字。TS 类型：`string | ButtonProps` | N
-confirm-btn | String / Object | 确认 | 确定按钮文字。TS 类型：`string | ButtonProps`，[Button API Documents](./button?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
+cancel-btn | String | 取消 | 取消按钮文字。TS 类型：`string` | N
+confirm-btn | String | 确认 | 确定按钮文字。TS 类型：`string` | N
 footer | Slot | - | 底部内容 | N
 header | Boolean / Slot | true | 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 | N
 title | String | '' | 标题 | N

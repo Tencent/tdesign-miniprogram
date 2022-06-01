@@ -20,8 +20,8 @@ const DATE_MODES = ['year', 'month', 'date'];
 const TIME_MODES = ['hour', 'minute'];
 const FULL_MODES = [...DATE_MODES, ...TIME_MODES];
 
-const DEFAULT_MIN_DATE: Dayjs = dayjs().subtract(10, 'year');
-const DEFAULT_MAX_DATE: Dayjs = dayjs().add(10, 'year');
+const DEFAULT_MIN_DATE: Dayjs = dayjs('2000-01-01 00:00:00');
+const DEFAULT_MAX_DATE: Dayjs = dayjs('2030-12-31 23:59:59');
 
 interface ColumnItemValue {
   value: string | number;
@@ -75,14 +75,10 @@ export default class DateTimePicker extends SuperComponent {
 
   methods = {
     updateColumns() {
-      const { value, defaultValue } = this.properties;
-      const minDate = this.getMinDate();
-
-      const parseDate = dayjs(this.initValue || value || defaultValue || minDate);
-      const isDateValid = parseDate.isValid();
+      const parseDate = this.getParseDate();
 
       this.setData({
-        date: isDateValid ? parseDate : minDate,
+        date: parseDate,
       });
 
       const { columns, columnsValue } = this.getValueCols();
@@ -90,6 +86,25 @@ export default class DateTimePicker extends SuperComponent {
         columns,
         columnsValue,
       });
+    },
+
+    getParseDate() {
+      const { value, defaultValue } = this.properties;
+      const minDate = this.getMinDate();
+
+      const isTimeMode = this.isTimeMode();
+      let currentValue = this.initValue || value || defaultValue;
+
+      // 时间需要补齐前缀
+      if (isTimeMode) {
+        const dateStr = dayjs(minDate).format('YYYY-MM-DD');
+        currentValue = dayjs(`${dateStr} ${currentValue}`);
+      }
+
+      const parseDate = dayjs(currentValue || minDate);
+      const isDateValid = parseDate.isValid();
+
+      return isDateValid ? parseDate : minDate;
     },
 
     getMinDate(): Dayjs {
@@ -504,5 +519,11 @@ export default class DateTimePicker extends SuperComponent {
 
     const endIndex = matchModes?.findIndex((mode) => modeString === mode);
     return matchModes?.slice(0, endIndex + 1);
+  }
+
+  // 仅展示时或者时分 需要单独特殊处理
+  isTimeMode() {
+    const { fullModes } = this.data;
+    return fullModes[0] === ModeItem.HOUR;
   }
 }

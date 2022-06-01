@@ -11,7 +11,7 @@ Page({
     monthText: '',
 
     timeVisible: false,
-    time: '',
+    time: '10:00',
     timeText: '',
 
     datetimeVisible: false,
