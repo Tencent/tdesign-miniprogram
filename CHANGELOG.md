@@ -18,7 +18,7 @@ docClass: timeline
   - 事件 `change` 更名为 `pick`
   - 事件 `confirm` 更名为 `change`
   - 移除 `column-change` 事件
-  - 事件 `format` 默认值改成 `''`
+  - 属性 `format` 默认值改成 `''`
   - 重构了事件返回参数，在传入了 `format` 属性时，`value` 则是格式化之后的值，否则就是 `picker-item` 的值
 
 ### Bug Fixes
