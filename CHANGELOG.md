@@ -34,8 +34,6 @@ docClass: timeline
 - Collapse: 新增 `t-class-header` & `t-class-content` 外部样式类 [#496](https://github.com/Tencent/tdesign-miniprogram/pull/496) [@LeeJim](https://github.com/LeeJim)
 - Input: 新增 `prefixIcon` 属性和插槽 [#498](https://github.com/Tencent/tdesign-miniprogram/pull/498) [@LeeJim](https://github.com/LeeJim)
 
-### Bug Fixes
-
 ## 0.12.1 `2022-5-27`
 ### Bug Fixes
 
