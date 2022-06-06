@@ -13,6 +13,7 @@
       model:value="{{value}}"
       auto-focus="{{autofocus}}"
       focus="{{focus}}"
+      cursor-spacing="{{cursorSpacing}}"
       auto-height="{{autosize}}"
       adjust-position="{{adjustPosition}}"
       confirm-type="{{confirmType}}"

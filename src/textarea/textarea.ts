@@ -29,7 +29,14 @@ export default class Textarea extends SuperComponent {
     `${prefix}-class-label`,
   ];
 
-  properties = props;
+  properties = {
+    ...props,
+    // 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离
+    cursorSpacing: {
+      type: Number,
+      value: 0,
+    },
+  };
 
   data = {
     prefix,
