@@ -1,4 +1,4 @@
-import Toast from 'tdesign-miniprogram/toast/index';
+import Toast, { hideToast } from 'tdesign-miniprogram/toast/index';
 
 Page({
   data: {
@@ -81,12 +81,29 @@ Page({
         ],
       },
     ],
+    operList4: [
+      {
+        title: '手动关闭轻提示',
+        btns: [
+          {
+            type: 'hideToast',
+            text: '关闭提示',
+          },
+        ],
+      },
+    ],
   },
   handleToast(option) {
     Toast({
       context: this,
       selector: '#t-toast',
       ...option,
+    });
+  },
+  hideToast() {
+    hideToast({
+      context: this,
+      selector: '#t-toast',
     });
   },
   clickHandle(e) {
@@ -194,6 +211,10 @@ Page({
           preventScrollThrough: true,
           icon: 'poweroff',
         });
+        break;
+      }
+      case 'hideToast': {
+        this.hideToast();
         break;
       }
       default: {
