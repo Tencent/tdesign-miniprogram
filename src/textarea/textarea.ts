@@ -33,31 +33,36 @@ export default class Textarea extends SuperComponent {
 
   data = {
     prefix,
-    inputValue: '',
     classPrefix: name,
-    characterLength: 0,
+    textareaLength: 0,
   };
 
   /* 组件生命周期 */
   lifetimes = {
     ready() {
-      this.setData({ inputValue: this.data.value });
+      this.getTextareaValueLength(this.data.value);
     },
   };
 
   methods = {
-    onInput(event) {
-      const { value } = event.detail;
+    getTextareaValueLength(textareaValue) {
       const { maxcharacter } = this.properties;
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { characters = '', length = 0 } = getCharacterLength(value, maxcharacter);
+        const { length = 0 } = getCharacterLength(textareaValue, maxcharacter) as {
+          length: number;
+        };
         this.setData({
-          value: characters,
-          characterLength: length,
+          textareaLength: length,
         });
       } else {
-        this.setData({ inputValue: value });
+        this.setData({
+          textareaLength: String(textareaValue).length,
+        });
       }
+    },
+    onInput(event) {
+      const { value } = event.detail;
+      this.getTextareaValueLength(value);
 
       this.triggerEvent('change', {
         ...event.detail,
