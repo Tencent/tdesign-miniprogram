@@ -30,7 +30,7 @@ const getInstance = (context?: Context, selector = '#t-toast') => {
   return instance;
 };
 
-export default function (options: ToastOptionsType) {
+function Toast(options: ToastOptionsType) {
   const { context, selector, ...Options } = options;
   const instance = getInstance(context, selector);
   if (instance) {
@@ -40,3 +40,17 @@ export default function (options: ToastOptionsType) {
     });
   }
 }
+
+function showToast(options: ToastOptionsType) {
+  Toast(options);
+}
+
+function hideToast(options: ToastOptionsType) {
+  const { context, selector } = options;
+  const instance = getInstance(context, selector);
+  if (instance) {
+    instance.hide();
+  }
+}
+
+export { Toast as default, showToast, hideToast };
