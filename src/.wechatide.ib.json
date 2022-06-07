@@ -5,7 +5,7 @@
     "t-action-sheet": {
       "key": "t-action-sheet",
       "label": "动作面板",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-actionsheet.png",
       "properties": [
         {
           "key": "cancelText",
@@ -750,7 +750,7 @@
     "t-collapse": {
       "key": "t-collapse",
       "label": "折叠",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-collapse.png",
       "properties": [
         {
           "key": "defaultExpandAll",
@@ -795,75 +795,6 @@
         "t-collapse-panel": "./collapse/collapse-panel"
       },
       "path": "./collapse/collapse"
-    },
-    "t-count-down": {
-      "key": "t-count-down",
-      "label": "倒计时",
-      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-countdown.png",
-      "properties": [
-        {
-          "key": "autoStart",
-          "type": ["Boolean"],
-          "desc": "是否自动开始倒计时",
-          "label": ""
-        },
-        {
-          "key": "content",
-          "type": ["String"],
-          "desc": "最终倒计时的展示内容，值为'default'时使用默认的格式，否则使用自定义样式插槽",
-          "label": ""
-        },
-        {
-          "key": "format",
-          "type": ["String"],
-          "desc": "时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒",
-          "label": ""
-        },
-        {
-          "key": "millisecond",
-          "type": ["Boolean"],
-          "desc": "是否开启毫秒级渲染",
-          "label": ""
-        },
-        {
-          "key": "size",
-          "type": ["String"],
-          "desc": "倒计时尺寸",
-          "label": ""
-        },
-        {
-          "key": "splitWithUnit",
-          "type": ["Boolean"],
-          "desc": "使用时间单位分割",
-          "label": ""
-        },
-        {
-          "key": "theme",
-          "type": ["String"],
-          "desc": "倒计时风格",
-          "label": ""
-        },
-        {
-          "key": "time",
-          "type": ["Number"],
-          "desc": "倒计时时长，单位毫秒",
-          "label": ""
-        }
-      ],
-      "events": [
-        {
-          "key": "bind:change",
-          "desc": "时间变化时触发",
-          "label": ""
-        },
-        {
-          "key": "bind:finish",
-          "desc": "倒计时结束时触发",
-          "label": ""
-        }
-      ],
-      "tpl": "<t-count-down time=\"{{ 96 * 60 * 1000 }}\" />",
-      "path": "./count-down/count-down"
     },
     "t-date-time-picker": {
       "key": "t-date-time-picker",
@@ -1111,7 +1042,7 @@
     "t-drawer": {
       "key": "t-drawer",
       "label": "模态抽屉",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-drawer.png",
       "properties": [
         {
           "key": "closeOnOverlayClick",
@@ -1176,10 +1107,43 @@
       "tpl": "<t-drawer visible=\"{{true}}\" placement=\"left\" items=\"{{[{title: '菜单一'},{title: '菜单二'}]}}\"></t-drawer>",
       "path": "./drawer/drawer"
     },
+    "t-dropdown-item": {
+      "key": "t-dropdown-item",
+      "label": "下拉菜单子项",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-dropdownmenu.png",
+      "properties": [
+        {
+          "key": "disabled",
+          "type": ["Boolean"],
+          "desc": "是否禁用",
+          "label": ""
+        },
+        {
+          "key": "label",
+          "type": ["String"],
+          "desc": "标题",
+          "label": ""
+        },
+        {
+          "key": "multiple",
+          "type": ["Boolean"],
+          "desc": "是否多选",
+          "label": ""
+        },
+        {
+          "key": "options",
+          "type": ["Array"],
+          "desc": "选项数据",
+          "label": ""
+        }
+      ],
+      "tpl": "<t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" />",
+      "path": "./dropdown-menu/dropdown-item"
+    },
     "t-dropdown-menu": {
       "key": "t-dropdown-menu",
       "label": "下拉菜单",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-dropdownmenu.png",
       "properties": [
         {
           "key": "activeColor",
@@ -1214,7 +1178,7 @@
       ],
       "tpl": "<t-dropdown-menu><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /></t-dropdown-menu>",
       "require": {
-        "t-dropdown-menu": "./dropdown-menu/dropdown-item"
+        "t-dropdown-item": "./dropdown-menu/dropdown-item"
       },
       "path": "./dropdown-menu/dropdown-menu"
     },
@@ -1255,7 +1219,7 @@
     "t-fab": {
       "key": "t-fab",
       "label": "悬浮按钮",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-fab.png",
       "properties": [
         {
           "key": "buttonProps",
@@ -2122,7 +2086,7 @@
     "t-progress": {
       "key": "t-progress",
       "label": "进度条",
-      "icon": "",
+      "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-progress.png",
       "properties": [
         {
           "key": "color",
@@ -3725,7 +3689,7 @@
         {
           "key": "subMenu-tabbar",
           "label": "TabBar 标签栏",
-          "components": ["t-tabbar"]
+          "components": ["t-tab-bar"]
         },
         {
           "key": "subMenu-tabs",
@@ -3825,11 +3789,6 @@
           "components": ["t-collapse"]
         },
         {
-          "key": "subMenu-countdown",
-          "label": "CountDown 倒计时",
-          "components": ["t-countdown"]
-        },
-        {
           "key": "subMenu-dropdown-menu",
           "label": "DropdownMenu 下拉菜单",
           "components": ["t-dropdown-menu"]
@@ -3853,11 +3812,6 @@
           "key": "subMenu-image",
           "label": "Image 图片",
           "components": ["t-image"]
-        },
-        {
-          "key": "subMenu-image-viewer",
-          "label": "ImageViewer 图片预览",
-          "components": ["t-image-viewer"]
         },
         {
           "key": "subMenu-skeleton",
@@ -3888,7 +3842,7 @@
         {
           "key": "subMenu-actionsheet",
           "label": "ActionSheet 动作面板",
-          "components": ["t-actionsheet"]
+          "components": ["t-action-sheet"]
         },
         {
           "key": "subMenu-back-top",
@@ -3909,16 +3863,6 @@
           "key": "subMenu-message",
           "label": "Message 消息通知",
           "components": ["t-message"]
-        },
-        {
-          "key": "subMenu-noticebar",
-          "label": "NoticeBar 公告栏",
-          "components": ["t-noticebar"]
-        },
-        {
-          "key": "subMenu-overlay",
-          "label": "Overlay 遮罩层",
-          "components": ["t-overlay"]
         },
         {
           "key": "subMenu-popup",
