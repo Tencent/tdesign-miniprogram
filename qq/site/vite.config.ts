@@ -7,7 +7,7 @@ import createTDesignPlugin from './plugin-tdoc';
 
 const publicPathMap: Record<string, string> = {
   preview: '/',
-  intranet: '/miniprogram/',
+  intranet: '/qq-miniprogram/',
   production: 'https://static.tdesign.tencent.com/qq-miniprogram/',
 };
 
