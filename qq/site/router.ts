@@ -37,11 +37,11 @@ const getDocsRoutes = (docs: any[], type: string): RouteRecordRaw[] => {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/miniprogram/overview',
+    redirect: '/qq-miniprogram/overview',
   },
   {
     path: '/:catchAll(.*)',
-    redirect: '/miniprogram/overview',
+    redirect: '/qq-miniprogram/overview',
   },
   ...getDocsRoutes(docs, 'document'),
   ...getDocsRoutes(docs, 'component'),
