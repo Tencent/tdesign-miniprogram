@@ -24,7 +24,8 @@
       bindconfirm="onConfirm"
       bindlinechange="onLineChange"
     />
-    <view class="{{classPrefix}}__count" wx:if="{{maxlength}}"> {{inputValue.length}} / {{maxlength}} </view>
-    <view class="{{classPrefix}}__count" wx:elif="{{maxcharacter}}"> {{characterLength}} / {{maxcharacter}} </view>
+    <view wx:if="{{maxcharacter || maxlength}}" class="{{classPrefix}}__count">
+      {{count }} / {{maxcharacter || maxlength}}
+    </view>
   </view>
 </view>
