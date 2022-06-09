@@ -4,6 +4,22 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.13.1 `2022-6-10`
+
+### Bug Fixes
+
+- Textarea: 修复字数统计不生效的问题 [#510](https://github.com/Tencent/tdesign-miniprogram/pull/510) [@anlyyao](https://github.com/anlyyao)
+- Textarea: 移除无用的组件依赖  [#520](https://github.com/Tencent/tdesign-miniprogram/pull/520) [@LeeJim](https://github.com/LeeJim)
+
+### Features
+
+- Textarea: 支持 `cursor-spacing` 属性 [#512](https://github.com/Tencent/tdesign-miniprogram/pull/512) [@anlyyao](https://github.com/anlyyao)
+- Toast: 新增 `showToast` 和 `hideToast` 方法 [#514](https://github.com/Tencent/tdesign-miniprogram/pull/514) [@webwyb](https://github.com/webwyb)
+
+### Others
+
+- 支持微信开发者工具可视化编程
+
 ## 0.13.0 `2022-6-1`
 ### BREAKING CHANGES
 
