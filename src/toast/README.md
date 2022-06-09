@@ -128,6 +128,24 @@ Toast({
   icon: 'star',
 });
 ```
+### 手动关闭轻提示
+```js
+import { showToast, hideToast } from 'tdesign-miniprogram/toast/index';
+```
+
+```js
+showToast({
+  context: this,
+  selector: '#t-toast',
+  message: '成功文案',
+});
+
+hideToast({
+  context: this,
+  selector: '#t-toast',
+});
+
+```
 
 ## API
 ### Toast Props

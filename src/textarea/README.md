@@ -43,7 +43,7 @@ maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中�
 maxlength | Number | - | 用户最多可以输入的字符个数 | N
 placeholder | String | undefined | 占位符 | N
 value | String | - | 文本框值 | N
-
+cursor-spacing | Number | - | 0 | 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 | N |
 ### Textarea Events
 
 名称 | 参数 | 描述
