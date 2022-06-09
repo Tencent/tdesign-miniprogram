@@ -36,7 +36,7 @@ npm i tdesign-qq-miniprogram -S --production
 
 ### 通过 Git Clone
 
-克隆到源代码之后，切换到 `qq-miniprogram` 分支， 然后将 `tdesign-qq-miniprogram` 目录拷贝到自己的项目中
+克隆到源代码之后，切换到 `qq` 分支， 然后将 `tdesign-qq-miniprogram` 目录拷贝到自己的项目中
 
 ```bash
 git clone git@github.com:Tencent/tdesign-miniprogram.git

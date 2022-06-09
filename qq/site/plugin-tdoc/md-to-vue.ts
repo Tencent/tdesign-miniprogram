@@ -70,6 +70,8 @@ function customRender({ source, file, md }: any) {
 
   // fix table | render error
   apiMd = apiMd.replace(/`[^`]+`/g, (str) => str.replace(/\|/g, '\\|'));
+  apiMd = apiMd.replace(/\/develop\//g, '/qq/');
+  demoMd = demoMd.replace(/tdesign-miniprogram/g, 'tdesign-qq-miniprogram');
 
   const mdSegment = {
     ...pageData,
