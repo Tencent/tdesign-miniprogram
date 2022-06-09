@@ -34,7 +34,7 @@ export default class Textarea extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    textareaLength: 0,
+    count: 0,
   };
 
   /* 组件生命周期 */
@@ -48,15 +48,13 @@ export default class Textarea extends SuperComponent {
     getTextareaValueLength(textareaValue) {
       const { maxcharacter } = this.properties;
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { length = 0 } = getCharacterLength(textareaValue, maxcharacter) as {
-          length: number;
-        };
+        const { length = 0 } = getCharacterLength(textareaValue, maxcharacter);
         this.setData({
-          textareaLength: length,
+          count: length,
         });
       } else {
         this.setData({
-          textareaLength: String(textareaValue).length,
+          count: textareaValue ? String(textareaValue).length : 0,
         });
       }
     },

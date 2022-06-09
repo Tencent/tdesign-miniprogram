@@ -24,7 +24,7 @@
       bindlinechange="onLineChange"
     />
     <view wx:if="{{maxcharacter || maxlength}}" class="{{classPrefix}}__count">
-      {{textareaLength }} / {{maxcharacter || maxlength}}
+      {{count }} / {{maxcharacter || maxlength}}
     </view>
   </view>
 </view>
