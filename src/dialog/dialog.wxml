@@ -49,7 +49,7 @@
         <template
           is="button"
           class="{{classPrefix}}__footer-button-host"
-          data="{{...confirmBtn, block: true, type: 'cancel', externalClass: classPrefix + '__button ' + classPrefix + '__button-cancel ' + (cancelBtn ? classPrefix + '__button-half ' : ' ') + prefix + '-class-cancel'}}"
+          data="{{...cancelBtn, block: true, type: 'cancel', externalClass: classPrefix + '__button ' + classPrefix + '__button-cancel ' + (cancelBtn ? classPrefix + '__button-half ' : ' ') + prefix + '-class-cancel'}}"
         ></template>
       </block>
       <slot name="cancelBtn" />
