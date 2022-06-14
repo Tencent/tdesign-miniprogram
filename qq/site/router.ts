@@ -65,10 +65,9 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach(() => {
   // @ts-ignore
-  if (typeof NProgress !== 'undefined') {
-    // @ts-ignore
-    NProgress.done();
-  }
+  window.NProgress && window.NProgress.done();
+  // @ts-ignore
+  document.querySelector('td-stats')?.track?.();
 });
 
 export default router;
