@@ -22,7 +22,7 @@
     "t-icon": "tdesign-qq-miniprogram/icon/icon",
     "t-rate": "tdesign-qq-miniprogram/rate/rate",
     "t-picker": "tdesign-qq-miniprogram/picker/picker",
-    "t-picker-column": "tdesign-qq-miniprogram/picker/picker-column",
+    "t-picker-item": "tdesign-qq-miniprogram/picker/picker-item",
     "t-progress": "tdesign-qq-miniprogram/progress/progress",
     "t-input": "tdesign-qq-miniprogram/input/input",
     "t-textarea": "tdesign-qq-miniprogram/textarea/textarea",
