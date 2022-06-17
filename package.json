@@ -10,6 +10,11 @@
     "tdesign",
     "miniprogram"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tencent/tdesign-miniprogram"
+  },
+  "homepage": "https://tdesign.tencent.com/miniprogram",
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development gulp dev --gulpfile script/gulpfile.js --cwd ./",
