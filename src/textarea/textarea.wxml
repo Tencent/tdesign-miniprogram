@@ -9,7 +9,7 @@
       disabled="{{disabled}}"
       placeholder="{{placeholder}}"
       class="{{classPrefix}}__wrapper-textarea {{prefix}}-class-textarea"
-      placeholder-class="{{classPrefix}}__placeholder {{prefix}}-class-placeholder"
+      placeholder-class="{{classPrefix}}__placeholder"
       model:value="{{value}}"
       auto-focus="{{autofocus}}"
       focus="{{focus}}"
