@@ -24,6 +24,10 @@ export default class TabbarItem extends SuperComponent {
     },
   };
 
+  options = {
+    multipleSlots: true,
+  };
+
   data = {
     prefix,
     classPrefix,
