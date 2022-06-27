@@ -88,7 +88,7 @@ isComponent: true
 | show-overlay           | Boolean        | true   | 是否显示遮罩层                                                                                                                                 | N    |
 | transition-props       | Object         | -      | 动画效果定义。TS 类型：`TdTransitionProps`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/popup/type.ts) | N    |
 | visible                | Boolean        | false  | 是否显示浮层。TS 类型：`boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/popup/type.ts)           | N    |
-| z-index                | Number         | -      | 组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500                                                                                 | N    |
+| z-index                | Number         | 11500      | 组件层级，样式默认为 11500                                                                                 | N    |
 
 ### Popup Events
 

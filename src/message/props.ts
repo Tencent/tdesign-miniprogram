@@ -61,9 +61,10 @@ const props: TdMessageProps = {
     type: Boolean,
     value: false,
   },
-  /** 元素层级，样式默认为 5000 */
+  /** 组件层级，样式默认为 15000 */
   zIndex: {
     type: Number,
+    value: 15000,
   },
 };
 
