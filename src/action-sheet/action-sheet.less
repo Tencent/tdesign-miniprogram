@@ -6,6 +6,7 @@
 @action-sheet-list-item-color--disabled: rgba(0, 0, 0, 0.26);
 @action-sheet-square-image-size: 72rpx;
 @action-sheet-square-image-padding: 10rpx;
+@action-sheet-border-radius: 16rpx;
 
 .@{action-sheet} {
   .flex-center {
@@ -19,7 +20,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
+  &__content {
+    overflow: hidden;
+    border-top-left-radius: @action-sheet-border-radius;
+    border-top-right-radius: @action-sheet-border-radius;
+  }
   &__grid {
     padding: 48rpx 0 16rpx 0;
     &-item {

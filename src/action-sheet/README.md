@@ -76,6 +76,7 @@ show-cancel | Boolean | true | 是否显示取消按钮 | N
 theme | String | list | 展示类型，列表和表格形式展示。可选项：list/grid | N
 visible | Boolean | null | 必需。显示与隐藏 | Y
 default-visible | Boolean | false | 必需。显示与隐藏。非受控属性 | Y
+external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、组件内容部分、取消按钮 等元素类名。`['t-class', 't-class-content', 't-class-cancel']` | N
 
 ### ActionSheet Events
 

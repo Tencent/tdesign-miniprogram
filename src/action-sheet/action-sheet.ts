@@ -11,7 +11,7 @@ const name = `${prefix}-action-sheet`;
 export default class ActionSheet extends SuperComponent {
   static show = show;
 
-  externalClasses = [`${prefix}-class`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-cancle`];
 
   properties = {
     ...props,
