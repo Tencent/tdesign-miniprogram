@@ -1,6 +1,9 @@
 <view class="{{ classPrefix }} {{classPrefix}}--status--{{status || computedStatus}}">
-  <view class="{{ classPrefix }}__inner">
-    <view class="{{ classPrefix }}__bar" style="height: {{ strokeWidth }}px; background: {{ trackColor }}">
+  <view class="{{ classPrefix }}__inner {{prefix}}-class">
+    <view
+      class="{{ classPrefix }}__bar {{prefix}}-class-bar"
+      style="height: {{ strokeWidth }}px; background: {{ trackColor }}"
+    >
       <view class="{{ classPrefix }}__bar-percent" style="background:{{ colorBar }}; width:{{ computedProgress + '%'}}">
       </view>
     </view>
