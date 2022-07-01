@@ -181,7 +181,7 @@ active-color | String | - | 【讨论中】菜单标题和选项的选中态颜�
 close-on-click-overlay | Boolean | true | 是否在点击遮罩层后关闭菜单 | N
 duration | String / Number | 200 | 动画时长 | N
 overlay | Boolean | true | 是否显示遮罩层 | N
-z-index | Number | 11600 | 菜单栏 z-index 层级 | N
+z-index | Number | 11600 | 组件层级，样式默认为 11600 | N
 
 ### DropdownItem Props
 

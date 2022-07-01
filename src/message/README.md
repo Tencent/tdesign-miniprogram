@@ -171,7 +171,7 @@ Message.error({
 | offset           | Array                   | -         | 相对于 placement 的偏移量，示例：[-10, 20] 或 ['10rpx', '8rpx']。TS 类型：`Array<string                                                                                             | number>`                                                                                                           | N       |
 | theme            | String                  | info      | 消息组件风格。可选项：info/success/warning/error。TS 类型：`MessageThemeList`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/message/type.ts) | N                                                                                                                  |
 | visible          | Boolean                 | false     | 是否显示，隐藏时默认销毁组件                                                                                                                                                        | N                                                                                                                  |
-| z-index          | Number                  | -         | 元素层级，样式默认为 5000                                                                                                                                                           | N                                                                                                                  |
+| z-index          | Number                  | 15000         | 组件层级，样式默认为 15000                                                                                                                                                           | N                                                                                                                  |
 
 ### Message Events
 
