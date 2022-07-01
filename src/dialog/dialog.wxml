@@ -9,7 +9,7 @@
   preventScrollThrough="{{preventScrollThrough}}"
   zIndex="{{zIndex}}"
   placement="{{center}}"
-  bindoverlayClick="overlayClick"
+  bind:visible-change="overlayClick"
 >
   <view slot="content" class="{{classPrefix}} {{prefix}}-class">
     <view class="{{classPrefix}}__content {{prefix}}-class-content">
