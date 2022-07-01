@@ -70,8 +70,9 @@ export default class Picker extends SuperComponent {
 
     getSelectedValue() {
       const pickerColumns = this.getPickerColumns();
-      const selectedValues = pickerColumns.map((pickerColumn) => pickerColumn._selectedValue);
-      return selectedValues;
+      const value = pickerColumns.map((item) => item._selectedValue);
+      const label = pickerColumns.map((item) => item._selectedLabel);
+      return [value, label];
     },
 
     getColumnIndexes() {
@@ -86,14 +87,15 @@ export default class Picker extends SuperComponent {
     },
 
     onConfirm() {
-      const value = this.getSelectedValue();
+      const [value, label] = this.getSelectedValue();
       const columns = this.getColumnIndexes();
-      this.triggerEvent('change', { value, columns });
+      this.triggerEvent('change', { value, label, columns });
+      this.triggerEvent('confirm', { value, label, columns });
     },
 
     triggerColumnChange({ column, index }) {
-      const value = this.getSelectedValue();
-      this.triggerEvent('pick', { value, column, index });
+      const [value, label] = this.getSelectedValue();
+      this.triggerEvent('pick', { value, label, column, index });
     },
 
     onCancel() {
