@@ -99,6 +99,7 @@ export default class PickerItem extends SuperComponent {
 
       this._selectedIndex = selectedIndex;
       this._selectedValue = options[selectedIndex]?.value;
+      this._selectedLabel = options[selectedIndex]?.label;
     },
 
     resetOrigin() {
