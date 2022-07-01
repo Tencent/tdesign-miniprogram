@@ -25,6 +25,10 @@ isComponent: true
 <t-textarea name="标签文字" placeholder="请输入文字" />
 ```
 
+## 提示
+
+- 如果需要在页面中调整 `textarea` 中 `placeholder` 样式，请使用名称为`t-textarea__placeholder`的Class选择器，直接覆盖组件内部样式（注意权重）。
+
 ## API
 ### Textarea Props
 
@@ -36,7 +40,7 @@ autosize | Boolean | false | 是否自动增高，值为 autosize 时，style.he
 confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键盘不收起点 | N
 confirm-type | String | done | 设置键盘右下角按钮的文字，仅在 type='text'时生效。可选项：send/search/next/go/done。TS 类型：`'send' | 'search' | 'next' | 'go' | 'done'` | N
 disabled | Boolean | false | 是否禁用文本框 | N
-external-classes | Array | - | 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名。`['t-class', 't-class-textarea', 't-class-placeholder', 't-class-label']` | N
+external-classes | Array | - | 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名。`['t-class', 't-class-textarea', 't-class-label']` | N
 focus | Boolean | false | 自动聚焦 | N
 label | String / Slot | - | 左侧文本 | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 | N

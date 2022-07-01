@@ -177,6 +177,10 @@ export default class DropdownMenuItem extends SuperComponent {
       }
 
       this._trigger('change', { value });
+
+      if (!this.data.multiple) {
+        this.closeDropdown();
+      }
     },
 
     handleMaskClick() {

@@ -99,14 +99,12 @@ export default class Navbar extends SuperComponent {
         const ios = !!(res.system.toLowerCase().search('ios') + 1);
         const navbarHeight = ios ? 44 : 48;
         const boxStyleList = [];
-        boxStyleList.push(
-          `--narbar-padding-top:${(rect.bottom + rect.top) / 2 - navbarHeight / 2}px;`,
-        );
+        boxStyleList.push(`--narbar-padding-top:${(rect.bottom + rect.top) / 2 - navbarHeight / 2}px;`);
         if (rect && res?.windowWidth) {
           boxStyleList.push(`--navbar-right:${res.windowWidth - rect.left}px;`); // 导航栏右侧小程序胶囊按钮宽度
         }
         boxStyleList.push(`--capsule-height:${rect.height}px;`); // 胶囊高度
-        boxStyleList.push(`--capsule-wight:${rect.width}px;`); // 胶囊宽度
+        boxStyleList.push(`--capsule-width:${rect.width}px;`); // 胶囊宽度
         boxStyleList.push(`--navbar-height:${navbarHeight}px;`); // navbar高度
         this.setData({
           ios,

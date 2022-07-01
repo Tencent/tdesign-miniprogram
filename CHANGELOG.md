@@ -4,6 +4,17 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+## 0.13.2 `2022-6-16`
+
+### Bug Fixes
+
+- Dialog: 修复取消按钮传递 Object 显示不正确的问题 [#510](https://github.com/Tencent/tdesign-miniprogram/pull/510) [@weihongyu12](https://github.com/weihongyu12)
+- Checkbox: 修复外部样式类无法使用的问题 [#535](https://github.com/Tencent/tdesign-miniprogram/pull/535) [@LeeJim](https://github.com/LeeJim)
+
+### Features
+
+- DropdownMenu: 单选的情况下，选择之后直接关闭 [#539](https://github.com/Tencent/tdesign-miniprogram/pull/539) [@LeeJim](https://github.com/LeeJim)
+
 ## 0.13.1 `2022-6-10`
 
 ### Bug Fixes

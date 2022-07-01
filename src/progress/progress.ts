@@ -8,7 +8,7 @@ const classPrefix = `${prefix}-progress`;
 
 @wxComponent()
 export default class Progress extends SuperComponent {
-  externalClasses = [`${prefix}-class-label`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-bar`, `${prefix}-class-label`];
 
   options = {
     multipleSlots: true,

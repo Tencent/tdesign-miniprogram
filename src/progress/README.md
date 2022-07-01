@@ -82,4 +82,4 @@ percentage | Number | 0 | 进度条百分比 | N
 status | String | - | 进度条状态。可选项：success/error/warning/active。TS 类型：`StatusEnum` `type StatusEnum = 'success' | 'error' | 'warning' | 'active'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/progress/type.ts) | N
 stroke-width | String / Number | - | 进度条线宽。宽度数值不能超过 size 的一半，否则不能输出环形进度 | N
 track-color | String | '' | 进度条未完成部分颜色 | N
-external-classes | Array | - | 样式类名，分别用于设置 组件外层、进度文字等元素类名。`['t-class', 't-class-label']` | N |
+external-classes | Array | - | 样式类名，分别用于设置 组件外层、进度文字等元素类名。`['t-class', 't-class-bar', 't-class-label']` | N |

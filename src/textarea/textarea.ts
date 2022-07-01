@@ -22,12 +22,7 @@ export default class Textarea extends SuperComponent {
 
   behaviors = ['wx://form-field'];
 
-  externalClasses = [
-    `${prefix}-class`,
-    `${prefix}-class-textarea`,
-    `${prefix}-class-placeholder`,
-    `${prefix}-class-label`,
-  ];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-textarea`, `${prefix}-class-label`];
 
   properties = {
     ...props,
