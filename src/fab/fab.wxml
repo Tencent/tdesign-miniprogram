@@ -4,6 +4,6 @@
   <template
     is="button"
     class="{{classPrefix}}__button"
-    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-class-button'}}"
+    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-class-button', content: text}}"
   />
 </view>
