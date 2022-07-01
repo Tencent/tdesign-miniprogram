@@ -20,7 +20,7 @@
     <view wx:if="{{showCancel}}" class="{{classPrefix}}__footer {{classPrefix}}__safe">
       <view class="{{classPrefix}}__gap-{{theme}}" />
       <view
-        class="{{classPrefix}}__cancel {{prefix}}-class-cancle"
+        class="{{classPrefix}}__cancel {{prefix}}-class-cancel"
         hover-class="{{classPrefix}}__cancel--hover"
         hover-stay-time="70"
         bind:tap="onCancel"
