@@ -194,7 +194,9 @@ export default class Tabs extends SuperComponent {
     const minSwipeDistance = 50;
     if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
       const index = this.getAvailableTabIndex(deltaX);
-      this.changeIndex(index);
+      if (index !== -1) {
+        this.changeIndex(index);
+      }
     }
   }
 
