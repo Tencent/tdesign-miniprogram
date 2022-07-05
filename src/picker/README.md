@@ -78,8 +78,9 @@ visible | Boolean | false | 是否显示 | N
 名称 | 参数 | 描述
 -- | -- | --
 cancel | - | 点击取消按钮时触发
-change | `(detail: { value: Array<PickerValue>; columns: Array<{ column: number; index: number }> })` | 选中变化时候触发
-pick | `(detail: { value: Array<PickerValue>; index: number; column: number;})` | 任何一列选中都会触发，不同的列参数不同。`context.column` 表示第几列变化，`context.index` 表示变化那一列的选中项下标
+change | `(detail: { value: Array<PickerValue>; columns: Array<{ column: number; label: string; index: number }> })` | 选中变化时候触发
+confirm | `(detail: { value: Array<PickerValue>; columns: Array<{ column: number; label: string; index: number }> })` | 选中变化时候触发
+pick | `(detail: { value: Array<PickerValue>;  label: string; index: number; column: number;})` | 任何一列选中都会触发，不同的列参数不同。`context.column` 表示第几列变化，`context.index` 表示变化那一列的选中项下标
 
 ### PickerItem Props
 

@@ -45,7 +45,16 @@
 
     <view class="demo-section__desc">自定义颜色</view>
     <view class="box">
-      <t-progress percentage="88" trackColor="#EAC9FF" color="#CD04FF" t-class-label="t-class-label"></t-progress>
+      <t-progress
+        percentage="88"
+        trackColor="#EAC9FF"
+        color="#CD04FF"
+        t-class-label="external-class-label"
+      ></t-progress>
+    </view>
+    <view class="demo-section__desc">自定义圆角</view>
+    <view class="box">
+      <t-progress percentage="88" t-class-bar="external-class-bar"></t-progress>
     </view>
   </t-demo>
 

@@ -59,9 +59,10 @@ const props: TdDialogProps = {
     type: Boolean,
     value: false,
   },
-  /** 对话框层级，Web 侧样式默认为 2500，移动端和小程序样式默认为 1500 */
+  /** 组件层级，样式默认为 11500 */
   zIndex: {
     type: Number,
+    value: 11500,
   },
 };
 

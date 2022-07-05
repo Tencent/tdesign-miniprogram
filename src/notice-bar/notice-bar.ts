@@ -62,6 +62,10 @@ export default class NoticeBar extends SuperComponent {
     detached() {
       this.clearNoticeBarAnimation();
     },
+
+    ready() {
+      this.show();
+    },
   };
 
   methods = {

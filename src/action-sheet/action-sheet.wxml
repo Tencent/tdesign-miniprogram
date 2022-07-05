@@ -3,22 +3,24 @@
 <import src="./template/action-sheet-grid.wxml" />
 <view id="{{classPrefix}}" class="{{classPrefix}} {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
-    <block wx:if="{{gridThemeItems.length}}">
-      <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
-    </block>
-    <block wx:elif="{{items && items.length}}">
-      <view class="{{classPrefix}}__list" wx:for="{{ items }}" wx:key="index">
-        <template
-          is="list"
-          data="{{index, classPrefix, listThemeItemClass: this.getListThemeItemClass({ item, prefix, classPrefix }), item}}"
-        />
-      </view>
-    </block>
+    <view class="{{classPrefix}}__content {{prefix}}-class-content">
+      <block wx:if="{{gridThemeItems.length}}">
+        <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
+      </block>
+      <block wx:elif="{{items && items.length}}">
+        <view class="{{classPrefix}}__list" wx:for="{{ items }}" wx:key="index">
+          <template
+            is="list"
+            data="{{index, classPrefix, listThemeItemClass: this.getListThemeItemClass({ item, prefix, classPrefix }), item}}"
+          />
+        </view>
+      </block>
+    </view>
     <slot />
     <view wx:if="{{showCancel}}" class="{{classPrefix}}__footer {{classPrefix}}__safe">
       <view class="{{classPrefix}}__gap-{{theme}}" />
       <view
-        class="{{classPrefix}}__cancel"
+        class="{{classPrefix}}__cancel {{prefix}}-class-cancel"
         hover-class="{{classPrefix}}__cancel--hover"
         hover-stay-time="70"
         bind:tap="onCancel"

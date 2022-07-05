@@ -4,6 +4,33 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+
+## 0.14.0 `2022-7-1`
+
+### BREAKING CHANGES
+
+- TextArea: 移除不生效的外部样式类 `t-class-placeholder`, 建议使用类名 `t-textarea__placeholder` 进行样式覆盖 [#541](https://github.com/Tencent/tdesign-miniprogram/pull/541) [@anlyyao](https://github.com/anlyyao)
+### Bug Fixes
+
+- Tabbar: 修复具名插槽无法使用的问题 [#548](https://github.com/Tencent/tdesign-miniprogram/pull/548) [@LeeJim](https://github.com/LeeJim)
+- 修复默认层级问题 [#553](https://github.com/Tencent/tdesign-miniprogram/pull/553) [@webwyb](https://github.com/webwyb) 
+  - Dialog
+  - DropdownMenu
+  - Drawer
+  - Message
+  - Popup
+- Fab: 修复 `text` 属性不生效的问题 [#561](https://github.com/Tencent/tdesign-miniprogram/pull/561) [@LeeJim](https://github.com/LeeJim)
+- NoticeBar: 修复公告不滚动问题 [#562](https://github.com/Tencent/tdesign-miniprogram/pull/562) [@LeeJim](https://github.com/LeeJim)
+- Dialog: 修复点击遮罩层不会触发 `close` 事件的问题 [#566](https://github.com/Tencent/tdesign-miniprogram/pull/566) [@LeeJim](https://github.com/LeeJim)
+
+### Features
+
+- ActionSheet: 新增 `t-class-content`、`t-class-cancel` 外部样式类 [#557](https://github.com/Tencent/tdesign-miniprogram/pull/557) [@webwyb](https://github.com/webwyb) 
+- Progress: 新增 `t-class-bar` 外部样式类 [#558](https://github.com/Tencent/tdesign-miniprogram/pull/558) [@anlyyao](https://github.com/anlyyao) 
+- Picker: [#565](https://github.com/Tencent/tdesign-miniprogram/pull/565) [@LeeJim](https://github.com/LeeJim) 
+  - 新增 `confirm` 事件，返回参数和 `change` 一致
+  - `confirm`、`change`、`pick` 事件均返回 `label` 参数
+
 ## 0.13.2 `2022-6-16`
 
 ### Bug Fixes
