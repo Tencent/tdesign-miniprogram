@@ -21,6 +21,18 @@ export default class Fab extends SuperComponent {
     },
   };
 
+  observers = {
+    text(val) {
+      if (val) {
+        this.setData({
+          baseButtonProps: {
+            shape: 'round',
+          },
+        });
+      }
+    },
+  };
+
   methods = {
     onTplButtonTap(e) {
       this.triggerEvent('click', e);
