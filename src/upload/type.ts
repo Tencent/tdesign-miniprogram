@@ -30,13 +30,6 @@ export interface TdUploadProps {
     value?: UploadMpConfig;
   };
   /**
-   * 删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。
-   */
-  deleteBtn?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 已上传文件列表
    */
   files?: {
@@ -62,7 +55,7 @@ export interface TdUploadProps {
     };
   };
   /**
-   * 预览窗格的 gutter 大小，单位 rpx
+   * 预览窗格的 `gutter` 大小，单位 rpx
    * @default 16
    */
   gutter?: {
