@@ -19,10 +19,6 @@ const props: TdUploadProps = {
   config: {
     type: Object,
   },
-  /** 删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。 */
-  deleteBtn: {
-    type: String,
-  },
   /** 已上传文件列表 */
   files: {
     type: Array,
@@ -36,7 +32,7 @@ const props: TdUploadProps = {
   gridConfig: {
     type: Object,
   },
-  /** 预览窗格的 gutter 大小，单位 rpx */
+  /** 预览窗格的 `gutter` 大小，单位 rpx */
   gutter: {
     type: Number,
     value: 16,
