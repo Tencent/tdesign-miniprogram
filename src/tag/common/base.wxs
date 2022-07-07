@@ -1,0 +1,18 @@
+var getTagStyle = function (maxWidth) {
+  if (!maxWidth) {
+    return '';
+  }
+  var width = !isNaN(maxWidth) ? maxWidth + 'px' : maxWidth;
+  return 'max-width:' + width + ';';
+};
+var getIconSize = function (size) {
+  var sizeMap = {
+    small: '12px',
+    medium: '14px',
+    large: '18px',
+  };
+  return sizeMap[size];
+};
+
+module.exports.getTagStyle = getTagStyle;
+module.exports.getIconSize = getIconSize;
