@@ -11,6 +11,10 @@ const props: TdDropdownItemProps = {
     type: Boolean,
     value: false,
   },
+  /** 用来定义 value / label 在 `options` 中对应的字段别名 */
+  keys: {
+    type: Object,
+  },
   /** 标题 */
   label: {
     type: String,
