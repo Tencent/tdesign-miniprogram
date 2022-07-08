@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { KeysType } from '../common/common';
+
 export interface TdDropdownMenuProps {
   /**
    * 【讨论中】菜单标题和选项的选中态颜色
@@ -34,7 +36,7 @@ export interface TdDropdownMenuProps {
    * 是否显示遮罩层
    * @default true
    */
-  overlay?: {
+  showOverlay?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -56,6 +58,13 @@ export interface TdDropdownItemProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 用来定义 value / label 在 `options` 中对应的字段别名
+   */
+  keys?: {
+    type: ObjectConstructor;
+    value?: KeysType;
   };
   /**
    * 标题

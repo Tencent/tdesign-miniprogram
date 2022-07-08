@@ -28,7 +28,9 @@ export default class DropdownMenuItem extends SuperComponent {
     hasChanged: false,
     duration: menuProps.duration.value,
     zIndex: menuProps.zIndex.value,
-    overlay: menuProps.overlay.value,
+    overlay: menuProps.showOverlay.value,
+    labelAlias: 'label',
+    valueAlias: 'value',
   };
 
   parent = null;
@@ -37,14 +39,14 @@ export default class DropdownMenuItem extends SuperComponent {
     './dropdown-menu': {
       type: 'parent',
       linked(target) {
-        const { zIndex, duration, overlay } = target.properties;
+        const { zIndex, duration, showOverlay } = target.properties;
 
         this.parent = target;
         this.getParentBottom(target);
         this.setData({
           zIndex,
           duration,
-          overlay,
+          showOverlay,
         });
       },
     },
@@ -74,6 +76,12 @@ export default class DropdownMenuItem extends SuperComponent {
     },
     label() {
       this.parent?.getAllItems();
+    },
+    keys(obj) {
+      this.setData({
+        labelAlias: obj.label || 'label',
+        valueAlias: obj.value || 'value',
+      });
     },
   };
 
