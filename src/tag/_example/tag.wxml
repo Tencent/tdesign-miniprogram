@@ -40,7 +40,7 @@
   </t-demo>
   <t-demo title="" desc="超长省略文本标签">
     <view class="group margin">
-      <t-tag max-width="150" title="超长省略文本标签超长省略文本标签">超长省略文本标签超长省略文本标签</t-tag>
+      <t-tag max-width="{{130}}" title="超长省略文本标签超长省略文本标签">超长省略文本标签超长省略文本标签</t-tag>
     </view>
   </t-demo>
 

@@ -12,6 +12,7 @@ export default class Tag extends SuperComponent {
     prefix,
     classPrefix: name,
     className: '',
+    tagStyle: '',
   };
 
   properties = props;
@@ -25,6 +26,7 @@ export default class Tag extends SuperComponent {
   lifetimes = {
     attached() {
       this.setClass();
+      this.setTagStyle();
     },
   };
 
@@ -45,6 +47,15 @@ export default class Tag extends SuperComponent {
       this.setData({
         className,
       });
+    },
+
+    setTagStyle() {
+      const { maxWidth } = this.properties;
+      if (!maxWidth) {
+        return '';
+      }
+      const width = !Number.isNaN(maxWidth) ? `${maxWidth}px` : maxWidth;
+      this.setData({ tagStyle: `max-width:${width};` });
     },
 
     handleClick(e: WechatMiniprogram.BaseEvent) {

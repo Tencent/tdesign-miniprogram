@@ -1,12 +1,16 @@
-<wxs src="./common/base.wxs" module="this" />
-
-<view class="{{className}} {{prefix}}-class" bind:tap="handleChange">
+<view class="{{className}} {{prefix}}-class" style="{{tagStyle}}" bind:tap="handleChange">
   <view class="{{classPrefix}}__icon">
-    <t-icon wx:if="{{icon}}" name="{{icon}}" />
+    <t-icon wx:if="{{icon}}" name="{{icon}}" t-class="{{prefix}}-icon" />
     <slot wx:else name="icon" />
   </view>
-  <view class="{{classPrefix}}__text" style="{{ this.getTagStyle(maxWidth) }}">
+  <view class="{{classPrefix}}__text">
     <slot />
   </view>
-  <t-icon wx:if="{{ closable && !disabled }}" class="{{classPrefix}}__icon-close" bind:tap="hangleClose" name="close" />
+  <t-icon
+    wx:if="{{ closable && !disabled }}"
+    class="{{classPrefix}}__icon-close"
+    t-class="{{prefix}}-icon"
+    bind:tap="hangleClose"
+    name="close"
+  />
 </view>
