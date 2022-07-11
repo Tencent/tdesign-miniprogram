@@ -8,9 +8,14 @@
   left: 0;
   width: 100%;
   bottom: 0;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity 200ms ease;
+}
 
-  &--active {
-    background-color: rgba(0, 0, 0, 0.6);
-  }
+.t-fade-enter {
+  opacity: 0;
+}
+
+.t-fade-leave-to {
+  opacity: 0;
 }
