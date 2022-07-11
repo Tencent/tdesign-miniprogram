@@ -1,7 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "t-transition": "../transition/transition",
+    "t-overlay": "../overlay/overlay",
     "t-icon": "../icon/icon"
   }
 }
