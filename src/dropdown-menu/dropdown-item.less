@@ -31,14 +31,7 @@
   left: 0;
   top: 0;
   overflow: hidden;
-
-  &.@{prefix}-is-expanded {
-    bottom: 0;
-
-    .@{item}__content {
-      transform: translate(0, 0);
-    }
-  }
+  bottom: 0;
 
   &__content {
     position: absolute;
@@ -50,7 +43,6 @@
     display: flex;
     flex-direction: column;
     z-index: 11600;
-    transform: translate(0, -100%);
   }
 
   &__cell {
