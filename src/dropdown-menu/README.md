@@ -183,6 +183,13 @@ duration | String / Number | 200 | 动画时长 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 z-index | Number | 11600 | 菜单栏 z-index 层级 | N
 
+### DropdownMenu Function
+
+方法名 | 说明 | 参数 | 返回值
+--|--|--|--
+toggle | 切换下拉菜单的展示状态，传入索引值则切换对应菜单，不传值则关闭当前菜单 | index?: number | `void`
+
+> 通过 `this.selectComponent` 获取组件示例，调用即可
 ### DropdownItem Props
 
 名称 | 类型 | 默认值 | 说明 | 必传

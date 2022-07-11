@@ -3,7 +3,7 @@
     <view
       wx:for="{{menus}}"
       wx:key="index"
-      bindtap="toggleDropdown"
+      bindtap="handleToggle"
       data-index="{{index}}"
       class="{{ classPrefix }}__item {{ activeIdx == index ? prefix + '-is-active' : ''}} {{ item.disabled ? prefix + '-is-disabled' : ''}}"
     >

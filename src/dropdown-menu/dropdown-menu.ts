@@ -34,22 +34,12 @@ export default class DropdownMenu extends SuperComponent {
   };
 
   methods = {
-    getAllItems() {
-      const nodes = this.getRelationNodes('./dropdown-item');
-      const menus = nodes.map((a) => a.data);
-
-      this.setData({
-        nodes,
-        menus,
-      });
-    },
-    toggleDropdown(e: WechatMiniprogram.BaseEvent) {
-      const { index: idx } = e.currentTarget.dataset;
+    toggle(index: number) {
       const { activeIdx, duration } = this.data;
       const prevItem = this.data.nodes[activeIdx];
-      const currItem = this.data.nodes[idx];
+      const currItem = this.data.nodes[index];
 
-      if (currItem.data.disabled) return;
+      if (currItem?.data.disabled) return;
 
       if (activeIdx !== -1) {
         prevItem.triggerEvent('close');
@@ -65,14 +55,14 @@ export default class DropdownMenu extends SuperComponent {
         );
       }
 
-      if (activeIdx === idx) {
+      if (index == null || activeIdx === index) {
         this.setData({
           activeIdx: -1,
         });
       } else {
         currItem.triggerEvent('open');
         this.setData({
-          activeIdx: idx,
+          activeIdx: index,
         });
         currItem.setData(
           {
@@ -85,6 +75,20 @@ export default class DropdownMenu extends SuperComponent {
           },
         );
       }
+    },
+    getAllItems() {
+      const nodes = this.getRelationNodes('./dropdown-item');
+      const menus = nodes.map((a) => a.data);
+
+      this.setData({
+        nodes,
+        menus,
+      });
+    },
+    handleToggle(e: WechatMiniprogram.BaseEvent) {
+      const { index } = e.currentTarget.dataset;
+
+      this.toggle(index);
     },
   };
 }
