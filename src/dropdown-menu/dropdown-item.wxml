@@ -1,6 +1,6 @@
 <wxs module="_" src="./util.wxs" />
 
-<view class="{{classPrefix}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
+<view wx:if="{{wrapperVisible}}" class="{{classPrefix}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
   <t-popup
     visible="{{show}}"
     z-index="{{zIndex + 1}}"
@@ -8,6 +8,8 @@
     show-overlay="{{showOverlay}}"
     custom-style="position: absolute;"
     overlayProps="{{ { customStyle: 'position: absolute' } }}"
+    bind:leaved="onLeaved"
+    t-class-content="{{contentClasses}} {{classPrefix}}__content"
   >
     <view class="{{classPrefix}}__body">
       <block wx:if="{{optionsLayout === 'columns'}}">

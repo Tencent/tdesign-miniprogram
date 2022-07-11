@@ -14,13 +14,12 @@ const name = `${prefix}-popup`;
 
 @wxComponent()
 export default class Popup extends SuperComponent {
-  externalClasses = ['t-class', 't-class-overlay', 't-class-content'];
+  externalClasses = ['t-class', 't-class-content'];
 
   behaviors = [transition()];
 
   options = {
     multipleSlots: true,
-    styleIsolation: 'shared' as const,
   };
 
   properties = props;
@@ -39,7 +38,7 @@ export default class Popup extends SuperComponent {
 
   setClass() {
     const { placement, showOverlay } = this.properties;
-    const className = classNames(name, 't-class', `${name}--${placement}`, {
+    const className = classNames(name, `${name}--${placement}`, {
       [`${name}--overlay-transparent`]: !showOverlay,
     });
     this.setData({

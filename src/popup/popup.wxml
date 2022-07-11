@@ -1,7 +1,7 @@
 <view
   wx:if="{{realVisible}}"
   style="{{customStyle}}"
-  class="{{className}} {{transitionClass}}"
+  class="{{className}} {{transitionClass}} {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
 >
   <view class="{{classPrefix}}__content {{prefix}}-class-content" style="z-index:{{zIndex}}">
