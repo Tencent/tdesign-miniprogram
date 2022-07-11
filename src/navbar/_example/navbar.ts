@@ -47,7 +47,7 @@ Page({
 
   onGoHome() {
     wx.navigateTo({
-      url: '/pages/index',
+      url: '/pages/home/home',
     });
   },
 

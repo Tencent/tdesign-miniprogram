@@ -36,7 +36,7 @@ isComponent: true
   title="标题"
   leftIcon="chevron-left"
   homeIcon="home"
-  bindgohome="onGoHome"
+  bind:go-home="onGoHome"
   t-class-left-icon="left-icon-back"
   t-class-home-icon="home-icon"
   t-class-title="nav-title"
