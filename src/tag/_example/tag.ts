@@ -1,17 +1,17 @@
 Page({
   data: {
-    show: true,
+    show: [true, true],
     items: [
       {
-        name: '已点击',
+        name: '选中',
         checked: true,
       },
       {
-        name: '未点击',
+        name: '未选中',
         checked: false,
       },
       {
-        name: '不可点击',
+        name: '不可选',
         checked: false,
         disabled: true,
       },
@@ -20,9 +20,14 @@ Page({
   handleCheckTagChange(e) {
     console.log(e.detail.checked);
   },
-  handleClose() {
+  handleClose0() {
     this.setData({
-      show: false,
+      [`show[0]`]: false,
+    });
+  },
+  handleClose1() {
+    this.setData({
+      [`show[1]`]: false,
     });
   },
 });

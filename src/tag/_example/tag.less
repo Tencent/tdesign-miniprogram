@@ -1,7 +1,5 @@
 .group {
-  min-height: 56px;
-  margin: 16px 0;
-  padding: 0 16px;
+  padding: 32rpx;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -11,21 +9,15 @@
     align-items: flex-start;
   }
 
-  .left {
-    width: 172px;
+  &.padding-bottom {
+    padding: 32rpx 32rpx 0;
   }
 
-  > view {
-    display: flex;
-    flex-direction: column;
-    padding-top: 16px;
-
-    .t-tag {
-      margin-bottom: 17px;
-    }
+  &.margin {
+    margin: 16rpx 0;
   }
 
   .t-tag {
-    margin: 0 4px;
+    margin-right: 32rpx;
   }
 }
