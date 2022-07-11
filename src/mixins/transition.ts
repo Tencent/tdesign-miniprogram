@@ -106,6 +106,7 @@ export default function transition() {
         this.setData({
           transitionClass: '',
         });
+        this.triggerEvent('leaved');
       },
       onTransitionEnd() {
         if (this.customDuration) {

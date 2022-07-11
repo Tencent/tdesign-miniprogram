@@ -83,6 +83,11 @@ export default class DropdownMenuItem extends SuperComponent {
         valueAlias: obj.value || 'value',
       });
     },
+    show(visible) {
+      if (visible) {
+        this.setData({ wrapperVisible: true });
+      }
+    },
   };
 
   lifetimes = {
@@ -204,6 +209,10 @@ export default class DropdownMenuItem extends SuperComponent {
     handleConfirm() {
       this._trigger('confirm', { value: this.data.value });
       this.closeDropdown();
+    },
+
+    onLeaved() {
+      this.setData({ wrapperVisible: false });
     },
   };
 }

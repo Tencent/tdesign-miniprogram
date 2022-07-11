@@ -1,11 +1,17 @@
 <wxs module="_" src="./util.wxs" />
 
-<view class="{{classPrefix}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
-  <view
-    class="{{contentClasses}} {{classPrefix}}__content"
-    style="transition: all {{duration}}ms ease; z-index: {{zIndex + 1}}"
+<view wx:if="{{wrapperVisible}}" class="{{classPrefix}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
+  <t-popup
+    visible="{{show}}"
+    z-index="{{zIndex + 1}}"
+    duration="{{duration}}"
+    show-overlay="{{showOverlay}}"
+    custom-style="position: absolute;"
+    overlayProps="{{ { customStyle: 'position: absolute' } }}"
+    bind:leaved="onLeaved"
+    t-class-content="{{contentClasses}} {{classPrefix}}__content"
   >
-    <view class="{{classPrefix}}__body" wx:if="{{show}}">
+    <view class="{{classPrefix}}__body">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
         <t-cell-group wx:if="{{!multiple}}">
@@ -114,12 +120,5 @@
         >
       </t-button-group>
     </view>
-  </view>
-  <view
-    wx:if="{{show && showOverlay}}"
-    class="{{prefix}}-mask"
-    bind:tap="handleMaskClick"
-    style="z-index: {{zIndex - 1}}"
-    catch:touchmove="catchtouchmove"
-  />
+  </t-popup>
 </view>
