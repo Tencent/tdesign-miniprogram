@@ -5,6 +5,32 @@ toc: false
 docClass: timeline
 ---
 
+## 0.15.0 `2022-7-11`
+
+### BREAKING CHANGES
+
+- DropdownMenu: 属性 overlay 更名为 showOverlay [#582](https://github.com/Tencent/tdesign-miniprogram/pull/582) [@LeeJim](https://github.com/LeeJim)
+- Popup: 移除 transitionProps 属性 [#585](https://github.com/Tencent/tdesign-miniprogram/pull/585) [@LeeJim](https://github.com/LeeJim)
+### Bug Fixes
+
+- Tabs: 修复选项卡不存在时滑动报错问题 [#573](https://github.com/Tencent/tdesign-miniprogram/pull/573) [@anlyyao](https://github.com/anlyyao)
+- DropdownMenu: 修复关闭时无动画的问题 [#587](https://github.com/Tencent/tdesign-miniprogram/pull/587) [@LeeJim](https://github.com/LeeJim) 
+### Features
+
+- Fab: 支持文本自适应 [#575](https://github.com/Tencent/tdesign-miniprogram/pull/575) [@anlyyao](https://github.com/anlyyao)
+- Tag: [#581](https://github.com/Tencent/tdesign-miniprogram/pull/581) [@anlyyao](https://github.com/anlyyao)
+  - 视觉更新
+  - 支持图标
+- DropdownMenu: 新增 toggle 示例方法，用于切换下拉菜单 [#584](https://github.com/Tencent/tdesign-miniprogram/pull/584) [@LeeJim](https://github.com/LeeJim)
+- DropdownMenu: 新增 keys 属性以支持自定义 label 和 value 的字段名 [#582](https://github.com/Tencent/tdesign-miniprogram/pull/582) [@LeeJim](https://github.com/LeeJim)
+- Popup: [#585](https://github.com/Tencent/tdesign-miniprogram/pull/585) [@LeeJim](https://github.com/LeeJim)
+  - 新增 duration 属性，控制动画过渡时间
+  - 新增 customStyle 透传样式至根节点
+  - 新增 overlayProps 属性，透传至 overlay 组件
+
+## 0.14.0 `2022-7-1`
+
+### BREAKING CHANGES
 ## 0.14.0 `2022-7-1`
 
 ### BREAKING CHANGES
