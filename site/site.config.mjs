@@ -323,6 +323,13 @@ export default {
           path: '/miniprogram/components/tag',
           component: () => import('@/tag/README.md'),
         },
+        {
+          title: 'Result 结果',
+          name: 'result',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/result',
+          component: () => import('@/result/README.md'),
+        },
       ],
     },
     {

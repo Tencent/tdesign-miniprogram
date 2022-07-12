@@ -38,6 +38,10 @@ const display = {
       name: 'Empty',
       label: '空状态',
     },
+    {
+      name: 'Result',
+      label: '结果',
+    },
     // {
     //   name: 'Error',
     //   label: '错误状态',
