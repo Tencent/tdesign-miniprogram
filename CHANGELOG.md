@@ -31,9 +31,6 @@ docClass: timeline
 ## 0.14.0 `2022-7-1`
 
 ### BREAKING CHANGES
-## 0.14.0 `2022-7-1`
-
-### BREAKING CHANGES
 
 - TextArea: 移除不生效的外部样式类 `t-class-placeholder`, 建议使用类名 `t-textarea__placeholder` 进行样式覆盖 [#541](https://github.com/Tencent/tdesign-miniprogram/pull/541) [@anlyyao](https://github.com/anlyyao)
 ### Bug Fixes
