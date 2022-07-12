@@ -23,11 +23,11 @@ const props: TdDropdownMenuProps = {
     value: 200,
   },
   /** 是否显示遮罩层 */
-  overlay: {
+  showOverlay: {
     type: Boolean,
     value: true,
   },
-  /** 组件层级，样式默认为 11600 */
+  /** 菜单栏 z-index 层级 */
   zIndex: {
     type: Number,
     value: 11600,

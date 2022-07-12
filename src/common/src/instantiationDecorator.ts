@@ -81,11 +81,11 @@ export const toComponent = function toComponent(options: Record<string, any>) {
         const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
         const props = this.properties;
 
-        if (props[key] == null) {
+        if (props[key] == null && props[defaultKey] != null) {
           this.setData({
-            [`$init_${key}`]: props[key],
             [key]: props[defaultKey],
           });
+          this._controlled = true;
         }
       });
     };
@@ -94,9 +94,8 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       const target = controlledProps.find((item) => item.event == evtName);
       if (target) {
         const { key } = target;
-        const props = this.properties;
 
-        if (`$init_${key}` in props) {
+        if (this._controlled) {
           this.setData({
             [key]: detail[key],
           });

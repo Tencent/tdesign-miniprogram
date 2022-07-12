@@ -1,11 +1,17 @@
 <wxs module="_" src="./util.wxs" />
 
-<view class="{{classPrefix}} {{show ? prefix + '-is-expanded' : ''}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
-  <view
-    class="{{contentClasses}} {{classPrefix}}__content"
-    style="transition: all {{duration}}ms ease; z-index: {{zIndex + 1}}"
+<view wx:if="{{wrapperVisible}}" class="{{classPrefix}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
+  <t-popup
+    visible="{{show}}"
+    z-index="{{zIndex + 1}}"
+    duration="{{duration}}"
+    show-overlay="{{showOverlay}}"
+    custom-style="position: absolute;"
+    overlayProps="{{ { customStyle: 'position: absolute' } }}"
+    bind:leaved="onLeaved"
+    t-class-content="{{contentClasses}} {{classPrefix}}__content"
   >
-    <view class="{{classPrefix}}__body" wx:if="{{show}}">
+    <view class="{{classPrefix}}__body">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
         <t-cell-group wx:if="{{!multiple}}">
@@ -16,9 +22,9 @@
               icon="stroke-line"
               align="right"
               t-class="radio"
-              t-class-label="radio__label radio__label--{{value == item.value ? 'active' : ''}}"
-              value="{{item.value}}"
-              label="{{item.label}}"
+              t-class-label="radio__label radio__label--{{value == item[valueAlias] ? 'active' : ''}}"
+              value="{{item[valueAlias]}}"
+              label="{{item[labelAlias]}}"
               disabled="{{item.disabled}}"
             ></t-radio>
           </t-radio-group>
@@ -35,8 +41,8 @@
               <t-checkbox
                 class="{{classPrefix}}__checkbox-item"
                 theme="tag"
-                value="{{item.value}}"
-                label="{{item.label}}"
+                value="{{item[valueAlias]}}"
+                label="{{item[labelAlias]}}"
                 disabled="{{item.disabled}}"
               ></t-checkbox>
             </block>
@@ -57,10 +63,10 @@
               wx:key="index"
               bind:tap="handleTreeClick"
               data-level="{{level}}"
-              data-value="{{item.value}}"
-              class="{{classPrefix}}__tree-item {{item.value === value[level] ? classPrefix + '__tree-item--active' : '' }}"
+              data-value="{{item[valueAlias]}}"
+              class="{{classPrefix}}__tree-item {{item[valueAlias] === value[level] ? classPrefix + '__tree-item--active' : '' }}"
             >
-              {{item.label}}
+              {{item[labelAlias]}}
             </view>
           </block>
 
@@ -71,11 +77,11 @@
                   wx:for="{{treeOptions[level]}}"
                   wx:key="value"
                   t-class="radio"
-                  t-class-label="radio__label radio__label--{{value[level] === item.value ? 'active' : ''}}"
-                  value="{{item.value}}"
+                  t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}}"
+                  value="{{item[valueAlias]}}"
                   borderless
                   align="right"
-                  >{{item.label}}</t-radio
+                  >{{item[labelAlias]}}</t-radio
                 >
               </t-radio-group>
             </block>
@@ -86,10 +92,10 @@
                   wx:key="value"
                   align="right"
                   t-class="radio"
-                  t-class-label="radio__label radio__label--{{value[level] === item.value ? 'active' : ''}}"
+                  t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}}"
                   borderless
-                  value="{{item.value}}"
-                  >{{item.label}}</t-checkbox
+                  value="{{item[valueAlias]}}"
+                  >{{item[labelAlias]}}</t-checkbox
                 >
               </t-checkbox-group>
             </block>
@@ -114,12 +120,5 @@
         >
       </t-button-group>
     </view>
-  </view>
-  <view
-    wx:if="{{show && overlay}}"
-    class="{{prefix}}-mask"
-    bind:tap="handleMaskClick"
-    style="z-index: {{zIndex - 1}}"
-    catch:touchmove="catchtouchmove"
-  />
+  </t-popup>
 </view>
