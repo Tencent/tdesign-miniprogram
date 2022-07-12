@@ -101,12 +101,12 @@ export default function transition() {
       },
       leaved() {
         this.customDuration = false;
+        this.triggerEvent('leaved');
         clearTimeout(this.transitionT);
         this.status = 'leaved';
         this.setData({
           transitionClass: '',
         });
-        this.triggerEvent('leaved');
       },
       onTransitionEnd() {
         if (this.customDuration) {
