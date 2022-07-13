@@ -17,29 +17,13 @@ isComponent: true
 
 ## 代码演示
 
-### 多选上传
+### 单选上传图片
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/upload.png" width="375px" height="50%">
+{{ single }}
 
-```html
-<t-upload
-  media-type="{{['image']}}"
-  bind:remove="handleRemove"
-  bind:success="handleSucces"
-  files="{{originFiles}}"
-  gridConfig="{{gridConfig}}"
-/>
-```
+### 多选上传图片
 
-### 非受控用法
-
-```html
-<t-upload
-  media-type="{{['image']}}"
-  defaultFiles="{{originFiles}}"
-  gridConfig="{{gridConfig}}"
-/>
-```
+{{ multiple }}
 
 ## API
 ### Upload Props
