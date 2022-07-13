@@ -1,0 +1,12 @@
+<view class="wrapper">
+  <t-upload
+    mediaType="{{['video','image']}}"
+    files="{{originFiles}}"
+    gridConfig="{{gridConfig}}"
+    config="{{config}}"
+    bind:success="handleSuccess"
+    bind:remove="handleRemove"
+  >
+    <t-icon name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
+  </t-upload>
+</view>

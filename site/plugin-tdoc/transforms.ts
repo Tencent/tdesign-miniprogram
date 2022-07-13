@@ -36,21 +36,13 @@ export default {
 
       return `
 <td-code-block panel="WXML">
-<template slot="WXML" lang="html">
-${wxml}
-</template>
+  <pre slot="WXML" lang="html">${wxml}</pre>
 
-  <template slot="JS" lang="javascript">
-${js}
-  </template>
+  <pre slot="JS" lang="javascript">${js}</pre>
 
-  <template slot="CSS" lang="css">
-${css}
-  </template>
+  <pre slot="CSS" lang="css">${css}</pre>
 
-  <template slot="JSON" lang="javascript">
-${json}
-  </template>
+  <pre slot="JSON" lang="javascript">${json}</pre>
 </td-code-block>`
     });
 
