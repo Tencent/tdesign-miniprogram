@@ -1,0 +1,6 @@
+<!-- theme 为 text，含有底部链接 -->
+<t-footer theme="text" copyright="{{copyright}}" textLinkList="{{textLinkListOne}}" class="footer"></t-footer>
+<!-- theme 为 text，含有两条底部链接 -->
+<t-footer theme="text" copyright="{{copyright}}" textLinkList="{{textLinkListTwo}}" class="footer"></t-footer>
+<!-- theme 为 logo -->
+<t-footer theme="logo" logo="{{logo}}" class="t-footer-demo"></t-footer>
