@@ -1,3 +1,10 @@
 {
-  "navigationBarTitleText": "TabBar"
+  "navigationBarTitleText": "TabBar",
+  "usingComponents": {
+    "text-only": "./text-only/index",
+    "icon-only": "./icon-only/index",
+    "base": "./base/index",
+    "sub": "./sub/index",
+    "badge": "./badge/index"
+  }
 }
