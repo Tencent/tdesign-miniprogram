@@ -9,6 +9,7 @@
     custom-style="position: absolute;"
     overlayProps="{{ { customStyle: 'position: absolute' } }}"
     bind:leaved="onLeaved"
+    class="{{classPrefix}}__popup-host"
     t-class-content="{{contentClasses}} {{classPrefix}}__content"
   >
     <view class="{{classPrefix}}__body">
@@ -107,11 +108,18 @@
     </view>
     <view class="{{classPrefix}}__foot" wx:if="{{multiple || optionsLayout === 'tree'}}">
       <t-button-group>
-        <t-button block t-class="button button--reset" theme="default" disabled="{{!hasChanged}}" bindtap="handleReset"
+        <t-button
+          block
+          size="large"
+          t-class="button button--reset"
+          theme="default"
+          disabled="{{!hasChanged}}"
+          bindtap="handleReset"
           >重置</t-button
         >
         <t-button
           block
+          size="large"
           t-class="button button--confirm"
           theme="primary"
           disabled="{{!hasChanged}}"

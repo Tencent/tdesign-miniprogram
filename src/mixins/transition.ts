@@ -91,7 +91,7 @@ export default function transition() {
         clearTimeout(this.transitionT);
         setTimeout(() => {
           this.setData({
-            transitionClass: [`${prefix}-${name}-leave-active ${prefix}-${name}-leave-to`],
+            transitionClass: `${prefix}-${name}-leave-active ${prefix}-${name}-leave-to`,
           });
         }, 30);
         if (typeof duration === 'number' && duration > 0) {
@@ -101,12 +101,12 @@ export default function transition() {
       },
       leaved() {
         this.customDuration = false;
+        this.triggerEvent('leaved');
         clearTimeout(this.transitionT);
         this.status = 'leaved';
         this.setData({
           transitionClass: '',
         });
-        this.triggerEvent('leaved');
       },
       onTransitionEnd() {
         if (this.customDuration) {

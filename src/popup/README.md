@@ -19,58 +19,7 @@ isComponent: true
 
 ### 顶部弹出层
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/popup-1.png" width="35%" height="35%">
-
-```xml
-<t-popup
-  visible="{{visible}}" placement="top" >
-  <view  slot="content" >顶部弹出</view>
-</t-popup>
-```
-
-### 底部弹出层
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/popup-2.png" width="35%" height="35%">
-
-```xml
-<t-popup
-  visible="{{visible}}" placement="bottom" >
-  <view  slot="content" >底部弹出</view>
-</t-popup>
-```
-
-### 中部弹出层
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/popup-3.png" width="35%" height="35%">
-
-```xml
-<t-popup
-  visible="{{visible}}" placement="center" >
-  <view  slot="content" >中部弹出</view>
-</t-popup>
-```
-
-### 左侧弹出层
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/popup-4.png" width="35%" height="35%">
-
-```xml
-<t-popup
-  visible="{{visible}}" placement="left" >
-  <view  slot="content" >左侧弹出</view>
-</t-popup>
-```
-
-### 右侧弹出层
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/popup-5.png" width="35%" height="35%">
-
-```xml
-<t-popup
-  visible="{{visible}}" placement="right" >
-  <view slot="content" >右侧弹出</view>
-</t-popup>
-```
+{{ top }}
 
 ## API
 ### Popup Props
