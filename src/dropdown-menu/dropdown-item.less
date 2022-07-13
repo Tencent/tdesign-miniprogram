@@ -15,7 +15,7 @@
 
 @dropdown-menu-tree-col2-color: #f9f9f9;
 
-@dropdown-item-height: 100%;
+@dropdown-item-max-height: 324px;
 
 @dropdown-item-border-radius: @border-radius;
 @cell-vertical-padding: 12px;
@@ -34,16 +34,22 @@
   bottom: 0;
 
   &__content {
-    position: absolute;
-    max-height: @dropdown-item-height;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    max-height: @dropdown-item-max-height;
     display: flex;
     flex-direction: column;
     z-index: 11600;
-    max-height: 424px;
+    overflow: hidden;
+  }
+
+  &__popup-host {
+    // 为了解决虚拟节点偶尔出现的问题
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
   &__cell {
@@ -74,7 +80,6 @@
   &__foot {
     background: @dropdown-menu-color-block;
     position: relative;
-    height: 56px;
 
     &::before {
       z-index: 1;
@@ -97,15 +102,6 @@
     }
   }
 
-  .@{prefix}-mask {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-  }
-
   &__column {
     flex: 1;
 
@@ -117,23 +113,6 @@
       background-color: #f3f3f3;
     }
   }
-
-  // .@{prefix}-cell {
-  //   &-group {
-  //     margin: 0;
-
-  //     &-container {
-  //       &::before,
-  //       &::after {
-  //         display: none;
-  //       }
-  //     }
-  //   }
-
-  //   &__value {
-  //     overflow: hidden;
-  //   }
-  // }
 
   // 重写 radio 和 checkbox 样式
   .@{prefix}-radio,
@@ -219,7 +198,7 @@
     }
   }
   .@{prefix}-is-tree {
-    max-height: @dropdown-item-height;
+    max-height: @dropdown-item-max-height;
 
     .@{prefix}-dropdown-item__body {
       display: flex;

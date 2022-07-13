@@ -15,5 +15,5 @@
       />
     </view>
   </view>
-  <slot></slot>
+  <slot />
 </view>

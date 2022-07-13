@@ -17,46 +17,16 @@ isComponent: true
 
 ## 代码演示
 
-### 基础页脚
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/footer.png" width="375px" height="50%">
 
-```html
-<!-- 基础页脚 只有版权信息 -->
-<t-footer
-  theme="text"
-  copyright="Copyright © 2021-2031 TD.All Rights Reserved."
-  class="t-footer-demo"
-/>
+### 基础页脚
 
-<!-- 基础加连接页脚 -->
-<t-footer
-  theme="text"
-  copyright="Copyright © 2021-2031 TD.All Rights Reserved."
-  textLinkList="{{textLinkListTwo}}"
-  class="footer"
-/>
+{{ base }}
 
-<!-- 基础加连接页脚 -->
-<t-footer theme="logo" logo="{{'xxx.png'}}" class="t-footer-demo" />
-```
+### 基础加链接页脚
 
-```js
-data: {
-  textLinkListTwo: [
-    {
-      name: '底部链接',
-      url: '/pages/index',
-      openType: 'navigate',
-    },
-    {
-      name: '底部链接',
-      url: '',
-      openType: 'navigateBack',
-    },
-  ],
-},
-```
+{{ link }}
 
 ## API
 

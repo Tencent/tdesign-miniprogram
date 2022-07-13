@@ -6,19 +6,26 @@
 @tab-bar-border-color: @border-level-1-color;
 @tab-bar-hover-bg-color: rgba(0, 0, 0, 0.05);
 @tab-bar-active-color: @primary-color;
+@tab-bar-bg-color: @bg-color-block;
+
+page {
+  --t-tab-bar-bg-color: @tab-bar-bg-color;
+  --t-tab-bar-hover-color: @tab-bar-hover-bg-color;
+}
 
 :host {
   flex: 1;
 }
 
 .@{item} {
-  height: 100%;
+  height: @tab-bar-height;
   box-sizing: border-box;
   user-select: none;
   position: relative;
+  background-color: var(--t-tab-bar-bg-color);
 
   &--active {
-    background-color: @tab-bar-hover-bg-color;
+    background-color: var(--t-tab-bar-hover-color);
   }
 
   &.@{prefix}-is-split:before {

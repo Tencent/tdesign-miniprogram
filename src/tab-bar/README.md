@@ -16,35 +16,35 @@ isComponent: true
 }
 ```
 
+### 主题定制
+
+CSS 变量名|说明
+--|--
+--t-tab-bar-border-color|顶部边框颜色
+--t-tab-bar-bg-color|背景色
+--t-tab-bar-hover-color|hover 时背景色
+
 ## 代码演示
+
+
 
 ### 基础标签栏
 
 文本标签栏，分为单层双层，可以自定义标签栏内容
 
-```html
-<t-tab-bar defaultValue="home">
-  <t-tab-bar-item wx:for="{{list}}" wx:key="index" icon="{{item.icon}}" value="{{item.value}}">
-    {{item.label}}
-  </t-tab-bar-item>
-</t-tab-bar>
-```
+{{ base }}
 
-```js
-Page({
-  data: {
-    list: [{
-      icon: 'home',
-      value: 'home',
-      label: '首页',
-    }, {
-      icon: 'user',
-      value: 'user',
-      label: '我的'
-    }]
-  }
-})
-```
+### 带徽章标签栏
+
+{{ badge }}
+
+### 纯文本标签栏
+
+{{ text-only }}
+
+### 纯图标标签栏
+
+{{ icon-only }}
 
 ### 受控用法
 

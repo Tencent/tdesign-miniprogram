@@ -20,37 +20,21 @@ isComponent: true
 
 ### 基本使用
 
-```html
-<t-collapse defaultValue="{{[0]}}">
-  <t-collapse-panel header="折叠面板标题" header-right-content value="{{0}}">
-    此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容可自定义内容
-  </t-collapse-panel>
-</t-collapse>
-```
+基础折叠面板
 
-### 受控用法
+{{ base }}
 
-```html
-<t-collapse value="{{activeValues}}" bind:change="handleChange">
-  <t-collapse-panel header="折叠面板标题" value="{{0}}">
-    此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容可自定义内容
-  </t-collapse-panel>
-</t-collapse>
-```
+### 带操作说明
 
-```js
-Page({
-  data: {
-    activeValues: [0],
-  },
-  handleChange(e) {
-    this.setData({
-      activeValues: e.detail.value,
-    });
-  },
-});
+自定义面板头部的右侧区域
 
-```
+{{ action }}
+
+### 手风琴模式
+
+每个面板互斥展开
+
+{{ accordion }}
 
 ## API
 ### Collapse Props
