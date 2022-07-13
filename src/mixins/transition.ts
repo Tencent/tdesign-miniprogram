@@ -91,7 +91,7 @@ export default function transition() {
         clearTimeout(this.transitionT);
         setTimeout(() => {
           this.setData({
-            transitionClass: [`${prefix}-${name}-leave-active ${prefix}-${name}-leave-to`],
+            transitionClass: `${prefix}-${name}-leave-active ${prefix}-${name}-leave-to`,
           });
         }, 30);
         if (typeof duration === 'number' && duration > 0) {
