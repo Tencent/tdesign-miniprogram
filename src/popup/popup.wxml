@@ -19,5 +19,5 @@
   visible="{{visible}}"
   prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
   bind:tap="handleOverlayClick"
-  custom-style="{{overlayProps.customStyle}}"
+  custom-style="{{overlayProps.customStyle || ''}}"
 />
