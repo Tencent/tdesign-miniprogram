@@ -1,0 +1,13 @@
+<view>纯文字</view>
+<t-divider lineColor="transparent">
+  <text slot="content">没有更多了~</text>
+</t-divider>
+
+<view>垂直分割</view>
+<view class="demo-6">
+  <text class="demo-6--text-color">文字信息</text>
+  <t-divider layout="vertical" />
+  <text class="demo-6--text-color">文字信息</text>
+  <t-divider layout="vertical" />
+  <text class="demo-6--text-color">文字信息</text>
+</view>

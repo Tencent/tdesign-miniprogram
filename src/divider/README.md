@@ -23,38 +23,15 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/divider.png" width="375px" height="50%">
 
-```html
-<!-- 直线拉通 -->
-<t-divider></t-divider>
+{{ base }}
 
-<!-- 虚线拉通 -->
-<t-divider dashed></t-divider>
+### 文字 + 直线
 
-<!-- 左右间距 -->
-<t-divider t-class="demo-1"></t-divider>
+{{ text-line }}
 
-<!-- 自定义左侧间距 -->
-<t-divider t-class="demo-2"></t-divider>
+### 纯文字 + 分割
 
-<!-- 文字+直线 -->
-<t-divider t-class="demo-1" t-class-content="t-class-content">
-  <text slot="content">文字信息</text>
-</t-divider>
-
-<!-- 纯文字 -->
-<t-divider lineColor="transparent">
-  <text slot="content">没有更多了~</text>
-</t-divider>
-
-<!-- 垂直分割 -->
-<view class="demo-3">
-  <text class="demo-3--text-color">文字信息</text>
-  <t-divider layout="vertical"></t-divider>
-  <text class="demo-3--text-color">文字信息</text>
-  <t-divider layout="vertical"></t-divider>
-  <text class="demo-3--text-color">文字信息</text>
-</view>
-```
+{{ text-only }}
 
 ## API
 
