@@ -102,7 +102,6 @@
     "t-tab-bar": "tdesign-miniprogram/tab-bar/tab-bar",
     "t-tab-bar-item": "tdesign-miniprogram/tab-bar/tab-bar-item",
     "t-transition": "tdesign-miniprogram/transition/transition",
-    "t-popup": "tdesign-miniprogram/popup/popup",
     "t-indexes": "tdesign-miniprogram/indexes/indexes",
     "t-steps": "tdesign-miniprogram/steps/steps",
     "t-step-item": "tdesign-miniprogram/steps/step-item",
