@@ -30,6 +30,7 @@ export default class Overlay extends SuperComponent {
 
     customStyle: {
       type: String,
+      value: '',
     },
   };
 
