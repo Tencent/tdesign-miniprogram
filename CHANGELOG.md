@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.15.1 `2022-07-13` 
+### 🚀 Features
+- `TabBar`: 支持使用 CSS Variable 定制颜色 @LeeJim ([#601](https://github.com/Tencent/tdesign-miniprogram/pull/601))
+### 🐞 Bug Fixes
+- `DropdownMenu`: 优化按钮样式 @LeeJim ([#592](https://github.com/Tencent/tdesign-miniprogram/pull/592))
+- `DropdownMenu`: 修复切换菜单时出现漂移的问题 @LeeJim ([#592](https://github.com/Tencent/tdesign-miniprogram/pull/592))
+- `Dialog`: 修复无法展示的问题以及过渡动画 @LeeJim ([#596](https://github.com/Tencent/tdesign-miniprogram/pull/596))
+- `DropdownMenu`: 修复下拉菜单无法展开的问题 @LeeJim ([#604](https://github.com/Tencent/tdesign-miniprogram/pull/604))
+### 🚧 Others
+- 官网文档升级更新: 展示所有代码（WXML、JS、WXSS、JSON），并且 DEMO 与 示例代码保持一致 @LeeJim ([#590](https://github.com/Tencent/tdesign-miniprogram/pull/590))
+- `Popup`: 展示示例代码 @LeeJim ([#599](https://github.com/Tencent/tdesign-miniprogram/pull/599))
+- `Upload`:  展示示例代码 @anlyyao ([#595](https://github.com/Tencent/tdesign-miniprogram/pull/595))
+- `TabBar`: 更新示例代码 @LeeJim ([#601](https://github.com/Tencent/tdesign-miniprogram/pull/601))
+- `Footer`: 更新示例代码 @wangyuan0108 ([#593](https://github.com/Tencent/tdesign-miniprogram/pull/593))
+
 ## 0.15.0 `2022-7-11`
 
 ### BREAKING CHANGES
