@@ -1,14 +1,14 @@
 @import '../common/index.less';
 
 @tab-bar-cls: ~'@{prefix}-tab-bar';
-@tab-bar-height: 48px;
-@tab-bar-bg-color: @bg-color-block;
 @tab-bar-border-color: @border-level-1-color;
+
+page {
+  --t-tab-bar-border-color: @tab-bar-border-color;
+}
 
 .@{tab-bar-cls} {
   width: 100%;
-  height: @tab-bar-height;
-  background-color: @tab-bar-bg-color;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -16,7 +16,8 @@
   font-size: 16px;
 
   &--border::before {
-    .hairline-top(@color: @tab-bar-border-color);
+    z-index: 1;
+    .hairline-top(@color: var(--t-tab-bar-border-color));
   }
 
   &--fixed {
