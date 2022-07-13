@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "Fab 悬浮按钮"
+  "navigationBarTitleText": "Fab 悬浮按钮",
+  "usingComponents": {
+    "base": "./base",
+    "advanc": "./advanc"
+  }
 }

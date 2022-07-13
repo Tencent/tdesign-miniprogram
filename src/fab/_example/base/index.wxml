@@ -1,0 +1,1 @@
+<t-fab icon="add" bind:click="handleClick"></t-fab>

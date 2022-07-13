@@ -1,0 +1,1 @@
+<t-fab icon="add" button-props="{{fabButton}}" bind:click="handleClick"></t-fab>

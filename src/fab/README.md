@@ -20,28 +20,11 @@ isComponent: true
 
 ### 基础使用
 
-```html
-<t-fab icon="add" bind:click="handleClick" />
-```
+{{ base }}
 
 ### 进阶使用
 
-```html
-<t-fab icon="add" button-props="{{fabButton}}" bind:click="handleClick">
-```
-
-```js
-Page({
-  data: {
-    fabButton: {
-      openType: 'getPhoneNumber'
-    }
-  },
-  handleClick(e) {
-    console.log(e)
-  }
-})
-```
+{{ advanc }}
 
 ## API
 ### Fab Props
