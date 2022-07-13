@@ -8,7 +8,7 @@
   closeOnOverlayClick="{{closeOnOverlayClick}}"
   preventScrollThrough="{{preventScrollThrough}}"
   zIndex="{{zIndex}}"
-  placement="{{center}}"
+  placement="center"
   bind:visible-change="overlayClick"
 >
   <view slot="content" class="{{classPrefix}} {{prefix}}-class">
