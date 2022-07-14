@@ -12,4 +12,8 @@
   <t-demo title="03 规格">
     <size />
   </t-demo>
+
+  <t-demo title="04 按钮组">
+    <group />
+  </t-demo>
 </view>

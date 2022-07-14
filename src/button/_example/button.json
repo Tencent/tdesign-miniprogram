@@ -3,6 +3,7 @@
   "usingComponents": {
     "base": "./base",
     "size": "./size",
-    "status": "./status"
+    "status": "./status",
+    "group": "./group"
   }
 }

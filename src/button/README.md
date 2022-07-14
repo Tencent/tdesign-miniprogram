@@ -36,6 +36,11 @@ isComponent: true
 
 {{ size }}
 
+
+### 按钮组
+
+{{ group }}
+
 ## API
 ### Button Props
 

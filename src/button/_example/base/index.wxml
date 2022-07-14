@@ -25,7 +25,7 @@
 <view class="box">
   <t-button class="content-margin-right" theme="primary" icon="app" content="带图标按钮"></t-button>
   <t-button class="content-margin-right" theme="primary" icon="app" shape="round">
-    <text slot="content">带图标按钮</text>
+    <text>带图标按钮</text>
   </t-button>
 </view>
 
