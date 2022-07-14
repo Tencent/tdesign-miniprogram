@@ -80,7 +80,7 @@ export default class PickerItem extends SuperComponent {
       wx.nextTick(() => {
         this._selectedIndex = index;
         this._selectedValue = options[index]?.value;
-
+        this._selectedLabel = options[index]?.label;
         this.parent?.triggerColumnChange({
           index,
           column: this.columnIndex || 0,
