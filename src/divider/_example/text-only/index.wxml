@@ -1,6 +1,6 @@
 <view>纯文字</view>
 <t-divider lineColor="transparent">
-  <text slot="content">没有更多了~</text>
+  <text>没有更多了~</text>
 </t-divider>
 
 <view>垂直分割</view>
