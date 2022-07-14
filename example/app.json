@@ -103,8 +103,6 @@
     "t-tab-bar-item": "tdesign-miniprogram/tab-bar/tab-bar-item",
     "t-transition": "tdesign-miniprogram/transition/transition",
     "t-indexes": "tdesign-miniprogram/indexes/indexes",
-    "t-steps": "tdesign-miniprogram/steps/steps",
-    "t-step-item": "tdesign-miniprogram/steps/step-item",
     "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
     "t-dropdown-item": "tdesign-miniprogram/dropdown-menu/dropdown-item",
     "t-drawer": "tdesign-miniprogram/drawer/drawer",
