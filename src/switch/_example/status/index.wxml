@@ -1,0 +1,12 @@
+<t-cell title="开关">
+  <t-switch defaultValue="{{true}}" disabled></t-switch>
+</t-cell>
+<t-cell title="开关">
+  <t-switch defaultValue="{{false}}" disabled></t-switch>
+</t-cell>
+<t-cell title="开关">
+  <t-switch defaultValue="{{true}}" label="描述信息" disabled></t-switch>
+</t-cell>
+<t-cell title="开关" bordered="{{false}}">
+  <t-switch defaultValue="{{false}}" label="描述信息" disabled></t-switch>
+</t-cell>
