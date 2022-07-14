@@ -18,118 +18,33 @@ isComponent: true
 ## 代码演示
 
 ### 基础静态公告栏
-```xml
-<t-notice-bar visible="{{true}}" prefixIcon='null' content="提示文字描述提示文字描述提示文字描述" />
-```
+
+{{ base }}
 
 ### 带图标静态公告栏
-```xml
-<t-notice-bar visible="{{true}}" content="带图标静态公告栏"/>
-<t-notice-bar visible="{{true}}" content="提示文字描述提示文字描述提示文字描述">
-  <view slot="prefixIcon">
-    <t-icon name="error-circle-filled" />
-  </view>
-</t-notice-bar>
-```
+
+{{ iconDemo }}
 
 ### 带操作公告栏
-```xml
-<t-notice-bar
-  visible="{{true}}"
-  suffixIcon="chevron-right"
-  content="提示文字描述提示文字描述提示文字描述"
-  bind:prefix-icon="handlePrefixIcon"
-  bind:content="handleContent"
-  bind:suffix-icon="handleSuffixIconLink"
-/>
 
-<t-notice-bar
-  visible="{{visible}}"
-  suffixIcon="close"
-  bind:extre="handleExtreText"
-  bind:suffix-icon="handleSuffixIconCloseDemo"
->
-  <view slot="content"> 提示文字描述提示文字描述 </view>
-  <view slot="extre" class="extre">详情</view>
-</t-notice-bar>
-```
+{{ event }}
 
 ### 滚动公告栏
-```xml
-<t-notice-bar
-  visible="{{true}}"
-  prefixIcon='null'
-  marquee="{{marquee1}}"
-  content="提示文字描述提示文字描述提示文字描述提示文字描述文"
-/>
 
-<t-notice-bar
-  visible="{{true}}"
-  marquee="{{marquee2}}"
-  content="提示文字描述提示文字描述提示文字描述提示文字描述文"
-/>
-```
+{{ scrolling }}
 
 ### 自定义样式
-```xml
-<t-notice-bar
-  visible="{{true}}"
-  prefixIcon="sound"
-  content="提示文字描述提示文字描述提示文字描述"
-  t-class="t-class"
-/>
-```
+
+{{ custom }}
 
 ### 不同状态的公告栏
 公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）
 
-#### 默认状态公告栏
-```xml
-<t-notice-bar visible="{{true}}" content="默认状态公告栏默认状态公告栏"/>
-```
-
-#### 成功状态公告栏
-```xml
- <t-notice-bar visible="{{true}}" theme="success" content="成功状态公告栏成功状态公告栏"/>
-```
-
-#### 警示状态公告栏
-```xml
-<t-notice-bar visible="{{true}}" theme="warning" content="警示状态公告栏警示状态公告栏"/>
-```
-
-#### 错误状态公告栏
-```xml
-<t-notice-bar visible="{{true}}" theme="error" content="错误状态公告栏错误状态公告栏" />
-```
+{{ theme }}
 
 ### 多行文字消息栏
-```xml
-<t-notice-bar
-  visible="{{true}}"
-  prefixIcon='null'
-  content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
-/>
 
-<t-notice-bar visible="{{true}}" content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"/>
-
-<t-notice-bar
-  visible="{{true}}"
-  suffixIcon="chevron-right"
-  bind:suffix-icon="handleSuffixIconLink"
-  content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
-/>
-
-<t-notice-bar visible="{{true}}" bind:suffix-icon="handleSuffixIconClose">
-  <view slot="content">
-    提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
-    <view class="extre" bind:tap="clickDetail"> 详情 </view>
-  </view>
-  <view slot="suffixIcon">
-    <t-icon name="close" />
-  </view>
-</t-notice-bar>
-```
+{{ customization }}
 
 ## API
 ### NoticeBar Props

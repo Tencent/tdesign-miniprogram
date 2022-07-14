@@ -1,0 +1,1 @@
+<t-notice-bar visible="{{true}}" prefixIcon="null" content="提示文字描述提示文字描述提示文字描述"></t-notice-bar>
