@@ -1,4 +1,4 @@
-<t-popup visible="{{visible}}" placement="bottom">
+<t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupChange">
   <view slot="content" class="{{classPrefix}} t-class">
     <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
       <view class="{{classPrefix}}__cancel t-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel">{{cancelBtn}}</view>
