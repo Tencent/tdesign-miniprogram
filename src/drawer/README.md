@@ -33,10 +33,10 @@ isComponent: true
 close-on-overlay-click | Boolean | true | 点击蒙层时是否触发抽屉关闭事件 | N
 destroy-on-close | Boolean | false | 抽屉关闭时是否销毁节点 | N
 items | Array | - | 抽屉里的列表项。TS 类型：`DrawerItem[] ` `interface DrawerItem { title: string; icon: string; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/drawer/type.ts) | N
-placement | String | right | 抽屉方向。可选项：left/right/top/bottom | N
+placement | String | right | 抽屉方向。可选项：left/right | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 visible | Boolean | false | 组件是否可见 | N
-z-index | Number | 11500 | 组件层级，样式默认为 11500 | N
+z-index | Number | - | 抽屉层级，样式默认为 1500 | N
 
 ### Drawer Events
 
