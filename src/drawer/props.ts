@@ -35,10 +35,9 @@ const props: TdDrawerProps = {
     type: Boolean,
     value: false,
   },
-  /** 组件层级，样式默认为 11500 */
+  /** 抽屉层级，样式默认为 1500 */
   zIndex: {
     type: Number,
-    value: 11500,
   },
 };
 

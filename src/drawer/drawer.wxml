@@ -2,7 +2,7 @@
   bind:visible-change="visibleChange"
   visible="{{visible}}"
   zIndex="{{zIndex}}"
-  placement="{{placement}}"
+  placement="{{placement == 'right' ? 'right' : 'left'}}"
   showOverlay="{{showOverlay}}"
   destroyOnClose="{{destroyOnClose}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
