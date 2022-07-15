@@ -1,0 +1,10 @@
+<view class="group">
+  <t-skeleton
+    class="group-avatar"
+    t-class-col="extenal-class-col"
+    theme="avatar"
+    animation="flashed"
+    loading
+  ></t-skeleton>
+  <t-skeleton class="group-content" theme="paragraph" animation="flashed" loading></t-skeleton>
+</view>

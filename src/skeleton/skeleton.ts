@@ -6,9 +6,38 @@ import { isNumber } from '../common/utils';
 const { prefix } = config;
 const name = `${prefix}-skeleton`;
 
+const ThemeMap = {
+  avatar: [{ type: 'circle', height: '64px', width: '64px' }],
+  image: [{ type: 'react', height: '64px', width: '64px' }],
+  text: [
+    1,
+    [
+      { width: '24%', height: '32rpx', marginRight: '32rpx' },
+      { width: '76%', height: '32rpx' },
+    ],
+  ],
+  paragraph: [1, 1, 1, { width: '55%' }],
+  grid: [
+    [
+      { width: '48px', height: '48px' },
+      { width: '48px', height: '48px' },
+      { width: '48px', height: '48px' },
+      { width: '48px', height: '48px' },
+      { width: '48px', height: '48px' },
+    ],
+    [
+      { width: '48px', height: '32rpx' },
+      { width: '48px', height: '32rpx' },
+      { width: '48px', height: '32rpx' },
+      { width: '48px', height: '32rpx' },
+      { width: '48px', height: '32rpx' },
+    ],
+  ],
+};
+
 @wxComponent()
 export default class Skeleton extends SuperComponent {
-  externalClasses = ['t-class', 't-class-avatar', 't-class-text'];
+  externalClasses = ['t-class', 't-class-col'];
 
   properties = props;
 
@@ -29,7 +58,11 @@ export default class Skeleton extends SuperComponent {
             isNumList.push(true);
           } else {
             rowStyles.push(Array.isArray(v) ? v : [v]);
-            isNumList.push(false);
+            if (this.data.theme === 'grid') {
+              isNumList.push(true);
+            } else {
+              isNumList.push(false);
+            }
           }
         });
       }
@@ -37,7 +70,25 @@ export default class Skeleton extends SuperComponent {
     },
   };
 
+  lifetimes = {
+    attached() {
+      this.init();
+    },
+  };
+
+  methods = {
+    init() {
+      const { theme, rowCol } = this.properties;
+      if (!rowCol.length) {
+        this.setData({
+          rowCol: ThemeMap[theme],
+        });
+      }
+    },
+  };
+
   data = {
+    prefix,
     classPrefix: name,
     isNumList: [],
     rowStyles: [],

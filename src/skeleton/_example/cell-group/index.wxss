@@ -1,0 +1,18 @@
+.group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.extenal-class-col {
+  height: 96rpx !important;
+  width: 96rpx !important;
+}
+
+.group-avatar {
+  margin-right: 24rpx;
+}
+
+.group-content {
+  width: 566rpx;
+}

@@ -1,9 +1,8 @@
 <view
   wx:if="{{ loading }}"
-  class="t-class {{classPrefix}} {{ animation ? classPrefix + '--animate-' + animation : '' }}"
+  class="{{classPrefix}} {{ animation ? classPrefix + '--animate-' + animation : '' }} {{prefix}}-class "
 >
-  <view wx:if="{{ theme === 'avatar-text' }}" class="t-class-avatar {{classPrefix}}__avatar " />
-  <view wx:if="{{theme === 'avatar-text' || 'text' }}" class="{{classPrefix}}__content">
+  <view wx:if="{{ rowCol.length }}" class="{{classPrefix}}__content">
     <view
       wx:for="{{ rowCol.length }}"
       wx:key="index"
@@ -15,7 +14,7 @@
         wx:for="{{ rowStyles[index] }}"
         wx:key="col"
         wx:for-item="item"
-        class="t-class-text {{classPrefix}}__item"
+        class="{{classPrefix}}__item  {{classPrefix}}--type-{{item.type}} {{prefix}}-class-col"
         style="width: {{ item.width }}; height: {{item.height ? item.height : '32rpx' }}; margin-right: {{ item.marginRight ? item.marginRight : '' }}; margin-left: {{ item.marginLeft ? item.marginLeft : '' }}"
       ></view>
     </view>
