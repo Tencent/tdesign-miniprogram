@@ -1,26 +1,26 @@
 <view class="group">
   <t-cell title="默认">
-    <t-switch defaultValue="{{true}}"></t-switch>
+    <t-switch defaultValue="{{true}}" slot="note" />
   </t-cell>
   <t-cell title="默认关">
-    <t-switch defaultValue="{{false}}"></t-switch>
+    <t-switch defaultValue="{{false}}" slot="note" />
   </t-cell>
   <t-cell title="自定义颜色">
-    <t-switch defaultValue="{{true}}" colors="{{['#00A870']}}"></t-switch>
+    <t-switch defaultValue="{{true}}" colors="{{['#00A870']}}" slot="note" />
   </t-cell>
   <t-cell title="异步操作" bordered="{{false}}">
-    <t-switch defaultValue="{{true}}"></t-switch>
+    <t-switch defaultValue="{{true}}" slot="note" />
   </t-cell>
 </view>
 
 <view class="group">
   <t-cell title="默认">
-    <t-switch bindchange="handleChange" value="{{defaultVal}}" label="描述信息"></t-switch>
+    <t-switch bindchange="handleChange" value="{{defaultVal}}" label="描述信息" slot="note" />
   </t-cell>
   <t-cell title="默认关">
-    <t-switch defaultValue="{{false}}" label="描述信息"></t-switch>
+    <t-switch defaultValue="{{false}}" label="描述信息" slot="note" />
   </t-cell>
   <t-cell title="自定义颜色" bordered="{{false}}">
-    <t-switch defaultValue="{{true}}" colors="{{['#00A870']}}" label="描述信息"></t-switch>
+    <t-switch defaultValue="{{true}}" colors="{{['#00A870']}}" label="描述信息" slot="note" />
   </t-cell>
 </view>
