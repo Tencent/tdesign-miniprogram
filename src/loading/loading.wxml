@@ -33,12 +33,12 @@
         ></view>
       </block>
     </view>
-    <view class="{{prefix}}-class-text" wx:if="{{text}}">
+    <view class="{{prefix}}-class-text">
       <view wx:if="{{theme === 'error'}}">
         <span>加载失败</span>
         <span class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage">刷新</span>
       </view>
-      <view class="{{classPrefix}}__text" wx:else>
+      <view class="{{classPrefix}}__text" wx:if="{{text}}">
         {{text}}
         <slot name="text" />
       </view>
