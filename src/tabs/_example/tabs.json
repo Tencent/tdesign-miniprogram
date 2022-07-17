@@ -1,6 +1,13 @@
 {
   "navigationBarTitleText": "Tabs",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "t-demo": "../../components/demo-block/index",
+    "base": "./base",
+    "scroll": "./scroll",
+    "size": "./size",
+    "status": "./status",
+    "unline": "./unline",
+    "vertical": "./vertical",
+    "adjust-time": "./adjust-time"
   }
 }
