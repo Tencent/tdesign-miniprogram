@@ -1,10 +1,12 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
+@skeleton-animation-gradient: rgba(0, 0, 0, 4%);
+@skeleton-animation-flashed: rgba(90%, 90%, 90%, 0.3);
+@skeleton-background-color: rgba(238, 238, 238, 1);
 @text-height-default: 16px;
 @rect-height-default: 16px;
 @circle-height-default: 48px;
-
+@row-margin-bottom: 16px;
 @border-radius-text: 2px;
 @border-radius-rect: 4px;
 @border-radius-circle: 50%;
@@ -14,8 +16,9 @@
 
   &__row {
     display: flex;
-    margin-bottom: 16px;
+    margin-bottom: @row-margin-bottom;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__row:only-child,
@@ -23,8 +26,8 @@
     margin-bottom: 0;
   }
 
-  &__item {
-    background-color: rgba(238, 238, 238, 1);
+  &__col {
+    background-color: @skeleton-background-color;
     border-radius: @border-radius-text;
     display: flex;
     align-items: center;
@@ -56,42 +59,56 @@
       flex-shrink: 0;
     }
   }
-}
 
-.@{prefix}-skeleton--animate-flashed {
-  animation: t-flashed 0.6s infinite alternate;
-}
+  &--animation {
+    &-gradient {
+      position: relative;
+      overflow-x: hidden;
 
-@keyframes t-flashed {
-  0% {
-    opacity: 1;
+      &::after {
+        content: ' ';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0%),
+          @skeleton-animation-gradient,
+          rgba(255, 255, 255, 0%)
+        );
+        animation: t-skeleton--gradient 1.5s linear 2s infinite;
+      }
+    }
+
+    &-flashed {
+      animation: t-skeleton--flashed 2s linear 2s infinite;
+    }
   }
 
-  100% {
-    opacity: 0.6;
-  }
-}
+  @keyframes t-skeleton--gradient {
+    0% {
+      transform: translateX(-100%) skewX(-15deg);
+    }
 
-.@{prefix}-skeleton--animate-gradient {
-  .t-skeleton__item {
-    background: linear-gradient(
-      to right,
-      rgba(238, 238, 238, 1) 10%,
-      rgba(238, 238, 238, 0.4) 20%,
-      rgba(238, 238, 238, 1) 30%
-    );
-    background-size: 400% 50%;
-    width: 100%;
-    animation: t-gradient 1s ease-in-out infinite;
-  }
-}
-
-@keyframes t-gradient {
-  0% {
-    background-position: 100% 50%;
+    100% {
+      transform: translateX(100%) skewX(-15deg);
+    }
   }
 
-  100% {
-    background-position: 0% 50%;
+  @keyframes t-skeleton--flashed {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      background-color: @skeleton-animation-flashed;
+      opacity: 0.3;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 }

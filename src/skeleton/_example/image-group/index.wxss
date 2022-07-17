@@ -2,7 +2,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-.extenal-class-col {
-  border-radius: 16rpx !important;
-}

@@ -4,11 +4,6 @@
   margin-bottom: 32rpx;
 }
 
-.extenal-class-col {
-  height: 96rpx !important;
-  width: 96rpx !important;
-}
-
 .group-avatar {
   margin-right: 24rpx;
 }

@@ -5,12 +5,12 @@
     <view wx:for="{{themeList}}" wx:for-item="themeItem" wx:key="index">
       <view class="demo-section__desc">{{themeItem.title}}</view>
       <view class="box">
-        <theme theme="{{themeItem.value}}" loading />
+        <theme theme="{{themeItem.value}}" loading="{{themeItem.loading}}" />
       </view>
     </view>
     <view class="demo-section__desc">单元格骨架屏</view>
     <view class="box">
-      <cell-group />
+      <cell-group loading />
     </view>
     <view class="demo-section__desc">图片组合骨架屏</view>
     <view class="box">
@@ -25,7 +25,7 @@
     </view>
     <view class="demo-section__desc">闪烁加载动画</view>
     <view class="box">
-      <animation />
+      <animation loading />
     </view>
   </t-demo>
 </view>
