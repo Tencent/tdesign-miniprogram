@@ -24,7 +24,7 @@ isComponent: true
 
 ### 进阶使用
 
-{{ advanc }}
+{{ advance }}
 
 ## API
 ### Fab Props

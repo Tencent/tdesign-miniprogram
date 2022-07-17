@@ -2,6 +2,6 @@
   "navigationBarTitleText": "Fab 悬浮按钮",
   "usingComponents": {
     "base": "./base",
-    "advanc": "./advanc"
+    "advance": "./advance"
   }
 }

@@ -4,5 +4,5 @@
   <base />
 </t-demo>
 <t-demo title="02 类型" desc="进阶使用">
-  <advanc />
+  <advance />
 </t-demo>
