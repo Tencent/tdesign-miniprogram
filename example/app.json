@@ -57,7 +57,9 @@
     "pages/date-time-picker/date-time-picker",
     "pages/action-sheet/action-sheet",
     "pages/notice-bar/notice-bar",
-    "pages/image-viewer/image-viewer"
+    "pages/image-viewer/image-viewer",
+    "pages/result/result",
+    "pages/result/result-page"
   ],
   "usingComponents": {
     "t-demo": "../../components/demo-block/index",
