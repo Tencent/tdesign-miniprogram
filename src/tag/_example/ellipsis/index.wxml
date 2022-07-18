@@ -1,3 +1,1 @@
-<view class="group margin">
-  <t-tag max-width="{{130}}" title="超长省略文本标签超长省略文本标签">超长省略文本标签超长省略文本标签</t-tag>
-</view>
+<t-tag max-width="{{130}}" title="超长省略文本标签超长省略文本标签">超长省略文本标签超长省略文本标签</t-tag>

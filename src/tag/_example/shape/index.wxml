@@ -1,4 +1,2 @@
-<view class="group margin">
-  <t-tag class="margin-right" theme="primary" shape="round">圆弧</t-tag>
-  <t-tag theme="primary" shape="mark">半圆弧</t-tag>
-</view>
+<t-tag class="margin-right" theme="primary" shape="round">圆弧</t-tag>
+<t-tag theme="primary" shape="mark">半圆弧</t-tag>

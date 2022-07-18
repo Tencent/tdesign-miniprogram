@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "Tag",
   "usingComponents": {
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-check-tag": "tdesign-miniprogram/tag/check-tag",
     "theme": "./theme",
     "ellipsis": "./ellipsis",
     "size": "./size",

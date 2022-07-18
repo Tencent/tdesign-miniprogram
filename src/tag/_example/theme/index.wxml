@@ -1,13 +1,5 @@
-<view class="group margin">
-  <t-tag class="margin-right" theme="primary">默认</t-tag>
-  <t-tag class="margin-right" theme="success">成功</t-tag>
-  <t-tag class="margin-right" theme="warning">警告</t-tag>
-  <t-tag class="margin-right" theme="danger">危险</t-tag>
-  <t-tag>信息</t-tag>
-</view>
-<view class="group margin">
-  <t-tag class="margin-right" theme="primary">深色</t-tag>
-  <t-tag class="margin-right" theme="primary" variant="light">浅色</t-tag>
-  <t-tag class="margin-right" theme="primary" variant="outline">描边</t-tag>
-  <t-tag theme="primary" variant="light-outline">描边浅色</t-tag>
-</view>
+<t-tag class="margin-right" theme="primary">默认</t-tag>
+<t-tag class="margin-right" theme="success">成功</t-tag>
+<t-tag class="margin-right" theme="warning">警告</t-tag>
+<t-tag class="margin-right" theme="danger">危险</t-tag>
+<t-tag>信息</t-tag>
