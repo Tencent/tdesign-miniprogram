@@ -39,7 +39,7 @@
         <span class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage">刷新</span>
       </view>
       <view class="{{classPrefix}}__text" wx:if="{{text}}">
-        <view wx:if="{{text !== 'slot'}}"> {{text}} </view>
+        <text wx:if="{{text !== 'slot'}}"> {{text}} </text>
         <slot name="text" />
       </view>
     </view>
