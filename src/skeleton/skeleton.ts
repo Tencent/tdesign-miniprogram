@@ -10,7 +10,7 @@ const name = `${prefix}-skeleton`;
 
 const ThemeMap = {
   avatar: [{ type: 'circle', height: '64px', width: '64px' }],
-  image: [{ type: 'react', height: '64px', width: '64px' }],
+  image: [{ type: 'rect', height: '64px', width: '64px' }],
   text: [
     1,
     [
@@ -19,22 +19,6 @@ const ThemeMap = {
     ],
   ],
   paragraph: [1, 1, 1, { width: '55%' }],
-  grid: [
-    [
-      { width: '48px', height: '48px' },
-      { width: '48px', height: '48px' },
-      { width: '48px', height: '48px' },
-      { width: '48px', height: '48px' },
-      { width: '48px', height: '48px' },
-    ],
-    [
-      { width: '48px', height: '16px' },
-      { width: '48px', height: '16px' },
-      { width: '48px', height: '16px' },
-      { width: '48px', height: '16px' },
-      { width: '48px', height: '16px' },
-    ],
-  ],
 };
 
 @wxComponent()

@@ -44,7 +44,7 @@ export interface TdSkeletonProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: 'avatar' | 'image' | 'text' | 'paragraph' | 'grid';
+    value?: 'avatar' | 'image' | 'text' | 'paragraph';
     required?: boolean;
   };
 }

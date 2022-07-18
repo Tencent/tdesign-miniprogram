@@ -109,7 +109,6 @@
     "t-dropdown-item": "tdesign-miniprogram/dropdown-menu/dropdown-item",
     "t-drawer": "tdesign-miniprogram/drawer/drawer",
     "t-pull-down-refresh": "tdesign-miniprogram/pull-down-refresh/pull-down-refresh",
-    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
     "t-footer": "tdesign-miniprogram/footer/footer",
     "t-divider": "tdesign-miniprogram/divider/divider",
     "t-empty": "tdesign-miniprogram/empty/empty",

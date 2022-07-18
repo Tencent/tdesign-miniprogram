@@ -21,11 +21,6 @@ Page({
         value: 'paragraph',
         loading: true,
       },
-      {
-        title: '宫格骨架屏',
-        value: 'grid',
-        loading: true,
-      },
     ],
   },
 });
