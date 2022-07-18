@@ -28,6 +28,29 @@ docClass: timeline
 - `Steps`: 更新示例代码 @anlyyao ([#609](https://github.com/Tencent/tdesign-miniprogram/pull/609))
 - `Skeleton`: 更新示例代码 @anlyyao ([#617](https://github.com/Tencent/tdesign-miniprogram/pull/617))
 
+## 🌈 0.16.0 `2022-07-18` 
+### ❗ BREAKING CHANGES
+- `Drawer`: 调整 `placement` 属性，只支持 `left` 和 `right` @LeeJim ([#619](https://github.com/Tencent/tdesign-miniprogram/pull/619))
+- `Button`: `tap` 事件返回值更新为 `event` 对象 @anlyyao ([#603](https://github.com/Tencent/tdesign-miniprogram/pull/603))
+- `Skeleton`: 属性 `theme` 移除 `avatar-text`；新增 `avatar` 、`image` 、`paragraph` @anlyyao ([#617](https://github.com/Tencent/tdesign-miniprogram/pull/617))
+- `Skeleton`:  外部样式类移除 `t-class-avatar` 、`t-class-image` 、`t-class-text` ；新增 `t-class-col`  @anlyyao ([#617](https://github.com/Tencent/tdesign-miniprogram/pull/617))
+- `Skeleton`: 属性 `rowCol ` 移除默认值 `[1, 1, 1, { width: 70% }]` @anlyyao ([#617](https://github.com/Tencent/tdesign-miniprogram/pull/617))
+### 🚀 Features
+- `Picker`: 增加 `autoClose` 属性，点击确认、取消、遮罩层时自动关闭 @LeeJim ([#614](https://github.com/Tencent/tdesign-miniprogram/pull/614))
+- `Result`: 新增组件 @anlyyao ([#589](https://github.com/Tencent/tdesign-miniprogram/pull/589))
+### 🐞 Bug Fixes
+- `Picker`: 修复 `pick` 事件返回的 `label `不正确的问题 @LeeJim ([#612](https://github.com/Tencent/tdesign-miniprogram/pull/612))
+- `Picker`: `confirm-btn` 和 `cancel-btn` 增加 `boolean` 类型，值为 `true` 时使用默认文案 @LeeJim ([#614](https://github.com/Tencent/tdesign-miniprogram/pull/614))
+- `DropdownMenu`: 移除冗余的 `z-index` @LeeJim ([#623](https://github.com/Tencent/tdesign-miniprogram/pull/623))
+- `Loading`: 修复 `text` 为空时仍渲染非空节点的问题 @wanpan11 ([#621](https://github.com/Tencent/tdesign-miniprogram/pull/621))
+### 🚧 Others
+- `Switch`: 更新示例代码 @wangyuan0108 ([#615](https://github.com/Tencent/tdesign-miniprogram/pull/615))
+- `NoticeBar`: 更新示例代码 @anlyyao ([#610](https://github.com/Tencent/tdesign-miniprogram/pull/610))
+- `Picker`: 展示示例代码 @anlyyao ([#606](https://github.com/Tencent/tdesign-miniprogram/pull/606))
+- `Tag`: 更新示例代码 @anlyyao ([#622](https://github.com/Tencent/tdesign-miniprogram/pull/622))
+- `Steps`: 更新示例代码 @anlyyao ([#609](https://github.com/Tencent/tdesign-miniprogram/pull/609))
+- `Skeleton`: 更新示例代码 @anlyyao ([#617](https://github.com/Tencent/tdesign-miniprogram/pull/617))
+
 ## 🌈 0.15.1 `2022-07-13` 
 ### 🚀 Features
 - `TabBar`: 支持使用 CSS Variable 定制颜色 @LeeJim ([#601](https://github.com/Tencent/tdesign-miniprogram/pull/601))
