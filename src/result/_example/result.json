@@ -1,4 +1,9 @@
 {
   "navigationBarTitleText": "Result",
-  "navigationBarBackgroundColor": "#fff"
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "theme": "./theme",
+    "custom": "./custom"
+  }
 }

@@ -18,30 +18,12 @@ isComponent: true
 ## 代码演示
 
 ### 结果状态
-```html
-<!-- 成功状态 -->
-<t-result theme="success" title="成功状态" description="描述文字" />
-<!-- 失败状态 -->
-<t-result theme="error" title="失败状态" description="描述文字" />
-<!-- 警示状态 -->
-<t-result theme="warning" title="警示状态" description="描述文字" />
-<!-- 默认状态 -->
-<t-result title="默认状态" description="描述文字" />
-```
+
+{{ theme }}
 
 ### 自定义结果
-```html
-<t-result t-class-image="external-class-image" image="/assets/illustration@2x.png">
-  <view slot="title"> 自定义结果 </view>
-  <view slot="description"> 描述文字 </view>
-</t-result>
-```
-```css
-.external-class-image {
-  width: 100px;
-  height: 80px;
-}
-```
+
+{{ custom }}
 
 ## API
 

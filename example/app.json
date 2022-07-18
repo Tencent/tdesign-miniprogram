@@ -121,8 +121,7 @@
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
     "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
-    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer",
-    "t-result": "tdesign-miniprogram/result/result"
+    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer"
   },
   "window": {
     "backgroundTextStyle": "light",
