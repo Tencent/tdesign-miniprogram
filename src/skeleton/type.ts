@@ -32,7 +32,6 @@ export interface TdSkeletonProps {
   };
   /**
    * 用于设置行列数量、宽度高度、间距等。【示例一】，`[1, 1, 2]` 表示输出三行骨架图，第一行一列，第二行一列，第三行两列。【示例二】，`[1, 1, { width: '100px' }]` 表示自定义第三行的宽度为 `100px`。【示例三】，`[1, 2, [{ width, height }, { width, height, marginLeft }]]` 表示第三行有两列，且自定义宽度、高度和间距
-   * @default [1, 1, 1, { width: '70%' }]
    */
   rowCol?: {
     type: ArrayConstructor;
@@ -45,11 +44,19 @@ export interface TdSkeletonProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: 'text' | 'avatar-text';
+    value?: 'avatar' | 'image' | 'text' | 'paragraph';
     required?: boolean;
   };
-};
+}
 
 export type SkeletonRowCol = Array<Number | SkeletonRowColObj | Array<SkeletonRowColObj>>;
 
-export interface SkeletonRowColObj { width?: string; height?: string; marginRight?: string; marginLeft?: string; margin?: string; };
+export interface SkeletonRowColObj {
+  width?: string;
+  height?: string;
+  size?: string;
+  marginRight?: string;
+  marginLeft?: string;
+  margin?: string;
+  type?: 'rect' | 'circle' | 'text';
+}

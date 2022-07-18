@@ -2,20 +2,34 @@
   <view class="demo-title">Skeleton 骨架屏</view>
   <view class="demo-desc">用于等待加载内容所展示的占位图形组合，有动态效果加载效果，减少用户等待焦虑。</view>
   <t-demo title="01 类型">
-    <view class="demo-section__desc">基础</view>
-    <t-skeleton rowCol="{{rowCol1}}" loading></t-skeleton>
-    <view class="demo-section__desc">头像组合</view>
-    <t-skeleton rowCol="{{rowCol2}}" theme="avatar-text" loading></t-skeleton>
-    <view class="demo-section__desc">图片组合</view>
-    <view class="container-flex">
-      <t-skeleton t-class="none-margin" rowCol="{{rowCol3}}" t-class-text="skeleton-text" loading></t-skeleton>
-      <t-skeleton t-class="none-margin" rowCol="{{rowCol3}}" t-class-text="skeleton-text" loading></t-skeleton>
+    <view wx:for="{{themeList}}" wx:for-item="themeItem" wx:key="index">
+      <view class="demo-section__desc">{{themeItem.title}}</view>
+      <view class="box">
+        <theme theme="{{themeItem.value}}" loading="{{themeItem.loading}}" />
+      </view>
+    </view>
+    <view class="demo-section__desc">宫格骨架屏</view>
+    <view class="box">
+      <grid />
+    </view>
+    <view class="demo-section__desc">单元格骨架屏</view>
+    <view class="box">
+      <cell-group loading />
+    </view>
+    <view class="demo-section__desc">图片组合骨架屏</view>
+    <view class="box">
+      <image-group />
     </view>
   </t-demo>
+
   <t-demo title="02 动画效果">
     <view class="demo-section__desc">渐变加载动画</view>
-    <t-skeleton rowCol="{{rowCol1}}" animation="gradient" loading></t-skeleton>
+    <view class="box">
+      <t-skeleton theme="paragraph" animation="gradient" loading></t-skeleton>
+    </view>
     <view class="demo-section__desc">闪烁加载动画</view>
-    <t-skeleton rowCol="{{rowCol2}}" theme="avatar-text" animation="flashed" loading></t-skeleton>
+    <view class="box">
+      <animation loading />
+    </view>
   </t-demo>
 </view>
