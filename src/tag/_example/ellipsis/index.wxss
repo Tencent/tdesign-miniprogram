@@ -1,0 +1,10 @@
+.group {
+  padding: 32rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.margin {
+  margin: 16rpx 0;
+}

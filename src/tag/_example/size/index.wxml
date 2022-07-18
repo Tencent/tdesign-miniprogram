@@ -1,0 +1,8 @@
+<view class="group padding-bottom d-flex">
+  <t-tag class="margin-right" size="large" theme="primary">展示标签30</t-tag>
+  <t-tag size="medium" theme="primary">展示标签24</t-tag>
+</view>
+<view class="group d-flex">
+  <t-check-tag class="margin-right" size="large">点击标签30</t-check-tag>
+  <t-check-tag size="medium">点击标签24</t-check-tag>
+</view>

@@ -1,3 +1,12 @@
 {
-  "navigationBarTitleText": "Tag"
+  "navigationBarTitleText": "Tag",
+  "usingComponents": {
+    "theme": "./theme",
+    "ellipsis": "./ellipsis",
+    "size": "./size",
+    "iconDemo": "./iconDemo",
+    "shape": "./shape",
+    "closable": "./closable",
+    "checkable": "./checkable"
+  }
 }

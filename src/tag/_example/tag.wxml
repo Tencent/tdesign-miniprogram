@@ -3,70 +3,26 @@
   <view class="demo-desc">用于表明主体的类目，属性或状态。</view>
 
   <t-demo title="01 类型" desc="展示型标签">
-    <view class="group margin">
-      <t-tag theme="primary">默认</t-tag>
-      <t-tag theme="success">成功</t-tag>
-      <t-tag theme="warning">警告</t-tag>
-      <t-tag theme="danger">危险</t-tag>
-      <t-tag>信息</t-tag>
-    </view>
-
-    <view class="group margin">
-      <t-tag theme="primary">深色</t-tag>
-      <t-tag theme="primary" variant="light">浅色</t-tag>
-      <t-tag theme="primary" variant="outline">描边</t-tag>
-      <t-tag theme="primary" variant="light-outline">描边浅色</t-tag>
-    </view>
+    <theme />
   </t-demo>
   <t-demo title="" desc="带图标标签">
-    <view class="group margin">
-      <t-tag theme="primary">
-        标签
-        <t-icon name="app" size="14px" slot="icon" />
-      </t-tag>
-    </view>
+    <iconDemo />
   </t-demo>
   <t-demo title="" desc="圆角标签">
-    <view class="group margin">
-      <t-tag theme="primary" shape="round">圆弧</t-tag>
-      <t-tag theme="primary" shape="mark">半圆弧</t-tag>
-    </view>
+    <shape />
   </t-demo>
   <t-demo title="" desc="可关闭标签">
-    <view class="group margin">
-      <t-tag wx:if="{{show[0]}}" bind:close="handleClose0" closable theme="primary">标签</t-tag>
-      <t-tag wx:if="{{show[1]}}" icon="app" bind:close="handleClose1" closable theme="primary">标签</t-tag>
-    </view>
+    <closable />
   </t-demo>
   <t-demo title="" desc="超长省略文本标签">
-    <view class="group margin">
-      <t-tag max-width="{{130}}" title="超长省略文本标签超长省略文本标签">超长省略文本标签超长省略文本标签</t-tag>
-    </view>
+    <ellipsis />
   </t-demo>
 
   <t-demo title="02 状态" desc="标签状态">
-    <view class="group margin">
-      <t-check-tag
-        wx:for="{{items}}"
-        wx:for-index="index"
-        wx:key="index"
-        checked="{{item.checked}}"
-        disabled="{{item.disabled}}"
-        data-index="{{index}}"
-        bind:change="handleCheckTagChange"
-        >{{item.name}}</t-check-tag
-      >
-    </view>
+    <checkable />
   </t-demo>
 
   <t-demo title="03 规格" desc="标签规格">
-    <view class="group padding-bottom d-flex">
-      <t-tag size="large" theme="primary">展示标签30</t-tag>
-      <t-tag size="medium" theme="primary">展示标签24</t-tag>
-    </view>
-    <view class="group d-flex">
-      <t-check-tag size="large">点击标签30</t-check-tag>
-      <t-check-tag size="medium">点击标签24</t-check-tag>
-    </view>
+    <size />
   </t-demo>
 </view>

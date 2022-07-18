@@ -1,0 +1,6 @@
+<view class="group margin">
+  <t-tag theme="primary">
+    标签
+    <t-icon name="app" size="14px" slot="icon" />
+  </t-tag>
+</view>
