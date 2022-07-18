@@ -20,44 +20,7 @@ isComponent: true
 
 ### 基础选择器
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/picker.png" width="375px" height="50%">
-
-```html
-<t-picker
-  visible="{{true}}"
-  title="请选择城市"
-  value="{{selectedCityValue}}"
-  bindchange="onPickerConfirm"
-  bindpick="onColumnChange"
-  bindcancel="onPickerCancel"
->
-  <t-picker-item options="{{citys}}"  />
-</t-picker>
-```
-
-```js
-Page({
-  data: {
-    selectedCityValue: [],
-    citys: [
-      { label: '广州市', value: '广州市' },
-      { label: '韶关市', value: '韶关市' },
-      { label: '深圳市', value: '深圳市' },
-      { label: '珠海市', value: '珠海市' },
-      { label: '汕头市', value: '汕头市' },
-    ],
-  },
-  onPickerConfirm(e) {
-    console.log('picker confirm:', e.detail);
-    this.setData({
-      selectedCityValue:  e.detail.value,
-    });
-  },
-  onColumnChange(e) {
-    console.log('picker pick:', e);
-  },
-});
-```
+{{ base }}
 
 ## API
 ### Picker Props

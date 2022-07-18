@@ -1,0 +1,67 @@
+<block>
+  <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.CITY}}">
+    <view class="pannel-label">城市</view>
+    <view class="pannel-text {{cityValue.length ? '' : 'empty'}}">{{cityCurrentValue || '选择城市'}}</view>
+    <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
+  </view>
+  <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.YEAR_SEASONS}}">
+    <view class="pannel-label">年份和季节</view>
+    <view class="pannel-text {{yearSeasonsValue.length ? '' : 'empty'}}">
+      {{yearSeasonsCurrentValue || '选择年份和季节' }}</view
+    >
+    <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
+  </view>
+  <view class="pannel-item last" bind:tap="onClickPicker" data-key="{{PICKER_KEY.DATE}}">
+    <view class="pannel-label">日期</view>
+    <view class="pannel-text {{dateValue.length ? '' : 'empty'}}"> {{dateCurrentValue || '选择日期' }}</view>
+    <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
+  </view>
+</block>
+
+<!-- 城市不带标题 -->
+<t-picker
+  visible="{{cityVisible}}"
+  value="{{cityValue}}"
+  data-key="city"
+  title="{{pickerTitle}}"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{citys}}"></t-picker-item>
+</t-picker>
+
+<!-- 年+ 季节 不带标题 -->
+<t-picker
+  visible="{{yearSeasonsVisible}}"
+  value="{{yearSeasonsValue}}"
+  data-key="yearSeasons"
+  title="{{pickerTitle}}"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{years}}"></t-picker-item>
+  <t-picker-item options="{{seasons}}"></t-picker-item>
+</t-picker>
+
+<!-- 年月日 不带标题 -->
+<t-picker
+  visible="{{dateVisible}}"
+  value="{{dateValue}}"
+  data-key="date"
+  title="{{pickerTitle}}"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{years}}"></t-picker-item>
+  <t-picker-item options="{{months}}"></t-picker-item>
+  <t-picker-item options="{{days}}"></t-picker-item>
+</t-picker>
