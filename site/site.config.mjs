@@ -53,13 +53,6 @@ export default {
           component: () => import('@/button/README.md'),
         },
         {
-          title: 'Divider 分割线',
-          name: 'divider',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/divider',
-          component: () => import('@/divider/README.md'),
-        },
-        {
           title: 'Fab 悬浮按钮',
           name: 'fab',
           meta: { docType: 'form' },
@@ -76,16 +69,36 @@ export default {
       ],
     },
     {
+      title: '布局',
+      type: 'component', // 组件文档
+      children: [
+        {
+          title: 'Cell 单元格',
+          name: 'cell',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/cell',
+          component: () => import('@/cell/README.md'),
+        },
+        {
+          title: 'Divider 分割线',
+          name: 'divider',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/divider',
+          component: () => import('@/divider/README.md'),
+        },
+        {
+          title: 'Grid 宫格',
+          name: 'grid',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/grid',
+          component: () => import('@/grid/README.md'),
+        },
+      ]
+    },
+    {
       title: '导航',
       type: 'component',
       children: [
-        {
-          title: 'Drawer 抽屉',
-          name: 'drawer',
-          meta: { docType: 'navigation' },
-          path: '/miniprogram/components/drawer',
-          component: () => import('@/drawer/README.md'),
-        },
         {
           title: 'Indexes 索引',
           name: 'indexes',
@@ -231,14 +244,6 @@ export default {
           path: '/miniprogram/components/badge',
           component: () => import('@/badge/README.md'),
         },
-
-        {
-          title: 'Cell 单元格',
-          name: 'cell',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/cell',
-          component: () => import('@/cell/README.md'),
-        },
         {
           title: 'Collapse 折叠面板',
           name: 'collapse',
@@ -273,14 +278,7 @@ export default {
           meta: { docType: 'data' },
           path: '/miniprogram/components/footer',
           component: () => import('@/footer/README.md'),
-        },
-        {
-          title: 'Grid 宫格',
-          name: 'grid',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/grid',
-          component: () => import('@/grid/README.md'),
-        },
+        },        
         {
           title: 'Image 图片',
           name: 'image',
@@ -356,6 +354,13 @@ export default {
           meta: { docType: 'message' },
           path: '/miniprogram/components/dialog',
           component: () => import('@/dialog/README.md'),
+        },
+        {
+          title: 'Drawer 抽屉',
+          name: 'drawer',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/drawer',
+          component: () => import('@/drawer/README.md'),
         },
         {
           title: 'Loading 加载',
