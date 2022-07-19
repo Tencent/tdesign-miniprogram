@@ -29,7 +29,7 @@ export default class TabPanel extends SuperComponent {
   };
 
   getComputedName() {
-    if (this.properties.value) {
+    if (this.properties.value != null) {
       return `${this.properties.value}`;
     }
     return `${this.index}`;
