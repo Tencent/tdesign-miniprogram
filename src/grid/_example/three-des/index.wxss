@@ -1,0 +1,16 @@
+.text {
+  padding-top: 20rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+}
+
+.image-icon {
+  padding-top: 24rpx;
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.description {
+  margin-top: 8rpx;
+  margin-bottom: 24rpx;
+}

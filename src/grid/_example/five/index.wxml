@@ -1,0 +1,37 @@
+<t-grid class="five" column="{{5}}">
+  <t-grid-item text="标题文字" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+  <t-grid-item text="标题文字" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+  <t-grid-item text="标题文字" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+  <t-grid-item text="标题文字" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+  <t-grid-item text="最多四字" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+</t-grid>
+
+<view class="gutter-row"></view>
+
+<t-grid t-class="five-with-padding" column="{{5}}">
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+  <t-grid-item text="最多四字" class="t-grid-item" t-class-text="text">
+    <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
+  </t-grid-item>
+</t-grid>

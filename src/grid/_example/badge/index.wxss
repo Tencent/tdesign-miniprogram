@@ -1,0 +1,41 @@
+.text {
+  padding-top: 20rpx;
+  margin-bottom: 32rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+
+.image-icon {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.badge-item {
+  margin-top: 32rpx;
+}
+
+.badge-circle {
+  display: flex;
+  justify-content: center;
+  background-color: #e34d59;
+  border-radius: 15rpx;
+  width: 36rpx;
+  height: 32rpx;
+  align-items: center;
+  position: absolute;
+  top: -15rpx;
+  left: 46rpx;
+}
+
+.circle {
+  width: 4rpx;
+  height: 4rpx;
+  border-radius: 2rpx;
+  background-color: white;
+  margin-left: 4rpx;
+}
+
+.badge-circle-container {
+  margin-left: -4rpx;
+  display: flex;
+}

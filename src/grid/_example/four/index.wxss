@@ -1,0 +1,12 @@
+.text {
+  padding-top: 20rpx;
+  margin-bottom: 32rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+
+.image-icon {
+  padding-top: 32rpx;
+  width: 64rpx;
+  height: 64rpx;
+}

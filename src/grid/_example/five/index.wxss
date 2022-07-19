@@ -1,0 +1,37 @@
+/* five */
+.text {
+  padding-top: 16rpx;
+  margin-bottom: 32rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+
+.image-icon {
+  padding-top: 32rpx;
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.gutter-row {
+  height: 32rpx;
+}
+
+/* five-with-padding */
+.five-with-padding {
+  margin: 0 24rpx;
+  padding: 0 16rpx;
+  border-radius: 16rpx;
+}
+
+.five-with-padding .image-icon {
+  padding-top: 32rpx;
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.five-with-padding .text {
+  padding-top: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}

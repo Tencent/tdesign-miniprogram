@@ -18,112 +18,34 @@ isComponent: true
 
 ## 代码演示
 
-### 一行三个的宫格
+### 一行三个带边框
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-2.png" width="375px" height="50%">
+{{ border }}
 
-```html
-<!-- 一行三个（border） -->
-<t-grid border="{{true}}" class="three-border" column="{{3}}">
-  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-    <image
-      class="image-icon"
-      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      slot="image"
-    />
-  </t-grid-item>
-  <t-grid-item text="标题文字" class="t-grid-item" t-class-text="text">
-    <image
-      class="image-icon"
-      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      slot="image"
-    />
-  </t-grid-item>
-  <t-grid-item text="标题最多六字" class="t-grid-item" t-class-text="text">
-    <image
-      class="image-icon"
-      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      slot="image"
-    />
-  </t-grid-item>
-</t-grid>
-```
+### 一行四个
 
-### 一行二个带说明的宫格
+{{ four }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-3.png" width="375px" height="50%">
+### 一行五个
 
-```html
-<!-- 一行二个带说明宫格 -->
-<t-grid class="two-des" column="{{2}}" align="left">
-  <t-grid-item
-    text="标题文字"
-    class="t-grid-item"
-    t-class-text="text"
-    t-class-description="description"
-    description="说明文字"
-    layout="horizontal"
-  >
-    <image
-      class="image-icon"
-      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      slot="image"
-    />
-  </t-grid-item>
-  <t-grid-item
-    text="标题最多六字"
-    class="t-grid-item"
-    t-class-text="text"
-    t-class-description="description"
-    description="说明文字最多八字"
-    layout="horizontal"
-  >
-    <image
-      class="image-icon"
-      src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      slot="image"
-    />
-  </t-grid-item>
-</t-grid>
-```
+{{ five }}
 
-### 带徽标的宫格
+### 一行三个
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/grid-1.png" width="375px" height="50%">
+{{ three }}
 
-```html
-<!-- 带徽标宫格 -->
-<t-grid class="t-grid badge">
-  <t-grid-item text="标题文字" t-class-text="text">
-    <t-badge count="{{16}}" slot="image" t-class="badge-item">
-      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-    </t-badge>
-  </t-grid-item>
-  <t-grid-item text="标题文字" t-class-text="text">
-    <t-badge dot slot="image" t-class="badge-item">
-      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-    </t-badge>
-  </t-grid-item>
-  <t-grid-item text="标题文字" t-class-text="text"
-    >>
-    <t-badge count="New" slot="image" t-class="badge-item" t-class-text="text">
-      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-    </t-badge>
-  </t-grid-item>
-  <t-grid-item text="标题五字内" t-class-text="text">
-    <t-badge count="slot" slot="image" t-class="badge-item">
-      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-      <view slot="count" class="badge-circle">
-        <view class="badge-circle-container">
-          <view class="circle" />
-          <view class="circle" />
-          <view class="circle" />
-        </view>
-      </view>
-    </t-badge>
-  </t-grid-item>
-</t-grid>
-```
+### 一行二个带说明
+
+{{ two-des }}
+
+### 一行三个带说明
+
+{{ three-des }}
+
+### 带徽标
+
+{{ badge }}
+
 
 ## API
 
