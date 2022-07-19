@@ -59,6 +59,7 @@ export default class Textarea extends SuperComponent {
           });
         } else {
           this.setData({
+            value: val.slice(0, val.length - 1),
             count: length,
             maxcharacterDefault: val.length - 1,
           });
