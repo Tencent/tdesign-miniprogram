@@ -10,8 +10,7 @@
   }
 
   &--horizontal {
-    .@{prefix}-grid-item__content,
-    .@{prefix}-grid-item__words {
+    .@{prefix}-grid-item__content {
       flex-direction: row;
     }
   }
@@ -34,7 +33,7 @@
 
   &__image {
     display: flex;
-    flex: 1;
+    // flex: 1;
   }
 
   &--center {
@@ -48,6 +47,7 @@
     .@{prefix}-grid-item__image,
     .@{prefix}-grid-item__words {
       justify-content: flex-start;
+      align-items: flex-start;
     }
   }
 
@@ -57,6 +57,6 @@
 
   &__description {
     font-size: 24rpx;
-    color: rgba(0, 0, 0, .4);
+    color: rgba(0, 0, 0, 0.4);
   }
 }
