@@ -1,5 +1,4 @@
 @import '../common/style/index.less';
-@import '../common/style/_variables.less';
 
 .@{prefix}-image {
   &__mask {
@@ -21,12 +20,17 @@
   }
 }
 
-.round {
-  border-radius: @border-radius;
+.circle {
+  border-radius: @border-radius-50;
   overflow: hidden;
 }
 
-.circle {
-  border-radius: @border-radius-50;
+.round {
+  border-radius: (@border-radius / 2);
+  overflow: hidden;
+}
+
+.square {
+  border-radius: 0;
   overflow: hidden;
 }

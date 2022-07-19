@@ -1,5 +1,8 @@
 <!-- 加载中占位 -->
-<view wx:if="{{isLoading}}" class="t-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{shape}}">
+<view
+  wx:if="{{isLoading}}"
+  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{shape}}"
+>
   <t-loading
     wx:if="{{loading === 'default'}}"
     theme="dots"
@@ -8,24 +11,29 @@
     class="t-class-load"
     t-class-text="{{classPrefix}}--loading-text"
   ></t-loading>
-  <view wx:elif="{{loading !== 'slot' && loading !== ''}}" class="{{classPrefix}}__common t-class-load">
+  <view wx:elif="{{loading !== 'slot' && loading !== ''}}" class="{{classPrefix}}__common {{prefix}}-class-load">
     {{loading}}
   </view>
-  <slot wx:else name="loading" class="t-class-load" />
+  <slot wx:else name="loading" class="{{prefix}}-class-load" />
 </view>
 <!-- 加载失败占位 -->
-<view wx:elif="{{isFailed}}" class="t-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--faild {{shape}}">
-  <view wx:if="{{error === 'default'}}" style="font-size: 40rpx; color: #999" class="t-class-load">
+<view
+  wx:elif="{{isFailed}}"
+  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--faild {{shape}}"
+>
+  <view wx:if="{{error === 'default'}}" style="font-size: 40rpx; color: #999" class="{{prefix}}-class-load">
     <t-icon name="close" />
   </view>
-  <view wx:elif="{{error !== 'slot' && error !== ''}}" class="{{classPrefix}}__common t-class-load"> {{error}} </view>
-  <slot wx:else name="error" class="t-class-load"></slot>
+  <view wx:elif="{{error !== 'slot' && error !== ''}}" class="{{classPrefix}}__common {{prefix}}-class-load">
+    {{error}}
+  </view>
+  <slot wx:else name="error" class="{{prefix}}-class-load"></slot>
 </view>
 <!-- 图片 -->
 <image
   id="image"
   hidden="{{isLoading || isFailed}}"
-  class="t-class {{classPrefix}} {{shape}}"
+  class="{{prefix}}-class {{classPrefix}} {{shape}}"
   src="{{src}}"
   style="{{widthStyle}}"
   mode="{{mode}}"
