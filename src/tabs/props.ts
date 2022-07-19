@@ -24,16 +24,19 @@ const props: TdTabsProps = {
     type: Boolean,
     value: true,
   },
+  /** 是否可以滑动切换 */
+  swipeable: {
+    type: Boolean,
+    value: true,
+  },
   /** 激活的选项卡值 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: null,
   },
   /** 激活的选项卡值，非受控属性 */
   defaultValue: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
 };
 

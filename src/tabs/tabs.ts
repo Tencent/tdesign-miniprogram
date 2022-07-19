@@ -213,14 +213,20 @@ export default class Tabs extends SuperComponent {
   }
 
   onTouchStart(event: any) {
+    if (!this.properties.swipeable) return;
+
     this.touchStart(event);
   }
 
   onTouchMove(event: any) {
+    if (!this.properties.swipeable) return;
+
     this.touchMove(event);
   }
 
   onTouchEnd() {
+    if (!this.properties.swipeable) return;
+
     const { direction, deltaX, offsetX } = this;
     const minSwipeDistance = 50;
     if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
