@@ -36,19 +36,25 @@ export interface TdTabsProps {
     value?: boolean;
   };
   /**
+   * 是否可以滑动切换
+   * @default true
+   */
+  swipeable?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 激活的选项卡值
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: TabValue;
   };
   /**
    * 激活的选项卡值，非受控属性
    */
   defaultValue?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: TabValue;
   };
 }
@@ -71,7 +77,8 @@ export interface TdTabPanelProps {
     value?: boolean;
   };
   /**
-   * 选项卡名称，可自定义选项卡导航内容
+   * 选项卡名称
+   * @default ''
    */
   label?: {
     type: StringConstructor;
@@ -88,8 +95,7 @@ export interface TdTabPanelProps {
    * 选项卡的值，唯一标识
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: TabValue;
   };
 }
