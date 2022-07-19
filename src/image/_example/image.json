@@ -2,6 +2,14 @@
   "navigationBarTitleText": "Image",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "t-demo": "../../components/demo-block/index",
+    "t-image": "tdesign-miniprogram/image/image",
+    "mode": "./mode",
+    "shape": "./shape",
+    "image-loading": "./image-loading",
+    "custom-loading": "./custom-loading",
+    "error-loading": "./error-loading",
+    "custom-error-loading": "./custom-error-loading",
+    "size": "./size"
   }
 }
