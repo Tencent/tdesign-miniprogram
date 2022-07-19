@@ -38,8 +38,8 @@
         <span>加载失败</span>
         <span class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage">刷新</span>
       </view>
-      <view class="{{classPrefix}}__text" wx:else>
-        {{text}}
+      <view class="{{classPrefix}}__text" wx:if="{{text}}">
+        <text wx:if="{{text !== 'slot'}}"> {{text}} </text>
         <slot name="text" />
       </view>
     </view>

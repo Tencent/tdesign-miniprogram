@@ -12,119 +12,40 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-steps": "tdesign-miniprogram/steps/steps",
-  "t-step": "tdesign-miniprogram/steps/step-item"
+  "t-step-item": "tdesign-miniprogram/steps/step-item",
 }
 ```
 
 ## 代码演示
 
-### 基础步骤条
-
 步骤条，方向可以横向和纵向，可以自定义步骤条显示内容以及是否可写
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/steps-4.png" width="375px" height="50%">
+#### 横向可操作步骤条
 
-```html
-<t-steps defaultCurrent="1">
-  <t-step title="步骤描述" />
-  <t-step title="选中步骤" />
-</t-steps>
-```
+{{ horizontal }}
 
 #### 横向只读步骤条
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/steps-3.png" width="375px" height="50%">
+{{ readonly }}
 
-```html
-<t-steps current="0" readonly="true">
-  <t-step title="当前步骤" />
-  <t-step title="未完成步骤" />
-</t-steps>
-```
+
 #### 竖向只读步骤条
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/steps-2.png" width="375px" height="50%">
+{{ vertical }}
 
-```html
-<t-steps current="1" readonly="true" layout="vertical">
-  <t-step title="已完成步骤" />
-  <t-step title="当前步骤" />
-  <t-step title="未完成步骤" />
-</t-steps>
-```
+#### 竖向简化只读步骤条
+
+{{ theme }}
 
 #### 竖向双层级只读步骤条
-```html
-<t-steps class="demo-steps vertical" current="1-0" readonly="true" layout="vertical">
-  <t-step title="已完成步骤" />
-  <t-step title="当前步骤" subStepItems="{{subStepItems}}" />
-  <t-step title="未完成步骤" />
-</t-steps>
 
-```
+{{ double }}
+
 #### 自定义内容步骤条
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/steps-1.png" width="375px" height="50%">
+{{ customization }}
 
-```html
-<t-steps current="1" readonly="true" layout="vertical">
-  <t-step title="已完成步骤">
-    <view slot="content">可自定义此处内容</view>
-    <view class="extra-img" slot="extra">
-      <image src="" alt="image" style="width: 100%" mode="widthFix" />
-    </view>
-  </t-step>
-  <t-step title="当前步骤">
-    <view slot="content">可自定义此处内容</view>
-  </t-step>
-  <t-step title="未完成步骤">
-    <view slot="content">可自定义此处内容</view>
-  </t-step>
-</t-steps>
 
-<!-- 自定义step节点样式 -->
-<t-steps class="demo-steps vertical" current="{{customStepCurrent}}" readonly="true" layout="vertical">
-  <t-step-item
-    wx:for="{{customStepItems}}"
-    wx:key="key"
-    wx:item="item"
-    icon="slot"
-    title="{{item.title}}"
-    content="{{item.content}}"
-    t-class-inner="t-class-inner t-class-inner--{{item.status}}"
-    t-class-title="t-class-title {{item.title? '' : 't-class-title--no'}}"
-    t-class-description="t-class-description"
-    t-class-extra="t-class-extra"
-  >
-    <view
-      slot="icon"
-      class="t-icon-slot t-icon-slot--{{item.status}} {{item.title? '' : 't-icon-slot--child'}}"
-    ></view>
-    <view slot="extra">{{item.extra}}</view>
-  </t-step-item>
-</t-steps>
-```
-
-### 受控用法
-
-```html
-<t-steps current="{{current}}" bind:change="onChange">
-  <t-step title="步骤描述" />
-  <t-step title="选中步骤" />
-</t-steps>
-```
-
-```js
-Page({
-  data: {
-    current: 0
-  },
-  onChange(e) {
-    const { current } = e.detail;
-    this.setData({ current });
-  },
-})
-```
 
 ## API
 ### Steps Props

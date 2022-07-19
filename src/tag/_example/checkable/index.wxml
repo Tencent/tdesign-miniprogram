@@ -1,0 +1,11 @@
+<t-check-tag
+  class="margin-right"
+  wx:for="{{items}}"
+  wx:for-index="index"
+  wx:key="index"
+  checked="{{item.checked}}"
+  disabled="{{item.disabled}}"
+  data-index="{{index}}"
+  bind:change="handleCheckTagChange"
+  >{{item.name}}</t-check-tag
+>

@@ -1,0 +1,33 @@
+var getStyle = function (object) {
+  var styleStr = '';
+  styleStr +=
+    'width:' +
+    object.width +
+    ';' +
+    'height:' +
+    (object.height || '16px') +
+    ';' +
+    'background:' +
+    object.background +
+    ';' +
+    'background-color:' +
+    object.backgroundColor +
+    ';' +
+    'margin:' +
+    object.margin +
+    ';' +
+    'margin-right:' +
+    object.marginRight +
+    ';' +
+    'margin-left:' +
+    object.marginLeft +
+    ';' +
+    'border-radius:' +
+    object.borderRadius +
+    ';';
+  return styleStr;
+};
+
+module.exports = {
+  getStyle: getStyle,
+};

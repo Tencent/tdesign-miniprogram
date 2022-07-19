@@ -1,68 +1,114 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
+@skeleton-animation-gradient: rgba(0, 0, 0, 4%);
+@skeleton-animation-flashed: rgba(90%, 90%, 90%, 0.3);
+@skeleton-background-color: rgba(238, 238, 238, 1);
+@text-height-default: 16px;
+@rect-height-default: 16px;
+@circle-height-default: 48px;
+@row-margin-bottom: 16px;
+@border-radius-text: 2px;
+@border-radius-rect: 4px;
+@border-radius-circle: 50%;
+
 .@{prefix}-skeleton {
-  display: flex;
   box-sizing: border-box;
-  margin: 32rpx;
-
-  &__avatar {
-    flex-shrink: 0;
-    background-color: rgba(238, 238, 238, 1);
-    height: 96rpx;
-    width: 96rpx;
-    border-radius: 100%;
-    margin-right: 24rpx;
-  }
-
-  &__item {
-    background-color: rgba(238, 238, 238, 1);
-    border-radius: 4rpx;
-  }
 
   &__row {
     display: flex;
+    margin-bottom: @row-margin-bottom;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    &:not(:first-child) {
-      margin-top: 24rpx;
+  &__row:only-child,
+  &__row:last-child {
+    margin-bottom: 0;
+  }
+
+  &__col {
+    background-color: @skeleton-background-color;
+    border-radius: @border-radius-text;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:first-child:last-child,
+    &:last-child {
+      margin-right: 0;
     }
   }
-}
 
-.@{prefix}-skeleton--animate-flashed {
-  animation: t-flashed 0.6s infinite alternate;
-}
+  &--type {
+    &-text {
+      width: 100%;
+      height: @text-height-default;
+      border-radius: @border-radius-text;
+    }
 
-@keyframes t-flashed {
-  0% {
-    opacity: 1;
+    &-rect {
+      width: 100%;
+      height: @rect-height-default;
+      border-radius: @border-radius-rect;
+    }
+
+    &-circle {
+      width: @circle-height-default;
+      height: @circle-height-default;
+      border-radius: @border-radius-circle;
+      flex-shrink: 0;
+    }
   }
 
-  100% {
-    opacity: 0.6;
-  }
-}
+  &--animation {
+    &-gradient {
+      position: relative;
+      overflow-x: hidden;
 
-.@{prefix}-skeleton--animate-gradient {
-  .t-skeleton__item {
-    background: linear-gradient(
-      to right,
-      rgba(238, 238, 238, 1) 10%,
-      rgba(238, 238, 238, 0.4) 20%,
-      rgba(238, 238, 238, 1) 30%
-    );
-    background-size: 400% 50%;
-    width: 100%;
-    animation: t-gradient 1s ease-in-out infinite;
-  }
-}
+      &::after {
+        content: ' ';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0%),
+          @skeleton-animation-gradient,
+          rgba(255, 255, 255, 0%)
+        );
+        animation: t-skeleton--gradient 1.5s linear 2s infinite;
+      }
+    }
 
-@keyframes t-gradient {
-  0% {
-    background-position: 100% 50%;
+    &-flashed {
+      animation: t-skeleton--flashed 2s linear 2s infinite;
+    }
   }
 
-  100% {
-    background-position: 0% 50%;
+  @keyframes t-skeleton--gradient {
+    0% {
+      transform: translateX(-100%) skewX(-15deg);
+    }
+
+    100% {
+      transform: translateX(100%) skewX(-15deg);
+    }
+  }
+
+  @keyframes t-skeleton--flashed {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      background-color: @skeleton-animation-flashed;
+      opacity: 0.3;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 }

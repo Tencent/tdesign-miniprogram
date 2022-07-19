@@ -18,38 +18,37 @@ isComponent: true
 
 ## 代码演示
 
-### 基础标签
+### 类型
+#### 展示型标签
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tags-1.png" width="375px" height="50%">
+{{ theme }}
 
-```html
-<!-- theme 样式 -->
-<t-tag theme="primary">重要</t-tag>
+#### 带图标标签
 
-<!-- variant 背景 -->
-<t-tag theme="primary" variant="plain">镂空标签</t-tag>
+{{ iconDemo }}
 
-<!-- shape 圆角 -->
-<t-tag theme="primary" shape="circle">圆角标签</t-tag>
+#### 圆角标签
 
-<!-- closable 带关闭 -->
-<t-tag closable theme="primary">标签</t-tag>
+{{ shape }}
 
-<!-- 超长省略 -->
-<t-tag max-width="150" title="超长省略文本标签超长省略文本标签"
-  >超长省略文本标签超长省略文本标签</t-tag
->
-```
+#### 可关闭标签
 
-### 可点击的标签
+{{ closable }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tags-2.png" width="375px" height="50%">
+#### 超长省略文本标签
 
-```html
-<t-check-tag checked="{{true}}" size="large">已点击</t-check-tag>
-<t-check-tag checked="{{false}}" size="large">未点击</t-check-tag>
-<t-check-tag checked="{{false}}" disabled="{{true}}" size="large">不可点击</t-check-tag>
-```
+{{ ellipsis }}
+
+
+## 状态
+
+#### 标签状态
+
+{{ checkable }}
+
+#### 标签规格
+
+{{ size }}
 
 ## API
 ### Tag Props
