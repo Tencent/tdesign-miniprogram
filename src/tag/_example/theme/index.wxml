@@ -1,0 +1,5 @@
+<t-tag class="margin-right" theme="primary">默认</t-tag>
+<t-tag class="margin-right" theme="success">成功</t-tag>
+<t-tag class="margin-right" theme="warning">警告</t-tag>
+<t-tag class="margin-right" theme="danger">危险</t-tag>
+<t-tag>信息</t-tag>
