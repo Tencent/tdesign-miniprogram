@@ -37,46 +37,45 @@ export default class Textarea extends SuperComponent {
     prefix,
     classPrefix: name,
     count: 0,
-    maxcharacterDefault: -1,
-  };
-
-  observers = {
-    value(val) {
-      const { maxcharacter } = this.properties;
-      const maxcharacterValue = Number(maxcharacter);
-      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { length = 0 } = getCharacterLength(val);
-
-        if (length < maxcharacterValue) {
-          this.setData({
-            count: length,
-            maxcharacterDefault: -1,
-          });
-        } else if (length === maxcharacterValue) {
-          this.setData({
-            count: length,
-            maxcharacterDefault: val.length,
-          });
-        } else {
-          this.setData({
-            value: val.slice(0, val.length - 1),
-            count: length,
-            maxcharacterDefault: val.length - 1,
-          });
-        }
-      } else {
-        this.setData({
-          count: val ? String(val).length : 0,
-        });
-      }
-    },
+    maxchars: -1,
   };
 
   methods = {
     onInput(event) {
-      this.triggerEvent('change', {
-        ...event.detail,
-      });
+      const { value } = event.detail;
+
+      const { maxcharacter } = this.properties;
+      const maxcharacterValue = Number(maxcharacter);
+      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+        const { length = 0, characters, overflow } = getCharacterLength(value, maxcharacter);
+
+        if (length < maxcharacterValue) {
+          this.setData({
+            value,
+            count: length,
+            maxchars: -1,
+          });
+        } else if (!overflow) {
+          this.setData({
+            value,
+            count: length,
+            maxchars: value.length,
+          });
+        } else {
+          this.setData({
+            value: characters,
+            count: length,
+            maxchars: value.length - 1,
+          });
+        }
+      } else {
+        this.setData({
+          value,
+          count: value ? String(value).length : 0,
+        });
+      }
+
+      this.triggerEvent('change', { value });
     },
     onFocus(event) {
       this.triggerEvent('focus', {
