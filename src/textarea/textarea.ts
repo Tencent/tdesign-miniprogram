@@ -37,33 +37,42 @@ export default class Textarea extends SuperComponent {
     prefix,
     classPrefix: name,
     count: 0,
+    maxcharacterDefault: -1,
   };
 
-  /* 组件生命周期 */
-  lifetimes = {
-    ready() {
-      this.getTextareaValueLength(this.data.value);
+  observers = {
+    value(val) {
+      const { maxcharacter } = this.properties;
+      const maxcharacterValue = Number(maxcharacter);
+      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+        const { length = 0 } = getCharacterLength(val);
+
+        if (length < maxcharacterValue) {
+          this.setData({
+            count: length,
+            maxcharacterDefault: -1,
+          });
+        } else if (length === maxcharacterValue) {
+          this.setData({
+            count: length,
+            maxcharacterDefault: val.length,
+          });
+        } else {
+          this.setData({
+            count: length,
+            maxcharacterDefault: val.length - 1,
+          });
+        }
+      } else {
+        this.setData({
+          count: val ? String(val).length : 0,
+        });
+      }
     },
   };
 
   methods = {
-    getTextareaValueLength(textareaValue) {
-      const { maxcharacter } = this.properties;
-      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { length = 0 } = getCharacterLength(textareaValue, maxcharacter);
-        this.setData({
-          count: length,
-        });
-      } else {
-        this.setData({
-          count: textareaValue ? String(textareaValue).length : 0,
-        });
-      }
-    },
     onInput(event) {
-      const { value } = event.detail;
-      this.getTextareaValueLength(value);
-
       this.triggerEvent('change', {
         ...event.detail,
       });
