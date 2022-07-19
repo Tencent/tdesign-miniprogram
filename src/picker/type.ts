@@ -8,22 +8,36 @@ import { ButtonProps } from '../button/index';
 
 export interface TdPickerProps {
   /**
+   * 自动关闭；在确认、取消、点击遮罩层自动关闭，不需要手动设置 visible
+   * @default true
+   */
+  autoClose?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 取消按钮文字
-   * @default 取消
+   * @default true
    */
   cancelBtn?: {
-    type: StringConstructor;
-    optionalTypes: Array<ObjectConstructor>;
-    value?: string | ButtonProps;
+    type: null;
+    value?: boolean | string | ButtonProps;
+  };
+  /**
+   * 配置每一列的选项
+   * @default []
+   */
+  columns: {
+    type: ArrayConstructor;
+    value?: Array<PickerColumn> | ((item: Array<PickerValue>) => Array<PickerColumn>);
   };
   /**
    * 确定按钮文字
-   * @default 确认
+   * @default true
    */
   confirmBtn?: {
-    type: StringConstructor;
-    optionalTypes: Array<ObjectConstructor>;
-    value?: string | ButtonProps;
+    type: null;
+    value?: boolean | string | ButtonProps;
   };
   /**
    * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
@@ -32,6 +46,13 @@ export interface TdPickerProps {
   header?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 自定义label
+   */
+  renderLabel?: {
+    type: StringConstructor;
+    value?: (item: PickerColumnItem) => string;
   };
   /**
    * 标题
@@ -71,7 +92,7 @@ export interface TdPickerItemProps {
    */
   format?: {
     type: null;
-    value?: (option: PickerItemOption) => string;
+    value?: (option: PickerColumnItem) => string;
   };
   /**
    * 数据源
@@ -79,13 +100,14 @@ export interface TdPickerItemProps {
    */
   options?: {
     type: ArrayConstructor;
-    value?: Array<PickerItemOption>;
+    value?: Array<PickerColumnItem>;
   };
+}
+export type PickerColumn = PickerColumnItem[];
+
+export interface PickerColumnItem {
+  label: string;
+  value: string;
 }
 
 export type PickerValue = string | number;
-
-export interface PickerItemOption {
-  label: string;
-  value: string | number;
-}

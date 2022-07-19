@@ -1,0 +1,1 @@
+<t-skeleton theme="{{theme}}" loading="{{loading}}"></t-skeleton>

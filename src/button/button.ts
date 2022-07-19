@@ -100,7 +100,7 @@ export default class Button extends SuperComponent {
     handleTap(e) {
       if (this.data.disabled) return;
 
-      this.triggerEvent('tap', e.detail);
+      this.triggerEvent('tap', e);
     },
   };
 }

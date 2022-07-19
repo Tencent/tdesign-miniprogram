@@ -1,3 +1,14 @@
 {
-  "navigationBarTitleText": "Tag"
+  "navigationBarTitleText": "Tag",
+  "usingComponents": {
+    "t-tag": "tdesign-miniprogram/tag/tag",
+    "t-check-tag": "tdesign-miniprogram/tag/check-tag",
+    "theme": "./theme",
+    "ellipsis": "./ellipsis",
+    "size": "./size",
+    "iconDemo": "./iconDemo",
+    "shape": "./shape",
+    "closable": "./closable",
+    "checkable": "./checkable"
+  }
 }
