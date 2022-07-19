@@ -1,6 +1,13 @@
 <wxs src="./tabs.wxs" module="filters" />
 <view class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{placement}}">
-  <scroll-view class="{{classPrefix}}__scroll" enable-flex scroll-x="{{isScrollX}}" scroll-y="{{isScrollY}}">
+  <scroll-view
+    class="{{classPrefix}}__scroll"
+    enable-flex
+    scroll-left="{{offset}}"
+    scroll-x="{{isScrollX}}"
+    scroll-y="{{isScrollY}}"
+    scroll-with-animation
+  >
     <view class="{{classPrefix}}__nav">
       <view
         wx:for="{{tabs}}"
