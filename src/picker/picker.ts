@@ -89,6 +89,8 @@ export default class Picker extends SuperComponent {
     onConfirm() {
       const [value, label] = this.getSelectedValue();
       const columns = this.getColumnIndexes();
+
+      this.close();
       this.triggerEvent('change', { value, label, columns });
       this.triggerEvent('confirm', { value, label, columns });
     },
@@ -99,7 +101,21 @@ export default class Picker extends SuperComponent {
     },
 
     onCancel() {
+      this.close();
       this.triggerEvent('cancel');
+    },
+
+    onPopupChange(e) {
+      const { visible } = e.detail;
+
+      this.close();
+      this.triggerEvent('visible-change', { visible });
+    },
+
+    close() {
+      if (this.data.autoClose) {
+        this.setData({ visible: false });
+      }
     },
   };
 

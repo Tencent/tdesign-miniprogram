@@ -1,0 +1,1 @@
+<t-skeleton rowCol="{{grid}}" loading></t-skeleton>

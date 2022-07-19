@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Result Page",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-result": "tdesign-miniprogram/result/result"
+  }
+}

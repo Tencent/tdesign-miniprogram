@@ -2,6 +2,11 @@
   "navigationBarTitleText": "Skeleton 骨架屏",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "theme": "./theme",
+    "grid": "./grid",
+    "cell-group": "./cell-group",
+    "image-group": "./image-group",
+    "animation": "./animation"
   }
 }

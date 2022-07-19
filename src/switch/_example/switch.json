@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "Switch",
   "usingComponents": {
-    "t-demo": "../../components/demo-block"
+    "t-demo": "../../components/demo-block",
+    "base": "./base",
+    "status": "./status"
   }
 }

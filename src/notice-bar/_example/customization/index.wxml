@@ -1,0 +1,27 @@
+<t-notice-bar
+  visible="{{true}}"
+  prefixIcon="null"
+  content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+></t-notice-bar>
+
+<t-notice-bar
+  visible="{{true}}"
+  content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+></t-notice-bar>
+
+<t-notice-bar
+  visible="{{true}}"
+  suffixIcon="chevron-right"
+  content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+></t-notice-bar>
+
+<!-- slot实现自定义content内容 -->
+<t-notice-bar visible="{{true}}">
+  <view slot="content">
+    提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
+    <view class="extra" bind:tap="clickDetail"> 详情 </view>
+  </view>
+  <view slot="suffixIcon">
+    <t-icon name="close"></t-icon>
+  </view>
+</t-notice-bar>

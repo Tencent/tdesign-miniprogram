@@ -1,0 +1,5 @@
+<t-notice-bar visible="{{visible}}" content="提示文字描述提示文字描述提示文字描述">
+  <view slot="prefixIcon">
+    <t-icon name="error-circle-filled"></t-icon>
+  </view>
+</t-notice-bar>

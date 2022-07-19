@@ -34,7 +34,7 @@ export interface TdDrawerProps {
    */
   placement?: {
     type: StringConstructor;
-    value?: 'left' | 'right' | 'top' | 'bottom';
+    value?: 'left' | 'right';
   };
   /**
    * 是否显示遮罩层

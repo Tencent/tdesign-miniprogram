@@ -21,13 +21,23 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/switch.png" width="375px" height="50%">
 
-```html
-<!-- page.wxml -->
+{{ base }}
 
-<!-- 受控用法 -->
+
+### 开关状态
+
+{{ status }}
+
+
+### 受控用法
+
+```html
 <t-switch value="{{value}}" bindchange="onChange"></t-switch>
 
-<!-- 非受控用法 -->
+```
+### 非受控用法
+
+```html
 <t-switch defaultValue="{{value}}"></t-switch>
 ```
 
