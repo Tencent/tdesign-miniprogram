@@ -1,0 +1,14 @@
+.capsule {
+  width: 180rpx;
+  height: 48rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 24rpx;
+  line-height: 48rpx;
+  border-radius: 32rpx;
+  background: rgba(0, 0, 0, 0.14);
+  border: 1rpx solid rgba(255, 255, 255, 0.2);
+  font-size: 24rpx;
+}

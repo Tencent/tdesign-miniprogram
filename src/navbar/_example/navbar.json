@@ -1,6 +1,12 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "base": "./base",
+    "brand": "./brand",
+    "back": "./back",
+    "back-home": "./back-home",
+    "img": "./img",
+    "brand-long": "./brand-long",
+    "custom-capsule": "./custom-capsule"
   }
 }
