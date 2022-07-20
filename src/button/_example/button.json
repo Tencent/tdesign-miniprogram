@@ -4,6 +4,8 @@
     "base": "./base",
     "size": "./size",
     "status": "./status",
-    "group": "./group"
+    "group": "./group",
+    "shape": "./shape",
+    "icon-btn": "./icon-btn"
   }
 }

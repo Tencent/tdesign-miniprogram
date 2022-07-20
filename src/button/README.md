@@ -21,21 +21,36 @@ isComponent: true
 ### 基础按钮
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/button-1.png" width="375px" height="50%">
+基础类型分为主按钮、次按钮、文字按钮
+
+#### 次按钮
+使用场景：在用户进行的操作为流程中的辅助操作，或者进行不那么重要的交互行为时，选择用次按钮；次要按钮通常和主要按钮一起出现
+
+#### 主按钮
+使用场景：大部分场景都可以使用，例如反馈页、表单页、对话框，一个页面建议最多只出现一个主按钮；
+
+#### 文字按钮
+使用场景：它的操作通常和其旁边内容相关，通常出现在标题旁、字段旁、列表最下方
 
 {{ base }}
 
-### 不同状态的按钮
+### 带图标按钮
+{{ icon-btn }}
+
+### 不同状态
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/button-2.png" width="375px" height="50%">
 
 {{ status }}
 
-### 不同尺寸的按钮
+### 不同尺寸
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/button-3.png" width="375px" height="50%">
 
 {{ size }}
 
+### 不同形状
+{{ shape }}
 
 ### 按钮组
 

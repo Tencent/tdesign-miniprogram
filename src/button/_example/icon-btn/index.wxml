@@ -1,0 +1,16 @@
+<view class="box">
+  <t-button class="content-margin-right" theme="primary" icon="app" content="带图标按钮"></t-button>
+  <t-button class="content-margin-right" theme="primary" icon="app" shape="round">
+    <text>带图标按钮</text>
+  </t-button>
+</view>
+
+<view class="box">
+  <t-button class="content-margin-right" theme="primary" icon="app" shape="square"></t-button>
+  <t-button class="content-margin-right" theme="primary" icon="app" shape="circle"></t-button>
+</view>
+
+<view class="box">
+  <t-button class="content-margin-right" theme="primary" shape="square" loading></t-button>
+  <t-button class="content-margin-right" theme="primary" loading>加载中...</t-button>
+</view>

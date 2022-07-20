@@ -3,21 +3,3 @@
   <t-button class="content-margin-right" theme="primary">按钮 40</t-button>
   <t-button class="content-margin-right" theme="primary" size="small">按钮 36</t-button>
 </view>
-
-<view class="box align-bottom">
-  <t-button class="content-margin-right" theme="primary" size="large" icon="app" shape="round">按钮</t-button>
-  <t-button class="content-margin-right" theme="primary" icon="app" shape="round">按钮</t-button>
-  <t-button class="content-margin-right" theme="primary" size="small" icon="app" shape="round">按钮</t-button>
-</view>
-
-<view class="box align-bottom">
-  <t-button class="content-margin-right" theme="primary" size="large" icon="app" shape="square"></t-button>
-  <t-button class="content-margin-right" theme="primary" icon="app" shape="square"></t-button>
-  <t-button class="content-margin-right" theme="primary" size="small" icon="app" shape="square"></t-button>
-</view>
-
-<view class="box align-bottom">
-  <t-button class="content-margin-right" theme="primary" size="large" icon="app" shape="circle"></t-button>
-  <t-button class="content-margin-right" theme="primary" icon="app" shape="circle"></t-button>
-  <t-button class="content-margin-right" theme="primary" size="small" icon="app" shape="circle"></t-button>
-</view>

@@ -3,6 +3,7 @@
   <view class="demo-desc">用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。</view>
   <t-demo title="01 类型">
     <base />
+    <icon-btn />
   </t-demo>
 
   <t-demo title="02 状态">
@@ -11,6 +12,7 @@
 
   <t-demo title="03 规格">
     <size />
+    <shape />
   </t-demo>
 
   <t-demo title="04 按钮组">
