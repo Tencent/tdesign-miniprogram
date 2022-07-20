@@ -13,12 +13,12 @@
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content">
       <input
-        maxlength="{{maxlength || -1}}"
+        maxlength="{{maxlength || maxchars || -1}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholderStyle="{{placeholderStyle}}"
         placeholder-class="{{classPrefix}}__placeholder t-class-placeholder {{placeholderClass}}"
-        model:value="{{value}}"
+        value="{{value}}"
         bindinput="onInput"
         bindfocus="onFocus"
         bindblur="onBlur"

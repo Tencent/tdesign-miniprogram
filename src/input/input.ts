@@ -36,24 +36,45 @@ export default class Input extends SuperComponent {
     classPrefix: name,
     classBasePrefix: prefix,
     characterLength: 0,
+    maxchars: -1,
   };
 
   methods = {
+    updateValue(value) {
+      const { maxcharacter } = this.properties;
+      const maxcharacterValue = Number(maxcharacter);
+      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+        const { length = 0, characters, overflow } = getCharacterLength(value, maxcharacter);
+        if (length < maxcharacterValue) {
+          this.setData({
+            value,
+            characterLength: length,
+            maxchars: -1,
+          });
+        } else if (!overflow) {
+          this.setData({
+            value,
+            characterLength: length,
+            maxchars: value.length,
+          });
+        } else {
+          this.setData({
+            value: characters,
+            characterLength: length,
+            maxchars: value.length - 1,
+          });
+        }
+      } else {
+        this.setData({
+          value,
+          characterLength: value ? String(value).length : 0,
+        });
+      }
+    },
     onInput(e) {
       const { value, cursor, keyCode } = e.detail;
-      const { maxcharacter } = this.properties;
-
-      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { characters = '', length = 0 } = getCharacterLength(value, maxcharacter);
-
-        this.triggerEvent('change', { value: characters, cursor, keyCode });
-        this.setData({
-          value: characters,
-          characterLength: length,
-        });
-      } else {
-        this.triggerEvent('change', { value, cursor, keyCode });
-      }
+      this.updateValue(value);
+      this.triggerEvent('change', { value, cursor, keyCode });
     },
     onFocus(e) {
       this.triggerEvent('focus', e.detail);
