@@ -37,7 +37,6 @@ export default class PickerItem extends SuperComponent {
     offset: 0, // 滚动偏移量
     duration: 0, // 滚动动画延迟
     value: '',
-    options: [],
   };
 
   methods = {
