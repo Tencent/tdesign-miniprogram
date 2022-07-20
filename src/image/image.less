@@ -18,19 +18,21 @@
     width: 100%;
     height: 100%;
   }
-}
 
-.circle {
-  border-radius: @border-radius-50;
-  overflow: hidden;
-}
+  &--shape {
+    &-circle {
+      border-radius: @border-radius-50;
+      overflow: hidden;
+    }
 
-.round {
-  border-radius: (@border-radius / 2);
-  overflow: hidden;
-}
+    &-round {
+      border-radius: (@border-radius / 2);
+      overflow: hidden;
+    }
 
-.square {
-  border-radius: 0;
-  overflow: hidden;
+    &-square {
+      border-radius: 0;
+      overflow: hidden;
+    }
+  }
 }

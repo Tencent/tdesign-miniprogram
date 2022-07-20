@@ -1,7 +1,7 @@
 <!-- 加载中占位 -->
 <view
   wx:if="{{isLoading}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{shape}}"
+  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
 >
   <t-loading
     wx:if="{{loading === 'default'}}"
@@ -19,7 +19,7 @@
 <!-- 加载失败占位 -->
 <view
   wx:elif="{{isFailed}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--faild {{shape}}"
+  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--faild {{classPrefix}}--shape-{{shape}}"
 >
   <view wx:if="{{error === 'default'}}" style="font-size: 40rpx; color: #999" class="{{prefix}}-class-load">
     <t-icon name="close" />
@@ -33,7 +33,7 @@
 <image
   id="image"
   hidden="{{isLoading || isFailed}}"
-  class="{{prefix}}-class {{classPrefix}} {{shape}}"
+  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--shape-{{shape}}"
   src="{{src}}"
   style="{{widthStyle}}"
   mode="{{mode}}"

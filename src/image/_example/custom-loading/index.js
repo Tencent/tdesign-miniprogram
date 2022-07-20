@@ -1,6 +1,6 @@
 Component({
-  lifetimes: {
-    attached() {
+  pageLifetimes: {
+    show: function () {
       const loadingImageCustom = this.selectComponent('#loading-img-custom');
       loadingImageCustom.onLoadError = null;
       loadingImageCustom.onLoaded = null;
