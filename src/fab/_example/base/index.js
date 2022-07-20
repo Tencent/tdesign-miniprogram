@@ -1,1 +1,1 @@
-Page({});
+Component({});
