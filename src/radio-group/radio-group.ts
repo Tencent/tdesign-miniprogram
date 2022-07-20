@@ -1,5 +1,5 @@
 import config from '../common/config';
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import Props from '../radio/radio-group-props';
 
 const { prefix } = config;
@@ -15,9 +15,9 @@ export default class RadioGroup extends SuperComponent {
     radioOptions: [],
   };
 
-  relations = {
+  relations: RelationsOptions = {
     '../radio/radio': {
-      type: 'descendant' as 'descendant',
+      type: 'descendant',
       linked(target) {
         const { value, disabled } = this.data;
         target.setData({

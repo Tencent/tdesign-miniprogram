@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -18,9 +18,9 @@ export default class Picker extends SuperComponent {
     multipleSlots: true,
   };
 
-  relations = {
+  relations: RelationsOptions = {
     './picker-item': {
-      type: 'child' as 'child',
+      type: 'child',
       linked(this: Picker) {
         this.updateChildren();
       },

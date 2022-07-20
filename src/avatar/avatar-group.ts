@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import avatarGroupProps from './avatar-group-props';
 
@@ -22,9 +22,9 @@ export default class AvatarGroup extends SuperComponent {
     multipleSlots: true,
   };
 
-  relations = {
+  relations: RelationsOptions = {
     './avatar': {
-      type: 'descendant' as 'descendant',
+      type: 'descendant',
       linked(this: AvatarGroup) {
         this.children = this.getRelationNodes('./avatar');
       },

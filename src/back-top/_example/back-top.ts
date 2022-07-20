@@ -29,7 +29,7 @@ Page({
     ],
   },
 
-  windowHeight: null as null | number,
+  windowHeight: null,
 
   onPageScroll(e) {
     if (!this.windowHeight) {
@@ -41,8 +41,8 @@ Page({
     }
   },
 
-  onBtnClick(e: any) {
-    const index = e.currentTarget.dataset.index as number;
+  onBtnClick(e: WechatMiniprogram.TouchEvent) {
+    const { index } = e.currentTarget.dataset;
     this.setData({ backTopDemo: backTopDemos[index] });
     wx.pageScrollTo({ duration: 300, scrollTop: 1000 });
   },

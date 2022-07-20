@@ -1,6 +1,6 @@
 import dom from '../behaviors/dom';
 import touch from '../behaviors/touch';
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 
@@ -20,9 +20,9 @@ export default class Tabs extends SuperComponent {
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`, `${prefix}-class-track`];
 
-  relations = {
+  relations: RelationsOptions = {
     './tab-panel': {
-      type: 'descendant' as 'descendant',
+      type: 'descendant',
       linked(target: any) {
         this.children.push(target);
         target.index = this.children.length - 1;

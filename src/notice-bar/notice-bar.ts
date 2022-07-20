@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 import { getRect, requestAnimationFrame } from '../common/utils';
 import props from './props';
 import config from '../common/config';
@@ -16,8 +16,8 @@ export default class NoticeBar extends SuperComponent {
     `${prefix}-class-suffix-icon`,
   ];
 
-  options = {
-    styleIsolation: 'apply-shared' as const,
+  options: ComponentsOptionsType = {
+    styleIsolation: 'apply-shared',
     multipleSlots: true,
   };
 
