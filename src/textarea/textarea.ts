@@ -41,14 +41,11 @@ export default class Textarea extends SuperComponent {
   };
 
   methods = {
-    onInput(event) {
-      const { value } = event.detail;
-
+    updateValue(value) {
       const { maxcharacter } = this.properties;
       const maxcharacterValue = Number(maxcharacter);
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { length = 0, characters, overflow } = getCharacterLength(value, maxcharacter);
-
         if (length < maxcharacterValue) {
           this.setData({
             value,
@@ -74,7 +71,11 @@ export default class Textarea extends SuperComponent {
           count: value ? String(value).length : 0,
         });
       }
+    },
 
+    onInput(event) {
+      const { value } = event.detail;
+      this.updateValue(value);
       this.triggerEvent('change', { value });
     },
     onFocus(event) {
