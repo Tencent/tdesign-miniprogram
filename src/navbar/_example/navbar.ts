@@ -45,12 +45,6 @@ Page({
     ],
   },
 
-  onGoHome() {
-    wx.navigateTo({
-      url: '/pages/home/home',
-    });
-  },
-
   /** 切换 navbar 示例 */
   clickHandle(e) {
     const key = e.detail;

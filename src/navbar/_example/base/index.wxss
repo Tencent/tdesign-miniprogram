@@ -1,0 +1,3 @@
+.nav-title {
+  font-size: 32rpx !important;
+}
