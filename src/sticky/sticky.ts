@@ -21,7 +21,9 @@ export default class Sticky extends SuperComponent {
   ];
 
   observers = {
-    'offsetTop, disabled, container': this.onScroll,
+    'offsetTop, disabled, container'() {
+      this.onScroll();
+    },
   };
 
   data = {
