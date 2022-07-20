@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import props from './tab-panel-props';
 import config from '../common/config';
 
@@ -7,9 +7,9 @@ const name = `${prefix}-tab-panel`;
 
 @wxComponent()
 export default class TabPanel extends SuperComponent {
-  relations = {
+  relations: RelationsOptions = {
     './tabs': {
-      type: 'ancestor' as 'ancestor',
+      type: 'ancestor',
     },
   };
 

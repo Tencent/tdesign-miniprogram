@@ -3,7 +3,7 @@
  * 因原生swiper受限，基于wxs重新实现，后期可以扩展更多丰富的功能
  * todo：无限循环，3D动效等
  */
-import { SuperComponent, wxComponent, ControlInstance, useControl } from '../common/src/index';
+import { SuperComponent, wxComponent, ControlInstance, useControl, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import { DIRECTION, NavTypes } from './common/constants';
 import props from './props';
@@ -85,9 +85,9 @@ export default class Swiper extends SuperComponent {
   // 受控属性
   control: ControlInstance = null;
 
-  relations = {
+  relations: RelationsOptions = {
     './swiper-item': {
-      type: 'child' as 'child',
+      type: 'child',
       linked: function () {
         // 最后一个触发linked，才执行更新
         clearTimeout(this.updateTimer);
@@ -99,7 +99,7 @@ export default class Swiper extends SuperComponent {
       },
     },
     './swiper-nav': {
-      type: 'child' as 'child',
+      type: 'child',
     },
   };
 

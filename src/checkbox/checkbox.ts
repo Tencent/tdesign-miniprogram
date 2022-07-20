@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import Props from './props';
 
@@ -16,9 +16,9 @@ export default class CheckBox extends SuperComponent {
 
   behaviors = ['wx://form-field'];
 
-  relations = {
+  relations: RelationsOptions = {
     '../checkbox-group/checkbox-group': {
-      type: 'ancestor' as 'ancestor',
+      type: 'ancestor',
       linked(parent) {
         const { value, disabled } = parent.data;
         const valueSet = new Set(value);

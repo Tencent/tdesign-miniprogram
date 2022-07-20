@@ -118,7 +118,7 @@ export default class Navbar extends SuperComponent {
   }
 
   calcLeftBtn() {
-    const { homeIcon, leftIcon } = this.properties as any;
+    const { homeIcon, leftIcon } = this.properties;
 
     let home = false;
     let back = false;

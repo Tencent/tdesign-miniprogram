@@ -1,4 +1,4 @@
-import { isObject, SuperComponent, wxComponent } from '../common/src/index';
+import { isObject, SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -9,9 +9,9 @@ const name = `${prefix}-grid`;
 export default class Grid extends SuperComponent {
   externalClasses = ['t-class'];
 
-  relations = {
+  relations: RelationsOptions = {
     './grid-item': {
-      type: 'descendant' as 'descendant',
+      type: 'descendant',
     },
   };
 
