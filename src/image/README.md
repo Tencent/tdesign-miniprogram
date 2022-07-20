@@ -17,50 +17,35 @@ isComponent: true
 
 ## 代码演示
 
-### 基础图片
+### 裁切样式
+{{ mode }}
 
-`mode`属性控制图片的缩放/裁剪模式，并可通过`class`设置图片圆角样式
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/image-1.png" width="375px" height="50%">
+### 圆角样式
 
-```html
-<!-- 裁切样式 裁切 -->
-<t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
+{{ shape }}
 
-<!-- 圆角样式 圆角方形 -->
-<t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
-```
+### 加载-默认提示
 
-### 特殊图片
+{{ image-loading }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/image-2.png" width="375px" height="50%">
 
-```html
-<!-- 加载中 默认提示 -->
-<t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill"></t-image>
+### 加载-自定义提示
 
-<!-- 加载中 自定义提示 -->
-<t-image id="loading-img-custom" class="size-l radius-m" src="" mode="aspectFill" loading="slot">
-  <t-loading
-    slot="loading"
-    theme="circular"
-    size="40rpx"
-    loading
-    style="opacity: 0.6"
-    t-class-text="loading-text"
-    t-class="loading-container"
-    class="custom-loading"
-  ></t-loading>
-</t-image>
+{{ custom-loading }}
 
-<!-- 加载失败 默认提示 -->
-<t-image class="size-l radius-m" src="" mode="aspectFill"></t-image>
+### 加载失败-默认提示
 
-<!-- 加载失败 自定义提示 -->
-<t-image class="size-l radius-m" src="" mode="aspectFill" loadFailed="slot">
-  <view slot="loadFailed" class="custom-loading-failed">加载失败</view>
-</t-image>
-```
+{{ error-loading }}
+
+### 加载失败-自定义提示
+
+{{ custom-error-loading }}
+
+### 常用图片尺寸
+
+{{ size }}
+
 
 ## API
 ### Image Props

@@ -1,0 +1,1 @@
+<t-image t-class="size-{{size}}" src="{{imageSrc}}" mode="aspectFill" shape="round"></t-image>
