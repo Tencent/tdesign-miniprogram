@@ -1,5 +1,5 @@
 const display = {
-  name: '信息展示',
+  name: '数据展示',
   icon: 'image',
   childArr: [
     {
@@ -18,10 +18,6 @@ const display = {
     //   name: 'CanvasPoster',
     //   label: '海报分享',
     // },
-    {
-      name: 'Cell',
-      label: '单元格',
-    },
     {
       name: 'Collapse',
       label: '折叠面板',
@@ -49,10 +45,6 @@ const display = {
     {
       name: 'Footer',
       label: '页脚',
-    },
-    {
-      name: 'Grid',
-      label: '宫格',
     },
     {
       name: 'Image',

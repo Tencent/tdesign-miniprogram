@@ -1,5 +1,5 @@
 const form = {
-  name: '表单',
+  name: '输入',
   icon: 'bulletpoint',
   childArr: [
     {

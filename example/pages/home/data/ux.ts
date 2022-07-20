@@ -1,5 +1,5 @@
 const ux = {
-  name: '反馈提示',
+  name: '消息提醒',
   icon: 'chat',
   childArr: [
     {
