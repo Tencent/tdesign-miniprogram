@@ -6,7 +6,7 @@ import matter from 'gray-matter';
 
 // import testCoverage from '../test-coverage';
 
-const componentPath = path.join(__dirname, './component.vue');
+const componentPath = path.join(__dirname, './component.vue').replaceAll('\\', '/');
 
 const DEAULT_TABS = [
   { tab: 'demo', name: '示例' },
@@ -16,7 +16,7 @@ const DEAULT_TABS = [
 
 export default function mdToVue(options) {
   const mdSegment = customRender(options);
-  const { demoCodesImportsStr, demoCodesDefsStr } = options;
+  const { demoCodesImportsStr = '', demoCodesDefsStr } = options;
 
   // let coverage = '';
   // if (mdSegment.isComponent) {
