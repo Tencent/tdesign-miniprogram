@@ -21,34 +21,7 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/indexes.png" width="375px" height="50%">
 
-```html
-<t-indexes list="{{letter}}" bind:select="onSelect"> </t-indexes>
-```
-
-```js
-Page({
-  data: {
-    letter: [
-      {
-        title: 'A开头',
-        index: 'A',
-        children: [{ title: '阿坝' }, { title: '阿拉善' }, { title: '阿里' }, { title: '安康' }],
-      },
-      {
-        title: 'B开头',
-        index: 'B',
-        children: [{ title: '北京' }, { title: '白银' }, { title: '保定' }],
-      },
-    ],
-  },
-  onSelect(e) {
-    const { indexes } = e.detail;
-    const group = this.data.letter[indexes[0]];
-    const city = group.children[indexes[1]];
-    wx.showToast({ icon: 'none', title: `你选择了: ${group.title}>${city.title}` });
-  },
-});
-```
+{{ display }}
 
 ### API
 
