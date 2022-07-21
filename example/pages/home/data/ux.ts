@@ -15,6 +15,10 @@ const ux = {
       label: '对话框',
     },
     {
+      name: 'Drawer',
+      label: '抽屉',
+    },
+    {
       name: 'Loading',
       label: '加载',
     },
@@ -26,10 +30,10 @@ const ux = {
       name: 'Message',
       label: '消息通知',
     },
-    // {
-    //   name: 'NoticeBar',
-    //   label: '公告栏',
-    // },
+    {
+      name: 'NoticeBar',
+      label: '公告栏',
+    },
     {
       name: 'Overlay',
       label: '遮罩层',

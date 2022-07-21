@@ -100,6 +100,13 @@ export default {
       type: 'component',
       children: [
         {
+          title: 'DropdownMenu 下拉菜单',
+          name: 'dropdown-menu',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/dropdown-menu',
+          component: () => import('@/dropdown-menu/README.md'),
+        },
+        {
           title: 'Indexes 索引',
           name: 'indexes',
           meta: { docType: 'navigation' },
@@ -119,6 +126,13 @@ export default {
           meta: { docType: 'navigation' },
           path: '/miniprogram/components/steps',
           component: () => import('@/steps/README.md'),
+        },
+        {
+          title: 'Sticky 吸顶容器',
+          name: 'sticky',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/sticky',
+          component: () => import('@/sticky/README.md'),
         },
         {
           title: 'TabBar 标签栏',
@@ -259,13 +273,6 @@ export default {
           component: () => import('@/count-down/README.md'),
         },
         {
-          title: 'DropdownMenu 下拉菜单',
-          name: 'dropdown-menu',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/dropdown-menu',
-          component: () => import('@/dropdown-menu/README.md'),
-        },
-        {
           title: 'Empty 空状态',
           name: 'empty',
           meta: { docType: 'data' },
@@ -289,9 +296,16 @@ export default {
         {
           title: 'ImageViewer 图片预览',
           name: 'image-viewer',
-          meta: { docType: 'navigation' },
+          meta: { docType: 'data' },
           path: '/miniprogram/components/image-viewer',
           component: () => import('@/image-viewer/README.md'),
+        },
+        {
+          title: 'Result 结果',
+          name: 'result',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/result',
+          component: () => import('@/result/README.md'),
         },
         {
           title: 'Skeleton 骨架屏',
@@ -299,13 +313,6 @@ export default {
           meta: { docType: 'data' },
           path: '/miniprogram/components/skeleton',
           component: () => import('@/skeleton/README.md'),
-        },
-        {
-          title: 'Sticky 吸顶容器',
-          name: 'sticky',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/sticky',
-          component: () => import('@/sticky/README.md'),
         },
         {
           title: 'Swiper 轮播图',
@@ -320,13 +327,6 @@ export default {
           meta: { docType: 'data' },
           path: '/miniprogram/components/tag',
           component: () => import('@/tag/README.md'),
-        },
-        {
-          title: 'Result 结果',
-          name: 'result',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/result',
-          component: () => import('@/result/README.md'),
         },
       ],
     },

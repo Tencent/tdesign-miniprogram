@@ -15,10 +15,6 @@ const form = {
       label: '输入框',
     },
     {
-      name: 'Textarea',
-      label: '多行输入框',
-    },
-    {
       name: 'Picker',
       label: '选择器',
     },
@@ -45,6 +41,10 @@ const form = {
     {
       name: 'Switch',
       label: '开关',
+    },
+    {
+      name: 'Textarea',
+      label: '多行输入框',
     },
     // {
     //   name: 'PeriodSelector',

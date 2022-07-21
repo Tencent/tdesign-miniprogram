@@ -27,16 +27,8 @@ const display = {
       label: '倒计时',
     },
     {
-      name: 'DropdownMenu',
-      label: '下拉菜单',
-    },
-    {
       name: 'Empty',
       label: '空状态',
-    },
-    {
-      name: 'Result',
-      label: '结果',
     },
     // {
     //   name: 'Error',
@@ -55,6 +47,10 @@ const display = {
       label: '图片预览',
     },
     {
+      name: 'Result',
+      label: '结果',
+    },
+    {
       name: 'Swiper',
       label: '轮播图',
     },
@@ -65,10 +61,6 @@ const display = {
     {
       name: 'Skeleton',
       label: '骨架屏',
-    },
-    {
-      name: 'Sticky',
-      label: '吸顶',
     },
     {
       name: 'NoticeBar',
