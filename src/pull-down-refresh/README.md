@@ -64,3 +64,4 @@ value | Boolean | false | 组件状态，值为 `true` 表示下拉状态，值�
 change | `(value: boolean)` | 下拉或收起时触发，用户手势往下滑动触发下拉状态，手势松开触发收起状态
 refresh | - | 结束下拉时触发
 timeout | - | 刷新超时触发
+scrolltolower | - | 滚动到页面底部时触发
