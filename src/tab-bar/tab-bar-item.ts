@@ -11,11 +11,8 @@ export default class TabbarItem extends SuperComponent {
     './tab-bar': {
       type: 'ancestor',
       linked(parent) {
-        const [activeColor, color] = parent.data.color;
         this.data.parent = parent;
         this.setData({
-          color,
-          activeColor,
           split: parent.data.split,
           currentName: this.properties.value ? this.properties.value : parent.initName(),
         });
@@ -36,8 +33,6 @@ export default class TabbarItem extends SuperComponent {
     parent: null,
     hasChildren: false,
     currentName: '',
-    color: '',
-    activeColor: '',
     split: true,
   };
 

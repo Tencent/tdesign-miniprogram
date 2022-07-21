@@ -3,11 +3,7 @@
   hover-class="{{classPrefix}}--active"
   hover-stay-time="{{200}}"
 >
-  <view
-    class="{{classPrefix}}__content {{isChecked ? prefix + '-is-checked' : ''}}"
-    style="color: {{isChecked ? activeColor : color}}"
-    bindtap="toggle"
-  >
+  <view class="{{classPrefix}}__content {{isChecked ? prefix + '-is-checked' : ''}}" bindtap="toggle">
     <view class="{{classPrefix}}__icon" wx:if="{{icon}}">
       <t-badge
         wx:if="{{badgeProps.dot || badgeProps.count}}"

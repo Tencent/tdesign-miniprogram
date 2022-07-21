@@ -1,5 +1,5 @@
 <view
-  class="{{classPrefix}} {{bordered ? classPrefix + '--border' : ''}} {{fixed ? classPrefix + '--fixed' : ''}} {{safeAreaInsetBottom ? classPrefix + '--safe' : ''}} t-class"
+  class="{{classPrefix}} {{bordered ? classPrefix + '--border' : ''}} {{fixed ? classPrefix + '--fixed' : ''}} {{safeAreaInsetBottom ? classPrefix + '--safe' : ''}} {{prefix}}-class"
 >
   <slot />
 </view>

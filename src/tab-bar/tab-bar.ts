@@ -13,9 +13,10 @@ export default class Tabbar extends SuperComponent {
     },
   };
 
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   data = {
+    prefix,
     classPrefix,
     defaultNameIndex: -1,
   };

@@ -1,0 +1,7 @@
+.wrapper {
+  --t-tab-bar-border-color: gray;
+  --t-tab-bar-bg-color: #eee;
+  --t-tab-bar-hover-color: #ddd;
+  --t-tab-bar-item-color: #bbb;
+  --t-tab-bar-item-active-color: #333;
+}
