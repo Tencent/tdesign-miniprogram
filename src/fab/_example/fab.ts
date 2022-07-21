@@ -1,10 +1,10 @@
 Page({
   data: {
-    fabButton: {
-      openType: 'getPhoneNumber',
-    },
+    type: 'base',
   },
-  handleClick(e) {
-    console.log(e);
+  handleChange(e) {
+    this.setData({
+      type: e.target.dataset.type,
+    });
   },
 });

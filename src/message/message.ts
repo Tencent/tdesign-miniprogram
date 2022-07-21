@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
@@ -12,8 +12,8 @@ const SHOW_DURATION = 500;
 export default class Message extends SuperComponent {
   externalClasses = ['t-class', 't-class-content', 't-class-icon', 't-class-action', 't-class-close-btn'];
 
-  options = {
-    styleIsolation: 'apply-shared' as const,
+  options: ComponentsOptionsType = {
+    styleIsolation: 'apply-shared',
     multipleSlots: true,
   };
 

@@ -3,8 +3,8 @@ const nav = {
   icon: 'view-module',
   childArr: [
     {
-      name: 'Drawer',
-      label: '抽屉',
+      name: 'DropdownMenu',
+      label: '下拉菜单',
     },
     {
       name: 'Indexes',
@@ -17,6 +17,10 @@ const nav = {
     {
       name: 'Steps',
       label: '步骤条',
+    },
+    {
+      name: 'Sticky',
+      label: '吸顶',
     },
     {
       name: 'TabBar',

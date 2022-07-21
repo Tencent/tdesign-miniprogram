@@ -15,6 +15,7 @@ export default class Image extends SuperComponent {
   properties = ImageProps;
 
   data = {
+    prefix,
     isLoading: true,
     isFailed: false,
     widthStyle: '', // 自动计算的图片宽度样式（兼容基础库版本2.10.3以下的版本不支持heightFix模式）
@@ -45,7 +46,7 @@ export default class Image extends SuperComponent {
       (versionArray[0] === 2 && versionArray[1] < 10) ||
       (versionArray[0] === 2 && versionArray[1] === 10 && versionArray[2] < 3)
     ) {
-      const mode = (this.properties.mode as any) as string;
+      const mode = this.properties.mode as any as string;
       if (mode === 'heightFix') {
         // 实现heightFix模式，保持高度和宽高比，设置对应的宽度
         const { height: picHeight, width: picWidth } = e.detail;

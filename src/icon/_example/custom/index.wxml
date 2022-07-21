@@ -1,0 +1,14 @@
+<view class="demo__list">
+  <view class="demo__card" wx:for="{{prefixIcons}}" wx:key="index">
+    <t-icon
+      name="{{item}}"
+      size="48rpx"
+      prefix="icon"
+      type="prefix"
+      data-name="{{item}}"
+      data-type="prefix"
+      bind:click="onIconTap"
+    />
+    <view class="demo__card-name">{{item}}</view>
+  </view>
+</view>

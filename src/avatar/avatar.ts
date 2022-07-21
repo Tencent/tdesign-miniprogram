@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import avatarProps from './props';
 
@@ -29,10 +29,10 @@ export default class Avatar extends SuperComponent {
     isChild: false,
   };
 
-  relations = {
+  relations: RelationsOptions = {
     './avatar-group': {
-      type: 'ancestor' as 'ancestor',
-      linked(this: Avatar, target: WechatMiniprogram.Component.TrivialInstance) {
+      type: 'ancestor',
+      linked(this, target) {
         this.parent = target;
       },
     },

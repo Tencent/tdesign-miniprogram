@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import Props from '../checkbox/checkbox-group-props';
 
@@ -8,9 +8,9 @@ const name = `${prefix}-checkbox-group`;
 export default class CheckBoxGroup extends SuperComponent {
   externalClasses = ['t-class'];
 
-  relations = {
+  relations: RelationsOptions = {
     '../checkbox/checkbox': {
-      type: 'descendant' as 'descendant',
+      type: 'descendant',
     },
   };
 

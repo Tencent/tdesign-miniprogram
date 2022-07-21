@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -18,9 +18,9 @@ export default class Picker extends SuperComponent {
     multipleSlots: true,
   };
 
-  relations = {
+  relations: RelationsOptions = {
     './picker-item': {
-      type: 'child' as 'child',
+      type: 'child',
       linked(this: Picker) {
         this.updateChildren();
       },
@@ -89,6 +89,8 @@ export default class Picker extends SuperComponent {
     onConfirm() {
       const [value, label] = this.getSelectedValue();
       const columns = this.getColumnIndexes();
+
+      this.close();
       this.triggerEvent('change', { value, label, columns });
       this.triggerEvent('confirm', { value, label, columns });
     },
@@ -99,7 +101,21 @@ export default class Picker extends SuperComponent {
     },
 
     onCancel() {
+      this.close();
       this.triggerEvent('cancel');
+    },
+
+    onPopupChange(e) {
+      const { visible } = e.detail;
+
+      this.close();
+      this.triggerEvent('visible-change', { visible });
+    },
+
+    close() {
+      if (this.data.autoClose) {
+        this.setData({ visible: false });
+      }
     },
   };
 

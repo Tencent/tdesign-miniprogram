@@ -1,0 +1,3 @@
+.slot-left {
+  padding-left: 20rpx;
+}

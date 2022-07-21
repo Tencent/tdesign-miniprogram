@@ -16,9 +16,10 @@ const props: TdTabPanelProps = {
     type: Boolean,
     value: false,
   },
-  /** 选项卡名称，可自定义选项卡导航内容 */
+  /** 选项卡名称 */
   label: {
     type: String,
+    value: '',
   },
   /** 用于自定义选项卡面板内容 */
   panel: {
@@ -26,8 +27,7 @@ const props: TdTabPanelProps = {
   },
   /** 选项卡的值，唯一标识 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
 };
 

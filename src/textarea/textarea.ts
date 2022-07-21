@@ -37,36 +37,46 @@ export default class Textarea extends SuperComponent {
     prefix,
     classPrefix: name,
     count: 0,
-  };
-
-  /* 组件生命周期 */
-  lifetimes = {
-    ready() {
-      this.getTextareaValueLength(this.data.value);
-    },
+    maxchars: -1,
   };
 
   methods = {
-    getTextareaValueLength(textareaValue) {
+    updateValue(value) {
       const { maxcharacter } = this.properties;
+      const maxcharacterValue = Number(maxcharacter);
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { length = 0 } = getCharacterLength(textareaValue, maxcharacter);
-        this.setData({
-          count: length,
-        });
+        const { length = 0, characters, overflow } = getCharacterLength(value, maxcharacter);
+        if (length < maxcharacterValue) {
+          this.setData({
+            value,
+            count: length,
+            maxchars: -1,
+          });
+        } else if (!overflow) {
+          this.setData({
+            value,
+            count: length,
+            maxchars: value.length,
+          });
+        } else {
+          this.setData({
+            value: characters,
+            count: length,
+            maxchars: value.length - 1,
+          });
+        }
       } else {
         this.setData({
-          count: textareaValue ? String(textareaValue).length : 0,
+          value,
+          count: value ? String(value).length : 0,
         });
       }
     },
+
     onInput(event) {
       const { value } = event.detail;
-      this.getTextareaValueLength(value);
-
-      this.triggerEvent('change', {
-        ...event.detail,
-      });
+      this.updateValue(value);
+      this.triggerEvent('change', { value });
     },
     onFocus(event) {
       this.triggerEvent('focus', {

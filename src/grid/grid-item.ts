@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, isObject } from '../common/src/index';
+import { SuperComponent, wxComponent, isObject, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './grid-item-props';
 
@@ -19,9 +19,9 @@ export default class GridItem extends SuperComponent {
     multipleSlots: true,
   };
 
-  relations = {
+  relations: RelationsOptions = {
     './grid': {
-      type: 'ancestor' as 'ancestor',
+      type: 'ancestor',
       linked(this: GridItem, target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
         this.updateStyle();

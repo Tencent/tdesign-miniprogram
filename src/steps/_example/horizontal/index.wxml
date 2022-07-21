@@ -1,0 +1,12 @@
+<block>
+  <!-- 非受控用法 -->
+  <t-steps class="demo-steps" defaultCurrent="1">
+    <t-step-item title="步骤描述" />
+    <t-step-item title="步骤描述" />
+  </t-steps>
+  <!-- 受控用法 -->
+  <t-steps class="demo-steps" bind:change="handleChange" current="{{current}}">
+    <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
+    <t-step-item title="步骤描述" content="辅助信息文字最多两行" />
+  </t-steps>
+</block>

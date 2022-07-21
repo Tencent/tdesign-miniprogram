@@ -53,13 +53,6 @@ export default {
           component: () => import('@/button/README.md'),
         },
         {
-          title: 'Divider 分割线',
-          name: 'divider',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/divider',
-          component: () => import('@/divider/README.md'),
-        },
-        {
           title: 'Fab 悬浮按钮',
           name: 'fab',
           meta: { docType: 'form' },
@@ -76,15 +69,42 @@ export default {
       ],
     },
     {
+      title: '布局',
+      type: 'component', // 组件文档
+      children: [
+        {
+          title: 'Cell 单元格',
+          name: 'cell',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/cell',
+          component: () => import('@/cell/README.md'),
+        },
+        {
+          title: 'Divider 分割线',
+          name: 'divider',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/divider',
+          component: () => import('@/divider/README.md'),
+        },
+        {
+          title: 'Grid 宫格',
+          name: 'grid',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/grid',
+          component: () => import('@/grid/README.md'),
+        },
+      ]
+    },
+    {
       title: '导航',
       type: 'component',
       children: [
         {
-          title: 'Drawer 抽屉',
-          name: 'drawer',
+          title: 'DropdownMenu 下拉菜单',
+          name: 'dropdown-menu',
           meta: { docType: 'navigation' },
-          path: '/miniprogram/components/drawer',
-          component: () => import('@/drawer/README.md'),
+          path: '/miniprogram/components/dropdown-menu',
+          component: () => import('@/dropdown-menu/README.md'),
         },
         {
           title: 'Indexes 索引',
@@ -106,6 +126,13 @@ export default {
           meta: { docType: 'navigation' },
           path: '/miniprogram/components/steps',
           component: () => import('@/steps/README.md'),
+        },
+        {
+          title: 'Sticky 吸顶容器',
+          name: 'sticky',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/sticky',
+          component: () => import('@/sticky/README.md'),
         },
         {
           title: 'TabBar 标签栏',
@@ -231,14 +258,6 @@ export default {
           path: '/miniprogram/components/badge',
           component: () => import('@/badge/README.md'),
         },
-
-        {
-          title: 'Cell 单元格',
-          name: 'cell',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/cell',
-          component: () => import('@/cell/README.md'),
-        },
         {
           title: 'Collapse 折叠面板',
           name: 'collapse',
@@ -254,13 +273,6 @@ export default {
           component: () => import('@/count-down/README.md'),
         },
         {
-          title: 'DropdownMenu 下拉菜单',
-          name: 'dropdown-menu',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/dropdown-menu',
-          component: () => import('@/dropdown-menu/README.md'),
-        },
-        {
           title: 'Empty 空状态',
           name: 'empty',
           meta: { docType: 'data' },
@@ -273,14 +285,7 @@ export default {
           meta: { docType: 'data' },
           path: '/miniprogram/components/footer',
           component: () => import('@/footer/README.md'),
-        },
-        {
-          title: 'Grid 宫格',
-          name: 'grid',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/grid',
-          component: () => import('@/grid/README.md'),
-        },
+        },        
         {
           title: 'Image 图片',
           name: 'image',
@@ -291,9 +296,16 @@ export default {
         {
           title: 'ImageViewer 图片预览',
           name: 'image-viewer',
-          meta: { docType: 'navigation' },
+          meta: { docType: 'data' },
           path: '/miniprogram/components/image-viewer',
           component: () => import('@/image-viewer/README.md'),
+        },
+        {
+          title: 'Result 结果',
+          name: 'result',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/result',
+          component: () => import('@/result/README.md'),
         },
         {
           title: 'Skeleton 骨架屏',
@@ -301,13 +313,6 @@ export default {
           meta: { docType: 'data' },
           path: '/miniprogram/components/skeleton',
           component: () => import('@/skeleton/README.md'),
-        },
-        {
-          title: 'Sticky 吸顶容器',
-          name: 'sticky',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/sticky',
-          component: () => import('@/sticky/README.md'),
         },
         {
           title: 'Swiper 轮播图',
@@ -349,6 +354,13 @@ export default {
           meta: { docType: 'message' },
           path: '/miniprogram/components/dialog',
           component: () => import('@/dialog/README.md'),
+        },
+        {
+          title: 'Drawer 抽屉',
+          name: 'drawer',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/drawer',
+          component: () => import('@/drawer/README.md'),
         },
         {
           title: 'Loading 加载',

@@ -1,0 +1,5 @@
+<t-navbar leftIcon="slot" t-class-left="external-class-left" t-class-left-icon="left-icon-slot">
+  <span slot="left-icon" class="long-brand"
+    >品牌名称最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长</span
+  >
+</t-navbar>

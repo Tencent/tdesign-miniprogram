@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './picker-item-props';
 
@@ -15,9 +15,9 @@ const range = function (num: number, min: number, max: number) {
 
 @wxComponent()
 export default class PickerItem extends SuperComponent {
-  relations = {
+  relations: RelationsOptions = {
     './picker': {
-      type: 'parent' as 'parent',
+      type: 'parent',
       linked(this: PickerItem, parent) {
         this.parent = parent;
       },
@@ -37,7 +37,6 @@ export default class PickerItem extends SuperComponent {
     offset: 0, // 滚动偏移量
     duration: 0, // 滚动动画延迟
     value: '',
-    options: [],
   };
 
   methods = {
@@ -80,7 +79,7 @@ export default class PickerItem extends SuperComponent {
       wx.nextTick(() => {
         this._selectedIndex = index;
         this._selectedValue = options[index]?.value;
-
+        this._selectedLabel = options[index]?.label;
         this.parent?.triggerColumnChange({
           index,
           column: this.columnIndex || 0,

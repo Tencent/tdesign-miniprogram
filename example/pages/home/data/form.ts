@@ -1,5 +1,5 @@
 const form = {
-  name: '表单',
+  name: '输入',
   icon: 'bulletpoint',
   childArr: [
     {
@@ -13,10 +13,6 @@ const form = {
     {
       name: 'Input',
       label: '输入框',
-    },
-    {
-      name: 'Textarea',
-      label: '多行输入框',
     },
     {
       name: 'Picker',
@@ -45,6 +41,10 @@ const form = {
     {
       name: 'Switch',
       label: '开关',
+    },
+    {
+      name: 'Textarea',
+      label: '多行输入框',
     },
     // {
     //   name: 'PeriodSelector',

@@ -1,5 +1,5 @@
 import config from '../common/config';
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import Props from './props';
 
 const { prefix } = config;
@@ -21,9 +21,9 @@ export default class Radio extends SuperComponent {
 
   behaviors = ['wx://form-field'];
 
-  relations = {
+  relations: RelationsOptions = {
     '../radio-group/radio-group': {
-      type: 'ancestor' as 'ancestor',
+      type: 'ancestor',
     },
   };
 
