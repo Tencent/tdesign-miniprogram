@@ -7,6 +7,7 @@
 @input-error-text-color: #e34d59;
 @input-suffix-text-color: @text-level-1-color;
 @input-border-color: #e7e7e7;
+@input-label-color: #000;
 
 @input-font-size: 32rpx;
 @input-icon-font-size: 32rpx;
@@ -20,9 +21,12 @@
 @input-suffix-text-padding-left: 24rpx;
 
 page {
+  --t-input-bg-color: @bg-color-block;
   --t-input-text-color: @input-text-color;
   --t-input-placeholder-text-color: @input-placeholder-text-color;
+  --t-input-error-msg-color: @input-placeholder-text-color;
   --t-input-disabled-text-color: @input-disabled-text-color;
+  --t-input-label-color: @input-label-color;
   --t-input-icon-color: @input-icon-color;
   --t-input-error-text-color: @input-error-text-color;
   --t-input-suffix-text-color: @input-suffix-text-color;
@@ -39,10 +43,11 @@ page {
   position: relative;
   display: flex;
   padding: @input-vertical-padding @input-horizontal-padding;
-  background: @bg-color-block;
+  background: var(--t-input-bg-color);
 
-  &__name {
+  &__label {
     width: 164rpx;
+    color: var(--t-input-label-color);
     margin-right: @input-name-horizontal-margin;
     flex: none;
   }
@@ -166,7 +171,7 @@ page {
       padding-top: @spacer-1;
       font-size: @input-error-msg-font-size;
       line-height: 1;
-      color: var(--t-input-placeholder-text-color);
+      color: var(--t-input-error-msg-color);
       width: 100%;
     }
   }

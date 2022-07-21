@@ -1,6 +1,15 @@
 {
   "navigationBarTitleText": "Input 输入框",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "t-input": "tdesign-miniprogram/input/input",
+    "base": "./base",
+    "require": "./require",
+    "suffix": "./suffix",
+    "size": "./size",
+    "align": "./align",
+    "maxlength": "./maxlength",
+    "special": "./special",
+    "status": "./status",
+    "custom": "./custom"
   }
 }

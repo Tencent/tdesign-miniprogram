@@ -1,11 +1,11 @@
 <view
   class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + (borderless ? '' : '--bordered')}} {{prefix}}-class"
 >
-  <view wx:if="{{prefixIcon}}" class="{{classPrefix + '__icon-wrap'}}">
+  <view wx:if="{{prefixIcon}}" class="{{classPrefix}}__icon-wrap">
     <slot name="prefixIcon" wx:if="{{prefixIcon === 'slot'}}" />
-    <t-icon wx:else class="{{classPrefix + '__icon--prefix'}} {{prefix}}-class-icon" name="{{prefixIcon}}" />
+    <t-icon wx:else class="{{classPrefix}}__icon--prefix {{prefix}}-class-icon" name="{{prefixIcon}}" />
   </view>
-  <view wx:if="{{label}}" class="{{classPrefix + '__name'}}">
+  <view wx:if="{{label}}" class="{{classPrefix}}__label">
     <slot name="label" wx:if="{{label === 'slot'}}" />
     <text wx:else class="{{prefix}}-class-label">{{label}}</text>
   </view>
