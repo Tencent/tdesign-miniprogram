@@ -5,6 +5,7 @@
     "icon-only": "./icon-only/index",
     "base": "./base/index",
     "sub": "./sub/index",
-    "badge": "./badge/index"
+    "badge": "./badge/index",
+    "custom": "./custom/index"
   }
 }

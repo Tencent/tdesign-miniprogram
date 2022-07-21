@@ -23,7 +23,8 @@ CSS 变量名|说明
 --t-tab-bar-border-color|顶部边框颜色
 --t-tab-bar-bg-color|背景色
 --t-tab-bar-hover-color|hover 时背景色
-
+--t-tab-bar-item-color | 字体颜色
+--t-tab-bar-item-active-color | 激活时字体颜色
 ## 代码演示
 
 
@@ -46,38 +47,13 @@ CSS 变量名|说明
 
 {{ icon-only }}
 
-### 受控用法
+### 双层级纯文本标签栏
 
+{{ sub }}
 
-```html
-<t-tab-bar value="{{activeTab}}" bind:change="onChange">
-  <t-tab-bar-item wx:for="{{list}}" wx:key="index" icon="{{item.icon}}" value="{{item.value}}">
-    {{item.label}}
-  </t-tab-bar-item>
-</t-tab-bar>
-```
+### 自定义主题
 
-```js
-Page({
-  data: {
-    activeTab: 'home',
-    list: [{
-      icon: 'home',
-      value: 'home',
-      label: '首页',
-    }, {
-      icon: 'user',
-      value: 'user',
-      label: '我的'
-    }]
-  },
-  onChange(e) {
-    this.setData({
-      activeTab: e.detail.value
-    })
-  }
-})
-```
+{{ custom }}
 
 ## API
 ### TabBar Props
@@ -85,7 +61,6 @@ Page({
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 bordered | Boolean | true | 是否显示外边框 | N
-color | Array | ['#0052D9', 'rgba(0, 0, 0, .6)'] | 标签颜色设置。示例：[选中标签的颜色, 未选中的标签颜色]。TS 类型：`Array<string>` | N
 external-classes | Array | - | 组件类名，用于设置外层元素类名。`['t-class']` | N
 fixed | Boolean | true | 是否固定在底部 | N
 safe-area-inset-bottom | Boolean | true | 是否为 iPhoneX 留出底部安全距离 | N

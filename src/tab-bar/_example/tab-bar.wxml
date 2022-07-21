@@ -21,4 +21,7 @@
       <sub />
     </view>
   </t-demo>
+  <t-demo title="02 主题" desc="自定义样式">
+    <custom />
+  </t-demo>
 </view>
