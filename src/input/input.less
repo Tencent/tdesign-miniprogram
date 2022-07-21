@@ -1,6 +1,5 @@
 @import '../common/style/index.less';
 
-@input-name-text-color: @text-level-1-color;
 @input-text-color: @text-level-1-color;
 @input-placeholder-text-color: @text-placeholder-color;
 @input-disabled-text-color: @text-level-1-color;
@@ -13,13 +12,26 @@
 @input-icon-font-size: 32rpx;
 @input-error-msg-font-size: @font-size-s;
 @input-vertical-padding: 24rpx;
+@input-medium-padding: 32rpx;
+@input-small-padding: 24rpx;
 @input-horizontal-padding: 32rpx;
 @input-name-horizontal-margin: 32rpx;
 @input-border-padding-left: 32rpx;
+@input-suffix-text-padding-left: 24rpx;
+
+page {
+  --t-input-text-color: @input-text-color;
+  --t-input-placeholder-text-color: @input-placeholder-text-color;
+  --t-input-disabled-text-color: @input-disabled-text-color;
+  --t-input-icon-color: @input-icon-color;
+  --t-input-error-text-color: @input-error-text-color;
+  --t-input-suffix-text-color: @input-suffix-text-color;
+  --t-input-border-color: @input-border-color;
+}
 
 .@{prefix}-input--bordered {
   &::after {
-    .hairline-bottom(@input-border-color);
+    .hairline-bottom(var(--t-input-border-color));
     left: @input-border-padding-left;
   }
 }
@@ -64,7 +76,7 @@
     &--icon {
       flex: 0 0 auto;
       margin-left: @spacer-1;
-      color: @input-icon-color;
+      color: var(--t-input-icon-color);
       font-size: @input-icon-font-size;
 
       &:empty {
@@ -74,7 +86,7 @@
 
     &--suffix {
       position: relative;
-      padding-left: 24rpx;
+      padding-left: @input-suffix-text-padding-left;
 
       &::after {
         .hairline-left();
@@ -83,8 +95,8 @@
 
     &--suffix-text {
       position: relative;
-      padding-left: 24rpx;
-      color: @input-name-text-color;
+      padding-left: @input-suffix-text-padding-left;
+      color: var(--t-input-suffix-text-color);
     }
   }
 
@@ -95,7 +107,7 @@
     min-width: 0; // for flex-shrink in field__button
     margin: 0;
     padding: 0;
-    color: @input-text-color;
+    color: var(--t-input-text-color);
     line-height: inherit;
     text-align: left;
     background-color: transparent;
@@ -104,11 +116,11 @@
     font-size: inherit;
 
     &::placeholder {
-      color: @input-placeholder-text-color;
+      color: var(--t-input-placeholder-text-color);
     }
 
     &:disabled {
-      color: @input-disabled-text-color;
+      color: var(--t-input-disabled-text-color);
       background-color: transparent;
       cursor: not-allowed;
       opacity: 1;
@@ -129,7 +141,7 @@
   }
 
   &__placeholder {
-    color: @input-placeholder-text-color;
+    color: var(--t-input-placeholder-text-color);
   }
 }
 
@@ -138,15 +150,15 @@
 
   .@{prefix}-input {
     &__control {
-      color: @input-error-text-color;
+      color: var(--t-input-error-text-color);
 
       &::placeholder {
-        color: @input-error-text-color;
+        color: var(--t-input-error-text-color);
       }
     }
 
     &__placeholder {
-      color: @input-error-text-color;
+      color: var(--t-input-error-text-color);
     }
 
     &__error-msg {
@@ -154,17 +166,17 @@
       padding-top: @spacer-1;
       font-size: @input-error-msg-font-size;
       line-height: 1;
-      color: @input-placeholder-text-color;
+      color: var(--t-input-placeholder-text-color);
       width: 100%;
     }
   }
 }
 
 .@{prefix}-input--size-medium {
-  padding-top: 32rpx;
-  padding-bottom: 33rpx;
+  padding-top: @input-medium-padding;
+  padding-bottom: @input-medium-padding;
 }
 .@{prefix}-input--size-small {
-  padding-top: 24rpx;
-  padding-bottom: 24rpx;
+  padding-top: @input-small-padding;
+  padding-bottom: @input-small-padding;
 }

@@ -3,11 +3,11 @@
 >
   <view wx:if="{{prefixIcon}}" class="{{classPrefix + '__icon-wrap'}}">
     <slot name="prefixIcon" wx:if="{{prefixIcon === 'slot'}}" />
-    <t-icon wx:else class="{{classPrefix + '__icon--prefix'}}" name="{{prefixIcon}}" />
+    <t-icon wx:else class="{{classPrefix + '__icon--prefix'}} {{prefix}}-class-icon" name="{{prefixIcon}}" />
   </view>
   <view wx:if="{{label}}" class="{{classPrefix + '__name'}}">
     <slot name="label" wx:if="{{label === 'slot'}}" />
-    <text wx:else>{{label}}</text>
+    <text wx:else class="{{prefix}}-class-label">{{label}}</text>
   </view>
 
   <view class="{{classPrefix}}__wrap">
@@ -17,7 +17,7 @@
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholderStyle="{{placeholderStyle}}"
-        placeholder-class="{{classPrefix}}__placeholder t-class-placeholder {{placeholderClass}}"
+        placeholder-class="{{classPrefix}}__placeholder"
         value="{{value}}"
         bindinput="onInput"
         bindfocus="onFocus"
@@ -50,16 +50,16 @@
         class="{{classPrefix}}__wrap--icon"
         bind:tap="clearInput"
       >
-        <t-icon name="close-circle-filled" customStyle="font-size: 39rpx" />
+        <t-icon name="close-circle-filled" customStyle="font-size: 39rpx" class="{{prefix}}-class-clearable" />
       </view>
       <view class="{{classPrefix}}__wrap--suffix">
         <slot name="suffix" />
       </view>
-      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text">
+      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text {{prefix}}-class-suffix">
         <text>{{suffix}}</text>
       </view>
       <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon">
-        <t-icon name="{{suffixIcon}}" customStyle="font-size: 39rpx" />
+        <t-icon name="{{suffixIcon}}" customStyle="font-size: 39rpx" class="{{prefix}}-class-suffix-icon" />
       </view>
     </view>
     <view
