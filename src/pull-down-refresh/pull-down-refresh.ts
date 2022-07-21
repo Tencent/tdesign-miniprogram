@@ -87,6 +87,9 @@ export default class PullDownRefresh extends SuperComponent {
   };
 
   methods = {
+    onScrollToBottom() {
+      this.triggerEvent('scrolltolower');
+    },
     onScrollToTop() {
       this.setData({
         enableToRefresh: true,
