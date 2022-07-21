@@ -5,11 +5,11 @@
     <view class="demo-section__desc">基础按钮</view>
     <view class="box">
       <t-button theme="primary" block>强按钮</t-button>
-      <t-button theme="primary" variant="plain" block>弱按钮</t-button>
-      <t-button variant="plain" block>次按钮</t-button>
+      <t-button theme="primary" variant="outline" block>弱按钮</t-button>
+      <t-button variant="outline" block>次按钮</t-button>
       <t-button theme="danger" block>强告警按钮</t-button>
-      <t-button theme="danger" variant="plain" block>弱告警按钮</t-button>
-      <t-button theme="primary" icon="app" variant="plain" block>带图标按钮</t-button>
+      <t-button theme="danger" variant="outline" block>弱告警按钮</t-button>
+      <t-button theme="primary" icon="app" variant="outline" block>带图标按钮</t-button>
     </view>
 
     <view class="full-width">
@@ -49,11 +49,11 @@
     <view class="demo-section__desc">按钮禁用态</view>
     <view class="box">
       <t-button theme="primary" block disabled>强按钮</t-button>
-      <t-button theme="primary" variant="plain" block disabled>弱按钮</t-button>
+      <t-button theme="primary" variant="outline" block disabled>弱按钮</t-button>
       <t-button size="large" block disabled>次按钮</t-button>
       <t-button theme="danger" block disabled>强告警按钮</t-button>
-      <t-button theme="danger" variant="plain" block disabled>弱告警按钮</t-button>
-      <t-button theme="primary" icon="app" variant="plain" block disabled>带图标按钮</t-button>
+      <t-button theme="danger" variant="outline" block disabled>弱告警按钮</t-button>
+      <t-button theme="primary" icon="app" variant="outline" block disabled>带图标按钮</t-button>
     </view>
 
     <view class="full-width">
