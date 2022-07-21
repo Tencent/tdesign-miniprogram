@@ -16,6 +16,14 @@ isComponent: true
 }
 ```
 
+### 主题定制
+CSS 变量名|说明
+--|--
+--td-grid-bg-color | 宫格背景颜色
+--td-grid-item-text-color  | 宫格文本颜色
+--td-grid-item-description-color | 宫格描述信息文本颜色
+--td-grid-item-hover-bg-color | 开启点击反馈时宫格背景颜色
+
 ## 代码演示
 
 ### 一行三个带边框
@@ -65,7 +73,7 @@ isComponent: true
 | 名称             | 类型          | 默认值      | 说明                                                                                                                                  | 必传 |
 | ---------------- | ------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | ---- |
 | description      | String / Slot | -           | 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点                                                           | N    |
-| external-classes | Array         | -           | 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名。`['t-class', 't-class-image', 't-class-text', 't-class-description']` | N    |
+| external-classes | Array         | -           | 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名。`['t-class', 't-class-content', 't-class-image', 't-class-text', 't-class-description']` | N    |
 | image            | String / Slot | -           | 图片，可以是图片地址，也可以自定义图片节点                                                                                            | N    |
 | jump-type        | String        | navigate-to | 链接跳转类型。可选项：redirect-to/switch-tab/relaunch/navigate-to                                                                     | N    |
 | layout           | String        | vertical    | 内容布局方式。可选项：vertical/horizontal                                                                                             | N    |

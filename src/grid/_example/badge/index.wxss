@@ -1,17 +1,19 @@
-.text {
-  padding-top: 20rpx;
-  margin-bottom: 32rpx;
-  font-size: 24rpx;
-  line-height: 40rpx;
+.external-class-content {
+  padding: 32rpx 0 !important;
 }
 
+.text {
+  font-size: 24rpx !important;
+  line-height: 40rpx !important;
+  padding-top: 20rpx !important;
+}
+.image {
+  width: 64rpx !important;
+  height: 64rpx !important;
+}
 .image-icon {
   width: 64rpx;
   height: 64rpx;
-}
-
-.badge-item {
-  margin-top: 32rpx;
 }
 
 .badge-circle {

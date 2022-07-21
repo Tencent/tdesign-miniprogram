@@ -1,15 +1,13 @@
-.text {
-  padding-top: 28rpx;
-  padding-left: 24rpx;
+.two-des {
+  padding: 0 32rpx !important;
 }
 
-.image-icon {
-  padding: 24rpx 0 24rpx 32rpx;
+.image {
   width: 96rpx;
   height: 96rpx;
 }
 
-.description {
-  padding-left: 24rpx;
-  padding-top: 8rpx;
+.image-icon {
+  width: 100%;
+  height: 100%;
 }

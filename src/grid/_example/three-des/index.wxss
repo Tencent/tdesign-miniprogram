@@ -1,16 +1,13 @@
-.text {
-  padding-top: 20rpx;
-  font-size: 28rpx;
-  line-height: 44rpx;
+.external-class-content {
+  padding: 32rpx 0 !important;
+}
+
+.image {
+  width: 96rpx !important;
+  height: 96rpx !important;
 }
 
 .image-icon {
-  padding-top: 24rpx;
-  width: 96rpx;
-  height: 96rpx;
-}
-
-.description {
-  margin-top: 8rpx;
-  margin-bottom: 24rpx;
+  width: 100%;
+  height: 100%;
 }

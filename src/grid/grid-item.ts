@@ -13,7 +13,13 @@ enum LinkTypes {
 
 @wxComponent()
 export default class GridItem extends SuperComponent {
-  externalClasses = ['t-class', 't-class-image', 't-class-text', 't-class-description'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-content`,
+    `${prefix}-class-image`,
+    `${prefix}-class-text`,
+    `${prefix}-class-description`,
+  ];
 
   options = {
     multipleSlots: true,
@@ -32,6 +38,7 @@ export default class GridItem extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
     gridItemStyle: '',
     gridItemWrapperStyle: '',

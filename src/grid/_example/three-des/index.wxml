@@ -1,28 +1,28 @@
 <t-grid class="three-des" column="{{3}}">
   <t-grid-item
     text="标题文字"
-    class="t-grid-item"
+    description="说明文字"
+    t-class-image="image"
     t-class-text="text"
     t-class-description="description"
-    description="说明文字"
   >
     <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
   </t-grid-item>
   <t-grid-item
     text="标题文字"
-    class="t-grid-item"
+    description="说明文字"
+    t-class-image="image"
     t-class-text="text"
     t-class-description="description"
-    description="说明文字"
   >
     <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
   </t-grid-item>
   <t-grid-item
     text="标题最多六字"
-    class="t-grid-item"
+    description="说明最多六字"
+    t-class-image="image"
     t-class-text="text"
     t-class-description="description"
-    description="说明最多六字"
   >
     <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" slot="image" />
   </t-grid-item>
