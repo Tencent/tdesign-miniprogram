@@ -1,0 +1,7 @@
+.demo-5 {
+  margin: 0 32rpx;
+}
+.t-class-content {
+  margin-right: 20rpx;
+  margin-left: 20rpx;
+}

@@ -1,0 +1,7 @@
+<view>文字+直线</view>
+<t-divider t-class="demo-5" t-class-content="t-class-content">
+  <text>文字信息</text>
+</t-divider>
+
+<view>文字+虚线</view>
+<t-divider t-class="demo-5" t-class-content="t-class-content" dashed content="文字信息" />

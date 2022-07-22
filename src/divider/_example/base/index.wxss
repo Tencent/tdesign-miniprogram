@@ -1,0 +1,11 @@
+.demo-2 {
+  margin: 0 32rpx;
+}
+
+.demo-3 {
+  margin-left: 32rpx;
+}
+
+.demo-4 {
+  margin-left: 152rpx;
+}
