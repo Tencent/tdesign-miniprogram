@@ -19,53 +19,40 @@ isComponent: true
 
 ## 代码演示
 
-### 基础评分
-
 <img src="https://tdesign.gtimg.com/miniprogram/readme/rate.png" width="375px" height="50%">
 
-```html
-<!-- 实心评分，设置属性：variant-->
-<t-rate defaultValue="{{value}}" variant="filled"></t-rate>
+### 实心评分
 
-<!-- 空心评分，设置属性：variant-->
-<t-rate defaultValue="{{value}}" variant="outline"  bind:change="changeValue"></t-rate>
+{{ base }}
 
-<!-- 自定义评分数量，设置属性：count-->
-<t-rate defaultValue="{{value}}" variant="outline" count="{{6}}"></t-rate>
+### 空心评分
 
-<!-- 半星评分，设置属性：allowHalf -->
-<t-rate defaultValue="{{value}}" variant="filled" allowHalf></t-rate>
+{{ un-filled }}
 
-<!-- 带描述评分，设置属性：showText-->
-<t-rate defaultValue="{{value}}" variant="outline" showText></t-rate>
+### 自定义评分数量
 
-<!-- 自定义带描述评分，设置属性：texts -->
-<t-rate defaultValue="{{value}}" variant="outline" showText texts="{{texts}}"></t-rate>
+{{ count }}
 
-<!-- 禁用评分，设置属性：disabled -->
-<t-rate defaultValue="{{value}}" variant="filled" disabled></t-rate>
+### 半星评分
 
-<!-- 设置评分颜色，设置属性： color-->
-<t-rate defaultValue="{{value}}" variant="filled" color="#FFC51C,#DDDDDD"></t-rate>
-```
+{{ allow-half}}
 
-### 受控用法
+### 带描述评分
 
-```html
-<t-rate value="{{value}}" variant="filled" bind:change="onChange"></t-rate>
-```
+{{ show-text }}
 
-```js
-Page({
-  data: {
-    value: 3
-  },
-  onChange(e) {
-    const { value } = e.detail;
-    this.setData({ value })
-  }
-})
-```
+### 禁用评分
+
+{{ disabled }}
+
+### 设置评分颜色
+
+{{ aolor }}
+
+### 评价规格
+
+{{ size }}
+
 ## API
 ### Rate Props
 

@@ -1,0 +1,5 @@
+<view class="demo-rate">
+  <view class="demo-rate__title">半星评价</view>
+  <!-- 半星评分，设置属性：allowHalf -->
+  <t-rate value="{{value}}" variant="filled" allowHalf="{{true}}" bind:change="onChange" />
+</view>
