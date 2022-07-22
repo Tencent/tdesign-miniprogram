@@ -1,0 +1,38 @@
+<t-search
+  t-class-cancel="t-class-cancel"
+  value="{{searchBoxGroup[0].keyword}}"
+  placeholder="{{searchBoxGroup[0].placeholder}}"
+  action="{{searchBoxGroup[0].actionText}}"
+  data-idx="{{0}}"
+  bind:blur="blurHandle"
+  bind:focus="focusHandle"
+  bind:cancel="cancelHandle"
+  bind:clear="clearHandle"
+  bind:change="changeHandle"
+/>
+
+<t-search
+  t-class-cancel="t-class-cancel"
+  value="{{searchBoxGroup[1].keyword}}"
+  placeholder="{{searchBoxGroup[1].placeholder}}"
+  action="{{searchBoxGroup[1].actionText}}"
+  data-idx="{{1}}"
+  bind:blur="blurHandle"
+  bind:focus="focusHandle"
+  bind:cancel="cancelHandle"
+  bind:clear="clearHandle"
+  bind:change="changeHandle"
+/>
+
+<t-search
+  t-class-cancel="t-class-cancel"
+  value="{{searchBoxGroup[2].keyword}}"
+  placeholder="{{searchBoxGroup[2].placeholder}}"
+  action="{{searchBoxGroup[2].actionText}}"
+  data-idx="{{2}}"
+  bind:blur="blurHandle"
+  bind:focus="focusHandle"
+  bind:cancel="cancelHandle"
+  bind:clear="clearHandle"
+  bind:change="changeHandle"
+/>

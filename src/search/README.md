@@ -21,25 +21,13 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/search.png" width="375px" height="50%">
 
-```html
-<t-search placeholder="搜索预设文案" center="{{true}}" />
-```
+{{ base }}
 
-### 双向绑定用法
 
-通过双向绑定，在输入框里输入文字时，`value` 的值也会同时跟着变化。
+### 状态
 
-```html
-<t-search model:value="{{value}}" placeholder="搜索预设文案" center="{{true}}" />
-```
+{{ status }}
 
-```js
-Page({
-  data: {
-    value: ''
-  },
-})
-```
 ## API
 ### Search Props
 

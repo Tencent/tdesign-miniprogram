@@ -4,26 +4,12 @@
   <t-demo title="01 类型">
     <view class="demo-section__desc">基础搜索框</view>
     <view class="demo-section__wrapper">
-      <t-search model:value="{{first}}" placeholder="搜索预设文案" center="{{true}}" />
+      <base />
     </view>
   </t-demo>
   <t-demo title="02 状态">
-    <block wx:for="{{searchBoxGroup}}" wx:key="id">
-      <view class="demo-section__desc">{{item.title}}</view>
-      <view class="demo-section__wrapper">
-        <t-search
-          t-class-cancel="t-class-cancel"
-          value="{{item.keyword}}"
-          placeholder="{{item.placeholder}}"
-          action="{{item.actionText}}"
-          data-idx="{{index}}"
-          bind:blur="blurHandle"
-          bind:focus="focusHandle"
-          bind:cancel="cancelHandle"
-          bind:clear="clearHandle"
-          bind:change="changeHandle"
-        />
-      </view>
-    </block>
+    <view class="demo-section__wrapper">
+      <status />
+    </view>
   </t-demo>
 </view>
