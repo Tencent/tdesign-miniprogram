@@ -20,26 +20,11 @@ isComponent: true
 
 ### 单个单选框
 
-```html
-<!-- 非受控用法 -->
-<t-radio label="单选" />
-<t-radio defaultChecked="{{true}}" label="单选" />
+{{ base }}
 
-<!-- 受控用法 -->
-<t-radio checked="{{checked}}" bind:change="handleChange" label="单选" />
-```
 
 ```js
-Page({
-  data: {
-    checked: false,
-  },
-  handleChange(e) {
-    this.setData({
-      checked: e.detail.checked,
-    });
-  },
-})
+
 ```
 
 ### 组合单选框
