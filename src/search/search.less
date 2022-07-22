@@ -8,9 +8,15 @@
 @search-input-padding-vertical: 16rpx;
 @search-input-padding-horizontal: 24rpx;
 @search-input-radius-square: 8rpx;
-@search-input-radius-round:  40rpx;
+@search-input-radius-round: 40rpx;
 @search-input-font-size: @font-size-m;
 @h-space-nest: @spacer;
+
+page {
+  --t-search-input-text-color: @search-input-text-color;
+  --t-search-input-text-disable: @search-input-text-disable;
+  --t-search-input-bg: @search-input-bg;
+}
 
 .@{prefix}-search {
   display: flex;
@@ -19,7 +25,7 @@
 
   &__label {
     padding: @search-label-padding-right;
-    color: @search-input-text-color;
+    color: var(--t-search-input-text-color);
   }
 
   &__input-box {
@@ -28,12 +34,12 @@
     display: flex;
     height: @search-input-height;
     align-items: center;
-    border: 2rpx solid @search-input-bg;
-    background: @search-input-bg;
+    border: 2rpx solid var(--t-search-input-bg);
+    background: var(--t-search-input-bg);
     padding: @search-input-padding-vertical @search-input-padding-horizontal;
 
     &.@{prefix}-is-focused {
-      border-color: @search-input-bg;
+      border-color: var(--t-search-input-bg);
     }
 
     &--round {
@@ -51,13 +57,13 @@
     .@{prefix}-input__keyword {
       display: inline-block;
       flex: 1;
-      color: @search-input-text-color;
+      color: var(--t-search-input-text-color);
       font-size: @search-input-font-size;
       padding-left: @h-space-nest;
     }
 
     .@{prefix}-icon {
-      color: @search-input-text-disable;
+      color: var(--t-search-input-text-disable);
     }
   }
 
@@ -70,11 +76,11 @@
   &__search-action {
     margin-left: 30rpx;
     font-size: @search-input-font-size;
-    color: @search-input-text-disable;
+    color: var(--t-search-input-text-disable);
   }
 
   &__placeholder {
-    color: @search-input-text-disable;
+    color: var(--t-search-input-text-disable);
 
     &--center {
       text-align: center;
