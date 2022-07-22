@@ -15,6 +15,18 @@ isComponent: true
 }
 ```
 
+### 主题定制
+CSS 变量名|说明
+--|--
+--t-search-icon-color | 图标颜色
+--t-search-label-color | 左侧文本颜色
+--t-search-action-color | 右侧操作按钮颜色
+--t-search-text-color | 输入框文本颜色
+--t-search-placeholder-color | 输入框placeholder占位符颜色
+--t-search-bg-color | 输入框背景颜色
+--t-search-border-color | 输入框边框颜色
+--t-search-focus-border-color | 聚焦时输入框边框颜色
+
 ## 代码演示
 
 ### 基础搜索框
@@ -36,7 +48,7 @@ isComponent: true
 action | String / Slot | '' | 自定义右侧操作按钮文字 | N
 center | Boolean | false | 是否居中 | N
 disabled | Boolean | false | 是否禁用 | N
-external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-cancel','t-class-left','t-class-right']` | N
+external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-action','t-class-left','t-class-right']` | N
 focus | Boolean | false | 是否聚焦 | N
 label | String | '' | 左侧文本 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
