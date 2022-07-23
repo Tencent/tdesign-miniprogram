@@ -83,7 +83,6 @@
     "t-textarea": "tdesign-miniprogram/textarea/textarea",
     "t-message": "tdesign-miniprogram/message/message",
     "t-toast": "tdesign-miniprogram/toast/toast",
-    "t-overlay": "tdesign-miniprogram/overlay/overlay",
     "t-stepper": "tdesign-miniprogram/stepper/stepper",
     "t-slider": "tdesign-miniprogram/slider/slider",
     "t-radio": "tdesign-miniprogram/radio/radio",
