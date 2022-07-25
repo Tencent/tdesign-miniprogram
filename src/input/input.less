@@ -21,21 +21,21 @@
 @input-suffix-text-padding-left: 24rpx;
 
 page {
-  --t-input-bg-color: @bg-color-block;
-  --t-input-text-color: @input-text-color;
-  --t-input-placeholder-text-color: @input-placeholder-text-color;
-  --t-input-error-msg-color: @input-placeholder-text-color;
-  --t-input-disabled-text-color: @input-disabled-text-color;
-  --t-input-label-color: @input-label-color;
-  --t-input-icon-color: @input-icon-color;
-  --t-input-error-text-color: @input-error-text-color;
-  --t-input-suffix-text-color: @input-suffix-text-color;
-  --t-input-border-color: @input-border-color;
+  --td-input-bg-color: @bg-color-block;
+  --td-input-text-color: @input-text-color;
+  --td-input-placeholder-text-color: @input-placeholder-text-color;
+  --td-input-error-msg-color: @input-placeholder-text-color;
+  --td-input-disabled-text-color: @input-disabled-text-color;
+  --td-input-label-color: @input-label-color;
+  --td-input-icon-color: @input-icon-color;
+  --td-input-error-text-color: @input-error-text-color;
+  --td-input-suffix-text-color: @input-suffix-text-color;
+  --td-input-border-color: @input-border-color;
 }
 
 .@{prefix}-input--bordered {
   &::after {
-    .hairline-bottom(var(--t-input-border-color));
+    .hairline-bottom(var(--td-input-border-color));
     left: @input-border-padding-left;
   }
 }
@@ -43,11 +43,11 @@ page {
   position: relative;
   display: flex;
   padding: @input-vertical-padding @input-horizontal-padding;
-  background: var(--t-input-bg-color);
+  background: var(--td-input-bg-color);
 
   &__label {
     width: 164rpx;
-    color: var(--t-input-label-color);
+    color: var(--td-input-label-color);
     margin-right: @input-name-horizontal-margin;
     flex: none;
   }
@@ -81,7 +81,7 @@ page {
     &--icon {
       flex: 0 0 auto;
       margin-left: @spacer-1;
-      color: var(--t-input-icon-color);
+      color: var(--td-input-icon-color);
       font-size: @input-icon-font-size;
 
       &:empty {
@@ -101,7 +101,7 @@ page {
     &--suffix-text {
       position: relative;
       padding-left: @input-suffix-text-padding-left;
-      color: var(--t-input-suffix-text-color);
+      color: var(--td-input-suffix-text-color);
     }
   }
 
@@ -112,7 +112,7 @@ page {
     min-width: 0; // for flex-shrink in field__button
     margin: 0;
     padding: 0;
-    color: var(--t-input-text-color);
+    color: var(--td-input-text-color);
     line-height: inherit;
     text-align: left;
     background-color: transparent;
@@ -121,11 +121,11 @@ page {
     font-size: inherit;
 
     &::placeholder {
-      color: var(--t-input-placeholder-text-color);
+      color: var(--td-input-placeholder-text-color);
     }
 
     &:disabled {
-      color: var(--t-input-disabled-text-color);
+      color: var(--td-input-disabled-text-color);
       background-color: transparent;
       cursor: not-allowed;
       opacity: 1;
@@ -146,7 +146,7 @@ page {
   }
 
   &__placeholder {
-    color: var(--t-input-placeholder-text-color);
+    color: var(--td-input-placeholder-text-color);
   }
 }
 
@@ -155,15 +155,15 @@ page {
 
   .@{prefix}-input {
     &__control {
-      color: var(--t-input-error-text-color);
+      color: var(--td-input-error-text-color);
 
       &::placeholder {
-        color: var(--t-input-error-text-color);
+        color: var(--td-input-error-text-color);
       }
     }
 
     &__placeholder {
-      color: var(--t-input-error-text-color);
+      color: var(--td-input-error-text-color);
     }
 
     &__error-msg {
@@ -171,7 +171,7 @@ page {
       padding-top: @spacer-1;
       font-size: @input-error-msg-font-size;
       line-height: 1;
-      color: var(--t-input-error-msg-color);
+      color: var(--td-input-error-msg-color);
       width: 100%;
     }
   }

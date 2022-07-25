@@ -1,6 +1,6 @@
 .wrapper {
-  --t-input-bg-color: #0053d950;
-  --t-input-text-color: white;
-  --t-input-placeholder-text-color: white;
-  --t-input-label-color: white;
+  --td-input-bg-color: #0053d950;
+  --td-input-text-color: white;
+  --td-input-placeholder-text-color: white;
+  --td-input-label-color: white;
 }

@@ -17,15 +17,15 @@ isComponent: true
 ### 主题定制
 CSS 变量名|说明
 --|--
---t-input-bg-color | 输入框背景颜色
---t-input-text-color | 输入框文本颜色
---t-input-placeholder-text-color  | 输入框placeholder占位符颜色
---t-input-error-text-color | 输入错误时文本颜色
---t-input-disabled-text-color | 禁用输入框颜色
---t-input-border-color | 输入框边框颜色
---t-input-error-msg-color | 错误提示文本颜色
---t-input-icon-color | 图标颜色
---t-input-suffix-text-color | 后置文本内容颜色
+--td-input-bg-color | 输入框背景颜色
+--td-input-text-color | 输入框文本颜色
+--td-input-placeholder-text-color  | 输入框placeholder占位符颜色
+--td-input-error-text-color | 输入错误时文本颜色
+--td-input-disabled-text-color | 禁用输入框颜色
+--td-input-border-color | 输入框边框颜色
+--td-input-error-msg-color | 错误提示文本颜色
+--td-input-icon-color | 图标颜色
+--td-input-suffix-text-color | 后置文本内容颜色
 
 ## 代码演示
 
