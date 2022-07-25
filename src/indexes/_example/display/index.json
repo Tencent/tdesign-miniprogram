@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "t-indexes": "tdesign-miniprogram/indexes/indexes"
+  }
+}

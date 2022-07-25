@@ -1,9 +1,15 @@
 @import '../common/style/index.less';
 
+@grid-bg-color: rgba(255, 255, 255, 1);
+
+page {
+  --td-grid-bg-color: @grid-bg-color;
+}
+
 .@{prefix}-grid {
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 1);
+  background-color: var(--td-grid-bg-color);
 
   &__content {
     width: auto;

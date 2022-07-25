@@ -20,54 +20,30 @@ isComponent: true
 
 ### 基础选项卡
 
-横向选项卡支持超过屏幕滑动
+{{ base }}
+
+### 超过屏幕滚动
+{{ scroll }}
+
+### 无下划线
+{{ unline }}
+
+### 动画时间可调整
+{{ adjust-time }}
+
+### 选项卡状态
+{{ status }}
+
+### 竖向选项卡
+{{ vertical }}
+
+### 选中态文字尺寸规格
+{{ size }}
+
+<!-- 横向选项卡支持超过屏幕滑动 -->
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/tabs-3.png" width="375px" height="50%">
 
-```html
-<t-tabs defaultValue="{{0}}" bind:change="onTabsChange">
-  <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
-  <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-</t-tabs>
-```
-
-### 不同状态的选项卡
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabs-2.png" width="375px" height="50%">
-
-```html
-<t-tabs defaultValue="0" bind:change="onTabsChange">
-  <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
-  <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-  <t-tab-panel label="禁用状态" value="2" disabled>禁用状态</t-tab-panel>
-</t-tabs>
-```
-
-### 竖向选项卡
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabs-1.png" width="375px" height="50%">
-
-```html
-<t-tabs defaultValue="{{1}}" placement="left" bind:change="onTabsChange">
-  <t-tab-panel label="标签页一" value="0">
-    <view class="tab-content">标签一内容区</view>
-  </t-tab-panel>
-  <t-tab-panel label="标签页二" value="1">
-    <view class="tab-content">标签二内容区</view>
-  </t-tab-panel>
-  <t-tab-panel label="标签页三" value="2">
-    <view class="tab-content">标签三内容区</view>
-  </t-tab-panel>
-</t-tabs>
-```
-
-```js
-Page({
-  onTabsChange(event: any) {
-    console.log(event.detail);
-  },
-});
-```
 
 ### 受控用法
 

@@ -1,0 +1,24 @@
+<t-cell
+  title="选择日期(年月)"
+  hover
+  note="{{monthText || '年 月'}}"
+  arrow
+  data-mode="month"
+  bindtap="showPicker"
+  t-class="pannel-item"
+  t-class-note="{{monthText ? 'sub-text' : 'empty'}}"
+/>
+
+<!-- 年月 -->
+<t-date-time-picker
+  title="选择日期"
+  visible="{{monthVisible}}"
+  mode="month"
+  value="{{month}}"
+  format="YYYY-MM"
+  bindchange="onConfirm"
+  bindpick="onColumnChange"
+  bindcancel="hidePicker"
+  start="{{start}}"
+  end="{{end}}"
+></t-date-time-picker>

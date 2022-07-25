@@ -11,9 +11,9 @@ Page({
   onReady() {},
   onShow() {},
   tapShowLetter() {
-    wx.navigateTo({ url: '/pages/indexes/display?type=letter' });
+    wx.navigateTo({ url: '/pages/indexes/display/index?type=letter' });
   },
   tapShowNumber() {
-    wx.navigateTo({ url: '/pages/indexes/display?type=number' });
+    wx.navigateTo({ url: '/pages/indexes/display/index?type=number' });
   },
 });

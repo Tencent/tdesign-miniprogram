@@ -1,0 +1,43 @@
+.external-class-content {
+  padding: 32rpx 0 !important;
+}
+
+.text {
+  font-size: 24rpx !important;
+  line-height: 40rpx !important;
+  padding-top: 20rpx !important;
+}
+.image {
+  width: 64rpx !important;
+  height: 64rpx !important;
+}
+.image-icon {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.badge-circle {
+  display: flex;
+  justify-content: center;
+  background-color: #e34d59;
+  border-radius: 15rpx;
+  width: 36rpx;
+  height: 32rpx;
+  align-items: center;
+  position: absolute;
+  top: -15rpx;
+  left: 46rpx;
+}
+
+.circle {
+  width: 4rpx;
+  height: 4rpx;
+  border-radius: 2rpx;
+  background-color: white;
+  margin-left: 4rpx;
+}
+
+.badge-circle-container {
+  margin-left: -4rpx;
+  display: flex;
+}

@@ -6,44 +6,33 @@ module.exports = {
     var curVal = Math.floor(val - 1);
     return texts[curVal];
   },
-  getIconName: function (defaultValue, value, index, allowHalf, icon, halfIcon, variant) {
+  getIconName: function (defaultValue, value, index, variant) {
     var curVal = value ? value : defaultValue;
+    var name = 'star-filled';
+
     if (curVal - index >= 1) {
-      return icon;
-    } else if (allowHalf && curVal - index > 0) {
-      return halfIcon;
+      return name;
     } else {
       return variant === 'outline' ? 'star' : 'star-filled';
     }
   },
-  getIconColor: function (defaultValue, value, index, allowHalf, disabled, color, disabledColor) {
+
+  getIconClass: function (classPrefix, defaultValue, value, index, allowHalf, disabled) {
     var curVal = value ? value : defaultValue;
-    var colorList = color.split(',');
-    var primaryColor = colorList[0] || color;
-    var defaultColor = colorList[1] || '#E3E6EB';
+    var className = [];
     if (curVal - index >= 1) {
-      return disabled ? disabledColor : primaryColor;
+      className.push(classPrefix + '-selected');
+      if (disabled) {
+        className.push(classPrefix + '-disabled');
+      }
     } else if (allowHalf && curVal - index > 0) {
-      return 'transparent';
+      className.push(classPrefix + '-selected-half');
+      if (disabled) {
+        className.push(classPrefix + '-disabled-half');
+      }
     } else {
-      return defaultColor;
+      className.push(classPrefix + '-unselected');
     }
-  },
-  getBackgroundColor: function (disabled, color, disabledColor) {
-    var colorList = color.split(',');
-    var primaryColor = colorList[0] || color;
-    var defaultColor = colorList[1] || '#E3E6EB';
-    var linearColor = disabled ? disabledColor : primaryColor;
-    return (
-      'background:linear-gradient(to right, ' +
-      linearColor +
-      ' 0%,' +
-      linearColor +
-      ' 50%, ' +
-      defaultColor +
-      ' 51%, ' +
-      defaultColor +
-      ' 100%);-webkit-background-clip:text;background-clip:text;'
-    );
+    return className.join(' ');
   },
 };
