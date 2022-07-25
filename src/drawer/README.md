@@ -15,6 +15,14 @@ isComponent: true
 }
 ```
 
+### 主题定制
+CSS 变量名|说明
+--|--
+--td-drawer-sidebar-bg-color | 抽屉背景颜色
+--td-drawer-sidebar-border-color | 列表项下边框颜色
+--td-drawer-sidebar-title-color | 列表项标题颜色
+--td-drawer-sidebar-icon-color | 列表项图标颜色
+
 ## 代码演示
 
 ### 基础抽屉
