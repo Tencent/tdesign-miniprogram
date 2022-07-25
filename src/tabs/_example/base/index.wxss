@@ -1,3 +1,7 @@
+.custom-tabs {
+  margin-bottom: 32rpx;
+}
+
 .custom-tabs t-tab-panel {
   text-align: center;
   justify-content: center;
