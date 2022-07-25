@@ -7,7 +7,7 @@ const name = `${prefix}-cell-group`;
 
 @wxComponent()
 export default class CellGroup extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-title`];
 
   options = {
     addGlobalClass: true,
@@ -22,6 +22,7 @@ export default class CellGroup extends SuperComponent {
    * 组件的初始数据
    */
   data = {
+    prefix,
     classPrefix: name,
   };
 }

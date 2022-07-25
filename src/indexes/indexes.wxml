@@ -1,4 +1,4 @@
-<view class="{{classPrefix}} t-class">
+<view class="{{classPrefix}} {{prefix}}-class">
   <scroll-view
     class="{{classPrefix}}__content"
     scroll-y
@@ -8,7 +8,7 @@
     bindscroll="onListScroll"
   >
     <t-cell-group
-      t-class="{{classPrefix}}__group"
+      t-class-title="{{classPrefix}}__title"
       class="{{classPrefix}}__group"
       wx:for="{{ groups }}"
       wx:key="index"
@@ -29,7 +29,7 @@
       ></t-cell>
     </t-cell-group>
   </scroll-view>
-  <view class="{{classPrefix}}__index t-class-index">
+  <view class="{{classPrefix}}__index {{prefix}}-class-index">
     <view
       class="{{classPrefix}}__bar"
       id="id-{{classPrefix}}__bar"
@@ -46,10 +46,7 @@
         data-group="{{ group }}"
       >
         {{ group.index }}
-        <view
-          class="{{classPrefix}}__tips"
-          wx:if="{{ showScrollTip && currentGroup.index === group.index }}"
-        >
+        <view class="{{classPrefix}}__tips" wx:if="{{ showScrollTip && currentGroup.index === group.index }}">
           <view class="{{classPrefix}}__tips-text">{{ currentGroup.index }}</view>
         </view>
       </view>

@@ -1,0 +1,6 @@
+.custom-tabs-vertical .tab-content {
+  margin-top: 250rpx;
+  color: rgba(0, 0, 0, 0.26);
+  text-align: center;
+  justify-content: center;
+}

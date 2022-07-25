@@ -16,14 +16,6 @@ export interface TdTabBarProps {
     value?: boolean;
   };
   /**
-   * 标签颜色设置。示例：[选中标签的颜色, 未选中的标签颜色]
-   * @default ['#0052D9', 'rgba(0, 0, 0, .6)']
-   */
-  color?: {
-    type: ArrayConstructor;
-    value?: Array<string>;
-  };
-  /**
    * 组件类名，用于设置外层元素类名
    */
   externalClasses?: {

@@ -1,5 +1,5 @@
 const display = {
-  name: '信息展示',
+  name: '数据展示',
   icon: 'image',
   childArr: [
     {
@@ -19,10 +19,6 @@ const display = {
     //   label: '海报分享',
     // },
     {
-      name: 'Cell',
-      label: '单元格',
-    },
-    {
       name: 'Collapse',
       label: '折叠面板',
     },
@@ -31,16 +27,8 @@ const display = {
       label: '倒计时',
     },
     {
-      name: 'DropdownMenu',
-      label: '下拉菜单',
-    },
-    {
       name: 'Empty',
       label: '空状态',
-    },
-    {
-      name: 'Result',
-      label: '结果',
     },
     // {
     //   name: 'Error',
@@ -51,16 +39,16 @@ const display = {
       label: '页脚',
     },
     {
-      name: 'Grid',
-      label: '宫格',
-    },
-    {
       name: 'Image',
       label: '图片',
     },
     {
       name: 'ImageViewer',
       label: '图片预览',
+    },
+    {
+      name: 'Result',
+      label: '结果',
     },
     {
       name: 'Swiper',
@@ -73,10 +61,6 @@ const display = {
     {
       name: 'Skeleton',
       label: '骨架屏',
-    },
-    {
-      name: 'Sticky',
-      label: '吸顶',
     },
     {
       name: 'NoticeBar',

@@ -5,12 +5,15 @@
 @tab-bar-bg-color: @bg-color-block;
 @tab-bar-border-color: @border-level-1-color;
 @tab-bar-hover-bg-color: rgba(0, 0, 0, 0.05);
+@tab-bar-color: rgba(0, 0, 0, 0.6);
 @tab-bar-active-color: @primary-color;
 @tab-bar-bg-color: @bg-color-block;
 
 page {
   --t-tab-bar-bg-color: @tab-bar-bg-color;
   --t-tab-bar-hover-color: @tab-bar-hover-bg-color;
+  --t-tab-bar-item-color: @tab-bar-color;
+  --t-tab-bar-item-active-color: @tab-bar-active-color;
 }
 
 :host {
@@ -41,11 +44,12 @@ page {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: var(--t-tab-bar-item-color);
 
     &.@{prefix}-is-checked {
-      color: @tab-bar-active-color;
+      color: var(--t-tab-bar-item-active-color);
       .@{item}__icon-menu {
-        background-color: @tab-bar-active-color;
+        background-color: var(--t-tab-bar-item-active-color);
       }
     }
   }

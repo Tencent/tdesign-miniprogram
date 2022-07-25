@@ -20,54 +20,30 @@ isComponent: true
 
 ### 基础选项卡
 
-横向选项卡支持超过屏幕滑动
+{{ base }}
+
+### 超过屏幕滚动
+{{ scroll }}
+
+### 无下划线
+{{ unline }}
+
+### 动画时间可调整
+{{ adjust-time }}
+
+### 选项卡状态
+{{ status }}
+
+### 竖向选项卡
+{{ vertical }}
+
+### 选中态文字尺寸规格
+{{ size }}
+
+<!-- 横向选项卡支持超过屏幕滑动 -->
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/tabs-3.png" width="375px" height="50%">
 
-```html
-<t-tabs defaultValue="{{0}}" bind:change="onTabsChange">
-  <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
-  <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-</t-tabs>
-```
-
-### 不同状态的选项卡
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabs-2.png" width="375px" height="50%">
-
-```html
-<t-tabs defaultValue="0" bind:change="onTabsChange">
-  <t-tab-panel label="标签页一" value="0">标签一内容</t-tab-panel>
-  <t-tab-panel label="标签页二" value="1">标签二内容</t-tab-panel>
-  <t-tab-panel label="禁用状态" value="2" disabled>禁用状态</t-tab-panel>
-</t-tabs>
-```
-
-### 竖向选项卡
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabs-1.png" width="375px" height="50%">
-
-```html
-<t-tabs defaultValue="{{1}}" placement="left" bind:change="onTabsChange">
-  <t-tab-panel label="标签页一" value="0">
-    <view class="tab-content">标签一内容区</view>
-  </t-tab-panel>
-  <t-tab-panel label="标签页二" value="1">
-    <view class="tab-content">标签二内容区</view>
-  </t-tab-panel>
-  <t-tab-panel label="标签页三" value="2">
-    <view class="tab-content">标签三内容区</view>
-  </t-tab-panel>
-</t-tabs>
-```
-
-```js
-Page({
-  onTabsChange(event: any) {
-    console.log(event.detail);
-  },
-});
-```
 
 ### 受控用法
 
@@ -127,6 +103,7 @@ animation | Object | - | 动画效果设置。其中 duration 表示动画时长
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名。`['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
 placement | String | top | 选项卡位置。可选项：left/top | N
 show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
+swipeable | Boolean | true | 是否可以滑动切换 | N
 value | String / Number | - | 激活的选项卡值。TS 类型：`TabValue` `type TabValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 default-value | String / Number | undefined | 激活的选项卡值。非受控属性。TS 类型：`TabValue` `type TabValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 

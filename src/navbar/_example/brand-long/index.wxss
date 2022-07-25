@@ -1,0 +1,15 @@
+.external-class-left {
+  width: 100% !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.left-icon-slot {
+  overflow: hidden;
+}
+
+.long-brand {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

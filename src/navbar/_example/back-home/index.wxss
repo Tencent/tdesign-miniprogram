@@ -1,0 +1,11 @@
+.left-icon-back {
+  font-size: 48rpx !important;
+}
+
+.home-icon {
+  font-size: 48rpx !important;
+}
+
+.nav-title {
+  font-size: 32rpx !important;
+}

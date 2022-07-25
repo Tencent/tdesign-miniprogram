@@ -7,20 +7,12 @@ import { pageScrollMixin, getRect } from './utils';
 const { prefix } = config;
 
 const ContainerClass = `.${prefix}-sticky`;
-type ContainerRef = () => WechatMiniprogram.NodesRef;
-
-interface StickyProps {
-  zIndex: number;
-  disabled: boolean;
-  container: ContainerRef;
-  offsetTop: number;
-}
 
 @wxComponent()
 export default class Sticky extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
-  properties: StickyProps = props as any;
+  properties = props;
 
   behaviors = [
     pageScrollMixin(function (event) {
@@ -29,7 +21,9 @@ export default class Sticky extends SuperComponent {
   ];
 
   observers = {
-    'offsetTop, disabled, container': this.onScroll,
+    'offsetTop, disabled, container'() {
+      this.onScroll();
+    },
   };
 
   data = {
@@ -43,85 +37,87 @@ export default class Sticky extends SuperComponent {
     this.onScroll();
   }
 
-  onScroll(event?: { scrollTop: number }) {
-    const { scrollTop } = event || {};
-    const { container, offsetTop, disabled } = this.properties;
+  methods = {
+    onScroll(event?: { scrollTop: number }) {
+      const { scrollTop } = event || {};
+      const { container, offsetTop, disabled } = this.properties;
 
-    if (disabled) {
-      this.setDataAfterDiff({
-        isFixed: false,
-        transform: 0,
-      });
-      return;
-    }
+      if (disabled) {
+        this.setDataAfterDiff({
+          isFixed: false,
+          transform: 0,
+        });
+        return;
+      }
 
-    this.scrollTop = scrollTop || this.scrollTop;
+      this.scrollTop = scrollTop || this.scrollTop;
 
-    if (typeof container === 'function') {
-      Promise.all([getRect(this, ContainerClass), this.getContainerRect()]).then(([root, container]) => {
-        if (!root || !container) return;
-        if (offsetTop + root.height > container.height + container.top) {
-          this.setDataAfterDiff({
-            isFixed: false,
-            transform: container.height - root.height,
-          });
-        } else if (offsetTop >= root.top) {
-          this.setDataAfterDiff({
-            isFixed: true,
-            height: root.height,
-            transform: 0,
-          });
+      if (typeof container === 'function') {
+        Promise.all([getRect(this, ContainerClass), this.getContainerRect()]).then(([root, container]) => {
+          if (!root || !container) return;
+          if (offsetTop + root.height > container.height + container.top) {
+            this.setDataAfterDiff({
+              isFixed: false,
+              transform: container.height - root.height,
+            });
+          } else if (offsetTop >= root.top) {
+            this.setDataAfterDiff({
+              isFixed: true,
+              height: root.height,
+              transform: 0,
+            });
+          } else {
+            this.setDataAfterDiff({ isFixed: false, transform: 0 });
+          }
+        });
+
+        return;
+      }
+
+      getRect(this, ContainerClass).then((root) => {
+        if (!root) return;
+        if (offsetTop >= root.top) {
+          this.setDataAfterDiff({ isFixed: true, height: root.height });
+          this.transform = 0;
         } else {
-          this.setDataAfterDiff({ isFixed: false, transform: 0 });
+          this.setDataAfterDiff({ isFixed: false });
         }
       });
+    },
 
-      return;
-    }
+    setDataAfterDiff(data: { isFixed: boolean; height?: number; transform?: number }) {
+      const { offsetTop } = this.properties;
+      const { containerStyle: prevContainerStyle, contentStyle: prevContentStyle } = this.data;
+      const { isFixed, height, transform } = data;
+      wx.nextTick(() => {
+        let containerStyle = '';
+        let contentStyle = '';
 
-    getRect(this, ContainerClass).then((root) => {
-      if (!root) return;
-      if (offsetTop >= root.top) {
-        this.setDataAfterDiff({ isFixed: true, height: root.height });
-        this.transform = 0;
-      } else {
-        this.setDataAfterDiff({ isFixed: false });
-      }
-    });
-  }
+        if (isFixed) {
+          containerStyle += `height:${height}px;`;
+          contentStyle += `position:fixed;top:${offsetTop}px`;
+        }
+        if (transform) {
+          const translate = `translate3d(0, ${transform}px, 0)`;
+          contentStyle += `-webkit-transform:${translate};transform:${translate};`;
+        }
 
-  setDataAfterDiff(data: { isFixed: boolean; height?: number; transform?: number }) {
-    const { offsetTop } = this.properties;
-    const { containerStyle: prevContainerStyle, contentStyle: prevContentStyle } = this.data;
-    const { isFixed, height, transform } = data;
-    wx.nextTick(() => {
-      let containerStyle = '';
-      let contentStyle = '';
+        if (prevContainerStyle !== containerStyle || prevContentStyle !== contentStyle) {
+          this.setData({ containerStyle, contentStyle });
+        }
 
-      if (isFixed) {
-        containerStyle += `height:${height}px;`;
-        contentStyle += `position:fixed;top:${offsetTop}px`;
-      }
-      if (transform) {
-        const translate = `translate3d(0, ${transform}px, 0)`;
-        contentStyle += `-webkit-transform:${translate};transform:${translate};`;
-      }
-
-      if (prevContainerStyle !== containerStyle || prevContentStyle !== contentStyle) {
-        this.setData({ containerStyle, contentStyle });
-      }
-
-      this.triggerEvent('scroll', {
-        scrollTop: this.scrollTop,
-        isFixed,
+        this.triggerEvent('scroll', {
+          scrollTop: this.scrollTop,
+          isFixed,
+        });
       });
-    });
-  }
+    },
 
-  getContainerRect() {
-    const nodesRef: WechatMiniprogram.NodesRef = this.properties.container();
-    return new Promise<WechatMiniprogram.BoundingClientRectCallbackResult>((resolve) =>
-      nodesRef.boundingClientRect(resolve).exec(),
-    );
-  }
+    getContainerRect() {
+      const nodesRef: WechatMiniprogram.NodesRef = this.properties.container();
+      return new Promise<WechatMiniprogram.BoundingClientRectCallbackResult>((resolve) =>
+        nodesRef.boundingClientRect(resolve).exec(),
+      );
+    },
+  };
 }

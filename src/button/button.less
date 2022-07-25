@@ -143,8 +143,31 @@
     }
   }
 
-  &--plain {
+  &--outline {
     background-color: transparent;
+    &.@{prefix}-button--primary {
+      color: @button-primary-color;
+
+      &.@{prefix}-is-disabled {
+        background-color: transparent;
+        color: @button-primary-color--disabled;
+      }
+    }
+
+    &.@{prefix}-button--danger {
+      color: @button-danger-color;
+
+      &.@{prefix}-is-disabled {
+        background-color: transparent;
+        color: @button-danger-color--disabled;
+      }
+    }
+  }
+
+  &--dashed {
+    background-color: transparent;
+    border-style: dashed;
+
     &.@{prefix}-button--primary {
       color: @button-primary-color;
 

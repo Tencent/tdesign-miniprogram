@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "t-search": "tdesign-miniprogram/search/search"
+  }
+}

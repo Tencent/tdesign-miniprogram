@@ -1,6 +1,6 @@
 import dom from '../behaviors/dom';
 import touch from '../behaviors/touch';
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 
@@ -20,9 +20,9 @@ export default class Tabs extends SuperComponent {
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`, `${prefix}-class-track`];
 
-  relations = {
+  relations: RelationsOptions = {
     './tab-panel': {
-      type: 'descendant' as 'descendant',
+      type: 'descendant',
       linked(target: any) {
         this.children.push(target);
         target.index = this.children.length - 1;
@@ -69,6 +69,7 @@ export default class Tabs extends SuperComponent {
     isScrollY: false,
     direction: 'X',
     animate: { duration: 0 },
+    offset: 0,
   };
 
   created() {
@@ -93,6 +94,9 @@ export default class Tabs extends SuperComponent {
       isScrollX,
       isScrollY,
       direction: isScrollX ? 'X' : 'Y',
+    });
+    this.gettingBoundingClientRect(`.${name}`, true).then((res: any) => {
+      this.containerWidth = res[0].width;
     });
   }
 
@@ -136,6 +140,20 @@ export default class Tabs extends SuperComponent {
     }
   }
 
+  calcScrollOffset(
+    containerWidth: number,
+    totalWidth: number,
+    targetLeft: number,
+    targetWidth: number,
+    offset: number,
+  ) {
+    if (offset + targetLeft > containerWidth / 2) {
+      const maxOffset = totalWidth - containerWidth;
+      return Math.min(Math.abs(containerWidth / 2 - targetLeft - offset - targetWidth / 2), maxOffset);
+    }
+    return 0;
+  }
+
   setTrack(color = '#0052d9') {
     if (!this.properties.showBottomLine) return;
     const { children } = this;
@@ -154,6 +172,19 @@ export default class Tabs extends SuperComponent {
             distance += isScrollX ? item.width : item.height;
             count += 1;
           }
+        }
+
+        if (this.containerWidth) {
+          const offset = this.calcScrollOffset(
+            this.containerWidth,
+            rect.width * res.length,
+            rect.left,
+            rect.width,
+            this.data.offset,
+          );
+          this.setData({
+            offset,
+          });
         }
 
         if (isScrollX) {
@@ -182,14 +213,20 @@ export default class Tabs extends SuperComponent {
   }
 
   onTouchStart(event: any) {
+    if (!this.properties.swipeable) return;
+
     this.touchStart(event);
   }
 
   onTouchMove(event: any) {
+    if (!this.properties.swipeable) return;
+
     this.touchMove(event);
   }
 
   onTouchEnd() {
+    if (!this.properties.swipeable) return;
+
     const { direction, deltaX, offsetX } = this;
     const minSwipeDistance = 50;
     if (direction === 'horizontal' && offsetX >= minSwipeDistance) {

@@ -1,0 +1,13 @@
+.external-class {
+  width: 72px;
+  height: 72px;
+}
+
+.loading-text {
+  height: 0px;
+  width: 0px;
+}
+
+.loading-container {
+  display: flex;
+}

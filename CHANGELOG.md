@@ -5,6 +5,56 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.17.0 `2022-07-25` 
+### ❗️BREAKING CHANGES
+- `Tabbar`: 移除 color 属性，使用 CSS Variable 替代 @LeeJim ([#650](https://github.com/Tencent/tdesign-miniprogram/pull/650))
+- `Rate`: 移除 color 属性，使用 CSS Variable 替代 @anlyyao ([#653](https://github.com/Tencent/tdesign-miniprogram/pull/653))
+- `Rate`: `external-classes` 属性中的 `t-class-desc` 更名为 `t-class-text` @anlyyao ([#653](https://github.com/Tencent/tdesign-miniprogram/pull/653))
+- `Search`:  将 `external-classes` 属性中的 `t-class-cancel` 更名为 `t-class-action`。 @anlyyao ([#654](https://github.com/Tencent/tdesign-miniprogram/pull/654))
+
+### 🚀 Features
+- `Tabs`: 超过屏幕时，自动将激活的选项滚动到中间 @LeeJim ([#633](https://github.com/Tencent/tdesign-miniprogram/pull/633))
+- `Tabs`: 新增 `swipeable` 属性，用于控制是否滑动切换 @LeeJim ([#634](https://github.com/Tencent/tdesign-miniprogram/pull/634))
+- `PullDownRefresh`: 新增 `scrolltolower` 事件 @ws2003gq ([#641](https://github.com/Tencent/tdesign-miniprogram/pull/641))
+- `Button`:  `variant` 属性新增 `dashed` @anlyyao ([#648](https://github.com/Tencent/tdesign-miniprogram/pull/648))
+- `Tabbar`: 新增 CSS Variable 调整标签栏字体和图标颜色，具体查看文档 @LeeJim ([#650](https://github.com/Tencent/tdesign-miniprogram/pull/650))
+- `Grid`: `external-classes` 属性增加 `t-class-content` @anlyyao ([#635](https://github.com/Tencent/tdesign-miniprogram/pull/635))
+- `Grid`: 新增 CSS Variable 调整宫格背景、文本等颜色，具体查看文档 @anlyyao ([#635](https://github.com/Tencent/tdesign-miniprogram/pull/635))
+- `Search`: 新增 CSS Variable 调整 `Search` 字体、背景、图标等颜色，具体查看文档 @anlyyao ([#654](https://github.com/Tencent/tdesign-miniprogram/pull/654))
+- `Rate`: 新增 CSS Variable 调整 Rate 辅助文本、选中、未选中及禁用态图标颜色，具体查看文档 @anlyyao ([#653](https://github.com/Tencent/tdesign-miniprogram/pull/653))
+- `Input`:  移除 `external-classes` 属性中的 `t-class-placeholder`。 @anlyyao ([#651](https://github.com/Tencent/tdesign-miniprogram/pull/651))
+- `Input`:  `external-classes` 属性新增 `t-class-icon`, `t-class-label`,  `t-class-clearable`,  `t-class-suffix`, `t-class-suffix-icon` @anlyyao ([#651](https://github.com/Tencent/tdesign-miniprogram/pull/651))
+- `Input`: 新增 CSS Variable 调整 `Input` 字体、背景、图标等颜色，具体查看文档 @anlyyao ([#651](https://github.com/Tencent/tdesign-miniprogram/pull/651))
+- `Divider`: 新增 CSS Variable 调整分割线、文本颜色，具体查看文档 @anlyyao ([#656](https://github.com/Tencent/tdesign-miniprogram/pull/656))
+- `Indexes`: 新增 CSS Variable 调整 标题、背景、文本等颜色，具体查看文档 @anlyyao ([#649](https://github.com/Tencent/tdesign-miniprogram/pull/649))
+- `Drawer`: 新增 CSS Variable 调整抽屉背景、列表项标题、列表项图标、列表项下边框颜色，具体查看文档 @anlyyao ([#658](https://github.com/Tencent/tdesign-miniprogram/pull/658))
+
+### 🐞 Bug Fixes
+- `Tabs`: 修复值等于 0 时不能正常切换的问题 @LeeJim ([#632](https://github.com/Tencent/tdesign-miniprogram/pull/632))
+- `Textarea`: 修复超出 `maxcharacter` 后，仍能继续输入的问题 @anlyyao ([#625](https://github.com/Tencent/tdesign-miniprogram/pull/625))
+- `Picker`: 修复因重复定义 `options` 导致告警的问题 @LeeJim ([#638](https://github.com/Tencent/tdesign-miniprogram/pull/638))
+- `Image`: 补充缺失的 `shape = square` 样式 @anlyyao ([#637](https://github.com/Tencent/tdesign-miniprogram/pull/637))
+- `Button`: 修复 `variant=outline`无效 @anlyyao ([#648](https://github.com/Tencent/tdesign-miniprogram/pull/648))
+
+### 🚧 Others
+- `Navbar`: 更新示例代码 @anlyyao ([#636](https://github.com/Tencent/tdesign-miniprogram/pull/636))
+- `Textarea`: 更新示例代码 @anlyyao ([#625](https://github.com/Tencent/tdesign-miniprogram/pull/625))
+- `Icon`: 更新示例代码 @anlyyao ([#642](https://github.com/Tencent/tdesign-miniprogram/pull/642))
+- `Image`: 更新示例代码 @anlyyao ([#637](https://github.com/Tencent/tdesign-miniprogram/pull/637))
+- `Fab`: 更新示例代码 @wangyuan0108 ([#602](https://github.com/Tencent/tdesign-miniprogram/pull/602))
+- `Tabbar`: 新增自定义主题示例代码 @LeeJim ([#650](https://github.com/Tencent/tdesign-miniprogram/pull/650))
+- `Divider`: 更新示例代码 @wangyuan0108 ([#608](https://github.com/Tencent/tdesign-miniprogram/pull/608))
+- `Overlay`: 更新示例代码 @LeeJim ([#655](https://github.com/Tencent/tdesign-miniprogram/pull/655))
+- `Grid`: 更新示例代码 @anlyyao ([#635](https://github.com/Tencent/tdesign-miniprogram/pull/635))
+- `Search`: 更新示例代码 @anlyyao ([#654](https://github.com/Tencent/tdesign-miniprogram/pull/654))
+- `Rate`: 更新示例代码 @anlyyao ([#653](https://github.com/Tencent/tdesign-miniprogram/pull/653))
+- `DateTimePicker`: 更新示例代码 @anlyyao ([#652](https://github.com/Tencent/tdesign-miniprogram/pull/652))
+- `Button`: 更新示例代码 @wangyuan0108 ([#607](https://github.com/Tencent/tdesign-miniprogram/pull/607))
+- `Drawer`: 更新示例代码 @wangyuan0108 ([#613](https://github.com/Tencent/tdesign-miniprogram/pull/613))
+- `Tabs`: 更新示例代码 @wangyuan0108 ([#616](https://github.com/Tencent/tdesign-miniprogram/pull/616))
+- `Input`: 更新示例代码 @anlyyao ([#651](https://github.com/Tencent/tdesign-miniprogram/pull/651))
+- `Indexes`: 更新示例代码 @anlyyao ([#649](https://github.com/Tencent/tdesign-miniprogram/pull/649))
+
 ## 🌈 0.16.0 `2022-07-18` 
 ### ❗ BREAKING CHANGES
 - `Drawer`: 调整 `placement` 属性，只支持 `left` 和 `right` @LeeJim ([#619](https://github.com/Tencent/tdesign-miniprogram/pull/619))

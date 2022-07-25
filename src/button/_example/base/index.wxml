@@ -1,0 +1,33 @@
+<view class="box">
+  <t-button t-class="external-class" theme="primary" block disabled="{{disabled}}">强按钮</t-button>
+  <t-button t-class="external-class" theme="primary" variant="outline" block disabled="{{disabled}}">弱按钮</t-button>
+  <t-button t-class="external-class" variant="outline" block disabled="{{disabled}}">次按钮</t-button>
+  <t-button t-class="external-class" theme="primary" icon="app" variant="outline" block disabled="{{disabled}}"
+    >带图标按钮</t-button
+  >
+  <t-button t-class="external-class" theme="danger" block disabled="{{disabled}}">强告警按钮</t-button>
+  <t-button t-class="external-class" theme="danger" variant="outline" block disabled="{{disabled}}"
+    >弱告警按钮</t-button
+  >
+</view>
+
+<view class="full-width">
+  <view class="box">
+    <t-button t-class="external-class" ghost block disabled="{{disabled}}">幽灵按钮</t-button>
+  </view>
+</view>
+
+<view class="box">
+  <t-button t-class="external-class" variant="text" block disabled="{{disabled}}">文字按钮</t-button>
+</view>
+<t-button t-class="external-class no-border-radius" theme="primary" size="large" block disabled="{{disabled}}"
+  >通栏按钮</t-button
+>
+<t-button-group>
+  <t-button t-class="external-class no-border-radius no-border" size="large" block disabled="{{disabled}}"
+    >次按钮</t-button
+  >
+  <t-button t-class="external-class no-border-radius" theme="primary" size="large" block disabled="{{disabled}}"
+    >主按钮</t-button
+  >
+</t-button-group>

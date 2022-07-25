@@ -1,0 +1,12 @@
+<t-image id="loading-img-custom" t-class="external-class" src="" mode="aspectFill" shape="round" loading="slot">
+  <t-loading
+    slot="loading"
+    theme="circular"
+    size="40rpx"
+    loading
+    style="opacity: 0.6"
+    t-class-text="loading-text"
+    t-class="loading-container"
+    class="custom-loading"
+  ></t-loading>
+</t-image>

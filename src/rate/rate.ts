@@ -25,7 +25,7 @@ const rpx2px = (() => {
 
 @wxComponent()
 export default class Rate extends SuperComponent {
-  externalClasses = ['t-class', 't-class-icon', 't-class-desc'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-text`];
 
   properties = props;
 
@@ -37,9 +37,8 @@ export default class Rate extends SuperComponent {
   ];
 
   data = {
+    prefix,
     classPrefix: name,
-    icon: 'star-filled',
-    halfIcon: 'star-filled',
     defaultTexts: ['极差', '失望', '一般', '满意', '惊喜'],
     disabledColor: '#999999',
   };

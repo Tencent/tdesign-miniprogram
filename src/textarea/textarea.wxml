@@ -5,12 +5,12 @@
   </view>
   <view class="{{classPrefix}}__wrapper">
     <textarea
-      maxlength="{{maxlength || -1}}"
+      maxlength="{{maxlength || maxchars || -1}}"
       disabled="{{disabled}}"
       placeholder="{{placeholder}}"
       class="{{classPrefix}}__wrapper-textarea {{prefix}}-class-textarea"
       placeholder-class="{{classPrefix}}__placeholder"
-      model:value="{{value}}"
+      value="{{value}}"
       auto-focus="{{autofocus}}"
       focus="{{focus}}"
       cursor-spacing="{{cursorSpacing}}"

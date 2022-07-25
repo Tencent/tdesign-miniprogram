@@ -1,0 +1,3 @@
+.error-msg {
+  text-align: right !important;
+}

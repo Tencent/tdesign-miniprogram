@@ -4,7 +4,7 @@
  * 1、swiper简易配置，参见swiper的navigation。提升易用性
  * 2、自定义组件插槽组合，slot=nav。提升灵活性，方便样式覆盖
  */
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import { DIRECTION, NavTypes } from './common/constants';
 
@@ -39,9 +39,9 @@ export default class SwiperNav extends SuperComponent {
     },
   };
 
-  relations = {
+  relations: RelationsOptions = {
     './swiper': {
-      type: 'parent' as 'parent',
+      type: 'parent',
     },
   };
 

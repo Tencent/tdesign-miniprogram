@@ -1,0 +1,3 @@
+<t-image t-class="external-class" src="" mode="aspectFill" shape="round" loadFailed="slot">
+  <view slot="loadFailed" class="custom-loading-failed">加载失败</view>
+</t-image>

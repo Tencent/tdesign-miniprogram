@@ -1,0 +1,7 @@
+<view class="divider-demo__title">文字+直线</view>
+<t-divider t-class="demo-5">
+  <text slot="content">文字信息</text>
+</t-divider>
+
+<view class="divider-demo__title">文字+虚线</view>
+<t-divider t-class="demo-5" dashed content="文字信息" />

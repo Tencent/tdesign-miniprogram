@@ -19,22 +19,7 @@ isComponent: true
 
 ### 基础使用
 
-```html
-<t-overlay visible="{{overlayVisible}}" bind:click="handleOverlay">
-  <!-- slot -->
-</t-overlay>
-```
-
-```js
-Page({
-  data: {
-    overlayVisible: true
-  },
-  handleOverlay() {
-    this.setData({ overlayVisible: false });
-  }
-})
-```
+{{ base }}
 
 ## API
 

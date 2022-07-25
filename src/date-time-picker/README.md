@@ -21,38 +21,21 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/datetimepicker.png" width="375px" height="50%">
 
-```html
-<t-date-time-picker
-  title="选择日期和时间"
-  visible="{{dateTimeVisible}}"
-  mode="minute"
-  value="{{dateTime}}"
-  format="YYYY-MM-DD HH:mm"
-  bindchange="onConfirm"
-  start="{{start}}"
-  end="{{end}}"
-></t-date-time-picker>
-```
+#### 选择日期(年月日)
 
-```js
-Page({
-  data: {
-    dateTimeVisible: true,
-    dateTime: '2020-08-10 12:50:00',
-    // 指定选择区间起始值
-    start: '2000-01-01 00:00:00',
-    end: '2050-09-09 12:12:12',
-    
-  },
+{{ year-month-date }}
 
-  onConfirm(e) {
-    const { value } = e?.detail;
-    this.setData({
-      dateTime: value
-    });
-  },
-});
-```
+#### 选择日期(年月)
+
+{{ year-month }}
+
+#### 选择时间(时分)
+
+{{ time-min }}
+
+#### 选择日期时间(年月日时分)
+
+{{ date-all }}
 
 ## API
 ### DateTimePicker Props

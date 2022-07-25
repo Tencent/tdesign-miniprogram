@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, isObject } from '../common/src/index';
+import { SuperComponent, wxComponent, isObject, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './grid-item-props';
 
@@ -13,15 +13,21 @@ enum LinkTypes {
 
 @wxComponent()
 export default class GridItem extends SuperComponent {
-  externalClasses = ['t-class', 't-class-image', 't-class-text', 't-class-description'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-content`,
+    `${prefix}-class-image`,
+    `${prefix}-class-text`,
+    `${prefix}-class-description`,
+  ];
 
   options = {
     multipleSlots: true,
   };
 
-  relations = {
+  relations: RelationsOptions = {
     './grid': {
-      type: 'ancestor' as 'ancestor',
+      type: 'ancestor',
       linked(this: GridItem, target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
         this.updateStyle();
@@ -32,6 +38,7 @@ export default class GridItem extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
     gridItemStyle: '',
     gridItemWrapperStyle: '',

@@ -5,6 +5,7 @@
   bind:touchend="onTouchEnd"
   bind:scroll="onScroll"
   bindscrolltoupper="onScrollToTop"
+  bindscrolltolower="onScrollToBottom"
   scroll-y
   enable-back-to-top
   enhanced
