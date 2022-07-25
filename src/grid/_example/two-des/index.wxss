@@ -1,0 +1,13 @@
+.two-des {
+  padding: 0 32rpx !important;
+}
+
+.image {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+.image-icon {
+  width: 100%;
+  height: 100%;
+}
