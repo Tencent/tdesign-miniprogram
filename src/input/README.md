@@ -14,44 +14,60 @@ isComponent: true
   "t-input": "tdesign-miniprogram/input/input"
 }
 ```
+### 主题定制
+CSS 变量名|说明
+--|--
+--td-input-bg-color | 输入框背景颜色
+--td-input-text-color | 输入框文本颜色
+--td-input-placeholder-text-color  | 输入框placeholder占位符颜色
+--td-input-error-text-color | 输入错误时文本颜色
+--td-input-disabled-text-color | 禁用输入框颜色
+--td-input-border-color | 输入框边框颜色
+--td-input-error-msg-color | 错误提示文本颜色
+--td-input-icon-color | 图标颜色
+--td-input-suffix-text-color | 后置文本内容颜色
 
 ## 代码演示
 
-### 基础输入框
+## 类型
+### 基础文本框
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/input-1.png" width="375px" height="50%">
 
-```html
-<!-- 无标题输入框 -->
-<t-input placeholder="请输入文字" />
+{{ base }}
 
-<!-- 带标题输入框 设置属性：label -->
-<t-input label="标签文字" placeholder="请输入文字" />
+### 必填、选填文本框
 
-<!-- 自定义标题输入框 设置属性：label="slot" slot="label"-->
-<t-input placeholder="请输入文字" label="slot">
-	<text slot="label">
-    标签文字<text style="color: #e34d59"> *</text>
-	</text>
-</t-input>
+{{ require }}
 
-<!-- 带后缀输入框 设置属性：slot="suffix" -->
-<t-input
- placeholder="请输入手机号码"
- value="{{phoneNumber}}"
- type="number"
- error-message="{{phoneError ? '手机号输入不正确' : ''}}"
- bindchange="onPhoneInput"
->
-	<view slot="suffix" class="verify">发送验证码 </view>
-</t-input>
-```
+### 带提示信息文本框
 
-### 双向绑定
+{{ suffix }}
 
-```html
-<t-input model:value="{{value}}" />
-```
+## 状态
+### 文本框状态
+
+{{ status }}
+
+## 特殊类型
+### 特殊文本类型
+
+{{ special }}
+
+## 规格
+### 文本框尺寸规格
+
+{{ size }}
+
+## 内容位置
+### 文本框内容位置
+
+{{ align }}
+
+## 字数限制
+### 文本框字数限制
+
+{{ maxlength }}
 
 ## API
 ### Input Props
@@ -63,7 +79,7 @@ borderless | Boolean | true | 是否开启无边框模式 | N
 clearable | Boolean | false | 是否可清空 | N
 disabled | Boolean | false | 是否禁用输入框 | N
 error-message | String | - | 错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
-external-classes | Array | - | 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名。`['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg']` | N
+external-classes | Array | - | 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名。`['t-class','t-class-icon', 't-class-label', 't-class-input',  't-class-clearable', 't-class-suffix', 't-class-suffix-icon', 't-class-error-msg']` | N
 format | Function | - | 【开发中】指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => number | string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 label | String / Slot | - | 左侧文本 | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
