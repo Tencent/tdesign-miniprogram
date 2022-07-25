@@ -1,27 +1,41 @@
 @import '../common/style/index.less';
 
+@drawer-sidebar-bg-color: #fff;
+@drawer-sidebar-border-color: #e7e7e7;
+@drawer-sidebar-title-color: rgba(0, 0, 0, 0.9);
+@drawer-sidebar-icon-color: rgba(0, 0, 0, 0.9);
+
+page {
+  --td-drawer-sidebar-bg-color: @drawer-sidebar-bg-color;
+  --td-drawer-sidebar-border-color: @drawer-sidebar-border-color;
+  --td-drawer-sidebar-title-color: @drawer-sidebar-title-color;
+  --td-drawer-sidebar-icon-color: @drawer-sidebar-icon-color;
+}
+
 .@{prefix}-drawer {
   &__sidebar {
     width: calc(100vw * 0.82);
     height: 100vh;
-    background: #fff;
+    background: var(--td-drawer-sidebar-bg-color);
   }
 
   &__sidebar-item {
     display: flex;
     align-items: center;
-    border-bottom: 1rpx solid #e7e7e7;
+    border-bottom: 1rpx solid var(--td-drawer-sidebar-border-color);
     padding: 24rpx 0;
     margin-left: 32rpx;
   }
 
   &__sidebar-item-title {
     flex: 1;
+    color: var(--td-drawer-sidebar-title-color);
   }
 
   &__sidebar-item-icon {
     width: 48rpx;
     height: 48rpx;
     padding-right: 16rpx;
+    color: var(--td-drawer-sidebar-icon-color);
   }
 }
