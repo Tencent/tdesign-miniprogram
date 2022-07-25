@@ -21,56 +21,40 @@ isComponent: true
 ### 基础按钮
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/button-1.png" width="375px" height="50%">
+基础类型分为主按钮、次按钮、文字按钮
 
-```html
-<t-button theme="primary" size="large">强按钮</t-button>
-<t-button theme="primary" size="large" variant="plain">弱按钮</t-button>
-<t-button size="large" variant="plain">次按钮</t-button>
-<t-button theme="primary" size="large" icon="app" variant="plain">带图标按钮</t-button>
-<t-button theme="danger" size="large">强告警按钮</t-button>
-<t-button theme="danger" size="large" variant="plain">弱告警按钮</t-button>
-<view class="box">
-  <t-button ghost size="large">幽灵按钮</t-button>
-</view>
-<t-button variant="text" size="large">文字按钮</t-button>
-<t-button theme="primary" size="large" shape="square" block>通栏按钮</t-button>
-<t-button-group>
-  <t-button size="large" block shape="square">次按钮</t-button>
-  <t-button theme="primary" size="large" block shape="square">主按钮</t-button>
-</t-button-group>
-```
+#### 次按钮
+使用场景：在用户进行的操作为流程中的辅助操作，或者进行不那么重要的交互行为时，选择用次按钮；次要按钮通常和主要按钮一起出现
 
-### 不同状态的按钮
+#### 主按钮
+使用场景：大部分场景都可以使用，例如反馈页、表单页、对话框，一个页面建议最多只出现一个主按钮；
+
+#### 文字按钮
+使用场景：它的操作通常和其旁边内容相关，通常出现在标题旁、字段旁、列表最下方
+
+{{ base }}
+
+### 带图标按钮
+{{ icon-btn }}
+
+### 不同状态
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/button-2.png" width="375px" height="50%">
 
-```html
-<t-button theme="primary" size="large" disabled>强按钮</t-button>
-<t-button theme="primary" size="large" variant="plain" disabled>弱按钮</t-button>
-<t-button size="large" variant="plain" disabled>次按钮</t-button>
-<t-button theme="primary" size="large" icon="app" disabled>带图标按钮</t-button>
-<t-button theme="danger" size="large" disabled>强告警按钮</t-button>
-<t-button theme="danger" size="large" variant="plain" disabled>弱告警按钮</t-button>
-<view class="box">
-  <t-button ghost size="large" disabled>幽灵按钮</t-button>
-</view>
-<t-button variant="text" size="large" disabled>文字按钮</t-button>
-<t-button theme="primary" size="large" shape="square" block disabled>通栏按钮</t-button>
-<t-button-group>
-  <t-button size="large" shape="square" block disabled>次按钮</t-button>
-  <t-button theme="primary" size="large" block shape="square" disabled>主按钮</t-button>
-</t-button-group>
-```
+{{ status }}
 
-### 不同尺寸的按钮
+### 不同尺寸
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/button-3.png" width="375px" height="50%">
 
-```html
-<t-button theme="primary" size="large">按钮 44</t-button>
-<t-button theme="primary" style="margin-left: 16px">按钮 40</t-button>
-<t-button theme="primary" size="small" style="margin-left: 16px">按钮 36</t-button>
-```
+{{ size }}
+
+### 不同形状
+{{ shape }}
+
+### 按钮组
+
+{{ group }}
 
 ## API
 ### Button Props

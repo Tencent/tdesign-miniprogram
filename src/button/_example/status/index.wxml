@@ -1,0 +1,41 @@
+<view class="box">
+  <t-button theme="primary" block disabled>强按钮</t-button>
+  <t-button theme="primary" variant="plain" block disabled>弱按钮</t-button>
+  <t-button size="large" block disabled>次按钮</t-button>
+  <t-button theme="danger" block disabled>强告警按钮</t-button>
+  <t-button theme="danger" variant="plain" block disabled>弱告警按钮</t-button>
+  <t-button theme="primary" icon="app" variant="plain" block disabled>带图标按钮</t-button>
+</view>
+
+<view class="full-width">
+  <view class="box">
+    <t-button ghost block disabled>幽灵按钮</t-button>
+  </view>
+</view>
+
+<view class="box">
+  <t-button variant="text" block disabled>文字按钮</t-button>
+</view>
+
+<t-button t-class="no-border-radius" size="large" theme="primary" block disabled>通栏按钮</t-button>
+<t-button-group>
+  <t-button t-class="no-border-radius no-border" size="large" block disabled>次按钮</t-button>
+  <t-button t-class="no-border-radius" theme="primary" size="large" block disabled>主按钮</t-button>
+</t-button-group>
+
+<view class="box">
+  <t-button class="content-margin-right" theme="primary" icon="app" content="带图标按钮" disabled></t-button>
+  <t-button class="content-margin-right" theme="primary" icon="app" shape="round" disabled>
+    <text>带图标按钮</text>
+  </t-button>
+</view>
+
+<view class="box">
+  <t-button class="content-margin-right" theme="primary" icon="app" shape="square" disabled></t-button>
+  <t-button class="content-margin-right" theme="primary" icon="app" shape="circle" disabled></t-button>
+</view>
+
+<view class="box">
+  <t-button class="content-margin-right" theme="primary" shape="square" loading disabled></t-button>
+  <t-button class="content-margin-right" theme="primary" loading disabled>加载中...</t-button>
+</view>

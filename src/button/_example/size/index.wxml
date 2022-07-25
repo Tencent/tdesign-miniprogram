@@ -1,0 +1,5 @@
+<view class="box align-bottom">
+  <t-button class="content-margin-right" theme="primary" size="large">按钮 44</t-button>
+  <t-button class="content-margin-right" theme="primary">按钮 40</t-button>
+  <t-button class="content-margin-right" theme="primary" size="small">按钮 36</t-button>
+</view>

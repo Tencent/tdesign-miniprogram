@@ -1,6 +1,11 @@
 {
   "navigationBarTitleText": "Button 按钮",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "base": "./base",
+    "size": "./size",
+    "status": "./status",
+    "group": "./group",
+    "shape": "./shape",
+    "icon-btn": "./icon-btn"
   }
 }

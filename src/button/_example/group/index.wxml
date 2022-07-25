@@ -1,0 +1,4 @@
+<t-button-group>
+  <t-button t-class="no-border-radius no-border" size="large" block>次按钮</t-button>
+  <t-button t-class="no-border-radius" theme="primary" size="large" block>主按钮</t-button>
+</t-button-group>
