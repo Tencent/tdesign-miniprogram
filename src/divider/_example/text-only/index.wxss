@@ -1,3 +1,10 @@
+.divider-demo__title {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.4);
+  padding: 0 32rpx 16rpx;
+  line-height: 40rpx;
+}
+
 .demo-6 {
   display: flex;
   height: 20px;
@@ -6,7 +13,7 @@
   margin: 0 32rpx;
   font-size: 12px;
 }
-.demo-6--text-color {
-  color: #000;
-  opacity: 0.4;
+
+.demo-6__text-color {
+  color: rgba(0, 0, 0, 0.4);
 }
