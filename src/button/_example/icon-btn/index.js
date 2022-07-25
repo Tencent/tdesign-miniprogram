@@ -1,1 +1,5 @@
-Page({});
+Component({
+  properties: {
+    disabled: Boolean,
+  },
+});
