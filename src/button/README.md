@@ -37,24 +37,9 @@ isComponent: true
 ### 带图标按钮
 {{ icon-btn }}
 
-### 不同状态
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/button-2.png" width="375px" height="50%">
-
-{{ status }}
-
 ### 不同尺寸
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/button-3.png" width="375px" height="50%">
-
 {{ size }}
-
-### 不同形状
-{{ shape }}
-
-### 按钮组
-
-{{ group }}
 
 ## API
 ### Button Props
