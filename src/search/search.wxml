@@ -32,7 +32,7 @@
       <slot wx:else name="right-icon" />
     </view>
   </view>
-  <view wx:if="{{action}}" class="{{classPrefix}}__search-action {{prefix}}-class-cancel" bindtap="onActionClick">
+  <view wx:if="{{action}}" class="{{classPrefix}}__search-action {{prefix}}-class-action" bindtap="onActionClick">
     {{action}}
   </view>
   <slot wx:else name="action-text" />

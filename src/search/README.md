@@ -15,31 +15,31 @@ isComponent: true
 }
 ```
 
+### 主题定制
+CSS 变量名|说明
+--|--
+--td-search-icon-color | 图标颜色
+--td-search-label-color | 左侧文本颜色
+--td-search-action-color | 右侧操作按钮颜色
+--td-search-text-color | 输入框文本颜色
+--td-search-placeholder-color | 输入框placeholder占位符颜色
+--td-search-bg-color | 输入框背景颜色
+--td-search-border-color | 输入框边框颜色
+--td-search-focus-border-color | 聚焦时输入框边框颜色
+
 ## 代码演示
 
 ### 基础搜索框
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/search.png" width="375px" height="50%">
 
-```html
-<t-search placeholder="搜索预设文案" center="{{true}}" />
-```
+{{ base }}
 
-### 双向绑定用法
 
-通过双向绑定，在输入框里输入文字时，`value` 的值也会同时跟着变化。
+### 状态
 
-```html
-<t-search model:value="{{value}}" placeholder="搜索预设文案" center="{{true}}" />
-```
+{{ status }}
 
-```js
-Page({
-  data: {
-    value: ''
-  },
-})
-```
 ## API
 ### Search Props
 
@@ -48,7 +48,7 @@ Page({
 action | String / Slot | '' | 自定义右侧操作按钮文字 | N
 center | Boolean | false | 是否居中 | N
 disabled | Boolean | false | 是否禁用 | N
-external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-cancel','t-class-left','t-class-right']` | N
+external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-action','t-class-left','t-class-right']` | N
 focus | Boolean | false | 是否聚焦 | N
 label | String | '' | 左侧文本 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
