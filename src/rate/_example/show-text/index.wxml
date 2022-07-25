@@ -8,11 +8,16 @@
     showText="{{true}}"
     texts="{{texts}}"
     variant="filled"
-    size="{{32}}"
+    size="{{16}}"
   />
 </view>
 <view class="demo-rate">
   <view class="demo-rate__title">请点击评分</view>
   <!-- 带描述评分，设置属性：showText-->
   <t-rate value="{{value[1]}}" variant="filled" data-index="{{1}}" bind:change="onChange" showText="{{true}}" />
+</view>
+
+<view class="demo-rate">
+  <view class="demo-rate__title">请点击评分</view>
+  <t-rate value="{{value[2]}}" data-index="{{2}}" bind:change="onChange" showText="{{true}}" />
 </view>

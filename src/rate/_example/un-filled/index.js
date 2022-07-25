@@ -1,6 +1,6 @@
 Page({
   data: {
-    value: 2,
+    value: 3,
   },
 
   onChange(e) {

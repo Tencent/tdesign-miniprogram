@@ -1,3 +1,8 @@
+.custom-color {
+  --td-rate-selected-color: #f96102;
+  --td-rate-unselected-color: #bbbbbb;
+}
+
 .demo-rate {
   background-color: #fff;
   width: 100%;
