@@ -7,15 +7,11 @@
   </t-demo>
 
   <t-demo title="02 状态">
-    <status />
+    <base disabled />
+    <icon-btn disabled />
   </t-demo>
 
   <t-demo title="03 规格">
     <size />
-    <shape />
-  </t-demo>
-
-  <t-demo title="04 按钮组">
-    <group />
   </t-demo>
 </view>

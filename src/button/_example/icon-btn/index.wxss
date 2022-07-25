@@ -1,0 +1,8 @@
+.box {
+  margin: 0 32rpx;
+}
+
+.external-class {
+  margin-top: 32rpx;
+  margin-right: 32rpx;
+}
