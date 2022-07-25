@@ -13,14 +13,14 @@
 @h-space-nest: @spacer;
 
 page {
-  --t-search-label-color: @search-text-color;
-  --t-search-text-color: @search-text-color;
-  --t-search-action-color: @search-text-disable;
-  --t-search-placeholder-color: @search-text-disable;
-  --t-search-icon-color: @search-text-disable;
-  --t-search-bg-color: @search-bg;
-  --t-search-border-color: @search-bg;
-  --t-search-focus-border-color: @search-bg;
+  --td-search-label-color: @search-text-color;
+  --td-search-text-color: @search-text-color;
+  --td-search-action-color: @search-text-disable;
+  --td-search-placeholder-color: @search-text-disable;
+  --td-search-icon-color: @search-text-disable;
+  --td-search-bg-color: @search-bg;
+  --td-search-border-color: @search-bg;
+  --td-search-focus-border-color: @search-bg;
 }
 
 .@{prefix}-search {
@@ -30,7 +30,7 @@ page {
 
   &__label {
     padding: @search-label-padding-right;
-    color: var(--t-search-label-color);
+    color: var(--td-search-label-color);
   }
 
   &__input-box {
@@ -39,12 +39,12 @@ page {
     display: flex;
     height: @search-height;
     align-items: center;
-    border: 2rpx solid var(--t-search-border-color);
-    background: var(--t-search-bg-color);
+    border: 2rpx solid var(--td-search-border-color);
+    background: var(--td-search-bg-color);
     padding: @search-padding-vertical @search-padding-horizontal;
 
     &.@{prefix}-is-focused {
-      border-color: var(--t-search-focus-border-color);
+      border-color: var(--td-search-focus-border-color);
     }
 
     &--round {
@@ -62,13 +62,13 @@ page {
     .@{prefix}-input__keyword {
       display: inline-block;
       flex: 1;
-      color: var(--t-search-text-color);
+      color: var(--td-search-text-color);
       font-size: @search-font-size;
       padding-left: @h-space-nest;
     }
 
     .@{prefix}-icon {
-      color: var(--t-search-icon-color);
+      color: var(--td-search-icon-color);
     }
   }
 
@@ -81,11 +81,11 @@ page {
   &__search-action {
     margin-left: 30rpx;
     font-size: @search-font-size;
-    color: var(--t-search-action-color);
+    color: var(--td-search-action-color);
   }
 
   &__placeholder {
-    color: var(--t-search-placeholder-color);
+    color: var(--td-search-placeholder-color);
 
     &--center {
       text-align: center;
