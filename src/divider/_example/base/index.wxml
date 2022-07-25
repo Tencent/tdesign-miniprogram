@@ -1,14 +1,14 @@
-<view>直线拉通</view>
+<view class="divider-demo__title">直线拉通</view>
 <t-divider></t-divider>
 
-<view>虚线拉通</view>
+<view class="divider-demo__title">虚线拉通</view>
 <t-divider dashed></t-divider>
 
-<view>左右间距</view>
+<view class="divider-demo__title">左右间距</view>
 <t-divider t-class="demo-2"></t-divider>
 
-<view>右侧拉通</view>
+<view class="divider-demo__title">右侧拉通</view>
 <t-divider t-class="demo-3"></t-divider>
 
-<view>自定义左侧间距</view>
+<view class="divider-demo__title">自定义左侧间距</view>
 <t-divider t-class="demo-4"></t-divider>

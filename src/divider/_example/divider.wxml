@@ -5,7 +5,7 @@
     <view class="t-divider-list">
       <base />
       <text-line />
-      <text />
+      <text-only />
     </view>
   </t-demo>
 </view>

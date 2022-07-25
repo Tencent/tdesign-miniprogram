@@ -1,14 +1,22 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
 @divider-color: rgba(231, 231, 231, 1);
+@divider-content-color: rgba(0, 0, 0, 0.4);
+
+@divider-content-font-size: 24rpx;
+@divider-content-line-height: 40rpx;
+
+page {
+  --td-divider-color: @divider-color;
+  --td-divider-content-color: @divider-content-color;
+}
 
 .@{prefix}-divider {
   &--horizontal {
     display: flex;
     align-items: center;
-    color: @divider-color;
-    border-color: @divider-color;
+    color: var(--td-divider-color);
+    border-color: var(--td-divider-color);
     border-style: solid;
     border-width: 0;
     margin-top: 20rpx;
@@ -27,6 +35,10 @@
     &::before {
       content: '';
     }
+
+    .@{prefix}-divider__content:not(:empty) {
+      margin: 0 @spacer * 1.5;
+    }
   }
 
   &--vertical {
@@ -34,8 +46,8 @@
     flex-direction: column;
     height: 1em;
     margin: 0 @spacer;
-    color: @divider-color;
-    border-color: @divider-color;
+    color: var(--td-divider-color);
+    border-color: var(--td-divider-color);
     border-style: solid;
     border-width: 0;
 
@@ -62,7 +74,9 @@
   }
 
   &__content {
-    color: rgba(0, 0, 0, .4);
+    font-size: @divider-content-font-size;
+    line-height: @divider-content-line-height;
+    color: var(--td-divider-content-color);
   }
 
   // horizontal: 文本位置
