@@ -88,7 +88,7 @@
     "prettier": "^2.0.5",
     "prismjs": "^1.24.1",
     "standard-changelog": "^2.0.27",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14.9.1",
     "tdesign-icons-view": "^0.1.0",
     "tdesign-publish-cli": "^0.0.9",
     "tdesign-site-components": "^0.10.9",
