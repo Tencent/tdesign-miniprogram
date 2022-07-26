@@ -1,5 +1,13 @@
 @import '../common/style/index.less';
 
+@avatar-group-small-width: 64rpx;
+@avatar-group-medium-width: 80rpx;
+@avatar-group-large-width: 96rpx;
+
+@avatar-group-small-font-size: @font-size-s;
+@avatar-group-medium-font-size: @font-size-m;
+@avatar-group-large-font-size: @font-size * 1.8;
+
 .@{prefix}-avatar-group {
   display: block;
 
@@ -9,28 +17,28 @@
 
   &--large {
     .@{prefix}-size-l {
-      width: 96rpx;
-      height: 96rpx;
+      width: @avatar-group-large-width;
+      height: @avatar-group-large-width;
       font-weight: 600;
-      font-size: 36rpx;
+      font-size: @avatar-group-large-font-size;
     }
   }
 
   &--medium {
     .@{prefix}-size-m {
-      width: 80rpx;
-      height: 80rpx;
+      width: @avatar-group-medium-width;
+      height: @avatar-group-medium-width;
       font-weight: 600;
-      font-size: 32rpx;
+      font-size: @avatar-group-medium-font-size;
     }
   }
 
   &--small {
     .@{prefix}-size-s {
-      width: 64rpx;
-      height: 64rpx;
+      width: @avatar-group-small-width;
+      height: @avatar-group-small-width;
       font-weight: 600;
-      font-size: 24rpx;
+      font-size: @avatar-group-small-font-size;
     }
   }
 
@@ -50,22 +58,5 @@
 
   .@{prefix}-is-hidden {
     display: none;
-  }
-
-  .alt-default {
-    background-color: #d4e3fc;
-    color: #0052d9;
-
-    &-l {
-      font-size: 64rpx;
-    }
-
-    &-m {
-      font-size: 48rpx;
-    }
-
-    &-s {
-      font-size: 32rpx;
-    }
   }
 }
