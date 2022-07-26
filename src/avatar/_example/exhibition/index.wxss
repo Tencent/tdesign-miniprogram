@@ -1,0 +1,19 @@
+.row {
+  margin: 20rpx 0;
+}
+
+.border-size-2 {
+  border: 4rpx solid #fff;
+}
+
+.border-size-3 {
+  border: 6rpx solid #fff;
+}
+
+.border-size-4 {
+  border: 8rpx solid #fff;
+}
+
+.excursion-right-8 {
+  margin-right: -16rpx;
+}

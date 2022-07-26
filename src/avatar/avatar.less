@@ -26,8 +26,8 @@ page {
   &__wrapper {
     float: left;
     position: relative;
-    background-color: var(--td-avatar-bg-color);
-    color: var(--td-avatar-content-color);
+    background-color: var(--td-avatar-bg-color, @avatar-bg-color);
+    color: var(--td-avatar-content-color, @avatar-content-color);
     border-radius: 999rpx;
 
     .@{prefix}-badge {

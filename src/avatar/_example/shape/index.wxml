@@ -1,0 +1,22 @@
+<view class="row">
+  <view class="avatar-example">
+    <t-avatar icon="user" />
+    <text class="avatar-word">默认</text>
+  </view>
+  <view class="avatar-example">
+    <t-avatar image="{{image}}" alt="avatar" />
+    <text class="avatar-word">用户</text>
+  </view>
+  <view class="avatar-example">
+    <t-avatar shape="circle" image="{{image}}" alt="avatar" />
+    <text class="avatar-word">圆形</text>
+  </view>
+  <view class="avatar-example">
+    <t-avatar shape="round" image="{{image}}" />
+    <text class="avatar-word">方形</text>
+  </view>
+  <view class="avatar-example text">
+    <t-avatar t-class-content="alt-example">A</t-avatar>
+    <text class="avatar-word">自定义文字</text>
+  </view>
+</view>
