@@ -33,6 +33,13 @@ export default {
           component: () => import('~/CHANGELOG.md'),
         },
         {
+          title: '自定义主题',
+          name: 'custom-theme',
+          meta: { docType: 'explain' },
+          path: '/miniprogram/custom-theme',
+          component: () => import('@docs/custom-theme.md'),
+        },
+        {
           title: '组件概览',
           name: 'overview',
           meta: { docType: 'explain' },
@@ -93,7 +100,7 @@ export default {
           path: '/miniprogram/components/grid',
           component: () => import('@/grid/README.md'),
         },
-      ]
+      ],
     },
     {
       title: '导航',
@@ -285,7 +292,7 @@ export default {
           meta: { docType: 'data' },
           path: '/miniprogram/components/footer',
           component: () => import('@/footer/README.md'),
-        },        
+        },
         {
           title: 'Image 图片',
           name: 'image',
