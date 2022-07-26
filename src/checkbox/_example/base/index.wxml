@@ -1,0 +1,13 @@
+<t-checkbox-group value="{{demoCheckbox1}}" bind:change="handleGroupChange">
+  <t-checkbox value="checkbox1" label="多选" />
+  <t-checkbox value="checkbox2" label="多选" />
+  <t-checkbox value="checkbox3" label="多选" />
+  <t-checkbox
+    value="checkbox4"
+    label="多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选多选"
+    max-label-row="2"
+  ></t-checkbox>
+  <t-checkbox value="checkbox5" label="多选" max-content-row="2">
+    多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选选多选多选多选多选
+  </t-checkbox>
+</t-checkbox-group>
