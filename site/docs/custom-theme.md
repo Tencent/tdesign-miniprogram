@@ -19,7 +19,7 @@ page {
 
 此时如果你要修改对应的颜色，不能在 `page` 上声明，因为可能**权重不够**：
 
-![css-specific](/css-specific.png)
+![css-specific](/miniprogram/css-specific.png)
 
 比较妥当的做法是，在使用组件的外层元素修改同名变量，假设 `WXML` 是这样的：
 
