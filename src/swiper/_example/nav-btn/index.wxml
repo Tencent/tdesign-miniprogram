@@ -1,0 +1,11 @@
+<t-swiper
+  current="{{current}}"
+  autoplay="{{autoplay}}"
+  duration="{{duration}}"
+  interval="{{interval}}"
+  navigation="{{navigation}}"
+>
+  <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
+    <view class="item">{{index}}<image src="{{item.image}}" class="img" /></view>
+  </t-swiper-item>
+</t-swiper>
