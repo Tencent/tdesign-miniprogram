@@ -1,0 +1,8 @@
+<t-slider
+  defaultValue="{{50}}"
+  marks="{{mask}}"
+  step="{{50}}"
+  disabled="{{disabled}}"
+  disabledColor="{{disabledColor}}"
+  bind:change="handleChange"
+></t-slider>
