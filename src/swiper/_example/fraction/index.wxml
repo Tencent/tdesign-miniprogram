@@ -7,6 +7,6 @@
   paginationPosition="{{paginationPosition}}"
 >
   <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
-    <view class="item">{{index}}<image src="{{item.image}}" class="img" /></view>
+    <image src="{{item.image}}" class="img" />
   </t-swiper-item>
 </t-swiper>

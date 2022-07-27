@@ -10,7 +10,7 @@
     height="{{400}}"
   >
     <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
-      <view class="item">{{index}}<image src="{{item.image}}" class="img" mode="aspectFill" /></view>
+      <image src="{{item.image}}" class="img" mode="aspectFill" />
     </t-swiper-item>
   </t-swiper>
 </view>
