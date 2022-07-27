@@ -13,6 +13,7 @@ type NavOptions = {
   index: number;
   total: number;
   direction: boolean;
+  paginationPosition: boolean;
 };
 
 @wxComponent()
