@@ -32,8 +32,23 @@
     customStyle="{{iconProps.customStyle}}"
     class="{{classPrefix}}__icon {{prefix}}-class-icon"
   ></t-icon>
-  <view wx:if="{{loading}}" class="{{classPrefix}}--loading {{prefix}}-class-loading">
-    <view class="{{classPrefix}}__circular"></view>
+  <view wx:if="{{loading}}" class="{{classPrefix}}__loading">
+    <t-loading
+      delay="{{loadingProps.delay || 0}}"
+      duration="{{loadingProps.duration || 800}}"
+      indicator="{{loadingProps.indicator || true}}"
+      inheritColor="{{loadingProps.indicator || false}}"
+      layout="{{loadingProps.layout || 'horizontal'}}"
+      pause="{{loadingProps.pause || false}}"
+      progress="{{loadingProps.progress}}"
+      reverse="{{loadingProps.reverse}}"
+      size="{{loadingProps.size || '40rpx'}}"
+      text="{{loadingProps.text }}"
+      theme="{{loadingProps.theme || 'circular'}}"
+      loading
+      t-class="position-center"
+      t-class-indicator="indicator-blue {{prefix}}-class-loading"
+    ></t-loading>
   </view>
   <view class="{{classPrefix}}__content">
     <slot name="content" />
