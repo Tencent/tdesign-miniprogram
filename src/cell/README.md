@@ -21,64 +21,13 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/cell-1.png" width="375px" height="50%">
 
-```html
-<!-- 单行 默认 -->
-<t-cell title="单行标题" hover />
-
-<!-- 单行 必须 -->
-<t-cell title="单行标题" required />
-
-<!-- 单行 辅助信息 -->
-<t-cell title="单行标题" hover note="辅助信息" />
-
-<!-- 单行 箭头 -->
-<t-cell title="单行标题" hover arrow />
-
-<!-- 单行 自定义辅助信息-slot -->
-<t-cell title="单行标题" hover arrow>
-  <t-badge count="{{16}}" slot="note" />
-</t-cell>
-
-<!-- 单行 左侧icon-slot -->
-<t-cell title="单行标题" hover>
-  <t-icon name="app" slot="left-icon" />
-</t-cell>
-```
+{{ base }}
 
 ### 多行单元格
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/cell-2.png" width="375px" height="50%">
 
-```html
-<!-- 多行 -->
-<t-cell title="多行标题" description="一段很长很长的内容文字" />
-
-<!-- 多行 带图标 -->
-<t-cell title="多行带图标" description="说明文字" note="辅助信息" arrow t-class-left="t-class-left">
-  <t-icon class="icon-center title-icon" name="app" slot="left-icon" />
-</t-cell>
-
-<!-- 多行 带头像 -->
-<t-cell
-  title="多行带头像"
-  arrow
-  description="一段很长很长很长的内容文字"
-  t-class-image="title-image"
->
-  <view class="avatar" slot="left-icon">
-    <open-data type="userAvatarUrl" />
-  </view>
-</t-cell>
-
-<!-- 多行 带图片 -->
-<t-cell
-  title="多行带图片"
-  description="一段很长很长的内容文字"
-  align="top"
-  t-class-image="title-image-large"
-  image="xxx.svg"
-/>
-```
+{{ multiple }}
 
 ## API
 ### Cell Props
