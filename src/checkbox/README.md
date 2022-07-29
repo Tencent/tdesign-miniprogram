@@ -22,34 +22,31 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/checkbox.png" width="375px" height="50%">
 
-```html
-<t-checkbox-group defaultValue="{{demoCheckbox1}}" bind:change="onChange">
-  <t-checkbox value="checkbox1" label="多选" />
-  <t-checkbox value="checkbox2" label="多选" />
-  <t-checkbox value="checkbox3" label="多选" />
-  <t-checkbox
-    value="checkbox4"
-    label="多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选多选"
-    max-label-row="2"
-  ></t-checkbox>
-  <t-checkbox value="checkbox5" label="多选" max-content-row="2">
-    多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选选多选多选多选多选
-  </t-checkbox>
-</t-checkbox-group>
+{{ base }}
 
- <t-checkbox defaultChecked="{{true}}" label="多选" />
-```
+### 右侧多选框
 
-```js
-Page({
-  data: {
-    demoCheckbox1: ['checkbox2', 'checkbox3'],
-  },
-  onChange(event) {
-    console.log('checkbox', event.detail.value);
-  },
-});
-```
+{{ right }}
+
+### 带全选多选框
+
+{{ all }}
+
+### 限制最多可选数量
+
+{{ num }}
+
+### 状态
+
+{{ status }}
+
+### 特殊类型
+
+{{ type }}
+
+### 规格
+
+{{ size }}
 
 ## API
 ### Checkbox Props

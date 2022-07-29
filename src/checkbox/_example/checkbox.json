@@ -1,6 +1,13 @@
 {
   "navigationBarTitleText": "Checkbox 复选框",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "t-demo": "../../components/demo-block/index",
+    "base": "./base",
+    "right": "./right",
+    "all": "./all",
+    "num": "./num",
+    "status": "./status",
+    "type": "./type",
+    "size": "./size"
   }
 }
