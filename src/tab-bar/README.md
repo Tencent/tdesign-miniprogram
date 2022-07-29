@@ -20,11 +20,11 @@ isComponent: true
 
 CSS 变量名|说明
 --|--
---t-tab-bar-border-color|顶部边框颜色
---t-tab-bar-bg-color|背景色
---t-tab-bar-hover-color|hover 时背景色
---t-tab-bar-item-color | 字体颜色
---t-tab-bar-item-active-color | 激活时字体颜色
+--td-tab-bar-border-color|顶部边框颜色
+--td-tab-bar-bg-color|背景色
+--td-tab-bar-hover-color|hover 时背景色
+--td-tab-bar-item-color | 字体颜色
+--td-tab-bar-item-active-color | 激活时字体颜色
 ## 代码演示
 
 
