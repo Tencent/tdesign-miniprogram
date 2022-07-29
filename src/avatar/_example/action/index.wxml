@@ -1,58 +1,18 @@
 <view class="row">
   <t-avatar-group max="5" size="small">
-    <t-avatar
-      wx:for="{{pics}}"
-      wx:for-item="pic"
-      wx:key="index"
-      image="{{pic}}"
-      t-class-image="border-size-2"
-      t-class="excursion-right-8"
-    />
-    <t-avatar
-      slot="collapseAvatar"
-      icon="user-add"
-      bindtap="onAddTap"
-      t-class-image="border-size-2"
-      t-class="excursion-right-8"
-    />
+    <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" />
+    <t-avatar slot="collapseAvatar" icon="user-add" bindtap="onAddTap" />
   </t-avatar-group>
 </view>
 <view class="row">
   <t-avatar-group max="5" size="40px">
-    <t-avatar
-      wx:for="{{pics}}"
-      wx:for-item="pic"
-      wx:key="index"
-      image="{{pic}}"
-      t-class-image="border-size-3"
-      t-class="excursion-right-8"
-    />
-    <t-avatar
-      slot="collapseAvatar"
-      icon="user-add"
-      bindtap="onAddTap"
-      t-class-image="border-size-3"
-      t-class-icon="font-size-20"
-      t-class="excursion-right-8"
-    />
+    <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" />
+    <t-avatar slot="collapseAvatar" icon="user-add" bindtap="onAddTap" />
   </t-avatar-group>
 </view>
 <view class="row">
   <t-avatar-group max="5" size="medium">
-    <t-avatar
-      wx:for="{{pics}}"
-      wx:for-item="pic"
-      wx:key="index"
-      image="{{pic}}"
-      t-class-image="border-size-4"
-      t-class="excursion-right-8"
-    />
-    <t-avatar
-      slot="collapseAvatar"
-      icon="user-add"
-      bindtap="onAddTap"
-      t-class-image="border-size-4"
-      t-class="excursion-right-8"
-    />
+    <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" />
+    <t-avatar slot="collapseAvatar" icon="user-add" bindtap="onAddTap" />
   </t-avatar-group>
 </view>

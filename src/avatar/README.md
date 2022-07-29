@@ -21,7 +21,7 @@ CSS 变量名|说明
 --|--
 --td-avatar-bg-color | 头像背景颜色;
 --td-avatar-content-color | 头像内容（文字、图标）颜色;
-
+--td-avatar-group-border-color | 组合头像边框颜色;
 
 ## 代码演示
 
@@ -55,7 +55,7 @@ CSS 变量名|说明
 -- | -- | -- | -- | --
 alt | String | - | 头像替换文本，仅当图片加载失败时有效 | N
 badge-props | Object | - | 头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
-external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class']` | N
+external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class', 't-class-image', 't-class-icon', 't-class-alt', 't-class-content']` | N
 hide-on-load-failed | Boolean | false | 加载失败时隐藏图片 | N
 icon | String / Slot | - | 图标 | N
 image | String | - | 图片地址 | N

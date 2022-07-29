@@ -7,21 +7,15 @@
   text-align: center;
   font-size: 24rpx;
   display: flex;
+  align-items: center;
   flex-direction: column;
 }
 
-.avatar-example .avatar-word {
+.avatar-example .avatar-description {
   margin-top: 16rpx;
 }
 
-.text {
-  width: 130rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.alt-example {
+.external-class-content {
   color: #fff;
   background-color: #0052d9;
   font-weight: 400;

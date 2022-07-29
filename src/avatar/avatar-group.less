@@ -1,4 +1,5 @@
 @import '../common/style/index.less';
+@import './common.less';
 
 @avatar-group-small-width: 64rpx;
 @avatar-group-medium-width: 80rpx;
@@ -8,37 +9,56 @@
 @avatar-group-medium-font-size: @font-size-m;
 @avatar-group-large-font-size: @font-size * 1.8;
 
+//组合头像偏移量
+@avatar-group-offset-small: -4px;
+@avatar-group-offset-medium: -6px;
+@avatar-group-offset-large: -8px;
+
+.avatat-offset-left(@offset) {
+  @{prefix}-avatar {
+    &:not(:first-child) {
+      margin-left: @offset;
+    }
+  }
+}
+
+.avatat-offset-right(@offset) {
+  @{prefix}-avatar {
+    &:not(:last-child) {
+      margin-right: @offset;
+    }
+  }
+}
+
 .@{prefix}-avatar-group {
-  display: block;
+  display: inline-flex;
+  align-items: center;
 
-  &--content {
-    display: flex;
-  }
+  &-offset-left {
+    &-small {
+      .avatat-offset-left(@avatar-group-offset-small);
+    }
 
-  &--large {
-    .@{prefix}-size-l {
-      width: @avatar-group-large-width;
-      height: @avatar-group-large-width;
-      font-weight: 600;
-      font-size: @avatar-group-large-font-size;
+    &-medium {
+      .avatat-offset-left(@avatar-group-offset-medium);
+    }
+
+    &-large {
+      .avatat-offset-left(@avatar-group-offset-large);
     }
   }
 
-  &--medium {
-    .@{prefix}-size-m {
-      width: @avatar-group-medium-width;
-      height: @avatar-group-medium-width;
-      font-weight: 600;
-      font-size: @avatar-group-medium-font-size;
+  &-offset-right {
+    &-small {
+      .avatat-offset-right(@avatar-group-offset-small);
     }
-  }
 
-  &--small {
-    .@{prefix}-size-s {
-      width: @avatar-group-small-width;
-      height: @avatar-group-small-width;
-      font-weight: 600;
-      font-size: @avatar-group-small-font-size;
+    &-medium {
+      .avatat-offset-right(@avatar-group-offset-medium);
+    }
+
+    &-large {
+      .avatat-offset-right(@avatar-group-offset-large);
     }
   }
 
