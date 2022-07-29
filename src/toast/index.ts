@@ -36,7 +36,7 @@ function Toast(options: ToastOptionsType) {
   if (instance) {
     instance.show({
       ...Options,
-      duration: Options.duration || 2000,
+      duration: Options.duration ?? 2000,
     });
   }
 }
