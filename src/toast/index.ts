@@ -14,6 +14,7 @@ export type ToastOptionsType = {
   placement?: ToastPositionType;
   preventScrollThrough?: boolean;
   direction?: ToastDirectionType;
+  close?: <T = any>() => T;
 };
 
 const getInstance = (context?: Context, selector = '#t-toast') => {

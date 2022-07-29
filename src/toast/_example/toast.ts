@@ -98,6 +98,9 @@ Page({
       context: this,
       selector: '#t-toast',
       ...option,
+      close() {
+        console.log('弹窗已关闭');
+      },
     });
   },
   hideToast() {
