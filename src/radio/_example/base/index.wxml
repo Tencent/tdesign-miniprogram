@@ -1,0 +1,6 @@
+<!-- 非受控用法 -->
+<t-radio label="单选" />
+<t-radio defaultChecked="{{true}}" label="单选" />
+
+<!-- 受控用法 -->
+<t-radio checked="{{checked}}" bind:change="handleChange" label="单选" />
