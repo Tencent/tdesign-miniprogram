@@ -4,7 +4,3 @@
   display: flex;
   justify-content: space-between;
 }
-
-.t-cell {
-  margin-bottom: 32rpx;
-}
