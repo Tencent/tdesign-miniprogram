@@ -40,6 +40,16 @@ npm i tdesign-miniprogram -S --production
 
 > 因为 [该配置](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#style) 表示启用新版组件样式，将会导致 TDesign 的组件样式错乱。
 
+## 修改 tsconfig.json
+如果使用`typescript`开发，需要修改`tsconfig.json`指定`paths`
+```json
+{
+  "paths": {
+      "tdesign-miniprogram/*":["./miniprogram/miniprogram_npm/tdesign-miniprogram/*"]
+    }
+}
+```
+
 ## 使用组件
 
 以按钮组件为例，只需要在 `JSON` 文件中引入按钮对应的自定义组件即可

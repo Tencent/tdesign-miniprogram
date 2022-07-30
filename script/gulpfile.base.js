@@ -38,7 +38,7 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
 /* return gulpfile base tasks */
 module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json', {
-    declaration: !isProduction,
+    declaration: true,
     removeComments: isProduction,
   });
 
