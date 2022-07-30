@@ -29,124 +29,17 @@ isComponent: true
 import Toast from 'tdesign-miniprogram/toast/index';
 ```
 
-### 纯文本的轻提示
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-1.png" width="20%" height="20%">
-
-```js
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '轻提示文字内容',
-});
-```
-
-### 带横向图标的轻提示
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-3.png" width="20%" height="20%">
-
-```js
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '带图标横向',
-  icon: 'check-circle',
-});
-```
-
-### 带竖向图标的轻提示
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-4.png" width="20%" height="20%">
-
-```js
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '带图标竖向',
-  icon: 'star',
-  direction: 'column',
-});
-```
-
-### 默认轻提示
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/toast-2.png" width="375px" height="20%">
-
-```js
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '成功文案',
-  theme: 'fail',
-});
-
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '警告文案',
-  theme: 'success',
-});
-
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '加载中...',
-  theme: 'loading',
-  direction: 'column',
-});
-```
+{{ base }}
 
 ### 不同位置的轻提示
 
-```js
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '顶部-展示1秒',
-  direction: 'column',
-  placement: 'top',
-  duration: 1000,
-  icon: 'star',
-});
+{{ display }}
 
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '中间-展示2秒',
-  direction: 'column',
-  duration: 2000,
-  icon: 'star',
-});
+### 显示遮罩
+{{ cover }}
 
-Toast({
-  context: this,
-  selector: '#t-toast',
-  message: '底部-展示3秒',
-  direction: 'column',
-  placement: 'bottom',
-  duration: 3000,
-  icon: 'star',
-});
-```
-### 手动关闭轻提示
-```js
-import { showToast, hideToast } from 'tdesign-miniprogram/toast/index';
-```
-
-```js
-showToast({
-  context: this,
-  selector: '#t-toast',
-  message: '成功文案',
-});
-
-hideToast({
-  context: this,
-  selector: '#t-toast',
-});
-
-```
-
+### 手动关闭
+{{ close }}
 ## API
 ### Toast Props
 
