@@ -5,10 +5,6 @@ spline: message
 isComponent: true
 ---
 
-### 特性和兼容性
-
-无
-
 ## 引入
 
 ### 引入组件
