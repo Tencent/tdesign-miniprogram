@@ -154,7 +154,7 @@ export default class Tabs extends SuperComponent {
     return 0;
   }
 
-  setTrack(color = '#0052d9') {
+  setTrack() {
     if (!this.properties.showBottomLine) return;
     const { children } = this;
     if (!children) return;
@@ -190,11 +190,8 @@ export default class Tabs extends SuperComponent {
         if (isScrollX) {
           distance += (rect.width - trackLineWidth) / 2;
         }
-        let trackStyle = `background-color: ${color};
-        -webkit-transform: translate${direction}(${distance}px);
+        let trackStyle = `-webkit-transform: translate${direction}(${distance}px);
         transform: translate${direction}(${distance}px);
-        -webkit-transition-duration: 0.3s;
-        transition-duration: 0.3s;
       `;
         trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
         this.setData({

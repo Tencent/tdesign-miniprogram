@@ -282,11 +282,12 @@ export default class Swiper extends SuperComponent {
    */
   updateNav(index) {
     if (!this.$nav) return;
-    const { direction } = this.properties;
+    const { direction, paginationPosition } = this.properties;
     this.$nav?.onChange({
       index,
       total: this.children.length,
       direction,
+      paginationPosition,
     });
   }
 

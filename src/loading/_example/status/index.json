@@ -1,0 +1,7 @@
+{
+  "components": true,
+  "usingComponents": {
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-switch": "tdesign-miniprogram/switch/switch"
+  }
+}

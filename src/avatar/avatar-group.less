@@ -1,36 +1,64 @@
 @import '../common/style/index.less';
+@import './common.less';
+
+@avatar-group-small-width: 64rpx;
+@avatar-group-medium-width: 80rpx;
+@avatar-group-large-width: 96rpx;
+
+@avatar-group-small-font-size: @font-size-s;
+@avatar-group-medium-font-size: @font-size-m;
+@avatar-group-large-font-size: @font-size * 1.8;
+
+//组合头像偏移量
+@avatar-group-offset-small: -4px;
+@avatar-group-offset-medium: -6px;
+@avatar-group-offset-large: -8px;
+
+.avatat-offset-left(@offset) {
+  @{prefix}-avatar {
+    &:not(:first-child) {
+      margin-left: @offset;
+    }
+  }
+}
+
+.avatat-offset-right(@offset) {
+  @{prefix}-avatar {
+    &:not(:last-child) {
+      margin-right: @offset;
+    }
+  }
+}
 
 .@{prefix}-avatar-group {
-  display: block;
+  display: inline-flex;
+  align-items: center;
 
-  &--content {
-    display: flex;
-  }
+  &-offset-left {
+    &-small {
+      .avatat-offset-left(@avatar-group-offset-small);
+    }
 
-  &--large {
-    .@{prefix}-size-l {
-      width: 96rpx;
-      height: 96rpx;
-      font-weight: 600;
-      font-size: 36rpx;
+    &-medium {
+      .avatat-offset-left(@avatar-group-offset-medium);
+    }
+
+    &-large {
+      .avatat-offset-left(@avatar-group-offset-large);
     }
   }
 
-  &--medium {
-    .@{prefix}-size-m {
-      width: 80rpx;
-      height: 80rpx;
-      font-weight: 600;
-      font-size: 32rpx;
+  &-offset-right {
+    &-small {
+      .avatat-offset-right(@avatar-group-offset-small);
     }
-  }
 
-  &--small {
-    .@{prefix}-size-s {
-      width: 64rpx;
-      height: 64rpx;
-      font-weight: 600;
-      font-size: 24rpx;
+    &-medium {
+      .avatat-offset-right(@avatar-group-offset-medium);
+    }
+
+    &-large {
+      .avatat-offset-right(@avatar-group-offset-large);
     }
   }
 
@@ -50,22 +78,5 @@
 
   .@{prefix}-is-hidden {
     display: none;
-  }
-
-  .alt-default {
-    background-color: #d4e3fc;
-    color: #0052d9;
-
-    &-l {
-      font-size: 64rpx;
-    }
-
-    &-m {
-      font-size: 48rpx;
-    }
-
-    &-s {
-      font-size: 32rpx;
-    }
   }
 }

@@ -27,6 +27,7 @@ export default class Avatar extends SuperComponent {
     isShow: true,
     zIndex: 0,
     isChild: false,
+    borderSize: '',
   };
 
   relations: RelationsOptions = {
@@ -69,6 +70,10 @@ export default class Avatar extends SuperComponent {
      */
     updateCascading(zIndex) {
       this.setData({ zIndex });
+    },
+
+    updateBorder(borderSize) {
+      this.setData({ borderSize });
     },
   };
 

@@ -1,4 +1,3 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
 @primary-color-disabled: #bbd3fb;
@@ -203,12 +202,7 @@
         font-size: @button-icon-size-l;
       }
 
-      & .@{prefix}-button--loading {
-        width: @button-icon-size-l;
-        height: @button-icon-size-l;
-      }
-
-      .@{prefix}-button--loading + .@{prefix}-button__content:not(:empty),
+      .@{prefix}-button__loading + .@{prefix}-button__content:not(:empty),
       .@{prefix}-button__icon + .@{prefix}-button__content:not(:empty) {
         margin-left: 16rpx;
       }
@@ -219,12 +213,7 @@
         font-size: @button-icon-size-m;
       }
 
-      & .@{prefix}-button--loading {
-        width: @button-icon-size-m;
-        height: @button-icon-size-m;
-      }
-
-      .@{prefix}-button--loading + .@{prefix}-button__content:not(:empty),
+      .@{prefix}-button__loading + .@{prefix}-button__content:not(:empty),
       .@{prefix}-button__icon + .@{prefix}-button__content:not(:empty) {
         margin-left: 8rpx;
       }
@@ -238,12 +227,7 @@
         font-size: @button-icon-size-s;
       }
 
-      & .@{prefix}-button--loading {
-        width: @button-icon-size-s;
-        height: @button-icon-size-s;
-      }
-
-      .@{prefix}-button--loading + .@{prefix}-button__content:not(:empty),
+      .@{prefix}-button__loading + .@{prefix}-button__content:not(:empty),
       .@{prefix}-button__icon + .@{prefix}-button__content:not(:empty) {
         margin-left: 8rpx;
       }
@@ -323,29 +307,19 @@
     }
   }
 
-  &--loading {
-    box-sizing: border-box;
-    animation: rotate 0.8s linear infinite;
-    .@{prefix}-button__circular {
-      border-radius: 50%;
-      width: 100%;
-      height: 100%;
-      opacity: 1;
-      background: conic-gradient(
-        from 90deg at 50% 50%,
-        rgba(255, 255, 255, 0) 0% 0deg,
-        currentColor 360deg,
-        rgba(255, 255, 255, 1) 100% 360deg
-      );
-      mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
-
-      /* stylelint-disable-next-line */
-      -webkit-mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
-    }
-  }
-
   &.button-hover:after {
     border-radius: 8rpx;
+  }
+
+  // loading
+  .position-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .indicator-blue {
+    color: white;
   }
 }
 

@@ -17,13 +17,31 @@ isComponent: true
 
 ## 代码演示
 
-### 带数值滑动的选择器
-
 <img src="https://tdesign.gtimg.com/miniprogram/readme/slider.png" width="375px" height="50%">
 
-```html
-<t-slider value="{{value}}" label="${value}%" bind:change="valueChange"></t-slider>
-```
+### 基础滑动选择器
+
+{{ base }}
+
+### 带数值滑动选择器
+
+{{ label }}
+
+### 起始非零滑动选择器
+
+{{ max }}
+
+### 带刻度滑动选择器
+
+{{ step }}
+
+### 区间滑动选择器
+
+{{ range }}
+
+### 有标题滑动选择器
+
+{{ title }}
 
 ## API
 ### Slider Props

@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdSwiperProps } from './type';
@@ -19,6 +18,11 @@ const props: TdSwiperProps = {
   },
   /** 当前轮播在哪一项（下标） */
   current: {
+    type: Number,
+    value: null,
+  },
+  /** 当前轮播在哪一项（下标），非受控属性 */
+  defaultCurrent: {
     type: Number,
     value: 0,
   },
@@ -41,9 +45,19 @@ const props: TdSwiperProps = {
     type: Number,
     value: 5000,
   },
-  /** 导航配置。`navigation.type` 表示导航器风格，圆点/分式等，没有值则不显示。`navigation.minShowNum` 表示小于这个数字不会显示导航器。`navigation.showSlideBtn` 表示是否显示两侧的滑动控制按钮 */
+  /** 是否循环播放 */
+  loop: {
+    type: Boolean,
+    value: true,
+  },
+  /** 导航器全部配置 */
   navigation: {
     type: Object,
+  },
+  /** 页码信息展示位置 */
+  paginationPosition: {
+    type: String,
+    value: 'bottom',
   },
 };
 
