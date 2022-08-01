@@ -1,0 +1,7 @@
+<view class="loading-container-flex">
+  <t-loading theme="circular" size="40rpx" text="加载中..."></t-loading>
+  <t-loading theme="spinner" size="40rpx" text="加载中..." t-class-indicator="indicator-black"></t-loading>
+  <t-loading theme="circular" size="40rpx">
+    <span slot="text" style="color: #0052d9">加载中...</span>
+  </t-loading>
+</view>

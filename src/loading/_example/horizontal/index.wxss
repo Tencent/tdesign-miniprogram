@@ -1,0 +1,13 @@
+.loading-container-flex {
+  display: flex;
+  align-items: center;
+}
+
+.indicator-black {
+  color: #000000 !important;
+}
+
+.loading-container-flex t-loading {
+  display: flex;
+  margin-right: 40rpx;
+}
