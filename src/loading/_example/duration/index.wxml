@@ -1,0 +1,12 @@
+<t-loading theme="circular" size="52rpx" text="加载中..." t-class-text="text-l" duration="{{duration}}"></t-loading>
+<view class="slider-container">
+  <view>速度调整</view>
+  <t-slider
+    class="slider-class"
+    value="{{duration}}"
+    min="{{100}}"
+    max="{{2000}}"
+    label
+    bind:change="durationChange"
+  ></t-slider>
+</view>

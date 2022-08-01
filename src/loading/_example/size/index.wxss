@@ -1,0 +1,12 @@
+.text-m {
+  font-size: 28rpx;
+}
+
+.text-l {
+  font-size: 32rpx;
+}
+
+.loading-container-flex-column t-loading {
+  display: flex;
+  margin-top: 32rpx;
+}
