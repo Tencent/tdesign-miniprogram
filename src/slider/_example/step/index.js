@@ -1,9 +1,4 @@
 Component({
-  properties: {
-    disabled: Boolean,
-    disabledColor: Array,
-  },
-
   data: {
     mask: {
       0: '小',

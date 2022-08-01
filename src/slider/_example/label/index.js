@@ -1,8 +1,4 @@
 Component({
-  properties: {
-    disabled: Boolean,
-    disabledColor: Array,
-  },
   data: {
     value: 50,
     /** 滑动条的颜色 */

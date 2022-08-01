@@ -23,25 +23,7 @@
   </t-demo>
 
   <t-demo title="02 状态" desc="基础滑动选择器">
-    <base disabled disabledColor="{{disabledColor}}" />
-  </t-demo>
-
-  <t-demo desc="带数值滑动选择器">
-    <labelDemo disabled disabledColor="{{disabledColor}}" />
-  </t-demo>
-
-  <t-demo desc="起始非零滑动选择器">
-    <max disabled disabledColor="{{disabledColor}}" />
-  </t-demo>
-
-  <t-demo desc="带刻度滑动选择器">
-    <view style="margin: 0 12rpx">
-      <step disabled disabledColor="{{disabledColor}}" />
-    </view>
-  </t-demo>
-
-  <t-demo desc="区间滑动选择器">
-    <range disabled disabledColor="{{disabledColor}}" />
+    <disabled />
   </t-demo>
 
   <t-demo title="03 规格" desc="无标题滑动选择器">
