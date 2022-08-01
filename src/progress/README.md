@@ -23,53 +23,26 @@ isComponent: true
 
 ## 代码演示
 
-### 类型
-<!-- 基础进度条 -->
-```html
-  <t-progress></t-progress>
-  <t-progress percentage="88" ></t-progress>
-  <t-progress percentage="100" color="#0052D9"></t-progress>
-```
+### 基础进度条
 
-### 状态
-```html
-<!-- 默认状态 -->
-<t-progress percentage="88"></t-progress>
+{{ base }}
 
-<!-- 进度状态发生重大错误 -->
-<t-progress percentage="88" status="error"></t-progress>
+### 进度条状态
 
-<!-- 进度中止 -->
-<t-progress percentage="88" status="warning"></t-progress>
+{{ status }}
 
-<!-- 进度完成 -->
-<t-progress percentage="100"></t-progress>
 
-<!-- 过度样式 -->
-<view class="box">
-  <t-progress percentage="{{percentage}}"></t-progress>
-  <view class="button-group">
-    <t-button bindtap="clickReduce" theme="primary" variant="plain" size="small">减少</t-button>
-    <view class="space"></view>
-    <t-button bindtap="clickAdd" theme="primary" size="small">增加</t-button>
-  </view>
-</view>
-```
+### 过度样式
 
-### 自定义颜色
-```html
-<t-progress percentage="88" trackColor="#EAC9FF" color="#CD04FF" ></t-progress>
-```
+{{ transition }}
 
-### 规格
-```html
-<!-- 带数值进度条 -->
-<t-progress percentage="88"></t-progress>
+### 自定义颜色/圆角
 
-<!-- 无数值进度条 -->
- <t-progress percentage="72" label="{{false}}"></t-progress>
-```
+{{ custom }}
 
+### 带数值/无数值进度条
+
+{{ size }}
 
 ## API
 ### Progress Props
