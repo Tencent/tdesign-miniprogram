@@ -5,6 +5,37 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.18.0 `2022-08-01` 
+
+### ❗️ BREAKING CHANGES
+- `Tabbar`: CSS Variables 命名规则由 `--t` 改成 `--td` 开头 @LeeJim ([#663](https://github.com/Tencent/tdesign-miniprogram/pull/663))
+- `Avatar`: 头像组的样式内置进组件内 @anlyyao ([#665](https://github.com/Tencent/tdesign-miniprogram/pull/665))
+### 🚀 Features
+- `Avatar`: 新增 CSS Variable 调整 Avatar 背景、内容（文本或图标）颜色 @anlyyao ([#665](https://github.com/Tencent/tdesign-miniprogram/pull/665))
+- `Swiper`: 新增 `paginationPosition` 属性，用于调整页码信息的位置 @anlyyao ([#669](https://github.com/Tencent/tdesign-miniprogram/pull/669))
+- `Swiper`: 新增 CSS Variable 调整 Swiper 导航器背景、内容颜色 @anlyyao ([#669](https://github.com/Tencent/tdesign-miniprogram/pull/669))
+- `Button`: 新增 loadingProps 属性透传至 Loading 组件 @anlyyao ([#673](https://github.com/Tencent/tdesign-miniprogram/pull/673))
+- `Tabs`: 新增 CSS Variables 调整字体、滑块颜色等，具体查看文档 @LeeJim ([#684](https://github.com/Tencent/tdesign-miniprogram/pull/684))
+- `Toast`: 支持 `duration` 传入 0 的时候，toast 不消失 @LeeJim ([#683](https://github.com/Tencent/tdesign-miniprogram/pull/683))
+### 🐞 Bug Fixes
+- `Tabbar`: 修复因 CSS Variables 没有写 fallback 导致样式丢失的问题 @LeeJim ([#663](https://github.com/Tencent/tdesign-miniprogram/pull/663))
+- `Avatar`: 修复组件类名错误 @anlyyao ([#665](https://github.com/Tencent/tdesign-miniprogram/pull/665))
+- `upload`: 修复组件中图片被挤压问题 @anlyyao ([#666](https://github.com/Tencent/tdesign-miniprogram/pull/666))
+- `Button`: 修复 loading 无效的问题 @anlyyao ([#673](https://github.com/Tencent/tdesign-miniprogram/pull/673))
+- `DropdownMenu`: 修复树形选择时，点击单选仍自动关闭的问题 @LeeJim ([#686](https://github.com/Tencent/tdesign-miniprogram/pull/686))
+- `DropdownMenu`: 修复 `closeOnClickOverlay` 不生效的问题 @LeeJim ([#685](https://github.com/Tencent/tdesign-miniprogram/pull/685))
+- `Cell`: 优化 slot 的渲染逻辑 @LeeJim ([#688](https://github.com/Tencent/tdesign-miniprogram/pull/688))
+
+### 🚧 Others
+- `Avatar`: 更新示例代码 @anlyyao ([#665](https://github.com/Tencent/tdesign-miniprogram/pull/665))
+- `Swiper`: 更新示例代码 @anlyyao ([#669](https://github.com/Tencent/tdesign-miniprogram/pull/669))
+- `Stepper`: 更新示例代码 @anlyyao ([#670](https://github.com/Tencent/tdesign-miniprogram/pull/670))
+- `Progress`: 更新示例代码 @anlyyao ([#690](https://github.com/Tencent/tdesign-miniprogram/pull/690))
+- `Loading`: 更新示例代码 @anlyyao ([#691](https://github.com/Tencent/tdesign-miniprogram/pull/691))
+- `Slider`: 更新示例代码 @anlyyao ([#671](https://github.com/Tencent/tdesign-miniprogram/pull/671))
+- `Cell`: 更新示例代码 @CodingOnStar ([#675](https://github.com/Tencent/tdesign-miniprogram/pull/675))
+- `tabbar`: 修复文档中主题定制前缀错误的问题 @anlyyao ([#674](https://github.com/Tencent/tdesign-miniprogram/pull/674))
+
 ## 🌈 0.17.0 `2022-07-25` 
 ### ❗️BREAKING CHANGES
 - `Tabbar`: 移除 color 属性，使用 CSS Variable 替代 @LeeJim ([#650](https://github.com/Tencent/tdesign-miniprogram/pull/650))
