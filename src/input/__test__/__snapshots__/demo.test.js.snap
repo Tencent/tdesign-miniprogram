@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Input align demo works fine 1`] = `
+<align>
+  <t-input
+    label="左对齐"
+    placeholder="请输入文字"
+  />
+  <t-input
+    align="center"
+    label="居中"
+    placeholder="请输入文字"
+  />
+  <t-input
+    align="right"
+    label="右对齐"
+    placeholder="请输入文字"
+  />
+</align>
+`;
+
+exports[`Input Input base demo works fine 1`] = `
+<base>
+  <t-input
+    label="标签文字"
+    placeholder="请输入文字"
+    value=""
+  />
+</base>
+`;
+
+exports[`Input Input custom demo works fine 1`] = `
+<custom>
+  <wx-view
+    class="wrapper"
+  >
+    <t-input
+      label="标签文字"
+      placeholder="请输入文字"
+      value=""
+    />
+  </wx-view>
+</custom>
+`;
+
+exports[`Input Input maxlength demo works fine 1`] = `
+<maxlength>
+  <t-input
+    maxlength="{{10}}"
+    placeholder="最大输入10个字符"
+  />
+  <t-input
+    maxcharacter="{{10}}"
+    placeholder="最大输入10个字符，汉字算两个"
+  />
+</maxlength>
+`;
+
+exports[`Input Input require demo works fine 1`] = `
+<require>
+  <t-input
+    label="slot"
+    placeholder="请输入文字"
+  >
+    <wx-text
+      slot="label"
+    >
+      标签文字
+      <wx-text
+        style="color: #e34d59"
+      >
+         *
+      </wx-text>
+    </wx-text>
+  </t-input>
+  <t-input
+    label="标签文字"
+    placeholder="请输入文字(选填)"
+  />
+</require>
+`;
+
+exports[`Input Input size demo works fine 1`] = `
+<size>
+  <t-input
+    label="小规格H48"
+    placeholder="请输入文字"
+  />
+  <t-input
+    label="中规格H56"
+    placeholder="请输入文字"
+    size="medium"
+  />
+</size>
+`;
+
+exports[`Input Input special demo works fine 1`] = `
+<special>
+  <t-input
+    clearable="{{true}}"
+    label="输入密码"
+    password="{{true}}"
+    value="123456"
+  />
+  <t-input
+    label="验证码"
+    placeholder="请输入验证码"
+  >
+    <wx-view
+      slot="suffix"
+    >
+      <wx-image
+        mode="heightFix"
+        src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png"
+        style="width: 72px; height: 36px; display: block; margin-top: -6px; margin-bottom: -6px"
+      />
+    </wx-view>
+  </t-input>
+  <t-input
+    errorMessage=""
+    placeholder="请输入手机号码"
+    type="number"
+    value="17600600600"
+    bind:change="onPhoneInput"
+  >
+    <wx-view
+      class="verify"
+      slot="suffix"
+    >
+       发送验证码 
+    </wx-view>
+  </t-input>
+  <t-input
+    errorMessage=""
+    label="价格"
+    placeholder="0.00"
+    suffix="元"
+    tClassErrorMsg="error-msg"
+    vlaue="10.2"
+    bind:change="onPriceInput"
+  />
+  <t-input
+    label="数量"
+    placeholder="填写个数"
+    suffix="个"
+    type="number"
+  />
+</special>
+`;
+
+exports[`Input Input status demo works fine 1`] = `
+<status>
+  <t-input
+    label="标签文字"
+    placeholder="请输入文字"
+    value="已输入文字"
+  />
+  <t-input
+    errorMessage="提示信息"
+    label="标签文字"
+    value="一段错误填写的内容"
+  />
+  <t-input
+    disabled="{{true}}"
+    label="标签文字"
+    value="不可编辑文字"
+  />
+</status>
+`;
+
+exports[`Input Input suffix demo works fine 1`] = `
+<suffix>
+  <t-input
+    label="标签文字"
+    placeholder="请输入文字"
+    suffixIcon="error-circle-filled"
+  />
+</suffix>
+`;

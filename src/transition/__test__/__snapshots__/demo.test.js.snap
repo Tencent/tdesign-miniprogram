@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Transition Transition appear demo works fine 1`] = `
+<appear>
+  <t-button
+    size="large"
+    bind:tap="onTriggerClick"
+  >
+    Toggle attach
+  </t-button>
+</appear>
+`;
+
+exports[`Transition Transition base demo works fine 1`] = `
+<base>
+  <t-button
+    size="large"
+    bind:tap="onTriggerClick"
+  >
+    Toggle
+  </t-button>
+  <t-transition
+    visible="{{false}}"
+  >
+    <wx-view
+      class="block"
+    />
+  </t-transition>
+</base>
+`;
+
+exports[`Transition Transition custom demo works fine 1`] = `
+<custom>
+  <t-button
+    size="large"
+    bind:tap="onTriggerClick"
+  >
+    Toggle
+  </t-button>
+  <t-transition
+    name="translate"
+    visible="{{false}}"
+  >
+    <wx-view
+      class="block"
+    />
+  </t-transition>
+</custom>
+`;
+
+exports[`Transition Transition destroy demo works fine 1`] = `
+<destroy>
+  <t-button
+    size="large"
+    bind:tap="onTriggerClick"
+  >
+    Toggle
+  </t-button>
+  <t-transition
+    destroyOnHide="{{true}}"
+    visible="{{false}}"
+  >
+    <wx-view
+      class="block"
+    />
+  </t-transition>
+</destroy>
+`;

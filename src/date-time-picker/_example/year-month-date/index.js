@@ -2,7 +2,7 @@ Page({
   data: {
     mode: '',
     dateVisible: false,
-    date: new Date().getTime(), // 支持时间戳传入
+    date: new Date('2021-12-23').getTime(), // 支持时间戳传入
     dateText: '',
 
     // 指定选择区间起始值
