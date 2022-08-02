@@ -1,0 +1,18 @@
+<t-message id="t-message" />
+<view class="box">
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showTextMessage" block
+    >纯文字通知</t-button
+  >
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showIconMessage" block
+    >带图标通知</t-button
+  >
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showCloseMessage" block
+    >带关闭通知</t-button
+  >
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showScrollMessage" block
+    >滚动通知</t-button
+  >
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showBtnMessage" block
+    >带按钮通知</t-button
+  >
+</view>
