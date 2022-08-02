@@ -19,5 +19,6 @@ module.exports = {
   coverageReporters: ['html', 'text-summary'],
   globals: {
     CONFIG_PREFIX: 't',
-  }
+  },
+  snapshotSerializers: ["miniprogram-simulate/jest-snapshot-plugin"]
 };
