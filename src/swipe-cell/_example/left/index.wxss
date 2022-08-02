@@ -1,12 +1,12 @@
-page {
-  background: #f9f9f9;
+.t-swipe-cell-demo-btn-wrapper {
+  height: 100%;
 }
 
 .t-swipe-cell-demo-btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 144rpx;
+  width: 144rpx !important;
   height: 100%;
   text-align: center;
   color: white;
@@ -20,6 +20,12 @@ page {
   background-color: #ed7b2f;
 }
 
-.t-swipe-cell {
-  margin-bottom: 32rpx;
+.t-swipe-cell-demo-btn.favor-btn {
+  background-color: #0052d9;
+}
+
+.title-image-large {
+  margin-right: 8rpx;
+  width: 144rpx;
+  height: 144rpx;
 }
