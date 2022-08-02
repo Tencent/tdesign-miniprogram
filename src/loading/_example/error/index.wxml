@@ -1,0 +1,1 @@
+<t-loading theme="error" bind:reload="reloadPage"></t-loading>

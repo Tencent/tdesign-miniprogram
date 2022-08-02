@@ -10,10 +10,10 @@
 @tab-bar-bg-color: @bg-color-block;
 
 page {
-  --t-tab-bar-bg-color: @tab-bar-bg-color;
-  --t-tab-bar-hover-color: @tab-bar-hover-bg-color;
-  --t-tab-bar-item-color: @tab-bar-color;
-  --t-tab-bar-item-active-color: @tab-bar-active-color;
+  --td-tab-bar-bg-color: @tab-bar-bg-color;
+  --td-tab-bar-hover-color: @tab-bar-hover-bg-color;
+  --td-tab-bar-item-color: @tab-bar-color;
+  --td-tab-bar-item-active-color: @tab-bar-active-color;
 }
 
 :host {
@@ -25,10 +25,10 @@ page {
   box-sizing: border-box;
   user-select: none;
   position: relative;
-  background-color: var(--t-tab-bar-bg-color);
+  background-color: var(--td-tab-bar-bg-color, @tab-bar-bg-color);
 
   &--active {
-    background-color: var(--t-tab-bar-hover-color);
+    background-color: var(--td-tab-bar-hover-color, @tab-bar-hover-bg-color);
   }
 
   &.@{prefix}-is-split:before {
@@ -44,12 +44,12 @@ page {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--t-tab-bar-item-color);
+    color: var(--td-tab-bar-item-color, @tab-bar-color);
 
     &.@{prefix}-is-checked {
-      color: var(--t-tab-bar-item-active-color);
+      color: var(--td-tab-bar-item-active-color);
       .@{item}__icon-menu {
-        background-color: var(--t-tab-bar-item-active-color);
+        background-color: var(--td-tab-bar-item-active-color, @tab-bar-active-color);
       }
     }
   }

@@ -26,12 +26,10 @@
     >
     <slot name="message" />
   </view>
-  <view class="{{classPrefix}}__bg" catchtouchmove="true" wx:if="{{preventScrollThrough &&  inserted}}" />
   <t-overlay
-    wx:if="{{inserted && showOverlay}}"
+    visible="{{inserted && (showOverlay || preventScrollThrough)}}"
     z-index="{{overlayProps.zIndex}}"
-    backgroundColor="{{overlayProps.backgroundColor}}"
-    preventScrollThrough="{{overlayProps.preventScrollThrough}}"
-    visible
+    backgroundColor="{{preventScrollThrough ? 'transparent' : overlayProps.backgroundColor}}"
+    preventScrollThrough="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
   />
 </block>

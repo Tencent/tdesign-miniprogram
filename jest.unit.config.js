@@ -14,5 +14,10 @@ module.exports = {
       outputPath: './test/unit/report/test-report.html',
     }],
   ],
+  setupFiles: ['<rootDir>/script/test/setup.js'],
   coverageReporters: ['html', 'text-summary'],
+  globals: {
+    CONFIG_PREFIX: 't',
+  },
+  snapshotSerializers: ["miniprogram-simulate/jest-snapshot-plugin"]
 };

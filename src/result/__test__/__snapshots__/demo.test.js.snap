@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Result Result custom demo works fine 1`] = `
+<custom>
+  <t-result
+    image="/assets/illustration@2x.png"
+    tClassImage="external-class-image"
+  >
+    <wx-view
+      slot="title"
+    >
+       自定义结果 
+    </wx-view>
+    <wx-view
+      slot="description"
+    >
+       描述文字 
+    </wx-view>
+  </t-result>
+</custom>
+`;
+
+exports[`Result Result theme demo works fine 1`] = `
+<theme>
+  <t-result
+    description=""
+    theme=""
+    title=""
+  />
+</theme>
+`;

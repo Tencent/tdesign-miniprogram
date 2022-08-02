@@ -1,97 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`radio comp should render correctly 1`] = `
-Object {
-  "attrs": Array [],
-  "children": Array [
-    Object {
-      "attrs": Array [
-        Object {
-          "name": "class",
-          "value": "t-radio ",
-        },
-      ],
-      "children": Array [
-        Object {
-          "attrs": Array [],
-          "children": Array [
-            Object {
-              "attrs": Array [
-                Object {
-                  "name": "class",
-                  "value": "t-cell t-cell--bordered",
-                },
-              ],
-              "children": Array [
-                Object {
-                  "attrs": Array [
-                    Object {
-                      "name": "class",
-                      "value": "t-radio__button ",
-                    },
-                    Object {
-                      "name": "slot",
-                      "value": "left-icon",
-                    },
-                  ],
-                  "children": Array [],
-                  "event": Object {},
-                  "tagName": "wx-view",
-                },
-                Object {
-                  "attrs": Array [
-                    Object {
-                      "name": "class",
-                      "value": "t-cell__title",
-                    },
-                  ],
-                  "children": Array [],
-                  "event": Object {},
-                  "tagName": "wx-view",
-                },
-                Object {
-                  "attrs": Array [
-                    Object {
-                      "name": "class",
-                      "value": "t-cell__value",
-                    },
-                  ],
-                  "children": Array [],
-                  "event": Object {},
-                  "tagName": "wx-view",
-                },
-              ],
-              "event": Object {
-                "tap": Object {
-                  "handler": "onTap",
-                  "id": 2,
-                  "isCapture": false,
-                  "isCatch": false,
-                  "isMutated": false,
-                  "name": "tap",
-                },
-              },
-              "tagName": "wx-view",
-            },
-          ],
-          "event": Object {
-            "click": Object {
-              "handler": "onChange",
-              "id": 1,
-              "isCapture": false,
-              "isCatch": false,
-              "isMutated": false,
-              "name": "click",
-            },
-          },
-          "tagName": "t-cell",
-        },
-      ],
-      "event": Object {},
-      "tagName": "wx-view",
-    },
-  ],
-  "event": Object {},
-  "tagName": "main",
-}
+<t-radio>
+  <wx-view
+    class="t-radio t-class t-radio--left"
+  >
+    <wx-view
+      class="t-radio__icon t-radio__icon--left t-class-icon"
+      data-target="icon"
+      bind:tap="handleTap"
+    >
+      <t-icon
+        class="t-radio__btn  "
+      >
+        <wx-label
+          class="t-class t-icon t-icon-circle t-icon-base"
+          style=";;"
+          bind:tap="onTap"
+        />
+      </t-icon>
+    </wx-view>
+    <wx-view
+      class="t-radio__content "
+      data-target="text"
+      bind:tap="handleTap"
+    >
+      <wx-view
+        class="t-radio__title t-class-label"
+        style="-webkit-line-clamp:3"
+      >
+        
+      
+      
+      </wx-view>
+      <wx-view
+        class="t-radio__description t-class-content "
+        style="-webkit-line-clamp:5"
+      >
+        
+      
+    
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="t-radio__border t-radio__border--left t-class-border"
+    />
+  </wx-view>
+</t-radio>
 `;

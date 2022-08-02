@@ -1,0 +1,11 @@
+.loading-container-flex {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  margin-bottom: 32rpx;
+}
+
+.text-info {
+  margin-left: 24rpx;
+  color: rgba(0, 0, 0, 0.4);
+}

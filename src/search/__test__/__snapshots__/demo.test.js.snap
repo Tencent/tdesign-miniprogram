@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Search base demo works fine 1`] = `
+<base>
+  <t-search
+    center="{{true}}"
+    placeholder="搜索预设文案"
+    value=""
+  />
+</base>
+`;
+
+exports[`Search Search status demo works fine 1`] = `
+<status>
+  <t-search
+    action=""
+    data-idx="{{0}}"
+    placeholder="搜索预设文案"
+    tClassCancel="t-class-cancel"
+    value=""
+    bind:blur="blurHandle"
+    bind:cancel="cancelHandle"
+    bind:change="changeHandle"
+    bind:clear="clearHandle"
+    bind:focus="focusHandle"
+  />
+  <t-search
+    action="取消"
+    data-idx="{{1}}"
+    placeholder="搜索预设文案"
+    tClassCancel="t-class-cancel"
+    value=""
+    bind:blur="blurHandle"
+    bind:cancel="cancelHandle"
+    bind:change="changeHandle"
+    bind:clear="clearHandle"
+    bind:focus="focusHandle"
+  />
+  <t-search
+    action="取消"
+    data-idx="{{2}}"
+    placeholder="搜索预设文案"
+    tClassCancel="t-class-cancel"
+    value="关键词"
+    bind:blur="blurHandle"
+    bind:cancel="cancelHandle"
+    bind:change="changeHandle"
+    bind:clear="clearHandle"
+    bind:focus="focusHandle"
+  />
+</status>
+`;

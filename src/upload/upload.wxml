@@ -8,7 +8,7 @@
       t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
       t-class-content="{{classPrefix}}__grid-content"
     >
-      <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
+      <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
         <t-image
           wx:if="{{file.type !== 'video'}}"
           bindtap="onProofTap"
@@ -56,7 +56,7 @@
       t-class-content="{{classPrefix}}__grid-content"
       bindclick="onAddTap"
     >
-      <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
+      <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
         <view class="{{classPrefix}}__add-icon">
           <slot wx:if="{{addContent === 'slot'}}" name="addContent" />
           <t-icon wx:else name="add" size="40rpx" color="rgba(0,0,0,0.26)" />

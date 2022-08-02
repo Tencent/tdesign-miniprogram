@@ -1,8 +1,4 @@
 module.exports = {
-  getTClass: function (size) {
-    var isIncludePx = size.indexOf('px') > -1;
-    return isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1);
-  },
   getAvatarOuterClass: function (classPrefix, size, shape) {
     var isIncludePx = size.indexOf('px') > -1;
     var classNames = [
