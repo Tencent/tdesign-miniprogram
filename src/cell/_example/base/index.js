@@ -1,3 +1,3 @@
-Page({
+Component({
   data: {},
 });

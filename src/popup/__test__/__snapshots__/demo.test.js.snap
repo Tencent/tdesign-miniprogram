@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popup Popup top demo works fine 1`] = `
+<top>
+  <t-popup
+    placement="top"
+    visible="{{false}}"
+    bind:visible-change="onVisibleChange"
+  >
+    <wx-view
+      class="block block--top"
+    />
+  </t-popup>
+  <t-button
+    block="{{true}}"
+    size="large"
+    bind:tap="handlePopup"
+  >
+    顶部弹出
+  </t-button>
+</top>
+`;

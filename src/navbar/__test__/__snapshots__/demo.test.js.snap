@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Navbar back demo works fine 1`] = `
+<back>
+  <t-navbar
+    leftIcon="chevron-left"
+    tClassLeftIcon="left-icon-back"
+    tClassTitle="nav-title"
+    title="标题"
+  />
+</back>
+`;
+
+exports[`Navbar Navbar back-home demo works fine 1`] = `
+<back-home>
+  <t-navbar
+    homeIcon="home"
+    leftIcon="chevron-left"
+    tClassHomeIcon="home-icon"
+    tClassLeftIcon="left-icon-back"
+    tClassTitle="nav-title"
+    title="标题"
+    bind:go-home="onGoHome"
+  />
+</back-home>
+`;
+
+exports[`Navbar Navbar base demo works fine 1`] = `
+<base>
+  <t-navbar
+    tClassTitle="nav-title"
+    title="标题"
+  />
+</base>
+`;
+
+exports[`Navbar Navbar brand demo works fine 1`] = `
+<brand>
+  <t-navbar
+    leftIcon="slot"
+  >
+    <span
+      class="slot-left"
+      slot="left-icon"
+    >
+      品牌名称
+    </span>
+  </t-navbar>
+</brand>
+`;
+
+exports[`Navbar Navbar brand-long demo works fine 1`] = `
+<brand-long>
+  <t-navbar
+    leftIcon="slot"
+    tClassLeft="external-class-left"
+    tClassLeftIcon="left-icon-slot"
+  >
+    <span
+      class="long-brand"
+      slot="left-icon"
+    >
+      品牌名称最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长最长
+    </span>
+  </t-navbar>
+</brand-long>
+`;
+
+exports[`Navbar Navbar custom-capsule demo works fine 1`] = `
+<custom-capsule>
+  <t-navbar>
+    <wx-view
+      class="capsule"
+      slot="capsule"
+    >
+      自定义胶囊
+    </wx-view>
+  </t-navbar>
+</custom-capsule>
+`;
+
+exports[`Navbar Navbar img demo works fine 1`] = `
+<img>
+  <t-navbar
+    leftIcon="slot"
+    tClassLeft="external-class-left"
+  >
+    <t-image
+      class="slot-left"
+      mode="aspectFill"
+      slot="left-icon"
+      src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%8D%A0%E4%BD%8D%E5%9B%BE%402x.png"
+      tClass="img"
+    />
+  </t-navbar>
+</img>
+`;

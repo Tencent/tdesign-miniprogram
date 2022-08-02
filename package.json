@@ -84,6 +84,7 @@
     "jsdom": "^20.0.0",
     "less": "^4.1.1",
     "lint-staged": "^10.0.0-1",
+    "lodash": "^4.17.21",
     "miniprogram-api-typings": "^3.4.6",
     "miniprogram-automator": "^0.10.0",
     "miniprogram-simulate": "^1.5.7",

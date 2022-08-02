@@ -2,7 +2,7 @@ Page({
   data: {
     mode: '',
     datetimeVisible: false,
-    datetime: new Date().getTime(),
+    datetime: new Date('2021-12-23').getTime(),
     datetimeText: '',
   },
   showPicker(e) {

@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton Skeleton animation demo works fine 1`] = `
+<animation>
+  <wx-view
+    class="group"
+  >
+    <t-skeleton
+      animation="flashed"
+      class="group-avatar"
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "size": "48px",
+            "type": "circle",
+          },
+        ]
+      }}"
+    />
+    <t-skeleton
+      animation="flashed"
+      class="group-content"
+      loading="{{true}}"
+      theme="paragraph"
+    />
+  </wx-view>
+</animation>
+`;
+
+exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
+<cell-group>
+  <wx-view
+    class="group"
+  >
+    <t-skeleton
+      class="group-avatar"
+      loading="{{false}}"
+      rowCol="{{
+        Array [
+          Object {
+            "size": "48px",
+            "type": "circle",
+          },
+        ]
+      }}"
+    />
+    <t-skeleton
+      class="group-content"
+      loading="{{false}}"
+      rowCol="{{
+        Array [
+          Object {
+            "width": "50%",
+          },
+          Object {
+            "width": "100%",
+          },
+        ]
+      }}"
+    />
+  </wx-view>
+  <wx-view
+    class="group"
+  >
+    <t-skeleton
+      class="group-avatar"
+      loading="{{false}}"
+      rowCol="{{
+        Array [
+          Object {
+            "size": "48px",
+            "type": "rect",
+          },
+        ]
+      }}"
+    />
+    <t-skeleton
+      class="group-content"
+      loading="{{false}}"
+      rowCol="{{
+        Array [
+          Object {
+            "width": "50%",
+          },
+          Object {
+            "width": "100%",
+          },
+        ]
+      }}"
+    />
+  </wx-view>
+</cell-group>
+`;
+
+exports[`Skeleton Skeleton grid demo works fine 1`] = `
+<grid>
+  <t-skeleton
+    loading="{{true}}"
+    rowCol="{{
+      Array [
+        Array [
+          Object {
+            "height": "48px",
+            "width": "48px",
+          },
+          Object {
+            "height": "48px",
+            "width": "48px",
+          },
+          Object {
+            "height": "48px",
+            "width": "48px",
+          },
+          Object {
+            "height": "48px",
+            "width": "48px",
+          },
+          Object {
+            "height": "48px",
+            "width": "48px",
+          },
+        ],
+        Array [
+          Object {
+            "height": "16px",
+            "width": "48px",
+          },
+          Object {
+            "height": "16px",
+            "width": "48px",
+          },
+          Object {
+            "height": "16px",
+            "width": "48px",
+          },
+          Object {
+            "height": "16px",
+            "width": "48px",
+          },
+          Object {
+            "height": "16px",
+            "width": "48px",
+          },
+        ],
+      ]
+    }}"
+  />
+</grid>
+`;
+
+exports[`Skeleton Skeleton image-group demo works fine 1`] = `
+<image-group>
+  <wx-view
+    class="group"
+  >
+    <t-skeleton
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "height": "171px",
+          },
+          1,
+          Object {
+            "width": "107px",
+          },
+          Array [
+            Object {
+              "width": "93px",
+            },
+            Object {
+              "marginLeft": "41px",
+              "width": "32px",
+            },
+          ],
+        ]
+      }}"
+    />
+    <t-skeleton
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "height": "171px",
+          },
+          1,
+          Object {
+            "width": "107px",
+          },
+          Array [
+            Object {
+              "width": "93px",
+            },
+            Object {
+              "marginLeft": "41px",
+              "width": "32px",
+            },
+          ],
+        ]
+      }}"
+    />
+  </wx-view>
+</image-group>
+`;
+
+exports[`Skeleton Skeleton theme demo works fine 1`] = `
+<theme>
+  <t-skeleton
+    loading="{{false}}"
+    theme="text"
+  />
+</theme>
+`;
