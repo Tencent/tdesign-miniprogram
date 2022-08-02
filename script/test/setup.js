@@ -1,0 +1,1 @@
+global.getApp = () => null;

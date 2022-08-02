@@ -15,6 +15,7 @@
 </view>
 
 <t-overlay
+  id="popup-overlay"
   wx:if="{{showOverlay}}"
   visible="{{visible}}"
   prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"

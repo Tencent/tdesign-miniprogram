@@ -19,7 +19,7 @@ Object {
       "event": Object {
         "change": Object {
           "handler": "onChange",
-          "id": 1,
+          "id": 0,
           "isCapture": false,
           "isCatch": false,
           "isMutated": false,
