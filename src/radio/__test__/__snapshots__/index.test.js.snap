@@ -8,18 +8,27 @@ Object {
       "attrs": Array [
         Object {
           "name": "class",
-          "value": "t-radio ",
+          "value": "t-radio t-class t-radio--left",
         },
       ],
       "children": Array [
         Object {
-          "attrs": Array [],
+          "attrs": Array [
+            Object {
+              "name": "class",
+              "value": "t-radio__icon t-radio__icon--left t-class-icon",
+            },
+            Object {
+              "name": "data-target",
+              "value": "icon",
+            },
+          ],
           "children": Array [
             Object {
               "attrs": Array [
                 Object {
                   "name": "class",
-                  "value": "t-cell t-cell--bordered",
+                  "value": "t-radio__btn  ",
                 },
               ],
               "children": Array [
@@ -27,64 +36,116 @@ Object {
                   "attrs": Array [
                     Object {
                       "name": "class",
-                      "value": "t-radio__button ",
+                      "value": "t-class t-icon t-icon-circle t-icon-base",
                     },
                     Object {
-                      "name": "slot",
-                      "value": "left-icon",
+                      "name": "style",
+                      "value": ";;",
                     },
                   ],
                   "children": Array [],
-                  "event": Object {},
-                  "tagName": "wx-view",
-                },
-                Object {
-                  "attrs": Array [
-                    Object {
-                      "name": "class",
-                      "value": "t-cell__title",
+                  "event": Object {
+                    "tap": Object {
+                      "handler": "onTap",
+                      "id": 1,
+                      "isCapture": false,
+                      "isCatch": false,
+                      "isMutated": false,
+                      "name": "tap",
                     },
-                  ],
-                  "children": Array [],
-                  "event": Object {},
-                  "tagName": "wx-view",
-                },
-                Object {
-                  "attrs": Array [
-                    Object {
-                      "name": "class",
-                      "value": "t-cell__value",
-                    },
-                  ],
-                  "children": Array [],
-                  "event": Object {},
-                  "tagName": "wx-view",
+                  },
+                  "tagName": "wx-label",
                 },
               ],
-              "event": Object {
-                "tap": Object {
-                  "handler": "onTap",
-                  "id": 2,
-                  "isCapture": false,
-                  "isCatch": false,
-                  "isMutated": false,
-                  "name": "tap",
+              "event": Object {},
+              "tagName": "t-icon",
+            },
+          ],
+          "event": Object {
+            "tap": Object {
+              "handler": "handleTap",
+              "id": 2,
+              "isCapture": false,
+              "isCatch": false,
+              "isMutated": false,
+              "name": "tap",
+            },
+          },
+          "tagName": "wx-view",
+        },
+        Object {
+          "attrs": Array [
+            Object {
+              "name": "class",
+              "value": "t-radio__content ",
+            },
+            Object {
+              "name": "data-target",
+              "value": "text",
+            },
+          ],
+          "children": Array [
+            Object {
+              "attrs": Array [
+                Object {
+                  "name": "class",
+                  "value": "t-radio__title t-class-label",
                 },
-              },
+                Object {
+                  "name": "style",
+                  "value": "-webkit-line-clamp:3",
+                },
+              ],
+              "children": Array [
+                "
+      
+      ",
+              ],
+              "event": Object {},
+              "tagName": "wx-view",
+            },
+            Object {
+              "attrs": Array [
+                Object {
+                  "name": "class",
+                  "value": "t-radio__description t-class-content ",
+                },
+                Object {
+                  "name": "style",
+                  "value": "-webkit-line-clamp:5",
+                },
+              ],
+              "children": Array [
+                "
+      
+    ",
+              ],
+              "event": Object {},
               "tagName": "wx-view",
             },
           ],
           "event": Object {
-            "click": Object {
-              "handler": "onChange",
-              "id": 1,
+            "tap": Object {
+              "handler": "handleTap",
+              "id": 2,
               "isCapture": false,
               "isCatch": false,
               "isMutated": false,
-              "name": "click",
+              "name": "tap",
             },
           },
-          "tagName": "t-cell",
+          "tagName": "wx-view",
+        },
+        Object {
+          "attrs": Array [
+            Object {
+              "name": "class",
+              "value": "t-radio__border t-radio__border--left t-class-border",
+            },
+          ],
+          "children": Array [],
+          "event": Object {},
+          "tagName": "wx-view",
         },
       ],
       "event": Object {},
@@ -92,6 +153,6 @@ Object {
     },
   ],
   "event": Object {},
-  "tagName": "main",
+  "tagName": "t-radio",
 }
 `;
