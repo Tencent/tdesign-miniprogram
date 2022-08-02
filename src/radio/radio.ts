@@ -77,8 +77,11 @@ export default class Radio extends SuperComponent {
 
       if (target === 'text' && this.data.contentDisabled) return;
 
+      this.doChange();
+    },
+    doChange() {
       const { value, active } = this.data;
-      const [parent] = this.getRelationNodes('../radio-group/radio-group');
+      const [parent] = this.getRelationNodes('../radio-group/radio-group') ?? [null];
 
       if (parent) {
         parent.updateValue(value);

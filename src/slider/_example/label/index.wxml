@@ -1,0 +1,1 @@
+<t-slider value="{{value}}" label="${value}" colors="{{colors}}" bind:change="handleChange"></t-slider>

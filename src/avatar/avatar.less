@@ -1,17 +1,33 @@
 @import '../common/style/index.less';
+@import './common.less';
+
+@avatar-small-width: 64rpx;
+@avatar-medium-width: 96rpx;
+@avatar-large-width: 128rpx;
+
+@avatar-small-font-size: @font-size-base;
+@avatar-medium-font-size: @font-size-l;
+@avatar-large-font-size: @font-size * 2.6;
+
+@avatar-bg-color: #d4e3fc;
+@avatar-content-color: #0052d9;
+
+page {
+  --td-avatar-bg-color: @avatar-bg-color;
+  --td-avatar-content-color: @avatar-content-color;
+}
 
 .@{prefix}-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  font-weight: 600;
 
   &__wrapper {
     float: left;
     position: relative;
-    background-color: #d4e3fc;
-    color: #0052d9;
+    background-color: var(--td-avatar-bg-color, @avatar-bg-color);
+    color: var(--td-avatar-content-color, @avatar-content-color);
     border-radius: 999rpx;
 
     .@{prefix}-badge {
@@ -32,21 +48,21 @@
   }
 
   &.@{prefix}-size-l {
-    width: 128rpx;
-    height: 128rpx;
-    font-size: 52rpx;
+    width: @avatar-large-width;
+    height: @avatar-large-width;
+    font-size: @avatar-large-font-size;
   }
 
   &.@{prefix}-size-m {
-    width: 96rpx;
-    height: 96rpx;
-    font-size: 40rpx;
+    width: @avatar-medium-width;
+    height: @avatar-medium-width;
+    font-size: @avatar-medium-font-size;
   }
 
   &.@{prefix}-size-s {
-    width: 64rpx;
-    height: 64rpx;
-    font-size: 28rpx;
+    width: @avatar-small-width;
+    height: @avatar-small-width;
+    font-size: @avatar-small-font-size;
   }
 
   .@{prefix}-image,

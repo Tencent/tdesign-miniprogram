@@ -55,6 +55,7 @@ ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
 icon | String | - | 图标名称 | N
 icon-props | Object | {} | 图标属性，透传至 icon | N
 loading | Boolean | false | 是否显示为加载状态 | N
+loading-props | Object | - | 加载loading属性，透传至loading。TS 类型：`LoadingProps` | N
 shape | String | rectangle | 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形。可选项：rectangle/square/round/circle | N
 size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum` | N
 theme | String | default | 组件风格，依次为品牌色、危险色。可选项：default/primary/danger | N

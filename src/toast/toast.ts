@@ -62,9 +62,12 @@ export default class Toast extends SuperComponent {
       };
       const { duration } = data;
       this.setData(data);
-      this.hideTimer = setTimeout(() => {
-        this.clear();
-      }, duration as any);
+
+      if (duration > 0) {
+        this.hideTimer = setTimeout(() => {
+          this.clear();
+        }, duration);
+      }
     },
     hide() {
       this.clear();

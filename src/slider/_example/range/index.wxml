@@ -1,0 +1,1 @@
+<t-slider range label showExtremeValue defaultValue="{{[30, 70]}}" colors="{{colors}}"></t-slider>

@@ -16,6 +16,8 @@ export default class AvatarGroup extends SuperComponent {
     classPrefix: name,
     hasChild: true,
     length: 0,
+    className: '',
+    borderSize: '',
   };
 
   options = {
@@ -39,9 +41,34 @@ export default class AvatarGroup extends SuperComponent {
     this.handleChildSlot(this.properties.max, this.children, this.handleChildMax);
     this.handleChildSize(this.properties.size, this.children);
     this.handleChildCascading(this.properties.cascading, this.children);
+    this.handleChildBorder(this.properties.size, this.children);
   }
 
+  lifetimes = {
+    attached() {
+      this.setClass();
+    },
+  };
+
   methods = {
+    isINcludePX(size) {
+      return size.indexOf('px') > -1;
+    },
+
+    setClass() {
+      const { cascading, size } = this.properties;
+      const classList = [name, `${prefix}-class`];
+      const direction = cascading.split('-')[0];
+      if (this.isINcludePX(size)) {
+        classList.push(`${name}-offset-${direction}-medium`);
+      } else {
+        classList.push(`${name}-offset-${direction}-${size}`);
+      }
+      this.setData({
+        className: classList.join(' '),
+      });
+    },
+
     /**
      * @param children avatar-group的所有avatar子节点
      * @param hasChild 是否为子节点（slot插槽以及默认的avatar折叠元素没有parent）
@@ -112,6 +139,15 @@ export default class AvatarGroup extends SuperComponent {
       const defaultZIndex = 100;
       children.forEach((child, index) => {
         child.updateCascading(defaultZIndex - index * 10);
+      });
+    },
+    handleChildBorder(size, children) {
+      const borderSize = this.isINcludePX(size) ? 'medium' : size;
+      this.setData({
+        borderSize,
+      });
+      children.forEach((child) => {
+        child.updateBorder(borderSize);
       });
     },
   };

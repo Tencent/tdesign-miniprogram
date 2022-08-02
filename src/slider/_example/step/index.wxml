@@ -1,0 +1,1 @@
+<t-slider defaultValue="{{50}}" marks="{{mask}}" step="{{50}}" bind:change="handleChange"></t-slider>

@@ -1,0 +1,5 @@
+<view class="loading-container-flex">
+  <t-loading theme="circular" size="40rpx"></t-loading>
+  <t-loading theme="spinner" size="40rpx" t-class-indicator="indicator-black"></t-loading>
+  <t-loading theme="dots" size="80rpx" t-class-indicator="indicator-black"></t-loading>
+</view>

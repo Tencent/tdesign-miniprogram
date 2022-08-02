@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea Textarea autosize demo works fine 1`] = `
+<autosize>
+  <t-textarea
+    autosize="{{true}}"
+    label="标签文字"
+    placeholder="请输入文字"
+  />
+</autosize>
+`;
+
+exports[`Textarea Textarea base demo works fine 1`] = `
+<base>
+  <t-textarea
+    placeholder="请输入文字"
+  />
+</base>
+`;
+
+exports[`Textarea Textarea disabled demo works fine 1`] = `
+<disabled>
+  <t-textarea
+    disabled="{{true}}"
+    label="标签文字"
+    placeholder="请输入文字"
+    value="不可编辑文字"
+  />
+</disabled>
+`;
+
+exports[`Textarea Textarea lable demo works fine 1`] = `
+<lable>
+  <t-textarea
+    label="标签文字"
+    placeholder="请输入文字"
+  />
+</lable>
+`;
+
+exports[`Textarea Textarea maxcharacter demo works fine 1`] = `
+<maxcharacter>
+  <t-textarea
+    label="标签文字"
+    maxcharacter="100"
+    placeholder="请输入文字"
+  />
+</maxcharacter>
+`;
+
+exports[`Textarea Textarea maxlength demo works fine 1`] = `
+<maxlength>
+  <t-textarea
+    label="标签文字"
+    maxlength="100"
+    placeholder="请输入文字"
+  />
+</maxlength>
+`;

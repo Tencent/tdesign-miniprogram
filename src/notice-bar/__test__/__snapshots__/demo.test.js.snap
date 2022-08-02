@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoticeBar NoticeBar base demo works fine 1`] = `
+<base>
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述"
+    prefixIcon="null"
+    visible="{{true}}"
+  />
+</base>
+`;
+
+exports[`NoticeBar NoticeBar custom demo works fine 1`] = `
+<custom>
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述"
+    prefixIcon="sound"
+    tClass="external-class"
+    visible="{{true}}"
+  />
+</custom>
+`;
+
+exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
+<customization>
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+    prefixIcon="null"
+    visible="{{true}}"
+  />
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+    visible="{{true}}"
+  />
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
+    suffixIcon="chevron-right"
+    visible="{{true}}"
+  />
+  <t-notice-bar
+    visible="{{true}}"
+  >
+    <wx-view
+      slot="content"
+    >
+      
+    提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
+    
+      <wx-view
+        class="extra"
+        bind:tap="clickDetail"
+      >
+         详情 
+      </wx-view>
+    </wx-view>
+    <wx-view
+      slot="suffixIcon"
+    >
+      <t-icon
+        name="close"
+      />
+    </wx-view>
+  </t-notice-bar>
+</customization>
+`;
+
+exports[`NoticeBar NoticeBar event demo works fine 1`] = `
+<event>
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述"
+    suffixIcon="chevron-right"
+    visible="{{true}}"
+    bind:click="click"
+  />
+  <t-notice-bar
+    suffixIcon="close"
+    visible="{{true}}"
+    bind:click="click"
+  >
+    <wx-view
+      slot="content"
+    >
+       提示文字描述提示文字描述 
+    </wx-view>
+    <wx-view
+      class="extra"
+      slot="extra"
+    >
+      详情
+    </wx-view>
+  </t-notice-bar>
+</event>
+`;
+
+exports[`NoticeBar NoticeBar iconDemo demo works fine 1`] = `
+<iconDemo>
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述"
+    visible="{{true}}"
+  >
+    <wx-view
+      slot="prefixIcon"
+    >
+      <t-icon
+        name="error-circle-filled"
+      />
+    </wx-view>
+  </t-notice-bar>
+</iconDemo>
+`;
+
+exports[`NoticeBar NoticeBar scrolling demo works fine 1`] = `
+<scrolling>
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+    marquee="{{
+      Object {
+        "delay": 0,
+        "loop": -1,
+        "speed": 80,
+      }
+    }}"
+    prefixIcon="null"
+    visible="{{true}}"
+  />
+  <t-notice-bar
+    content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+    marquee="{{
+      Object {
+        "delay": 0,
+        "loop": -1,
+        "speed": 60,
+      }
+    }}"
+    visible="{{true}}"
+  />
+</scrolling>
+`;
+
+exports[`NoticeBar NoticeBar theme demo works fine 1`] = `
+<theme>
+  <t-notice-bar
+    content="默认状态公告栏默认状态公告栏"
+    visible="{{true}}"
+  />
+  <t-notice-bar
+    content="成功状态公告栏成功状态公告栏"
+    theme="success"
+    visible="{{true}}"
+  />
+  <t-notice-bar
+    content="警示状态公告栏警示状态公告栏"
+    theme="warning"
+    visible="{{true}}"
+  />
+  <t-notice-bar
+    content="错误状态公告栏错误状态公告栏"
+    theme="error"
+    visible="{{true}}"
+  />
+</theme>
+`;

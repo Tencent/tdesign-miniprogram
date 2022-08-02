@@ -16,6 +16,17 @@ isComponent: true
 }
 ```
 
+## 主题定制
+
+CSS 变量名|说明
+--|--
+--td-tab-item-color | 选项卡字体颜色
+--td-tab-item-active-color | 选项卡激活时字体颜色
+--td-tab-item-disabled-color | 选项卡禁止状态时字体颜色
+--td-tab-track-color | 选项卡滑块颜色
+--td-tab-track-thickness | 选项卡滑块厚度（水平时为高度，垂直时为宽度）
+--td-tab-border-color | 选项卡底部边框颜色
+
 ## 代码演示
 
 ### 基础选项卡

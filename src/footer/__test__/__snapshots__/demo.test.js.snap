@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Footer base demo works fine 1`] = `
+<base>
+  <t-footer
+    class="t-footer-demo"
+    copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+    theme="text"
+  />
+</base>
+`;
+
+exports[`Footer Footer link demo works fine 1`] = `
+<link>
+  <t-footer
+    class="footer"
+    copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+    textLinkList="{{
+      Array [
+        Object {
+          "name": "底部链接",
+          "openType": "navigate",
+          "url": "/pages/index",
+        },
+      ]
+    }}"
+    theme="text"
+  />
+  <t-footer
+    class="footer"
+    copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+    textLinkList="{{
+      Array [
+        Object {
+          "name": "底部链接",
+          "openType": "navigate",
+          "url": "/pages/index",
+        },
+        Object {
+          "name": "底部链接",
+          "openType": "navigateBack",
+          "url": "",
+        },
+      ]
+    }}"
+    theme="text"
+  />
+  <t-footer
+    class="t-footer-demo"
+    logo="{{
+      Object {
+        "url": "https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png",
+      }
+    }}"
+    theme="logo"
+  />
+</link>
+`;

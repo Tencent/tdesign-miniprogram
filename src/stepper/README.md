@@ -17,34 +17,35 @@ isComponent: true
 
 ## 代码演示
 
-### 带单位的步进器
-
 <img src="https://tdesign.gtimg.com/miniprogram/readme/stepper.png" width="375px" height="50%">
 
-```html
-<t-cell title="标题文字（单位）">
-  <view class="cell-badge-wrap" slot="right-icon">
-    <t-stepper defaultValue="0" step="2" />
-  </view>
-</t-cell>
-```
+### 基本步进器
 
-### 受控用法
+{{ base }}
 
-```html
-<t-stepper value="{{value}}" bind:change="handleChange" />
-```
+### 带单位的步进器
 
-```js
-Page({
-  data: {
-    value: 0
-  },
-  handleChange(e) {
-    this.setData({ value: e.detail.value })
-  }
-})
-```
+{{ step }}
+
+### 纯步进器
+
+{{ input-width }}
+
+### 步进器状态
+
+#### 禁用
+
+{{ status }}
+
+#### 最小值/最大值
+
+{{ min-max }}
+
+#### 其他
+
+{{ other }}
+
+
 ## API
 ### Stepper Props
 

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Upload Upload multiple demo works fine 1`] = `
+<multiple>
+  <wx-view
+    class="wrapper"
+  >
+    <t-upload
+      files="{{
+        Array [
+          Object {
+            "name": "uploaded1.png",
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
+          },
+          Object {
+            "name": "uploaded2.png",
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload2.png",
+          },
+          Object {
+            "name": "uploaded1.png",
+            "percent": -1,
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
+          },
+        ]
+      }}"
+      gridConfig="{{
+        Object {
+          "column": 4,
+          "height": 160,
+          "width": 160,
+        }
+      }}"
+      mediaType="{{
+        Array [
+          "video",
+          "image",
+        ]
+      }}"
+      bind:remove="handleRemove"
+      bind:success="handleSuccess"
+    />
+  </wx-view>
+</multiple>
+`;
+
+exports[`Upload Upload single demo works fine 1`] = `
+<single>
+  <wx-view
+    class="wrapper"
+  >
+    <t-upload
+      config="{{
+        Object {
+          "count": 1,
+        }
+      }}"
+      files="{{
+        Array [
+          Object {
+            "name": "uploaded1.png",
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
+          },
+        ]
+      }}"
+      gridConfig="{{
+        Object {
+          "column": 4,
+          "height": 160,
+          "width": 160,
+        }
+      }}"
+      mediaType="{{
+        Array [
+          "video",
+          "image",
+        ]
+      }}"
+      bind:remove="handleRemove"
+      bind:success="handleSuccess"
+    >
+      <t-icon
+        color="rgba(0,0,0,0.26)"
+        name="add"
+        size="40rpx"
+      />
+    </t-upload>
+  </wx-view>
+</single>
+`;

@@ -3,6 +3,11 @@
   "navigationBarBackgroundColor": "#fff",
   "backgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "t-demo": "../../components/demo-block/index",
+    "base": "./base",
+    "fraction": "./fraction",
+    "nav-btn": "./nav-btn",
+    "custom": "./custom",
+    "vertical": "./vertical"
   }
 }

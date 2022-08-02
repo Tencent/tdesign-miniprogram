@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress Progress base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress />
+  </wx-view>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      percentage="88"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      color="#0052D9"
+      percentage="100"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`Progress Progress custom demo works fine 1`] = `
+<custom>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      color="#CD04FF"
+      percentage="88"
+      tClassLabel="external-class-label"
+      trackColor="#EAC9FF"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      percentage="88"
+      tClassBar="external-class-bar"
+    />
+  </wx-view>
+</custom>
+`;
+
+exports[`Progress Progress size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      percentage="88"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      label="{{false}}"
+      percentage="72"
+    />
+  </wx-view>
+</size>
+`;
+
+exports[`Progress Progress status demo works fine 1`] = `
+<status>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      percentage="88"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      percentage="88"
+      status="error"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      percentage="88"
+      status="warning"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      percentage="100"
+    />
+  </wx-view>
+</status>
+`;
+
+exports[`Progress Progress transition demo works fine 1`] = `
+<transition>
+  <wx-view
+    class="progress-container"
+  >
+    <t-progress
+      percentage="{{88}}"
+    />
+    <wx-view
+      class="button-group"
+    >
+      <t-button
+        size="small"
+        theme="primary"
+        variant="plain"
+        bind:tap="clickReduce"
+      >
+        减少
+      </t-button>
+      <wx-view
+        class="space"
+      />
+      <t-button
+        size="small"
+        theme="primary"
+        bind:tap="clickAdd"
+      >
+        增加
+      </t-button>
+    </wx-view>
+  </wx-view>
+</transition>
+`;

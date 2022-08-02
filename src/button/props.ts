@@ -48,6 +48,10 @@ const props: TdButtonProps = {
     type: Boolean,
     value: false,
   },
+  /** 加载loading样式 */
+  loadingProps: {
+    type: Object,
+  },
   /** 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形 */
   shape: {
     type: String,

@@ -1,0 +1,49 @@
+<view class="row">
+  <text class="row-text-64 row-text-common">L</text>
+  <text class="row-text-48 row-text-common">M</text>
+  <text class="row-text-32 row-text-common">S</text>
+</view>
+<view class="row">
+  <view class="avatar-example">
+    <t-avatar icon="user" size="large" />
+  </view>
+  <view class="avatar-example">
+    <t-avatar icon="user" size="medium" />
+  </view>
+  <view class="avatar-example">
+    <t-avatar icon="user" size="small" />
+  </view>
+</view>
+<view class="row">
+  <view class="avatar-example">
+    <t-avatar image="{{image}}" size="large" badge-props="{{ {count: 16} }}" />
+  </view>
+  <view class="avatar-example">
+    <t-avatar image="{{image}}" size="medium" badge-props="{{ {count: 8} }}" />
+  </view>
+  <view class="avatar-example">
+    <t-avatar image="{{image}}" size="small" badge-props="{{ {dot: true} }}" />
+  </view>
+</view>
+<view class="row">
+  <view class="avatar-example">
+    <t-avatar shape="round" image="{{image}}" badge-props="{{ {count: 16} }}" size="large" />
+  </view>
+  <view class="avatar-example">
+    <t-avatar shape="round" image="{{image}}" badge-props="{{ {count: 8} }}" size="medium" />
+  </view>
+  <view class="avatar-example">
+    <t-avatar shape="round" image="{{image}}" badge-props="{{ {dot: true} }}" size="small" />
+  </view>
+</view>
+<view class="row bottom-row">
+  <view class="avatar-example">
+    <t-avatar t-class-content="external-class-content" size="large">A</t-avatar>
+  </view>
+  <view class="avatar-example">
+    <t-avatar t-class-content="external-class-content" size="medium">A</t-avatar>
+  </view>
+  <view class="avatar-example">
+    <t-avatar t-class-content="external-class-content" size="small">A</t-avatar>
+  </view>
+</view>

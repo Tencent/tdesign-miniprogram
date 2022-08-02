@@ -1,0 +1,13 @@
+.progress-container {
+  background-color: #fff;
+  padding: 16rpx 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.external-class-label {
+  color: #d504d9;
+}
+
+.external-class-bar {
+  border-radius: 20rpx;
+}

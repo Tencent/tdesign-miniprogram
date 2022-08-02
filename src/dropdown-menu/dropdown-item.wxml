@@ -9,6 +9,7 @@
     custom-style="position: absolute;"
     overlayProps="{{ { customStyle: 'position: absolute' } }}"
     bind:leaved="onLeaved"
+    bind:visible-change="handleMaskClick"
     class="{{classPrefix}}__popup-host"
     t-class-content="{{contentClasses}} {{classPrefix}}__content"
   >

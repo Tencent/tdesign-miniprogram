@@ -1,52 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`radio basic demo demo should render correctly 1`] = `
-Object {
-  "attrs": Array [],
-  "children": Array [
-    Object {
-      "attrs": Array [],
-      "children": Array [
-        Object {
-          "attrs": Array [
-            Object {
-              "name": "class",
-              "value": "basic-radio",
-            },
-            Object {
-              "name": "name",
-              "value": "radio1",
-            },
-            Object {
-              "name": "title",
-              "value": "单行标题",
-            },
-          ],
-          "children": Array [],
-          "event": Object {},
-          "tagName": "t-radio",
-        },
-        Object {
-          "attrs": Array [
-            Object {
-              "name": "name",
-              "value": "radio2",
-            },
-            Object {
-              "name": "title",
-              "value": "双行标题，长文本自动换行，该选项的描述是一段很长的内容",
-            },
-          ],
-          "children": Array [],
-          "event": Object {},
-          "tagName": "t-radio",
-        },
-      ],
-      "event": Object {},
-      "tagName": "wx-view",
-    },
-  ],
-  "event": Object {},
-  "tagName": "main",
-}
+<main>
+  <wx-view>
+    <t-radio
+      class="basic-radio"
+      name="radio1"
+      title="单行标题"
+    />
+    <t-radio
+      name="radio2"
+      title="双行标题，长文本自动换行，该选项的描述是一段很长的内容"
+    />
+  </wx-view>
+</main>
 `;
