@@ -1,24 +1,7 @@
-const backTopDemos = [
-  { text: '顶部', theme: 'round' },
-  { text: '顶部', theme: 'round-dark' },
-  { text: '', theme: 'round' },
-  { text: '', theme: 'round-dark' },
-  { text: '返回顶部', theme: 'half-round' },
-  { text: '返回顶部', theme: 'half-round-dark' },
-];
-
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
-    backTopDemo: backTopDemos[0],
     showBackTop: false,
-    skeleton: {
-      rowWidth: ['340rpx', '340rpx', '218rpx', '190rpx'],
-      rowHeight: ['342rpx', '32rpx', '32rpx', '32rpx'],
-    },
-    rowCol3: [
+    rowCols: [
       { width: '332rpx', height: '342rpx' },
       { width: '332rpx', height: '32rpx' },
       { width: '214rpx', height: '32rpx' },
@@ -41,9 +24,7 @@ Page({
     }
   },
 
-  onBtnClick(e: WechatMiniprogram.TouchEvent) {
-    const { index } = e.currentTarget.dataset;
-    this.setData({ backTopDemo: backTopDemos[index] });
+  onBtnClick() {
     wx.pageScrollTo({ duration: 300, scrollTop: 1000 });
   },
 
