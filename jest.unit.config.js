@@ -4,7 +4,7 @@ module.exports = {
   testURL: 'http://localhost/',
   moduleFileExtensions: ['js', 'ts'],
   moduleNameMapper: {
-    'tdesign-miniprogram/(.*)': '<rootDir>/src/$1',
+    '^tdesign-miniprogram/(.*)': '<rootDir>/src/$1',
   },
   testMatch: ['<rootDir>/src/**/__test__/**/*.test.{js,ts}'],
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,ts}', '!**/__test__/**'],
