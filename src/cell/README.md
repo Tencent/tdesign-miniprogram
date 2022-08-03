@@ -38,7 +38,7 @@ align | String | middle | 内容的对齐方式，默认居中对齐。可选项
 arrow | Boolean | false | 是否显示右侧箭头 | N
 bordered | Boolean | true | 是否显示下边框 | N
 description | String / Slot | - | 下方内容描述 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、标题类名、右侧说明文字类名、下方描述内容类名、图片类名、激活态类名、左侧图标类名、右侧图标类名 等。`['t-class', 't-class-title', 't-class-note', 't-class-description', 't-class-thumb', 't-class-hover', 't-class-left', 't-class-right']` | N
+external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、标题类名、下方描述内容类名、右侧说明文字类名、激活态类名、图片类名、左侧内容、左侧图标类名、右侧内容、右侧图标类名 等。`['t-class', 't-class-title', 't-class-description', 't-class-note', 't-class-hover', 't-class-image', 't-class-left', 't-class-left-icon', 't-class-right', 't-class-right-icon']` | N
 hover | Boolean | - | 是否开启点击反馈 | N
 image | String / Slot | - | 主图 | N
 jump-type | String | navigateTo | 链接跳转类型。可选项：switchTab/reLaunch/redirectTo/navigateTo | N
