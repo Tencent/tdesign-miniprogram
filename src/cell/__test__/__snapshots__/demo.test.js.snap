@@ -98,7 +98,7 @@ exports[`Cell Cell multiple demo works fine 1`] = `
     <t-cell
       align="top"
       description="一段很长很长的内容文字"
-      image="xxx.svg"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       title="多行带图片"
     />
     <t-cell
