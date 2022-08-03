@@ -1,40 +1,27 @@
 import Toast, { hideToast } from 'tdesign-miniprogram/toast/index';
 
 Page({
-  data: {
-    operList4: [
-      {
-        title: '手动关闭轻提示',
-        btns: [
-          {
-            type: 'hideToast',
-            text: '关闭提示',
-          },
-        ],
-      },
-    ],
-  },
-  handleToast(option) {
+  toast(option) {
     Toast({
       context: this,
       selector: '#t-toast',
       ...option,
     });
   },
-  hideToast() {
+  hide() {
     hideToast({
       context: this,
       selector: '#t-toast',
     });
   },
-  clickHandle(e) {
-    switch (e.detail) {
+  handleToast(e) {
+    switch (e.target.dataset.type) {
       case 'hideToast': {
-        this.hideToast();
+        this.hide();
         break;
       }
       default: {
-        this.handleToast({
+        this.toast({
           message: '未知点击事件',
         });
       }
