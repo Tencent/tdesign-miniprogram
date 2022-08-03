@@ -19,17 +19,20 @@ isComponent: true
 
 ### 基础用法
 
-```html
-<t-action-sheet id="t-action-sheet" items="{{items}}" visible="{{visible}}" bind:selected="onSelect" bind:cancel="onCancel" bind:close="onClose" bind:visible-change="onVisibleChange" />
-```
+{{ list }}
 
-### 支持自定义
+### 图标列表型
 
-```html
-<t-action-sheet id="t-action-sheet-slot" visible="{{visible}}" bind:selected="onSelect" bind:cancel="onCancel" bind:close="onClose"  bind:visible-change="onVisibleChange">
-  <view class="slot-wrap">我是自定义的内容</view>
-</t-action-sheet>
-```
+{{ icon-list }}
+
+### 宫格型
+
+{{ grid }}
+
+### 宫格型-多页
+
+{{ grid-multi }}
+
 ### 支持指令调用
 
 ```javascript

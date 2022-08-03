@@ -1,4 +1,4 @@
-<view class="action-sheet">
+<view class="demo">
   <view class="demo-title">ActionSheet 动作面板</view>
   <view class="demo-desc">底部弹起的模态面板，包含与当前情境相关的多个选项。</view>
   <t-demo title="01 类型" />
