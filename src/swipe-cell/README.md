@@ -17,17 +17,15 @@ isComponent: true
 
 ## 代码演示
 
-### 基础滑动操作
-
 <img src="https://tdesign.gtimg.com/miniprogram/readme/swipeout-1.png" width="375px" height="50%">
 
-```html
-<t-swipe-cell>
-  <view slot="left">选择</view>
-  <t-cell title="单行列表" value="描述文字" />
-  <view slot="right">删除</view>
-</t-swipe-cell>
-```
+### 往左滑动
+
+{{ left }}
+
+### 往右滑动
+
+{{ right }}
 
 ## API
 
