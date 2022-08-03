@@ -9,7 +9,7 @@
     "pages/tabs/tabs",
     "pages/icon/icon",
     "pages/loading/loading",
-    "pages/loading/loadingProgress/loadingProgress",
+    "pages/loading/loadingProgress/index",
     "pages/rate/rate",
     "pages/progress/progress",
     "pages/cell/cell",
