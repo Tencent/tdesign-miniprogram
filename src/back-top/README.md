@@ -17,31 +17,11 @@ isComponent: true
 
 ## 代码演示
 
-### 圆型返回顶部
-
 <img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-1.png" width="375px" height="50%">
 
-```html
-<!-- 圆白底 -->
-<t-back-top theme="round" text="顶部"></t-back-top>
-<!-- 圆黑底 -->
-<t-back-top theme="round-dark" text="顶部"></t-back-top>
-<!-- 圆白底纯图标 -->
-<t-back-top theme="round" text=""></t-back-top>
-<!-- 圆黑底纯图标 -->
-<t-back-top theme="round-dark" text=""></t-back-top>
-```
+### 基础返回顶部
 
-### 半圆型返回顶部
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/backtop-2.png" width="375px" height="50%">
-
-```html
-<!-- 半圆白底 -->
-<t-back-top theme="half-round" text="顶部"></t-back-top>
-<!-- 半圆黑底 -->
-<t-back-top theme="half-round-dark" text="顶部"></t-back-top>
-```
+{{ base }}
 
 ## API
 
