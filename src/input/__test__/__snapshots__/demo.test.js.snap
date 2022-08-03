@@ -99,7 +99,7 @@ exports[`Input Input special demo works fine 1`] = `
   <t-input
     clearable="{{true}}"
     label="输入密码"
-    password="{{true}}"
+    type="password"
     value="123456"
   />
   <t-input
