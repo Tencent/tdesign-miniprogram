@@ -1,0 +1,20 @@
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.base-time {
+  margin-top: 52rpx;
+  justify-content: space-between;
+}
+
+.base-time-text {
+  font-size: 20rpx;
+  color: rgba(0, 0, 0, 0.4);
+  width: 60%;
+}
+
+.base-time-cls {
+  color: #333;
+  font-weight: 700;
+}

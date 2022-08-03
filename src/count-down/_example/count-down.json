@@ -2,6 +2,8 @@
   "navigationBarTitleText": "count-down 倒计时",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "t-demo": "../../components/demo-block/index",
+    "base": "./base",
+    "sizeCountDown": "./sizeCountDown"
   }
 }
