@@ -8,7 +8,12 @@
       <open-data type="userAvatarUrl" />
     </view>
   </t-cell>
-  <t-cell title="多行带图片" description="一段很长很长的内容文字" align="top" image="xxx.svg" />
+  <t-cell
+    title="多行带图片"
+    description="一段很长很长的内容文字"
+    align="top"
+    image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+  />
   <t-cell title="多行标题" description="一段很长很长的内容文字，长文本自动换行，该选项的描述是一段很长的内容" />
   <t-cell
     title="多行标题，高度不定，长文本自动换行，该选项的描述是一段很长的内容"

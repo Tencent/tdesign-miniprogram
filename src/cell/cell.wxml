@@ -5,8 +5,10 @@
   bind:tap="onClick"
 >
   <view class="{{classPrefix}}__left {{prefix}}-class-left">
-    <image wx:if="{{ image }}" class="{{classPrefix}}__left-image {{prefix}}-class-image" src="{{ image }}" />
+    <t-icon wx:if="{{ leftIcon }}" name="{{leftIcon}}" class="{{classPrefix}}__left-icon {{prefix}}-class-left-icon" />
     <slot name="left-icon" />
+    <image wx:if="{{ image }}" class="{{classPrefix}}__left-image {{prefix}}-class-image" src="{{ image }}" />
+    <slot name="image" />
   </view>
   <view class="{{classPrefix}}__title {{prefix}}-class-title">
     <view class="{{classPrefix}}__title-text">
