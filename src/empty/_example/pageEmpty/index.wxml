@@ -1,0 +1,3 @@
+<t-empty t-class="empty-cls">
+  <t-button slot="action" size="large" block bind:tap="goEmptyPage" variant="plain">空页面</t-button>
+</t-empty>
