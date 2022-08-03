@@ -14,7 +14,7 @@ const upperFirst = require('lodash/upperFirst');
 const CONFIG = {
   sourcePath: path.resolve(__dirname, 'src'),
   targetPath: path.resolve(__dirname, 'src'),
-  defaultTemplate: ['import simulate from \'miniprogram-simulate\';', 'import path from \'path\''].join('\n'),
+  defaultTemplate: ['import simulate from \'miniprogram-simulate\';', 'import path from \'path\';'].join('\n'),
 };
 
 /*
@@ -68,7 +68,7 @@ describe('${newComponent}', () => {
 function outputOneComponentTestFile(component, demoFiles) {
   const outputPath = `${targetPath}/${component}/__test__`;
   const imports = [];
-  const demos = ['\nconst mapper = ['];
+  const demos = [];
   let hasDemo = false;
 
   demoFiles.forEach((demo) => {
@@ -77,7 +77,7 @@ function outputOneComponentTestFile(component, demoFiles) {
     if (fs.statSync(fp).isDirectory()) {
       // const name = camelCase(demo);
       // imports.push(`import ${name} from '@/examples/${component}/demos/${demo}';`);
-      demos.push(`'${demo}', `);
+      demos.push(`'${demo}'`);
       hasDemo = true;
     }
   });
@@ -88,8 +88,7 @@ function outputOneComponentTestFile(component, demoFiles) {
 
   if (!hasDemo) return;
 
-  demos.push('];');
-  const keyData = [imports.join('\n'), demos.join(''), getKeyFunction(component)].join('\n');
+  const keyData = [imports.join('\n'), `const mapper = [${demos.join(', ')}];`, getKeyFunction(component)].join('\n');
   const testFileData = data.replace('{{ HERE IS DEMO LIST }}', keyData);
   fs.mkdir(outputPath, { recursive: true }, (err) => {
     if (err) {
