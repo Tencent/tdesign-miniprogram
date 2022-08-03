@@ -1,0 +1,2 @@
+<t-demo title="04 手动关闭" desc="" operList="{{operList4}}" bindclickoper="clickHandle" />
+<t-toast id="t-toast" />
