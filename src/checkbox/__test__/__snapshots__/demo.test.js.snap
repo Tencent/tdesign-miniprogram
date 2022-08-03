@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox Checkbox all demo works fine 1`] = `
+<all>
+  <t-checkbox-group
+    defaultValue="{{
+      Array [
+        "多选1",
+        "多选2",
+        "",
+      ]
+    }}"
+    options="{{
+      Array [
+        Object {
+          "checkAll": true,
+          "label": "全选",
+        },
+        "多选1",
+        "多选2",
+        Object {
+          "label": "多选3",
+          "value": "多选3",
+        },
+      ]
+    }}"
+    bind:change="onCheckAllChange"
+  />
+</all>
+`;
+
+exports[`Checkbox Checkbox base demo works fine 1`] = `
+<base>
+  <t-checkbox-group
+    value="{{
+      Array [
+        "checkbox2",
+        "checkbox3",
+      ]
+    }}"
+    bind:change="handleGroupChange"
+  >
+    <t-checkbox
+      label="多选"
+      value="checkbox1"
+    />
+    <t-checkbox
+      label="多选"
+      value="checkbox2"
+    />
+    <t-checkbox
+      label="多选"
+      value="checkbox3"
+    />
+    <t-checkbox
+      label="多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选多选"
+      maxLabelRow="2"
+      value="checkbox4"
+    />
+    <t-checkbox
+      label="多选"
+      maxContentRow="2"
+      value="checkbox5"
+    >
+      
+    多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选选多选多选多选多选
+  
+    </t-checkbox>
+  </t-checkbox-group>
+</base>
+`;
+
+exports[`Checkbox Checkbox num demo works fine 1`] = `
+<num>
+  <t-checkbox-group
+    defaultValue="{{
+      Array [
+        "checkbox1",
+        "checkbox2",
+      ]
+    }}"
+    max="{{2}}"
+    bind:change="onChange"
+  >
+    <t-checkbox
+      label="多选"
+      value="checkbox1"
+    />
+    <t-checkbox
+      label="多选"
+      value="checkbox2"
+    />
+    <t-checkbox
+      label="多选"
+      value="checkbox3"
+    />
+  </t-checkbox-group>
+</num>
+`;
+
+exports[`Checkbox Checkbox right demo works fine 1`] = `
+<right>
+  <t-checkbox-group
+    defaultValue="{{
+      Array [
+        "checkbox2",
+        "checkbox3",
+      ]
+    }}"
+    bind:change="onChange"
+  >
+    <t-checkbox
+      align="right"
+      label="多选"
+      value="checkbox1"
+    />
+    <t-checkbox
+      align="right"
+      label="多选"
+      value="checkbox2"
+    />
+    <t-checkbox
+      align="right"
+      label="多选"
+      value="checkbox3"
+    />
+    <t-checkbox
+      align="right"
+      label="多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选"
+      maxLabelRow="{{1}}"
+      value="checkbox5"
+    />
+  </t-checkbox-group>
+</right>
+`;
+
+exports[`Checkbox Checkbox size demo works fine 1`] = `
+<size>
+  <t-checkbox
+    checked="{{true}}"
+    label="多选H48"
+    tClass="t-checkbox-padding"
+    value="checkbox1"
+    bind:change="changeChecked"
+  />
+  <t-checkbox
+    defaultChecked="{{true}}"
+    label="多选H56"
+    tClass="t-checkbox-demo"
+    value="checkbox2"
+  />
+</size>
+`;
+
+exports[`Checkbox Checkbox status demo works fine 1`] = `
+<status>
+  <t-checkbox-group
+    defaultValue="{{
+      Array [
+        "checkbox2",
+        "checkbox4",
+      ]
+    }}"
+    disabled="{{true}}"
+  >
+    <t-checkbox
+      label="多选"
+      value="checkbox1"
+    />
+    <t-checkbox
+      label="多选"
+      value="checkbox2"
+    />
+    <t-checkbox
+      align="right"
+      label="多选"
+      value="checkbox3"
+    />
+    <t-checkbox
+      align="right"
+      label="多选"
+      value="checkbox4"
+    />
+  </t-checkbox-group>
+  <t-checkbox
+    defaultChecked="{{true}}"
+    indeterminate="{{true}}"
+    label="半选"
+    readonly="{{true}}"
+  />
+</status>
+`;
+
+exports[`Checkbox Checkbox type demo works fine 1`] = `
+<type>
+  <t-checkbox-group
+    defaultValue="{{
+      Array [
+        "checkbox2",
+        "checkbox3",
+      ]
+    }}"
+    bind:change="onChange"
+  >
+    <t-checkbox
+      icon="{{
+        Array [
+          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png",
+          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png",
+        ]
+      }}"
+      label="多选"
+      value="checkbox1"
+    />
+    <t-checkbox
+      icon="{{
+        Array [
+          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png",
+          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png",
+        ]
+      }}"
+      label="多选"
+      value="checkbox2"
+    />
+    <t-checkbox
+      icon="{{
+        Array [
+          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png",
+          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png",
+        ]
+      }}"
+      label="多选"
+      value="checkbox3"
+    />
+  </t-checkbox-group>
+</type>
+`;
