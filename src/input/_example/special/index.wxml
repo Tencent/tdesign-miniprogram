@@ -1,4 +1,4 @@
-<t-input label="输入密码" password value="{{textPassword}}" clearable />
+<t-input label="输入密码" type="password" value="{{textPassword}}" clearable />
 <t-input placeholder="请输入验证码" label="验证码">
   <view slot="suffix">
     <image

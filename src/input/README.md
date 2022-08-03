@@ -95,7 +95,7 @@ tips | String / Slot | - | 【开发中】输入框下方提示文本，会根�
 type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password | N
 value | String / Number | - | 输入框的值。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 default-value | String / Number | undefined | 输入框的值。非受控属性。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
-password | Boolean | false | 是否是密码类型 | N
+password | Boolean | false | 是否是密码类型（已废弃，请更为使用 type 指定输入框类型） | N
 placeholder-style | String | - | 必需。指定 placeholder 的样式 | Y
 placeholder-class | String | input-placeholder | 指定 placeholder 的样式类 | N
 cursor-spacing | Number | 0 | 指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离 | N
