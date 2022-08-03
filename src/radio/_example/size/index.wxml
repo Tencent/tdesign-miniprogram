@@ -1,0 +1,2 @@
+<t-radio value="radio1" label="单选H48" t-class="t-radio-padding" defaultChecked />
+<t-radio value="radio2" label="单选H56" t-class="t-radio-demo" defaultChecked />

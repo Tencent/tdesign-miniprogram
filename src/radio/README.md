@@ -20,85 +20,48 @@ isComponent: true
 
 ### 单个单选框
 
-```html
-<!-- 非受控用法 -->
-<t-radio label="单选" />
-<t-radio defaultChecked="{{true}}" label="单选" />
+{{ base }}
 
-<!-- 受控用法 -->
-<t-radio checked="{{checked}}" bind:change="handleChange" label="单选" />
-```
+### 左侧圆形单选框
 
-```js
-Page({
-  data: {
-    checked: false,
-  },
-  handleChange(e) {
-    this.setData({
-      checked: e.detail.checked,
-    });
-  },
-})
-```
+{{ left-round }}
+
+### 右侧圆形单选框
+
+{{ right-round }}
+
+### 左侧勾形单选框
+
+{{ left-hook-shape }}
+
+### 右侧勾形单选框
+
+{{ right-hook-shape }}
+
+### 禁用状态
+
+{{ status }}
+
+### 特殊类型
+
+{{ special }}
+
+### 不同尺寸
+
+{{ size }}
 
 ### 组合单选框
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/radio.png" width="375px" height="50%">
-
-```html
-<t-radio-group bind:change="onChange" defaultValue="radio1">
-  <t-radio value="radio1" label="单选" />
-  <t-radio value="radio2" label="单选" />
-  <t-radio value="radio3" label="单选" />
-  <t-radio value="radio4" label="单选" />
-</t-radio-group>
-```
+{{ group }}
 
 ### 受控用法
 
-```html
-<t-radio-group bind:change="onChange" value="{{value}}">
-  <t-radio value="radio1" label="单选" />
-  <t-radio value="radio2" label="单选" />
-</t-radio-group>
-```
-
-```js
-Page({
-  data: {
-    value: 'radio1'
-  },
-  onChange(e) {
-    const { value } = e.detail;
-
-    this.setData({
-      value
-    })
-  }
-})
-```
+{{ controll }}
 
 ### 使用 options
 
-```html
-<t-radio-group options="{{options}}" defaultValue="数字" bind:change="onChange"></t-radio-group>
-```
-
-```js
-Page({
-  data: {
-    options: [
-      'string', // => { label: 'string', value: 'string', disabled: false }
-      'number', // => { label: 'number', value: 'number', disabled: false }
-      { label: '对象', value: 'object', disabled: true },
-    ],
-  },
-  onChange(e) {
-    console.log(e.detail.value)
-  }
-})
-```
+{{ options }}
 
 ## API
 ### Radio Props
