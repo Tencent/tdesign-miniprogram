@@ -4,6 +4,7 @@
   "usingComponents": {
     "t-demo": "../../components/demo-block/index",
     "base": "./base",
+    "normal": "./normal",
     "display": "./display",
     "cover": "./cover",
     "close": "./close"

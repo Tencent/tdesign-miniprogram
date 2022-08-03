@@ -1,2 +1,6 @@
-<t-demo title="04 手动关闭" desc="" operList="{{operList4}}" bindclickoper="clickHandle" />
 <t-toast id="t-toast" />
+
+<t-button t-class="external-class" size="large" variant="outline" bind:tap="handleToast" block>显示提示</t-button>
+<t-button t-class="external-class" data-type="hideToast" size="large" variant="outline" bind:tap="handleToast" block
+  >关闭提示</t-button
+>

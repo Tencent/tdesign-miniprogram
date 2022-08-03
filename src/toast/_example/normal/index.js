@@ -11,30 +11,41 @@ Page({
 
   handleToast(e) {
     switch (e.target.dataset.type) {
-      case 'text': {
+      case 'horizontal-success': {
         this.toast({
-          message: '轻提示文字内容',
+          message: '成功文案',
+          theme: 'success',
         });
         break;
       }
-      case 'horizontal-icon': {
+      case 'horizontal-warn': {
         this.toast({
-          message: '带图标横向',
-          icon: 'check-circle',
+          message: '警告文案',
+          theme: 'fail',
         });
         break;
       }
-      case 'vertical-icon': {
+      case 'vertical-success': {
         this.toast({
-          message: '带图标竖向',
-          icon: 'star',
+          message: '成功文案',
+          theme: 'success',
           direction: 'column',
         });
         break;
       }
-      case 'text-max': {
+      case 'vertical-warn': {
         this.toast({
-          message: '最多一行展示十个汉字宽度限制最多不超过三行文字行文字行文字',
+          message: '警告文案',
+          theme: 'fail',
+          direction: 'column',
+        });
+        break;
+      }
+      case 'loading': {
+        this.toast({
+          message: '加载中...',
+          theme: 'loading',
+          direction: 'column',
         });
         break;
       }

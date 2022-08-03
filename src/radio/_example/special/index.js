@@ -1,16 +1,6 @@
 Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {},
-
-  /**
-   * 组件的初始数据
-   */
-  data: {},
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {},
+  data: {
+    activeImage: 'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png',
+    inActiveImage: 'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png',
+  },
 });

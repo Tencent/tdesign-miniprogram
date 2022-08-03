@@ -17,21 +17,15 @@ isComponent: true
 
 ## 代码演示
 
-### 基础轻提示
-
-用 API `Toast` 方法调用轻提示。
-
-```html
-<t-toast id="t-toast" />
-```
-
-```js
-import Toast from 'tdesign-miniprogram/toast/index';
-```
+### 基础提示
 
 {{ base }}
 
-### 不同位置的轻提示
+### 默认提示
+
+{{ normal }}
+
+### 不同位置的提示
 
 {{ display }}
 

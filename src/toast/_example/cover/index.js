@@ -1,30 +1,17 @@
 import Toast from 'tdesign-miniprogram/toast/index';
 
 Page({
-  data: {
-    operList3: [
-      {
-        title: '弹窗可现实遮罩，禁止滑动和点击',
-        btns: [
-          {
-            type: 'disableSlideAndClick',
-            text: '禁止滑动和点击',
-          },
-        ],
-      },
-    ],
-  },
-  handleToast(option) {
+  toast(option) {
     Toast({
       context: this,
       selector: '#t-toast',
       ...option,
     });
   },
-  clickHandle(e) {
-    switch (e.detail) {
+  handleToast(e) {
+    switch (e.target.dataset.type) {
       case 'disableSlideAndClick': {
-        this.handleToast({
+        this.toast({
           message: '禁止滑动和点击',
           direction: 'column',
           placement: 'bottom',
@@ -35,7 +22,7 @@ Page({
         break;
       }
       default: {
-        this.handleToast({
+        this.toast({
           message: '未知点击事件',
         });
       }

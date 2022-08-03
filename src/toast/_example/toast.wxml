@@ -1,9 +1,20 @@
-<view class="toast">
-  <view class="title">Toast 轻提示</view>
-  <view class="desc">用于轻量级反馈或提示，不会打断用户操作。</view>
-  <base />
-  <display />
-  <cover />
-  <close />
+<view class="demo">
+  <view class="demo-title">Toast 轻提示</view>
+  <view class="demo-desc">用于轻量级反馈或提示，不会打断用户操作。</view>
+  <t-demo title="01 基本用法" desc="基础提示">
+    <base class="box" />
+  </t-demo>
+  <t-demo desc="默认提示">
+    <normal class="box" />
+  </t-demo>
+  <t-demo title="02 展示位置和展示时间" desc="弹窗展示位置为顶部、中部、底部三种，展示时间可自定义">
+    <display class="box" />
+  </t-demo>
+  <t-demo title="03 显示遮罩" desc="弹窗可现实遮罩，禁止滑动和点击">
+    <cover class="box" />
+  </t-demo>
+  <t-demo title="04 手动关闭" desc="手动关闭轻提示">
+    <close class="box" />
+  </t-demo>
 </view>
 <t-toast id="t-toast" />
