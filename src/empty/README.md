@@ -17,40 +17,21 @@ isComponent: true
 
 ## 代码演示
 
-### 基础空内容
+### 图标空状态
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/empty-1.png" width="375px" height="50%">
+{{ base }}
 
-```html
-<!-- 图标空状态 -->
-<t-empty icon="info-circle-filled" description="描述文字" />
+### 自定义图片空状态
 
-<!-- 自定义图片空状态 -->
-<t-empty t-class-image="t-empty__image" image="{{'xxx.jpg'}}" description="描述文字" />
+{{ imageEmpty }}
 
-<!-- 带操作空状态 -->
-<t-empty icon="info-circle-filled" description="描述文字">
-  <t-button slot="action" t-class="t-empty__button" theme="primary">操作按钮</t-button>
-</t-empty>
-```
+### 带操作空状态
 
-### 页面级空内容
+{{ buttonEmpty }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/empty-2.png" width="375px" height="50%">
+### 空页面
 
-```html
-<!-- 空页面 -->
-<view class="page">
-  <t-empty
-    t-class="empty-cls"
-    t-class-actions="t-empty__actions"
-    icon="info-circle-filled"
-    description="描述文字"
-  >
-    <t-button slot="action" t-class="t-empty__button" variant="plain">按钮</t-button>
-  </t-empty>
-</view>
-```
+{{ pageEmpty }}
 
 ## API
 
