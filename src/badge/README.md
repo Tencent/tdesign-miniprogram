@@ -21,53 +21,21 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/badge-1.png" width="375px" height="50%">
 
-```html
-<!-- 红点提示 -->
-<t-badge dot content="消息" />
+{{ base-badge }}
 
-<!-- 数字提示 -->
-<t-badge count="{{16}}" content="消息" />
+### 按钮徽标
 
-<!-- 文字提示 -->
-<t-badge count="New">
-  <text style="padding: 0 10px">消息</text>
-</t-badge>
+{{ button-badge }}
 
-<!-- 角标提示 -->
-<t-badge count="···">
-  <text style="padding: 0 10px">消息</text>
-</t-badge>
+### 单行徽标
 
-<!-- 按钮提示 -->
-<t-button t-class="size-mini" size="small" variant="outline">小按钮</t-button>
-```
-
-### 单元格徽标
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-2.png" width="375px" height="50%">
-
-```html
-<!-- 单元格提示 -->
-<t-cell title="单行标题" hover arrow>
-  <view class="cell-badge-wrap" slot="note">
-    <t-badge dot />
-  </view>
-</t-cell>
-```
+{{ cell-badge }}
 
 ### 标签栏徽标
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/badge-3.png" width="375px" height="50%">
 
-```html
-<!-- tabbar提示 -->
-<t-tab-bar value="label1" bindchange="onChange" class="mb-12" t-class="tab-bar-wrapper">
-  <t-tab-bar-item badge-props="{{{count: 16}}}" value="label1" icon="app">文字</t-tab-bar-item>
-  <t-tab-bar-item badge-props="{{{dot: true}}}" value="label2" icon="app">文字 </t-tab-bar-item>
-  <t-tab-bar-item badge-props="{{{count: 'New'}}}" value="label3" icon="app">文字 </t-tab-bar-item>
-  <t-tab-bar-item badge-props="{{{count: '···'}}}" value="label4" icon="app">文字 </t-tab-bar-item>
-</t-tab-bar>
-```
+{{ tab-item }}
 
 ## API
 
