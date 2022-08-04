@@ -5,24 +5,12 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = [
-  'base',
-  'controll',
-  'group',
-  'left-hook-shape',
-  'left-round',
-  'options',
-  'right-hook-shape',
-  'right-round',
-  'size',
-  'special',
-  'status',
-];
+const mapper = ['base', 'sizeCountDown'];
 
-describe('Radio', () => {
+describe('CountDown', () => {
   mapper.forEach((demoName) => {
-    it(`Radio ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../radio/_example/${demoName}/index`), demoName, {
+    it(`CountDown ${demoName} demo works fine`, () => {
+      const id = simulate.load(path.resolve(__dirname, `../../count-down/_example/${demoName}/index`), demoName, {
         less: true,
         rootPath: path.resolve(__dirname, '../..'),
       });

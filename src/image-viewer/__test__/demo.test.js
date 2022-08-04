@@ -5,24 +5,12 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = [
-  'base',
-  'controll',
-  'group',
-  'left-hook-shape',
-  'left-round',
-  'options',
-  'right-hook-shape',
-  'right-round',
-  'size',
-  'special',
-  'status',
-];
+const mapper = ['base', 'delete', 'over-height', 'over-width'];
 
-describe('Radio', () => {
+describe('ImageViewer', () => {
   mapper.forEach((demoName) => {
-    it(`Radio ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../radio/_example/${demoName}/index`), demoName, {
+    it(`ImageViewer ${demoName} demo works fine`, () => {
+      const id = simulate.load(path.resolve(__dirname, `../../image-viewer/_example/${demoName}/index`), demoName, {
         less: true,
         rootPath: path.resolve(__dirname, '../..'),
       });
