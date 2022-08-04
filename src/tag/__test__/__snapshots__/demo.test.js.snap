@@ -4,7 +4,6 @@ exports[`Tag Tag checkable demo works fine 1`] = `
 <checkable>
   <t-check-tag
     checked="{{true}}"
-    class="margin-right"
     data-index="{{0}}"
     disabled=""
     bind:change="handleCheckTagChange"
@@ -13,7 +12,6 @@ exports[`Tag Tag checkable demo works fine 1`] = `
   </t-check-tag>
   <t-check-tag
     checked="{{false}}"
-    class="margin-right"
     data-index="{{1}}"
     disabled=""
     bind:change="handleCheckTagChange"
@@ -22,7 +20,6 @@ exports[`Tag Tag checkable demo works fine 1`] = `
   </t-check-tag>
   <t-check-tag
     checked="{{false}}"
-    class="margin-right"
     data-index="{{2}}"
     disabled="{{true}}"
     bind:change="handleCheckTagChange"
@@ -35,7 +32,6 @@ exports[`Tag Tag checkable demo works fine 1`] = `
 exports[`Tag Tag closable demo works fine 1`] = `
 <closable>
   <t-tag
-    class="margin-right"
     closable="{{true}}"
     theme="primary"
     bind:close="handleClose0"
@@ -84,7 +80,6 @@ exports[`Tag Tag iconDemo demo works fine 1`] = `
 exports[`Tag Tag shape demo works fine 1`] = `
 <shape>
   <t-tag
-    class="margin-right"
     shape="round"
     theme="primary"
   >
