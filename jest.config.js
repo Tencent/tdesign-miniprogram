@@ -18,7 +18,7 @@ module.exports = {
     }],
   ],
   setupFiles: ['<rootDir>/script/test/setup.js'],
-  coverageReporters: ['html', 'text-summary'],
+  coverageReporters: ['html', 'json-summary'],
   globals: {
     CONFIG_PREFIX: 't',
   },

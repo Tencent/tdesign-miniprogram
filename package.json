@@ -30,6 +30,7 @@
     "site:dev": "cd site && vite",
     "site:intranet": "cd site && vite build --mode intranet",
     "site:prerender": "node script/prerender.mjs",
+    "cover": "jest --coverage",
     "test": "jest && jest -c jest.e2e.config.js",
     "test:unit": "jest",
     "test:e2e": "jest -c jest.e2e.config.js",
