@@ -20,157 +20,17 @@ isComponent: true
 
 ## 用法
 
-### 基础使用
+### 单选下拉菜单
 
-```html
-<t-dropdown-menu>
-  <!-- 受控 -->
-  <t-dropdown-item
-    label="菜单"
-    options="{{singleSelect.options}}"
-    value="{{singleSelect.value}}"
-    bindchange="handleSingleSelect"
-  />
-  <!-- 非受控 -->
-  <t-dropdown-item label="菜单" options="{{singleSelect.options}}" defaultValue="option_3" />
-  <t-dropdown-item label="菜单" options="{{singleSelect.options}}" defaultValue="option_3" />
-  <t-dropdown-item label="两字溢出" options="{{singleSelect.options}}" defaultValue="option_3" />
-</t-dropdown-menu>
-```
+{{ single }}
 
-```js
-const singleSelectOptions = new Array(8).fill(null).map((_, i) => ({
-  label: `选项 ${i + 1}`,
-  value: `option_${i + 1}`,
-  disabled: false,
-}));
+### 多列下拉菜单
 
-Page({
-  data: {
-    singleSelect: {
-      value: 'option_3',
-      options: singleSelectOptions,
-    },
-  },
+{{ multi }}
 
-  handleSingleSelect(e) {
-    this.setData({
-      'singleSelect.value': e.detail.value,
-    });
-  },
-});
-```
+### 树形下拉菜单
 
-### 多列多选
-
-```html
-<t-dropdown-menu>
-  <!-- 受控 -->
-  <t-dropdown-item
-    label="单列多选"
-    options="{{options}}"
-    value="{{value}}"
-    bindchange="handleMultipleSelect"
-    multiple
-  />
-  <!-- 非受控 -->
-  <t-dropdown-item
-    label="双列多选"
-    optionsColumns="2"
-    options="{{options}}"
-    defaultValue="{{['option_1', 'option_2']}}"
-    multiple
-  />
-  <t-dropdown-item
-    label="最多四字三列"
-    optionsColumns="3"
-    options="{{options}}"
-    defaultValue="{{['option_1', 'option_2', 'option_3']}}"
-    multiple
-  />
-</t-dropdown-menu>
-```
-
-```js
-const options = new Array(8).fill(null).map((_, i) => ({
-  label: `选项 ${i + 1}`,
-  value: `option_${i + 1}`,
-  disabled: false,
-}));
-
-Page({
-  data: {
-    value: ['option_1'],
-    options,
-  },
-
-  handleMultipleSelect(e) {
-    this.setData({
-      'multipleSelect.value': e.detail.value,
-    });
-  },
-});
-```
-
-### 树形选择
-
-```html
-<t-dropdown-menu>
-  <t-dropdown-item
-    label="树形双列单选"
-    optionsLayout="tree"
-    options="{{doubleColumnsTree.options}}"
-    value="{{doubleColumnsTree.value}}"
-    bindchange="handleTreeSelect"
-  />
-  <t-dropdown-item
-    label="树形三列多选"
-    optionsLayout="tree"
-    options="{{tripleColumnsTree.options}}"
-    defaultValue="{{tripleColumnsTree.value}}"
-    multiple
-  />
-</t-dropdown-menu>
-```
-
-```js
-const generateTree = function (deep = 0, count = 10, prefix?: string) {
-  const ans = [];
-
-  for (let i = 0; i < count; i += 1) {
-    const value = prefix ? `${prefix}-${i}` : `${i}`;
-    const rect: any = {
-      label: `选项${chineseNumber[i]}`,
-      value,
-    };
-
-    if (deep > 0) {
-      rect.options = generateTree(deep - 1, 10, value);
-    }
-    ans.push(rect);
-  }
-
-  return ans;
-};
-
-Page({
-  data: {
-    doubleColumnsTree: {
-      options: generateTree(1),
-      value: ['0', '0-0'],
-    },
-    tripleColumnsTree: {
-      options: generateTree(2),
-      value: ['0', '0-0', ['0-0-0', '0-0-1']],
-    },
-  },
-  handleTreeSelect(e) {
-    this.setData({
-      'doubleColumnsTree.value': e.detail.value,
-    });
-  },
-})
-```
+{{ tree }}
 
 ## API
 ### DropdownMenu Props
