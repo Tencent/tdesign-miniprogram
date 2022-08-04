@@ -19,45 +19,11 @@ isComponent: true
 
 ### 基础倒计时
 
-动态倒计时间主要有时间数字和时分秒分割组成，尺寸可通过 class 进行控制
+{{ base }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/countdown.png" width="375px" height="50%">
+### 调整尺寸
 
-```html
-<!-- 时分秒毫秒 -->
-<t-count-down time="{{96 * 60 * 1000}}" />
-
-<!-- 带毫秒 -->
-<t-count-down format="HH:mm:ss:SSS" time="{{96 * 60 * 1000}}" millisecond />
-
-<!-- 带方形底 -->
-<t-count-down content="default" time="{{96 * 60 * 1000}}" theme="square" />
-
-<!-- Large 带方形底 -->
-<t-count-down content="default" time="{{96 * 60 * 1000}}" theme="square" size="large" />
-
-<!-- 自定义内容 -->
-<t-count-down
-  t-class="custom-theme"
-  content="slot"
-  time="{{96 * 60 * 1000}}"
-  bind:change="onChange"
->
-  <text class="item">{{timeData.hours}}</text>
-  <text class="item-dot">:</text>
-  <text class="item">{{timeData.minutes}}</text>
-  <text class="item-dot">:</text>
-  <text class="item">{{timeData.seconds}}</text>
-</t-count-down>
-```
-
-```js
-onChange(e) {
-  this.setData({
-    timeData: e.detail,
-  });
-},
-```
+{{ sizeCountDown }}
 
 ## API
 ### CountDown Props
