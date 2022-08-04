@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toast Toast base demo works fine 1`] = `
+<base>
+  <t-toast
+    id="t-toast"
+  />
+  <t-button
+    block="{{true}}"
+    data-type="text"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    纯文本
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="horizontal-icon"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    带图标-横向
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="vertical-icon"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    带图标-竖向
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="text-max"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    纯文本最大高度
+  </t-button>
+</base>
+`;
+
+exports[`Toast Toast close demo works fine 1`] = `
+<close>
+  <t-toast
+    id="t-toast"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    显示提示
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="hideToast"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    关闭提示
+  </t-button>
+</close>
+`;
+
+exports[`Toast Toast cover demo works fine 1`] = `
+<cover>
+  <t-toast
+    id="t-toast"
+  />
+  <t-button
+    block="{{true}}"
+    data-type="disableSlideAndClick"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    禁止滑动和点击
+  </t-button>
+</cover>
+`;
+
+exports[`Toast Toast display demo works fine 1`] = `
+<display>
+  <t-toast
+    id="t-toast"
+  />
+  <t-button
+    block="{{true}}"
+    data-type="topShow"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    顶部展示1秒
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="middleShow"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    中间展示2秒
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="bottomShow"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    底部展示3秒
+  </t-button>
+</display>
+`;
+
+exports[`Toast Toast normal demo works fine 1`] = `
+<normal>
+  <t-toast
+    id="t-toast"
+  />
+  <t-button
+    block="{{true}}"
+    data-type="horizontal-success"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    成功-横向
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="horizontal-warn"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    警告-横向
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="vertical-success"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    成功-竖向
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="vertical-warn"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    警告-竖向
+  </t-button>
+  <t-button
+    block="{{true}}"
+    data-type="loading"
+    size="large"
+    tClass="external-class"
+    variant="outline"
+    bind:tap="handleToast"
+  >
+    加载
+  </t-button>
+</normal>
+`;
