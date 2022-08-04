@@ -1,3 +1,9 @@
 {
-  "navigationBarTitleText": "Badge 徽标"
+  "navigationBarTitleText": "Badge 徽标",
+  "usingComponents": {
+    "base-badge": "./base-badge",
+    "button-bage": "./button-badge",
+    "cell-badge": "./cell-badge",
+    "tab-item": "./tab-item"
+  }
 }
