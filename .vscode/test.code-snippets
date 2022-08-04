@@ -1,0 +1,21 @@
+{
+  "test-template": {
+    "prefix": "ttest",
+    "body": [
+      "import simulate from 'miniprogram-simulate';",
+      "import path from 'path';",
+      "",
+      "describe('$1', () => {",
+      "  it(`$1 :$2`, () => {",
+      "    const id = simulate.load(path.resolve(__dirname, `./index`), {",
+      "      less: true,",
+      "    });",
+      "    const comp = simulate.render(id);",
+      "    comp.attach(document.createElement('parent-wrapper'));",
+      "  });",
+      "});"
+    ],
+    "scope": "javascript,typescript",
+    "description": "测试用例模板"
+  }
+}
