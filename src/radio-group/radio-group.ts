@@ -58,7 +58,7 @@ export default class RadioGroup extends SuperComponent {
   methods = {
     getChilds() {
       let items = this.getRelationNodes('../radio/radio');
-      if (!items.length) {
+      if (!items?.length) {
         items = this.selectAllComponents(`.${prefix}-radio-option`);
       }
       return items;

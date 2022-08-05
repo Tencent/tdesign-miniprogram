@@ -1,0 +1,3 @@
+<t-radio-group class="group" value="1">
+  <t-radio class="a" value="1"></t-radio>
+</t-radio-group>
