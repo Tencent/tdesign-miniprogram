@@ -33,17 +33,39 @@ Object.keys(data).forEach((fPath) => {
 ans.forEach((items, component) => {
   let svgs = '';
   Object.entries(items).forEach(([type, item]) => {
-    const val = ((item.covered / item.total) * 100).toFixed(0);
+    let val = ((item.covered / item.total) * 100).toFixed(0);
+    const relatedMap = {
+      avatar: 'avatar-group',
+      button: 'button-group',
+      cell: 'cell-group',
+      checkbox: 'checkbox-group',
+      'dropdown-menu': 'dropdown-item',
+      grid: 'grid-item',
+      picker: 'picker-item',
+      radio: 'radio-group',
+      steps: 'step-item',
+      // swiper: ['swiper-item', 'swiper-nav'],
+      'tab-bar': 'tab-bar-item',
+      tabs: 'tab-panel',
+      tag: 'check-tag',
+    };
+
+    if (component in relatedMap) {
+      const related = ans.get(relatedMap[component]);
+      if (related) {
+        val = (((item.covered + related[type].covered) / (item.total + related[type].total)) * 100).toFixed(0);
+      }
+    }
     const message = isNaN(val) ? '0' : val;
     const color = parseInt(val, 10) > 80 ? 'blue' : 'red';
 
-    svgs += `<span style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20${type}-${message}%25-${color}" /></span>`;
+    svgs += `<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20${type}-${message}%25-${color}" /></span>`;
   });
 
   const fPath = path.resolve(__dirname, `../src/${component}/README.md`);
   let readme = fs.readFileSync(fPath, { encoding: 'utf-8' });
 
-  readme = readme.replace(/<span.+span>/gm, '');
+  readme = readme.replace(/<span class="coverages-badge".+span>/gm, '');
   readme = readme.replace('## 引入', `${svgs}\n## 引入`);
   fs.writeFileSync(fPath, readme);
 });
