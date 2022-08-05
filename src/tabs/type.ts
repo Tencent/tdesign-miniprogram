@@ -3,7 +3,7 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
-
+import { StickyProps } from '../sticky/index';
 export interface TdTabsProps {
   /**
    * 动画效果设置。其中 duration 表示动画时长
@@ -56,6 +56,21 @@ export interface TdTabsProps {
   defaultValue?: {
     type: null;
     value?: TabValue;
+  };
+  /**
+   * 是否开启粘性布局
+   * @default false
+   */
+  sticky?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 透传 sticky 属性
+   */
+  stickyProps?: {
+    type: ObjectConstructor;
+    value?: StickyProps;
   };
 }
 
