@@ -53,7 +53,7 @@ export default class Button extends SuperComponent {
       const classList = [
         name,
         `${prefix}-class`,
-        `${name}--${this.data.theme || 'default'}`,
+        `${name}--${this.data.theme}`,
         `${name}--size-${this.data.size.slice(0, 1)}`,
       ];
 
