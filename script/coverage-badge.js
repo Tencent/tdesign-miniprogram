@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
+const specify = process.argv[2];
+
 const data = require('../test/unit/coverage/coverage-summary.json');
 
 const ans = new Map();
@@ -62,10 +64,12 @@ ans.forEach((items, component) => {
     svgs += `<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20${type}-${message}%25-${color}" /></span>`;
   });
 
-  const fPath = path.resolve(__dirname, `../src/${component}/README.md`);
-  let readme = fs.readFileSync(fPath, { encoding: 'utf-8' });
+  if ((specify && component === specify) || !specify) {
+    const fPath = path.resolve(__dirname, `../src/${component}/README.md`);
+    let readme = fs.readFileSync(fPath, { encoding: 'utf-8' });
 
-  readme = readme.replace(/<span class="coverages-badge".+span>/gm, '');
-  readme = readme.replace('## 引入', `${svgs}\n## 引入`);
-  fs.writeFileSync(fPath, readme);
+    readme = readme.replace(/<span class="coverages-badge".+span>\n/g, '');
+    readme = readme.replace('## 引入', `${svgs}\n## 引入`);
+    fs.writeFileSync(fPath, readme);
+  }
 });

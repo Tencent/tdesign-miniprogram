@@ -34,6 +34,7 @@
     "test": "jest && jest -c jest.e2e.config.js",
     "test:unit": "jest",
     "test:e2e": "jest -c jest.e2e.config.js",
+    "badge": "node script/coverage-badge.js",
     "prepare": "husky install",
     "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./",
     "changelog": "node script/generate-changelog.js",
