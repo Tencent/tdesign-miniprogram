@@ -1,0 +1,234 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rate Rate allow-half demo works fine 1`] = `
+<allow-half>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      半星评价
+    </wx-view>
+    <t-rate
+      allowHalf="{{true}}"
+      value="{{3.5}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+</allow-half>
+`;
+
+exports[`Rate Rate base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      请点击评分
+    </wx-view>
+    <t-rate
+      value="{{3}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`Rate Rate color demo works fine 1`] = `
+<color>
+  <wx-view
+    class="demo-rate custom-color"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      空心评分
+    </wx-view>
+    <t-rate
+      color="#FFC51C,#bbbbbb"
+      data-index="{{0}}"
+      value="{{3}}"
+      bind:change="onChange"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-rate custom-color"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      实心评分
+    </wx-view>
+    <t-rate
+      allowHalf="{{true}}"
+      color="#FFC51C,#bbbbbb"
+      data-index="{{1}}"
+      value="{{2.5}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+</color>
+`;
+
+exports[`Rate Rate count demo works fine 1`] = `
+<count>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      自定义数量
+    </wx-view>
+    <t-rate
+      count="{{4}}"
+      value="{{3}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+</count>
+`;
+
+exports[`Rate Rate disabled demo works fine 1`] = `
+<disabled>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      仅展示
+    </wx-view>
+    <t-rate
+      disabled="{{true}}"
+      showText="{{true}}"
+      value="{{3}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+</disabled>
+`;
+
+exports[`Rate Rate show-text demo works fine 1`] = `
+<show-text>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      请点击评分
+    </wx-view>
+    <t-rate
+      data-index="{{0}}"
+      showText="{{true}}"
+      size="{{16}}"
+      texts="{{
+        Array [
+          "1分",
+          "2分",
+          "3分",
+          "4分",
+          "5分",
+        ]
+      }}"
+      value="{{3}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      请点击评分
+    </wx-view>
+    <t-rate
+      data-index="{{1}}"
+      showText="{{true}}"
+      value="{{3}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      请点击评分
+    </wx-view>
+    <t-rate
+      data-index="{{2}}"
+      showText="{{true}}"
+      value="{{3}}"
+      bind:change="onChange"
+    />
+  </wx-view>
+</show-text>
+`;
+
+exports[`Rate Rate size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      规格 20
+    </wx-view>
+    <t-rate
+      data-index="{{0}}"
+      value="{{3}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      规格 16
+    </wx-view>
+    <t-rate
+      data-index="{{1}}"
+      size="{{16}}"
+      value="{{3}}"
+      variant="filled"
+      bind:change="onChange"
+    />
+  </wx-view>
+</size>
+`;
+
+exports[`Rate Rate un-filled demo works fine 1`] = `
+<un-filled>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      请点击评分
+    </wx-view>
+    <t-rate
+      value="{{3}}"
+      bind:change="onChange"
+    />
+  </wx-view>
+</un-filled>
+`;

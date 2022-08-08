@@ -2,10 +2,12 @@ import path from 'path';
 import simulate from 'miniprogram-simulate';
 
 describe('transition', () => {
-  let transitionId;
+  const transitionId = simulate.load(path.resolve(__dirname, '../../transition/transition'), 't-transition', {
+    less: true,
+    rootPath: path.resolve(__dirname, '../..'),
+  });
   beforeAll(() => {
     jest.useFakeTimers();
-    transitionId = simulate.load(path.resolve(__dirname, '../transition'), {});
   });
 
   describe('props', () => {
@@ -18,16 +20,16 @@ describe('transition', () => {
       // enter
       transitionComp.setData({ visible: true });
       expect(transitionDom.style.display).toEqual('');
-      expect(transitionDom.className.match(/enter\s/)).toBeTruthy();
-      expect(transitionDom.className.match(/enter-active/)).toBeTruthy();
+      expect(transitionDom.className.match(/fade-enter\s/)).toBeTruthy();
+      expect(transitionDom.className.match(/fade-enter-active/)).toBeTruthy();
 
       // enter to
       jest.runAllTimers();
-      expect(transitionDom.className.match(/enter-to/)).toBeTruthy();
+      expect(transitionDom.className.match(/fade-enter-to/)).toBeTruthy();
 
       // enter finished
       transitionComp.instance.onTransitionEnd();
-      expect(transitionDom.className.match(/(enter|enter-to|enter-active)/)).toBeFalsy();
+      expect(transitionDom.className.match(/fade-(enter|enter-to|enter-active)/)).toBeFalsy();
 
       // leave
       transitionComp.setData({ visible: false });
@@ -56,26 +58,16 @@ describe('transition', () => {
       expect(transitionDom.className.match(/foo-enter-to/)).toBeTruthy();
     });
 
-    it(':customClass', () => {
-      const transitionComp = simulate.render(transitionId, { customClass: 'foo' });
-      transitionComp.attach(document.createElement('parent-wrapper'));
-      const [transitionDom] = transitionComp.dom.children;
+    // it(':destroyOnHide', () => {
+    //   const transitionComp = simulate.render(transitionId, { destroyOnHide: true });
+    //   transitionComp.attach(document.createElement('parent-wrapper'));
 
-      transitionComp.setData({ visible: true });
-      jest.runAllTimers();
-      expect(transitionDom.className.match(/foo/)).toBeTruthy();
-    });
+    //   transitionComp.setData({ visible: false });
+    //   jest.runAllTimers();
+    //   transitionComp.instance.onTransitionEnd();
 
-    it(':destroyOnHide', () => {
-      const transitionComp = simulate.render(transitionId, { destroyOnHide: true });
-      transitionComp.attach(document.createElement('parent-wrapper'));
-
-      transitionComp.setData({ visible: false });
-      jest.runAllTimers();
-      transitionComp.instance.onTransitionEnd();
-
-      expect(transitionComp.dom.innerHTML).toEqual('');
-    });
+    //   expect(transitionComp.dom.innerHTML).toEqual('');
+    // });
 
     it(':appear', () => {
       const transitionComp = simulate.render(transitionId, { visible: true, appear: true });

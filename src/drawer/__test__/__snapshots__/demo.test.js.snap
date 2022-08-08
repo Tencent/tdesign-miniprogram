@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer Drawer base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      block="{{true}}"
+      variant="outline"
+      bind:tap="openDrawerBase"
+    >
+      基础抽屉
+    </t-button>
+  </wx-view>
+  <t-drawer
+    items=""
+    placement="left"
+    visible=""
+    bind:item-click="itemClick"
+    bind:overlay-click="overlayClick"
+  />
+</base>
+`;
+
+exports[`Drawer Drawer icon-drawer demo works fine 1`] = `
+<icon-drawer>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      block="{{true}}"
+      variant="outline"
+      bind:tap="openDrawerIcon"
+    >
+      带图标抽屉
+    </t-button>
+  </wx-view>
+  <t-drawer
+    items=""
+    placement="left"
+    visible=""
+    bind:item-click="itemClick"
+    bind:overlay-click="overlayClick"
+  />
+</icon-drawer>
+`;

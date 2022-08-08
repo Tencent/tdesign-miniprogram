@@ -24,23 +24,14 @@ isComponent: true
 <img src="https://tdesign.gtimg.com/miniprogram/readme/pullDownRefresh-1.png" width="35%" height="35%">
 <img src="https://tdesign.gtimg.com/miniprogram/readme/pullDownRefresh-2.png" width="35%" height="35%">
 
-```html
-<t-pull-down-refresh value="{{loading}}" bindrefresh="handleRefresh" />
-```
+### 顶部下拉刷新
 
-```js
-Page({
-  data: {
-    loading: false
-  },
-  handleRefresh() {
-    // 模拟 1s 加载
-    setTimeout(() => {
-      this.setData({ loading: false })
-    }, 1000)
-  },
-});
-```
+{{ base }}
+
+### 中间下拉刷新
+
+{{ refresh-timeout }}
+
 
 > 在使用 pull-down-refresh 组件的页面，建议开启 `disableScroll: true`
 

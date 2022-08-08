@@ -1,0 +1,7 @@
+.cell-badge {
+  margin-left: 16rpx;
+}
+
+.cell-badge-wrap {
+  padding-bottom: 8rpx;
+}

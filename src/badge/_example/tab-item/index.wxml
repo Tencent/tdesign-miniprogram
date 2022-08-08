@@ -1,0 +1,6 @@
+<t-tab-bar value="label1" bindchange="onChange" class="mb-12" t-class="tab-bar-wrapper">
+  <t-tab-bar-item badge-props="{{ {count: 16} }}" value="label1" icon="app">文字</t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{ {dot: true} }}" value="label2" icon="app">文字 </t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{ {count: 'New'} }}" value="label3" icon="app">文字 </t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{ {count: '···'} }}" value="label4" icon="app">文字 </t-tab-bar-item>
+</t-tab-bar>

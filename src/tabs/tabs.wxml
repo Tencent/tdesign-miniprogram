@@ -1,26 +1,37 @@
 <wxs src="./tabs.wxs" module="filters" />
-<view class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{placement}}">
-  <scroll-view
-    class="{{classPrefix}}__scroll"
-    enable-flex
-    scroll-left="{{offset}}"
-    scroll-x="{{isScrollX}}"
-    scroll-y="{{isScrollY}}"
-    scroll-with-animation
+
+<view class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
+  <t-sticky
+    disabled="{{ !sticky }}"
+    z-index="{{ stickyProps.zIndex || '1' }}"
+    offset-top="{{ stickyProps.offsetTop }}"
+    container="{{ stickyProps.container }}"
+    bind:scroll="onTouchScroll"
   >
-    <view class="{{classPrefix}}__nav">
-      <view
-        wx:for="{{tabs}}"
-        wx:key="index"
-        data-index="{{index}}"
-        class="{{classPrefix}}__item {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
-        bind:tap="onTabTap"
+    <view class="{{classPrefix}}__wrapper">
+      <scroll-view
+        class="{{classPrefix}}__scroll"
+        enable-flex
+        scroll-left="{{offset}}"
+        scroll-x="{{isScrollX}}"
+        scroll-y="{{isScrollY}}"
+        scroll-with-animation
       >
-        {{item.label}}
-      </view>
-      <view class="{{classPrefix}}__track {{prefix}}-class-track" style="{{trackStyle}}" />
+        <view class="{{classPrefix}}__nav">
+          <view
+            wx:for="{{tabs}}"
+            wx:key="index"
+            data-index="{{index}}"
+            class="{{classPrefix}}__item {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
+            bind:tap="onTabTap"
+          >
+            {{item.label}}
+          </view>
+          <view class="{{classPrefix}}__track {{prefix}}-class-track" style="{{trackStyle}}" />
+        </view>
+      </scroll-view>
     </view>
-  </scroll-view>
+  </t-sticky>
   <view
     class="{{classPrefix}}__content"
     bind:touchstart="onTouchStart"

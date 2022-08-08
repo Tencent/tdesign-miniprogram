@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Swiper Swiper base demo works fine 1`] = `
+<base>
+  <t-swiper
+    autoplay="{{true}}"
+    current="{{1}}"
+    duration="{{500}}"
+    interval="{{5000}}"
+    navigation="{{true}}"
+    bind:change="onChange"
+  >
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/01.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/02.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/03.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/04.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/05.png"
+      />
+    </t-swiper-item>
+  </t-swiper>
+</base>
+`;
+
+exports[`Swiper Swiper custom demo works fine 1`] = `
+<custom>
+  <t-swiper
+    autoplay="{{true}}"
+    current="{{1}}"
+    duration="{{500}}"
+    interval="{{5000}}"
+  >
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/01.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/02.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/03.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/04.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/05.png"
+      />
+    </t-swiper-item>
+    <t-swiper-nav
+      slot="nav"
+      type="dots-bar"
+    />
+  </t-swiper>
+</custom>
+`;
+
+exports[`Swiper Swiper fraction demo works fine 1`] = `
+<fraction>
+  <t-swiper
+    autoplay="{{true}}"
+    current="{{2}}"
+    duration="{{500}}"
+    interval="{{5000}}"
+    navigation="{{
+      Object {
+        "type": "fraction",
+      }
+    }}"
+    paginationPosition="bottom-right"
+  >
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/01.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/02.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/03.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/04.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/05.png"
+      />
+    </t-swiper-item>
+  </t-swiper>
+</fraction>
+`;
+
+exports[`Swiper Swiper nav-btn demo works fine 1`] = `
+<nav-btn>
+  <t-swiper
+    autoplay="{{true}}"
+    current="{{3}}"
+    duration="{{500}}"
+    interval="{{5000}}"
+    navigation="{{
+      Object {
+        "hasNavBtn": true,
+        "type": "",
+      }
+    }}"
+  >
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/01.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/02.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/03.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/04.png"
+      />
+    </t-swiper-item>
+    <t-swiper-item>
+      <wx-image
+        class="img"
+        src="https://tdesign.gtimg.com/site/swiper/05.png"
+      />
+    </t-swiper-item>
+  </t-swiper>
+</nav-btn>
+`;
+
+exports[`Swiper Swiper vertical demo works fine 1`] = `
+<vertical>
+  <wx-view
+    class="swiper-box"
+  >
+    <t-swiper
+      autoplay="{{true}}"
+      current="{{1}}"
+      direction="vertical"
+      duration="{{500}}"
+      height="{{400}}"
+      interval="{{5000}}"
+      navigation="{{
+        Object {
+          "type": "dots-bar",
+        }
+      }}"
+      paginationPosition="right"
+    >
+      <t-swiper-item>
+        <wx-image
+          class="img"
+          mode="aspectFill"
+          src="https://tdesign.gtimg.com/site/swiper/01.png"
+        />
+      </t-swiper-item>
+      <t-swiper-item>
+        <wx-image
+          class="img"
+          mode="aspectFill"
+          src="https://tdesign.gtimg.com/site/swiper/02.png"
+        />
+      </t-swiper-item>
+      <t-swiper-item>
+        <wx-image
+          class="img"
+          mode="aspectFill"
+          src="https://tdesign.gtimg.com/site/swiper/03.png"
+        />
+      </t-swiper-item>
+      <t-swiper-item>
+        <wx-image
+          class="img"
+          mode="aspectFill"
+          src="https://tdesign.gtimg.com/site/swiper/04.png"
+        />
+      </t-swiper-item>
+      <t-swiper-item>
+        <wx-image
+          class="img"
+          mode="aspectFill"
+          src="https://tdesign.gtimg.com/site/swiper/05.png"
+        />
+      </t-swiper-item>
+    </t-swiper>
+  </wx-view>
+  <wx-view
+    class="swiper-box swiper-box-option"
+  >
+    <wx-view
+      class="cell"
+    >
+      <wx-view
+        class="label"
+      >
+        自动播放
+      </wx-view>
+      <wx-view
+        class="option"
+      >
+        <t-switch
+          tClass="swiper-switch"
+          value="{{true}}"
+          bind:change="onAutoplayChange"
+        />
+        <wx-view
+          class="option-desc"
+        >
+          开
+        </wx-view>
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="cell"
+    >
+      <wx-view
+        class="label"
+      >
+        自动播放间隔时间(单位毫秒)
+      </wx-view>
+      <wx-view
+        class="option"
+      >
+        <t-slider
+          class="swiper-slider"
+          label=""
+          max="{{5000}}"
+          min="{{1000}}"
+          step="{{500}}"
+          tClassBar="external-class-bar"
+          value="{{5000}}"
+          bind:change="onIntervalChange"
+        />
+        <wx-view
+          class="option-desc"
+        >
+          5000
+        </wx-view>
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="cell"
+    >
+      <wx-view
+        class="label"
+      >
+        动画持续时间(单位毫秒)
+      </wx-view>
+      <wx-view
+        class="option"
+      >
+        <t-slider
+          class="swiper-slider"
+          label=""
+          max="{{2000}}"
+          min="{{200}}"
+          step="{{100}}"
+          tClassBar="external-class-bar"
+          value="{{500}}"
+          bind:change="onDurationChange"
+        />
+        <wx-view
+          class="option-desc"
+        >
+          500
+        </wx-view>
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</vertical>
+`;

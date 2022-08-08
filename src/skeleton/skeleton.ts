@@ -23,7 +23,7 @@ const ThemeMap = {
 
 @wxComponent()
 export default class Skeleton extends SuperComponent {
-  externalClasses = ['t-class', 't-class-col'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-col`, `${prefix}-class-row`];
 
   properties = props;
 

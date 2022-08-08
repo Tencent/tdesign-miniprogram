@@ -17,60 +17,23 @@ isComponent: true
 
 ## 代码演示
 
-### 基础用法
+### 基础图片预览
 
-```html
-<t-image-viewer
-  visible="{{visible}}"
-  images="{{images}}"
-  bind:visible-change="onVisibleChange"
-  bind:change="onChange"
-/>
-```
+{{ base }}
 
-### 显示页码
+### 有删除操作
 
-```html
-<t-image-viewer
-  showIndex="{{showIndex}}"
-  visible="{{visible}}"
-  images="{{images}}"
-  initialIndex="{{initialIndex}}"
-  bind:close="onClose"
-  bind:change="onChange"
-/>
-```
+{{ delete }}
 
-### 带删除操作
+### 图片超高情况
 
-```html
-<t-image-viewer
-  deleteBtn="{{deleteBtn}}"
-  closeBtn="{{closeBtn}}"
-  showIndex="{{showIndex}}"
-  visible="{{visible}}"
-  images="{{images}}"
-  initialIndex="{{initialIndex}}"
-  bind:change="onChange"
-  bind:delete="onDelete"
-  bind:close="onClose"
-/>
-```
+{{ over-height }}
 
-### 支持自定义操作按钮
+### 图片超宽情况
 
-```html
-<t-image-viewer
-  showIndex="{{showIndex}}"
-  visible="{{visible}}"
-  images="{{images}}"
-  initialIndex="{{initialIndex}}"
-  bind:change="onChange"
-/>
-  <view class="closeBtn">我是自定义的关闭内容</view>
-  <view class="deleteBtn">我是自定义的删除内容</view>
-</t-image-viewer>
-```
+{{ over-width }}
+
+
 
 
 ## API
@@ -83,8 +46,8 @@ background-color | String / Number | rgba(0, 0, 0, 1) | 遮罩的背景颜色 | 
 images | Array | [] | 图片数组。TS 类型：`Array<string>` | N
 initial-index | Number | 0 | 默认展示第几项 | N
 show-index | Boolean | false | 是否显示页码 | N
-delete-btn | Boolean | false | 是否显示删除操作，前提需要开启页码 | N 
-close-btn | Boolean | false | 是否显示关闭操作，前提需要开启页码 | N 
+delete-btn | Boolean | false | 是否显示删除操作，前提需要开启页码 | N
+close-btn | Boolean | false | 是否显示关闭操作，前提需要开启页码 | N
 visible | Boolean | false | 隐藏/显示预览 | N
 default-visible | Boolean | undefined | 隐藏/显示预览。非受控属性 | N
 
@@ -94,7 +57,7 @@ default-visible | Boolean | undefined | 隐藏/显示预览。非受控属性 | 
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(index: Number)` | 翻页时回调 
-close | `(trigger: 'overlay' | 'button' , visible: Boolean, index: Number)` | 点击操作按钮button或者overlay时触发 
-delete | `(index: Number)` | 点击删除操作按钮时触发 
+change | `(index: Number)` | 翻页时回调
+close | `(trigger: 'overlay' | 'button' , visible: Boolean, index: Number)` | 点击操作按钮button或者overlay时触发
+delete | `(index: Number)` | 点击删除操作按钮时触发
 

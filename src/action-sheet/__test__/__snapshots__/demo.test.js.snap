@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionSheet ActionSheet grid demo works fine 1`] = `
+<grid>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    宫格型
+  </t-button>
+</grid>
+`;
+
+exports[`ActionSheet ActionSheet grid-multi demo works fine 1`] = `
+<grid-multi>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    宫格型-多页
+  </t-button>
+</grid-multi>
+`;
+
+exports[`ActionSheet ActionSheet icon-list demo works fine 1`] = `
+<icon-list>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    带图标列表型
+  </t-button>
+</icon-list>
+`;
+
+exports[`ActionSheet ActionSheet list demo works fine 1`] = `
+<list>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    列表型
+  </t-button>
+</list>
+`;

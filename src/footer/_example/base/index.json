@@ -1,3 +1,6 @@
 {
-  "component": true
+  "component": true,
+  "usingComponents": {
+    "t-footer": "tdesign-miniprogram/footer/footer"
+  }
 }

@@ -40,6 +40,7 @@ export default class PullDownRefresh extends SuperComponent {
     refreshStatus: -1,
     loosing: false,
     enableToRefresh: true,
+    scrollTop: 0,
   };
 
   lifetimes = {
@@ -198,6 +199,14 @@ export default class PullDownRefresh extends SuperComponent {
         this.setData({ refreshStatus: -1 });
         this.isPulling = false; // 退出下拉状态
       }, animationDuration) as any as number;
+    },
+
+    setScrollTop(scrollTop: number) {
+      this.setData({ scrollTop });
+    },
+
+    scrollToTop() {
+      this.setScrollTop(0);
     },
   };
 }

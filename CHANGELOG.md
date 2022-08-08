@@ -5,6 +5,41 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.19.0 `2022-08-08` 
+### 🚀 Features
+- `Skeleton`: 新增 `t-class-row` 外部样式类 @anlyyao ([#699](https://github.com/Tencent/tdesign-miniprogram/pull/699))
+- `Cell`: 新增 `t-class-left-icon` 外部样式类 @anlyyao ([#703](https://github.com/Tencent/tdesign-miniprogram/pull/703))
+- `Tabs`: 新增 sticky 和 stickyProps 属性透传至 Sticky 组件 @anlyyao ([#725](https://github.com/Tencent/tdesign-miniprogram/pull/725))
+- `Tabs`: 新增 CSS Variable 调整选项卡背景色 @anlyyao ([#725](https://github.com/Tencent/tdesign-miniprogram/pull/725))
+- `Tabs`: 新增 scroll 事件 @anlyyao ([#725](https://github.com/Tencent/tdesign-miniprogram/pull/725))
+- `PulldownRefresh`: 新增 ScrollToTop 方法，手动调用滚动到顶部 @LeeJim ([#730](https://github.com/Tencent/tdesign-miniprogram/pull/730))
+- `Checkbox`: 新增单元测试 @LeeJim ([#724](https://github.com/Tencent/tdesign-miniprogram/pull/724))
+- `Button`: 新增单元测试 @LeeJim ([#726](https://github.com/Tencent/tdesign-miniprogram/pull/726))
+- `Radio`: 新增单元测试 @LeeJim ([#729](https://github.com/Tencent/tdesign-miniprogram/pull/729))
+- `BackTop`: 新增单元测试 @anlyyao ([#728](https://github.com/Tencent/tdesign-miniprogram/pull/728))
+### 🐞 Bug Fixes
+- `Cell`: 修复 `image` 插槽无效问题 @anlyyao ([#703](https://github.com/Tencent/tdesign-miniprogram/pull/703))
+- `Tag`: 改用 `display: inline-flex`，宽度自适应 @anlyyao ([#723](https://github.com/Tencent/tdesign-miniprogram/pull/723))
+### 🚧 Others
+- 新增单元测试 @LeeJim ([#700](https://github.com/Tencent/tdesign-miniprogram/pull/700))
+- `SwipeCell`: 更新示例代码 @anlyyao ([#698](https://github.com/Tencent/tdesign-miniprogram/pull/698))
+- `Message`: 更新示例代码 @AntzyMo ([#695](https://github.com/Tencent/tdesign-miniprogram/pull/695))
+- `Dialog`: 更新示例代码 @AntzyMo ([#704](https://github.com/Tencent/tdesign-miniprogram/pull/704))
+- `Input`: 修复文档描述错误 @anlyyao ([#706](https://github.com/Tencent/tdesign-miniprogram/pull/706))
+- `Checkbox`: 更新示例代码 @wangyuan0108 ([#668](https://github.com/Tencent/tdesign-miniprogram/pull/668))
+- `Radio`: 更新示例代码 @wangyuan0108 ([#667](https://github.com/Tencent/tdesign-miniprogram/pull/667))
+- `Toast`: 更新示例代码 @CodingOnStar ([#676](https://github.com/Tencent/tdesign-miniprogram/pull/676))
+- `Empty`: 更新示例代码 @AntzyMo ([#709](https://github.com/Tencent/tdesign-miniprogram/pull/709))
+- `Toast`: 优化示例代码 @LeeJim ([#711](https://github.com/Tencent/tdesign-miniprogram/pull/711))
+- `BackTop`: 更新示例代码 @anlyyao ([#710](https://github.com/Tencent/tdesign-miniprogram/pull/710))
+- `ActionSheet`: 更新示例代码 @LeeJim ([#716](https://github.com/Tencent/tdesign-miniprogram/pull/716))
+- `DropdownMenu`: 更新示例代码 @LeeJim ([#721](https://github.com/Tencent/tdesign-miniprogram/pull/721))
+- `ImageViewer`: 更新示例代码 @anlyyao ([#712](https://github.com/Tencent/tdesign-miniprogram/pull/712))
+- `Sticky`: 更新示例代码 @anlyyao ([#720](https://github.com/Tencent/tdesign-miniprogram/pull/720))
+- `Countdown`: 更新示例代码 @AntzyMo ([#714](https://github.com/Tencent/tdesign-miniprogram/pull/714))
+- `Badge`: 更新示例代码 @wangyuan0108 ([#717](https://github.com/Tencent/tdesign-miniprogram/pull/717))
+- `Message`: 更新示例代码 @AntzyMo ([#695](https://github.com/Tencent/tdesign-miniprogram/pull/695))
+
 ## 🌈 0.18.0 `2022-08-01` 
 
 ### ❗️ BREAKING CHANGES

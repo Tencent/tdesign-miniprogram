@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageViewer ImageViewer base demo works fine 1`] = `
+<base>
+  <t-button
+    block="{{true}}"
+    size="large"
+    bind:tap="clickHandle"
+  >
+    基础图片预览
+  </t-button>
+  <t-toast
+    id="t-toast"
+  />
+  <t-image-viewer
+    closeBtn="{{false}}"
+    deleteBtn="{{false}}"
+    images="{{Array []}}"
+    showIndex="{{false}}"
+    visible="{{false}}"
+    bind:change="onChange"
+    bind:close="onClose"
+    bind:delete="onDelete"
+  />
+</base>
+`;
+
+exports[`ImageViewer ImageViewer delete demo works fine 1`] = `
+<delete>
+  <t-button
+    block="{{true}}"
+    bind:tap="clickHandle"
+  >
+    有删除操作
+  </t-button>
+  <t-toast
+    id="t-toast"
+  />
+  <t-image-viewer
+    closeBtn="{{false}}"
+    deleteBtn="{{false}}"
+    images="{{Array []}}"
+    showIndex="{{false}}"
+    visible="{{false}}"
+    bind:change="onChange"
+    bind:close="onClose"
+    bind:delete="onDelete"
+  />
+</delete>
+`;
+
+exports[`ImageViewer ImageViewer over-height demo works fine 1`] = `
+<over-height>
+  <t-button
+    block="{{true}}"
+    size="large"
+    bind:tap="clickHandle"
+  >
+    图片超高情况
+  </t-button>
+  <t-toast
+    id="t-toast"
+  />
+  <t-image-viewer
+    closeBtn="{{false}}"
+    deleteBtn="{{false}}"
+    images="{{Array []}}"
+    showIndex="{{false}}"
+    visible="{{false}}"
+    bind:change="onChange"
+    bind:close="onClose"
+    bind:delete="onDelete"
+  />
+</over-height>
+`;
+
+exports[`ImageViewer ImageViewer over-width demo works fine 1`] = `
+<over-width>
+  <t-button
+    block="{{true}}"
+    size="large"
+    bind:tap="clickHandle"
+  >
+    图片超宽情况
+  </t-button>
+  <t-toast
+    id="t-toast"
+  />
+  <t-image-viewer
+    closeBtn="{{false}}"
+    deleteBtn="{{false}}"
+    images="{{Array []}}"
+    showIndex="{{false}}"
+    visible="{{false}}"
+    bind:change="onChange"
+    bind:close="onClose"
+    bind:delete="onDelete"
+  />
+</over-width>
+`;

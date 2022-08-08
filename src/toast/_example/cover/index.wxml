@@ -1,0 +1,11 @@
+<t-toast id="t-toast" />
+
+<t-button
+  t-class="external-class"
+  data-type="disableSlideAndClick"
+  size="large"
+  variant="outline"
+  bind:tap="handleToast"
+  block
+  >禁止滑动和点击</t-button
+>

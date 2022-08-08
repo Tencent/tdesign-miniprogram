@@ -17,17 +17,24 @@ isComponent: true
 
 ## 代码演示
 
-### 基础吸顶容器
-
 将内容包裹在 `Sticky` 组件内
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/sticky.gif" width="375px" height="50%">
 
-```html
-<t-sticky offset-top="{{40}}">
-  <t-button class="box2" theme="danger" t-class="inner-box" size="small">吸顶距离</t-button>
-</t-sticky>
-```
+### 基础吸顶
+
+{{ base }}
+
+
+### 吸顶距离
+
+{{ offset }}
+
+### 指定容器
+
+{{ container }}
+
+
 
 ## API
 

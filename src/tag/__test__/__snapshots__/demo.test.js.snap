@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag Tag checkable demo works fine 1`] = `
+<checkable>
+  <t-check-tag
+    checked="{{true}}"
+    data-index="{{0}}"
+    disabled=""
+    bind:change="handleCheckTagChange"
+  >
+    选中
+  </t-check-tag>
+  <t-check-tag
+    checked="{{false}}"
+    data-index="{{1}}"
+    disabled=""
+    bind:change="handleCheckTagChange"
+  >
+    未选中
+  </t-check-tag>
+  <t-check-tag
+    checked="{{false}}"
+    data-index="{{2}}"
+    disabled="{{true}}"
+    bind:change="handleCheckTagChange"
+  >
+    不可选
+  </t-check-tag>
+</checkable>
+`;
+
+exports[`Tag Tag closable demo works fine 1`] = `
+<closable>
+  <t-tag
+    closable="{{true}}"
+    theme="primary"
+    bind:close="handleClose0"
+  >
+    标签
+  </t-tag>
+  <t-tag
+    closable="{{true}}"
+    icon="app"
+    theme="primary"
+    bind:close="handleClose1"
+  >
+    标签
+  </t-tag>
+</closable>
+`;
+
+exports[`Tag Tag ellipsis demo works fine 1`] = `
+<ellipsis>
+  <t-tag
+    maxWidth="{{130}}"
+    title="超长省略文本标签超长省略文本标签"
+  >
+    超长省略文本标签超长省略文本标签
+  </t-tag>
+</ellipsis>
+`;
+
+exports[`Tag Tag iconDemo demo works fine 1`] = `
+<iconDemo>
+  <t-tag
+    theme="primary"
+  >
+    
+  标签
+  
+    <t-icon
+      name="app"
+      size="14px"
+      slot="icon"
+    />
+  </t-tag>
+</iconDemo>
+`;
+
+exports[`Tag Tag shape demo works fine 1`] = `
+<shape>
+  <t-tag
+    shape="round"
+    theme="primary"
+  >
+    圆弧
+  </t-tag>
+  <t-tag
+    shape="mark"
+    theme="primary"
+  >
+    半圆弧
+  </t-tag>
+</shape>
+`;
+
+exports[`Tag Tag size demo works fine 1`] = `
+<size>
+  <t-tag
+    class="margin-right"
+    size="large"
+    theme="primary"
+  >
+    展示标签30
+  </t-tag>
+  <t-tag
+    size="medium"
+    theme="primary"
+  >
+    展示标签24
+  </t-tag>
+</size>
+`;
+
+exports[`Tag Tag theme demo works fine 1`] = `
+<theme>
+  <t-tag
+    class="margin-right"
+    theme="primary"
+  >
+    默认
+  </t-tag>
+  <t-tag
+    class="margin-right"
+    theme="success"
+  >
+    成功
+  </t-tag>
+  <t-tag
+    class="margin-right"
+    theme="warning"
+  >
+    警告
+  </t-tag>
+  <t-tag
+    class="margin-right"
+    theme="danger"
+  >
+    危险
+  </t-tag>
+  <t-tag>
+    信息
+  </t-tag>
+</theme>
+`;

@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper Stepper base demo works fine 1`] = `
+<base>
+  <t-cell
+    title="标题文字"
+  >
+    <t-stepper
+      defaultValue="0"
+      slot="right-icon"
+    />
+  </t-cell>
+</base>
+`;
+
+exports[`Stepper Stepper input-width demo works fine 1`] = `
+<input-width>
+  <t-stepper
+    inputWidth="{{72}}"
+    theme="grey"
+    value="{{20}}"
+    bind:change="handleChange"
+  />
+</input-width>
+`;
+
+exports[`Stepper Stepper min-max demo works fine 1`] = `
+<min-max>
+  <t-cell
+    title="最小值 (5)"
+  >
+    <t-stepper
+      defaultValue="5"
+      min="5"
+      slot="right-icon"
+    />
+  </t-cell>
+  <wx-view
+    class="interval"
+  />
+  <t-cell
+    title="最大值 (999)"
+  >
+    <t-stepper
+      defaultValue="999"
+      max="999"
+      slot="right-icon"
+    />
+  </t-cell>
+</min-max>
+`;
+
+exports[`Stepper Stepper other demo works fine 1`] = `
+<other>
+  <wx-view
+    class="pure-stepper-container"
+  >
+    <t-stepper
+      disabled="{{true}}"
+      inputWidth="{{72}}"
+      theme="grey"
+      value="3"
+    />
+    <t-stepper
+      defaultValue="0"
+      inputWidth="{{72}}"
+      max="99"
+      theme="grey"
+    />
+    <t-stepper
+      defaultValue="100"
+      inputWidth="{{72}}"
+      theme="grey"
+    />
+  </wx-view>
+</other>
+`;
+
+exports[`Stepper Stepper status demo works fine 1`] = `
+<status>
+  <t-cell
+    title="禁用"
+  >
+    <t-stepper
+      disabled="true"
+      slot="right-icon"
+    />
+  </t-cell>
+  <t-cell
+    title="禁用（单位）"
+  >
+    <t-stepper
+      disabled="true"
+      slot="right-icon"
+      step="2"
+    />
+  </t-cell>
+</status>
+`;
+
+exports[`Stepper Stepper step demo works fine 1`] = `
+<step>
+  <t-cell
+    title="标题文字（单位）"
+  >
+    <t-stepper
+      defaultValue="0"
+      slot="right-icon"
+      step="2"
+    />
+  </t-cell>
+</step>
+`;
