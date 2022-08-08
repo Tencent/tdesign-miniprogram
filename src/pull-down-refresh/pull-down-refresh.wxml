@@ -1,5 +1,6 @@
 <scroll-view
   class="{{classPrefix}} {{prefix}}-class"
+  scroll-top="{{scrollTop}}"
   bind:touchstart="onTouchStart"
   bind:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
@@ -9,6 +10,7 @@
   scroll-y
   enable-back-to-top
   enhanced
+  scroll-with-animation
   bounces="{{false}}"
 >
   <view
