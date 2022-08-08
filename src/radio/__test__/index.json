@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "t-radio": "../radio",
+    "t-radio-group": "../../radio-group/radio-group"
+  }
+}
