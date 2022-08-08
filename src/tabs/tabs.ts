@@ -234,6 +234,10 @@ export default class Tabs extends SuperComponent {
     }
   }
 
+  onTouchScroll(event: WechatMiniprogram.CustomEvent) {
+    this._trigger('scroll', event.detail);
+  }
+
   changeIndex(index) {
     const currentTab = this.data.tabs[index];
     if (!currentTab?.disabled && index !== this.data.currentIndex) {

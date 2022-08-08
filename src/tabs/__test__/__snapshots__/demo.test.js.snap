@@ -85,9 +85,16 @@ exports[`Tabs Tabs base demo works fine 1`] = `
   </t-tabs>
   <t-tabs
     defaultValue="{{0}}"
+    sticky="{{true}}"
+    stickyProps="{{
+      Object {
+        "zIndex": 2,
+      }
+    }}"
     tClass="custom-tabs"
     bind:change="onTabsChange"
     bind:click="onTabsClick"
+    bind:scroll="onStickyScroll"
   >
     <t-tab-panel
       label="标签页一"
