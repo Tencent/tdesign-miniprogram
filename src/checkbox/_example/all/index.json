@@ -1,3 +1,6 @@
 {
-  "component": true
+  "component": true,
+  "usingComponents": {
+    "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group"
+  }
 }
