@@ -39,11 +39,13 @@
 @tag-medium-icon-size: @font-size * 1.4;
 @tag-large-icon-size: @font-size * 1.8;
 
-@tag-small-height: 22px;
-@tag-medium-height: 24px;
-@tag-large-height: 30px;
+@tag-small-height: 44rpx;
+@tag-medium-height: 48rpx;
+@tag-large-height: 60rpx;
 
-@border-radius-square: 4px;
+@tag-border-size: 2rpx;
+
+@border-radius-square: 8rpx;
 @border-radius-round: 999px;
 @border-radius-mark: @border-radius-round;
 
@@ -70,19 +72,18 @@
 .@{prefix}-tag {
   display: inline-flex;
   align-items: center;
-  border: 2rpx solid transparent;
+  border: @tag-border-size solid transparent;
   box-sizing: border-box;
   border-radius: @border-radius-square;
   font-size: @tag-medium-font-size;
   user-select: none;
+  vertical-align: middle;
 
   &__text {
     word-wrap: normal;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: @tag-medium-height;
-    line-height: @tag-medium-height;
   }
 
   &__icon,
@@ -99,7 +100,7 @@
   &.@{prefix}-tag--size {
     &-small {
       height: @tag-small-height;
-      line-height: @tag-small-height - 2px;
+      line-height: @tag-small-height;
       padding: 0 @tag-small-padding;
       font-size: @tag-small-font-size;
 
@@ -111,7 +112,7 @@
 
     &-medium {
       height: @tag-medium-height;
-      line-height: @tag-medium-height - 2px;
+      line-height: @tag-medium-height;
       padding: 0 @tag-medium-padding;
       font-size: @tag-medium-font-size;
 
@@ -123,7 +124,7 @@
 
     &-large {
       height: @tag-large-height;
-      line-height: @tag-large-height - 2px;
+      line-height: @tag-large-height;
       padding: 0 @tag-large-padding;
       font-size: @tag-large-font-size;
 
