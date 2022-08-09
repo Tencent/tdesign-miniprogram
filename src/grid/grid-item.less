@@ -59,6 +59,8 @@ page {
   }
 
   &__words {
+    width: 100%;
+    text-align: center;
     position: relative;
     flex-direction: column;
     display: flex;
@@ -76,22 +78,17 @@ page {
     }
   }
 
-  &--center {
-    .@{prefix}-grid-item__image,
-    .@{prefix}-grid-item__words {
-      justify-content: center;
-    }
-  }
-
   &--left {
-    .@{prefix}-grid-item__image,
+    justify-self: flex-start;
+    align-items: flex-start;
+
     .@{prefix}-grid-item__words {
-      justify-content: flex-start;
-      align-items: flex-start;
+      text-align: left;
     }
   }
 
   &__text {
+    width: inherit;
     color: var(--td-grid-item-text-color);
     font-size: @grid-item-text-font-size;
     line-height: @grid-item-text-line-height;
@@ -99,6 +96,7 @@ page {
   }
 
   &__description {
+    width: inherit;
     color: var(--td-grid-item-description-color);
     font-size: @grid-item-description-font-size;
     line-height: @grid-item-description-line-height;
