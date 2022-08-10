@@ -17,7 +17,7 @@ describe('popup', () => {
       expect(popupDom.className.match(/--left/)).toBeTruthy();
     });
 
-    it(':maskClosable', async () => {
+    it(':overlay', async () => {
       const fn = jest.fn();
       const compId = simulate.load({
         usingComponents: {
@@ -54,7 +54,7 @@ describe('popup', () => {
     //   expect(popupDom.className.match(/foo/)).toBeTruthy();
     // });
 
-    it(':transitionProps', () => {
+    it(':transition', () => {
       jest.useFakeTimers();
       const transitionProps = {
         name: 'foo',
@@ -83,16 +83,17 @@ describe('popup', () => {
   });
 
   describe('event', () => {
-    it('@close', () => {
+    it('@overlay close', async () => {
       const fn = jest.fn();
       const compId = simulate.load({
         usingComponents: {
           't-popup': popupId,
         },
-        template: '<t-popup id="popup" visible="{{ visible }}" bind:visible-change="onClose">content</t-popup>',
+        template:
+          '<t-popup id="popup" closeOnOverlayClick="{{closeOnOverlayClick}}" visible="{{ visible }}" bind:visible-change="onClose">content</t-popup>',
         data: {
           visible: true,
-          maskClosable: true,
+          closeOnOverlayClick: true,
         },
         methods: {
           onClose: fn,
@@ -105,9 +106,50 @@ describe('popup', () => {
 
       $overlay.dispatchEvent('tap');
 
-      simulate.sleep(0).then(() => {
-        expect(fn).toHaveBeenCalledTimes(1);
+      await simulate.sleep(0);
+
+      expect(fn).toHaveBeenCalledTimes(1);
+
+      // test closeOnOverlayClick
+      comp.setData({ closeOnOverlayClick: false });
+
+      await simulate.sleep(0);
+
+      $overlay.dispatchEvent('tap');
+
+      expect(fn).toHaveBeenCalledTimes(1);
+    });
+
+    it('@close-btn close', async () => {
+      const fn = jest.fn();
+      let visible = true;
+      const compId = simulate.load({
+        usingComponents: {
+          't-popup': popupId,
+        },
+        template:
+          '<t-popup visible id="popup" closeBtn="{{ closeBtn }}" bind:visible-change="onClose">content</t-popup>',
+        data: {
+          closeBtn: true,
+        },
+        methods: {
+          onClose(e) {
+            fn();
+            visible = e.detail.visible;
+          },
+        },
       });
+      const comp = simulate.render(compId);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $closeBtn = comp.querySelector('#popup >>> .t-popup__close');
+
+      $closeBtn.dispatchEvent('tap');
+
+      await simulate.sleep(10);
+
+      expect(fn).toHaveBeenCalledTimes(1);
+      expect(visible).toBeFalsy();
     });
   });
 });
