@@ -34,7 +34,7 @@ export default class CheckTag extends SuperComponent {
   };
 
   observers = {
-    checked() {
+    'size, shape, closable, disabled, checked'() {
       this.setClass();
     },
   };

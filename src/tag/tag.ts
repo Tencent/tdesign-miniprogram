@@ -30,6 +30,16 @@ export default class Tag extends SuperComponent {
     },
   };
 
+  observers = {
+    'size, shape, theme, variant, closable, disabled'() {
+      this.setClass();
+    },
+
+    maxWidth() {
+      this.setTagStyle();
+    },
+  };
+
   methods = {
     setClass() {
       const { prefix, classPrefix } = this.data;
