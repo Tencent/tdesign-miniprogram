@@ -1,7 +1,7 @@
 import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { classNames } from '../common/utils';
+import { classNames, isNumber } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-tag`;
@@ -54,7 +54,7 @@ export default class Tag extends SuperComponent {
       if (!maxWidth) {
         return '';
       }
-      const width = !Number.isNaN(maxWidth) ? `${maxWidth}px` : maxWidth;
+      const width = isNumber(maxWidth) ? `${maxWidth}px` : maxWidth;
       this.setData({ tagStyle: `max-width:${width};` });
     },
 
@@ -63,7 +63,7 @@ export default class Tag extends SuperComponent {
       this.triggerEvent('click', e);
     },
 
-    hangleClose(e: WechatMiniprogram.BaseEvent) {
+    handleClose(e: WechatMiniprogram.BaseEvent) {
       if (this.data.disabled) return;
       this.triggerEvent('close', e);
     },

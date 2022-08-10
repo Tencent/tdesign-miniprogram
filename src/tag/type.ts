@@ -111,9 +111,8 @@ export interface TdCheckTagProps {
    * @default false
    */
   closable?: {
-    type: StringConstructor;
-    optionalTypes: Array<BooleanConstructor>;
-    value?: string | boolean;
+    type: BooleanConstructor;
+    value?: boolean;
     required?: boolean;
   };
   /**
