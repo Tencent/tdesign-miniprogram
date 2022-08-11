@@ -191,7 +191,7 @@ export default class DropdownMenuItem extends SuperComponent {
 
       this._trigger('change', { value });
 
-      if (!this.data.multiple) {
+      if (!this.data.multiple && this.data.optionsLayout !== 'tree') {
         this.closeDropdown();
       }
     },

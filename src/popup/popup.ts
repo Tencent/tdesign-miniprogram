@@ -36,26 +36,26 @@ export default class Popup extends SuperComponent {
     },
   };
 
-  setClass() {
-    const { placement, showOverlay } = this.properties;
-    const className = classNames(name, `${name}--${placement}`, {
-      [`${name}--overlay-transparent`]: !showOverlay,
-    });
-    this.setData({
-      className,
-    });
-  }
+  methods = {
+    setClass() {
+      const { placement, showOverlay } = this.properties;
+      const className = classNames(name, `${name}--${placement}`, {
+        [`${name}--overlay-transparent`]: !showOverlay,
+      });
+      this.setData({
+        className,
+      });
+    },
 
-  handleOverlayClick() {
-    const { closeOnOverlayClick } = this.properties;
-    if (closeOnOverlayClick) {
+    handleOverlayClick() {
+      const { closeOnOverlayClick } = this.properties;
+      if (closeOnOverlayClick) {
+        this.triggerEvent('visible-change', { visible: false });
+      }
+    },
+
+    handleClose() {
       this.triggerEvent('visible-change', { visible: false });
-    }
-  }
-
-  handleClose() {
-    this.triggerEvent('visible-change', { visible: false });
-  }
-
-  preventEvent() {}
+    },
+  };
 }

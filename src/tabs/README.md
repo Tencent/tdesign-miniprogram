@@ -16,6 +16,18 @@ isComponent: true
 }
 ```
 
+## 主题定制
+
+CSS 变量名|说明
+--|--
+--td-tab-nav-bg-color | 选项卡背景颜色
+--td-tab-item-color | 选项卡字体颜色
+--td-tab-item-active-color | 选项卡激活时字体颜色
+--td-tab-item-disabled-color | 选项卡禁止状态时字体颜色
+--td-tab-track-color | 选项卡滑块颜色
+--td-tab-track-thickness | 选项卡滑块厚度（水平时为高度，垂直时为宽度）
+--td-tab-border-color | 选项卡底部边框颜色
+
 ## 代码演示
 
 ### 基础选项卡
@@ -106,13 +118,15 @@ show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
 swipeable | Boolean | true | 是否可以滑动切换 | N
 value | String / Number | - | 激活的选项卡值。TS 类型：`TabValue` `type TabValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 default-value | String / Number | undefined | 激活的选项卡值。非受控属性。TS 类型：`TabValue` `type TabValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
+sticky | Boolean | false | 是否开启粘性布局 | N
+stickyProps | Object | - | 加载sticky属性，透传至Sticky组件。TS 类型：`StickyProps` | N
 
 ### Tabs Events
 
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: TabValue)` | 激活的选项卡发生变化时触发
-
+scroll | `(detail: { scrollTop: number, isFixed: boolean })` | 滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶 |
 ### TabPanel Props
 
 名称 | 类型 | 默认值 | 说明 | 必传

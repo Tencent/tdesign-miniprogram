@@ -1,0 +1,14 @@
+{
+  "component-json-template": {
+    "prefix": "cjson",
+    "body": ["{", "  \"usingComponents\": {", "    \"t-$1\": \"tdeisgn-miniprogram/$1/$1\"", "  }", "}"],
+    "scope": "json",
+    "description": "组件 JSON"
+  },
+  "component-js-template": {
+    "prefix": "ccjs",
+    "body": ["Component({});", ""],
+    "scope": "javascript, typescript",
+    "description": "组件 JS"
+  }
+}

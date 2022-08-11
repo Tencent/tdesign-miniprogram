@@ -29,130 +29,15 @@ import Message from 'tdesign-miniprogram/message/index';
 
 弹窗内容为纯文本、标题和副标题、带输入框，用 API `Message.info` 方法调用反馈类对话框。
 
-```html
-<t-message id="t-message" />
-```
 
-### 纯文字的消息通知
+{{ base }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageNormal(4).png" width="375px" height="50%">
-
-```js
-Message.info({
-  offset: [20, 32],
-  duration: 5000,
-  icon: false,
-  content: '这是一条纯文字的消息通知 5s消失',
-});
-```
-
-### 带图标的消息通知
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageNormal.png" width="375px" height="50%">
-
-```js
-Message.info({
-  offset: ['20rpx', '32rpx'],
-  duration: 5000,
-  icon: 'error-circle',
-  content: '这是一条带图标的消息通知 5s消失',
-});
-```
-
-### 带关闭的消息通知
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageNormal(1).png" width="375px" height="50%">
-
-```js
-Message.info({
-  offset: [20, 32],
-  icon: 'error-circle',
-  content: '这是一条带关闭的消息通知 常驻可关闭',
-  duration: -1,
-  closeBtn: true,
-});
-```
-
-### 滚动的消息通知
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageNormal(3).png" width="375px" height="50%">
-
-```js
-Message.info({
-  offset: [20, 32],
-  marquee: { speed: 50, loop: -1, delay: 5000 },
-  icon: false,
-  content: '这是一条滚动的通知信息',
-  duration: -1,
-});
-```
-
-### 带按钮的消息通知
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageWarning(3).png" width="375px" height="50%">
-
-```js
-Message.info({
-  offset: [20, 32],
-  icon: 'notification',
-  content: '这是一条带操作的消息通知',
-  duration: -1,
-  action: '按钮',
-});
-```
 
 ### 不同状态的消息通知
 
-消息通知类型为普通（info）、警示（warning）、成功（success）、错误（error）
+消息通知类型为普通（info）、警示（warning）、成功（success）、错误（error）  
 
-#### 普通消息通知
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageNormal(2).png" width="375px" height="50%">
-
-```js
-Message.info({
-  offset: [20, 32],
-  duration: 5000,
-  icon: false,
-  content: '这是一条纯文字的消息通知 5s消失',
-});
-```
-
-#### 警示消息通知
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageWarning(1).png" width="375px" height="50%">
-
-```js
-Message.warning({
-  offset: [20, 32],
-  duration: -1,
-  content: '这是一条需要用户关注到的警示通知',
-});
-```
-
-#### 成功消息通知
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageWarning.png" width="375px" height="50%">
-
-```js
-Message.success({
-  offset: [20, 32],
-  duration: -1,
-  content: '这是一条需要成功的提示消息',
-});
-```
-
-#### 错误消息通知
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/messageWarning(2).png" width="375px" height="50%">
-
-```js
-Message.error({
-  offset: [20, 32],
-  duration: -1,
-  content: '这是一条错误提示通知',
-});
-```
+{{ status-message }}
 
 ## API
 

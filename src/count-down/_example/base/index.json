@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-count-down": "tdesign-miniprogram/count-down/count-down"
+  }
+}

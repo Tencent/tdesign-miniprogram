@@ -1,0 +1,13 @@
+<t-message id="t-message" />
+<view class="box">
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showInfoMessage" block>普通通知</t-button>
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showWarnMessage" block
+    >警示提示通知</t-button
+  >
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showSuccessMessage" block
+    >成功提示通知</t-button
+  >
+  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showErrorMessage" block
+    >错误提示通知</t-button
+  >
+</view>

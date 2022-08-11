@@ -1,4 +1,4 @@
-Page({
+Component({
   data: {
     value: [3, 2.5],
   },

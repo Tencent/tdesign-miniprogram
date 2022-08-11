@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cell :base 1`] = `
+<main>
+  <main
+    id="cell"
+  >
+    <wx-view
+      class="t-class t-cell   t-cell--middle"
+      hoverClass="t-cell--hover-class"
+      hoverStayTime="70"
+      bind:tap="onClick"
+    >
+      <wx-view
+        class="t-cell__left t-class-left"
+      />
+      <wx-view
+        class="t-cell__title t-class-title"
+      >
+        <wx-view
+          class="t-cell__title-text"
+        />
+        <wx-view
+          class="t-cell__description t-class-description"
+        />
+      </wx-view>
+      <wx-view
+        class="t-cell__note t-class-note"
+      />
+      <wx-view
+        class="t-cell__right t-class-right"
+      >
+        <t-icon
+          class="t-cell__right-icon t-class-right-icon"
+        >
+          <wx-label
+            class="t-class t-icon t-icon- t-icon-base"
+            style=";;"
+            bind:tap="onTap"
+          />
+        </t-icon>
+      </wx-view>
+    </wx-view>
+  </main>
+</main>
+`;
+
+exports[`cell :with group 1`] = `
+<main>
+  <main>
+    <wx-view
+      class="t-class t-cell-group "
+    />
+  </main>
+</main>
+`;

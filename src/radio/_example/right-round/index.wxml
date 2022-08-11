@@ -1,0 +1,12 @@
+<t-radio-group bind:change="onChange" defaultValue="radio1">
+  <t-radio value="radio1" label="单选" align="right" />
+  <t-radio value="radio2" label="单选" align="right" />
+  <t-radio value="radio3" align="right" label="多选"></t-radio>
+  <t-radio
+    value="radio4"
+    label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单"
+    align="right"
+    max-label-row="1"
+  >
+  </t-radio>
+</t-radio-group>

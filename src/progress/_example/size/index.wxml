@@ -1,0 +1,6 @@
+<view class="progress-container">
+  <t-progress percentage="88"></t-progress>
+</view>
+<view class="progress-container">
+  <t-progress percentage="72" label="{{false}}"></t-progress>
+</view>

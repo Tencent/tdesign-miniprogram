@@ -4,6 +4,7 @@
   "backgroundColor": "#fff",
   "disableScroll": true,
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
+    "base": "./base",
+    "refresh-timeout": "./refresh-timeout"
   }
 }

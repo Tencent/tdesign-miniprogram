@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
+  }
+}

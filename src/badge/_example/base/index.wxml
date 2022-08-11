@@ -1,0 +1,8 @@
+<t-badge dot class="badge-item" content="消息" />
+<t-badge count="{{16}}" class="badge-item" content="消息" />
+<t-badge count="New" class="badge-item">
+  <text style="padding: 0 10px">消息</text>
+</t-badge>
+<t-badge count="···" class="badge-item">
+  <text style="padding: 0 10px">消息</text>
+</t-badge>

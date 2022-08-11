@@ -1,0 +1,29 @@
+<view class="flex base-time">
+  <t-count-down t-class="base-time-cls" time="{{ time }}" />
+  <view class="base-time-text"> 时分秒 </view>
+</view>
+
+<view class="flex base-time">
+  <t-count-down t-class="base-time-cls" format="HH:mm:ss:SSS" time="{{ time }}" millisecond />
+  <view class="base-time-text"> 带毫秒 </view>
+</view>
+
+<view class="flex base-time">
+  <t-count-down content="default" time="{{ time }}" theme="square"> </t-count-down>
+  <view class="base-time-text"> 带方形底 </view>
+</view>
+
+<view class="flex base-time">
+  <t-count-down content="default" time="{{ time }}" theme="round"> </t-count-down>
+  <view class="base-time-text"> 带圆形底 </view>
+</view>
+
+<view class="flex base-time">
+  <t-count-down content="default" time="{{ time }}" splitWithUnit theme="round" />
+  <view class="base-time-text"> 带单位 </view>
+</view>
+
+<view class="flex base-time">
+  <t-count-down content="default" time="{{ time }}" splitWithUnit theme="highlight" />
+  <view class="base-time-text"> 无底色带单位 </view>
+</view>

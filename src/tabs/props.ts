@@ -38,6 +38,15 @@ const props: TdTabsProps = {
   defaultValue: {
     type: null,
   },
+  /** 是否开启粘性布局 */
+  sticky: {
+    type: Boolean,
+    value: false,
+  },
+  /** sticky 属性 */
+  stickyProps: {
+    type: Object,
+  },
 };
 
 export default props;

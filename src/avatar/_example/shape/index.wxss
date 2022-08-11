@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar-example {
+  text-align: center;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.avatar-example .avatar-description {
+  margin-top: 16rpx;
+}
+
+.external-class-content {
+  color: #fff;
+  background-color: #0052d9;
+  font-weight: 400;
+}

@@ -5,6 +5,7 @@ spline: base
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-83%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -55,6 +56,7 @@ ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
 icon | String | - | 图标名称 | N
 icon-props | Object | {} | 图标属性，透传至 icon | N
 loading | Boolean | false | 是否显示为加载状态 | N
+loading-props | Object | - | 加载loading属性，透传至loading。TS 类型：`LoadingProps` | N
 shape | String | rectangle | 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形。可选项：rectangle/square/round/circle | N
 size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum` | N
 theme | String | default | 组件风格，依次为品牌色、危险色。可选项：default/primary/danger | N

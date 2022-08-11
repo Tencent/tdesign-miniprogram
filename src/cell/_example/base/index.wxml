@@ -1,0 +1,16 @@
+<view class="demo-section__wrapper">
+  <t-cell title="单行标题" hover />
+  <t-cell title="单行标题" required />
+  <t-cell title="单行标题" hover note="辅助信息" />
+  <t-cell title="单行标题" hover arrow />
+  <t-cell title="单行标题" hover note="辅助信息" arrow />
+  <t-cell title="单行标题" hover arrow>
+    <t-badge count="{{16}}" slot="note" />
+  </t-cell>
+  <t-cell title="单行标题">
+    <t-switch defaultValue="{{false}}" slot="note" />
+  </t-cell>
+  <t-cell title="单行标题" hover>
+    <t-icon name="app" slot="left-icon" />
+  </t-cell>
+</view>

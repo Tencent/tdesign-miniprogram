@@ -1,0 +1,20 @@
+<t-toast id="t-toast" />
+
+<t-button t-class="external-class" data-type="text" size="large" variant="outline" bind:tap="handleToast" block
+  >纯文本</t-button
+>
+<t-button
+  t-class="external-class"
+  data-type="horizontal-icon"
+  size="large"
+  variant="outline"
+  bind:tap="handleToast"
+  block
+  >带图标-横向</t-button
+>
+<t-button t-class="external-class" data-type="vertical-icon" size="large" variant="outline" bind:tap="handleToast" block
+  >带图标-竖向</t-button
+>
+<t-button t-class="external-class" data-type="text-max" size="large" variant="outline" bind:tap="handleToast" block
+  >纯文本最大高度</t-button
+>

@@ -53,7 +53,7 @@ export default class Button extends SuperComponent {
       const classList = [
         name,
         `${prefix}-class`,
-        `${name}--${this.data.theme || 'default'}`,
+        `${name}--${this.data.theme}`,
         `${name}--size-${this.data.size.slice(0, 1)}`,
       ];
 
@@ -65,9 +65,6 @@ export default class Button extends SuperComponent {
       if (this.data.disabled) {
         classList.push(`${prefix}-is-disabled`);
       }
-      // if (this.data.loading) {
-      //   classList.push(`${prefix}-is-loading`);
-      // }
       classList.push(`${name}--${this.data.variant}`);
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);

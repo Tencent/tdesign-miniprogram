@@ -5,6 +5,7 @@
  * */
 
 import { SizeEnum } from '../common/common';
+import { LoadingProps } from '../loading/index';
 
 export interface TdButtonProps {
   /**
@@ -75,6 +76,13 @@ export interface TdButtonProps {
   loading?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 加载loading样式
+   */
+  loadingProps?: {
+    type: ObjectConstructor;
+    value?: LoadingProps;
   };
   /**
    * 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形

@@ -1,0 +1,11 @@
+<t-toast id="t-toast" />
+
+<t-button t-class="external-class" data-type="topShow" size="large" variant="outline" bind:tap="handleToast" block
+  >顶部展示1秒</t-button
+>
+<t-button t-class="external-class" data-type="middleShow" size="large" variant="outline" bind:tap="handleToast" block
+  >中间展示2秒</t-button
+>
+<t-button t-class="external-class" data-type="bottomShow" size="large" variant="outline" bind:tap="handleToast" block
+  >底部展示3秒</t-button
+>

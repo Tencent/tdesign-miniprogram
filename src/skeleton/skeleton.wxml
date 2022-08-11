@@ -2,7 +2,13 @@
 
 <view wx:if="{{ loading }}" class="{{classPrefix}} {{prefix}}-class ">
   <view wx:if="{{ parsedRowcols.length }}" class="{{classPrefix}}__content">
-    <view wx:for="{{parsedRowcols}}" wx:for-index="index" wx:for-item="row" wx:key="index" class="{{classPrefix}}__row">
+    <view
+      wx:for="{{parsedRowcols}}"
+      wx:for-index="index"
+      wx:for-item="row"
+      wx:key="index"
+      class="{{classPrefix}}__row {{prefix}}-class-row"
+    >
       <view
         wx:for="{{ row }}"
         wx:for-index="index"

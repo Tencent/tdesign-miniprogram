@@ -17,99 +17,22 @@ isComponent: true
 
 ## 代码演示
 
-### 基础方式
+### 反馈类对话框
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/dialog-1.png" width="375px" height="50%">
 
-```html
-<!-- 单行标题 -->
-<t-dialog visible="{{true}}" title="对话框标题" confirm-btn="我知道了" bind:confirm="confirmHandle"> </t-dialog>
-
-<!-- 带文本说明 -->
-<t-dialog
-  visible="{{true}}"
-  title="对话框标题"
-  content="告知当前状态、信息和解决方法等内容。"
-  confirm-btn="我知道了"
-  bind:confirm="confirmHandle"
-></t-dialog>
-```
+{{ base }}
 
 > 使用这种方式，对话框的 `visible` 是受控的，需要手动设置额 `visible` 为 `false` 才会关闭对话框。
 
-### API 调用方式
+### 确认类对话框
+{{ confirm }}
 
-用 `Dialog.alert` 方法调用反馈类对话框。
+### 输入类对话框
+{{ inputDialog }}
 
-```html
-<t-dialog id="t-dialog" />
-```
-
-```js
-import Dialog from 'tdesign-miniprogram/dialog/index';
-
-Dialog.alert({
-  title: '对话框标题',
-  content: '告知当前状态、信息和解决方法等内容。',
-  confirmBtn: '我知道了',
-}).then(() => {
-  // 点击确定按钮时触发
-});
-```
-
-> 使用这种方式，对话框会在点击事件发生之后自动关闭。
-
-### 不同状态的对话框
-
-#### 双按钮对话框
-<img src="https://tdesign.gtimg.com/miniprogram/readme/dialog-2.png" width="375px" height="50%">
-
-```html
-<t-dialog id="t-dialog" />
-```
-
-```js
-// 双按钮
-import Dialog from 'tdesign-miniprogram/dialog/index';
-
-Dialog.confirm({
-  title: '弹窗标题',
-  content: '告知当前状态、信息和解决方法等内容。',
-  confirmBtn: '按钮最多字数',
-  cancelBtn: '取消',
-})
-  .then(() => {
-    // 点击确定按钮
-  })
-  .catch(() => {
-    // 点击取消按钮
-  });
-```
-#### 多按钮对话框
-
-通过 `actions` 可实现多个操作按钮。
-
-```html
-<t-dialog id="t-dialog" />
-```
-
-```js
-import Dialog from 'tdesign-miniprogram/dialog/index';
-
-Dialog.action({
-  title: '弹窗标题',
-  content: '告知当前状态、信息和解决方法等内容。',
-  actions: [
-    { name: '取消', primary: false },
-    { name: '单行按钮最多十五个字符文案内容', primary: true },
-    { name: '按钮文案文字内容较长', primary: true, style: 'color:red;' },
-  ]
-})
-  .then(({ index }) => {
-    console.log(index);
-  })
-```
-
+### 命令调用
+{{ command }}
 ## API
 ### Dialog Props
 

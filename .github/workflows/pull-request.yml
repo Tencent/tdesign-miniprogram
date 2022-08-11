@@ -26,3 +26,5 @@ jobs:
       - uses: ./.github/actions/install-dep
       - name: lint 检查
         run: npm run lint
+      - name: unit test
+        run: npm run test:unit

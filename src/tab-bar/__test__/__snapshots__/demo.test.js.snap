@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabBar TabBar badge demo works fine 1`] = `
+<badge>
+  <t-tab-bar
+    defaultValue="label1"
+  >
+    <t-tab-bar-item
+      badgeProps="{{
+        Object {
+          "count": 16,
+        }
+      }}"
+      icon="app"
+      value="label1"
+    >
+      文字 
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      badgeProps="{{
+        Object {
+          "dot": true,
+        }
+      }}"
+      icon="app"
+      value="label2"
+    >
+      文字 
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      badgeProps="{{
+        Object {
+          "count": "New",
+        }
+      }}"
+      icon="app"
+      value="label3"
+    >
+      文字 
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      badgeProps="{{
+        Object {
+          "count": "···",
+        }
+      }}"
+      icon="app"
+      value="label4"
+    >
+      文字 
+    </t-tab-bar-item>
+  </t-tab-bar>
+</badge>
+`;
+
+exports[`TabBar TabBar base demo works fine 1`] = `
+<base>
+  <t-tab-bar
+    value="label_1"
+    bind:change="onChange"
+  >
+    <t-tab-bar-item
+      icon="app"
+      value="label_1"
+    >
+      
+    文字
+  
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      icon="app"
+      value="label_2"
+    >
+      
+    文字
+  
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      icon="app"
+      value="label_3"
+    >
+      
+    文字
+  
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      icon="app"
+      value="label_4"
+    >
+      
+    文字
+  
+    </t-tab-bar-item>
+  </t-tab-bar>
+</base>
+`;
+
+exports[`TabBar TabBar custom demo works fine 1`] = `
+<custom>
+  <wx-view
+    class="wrapper"
+  >
+    <t-tab-bar
+      value="label_1"
+      bind:change="onChange"
+    >
+      <t-tab-bar-item
+        icon="app"
+        value="label_1"
+      />
+      <t-tab-bar-item
+        icon="app"
+        value="label_2"
+      />
+      <t-tab-bar-item
+        icon="app"
+        value="label_3"
+      />
+      <t-tab-bar-item
+        icon="app"
+        value="label_4"
+      />
+    </t-tab-bar>
+  </wx-view>
+</custom>
+`;
+
+exports[`TabBar TabBar icon-only demo works fine 1`] = `
+<icon-only>
+  <t-tab-bar
+    value="label_1"
+    bind:change="onChange"
+  >
+    <t-tab-bar-item
+      icon="app"
+      value="label_1"
+    />
+    <t-tab-bar-item
+      icon="app"
+      value="label_2"
+    />
+    <t-tab-bar-item
+      icon="app"
+      value="label_3"
+    />
+    <t-tab-bar-item
+      icon="app"
+      value="label_4"
+    />
+  </t-tab-bar>
+</icon-only>
+`;
+
+exports[`TabBar TabBar sub demo works fine 1`] = `
+<sub>
+  <t-tab-bar
+    defaultValue="label_3"
+  >
+    <t-tab-bar-item
+      subTabBar=""
+      value="label_1"
+    >
+      
+    标签栏一
+  
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      subTabBar=""
+      value="label_2"
+    >
+      
+    标签栏二
+  
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      subTabBar="{{
+        Array [
+          Object {
+            "label": "展开项三",
+            "value": "spread_3",
+          },
+          Object {
+            "label": "展开项二",
+            "value": "spread_2",
+          },
+          Object {
+            "label": "展开项一",
+            "value": "spread_1",
+          },
+        ]
+      }}"
+      value="label_3"
+    >
+      
+    此处展开
+  
+    </t-tab-bar-item>
+  </t-tab-bar>
+</sub>
+`;
+
+exports[`TabBar TabBar text-only demo works fine 1`] = `
+<text-only>
+  <t-tab-bar
+    value="label_1"
+    bind:change="onChange"
+  >
+    <t-tab-bar-item
+      value="label_1"
+    >
+       标签栏一 
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      value="label_2"
+    >
+       标签栏二 
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      value="label_3"
+    >
+       标签栏三 
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      value="label_4"
+    >
+       标签栏四 
+    </t-tab-bar-item>
+  </t-tab-bar>
+</text-only>
+`;

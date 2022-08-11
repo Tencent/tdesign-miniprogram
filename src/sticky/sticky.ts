@@ -1,12 +1,14 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
-
+import type { TdStickyProps } from './type';
 import { pageScrollMixin, getRect } from './utils';
 
 const { prefix } = config;
 
 const ContainerClass = `.${prefix}-sticky`;
+
+export interface StickyProps extends TdStickyProps {}
 
 @wxComponent()
 export default class Sticky extends SuperComponent {

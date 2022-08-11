@@ -55,7 +55,10 @@ export default class ActionSheet extends SuperComponent {
     /** 指令调用显示 */
     show() {
       this.splitGridThemeActions();
-      this._trigger('visible-change', { visible: true });
+      this.setData({
+        visible: true,
+      });
+      this.autoClose = true;
     },
 
     resetData(cb: () => void) {
@@ -78,6 +81,10 @@ export default class ActionSheet extends SuperComponent {
     onPopupVisibleChange({ detail }) {
       if (!detail.visible) {
         this._trigger('visible-change', { visible: false });
+      }
+      if (this.autoClose) {
+        this.setData({ visible: false });
+        this.autoClose = false;
       }
     },
 

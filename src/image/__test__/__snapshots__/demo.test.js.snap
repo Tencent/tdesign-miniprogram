@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image Image custom-error-loading demo works fine 1`] = `
+<custom-error-loading>
+  <t-image
+    loadFailed="slot"
+    mode="aspectFill"
+    shape="round"
+    src=""
+    tClass="external-class"
+  >
+    <wx-view
+      class="custom-loading-failed"
+      slot="loadFailed"
+    >
+      加载失败
+    </wx-view>
+  </t-image>
+</custom-error-loading>
+`;
+
+exports[`Image Image custom-loading demo works fine 1`] = `
+<custom-loading>
+  <t-image
+    id="loading-img-custom"
+    loading="slot"
+    mode="aspectFill"
+    shape="round"
+    src=""
+    tClass="external-class"
+  >
+    <t-loading
+      class="custom-loading"
+      loading="{{true}}"
+      size="40rpx"
+      slot="loading"
+      style="opacity: 0.6"
+      tClass="loading-container"
+      tClassText="loading-text"
+      theme="circular"
+    />
+  </t-image>
+</custom-loading>
+`;
+
+exports[`Image Image error-loading demo works fine 1`] = `
+<error-loading>
+  <t-image
+    mode="aspectFill"
+    shape="round"
+    src=""
+    tClass="external-class"
+  />
+</error-loading>
+`;
+
+exports[`Image Image image-loading demo works fine 1`] = `
+<image-loading>
+  <t-image
+    id="loading-img"
+    mode="aspectFill"
+    shape="round"
+    src=""
+    tClass="external-class"
+  />
+</image-loading>
+`;
+
+exports[`Image Image mode demo works fine 1`] = `
+<mode>
+  <t-image
+    mode="scaleToFill"
+    shape="round"
+    src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+    tClass="external-class"
+  />
+</mode>
+`;
+
+exports[`Image Image shape demo works fine 1`] = `
+<shape>
+  <t-image
+    mode="aspectFill"
+    shape="square"
+    src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+    tClass="external-class"
+  />
+</shape>
+`;
+
+exports[`Image Image size demo works fine 1`] = `
+<size>
+  <t-image
+    mode="aspectFill"
+    shape="round"
+    src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+    tClass="size-l"
+  />
+</size>
+`;

@@ -1,0 +1,16 @@
+<t-radio-group defaultValue="radio2" disabled="{{true}}">
+  <t-radio value="radio1" label="单选" />
+  <t-radio value="radio2" label="单选" />
+</t-radio-group>
+<t-radio-group value="radio2" disabled="{{true}}">
+  <t-radio value="radio1" label="单选" icon="stroke-line" />
+  <t-radio value="radio2" label="单选" icon="stroke-line" />
+</t-radio-group>
+<t-radio-group value="radio2" disabled="{{true}}">
+  <t-radio value="radio1" label="单选" align="right" />
+  <t-radio value="radio2" label="单选" align="right" />
+</t-radio-group>
+<t-radio-group value="radio1" disabled="{{true}}">
+  <t-radio value="radio1" label="单选" icon="stroke-line" align="right" />
+  <t-radio value="radio2" label="单选" icon="stroke-line" align="right" />
+</t-radio-group>
