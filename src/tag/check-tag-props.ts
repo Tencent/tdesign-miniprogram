@@ -18,8 +18,7 @@ const props: TdCheckTagProps = {
   },
   /** 是否可以关闭 */
   closable: {
-    type: String,
-    optionalTypes: [Boolean],
+    type: Boolean,
     value: false,
   },
   /** 组件子元素 */

@@ -34,7 +34,7 @@ export default class CheckTag extends SuperComponent {
   };
 
   observers = {
-    checked() {
+    'size, shape, closable, disabled, checked'() {
       this.setClass();
     },
   };
@@ -59,9 +59,8 @@ export default class CheckTag extends SuperComponent {
       });
     },
 
-    hangleClose(e: WechatMiniprogram.BaseEvent) {
+    handleClose(e: WechatMiniprogram.BaseEvent) {
       if (this.data.disabled) return;
-
       this.triggerEvent('close', e);
     },
 
