@@ -14,8 +14,7 @@ const props: TdGridProps = {
   },
   /** 边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式 */
   border: {
-    type: Boolean,
-    optionalTypes: [Object],
+    type: null,
     value: false,
   },
   /** 每一行的列数量 */
