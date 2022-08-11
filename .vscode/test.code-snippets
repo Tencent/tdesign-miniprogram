@@ -11,7 +11,7 @@
       "    rootPath: path.resolve(__dirname, '../..')",
       "  });",
       "",
-      "  it(`$1 :$2`, () => {",
+      "  it(':$2', () => {",
       "    const id = simulate.load({",
       "      template: `<t-$1></t-$1>`,",
       "      usingComponents: {",
