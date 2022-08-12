@@ -1,7 +1,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-describe('Checkbox base using', () => {
+describe('Checkbox', () => {
   const id = simulate.load(path.resolve(__dirname, './index'), { less: true });
 
   describe('with group', () => {

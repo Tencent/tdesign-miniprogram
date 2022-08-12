@@ -23,8 +23,12 @@ export default class Grid extends SuperComponent {
   };
 
   observers = {
-    'border,gutter,column,hover,align'() {
+    'column,hover,align'() {
       this.updateContentStyle();
+    },
+    'gutter,border'() {
+      this.updateContentStyle();
+      this.doForChild((child) => child.updateStyle());
     },
   };
 
@@ -32,37 +36,35 @@ export default class Grid extends SuperComponent {
     attached() {
       this.updateContentStyle();
     },
-    detached() {
-      this.destroyed();
-    },
     created() {
       this.children = [];
     },
   };
 
-  updateContentStyle() {
-    const contentStyles = [];
-    const marginStyle = this.getContentMargin();
-    marginStyle && contentStyles.push(marginStyle);
-    this.setData({
-      contentStyle: contentStyles.join(';'),
-    });
-  }
+  methods = {
+    doForChild(action: (item: WechatMiniprogram.Component.TrivialInstance) => void) {
+      const children = this.getRelationNodes('./grid-item') ?? [];
 
-  // 判断需不需要在content上加负margin以实现gutter间距
-  getContentMargin() {
-    const { gutter = 0 } = this.properties;
-    let { border } = this.properties;
-    if (!border) return `margin-left:-${gutter}rpx; margin-top:-${gutter}rpx`;
-    if (!isObject(border)) border = {} as any;
-    const { width = 2 } = border as any;
-    return `margin-left:-${width}rpx; margin-top:-${width}rpx`;
-  }
+      children.forEach(action);
+    },
+    updateContentStyle() {
+      const contentStyles = [];
+      const marginStyle = this.getContentMargin();
+      marginStyle && contentStyles.push(marginStyle);
+      this.setData({
+        contentStyle: contentStyles.join(';'),
+      });
+    },
 
-  destroyed() {
-    if (this.updateTimer) {
-      clearTimeout(this.updateTimer);
-      this.updateTimer = null;
-    }
-  }
+    // 判断需不需要在content上加负margin以实现gutter间距
+    getContentMargin() {
+      const { gutter } = this.properties;
+      let { border } = this.properties;
+
+      if (!border) return `margin-left:-${gutter}rpx; margin-top:-${gutter}rpx`;
+      if (!isObject(border)) border = {} as any;
+      const { width = 2 } = border as any;
+      return `margin-left:-${width}rpx; margin-top:-${width}rpx`;
+    },
+  };
 }

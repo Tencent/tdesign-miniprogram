@@ -20,9 +20,14 @@ export interface TdGridProps {
    * @default false
    */
   border?: {
-    type: BooleanConstructor;
-    optionalTypes: Array<ObjectConstructor>;
-    value?: boolean | { color?: string; width?: string; style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset' };
+    type: null;
+    value?:
+      | boolean
+      | {
+          color?: string;
+          width?: string;
+          style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset';
+        };
     required?: boolean;
   };
   /**
@@ -59,7 +64,7 @@ export interface TdGridProps {
     value?: boolean;
     required?: boolean;
   };
-};
+}
 
 export interface TdGridItemProps {
   /**
@@ -121,4 +126,4 @@ export interface TdGridItemProps {
     value?: string;
     required?: boolean;
   };
-};
+}
