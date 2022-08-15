@@ -97,6 +97,10 @@ export default class Swiper extends SuperComponent {
           this.updateNav(this.control.get());
         });
       },
+      unlinked: function () {
+        this.initItem();
+        this.update(0);
+      },
     },
     './swiper-nav': {
       type: 'child',
