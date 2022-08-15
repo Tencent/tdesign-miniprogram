@@ -95,10 +95,31 @@ export default class Upload extends SuperComponent {
   startUpload(files: UploadFile[]) {
     // 如果传入了上传函数，则进度设为0并开始上传，否则跳过上传
     if (typeof this.data.requestMethod === 'function') {
-      return this.uploadFiles(files);
+      return this.uploadFiles(files)
+        .then(() => {
+          files.forEach((file) => {
+            file.percent = 100;
+          });
+          this.triggerSuccessEvent(files);
+        })
+        .catch((err) => {
+          this.triggerFailEvent(err);
+        });
     }
+
+    // 如果没有上传函数，success事件与微信api上传成功关联
+    this.triggerSuccessEvent(files);
+
     this.handleLimit(this.data.customFiles, this.data.max);
     return Promise.resolve();
+  }
+
+  triggerSuccessEvent(files) {
+    this._trigger('success', { files: [...this.data.customFiles, ...files] });
+  }
+
+  triggerFailEvent(err) {
+    this.triggerEvent('fail', err);
   }
 
   /** 选择媒体素材 */
@@ -110,6 +131,8 @@ export default class Upload extends SuperComponent {
       ...config,
       success: (res) => {
         const files = [];
+
+        // 支持单/多文件
         res.tempFiles.forEach((temp) => {
           const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
           if (sizeLimit && size > sizeLimit) {
@@ -126,7 +149,7 @@ export default class Upload extends SuperComponent {
             height: height,
             duration: duration,
             thumb: thumbTempFilePath,
-            progress: 0,
+            percent: 0,
             ...res,
           });
         });
@@ -135,11 +158,10 @@ export default class Upload extends SuperComponent {
           currentSelectedFiles: [files],
         });
         this._trigger('add', { files });
-        this._trigger('success', { files: [...this.data.customFiles, ...files] });
         this.startUpload(files);
       },
       fail: (err) => {
-        this.triggerEvent('fail', err);
+        this.triggerFailEvent(err);
       },
       complete: (res) => {
         this.triggerEvent('complete', res);
