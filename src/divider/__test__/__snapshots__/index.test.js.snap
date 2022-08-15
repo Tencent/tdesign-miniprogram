@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider :align center render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :align left render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :align right render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :content slot render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :content string render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :dashed render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :dashed render correctly 2`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :layout horizontal render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :layout vertical render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
+
+exports[`Divider :line-color render correctly 1`] = `
+<main>
+  <t-divider>
+    <wx-view
+      class=""
+    >
+      <wx-view
+        class="t-class t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;
