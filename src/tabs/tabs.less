@@ -162,8 +162,12 @@ page {
     }
 
     .@{prefix}-tabs__content {
-      width: 100%;
-      // overflow: hidden;
+      width: calc(100% - @tab-item-width--vertical);
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: @tab-item-width--vertical;
+      overflow: hidden;
     }
   }
 
