@@ -122,6 +122,11 @@ export default class Upload extends SuperComponent {
     this.triggerEvent('fail', err);
   }
 
+  onFileClick(e) {
+    const { file } = e.currentTarget.dataset;
+    this.triggerEvent('click', { file });
+  }
+
   /** 选择媒体素材 */
   chooseMedia(mediaType) {
     const { config, sizeLimit, max } = this.data;

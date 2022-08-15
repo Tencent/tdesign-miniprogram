@@ -42,5 +42,8 @@ Component({
         originFiles,
       });
     },
+    handleClick(e) {
+      console.log(e.detail.file);
+    },
   },
 });
