@@ -5,6 +5,32 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.19.1 `2022-08-15` 
+### 🚀 Features
+- `Upload`: 新增 click 事件 @LeeJim ([#762](https://github.com/Tencent/tdesign-miniprogram/pull/762))
+
+### 🐞 Bug Fixes
+- `Tag`: 修复 click 事件不生效 @anlyyao ([#738](https://github.com/Tencent/tdesign-miniprogram/pull/738))
+- `Tag`: 修复行内元素基线对齐不正确 @anlyyao ([#738](https://github.com/Tencent/tdesign-miniprogram/pull/738))
+- `Grid`: 修复垂直布局时间，align 无效 @anlyyao ([#739](https://github.com/Tencent/tdesign-miniprogram/pull/739))
+- `Tag`: 修复 disabled 为true时，closable 无效的问题 @anlyyao ([#743](https://github.com/Tencent/tdesign-miniprogram/pull/743))
+- `Tag`: 修复 maxWidth 输入为字符时，宽度计算错误问题 @anlyyao ([#743](https://github.com/Tencent/tdesign-miniprogram/pull/743))
+- `Upload`: 修复自定义上传没有关联成功/失败状态 @Winfans ([#758](https://github.com/Tencent/tdesign-miniprogram/pull/758))
+- `Swiper`: 修复动态修改 `swiper-item` 时，视图响应不正确问题 @anlyyao ([#761](https://github.com/Tencent/tdesign-miniprogram/pull/761))
+- `Tabs`: 修复垂直布局时，内容区域不正确。 @anlyyao ([#760](https://github.com/Tencent/tdesign-miniprogram/pull/760))
+
+### 🚧 Others
+- `Fab`: 新增单元测试 @LeeJim ([#740](https://github.com/Tencent/tdesign-miniprogram/pull/740))
+- `Icon`: 新增单元测试 @LeeJim ([#741](https://github.com/Tencent/tdesign-miniprogram/pull/741))
+- `Cell`: 新增单元测试 @LeeJim ([#742](https://github.com/Tencent/tdesign-miniprogram/pull/742))
+- `Popup`: 完善单元测试 @LeeJim ([#746](https://github.com/Tencent/tdesign-miniprogram/pull/746))
+- `Progress`: 新增单元测试 @anlyyao ([#731](https://github.com/Tencent/tdesign-miniprogram/pull/731))
+- `Drawer`: 新增单元测试 @anlyyao ([#732](https://github.com/Tencent/tdesign-miniprogram/pull/732))
+- `Loading`: 新增单元测试 @anlyyao ([#733](https://github.com/Tencent/tdesign-miniprogram/pull/733))
+- `Tag`: 修复文档 CheckTag 事件名称不正确 @anlyyao ([#738](https://github.com/Tencent/tdesign-miniprogram/pull/738))
+- `Tag`: 完善单元测试 @anlyyao ([#743](https://github.com/Tencent/tdesign-miniprogram/pull/743))
+- `Grid`: 新增单元测试 @LeeJim ([#752](https://github.com/Tencent/tdesign-miniprogram/pull/752))
+
 ## 🌈 0.19.0 `2022-08-08` 
 ### 🚀 Features
 - `Skeleton`: 新增 `t-class-row` 外部样式类 @anlyyao ([#699](https://github.com/Tencent/tdesign-miniprogram/pull/699))
