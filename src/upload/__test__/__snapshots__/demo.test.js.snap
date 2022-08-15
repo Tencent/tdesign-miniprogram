@@ -39,6 +39,7 @@ exports[`Upload Upload multiple demo works fine 1`] = `
           "image",
         ]
       }}"
+      bind:click="handleClick"
       bind:remove="handleRemove"
       bind:success="handleSuccess"
     />
