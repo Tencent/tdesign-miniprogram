@@ -5,5 +5,6 @@
     gridConfig="{{gridConfig}}"
     bind:success="handleSuccess"
     bind:remove="handleRemove"
+    bind:click="handleClick"
   />
 </view>

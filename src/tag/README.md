@@ -5,6 +5,7 @@ spline: data
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-100%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -89,4 +90,4 @@ isComponent: true
 | 名称   | 参数                 | 描述           |
 | ------ | -------------------- | -------------- |
 | change | `(checked: boolean)` | 组件子元素     |
-| click  | -                    | 点击标签时触发 |
+| close  | -    | 如果关闭按钮存在，点击关闭按钮时触发 |

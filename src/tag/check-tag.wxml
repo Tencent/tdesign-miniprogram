@@ -7,10 +7,10 @@
     <slot />
   </view>
   <t-icon
-    wx:if="{{ closable && !disabled }}"
+    wx:if="{{ closable }}"
     class="{{classPrefix}}__icon-close"
     t-class="{{prefix}}-icon"
-    bind:tap="hangleClose"
+    bind:tap="handleClose"
     name="close"
   />
 </view>

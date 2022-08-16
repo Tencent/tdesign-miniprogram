@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`grid :base 1`] = `
+<main>
+  <t-grid
+    id="grid"
+  >
+    <wx-view
+      class="t-grid t-class"
+    >
+      <wx-view
+        class="t-grid__content"
+        style="margin-left:-4rpx; margin-top:-4rpx"
+      >
+        <t-grid-item
+          id="a"
+          bind:click="handleClick"
+        >
+          <wx-view
+            class="t-grid-item t-class"
+            hoverClass=""
+            hoverStayTime="{{200}}"
+            style="width:25%"
+            bind:tap="onClick"
+          >
+            <wx-view
+              class="t-grid-item__wrapper "
+              style="padding-left:4rpx;padding-top:4rpx"
+            >
+              <wx-view
+                class="t-grid-item__content t-grid-item--center t-class-content"
+                style=""
+              >
+                <wx-view
+                  class="t-grid-item__image t-class-image"
+                />
+                <wx-view
+                  class="t-grid-item__words"
+                />
+              </wx-view>
+            </wx-view>
+          </wx-view>
+        </t-grid-item>
+        <t-grid-item>
+          <wx-view
+            class="t-grid-item t-class"
+            hoverClass=""
+            hoverStayTime="{{200}}"
+            style="width:25%"
+            bind:tap="onClick"
+          >
+            <wx-view
+              class="t-grid-item__wrapper "
+              style="padding-left:4rpx;padding-top:4rpx"
+            >
+              <wx-view
+                class="t-grid-item__content t-grid-item--center t-class-content"
+                style=""
+              >
+                <wx-view
+                  class="t-grid-item__image t-class-image"
+                />
+                <wx-view
+                  class="t-grid-item__words"
+                />
+              </wx-view>
+            </wx-view>
+          </wx-view>
+        </t-grid-item>
+      </wx-view>
+    </wx-view>
+  </t-grid>
+</main>
+`;

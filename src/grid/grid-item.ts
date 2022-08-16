@@ -28,7 +28,7 @@ export default class GridItem extends SuperComponent {
   relations: RelationsOptions = {
     './grid': {
       type: 'ancestor',
-      linked(this: GridItem, target: WechatMiniprogram.Component.TrivialInstance) {
+      linked(target) {
         this.parent = target;
         this.updateStyle();
       },
@@ -70,7 +70,7 @@ export default class GridItem extends SuperComponent {
 
   // 判断应该加在gridItem上的宽度
   getWidthStyle() {
-    const { column = 4 } = this.parent.properties;
+    const { column } = this.parent.properties;
     return `width:${(1 / column) * 100}%`;
   }
 

@@ -36,6 +36,8 @@
           data-index="{{index}}"
           wx:if="{{file.percent !== undefined && file.percent !== 100}}"
           class="{{classPrefix}}__progress-mask"
+          data-file="{{file}}"
+          bind:tap="onFileClick"
         >
           <view wx:if="{{file.percent === -1}}" class="{{classPrefix}}__progress-failed">
             <t-icon name="refresh" size="45rpx" color="#fff" />
