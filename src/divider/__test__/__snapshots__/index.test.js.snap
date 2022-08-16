@@ -2,7 +2,9 @@
 
 exports[`Divider :align center render correctly 1`] = `
 <main>
-  <t-divider>
+  <t-divider
+    class="divider-align"
+  >
     <wx-view
       class=""
     >
@@ -21,7 +23,9 @@ exports[`Divider :align center render correctly 1`] = `
 
 exports[`Divider :align left render correctly 1`] = `
 <main>
-  <t-divider>
+  <t-divider
+    class="divider-align"
+  >
     <wx-view
       class=""
     >
@@ -40,7 +44,9 @@ exports[`Divider :align left render correctly 1`] = `
 
 exports[`Divider :align right render correctly 1`] = `
 <main>
-  <t-divider>
+  <t-divider
+    class="divider-align"
+  >
     <wx-view
       class=""
     >
@@ -57,26 +63,7 @@ exports[`Divider :align right render correctly 1`] = `
 </main>
 `;
 
-exports[`Divider :content slot render correctly 1`] = `
-<main>
-  <t-divider>
-    <wx-view
-      class=""
-    >
-      <wx-view
-        class="t-class t-divider t-divider--horizontal t-divider--center  "
-        style=""
-      >
-        <wx-view
-          class="t-class-content t-divider__content"
-        />
-      </wx-view>
-    </wx-view>
-  </t-divider>
-</main>
-`;
-
-exports[`Divider :content string render correctly 1`] = `
+exports[`Divider :content render correctly 1`] = `
 <main>
   <t-divider>
     <wx-view
