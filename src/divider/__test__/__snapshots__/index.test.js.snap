@@ -101,25 +101,6 @@ exports[`Divider :dashed render correctly 1`] = `
 </main>
 `;
 
-exports[`Divider :dashed render correctly 2`] = `
-<main>
-  <t-divider>
-    <wx-view
-      class=""
-    >
-      <wx-view
-        class="t-class t-divider t-divider--horizontal t-divider--center  "
-        style=""
-      >
-        <wx-view
-          class="t-class-content t-divider__content"
-        />
-      </wx-view>
-    </wx-view>
-  </t-divider>
-</main>
-`;
-
 exports[`Divider :layout horizontal render correctly 1`] = `
 <main>
   <t-divider>
