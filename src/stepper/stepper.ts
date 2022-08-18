@@ -6,12 +6,7 @@ const { prefix } = config;
 
 @wxComponent()
 export default class Stepper extends SuperComponent {
-  externalClasses = [
-    `${prefix}-class`,
-    `${prefix}-class-input`,
-    `${prefix}-class-minus`,
-    `${prefix}-class-plus`,
-  ];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-input`, `${prefix}-class-minus`, `${prefix}-class-plus`];
 
   options = {
     addGlobalClass: true,
@@ -96,10 +91,21 @@ export default class Stepper extends SuperComponent {
         .split('.')[0]
         .replace(/[^-0-9]/g, '') || 0;
     this.setValue(this.format(Number(value)));
-    this.triggerEvent('blur', { value });
+    return value;
   }
 
-  blurHandler(e) {
-    this.changeValue(e);
+  focusHandle(e) {
+    const value = this.changeValue(e);
+    this.triggerEvent('focus', { value });
+  }
+
+  inputHandle(e) {
+    const value = this.changeValue(e);
+    this.triggerEvent('input', { value });
+  }
+
+  blurHandle(e) {
+    const value = this.changeValue(e);
+    this.triggerEvent('blur', { value });
   }
 }
