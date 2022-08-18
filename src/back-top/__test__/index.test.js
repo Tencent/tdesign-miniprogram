@@ -8,6 +8,7 @@ describe('back-top', () => {
   });
 
   it(`back-top: base`, async () => {
+    const onToTop = jest.fn();
     const id = simulate.load({
       template: `<t-back-top class="base" theme="{{backTopTheme}}" text="{{backTopText}}" bind:to-top="onToTop"></t-back-top>`,
       data: {
@@ -15,10 +16,7 @@ describe('back-top', () => {
         backTopText: '顶部',
       },
       methods: {
-        onToTop(e) {
-          // eslint-disable-next-line no-console
-          console.log('backToTop', e);
-        },
+        onToTop,
       },
       usingComponents: {
         't-back-top': backtop,
@@ -30,8 +28,8 @@ describe('back-top', () => {
 
     const $backTop = comp.querySelector('.base >>> .t-back-top'); // 获取back-top 节点
     // 模拟触发事件;
-    $backTop.dispatchEvent('tap', {
-      // 传递事件参数
-    });
+    $backTop.dispatchEvent('tap');
+    await simulate.sleep(10);
+    expect(onToTop).toHaveBeenCalledTimes(1);
   });
 });
