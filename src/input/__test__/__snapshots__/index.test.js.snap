@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`input props : clearable && label && suffix 1`] = `
+<t-input
+  class="base"
+>
+  <wx-view
+    class="t-input   t-input--size-small t-input--bordered t-class"
+  >
+    <wx-view
+      class="t-input__label"
+    >
+      <wx-text
+        class="t-class-label"
+      >
+        tdesign
+      </wx-text>
+    </wx-view>
+    <wx-view
+      class="t-input__wrap"
+    >
+      <wx-view
+        class="t-input__content"
+      >
+        <wx-input
+          adjustPosition="{{true}}"
+          alwaysEmbed="{{false}}"
+          autoFocus="{{false}}"
+          class="t-input__control t-input__control--right   t-class-input"
+          confirmHold="{{false}}"
+          confirmType="done"
+          cursor="{{0}}"
+          cursorSpacing="{{0}}"
+          disabled="{{false}}"
+          focus="{{false}}"
+          holdKeyboard="{{false}}"
+          maxlength="{{-1}}"
+          password="{{false}}"
+          placeholder=""
+          placeholderClass="t-input__placeholder"
+          placeholderStyle=""
+          safePasswordCertPath=""
+          safePasswordCustomHash=""
+          safePasswordLength="{{0}}"
+          safePasswordNonce=""
+          safePasswordSalt=""
+          safePasswordTimeStamp="{{0}}"
+          selectionEnd="{{-1}}"
+          selectionStart="{{-1}}"
+          type="text"
+          value="input输入框"
+          bind:blur="onBlur"
+          bind:confirm="onConfirm"
+          bind:focus="onFocus"
+          bind:input="onInput"
+          bind:keyboardheightchange="onKeyboardHeightChange"
+        />
+        <wx-view
+          class="t-input__wrap--icon"
+          bind:tap="clearInput"
+        >
+          <t-icon
+            class="t-class-clearable"
+          >
+            <wx-label
+              class="t-class t-icon t-icon-close-circle-filled t-icon-base"
+              style=";;font-size: 39rpx"
+              bind:tap="onTap"
+            />
+          </t-icon>
+        </wx-view>
+        <wx-view
+          class="t-input__wrap--suffix"
+        />
+        <wx-view
+          class="t-input__wrap--suffix-text t-class-suffix"
+        >
+          <wx-text>
+            后置内容
+          </wx-text>
+        </wx-view>
+        <wx-view
+          class="t-input__wrap--icon"
+        >
+          <t-icon
+            class="t-class-suffix-icon"
+          >
+            <wx-label
+              class="t-class t-icon t-icon-app t-icon-base"
+              style=";;font-size: 39rpx"
+              bind:tap="onTap"
+            />
+          </t-icon>
+        </wx-view>
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</t-input>
+`;
+
+exports[`input slots : label 1`] = `
+<t-input
+  class="base"
+>
+  <wx-view
+    class="t-input   t-input--size-small t-input--bordered t-class"
+  >
+    <wx-view
+      class="t-input__label"
+    >
+      <wx-text
+        slot="label"
+      >
+        标签文字
+        <wx-text
+          style="color: #e34d59"
+        >
+          *
+        </wx-text>
+      </wx-text>
+    </wx-view>
+    <wx-view
+      class="t-input__wrap"
+    >
+      <wx-view
+        class="t-input__content"
+      >
+        <wx-input
+          adjustPosition="{{true}}"
+          alwaysEmbed="{{false}}"
+          autoFocus="{{false}}"
+          class="t-input__control    t-class-input"
+          confirmHold="{{false}}"
+          confirmType="done"
+          cursor="{{0}}"
+          cursorSpacing="{{0}}"
+          disabled="{{false}}"
+          focus="{{false}}"
+          holdKeyboard="{{false}}"
+          maxlength="{{-1}}"
+          password="{{false}}"
+          placeholder=""
+          placeholderClass="t-input__placeholder"
+          placeholderStyle=""
+          safePasswordCertPath=""
+          safePasswordCustomHash=""
+          safePasswordLength="{{0}}"
+          safePasswordNonce=""
+          safePasswordSalt=""
+          safePasswordTimeStamp="{{0}}"
+          selectionEnd="{{-1}}"
+          selectionStart="{{-1}}"
+          type="text"
+          value=""
+          bind:blur="onBlur"
+          bind:confirm="onConfirm"
+          bind:focus="onFocus"
+          bind:input="onInput"
+          bind:keyboardheightchange="onKeyboardHeightChange"
+        />
+        <wx-view
+          class="t-input__wrap--suffix"
+        />
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</t-input>
+`;
