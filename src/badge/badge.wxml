@@ -6,7 +6,7 @@
     <text wx:else class="{{classPrefix}}__content-text">{{content}}</text>
   </view>
   <view
-    wx:if="{{count !== 'slot' && this.isShowBadge({dot,count,visible})}}"
+    wx:if="{{count !== 'slot' && this.isShowBadge({dot,count,showZero})}}"
     class="{{this.getBadgeInnerClass({dot, size, shape, count})}} t-has-count t-class-count"
     style="{{this.getBadgeStyles({color, offset})}}"
     >{{ this.getBadgeValue({dot, count, maxCount}) }}
