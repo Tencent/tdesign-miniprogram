@@ -43,6 +43,13 @@ export default class Input extends SuperComponent {
     maxchars: -1,
   };
 
+  lifetimes = {
+    ready() {
+      const { value } = this.properties;
+      this.updateValue(value);
+    },
+  };
+
   methods = {
     updateValue(value) {
       const { maxcharacter } = this.properties;
