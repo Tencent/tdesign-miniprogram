@@ -82,12 +82,14 @@ export default class Upload extends SuperComponent {
   }
 
   uploadFiles(files: UploadFile[]) {
-    return new Promise((resolve) => {
-      // 开始调用上传函数
+    // 如果是正常函数，并且是个promise，则返回，否则返回一个空的promise
+    if (typeof this.data.requestMethod === 'function') {
       const task = this.data.requestMethod(files);
       if (task instanceof Promise) {
         return task;
       }
+    }
+    return new Promise((resolve) => {
       resolve({});
     });
   }
