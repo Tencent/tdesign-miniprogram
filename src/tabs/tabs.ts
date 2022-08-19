@@ -69,7 +69,8 @@ export default class Tabs extends SuperComponent {
     isScrollY: false,
     direction: 'X',
     animate: { duration: 0 },
-    offset: 0,
+    // offset: 0,
+    itemId: 'item0',
   };
 
   created() {
@@ -140,19 +141,19 @@ export default class Tabs extends SuperComponent {
     }
   }
 
-  calcScrollOffset(
-    containerWidth: number,
-    totalWidth: number,
-    targetLeft: number,
-    targetWidth: number,
-    offset: number,
-  ) {
-    if (offset + targetLeft > containerWidth / 2) {
-      const maxOffset = totalWidth - containerWidth;
-      return Math.min(Math.abs(containerWidth / 2 - targetLeft - offset - targetWidth / 2), maxOffset);
-    }
-    return 0;
-  }
+  // calcScrollOffset(
+  //   containerWidth: number,
+  //   totalWidth: number,
+  //   targetLeft: number,
+  //   targetWidth: number,
+  //   offset: number,
+  // ) {
+  //   if (offset + targetLeft > containerWidth / 2) {
+  //     const maxOffset = totalWidth - containerWidth;
+  //     return Math.min(Math.abs(containerWidth / 2 - targetLeft - offset - targetWidth / 2), maxOffset);
+  //   }
+  //   return 0;
+  // }
 
   setTrack() {
     if (!this.properties.showBottomLine) return;
@@ -175,15 +176,15 @@ export default class Tabs extends SuperComponent {
         }
 
         if (this.containerWidth) {
-          const offset = this.calcScrollOffset(
-            this.containerWidth,
-            rect.width * res.length,
-            rect.left,
-            rect.width,
-            this.data.offset,
-          );
+          // const offset = this.calcScrollOffset(
+          //   this.containerWidth,
+          //   rect.width * res.length,
+          //   rect.left,
+          //   rect.width,
+          //   this.data.offset,
+          // );
           this.setData({
-            offset,
+            itemId: `item${rect.dataset.index}`,
           });
         }
 
