@@ -5,6 +5,24 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.19.2 `2022-08-22` 
+### 🚀 Features
+- `Badge`:  新增单元测试 @Perisiguiendo ([#776](https://github.com/Tencent/tdesign-miniprogram/pull/776))
+- `Input`: 新增单元测试 @anlyyao ([#775](https://github.com/Tencent/tdesign-miniprogram/pull/775))
+- `Textarea`: 新增单元测试 @anlyyao ([#774](https://github.com/Tencent/tdesign-miniprogram/pull/774))
+- `Stepper`: 新增单元测试 @anlyyao ([#773](https://github.com/Tencent/tdesign-miniprogram/pull/773))
+- `Divider`:  新增单元测试 @Perisiguiendo ([#771](https://github.com/Tencent/tdesign-miniprogram/pull/771))
+- `Result`:  新增单元测试 @CodingOnStar ([#769](https://github.com/Tencent/tdesign-miniprogram/pull/769))
+- `Progress`:  `strokeWidth` 支持字符类型 @anlyyao ([#772](https://github.com/Tencent/tdesign-miniprogram/pull/772))
+- `Progress`: 更新测试用例 @anlyyao ([#772](https://github.com/Tencent/tdesign-miniprogram/pull/772))
+- `Rate`: 新增单元测试 @isanxia ([#767](https://github.com/Tencent/tdesign-miniprogram/pull/767))
+- `ImageViewer`: 更新 `demo` 示例图片 @anlyyao ([#782](https://github.com/Tencent/tdesign-miniprogram/pull/782))
+- `Rate`: 新增单元测试 @isanxia ([#767](https://github.com/Tencent/tdesign-miniprogram/pull/767))
+### 🐞 Bug Fixes
+- `Badge`: 修复 `showZero` && `offset` 无单位情况 @Perisiguiendo ([#776](https://github.com/Tencent/tdesign-miniprogram/pull/776))
+- `Popup`: 修复 `zIndex` 无效问题 @anlyyao ([#784](https://github.com/Tencent/tdesign-miniprogram/pull/784))
+- `ImageViewer`: 修复图片宽高都小于屏幕宽高时的拉伸问题 @anlyyao ([#782](https://github.com/Tencent/tdesign-miniprogram/pull/782))
+
 ## 🌈 0.19.1 `2022-08-15` 
 ### 🚀 Features
 - `Upload`: 新增 click 事件 @LeeJim ([#762](https://github.com/Tencent/tdesign-miniprogram/pull/762))
