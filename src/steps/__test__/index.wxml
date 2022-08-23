@@ -1,0 +1,38 @@
+<t-steps class="a1" default-current="0" layout="{{layout}}">
+  <t-step-item class="item" title="步骤1"></t-step-item>
+  <t-step-item class="item" title="步骤2"></t-step-item>
+</t-steps>
+
+<t-steps class="a2" default-current="1" theme="dot">
+  <t-step-item class="item" title="步骤1"></t-step-item>
+  <t-step-item class="item" title="步骤2"></t-step-item>
+</t-steps>
+
+<t-steps class="b" current="{{current1}}" bind:change="onChange1">
+  <t-step-item class="item" title="步骤1"></t-step-item>
+  <t-step-item class="item" title="步骤2"></t-step-item>
+</t-steps>
+
+<t-steps class="c" current="{{current2}}" current-status="error" bind:change="onChange2">
+  <t-step-item class="item" title="步骤1"></t-step-item>
+  <t-step-item class="item" title="步骤2"></t-step-item>
+</t-steps>
+
+<t-steps class="d" readonly="{{readonly}}">
+  <t-step-item class="item" title="步骤1"></t-step-item>
+  <t-step-item class="item" title="步骤2"></t-step-item>
+</t-steps>
+
+<t-steps class="e1" current="0-1" readonly="true" layout="vertical">
+  <t-step-item class="item" title="步骤1" subStepItems="{{subStepItems1}}" />
+  <t-step-item class="item" title="步骤2" />
+</t-steps>
+
+<t-steps class="e2" current="0-1" readonly="true" layout="vertical">
+  <t-step-item class="item" title="步骤1" subStepItems="{{subStepItems2}}" />
+  <t-step-item class="item" title="步骤2" />
+</t-steps>
+
+<t-steps class="f" current="0">
+  <t-step-item class="item" title="步骤" status="error" />
+</t-steps>
