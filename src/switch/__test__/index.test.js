@@ -128,13 +128,13 @@ describe('switch', () => {
 
     it(':colors one', async () => {
       const id = simulate.load({
-        template: `<t-switch class="switch" colors="{{colors}}" value="{{value}}" disabled="{{disabled}}"></t-switch>`,
+        template: `<t-switch class="switch" colors="{{colors}}" defaultValue="{{defaultValue}}" disabled="{{disabled}}"></t-switch>`,
         usingComponents: {
           't-switch': switchComp,
         },
         data: {
           colors: ['#c0b8e9'],
-          value: true,
+          defaultValue: true,
           disabled: false,
         },
       });
@@ -193,12 +193,12 @@ describe('switch', () => {
         value = e.detail;
       });
       const id = simulate.load({
-        template: `<t-switch class="switch" bind:change="onChange" value="{{value}}"></t-switch>`,
+        template: `<t-switch class="switch" bind:change="onChange" defaultValue="{{defaultValue}}"></t-switch>`,
         usingComponents: {
           't-switch': switchComp,
         },
         data: {
-          value: false,
+          defaultValue: false,
         },
         methods: {
           onChange,
