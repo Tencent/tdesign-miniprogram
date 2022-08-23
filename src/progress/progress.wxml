@@ -2,7 +2,7 @@
   <view class="{{ classPrefix }}__inner {{prefix}}-class">
     <view
       class="{{ classPrefix }}__bar {{prefix}}-class-bar"
-      style="height: {{ strokeWidth }}px; background: {{ trackColor }}"
+      style="height: {{ heightBar }}; background: {{ trackColor }}"
     >
       <view class="{{ classPrefix }}__bar-percent" style="background:{{ colorBar }}; width:{{ computedProgress + '%'}}">
       </view>

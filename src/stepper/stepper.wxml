@@ -18,7 +18,9 @@
     disabled="{{ disabled || disableInput }}"
     type="number"
     value="{{ currentValue }}"
-    catchblur="blurHandler"
+    catchinput="inputHandle"
+    catchfocus="focusHandle"
+    catchblur="blurHandle"
   />
   <view
     class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}} hotspot-expanded relative"

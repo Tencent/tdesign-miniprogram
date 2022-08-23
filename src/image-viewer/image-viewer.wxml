@@ -17,9 +17,9 @@
           bind:tap="onClose"
         >
           <t-image
-            t-class="t-class-image"
+            t-class="t-image--external"
             style="{{imagesShape[index].style}}"
-            mode="{{imagesShape[index].mode}}"
+            mode="aspectFit"
             lazy
             src="{{item}}"
             data-index="{{index}}"

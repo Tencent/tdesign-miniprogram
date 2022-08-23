@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stepper event : input 1`] = `
+<wx-view
+  class="t-stepper t-stepper--normal  t-class"
+>
+  <wx-view
+    class="t-stepper__minus t-class-minus  hotspot-expanded relative"
+    catch:tap="minusValue"
+  >
+    <t-icon
+      class="t-stepper__minus-icon"
+    >
+      <wx-label
+        class="t-class t-icon t-icon-remove t-icon-base"
+        style="color:#444;font-size:40rpx;"
+        bind:tap="onTap"
+      />
+    </t-icon>
+  </wx-view>
+  <wx-input
+    class="t-stepper__input t-class-input"
+    disabled="{{false}}"
+    style="width: 100rpx"
+    type="number"
+    value="{{4}}"
+    catch:blur="blurHandle"
+    catch:focus="focusHandle"
+    catch:input="inputHandle"
+  />
+  <wx-view
+    class="t-stepper__plus t-class-plus  hotspot-expanded relative"
+    catch:tap="plusValue"
+  >
+    <t-icon
+      class="t-stepper__plus-icon"
+    >
+      <wx-label
+        class="t-class t-icon t-icon-add t-icon-base"
+        style="color:#444;font-size:40rpx;"
+        bind:tap="onTap"
+      />
+    </t-icon>
+  </wx-view>
+</wx-view>
+`;
+
+exports[`stepper event : input 2`] = `
+<wx-view
+  class="t-stepper t-stepper--normal  t-class"
+>
+  <wx-view
+    class="t-stepper__minus t-class-minus  hotspot-expanded relative"
+    catch:tap="minusValue"
+  >
+    <t-icon
+      class="t-stepper__minus-icon"
+    >
+      <wx-label
+        class="t-class t-icon t-icon-remove t-icon-base"
+        style="color:#444;font-size:40rpx;"
+        bind:tap="onTap"
+      />
+    </t-icon>
+  </wx-view>
+  <wx-input
+    class="t-stepper__input t-class-input"
+    disabled="{{false}}"
+    style="width: 100rpx"
+    type="number"
+    value="{{4}}"
+    catch:blur="blurHandle"
+    catch:focus="focusHandle"
+    catch:input="inputHandle"
+  />
+  <wx-view
+    class="t-stepper__plus t-class-plus  hotspot-expanded relative"
+    catch:tap="plusValue"
+  >
+    <t-icon
+      class="t-stepper__plus-icon"
+    >
+      <wx-label
+        class="t-class t-icon t-icon-add t-icon-base"
+        style="color:#444;font-size:40rpx;"
+        bind:tap="onTap"
+      />
+    </t-icon>
+  </wx-view>
+</wx-view>
+`;

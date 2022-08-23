@@ -60,6 +60,7 @@ const props: TdPopupProps = {
   /** 组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500 */
   zIndex: {
     type: Number,
+    value: 11500,
   },
 };
 

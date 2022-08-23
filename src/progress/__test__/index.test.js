@@ -108,7 +108,7 @@ describe('progress', () => {
       trackColor: 'rgb(0, 82, 200)',
     });
     const bar = comp.querySelector('.base >>> .t-progress__bar');
-    expect(window.getComputedStyle(bar.dom).background).toBe('rgb(0, 82, 200)');
+    expect(bar.dom.getAttribute('style').includes('background: rgb(0, 82, 200)')).toBeTruthy();
   });
 
   it(`: percentage `, () => {

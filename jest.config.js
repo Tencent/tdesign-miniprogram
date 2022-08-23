@@ -12,15 +12,18 @@ module.exports = {
   coverageDirectory: '<rootDir>/test/unit/coverage',
   reporters: [
     'default',
-    ['./node_modules/jest-html-reporter', {
-      pageTitle: 'TDesign-miniprogram Unit Test Report',
-      outputPath: './test/unit/report/test-report.html',
-    }],
+    [
+      './node_modules/jest-html-reporter',
+      {
+        pageTitle: 'TDesign-miniprogram Unit Test Report',
+        outputPath: './test/unit/report/test-report.html',
+      },
+    ],
   ],
   setupFiles: ['<rootDir>/script/test/setup.js'],
   coverageReporters: ['html', 'json-summary'],
   globals: {
     CONFIG_PREFIX: 't',
   },
-  snapshotSerializers: ["miniprogram-simulate/jest-snapshot-plugin"]
+  snapshotSerializers: ['miniprogram-simulate/jest-snapshot-plugin'],
 };

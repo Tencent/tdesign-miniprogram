@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
+import { isNumber } from '../common/utils';
 
 const { prefix } = config;
 const classPrefix = `${prefix}-progress`;
@@ -20,6 +21,7 @@ export default class Progress extends SuperComponent {
     prefix,
     classPrefix,
     colorBar: '',
+    heightBar: '',
     computedStatus: '',
     computedProgress: 0,
   };
@@ -38,6 +40,14 @@ export default class Progress extends SuperComponent {
       this.setData({
         colorBar: getBackgroundColor(color),
       });
+    },
+
+    strokeWidth(strokeWidth) {
+      if (!strokeWidth) {
+        return '';
+      }
+      const height = isNumber(strokeWidth) ? `${strokeWidth}px` : strokeWidth;
+      this.setData({ heightBar: height });
     },
   };
 }

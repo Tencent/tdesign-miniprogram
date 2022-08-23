@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`textarea slots : label 1`] = `
+<t-textarea
+  class="base"
+>
+  <wx-view
+    class="t-textarea t-class"
+  >
+    <wx-view
+      class="t-textarea__name t-class-label"
+    >
+      <wx-text
+        slot="label"
+      >
+        标签文字
+      </wx-text>
+    </wx-view>
+    <wx-view
+      class="t-textarea__wrapper"
+    >
+      <wx-textarea
+        adjustPosition="{{true}}"
+        autoFocus="{{false}}"
+        autoHeight="{{false}}"
+        class="t-textarea__wrapper-textarea t-class-textarea"
+        confirmHold="{{false}}"
+        confirmType="done"
+        cursorSpacing="{{0}}"
+        disabled="{{false}}"
+        focus="{{false}}"
+        maxlength="{{-1}}"
+        placeholder=""
+        placeholderClass="t-textarea__placeholder"
+        value=""
+        bind:blur="onBlur"
+        bind:confirm="onConfirm"
+        bind:focus="onFocus"
+        bind:input="onInput"
+        bind:linechange="onLineChange"
+      />
+    </wx-view>
+  </wx-view>
+</t-textarea>
+`;
