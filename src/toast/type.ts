@@ -69,7 +69,7 @@ export interface TdToastProps {
   };
   /**
    * 是否显示遮罩层
-   * @default true
+   * @default false
    */
   showOverlay?: {
     type: BooleanConstructor;
