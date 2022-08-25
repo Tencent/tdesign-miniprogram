@@ -156,17 +156,17 @@ describe('switch', () => {
     });
 
     it(':custom-value', async () => {
-      const onChange = jest.fn();
+      let val;
+      const onChange = jest.fn((e) => {
+        val = e.detail;
+      });
       const id = simulate.load({
         template: `<t-switch class="switch" customValue="{{customValue}}" defaultValue="{{defaultValue}}" bind:change="onChange"></t-switch>`,
         usingComponents: {
           't-switch': switchComp,
         },
         data: {
-          customValue: {
-            type: Array,
-            value: [false, true], // [打开时的值，关闭时的值]
-          },
+          customValue: [false, true], // [打开时的值，关闭时的值]
           defaultValue: true,
         },
         methods: {
@@ -180,9 +180,9 @@ describe('switch', () => {
       expect($switch.instance.data.value).toBe(true);
 
       const $body = comp.querySelector('.switch >>> .t-switch__body');
-      $body.dispatchEvent('change', { detail: { value: false } });
+      $body.dispatchEvent('tap');
       await simulate.sleep(20);
-      expect(onChange.mock.calls[0][0].detail).toStrictEqual({ value: false });
+      expect(val).toStrictEqual({ value: false });
     });
   });
 
