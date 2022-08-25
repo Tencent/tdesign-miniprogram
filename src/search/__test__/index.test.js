@@ -58,10 +58,9 @@ describe('search', () => {
       expect(
         $input
           .toJSON()
-          .attrs.filter((v) => v.name === 'placeholderClass')
-          .map((v) => v.value)
-          .includes('t-search__placeholder--center'),
-      );
+          .attrs.filter((v) => v.name === 'placeholderClass')[0]
+          .value.includes('t-search__placeholder--center'),
+      ).toBeTruthy();
     });
 
     it(':label', () => {
@@ -98,10 +97,9 @@ describe('search', () => {
       expect(
         $input
           .toJSON()
-          .attrs.filter((v) => v.name === 'placeholder')
-          .map((v) => v.value)
-          .includes('TDesign MiniProgram'),
-      );
+          .attrs.filter((v) => v.name === 'placeholder')[0]
+          .value.includes('TDesign MiniProgram'),
+      ).toBeTruthy();
     });
 
     it(':left-icon & right-icon', () => {
