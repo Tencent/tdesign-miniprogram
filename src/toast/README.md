@@ -47,5 +47,12 @@ message | String / Slot | - | 弹窗显示文字 | N
 overlay-props | Object | {} | 遮罩层属性，透传至 Overlay | N
 placement | String | middle | 弹窗展示位置。可选项： top/middle/bottom | N
 prevent-scroll-through | Boolean | false | 防止滚动穿透，即不允许点击和滚动 | N
-show-overlay | Boolean | true | 是否显示遮罩层 | N
+show-overlay | Boolean | false | 是否显示遮罩层 | N
 theme | String | - | 提示类型。可选项：loading/success/fail | N
+
+### Toast Events
+
+名称 | 参数 | 描述
+-- | -- | --
+close | - | 轻提示隐藏的时候触发
+destory | - | 轻提示销毁的时候触发
