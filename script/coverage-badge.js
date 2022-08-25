@@ -35,7 +35,7 @@ Object.keys(data).forEach((fPath) => {
 ans.forEach((items, component) => {
   let svgs = '';
   Object.entries(items).forEach(([type, item]) => {
-    let val = ((item.covered / item.total) * 100).toFixed(0);
+    let val = item.total === 0 ? 100 : ((item.covered / item.total) * 100).toFixed(0);
     const relatedMap = {
       avatar: 'avatar-group',
       button: 'button-group',
@@ -55,7 +55,8 @@ ans.forEach((items, component) => {
     if (component in relatedMap) {
       const related = ans.get(relatedMap[component]);
       if (related) {
-        val = (((item.covered + related[type].covered) / (item.total + related[type].total)) * 100).toFixed(0);
+        const denominator = item.total + related[type].total;
+        val = denominator === 0 ? 100 : (((item.covered + related[type].covered) / denominator) * 100).toFixed(0);
       }
     }
     const message = isNaN(val) ? '0' : val;
