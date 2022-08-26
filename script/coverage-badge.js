@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const os = require('os');
 
 const specify = process.argv[2];
 
@@ -8,8 +9,9 @@ const data = require('../test/unit/coverage/coverage-summary.json');
 const ans = new Map();
 
 Object.keys(data).forEach((fPath) => {
-  if (fPath.startsWith('/')) {
-    const [, component] = /src\/([\w-]+)\//.exec(fPath) ?? [];
+  const _fPath = os.platform() === 'win32' ? fPath.slice(2).replace(/\\/g, '/') : fPath;
+  if (_fPath.startsWith('/')) {
+    const [, component] = /src\/([\w-]+)\//.exec(_fPath) ?? [];
 
     if (component) {
       if (!fPath.includes('/_example/')) {
