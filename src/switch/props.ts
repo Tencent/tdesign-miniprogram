@@ -37,14 +37,14 @@ const props: TdSwitchProps = {
   },
   /** 开关值 */
   value: {
-    type: String,
-    optionalTypes: [Number, Boolean],
+    type: Boolean,
+    optionalTypes: [Number, String],
     value: null,
   },
   /** 开关值，非受控属性 */
   defaultValue: {
-    type: String,
-    optionalTypes: [Number, Boolean],
+    type: Boolean,
+    optionalTypes: [Number, String],
     value: null,
   },
 };
