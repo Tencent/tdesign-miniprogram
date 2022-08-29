@@ -1,7 +1,7 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "0.19.1",
+  "version": "0.19.2",
   "description": "tdesign-miniprogram",
   "title": "tdesign-miniprogram",
   "main": "miniprogram_dist/index.js",
@@ -32,6 +32,7 @@
     "site:prerender": "node script/prerender.mjs",
     "cover": "jest --coverage",
     "test": "jest && jest -c jest.e2e.config.js",
+    "test:demo": "node gen-demo-test.js",
     "test:unit": "jest",
     "test:e2e": "jest -c jest.e2e.config.js",
     "badge": "node script/coverage-badge.js",

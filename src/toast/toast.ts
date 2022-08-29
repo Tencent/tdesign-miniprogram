@@ -78,6 +78,8 @@ export default class Toast extends SuperComponent {
         this.setData({
           inserted: false,
         });
+        this.data?.close?.();
+        this.triggerEvent('close');
       }, 300);
     },
 
@@ -90,6 +92,7 @@ export default class Toast extends SuperComponent {
         clearTimeout(this.hideTimer);
         this.hideTimer = null;
       }
+      this.triggerEvent('destory');
     },
   };
 }

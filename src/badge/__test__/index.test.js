@@ -28,7 +28,7 @@ describe('badge', () => {
 
   it(':color', () => {
     const id = simulate.load({
-      template: `<t-badge class="badge" color={{color}} dot content="测试"></t-badge>`,
+      template: `<t-badge class="badge" color="{{color}}" dot content="测试"></t-badge>`,
       usingComponents: {
         't-badge': badge,
       },
@@ -45,7 +45,7 @@ describe('badge', () => {
 
   it(':content', () => {
     const id = simulate.load({
-      template: `<t-badge class="badge" content={{content}} dot></t-badge>`,
+      template: `<t-badge class="badge" content="{{content}}" dot></t-badge>`,
       usingComponents: {
         't-badge': badge,
       },
@@ -62,7 +62,7 @@ describe('badge', () => {
 
   it(':count', () => {
     const id = simulate.load({
-      template: `<t-badge class="badge" count={{count}} content="测试"></t-badge>`,
+      template: `<t-badge class="badge" count="{{count}}" content="测试"></t-badge>`,
       usingComponents: {
         't-badge': badge,
       },
@@ -79,7 +79,7 @@ describe('badge', () => {
 
   it(':max-count', () => {
     const id = simulate.load({
-      template: `<t-badge class="badge" count={{count}} maxCount={{maxCount}} content="测试"></t-badge>`,
+      template: `<t-badge class="badge" count="{{count}}" maxCount="{{maxCount}}" content="测试"></t-badge>`,
       usingComponents: {
         't-badge': badge,
       },
@@ -98,7 +98,7 @@ describe('badge', () => {
   shapes.forEach((shape) => {
     it(`:shape ${shape}`, () => {
       const id = simulate.load({
-        template: `<t-badge class="badge" count={{count}} shape={{shape}} content="测试"></t-badge>`,
+        template: `<t-badge class="badge" count="{{count}}" shape="{{shape}}" content="测试"></t-badge>`,
         usingComponents: {
           't-badge': badge,
         },
@@ -118,7 +118,7 @@ describe('badge', () => {
   sizes.forEach((size) => {
     it(`:size ${size}`, () => {
       const id = simulate.load({
-        template: `<t-badge class="badge" dot size={{size}} content="测试"></t-badge>`,
+        template: `<t-badge class="badge" dot size="{{size}}" content="测试"></t-badge>`,
         usingComponents: {
           't-badge': badge,
         },
@@ -140,7 +140,7 @@ describe('badge', () => {
 
   it(':show-zero', async () => {
     const id = simulate.load({
-      template: `<t-badge class="badge" count={{count}} showZero={{showZero}} content="测试"></t-badge>`,
+      template: `<t-badge class="badge" count="{{count}}" showZero="{{showZero}}" content="测试"></t-badge>`,
       usingComponents: {
         't-badge': badge,
       },
@@ -164,7 +164,7 @@ describe('badge', () => {
 
   it(':offset string with unit', async () => {
     const id = simulate.load({
-      template: `<t-badge class="badge" count={{count}} offset={{offset}} content="测试"></t-badge>`,
+      template: `<t-badge class="badge" count="{{count}}" offset="{{offset}}" content="测试"></t-badge>`,
       usingComponents: {
         't-badge': badge,
       },
@@ -184,7 +184,7 @@ describe('badge', () => {
 
   it(':offset number without unit', async () => {
     const id = simulate.load({
-      template: `<t-badge class="badge" count={{count}} offset={{offset}} content="测试"></t-badge>`,
+      template: `<t-badge class="badge" count="{{count}}" offset="{{offset}}" content="测试"></t-badge>`,
       usingComponents: {
         't-badge': badge,
       },

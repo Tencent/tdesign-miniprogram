@@ -1,5 +1,5 @@
 // 将rgb颜色转成hex
-function rGB2Hex(color) {
+function rgb2Hex(color) {
   const rgb = color.split(',');
   const r = parseInt(rgb[0].split('(')[1], 10);
   const g = parseInt(rgb[1], 10);
@@ -26,6 +26,6 @@ function hex2Rgb(hex) {
 }
 
 module.exports = {
-  rGB2Hex,
+  rgb2Hex,
   hex2Rgb,
 };

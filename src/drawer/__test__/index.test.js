@@ -72,7 +72,7 @@ describe('drawer', () => {
 
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
-      const popup = comp.querySelector('.base >>> .t-popup__content');
+      const popup = comp.querySelector('.base >>> .t-popup');
       expect(popup.dom.getAttribute('style').includes('z-index:99')).toBeTruthy();
     });
   });
