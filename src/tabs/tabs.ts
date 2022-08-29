@@ -69,7 +69,7 @@ export default class Tabs extends SuperComponent {
     isScrollY: false,
     direction: 'X',
     animate: { duration: 0 },
-    itemId: 'item0',
+    offset: 0,
   };
 
   created() {

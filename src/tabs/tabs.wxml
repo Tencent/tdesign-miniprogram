@@ -16,14 +16,12 @@
         scroll-x="{{isScrollX}}"
         scroll-y="{{isScrollY}}"
         scroll-with-animation
-        scroll-into-view="{{itemId}}"
       >
         <view class="{{classPrefix}}__nav">
           <view
             wx:for="{{tabs}}"
             wx:key="index"
             data-index="{{index}}"
-            id="{{'item'+index}}"
             class="{{classPrefix}}__item {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
             bind:tap="onTabTap"
           >
