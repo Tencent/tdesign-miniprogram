@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.19.3 `2022-08-29` 
+### 🚀 Features
+- `Toast`: 新增 close 事件 @AntzyMo ([#680](https://github.com/Tencent/tdesign-miniprogram/pull/680))
+- `Toast`: 新增 destory 事件 @LeeJim ([#796](https://github.com/Tencent/tdesign-miniprogram/pull/796))
+### 🐞 Bug Fixes
+- `Picker`: 修复 `Picker` 示例显示不全 @anlyyao ([#804](https://github.com/Tencent/tdesign-miniprogram/pull/804))
+### 🚧 Others
+- `Toast`: 新增单元测试 @LeeJim ([#797](https://github.com/Tencent/tdesign-miniprogram/pull/797))
+- `Footer`: 新增单元测试 @zhangpaopao0609 ([#794](https://github.com/Tencent/tdesign-miniprogram/pull/794))
+- `Step`: 新增单元测试 @isanxia ([#792](https://github.com/Tencent/tdesign-miniprogram/pull/792))
+- `Search`: 新增单元测试 @Perisiguiendo ([#790](https://github.com/Tencent/tdesign-miniprogram/pull/790))
+- `Switch`: 新增单元测试 @Perisiguiendo ([#791](https://github.com/Tencent/tdesign-miniprogram/pull/791))
+- `Empty`: 新增单元测试 @AntzyMo ([#801](https://github.com/Tencent/tdesign-miniprogram/pull/801))
+- `Skeleton`: 新增单元测试 @Perisiguiendo ([#803](https://github.com/Tencent/tdesign-miniprogram/pull/803))
+
 ## 🌈 0.19.2 `2022-08-22` 
 ### 🚀 Features
 - `Badge`:  新增单元测试 @Perisiguiendo ([#776](https://github.com/Tencent/tdesign-miniprogram/pull/776))
