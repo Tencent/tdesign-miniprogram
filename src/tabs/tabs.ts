@@ -140,6 +140,19 @@ export default class Tabs extends SuperComponent {
     }
   }
 
+  calcScrollOffset(
+    containerWidth: number,
+    targetLeft: number,
+    targetWidth: number,
+    offset: number,
+    currentIndex: number,
+  ) {
+    if (offset + targetLeft > containerWidth / 2) {
+      return currentIndex * targetWidth - (1 / 2) * containerWidth + targetWidth / 2;
+    }
+    return 0;
+  }
+
   setTrack() {
     if (!this.properties.showBottomLine) return;
     const { children } = this;
@@ -161,8 +174,15 @@ export default class Tabs extends SuperComponent {
         }
 
         if (this.containerWidth) {
+          const offset = this.calcScrollOffset(
+            this.containerWidth,
+            rect.left,
+            rect.width,
+            this.data.offset,
+            currentIndex,
+          );
           this.setData({
-            itemId: `item${rect.dataset.index}`,
+            offset,
           });
         }
 
