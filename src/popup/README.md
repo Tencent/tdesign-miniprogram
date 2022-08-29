@@ -37,7 +37,7 @@ placement | String | top | 浮层出现位置。可选项：top/left/right/botto
 prevent-scroll-through | Boolean | true | 防止滚动穿透 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 visible | Boolean | false | 是否显示浮层。TS 类型：`boolean` | N
-z-index | Number | - | 组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500 | N
+z-index | Number | - | 组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 11500 | N
 duration | Number | 240 | 动画过渡时间 | N
 
 ### Popup Events

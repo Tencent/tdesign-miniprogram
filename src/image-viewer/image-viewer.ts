@@ -57,51 +57,35 @@ export default class ImageViewer extends SuperComponent {
 
     calcImageDisplayStyle(imageWidth, imageHeight) {
       const { windowWidth, windowHeight } = this.data;
+      const ratio = imageWidth / imageHeight;
       // 图片宽高都小于屏幕宽高
       if (imageWidth < windowWidth && imageHeight < windowHeight) {
         return {
-          mode: 'scaleToFill',
           styleObj: {
-            width: '100%',
+            width: `${imageWidth * 2}rpx`,
             height: `${imageHeight * 2}rpx`,
-          },
-        };
-      }
-
-      // 图片宽高都大等于屏幕宽高
-      if (imageWidth >= windowWidth && imageHeight >= windowHeight) {
-        return {
-          mode: 'aspectFit',
-          styleObj: {
-            width: '100%',
-            height: `${(imageHeight / (imageWidth / windowWidth)) * 2}rpx`,
-          },
-        };
-      }
-
-      // 图片超高：图片宽小于屏幕宽，图片高大于等于屏幕高
-      if (imageWidth < windowWidth && imageHeight >= windowHeight) {
-        return {
-          mode: 'widthFix',
-          styleObj: {
-            width: `${(imageWidth / (imageHeight / windowHeight)) * 2}rpx`,
-            height: '100vh',
             left: '50%',
             transform: 'translate(-50%, -50%)',
           },
         };
       }
-
-      // 图片超宽：图片宽大于等于屏幕宽，图片高小于屏幕高
-      if (imageWidth >= windowWidth && imageHeight < windowHeight) {
+      // 图片宽高至少存在一个大于屏幕宽高，此时判断图片宽高比，按长边显示
+      if (ratio >= 1) {
         return {
-          mode: 'heightFix',
           styleObj: {
-            width: '100%',
-            height: `${(imageHeight / (imageWidth / windowWidth)) * 2}rpx`,
+            width: '100vw',
+            height: `${(windowWidth / ratio) * 2}rpx`,
           },
         };
       }
+      return {
+        styleObj: {
+          width: `${ratio * windowHeight * 2}rpx`,
+          height: '100vh',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        },
+      };
     },
 
     onImageLoadSuccess(e: WechatMiniprogram.TouchEvent) {

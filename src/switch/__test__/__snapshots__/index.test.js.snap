@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`switch Props :base 1`] = `
+<main>
+  <t-switch>
+    <wx-view
+      class="t-class t-switch"
+    >
+      <wx-view
+        class="t-switch__body t-class-body  "
+        style=""
+        bind:tap="onTapBackground"
+      >
+        <wx-view
+          class="t-switch__dot t-class-dot  "
+          catch:tap="onTapDot"
+        />
+      </wx-view>
+    </wx-view>
+  </t-switch>
+</main>
+`;
