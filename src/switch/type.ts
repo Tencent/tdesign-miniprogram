@@ -55,16 +55,16 @@ export interface TdSwitchProps {
    * 开关值
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
+    type: BooleanConstructor;
+    optionalTypes: Array<NumberConstructor | StringConstructor>;
     value?: SwitchValue;
   };
   /**
    * 开关值，非受控属性
    */
   defaultValue?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
+    type: BooleanConstructor;
+    optionalTypes: Array<NumberConstructor | StringConstructor>;
     value?: SwitchValue;
   };
 }

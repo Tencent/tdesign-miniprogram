@@ -16,7 +16,7 @@ describe('Divider', () => {
   textAlign.forEach((align) => {
     it(`:align ${align} render correctly`, () => {
       const id = simulate.load({
-        template: `<t-divider class="divider" align={{align}}></t-divider>`,
+        template: `<t-divider class="divider" align="{{align}}"></t-divider>`,
         usingComponents: {
           't-divider': divider,
         },
@@ -34,7 +34,7 @@ describe('Divider', () => {
 
   it(`:content string render correctly`, () => {
     const id = simulate.load({
-      template: `<t-divider class="divider" content={{content}}></t-divider>`,
+      template: `<t-divider class="divider" content="{{content}}"></t-divider>`,
       usingComponents: {
         't-divider': divider,
       },
@@ -65,7 +65,7 @@ describe('Divider', () => {
 
   it(':dashed render correctly', () => {
     const id = simulate.load({
-      template: `<t-divider class="divider" dashed={{dashed}}></t-divider>`,
+      template: `<t-divider class="divider" dashed="{{dashed}}"></t-divider>`,
       usingComponents: {
         't-divider': divider,
       },
@@ -83,7 +83,7 @@ describe('Divider', () => {
   layout.forEach((lay) => {
     it(`:layout ${lay} render correctly`, () => {
       const id = simulate.load({
-        template: `<t-divider class="divider" layout={{layout}}></t-divider>`,
+        template: `<t-divider class="divider" layout="{{layout}}"></t-divider>`,
         data: {
           layout: 'horizontal',
         },
@@ -102,7 +102,7 @@ describe('Divider', () => {
   it(':line-color render correctly', () => {
     const lineColor = '#eee';
     const id = simulate.load({
-      template: `<t-divider class="divider" lineColor={{lineColor}}></t-divider>`,
+      template: `<t-divider class="divider" lineColor="{{lineColor}}"></t-divider>`,
       usingComponents: {
         't-divider': divider,
       },
