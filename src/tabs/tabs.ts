@@ -147,10 +147,7 @@ export default class Tabs extends SuperComponent {
     offset: number,
     currentIndex: number,
   ) {
-    if (offset + targetLeft > containerWidth / 2) {
-      return currentIndex * targetWidth - (1 / 2) * containerWidth + targetWidth / 2;
-    }
-    return 0;
+    return currentIndex * targetWidth - (1 / 2) * containerWidth + targetWidth / 2;
   }
 
   setTrack() {
