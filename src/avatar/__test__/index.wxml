@@ -1,0 +1,63 @@
+<t-avatar class="default-avatar" icon="user" />
+
+<t-avatar class="image-avatar" image="{{image}}" alt="avatar" />
+
+<t-avatar
+ class="shape-avatar"
+ shape="round"
+ image="{{image}}"
+ alt="avatar"
+/>
+
+<t-avatar class="text-avatar" size="medium">A</t-avatar>
+
+<t-avatar
+ class="error-avatar"
+ image="{{errorImage}}"
+ alt="avatar"
+ bind:error="onLoadError"
+/>
+<text class="error-text">{{text}}</text>
+
+<t-avatar-group class="avatar-group" max="8" size="small">
+	<t-avatar
+	 wx:for="{{pics}}"
+	 wx:for-item="pic"
+	 wx:key="index"
+	 image="{{pic}}"
+	/>
+	<t-avatar slot="collapseAvatar" icon="user-add" />
+</t-avatar-group>
+
+<t-avatar-group
+ class="avatar-group-size"
+ max="5"
+ size="40px"
+ cascading="right-up"
+>
+	<t-avatar
+	 wx:for="{{pics}}"
+	 wx:for-item="pic"
+	 wx:key="index"
+	 image="{{pic}}"
+	 size="large"
+	/>
+	<t-avatar
+	 class="btn-avatar"
+	 slot="collapseAvatar"
+	 icon="user-add"
+	 t-class-image="border-size-4"
+	 t-class="excursion-right-8"
+	/>
+</t-avatar-group>
+
+<t-avatar-group class="avatar-group-cascading" cascading="left-up">
+	<t-avatar
+	 wx:for="{{pics}}"
+	 wx:for-item="pic"
+	 wx:key="index"
+	 image="{{pic}}"
+	 size="large"
+	/>
+</t-avatar-group>
+
