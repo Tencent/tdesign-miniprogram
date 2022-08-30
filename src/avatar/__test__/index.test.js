@@ -74,7 +74,6 @@ describe('Avatar & Avatar Group', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const $group = comp.querySelectorAll('.avatar-group-size >>> .t-avatar');
-
       $group.forEach((v) => {
         if (v.querySelector('.t-image')) {
           expect(v.dom.getAttribute('class').includes('t-size-l')).toBeTruthy();
@@ -88,7 +87,6 @@ describe('Avatar & Avatar Group', () => {
       const defaultZIndex = 100;
 
       const $wrapper = comp.querySelectorAll('.avatar-group-cascading >>> .t-avatar__wrapper');
-
       $wrapper.forEach((v, index) => {
         if (v.dom.style.zIndex > 0) {
           expect(Number(v.dom.style.zIndex)).toBe(defaultZIndex - index * 10);
