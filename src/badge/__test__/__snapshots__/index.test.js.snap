@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`badge :base 1`] = `
+<main>
+  <t-badge
+    class="badge"
+  >
+    <wx-view
+      class="t-badge  t-class"
+    >
+      <wx-view
+        class="t-badge__content t-class-content"
+      >
+        <wx-text
+          class="t-badge__content-text"
+        >
+          测试
+        </wx-text>
+      </wx-view>
+      <wx-view
+        class="t-badge--basic t-badge--dot  t-badge--circle  t-has-count t-class-count"
+        style=""
+      >
+        
+  
+      </wx-view>
+    </wx-view>
+  </t-badge>
+</main>
+`;
