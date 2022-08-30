@@ -220,6 +220,12 @@ describe('dialog', () => {
     expect(handleAction).toHaveBeenCalledTimes(1);
 
     Dialog.close();
-    mock.mockRestore();
+
+    // without instance
+    mock.mockImplementation(() => null);
+    return Dialog.action().catch((e) => {
+      expect(e).toBeUndefined();
+      mock.mockRestore();
+    });
   });
 });
