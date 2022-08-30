@@ -1,5 +1,5 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
-import { getRect, requestAnimationFrame } from '../common/utils';
+import { getRect, getAnimationFrame } from '../common/utils';
 import props from './props';
 import config from '../common/config';
 
@@ -73,7 +73,7 @@ export default class NoticeBar extends SuperComponent {
       // 获取外部容器和滚动内容的宽度
       const warpID = `.${name}__content-wrap`;
       const nodeID = `.${name}__content`;
-      requestAnimationFrame(() => {
+      getAnimationFrame(() => {
         Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
           const { marquee } = this.properties;
           const speeding = marquee.speed;
@@ -118,7 +118,7 @@ export default class NoticeBar extends SuperComponent {
           .export(),
       });
 
-      requestAnimationFrame(() => {
+      getAnimationFrame(() => {
         // 滚动内容: 最终位置
         this.setData({
           animationData: wx
