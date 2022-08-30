@@ -142,16 +142,12 @@ export default class Tabs extends SuperComponent {
 
   calcScrollOffset(
     containerWidth: number,
-    totalWidth: number,
     targetLeft: number,
     targetWidth: number,
     offset: number,
+    currentIndex: number,
   ) {
-    if (offset + targetLeft > containerWidth / 2) {
-      const maxOffset = totalWidth - containerWidth;
-      return Math.min(Math.abs(containerWidth / 2 - targetLeft - offset - targetWidth / 2), maxOffset);
-    }
-    return 0;
+    return currentIndex * targetWidth - (1 / 2) * containerWidth + targetWidth / 2;
   }
 
   setTrack() {
@@ -177,10 +173,10 @@ export default class Tabs extends SuperComponent {
         if (this.containerWidth) {
           const offset = this.calcScrollOffset(
             this.containerWidth,
-            rect.width * res.length,
             rect.left,
             rect.width,
             this.data.offset,
+            currentIndex,
           );
           this.setData({
             offset,
