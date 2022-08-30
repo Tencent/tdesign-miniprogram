@@ -39,7 +39,7 @@
       <slot name="actions" />
       <t-button
         block
-        class="{{classPrefix}}__footer-button-host"
+        class="{{classPrefix}}__footer-button-host {{classPrefix}}__footer-button--cancel"
         wx:if="{{cancelBtn && _.getTypeof(cancelBtn) == 'string'}}"
         t-class="{{classPrefix}}__button {{classPrefix}}__button-cancel {{confirmBtn ? classPrefix + '__button-half' : ''}} {{prefix}}-class-cancel"
         bindtap="onCancel"
@@ -49,14 +49,13 @@
       <block wx:elif="{{_.getTypeof(cancelBtn) == 'object'}}">
         <template
           is="button"
-          class="{{classPrefix}}__footer-button-host"
-          data="{{...cancelBtn, block: true, type: 'cancel', externalClass: classPrefix + '__button ' + classPrefix + '__button-cancel ' + (cancelBtn ? classPrefix + '__button-half ' : ' ') + prefix + '-class-cancel'}}"
+          data="{{...cancelBtn, block: true, type: 'cancel', externalClass: classPrefix + '__button ' + classPrefix + '__button-cancel ' + (cancelBtn ? classPrefix + '__button-half ' : ' ') + prefix + '-class-cancel',class: classPrefix + '__footer-button-host ' + classPrefix + '__footer-button--cancel' }}"
         ></template>
       </block>
       <slot name="cancelBtn" />
       <t-button
         block
-        class="{{classPrefix}}__footer-button-host"
+        class="{{classPrefix}}__footer-button-host {{classPrefix}}__footer-button--confirm"
         wx:if="{{confirmBtn && _.getTypeof(confirmBtn) == 'string'}}"
         t-class="{{classPrefix}}__button {{classPrefix}}__button-confirm {{cancelBtn ? classPrefix + '__button-half' : ''}} {{prefix}}-class-confirm"
         bind:tap="onConfirm"
@@ -72,7 +71,7 @@
       <block wx:elif="{{_.getTypeof(confirmBtn) == 'object'}}">
         <template
           is="button"
-          data="{{...confirmBtn, block: true,  type: 'confirm', externalClass: classPrefix + '__button ' + classPrefix + '__button-confirm ' + (cancelBtn ? classPrefix + '__button-half ' : ' ') + prefix + '-class-confirm', class: classPrefix + '__footer-button-host'}}"
+          data="{{...confirmBtn, block: true,  type: 'confirm', externalClass: classPrefix + '__button ' + classPrefix + '__button-confirm ' + (cancelBtn ? classPrefix + '__button-half ' : ' ') + prefix + '-class-confirm', class: classPrefix + '__footer-button-host ' + classPrefix + '__footer-button--confirm'}}"
         ></template>
       </block>
       <slot name="confirmBtn" />
