@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dialog :base 1`] = `
+<main>
+  <t-dialog
+    id="dialog"
+  >
+    <t-popup
+      class="t-dialog__wrapper"
+      bind:visible-change="overlayClick"
+    >
+      <wx-view
+        class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active t-class"
+        style=";z-index:11500;"
+        bind:transitionend="onTransitionEnd"
+      >
+        <wx-view
+          class="t-popup__content t-class-content"
+        >
+          <wx-view
+            class="t-popup__close"
+            bind:tap="handleClose"
+          />
+          <wx-view
+            class="t-dialog t-class"
+            slot="content"
+          >
+            <wx-view
+              class="t-dialog__content t-class-content"
+            />
+            <wx-view
+              class="t-dialog__footer t-dialog__footer--default "
+            />
+          </wx-view>
+        </wx-view>
+      </wx-view>
+      <t-overlay
+        id="popup-overlay"
+        bind:tap="handleOverlayClick"
+      >
+        <wx-view
+          class="t-overlay t-fade-enter t-fade-enter-active"
+          style="z-index: 11000;  "
+          bind:tap="handleClick"
+          catch:touchmove="noop"
+          bind:transitionend="onTransitionEnd"
+        />
+      </t-overlay>
+    </t-popup>
+  </t-dialog>
+</main>
+`;
+
+exports[`dialog :custom button 1`] = `
+<main>
+  <t-dialog
+    id="dialog"
+    bind:confirm="handleConfirm"
+  >
+    <t-popup
+      class="t-dialog__wrapper"
+      bind:visible-change="overlayClick"
+    >
+      <wx-view
+        class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active t-class"
+        style=";z-index:11500;"
+        bind:transitionend="onTransitionEnd"
+      >
+        <wx-view
+          class="t-popup__content t-class-content"
+        >
+          <wx-view
+            class="t-popup__close"
+            bind:tap="handleClose"
+          />
+          <wx-view
+            class="t-dialog t-class"
+            slot="content"
+          >
+            <wx-view
+              class="t-dialog__content t-class-content"
+            />
+            <wx-view
+              class="t-dialog__footer t-dialog__footer--default "
+            >
+              <t-button
+                class="t-dialog__footer-button-host t-dialog__footer-button--confirm"
+                data-type="confirm"
+                tClass="t-dialog__button t-dialog__button-confirm  t-class-confirm"
+                bind:contact="onTplButtonTap"
+                bind:error="onTplButtonTap"
+                bind:getphonenumber="onTplButtonTap"
+                bind:getuserinfo="onTplButtonTap"
+                bind:launchapp="onTplButtonTap"
+                bind:opensetting="onTplButtonTap"
+                bind:tap="onTplButtonTap"
+              >
+                <wx-button
+                  appParameter=""
+                  class="t-button t-class t-button-- t-button--size- t-button-- t-is-block t-button-- t-class"
+                  data-custom="{{null}}"
+                  formType=""
+                  hoverClass="button-hover"
+                  hoverStartTime="{{0}}"
+                  hoverStayTime="{{0}}"
+                  hoverStopPropagation="{{false}}"
+                  lang=""
+                  openType=""
+                  sendMessageImg=""
+                  sendMessagePath=""
+                  sendMessageTitle=""
+                  sessionFrom=""
+                  showMessageCard="{{false}}"
+                  bind:chooseavatar="chooseavatar"
+                  bind:contact="contact"
+                  bind:error="error"
+                  bind:getphonenumber="getphonenumber"
+                  bind:getuserinfo="getuserinfo"
+                  bind:launchapp="launchapp"
+                  bind:opensetting="opensetting"
+                  catch:tap="handleTap"
+                >
+                  <wx-view
+                    class="t-button__content"
+                  >
+                    
+                    ok1
+                  </wx-view>
+                </wx-button>
+              </t-button>
+            </wx-view>
+          </wx-view>
+        </wx-view>
+      </wx-view>
+      <t-overlay
+        id="popup-overlay"
+        bind:tap="handleOverlayClick"
+      >
+        <wx-view
+          class="t-overlay t-fade-enter t-fade-enter-active"
+          style="z-index: 11000;  "
+          bind:tap="handleClick"
+          catch:touchmove="noop"
+          bind:transitionend="onTransitionEnd"
+        />
+      </t-overlay>
+    </t-popup>
+  </t-dialog>
+</main>
+`;
