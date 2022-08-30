@@ -45,7 +45,7 @@ export default class Overlay extends SuperComponent {
   observers = {
     backgroundColor(v) {
       this.setData({
-        computedStyle: `; background-color: ${v}`,
+        computedStyle: `background-color: ${v};`,
       });
     },
   };
