@@ -1,4 +1,5 @@
 import props from './props';
+import { getInstance } from '../common/utils';
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
@@ -49,24 +50,10 @@ const defaultOptions = {
   visible: props.visible.value,
 };
 
-const getDialogInstance = function (context?: Context, selector = '#t-dialog') {
-  if (!context) {
-    const pages = getCurrentPages();
-    const page = pages[pages.length - 1];
-    context = page.$$basePage || page;
-  }
-  const instance = context ? context.selectComponent(selector) : null;
-  if (!instance) {
-    console.warn('未找到dialog组件,请检查selector是否正确');
-    return null;
-  }
-  return instance;
-};
-
 export default {
   alert(options: DialogAlertOptionsType) {
     const { context, selector, ...otherOptions } = { ...defaultOptions, ...options };
-    const instance = getDialogInstance(context, selector);
+    const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
 
     return new Promise((resolve) => {
@@ -80,7 +67,7 @@ export default {
   },
   confirm(options: DialogComfirmOptionsType) {
     const { context, selector, ...otherOptions } = { ...defaultOptions, ...options };
-    const instance = getDialogInstance(context, selector);
+    const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
 
     return new Promise((resolve, reject) => {
@@ -93,7 +80,7 @@ export default {
     });
   },
   close() {
-    const instance = getDialogInstance();
+    const instance = getInstance();
     if (instance) {
       instance.close();
       return Promise.resolve();
@@ -102,7 +89,7 @@ export default {
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
     const { context, selector, actions, ...otherOptions } = { ...defaultOptions, ...options };
-    const instance = getDialogInstance(context, selector);
+    const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
     if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > 7))) {
       console.warn('action 数量建议控制在1至7个');
