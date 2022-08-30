@@ -22,15 +22,15 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/badge-1.png" width="375px" height="50%">
 
-{{ base-badge }}
+{{ base }}
 
 ### 按钮徽标
 
-{{ button-badge }}
+{{ button }}
 
 ### 单行徽标
 
-{{ cell-badge }}
+{{ cell }}
 
 ### 标签栏徽标
 
