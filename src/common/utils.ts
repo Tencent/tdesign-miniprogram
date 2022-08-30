@@ -1,3 +1,5 @@
+type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
+
 export const debounce = function (func, wait = 500) {
   let timerId;
   return function (...rest) {
@@ -137,4 +139,18 @@ export const clone = (val) => {
     return val.map((item) => clone(item));
   }
   return val;
+};
+
+export const getInstance = function (context?: Context, selector?: string) {
+  if (!context) {
+    const pages = getCurrentPages();
+    const page = pages[pages.length - 1];
+    context = page.$$basePage || page;
+  }
+  const instance = context ? context.selectComponent(selector) : null;
+  if (!instance) {
+    console.warn('未找到组件,请检查selector是否正确');
+    return null;
+  }
+  return instance;
 };
