@@ -29,13 +29,13 @@ exports[`Textarea Textarea disabled demo works fine 1`] = `
 </disabled>
 `;
 
-exports[`Textarea Textarea lable demo works fine 1`] = `
-<lable>
+exports[`Textarea Textarea label demo works fine 1`] = `
+<wx-label>
   <t-textarea
     label="标签文字"
     placeholder="请输入文字"
   />
-</lable>
+</wx-label>
 `;
 
 exports[`Textarea Textarea maxcharacter demo works fine 1`] = `

@@ -22,9 +22,27 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/input-2.png" width="375px" height="50%">
 
-```html
-<t-textarea name="标签文字" placeholder="请输入文字" />
-```
+{{ base }}
+
+### 带标题多行文本框
+
+{{ label }}
+
+### 自动增高多行文本框
+
+{{ autoSize }}
+
+### 禁用多行文本框
+
+{{ disabled }}
+
+### 设置最大字符个数
+
+{{ maxlength }}
+
+### 设置最大字符个数，一个汉字表示两个字符
+
+{{ maxcharacter }}
 
 ## 提示
 
