@@ -8,7 +8,7 @@ describe('Avatar & Avatar Group', () => {
   });
 
   describe('Avatar Props', () => {
-    it(':icon', async () => {
+    it(':icon', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
@@ -16,7 +16,7 @@ describe('Avatar & Avatar Group', () => {
       expect($default).toBeDefined();
     });
 
-    it(':image', async () => {
+    it(':image', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
@@ -26,7 +26,7 @@ describe('Avatar & Avatar Group', () => {
       );
     });
 
-    it(':shape', async () => {
+    it(':shape', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
@@ -34,7 +34,7 @@ describe('Avatar & Avatar Group', () => {
       expect($avatar.dom.getAttribute('class').includes('t-avatar--round')).toBeTruthy();
     });
 
-    it(':size & text', async () => {
+    it(':size & text', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
@@ -44,10 +44,22 @@ describe('Avatar & Avatar Group', () => {
       const $text = comp.querySelector('.text-avatar >>> .t-avatar__text');
       expect($text.dom.textContent).toBe('A');
     });
+
+    it(':hide-on-load-failed', async () => {
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $wrapper = comp.querySelector('.error-avatar-wrapper >>> .t-avatar__wrapper');
+      const $image = comp.querySelector('.error-avatar-wrapper >>> #image');
+
+      $image.dispatchEvent('error');
+      await simulate.sleep(20);
+      expect($wrapper.dom.style.display).toBe('none');
+    });
   });
 
   describe('Avatar Group Props', () => {
-    it(':avatar-group-size', async () => {
+    it(':avatar-group-size', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
@@ -57,7 +69,7 @@ describe('Avatar & Avatar Group', () => {
       });
     });
 
-    it(':avatar-group-size', async () => {
+    it(':avatar-group-size', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
@@ -70,7 +82,7 @@ describe('Avatar & Avatar Group', () => {
       });
     });
 
-    it(':avatar-group-cascading ', async () => {
+    it(':avatar-group-cascading ', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
       const defaultZIndex = 100;

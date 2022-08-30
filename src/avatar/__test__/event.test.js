@@ -24,12 +24,10 @@ describe('Avatar Event', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
 
-    await simulate.sleep(5000);
+    const $image = comp.querySelector('.error-avatar >>> #image');
+    $image.dispatchEvent('error');
 
-    const $image = comp.querySelector('.error-avatar >>> .t-image');
-
-    console.log($image.instance);
-
+    await simulate.sleep(20);
     expect(onLoadError).toBeCalled();
   });
 });
