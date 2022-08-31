@@ -11,6 +11,7 @@ Component({
     ],
     errorImage: 'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar',
     text: '',
+    hideOnLoadFailed: false,
   },
 
   methods: {

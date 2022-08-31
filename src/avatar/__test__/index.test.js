@@ -45,13 +45,17 @@ describe('Avatar & Avatar Group', () => {
       expect($text.dom.textContent).toBe('A');
     });
 
-    it(':hide-on-load-failed', async () => {
+    it(':hideOnLoadFailed', async () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
       const $wrapper = comp.querySelector('.error-avatar-wrapper >>> .t-avatar__wrapper');
       const $image = comp.querySelector('.error-avatar-wrapper >>> #image');
+      expect($wrapper.dom.style.display).toBe('');
 
+      comp.setData({
+        hideOnLoadFailed: true,
+      });
       $image.dispatchEvent('error');
       await simulate.sleep(20);
       expect($wrapper.dom.style.display).toBe('none');

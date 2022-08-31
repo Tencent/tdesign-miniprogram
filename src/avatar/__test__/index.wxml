@@ -6,10 +6,14 @@
 
 <t-avatar class="text-avatar" size="medium">A</t-avatar>
 
-<t-avatar class="error-avatar" image="{{errorImage}}" alt="avatar" bind:error="onLoadError" />
-
 <view class="error-avatar-wrapper">
-  <t-avatar class="error-avatar" image="{{errorImage}}" alt="avatar" hideOnLoadFailed />
+  <t-avatar
+    class="error-avatar"
+    image="{{errorImage}}"
+    alt="avatar"
+    hideOnLoadFailed="{{hideOnLoadFailed}}"
+    bind:error="onLoadError"
+  />
 </view>
 
 <t-avatar-group class="avatar-group" max="8" size="small">
