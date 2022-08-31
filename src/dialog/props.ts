@@ -40,6 +40,11 @@ const props: TdDialogProps = {
   externalClasses: {
     type: Array,
   },
+  /** 透传至 Overlay 组件 */
+  overlayProps: {
+    type: Object,
+    value: {},
+  },
   /** 防止滚动穿透 */
   preventScrollThrough: {
     type: Boolean,
