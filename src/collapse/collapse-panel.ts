@@ -73,17 +73,13 @@ export default class CollapsePanel extends SuperComponent {
       this.setData({ expanded });
       this.updateStyle(expanded);
     },
-    getRect(selector: string, all?: boolean): Promise<WechatMiniprogram.BoundingClientRectCallbackResult> {
+    getRect(selector: string): Promise<WechatMiniprogram.BoundingClientRectCallbackResult> {
       return new Promise((resolve) => {
         wx.createSelectorQuery()
           .in(this as WechatMiniprogram.Component.TrivialInstance)
-          [all ? 'selectAll' : 'select'](selector)
+          .select(selector)
           .boundingClientRect((rect) => {
-            if (all && Array.isArray(rect) && rect.length) {
-              resolve(rect);
-            }
-
-            if (!all && rect) {
+            if (rect) {
               resolve(rect);
             }
           })

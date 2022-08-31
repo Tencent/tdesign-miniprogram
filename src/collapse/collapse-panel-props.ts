@@ -34,8 +34,7 @@ const props: TdCollapsePanelProps = {
   },
   /** 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
 };
 
