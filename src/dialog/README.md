@@ -34,6 +34,13 @@ isComponent: true
 
 ### 命令调用
 {{ command }}
+
+### 开发能力按钮
+
+当传入的按钮类型为对象时，整个对象都将透传至 `t-button`，因此按钮可以直接使用开放能力
+
+{{ button }}
+
 ## API
 ### Dialog Props
 

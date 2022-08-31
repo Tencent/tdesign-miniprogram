@@ -6,6 +6,7 @@
     "base": "./base",
     "confirm": "./confirm",
     "inputDialog": "./inputDialog",
-    "command": "./command"
+    "command": "./command",
+    "buttonDemo": "./button"
   }
 }

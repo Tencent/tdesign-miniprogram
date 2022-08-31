@@ -52,7 +52,7 @@ const defaultOptions = {
 
 export default {
   alert(options: DialogAlertOptionsType) {
-    const { context, selector, ...otherOptions } = { ...defaultOptions, ...options };
+    const { context, selector = '#t-dialog', ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
 
@@ -66,7 +66,7 @@ export default {
     });
   },
   confirm(options: DialogComfirmOptionsType) {
-    const { context, selector, ...otherOptions } = { ...defaultOptions, ...options };
+    const { context, selector = '#t-dialog', ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
 
@@ -88,7 +88,7 @@ export default {
     return Promise.reject();
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
-    const { context, selector, actions, ...otherOptions } = { ...defaultOptions, ...options };
+    const { context, selector = '#t-dialog', actions, ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
     if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > 7))) {
