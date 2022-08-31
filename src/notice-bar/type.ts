@@ -24,9 +24,9 @@ export interface TdNoticeBarProps {
    * @default false
    */
   marquee?: {
-    type: BooleanConstructor;
-    optionalTypes: Array<ObjectConstructor>;
-    value?: boolean | DrawMarquee;
+    type: ObjectConstructor;
+    optionalTypes: Array<BooleanConstructor>;
+    value?: DrawMarquee | boolean;
   };
   /**
    * 左边图标
