@@ -39,7 +39,7 @@
   mode="{{mode}}"
   webp="{{webp}}"
   lazy-load="{{lazy}}"
-  bindload="onLoaded"
-  binderror="onLoadError"
+  bind:load="onLoaded"
+  bind:error="onLoadError"
   show-menu-by-longpress="{{showMenuByLongpress}}"
 />
