@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`notice-bar props : marquee 1`] = `
+<main>
+  <t-notice-bar
+    class="base"
+  >
+    <wx-view
+      class="t-notice-bar t-notice-bar--info t-class"
+    >
+      <wx-view
+        class="t-notice-bar__prefix-icon t-class-prefix-icon"
+        bind:tap="clickPrefixIcon"
+      >
+        <t-icon>
+          <wx-label
+            class="t-class t-icon t-icon-error-circle-filled t-icon-base"
+            style=";;"
+            bind:tap="onTap"
+          />
+        </t-icon>
+      </wx-view>
+      <wx-view
+        class="t-notice-bar__content-wrap"
+        bind:tap="clickContent"
+      >
+        <wx-view
+          animation=""
+          class="t-notice-bar__content t-class-content "
+        >
+          <wx-view>
+             提示文字描述提示文字描述提示文字描述提示文字描述文 
+          </wx-view>
+        </wx-view>
+      </wx-view>
+      <wx-view
+        class="t-notice-bar__extra t-class-extra"
+        bind:tap="clickExtra"
+      />
+      <wx-view
+        class="t-notice-bar__suffix-icon t-class-suffix-icon"
+        bind:tap="clickSuffixIcon"
+      />
+    </wx-view>
+  </t-notice-bar>
+</main>
+`;
