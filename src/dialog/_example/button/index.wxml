@@ -1,0 +1,6 @@
+<view class="box">
+  <t-button t-class="external-class" size="large" variant="outline" data-type="hasCancelBtn" bind:tap="showDialog" block
+    >开放能力 按钮</t-button
+  >
+  <t-dialog id="t-dialog" />
+</view>

@@ -13,5 +13,8 @@
 
     <view class="demo-section__desc">命令调用</view>
     <command />
+
+    <view class="demo-section__desc">自定义按钮</view>
+    <buttonDemo />
   </t-demo>
 </view>
