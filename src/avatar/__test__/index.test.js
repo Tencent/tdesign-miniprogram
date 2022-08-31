@@ -1,7 +1,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-describe('Avatar & Avatar Group', () => {
+describe('Avatar & Avatar Groups', () => {
   const id = simulate.load(path.resolve(__dirname, './index'), {
     less: true,
     rootPath: path.resolve(__dirname, '../..'),
@@ -96,6 +96,20 @@ describe('Avatar & Avatar Group', () => {
           expect(Number(v.dom.style.zIndex)).toBe(defaultZIndex - index * 10);
         }
       });
+    });
+  });
+
+  describe('Avatar Event', () => {
+    it(':onLoadError', async () => {
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $image = comp.querySelector('.error-avatar-wrapper >>> #image');
+      const spy = jest.spyOn(comp.instance, 'onLoadError');
+
+      $image.dispatchEvent('error');
+      await simulate.sleep(20);
+      expect(spy).toBeCalled();
     });
   });
 });
