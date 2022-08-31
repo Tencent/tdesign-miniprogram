@@ -8,6 +8,7 @@
   showOverlay="{{showOverlay}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
   preventScrollThrough="{{preventScrollThrough}}"
+  overlayProps="{{overlayProps}}"
   zIndex="{{zIndex}}"
   placement="center"
   bind:visible-change="overlayClick"

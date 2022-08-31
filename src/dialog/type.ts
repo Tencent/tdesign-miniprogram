@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { TdButtonProps } from '../button/type';
+import { ButtonProps } from '../button/index';
 
 export interface TdDialogProps {
   /**
@@ -12,7 +12,7 @@ export interface TdDialogProps {
    */
   actions?: {
     type: ArrayConstructor;
-    value?: Array<TdButtonProps>;
+    value?: Array<ButtonProps>;
   };
   /**
    * 多按钮排列方式
@@ -29,7 +29,7 @@ export interface TdDialogProps {
   cancelBtn?: {
     type: StringConstructor;
     optionalTypes: Array<ObjectConstructor>;
-    value?: string | TdButtonProps;
+    value?: string | ButtonProps | null;
   };
   /**
    * 点击蒙层时是否触发关闭事件
@@ -46,7 +46,7 @@ export interface TdDialogProps {
   confirmBtn?: {
     type: StringConstructor;
     optionalTypes: Array<ObjectConstructor>;
-    value?: string | TdButtonProps;
+    value?: string | ButtonProps | null;
   };
   /**
    * 内容
@@ -61,6 +61,14 @@ export interface TdDialogProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-content', 't-class-confirm', 't-class-cancel'];
+  };
+  /**
+   * 透传至 Overlay 组件
+   * @default {}
+   */
+  overlayProps?: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 防止滚动穿透
