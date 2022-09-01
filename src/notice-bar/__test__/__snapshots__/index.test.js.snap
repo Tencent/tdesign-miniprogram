@@ -13,11 +13,15 @@ exports[`notice-bar props : marquee 1`] = `
         bind:tap="clickPrefixIcon"
       >
         <t-icon>
-          <wx-label
-            class="t-class t-icon t-icon-error-circle-filled t-icon-base"
-            style=";;"
+          <wx-view
+            class="t-icon t-class"
+            style=""
             bind:tap="onTap"
-          />
+          >
+            <wx-label
+              class="t-icon-error-circle-filled t-icon-base"
+            />
+          </wx-view>
         </t-icon>
       </wx-view>
       <wx-view

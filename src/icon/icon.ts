@@ -18,7 +18,7 @@ export default class Icon extends SuperComponent {
     componentPrefix: prefix,
     classPrefix: name,
     isImage: false,
-    iconStyle: '',
+    iconStyle: undefined,
   };
 
   observers = {
@@ -32,29 +32,21 @@ export default class Icon extends SuperComponent {
       this.triggerEvent('click', event.detail);
     },
 
-    judgeImage(val) {
-      return val.indexOf('/') !== -1;
-    },
-
     setIconStyle() {
       const { name, color, size, customStyle } = this.properties;
-      const isImage = this.judgeImage(name);
+      const isImage = name.indexOf('/') !== -1;
       const sizeValue = addUnit(size);
+      const sizeStyle = isImage ? { width: sizeValue, height: sizeValue } : {};
+      const colorStyle = color ? { color: color } : {};
+      const fontStyle = size ? { 'font-size': sizeValue } : {};
       this.setData({
         isImage,
-        iconStyle: isImage
-          ? styles({
-              color,
-              'font-size': sizeValue,
-              width: sizeValue,
-              height: sizeValue,
-              ...customStyle,
-            })
-          : styles({
-              color,
-              'font-size': sizeValue,
-              ...customStyle,
-            }),
+        iconStyle:
+          styles({
+            ...colorStyle,
+            ...fontStyle,
+            ...sizeStyle,
+          }) + customStyle,
       });
     },
   };
