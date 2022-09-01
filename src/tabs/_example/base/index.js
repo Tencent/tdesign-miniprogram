@@ -3,14 +3,6 @@ Component({
     stickyProps: {
       zIndex: 2,
     },
-    items: [1, 2, 3],
-  },
-  lifetimes: {
-    ready() {
-      setTimeout(() => {
-        this.setData({ items: [1, 2] });
-      }, 2000);
-    },
   },
   methods: {
     onTabsChange(event) {
