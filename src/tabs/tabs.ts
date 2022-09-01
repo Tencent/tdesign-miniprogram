@@ -30,7 +30,7 @@ export default class Tabs extends SuperComponent {
       },
       unlinked(target: WechatMiniprogram.Component.TrivialInstance) {
         this.children = this.children.filter((item) => item.index !== target.index);
-        this.updateTabs(this.setTrack);
+        this.updateTabs(() => this.setTrack());
       },
     },
   };
@@ -53,6 +53,10 @@ export default class Tabs extends SuperComponent {
 
     animation(v) {
       this.setData({ animate: v });
+    },
+
+    placement() {
+      this.adjustPlacement();
     },
   };
 
@@ -78,26 +82,32 @@ export default class Tabs extends SuperComponent {
       this.setTrack();
     });
 
-    // 根据placement判断scroll-view滚动方向
-    const { placement } = this.properties;
-    let isScrollX = false;
-    let isScrollY = false;
-    if ((placement as any) === Position.top || (placement as any) === Position.bottom) {
-      isScrollX = true;
-    } else {
-      isScrollY = true;
-    }
-    this.setData({
-      isScrollX,
-      isScrollY,
-      direction: isScrollX ? 'X' : 'Y',
-    });
+    this.adjustPlacement();
     this.gettingBoundingClientRect(`.${name}`, true).then((res: any) => {
       this.containerWidth = res[0].width;
     });
   }
 
-  updateTabs() {
+  methods = {
+    adjustPlacement() {
+      // 根据placement判断scroll-view滚动方向
+      const { placement } = this.properties;
+      let isScrollX = false;
+      let isScrollY = false;
+      if ((placement as any) === Position.top || (placement as any) === Position.bottom) {
+        isScrollX = true;
+      } else {
+        isScrollY = true;
+      }
+      this.setData({
+        isScrollX,
+        isScrollY,
+        direction: isScrollX ? 'X' : 'Y',
+      });
+    },
+  };
+
+  updateTabs(cb) {
     const { children } = this;
     this.setData(
       {
