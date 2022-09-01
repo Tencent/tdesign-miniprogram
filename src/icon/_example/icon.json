@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "custom": "./custom"
+    "custom": "./custom",
+    "iconImage": "./iconImage"
   }
 }

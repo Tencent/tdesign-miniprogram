@@ -20,17 +20,11 @@ isComponent: true
 
 ### 基础图标
 
-```html
-<!-- page.wxml -->
-<t-icon name="primary" size="xl" bind:click="someFunction" />
-```
+{{ base }}
 
 ### 自定义图标
 
-```html
-<!-- page.wxml -->
-<t-icon prefix="icon" name="a-1h" size="xl" bind:click="someFunction" />
-```
+{{ custom }}
 
 自定义图标用法，下面以 `iconfont` 为例
 
@@ -67,6 +61,10 @@ isComponent: true
 
  `<t-icon>` 组件中的 `prefix` 属性值与前面设置的 `Font Family` 保持一致，即 `prefix="icon"`，`name` 属性值为自定义图标名称，如图标的 `className` 为 `icon-a-1h`，则 `name="a-1h"`。
 
+### 图片链接
+
+{{ iconImage }}
+
 ### 全部图标
 
 <td-icons-view />
@@ -76,12 +74,13 @@ isComponent: true
 #### Props
 
 | 属性        | 值类型   | 默认值    | 必传 | 说明                                                              |
-| ----------- | -------- | --------- | ---- | ----------------------------------------------------------------- |
-| name        | `String` | -         | Y    | 图标名称                                                          |
-| size        | `String` | `inherit` | N    | 图标大小, 可以'middle' 'small'等关键字， 也可以是字体大小如'20px' |
-| color       | `String` | `initial` | N    | 图标颜色                                                          |
-| prefix      | `String` | -         | N    | 自定义图标前缀                                                    |
-| customStyle | `String` | -         | N    | 自定义样式                                                        |
+| ----------- | -------- | ---------- | ---- |----------------------------------------------------------------- |
+| name        | String | -         | Y    | 图标名称或图片链接                           |
+| size        | String | inherit   | N    | 图标大小, 如 `20`, `20px`, `48rpx`, 默认单位是 `px` |
+| color       | String | initial   | N    | 图标颜色                                                          |
+| prefix      | String | -         | N    | 自定义图标前缀                                                    |
+| customStyle | String | -         | N    | 自定义样式                                                        |
+| external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、图片图标、基础图标等元素类名。`['t-class']` | N
 
 #### Events
 

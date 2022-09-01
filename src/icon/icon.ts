@@ -1,44 +1,61 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { styles, addUnit } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-icon`;
-
-const sizeKeywordMap = {
-  xs: '24rpx',
-  small: '28rpx',
-  middle: '32rpx',
-  large: '36rpx',
-  xl: '40rpx',
-};
 
 @wxComponent()
 export default class Icon extends SuperComponent {
   behaviors: ['wx://form-field-icon'];
 
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   properties = props;
 
   data = {
+    componentPrefix: prefix,
     classPrefix: name,
-    fontSize: '',
+    isImage: false,
+    iconStyle: '',
   };
 
   observers = {
-    size(val) {
-      let fontSize = val;
-      if (Object.prototype.hasOwnProperty.call(sizeKeywordMap, val)) {
-        fontSize = sizeKeywordMap[val];
-      }
-      this.setData({ fontSize });
+    'name, color, size, customStyle'() {
+      this.setIconStyle();
     },
   };
 
   methods = {
     onTap(event: any) {
       this.triggerEvent('click', event.detail);
+    },
+
+    judgeImage(val) {
+      return val.indexOf('/') !== -1;
+    },
+
+    setIconStyle() {
+      const { name, color, size, customStyle } = this.properties;
+      const isImage = this.judgeImage(name);
+      const sizeValue = addUnit(size);
+      this.setData({
+        isImage,
+        iconStyle: isImage
+          ? styles({
+              color,
+              'font-size': sizeValue,
+              width: sizeValue,
+              height: sizeValue,
+              ...customStyle,
+            })
+          : styles({
+              color,
+              'font-size': sizeValue,
+              ...customStyle,
+            }),
+      });
     },
   };
 }
