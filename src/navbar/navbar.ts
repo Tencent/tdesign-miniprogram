@@ -94,6 +94,7 @@ export default class Navbar extends SuperComponent {
     if (wx.getMenuButtonBoundingClientRect) {
       rect = wx.getMenuButtonBoundingClientRect();
     }
+    if (!rect) return;
     wx.getSystemInfo({
       success: (res) => {
         const ios = !!(res.system.toLowerCase().search('ios') + 1);
