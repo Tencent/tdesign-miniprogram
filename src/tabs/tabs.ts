@@ -28,12 +28,9 @@ export default class Tabs extends SuperComponent {
         target.index = this.children.length - 1;
         this.updateTabs();
       },
-      unlinked() {
-        this.children = this.children.map((child: any, index: number) => {
-          child.index = index;
-          return child;
-        });
-        this.updateTabs();
+      unlinked(target: WechatMiniprogram.Component.TrivialInstance) {
+        this.children = this.children.filter((item) => item.index !== target.index);
+        this.updateTabs(this.setTrack);
       },
     },
   };
@@ -102,9 +99,12 @@ export default class Tabs extends SuperComponent {
 
   updateTabs() {
     const { children } = this;
-    this.setData({
-      tabs: children.map((child: any) => child.data),
-    });
+    this.setData(
+      {
+        tabs: children.map((child: any) => child.data),
+      },
+      cb,
+    );
     this.setCurrentIndexByName(this.properties.value);
   }
 
