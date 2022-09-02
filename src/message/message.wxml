@@ -28,7 +28,6 @@
 
     <t-button
       wx:if="{{action}}"
-      class="{{classPrefix}}__btn--right {{prefix}}-class-action"
       t-class="{{classPrefix}}__btn--right {{prefix}}-class-action"
       size="small"
       bind:tap="handleBtnClick"
