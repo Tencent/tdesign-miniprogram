@@ -54,11 +54,15 @@ exports[`collapse :base 1`] = `
                 <t-icon
                   class="t-cell__right-icon t-class-right-icon"
                 >
-                  <wx-label
-                    class="t-class t-icon t-icon-chevron-up t-icon-base"
-                    style=";;"
+                  <wx-view
+                    class="t-icon t-class"
+                    style=""
                     bind:tap="onTap"
-                  />
+                  >
+                    <wx-label
+                      class="t-icon-chevron-up t-icon-base"
+                    />
+                  </wx-view>
                 </t-icon>
               </wx-view>
             </wx-view>
@@ -124,11 +128,15 @@ exports[`collapse :base 1`] = `
                 <t-icon
                   class="t-cell__right-icon t-class-right-icon"
                 >
-                  <wx-label
-                    class="t-class t-icon t-icon-chevron-down t-icon-base"
-                    style=";;"
+                  <wx-view
+                    class="t-icon t-class"
+                    style=""
                     bind:tap="onTap"
-                  />
+                  >
+                    <wx-label
+                      class="t-icon-chevron-down t-icon-base"
+                    />
+                  </wx-view>
                 </t-icon>
               </wx-view>
             </wx-view>
@@ -200,11 +208,15 @@ exports[`collapse :base 1`] = `
                 <t-icon
                   class="t-cell__right-icon t-class-right-icon"
                 >
-                  <wx-label
-                    class="t-class t-icon t-icon-chevron-down t-icon-base"
-                    style=";;"
+                  <wx-view
+                    class="t-icon t-class"
+                    style=""
                     bind:tap="onTap"
-                  />
+                  >
+                    <wx-label
+                      class="t-icon-chevron-down t-icon-base"
+                    />
+                  </wx-view>
                 </t-icon>
               </wx-view>
             </wx-view>
@@ -268,11 +280,15 @@ exports[`collapse :base 1`] = `
                 <t-icon
                   class="t-cell__right-icon t-class-right-icon"
                 >
-                  <wx-label
-                    class="t-class t-icon t-icon-chevron-up t-icon-base"
-                    style=";;"
+                  <wx-view
+                    class="t-icon t-class"
+                    style=""
                     bind:tap="onTap"
-                  />
+                  >
+                    <wx-label
+                      class="t-icon-chevron-up t-icon-base"
+                    />
+                  </wx-view>
                 </t-icon>
               </wx-view>
             </wx-view>
@@ -348,11 +364,15 @@ exports[`collapse :defaultExpandAll 1`] = `
               <t-icon
                 class="t-cell__right-icon t-class-right-icon"
               >
-                <wx-label
-                  class="t-class t-icon t-icon-chevron-down t-icon-base"
-                  style=";;"
+                <wx-view
+                  class="t-icon t-class"
+                  style=""
                   bind:tap="onTap"
-                />
+                >
+                  <wx-label
+                    class="t-icon-chevron-down t-icon-base"
+                  />
+                </wx-view>
               </t-icon>
             </wx-view>
           </wx-view>
@@ -416,11 +436,15 @@ exports[`collapse :defaultExpandAll 1`] = `
               <t-icon
                 class="t-cell__right-icon t-class-right-icon"
               >
-                <wx-label
-                  class="t-class t-icon t-icon-chevron-up t-icon-base"
-                  style=";;"
+                <wx-view
+                  class="t-icon t-class"
+                  style=""
                   bind:tap="onTap"
-                />
+                >
+                  <wx-label
+                    class="t-icon-chevron-up t-icon-base"
+                  />
+                </wx-view>
               </t-icon>
             </wx-view>
           </wx-view>
@@ -498,11 +522,15 @@ exports[`collapse :disabled 1`] = `
               <t-icon
                 class="t-cell__right-icon t-class-right-icon"
               >
-                <wx-label
-                  class="t-class t-icon t-icon-chevron-up t-icon-base"
-                  style=";;"
+                <wx-view
+                  class="t-icon t-class"
+                  style=""
                   bind:tap="onTap"
-                />
+                >
+                  <wx-label
+                    class="t-icon-chevron-up t-icon-base"
+                  />
+                </wx-view>
               </t-icon>
             </wx-view>
           </wx-view>
@@ -568,11 +596,15 @@ exports[`collapse :disabled 1`] = `
               <t-icon
                 class="t-cell__right-icon t-class-right-icon"
               >
-                <wx-label
-                  class="t-class t-icon t-icon-chevron-down t-icon-base"
-                  style=";;"
+                <wx-view
+                  class="t-icon t-class"
+                  style=""
                   bind:tap="onTap"
-                />
+                >
+                  <wx-label
+                    class="t-icon-chevron-down t-icon-base"
+                  />
+                </wx-view>
               </t-icon>
             </wx-view>
           </wx-view>

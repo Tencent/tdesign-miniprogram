@@ -11,11 +11,15 @@ exports[`image :base 1`] = `
         style="font-size: 40rpx; color: #999"
       >
         <t-icon>
-          <wx-label
-            class="t-class t-icon t-icon-close t-icon-base"
-            style=";;"
+          <wx-view
+            class="t-icon t-class"
+            style=""
             bind:tap="onTap"
-          />
+          >
+            <wx-label
+              class="t-icon-close t-icon-base"
+            />
+          </wx-view>
         </t-icon>
       </wx-view>
     </wx-view>

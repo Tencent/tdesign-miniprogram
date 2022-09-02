@@ -3428,7 +3428,6 @@ exports[`Icon Icon custom demo works fine 1`] = `
         name="a-0"
         prefix="icon"
         size="48rpx"
-        type="prefix"
         bind:click="onIconTap"
       />
       <wx-view
@@ -3446,7 +3445,6 @@ exports[`Icon Icon custom demo works fine 1`] = `
         name="a-1h"
         prefix="icon"
         size="48rpx"
-        type="prefix"
         bind:click="onIconTap"
       />
       <wx-view
@@ -3464,7 +3462,6 @@ exports[`Icon Icon custom demo works fine 1`] = `
         name="a-2h"
         prefix="icon"
         size="48rpx"
-        type="prefix"
         bind:click="onIconTap"
       />
       <wx-view
@@ -3482,7 +3479,6 @@ exports[`Icon Icon custom demo works fine 1`] = `
         name="a-3h"
         prefix="icon"
         size="48rpx"
-        type="prefix"
         bind:click="onIconTap"
       />
       <wx-view
@@ -3493,4 +3489,33 @@ exports[`Icon Icon custom demo works fine 1`] = `
     </wx-view>
   </wx-view>
 </custom>
+`;
+
+exports[`Icon Icon iconImage demo works fine 1`] = `
+<iconImage>
+  <wx-view
+    class="demo__list"
+  >
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png"
+        name="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png"
+        size="24"
+        bind:click="onIconTap"
+      />
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-copy.png"
+        name="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-copy.png"
+        size="24"
+        bind:click="onIconTap"
+      />
+    </wx-view>
+  </wx-view>
+</iconImage>
 `;

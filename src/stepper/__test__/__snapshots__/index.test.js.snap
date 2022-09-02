@@ -11,11 +11,15 @@ exports[`stepper event : input 1`] = `
     <t-icon
       class="t-stepper__minus-icon"
     >
-      <wx-label
-        class="t-class t-icon t-icon-remove t-icon-base"
-        style="color:#444;font-size:40rpx;"
+      <wx-view
+        class="t-icon t-class"
+        style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
-      />
+      >
+        <wx-label
+          class="t-icon-remove t-icon-base"
+        />
+      </wx-view>
     </t-icon>
   </wx-view>
   <wx-input
@@ -35,11 +39,15 @@ exports[`stepper event : input 1`] = `
     <t-icon
       class="t-stepper__plus-icon"
     >
-      <wx-label
-        class="t-class t-icon t-icon-add t-icon-base"
-        style="color:#444;font-size:40rpx;"
+      <wx-view
+        class="t-icon t-class"
+        style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
-      />
+      >
+        <wx-label
+          class="t-icon-add t-icon-base"
+        />
+      </wx-view>
     </t-icon>
   </wx-view>
 </wx-view>
@@ -56,11 +64,15 @@ exports[`stepper event : input 2`] = `
     <t-icon
       class="t-stepper__minus-icon"
     >
-      <wx-label
-        class="t-class t-icon t-icon-remove t-icon-base"
-        style="color:#444;font-size:40rpx;"
+      <wx-view
+        class="t-icon t-class"
+        style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
-      />
+      >
+        <wx-label
+          class="t-icon-remove t-icon-base"
+        />
+      </wx-view>
     </t-icon>
   </wx-view>
   <wx-input
@@ -80,11 +92,15 @@ exports[`stepper event : input 2`] = `
     <t-icon
       class="t-stepper__plus-icon"
     >
-      <wx-label
-        class="t-class t-icon t-icon-add t-icon-base"
-        style="color:#444;font-size:40rpx;"
+      <wx-view
+        class="t-icon t-class"
+        style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
-      />
+      >
+        <wx-label
+          class="t-icon-add t-icon-base"
+        />
+      </wx-view>
     </t-icon>
   </wx-view>
 </wx-view>
