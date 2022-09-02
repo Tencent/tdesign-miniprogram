@@ -212,8 +212,8 @@ export default class Message extends SuperComponent {
     this.checkAnimation();
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
-        this.hide();
         this.triggerEvent('durationEnd', { self: this });
+        this.hide();
       }, duration) as unknown as number;
     }
 
@@ -244,8 +244,8 @@ export default class Message extends SuperComponent {
   }
 
   handleClose() {
-    this.hide();
     this.triggerEvent('closeBtnClick');
+    this.hide();
   }
 
   handleBtnClick() {
