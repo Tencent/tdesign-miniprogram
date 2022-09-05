@@ -24,6 +24,15 @@ const props: TdTabsProps = {
     type: Boolean,
     value: true,
   },
+  /** 是否开启粘性布局 */
+  sticky: {
+    type: Boolean,
+    value: false,
+  },
+  /** 透传至 Sticky 组件 */
+  stickyProps: {
+    type: Object,
+  },
   /** 是否可以滑动切换 */
   swipeable: {
     type: Boolean,
@@ -37,15 +46,6 @@ const props: TdTabsProps = {
   /** 激活的选项卡值，非受控属性 */
   defaultValue: {
     type: null,
-  },
-  /** 是否开启粘性布局 */
-  sticky: {
-    type: Boolean,
-    value: false,
-  },
-  /** sticky 属性 */
-  stickyProps: {
-    type: Object,
   },
 };
 
