@@ -60,7 +60,7 @@
     >
       <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
         <view class="{{classPrefix}}__add-icon">
-          <slot wx:if="{{addContent === 'slot'}}" name="addContent" />
+          <slot wx:if="{{addContent === 'slot'}}" name="add-content" />
           <t-icon wx:else name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
         </view>
       </view>
