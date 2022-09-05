@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const iconFile = path.join(__dirname, '..', 'src/icon/icon.less');
-const dataFile = path.join(__dirname, '..', 'example/pages/icon/data.js');
+const dataFile = path.join(__dirname, '..', 'src/icon/_example/data.js');
 fs.readFile(iconFile, 'utf8', (err, data) => {
   if (err) {
     console.error(err);
