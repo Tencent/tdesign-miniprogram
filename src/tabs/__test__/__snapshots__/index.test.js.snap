@@ -11,6 +11,7 @@ exports[`tabs :base 1`] = `
       container=""
       disabled="{{false}}"
       offsetTop=""
+      tClass="t-tabs__sticky"
       zIndex="{{2}}"
       bind:scroll="onTouchScroll"
     >
