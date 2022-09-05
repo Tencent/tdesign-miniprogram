@@ -28,12 +28,9 @@ export default class Tabs extends SuperComponent {
         target.index = this.children.length - 1;
         this.updateTabs();
       },
-      unlinked() {
-        this.children = this.children.map((child: any, index: number) => {
-          child.index = index;
-          return child;
-        });
-        this.updateTabs();
+      unlinked(target: WechatMiniprogram.Component.TrivialInstance) {
+        this.children = this.children.filter((item) => item.index !== target.index);
+        this.updateTabs(() => this.setTrack());
       },
     },
   };
@@ -56,6 +53,10 @@ export default class Tabs extends SuperComponent {
 
     animation(v) {
       this.setData({ animate: v });
+    },
+
+    placement() {
+      this.adjustPlacement();
     },
   };
 
@@ -81,30 +82,39 @@ export default class Tabs extends SuperComponent {
       this.setTrack();
     });
 
-    // 根据placement判断scroll-view滚动方向
-    const { placement } = this.properties;
-    let isScrollX = false;
-    let isScrollY = false;
-    if ((placement as any) === Position.top || (placement as any) === Position.bottom) {
-      isScrollX = true;
-    } else {
-      isScrollY = true;
-    }
-    this.setData({
-      isScrollX,
-      isScrollY,
-      direction: isScrollX ? 'X' : 'Y',
-    });
+    this.adjustPlacement();
     this.gettingBoundingClientRect(`.${name}`, true).then((res: any) => {
       this.containerWidth = res[0].width;
     });
   }
 
-  updateTabs() {
+  methods = {
+    adjustPlacement() {
+      // 根据placement判断scroll-view滚动方向
+      const { placement } = this.properties;
+      let isScrollX = false;
+      let isScrollY = false;
+      if ((placement as any) === Position.top || (placement as any) === Position.bottom) {
+        isScrollX = true;
+      } else {
+        isScrollY = true;
+      }
+      this.setData({
+        isScrollX,
+        isScrollY,
+        direction: isScrollX ? 'X' : 'Y',
+      });
+    },
+  };
+
+  updateTabs(cb) {
     const { children } = this;
-    this.setData({
-      tabs: children.map((child: any) => child.data),
-    });
+    this.setData(
+      {
+        tabs: children.map((child: any) => child.data),
+      },
+      cb,
+    );
     this.setCurrentIndexByName(this.properties.value);
   }
 
@@ -236,10 +246,11 @@ export default class Tabs extends SuperComponent {
 
   changeIndex(index) {
     const currentTab = this.data.tabs[index];
+    const { value, label } = currentTab;
     if (!currentTab?.disabled && index !== this.data.currentIndex) {
-      this._trigger('change', { value: currentTab.value });
+      this._trigger('change', { value, label });
     }
-    this._trigger('click', { value: currentTab.value });
+    this._trigger('click', { value, label });
   }
 
   getAvailableTabIndex(deltaX: number) {

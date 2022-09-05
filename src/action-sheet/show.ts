@@ -1,3 +1,5 @@
+import { getInstance } from '../common/utils';
+
 export interface ActionSheetItem {
   label: string;
   color?: string;
@@ -27,28 +29,22 @@ export interface ActionSheetShowOption extends Omit<ActionSheetProps, 'visible'>
   selector?: string;
 }
 
-const getInstance = function (context?: Context, selector = '#t-action-sheet') {
-  if (!context) {
-    const pages = getCurrentPages();
-    const page = pages[pages.length - 1];
-    context = page.$$basePage || page;
+export const show = function (options: ActionSheetShowOption) {
+  const { context, selector = '#t-action-sheet', ...otherOptions } = { ...options };
+  const instance = getInstance(context, selector);
+  if (instance) {
+    instance.show({
+      ...otherOptions,
+    });
+    return instance;
   }
-
-  const instance = context?.selectComponent(selector);
-  if (!instance) {
-    return null;
-  }
-  return instance;
+  console.error('未找到组件,请确认 selector && context 是否正确');
 };
 
-export const show = function (options: ActionSheetShowOption) {
-  const { context, selector } = options;
+export const close = function (options: ActionSheetShowOption) {
+  const { context, selector = '#t-action-sheet' } = { ...options };
   const instance = getInstance(context, selector);
-  if (!instance) {
-    return Promise.reject(new Error('未找到ActionSheet组件, 请检查selector是否正确'));
+  if (instance) {
+    instance.close();
   }
-  instance.resetData(() => {
-    instance.setData({ ...options }, instance.show);
-  });
-  return instance;
 };

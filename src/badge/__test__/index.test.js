@@ -12,6 +12,19 @@ describe('badge', () => {
     rootPath: path.resolve(__dirname, '../..'),
   });
 
+  it(`:base`, () => {
+    const id = simulate.load({
+      template: `<t-badge class="badge" dot content="测试"></t-badge>`,
+      usingComponents: {
+        't-badge': badge,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    expect(comp.toJSON()).toMatchSnapshot();
+  });
+
   it(':dot', () => {
     const id = simulate.load({
       template: `<t-badge class="badge" dot content="测试"></t-badge>`,

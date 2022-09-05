@@ -2,6 +2,7 @@
 
 <view class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
   <t-sticky
+    t-class="{{classPrefix}}__sticky"
     disabled="{{ !sticky }}"
     z-index="{{ stickyProps.zIndex || '1' }}"
     offset-top="{{ stickyProps.offsetTop }}"

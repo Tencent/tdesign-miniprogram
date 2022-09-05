@@ -42,7 +42,6 @@ export default class DropdownMenuItem extends SuperComponent {
         const { zIndex, duration, showOverlay } = target.properties;
 
         this.parent = target;
-        this.getParentBottom(target);
         this.setData({
           zIndex,
           duration,
@@ -85,7 +84,9 @@ export default class DropdownMenuItem extends SuperComponent {
     },
     show(visible) {
       if (visible) {
-        this.setData({ wrapperVisible: true });
+        this.getParentBottom(this.parent, () => {
+          this.setData({ wrapperVisible: true });
+        });
       }
     },
   };
@@ -157,15 +158,18 @@ export default class DropdownMenuItem extends SuperComponent {
       });
     },
 
-    getParentBottom(parent) {
+    getParentBottom(parent, cb) {
       const query = wx.createSelectorQuery().in(parent);
       query
         .select(`#${prefix}-bar`)
         .boundingClientRect((res) => {
-          this.setData({
-            top: res.bottom,
-            maskHeight: res.top,
-          });
+          this.setData(
+            {
+              top: res.bottom,
+              maskHeight: res.top,
+            },
+            cb,
+          );
         })
         .exec();
     },

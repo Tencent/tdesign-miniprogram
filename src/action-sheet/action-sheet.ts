@@ -33,6 +33,7 @@ export default class ActionSheet extends SuperComponent {
 
   ready() {
     this.memoInitialData();
+    this.splitGridThemeActions();
   }
 
   methods = {
@@ -53,16 +54,15 @@ export default class ActionSheet extends SuperComponent {
     },
 
     /** 指令调用显示 */
-    show() {
-      this.splitGridThemeActions();
+    show(options) {
       this.setData({
+        ...this.initialData,
+        ...options,
         visible: true,
       });
+      this.splitGridThemeActions();
       this.autoClose = true;
-    },
-
-    resetData(cb: () => void) {
-      this.setData({ ...this.initialData }, cb);
+      this._trigger('visible-change', { visible: true });
     },
 
     memoInitialData() {

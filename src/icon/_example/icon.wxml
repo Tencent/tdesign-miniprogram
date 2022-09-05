@@ -9,4 +9,7 @@
   <t-demo title="02 自定义组件图标">
     <custom />
   </t-demo>
+  <t-demo title="03 图片链接">
+    <iconImage />
+  </t-demo>
 </view>
