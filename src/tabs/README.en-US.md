@@ -20,6 +20,8 @@ default-value | String / Number | undefined | uncontrolled property。Typescript
 name | params | description
 -- | -- | --
 change | `(value: TabValue, label: string)` | \-
+click | `(value: TabValue, label: string)` | \-
+scroll | `({ scrollTop: number, isFixed: boolean })` | \-
 
 ### TabPanel Props
 

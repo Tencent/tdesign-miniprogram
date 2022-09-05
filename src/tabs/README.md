@@ -126,8 +126,10 @@ default-value | String / Number | undefined | 激活的选项卡值。非受控�
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(value: TabValue)` | 激活的选项卡发生变化时触发
-scroll | `(detail: { scrollTop: number, isFixed: boolean })` | 滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶 |
+change | `(value: TabValue, label: string)` | 激活的选项卡发生变化时触发
+click | `(value: TabValue, label: string)` | 点击 tab 选项卡时触发
+scroll | `({ scrollTop: number, isFixed: boolean })` | 页面滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶
+
 ### TabPanel Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
