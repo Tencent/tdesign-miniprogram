@@ -62,10 +62,6 @@ const display = {
       name: 'Skeleton',
       label: '骨架屏',
     },
-    {
-      name: 'NoticeBar',
-      label: '公告栏',
-    },
   ],
 };
 

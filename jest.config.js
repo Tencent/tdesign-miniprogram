@@ -7,7 +7,7 @@ module.exports = {
     '^tdesign-miniprogram/(.*)': '<rootDir>/src/$1',
   },
   testMatch: ['<rootDir>/src/**/__test__/**/*.test.{js,ts}'],
-  collectCoverageFrom: ['<rootDir>/src/**/*.{js,ts}', '!**/__test__/**'],
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
   collectCoverage: true,
   coverageDirectory: '<rootDir>/test/unit/coverage',
   reporters: [

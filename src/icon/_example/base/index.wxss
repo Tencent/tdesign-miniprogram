@@ -1,7 +1,7 @@
 .demo__list {
   display: flex;
   flex-wrap: wrap;
-  padding: 32rpx;
+  padding: 16rpx 32rpx;
 }
 
 .demo__card {

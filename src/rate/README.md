@@ -42,7 +42,7 @@ CSS 变量名|说明
 
 ### 半星评分
 
-{{ allow-half}}
+{{ allow-half }}
 
 ### 带描述评分
 

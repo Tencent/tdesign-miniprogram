@@ -5,6 +5,7 @@ spline: data
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-88%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -87,6 +88,5 @@ external-classes | Array | - | 组件类名，分别用于设置 组件外层元
 -- | -- | --
 visible-change | `(visible: Boolean)` | 当浮层隐藏或显示时触发。
 cancel | - | 点击取消按钮时触发
-close | - | 关闭时触发
 selected | `(selected: ActionSheetItem | String, index: Number)` | 选择菜单项时触发
 

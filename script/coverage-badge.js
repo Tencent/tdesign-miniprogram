@@ -62,7 +62,7 @@ ans.forEach((items, component) => {
       }
     }
     const message = isNaN(val) ? '0' : val;
-    const color = parseInt(val, 10) > 80 ? 'blue' : 'red';
+    const color = parseInt(val, 10) >= 80 ? 'blue' : 'red';
 
     svgs += `<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20${type}-${message}%25-${color}" /></span>`;
   });

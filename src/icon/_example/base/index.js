@@ -1,5 +1,3 @@
-import icons from '../data.js';
-
 Component({
   data: {
     icons: [
@@ -84,6 +82,7 @@ Component({
       'file-add',
       'file-copy',
       'file-excel',
+      'file-icon',
       'file-image',
       'file-paste',
       'file-pdf',
@@ -118,6 +117,7 @@ Component({
       'history',
       'home',
       'hourglass',
+      'image-error',
       'image',
       'info-circle-filled',
       'info-circle',
@@ -142,6 +142,9 @@ Component({
       'logo-github',
       'logo-ie-filled',
       'logo-ie',
+      'logo-qq',
+      'logo-wechat',
+      'logo-wecom',
       'logo-windows-filled',
       'logo-windows',
       'logout',
@@ -151,6 +154,7 @@ Component({
       'minus-circle-filled',
       'minus-circle',
       'minus-rectangle',
+      'mirror',
       'mobile-vibrate',
       'mobile',
       'money-circle',
@@ -166,6 +170,7 @@ Component({
       'page-last',
       'pause-circle-filled',
       'photo',
+      'pin-filled',
       'pin',
       'play-circle-filled',
       'play-circle-stroke',
@@ -179,9 +184,12 @@ Component({
       'queue',
       'rectangle',
       'refresh',
+      'relativity',
       'remove',
       'rollback',
+      'rollfront',
       'root-list',
+      'rotation',
       'round',
       'save',
       'scan',
@@ -233,13 +241,6 @@ Component({
     ],
   },
 
-  lifetimes: {
-    attached() {
-      this.setData({
-        icons,
-      });
-    },
-  },
   methods: {
     onIconTap(event) {
       console.log();

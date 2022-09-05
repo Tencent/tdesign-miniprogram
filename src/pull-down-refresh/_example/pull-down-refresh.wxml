@@ -1,3 +1,5 @@
-<base />
+<view class="wrapper">
+  <base />
 
-<refresh-timeout />
+  <refresh-timeout />
+</view>

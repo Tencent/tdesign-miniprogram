@@ -5,6 +5,7 @@ spline: navigation
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-93%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-88%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-90%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-80%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -115,18 +116,20 @@ animation | Object | - | 动画效果设置。其中 duration 表示动画时长
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名。`['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
 placement | String | top | 选项卡位置。可选项：left/top | N
 show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
+sticky | Boolean | false | 是否开启粘性布局 | N
+sticky-props | Object | - | 透传至 Sticky 组件。TS 类型：`StickyProps`，[Sticky API Documents](./sticky?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 swipeable | Boolean | true | 是否可以滑动切换 | N
 value | String / Number | - | 激活的选项卡值。TS 类型：`TabValue` `type TabValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 default-value | String / Number | undefined | 激活的选项卡值。非受控属性。TS 类型：`TabValue` `type TabValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
-sticky | Boolean | false | 是否开启粘性布局 | N
-stickyProps | Object | - | 加载sticky属性，透传至Sticky组件。TS 类型：`StickyProps` | N
 
 ### Tabs Events
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(value: TabValue)` | 激活的选项卡发生变化时触发
-scroll | `(detail: { scrollTop: number, isFixed: boolean })` | 滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶 |
+change | `(value: TabValue, label: string)` | 激活的选项卡发生变化时触发
+click | `(value: TabValue, label: string)` | 点击 tab 选项卡时触发
+scroll | `({ scrollTop: number, isFixed: boolean })` | 页面滚动时触发，scrollTop: 距离顶部位置，isFixed: 是否吸顶
+
 ### TabPanel Props
 
 名称 | 类型 | 默认值 | 说明 | 必传

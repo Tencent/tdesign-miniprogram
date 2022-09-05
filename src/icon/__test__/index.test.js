@@ -19,18 +19,26 @@ describe('icon', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
 
-    expect(comp.querySelector('.icon').data.fontSize).toBe('20');
+    const $icon = comp.querySelector('.icon >>> .t-icon');
+    expect($icon.dom.getAttribute('style').includes('font-size: 20px')).toBeTruthy();
+  });
 
-    comp.setData({ size: 'xs' });
-    expect(comp.querySelector('.icon').data.fontSize).toBe('24rpx');
-    comp.setData({ size: 'small' });
-    expect(comp.querySelector('.icon').data.fontSize).toBe('28rpx');
-    comp.setData({ size: 'middle' });
-    expect(comp.querySelector('.icon').data.fontSize).toBe('32rpx');
-    comp.setData({ size: 'large' });
-    expect(comp.querySelector('.icon').data.fontSize).toBe('36rpx');
-    comp.setData({ size: 'xl' });
-    expect(comp.querySelector('.icon').data.fontSize).toBe('40rpx');
+  it(`icon :name`, () => {
+    const id = simulate.load({
+      template: `<t-icon class="icon" size="{{size}}" name="{{name}}"></t-icon>`,
+      data: {
+        size: 20,
+        name: 'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png',
+      },
+      usingComponents: {
+        't-icon': icon,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $image = comp.querySelector('.icon >>> .t-icon__image');
+    expect($image).toBeTruthy();
   });
 
   it(`icon :event`, async () => {

@@ -40,13 +40,21 @@ export default class Overlay extends SuperComponent {
     prefix,
     classPrefix: name,
     computedStyle: '',
+    _zIndex: 11000,
   };
 
   observers = {
     backgroundColor(v) {
       this.setData({
-        computedStyle: `; background-color: ${v}`,
+        computedStyle: `background-color: ${v};`,
       });
+    },
+    zIndex(v) {
+      if (v !== 0) {
+        this.setData({
+          _zIndex: v,
+        });
+      }
     },
   };
 

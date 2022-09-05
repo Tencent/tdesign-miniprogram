@@ -5,6 +5,37 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.20.0 `2022-09-05` 
+### ❗️BREKING CHANGES
+- `Icon`: `size` 不在支持 `middle`、`small`等关键字，默认单位 `px` @anlyyao ([#828](https://github.com/Tencent/tdesign-miniprogram/pull/828))
+### 🚀 Features
+- `Textarea`: 更新演示代码文档 @anlyyao ([#817](https://github.com/Tencent/tdesign-miniprogram/pull/817))
+- `Dialog`: 新增 overlayProps 属性透传至 Overlay 组件 @LeeJim ([#822](https://github.com/Tencent/tdesign-miniprogram/pull/822))
+- `Icon`:  `name` 支持图片链接 @anlyyao ([#828](https://github.com/Tencent/tdesign-miniprogram/pull/828))
+- `Tabs`: change 和 click 事件返回 label 的值 @LeeJim ([#841](https://github.com/Tencent/tdesign-miniprogram/pull/841))
+- `Icon`: 新增更多的图标 @anlyyao ([#838](https://github.com/Tencent/tdesign-miniprogram/pull/838))
+
+### 🐞 Bug Fixes
+- `Tab`: 修复滑块定位错误的问题 @CodingOnStar ([#781](https://github.com/Tencent/tdesign-miniprogram/pull/781))
+- `NoticeBar`: 解决函数同名导致控制台报错  @anlyyao ([#814](https://github.com/Tencent/tdesign-miniprogram/pull/814))
+- `tabs`: 修复无法正常移除 tab panel 的问题 @LeeJim ([#830](https://github.com/Tencent/tdesign-miniprogram/pull/830))
+- `DropdownMenu`: 修复下拉菜单定位错误的问题 @LeeJim ([#836](https://github.com/Tencent/tdesign-miniprogram/pull/836))
+- `Tabs`: 修复垂直模式下内容区域绑定事件无效的问题 @anlyyao ([#837](https://github.com/Tencent/tdesign-miniprogram/pull/837))
+- `Fab`: 修复悬浮按钮随页面滚动的问题 @anlyyao ([#842](https://github.com/Tencent/tdesign-miniprogram/pull/842))
+### 🚧 Others
+- `ActionSheet`: 新增单元测试 @anlyyao ([#832](https://github.com/Tencent/tdesign-miniprogram/pull/832))
+- `Dialog`: 新增单元测试 @LeeJim ([#816](https://github.com/Tencent/tdesign-miniprogram/pull/816))
+- `Overlay`: 新增单元测试 @LeeJim ([#818](https://github.com/Tencent/tdesign-miniprogram/pull/818))
+- `Avatar`: 新增单元测试 @Perisiguiendo ([#812](https://github.com/Tencent/tdesign-miniprogram/pull/812))
+- `Image`: 新增单元测试 @LeeJim ([#820](https://github.com/Tencent/tdesign-miniprogram/pull/820))
+- `NoticeBar`: 新增单元测试 @anlyyao ([#821](https://github.com/Tencent/tdesign-miniprogram/pull/821))
+- `CountDown`: 新增单元测试 @LeeJim ([#824](https://github.com/Tencent/tdesign-miniprogram/pull/824))
+- `Collapse`: 新增单元测试 @LeeJim ([#825](https://github.com/Tencent/tdesign-miniprogram/pull/825))
+- `Navbar`: 新增单元测试 @LeeJim ([#829](https://github.com/Tencent/tdesign-miniprogram/pull/829))
+- `ImageViewer`: 新增单元测试 @LeeJim ([#826](https://github.com/Tencent/tdesign-miniprogram/pull/826))
+- `Tabs`: 新增单元测试 @LeeJim ([#831](https://github.com/Tencent/tdesign-miniprogram/pull/831))
+- `PullDownRefresh`: 新增单元测试 @anlyyao ([#835](https://github.com/Tencent/tdesign-miniprogram/pull/835))
+
 ## 🌈 0.19.3 `2022-08-29` 
 ### 🚀 Features
 - `Toast`: 新增 close 事件 @AntzyMo ([#680](https://github.com/Tencent/tdesign-miniprogram/pull/680))

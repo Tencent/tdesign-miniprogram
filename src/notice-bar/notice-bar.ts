@@ -1,5 +1,5 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
-import { getRect, requestAnimationFrame } from '../common/utils';
+import { getRect, getAnimationFrame } from '../common/utils';
 import props from './props';
 import config from '../common/config';
 
@@ -12,7 +12,7 @@ export default class NoticeBar extends SuperComponent {
     `${prefix}-class`,
     `${prefix}-class-content`,
     `${prefix}-class-prefix-icon`,
-    `${prefix}-class-extre`,
+    `${prefix}-class-extra`,
     `${prefix}-class-suffix-icon`,
   ];
 
@@ -73,20 +73,20 @@ export default class NoticeBar extends SuperComponent {
       // 获取外部容器和滚动内容的宽度
       const warpID = `.${name}__content-wrap`;
       const nodeID = `.${name}__content`;
-      requestAnimationFrame(() => {
+      getAnimationFrame(() => {
         Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
           const { marquee } = this.properties;
-          const speeding = marquee.speed;
-          const delaying = marquee.delay ? marquee.delay : 0;
-          const loops = marquee.loop - 1;
 
           if (nodeRect == null || wrapRect == null || !nodeRect.width || !wrapRect.width) {
             return;
           }
 
           if (marquee || wrapRect.width < nodeRect.width) {
+            const speeding = marquee.speed || 50;
+            const delaying = marquee.delay || 0;
+            const loops = marquee.loop - 1 || -1;
             const animationDuration = ((wrapRect.width + nodeRect.width) / speeding) * 1000;
-            const firstanimationDuration = (nodeRect.width / speeding) * 1000;
+            const firstAnimationDuration = (nodeRect.width / speeding) * 1000;
 
             this.setData({
               wrapWidth: Number(wrapRect.width),
@@ -94,7 +94,7 @@ export default class NoticeBar extends SuperComponent {
               animationDuration: animationDuration,
               delay: delaying,
               loop: loops,
-              firstanimationDuration: firstanimationDuration,
+              firstAnimationDuration: firstAnimationDuration,
             });
 
             this.startScrollAnimation(true);
@@ -106,9 +106,9 @@ export default class NoticeBar extends SuperComponent {
     startScrollAnimation(isFirstScroll = false) {
       this.clearNoticeBarAnimation();
 
-      const { wrapWidth, nodeWidth, firstanimationDuration, animationDuration, delay } = this.data;
+      const { wrapWidth, nodeWidth, firstAnimationDuration, animationDuration, delay } = this.data;
       const delayTime = isFirstScroll ? delay : 0;
-      const durationTime = isFirstScroll ? firstanimationDuration : animationDuration;
+      const durationTime = isFirstScroll ? firstAnimationDuration : animationDuration;
 
       // 滚动内容: 初始位置
       this.setData({
@@ -118,7 +118,7 @@ export default class NoticeBar extends SuperComponent {
           .export(),
       });
 
-      requestAnimationFrame(() => {
+      getAnimationFrame(() => {
         // 滚动内容: 最终位置
         this.setData({
           animationData: wx

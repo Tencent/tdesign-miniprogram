@@ -1,0 +1,630 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`collapse :base 1`] = `
+<main>
+  <t-collapse
+    id="base"
+    bind:change="handleChange"
+  >
+    <wx-view
+      class="t-class t-collapse "
+    >
+      <t-collapse-panel
+        id="first"
+      >
+        <wx-view
+          class="t-collapse-panel t-class"
+        >
+          <t-cell
+            class="t-collapse-panel__title"
+            tClass="t-collapse-panel__header t-class-header"
+            tClassHover="class-header-hover"
+            tClassNote="class-note "
+            tClassRightIcon="class-right-icon "
+            tClassTitle="class-title "
+            bind:click="onClick"
+          >
+            <wx-view
+              class="t-class t-cell   t-cell--middle"
+              hoverClass="t-cell--hover-class"
+              hoverStayTime="70"
+              bind:tap="onClick"
+            >
+              <wx-view
+                class="t-cell__left t-class-left"
+              />
+              <wx-view
+                class="t-cell__title t-class-title"
+              >
+                <wx-view
+                  class="t-cell__title-text"
+                >
+                   first 
+                </wx-view>
+                <wx-view
+                  class="t-cell__description t-class-description"
+                />
+              </wx-view>
+              <wx-view
+                class="t-cell__note t-class-note"
+              />
+              <wx-view
+                class="t-cell__right t-class-right"
+              >
+                <t-icon
+                  class="t-cell__right-icon t-class-right-icon"
+                >
+                  <wx-view
+                    class="t-icon t-class"
+                    style=""
+                    bind:tap="onTap"
+                  >
+                    <wx-label
+                      class="t-icon-chevron-up t-icon-base"
+                    />
+                  </wx-view>
+                </t-icon>
+              </wx-view>
+            </wx-view>
+          </t-cell>
+          <wx-view
+            class="t-collapse-panel__wrapper"
+            style="height: 0;"
+            bind:transitionend="onTransitionEnd"
+          >
+            <wx-view
+              class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+            >
+              
+      
+      
+              内容1
+            </wx-view>
+          </wx-view>
+        </wx-view>
+      </t-collapse-panel>
+      <t-collapse-panel
+        id="second"
+      >
+        <wx-view
+          class="t-collapse-panel t-class"
+        >
+          <t-cell
+            class="t-collapse-panel__title"
+            tClass="t-collapse-panel__header t-class-header"
+            tClassHover="class-header-hover"
+            tClassNote="class-note "
+            tClassRightIcon="class-right-icon "
+            tClassTitle="class-title "
+            bind:click="onClick"
+          >
+            <wx-view
+              class="t-class t-cell   t-cell--middle"
+              hoverClass="t-cell--hover-class"
+              hoverStayTime="70"
+              bind:tap="onClick"
+            >
+              <wx-view
+                class="t-cell__left t-class-left"
+              />
+              <wx-view
+                class="t-cell__title t-class-title"
+              >
+                <wx-view
+                  class="t-cell__title-text"
+                >
+                   second 
+                </wx-view>
+                <wx-view
+                  class="t-cell__description t-class-description"
+                />
+              </wx-view>
+              <wx-view
+                class="t-cell__note t-class-note"
+              />
+              <wx-view
+                class="t-cell__right t-class-right"
+              >
+                <t-icon
+                  class="t-cell__right-icon t-class-right-icon"
+                >
+                  <wx-view
+                    class="t-icon t-class"
+                    style=""
+                    bind:tap="onTap"
+                  >
+                    <wx-label
+                      class="t-icon-chevron-down t-icon-base"
+                    />
+                  </wx-view>
+                </t-icon>
+              </wx-view>
+            </wx-view>
+          </t-cell>
+          <wx-view
+            class="t-collapse-panel__wrapper"
+            style="height: 0;"
+            bind:transitionend="onTransitionEnd"
+          >
+            <wx-view
+              class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+            >
+              
+      
+      
+              内容2
+            </wx-view>
+          </wx-view>
+        </wx-view>
+      </t-collapse-panel>
+    </wx-view>
+  </t-collapse>
+  <t-collapse
+    id="expandAll"
+  >
+    <wx-view
+      class="t-class t-collapse "
+    >
+      <t-collapse-panel>
+        <wx-view
+          class="t-collapse-panel t-class"
+        >
+          <t-cell
+            class="t-collapse-panel__title"
+            tClass="t-collapse-panel__header t-class-header"
+            tClassHover="class-header-hover"
+            tClassNote="class-note "
+            tClassRightIcon="class-right-icon "
+            tClassTitle="class-title "
+            bind:click="onClick"
+          >
+            <wx-view
+              class="t-class t-cell   t-cell--middle"
+              hoverClass="t-cell--hover-class"
+              hoverStayTime="70"
+              bind:tap="onClick"
+            >
+              <wx-view
+                class="t-cell__left t-class-left"
+              />
+              <wx-view
+                class="t-cell__title t-class-title"
+              >
+                <wx-view
+                  class="t-cell__title-text"
+                >
+                   first 
+                </wx-view>
+                <wx-view
+                  class="t-cell__description t-class-description"
+                />
+              </wx-view>
+              <wx-view
+                class="t-cell__note t-class-note"
+              />
+              <wx-view
+                class="t-cell__right t-class-right"
+              >
+                <t-icon
+                  class="t-cell__right-icon t-class-right-icon"
+                >
+                  <wx-view
+                    class="t-icon t-class"
+                    style=""
+                    bind:tap="onTap"
+                  >
+                    <wx-label
+                      class="t-icon-chevron-down t-icon-base"
+                    />
+                  </wx-view>
+                </t-icon>
+              </wx-view>
+            </wx-view>
+          </t-cell>
+          <wx-view
+            class="t-collapse-panel__wrapper"
+            style="height: 0;"
+            bind:transitionend="onTransitionEnd"
+          >
+            <wx-view
+              class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+            >
+              
+      
+      
+              内容1
+            </wx-view>
+          </wx-view>
+        </wx-view>
+      </t-collapse-panel>
+      <t-collapse-panel>
+        <wx-view
+          class="t-collapse-panel t-class"
+        >
+          <t-cell
+            class="t-collapse-panel__title"
+            tClass="t-collapse-panel__header t-class-header"
+            tClassHover="class-header-hover"
+            tClassNote="class-note "
+            tClassRightIcon="class-right-icon "
+            tClassTitle="class-title "
+            bind:click="onClick"
+          >
+            <wx-view
+              class="t-class t-cell   t-cell--middle"
+              hoverClass="t-cell--hover-class"
+              hoverStayTime="70"
+              bind:tap="onClick"
+            >
+              <wx-view
+                class="t-cell__left t-class-left"
+              />
+              <wx-view
+                class="t-cell__title t-class-title"
+              >
+                <wx-view
+                  class="t-cell__title-text"
+                >
+                   second 
+                </wx-view>
+                <wx-view
+                  class="t-cell__description t-class-description"
+                />
+              </wx-view>
+              <wx-view
+                class="t-cell__note t-class-note"
+              />
+              <wx-view
+                class="t-cell__right t-class-right"
+              >
+                <t-icon
+                  class="t-cell__right-icon t-class-right-icon"
+                >
+                  <wx-view
+                    class="t-icon t-class"
+                    style=""
+                    bind:tap="onTap"
+                  >
+                    <wx-label
+                      class="t-icon-chevron-up t-icon-base"
+                    />
+                  </wx-view>
+                </t-icon>
+              </wx-view>
+            </wx-view>
+          </t-cell>
+          <wx-view
+            class="t-collapse-panel__wrapper"
+            style="height: 0;"
+            bind:transitionend="onTransitionEnd"
+          >
+            <wx-view
+              class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+            >
+              
+      
+      
+              内容2
+            </wx-view>
+          </wx-view>
+        </wx-view>
+      </t-collapse-panel>
+    </wx-view>
+  </t-collapse>
+</main>
+`;
+
+exports[`collapse :defaultExpandAll 1`] = `
+<t-collapse
+  id="expandAll"
+>
+  <wx-view
+    class="t-class t-collapse "
+  >
+    <t-collapse-panel>
+      <wx-view
+        class="t-collapse-panel t-class"
+      >
+        <t-cell
+          class="t-collapse-panel__title"
+          tClass="t-collapse-panel__header t-class-header"
+          tClassHover="class-header-hover"
+          tClassNote="class-note "
+          tClassRightIcon="class-right-icon "
+          tClassTitle="class-title "
+          bind:click="onClick"
+        >
+          <wx-view
+            class="t-class t-cell   t-cell--middle"
+            hoverClass="t-cell--hover-class"
+            hoverStayTime="70"
+            bind:tap="onClick"
+          >
+            <wx-view
+              class="t-cell__left t-class-left"
+            />
+            <wx-view
+              class="t-cell__title t-class-title"
+            >
+              <wx-view
+                class="t-cell__title-text"
+              >
+                 first 
+              </wx-view>
+              <wx-view
+                class="t-cell__description t-class-description"
+              />
+            </wx-view>
+            <wx-view
+              class="t-cell__note t-class-note"
+            />
+            <wx-view
+              class="t-cell__right t-class-right"
+            >
+              <t-icon
+                class="t-cell__right-icon t-class-right-icon"
+              >
+                <wx-view
+                  class="t-icon t-class"
+                  style=""
+                  bind:tap="onTap"
+                >
+                  <wx-label
+                    class="t-icon-chevron-down t-icon-base"
+                  />
+                </wx-view>
+              </t-icon>
+            </wx-view>
+          </wx-view>
+        </t-cell>
+        <wx-view
+          class="t-collapse-panel__wrapper"
+          style="height: 0;"
+          bind:transitionend="onTransitionEnd"
+        >
+          <wx-view
+            class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+          >
+            
+      
+      
+            内容1
+          </wx-view>
+        </wx-view>
+      </wx-view>
+    </t-collapse-panel>
+    <t-collapse-panel>
+      <wx-view
+        class="t-collapse-panel t-class"
+      >
+        <t-cell
+          class="t-collapse-panel__title"
+          tClass="t-collapse-panel__header t-class-header"
+          tClassHover="class-header-hover"
+          tClassNote="class-note "
+          tClassRightIcon="class-right-icon "
+          tClassTitle="class-title "
+          bind:click="onClick"
+        >
+          <wx-view
+            class="t-class t-cell   t-cell--middle"
+            hoverClass="t-cell--hover-class"
+            hoverStayTime="70"
+            bind:tap="onClick"
+          >
+            <wx-view
+              class="t-cell__left t-class-left"
+            />
+            <wx-view
+              class="t-cell__title t-class-title"
+            >
+              <wx-view
+                class="t-cell__title-text"
+              >
+                 second 
+              </wx-view>
+              <wx-view
+                class="t-cell__description t-class-description"
+              />
+            </wx-view>
+            <wx-view
+              class="t-cell__note t-class-note"
+            />
+            <wx-view
+              class="t-cell__right t-class-right"
+            >
+              <t-icon
+                class="t-cell__right-icon t-class-right-icon"
+              >
+                <wx-view
+                  class="t-icon t-class"
+                  style=""
+                  bind:tap="onTap"
+                >
+                  <wx-label
+                    class="t-icon-chevron-up t-icon-base"
+                  />
+                </wx-view>
+              </t-icon>
+            </wx-view>
+          </wx-view>
+        </t-cell>
+        <wx-view
+          class="t-collapse-panel__wrapper"
+          style="height: 0;"
+          bind:transitionend="onTransitionEnd"
+        >
+          <wx-view
+            class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+          >
+            
+      
+      
+            内容2
+          </wx-view>
+        </wx-view>
+      </wx-view>
+    </t-collapse-panel>
+  </wx-view>
+</t-collapse>
+`;
+
+exports[`collapse :disabled 1`] = `
+<t-collapse
+  id="base"
+  bind:change="handleChange"
+>
+  <wx-view
+    class="t-class t-collapse "
+  >
+    <t-collapse-panel
+      id="first"
+    >
+      <wx-view
+        class="t-collapse-panel t-class"
+      >
+        <t-cell
+          class="t-collapse-panel__title"
+          tClass="t-collapse-panel__header t-class-header"
+          tClassHover="class-header-hover"
+          tClassNote="class-note "
+          tClassRightIcon="class-right-icon "
+          tClassTitle="class-title "
+          bind:click="onClick"
+        >
+          <wx-view
+            class="t-class t-cell   t-cell--middle"
+            hoverClass="t-cell--hover-class"
+            hoverStayTime="70"
+            bind:tap="onClick"
+          >
+            <wx-view
+              class="t-cell__left t-class-left"
+            />
+            <wx-view
+              class="t-cell__title t-class-title"
+            >
+              <wx-view
+                class="t-cell__title-text"
+              >
+                 first 
+              </wx-view>
+              <wx-view
+                class="t-cell__description t-class-description"
+              />
+            </wx-view>
+            <wx-view
+              class="t-cell__note t-class-note"
+            />
+            <wx-view
+              class="t-cell__right t-class-right"
+            >
+              <t-icon
+                class="t-cell__right-icon t-class-right-icon"
+              >
+                <wx-view
+                  class="t-icon t-class"
+                  style=""
+                  bind:tap="onTap"
+                >
+                  <wx-label
+                    class="t-icon-chevron-up t-icon-base"
+                  />
+                </wx-view>
+              </t-icon>
+            </wx-view>
+          </wx-view>
+        </t-cell>
+        <wx-view
+          class="t-collapse-panel__wrapper"
+          style="height: auto;"
+          bind:transitionend="onTransitionEnd"
+        >
+          <wx-view
+            class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+          >
+            
+      
+      
+            内容1
+          </wx-view>
+        </wx-view>
+      </wx-view>
+    </t-collapse-panel>
+    <t-collapse-panel
+      id="second"
+    >
+      <wx-view
+        class="t-collapse-panel t-class"
+      >
+        <t-cell
+          class="t-collapse-panel__title"
+          tClass="t-collapse-panel__header t-class-header"
+          tClassHover="class-header-hover"
+          tClassNote="class-note "
+          tClassRightIcon="class-right-icon "
+          tClassTitle="class-title "
+          bind:click="onClick"
+        >
+          <wx-view
+            class="t-class t-cell   t-cell--middle"
+            hoverClass="t-cell--hover-class"
+            hoverStayTime="70"
+            bind:tap="onClick"
+          >
+            <wx-view
+              class="t-cell__left t-class-left"
+            />
+            <wx-view
+              class="t-cell__title t-class-title"
+            >
+              <wx-view
+                class="t-cell__title-text"
+              >
+                 second 
+              </wx-view>
+              <wx-view
+                class="t-cell__description t-class-description"
+              />
+            </wx-view>
+            <wx-view
+              class="t-cell__note t-class-note"
+            />
+            <wx-view
+              class="t-cell__right t-class-right"
+            >
+              <t-icon
+                class="t-cell__right-icon t-class-right-icon"
+              >
+                <wx-view
+                  class="t-icon t-class"
+                  style=""
+                  bind:tap="onTap"
+                >
+                  <wx-label
+                    class="t-icon-chevron-down t-icon-base"
+                  />
+                </wx-view>
+              </t-icon>
+            </wx-view>
+          </wx-view>
+        </t-cell>
+        <wx-view
+          class="t-collapse-panel__wrapper"
+          style="height: 0;"
+          bind:transitionend="onTransitionEnd"
+        >
+          <wx-view
+            class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+          >
+            
+      
+      
+            内容2
+          </wx-view>
+        </wx-view>
+      </wx-view>
+    </t-collapse-panel>
+  </wx-view>
+</t-collapse>
+`;

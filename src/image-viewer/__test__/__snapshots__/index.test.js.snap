@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`image-viewer :base 1`] = `
+<t-image
+  class="t-image-viewer__image"
+  data-index="{{0}}"
+  style="width: 200rpx; height: 200rpx; left: 50%; transform: translate(-50%, -50%)"
+  tClass="t-image--external"
+  bind:load="onImageLoadSuccess"
+>
+  <wx-view
+    class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  >
+    <t-loading
+      class="t-class-load"
+      tClassText="t-image--loading-text"
+    >
+      <wx-view
+        class="t-class"
+      >
+        <wx-view
+          class="t-loading t-loading--horizontal"
+          style=""
+        >
+          <wx-view
+            class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+            style="width: 40rpx; height: 40rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+          >
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+            />
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+            />
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+            />
+          </wx-view>
+          <wx-view
+            class="t-class-text"
+          />
+        </wx-view>
+      </wx-view>
+    </t-loading>
+  </wx-view>
+  <wx-image
+    class="t-class t-image t-image--shape-square"
+    hidden="{{true}}"
+    id="image"
+    lazyLoad="{{true}}"
+    mode="aspectFit"
+    showMenuByLongpress="{{false}}"
+    src="a.png"
+    style=""
+    webp="{{false}}"
+    bind:error="onLoadError"
+    bind:load="onLoaded"
+  />
+</t-image>
+`;
+
+exports[`image-viewer :base 2`] = `
+<t-image
+  class="t-image-viewer__image"
+  data-index="{{0}}"
+  style="width: 100vw; height: 828rpx"
+  tClass="t-image--external"
+  bind:load="onImageLoadSuccess"
+>
+  <wx-view
+    class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  >
+    <t-loading
+      class="t-class-load"
+      tClassText="t-image--loading-text"
+    >
+      <wx-view
+        class="t-class"
+      >
+        <wx-view
+          class="t-loading t-loading--horizontal"
+          style=""
+        >
+          <wx-view
+            class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+            style="width: 40rpx; height: 40rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+          >
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+            />
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+            />
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+            />
+          </wx-view>
+          <wx-view
+            class="t-class-text"
+          />
+        </wx-view>
+      </wx-view>
+    </t-loading>
+  </wx-view>
+  <wx-image
+    class="t-class t-image t-image--shape-square"
+    hidden="{{true}}"
+    id="image"
+    lazyLoad="{{true}}"
+    mode="aspectFit"
+    showMenuByLongpress="{{false}}"
+    src="a.png"
+    style=""
+    webp="{{false}}"
+    bind:error="onLoadError"
+    bind:load="onLoaded"
+  />
+</t-image>
+`;
+
+exports[`image-viewer :base 3`] = `
+<t-image
+  class="t-image-viewer__image"
+  data-index="{{0}}"
+  style="width: 1075.2rpx; height: 100vh; left: 50%; transform: translate(-50%, -50%)"
+  tClass="t-image--external"
+  bind:load="onImageLoadSuccess"
+>
+  <wx-view
+    class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  >
+    <t-loading
+      class="t-class-load"
+      tClassText="t-image--loading-text"
+    >
+      <wx-view
+        class="t-class"
+      >
+        <wx-view
+          class="t-loading t-loading--horizontal"
+          style=""
+        >
+          <wx-view
+            class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+            style="width: 40rpx; height: 40rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+          >
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+            />
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+            />
+            <wx-view
+              class="t-loading__dot"
+              style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+            />
+          </wx-view>
+          <wx-view
+            class="t-class-text"
+          />
+        </wx-view>
+      </wx-view>
+    </t-loading>
+  </wx-view>
+  <wx-image
+    class="t-class t-image t-image--shape-square"
+    hidden="{{true}}"
+    id="image"
+    lazyLoad="{{true}}"
+    mode="aspectFit"
+    showMenuByLongpress="{{false}}"
+    src="a.png"
+    style=""
+    webp="{{false}}"
+    bind:error="onLoadError"
+    bind:load="onLoaded"
+  />
+</t-image>
+`;

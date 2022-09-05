@@ -20,7 +20,7 @@ export default class Collapse extends SuperComponent {
     './collapse-panel': {
       type: 'descendant',
       linked() {
-        // this.updateExpanded();
+        this.updateExpanded();
       },
     },
   };
