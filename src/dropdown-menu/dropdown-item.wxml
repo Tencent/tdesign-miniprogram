@@ -17,10 +17,11 @@
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
         <t-cell-group wx:if="{{!multiple}}">
-          <t-radio-group value="{{value}}" bind:change="handleRadioChange">
+          <t-radio-group class="{{classPrefix}}__radio" value="{{value}}" bind:change="handleRadioChange">
             <t-radio
               wx:for="{{options}}"
               wx:key="index"
+              class="{{classPrefix}}__radio-item"
               icon="stroke-line"
               align="right"
               t-class="radio"
@@ -34,6 +35,7 @@
         <!-- 多选列表 -->
         <block wx:else>
           <t-checkbox-group
+            class="{{classPrefix}}__checkbox"
             t-class="{{classPrefix}}__checkbox-group"
             custom-style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
             value="{{value}}"
@@ -74,10 +76,16 @@
 
           <block wx:else>
             <block wx:if="{{!multiple}}">
-              <t-radio-group data-level="{{level}}" value="{{value[level]}}" bind:change="handleRadioChange">
+              <t-radio-group
+                class="{{classPrefix}}__radio"
+                data-level="{{level}}"
+                value="{{value[level]}}"
+                bind:change="handleRadioChange"
+              >
                 <t-radio
                   wx:for="{{treeOptions[level]}}"
                   wx:key="value"
+                  class="{{classPrefix}}__radio-item"
                   t-class="radio"
                   t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}}"
                   value="{{item[valueAlias]}}"
@@ -88,7 +96,12 @@
               </t-radio-group>
             </block>
             <block wx:elif="{{multiple}}">
-              <t-checkbox-group value="{{value[level]}}" bind:change="handleRadioChange" data-level="{{level}}">
+              <t-checkbox-group
+                class="{{classPrefix}}__checkbox"
+                value="{{value[level]}}"
+                bind:change="handleRadioChange"
+                data-level="{{level}}"
+              >
                 <t-checkbox
                   wx:for="{{treeOptions[level]}}"
                   wx:key="value"
@@ -112,6 +125,7 @@
         <t-button
           block
           size="large"
+          class="{{classPrefix}}__reset-btn"
           t-class="button button--reset"
           theme="default"
           disabled="{{!hasChanged}}"
@@ -121,6 +135,7 @@
         <t-button
           block
           size="large"
+          class="{{classPrefix}}__confirm-btn"
           t-class="button button--confirm"
           theme="primary"
           disabled="{{!hasChanged}}"

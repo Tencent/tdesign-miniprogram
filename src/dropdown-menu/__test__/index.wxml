@@ -1,0 +1,24 @@
+<t-dropdown-menu id="base">
+  <t-dropdown-item
+    id="first"
+    label="菜单"
+    options="{{singleSelect.options}}"
+    value="{{singleSelect.value}}"
+    bindchange="handleSingleSelect"
+  />
+  <t-dropdown-item
+    id="second"
+    label="单列多选"
+    options="{{multipleSelect.options}}"
+    defaultValue="{{multipleSelect.value}}"
+    multiple
+  />
+  <t-dropdown-item
+    id="tree"
+    label="树形双列"
+    optionsLayout="tree"
+    options="{{doubleColumnsTree.options}}"
+    value="{{doubleColumnsTree.value}}"
+    bindchange="handleTreeSelect"
+  />
+</t-dropdown-menu>
