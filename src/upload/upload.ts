@@ -204,23 +204,9 @@ export default class Upload extends SuperComponent {
     return parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName;
   }
 
-  closePop() {
-    this.setData({ showPop: false });
-  }
-
   onAddTap() {
     const { mediaType } = this.properties;
     this.chooseMedia(mediaType);
-  }
-
-  onChooseImage() {
-    this.chooseImg();
-    // this.setData({ showPop: false });
-  }
-
-  onChooseVideo() {
-    this.chooseVideo();
-    // this.setData({ showPop: false });
   }
 
   onDelete(e: any) {
