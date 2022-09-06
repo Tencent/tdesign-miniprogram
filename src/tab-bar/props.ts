@@ -32,15 +32,13 @@ const props: TdTabBarProps = {
   },
   /** 当前选中标签的索引 */
   value: {
-    type: String,
-    optionalTypes: [Number, Array],
+    type: null,
     value: null,
   },
   /** 当前选中标签的索引，非受控属性 */
   defaultValue: {
-    type: String,
-    optionalTypes: [Number, Array],
-    value: undefined,
+    type: null,
+    value: null,
   },
 };
 

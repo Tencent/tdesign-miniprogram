@@ -7,11 +7,14 @@ const classPrefix = `${prefix}-tab-bar-item`;
 
 @wxComponent()
 export default class TabbarItem extends SuperComponent {
+  parent = null;
+
   relations: RelationsOptions = {
     './tab-bar': {
       type: 'ancestor',
       linked(parent) {
-        this.data.parent = parent;
+        this.parent = parent;
+
         this.setData({
           split: parent.data.split,
           currentName: this.properties.value ? this.properties.value : parent.initName(),
@@ -30,7 +33,6 @@ export default class TabbarItem extends SuperComponent {
     classPrefix,
     isSpread: false,
     isChecked: false,
-    parent: null,
     hasChildren: false,
     currentName: '',
     split: true,
@@ -53,7 +55,8 @@ export default class TabbarItem extends SuperComponent {
       });
     },
     toggle() {
-      const { parent, currentName, hasChildren, isSpread } = this.data;
+      const { parent } = this;
+      const { currentName, hasChildren, isSpread } = this.data;
 
       if (hasChildren) {
         this.setData({
@@ -64,23 +67,17 @@ export default class TabbarItem extends SuperComponent {
       parent.changeOtherSpread(currentName);
     },
     selectChild(event) {
-      const { parent, currentName } = this.data;
-      const childName = event.target.dataset.name;
+      const { parent } = this;
+      const { value } = event.target.dataset;
 
-      if (!(Array.isArray(parent.value) && parent.value[1] === childName)) {
-        parent.updateValue([currentName, childName]);
-      }
+      parent.updateValue(value);
       this.setData({
         isSpread: false,
       });
     },
     checkActive(value) {
-      const { currentName, hasChildren } = this.data;
-      const isChecked = currentName === value;
-
-      if (hasChildren && Array.isArray(value)) {
-        return value.indexOf(currentName) > -1;
-      }
+      const { currentName, subTabBar } = this.data;
+      const isChecked = subTabBar?.some((item) => item.value === value) || currentName === value;
 
       this.setData({
         isChecked,

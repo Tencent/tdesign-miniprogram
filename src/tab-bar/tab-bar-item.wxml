@@ -36,8 +36,8 @@
       wx:for-item="child"
       wx:for-index="index"
       wx:key="index"
-      bindtap="selectChild"
-      data-name="{{child.name || index}}"
+      bind:tap="selectChild"
+      data-value="{{child.value || index}}"
       >{{ child.label }}
     </view>
   </view>
