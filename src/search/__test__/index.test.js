@@ -8,6 +8,22 @@ describe('search', () => {
   });
 
   describe('Props', () => {
+    it(`:base`, () => {
+      const id = simulate.load({
+        template: `<t-search class="search" action="{{action}}"></t-search>`,
+        usingComponents: {
+          't-search': search,
+        },
+        data: {
+          action: '提交',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      expect(comp.toJSON()).toMatchSnapshot();
+    });
+
     it(':action string', () => {
       const id = simulate.load({
         template: `<t-search class="search" action="{{action}}"></t-search>`,
