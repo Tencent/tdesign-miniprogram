@@ -18,12 +18,14 @@ export default class Sticky extends SuperComponent {
 
   behaviors = [
     pageScrollMixin(function (event) {
+      console.log('event: ', event);
       this.onScroll(event);
     }),
   ];
 
   observers = {
     'offsetTop, disabled, container'() {
+      console.log('observers');
       this.onScroll();
     },
   };
@@ -36,12 +38,14 @@ export default class Sticky extends SuperComponent {
   };
 
   ready() {
+    console.log('ready');
     this.onScroll();
   }
 
   methods = {
     onScroll(event?: { scrollTop: number }) {
       const { scrollTop } = event || {};
+      console.log('scrollTop: ', scrollTop);
       const { container, offsetTop, disabled } = this.properties;
 
       if (disabled) {
@@ -77,6 +81,7 @@ export default class Sticky extends SuperComponent {
       }
 
       getRect(this, ContainerClass).then((root) => {
+        console.log('root: ', root);
         if (!root) return;
         if (offsetTop >= root.top) {
           this.setDataAfterDiff({ isFixed: true, height: root.height });

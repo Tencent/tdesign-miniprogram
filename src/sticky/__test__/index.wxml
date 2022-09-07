@@ -1,0 +1,20 @@
+<view class="demo tdesign-demo-sticky-base">
+	<t-sticky id="base-sticky" bind:scroll="handleScroll">
+		<t-button class="base-btn">基础吸顶 </t-button>
+	</t-sticky>
+
+	<t-sticky id="disabled-sticky" bind:scroll="handleScroll">
+		<t-button class="base-btn" disabled="{{true}}">禁用吸顶 </t-button>
+	</t-sticky>
+
+	<t-sticky id="offset-top-sticky" bind:scroll="handleScroll">
+		<t-button class="base-btn" offsetTop="{{100}}">offsetTop吸顶 </t-button>
+	</t-sticky>
+
+	<view class="wrapper">
+		<t-sticky id="container-sticky" container="{{ container }}">
+			<t-button class="container-btn">指定容器</t-button>
+		</t-sticky>
+	</view>
+</view>
+

@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "Sticky",
-  "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button",
-    "t-sticky": "tdesign-miniprogram/sticky/sticky",
-    "t-demo": "../../../components/demo-block/index"
-  }
-}
