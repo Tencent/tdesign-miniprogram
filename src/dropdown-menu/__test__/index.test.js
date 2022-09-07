@@ -35,7 +35,6 @@ describe('dropdown-menu', () => {
 
     const $base = comp.querySelector('#base');
     const $first = comp.querySelector('#first');
-    const $tree = comp.querySelector('#tree');
     const $item = $base.querySelector('.t-dropdown-menu__item');
 
     $item.dispatchEvent('tap');
@@ -52,6 +51,8 @@ describe('dropdown-menu', () => {
     $items[2].dispatchEvent('tap');
     await simulate.sleep(210);
 
+    // tree
+    const $tree = comp.querySelector('#tree');
     const $treeRadio = $tree.querySelectorAll('.t-dropdown-item__radio-item');
     const $treeRadioContent = $treeRadio[1].querySelector('.t-radio__content');
     $treeRadioContent.dispatchEvent('tap');
@@ -66,12 +67,24 @@ describe('dropdown-menu', () => {
 
     expect($tree.instance.data.value).toStrictEqual(['0', '0-0']);
 
+    // change value
+    const $treeItem = $tree.querySelectorAll('.t-dropdown-item__tree-item');
+    $treeItem[1].dispatchEvent('tap');
+    await simulate.sleep();
+
+    const $treeRadio2 = $tree.querySelectorAll('.t-dropdown-item__radio-item');
+    const $treeRadioContent2 = $treeRadio2[1].querySelector('.t-radio__content');
+    $treeRadioContent2.dispatchEvent('tap');
+    await simulate.sleep();
+
+    expect($tree.instance.data.value).toStrictEqual(['1', '1-1']);
+
     // confirm
     const $treeConfirm = $tree.querySelector('.t-dropdown-item__confirm-btn');
     $treeConfirm.dispatchEvent('tap');
     await simulate.sleep();
 
-    expect($tree.instance.data.value).toStrictEqual(['0', '0-0']);
+    expect($tree.instance.data.value).toStrictEqual(['1', '1-1']);
   });
 
   it('@close', async () => {
@@ -85,10 +98,49 @@ describe('dropdown-menu', () => {
     $item.dispatchEvent('tap');
     await simulate.sleep(210);
 
-    $first.querySelector('.t-dropdown-item__popup-host').dispatchEvent('visible-change');
-
+    const $overlay = $first.querySelector('.t-dropdown-item__popup-host >>> #popup-overlay');
+    $overlay.dispatchEvent('tap');
     await simulate.sleep();
 
     expect($first.instance.data.show).toBeFalsy();
+
+    // test :closeOnClickOverlay
+    comp.setData({ closeOnClickOverlay: false });
+
+    // open
+    $item.dispatchEvent('tap');
+    await simulate.sleep(210);
+
+    expect($first.instance.data.show).toBeTruthy();
+
+    // overlay
+    $overlay.dispatchEvent('tap');
+    await simulate.sleep();
+    expect($first.instance.data.show).toBeTruthy();
+  });
+
+  it(':keys', async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const options = [{ name: 'first', val: 1 }];
+    comp.setData({
+      keys: {
+        label: 'name',
+        value: 'val',
+      },
+      'singleSelect.options': options,
+    });
+
+    const $base = comp.querySelector('#base');
+    const $first = comp.querySelector('#first');
+    const $item = $base.querySelector('.t-dropdown-menu__item');
+
+    $item.dispatchEvent('tap');
+    await simulate.sleep(210);
+
+    $first.querySelector('.t-dropdown-item__radio-item');
+
+    expect($first.dom.textContent.trim()).toBe('first');
   });
 });

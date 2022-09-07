@@ -33,18 +33,20 @@ const generateTree = function (deep = 0, count = 10, prefix) {
 
 Component({
   data: {
+    keys: {},
     singleSelect: {
       value: 'option_3',
       options: singleSelectOptions,
     },
     multipleSelect: {
-      value: [],
+      value: ['option_3'],
       options: singleSelectOptions,
     },
     doubleColumnsTree: {
       options: generateTree(1),
       value: ['0', '0-0'],
     },
+    closeOnClickOverlay: true,
   },
   methods: {
     handleSingleSelect(e) {
