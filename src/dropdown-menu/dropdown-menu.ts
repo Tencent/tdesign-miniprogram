@@ -12,10 +12,11 @@ export interface DropdownMenuProps extends TdDropdownMenuProps {}
 export default class DropdownMenu extends SuperComponent {
   properties = props; // todo: zindex activeColor
 
+  nodes = null;
+
   data = {
     prefix,
     classPrefix: name,
-    nodes: null,
     menus: null,
     activeIdx: -1,
     bottom: 0,
@@ -36,8 +37,8 @@ export default class DropdownMenu extends SuperComponent {
   methods = {
     toggle(index: number) {
       const { activeIdx, duration } = this.data;
-      const prevItem = this.data.nodes[activeIdx];
-      const currItem = this.data.nodes[index];
+      const prevItem = this.nodes[activeIdx];
+      const currItem = this.nodes[index];
 
       if (currItem?.data.disabled) return;
 
@@ -80,8 +81,8 @@ export default class DropdownMenu extends SuperComponent {
       const nodes = this.getRelationNodes('./dropdown-item');
       const menus = nodes.map((a) => a.data);
 
+      this.nodes = nodes;
       this.setData({
-        nodes,
         menus,
       });
     },

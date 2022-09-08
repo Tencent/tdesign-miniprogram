@@ -20,8 +20,8 @@ const props: TdTabBarItemProps = {
   },
   /** 标识符 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
+    value: null,
   },
 };
 

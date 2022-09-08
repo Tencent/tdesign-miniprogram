@@ -15,10 +15,11 @@ export default class Tabbar extends SuperComponent {
 
   externalClasses = [`${prefix}-class`];
 
+  backupValue: 0;
+
   data = {
     prefix,
     classPrefix,
-    defaultNameIndex: -1,
   };
 
   properties = props;
@@ -49,9 +50,9 @@ export default class Tabbar extends SuperComponent {
       const len = items.length;
       const { value } = this.data;
       if (len > 0) {
-        items.forEach((item) => {
-          if (item.properties.currentName === value) {
-            item.showSpread();
+        items.forEach((child) => {
+          if (child.properties.value === value) {
+            child.showSpread();
           }
         });
       }
@@ -62,8 +63,8 @@ export default class Tabbar extends SuperComponent {
       const { value } = this.data;
 
       if (len > 0) {
-        items.forEach((item) => {
-          item.checkActive(value);
+        items.forEach((child) => {
+          child.checkActive(value);
         });
       }
     },
@@ -73,22 +74,15 @@ export default class Tabbar extends SuperComponent {
     changeOtherSpread(value) {
       const items = this.getRelationNodes('./tab-bar-item');
 
-      items.forEach((item) => {
-        if (item.properties.currentName !== value) {
-          item.closeSpread();
+      items.forEach((child) => {
+        if (child.properties.value !== value) {
+          child.closeSpread();
         }
       });
     },
-    /**
-     * 对于没有 name 的 item 生成一个 name
-     */
-    initName() {
-      const nameIndex = this.data.defaultNameIndex + 1;
 
-      this.setData({
-        defaultNameIndex: nameIndex,
-      });
-      return nameIndex;
+    initName() {
+      return (this.backupValue += 1);
     },
   };
 }
