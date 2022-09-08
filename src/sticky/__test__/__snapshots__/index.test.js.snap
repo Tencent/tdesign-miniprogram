@@ -73,7 +73,7 @@ exports[`Sticky Props :base 1`] = `
           >
             <wx-button
               appParameter=""
-              class="t-button t-class t-button--default t-button--size-m t-button--rectangle t-is-disabled t-button--base t-class"
+              class="t-button t-class t-button--default t-button--size-m t-button--rectangle t-button--base t-class"
               data-custom="{{null}}"
               formType=""
               hoverClass="button-hover"
@@ -121,7 +121,6 @@ exports[`Sticky Props :base 1`] = `
         >
           <t-button
             class="base-btn"
-            offsetTop="{{100}}"
           >
             <wx-button
               appParameter=""

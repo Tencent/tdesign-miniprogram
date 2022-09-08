@@ -10,9 +10,6 @@ Component({
     },
   },
   methods: {
-    handleScroll(e) {
-      console.log(e.target);
-      // console.log('Scroll', e);
-    },
+    handleScroll() {},
   },
 });
