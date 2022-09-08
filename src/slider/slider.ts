@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import { trimSingleValue, trimValue } from './tool';
 import props from './props';
+import type { SliderValue } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-slider`;
@@ -21,9 +22,14 @@ type dataType = {
   isScale: boolean;
   scaleArray: any[];
   scaleTextArray: any[];
-  _value: number | number[];
+  _value: SliderValue;
   prefix: string;
 };
+
+interface boundingClientRect {
+  left: number;
+  right: number;
+}
 @wxComponent()
 export default class Slider extends SuperComponent {
   externalClasses = [
@@ -65,10 +71,10 @@ export default class Slider extends SuperComponent {
   };
 
   observers = {
-    'value, min, max'(this: Slider, newValue: number | number[]) {
+    value(newValue: SliderValue) {
       this.handlePropsChange(newValue);
     },
-    _value(this: Slider, newValue: number | number[]) {
+    _value(newValue: SliderValue) {
       const { min, max, range } = this.properties;
       const { maxRange, blockSize } = this.data;
       const fullLineWidth = maxRange + Number(blockSize);
@@ -79,38 +85,29 @@ export default class Slider extends SuperComponent {
         // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
         this.setDotStyle(left, right);
       } else {
-        const left =
-          (fullLineWidth * (Number(newValue) - Number(min))) / (Number(max) - Number(min));
+        const left = (fullLineWidth * (Number(newValue) - Number(min))) / (Number(max) - Number(min));
         this.setDotStyle(left, null);
         this.getSingleBarWidth(newValue as number);
       }
     },
+    marks(val) {
+      this.handleMask(val);
+    },
   };
 
   attached() {
-    const { marks, value } = this.properties;
+    const { value } = this.properties;
     if (!value) this.handlePropsChange(0);
-    this.handleMask(marks);
     this.getInitialStyle();
   }
 
-  /**
-   * 通知父组件，触发change事件
-   * touchMove过程中，_value变化，但不trigger，其他改变_value的场景需要调用该函数
-   * @param {number | number[]} value
-   * @memberof Slider
-   */
-  triggerValue(value?: number | number[]) {
+  triggerValue(value?: SliderValue) {
     this._trigger('change', {
       value: trimValue(value, this.properties),
     });
   }
 
-  /**
-   * 监控props传参，计算组件value值
-   * @param newValue
-   */
-  handlePropsChange(newValue: number | number[]) {
+  handlePropsChange(newValue: SliderValue) {
     const value = trimValue(newValue, this.properties);
 
     const setValueAndTrigger = () => {
@@ -133,19 +130,19 @@ export default class Slider extends SuperComponent {
       this.setData({
         isScale: true,
         scaleArray: marks,
+        scaleTextArray: [],
       });
     }
 
     if (Object.prototype.toString.call(marks) === '[object Object]') {
       const scaleArray = Object.keys(marks).map((item) => Number(item));
       const scaleTextArray = scaleArray.map((item) => marks[item]);
-      if (scaleArray.length) {
-        this.setData({
-          isScale: true,
-          scaleArray,
-          scaleTextArray,
-        });
-      }
+
+      this.setData({
+        isScale: scaleArray.length > 0,
+        scaleArray,
+        scaleTextArray,
+      });
     }
   }
 
@@ -157,9 +154,10 @@ export default class Slider extends SuperComponent {
     });
   }
 
-  getSelectorQuery(id: string): Promise<{ left: number; right: number }> {
+  getSelectorQuery(id: string): Promise<boundingClientRect> {
     return new Promise((resolve, reject) => {
-      this.createSelectorQuery()
+      wx.createSelectorQuery()
+        .in(this as WechatMiniprogram.Component.TrivialInstance)
         .select(`#${id}`)
         .boundingClientRect((rect) => {
           if (rect) {
@@ -173,9 +171,9 @@ export default class Slider extends SuperComponent {
   }
 
   async getInitialStyle() {
-    const line: { right: number; left: number } = await this.getSelectorQuery('sliderLine');
+    const line: boundingClientRect = await this.getSelectorQuery('sliderLine');
     const { blockSize } = this.data;
-    const halfBlock: number = Number(blockSize) / 2;
+    const halfBlock = Number(blockSize) / 2;
     this.setData({
       maxRange: line.right - line.left - Number(blockSize),
       initialLeft: line.left - halfBlock,
@@ -215,26 +213,23 @@ export default class Slider extends SuperComponent {
 
     if (Number(step) < 1 || Number(step) > Number(max) - Number(min)) return value;
 
-    const closestStep = trimSingleValue(
-      Math.round(value / Number(step)) * Number(step),
-      Number(min),
-      Number(max),
-    );
+    const closestStep = trimSingleValue(Math.round(value / Number(step)) * Number(step), Number(min), Number(max));
 
     return closestStep as number;
   }
 
   // 点击滑动条的事件
-  onSingleLineTap(e: any) {
+  onSingleLineTap(e: WechatMiniprogram.TouchEvent) {
+    const { disabled } = this.properties;
+    if (disabled) return;
+
     const value = this.getSingleChangeValue(e);
     this.triggerValue(value);
   }
 
-  getSingleChangeValue(e: any) {
-    const { disabled, min, max } = this.properties;
+  getSingleChangeValue(e: WechatMiniprogram.TouchEvent) {
+    const { min, max } = this.properties;
     const { initialLeft, maxRange, blockSize } = this.data;
-    if (disabled) return;
-
     const [touch] = e.changedTouches;
     const { pageX } = touch;
     const halfBlock = Number(blockSize) / 2;
@@ -247,9 +242,7 @@ export default class Slider extends SuperComponent {
     } else if (currentLeft >= maxRange + Number(blockSize)) {
       value = Number(max);
     } else {
-      value = Math.round(
-        (currentLeft / (maxRange + Number(blockSize))) * (Number(max) - Number(min)) + Number(min),
-      );
+      value = Math.round((currentLeft / (maxRange + Number(blockSize))) * (Number(max) - Number(min)) + Number(min));
     }
     return this.stepValue(value);
   }
@@ -272,7 +265,7 @@ export default class Slider extends SuperComponent {
   }
 
   // 点击范围选择滑动条的事件
-  onLineTap(e: any) {
+  onLineTap(e: WechatMiniprogram.TouchEvent) {
     const { disabled } = this.properties;
     const { initialLeft, initialRight, maxRange, blockSize } = this.data;
     if (disabled) return;
@@ -284,8 +277,8 @@ export default class Slider extends SuperComponent {
     const currentLeft = pageX - initialLeft - halfBlock;
     if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
 
-    this.getSelectorQuery('leftDot').then((leftDot: { left: number; right: number }) => {
-      this.getSelectorQuery('rightDot').then((rightDot: { left: number; right: number }) => {
+    this.getSelectorQuery('leftDot').then((leftDot: boundingClientRect) => {
+      this.getSelectorQuery('rightDot').then((rightDot: boundingClientRect) => {
         // 点击处-halfblock 与 leftDot左侧的距离（绝对值）
         const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
         // 点击处-halfblock 与 rightDot左侧的距离（绝对值）
@@ -300,18 +293,14 @@ export default class Slider extends SuperComponent {
         } else {
           const right = -(pageX - initialRight) - halfBlock;
           const rightValue = this.convertPosToValue(right, 1);
-          const newValue = trimValue(
-            [this.data._value[0], this.stepValue(rightValue)],
-            this.properties,
-          );
 
-          this.triggerValue(newValue);
+          this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
         }
       });
     });
   }
 
-  onTouchMoveLeft(e: any) {
+  onTouchMoveLeft(e: WechatMiniprogram.TouchEvent) {
     const { disabled } = this.properties;
     const { initialLeft, blockSize, _value } = this.data;
     if (disabled) return;
@@ -330,7 +319,7 @@ export default class Slider extends SuperComponent {
     this.triggerValue(newData);
   }
 
-  onTouchMoveRight(e: any) {
+  onTouchMoveRight(e: WechatMiniprogram.TouchEvent) {
     const { disabled } = this.properties;
     const { initialRight, blockSize, _value } = this.data;
     if (disabled) return;
