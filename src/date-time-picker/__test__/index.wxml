@@ -1,0 +1,12 @@
+<t-date-time-picker
+  title="选择日期"
+  visible="{{monthVisible}}"
+  mode="month"
+  value="{{month}}"
+  format="YYYY-MM"
+  bindchange="onConfirm"
+  bindpick="onColumnChange"
+  bindcancel="hidePicker"
+  start="{{start}}"
+  end="{{end}}"
+></t-date-time-picker>

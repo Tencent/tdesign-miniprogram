@@ -9,9 +9,8 @@
   confirmBtn="{{confirmBtn || locale.confirm}}"
   cancelBtn="{{cancelBtn || locale.cancel}}"
 >
-  <slot slot="header" name="header"> </slot>
+  <slot slot="header" name="header" />
 
-  <t-picker-item wx:for="{{columns}}" wx:key="index" options="{{item}}" index="{{index}}"></t-picker-item>
-
-  <slot slot="footer" name="footer"> </slot>
+  <t-picker-item wx:for="{{columns}}" wx:key="index" options="{{item}}" index="{{index}}" />
+  <slot slot="footer" name="footer" />
 </t-picker>
