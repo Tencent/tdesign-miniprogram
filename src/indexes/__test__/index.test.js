@@ -7,6 +7,14 @@ describe('indexes', () => {
     less: true,
     rootPath: path.resolve(__dirname, '../..'),
   });
+  const cell = simulate.load(path.resolve(__dirname, '../../cell', 'cell'), {
+    less: true,
+    rootPath: path.resolve(__dirname, '../../cell/cell'),
+  });
+  const cellGroup = simulate.load(path.resolve(__dirname, '../../cell-group', 'cell-group'), {
+    less: true,
+    rootPath: path.resolve(__dirname, '../../cell-group/cell-group'),
+  });
 
   const id = simulate.load({
     template: `<t-indexes class="indexes" height={{height}} list={{list}}></t-indexes>`,
@@ -16,6 +24,8 @@ describe('indexes', () => {
     },
     usingComponents: {
       't-indexes': indexes,
+      't-cell-group': cellGroup,
+      't-cell': cell,
     },
   });
 
@@ -42,25 +52,34 @@ describe('indexes', () => {
     const $scrollView = $index.querySelector('.t-indexes__content');
 
     // scroll
-    simulate.scroll($scrollView, 50, 3);
+    simulate.scroll($scrollView, 100, 1);
     await simulate.sleep();
-    expect($scrollView.dom.scrollTop).toEqual(50);
-    expect(comp).toMatchSnapshot();
-
     // touch
     const $bar = comp.querySelectorAll('.indexes >>> .t-indexes__bar')[0];
-
     const touch = async () => {
       $bar.dispatchEvent('touchstart', {
-        touches: [{ x: 0, pageY: 50 }],
+        touches: [{ x: 0, y: 100 }],
       });
       $bar.dispatchEvent('touchmove', {
-        touches: [{ x: 0, pageY: 60 }],
+        touches: [{ x: 0, y: 200 }],
       });
       $bar.dispatchEvent('touchend', {
-        changedTouches: [{ x: 0, pageY: 60 }],
+        changedTouches: [{ x: 0, y: 200 }],
       });
     };
     touch();
+    expect(comp).toMatchSnapshot();
+    await simulate.sleep();
+    expect($index.data.showScrollTip).toBeTruthy;
+    expect($index.data.activeGroup.index).toBe('G');
+    const $cell = $index.querySelector('#cell_6_0');
+    $cell.dispatchEvent('tap', {
+      changedTouches: [
+        {
+          pageY: 200,
+        },
+      ],
+    });
+    expect($index.data.currentGroup.title).toBe('G开头');
   });
 });
