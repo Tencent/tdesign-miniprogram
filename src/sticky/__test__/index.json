@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Sticky",
+  "usingComponents": {
+    "t-button": "../../button/button",
+    "t-sticky": "../sticky"
+  }
+}
