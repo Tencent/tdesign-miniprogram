@@ -58,7 +58,6 @@ describe('indexes', () => {
       });
     };
     touch();
-    expect(comp).toMatchSnapshot();
     await simulate.sleep();
     expect($index.data.showScrollTip).toBeTruthy;
     expect($index.data.activeGroup.index).toBe('G');
