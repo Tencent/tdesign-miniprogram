@@ -7,14 +7,6 @@ describe('indexes', () => {
     less: true,
     rootPath: path.resolve(__dirname, '../..'),
   });
-  const cell = simulate.load(path.resolve(__dirname, '../../cell', 'cell'), {
-    less: true,
-    rootPath: path.resolve(__dirname, '../../cell/cell'),
-  });
-  const cellGroup = simulate.load(path.resolve(__dirname, '../../cell-group', 'cell-group'), {
-    less: true,
-    rootPath: path.resolve(__dirname, '../../cell-group/cell-group'),
-  });
 
   const id = simulate.load({
     template: `<t-indexes class="indexes" height={{height}} list={{list}}></t-indexes>`,
@@ -24,8 +16,6 @@ describe('indexes', () => {
     },
     usingComponents: {
       't-indexes': indexes,
-      't-cell-group': cellGroup,
-      't-cell': cell,
     },
   });
 
