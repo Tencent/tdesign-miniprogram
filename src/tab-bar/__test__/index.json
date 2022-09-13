@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-tab-bar": "../tab-bar",
+    "t-tab-bar-item": "../tab-bar-item"
+  }
+}

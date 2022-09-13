@@ -41,8 +41,7 @@ export interface TdSliderProps {
    * @default false
    */
   label?: {
-    type: StringConstructor;
-    optionalTypes: Array<BooleanConstructor>;
+    type: null;
     value?: string | boolean;
   };
   /**
@@ -50,8 +49,7 @@ export interface TdSliderProps {
    * @default {}
    */
   marks?: {
-    type: ObjectConstructor;
-    optionalTypes: Array<ArrayConstructor>;
+    type: null;
     value?: Record<number, string> | Array<number>;
   };
   /**
@@ -98,16 +96,14 @@ export interface TdSliderProps {
    * 滑块值
    */
   value?: {
-    type: NumberConstructor;
-    optionalTypes: Array<ArrayConstructor>;
+    type: null;
     value?: SliderValue;
   };
   /**
    * 滑块值，非受控属性
    */
   defaultValue?: {
-    type: NumberConstructor;
-    optionalTypes: Array<ArrayConstructor>;
+    type: null;
     value?: SliderValue;
   };
 }

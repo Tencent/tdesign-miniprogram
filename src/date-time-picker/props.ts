@@ -18,8 +18,7 @@ const props: TdDateTimePickerProps = {
   },
   /** 选择器的结束时间 */
   end: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
   /** 组件类名，分别用于设置组件外层元素、确认按钮、取消按钮、标题等元素类名 */
   externalClasses: {
@@ -37,8 +36,7 @@ const props: TdDateTimePickerProps = {
   },
   /** year = 年；month = 年月；date = 年月日；hour = 年月日时； minute = 年月日时分；当类型为数组时，第一个值控制年月日，第二个值控制时分秒 */
   mode: {
-    type: String,
-    optionalTypes: [Array],
+    type: null,
     value: 'date',
   },
   /** 【开发中】是否在日期旁边显示周几（如周一，周二，周日等） */
@@ -48,8 +46,7 @@ const props: TdDateTimePickerProps = {
   },
   /** 选择器的开始时间 */
   start: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
   /** 标题 */
   title: {
@@ -58,14 +55,12 @@ const props: TdDateTimePickerProps = {
   },
   /** 选中值 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: null,
   },
   /** 选中值，非受控属性 */
   defaultValue: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
   /** 是否显示 */
   visible: {

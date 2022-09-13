@@ -25,7 +25,6 @@ export interface TdDateTimePickerProps {
    */
   end?: {
     type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
     value?: string | number;
   };
   /**
@@ -57,7 +56,6 @@ export interface TdDateTimePickerProps {
    */
   mode?: {
     type: StringConstructor;
-    optionalTypes: Array<ArrayConstructor>;
     value?: DateTimePickerMode;
   };
   /**
@@ -73,7 +71,6 @@ export interface TdDateTimePickerProps {
    */
   start?: {
     type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
     value?: string | number;
   };
   /**
@@ -89,7 +86,6 @@ export interface TdDateTimePickerProps {
    */
   value?: {
     type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
     value?: DateValue;
   };
   /**
@@ -97,7 +93,6 @@ export interface TdDateTimePickerProps {
    */
   defaultValue?: {
     type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
     value?: DateValue;
   };
   /**
