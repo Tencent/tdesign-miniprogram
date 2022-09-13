@@ -1,4 +1,5 @@
 <t-picker
+  class="{{classPrefix}}"
   visible="{{visible}}"
   value="{{columnsValue}}"
   bindpick="onColumnChange"
@@ -11,6 +12,12 @@
 >
   <slot slot="header" name="header" />
 
-  <t-picker-item wx:for="{{columns}}" wx:key="index" options="{{item}}" index="{{index}}" />
+  <t-picker-item
+    wx:for="{{columns}}"
+    wx:key="index"
+    class="{{classPrefix}}__item"
+    options="{{item}}"
+    index="{{index}}"
+  />
   <slot slot="footer" name="footer" />
 </t-picker>

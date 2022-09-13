@@ -7,6 +7,7 @@ import defaultLocale from './locale/zh';
 import props from './props';
 
 const { prefix } = config;
+const name = `${prefix}-date-time-picker`;
 
 enum ModeItem {
   YEAR = 'year',
@@ -54,9 +55,11 @@ export default class DateTimePicker extends SuperComponent {
     },
   };
 
+  date = null;
+
   data = {
     prefix,
-    date: null,
+    classPrefix: name,
     columns: [],
     columnsValue: [],
     fullModes: [],
@@ -75,11 +78,7 @@ export default class DateTimePicker extends SuperComponent {
 
   methods = {
     updateColumns() {
-      const parseDate = this.getParseDate();
-
-      this.setData({
-        date: parseDate,
-      });
+      this.date = this.getParseDate();
 
       const { columns, columnsValue } = this.getValueCols();
       this.setData({
@@ -88,7 +87,7 @@ export default class DateTimePicker extends SuperComponent {
       });
     },
 
-    getParseDate() {
+    getParseDate(): Dayjs {
       const { value, defaultValue } = this.properties;
       const minDate = this.getMinDate();
 
@@ -158,11 +157,11 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getDate(): Dayjs {
-      return this.clipDate(this.data?.date || DEFAULT_MIN_DATE);
+      return this.clipDate(this?.date || DEFAULT_MIN_DATE);
     },
 
     // 数据裁减 确保数据不越界
-    clipDate(date): Dayjs {
+    clipDate(date: Dayjs): Dayjs {
       const minDate: Dayjs = this.getMinDate();
       const maxDate: Dayjs = this.getMaxDate();
       return dayjs(Math.min(Math.max(minDate.valueOf(), date.valueOf()), maxDate.valueOf()));
@@ -256,7 +255,7 @@ export default class DateTimePicker extends SuperComponent {
 
     getYearOptions(dateParams): ColumnItemValue[] {
       const { locale } = this.data;
-      const { minDateYear, maxDateYear } = dateParams || {};
+      const { minDateYear, maxDateYear } = dateParams;
 
       const years: ColumnItemValue[] = [];
       for (let i = minDateYear; i <= maxDateYear; i += 1) {
@@ -270,7 +269,7 @@ export default class DateTimePicker extends SuperComponent {
 
     getMonthOptions(dateParams): ColumnItemValue[] {
       const { locale } = this.data;
-      const { minDateYear, maxDateYear, selYear, minDateMonth, maxDateMonth } = dateParams || {};
+      const { minDateYear, maxDateYear, selYear, minDateMonth, maxDateMonth } = dateParams;
       const months: ColumnItemValue[] = [];
 
       let minMonth = 0;
@@ -296,7 +295,7 @@ export default class DateTimePicker extends SuperComponent {
     getDayOptions(dateParams): ColumnItemValue[] {
       const { locale } = this.data;
       const { minDateYear, maxDateYear, minDateMonth, maxDateMonth, minDateDay, maxDateDay, selYear, selMonth, date } =
-        dateParams || {};
+        dateParams;
       const days: ColumnItemValue[] = [];
       let minDay = 1;
       let maxDay = date.daysInMonth();
@@ -330,7 +329,7 @@ export default class DateTimePicker extends SuperComponent {
         selYear,
         selMonth,
         selDate,
-      } = dateParams || {};
+      } = dateParams;
 
       const hours: ColumnItemValue[] = [];
       let minHour = 0;
@@ -368,7 +367,7 @@ export default class DateTimePicker extends SuperComponent {
         selMonth,
         selDate,
         selHour,
-      } = dateParams || {};
+      } = dateParams;
 
       const minutes: ColumnItemValue[] = [];
       let minMinute = 0;
@@ -447,9 +446,7 @@ export default class DateTimePicker extends SuperComponent {
 
       const newValue = this.getNewDate(parseInt(columnValue, 10), columnType);
 
-      this.setData({
-        date: newValue,
-      });
+      this.date = newValue;
 
       const { columns, columnsValue } = this.getValueCols();
 
@@ -479,6 +476,7 @@ export default class DateTimePicker extends SuperComponent {
       this.setData({
         date: parseDate,
       });
+      this.date = parseDate;
 
       const { columns, columnsValue } = this.getValueCols();
 
