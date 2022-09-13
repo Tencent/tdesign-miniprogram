@@ -18,9 +18,9 @@ jobs:
           stale-pr-message: '这个 PR 已经过时了，因为它已经持续 45 天没有任何活动了。 删除 stale 的标签或评论，否则将在 10 天内关闭。'
           close-issue-message: "此 Issue 被自动关闭，因为它自被标记为过时 stale 以来已闲置 7 天。"
           close-pr-message: "此 PR 被自动关闭，因为它已经 stable 停滞了 10 天，没有任何活动。"
-          days-before-stale: 30
+          days-before-stale: -1
           days-before-close: 7
-          days-before-pr-stale: 45
+          days-before-pr-stale: -1
           days-before-pr-close: 10
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           exempt-issue-labels: 'WIP'
