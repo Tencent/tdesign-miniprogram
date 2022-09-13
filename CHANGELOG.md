@@ -5,6 +5,23 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.21.0 `2022-09-13` 
+### ❗️BREAKING CHANGES
+- `TabBar`: 点击 subTabBar 选项时，返回的值从数组改成选项的值 @LeeJim ([#846](https://github.com/Tencent/tdesign-miniprogram/pull/846))
+### 🚀 Features
+- `Slider`: 属性 marks 支持动态响应 @LeeJim ([#853](https://github.com/Tencent/tdesign-miniprogram/pull/853))
+### 🐞 Bug Fixes
+- `TabBar`: 修复子选项激活时，父选项未展示激活的问题 @LeeJim ([#846](https://github.com/Tencent/tdesign-miniprogram/pull/846))
+- `Slider`: 修复 disabled 状态下点击报错的问题 @LeeJim ([#853](https://github.com/Tencent/tdesign-miniprogram/pull/853))
+### 🚧 Others
+- `TabBar`: 新增单元测试 @LeeJim ([#846](https://github.com/Tencent/tdesign-miniprogram/pull/846))
+- `Upload`: 新增单元测试 @anlyyao ([#847](https://github.com/Tencent/tdesign-miniprogram/pull/847))
+- `DropdownMenu`: 新增单元测试 @LeeJim ([#848](https://github.com/Tencent/tdesign-miniprogram/pull/848))
+- `Slider`: 新增单元测试 @LeeJim ([#853](https://github.com/Tencent/tdesign-miniprogram/pull/853))
+- `Picker`: 新增单元测试 @LeeJim ([#854](https://github.com/Tencent/tdesign-miniprogram/pull/854))
+- `DateTimePicker`: 新增单元测试 @LeeJim ([#855](https://github.com/Tencent/tdesign-miniprogram/pull/855))
+- `Sticky`: 新增单元测试 @Perisiguiendo ([#852](https://github.com/Tencent/tdesign-miniprogram/pull/852))
+
 ## 🌈 0.20.0 `2022-09-05` 
 ### ❗️BREKING CHANGES
 - `Icon`: `size` 不在支持 `middle`、`small`等关键字，默认单位 `px` @anlyyao ([#828](https://github.com/Tencent/tdesign-miniprogram/pull/828))
