@@ -72,9 +72,8 @@ export interface TdMessageProps {
    * @default false
    */
   marquee?: {
-    type: BooleanConstructor;
-    optionalTypes: Array<ObjectConstructor>;
-    value?: boolean | DrawMarquee;
+    type: null;
+    value?: DrawMarquee | boolean;
     required?: boolean;
   };
   /**
@@ -111,8 +110,12 @@ export interface TdMessageProps {
     value?: number;
     required?: boolean;
   };
-};
+}
 
-export interface DrawMarquee { speed?: number; loop?: number; delay?: number };
+export interface DrawMarquee {
+  speed?: number;
+  loop?: number;
+  delay?: number;
+}
 
 export type MessageThemeList = 'info' | 'success' | 'warning' | 'error';

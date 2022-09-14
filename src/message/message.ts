@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/sr
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
@@ -58,18 +59,12 @@ export default class Message extends SuperComponent {
   });
 
   // 入场动画
-  showAnimation = wx
-    .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
-    .translateY(0)
-    .opacity(1)
-    .step()
-    .export();
+  showAnimation = wx.createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' }).translateY(0).step().export();
 
   // 出场动画
   hideAnimation = wx
     .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
     .translateY(this.data.wrapTop)
-    .opacity(0)
     .step()
     .export();
 
@@ -126,11 +121,11 @@ export default class Message extends SuperComponent {
 
   /** 检查是否需要开启一个新的动画循环 */
   checkAnimation() {
-    const speeding = this.properties.marquee.speed;
-
     if (!this.properties.marquee) {
       return;
     }
+
+    const speeding = this.properties.marquee.speed;
 
     if (this.data.loop > 0) {
       this.data.loop -= 1;
@@ -146,19 +141,19 @@ export default class Message extends SuperComponent {
 
     const warpID = `#${name}__text-wrap`;
     const nodeID = `#${name}__text`;
-    Promise.all([this.queryWidth(nodeID), this.queryWidth(warpID)]).then(([nodeWidth, warpWidth]) => {
+    Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
       this.setData(
         {
-          animation: this.resetAnimation.translateX(warpWidth).step().export(),
+          animation: this.resetAnimation.translateX(wrapRect.width).step().export(),
         },
         () => {
-          const durationTime = ((nodeWidth + warpWidth) / speeding) * 1000;
+          const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
           const nextAnimation = wx
             .createAnimation({
               // 默认50px/s
               duration: durationTime,
             })
-            .translateX(-nodeWidth)
+            .translateX(-nodeRect.width)
             .step()
             .export();
 
@@ -174,30 +169,6 @@ export default class Message extends SuperComponent {
     });
   }
 
-  /** 获取元素宽度 */
-  queryWidth(queryName: string): Promise<number> {
-    return new Promise((resolve) => {
-      this.createSelectorQuery()
-        .select(queryName)
-        .boundingClientRect(({ width }) => {
-          resolve(width);
-        })
-        .exec();
-    });
-  }
-
-  /** 获取元素长度 */
-  queryHeight(queryName: string): Promise<number> {
-    return new Promise((resolve) => {
-      this.createSelectorQuery()
-        .select(queryName)
-        .boundingClientRect(({ height }) => {
-          resolve(height);
-        })
-        .exec();
-    });
-  }
-
   /** 清理动画循环 */
   clearMessageAnimation() {
     clearTimeout(this.nextAnimationContext);
@@ -205,8 +176,8 @@ export default class Message extends SuperComponent {
   }
 
   show() {
-    const { duration, icon } = this.properties;
-    this.setData({ visible: true, loop: this.properties.marquee.loop });
+    const { duration, icon, marquee } = this.properties;
+    this.setData({ visible: true, loop: marquee.loop });
     this.reset();
     this.setIcon(icon);
     this.checkAnimation();
@@ -218,9 +189,9 @@ export default class Message extends SuperComponent {
     }
 
     const wrapID = `#${name}`;
-    this.queryHeight(wrapID).then((wrapHeight) => {
+    getRect(this, wrapID).then((wrapRect) => {
       // 先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
-      this.setData({ wrapTop: -wrapHeight }, () => {
+      this.setData({ wrapTop: -wrapRect.height }, () => {
         this.setData({ showAnimation: this.showAnimation });
       });
     });
