@@ -13,7 +13,7 @@ mockGetRect.mockImplementation(() => {
   return new Promise((resolve) => resolve({ height: 46, width: 156 }));
 });
 
-const mock = jest.spyOn(Util, 'getInstance');
+const mockInstance = jest.spyOn(Util, 'getInstance');
 
 describe('message', () => {
   const message = simulate.load(path.resolve(__dirname, `../message`), 't-message', {
@@ -38,17 +38,31 @@ describe('message', () => {
       comp.attach(document.createElement('parent-wrapper'));
       const $message = comp.querySelector('#t-message');
 
-      mock.mockImplementation(() => $message.instance);
+      mockInstance
+        .mockImplementation(() => $message.instance)
+        .mockImplementationOnce(() => null)
+        .mockImplementationOnce(() => null);
+
+      // null: 控制台输出 console.error('未找到组件,请确认 selector && context 是否正确');
+      Message.info({
+        context: $message.instance,
+      });
+      await simulate.sleep();
+      expect(comp.querySelector('#t-message >>> .t-message')).toBeUndefined();
+
+      // null hide()方法未被调用
+      Message.hide();
 
       Message.info({
         context: $message.instance,
         offset: [20, 32],
         icon: 'notification',
         marquee: {},
-        content: 'icon 使用空值',
+        content: 'iconName 为 notification',
         duration: -1,
       });
       await simulate.sleep(540);
+      expect(comp.querySelector('#t-message >>> .t-message')).not.toBeUndefined();
 
       // theme
       const $theme = comp.querySelector('#t-message >>> .t-message');
@@ -70,7 +84,7 @@ describe('message', () => {
 
       // content
       const $content = comp.querySelector('#t-message >>> .t-message__text');
-      expect($content.dom.textContent).toContain('icon 使用空值');
+      expect($content.dom.textContent).toContain('iconName 为 notification');
       comp.detach();
     });
 
@@ -85,8 +99,7 @@ describe('message', () => {
       comp.attach(document.createElement('parent-wrapper'));
       const $message = comp.querySelector('#t-message');
 
-      mock.mockImplementation(() => $message.instance);
-
+      mockInstance.mockImplementation(() => $message.instance);
       Message.info({
         context: $message.instance,
         offset: [20, 32],
@@ -96,7 +109,12 @@ describe('message', () => {
         duration: 10,
       });
       await simulate.sleep(540);
+      // icon 为空
+      const $prefixIcon = comp.querySelector('#t-message >>> .t-message__icon--left');
+      expect($prefixIcon).toBeUndefined();
       Message.hide();
+      await simulate.sleep(500);
+      expect($message.instance.data.visible).toBe(false);
     });
   });
 
@@ -116,7 +134,7 @@ describe('message', () => {
       comp.attach(document.createElement('parent-wrapper'));
       const $message = comp.querySelector('#t-message');
 
-      mock.mockImplementation(() => $message.instance);
+      mockInstance.mockImplementation(() => $message.instance);
 
       Message.warning({
         context: $message.instance,

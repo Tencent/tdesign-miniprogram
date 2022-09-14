@@ -9,12 +9,12 @@ interface MessageActionOptionsType extends Optional<MessageProps> {
 }
 
 const showMessage = function (options: MessageActionOptionsType, theme: MessageType = MessageType.info) {
-  const { context, selector = '#t-message', ...otherOptions } = { ...options, theme };
+  const { context, selector = '#t-message', ...otherOptions } = options;
   const instance = getInstance(context, selector);
 
   if (instance) {
-    instance.resetData({
-      ...otherOptions,
+    instance.resetData(() => {
+      instance.setData({ theme, ...otherOptions }, instance.show.bind(instance));
     });
 
     return instance;

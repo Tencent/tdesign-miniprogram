@@ -81,9 +81,8 @@ export default class Message extends SuperComponent {
     };
   }
 
-  resetData(options) {
-    this.setData({ ...this.initalData, ...options });
-    this.show();
+  resetData(cb: () => void) {
+    this.setData({ ...this.initalData }, cb);
   }
 
   detached() {
@@ -142,19 +141,19 @@ export default class Message extends SuperComponent {
 
     const warpID = `#${name}__text-wrap`;
     const nodeID = `#${name}__text`;
-    Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeWidth, warpWidth]) => {
+    Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
       this.setData(
         {
-          animation: this.resetAnimation.translateX(warpWidth.width).step().export(),
+          animation: this.resetAnimation.translateX(wrapRect.width).step().export(),
         },
         () => {
-          const durationTime = ((nodeWidth.width + warpWidth.width) / speeding) * 1000;
+          const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
           const nextAnimation = wx
             .createAnimation({
               // 默认50px/s
               duration: durationTime,
             })
-            .translateX(-nodeWidth.width)
+            .translateX(-nodeRect.width)
             .step()
             .export();
 
@@ -190,9 +189,9 @@ export default class Message extends SuperComponent {
     }
 
     const wrapID = `#${name}`;
-    getRect(this, wrapID).then((wrapHeight) => {
+    getRect(this, wrapID).then((wrapRect) => {
       // 先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
-      this.setData({ wrapTop: -wrapHeight.height }, () => {
+      this.setData({ wrapTop: -wrapRect.height }, () => {
         this.setData({ showAnimation: this.showAnimation });
       });
     });
