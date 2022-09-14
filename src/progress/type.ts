@@ -10,8 +10,7 @@ export interface TdProgressProps {
    * @default ''
    */
   color?: {
-    type: StringConstructor;
-    optionalTypes: Array<ObjectConstructor | ArrayConstructor>;
+    type: null;
     value?: string | Array<string> | Record<string, string>;
   };
   /**

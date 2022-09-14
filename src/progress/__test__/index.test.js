@@ -79,12 +79,27 @@ describe('progress', () => {
 
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
+    const barPercent = comp.querySelector('.base >>> .t-progress__bar-percent ');
 
     comp.setData({
       color: 'rgb(0, 82, 222)',
     });
-    const barPercent = comp.querySelector('.base >>> .t-progress__bar-percent ');
-    expect(window.getComputedStyle(barPercent.dom).background).toBe('rgb(0, 82, 222)');
+    expect(barPercent.dom.getAttribute('style').includes('background:rgb(0, 82, 222);'));
+
+    comp.setData({
+      color: ['#f00', '#0ff', '#f0f'],
+    });
+    expect(barPercent.dom.getAttribute('style').includes('background:linear-gradient( 90deg,#f00,#0ff,#f0f );'));
+
+    comp.setData({
+      color: { '0%': '#f00', '100%': '#0ff' },
+    });
+    expect(barPercent.dom.getAttribute('style').includes('background:linear-gradient(to right, #f00 0%,#0ff 100%);'));
+
+    comp.setData({
+      color: { from: '#000', to: '#000' },
+    });
+    expect(barPercent.dom.getAttribute('style').includes('background:linear-gradient(to right, #000, #000);'));
   });
 
   it(`: trackColor `, () => {
