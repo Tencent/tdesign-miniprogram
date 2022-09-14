@@ -1,4 +1,5 @@
 import { MessageType, MessageProps } from './message.interface';
+import { getInstance } from '../common/utils';
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
@@ -7,37 +8,18 @@ interface MessageActionOptionsType extends Optional<MessageProps> {
   selector?: string;
 }
 
-const getInstance = function (context?: Context, selector = '#t-message') {
-  if (!context) {
-    const pages = getCurrentPages();
-    const page = pages[pages.length - 1];
-    context = page.$$basePage || page;
-  }
-  const instance = context?.selectComponent(selector);
-  if (!instance) {
-    return null;
-  }
-  return instance;
-};
-
-const showMessage = function (
-  options: MessageActionOptionsType,
-  theme: MessageType = MessageType.info,
-) {
-  const { context, selector } = options;
+const showMessage = function (options: MessageActionOptionsType, theme: MessageType = MessageType.info) {
+  const { context, selector = '#t-message', ...otherOptions } = { ...options, theme };
   const instance = getInstance(context, selector);
 
-  if (!instance) {
-    return Promise.reject(new Error('未找到Message组件, 请检查selector是否正确'));
+  if (instance) {
+    instance.resetData({
+      ...otherOptions,
+    });
+
+    return instance;
   }
-
-  // instance.hide();
-
-  instance.resetData(() => {
-    instance.setData({ theme, ...options }, instance.show);
-  });
-
-  return instance;
+  console.error('未找到组件,请确认 selector && context 是否正确');
 };
 
 export default {
