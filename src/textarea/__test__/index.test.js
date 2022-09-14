@@ -142,5 +142,57 @@ describe('textarea', () => {
       });
       // expect(component.instance.data.count).toBe(10);
     });
+
+    it(': other', async () => {
+      const handleFocus = jest.fn();
+      const handleBlur = jest.fn();
+      const handleEnter = jest.fn();
+      const id = simulate.load({
+        template: `<t-textarea
+        class="base"
+        value="{{value}}"
+        bind:focus="handleFocus"
+        bind:blur="handleBlur"
+        bind:enter="handleEnter"
+        >
+        </t-textarea>`,
+        data: {
+          maxcharacter: 10,
+          value: 'tdesign',
+        },
+        methods: {
+          handleFocus,
+          handleBlur,
+          handleEnter,
+        },
+        usingComponents: {
+          't-textarea': textarea,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const component = comp.querySelector('.base');
+      expect(component.instance.data.count).toBe(7);
+
+      const $textarea = comp.querySelector('.base >>> .t-textarea__wrapper-textarea');
+
+      $textarea.dispatchEvent('focus');
+      await simulate.sleep();
+      expect(handleFocus).toHaveBeenCalledTimes(2);
+
+      $textarea.dispatchEvent('confirm', {
+        detail: {
+          value: 'click confirm',
+        },
+      });
+      await simulate.sleep();
+      expect(handleEnter).toHaveBeenCalledTimes(1);
+      expect(handleEnter.mock.calls[0][0].detail).toStrictEqual({
+        value: 'click confirm',
+      });
+      $textarea.dispatchEvent('blur');
+      await simulate.sleep();
+      expect(handleBlur).toHaveBeenCalledTimes(2);
+    });
   });
 });

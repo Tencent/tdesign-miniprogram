@@ -8,8 +8,7 @@ import { TdProgressProps } from './type';
 const props: TdProgressProps = {
   /** 进度条颜色。示例：'#ED7B2F' 或 'orange' 或 `['#f00', '#0ff', '#f0f']` 或 `{ '0%': '#f00', '100%': '#0ff' }` 或  `{ from: '#000', to: '#000' }` 等 */
   color: {
-    type: String,
-    optionalTypes: [Object, Array],
+    type: null,
     value: '',
   },
   /** 进度百分比，可自定义 */

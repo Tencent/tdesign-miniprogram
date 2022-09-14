@@ -150,7 +150,6 @@ describe('input', () => {
   });
 
   describe('event', () => {
-    // TODO: `input`的 blur && focus && enter
     it(': clear', async () => {
       const handleClear = jest.fn();
       const id = simulate.load({
@@ -178,6 +177,55 @@ describe('input', () => {
       clearable.dispatchEvent('tap');
       await simulate.sleep(0);
       expect(handleClear.mock.calls[0][0].detail).toStrictEqual({});
+    });
+
+    it(': other', async () => {
+      const handleFocus = jest.fn();
+      const handleBlur = jest.fn();
+      const handleEnter = jest.fn();
+      const id = simulate.load({
+        template: `<t-input
+        class="base"
+        value="{{value}}"
+        clearable="{{clearable}}"
+        bind:focus="handleFocus"
+        bind:blur="handleBlur"
+        bind:enter="handleEnter"
+        ></t-input>`,
+        data: {
+          value: 'tdesign',
+          clearable: true,
+        },
+        methods: {
+          handleFocus,
+          handleBlur,
+          handleEnter,
+        },
+        usingComponents: {
+          't-input': input,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $input = comp.querySelector('.base >>> .t-input__control');
+
+      $input.dispatchEvent('focus');
+      await simulate.sleep();
+      expect(handleFocus).toHaveBeenCalledTimes(2);
+
+      $input.dispatchEvent('confirm', {
+        detail: {
+          value: 'click confirm',
+        },
+      });
+      await simulate.sleep();
+      expect(handleEnter).toHaveBeenCalledTimes(1);
+      expect(handleEnter.mock.calls[0][0].detail).toStrictEqual({
+        value: 'click confirm',
+      });
+      $input.dispatchEvent('blur');
+      await simulate.sleep();
+      expect(handleBlur).toHaveBeenCalledTimes(2);
     });
   });
 });
