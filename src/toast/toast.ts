@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { ToastOptionsType } from './index';
+import transition from '../mixins/transition';
 
 const { prefix } = config;
 const name = `${prefix}-toast`;
@@ -10,19 +11,18 @@ type Timer = NodeJS.Timeout | null;
 
 @wxComponent()
 export default class Toast extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
+  behaviors = [transition()];
+
   hideTimer: Timer = null;
 
-  removeTimer: Timer = null;
-
   data = {
-    inserted: false,
-    show: false,
+    prefix,
     classPrefix: name,
     typeMapIcon: '',
   };
@@ -36,7 +36,6 @@ export default class Toast extends SuperComponent {
   methods = {
     show(options: ToastOptionsType) {
       if (this.hideTimer) clearTimeout(this.hideTimer);
-      if (this.removeTimer) clearTimeout(this.removeTimer);
       const iconMap = {
         loading: 'loading',
         success: 'check-circle',
@@ -56,38 +55,26 @@ export default class Toast extends SuperComponent {
       const data = {
         ...defaultOptions,
         ...options,
-        show: true,
+        visible: true,
         typeMapIcon,
-        inserted: true,
       };
       const { duration } = data;
       this.setData(data);
 
       if (duration > 0) {
         this.hideTimer = setTimeout(() => {
-          this.clear();
+          this.hide();
         }, duration);
       }
     },
+
     hide() {
-      this.clear();
-    },
-    clear() {
-      this.setData({ show: false });
-      this.removeTimer = setTimeout(() => {
-        this.setData({
-          inserted: false,
-        });
-        this.data?.close?.();
-        this.triggerEvent('close');
-      }, 300);
+      this.setData({ visible: false });
+      this.data?.close?.();
+      this.triggerEvent('close');
     },
 
     destroyed() {
-      if (this.removeTimer) {
-        clearTimeout(this.removeTimer);
-        this.removeTimer = null;
-      }
       if (this.hideTimer) {
         clearTimeout(this.hideTimer);
         this.hideTimer = null;
