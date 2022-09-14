@@ -28,7 +28,6 @@ describe('indexes', () => {
   it(':list', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
-    expect(comp.querySelector('.indexes').data.list).toStrictEqual(EXAMPLE);
     const $index = comp.querySelector('.indexes');
     const $scrollGroup = $index.querySelector('.t-indexes__group');
     // title不存在时，默认使用index
@@ -45,7 +44,7 @@ describe('indexes', () => {
     simulate.scroll($scrollView, 100, 1);
     await simulate.sleep();
     // touch
-    const $bar = comp.querySelectorAll('.indexes >>> .t-indexes__bar')[0];
+    const $bar = $index.querySelector('.t-indexes__bar');
     const touch = async () => {
       $bar.dispatchEvent('touchstart', {
         touches: [{ x: 0, y: 100 }],
@@ -59,7 +58,7 @@ describe('indexes', () => {
     };
     touch();
     await simulate.sleep();
-    expect($index.data.showScrollTip).toBeTruthy;
+    expect($index.data.showScrollTip).toBeTruthy();
     expect($index.data.activeGroup.index).toBe('G');
     const $cell = $index.querySelector('#cell_6_0');
     $cell.dispatchEvent('tap', {
