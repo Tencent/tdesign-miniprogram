@@ -128,7 +128,7 @@ export default class Swiper extends SuperComponent {
     // current初始化的值就绪
     currentInited: false,
     prefix,
-    classPrefix: `.${prefix}-swiper`,
+    classPrefix: `${prefix}-swiper`,
   };
 
   attached() {
