@@ -2,7 +2,7 @@
 
 <view class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
   <t-sticky
-    t-class="{{classPrefix}}__sticky"
+    t-class="{{classPrefix}}__sticky {{classPrefix}}__sticky--{{placement}}"
     disabled="{{ !sticky }}"
     z-index="{{ stickyProps.zIndex || '1' }}"
     offset-top="{{ stickyProps.offsetTop }}"
@@ -11,24 +11,27 @@
   >
     <view class="{{classPrefix}}__wrapper">
       <scroll-view
-        class="{{classPrefix}}__scroll"
+        class="{{classPrefix}}__scroll {{classPrefix}}__scroll--{{placement}}"
         enable-flex
         scroll-left="{{offset}}"
         scroll-x="{{isScrollX}}"
         scroll-y="{{isScrollY}}"
         scroll-with-animation
       >
-        <view class="{{classPrefix}}__nav">
+        <view class="{{classPrefix}}__nav {{classPrefix}}__nav--{{placement}}">
           <view
             wx:for="{{tabs}}"
             wx:key="index"
             data-index="{{index}}"
-            class="{{classPrefix}}__item {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
+            class="{{classPrefix}}__item {{classPrefix}}__item--{{placement}} {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
             bind:tap="onTabTap"
           >
             {{item.label}}
           </view>
-          <view class="{{classPrefix}}__track {{prefix}}-class-track" style="{{trackStyle}}" />
+          <view
+            class="{{classPrefix}}__track {{classPrefix}}__track--{{placement}} {{prefix}}-class-track"
+            style="{{trackStyle}}"
+          />
         </view>
       </scroll-view>
     </view>

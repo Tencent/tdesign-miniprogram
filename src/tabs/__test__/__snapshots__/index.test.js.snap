@@ -11,7 +11,7 @@ exports[`tabs :base 1`] = `
       container=""
       disabled="{{false}}"
       offsetTop=""
-      tClass="t-tabs__sticky"
+      tClass="t-tabs__sticky t-tabs__sticky--left"
       zIndex="{{2}}"
       bind:scroll="onTouchScroll"
     >
@@ -19,7 +19,7 @@ exports[`tabs :base 1`] = `
         class="t-tabs__wrapper"
       >
         <wx-scroll-view
-          class="t-tabs__scroll"
+          class="t-tabs__scroll t-tabs__scroll--left"
           enableFlex="{{true}}"
           scrollLeft="{{0}}"
           scrollWithAnimation="{{true}}"
@@ -27,10 +27,10 @@ exports[`tabs :base 1`] = `
           scrollY="{{true}}"
         >
           <wx-view
-            class="t-tabs__nav"
+            class="t-tabs__nav t-tabs__nav--left"
           >
             <wx-view
-              class="t-tabs__item t-class-item  t-is-active t-class-active"
+              class="t-tabs__item t-tabs__item--left t-class-item  t-is-active t-class-active"
               data-index="{{0}}"
               bind:tap="onTabTap"
             >
@@ -39,7 +39,7 @@ exports[`tabs :base 1`] = `
           
             </wx-view>
             <wx-view
-              class="t-tabs__item t-class-item  "
+              class="t-tabs__item t-tabs__item--left t-class-item  "
               data-index="{{1}}"
               bind:tap="onTabTap"
             >
@@ -48,7 +48,7 @@ exports[`tabs :base 1`] = `
           
             </wx-view>
             <wx-view
-              class="t-tabs__item t-class-item  "
+              class="t-tabs__item t-tabs__item--left t-class-item  "
               data-index="{{2}}"
               bind:tap="onTabTap"
             >
@@ -57,7 +57,7 @@ exports[`tabs :base 1`] = `
           
             </wx-view>
             <wx-view
-              class="t-tabs__item t-class-item  "
+              class="t-tabs__item t-tabs__item--left t-class-item  "
               data-index="{{3}}"
               bind:tap="onTabTap"
             >
@@ -66,7 +66,7 @@ exports[`tabs :base 1`] = `
           
             </wx-view>
             <wx-view
-              class="t-tabs__track t-class-track"
+              class="t-tabs__track t-tabs__track--left t-class-track"
               style="-webkit-transform: translateX(-15px);
         transform: translateX(-15px);
       width: 30px;"
