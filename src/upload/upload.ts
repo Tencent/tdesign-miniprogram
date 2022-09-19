@@ -127,53 +127,6 @@ export default class Upload extends SuperComponent {
     this.triggerEvent('click', { file });
   }
 
-  /** 选择媒体素材 */
-  chooseMedia(mediaType) {
-    const { config, sizeLimit, max } = this.data;
-    wx.chooseMedia({
-      count: max === 0 ? 9 : max, // 在 iOS 里，0 是无效的，会导致抛异常
-      mediaType,
-      ...config,
-      success: (res) => {
-        const files = [];
-
-        // 支持单/多文件
-        res.tempFiles.forEach((temp) => {
-          const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
-          if (sizeLimit && size > sizeLimit) {
-            wx.showToast({ icon: 'none', title: `${fileType === 'image' ? '图片' : '视频'}大小超过限制` });
-            return;
-          }
-          const name = this.getRandFileName(tempFilePath);
-          files.push({
-            name,
-            type: this.getFileType(mediaType, tempFilePath, fileType),
-            url: tempFilePath,
-            size: size,
-            width: width,
-            height: height,
-            duration: duration,
-            thumb: thumbTempFilePath,
-            percent: 0,
-            ...res,
-          });
-        });
-        this._trigger('select-change', {
-          files: [...this.data.customFiles],
-          currentSelectedFiles: [files],
-        });
-        this._trigger('add', { files });
-        this.startUpload(files);
-      },
-      fail: (err) => {
-        this.triggerFailEvent(err);
-      },
-      complete: (res) => {
-        this.triggerEvent('complete', res);
-      },
-    });
-  }
-
   /**
    * 由于小程序暂时在ios上不支持返回上传文件的fileType，这里用文件的后缀来判断
    * @param mediaType
@@ -204,11 +157,6 @@ export default class Upload extends SuperComponent {
     return parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName;
   }
 
-  onAddTap() {
-    const { mediaType } = this.properties;
-    this.chooseMedia(mediaType);
-  }
-
   onDelete(e: any) {
     const { index } = e.currentTarget.dataset;
     this.deleteHandle(index);
@@ -229,4 +177,99 @@ export default class Upload extends SuperComponent {
       column: column,
     });
   }
+
+  methods = {
+    onAddTap() {
+      const { mediaType, source } = this.properties;
+
+      if (source === 'media') {
+        this.chooseMedia(mediaType);
+      } else {
+        this.chooseMessageFile(mediaType);
+      }
+    },
+
+    chooseMedia(mediaType) {
+      const { config, sizeLimit, max } = this.data;
+      wx.chooseMedia({
+        count: max === 0 ? 9 : max, // 在 iOS 里，0 是无效的，会导致抛异常
+        mediaType,
+        ...config,
+        success: (res) => {
+          const files = [];
+
+          // 支持单/多文件
+          res.tempFiles.forEach((temp) => {
+            const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
+            if (sizeLimit && size > sizeLimit) {
+              wx.showToast({ icon: 'none', title: `${fileType === 'image' ? '图片' : '视频'}大小超过限制` });
+              return;
+            }
+            const name = this.getRandFileName(tempFilePath);
+            files.push({
+              name,
+              type: this.getFileType(mediaType, tempFilePath, fileType),
+              url: tempFilePath,
+              size: size,
+              width: width,
+              height: height,
+              duration: duration,
+              thumb: thumbTempFilePath,
+              percent: 0,
+              ...res,
+            });
+          });
+          this.afterSelect(files);
+        },
+        fail: (err) => {
+          this.triggerFailEvent(err);
+        },
+        complete: (res) => {
+          this.triggerEvent('complete', res);
+        },
+      });
+    },
+
+    chooseMessageFile(mediaType) {
+      const { max, config, sizeLimit } = this.properties;
+      wx.chooseMessageFile({
+        count: max,
+        type: Array.isArray(mediaType) ? 'all' : mediaType,
+        ...config,
+        success: (res) => {
+          const files = [];
+
+          // 支持单/多文件
+          res.tempFiles.forEach((temp) => {
+            const { size, type: fileType, path: tempFilePath, ...res } = temp;
+            if (sizeLimit && size > sizeLimit) {
+              wx.showToast({ icon: 'none', title: `${fileType === 'image' ? '图片' : '视频'}大小超过限制` });
+              return;
+            }
+            const name = this.getRandFileName(tempFilePath);
+            files.push({
+              name,
+              type: this.getFileType(mediaType, tempFilePath, fileType),
+              url: tempFilePath,
+              size: size,
+              percent: 0,
+              ...res,
+            });
+          });
+          this.afterSelect(files);
+        },
+        fail: (err) => this.triggerFailEvent(err),
+        complete: (res) => this.triggerEvent('complete', res),
+      });
+    },
+
+    afterSelect(files) {
+      this._trigger('select-change', {
+        files: [...this.data.customFiles],
+        currentSelectedFiles: [files],
+      });
+      this._trigger('add', { files });
+      this.startUpload(files);
+    },
+  };
 }

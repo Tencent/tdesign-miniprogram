@@ -48,11 +48,7 @@ export interface TdUploadProps {
    */
   gridConfig?: {
     type: ObjectConstructor;
-    value?: {
-      column?: number;
-      width?: number;
-      height?: number;
-    };
+    value?: { column?: number; width?: number; height?: number };
   };
   /**
    * 预览窗格的 `gutter` 大小，单位 rpx
@@ -96,9 +92,16 @@ export interface TdUploadProps {
    * 图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`
    */
   sizeLimit?: {
-    type: NumberConstructor;
-    optionalTypes: Array<ObjectConstructor>;
+    type: null;
     value?: number | SizeLimitObj;
+  };
+  /**
+   * 来源
+   * @default media
+   */
+  source?: {
+    type: StringConstructor;
+    value?: 'media' | 'messageFile';
   };
 }
 
