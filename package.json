@@ -1,7 +1,7 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "description": "tdesign-miniprogram",
   "title": "tdesign-miniprogram",
   "main": "miniprogram_dist/index.js",
@@ -94,7 +94,7 @@
     "prettier": "^2.0.5",
     "prismjs": "^1.24.1",
     "standard-changelog": "^2.0.27",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14.12.0",
     "tdesign-icons-view": "^0.1.0",
     "tdesign-publish-cli": "^0.0.12",
     "tdesign-site-components": "^0.11.1",
