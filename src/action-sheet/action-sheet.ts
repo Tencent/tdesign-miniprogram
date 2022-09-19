@@ -89,9 +89,9 @@ export default class ActionSheet extends SuperComponent {
     },
 
     onSelect(event: WechatMiniprogram.TouchEvent) {
-      const { currentSwiperIndex, items, gridThemeItems, count } = this.data;
+      const { currentSwiperIndex, items, gridThemeItems, count, theme } = this.data;
       const { index } = event.currentTarget.dataset;
-      const isSwiperMode = items.length > count;
+      const isSwiperMode = theme === ActionSheetTheme.Grid;
       const item = isSwiperMode ? gridThemeItems[currentSwiperIndex][index] : items[index];
       const realIndex = isSwiperMode ? index + currentSwiperIndex * count : index;
       if (item) {
