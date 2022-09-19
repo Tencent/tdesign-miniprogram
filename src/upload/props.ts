@@ -57,8 +57,12 @@ const props: TdUploadProps = {
   },
   /** 图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }` */
   sizeLimit: {
-    type: Number,
-    optionalTypes: [Object],
+    type: null,
+  },
+  /** 来源 */
+  source: {
+    type: String,
+    value: 'media',
   },
 };
 
