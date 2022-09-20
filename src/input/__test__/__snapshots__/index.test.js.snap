@@ -64,7 +64,7 @@ exports[`input props : clearable && label && suffix 1`] = `
           >
             <wx-view
               class="t-icon t-class"
-              style="font-size: 39rpx"
+              style="font-size: 48rpx"
               bind:tap="onTap"
             >
               <wx-label
@@ -91,7 +91,7 @@ exports[`input props : clearable && label && suffix 1`] = `
           >
             <wx-view
               class="t-icon t-class"
-              style="font-size: 39rpx"
+              style="font-size: 48rpx"
               bind:tap="onTap"
             >
               <wx-label
