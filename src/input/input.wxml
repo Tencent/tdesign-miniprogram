@@ -45,12 +45,8 @@
         safe-password-custom-hash="{{safePasswordCustomHash}}"
         class="{{classPrefix}}__control {{suffix || align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  {{prefix}}-class-input"
       />
-      <view
-        wx:if="{{ clearable && (value.length > 0 || characterLength > 0)}}"
-        class="{{classPrefix}}__wrap--icon"
-        bind:tap="clearInput"
-      >
-        <t-icon name="close-circle-filled" customStyle="font-size: 39rpx" class="{{prefix}}-class-clearable" />
+      <view wx:if="{{ clearable && value.length > 0}}" class="{{classPrefix}}__wrap--icon" bind:tap="clearInput">
+        <t-icon name="close-circle-filled" size="48rpx" class="{{prefix}}-class-clearable" />
       </view>
       <view class="{{classPrefix}}__wrap--suffix">
         <slot name="suffix" />
@@ -59,7 +55,7 @@
         <text>{{suffix}}</text>
       </view>
       <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon">
-        <t-icon name="{{suffixIcon}}" customStyle="font-size: 39rpx" class="{{prefix}}-class-suffix-icon" />
+        <t-icon name="{{suffixIcon}}" size="48rpx" class="{{prefix}}-class-suffix-icon" />
       </view>
     </view>
     <view
