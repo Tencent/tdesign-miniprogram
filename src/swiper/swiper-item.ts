@@ -16,7 +16,7 @@ export default class SwiperItem extends SuperComponent {
 
   data = {
     index: 0,
-    classPrefix: `.${prefix}-swiper-item`,
+    classPrefix: `${prefix}-swiper-item`,
     translate: '',
   };
 

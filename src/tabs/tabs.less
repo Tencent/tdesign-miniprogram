@@ -49,6 +49,27 @@ page {
     flex: 1;
     font-weight: 400;
     color: var(--td-tab-item-color, @tab-item-color);
+
+    &--top,
+    &--bottom {
+      height: @tab-item-height--horizontal;
+      line-height: @tab-item-height--horizontal;
+      text-align: center;
+      min-width: 162rpx;
+    }
+
+    &--left,
+    &--right {
+      text-align: center;
+      height: @tab-item-height--vertical;
+      line-height: @tab-item-height--vertical;
+      width: @tab-item-width--vertical;
+      background-color: rgb(243, 243, 243);
+
+      &.@{prefix}-is-active {
+        background-color: #fff;
+      }
+    }
   }
 
   &__content {
@@ -62,6 +83,11 @@ page {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+
+    &--left,
+    &--right {
+      flex-direction: column;
+    }
   }
 
   &__track {
@@ -70,10 +96,45 @@ page {
     z-index: 1;
     transition-duration: 0.3s;
     background-color: var(--td-tab-track-color, @tab-track-color);
+
+    &--left {
+      left: 0;
+      top: 0;
+      width: var(--td-tab-track-thickness, @tab-track-thickness);
+    }
+
+    &--right {
+      right: 0;
+      top: 0;
+      width: var(--td-tab-track-thickness, @tab-track-thickness);
+    }
+  }
+
+  &__scroll {
+    &--top,
+    &--bottom {
+      height: @tab-item-height--horizontal;
+      position: relative;
+      background-color: var(--td-tab-nav-bg-color, @tab-nav-background-color);
+
+      &::after {
+        content: '';
+      }
+    }
+    &--top {
+      border-bottom: solid 1rpx var(--td-tab-border-color, @tab-border-color);
+    }
   }
 
   &__content-inner {
     display: block;
+  }
+
+  &__sticky {
+    &--left,
+    &--right {
+      width: @tab-item-width--vertical;
+    }
   }
 
   &.@{prefix}-tabs--top,
@@ -88,22 +149,6 @@ page {
       transition-property: transform;
     }
 
-    .@{prefix}-tabs__scroll {
-      position: relative;
-      background-color: var(--td-tab-nav-bg-color, @tab-nav-background-color);
-
-      &::after {
-        content: '';
-      }
-    }
-
-    .@{prefix}-tabs__item {
-      height: @tab-item-height--horizontal;
-      line-height: @tab-item-height--horizontal;
-      text-align: center;
-      min-width: 162rpx;
-    }
-
     .@{prefix}-tabs__track {
       left: 0;
       bottom: 0;
@@ -115,27 +160,12 @@ page {
     }
   }
 
-  &.@{prefix}-tabs--top {
-    .@{prefix}-tabs__scroll {
-      height: @tab-item-height--horizontal;
-      border-bottom: solid 1rpx var(--td-tab-border-color, @tab-border-color);
-    }
-  }
-
   &.@{prefix}-tabs--bottom {
     flex-direction: column-reverse;
-
-    .@{prefix}-tabs__scroll {
-      height: @tab-item-height--horizontal;
-    }
   }
 
   &.@{prefix}-tabs--left,
   &.@{prefix}-tabs--right {
-    .@{prefix}-tabs__sticky {
-      width: @tab-item-width--vertical;
-    }
-
     .@{prefix}-tabs__content-inner {
       position: relative;
       width: 100%;
@@ -143,26 +173,6 @@ page {
       display: flex;
       flex-direction: column;
       transition-property: transform;
-    }
-
-    .@{prefix}-tabs__scroll {
-      width: auto;
-    }
-
-    .@{prefix}-tabs__nav {
-      flex-direction: column;
-    }
-
-    .@{prefix}-tabs__item {
-      text-align: center;
-      height: @tab-item-height--vertical;
-      line-height: @tab-item-height--vertical;
-      width: @tab-item-width--vertical;
-      background-color: rgb(243, 243, 243);
-
-      &.@{prefix}-is-active {
-        background-color: #fff;
-      }
     }
 
     .@{prefix}-tabs__content {
@@ -175,21 +185,7 @@ page {
     }
   }
 
-  &.@{prefix}-tabs--left {
-    .@{prefix}-tabs__track {
-      left: 0;
-      top: 0;
-      width: var(--td-tab-track-thickness, @tab-track-thickness);
-    }
-  }
-
   &.@{prefix}-tabs--right {
     flex-direction: row-reverse;
-
-    .@{prefix}-tabs__track {
-      right: 0;
-      top: 0;
-      width: var(--td-tab-track-thickness, @tab-track-thickness);
-    }
   }
 }

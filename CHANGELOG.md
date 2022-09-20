@@ -5,6 +5,20 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.21.1 `2022-09-19` 
+### 🚀 Features
+- `Toast`: 使用 Transition 实现淡入淡出动画 @LeeJim ([#863](https://github.com/Tencent/tdesign-miniprogram/pull/863))
+- `Upload`: 新增 source 属性，支持从聊天会话中读取文件 @LeeJim ([#868](https://github.com/Tencent/tdesign-miniprogram/pull/868))
+### 🐞 Bug Fixes
+- `Toast`: 重构 DOM 以及代码逻辑 @LeeJim ([#863](https://github.com/Tencent/tdesign-miniprogram/pull/863))
+- `ActionSheet`: 修复 theme = list 时点击选项之后报错的问题 @LeeJim ([#866](https://github.com/Tencent/tdesign-miniprogram/pull/866))
+- `Tabs`: 修复嵌套使用时样式错误的问题 @LeeJim ([#869](https://github.com/Tencent/tdesign-miniprogram/pull/869))
+### 🚧 Others
+- `Indexes`: 新增单元测试 @CodingOnStar ([#850](https://github.com/Tencent/tdesign-miniprogram/pull/850))
+- `Message`: 新增单元测试 @anlyyao ([#859](https://github.com/Tencent/tdesign-miniprogram/pull/859))
+- `SwipeCell`: 新增单元测试 @webwyb ([#861](https://github.com/Tencent/tdesign-miniprogram/pull/861))
+- `Swiper`: 新增单元测试 @anlyyao ([#864](https://github.com/Tencent/tdesign-miniprogram/pull/864))
+
 ## 🌈 0.21.0 `2022-09-13` 
 ### ❗️BREAKING CHANGES
 - `TabBar`: 点击 subTabBar 选项时，返回的值从数组改成选项的值 @LeeJim ([#846](https://github.com/Tencent/tdesign-miniprogram/pull/846))
