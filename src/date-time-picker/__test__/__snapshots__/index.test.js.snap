@@ -8,6 +8,7 @@ exports[`date-time-picker :base 1`] = `
       bind:cancel="onCancel"
       bind:change="onConfirm"
       bind:pick="onColumnChange"
+      bind:visible-change="onVisibleChange"
     >
       <t-popup
         bind:visible-change="onPopupChange"
@@ -54,7 +55,7 @@ exports[`date-time-picker :base 1`] = `
               >
                 <t-picker-item
                   class="t-date-time-picker__item"
-                  index="{{0}}"
+                  index="index"
                 >
                   <wx-view
                     class="t-picker-item__group"
@@ -320,7 +321,7 @@ exports[`date-time-picker :base 1`] = `
                 </t-picker-item>
                 <t-picker-item
                   class="t-date-time-picker__item"
-                  index="{{1}}"
+                  index="index"
                 >
                   <wx-view
                     class="t-picker-item__group"
@@ -468,6 +469,7 @@ exports[`date-time-picker :second 1`] = `
       bind:cancel="onCancel"
       bind:change="onConfirm"
       bind:pick="onColumnChange"
+      bind:visible-change="onVisibleChange"
     >
       <t-popup
         bind:visible-change="onPopupChange"
