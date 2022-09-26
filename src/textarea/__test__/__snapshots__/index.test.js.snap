@@ -29,7 +29,6 @@ exports[`textarea slots : label 1`] = `
         cursorSpacing="{{0}}"
         disabled="{{false}}"
         focus="{{false}}"
-        maxlength="{{-1}}"
         placeholder=""
         placeholderClass="t-textarea__placeholder"
         value=""

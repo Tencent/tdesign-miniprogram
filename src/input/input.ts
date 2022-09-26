@@ -50,9 +50,15 @@ export default class Input extends SuperComponent {
 
   methods = {
     updateValue(value) {
-      const { maxcharacter } = this.properties;
+      const { maxcharacter, maxlength } = this.properties;
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
+        this.setData({
+          value: characters,
+          count: length,
+        });
+      } else if (maxlength > 0 && !Number.isNaN(maxlength)) {
+        const { length, characters } = getCharacterLength('maxlength', value, maxlength);
         this.setData({
           value: characters,
           count: length,
@@ -67,7 +73,7 @@ export default class Input extends SuperComponent {
     onInput(e) {
       const { value, cursor, keyCode } = e.detail;
       this.updateValue(value);
-      this.triggerEvent('change', { value, cursor, keyCode });
+      this.triggerEvent('change', { value: this.data.value, cursor, keyCode });
     },
     onFocus(e) {
       this.triggerEvent('focus', e.detail);

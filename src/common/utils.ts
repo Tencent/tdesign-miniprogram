@@ -86,17 +86,13 @@ export const addUnit = function (value?: string | number): string | undefined {
   return isNumber(value) ? `${value}px` : value;
 };
 
-export const getStringSlice = (str, start: number, end: number) => {
-  return str.slice(start, end);
-};
-
 /**
  * 计算字符串字符的长度并可以截取字符串。
- * @param str 传入字符串
- * @param maxCharacter 规定最大字符串长度
- * @returns 当没有传入maxCharacter/maxLength 时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
+ * @param str 传入字符串（maxcharacter条件下，一个汉字表示两个字符）
+ * @param max 规定最大字符串长度
+ * @returns 当没有传入maxCharacter/maxLength 时返回字符串字符长度，当传入maxCharacter/maxLength时返回截取之后的字符串和长度。
  */
-export const getCharacterLength = (type: string, str: string, maxCharacter?: number) => {
+export const getCharacterLength = (type: string, str: string, max?: number) => {
   if (!str || str.length === 0) {
     return {
       length: 0,
@@ -113,10 +109,10 @@ export const getCharacterLength = (type: string, str: string, maxCharacter?: num
       } else {
         currentStringLength = 1;
       }
-      if (len + currentStringLength > maxCharacter) {
+      if (len + currentStringLength > max) {
         return {
           length: len,
-          characters: getStringSlice(str, 0, i),
+          characters: str.slice(0, i),
         };
       }
       len += currentStringLength;
@@ -126,10 +122,10 @@ export const getCharacterLength = (type: string, str: string, maxCharacter?: num
       characters: str,
     };
   } else if (type === 'maxlength') {
-    const length = str.length > maxCharacter ? maxCharacter : str.length;
+    const length = str.length > max ? max : str.length;
     return {
       length,
-      characters: getStringSlice(str, 0, length),
+      characters: str.slice(0, length),
     };
   }
 

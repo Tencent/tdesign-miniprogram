@@ -70,7 +70,7 @@ describe('textarea', () => {
       expect(handleChange).toHaveBeenCalledTimes(2);
       expect(component.instance.data.count).toBe(10);
       expect(handleChange.mock.calls[1][0].detail).toStrictEqual({
-        value: 'textarea用于多行文本信息输入',
+        value: 'textarea用',
       });
 
       $textarea.dispatchEvent('textarea', { detail: { value: 'textarea用于567' } });
