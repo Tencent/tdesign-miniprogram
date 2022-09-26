@@ -32,7 +32,7 @@ describe('input', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
       const component = comp.querySelector('.base');
-      expect(component.instance.data.characterLength).toBe(7);
+      expect(component.instance.data.count).toBe(7);
 
       const $input = comp.querySelector('.base >>> .t-input__control');
 
@@ -40,15 +40,15 @@ describe('input', () => {
       $input.dispatchEvent('input', { detail: { value: 'tdesign123' } });
       await simulate.sleep(0);
       expect(handleChange).toHaveBeenCalledTimes(1);
-      expect(component.instance.data.characterLength).toBe(10);
+      expect(component.instance.data.count).toBe(10);
 
       // value 长度 > maxcharacter
       $input.dispatchEvent('input', { detail: { value: 'input用于单行文本信息输入' } });
       await simulate.sleep(0);
       expect(handleChange).toHaveBeenCalledTimes(2);
-      expect(component.instance.data.characterLength).toBe(9);
+      expect(component.instance.data.count).toBe(9);
       expect(handleChange.mock.calls[1][0].detail).toStrictEqual({
-        value: 'input用于单行文本信息输入',
+        value: 'input用于',
         cursor: undefined,
         keyCode: undefined,
       });
@@ -57,7 +57,7 @@ describe('input', () => {
       $input.dispatchEvent('input', { detail: { value: 'input用于567' } });
       await simulate.sleep(0);
       expect(handleChange).toHaveBeenCalledTimes(3);
-      expect(component.instance.data.characterLength).toBe(10);
+      expect(component.instance.data.count).toBe(10);
     });
 
     it(': borderless && align && size', async () => {
