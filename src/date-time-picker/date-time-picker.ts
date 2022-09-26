@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
+import objectSupport from 'dayjs/plugin/objectSupport';
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import defaultLocale from './locale/zh';
@@ -7,6 +8,7 @@ import defaultLocale from './locale/zh';
 import props from './props';
 
 const { prefix } = config;
+dayjs.extend(objectSupport);
 
 enum ModeItem {
   YEAR = 'year',
@@ -473,8 +475,10 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     onCancel() {
-      const { value } = this.properties;
-      const parseDate = dayjs(value || DEFAULT_MIN_DATE);
+      const { value, defaultValue, format } = this.properties;
+      const timeValue = format === 'HH:mm' ? value.split(':') : '';
+      const parseDate =
+        format === 'HH:mm' ? dayjs({ hour: timeValue[0], minute: timeValue[1] }) : dayjs(value || defaultValue);
 
       this.setData({
         date: parseDate,
