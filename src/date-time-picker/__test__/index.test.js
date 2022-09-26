@@ -206,4 +206,115 @@ describe('date-time-picker', () => {
 
     expect($items.length).toBe(5);
   });
+
+  describe('controlled or not', () => {
+    it('controlled', async () => {
+      let enableChange = true;
+      const id = simulate.load({
+        template: `<t-date-time-picker
+          id="base"
+          start="2020"
+          end="2030"
+          mode="year"
+          value="{{value}}"
+          bind:change="onChange"
+          visible />`,
+        data: {
+          value: '2020-12-01',
+        },
+        methods: {
+          onChange(e) {
+            if (enableChange) {
+              this.setData({ value: e.detail.value });
+            }
+          },
+        },
+        usingComponents: {
+          't-date-time-picker': dateTimePicker,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const [$item] = comp.querySelectorAll('#base >>> .t-date-time-picker__item');
+      const $YearGroup = $item.querySelector('.t-picker-item__group');
+      const $picker = comp.querySelector('#base >>> .t-date-time-picker');
+      const $confirm = $picker.querySelector('.t-picker__confirm');
+      const $cancel = $picker.querySelector('.t-picker__cancel');
+
+      const mockScroll = async () => {
+        pick($YearGroup, 2);
+        await simulate.sleep(100);
+      };
+
+      // case1: 滚动完取消，应该回到原点
+      await mockScroll();
+      expect($item.data.offset).toBe(-2 * 44);
+
+      $cancel.dispatchEvent('tap');
+      await simulate.sleep();
+
+      expect($item.data.offset).toBe(-0);
+
+      // case2: 滚动完确认，如果修改了value，应该保留滚动的位置
+      await mockScroll();
+
+      $confirm.dispatchEvent('tap');
+      await simulate.sleep();
+
+      expect($item.data.offset).toBe(-2 * 44);
+
+      // case3: 滚动完确认，没修改value，应该维持在上次滚动的位置
+      enableChange = false;
+      await mockScroll();
+      // 模拟确认
+      $confirm.dispatchEvent('tap');
+      await simulate.sleep();
+      expect($item.data.offset).toBe(-2 * 44);
+    });
+
+    it('uncontrolled', async () => {
+      const id = simulate.load({
+        template: `<t-date-time-picker
+          id="base"
+          start="2020"
+          end="2030"
+          mode="year"
+          default-value="2020"
+          visible />`,
+        usingComponents: {
+          't-date-time-picker': dateTimePicker,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const [$item] = comp.querySelectorAll('#base >>> .t-date-time-picker__item');
+      const $YearGroup = $item.querySelector('.t-picker-item__group');
+      const $picker = comp.querySelector('#base >>> .t-date-time-picker');
+      const $confirm = $picker.querySelector('.t-picker__confirm');
+      const $cancel = $picker.querySelector('.t-picker__cancel');
+
+      const mockScroll = async () => {
+        pick($YearGroup, 2);
+        await simulate.sleep(100);
+      };
+
+      // case1: 滚动完取消，应该回到原点
+      await mockScroll();
+
+      $cancel.dispatchEvent('tap');
+      await simulate.sleep();
+
+      expect($item.data.offset).toBe(-0);
+
+      // case2: 滚动完确认，因为是非受控，应该保留滚动的位置
+      await mockScroll();
+
+      $confirm.dispatchEvent('tap');
+      await simulate.sleep();
+
+      expect($item.data.offset).toBe(-2 * 44);
+    });
+  });
 });
