@@ -2,9 +2,10 @@
   class="{{classPrefix}}"
   visible="{{visible}}"
   value="{{columnsValue}}"
-  bindpick="onColumnChange"
-  bindchange="onConfirm"
-  bindcancel="onCancel"
+  bind:pick="onColumnChange"
+  bind:change="onConfirm"
+  bind:cancel="onCancel"
+  bind:visible-change="onVisibleChange"
   header="{{header}}"
   title="{{title}}"
   confirmBtn="{{confirmBtn || locale.confirm}}"
@@ -12,12 +13,6 @@
 >
   <slot slot="header" name="header" />
 
-  <t-picker-item
-    wx:for="{{columns}}"
-    wx:key="index"
-    class="{{classPrefix}}__item"
-    options="{{item}}"
-    index="{{index}}"
-  />
+  <t-picker-item wx:for="{{columns}}" wx:key="index" class="{{classPrefix}}__item" options="{{item}}" index="index" />
   <slot slot="footer" name="footer" />
 </t-picker>
