@@ -47,7 +47,7 @@ page {
     color: var(--td-tab-bar-item-color, @tab-bar-color);
 
     &.@{prefix}-is-checked {
-      color: var(--td-tab-bar-item-active-color);
+      color: var(--td-tab-bar-item-active-color, @tab-bar-active-color);
       .@{item}__icon-menu {
         background-color: var(--td-tab-bar-item-active-color, @tab-bar-active-color);
       }

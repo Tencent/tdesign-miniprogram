@@ -5,7 +5,6 @@
   </view>
   <view class="{{classPrefix}}__wrapper">
     <textarea
-      maxlength="{{maxlength || maxchars || -1}}"
       disabled="{{disabled}}"
       placeholder="{{placeholder}}"
       class="{{classPrefix}}__wrapper-textarea {{prefix}}-class-textarea"

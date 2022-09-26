@@ -39,8 +39,6 @@ export default class DateTimePicker extends SuperComponent {
     multipleSlots: true,
   };
 
-  initValue = null;
-
   observers = {
     'start, end, value': function () {
       this.updateColumns();
@@ -66,15 +64,12 @@ export default class DateTimePicker extends SuperComponent {
     locale: defaultLocale,
   };
 
-  lifetimes = {
-    attached() {
-      const { value, defaultValue } = this.properties;
-
-      if (value == null && defaultValue != null) {
-        this.initValue = defaultValue;
-      }
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
     },
-  };
+  ];
 
   methods = {
     updateColumns() {
@@ -92,7 +87,7 @@ export default class DateTimePicker extends SuperComponent {
       const minDate = this.getMinDate();
 
       const isTimeMode = this.isTimeMode();
-      let currentValue = this.initValue || value || defaultValue;
+      let currentValue = value || defaultValue;
 
       // 时间需要补齐前缀
       if (isTimeMode) {
@@ -466,16 +461,24 @@ export default class DateTimePicker extends SuperComponent {
       const date = this.getDate();
 
       const value = format ? date.format(format) : date.valueOf();
-      this.triggerEvent('change', { value });
+      this._trigger('change', { value });
+      this.resetColumns();
     },
 
     onCancel() {
-      const { value } = this.properties;
-      const parseDate = dayjs(value || DEFAULT_MIN_DATE);
+      this.resetColumns();
+      this.triggerEvent('cancel');
+    },
 
-      this.setData({
-        date: parseDate,
-      });
+    onVisibleChange(e) {
+      if (!e.detail.visible) {
+        this.resetColumns();
+      }
+    },
+
+    resetColumns() {
+      const parseDate = this.getParseDate();
+
       this.date = parseDate;
 
       const { columns, columnsValue } = this.getValueCols();
@@ -484,8 +487,6 @@ export default class DateTimePicker extends SuperComponent {
         columns,
         columnsValue,
       });
-
-      this.triggerEvent('cancel');
     },
   };
 
