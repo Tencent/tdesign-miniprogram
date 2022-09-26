@@ -86,39 +86,55 @@ export const addUnit = function (value?: string | number): string | undefined {
   return isNumber(value) ? `${value}px` : value;
 };
 
+export const getStringSlice = (str, start: number, end: number) => {
+  return str.slice(start, end);
+};
+
 /**
  * 计算字符串字符的长度并可以截取字符串。
  * @param str 传入字符串
  * @param maxCharacter 规定最大字符串长度
- * @returns 当没有传入maxCharacter时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
+ * @returns 当没有传入maxCharacter/maxLength 时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
  */
-export const getCharacterLength = (str: string, maxCharacter?: number) => {
-  const hasMaxCharacter = typeof maxCharacter === 'number';
+export const getCharacterLength = (type: string, str: string, maxCharacter?: number) => {
   if (!str || str.length === 0) {
     return {
       length: 0,
       characters: '',
     };
   }
-  let len = 0;
-  for (let i = 0; i < str.length; i += 1) {
-    let currentStringLength = 0;
-    if (str.charCodeAt(i) > 127 || str.charCodeAt(i) === 94) {
-      currentStringLength = 2;
-    } else {
-      currentStringLength = 1;
+
+  if (type === 'maxcharacter') {
+    let len = 0;
+    for (let i = 0; i < str.length; i += 1) {
+      let currentStringLength = 0;
+      if (str.charCodeAt(i) > 127 || str.charCodeAt(i) === 94) {
+        currentStringLength = 2;
+      } else {
+        currentStringLength = 1;
+      }
+      if (len + currentStringLength > maxCharacter) {
+        return {
+          length: len,
+          characters: getStringSlice(str, 0, i),
+        };
+      }
+      len += currentStringLength;
     }
-    if (hasMaxCharacter && len + currentStringLength > maxCharacter) {
-      return {
-        length: len,
-        characters: str.slice(0, i),
-        overflow: true,
-      };
-    }
-    len += currentStringLength;
+    return {
+      length: len,
+      characters: str,
+    };
+  } else if (type === 'maxlength') {
+    const length = str.length > maxCharacter ? maxCharacter : str.length;
+    return {
+      length,
+      characters: getStringSlice(str, 0, length),
+    };
   }
+
   return {
-    length: len,
+    length: str.length,
     characters: str,
   };
 };

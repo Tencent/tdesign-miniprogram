@@ -13,7 +13,7 @@
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content">
       <input
-        maxlength="{{maxlength || maxchars || -1}}"
+        maxlength="{{maxcharacter || maxlength || -1}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholderStyle="{{placeholderStyle}}"
