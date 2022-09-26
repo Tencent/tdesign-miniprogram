@@ -64,6 +64,13 @@ export default class DateTimePicker extends SuperComponent {
     locale: defaultLocale,
   };
 
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
+
   methods = {
     updateColumns() {
       this.date = this.getParseDate();
@@ -454,7 +461,8 @@ export default class DateTimePicker extends SuperComponent {
       const date = this.getDate();
 
       const value = format ? date.format(format) : date.valueOf();
-      this.triggerEvent('change', { value });
+      this._trigger('change', { value });
+      this.resetColumns();
     },
 
     onCancel() {
@@ -471,9 +479,6 @@ export default class DateTimePicker extends SuperComponent {
     resetColumns() {
       const parseDate = this.getParseDate();
 
-      this.setData({
-        date: parseDate,
-      });
       this.date = parseDate;
 
       const { columns, columnsValue } = this.getValueCols();
