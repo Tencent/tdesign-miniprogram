@@ -5,6 +5,18 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.21.2 `2022-09-26` 
+### 🐞 Bug Fixes
+- `Input`: 修复 `clearable` 的显示和隐藏问题 @anlyyao ([#874](https://github.com/Tencent/tdesign-miniprogram/pull/874))
+- `Tabbar`: 使用 fallback value 保证颜色展示正确 @LeeJim ([#875](https://github.com/Tencent/tdesign-miniprogram/pull/875))
+- `Icon`: 移除 `CSS` 属性 `speak` @anlyyao ([#885](https://github.com/Tencent/tdesign-miniprogram/pull/885))
+- `Textarea`: 修复 maxLength 情况下，显示值和实际值不一致问题 @anlyyao ([#883](https://github.com/Tencent/tdesign-miniprogram/pull/883))
+- `Textarea`: 修复 maxcharacter 情况下，输入值超出 maxcharacter 的问题 @anlyyao ([#883](https://github.com/Tencent/tdesign-miniprogram/pull/883))
+- `Input`: 修复 maxcharacter 情况下，输入值超出 maxcharacter 的问题 @anlyyao ([#883](https://github.com/Tencent/tdesign-miniprogram/pull/883))
+- `DateTimePicker`: 修复选项重置错误的问题 @LeeJim ([#888](https://github.com/Tencent/tdesign-miniprogram/pull/888))
+### 🚧 Others
+- NPM 包中保留 dts，更好得支持 TypeScript  @AntzyMo ([#682](https://github.com/Tencent/tdesign-miniprogram/pull/682))
+
 ## 🌈 0.21.1 `2022-09-19` 
 ### 🚀 Features
 - `Toast`: 使用 Transition 实现淡入淡出动画 @LeeJim ([#863](https://github.com/Tencent/tdesign-miniprogram/pull/863))
