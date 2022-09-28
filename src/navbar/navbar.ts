@@ -83,7 +83,6 @@ export default class Navbar extends SuperComponent {
 
     opacity: 0.1,
     ios: false,
-    delta: 1,
     showTitle: '',
   };
 
