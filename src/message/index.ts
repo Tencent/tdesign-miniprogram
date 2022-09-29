@@ -35,8 +35,9 @@ export default {
   error(options: MessageActionOptionsType) {
     return showMessage(options, MessageType.error);
   },
-  hide() {
-    const instance = getInstance();
+  hide(options: MessageActionOptionsType) {
+    const { context, selector = '#t-message' } = { ...options };
+    const instance = getInstance(context, selector);
     if (!instance) {
       return;
     }
