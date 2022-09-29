@@ -1,20 +1,23 @@
 :: BASE_DOC ::
 
 ## API
-
 ### Calendar Props
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-cell | Array / Function | - | Typescript：`DateCellDescription[] | ((data: Date) => string)` `interface DateCellDescription { date: Date; label: string; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts) | N
-confirm-btn | String / Function / Slot | - | \- | N
-first-day-of-week | Number | - | options：1/2/3/4/5/6/7 | N
-head | String / Slot | - | \- | N
-value | String / Date | - | Typescript：`CalendarValue` `type CalendarValue = string | Date`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts) | N
+confirm-btn | String / Object / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts) | N
+first-day-of-week | Number | 0 | \- | N
+format | Function | - | Typescript：`(day: TDate) => TDate` `type TDateType = 'selected' | 'disabled' | 'start' | 'centre' | 'end' | ''; ` `interface TDate { date: Date; day: number; type: TDateType; className?: string; prefix?: string; suffix?: string; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts) | N
+max-date | Number / Date | - | Typescript：`number | Date` | N
+min-date | Number / Date | - | Typescript：`number | Date` | N
+title | String / Slot | - | \- | N
+type | String | 'single' | options：single/multiple/range | N
+value | Number / Array / Date | - | Typescript：`number | Date | TCalendarValue[] ` `type TCalendarValue = number | Date`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts) | N
+visible | Boolean | false | \- | N
 
 ### Calendar Events
 
 name | params | description
 -- | -- | --
-cell-click | `(options: { cell: CalendarCell;})` | \-
-confirm | `(options: { value: Date;})` | \-
+confirm | `(value: Date)` | \-
+select | `(value: Date)` | \-
