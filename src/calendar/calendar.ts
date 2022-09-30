@@ -13,8 +13,9 @@ export interface CalendarProps extends TdCalendarProps {}
 export default class Calendar extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
-  options = {
+  options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
+    styleIsolation: 'apply-shared',
   };
 
   properties = props;
@@ -27,22 +28,45 @@ export default class Calendar extends SuperComponent {
 
   lifetimes = {
     ready() {
-      this.base = new TCalendar(this.properties);
-      const selectedDate = this.base.getTrimValue();
-      const months = this.base.getMonths(selectedDate);
+      let { confirmBtn } = this.data;
 
+      if (!confirmBtn) {
+        confirmBtn = { content: '确认' };
+      }
+      this.base = new TCalendar(this.properties);
       this.setData({
         days: this.base.getDays(),
-        months,
+        confirmBtn,
       });
+      this.calcMonths();
     },
   };
 
   methods = {
+    calcMonths() {
+      const months = this.base.getMonths();
+
+      this.setData({
+        months,
+      });
+    },
     handleClose() {
       this.setData({ visible: false });
     },
-    handleSelect() {},
-    handleConfirm() {},
+    handleSelect(e) {
+      const { date, item } = e.currentTarget.dataset;
+      const { year, month } = item;
+
+      const value = this.base.select({ cellType: date.type, year, month, date: date.day });
+      this.base.value = value;
+      this.calcMonths();
+    },
+    onTplButtonTap() {
+      const value = this.base.getTrimValue();
+      this.triggerEvent('confirm', { value });
+    },
+    handleVisibleChange() {
+      this.setData({ visible: false });
+    },
   };
 }

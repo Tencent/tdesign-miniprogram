@@ -1,6 +1,10 @@
 {
   "component": true,
   "usingComponents": {
-    "base": "./base"
+    "base": "./base",
+    "multiple": "./multiple",
+    "range": "./range",
+    "custom-text": "./custom-text",
+    "custom-range": "./custom-range"
   }
 }

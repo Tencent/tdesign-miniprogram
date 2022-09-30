@@ -2,9 +2,14 @@
   <view class="demo-title">Calendar 日历</view>
   <view class="demo-desc">按照日历形式展示数据或日期的容器</view>
 
-  <t-demo padding title="01 类型" desc="动态倒计时间主要有时间数字和时分秒分割组成">
+  <t-demo title="01 类型" desc="">
     <base />
+    <multiple />
+    <range />
   </t-demo>
 
-  <t-demo padding title="02 规格" desc="动倒计时带底色和无底色各尺寸规格"> </t-demo>
+  <t-demo title="02 自定义" desc="可自由定义想要的风格">
+    <custom-text />
+    <custom-range />
+  </t-demo>
 </view>

@@ -8,6 +8,7 @@ export const getDateRect = (date: Date | number) => {
     month: _date.getMonth(),
     date: _date.getDate(),
     day: _date.getDay(),
+    time: _date.getTime(),
   };
 };
 
@@ -37,7 +38,7 @@ export const isValidDate = (val) => typeof val === 'number' || val instanceof Da
 export const getDate = (...args) => {
   const now = new Date();
   if (args.length === 0) return now;
-  if (args.length === 1) {
+  if (args.length === 1 && args[0] <= 1000) {
     const { year, month, date } = getDateRect(now);
     return new Date(year, month + args[0], date);
   }

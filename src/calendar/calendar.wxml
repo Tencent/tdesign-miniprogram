@@ -1,7 +1,7 @@
 <import src="../common/template/button.wxml" />
 
 <view>
-  <t-popup visible="{{visible}}" placement="bottom">
+  <t-popup visible="{{visible}}" bind:visible-change="handleVisibleChange" placement="bottom">
     <view class="{{name}}">
       <view class="{{name}}__title">
         <slot wx:if="{{title === 'slot'}}" name="title" />
@@ -20,7 +20,7 @@
                 class="{{name}}__dates-item {{dateItem.className}} {{name}}__dates-item--{{dateItem.type}}"
                 style="margin-left: {{dateIndex === 0 ? 49 * ((item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7) + 'px' : 0}}"
                 data-item="{{item}}"
-                date-date="{{dateItem}}"
+                data-date="{{dateItem}}"
                 bind:tap="handleSelect"
               >
                 <view wx:if="{{dateItem.prefix}}" class="{{name}}__dates-item-prefix">{{ dateItem.prefix }}</view>
