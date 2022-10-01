@@ -57,7 +57,7 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "@vitejs/plugin-vue-jsx": "^1.1.7",
     "@vue/compiler-sfc": "^3.2.4",
-    "babel-jest": "^26.6.3",
+    "babel-jest": "^29.1.2",
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.3.0",
