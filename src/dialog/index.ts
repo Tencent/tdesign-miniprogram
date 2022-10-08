@@ -79,8 +79,9 @@ export default {
       instance._onCancel = reject;
     });
   },
-  close() {
-    const instance = getInstance();
+  close(options: DialogComfirmOptionsType) {
+    const { context, selector = '#t-dialog' } = { ...options };
+    const instance = getInstance(context, selector);
     if (instance) {
       instance.close();
       return Promise.resolve();
