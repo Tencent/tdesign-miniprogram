@@ -1,5 +1,40 @@
-:: BASE_DOC ::
+---
+title: Calendar 日历
+description: 按照日历形式展示数据或日期的容器。
+spline: form
+isComponent: true
+---
+## 引入
 
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
+
+```json
+"usingComponents": {
+  "t-calendar": "tdesign-miniprogram/calendar/calendar"
+}
+```
+
+## 代码演示
+
+### 单个选择日期
+
+{{ base }}
+
+### 多个选择日期
+
+{{ multiple }}
+
+### 区间选择日期
+
+{{ range }}
+
+### 自定义文案
+
+{{ custom-text }}
+
+### 自定义区间
+
+{{ custom-range }}
 ## API
 ### Calendar Props
 

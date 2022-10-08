@@ -162,6 +162,13 @@ export default {
       type: 'component',
       children: [
         {
+          title: 'Calendar 日历',
+          name: 'calendar',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/calendar',
+          component: () => import('@/calendar/README.md'),
+        },
+        {
           title: 'CheckBox 复选框',
           name: 'checkbox',
           meta: { docType: 'form' },
