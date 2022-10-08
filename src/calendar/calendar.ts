@@ -54,19 +54,18 @@ export default class Calendar extends SuperComponent {
       this.setData({ visible: false });
     },
     handleSelect(e) {
-      const { date, item } = e.currentTarget.dataset;
-      const { year, month } = item;
+      const { date, year, month } = e.currentTarget.dataset;
+
+      if (date.type === 'disabled') return;
 
       const value = this.base.select({ cellType: date.type, year, month, date: date.day });
+
       this.base.value = value;
       this.calcMonths();
     },
     onTplButtonTap() {
       const value = this.base.getTrimValue();
       this.triggerEvent('confirm', { value });
-    },
-    handleVisibleChange() {
-      this.setData({ visible: false });
     },
   };
 }
