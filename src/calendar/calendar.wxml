@@ -1,0 +1,52 @@
+<import src="../common/template/button.wxml" />
+
+<view>
+  <t-popup visible="{{visible}}" bind:visible-change="handleClose" placement="bottom">
+    <view class="{{name}}">
+      <view class="{{name}}__title">
+        <slot wx:if="{{title === 'slot'}}" name="title" />
+        <text wx:else>{{ title || '请选择日期' }}</text>
+      </view>
+      <t-icon name="close" class="{{name}}__close-btn" size="24" bind:tap="handleClose" />
+      <view class="{{name}}__days">
+        <view wx:for="{{days}}" wx:key="index" class="{{name}}__days-item">{{ item }}</view>
+      </view>
+      <view class="{{name}}__months">
+        <block wx:for="{{months}}" wx:key="index">
+          <view class="{{name}}__month">{{ item.year }} 年 {{ item.month + 1 }} 月</view>
+          <view class="{{name}}__dates">
+            <block wx:for="{{item.months}}" wx:for-index="dateIndex" wx:for-item="dateItem" wx:key="dateIndex">
+              <view
+                class="{{name}}__dates-item {{dateItem.className}} {{name}}__dates-item--{{dateItem.type}}"
+                style="margin-left: {{dateIndex === 0 ? 49 * ((item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7) + 'px' : 0}}"
+                data-year="{{item.year}}"
+                data-month="{{item.month}}"
+                data-date="{{dateItem}}"
+                bind:tap="handleSelect"
+              >
+                <view wx:if="{{dateItem.prefix}}" class="{{name}}__dates-item-prefix">{{ dateItem.prefix }}</view>
+                {{ dateItem.day }}
+                <view
+                  wx:if="{{dateItem.suffix}}"
+                  class="{{name}}__dates-item-suffix {{name}}__dates-item-suffix--{{dateItem.type}}"
+                >
+                  {{ dateItem.suffix }}
+                </view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+      <view class="{{name}}__footer">
+        <slot wx:if="{{confirmBtn === 'slot'}}" name="confirmBtn" />
+        <block wx:elif="{{confirmBtn}}">
+          <!-- <t-button block theme="primary" v-bind="confirmBtn" bind:tap="handleConfirm" /> -->
+          <template
+            is="button"
+            data="{{...confirmBtn, block: true,  theme: 'primary', class: 't-calendar__confirm-btn' }}"
+          />
+        </block>
+      </view>
+    </view>
+  </t-popup>
+</view>

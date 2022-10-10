@@ -12,6 +12,7 @@
     "pages/loading/loadingProgress/index",
     "pages/rate/rate",
     "pages/progress/progress",
+    "pages/calendar/calendar",
     "pages/cell/cell",
     "pages/cell-group/cell-group",
     "pages/collapse/collapse",
