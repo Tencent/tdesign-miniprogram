@@ -124,17 +124,15 @@ page {
     &--top {
       border-bottom: solid 1rpx var(--td-tab-border-color, @tab-border-color);
     }
+    &--left,
+    &--right {
+      width: @tab-item-width--vertical;
+      max-height: 100vh;
+    }
   }
 
   &__content-inner {
     display: block;
-  }
-
-  &__sticky {
-    &--left,
-    &--right {
-      width: @tab-item-width--vertical;
-    }
   }
 
   &.@{prefix}-tabs--top,
