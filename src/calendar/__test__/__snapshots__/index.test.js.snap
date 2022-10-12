@@ -274,12 +274,12 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
-                    class="t-calendar__dates-item  t-calendar__dates-item--selected"
+                    class="t-calendar__dates-item  t-calendar__dates-item--disabled"
                     data-date="{{
                       Object {
                         "date": Object {},
                         "day": 11,
-                        "type": "selected",
+                        "type": "disabled",
                       }
                     }}"
                     data-month="{{9}}"
@@ -292,12 +292,12 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
+                    class="t-calendar__dates-item  t-calendar__dates-item--selected"
                     data-date="{{
                       Object {
                         "date": Object {},
                         "day": 12,
-                        "type": "",
+                        "type": "selected",
                       }
                     }}"
                     data-month="{{9}}"
@@ -3622,12 +3622,12 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
-                    class="t-calendar__dates-item  t-calendar__dates-item--disabled"
+                    class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
                         "date": Object {},
                         "day": 12,
-                        "type": "disabled",
+                        "type": "",
                       }
                     }}"
                     data-month="{{3}}"
