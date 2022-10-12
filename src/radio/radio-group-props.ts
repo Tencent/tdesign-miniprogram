@@ -32,6 +32,10 @@ const props: TdRadioGroupProps = {
     optionalTypes: [Number, Boolean],
     value: false,
   },
+  align: {
+    type: String,
+    value: 'left',
+  },
 };
 
 export default props;

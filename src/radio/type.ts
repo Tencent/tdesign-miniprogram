@@ -166,6 +166,10 @@ export interface TdRadioGroupProps {
     optionalTypes: Array<NumberConstructor | BooleanConstructor>;
     value?: RadioValue;
   };
+  align?: {
+    type: StringConstructor;
+    value?: 'left' | 'right';
+  };
 }
 
 export type RadioValue = string | number | boolean;

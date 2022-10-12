@@ -5,6 +5,7 @@
       class="{{prefix}}-radio-option"
       label="{{item.label}}"
       value="{{item.value}}"
+      data-index="{{index}}"
       data-value="{{item.value}}"
       disabled="{{item.disabled}}"
       bind:change="handleRadioChange"

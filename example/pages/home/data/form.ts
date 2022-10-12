@@ -7,6 +7,10 @@ const form = {
       label: '日历',
     },
     {
+      name: 'Cascader',
+      label: '级联选择器',
+    },
+    {
       name: 'Checkbox',
       label: '多选框',
     },

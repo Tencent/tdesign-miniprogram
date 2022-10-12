@@ -21,9 +21,17 @@ export default class Radio extends SuperComponent {
 
   behaviors = ['wx://form-field'];
 
+  parent = null;
+
   relations: RelationsOptions = {
     '../radio-group/radio-group': {
       type: 'ancestor',
+      linked(parent) {
+        this.parent = parent;
+        if (parent.align) {
+          this.setData({ align: parent.align });
+        }
+      },
     },
   };
 
@@ -91,7 +99,7 @@ export default class Radio extends SuperComponent {
     },
     initStatus() {
       const { icon } = this.data;
-      const isIdArr = Array.isArray(icon);
+      const isIdArr = Array.isArray(this.parent?.icon || icon);
 
       this.setData({
         customIcon: isIdArr,

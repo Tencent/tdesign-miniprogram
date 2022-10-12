@@ -39,12 +39,6 @@ export default class RadioGroup extends SuperComponent {
     },
   ];
 
-  lifetimes = {
-    attached() {
-      this.initWithOptions();
-    },
-  };
-
   observers = {
     value() {
       this.getChilds().forEach((item) => {
@@ -52,6 +46,9 @@ export default class RadioGroup extends SuperComponent {
           checked: this.data.value === item.data.value,
         });
       });
+    },
+    options() {
+      this.initWithOptions();
     },
   };
 
@@ -69,9 +66,9 @@ export default class RadioGroup extends SuperComponent {
     },
 
     handleRadioChange(e) {
-      const { value } = e.target.dataset;
+      const { value, index } = e.target.dataset;
 
-      this.updateValue(value);
+      this._trigger('change', { value, index });
     },
 
     // 支持自定义options

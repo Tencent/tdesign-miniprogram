@@ -13,6 +13,7 @@
     "pages/rate/rate",
     "pages/progress/progress",
     "pages/calendar/calendar",
+    "pages/cascader/cascader",
     "pages/cell/cell",
     "pages/cell-group/cell-group",
     "pages/collapse/collapse",
