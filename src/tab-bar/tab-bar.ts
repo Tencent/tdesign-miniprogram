@@ -15,11 +15,10 @@ export default class Tabbar extends SuperComponent {
 
   externalClasses = [`${prefix}-class`];
 
-  backupValue: 0;
-
   data = {
     prefix,
     classPrefix,
+    backupValue: -1,
   };
 
   properties = props;
@@ -82,7 +81,12 @@ export default class Tabbar extends SuperComponent {
     },
 
     initName() {
-      return (this.backupValue += 1);
+      const { backupValue } = this.data;
+      const newBackupValue = backupValue + 1;
+      this.setData({
+        backupValue: newBackupValue,
+      });
+      return newBackupValue;
     },
   };
 }
