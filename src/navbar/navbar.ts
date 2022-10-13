@@ -83,7 +83,6 @@ export default class Navbar extends SuperComponent {
 
     opacity: 0.1,
     ios: false,
-    delta: 1,
     showTitle: '',
   };
 
@@ -118,43 +117,45 @@ export default class Navbar extends SuperComponent {
     });
   }
 
-  calcLeftBtn() {
-    const { homeIcon, leftIcon } = this.properties;
+  methods = {
+    calcLeftBtn() {
+      const { homeIcon, leftIcon } = this.properties;
 
-    let home = false;
-    let back = false;
+      let home = false;
+      let back = false;
 
-    if (homeIcon) home = true;
+      if (homeIcon) home = true;
 
-    if (leftIcon) back = true;
-    this.setData({
-      hasHomeIcon: home,
-      hasBackIcon: back,
-    });
-  }
-
-  goHome() {
-    this.triggerEvent('go-home');
-  }
-
-  goBack() {
-    const { delta } = this.data;
-    // eslint-disable-next-line
-    const that = this;
-    this.triggerEvent('go-back');
-    if (delta > 0) {
-      wx.navigateBack({
-        delta,
-        fail(e) {
-          that.triggerEvent('fail', e);
-        },
-        complete(e) {
-          that.triggerEvent('complete', e);
-        },
-        success(e) {
-          that.triggerEvent('success', e);
-        },
+      if (leftIcon) back = true;
+      this.setData({
+        hasHomeIcon: home,
+        hasBackIcon: back,
       });
-    }
-  }
+    },
+
+    goHome() {
+      this.triggerEvent('go-home');
+    },
+
+    goBack() {
+      const { delta } = this.data;
+      // eslint-disable-next-line
+      const that = this;
+      this.triggerEvent('go-back');
+      if (delta > 0) {
+        wx.navigateBack({
+          delta,
+          fail(e) {
+            that.triggerEvent('fail', e);
+          },
+          complete(e) {
+            that.triggerEvent('complete', e);
+          },
+          success(e) {
+            that.triggerEvent('success', e);
+          },
+        });
+      }
+    },
+  };
 }

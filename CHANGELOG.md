@@ -5,6 +5,13 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.22.0 `2022-10-10` 
+### 🚀 Features
+- `Calendar`: 新增日历组件 @LeeJim ([#896](https://github.com/Tencent/tdesign-miniprogram/pull/896))
+### 🐞 Bug Fixes
+- `Dialog`: 函数式`Dialog.close()` 关闭窗体支持自定义  `selector` @anlyyao ([#894](https://github.com/Tencent/tdesign-miniprogram/pull/894))
+- `Message`: 函数式`Dialog.hide()` 关闭窗体支持自定义  `selector` @anlyyao ([#894](https://github.com/Tencent/tdesign-miniprogram/pull/894))
+
 ## 🌈 0.21.2 `2022-09-26` 
 ### 🐞 Bug Fixes
 - `Input`: 修复 `clearable` 的显示和隐藏问题 @anlyyao ([#874](https://github.com/Tencent/tdesign-miniprogram/pull/874))
