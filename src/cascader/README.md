@@ -1,4 +1,25 @@
-:: BASE_DOC ::
+---
+title: Cascader 级联选择器
+description: 级联选择器适用于有清晰层级结构的数据集合，用户可以通过逐级查看并选择。
+spline: form
+isComponent: true
+---
+
+## 引入
+
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
+
+```json
+"usingComponents": {
+  "t-calendar": "tdesign-miniprogram/cascader/cascader"
+}
+```
+
+## 代码演示
+
+### 基础用法
+
+{{ base }}
 
 ## API
 ### Cascader Props

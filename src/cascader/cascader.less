@@ -1,11 +1,12 @@
 @import '../common/style/index.less';
 
 @cascader-active-color: @primary-color;
-@cascader-min-height: 400px;
 @cascader-disabled-color: @text-disabled-color;
 @cascader-title-color: @text-level-1-color;
 @cascader-options-title-color: @text-level-3-color;
 @cascader-border-color: @border-level-1-color;
+
+@cascader-options-height: 320px;
 
 // steps
 @cascader-step-height: 44px;
@@ -15,7 +16,6 @@
 @cascader-step-line-color: @text-level-4-color;
 
 .@{prefix}-cascader {
-  min-height: @cascader-min-height;
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -37,13 +37,14 @@
 
   &__content {
     width: 100%;
-    padding-top: 12px;
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
   &__options {
+    height: @cascader-options-height;
+
     &-title {
       color: @cascader-options-title-color;
       font-size: 14px;
@@ -56,6 +57,11 @@
       height: 100%;
       overflow: auto;
       padding-left: 16px;
+    }
+
+    &-container {
+      display: flex;
+      transition: all ease 0.3s;
     }
   }
 
@@ -103,6 +109,10 @@
         color: @cascader-step-active-color;
       }
     }
+  }
+
+  &__swiper {
+    height: @cascader-options-height;
   }
 }
 

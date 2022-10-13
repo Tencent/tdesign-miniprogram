@@ -8,6 +8,9 @@
       data-index="{{index}}"
       data-value="{{item.value}}"
       disabled="{{item.disabled}}"
+      align="{{align}}"
+      icon="{{icon}}"
+      borderless="{{borderless}}"
       bind:change="handleRadioChange"
     />
   </block>

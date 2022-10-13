@@ -1,6 +1,6 @@
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
-import Props from '../radio/radio-group-props';
+import Props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-radio-group`;
@@ -30,6 +30,10 @@ export default class RadioGroup extends SuperComponent {
 
   properties = {
     ...Props,
+    borderless: {
+      type: Boolean,
+      value: false,
+    },
   };
 
   controlledProps = [

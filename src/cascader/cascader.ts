@@ -36,12 +36,6 @@ export default class Cascader extends SuperComponent {
         selectedValue: items.map((item, index) => item[selectedIndexes[index]]?.value),
       });
     },
-    visible(val) {
-      if (val) {
-        const $swiper = this.selectComponent('#swiper');
-        $swiper.init();
-      }
-    },
   };
 
   lifetimes = {

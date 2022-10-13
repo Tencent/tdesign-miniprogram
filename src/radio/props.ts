@@ -51,8 +51,7 @@ const props: TdRadioProps = {
   },
   /** 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标 */
   icon: {
-    type: String,
-    optionalTypes: [Array],
+    type: null,
     value: 'fill-circle',
   },
   /** 主文案 */
@@ -76,8 +75,7 @@ const props: TdRadioProps = {
   },
   /** 单选按钮的值 */
   value: {
-    type: String,
-    optionalTypes: [Number, Boolean],
+    type: null,
     value: false,
   },
 };

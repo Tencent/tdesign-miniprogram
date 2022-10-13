@@ -4,7 +4,7 @@
       <slot name="title" />
       {{title}}
     </view>
-    <view class="{{name}}__close-btn" bind:tap="onCancel">
+    <view class="{{name}}__close-btn" bind:tap="hide">
       <slot name="closeBtn" />
       <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
     </view>
@@ -21,22 +21,25 @@
         </view>
       </view>
       <!-- <view class="{{name}}__options-title">选项标题</view> -->
-      <view class="{{name}}__options-content">
-        <t-swiper id="swiper" current="{{stepIndex}}" autoplay="{{false}}" bind:change="onSwiperChange">
-          <t-swiper-item wx:for="{{items}}" wx:for-item="options" wx:key="index">
-            <t-radio-group
-              value="{{selectedValue[index]}}"
-              options="{{options}}"
-              bind:change="handleSelect"
-              data-level="{{index}}"
-              align="right"
-            >
-              <!-- <t-radio wx:for="{{options}}" wx:key="index" icon="stroke-line"  borderless
-                >{{item.label}}</t-radio
-              > -->
-            </t-radio-group>
-          </t-swiper-item>
-        </t-swiper>
+      <view
+        class="{{name}}__options-container"
+        style="width: {{items.length}}00vw; transform: translateX(-{{stepIndex}}00vw)"
+      >
+        <scroll-view wx:for="{{items}}" wx:for-item="options" wx:key="index" class="{{name}}__options" scroll-y>
+          <t-radio-group
+            value="{{selectedValue[index]}}"
+            options="{{options}}"
+            bind:change="handleSelect"
+            data-level="{{index}}"
+            align="right"
+            icon="stroke-line"
+            borderless
+          >
+            <!-- <t-radio wx:for="{{options}}" wx:key="index" icon="stroke-line"  borderless
+              >{{item.label}}</t-radio
+            > -->
+          </t-radio-group>
+        </scroll-view>
 
         <!-- <view wx:for="{{items}}" wx:key="index" style="width: 100%">
           <transition appear name="slide">
