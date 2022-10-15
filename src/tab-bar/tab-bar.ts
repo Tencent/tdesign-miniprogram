@@ -15,7 +15,7 @@ export default class Tabbar extends SuperComponent {
 
   externalClasses = [`${prefix}-class`];
 
-  backupValue: 0;
+  backupValue = 0;
 
   data = {
     prefix,
