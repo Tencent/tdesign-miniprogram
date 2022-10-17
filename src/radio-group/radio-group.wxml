@@ -5,8 +5,12 @@
       class="{{prefix}}-radio-option"
       label="{{item.label}}"
       value="{{item.value}}"
+      data-index="{{index}}"
       data-value="{{item.value}}"
       disabled="{{item.disabled}}"
+      align="{{align}}"
+      icon="{{icon}}"
+      borderless="{{borderless}}"
       bind:change="handleRadioChange"
     />
   </block>

@@ -169,6 +169,13 @@ export default {
           component: () => import('@/calendar/README.md'),
         },
         {
+          title: 'Cascader 级联选择器',
+          name: 'cascader',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/cascader',
+          component: () => import('@/cascader/README.md'),
+        },
+        {
           title: 'CheckBox 复选框',
           name: 'checkbox',
           meta: { docType: 'form' },
