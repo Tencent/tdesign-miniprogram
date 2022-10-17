@@ -5,6 +5,17 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.23.0 `2022-10-17` 
+### 🚀 Features
+- `Cascader`: 新增级联选择器 @LeeJim ([#912](https://github.com/Tencent/tdesign-miniprogram/pull/912))
+- `RadioGroup`: 新增 align 和 icon 属性，当使用 options 渲染子项时有效 @LeeJim ([#912](https://github.com/Tencent/tdesign-miniprogram/pull/912))
+### 🐞 Bug Fixes
+- `PulldownRefresh`: 修复高度无法自适应外容器的问题 @LeeJim ([#909](https://github.com/Tencent/tdesign-miniprogram/pull/909))
+- `Tabs`: 修复 placement = left 时， Nav 不可见且不居左的问题 @LeeJim ([#908](https://github.com/Tencent/tdesign-miniprogram/pull/908))
+- `TabBar`: 修复 item 不传 value 时无法自动生成备用值的问题 @LeeJim ([#914](https://github.com/Tencent/tdesign-miniprogram/pull/914))
+### 🚧 Others
+- `Calendar`: 修复动态数据导致测试用例一直报错的问题 @LeeJim ([#916](https://github.com/Tencent/tdesign-miniprogram/pull/916))
+
 ## 🌈 0.22.0 `2022-10-10` 
 ### 🚀 Features
 - `Calendar`: 新增日历组件 @LeeJim ([#896](https://github.com/Tencent/tdesign-miniprogram/pull/896))
