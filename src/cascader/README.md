@@ -11,7 +11,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-calendar": "tdesign-miniprogram/cascader/cascader"
+  "t-cascader": "tdesign-miniprogram/cascader/cascader"
 }
 ```
 
