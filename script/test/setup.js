@@ -1,8 +1,6 @@
 import Path from 'path';
 import simulate from 'miniprogram-simulate';
 
-process.env.TZ = 'Asia/Shanghai';
-
 global.getApp = () => null;
 global.Page = (options) => Component(options);
 global.load = (path, demoName) => {
