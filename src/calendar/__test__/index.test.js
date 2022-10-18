@@ -9,7 +9,12 @@ describe('calendar', () => {
 
   it(':base', () => {
     const id = simulate.load({
-      template: `<t-calendar visible></t-calendar>`,
+      template: `<t-calendar value="{{value}}" minDate="{{minDate}}" maxDate="{{maxDate}}" visible></t-calendar>`,
+      data: {
+        minDate: +new Date(2022, 9, 1),
+        maxDate: +new Date(2022, 9, 31),
+        value: +new Date(2022, 9, 16),
+      },
       usingComponents: {
         't-calendar': calendar,
       },

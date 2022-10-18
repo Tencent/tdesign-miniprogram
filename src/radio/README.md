@@ -95,7 +95,9 @@ change | `(checked: boolean)` | 值变化时触发
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+align | String | left | 复选框和内容相对位置；仅在使用 options 时生效。可选项：left/right | N
 disabled | Boolean | undefined | 是否禁用全部子单选框 | N
+icon | String / Array | 'fill-circle' | 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标；仅在使用 options 时生效。TS 类型：`'fill-circle' | 'stroke-line' | Array<string>` | N
 name | String | - | HTML 元素原生属性 | N
 options | Array | - | 单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同。TS 类型：`Array<RadioOption>` `type RadioOption = string | number | RadioOptionObj` `interface RadioOptionObj { label?: string; value?: string | number; disabled?: boolean }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio/type.ts) | N
 value | String / Number / Boolean | false | 选中的值。TS 类型：`RadioValue` | N

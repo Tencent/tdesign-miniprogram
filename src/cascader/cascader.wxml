@@ -1,0 +1,60 @@
+<t-popup visible="{{visible}}" placement="bottom" bind:visible-change="hide">
+  <view class="{{name}}">
+    <view class="{{name}}__title">
+      <slot name="title" />
+      {{title}}
+    </view>
+    <view class="{{name}}__close-btn" bind:tap="hide">
+      <slot name="closeBtn" />
+      <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
+    </view>
+    <view class="{{name}}__content">
+      <!-- <cascader-steps value="{{stepIndex}}" items="{{steps}}" bind:change="onStepsChange" /> -->
+      <view wx:if="{{steps && steps.length}}" class="{{name}}__steps">
+        <view wx:for="{{steps}}" wx:key="index" class="{{name}}__step" bind:tap="onStepClick" data-index="{{index}}">
+          <view
+            class="{{name}}__step-dot {{name}}__step-dot--{{index === stepIndex ? 'active' : ''}} {{name}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
+          ></view>
+          <view class="{{name}}__step-label {{name}}__step-label--{{index === stepIndex ? 'active' : ''}}">
+            {{ item }}
+          </view>
+        </view>
+      </view>
+      <!-- <view class="{{name}}__options-title">选项标题</view> -->
+      <view
+        class="{{name}}__options-container"
+        style="width: {{items.length}}00vw; transform: translateX(-{{stepIndex}}00vw)"
+      >
+        <scroll-view wx:for="{{items}}" wx:for-item="options" wx:key="index" class="{{name}}__options" scroll-y>
+          <t-radio-group
+            value="{{selectedValue[index]}}"
+            options="{{options}}"
+            bind:change="handleSelect"
+            data-level="{{index}}"
+            align="right"
+            icon="stroke-line"
+            borderless
+          >
+            <!-- <t-radio wx:for="{{options}}" wx:key="index" icon="stroke-line"  borderless
+              >{{item.label}}</t-radio
+            > -->
+          </t-radio-group>
+        </scroll-view>
+
+        <!-- <view wx:for="{{items}}" wx:key="index" style="width: 100%">
+          <transition appear name="slide">
+            <view v-show="stepIndex === index" style="width: 100%">
+              <cascader-item
+                v-for="(item, idx) in options"
+                :key="item.value"
+                v-bind="item"
+                :active="selectedIndexes[index] === idx"
+                @click="onPick(item, idx, index, $event)"
+              />
+            </view>
+          </transition>
+        </view> -->
+      </view>
+    </view>
+  </view>
+</t-popup>

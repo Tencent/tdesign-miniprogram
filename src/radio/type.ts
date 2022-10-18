@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-export interface TdRadioProps {
+export interface TdRadioProps<T = RadioValue> {
   /**
    * 复选框和内容相对位置
    * @default left
@@ -79,8 +79,7 @@ export interface TdRadioProps {
    * @default 'fill-circle'
    */
   icon?: {
-    type: StringConstructor;
-    optionalTypes: Array<ArrayConstructor>;
+    type: null;
     value?: 'fill-circle' | 'stroke-line' | Array<string>;
   };
   /**
@@ -119,61 +118,9 @@ export interface TdRadioProps {
    * @default false
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
-    value?: RadioValue;
-  };
-}
-
-export interface TdRadioGroupProps {
-  /**
-   * 是否禁用全部子单选框
-   */
-  disabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * HTML 元素原生属性
-   * @default ''
-   */
-  name?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同
-   */
-  options?: {
-    type: ArrayConstructor;
-    value?: Array<RadioOption>;
-  };
-  /**
-   * 选中的值
-   * @default false
-   */
-  value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
-    value?: RadioValue;
-  };
-  /**
-   * 选中的值，非受控属性
-   * @default false
-   */
-  defaultValue?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
-    value?: RadioValue;
+    type: null;
+    value?: T;
   };
 }
 
 export type RadioValue = string | number | boolean;
-
-export type RadioOption = string | number | RadioOptionObj;
-
-export interface RadioOptionObj {
-  label?: string;
-  value?: string | number;
-  disabled?: boolean;
-}
