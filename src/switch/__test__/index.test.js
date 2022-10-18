@@ -5,10 +5,7 @@ import { hex2Rgb } from '../../../test/utils/colors';
 // TODO size 未实现 loading 未实现
 
 describe('switch', () => {
-  const switchComp = simulate.load(path.resolve(__dirname, `../switch`), 't-switch', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const switchComp = load(path.resolve(__dirname, `../switch`), 't-switch');
 
   describe('Props', () => {
     it(':base', () => {

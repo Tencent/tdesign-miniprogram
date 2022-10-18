@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('search', () => {
-  const search = simulate.load(path.resolve(__dirname, `../search`), 't-search', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const search = load(path.resolve(__dirname, `../search`), 't-search');
 
   describe('Props', () => {
     it(`:base`, () => {

@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('date-time-picker', () => {
-  const dateTimePicker = simulate.load(path.resolve(__dirname, `../date-time-picker`), 't-date-time-picker', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const dateTimePicker = load(path.resolve(__dirname, `../date-time-picker`), 't-date-time-picker');
   const handler = (dom) => {
     const trigger = (action, x, y) =>
       dom.dispatchEvent(`touch${action}`, {

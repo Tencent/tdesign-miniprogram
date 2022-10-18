@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('slider', () => {
-  const slider = simulate.load(path.resolve(__dirname, `../slider`), 't-slider', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const slider = load(path.resolve(__dirname, `../slider`), 't-slider');
 
   const left = 16;
   const right = 319;

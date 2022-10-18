@@ -10,10 +10,7 @@ const mapper = ['animation', 'cell-group', 'grid', 'image-group', 'theme'];
 describe('Skeleton', () => {
   mapper.forEach((demoName) => {
     it(`Skeleton ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../skeleton/_example/${demoName}/index`), demoName, {
-        less: true,
-        rootPath: path.resolve(__dirname, '../..'),
-      });
+      const id = load(path.resolve(__dirname, `../../skeleton/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

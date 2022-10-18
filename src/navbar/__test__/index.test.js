@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('navbar', () => {
-  const navbar = simulate.load(path.resolve(__dirname, `../navbar`), 't-navbar', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const navbar = load(path.resolve(__dirname, `../navbar`), 't-navbar');
 
   it(':base', async () => {
     const id = simulate.load({

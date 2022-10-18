@@ -1,5 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Upload Upload messageFile demo works fine 1`] = `
+<messageFile>
+  <wx-view
+    class="wrapper"
+  >
+    <t-upload
+      addContent="slot"
+      config="{{
+        Object {
+          "count": 1,
+        }
+      }}"
+      files="{{
+        Array [
+          Object {
+            "name": "uploaded1.png",
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
+          },
+        ]
+      }}"
+      gridConfig="{{
+        Object {
+          "column": 4,
+          "height": 160,
+          "width": 160,
+        }
+      }}"
+      mediaType="{{
+        Array [
+          "video",
+          "image",
+        ]
+      }}"
+      source="messageFile"
+      bind:remove="handleRemove"
+      bind:success="handleSuccess"
+    >
+      <t-icon
+        color="rgba(0,0,0,0.26)"
+        name="add"
+        size="40rpx"
+        slot="add-content"
+      />
+    </t-upload>
+  </wx-view>
+</messageFile>
+`;
+
 exports[`Upload Upload multiple demo works fine 1`] = `
 <multiple>
   <wx-view

@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('result', () => {
-  const result = simulate.load(path.resolve(__dirname, `../result`), {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const result = load(path.resolve(__dirname, `../result`));
 
   it(':props', () => {
     const id = simulate.load({

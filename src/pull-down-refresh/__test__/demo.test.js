@@ -10,14 +10,7 @@ const mapper = ['base', 'refresh-timeout'];
 describe('PullDownRefresh', () => {
   mapper.forEach((demoName) => {
     it(`PullDownRefresh ${demoName} demo works fine`, () => {
-      const id = simulate.load(
-        path.resolve(__dirname, `../../pull-down-refresh/_example/${demoName}/index`),
-        demoName,
-        {
-          less: true,
-          rootPath: path.resolve(__dirname, '../..'),
-        },
-      );
+      const id = load(path.resolve(__dirname, `../../pull-down-refresh/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

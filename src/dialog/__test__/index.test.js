@@ -4,10 +4,7 @@ import Dialog from '../index';
 import * as Util from '../../common/utils';
 
 describe('dialog', () => {
-  const dialog = simulate.load(path.resolve(__dirname, `../dialog`), 't-dialog', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const dialog = load(path.resolve(__dirname, `../dialog`), 't-dialog');
 
   it(':base', async () => {
     const id = simulate.load({

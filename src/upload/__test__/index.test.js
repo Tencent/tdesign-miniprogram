@@ -70,15 +70,9 @@ global.wx = {
 };
 
 describe('upload', () => {
-  const upload = simulate.load(path.resolve(__dirname, `../upload`), 't-upload', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const upload = load(path.resolve(__dirname, `../upload`), 't-upload');
   jest.resetModules();
-  const icon = simulate.load(path.resolve(__dirname, `../../icon/icon`), 't-icon', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const icon = load(path.resolve(__dirname, `../../icon/icon`), 't-icon');
 
   describe('props', () => {
     it(': add-content', () => {

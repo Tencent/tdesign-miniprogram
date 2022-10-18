@@ -8,10 +8,7 @@ const textAlign = ['left', 'center', 'right'];
 const layout = ['horizontal', 'vertical'];
 
 describe('Divider', () => {
-  const divider = simulate.load(path.resolve(__dirname, `../divider`), 't-divider', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const divider = load(path.resolve(__dirname, `../divider`), 't-divider');
 
   it(`:base`, () => {
     const id = simulate.load({

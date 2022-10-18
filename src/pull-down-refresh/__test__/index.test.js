@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('pull-down-refresh', () => {
-  const pullDownRefresh = simulate.load(path.resolve(__dirname, `../pull-down-refresh`), 't-pull-down-refresh', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const pullDownRefresh = load(path.resolve(__dirname, `../pull-down-refresh`), 't-pull-down-refresh');
 
   describe('props', () => {
     it(': maxBarHeight', async () => {

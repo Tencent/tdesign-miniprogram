@@ -10,10 +10,7 @@ const mapper = ['align', 'base', 'custom', 'maxlength', 'require', 'size', 'spec
 describe('Input', () => {
   mapper.forEach((demoName) => {
     it(`Input ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../input/_example/${demoName}/index`), demoName, {
-        less: true,
-        rootPath: path.resolve(__dirname, '../..'),
-      });
+      const id = load(path.resolve(__dirname, `../../input/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();
