@@ -22,7 +22,7 @@
   placeholder="0.00"
   suffix="元"
   bindchange="onPriceInput"
-  vlaue="{{price}}"
+  value="{{price}}"
   error-message="{{priceError ? '请输入正确的价格' : ''}}"
   t-class-error-msg="error-msg"
 />
