@@ -12,10 +12,7 @@ beforeAll(() => {
 });
 
 describe('Sticky Props', () => {
-  const id = simulate.load(path.resolve(__dirname, './index'), {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const id = load(path.resolve(__dirname, './index'));
 
   it(':base', async () => {
     const comp = simulate.render(id);

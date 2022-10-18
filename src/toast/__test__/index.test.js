@@ -5,10 +5,7 @@ import { showToast, hideToast } from '../index';
 import * as Util from '../../common/utils';
 
 describe('toast', () => {
-  const toast = simulate.load(path.resolve(__dirname, `../toast`), 't-toast', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const toast = load(path.resolve(__dirname, `../toast`), 't-toast');
 
   it(':base', async () => {
     const close = jest.fn();

@@ -5,12 +5,12 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base'];
+const mapper = ['base', 'custom-range', 'custom-text', 'multiple', 'range'];
 
-describe('BackTop', () => {
+describe('Calendar', () => {
   mapper.forEach((demoName) => {
-    it(`BackTop ${demoName} demo works fine`, () => {
-      const id = load(path.resolve(__dirname, `../../back-top/_example/${demoName}/index`), demoName);
+    it(`Calendar ${demoName} demo works fine`, () => {
+      const id = load(path.resolve(__dirname, `../../calendar/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('picker', () => {
-  const id = simulate.load(path.resolve(__dirname, `./index`), {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const id = load(path.resolve(__dirname, `./index`));
   const handler = (dom) => {
     const trigger = (action, x, y) =>
       dom.dispatchEvent(`touch${action}`, {

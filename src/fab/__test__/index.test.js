@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('fab', () => {
-  const fab = simulate.load(path.resolve(__dirname, `../fab`), 't-fab', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../../'),
-  });
+  const fab = load(path.resolve(__dirname, `../fab`), 't-fab');
   it(`fab :base`, async () => {
     const id = simulate.load({
       template: `<t-fab class="fab" text="{{text}}"></fab>`,

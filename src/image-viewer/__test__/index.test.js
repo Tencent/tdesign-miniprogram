@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('image-viewer', () => {
-  const imageViewer = simulate.load(path.resolve(__dirname, `../image-viewer`), 't-image-viewer', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const imageViewer = load(path.resolve(__dirname, `../image-viewer`), 't-image-viewer');
 
   it(':base', async () => {
     const id = simulate.load({

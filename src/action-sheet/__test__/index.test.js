@@ -9,10 +9,7 @@ describe('action-sheet', () => {
     Grid: 'grid',
   };
 
-  const actionSheet = simulate.load(path.resolve(__dirname, `../action-sheet`), 't-action-sheet', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const actionSheet = load(path.resolve(__dirname, `../action-sheet`), 't-action-sheet');
 
   describe('props', () => {
     it(': cancel-text', async () => {

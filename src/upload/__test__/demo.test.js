@@ -5,15 +5,12 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['multiple', 'single'];
+const mapper = ['messageFile', 'multiple', 'single'];
 
 describe('Upload', () => {
   mapper.forEach((demoName) => {
     it(`Upload ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../upload/_example/${demoName}/index`), demoName, {
-        less: true,
-        rootPath: path.resolve(__dirname, '../..'),
-      });
+      const id = load(path.resolve(__dirname, `../../upload/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

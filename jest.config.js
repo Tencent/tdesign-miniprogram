@@ -25,5 +25,6 @@ module.exports = {
   globals: {
     CONFIG_PREFIX: 't',
   },
+  globalSetup: '<rootDir>/script/test/globalSetup.js',
   snapshotSerializers: ['miniprogram-simulate/jest-snapshot-plugin'],
 };

@@ -2,11 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('button', () => {
-  const options = {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  };
-  const button = simulate.load(path.resolve(__dirname, '../button'), options);
+  const button = load(path.resolve(__dirname, '../button'));
 
   it(`:base`, async () => {
     const id = simulate.load({
@@ -93,7 +89,7 @@ describe('button', () => {
   });
 
   it(':with group', () => {
-    const buttonGroup = simulate.load(path.resolve(__dirname, '../../button-group/button-group'), options);
+    const buttonGroup = load(path.resolve(__dirname, '../../button-group/button-group'));
     const id = simulate.load({
       template: `<t-button-group type="primary" class="button-group">
         <t-button></t-button>

@@ -7,10 +7,10 @@ import path from 'path';
 
 const mapper = ['base'];
 
-describe('BackTop', () => {
+describe('Cascader', () => {
   mapper.forEach((demoName) => {
-    it(`BackTop ${demoName} demo works fine`, () => {
-      const id = load(path.resolve(__dirname, `../../back-top/_example/${demoName}/index`), demoName);
+    it(`Cascader ${demoName} demo works fine`, () => {
+      const id = load(path.resolve(__dirname, `../../cascader/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('calendar', () => {
-  const calendar = simulate.load(path.resolve(__dirname, `../calendar`), 't-calendar', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const calendar = load(path.resolve(__dirname, `../calendar`), 't-calendar');
 
   it(':base', () => {
     const id = simulate.load({

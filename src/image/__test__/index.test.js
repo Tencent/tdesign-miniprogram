@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('image', () => {
-  const image = simulate.load(path.resolve(__dirname, `../image`), 't-image', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const image = load(path.resolve(__dirname, `../image`), 't-image');
 
   it(':base', () => {
     const id = simulate.load({

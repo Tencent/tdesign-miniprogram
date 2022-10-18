@@ -7,10 +7,7 @@ const shapes = ['circle', 'square', 'round', 'ribbon'];
 const sizes = ['small', 'medium'];
 
 describe('badge', () => {
-  const badge = simulate.load(path.resolve(__dirname, `../badge`), 't-badge', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const badge = load(path.resolve(__dirname, `../badge`), 't-badge');
 
   it(`:base`, () => {
     const id = simulate.load({

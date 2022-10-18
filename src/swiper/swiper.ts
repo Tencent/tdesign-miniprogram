@@ -155,7 +155,8 @@ export default class Swiper extends SuperComponent {
   methods = {
     init() {
       if (this.hasInited) return;
-      this.createSelectorQuery()
+      wx.createSelectorQuery()
+        .in(this)
         .select('#swiper')
         .boundingClientRect((rect) => {
           if (rect.width === 0) return; // 在 wx:if == false 时也会执行 ready，导致无法获取 size

@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('textarea', () => {
-  const textarea = simulate.load(path.resolve(__dirname, `../textarea`), 't-textarea', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const textarea = load(path.resolve(__dirname, `../textarea`), 't-textarea');
 
   describe('props', () => {
     it(': label', () => {
