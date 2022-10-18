@@ -1,9 +1,9 @@
 Component({
   data: {
     visible: false,
-    value: new Date(2022, 1, 15).getTime(),
-    minDate: new Date(2022, 1, 1).getTime(),
-    maxDate: new Date(2022, 2, 15).getTime(),
+    value: new Date(2022, 1, 15, 0).getTime(),
+    minDate: new Date(2022, 1, 1, 0).getTime(),
+    maxDate: new Date(2022, 2, 15, 0).getTime(),
     format(day) {
       const { date } = day;
       const year = date.getFullYear();
