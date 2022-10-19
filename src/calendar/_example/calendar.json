@@ -1,5 +1,4 @@
 {
-  "component": true,
   "usingComponents": {
     "base": "./base",
     "multiple": "./multiple",
