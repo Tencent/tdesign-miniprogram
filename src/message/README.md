@@ -40,6 +40,12 @@ import Message from 'tdesign-miniprogram/message/index';
 
 {{ status-message }}
 
+### 自定义导航栏
+
+当设置了 `navigationStyle = custom`，可以通过 offetset 来调整显示位置：
+
+{{ custom-navigation }}
+
 ## API
 
 ### Message Props
