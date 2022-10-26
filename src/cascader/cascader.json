@@ -1,8 +1,8 @@
 {
   "component": true,
   "usingComponents": {
-    "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-popup": "tdesign-miniprogram/popup/popup",
-    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
+    "t-icon": "../icon/icon",
+    "t-popup": "../popup/popup",
+    "t-radio-group": "../radio-group/radio-group"
   }
 }
