@@ -84,6 +84,7 @@ isComponent: true
 | icon     | String / Slot          | -         | 标签图标                                                              | N    |
 | shape    | String                 | square    | 标签类型，有三种：方形、圆角方形、标记型。可选项：square/round/mark   | N    |
 | size     | String                 | medium    | 标签尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`             | N    |
+| external-classes | Array          | -       | 组件类名，用于设置 组件外层元素元素类名。`['t-class']
 
 ### CheckTag Events
 

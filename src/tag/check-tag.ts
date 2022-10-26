@@ -16,6 +16,8 @@ export default class CheckTag extends SuperComponent {
 
   properties = props;
 
+  externalClasses = [`${prefix}-class`];
+
   controlledProps = [
     {
       key: 'checked',
