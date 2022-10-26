@@ -1,6 +1,16 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
+beforeAll(() => {
+  global.getCurrentPages = jest.fn(() => {
+    return [
+      {
+        pageScroller: [jest.fn()],
+      },
+    ];
+  });
+});
+
 describe('tabs', () => {
   const id = load(path.resolve(__dirname, `./index`), 't-tabs');
 
