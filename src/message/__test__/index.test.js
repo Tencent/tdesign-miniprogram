@@ -16,16 +16,14 @@ mockGetRect.mockImplementation(() => {
 const mockInstance = jest.spyOn(Util, 'getInstance');
 
 describe('message', () => {
-  const message = simulate.load(path.resolve(__dirname, `../message`), 't-message', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const message = load(path.resolve(__dirname, `../message`), 't-message');
 
   jest.resetModules();
   const icon = simulate.load(path.resolve(__dirname, `../../icon/icon`), 't-icon', {
     less: true,
     rootPath: path.resolve(__dirname, '../..'),
   });
+
   describe('props', () => {
     it(': icon', async () => {
       const id = simulate.load({

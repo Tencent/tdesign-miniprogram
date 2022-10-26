@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('overlay', () => {
-  const overlay = simulate.load(path.resolve(__dirname, `../overlay`), 't-overlay', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const overlay = load(path.resolve(__dirname, `../overlay`), 't-overlay');
 
   it(':base', () => {
     const id = simulate.load({

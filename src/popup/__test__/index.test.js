@@ -3,10 +3,7 @@ import simulate from 'miniprogram-simulate';
 
 // 因 popup 复用 transition，这里不重复测试 transition 逻辑
 describe('popup', () => {
-  const popupId = simulate.load(path.resolve(__dirname, '../../popup/popup'), 't-popup', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const popupId = load(path.resolve(__dirname, '../../popup/popup'), 't-popup');
 
   describe('props', () => {
     it(':position', () => {

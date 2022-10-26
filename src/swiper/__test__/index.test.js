@@ -2,10 +2,26 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('swiper', () => {
-  const swiperComplex = simulate.load(path.resolve(__dirname, `./base/index`), 't-swiper-complex', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const swiperComplex = load(path.resolve(__dirname, `./base/index`), 't-swiper-complex');
+
+  const createSelectorQuery = {
+    in() {
+      return this;
+    },
+    select() {
+      return this;
+    },
+    boundingClientRect(fn) {
+      fn({ width: 375, height: 200 });
+      return this;
+    },
+    exec() {
+      return this;
+    },
+  };
+  const mockFn = jest.spyOn(wx, 'createSelectorQuery');
+
+  mockFn.mockImplementation(() => createSelectorQuery);
 
   describe('props', () => {
     it(': navigation', async () => {

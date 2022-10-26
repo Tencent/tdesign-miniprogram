@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('SwipeCell', () => {
-  const swipeCell = simulate.load(path.resolve(__dirname, '../swipe-cell'), {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const swipeCell = load(path.resolve(__dirname, '../swipe-cell'));
 
   it(':props data', async () => {
     const onActionClick = jest.fn();

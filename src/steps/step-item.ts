@@ -30,12 +30,13 @@ export default class StepItem extends SuperComponent {
 
   properties = props;
 
+  parent = null;
+
   // 组件的内部数据
   data = {
     classPrefix: `${prefix}-steps-item`,
     prefix,
     rootClassName: '',
-    parent: null,
     index: 0,
     isDot: false,
     curStatus: '',
@@ -62,9 +63,7 @@ export default class StepItem extends SuperComponent {
       const [parent] = this.getRelationNodes('./steps') || [];
 
       if (parent) {
-        this.setData({
-          parent,
-        });
+        this.parent = parent;
       }
     },
   };
@@ -158,7 +157,7 @@ export default class StepItem extends SuperComponent {
       });
     },
     click() {
-      this.data.parent.handleClick(this.data.index);
+      this.parent.handleClick(this.data.index);
     },
   };
 }

@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('input', () => {
-  const input = simulate.load(path.resolve(__dirname, `../input`), 't-input', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const input = load(path.resolve(__dirname, `../input`), 't-input');
 
   describe('props', () => {
     it(': maxcharacter', async () => {

@@ -5,6 +5,20 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.23.1 `2022-10-24` 
+### 🐞 Bug Fixes
+
+- `Steps`: 修复内存溢出的问题 @LeeJim ([#928](https://github.com/Tencent/tdesign-miniprogram/pull/928))
+- `tabBar`: 使用正确的备用初始值 @anlyyao ([#930](https://github.com/Tencent/tdesign-miniprogram/pull/930))
+
+### 🚧 Others
+- `Input`: 修复 `demo`中 `value` 属性拼写错误 @anlyyao ([#923](https://github.com/Tencent/tdesign-miniprogram/pull/923))
+- `Cascader`: 修改文档导入示例错误 @miauyo ([#924](https://github.com/Tencent/tdesign-miniprogram/pull/924))
+- `Message`: 新增示例演示如何在自定义导航栏时使用 message @LeeJim ([#932](https://github.com/Tencent/tdesign-miniprogram/pull/932))
+- 修复因 buffer 超出限制导致单元测试报错的问题 @LeeJim ([#925](https://github.com/Tencent/tdesign-miniprogram/pull/925))
+- 更新官网 Demo 示例的二维码 @anlyyao ([#917](https://github.com/Tencent/tdesign-miniprogram/pull/917))
+
+
 ## 🌈 0.23.0 `2022-10-17` 
 ### 🚀 Features
 - `Cascader`: 新增级联选择器 @LeeJim ([#912](https://github.com/Tencent/tdesign-miniprogram/pull/912))

@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('tabs', () => {
-  const id = simulate.load(path.resolve(__dirname, `./index`), 't-tabs', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const id = load(path.resolve(__dirname, `./index`), 't-tabs');
 
   it(':base', async () => {
     const comp = simulate.render(id);

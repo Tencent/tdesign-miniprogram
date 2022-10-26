@@ -10,10 +10,7 @@ const mapper = ['base', 'button', 'cell', 'tab-item'];
 describe('Badge', () => {
   mapper.forEach((demoName) => {
     it(`Badge ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../badge/_example/${demoName}/index`), demoName, {
-        less: true,
-        rootPath: path.resolve(__dirname, '../..'),
-      });
+      const id = load(path.resolve(__dirname, `../../badge/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

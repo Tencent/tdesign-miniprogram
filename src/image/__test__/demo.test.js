@@ -10,10 +10,7 @@ const mapper = ['custom-error-loading', 'custom-loading', 'error-loading', 'imag
 describe('Image', () => {
   mapper.forEach((demoName) => {
     it(`Image ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../image/_example/${demoName}/index`), demoName, {
-        less: true,
-        rootPath: path.resolve(__dirname, '../..'),
-      });
+      const id = load(path.resolve(__dirname, `../../image/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

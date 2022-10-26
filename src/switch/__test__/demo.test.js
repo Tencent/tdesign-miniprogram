@@ -10,10 +10,7 @@ const mapper = ['base', 'status'];
 describe('Switch', () => {
   mapper.forEach((demoName) => {
     it(`Switch ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../switch/_example/${demoName}/index`), demoName, {
-        less: true,
-        rootPath: path.resolve(__dirname, '../..'),
-      });
+      const id = load(path.resolve(__dirname, `../../switch/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

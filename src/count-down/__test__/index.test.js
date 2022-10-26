@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('countdown', () => {
-  const countdown = simulate.load(path.resolve(__dirname, `../count-down`), 't-count-down', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const countdown = load(path.resolve(__dirname, `../count-down`), 't-count-down');
 
   it(':base', async () => {
     const id = simulate.load({

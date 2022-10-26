@@ -21,10 +21,7 @@ const textRowCol2 = [
 ];
 
 describe('skeleton', () => {
-  const skeleton = simulate.load(path.resolve(__dirname, `../skeleton`), 't-skeleton', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const skeleton = load(path.resolve(__dirname, `../skeleton`), 't-skeleton');
 
   describe('Props', () => {
     it(':text rowCol', () => {

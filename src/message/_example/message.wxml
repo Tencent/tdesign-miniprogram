@@ -7,4 +7,7 @@
   <t-demo title="02 状态">
     <status-message />
   </t-demo>
+  <t-demo title="03 特殊">
+    <custom-navigation />
+  </t-demo>
 </view>

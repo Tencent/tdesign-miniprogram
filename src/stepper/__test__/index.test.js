@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('stepper', () => {
-  const stepper = simulate.load(path.resolve(__dirname, `../stepper`), 't-stepper', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const stepper = load(path.resolve(__dirname, `../stepper`), 't-stepper');
 
   describe('props', () => {
     it(': disabled', () => {

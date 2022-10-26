@@ -136,7 +136,7 @@ exports[`Input Input special demo works fine 1`] = `
     placeholder="0.00"
     suffix="元"
     tClassErrorMsg="error-msg"
-    vlaue="10.2"
+    value="10.2"
     bind:change="onPriceInput"
   />
   <t-input

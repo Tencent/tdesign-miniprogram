@@ -10,10 +10,7 @@ const mapper = ['base', 'custom', 'fraction', 'nav-btn', 'vertical'];
 describe('Swiper', () => {
   mapper.forEach((demoName) => {
     it(`Swiper ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../swiper/_example/${demoName}/index`), demoName, {
-        less: true,
-        rootPath: path.resolve(__dirname, '../..'),
-      });
+      const id = load(path.resolve(__dirname, `../../swiper/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

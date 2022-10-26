@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('loading', () => {
-  const loading = simulate.load(path.resolve(__dirname, `../loading`), {
-    rootPath: path.resolve(__dirname, `../../../src`),
-    less: true,
-  });
+  const loading = load(path.resolve(__dirname, `../loading`));
 
   describe('props', () => {
     it(`: loading`, async () => {

@@ -2,10 +2,7 @@ import path from 'path';
 import simulate from 'miniprogram-simulate';
 
 describe('transition', () => {
-  const transitionId = simulate.load(path.resolve(__dirname, '../../transition/transition'), 't-transition', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const transitionId = load(path.resolve(__dirname, '../../transition/transition'), 't-transition');
   beforeAll(() => {
     jest.useFakeTimers();
   });

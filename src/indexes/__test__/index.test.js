@@ -3,10 +3,7 @@ import path from 'path';
 import EXAMPLE from './contant';
 
 describe('indexes', () => {
-  const indexes = simulate.load(path.resolve(__dirname, `../indexes`), 't-indexes', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const indexes = load(path.resolve(__dirname, `../indexes`), 't-indexes');
 
   const id = simulate.load({
     template: `<t-indexes class="indexes" height={{height}} list={{list}}></t-indexes>`,

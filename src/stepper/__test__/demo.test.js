@@ -10,10 +10,7 @@ const mapper = ['base', 'input-width', 'min-max', 'other', 'status', 'step'];
 describe('Stepper', () => {
   mapper.forEach((demoName) => {
     it(`Stepper ${demoName} demo works fine`, () => {
-      const id = simulate.load(path.resolve(__dirname, `../../stepper/_example/${demoName}/index`), demoName, {
-        less: true,
-        rootPath: path.resolve(__dirname, '../..'),
-      });
+      const id = load(path.resolve(__dirname, `../../stepper/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();
