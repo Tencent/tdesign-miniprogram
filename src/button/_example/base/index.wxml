@@ -18,7 +18,7 @@
 </view>
 
 <view class="box">
-  <t-button t-class="external-class" variant="text" block disabled="{{disabled}}">文字按钮</t-button>
+  <t-button t-class="external-class" theme="primary" variant="text" block disabled="{{disabled}}">文字按钮</t-button>
 </view>
 <t-button t-class="external-class no-border-radius" theme="primary" size="large" block disabled="{{disabled}}"
   >通栏按钮</t-button
