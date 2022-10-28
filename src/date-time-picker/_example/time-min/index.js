@@ -4,6 +4,7 @@ Page({
     timeVisible: false,
     time: '10:00',
     timeText: '',
+    start: '2000-01-01 10:01:10',
   },
   showPicker(e) {
     const { mode } = e?.currentTarget?.dataset;
