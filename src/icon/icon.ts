@@ -41,12 +41,11 @@ export default class Icon extends SuperComponent {
       const fontStyle = size ? { 'font-size': sizeValue } : {};
       this.setData({
         isImage,
-        iconStyle:
-          styles({
-            ...colorStyle,
-            ...fontStyle,
-            ...sizeStyle,
-          }) + customStyle,
+        iconStyle: `${styles({
+          ...colorStyle,
+          ...fontStyle,
+          ...sizeStyle,
+        })}${customStyle ? `;${customStyle}` : ''}`,
       });
     },
   };
