@@ -13,10 +13,9 @@
 <t-date-time-picker
   title="选择时间"
   visible="{{timeVisible}}"
-  mode="{{['null', 'second']}}"
+  mode="{{['null', 'minute']}}"
   value="{{time}}"
-  format="HH:mm:ss"
-  start="{{start}}"
+  format="HH:mm"
   bindchange="onConfirm"
   bindpick="onColumnChange"
   bindcancel="hidePicker"
