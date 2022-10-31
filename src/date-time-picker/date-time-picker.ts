@@ -15,10 +15,11 @@ enum ModeItem {
   DATE = 'date',
   HOUR = 'hour',
   MINUTE = 'minute',
+  SECOND = 'second',
 }
 
 const DATE_MODES = ['year', 'month', 'date'];
-const TIME_MODES = ['hour', 'minute'];
+const TIME_MODES = ['hour', 'minute', 'second'];
 const FULL_MODES = [...DATE_MODES, ...TIME_MODES];
 
 const DEFAULT_MIN_DATE: Dayjs = dayjs('2000-01-01 00:00:00');
@@ -111,44 +112,16 @@ export default class DateTimePicker extends SuperComponent {
       return end ? dayjs(end) : DEFAULT_MAX_DATE;
     },
 
-    getMinYear(): number {
-      return this.getMinDate().year();
-    },
+    getDateRect(type = 'default') {
+      const map = {
+        min: 'getMinDate',
+        max: 'getMaxDate',
+        default: 'getDate',
+      };
+      const date = this[map[type]]();
+      const keys = ['year', 'month', 'date', 'hour', 'minute', 'second'];
 
-    getMaxYear(): number {
-      return this.getMaxDate().year();
-    },
-
-    getMinMonth(): number {
-      return this.getMinDate().month();
-    },
-
-    getMaxMonth(): number {
-      return this.getMaxDate().month();
-    },
-
-    getMinDay(): number {
-      return this.getMinDate().date();
-    },
-
-    getMaxDay(): number {
-      return this.getMaxDate().date();
-    },
-
-    getMinHour(): number {
-      return this.getMinDate().hour();
-    },
-
-    getMaxHour(): number {
-      return this.getMaxDate().hour();
-    },
-
-    getMinMinute(): number {
-      return this.getMinDate().minute();
-    },
-
-    getMaxMinute(): number {
-      return this.getMaxDate().minute();
+      return keys.map((k) => date[k]?.());
     },
 
     getDate(): Dayjs {
@@ -182,70 +155,32 @@ export default class DateTimePicker extends SuperComponent {
 
     getColumnOptions() {
       const { fullModes } = this.data;
-      const dateParams = this.getCommonDateParams();
 
       const columnOptions = [];
       fullModes?.forEach((mode) => {
-        const columnOption = this.getOptionByType(mode, dateParams);
+        const columnOption = this.getOptionByType(mode);
         columnOptions.push(columnOption);
       });
 
       return columnOptions;
     },
 
-    getCommonDateParams() {
-      const date: Dayjs = this.getDate();
-      const selYear = date.year();
-      const selMonth = date.month();
-      const selDate = date.date();
-      const selHour = date.hour();
+    getOptionByType(type) {
+      const { locale } = this.data;
+      const options: ColumnItemValue[] = [];
 
-      const minDateYear = this.getMinYear();
-      const maxDateYear = this.getMaxYear();
-      const minDateMonth = this.getMinMonth();
-      const maxDateMonth = this.getMaxMonth();
-      const minDateDay = this.getMinDay();
-      const maxDateDay = this.getMaxDay();
+      const minEdge = this.getOptionEdge('min', type);
+      const maxEdge = this.getOptionEdge('max', type);
 
-      const minDateHour = this.getMinHour();
-      const maxDateHour = this.getMaxHour();
-      const minDateMinute = this.getMinMinute();
-      const maxDateMinute = this.getMaxMinute();
-
-      return {
-        date,
-        selYear,
-        selMonth,
-        selDate,
-        selHour,
-        minDateYear,
-        maxDateYear,
-        minDateMonth,
-        maxDateMonth,
-        minDateDay,
-        maxDateDay,
-        minDateHour,
-        maxDateHour,
-        minDateMinute,
-        maxDateMinute,
-      };
-    },
-
-    getOptionByType(type, dateParams) {
-      switch (type) {
-        case ModeItem.YEAR:
-          return this.getYearOptions(dateParams);
-        case ModeItem.MONTH:
-          return this.getMonthOptions(dateParams);
-        case ModeItem.DATE:
-          return this.getDayOptions(dateParams);
-        case ModeItem.HOUR:
-          return this.getHourOptions(dateParams);
-        case ModeItem.MINUTE:
-          return this.getMinuteOptions(dateParams);
-        default:
-          break;
+      for (let i = minEdge; i <= maxEdge; i += 1) {
+        const label = type === 'month' ? i + 1 : i;
+        options.push({
+          value: `${i}`,
+          label: `${label + locale[type]}`,
+        });
       }
+
+      return options;
     },
 
     getYearOptions(dateParams): ColumnItemValue[] {
@@ -262,20 +197,31 @@ export default class DateTimePicker extends SuperComponent {
       return years;
     },
 
-    getMonthOptions(dateParams): ColumnItemValue[] {
+    getOptionEdge(minOrMax: 'min' | 'max', type) {
+      const selDateArray = this.getDateRect();
+      const compareArray = this.getDateRect(minOrMax);
+      const edge = {
+        month: [0, 11],
+        date: [1, this.getDate().daysInMonth()],
+        hour: [0, 23],
+        minute: [0, 59],
+        second: [0, 59],
+      };
+      const types = ['year', 'month', 'date', 'hour', 'minute', 'second'];
+
+      for (let i = 0, size = selDateArray.length; i < size; i += 1) {
+        if (types[i] === type) return compareArray[i];
+        if (compareArray[i] !== selDateArray[i]) return edge[type][minOrMax === 'min' ? 0 : 1];
+      }
+      return edge[type][minOrMax === 'min' ? 0 : 1];
+    },
+
+    getMonthOptions(): ColumnItemValue[] {
       const { locale } = this.data;
-      const { minDateYear, maxDateYear, selYear, minDateMonth, maxDateMonth } = dateParams;
       const months: ColumnItemValue[] = [];
 
-      let minMonth = 0;
-      let maxMonth = 11;
-
-      if (minDateYear === selYear) {
-        minMonth = minDateMonth;
-      }
-      if (maxDateYear === selYear) {
-        maxMonth = maxDateMonth;
-      }
+      const minMonth = this.getOptionEdge('min', 'month');
+      const maxMonth = this.getOptionEdge('max', 'month');
 
       for (let i = minMonth; i <= maxMonth; i += 1) {
         months.push({
@@ -287,19 +233,12 @@ export default class DateTimePicker extends SuperComponent {
       return months;
     },
 
-    getDayOptions(dateParams): ColumnItemValue[] {
+    getDayOptions(): ColumnItemValue[] {
       const { locale } = this.data;
-      const { minDateYear, maxDateYear, minDateMonth, maxDateMonth, minDateDay, maxDateDay, selYear, selMonth, date } =
-        dateParams;
       const days: ColumnItemValue[] = [];
-      let minDay = 1;
-      let maxDay = date.daysInMonth();
-      if (minDateYear === selYear && minDateMonth === selMonth) {
-        minDay = minDateDay;
-      }
-      if (maxDateYear === selYear && maxDateMonth === selMonth) {
-        maxDay = maxDateDay;
-      }
+      const minDay = this.getOptionEdge('min', 'date');
+      const maxDay = this.getOptionEdge('max', 'date');
+
       for (let i = minDay; i <= maxDay; i += 1) {
         days.push({
           value: `${i}`,
@@ -310,31 +249,12 @@ export default class DateTimePicker extends SuperComponent {
       return days;
     },
 
-    getHourOptions(dateParams) {
+    getHourOptions() {
       const { locale } = this.data;
-      const {
-        minDateYear,
-        maxDateYear,
-        minDateMonth,
-        maxDateMonth,
-        minDateDay,
-        minDateHour,
-        maxDateDay,
-        maxDateHour,
-        selYear,
-        selMonth,
-        selDate,
-      } = dateParams;
-
       const hours: ColumnItemValue[] = [];
-      let minHour = 0;
-      let maxHour = 23;
-      if (minDateYear === selYear && minDateMonth === selMonth && minDateDay === selDate) {
-        minHour = minDateHour;
-      }
-      if (maxDateYear === selYear && maxDateMonth === selMonth && maxDateDay === selDate) {
-        maxHour = maxDateHour;
-      }
+      const minHour = this.getOptionEdge('min', 'hour');
+      const maxHour = this.getOptionEdge('max', 'hour');
+
       for (let i = minHour; i <= maxHour; i += 1) {
         hours.push({
           value: `${i}`,
@@ -345,36 +265,11 @@ export default class DateTimePicker extends SuperComponent {
       return hours;
     },
 
-    getMinuteOptions(dateParams) {
+    getMinuteOptions() {
       const { locale } = this.data;
-      const {
-        minDateYear,
-        maxDateYear,
-        minDateMonth,
-        maxDateMonth,
-        minDateDay,
-        maxDateDay,
-        minDateHour,
-        maxDateHour,
-        minDateMinute,
-        maxDateMinute,
-        selYear,
-        selMonth,
-        selDate,
-        selHour,
-      } = dateParams;
-
       const minutes: ColumnItemValue[] = [];
-      let minMinute = 0;
-      let maxMinute = 59;
-
-      if (minDateYear === selYear && minDateMonth === selMonth && minDateDay === selDate && minDateHour === selHour) {
-        minMinute = minDateMinute;
-      }
-
-      if (maxDateYear === selYear && maxDateMonth === selMonth && maxDateDay === selDate && maxDateHour === selHour) {
-        maxMinute = maxDateMinute;
-      }
+      const minMinute = this.getOptionEdge('min', 'minute');
+      const maxMinute = this.getOptionEdge('max', 'minute');
 
       for (let i = minMinute; i <= maxMinute; i += 1) {
         minutes.push({
@@ -424,6 +319,9 @@ export default class DateTimePicker extends SuperComponent {
           break;
         case ModeItem.MINUTE:
           newValue = newValue.minute(value);
+          break;
+        case ModeItem.SECOND:
+          newValue = newValue.second(value);
           break;
         default:
           break;
