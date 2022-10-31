@@ -6,8 +6,8 @@
     "scroll": "./scroll",
     "size": "./size",
     "status": "./status",
-    "unline": "./unline",
-    "vertical": "./vertical",
-    "adjust-time": "./adjust-time"
+    "with-badge": "./with-badge",
+    "theme": "./theme",
+    "with-content": "./with-content"
   }
 }

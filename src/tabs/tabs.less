@@ -2,7 +2,7 @@
 
 @tab-nav-background-color: #fff;
 
-@tab-item-height--horizontal: 92rpx;
+@tab-item-height--horizontal: 96rpx;
 @tab-item-height--vertical: 108rpx;
 @tab-item-width--vertical: 208rpx;
 
@@ -13,7 +13,13 @@
 
 // track
 @tab-track-color: @primary-color;
-@tab-track-thickness: 4rpx;
+@tab-track-thickness: 6rpx;
+@tab-track-width: 32rpx;
+@tab-track-radius: 8rpx;
+
+// theme = tag
+@tab-item-height--tag: 64rpx;
+@tab-item-background--tag: @primary-color-1;
 
 page {
   --td-tab-nav-bg-color: @tab-nav-background-color;
@@ -21,23 +27,29 @@ page {
   --td-tab-item-active-color: @tab-item-active-color;
   --td-tab-item-disabled-color: @tab-item-disabled-color;
   --td-tab-track-color: @tab-track-color;
+  --td-tab-track-width: @tab-track-width;
   --td-tab-track-thickness: @tab-track-thickness;
+  --td-tab-track-radius: @tab-track-radius;
   --td-tab-border-color: @tab-border-color;
 }
 
 .@{prefix}-tabs {
   position: relative;
+  font-size: 28rpx;
+  background: var(--td-tab-nav-bg-color, @tab-nav-background-color);
 
   &__wrapper {
     display: flex;
     overflow: hidden;
+    background: var(--td-tab-nav-bg-color, @tab-nav-background-color);
+
+    &--card {
+      background: @gray-color-1;
+    }
   }
 
-  font-size: 28rpx;
-  background-color: #fff;
-
   .@{prefix}-is-active {
-    font-weight: 700;
+    font-weight: 600;
     color: var(--td-tab-item-active-color, @tab-item-active-color);
   }
 
@@ -46,21 +58,24 @@ page {
   }
 
   &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1;
     font-weight: 400;
     color: var(--td-tab-item-color, @tab-item-color);
+    padding: 16rpx;
+    box-sizing: border-box;
 
     &--top,
     &--bottom {
       height: @tab-item-height--horizontal;
-      line-height: @tab-item-height--horizontal;
-      text-align: center;
-      min-width: 162rpx;
+      min-width: 112rpx;
     }
 
     &--left,
     &--right {
-      text-align: center;
       height: @tab-item-height--vertical;
       line-height: @tab-item-height--vertical;
       width: @tab-item-width--vertical;
@@ -68,6 +83,41 @@ page {
 
       &.@{prefix}-is-active {
         background-color: #fff;
+      }
+    }
+
+    &-inner {
+      &--tag {
+        width: 100%;
+        text-align: center;
+        line-height: @tab-item-height--tag;
+        border-radius: (@tab-item-height--tag / 2);
+        background-color: @tab-item-background--tag;
+      }
+    }
+
+    &--card {
+      &.@{prefix}-is-active {
+        background-color: @bg-color-block;
+        border-radius: 0 18rpx 0 0;
+      }
+    }
+
+    &-tail {
+      position: absolute;
+      bottom: 0;
+      right: -36rpx;
+      width: 36rpx;
+      height: 36rpx;
+      background: #fff;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: @gray-color-1;
+        border-radius: 0 0 0 18rpx;
       }
     }
   }
@@ -108,6 +158,15 @@ page {
       top: 0;
       width: var(--td-tab-track-thickness, @tab-track-thickness);
     }
+
+    &--top,
+    &--bottom {
+      left: 0;
+      bottom: 0;
+      width: var(--td-tab-track-width, @tab-track-width);
+      height: var(--td-tab-track-thickness, @tab-track-thickness);
+      border-radius: var(--td-tab-track-radius, @tab-track-radius);
+    }
   }
 
   &__scroll {
@@ -115,15 +174,26 @@ page {
     &--bottom {
       height: @tab-item-height--horizontal;
       position: relative;
-      background-color: var(--td-tab-nav-bg-color, @tab-nav-background-color);
 
       &::after {
         content: '';
       }
     }
+
     &--top {
-      border-bottom: solid 1rpx var(--td-tab-border-color, @tab-border-color);
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--td-tab-border-color, @tab-border-color);
+        transform: scaleY(0.5);
+      }
     }
+
     &--left,
     &--right {
       width: @tab-item-width--vertical;
@@ -145,12 +215,6 @@ page {
       height: 100%;
       display: flex;
       transition-property: transform;
-    }
-
-    .@{prefix}-tabs__track {
-      left: 0;
-      bottom: 0;
-      height: var(--td-tab-track-thickness, @tab-track-thickness);
     }
 
     .@{prefix}-tabs__content {

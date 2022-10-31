@@ -1,26 +1,25 @@
 <view class="demo">
   <view class="demo-title">Tabs 选项卡</view>
   <view class="demo-desc">用于内容分类后的展示切换。</view>
-  <t-demo title="01 类型" desc="横向选项卡">
+  <t-demo title="01 组件类型" desc="横向选项卡">
     <base />
   </t-demo>
-
   <t-demo desc="超过屏幕滑动">
     <scroll />
   </t-demo>
-  <t-demo desc="无下划线">
-    <unline />
+  <t-demo desc="带徽章选项卡">
+    <with-badge />
   </t-demo>
-  <t-demo desc="动画时间可调整">
-    <adjust-time />
+  <t-demo desc="带内容区选项卡">
+    <with-content />
   </t-demo>
-  <t-demo title="02 状态" desc="选项卡状态">
+  <t-demo title="02 组件状态" desc="选项卡状态">
     <status />
   </t-demo>
-  <t-demo title="03 特殊类型" desc="竖向选项卡">
-    <vertical />
-  </t-demo>
-  <t-demo title="04 规格" desc="选中态文字尺寸规格">
+  <t-demo title="03 组件样式" desc="选项卡尺寸">
     <size />
+  </t-demo>
+  <t-demo desc="选项卡样式">
+    <theme />
   </t-demo>
 </view>
