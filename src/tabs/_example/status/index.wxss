@@ -1,7 +1,0 @@
-.custom-tabs t-tab-panel {
-  text-align: center;
-  justify-content: center;
-  height: 172rpx;
-  line-height: 172rpx;
-  color: rgba(0, 0, 0, 0.26);
-}

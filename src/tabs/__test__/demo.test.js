@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['adjust-time', 'base', 'scroll', 'size', 'status', 'unline', 'vertical'];
+const mapper = ['base', 'scroll', 'size', 'status', 'theme', 'vertical', 'with-badge', 'with-content'];
 
 describe('Tabs', () => {
   mapper.forEach((demoName) => {

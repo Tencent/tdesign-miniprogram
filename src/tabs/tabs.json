@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "t-sticky": "../sticky/sticky"
+    "t-sticky": "../sticky/sticky",
+    "t-badge": "../badge/badge"
   }
 }

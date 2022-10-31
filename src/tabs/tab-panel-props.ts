@@ -6,6 +6,11 @@
 
 import { TdTabPanelProps } from './type';
 const props: TdTabPanelProps = {
+  /** 透传至 Badge 组件 */
+  badgeProps: {
+    type: Object,
+    value: null,
+  },
   /** 选项卡内容隐藏时是否销毁 */
   destroyOnHide: {
     type: Boolean,

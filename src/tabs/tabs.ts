@@ -13,7 +13,6 @@ enum Position {
   bottom = 'bottom',
   left = 'left',
 }
-const trackLineWidth = 30;
 @wxComponent()
 export default class Tabs extends SuperComponent {
   behaviors = [dom, touch];
@@ -83,8 +82,8 @@ export default class Tabs extends SuperComponent {
     });
 
     this.adjustPlacement();
-    this.gettingBoundingClientRect(`.${name}`, true).then((res: any) => {
-      this.containerWidth = res[0].width;
+    this.gettingBoundingClientRect(`.${name}`).then((res: any) => {
+      this.containerWidth = res.width;
     });
   }
 
@@ -109,12 +108,9 @@ export default class Tabs extends SuperComponent {
 
   updateTabs(cb) {
     const { children } = this;
-    this.setData(
-      {
-        tabs: children.map((child: any) => child.data),
-      },
-      cb,
-    );
+    const tabs = children.map((child: any) => child.data);
+
+    this.setData({ tabs }, cb);
     this.setCurrentIndexByName(this.properties.value);
   }
 
@@ -160,53 +156,71 @@ export default class Tabs extends SuperComponent {
     return currentIndex * targetWidth - (1 / 2) * containerWidth + targetWidth / 2;
   }
 
-  setTrack() {
+  getTrackSize() {
+    return new Promise<number>((resolve) => {
+      if (this.trackWidth) {
+        resolve(this.trackWidth);
+        return;
+      }
+      this.gettingBoundingClientRect(`.${prefix}-tabs__track`).then((res) => {
+        if (res) {
+          this.trackWidth = res.width;
+          resolve(this.trackWidth);
+        }
+      });
+    });
+  }
+
+  async setTrack() {
     if (!this.properties.showBottomLine) return;
     const { children } = this;
     if (!children) return;
     const { currentIndex, isScrollX, direction } = this.data;
     if (currentIndex <= -1) return;
-    this.gettingBoundingClientRect(`.${prefix}-tabs__item`, true)
-      .then((res: any) => {
-        const rect = res[currentIndex];
-        if (!rect) return;
-        let count = 0;
-        let distance = 0;
-        // eslint-disable-next-line no-restricted-syntax
-        for (const item of res) {
-          if (count < currentIndex) {
-            distance += isScrollX ? item.width : item.height;
-            count += 1;
-          }
-        }
 
-        if (this.containerWidth) {
-          const offset = this.calcScrollOffset(
-            this.containerWidth,
-            rect.left,
-            rect.width,
-            this.data.offset,
-            currentIndex,
-          );
-          this.setData({
-            offset,
-          });
+    try {
+      const res = await this.gettingBoundingClientRect(`.${prefix}-tabs__item`, true);
+      const rect = res[currentIndex];
+      if (!rect) return;
+      let count = 0;
+      let distance = 0;
+      // eslint-disable-next-line no-restricted-syntax
+      for (const item of res) {
+        if (count < currentIndex) {
+          distance += isScrollX ? item.width : item.height;
+          count += 1;
         }
+      }
 
-        if (isScrollX) {
-          distance += (rect.width - trackLineWidth) / 2;
-        }
-        let trackStyle = `-webkit-transform: translate${direction}(${distance}px);
+      if (this.containerWidth) {
+        const offset = this.calcScrollOffset(
+          this.containerWidth,
+          rect.left,
+          rect.width,
+          this.data.offset,
+          currentIndex,
+        );
+        this.setData({
+          offset,
+        });
+      }
+
+      if (isScrollX) {
+        const trackLineWidth = await this.getTrackSize();
+        distance += (rect.width - trackLineWidth) / 2;
+      }
+      let trackStyle = `-webkit-transform: translate${direction}(${distance}px);
         transform: translate${direction}(${distance}px);
       `;
-        trackStyle += isScrollX ? `width: ${trackLineWidth}px;` : `height: ${rect.height}px;`;
-        this.setData({
-          trackStyle,
-        });
-      })
-      .catch((err) => {
-        this.triggerEvent('error', err);
+      if (!isScrollX) {
+        trackStyle += `height: ${rect.height}px;`;
+      }
+      this.setData({
+        trackStyle,
       });
+    } catch (err) {
+      this.triggerEvent('error', err);
+    }
   }
 
   onTabTap(event: any) {
