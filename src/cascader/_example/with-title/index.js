@@ -1,4 +1,4 @@
-export default {
+const data = {
   areaList: [
     {
       label: '北京市',
@@ -58,3 +58,24 @@ export default {
     },
   ],
 };
+
+Component({
+  data: {
+    options: data.areaList,
+    note: '请选择地址',
+    visible: false,
+    subTitles: ['请选择省份', '请选择城市', '请选择区/县'],
+  },
+  methods: {
+    showCascader() {
+      this.setData({ visible: true });
+    },
+    onChange(e) {
+      const { selectedOptions } = e.detail;
+
+      this.setData({
+        note: selectedOptions.map((item) => item.label).join('/'),
+      });
+    },
+  },
+});
