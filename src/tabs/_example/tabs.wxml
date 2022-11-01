@@ -1,7 +1,7 @@
 <view class="demo">
   <view class="demo-title">Tabs 选项卡</view>
   <view class="demo-desc">用于内容分类后的展示切换。</view>
-  <t-demo title="01 组件类型" desc="横向选项卡">
+  <t-demo title="01 组件类型" desc="基础选项卡">
     <base />
   </t-demo>
   <t-demo desc="等距选项卡">
