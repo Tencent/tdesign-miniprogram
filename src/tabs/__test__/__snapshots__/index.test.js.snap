@@ -8,71 +8,85 @@ exports[`tabs :base 1`] = `
     class="t-tabs t-tabs--left t-class"
   >
     <t-sticky
-      container=""
-      disabled="{{false}}"
-      offsetTop=""
       tClass="t-tabs__sticky t-tabs__sticky--left"
-      zIndex="{{2}}"
       bind:scroll="onTouchScroll"
     >
       <wx-view
-        class="t-tabs__wrapper"
+        class=".t-sticky t-class"
+        style="z-index:2;height:0px;"
       >
-        <wx-scroll-view
-          class="t-tabs__scroll t-tabs__scroll--left"
-          enableFlex="{{true}}"
-          scrollLeft="{{0}}"
-          scrollWithAnimation="{{true}}"
-          scrollX="{{false}}"
-          scrollY="{{true}}"
+        <wx-view
+          class=".t-sticky__content"
+          style="z-index:2;position:fixed;top:0px"
         >
           <wx-view
-            class="t-tabs__nav t-tabs__nav--left"
+            class="t-tabs__wrapper  t-tabs__wrapper--line"
           >
-            <wx-view
-              class="t-tabs__item t-tabs__item--left t-class-item  t-is-active t-class-active"
-              data-index="{{0}}"
-              bind:tap="onTabTap"
+            <wx-scroll-view
+              class="t-tabs__scroll t-tabs__scroll--left"
+              enableFlex="{{true}}"
+              scrollLeft="{{0}}"
+              scrollWithAnimation="{{true}}"
+              scrollX="{{false}}"
+              scrollY="{{true}}"
             >
-              
-            标签页一
-          
-            </wx-view>
-            <wx-view
-              class="t-tabs__item t-tabs__item--left t-class-item  "
-              data-index="{{1}}"
-              bind:tap="onTabTap"
-            >
-              
-            label1
-          
-            </wx-view>
-            <wx-view
-              class="t-tabs__item t-tabs__item--left t-class-item  "
-              data-index="{{2}}"
-              bind:tap="onTabTap"
-            >
-              
-            label2
-          
-            </wx-view>
-            <wx-view
-              class="t-tabs__item t-tabs__item--left t-class-item  "
-              data-index="{{3}}"
-              bind:tap="onTabTap"
-            >
-              
-            label3
-          
-            </wx-view>
-            <wx-view
-              class="t-tabs__track t-tabs__track--left t-class-track"
-              style="-webkit-transform: translateX(-15px);
-        transform: translateX(-15px);
-      width: 30px;"
-            />
+              <wx-view
+                class="t-tabs__nav t-tabs__nav--left"
+              >
+                <wx-view
+                  class="t-tabs__item t-tabs__item--line t-tabs__item--left t-class-item  t-is-active t-class-active"
+                  data-index="{{0}}"
+                  bind:tap="onTabTap"
+                >
+                  <wx-view
+                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                  >
+                    标签页一
+                  </wx-view>
+                </wx-view>
+                <wx-view
+                  class="t-tabs__item t-tabs__item--line t-tabs__item--left t-class-item  "
+                  data-index="{{1}}"
+                  bind:tap="onTabTap"
+                >
+                  <wx-view
+                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                  >
+                    label1
+                  </wx-view>
+                </wx-view>
+                <wx-view
+                  class="t-tabs__item t-tabs__item--line t-tabs__item--left t-class-item  "
+                  data-index="{{2}}"
+                  bind:tap="onTabTap"
+                >
+                  <wx-view
+                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                  >
+                    label2
+                  </wx-view>
+                </wx-view>
+                <wx-view
+                  class="t-tabs__item t-tabs__item--line t-tabs__item--left t-class-item  "
+                  data-index="{{3}}"
+                  bind:tap="onTabTap"
+                >
+                  <wx-view
+                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                  >
+                    label3
+                  </wx-view>
+                </wx-view>
+                <wx-view
+                  class="t-tabs__track t-tabs__track--left t-class-track"
+                  style="-webkit-transform: translateX(0px);
+        transform: translateX(0px);
+      "
+                />
+              </wx-view>
+            </wx-scroll-view>
           </wx-view>
-        </wx-scroll-view>
+        </wx-view>
       </wx-view>
     </t-sticky>
     <wx-view

@@ -1,9 +1,10 @@
 export default {
   year: '',
   month: '',
-  day: '',
+  date: '',
   hour: '',
   minute: '',
+  second: '',
   am: 'AM',
   pm: 'PM',
   confirm: 'confirm',

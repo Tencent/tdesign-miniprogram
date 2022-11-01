@@ -17,6 +17,20 @@ isComponent: true
 }
 ```
 
+### 主题定制
+
+CSS 变量名|说明
+--|--
+--td-radio-bg-color | 背景颜色
+--td-radio-border-color | 底部边框颜色
+--td-radio-label-color | 主文案颜色
+--td-radio-label-disabled-color | 禁用态主文案颜色
+--td-radio-content-color | 单选内容颜色
+--td-radio-content-disabled-color | 禁用态单选内容颜色
+--td-radio-icon-color | 图标颜色
+--td-radio-icon-checked-color | 选中态图标颜色
+--td-radio-icon-disabled-color | 禁用态图标颜色
+
 ## 代码演示
 
 ### 单个单选框
@@ -73,7 +87,6 @@ align | String | left | 复选框和内容相对位置。可选项：left/right 
 allow-uncheck | Boolean | false | 【开发中】是否允许取消选中 | N
 checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
-color | String | #0052d9 | 单选按钮颜色 | N
 content | String / Slot | - | 单选内容 | N
 content-disabled | Boolean | false | 是否禁用组件内容（content）触发选中 | N
 disabled | Boolean | undefined | 是否为禁用态 | N

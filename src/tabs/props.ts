@@ -38,6 +38,11 @@ const props: TdTabsProps = {
     type: Boolean,
     value: true,
   },
+  /** 标签的样式 */
+  theme: {
+    type: String,
+    value: 'line',
+  },
   /** 激活的选项卡值 */
   value: {
     type: null,

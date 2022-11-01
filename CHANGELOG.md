@@ -5,6 +5,26 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.24.0 `2022-10-31` 
+### ❗️BREAKING CHANGES
+- `Radio`: 移除 color 属性，使用 CSS Variable 替代 @anlyyao ([#944](https://github.com/Tencent/tdesign-miniprogram/pull/944))
+
+### 🚀 Features
+- `Tabs`: 视觉全新升级 @LeeJim ([#957](https://github.com/Tencent/tdesign-miniprogram/pull/957))
+- `Tabs`: 新增 theme 属性，支持 line/tag/card @LeeJim ([#957](https://github.com/Tencent/tdesign-miniprogram/pull/957))
+- `Tabs`: 新增 CSS Variables，用于调整滑块尺寸 @LeeJim ([#957](https://github.com/Tencent/tdesign-miniprogram/pull/957))
+- `TabPanel`: 新增 badgeProps 属性，支持使用徽章 @LeeJim ([#957](https://github.com/Tencent/tdesign-miniprogram/pull/957))
+- `CheckTag`:  支持外部样式类 @anlyyao ([#945](https://github.com/Tencent/tdesign-miniprogram/pull/945))
+- `Radio`: 新增 CSS Variable 调整文案、图标等颜色，具体查看文档 @anlyyao ([#944](https://github.com/Tencent/tdesign-miniprogram/pull/944))
+
+### 🐞 Bug Fixes
+- `Popup`: 阻止内容区域滑动穿透 @LeeJim ([#943](https://github.com/Tencent/tdesign-miniprogram/pull/943))
+- `Cascader`: 调整 `usingComponents` 中的绝对路径为相对路径 @miauyo ([#938](https://github.com/Tencent/tdesign-miniprogram/pull/938))
+- `Icon`: 修复 customStyle 属性无效的问题 @anlyyao ([#950](https://github.com/Tencent/tdesign-miniprogram/pull/950))
+- `DateTimePicker`: 修复 mode = second 不生效的问题 @LeeJim ([#952](https://github.com/Tencent/tdesign-miniprogram/pull/952))
+### 🚧 Others
+- `Textarea`: 修复 "带标题多行文本框" 示例不显示 @anlyyao ([#937](https://github.com/Tencent/tdesign-miniprogram/pull/937))
+
 ## 🌈 0.23.1 `2022-10-24` 
 ### 🐞 Bug Fixes
 

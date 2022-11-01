@@ -61,6 +61,14 @@ export interface TdTabsProps {
     value?: boolean;
   };
   /**
+   * 标签的样式
+   * @default 'line'
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'line' | 'tag' | 'card';
+  };
+  /**
    * 激活的选项卡值
    */
   value?: {
@@ -77,6 +85,14 @@ export interface TdTabsProps {
 }
 
 export interface TdTabPanelProps {
+  /**
+   * 透传至 Badge 组件
+   * @default {}
+   */
+  badgeProps?: {
+    type: ObjectConstructor;
+    value?: object;
+  };
   /**
    * 选项卡内容隐藏时是否销毁
    * @default true

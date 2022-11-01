@@ -1,3 +1,4 @@
+<import src="../common/template/badge.wxml" />
 <wxs src="./tabs.wxs" module="filters" />
 
 <view class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
@@ -9,7 +10,7 @@
     container="{{ stickyProps.container }}"
     bind:scroll="onTouchScroll"
   >
-    <view class="{{classPrefix}}__wrapper">
+    <view class="{{classPrefix}}__wrapper  {{classPrefix}}__wrapper--{{theme}}">
       <scroll-view
         class="{{classPrefix}}__scroll {{classPrefix}}__scroll--{{placement}}"
         enable-flex
@@ -23,12 +24,19 @@
             wx:for="{{tabs}}"
             wx:key="index"
             data-index="{{index}}"
-            class="{{classPrefix}}__item {{classPrefix}}__item--{{placement}} {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
+            class="{{classPrefix}}__item {{classPrefix}}__item--{{theme}} {{classPrefix}}__item--{{placement}} {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
             bind:tap="onTabTap"
           >
-            {{item.label}}
+            <view class="{{classPrefix}}__item-inner {{classPrefix}}__item-inner--{{theme}}">
+              <block wx:if="{{item.badgeProps}}">
+                <template is="badge" data="{{ ...item.badgeProps, content: item.label }}" />
+              </block>
+              <block wx:else>{{item.label}}</block>
+            </view>
+            <view wx:if="{{theme == 'card' && currentIndex == index}}" class="{{classPrefix}}__item-tail"></view>
           </view>
           <view
+            wx:if="{{theme == 'line' && showBottomLine}}"
             class="{{classPrefix}}__track {{classPrefix}}__track--{{placement}} {{prefix}}-class-track"
             style="{{trackStyle}}"
           />

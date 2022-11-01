@@ -47,6 +47,8 @@ export default class Popup extends SuperComponent {
       });
     },
 
+    onStopPropagation() {},
+
     handleOverlayClick() {
       const { closeOnOverlayClick } = this.properties;
       if (closeOnOverlayClick) {
