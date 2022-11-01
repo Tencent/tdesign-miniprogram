@@ -21,6 +21,24 @@ isComponent: true
 
 {{ base }}
 
+### 选项卡风格
+
+{{ theme-tab }}
+
+### 进阶
+
+#### 带初始值
+
+{{ with-value }}
+
+#### 自定义 keys
+
+{{ keys }}
+
+#### 使用次级标题
+
+{{ with-title }}
+
 ## API
 ### Cascader Props
 
