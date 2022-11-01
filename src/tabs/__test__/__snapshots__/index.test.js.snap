@@ -34,45 +34,45 @@ exports[`tabs :base 1`] = `
                 class="t-tabs__nav t-tabs__nav--left"
               >
                 <wx-view
-                  class="t-tabs__item t-tabs__item--line t-tabs__item--left t-class-item  t-is-active t-class-active"
+                  class="t-tabs__item t-tabs__item--line t-tabs__item--evenly t-tabs__item--left t-class-item  t-is-active t-class-active"
                   data-index="{{0}}"
                   bind:tap="onTabTap"
                 >
                   <wx-view
-                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                    class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--active"
                   >
                     标签页一
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  class="t-tabs__item t-tabs__item--line t-tabs__item--left t-class-item  "
+                  class="t-tabs__item t-tabs__item--line t-tabs__item--evenly t-tabs__item--left t-class-item  "
                   data-index="{{1}}"
                   bind:tap="onTabTap"
                 >
                   <wx-view
-                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                    class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--"
                   >
                     label1
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  class="t-tabs__item t-tabs__item--line t-tabs__item--left t-class-item  "
+                  class="t-tabs__item t-tabs__item--line t-tabs__item--evenly t-tabs__item--left t-class-item  "
                   data-index="{{2}}"
                   bind:tap="onTabTap"
                 >
                   <wx-view
-                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                    class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--"
                   >
                     label2
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  class="t-tabs__item t-tabs__item--line t-tabs__item--left t-class-item  "
+                  class="t-tabs__item t-tabs__item--line t-tabs__item--evenly t-tabs__item--left t-class-item  "
                   data-index="{{3}}"
                   bind:tap="onTabTap"
                 >
                   <wx-view
-                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                    class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--"
                   >
                     label3
                   </wx-view>

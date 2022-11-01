@@ -24,6 +24,11 @@ const props: TdTabsProps = {
     type: Boolean,
     value: true,
   },
+  /** 选项卡头部空间是否均分 */
+  spaceEvenly: {
+    type: Boolean,
+    value: true,
+  },
   /** 是否开启粘性布局 */
   sticky: {
     type: Boolean,
