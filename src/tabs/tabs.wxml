@@ -27,16 +27,22 @@
             class="{{classPrefix}}__item {{classPrefix}}__item--{{theme}} {{classPrefix}}__item--{{spaceEvenly ? 'evenly' : ''}} {{classPrefix}}__item--{{placement}} {{prefix}}-class-item {{item.disabled ? (prefix + '-is-disabled') : '' }} {{currentIndex === index ? prefix + '-is-active ' + prefix + '-class-active' : ''}}"
             bind:tap="onTabTap"
           >
-            <view class="{{classPrefix}}__item-inner {{classPrefix}}__item-inner--{{theme}}">
+            <view
+              class="{{classPrefix}}__item-inner {{classPrefix}}__item-inner--{{theme}} {{classPrefix}}__item-inner--{{currentIndex === index ? 'active' : ''}}"
+            >
               <block wx:if="{{item.badgeProps}}">
                 <template is="badge" data="{{ ...item.badgeProps, content: item.label }}" />
               </block>
               <block wx:else>{{item.label}}</block>
             </view>
             <view
+              wx:if="{{theme == 'card' && currentIndex == index && index != 0}}"
+              class="{{classPrefix}}__item-prefix"
+            />
+            <view
               wx:if="{{theme == 'card' && currentIndex == index && index != tabs.length - 1}}"
-              class="{{classPrefix}}__item-tail"
-            ></view>
+              class="{{classPrefix}}__item-suffix"
+            />
           </view>
           <view
             wx:if="{{theme == 'line' && showBottomLine}}"
