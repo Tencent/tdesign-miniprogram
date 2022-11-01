@@ -39,7 +39,7 @@ exports[`tabs :base 1`] = `
                   bind:tap="onTabTap"
                 >
                   <wx-view
-                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                    class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--active"
                   >
                     标签页一
                   </wx-view>
@@ -50,7 +50,7 @@ exports[`tabs :base 1`] = `
                   bind:tap="onTabTap"
                 >
                   <wx-view
-                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                    class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--"
                   >
                     label1
                   </wx-view>
@@ -61,7 +61,7 @@ exports[`tabs :base 1`] = `
                   bind:tap="onTabTap"
                 >
                   <wx-view
-                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                    class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--"
                   >
                     label2
                   </wx-view>
@@ -72,7 +72,7 @@ exports[`tabs :base 1`] = `
                   bind:tap="onTabTap"
                 >
                   <wx-view
-                    class="t-tabs__item-inner t-tabs__item-inner--line"
+                    class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--"
                   >
                     label3
                   </wx-view>
