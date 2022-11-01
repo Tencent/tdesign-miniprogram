@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "base": "./base",
+    "theme-tab": "./theme-tab",
     "keys": "./keys",
     "with-value": "./with-value",
     "with-title": "./with-title"

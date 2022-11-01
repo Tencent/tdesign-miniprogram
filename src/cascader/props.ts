@@ -30,6 +30,11 @@ const props: TdCascaderProps = {
     type: Array,
     value: [],
   },
+  /** 展示风格 */
+  theme: {
+    type: String,
+    value: 'step',
+  },
   /** 标题 */
   title: {
     type: String,

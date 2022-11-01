@@ -9,17 +9,24 @@
       <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
     </view>
     <view class="{{name}}__content">
-      <view wx:if="{{steps && steps.length}}" class="{{name}}__steps">
-        <view wx:for="{{steps}}" wx:key="index" class="{{name}}__step" bind:tap="onStepClick" data-index="{{index}}">
-          <view
-            class="{{name}}__step-dot {{name}}__step-dot--{{item !== defaultOptionLabel ? 'active' : ''}} {{name}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
-          ></view>
-          <view class="{{name}}__step-label {{name}}__step-label--{{index === stepIndex ? 'active' : ''}}">
-            {{ item }}
+      <block wx:if="{{steps && steps.length}}">
+        <view wx:if="{{theme == 'step'}}" class="{{name}}__steps">
+          <view wx:for="{{steps}}" wx:key="index" class="{{name}}__step" bind:tap="onStepClick" data-index="{{index}}">
+            <view
+              class="{{name}}__step-dot {{name}}__step-dot--{{item !== defaultOptionLabel ? 'active' : ''}} {{name}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
+            ></view>
+            <view class="{{name}}__step-label {{name}}__step-label--{{index === stepIndex ? 'active' : ''}}">
+              {{ item }}
+            </view>
+            <t-icon name="chevron-right" size="22" class="{{name}}__step-arrow" />
           </view>
-          <t-icon name="chevron-right" size="22" class="{{name}}__step-arrow" />
         </view>
-      </view>
+        <block wx:if="{{theme == 'tab'}}">
+          <t-tabs value="{{stepIndex}}" bind:change="onTabChange">
+            <t-tab-panel wx:for="{{steps}}" wx:key="index" value="{{index}}" label="{{item}}" />
+          </t-tabs>
+        </block>
+      </block>
       <view wx:if="{{ subTitles && subTitles[stepIndex] }}" class="{{name}}__options-title"
         >{{subTitles[stepIndex]}}</view
       >

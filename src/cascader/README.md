@@ -31,6 +31,7 @@ keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段�
 options | Array | [] | 可选项数据源。TS 类型：`Array<CascaderOption>` | N
 style | String | - | 自定义组件样式 | N
 sub-titles | Array | [] | 每级展示的次标题。TS 类型：`Array<string>` | N
+theme | String | 'step' | 展示风格。可选项：step/tab | N
 title | String / Slot | - | 标题 | N
 value | String / Number | null | 选项值 | N
 default-value | String / Number | undefined | 选项值。非受控属性 | N

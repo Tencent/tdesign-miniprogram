@@ -10,6 +10,7 @@ keys | Object | - | Typescript：`KeysType` | N
 options | Array | [] | Typescript：`Array<CascaderOption>` | N
 style | String | - | \- | N
 sub-titles | Array | [] | Typescript：`Array<string>` | N
+theme | String | 'step' | options：step/tab | N
 title | String / Slot | - | \- | N
 value | String / Number | null | \- | N
 default-value | String / Number | undefined | uncontrolled property | N

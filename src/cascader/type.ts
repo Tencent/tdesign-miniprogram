@@ -47,6 +47,14 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
     value?: Array<string>;
   };
   /**
+   * 展示风格
+   * @default 'step'
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'step' | 'tab';
+  };
+  /**
    * 标题
    */
   title?: {

@@ -28,6 +28,9 @@ export default class Cascader extends SuperComponent {
   };
 
   observers = {
+    value() {
+      this.initWithValue();
+    },
     options() {
       this.setData({
         items: [this.data.options],
@@ -59,21 +62,25 @@ export default class Cascader extends SuperComponent {
         steps,
         items,
         selectedValue,
+        stepIndex: items.length - 1,
       });
     },
   };
 
   lifetimes = {
     ready() {
+      this.initWithValue();
+    },
+  };
+
+  methods = {
+    initWithValue() {
       if (this.data.value != null) {
         const selectedIndexes = this.getIndexesByValue(this.data.options, this.data.value);
 
         this.setData({ selectedIndexes });
       }
     },
-  };
-
-  methods = {
     getIndexesByValue(options: OptionsType, value) {
       const { keys } = this.data;
 
@@ -98,17 +105,17 @@ export default class Cascader extends SuperComponent {
 
       this.setData({ stepIndex: index });
     },
-    onSwiperChange(e) {
-      const { current } = e.detail;
+    onTabChange(e) {
+      const { value } = e.detail;
 
       this.setData({
-        stepIndex: current,
+        stepIndex: value,
       });
     },
     handleSelect(e) {
       const { level } = e.target.dataset;
       const { value } = e.detail;
-      const { selectedIndexes, items, stepIndex, keys } = this.data;
+      const { selectedIndexes, items, keys } = this.data;
       const index = items[level].findIndex((item) => item[keys?.value ?? 'value'] === value);
       const item = items[level][index];
 
@@ -121,9 +128,7 @@ export default class Cascader extends SuperComponent {
       this.triggerEvent('pick', item[keys?.value ?? 'value'], index);
 
       if (item?.[keys?.children ?? 'children']?.length) {
-        this.setData({ selectedIndexes }, () => {
-          this.setData({ stepIndex: stepIndex + 1 });
-        });
+        this.setData({ selectedIndexes });
       } else {
         // setCascaderValue(item.value);
         this.setData({ selectedIndexes }, () => {
