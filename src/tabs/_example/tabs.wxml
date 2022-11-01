@@ -4,7 +4,7 @@
   <t-demo title="01 组件类型" desc="横向选项卡">
     <base />
   </t-demo>
-  <t-demo desc="超过屏幕滑动">
+  <t-demo desc="等距选项卡">
     <scroll />
   </t-demo>
   <t-demo desc="带徽章选项卡">

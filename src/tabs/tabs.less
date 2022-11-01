@@ -60,18 +60,21 @@ page {
   &__item {
     position: relative;
     display: flex;
+    flex: none;
     align-items: center;
     justify-content: center;
-    flex: 1;
     font-weight: 400;
     color: var(--td-tab-item-color, @tab-item-color);
-    padding: 16rpx;
+    padding: 0 28rpx;
     box-sizing: border-box;
+
+    &--evenly {
+      flex: 1;
+    }
 
     &--top,
     &--bottom {
       height: @tab-item-height--horizontal;
-      min-width: 112rpx;
     }
 
     &--left,
@@ -90,13 +93,23 @@ page {
       &--tag {
         width: 100%;
         text-align: center;
+        padding: 0 32rpx;
         line-height: @tab-item-height--tag;
         border-radius: (@tab-item-height--tag / 2);
         background-color: @tab-item-background--tag;
       }
     }
 
+    &--tag {
+      padding: 0 8rpx;
+
+      &:first-child {
+        margin-left: 24rpx;
+      }
+    }
+
     &--card {
+      padding: 0 48rpx;
       &.@{prefix}-is-active {
         background-color: @bg-color-block;
         border-radius: 0 18rpx 0 0;

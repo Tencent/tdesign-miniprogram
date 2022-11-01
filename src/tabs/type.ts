@@ -38,6 +38,14 @@ export interface TdTabsProps {
     value?: boolean;
   };
   /**
+   * 选项卡头部空间是否均分
+   * @default true
+   */
+  spaceEvenly?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否开启粘性布局
    * @default false
    */
@@ -87,7 +95,7 @@ export interface TdTabsProps {
 export interface TdTabPanelProps {
   /**
    * 透传至 Badge 组件
-   * @default {}
+   * @default null
    */
   badgeProps?: {
     type: ObjectConstructor;

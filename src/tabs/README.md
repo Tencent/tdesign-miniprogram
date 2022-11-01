@@ -118,6 +118,7 @@ animation | Object | - | 动画效果设置。其中 duration 表示动画时长
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名。`['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
 placement | String | top | 选项卡位置。可选项：left/top | N
 show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
+space-evenly | Boolean | true | 选项卡头部空间是否均分 | N
 sticky | Boolean | false | 是否开启粘性布局 | N
 sticky-props | Object | - | 透传至 Sticky 组件。TS 类型：`StickyProps`，[Sticky API Documents](./sticky?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 swipeable | Boolean | true | 是否可以滑动切换 | N
