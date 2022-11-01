@@ -21,6 +21,10 @@ const props: TdRadioGroupProps = {
     type: null,
     value: 'fill-circle',
   },
+  /** 用来定义 value / label 在 `options` 中对应的字段别名 */
+  keys: {
+    type: Object,
+  },
   /** HTML 元素原生属性 */
   name: {
     type: String,
