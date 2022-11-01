@@ -73,6 +73,7 @@ exports[`Tabs Tabs scroll demo works fine 1`] = `
 <scroll>
   <t-tabs
     defaultValue="{{0}}"
+    spaceEvenly="{{false}}"
     bind:change="onTabsChange"
     bind:click="onTabsClick"
   >
