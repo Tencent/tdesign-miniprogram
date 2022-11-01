@@ -28,6 +28,13 @@ export default class Cascader extends SuperComponent {
   };
 
   observers = {
+    visible(v) {
+      if (v) {
+        const $tabs = this.selectComponent('#tabs');
+
+        $tabs?.setTrack();
+      }
+    },
     value() {
       this.initWithValue();
     },

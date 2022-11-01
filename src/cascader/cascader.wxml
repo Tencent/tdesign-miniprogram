@@ -22,7 +22,7 @@
           </view>
         </view>
         <block wx:if="{{theme == 'tab'}}">
-          <t-tabs value="{{stepIndex}}" bind:change="onTabChange">
+          <t-tabs id="tabs" value="{{stepIndex}}" bind:change="onTabChange" space-evenly="{{false}}">
             <t-tab-panel wx:for="{{steps}}" wx:key="index" value="{{index}}" label="{{item}}" />
           </t-tabs>
         </block>
