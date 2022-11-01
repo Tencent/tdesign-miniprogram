@@ -8,6 +8,9 @@ const name = `${prefix}-cascader`;
 
 export interface CascaderProps extends TdCascaderProps {}
 
+type OptionsType = TdCascaderProps['options']['value'];
+
+const defaultOptionLabel = '选择选项';
 @wxComponent()
 export default class Cascader extends SuperComponent {
   externalClasses = [`${prefix}-class`];
@@ -20,7 +23,8 @@ export default class Cascader extends SuperComponent {
     stepIndex: 0,
     selectedIndexes: [],
     selectedValue: [],
-    steps: ['选择选项'],
+    defaultOptionLabel,
+    steps: [defaultOptionLabel],
   };
 
   observers = {
@@ -30,19 +34,62 @@ export default class Cascader extends SuperComponent {
       });
     },
     selectedIndexes() {
-      const { items, selectedIndexes } = this.data;
+      const { options, selectedIndexes, keys } = this.data;
+      const selectedValue = [];
+      const steps = [];
+      const items = [options];
+
+      for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
+        const index = selectedIndexes[i];
+        const next = items[i][index];
+
+        selectedValue.push(next[keys?.value ?? 'value']);
+        steps.push(next[keys?.label ?? 'label']);
+
+        if (next[keys?.children ?? 'children']) {
+          items.push(next[keys?.children ?? 'children']);
+        }
+      }
+
+      if (steps.length < items.length) {
+        steps.push(defaultOptionLabel);
+      }
 
       this.setData({
-        selectedValue: items.map((item, index) => item[selectedIndexes[index]]?.value),
+        steps,
+        items,
+        selectedValue,
       });
     },
   };
 
   lifetimes = {
-    ready() {},
+    ready() {
+      if (this.data.value != null) {
+        const selectedIndexes = this.getIndexesByValue(this.data.options, this.data.value);
+
+        this.setData({ selectedIndexes });
+      }
+    },
   };
 
   methods = {
+    getIndexesByValue(options: OptionsType, value) {
+      const { keys } = this.data;
+
+      for (let i = 0, size = options.length; i < size; i += 1) {
+        const opt = options[i];
+        if (opt[keys?.value ?? 'value'] === value) {
+          return [i];
+        }
+        if (opt[keys?.children ?? 'children']) {
+          const res = this.getIndexesByValue(opt[keys?.children ?? 'children'], value);
+          if (res) {
+            return [i, ...res];
+          }
+        }
+      }
+    },
     hide() {
       this.setData({ visible: false });
     },
@@ -61,8 +108,8 @@ export default class Cascader extends SuperComponent {
     handleSelect(e) {
       const { level } = e.target.dataset;
       const { value } = e.detail;
-      const { selectedIndexes, steps, items, stepIndex } = this.data;
-      const index = items[level].findIndex((item) => item.value === value);
+      const { selectedIndexes, items, stepIndex, keys } = this.data;
+      const index = items[level].findIndex((item) => item[keys?.value ?? 'value'] === value);
       const item = items[level][index];
 
       if (item.disabled) {
@@ -70,27 +117,23 @@ export default class Cascader extends SuperComponent {
       }
       selectedIndexes[level] = index;
       selectedIndexes.length = level + 1;
-      steps[level] = item.label;
 
-      this.triggerEvent('pick', item.value, index);
+      this.triggerEvent('pick', item[keys?.value ?? 'value'], index);
 
-      if (item?.children?.length) {
-        items[level + 1] = item.children;
-        items.length = level + 2;
-        steps[level + 1] = '选择选项';
-        steps.length = level + 2;
-
-        this.setData({ steps, items, selectedIndexes }, () => {
+      if (item?.[keys?.children ?? 'children']?.length) {
+        this.setData({ selectedIndexes }, () => {
           this.setData({ stepIndex: stepIndex + 1 });
         });
       } else {
         // setCascaderValue(item.value);
-        this.setData({ steps, selectedIndexes });
-        this.hide();
-        this.triggerEvent('change', {
-          value: item.value,
-          selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
+        this.setData({ selectedIndexes }, () => {
+          const { items } = this.data;
+          this.triggerEvent('change', {
+            value: item[keys?.value ?? 'value'],
+            selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
+          });
         });
+        this.hide();
       }
     },
   };

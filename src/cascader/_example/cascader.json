@@ -1,6 +1,9 @@
 {
   "component": true,
   "usingComponents": {
-    "base": "./base"
+    "base": "./base",
+    "keys": "./keys",
+    "with-value": "./with-value",
+    "with-title": "./with-title"
   }
 }
