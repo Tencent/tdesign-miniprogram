@@ -7,6 +7,7 @@
     "pages/button-group/button-group",
     "pages/dialog/dialog",
     "pages/tabs/tabs",
+    "pages/side-bar/side-bar",
     "pages/icon/icon",
     "pages/loading/loading",
     "pages/loading/loadingProgress/index",

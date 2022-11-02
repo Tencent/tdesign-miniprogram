@@ -1,0 +1,3 @@
+<t-side-bar default-value="{{1}}">
+  <t-side-bar-item wx:for="{{5}}" wx:key="index" value="{{index}}" label="选项" />
+</t-side-bar>

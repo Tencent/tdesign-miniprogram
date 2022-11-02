@@ -1,0 +1,9 @@
+<import src="../common/template/badge" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<view class="{{_.cls(classPrefix, [['active', active], ['disabled', disabled]])}}" bind:tap="handleClick">
+  <block wx:if="{{badgeProps}}">
+    <template is="badge" data="{{ ...badgeProps, content: label }}" />
+  </block>
+  <block wx:else>{{label}}</block>
+</view>

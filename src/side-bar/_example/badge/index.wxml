@@ -1,0 +1,6 @@
+<t-side-bar default-value="{{1}}">
+  <t-side-bar-item value="{{0}}" label="选项" badge-props="{{ { dot: true } }}" />
+  <t-side-bar-item value="{{1}}" label="选项" badge-props="{{ { count: 8 } }}" />
+  <t-side-bar-item value="{{2}}" label="禁用" disabled />
+  <t-side-bar-item wx:for="{{4}}" wx:key="index" value="{{index + 3}}" label="选项" />
+</t-side-bar>

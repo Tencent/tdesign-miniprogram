@@ -1,0 +1,31 @@
+@import '../common/style/index.less';
+
+.@{prefix}-side-bar-item {
+  position: relative;
+  padding: 32rpx;
+  font-size: 28rpx;
+  color: @font-gray-1;
+  background: @gray-color-1;
+
+  &--active {
+    background: @bg-color-block;
+    color: @primary-color;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 6rpx;
+      height: 28rpx;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: @primary-color;
+      border-radius: 8rpx;
+    }
+  }
+
+  &--disabled {
+    color: @font-gray-4;
+  }
+}
