@@ -1,5 +1,8 @@
 @import '../common/style/index.less';
 
+@tabs: ~'@{prefix}-tabs';
+@item: ~'@{tabs}__item';
+
 @tab-nav-background-color: #fff;
 
 @tab-item-height--horizontal: 96rpx;
@@ -49,15 +52,6 @@ page {
     }
   }
 
-  .@{prefix}-is-active {
-    font-weight: 600;
-    color: var(--td-tab-item-active-color, @tab-item-active-color);
-  }
-
-  .@{prefix}-is-disabled {
-    color: var(--td-tab-item-disabled-color, @tab-item-disabled-color);
-  }
-
   &__item {
     position: relative;
     display: flex;
@@ -68,6 +62,17 @@ page {
     color: var(--td-tab-item-color, @tab-item-color);
     padding: 0 32rpx;
     box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &--active {
+      font-weight: 600;
+      color: var(--td-tab-item-active-color, @tab-item-active-color);
+    }
+
+    &--disabled {
+      color: var(--td-tab-item-disabled-color, @tab-item-disabled-color);
+    }
 
     &--evenly {
       flex: 1;
@@ -122,16 +127,21 @@ page {
     }
 
     &--card {
-      &.@{prefix}-is-active {
+      &.@{item}--active {
         background-color: @bg-color-block;
         border-radius: 18rpx 18rpx 0 0;
 
         &:first-child {
           border-top-left-radius: 0;
         }
+
         &:last-child {
           border-top-right-radius: 0;
         }
+      }
+
+      &.@{item}--pre {
+        border-bottom-right-radius: 18rpx;
       }
     }
 
@@ -153,7 +163,7 @@ page {
     }
 
     &-prefix {
-      left: -36rpx;
+      right: 0;
 
       &::after {
         border-bottom-right-radius: 18rpx;
@@ -161,7 +171,7 @@ page {
     }
 
     &-suffix {
-      right: -36rpx;
+      left: 0;
 
       &::after {
         border-bottom-left-radius: 18rpx;

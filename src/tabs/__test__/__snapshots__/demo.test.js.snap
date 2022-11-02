@@ -390,6 +390,10 @@ exports[`Tabs Tabs with-badge demo works fine 1`] = `
       badgeProps="{{
         Object {
           "dot": true,
+          "offset": Array [
+            "-10rpx",
+            "4rpx",
+          ],
         }
       }}"
       label="选项"
@@ -399,6 +403,10 @@ exports[`Tabs Tabs with-badge demo works fine 1`] = `
       badgeProps="{{
         Object {
           "count": 8,
+          "offset": Array [
+            "-16rpx",
+            "8rpx",
+          ],
         }
       }}"
       label="选项"
