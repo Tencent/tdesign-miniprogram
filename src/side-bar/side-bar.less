@@ -3,6 +3,14 @@
 @side-bar-width: 206rpx;
 
 .@{prefix}-side-bar {
+  display: flex;
+  flex-direction: column;
   width: @side-bar-width;
-  overflow: hidden;
+  height: 100%;
+  overflow-y: auto;
+
+  &__padding {
+    flex: 1;
+    background-color: @gray-color-1;
+  }
 }

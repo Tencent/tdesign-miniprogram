@@ -46,6 +46,9 @@ export default class SideBar extends SuperComponent {
   };
 
   methods = {
+    doChange({ value, label }) {
+      this._trigger('change', { value, label });
+    },
     updateChild(val) {
       const items = this.getRelationNodes(relationsPath);
 

@@ -5,19 +5,27 @@
       wx:key="index"
       value="{{item.value || index}}"
       label="{{item.label}}"
+      disabled="{{item.disabled}}"
       badge-props="{{item.badgeProps}}"
     />
   </t-side-bar>
-  <scroll-view class="content" scroll-y scroll-with-animation scroll-top="{{scrollTop}}" bind:scroll="onScroll">
-    <view wx:for="{{categories}}" wx:key="index" class="section">
+  <view class="content" style="transform: translateY(-{{sideBarIndex * 100}}%)">
+    <scroll-view
+      wx:for="{{categories}}"
+      wx:key="index"
+      class="section"
+      scroll-y
+      scroll-with-animation
+      show-scrollbar="{{false}}"
+    >
       <view class="title">{{item.title || item.label}}</view>
-      <t-grid column="{{3}}" border="{{false}}">
+      <t-cell-group>
         <block wx:for="{{item.items}}" wx:key="index" wx:for-item="cargo">
-          <t-grid-item text="{{cargo.label}}">
+          <t-cell title="{{cargo.label}}{{index}}">
             <t-image shape="round" src="{{cargo.image}}" slot="image" lazy t-class="image" />
-          </t-grid-item>
+          </t-cell>
         </block>
-      </t-grid>
-    </view>
-  </scroll-view>
+      </t-cell-group>
+    </scroll-view>
+  </view>
 </view>

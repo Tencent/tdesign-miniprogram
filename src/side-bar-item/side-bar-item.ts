@@ -37,21 +37,12 @@ export default class SideBarItem extends SuperComponent {
       this.setData({
         active,
       });
-      if (active && this.parent?.childs.length > 0) {
-        const { childs } = this.parent;
-        const index = childs.findIndex((item) => item.data.value === value);
-        if (index > 0) {
-          childs[index - 1].setData({ isPre: true });
-        }
-        if (index + 1 < childs.length) {
-          childs[index + 1].setData({ isNext: true });
-        }
-      }
     },
     handleClick() {
       if (this.data.disabled) return;
+      const { value, label } = this.data;
 
-      this.parent?.updateChild(this.data.value);
+      this.parent?.doChange({ value, label });
     },
   };
 }

@@ -8,6 +8,8 @@
     "pages/dialog/dialog",
     "pages/tabs/tabs",
     "pages/side-bar/side-bar",
+    "pages/side-bar/base/index",
+    "pages/side-bar/switch/index",
     "pages/icon/icon",
     "pages/loading/loading",
     "pages/loading/loadingProgress/index",
@@ -63,6 +65,12 @@
     "pages/image-viewer/image-viewer",
     "pages/result/result",
     "pages/result/result-page"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/sidebar",
+      "pages": ["pages/side-bar/side-bar", "pages/side-bar/base/index", "pages/side-bar/switch/index"]
+    }
   ],
   "usingComponents": {
     "t-demo": "../../components/demo-block/index",
