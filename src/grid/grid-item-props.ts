@@ -19,6 +19,10 @@ const props: TdGridItemProps = {
   image: {
     type: String,
   },
+  /** 透传至 Image 组件 */
+  imageProps: {
+    type: Object,
+  },
   /** 链接跳转类型 */
   jumpType: {
     type: String,
