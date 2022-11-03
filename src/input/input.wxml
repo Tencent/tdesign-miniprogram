@@ -1,3 +1,4 @@
+<wxs src="./input.wxs" module="utils" />
 <view
   class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + (borderless ? '' : '--bordered')}} {{prefix}}-class"
 >
@@ -42,7 +43,7 @@
         safe-password-nonce="{{safePasswordNonce}}"
         safe-password-salt="{{safePasswordSalt}}"
         safe-password-custom-hash="{{safePasswordCustomHash}}"
-        class="{{classPrefix}}__control {{suffix || align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  {{prefix}}-class-input"
+        class="{{utils.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
       />
       <view wx:if="{{ clearable && value.length > 0}}" class="{{classPrefix}}__wrap--icon" bind:tap="clearInput">
         <t-icon name="close-circle-filled" size="48rpx" class="{{prefix}}-class-clearable" />

@@ -35,7 +35,7 @@ page {
 
 .@{prefix}-input--bordered {
   &::after {
-    .hairline-bottom(var(--td-input-border-color));
+    .hairline-bottom(var(--td-input-border-color, @input-border-color ));
     left: @input-border-padding-left;
   }
 }
@@ -43,11 +43,11 @@ page {
   position: relative;
   display: flex;
   padding: @input-vertical-padding @input-horizontal-padding;
-  background: var(--td-input-bg-color);
+  background: var(--td-input-bg-color, @bg-color-block);
 
   &__label {
     width: 164rpx;
-    color: var(--td-input-label-color);
+    color: var(--td-input-label-color, @input-label-color);
     margin-right: @input-name-horizontal-margin;
     flex: none;
   }
@@ -81,7 +81,7 @@ page {
     &--icon {
       flex: 0 0 auto;
       margin-left: @spacer-1;
-      color: var(--td-input-icon-color);
+      color: var(--td-input-icon-color, @input-icon-color);
       font-size: @input-icon-font-size;
 
       &:empty {
@@ -101,7 +101,7 @@ page {
     &--suffix-text {
       position: relative;
       padding-left: @input-suffix-text-padding-left;
-      color: var(--td-input-suffix-text-color);
+      color: var(--td-input-suffix-text-color, @input-suffix-text-color);
     }
   }
 
@@ -112,7 +112,7 @@ page {
     min-width: 0; // for flex-shrink in field__button
     margin: 0;
     padding: 0;
-    color: var(--td-input-text-color);
+    color: var(--td-input-text-color, @input-text-color);
     line-height: inherit;
     text-align: left;
     background-color: transparent;
@@ -121,18 +121,17 @@ page {
     font-size: inherit;
 
     &::placeholder {
-      color: var(--td-input-placeholder-text-color);
+      color: var(--td-input-placeholder-text-color, @input-placeholder-text-color);
     }
 
-    &:disabled {
-      color: var(--td-input-disabled-text-color);
-      background-color: transparent;
+    &--disabled {
+      color: var(--td-input-disabled-text-color, @input-disabled-text-color);
       cursor: not-allowed;
       opacity: 1;
       -webkit-text-fill-color: currentColor; // fix disabled color in iOS
     }
 
-    &:read-only {
+    &--read-only {
       cursor: default;
     }
 
@@ -146,7 +145,7 @@ page {
   }
 
   &__placeholder {
-    color: var(--td-input-placeholder-text-color);
+    color: var(--td-input-placeholder-text-color, @input-placeholder-text-color);
   }
 }
 
@@ -155,15 +154,15 @@ page {
 
   .@{prefix}-input {
     &__control {
-      color: var(--td-input-error-text-color);
+      color: var(--td-input-error-text-color, @input-error-text-color);
 
       &::placeholder {
-        color: var(--td-input-error-text-color);
+        color: var(--td-input-error-text-color, @input-error-text-color);
       }
     }
 
     &__placeholder {
-      color: var(--td-input-error-text-color);
+      color: var(--td-input-error-text-color, @input-error-text-color);
     }
 
     &__error-msg {
@@ -171,7 +170,7 @@ page {
       padding-top: @spacer-1;
       font-size: @input-error-msg-font-size;
       line-height: 1;
-      color: var(--td-input-error-msg-color);
+      color: var(--td-input-error-msg-color, @input-placeholder-text-color);
       width: 100%;
     }
   }
