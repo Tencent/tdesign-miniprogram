@@ -7,9 +7,6 @@
     "pages/button-group/button-group",
     "pages/dialog/dialog",
     "pages/tabs/tabs",
-    "pages/side-bar/side-bar",
-    "pages/side-bar/base/index",
-    "pages/side-bar/switch/index",
     "pages/icon/icon",
     "pages/loading/loading",
     "pages/loading/loadingProgress/index",
@@ -68,8 +65,8 @@
   ],
   "subpackages": [
     {
-      "root": "pages/sidebar",
-      "pages": ["pages/side-bar/side-bar", "pages/side-bar/base/index", "pages/side-bar/switch/index"]
+      "root": "pages/side-bar/",
+      "pages": ["side-bar", "base/index", "switch/index"]
     }
   ],
   "usingComponents": {
