@@ -1,0 +1,4 @@
+<view class="{{classPrefix}}">
+  <slot />
+  <view class="{{classPrefix}}__padding"></view>
+</view>

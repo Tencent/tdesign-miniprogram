@@ -128,6 +128,13 @@ export default {
           component: () => import('@/navbar/README.md'),
         },
         {
+          title: 'SideBar 侧边导航',
+          name: 'sidebar',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/side-bar',
+          component: () => import('@/side-bar/README.md'),
+        },
+        {
           title: 'Steps 步骤条',
           name: 'steps',
           meta: { docType: 'navigation' },

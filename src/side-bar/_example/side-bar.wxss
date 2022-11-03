@@ -1,0 +1,7 @@
+page {
+  background-color: #fff;
+}
+
+.wrapper {
+  padding: 0 32rpx;
+}
