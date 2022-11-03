@@ -1,29 +1,10 @@
 @import '../common/style/index.less';
 
-@primary-color-disabled: #bbd3fb;
-@danger-color-disabled: #f8b9be;
 @button-default-height: 40 * 2rpx;
 @button-default-line-height: @text-line-height;
 @button-default-font-size: @font-size * 1.4;
-@button-default-color: rgba(0, 0, 0, 0.9);
-@button-default-color--disabled: rgba(0, 0, 0, 0.26);
-@button-default-bg-color: #ffffff;
-@button-default-border-color: #dcdcdc;
-@button-anti-primary-color: @text-anti-primary-color;
-@button-primary-color: @primary-color;
-@button-primary-color--disabled: @primary-color-disabled;
-@button-danger-color: @error-color;
-@button-danger-color--disabled: @danger-color-disabled;
-@button-ghost-color: #fff;
-@button-ghost-border-color: @button-ghost-color;
-@button-ghost-color--disabled: rgba(255, 255, 255, 0.35);
-@button-text-color: @primary-color;
-@button-text-color--disabled: @primary-color-disabled;
 @button-border-width: 1px;
 @button-border-radius: 8rpx;
-@button-border-color: @primary-color;
-@button-ghost-color: #fff;
-@button-ghost-border-color: @button-ghost-color;
 @button-small-height: 36 * 2rpx;
 @button-small-line-height: 36 * 2rpx;
 @button-large-height: 44 * 2rpx;
@@ -40,7 +21,84 @@
 @button-icon-size-m: 44rpx;
 @button-icon-size-l: 48rpx;
 
+// 颜色相关
+@primary-color-disabled: #bbd3fb;
+@danger-color-disabled: #f8b9be;
+// default
+@button-default-color: rgba(0, 0, 0, 0.9);
+@button-default-bg-color: #ffffff;
+@button-default-border-color: #dcdcdc;
+@button-default-disabled-color: rgba(0, 0, 0, 0.26);
+// primary
+@button-primary-color: @text-anti-primary-color;
+@button-primary-border-color: @primary-color;
+@button-primary-bg-color: @primary-color;
+@button-primary-disabled-color: @primary-color-disabled;
+// danger
+@button-danger-color: @text-anti-primary-color;
+@button-danger-border-color: @error-color;
+@button-danger-bg-color: @error-color;
+@button-danger-disabled-color: @danger-color-disabled;
+// primary + outline
+@button-primary-outline-color: @primary-color;
+@button-primary-outline-disabled-color: @primary-color-disabled;
+// danger + outline
+@button-danger-outline-color: @error-color;
+@button-danger-outline-disabled-color: @button-danger-disabled-color;
+// primary + dashed
+@button-primary-dashed-color: @primary-color;
+@button-primary-dashed-disabled-color: @primary-color-disabled;
+// danger + dashed
+@button-danger-dashed-color: @error-color;
+@button-danger-dashed-disabled-color: @button-danger-disabled-color;
+// primary + text
+@button-primary-text-color: @primary-color;
+@button-primary-text-disabled-color: @primary-color-disabled;
+// danger + text
+@button-danger-text-color: @error-color;
+@button-danger-text-disabled-color: @button-danger-disabled-color;
+// ghost 优先级高于 theme，固定透明背景，白色边框，白色字体
+@button-ghost-color: #fff;
+@button-ghost-border-color: @button-ghost-color;
+@button-ghost-disabled-color: rgba(255, 255, 255, 0.35);
+
 @button: ~'@{prefix}-button';
+
+page {
+  --td-button-default-color: @button-default-color;
+  --td-button-default-border-color: @button-default-border-color;
+  --td-button-default-bg-color: @button-default-bg-color;
+  --td-button-default-disabled-color: @button-default-disabled-color;
+
+  --td-button-primary-color: @button-primary-color;
+  --td-button-primary-border-color: @button-primary-border-color;
+  --td-button-primary-bg-color: @button-primary-bg-color;
+  --td-button-primary-disabled-color: @button-primary-disabled-color;
+
+  --td-button-danger-color: @button-danger-color;
+  --td-button-danger-border-color: @button-danger-border-color;
+  --td-button-danger-bg-color: @button-danger-bg-color;
+  --td-button-danger-disabled-color: @button-danger-disabled-color;
+
+  --td-button-primary-outline-color: @button-primary-outline-color;
+  --td-button-primary-outline-disabled-color: @button-primary-outline-disabled-color;
+  --td-button-danger-outline-color: @button-danger-outline-color;
+  --td-button-danger-outline-disabled-color: @button-danger-outline-disabled-color;
+
+  --td-button-primary-dashed-color: @button-primary-dashed-color;
+  --td-button-primary-dashed-disabled-color: @button-primary-dashed-disabled-color;
+  --td-button-danger-dashed-color: @button-danger-dashed-color;
+  --td-button-danger-dashed-disabled-color: @button-danger-dashed-disabled-color;
+
+  --td-button-primary-text-color: @button-primary-text-color;
+  --td-button-primary-text-disabled-color: @button-primary-text-disabled-color;
+  --td-button-danger-text-color: @button-danger-text-color;
+  --td-button-danger-text-disabled-color: @button-danger-text-disabled-color;
+
+  --td-button-ghost-color: @button-ghost-color;
+  --td-button-ghost-border-color: @button-ghost-border-color;
+  --td-button-ghost-disabled-color: @button-ghost-disabled-color;
+}
 
 .@{button} {
   display: inline-flex;
@@ -50,7 +108,6 @@
   white-space: nowrap;
   text-align: center;
   background-image: none;
-  border: @button-border-width solid transparent;
   cursor: pointer;
   transition: all 0.3s;
   user-select: none;
@@ -58,9 +115,6 @@
   font-size: @button-default-font-size;
   height: @button-default-height;
   border-radius: @button-border-radius;
-  color: @button-default-color;
-  border-color: @button-default-border-color;
-  background-color: #fff;
   outline: none;
   font-family: PingFang SC, Microsoft YaHei, Arial Regular;
 
@@ -83,39 +137,39 @@
   }
 
   &--default {
-    color: @button-default-color;
-    background-color: @button-default-bg-color;
-    border: 1px solid @button-default-border-color;
+    color: var(--td-button-default-color, @button-default-color);
+    background-color: var(--td-button-default-bg-color, @button-default-bg-color);
+    border: 1px solid var(--td-button-default-border-color, @button-default-border-color);
 
     &.@{prefix}-is-disabled {
-      color: @button-default-color--disabled;
+      color: var(--td-button-default-disabled-color, @button-default-disabled-color);
     }
   }
 
   &--primary {
-    color: @button-anti-primary-color;
-    background-color: @button-primary-color;
-    border: 1px solid @button-primary-color;
+    color: var(--td-button-primary-color, @button-primary-color);
+    background-color: var(--td-button-primary-bg-color, @button-primary-bg-color);
+    border: 1px solid var(--td-button-primary-border-color, @button-primary-border-color);
 
     &.@{prefix}-is-disabled {
-      background-color: @button-primary-color--disabled;
-      border-color: @button-primary-color--disabled;
+      background-color: var(--td-button-primary-disabled-color, @button-primary-disabled-color);
+      border-color: var(--td-button-primary-disabled-color, @button-primary-disabled-color);
     }
   }
 
   &--danger {
-    color: @button-anti-primary-color;
-    background-color: @button-danger-color;
-    border: 1px solid @button-danger-color;
+    color: var(--td-button-danger-color, @button-danger-color);
+    background-color: var(--td-button-danger-bg-color, @button-danger-bg-color);
+    border: 1px solid var(--td-button-danger-border-color, @button-danger-border-color);
 
     &.@{prefix}-is-disabled {
-      background-color: @button-danger-color--disabled;
-      border-color: @button-danger-color--disabled;
+      background-color: var(--td-button-danger-disabled-color, @button-danger-disabled-color);
+      border-color: var(--td-button-danger-disabled-color, @button-danger-disabled-color);
     }
   }
 
   &--text {
-    color: @button-text-color;
+    color: var(--td-button-default-color, @button-default-color);
     background: none;
     border: 0;
 
@@ -127,38 +181,60 @@
     }
 
     &.@{prefix}-is-disabled {
-      color: @button-text-color--disabled;
+      color: var(--td-button-default-disabled-color, @button-default-disabled-color);
+    }
+
+    &.@{prefix}-button--primary {
+      color: var(--td-button-primary-text-color, @button-primary-text-color);
+      background: none;
+
+      &.@{prefix}-is-disabled {
+        color: var(--td-button-primary-text-disabled-color, @button-primary-text-disabled-color);
+        background: none;
+      }
+    }
+
+    &.@{prefix}-button--danger {
+      color: var(--td-button-danger-text-color, @button-danger-text-color);
+      background: none;
+
+      &.@{prefix}-is-disabled {
+        color: var(--td-button-danger-text-disabled-color, @button-danger-text-disabled-color);
+        background: none;
+      }
     }
   }
 
   &--ghost {
     background-color: transparent;
-    border: 1px solid @button-ghost-color;
-    color: @button-ghost-border-color;
+    border: 1px solid var(--td-button-ghost-color, @button-ghost-color);
+    color: var(--td-button-ghost-border-color, @button-ghost-border-color);
 
     &.@{prefix}-is-disabled {
-      color: @button-ghost-color--disabled;
-      border-color: @button-ghost-color--disabled;
+      color: var(--td-button-ghost-disabled-color, @button-ghost-disabled-color);
+      border-color: var(--td-button-ghost-disabled-color, @button-ghost-disabled-color);
     }
   }
 
   &--outline {
     background-color: transparent;
     &.@{prefix}-button--primary {
-      color: @button-primary-color;
-
+      color: var(--td-button-primary-outline-color, @button-primary-outline-color);
+      border-color: var(--td-button-primary-outline-color, @button-primary-outline-color);
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: @button-primary-color--disabled;
+        color: var(--td-button-primary-outline-disabled-color, @button-primary-outline-disabled-color);
+        border-color: var(--td-button-primary-outline-disabled-color, @button-primary-outline-disabled-color);
       }
     }
 
     &.@{prefix}-button--danger {
-      color: @button-danger-color;
-
+      color: var(--td-button-danger-outline-color, @button-danger-outline-color);
+      border-color: var(--td-button-danger-outline-color, @button-danger-outline-color);
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: @button-danger-color--disabled;
+        color: var(--td-button-danger-outline-disabled-color, @button-danger-outline-disabled-color);
+        border-color: var(--td-button-danger-outline-disabled-color, @button-danger-outline-disabled-color);
       }
     }
   }
@@ -168,20 +244,22 @@
     border-style: dashed;
 
     &.@{prefix}-button--primary {
-      color: @button-primary-color;
-
+      color: var(--td-button-primary-dashed-color, @button-primary-dashed-color);
+      border-color: var(--td-button-primary-dashed-color, @button-primary-dashed-color);
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: @button-primary-color--disabled;
+        color: var(--td-button-primary-dashed-disabled-color, @button-primary-dashed-disabled-color);
+        border-color: var(--td-button-primary-dashed-disabled-color, @button-primary-dashed-disabled-color);
       }
     }
 
     &.@{prefix}-button--danger {
-      color: @button-danger-color;
-
+      color: var(--td-button-danger-dashed-color, @button-danger-dashed-color);
+      border-color: var(--td-button-danger-dashed-color, @button-danger-dashed-color);
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: @button-danger-color--disabled;
+        color: var(--td-button-danger-dashed-disabled-color, @button-danger-dashed-disabled-color);
+        border-color: var(--td-button-danger-dashed-disabled-color, @button-danger-dashed-disabled-color);
       }
     }
   }
