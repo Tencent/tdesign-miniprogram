@@ -4,22 +4,19 @@
 @tab-bar-bg-color: @bg-color-block;
 @tab-bar-border-color: @border-level-1-color;
 
-page {
-  --td-tab-bar-border-color: @tab-bar-border-color;
-}
-
 .@{tab-bar-cls} {
-  width: 100%;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   position: relative;
   font-size: 16px;
   background-color: var(--td-tab-bar-bg-color, @tab-bar-bg-color);
+  overflow: hidden;
+  box-sizing: border-box;
 
   &--border::before {
     z-index: 1;
-    .hairline-top(@color: var(--td-tab-bar-border-color));
+    .hairline-top(@color: var(--td-tab-bar-border-color, @tab-bar-border-color));
   }
 
   &--fixed {
@@ -31,5 +28,13 @@ page {
   &--safe {
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  &--round {
+    margin-left: 32rpx;
+    margin-right: 32rpx;
+    border-radius: 999px;
+    box-shadow: 0px 6px 30px 5px rgba(0, 0, 0, 0.05), 0px 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0px 8px 10px -5px rgba(0, 0, 0, 0.08);
   }
 }

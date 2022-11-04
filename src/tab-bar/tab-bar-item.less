@@ -1,20 +1,14 @@
 @import '../common/index.less';
 
 @item: ~'@{prefix}-tab-bar-item';
-@tab-bar-height: 48px;
+@tab-bar-height: 80rpx;
 @tab-bar-bg-color: @bg-color-block;
 @tab-bar-border-color: @border-level-1-color;
 @tab-bar-hover-bg-color: rgba(0, 0, 0, 0.05);
 @tab-bar-color: rgba(0, 0, 0, 0.6);
 @tab-bar-active-color: @primary-color;
 @tab-bar-bg-color: @bg-color-block;
-
-page {
-  --td-tab-bar-bg-color: @tab-bar-bg-color;
-  --td-tab-bar-hover-color: @tab-bar-hover-bg-color;
-  --td-tab-bar-item-color: @tab-bar-color;
-  --td-tab-bar-item-active-color: @tab-bar-active-color;
-}
+@tab-bar-active-bg: @primary-color-1;
 
 :host {
   flex: 1;
@@ -25,16 +19,23 @@ page {
   box-sizing: border-box;
   user-select: none;
   position: relative;
+  margin: 16rpx 0;
   background-color: var(--td-tab-bar-bg-color, @tab-bar-bg-color);
+  padding: 0 24rpx;
 
-  &--active {
-    background-color: var(--td-tab-bar-hover-color, @tab-bar-hover-bg-color);
+  &--text-only {
+    height: 64rpx;
+    font-size: 32rpx;
   }
 
-  &.@{prefix}-is-split:before {
+  &--split:before {
     .hairline-left(@color: @tab-bar-border-color);
     top: 8px;
     bottom: 8px;
+  }
+
+  &--crowded {
+    padding: 0 16rpx;
   }
 
   &__content {
@@ -44,13 +45,28 @@ page {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 16rpx;
     color: var(--td-tab-bar-item-color, @tab-bar-color);
 
-    &.@{prefix}-is-checked {
+    &--checked {
       color: var(--td-tab-bar-item-active-color, @tab-bar-active-color);
+      font-weight: 600;
+
       .@{item}__icon-menu {
         background-color: var(--td-tab-bar-item-active-color, @tab-bar-active-color);
       }
+    }
+
+    &--tag {
+      border-radius: 99px;
+    }
+
+    &--tag&--checked {
+      background-color: var(--td-tab-bar-active-bg, @tab-bar-active-bg);
+    }
+
+    &--active {
+      background-color: var(--td-tab-bar-hover-color, @tab-bar-hover-bg-color);
     }
   }
 
@@ -62,14 +78,10 @@ page {
     display: flex;
     align-items: center;
 
-    &.t-size-s {
+    &--small {
       font-size: 10px;
-      line-height: 18px;
+      line-height: 36rpx;
     }
-  }
-
-  &__icon {
-    height: 24px;
   }
 
   &__icon-menu {

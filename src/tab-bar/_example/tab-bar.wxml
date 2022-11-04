@@ -17,9 +17,12 @@
     <icon-only />
   </t-demo>
   <t-demo desc="双层级纯文本标签栏">
-    <view class="demo-word bottom-row">
+    <view class="demo-word">
       <sub />
     </view>
+  </t-demo>
+  <t-demo desc="悬浮胶囊标签栏">
+    <round />
   </t-demo>
   <t-demo title="02 主题" desc="自定义样式">
     <custom />
