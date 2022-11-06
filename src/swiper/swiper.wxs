@@ -170,6 +170,11 @@ function changeCurrentInited(newVal, oldVal, ownerInstance) {
   state.currentInited = newVal;
 }
 
+function getSwiperStyles(height, customStyle) {
+  var heightStyle = height ? 'height:' + height + 'rpx;' : '';
+  return heightStyle + customStyle;
+}
+
 module.exports = {
   startDrag: startDrag,
   onDrag: onDrag,
@@ -181,4 +186,5 @@ module.exports = {
   changeDirection: changeDirection,
   changeTotal: changeTotal,
   changeCurrentInited: changeCurrentInited,
+  getSwiperStyles: getSwiperStyles,
 };

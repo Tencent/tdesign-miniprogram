@@ -15,6 +15,22 @@ export interface TdRadioGroupProps<T = RadioValue> {
     value?: 'left' | 'right';
   };
   /**
+   * 是否开启无边框模式
+   * @default false
+   */
+  borderless?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 是否禁用全部子单选框
    */
   disabled?: {

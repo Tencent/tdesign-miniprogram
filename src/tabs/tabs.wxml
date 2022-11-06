@@ -1,7 +1,7 @@
 <import src="../common/template/badge.wxml" />
 <wxs src="./tabs.wxs" module="filters" />
 
-<view class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
+<view style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
   <t-sticky
     t-class="{{classPrefix}}__sticky {{classPrefix}}__sticky--{{placement}}"
     disabled="{{ !sticky }}"

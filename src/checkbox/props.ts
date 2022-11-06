@@ -39,6 +39,11 @@ const props: TdCheckboxProps = {
   contentDisabled: {
     type: Boolean,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 是否禁用组件 */
   disabled: {
     type: Boolean,
@@ -83,8 +88,7 @@ const props: TdCheckboxProps = {
   },
   /** 多选框的值 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
 };
 

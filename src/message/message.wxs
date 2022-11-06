@@ -3,8 +3,7 @@ var changeNumToStr = function (arr) {
     return typeof item === 'number' ? item + 'rpx' : item;
   });
 };
-
-var getMessageStylesOffset = function (props) {
+var getMessageStyles = function (props) {
   var arr = changeNumToStr(props.offset);
   var styleOffset = '';
   styleOffset += 'top:' + arr[0] + ';';
@@ -13,4 +12,18 @@ var getMessageStylesOffset = function (props) {
   return styleOffset;
 };
 
-module.exports.getMessageStylesOffset = getMessageStylesOffset;
+var getMessageStylesOffset = function (zIndex, offset, wrapTop, customStyle) {
+  var arr = changeNumToStr(offset);
+  var styleOffset = '';
+  styleOffset += 'top:' + arr[0] + ';';
+  styleOffset += 'right:' + arr[1] + ';';
+  styleOffset += 'left:' + arr[1] + ';';
+  var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  var transformStyle = 'transform: translateY(' + wrapTop + ')px;';
+  return zIndexStyle + styleOffset + transformStyle + customStyle;
+};
+
+module.exports = {
+  getMessageStylesOffset: getMessageStylesOffset,
+  getMessageStyles: getMessageStyles,
+};

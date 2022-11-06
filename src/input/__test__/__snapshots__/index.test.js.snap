@@ -6,6 +6,7 @@ exports[`input props : clearable && label && suffix 1`] = `
 >
   <wx-view
     class="t-input   t-input--size-small t-input--bordered t-class"
+    style=""
   >
     <wx-view
       class="t-input__label"
@@ -111,6 +112,7 @@ exports[`input slots : label 1`] = `
 >
   <wx-view
     class="t-input   t-input--size-small t-input--bordered t-class"
+    style=""
   >
     <wx-view
       class="t-input__label"

@@ -22,7 +22,7 @@ export default class Calendar extends SuperComponent {
 
   data = {
     prefix,
-    name,
+    classPrefix: name,
     months: [],
   };
 

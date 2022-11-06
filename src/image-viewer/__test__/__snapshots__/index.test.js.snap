@@ -10,6 +10,7 @@ exports[`image-viewer :base 1`] = `
 >
   <wx-view
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+    style=""
   >
     <t-loading
       class="t-class-load"
@@ -17,6 +18,7 @@ exports[`image-viewer :base 1`] = `
     >
       <wx-view
         class="t-class"
+        style=""
       >
         <wx-view
           class="t-loading t-loading--horizontal"
@@ -72,6 +74,7 @@ exports[`image-viewer :base 2`] = `
 >
   <wx-view
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+    style=""
   >
     <t-loading
       class="t-class-load"
@@ -79,6 +82,7 @@ exports[`image-viewer :base 2`] = `
     >
       <wx-view
         class="t-class"
+        style=""
       >
         <wx-view
           class="t-loading t-loading--horizontal"
@@ -134,6 +138,7 @@ exports[`image-viewer :base 3`] = `
 >
   <wx-view
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+    style=""
   >
     <t-loading
       class="t-class-load"
@@ -141,6 +146,7 @@ exports[`image-viewer :base 3`] = `
     >
       <wx-view
         class="t-class"
+        style=""
       >
         <wx-view
           class="t-loading t-loading--horizontal"

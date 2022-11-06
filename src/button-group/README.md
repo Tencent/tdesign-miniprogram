@@ -40,7 +40,7 @@ isComponent: true
 组件路径：`tdesign-miniprogram/button-group/button-group`
 
 #### Props
-
-| 属性 | 值类型     | 默认值  | 必传        | 说明 |
-| ---- | ---------- | ------- | ----------- | ---- | ---------- |
-| type | `'default' | 'menu'` | `'default'` | N    | 按钮组样式 |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
+type | String | `'default'` | 按钮组样式  | N  

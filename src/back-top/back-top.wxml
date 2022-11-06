@@ -1,4 +1,5 @@
 <view
+  style="{{ customStyle }}"
   class="{{prefix}}-class {{classPrefix}} {{fixed ? prefix + '-is-fixed' : ''}} {{prefix + '-is-' + theme}}"
   bindtap="toTop"
 >

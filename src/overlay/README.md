@@ -33,7 +33,7 @@ zIndex | Number | 11000 | 遮罩层及 | N
 duration | Number | 300 | (暂不支持)背景色过渡时间，单位毫秒 | N
 backgroundColor | String | - | 遮罩层的背景色 | N
 preventScrollThrough | Boolean | true | 防止滚动穿透，即不允许点击和滚动 | N
-custom-style| String | '' | 自定义样式 | N
+custom-style | String | '' | 自定义样式 | N
 
 ### Overlay Events
 

@@ -5,8 +5,9 @@ import type { TdStickyProps } from './type';
 import { pageScrollMixin, getRect } from '../mixins/page-scroll';
 
 const { prefix } = config;
+const name = `${prefix}-sticky`;
 
-const ContainerClass = `.${prefix}-sticky`;
+const ContainerClass = `.${name}`;
 
 export interface StickyProps extends TdStickyProps {}
 
@@ -30,9 +31,9 @@ export default class Sticky extends SuperComponent {
 
   data = {
     prefix,
+    classPrefix: name,
     containerStyle: '',
     contentStyle: '',
-    classPrefix: `.${prefix}-sticky`,
   };
 
   ready() {
@@ -97,7 +98,7 @@ export default class Sticky extends SuperComponent {
 
         if (isFixed) {
           containerStyle += `height:${height}px;`;
-          contentStyle += `position:fixed;top:${offsetTop}px`;
+          contentStyle += `position:fixed;top:${offsetTop}px;`;
         }
         if (transform) {
           const translate = `translate3d(0, ${transform}px, 0)`;

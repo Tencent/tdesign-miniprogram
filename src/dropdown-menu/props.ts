@@ -16,10 +16,14 @@ const props: TdDropdownMenuProps = {
     type: Boolean,
     value: true,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 动画时长 */
   duration: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: 200,
   },
   /** 是否显示遮罩层 */

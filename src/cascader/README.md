@@ -27,6 +27,7 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 close-btn | Boolean / Slot | true | 关闭按钮 | N
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 options | Array | [] | 可选项数据源。TS 类型：`Array<CascaderOption>` | N
 title | String / Slot | - | 标题 | N
 value | String / Number | - | 选项值 | N

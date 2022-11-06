@@ -1,4 +1,4 @@
-<view class="{{classPrefix}} t-class">
+<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
   <view class="{{classPrefix}}__content" style="{{ contentStyle }}">
     <slot />
   </view>

@@ -1,6 +1,6 @@
 <wxs module="_" src="./util.wxs" />
 
-<view wx:if="{{wrapperVisible}}" class="{{classPrefix}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
+<view wx:if="{{wrapperVisible}}" class="{{classPrefix}}" style="{{_.getDropdownItemStyles(top, zIndex, customStyle)}}">
   <t-popup
     visible="{{show}}"
     z-index="{{zIndex + 1}}"

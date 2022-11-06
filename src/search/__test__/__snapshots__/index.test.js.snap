@@ -7,6 +7,7 @@ exports[`search Props :base 1`] = `
   >
     <wx-view
       class="t-search t-class"
+      style=""
     >
       <wx-view
         class="t-search__input-box t-not-focused t-search__input-box-- t-search__input-box--square t-class-input-container"

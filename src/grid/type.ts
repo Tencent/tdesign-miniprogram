@@ -2,8 +2,9 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
+
+import { BadgeProps } from '../badge/index';
 
 export interface TdGridProps {
   /**
@@ -13,7 +14,6 @@ export interface TdGridProps {
   align?: {
     type: StringConstructor;
     value?: 'left' | 'center';
-    required?: boolean;
   };
   /**
    * 边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式
@@ -28,7 +28,6 @@ export interface TdGridProps {
           width?: string;
           style?: 'solid' | 'dashed' | 'dotted' | 'double' | 'groove' | 'inset' | 'outset';
         };
-    required?: boolean;
   };
   /**
    * 每一行的列数量
@@ -37,7 +36,14 @@ export interface TdGridProps {
   column?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 组件类名，用于设置组件外层元素类名
@@ -45,7 +51,6 @@ export interface TdGridProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class'];
-    required?: boolean;
   };
   /**
    * 间隔大小
@@ -53,7 +58,6 @@ export interface TdGridProps {
   gutter?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
    * 是否开启点击反馈
@@ -62,18 +66,31 @@ export interface TdGridProps {
   hover?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
 }
 
 export interface TdGridItemProps {
+  /**
+   * 头像右上角提示信息，继承 Badge 组件的全部特性。如：小红点，或者数字
+   */
+  badgeProps?: {
+    type: ObjectConstructor;
+    value?: BadgeProps;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
   /**
    * 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点
    */
   description?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名
@@ -81,7 +98,6 @@ export interface TdGridItemProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-image', 't-class-text', 't-class-description'];
-    required?: boolean;
   };
   /**
    * 图片，可以是图片地址，也可以自定义图片节点
@@ -89,7 +105,6 @@ export interface TdGridItemProps {
   image?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 链接跳转类型
@@ -98,7 +113,6 @@ export interface TdGridItemProps {
   jumpType?: {
     type: StringConstructor;
     value?: 'redirect-to' | 'switch-tab' | 'relaunch' | 'navigate-to';
-    required?: boolean;
   };
   /**
    * 内容布局方式
@@ -107,7 +121,6 @@ export interface TdGridItemProps {
   layout?: {
     type: StringConstructor;
     value?: 'vertical' | 'horizontal';
-    required?: boolean;
   };
   /**
    * 文本，可以通过 Props 传入文本，也可以自定义标题节点
@@ -115,7 +128,6 @@ export interface TdGridItemProps {
   text?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 点击后的跳转链接
@@ -124,6 +136,5 @@ export interface TdGridItemProps {
   url?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
 }

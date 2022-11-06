@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="utils" />
-<view class="{{prefix}}-class">
+<view style="{{ customStyle }}" class="{{prefix}}-class">
   <view
     wx:if="{{theme === 'bar' && theme !== 'error'}}"
     style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"

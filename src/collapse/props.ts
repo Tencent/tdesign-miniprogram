@@ -6,6 +6,11 @@
 
 import { TdCollapseProps } from './type';
 const props: TdCollapseProps = {
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 默认是否展开全部 */
   defaultExpandAll: {
     type: Boolean,
@@ -18,7 +23,7 @@ const props: TdCollapseProps = {
   /** 展开图标。值为 undefined 或 false 则不显示展开图标；值为 true 显示默认图标；值类型为函数，则表示完全自定义展开图标 */
   expandIcon: {
     type: Boolean,
-    value: null,
+    value: true,
   },
   /** 每个面板互斥展开，每次只展开一个面板 */
   expandMutex: {
@@ -33,6 +38,7 @@ const props: TdCollapseProps = {
   /** 展开的面板集合，非受控属性 */
   defaultValue: {
     type: Array,
+    value: [],
   },
 };
 

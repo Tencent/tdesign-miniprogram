@@ -16,12 +16,21 @@ const props: TdRateProps = {
     type: Number,
     value: 5,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 是否禁用评分 */
   disabled: {
     type: Boolean,
     value: false,
   },
-  /** 评分图标的间距 */
+  /** 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。 */
+  externalClasses: {
+    type: Array,
+  },
+  /** 评分图标的间距，默认单位为 `px`, 示例：`8` */
   gap: {
     type: Number,
     value: 8,
@@ -31,7 +40,7 @@ const props: TdRateProps = {
     type: Boolean,
     value: false,
   },
-  /** 评分图标的大小，示例：`20` */
+  /** 评分图标的大小，默认单位为 `px`，示例：`20` */
   size: {
     type: String,
     value: '20',

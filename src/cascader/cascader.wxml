@@ -1,30 +1,38 @@
 <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="hide">
-  <view class="{{name}}">
-    <view class="{{name}}__title">
+  <view style="{{ customStyle }}" class="{{classPrefix}}">
+    <view class="{{classPrefix}}__title">
       <slot name="title" />
       {{title}}
     </view>
-    <view class="{{name}}__close-btn" bind:tap="hide">
+    <view class="{{classPrefix}}__close-btn" bind:tap="hide">
       <slot name="closeBtn" />
       <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
     </view>
-    <view class="{{name}}__content">
-      <view wx:if="{{steps && steps.length}}" class="{{name}}__steps">
-        <view wx:for="{{steps}}" wx:key="index" class="{{name}}__step" bind:tap="onStepClick" data-index="{{index}}">
+    <view class="{{classPrefix}}__content">
+      <view wx:if="{{steps && steps.length}}" class="{{classPrefix}}__steps">
+        <view
+          wx:for="{{steps}}"
+          wx:key="index"
+          class="{{classPrefix}}__step"
+          bind:tap="onStepClick"
+          data-index="{{index}}"
+        >
           <view
-            class="{{name}}__step-dot {{name}}__step-dot--{{index === stepIndex ? 'active' : ''}} {{name}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
+            class="{{classPrefix}}__step-dot {{classPrefix}}__step-dot--{{index === stepIndex ? 'active' : ''}} {{classPrefix}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
           ></view>
-          <view class="{{name}}__step-label {{name}}__step-label--{{index === stepIndex ? 'active' : ''}}">
+          <view
+            class="{{classPrefix}}__step-label {{classPrefix}}__step-label--{{index === stepIndex ? 'active' : ''}}"
+          >
             {{ item }}
           </view>
         </view>
       </view>
-      <!-- <view class="{{name}}__options-title">选项标题</view> -->
+      <!-- <view class="{{classPrefix}}__options-title">选项标题</view> -->
       <view
-        class="{{name}}__options-container"
+        class="{{classPrefix}}__options-container"
         style="width: {{items.length}}00vw; transform: translateX(-{{stepIndex}}00vw)"
       >
-        <scroll-view wx:for="{{items}}" wx:for-item="options" wx:key="index" class="{{name}}__options" scroll-y>
+        <scroll-view wx:for="{{items}}" wx:for-item="options" wx:key="index" class="{{classPrefix}}__options" scroll-y>
           <t-radio-group
             value="{{selectedValue[index]}}"
             options="{{options}}"

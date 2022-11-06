@@ -19,10 +19,15 @@ const props: TdPopupProps = {
   content: {
     type: String,
   },
-  /** 弹出层的自定义样式 */
+  /** 自定义组件样式 */
   customStyle: {
     type: String,
     value: '',
+  },
+  /** 动画过渡时间 */
+  duration: {
+    type: Number,
+    value: 240,
   },
   /** 组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名 */
   externalClasses: {
@@ -57,7 +62,12 @@ const props: TdPopupProps = {
     type: Boolean,
     value: null,
   },
-  /** 组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500 */
+  /** 是否显示浮层，非受控属性 */
+  defaultVisible: {
+    type: Boolean,
+    value: false,
+  },
+  /** 组件层级，Web 侧样式默认为 5500，移动端样式默认为 1500，小程序样式默认为11500 */
   zIndex: {
     type: Number,
     value: 11500,

@@ -17,8 +17,7 @@ const props: TdDialogProps = {
   },
   /** 取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件 */
   cancelBtn: {
-    type: String,
-    optionalTypes: [Object],
+    type: null,
     value: '',
   },
   /** 点击蒙层时是否触发关闭事件 */
@@ -29,12 +28,16 @@ const props: TdDialogProps = {
   /** 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件 */
   confirmBtn: {
     type: null,
-    optionalTypes: [Object],
     value: '',
   },
   /** 内容 */
   content: {
     type: String,
+  },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
   },
   /** 组件类名，分别用于设置 组件外层元素、组件内容部分、确认按钮、取消按钮 等元素类名 */
   externalClasses: {
@@ -64,7 +67,7 @@ const props: TdDialogProps = {
     type: Boolean,
     value: false,
   },
-  /** 组件层级，样式默认为 11500 */
+  /** 对话框层级，Web 侧样式默认为 2500，移动端样式默认 2500，小程序样式默认为 11500 */
   zIndex: {
     type: Number,
     value: 11500,

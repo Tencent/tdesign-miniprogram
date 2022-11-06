@@ -19,6 +19,7 @@ export default class Badge extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
     value: '',
   };

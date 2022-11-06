@@ -49,14 +49,15 @@ isComponent: true
 -- | -- | -- | -- | --
 block | Boolean | false | 是否为块级元素 | N
 content | String / Slot | - | 按钮内容 | N
-custom-dataset | Any | - | 自定义 dataset，可通过 event.detail.currentTarget.dataset.custom 获取。当open-type 为 share 时，可在 onShareAppMessage 事件的 event.target.dataset.custom 中看到传入的值。TS 类型：`any` | N
-disabled | Boolean | false | 是否禁用按钮 | N
+custom-dataset | Object | - | 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取。TS 类型：`any` | N
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
+disabled | Boolean | false | 禁用状态 | N
 external-classes | Array | - | 组件类名。`['t-class', 't-class-icon', 't-class-loading']` | N
 ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
 icon | String | - | 图标名称 | N
 icon-props | Object | {} | 图标属性，透传至 icon | N
 loading | Boolean | false | 是否显示为加载状态 | N
-loading-props | Object | - | 加载loading属性，透传至loading。TS 类型：`LoadingProps` | N
+loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
 shape | String | rectangle | 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形。可选项：rectangle/square/round/circle | N
 size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum` | N
 theme | String | default | 组件风格，依次为品牌色、危险色。可选项：default/primary/danger | N
@@ -85,4 +86,4 @@ bindchooseavatar | Eventhandle | - | 获取用户头像回调，open-type=choose
 
 名称 | 参数 | 描述
 -- | -- | --
-tap | `event` | 点击时触发
+click | `(e: MouseEvent)` | 点击时触发

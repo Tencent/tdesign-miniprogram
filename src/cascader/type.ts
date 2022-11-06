@@ -16,6 +16,14 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
     value?: boolean;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 可选项数据源
    * @default []
    */

@@ -26,11 +26,6 @@ const props: TdRadioProps = {
     type: Boolean,
     value: false,
   },
-  /** 单选按钮颜色 */
-  color: {
-    type: String,
-    value: '#0052d9',
-  },
   /** 单选内容 */
   content: {
     type: String,
@@ -39,6 +34,11 @@ const props: TdRadioProps = {
   contentDisabled: {
     type: Boolean,
     value: false,
+  },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
   },
   /** 是否为禁用态 */
   disabled: {

@@ -15,6 +15,14 @@ export interface TdTabsProps {
     value?: TabAnimation;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名
    */
   externalClasses?: {
@@ -92,6 +100,14 @@ export interface TdTabPanelProps {
   badgeProps?: {
     type: ObjectConstructor;
     value?: object;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 选项卡内容隐藏时是否销毁

@@ -16,7 +16,7 @@ export default class Cascader extends SuperComponent {
 
   data = {
     prefix,
-    name,
+    classPrefix: name,
     stepIndex: 0,
     selectedIndexes: [],
     selectedValue: [],
