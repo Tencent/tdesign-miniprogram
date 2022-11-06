@@ -3,7 +3,7 @@ import config from '../common/config';
 import props from './step-item-props';
 
 const { prefix } = config;
-
+const name = `${prefix}-steps-item`;
 @wxComponent()
 export default class StepItem extends SuperComponent {
   options = {
@@ -34,7 +34,7 @@ export default class StepItem extends SuperComponent {
 
   // 组件的内部数据
   data = {
-    classPrefix: `${prefix}-steps-item`,
+    classPrefix: name,
     prefix,
     rootClassName: '',
     index: 0,

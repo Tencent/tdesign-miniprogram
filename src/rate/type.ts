@@ -22,6 +22,14 @@ export interface TdRateProps {
     value?: number;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 是否禁用评分
    * @default false
    */
@@ -30,7 +38,14 @@ export interface TdRateProps {
     value?: boolean;
   };
   /**
-   * 评分图标的间距
+   * 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-icon', 't-class-text'];
+  };
+  /**
+   * 评分图标的间距，默认单位为 `px`, 示例：`8`
    * @default 8
    */
   gap?: {
@@ -46,8 +61,8 @@ export interface TdRateProps {
     value?: boolean;
   };
   /**
-   * 评分图标的大小，示例：`20`
-   * @default '20'
+   * 评分图标的大小，默认单位为 `px`，示例：`20`
+   * @default 20
    */
   size?: {
     type: StringConstructor;

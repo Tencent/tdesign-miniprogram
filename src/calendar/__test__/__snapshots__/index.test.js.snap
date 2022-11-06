@@ -3,13 +3,15 @@
 exports[`calendar :base 1`] = `
 <main>
   <t-calendar>
-    <wx-view>
+    <wx-view
+      style=""
+    >
       <t-popup
         bind:visible-change="handleClose"
       >
         <wx-view
           class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
-          style=";z-index:11500;"
+          style="z-index:11500;"
           catch:touchmove="onStopPropagation"
           bind:transitionend="onTransitionEnd"
         >
@@ -685,6 +687,7 @@ exports[`calendar :base 1`] = `
                     sendMessageTitle=""
                     sessionFrom=""
                     showMessageCard="{{false}}"
+                    style=""
                     bind:chooseavatar="chooseavatar"
                     bind:contact="contact"
                     bind:error="error"

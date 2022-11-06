@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="utils" />
 
-<view class="{{classPrefix}} {{prefix}}-class">
+<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
   <t-cell
     title="{{header}}"
     note="{{headerRightContent}}"

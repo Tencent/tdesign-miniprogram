@@ -6,6 +6,14 @@
 
 export interface TdCollapseProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 默认是否展开全部
    * @default false
    */
@@ -38,6 +46,7 @@ export interface TdCollapseProps {
   };
   /**
    * 展开的面板集合
+   * @default []
    */
   value?: {
     type: ArrayConstructor;
@@ -45,6 +54,7 @@ export interface TdCollapseProps {
   };
   /**
    * 展开的面板集合，非受控属性
+   * @default []
    */
   defaultValue?: {
     type: ArrayConstructor;
@@ -57,6 +67,14 @@ export interface TdCollapsePanelProps {
    * 折叠面板内容
    */
   content?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
     type: StringConstructor;
     value?: string;
   };

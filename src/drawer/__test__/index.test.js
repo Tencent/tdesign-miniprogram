@@ -2,10 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('drawer', () => {
-  const drawer = simulate.load(path.resolve(__dirname, `../drawer`), {
-    less: true,
-  });
-
+  const drawer = load(path.resolve(__dirname, `../drawer`), 't-drawer');
   describe('props', () => {
     it(`: visible`, () => {
       const id = simulate.load({

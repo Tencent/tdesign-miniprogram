@@ -10,6 +10,11 @@ const props: TdCollapsePanelProps = {
   content: {
     type: String,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 禁止当前面板展开，优先级大于 Collapse 的同名属性 */
   disabled: {
     type: Boolean,
@@ -18,7 +23,7 @@ const props: TdCollapsePanelProps = {
   /** 当前折叠面板展开图标，优先级大于 Collapse 的同名属性 */
   expandIcon: {
     type: Boolean,
-    value: true,
+    value: null,
   },
   /** 组件类名，用于组件外层元素、标题、内容 */
   externalClasses: {

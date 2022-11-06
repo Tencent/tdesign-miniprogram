@@ -11,6 +11,11 @@ const props: TdCalendarProps = {
     type: null,
     value: '',
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 第一天从星期几开始，默认 0 = 周日 */
   firstDayOfWeek: {
     type: Number,
@@ -31,6 +36,7 @@ const props: TdCalendarProps = {
   /** 标题，不传默认为“请选择日期” */
   title: {
     type: String,
+    value: '',
   },
   /** 日历的选择类型，single = 单选；multiple = 多选; range = 区间选择 */
   type: {

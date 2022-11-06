@@ -21,6 +21,11 @@ const props: TdInputProps = {
     type: Boolean,
     value: false,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 是否禁用输入框 */
   disabled: {
     type: Boolean,
@@ -47,7 +52,7 @@ const props: TdInputProps = {
   maxcharacter: {
     type: Number,
   },
-  /** 用户最多可以输入的文本长度，一个中文等于一个计数长度。值小于等于 0 的时候，则表示不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 */
+  /** 用户最多可以输入的文本长度，一个中文等于一个计数长度。值为空，则表示不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 */
   maxlength: {
     type: Number,
   },

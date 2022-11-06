@@ -1,4 +1,5 @@
 <view
+  style="{{ customStyle }}"
   class="{{classPrefix}} {{icon ? '' : prefix + '-is-bordered'}} {{split ? prefix + '-is-split' : ''}}"
   hover-class="{{classPrefix}}--active"
   hover-stay-time="{{200}}"

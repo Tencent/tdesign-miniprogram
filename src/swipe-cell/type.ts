@@ -2,17 +2,23 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 16:40:31
  * */
 
 export interface TdSwipeCellProps {
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
   /**
    * 是否禁用滑动
    */
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 左侧滑动操作项。所有行为同 `right`
@@ -20,7 +26,6 @@ export interface TdSwipeCellProps {
   left?: {
     type: ArrayConstructor;
     value?: Array<SwipeActionItem>;
-    required?: boolean;
   };
   /**
    * 操作项是否呈现为打开态，值为数组时表示分别控制左右滑动的展开和收起状态
@@ -38,8 +43,13 @@ export interface TdSwipeCellProps {
   right?: {
     type: ArrayConstructor;
     value?: Array<SwipeActionItem>;
-    required?: boolean;
   };
-};
+}
 
-export interface SwipeActionItem { text: string; className?: string; style?: string; onClick?: () => void; [key: string]: any };
+export interface SwipeActionItem {
+  text: string;
+  className?: string;
+  style?: string;
+  onClick?: () => void;
+  [key: string]: any;
+}

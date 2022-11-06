@@ -1,4 +1,4 @@
-<t-swipe-cell>
+<t-swipe-cell t-class="test-class-123">
   <t-cell title="列表-左滑单操作" note="辅助信息" bordered="{{false}}" />
   <view slot="right" class="t-swipe-cell-demo-btn delete-btn" bind:tap="onDelete">删除</view>
 </t-swipe-cell>

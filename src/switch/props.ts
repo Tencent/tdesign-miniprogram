@@ -10,7 +10,12 @@ const props: TdSwitchProps = {
   colors: {
     type: Array,
   },
-  /** 开关内容，[打开时的值，关闭时的值]。默认为 [true, false]。示例：[1, 0] */
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
+  /** 用于自定义开关的值，[打开时的值，关闭时的值]。默认为 [true, false]。示例：[1, 0]、['open', 'close'] */
   customValue: {
     type: Array,
     value: [true, false],

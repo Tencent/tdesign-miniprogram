@@ -1,5 +1,16 @@
-module.exports.getTreeClass = function (level) {
+var getTreeClass = function (level) {
   if (level === 0) return 'leaf';
   if (level === 1) return 'parent';
   return 'ancestor';
+};
+
+var getDropdownItemStyles = function (top, zIndex, customStyle) {
+  var topStyle = 'top:' + top + 'px;';
+  var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  return topStyle + zIndexStyle + customStyle;
+};
+
+module.exports = {
+  getTreeClass: getTreeClass,
+  getDropdownItemStyles: getDropdownItemStyles,
 };

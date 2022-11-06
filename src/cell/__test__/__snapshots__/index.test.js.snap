@@ -9,6 +9,7 @@ exports[`cell :base 1`] = `
       class="t-class t-cell   t-cell--middle"
       hoverClass="t-cell--hover-class"
       hoverStayTime="70"
+      style=""
       bind:tap="onClick"
     >
       <wx-view
@@ -54,6 +55,7 @@ exports[`cell :with group 1`] = `
   <main>
     <wx-view
       class="t-class t-cell-group "
+      style=""
     />
   </main>
 </main>

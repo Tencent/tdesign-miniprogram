@@ -11,7 +11,13 @@ const name = `${prefix}-message`;
 const SHOW_DURATION = 500;
 @wxComponent()
 export default class Message extends SuperComponent {
-  externalClasses = ['t-class', 't-class-content', 't-class-icon', 't-class-action', 't-class-close-btn'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-content`,
+    `${prefix}-class-icon`,
+    `${prefix}-class-action`,
+    `${prefix}-class-close-btn`,
+  ];
 
   options: ComponentsOptionsType = {
     styleIsolation: 'apply-shared',

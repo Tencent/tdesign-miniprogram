@@ -12,7 +12,6 @@ export interface TdCountDownProps {
   autoStart?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 最终倒计时的展示内容，值为'default'时使用默认的格式，否则使用自定义样式插槽
@@ -21,7 +20,14 @@ export interface TdCountDownProps {
   content?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒
@@ -30,7 +36,6 @@ export interface TdCountDownProps {
   format?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 是否开启毫秒级渲染
@@ -39,7 +44,6 @@ export interface TdCountDownProps {
   millisecond?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 倒计时尺寸
@@ -48,7 +52,6 @@ export interface TdCountDownProps {
   size?: {
     type: StringConstructor;
     value?: 'small' | 'medium' | 'large';
-    required?: boolean;
   };
   /**
    * 使用时间单位分割
@@ -57,7 +60,6 @@ export interface TdCountDownProps {
   splitWithUnit?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 倒计时风格
@@ -66,7 +68,6 @@ export interface TdCountDownProps {
   theme?: {
     type: StringConstructor;
     value?: 'default' | 'round' | 'square';
-    required?: boolean;
   };
   /**
    * 倒计时时长，单位毫秒
@@ -74,6 +75,5 @@ export interface TdCountDownProps {
   time: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
 }

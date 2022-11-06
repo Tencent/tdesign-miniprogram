@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 16:14:46
  * */
 
 import { TdNavbarProps } from './type';
@@ -14,6 +13,11 @@ const props: TdNavbarProps = {
   },
   /** 背景 */
   background: {
+    type: String,
+    value: '',
+  },
+  /** 自定义组件样式 */
+  customStyle: {
     type: String,
     value: '',
   },
@@ -34,10 +38,12 @@ const props: TdNavbarProps = {
   /** 首页图标地址。值为 '' 或者 undefiend 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 */
   homeIcon: {
     type: String,
+    value: '',
   },
   /** 左侧图标地址，值为 '' 或者 undefiend 则表示不显示返回图标，值为 'arrow-left' 表示显示返回图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 */
   leftIcon: {
     type: String,
+    value: '',
   },
   /** 页面标题 */
   title: {

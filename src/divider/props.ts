@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdDividerProps } from './type';
@@ -15,6 +14,11 @@ const props: TdDividerProps = {
   /** 子元素 */
   content: {
     type: String,
+  },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
   },
   /** 是否虚线（仅在水平分割线有效） */
   dashed: {

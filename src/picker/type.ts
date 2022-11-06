@@ -40,6 +40,22 @@ export interface TdPickerProps {
     value?: boolean | string | ButtonProps;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 底部内容
+   * @default true
+   */
+  footer?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
    * @default true
    */
@@ -87,6 +103,14 @@ export interface TdPickerProps {
 }
 
 export interface TdPickerItemProps {
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
   /**
    * 格式化标签
    */

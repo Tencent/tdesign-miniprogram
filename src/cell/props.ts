@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2022-01-11 17:36:12
  * */
 
 import { TdCellProps } from './type';
@@ -21,6 +20,11 @@ const props: TdCellProps = {
   bordered: {
     type: Boolean,
     value: true,
+  },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
   },
   /** 下方内容描述 */
   description: {

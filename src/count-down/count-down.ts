@@ -19,6 +19,7 @@ export default class CountDown extends SuperComponent {
   };
 
   data = {
+    prefix,
     classPrefix: name,
     timeData: parseTimeData(0),
     formattedTime: '0',

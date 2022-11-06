@@ -15,15 +15,15 @@ const props: TdCascaderProps = {
   keys: {
     type: Object,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 可选项数据源 */
   options: {
     type: Array,
     value: [],
-  },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
   },
   /** 每级展示的次标题 */
   subTitles: {

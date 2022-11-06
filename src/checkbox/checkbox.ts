@@ -3,7 +3,7 @@ import config from '../common/config';
 import Props from './props';
 
 const { prefix } = config;
-const classPrefix = `${prefix}-checkbox`;
+const name = `${prefix}-checkbox`;
 @wxComponent()
 export default class CheckBox extends SuperComponent {
   externalClasses = [
@@ -57,7 +57,7 @@ export default class CheckBox extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix,
+    classPrefix: name,
   };
 
   controlledProps = [

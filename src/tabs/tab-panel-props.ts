@@ -11,6 +11,11 @@ const props: TdTabPanelProps = {
     type: Object,
     value: null,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 选项卡内容隐藏时是否销毁 */
   destroyOnHide: {
     type: Boolean,

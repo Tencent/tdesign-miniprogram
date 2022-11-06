@@ -24,12 +24,19 @@ export interface TdDropdownMenuProps {
     value?: boolean;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 动画时长
    * @default 200
    */
   duration?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
   /**
@@ -51,6 +58,14 @@ export interface TdDropdownMenuProps {
 }
 
 export interface TdDropdownItemProps {
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
   /**
    * 是否禁用
    * @default false
@@ -95,8 +110,7 @@ export interface TdDropdownItemProps {
    * @default 1
    */
   optionsColumns?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
   /**
@@ -111,16 +125,14 @@ export interface TdDropdownItemProps {
    * 选中值
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | ArrayConstructor>;
+    type: null;
     value?: TdDropdownItemOptionValueType | Array<TdDropdownItemOptionValueType>;
   };
   /**
    * 选中值，非受控属性
    */
   defaultValue?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | ArrayConstructor>;
+    type: null;
     value?: TdDropdownItemOptionValueType | Array<TdDropdownItemOptionValueType>;
   };
 }

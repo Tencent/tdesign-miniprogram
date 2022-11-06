@@ -4,13 +4,16 @@ import config from '../common/config';
 import props from './props';
 
 let ARRAY: WechatMiniprogram.Component.TrivialInstance[] = [];
+
 const { prefix } = config;
+const name = `${prefix}-swipe-cell`;
+const ContainerClass = `.${name}`;
 
 @wxComponent()
 export default class SwiperCell extends SuperComponent {
   behaviors = [dom];
 
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   options = {
     multipleSlots: true,
@@ -19,10 +22,11 @@ export default class SwiperCell extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
     wrapperStyle: '',
     closed: true,
     opened: false,
-    classPrefix: `.${prefix}-swipe-cell`,
+    classPrefix: name,
   };
 
   attached() {
@@ -33,8 +37,8 @@ export default class SwiperCell extends SuperComponent {
   }
 
   async setSwipeWidth() {
-    const rightRect = await this.gettingBoundingClientRect(`${this.data.classPrefix}__right`);
-    const leftRect = await this.gettingBoundingClientRect(`${this.data.classPrefix}__left`);
+    const rightRect = await this.gettingBoundingClientRect(`${ContainerClass}__right`);
+    const leftRect = await this.gettingBoundingClientRect(`${ContainerClass}__left`);
     this.setData({
       leftWidth: leftRect.width,
       rightWidth: rightRect.width,
