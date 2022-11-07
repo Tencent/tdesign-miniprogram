@@ -1,4 +1,4 @@
-<t-tab-bar defaultValue="label1">
+<t-tab-bar defaultValue="label1" split="{{false}}">
   <t-tab-bar-item badge-props="{{ {count: 16} }}" icon="loading" value="label1" icon="app">标签</t-tab-bar-item>
   <t-tab-bar-item badge-props="{{ { dot: true } }}" icon="loading" value="label2" icon="app">标签</t-tab-bar-item>
   <t-tab-bar-item badge-props="{{ {count: 'New'} }}" icon="user" value="label3" icon="app">标签</t-tab-bar-item>

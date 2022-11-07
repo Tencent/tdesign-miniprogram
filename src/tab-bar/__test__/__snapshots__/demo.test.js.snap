@@ -4,6 +4,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
 <badge>
   <t-tab-bar
     defaultValue="label1"
+    split="{{false}}"
   >
     <t-tab-bar-item
       badgeProps="{{
@@ -56,6 +57,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
 exports[`TabBar TabBar base demo works fine 1`] = `
 <base>
   <t-tab-bar
+    split="{{false}}"
     theme="tag"
     value="label_1"
     bind:change="onChange"
@@ -129,6 +131,7 @@ exports[`TabBar TabBar custom demo works fine 1`] = `
 exports[`TabBar TabBar icon-only demo works fine 1`] = `
 <icon-only>
   <t-tab-bar
+    split="{{false}}"
     theme="tag"
     value="label_1"
     bind:change="onChange"
@@ -157,6 +160,7 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
 <sub>
   <t-tab-bar
     defaultValue="label_3"
+    split="{{false}}"
     theme="tag"
   >
     <t-tab-bar-item
@@ -205,6 +209,7 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
 exports[`TabBar TabBar text-only demo works fine 1`] = `
 <text-only>
   <t-tab-bar
+    split="{{false}}"
     theme="tag"
     value="label_1"
     bind:change="onChange"

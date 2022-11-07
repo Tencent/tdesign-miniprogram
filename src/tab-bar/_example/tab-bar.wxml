@@ -14,9 +14,7 @@
   </t-demo>
 
   <t-demo desc="双层级纯文本标签栏">
-    <view class="demo-word">
-      <sub />
-    </view>
+    <sub />
   </t-demo>
 
   <t-demo title="02 组件样式" desc="弱选中标签栏">
