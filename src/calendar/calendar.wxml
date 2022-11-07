@@ -11,14 +11,18 @@
       <view class="{{classPrefix}}__days">
         <view wx:for="{{days}}" wx:key="index" class="{{classPrefix}}__days-item">{{ item }}</view>
       </view>
-      <view class="{{classPrefix}}__months">
+      <scroll-view class="{{classPrefix}}__months" scroll-with-animation scroll-y enhanced show-scrollbar="{{false}}">
         <block wx:for="{{months}}" wx:key="index">
           <view class="{{classPrefix}}__month">{{ item.year }} 年 {{ item.month + 1 }} 月</view>
           <view class="{{classPrefix}}__dates">
+            <view
+              wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}"
+              wx:key="index"
+              class="{{classPrefix}}__dates-item"
+            />
             <block wx:for="{{item.months}}" wx:for-index="dateIndex" wx:for-item="dateItem" wx:key="dateIndex">
               <view
                 class="{{classPrefix}}__dates-item {{dateItem.className}} {{classPrefix}}__dates-item--{{dateItem.type}}"
-                style="margin-left: {{dateIndex === 0 ? 49 * ((item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7) + 'px' : 0}}"
                 data-year="{{item.year}}"
                 data-month="{{item.month}}"
                 data-date="{{dateItem}}"
@@ -38,7 +42,7 @@
             </block>
           </view>
         </block>
-      </view>
+      </scroll-view>
       <view class="{{classPrefix}}__footer">
         <slot wx:if="{{confirmBtn === 'slot'}}" name="confirmBtn" />
         <block wx:elif="{{confirmBtn}}">
