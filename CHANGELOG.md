@@ -5,6 +5,37 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.25.0 `2022-11-07` 
+### ❗ Breaking Changes
+- `Badge`: 修复 offset 的顺序，首值应该调整水平方向 @LeeJim ([#971](https://github.com/Tencent/tdesign-miniprogram/pull/971))
+- `Tabs`: 调整非 BEM 的类名，此变更属于破坏性变更 @LeeJim ([#970](https://github.com/Tencent/tdesign-miniprogram/pull/970))
+### 🚀 Features
+- 全部组件支持 `customStyle` 属性，作为 style 传入根元素 @anlyyao ([#985](https://github.com/Tencent/tdesign-miniprogram/pull/985))
+- `SideBar`: 新增侧边导航组件 @LeeJim ([#974](https://github.com/Tencent/tdesign-miniprogram/pull/974))
+- `RadioGroup`: 新增支持 keys 属性，使用 options 时有效 @LeeJim ([#964](https://github.com/Tencent/tdesign-miniprogram/pull/964))
+- `Tabs`: 新增 space-evenly 属性，默认均分选项卡片的空间 @LeeJim ([#965](https://github.com/Tencent/tdesign-miniprogram/pull/965))
+- `Cascader`: 视觉全新升级 @LeeJim ([#966](https://github.com/Tencent/tdesign-miniprogram/pull/966))
+- `Cascader`: 新增 theme 属性，新增 tab 风格 @LeeJim ([#966](https://github.com/Tencent/tdesign-miniprogram/pull/966))
+- `Cascader`: 新增 keys 属性，支持映射 optiosn 属性名 @LeeJim ([#966](https://github.com/Tencent/tdesign-miniprogram/pull/966))
+- `Cascader`: 新增 sub-titles 属性，显示每级的次标题 @LeeJim ([#966](https://github.com/Tencent/tdesign-miniprogram/pull/966))
+- `Button`: 新增 CSS Variable 调整文本、边框、背景等颜色，具体查看文档 @anlyyao ([#947](https://github.com/Tencent/tdesign-miniprogram/pull/947))
+- `GridItem`: 新增 image-props 透传至 image 组件 @LeeJim ([#976](https://github.com/Tencent/tdesign-miniprogram/pull/976))
+- `TabBar`: 视觉升级 @LeeJim ([#987](https://github.com/Tencent/tdesign-miniprogram/pull/987))
+- `TabBar`: 新增 shape 属性，新增悬浮胶囊形状的标签栏 @LeeJim ([#987](https://github.com/Tencent/tdesign-miniprogram/pull/987))
+- `TabBar`: 新增 theme 属性，新增 tag 风格 @LeeJim ([#987](https://github.com/Tencent/tdesign-miniprogram/pull/987))
+- `DropdownMenu`: 新增 `external-classes` 属性 @anlyyao ([#991](https://github.com/Tencent/tdesign-miniprogram/pull/991))
+- `Csacader`: 支持 CSS Variables 进行自定义主题 @LeeJim ([#990](https://github.com/Tencent/tdesign-miniprogram/pull/990))
+### 🐞 Bug Fixes
+- 修复没传值时不支持非受控的问题 @LeeJim ([#977](https://github.com/Tencent/tdesign-miniprogram/pull/977))
+- `RadioGroup`: 修复使用 options 时无法选中的问题 @LeeJim ([#964](https://github.com/Tencent/tdesign-miniprogram/pull/964))
+- `Tabs`: 修复动态 label 无法生效的问题 @LeeJim ([#963](https://github.com/Tencent/tdesign-miniprogram/pull/963))
+- `Tabs`: 优化样式细节 @LeeJim ([#965](https://github.com/Tencent/tdesign-miniprogram/pull/965))
+- `Cascader`: 修复传入 value 不会渲染选项的问题 @LeeJim ([#966](https://github.com/Tencent/tdesign-miniprogram/pull/966))
+- `Button`: 修复 variant=text 时，文本颜色样式错误 @anlyyao ([#947](https://github.com/Tencent/tdesign-miniprogram/pull/947))
+- `Input`: 修复 `--td-input-disabled-text-color` 无效的问题 @anlyyao ([#960](https://github.com/Tencent/tdesign-miniprogram/pull/960))
+- `Calendar`: 修复无法滚动的问题 @LeeJim ([#989](https://github.com/Tencent/tdesign-miniprogram/pull/989))
+- `Calandar`: 修复在布局不兼容的问题 @LeeJim ([#989](https://github.com/Tencent/tdesign-miniprogram/pull/989))
+
 ## 🌈 0.24.0 `2022-10-31` 
 ### ❗️BREAKING CHANGES
 - `Radio`: 移除 color 属性，使用 CSS Variable 替代 @anlyyao ([#944](https://github.com/Tencent/tdesign-miniprogram/pull/944))
