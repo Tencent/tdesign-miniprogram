@@ -85,8 +85,12 @@ exports[`calendar :base 1`] = `
                   六
                 </wx-view>
               </wx-view>
-              <wx-view
+              <wx-scroll-view
                 class="t-calendar__months"
+                enhanced="{{true}}"
+                scrollWithAnimation="{{true}}"
+                scrollY="{{true}}"
+                showScrollbar="{{false}}"
               >
                 <wx-view
                   class="t-calendar__month"
@@ -96,6 +100,24 @@ exports[`calendar :base 1`] = `
                 <wx-view
                   class="t-calendar__dates"
                 >
+                  <wx-view
+                    class="t-calendar__dates-item"
+                  />
+                  <wx-view
+                    class="t-calendar__dates-item"
+                  />
+                  <wx-view
+                    class="t-calendar__dates-item"
+                  />
+                  <wx-view
+                    class="t-calendar__dates-item"
+                  />
+                  <wx-view
+                    class="t-calendar__dates-item"
+                  />
+                  <wx-view
+                    class="t-calendar__dates-item"
+                  />
                   <wx-view
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
@@ -107,7 +129,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 294px"
                     bind:tap="handleSelect"
                   >
                     
@@ -125,7 +146,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -143,7 +163,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -161,7 +180,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -179,7 +197,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -197,7 +214,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -215,7 +231,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -233,7 +248,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -251,7 +265,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -269,7 +282,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -287,7 +299,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -305,7 +316,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -323,7 +333,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -341,7 +350,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -359,7 +367,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -377,7 +384,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -395,7 +401,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -413,7 +418,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -431,7 +435,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -449,7 +452,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -467,7 +469,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -485,7 +486,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -503,7 +503,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -521,7 +520,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -539,7 +537,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -557,7 +554,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -575,7 +571,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -593,7 +588,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -611,7 +605,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -629,7 +622,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -647,7 +639,6 @@ exports[`calendar :base 1`] = `
                     }}"
                     data-month="{{9}}"
                     data-year="{{2022}}"
-                    style="margin-left: 0"
                     bind:tap="handleSelect"
                   >
                     
@@ -655,7 +646,7 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                 </wx-view>
-              </wx-view>
+              </wx-scroll-view>
               <wx-view
                 class="t-calendar__footer"
               >
