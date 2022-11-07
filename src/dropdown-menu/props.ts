@@ -26,6 +26,10 @@ const props: TdDropdownMenuProps = {
     type: null,
     value: 200,
   },
+  /** 组件类名，分别用于设置 组件外层类名、菜单标签、菜单图标类名 等 */
+  externalClasses: {
+    type: Array,
+  },
   /** 是否显示遮罩层 */
   showOverlay: {
     type: Boolean,

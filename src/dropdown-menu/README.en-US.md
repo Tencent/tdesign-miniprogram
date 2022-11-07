@@ -9,6 +9,7 @@ active-color | String | - | \- | N
 close-on-click-overlay | Boolean | true | \- | N
 custom-style `v0.25.0` | String | - | \- | N
 duration | String / Number | 200 | \- | N
+external-classes | Array | - | `['t-class', 't-class-menu', 't-class-menu-item', 't-class-menu-label', 't-class-menu-icon']` | N
 show-overlay | Boolean | true | \- | N
 z-index | Number | 11600 | \- | N
 
@@ -16,8 +17,9 @@ z-index | Number | 11600 | \- | N
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style | String | - | \- | N
+custom-style `v0.25.0` | String | - | \- | N
 disabled | Boolean | false | \- | N
+external-classes | Array | - | `['t-class','t-class-content', 't-class-column', 't-class-column-item', 't-class-column-item-label', 't-class-tree', 't-class-tree-item', 't-class-tree-columns', 't-class-tree-columns-item', 't-class-tree-columns-item-label', 't-class-footer']` | N
 keys | Object | - | Typescript：`KeysType` | N
 label | String | - | \- | N
 multiple | Boolean | false | \- | N
