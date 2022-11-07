@@ -19,6 +19,11 @@ const props: TdTabBarItemProps = {
   icon: {
     type: String,
   },
+  /** 自定义组件样式 */
+  style: {
+    type: String,
+    value: '',
+  },
   /** 二级菜单 */
   subTabBar: {
     type: Array,

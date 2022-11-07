@@ -37,9 +37,6 @@ export default class Tabbar extends SuperComponent {
     },
   };
 
-  /**
-   * value设置为多层级标签，需要展开
-   */
   ready() {
     this.showChildren();
   }
@@ -53,6 +50,7 @@ export default class Tabbar extends SuperComponent {
         items.forEach((child) => {
           if (child.properties.value === value) {
             child.showSpread();
+            child.setData({ crowded: len > 3 });
           }
         });
       }

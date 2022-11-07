@@ -47,12 +47,36 @@ export interface TdTabBarProps {
     value?: boolean;
   };
   /**
+   * 标签栏的形状
+   * @default normal
+   */
+  shape?: {
+    type: StringConstructor;
+    value?: 'normal' | 'round';
+  };
+  /**
    * 是否需要分割线
    * @default true
    */
   split?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 选项风格
+   * @default normal
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'normal' | 'tag';
   };
   /**
    * 当前选中标签的索引
@@ -92,6 +116,14 @@ export interface TdTabBarItemProps {
    * 图标名称
    */
   icon?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
     type: StringConstructor;
     value?: string;
   };

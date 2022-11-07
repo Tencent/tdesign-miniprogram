@@ -1,6 +1,7 @@
+<wxs src="../common/utils.wxs" module="_" />
 <view
   style="{{ customStyle }}"
-  class="{{classPrefix}} {{bordered ? classPrefix + '--border' : ''}} {{fixed ? classPrefix + '--fixed' : ''}} {{safeAreaInsetBottom ? classPrefix + '--safe' : ''}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [['border', bordered], ['fixed', fixed], ['safe', safeAreaInsetBottom], shape])}} {{prefix}}-class"
 >
   <slot />
 </view>
