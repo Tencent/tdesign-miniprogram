@@ -9,6 +9,8 @@ import config from '../common/config';
 import { DIRECTION, NavTypes } from './common/constants';
 
 const { prefix } = config;
+const name = `${prefix}-swiper-nav`;
+
 type NavOptions = {
   index: number;
   total: number;
@@ -51,7 +53,7 @@ export default class SwiperNav extends SuperComponent {
     total: 0,
     direction: DIRECTION.HOR,
     prefix,
-    classPrefix: `${prefix}-swiper-nav`,
+    classPrefix: name,
   };
 
   ready() {

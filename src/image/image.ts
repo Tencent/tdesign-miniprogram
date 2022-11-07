@@ -6,7 +6,7 @@ const { prefix } = config;
 const name = `${prefix}-image`;
 @wxComponent()
 export default class Image extends SuperComponent {
-  externalClasses = ['t-class', 't-class-load'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-load`];
 
   options = {
     multipleSlots: true,

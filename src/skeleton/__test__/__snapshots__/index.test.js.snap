@@ -7,6 +7,7 @@ exports[`skeleton Props :inner rowCol 1`] = `
   >
     <wx-view
       class="t-skeleton t-class "
+      style=""
     >
       <wx-view
         class="t-skeleton__content"
@@ -15,7 +16,7 @@ exports[`skeleton Props :inner rowCol 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:undefined;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -23,11 +24,11 @@ exports[`skeleton Props :inner rowCol 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:24%;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:16px;margin-left:undefined;border-radius:undefined;"
           />
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:76%;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -44,6 +45,7 @@ exports[`skeleton Props :text rowCol 1`] = `
   >
     <wx-view
       class="t-skeleton t-class "
+      style=""
     >
       <wx-view
         class="t-skeleton__content"
@@ -52,7 +54,7 @@ exports[`skeleton Props :text rowCol 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:686rpx;height:32rpx;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -60,7 +62,7 @@ exports[`skeleton Props :text rowCol 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:undefined;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -68,7 +70,7 @@ exports[`skeleton Props :text rowCol 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:undefined;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -76,11 +78,11 @@ exports[`skeleton Props :text rowCol 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:38rpx;height:32rpx;background:undefined;background-color:undefined;margin:undefined;margin-right:20rpx;margin-left:20rpx;border-radius:undefined;"
           />
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:38rpx;height:32rpx;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -88,7 +90,7 @@ exports[`skeleton Props :text rowCol 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:440rpx;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -105,6 +107,7 @@ exports[`skeleton Props :text rowCol2 1`] = `
   >
     <wx-view
       class="t-skeleton t-class "
+      style=""
     >
       <wx-view
         class="t-skeleton__content"
@@ -113,7 +116,7 @@ exports[`skeleton Props :text rowCol2 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:343px;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -121,7 +124,7 @@ exports[`skeleton Props :text rowCol2 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:undefined;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -129,7 +132,7 @@ exports[`skeleton Props :text rowCol2 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:undefined;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -137,11 +140,11 @@ exports[`skeleton Props :text rowCol2 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:14px;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:10px;margin-left:10px;border-radius:undefined;"
           />
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:small;height:small;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>
@@ -149,7 +152,7 @@ exports[`skeleton Props :text rowCol2 1`] = `
           class="t-skeleton__row t-class-row"
         >
           <wx-view
-            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation- t-class-col"
+            class="t-skeleton__col,t-skeleton--type-text,t-skeleton--animation-none t-class-col"
             style="width:220px;height:16px;background:undefined;background-color:undefined;margin:undefined;margin-right:undefined;margin-left:undefined;border-radius:undefined;"
           />
         </wx-view>

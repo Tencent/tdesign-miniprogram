@@ -16,13 +16,23 @@ const props: TdDateTimePickerProps = {
     type: String,
     value: '',
   },
-  /** 选择器的结束时间 */
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
+  /** 选择器的最大可选时间，默认为当前时间+10年 */
   end: {
     type: null,
   },
   /** 组件类名，分别用于设置组件外层元素、确认按钮、取消按钮、标题等元素类名 */
   externalClasses: {
     type: Array,
+  },
+  /** 底部内容 */
+  footer: {
+    type: Boolean,
+    value: true,
   },
   /** 用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format) */
   format: {
@@ -44,7 +54,7 @@ const props: TdDateTimePickerProps = {
     type: Boolean,
     value: false,
   },
-  /** 选择器的开始时间 */
+  /** 选择器的最小可选时间，默认为当前时间-10年 */
   start: {
     type: null,
   },

@@ -30,6 +30,14 @@ export interface TdUploadProps {
     value?: UploadMpConfig;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 已上传文件列表
    */
   files?: {

@@ -1,5 +1,6 @@
 <wxs src="./input.wxs" module="utils" />
 <view
+  style="{{ customStyle }}"
   class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + (borderless ? '' : '--bordered')}} {{prefix}}-class"
 >
   <view wx:if="{{prefixIcon}}" class="{{classPrefix}}__icon-wrap">

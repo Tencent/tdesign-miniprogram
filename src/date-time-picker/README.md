@@ -45,17 +45,18 @@ isComponent: true
 -- | -- | -- | -- | --
 cancel-btn | String | 取消 | 取消按钮文字 | N
 confirm-btn | String | - | 确定按钮文字 | N
-end | String / Number | - | 选择器的结束时间 | N
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
+end | String / Number | - | 选择器的最大可选时间，默认为当前时间+10年 | N
 external-classes | Array | - | 组件类名，分别用于设置组件外层元素、确认按钮、取消按钮、标题等元素类名。`['t-class', 't-class-confirm', 't-class-cancel', 't-class-title']` | N
 footer | Slot | true | 底部内容 | N
-format | String | '' | 用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format) | N
+format | String | 'YYYY-MM-DD HH:mm:ss' | 用于pick、change、confirm事件参数格式化[详细文档](https://day.js.org/docs/en/display/format) | N
 header | Boolean / Slot | true | 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 | N
-mode | String / Array | 'date' | year = 年；month = 年月；date = 年月日；hour = 年月日时； minute = 年月日时分；当类型为数组时，第一个值控制年月日，第二个值控制时分秒。TS 类型：`DateTimePickerMode` `type DateTimePickerMode = TimeModeValues | Array<TimeModeValues> ` `type TimeModeValues = 'year' | 'month' | 'date' | 'hour' | 'minute' | 'second'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
+mode | String / Array | 'date' | year = 年；month = 年月；date = 年月日；hour = 年月日时； minute = 年月日时分；当类型为数组时，第一个值控制年月日，第二个值控制时分秒。TS 类型：`DateTimePickerMode` `type DateTimePickerMode = TimeModeValues \| Array<TimeModeValues> ` `type TimeModeValues = 'year' \| 'month' \| 'date' \| 'hour' \| 'minute' \| 'second'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 show-week | Boolean | false | 【开发中】是否在日期旁边显示周几（如周一，周二，周日等） | N
-start | String / Number | - | 选择器的开始时间 | N
+start | String / Number | - | 选择器的最小可选时间，默认为当前时间-10年 | N
 title | String | - | 标题 | N
-value | String / Number | - | 选中值。TS 类型：`DateValue` `type DateValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
-default-value | String / Number | undefined | 选中值。非受控属性。TS 类型：`DateValue` `type DateValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
+value | String / Number | - | 选中值。TS 类型：`DateValue` `type DateValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
+default-value | String / Number | undefined | 选中值。非受控属性。TS 类型：`DateValue` `type DateValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 visible | Boolean | false | 是否显示 | N
 
 ### DateTimePicker Events
@@ -64,4 +65,5 @@ visible | Boolean | false | 是否显示 | N
 -- | -- | --
 cancel | \- | 取消按钮点击时触发
 change | `(value: DateValue)` | 确认按钮点击时触发
+confirm | `(value: DateValue)` | 【开发中】确认按钮点击时触发
 pick | `(value: DateValue)` | 选中值发生变化时触发

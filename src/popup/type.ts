@@ -30,12 +30,20 @@ export interface TdPopupProps {
     value?: string;
   };
   /**
-   * 弹出层的自定义样式
+   * 自定义组件样式
    * @default ''
    */
   customStyle?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 动画过渡时间
+   * @default 240
+   */
+  duration?: {
+    type: NumberConstructor;
+    value?: number;
   };
   /**
    * 组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名
@@ -92,7 +100,16 @@ export interface TdPopupProps {
     value?: boolean;
   };
   /**
-   * 组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500
+   * 是否显示浮层，非受控属性
+   * @default false
+   */
+  defaultVisible?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 组件层级，Web 侧样式默认为 5500，移动端样式默认为 1500，小程序样式默认为11500
+   * @default 11500
    */
   zIndex?: {
     type: NumberConstructor;

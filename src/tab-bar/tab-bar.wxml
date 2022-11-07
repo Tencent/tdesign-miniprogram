@@ -1,4 +1,5 @@
 <view
+  style="{{ customStyle }}"
   class="{{classPrefix}} {{bordered ? classPrefix + '--border' : ''}} {{fixed ? classPrefix + '--fixed' : ''}} {{safeAreaInsetBottom ? classPrefix + '--safe' : ''}} {{prefix}}-class"
 >
   <slot />

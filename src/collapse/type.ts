@@ -6,6 +6,14 @@
 
 export interface TdCollapseProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 默认是否展开全部
    * @default false
    */
@@ -38,6 +46,7 @@ export interface TdCollapseProps {
   };
   /**
    * 展开的面板集合
+   * @default []
    */
   value?: {
     type: ArrayConstructor;
@@ -45,6 +54,7 @@ export interface TdCollapseProps {
   };
   /**
    * 展开的面板集合，非受控属性
+   * @default []
    */
   defaultValue?: {
     type: ArrayConstructor;
@@ -61,6 +71,14 @@ export interface TdCollapsePanelProps {
     value?: string;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 禁止当前面板展开，优先级大于 Collapse 的同名属性
    */
   disabled?: {
@@ -69,6 +87,7 @@ export interface TdCollapsePanelProps {
   };
   /**
    * 当前折叠面板展开图标，优先级大于 Collapse 的同名属性
+   * @default true
    */
   expandIcon?: {
     type: BooleanConstructor;

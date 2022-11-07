@@ -6,6 +6,7 @@ exports[`textarea slots : label 1`] = `
 >
   <wx-view
     class="t-textarea t-class"
+    style=""
   >
     <wx-view
       class="t-textarea__name t-class-label"

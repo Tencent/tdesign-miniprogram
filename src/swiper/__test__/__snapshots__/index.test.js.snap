@@ -107,6 +107,7 @@ exports[`swiper props : direction 1`] = `
       >
         <wx-view
           class="t-class t-swiper-nav t-swiper-nav--vertical t-swiper-nav--position-bottom-right"
+          style=""
         >
           <wx-view
             class="t-swiper-nav__fraction"
@@ -183,6 +184,7 @@ exports[`swiper props : direction 1`] = `
       >
         <wx-view
           class="t-class t-swiper-nav t-swiper-nav--horizontal t-swiper-nav--position-bottom"
+          style=""
         >
           <wx-view
             class="t-swiper-nav__dots-bar"

@@ -23,20 +23,20 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
     value?: KeysType;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 可选项数据源
    * @default []
    */
   options?: {
     type: ArrayConstructor;
     value?: Array<CascaderOption>;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 每级展示的次标题

@@ -9,6 +9,10 @@ TComponent({
   behaviors: canIUseFormFieldButton() ? ['wx://form-field-button'] : [],
   // 组件的对外属性
   properties: {
+    customStyle: {
+      type: String,
+      value: '',
+    },
     type: {
       type: String,
       value: 'default',

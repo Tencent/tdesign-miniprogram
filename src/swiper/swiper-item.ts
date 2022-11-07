@@ -6,6 +6,8 @@ import { DIRECTION } from './common/constants';
 import config from '../common/config';
 
 const { prefix } = config;
+const name = `${prefix}-swiper-item`;
+
 @wxComponent()
 export default class SwiperItem extends SuperComponent {
   relations: RelationsOptions = {
@@ -16,7 +18,7 @@ export default class SwiperItem extends SuperComponent {
 
   data = {
     index: 0,
-    classPrefix: `${prefix}-swiper-item`,
+    classPrefix: name,
     translate: '',
   };
 

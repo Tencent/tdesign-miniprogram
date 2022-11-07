@@ -14,6 +14,7 @@ export default class Switch extends SuperComponent {
 
   // 组件的内部数据
   data = {
+    prefix,
     classPrefix: name,
     isActive: false,
     bodyStyle: '',

@@ -18,6 +18,7 @@ export default class Grid extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
     contentStyle: '',
   };

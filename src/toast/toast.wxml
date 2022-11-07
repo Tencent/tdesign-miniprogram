@@ -1,7 +1,7 @@
 <view
   wx:if="{{realVisible}}"
   class="{{classPrefix}} {{prefix}}-class {{transitionClass}} {{classPrefix}}--{{direction}}"
-  style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}}"
+  style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}} {{ customStyle }}"
   bind:transitionend="onTransitionEnd"
 >
   <view class="{{classPrefix}}__content {{classPrefix}}__content--{{direction}}">
@@ -29,6 +29,7 @@
   </view>
 </view>
 <t-overlay
+  customStyle="{{ overlayProps.customStyle }}"
   visible="{{realVisible && (showOverlay || preventScrollThrough)}}"
   z-index="{{overlayProps.zIndex}}"
   backgroundColor="{{preventScrollThrough ? 'transparent' : overlayProps.backgroundColor}}"

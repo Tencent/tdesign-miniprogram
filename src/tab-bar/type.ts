@@ -16,6 +16,14 @@ export interface TdTabBarProps {
     value?: boolean;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件类名，用于设置外层元素类名
    */
   externalClasses?: {
@@ -48,6 +56,7 @@ export interface TdTabBarProps {
   };
   /**
    * 当前选中标签的索引
+   * @default null
    */
   value?: {
     type: null;
@@ -55,6 +64,7 @@ export interface TdTabBarProps {
   };
   /**
    * 当前选中标签的索引，非受控属性
+   * @default null
    */
   defaultValue?: {
     type: null;
@@ -69,6 +79,14 @@ export interface TdTabBarItemProps {
   badgeProps?: {
     type: ObjectConstructor;
     value?: BadgeProps;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 图标名称

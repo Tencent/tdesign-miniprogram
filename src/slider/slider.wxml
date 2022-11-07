@@ -1,5 +1,6 @@
 <wxs src="./slider.wxs" module="utils" />
 <view
+  style="{{ customStyle }}"
   class="{{classPrefix}}__container {{isScale && scaleTextArray.length ? classPrefix + '--bottom' : ''}} {{prefix}}-class {{disabled ? prefix + '-is-disabled ' + prefix + '-class-bar-disabled' : ''}}"
 >
   <block wx:if="{{!range}}">
@@ -52,10 +53,7 @@
   <!-- range选择器自定义 -->
   <block wx:if="{{range}}">
     <view class="{{classPrefix}}__range-container">
-      <view
-        wx:if="{{showExtremeValue}}"
-        class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--min"
-      >
+      <view wx:if="{{showExtremeValue}}" class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--min">
         {{min}}
       </view>
       <view
@@ -87,9 +85,7 @@
           class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
           style="left: {{activeLeft}}px; border-color: {{disabled ? disabledColor[0] : ''}}"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value">
-            {{utils.getValue(label, dotTopValue[0])}}
-          </view>
+          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{utils.getValue(label, dotTopValue[0])}} </view>
         </view>
         <view
           id="rightDot"
@@ -99,15 +95,10 @@
           class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
           style="right: {{activeRight}}px; border-color: {{disabled ? disabledColor[0] : ''}}"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value">
-            {{utils.getValue(label, dotTopValue[1])}}
-          </view>
+          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{utils.getValue(label, dotTopValue[1])}} </view>
         </view>
       </view>
-      <view
-        wx:if="{{showExtremeValue}}"
-        class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--max"
-      >
+      <view wx:if="{{showExtremeValue}}" class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--max">
         {{max}}
       </view>
     </view>

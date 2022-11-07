@@ -10,7 +10,7 @@ export default class BackTop extends SuperComponent {
   /**
    * Component properties
    */
-  externalClasses = ['t-class', 't-class-icon', 't-class-text'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-text`];
 
   properties = props;
 

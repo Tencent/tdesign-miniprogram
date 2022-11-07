@@ -3,6 +3,7 @@
 exports[`stepper event : input 1`] = `
 <wx-view
   class="t-stepper t-stepper--normal  t-class"
+  style=""
 >
   <wx-view
     class="t-stepper__minus t-class-minus  hotspot-expanded relative"
@@ -56,6 +57,7 @@ exports[`stepper event : input 1`] = `
 exports[`stepper event : input 2`] = `
 <wx-view
   class="t-stepper t-stepper--normal  t-class"
+  style=""
 >
   <wx-view
     class="t-stepper__minus t-class-minus  hotspot-expanded relative"

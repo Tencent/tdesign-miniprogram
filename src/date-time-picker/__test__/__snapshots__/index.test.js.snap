@@ -15,7 +15,7 @@ exports[`date-time-picker :base 1`] = `
       >
         <wx-view
           class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
-          style=";z-index:11500;"
+          style="z-index:11500;"
           catch:touchmove="onStopPropagation"
           bind:transitionend="onTransitionEnd"
         >
@@ -29,6 +29,7 @@ exports[`date-time-picker :base 1`] = `
             <wx-view
               class="t-picker t-class"
               slot="content"
+              style=""
             >
               <wx-view
                 class="t-picker__toolbar"
@@ -60,6 +61,7 @@ exports[`date-time-picker :base 1`] = `
                 >
                   <wx-view
                     class="t-picker-item__group"
+                    style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
                     catch:touchmove="onTouchMove"
@@ -326,6 +328,7 @@ exports[`date-time-picker :base 1`] = `
                 >
                   <wx-view
                     class="t-picker-item__group"
+                    style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
                     catch:touchmove="onTouchMove"
@@ -477,7 +480,7 @@ exports[`date-time-picker :second 1`] = `
       >
         <wx-view
           class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
-          style=";z-index:11500;"
+          style="z-index:11500;"
           catch:touchmove="onStopPropagation"
           bind:transitionend="onTransitionEnd"
         >
@@ -491,6 +494,7 @@ exports[`date-time-picker :second 1`] = `
             <wx-view
               class="t-picker t-class"
               slot="content"
+              style=""
             >
               <wx-view
                 class="t-picker__toolbar"
@@ -522,6 +526,7 @@ exports[`date-time-picker :second 1`] = `
                 >
                   <wx-view
                     class="t-picker-item__group"
+                    style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
                     catch:touchmove="onTouchMove"
@@ -788,6 +793,7 @@ exports[`date-time-picker :second 1`] = `
                 >
                   <wx-view
                     class="t-picker-item__group"
+                    style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
                     catch:touchmove="onTouchMove"
@@ -902,6 +908,7 @@ exports[`date-time-picker :second 1`] = `
                 >
                   <wx-view
                     class="t-picker-item__group"
+                    style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
                     catch:touchmove="onTouchMove"
@@ -1168,6 +1175,7 @@ exports[`date-time-picker :second 1`] = `
                 >
                   <wx-view
                     class="t-picker-item__group"
+                    style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
                     catch:touchmove="onTouchMove"
@@ -1378,6 +1386,7 @@ exports[`date-time-picker :second 1`] = `
                 >
                   <wx-view
                     class="t-picker-item__group"
+                    style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
                     catch:touchmove="onTouchMove"
@@ -1876,6 +1885,7 @@ exports[`date-time-picker :second 1`] = `
                 >
                   <wx-view
                     class="t-picker-item__group"
+                    style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
                     catch:touchmove="onTouchMove"

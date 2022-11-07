@@ -6,18 +6,26 @@
 
 export interface TdStepperProps {
   /**
-   * 禁用全部操作
-   * @default false
+   * 自定义组件样式
+   * @default ''
    */
-  disabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 禁用输入框
    * @default false
    */
   disableInput?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 禁用全部操作
+   * @default false
+   */
+  disabled?: {
     type: BooleanConstructor;
     value?: boolean;
   };

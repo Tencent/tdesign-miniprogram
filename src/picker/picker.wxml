@@ -1,9 +1,11 @@
 <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupChange">
-  <view slot="content" class="{{classPrefix}} t-class">
+  <view slot="content" style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
     <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
-      <view class="{{classPrefix}}__cancel t-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel">{{cancelBtn}}</view>
-      <view class="{{classPrefix}}__title t-class-title">{{title}}</view>
-      <view class="{{classPrefix}}__confirm t-class-confirm" wx:if="{{confirmBtn}}" bindtap="onConfirm"
+      <view class="{{classPrefix}}__cancel {{prefix}}-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel"
+        >{{cancelBtn}}</view
+      >
+      <view class="{{classPrefix}}__title {{prefix}}-class-title">{{title}}</view>
+      <view class="{{classPrefix}}__confirm {{prefix}}-class-confirm" wx:if="{{confirmBtn}}" bindtap="onConfirm"
         >{{confirmBtn}}</view
       >
     </view>

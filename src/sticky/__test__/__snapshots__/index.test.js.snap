@@ -10,11 +10,11 @@ exports[`Sticky Props :base 1`] = `
       bind:scroll="handleScroll"
     >
       <wx-view
-        class=".t-sticky t-class"
+        class="t-sticky t-class"
         style="z-index:99;"
       >
         <wx-view
-          class=".t-sticky__content"
+          class="t-sticky__content"
           style="z-index:99;"
         >
           <t-button
@@ -36,6 +36,7 @@ exports[`Sticky Props :base 1`] = `
               sendMessageTitle=""
               sessionFrom=""
               showMessageCard="{{false}}"
+              style=""
               bind:chooseavatar="chooseavatar"
               bind:contact="contact"
               bind:error="error"
@@ -61,11 +62,11 @@ exports[`Sticky Props :base 1`] = `
       bind:scroll="handleScroll"
     >
       <wx-view
-        class=".t-sticky t-class"
+        class="t-sticky t-class"
         style="z-index:99;"
       >
         <wx-view
-          class=".t-sticky__content"
+          class="t-sticky__content"
           style="z-index:99;"
         >
           <t-button
@@ -87,6 +88,7 @@ exports[`Sticky Props :base 1`] = `
               sendMessageTitle=""
               sessionFrom=""
               showMessageCard="{{false}}"
+              style=""
               bind:chooseavatar="chooseavatar"
               bind:contact="contact"
               bind:error="error"
@@ -112,11 +114,11 @@ exports[`Sticky Props :base 1`] = `
       bind:scroll="handleScroll"
     >
       <wx-view
-        class=".t-sticky t-class"
+        class="t-sticky t-class"
         style="z-index:99;"
       >
         <wx-view
-          class=".t-sticky__content"
+          class="t-sticky__content"
           style="z-index:99;"
         >
           <t-button
@@ -138,6 +140,7 @@ exports[`Sticky Props :base 1`] = `
               sendMessageTitle=""
               sessionFrom=""
               showMessageCard="{{false}}"
+              style=""
               bind:chooseavatar="chooseavatar"
               bind:contact="contact"
               bind:error="error"
@@ -165,11 +168,11 @@ exports[`Sticky Props :base 1`] = `
         id="container-sticky"
       >
         <wx-view
-          class=".t-sticky t-class"
+          class="t-sticky t-class"
           style="z-index:99;"
         >
           <wx-view
-            class=".t-sticky__content"
+            class="t-sticky__content"
             style="z-index:99;"
           >
             <t-button
@@ -191,6 +194,7 @@ exports[`Sticky Props :base 1`] = `
                 sendMessageTitle=""
                 sessionFrom=""
                 showMessageCard="{{false}}"
+                style=""
                 bind:chooseavatar="chooseavatar"
                 bind:contact="contact"
                 bind:error="error"

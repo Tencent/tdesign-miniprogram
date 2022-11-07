@@ -11,6 +11,16 @@ const props: TdRadioGroupProps = {
     type: String,
     value: 'left',
   },
+  /** 是否开启无边框模式 */
+  borderless: {
+    type: Boolean,
+    value: false,
+  },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 是否禁用全部子单选框 */
   disabled: {
     type: Boolean,

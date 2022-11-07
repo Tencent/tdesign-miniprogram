@@ -75,18 +75,18 @@ handler.close();
 -- | -- | -- | -- | --
 cancel-text | String | 取消 | 设置取消按钮的文本 | N
 count | Number | 8 | 设置每页展示菜单的数量，仅当 type=grid 时有效 | N
-items | Array | - | 必需。菜单项。TS 类型：`Array<string | ActionSheetItem>` `interface ActionSheetItem {label: string; color?: string; disabled?: boolean; icon?: string; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts) | Y
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
+external-classes | Array | - | 组件类名，用于设置组件外层元素类名。。`['t-class', 't-class-image', 't-class-content']` | N
+items | Array | - | 必需。菜单项。TS 类型：`Array<string \| ActionSheetItem>` `interface ActionSheetItem {label: string; color?: string; disabled?: boolean }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts) | Y
 show-cancel | Boolean | true | 是否显示取消按钮 | N
 theme | String | list | 展示类型，列表和表格形式展示。可选项：list/grid | N
-visible | Boolean | null | 必需。显示与隐藏 | Y
+visible | Boolean | false | 必需。显示与隐藏 | Y
 default-visible | Boolean | false | 必需。显示与隐藏。非受控属性 | Y
-external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、组件内容部分、取消按钮 等元素类名。`['t-class', 't-class-content', 't-class-cancel']` | N
 
 ### ActionSheet Events
 
 名称 | 参数 | 描述
 -- | -- | --
 visible-change | `(visible: Boolean)` | 当浮层隐藏或显示时触发。
-cancel | - | 点击取消按钮时触发
-selected | `(selected: ActionSheetItem | String, index: Number)` | 选择菜单项时触发
-
+cancel | \- | 点击取消按钮时触发
+selected | `(selected: ActionSheetItem \| string, index: number)` | 选择菜单项时触发

@@ -12,7 +12,7 @@ export default class Picker extends SuperComponent {
    */
   properties = props;
 
-  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`];
 
   options = {
     multipleSlots: true,
@@ -37,6 +37,7 @@ export default class Picker extends SuperComponent {
    * Component initial data
    */
   data = {
+    prefix,
     classPrefix: name,
   };
 

@@ -11,6 +11,11 @@ const props: TdDrawerProps = {
     type: Boolean,
     value: true,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 抽屉关闭时是否销毁节点 */
   destroyOnClose: {
     type: Boolean,
@@ -35,7 +40,7 @@ const props: TdDrawerProps = {
     type: Boolean,
     value: false,
   },
-  /** 组件层级，样式默认为 11500 */
+  /** 抽屉层级，样式默认为 11500 */
   zIndex: {
     type: Number,
     value: 11500,

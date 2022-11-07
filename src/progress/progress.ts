@@ -5,7 +5,7 @@ import { getBackgroundColor } from './utils';
 import { isNumber } from '../common/utils';
 
 const { prefix } = config;
-const classPrefix = `${prefix}-progress`;
+const name = `${prefix}-progress`;
 
 @wxComponent()
 export default class Progress extends SuperComponent {
@@ -19,7 +19,7 @@ export default class Progress extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix,
+    classPrefix: name,
     colorBar: '',
     heightBar: '',
     computedStatus: '',

@@ -30,6 +30,14 @@ export interface TdInputProps {
     value?: boolean;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 是否禁用输入框
    * @default false
    */
