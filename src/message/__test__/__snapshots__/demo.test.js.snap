@@ -57,6 +57,27 @@ exports[`Message Message base demo works fine 1`] = `
 </base>
 `;
 
+exports[`Message Message custom-navigation demo works fine 1`] = `
+<custom-navigation>
+  <t-message
+    id="t-message"
+  />
+  <wx-view
+    class="box"
+  >
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      variant="outline"
+      bind:tap="showTextMessage"
+    >
+      自定义导航栏
+    </t-button>
+  </wx-view>
+</custom-navigation>
+`;
+
 exports[`Message Message status-message demo works fine 1`] = `
 <status-message>
   <t-message

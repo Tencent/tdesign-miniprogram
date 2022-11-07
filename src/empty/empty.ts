@@ -11,11 +11,12 @@ export default class extends SuperComponent {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };
 
-  externalClasses = ['t-class', 't-class-description', 't-class-image'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-description`, `${prefix}-class-image`];
 
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
   };
 }

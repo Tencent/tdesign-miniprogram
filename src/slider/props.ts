@@ -11,6 +11,11 @@ const props: TdSliderProps = {
     type: Array,
     value: ['#0052D9', 'rgba(220, 220, 220, 1)'],
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 是否禁用组件 */
   disabled: {
     type: Boolean,

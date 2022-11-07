@@ -6,6 +6,11 @@
 
 import { TdDropdownItemProps } from './type';
 const props: TdDropdownItemProps = {
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 是否禁用 */
   disabled: {
     type: Boolean,
@@ -32,8 +37,7 @@ const props: TdDropdownItemProps = {
   },
   /** 选项分栏（1-3） */
   optionsColumns: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: 1,
   },
   /** 选项排列 */
@@ -44,14 +48,12 @@ const props: TdDropdownItemProps = {
   /** 选中值 */
   value: {
     type: null,
-    optionalTypes: [Number, Array],
-    value: null,
+    value: undefined,
   },
   /** 选中值，非受控属性 */
   defaultValue: {
     type: null,
-    optionalTypes: [Number, Array],
-    value: null,
+    value: undefined,
   },
 };
 

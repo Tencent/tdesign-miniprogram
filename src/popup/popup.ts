@@ -14,7 +14,7 @@ const name = `${prefix}-popup`;
 
 @wxComponent()
 export default class Popup extends SuperComponent {
-  externalClasses = ['t-class', 't-class-content'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-content`];
 
   behaviors = [transition()];
 

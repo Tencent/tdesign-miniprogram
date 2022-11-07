@@ -3,6 +3,7 @@ import config from '../common/config';
 import props from './props';
 
 const { prefix } = config;
+const name = `${prefix}-stepper`;
 
 @wxComponent()
 export default class Stepper extends SuperComponent {
@@ -31,7 +32,7 @@ export default class Stepper extends SuperComponent {
 
   data = {
     currentValue: 0,
-    classPrefix: `${prefix}-stepper`,
+    classPrefix: name,
     prefix,
   };
 

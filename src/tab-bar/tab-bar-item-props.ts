@@ -10,6 +10,11 @@ const props: TdTabBarItemProps = {
   badgeProps: {
     type: Object,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 图标名称 */
   icon: {
     type: String,

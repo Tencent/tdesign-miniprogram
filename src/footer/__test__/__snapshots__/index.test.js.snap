@@ -5,6 +5,7 @@ exports[`Footer :base 1`] = `
   <main>
     <wx-view
       class="t-footer"
+      style=""
     >
       <wx-view
         class="t-footer__copyright-info"

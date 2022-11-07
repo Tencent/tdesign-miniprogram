@@ -6,21 +6,19 @@
 
 export interface TdStepsProps {
   /**
-   * 当前步骤，即整个步骤条进度。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。如果每个步骤没有设置 value，current 值为步骤长度则表示所有步骤已完成。如果每个步骤设置了自定义 value，则 current = 'FINISH' 表示所有状态完成
+   * 当前步骤，即整个步骤条进度，格式为`1`、`1-0`或`1-1`。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。若当前步骤条存在子步骤条，则会根据子步骤条重新判断当前步骤状态（子步骤条中存在error，则当前步骤error，子步骤条中存在process，当前步骤process，若最后一个子步骤条finish，当前步骤finish，优先级为`finish>error>process`）。注意：如果每个步骤条单独设置了status，则步骤条为设定的status，若传入`status:''`,将默认为未开始状态,传入的status优先级最高。
    * @default 0
    */
   current?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
   /**
-   * 当前步骤，即整个步骤条进度。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。如果每个步骤没有设置 value，current 值为步骤长度则表示所有步骤已完成。如果每个步骤设置了自定义 value，则 current = 'FINISH' 表示所有状态完成，非受控属性
+   * 当前步骤，即整个步骤条进度，格式为`1`、`1-0`或`1-1`。默认根据步骤下标判断步骤的完成状态，当前步骤为进行中，当前步骤之前的步骤为已完成，当前步骤之后的步骤为未开始。若当前步骤条存在子步骤条，则会根据子步骤条重新判断当前步骤状态（子步骤条中存在error，则当前步骤error，子步骤条中存在process，当前步骤process，若最后一个子步骤条finish，当前步骤finish，优先级为`finish>error>process`）。注意：如果每个步骤条单独设置了status，则步骤条为设定的status，若传入`status:''`,将默认为未开始状态,传入的status优先级最高。，非受控属性
    * @default 0
    */
   defaultCurrent?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
   /**
@@ -30,6 +28,14 @@ export interface TdStepsProps {
   currentStatus?: {
     type: StringConstructor;
     value?: 'default' | 'process' | 'finish' | 'error';
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 组件类名，用于设置组件外层元素元素类名
@@ -55,6 +61,14 @@ export interface TdStepsProps {
     value?: boolean;
   };
   /**
+   * 【讨论中】步骤条分割符
+   * @default line
+   */
+  separator?: {
+    type: StringConstructor;
+    value?: 'line' | 'dashed' | 'arrow';
+  };
+  /**
    * 步骤条风格
    * @default default
    */
@@ -74,6 +88,14 @@ export interface TdStepItemProps {
     value?: string;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件类名，用于设置组件外层元素元素类名
    */
   externalClasses?: {
@@ -88,7 +110,7 @@ export interface TdStepItemProps {
     value?: string;
   };
   /**
-   * 当前步骤的状态
+   * 当前步骤的状态：默认状态（未开始）、进行中状态、完成状态、错误状态
    * @default default
    */
   status?: {

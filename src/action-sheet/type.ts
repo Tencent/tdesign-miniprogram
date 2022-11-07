@@ -22,6 +22,21 @@ export interface TdActionSheetProps {
     value?: number;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 组件类名，用于设置组件外层元素类名。
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-image', 't-class-content'];
+  };
+  /**
    * 菜单项
    */
   items: {

@@ -62,6 +62,7 @@ CSS 变量名|说明
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 bordered | Boolean | true | 是否显示外边框 | N
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 external-classes | Array | - | 组件类名，用于设置外层元素类名。`['t-class']` | N
 fixed | Boolean | true | 是否固定在底部 | N
 safe-area-inset-bottom | Boolean | true | 是否为 iPhoneX 留出底部安全距离 | N
@@ -82,6 +83,7 @@ change | `(value: string | number)` | 选中标签切换时触发
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 badge-props | Object | - | 图标右上角提示信息。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar/type.ts) | N
+custom-style | String | - | 自定义组件样式 | N
 icon | String / Slot | - | 图标名称 | N
 sub-tab-bar | Array | - | 二级菜单。TS 类型：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar/type.ts) | N
 value | String / Number | - | 标识符 | N

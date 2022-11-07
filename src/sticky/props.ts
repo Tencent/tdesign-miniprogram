@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 16:42:37
  * */
 
 import { TdStickyProps } from './type';
@@ -10,6 +9,11 @@ const props: TdStickyProps = {
   /** 函数返回容器对应的 NodesRef 节点，将对应节点指定为组件的外部容器，滚动时组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置。 */
   container: {
     type: null,
+  },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
   },
   /** 是否禁用组件 */
   disabled: {

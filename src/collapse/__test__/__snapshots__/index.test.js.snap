@@ -8,12 +8,14 @@ exports[`collapse :base 1`] = `
   >
     <wx-view
       class="t-class t-collapse "
+      style=""
     >
       <t-collapse-panel
         id="first"
       >
         <wx-view
           class="t-collapse-panel t-class"
+          style=""
         >
           <t-cell
             class="t-collapse-panel__title"
@@ -28,6 +30,7 @@ exports[`collapse :base 1`] = `
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
+              style=""
               bind:tap="onClick"
             >
               <wx-view
@@ -88,6 +91,7 @@ exports[`collapse :base 1`] = `
       >
         <wx-view
           class="t-collapse-panel t-class"
+          style=""
         >
           <t-cell
             class="t-collapse-panel__title"
@@ -102,6 +106,7 @@ exports[`collapse :base 1`] = `
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
+              style=""
               bind:tap="onClick"
             >
               <wx-view
@@ -164,10 +169,12 @@ exports[`collapse :base 1`] = `
   >
     <wx-view
       class="t-class t-collapse "
+      style=""
     >
       <t-collapse-panel>
         <wx-view
           class="t-collapse-panel t-class"
+          style=""
         >
           <t-cell
             class="t-collapse-panel__title"
@@ -182,6 +189,7 @@ exports[`collapse :base 1`] = `
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
+              style=""
               bind:tap="onClick"
             >
               <wx-view
@@ -240,6 +248,7 @@ exports[`collapse :base 1`] = `
       <t-collapse-panel>
         <wx-view
           class="t-collapse-panel t-class"
+          style=""
         >
           <t-cell
             class="t-collapse-panel__title"
@@ -254,6 +263,7 @@ exports[`collapse :base 1`] = `
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
+              style=""
               bind:tap="onClick"
             >
               <wx-view
@@ -320,10 +330,12 @@ exports[`collapse :defaultExpandAll 1`] = `
 >
   <wx-view
     class="t-class t-collapse "
+    style=""
   >
     <t-collapse-panel>
       <wx-view
         class="t-collapse-panel t-class"
+        style=""
       >
         <t-cell
           class="t-collapse-panel__title"
@@ -338,6 +350,7 @@ exports[`collapse :defaultExpandAll 1`] = `
             class="t-class t-cell   t-cell--middle"
             hoverClass="t-cell--hover-class"
             hoverStayTime="70"
+            style=""
             bind:tap="onClick"
           >
             <wx-view
@@ -396,6 +409,7 @@ exports[`collapse :defaultExpandAll 1`] = `
     <t-collapse-panel>
       <wx-view
         class="t-collapse-panel t-class"
+        style=""
       >
         <t-cell
           class="t-collapse-panel__title"
@@ -410,6 +424,7 @@ exports[`collapse :defaultExpandAll 1`] = `
             class="t-class t-cell   t-cell--middle"
             hoverClass="t-cell--hover-class"
             hoverStayTime="70"
+            style=""
             bind:tap="onClick"
           >
             <wx-view
@@ -476,12 +491,14 @@ exports[`collapse :disabled 1`] = `
 >
   <wx-view
     class="t-class t-collapse "
+    style=""
   >
     <t-collapse-panel
       id="first"
     >
       <wx-view
         class="t-collapse-panel t-class"
+        style=""
       >
         <t-cell
           class="t-collapse-panel__title"
@@ -496,6 +513,7 @@ exports[`collapse :disabled 1`] = `
             class="t-class t-cell   t-cell--middle"
             hoverClass="t-cell--hover-class"
             hoverStayTime="70"
+            style=""
             bind:tap="onClick"
           >
             <wx-view
@@ -556,6 +574,7 @@ exports[`collapse :disabled 1`] = `
     >
       <wx-view
         class="t-collapse-panel t-class"
+        style=""
       >
         <t-cell
           class="t-collapse-panel__title"
@@ -570,6 +589,7 @@ exports[`collapse :disabled 1`] = `
             class="t-class t-cell   t-cell--middle"
             hoverClass="t-cell--hover-class"
             hoverStayTime="70"
+            style=""
             bind:tap="onClick"
           >
             <wx-view

@@ -13,6 +13,21 @@ export interface TdNoticeBarProps {
     value?: string;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 组件类名，分别用于设置 组件外层元素、文本内容、前缀图标、右侧额外信息、后缀图标 等元素类名。
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-content', 't-class-prefix-icon', 't-class-extra', 't-class-suffix-icon'];
+  };
+  /**
    * 右侧额外信息
    */
   extra?: {
@@ -24,12 +39,11 @@ export interface TdNoticeBarProps {
    * @default false
    */
   marquee?: {
-    type: ObjectConstructor;
-    optionalTypes: Array<BooleanConstructor>;
-    value?: DrawMarquee | boolean;
+    type: null;
+    value?: boolean | DrawMarquee;
   };
   /**
-   * 左边图标
+   * 前缀图标
    * @default ''
    */
   prefixIcon?: {
@@ -57,6 +71,14 @@ export interface TdNoticeBarProps {
    * @default false
    */
   visible?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 显示/隐藏，非受控属性
+   * @default false
+   */
+  defaultVisible?: {
     type: BooleanConstructor;
     value?: boolean;
   };

@@ -26,6 +26,16 @@ const props: TdPickerProps = {
     type: null,
     value: true,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
+  /** 底部内容 */
+  footer: {
+    type: Boolean,
+    value: true,
+  },
   /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 */
   header: {
     type: Boolean,

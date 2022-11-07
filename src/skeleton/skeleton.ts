@@ -27,6 +27,12 @@ export default class Skeleton extends SuperComponent {
 
   properties = props;
 
+  data = {
+    prefix,
+    classPrefix: name,
+    parsedRowcols: [],
+  };
+
   observers = {
     rowCol() {
       this.init();
@@ -111,11 +117,5 @@ export default class Skeleton extends SuperComponent {
       });
       return style;
     },
-  };
-
-  data = {
-    prefix,
-    classPrefix: name,
-    parsedRowcols: [],
   };
 }

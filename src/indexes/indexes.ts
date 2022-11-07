@@ -3,8 +3,8 @@ import config from '../common/config';
 import props from './props';
 
 const { prefix } = config;
+const name = `${prefix}-indexes`;
 
-const classPrefix = `${prefix}-indexes`;
 const topOffset = 40; // 滑动选中高亮的顶部偏移(px)
 
 @wxComponent()
@@ -31,7 +31,7 @@ export default class IndexBar extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix,
+    classPrefix: name,
     clientHeight: 0,
     groups: [],
     activeGroup: null, // 当前高亮group
@@ -66,8 +66,8 @@ export default class IndexBar extends SuperComponent {
 
   getDomInfo() {
     const query = this.createSelectorQuery();
-    query.select(`#id-${classPrefix}__bar`).boundingClientRect();
-    query.selectAll(`.${classPrefix}__group`).boundingClientRect();
+    query.select(`#id-${name}__bar`).boundingClientRect();
+    query.selectAll(`.${name}__group`).boundingClientRect();
     query.exec((res) => {
       if (!res[0]) return;
       this.btnBar = {

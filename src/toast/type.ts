@@ -6,6 +6,14 @@
 
 export interface TdToastProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 图标排列方式
    * @default row
    */

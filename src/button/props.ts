@@ -19,7 +19,12 @@ const props: TdButtonProps = {
   customDataset: {
     type: null,
   },
-  /** 是否禁用按钮 */
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
+  /** 禁用状态 */
   disabled: {
     type: Boolean,
     value: false,

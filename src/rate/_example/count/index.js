@@ -3,10 +3,12 @@ Component({
     value: 3,
   },
 
-  onChange(e) {
-    const { value } = e.detail;
-    this.setData({
-      value,
-    });
+  methods: {
+    onChange(e) {
+      const { value } = e.detail;
+      this.setData({
+        value,
+      });
+    },
   },
 });

@@ -2,7 +2,9 @@
 
 exports[`SwipeCell SwipeCell left demo works fine 1`] = `
 <left>
-  <t-swipe-cell>
+  <t-swipe-cell
+    tClass="test-class-123"
+  >
     <t-cell
       bordered="{{false}}"
       note="辅助信息"

@@ -12,8 +12,7 @@ column | Number | 4 | \- | N
 external-classes | Array | - | `['t-class']` | N
 gutter | Number | - | \- | N
 hover | Boolean | false | \- | N
-style | String | - | \- | N
-
+custom-style `v0.25.0` | String | - | \- | N
 ### GridItem Props
 
 name | type | default | description | required
@@ -25,6 +24,6 @@ image | String / Slot | - | \- | N
 image-props | Object | - | \- | N
 jump-type | String | navigate-to | options：redirect-to/switch-tab/relaunch/navigate-to | N
 layout | String | vertical | options：vertical/horizontal | N
-style | String | - | \- | N
+custom-style | String | - | \- | N
 text | String / Slot | - | \- | N
 url | String | - | \- | N

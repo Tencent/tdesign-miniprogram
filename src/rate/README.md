@@ -68,16 +68,16 @@ CSS 变量名|说明
 -- | -- | -- | -- | --
 allow-half | Boolean | false | 是否允许半选 | N
 count | Number | 5 | 评分的数量 | N
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用评分 | N
+external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。。`['t-class', 't-class-icon', 't-class-text']` | N
 gap | Number | 8 | 评分图标的间距，默认单位为 `px`, 示例：`8` | N
 show-text | Boolean | false | 是否显示对应的辅助文字 | N
-size | String | 20 | 评分图标的大小，默认单位为 `px`, 示例：`20` | N
+size | String | 20 | 评分图标的大小，默认单位为 `px`，示例：`20` | N
 texts | Array | [] | 评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']。TS 类型：`Array<string>` | N
 value | Number | 0 | 选择评分的值 | N
 default-value | Number | undefined | 选择评分的值。非受控属性 | N
 variant | String | outline | 形状类型，有描边类型和填充类型两种。可选项：outline/filled | N
-external-classes | Array         | -      | 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。`['t-class', 't-class-icon', 't-class-text']` | N
-
 
 ### Rate Events
 

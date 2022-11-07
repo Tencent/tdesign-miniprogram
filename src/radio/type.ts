@@ -38,14 +38,6 @@ export interface TdRadioProps<T = RadioValue> {
     value?: boolean;
   };
   /**
-   * 单选按钮颜色
-   * @default #0052d9
-   */
-  color?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 单选内容
    */
   content?: {
@@ -59,6 +51,14 @@ export interface TdRadioProps<T = RadioValue> {
   contentDisabled?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 是否为禁用态

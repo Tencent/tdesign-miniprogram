@@ -23,11 +23,19 @@ export interface TdAvatarProps {
     value?: BadgeProps;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件类名，用于设置组件外层元素类名
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class'];
+    value?: ['t-class', 't-class-image', 't-class-icon', 't-class-alt', 't-class-content'];
   };
   /**
    * 加载失败时隐藏图片
@@ -51,6 +59,13 @@ export interface TdAvatarProps {
   image?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 透传至 Image 组件
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 形状
@@ -83,6 +98,14 @@ export interface TdAvatarGroupProps {
    * 头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多`
    */
   collapseAvatar?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
     type: StringConstructor;
     value?: string;
   };

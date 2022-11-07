@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdDividerProps {
@@ -13,7 +12,6 @@ export interface TdDividerProps {
   align?: {
     type: StringConstructor;
     value?: 'left' | 'right' | 'center';
-    required?: boolean;
   };
   /**
    * 子元素
@@ -21,7 +19,14 @@ export interface TdDividerProps {
   content?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 是否虚线（仅在水平分割线有效）
@@ -30,7 +35,6 @@ export interface TdDividerProps {
   dashed?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 组件类名，分别用于设置 组件外层类名、分隔线类名 等
@@ -38,7 +42,6 @@ export interface TdDividerProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-line', 't-class-content'];
-    required?: boolean;
   };
   /**
    * 分隔线类型有两种：水平和垂直
@@ -47,7 +50,6 @@ export interface TdDividerProps {
   layout?: {
     type: StringConstructor;
     value?: 'horizontal' | 'vertical';
-    required?: boolean;
   };
   /**
    * 分隔线颜色
@@ -56,7 +58,6 @@ export interface TdDividerProps {
   lineColor?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 请更为使用 `layout`。分隔线类型有两种：水平和垂直
@@ -66,6 +67,5 @@ export interface TdDividerProps {
   theme?: {
     type: StringConstructor;
     value?: 'horizontal' | 'vertical';
-    required?: boolean;
   };
-};
+}

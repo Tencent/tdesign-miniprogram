@@ -1,15 +1,10 @@
-<view class="{{classPrefix}}">
+<view style="{{ customStyle }}" class="{{classPrefix}}">
   <!-- theme 为 logo -->
   <block wx:if="{{theme === 'logo'}}">
     <view class="{{classPrefix}}__logo">
       <image class="{{classPrefix}}__icon" src="{{logo.icon}}" wx:if="{{logo.icon}}" />
       <view class="{{classPrefix}}__title" wx:if="{{logo.title}}">{{logo.title}}</view>
-      <image
-        class="{{classPrefix}}__title-url"
-        src="{{logo.url}}"
-        mode="widthFix"
-        wx:elif="{{logo.url}}"
-      />
+      <image class="{{classPrefix}}__title-url" src="{{logo.url}}" mode="widthFix" wx:elif="{{logo.url}}" />
     </view>
   </block>
   <!-- theme 为 text -->
