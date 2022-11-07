@@ -28,12 +28,12 @@ export default class Divider extends SuperComponent {
 
   observers = {
     'lineColor, customStyle'() {
-      this.setDividerStyle();
+      this.setStyle();
     },
   };
 
   methods = {
-    setDividerStyle() {
+    setStyle() {
       const { lineColor, customStyle } = this.properties;
       const dividerStyle = `${lineColor ? `border-color: ${lineColor};` : ''}${customStyle ? `${customStyle}` : ''}`;
       this.setData({

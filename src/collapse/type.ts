@@ -87,6 +87,7 @@ export interface TdCollapsePanelProps {
   };
   /**
    * 当前折叠面板展开图标，优先级大于 Collapse 的同名属性
+   * @default true
    */
   expandIcon?: {
     type: BooleanConstructor;

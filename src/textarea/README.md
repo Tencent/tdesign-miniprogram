@@ -57,9 +57,9 @@ adjust-position | Boolean | true | 键盘弹起时，是否自动上推页面 | 
 autofocus | Boolean | false | 自动聚焦，拉起键盘 | N
 autosize | Boolean | false | 是否自动增高，值为 autosize 时，style.height 不生效 | N
 confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键盘不收起点 | N
-confirm-type `v0.25.0` | String | done | 设置键盘右下角按钮的文字，仅在 type='text'时生效。可选项：send/search/next/go/done。TS 类型：`'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
+confirm-type | String | done | 设置键盘右下角按钮的文字，仅在 type='text'时生效。可选项：send/search/next/go/done。TS 类型：`'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
 cursor-spacing | Number | 0 | 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 | N
-custom-style | String | - | 自定义组件样式 | N
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用文本框 | N
 external-classes | Array | - | 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名。`['t-class', 't-class-textarea', 't-class-label']` | N
 focus | Boolean | false | 自动聚焦 | N

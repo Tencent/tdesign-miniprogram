@@ -66,8 +66,8 @@ export default class IndexBar extends SuperComponent {
 
   getDomInfo() {
     const query = this.createSelectorQuery();
-    query.select(`#id-${this.data.classPrefix}__bar`).boundingClientRect();
-    query.selectAll(`.${this.data.classPrefix}__group`).boundingClientRect();
+    query.select(`#id-${name}__bar`).boundingClientRect();
+    query.selectAll(`.${name}__group`).boundingClientRect();
     query.exec((res) => {
       if (!res[0]) return;
       this.btnBar = {

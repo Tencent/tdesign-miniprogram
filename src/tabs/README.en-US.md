@@ -30,7 +30,7 @@ scroll | `(scrollTop: number, isFixed: boolean)` | \-
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-badge-props | Object | {} | \- | N
+badge-props | Object | null | \- | N
 destroy-on-hide | Boolean | true | \- | N
 disabled | Boolean | false | \- | N
 label | String | - | \- | N

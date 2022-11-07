@@ -118,4 +118,4 @@ bindchooseavatar | Eventhandle | - | 获取用户头像回调，open-type=choose
 
 名称 | 参数 | 描述
 -- | -- | --
-click | `(e: MouseEvent)` | 点击时触发
+tap | `event` | 点击时触发

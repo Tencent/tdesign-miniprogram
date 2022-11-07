@@ -44,4 +44,4 @@ bindchooseavatar | Eventhandle | - | \- | N
 
 name | params | description
 -- | -- | --
-click | `(e: MouseEvent)` | \-
+tap | `event` | \-
