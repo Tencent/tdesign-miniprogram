@@ -11,6 +11,20 @@ const name = `${prefix}-dropdown-item`;
 export interface DropdownItemProps extends TdDropdownItemProps {}
 @wxComponent()
 export default class DropdownMenuItem extends SuperComponent {
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-content`,
+    `${prefix}-class-column`,
+    `${prefix}-class-column-item`,
+    `${prefix}-class-column-item-label`,
+    `${prefix}-class-tree`,
+    `${prefix}-class-tree-item`,
+    `${prefix}-class-tree-columns`,
+    `${prefix}-class-tree-columns-item`,
+    `${prefix}-class-tree-columns-item-label`,
+    `${prefix}-class-footer`,
+  ];
+
   properties = {
     ...props,
   };

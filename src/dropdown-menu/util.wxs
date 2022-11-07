@@ -5,7 +5,7 @@ var getTreeClass = function (level) {
 };
 
 var getDropdownItemStyles = function (top, zIndex, customStyle) {
-  var topStyle = 'top:' + top + 'px;';
+  var topStyle = top ? 'top:' + top + 'px;' : '';
   var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
   return topStyle + zIndexStyle + customStyle;
 };
