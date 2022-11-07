@@ -91,7 +91,7 @@ export default class RadioGroup extends SuperComponent {
               ...element,
               label: element[keys?.label ?? 'label'],
               value: element[keys?.value ?? 'value'],
-              checked: value === element.value,
+              checked: value === element[keys?.value ?? 'value'],
             });
           }
         });
