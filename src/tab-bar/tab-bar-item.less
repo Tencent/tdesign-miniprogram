@@ -38,6 +38,10 @@
     padding: 0 16rpx;
   }
 
+  &--round {
+    border-radius: 99px;
+  }
+
   &__content {
     width: 100%;
     height: 100%;
@@ -51,10 +55,6 @@
     &--checked {
       color: var(--td-tab-bar-item-active-color, @tab-bar-active-color);
       font-weight: 600;
-
-      .@{item}__icon-menu {
-        background-color: var(--td-tab-bar-item-active-color, @tab-bar-active-color);
-      }
     }
 
     &--tag {
@@ -65,9 +65,9 @@
       background-color: var(--td-tab-bar-active-bg, @tab-bar-active-bg);
     }
 
-    &--active {
-      background-color: var(--td-tab-bar-hover-color, @tab-bar-hover-bg-color);
-    }
+    // &--active {
+    //   background-color: var(--td-tab-bar-hover-color, @tab-bar-hover-bg-color);
+    // }
   }
 
   .@{prefix}-badge-class {
@@ -85,30 +85,7 @@
   }
 
   &__icon-menu {
-    width: 8px;
-    height: 1px;
-    background-color: #666;
-    position: relative;
-    margin-right: 4px;
-
-    &::before,
-    &::after {
-      display: block;
-      content: '';
-      position: absolute;
-      left: 0;
-      background-color: inherit;
-      width: inherit;
-      height: inherit;
-    }
-
-    &::before {
-      top: -4px;
-    }
-
-    &::after {
-      bottom: -4px;
-    }
+    margin-right: 8rpx;
   }
 
   &__spread {
@@ -119,6 +96,7 @@
     background-color: @tab-bar-bg-color;
     transform: translate3d(0, calc(-100% - 16px), 0);
     z-index: 1;
+    border-radius: 12rpx;
 
     &::before {
       display: block;

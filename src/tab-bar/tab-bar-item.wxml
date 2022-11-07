@@ -1,13 +1,13 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded]])}}">
+<view class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}}">
   <view
     class="{{_.cls(classPrefix + '__content', [['checked', isChecked], theme])}}"
     hover-class="{{classPrefix}}__content--active"
     hover-stay-time="{{200}}"
     bindtap="toggle"
   >
-    <view class="{{classPrefix}}__icon" style="height: {{iconOnly ? 24 : 20}}px" wx:if="{{icon}}">
+    <view wx:if="{{icon}}" class="{{classPrefix}}__icon" style="height: {{iconOnly ? 24 : 20}}px">
       <t-badge
         wx:if="{{badgeProps.dot || badgeProps.count}}"
         count="{{badgeProps.count}}"
@@ -25,7 +25,7 @@
       <slot name="icon" />
     </view>
     <view class="{{_.cls(classPrefix + '__text', [['small', !!icon]])}}">
-      <view wx:if="{{hasChildren}}" class="{{classPrefix}}__icon-menu" />
+      <t-icon wx:if="{{hasChildren}}" name="view-list" size="16" class="{{classPrefix}}__icon-menu" />
       <slot />
     </view>
   </view>

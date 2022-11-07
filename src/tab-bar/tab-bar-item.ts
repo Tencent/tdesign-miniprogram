@@ -14,11 +14,13 @@ export default class TabBarItem extends SuperComponent {
     './tab-bar': {
       type: 'ancestor',
       linked(parent) {
+        const { theme, split, shape } = parent.data;
         this.parent = parent;
 
         this.setData({
-          theme: parent.data.theme,
-          split: parent.data.split,
+          theme,
+          split,
+          shape,
           currentName: this.properties.value ? this.properties.value : parent.initName(),
         });
         parent.updateChildren();
@@ -43,6 +45,7 @@ export default class TabBarItem extends SuperComponent {
     iconOnly: false,
     theme: '',
     crowded: false,
+    shape: 'normal',
   };
 
   properties = props;

@@ -14,7 +14,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       icon="app"
       value="label1"
     >
-      文字 
+      标签
     </t-tab-bar-item>
     <t-tab-bar-item
       badgeProps="{{
@@ -25,7 +25,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       icon="app"
       value="label2"
     >
-      文字 
+      标签
     </t-tab-bar-item>
     <t-tab-bar-item
       badgeProps="{{
@@ -36,7 +36,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       icon="app"
       value="label3"
     >
-      文字 
+      标签
     </t-tab-bar-item>
     <t-tab-bar-item
       badgeProps="{{
@@ -47,7 +47,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       icon="app"
       value="label4"
     >
-      文字 
+      标签
     </t-tab-bar-item>
   </t-tab-bar>
 </badge>
@@ -56,6 +56,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
 exports[`TabBar TabBar base demo works fine 1`] = `
 <base>
   <t-tab-bar
+    theme="tag"
     value="label_1"
     bind:change="onChange"
   >
@@ -64,7 +65,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_1"
     >
       
-    文字
+    标签
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -72,7 +73,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_2"
     >
       
-    文字
+    标签
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -80,7 +81,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_3"
     >
       
-    文字
+    标签
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -88,7 +89,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_4"
     >
       
-    文字
+    标签
   
     </t-tab-bar-item>
   </t-tab-bar>
@@ -128,6 +129,7 @@ exports[`TabBar TabBar custom demo works fine 1`] = `
 exports[`TabBar TabBar icon-only demo works fine 1`] = `
 <icon-only>
   <t-tab-bar
+    theme="tag"
     value="label_1"
     bind:change="onChange"
   >
@@ -155,13 +157,14 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
 <sub>
   <t-tab-bar
     defaultValue="label_3"
+    theme="tag"
   >
     <t-tab-bar-item
       subTabBar=""
       value="label_1"
     >
       
-    标签栏一
+    标签
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -169,7 +172,7 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
       value="label_2"
     >
       
-    标签栏二
+    标签
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -192,7 +195,7 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
       value="label_3"
     >
       
-    此处展开
+    展开项
   
     </t-tab-bar-item>
   </t-tab-bar>
@@ -202,28 +205,29 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
 exports[`TabBar TabBar text-only demo works fine 1`] = `
 <text-only>
   <t-tab-bar
+    theme="tag"
     value="label_1"
     bind:change="onChange"
   >
     <t-tab-bar-item
       value="label_1"
     >
-       标签栏一 
+       标签 
     </t-tab-bar-item>
     <t-tab-bar-item
       value="label_2"
     >
-       标签栏二 
+       标签 
     </t-tab-bar-item>
     <t-tab-bar-item
       value="label_3"
     >
-       标签栏三 
+       标签 
     </t-tab-bar-item>
     <t-tab-bar-item
       value="label_4"
     >
-       标签栏四 
+       标签 
     </t-tab-bar-item>
   </t-tab-bar>
 </text-only>
