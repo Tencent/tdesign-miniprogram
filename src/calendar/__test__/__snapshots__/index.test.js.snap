@@ -100,24 +100,12 @@ exports[`calendar :base 1`] = `
                 <wx-view
                   class="t-calendar__dates"
                 >
-                  <wx-view
-                    class="t-calendar__dates-item"
-                  />
-                  <wx-view
-                    class="t-calendar__dates-item"
-                  />
-                  <wx-view
-                    class="t-calendar__dates-item"
-                  />
-                  <wx-view
-                    class="t-calendar__dates-item"
-                  />
-                  <wx-view
-                    class="t-calendar__dates-item"
-                  />
-                  <wx-view
-                    class="t-calendar__dates-item"
-                  />
+                  <wx-view />
+                  <wx-view />
+                  <wx-view />
+                  <wx-view />
+                  <wx-view />
+                  <wx-view />
                   <wx-view
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
