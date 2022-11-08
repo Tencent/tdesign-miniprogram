@@ -4,6 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 import { RadioValue } from '../radio/type';
+import { KeysType } from '../common/common';
 
 export interface TdRadioGroupProps<T = RadioValue> {
   /**
@@ -13,6 +14,22 @@ export interface TdRadioGroupProps<T = RadioValue> {
   align?: {
     type: StringConstructor;
     value?: 'left' | 'right';
+  };
+  /**
+   * 是否开启无边框模式
+   * @default false
+   */
+  borderless?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 是否禁用全部子单选框
@@ -28,6 +45,13 @@ export interface TdRadioGroupProps<T = RadioValue> {
   icon?: {
     type: null;
     value?: 'fill-circle' | 'stroke-line' | Array<string>;
+  };
+  /**
+   * 用来定义 value / label 在 `options` 中对应的字段别名
+   */
+  keys?: {
+    type: ObjectConstructor;
+    value?: KeysType;
   };
   /**
    * HTML 元素原生属性

@@ -1,6 +1,6 @@
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
-import Props from './props';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-radio-group`;
@@ -28,13 +28,7 @@ export default class RadioGroup extends SuperComponent {
     },
   };
 
-  properties = {
-    ...Props,
-    borderless: {
-      type: Boolean,
-      value: false,
-    },
-  };
+  properties = props;
 
   controlledProps = [
     {
@@ -44,10 +38,10 @@ export default class RadioGroup extends SuperComponent {
   ];
 
   observers = {
-    value() {
+    value(v) {
       this.getChilds().forEach((item) => {
         item.setData({
-          checked: this.data.value === item.data.value,
+          checked: v === item.data.value,
         });
       });
     },
@@ -77,7 +71,7 @@ export default class RadioGroup extends SuperComponent {
 
     // 支持自定义options
     initWithOptions() {
-      const { options } = this.data;
+      const { options, value, keys } = this.data;
       // 数字数组｜字符串数组｜对像数组
       if (!options?.length || !Array.isArray(options)) {
         return;
@@ -90,10 +84,14 @@ export default class RadioGroup extends SuperComponent {
             optionsValue.push({
               label: `${element}`,
               value: element,
+              checked: value === element,
             });
           } else if (typeName === 'object') {
             optionsValue.push({
               ...element,
+              label: element[keys?.label ?? 'label'],
+              value: element[keys?.value ?? 'value'],
+              checked: value === element[keys?.value ?? 'value'],
             });
           }
         });

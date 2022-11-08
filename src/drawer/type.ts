@@ -14,6 +14,14 @@ export interface TdDrawerProps {
     value?: boolean;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 抽屉关闭时是否销毁节点
    * @default false
    */
@@ -53,7 +61,8 @@ export interface TdDrawerProps {
     value?: boolean;
   };
   /**
-   * 抽屉层级，样式默认为 1500
+   * 抽屉层级，样式默认为 11500
+   * @default 11500
    */
   zIndex?: {
     type: NumberConstructor;

@@ -60,6 +60,14 @@ export interface TdCheckboxProps {
     value?: boolean;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 是否禁用组件
    */
   disabled?: {
@@ -131,13 +139,20 @@ export interface TdCheckboxProps {
    * 多选框的值
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
 }
 
 export interface TdCheckboxGroupProps {
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
   /**
    * 是否禁用组件
    * @default false

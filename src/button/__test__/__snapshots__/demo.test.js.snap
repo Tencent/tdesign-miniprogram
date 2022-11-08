@@ -81,6 +81,7 @@ exports[`Button Button base demo works fine 1`] = `
       block="{{true}}"
       disabled="{{false}}"
       tClass="external-class"
+      theme="primary"
       variant="text"
     >
       文字按钮

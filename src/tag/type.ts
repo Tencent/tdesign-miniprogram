@@ -14,7 +14,14 @@ export interface TdTagProps {
   closable?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态
@@ -23,7 +30,6 @@ export interface TdTagProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 组件类名，用于设置 组件外层元素元素类名
@@ -31,7 +37,6 @@ export interface TdTagProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class'];
-    required?: boolean;
   };
   /**
    * 标签中的图标，可自定义图标呈现
@@ -40,7 +45,6 @@ export interface TdTagProps {
   icon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80
@@ -49,7 +53,6 @@ export interface TdTagProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: string | number;
-    required?: boolean;
   };
   /**
    * 标签类型，有三种：方形、圆角方形、标记型
@@ -58,7 +61,6 @@ export interface TdTagProps {
   shape?: {
     type: StringConstructor;
     value?: 'square' | 'round' | 'mark';
-    required?: boolean;
   };
   /**
    * 标签尺寸
@@ -67,7 +69,6 @@ export interface TdTagProps {
   size?: {
     type: StringConstructor;
     value?: SizeEnum;
-    required?: boolean;
   };
   /**
    * 组件风格，用于描述组件不同的应用场景
@@ -76,7 +77,6 @@ export interface TdTagProps {
   theme?: {
     type: StringConstructor;
     value?: 'default' | 'primary' | 'warning' | 'danger' | 'success';
-    required?: boolean;
   };
   /**
    * 标签风格变体
@@ -85,7 +85,6 @@ export interface TdTagProps {
   variant?: {
     type: StringConstructor;
     value?: 'dark' | 'light' | 'outline' | 'light-outline';
-    required?: boolean;
   };
 }
 
@@ -96,7 +95,6 @@ export interface TdCheckTagProps {
   checked?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 标签选中的状态，默认风格（theme=default）才有选中态，非受控属性
@@ -104,16 +102,14 @@ export interface TdCheckTagProps {
   defaultChecked?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 是否可以关闭
+   * 标签是否可关闭
    * @default false
    */
   closable?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 组件子元素
@@ -122,7 +118,14 @@ export interface TdCheckTagProps {
     type: StringConstructor;
     optionalTypes: Array<NumberConstructor>;
     value?: string | number;
-    required?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态
@@ -131,15 +134,21 @@ export interface TdCheckTagProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
+  };
+  /**
+   * 组件类名，用于设置 组件外层元素元素类名
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class'];
   };
   /**
    * 标签图标
+   * @default ''
    */
   icon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 标签类型，有三种：方形、圆角方形、标记型
@@ -148,7 +157,6 @@ export interface TdCheckTagProps {
   shape?: {
     type: StringConstructor;
     value?: 'square' | 'round' | 'mark';
-    required?: boolean;
   };
   /**
    * 标签尺寸
@@ -157,6 +165,5 @@ export interface TdCheckTagProps {
   size?: {
     type: StringConstructor;
     value?: SizeEnum;
-    required?: boolean;
   };
 }

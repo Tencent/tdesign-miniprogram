@@ -1,17 +1,17 @@
 const list = [
   {
     value: 'label_1',
-    label: '标签栏一',
+    label: '标签',
     icon: 'app',
   },
   {
     value: 'label_2',
-    label: '标签栏二',
+    label: '标签',
     icon: 'app',
   },
   {
     value: 'label_3',
-    label: '此处展开',
+    label: '展开项',
     children: [
       {
         value: 'spread_3',

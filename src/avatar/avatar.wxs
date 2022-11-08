@@ -8,16 +8,20 @@ module.exports = {
     ];
     return classNames.join(' ');
   },
+
   getAvatarSizePx: function (size = 'medium') {
     var pxIndex = size.indexOf('px');
     if (pxIndex > -1) {
       return 'width:' + size + ';height:' + size + ';font-size:' + ((size.slice(0, pxIndex) / 8) * 3 + 2) + 'px;';
     }
   },
-  getStyles: function (isShow, zIndex) {
-    var styles = 'z-index:' + zIndex + ';';
-    return styles + (isShow ? '' : 'display: none;');
+
+  getAvatarStyles: function (isShow, zIndex, customStyle) {
+    var displayStyle = isShow ? '' : 'display: none;';
+    var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+    return displayStyle + zIndexStyle + customStyle;
   },
+
   getIconClass: function (classPrefix, size) {
     if (size.indexOf('px') > -1) return;
     return classPrefix + '__icon--default-' + (size || 'medium').slice(0, 1);

@@ -15,20 +15,13 @@
 @grid-item-horizontal-text-padding-left: 24rpx;
 @grid-item-horizontal-text-description-top: 4rpx;
 
-page {
-  --td-grid-item-bg-color: @grid-item-bg-color;
-  --td-grid-item-text-color: @grid-item-text-color;
-  --td-grid-item-description-color: @grid-item-description-color;
-  --td-grid-item-hover-bg-color: @grid-item-hover-bg-color;
-}
-
 .@{prefix}-grid-item {
   box-sizing: border-box;
   height: 100%;
   float: left;
 
   &--hover {
-    background-color: var(--td-grid-item-hover-bg-color);
+    background-color: var(--td-grid-item-hover-bg-color, @grid-item-hover-bg-color);
   }
 
   &--horizontal {
@@ -72,7 +65,8 @@ page {
   &__image:not(:empty) {
     width: @grid-item-image-width;
     height: @grid-item-image-width;
-    .external-class {
+
+    .@{prefix}-grid__image {
       width: 100%;
       height: 100%;
     }
@@ -89,7 +83,7 @@ page {
 
   &__text {
     width: inherit;
-    color: var(--td-grid-item-text-color);
+    color: var(--td-grid-item-text-color, @grid-item-text-color);
     font-size: @grid-item-text-font-size;
     line-height: @grid-item-text-line-height;
     padding-top: @grid-item-text-padding-top;
@@ -97,7 +91,7 @@ page {
 
   &__description {
     width: inherit;
-    color: var(--td-grid-item-description-color);
+    color: var(--td-grid-item-description-color, @grid-item-description-color);
     font-size: @grid-item-description-font-size;
     line-height: @grid-item-description-line-height;
     padding-top: @grid-item-description-padding-top;

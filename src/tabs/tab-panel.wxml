@@ -2,7 +2,7 @@
 <view
   wx:if="{{!(destroyOnHide && hide)}}"
   class="{{classPrefix}} {{active ? prefix + '-is-active': ''}}"
-  style="{{hide ? 'display:none;' :''}}"
+  style="{{hide ? 'display:none;' :''}}{{ customStyle }} "
 >
   <view wx:if="{{panel}}">{{panel}}</view>
   <slot wx:else />

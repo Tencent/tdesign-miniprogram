@@ -5,6 +5,7 @@ exports[`switch Props :base 1`] = `
   <t-switch>
     <wx-view
       class="t-class t-switch"
+      style=""
     >
       <wx-view
         class="t-switch__body t-class-body  "

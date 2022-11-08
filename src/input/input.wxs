@@ -1,0 +1,19 @@
+function getInputClass(classPrefix, suffix, align, disabled) {
+  var className = [classPrefix + '__control'];
+
+  if (suffix || align === 'right') {
+    className.push(classPrefix + '__control--right');
+  }
+  if (align === 'center') {
+    className.push(classPrefix + '__control--center');
+  }
+
+  if (disabled) {
+    className.push(classPrefix + '__control--disabled');
+  }
+  return className.join(' ');
+}
+
+module.exports = {
+  getInputClass: getInputClass,
+};

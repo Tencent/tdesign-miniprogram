@@ -16,11 +16,19 @@ const props: TdDropdownMenuProps = {
     type: Boolean,
     value: true,
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 动画时长 */
   duration: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: 200,
+  },
+  /** 组件类名，分别用于设置 组件外层类名、菜单标签、菜单图标类名 等 */
+  externalClasses: {
+    type: Array,
   },
   /** 是否显示遮罩层 */
   showOverlay: {

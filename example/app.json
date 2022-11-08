@@ -63,6 +63,12 @@
     "pages/result/result",
     "pages/result/result-page"
   ],
+  "subpackages": [
+    {
+      "root": "pages/side-bar/",
+      "pages": ["side-bar", "base/index", "switch/index"]
+    }
+  ],
   "usingComponents": {
     "t-demo": "../../components/demo-block/index",
     "t-avatar": "tdesign-miniprogram/avatar/avatar",

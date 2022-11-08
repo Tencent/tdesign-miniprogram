@@ -16,6 +16,14 @@ export interface TdTabBarProps {
     value?: boolean;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件类名，用于设置外层元素类名
    */
   externalClasses?: {
@@ -39,6 +47,14 @@ export interface TdTabBarProps {
     value?: boolean;
   };
   /**
+   * 标签栏的形状
+   * @default normal
+   */
+  shape?: {
+    type: StringConstructor;
+    value?: 'normal' | 'round';
+  };
+  /**
    * 是否需要分割线
    * @default true
    */
@@ -47,7 +63,24 @@ export interface TdTabBarProps {
     value?: boolean;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 选项风格
+   * @default normal
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'normal' | 'tag';
+  };
+  /**
    * 当前选中标签的索引
+   * @default null
    */
   value?: {
     type: null;
@@ -55,6 +88,7 @@ export interface TdTabBarProps {
   };
   /**
    * 当前选中标签的索引，非受控属性
+   * @default null
    */
   defaultValue?: {
     type: null;
@@ -71,9 +105,25 @@ export interface TdTabBarItemProps {
     value?: BadgeProps;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 图标名称
    */
   icon?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
     type: StringConstructor;
     value?: string;
   };

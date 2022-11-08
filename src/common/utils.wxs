@@ -31,9 +31,32 @@ function includes(arr, value) {
   return false;
 }
 
+function cls(base, arr) {
+  var res = [base];
+  var i = 0;
+  for (size = arr.length; i < size; i++) {
+    var item = arr[i];
+
+    if (item.constructor === 'Array') {
+      var key = arr[i][0];
+      var value = arr[i][1];
+
+      if (value) {
+        res.push(base + '--' + key);
+      }
+    } else if (typeof item === 'string') {
+      if (item) {
+        res.push(base + '--' + item);
+      }
+    }
+  }
+  return res.join(' ');
+}
+
 module.exports = {
   addUnit: addUnit,
   isArray: isArray,
   isObject: isObject,
   includes: includes,
+  cls: cls,
 };

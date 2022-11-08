@@ -1,4 +1,5 @@
 <view
+  style="{{ customStyle }}"
   class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}} {{classPrefix}}--{{theme}} {{checked ? prefix + '-is-actived' : ''}}"
 >
   <!-- icon -->

@@ -2,6 +2,9 @@ import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/ind
 import config from '../common/config';
 import props from './picker-item-props';
 
+const { prefix } = config;
+const name = `${prefix}-picker-item`;
+
 const itemHeight = 80;
 const DefaultDuration = 240;
 
@@ -33,7 +36,7 @@ export default class PickerItem extends SuperComponent {
   };
 
   data = {
-    prefix: `${config.prefix}-picker-item`,
+    classPrefix: name,
     offset: 0, // 滚动偏移量
     duration: 0, // 滚动动画延迟
     value: '',

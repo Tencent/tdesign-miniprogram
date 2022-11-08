@@ -1,10 +1,11 @@
-<view class="{{classPrefix}} {{prefix}}-class">
+<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
   <slot />
   <block wx:for="{{radioOptions}}" wx:key="value">
     <t-radio
       class="{{prefix}}-radio-option"
       label="{{item.label}}"
       value="{{item.value}}"
+      checked="{{item.checked}}"
       data-index="{{index}}"
       data-value="{{item.value}}"
       disabled="{{item.disabled}}"

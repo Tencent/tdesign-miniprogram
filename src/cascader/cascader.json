@@ -3,6 +3,8 @@
   "usingComponents": {
     "t-icon": "../icon/icon",
     "t-popup": "../popup/popup",
+    "t-tabs": "../tabs/tabs",
+    "t-tab-panel": "../tabs/tab-panel",
     "t-radio-group": "../radio-group/radio-group"
   }
 }

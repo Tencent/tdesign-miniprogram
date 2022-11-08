@@ -10,6 +10,9 @@ export default class TabPanel extends SuperComponent {
   relations: RelationsOptions = {
     './tabs': {
       type: 'ancestor',
+      linked(parent: any) {
+        this.parent = parent;
+      },
     },
   };
 

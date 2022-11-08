@@ -8,6 +8,14 @@ import { LoadingProps } from '../loading/index';
 
 export interface TdPullDownRefreshProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 加载loading样式
    */
   externalClasses?: {

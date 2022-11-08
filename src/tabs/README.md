@@ -37,23 +37,31 @@ CSS 变量名|说明
 
 {{ base }}
 
-### 超过屏幕滚动
+### 等距选项卡
+
 {{ scroll }}
 
-### 无下划线
-{{ unline }}
+### 带徽章选项卡
 
-### 动画时间可调整
-{{ adjust-time }}
+{{ with-badge }}
+
+### 带内容区选项卡
+
+{{ with-content }}
 
 ### 选项卡状态
+
 {{ status }}
 
-### 竖向选项卡
-{{ vertical }}
+### 选项卡尺寸
 
-### 选中态文字尺寸规格
 {{ size }}
+
+### 选项卡样式
+
+使用 theme 属性可以变换风格，支持 line = 线条（默认）；tag = 标签；card = 卡片
+
+{{ theme }}
 
 <!-- 横向选项卡支持超过屏幕滑动 -->
 
@@ -115,9 +123,11 @@ Page({
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 animation | Object | - | 动画效果设置。其中 duration 表示动画时长。TS 类型：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名。`['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
 placement | String | top | 选项卡位置。可选项：left/top | N
 show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
+space-evenly | Boolean | true | 选项卡头部空间是否均分 | N
 sticky | Boolean | false | 是否开启粘性布局 | N
 sticky-props | Object | - | 透传至 Sticky 组件。TS 类型：`StickyProps`，[Sticky API Documents](./sticky?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 swipeable | Boolean | true | 是否可以滑动切换 | N
@@ -137,6 +147,7 @@ scroll | `(scrollTop: number, isFixed: boolean)` | 页面滚动时触发
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+custom-style | String | - | 自定义组件样式 | N
 badge-props | Object | null | 透传至 Badge 组件 | N
 destroy-on-hide | Boolean | true | 选项卡内容隐藏时是否销毁 | N
 disabled | Boolean | false | 是否禁用当前选项卡 | N

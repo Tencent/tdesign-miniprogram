@@ -1,6 +1,10 @@
 <wxs module="_" src="./util.wxs" />
 
-<view wx:if="{{wrapperVisible}}" class="{{classPrefix}}" style="top:{{top}}px; z-index: {{zIndex + 1}}">
+<view
+  wx:if="{{wrapperVisible}}"
+  class="{{classPrefix}} {{prefix}}-class"
+  style="{{_.getDropdownItemStyles(top, zIndex, customStyle)}}"
+>
   <t-popup
     visible="{{show}}"
     z-index="{{zIndex + 1}}"
@@ -11,21 +15,25 @@
     bind:leaved="onLeaved"
     bind:visible-change="handleMaskClick"
     class="{{classPrefix}}__popup-host"
-    t-class-content="{{contentClasses}} {{classPrefix}}__content"
+    t-class-content="{{contentClasses}} {{classPrefix}}__content {{prefix}}-class-content"
   >
     <view class="{{classPrefix}}__body">
       <block wx:if="{{optionsLayout === 'columns'}}">
         <!-- 单选列表 -->
         <t-cell-group wx:if="{{!multiple}}">
-          <t-radio-group class="{{classPrefix}}__radio" value="{{value}}" bind:change="handleRadioChange">
+          <t-radio-group
+            class="{{classPrefix}}__radio {{prefix}}-class-column"
+            value="{{value}}"
+            bind:change="handleRadioChange"
+          >
             <t-radio
               wx:for="{{options}}"
               wx:key="index"
-              class="{{classPrefix}}__radio-item"
+              class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
               icon="stroke-line"
               align="right"
               t-class="radio"
-              t-class-label="radio__label radio__label--{{value == item[valueAlias] ? 'active' : ''}}"
+              t-class-label="radio__label radio__label--{{value == item[valueAlias] ? 'active' : ''}} {{prefix}}-class-column-item-label"
               value="{{item[valueAlias]}}"
               label="{{item[labelAlias]}}"
               disabled="{{item.disabled}}"
@@ -35,7 +43,7 @@
         <!-- 多选列表 -->
         <block wx:else>
           <t-checkbox-group
-            class="{{classPrefix}}__checkbox"
+            class="{{classPrefix}}__checkbox {{prefix}}-class-column"
             t-class="{{classPrefix}}__checkbox-group"
             custom-style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
             value="{{value}}"
@@ -43,7 +51,7 @@
           >
             <block wx:for="{{options}}" wx:key="index">
               <t-checkbox
-                class="{{classPrefix}}__checkbox-item"
+                class="{{classPrefix}}__checkbox-item {{prefix}}-class-column-item"
                 theme="tag"
                 value="{{item[valueAlias]}}"
                 label="{{item[labelAlias]}}"
@@ -56,7 +64,7 @@
       <block wx:elif="{{optionsLayout === 'tree'}}">
         <scroll-view
           scroll-y
-          class="{{classPrefix}}__column {{classPrefix}}__column--{{_.getTreeClass(leafLevel - level)}}"
+          class="{{classPrefix}}__column {{classPrefix}}__column--{{_.getTreeClass(leafLevel - level)}} {{prefix}}-class-tree"
           wx:for="{{treeOptions}}"
           wx:key="level"
           wx:for-index="level"
@@ -68,7 +76,7 @@
               bind:tap="handleTreeClick"
               data-level="{{level}}"
               data-value="{{item[valueAlias]}}"
-              class="{{classPrefix}}__tree-item {{item[valueAlias] === value[level] ? classPrefix + '__tree-item--active' : '' }}"
+              class="{{classPrefix}}__tree-item {{item[valueAlias] === value[level] ? classPrefix + '__tree-item--active' : '' }} {{prefix}}-class-tree-item"
             >
               {{item[labelAlias]}}
             </view>
@@ -77,7 +85,7 @@
           <block wx:else>
             <block wx:if="{{!multiple}}">
               <t-radio-group
-                class="{{classPrefix}}__radio"
+                class="{{classPrefix}}__radio {{prefix}}-class-tree-columns"
                 data-level="{{level}}"
                 value="{{value[level]}}"
                 bind:change="handleRadioChange"
@@ -85,9 +93,9 @@
                 <t-radio
                   wx:for="{{treeOptions[level]}}"
                   wx:key="value"
-                  class="{{classPrefix}}__radio-item"
+                  class="{{classPrefix}}__radio-item {{prefix}}-class-tree-columns-item"
                   t-class="radio"
-                  t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}}"
+                  t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}} {{prefix}}-class-tree-columns-item-label"
                   value="{{item[valueAlias]}}"
                   borderless
                   align="right"
@@ -97,7 +105,7 @@
             </block>
             <block wx:elif="{{multiple}}">
               <t-checkbox-group
-                class="{{classPrefix}}__checkbox"
+                class="{{classPrefix}}__checkbox {{prefix}}-class-tree-columns"
                 value="{{value[level]}}"
                 bind:change="handleRadioChange"
                 data-level="{{level}}"
@@ -106,8 +114,9 @@
                   wx:for="{{treeOptions[level]}}"
                   wx:key="value"
                   align="right"
+                  class="{{prefix}}-class-tree-columns-item"
                   t-class="radio"
-                  t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}}"
+                  t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}} {{prefix}}-class-tree-columns-item-label"
                   borderless
                   value="{{item[valueAlias]}}"
                   >{{item[labelAlias]}}</t-checkbox
@@ -120,7 +129,7 @@
 
       <slot />
     </view>
-    <view class="{{classPrefix}}__foot" wx:if="{{multiple || optionsLayout === 'tree'}}">
+    <view class="{{classPrefix}}__foot {{prefix}}-class-footer" wx:if="{{multiple || optionsLayout === 'tree'}}">
       <t-button-group>
         <t-button
           block

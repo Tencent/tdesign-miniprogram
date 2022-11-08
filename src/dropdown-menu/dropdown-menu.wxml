@@ -1,17 +1,17 @@
-<view class="{{ classPrefix }}">
-  <view class="{{ classPrefix }}__bar" id="t-bar">
+<view style="{{ customStyle }}" class="{{ classPrefix }} {{prefix}}-class">
+  <view class="{{ classPrefix }}__bar {{prefix}}-class-menu" id="t-bar">
     <view
       wx:for="{{menus}}"
       wx:key="index"
       bindtap="handleToggle"
       data-index="{{index}}"
-      class="{{ classPrefix }}__item {{ activeIdx == index ? prefix + '-is-active' : ''}} {{ item.disabled ? prefix + '-is-disabled' : ''}}"
+      class="{{ classPrefix }}__item {{ activeIdx == index ? prefix + '-is-active' : ''}} {{ item.disabled ? prefix + '-is-disabled' : ''}} {{prefix}}-class-menu-item"
     >
-      <view class="{{ classPrefix }}__title">{{item.label}}</view>
+      <view class="{{ classPrefix }}__title {{prefix}}-class-menu-label">{{item.label}}</view>
       <t-icon
         name="caret-down-small"
         size="48rpx"
-        class="{{classPrefix}}__icon {{classPrefix}}__icon--{{activeIdx == index ? 'active' : ''}}"
+        class="{{classPrefix}}__icon {{classPrefix}}__icon--{{activeIdx == index ? 'active' : ''}} {{prefix}}-class-menu-icon"
       />
     </view>
   </view>

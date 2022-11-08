@@ -6,6 +6,14 @@
 
 export interface TdSearchProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 自定义右侧操作按钮文字
    * @default ''
    */

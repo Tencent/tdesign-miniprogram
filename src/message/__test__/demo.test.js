@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'status-message'];
+const mapper = ['base', 'custom-navigation', 'status-message'];
 
 describe('Message', () => {
   mapper.forEach((demoName) => {

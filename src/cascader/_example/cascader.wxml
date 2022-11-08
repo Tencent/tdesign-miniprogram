@@ -5,4 +5,19 @@
   <t-demo title="01 类型" desc="">
     <base />
   </t-demo>
+  <t-demo desc="选项卡风格">
+    <theme-tab />
+  </t-demo>
+
+  <t-demo title="02 进阶" desc="带初始值">
+    <with-value />
+  </t-demo>
+
+  <t-demo desc="自定义 keys">
+    <keys />
+  </t-demo>
+
+  <t-demo desc="使用次级标题">
+    <with-title />
+  </t-demo>
 </view>

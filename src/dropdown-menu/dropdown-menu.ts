@@ -10,6 +10,14 @@ export interface DropdownMenuProps extends TdDropdownMenuProps {}
 
 @wxComponent()
 export default class DropdownMenu extends SuperComponent {
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-menu`,
+    `${prefix}-class-menu-item`,
+    `${prefix}-class-menu-label`,
+    `${prefix}-class-menu-icon`,
+  ];
+
   properties = props; // todo: zindex activeColor
 
   nodes = null;

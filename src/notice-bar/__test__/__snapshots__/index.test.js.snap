@@ -7,6 +7,7 @@ exports[`notice-bar props : marquee 1`] = `
   >
     <wx-view
       class="t-notice-bar t-notice-bar--info t-class"
+      style=""
     >
       <wx-view
         class="t-notice-bar__prefix-icon t-class-prefix-icon"

@@ -11,6 +11,11 @@ const props: TdStepItemProps = {
     type: String,
     value: '',
   },
+  /** 自定义组件样式 */
+  customStyle: {
+    type: String,
+    value: '',
+  },
   /** 组件类名，用于设置组件外层元素元素类名 */
   externalClasses: {
     type: Array,
@@ -19,7 +24,7 @@ const props: TdStepItemProps = {
   icon: {
     type: String,
   },
-  /** 当前步骤的状态 */
+  /** 当前步骤的状态：默认状态（未开始）、进行中状态、完成状态、错误状态 */
   status: {
     type: String,
     value: 'default',

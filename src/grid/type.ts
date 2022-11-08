@@ -2,10 +2,16 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
-
 export interface TdGridProps {
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
   /**
    * 内容对齐方式
    * @default center
@@ -68,6 +74,14 @@ export interface TdGridProps {
 
 export interface TdGridItemProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点
    */
   description?: {
@@ -90,6 +104,13 @@ export interface TdGridItemProps {
     type: StringConstructor;
     value?: string;
     required?: boolean;
+  };
+  /**
+   * 透传至 Image 组件
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 链接跳转类型

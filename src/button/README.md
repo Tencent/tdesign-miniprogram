@@ -17,6 +17,38 @@ isComponent: true
 }
 ```
 
+### 主题定制
+
+CSS 变量名|说明
+--|--
+--td-button-default-color | 默认按钮文本颜色
+--td-button-default-border-color | 默认按钮边框颜色
+--td-button-default-bg-color | 默认按钮背景颜色
+--td-button-default-disabled-color | 默认按钮禁用态颜色
+--td-button-primary-color | 品牌按钮文本颜色
+--td-button-primary-border-color | 品牌按钮边框颜色
+--td-button-primary-bg-color | 品牌按钮背景颜色
+--td-button-primary-disabled-color | 品牌按钮禁用态颜色
+--td-button-danger-color | 危险按钮文本颜色
+--td-button-danger-border-color | 危险按钮边框颜色
+--td-button-danger-bg-color | 危险按钮背景颜色
+--td-button-danger-disabled-color | 危险按钮禁用态颜色
+--td-button-primary-outline-color | 品牌线框按钮文本和边框颜色
+--td-button-primary-outline-disabled-color | 品牌线框按钮禁用态颜色
+--td-button-danger-outline-color | 危险线框按钮文本和边框颜色
+--td-button-danger-outline-disabled-color | 危险线框按钮禁用态颜色
+--td-button-primary-dashed-color | 品牌点状框按钮文本和边框颜色
+--td-button-primary-dashed-disabled-color | 品牌点状框按钮禁用态颜色
+--td-button-danger-dashed-color | 危险点状框按钮文本和边框颜色
+--td-button-danger-dashed-disabled-color | 危险点状框按钮禁用态颜色
+--td-button-primary-text-color | 品牌文本框按钮文本颜色
+--td-button-primary-text-disabled-color | 品牌文本框按钮文本禁用态颜色
+--td-button-danger-text-color | 危险文本框按钮文本颜色
+--td-button-danger-text-disabled-color | 危险文本框按钮文本禁用态颜色
+--td-button-ghost-color | 幽灵按钮文本颜色
+--td-button-ghost-border-color | 幽灵按钮边框颜色
+--td-button-ghost-disabled-color | 幽灵按钮文本禁用态颜色
+
 ## 代码演示
 
 ### 基础按钮
@@ -49,19 +81,20 @@ isComponent: true
 -- | -- | -- | -- | --
 block | Boolean | false | 是否为块级元素 | N
 content | String / Slot | - | 按钮内容 | N
-custom-dataset | Any | - | 自定义 dataset，可通过 event.detail.currentTarget.dataset.custom 获取。当open-type 为 share 时，可在 onShareAppMessage 事件的 event.target.dataset.custom 中看到传入的值。TS 类型：`any` | N
-disabled | Boolean | false | 是否禁用按钮 | N
+custom-dataset | Object | - | 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取。TS 类型：`any` | N
+custom-style `v0.25.0` | String | - | 自定义组件样式 | N
+disabled | Boolean | false | 禁用状态 | N
 external-classes | Array | - | 组件类名。`['t-class', 't-class-icon', 't-class-loading']` | N
 ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
 icon | String | - | 图标名称 | N
 icon-props | Object | {} | 图标属性，透传至 icon | N
 loading | Boolean | false | 是否显示为加载状态 | N
-loading-props | Object | - | 加载loading属性，透传至loading。TS 类型：`LoadingProps` | N
+loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
 shape | String | rectangle | 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形。可选项：rectangle/square/round/circle | N
 size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum` | N
 theme | String | default | 组件风格，依次为品牌色、危险色。可选项：default/primary/danger | N
 type | String | - | 同小程序的 formType。可选项：submit/reset | N
-variant | String | base | 按钮形式，基础、线框、文字。可选项：base/outline/text | N
+variant | String | base | 按钮形式，基础、线框、文字。可选项：base/outline/dashed/text | N
 open-type | String | - | 微信开放能力。<br />具体释义：<br />`contact` 打开客服会话，如果用户在会话中点击消息卡片后返回小程序，可以从 bindcontact 回调中获得具体信息，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/customer-message/customer-message.html">具体说明</a> （*小程序插件中不能使用*）；<br />`share` 触发用户转发，使用前建议先阅读<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share.html#使用指引">使用指引</a>；<br />`getPhoneNumber` 获取用户手机号，可以从 bindgetphonenumber 回调中获取到用户信息，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html">具体说明</a> （*小程序插件中不能使用*）；<br />`getUserInfo` 获取用户信息，可以从 bindgetuserinfo 回调中获取到用户信息 （*小程序插件中不能使用*）；<br />`launchApp` 打开APP，可以通过 app-parameter 属性设定向 APP 传的参数<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html">具体说明</a>；<br />`openSetting` 打开授权设置页；<br />`feedback` 打开“意见反馈”页面，用户可提交反馈内容并上传<a href="https://developers.weixin.qq.com/miniprogram/dev/api/base/debug/wx.getLogManager.html">日志</a>，开发者可以登录<a href="https://mp.weixin.qq.com/">小程序管理后台</a>后进入左侧菜单“客服反馈”页面获取到反馈内容；<br />`chooseAvatar` 获取用户头像，可以从 bindchooseavatar 回调中获取到头像信息。<br />[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。可选项：contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar | N
 hover-stop-propagation | Boolean | false | 指定是否阻止本节点的祖先节点出现点击态 | N
 hover-start-time | Number | 20 | 按住后多久出现点击态，单位毫秒 | N

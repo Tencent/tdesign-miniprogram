@@ -3,7 +3,7 @@
 <block wx:if="{{visible}}">
   <view
     class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{theme}}"
-    style="z-index: {{zIndex}};{{this.getMessageStylesOffset({ offset })}};transform: translateY({{wrapTop}}px)"
+    style="{{this.getMessageStyles(zIndex, offset, wrapTop, customStyle )}}"
     animation="{{showAnimation}}"
     id="{{classPrefix}}"
   >
@@ -20,11 +20,7 @@
       style="text-align: {{align}}"
       id="{{classPrefix}}__text-wrap"
     >
-      <view
-        class="{{classPrefix}}__text {{prefix}}-class-content"
-        id="{{classPrefix}}__text"
-        animation="{{animation}}"
-      >
+      <view class="{{classPrefix}}__text {{prefix}}-class-content" id="{{classPrefix}}__text" animation="{{animation}}">
         <view wx:if="{{content}}">{{content}}</view>
         <slot name="content"></slot>
       </view>

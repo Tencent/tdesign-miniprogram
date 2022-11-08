@@ -3,6 +3,7 @@
 
 <t-popup
   name="dialog"
+  custom-style="{{ customStyle }}"
   class="{{classPrefix}}__wrapper"
   visible="{{visible}}"
   showOverlay="{{showOverlay}}"

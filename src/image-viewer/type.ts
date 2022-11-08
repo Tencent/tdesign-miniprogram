@@ -6,6 +6,14 @@
 
 export interface TdImageViewerProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 遮罩的背景颜色
    * @default rgba(0, 0, 0, .6)
    */

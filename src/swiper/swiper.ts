@@ -9,6 +9,7 @@ import { DIRECTION, NavTypes } from './common/constants';
 import props from './props';
 
 const { prefix } = config;
+const name = `${prefix}-swiper`;
 const easings = {
   // 线性动画
   linear: 'linear',
@@ -128,7 +129,7 @@ export default class Swiper extends SuperComponent {
     // current初始化的值就绪
     currentInited: false,
     prefix,
-    classPrefix: `${prefix}-swiper`,
+    classPrefix: name,
   };
 
   attached() {

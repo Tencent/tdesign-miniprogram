@@ -38,6 +38,14 @@ export interface TdSwiperProps {
     value?: number;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 轮播滑动方向，包括横向滑动和纵向滑动两个方向
    * @default horizontal
    */
@@ -85,7 +93,7 @@ export interface TdSwiperProps {
   };
   /**
    * 页码信息展示位置
-   * @default bottom-right
+   * @default bottom
    */
   paginationPosition?: {
     type: StringConstructor;
@@ -93,7 +101,23 @@ export interface TdSwiperProps {
   };
 }
 
+export interface TdSwiperItemProps {
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+}
+
 export interface SwiperNavigation {
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: string;
   /**
    * 小于这个数字不会显示导航器
    */

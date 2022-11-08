@@ -1,22 +1,26 @@
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './tab-bar-item-props';
+import dom from '../behaviors/dom';
 
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar-item`;
 
 @wxComponent()
-export default class TabbarItem extends SuperComponent {
+export default class TabBarItem extends SuperComponent {
   parent = null;
 
   relations: RelationsOptions = {
     './tab-bar': {
       type: 'ancestor',
       linked(parent) {
+        const { theme, split, shape } = parent.data;
         this.parent = parent;
 
         this.setData({
-          split: parent.data.split,
+          theme,
+          split,
+          shape,
           currentName: this.properties.value ? this.properties.value : parent.initName(),
         });
         parent.updateChildren();
@@ -28,6 +32,8 @@ export default class TabbarItem extends SuperComponent {
     multipleSlots: true,
   };
 
+  behaviors = [dom];
+
   data = {
     prefix,
     classPrefix,
@@ -36,6 +42,10 @@ export default class TabbarItem extends SuperComponent {
     hasChildren: false,
     currentName: '',
     split: true,
+    iconOnly: false,
+    theme: '',
+    crowded: false,
+    shape: 'normal',
   };
 
   properties = props;
@@ -45,6 +55,14 @@ export default class TabbarItem extends SuperComponent {
       this.setData({
         hasChildren: value.length > 0,
       });
+    },
+  };
+
+  lifetimes = {
+    async attached() {
+      const res = await this.gettingBoundingClientRect(`.${classPrefix}__text`);
+
+      this.setData({ iconOnly: res.height === 0 });
     },
   };
 

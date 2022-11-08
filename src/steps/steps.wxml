@@ -1,4 +1,5 @@
 <view
+  style="{{ customStyle }}"
   class="{{classPrefix}} {{classPrefix}}--{{layout}} {{classPrefix}}--{{type}}-anchor {{readonly ? classPrefix + '--readonly' : ''}} {{prefix}}-class"
 >
   <slot />

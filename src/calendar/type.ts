@@ -16,6 +16,14 @@ export interface TdCalendarProps {
     value?: string | ButtonProps | null;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 第一天从星期几开始，默认 0 = 周日
    * @default 0
    */
@@ -46,6 +54,7 @@ export interface TdCalendarProps {
   };
   /**
    * 标题，不传默认为“请选择日期”
+   * @default ''
    */
   title?: {
     type: StringConstructor;

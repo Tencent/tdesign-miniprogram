@@ -30,6 +30,10 @@ const nav = {
       name: 'Tabs',
       label: '选项卡',
     },
+    {
+      name: 'SideBar',
+      label: '侧边导航',
+    },
   ],
 };
 
