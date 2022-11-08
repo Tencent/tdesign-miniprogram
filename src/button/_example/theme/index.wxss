@@ -1,0 +1,7 @@
+.box {
+  margin: 0 32rpx 32rpx;
+}
+
+.box t-button + t-button {
+  margin-left: 16rpx;
+}

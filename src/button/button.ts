@@ -14,12 +14,9 @@ export default class Button extends SuperComponent {
 
   behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
 
-  // 组件的对外属性
   properties = props;
 
-  // 组件的内部数据
   data = {
-    // 按钮样式列表
     prefix,
     className: '',
     classPrefix: name,
@@ -31,23 +28,12 @@ export default class Button extends SuperComponent {
     },
   };
 
-  /* 组件生命周期 */
   lifetimes = {
-    // 组件实例被创建
-    // created() {},
-    // 组件实例进入页面节点树
     attached() {
       this.setClass();
     },
-    // 页面组件初始化完成
-    // ready() { },
-    // 组件实例被移动到节点树另一个位置
-    // moved() {},
-    // 组件实例被从页面节点树移除
-    // detached() { },
   };
 
-  /* Methods */
   methods = {
     setClass() {
       const classList = [
