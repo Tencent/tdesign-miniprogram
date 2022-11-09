@@ -3,8 +3,9 @@
   wx:for-index="index"
   wx:key="index"
   checked="{{item.checked}}"
-  disabled="{{item.disabled}}"
+  size="large"
+  variant="{{item.variant}}"
   data-index="{{index}}"
   bind:change="handleCheckTagChange"
-  >{{item.name}}</t-check-tag
+  >标签文字</t-check-tag
 >

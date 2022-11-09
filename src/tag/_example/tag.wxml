@@ -1,35 +1,19 @@
 <view class="demo">
   <view class="demo-title">Tag 标签</view>
   <view class="demo-desc">用于表明主体的类目，属性或状态。</view>
-  <t-demo title="01 类型" desc="展示型标签">
-    <theme class="group margin" />
-    <view class="group margin">
-      <t-tag class="margin-right" theme="primary">深色</t-tag>
-      <t-tag class="margin-right" theme="primary" variant="light">浅色</t-tag>
-      <t-tag class="margin-right" theme="primary" variant="outline">描边</t-tag>
-      <t-tag theme="primary" variant="light-outline">描边浅色</t-tag>
-    </view>
+  <t-demo title="01 组件类型">
+    <type />
   </t-demo>
-  <t-demo title="" desc="带图标标签">
-    <iconDemo class="group margin" />
-  </t-demo>
-  <t-demo title="" desc="圆角标签">
-    <shape class="group margin" />
-  </t-demo>
-  <t-demo title="" desc="可关闭标签">
+  <t-demo title="" desc="可关闭的标签">
     <closable class="group margin" />
   </t-demo>
-  <t-demo title="" desc="超长省略文本标签">
-    <ellipsis class="group margin" />
-  </t-demo>
-  <t-demo title="02 状态" desc="标签状态">
+  <t-demo desc="可点击的标签">
     <checkable class="group margin" />
   </t-demo>
-  <t-demo title="03 规格" desc="标签规格">
-    <size class="group padding-bottom d-flex" />
-    <view class="group d-flex">
-      <t-check-tag class="margin-right" size="large">点击标签30</t-check-tag>
-      <t-check-tag size="medium">点击标签24</t-check-tag>
-    </view>
+  <t-demo title="02 组件状态" desc="展示型标签">
+    <theme />
+  </t-demo>
+  <t-demo title="03 组件尺寸">
+    <size />
   </t-demo>
 </view>

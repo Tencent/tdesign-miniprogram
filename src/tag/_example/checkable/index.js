@@ -2,17 +2,20 @@ Component({
   data: {
     items: [
       {
-        name: '选中',
-        checked: true,
-      },
-      {
-        name: '未选中',
+        variant: 'light',
         checked: false,
       },
       {
-        name: '不可选',
+        variant: 'dark',
         checked: false,
-        disabled: true,
+      },
+      {
+        variant: 'outline',
+        checked: false,
+      },
+      {
+        variant: 'outline-light',
+        checked: false,
       },
     ],
   },

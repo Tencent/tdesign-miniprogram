@@ -1,0 +1,12 @@
+.block {
+  margin: 0 32rpx;
+}
+
+.block + .block {
+  margin-top: 32rpx;
+}
+
+t-tag {
+  display: inline-flex;
+  vertical-align: top;
+}

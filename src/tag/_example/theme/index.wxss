@@ -1,0 +1,7 @@
+.block {
+  margin: 0 32rpx;
+}
+
+.block + .block {
+  margin-top: 48rpx;
+}
