@@ -2,8 +2,12 @@
 <view class="demo-desc">当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布</view>
 <t-demo title="01 类型" desc="纯图标悬浮按钮">
   <view class="wrapper">
-    <t-button block variant="outline" bind:tap="handleChange" data-type="base">基础使用</t-button>
-    <t-button block variant="outline" bind:tap="handleChange" data-type="advance">进阶使用</t-button>
+    <t-button theme="primary" size="large" block variant="outline" bind:tap="handleChange" data-type="base"
+      >基础使用</t-button
+    >
+    <t-button theme="primary" size="large" block variant="outline" bind:tap="handleChange" data-type="advance"
+      >进阶使用</t-button
+    >
   </view>
   <base wx:if="{{type == 'base'}}" />
   <advance wx:else />
