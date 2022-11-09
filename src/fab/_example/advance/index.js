@@ -2,7 +2,6 @@ Component({
   data: {
     fabButton: {
       icon: 'call',
-      variant: 'outline',
       openType: 'getPhoneNumber',
     },
   },
