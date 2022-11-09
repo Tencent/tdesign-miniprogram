@@ -1,0 +1,3 @@
+.box {
+  margin: 0 32rpx;
+}

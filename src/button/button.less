@@ -2,19 +2,21 @@
 
 @button-default-height: 40 * 2rpx;
 @button-default-line-height: @text-line-height;
-@button-default-font-size: @font-size * 1.4;
+@button-default-font-size: @font-size * 1.6;
 @button-border-width: 1px;
-@button-border-radius: 8rpx;
-@button-small-height: 36 * 2rpx;
-@button-small-line-height: 36 * 2rpx;
-@button-large-height: 44 * 2rpx;
+@button-border-radius: @radius-default;
+@button-small-height: 32 * 2rpx;
+@button-small-line-height: 32 * 2rpx;
+@button-large-height: 48 * 2rpx;
+
+@button-font-weight: 600;
 
 // button icon
 @button-icon-spacer: @spacer;
 @button-icon-border-radius: 8rpx;
 
 // padding
-@button-padding-horizontal: 32rpx;
+@button-padding-horizontal: 48rpx;
 
 // 图标大小
 @button-icon-size-s: 40rpx;
@@ -26,14 +28,20 @@
 @danger-color-disabled: #f8b9be;
 // default
 @button-default-color: rgba(0, 0, 0, 0.9);
-@button-default-bg-color: #ffffff;
-@button-default-border-color: #dcdcdc;
+@button-default-bg-color: @gray-color-3;
+@button-default-border-color: @gray-color-4;
 @button-default-disabled-color: rgba(0, 0, 0, 0.26);
 // primary
 @button-primary-color: @text-anti-primary-color;
 @button-primary-border-color: @primary-color;
 @button-primary-bg-color: @primary-color;
 @button-primary-disabled-color: @primary-color-disabled;
+// light
+@button-light-color: @primary-color;
+@button-light-border-color: @primary-color-2;
+@button-light-bg-color: @primary-color-2;
+@button-light-disabled-color: @primary-color-3;
+@button-light-disabled-bg: @primary-color-1;
 // danger
 @button-danger-color: @text-anti-primary-color;
 @button-danger-border-color: @error-color;
@@ -45,6 +53,9 @@
 // danger + outline
 @button-danger-outline-color: @error-color;
 @button-danger-outline-disabled-color: @button-danger-disabled-color;
+// light + outline
+@button-light-outline-color: @primary-color;
+@button-light-outline-disabled-color: @primary-color-disabled;
 // primary + dashed
 @button-primary-dashed-color: @primary-color;
 @button-primary-dashed-disabled-color: @primary-color-disabled;
@@ -57,48 +68,18 @@
 // danger + text
 @button-danger-text-color: @error-color;
 @button-danger-text-disabled-color: @button-danger-disabled-color;
+// light + text
+@button-light-text-color: @primary-color;
 // ghost 优先级高于 theme，固定透明背景，白色边框，白色字体
 @button-ghost-color: #fff;
 @button-ghost-border-color: @button-ghost-color;
 @button-ghost-disabled-color: rgba(255, 255, 255, 0.35);
+@button-ghost-primary-color: @primary-color;
+@button-ghost-primary-border-color: @primary-color;
+@button-ghost-danger-color: @error-color;
+@button-ghost-danger-border-color: @error-color;
 
 @button: ~'@{prefix}-button';
-
-page {
-  --td-button-default-color: @button-default-color;
-  --td-button-default-border-color: @button-default-border-color;
-  --td-button-default-bg-color: @button-default-bg-color;
-  --td-button-default-disabled-color: @button-default-disabled-color;
-
-  --td-button-primary-color: @button-primary-color;
-  --td-button-primary-border-color: @button-primary-border-color;
-  --td-button-primary-bg-color: @button-primary-bg-color;
-  --td-button-primary-disabled-color: @button-primary-disabled-color;
-
-  --td-button-danger-color: @button-danger-color;
-  --td-button-danger-border-color: @button-danger-border-color;
-  --td-button-danger-bg-color: @button-danger-bg-color;
-  --td-button-danger-disabled-color: @button-danger-disabled-color;
-
-  --td-button-primary-outline-color: @button-primary-outline-color;
-  --td-button-primary-outline-disabled-color: @button-primary-outline-disabled-color;
-  --td-button-danger-outline-color: @button-danger-outline-color;
-  --td-button-danger-outline-disabled-color: @button-danger-outline-disabled-color;
-
-  --td-button-primary-dashed-color: @button-primary-dashed-color;
-  --td-button-primary-dashed-disabled-color: @button-primary-dashed-disabled-color;
-  --td-button-danger-dashed-color: @button-danger-dashed-color;
-  --td-button-danger-dashed-disabled-color: @button-danger-dashed-disabled-color;
-
-  --td-button-primary-text-color: @button-primary-text-color;
-  --td-button-primary-text-disabled-color: @button-primary-text-disabled-color;
-  --td-button-danger-text-color: @button-danger-text-color;
-  --td-button-danger-text-disabled-color: @button-danger-text-disabled-color;
-
-  --td-button-ghost-color: @button-ghost-color;
-  --td-button-ghost-border-color: @button-ghost-border-color;
-  --td-button-ghost-disabled-color: @button-ghost-disabled-color;
-}
 
 .@{button} {
   display: inline-flex;
@@ -117,6 +98,9 @@ page {
   border-radius: @button-border-radius;
   outline: none;
   font-family: PingFang SC, Microsoft YaHei, Arial Regular;
+  padding-left: (@button-padding-horizontal - @button-border-width);
+  padding-right: (@button-padding-horizontal - @button-border-width);
+  font-weight: var(--td-button-font-weight, @button-font-weight);
 
   /* stylelint-disable-next-line */
   -webkit-appearance: none;
@@ -139,7 +123,7 @@ page {
   &--default {
     color: var(--td-button-default-color, @button-default-color);
     background-color: var(--td-button-default-bg-color, @button-default-bg-color);
-    border: 1px solid var(--td-button-default-border-color, @button-default-border-color);
+    border: 1px solid var(--td-button-default-border-color, @button-default-bg-color);
 
     &.@{prefix}-is-disabled {
       color: var(--td-button-default-disabled-color, @button-default-disabled-color);
@@ -154,6 +138,18 @@ page {
     &.@{prefix}-is-disabled {
       background-color: var(--td-button-primary-disabled-color, @button-primary-disabled-color);
       border-color: var(--td-button-primary-disabled-color, @button-primary-disabled-color);
+    }
+  }
+
+  &--light {
+    color: var(--td-button-light-color, @button-light-color);
+    background-color: var(--td-button-light-bg-color, @button-light-bg-color);
+    border: 1px solid var(--td-button-light-border-color, @button-light-border-color);
+
+    &.@{prefix}-is-disabled {
+      color: var(--td-button-light-disabled-color, @button-light-disabled-color);
+      background-color: var(--td-button-light-disabled-color, @button-light-disabled-bg);
+      border-color: var(--td-button-light-disabled-color, @button-light-disabled-bg);
     }
   }
 
@@ -203,6 +199,11 @@ page {
         background: none;
       }
     }
+
+    &.@{prefix}-button--light {
+      color: var(--td-button-light-text-color, @button-light-text-color);
+      background: none;
+    }
   }
 
   &--ghost {
@@ -214,13 +215,26 @@ page {
       color: var(--td-button-ghost-disabled-color, @button-ghost-disabled-color);
       border-color: var(--td-button-ghost-disabled-color, @button-ghost-disabled-color);
     }
+
+    &.@{button}--primary {
+      color: var(--td-button-ghost-primary-color, @button-ghost-primary-color);
+      border-color: var(--td-button-ghost-primary-border-color, @button-ghost-primary-border-color);
+    }
+
+    &.@{button}--danger {
+      color: var(--td-button-ghost-danger-color, @button-ghost-danger-color);
+      border-color: var(--td-button-ghost-danger-border-color, @button-ghost-danger-border-color);
+    }
   }
 
   &--outline {
+    border-color: var(--td-button-default-border-color, @button-default-border-color);
     background-color: transparent;
+
     &.@{prefix}-button--primary {
       color: var(--td-button-primary-outline-color, @button-primary-outline-color);
       border-color: var(--td-button-primary-outline-color, @button-primary-outline-color);
+
       &.@{prefix}-is-disabled {
         background-color: transparent;
         color: var(--td-button-primary-outline-disabled-color, @button-primary-outline-disabled-color);
@@ -231,10 +245,22 @@ page {
     &.@{prefix}-button--danger {
       color: var(--td-button-danger-outline-color, @button-danger-outline-color);
       border-color: var(--td-button-danger-outline-color, @button-danger-outline-color);
+
       &.@{prefix}-is-disabled {
         background-color: transparent;
         color: var(--td-button-danger-outline-disabled-color, @button-danger-outline-disabled-color);
         border-color: var(--td-button-danger-outline-disabled-color, @button-danger-outline-disabled-color);
+      }
+    }
+
+    &.@{prefix}-button--light {
+      background-color: var(--td-button-light-outline-bg, @button-light-bg-color);
+      border-color: var(--td-button-light-outline-color, @button-light-outline-color);
+
+      &.@{prefix}-is-disabled {
+        background-color: transparent;
+        color: var(--td-button-light-outline-disabled-color, @button-light-outline-disabled-color);
+        border-color: var(--td-button-light-outline-disabled-color, @button-light-outline-disabled-color);
       }
     }
   }
@@ -267,8 +293,6 @@ page {
   &--base {
     height: @button-default-height;
     line-height: @button-default-height;
-    padding-left: (@button-padding-horizontal - @button-border-width);
-    padding-right: (@button-padding-horizontal - @button-border-width);
     font-size: @button-default-font-size;
   }
 

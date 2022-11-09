@@ -1,0 +1,7 @@
+<view class="full-width">
+  <view class="box">
+    <t-button theme="primary" ghost disabled="{{disabled}}">大按钮</t-button>
+    <t-button theme="danger" ghost disabled="{{disabled}}">大按钮</t-button>
+    <t-button ghost disabled="{{disabled}}">大按钮</t-button>
+  </view>
+</view>
