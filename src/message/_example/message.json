@@ -2,7 +2,6 @@
   "navigationBarTitleText": "Message",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "base": "./base",
     "status-message": "./status-message",
     "custom-navigation": "./custom-navigation"

@@ -2,7 +2,6 @@
   "navigationBarTitleText": "Image",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "t-image": "tdesign-miniprogram/image/image",
     "mode": "./mode",
     "shape": "./shape",
