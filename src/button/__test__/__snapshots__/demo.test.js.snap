@@ -48,6 +48,78 @@ exports[`Button Button base demo works fine 1`] = `
 </base>
 `;
 
+exports[`Button Button block-btn demo works fine 1`] = `
+<block-btn>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+  </wx-view>
+</block-btn>
+`;
+
+exports[`Button Button ghost-btn demo works fine 1`] = `
+<ghost-btn>
+  <wx-view
+    class="full-width"
+  >
+    <wx-view
+      class="box"
+    >
+      <t-button
+        disabled=""
+        ghost="{{true}}"
+        theme="primary"
+      >
+        大按钮
+      </t-button>
+      <t-button
+        disabled=""
+        ghost="{{true}}"
+        theme="danger"
+      >
+        大按钮
+      </t-button>
+      <t-button
+        disabled=""
+        ghost="{{true}}"
+      >
+        大按钮
+      </t-button>
+    </wx-view>
+  </wx-view>
+</ghost-btn>
+`;
+
+exports[`Button Button group-btn demo works fine 1`] = `
+<group-btn>
+  <wx-view
+    class="group"
+  >
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="light"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+  </wx-view>
+</group-btn>
+`;
+
 exports[`Button Button icon-btn demo works fine 1`] = `
 <icon-btn>
   <wx-view
@@ -98,6 +170,47 @@ exports[`Button Button icon-btn demo works fine 1`] = `
 </icon-btn>
 `;
 
+exports[`Button Button shape demo works fine 1`] = `
+<shape>
+  <wx-view
+    class="box align-bottom"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      icon="app"
+      shape="square"
+      size="large"
+      theme="primary"
+    />
+  </wx-view>
+  <wx-view
+    style="height: 32rpx"
+  />
+  <wx-view
+    class="box align-bottom"
+  >
+    <t-button
+      shape="round"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      icon="app"
+      shape="circle"
+      size="large"
+      theme="primary"
+    />
+  </wx-view>
+</shape>
+`;
+
 exports[`Button Button size demo works fine 1`] = `
 <size>
   <wx-view
@@ -129,4 +242,102 @@ exports[`Button Button size demo works fine 1`] = `
     </t-button>
   </wx-view>
 </size>
+`;
+
+exports[`Button Button theme demo works fine 1`] = `
+<theme>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      size="large"
+    >
+      主按钮
+    </t-button>
+    <t-button
+      size="large"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+    >
+      主按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      size="large"
+      theme="danger"
+    >
+      主按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="danger"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="danger"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      size="large"
+      theme="light"
+    >
+      主按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="light"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="light"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+</theme>
 `;

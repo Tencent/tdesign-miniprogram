@@ -5,12 +5,12 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'block-btn', 'ghost-btn', 'group-btn', 'icon-btn', 'shape', 'size', 'theme'];
+const mapper = ['base', 'switch'];
 
-describe('Button', () => {
+describe('SideBar', () => {
   mapper.forEach((demoName) => {
-    it(`Button ${demoName} demo works fine`, () => {
-      const id = load(path.resolve(__dirname, `../../button/_example/${demoName}/index`), demoName);
+    it(`SideBar ${demoName} demo works fine`, () => {
+      const id = load(path.resolve(__dirname, `../../side-bar/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

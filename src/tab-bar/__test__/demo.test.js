@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['badge', 'base', 'custom', 'icon-only', 'sub', 'text-only'];
+const mapper = ['badge', 'base', 'custom', 'icon-only', 'round', 'sub', 'text-only'];
 
 describe('TabBar', () => {
   mapper.forEach((demoName) => {
