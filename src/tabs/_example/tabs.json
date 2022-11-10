@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "Tabs",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "base": "./base",
     "scroll": "./scroll",
     "size": "./size",

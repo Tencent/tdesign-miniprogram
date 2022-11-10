@@ -2,7 +2,6 @@
   "navigationBarTitleText": "Empty",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "base": "./base",
     "imageEmpty": "./imageEmpty",
     "buttonEmpty": "./buttonEmpty",

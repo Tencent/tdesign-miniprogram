@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "radio 单选框",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "base": "./base",
     "left-round": "./left-round",
     "right-round": "./right-round",

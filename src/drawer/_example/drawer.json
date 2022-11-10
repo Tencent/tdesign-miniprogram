@@ -2,7 +2,6 @@
   "navigationBarTitleText": "Drawer",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "base": "./base",
     "icon-drawer": "./icon-drawer"
   }
