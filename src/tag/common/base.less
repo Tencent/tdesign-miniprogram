@@ -5,8 +5,6 @@
 @tag-default-background-color: #e7e7e7;
 @tag-default-border-color: #e7e7e7;
 
-@primary-color-disabled: #bbd3fb;
-
 @tag-default-color: rgba(231, 231, 231, 1);
 @tag-primary-color: @primary-color;
 @tag-success-color: @success-color;
@@ -19,29 +17,33 @@
 @tag-warning-font-color: @color-white;
 @tag-danger-font-color: @color-white;
 
-@tag-disabled-color: rgba(0, 0, 0, 26%);
-@tag-disabled-background-color: rgba(231, 231, 231, 1);
-@tag-disabled-border-color: rgba(231, 231, 231, 1);
+@tag-disabled-color: @font-gray-4;
+@tag-disabled-background-color: @gray-color-2;
+@tag-disabled-border-color: @gray-color-4;
 
 @tag-checked-color: @primary-color;
 @tag-checked-border-color: @primary-color;
 @tag-checked-background-color: @primary-color;
 
-@tag-small-padding: @spacer * 0.75 - 1px;
-@tag-medium-padding: @spacer - 1px;
-@tag-large-padding: @spacer-1 - 1px;
+@tag-small-padding: 12rpx - 1px;
+@tag-medium-padding: 16rpx - 1px;
+@tag-large-padding: 16rpx - 1px;
+@tag-extra-large-padding: 32rpx - 1px;
 
 @tag-small-font-size: @font-size;
 @tag-medium-font-size: @font-size-s;
 @tag-large-font-size: @font-size-base;
+@tag-extra-large-font-size: @font-size-base;
 
 @tag-small-icon-size: @font-size * 1.2;
 @tag-medium-icon-size: @font-size * 1.4;
-@tag-large-icon-size: @font-size * 1.8;
+@tag-large-icon-size: @font-size * 1.6;
+@tag-extra-large-icon-size: @font-size * 1.6;
 
-@tag-small-height: 44rpx;
+@tag-small-height: 40rpx;
 @tag-medium-height: 48rpx;
-@tag-large-height: 60rpx;
+@tag-large-height: 56rpx;
+@tag-extra-large-height: 80rpx;
 
 @tag-border-size: 2rpx;
 
@@ -90,6 +92,7 @@
   &__icon-close {
     display: flex;
     align-items: center;
+    color: @font-gray-3;
   }
 
   &__icon:not(:empty) + &__text:not(:empty),
@@ -131,6 +134,18 @@
       .@{prefix}-icon,
       .@{prefix}-icon-close {
         font-size: @tag-large-icon-size;
+      }
+    }
+
+    &-extra-large {
+      height: @tag-extra-large-height;
+      line-height: @tag-extra-large-height;
+      padding: 0 @tag-extra-large-padding;
+      font-size: @tag-extra-large-font-size;
+
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-extra-large-icon-size;
       }
     }
   }
@@ -184,26 +199,17 @@
 
   &.@{prefix}-tag--checkable {
     cursor: pointer;
-    color: @tag-default-font-color;
-    background-color: @tag-default-background-color;
-    border-color: @tag-default-border-color;
-
-    &.@{prefix}-tag--checked {
-      color: @color-white;
-      background-color: @tag-primary-color;
-      border-color: @tag-primary-color;
-    }
-
-    &.@{prefix}-tag--checked.@{prefix}-tag--disabled {
-      color: @color-white;
-      background-color: @primary-color-disabled;
-    }
 
     &.@{prefix}-tag--disabled {
       cursor: not-allowed;
       color: @tag-disabled-color;
+      border-color: @tag-disabled-background-color;
       background-color: @tag-disabled-background-color;
-      border-color: @tag-disabled-border-color;
+
+      &.@{prefix}-tag--variant-outline,
+      &.@{prefix}-tag--variant-light-outline {
+        border-color: @tag-disabled-border-color;
+      }
     }
   }
 
