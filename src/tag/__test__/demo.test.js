@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['checkable', 'closable', 'ellipsis', 'iconDemo', 'shape', 'size', 'theme'];
+const mapper = ['checkable', 'closable', 'size', 'theme', 'type'];
 
 describe('Tag', () => {
   mapper.forEach((demoName) => {

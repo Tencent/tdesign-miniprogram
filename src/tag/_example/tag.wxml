@@ -8,7 +8,7 @@
     <closable class="group margin" />
   </t-demo>
   <t-demo desc="可点击的标签">
-    <checkable class="group margin" />
+    <checkable />
   </t-demo>
   <t-demo title="02 组件状态" desc="展示型标签">
     <theme />

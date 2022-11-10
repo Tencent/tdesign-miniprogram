@@ -38,6 +38,7 @@ icon | Slot | - | \- | N
 icon | String | - | \- | N
 shape | String | square | options：square/round/mark | N
 size | String | medium | options：small/medium/large。Typescript：`SizeEnum` | N
+variant | String | dark | options：dark/light/outline/light-outline | N
 
 ### CheckTag Events
 

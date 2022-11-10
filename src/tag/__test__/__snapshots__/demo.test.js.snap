@@ -2,30 +2,90 @@
 
 exports[`Tag Tag checkable demo works fine 1`] = `
 <checkable>
-  <t-check-tag
-    checked="{{true}}"
-    data-index="{{0}}"
-    disabled=""
-    bind:change="handleCheckTagChange"
+  <wx-view
+    class="wrapper"
   >
-    选中
-  </t-check-tag>
-  <t-check-tag
-    checked="{{false}}"
-    data-index="{{1}}"
-    disabled=""
-    bind:change="handleCheckTagChange"
-  >
-    未选中
-  </t-check-tag>
-  <t-check-tag
-    checked="{{false}}"
-    data-index="{{2}}"
-    disabled="{{true}}"
-    bind:change="handleCheckTagChange"
-  >
-    不可选
-  </t-check-tag>
+    <wx-view
+      class="block"
+    >
+      <wx-text>
+        light
+      </wx-text>
+      <t-check-tag
+        size="large"
+        variant="light"
+      >
+        未选中态
+      </t-check-tag>
+      <t-check-tag
+        checked="{{true}}"
+        size="large"
+        variant="light"
+      >
+        已选中态
+      </t-check-tag>
+    </wx-view>
+    <wx-view
+      class="block"
+    >
+      <wx-text>
+        dark
+      </wx-text>
+      <t-check-tag
+        size="large"
+        variant="dark"
+      >
+        未选中态
+      </t-check-tag>
+      <t-check-tag
+        checked="{{true}}"
+        size="large"
+        variant="dark"
+      >
+        已选中态
+      </t-check-tag>
+    </wx-view>
+    <wx-view
+      class="block"
+    >
+      <wx-text>
+        outline
+      </wx-text>
+      <t-check-tag
+        size="large"
+        variant="outline"
+      >
+        未选中态
+      </t-check-tag>
+      <t-check-tag
+        checked="{{true}}"
+        size="large"
+        variant="outline"
+      >
+        已选中态
+      </t-check-tag>
+    </wx-view>
+    <wx-view
+      class="block"
+    >
+      <wx-text>
+        light-outline
+      </wx-text>
+      <t-check-tag
+        size="large"
+        variant="light-outline"
+      >
+        未选中态
+      </t-check-tag>
+      <t-check-tag
+        checked="{{true}}"
+        size="large"
+        variant="light-outline"
+      >
+        已选中态
+      </t-check-tag>
+    </wx-view>
+  </wx-view>
 </checkable>
 `;
 
@@ -33,113 +93,300 @@ exports[`Tag Tag closable demo works fine 1`] = `
 <closable>
   <t-tag
     closable="{{true}}"
-    theme="primary"
+    variant="light"
     bind:close="handleClose0"
   >
-    标签
+    文字标签
   </t-tag>
   <t-tag
     closable="{{true}}"
-    icon="app"
-    theme="primary"
+    variant="outline"
     bind:close="handleClose1"
   >
-    标签
+    文字标签
   </t-tag>
 </closable>
 `;
 
-exports[`Tag Tag ellipsis demo works fine 1`] = `
-<ellipsis>
-  <t-tag
-    maxWidth="{{130}}"
-    title="超长省略文本标签超长省略文本标签"
-  >
-    超长省略文本标签超长省略文本标签
-  </t-tag>
-</ellipsis>
-`;
-
-exports[`Tag Tag iconDemo demo works fine 1`] = `
-<iconDemo>
-  <t-tag
-    theme="primary"
-  >
-    
-  标签
-  
-    <t-icon
-      name="app"
-      size="14px"
-      slot="icon"
-    />
-  </t-tag>
-</iconDemo>
-`;
-
-exports[`Tag Tag shape demo works fine 1`] = `
-<shape>
-  <t-tag
-    shape="round"
-    theme="primary"
-  >
-    圆弧
-  </t-tag>
-  <t-tag
-    shape="mark"
-    theme="primary"
-  >
-    半圆弧
-  </t-tag>
-</shape>
-`;
-
 exports[`Tag Tag size demo works fine 1`] = `
 <size>
-  <t-tag
-    class="margin-right"
-    size="large"
-    theme="primary"
+  <wx-view
+    class="block"
   >
-    展示标签30
-  </t-tag>
-  <t-tag
-    size="medium"
-    theme="primary"
+    <t-tag
+      size="extra-large"
+      variant="light"
+    >
+      加大尺寸
+    </t-tag>
+    <t-tag
+      size="large"
+      variant="light"
+    >
+      大尺寸
+    </t-tag>
+    <t-tag
+      size="medium"
+      variant="light"
+    >
+      中尺寸
+    </t-tag>
+    <t-tag
+      size="small"
+      variant="light"
+    >
+      小尺寸
+    </t-tag>
+  </wx-view>
+  <wx-view
+    class="block"
   >
-    展示标签24
-  </t-tag>
+    <t-tag
+      closable="{{true}}"
+      size="extra-large"
+      variant="light"
+    >
+      加大尺寸
+    </t-tag>
+    <t-tag
+      closable="{{true}}"
+      size="large"
+      variant="light"
+    >
+      大尺寸
+    </t-tag>
+    <t-tag
+      closable="{{true}}"
+      size="medium"
+      variant="light"
+    >
+      中尺寸
+    </t-tag>
+    <t-tag
+      closable="{{true}}"
+      size="small"
+      variant="light"
+    >
+      小尺寸
+    </t-tag>
+  </wx-view>
 </size>
 `;
 
 exports[`Tag Tag theme demo works fine 1`] = `
 <theme>
-  <t-tag
-    class="margin-right"
-    theme="primary"
+  <wx-view
+    class="block"
   >
-    默认
-  </t-tag>
-  <t-tag
-    class="margin-right"
-    theme="success"
+    <t-tag
+      variant="light"
+    >
+      默认
+    </t-tag>
+    <t-tag
+      theme="primary"
+      variant="light"
+    >
+      主要
+    </t-tag>
+    <t-tag
+      theme="warning"
+      variant="light"
+    >
+      警告
+    </t-tag>
+    <t-tag
+      theme="danger"
+      variant="light"
+    >
+      危险
+    </t-tag>
+    <t-tag
+      theme="success"
+      variant="light"
+    >
+      成功
+    </t-tag>
+  </wx-view>
+  <wx-view
+    class="block"
   >
-    成功
-  </t-tag>
-  <t-tag
-    class="margin-right"
-    theme="warning"
+    <t-tag>
+      默认
+    </t-tag>
+    <t-tag
+      theme="primary"
+    >
+      主要
+    </t-tag>
+    <t-tag
+      theme="warning"
+    >
+      警告
+    </t-tag>
+    <t-tag
+      theme="danger"
+    >
+      危险
+    </t-tag>
+    <t-tag
+      theme="success"
+    >
+      成功
+    </t-tag>
+  </wx-view>
+  <wx-view
+    class="block"
   >
-    警告
-  </t-tag>
-  <t-tag
-    class="margin-right"
-    theme="danger"
+    <t-tag
+      variant="outline"
+    >
+      默认
+    </t-tag>
+    <t-tag
+      theme="primary"
+      variant="outline"
+    >
+      主要
+    </t-tag>
+    <t-tag
+      theme="warning"
+      variant="outline"
+    >
+      警告
+    </t-tag>
+    <t-tag
+      theme="danger"
+      variant="outline"
+    >
+      危险
+    </t-tag>
+    <t-tag
+      theme="success"
+      variant="outline"
+    >
+      成功
+    </t-tag>
+  </wx-view>
+  <wx-view
+    class="block"
   >
-    危险
-  </t-tag>
-  <t-tag>
-    信息
-  </t-tag>
+    <t-tag
+      variant="light-outline"
+    >
+      默认
+    </t-tag>
+    <t-tag
+      theme="primary"
+      variant="light-outline"
+    >
+      主要
+    </t-tag>
+    <t-tag
+      theme="warning"
+      variant="light-outline"
+    >
+      警告
+    </t-tag>
+    <t-tag
+      theme="danger"
+      variant="light-outline"
+    >
+      危险
+    </t-tag>
+    <t-tag
+      theme="success"
+      variant="light-outline"
+    >
+      成功
+    </t-tag>
+  </wx-view>
 </theme>
+`;
+
+exports[`Tag Tag type demo works fine 1`] = `
+<type>
+  <wx-view
+    class="demo"
+  >
+    <wx-view
+      class="demo-desc"
+    >
+      基础标签
+    </wx-view>
+    <t-tag
+      variant="light"
+    >
+      标签文字
+    </t-tag>
+    <t-tag
+      variant="outline"
+    >
+      标签文字
+    </t-tag>
+  </wx-view>
+  <wx-view
+    class="demo"
+  >
+    <wx-view
+      class="demo-desc"
+    >
+      圆弧标签
+    </wx-view>
+    <t-tag
+      shape="round"
+      variant="light"
+    >
+      标签文字
+    </t-tag>
+    <t-tag
+      shape="round"
+      variant="outline"
+    >
+      标签文字
+    </t-tag>
+    <t-tag
+      shape="mark"
+      variant="outline"
+    >
+      标签文字
+    </t-tag>
+  </wx-view>
+  <wx-view
+    class="demo"
+  >
+    <wx-view
+      class="demo-desc"
+    >
+      带图标的标签
+    </wx-view>
+    <t-tag
+      icon="discount"
+      variant="light"
+    >
+       标签文字 
+    </t-tag>
+    <t-tag
+      icon="discount"
+      variant="outline"
+    >
+       标签文字 
+    </t-tag>
+  </wx-view>
+  <wx-view
+    class="demo"
+  >
+    <wx-view
+      class="demo-desc"
+    >
+      超长省略文本标签
+    </wx-view>
+    <t-tag
+      maxWidth="{{130}}"
+      variant="light"
+    >
+      超长省略文本标签超长省略文本标签
+    </t-tag>
+  </wx-view>
+</type>
 `;

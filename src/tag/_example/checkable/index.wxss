@@ -1,0 +1,21 @@
+
+.wrapper {
+  flex-wrap: wrap;
+  margin: 0 32rpx;
+}
+
+.wrapper t-check-tag {
+  display: block;
+}
+
+.block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  line-height: 76rpx;
+  color: rgba(0, 0, 0, 0.4);
+  gap: 32rpx;
+}
+
+.block + .block {
+  margin-top: 32rpx;
+}
