@@ -2,7 +2,6 @@
   "component": true,
   "usingComponents": {
     "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-switch": "tdesign-miniprogram/switch/switch"
+    "t-icon": "tdesign-miniprogram/icon/icon"
   }
 }

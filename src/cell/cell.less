@@ -3,22 +3,24 @@
 
 @cell-font-size: 32rpx;
 @cell-line-height: 48rpx;
-@cell-vertical-padding: 24rpx;
+@cell-vertical-padding: 32rpx;
 @cell-horizontal-padding: 32rpx;
-@cell-text-color: rgba(0, 0, 0, 0.9);
+@cell-text-color: @font-gray-1;
 @cell-background-color: #ffffff;
-@cell-border-color: #e7e7e7;
-@cell-hover-color: #f2f3f5;
-@cell-required-color: #e34d59;
-@cell-description-color: rgba(0, 0, 0, 0.4);
+@cell-border-color: @gray-color-3;
+@cell-hover-color: @gray-color-1;
+@cell-required-color: @error-color-6;
+@cell-description-color: @font-gray-2;
 @cell-description-font-size: 28rpx;
 @cell-description-line-height: 44rpx;
 @cell-description-margin-top: 8rpx;
-@cell-note-color: rgba(0, 0, 0, 0.4);
+@cell-note-color: @font-gray-3;
 @cell-icon-size: 48rpx;
-@cell-right-icon-color: #bbb;
+@cell-right-icon-color: @font-gray-3;
 @cell-gutter: 16rpx;
 @cell-border-padding-left: 32rpx;
+@cell-image-width: 96rpx;
+@cell-image-height: 96rpx;
 
 .@{prefix}-cell {
   position: relative;
@@ -69,6 +71,8 @@
 
   &__title-text {
     display: flex;
+    font-size: 32rpx;
+    font-weight: 400;
   }
 
   &__left,
@@ -80,7 +84,7 @@
   }
 
   &__left {
-    :not(:empty) {
+    &:not(:empty) {
       margin-right: 16rpx;
     }
 
@@ -89,8 +93,8 @@
     }
 
     &-image {
-      height: 112rpx;
-      width: 112rpx;
+      height: @cell-image-height;
+      width: @cell-image-width;
     }
   }
 

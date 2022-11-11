@@ -28,6 +28,14 @@ export interface TdCellGroupProps {
     value?: ['t-class'];
   };
   /**
+   * 单元格风格
+   * @default default
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'default' | 'card';
+  };
+  /**
    * 单元格组标题
    * @default ''
    */
