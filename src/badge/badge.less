@@ -8,10 +8,9 @@
 @badge-font-weight: normal;
 @badge-circle-border-radius: 32rpx;
 @badge-round-border-radius: 8rpx;
-@badge-dot-height: 20rpx;
+@badge-dot-height: 16rpx;
 @badge-dot-border-radius: 8rpx;
 
-// <name> 替换为组件名
 .@{prefix}-badge {
   position: relative;
   display: inline-block;
@@ -28,6 +27,7 @@
     text-align: center;
     line-height: @badge-height;
     font-weight: @badge-font-weight;
+    border-radius: 4rpx;
   }
 
   &--dot {
@@ -64,6 +64,7 @@
 
   &--ribbon {
     transform: rotate(45deg);
+    border-radius: 0;
     // padding: 0;
 
     &::before {
