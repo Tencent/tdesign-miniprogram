@@ -2,9 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('empty', () => {
-  const empty = simulate.load(path.resolve(__dirname, `../empty`), {
-    less: true,
-  });
+  const empty = load(path.resolve(__dirname, `../empty`));
 
   describe('props', () => {
     it(`:image`, () => {

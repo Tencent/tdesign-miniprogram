@@ -2,9 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('Footer', () => {
-  const footer = simulate.load(path.resolve(__dirname, `../footer`), {
-    less: true,
-  });
+  const footer = load(path.resolve(__dirname, `../footer`));
 
   it(':base', () => {
     const id = simulate.load({

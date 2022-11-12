@@ -32,10 +32,7 @@ mockGetRect.mockImplementationOnce(() => {
 describe('notice-bar', () => {
   const noticeBar = load(path.resolve(__dirname, `../notice-bar`), 't-notice-bar');
   jest.resetModules();
-  const icon = simulate.load(path.resolve(__dirname, `../../icon/icon`), 't-icon', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const icon = load(path.resolve(__dirname, `../../icon/icon`), 't-icon');
 
   describe('props', () => {
     it(': visible', () => {

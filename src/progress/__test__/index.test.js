@@ -2,9 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('progress', () => {
-  const progress = simulate.load(path.resolve(__dirname, `../progress`), {
-    less: true,
-  });
+  const progress = load(path.resolve(__dirname, `../progress`));
   it(`: status `, () => {
     const id = simulate.load({
       template: `
