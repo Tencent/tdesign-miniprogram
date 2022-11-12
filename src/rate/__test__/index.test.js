@@ -3,7 +3,7 @@ import path from 'path';
 
 describe('Rate', () => {
   const tagName = 'rate';
-  const Rate = simulate.load(path.resolve(__dirname, `../rate`), tagName, { less: true });
+  const Rate = load(path.resolve(__dirname, `../rate`), tagName);
 
   it(':disabled', async () => {
     const mockFn = jest.fn();
