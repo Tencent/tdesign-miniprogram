@@ -1,5 +1,14 @@
-<t-grid class="three-border" border="{{border}}" column="{{3}}">
-  <t-grid-item text="标题文字" image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-  <t-grid-item text="标题文字" image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-  <t-grid-item text="标题文字" image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-</t-grid>
+<view class="block">
+  <t-grid border="{{border}}" column="{{3}}">
+    <t-grid-item text="标题文字" image="{{img}}" />
+    <t-grid-item text="标题文字" image="{{img}}" />
+    <t-grid-item text="标题文字" image="{{img}}" />
+  </t-grid>
+</view>
+
+<view class="block">
+  <t-grid border="{{border}}" column="{{2}}" align="left">
+    <t-grid-item text="标题文字" description="描述文字" layout="horizontal" image="{{img}}" />
+    <t-grid-item text="标题最多六字" description="描述文字" layout="horizontal" image="{{img}}" />
+  </t-grid>
+</view>

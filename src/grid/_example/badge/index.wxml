@@ -1,29 +1,6 @@
 <t-grid class="t-grid badge">
-  <t-grid-item text="标题文字" t-class-text="text" t-class-image="image" t-class-content="external-class-content">
-    <t-badge count="{{16}}" slot="image" t-class="badge-item">
-      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-    </t-badge>
-  </t-grid-item>
-  <t-grid-item text="标题文字" t-class-text="text" t-class-image="image" t-class-content="external-class-content">
-    <t-badge dot slot="image" t-class="badge-item">
-      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-    </t-badge>
-  </t-grid-item>
-  <t-grid-item text="标题文字" t-class-text="text" t-class-image="image" t-class-content="external-class-content">
-    <t-badge count="New" slot="image" t-class="badge-item" t-class-text="text">
-      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-    </t-badge>
-  </t-grid-item>
-  <t-grid-item text="标题五字内" t-class-text="text" t-class-image="image" t-class-content="external-class-content">
-    <t-badge count="slot" slot="image" t-class="badge-item">
-      <image class="image-icon" src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png" />
-      <view slot="count" class="badge-circle">
-        <view class="badge-circle-container">
-          <view class="circle" />
-          <view class="circle" />
-          <view class="circle" />
-        </view>
-      </view>
-    </t-badge>
-  </t-grid-item>
+  <t-grid-item text="标题文字" image="{{img}}" badge-props="{{ { dot: true } }}" />
+  <t-grid-item text="标题文字" image="{{img}}" badge-props="{{ { count: 8 } }}" />
+  <t-grid-item text="标题文字" image="{{img}}" badge-props="{{ { count: 13 } }}" />
+  <t-grid-item text="标题文字" image="{{img}}" badge-props="{{ { count: 'NEW' } }}" />
 </t-grid>

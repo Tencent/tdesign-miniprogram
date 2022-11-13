@@ -1,12 +1,13 @@
 {
   "navigationBarTitleText": "Grid宫格",
   "usingComponents": {
+    "base": "./base",
     "border": "./border",
-    "three": "./three",
-    "four": "./four",
-    "five": "./five",
-    "two-des": "./two-des",
-    "three-des": "./three-des",
-    "badge": "./badge"
+    "description": "./description",
+    "badge": "./badge",
+    "scroll": "./scroll",
+    "multiple": "./multiple",
+    "card": "./card",
+    "icon-demo": "./icon"
   }
 }

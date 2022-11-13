@@ -1,42 +1,28 @@
 <view class="demo">
   <view class="demo-title">Grid 宫格</view>
   <view class="demo-desc">用于功能入口布局，将页面或特定区域切分成若干等大的区块，形成若干功能入口。</view>
-  <t-demo title="01 类型">
-    <view class="t-grid-list">
-      <view class="demo-section__desc">一行三个带边框</view>
-      <view class="demo-section__wrapper">
-        <border />
-      </view>
-
-      <view class="demo-section__desc">一行四个</view>
-      <view class="demo-section__wrapper">
-        <four />
-      </view>
-
-      <view class="demo-section__desc">一行五个</view>
-      <view class="demo-section__wrapper">
-        <five />
-      </view>
-
-      <view class="demo-section__desc">一行三个</view>
-      <view class="demo-section__wrapper">
-        <three />
-      </view>
-
-      <view class="demo-section__desc">一行二个带说明</view>
-      <view class="demo-section__wrapper">
-        <two-des />
-      </view>
-
-      <view class="demo-section__desc">一行三个带说明</view>
-      <view class="demo-section__wrapper">
-        <three-des />
-      </view>
-
-      <view class="demo-section__desc">带徽标</view>
-      <view class="demo-section__wrapper">
-        <badge />
-      </view>
-    </view>
+  <t-demo title="01 类型" desc="基础宫格">
+    <base />
+  </t-demo>
+  <t-demo desc="带说明的宫格">
+    <description />
+  </t-demo>
+  <t-demo desc="带边框的宫格">
+    <border />
+  </t-demo>
+  <t-demo desc="带徽章的宫格">
+    <badge />
+  </t-demo>
+  <t-demo desc="可滑动的宫格">
+    <scroll />
+  </t-demo>
+  <t-demo title="02 组件样式" desc="可传图标的宫格">
+    <icon-demo />
+  </t-demo>
+  <t-demo desc="多行宫格">
+    <multiple />
+  </t-demo>
+  <t-demo desc="卡片宫格">
+    <card />
   </t-demo>
 </view>

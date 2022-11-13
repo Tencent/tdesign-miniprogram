@@ -6,373 +6,357 @@ exports[`Grid Grid badge demo works fine 1`] = `
     class="t-grid badge"
   >
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image"
-      tClassText="text"
+      badgeProps="{{
+        Object {
+          "dot": true,
+        }
+      }}"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <t-badge
-        count="{{16}}"
-        slot="image"
-        tClass="badge-item"
-      >
-        <wx-image
-          class="image-icon"
-          src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-        />
-      </t-badge>
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image"
-      tClassText="text"
+      badgeProps="{{
+        Object {
+          "count": 8,
+        }
+      }}"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <t-badge
-        dot="{{true}}"
-        slot="image"
-        tClass="badge-item"
-      >
-        <wx-image
-          class="image-icon"
-          src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-        />
-      </t-badge>
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image"
-      tClassText="text"
+      badgeProps="{{
+        Object {
+          "count": 13,
+        }
+      }}"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <t-badge
-        count="New"
-        slot="image"
-        tClass="badge-item"
-        tClassText="text"
-      >
-        <wx-image
-          class="image-icon"
-          src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-        />
-      </t-badge>
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image"
-      tClassText="text"
-      text="标题五字内"
-    >
-      <t-badge
-        count="slot"
-        slot="image"
-        tClass="badge-item"
-      >
-        <wx-image
-          class="image-icon"
-          src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-        />
-        <wx-view
-          class="badge-circle"
-          slot="count"
-        >
-          <wx-view
-            class="badge-circle-container"
-          >
-            <wx-view
-              class="circle"
-            />
-            <wx-view
-              class="circle"
-            />
-            <wx-view
-              class="circle"
-            />
-          </wx-view>
-        </wx-view>
-      </t-badge>
-    </t-grid-item>
+      badgeProps="{{
+        Object {
+          "count": "NEW",
+        }
+      }}"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
   </t-grid>
 </badge>
 `;
 
-exports[`Grid Grid border demo works fine 1`] = `
-<border>
+exports[`Grid Grid base demo works fine 1`] = `
+<base>
   <t-grid
-    border="{{
-      Object {
-        "color": "#f6f6f6",
-      }
-    }}"
-    class="three-border"
-    column="{{3}}"
-  >
-    <t-grid-item
-      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      text="标题文字"
-    />
-    <t-grid-item
-      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      text="标题文字"
-    />
-    <t-grid-item
-      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      text="标题文字"
-    />
-  </t-grid>
-</border>
-`;
-
-exports[`Grid Grid five demo works fine 1`] = `
-<five>
-  <t-grid
-    class="five"
+    class="block"
     column="{{5}}"
   >
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="最多四字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
   </t-grid>
-</five>
-`;
-
-exports[`Grid Grid four demo works fine 1`] = `
-<four>
   <t-grid
-    class="four"
+    class="block"
   >
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassContent="external-class-content"
-      tClassImage="image-icon"
-      tClassText="text"
-      text="标题五字内"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="最多五个字"
+    />
   </t-grid>
-</four>
-`;
-
-exports[`Grid Grid three demo works fine 1`] = `
-<three>
   <t-grid
-    class="three"
+    class="block"
     column="{{3}}"
   >
     <t-grid-item
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassImage="image-icon"
-      tClassText="text"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      tClassImage="image-icon"
-      tClassText="text"
-      text="标题最多六字"
-    >
-      <wx-image
-        class="image"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="最多六个文字"
+    />
   </t-grid>
-</three>
+</base>
 `;
 
-exports[`Grid Grid three-des demo works fine 1`] = `
-<three-des>
-  <t-grid
-    class="three-des"
-    column="{{3}}"
+exports[`Grid Grid border demo works fine 1`] = `
+<border>
+  <wx-view
+    class="block"
   >
-    <t-grid-item
-      description="说明文字"
-      tClassDescription="description"
-      tClassImage="image"
-      tClassText="text"
-      text="标题文字"
+    <t-grid
+      border="{{
+        Object {
+          "color": "#f6f6f6",
+        }
+      }}"
+      column="{{3}}"
     >
-      <wx-image
-        class="image-icon"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      <t-grid-item
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        text="标题文字"
       />
-    </t-grid-item>
-    <t-grid-item
-      description="说明文字"
-      tClassDescription="description"
-      tClassImage="image"
-      tClassText="text"
-      text="标题文字"
+      <t-grid-item
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        text="标题文字"
+      />
+      <t-grid-item
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        text="标题文字"
+      />
+    </t-grid>
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-grid
+      align="left"
+      border="{{
+        Object {
+          "color": "#f6f6f6",
+        }
+      }}"
+      column="{{2}}"
     >
-      <wx-image
-        class="image-icon"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        layout="horizontal"
+        text="标题文字"
       />
-    </t-grid-item>
-    <t-grid-item
-      description="说明最多六字"
-      tClassDescription="description"
-      tClassImage="image"
-      tClassText="text"
-      text="标题最多六字"
-    >
-      <wx-image
-        class="image-icon"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        layout="horizontal"
+        text="标题最多六字"
       />
-    </t-grid-item>
-  </t-grid>
-</three-des>
+    </t-grid>
+  </wx-view>
+</border>
 `;
 
-exports[`Grid Grid two-des demo works fine 1`] = `
-<two-des>
+exports[`Grid Grid card demo works fine 1`] = `
+<card>
   <t-grid
-    align="left"
-    column="{{2}}"
-    tClass="two-des"
+    class="block"
+    column="{{4}}"
+    theme="card"
   >
     <t-grid-item
-      description="说明文字"
-      layout="horizontal"
-      tClassImage="image"
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
       text="标题文字"
-    >
-      <wx-image
-        class="image-icon"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+    />
     <t-grid-item
-      description="说明文字最多八字"
-      layout="horizontal"
-      tClassImage="image"
-      text="标题最多六字"
-    >
-      <wx-image
-        class="image-icon"
-        slot="image"
-        src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-      />
-    </t-grid-item>
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="最多五个字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="最多五个字"
+    />
   </t-grid>
-</two-des>
+</card>
+`;
+
+exports[`Grid Grid description demo works fine 1`] = `
+<description>
+  <wx-view
+    class="block"
+  >
+    <t-grid
+      column="{{3}}"
+    >
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        text="标题文字"
+      />
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        text="标题文字"
+      />
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        text="标题文字"
+      />
+    </t-grid>
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-grid
+      align="left"
+      column="{{2}}"
+    >
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        layout="horizontal"
+        text="标题文字"
+      />
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+        layout="horizontal"
+        text="标题文字"
+      />
+    </t-grid>
+  </wx-view>
+</description>
+`;
+
+exports[`Grid Grid icon demo works fine 1`] = `
+<wx-icon>
+  <t-grid
+    class="block"
+  >
+    <t-grid-item
+      icon="share"
+      text="分享"
+    />
+    <t-grid-item
+      icon="star"
+      text="收藏"
+    />
+    <t-grid-item
+      icon="download"
+      text="保存"
+    />
+    <t-grid-item
+      icon="edit-1"
+      text="编辑"
+    />
+  </t-grid>
+</wx-icon>
+`;
+
+exports[`Grid Grid multiple demo works fine 1`] = `
+<multiple>
+  <t-grid
+    class="block"
+    column="{{4}}"
+  >
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="最多五个字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="最多五个字"
+    />
+  </t-grid>
+</multiple>
+`;
+
+exports[`Grid Grid scroll demo works fine 1`] = `
+<scroll>
+  <t-grid
+    class="block"
+    column="{{0}}"
+  >
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+      text="标题文字"
+    />
+  </t-grid>
+</scroll>
 `;
