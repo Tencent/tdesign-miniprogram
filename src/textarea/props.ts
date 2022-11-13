@@ -29,7 +29,7 @@ const props: TdTextareaProps = {
   /** 设置键盘右下角按钮的文字，仅在 type='text'时生效 */
   confirmType: {
     type: String,
-    value: 'done',
+    value: 'return',
   },
   /** 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 */
   cursorSpacing: {
