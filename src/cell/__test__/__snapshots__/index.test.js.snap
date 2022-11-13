@@ -54,7 +54,7 @@ exports[`cell :with group 1`] = `
 <main>
   <main>
     <wx-view
-      class="t-class t-cell-group "
+      class="t-cell-group t-cell-group--false t-cell-group--default t-class"
       style=""
     />
   </main>

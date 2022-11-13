@@ -19,10 +19,7 @@ describe('message', () => {
   const message = load(path.resolve(__dirname, `../message`), 't-message');
 
   jest.resetModules();
-  const icon = simulate.load(path.resolve(__dirname, `../../icon/icon`), 't-icon', {
-    less: true,
-    rootPath: path.resolve(__dirname, '../..'),
-  });
+  const icon = load(path.resolve(__dirname, `../../icon/icon`), 't-icon');
 
   describe('props', () => {
     it(': icon', async () => {

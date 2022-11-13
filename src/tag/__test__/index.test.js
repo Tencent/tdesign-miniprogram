@@ -3,13 +3,9 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('tag', () => {
-  const Tag = simulate.load(path.resolve(__dirname, `../tag`), {
-    less: true,
-  });
+  const Tag = load(path.resolve(__dirname, `../tag`));
+  const CheckTag = load(path.resolve(__dirname, `../check-tag`));
 
-  const CheckTag = simulate.load(path.resolve(__dirname, `../check-tag`), {
-    less: true,
-  });
   describe('tag', () => {
     describe('props', () => {
       it(`: theme`, async () => {
