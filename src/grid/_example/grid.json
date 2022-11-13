@@ -4,6 +4,10 @@
     "base": "./base",
     "border": "./border",
     "description": "./description",
-    "badge": "./badge"
+    "badge": "./badge",
+    "scroll": "./scroll",
+    "multiple": "./multiple",
+    "card": "./card",
+    "icon-demo": "./icon"
   }
 }
