@@ -43,7 +43,7 @@ export interface TdTextareaProps {
    */
   confirmType?: {
     type: StringConstructor;
-    value?: 'send' | 'search' | 'next' | 'go' | 'done';
+    value?: 'return' | 'send' | 'search' | 'next' | 'go' | 'done';
   };
   /**
    * 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离
