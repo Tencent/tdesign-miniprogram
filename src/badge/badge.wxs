@@ -59,6 +59,7 @@ var isShowBadge = function (props) {
   if (!props.showZero && !isNaN(props.count) && parseInt(props.count) === 0) {
     return false;
   }
+  if (props.count == null) return false;
   return true;
 };
 

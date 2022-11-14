@@ -1,0 +1,6 @@
+<t-grid class="block">
+  <t-grid-item text="分享" icon="share" />
+  <t-grid-item text="收藏" icon="star" />
+  <t-grid-item text="保存" icon="download" />
+  <t-grid-item text="编辑" icon="edit-1" />
+</t-grid>

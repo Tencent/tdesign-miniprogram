@@ -2,11 +2,9 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('cell', () => {
-  const cell = simulate.load(path.resolve(__dirname, `../cell`), {
-    less: true,
-  });
+  const cell = load(path.resolve(__dirname, `../cell`));
   it(`:base`, () => {
-    const id = simulate.load({
+    const id = load({
       template: `<t-cell id="cell"></t-cell>`,
       usingComponents: {
         't-cell': cell,
@@ -20,7 +18,7 @@ describe('cell', () => {
 
   it(`:event`, async () => {
     const handleClick = jest.fn();
-    const id = simulate.load({
+    const id = load({
       template: `<t-cell id="cell" bind:click="handleClick"></t-cell>`,
       usingComponents: {
         't-cell': cell,
@@ -42,7 +40,7 @@ describe('cell', () => {
   it(`:jump`, async () => {
     const handleClick = jest.fn();
     const jumpType = 'navigateTo';
-    const id = simulate.load({
+    const id = load({
       template: `<t-cell id="cell" jumpType="{{jumpType}}" url="mockUrl" bind:click="handleClick"></t-cell>`,
       usingComponents: {
         't-cell': cell,
@@ -65,10 +63,8 @@ describe('cell', () => {
   });
 
   it(`:with group`, () => {
-    const group = simulate.load(path.resolve(__dirname, `../../cell-group/cell-group`), {
-      less: true,
-    });
-    const id = simulate.load({
+    const group = load(path.resolve(__dirname, `../../cell-group/cell-group`));
+    const id = load({
       template: `<t-cell-group></t-cell-group>`,
       usingComponents: {
         't-cell-group': group,

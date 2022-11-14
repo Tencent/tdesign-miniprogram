@@ -5,9 +5,7 @@ describe('Steps', () => {
   let comp;
 
   beforeAll(() => {
-    const Index = simulate.load(path.resolve(__dirname, `./index`), {
-      less: true,
-    });
+    const Index = load(path.resolve(__dirname, `./index`));
     comp = simulate.render(Index);
     comp.attach(document.body);
   });

@@ -2,7 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('Checkbox', () => {
-  const id = simulate.load(path.resolve(__dirname, './index'), { less: true });
+  const id = load(path.resolve(__dirname, './index'));
 
   describe('with group', () => {
     it(':checked', async () => {

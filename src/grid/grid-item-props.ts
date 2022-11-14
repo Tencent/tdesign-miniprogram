@@ -6,6 +6,11 @@
 
 import { TdGridItemProps } from './type';
 const props: TdGridItemProps = {
+  /** 透传至 Badge 属性 */
+  badgeProps: {
+    type: Object,
+    value: null,
+  },
   /** 自定义组件样式 */
   customStyle: {
     type: String,
@@ -18,6 +23,11 @@ const props: TdGridItemProps = {
   /** 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名 */
   externalClasses: {
     type: Array,
+  },
+  /** 图标名称 */
+  icon: {
+    type: String,
+    value: '',
   },
   /** 图片，可以是图片地址，也可以自定义图片节点 */
   image: {
