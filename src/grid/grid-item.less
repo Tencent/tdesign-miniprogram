@@ -21,6 +21,7 @@
   height: 100%;
   // float: left;
   display: inline-block;
+  vertical-align: top;
 
   &--hover {
     background-color: var(--td-grid-item-hover-bg-color, @grid-item-hover-bg-color);
@@ -59,6 +60,10 @@
 
     &--horizontal {
       margin-left: 24rpx;
+    }
+
+    &:empty {
+      display: none;
     }
   }
 
