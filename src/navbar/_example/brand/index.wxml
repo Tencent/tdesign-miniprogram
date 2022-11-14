@@ -1,3 +1,0 @@
-<t-navbar leftIcon="slot">
-  <span slot="left-icon" class="slot-left">品牌名称</span>
-</t-navbar>
