@@ -19,7 +19,7 @@
     >
       <slot />
       <t-badge
-        wx:if="{{image}}"
+        wx:if="{{image || icon}}"
         color="{{badgeProps.color}}"
         content="{{badgeProps.content}}"
         count="{{badgeProps.count}}"

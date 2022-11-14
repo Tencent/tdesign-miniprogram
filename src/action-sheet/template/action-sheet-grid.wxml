@@ -9,8 +9,10 @@
         wx:key="index"
         bind:tap="onSelect"
         data-index="{{index}}"
+        icon="{{item.icon}}"
+        text="{{item.label}}"
       >
-        <template is="item" data="{{classPrefix, item}}" />
+        <!-- <template is="item" data="{{classPrefix, item}}" /> -->
       </t-grid-item>
     </t-grid>
   </block>
@@ -26,8 +28,10 @@
               wx:key="index"
               data-index="{{index}}"
               bind:tap="onSelect"
+              icon="{{item.icon}}"
+              text="{{item.label}}"
             >
-              <template is="item" data="{{classPrefix, item}}" />
+              <!-- <template is="item" data="{{classPrefix, item}}" /> -->
             </t-grid-item>
           </t-grid>
         </t-swiper-item>
