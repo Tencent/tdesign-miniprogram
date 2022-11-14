@@ -1,22 +1,23 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@black: #000;
-@white: #fff;
+@navbar-color: @font-gray-1;
+@navbar-bg-color: @bg-color-block;
+@navbar-height: 88rpx;
+@navbar-right: 190rpx; // 默认右上角胶囊按钮宽度，组件会在初始化时尝试自动获取胶囊按钮宽度并覆写该值
+@navbar-padding-top: 40rpx; // 导航栏顶部间距，组件会在初始化时尝试取右侧系统胶囊位置进行覆盖
+@navbar-title-font-weight: 600;
+@navbar-left-arrow-size: 48rpx;
 
-// navbar 字体颜色
-@navbar-color: @black;
-
-// navbar 背景色
-@navbar-background-color: @white;
+// capsule
+@navbar-capsule-border-color: #e3e6ea;
+@navbar-capsule-border-radius: 32rpx;
+@navbar-capsule-width: 176rpx;
 
 .@{prefix}-navbar {
-  --navbar-height: 44px;
-  --navbar-right: 190rpx; // 默认右上角胶囊按钮宽度，组件会在初始化时尝试自动获取胶囊按钮宽度并覆写该值
-  --narbar-padding-top: 20px; // 导航栏顶部间距，组件会在初始化时尝试取右侧系统胶囊位置进行覆盖
-  --capsule-width: 174rpx;
-
   overflow: hidden;
+  color: var(--td-navbar-color, @navbar-color);
+  background-color: var(--td-navbar-bg-color, @navbar-bg-color);
 
   &--fixed {
     .@{prefix}-navbar__content {
@@ -48,8 +49,8 @@
   }
 
   &__placeholder {
-    height: var(--navbar-height);
-    padding-top: var(--narbar-padding-top);
+    height: var(--td-navbar-height, 88rpx);
+    padding-top: var(--td-navbar-padding-top, @navbar-padding-top);
     position: relative;
     visibility: hidden;
   }
@@ -57,62 +58,38 @@
   &__content {
     position: relative;
     z-index: 1;
-    height: var(--navbar-height);
-    width: calc(100% - var(--navbar-right));
-    padding-right: var(--navbar-right);
-    padding-top: var(--narbar-padding-top);
+    height: var(--td-navbar-height, @navbar-height);
+    width: calc(100% - var(--td-navbar-right, @navbar-right));
+    padding-right: var(--td-navbar-right, @navbar-right);
+    padding-top: var(--td-navbar-padding-top, @navbar-padding-top);
     display: flex;
     align-items: center;
-    background-color: @navbar-background-color;
-    color: @navbar-color;
   }
 
   &__left {
     position: relative;
     box-sizing: border-box;
-    width: var(--navbar-right);
+    // width: var(--td-navbar-right, @navbar-right);
     display: flex;
     align-items: center;
+
+    &-arrow {
+      font-size: var(--td-navbar-left-arrow-size, @navbar-left-arrow-size);
+    }
   }
 
   &__capsule {
     box-sizing: border-box;
     margin-left: 24rpx;
-    width: var(--capsule-width);
+    width: var(--td-navbar-capsule-width, @navbar-capsule-width);
     height: var(--capsule-height);
-    line-height: var(--capsule-height);
-    border-radius: 16rpx * 2;
-    border: 1rpx solid #e3e6eb;
-    background: #fff;
+    border-radius: var(--td-navbar-capsule-border-radius, @navbar-capsule-border-radius);
+    border: 1rpx solid var(--td-navbar-capsule-border-color, @navbar-capsule-border-color);
     display: flex;
     align-items: center;
 
-    .@{prefix}-navbar__btn {
-      flex: 1;
-
-      &:not(:first-child) {
-        position: relative;
-
-        &::before {
-          display: block;
-          content: '';
-          position: absolute;
-          top: 12rpx;
-          bottom: 12rpx;
-          left: 0;
-          background-color: rgba(0, 0, 0, 0.2);
-          width: 1px;
-        }
-      }
-
-      &:first-child {
-        margin-left: 0rpx;
-      }
-    }
-
-    &-icon {
-      display: flex;
-      align-items: center;
+    &:empty {
+      display: none;
     }
   }
 
@@ -120,31 +97,29 @@
     font-size: 36rpx;
     text-align: center;
     position: absolute;
-    left: var(--navbar-right);
-    width: calc(100% - var(--navbar-right) * 2);
-    height: var(--navbar-height);
-    line-height: var(--navbar-height);
+    left: var(--td-navbar-right, @navbar-right);
+    width: calc(100% - var(--td-navbar-right, @navbar-right) * 2);
+    height: var(--td-navbar-height, @navbar-height);
+    line-height: var(--td-navbar-height, @navbar-height);
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 
+    &:empty {
+      display: none;
+    }
+
     &-title {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
+      font-weight: var(--td-navbar-title-font-weight, @navbar-title-font-weight);
     }
   }
 
   &__btn {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-
-    &:first-child {
-      margin-left: 24rpx;
-    }
+    margin-left: 24rpx;
   }
 }

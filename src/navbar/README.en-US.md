@@ -6,13 +6,13 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 animation | Boolean | true | \- | N
+capsule | Slot | - | \- | N
 custom-style | String | - | \- | N
 delta | Number | 1 | \- | N
 external-classes | Array | - | `['t-class', 't-class-title', 't-class-left-icon', 't-class-home-icon', 't-class-capsule']` | N
 fixed | Boolean | true | \- | N
 left | Slot | - | left area of navbar | N
 left-arrow | Boolean | false | \- | N
-right | Slot | - | right area of navbar | N
 title | String / Slot | - | page title | N
 title-max-length | Number | - | \- | N
 visible | Boolean | true | \- | N
@@ -24,5 +24,4 @@ name | params | description
 complete | \- | \-
 fail | \- | \-
 go-back | \- | \-
-go-home | \- | \-
 success | \- | \-
