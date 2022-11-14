@@ -9,35 +9,35 @@ Component({
         context: this,
         items: [
           {
-            label: '文字',
+            label: '标题文字',
             icon: 'image',
           },
           {
-            label: '文字',
+            label: '标题文字',
             icon: 'image',
           },
           {
-            label: '文字',
+            label: '标题文字',
             icon: 'image',
           },
           {
-            label: '文字',
+            label: '标题文字',
             icon: 'image',
           },
           {
-            label: '文字',
+            label: '标题文字',
             icon: 'image',
           },
           {
-            label: '文字',
+            label: '标题文字',
             icon: 'image',
           },
           {
-            label: '文字',
+            label: '标题文字',
             icon: 'image',
           },
           {
-            label: '文字',
+            label: '标题文字',
             icon: 'image',
           },
         ],

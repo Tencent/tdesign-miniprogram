@@ -32,31 +32,6 @@ exports[`grid :base 1`] = `
                 class="t-grid-item__content t-grid-item__content--center t-grid-item__content--vertical t-class-content"
                 style=""
               >
-                <t-badge
-                  tClass=""
-                  tClassContent=""
-                  tClassCount=""
-                >
-                  <wx-view
-                    class="t-badge  t-class"
-                    style=""
-                  >
-                    <wx-view
-                      class="t-badge__content t-class-content"
-                    >
-                      <wx-view
-                        class="t-grid-item__image t-grid-item__image--middle t-class-image"
-                      />
-                    </wx-view>
-                    <wx-view
-                      class="t-badge--basic   t-badge--circle  t-has-count t-class-count"
-                      style=""
-                    >
-                      
-  
-                    </wx-view>
-                  </wx-view>
-                </t-badge>
                 <wx-view
                   class="t-grid-item__words t-grid-item__words--vertical"
                 />
@@ -80,31 +55,6 @@ exports[`grid :base 1`] = `
                 class="t-grid-item__content t-grid-item__content--center t-grid-item__content--vertical t-class-content"
                 style=""
               >
-                <t-badge
-                  tClass=""
-                  tClassContent=""
-                  tClassCount=""
-                >
-                  <wx-view
-                    class="t-badge  t-class"
-                    style=""
-                  >
-                    <wx-view
-                      class="t-badge__content t-class-content"
-                    >
-                      <wx-view
-                        class="t-grid-item__image t-grid-item__image--middle t-class-image"
-                      />
-                    </wx-view>
-                    <wx-view
-                      class="t-badge--basic   t-badge--circle  t-has-count t-class-count"
-                      style=""
-                    >
-                      
-  
-                    </wx-view>
-                  </wx-view>
-                </t-badge>
                 <wx-view
                   class="t-grid-item__words t-grid-item__words--vertical"
                 />
