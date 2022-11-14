@@ -1,56 +1,21 @@
-<view class="{{classPrefix}} {{fixedClass}} {{visibleClass}} {{prefix}}-class" style="{{boxStyle}}">
-  <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder"></view>
-  <view class="{{classPrefix}}__content" style="{{contentStyle}}">
-    <block>
-      <view class="{{classPrefix}}__left {{prefix}}-class-left">
+<wxs src="../common/utils.wxs" module="_" />
+<view class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} {{prefix}}-class">
+  <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder" />
+  <view class="{{classPrefix}}__content" style="{{boxStyle}}">
+    <view class="{{classPrefix}}__left {{prefix}}-class-left">
+      <view wx:if="{{leftArrow}}" class="{{classPrefix}}__btn" bind:tap="goBack">
+        <t-icon name="chevron-left" class="{{classPrefix}}__left-arrow" />
+      </view>
+      <slot name="left" />
+      <view class="{{classPrefix}}__capsule">
         <slot name="capsule" />
-        <!-- 如果传入leftIcon和homeIcon则展示胶囊 -->
-        <block wx:if="{{hasBackIcon && hasHomeIcon}}">
-          <view class="{{classPrefix}}__capsule {{prefix}}-class-capsule">
-            <view class="{{classPrefix}}__btn {{classPrefix}}__btn--back {{prefix}}-class-nav-btn" bindtap="goBack">
-              <t-icon
-                wx:if="{{leftIcon!=='slot'}}"
-                name="{{leftIcon}}"
-                class="{{classPrefix}}__capsule-icon {{prefix}}-class-left-icon"
-              />
-              <slot name="left-icon" class="{{prefix}}-class-left-icon"></slot>
-            </view>
-            <view class="{{classPrefix}}__btn {{classPrefix}}__btn--home {{prefix}}-class-nav-btn" bindtap="goHome">
-              <t-icon
-                wx:if="{{homeIcon!=='slot'}}"
-                name="{{homeIcon}}"
-                class="{{classPrefix}}__capsule-icon {{prefix}}-class-home-icon"
-              />
-              <slot name="home-icon" class="{{prefix}}-class-home-icon"></slot>
-            </view>
-          </view>
-        </block>
-        <!-- 否则无胶囊展示 -->
-        <block wx:else>
-          <view wx:if="{{hasBackIcon}}" class="{{classPrefix}}__btn {{classPrefix}}__btn--back" bindtap="goBack">
-            <t-icon
-              wx:if="{{leftIcon!=='slot'}}"
-              name="{{leftIcon}}"
-              class="{{classPrefix}}__capsule-icon t-class-left-icon"
-            />
-            <slot name="left-icon" class="t-class-left-icon"></slot>
-          </view>
-          <view wx:if="{{hasHomeIcon}}" class="{{classPrefix}}__btn {{classPrefix}}__btn--home" bindtap="goHome">
-            <t-icon
-              wx:if="{{homeIcon!=='slot'}}"
-              name="{{homeIcon}}"
-              class="{{classPrefix}}__capsule-icon t-class-home-icon"
-            />
-            <slot name="home-icon" class="t-class-home-icon"></slot>
-          </view>
-        </block>
       </view>
-      <view class="{{classPrefix}}__center t-class-center">
-        <block wx:if="{{title}}">
-          <slot wx:if="{{title === 'slot'}}" name="title" class="t-class-title"></slot>
-          <text wx:else class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
-        </block>
-      </view>
-    </block>
+    </view>
+    <view class="{{classPrefix}}__center t-class-center">
+      <block wx:if="{{title}}">
+        <slot wx:if="{{title === 'slot'}}" name="title" class="t-class-title"></slot>
+        <text wx:else class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
+      </block>
+    </view>
   </view>
 </view>

@@ -31,23 +31,6 @@ describe('navbar', () => {
     expect(comp.toJSON()).toMatchSnapshot();
   });
 
-  it(':background', async () => {
-    const id = simulate.load({
-      template: `<t-navbar id="base" visible background="{{background}}" />`,
-      data: {
-        background: 'navy',
-      },
-      usingComponents: {
-        't-navbar': navbar,
-      },
-    });
-    const comp = simulate.render(id);
-    comp.attach(document.createElement('parent-wrapper'));
-
-    const $content = comp.querySelector('#base >>> .t-navbar__content');
-    expect($content.dom.style.background).toBe('navy');
-  });
-
   it(':fixed', async () => {
     const id = simulate.load({
       template: `<t-navbar visible fixed title="test" />`,
@@ -65,7 +48,6 @@ describe('navbar', () => {
 
   it(':event', async () => {
     const handleBack = jest.fn();
-    const handleHome = jest.fn();
     const handleSuccess = jest.fn();
     const handleFail = jest.fn();
     const handleComplete = jest.fn();
@@ -73,17 +55,14 @@ describe('navbar', () => {
       template: `<t-navbar 
         id="base" 
         visible 
-        homeIcon="home" 
-        leftIcon="chevron-left"
+        left-arrow
         bind:go-back="handleBack"
-        bind:go-home="handleHome"
         bind:success="handleSuccess"
         bind:fail="handleFail"
         bind:complete="handleComplete"
          />`,
       methods: {
         handleBack,
-        handleHome,
         handleSuccess,
         handleFail,
         handleComplete,
@@ -96,16 +75,9 @@ describe('navbar', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     const $base = comp.querySelector('#base');
-    const $home = comp.querySelector('#base >>> .t-navbar__btn--home');
-    const $back = comp.querySelector('#base >>> .t-navbar__btn--back');
-
-    // go home
-    $home.dispatchEvent('tap');
-    await simulate.sleep();
-    expect(handleHome).toHaveBeenCalled();
+    const $back = comp.querySelector('#base >>> .t-navbar__btn');
 
     // go back
-
     const mocked = jest.spyOn(wx, 'navigateBack');
 
     // mock success

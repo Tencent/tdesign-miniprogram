@@ -1,30 +1,21 @@
-<block wx:if="{{demoType === 'base-default'}}">
-  <base />
-</block>
-<block wx:if="{{demoType === 'base-back'}}">
-  <back />
-</block>
-<block wx:if="{{demoType === 'base-back-home'}}">
-  <back-home />
-</block>
-<block wx:if="{{demoType === 'base-brand'}}">
-  <brand />
-</block>
-<block wx:if="{{demoType === 'base-img'}}">
-  <img />
-</block>
-
-<block wx:if="{{demoType === 'base-brand-long'}}">
-  <brand-long />
-</block>
-
-<block wx:if="{{demoType === 'custom-capsule'}}">
-  <custom-capsule />
-</block>
-
 <view class="demo">
   <view class="demo-title">NavBar 导航栏</view>
   <view class="demo-desc">用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。</view>
-  <t-demo title="01 类型" operList="{{normalOperList}}" bindclickoper="clickHandle" />
-  <t-demo title="02 特殊类型" operList="{{specialOperList}}" bindclickoper="clickHandle" />
+  <t-demo title="01 组件类型" desc="基础小程序导航栏">
+    <base class="block" />
+    <back class="block" />
+    <back-home class="block" />
+  </t-demo>
+  <t-demo desc="带搜索的导航栏">
+    <search />
+  </t-demo>
+  <t-demo desc="带图片的导航栏">
+    <img />
+  </t-demo>
+  <t-demo title="02 组件样式">
+    <left-title />
+  </t-demo>
+  <t-demo desc="自定义颜色">
+    <custom-color />
+  </t-demo>
 </view>

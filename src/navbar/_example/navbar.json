@@ -1,12 +1,12 @@
 {
-  "navigationStyle": "custom",
+  "navigationBarTitleText": "NavBar",
   "usingComponents": {
     "base": "./base",
-    "brand": "./brand",
+    "search": "./search",
     "back": "./back",
     "back-home": "./back-home",
     "img": "./img",
-    "brand-long": "./brand-long",
-    "custom-capsule": "./custom-capsule"
+    "left-title": "./left-title",
+    "custom-color": "./custom-color"
   }
 }

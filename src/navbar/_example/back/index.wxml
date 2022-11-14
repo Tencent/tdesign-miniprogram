@@ -1,1 +1,1 @@
-<t-navbar title="标题" leftIcon="chevron-left" t-class-left-icon="left-icon-back" t-class-title="nav-title" />
+<t-navbar title="标题文字" left-arrow />
