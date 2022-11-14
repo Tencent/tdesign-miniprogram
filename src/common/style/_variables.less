@@ -60,6 +60,8 @@
 @gray-color-13: #242424;
 @gray-color-14: #181818;
 
+@white-color-1: #fff;
+
 // 基础颜色
 @primary-color: #0052d9; // 色彩-品牌-可操作
 @success-color: #00a870; // 色彩-功能-成功
@@ -133,15 +135,82 @@
 @form-bg-color: ;
 @form-border-color: ;
 
-// shadow
-@shadow-1: 2rpx 2rpx 10rpx 2rpx rgba(0, 0, 0, 0.03);
-@shadow-2: 6rpx 6rpx 16rpx 4rpx rgba(0, 0, 0, 0.06);
-
 // 图标尺寸
 @icon-default: 16rpx * 2;
 @icon-l: 24rpx * 2;
 
-// new
+// ===> new <===
 
+// 文字
 @font-gray-1: rgba(0, 0, 0, 0.9);
+@font-gray-2: rgba(0, 0, 0, 0.6);
+@font-gray-3: rgba(0, 0, 0, 0.4);
 @font-gray-4: rgba(0, 0, 0, 0.26);
+
+@font-white-1: rgba(255, 255, 255, 1);
+@font-white-2: rgba(255, 255, 255, 0.55);
+@font-white-3: rgba(255, 255, 255, 0.35);
+@font-white-4: rgba(255, 255, 255, 0.22);
+
+// 圆角
+@radius-small: 6rpx;
+@radius-default: 12rpx;
+@radius-large: 18rpx;
+@radius-extra-large: 24rpx;
+@radius-round: 999px;
+@radius-circle: 50%;
+
+// 阴影
+@shadow-1: 0 1px 10px rgba(0, 0, 0, 5%), 0 4px 5px rgba(0, 0, 0, 8%), 0 2px 4px -1px rgba(0, 0, 0, 12%);
+@shadow-2: 0 3px 14px 2px rgba(0, 0, 0, 5%), 0 8px 10px 1px rgba(0, 0, 0, 6%), 0 5px 5px -3px rgba(0, 0, 0, 10%);
+@shadow-3: 0 6px 30px 5px rgba(0, 0, 0, 5%), 0 16px 24px 2px rgba(0, 0, 0, 4%), 0 8px 10px -5px rgba(0, 0, 0, 8%);
+
+// 容器
+@bg-color-page: @gray-color-1;
+@bg-color-container: @white-color-1;
+@bg-color-container-active: @gray-color-3;
+
+@bg-color-secondarycontainer: @gray-color-1;
+@bg-color-secondarycontainer-active: @gray-color-4;
+
+@bg-color-component: @gray-color-3;
+@bg-color-component-active: @gray-color-6;
+@bg-color-component-disabled: @gray-color-2;
+
+@component-stroke: @gray-color-3;
+@component-border: @gray-color-4;
+
+// 文字
+@text-color-primary: @font-gray-1;
+@text-color-secondary: @font-gray-2;
+@text-color-placeholder: @font-gray-3;
+@text-color-disabled: @font-gray-4;
+@text-color-anti: @font-white-1;
+@text-color-brand: @primary-color-8;
+@text-color-link: @primary-color-8;
+
+// 主题
+@brand-color: @primary-color-8;
+@brand-color-active: @primary-color-9;
+@brand-color-disabled: @primary-color-3;
+@brand-color-focus: @primary-color-1;
+@brand-color-light: @primary-color-1;
+@brand-color-light-active: @primary-color-2;
+
+@error-color: @error-color-6;
+@error-color-active: @error-color-7;
+@error-color-disabled: @error-color-3;
+@error-color-focus: @error-color-2;
+@error-color-light: @error-color-1;
+
+@warning-color: @warning-color-5;
+@warning-color-active: @warning-color-6;
+@warning-color-disabled: @warning-color-3;
+@warning-color-focus: @warning-color-2;
+@warning-color-light: @warning-color-1;
+
+@success-color: @success-color-5;
+@success-color-active: @success-color-6;
+@success-color-disabled: @success-color-3;
+@success-color-focus: @success-color-2;
+@success-color-light: @success-color-1;

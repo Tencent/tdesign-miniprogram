@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'icon-btn', 'size'];
+const mapper = ['base', 'block-btn', 'ghost-btn', 'group-btn', 'icon-btn', 'shape', 'size', 'theme'];
 
 describe('Button', () => {
   mapper.forEach((demoName) => {

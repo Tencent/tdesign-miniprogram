@@ -1,5 +1,1 @@
-Component({
-  properties: {
-    disabled: Boolean,
-  },
-});
+Component({});

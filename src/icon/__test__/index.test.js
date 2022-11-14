@@ -2,9 +2,7 @@ import simulate from 'miniprogram-simulate';
 import path from 'path';
 
 describe('icon', () => {
-  const icon = simulate.load(path.resolve(__dirname, `../icon`), {
-    less: true,
-  });
+  const icon = load(path.resolve(__dirname, `../icon`));
 
   it(`icon :base`, () => {
     const id = simulate.load({

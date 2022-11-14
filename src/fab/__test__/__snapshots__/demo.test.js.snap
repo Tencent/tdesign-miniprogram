@@ -7,7 +7,6 @@ exports[`Fab Fab advance demo works fine 1`] = `
       Object {
         "icon": "call",
         "openType": "getPhoneNumber",
-        "variant": "outline",
       }
     }}"
     icon="add"

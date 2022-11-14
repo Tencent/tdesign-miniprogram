@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base'];
+const mapper = ['base', 'keys', 'theme-tab', 'with-title', 'with-value'];
 
 describe('Cascader', () => {
   mapper.forEach((demoName) => {

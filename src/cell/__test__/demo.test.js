@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'multiple'];
+const mapper = ['base', 'multiple', 'theme'];
 
 describe('Cell', () => {
   mapper.forEach((demoName) => {

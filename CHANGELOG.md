@@ -5,6 +5,37 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.26.0 `2022-11-14` 
+### ❗ Breaking Changes
+- `Textarea`: 调整 confirm-type 的默认值为 return @LeeJim ([#1007](https://github.com/Tencent/tdesign-miniprogram/pull/1007))
+- `Navbar`: 移除 background 使用 CSS Variables 代替 @LeeJim ([#1010](https://github.com/Tencent/tdesign-miniprogram/pull/1010))
+- `Navbar`: 属性 left-icon 更名为 left-arrow，只保留 Boolean 类型 @LeeJim ([#1010](https://github.com/Tencent/tdesign-miniprogram/pull/1010))
+- `Navbar`: 移除 home-icon，新增名为 left 和 capsule 的插槽 @LeeJim ([#1010](https://github.com/Tencent/tdesign-miniprogram/pull/1010))
+- `Navbar`: 移除 go-home 事件 @LeeJim ([#1010](https://github.com/Tencent/tdesign-miniprogram/pull/1010))
+
+### 🚀 Features
+- `Button`: 视觉升级 @LeeJim ([#993](https://github.com/Tencent/tdesign-miniprogram/pull/993))
+- `Fab`: 视觉升级 @LeeJim ([#995](https://github.com/Tencent/tdesign-miniprogram/pull/995))
+- `Tag`: 视觉升级 @LeeJim ([#997](https://github.com/Tencent/tdesign-miniprogram/pull/997))
+- `Cell`: 视觉升级 @LeeJim ([#1003](https://github.com/Tencent/tdesign-miniprogram/pull/1003))
+- `Grid`: 视觉升级 @LeeJim ([#1006](https://github.com/Tencent/tdesign-miniprogram/pull/1006))
+- `Navbar`: 视觉升级 @LeeJim ([#1010](https://github.com/Tencent/tdesign-miniprogram/pull/1010))
+- `Button`: 新增 light 主题 @LeeJim ([#993](https://github.com/Tencent/tdesign-miniprogram/pull/993))
+- `Tag`: 属性 size 新增 extra-large 加大尺寸 @LeeJim ([#997](https://github.com/Tencent/tdesign-miniprogram/pull/997))
+- `CheckTag`: 新增支持 variant 支持 4 种变体 @LeeJim ([#997](https://github.com/Tencent/tdesign-miniprogram/pull/997))
+- `NoticeBar`: 支持 prefixIcon 、theme 属性动态更新 @anlyyao ([#999](https://github.com/Tencent/tdesign-miniprogram/pull/999))
+- `CellGroup`: 新增 theme 属性，支持 card 风格 @LeeJim ([#1003](https://github.com/Tencent/tdesign-miniprogram/pull/1003))
+- `Grid`: 新增 theme 属性，增加 card 风格 @LeeJim ([#1006](https://github.com/Tencent/tdesign-miniprogram/pull/1006))
+- `Grid`: 新增 BadgeProps 属性，透传至徽章组件 @LeeJim ([#1006](https://github.com/Tencent/tdesign-miniprogram/pull/1006))
+- `Grid`: 新增 icon 属性，支持传入图标 @LeeJim ([#1006](https://github.com/Tencent/tdesign-miniprogram/pull/1006))
+- `Grid`: 支持当 column = 0 时，将不平分空间，支持滑动 @LeeJim ([#1006](https://github.com/Tencent/tdesign-miniprogram/pull/1006))
+
+### 🐞 Bug Fixes
+- `Button`: 修复有主题的幽灵按钮颜色丢失的问题 @LeeJim ([#993](https://github.com/Tencent/tdesign-miniprogram/pull/993))
+- `NoticeBar`: 修复 content 动态更新时， 滚动动画计算错误。 @anlyyao ([#999](https://github.com/Tencent/tdesign-miniprogram/pull/999))
+- `TabBar`: 修复绝对定位时，宽度没有撑开的问题 @LeeJim ([#1001](https://github.com/Tencent/tdesign-miniprogram/pull/1001))
+- `Cascader`: 修复异步获取 options 时，无法使用 value 初始化已选选项 @LeeJim ([#1011](https://github.com/Tencent/tdesign-miniprogram/pull/1011))
+
 ## 🌈 0.25.0 `2022-11-07` 
 ### ❗ Breaking Changes
 - `Badge`: 修复 offset 的顺序，首值应该调整水平方向 @LeeJim ([#971](https://github.com/Tencent/tdesign-miniprogram/pull/971))

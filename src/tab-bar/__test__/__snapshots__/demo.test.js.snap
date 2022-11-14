@@ -156,6 +156,51 @@ exports[`TabBar TabBar icon-only demo works fine 1`] = `
 </icon-only>
 `;
 
+exports[`TabBar TabBar round demo works fine 1`] = `
+<round>
+  <t-tab-bar
+    shape="round"
+    split="{{false}}"
+    theme="tag"
+    value="label_1"
+    bind:change="onChange"
+  >
+    <t-tab-bar-item
+      icon="app"
+      value="label_1"
+    >
+      
+    
+  
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      icon="app"
+      value="label_2"
+    >
+      
+    
+  
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      icon="app"
+      value="label_3"
+    >
+      
+    
+  
+    </t-tab-bar-item>
+    <t-tab-bar-item
+      icon="app"
+      value="label_4"
+    >
+      
+    
+  
+    </t-tab-bar-item>
+  </t-tab-bar>
+</round>
+`;
+
 exports[`TabBar TabBar sub demo works fine 1`] = `
 <sub>
   <t-tab-bar

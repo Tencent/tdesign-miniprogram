@@ -16,7 +16,7 @@ const props: TdGridProps = {
     type: null,
     value: false,
   },
-  /** 每一行的列数量 */
+  /** 每一行的列数量；为 0 时等于固定大小 */
   column: {
     type: Number,
     value: 4,
@@ -38,6 +38,11 @@ const props: TdGridProps = {
   hover: {
     type: Boolean,
     value: false,
+  },
+  /** 宫格的风格 */
+  theme: {
+    type: String,
+    value: 'default',
   },
 };
 

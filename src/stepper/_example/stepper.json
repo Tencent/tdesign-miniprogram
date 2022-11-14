@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "Stepper 步进器",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "base": "./base",
     "step": "./step",
     "input-width": "./input-width",

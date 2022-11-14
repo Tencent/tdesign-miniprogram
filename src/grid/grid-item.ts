@@ -23,6 +23,7 @@ export default class GridItem extends SuperComponent {
 
   options = {
     multipleSlots: true,
+    // virtualHost: true,
   };
 
   relations: RelationsOptions = {
@@ -31,6 +32,9 @@ export default class GridItem extends SuperComponent {
       linked(target) {
         this.parent = target;
         this.updateStyle();
+        this.setData({
+          column: target.data.column,
+        });
       },
     },
   };
@@ -45,6 +49,7 @@ export default class GridItem extends SuperComponent {
     gridItemContentStyle: '',
     align: 'center',
     layout: 'vertical',
+    column: 0,
   };
 
   updateStyle() {
@@ -72,7 +77,7 @@ export default class GridItem extends SuperComponent {
   // 判断应该加在gridItem上的宽度
   getWidthStyle() {
     const { column } = this.parent.properties;
-    return `width:${(1 / column) * 100}%`;
+    return column > 0 ? `width:${(1 / column) * 100}%` : '';
   }
 
   // 获取应该加在gridWrap上的padding

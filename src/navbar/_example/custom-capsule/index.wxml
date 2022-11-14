@@ -1,3 +1,0 @@
-<t-navbar>
-  <view slot="capsule" class="capsule">自定义胶囊</view>
-</t-navbar>

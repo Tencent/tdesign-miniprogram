@@ -1,0 +1,3 @@
+<t-grid class="block" column="{{0}}">
+  <t-grid-item wx:for="{{6}}" wx:key="index" text="标题文字" image="{{img}}" />
+</t-grid>

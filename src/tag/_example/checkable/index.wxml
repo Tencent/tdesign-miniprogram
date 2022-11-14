@@ -1,10 +1,9 @@
-<t-check-tag
-  wx:for="{{items}}"
-  wx:for-index="index"
-  wx:key="index"
-  checked="{{item.checked}}"
-  disabled="{{item.disabled}}"
-  data-index="{{index}}"
-  bind:change="handleCheckTagChange"
-  >{{item.name}}</t-check-tag
->
+<view class="wrapper">
+  <block wx:for="{{items}}" wx:key="index">
+    <view class="block">
+      <text>{{item}}</text>
+      <t-check-tag size="large" variant="{{item}}">未选中态</t-check-tag>
+      <t-check-tag checked size="large" variant="{{item}}">已选中态</t-check-tag>
+    </view>
+  </block>
+</view>

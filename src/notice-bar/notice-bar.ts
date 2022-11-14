@@ -49,6 +49,15 @@ export default class NoticeBar extends SuperComponent {
         this.clearNoticeBarAnimation();
       }
     },
+
+    'prefixIcon, theme'() {
+      this.setIcon();
+    },
+
+    content() {
+      this.clearNoticeBarAnimation();
+      this.initAnimation();
+    },
   };
 
   lifetimes = {

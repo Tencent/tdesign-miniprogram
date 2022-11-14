@@ -3,9 +3,7 @@ import path from 'path';
 
 describe('back-top', () => {
   // 加载 back-top 组件
-  const backtop = simulate.load(path.resolve(__dirname, `../back-top`), {
-    less: true,
-  });
+  const backtop = load(path.resolve(__dirname, `../back-top`));
 
   it(`back-top: base`, async () => {
     const onToTop = jest.fn();

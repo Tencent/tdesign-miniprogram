@@ -3,6 +3,6 @@
 <view class="{{classPrefix}} {{prefix}}-class" style="{{ customStyle }}">
   <template
     is="button"
-    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-class-button', content: text}}"
+    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-fab__button', content: text}}"
   />
 </view>

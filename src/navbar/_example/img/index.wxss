@@ -1,14 +1,8 @@
-.external-class-left {
-  width: 100% !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.custom-left {
+  padding-left: 32rpx;
 }
 
-.img {
+.custom-image {
   height: 50rpx;
   width: 280rpx;
-}
-
-.slot-left {
-  padding-left: 20rpx;
 }

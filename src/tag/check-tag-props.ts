@@ -55,6 +55,11 @@ const props: TdCheckTagProps = {
     type: String,
     value: 'medium',
   },
+  /** 标签风格变体 */
+  variant: {
+    type: String,
+    value: 'dark',
+  },
 };
 
 export default props;

@@ -45,21 +45,6 @@ export default class Navbar extends SuperComponent {
         }, 300);
       }
     },
-    fixed(this: Navbar, fixed) {
-      this.setData({
-        fixedClass: fixed ? `${name}--fixed` : '',
-      });
-    },
-    background(this: Navbar, background) {
-      const list = [];
-      if (background) list.push(`background: ${background}`);
-      this.setData({
-        contentStyle: list.join(';'),
-      });
-    },
-    'homeIcon, leftIcon'(this: Navbar) {
-      this.calcLeftBtn();
-    },
     'title,titleMaxLength'(this: any) {
       const { title } = this.properties;
       const titleMaxLength = this.properties.titleMaxLength || Number.MAX_SAFE_INTEGER;
@@ -73,22 +58,13 @@ export default class Navbar extends SuperComponent {
 
   data = {
     prefix,
-    hasHomeIcon: false,
-    hasBackIcon: false,
-
     classPrefix: name,
-    fixedClass: `${name}--fixed`,
-
-    contentStyle: '',
     boxStyle: '',
-
-    opacity: 0.1,
     ios: false,
     showTitle: '',
   };
 
   attached() {
-    this.calcLeftBtn(); // 根据页面栈来决定展示返回按钮还是home按钮
     // 场景值为1177（视频号直播间）和1175 （视频号profile页）时，小程序禁用了 wx.getMenuButtonBoundingClientRect
     let rect = null;
     if (wx.getMenuButtonBoundingClientRect) {
@@ -120,25 +96,6 @@ export default class Navbar extends SuperComponent {
   }
 
   methods = {
-    calcLeftBtn() {
-      const { homeIcon, leftIcon } = this.properties;
-
-      let home = false;
-      let back = false;
-
-      if (homeIcon) home = true;
-
-      if (leftIcon) back = true;
-      this.setData({
-        hasHomeIcon: home,
-        hasBackIcon: back,
-      });
-    },
-
-    goHome() {
-      this.triggerEvent('go-home');
-    },
-
     goBack() {
       const { delta } = this.data;
       // eslint-disable-next-line

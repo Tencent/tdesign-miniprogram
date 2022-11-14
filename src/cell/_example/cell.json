@@ -1,8 +1,8 @@
 {
   "navigationBarTitleText": "cell 单元格",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "base": "./base",
-    "multiple": "./multiple"
+    "multiple": "./multiple",
+    "theme": "./theme"
   }
 }

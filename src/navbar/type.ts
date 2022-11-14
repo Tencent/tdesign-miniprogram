@@ -14,14 +14,6 @@ export interface TdNavbarProps {
     value?: boolean;
   };
   /**
-   * 背景
-   * @default ''
-   */
-  background?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 自定义组件样式
    * @default ''
    */
@@ -42,16 +34,7 @@ export interface TdNavbarProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-title',
-      't-class-left',
-      't-class-center',
-      't-class-left-icon',
-      't-class-home-icon',
-      't-class-capsule',
-      't-class-nav-btn',
-    ];
+    value?: ['t-class', 't-class-title', 't-class-left-icon', 't-class-home-icon', 't-class-capsule'];
   };
   /**
    * 是否固定在顶部
@@ -62,20 +45,12 @@ export interface TdNavbarProps {
     value?: boolean;
   };
   /**
-   * 首页图标地址。值为 '' 或者 undefiend 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址
-   * @default ''
+   * 是否展示左侧箭头
+   * @default false
    */
-  homeIcon?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 左侧图标地址，值为 '' 或者 undefiend 则表示不显示返回图标，值为 'arrow-left' 表示显示返回图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址
-   * @default ''
-   */
-  leftIcon?: {
-    type: StringConstructor;
-    value?: string;
+  leftArrow?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 页面标题

@@ -37,7 +37,7 @@ page {
     flex: 1;
     box-sizing: border-box;
     display: flex;
-    height: @search-height;
+    height: var(--td-search-height, @search-height);
     align-items: center;
     border: 2rpx solid var(--td-search-border-color);
     background: var(--td-search-bg-color);

@@ -166,4 +166,12 @@ export interface TdCheckTagProps {
     type: StringConstructor;
     value?: SizeEnum;
   };
+  /**
+   * 标签风格变体
+   * @default dark
+   */
+  variant?: {
+    type: StringConstructor;
+    value?: 'dark' | 'light' | 'outline' | 'light-outline';
+  };
 }

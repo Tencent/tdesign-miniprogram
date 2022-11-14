@@ -6,58 +6,66 @@ exports[`Button Button base demo works fine 1`] = `
     class="box"
   >
     <t-button
-      block="{{true}}"
       disabled="{{false}}"
-      tClass="external-class"
+      size="large"
       theme="primary"
     >
-      强按钮
+      主按钮
     </t-button>
     <t-button
-      block="{{true}}"
       disabled="{{false}}"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
+      size="large"
+      theme="light"
     >
-      弱按钮
+      浅按钮
     </t-button>
     <t-button
-      block="{{true}}"
       disabled="{{false}}"
-      tClass="external-class"
-      variant="outline"
+      size="large"
     >
-      次按钮
+      默认按钮
     </t-button>
+    <wx-view
+      style="height: 32rpx"
+    />
     <t-button
-      block="{{true}}"
       disabled="{{false}}"
-      icon="app"
-      tClass="external-class"
+      size="large"
       theme="primary"
       variant="outline"
     >
-      带图标按钮
+      描边按钮
     </t-button>
     <t-button
-      block="{{true}}"
       disabled="{{false}}"
-      tClass="external-class"
-      theme="danger"
+      size="large"
+      theme="primary"
+      variant="text"
     >
-      强告警按钮
-    </t-button>
-    <t-button
-      block="{{true}}"
-      disabled="{{false}}"
-      tClass="external-class"
-      theme="danger"
-      variant="outline"
-    >
-      弱告警按钮
+      文字按钮
     </t-button>
   </wx-view>
+</base>
+`;
+
+exports[`Button Button block-btn demo works fine 1`] = `
+<block-btn>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+  </wx-view>
+</block-btn>
+`;
+
+exports[`Button Button ghost-btn demo works fine 1`] = `
+<ghost-btn>
   <wx-view
     class="full-width"
   >
@@ -65,57 +73,51 @@ exports[`Button Button base demo works fine 1`] = `
       class="box"
     >
       <t-button
-        block="{{true}}"
-        disabled="{{false}}"
+        disabled=""
         ghost="{{true}}"
-        tClass="external-class"
+        theme="primary"
       >
-        幽灵按钮
+        大按钮
+      </t-button>
+      <t-button
+        disabled=""
+        ghost="{{true}}"
+        theme="danger"
+      >
+        大按钮
+      </t-button>
+      <t-button
+        disabled=""
+        ghost="{{true}}"
+      >
+        大按钮
       </t-button>
     </wx-view>
   </wx-view>
+</ghost-btn>
+`;
+
+exports[`Button Button group-btn demo works fine 1`] = `
+<group-btn>
   <wx-view
-    class="box"
+    class="group"
   >
     <t-button
       block="{{true}}"
-      disabled="{{false}}"
-      tClass="external-class"
-      theme="primary"
-      variant="text"
+      size="large"
+      theme="light"
     >
-      文字按钮
+      填充按钮
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
     </t-button>
   </wx-view>
-  <t-button
-    block="{{true}}"
-    disabled="{{false}}"
-    size="large"
-    tClass="external-class no-border-radius"
-    theme="primary"
-  >
-    通栏按钮
-  </t-button>
-  <t-button-group>
-    <t-button
-      block="{{true}}"
-      disabled="{{false}}"
-      size="large"
-      tClass="external-class no-border-radius no-border"
-    >
-      次按钮
-    </t-button>
-    <t-button
-      block="{{true}}"
-      disabled="{{false}}"
-      size="large"
-      tClass="external-class no-border-radius"
-      theme="primary"
-    >
-      主按钮
-    </t-button>
-  </t-button-group>
-</base>
+</group-btn>
 `;
 
 exports[`Button Button icon-btn demo works fine 1`] = `
@@ -124,39 +126,29 @@ exports[`Button Button icon-btn demo works fine 1`] = `
     class="box"
   >
     <t-button
-      content="带图标按钮"
-      disabled="{{false}}"
+      content="填充按钮"
       icon="app"
-      tClass="external-class"
       theme="primary"
     />
     <t-button
-      disabled="{{false}}"
       icon="app"
       shape="round"
-      tClass="external-class"
       theme="primary"
     >
-      <wx-text>
-        带图标按钮
-      </wx-text>
+      带图标按钮
     </t-button>
   </wx-view>
   <wx-view
     class="box"
   >
     <t-button
-      disabled="{{false}}"
       icon="app"
       shape="square"
-      tClass="external-class"
       theme="primary"
     />
     <t-button
-      disabled="{{false}}"
       icon="app"
       shape="circle"
-      tClass="external-class"
       theme="primary"
     />
   </wx-view>
@@ -164,22 +156,59 @@ exports[`Button Button icon-btn demo works fine 1`] = `
     class="box"
   >
     <t-button
-      disabled="{{false}}"
       loading="{{true}}"
       shape="square"
-      tClass="external-class"
       theme="primary"
     />
     <t-button
-      disabled="{{false}}"
       loading="{{true}}"
-      tClass="external-class"
       theme="primary"
     >
       加载中...
     </t-button>
   </wx-view>
 </icon-btn>
+`;
+
+exports[`Button Button shape demo works fine 1`] = `
+<shape>
+  <wx-view
+    class="box align-bottom"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      icon="app"
+      shape="square"
+      size="large"
+      theme="primary"
+    />
+  </wx-view>
+  <wx-view
+    style="height: 32rpx"
+  />
+  <wx-view
+    class="box align-bottom"
+  >
+    <t-button
+      shape="round"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      icon="app"
+      shape="circle"
+      size="large"
+      theme="primary"
+    />
+  </wx-view>
+</shape>
 `;
 
 exports[`Button Button size demo works fine 1`] = `
@@ -192,99 +221,123 @@ exports[`Button Button size demo works fine 1`] = `
       tClass="external-class"
       theme="primary"
     >
-      按钮 44
+      大号按钮 44
     </t-button>
     <t-button
       tClass="external-class"
       theme="primary"
     >
-      按钮 40
-    </t-button>
-    <t-button
-      size="small"
-      tClass="external-class"
-      theme="primary"
-    >
-      按钮 36
+      中号按钮 40
     </t-button>
   </wx-view>
   <wx-view
-    class="box align-bottom"
+    class="box"
   >
     <t-button
-      icon="app"
-      shape="round"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-    >
-      按钮
-    </t-button>
-    <t-button
-      icon="app"
-      shape="round"
-      tClass="external-class"
-      theme="primary"
-    >
-      按钮
-    </t-button>
-    <t-button
-      icon="app"
-      shape="round"
       size="small"
       tClass="external-class"
       theme="primary"
     >
-      按钮
+      小号按钮 36
     </t-button>
-  </wx-view>
-  <wx-view
-    class="box align-bottom"
-  >
-    <t-button
-      icon="app"
-      shape="square"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-    />
-    <t-button
-      icon="app"
-      shape="square"
-      tClass="external-class"
-      theme="primary"
-    />
-    <t-button
-      icon="app"
-      shape="square"
-      size="small"
-      tClass="external-class"
-      theme="primary"
-    />
-  </wx-view>
-  <wx-view
-    class="box align-bottom"
-  >
-    <t-button
-      icon="app"
-      shape="circle"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-    />
-    <t-button
-      icon="app"
-      shape="circle"
-      tClass="external-class"
-      theme="primary"
-    />
-    <t-button
-      icon="app"
-      shape="circle"
-      size="small"
-      tClass="external-class"
-      theme="primary"
-    />
   </wx-view>
 </size>
+`;
+
+exports[`Button Button theme demo works fine 1`] = `
+<theme>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      size="large"
+    >
+      主按钮
+    </t-button>
+    <t-button
+      size="large"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+    >
+      主按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      size="large"
+      theme="danger"
+    >
+      主按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="danger"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="danger"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="box"
+  >
+    <t-button
+      size="large"
+      theme="light"
+    >
+      主按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="light"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="light"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+</theme>
 `;

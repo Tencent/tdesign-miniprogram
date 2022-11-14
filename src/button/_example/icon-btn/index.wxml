@@ -1,16 +1,14 @@
 <view class="box">
-  <t-button t-class="external-class" theme="primary" icon="app" content="带图标按钮" disabled="{{disabled}}"></t-button>
-  <t-button t-class="external-class" theme="primary" icon="app" shape="round" disabled="{{disabled}}">
-    <text>带图标按钮</text>
-  </t-button>
+  <t-button theme="primary" icon="app" content="填充按钮"></t-button>
+  <t-button theme="primary" icon="app" shape="round">带图标按钮</t-button>
 </view>
 
 <view class="box">
-  <t-button t-class="external-class" theme="primary" icon="app" shape="square" disabled="{{disabled}}"></t-button>
-  <t-button t-class="external-class" theme="primary" icon="app" shape="circle" disabled="{{disabled}}"></t-button>
+  <t-button theme="primary" icon="app" shape="square"></t-button>
+  <t-button theme="primary" icon="app" shape="circle"></t-button>
 </view>
 
 <view class="box">
-  <t-button t-class="external-class" theme="primary" shape="square" loading disabled="{{disabled}}"></t-button>
-  <t-button t-class="external-class" theme="primary" loading disabled="{{disabled}}">加载中...</t-button>
+  <t-button theme="primary" shape="square" loading></t-button>
+  <t-button theme="primary" loading>加载中...</t-button>
 </view>

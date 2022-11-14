@@ -35,15 +35,10 @@ export default class Cascader extends SuperComponent {
         $tabs?.setTrack();
       }
     },
-    value() {
+    'value, options'() {
       this.initWithValue();
     },
-    options() {
-      this.setData({
-        items: [this.data.options],
-      });
-    },
-    selectedIndexes() {
+    'selectedIndexes, options'() {
       const { options, selectedIndexes, keys } = this.data;
       const selectedValue = [];
       const steps = [];
@@ -74,18 +69,14 @@ export default class Cascader extends SuperComponent {
     },
   };
 
-  lifetimes = {
-    ready() {
-      this.initWithValue();
-    },
-  };
-
   methods = {
     initWithValue() {
       if (this.data.value != null) {
         const selectedIndexes = this.getIndexesByValue(this.data.options, this.data.value);
 
-        this.setData({ selectedIndexes });
+        if (selectedIndexes) {
+          this.setData({ selectedIndexes });
+        }
       }
     },
     getIndexesByValue(options: OptionsType, value) {

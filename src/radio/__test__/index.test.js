@@ -9,7 +9,7 @@ describe('radio', () => {
   //   comp.doChange();
   //   expect(comp.triggerEvent).toHaveBeenCalled();
   // });
-  const id = simulate.load(path.resolve(__dirname, `./index`), { less: true });
+  const id = load(path.resolve(__dirname, `./index`));
 
   it(':base', async () => {
     const comp = simulate.render(id);

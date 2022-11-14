@@ -15,11 +15,7 @@
         <block wx:for="{{months}}" wx:key="index">
           <view class="{{classPrefix}}__month">{{ item.year }} 年 {{ item.month + 1 }} 月</view>
           <view class="{{classPrefix}}__dates">
-            <view
-              wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}"
-              wx:key="index"
-              class="{{classPrefix}}__dates-item"
-            />
+            <view wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}" wx:key="index" />
             <block wx:for="{{item.months}}" wx:for-index="dateIndex" wx:for-item="dateItem" wx:key="dateIndex">
               <view
                 class="{{classPrefix}}__dates-item {{dateItem.className}} {{classPrefix}}__dates-item--{{dateItem.type}}"

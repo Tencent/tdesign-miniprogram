@@ -2,7 +2,6 @@
   "navigationBarTitleText": "Divider",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-demo": "../../components/demo-block/index",
     "base": "./base",
     "text-line": "./text-line",
     "text-only": "./text-only"
