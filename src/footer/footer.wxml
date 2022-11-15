@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{classPrefix}}">
+<view style="{{ style }}" class="{{classPrefix}}">
   <!-- theme 为 logo -->
   <block wx:if="{{theme === 'logo'}}">
     <view class="{{classPrefix}}__logo">

@@ -3,8 +3,8 @@
 
 <t-popup
   name="dialog"
-  custom-style="{{ customStyle }}"
-  class="{{classPrefix}}__wrapper"
+  custom-style="{{ style }}"
+  t-class="{{classPrefix}}__wrapper"
   visible="{{visible}}"
   showOverlay="{{showOverlay}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
@@ -28,12 +28,11 @@
     >
       <t-button
         block
-        class="{{classPrefix}}__footer-button-host"
         wx:if="{{actions}}"
         wx:for="{{actions}}"
         wx:key="action"
         data-index="{{index}}"
-        t-class="{{classPrefix}}__button {{classPrefix}}__button-{{item.primary ? 'confirm' : 'cancel'}} {{prefix}}-class-action"
+        t-class="{{classPrefix}}__footer-button-host {{classPrefix}}__button {{classPrefix}}__button-{{item.primary ? 'confirm' : 'cancel'}} {{prefix}}-class-action"
         bindtap="onActionTap"
       >
         {{item.name}}
@@ -41,9 +40,8 @@
       <slot name="actions" />
       <t-button
         block
-        class="{{classPrefix}}__footer-button-host {{classPrefix}}__footer-button--cancel"
         wx:if="{{cancelBtn && _.getTypeof(cancelBtn) == 'string'}}"
-        t-class="{{classPrefix}}__button {{classPrefix}}__button-cancel {{confirmBtn ? classPrefix + '__button-half' : ''}} {{prefix}}-class-cancel"
+        t-class="{{classPrefix}}__footer-button-host {{classPrefix}}__footer-button--cancel {{classPrefix}}__button {{classPrefix}}__button-cancel {{confirmBtn ? classPrefix + '__button-half' : ''}} {{prefix}}-class-cancel"
         bindtap="onCancel"
       >
         {{cancelBtn}}

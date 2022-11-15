@@ -19,7 +19,7 @@ export interface TdTabBarProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -63,14 +63,6 @@ export interface TdTabBarProps {
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 选项风格
    * @default normal
    */
@@ -108,7 +100,7 @@ export interface TdTabBarItemProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -116,14 +108,6 @@ export interface TdTabBarItemProps {
    * 图标名称
    */
   icon?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
     type: StringConstructor;
     value?: string;
   };

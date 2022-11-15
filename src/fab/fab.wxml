@@ -1,6 +1,6 @@
 <import src="../common/template/button.wxml" />
 
-<view class="{{classPrefix}} {{prefix}}-class" style="{{ customStyle }}">
+<view class="{{classPrefix}} {{prefix}}-class" style="{{ style }}">
   <template
     is="button"
     data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-fab__button', content: text}}"

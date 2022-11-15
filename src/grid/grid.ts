@@ -11,7 +11,7 @@ export default class Grid extends SuperComponent {
 
   relations: RelationsOptions = {
     './grid-item': {
-      type: 'descendant',
+      type: 'child',
     },
   };
 

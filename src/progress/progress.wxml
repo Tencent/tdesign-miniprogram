@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{ classPrefix }} {{classPrefix}}--status--{{status || computedStatus}}">
+<view style="{{ style }}" class="{{ classPrefix }} {{classPrefix}}--status--{{status || computedStatus}}">
   <view class="{{ classPrefix }}__inner {{prefix}}-class">
     <view
       class="{{ classPrefix }}__bar {{prefix}}-class-bar"

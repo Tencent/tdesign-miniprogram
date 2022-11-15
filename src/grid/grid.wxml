@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{ customStyle }}" class="{{_.cls(classPrefix, [theme])}} {{prefix}}-class">
+<view style="{{ style }}" class="{{_.cls(classPrefix, [theme])}} {{prefix}}-class">
   <view wx:if="{{column > 0}}" class="{{classPrefix}}__content" style="{{ contentStyle }}">
     <slot />
   </view>

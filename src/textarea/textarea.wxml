@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
+<view style="{{ style }}" class="{{classPrefix}} {{prefix}}-class">
   <view class="{{classPrefix}}__name {{prefix}}-class-label">
     <view wx:if="{{ label && label.length > 0 }}">{{ label }}</view>
     <slot wx:else name="label" />

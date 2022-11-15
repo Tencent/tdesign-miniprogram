@@ -1,6 +1,6 @@
 <wxs src="./avatar.wxs" module="this" />
 
-<view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getAvatarStyles(isShow, zIndex, customStyle)}}">
+<view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getAvatarStyles(isShow, zIndex, style)}}">
   <view
     class="{{this.getAvatarOuterClass(classPrefix, size, shape)}} border--{{borderSize}} {{prefix}}-class-image "
     style="{{this.getAvatarSizePx(size)}}"

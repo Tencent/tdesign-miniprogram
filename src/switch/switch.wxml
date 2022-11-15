@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{ prefix }}-class {{classPrefix}}">
+<view style="{{ style }}" class="{{ prefix }}-class {{classPrefix}}">
   <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label">{{label}}</view>
   <view
     class="{{classPrefix}}__body {{prefix}}-class-body {{isActive ? classPrefix + '__body--active' : ''}} {{disabled ? classPrefix + '__body--disabled' : ''}}"

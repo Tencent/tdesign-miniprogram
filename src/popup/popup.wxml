@@ -1,7 +1,7 @@
 <wxs src="./popup.wxs" module="utils" />
 <view
   wx:if="{{realVisible}}"
-  style="{{ utils.getPopupStyles(zIndex, customStyle) }}"
+  style="{{ utils.getPopupStyles(zIndex, style) }}"
   class="{{className}} {{transitionClass}} {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
   catch:touchmove="onStopPropagation"
@@ -23,5 +23,5 @@
   z-index="{{overlayProps.zIndex}}"
   prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
   bind:tap="handleOverlayClick"
-  custom-style="{{overlayProps.customStyle || ''}}"
+  custom-style="{{overlayProps.style || ''}}"
 />

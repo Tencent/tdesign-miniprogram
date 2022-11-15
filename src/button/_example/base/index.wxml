@@ -1,5 +1,5 @@
 <view class="box">
-  <t-button theme="primary" size="large" disabled="{{disabled}}">主按钮</t-button>
+  <t-button theme="primary" size="large" disabled="{{disabled}}" style="font-size: 100px">主按钮</t-button>
   <t-button theme="light" size="large" disabled="{{disabled}}">浅按钮</t-button>
   <t-button size="large" disabled="{{disabled}}">默认按钮</t-button>
   <view style="height: 32rpx" />

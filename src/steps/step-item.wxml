@@ -1,5 +1,5 @@
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{prefix}}-step {{prefix}}-step--{{layout}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} {{prefix}}-class {{readonly ? prefix + '-step--readonly' : ''}}"
 >
   <view class="{{classPrefix}} {{classPrefix}}--{{curStatus}}">

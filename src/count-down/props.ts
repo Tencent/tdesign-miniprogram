@@ -17,7 +17,7 @@ const props: TdCountDownProps = {
     value: 'default',
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

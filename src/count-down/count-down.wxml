@@ -1,7 +1,4 @@
-<view
-  style="{{ customStyle }}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{size}} {{classPrefix}}--{{theme}}"
->
+<view style="{{ style }}" class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{size}} {{classPrefix}}--{{theme}}">
   <slot wx:if="{{content !== 'default'}}" />
   <block wx:elif="{{theme == 'default'}}">{{formattedTime}}</block>
   <block wx:else>

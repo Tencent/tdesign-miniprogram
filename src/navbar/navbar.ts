@@ -73,7 +73,7 @@ export default class Navbar extends SuperComponent {
     if (!rect) return;
     wx.getSystemInfo({
       success: (res) => {
-        const { customStyle } = this.properties;
+        const { style } = this.properties;
         const ios = !!(res.system.toLowerCase().search('ios') + 1);
         const navbarHeight = ios ? 44 : 48;
         const boxStyleList = [];
@@ -86,7 +86,7 @@ export default class Navbar extends SuperComponent {
         boxStyleList.push(`--navbar-height:${navbarHeight}px;`); // navbar高度
         this.setData({
           ios,
-          boxStyle: `${boxStyleList.join(';')}${customStyle ? `;${customStyle}` : ''}`,
+          boxStyle: `${boxStyleList.join(';')}${style ? `;${style}` : ''}`,
         });
       },
       fail: (err) => {

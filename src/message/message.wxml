@@ -3,7 +3,7 @@
 <block wx:if="{{visible}}">
   <view
     class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{theme}}"
-    style="{{this.getMessageStyles(zIndex, offset, wrapTop, customStyle )}}"
+    style="{{this.getMessageStyles(zIndex, offset, wrapTop, style )}}"
     animation="{{showAnimation}}"
     id="{{classPrefix}}"
   >

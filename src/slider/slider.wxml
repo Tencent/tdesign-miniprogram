@@ -1,6 +1,6 @@
 <wxs src="./slider.wxs" module="utils" />
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{classPrefix}}__container {{isScale && scaleTextArray.length ? classPrefix + '--bottom' : ''}} {{prefix}}-class {{disabled ? prefix + '-is-disabled ' + prefix + '-class-bar-disabled' : ''}}"
 >
   <block wx:if="{{!range}}">

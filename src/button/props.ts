@@ -20,7 +20,7 @@ const props: TdButtonProps = {
     type: null,
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

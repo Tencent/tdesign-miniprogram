@@ -1,4 +1,4 @@
-<view class="{{className}} {{prefix}}-class" style="{{tagStyle}} {{ customStyle }}" bind:tap="handleClick">
+<view class="{{className}} {{prefix}}-class" style="{{tagStyle}} {{ style }}" bind:tap="handleClick">
   <view class="{{classPrefix}}__icon">
     <t-icon wx:if="{{icon}}" name="{{icon}}" t-class="{{prefix}}-icon" />
     <slot wx:else name="icon" />

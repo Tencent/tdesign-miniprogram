@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
+<view style="{{ style }}" class="{{classPrefix}} {{prefix}}-class">
   <scroll-view
     class="{{classPrefix}}__content"
     scroll-y

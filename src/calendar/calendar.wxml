@@ -1,13 +1,13 @@
 <import src="../common/template/button.wxml" />
 
-<view style="{{ customStyle }}">
+<view style="{{ style }}">
   <t-popup visible="{{visible}}" bind:visible-change="handleClose" placement="bottom">
     <view class="{{classPrefix}}">
       <view class="{{classPrefix}}__title">
         <slot wx:if="{{title === 'slot'}}" name="title" />
         <text wx:else>{{ title || '请选择日期' }}</text>
       </view>
-      <t-icon name="close" class="{{classPrefix}}__close-btn" size="24" bind:tap="handleClose" />
+      <t-icon name="close" t-class="{{classPrefix}}__close-btn" size="24" bind:tap="handleClose" />
       <view class="{{classPrefix}}__days">
         <view wx:for="{{days}}" wx:key="index" class="{{classPrefix}}__days-item">{{ item }}</view>
       </view>

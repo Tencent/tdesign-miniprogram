@@ -1,6 +1,6 @@
 <wxs src="./badge.wxs" module="this" />
 
-<view style="{{ customStyle }}" class="{{this.getBadgeOuterClass({shape})}} {{prefix}}-class">
+<view style="{{ style }}" class="{{this.getBadgeOuterClass({shape})}} {{prefix}}-class">
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <slot wx:if="{{!content}}" class="{{classPrefix}}__content-slot" />
     <text wx:else class="{{classPrefix}}__content-text">{{content}}</text>

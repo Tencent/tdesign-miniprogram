@@ -1,7 +1,9 @@
-
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{ customStyle }}" class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}}">
+<view
+  style="{{ style }}"
+  class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}}"
+>
   <view
     class="{{_.cls(classPrefix + '__content', [['checked', isChecked], theme])}}"
     hover-class="{{classPrefix}}__content--active"
@@ -9,7 +11,6 @@
     bindtap="toggle"
   >
     <view wx:if="{{icon}}" class="{{classPrefix}}__icon" style="height: {{iconOnly ? 24 : 20}}px">
-
       <t-badge
         wx:if="{{badgeProps.dot || badgeProps.count}}"
         count="{{badgeProps.count}}"

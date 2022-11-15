@@ -1,5 +1,5 @@
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}} {{classPrefix}}--{{theme}} {{checked ? prefix + '-is-actived' : ''}}"
 >
   <!-- icon -->
@@ -18,7 +18,7 @@
       <t-icon
         color="{{checked && !disabled ? color : ''}}"
         name="{{checked ? (indeterminate ? 'minus-circle-filled' : 'check-circle-filled') : 'circle'}}"
-        class="{{classPrefix}}__btn {{checked ? prefix + '-is-checked' : ''}} {{disabled ? prefix + '-is-disabled' : ''}}"
+        t-class="{{classPrefix}}__btn {{checked ? prefix + '-is-checked' : ''}} {{disabled ? prefix + '-is-disabled' : ''}}"
       />
     </block>
   </view>

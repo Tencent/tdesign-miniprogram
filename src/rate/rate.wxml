@@ -9,8 +9,7 @@
     <t-icon
       wx:for="{{ count }}"
       wx:key="*this"
-      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix, defaultValue, value, index, allowHalf, disabled)}} "
-      t-class="{{prefix}}-class-icon"
+      t-class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix, defaultValue, value, index, allowHalf, disabled)}} "
       name="{{utils.getIconName(defaultValue, value, index, variant)}}"
       size="{{ size }}"
       style="margin-right:{{ count - index > 1 ? gap : 0 }}px;"

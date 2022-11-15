@@ -1,6 +1,6 @@
 <wxs src="./swiper.wxs" module="swiper" />
 <!-- 支持传入height指定容器高度，单位rpx -->
-<view id="swiper" class="{{prefix}}-class {{classPrefix}}" style="{{swiper.getSwiperStyles(height, customStyle)}}">
+<view id="swiper" class="{{prefix}}-class {{classPrefix}}" style="{{swiper.getSwiperStyles(height, style)}}">
   <view
     id="swiperContainer"
     class="{{classPrefix}}__container {{inited? '{{prefix}}-in-animation' : '{{prefix}}-is-hidden'}}"
