@@ -12,7 +12,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
- "t-upload": "tdesign-miniprogram/upload/upload",
+  "t-upload": "tdesign-miniprogram/upload/upload",
 }
 ```
 
@@ -20,11 +20,31 @@ isComponent: true
 
 ### 单选上传图片
 
+图片上传有两种方式：
+
+1 选择完所有图片之后，统一上传，因此选择完就直接展示
+
+2 每次选择图片都上传，展示每次上传图片的进度
+
 {{ single }}
 
 ### 多选上传图片
 
 {{ multiple }}
+
+### 加载状态
+
+支持多种状态：`loading`、`reload`、`failed`；
+
+其中 `loading` 还可以通过传入 `percent` 来区分是否展示进度。
+
+{{ status }}
+
+### 从聊天记录上选
+
+使用 `wx.chooseMessageFile` 实现，需要基础版本库 `2.5.0+`
+
+{{ messageFile }}
 
 ## API
 ### Upload Props
