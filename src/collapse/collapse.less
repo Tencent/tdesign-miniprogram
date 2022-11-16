@@ -23,7 +23,13 @@
     font-size: @collapse-content-font-size;
     padding: @collapse-content-padding;
     padding-top: @collapse-content-padding * 2;
-    color: #999;
+    color: var(--td-collapse-title-color, @font-gray-1);
+  }
+
+  &--card {
+    margin: 0 32rpx;
+    border-radius: @radius-large;
+    overflow: hidden;
   }
 }
 

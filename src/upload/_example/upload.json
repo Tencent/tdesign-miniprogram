@@ -3,6 +3,7 @@
   "usingComponents": {
     "single": "./single",
     "multiple": "./multiple",
+    "status": "./status",
     "messageFile": "./messageFile"
   }
 }

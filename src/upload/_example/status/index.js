@@ -5,16 +5,26 @@ Component({
         url: 'https://tdesign.gtimg.com/site/upload1.png',
         name: 'uploaded1.png',
         type: 'image',
+        status: 'loading',
       },
       {
         url: 'https://tdesign.gtimg.com/site/upload1.png',
         name: 'uploaded2.png',
         type: 'image',
+        percent: 68,
+        status: 'loading',
       },
       {
         url: 'https://tdesign.gtimg.com/site/upload1.png',
-        name: 'uploaded1.png',
+        name: 'uploaded3.png',
         type: 'image',
+        status: 'reload',
+      },
+      {
+        url: 'https://tdesign.gtimg.com/site/upload1.png',
+        name: 'uploaded4.png',
+        type: 'image',
+        status: 'failed',
       },
     ],
     gridConfig: {
