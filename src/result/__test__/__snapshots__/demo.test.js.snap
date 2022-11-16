@@ -20,12 +20,100 @@ exports[`Result Result custom demo works fine 1`] = `
 </custom>
 `;
 
+exports[`Result Result description demo works fine 1`] = `
+<description>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description="描述文字"
+        theme="success"
+        title="成功状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description="描述文字"
+        theme="error"
+        title="失败状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description="描述文字"
+        theme="warning"
+        title="警示状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description="描述文字"
+        theme="default"
+        title="默认状态"
+      />
+    </wx-view>
+  </wx-view>
+</description>
+`;
+
 exports[`Result Result theme demo works fine 1`] = `
 <theme>
-  <t-result
-    description=""
-    theme=""
-    title=""
-  />
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description=""
+        theme="success"
+        title="成功状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description=""
+        theme="error"
+        title="失败状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description=""
+        theme="warning"
+        title="警示状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description=""
+        theme="default"
+        title="默认状态"
+      />
+    </wx-view>
+  </wx-view>
 </theme>
 `;

@@ -4,6 +4,7 @@
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
     "theme": "./theme",
+    "description": "./description",
     "custom": "./custom"
   }
 }

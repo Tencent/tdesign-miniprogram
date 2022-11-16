@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['custom', 'theme'];
+const mapper = ['custom', 'description', 'theme'];
 
 describe('Result', () => {
   mapper.forEach((demoName) => {
