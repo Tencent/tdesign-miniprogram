@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['custom-error-loading', 'custom-loading', 'error-loading', 'image-loading', 'mode', 'shape', 'size'];
+const mapper = ['base', 'size', 'status'];
 
 describe('Image', () => {
   mapper.forEach((demoName) => {

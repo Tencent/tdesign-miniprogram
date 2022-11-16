@@ -28,10 +28,17 @@ export default class Image extends SuperComponent {
   lifetimes = {
     attached() {
       const { width, height } = this.data;
-
+      let innerStyle = '';
       this.update();
+
+      if (width) {
+        innerStyle += `width: ${addUnit(width)};`;
+      }
+      if (height) {
+        innerStyle += `height: ${addUnit(height)};`;
+      }
       this.setData({
-        innerStyle: `width: ${addUnit(width)}; height: ${addUnit(height)}`,
+        innerStyle,
       });
     },
   };
