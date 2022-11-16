@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'text-line', 'text-only'];
+const mapper = ['base', 'theme'];
 
 describe('Divider', () => {
   mapper.forEach((demoName) => {
