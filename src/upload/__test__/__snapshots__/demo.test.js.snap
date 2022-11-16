@@ -6,7 +6,6 @@ exports[`Upload Upload messageFile demo works fine 1`] = `
     class="wrapper"
   >
     <t-upload
-      addContent="slot"
       config="{{
         Object {
           "count": 1,
@@ -37,14 +36,7 @@ exports[`Upload Upload messageFile demo works fine 1`] = `
       source="messageFile"
       bind:remove="handleRemove"
       bind:success="handleSuccess"
-    >
-      <t-icon
-        color="rgba(0,0,0,0.26)"
-        name="add"
-        size="40rpx"
-        slot="add-content"
-      />
-    </t-upload>
+    />
   </wx-view>
 </messageFile>
 `;
@@ -65,11 +57,10 @@ exports[`Upload Upload multiple demo works fine 1`] = `
           Object {
             "name": "uploaded2.png",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload2.png",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
           },
           Object {
             "name": "uploaded1.png",
-            "percent": -1,
             "type": "image",
             "url": "https://tdesign.gtimg.com/site/upload1.png",
           },
@@ -102,16 +93,58 @@ exports[`Upload Upload single demo works fine 1`] = `
     class="wrapper"
   >
     <t-upload
-      addContent="slot"
-      config="{{
-        Object {
-          "count": 1,
-        }
-      }}"
       files="{{
         Array [
           Object {
             "name": "uploaded1.png",
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
+          },
+        ]
+      }}"
+      mediaType="{{
+        Array [
+          "video",
+          "image",
+        ]
+      }}"
+      bind:add="handleAdd"
+      bind:remove="handleRemove"
+    />
+  </wx-view>
+</single>
+`;
+
+exports[`Upload Upload status demo works fine 1`] = `
+<status>
+  <wx-view
+    class="wrapper"
+  >
+    <t-upload
+      files="{{
+        Array [
+          Object {
+            "name": "uploaded1.png",
+            "status": "loading",
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
+          },
+          Object {
+            "name": "uploaded2.png",
+            "percent": 68,
+            "status": "loading",
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
+          },
+          Object {
+            "name": "uploaded3.png",
+            "status": "reload",
+            "type": "image",
+            "url": "https://tdesign.gtimg.com/site/upload1.png",
+          },
+          Object {
+            "name": "uploaded4.png",
+            "status": "failed",
             "type": "image",
             "url": "https://tdesign.gtimg.com/site/upload1.png",
           },
@@ -130,16 +163,10 @@ exports[`Upload Upload single demo works fine 1`] = `
           "image",
         ]
       }}"
+      bind:click="handleClick"
       bind:remove="handleRemove"
       bind:success="handleSuccess"
-    >
-      <t-icon
-        color="rgba(0,0,0,0.26)"
-        name="add"
-        size="40rpx"
-        slot="add-content"
-      />
-    </t-upload>
+    />
   </wx-view>
-</single>
+</status>
 `;
