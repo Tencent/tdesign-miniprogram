@@ -34,16 +34,6 @@ const props: TdDividerProps = {
     type: String,
     value: 'horizontal',
   },
-  /** 分隔线颜色 */
-  lineColor: {
-    type: String,
-    value: '',
-  },
-  /** 已废弃。请更为使用 `layout`。分隔线类型有两种：水平和垂直 */
-  theme: {
-    type: String,
-    value: 'horizontal',
-  },
 };
 
 export default props;
