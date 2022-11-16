@@ -1,1 +1,0 @@
-<t-image t-class="external-class" src="{{imageSrc}}" mode="{{mode}}" shape="round"></t-image>
