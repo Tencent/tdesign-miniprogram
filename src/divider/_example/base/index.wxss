@@ -1,18 +1,14 @@
 .divider-demo__title {
-  font-size: 24rpx;
-  color: rgba(0, 0, 0, 0.4);
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.6);
   padding: 16rpx 32rpx;
   line-height: 40rpx;
 }
 
-.demo-2 {
-  margin: 0 32rpx;
-}
-
-.demo-3 {
-  margin-left: 32rpx;
-}
-
-.demo-4 {
-  margin-left: 152rpx;
+.divider-wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.9);
+  padding-left: 32rpx;
 }

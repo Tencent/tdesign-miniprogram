@@ -51,21 +51,4 @@ export interface TdDividerProps {
     type: StringConstructor;
     value?: 'horizontal' | 'vertical';
   };
-  /**
-   * 分隔线颜色
-   * @default ''
-   */
-  lineColor?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 请更为使用 `layout`。分隔线类型有两种：水平和垂直
-   * @default horizontal
-   * @deprecated
-   */
-  theme?: {
-    type: StringConstructor;
-    value?: 'horizontal' | 'vertical';
-  };
 }

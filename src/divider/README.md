@@ -28,19 +28,13 @@ CSS 变量名|说明
 
 ### 基础分割符
 
-分割符主要是由直线和文字组成，通过`slot`传入分割线文案或者其他自定义内容，通过`layout`控制分隔符是垂直还是横向，`line-color`属性可定义线条颜色
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/divider.png" width="375px" height="50%">
+分割符主要是由直线和文字组成，通过`slot`传入分割线文案或者其他自定义内容，通过`layout`控制分隔符是垂直还是横向
 
 {{ base }}
 
-### 文字 + 直线
+### 虚线样式
 
-{{ text-line }}
-
-### 纯文字 + 分割
-
-{{ text-only }}
+{{ theme }}
 
 ## API
 ### Divider Props
@@ -53,5 +47,3 @@ custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 dashed | Boolean | false | 是否虚线（仅在水平分割线有效） | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、分隔线类名 等。`['t-class', 't-class-line', 't-class-content']` | N
 layout | String | horizontal | 分隔线类型有两种：水平和垂直。可选项：horizontal/vertical | N
-line-color | String | - | 分隔线颜色 | N
-theme | String | horizontal | 已废弃。请更为使用 `layout`。分隔线类型有两种：水平和垂直。可选项：horizontal/vertical | N    |
