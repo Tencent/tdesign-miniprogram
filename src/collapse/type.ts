@@ -45,6 +45,14 @@ export interface TdCollapseProps {
     value?: boolean;
   };
   /**
+   * 折叠面板风格
+   * @default default
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'default' | 'card';
+  };
+  /**
    * 展开的面板集合
    * @default []
    */

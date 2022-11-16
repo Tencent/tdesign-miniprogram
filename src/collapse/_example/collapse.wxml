@@ -13,4 +13,8 @@
 
     <accordion />
   </t-demo>
+
+  <t-demo title="02 组件样式" desc="卡片折叠面板">
+    <theme />
+  </t-demo>
 </view>
