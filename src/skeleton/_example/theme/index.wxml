@@ -1,1 +1,6 @@
-<t-skeleton theme="{{theme}}" loading="{{loading}}"></t-skeleton>
+<view wx:for="{{themeList}}" wx:for-item="themeItem" wx:key="index">
+  <view class="demo-section__desc">{{themeItem.title}}</view>
+  <view class="demo-section__content">
+    <t-skeleton theme="{{themeItem.value}}" loading="{{themeItem.loading}}"></t-skeleton>
+  </view>
+</view>

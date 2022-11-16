@@ -1,1 +1,3 @@
-<t-skeleton rowCol="{{grid}}" loading></t-skeleton>
+<view class="wrapper">
+  <t-skeleton rowCol="{{grid}}" loading></t-skeleton>
+</view>

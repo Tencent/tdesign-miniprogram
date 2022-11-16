@@ -2,21 +2,22 @@
 
 @skeleton-animation-gradient: rgba(0, 0, 0, 4%);
 @skeleton-animation-flashed: rgba(90%, 90%, 90%, 0.3);
-@skeleton-background-color: rgba(238, 238, 238, 1);
-@text-height-default: 16px;
-@rect-height-default: 16px;
-@circle-height-default: 48px;
-@row-margin-bottom: 16px;
-@border-radius-text: 2px;
-@border-radius-rect: 4px;
-@border-radius-circle: 50%;
+@skeleton-bg-color: rgba(238, 238, 238, 1);
+@skeleton-border-radius: 6rpx;
+@skeleton-row-spacing: 32rpx;
+@skeleton-text-height: 32rpx;
+@skeleton-rect-height: 32rpx;
+@skeleton-circle-height: 96rpx;
+@skeleton-text-border-radius: 6rpx;
+@skeleton-rect-border-radius: 12rpx;
+@skeleton-circle-border-radius: 50%;
 
 .@{prefix}-skeleton {
   box-sizing: border-box;
 
   &__row {
     display: flex;
-    margin-bottom: @row-margin-bottom;
+    margin-bottom: var(--td-skeleton-row-spacing, @skeleton-row-spacing);
     align-items: center;
     justify-content: space-between;
   }
@@ -27,8 +28,8 @@
   }
 
   &__col {
-    background-color: @skeleton-background-color;
-    border-radius: @border-radius-text;
+    background-color: var(--td-skeleton-bg-color, @skeleton-bg-color);
+    border-radius: var(--td-skeleton-border-radius, @skeleton-border-radius);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,20 +43,20 @@
   &--type {
     &-text {
       width: 100%;
-      height: @text-height-default;
-      border-radius: @border-radius-text;
+      height: var(--td-skeleton-text-height, @skeleton-text-height);
+      border-radius: var(--td-skeleton-text-border-radius, @skeleton-text-border-radius);
     }
 
     &-rect {
       width: 100%;
-      height: @rect-height-default;
-      border-radius: @border-radius-rect;
+      height: var(--td-skeleton-rect-height, @skeleton-rect-height);
+      border-radius: var(--td-skeleton-rect-border-radius, @skeleton-rect-border-radius);
     }
 
     &-circle {
-      width: @circle-height-default;
-      height: @circle-height-default;
-      border-radius: @border-radius-circle;
+      width: var(--td-skeleton-circle-height, @skeleton-circle-height);
+      height: var(--td-skeleton-circle-height, @skeleton-circle-height);
+      border-radius: var(--td-skeleton-circle-border-radius, @skeleton-circle-border-radius);
       flex-shrink: 0;
     }
   }
