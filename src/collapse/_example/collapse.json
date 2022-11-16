@@ -3,6 +3,7 @@
   "usingComponents": {
     "base": "./base",
     "action": "./action",
-    "accordion": "./accordion"
+    "accordion": "./accordion",
+    "theme": "./theme"
   }
 }
