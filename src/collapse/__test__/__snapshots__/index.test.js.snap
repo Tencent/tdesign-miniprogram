@@ -7,7 +7,7 @@ exports[`collapse :base 1`] = `
     bind:change="handleChange"
   >
     <wx-view
-      class="t-class t-collapse "
+      class="t-class t-collapse t-collapse--default"
       style=""
     >
       <t-collapse-panel
@@ -168,7 +168,7 @@ exports[`collapse :base 1`] = `
     id="expandAll"
   >
     <wx-view
-      class="t-class t-collapse "
+      class="t-class t-collapse t-collapse--default"
       style=""
     >
       <t-collapse-panel>
@@ -329,7 +329,7 @@ exports[`collapse :defaultExpandAll 1`] = `
   id="expandAll"
 >
   <wx-view
-    class="t-class t-collapse "
+    class="t-class t-collapse t-collapse--default"
     style=""
   >
     <t-collapse-panel>
@@ -490,7 +490,7 @@ exports[`collapse :disabled 1`] = `
   bind:change="handleChange"
 >
   <wx-view
-    class="t-class t-collapse "
+    class="t-class t-collapse t-collapse--default"
     style=""
   >
     <t-collapse-panel
