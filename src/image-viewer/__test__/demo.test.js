@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'delete', 'over-height', 'over-width'];
+const mapper = ['base', 'delete'];
 
 describe('ImageViewer', () => {
   mapper.forEach((demoName) => {

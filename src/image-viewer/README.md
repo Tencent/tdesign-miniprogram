@@ -50,9 +50,10 @@ initial-index | Number | 0 | 默认展示第几项 | N
 show-index | Boolean | false | 是否显示页码 | N
 delete-btn | Boolean | false | 是否显示删除操作，前提需要开启页码 | N
 close-btn | Boolean | false | 是否显示关闭操作，前提需要开启页码 | N
+delete-icon-props | Object | {} | 删除图标属性，透传至删除操作按钮 icon | N
+close-icon-props | Object | {} | 关闭图标属性，透传至关闭操作按钮 icon | N
 visible | Boolean | false | 隐藏/显示预览 | N
-default-visible | Boolean | undefined | 隐藏/显示预览。非受控属性 | N
-
+default-visible | Boolean | undefined | 隐藏/显示预览。非受控属性 |
 
 
 ### ImageViewer Events
