@@ -3,7 +3,7 @@ import config from '../common/config';
 import props from './props';
 import { SkeletonRowColObj } from './type';
 import { ClassName, Styles } from '../common/common';
-import { isNumber } from '../common/utils';
+import { isNumber, classNames } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-skeleton`;
@@ -89,7 +89,11 @@ export default class Skeleton extends SuperComponent {
       });
     },
     getColItemClass(obj: SkeletonRowColObj): ClassName {
-      return [`${name}__col`, `${name}--type-${obj.type || 'text'}`, `${name}--animation-${this.properties.animation}`];
+      return classNames([
+        `${name}__col`,
+        `${name}--type-${obj.type || 'text'}`,
+        `${name}--animation-${this.properties.animation}`,
+      ]);
     },
 
     getColItemStyle(obj: SkeletonRowColObj): Styles {

@@ -16,19 +16,6 @@ isComponent: true
 }
 ```
 
-### 主题定制
-
-CSS 变量名|说明
---|--
---td-skeleton-bg-color | 骨架屏背景颜色
---td-skeleton-row-spacing | 骨架屏行间距
---td-skeleton-text-height | 'text'类型骨架屏行高
---td-skeleton-text-border-radius | 'text'类型骨架屏行圆角
---td-skeleton-rect-height | 'rect'类型骨架屏行高
---td-skeleton-rect-border-radius | 'rect'类型骨架屏行圆角
---td-skeleton-circle-height | 'circle'类型骨架屏行高
---td-skeleton-circle-border-radius | 'circle'类型骨架屏行圆角
-
 ## 代码演示
 
 ### 类型
