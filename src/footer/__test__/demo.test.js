@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'link'];
+const mapper = ['base', 'link', 'logo'];
 
 describe('Footer', () => {
   mapper.forEach((demoName) => {

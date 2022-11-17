@@ -1,22 +1,20 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@link-color: #266fe8;
-@footer-info-font-size: @font-size-s;
-@footer-item-font-size: @font-size-s;
-@footer-title-font-size: @font-size-m;
-@footer-info-line-height: 32rpx;
-@footer-item-line-height: 40rpx;
-@footer-title-line-height: 48rpx;
-@footer-link-list-margin-bottom: 12rpx;
-@footer-icon-margin-right: 16rpx;
-@footer-item-padding-left: 6rpx;
-@footer-custom-item-padding: 10rpx;
-@footer-icon-width: 48rpx;
-@footer-icon-height: 48rpx;
-@footer-title-url-width: 256rpx;
-@footer-item-color: @link-color;
-@footer-copyright-info-color: @text-level-4-color;
+@footer-copyright-color: @font-gray-3;
+@footer-copyright-font-size: @font-size-s;
+@footer-copyright-line-height: 40rpx;
+@footer-link-color: @primary-color;
+@footer-link-font-size: @font-size-s;
+@footer-link-line-height: 40rpx;
+@footer-link-margin-bottom: (@spacer / 2);
+@footer-link-dividing-line-padding: @spacer-1;
+@footer-link-dividing-line-color: @font-gray-3;
+@footer-logo-icon-width: 48rpx;
+@footer-logo-icon-height: 48rpx;
+@footer-logo-icon-margin-right: @spacer;
+@footer-logo-title-font-size: @font-size-m;
+@footer-logo-title-url-width: 256rpx;
+@footer-logo-title-line-height: 48rpx;
 
 .@{prefix}-footer {
   display: flex;
@@ -25,32 +23,30 @@
   justify-content: flex-start;
 
   &__copyright-info {
-    font-size: @footer-info-font-size;
-    line-height: @footer-info-line-height;
-    color: @footer-copyright-info-color;
+    font-size: var(--td-footer-copyright-font-size, @footer-copyright-font-size); // 版权信息文本大小
+    line-height: var(--td-footer-copyright-line-height, @footer-copyright-line-height); // 版权信息文本行高
+    color: var(--td-footer-copyright-color, @footer-copyright-color); // 版权信息文本颜色
   }
 
   &__link-list {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: @footer-link-list-margin-bottom;
+    margin-bottom: var(--td-footer-link-margin-bottom, @footer-link-margin-bottom); // 链接底部间距
   }
 
   &__link-item {
-    color: @footer-item-color;
-    font-size: @footer-item-font-size;
-    line-height: @footer-item-line-height;
-    padding-left: @footer-item-padding-left;
+    color: var(--td-footer-link-color, @footer-link-color); // 链接文本颜色
+    font-size: var(--td-footer-link-font-size, @footer-link-font-size); // 链接文本大小
+    line-height: var(--td-footer-link-line-height, @footer-link-line-height); // 链接文本行高
     text-decoration: underline;
   }
 
   &__link-item:not(:last-child)::after {
     content: '|';
-    color: @footer-item-color;
+    color: var(--td-footer-link-dividing-line-color, @footer-link-dividing-line-color); // 链接分界线颜色
     display: inline-block;
-    padding-left: @footer-custom-item-padding;
-    padding-right: @footer-custom-item-padding;
+    padding: 0 var(--td-footer-link-dividing-line-padding, @footer-link-dividing-line-padding); // 链接分界线左右间距
   }
 
   &__logo {
@@ -60,19 +56,19 @@
   }
 
   &__icon {
-    width: @footer-icon-width;
-    height: @footer-icon-height;
-    margin-right: @footer-icon-margin-right;
+    width: var(--td-footer-logo-icon-width, @footer-logo-icon-width); // 图标宽度
+    height: var(--td-footer-logo-icon-height, @footer-logo-icon-height); // 图标高度
+    margin-right: var(--td-footer-logo-icon-margin-right, @footer-logo-icon-margin-right); // 图标右部间距
   }
 
   &__title {
     font-weight: bold;
-    font-size: @footer-title-font-size;
-    line-height: @footer-title-line-height;
+    font-size: var(--td-footer-logo-title-font-size, @footer-logo-title-font-size); // 图标配置，标题文本大小
+    line-height: var(--td-footer-logo-title-line-height, @footer-logo-title-line-height); // 图标配置，标题文本行高
     font-style: italic;
   }
 
   &__title-url {
-    width: @footer-title-url-width;
+    width: var(--td-footer-logo-title-url-width, @footer-logo-title-url-width); // 图标配置，链接跳转地址宽度
   }
 }

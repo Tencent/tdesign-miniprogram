@@ -1,0 +1,4 @@
+.footer-demo {
+  margin-top: 8rpx;
+  margin-bottom: 40rpx;
+}
