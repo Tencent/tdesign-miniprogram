@@ -2,16 +2,19 @@
 
 @result-title-font-size: @font-size-l;
 @result-title-line-height: @font-size * 2.8;
-@result-title-color: rgba(0, 0, 0, 0.9);
+@result-title-color: @font-gray-1;
 
-@result-description-font-size: @font-size * 1.4;
+@result-description-font-size: @font-size-base;
 @result-description-line-height: @font-size * 2.2;
-@result-description-color: rgba(0, 0, 0, 0.6);
+@result-description-color: @font-gray-2;
 
-@result-icon-default-color: #0052d9;
-@result-icon-success-color: #00a870;
-@result-icon-warning-color: #ed7b2f;
-@result-icon-error-color: #e34d59;
+@result-icon-default-color: @primary-color;
+@result-icon-success-color: @success-color;
+@result-icon-warning-color: @warning-color;
+@result-icon-error-color: @error-color;
+
+@result-title-margin-top: @spacer;
+@result-description-margin-top: @spacer * 1.5;
 
 .@{prefix}-result {
   display: flex;
@@ -19,43 +22,43 @@
   align-items: center;
 
   &__title {
-    line-height: var(--td-result-title-line-height, @result-title-line-height);
-    font-size: var(--td-result-title-font-size, @result-title-font-size);
+    line-height: var(--td-result-title-line-height, @result-title-line-height); // 标题行高
+    font-size: var(--td-result-title-font-size, @result-title-font-size); // 标题文字大小
     font-weight: 700;
-    color: var(--td-result-title-color, @result-title-color);
+    color: var(--td-result-title-color, @result-title-color); // 标题颜色
   }
 
   &__thumb + &__title:not(:empty) {
-    margin-top: var(--td-result-title-margin-top, @spacer);
+    margin-top: var(--td-result-title-margin-top, @result-title-margin-top); // 标题内容上边距
   }
 
   &__description {
     text-align: center;
-    color: var(--td-result-description-color, @result-description-color);
-    font-size: var(--td-result-description-font-size, @result-description-font-size);
-    line-height: var(--td-result-description-line-height, @result-description-line-height);
+    color: var(--td-result-description-color, @result-description-color); // 描述颜色
+    font-size: var(--td-result-description-font-size, @result-description-font-size); // 描述文字大小
+    line-height: var(--td-result-description-line-height, @result-description-line-height); // 描述行高
   }
 
   &__title + &__description:not(:empty) {
-    margin-top: var(--td-result-description-margin-top, @spacer * 1.5);
+    margin-top: var(--td-result-description-margin-top, @result-description-margin-top); // 描述内容上边距
   }
 
   // theme
   &--theme {
     &-default {
-      color: var(--td-result-icon-default-color, @result-icon-default-color);
+      color: var(--td-result-icon-default-color, @result-icon-default-color); // 默认状态图标颜色
     }
 
     &-success {
-      color: var(--ts-result-icon-success-color, @result-icon-success-color);
+      color: var(--ts-result-icon-success-color, @result-icon-success-color); // 成功状态图标颜色
     }
 
     &-warning {
-      color: var(--ts-result-icon-warning-color, @result-icon-warning-color);
+      color: var(--ts-result-icon-warning-color, @result-icon-warning-color); // 警示状态图标颜色
     }
 
     &-error {
-      color: var(--td-result-icon-error-color, @result-icon-error-color);
+      color: var(--td-result-icon-error-color, @result-icon-error-color); // 失败状态图标颜色
     }
   }
 }

@@ -16,23 +16,6 @@ isComponent: true
 }
 ```
 
-### 主题定制
-
-CSS 变量名|说明
---|--
---td-result-icon-default-color ｜ 默认状态图标颜色
---td-result-icon-success-color ｜ 成功状态图标颜色
---td-result-icon-warning-color ｜ 警示状态图标颜色
---td-result-icon-error-color ｜ 失败状态图标颜色
---td-result-title-font-size | 标题文字大小
---td-result-title-line-height | 标题行高
---td-result-title-color | 标题颜色
---td-result-title-margin-top | 标题内容上边距
---td-result-description-font-size | 描述文字大小
---td-result-description-line-height | 描述行高;
---td-result-description-margin-top | 描述内容上边距
---td-result-description-color | 描述颜色
-
 ## 代码演示
 
 ### 结果状态
