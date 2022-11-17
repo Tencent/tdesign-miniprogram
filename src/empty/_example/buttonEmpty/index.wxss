@@ -1,5 +1,3 @@
 .t-empty__button {
-  width: 320rpx !important;
-  height: 72rpx !important;
-  line-height: 72rpx !important;
+  width: 358rpx !important;
 }
