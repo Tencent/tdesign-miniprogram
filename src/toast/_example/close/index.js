@@ -1,30 +1,17 @@
 import Toast, { hideToast } from 'tdesign-miniprogram/toast/index';
 
 Page({
-  toast(option) {
+  handleShow() {
     Toast({
       context: this,
       selector: '#t-toast',
-      ...option,
+      message: '轻提示文字内容',
     });
   },
-  hide() {
+  handleHide() {
     hideToast({
       context: this,
       selector: '#t-toast',
     });
-  },
-  handleToast(e) {
-    switch (e.target.dataset.type) {
-      case 'hideToast': {
-        this.hide();
-        break;
-      }
-      default: {
-        this.toast({
-          message: '未知点击事件',
-        });
-      }
-    }
   },
 });

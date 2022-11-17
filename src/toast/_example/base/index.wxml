@@ -1,20 +1,7 @@
 <t-toast id="t-toast" />
 
-<t-button t-class="external-class" data-type="text" size="large" variant="outline" bind:tap="handleToast" block
-  >纯文本</t-button
->
-<t-button
-  t-class="external-class"
-  data-type="horizontal-icon"
-  size="large"
-  variant="outline"
-  bind:tap="handleToast"
-  block
-  >带图标-横向</t-button
->
-<t-button t-class="external-class" data-type="vertical-icon" size="large" variant="outline" bind:tap="handleToast" block
-  >带图标-竖向</t-button
->
-<t-button t-class="external-class" data-type="text-max" size="large" variant="outline" bind:tap="handleToast" block
-  >纯文本最大高度</t-button
->
+<t-button size="large" variant="outline" theme="primary" bind:tap="showText" block>纯文本</t-button>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showMultiText" block>多行文字</t-button>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showHorizontalText" block>带横向图标</t-button>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showVerticalText" block>带竖向图标</t-button>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showLoading" block>加载状态</t-button>

@@ -22,13 +22,9 @@ isComponent: true
 
 {{ base }}
 
-### 默认提示
+### 组件状态
 
-{{ normal }}
-
-### 不同位置的提示
-
-{{ display }}
+{{ theme }}
 
 ### 显示遮罩
 {{ cover }}
