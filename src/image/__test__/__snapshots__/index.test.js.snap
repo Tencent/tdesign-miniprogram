@@ -5,11 +5,11 @@ exports[`image :base 1`] = `
   <t-image>
     <wx-view
       class="t-class t-image t-image__mask t-image--faild t-image--shape-square"
-      style=""
+      style=" "
     >
       <wx-view
         class="t-class-load"
-        style="font-size: 40rpx; color: #999"
+        style="font-size: 44rpx"
       >
         <t-icon>
           <wx-view
@@ -55,7 +55,7 @@ exports[`image :success 1`] = `
       mode="heightFix"
       showMenuByLongpress="{{false}}"
       src="https://www.tencent.com/img/index/menu_logo.png"
-      style="width: 0.00px;"
+      style="height: 0px; width: 0.00px;"
       webp="{{false}}"
       bind:error="onLoadError"
       bind:load="onLoaded"

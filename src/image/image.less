@@ -1,6 +1,10 @@
 @import '../common/style/index.less';
 
+@loading-color: @font-gray-3;
+
 .@{prefix}-image {
+  color: var(--td-loading-color, @loading-color);
+
   &__mask {
     display: flex;
     align-items: center;

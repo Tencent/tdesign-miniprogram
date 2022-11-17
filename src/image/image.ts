@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import ImageProps from './props';
 import config from '../common/config';
+import { addUnit } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-image`;
@@ -18,15 +19,27 @@ export default class Image extends SuperComponent {
     prefix,
     isLoading: true,
     isFailed: false,
-    widthStyle: '', // 自动计算的图片宽度样式（兼容基础库版本2.10.3以下的版本不支持heightFix模式）
+    innerStyle: '',
     classPrefix: name,
   };
 
   preSrc = ''; // 保留上一次的src,防止在src相同时重复update
 
   lifetimes = {
-    attached(this: Image) {
+    attached() {
+      const { width, height } = this.data;
+      let innerStyle = '';
       this.update();
+
+      if (width) {
+        innerStyle += `width: ${addUnit(width)};`;
+      }
+      if (height) {
+        innerStyle += `height: ${addUnit(height)};`;
+      }
+      this.setData({
+        innerStyle,
+      });
     },
   };
 
@@ -56,7 +69,7 @@ export default class Image extends SuperComponent {
           .boundingClientRect((res) => {
             const { height } = res;
             const resultWidth = ((height / picHeight) * picWidth).toFixed(2);
-            this.setData({ widthStyle: `width: ${resultWidth}px;` });
+            this.setData({ innerStyle: `height: ${addUnit(height)}; width: ${resultWidth}px;` });
           })
           .exec();
       }
@@ -76,7 +89,7 @@ export default class Image extends SuperComponent {
     },
 
     update() {
-      const { src } = this.properties as any;
+      const { src } = this.properties;
       this.preSrc = src;
       if (!src) {
         // 链接为空时直接触发加载失败
