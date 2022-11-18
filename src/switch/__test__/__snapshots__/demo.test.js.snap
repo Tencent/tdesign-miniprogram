@@ -2,129 +2,72 @@
 
 exports[`Switch Switch base demo works fine 1`] = `
 <base>
-  <wx-view
-    class="group"
+  <t-cell
+    title="默认"
   >
-    <t-cell
-      title="默认"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      title="默认关"
-    >
-      <t-switch
-        defaultValue="{{false}}"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      title="自定义颜色"
-    >
-      <t-switch
-        colors="{{
-          Array [
-            "#00A870",
-          ]
-        }}"
-        defaultValue="{{true}}"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      bordered="{{false}}"
-      title="异步操作"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        slot="note"
-      />
-    </t-cell>
-  </wx-view>
-  <wx-view
-    class="group"
-  >
-    <t-cell
-      title="默认"
-    >
-      <t-switch
-        label="描述信息"
-        slot="note"
-        value="{{true}}"
-        bind:change="handleChange"
-      />
-    </t-cell>
-    <t-cell
-      title="默认关"
-    >
-      <t-switch
-        defaultValue="{{false}}"
-        label="描述信息"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      bordered="{{false}}"
-      title="自定义颜色"
-    >
-      <t-switch
-        colors="{{
-          Array [
-            "#00A870",
-          ]
-        }}"
-        defaultValue="{{true}}"
-        label="描述信息"
-        slot="note"
-      />
-    </t-cell>
-  </wx-view>
+    <t-switch
+      defaultValue="{{true}}"
+      slot="note"
+    />
+  </t-cell>
 </base>
 `;
 
 exports[`Switch Switch status demo works fine 1`] = `
 <status>
-  <t-cell
-    title="开关"
+  <wx-view
+    class="demo-desc"
   >
-    <t-switch
-      defaultValue="{{true}}"
-      disabled="{{true}}"
-      slot="note"
-    />
-  </t-cell>
-  <t-cell
-    title="开关"
+    加载状态
+  </wx-view>
+  <wx-view
+    class="group"
   >
-    <t-switch
-      defaultValue="{{false}}"
-      disabled="{{true}}"
-      slot="note"
-    />
-  </t-cell>
-  <t-cell
-    title="开关"
+    <t-cell
+      title="加载状态"
+    >
+      <t-switch
+        defaultValue="{{true}}"
+        loading="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+    <t-cell
+      title="加载状态"
+    >
+      <t-switch
+        defaultValue="{{false}}"
+        loading="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
   >
-    <t-switch
-      defaultValue="{{true}}"
-      disabled="{{true}}"
-      label="描述信息"
-      slot="note"
-    />
-  </t-cell>
-  <t-cell
-    bordered="{{false}}"
-    title="开关"
+    禁用状态
+  </wx-view>
+  <wx-view
+    class="group"
   >
-    <t-switch
-      defaultValue="{{false}}"
-      disabled="{{true}}"
-      label="描述信息"
-      slot="note"
-    />
-  </t-cell>
+    <t-cell
+      title="禁用状态"
+    >
+      <t-switch
+        disabled="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+    <t-cell
+      bordered="{{false}}"
+      title="禁用状态"
+    >
+      <t-switch
+        defaultValue="{{true}}"
+        disabled="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+  </wx-view>
 </status>
 `;
