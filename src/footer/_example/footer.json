@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "link": "./link"
+    "link": "./link",
+    "logo": "./logo"
   }
 }

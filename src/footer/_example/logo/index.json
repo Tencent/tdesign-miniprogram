@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "t-image": "../image/image"
+    "t-footer": "tdesign-miniprogram/footer/footer"
   }
 }

@@ -3,6 +3,9 @@
 <t-demo title="01 类型" desc="基础页脚">
   <base />
 </t-demo>
-<t-demo desc="基础加连接页脚">
+<t-demo desc="基础加链接页脚">
   <link />
+</t-demo>
+<t-demo desc="品牌页脚">
+  <logo />
 </t-demo>

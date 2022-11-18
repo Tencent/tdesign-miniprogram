@@ -2,57 +2,87 @@
 
 exports[`Footer Footer base demo works fine 1`] = `
 <base>
-  <t-footer
-    class="t-footer-demo"
-    copyright="Copyright © 2021-2031 TD.All Rights Reserved."
-    theme="text"
-  />
+  <wx-view
+    class="demo-footer"
+  >
+    <t-footer
+      copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+      theme="text"
+    />
+  </wx-view>
 </base>
 `;
 
 exports[`Footer Footer link demo works fine 1`] = `
 <link>
-  <t-footer
-    class="footer"
-    copyright="Copyright © 2021-2031 TD.All Rights Reserved."
-    textLinkList="{{
-      Array [
-        Object {
-          "name": "底部链接",
-          "openType": "navigate",
-          "url": "/pages/index",
-        },
-      ]
-    }}"
-    theme="text"
-  />
-  <t-footer
-    class="footer"
-    copyright="Copyright © 2021-2031 TD.All Rights Reserved."
-    textLinkList="{{
-      Array [
-        Object {
-          "name": "底部链接",
-          "openType": "navigate",
-          "url": "/pages/index",
-        },
-        Object {
-          "name": "底部链接",
-          "openType": "navigateBack",
-          "url": "",
-        },
-      ]
-    }}"
-    theme="text"
-  />
-  <t-footer
-    class="t-footer-demo"
-    logo="{{
-      Object {
-        "url": "https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png",
-      }
-    }}"
-    theme="logo"
-  />
+  <wx-view
+    class="demo-footer"
+  >
+    <t-footer
+      copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+      textLinkList="{{
+        Array [
+          Object {
+            "name": "底部链接",
+            "openType": "navigate",
+            "url": "/pages/index",
+          },
+        ]
+      }}"
+      theme="text"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-footer"
+  >
+    <t-footer
+      copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+      textLinkList="{{
+        Array [
+          Object {
+            "name": "底部链接",
+            "openType": "navigate",
+            "url": "/pages/index",
+          },
+          Object {
+            "name": "底部链接",
+            "openType": "navigateBack",
+            "url": "",
+          },
+        ]
+      }}"
+      theme="text"
+    />
+  </wx-view>
 </link>
+`;
+
+exports[`Footer Footer logo demo works fine 1`] = `
+<logo>
+  <wx-view
+    class="demo-footer"
+  >
+    <t-footer
+      logo="{{
+        Object {
+          "icon": "https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png",
+          "title": "品牌名称",
+        }
+      }}"
+      theme="logo"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-footer"
+  >
+    <t-footer
+      logo="{{
+        Object {
+          "url": "https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png",
+        }
+      }}"
+      theme="logo"
+    />
+  </wx-view>
+</logo>
 `;
