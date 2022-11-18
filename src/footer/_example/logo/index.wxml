@@ -1,4 +1,8 @@
 <!-- theme 为 logo -->
-<view class="footer-demo" wx:for="{{logoList}}" wx:key="index">
-  <t-footer theme="logo" logo="{{item}}" />
+<view class="demo-footer">
+  <t-footer theme="logo" logo="{{logoList[0]}}" />
+</view>
+
+<view class="demo-footer">
+  <t-footer theme="logo" logo="{{logoList[1]}}" />
 </view>

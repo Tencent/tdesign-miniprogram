@@ -3,7 +3,7 @@
 exports[`Footer Footer base demo works fine 1`] = `
 <base>
   <wx-view
-    class="footer-demo"
+    class="demo-footer"
   >
     <t-footer
       copyright="Copyright © 2021-2031 TD.All Rights Reserved."
@@ -16,7 +16,7 @@ exports[`Footer Footer base demo works fine 1`] = `
 exports[`Footer Footer link demo works fine 1`] = `
 <link>
   <wx-view
-    class="footer-demo"
+    class="demo-footer"
   >
     <t-footer
       copyright="Copyright © 2021-2031 TD.All Rights Reserved."
@@ -33,7 +33,7 @@ exports[`Footer Footer link demo works fine 1`] = `
     />
   </wx-view>
   <wx-view
-    class="footer-demo"
+    class="demo-footer"
   >
     <t-footer
       copyright="Copyright © 2021-2031 TD.All Rights Reserved."
@@ -60,7 +60,7 @@ exports[`Footer Footer link demo works fine 1`] = `
 exports[`Footer Footer logo demo works fine 1`] = `
 <logo>
   <wx-view
-    class="footer-demo"
+    class="demo-footer"
   >
     <t-footer
       logo="{{
@@ -73,7 +73,7 @@ exports[`Footer Footer logo demo works fine 1`] = `
     />
   </wx-view>
   <wx-view
-    class="footer-demo"
+    class="demo-footer"
   >
     <t-footer
       logo="{{
