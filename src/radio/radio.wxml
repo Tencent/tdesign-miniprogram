@@ -1,4 +1,10 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}}">
+<view
+  style="{{ customStyle }}"
+  class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}}"
+  aria-role="radio"
+  aria-checked="{{active}}"
+  aria-label="{{label}}"
+>
   <!-- 图标 -->
   <view
     class="{{classPrefix}}__icon {{classPrefix}}__icon--{{align}} {{prefix}}-class-icon"
