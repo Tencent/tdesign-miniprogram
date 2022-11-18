@@ -1,10 +1,10 @@
 <view class="demo">
   <view class="demo-title">ImageViewer 图片预览</view>
-  <view class="demo-desc">图片全屏放大预览效果，包含全屏背景色、页码位置样式、增加操作等规范</view>
-  <t-demo title="01 类型" desc="图片预览类型" padding>
+  <view class="demo-desc">用于图片内容的缩略展示与查看。</view>
+  <t-demo title="01 类型" desc="基础图片预览" padding>
     <base />
+  </t-demo>
+  <t-demo desc="带操作图片预览" padding>
     <delete />
-    <over-height />
-    <over-width />
   </t-demo>
 </view>
