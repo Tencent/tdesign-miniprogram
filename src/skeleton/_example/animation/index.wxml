@@ -1,4 +1,6 @@
-<view class="group">
-  <t-skeleton class="group-avatar" rowCol="{{rowColsAvater}}" animation="{{animation}}" loading></t-skeleton>
-  <t-skeleton class="group-content" theme="paragraph" animation="{{animation}}" loading></t-skeleton>
+<view wx:for="{{animationList}}" wx:for-item="animationItem" wx:key="index">
+  <view class="demo-section__desc">{{animationItem.title}}</view>
+  <view class="demo-section__content">
+    <t-skeleton theme="paragraph" animation="{{animationItem.value}}" loading="{{animationItem.loading}}"></t-skeleton>
+  </view>
 </view>

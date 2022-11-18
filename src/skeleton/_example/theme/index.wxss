@@ -1,0 +1,11 @@
+.demo-section__desc {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.4);
+  margin: 8rpx 0;
+  line-height: 40rpx;
+}
+
+.demo-section__content {
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
+}
