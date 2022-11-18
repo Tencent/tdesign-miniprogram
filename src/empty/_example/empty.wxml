@@ -15,7 +15,7 @@
     </view>
     <view class="demo-section__desc">空页面</view>
     <view class="demo-section__wrapper">
-      <pageEmpty />
+      <t-button theme="primary" block size="large" variant="outline" bind:tap="goEmptyPage">空页面</t-button>
     </view>
   </t-demo>
 </view>

@@ -4,7 +4,6 @@
   "usingComponents": {
     "base": "./base",
     "imageEmpty": "./imageEmpty",
-    "buttonEmpty": "./buttonEmpty",
-    "pageEmpty": "./pageEmpty"
+    "buttonEmpty": "./buttonEmpty"
   }
 }

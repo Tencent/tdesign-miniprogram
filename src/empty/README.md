@@ -30,9 +30,7 @@ isComponent: true
 
 {{ buttonEmpty }}
 
-### 空页面
 
-{{ pageEmpty }}
 
 ## API
 ### Empty Props
@@ -44,4 +42,5 @@ custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 description | String / Slot | - | 描述文字 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-description', 't-class-image', 't-class-actions']` | N
 icon | String | - | 图标名称 | N
+icon-props | Object | {} | 图标属性，透传至 icon | N
 image | String / Slot | - | 图片地址 | N
