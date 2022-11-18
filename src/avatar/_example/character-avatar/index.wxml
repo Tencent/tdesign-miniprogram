@@ -1,0 +1,8 @@
+<view class="demo-avatar">
+  <view class="avatar-example">
+    <t-avatar t-class-content="external-class-content">A</t-avatar>
+  </view>
+  <view class="avatar-example">
+    <t-avatar shape="round" t-class-content="external-class-content">A</t-avatar>
+  </view>
+</view>

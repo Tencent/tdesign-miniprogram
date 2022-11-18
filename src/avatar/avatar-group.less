@@ -1,13 +1,4 @@
 @import '../common/style/index.less';
-@import './common.less';
-
-@avatar-group-small-width: 64rpx;
-@avatar-group-medium-width: 80rpx;
-@avatar-group-large-width: 96rpx;
-
-@avatar-group-small-font-size: @font-size-s;
-@avatar-group-medium-font-size: @font-size-m;
-@avatar-group-large-font-size: @font-size * 1.8;
 
 //组合头像偏移量
 @avatar-group-offset-small: -4px;
@@ -36,29 +27,29 @@
 
   &-offset-left {
     &-small {
-      .avatat-offset-left(@avatar-group-offset-small);
+      .avatat-offset-left(var(--td-avatar-group-margin-left-small, @avatar-group-offset-small)); // ‘small’尺寸组合头像左偏移间距
     }
 
     &-medium {
-      .avatat-offset-left(@avatar-group-offset-medium);
+      .avatat-offset-left(var(--td-avatar-group-margin-left-medium, @avatar-group-offset-medium)); // ‘medium’尺寸组合头像左偏移间距
     }
 
     &-large {
-      .avatat-offset-left(@avatar-group-offset-large);
+      .avatat-offset-left(var(--td-avatar-group-margin-left-large, @avatar-group-offset-large)); // ‘large’尺寸组合头像左偏移间距
     }
   }
 
   &-offset-right {
     &-small {
-      .avatat-offset-right(@avatar-group-offset-small);
+      .avatat-offset-right(var(--td-avatar-group-margin-left-small, @avatar-group-offset-small)); // ‘small’尺寸组合头像右偏移间距
     }
 
     &-medium {
-      .avatat-offset-right(@avatar-group-offset-medium);
+      .avatat-offset-right(var(--td-avatar-group-margin-left-medium, @avatar-group-offset-medium)); // ‘medium’尺寸组合头像右偏移间距
     }
 
     &-large {
-      .avatat-offset-right(@avatar-group-offset-large);
+      .avatat-offset-right(var(--td-avatar-group-margin-left-large, @avatar-group-offset-large)); // ‘large’尺寸组合头像右偏移间距
     }
   }
 
