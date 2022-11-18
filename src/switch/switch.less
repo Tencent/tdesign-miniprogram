@@ -22,6 +22,9 @@
 @switch-dot-size: var(--td-switch-dot-size, 44rpx);
 @switch-dot-plain-size: var(--td-switch-dot-plain-size, 36rpx);
 @switch-dot-horizontal-margin: var(--td-switch-dot-horizontal-margin, 6rpx);
+@switch-dot-plain-horizontal-margin: var(--td-switch-dot-plain-horizontal-margin, 10rpx);
+@switch-dot-shadow: var(--td-switch-dot-shadow, @shadow-1);
+@switch-dot-border-color: var(--td-switch-dot-border-color, @gray-color-1);
 
 // large dot
 @switch-dot-large-size: var(--td-switch-dot-large-size, 52rpx);
@@ -72,6 +75,10 @@
     &--small {
       font-size: @swtich-label-small-font-size;
     }
+
+    &:empty {
+      display: none;
+    }
   }
 
   &__icon {
@@ -97,6 +104,7 @@
     border-radius: @switch-radius;
     background-color: @switch-unchecked-color;
     position: relative;
+    transition: all 0.3s ease;
 
     &--checked {
       background-color: @switch-checked-color;
@@ -133,6 +141,22 @@
     background-color: @bg-color-block;
     transition: all 0.3s;
     transform: translateY(-50%);
+    box-shadow: @switch-dot-shadow;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200%;
+      height: 200%;
+      border: 1px solid @switch-dot-border-color;
+      border-radius: 50%;
+      transform: scale(50%);
+      transform-origin: 0 0;
+      box-sizing: border-box;
+    }
 
     &--large {
       width: @switch-dot-large-size;
@@ -159,6 +183,7 @@
     &--plain:not(&--checked) {
       width: @switch-dot-plain-size;
       height: @switch-dot-plain-size;
+      left: @switch-dot-plain-horizontal-margin;
     }
 
     &--large&--plain:not(&--checked) {
