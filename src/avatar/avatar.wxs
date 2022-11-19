@@ -1,9 +1,11 @@
 module.exports = {
-  getAvatarOuterClass: function (classPrefix, size, shape) {
+  getAvatarOuterClass: function (classPrefix, size, shape, bordered) {
     var isIncludePx = size.indexOf('px') > -1;
+    var borderSize = isIncludePx ? 'medium' : size;
     var classNames = [
       classPrefix,
       classPrefix + (shape === 'round' ? '--round' : '--circle'),
+      bordered ? classPrefix + '--border' + ' ' + classPrefix + '--border--' + borderSize : '',
       isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1),
     ];
     return classNames.join(' ');
@@ -20,10 +22,5 @@ module.exports = {
     var displayStyle = isShow ? '' : 'display: none;';
     var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
     return displayStyle + zIndexStyle + customStyle;
-  },
-
-  getIconClass: function (classPrefix, size) {
-    if (size.indexOf('px') > -1) return;
-    return classPrefix + '__icon--default-' + (size || 'medium').slice(0, 1);
   },
 };

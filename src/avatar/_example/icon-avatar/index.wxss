@@ -1,7 +1,8 @@
 .demo-avatar {
+  display: flex;
   margin: 0 32rpx;
 }
 
 .avatar-example {
-  margin-bottom: 48rpx;
+  margin-right: 64rpx;
 }

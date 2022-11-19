@@ -1,22 +1,27 @@
-<view class="demo-title">Avatar 头像</view>
-<view class="demo-desc">用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作。</view>
-<t-demo title="01 类型" desc="头像样式可为默认头像、微信头像圆形、方形、自定义文字">
-  <view class="desc">
-    <shape />
-  </view>
-</t-demo>
-<t-demo title="02 特殊类型" desc="纯展示 从上往下">
-  <view class="desc">
+<view class="demo">
+  <view class="demo-title">Avatar 头像</view>
+  <view class="demo-desc">用于告知用户，该区域的状态变化或者待处理任务的数量。</view>
+  <t-demo title="01 头像类型" desc="图片头像">
+    <imageAvatar />
+  </t-demo>
+  <t-demo desc="字符头像">
+    <characterAvatar />
+  </t-demo>
+  <t-demo desc="图标头像">
+    <iconAvatar />
+  </t-demo>
+  <t-demo desc="徽标头像">
+    <badgeAvatar />
+  </t-demo>
+
+  <t-demo title="02 组合头像" desc="纯展示">
     <exhibition />
-  </view>
-</t-demo>
-<t-demo desc="带操作 从下往上">
-  <view class="desc">
+  </t-demo>
+  <t-demo desc="带操作">
     <action />
-  </view>
-</t-demo>
-<t-demo title="03 规格" desc="头像大小尺寸及消息提醒">
-  <view class="desc">
+  </t-demo>
+
+  <t-demo title="03 头像尺寸" desc="头像 large/medium/small 尺寸">
     <size />
-  </view>
-</t-demo>
+  </t-demo>
+</view>

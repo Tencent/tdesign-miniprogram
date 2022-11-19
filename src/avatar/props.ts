@@ -33,6 +33,11 @@ const props: TdAvatarProps = {
   icon: {
     type: String,
   },
+  /** 图标属性，透传至 icon */
+  iconProps: {
+    type: Object,
+    value: {},
+  },
   /** 图片地址 */
   image: {
     type: String,
@@ -51,6 +56,11 @@ const props: TdAvatarProps = {
   size: {
     type: String,
     value: '',
+  },
+  /** 是否显示外边框 */
+  bordered: {
+    type: Boolean,
+    value: false,
   },
 };
 

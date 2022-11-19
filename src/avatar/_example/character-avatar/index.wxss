@@ -1,6 +1,6 @@
 .demo-avatar {
   display: flex;
-  margin: 0 32rpx 48rpx;
+  margin: 0 32rpx;
 }
 
 .avatar-example {

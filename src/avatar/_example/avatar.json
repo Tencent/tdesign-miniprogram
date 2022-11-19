@@ -2,7 +2,10 @@
   "navigationBarTitleText": "Avatar",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "shape": "./shape",
+    "imageAvatar": "./image-avatar",
+    "characterAvatar": "./character-avatar",
+    "iconAvatar": "./icon-avatar",
+    "badgeAvatar": "./badge-avatar",
     "size": "./size",
     "exhibition": "./exhibition",
     "action": "./action"

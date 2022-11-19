@@ -1,0 +1,8 @@
+<view class="demo-avatar">
+  <view class="avatar-example">
+    <t-avatar icon="user" />
+  </view>
+  <view class="avatar-example">
+    <t-avatar shape="round" icon="user" />
+  </view>
+</view>

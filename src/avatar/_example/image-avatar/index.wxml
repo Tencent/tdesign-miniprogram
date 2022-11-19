@@ -1,0 +1,8 @@
+<view class="demo-avatar">
+  <view class="avatar-example">
+    <t-avatar image="{{image}}" />
+  </view>
+  <view class="avatar-example">
+    <t-avatar shape="round" image="{{image}}" />
+  </view>
+</view>

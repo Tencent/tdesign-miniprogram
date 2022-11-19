@@ -53,6 +53,14 @@ export interface TdAvatarProps {
     value?: string;
   };
   /**
+   * 图标属性，透传至 icon
+   * @default {}
+   */
+  iconProps?: {
+    type: ObjectConstructor;
+    value?: object;
+  };
+  /**
    * 图片地址
    * @default ''
    */
@@ -82,6 +90,14 @@ export interface TdAvatarProps {
   size?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 是否显示外边框
+   * @default true
+   */
+  bordered?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
 }
 
