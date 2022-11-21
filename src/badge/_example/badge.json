@@ -2,8 +2,7 @@
   "navigationBarTitleText": "Badge 徽标",
   "usingComponents": {
     "base": "./base",
-    "button-demo": "./button",
-    "cell": "./cell",
-    "tab-item": "./tab-item"
+    "theme": "./theme",
+    "size": "./size"
   }
 }

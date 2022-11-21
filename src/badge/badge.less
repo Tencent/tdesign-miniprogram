@@ -1,15 +1,20 @@
 @import '../common/style/index.less';
 
-@badge-text-color: @text-anti-primary-color;
-@badge-color: #e34d59;
-@badge-font-size: @font-size-xs;
-@badge-height: 32rpx;
-@badge-width: 32rpx;
-@badge-font-weight: normal;
-@badge-circle-border-radius: 32rpx;
-@badge-round-border-radius: 8rpx;
-@badge-dot-height: 16rpx;
-@badge-dot-border-radius: 8rpx;
+@badge-text-color: var(--td-badge-text-color, @font-white-1);
+@badge-color: var(--td-badge-bg-color, @error-color);
+@badge-font-size: var(--td-badge-font-size, @font-size-xs);
+@badge-basic-height: var(--td-badge-basic-height, 32rpx);
+@badge-basic-width: var(--td-badge-basic-width, 32rpx);
+@badge-basic-padding: var(--td-badge-basic-padding, 8rpx);
+@badge-font-weight: var(--td-badge-font-weight, 600);
+@badge-border-radius: var(--td-badge-border-radius, 4rpx);
+@border-bubble-border-radius: var(--td-badge-bubble-border-radius, 20rpx 20rpx 20rpx 1px);
+@badge-dot-size: var(--td-badge-dot-size, 16rpx);
+
+// large
+@badge-large-font-size: var(--td-badge-large-font-size, @font-size-s);
+@badge-large-height: var(--td-badge-large-height, 36rpx);
+@badge-large-padding: var(--td-badge-large-padding, 10rpx);
 
 .@{prefix}-badge {
   position: relative;
@@ -19,44 +24,35 @@
   &--basic {
     display: inline-block;
     z-index: 100;
+    padding: 0 @badge-basic-padding;
     font-size: @badge-font-size;
     color: @badge-text-color;
     background-color: @badge-color;
-    height: @badge-height;
-    padding: 0 8rpx;
     text-align: center;
-    line-height: @badge-height;
+    height: @badge-basic-height;
+    line-height: @badge-basic-height;
     font-weight: @badge-font-weight;
-    border-radius: 4rpx;
+    border-radius: @badge-border-radius;
   }
 
   &--dot {
-    height: @badge-dot-height;
-    border-radius: @badge-dot-border-radius;
-    min-width: @badge-dot-height;
+    height: @badge-dot-size;
+    border-radius: 50%;
+    min-width: @badge-dot-size;
     padding: 0;
   }
 
   &--count {
-    min-width: @badge-width;
+    min-width: @badge-basic-width;
     white-space: nowrap;
     box-sizing: border-box;
   }
 
-  &--small {
-    transform: translate(50%, -50%) scale(0.75);
-  }
-
   &--circle {
-    border-radius: @badge-circle-border-radius;
+    border-radius: calc(@badge-basic-height / 2);
   }
 
-  &--round {
-    border-radius: @badge-round-border-radius;
-  }
-
-  // 绸带外层样式，用于定位
-  &__ribbon--outer {
+  &__ribbon-outer {
     position: absolute;
     top: 0;
     right: 0;
@@ -73,9 +69,9 @@
       width: 0;
       height: 0;
       bottom: 0;
-      left: -@badge-height;
-      border-bottom: @badge-height solid @badge-color;
-      border-left: @badge-height solid transparent;
+      left: calc(-1 * @badge-basic-height);
+      border-bottom: @badge-basic-height solid @badge-color;
+      border-left: @badge-basic-height solid transparent;
     }
 
     &::after {
@@ -84,10 +80,26 @@
       width: 0;
       height: 0;
       bottom: 0;
-      right: -@badge-height;
-      border-bottom: @badge-height solid @badge-color;
-      border-right: @badge-height solid transparent;
+      right: calc(-1 * @badge-basic-height);
+      border-bottom: @badge-basic-height solid @badge-color;
+      border-right: @badge-basic-height solid transparent;
     }
+  }
+
+  &--bubble {
+    border-radius: @border-bubble-border-radius;
+  }
+
+  // size
+  &--large {
+    font-size: @badge-large-font-size;
+    height: @badge-large-height;
+    line-height: @badge-large-height;
+    padding: 0 @badge-large-padding;
+  }
+
+  &--large&--circle {
+    border-radius: calc(@badge-large-height / 2);
   }
 
   &__content:not(:empty) + .t-has-count {

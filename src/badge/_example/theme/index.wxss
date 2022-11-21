@@ -1,7 +1,3 @@
-t-badge + t-badge {
-  margin-left: 48px;
-}
-
 .demo-wrapper {
   display: flex;
   margin-left: 32rpx;
