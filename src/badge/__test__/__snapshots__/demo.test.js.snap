@@ -156,6 +156,57 @@ exports[`Badge Badge cell demo works fine 1`] = `
 </cell>
 `;
 
+exports[`Badge Badge size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="demo-desc"
+  >
+    Large
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-badge
+      count="12"
+      offset="{{
+        Array [
+          10,
+          7,
+        ]
+      }}"
+      size="large"
+    >
+      <t-avatar
+        icon="user"
+        size="large"
+      />
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    Middle
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-badge
+      count="12"
+      offset="{{
+        Array [
+          6,
+          5,
+        ]
+      }}"
+    >
+      <t-avatar
+        icon="user"
+      />
+    </t-badge>
+  </wx-view>
+</size>
+`;
+
 exports[`Badge Badge tab-item demo works fine 1`] = `
 <tab-item>
   <t-tab-bar
@@ -210,4 +261,84 @@ exports[`Badge Badge tab-item demo works fine 1`] = `
     </t-tab-bar-item>
   </t-tab-bar>
 </tab-item>
+`;
+
+exports[`Badge Badge theme demo works fine 1`] = `
+<theme>
+  <wx-view
+    class="demo-desc"
+  >
+    圆形徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      count="2"
+    >
+      <t-icon
+        name="notification"
+        size="24"
+      />
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    方形徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      count="2"
+      shape="square"
+    >
+      <t-icon
+        name="notification"
+        size="24"
+      />
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    气泡徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      count="领积分"
+      shape="bubble"
+    >
+      <t-button
+        icon="shop"
+        shape="square"
+        size="large"
+      />
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+    style="margin-bottom: 32rpx"
+  >
+    角标
+  </wx-view>
+  <t-cell
+    title="单行标题"
+  >
+    <t-badge
+      count="New"
+      offset="{{
+        Array [
+          0,
+          0,
+        ]
+      }}"
+      shape="ribbon"
+      slot="note"
+    />
+  </t-cell>
+</theme>
 `;
