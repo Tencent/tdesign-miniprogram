@@ -20,27 +20,38 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/slider.png" width="375px" height="50%">
 
-### 基础滑动选择器
+### 类型
+
+基础滑动选择器
 
 {{ base }}
 
-### 带数值滑动选择器
+带数值滑动选择器
 
 {{ label }}
 
-### 起始非零滑动选择器
+起始非零滑动选择器
 
 {{ max }}
 
-### 带刻度滑动选择器
+带刻度滑动选择器
 
 {{ step }}
 
-### 区间滑动选择器
+区间滑动选择器
 
 {{ range }}
 
-### 有标题滑动选择器
+
+### 状态
+
+基础滑动选择器
+
+{{ disabled }}
+
+### 规格
+
+有标题滑动选择器
 
 {{ title }}
 

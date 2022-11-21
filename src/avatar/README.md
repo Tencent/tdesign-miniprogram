@@ -19,26 +19,38 @@ isComponent: true
 
 ## 代码演示
 
-### 基础头像
+### 头像类型
 
-头像样式可为默认头像、微信头像圆形、方形、自定义文字
+图片头像
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/avatar-2.png" width="375px" height="50%">
+{{ image-avatar }}
 
-{{ shape }}
+字符头像
 
-### 纯展示 从上往下
-<img src="https://tdesign.gtimg.com/miniprogram/readme/avatar-1.png" width="375px" height="50%">
+{{ character-avatar }}
+
+图标头像
+
+{{ icon-avatar }}
+
+徽标头像
+
+{{ badge-avatar }}
+
+
+### 组合头像
+
+纯展示
 
 {{ exhibition }}
 
-### 带操作 从下往上
+带操作
 
 {{ action }}
 
-### 头像大小尺寸及消息提醒
+### 头像尺寸
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/avatar-3.png" width="375px" height="50%">
+头像 large/medium/small 尺寸
 
 {{ size }}
 
