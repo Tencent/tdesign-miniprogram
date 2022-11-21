@@ -19,7 +19,7 @@ exports[`badge :base 1`] = `
         </wx-text>
       </wx-view>
       <wx-view
-        class="t-badge--basic t-badge--dot  t-badge--circle  t-has-count t-class-count"
+        class="t-badge--basic t-badge--dot t-badge--medium t-badge--circle  t-has-count t-class-count"
         style=""
       >
         
