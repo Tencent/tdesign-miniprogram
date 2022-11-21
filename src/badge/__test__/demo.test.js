@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'button', 'cell', 'tab-item'];
+const mapper = ['base', 'size', 'theme'];
 
 describe('Badge', () => {
   mapper.forEach((demoName) => {
