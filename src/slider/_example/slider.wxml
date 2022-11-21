@@ -5,7 +5,7 @@
     <base />
   </t-demo>
   <t-demo desc="带数值滑动选择器">
-    <labelDemo />
+    <label />
   </t-demo>
 
   <t-demo desc="起始非零滑动选择器">

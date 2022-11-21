@@ -21,13 +21,19 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/footer.png" width="375px" height="50%">
 
-### 基础页脚
+### 类型
+
+基础页脚
 
 {{ base }}
 
-### 基础加链接页脚
+基础加链接页脚
 
 {{ link }}
+
+品牌页脚
+
+{{ logo }}
 
 ## API
 ### Footer Props
