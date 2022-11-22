@@ -63,137 +63,125 @@ exports[`SideBar SideBar base demo works fine 1`] = `
           column="{{3}}"
         >
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
         </t-grid>
       </wx-view>
       <wx-view
@@ -209,104 +197,95 @@ exports[`SideBar SideBar base demo works fine 1`] = `
           column="{{3}}"
         >
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
         </t-grid>
       </wx-view>
       <wx-view
@@ -322,104 +301,95 @@ exports[`SideBar SideBar base demo works fine 1`] = `
           column="{{3}}"
         >
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
         </t-grid>
       </wx-view>
       <wx-view
@@ -435,71 +405,65 @@ exports[`SideBar SideBar base demo works fine 1`] = `
           column="{{3}}"
         >
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
         </t-grid>
       </wx-view>
       <wx-view
@@ -515,38 +479,35 @@ exports[`SideBar SideBar base demo works fine 1`] = `
           column="{{3}}"
         >
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
           <t-grid-item
+            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
             text="标题文字"
-          >
-            <t-image
-              lazy="{{true}}"
-              shape="round"
-              slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-              tClass="image"
-            />
-          </t-grid-item>
+          />
         </t-grid>
       </wx-view>
     </wx-scroll-view>
