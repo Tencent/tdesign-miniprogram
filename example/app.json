@@ -2,7 +2,6 @@
   "pages": [
     "pages/home/home",
     "pages/picker/picker",
-    "pages/avatar/avatar",
     "pages/button/button",
     "pages/button-group/button-group",
     "pages/dialog/dialog",
@@ -12,7 +11,6 @@
     "pages/loading/loadingProgress/index",
     "pages/rate/rate",
     "pages/progress/progress",
-    "pages/calendar/calendar",
     "pages/cascader/cascader",
     "pages/cell/cell",
     "pages/cell-group/cell-group",
@@ -57,7 +55,6 @@
     "pages/home/navigateFail/navigateFail",
     "pages/navbar/navbar",
     "pages/date-time-picker/date-time-picker",
-    "pages/action-sheet/action-sheet",
     "pages/notice-bar/notice-bar",
     "pages/image-viewer/image-viewer",
     "pages/result/result",
@@ -67,6 +64,18 @@
     {
       "root": "pages/side-bar/",
       "pages": ["side-bar", "base/index", "switch/index"]
+    },
+    {
+      "root": "pages/action-sheet/",
+      "pages": ["action-sheet"]
+    },
+    {
+      "root": "pages/avatar/",
+      "pages": ["avatar"]
+    },
+    {
+      "root": "pages/calendar/",
+      "pages": ["calendar"]
     }
   ],
   "usingComponents": {
