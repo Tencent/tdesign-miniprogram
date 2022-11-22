@@ -41,7 +41,6 @@ docClass: timeline
 - `NavBar`: 使用正确的状态栏高度 @LeeJim ([#1083](https://github.com/Tencent/tdesign-miniprogram/pull/1083))
 - `Search`: 修复插槽需要对应值为空时才渲染的问题 @LeeJim ([#1087](https://github.com/Tencent/tdesign-miniprogram/pull/1087))
 
-
 ## 🌈 0.26.0 `2022-11-14` 
 ### ❗ Breaking Changes
 - `Textarea`: 调整 confirm-type 的默认值为 return @LeeJim ([#1007](https://github.com/Tencent/tdesign-miniprogram/pull/1007))
