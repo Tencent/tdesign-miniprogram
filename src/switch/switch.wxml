@@ -1,5 +1,13 @@
 <wxs src="../common/utils.wxs" module="_" />
-<view style="{{ customStyle }}" class="{{ prefix }}-class {{classPrefix}}" bind:tap="handleSwitch">
+<view
+  style="{{ customStyle }}"
+  class="{{ prefix }}-class {{classPrefix}}"
+  bind:tap="handleSwitch"
+  disabled="{{disabled}}"
+  aria-checked="{{isActive}}"
+  aria-disabled="{{disabled}}"
+  aria-role="checkbox"
+>
   <view
     class="{{_.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled], size])}} {{prefix}}-class-body"
   >
