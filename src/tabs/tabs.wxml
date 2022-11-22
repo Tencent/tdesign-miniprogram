@@ -47,15 +47,15 @@
     </view>
   </t-sticky>
   <view
-    class="{{classPrefix}}__content"
+    class="{{classPrefix}}__content {{classPrefix}}__content--{{animate ? 'animated' : ''}}"
     bind:touchstart="onTouchStart"
     bind:touchmove="onTouchMove"
     bind:touchend="onTouchEnd"
     bind:touchcancel="onTouchEnd"
   >
     <view
-      class="{{classPrefix}}__content-inner "
-      style="{{ filters.animate({duration: animate.duration,currentIndex:currentIndex, direction}) }}"
+      class="{{classPrefix}}__content-inner"
+      style="{{ filters.animate({duration: animate.duration, currentIndex:currentIndex, direction}) }}"
     >
       <slot />
     </view>

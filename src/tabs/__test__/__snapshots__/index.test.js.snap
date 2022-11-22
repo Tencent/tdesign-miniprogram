@@ -91,29 +91,50 @@ exports[`tabs :base 1`] = `
       </wx-view>
     </t-sticky>
     <wx-view
-      class="t-tabs__content"
+      class="t-tabs__content t-tabs__content--animated"
       bind:touchcancel="onTouchEnd"
       bind:touchend="onTouchEnd"
       bind:touchmove="onTouchMove"
       bind:touchstart="onTouchStart"
     >
       <wx-view
-        class="t-tabs__content-inner "
-        style="-webkit-transition-duration: 0s;transition-duration: 0s;transform: translate3d( 0,0%, 0)"
+        class="t-tabs__content-inner"
+        style=""
       >
         <t-tab-panel
           id="first"
         >
           <wx-view
             class="t-tab-panel t-is-active"
-            style=" "
+            style="; "
           >
             标签一内容
           </wx-view>
         </t-tab-panel>
-        <t-tab-panel />
-        <t-tab-panel />
-        <t-tab-panel />
+        <t-tab-panel>
+          <wx-view
+            class="t-tab-panel "
+            style="; display: none"
+          >
+            标签1内容
+          </wx-view>
+        </t-tab-panel>
+        <t-tab-panel>
+          <wx-view
+            class="t-tab-panel "
+            style="; display: none"
+          >
+            标签2内容
+          </wx-view>
+        </t-tab-panel>
+        <t-tab-panel>
+          <wx-view
+            class="t-tab-panel "
+            style="; display: none"
+          >
+            标签3内容
+          </wx-view>
+        </t-tab-panel>
       </wx-view>
     </wx-view>
   </wx-view>
