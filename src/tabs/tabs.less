@@ -3,37 +3,39 @@
 @tabs: ~'@{prefix}-tabs';
 @item: ~'@{tabs}__item';
 
-@tab-nav-background-color: #fff;
+@tab-nav-bg-color: var(--td-tab-nav-bg-color, #fff);
 
-@tab-item-height--horizontal: 96rpx;
-@tab-item-height--vertical: 108rpx;
-@tab-item-width--vertical: 208rpx;
+@tab-item-height: var(--td-tab-item-height, 96rpx);
+@tab-item-vertical-height: var(--td-tab-item-vertical-height, 108rpx);
+@tab-item-vertical-width: var(--td-tab-item-vertical-width, 208rpx);
 
-@tab-item-color: rgba(0, 0, 0, 0.6);
-@tab-item-active-color: @primary-color;
-@tab-item-disabled-color: #c8c9cc;
-@tab-border-color: rgba(150, 95, 95, 0.12);
+@tab-item-color: var(--td-tab-item-color, @font-gray-1);
+@tab-item-active-color: var(--td-tab-item-active-color, @primary-color);
+@tab-item-disabled-color: var(--td-tab-item-disabled-color, @font-gray-4);
+@tab-border-color: var(--td-tab-border-color, @gray-color-3);
 
 // track
-@tab-track-color: @primary-color;
-@tab-track-thickness: 6rpx;
-@tab-track-width: 32rpx;
-@tab-track-radius: 8rpx;
+@tab-track-color: var(--td-tab-track-color, @primary-color);
+@tab-track-thickness: var(--td-tab-track-thickness, 6rpx);
+@tab-track-width: var(--td-tab-track-width, 32rpx);
+@tab-track-radius: var(--td-tab-track-radius, 8rpx);
 
 // theme = tag
-@tab-item-height--tag: 64rpx;
-@tab-item-background--tag: @gray-color-1;
-@tab-item-active-background--tag: @primary-color-1;
+@tab-item-tag-height: var(--td-tab-item-tag-height, 64rpx);
+@tab-item-tag-bg: var(--td-tab-item-tag-bg, @gray-color-1);
+@tab-item-tag-active-bg: var(--td-tab-item-tag-active-bg, @primary-color-1);
+
+@tab-content-transition-duration: var(--td-tab-content-transition-duration, 0.3s);
 
 .@{prefix}-tabs {
   position: relative;
   font-size: 28rpx;
-  background: var(--td-tab-nav-bg-color, @tab-nav-background-color);
+  background: @tab-nav-bg-color;
 
   &__wrapper {
     display: flex;
     overflow: hidden;
-    background: var(--td-tab-nav-bg-color, @tab-nav-background-color);
+    background: @tab-nav-bg-color;
 
     &--card {
       background: @gray-color-1;
@@ -47,7 +49,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 400;
-    color: var(--td-tab-item-color, @tab-item-color);
+    color: @tab-item-color;
     padding: 0 32rpx;
     box-sizing: border-box;
     white-space: nowrap;
@@ -55,11 +57,11 @@
 
     &--active {
       font-weight: 600;
-      color: var(--td-tab-item-active-color, @tab-item-active-color);
+      color: @tab-item-active-color;
     }
 
     &--disabled {
-      color: var(--td-tab-item-disabled-color, @tab-item-disabled-color);
+      color: @tab-item-disabled-color;
     }
 
     &--evenly {
@@ -68,14 +70,14 @@
 
     &--top,
     &--bottom {
-      height: @tab-item-height--horizontal;
+      height: @tab-item-height;
     }
 
     &--left,
     &--right {
-      height: @tab-item-height--vertical;
-      line-height: @tab-item-height--vertical;
-      width: @tab-item-width--vertical;
+      height: @tab-item-vertical-height;
+      line-height: @tab-item-vertical-height;
+      width: @tab-item-vertical-width;
       background-color: rgb(243, 243, 243);
 
       &.@{prefix}-is-active {
@@ -88,13 +90,13 @@
         width: 100%;
         text-align: center;
         padding: 0 32rpx;
-        line-height: @tab-item-height--tag;
-        border-radius: (@tab-item-height--tag / 2);
-        background-color: @tab-item-background--tag;
+        line-height: @tab-item-tag-height;
+        border-radius: calc(@tab-item-tag-height / 2);
+        background-color: @tab-item-tag-bg;
       }
 
       &--active&--tag {
-        background-color: @tab-item-active-background--tag;
+        background-color: @tab-item-tag-active-bg;
       }
     }
 
@@ -190,34 +192,34 @@
     font-weight: 600;
     z-index: 1;
     transition-duration: 0.3s;
-    background-color: var(--td-tab-track-color, @tab-track-color);
+    background-color: @tab-track-color;
 
     &--left {
       left: 0;
       top: 0;
-      width: var(--td-tab-track-thickness, @tab-track-thickness);
+      width: @tab-track-thickness;
     }
 
     &--right {
       right: 0;
       top: 0;
-      width: var(--td-tab-track-thickness, @tab-track-thickness);
+      width: @tab-track-thickness;
     }
 
     &--top,
     &--bottom {
       left: 0;
       bottom: 0;
-      width: var(--td-tab-track-width, @tab-track-width);
-      height: var(--td-tab-track-thickness, @tab-track-thickness);
-      border-radius: var(--td-tab-track-radius, @tab-track-radius);
+      width: @tab-track-width;
+      height: @tab-track-thickness;
+      border-radius: @tab-track-radius;
     }
   }
 
   &__scroll {
     &--top,
     &--bottom {
-      height: @tab-item-height--horizontal;
+      height: @tab-item-height;
       position: relative;
 
       &::after {
@@ -234,14 +236,14 @@
         bottom: 0;
         width: 100%;
         height: 1px;
-        background-color: var(--td-tab-border-color, @tab-border-color);
+        background-color: @tab-border-color;
         transform: scaleY(0.5);
       }
     }
 
     &--left,
     &--right {
-      width: @tab-item-width--vertical;
+      width: @tab-item-vertical-width;
       max-height: 100vh;
     }
   }
@@ -254,16 +256,18 @@
   &.@{prefix}-tabs--bottom {
     flex-wrap: wrap;
 
-    .@{prefix}-tabs__content-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      transition-property: transform;
-    }
-
     .@{prefix}-tabs__content {
       width: 100%;
+
+      &--animated .@{prefix}-tabs__content-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        will-change: left;
+        transition-property: transform;
+        transition-duration: @tab-content-transition-duration;
+      }
     }
   }
 
@@ -283,11 +287,11 @@
     }
 
     .@{prefix}-tabs__content {
-      width: calc(100% - @tab-item-width--vertical);
+      width: calc(100% - @tab-item-vertical-width);
       height: 100%;
       position: absolute;
       top: 0;
-      left: @tab-item-width--vertical;
+      left: @tab-item-vertical-width;
       overflow: hidden;
     }
   }

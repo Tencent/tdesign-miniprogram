@@ -149,7 +149,7 @@ scroll | `(scrollTop: number, isFixed: boolean)` | 页面滚动时触发
 -- | -- | -- | -- | --
 custom-style | String | - | 自定义组件样式 | N
 badge-props | Object | null | 透传至 Badge 组件 | N
-destroy-on-hide | Boolean | true | 选项卡内容隐藏时是否销毁 | N
+destroy-on-hide | Boolean | true | 【实现有误，暂不支持】选项卡内容隐藏时是否销毁 | N
 disabled | Boolean | false | 是否禁用当前选项卡 | N
 label | String | - | 选项卡名称 | N
 panel | String / Slot | - | 用于自定义选项卡面板内容 | N
