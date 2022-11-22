@@ -1,4 +1,6 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}}">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{ customStyle }}" class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class">
   <!-- 图标 -->
   <view
     class="{{classPrefix}}__icon {{classPrefix}}__icon--{{align}} {{prefix}}-class-icon"
@@ -28,9 +30,8 @@
     <view
       class="{{classPrefix}}__description {{disabled ? classPrefix + '__description--disabled' : ''}} {{prefix}}-class-content "
       style="-webkit-line-clamp:{{maxContentRow}}"
+      >{{content}}</view
     >
-      {{content}}
-    </view>
   </view>
   <!-- 预制下边框 -->
   <view

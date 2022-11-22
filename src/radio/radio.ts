@@ -28,8 +28,11 @@ export default class Radio extends SuperComponent {
       type: 'ancestor',
       linked(parent) {
         this.parent = parent;
-        if (parent.align) {
-          this.setData({ align: parent.align });
+        if (parent.data.align) {
+          this.setData({ align: parent.data.align });
+        }
+        if (parent.data.borderless) {
+          this.setData({ borderless: true });
         }
       },
     },

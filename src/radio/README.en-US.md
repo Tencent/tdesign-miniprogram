@@ -7,6 +7,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 align | String | left | options：left/right | N
 allow-uncheck | Boolean | false | \- | N
+block | Boolean | true | \- | N
 checked | Boolean | false | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
 content | String / Slot | - | \- | N

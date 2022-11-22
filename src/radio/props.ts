@@ -16,6 +16,11 @@ const props: TdRadioProps = {
     type: Boolean,
     value: false,
   },
+  /** 是否为块级元素 */
+  block: {
+    type: Boolean,
+    value: true,
+  },
   /** 是否选中 */
   checked: {
     type: Boolean,

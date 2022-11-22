@@ -1,4 +1,0 @@
-<t-radio-group bind:change="onChange" value="{{value}}">
-  <t-radio value="radio1" label="单选" />
-  <t-radio value="radio2" label="单选" />
-</t-radio-group>

@@ -22,6 +22,14 @@ export interface TdRadioProps<T = RadioValue> {
     value?: boolean;
   };
   /**
+   * 是否为块级元素
+   * @default true
+   */
+  block?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否选中
    * @default false
    */

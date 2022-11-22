@@ -17,20 +17,6 @@ isComponent: true
 }
 ```
 
-### 主题定制
-
-CSS 变量名|说明
---|--
---td-radio-bg-color | 背景颜色
---td-radio-border-color | 底部边框颜色
---td-radio-label-color | 主文案颜色
---td-radio-label-disabled-color | 禁用态主文案颜色
---td-radio-content-color | 单选内容颜色
---td-radio-content-disabled-color | 禁用态单选内容颜色
---td-radio-icon-color | 图标颜色
---td-radio-icon-checked-color | 选中态图标颜色
---td-radio-icon-disabled-color | 禁用态图标颜色
-
 ## 代码演示
 
 ### 单个单选框
@@ -85,6 +71,7 @@ CSS 变量名|说明
 -- | -- | -- | -- | --
 align | String | left | 复选框和内容相对位置。可选项：left/right | N
 allow-uncheck | Boolean | false | 【开发中】是否允许取消选中 | N
+block | Boolean | true | 是否为块级元素 | N
 checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
 content | String / Slot | - | 单选内容 | N
@@ -109,7 +96,7 @@ change | `(checked: boolean)` | 值变化时触发
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-align | String | left | 复选框和内容相对位置；仅在使用 options 时生效。可选项：left/right | N
+align | String | null | 复选框和内容相对位置；仅在使用 options 时生效。可选项：left/right | N
 borderless | Boolean | false | 是否开启无边框模式 | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | undefined | 是否禁用全部子单选框 | N
