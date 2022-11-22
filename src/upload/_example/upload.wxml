@@ -13,6 +13,12 @@
       <multiple />
     </view>
   </t-demo>
+  <t-demo title="02 组件状态" desc="加载状态">
+    <view class="upload-demo">
+      <view class="upload-demo__title">上传图片</view>
+      <status />
+    </view>
+  </t-demo>
   <t-demo title="" desc="从聊天记录上选">
     <view class="upload-demo">
       <view class="upload-demo__title">上传图片</view>

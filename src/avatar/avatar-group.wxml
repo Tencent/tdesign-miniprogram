@@ -7,8 +7,9 @@
   <!-- 默认折叠元素 -->
   <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">
     <t-avatar
-      t-class-image="border--{{borderSize}} {{prefix}}-class-image"
+      t-class-image="{{prefix}}-class-image"
       t-class-content="{{prefix}}-class-content"
+      bordered="{{true}}"
       size="{{size}}"
       >{{collapseAvatar || '+N'}}</t-avatar
     >

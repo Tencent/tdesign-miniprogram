@@ -2,28 +2,37 @@
 
 exports[`Skeleton Skeleton animation demo works fine 1`] = `
 <animation>
-  <wx-view
-    class="group"
-  >
-    <t-skeleton
-      animation="flashed"
-      class="group-avatar"
-      loading="{{true}}"
-      rowCol="{{
-        Array [
-          Object {
-            "size": "48px",
-            "type": "circle",
-          },
-        ]
-      }}"
-    />
-    <t-skeleton
-      animation="flashed"
-      class="group-content"
-      loading="{{true}}"
-      theme="paragraph"
-    />
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      渐变加载效果
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        animation="gradient"
+        loading="{{true}}"
+        theme="paragraph"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      闪烁加载效果
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        animation="flashed"
+        loading="{{true}}"
+        theme="paragraph"
+      />
+    </wx-view>
   </wx-view>
 </animation>
 `;
@@ -35,7 +44,7 @@ exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
   >
     <t-skeleton
       class="group-avatar"
-      loading="{{false}}"
+      loading="{{true}}"
       rowCol="{{
         Array [
           Object {
@@ -47,7 +56,7 @@ exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
     />
     <t-skeleton
       class="group-content"
-      loading="{{false}}"
+      loading="{{true}}"
       rowCol="{{
         Array [
           Object {
@@ -65,7 +74,7 @@ exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
   >
     <t-skeleton
       class="group-avatar"
-      loading="{{false}}"
+      loading="{{true}}"
       rowCol="{{
         Array [
           Object {
@@ -77,7 +86,7 @@ exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
     />
     <t-skeleton
       class="group-content"
-      loading="{{false}}"
+      loading="{{true}}"
       rowCol="{{
         Array [
           Object {
@@ -95,57 +104,71 @@ exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
 
 exports[`Skeleton Skeleton grid demo works fine 1`] = `
 <grid>
-  <t-skeleton
-    loading="{{true}}"
-    rowCol="{{
-      Array [
+  <wx-view
+    class="wrapper"
+  >
+    <t-skeleton
+      loading="{{true}}"
+      rowCol="{{
         Array [
-          Object {
-            "height": "48px",
-            "width": "48px",
-          },
-          Object {
-            "height": "48px",
-            "width": "48px",
-          },
-          Object {
-            "height": "48px",
-            "width": "48px",
-          },
-          Object {
-            "height": "48px",
-            "width": "48px",
-          },
-          Object {
-            "height": "48px",
-            "width": "48px",
-          },
-        ],
-        Array [
-          Object {
-            "height": "16px",
-            "width": "48px",
-          },
-          Object {
-            "height": "16px",
-            "width": "48px",
-          },
-          Object {
-            "height": "16px",
-            "width": "48px",
-          },
-          Object {
-            "height": "16px",
-            "width": "48px",
-          },
-          Object {
-            "height": "16px",
-            "width": "48px",
-          },
-        ],
-      ]
-    }}"
-  />
+          Array [
+            Object {
+              "borderRadius": "6px",
+              "height": "48px",
+              "width": "48px",
+            },
+            Object {
+              "borderRadius": "6px",
+              "height": "48px",
+              "width": "48px",
+            },
+            Object {
+              "borderRadius": "6px",
+              "height": "48px",
+              "width": "48px",
+            },
+            Object {
+              "borderRadius": "6px",
+              "height": "48px",
+              "width": "48px",
+            },
+            Object {
+              "borderRadius": "6px",
+              "height": "48px",
+              "width": "48px",
+            },
+          ],
+          Array [
+            Object {
+              "borderRadius": "3px",
+              "height": "16px",
+              "width": "48px",
+            },
+            Object {
+              "borderRadius": "3px",
+              "height": "16px",
+              "width": "48px",
+            },
+            Object {
+              "borderRadius": "3px",
+              "height": "16px",
+              "width": "48px",
+            },
+            Object {
+              "borderRadius": "3px",
+              "height": "16px",
+              "width": "48px",
+            },
+            Object {
+              "borderRadius": "3px",
+              "height": "16px",
+              "width": "48px",
+            },
+          ],
+        ]
+      }}"
+    />
+  </wx-view>
 </grid>
 `;
 
@@ -159,21 +182,13 @@ exports[`Skeleton Skeleton image-group demo works fine 1`] = `
       rowCol="{{
         Array [
           Object {
-            "height": "171px",
+            "borderRadius": "12px",
+            "size": "163.5px",
           },
           1,
           Object {
-            "width": "107px",
+            "width": "61%",
           },
-          Array [
-            Object {
-              "width": "93px",
-            },
-            Object {
-              "marginLeft": "41px",
-              "width": "32px",
-            },
-          ],
         ]
       }}"
     />
@@ -182,21 +197,13 @@ exports[`Skeleton Skeleton image-group demo works fine 1`] = `
       rowCol="{{
         Array [
           Object {
-            "height": "171px",
+            "borderRadius": "12px",
+            "size": "163.5px",
           },
           1,
           Object {
-            "width": "107px",
+            "width": "61%",
           },
-          Array [
-            Object {
-              "width": "93px",
-            },
-            Object {
-              "marginLeft": "41px",
-              "width": "32px",
-            },
-          ],
         ]
       }}"
     />
@@ -206,9 +213,65 @@ exports[`Skeleton Skeleton image-group demo works fine 1`] = `
 
 exports[`Skeleton Skeleton theme demo works fine 1`] = `
 <theme>
-  <t-skeleton
-    loading="{{false}}"
-    theme="text"
-  />
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      头像骨架屏
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        loading="{{true}}"
+        theme="avatar"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      图片骨架屏
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        loading="{{true}}"
+        theme="image"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      文本骨架屏
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        loading="{{true}}"
+        theme="text"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      段落骨架屏
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        loading="{{true}}"
+        theme="paragraph"
+      />
+    </wx-view>
+  </wx-view>
 </theme>
 `;

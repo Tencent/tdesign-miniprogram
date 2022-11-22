@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
-<view class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} {{prefix}}-class">
+<view class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} {{prefix}}-class" style="{{boxStyle}}">
   <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder" />
-  <view class="{{classPrefix}}__content" style="{{boxStyle}}">
+  <view class="{{classPrefix}}__content">
     <view class="{{classPrefix}}__left {{prefix}}-class-left">
       <view wx:if="{{leftArrow}}" class="{{classPrefix}}__btn" bind:tap="goBack">
         <t-icon name="chevron-left" class="{{classPrefix}}__left-arrow" />

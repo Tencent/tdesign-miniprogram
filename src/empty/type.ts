@@ -36,6 +36,14 @@ export interface TdEmptyProps {
     value?: string;
   };
   /**
+   * 图标属性，透传至 icon
+   * @default {}
+   */
+  iconProps?: {
+    type: ObjectConstructor;
+    value?: object;
+  };
+  /**
    * 图片地址
    */
   image?: {

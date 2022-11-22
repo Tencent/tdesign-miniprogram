@@ -1,0 +1,14 @@
+.demo-avatar {
+  display: flex;
+  margin: 0 32rpx;
+}
+
+.avatar-example {
+  margin-right: 64rpx;
+}
+
+.external-class-content {
+  color: #fff;
+  background-color: #0052d9;
+  font-weight: 400;
+}

@@ -3,20 +3,20 @@ import config from '../common/config';
 import props from './props';
 import { SkeletonRowColObj } from './type';
 import { ClassName, Styles } from '../common/common';
-import { isNumber } from '../common/utils';
+import { isNumber, classNames } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-skeleton`;
 
 const ThemeMap = {
-  avatar: [{ type: 'circle', height: '64px', width: '64px' }],
-  image: [{ type: 'rect', height: '64px', width: '64px' }],
+  avatar: [{ type: 'circle', size: '96rpx' }],
+  image: [{ type: 'rect', size: '144rpx' }],
   text: [
-    1,
     [
-      { width: '24%', height: '16px', marginRight: '16px' },
-      { width: '76%', height: '16px' },
+      { width: '24%', height: '32rpx', marginRight: '32rpx' },
+      { width: '76%', height: '32rpx' },
     ],
+    1,
   ],
   paragraph: [1, 1, 1, { width: '55%' }],
 };
@@ -89,7 +89,11 @@ export default class Skeleton extends SuperComponent {
       });
     },
     getColItemClass(obj: SkeletonRowColObj): ClassName {
-      return [`${name}__col`, `${name}--type-${obj.type || 'text'}`, `${name}--animation-${this.properties.animation}`];
+      return classNames([
+        `${name}__col`,
+        `${name}--type-${obj.type || 'text'}`,
+        `${name}--animation-${this.properties.animation}`,
+      ]);
     },
 
     getColItemStyle(obj: SkeletonRowColObj): Styles {

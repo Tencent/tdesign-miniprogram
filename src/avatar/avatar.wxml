@@ -1,40 +1,51 @@
 <wxs src="./avatar.wxs" module="this" />
 
 <view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getAvatarStyles(isShow, zIndex, customStyle)}}">
-  <view
-    class="{{this.getAvatarOuterClass(classPrefix, size, shape)}} border--{{borderSize}} {{prefix}}-class-image "
-    style="{{this.getAvatarSizePx(size)}}"
-  >
-    <t-image
-      wx:if="{{image}}"
-      class="{{prefix}}-image"
-      t-class-load="{{prefix}}-class-alt"
-      t-class="{{classPrefix}}__image"
-      src="{{image}}"
-      mode="aspectFill"
-      binderror="onLoadError"
-      loadFailed="{{alt}}"
-    />
-    <view
-      wx:elif="{{icon}}"
-      class="{{classPrefix}}__icon {{this.getIconClass(classPrefix, size)}} {{prefix}}-class-icon"
-    >
-      <t-icon name="{{icon}}" />
-    </view>
-    <view wx:else class="{{classPrefix}}__text {{prefix}}-class-content">
-      <slot />
-    </view>
-  </view>
   <t-badge
-    class="{{prefix}}-badge-host {{prefix}}-badge__{{shape === 'circle' ? 'circle' : 'round'}}"
-    wx:if="{{badgeProps.dot || badgeProps.count}}"
     color="{{badgeProps.color}}"
-    count="{{badgeProps.count}}"
-    max-count="{{badgeProps.maxCount || 100}}"
-    dot="{{badgeProps.dot}}"
     content="{{badgeProps.content}}"
-    size="{{badgeProps.size}}"
-    visible="{{badgeProps.visible}}"
+    count="{{badgeProps.count}}"
+    dot="{{badgeProps.dot}}"
+    max-count="{{badgeProps.maxCount || 99}}"
     offset="{{badgeProps.offset}}"
-  />
+    shape="{{badgeProps.shape || 'circle'}}"
+    show-zero="{{badgeProps.showZero}}"
+    size="{{badgeProps.size || 'medium'}}"
+    t-class="{{badgeProps.tClass}}"
+    t-class-content="{{badgeProps.tClassContent}}"
+    t-class-count="{{badgeProps.tClassCount}}"
+  >
+    <view
+      class="{{this.getAvatarOuterClass(classPrefix, size, shape, bordered)}} {{prefix}}-class-image "
+      style="{{this.getAvatarSizePx(size)}}"
+    >
+      <t-image
+        wx:if="{{image}}"
+        class="{{prefix}}-image"
+        t-class="{{classPrefix}}__image"
+        t-class-load="{{prefix}}-class-alt"
+        customStyle="{{imageProps.customStyle}}"
+        src="{{image}}"
+        mode="{{imageProps.mode || 'aspectFill'}}"
+        lazy="{{imageProps.lazy}}"
+        loading="{{imageProps.loading}}"
+        shape="{{imageProps.shape || 'round'}}"
+        webp="{{imageProps.webp}}"
+        error="{{alt}}"
+        bind:error="onLoadError"
+      />
+      <t-icon
+        wx:elif="{{icon}}"
+        name="{{icon || iconProps.name}}"
+        prefix="{{iconProps.prefix}}"
+        size="{{iconProps.size}}"
+        color="{{iconProps.color}}"
+        customStyle="{{iconProps.customStyle}}"
+        class="{{classPrefix}}__icon {{prefix}}-class-icon"
+      ></t-icon>
+      <view wx:else class="{{classPrefix}}__text {{prefix}}-class-content">
+        <slot />
+      </view>
+    </view>
+  </t-badge>
 </view>

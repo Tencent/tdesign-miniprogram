@@ -1,0 +1,18 @@
+.tr {
+  display: flex;
+}
+
+.col {
+  margin: 0 32rpx;
+}
+
+.tr + .tr {
+  margin-top: 48rpx;
+}
+
+.text {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, .6);
+  line-height: 44rpx;
+  margin-bottom: 32rpx;
+}

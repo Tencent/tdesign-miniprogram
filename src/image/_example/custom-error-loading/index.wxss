@@ -1,9 +1,0 @@
-.external-class {
-  width: 72px;
-  height: 72px;
-}
-
-.custom-loading-failed {
-  font-size: 20rpx;
-  color: #999;
-}

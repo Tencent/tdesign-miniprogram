@@ -11,7 +11,6 @@ exports[`navbar :base 1`] = `
       />
       <wx-view
         class="t-navbar__content"
-        style=""
       >
         <wx-view
           class="t-navbar__left t-class-left"
@@ -46,7 +45,6 @@ exports[`navbar :base 2`] = `
       />
       <wx-view
         class="t-navbar__content"
-        style=""
       >
         <wx-view
           class="t-navbar__left t-class-left"
@@ -81,7 +79,6 @@ exports[`navbar :base 3`] = `
       />
       <wx-view
         class="t-navbar__content"
-        style=""
       >
         <wx-view
           class="t-navbar__left t-class-left"
@@ -116,7 +113,6 @@ exports[`navbar :fixed 1`] = `
       />
       <wx-view
         class="t-navbar__content"
-        style=""
       >
         <wx-view
           class="t-navbar__left t-class-left"
@@ -145,13 +141,13 @@ exports[`navbar :menu button 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed  t-class"
+      style="--td-navbar-padding-top:20px;;--navbar-right:414px;;--capsule-height:10px;;--capsule-width:40px;;--navbar-height:44px;"
     >
       <wx-view
         class="t-navbar__placeholder"
       />
       <wx-view
         class="t-navbar__content"
-        style="--narbar-padding-top:-7px;;--navbar-right:414px;;--capsule-height:10px;;--capsule-width:40px;;--navbar-height:44px;"
       >
         <wx-view
           class="t-navbar__left t-class-left"

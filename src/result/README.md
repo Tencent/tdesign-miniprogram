@@ -18,11 +18,17 @@ isComponent: true
 
 ## 代码演示
 
-### 结果状态
+### 类型
+
+基础结果
 
 {{ theme }}
 
-### 自定义结果
+带描述的结果
+
+{{ description }}
+
+自定义结果
 
 {{ custom }}
 
@@ -35,6 +41,7 @@ custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 description | String / Slot | - | 描述文字 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-image', 't-class-title', 't-class-description']` | N
 icon | String | - | 图标名称 | N
+icon-props | Object | {} | 图标属性，透传至 icon | N
 image | String / Slot | - | 图片地址 | N
 theme | String | default | 内置主题。可选项：default/success/warning/error | N
 title | String / Slot | '' | 标题 | N

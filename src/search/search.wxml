@@ -3,9 +3,9 @@
     class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center ? 'center' : ''}} {{classPrefix}}__input-box--{{shape}} {{prefix}}-class-input-container"
   >
     <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label">{{label}}</view>
-    <slot wx:else name="label" />
+    <slot name="label" />
     <t-icon wx:if="{{leftIcon}}" name="{{leftIcon}}" size="20px" class="{{prefix}}-icon {{prefix}}-class-left" />
-    <slot wx:else name="left-icon" />
+    <slot name="left-icon" />
     <input
       type="text"
       name="input"
@@ -29,11 +29,11 @@
         size="18px"
         color="rgba(187,187,187,1)"
       />
-      <slot wx:else name="right-icon" />
+      <slot name="right-icon" />
     </view>
   </view>
   <view wx:if="{{action}}" class="{{classPrefix}}__search-action {{prefix}}-class-action" bindtap="onActionClick">
     {{action}}
   </view>
-  <slot wx:else name="action-text" />
+  <slot name="action-text" />
 </view>

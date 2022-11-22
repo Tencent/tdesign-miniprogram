@@ -1,5 +1,7 @@
 @import '../common/style/index.less';
 
+@toast-bg-color: @font-gray-2;
+
 .@{prefix}-toast {
   position: fixed;
   right: -50%;
@@ -8,7 +10,7 @@
   z-index: 12001;
   opacity: 1;
   transition: opacity 300ms ease;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--td-toast-bg-color, @toast-bg-color);
   border-radius: 8rpx;
   font-size: 28rpx;
   color: white;
@@ -18,9 +20,19 @@
 
   &--column {
     padding: 48rpx;
-    min-width: 272rpx;
-    min-height: 260rpx;
+    min-width: 160rpx;
+    min-height: 160rpx;
     border-radius: 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--loading&--with-text {
+    min-width: 204rpx;
+    min-height: 204rpx;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   &__content {
@@ -44,6 +56,10 @@
   &__icon {
     &--row {
       display: flex;
+      font-size: var(--td-toast-icon-size-column, 48rpx);
+    }
+    &--column {
+      font-size: var(--td-toast-icon-size-column, 64rpx);
     }
   }
 
@@ -54,12 +70,12 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
 
-    &--column {
-      margin-top: 24rpx;
+    &--column:not(:empty) {
+      margin-top: 16rpx;
     }
 
     &--row {
-      margin-left: 12rpx;
+      margin-left: 16rpx;
     }
   }
 

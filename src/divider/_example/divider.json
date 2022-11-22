@@ -3,7 +3,6 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "text-line": "./text-line",
-    "text-only": "./text-only"
+    "theme": "./theme"
   }
 }

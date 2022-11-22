@@ -1,7 +1,10 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@empty-text-color: rgba(0, 0, 0, .4);
+@empty-description-color: @font-gray-3;
+@empty-description-font-size: @font-size-base;
+@empty-description-line-height: 44rpx;
+@empty-description-margin-top: @spacer-2;
+@empty-action-margin-top: @spacer-4;
 
 .@{prefix}-empty {
   display: flex;
@@ -17,14 +20,14 @@
   }
 
   &__description {
-    margin-top: 48rpx;
+    margin-top: var(--td-empty-description-margin-top, @empty-description-margin-top); // 描述内容顶部间距
     text-align: center;
-    color: @empty-text-color;
-    font-size: 28rpx;
-    line-height: 44rpx;
+    color: var(--td-empty-description-color, @empty-description-color); // 描述内容颜色
+    font-size: var(--ts-empty-description-font-size, @empty-description-font-size); // 描述内容字体大小
+    line-height: var(--td-empty-description-line-height, @empty-description-line-height); // 描述内容行高
   }
 
   &__description + &__actions:not(:empty) {
-    margin-top: 48rpx;
+    margin-top: var(--td-empty-action-margin-top, @empty-action-margin-top); // 操作内容顶部间距
   }
 }

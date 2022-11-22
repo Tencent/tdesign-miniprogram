@@ -3,12 +3,8 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "t-image": "tdesign-miniprogram/image/image",
-    "mode": "./mode",
-    "shape": "./shape",
-    "image-loading": "./image-loading",
-    "custom-loading": "./custom-loading",
-    "error-loading": "./error-loading",
-    "custom-error-loading": "./custom-error-loading",
+    "base": "./base",
+    "status": "./status",
     "size": "./size"
   }
 }

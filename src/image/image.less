@@ -1,6 +1,11 @@
 @import '../common/style/index.less';
 
+@loading-color: @font-gray-3;
+
 .@{prefix}-image {
+  color: var(--td-loading-color, @loading-color);
+  vertical-align: top;
+
   &__mask {
     display: flex;
     align-items: center;
@@ -26,7 +31,7 @@
     }
 
     &-round {
-      border-radius: (@border-radius / 2);
+      border-radius: var(--td-image-round-radius, @radius-default);
       overflow: hidden;
     }
 

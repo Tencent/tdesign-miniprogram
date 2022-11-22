@@ -12,7 +12,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
- "t-upload": "tdesign-miniprogram/upload/upload",
+  "t-upload": "tdesign-miniprogram/upload/upload",
 }
 ```
 
@@ -20,11 +20,31 @@ isComponent: true
 
 ### 单选上传图片
 
+图片上传有两种方式：
+
+1 选择完所有图片之后，统一上传，因此选择完就直接展示
+
+2 每次选择图片都上传，展示每次上传图片的进度
+
 {{ single }}
 
 ### 多选上传图片
 
 {{ multiple }}
+
+### 加载状态
+
+支持多种状态：`loading`、`reload`、`failed`；
+
+其中 `loading` 还可以通过传入 `percent` 来区分是否展示进度。
+
+{{ status }}
+
+### 从聊天记录上选
+
+使用 `wx.chooseMessageFile` 实现，需要基础版本库 `2.5.0+`
+
+{{ messageFile }}
 
 ## API
 ### Upload Props
@@ -36,9 +56,9 @@ allow-upload-duplicate-file | Boolean | false | 【开发中】是否允许重�
 config | Object | - | 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)。TS 类型：`UploadMpConfig` `type UploadMpConfig = ImageConfig \| VideoConfig` `interface ImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> }` `type SizeTypeValues = 'original' \| 'compressed'` `type SourceTypeValues = 'album' \| 'camera'` `interface VideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' \| 'front' }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 file-list-display | Slot | - | 【开发中】用于完全自定义文件列表内容。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
-files | Array | - | 已上传文件列表。TS 类型：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' \| 'video'; percent?: number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
-default-files | Array | undefined | 已上传文件列表。非受控属性。TS 类型：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' \| 'video'; percent?: number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
-grid-config | Object | - | upload组件每行上传图片列数以及图片的宽度和高度。TS 类型：`{\n  column?: number;\n  width?: number;\n  height?: number;\n}` | N
+files | Array | - | 已上传文件列表。TS 类型：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' \| 'video'; percent?: number; status: 'loading' \| 'reload' \| 'failed' \| 'done' }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
+default-files | Array | undefined | 已上传文件列表。非受控属性。TS 类型：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' \| 'video'; percent?: number; status: 'loading' \| 'reload' \| 'failed' \| 'done' }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
+grid-config | Object | - | upload组件每行上传图片列数以及图片的宽度和高度。TS 类型：`{column?: number;  width?: number; height?: number;}` | N
 gutter | Number | 16 | 预览窗格的 `gutter` 大小，单位 rpx | N
 image-props | Object | - | 透传 Image 组件全部属性。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 max | Number | 0 | 用于控制文件上传数量，值为 0 则不限制 | N

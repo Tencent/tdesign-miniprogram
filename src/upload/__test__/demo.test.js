@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['messageFile', 'multiple', 'single'];
+const mapper = ['messageFile', 'multiple', 'single', 'status'];
 
 describe('Upload', () => {
   mapper.forEach((demoName) => {

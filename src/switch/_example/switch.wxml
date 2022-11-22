@@ -6,7 +6,19 @@
     <base />
   </t-demo>
 
-  <t-demo title="02 状态" desc="开关状态">
+  <t-demo desc="带描述开关">
+    <label />
+  </t-demo>
+
+  <t-demo desc="自定义颜色开关">
+    <color />
+  </t-demo>
+
+  <t-demo title="02 组件状态">
     <status />
+  </t-demo>
+
+  <t-demo title="03 组件样式" desc="开关尺寸">
+    <size />
   </t-demo>
 </view>

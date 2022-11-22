@@ -24,6 +24,11 @@ const props: TdResultProps = {
     type: String,
     value: '',
   },
+  /** 图标属性，透传至 icon */
+  iconProps: {
+    type: Object,
+    value: {},
+  },
   /** 图片地址 */
   image: {
     type: String,

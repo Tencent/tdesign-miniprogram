@@ -3,7 +3,7 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "normal": "./normal",
+    "theme": "./theme",
     "display": "./display",
     "cover": "./cover",
     "close": "./close"

@@ -3,8 +3,6 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "delete": "./delete",
-    "over-height": "./over-height",
-    "over-width": "./over-width"
+    "delete": "./delete"
   }
 }

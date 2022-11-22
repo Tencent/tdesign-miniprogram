@@ -1,39 +1,14 @@
-.row {
+.demo-avatar {
   display: flex;
-  margin: 20rpx 0;
+  margin: 0 32rpx 48rpx;
 }
 
 .avatar-example {
-  text-align: center;
-  font-size: 24rpx;
-  display: flex;
-  flex-direction: column;
-  margin-right: 60rpx;
-}
-
-.row-text-64 {
-  width: 128rpx;
-}
-
-.row-text-48 {
-  width: 96rpx;
-}
-
-.row-text-32 {
-  width: 64rpx;
-}
-
-.row-text-common {
-  text-align: center;
-  margin-right: 60rpx;
+  margin-right: 64rpx;
 }
 
 .external-class-content {
   color: #fff;
   background-color: #0052d9;
   font-weight: 400;
-}
-
-.bottom-row {
-  padding-bottom: 64rpx;
 }

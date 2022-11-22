@@ -140,11 +140,8 @@ describe('badge', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const $count = comp.querySelector('.badge >>> .t-badge--basic');
-      if (size === 'small') {
-        expect($count.dom.getAttribute('class').includes(`t-badge--${size}`)).toBeTruthy();
-      } else {
-        expect($count.dom.getAttribute('class').includes(`t-badge--${size}`)).not.toBeTruthy();
-      }
+
+      expect($count.dom.getAttribute('class').includes(`t-badge--${size}`)).toBeTruthy();
     });
   });
 

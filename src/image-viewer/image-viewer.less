@@ -1,8 +1,12 @@
 @import '../common/style/index.less';
 
 @image-viewer: ~'@{prefix}-image-viewer';
-@image-viewer-nav-height: 48rpx;
-@image-viewer-nav-margin: 36rpx;
+@image-viewer-nav-height: 96rpx;
+@image-viewer-nav-bg-color: rgba(0, 0, 0, 0.4);
+@image-viewer-nav-color: @text-anti-primary-color;
+@image-viewer-nav-index-font-size: @font-size-base;
+@image-viewer-close-margin-left: @spacer-1;
+@image-viewer-delete-margin-right: @spacer-1;
 
 .@{image-viewer} {
   position: fixed;
@@ -53,29 +57,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: @image-viewer-nav-height;
-    top: 68rpx;
+    height: var(--td-image-viewer-nav-height, @image-viewer-nav-height); // 操作条高度
+    background-color: @image-viewer-nav-bg-color; // 操作条背景色
     left: 0;
-    color: #ffffff;
+    color: var(--td-image-viewer-nav-color, @image-viewer-nav-color); // 操作条文本颜色
     z-index: 1005;
 
-    &-icon {
-      flex: 0 0 @image-viewer-nav-height;
-      width: @image-viewer-nav-height;
-      height: @image-viewer-nav-height;
-    }
-
     &-close {
-      margin-left: @image-viewer-nav-margin;
+      margin-left: var(--td-image-viewer-close-margin-left, @image-viewer-close-margin-left); // 关闭操作按钮左部间距
     }
 
     &-delete {
-      margin-right: @image-viewer-nav-margin;
+      margin-right: var(
+        --td-image-viewer-delete-margin-right,
+        @image-viewer-delete-margin-right
+      ); // 删除操作按钮右部间距
     }
 
     &-index {
       flex: 1;
-      font-size: 28rpx;
+      font-size: var(--td-image-viewer-nav-index-font-size, @image-viewer-nav-index-font-size); // 索引文本大小
       text-align: center;
     }
   }

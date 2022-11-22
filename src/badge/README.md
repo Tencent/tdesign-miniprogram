@@ -18,25 +18,17 @@ isComponent: true
 
 ## 代码演示
 
-### 普通徽标
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-1.png" width="375px" height="50%">
+### 组件类型
 
 {{ base }}
 
-### 按钮徽标
+### 组件样式
 
-{{ button }}
+{{ theme }}
 
-### 单行徽标
+### 组件尺寸
 
-{{ cell }}
-
-### 标签栏徽标
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/badge-3.png" width="375px" height="50%">
-
-{{ tab-item }}
+{{ size }}
 
 ## API
 ### Badge Props
@@ -51,6 +43,6 @@ dot | Boolean | false | 是否为红点 | N
 external-classes | Array | - | 组件类名，分别用于设置外层元素、默认内容、右上角内容等元素类名。`['t-class', 't-class-content', 't-class-count']` | N
 max-count | Number | 99 | 封顶的数字值 | N
 offset | Array | - | 设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem']。TS 类型：`Array<string \| number>` | N
-shape | String | circle | 形状。可选项：circle/square/round/ribbon | N
+shape | String | circle | 形状。可选项：circle/round/ribbon/bubble | N
 show-zero | Boolean | false | 当数值为 0 时，是否展示徽标 | N
 size | String | medium | 尺寸。可选项：small/medium | N

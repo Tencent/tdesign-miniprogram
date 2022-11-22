@@ -2,121 +2,74 @@
 
 exports[`Divider Divider base demo works fine 1`] = `
 <base>
-  <wx-view
-    class="divider-demo__title"
-  >
-    直线拉通
-  </wx-view>
   <t-divider />
   <wx-view
     class="divider-demo__title"
   >
-    虚线拉通
+    带文字水平分割线
   </wx-view>
   <t-divider
-    dashed="{{true}}"
+    align="left"
+    content="文字信息"
+  />
+  <t-divider
+    content="文字信息"
+  />
+  <t-divider
+    align="right"
+    content="文字信息"
   />
   <wx-view
     class="divider-demo__title"
   >
-    左右间距
+    垂直分割线
   </wx-view>
-  <t-divider
-    tClass="demo-2"
-  />
   <wx-view
-    class="divider-demo__title"
+    class="divider-wrapper"
   >
-    右侧拉通
+    <wx-text
+      class="demo-6__text-color"
+    >
+      文字信息
+    </wx-text>
+    <t-divider
+      layout="vertical"
+    />
+    <wx-text
+      class="demo-6__text-color"
+    >
+      文字信息
+    </wx-text>
+    <t-divider
+      layout="vertical"
+    />
+    <wx-text
+      class="demo-6__text-color"
+    >
+      文字信息
+    </wx-text>
   </wx-view>
-  <t-divider
-    tClass="demo-3"
-  />
-  <wx-view
-    class="divider-demo__title"
-  >
-    自定义左侧间距
-  </wx-view>
-  <t-divider
-    tClass="demo-4"
-  />
 </base>
 `;
 
-exports[`Divider Divider text-line demo works fine 1`] = `
-<text-line>
-  <wx-view
-    class="divider-demo__title"
-  >
-    文字+直线
-  </wx-view>
+exports[`Divider Divider theme demo works fine 1`] = `
+<theme>
   <t-divider
-    tClass="demo-5"
-  >
-    <wx-text
-      slot="content"
-    >
-      文字信息
-    </wx-text>
-  </t-divider>
-  <wx-view
-    class="divider-demo__title"
-  >
-    文字+虚线
-  </wx-view>
+    dashed="{{true}}"
+  />
+  <t-divider
+    align="left"
+    content="文字信息"
+    dashed="{{true}}"
+  />
   <t-divider
     content="文字信息"
     dashed="{{true}}"
-    tClass="demo-5"
   />
-</text-line>
-`;
-
-exports[`Divider Divider text-only demo works fine 1`] = `
-<text-only>
-  <wx-view
-    class="divider-demo__title"
-  >
-    纯文字
-  </wx-view>
   <t-divider
-    lineColor="transparent"
-  >
-    <wx-text
-      slot="content"
-    >
-      没有更多了~
-    </wx-text>
-  </t-divider>
-  <wx-view
-    class="divider-demo__title"
-  >
-    垂直分割
-  </wx-view>
-  <wx-view
-    class="demo-6"
-  >
-    <wx-text
-      class="demo-6__text-color"
-    >
-      文字信息
-    </wx-text>
-    <t-divider
-      layout="vertical"
-    />
-    <wx-text
-      class="demo-6__text-color"
-    >
-      文字信息
-    </wx-text>
-    <t-divider
-      layout="vertical"
-    />
-    <wx-text
-      class="demo-6__text-color"
-    >
-      文字信息
-    </wx-text>
-  </wx-view>
-</text-only>
+    align="right"
+    content="文字信息"
+    dashed="{{true}}"
+  />
+</theme>
 `;

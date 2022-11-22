@@ -32,9 +32,12 @@
     <view class="{{classPrefix}}__nav">
       <t-icon
         wx:if="{{closeBtn}}"
-        name="close"
-        size="xl"
-        class="{{classPrefix}}__nav-close {{classPrefix}}__nav-icon"
+        class="{{classPrefix}}__nav-close"
+        name="{{ closeIconProps.name || 'close' }}"
+        prefix="{{closeIconProps.prefix}}"
+        size="{{closeIconProps.size || '48rpx'}}"
+        color="{{closeIconProps.color}}"
+        customStyle="{{closeIconProps.customStyle}}"
         data-source="button"
         bind:click="onClose"
       ></t-icon>
@@ -44,9 +47,12 @@
       </view>
       <t-icon
         wx:if="{{deleteBtn}}"
-        name="delete"
-        size="xl"
-        class="{{classPrefix}}__nav-delete {{classPrefix}}__nav-icon"
+        class="{{classPrefix}}__nav-delete"
+        name="{{ deleteIconProps.name || 'delete' }}"
+        prefix="{{deleteIconProps.prefix}}"
+        size="{{deleteIconProps.size || '48rpx'}}"
+        color="{{deleteIconProps.color}}"
+        customStyle="{{deleteIconProps.customStyle}}"
         bind:click="onDelete"
       ></t-icon>
       <slot name="deleteBtn" />

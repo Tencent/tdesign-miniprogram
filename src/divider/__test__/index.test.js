@@ -108,22 +108,4 @@ describe('Divider', () => {
       expect($divider.dom.getAttribute('class').includes(`t-divider--${lay}`));
     });
   });
-
-  it(':line-color render correctly', () => {
-    const lineColor = '#eee';
-    const id = simulate.load({
-      template: `<t-divider class="divider" lineColor="{{lineColor}}"></t-divider>`,
-      usingComponents: {
-        't-divider': divider,
-      },
-      data: {
-        lineColor,
-      },
-    });
-    const comp = simulate.render(id);
-    comp.attach(document.createElement('parent-wrapper'));
-
-    const $divider = comp.querySelector('.divider >>> .t-divider');
-    expect($divider.dom.style.borderColor).toBe('#eee');
-  });
 });

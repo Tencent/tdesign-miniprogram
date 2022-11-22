@@ -7,7 +7,7 @@ Component({
         type: 'image',
       },
       {
-        url: 'https://tdesign.gtimg.com/site/upload2.png',
+        url: 'https://tdesign.gtimg.com/site/upload1.png',
         name: 'uploaded2.png',
         type: 'image',
       },
@@ -15,7 +15,6 @@ Component({
         url: 'https://tdesign.gtimg.com/site/upload1.png',
         name: 'uploaded1.png',
         type: 'image',
-        percent: -1,
       },
     ],
     gridConfig: {

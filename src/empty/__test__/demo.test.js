@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'buttonEmpty', 'imageEmpty', 'pageEmpty'];
+const mapper = ['base', 'buttonEmpty', 'imageEmpty'];
 
 describe('Empty', () => {
   mapper.forEach((demoName) => {

@@ -1,0 +1,3 @@
+.wrapper {
+  --td-skeleton-row-spacing: 20rpx;
+}
