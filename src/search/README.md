@@ -55,7 +55,7 @@ focus | Boolean | false | 是否聚焦 | N
 label | String | '' | 左侧文本 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
 placeholder | String | '' | 占位符 | N
-right-icon | String / Slot | 'close' | 右侧图标 | N
+right-icon | String / Slot | 'close-circle-filled' | 右侧图标 | N
 shape | String | 'square' | 搜索框形状。可选项：square/round | N
 value | String | '' | 值 | N
 
