@@ -1,102 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Radio Radio base demo works fine 1`] = `
-<base>
-  <t-radio
-    label="单选"
-  />
+exports[`Radio Radio align demo works fine 1`] = `
+<align>
   <t-radio
     defaultChecked="{{true}}"
     label="单选"
+    value="radio1"
+  />
+  <wx-view
+    class="block"
   />
   <t-radio
-    checked="{{false}}"
+    align="right"
+    defaultChecked="{{true}}"
     label="单选"
-    bind:change="handleChange"
+    value="radio2"
   />
-</base>
+</align>
 `;
 
-exports[`Radio Radio controll demo works fine 1`] = `
-<controll>
-  <t-radio-group
-    value="radio1"
-    bind:change="onChange"
-  >
-    <t-radio
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      label="单选"
-      value="radio2"
-    />
-  </t-radio-group>
-</controll>
-`;
-
-exports[`Radio Radio group demo works fine 1`] = `
-<group>
-  <t-radio-group
-    defaultValue="radio1"
-    bind:change="onChange"
-  >
-    <t-radio
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      label="单选"
-      value="radio2"
-    />
-    <t-radio
-      label="单选"
-      value="radio3"
-    />
-    <t-radio
-      label="单选"
-      value="radio4"
-    />
-  </t-radio-group>
-</group>
-`;
-
-exports[`Radio Radio left-hook-shape demo works fine 1`] = `
-<left-hook-shape>
-  <t-radio-group
-    defaultValue="radio4"
-    bind:change="onChange"
-  >
-    <t-radio
-      icon="stroke-line"
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      icon="stroke-line"
-      label="单选"
-      value="radio2"
-    />
-    <t-radio
-      icon="stroke-line"
-      label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选"
-      value="radio3"
-    />
-    <t-radio
-      icon="stroke-line"
-      label="单选"
-      value="radio4"
-    >
-      
-    单选单选单选单选单选单选单选单选单选单选单选单选单选单选单
-  
-    </t-radio>
-  </t-radio-group>
-</left-hook-shape>
-`;
-
-exports[`Radio Radio left-round demo works fine 1`] = `
-<left-round>
+exports[`Radio Radio base demo works fine 1`] = `
+<base>
   <t-radio-group
     defaultValue="radio1"
     bind:change="onChange"
@@ -114,143 +38,152 @@ exports[`Radio Radio left-round demo works fine 1`] = `
       value="radio3"
     />
     <t-radio
+      content="描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息"
       label="单选"
-      value="radio4"
-    >
-       单选单选单选单选单选单选单选单选单选单选单选单选单选单选 
-    </t-radio>
-  </t-radio-group>
-</left-round>
-`;
-
-exports[`Radio Radio options demo works fine 1`] = `
-<options>
-  <t-radio-group
-    defaultValue="数字"
-    options="{{
-      Array [
-        "string",
-        "number",
-        Object {
-          "disabled": true,
-          "label": "对象",
-          "value": "object",
-        },
-      ]
-    }}"
-    bind:change="onChange"
-  />
-</options>
-`;
-
-exports[`Radio Radio right-hook-shape demo works fine 1`] = `
-<right-hook-shape>
-  <t-radio-group
-    defaultValue="radio4"
-    bind:change="onChange"
-  >
-    <t-radio
-      align="right"
-      icon="stroke-line"
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      align="right"
-      icon="stroke-line"
-      label="单选"
-      value="radio2"
-    />
-    <t-radio
-      align="right"
-      icon="stroke-line"
-      label="单选"
-      value="radio3"
-    />
-    <t-radio
-      align="right"
-      icon="stroke-line"
-      label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选"
-      maxLabelRow="1"
       value="radio4"
     />
   </t-radio-group>
-</right-hook-shape>
+</base>
 `;
 
-exports[`Radio Radio right-round demo works fine 1`] = `
-<right-round>
+exports[`Radio Radio card demo works fine 1`] = `
+<card>
   <t-radio-group
     defaultValue="radio1"
-    bind:change="onChange"
+    tClass="theme-card"
   >
     <t-radio
-      align="right"
+      defaultChecked="{{true}}"
       label="单选"
       value="radio1"
     />
     <t-radio
-      align="right"
       label="单选"
       value="radio2"
     />
     <t-radio
-      align="right"
-      label="多选"
+      label="单选标题多行单选标题多行单选标题多行单选标题多行单选标题多行"
       value="radio3"
     />
-    <t-radio
-      align="right"
-      label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单"
-      maxLabelRow="1"
-      value="radio4"
-    />
   </t-radio-group>
-</right-round>
+</card>
 `;
 
-exports[`Radio Radio size demo works fine 1`] = `
-<size>
-  <t-radio
-    defaultChecked="{{true}}"
-    label="单选H48"
-    tClass="t-radio-padding"
-    value="radio1"
-  />
-  <t-radio
-    defaultChecked="{{true}}"
-    label="单选H56"
-    tClass="t-radio-demo"
-    value="radio2"
-  />
-</size>
+exports[`Radio Radio horizontal demo works fine 1`] = `
+<horizontal>
+  <t-radio-group
+    borderless="{{true}}"
+    defaultValue="0"
+    tClass="box"
+  >
+    <t-radio
+      block="{{false}}"
+      label="单选标题"
+      value="0"
+    />
+    <t-radio
+      block="{{false}}"
+      label="单选标题"
+      value="1"
+    />
+    <t-radio
+      block="{{false}}"
+      label="上限四字"
+      value="2"
+    />
+  </t-radio-group>
+</horizontal>
 `;
 
 exports[`Radio Radio special demo works fine 1`] = `
 <special>
   <t-radio-group
-    defaultValue="radio1"
+    value="{{0}}"
+    bind:change="onChange"
   >
-    <t-radio
-      icon="{{
-        Array [
-          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png",
-          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png",
-        ]
-      }}"
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      icon="{{
-        Array [
-          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png",
-          "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png",
-        ]
-      }}"
-      label="单选"
-      value="radio2"
-    />
+    <wx-view
+      class="card card--active"
+    >
+      <t-icon
+        class="card__icon"
+        name="check"
+      />
+      <t-radio
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="单选"
+        value="{{0}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-radio
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="单选"
+        value="{{1}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-radio
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="单选"
+        value="{{2}}"
+      />
+    </wx-view>
+  </t-radio-group>
+  <wx-view
+    class="demo-desc"
+    style="margin: 48rpx 32rpx 32rpx"
+  >
+    横向卡片单选框
+  </wx-view>
+  <t-radio-group
+    tClass="horizontal-box"
+    value="{{0}}"
+    bind:change="onChange1"
+  >
+    <wx-view
+      class="card card--active"
+    >
+      <t-icon
+        class="card__icon"
+        name="check"
+      />
+      <t-radio
+        borderless="{{true}}"
+        icon="none"
+        label="单选"
+        value="{{0}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-radio
+        borderless="{{true}}"
+        icon="none"
+        label="单选"
+        value="{{1}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-radio
+        borderless="{{true}}"
+        icon="none"
+        label="单选"
+        value="{{2}}"
+      />
+    </wx-view>
   </t-radio-group>
 </special>
 `;
@@ -258,7 +191,7 @@ exports[`Radio Radio special demo works fine 1`] = `
 exports[`Radio Radio status demo works fine 1`] = `
 <status>
   <t-radio-group
-    defaultValue="radio2"
+    defaultValue="radio1"
     disabled="{{true}}"
   >
     <t-radio
@@ -266,56 +199,28 @@ exports[`Radio Radio status demo works fine 1`] = `
       value="radio1"
     />
     <t-radio
-      label="单选"
-      value="radio2"
-    />
-  </t-radio-group>
-  <t-radio-group
-    disabled="{{true}}"
-    value="radio2"
-  >
-    <t-radio
-      icon="stroke-line"
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      icon="stroke-line"
-      label="单选"
-      value="radio2"
-    />
-  </t-radio-group>
-  <t-radio-group
-    disabled="{{true}}"
-    value="radio2"
-  >
-    <t-radio
-      align="right"
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      align="right"
-      label="单选"
-      value="radio2"
-    />
-  </t-radio-group>
-  <t-radio-group
-    disabled="{{true}}"
-    value="radio1"
-  >
-    <t-radio
-      align="right"
-      icon="stroke-line"
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      align="right"
-      icon="stroke-line"
       label="单选"
       value="radio2"
     />
   </t-radio-group>
 </status>
+`;
+
+exports[`Radio Radio theme demo works fine 1`] = `
+<theme>
+  <t-radio
+    defaultChecked="{{true}}"
+    icon="stroke-line"
+    label="单选"
+  />
+  <wx-view
+    class="gutter"
+    style="height: 32rpx"
+  />
+  <t-radio
+    defaultChecked="{{true}}"
+    icon="dot"
+    label="单选"
+  />
+</theme>
 `;
