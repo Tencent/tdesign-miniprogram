@@ -1,0 +1,6 @@
+.box {
+  padding: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}

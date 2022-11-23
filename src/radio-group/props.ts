@@ -9,7 +9,7 @@ const props: TdRadioGroupProps = {
   /** 复选框和内容相对位置；仅在使用 options 时生效 */
   align: {
     type: String,
-    value: 'left',
+    value: null,
   },
   /** 是否开启无边框模式 */
   borderless: {
