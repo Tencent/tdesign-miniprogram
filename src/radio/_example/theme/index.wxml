@@ -1,2 +1,5 @@
-<t-radio value="radio1" label="单选H48" t-class="t-radio-padding" defaultChecked />
-<t-radio value="radio2" label="单选H56" t-class="t-radio-demo" defaultChecked />
+<t-radio default-checked="{{true}}" icon="stroke-line" label="单选" />
+
+<view class="gutter" style="height: 32rpx"></view>
+
+<t-radio default-checked="{{true}}" icon="dot" label="单选" />

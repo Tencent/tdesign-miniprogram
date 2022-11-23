@@ -1,6 +1,17 @@
 Component({
+  options: {
+    styleIsolation: 'apply-shared',
+  },
   data: {
-    activeImage: 'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png',
-    inActiveImage: 'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png',
+    value: 0,
+    value1: 0,
+  },
+  methods: {
+    onChange(e) {
+      this.setData({ value: e.detail.value });
+    },
+    onChange1(e) {
+      this.setData({ value1: e.detail.value });
+    },
   },
 });

@@ -63,19 +63,11 @@ export default class Radio extends SuperComponent {
     },
   ];
 
-  observers = {
-    checked(isChecked: Boolean) {
-      this.setData({
-        active: isChecked,
-      });
-    },
-  };
-
   data = {
     prefix,
-    active: false,
     classPrefix: name,
     customIcon: false,
+    slotIcon: false,
     optionLinked: false,
     iconVal: [],
   };
@@ -91,13 +83,13 @@ export default class Radio extends SuperComponent {
       this.doChange();
     },
     doChange() {
-      const { value, active } = this.data;
+      const { value, checked } = this.data;
       const [parent] = this.getRelationNodes('../radio-group/radio-group') ?? [null];
 
       if (parent) {
         parent.updateValue(value);
       } else {
-        this._trigger('change', { checked: !active });
+        this._trigger('change', { checked: !checked });
       }
     },
     initStatus() {
@@ -106,6 +98,7 @@ export default class Radio extends SuperComponent {
 
       this.setData({
         customIcon: isIdArr,
+        slotIcon: icon === 'slot',
         iconVal: !isIdArr ? iconDefault[icon] : this.data.icon,
       });
     },
