@@ -2,7 +2,7 @@
 
 <view style="{{ customStyle }}" class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class">
   <view
-    class="{{classPrefix}}__icon {{classPrefix}}__icon--{{align}} {{prefix}}-class-icon"
+    class="{{_.cls(classPrefix + '__icon', [align, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
     data-target="icon"
     bind:tap="handleTap"
   >
@@ -11,21 +11,17 @@
       <image src="{{checked ? iconVal[0] : iconVal[1]}}" class="{{classPrefix}}-icon__image" webp />
     </view>
     <block wx:else>
-      <t-icon
-        wx:if="{{checked && icon == 'fill-circle'}}"
-        name="check-circle-filled"
-        class="{{classPrefix}}__btn {{disabled ? classPrefix + '--disabled' : ''}} {{checked ? classPrefix + '--checked' : ''}}"
-      />
+      <t-icon wx:if="{{checked && icon == 'circle'}}" name="check-circle-filled" class="{{classPrefix}}__icon-wrap" />
       <view
-        wx:if="{{checked && (icon == 'stroke-line' || icon == 'dot')}}"
+        wx:if="{{checked && (icon == 'line' || icon == 'dot')}}"
         class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
       />
       <view
-        wx:if="{{!checked && (icon == 'fill-circle' || icon == 'dot')}}"
+        wx:if="{{!checked && (icon == 'circle' || icon == 'dot')}}"
         class="{{_.cls(classPrefix + '__icon-circle', [['disabled', disabled]])}}"
       ></view>
-      <!-- stroke-line && unchecked 为空 需要展位元素 -->
-      <view wx:elif="{{!checked && icon == 'stroke-line'}}" class="placeholder"></view>
+      <!-- line && unchecked 为空 需要展位元素 -->
+      <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
     </block>
   </view>
 

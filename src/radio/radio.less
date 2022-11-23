@@ -2,8 +2,8 @@
 
 @radio-icon-size: var(--td-radio-icon-size, 48rpx);
 @radio-font-size: var(--td-radio-font-size, 32rpx);
-@radio-title-line-height: var(--td-radio-title-line-height, 48rpx);
-@radio-label-line-height: var(--td-radio-label-line-height, 44rpx);
+@radio-label-line-height: var(--td-radio-label-line-height, 48rpx);
+@radio-content-line-height: var(--td-radio-content-line-height, 44rpx);
 @radio-vertical-padding: var(--td-radio-vertical-padding, 32rpx);
 @radio-bg-color: var(--td-radio-bg-color, @bg-color-block);
 @radio-border-color: var(--td-radio-border-color, @gray-color-3);
@@ -43,6 +43,8 @@
     position: relative;
     width: @radio-icon-size;
     height: @radio-icon-size;
+    font-size: @radio-icon-size;
+    color: @radio-icon-color;
 
     &:empty {
       display: none;
@@ -50,6 +52,15 @@
 
     &--left {
       margin-right: 16rpx;
+    }
+
+    &--checked {
+      color: @radio-icon-checked-color;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      color: @radio-icon-disabled-color;
     }
 
     &-circle {
@@ -68,7 +79,7 @@
       }
     }
 
-    &-stroke-line {
+    &-line {
       &:before,
       &:after {
         content: '';
@@ -145,14 +156,6 @@
     vertical-align: sub;
   }
 
-  &__btn {
-    font-size: @radio-icon-size;
-    height: @radio-icon-size;
-    line-height: 40rpx;
-    color: @radio-icon-color;
-    display: block;
-  }
-
   &__content {
     flex: 1;
 
@@ -164,7 +167,7 @@
   &__title {
     .limit-title-row();
     color: @radio-label-color;
-    line-height: @radio-title-line-height;
+    line-height: @radio-label-line-height;
 
     &--disabled {
       cursor: not-allowed;
@@ -176,7 +179,7 @@
     .limit-title-row();
     color: @radio-content-color;
     font-size: 28rpx;
-    line-height: @radio-label-line-height;
+    line-height: @radio-content-line-height;
 
     &--disabled {
       cursor: not-allowed;
@@ -190,15 +193,6 @@
 
   &__title + &__description {
     margin-top: 8rpx;
-  }
-
-  &--checked {
-    color: @radio-icon-checked-color;
-  }
-
-  &--disabled {
-    cursor: not-allowed;
-    color: @radio-icon-disabled-color;
   }
 
   &__border {

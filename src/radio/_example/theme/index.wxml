@@ -1,4 +1,4 @@
-<t-radio default-checked="{{true}}" icon="stroke-line" label="单选" />
+<t-radio default-checked="{{true}}" icon="line" label="单选" />
 
 <view class="gutter" style="height: 32rpx"></view>
 
