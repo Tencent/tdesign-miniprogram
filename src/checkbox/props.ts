@@ -31,11 +31,6 @@ const props: TdCheckboxProps = {
     type: Boolean,
     value: false,
   },
-  /** 多选框颜色 */
-  color: {
-    type: String,
-    value: '#0052d9',
-  },
   /** 多选框内容 */
   content: {
     type: String,

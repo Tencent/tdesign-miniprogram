@@ -59,7 +59,6 @@ block | Boolean | true | 是否为块级元素 | N
 check-all | Boolean | false | 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 | N
 checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
-color | String | #0052d9 | 多选框颜色 | N
 content | String / Slot | - | 多选框内容 | N
 content-disabled | Boolean | - | 是否禁用组件内容（content）触发选中 | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N

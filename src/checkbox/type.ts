@@ -46,14 +46,6 @@ export interface TdCheckboxProps {
     value?: boolean;
   };
   /**
-   * 多选框颜色
-   * @default #0052d9
-   */
-  color?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 多选框内容
    */
   content?: {
