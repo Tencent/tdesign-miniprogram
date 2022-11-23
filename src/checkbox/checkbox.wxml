@@ -1,6 +1,10 @@
 <view
   style="{{ customStyle }}"
   class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}} {{classPrefix}}--{{theme}} {{checked ? prefix + '-is-actived' : ''}}"
+  role="checkbox"
+  aria-role="checkbox"
+  aria-checked="{{checked ? true : false}}"
+  aria-disabled="{{disabled ? true : false}}"
 >
   <!-- icon -->
   <view
