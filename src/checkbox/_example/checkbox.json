@@ -1,12 +1,13 @@
 {
-  "navigationBarTitleText": "Checkbox 复选框",
+  "navigationBarTitleText": "Checkbox 多选框",
   "usingComponents": {
     "base": "./base",
     "right": "./right",
     "all": "./all",
-    "num": "./num",
+    "horizontal": "./horizontal",
     "status": "./status",
     "type": "./type",
-    "size": "./size"
+    "special": "./special",
+    "card": "./card"
   }
 }

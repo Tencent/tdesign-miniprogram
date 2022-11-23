@@ -1,12 +1,5 @@
-<t-checkbox-group defaultValue="{{demoCheckbox2}}" bind:change="onChange">
-  <t-checkbox value="checkbox1" label="多选" align="right" />
-  <t-checkbox value="checkbox2" label="多选" align="right"></t-checkbox>
-  <t-checkbox value="checkbox3" label="多选" align="right"></t-checkbox>
-  <t-checkbox
-    value="checkbox5"
-    label="多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选多选选多选多选多选"
-    max-label-row="{{1}}"
-    align="right"
-  >
-  </t-checkbox>
-</t-checkbox-group>
+<t-checkbox value="1" label="多选" checked />
+
+<view class="box" style="height: 32rpx" />
+
+<t-checkbox value="2" label="多选" align="right" checked />

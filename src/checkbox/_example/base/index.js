@@ -1,14 +1,8 @@
 Component({
-  /**
-   * 组件的初始数据
-   */
   data: {
-    demoCheckbox1: ['checkbox2', 'checkbox3'],
+    demoCheckbox1: ['checkbox1', 'checkbox2'],
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
     handleGroupChange(event) {
       console.log('group', event.detail.value);
