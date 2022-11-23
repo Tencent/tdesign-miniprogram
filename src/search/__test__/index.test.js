@@ -76,23 +76,6 @@ describe('search', () => {
       ).toBeTruthy();
     });
 
-    it(':label', () => {
-      const id = simulate.load({
-        template: `<t-search class="search" label="{{label}}"></t-search>`,
-        usingComponents: {
-          't-search': search,
-        },
-        data: {
-          label: 'TDesign',
-        },
-      });
-      const comp = simulate.render(id);
-      comp.attach(document.createElement('parent-wrapper'));
-
-      const $search = comp.querySelector('.search >>> .t-search__label');
-      expect($search.dom.textContent.trim()).toBe('TDesign');
-    });
-
     it(':placeholder', () => {
       const id = simulate.load({
         template: `<t-search class="search" placeholder="{{placeholder}}"></t-search>`,

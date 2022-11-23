@@ -2,9 +2,9 @@
   <view
     class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center ? 'center' : ''}} {{classPrefix}}__input-box--{{shape}} {{prefix}}-class-input-container"
   >
-    <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label">{{label}}</view>
-    <slot name="label" />
-    <t-icon wx:if="{{leftIcon}}" name="{{leftIcon}}" size="20px" class="{{prefix}}-icon {{prefix}}-class-left" />
+    <!-- <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label">{{label}}</view>
+    <slot name="label" /> -->
+    <t-icon wx:if="{{leftIcon}}" name="{{leftIcon}}" size="24" class="{{prefix}}-icon {{prefix}}-class-left" />
     <slot name="left-icon" />
     <input
       type="text"
