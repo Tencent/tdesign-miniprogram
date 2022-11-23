@@ -210,7 +210,7 @@ exports[`Radio Radio theme demo works fine 1`] = `
 <theme>
   <t-radio
     defaultChecked="{{true}}"
-    icon="stroke-line"
+    icon="line"
     label="单选"
   />
   <wx-view
