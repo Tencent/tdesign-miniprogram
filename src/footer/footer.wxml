@@ -15,10 +15,14 @@
           url="{{item.url}}"
           open-type="{{item.openType}}"
           hover-class="none"
+          aria-role="navigation"
           class="{{classPrefix}}__link-item"
         >
           {{item.name}}
         </navigator>
+        <span aria-hidden="{{true}}" wx:if="{{index !== (textLinkList.length - 1)}}" class="{{classPrefix}}__link-line"
+          >|</span
+        >
       </block>
     </view>
     <view class="{{classPrefix}}__copyright-info">{{copyright}}</view>
