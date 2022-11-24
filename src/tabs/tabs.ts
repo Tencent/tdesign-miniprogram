@@ -49,11 +49,6 @@ export default class Tabs extends SuperComponent {
         this.setCurrentIndexByName(name);
       }
     },
-
-    animation(v) {
-      this.setData({ animate: v });
-    },
-
     placement() {
       this.adjustPlacement();
     },
@@ -68,7 +63,6 @@ export default class Tabs extends SuperComponent {
     isScrollX: true,
     isScrollY: false,
     direction: 'X',
-    animate: { duration: 0 },
     offset: 0,
   };
 
