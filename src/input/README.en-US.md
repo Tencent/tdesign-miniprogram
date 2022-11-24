@@ -7,6 +7,7 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 align | String | left | options：left/center/right | N
+layout | String | horizontal | options：vertical/horizontal | N
 borderless | Boolean | true | \- | N
 clearable | Boolean | false | \- | N
 custom-style `v0.25.0` | String | - | \- | N

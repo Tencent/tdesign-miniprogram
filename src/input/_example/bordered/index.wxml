@@ -1,0 +1,4 @@
+<t-input placeholder="请输入文字" bordered />
+<t-input placeholder="请输入文字" status="success" bordered />
+<t-input placeholder="请输入文字" status="warning" bordered />
+<t-input placeholder="请输入文字" suffixIcon="error-circle-filled" status="error" tips="错误提示文字" bordered />

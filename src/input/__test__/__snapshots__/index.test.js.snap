@@ -5,29 +5,33 @@ exports[`input props : clearable && label && suffix 1`] = `
   class="base"
 >
   <wx-view
-    class="t-input   t-input--size-small t-input--bordered t-class"
+    class="t-input t-input--size-medium t-input--layout-horizontal t-class"
     style=""
   >
     <wx-view
-      class="t-input__label"
+      class="t-input__wrap--prefix"
     >
-      <wx-text
-        class="t-class-label"
+      <wx-view
+        class="t-input__label"
       >
-        tdesign
-      </wx-text>
+        <wx-text
+          class="t-class-label"
+        >
+          tdesign
+        </wx-text>
+      </wx-view>
     </wx-view>
     <wx-view
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content"
+        class="t-input__content t-is-default  "
       >
         <wx-input
           adjustPosition="{{true}}"
           alwaysEmbed="{{false}}"
           autoFocus="{{false}}"
-          class="t-input__control t-input__control--right t-class-input"
+          class="t-input__control t-input__control--left t-class-input"
           confirmHold="{{false}}"
           confirmType="done"
           cursor="{{0}}"
@@ -55,36 +59,29 @@ exports[`input props : clearable && label && suffix 1`] = `
           bind:input="onInput"
           bind:keyboardheightchange="onKeyboardHeightChange"
         />
-        <wx-view
-          class="t-input__wrap--icon"
+        <t-icon
+          class="t-input__wrap--clearable-icon t-class-clearable"
           bind:tap="clearInput"
         >
-          <t-icon
-            class="t-class-clearable"
+          <wx-view
+            class="t-icon t-class"
+            style="font-size: 48rpx"
+            bind:tap="onTap"
           >
-            <wx-view
-              class="t-icon t-class"
-              style="font-size: 48rpx"
-              bind:tap="onTap"
-            >
-              <wx-label
-                class="t-icon-close-circle-filled t-icon-base"
-              />
-            </wx-view>
-          </t-icon>
-        </wx-view>
+            <wx-label
+              class="t-icon-close-circle-filled t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
         <wx-view
-          class="t-input__wrap--suffix"
-        />
-        <wx-view
-          class="t-input__wrap--suffix-text t-class-suffix"
+          class="t-input__wrap--suffix t-class-suffix"
         >
           <wx-text>
             后置内容
           </wx-text>
         </wx-view>
         <wx-view
-          class="t-input__wrap--icon"
+          class="t-input__wrap--suffix-icon"
         >
           <t-icon
             class="t-class-suffix-icon"
@@ -111,34 +108,38 @@ exports[`input slots : label 1`] = `
   class="base"
 >
   <wx-view
-    class="t-input   t-input--size-small t-input--bordered t-class"
+    class="t-input t-input--size-medium t-input--layout-horizontal t-class"
     style=""
   >
     <wx-view
-      class="t-input__label"
+      class="t-input__wrap--prefix"
     >
-      <wx-text
-        slot="label"
+      <wx-view
+        class="t-input__label"
       >
-        标签文字
         <wx-text
-          style="color: #e34d59"
+          slot="label"
         >
-          *
+          标签文字
+          <wx-text
+            style="color: #e34d59"
+          >
+            *
+          </wx-text>
         </wx-text>
-      </wx-text>
+      </wx-view>
     </wx-view>
     <wx-view
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content"
+        class="t-input__content t-is-default  "
       >
         <wx-input
           adjustPosition="{{true}}"
           alwaysEmbed="{{false}}"
           autoFocus="{{false}}"
-          class="t-input__control t-class-input"
+          class="t-input__control t-input__control--left t-class-input"
           confirmHold="{{false}}"
           confirmType="done"
           cursor="{{0}}"
@@ -167,7 +168,10 @@ exports[`input slots : label 1`] = `
           bind:keyboardheightchange="onKeyboardHeightChange"
         />
         <wx-view
-          class="t-input__wrap--suffix"
+          class="t-input__wrap--suffix t-class-suffix"
+        />
+        <wx-view
+          class="t-input__wrap--suffix-icon"
         />
       </wx-view>
     </wx-view>

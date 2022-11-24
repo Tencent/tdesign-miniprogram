@@ -15,18 +15,6 @@ isComponent: true
   "t-input": "tdesign-miniprogram/input/input"
 }
 ```
-### 主题定制
-CSS 变量名|说明
---|--
---td-input-bg-color | 输入框背景颜色
---td-input-text-color | 输入框文本颜色
---td-input-placeholder-text-color  | 输入框placeholder占位符颜色
---td-input-error-text-color | 输入错误时文本颜色
---td-input-disabled-text-color | 禁用输入框颜色
---td-input-border-color | 输入框边框颜色
---td-input-error-msg-color | 错误提示文本颜色
---td-input-icon-color | 图标颜色
---td-input-suffix-text-color | 后置文本内容颜色
 
 ## 代码演示
 
@@ -76,25 +64,29 @@ CSS 变量名|说明
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 align | String | left | 文本内容位置，居左/居中/居右。可选项：left/center/right | N
-borderless | Boolean | true | 是否开启无边框模式 | N
+layout | String | horizontal | 标题输入框布局方式。可选项：vertical/horizontal | N
+bordered | Boolean | false | 是否显示外边框 | N
 clearable | Boolean | false | 是否可清空 | N
+clearable-icon-props | Object | {} | 透传至组件清楚图标 `icon` | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
-external-classes | Array | - | 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名。`['t-class','t-class-icon', 't-class-label', 't-class-input',  't-class-clearable', 't-class-suffix', 't-class-suffix-icon', 't-class-error-msg']` | N
+external-classes | Array | - | 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名。`['t-class','t-class-prefix-icon', 't-class-label', 't-class-input',  't-class-clearable', 't-class-suffix', 't-class-suffix-icon', 't-class-tips']` | N
 format | Function | - | 【开发中】指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => number | string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 label | String / Slot | - | 左侧文本 | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 maxlength | Number | - | 用户最多可以输入的文本长度，一个中文等于一个计数长度。值为空，则表示不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 placeholder | String | undefined | 占位符 | N
 prefix-icon | String / Slot | - | 组件前置图标，值为字符串则表示图标名称 | N
+prefix-icon-props | Object | {} | 透传至组件前置图标 `prefix-icon` | N
 readonly | Boolean | false | 【开发中】只读状态 | N
-size | String | small | 输入框尺寸。可选项：small/medium。TS 类型：`'medium' \| 'small'` | N
-status | String | - | 【开发中】输入框状态。可选项：success/warning/error | N
+size | String | medium | 输入框尺寸。可选项：small/medium。TS 类型：`'medium' \| 'small'` | N
+status | String | - | 输入框状态。可选项：success/warning/error | N
 suffix | String / Slot | - | 后置图标前的后置内容 | N
 suffix-icon | String / Slot | - | 后置文本内容，值为字符串则表示图标名称 | N
-tips | String / Slot | - | 【开发中】输入框下方提示文本，会根据不同的 `status` 呈现不同的样式 | N
-type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password/nickname | N
+suffix-icon-props | Object | {} | 透传至组件后缀图标 `suffix-icon` | N
+tips | String / Slot | - | 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式 | N
+type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password | N
 value | String / Number | - | 输入框的值。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 default-value | String / Number | undefined | 输入框的值。非受控属性。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 password | Boolean | false | 是否是密码类型（已废弃，请更为使用 type 指定输入框类型） | N

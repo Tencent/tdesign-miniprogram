@@ -1,88 +1,96 @@
 @import '../common/style/index.less';
 
-@input-text-color: @text-level-1-color;
-@input-placeholder-text-color: @text-placeholder-color;
-@input-disabled-text-color: @text-level-1-color;
-@input-icon-color: @text-level-4-color;
-@input-error-text-color: #e34d59;
-@input-suffix-text-color: @text-level-1-color;
-@input-border-color: #e7e7e7;
-@input-label-color: #000;
+@input-medium-vertical-padding: 32rpx;
+@input-medium-horizontal-padding: 32rpx;
+@input-small-vertical-padding: 24rpx;
+@input-small-horizontal-padding: 32rpx;
 
-@input-font-size: 32rpx;
-@input-icon-font-size: 32rpx;
-@input-error-msg-font-size: @font-size-s;
-@input-vertical-padding: 24rpx;
-@input-medium-padding: 32rpx;
-@input-small-padding: 24rpx;
-@input-horizontal-padding: 32rpx;
-@input-name-horizontal-margin: 32rpx;
-@input-border-padding-left: 32rpx;
-@input-suffix-text-padding-left: 24rpx;
+@input-default-border-color: var(--td-input-default-border-color, rgba(220, 220, 220, 1)); // 'default' 状态边框颜色
+@input-default-focus-border-color: var(
+  --td-input-default-focus-border-color,
+  @primary-color
+); // 'default' 状态聚焦时边框颜色，其他状态聚焦与边框颜色保持一致
+@input-success-border-color: var(--td-input-success-border-color, @success-color); // 'success' 状态边框颜色
+@input-warning-border-color: var(--td-input-warning-border-color, @warning-color); // 'warning' 状态边框颜色
+@input-error-border-color: var(--td-input-error-border-color, @error-color); // 'error' 状态边框颜色
 
-page {
-  --td-input-bg-color: @bg-color-block;
-  --td-input-text-color: @input-text-color;
-  --td-input-placeholder-text-color: @input-placeholder-text-color;
-  --td-input-error-msg-color: @input-placeholder-text-color;
-  --td-input-disabled-text-color: @input-disabled-text-color;
-  --td-input-label-color: @input-label-color;
-  --td-input-icon-color: @input-icon-color;
-  --td-input-error-text-color: @input-error-text-color;
-  --td-input-suffix-text-color: @input-suffix-text-color;
-  --td-input-border-color: @input-border-color;
-}
+@input-default-text-color: var(--td-input-default-text-color, @font-gray-1); // 'default' 状态输入框文本颜色
+@input-success-text-color: var(--td-input-success-text-color, @success-color); // 'success' 状态输入框文本颜色
+@input-warning-text-color: var(--td-input-warning-text-color, @warning-color); // 'warning' 状态输入框文本颜色
+@input-error-text-color: var(--td-input-error-text-color, @error-color); // 'error' 状态输入框文本颜色
 
-.@{prefix}-input--bordered {
-  &::after {
-    .hairline-bottom(var(--td-input-border-color, @input-border-color ));
-    left: @input-border-padding-left;
-  }
-}
+@input-default-tips-color: var(--td-input-default-tips-color, @font-gray-3); // 'default' 状态辅助文本颜色
+@input-success-tips-color: var(--td-input-success-tips-color, @success-color); // 'success' 状态辅助文本颜色
+@input-warning-tips-color: var(--td-input-warning-tips-color, @warning-color); // 'warning' 状态辅助文本颜色
+@input-error-tips-color: var(--td-input-error-tips-color, @error-color); // 'error' 状态辅助文本颜色
+
+@input-bg-color: var(--td-input-bg-color, @bg-color-block); // 输入框背景颜色
+@input-placeholder-text-color: var(--td-input-placeholder-text-color, @text-color-placeholder); // 输入框占位符文本颜色
+@input-prefix-icon-color: var(--td-input-prefix-icon-color, @font-gray-1); // // 输入框前缀图标颜色
+@input-suffix-icon-color: var(--td-input-suffix-icon-color, @font-gray-3); // 输入框后缀图标颜色
+@input-label-text-color: var(--td-input-label-text-color, @font-gray-1); // 左侧文本颜色
+@input-suffix-text-color: var(--td-input-suffix-text-color, @font-gray-1); // 后置图标前的后置内容文本颜色
+@input-disabled-text-color: var(--td-input-disabled-text-color, @text-color-disabled); // 输入框禁用态文本颜色
+@input-border-radius: var(--td-input-border-radius, @radius-default); // 边框圆角大小
+
 .@{prefix}-input {
   position: relative;
   display: flex;
-  padding: @input-vertical-padding @input-horizontal-padding;
-  background: var(--td-input-bg-color, @bg-color-block);
+  background: @input-bg-color;
 
-  &__label {
-    width: 164rpx;
-    color: var(--td-input-label-color, @input-label-color);
-    margin-right: @input-name-horizontal-margin;
-    flex: none;
-  }
-
-  &__icon {
-    &-wrap,
-    &--prefix,
-    &--suffix {
-      display: flex;
-      align-items: center;
-    }
-
-    &--prefix {
-      margin-right: 8rpx;
+  &--layout {
+    &-vertical {
+      flex-direction: column;
     }
   }
 
-  &__content {
+  &__wrap--prefix {
     display: flex;
-    align-items: center;
-    width: 100%;
-    font-size: @input-font-size;
+    padding-right: @spacer-2;
+  }
+
+  &__icon--prefix {
+    color: @input-prefix-icon-color;
+  }
+
+  &__label:not(:empty) {
+    min-width: 96rpx;
+    max-width: 162rpx;
+    font-size: @font-size-m;
+    line-height: 48rpx;
+    color: @input-label-text-color;
+
+    .@{prefix}-input--layout-vertical & {
+      font-size: @font-size-base;
+      padding-bottom: (@spacer / 2);
+    }
+  }
+
+  &__icon--prefix:not(:empty) + &__label:not(:empty) {
+    padding-left: (@spacer / 2);
   }
 
   &__wrap {
     display: flex;
     flex-wrap: wrap;
     flex: auto;
+    align-items: center;
 
-    &--suffix,
-    &--icon {
+    .@{prefix}-input__content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      line-height: 48rpx;
+      font-size: @font-size-m;
+    }
+
+    &--clearable-icon,
+    &--suffix-icon,
+    &--suffix {
       flex: 0 0 auto;
-      margin-left: @spacer-1;
-      color: var(--td-input-icon-color, @input-icon-color);
-      font-size: @input-icon-font-size;
+      padding-left: @spacer-1;
+      color: @input-suffix-icon-color;
+      font-size: @font-size-m;
 
       &:empty {
         display: none;
@@ -90,18 +98,19 @@ page {
     }
 
     &--suffix {
-      position: relative;
-      padding-left: @input-suffix-text-padding-left;
-
-      &::after {
-        .hairline-left();
-      }
+      color: @input-suffix-text-color;
     }
+  }
 
-    &--suffix-text {
-      position: relative;
-      padding-left: @input-suffix-text-padding-left;
-      color: var(--td-input-suffix-text-color, @input-suffix-text-color);
+  &__wrap--prefix,
+  &__icon--prefix,
+  &__label,
+  &__tips,
+  &__wrap--clearable-icon,
+  &__wrap--suffix-icon,
+  &__wrap--suffix {
+    &:empty {
+      display: none;
     }
   }
 
@@ -112,7 +121,7 @@ page {
     min-width: 0; // for flex-shrink in field__button
     margin: 0;
     padding: 0;
-    color: var(--td-input-text-color, @input-text-color);
+    color: @input-default-text-color;
     line-height: inherit;
     text-align: left;
     background-color: transparent;
@@ -120,12 +129,8 @@ page {
     resize: none;
     font-size: inherit;
 
-    &::placeholder {
-      color: var(--td-input-placeholder-text-color, @input-placeholder-text-color);
-    }
-
     &--disabled {
-      color: var(--td-input-disabled-text-color, @input-disabled-text-color);
+      color: @input-disabled-text-color;
       cursor: not-allowed;
       opacity: 1;
       -webkit-text-fill-color: currentColor; // fix disabled color in iOS
@@ -145,42 +150,57 @@ page {
   }
 
   &__placeholder {
-    color: var(--td-input-placeholder-text-color, @input-placeholder-text-color);
+    color: @input-placeholder-text-color;
+    font-size: @font-size-m;
+  }
+
+  &__tips {
+    font-size: @font-size-s;
+    color: @input-default-tips-color;
+    line-height: 40rpx;
+    padding-top: (@spacer / 2);
   }
 }
 
-.@{prefix}-input.@{prefix}-is-error {
-  align-items: flex-start;
+.@{prefix}-is-border {
+  padding: 24rpx 32rpx;
+  border-radius: @input-border-radius;
+  border: 3rpx solid @input-default-border-color;
+}
 
-  .@{prefix}-input {
-    &__control {
-      color: var(--td-input-error-text-color, @input-error-text-color);
+&.@{prefix}-is-focus {
+  border-color: @input-default-focus-border-color;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05), 0 4px 5px 0 rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+}
 
-      &::placeholder {
-        color: var(--td-input-error-text-color, @input-error-text-color);
-      }
+.input-status(@status) {
+  .@{prefix}-is-@{status} {
+    @borderColor: 'input-@{status}-border-color';
+    @tipsColor: 'input-@{status}-tips-color';
+
+    &.@{prefix}-is-border {
+      border-color: @@borderColor;
     }
 
-    &__placeholder {
-      color: var(--td-input-error-text-color, @input-error-text-color);
+    &.@{prefix}-is-focus {
+      border-color: @@borderColor;
     }
 
-    &__error-msg {
-      text-align: left;
-      padding-top: @spacer-1;
-      font-size: @input-error-msg-font-size;
-      line-height: 1;
-      color: var(--td-input-error-msg-color, @input-placeholder-text-color);
-      width: 100%;
+    & + .@{prefix}-input__tips {
+      color: @@borderColor;
     }
   }
 }
 
+// status
+.input-status(success);
+.input-status(warning);
+.input-status(error);
+
+// size
 .@{prefix}-input--size-medium {
-  padding-top: @input-medium-padding;
-  padding-bottom: @input-medium-padding;
+  padding: @input-medium-vertical-padding @input-medium-horizontal-padding;
 }
 .@{prefix}-input--size-small {
-  padding-top: @input-small-padding;
-  padding-bottom: @input-small-padding;
+  padding: @input-small-vertical-padding @input-small-horizontal-padding;
 }
