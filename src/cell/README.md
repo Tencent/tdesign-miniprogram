@@ -18,17 +18,25 @@ isComponent: true
 
 ## 代码演示
 
-### 单行单元格
+### 类型
+
+单行单元格
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/cell-1.png" width="375px" height="50%">
 
 {{ base }}
 
-### 多行单元格
+多行单元格
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/cell-2.png" width="375px" height="50%">
 
 {{ multiple }}
+
+### 样式
+
+卡片单元格
+
+{{ theme }}
 
 ## API
 ### Cell Props

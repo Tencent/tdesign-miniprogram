@@ -5,19 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = [
-  'base',
-  'controll',
-  'group',
-  'left-hook-shape',
-  'left-round',
-  'options',
-  'right-hook-shape',
-  'right-round',
-  'size',
-  'special',
-  'status',
-];
+const mapper = ['align', 'base', 'card', 'horizontal', 'special', 'status', 'theme'];
 
 describe('Radio', () => {
   mapper.forEach((demoName) => {

@@ -3,7 +3,7 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "labelDemo": "./label",
+    "label": "./label",
     "max": "./max",
     "step": "./step",
     "range": "./range",

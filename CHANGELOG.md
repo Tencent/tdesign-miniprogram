@@ -5,6 +5,42 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.27.0 `2022-11-21` 
+### ❗️BREAKING CHANGES
+- `Divider`: 移除 line-color 属性，使用 CSS Variables 代替 @LeeJim ([#1035](https://github.com/Tencent/tdesign-miniprogram/pull/1035))
+- `Upload`: 数据对象 file 新增 status 字段，不再以 percent 区分 @LeeJim ([#1034](https://github.com/Tencent/tdesign-miniprogram/pull/1034))
+- `Switch`: 移除 colors 属性，使用 CSS Variables 代替 @LeeJim ([#1080](https://github.com/Tencent/tdesign-miniprogram/pull/1080))
+- `Switch`: 调整 label 的类型，改成 Array 类型，同时调整显示位置 @LeeJim ([#1080](https://github.com/Tencent/tdesign-miniprogram/pull/1080))
+- `Badge`: 移除 shape 属性的 square 类型，新增 bubble 类型 @LeeJim ([#1004](https://github.com/Tencent/tdesign-miniprogram/pull/1004))
+
+### 🚀 Features
+- `Divider`: 视觉升级 @LeeJim ([#1035](https://github.com/Tencent/tdesign-miniprogram/pull/1035))
+- `Upload`: 视觉升级 @LeeJim ([#1034](https://github.com/Tencent/tdesign-miniprogram/pull/1034))
+- `Image`: 视觉升级 @LeeJim ([#1038](https://github.com/Tencent/tdesign-miniprogram/pull/1038))
+- `Toast`: 视觉升级 @LeeJim ([#1073](https://github.com/Tencent/tdesign-miniprogram/pull/1073))
+- `Skeleton`: 视觉升级 @anlyyao ([#1037](https://github.com/Tencent/tdesign-miniprogram/pull/1037))
+- `Switch`: 视觉升级 @LeeJim ([#1080](https://github.com/Tencent/tdesign-miniprogram/pull/1080))
+- `Badge`: 视觉升级 @LeeJim ([#1004](https://github.com/Tencent/tdesign-miniprogram/pull/1004))
+- `Collapse`: 新增 theme 属性，支持 card 风格 @LeeJim ([#1039](https://github.com/Tencent/tdesign-miniprogram/pull/1039))
+- `Image`: 新增 `width` 和 `height` 属性用于控制图片尺寸 @LeeJim ([#1038](https://github.com/Tencent/tdesign-miniprogram/pull/1038))
+- `Empty`: 新增 iconProps 属性 @anlyyao ([#1041](https://github.com/Tencent/tdesign-miniprogram/pull/1041))
+- `Empty`: 新增 CSS Variables， 用于调整描述、操作内容文本颜色和间距等 @anlyyao ([#1041](https://github.com/Tencent/tdesign-miniprogram/pull/1041))
+- `Result`: 新增 iconProps 属性 @anlyyao ([#1040](https://github.com/Tencent/tdesign-miniprogram/pull/1040))
+- `Result`: 新增 CSS Variables， 用于调整标题、描述文本颜色 @anlyyao ([#1040](https://github.com/Tencent/tdesign-miniprogram/pull/1040))
+- `Skeleton`: 新增 CSS Variables， 用于调整骨架屏背景颜色、行间距等 @anlyyao ([#1037](https://github.com/Tencent/tdesign-miniprogram/pull/1037))
+- `ImageViewer`: 新增 closeIconProps 和 deleteIconProps 属性 @anlyyao ([#1074](https://github.com/Tencent/tdesign-miniprogram/pull/1074))
+- `ImageViewer`: 新增 CSS Variables， 用于调整操作条背景、文本颜色等 @anlyyao ([#1074](https://github.com/Tencent/tdesign-miniprogram/pull/1074))
+- `Footer`: 新增 CSS Variables， 用于调整页脚文本大小、颜色等 @anlyyao ([#1042](https://github.com/Tencent/tdesign-miniprogram/pull/1042))
+- `Switch`: 新增 icon 属性，用于显示开关的图标 @LeeJim ([#1080](https://github.com/Tencent/tdesign-miniprogram/pull/1080))
+- `Avatar`: 新增 CSS Variables， 用于调整头像背景、文本颜色 @anlyyao ([#1076](https://github.com/Tencent/tdesign-miniprogram/pull/1076))
+- `Avatar`: 支持 imageProps，并新增 iconProps 和 bordered 属性 @anlyyao ([#1076](https://github.com/Tencent/tdesign-miniprogram/pull/1076))
+
+### 🐞 Bug Fixes
+- `Switch`: 修复 size、loading 不生效的问题 @LeeJim ([#1080](https://github.com/Tencent/tdesign-miniprogram/pull/1080))
+- `Avatar`: 修复 alt 属性无效 @anlyyao ([#1076](https://github.com/Tencent/tdesign-miniprogram/pull/1076))
+- `NavBar`: 使用正确的状态栏高度 @LeeJim ([#1083](https://github.com/Tencent/tdesign-miniprogram/pull/1083))
+- `Search`: 修复插槽需要对应值为空时才渲染的问题 @LeeJim ([#1087](https://github.com/Tencent/tdesign-miniprogram/pull/1087))
+
 ## 🌈 0.26.0 `2022-11-14` 
 ### ❗ Breaking Changes
 - `Textarea`: 调整 confirm-type 的默认值为 return @LeeJim ([#1007](https://github.com/Tencent/tdesign-miniprogram/pull/1007))

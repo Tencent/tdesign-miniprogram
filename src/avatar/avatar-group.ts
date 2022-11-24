@@ -17,7 +17,6 @@ export default class AvatarGroup extends SuperComponent {
     hasChild: true,
     length: 0,
     className: '',
-    borderSize: '',
   };
 
   options = {
@@ -41,7 +40,6 @@ export default class AvatarGroup extends SuperComponent {
     this.handleChildSlot(this.properties.max, this.children, this.handleChildMax);
     this.handleChildSize(this.properties.size, this.children);
     this.handleChildCascading(this.properties.cascading, this.children);
-    this.handleChildBorder(this.properties.size, this.children);
   }
 
   lifetimes = {
@@ -139,15 +137,6 @@ export default class AvatarGroup extends SuperComponent {
       const defaultZIndex = 100;
       children.forEach((child, index) => {
         child.updateCascading(defaultZIndex - index * 10);
-      });
-    },
-    handleChildBorder(size, children) {
-      const borderSize = this.isINcludePX(size) ? 'medium' : size;
-      this.setData({
-        borderSize,
-      });
-      children.forEach((child) => {
-        child.updateBorder(borderSize);
       });
     },
   };

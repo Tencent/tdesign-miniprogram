@@ -17,7 +17,7 @@ exports[`search Props :base 1`] = `
         >
           <wx-view
             class="t-icon t-class"
-            style="font-size: 20px"
+            style="font-size: 24px"
             bind:tap="onTap"
           >
             <wx-label

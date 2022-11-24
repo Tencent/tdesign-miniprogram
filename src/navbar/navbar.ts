@@ -77,7 +77,9 @@ export default class Navbar extends SuperComponent {
         const ios = !!(res.system.toLowerCase().search('ios') + 1);
         const navbarHeight = ios ? 44 : 48;
         const boxStyleList = [];
-        boxStyleList.push(`--narbar-padding-top:${(rect.bottom + rect.top) / 2 - navbarHeight / 2}px;`);
+        const { statusBarHeight } = wx.getSystemInfoSync();
+
+        boxStyleList.push(`--td-navbar-padding-top:${statusBarHeight}px;`);
         if (rect && res?.windowWidth) {
           boxStyleList.push(`--navbar-right:${res.windowWidth - rect.left}px;`); // 导航栏右侧小程序胶囊按钮宽度
         }

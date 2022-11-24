@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['action', 'exhibition', 'shape', 'size'];
+const mapper = ['action', 'badge-avatar', 'character-avatar', 'exhibition', 'icon-avatar', 'image-avatar', 'size'];
 
 describe('Avatar', () => {
   mapper.forEach((demoName) => {

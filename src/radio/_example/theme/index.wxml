@@ -1,0 +1,5 @@
+<t-radio default-checked="{{true}}" icon="line" label="单选" />
+
+<view class="gutter" style="height: 32rpx"></view>
+
+<t-radio default-checked="{{true}}" icon="dot" label="单选" />

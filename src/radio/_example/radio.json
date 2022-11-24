@@ -1,13 +1,12 @@
 {
-  "navigationBarTitleText": "radio 单选框",
+  "navigationBarTitleText": "Radio 单选框",
   "usingComponents": {
+    "horizontal": "./horizontal",
     "base": "./base",
-    "left-round": "./left-round",
-    "right-round": "./right-round",
-    "left-hook-shape": "./left-hook-shape",
-    "right-hook-shape": "./right-hook-shape",
+    "align": "./align",
+    "card": "./card",
     "status": "./status",
-    "size": "./size",
+    "theme": "./theme",
     "special": "./special"
   }
 }

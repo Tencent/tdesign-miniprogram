@@ -1,5 +1,5 @@
 const ux = {
-  name: '消息提醒',
+  name: '反馈',
   icon: 'chat',
   childArr: [
     {
@@ -7,16 +7,12 @@ const ux = {
       label: '动作面板',
     },
     {
-      name: 'BackTop',
-      label: '返回顶部',
-    },
-    {
       name: 'Dialog',
       label: '对话框',
     },
     {
-      name: 'Drawer',
-      label: '抽屉',
+      name: 'DropdownMenu',
+      label: '下拉菜单',
     },
     {
       name: 'Loading',
@@ -41,10 +37,6 @@ const ux = {
     {
       name: 'Popup',
       label: '弹出层',
-    },
-    {
-      name: 'Progress',
-      label: '进度条',
     },
     {
       name: 'PullDownRefresh',

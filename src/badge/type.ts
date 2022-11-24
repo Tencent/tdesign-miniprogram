@@ -73,7 +73,7 @@ export interface TdBadgeProps {
    */
   shape?: {
     type: StringConstructor;
-    value?: 'circle' | 'square' | 'round' | 'ribbon';
+    value?: 'circle' | 'round' | 'ribbon' | 'bubble';
   };
   /**
    * 当数值为 0 时，是否展示徽标

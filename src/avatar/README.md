@@ -17,35 +17,40 @@ isComponent: true
 }
 ```
 
-### 主题定制
-CSS 变量名|说明
---|--
---td-avatar-bg-color | 头像背景颜色;
---td-avatar-content-color | 头像内容（文字、图标）颜色;
---td-avatar-group-border-color | 组合头像边框颜色;
-
 ## 代码演示
 
-### 基础头像
+### 头像类型
 
-头像样式可为默认头像、微信头像圆形、方形、自定义文字
+图片头像
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/avatar-2.png" width="375px" height="50%">
+{{ image-avatar }}
 
-{{ shape }}
+字符头像
 
-### 纯展示 从上往下
-<img src="https://tdesign.gtimg.com/miniprogram/readme/avatar-1.png" width="375px" height="50%">
+{{ character-avatar }}
+
+图标头像
+
+{{ icon-avatar }}
+
+徽标头像
+
+{{ badge-avatar }}
+
+
+### 组合头像
+
+纯展示
 
 {{ exhibition }}
 
-### 带操作 从下往上
+带操作
 
 {{ action }}
 
-### 头像大小尺寸及消息提醒
+### 头像尺寸
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/avatar-3.png" width="375px" height="50%">
+头像 large/medium/small 尺寸
 
 {{ size }}
 
@@ -60,10 +65,12 @@ custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class', 't-class-image', 't-class-icon', 't-class-alt', 't-class-content']` | N
 hide-on-load-failed | Boolean | false | 加载失败时隐藏图片 | N
 icon | String / Slot | - | 图标 | N
+icon-props | Object | {} | 图标属性，透传至 icon | N
 image | String | - | 图片地址 | N
-image-props | Object | - | 【开发中】透传至 Image 组件 | N
+image-props | Object | - | 透传至 Image 组件 | N
 shape | String | circle | 形状。可选项：circle/round。TS 类型：`ShapeEnum ` `type ShapeEnum = 'circle' \| 'round'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
 size | String | - | 尺寸，示例值：small/medium/large/24px/38px 等，默认为 large | N
+bordered | Boolean | false | 是否显示外边框 | N
 
 ### Avatar Events
 

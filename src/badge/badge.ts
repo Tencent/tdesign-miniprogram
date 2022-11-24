@@ -11,7 +11,7 @@ export interface BadgeProps extends TdBadgeProps {}
 @wxComponent()
 export default class Badge extends SuperComponent {
   options = {
-    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+    multipleSlots: true,
   };
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-count`, `${prefix}-class-content`];

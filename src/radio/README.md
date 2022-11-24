@@ -17,66 +17,35 @@ isComponent: true
 }
 ```
 
-### 主题定制
-
-CSS 变量名|说明
---|--
---td-radio-bg-color | 背景颜色
---td-radio-border-color | 底部边框颜色
---td-radio-label-color | 主文案颜色
---td-radio-label-disabled-color | 禁用态主文案颜色
---td-radio-content-color | 单选内容颜色
---td-radio-content-disabled-color | 禁用态单选内容颜色
---td-radio-icon-color | 图标颜色
---td-radio-icon-checked-color | 选中态图标颜色
---td-radio-icon-disabled-color | 禁用态图标颜色
-
 ## 代码演示
 
-### 单个单选框
+### 纵向单选框
 
 {{ base }}
 
-### 左侧圆形单选框
+### 横向单选框
 
-{{ left-round }}
+{{ horizontal }}
 
-### 右侧圆形单选框
-
-{{ right-round }}
-
-### 左侧勾形单选框
-
-{{ left-hook-shape }}
-
-### 右侧勾形单选框
-
-{{ right-hook-shape }}
-
-### 禁用状态
+### 单选框状态
 
 {{ status }}
 
-### 特殊类型
+### 勾选样式
+
+{{ theme }}
+
+### 勾选显示位置
+
+{{ align }}
+
+### 非通栏单选样式
+
+{{ card }}
+
+### 特殊样式
 
 {{ special }}
-
-### 不同尺寸
-
-{{ size }}
-
-### 组合单选框
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/radio.png" width="375px" height="50%">
-{{ group }}
-
-### 受控用法
-
-{{ controll }}
-
-### 使用 options
-
-{{ options }}
 
 ## API
 ### Radio Props
@@ -85,6 +54,7 @@ CSS 变量名|说明
 -- | -- | -- | -- | --
 align | String | left | 复选框和内容相对位置。可选项：left/right | N
 allow-uncheck | Boolean | false | 【开发中】是否允许取消选中 | N
+block | Boolean | true | 是否为块级元素 | N
 checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
 content | String / Slot | - | 单选内容 | N
@@ -92,7 +62,7 @@ content-disabled | Boolean | false | 是否禁用组件内容（content）触发
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | undefined | 是否为禁用态 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层、单选图标、主文案、内容 等元素类名。`['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border']` | N
-icon | String / Array | 'fill-circle' | 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标。TS 类型：`'fill-circle' \| 'stroke-line' \| Array<string>` | N
+icon | String / Array | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标。TS 类型：`'circle' | 'line' ｜ 'dot' | Array<string>` | N
 label | String / Slot | - | 主文案 | N
 max-content-row | Number | 5 | 内容最大行数限制 | N
 max-label-row | Number | 3 | 主文案最大行数限制 | N
@@ -109,7 +79,7 @@ change | `(checked: boolean)` | 值变化时触发
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-align | String | left | 复选框和内容相对位置；仅在使用 options 时生效。可选项：left/right | N
+align | String | null | 复选框和内容相对位置；仅在使用 options 时生效。可选项：left/right | N
 borderless | Boolean | false | 是否开启无边框模式 | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | undefined | 是否禁用全部子单选框 | N

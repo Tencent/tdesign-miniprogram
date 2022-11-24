@@ -18,11 +18,17 @@ isComponent: true
 
 ## 代码演示
 
-### 结果状态
+### 类型
+
+基础结果
 
 {{ theme }}
 
-### 自定义结果
+带描述的结果
+
+{{ description }}
+
+自定义结果
 
 {{ custom }}
 
