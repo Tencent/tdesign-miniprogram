@@ -47,7 +47,7 @@
     </view>
   </t-sticky>
   <view
-    class="{{classPrefix}}__content {{classPrefix}}__content--{{animation ? 'animated' : ''}}"
+    class="{{_.cls(classPrefix + '__content', [['animated', animation]])}}"
     bind:touchstart="onTouchStart"
     bind:touchmove="onTouchMove"
     bind:touchend="onTouchEnd"
