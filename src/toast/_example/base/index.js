@@ -43,7 +43,6 @@ Page({
       message: '加载中...',
       theme: 'loading',
       direction: 'column',
-      duration: 0,
     });
   },
 });
