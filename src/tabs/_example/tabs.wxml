@@ -12,6 +12,7 @@
   </t-demo>
   <t-demo desc="带内容区选项卡">
     <with-content />
+    <vertical />
   </t-demo>
   <t-demo title="02 组件状态" desc="选项卡状态">
     <status />

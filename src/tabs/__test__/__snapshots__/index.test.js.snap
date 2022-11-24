@@ -99,7 +99,7 @@ exports[`tabs :base 1`] = `
     >
       <wx-view
         class="t-tabs__content-inner"
-        style=""
+        style="--td-tab-content-transition-duration: 0s;;transform: translate3d( 0,0%, 0)"
       >
         <t-tab-panel
           id="first"
