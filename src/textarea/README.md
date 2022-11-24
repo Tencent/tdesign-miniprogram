@@ -18,7 +18,7 @@ isComponent: true
 
 ## 代码演示
 
-### 类型
+### 组件类型
 
 基础多行文本框
 
@@ -41,13 +41,13 @@ isComponent: true
 
 {{ maxcharacter }}
 
-### 状态
+### 组件状态
 
 禁用多行文本框
 
 {{ disabled }}
 
-### 自定义样式
+### 自定义组件样式
 
 标签外置输入框
 
