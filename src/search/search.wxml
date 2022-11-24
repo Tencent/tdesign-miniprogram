@@ -21,7 +21,13 @@
       bind:blur="onBlur"
       bind:confirm="onConfirm"
     />
-    <view wx:if="{{value !==''}}" class="{{classPrefix}}__right {{prefix}}-class-right" bind:tap="handleClear">
+    <view
+      wx:if="{{value !==''}}"
+      class="{{classPrefix}}__right {{prefix}}-class-right"
+      bind:tap="handleClear"
+      aria-role="button"
+      aria-label="clear"
+    >
       <t-icon
         wx:if="{{rightIcon}}"
         name="{{rightIcon}}"
@@ -32,7 +38,12 @@
       <slot name="right-icon" />
     </view>
   </view>
-  <view wx:if="{{action}}" class="{{classPrefix}}__search-action {{prefix}}-class-action" bindtap="onActionClick">
+  <view
+    wx:if="{{action}}"
+    class="{{classPrefix}}__search-action {{prefix}}-class-action"
+    bindtap="onActionClick"
+    aria-role="button"
+  >
     {{action}}
   </view>
   <slot name="action-text" />
