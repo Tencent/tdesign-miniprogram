@@ -5,18 +5,21 @@
     <base />
   </t-demo>
   <t-demo title="" desc="带标题多行文本框">
-    <labelDemo />
+    <label />
   </t-demo>
   <t-demo title="" desc="自动增高多行文本框">
     <autosize />
   </t-demo>
+  <t-demo desc="设置最大字符个数">
+    <maxlength />
+  </t-demo>
+  <t-demo desc="设置最大字符个数，一个汉字表示两个字符">
+    <maxcharacter />
+  </t-demo>
   <t-demo title="02 状态" desc="禁用多行文本框">
     <disabled />
   </t-demo>
-  <t-demo title="03 字符限制" desc="设置最大字符个数">
-    <maxlength />
-  </t-demo>
-  <t-demo title="" desc="设置最大字符个数，一个汉字表示两个字符">
-    <maxcharacter />
+  <t-demo title="03 自定义样式" desc="标签外置输入框">
+    <custom />
   </t-demo>
 </view>

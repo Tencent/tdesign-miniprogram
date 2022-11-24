@@ -18,32 +18,40 @@ isComponent: true
 
 ## 代码演示
 
-### 基础多行文本框
+### 类型
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/input-2.png" width="375px" height="50%">
+基础多行文本框
 
 {{ base }}
 
-### 带标题多行文本框
+带标题多行文本框
 
 {{ label }}
 
-### 自动增高多行文本框
+自动增高多行文本框
 
 {{ autoSize }}
 
-### 禁用多行文本框
 
-{{ disabled }}
-
-### 设置最大字符个数
+设置最大字符个数
 
 {{ maxlength }}
 
-### 设置最大字符个数，一个汉字表示两个字符
+设置最大字符个数，一个汉字表示两个字符
 
 {{ maxcharacter }}
 
+### 状态
+
+禁用多行文本框
+
+{{ disabled }}
+
+### 自定义样式
+
+标签外置输入框
+
+{{ custom }}
 ## 提示
 
 - 如果需要在页面中调整 `textarea` 中 `placeholder` 样式，请使用名称为`t-textarea__placeholder`的Class选择器，直接覆盖组件内部样式（注意权重）。
@@ -61,14 +69,18 @@ confirm-type | String | done | 设置键盘右下角按钮的文字，仅在 typ
 cursor-spacing | Number | 0 | 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用文本框 | N
-external-classes | Array | - | 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名。`['t-class', 't-class-textarea', 't-class-label']` | N
+external-classes | Array | - | 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名。`['t-class', 't-class-textarea', 't-class-label, 't-class-indicator]` | N
 focus | Boolean | false | 自动聚焦 | N
 label | String / Slot | - | 左侧文本 | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 | N
-maxlength | Number | - | 用户最多可以输入的字符个数 | N
+maxlength | Number | -1 | 用户最多可以输入的字符个数。默认为 -1，不限制输入长度 | N
+indicator | Boolean | false | 显示文本计数器，如 0/140。当 `maxlength < 0 && maxcharacter < 0` 成立时， indicator无效 | N
 placeholder | String | undefined | 占位符 | N
+placeholderStyle | String | '' | 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight | N
 value | String | - | 文本框值 | N
 default-value | String | undefined | 文本框值。非受控属性 | N
+fixed | Boolean | false | 如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true | N
+bordered | Boolean | false | 是否显示外边框 | N
 
 ### Textarea Events
 
