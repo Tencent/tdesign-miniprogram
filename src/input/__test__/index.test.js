@@ -63,10 +63,10 @@ describe('input', () => {
         class="base"
         align="{{align}}"
         size="{{size}}"
-        bordered="{{bordered}}"
+        borderless="{{borderless}}"
         ></t-input>`,
         data: {
-          bordered: true,
+          borderless: false,
           align: 'center',
           size: 'small',
         },
@@ -78,7 +78,7 @@ describe('input', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const component = comp.querySelector('.base >>> .t-input__content');
-      expect(component.dom.getAttribute('class').includes('t-is-border')).toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-input--border')).toBeTruthy();
 
       expect(
         comp.querySelector('.base >>> .t-input').dom.getAttribute('class').includes('t-input--size-small'),

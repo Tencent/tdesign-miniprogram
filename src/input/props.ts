@@ -16,10 +16,10 @@ const props: TdInputProps = {
     type: String,
     value: 'horizontal',
   },
-  /** 是否显示外边框 */
-  bordered: {
+  /** 是否开启无边框模式 */
+  borderless: {
     type: Boolean,
-    value: false,
+    value: true,
   },
   /** 是否可清空 */
   clearable: {

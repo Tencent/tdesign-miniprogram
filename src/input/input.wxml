@@ -24,7 +24,7 @@
 
   <view class="{{classPrefix}}__wrap">
     <view
-      class="{{classPrefix}}__content {{prefix}}-is-{{status}} {{bordered ? prefix + '-is-border' : ''}} {{ focus ? prefix + '-is-focus' : ''}}"
+      class="{{classPrefix}}__content {{prefix}}-is-{{status}}  {{borderless ? '' : classPrefix + '--border'}} {{ focus ? prefix + '-is-focus' : ''}}"
     >
       <input
         disabled="{{disabled}}"

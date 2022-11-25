@@ -21,10 +21,11 @@ export interface TdInputProps {
     type: StringConstructor;
     value?: 'horizontal' | 'vertical';
   };
-  /** 是否显示外边框
-   * @default false
+  /**
+   * 是否开启无边框模式
+   * @default true
    */
-  bordered: {
+  borderless?: {
     type: BooleanConstructor;
     value?: boolean;
   };

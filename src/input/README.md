@@ -65,7 +65,7 @@ isComponent: true
 -- | -- | -- | -- | --
 align | String | left | 文本内容位置，居左/居中/居右。可选项：left/center/right | N
 layout | String | horizontal | 标题输入框布局方式。可选项：vertical/horizontal | N
-bordered | Boolean | false | 是否显示外边框 | N
+borderless | Boolean | true | 是否开启无边框模式 | N
 clearable | Boolean | false | 是否可清空 | N
 clearable-icon-props | Object | {} | 透传至组件清楚图标 `icon` | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
@@ -86,7 +86,7 @@ suffix | String / Slot | - | 后置图标前的后置内容 | N
 suffix-icon | String / Slot | - | 后置文本内容，值为字符串则表示图标名称 | N
 suffix-icon-props | Object | {} | 透传至组件后缀图标 `suffix-icon` | N
 tips | String / Slot | - | 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式 | N
-type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password | N
+type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password/nickname | N
 value | String / Number | - | 输入框的值。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 default-value | String / Number | undefined | 输入框的值。非受控属性。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 password | Boolean | false | 是否是密码类型（已废弃，请更为使用 type 指定输入框类型） | N

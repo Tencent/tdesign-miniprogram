@@ -65,21 +65,21 @@ exports[`Input Input base demo works fine 1`] = `
 exports[`Input Input bordered demo works fine 1`] = `
 <bordered>
   <t-input
-    bordered="{{true}}"
+    borderless="{{false}}"
     placeholder="请输入文字"
   />
   <t-input
-    bordered="{{true}}"
+    borderless="{{false}}"
     placeholder="请输入文字"
     status="success"
   />
   <t-input
-    bordered="{{true}}"
+    borderless="{{false}}"
     placeholder="请输入文字"
     status="warning"
   />
   <t-input
-    bordered="{{true}}"
+    borderless="{{false}}"
     placeholder="请输入文字"
     status="error"
     suffixIcon="error-circle-filled"

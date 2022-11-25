@@ -160,17 +160,17 @@
     line-height: 40rpx;
     padding-top: (@spacer / 2);
   }
-}
 
-.@{prefix}-is-border {
-  padding: 24rpx 32rpx;
-  border-radius: @input-border-radius;
-  border: 3rpx solid @input-default-border-color;
+  &--border {
+    padding: 24rpx 32rpx;
+    border-radius: @input-border-radius;
+    border: 3rpx solid @input-default-border-color;
+  }
 }
 
 &.@{prefix}-is-focus {
   border-color: @input-default-focus-border-color;
-  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.05), 0 4px 5px 0 rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.12);
+  box-shadow: @shadow-1;
 }
 
 .input-status(@status) {
@@ -178,7 +178,7 @@
     @borderColor: 'input-@{status}-border-color';
     @tipsColor: 'input-@{status}-tips-color';
 
-    &.@{prefix}-is-border {
+    &.@{prefix}-input--border {
       border-color: @@borderColor;
     }
 

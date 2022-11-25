@@ -25,7 +25,7 @@ exports[`input props : clearable && label && suffix 1`] = `
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content t-is-default  "
+        class="t-input__content t-is-default   "
       >
         <wx-input
           adjustPosition="{{true}}"
@@ -133,7 +133,7 @@ exports[`input slots : label 1`] = `
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content t-is-default  "
+        class="t-input__content t-is-default   "
       >
         <wx-input
           adjustPosition="{{true}}"
