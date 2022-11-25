@@ -140,14 +140,8 @@ export default class Tabs extends SuperComponent {
     }
   }
 
-  calcScrollOffset(
-    containerWidth: number,
-    targetLeft: number,
-    targetWidth: number,
-    offset: number,
-    currentIndex: number,
-  ) {
-    return currentIndex * targetWidth - (1 / 2) * containerWidth + targetWidth / 2;
+  calcScrollOffset(containerWidth: number, targetLeft: number, targetWidth: number, offset: number) {
+    return offset + targetLeft - (1 / 2) * containerWidth + targetWidth / 2;
   }
 
   getTrackSize() {
@@ -187,16 +181,12 @@ export default class Tabs extends SuperComponent {
       }
 
       if (this.containerWidth) {
-        const offset = this.calcScrollOffset(
-          this.containerWidth,
-          rect.left,
-          rect.width,
-          this.data.offset,
-          currentIndex,
-        );
-        this.setData({
-          offset,
-        });
+        const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.data.offset);
+        if (offset > 0) {
+          this.setData({
+            offset,
+          });
+        }
       }
 
       if (isScrollX) {
