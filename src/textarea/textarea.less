@@ -1,44 +1,58 @@
 @import '../common/style/index.less';
 
-@textarea-background-color: @bg-color-block;
-@textarea-text-color: @text-level-1-color;
-@textarea-placeholder-text-color: @text-level-4-color;
-@textarea-disabled-text-color: @text-level-1-color;
-@textarea-placeholder-text-color: @text-level-3-color;
-@textarea-font-size: 32rpx;
-@textarea-line-height: 48rpx;
-@textarea-count-font-size: 24rpx;
-@textarea-vertical-padding: 24rpx;
-@textarea-horizontal-padding: 32rpx;
+@textarea-height: 72px; // 指定文本框高度
+@textarea-vertical-padding: 32rpx; // 文本框垂直方向间距
+@textarea-horizontal-padding: 32rpx; // 文本框水平方向间距
+@textarea-text-line-height: 48rpx; // 输入框文本行高
+@textarea-label-line-height: 44px; // 标签文本行高
+@textarea-label-padding-bottom: @spacer;
+@textarea-indicator-text-line-height: 40rpx; // 计数器文本行高
+@textarea-indicator-text-padding-top: @spacer; // 计数器文本顶部间距
+@textarea-indicator-text-align: right; // 计数器文本对齐方式
+@textarea-border-width: 2rpx; // 文本框边框大小
+@textarea-indicator-text-font-size: @spacer-1; // 计数器文本大小
+@textarea-label-font-size: @font-size-base; // 标签文本大小
+@textarea-text-font-size: @font-size-m; // 输入框文本大小
+@textarea-placeholder-font-size: @font-size-m; // 占位符文本大小
+
+// 文本框背景颜色
+@textarea-background-color: var(--td-textarea-background-color, @bg-color-block);
+// 占位符文本颜色
+@textarea-placeholder-color: var(--td-textarea-placeholder-color, @font-gray-3);
+// 输入框文本颜色
+@textarea-text-color: var(--td-textarea-text-color, @font-gray-1);
+// 标签文本颜色
+@textarea-label-color: var(--td-textarea-label-color, @font-gray-1);
+// 计数器文本颜色
+@textarea-indicator-text-color: var(--td-textarea-indicator-text-color, @font-gray-3);
+// 文本框圆角大小
+@textarea-border-radius: var(--td-textarea-border-radius, @radius-default);
+// 文本框边框颜色
+@textarea-border-color: var(--td-textarea-border-color, rgba(220, 220, 220, 1));
+// 文本框禁用状态时的输入文本颜色
+@textarea-disabled-text-color: var(--td-textarea-disabled-text-color, @font-gray-4);
 
 .@{prefix}-textarea {
-  position: relative;
-  background-color: #fff;
+  padding: @textarea-vertical-padding @textarea-horizontal-padding;
+  background-color: @textarea-background-color;
 
-  &__name:not(:empty) {
-    position: relative;
-    padding: @textarea-vertical-padding @textarea-horizontal-padding;
-    font-size: @textarea-font-size;
-    color: @textarea-text-color;
+  &__label:not(:empty) {
+    font-size: @textarea-label-font-size;
+    color: @textarea-label-color;
+    line-height: @textarea-label-line-height;
+    padding-bottom: @textarea-label-padding-bottom;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-
-    &::after {
-      .hairline-bottom();
-      left: @textarea-horizontal-padding;
-    }
   }
 
   &__wrapper {
-    padding: @textarea-vertical-padding @textarea-horizontal-padding;
-    font-size: @textarea-font-size;
-    color: @textarea-text-color;
+    width: 100%;
 
-    &-textarea {
-      display: block;
+    &-inner {
       box-sizing: border-box;
-      width: 100%;
+      width: inherit;
+      height: @textarea-height;
       min-width: 0;
       margin: 0;
       padding: 0;
@@ -46,20 +60,31 @@
       background-color: transparent;
       border: 0;
       resize: none;
-      font-size: @textarea-font-size;
-      line-height: @textarea-line-height;
+      font-size: @textarea-text-font-size;
+      color: @textarea-text-font-size;
+      line-height: @textarea-text-line-height;
     }
   }
 
-  &__placeholder,
-  &__count {
-    color: @textarea-placeholder-text-color;
-    font-size: @textarea-font-size;
-    line-height: @textarea-line-height;
+  &__placeholder {
+    color: @textarea-placeholder-color;
+    font-size: @textarea-placeholder-font-size;
   }
 
-  &__count {
-    font-size: @textarea-count-font-size;
-    text-align: right;
+  &__indicator:not(:empty) {
+    color: @textarea-indicator-text-color;
+    font-size: @textarea-indicator-text-font-size;
+    text-align: @textarea-indicator-text-align;
+    line-height: @textarea-indicator-text-line-height;
+    padding-top: @textarea-indicator-text-padding-top;
+  }
+
+  &--border {
+    border-radius: @textarea-border-radius;
+    border: @textarea-border-width solid @textarea-border-color;
+  }
+
+  .@{prefix}-is-disabled {
+    color: @textarea-disabled-text-color;
   }
 }
