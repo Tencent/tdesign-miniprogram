@@ -1,134 +1,164 @@
 @import '../common/style/index.less';
 
-@countdown: ~"@{prefix}-count-down";
-@item: ~"@{countdown}__item";
-@split: ~"@{countdown}__split";
+@countdown-small-unit-margin: @spacer * 0.5; // 'small'尺寸单位分割文本左右间距
+@countdown-medium-unit-margin: @spacer * 0.625; // 'medium'尺寸单位分割文本左右间距
+@countdown-large-unit-margin: @spacer * 0.75; // 'large'尺寸单位分割文本左右间距
+@countdown-unit-color: @font-gray-1; // 带单位分割线文本颜色
+@countdown-no-unit-color: @error-color-6; // 无单位分割线文本颜色
+@countdown-large-no-unit-margin: @spacer * 0.75; // 'large'尺寸无单位分割文本左右间距
+@countdown-medium-no-unit-margin: @spacer * 0.375; // 'medium'尺寸无单位分割文本左右间距
+@countdown-small-no-unit-margin: @spacer * 0.25; // 'small'尺寸无单位分割文本左右间距
+@countdown-small-bg-width: 40rpx; // 'small'尺寸方/圆底背景宽高
+@countdown-medium-bg-width: 48rpx; // 'medium'尺寸方/圆底背景宽高
+@countdown-large-bg-width: 56rpx; // 'large'尺寸方/圆底背景宽高
+@countdown-small-default-font-size: @font-size-base; // 'small'尺寸纯数字倒计时文本大小
+@countdown-small-square-font-size: @font-size-s; // 'small'尺寸带方形底倒计时文本大小
+@countdown-small-round-font-size: @font-size-s; // 'small'尺寸带圆形底倒计时文本大小
+@countdown-small-light-font-size: @font-size-m; // 'small'尺寸高亮倒计时文本大小
+@countdown-small-unit-font-size: @font-size; // 'small'尺寸单位分割文本大小
+@countdown-small-no-unit-font-size: @font-size-base; // 'small'尺寸无单位分割文本大小
+@countdown-medium-default-font-size: @font-size-m; // 'medium'尺寸纯数字倒计时文本大小
+@countdown-medium-square-font-size: @font-size-base; // 'medium'尺寸带方形底倒计时文本大小
+@countdown-medium-round-font-size: @font-size-base; // 'medium'尺寸带圆形底倒计时文本大小
+@countdown-medium-light-font-size: @font-size * 1.8; // 'medium'尺寸高亮倒计时文本大小
+@countdown-medium-unit-font-size: @font-size-s; // 'medium'尺寸单位分割文本大小
+@countdown-medium-no-unit-font-size: @font-size-m; // 'medium'尺寸无单位分割文本大小
+@countdown-large-default-font-size: @font-size * 1.8; // 'large'尺寸纯数字倒计时文本大小
+@countdown-large-square-font-size: @font-size-m; // 'large'尺寸带方形底倒计时文本大小
+@countdown-large-round-font-size: @font-size-m; // 'large'尺寸带圆形底倒计时文本大小
+@countdown-large-light-font-size: @font-size * 1.8; // 'large'尺寸高亮倒计时文本大小
+@countdown-large-unit-font-size: @font-size-base; // 'large'尺寸单位分割文本大小
+@countdown-large-no-unit-font-size: @font-size * 1.8; // 'large'尺寸无单位分割文本大小
 
-@red: #e34d59;
-@gray: rgba(0, 0, 0, .4);
+// 纯数字倒计时文本颜色
+@countdown-default-text-color: var(--td-countdown-default-color, @font-gray-1);
+// 高亮倒计时文本颜色
+@countdown-light-color: var(--td-countdown-light-color, @error-color-6);
+// 方形/圆形底倒计时文本颜色
+@countdown-text-color: var(--td-countdown-round-color, @font-white-1);
+// 方形/圆形底背景颜色
+@countdown-bg-color: var(--td-countdown-bg-color, @error-color-6);
 
-.@{countdown} {
-  color: #323233;
-  font-size: 24rpx;
-  line-height: 34rpx;
-  font-family: 'DIN Alternate', 'Courier New', Courier, monospace;
+// 带方形底倒计时圆角大小
+@countdown-square-border-radius: var(--td-countdown-square-border-radius, @radius-small);
+// 带圆形底倒计时圆角大小
+@countdown-round-border-radius: var(--td-countdown-round-border-radius, @radius-circle);
 
-  &--square {
-    .@{item} {
-      border-radius: 8rpx;
+@countdown: ~'@{prefix}-count-down';
+@item: ~'@{countdown}__item';
+@split: ~'@{countdown}__split';
+
+.count-down-size(@size) {
+  .@{countdown} {
+    @defaultFontSize: 'countdown-@{size}-default-font-size';
+    @roundFontSize: 'countdown-@{size}-round-font-size';
+    @squareFontSize: 'countdown-@{size}-square-font-size';
+    @lightFontSize: 'countdown-@{size}-light-font-size';
+    @width: 'countdown-@{size}-bg-width';
+    @height: 'countdown-@{size}-bg-width';
+    @dotMargin: 'countdown-@{size}-no-unit-margin';
+    @dotFontSize: 'countdown-@{size}-no-unit-font-size';
+    @textMargin: 'countdown-@{size}-unit-margin';
+    @textFontSize: 'countdown-@{size}-unit-font-size';
+
+    &--@{size} {
+      &.@{countdown}--default {
+        font-size: @@defaultFontSize;
+      }
+
+      &.@{countdown}--round {
+        > .@{item} {
+          font-size: @@roundFontSize;
+        }
+      }
+
+      &.@{countdown}--square {
+        > .@{item} {
+          font-size: @@squareFontSize;
+        }
+      }
+
+      &.@{countdown}--light {
+        > .@{item} {
+          font-size: @@lightFontSize;
+        }
+      }
+
+      &.@{countdown}--round,
+      &.@{countdown}--square {
+        > .@{item} {
+          width: @@width;
+          height: @@height;
+        }
+      }
+
+      &.@{countdown}--round,
+      &.@{countdown}--square,
+      &.@{countdown}--light {
+        > .@{split}--dot {
+          margin: 0 @@dotMargin;
+          font-size: @@dotFontSize;
+          font-weight: 700;
+        }
+
+        > .@{split}--text {
+          margin: 0 @@textMargin;
+          font-size: @@textFontSize;
+        }
+      }
     }
   }
+}
 
-  &--round {
-    .@{item} {
-      border-radius: 50%;
-    }
+.count-down-size(small);
+.count-down-size(medium);
+.count-down-size(large);
+
+.@{countdown} {
+  font-family: 'DIN Alternate', 'Courier New', Courier, monospace;
+
+  .@{item},
+  .@{split} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &--square,
+  &--round,
+  &--light {
+    > .@{split}--dot {
+      color: @countdown-no-unit-color;
+    }
+
+    > .@{split}--text {
+      color: @countdown-unit-color;
+    }
+  }
+
+  &--default {
+    color: @countdown-default-text-color;
+  }
+
+  &--square {
+    color: @countdown-text-color;
+
+    > .@{item} {
+      border-radius: @countdown-square-border-radius;
+      background: @countdown-bg-color;
+    }
+  }
+
   &--round {
-    .@{item} {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;  
-      color: #fff;
-      background: @red;
-    }
+    color: @countdown-text-color;
 
-    .@{split} {
-      display: inline-flex;
-      align-items: center;
-      height: 40rpx;
-      margin: 0 8rpx;
-      font-size: 28rpx;
-      color: @red;
-      font-weight: 600;
-    }
-
-    .@{split}--text {
-      color: #333;
-      margin: 0 10rpx;
-      font-size: 20rpx;
-      font-weight: normal;
+    > .@{item} {
+      border-radius: @countdown-round-border-radius;
+      background: @countdown-bg-color;
     }
   }
 
-  &--small {
-    .@{item} {
-      width: 40rpx;
-      height: 40rpx;
-      font-size: 24rpx;
-    }
-  }
-
-  &--middle {
-    .@{item} {
-      width: 48rpx;
-      height: 48rpx;
-      font-size: 28rpx;
-    }
-
-    .@{split} {
-      font-size: 32rpx;
-      font-weight: 600;
-    }
-  }
-
-  &--large {
-    .@{item} {
-      width: 56rpx;
-      height: 56rpx;
-      font-size: 32rpx;
-    }
-
-    .@{split} {
-      font-size: 36rpx;
-      font-weight: 600;
-    }
-  }
-
-  &--highlight {
-    .@{item} {
-      width: 40rpx;
-      height: 48rpx;
-      color: @red;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32rpx;
-    }
-
-    .@{split} {
-      color: #333;
-      height: 48rpx;
-      display: inline-flex;
-      align-items: center;
-      margin: 0 6rpx;
-      font-size: 20rpx;
-    }
-  }
-}
-
-.base-time-square-l {
-  .item-dot {
-    color: @red;
-    height: 56rpx;
-    display: inline-flex;
-    align-items: center;
-    margin: 0 8rpx;
-    font-size: 36rpx;
-    font-weight: 600;
-  }
-}
-
-.base-time-square-m {
-  .item-dot {
-    color: @red;
-    height: 48rpx;
-    display: inline-flex;
-    align-items: center;
-    margin: 0 8rpx;
-    font-size: 32rpx;
-    font-weight: 600;
+  &--light {
+    color: @countdown-light-color;
   }
 }
