@@ -14,26 +14,26 @@
 @countdown-small-default-font-size: @font-size-base; // 'small'尺寸纯数字倒计时文本大小
 @countdown-small-square-font-size: @font-size-s; // 'small'尺寸带方形底倒计时文本大小
 @countdown-small-round-font-size: @font-size-s; // 'small'尺寸带圆形底倒计时文本大小
-@countdown-small-light-font-size: @font-size-m; // 'small'尺寸高亮倒计时文本大小
+@countdown-small-hightlight-font-size: @font-size-m; // 'small'尺寸高亮倒计时文本大小
 @countdown-small-unit-font-size: @font-size; // 'small'尺寸单位分割文本大小
 @countdown-small-no-unit-font-size: @font-size-base; // 'small'尺寸无单位分割文本大小
 @countdown-medium-default-font-size: @font-size-m; // 'medium'尺寸纯数字倒计时文本大小
 @countdown-medium-square-font-size: @font-size-base; // 'medium'尺寸带方形底倒计时文本大小
 @countdown-medium-round-font-size: @font-size-base; // 'medium'尺寸带圆形底倒计时文本大小
-@countdown-medium-light-font-size: @font-size * 1.8; // 'medium'尺寸高亮倒计时文本大小
+@countdown-medium-hightlight-font-size: @font-size * 1.8; // 'medium'尺寸高亮倒计时文本大小
 @countdown-medium-unit-font-size: @font-size-s; // 'medium'尺寸单位分割文本大小
 @countdown-medium-no-unit-font-size: @font-size-m; // 'medium'尺寸无单位分割文本大小
 @countdown-large-default-font-size: @font-size * 1.8; // 'large'尺寸纯数字倒计时文本大小
 @countdown-large-square-font-size: @font-size-m; // 'large'尺寸带方形底倒计时文本大小
 @countdown-large-round-font-size: @font-size-m; // 'large'尺寸带圆形底倒计时文本大小
-@countdown-large-light-font-size: @font-size * 1.8; // 'large'尺寸高亮倒计时文本大小
+@countdown-large-hightlight-font-size: @font-size * 1.8; // 'large'尺寸高亮倒计时文本大小
 @countdown-large-unit-font-size: @font-size-base; // 'large'尺寸单位分割文本大小
 @countdown-large-no-unit-font-size: @font-size * 1.8; // 'large'尺寸无单位分割文本大小
 
 // 纯数字倒计时文本颜色
 @countdown-default-text-color: var(--td-countdown-default-color, @font-gray-1);
 // 高亮倒计时文本颜色
-@countdown-light-color: var(--td-countdown-light-color, @error-color-6);
+@countdown-hightlight-color: var(--td-countdown-hightlight-color, @error-color-6);
 // 方形/圆形底倒计时文本颜色
 @countdown-text-color: var(--td-countdown-round-color, @font-white-1);
 // 方形/圆形底背景颜色
@@ -53,7 +53,7 @@
     @defaultFontSize: 'countdown-@{size}-default-font-size';
     @roundFontSize: 'countdown-@{size}-round-font-size';
     @squareFontSize: 'countdown-@{size}-square-font-size';
-    @lightFontSize: 'countdown-@{size}-light-font-size';
+    @hightlightFontSize: 'countdown-@{size}-hightlight-font-size';
     @width: 'countdown-@{size}-bg-width';
     @height: 'countdown-@{size}-bg-width';
     @dotMargin: 'countdown-@{size}-no-unit-margin';
@@ -78,9 +78,9 @@
         }
       }
 
-      &.@{countdown}--light {
+      &.@{countdown}--hightlight {
         > .@{item} {
-          font-size: @@lightFontSize;
+          font-size: @@hightlightFontSize;
         }
       }
 
@@ -94,7 +94,7 @@
 
       &.@{countdown}--round,
       &.@{countdown}--square,
-      &.@{countdown}--light {
+      &.@{countdown}--hightlight {
         > .@{split}--dot {
           margin: 0 @@dotMargin;
           font-size: @@dotFontSize;
@@ -126,7 +126,7 @@
 
   &--square,
   &--round,
-  &--light {
+  &--hightlight {
     > .@{split}--dot {
       color: @countdown-no-unit-color;
     }
@@ -158,7 +158,7 @@
     }
   }
 
-  &--light {
-    color: @countdown-light-color;
+  &--hightlight {
+    color: @countdown-hightlight-color;
   }
 }

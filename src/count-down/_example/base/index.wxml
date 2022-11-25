@@ -36,6 +36,6 @@
 <view class="demo-count-down">
   <text class="demo-count-down-desc"> 无底色带单位 </text>
   <view class="demo-count-down-content">
-    <t-count-down content="default" time="{{ time }}" splitWithUnit theme="light" />
+    <t-count-down content="default" time="{{ time }}" splitWithUnit theme="hightlight" />
   </view>
 </view>
