@@ -16,8 +16,6 @@
 
 .@{prefix}-navbar {
   overflow: hidden;
-  color: var(--td-navbar-color, @navbar-color);
-  background-color: var(--td-navbar-bg-color, @navbar-bg-color);
 
   &--fixed {
     .@{prefix}-navbar__content {
@@ -62,6 +60,8 @@
     width: calc(100% - var(--td-navbar-right, @navbar-right));
     padding-right: var(--td-navbar-right, @navbar-right);
     padding-top: var(--td-navbar-padding-top, @navbar-padding-top);
+    color: var(--td-navbar-color, @navbar-color);
+    background-color: var(--td-navbar-bg-color, @navbar-bg-color);
     display: flex;
     align-items: center;
   }
