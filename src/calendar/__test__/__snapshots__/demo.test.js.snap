@@ -17,9 +17,9 @@ exports[`Calendar Calendar base demo works fine 1`] = `
 exports[`Calendar Calendar custom-range demo works fine 1`] = `
 <custom-range>
   <t-calendar
-    maxDate="{{1645891200000}}"
+    maxDate="{{1669478400000}}"
     minDate="{{1643644800000}}"
-    value="{{1644854400000}}"
+    value="{{1652544000000}}"
     visible="{{false}}"
     bind:confirm="handleConfirm"
   />
