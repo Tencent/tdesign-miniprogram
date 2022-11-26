@@ -24,7 +24,15 @@ export default class Calendar extends SuperComponent {
     prefix,
     classPrefix: name,
     months: [],
+    scrollIntoView: '',
   };
+
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'confirm',
+    },
+  ];
 
   lifetimes = {
     ready() {
@@ -38,7 +46,32 @@ export default class Calendar extends SuperComponent {
         days: this.base.getDays(),
         confirmBtn,
       });
-      this.calcMonths();
+    },
+  };
+
+  observers = {
+    value(v) {
+      if (this.base) {
+        this.base.value = v;
+      }
+    },
+    visible(v) {
+      if (v) {
+        const { value } = this.data;
+
+        if (value) {
+          // 滚动到 value 对应的月份
+          const date = new Date(Array.isArray(value) ? value[0] : value);
+
+          if (date) {
+            this.setData({
+              scrollIntoView: `year_${date.getFullYear()}_month_${date.getMonth()}`,
+            });
+          }
+        }
+        this.base.value = this.data.value;
+        this.calcMonths();
+      }
     },
   };
 
@@ -58,14 +91,20 @@ export default class Calendar extends SuperComponent {
 
       if (date.type === 'disabled') return;
 
-      const value = this.base.select({ cellType: date.type, year, month, date: date.day });
-
-      this.base.value = value;
+      this.base.select({ cellType: date.type, year, month, date: date.day });
       this.calcMonths();
     },
     onTplButtonTap() {
-      const value = this.base.getTrimValue();
-      this.triggerEvent('confirm', { value });
+      const rawValue = this.base.getTrimValue();
+      let value: string | string[] = '';
+
+      if (Array.isArray(rawValue)) {
+        value = rawValue.map((item) => item.getTime());
+      } else {
+        value = rawValue.getTime();
+      }
+
+      this._trigger('confirm', { value });
     },
   };
 }
