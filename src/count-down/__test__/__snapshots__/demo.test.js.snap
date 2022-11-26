@@ -3,174 +3,345 @@
 exports[`CountDown CountDown base demo works fine 1`] = `
 <base>
   <wx-view
-    class="flex base-time"
+    class="demo-count-down"
   >
-    <t-count-down
-      tClass="base-time-cls"
-      time="{{5760000}}"
-    />
-    <wx-view
-      class="base-time-text"
+    <wx-text
+      class="demo-count-down-desc"
     >
        时分秒 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        time="{{5760000}}"
+      />
     </wx-view>
   </wx-view>
   <wx-view
-    class="flex base-time"
+    class="demo-count-down"
   >
-    <t-count-down
-      format="HH:mm:ss:SSS"
-      millisecond="{{true}}"
-      tClass="base-time-cls"
-      time="{{5760000}}"
-    />
-    <wx-view
-      class="base-time-text"
+    <wx-text
+      class="demo-count-down-desc"
     >
        带毫秒 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss:SSS"
+        millisecond="{{true}}"
+        time="{{5760000}}"
+      />
     </wx-view>
   </wx-view>
   <wx-view
-    class="flex base-time"
+    class="demo-count-down"
   >
-    <t-count-down
-      content="default"
-      theme="square"
-      time="{{5760000}}"
-    />
-    <wx-view
-      class="base-time-text"
+    <wx-text
+      class="demo-count-down-desc"
     >
        带方形底 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        content="default"
+        theme="square"
+        time="{{5760000}}"
+      />
     </wx-view>
   </wx-view>
   <wx-view
-    class="flex base-time"
+    class="demo-count-down"
   >
-    <t-count-down
-      content="default"
-      theme="round"
-      time="{{5760000}}"
-    />
-    <wx-view
-      class="base-time-text"
+    <wx-text
+      class="demo-count-down-desc"
     >
        带圆形底 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        content="default"
+        theme="round"
+        time="{{5760000}}"
+      />
     </wx-view>
   </wx-view>
   <wx-view
-    class="flex base-time"
+    class="demo-count-down"
   >
-    <t-count-down
-      content="default"
-      splitWithUnit="{{true}}"
-      theme="round"
-      time="{{5760000}}"
-    />
-    <wx-view
-      class="base-time-text"
+    <wx-text
+      class="demo-count-down-desc"
     >
        带单位 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        content="default"
+        splitWithUnit="{{true}}"
+        theme="round"
+        time="{{5760000}}"
+      />
     </wx-view>
   </wx-view>
   <wx-view
-    class="flex base-time"
+    class="demo-count-down"
   >
-    <t-count-down
-      content="default"
-      splitWithUnit="{{true}}"
-      theme="highlight"
-      time="{{5760000}}"
-    />
-    <wx-view
-      class="base-time-text"
+    <wx-text
+      class="demo-count-down-desc"
     >
        无底色带单位 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        content="default"
+        splitWithUnit="{{true}}"
+        theme="hightlight"
+        time="{{5760000}}"
+      />
     </wx-view>
   </wx-view>
 </base>
 `;
 
-exports[`CountDown CountDown sizeCountDown demo works fine 1`] = `
-<sizeCountDown>
+exports[`CountDown CountDown size demo works fine 1`] = `
+<size>
   <wx-view
-    class="flex spec-item"
+    class="demo-count-down"
   >
+    <wx-text
+      class="demo-count-down-desc"
+    >
+       时分秒 
+    </wx-text>
     <wx-view
-      class="spec-item-left"
+      class="demo-count-down-content"
     >
       <t-count-down
-        content="default"
-        theme="square"
+        size="small"
         time="{{5760000}}"
       />
     </wx-view>
     <wx-view
-      class="spec-item-right"
+      class="demo-count-down-content"
     >
       <t-count-down
         time="{{5760000}}"
       />
     </wx-view>
     <wx-view
-      class="spec-item-after"
-    >
-       S 
-    </wx-view>
-  </wx-view>
-  <wx-view
-    class="flex spec-item"
-  >
-    <wx-view
-      class="spec-item-left"
-    >
-      <t-count-down
-        content="default"
-        size="middle"
-        theme="square"
-        time="{{5760000}}"
-      />
-    </wx-view>
-    <wx-view
-      class="spec-item-right"
-    >
-      <t-count-down
-        size="middle"
-        time="{{5760000}}"
-      />
-    </wx-view>
-    <wx-view
-      class="spec-item-after"
-    >
-       M 
-    </wx-view>
-  </wx-view>
-  <wx-view
-    class="flex spec-item last-padding"
-  >
-    <wx-view
-      class="spec-item-left"
-    >
-      <t-count-down
-        content="default"
-        size="large"
-        theme="square"
-        time="{{5760000}}"
-      />
-    </wx-view>
-    <wx-view
-      class="spec-item-right"
+      class="demo-count-down-content"
     >
       <t-count-down
         size="large"
         time="{{5760000}}"
       />
     </wx-view>
-    <wx-view
-      class="spec-item-after"
+  </wx-view>
+  <wx-view
+    class="demo-count-down"
+  >
+    <wx-text
+      class="demo-count-down-desc"
     >
-       L 
+       带毫秒 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss:SSS"
+        millisecond="{{true}}"
+        size="small"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss:SSS"
+        millisecond="{{true}}"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss:SSS"
+        millisecond="{{true}}"
+        size="large"
+        time="{{5760000}}"
+      />
     </wx-view>
   </wx-view>
-</sizeCountDown>
+  <wx-view
+    class="demo-count-down"
+  >
+    <wx-text
+      class="demo-count-down-desc"
+    >
+       带方形底 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        size="small"
+        theme="square"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        theme="square"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        size="large"
+        theme="square"
+        time="{{5760000}}"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view
+    class="demo-count-down"
+  >
+    <wx-text
+      class="demo-count-down-desc"
+    >
+       带圆形底 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        size="small"
+        theme="round"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        theme="round"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        size="large"
+        theme="round"
+        time="{{5760000}}"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view
+    class="demo-count-down"
+  >
+    <wx-text
+      class="demo-count-down-desc"
+    >
+       带单位 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        size="small"
+        splitWithUnit="{{true}}"
+        theme="round"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        splitWithUnit="{{true}}"
+        theme="round"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        size="large"
+        splitWithUnit="{{true}}"
+        theme="round"
+        time="{{5760000}}"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view
+    class="demo-count-down"
+  >
+    <wx-text
+      class="demo-count-down-desc"
+    >
+       无底色带单位 
+    </wx-text>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        size="small"
+        splitWithUnit="{{true}}"
+        theme="hightlight"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        splitWithUnit="{{true}}"
+        theme="hightlight"
+        time="{{5760000}}"
+      />
+    </wx-view>
+    <wx-view
+      class="demo-count-down-content"
+    >
+      <t-count-down
+        format="HH:mm:ss"
+        size="large"
+        splitWithUnit="{{true}}"
+        theme="hightlight"
+        time="{{5760000}}"
+      />
+    </wx-view>
+  </wx-view>
+</size>
 `;

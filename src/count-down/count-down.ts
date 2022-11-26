@@ -1,14 +1,14 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { isSameSecond, parseFormat, parseTimeData } from './utils';
+import { isSameSecond, parseFormat, parseTimeData, TimeDataUnit } from './utils';
 
 const { prefix } = config;
 const name = `${prefix}-count-down`;
 
 @wxComponent()
 export default class CountDown extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-count`, `${prefix}-class-split`];
 
   properties = props;
 
@@ -21,6 +21,7 @@ export default class CountDown extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    timeDataUnit: TimeDataUnit,
     timeData: parseTimeData(0),
     formattedTime: '0',
   };
@@ -67,11 +68,14 @@ export default class CountDown extends SuperComponent {
     },
 
     updateTime(remain: number) {
+      const { format } = this.properties;
       this.remain = remain;
       const timeData = parseTimeData(remain);
       this.triggerEvent('change', timeData);
-      const { timeText } = parseFormat(remain, this.properties.format as any as string);
+      const { timeText } = parseFormat(remain, format as any as string);
+      const timeRange = format.split(':');
       this.setData({
+        timeRange,
         timeData,
         formattedTime: timeText.replace(/:/g, ' : '),
       });

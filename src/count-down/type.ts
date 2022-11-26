@@ -67,7 +67,7 @@ export interface TdCountDownProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: 'default' | 'round' | 'square';
+    value?: 'default' | 'round' | 'square' | 'hightlight';
   };
   /**
    * 倒计时时长，单位毫秒
