@@ -7,6 +7,7 @@ Component({
       this.setData({ visible: true });
     },
     handleConfirm(e) {
+      this.setData({ visible: false });
       console.log(e.detail.value);
     },
   },

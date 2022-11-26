@@ -88,12 +88,13 @@ exports[`calendar :base 1`] = `
               <wx-scroll-view
                 class="t-calendar__months"
                 enhanced="{{true}}"
-                scrollWithAnimation="{{true}}"
+                scrollIntoView="year_2022_month_9"
                 scrollY="{{true}}"
                 showScrollbar="{{false}}"
               >
                 <wx-view
                   class="t-calendar__month"
+                  id="year_2022_month_9"
                 >
                   2022 年 10 月
                 </wx-view>
