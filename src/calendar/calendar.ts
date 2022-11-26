@@ -46,6 +46,7 @@ export default class Calendar extends SuperComponent {
         days: this.base.getDays(),
         confirmBtn,
       });
+      this.calcMonths();
     },
   };
 
@@ -69,8 +70,10 @@ export default class Calendar extends SuperComponent {
             });
           }
         }
-        this.base.value = this.data.value;
-        this.calcMonths();
+        if (this.base) {
+          this.base.value = value;
+          this.calcMonths();
+        }
       }
     },
   };
