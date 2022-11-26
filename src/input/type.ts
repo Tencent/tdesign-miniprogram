@@ -154,7 +154,7 @@ export interface TdInputProps {
    */
   type?: {
     type: StringConstructor;
-    value?: 'text' | 'number' | 'idcard' | 'digit' | 'safe-password' | 'password';
+    value?: 'text' | 'number' | 'idcard' | 'digit' | 'safe-password' | 'password' | 'nickname';
   };
   /**
    * 输入框的值
