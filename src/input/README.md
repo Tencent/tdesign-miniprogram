@@ -94,7 +94,7 @@ status | String | - | 【开发中】输入框状态。可选项：success/warni
 suffix | String / Slot | - | 后置图标前的后置内容 | N
 suffix-icon | String / Slot | - | 后置文本内容，值为字符串则表示图标名称 | N
 tips | String / Slot | - | 【开发中】输入框下方提示文本，会根据不同的 `status` 呈现不同的样式 | N
-type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password | N
+type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password/nickname | N
 value | String / Number | - | 输入框的值。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 default-value | String / Number | undefined | 输入框的值。非受控属性。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 password | Boolean | false | 是否是密码类型（已废弃，请更为使用 type 指定输入框类型） | N
