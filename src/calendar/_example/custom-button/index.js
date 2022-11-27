@@ -1,22 +1,23 @@
 Component({
   data: {
     visible: false,
+    min: new Date(2022, 0, 2).getTime(),
     note: '',
   },
   methods: {
     handleCalendar() {
       this.setData({ visible: true });
     },
-    handleConfirm(e) {
+    onChange(e) {
       const { value } = e.detail;
+      const [start, end] = value;
       const format = (val) => {
         const date = new Date(val);
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+        return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
       };
 
       this.setData({
-        note: format(value),
-        visible: false,
+        note: `${format(start)} - ${format(end)}`,
       });
     },
   },
