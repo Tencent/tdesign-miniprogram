@@ -32,16 +32,21 @@ export default class Calendar extends SuperComponent {
       key: 'value',
       event: 'confirm',
     },
+    {
+      key: 'value',
+      event: 'change',
+    },
   ];
 
   lifetimes = {
     ready() {
       let { confirmBtn } = this.data;
 
-      if (!confirmBtn) {
+      if (!confirmBtn && confirmBtn != null) {
         confirmBtn = { content: '确认' };
       }
       this.base = new TCalendar(this.properties);
+      this.initialValue();
       this.setData({
         days: this.base.getDays(),
         confirmBtn,
@@ -58,20 +63,10 @@ export default class Calendar extends SuperComponent {
     },
     visible(v) {
       if (v) {
-        const { value } = this.data;
+        this.scrollIntoView();
 
-        if (value) {
-          // 滚动到 value 对应的月份
-          const date = new Date(Array.isArray(value) ? value[0] : value);
-
-          if (date) {
-            this.setData({
-              scrollIntoView: `year_${date.getFullYear()}_month_${date.getMonth()}`,
-            });
-          }
-        }
         if (this.base) {
-          this.base.value = value;
+          this.base.value = this.data.value;
           this.calcMonths();
         }
       }
@@ -79,6 +74,37 @@ export default class Calendar extends SuperComponent {
   };
 
   methods = {
+    initialValue() {
+      const { value, type, minDate } = this.data;
+
+      if (!value) {
+        const today = new Date();
+        const now = minDate || new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime(); // 获取 0 点的时间戳
+        const initialValue = type === 'single' ? now : [now];
+
+        if (type === 'range') {
+          initialValue[1] = now + 24 * 3600 * 1000; // 第二天
+        }
+
+        this.setData({
+          value: initialValue,
+        });
+        this.base.value = initialValue;
+      }
+    },
+    scrollIntoView() {
+      const { value } = this.data;
+
+      if (!value) return;
+
+      const date = new Date(Array.isArray(value) ? value[0] : value);
+
+      if (date) {
+        this.setData({
+          scrollIntoView: `year_${date.getFullYear()}_month_${date.getMonth()}`,
+        });
+      }
+    },
     calcMonths() {
       const months = this.base.getMonths();
 
@@ -94,20 +120,31 @@ export default class Calendar extends SuperComponent {
 
       if (date.type === 'disabled') return;
 
-      this.base.select({ cellType: date.type, year, month, date: date.day });
+      const rawValue = this.base.select({ cellType: date.type, year, month, date: date.day });
+      const value = this.toTime(rawValue);
       this.calcMonths();
+
+      if (this.data.confirmBtn == null) {
+        // 不显示确认按钮，则选择完即关闭 popup
+        if (this.data.type === 'single' || rawValue.length === 2) {
+          this.setData({ visible: false });
+          this._trigger('change', { value }); // 受控
+        }
+      }
+
+      this.triggerEvent('select', { value });
     },
     onTplButtonTap() {
       const rawValue = this.base.getTrimValue();
-      let value: string | string[] = '';
-
-      if (Array.isArray(rawValue)) {
-        value = rawValue.map((item) => item.getTime());
-      } else {
-        value = rawValue.getTime();
-      }
+      const value = this.toTime(rawValue);
 
       this._trigger('confirm', { value });
+    },
+    toTime(val) {
+      if (Array.isArray(val)) {
+        return val.map((item) => item.getTime());
+      }
+      return val.getTime();
     },
   };
 }

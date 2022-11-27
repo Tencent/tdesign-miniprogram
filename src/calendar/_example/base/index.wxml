@@ -1,2 +1,2 @@
 <t-calendar visible="{{visible}}" bind:confirm="handleConfirm" />
-<t-cell arrow title="单个选择日历" bind:tap="handleCalendar" />
+<t-cell arrow title="单个选择日历" bind:tap="handleCalendar" note="{{note}}" />

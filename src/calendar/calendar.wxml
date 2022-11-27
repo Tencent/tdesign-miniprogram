@@ -47,7 +47,7 @@
           </view>
         </block>
       </scroll-view>
-      <view class="{{classPrefix}}__footer">
+      <view wx:if="{{confirmBtn != null}}" class="{{classPrefix}}__footer">
         <slot wx:if="{{confirmBtn === 'slot'}}" name="confirmBtn" />
         <block wx:elif="{{confirmBtn}}">
           <!-- <t-button block theme="primary" v-bind="confirmBtn" bind:tap="handleConfirm" /> -->

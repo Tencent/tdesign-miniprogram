@@ -36,21 +36,21 @@ export interface TdCalendarProps {
    */
   format?: {
     type: undefined;
-    value?: (day: TDate) => TDate;
+    value?: CalendarFormatType;
   };
   /**
    * 最大可选的日期，不传则默认半年后
    */
   maxDate?: {
     type: NumberConstructor;
-    value?: number | Date;
+    value?: number;
   };
   /**
    * 最小可选的日期，不传则默认今天
    */
   minDate?: {
     type: NumberConstructor;
-    value?: number | Date;
+    value?: number;
   };
   /**
    * 标题，不传默认为“请选择日期”
@@ -62,7 +62,7 @@ export interface TdCalendarProps {
   };
   /**
    * 日历的选择类型，single = 单选；multiple = 多选; range = 区间选择
-   * @default 'single'
+   * @default single
    */
   type?: {
     type: StringConstructor;
@@ -73,7 +73,14 @@ export interface TdCalendarProps {
    */
   value?: {
     type: null;
-    value?: number | Date | TCalendarValue[];
+    value?: number | number[];
+  };
+  /**
+   * 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组，非受控属性
+   */
+  defaultValue?: {
+    type: null;
+    value?: number | number[];
   };
   /**
    * 是否显示日历
@@ -85,6 +92,8 @@ export interface TdCalendarProps {
   };
 }
 
+export type CalendarFormatType = (day: TDate) => TDate;
+
 export type TDateType = 'selected' | 'disabled' | 'start' | 'centre' | 'end' | '';
 
 export interface TDate {
@@ -95,5 +104,3 @@ export interface TDate {
   prefix?: string;
   suffix?: string;
 }
-
-export type TCalendarValue = number | Date;
