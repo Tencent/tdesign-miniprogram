@@ -43,7 +43,14 @@
             />
           </block>
           <slot wx:else name="image" />
-          <t-icon wx:if="{{icon}}" name="{{icon}}" size="48rpx" />
+          <t-icon
+            wx:if="{{icon}}"
+            name="{{iconProps.name || icon}}"
+            prefix="{{iconProps.prefix}}"
+            size="{{iconProps.size || '48rpx'}}"
+            color="{{iconProps.color}}"
+            customStyle="{{iconProps.customStyle}}"
+          ></t-icon>
         </view>
       </t-badge>
       <view class="{{_.cls(classPrefix + '__words', [layout])}}">

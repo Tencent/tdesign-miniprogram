@@ -64,6 +64,9 @@ exports[`input props : clearable && label && suffix 1`] = `
           bind:tap="clearInput"
         >
           <wx-view
+            ariaHidden="{{false}}"
+            ariaLabel=""
+            ariaRole=""
             class="t-icon t-class"
             style="font-size: 48rpx"
             bind:tap="onTap"
@@ -87,6 +90,9 @@ exports[`input props : clearable && label && suffix 1`] = `
             class="t-class-suffix-icon"
           >
             <wx-view
+              ariaHidden="{{false}}"
+              ariaLabel=""
+              ariaRole=""
               class="t-icon t-class"
               style="font-size: 48rpx"
               bind:tap="onTap"

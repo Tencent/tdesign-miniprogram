@@ -1,4 +1,11 @@
-<view class="{{ prefix ? prefix : classPrefix}} {{componentPrefix}}-class" style="{{ iconStyle }}" bind:tap="onTap">
+<view
+  class="{{ prefix ? prefix : classPrefix}} {{componentPrefix}}-class"
+  style="{{ iconStyle }}"
+  bind:tap="onTap"
+  aria-hidden="{{ariaHidden}}"
+  aria-label="{{ariaLabel}}"
+  aria-role="{{ariaRole}}"
+>
   <view wx:if="{{ isImage }}" class="{{classPrefix}}--image">
     <image src="{{ name }}" mode="aspectFit" class="{{classPrefix}}__image" />
   </view>

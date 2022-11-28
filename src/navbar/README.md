@@ -53,12 +53,12 @@ isComponent: true
 -- | -- | -- | -- | --
 animation | Boolean | true | 是否添加动画效果 | N
 capsule | Slot | - | 左侧胶囊区域 | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
-delta | Number | 1 | 后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack，只会触发一个 goback 事件供自行处理。 | N
+custom-style | String | - | `0.25.0`。自定义组件样式 | N
+delta | Number | 1 | 后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack | N
 external-classes | Array | - | 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、胶囊等元素类名。`['t-class', 't-class-title', 't-class-left-icon', 't-class-home-icon', 't-class-capsule']` | N
 fixed | Boolean | true | 是否固定在顶部 | N
-left `0.26.0` | Slot | - | 左侧内容区域 | N
-left-arrow `0.26.0` | Boolean | false | 是否展示左侧箭头 | N
+left | Slot | - | `0.26.0`。左侧内容区域 | N
+left-arrow | Boolean | false | `0.26.0`。是否展示左侧箭头 | N
 title | String / Slot | - | 页面标题 | N
 title-max-length | Number | - | 标题文字最大长度，超出的范围使用 `...` 表示 | N
 visible | Boolean | true | 是否显示 | N
@@ -69,5 +69,5 @@ visible | Boolean | true | 是否显示 | N
 -- | -- | --
 complete | \- | navigateBack 执行完成后触发（失败或成功均会触发）
 fail | \- | navigateBack 执行失败后触发
-go-back | \- | delta 值为 0 时，点击返回，触发该事件
+go-back | \- | 点击左侧箭头时触发
 success | \- | navigateBack 执行成功后触发

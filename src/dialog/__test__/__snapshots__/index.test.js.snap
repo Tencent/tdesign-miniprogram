@@ -12,7 +12,6 @@ exports[`dialog :base 1`] = `
       <wx-view
         class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active t-class"
         style="z-index:11500;"
-        catch:touchmove="onStopPropagation"
         bind:transitionend="onTransitionEnd"
       >
         <wx-view

@@ -117,6 +117,14 @@ export interface TdGridItemProps {
     value?: string;
   };
   /**
+   * 图标属性，透传至 icon
+   * @default {}
+   */
+  iconProps?: {
+    type: ObjectConstructor;
+    value?: object;
+  };
+  /**
    * 图片，可以是图片地址，也可以自定义图片节点
    */
   image?: {

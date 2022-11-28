@@ -30,7 +30,7 @@
               wx:for="{{options}}"
               wx:key="index"
               class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
-              icon="stroke-line"
+              icon="line"
               align="right"
               t-class="radio"
               t-class-label="radio__label radio__label--{{value == item[valueAlias] ? 'active' : ''}} {{prefix}}-class-column-item-label"

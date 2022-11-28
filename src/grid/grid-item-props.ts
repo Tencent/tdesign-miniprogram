@@ -29,6 +29,11 @@ const props: TdGridItemProps = {
     type: String,
     value: '',
   },
+  /** 图标属性，透传至 icon */
+  iconProps: {
+    type: Object,
+    value: {},
+  },
   /** 图片，可以是图片地址，也可以自定义图片节点 */
   image: {
     type: String,
