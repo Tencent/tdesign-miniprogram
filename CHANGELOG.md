@@ -5,6 +5,59 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.28.0 `2022-11-28` 
+### ❗ BREAKING CHANGES
+- `Radio`:  调整 icon 属性，新增 dot 类型，并简化原有命名 @LeeJim ([#1098](https://github.com/Tencent/tdesign-miniprogram/pull/1098))
+- `Checkbox`: 移除 color 属性，使用 CSS Variables 代替 @LeeJim ([#1100](https://github.com/Tencent/tdesign-miniprogram/pull/1100))
+- `Search`: 移除 label 属性 @LeeJim ([#1103](https://github.com/Tencent/tdesign-miniprogram/pull/1103))
+- `Textarea`: 类名变更，默认不展示计数器，需设置 indicator = true @anlyyao ([#1097](https://github.com/Tencent/tdesign-miniprogram/pull/1097))
+- `CountDown`: size 属性默认值变更为 `medium` @anlyyao ([#1085](https://github.com/Tencent/tdesign-miniprogram/pull/1085))
+- `Calendar`: 事件返回参数改成时间戳，保持和 value 一致 @LeeJim ([#1120](https://github.com/Tencent/tdesign-miniprogram/pull/1120))
+- `Input`: 外部样式类 t-class-icon 变更为 t-class-prefix-icon @anlyyao ([#1109](https://github.com/Tencent/tdesign-miniprogram/pull/1109))
+- `Input`: size 属性默认值变更为 medium @anlyyao ([#1109](https://github.com/Tencent/tdesign-miniprogram/pull/1109))
+
+### 🚀 Features
+- `Radio`: 视觉更新 @LeeJim ([#1098](https://github.com/Tencent/tdesign-miniprogram/pull/1098))
+- `Checkbox`: 视觉升级 @LeeJim ([#1100](https://github.com/Tencent/tdesign-miniprogram/pull/1100))
+- `Search`: 视觉升级 @LeeJim ([#1103](https://github.com/Tencent/tdesign-miniprogram/pull/1103))
+- `Radio`: 新增 block 属性，支持横向布局 @LeeJim ([#1098](https://github.com/Tencent/tdesign-miniprogram/pull/1098))
+- `Radio`: 支持 icon 同名插槽 @LeeJim ([#1098](https://github.com/Tencent/tdesign-miniprogram/pull/1098))
+- `Checkbox`: 新增 block 属性，支持横向布局 @LeeJim ([#1100](https://github.com/Tencent/tdesign-miniprogram/pull/1100))
+- `Checkbox`:  属性 icon 新增 string 类型，可选值为 circle/line/rectangle @LeeJim ([#1100](https://github.com/Tencent/tdesign-miniprogram/pull/1100))
+- `Search`: 支持更多 CSS Variables @LeeJim ([#1103](https://github.com/Tencent/tdesign-miniprogram/pull/1103))
+- `Textarea`: 新增 placeholderStyle、fixed 、bordered、 indicator 等属性 @anlyyao ([#1097](https://github.com/Tencent/tdesign-miniprogram/pull/1097))
+- `Textarea`: 新增 CSS Variables， 用于调整文本框背景、输入文本颜色 @anlyyao ([#1097](https://github.com/Tencent/tdesign-miniprogram/pull/1097))
+- `Textarea`: 外部样式类新增  t-class-indicator  @anlyyao ([#1097](https://github.com/Tencent/tdesign-miniprogram/pull/1097))
+- `CountDown`: 外部样式类新增 `t-class-count` 和 `t-class-split` @anlyyao ([#1085](https://github.com/Tencent/tdesign-miniprogram/pull/1085))
+- `CountDown`: 新增 CSS Variables， 用于调整倒计时背景、文本颜色 @anlyyao ([#1085](https://github.com/Tencent/tdesign-miniprogram/pull/1085))
+- `Input`: 新增支持 type = nickname @LeeJim ([#1115](https://github.com/Tencent/tdesign-miniprogram/pull/1115))
+- `Calendar`: 自动滚动到 value 对应的月份 @LeeJim ([#1119](https://github.com/Tencent/tdesign-miniprogram/pull/1119))
+- `Calendar`: 新增 change 事件，在不显示确认按钮时使用 @LeeJim ([#1120](https://github.com/Tencent/tdesign-miniprogram/pull/1120))
+- `Checkbox`: 无障碍支持 @Isabella327 ([#1105](https://github.com/Tencent/tdesign-miniprogram/pull/1105))
+- `Grid`: 新增 iconProps 属性 @anlyyao ([#1123](https://github.com/Tencent/tdesign-miniprogram/pull/1123))
+- `Icon`: 新增支持 `aira-*` 属性 @LeeJim ([#1127](https://github.com/Tencent/tdesign-miniprogram/pull/1127))
+- `Input`: 完成 status 和 tips 属性开发 @anlyyao ([#1109](https://github.com/Tencent/tdesign-miniprogram/pull/1109))
+- `Input`: 新增 layout、clearableIconProps、suffixIconProps、 prefixIconProps属性 @anlyyao ([#1109](https://github.com/Tencent/tdesign-miniprogram/pull/1109))
+- `Input`: 新增 CSS Variables @anlyyao ([#1109](https://github.com/Tencent/tdesign-miniprogram/pull/1109))
+- `Input`: 外部样式新增 t-class-tips @anlyyao ([#1109](https://github.com/Tencent/tdesign-miniprogram/pull/1109))
+### 🐞 Bug Fixes
+- `Tabs`: 修复渲染 panel 时闪烁的问题 @LeeJim ([#1093](https://github.com/Tencent/tdesign-miniprogram/pull/1093))
+- `Result`: 修复装饰性图标获取焦点的问题 @aomnisz ([#1082](https://github.com/Tencent/tdesign-miniprogram/pull/1082))
+- `Tabs`: 修复 placement=left 时，面板内容不显示问题 @anlyyao ([#1099](https://github.com/Tencent/tdesign-miniprogram/pull/1099))
+- `Toast`: 支持文字换行 @LeeJim ([#1107](https://github.com/Tencent/tdesign-miniprogram/pull/1107))
+- `Tabs`: 修复 panel 切换的问题 @LeeJim ([#1106](https://github.com/Tencent/tdesign-miniprogram/pull/1106))
+- `Textarea`: maxlength 默认值变更为 -1 @anlyyao ([#1097](https://github.com/Tencent/tdesign-miniprogram/pull/1097))
+- `Tabs`: 修复下标不显示的问题 @LeeJim ([#1111](https://github.com/Tencent/tdesign-miniprogram/pull/1111))
+- `Footer`: 支持无障碍 @Isabella327 ([#1104](https://github.com/Tencent/tdesign-miniprogram/pull/1104))
+- `NavBar`: 修复背景色失效的问题 @LeeJim ([#1116](https://github.com/Tencent/tdesign-miniprogram/pull/1116))
+- `Calendar`: 修复受控用法 @LeeJim ([#1119](https://github.com/Tencent/tdesign-miniprogram/pull/1119))
+- `Calendar`: 修复 confirm-btn = null 时仍显示按钮的问题 @LeeJim ([#1120](https://github.com/Tencent/tdesign-miniprogram/pull/1120))
+- `Cell`: 新增支持 CSS Variables @LeeJim ([#1117](https://github.com/Tencent/tdesign-miniprogram/pull/1117))
+- `Popup`: 修复 Popup 以及底层依赖 Popup 的组件无法滚动的问题 @LeeJim ([#1125](https://github.com/Tencent/tdesign-miniprogram/pull/1125))
+- `Loading`: 修复尺寸问题 @LeeJim ([#1128](https://github.com/Tencent/tdesign-miniprogram/pull/1128))
+- `Result`: 修复装饰性图标获取焦点的问题 @aomnisz ([#1082](https://github.com/Tencent/tdesign-miniprogram/pull/1082))
+- `Footer`: 支持无障碍 @Isabella327 ([#1104](https://github.com/Tencent/tdesign-miniprogram/pull/1104))
+
 ## 🌈 0.27.0 `2022-11-21` 
 ### ❗️BREAKING CHANGES
 - `Divider`: 移除 line-color 属性，使用 CSS Variables 代替 @LeeJim ([#1035](https://github.com/Tencent/tdesign-miniprogram/pull/1035))
