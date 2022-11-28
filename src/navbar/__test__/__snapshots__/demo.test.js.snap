@@ -5,6 +5,7 @@ exports[`Navbar Navbar back demo works fine 1`] = `
   <t-navbar
     leftArrow="{{true}}"
     title="标题文字"
+    bind:go-back="handleBack"
   />
 </back>
 `;
