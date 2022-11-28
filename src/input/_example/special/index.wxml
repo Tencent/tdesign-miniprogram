@@ -1,29 +1,39 @@
 <t-input label="输入密码" type="password" value="{{textPassword}}" clearable />
-<t-input placeholder="请输入验证码" label="验证码">
-  <view slot="suffix">
+
+<t-input placeholder="输入验证码" label="验证码">
+  <view slot="suffix" class="suffix">
+    <view class="suffix--line"></view>
     <image
-      style="width: 72px; height: 36px; display: block; margin-top: -6px; margin-bottom: -6px"
+      class="image"
       src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png"
       mode="heightFix"
     />
   </view>
 </t-input>
+
 <t-input
-  placeholder="请输入手机号码"
+  label="手机号"
+  placeholder="输入手机号码"
   value="{{phoneNumber}}"
   type="number"
-  error-message="{{phoneError ? '手机号输入不正确' : ''}}"
+  tips="{{phoneError ? '手机号输入不正确' : ''}}"
   bindchange="onPhoneInput"
 >
-  <view slot="suffix" class="verify"> 发送验证码 </view>
+  <view slot="suffix" style="display: flex; align-items: center">
+    <view class="suffix--line"></view>
+    <view class="verify"> 发送验证码 </view>
+  </view>
 </t-input>
+
 <t-input
   label="价格"
   placeholder="0.00"
   suffix="元"
+  align="right"
   bindchange="onPriceInput"
   value="{{price}}"
-  error-message="{{priceError ? '请输入正确的价格' : ''}}"
-  t-class-error-msg="error-msg"
+  tips="{{priceError ? '请输入正确的价格' : ''}}"
+  t-class-tips="tips"
 />
-<t-input label="数量" placeholder="填写个数" suffix="个" type="number" />
+
+<t-input label="数量" placeholder="填写个数" suffix="个" align="right" type="number" />

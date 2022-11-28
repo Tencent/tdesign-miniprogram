@@ -2,5 +2,9 @@
   --td-input-bg-color: #0053d950;
   --td-input-text-color: white;
   --td-input-placeholder-text-color: white;
-  --td-input-label-color: white;
+  --td-input-label-text-color: white;
+}
+
+.margin {
+  margin: 0 32rpx;
 }

@@ -1,19 +1,31 @@
 <wxs src="./input.wxs" module="utils" />
 <view
   style="{{ customStyle }}"
-  class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + (borderless ? '' : '--bordered')}} {{prefix}}-class"
+  class="{{classPrefix}} {{classPrefix}}--size-{{size}} {{classPrefix}}--layout-{{layout}} {{prefix}}-class"
 >
-  <view wx:if="{{prefixIcon}}" class="{{classPrefix}}__icon-wrap">
-    <slot name="prefixIcon" wx:if="{{prefixIcon === 'slot'}}" />
-    <t-icon wx:else class="{{classPrefix}}__icon--prefix {{prefix}}-class-icon" name="{{prefixIcon}}" />
-  </view>
-  <view wx:if="{{label}}" class="{{classPrefix}}__label">
-    <slot name="label" wx:if="{{label === 'slot'}}" />
-    <text wx:else class="{{prefix}}-class-label">{{label}}</text>
+  <view wx:if="{{prefixIcon || label}}" class="{{classPrefix}}__wrap--prefix">
+    <view wx:if="{{prefixIcon}}" class="{{classPrefix}}__icon--prefix">
+      <slot name="prefixIcon" wx:if="{{prefixIcon === 'slot'}}" />
+      <t-icon
+        wx:else
+        class="{{prefix}}-class-prefix-icon"
+        name="{{prefixIconProps.name || prefixIcon}}"
+        prefix="{{prefixIconProps.prefix}}"
+        size="{{prefixIconProps.size || '48rpx'}}"
+        color="{{prefixIconProps.color}}"
+        customStyle="{{prefixIconProps.customStyle}}"
+      ></t-icon>
+    </view>
+    <view wx:if="{{label}}" class="{{classPrefix}}__label">
+      <slot name="label" wx:if="{{label === 'slot'}}" />
+      <text wx:else class="{{prefix}}-class-label">{{label}}</text>
+    </view>
   </view>
 
   <view class="{{classPrefix}}__wrap">
-    <view class="{{classPrefix}}__content">
+    <view
+      class="{{classPrefix}}__content {{prefix}}-is-{{status}}  {{borderless ? '' : classPrefix + '--border'}} {{ focus ? prefix + '-is-focus' : ''}}"
+    >
       <input
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
@@ -46,23 +58,35 @@
         safe-password-custom-hash="{{safePasswordCustomHash}}"
         class="{{utils.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
       />
-      <view wx:if="{{ clearable && value.length > 0}}" class="{{classPrefix}}__wrap--icon" bind:tap="clearInput">
-        <t-icon name="close-circle-filled" size="48rpx" class="{{prefix}}-class-clearable" />
+
+      <t-icon
+        wx:if="{{ clearable && value.length > 0}}"
+        class="{{classPrefix}}__wrap--clearable-icon {{prefix}}-class-clearable"
+        name="{{clearableIconProps.name || 'close-circle-filled'}}"
+        prefix="{{clearableIconProps.prefix}}"
+        size="{{clearableIconProps.size || '48rpx'}}"
+        color="{{clearableIconProps.color}}"
+        customStyle="{{clearableIconProps.customStyle}}"
+        bind:tap="clearInput"
+      ></t-icon>
+
+      <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix">
+        <text wx:if="{{suffix}}">{{suffix}}</text>
+        <slot wx:else name="suffix" />
       </view>
-      <view class="{{classPrefix}}__wrap--suffix">
-        <slot name="suffix" />
-      </view>
-      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text {{prefix}}-class-suffix">
-        <text>{{suffix}}</text>
-      </view>
-      <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon">
-        <t-icon name="{{suffixIcon}}" size="48rpx" class="{{prefix}}-class-suffix-icon" />
+      <view class="{{classPrefix}}__wrap--suffix-icon">
+        <t-icon
+          wx:if="{{suffixIcon}}"
+          class="{{prefix}}-class-suffix-icon"
+          name="{{suffixIconProps.name || suffixIcon}}"
+          prefix="{{suffixIconProps.prefix}}"
+          size="{{suffixIconProps.size || '48rpx'}}"
+          color="{{suffixIconProps.color}}"
+          customStyle="{{suffixIconProps.customStyle}}"
+        ></t-icon>
+        <slot wx:else name="suffixIcon" />
       </view>
     </view>
-    <view
-      wx:if="{{errorMessage && errorMessage.length > 0}}"
-      class="{{classPrefix}}__error-msg {{prefix}}-class-error-msg"
-      >{{errorMessage}}
-    </view>
+    <view wx:if="{{tips && tips.length > 0}}" class="{{classPrefix}}__tips {{prefix}}-class-tips">{{tips}} </view>
   </view>
 </view>

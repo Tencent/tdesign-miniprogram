@@ -3,8 +3,10 @@
   "usingComponents": {
     "t-input": "tdesign-miniprogram/input/input",
     "base": "./base",
-    "require": "./require",
     "suffix": "./suffix",
+    "prefix": "./prefix",
+    "layout": "./layout",
+    "bordered": "./bordered",
     "size": "./size",
     "align": "./align",
     "maxlength": "./maxlength",

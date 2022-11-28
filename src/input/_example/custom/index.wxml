@@ -1,3 +1,7 @@
 <view class="wrapper">
-  <t-input value="{{value}}" label="标签文字" placeholder="请输入文字" />
+  <t-input label="标签文字" placeholder="请输入文字" />
+</view>
+
+<view class="margin">
+  <t-input customStyle="{{customStyle}}" label="标签文字" placeholder="请输入文字" />
 </view>
