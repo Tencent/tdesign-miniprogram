@@ -17,7 +17,7 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
       ]
     }}"
     tClassIndicator="indicator-blue"
-    value="{{false}}"
+    value="{{true}}"
     bind:refresh="onPullDownRefresh"
   >
     <wx-view

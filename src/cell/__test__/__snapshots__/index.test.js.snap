@@ -35,6 +35,9 @@ exports[`cell :base 1`] = `
           class="t-cell__right-icon t-class-right-icon"
         >
           <wx-view
+            ariaHidden="{{false}}"
+            ariaLabel=""
+            ariaRole=""
             class="t-icon t-class"
             style=""
             bind:tap="onTap"

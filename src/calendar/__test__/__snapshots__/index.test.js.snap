@@ -37,6 +37,9 @@ exports[`calendar :base 1`] = `
                 bind:tap="handleClose"
               >
                 <wx-view
+                  ariaHidden="{{false}}"
+                  ariaLabel=""
+                  ariaRole=""
                   class="t-icon t-class"
                   style="font-size: 24px"
                   bind:tap="onTap"
