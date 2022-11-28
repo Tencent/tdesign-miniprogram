@@ -11,10 +11,6 @@ const display = {
       label: '徽标',
     },
     // {
-    //   name: 'Calendar',
-    //   label: '日历',
-    // },
-    // {
     //   name: 'CanvasPoster',
     //   label: '海报分享',
     // },
@@ -47,6 +43,10 @@ const display = {
       label: '图片预览',
     },
     {
+      name: 'Progress',
+      label: '进度条',
+    },
+    {
       name: 'Result',
       label: '结果',
     },
@@ -55,12 +55,12 @@ const display = {
       label: '轮播图',
     },
     {
-      name: 'Tag',
-      label: '标签',
-    },
-    {
       name: 'Skeleton',
       label: '骨架屏',
+    },
+    {
+      name: 'Tag',
+      label: '标签',
     },
   ],
 };

@@ -1,27 +1,17 @@
 @import '../common/style/index.less';
 
-@search-height: 80rpx;
-@search-text-color: rgba(0, 0, 0, 0.9);
-@search-text-disable: rgba(0, 0, 0, 0.26);
-@search-bg: rgba(243, 243, 243, 1);
-@search-label-padding-right: 8rpx;
-@search-padding-vertical: 16rpx;
-@search-padding-horizontal: 24rpx;
-@search-radius-square: 8rpx;
-@search-radius-round: 40rpx;
-@search-font-size: @font-size-m;
-@h-space-nest: @spacer;
-
-page {
-  --td-search-label-color: @search-text-color;
-  --td-search-text-color: @search-text-color;
-  --td-search-action-color: @search-text-disable;
-  --td-search-placeholder-color: @search-text-disable;
-  --td-search-icon-color: @search-text-disable;
-  --td-search-bg-color: @search-bg;
-  --td-search-border-color: @search-bg;
-  --td-search-focus-border-color: @search-bg;
-}
+@seach-bg-color: var(--td-seach-bg-color, @gray-color-1);
+@search-text-color: var(--td-search-text-color, @font-gray-1);
+@search-label-color: var(--search-label-color, @font-gray-1);
+@search-font-size: var(--td-search-font-size, @font-size-m);
+@search-height: var(--td-search-height, 80rpx);
+@search-padding: var(--td-search-padding, 16rpx 24rpx);
+@search-placeholder-color: var(--td-search-placeholder-color, @font-gray-3);
+@search-icon-color: var(--td-search-icon-color, @font-gray-3);
+@search-square-radius: var(--td-search-square-radius, @radius-default);
+@search-round-radius: calc(@search-height / 2);
+@search-action-color: var(--td-search-action-color, @primary-color);
+@search-right-icon-color: var(--td-search-right-icon-color, @font-gray-3);
 
 .@{prefix}-search {
   display: flex;
@@ -29,30 +19,30 @@ page {
   align-items: center;
 
   &__label {
-    padding: @search-label-padding-right;
-    color: var(--td-search-label-color);
+    padding: 8rpx;
+    color: @search-label-color;
   }
 
   &__input-box {
     flex: 1;
     box-sizing: border-box;
     display: flex;
-    height: var(--td-search-height, @search-height);
+    height: @search-height;
     align-items: center;
-    border: 2rpx solid var(--td-search-border-color);
-    background: var(--td-search-bg-color);
-    padding: @search-padding-vertical @search-padding-horizontal;
+    border: 2rpx solid @seach-bg-color;
+    background: @seach-bg-color;
+    padding: @search-padding;
 
     &.@{prefix}-is-focused {
-      border-color: var(--td-search-focus-border-color);
+      border-color: @seach-bg-color;
     }
 
     &--round {
-      border-radius: @search-radius-round;
+      border-radius: @search-round-radius;
     }
 
     &--square {
-      border-radius: @search-radius-square;
+      border-radius: @search-square-radius;
     }
 
     &--center {
@@ -62,30 +52,31 @@ page {
     .@{prefix}-input__keyword {
       display: inline-block;
       flex: 1;
-      color: var(--td-search-text-color);
+      color: @search-text-color;
       font-size: @search-font-size;
-      padding-left: @h-space-nest;
+      padding-left: 10rpx;
     }
 
     .@{prefix}-icon {
-      color: var(--td-search-icon-color);
+      color: @search-icon-color;
     }
   }
 
   &__right {
     position: relative;
     margin-left: 10px;
+    color: @search-right-icon-color;
     .hotspot-expanded();
   }
 
   &__search-action {
     margin-left: 30rpx;
     font-size: @search-font-size;
-    color: var(--td-search-action-color);
+    color: @search-action-color;
   }
 
   &__placeholder {
-    color: var(--td-search-placeholder-color);
+    color: @search-placeholder-color;
 
     &--center {
       text-align: center;

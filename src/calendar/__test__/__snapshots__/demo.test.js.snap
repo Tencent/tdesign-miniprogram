@@ -8,18 +8,37 @@ exports[`Calendar Calendar base demo works fine 1`] = `
   />
   <t-cell
     arrow="{{true}}"
+    note=""
     title="单个选择日历"
     bind:tap="handleCalendar"
   />
 </base>
 `;
 
+exports[`Calendar Calendar custom-button demo works fine 1`] = `
+<custom-button>
+  <t-calendar
+    confirmBtn="{{null}}"
+    minDate="{{1641052800000}}"
+    type="range"
+    visible="{{false}}"
+    bind:change="onChange"
+  />
+  <t-cell
+    arrow="{{true}}"
+    note=""
+    title="不显示按钮"
+    bind:tap="handleCalendar"
+  />
+</custom-button>
+`;
+
 exports[`Calendar Calendar custom-range demo works fine 1`] = `
 <custom-range>
   <t-calendar
-    maxDate="{{1645891200000}}"
+    maxDate="{{1669478400000}}"
     minDate="{{1643644800000}}"
-    value="{{1644854400000}}"
+    value="{{1652544000000}}"
     visible="{{false}}"
     bind:confirm="handleConfirm"
   />

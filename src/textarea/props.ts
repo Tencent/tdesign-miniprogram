@@ -59,18 +59,29 @@ const props: TdTextareaProps = {
   label: {
     type: String,
   },
+  /** 如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true */
+  fixed: {
+    type: Boolean,
+    value: false,
+  },
   /** 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 */
   maxcharacter: {
     type: Number,
   },
-  /** 用户最多可以输入的字符个数 */
+  /** 用户最多可以输入的字符个数。默认为 -1，不限制输入长度 */
   maxlength: {
     type: Number,
+    value: -1,
   },
-  /** 占位符 */
+  /** 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight */
   placeholder: {
     type: String,
     value: undefined,
+  },
+  /** 占位符样式 */
+  placeholderStyle: {
+    type: String,
+    value: '',
   },
   /** 文本框值 */
   value: {
@@ -81,6 +92,18 @@ const props: TdTextareaProps = {
   defaultValue: {
     type: String,
     value: '',
+  },
+  /** 是否显示外边框 */
+  bordered: {
+    type: Boolean,
+    value: false,
+  },
+  /**
+   * 显示文本计数器，如 0/140。当 `maxlength < 0 && maxcharacter < 0` 成立时， indicator无效
+   */
+  indicator: {
+    type: Boolean,
+    value: false,
   },
 };
 

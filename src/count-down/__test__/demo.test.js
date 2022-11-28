@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'sizeCountDown'];
+const mapper = ['base', 'size'];
 
 describe('CountDown', () => {
   mapper.forEach((demoName) => {

@@ -53,7 +53,7 @@ const props: TdSearchProps = {
   /** 右侧图标 */
   rightIcon: {
     type: String,
-    value: 'close',
+    value: 'close-circle-filled',
   },
   /** 搜索框形状 */
   shape: {

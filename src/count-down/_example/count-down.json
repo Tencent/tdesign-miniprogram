@@ -3,6 +3,6 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "sizeCountDown": "./sizeCountDown"
+    "size": "./size"
   }
 }

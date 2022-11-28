@@ -16,6 +16,11 @@ const props: TdRadioProps = {
     type: Boolean,
     value: false,
   },
+  /** 是否为块级元素 */
+  block: {
+    type: Boolean,
+    value: true,
+  },
   /** 是否选中 */
   checked: {
     type: Boolean,
@@ -49,10 +54,10 @@ const props: TdRadioProps = {
   externalClasses: {
     type: Array,
   },
-  /** 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标 */
+  /** 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 circle 表示图标为填充型图标，值为 line 表示图标为描边型图标 */
   icon: {
     type: null,
-    value: 'fill-circle',
+    value: 'circle',
   },
   /** 主文案 */
   label: {

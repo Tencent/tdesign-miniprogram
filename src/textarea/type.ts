@@ -77,6 +77,14 @@ export interface TdTextareaProps {
     value?: ['t-class', 't-class-textarea', 't-class-label'];
   };
   /**
+   * 如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true
+   * @default false
+   */
+  fixed?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 自动聚焦
    * @default false
    */
@@ -99,7 +107,8 @@ export interface TdTextareaProps {
     value?: number;
   };
   /**
-   * 用户最多可以输入的字符个数
+   * 用户最多可以输入的字符个数。默认为 -1，不限制输入长度
+   * @default -1
    */
   maxlength?: {
     type: NumberConstructor;
@@ -111,6 +120,13 @@ export interface TdTextareaProps {
   placeholder?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight
+   */
+  placeholderStyle: {
+    type: StringConstructor;
+    value: string;
   };
   /**
    * 文本框值
@@ -127,5 +143,20 @@ export interface TdTextareaProps {
   defaultValue?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 是否显示外边框
+   * @default true
+   */
+  bordered?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 显示文本计数器，如 0/140。当 `maxlength < 0 && maxcharacter < 0` 成立时， indicator无效
+   */
+  indicator?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
 }

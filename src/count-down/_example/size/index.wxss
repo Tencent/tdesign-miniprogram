@@ -1,0 +1,12 @@
+.demo-count-down {
+  padding-bottom: 32rpx;
+}
+
+.demo-count-down-desc {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 28rpx;
+}
+
+.demo-count-down-content {
+  margin: 24rpx 0;
+}

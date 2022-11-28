@@ -1,0 +1,3 @@
+page {
+  --td-cell-note-font-size: 20rpx;
+}

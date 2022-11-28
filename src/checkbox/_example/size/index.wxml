@@ -1,9 +1,0 @@
-<t-checkbox
-  value="checkbox1"
-  label="多选H48"
-  t-class="t-checkbox-padding"
-  checked="{{checked}}"
-  bind:change="changeChecked"
->
-</t-checkbox>
-<t-checkbox value="checkbox2" t-class="t-checkbox-demo" label="多选H56" defaultChecked="{{checked}}"> </t-checkbox>

@@ -6,16 +6,16 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 align | String | left | options：left/right | N
+block | Boolean | true | \- | N
 check-all | Boolean | false | \- | N
 checked | Boolean | false | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
 color | String | #0052d9 | \- | N
 content | String / Slot | - | \- | N
 content-disabled | Boolean | - | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 disabled | Boolean | undefined | \- | N
 external-classes | Array | - | `['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border']` | N
-icon | Array | - | Typescript：`Array<string>` | N
+icon | String / Array | circle | Typescript：`'circle' \| 'line' \| 'rectangle' \| string[]` | N
 indeterminate | Boolean | false | \- | N
 label | String / Slot | - | \- | N
 max-content-row | Number | 5 | \- | N
@@ -34,7 +34,6 @@ change | `(checked: boolean)` | \-
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style | String | - | \- | N
 disabled | Boolean | false | \- | N
 max | Number | undefined | \- | N
 name | String | - | \- | N
