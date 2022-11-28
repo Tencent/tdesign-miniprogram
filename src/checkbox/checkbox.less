@@ -17,6 +17,8 @@
 @checkbox-icon-disabled-color: var(--td-checkbox-icon-disabled-color, @primary-color-3);
 @checkbox-icon-disabled-bg-color: var(--td-checkbox-icon-disabled-bg-color, @gray-color-2);
 @checkbox-icon-checked-color: var(--td-checkbox-icon-checked-color, @primary-color);
+@checkbox-tag-active-bg-color: var(--td-checkbox-tag-active-bg-color, @primary-color-1);
+@checkbox-tag-active-color: var(--td-checkbox-tag-active-color, @primary-color);
 
 .@{checkbox} {
   display: inline-flex;
@@ -202,9 +204,13 @@
     background-color: #f3f3f3;
     border-radius: 8rpx;
 
-    &.@{prefix}-is-actived {
-      color: #0052d9;
-      background-color: #ecf2fe;
+    &.@{checkbox}--checked {
+      color: @checkbox-tag-active-color;
+      background-color: @checkbox-tag-active-bg-color;
+    }
+
+    .@{checkbox}__title--checked {
+      color: @checkbox-tag-active-color;
     }
 
     .@{checkbox}__content {
