@@ -12,7 +12,6 @@ exports[`calendar :base 1`] = `
         <wx-view
           class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
           style="z-index:11500;"
-          catch:touchmove="onStopPropagation"
           bind:transitionend="onTransitionEnd"
         >
           <wx-view
