@@ -42,6 +42,7 @@ exports[`search Props :base 1`] = `
         />
       </wx-view>
       <wx-view
+        ariaRole="button"
         class="t-search__search-action t-class-action"
         bind:tap="onActionClick"
       >
