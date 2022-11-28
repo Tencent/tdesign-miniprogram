@@ -3,6 +3,9 @@
 <view
   style="{{ customStyle }}"
   class="{{_.cls(classPrefix, [align, theme, ['checked', checked], ['block', block]])}} {{prefix}}-class"
+  aria-role="checkbox"
+  aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
+  aria-disabled="{{disabled ? true : false}}"
 >
   <view
     wx:if="{{theme == 'default'}}"
