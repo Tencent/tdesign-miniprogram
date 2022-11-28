@@ -4,8 +4,10 @@
   >
     <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label">{{label}}</view>
     <slot name="label" />
-    <t-icon wx:if="{{leftIcon}}" name="{{leftIcon}}" size="20px" class="{{prefix}}-icon {{prefix}}-class-left" />
-    <slot name="left-icon" />
+    <view aria-hidden="{{true}}">
+      <t-icon wx:if="{{leftIcon}}" name="{{leftIcon}}" size="20px" class="{{prefix}}-icon {{prefix}}-class-left" />
+      <slot name="left-icon" />
+    </view>
     <input
       type="text"
       name="input"
