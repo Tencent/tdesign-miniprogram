@@ -28,7 +28,6 @@ const ComponentNativeProps = [
  * @param options {}
  */
 export const toComponent = function toComponent(options: Record<string, any>) {
-  // 处理 properties 属性
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
       let opt = options.properties[k];
@@ -38,12 +37,21 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       }
       options.properties[k] = opt;
     });
+    // aria
+    const ariaProps = [
+      { key: 'ariaHidden', type: Boolean },
+      { key: 'ariaRole', type: String },
+      { key: 'ariaLabel', type: String },
+    ];
+    ariaProps.forEach(({ key, type }) => {
+      options.properties[key] = {
+        type,
+      };
+    });
   }
 
-  // 处理自定义的方法和生命周期函数
   if (!options.methods) options.methods = {};
 
-  // 使用 lifetimes 处理生命周期函数
   if (!options.lifetimes) options.lifetimes = {};
 
   const inits: { [key: string]: PropertyDescriptor } = {};
