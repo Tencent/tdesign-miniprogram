@@ -1,5 +1,0 @@
-<t-checkbox-group max="{{2}}" bind:change="onChange" defaultValue="{{demoCheckboxMax}}">
-  <t-checkbox value="checkbox1" label="多选" />
-  <t-checkbox value="checkbox2" label="多选" />
-  <t-checkbox value="checkbox3" label="多选" />
-</t-checkbox-group>

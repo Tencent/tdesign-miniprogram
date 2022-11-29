@@ -5,11 +5,11 @@ exports[`textarea slots : label 1`] = `
   class="base"
 >
   <wx-view
-    class="t-textarea t-class"
+    class="t-textarea  t-class"
     style=""
   >
     <wx-view
-      class="t-textarea__name t-class-label"
+      class="t-textarea__label t-class-label"
     >
       <wx-text
         slot="label"
@@ -24,14 +24,17 @@ exports[`textarea slots : label 1`] = `
         adjustPosition="{{true}}"
         autoFocus="{{false}}"
         autoHeight="{{false}}"
-        class="t-textarea__wrapper-textarea t-class-textarea"
+        class="t-textarea__wrapper-inner  t-class-textarea"
         confirmHold="{{false}}"
         confirmType="return"
         cursorSpacing="{{0}}"
         disabled="{{false}}"
+        fixed="{{false}}"
         focus="{{false}}"
+        maxlength="{{-1}}"
         placeholder=""
         placeholderClass="t-textarea__placeholder"
+        placeholderStyle=""
         value=""
         bind:blur="onBlur"
         bind:confirm="onConfirm"

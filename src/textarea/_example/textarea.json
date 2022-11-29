@@ -2,10 +2,11 @@
   "navigationBarTitleText": "Textarea 多行输入框",
   "usingComponents": {
     "base": "./base",
-    "labelDemo": "./label",
+    "label": "./label",
     "autosize": "./autosize",
     "disabled": "./disabled",
     "maxcharacter": "./maxcharacter",
-    "maxlength": "./maxlength"
+    "maxlength": "./maxlength",
+    "custom": "./custom"
   }
 }

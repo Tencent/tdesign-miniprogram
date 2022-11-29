@@ -3,8 +3,12 @@ const nav = {
   icon: 'view-module',
   childArr: [
     {
-      name: 'DropdownMenu',
-      label: '下拉菜单',
+      name: 'BackTop',
+      label: '返回顶部',
+    },
+    {
+      name: 'Drawer',
+      label: '抽屉',
     },
     {
       name: 'Indexes',
@@ -13,6 +17,10 @@ const nav = {
     {
       name: 'Navbar',
       label: '导航栏',
+    },
+    {
+      name: 'SideBar',
+      label: '侧边导航',
     },
     {
       name: 'Steps',
@@ -29,10 +37,6 @@ const nav = {
     {
       name: 'Tabs',
       label: '选项卡',
-    },
-    {
-      name: 'SideBar',
-      label: '侧边导航',
     },
   ],
 };

@@ -5,6 +5,7 @@ exports[`navbar :base 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--visible-animation t-class"
+      style=""
     >
       <wx-view
         class="t-navbar__placeholder"
@@ -39,6 +40,7 @@ exports[`navbar :base 2`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--hide-animation t-class"
+      style=""
     >
       <wx-view
         class="t-navbar__placeholder"
@@ -73,6 +75,7 @@ exports[`navbar :base 3`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--hide t-class"
+      style=""
     >
       <wx-view
         class="t-navbar__placeholder"
@@ -107,6 +110,7 @@ exports[`navbar :fixed 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--visible-animation t-class"
+      style=""
     >
       <wx-view
         class="t-navbar__placeholder"

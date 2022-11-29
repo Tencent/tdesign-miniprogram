@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['all', 'base', 'num', 'right', 'size', 'status', 'type'];
+const mapper = ['all', 'base', 'card', 'horizontal', 'right', 'special', 'status', 'type'];
 
 describe('Checkbox', () => {
   mapper.forEach((demoName) => {

@@ -11,15 +11,25 @@ const props: TdInputProps = {
     type: String,
     value: 'left',
   },
+  /** 标题输入框布局方式 */
+  layout: {
+    type: String,
+    value: 'horizontal',
+  },
   /** 是否开启无边框模式 */
   borderless: {
     type: Boolean,
-    value: false,
+    value: true,
   },
   /** 是否可清空 */
   clearable: {
     type: Boolean,
     value: false,
+  },
+  /** 透传至组件清楚图标 icon */
+  clearableIconProps: {
+    type: Object,
+    value: {},
   },
   /** 自定义组件样式 */
   customStyle: {
@@ -65,6 +75,11 @@ const props: TdInputProps = {
   prefixIcon: {
     type: String,
   },
+  /** 透传至组件前缀图标 prefix-icon */
+  prefixIconProps: {
+    type: Object,
+    value: {},
+  },
   /** 只读状态 */
   readonly: {
     type: Boolean,
@@ -73,7 +88,7 @@ const props: TdInputProps = {
   /** 输入框尺寸 */
   size: {
     type: String,
-    value: 'small',
+    value: 'medium',
   },
   /** 输入框状态 */
   status: {
@@ -87,6 +102,11 @@ const props: TdInputProps = {
   /** 后置文本内容，值为字符串则表示图标名称 */
   suffixIcon: {
     type: String,
+  },
+  /** 透传至组件后缀图标 suffix-icon */
+  suffixIconProps: {
+    type: Object,
+    value: {},
   },
   /** 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式 */
   tips: {

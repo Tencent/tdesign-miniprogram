@@ -27,11 +27,11 @@ const props: TdCalendarProps = {
   },
   /** 最大可选的日期，不传则默认半年后 */
   maxDate: {
-    type: null,
+    type: Number,
   },
   /** 最小可选的日期，不传则默认今天 */
   minDate: {
-    type: null,
+    type: Number,
   },
   /** 标题，不传默认为“请选择日期” */
   title: {
@@ -45,6 +45,11 @@ const props: TdCalendarProps = {
   },
   /** 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组 */
   value: {
+    type: null,
+    value: null,
+  },
+  /** 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组，非受控属性 */
+  defaultValue: {
     type: null,
   },
   /** 是否显示日历 */

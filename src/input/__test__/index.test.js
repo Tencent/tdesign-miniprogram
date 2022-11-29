@@ -77,9 +77,12 @@ describe('input', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const component = comp.querySelector('.base >>> .t-input');
-      expect(component.dom.getAttribute('class').includes('t-input--bordered')).toBeTruthy();
-      expect(component.dom.getAttribute('class').includes('t-input--size-small')).toBeTruthy();
+      const component = comp.querySelector('.base >>> .t-input__content');
+      expect(component.dom.getAttribute('class').includes('t-input--border')).toBeTruthy();
+
+      expect(
+        comp.querySelector('.base >>> .t-input').dom.getAttribute('class').includes('t-input--size-small'),
+      ).toBeTruthy();
 
       const $input = comp.querySelector('.base >>> .t-input__control');
       expect($input.dom.getAttribute('class').includes('t-input__control--center')).toBeTruthy();
@@ -119,7 +122,7 @@ describe('input', () => {
       const $clearable = comp.querySelector('.base >>> .t-class-clearable');
       expect($clearable).toBeDefined();
 
-      const $suffix = comp.querySelector('.base >>> .t-input__wrap--suffix-text');
+      const $suffix = comp.querySelector('.base >>> .t-input__wrap--suffix');
       expect($suffix.dom.textContent).toBe(component.instance.data.suffix);
     });
   });
@@ -170,7 +173,7 @@ describe('input', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const clearable = comp.querySelector('.base >>> .t-input__wrap--icon');
+      const clearable = comp.querySelector('.base >>> .t-input__wrap--clearable-icon');
       clearable.dispatchEvent('tap');
       await simulate.sleep(0);
       expect(handleClear.mock.calls[0][0].detail).toStrictEqual({});

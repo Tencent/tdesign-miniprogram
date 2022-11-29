@@ -107,11 +107,18 @@ export default {
       type: 'component',
       children: [
         {
-          title: 'DropdownMenu 下拉菜单',
-          name: 'dropdown-menu',
+          title: 'BackTop 返回顶部',
+          name: 'back-top',
           meta: { docType: 'navigation' },
-          path: '/miniprogram/components/dropdown-menu',
-          component: () => import('@/dropdown-menu/README.md'),
+          path: '/miniprogram/components/back-top',
+          component: () => import('@/back-top/README.md'),
+        },
+        {
+          title: 'Drawer 抽屉',
+          name: 'drawer',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/drawer',
+          component: () => import('@/drawer/README.md'),
         },
         {
           title: 'Indexes 索引',
@@ -329,6 +336,13 @@ export default {
           component: () => import('@/image-viewer/README.md'),
         },
         {
+          title: 'Progress 进度条',
+          name: 'progress',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/progress',
+          component: () => import('@/progress/README.md'),
+        },
+        {
           title: 'Result 结果',
           name: 'result',
           meta: { docType: 'data' },
@@ -359,7 +373,7 @@ export default {
       ],
     },
     {
-      title: '消息提醒',
+      title: '反馈',
       type: 'component', // 组件文档
       children: [
         {
@@ -370,13 +384,6 @@ export default {
           component: () => import('@/action-sheet/README.md'),
         },
         {
-          title: 'BackTop 返回顶部',
-          name: 'back-top',
-          meta: { docType: 'navigation' },
-          path: '/miniprogram/components/back-top',
-          component: () => import('@/back-top/README.md'),
-        },
-        {
           title: 'Dialog 弹出框',
           name: 'dialog',
           meta: { docType: 'message' },
@@ -384,11 +391,11 @@ export default {
           component: () => import('@/dialog/README.md'),
         },
         {
-          title: 'Drawer 抽屉',
-          name: 'drawer',
+          title: 'DropdownMenu 下拉菜单',
+          name: 'dropdown-menu',
           meta: { docType: 'navigation' },
-          path: '/miniprogram/components/drawer',
-          component: () => import('@/drawer/README.md'),
+          path: '/miniprogram/components/dropdown-menu',
+          component: () => import('@/dropdown-menu/README.md'),
         },
         {
           title: 'Loading 加载',
@@ -424,13 +431,6 @@ export default {
           meta: { docType: 'message' },
           path: '/miniprogram/components/popup',
           component: () => import('@/popup/README.md'),
-        },
-        {
-          title: 'Progress 进度条',
-          name: 'progress',
-          meta: { docType: 'message' },
-          path: '/miniprogram/components/progress',
-          component: () => import('@/progress/README.md'),
         },
         {
           title: 'PullDownRefresh 下拉刷新',

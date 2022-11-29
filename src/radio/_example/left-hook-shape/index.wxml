@@ -1,9 +1,0 @@
-<t-radio-group defaultValue="radio4" bind:change="onChange">
-  <t-radio value="radio1" label="单选" icon="stroke-line"> </t-radio>
-  <t-radio value="radio2" icon="stroke-line" label="单选"> </t-radio>
-  <t-radio value="radio3" label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选单选" icon="stroke-line">
-  </t-radio>
-  <t-radio value="radio4" label="单选" icon="stroke-line">
-    单选单选单选单选单选单选单选单选单选单选单选单选单选单选单
-  </t-radio>
-</t-radio-group>

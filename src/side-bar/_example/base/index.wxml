@@ -13,8 +13,11 @@
       <view class="title">{{item.title || item.label}}</view>
       <t-grid column="{{3}}" border="{{false}}">
         <block wx:for="{{item.items}}" wx:key="index" wx:for-item="cargo">
-          <t-grid-item text="{{cargo.label}}">
-            <t-image shape="round" src="{{cargo.image}}" slot="image" lazy t-class="image" />
+          <t-grid-item
+            text="{{cargo.label}}"
+            image="{{cargo.image}}"
+            image-props="{{ { shape: 'round', lazy: true } }}"
+          >
           </t-grid-item>
         </block>
       </t-grid>

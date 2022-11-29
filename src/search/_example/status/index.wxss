@@ -1,4 +1,8 @@
-.t-class-cancel {
-  color: rgba(0, 82, 217, 1) !important;
-  font-weight: 400 !important;
+t-search {
+  background: #fff;
+  display: block;
+}
+
+t-search + t-search {
+  margin-top: 32rpx;
 }

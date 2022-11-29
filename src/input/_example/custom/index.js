@@ -1,5 +1,5 @@
 Component({
   data: {
-    value: '',
+    customStyle: 'border-radius: 12rpx;',
   },
 });

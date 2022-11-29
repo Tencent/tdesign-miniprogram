@@ -24,7 +24,7 @@ describe('textarea', () => {
       comp.attach(document.createElement('parent-wrapper'));
       const component = comp.querySelector('.base');
 
-      const $label = comp.querySelector('.base >>> .t-textarea__name');
+      const $label = comp.querySelector('.base >>> .t-textarea__label');
       expect($label).toBeDefined();
       expect($label.dom.textContent).toBe(component.instance.data.label);
     });
@@ -55,7 +55,7 @@ describe('textarea', () => {
       const component = comp.querySelector('.base');
       expect(component.instance.data.count).toBe(7);
 
-      const $textarea = comp.querySelector('.base >>> .t-textarea__wrapper-textarea');
+      const $textarea = comp.querySelector('.base >>> .t-textarea__wrapper-inner');
 
       $textarea.dispatchEvent('input', { detail: { value: 'tdesign123' } });
       await simulate.sleep(0);
@@ -92,7 +92,7 @@ describe('textarea', () => {
       const component = comp.querySelector('.base');
       expect(component).toMatchSnapshot();
 
-      const $label = comp.querySelector('.base >>> .t-textarea__name');
+      const $label = comp.querySelector('.base >>> .t-textarea__label');
       expect($label.dom.textContent).toBe('标签文字');
       //
     });
@@ -125,7 +125,7 @@ describe('textarea', () => {
       const component = comp.querySelector('.base');
       expect(component.instance.data.count).toBe(7);
 
-      const $textarea = comp.querySelector('.base >>> .t-textarea__wrapper-textarea');
+      const $textarea = comp.querySelector('.base >>> .t-textarea__wrapper-inner');
 
       $textarea.dispatchEvent('linechange', {
         detail: {
@@ -171,7 +171,7 @@ describe('textarea', () => {
       const component = comp.querySelector('.base');
       expect(component.instance.data.count).toBe(7);
 
-      const $textarea = comp.querySelector('.base >>> .t-textarea__wrapper-textarea');
+      const $textarea = comp.querySelector('.base >>> .t-textarea__wrapper-inner');
 
       $textarea.dispatchEvent('focus');
       await simulate.sleep();

@@ -11,5 +11,6 @@
   <t-demo title="02 自定义" desc="可自由定义想要的风格">
     <custom-text />
     <custom-range />
+    <custom-button />
   </t-demo>
 </view>

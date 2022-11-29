@@ -1,15 +1,18 @@
 Component({
-  /**
-   * 组件的初始数据
-   */
   data: {
-    options: [{ label: '全选', checkAll: true }, '多选1', '多选2', { label: '多选3', value: '多选3' }],
-    checkAllValues: ['多选1', '多选2', ''],
+    options: [
+      { label: '全选', checkAll: true },
+      { label: '多选', value: 1 },
+      { label: '多选', value: 2 },
+      {
+        label: '多选',
+        value: 3,
+        content: '单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息',
+      },
+    ],
+    checkAllValues: [1, 2, 3, ''],
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
     onCheckAllChange(event) {
       console.log('checkbox', event.detail.value);

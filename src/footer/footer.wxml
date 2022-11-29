@@ -19,6 +19,9 @@
         >
           {{item.name}}
         </navigator>
+        <view aria-hidden="{{true}}" wx:if="{{index !== (textLinkList.length - 1)}}" class="{{classPrefix}}__link-line"
+          >|</view
+        >
       </block>
     </view>
     <view class="{{classPrefix}}__copyright-info">{{copyright}}</view>
