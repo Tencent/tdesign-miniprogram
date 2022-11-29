@@ -13,7 +13,7 @@
     data-target="icon"
     bind:tap="onChange"
   >
-    <view wx:if="{{icon.constructor == 'Array'}}" class="{{classPrefix}}__icon">
+    <view wx:if="{{_.isArray(icon)}}" class="{{classPrefix}}__icon">
       <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
     </view>
     <block wx:else>

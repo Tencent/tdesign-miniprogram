@@ -299,5 +299,19 @@ exports[`Checkbox Checkbox type demo works fine 1`] = `
     icon="rectangle"
     label="多选"
   />
+  <wx-view
+    class="box"
+    style="height: 32rpx"
+  />
+  <t-checkbox
+    icon="{{
+      Array [
+        "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png",
+        "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png",
+      ]
+    }}"
+    label="图片图标"
+    value="checkbox1"
+  />
 </type>
 `;
