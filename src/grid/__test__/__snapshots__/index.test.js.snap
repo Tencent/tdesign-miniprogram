@@ -18,6 +18,8 @@ exports[`grid :base 1`] = `
           bind:click="handleClick"
         >
           <wx-view
+            ariaLabel=""
+            ariaRole="button"
             class="t-grid-item t-class"
             hoverClass=""
             hoverStayTime="{{200}}"
@@ -25,6 +27,7 @@ exports[`grid :base 1`] = `
             bind:tap="onClick"
           >
             <wx-view
+              ariaHidden="{{true}}"
               class="t-grid-item__wrapper t-grid-item__wrapper--vertical"
               style="padding-left:4rpx;padding-top:4rpx"
             >
@@ -41,6 +44,8 @@ exports[`grid :base 1`] = `
         </t-grid-item>
         <t-grid-item>
           <wx-view
+            ariaLabel=""
+            ariaRole="button"
             class="t-grid-item t-class"
             hoverClass=""
             hoverStayTime="{{200}}"
@@ -48,6 +53,7 @@ exports[`grid :base 1`] = `
             bind:tap="onClick"
           >
             <wx-view
+              ariaHidden="{{true}}"
               class="t-grid-item__wrapper t-grid-item__wrapper--vertical"
               style="padding-left:4rpx;padding-top:4rpx"
             >
