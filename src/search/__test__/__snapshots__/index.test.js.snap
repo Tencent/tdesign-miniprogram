@@ -16,7 +16,7 @@ exports[`search Props :base 1`] = `
           class="t-icon t-class-left"
         >
           <wx-view
-            ariaHidden="{{false}}"
+            ariaHidden="{{true}}"
             ariaLabel=""
             ariaRole=""
             class="t-icon t-class"
@@ -45,6 +45,7 @@ exports[`search Props :base 1`] = `
         />
       </wx-view>
       <wx-view
+        ariaRole="button"
         class="t-search__search-action t-class-action"
         bind:tap="onActionClick"
       >
