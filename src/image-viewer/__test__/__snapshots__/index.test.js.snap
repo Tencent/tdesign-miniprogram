@@ -9,6 +9,7 @@ exports[`image-viewer :base 1`] = `
   bind:load="onImageLoadSuccess"
 >
   <wx-view
+    ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
     style=" "
   >
@@ -49,6 +50,8 @@ exports[`image-viewer :base 1`] = `
     </t-loading>
   </wx-view>
   <wx-image
+    ariaHidden="{{true}}"
+    ariaLabel=""
     class="t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"
@@ -73,6 +76,7 @@ exports[`image-viewer :base 2`] = `
   bind:load="onImageLoadSuccess"
 >
   <wx-view
+    ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
     style=" "
   >
@@ -113,6 +117,8 @@ exports[`image-viewer :base 2`] = `
     </t-loading>
   </wx-view>
   <wx-image
+    ariaHidden="{{true}}"
+    ariaLabel=""
     class="t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"
@@ -137,6 +143,7 @@ exports[`image-viewer :base 3`] = `
   bind:load="onImageLoadSuccess"
 >
   <wx-view
+    ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
     style=" "
   >
@@ -177,6 +184,8 @@ exports[`image-viewer :base 3`] = `
     </t-loading>
   </wx-view>
   <wx-image
+    ariaHidden="{{true}}"
+    ariaLabel=""
     class="t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"
