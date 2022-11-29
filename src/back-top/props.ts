@@ -7,7 +7,7 @@
 import { TdBackTopProps } from './type';
 const props: TdBackTopProps = {
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

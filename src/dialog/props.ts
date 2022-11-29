@@ -35,7 +35,7 @@ const props: TdDialogProps = {
     type: String,
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

@@ -49,7 +49,7 @@
             prefix="{{iconProps.prefix}}"
             size="{{iconProps.size || '48rpx'}}"
             color="{{iconProps.color}}"
-            customStyle="{{iconProps.customStyle}}"
+            style="{{iconProps.style}}"
           ></t-icon>
         </view>
       </t-badge>

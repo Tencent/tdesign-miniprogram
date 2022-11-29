@@ -1,6 +1,6 @@
 <wxs src="./input.wxs" module="utils" />
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{classPrefix}} {{classPrefix}}--size-{{size}} {{classPrefix}}--layout-{{layout}} {{prefix}}-class"
 >
   <view wx:if="{{prefixIcon || label}}" class="{{classPrefix}}__wrap--prefix">
@@ -13,7 +13,7 @@
         prefix="{{prefixIconProps.prefix}}"
         size="{{prefixIconProps.size || '48rpx'}}"
         color="{{prefixIconProps.color}}"
-        customStyle="{{prefixIconProps.customStyle}}"
+        style="{{prefixIconProps.style}}"
       ></t-icon>
     </view>
     <view wx:if="{{label}}" class="{{classPrefix}}__label">
@@ -66,7 +66,7 @@
         prefix="{{clearableIconProps.prefix}}"
         size="{{clearableIconProps.size || '48rpx'}}"
         color="{{clearableIconProps.color}}"
-        customStyle="{{clearableIconProps.customStyle}}"
+        style="{{clearableIconProps.style}}"
         bind:tap="clearInput"
       ></t-icon>
 
@@ -82,7 +82,7 @@
           prefix="{{suffixIconProps.prefix}}"
           size="{{suffixIconProps.size || '48rpx'}}"
           color="{{suffixIconProps.color}}"
-          customStyle="{{suffixIconProps.customStyle}}"
+          style="{{suffixIconProps.style}}"
         ></t-icon>
         <slot wx:else name="suffixIcon" />
       </view>

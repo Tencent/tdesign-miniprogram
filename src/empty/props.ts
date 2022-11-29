@@ -7,7 +7,7 @@
 import { TdEmptyProps } from './type';
 const props: TdEmptyProps = {
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

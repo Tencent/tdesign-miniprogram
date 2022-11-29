@@ -1,6 +1,6 @@
 <wxs src="./empty.wxs" module="utils" />
 
-<view style="{{ customStyle }}" class="{{prefix}}-class {{classPrefix}}">
+<view style="{{ style }}" class="{{prefix}}-class {{classPrefix}}">
   <view class="{{classPrefix}}__content">
     <image wx:if="{{image}}" class="{{classPrefix}}__img {{prefix}}-class-image" src="{{image}}" mode="aspectFit" />
     <t-icon
@@ -9,7 +9,7 @@
       prefix="{{iconProps.prefix}}"
       size="{{iconProps.size || '192rpx'}}"
       color="{{iconProps.color || 'rgba(0, 0, 0, .26)'}}"
-      customStyle="{{iconProps.customStyle}}"
+      style="{{iconProps.style}}"
     ></t-icon>
     <slot wx:else name="image" class="{{classPrefix}}__img {{prefix}}-class-image" />
     <view wx:if="{{description}}" class="{{classPrefix}}__description {{prefix}}-class-description"

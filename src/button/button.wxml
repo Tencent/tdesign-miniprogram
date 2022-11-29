@@ -1,5 +1,5 @@
 <button
-  style="{{ customStyle }}"
+  style="{{ style }}"
   data-custom="{{ customDataset }}"
   class="{{className}} {{prefix}}-class"
   form-type="{{type}}"
@@ -30,7 +30,7 @@
     prefix="{{iconProps.prefix}}"
     size="{{iconProps.size}}"
     color="{{iconProps.color}}"
-    customStyle="{{iconProps.customStyle}}"
+    style="{{iconProps.style}}"
     class="{{classPrefix}}__icon {{prefix}}-class-icon"
   ></t-icon>
   <view wx:if="{{loading}}" class="{{classPrefix}}__loading">

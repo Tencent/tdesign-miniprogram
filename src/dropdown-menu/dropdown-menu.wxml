@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{ classPrefix }} {{prefix}}-class">
+<view style="{{ style }}" class="{{ classPrefix }} {{prefix}}-class">
   <view class="{{ classPrefix }}__bar {{prefix}}-class-menu" id="t-bar">
     <view
       wx:for="{{menus}}"

@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
-<view style="{{ customStyle }}" class="{{ prefix }}-class {{classPrefix}}" bind:tap="handleSwitch">
+<view style="{{ style }}" class="{{ prefix }}-class {{classPrefix}}" bind:tap="handleSwitch">
   <view
     class="{{_.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled], size])}} {{prefix}}-class-body"
   >

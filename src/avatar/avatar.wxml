@@ -1,6 +1,6 @@
 <wxs src="./avatar.wxs" module="this" />
 
-<view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getAvatarStyles(isShow, zIndex, customStyle)}}">
+<view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getAvatarStyles(isShow, zIndex, style)}}">
   <t-badge
     color="{{badgeProps.color}}"
     content="{{badgeProps.content}}"
@@ -24,7 +24,7 @@
         class="{{prefix}}-image"
         t-class="{{classPrefix}}__image"
         t-class-load="{{prefix}}-class-alt"
-        customStyle="{{imageProps.customStyle}}"
+        style="{{imageProps.style}}"
         src="{{image}}"
         mode="{{imageProps.mode || 'aspectFill'}}"
         lazy="{{imageProps.lazy}}"
@@ -40,7 +40,7 @@
         prefix="{{iconProps.prefix}}"
         size="{{iconProps.size}}"
         color="{{iconProps.color}}"
-        customStyle="{{iconProps.customStyle}}"
+        style="{{iconProps.style}}"
         class="{{classPrefix}}__icon {{prefix}}-class-icon"
       ></t-icon>
       <view wx:else class="{{classPrefix}}__text {{prefix}}-class-content">

@@ -41,7 +41,7 @@ export interface TdSwiperProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -106,7 +106,7 @@ export interface TdSwiperItemProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -117,7 +117,7 @@ export interface SwiperNavigation {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: string;
+  style?: string;
   /**
    * 小于这个数字不会显示导航器
    */

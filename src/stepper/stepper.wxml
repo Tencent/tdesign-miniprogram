@@ -1,5 +1,5 @@
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{classPrefix}} {{classPrefix}}--{{theme === 'grey' ? 'pure' : 'normal'}} {{ disabled ? prefix + '-is-disabled': ''}} {{prefix}}-class"
 >
   <view
@@ -8,7 +8,7 @@
   >
     <t-icon
       name="remove"
-      class="{{classPrefix}}__minus-icon"
+      t-class="{{classPrefix}}__minus-icon"
       color="{{ disabled || disableMinus || currentValue <= min ? '#ccc': '#444'}}"
       size="{{theme === 'grey' ? '32rpx' : '40rpx'}}"
     />
@@ -29,7 +29,7 @@
   >
     <t-icon
       name="add"
-      class="{{classPrefix}}__plus-icon"
+      t-class="{{classPrefix}}__plus-icon"
       color="{{ disabled || disablePlus|| currentValue >= max ? '#ccc': '#444'}}"
       size="{{theme === 'grey' ? '32rpx' : '40rpx'}}"
     />

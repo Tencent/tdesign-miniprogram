@@ -37,7 +37,7 @@
         prefix="{{closeIconProps.prefix}}"
         size="{{closeIconProps.size || '48rpx'}}"
         color="{{closeIconProps.color}}"
-        customStyle="{{closeIconProps.customStyle}}"
+        style="{{closeIconProps.style}}"
         data-source="button"
         bind:click="onClose"
       ></t-icon>
@@ -52,7 +52,7 @@
         prefix="{{deleteIconProps.prefix}}"
         size="{{deleteIconProps.size || '48rpx'}}"
         color="{{deleteIconProps.color}}"
-        customStyle="{{deleteIconProps.customStyle}}"
+        style="{{deleteIconProps.style}}"
         bind:click="onDelete"
       ></t-icon>
       <slot name="deleteBtn" />

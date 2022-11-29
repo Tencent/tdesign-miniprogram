@@ -1,4 +1,4 @@
-<view wx:if="{{visible}}" style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class">
+<view wx:if="{{visible}}" style="{{ style }}" class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class">
   <!-- prefixIcon -->
   <view class="{{classPrefix}}__prefix-icon {{prefix}}-class-prefix-icon" bind:tap="clickPrefixIcon">
     <t-icon wx:if="{{ iconName }}" name="{{ iconName }}" />

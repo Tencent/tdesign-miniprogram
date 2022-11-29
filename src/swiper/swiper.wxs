@@ -170,9 +170,9 @@ function changeCurrentInited(newVal, oldVal, ownerInstance) {
   state.currentInited = newVal;
 }
 
-function getSwiperStyles(height, customStyle) {
+function getSwiperStyles(height, style) {
   var heightStyle = height ? 'height:' + height + 'rpx;' : '';
-  return heightStyle + customStyle;
+  return heightStyle + style;
 }
 
 module.exports = {

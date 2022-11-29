@@ -35,7 +35,7 @@ isComponent: true
 button-props | Object | - | 透传至 Button 组件 | N
 custom-style `v0.25.0` | String | right: 16px; bottom: 32px; | 自定义组件样式 | N
 icon | String | - | 图标 | N
-style | String | right: 16px; bottom: 32px; | 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `customStyle`） | N
+style | String | right: 16px; bottom: 32px; | 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `style`） | N
 text | String | - | 文本内容 | N
 
 ### Fab Events

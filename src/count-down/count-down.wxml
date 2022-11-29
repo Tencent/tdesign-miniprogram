@@ -1,7 +1,7 @@
 <wxs module="_"> module.exports.format = function(num) { return num < 10 ? '0' + num : num; } </wxs>
 
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{classPrefix}} {{classPrefix}}--{{theme}} {{classPrefix}}--{{size}} {{prefix}}-class "
 >
   <slot wx:if="{{content !== 'default'}}" />

@@ -1,5 +1,5 @@
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{classPrefix}}__group"
   bind:touchstart="onTouchStart"
   catch:touchmove="onTouchMove"

@@ -18,7 +18,7 @@ export interface TdTabsProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -113,7 +113,7 @@ export interface TdTabPanelProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };

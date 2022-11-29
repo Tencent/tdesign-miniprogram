@@ -2,7 +2,7 @@
 
 <t-checkbox-group value="{{value}}" bind:change="onChange">
   <view wx:for="{{3}}" class="card {{_.contain(value, index) ? 'card--active' : value.indexOf(index)}}">
-    <t-icon wx:if="{{_.contain(value, index)}}" name="check" class="card__icon" />
+    <t-icon wx:if="{{_.contain(value, index)}}" name="check" t-class="card__icon" />
     <t-checkbox
       value="{{index}}"
       label="多选"
@@ -17,7 +17,7 @@
 
 <t-checkbox-group t-class="horizontal-box" value="{{value1}}" bind:change="onChange1">
   <view wx:for="{{3}}" class="card {{_.contain(value1, index) ? 'card--active' : ''}}">
-    <t-icon wx:if="{{_.contain(value1, index)}}" name="check" class="card__icon" />
+    <t-icon wx:if="{{_.contain(value1, index)}}" name="check" t-class="card__icon" />
     <t-checkbox value="{{index}}" label="多选" icon="none" borderless />
   </view>
 </t-checkbox-group>

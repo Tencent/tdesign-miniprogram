@@ -4,7 +4,7 @@ var changeNumToStr = function (arr) {
   });
 };
 
-var getMessageStyles = function (zIndex, offset, wrapTop, customStyle) {
+var getMessageStyles = function (zIndex, offset, wrapTop, style) {
   var arr = changeNumToStr(offset);
   var styleOffset = '';
   styleOffset += 'top:' + arr[0] + ';';
@@ -12,7 +12,7 @@ var getMessageStyles = function (zIndex, offset, wrapTop, customStyle) {
   styleOffset += 'left:' + arr[1] + ';';
   var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
   var transformStyle = 'transform: translateY(' + wrapTop + ')px;';
-  return zIndexStyle + styleOffset + transformStyle + customStyle;
+  return zIndexStyle + styleOffset + transformStyle + style;
 };
 
 module.exports = {

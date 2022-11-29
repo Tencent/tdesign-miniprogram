@@ -1402,7 +1402,7 @@
           "label": ""
         },
         {
-          "key": "customStyle",
+          "key": "style",
           "type": ["String"],
           "desc": "自定义样式",
           "label": ""

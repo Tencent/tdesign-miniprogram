@@ -1,5 +1,5 @@
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}--position-{{paginationPosition}}"
   wx:if="{{total >= minShowNum}}"
 >

@@ -7,7 +7,7 @@
 import { TdImageViewerProps } from './type';
 const props: TdImageViewerProps = {
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },
