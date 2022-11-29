@@ -2,13 +2,13 @@
   <view class="avatar-example">
     <t-avatar-group max="5" cascading="left-up" size="medium">
       <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
-      <t-avatar slot="collapseAvatar" icon="user-add" bindtap="onAddTap" bordered />
+      <t-avatar slot="collapseAvatar" icon="user-add" bindtap="onAddTap" bordered alt="点击添加" />
     </t-avatar-group>
   </view>
   <view class="avatar-example">
     <t-avatar-group max="5" size="medium">
       <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
-      <t-avatar slot="collapseAvatar" icon="user-add" bindtap="onAddTap" bordered />
+      <t-avatar slot="collapseAvatar" icon="user-add" bindtap="onAddTap" bordered alt="点击添加" />
     </t-avatar-group>
   </view>
 </view>
