@@ -8,20 +8,27 @@
   destroyOnClose="{{destroyOnClose}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
 >
-  <view class="{{classPrefix}}__sidebar">
-    <view
-      class="{{classPrefix}}__sidebar-item"
-      wx:for="{{items}}"
-      wx:item="item"
-      wx:key="index"
-      data-item="{{item}}"
-      data-index="{{index}}"
-      bindtap="itemClick"
-    >
-      <view wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
-        <t-icon name="{{item.icon}}" size="24px" />
+  <view class="{{classPrefix}}">
+    <view wx:if="{{title}}" class="{{classPrefix}}__title">{{title}}</view>
+    <view class="{{classPrefix}}__sidebar">
+      <view
+        class="{{classPrefix}}__sidebar-item"
+        wx:for="{{items}}"
+        wx:item="item"
+        wx:key="index"
+        data-item="{{item}}"
+        data-index="{{index}}"
+        bindtap="itemClick"
+      >
+        <view wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
+          <t-icon name="{{item.icon}}" />
+        </view>
+        <view class="{{classPrefix}}__sidebar-item-title"> {{item.title}} </view>
       </view>
-      <view class="{{classPrefix}}__sidebar-item-title"> {{item.title}} </view>
+    </view>
+    <view class="{{classPrefix}}__footer">
+      <slot />
+      <slot name="footer" />
     </view>
   </view>
 </t-popup>

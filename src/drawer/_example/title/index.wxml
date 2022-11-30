@@ -1,10 +1,11 @@
 <view class="box">
-  <t-button variant="outline" bind:tap="openDrawerBase" block size="large" theme="primary">基础抽屉</t-button>
+  <t-button variant="outline" bind:tap="openDrawerBase" block size="large" theme="primary">带标题抽屉</t-button>
 </view>
 <t-drawer
   visible="{{visible}}"
   placement="{{placement}}"
-  items="{{sidebar}}"
+  title="标题"
+  items="{{baseSidebar}}"
   bind:overlay-click="overlayClick"
   bind:item-click="itemClick"
 ></t-drawer>

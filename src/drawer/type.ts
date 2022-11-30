@@ -53,6 +53,14 @@ export interface TdDrawerProps {
     value?: boolean;
   };
   /**
+   * 抽屉的标题
+   * @default ''
+   */
+  title?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件是否可见
    * @default false
    */
