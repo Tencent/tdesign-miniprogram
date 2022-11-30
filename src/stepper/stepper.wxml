@@ -5,6 +5,9 @@
   <view
     class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
     catchtap="minusValue"
+    aria-label="减少"
+    aria-role="button"
+    aria-disabled="{{disabled || disableMinus || currentValue <= min}}"
   >
     <t-icon
       name="remove"
@@ -32,6 +35,9 @@
       class="{{classPrefix}}__plus-icon"
       color="{{ disabled || disablePlus|| currentValue >= max ? '#ccc': '#444'}}"
       size="{{theme === 'grey' ? '32rpx' : '40rpx'}}"
+      aria-label="增加"
+      aria-role="button"
+      aria-disabled="{{disabled || disablePlus|| currentValue >= max}}"
     />
   </view>
 </view>
