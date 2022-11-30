@@ -5,7 +5,7 @@
   <view
     class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
     catchtap="minusValue"
-    aria-label="减少"
+    aria-label="{{'减少' + step}}"
     aria-role="button"
     aria-disabled="{{disabled || disableMinus || currentValue <= min}}"
   >
@@ -29,15 +29,15 @@
   <view
     class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
     catchtap="plusValue"
+    aria-label="{{'增加' + step}}"
+    aria-role="button"
+    aria-disabled="{{disabled || disablePlus|| currentValue >= max}}"
   >
     <t-icon
       name="add"
       class="{{classPrefix}}__plus-icon"
       color="{{ disabled || disablePlus|| currentValue >= max ? '#ccc': '#444'}}"
       size="{{theme === 'grey' ? '32rpx' : '40rpx'}}"
-      aria-label="增加"
-      aria-role="button"
-      aria-disabled="{{disabled || disablePlus|| currentValue >= max}}"
     />
   </view>
 </view>
