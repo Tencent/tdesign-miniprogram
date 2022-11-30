@@ -6,6 +6,9 @@ exports[`stepper event : input 1`] = `
   style=""
 >
   <wx-view
+    ariaDisabled="{{false}}"
+    ariaLabel="减少"
+    ariaRole="button"
     class="t-stepper__minus t-class-minus  hotspot-expanded relative"
     catch:tap="minusValue"
   >
@@ -41,12 +44,13 @@ exports[`stepper event : input 1`] = `
     catch:tap="plusValue"
   >
     <t-icon
+      ariaDisabled="{{false}}"
       class="t-stepper__plus-icon"
     >
       <wx-view
         ariaHidden="{{false}}"
-        ariaLabel=""
-        ariaRole=""
+        ariaLabel="增加"
+        ariaRole="button"
         class="t-icon t-class"
         style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
@@ -66,6 +70,9 @@ exports[`stepper event : input 2`] = `
   style=""
 >
   <wx-view
+    ariaDisabled="{{false}}"
+    ariaLabel="减少"
+    ariaRole="button"
     class="t-stepper__minus t-class-minus  hotspot-expanded relative"
     catch:tap="minusValue"
   >
@@ -101,12 +108,13 @@ exports[`stepper event : input 2`] = `
     catch:tap="plusValue"
   >
     <t-icon
+      ariaDisabled="{{false}}"
       class="t-stepper__plus-icon"
     >
       <wx-view
         ariaHidden="{{false}}"
-        ariaLabel=""
-        ariaRole=""
+        ariaLabel="增加"
+        ariaRole="button"
         class="t-icon t-class"
         style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
