@@ -4,7 +4,7 @@
   class="{{ prefix }}-class {{classPrefix}}"
   bind:tap="handleSwitch"
   disabled="{{disabled}}"
-  aria-checked="{{isActive}}"
+  aria-checked="{{checked}}"
   aria-disabled="{{disabled}}"
   aria-role="checkbox"
 >
