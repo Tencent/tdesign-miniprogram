@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
-<view
+<label
   style="{{ customStyle }}"
   class="{{ prefix }}-class {{classPrefix}}"
   bind:tap="handleSwitch"
@@ -28,4 +28,4 @@
       </view>
     </view>
   </view>
-</view>
+</label>
