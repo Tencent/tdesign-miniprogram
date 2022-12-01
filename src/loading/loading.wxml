@@ -10,16 +10,11 @@
   ></view>
   <view class="{{classPrefix}} {{classPrefix + '--' + layout}}" style="{{show ? '' : 'display:none'}}" wx:else>
     <view
-      wx:if="{{ theme !== 'error' }}"
+      wx:if="{{indicator && theme != 'error'}}"
       class="{{prefix}}-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
       style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
     >
-      <view
-        wx:if="{{ theme === 'spinner' }}"
-        wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12]}}"
-        wx:key="index"
-        class="{{classPrefix}}__dot"
-      />
+      <view wx:if="{{ theme === 'spinner' }}" wx:for="{{12}}" wx:key="index" class="{{classPrefix}}__dot" />
       <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular" />
       <block wx:if="{{ theme === 'dots' }}">
         <view
@@ -36,13 +31,14 @@
         ></view>
       </block>
     </view>
-    <view class="{{classPrefix}}__text {{prefix}}-class-text">
+    <view class="{{utils.cls(classPrefix + '__text', [layout])}} {{prefix}}-class-text">
       <view wx:if="{{theme === 'error'}}">
         加载失败
         <text class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage">刷新</text>
       </view>
       <block wx:if="{{text && text !== 'slot'}}">{{text}}</block>
       <slot name="text" />
+      <slot />
     </view>
   </view>
 </view>

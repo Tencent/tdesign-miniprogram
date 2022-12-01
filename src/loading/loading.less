@@ -2,7 +2,9 @@
 
 @loading: ~'@{prefix}-loading';
 
+@loading-color: var(--td-loading-color, @primary-color);
 @loading-text-font-size: var(--td-loading-text-font-size, 24rpx);
+@loading-text-line-height: var(--td-loading-text-line-height, 40rpx);
 
 .@{loading} {
   display: inline-flex;
@@ -18,7 +20,7 @@
     max-width: 100%;
     max-height: 100%;
     animation: rotate 0.8s linear infinite;
-    color: #0052d9;
+    color: @loading-color;
 
     &.reverse {
       animation-name: rotateReverse;
@@ -88,35 +90,36 @@
 
   &__text {
     font-size: @loading-text-font-size;
+    line-height: @loading-text-line-height;
+
+    &--vertical:not(:first-child):not(:empty) {
+      margin-top: 12rpx;
+    }
+
+    &--horizontal:not(:first-child):not(:empty) {
+      margin-left: 16rpx;
+    }
   }
 
   &--vertical {
     flex-direction: column;
-
-    .@{loading}__text {
-      margin-top: 12rpx;
-    }
   }
 
   &--horizontal {
     flex-direction: row;
     vertical-align: top;
-
-    .@{loading}__text {
-      margin-left: 16rpx;
-    }
   }
 
   &__refresh-btn {
     margin-left: 16rpx;
-    color: #0052d9;
+    color: @loading-color;
   }
 
   &__bar {
     height: 6rpx;
     width: 80%;
     transition: 0.5s;
-    background-color: #0052d9;
+    background-color: @loading-color;
     display: none;
 
     &--static {
