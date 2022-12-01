@@ -1,6 +1,11 @@
 <view style="{{ customStyle }}" class="{{ classPrefix }} {{classPrefix}}--status--{{status || computedStatus}}">
   <view class="{{ classPrefix }}__inner {{prefix}}-class">
     <view
+      aria-role="progressbar"
+      role="progressbar"
+      aria-valuenow="{{computedProgress}}"
+      aria-valuemin="0"
+      aria-valuemax="100"
       class="{{ classPrefix }}__bar {{prefix}}-class-bar"
       style="height: {{ heightBar }}; background: {{ trackColor }}"
     >
