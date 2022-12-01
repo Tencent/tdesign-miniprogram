@@ -6,12 +6,14 @@
     style="{{this.getMessageStyles(zIndex, offset, wrapTop, customStyle )}}"
     animation="{{showAnimation}}"
     id="{{classPrefix}}"
+    aria-role="alert"
   >
     <t-icon
       wx:if="{{iconName}}"
       name="{{iconName}}"
       class="{{classPrefix}}__icon--left {{prefix}}-class-icon"
       size="44rpx"
+      aria-hidden
     />
     <slot name="icon" />
 
@@ -41,6 +43,8 @@
       name="close"
       size="20px"
       bind:tap="handleClose"
+      aria-role="button"
+      aria-label="关闭"
     />
     <slot name="closeBtn" />
   </view>
