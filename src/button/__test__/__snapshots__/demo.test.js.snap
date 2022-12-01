@@ -142,12 +142,14 @@ exports[`Button Button icon-btn demo works fine 1`] = `
     class="box"
   >
     <t-button
-      icon="app"
+      ariaLabel="返回"
+      icon="chevron-left"
       shape="square"
       theme="primary"
     />
     <t-button
-      icon="app"
+      ariaLabel="返回"
+      icon="chevron-left"
       shape="circle"
       theme="primary"
     />
