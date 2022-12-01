@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/sr
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
-import { getRect } from '../common/utils';
+import { isNumber, getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
@@ -36,7 +36,7 @@ export default class Message extends SuperComponent {
     animation: [],
     showAnimation: [],
     iconName: '',
-    wrapTop: -92,
+    wrapTop: -999, // 初始定位，保证在可视区域外。
   };
 
   observers = {
@@ -63,16 +63,6 @@ export default class Message extends SuperComponent {
     duration: 0,
     timingFunction: 'linear',
   });
-
-  // 入场动画
-  showAnimation = wx.createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' }).translateY(0).step().export();
-
-  // 出场动画
-  hideAnimation = wx
-    .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
-    .translateY(this.data.wrapTop)
-    .step()
-    .export();
 
   ready() {
     this.memoInitalData();
@@ -181,8 +171,24 @@ export default class Message extends SuperComponent {
     this.nextAnimationContext = 0;
   }
 
+  /** offset 默认单位是 rpx 统一处理成 px 大小，因为小程序dom中实际使用的是 px */
+  offsetUnitToPx(e: number | string) {
+    if (isNumber(e)) {
+      return Number(e) / 2;
+    }
+
+    if (String(e).indexOf('rpx') > -1) {
+      return Number(String(e).split('rpx')[0]) / 2;
+    }
+
+    if (String(e).indexOf('px') > -1) {
+      return Number(String(e).split('px')[0]);
+    }
+    return 0;
+  }
+
   show() {
-    const { duration, icon, marquee } = this.properties;
+    const { duration, icon, marquee, offset } = this.properties;
     this.setData({ visible: true, loop: marquee.loop });
     this.reset();
     this.setIcon(icon);
@@ -196,16 +202,29 @@ export default class Message extends SuperComponent {
 
     const wrapID = `#${name}`;
     getRect(this, wrapID).then((wrapRect) => {
-      // 先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
+      // 入场动画。先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
       this.setData({ wrapTop: -wrapRect.height }, () => {
-        this.setData({ showAnimation: this.showAnimation });
+        this.setData({
+          showAnimation: wx
+            .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
+            .translateY(wrapRect.height + this.offsetUnitToPx(offset[0]))
+            .step()
+            .export(),
+        });
       });
     });
   }
 
   hide() {
     this.reset();
-    this.setData({ showAnimation: this.hideAnimation });
+    this.setData({
+      // 出场动画
+      showAnimation: wx
+        .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
+        .translateY(this.data.wrapTop)
+        .step()
+        .export(),
+    });
     setTimeout(() => {
       this.setData({ visible: false, animation: [] });
     }, SHOW_DURATION);

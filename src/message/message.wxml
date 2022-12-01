@@ -3,18 +3,22 @@
 <block wx:if="{{visible}}">
   <view
     class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{theme}}"
-    style="{{this.getMessageStyles(zIndex, offset, wrapTop, customStyle )}}"
+    style="{{this.getMessageStyles(zIndex, offset, wrapTop, customStyle)}}"
     animation="{{showAnimation}}"
     id="{{classPrefix}}"
     aria-role="alert"
   >
     <t-icon
       wx:if="{{iconName}}"
-      name="{{iconName}}"
       class="{{classPrefix}}__icon--left {{prefix}}-class-icon"
-      size="44rpx"
+      name="{{iconProps.name || iconName}}"
+      prefix="{{iconProps.prefix}}"
+      size="{{iconProps.size || '44rpx'}}"
+      color="{{iconProps.color}}"
+      customStyle="{{iconProps.customStyle}}"
       aria-hidden
     />
+
     <slot name="icon" />
 
     <view
@@ -31,6 +35,8 @@
     <t-button
       wx:if="{{action}}"
       t-class="{{classPrefix}}__btn--right {{prefix}}-class-action"
+      theme="primary"
+      variant="outline"
       size="small"
       bind:tap="handleBtnClick"
       >{{action}}</t-button
@@ -40,8 +46,11 @@
     <t-icon
       wx:if="{{closeBtn}}"
       class="{{classPrefix}}__icon--right {{prefix}}-class-close-btn"
-      name="close"
-      size="20px"
+      name="{{ closeIconProps.name || 'close' }}"
+      prefix="{{closeIconProps.prefix}}"
+      size="{{closeIconProps.size || '44rpx'}}"
+      color="{{closeIconProps.color}}"
+      customStyle="{{closeIconProps.customStyle}}"
       bind:tap="handleClose"
       aria-role="button"
       aria-label="关闭"
