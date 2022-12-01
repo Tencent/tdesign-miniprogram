@@ -2,6 +2,8 @@
 
 @loading: ~'@{prefix}-loading';
 
+@loading-text-font-size: var(--td-loading-text-font-size, 24rpx);
+
 .@{loading} {
   display: inline-flex;
   align-items: center;
@@ -24,6 +26,7 @@
 
     &--spinner {
       animation-timing-function: steps(12);
+      color: @font-gray-1;
 
       .@{loading}__dot {
         position: absolute;
@@ -81,6 +84,10 @@
         animation-fill-mode: both;
       }
     }
+  }
+
+  &__text {
+    font-size: @loading-text-font-size;
   }
 
   &--vertical {
@@ -194,7 +201,7 @@
 
 @keyframes dotting {
   0% {
-    opacity: 0.4;
+    opacity: 0.15;
   }
 
   1% {
@@ -206,10 +213,10 @@
   }
 
   34% {
-    opacity: 0.4;
+    opacity: 0.15;
   }
 
   100% {
-    opacity: 0.4;
+    opacity: 0.15;
   }
 }

@@ -1,5 +1,11 @@
-<view class="loading-container-flex-column">
-  <t-loading theme="circular" size="40rpx" text="加载中(小)..."></t-loading>
-  <t-loading theme="circular" size="48rpx" text="加载(中)..." t-class-text="text-m"></t-loading>
-  <t-loading theme="circular" size="52rpx" text="加载中(大)..." t-class-text="text-l"></t-loading>
+<view class="loading-size-demo">
+  <t-loading theme="circular" size="64rpx" text="加载中..." class="large" />
+
+  <view class="demo-desc">中尺寸</view>
+
+  <t-loading theme="circular" size="56rpx" text="加载中..." class="middle" />
+
+  <view class="demo-desc">小尺寸</view>
+
+  <t-loading theme="circular" size="48rpx" text="加载中..." />
 </view>
