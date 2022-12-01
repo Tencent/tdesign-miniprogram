@@ -8,4 +8,6 @@
   <icon-drawer />
   <t-demo title="02 组件样式" desc="带标题抽屉" />
   <title />
+  <t-demo desc="带底部插槽样式" />
+  <footer />
 </view>

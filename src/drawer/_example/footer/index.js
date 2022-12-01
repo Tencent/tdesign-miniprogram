@@ -1,5 +1,6 @@
 Component({
   data: {
+    visible: true,
     placement: 'left',
     baseSidebar: [
       {
@@ -10,6 +11,21 @@ Component({
       },
       {
         title: '菜单三',
+      },
+      {
+        title: '菜单四',
+      },
+      {
+        title: '菜单五',
+      },
+      {
+        title: '菜单六',
+      },
+      {
+        title: '菜单七',
+      },
+      {
+        title: '菜单八',
       },
       {
         title: '菜单四',

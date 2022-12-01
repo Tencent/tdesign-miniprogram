@@ -4,6 +4,7 @@
   "usingComponents": {
     "base": "./base",
     "title": "./title",
-    "icon-drawer": "./icon"
+    "icon-drawer": "./icon",
+    "footer": "./footer"
   }
 }
