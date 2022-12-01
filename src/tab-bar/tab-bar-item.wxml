@@ -1,15 +1,18 @@
-
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{ customStyle }}" class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}}">
+<view
+  style="{{ customStyle }}"
+  class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}}"
+>
   <view
     class="{{_.cls(classPrefix + '__content', [['checked', isChecked], theme])}}"
     hover-class="{{classPrefix}}__content--active"
     hover-stay-time="{{200}}"
     bindtap="toggle"
+    aria-role="tab"
+    aria-selected="{{isChecked ? true : false}}"
   >
     <view wx:if="{{icon}}" class="{{classPrefix}}__icon" style="height: {{iconOnly ? 24 : 20}}px">
-
       <t-badge
         wx:if="{{badgeProps.dot || badgeProps.count}}"
         count="{{badgeProps.count}}"
@@ -20,10 +23,11 @@
         visible="{{badgeProps.visible}}"
         offset="{{badgeProps.offset || [0,0]}}"
         t-class-count="{{prefix + '-badge-class'}}"
+        aria-hidden="true"
       >
-        <t-icon name="{{icon}}" size="{{iconOnly ? 24 : 20}}" />
+        <t-icon name="{{icon}}" size="{{iconOnly ? 24 : 20}}" aria-label="{{badgeProps.dot ? '未读' : ''}}" />
       </t-badge>
-      <t-icon wx:else name="{{icon}}" size="{{iconOnly ? 24 : 20}}" />
+      <t-icon wx:else name="{{icon}}" size="{{iconOnly ? 24 : 20}}" aria-label="{{icon}}" />
       <slot name="icon" />
     </view>
     <view class="{{_.cls(classPrefix + '__text', [['small', !!icon]])}}">
@@ -32,7 +36,7 @@
     </view>
   </view>
 
-  <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}">
+  <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}" aria-role="dialog" aria-modal="true">
     <view
       class="{{classPrefix}}__spread-item"
       hover-class="{{classPrefix}}__spread-item--active"
@@ -43,6 +47,7 @@
       wx:key="index"
       bind:tap="selectChild"
       data-value="{{child.value || index}}"
+      tabindex="{{index === 0 ? -1 : 0}}"
       >{{ child.label }}
     </view>
   </view>
