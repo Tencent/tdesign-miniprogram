@@ -1,6 +1,6 @@
 <view class="demo-avatar">
   <view class="avatar-example">
-    <t-avatar t-class-content="external-class-content" alt="字母A为名称">A</t-avatar>
+    <t-avatar t-class-content="external-class-content" aria-label="字符头像">A</t-avatar>
   </view>
   <view class="avatar-example">
     <t-avatar shape="round" t-class-content="external-class-content">A</t-avatar>
