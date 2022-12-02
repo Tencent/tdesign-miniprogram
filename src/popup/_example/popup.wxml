@@ -11,16 +11,16 @@
       <t-button block size="large" bind:tap="handlePopup" data-type="right">右侧弹出</t-button>
     </view>
     <t-popup visible="{{bottom}}" bind:visible-change="onVisibleChange" placement="bottom">
-      <view class="block block--bottom" />
+      <view class="block block--bottom">我是张跑跑</view>
     </t-popup>
     <t-popup visible="{{center}}" bind:visible-change="onVisibleChange" placement="center">
-      <view class="block block--middle" />
+      <view class="block block--middle">我是张跑跑</view>
     </t-popup>
     <t-popup visible="{{left}}" bind:visible-change="onVisibleChange" placement="left">
-      <view class="block block--left" />
+      <view class="block block--left">我是张跑跑</view>
     </t-popup>
     <t-popup visible="{{right}}" bind:visible-change="onVisibleChange" placement="right">
-      <view class="block block--right" />
+      <view class="block block--right">我是张跑跑</view>
     </t-popup>
   </t-demo>
 </view>

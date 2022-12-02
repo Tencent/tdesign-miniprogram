@@ -4,8 +4,10 @@
   style="{{ utils.getPopupStyles(zIndex, customStyle) }}"
   class="{{className}} {{transitionClass}} {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
+  aria-role="dialog"
+  aria-modal="{{ true }}"
 >
-  <view class="{{classPrefix}}__content {{prefix}}-class-content">
+  <view class="{{classPrefix}}__content {{prefix}}-class-content" id="popup-label">
     <view class="{{classPrefix}}__close" bind:tap="handleClose">
       <t-icon name="close" wx:if="{{closeBtn}}" size="64rpx" />
       <slot name="closeBtn" class="{{classPrefix}}-slot" />
@@ -23,4 +25,5 @@
   prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
   bind:tap="handleOverlayClick"
   custom-style="{{overlayProps.customStyle || ''}}"
+  aria-label="关闭"
 />

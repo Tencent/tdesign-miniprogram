@@ -5,6 +5,8 @@
   bind:tap="handleClick"
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
+  aria-role="{{ ariaRole || 'button' }}"
+  aria-label="{{ ariaLabel || '背景蒙层' }}"
 >
   <slot />
 </view>
@@ -14,6 +16,8 @@
   style="z-index: {{_zIndex}}; {{computedStyle}} {{customStyle}}"
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"
+  aria-role="{{ ariaRole || 'button' }}"
+  aria-label="{{ ariaLabel || '背景蒙层' }}"
 >
   <slot />
 </view>
