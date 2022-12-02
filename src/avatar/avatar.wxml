@@ -18,6 +18,9 @@
     <view
       class="{{this.getAvatarOuterClass(classPrefix, size, shape, bordered)}} {{prefix}}-class-image "
       style="{{this.getAvatarSizePx(size)}}"
+      aria-label="{{ ariaLabel || alt ||'头像'}}"
+      aria-role="{{ ariaRole || 'img'}}"
+      aria-hidden="{{ ariaHidden }}"
     >
       <t-image
         wx:if="{{image}}"
