@@ -18,7 +18,7 @@
     <view
       class="{{this.getAvatarOuterClass(classPrefix, size, shape, bordered)}} {{prefix}}-class-image "
       style="{{this.getAvatarSizePx(size)}}"
-      aria-label="{{ ariaLabel || '头像'}}"
+      aria-label="{{ ariaLabel || alt ||'头像'}}"
       aria-role="{{ ariaRole || 'img'}}"
       aria-hidden="{{ ariaHidden }}"
     >
