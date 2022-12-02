@@ -5,10 +5,11 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
+align | String | center | `0.29.0`。options：center/left | N
 cancel-text | String | - | \- | N
 count | Number | 8 | \- | N
-custom-style `v0.25.0` | String | - | \- | N
-external-classes | Array | - | `['t-class', 't-class-image', 't-class-content']` | N
+custom-style | String | - | `0.25.0` | N
+description | String | - | `0.29.0` | N
 items | Array | - | required。Typescript：`Array<string \| ActionSheetItem>` `interface ActionSheetItem {label: string; color?: string; disabled?: boolean }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts) | Y
 show-cancel | Boolean | true | \- | N
 theme | String | list | options：list/grid | N
@@ -19,6 +20,6 @@ default-visible | Boolean | undefined | required。uncontrolled property | Y
 
 name | params | description
 -- | -- | --
-visible-change | `(visible: Boolean)` | \-
 cancel | \- | \-
+close | \- | \-
 selected | `(selected: ActionSheetItem \| string, index: number)` | \-

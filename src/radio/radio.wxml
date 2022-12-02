@@ -1,6 +1,14 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{ customStyle }}" class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class">
+<view
+  style="{{ customStyle }}"
+  class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class"
+  disabled="{{disabled}}"
+  aria-role="radio"
+  aria-checked="{{checked}}"
+  aria-label="{{label + content}}"
+  aria-disabled="{{disabled}}"
+>
   <view
     class="{{_.cls(classPrefix + '__icon', [align, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
     data-target="icon"

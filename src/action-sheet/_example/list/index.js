@@ -9,19 +9,60 @@ Component({
         context: this,
         items: [
           {
-            label: '默认选项',
+            label: '选项一',
           },
           {
-            label: '自定义选项',
-            color: '#0052D9',
+            label: '选项二',
           },
           {
-            label: '失效选项',
-            disabled: true,
+            label: '选项三',
           },
           {
-            label: '警告选项',
-            color: '#e34d59',
+            label: '选项四',
+          },
+        ],
+      });
+    },
+    showDescAction() {
+      ActionSheet.show({
+        theme: ActionSheetTheme.List,
+        selector: '#t-action-sheet',
+        context: this,
+        description: '动作面板描述文字',
+        items: [
+          {
+            label: '选项一',
+          },
+          {
+            label: '选项二',
+          },
+          {
+            label: '选项三',
+          },
+        ],
+      });
+    },
+    showIconAction() {
+      ActionSheet.show({
+        theme: ActionSheetTheme.List,
+        selector: '#t-action-sheet',
+        context: this,
+        items: [
+          {
+            label: '选项一',
+            icon: 'app',
+          },
+          {
+            label: '选项二',
+            icon: 'app',
+          },
+          {
+            label: '选项三',
+            icon: 'app',
+          },
+          {
+            label: '选项四',
+            icon: 'app',
           },
         ],
       });

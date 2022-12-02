@@ -42,7 +42,7 @@ exports[`image-viewer :base 1`] = `
             />
           </wx-view>
           <wx-view
-            class="t-class-text"
+            class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
       </wx-view>
@@ -106,7 +106,7 @@ exports[`image-viewer :base 2`] = `
             />
           </wx-view>
           <wx-view
-            class="t-class-text"
+            class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
       </wx-view>
@@ -170,7 +170,7 @@ exports[`image-viewer :base 3`] = `
             />
           </wx-view>
           <wx-view
-            class="t-class-text"
+            class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
       </wx-view>

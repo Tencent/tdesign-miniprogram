@@ -1,41 +1,59 @@
 @import '../common/style/index.less';
 
-@drawer-sidebar-bg-color: #fff;
-@drawer-sidebar-border-color: #e7e7e7;
-@drawer-sidebar-title-color: rgba(0, 0, 0, 0.9);
-@drawer-sidebar-icon-color: rgba(0, 0, 0, 0.9);
-
-page {
-  --td-drawer-sidebar-bg-color: @drawer-sidebar-bg-color;
-  --td-drawer-sidebar-border-color: @drawer-sidebar-border-color;
-  --td-drawer-sidebar-title-color: @drawer-sidebar-title-color;
-  --td-drawer-sidebar-icon-color: @drawer-sidebar-icon-color;
-}
+@drawer-width: var(--td-drawer-width, 560rpx);
+@drawer-title-font-size: var(--td-drawer-title-font-size, 36rpx);
+@drawer-title-padding: var(--td-drawer-title-padding, 48rpx 32rpx 16rpx);
+@drawer-bg-color: var(--td-drawer-bg-color, #fff);
+@drawer-border-color: var(--td-drawer-border-color, #e7e7e7);
+@drawer-title-color: var(--td-drawer-title-color, @font-gray-1);
+@drawer-icon-color: var(--td-drawer-title-color, @drawer-title-color);
+@drawer-item-padding: var(--td-drawer-item-padding, 32rpx);
+@drawer-item-height: var(--td-drawer-item-height, 48rpx);
+@drawer-item-icon-size: var(--td-drawer-item-icon-size, 48rpx);
+@drawer-sidebar-height: var(--td-drawer-sidebar-height, 1024rpx);
 
 .@{prefix}-drawer {
+  background: @drawer-bg-color;
+  height: 100vh;
+  width: @drawer-width;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-weight: 600;
+    font-size: @drawer-title-font-size;
+    padding: 48rpx 32rpx 16rpx;
+  }
+
   &__sidebar {
-    width: calc(100vw * 0.82);
-    height: 100vh;
-    background: var(--td-drawer-sidebar-bg-color);
+    height: @drawer-sidebar-height;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      .border(bottom, @drawer-border-color);
+      padding: @drawer-item-padding 0;
+      margin-left: @drawer-item-padding;
+      line-height: @drawer-item-height;
+
+      &-title {
+        flex: 1;
+        color: var(--td-drawer-title-color);
+      }
+
+      &-icon {
+        padding-right: 16rpx;
+        color: @drawer-icon-color;
+        font-size: @drawer-item-icon-size;
+      }
+    }
   }
 
-  &__sidebar-item {
-    display: flex;
-    align-items: center;
-    border-bottom: 1rpx solid var(--td-drawer-sidebar-border-color);
-    padding: 24rpx 0;
-    margin-left: 32rpx;
-  }
-
-  &__sidebar-item-title {
+  &__footer {
     flex: 1;
-    color: var(--td-drawer-sidebar-title-color);
-  }
-
-  &__sidebar-item-icon {
-    width: 48rpx;
-    height: 48rpx;
-    padding-right: 16rpx;
-    color: var(--td-drawer-sidebar-icon-color);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: env(safe-area-inset-bottom, 28px);
+    padding-bottom: constant(safe-area-inset-bottom, 28px);
   }
 }

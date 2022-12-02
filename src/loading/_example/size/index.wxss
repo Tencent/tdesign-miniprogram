@@ -1,12 +1,17 @@
-.text-m {
-  font-size: 28rpx;
+.large {
+  --td-loading-text-font-size: 32rpx;
 }
 
-.text-l {
-  font-size: 32rpx;
+.middle {
+  --td-loading-text-font-size: 28rpx;
 }
 
-.loading-container-flex-column t-loading {
-  display: flex;
-  margin-top: 32rpx;
+.loading-size-demo t-loading {
+  display: block;
+  box-sizing: border-box;
+  margin: 32rpx 0 48rpx;
+}
+
+.demo-desc {
+  margin-left: 0;
 }
