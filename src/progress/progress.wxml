@@ -6,6 +6,10 @@
       aria-valuenow="{{computedProgress}}"
       aria-valuemin="0"
       aria-valuemax="100"
+      aria-label="{{ ariaLabel }}"
+      aria-labelledby="{{ ariaLabelledby }}"
+      aria-describedby="{{ ariaDescribedby }}"
+      aria-busy="{{ ariaBusy }}"
       class="{{ classPrefix }}__bar {{prefix}}-class-bar"
       style="height: {{ heightBar }}; background: {{ trackColor }}"
     >
