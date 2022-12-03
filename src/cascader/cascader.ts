@@ -44,15 +44,17 @@ export default class Cascader extends SuperComponent {
       const steps = [];
       const items = [options];
 
-      for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
-        const index = selectedIndexes[i];
-        const next = items[i][index];
+      if (options.length > 0) {
+        for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
+          const index = selectedIndexes[i];
+          const next = items[i][index];
 
-        selectedValue.push(next[keys?.value ?? 'value']);
-        steps.push(next[keys?.label ?? 'label']);
+          selectedValue.push(next[keys?.value ?? 'value']);
+          steps.push(next[keys?.label ?? 'label']);
 
-        if (next[keys?.children ?? 'children']) {
-          items.push(next[keys?.children ?? 'children']);
+          if (next[keys?.children ?? 'children']) {
+            items.push(next[keys?.children ?? 'children']);
+          }
         }
       }
 
