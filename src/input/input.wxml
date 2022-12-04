@@ -2,12 +2,14 @@
 <view
   style="{{ customStyle }}"
   class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + (borderless ? '' : '--bordered')}} {{prefix}}-class"
+  aria-role="form"
+  aria-labelledby="{{placeholder}}"
 >
   <view wx:if="{{prefixIcon}}" class="{{classPrefix}}__icon-wrap">
     <slot name="prefixIcon" wx:if="{{prefixIcon === 'slot'}}" />
     <t-icon wx:else class="{{classPrefix}}__icon--prefix {{prefix}}-class-icon" name="{{prefixIcon}}" />
   </view>
-  <view wx:if="{{label}}" class="{{classPrefix}}__label">
+  <view wx:if="{{label}}" class="{{classPrefix}}__label" aria-hidden>
     <slot name="label" wx:if="{{label === 'slot'}}" />
     <text wx:else class="{{prefix}}-class-label">{{label}}</text>
   </view>
@@ -15,6 +17,9 @@
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content">
       <input
+        id="{{placeholder}}"
+        aria-role="textbox"
+        aria-label="{{label === 'slot' ? screenName : label}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholderStyle="{{placeholderStyle}}"
@@ -46,16 +51,19 @@
         safe-password-custom-hash="{{safePasswordCustomHash}}"
         class="{{utils.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
       />
-      <view wx:if="{{ clearable && value.length > 0}}" class="{{classPrefix}}__wrap--icon" bind:tap="clearInput">
+      <view wx:if="{{ clearable && value.length > 0}}" class="{{classPrefix}}__wrap--icon" bind:tap="clearInput" aria-role="button" aria-label="清除">
         <t-icon name="close-circle-filled" size="48rpx" class="{{prefix}}-class-clearable" />
       </view>
-      <view class="{{classPrefix}}__wrap--suffix">
+      <view class="{{classPrefix}}__wrap--suffix" aria-role="button">
         <slot name="suffix" />
       </view>
-      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text {{prefix}}-class-suffix">
+      <view class="{{classPrefix}}__wrap--suffix">
+        <slot name="suffix-image" />
+      </view>
+      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text {{prefix}}-class-suffix" aria-role="button">
         <text>{{suffix}}</text>
       </view>
-      <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon">
+      <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon" aria-role="button" aria-label="{{screenName}}">
         <t-icon name="{{suffixIcon}}" size="48rpx" class="{{prefix}}-class-suffix-icon" />
       </view>
     </view>

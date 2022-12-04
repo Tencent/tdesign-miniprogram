@@ -1,1 +1,1 @@
-<t-input label="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" />
+<t-input label="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" screenName="帮助" />

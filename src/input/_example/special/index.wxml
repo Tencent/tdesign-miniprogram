@@ -1,6 +1,6 @@
 <t-input label="输入密码" type="password" value="{{textPassword}}" clearable />
 <t-input placeholder="请输入验证码" label="验证码">
-  <view slot="suffix">
+  <view slot="suffix-image">
     <image
       style="width: 72px; height: 36px; display: block; margin-top: -6px; margin-bottom: -6px"
       src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png"

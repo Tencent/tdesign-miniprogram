@@ -321,6 +321,11 @@ export interface TdInputProps {
     type: StringConstructor;
     value?: string;
   };
+  /** 原本旁白无法正常朗读的焦点，用screenName替代 */
+  screenName?: {
+    type: StringConstructor;
+    value?: '';
+  };
 }
 
 export type InputFormatType = (value: InputValue) => number | string;
