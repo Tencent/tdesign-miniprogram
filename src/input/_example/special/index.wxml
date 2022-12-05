@@ -4,6 +4,8 @@
   <view slot="suffix" class="suffix">
     <view class="suffix--line"></view>
     <image
+      aria-role="img"
+      aria-label="验证码"
       class="image"
       src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png"
       mode="heightFix"
@@ -19,7 +21,7 @@
   tips="{{phoneError ? '手机号输入不正确' : ''}}"
   bindchange="onPhoneInput"
 >
-  <view slot="suffix" style="display: flex; align-items: center">
+  <view slot="suffix" style="display: flex; align-items: center" ariaRole="button">
     <view class="suffix--line"></view>
     <view class="verify"> 发送验证码 </view>
   </view>

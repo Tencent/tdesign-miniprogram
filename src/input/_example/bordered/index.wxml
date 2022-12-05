@@ -4,6 +4,7 @@
 <t-input
   placeholder="请输入文字"
   suffixIcon="error-circle-filled"
+  ariaLabel="提示"
   status="error"
   tips="错误提示文字"
   borderless="{{false}}"
