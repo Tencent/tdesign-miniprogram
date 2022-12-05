@@ -4,6 +4,7 @@ exports[`image :base 1`] = `
 <main>
   <t-image>
     <wx-view
+      ariaHidden="{{false}}"
       class="t-class t-image t-image__mask t-image--faild t-image--shape-square"
       style=" "
     >
@@ -14,8 +15,8 @@ exports[`image :base 1`] = `
         <t-icon>
           <wx-view
             ariaHidden="{{false}}"
-            ariaLabel=""
-            ariaRole=""
+            ariaLabel="加载失败"
+            ariaRole="img"
             class="t-icon t-class"
             style=""
             bind:tap="onTap"
@@ -28,6 +29,8 @@ exports[`image :base 1`] = `
       </wx-view>
     </wx-view>
     <wx-image
+      ariaHidden="{{true}}"
+      ariaLabel=""
       class="t-class t-image t-image--shape-square"
       hidden="{{true}}"
       id="image"
@@ -51,6 +54,8 @@ exports[`image :success 1`] = `
     bind:load="handleLoad"
   >
     <wx-image
+      ariaHidden="{{false}}"
+      ariaLabel=""
       class="t-class t-image t-image--shape-square"
       hidden="{{false}}"
       id="image"
