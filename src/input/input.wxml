@@ -3,7 +3,8 @@
   style="{{ customStyle }}"
   class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + (borderless ? '' : '--bordered')}} {{prefix}}-class"
   aria-role="form"
-  aria-labelledby="{{placeholder}}"
+  aria-label="{{label === 'slot' ? screenName : label}}"
+  aria-labelledby="{{label === 'slot' ? screenName : label}}"
 >
   <view wx:if="{{prefixIcon}}" class="{{classPrefix}}__icon-wrap">
     <slot name="prefixIcon" wx:if="{{prefixIcon === 'slot'}}" />
@@ -17,7 +18,7 @@
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content">
       <input
-        id="{{placeholder}}"
+        id="{{label === 'slot' ? screenName : label}}"
         aria-role="textbox"
         aria-label="{{label === 'slot' ? screenName : label}}"
         disabled="{{disabled}}"
@@ -60,7 +61,7 @@
       <view class="{{classPrefix}}__wrap--suffix">
         <slot name="suffix-image" />
       </view>
-      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text {{prefix}}-class-suffix" aria-role="button">
+      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text {{prefix}}-class-suffix">
         <text>{{suffix}}</text>
       </view>
       <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon" aria-role="button" aria-label="{{screenName}}">
