@@ -1,20 +1,8 @@
-.flex {
-  display: flex;
-  align-items: center;
+.demo-count-down-desc {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 28rpx;
 }
 
-.base-time {
-  margin-top: 52rpx;
-  justify-content: space-between;
-}
-
-.base-time-text {
-  font-size: 20rpx;
-  color: rgba(0, 0, 0, 0.4);
-  width: 60%;
-}
-
-.base-time-cls {
-  color: #333;
-  font-weight: 700;
+.demo-count-down-content {
+  margin: 32rpx 0 48rpx;
 }

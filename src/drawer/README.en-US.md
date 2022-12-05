@@ -5,14 +5,16 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-close-on-overlay-click | Boolean | true | \- | N
-custom-style `v0.25.0` | String | - | \- | N
+close-on-overlay-click | Boolean | undefined | \- | N
+custom-style | String | - | \- | N
 destroy-on-close | Boolean | false | \- | N
+footer | Slot | - | \- | N
 items | Array | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/drawer/type.ts) | N
 placement | String | right | options：left/right | N
 show-overlay | Boolean | true | \- | N
+title | String / Slot | '' | \- | N
 visible | Boolean | false | \- | N
-z-index | Number | 11500 | \- | N
+z-index | Number | - | \- | N
 
 ### Drawer Events
 

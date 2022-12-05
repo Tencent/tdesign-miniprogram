@@ -6,6 +6,9 @@ exports[`stepper event : input 1`] = `
   style=""
 >
   <wx-view
+    ariaDisabled="{{false}}"
+    ariaLabel="减少2"
+    ariaRole="button"
     class="t-stepper__minus t-class-minus  hotspot-expanded relative"
     catch:tap="minusValue"
   >
@@ -13,6 +16,9 @@ exports[`stepper event : input 1`] = `
       class="t-stepper__minus-icon"
     >
       <wx-view
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        ariaRole=""
         class="t-icon t-class"
         style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
@@ -34,6 +40,9 @@ exports[`stepper event : input 1`] = `
     catch:input="inputHandle"
   />
   <wx-view
+    ariaDisabled="{{false}}"
+    ariaLabel="增加2"
+    ariaRole="button"
     class="t-stepper__plus t-class-plus  hotspot-expanded relative"
     catch:tap="plusValue"
   >
@@ -41,6 +50,9 @@ exports[`stepper event : input 1`] = `
       class="t-stepper__plus-icon"
     >
       <wx-view
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        ariaRole=""
         class="t-icon t-class"
         style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
@@ -60,6 +72,9 @@ exports[`stepper event : input 2`] = `
   style=""
 >
   <wx-view
+    ariaDisabled="{{false}}"
+    ariaLabel="减少2"
+    ariaRole="button"
     class="t-stepper__minus t-class-minus  hotspot-expanded relative"
     catch:tap="minusValue"
   >
@@ -67,6 +82,9 @@ exports[`stepper event : input 2`] = `
       class="t-stepper__minus-icon"
     >
       <wx-view
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        ariaRole=""
         class="t-icon t-class"
         style="color: #444; font-size: 40rpx"
         bind:tap="onTap"
@@ -88,6 +106,9 @@ exports[`stepper event : input 2`] = `
     catch:input="inputHandle"
   />
   <wx-view
+    ariaDisabled="{{false}}"
+    ariaLabel="增加2"
+    ariaRole="button"
     class="t-stepper__plus t-class-plus  hotspot-expanded relative"
     catch:tap="plusValue"
   >
@@ -95,6 +116,9 @@ exports[`stepper event : input 2`] = `
       class="t-stepper__plus-icon"
     >
       <wx-view
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        ariaRole=""
         class="t-icon t-class"
         style="color: #444; font-size: 40rpx"
         bind:tap="onTap"

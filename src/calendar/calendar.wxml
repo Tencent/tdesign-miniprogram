@@ -11,9 +11,17 @@
       <view class="{{classPrefix}}__days">
         <view wx:for="{{days}}" wx:key="index" class="{{classPrefix}}__days-item">{{ item }}</view>
       </view>
-      <scroll-view class="{{classPrefix}}__months" scroll-with-animation scroll-y enhanced show-scrollbar="{{false}}">
+      <scroll-view
+        class="{{classPrefix}}__months"
+        scroll-into-view="{{scrollIntoView}}"
+        scroll-y
+        enhanced
+        show-scrollbar="{{false}}"
+      >
         <block wx:for="{{months}}" wx:key="index">
-          <view class="{{classPrefix}}__month">{{ item.year }} 年 {{ item.month + 1 }} 月</view>
+          <view class="{{classPrefix}}__month" id="year_{{item.year}}_month_{{item.month}}"
+            >{{ item.year }} 年 {{ item.month + 1 }} 月</view
+          >
           <view class="{{classPrefix}}__dates">
             <view wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}" wx:key="index" />
             <block wx:for="{{item.months}}" wx:for-index="dateIndex" wx:for-item="dateItem" wx:key="dateIndex">
@@ -39,7 +47,7 @@
           </view>
         </block>
       </scroll-view>
-      <view class="{{classPrefix}}__footer">
+      <view wx:if="{{confirmBtn != null}}" class="{{classPrefix}}__footer">
         <slot wx:if="{{confirmBtn === 'slot'}}" name="confirmBtn" />
         <block wx:elif="{{confirmBtn}}">
           <!-- <t-button block theme="primary" v-bind="confirmBtn" bind:tap="handleConfirm" /> -->

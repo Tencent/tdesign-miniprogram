@@ -14,8 +14,16 @@ export interface TdInputProps {
     value?: 'left' | 'center' | 'right';
   };
   /**
-   * 【讨论中】是否开启无边框模式
-   * @default false
+   * 标题输入框布局方式
+   * @default horizontal
+   */
+  layout?: {
+    type: StringConstructor;
+    value?: 'horizontal' | 'vertical';
+  };
+  /**
+   * 是否开启无边框模式
+   * @default true
    */
   borderless?: {
     type: BooleanConstructor;
@@ -28,6 +36,11 @@ export interface TdInputProps {
   clearable?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /** 透传至组件清楚图标 icon */
+  clearableIconProps: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 自定义组件样式
@@ -103,6 +116,11 @@ export interface TdInputProps {
     type: StringConstructor;
     value?: string;
   };
+  /** 透传至组件前缀图标 prefix-icon */
+  prefixIconProps: {
+    type: ObjectConstructor;
+    value?: object;
+  };
   /**
    * 只读状态
    * @default false
@@ -141,6 +159,11 @@ export interface TdInputProps {
     type: StringConstructor;
     value?: string;
   };
+  /** 透传至组件后缀图标 suffix-icon */
+  suffixIconProps: {
+    type: ObjectConstructor;
+    value?: object;
+  };
   /**
    * 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式
    */
@@ -154,7 +177,7 @@ export interface TdInputProps {
    */
   type?: {
     type: StringConstructor;
-    value?: 'text' | 'number' | 'idcard' | 'digit' | 'safe-password' | 'password';
+    value?: 'text' | 'number' | 'idcard' | 'digit' | 'safe-password' | 'password' | 'nickname';
   };
   /**
    * 输入框的值

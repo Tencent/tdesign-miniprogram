@@ -1,22 +1,25 @@
 <view class="textarea-example">
   <view class="demo-title">Textarea 多行文本框</view>
   <view class="demo-desc">用于多行文本信息输入。</view>
-  <t-demo title="01 类型" desc="基础多行文本框">
+  <t-demo title="01 组件类型" desc="基础多行文本框">
     <base />
   </t-demo>
   <t-demo title="" desc="带标题多行文本框">
-    <labelDemo />
+    <label />
   </t-demo>
   <t-demo title="" desc="自动增高多行文本框">
     <autosize />
   </t-demo>
-  <t-demo title="02 状态" desc="禁用多行文本框">
-    <disabled />
-  </t-demo>
-  <t-demo title="03 字符限制" desc="设置最大字符个数">
+  <t-demo desc="设置最大字符个数">
     <maxlength />
   </t-demo>
-  <t-demo title="" desc="设置最大字符个数，一个汉字表示两个字符">
+  <t-demo desc="设置最大字符个数，一个汉字表示两个字符">
     <maxcharacter />
+  </t-demo>
+  <t-demo title="02 组件状态" desc="禁用多行文本框">
+    <disabled />
+  </t-demo>
+  <t-demo title="03 自定义组件样式" desc="标签外置输入框">
+    <custom />
   </t-demo>
 </view>

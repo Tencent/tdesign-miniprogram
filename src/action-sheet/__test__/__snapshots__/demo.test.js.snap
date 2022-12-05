@@ -1,5 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ActionSheet ActionSheet align demo works fine 1`] = `
+<align>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    左对齐列表型
+  </t-button>
+</align>
+`;
+
 exports[`ActionSheet ActionSheet grid demo works fine 1`] = `
 <grid>
   <t-action-sheet
@@ -9,46 +27,22 @@ exports[`ActionSheet ActionSheet grid demo works fine 1`] = `
   <t-button
     block="{{true}}"
     size="large"
+    theme="primary"
     variant="outline"
     bind:tap="handleAction"
   >
-    宫格型
+    常规宫格型
+  </t-button>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleMultiAction"
+  >
+    带翻页宫格型
   </t-button>
 </grid>
-`;
-
-exports[`ActionSheet ActionSheet grid-multi demo works fine 1`] = `
-<grid-multi>
-  <t-action-sheet
-    id="t-action-sheet"
-    bind:selected="handleSelected"
-  />
-  <t-button
-    block="{{true}}"
-    size="large"
-    variant="outline"
-    bind:tap="handleAction"
-  >
-    宫格型-多页
-  </t-button>
-</grid-multi>
-`;
-
-exports[`ActionSheet ActionSheet icon-list demo works fine 1`] = `
-<icon-list>
-  <t-action-sheet
-    id="t-action-sheet"
-    bind:selected="handleSelected"
-  />
-  <t-button
-    block="{{true}}"
-    size="large"
-    variant="outline"
-    bind:tap="handleAction"
-  >
-    带图标列表型
-  </t-button>
-</icon-list>
 `;
 
 exports[`ActionSheet ActionSheet list demo works fine 1`] = `
@@ -60,10 +54,47 @@ exports[`ActionSheet ActionSheet list demo works fine 1`] = `
   <t-button
     block="{{true}}"
     size="large"
+    theme="primary"
     variant="outline"
     bind:tap="handleAction"
   >
     列表型
   </t-button>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDescAction"
+  >
+    带描述列表型
+  </t-button>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showIconAction"
+  >
+    带图标列表型
+  </t-button>
 </list>
+`;
+
+exports[`ActionSheet ActionSheet status demo works fine 1`] = `
+<status>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    列表型选项状态
+  </t-button>
+</status>
 `;

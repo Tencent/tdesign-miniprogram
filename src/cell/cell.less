@@ -1,26 +1,24 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@cell-font-size: 32rpx;
-@cell-line-height: 48rpx;
-@cell-vertical-padding: 32rpx;
-@cell-horizontal-padding: 32rpx;
-@cell-text-color: @font-gray-1;
-@cell-background-color: #ffffff;
-@cell-border-color: @gray-color-3;
-@cell-hover-color: @gray-color-1;
-@cell-required-color: @error-color-6;
-@cell-description-color: @font-gray-2;
-@cell-description-font-size: 28rpx;
-@cell-description-line-height: 44rpx;
-@cell-description-margin-top: 8rpx;
-@cell-note-color: @font-gray-3;
-@cell-icon-size: 48rpx;
-@cell-right-icon-color: @font-gray-3;
-@cell-gutter: 16rpx;
-@cell-border-padding-left: 32rpx;
-@cell-image-width: 96rpx;
-@cell-image-height: 96rpx;
+@cell-font-size: var(--td-cell-font-size, @font-size-m);
+@cell-line-height: var(--td-cell-line-height, 48rpx);
+@cell-vertical-padding: var(--td-cell-vertical-padding, 32rpx);
+@cell-horizontal-padding: var(--td-cell-horizontal-padding, 32rpx);
+@cell-text-color: var(--td-cell-text-color, @font-gray-1);
+@cell-bg-color: var(--td-cell-bg-color, @bg-color-block);
+@cell-border-color: var(--td-cell-border-color, @gray-color-3);
+@cell-hover-color: var(--td-cell-hover-color, @gray-color-1);
+@cell-required-color: var(--td-cell-required-color, @error-color-6);
+@cell-description-color: var(--td-cell-description-color, @font-gray-2);
+@cell-description-font-size: var(--td-cell-description-font-size, @font-size-base);
+@cell-description-line-height: var(--td-cell-description-line-height, 44rpx);
+@cell-note-color: var(--td-cell-note-color, @font-gray-3);
+@cell-note-font-size: var(--td-cell-note-font-size, @font-size-m);
+@cell-icon-size: var(--td-cell-icon-size, 48rpx);
+@cell-right-icon-color: var(--td-cell-right-icon-color, @font-gray-3);
+@cell-image-width: var(--td-cell-image-width, 96rpx);
+@cell-image-height: var(--td-cell-image-height, 96rpx);
 
 .@{prefix}-cell {
   position: relative;
@@ -31,11 +29,11 @@
   font-size: @cell-font-size;
   line-height: @cell-line-height;
   color: @cell-text-color;
-  background-color: @cell-background-color;
+  background-color: @cell-bg-color;
 
   &::after {
     .hairline-bottom(@cell-border-color);
-    left: @cell-border-padding-left;
+    left: 32rpx;
   }
 
   &--borderless::after {
@@ -48,7 +46,7 @@
     color: @cell-description-color;
 
     &-text {
-      margin-top: @cell-description-margin-top;
+      margin-top: 8rpx;
     }
   }
 
@@ -58,6 +56,7 @@
     justify-content: flex-end;
     overflow: hidden;
     color: @cell-note-color;
+    font-size: @cell-note-font-size;
   }
 
   &__title,

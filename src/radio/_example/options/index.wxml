@@ -1,1 +1,0 @@
-<t-radio-group options="{{options}}" defaultValue="数字" bind:change="onChange"></t-radio-group>

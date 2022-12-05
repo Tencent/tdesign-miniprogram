@@ -1,0 +1,7 @@
+.box {
+  display: flex;
+}
+
+.box t-loading {
+  margin-right: 64px;
+}

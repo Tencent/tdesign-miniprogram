@@ -3,13 +3,13 @@
   <view class="demo-desc"
     >用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。</view
   >
-  <t-demo title="01 类型" desc="纯icon" padding>
+  <t-demo title="01 组件类型" desc="纯图标" padding>
     <base />
   </t-demo>
-  <t-demo desc="icon加文字横向" padding>
+  <t-demo desc="图标加文字横向" padding>
     <horizontal />
   </t-demo>
-  <t-demo desc="icon加文字竖向" padding>
+  <t-demo desc="图标加文字竖向" padding>
     <vertical />
   </t-demo>
   <t-demo desc="纯文字" padding>
@@ -18,19 +18,20 @@
   <t-demo desc="加载失败" padding>
     <error />
   </t-demo>
-  <t-demo desc="进度条加载" padding>
+
+  <!-- <t-demo desc="进度条加载" padding>
     <t-button size="large" plain block bind:tap="goToProgress">页面进度条加载</t-button>
-  </t-demo>
+  </t-demo> -->
 
-  <t-demo title="02 状态" desc="如果加载状态在延迟内结束，则不显示" padding>
-    <status />
-  </t-demo>
-
-  <t-demo title="03 加载速度" desc="加载速度可配置，加载一周的时间单位（毫秒）" padding>
-    <duration />
-  </t-demo>
-
-  <t-demo title="04 规格" desc="支持自定义加载规格" padding>
+  <t-demo title="02 组件尺寸" desc="大尺寸" padding>
     <size />
+  </t-demo>
+
+  <!-- <t-demo title="02 组件状态" desc="如果加载状态在延迟内结束，则不显示" padding>
+    <status />
+  </t-demo> -->
+
+  <t-demo title="03 加载速度" desc="加载速度调整" padding>
+    <duration />
   </t-demo>
 </view>

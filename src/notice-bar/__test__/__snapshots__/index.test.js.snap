@@ -15,6 +15,9 @@ exports[`notice-bar props : marquee 1`] = `
       >
         <t-icon>
           <wx-view
+            ariaHidden="{{false}}"
+            ariaLabel=""
+            ariaRole=""
             class="t-icon t-class"
             style=""
             bind:tap="onTap"

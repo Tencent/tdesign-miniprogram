@@ -42,7 +42,7 @@
             bind:change="handleSelect"
             data-level="{{index}}"
             align="right"
-            icon="stroke-line"
+            icon="line"
             borderless
           >
           </t-radio-group>

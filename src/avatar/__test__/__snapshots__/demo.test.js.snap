@@ -38,6 +38,8 @@ exports[`Avatar Avatar action demo works fine 1`] = `
           image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
         />
         <t-avatar
+          ariaLabel="添加"
+          ariaRole="button"
           bordered="{{true}}"
           icon="user-add"
           slot="collapseAvatar"
@@ -77,6 +79,8 @@ exports[`Avatar Avatar action demo works fine 1`] = `
           image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
         />
         <t-avatar
+          ariaLabel="添加"
+          ariaRole="button"
           bordered="{{true}}"
           icon="user-add"
           slot="collapseAvatar"
@@ -144,6 +148,7 @@ exports[`Avatar Avatar character-avatar demo works fine 1`] = `
       class="avatar-example"
     >
       <t-avatar
+        ariaLabel="字符头像"
         tClassContent="external-class-content"
       >
         A

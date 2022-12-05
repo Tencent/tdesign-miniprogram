@@ -12,7 +12,6 @@ exports[`calendar :base 1`] = `
         <wx-view
           class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
           style="z-index:11500;"
-          catch:touchmove="onStopPropagation"
           bind:transitionend="onTransitionEnd"
         >
           <wx-view
@@ -37,6 +36,9 @@ exports[`calendar :base 1`] = `
                 bind:tap="handleClose"
               >
                 <wx-view
+                  ariaHidden="{{false}}"
+                  ariaLabel=""
+                  ariaRole=""
                   class="t-icon t-class"
                   style="font-size: 24px"
                   bind:tap="onTap"
@@ -88,12 +90,13 @@ exports[`calendar :base 1`] = `
               <wx-scroll-view
                 class="t-calendar__months"
                 enhanced="{{true}}"
-                scrollWithAnimation="{{true}}"
+                scrollIntoView="year_2022_month_9"
                 scrollY="{{true}}"
                 showScrollbar="{{false}}"
               >
                 <wx-view
                   class="t-calendar__month"
+                  id="year_2022_month_9"
                 >
                   2022 年 10 月
                 </wx-view>

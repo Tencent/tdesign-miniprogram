@@ -25,8 +25,6 @@
 @tab-item-tag-bg: var(--td-tab-item-tag-bg, @gray-color-1);
 @tab-item-tag-active-bg: var(--td-tab-item-tag-active-bg, @primary-color-1);
 
-@tab-content-transition-duration: var(--td-tab-content-transition-duration, 0.3s);
-
 .@{prefix}-tabs {
   position: relative;
   font-size: 28rpx;
@@ -266,7 +264,6 @@
         display: flex;
         will-change: left;
         transition-property: transform;
-        transition-duration: @tab-content-transition-duration;
       }
     }
   }
@@ -277,6 +274,10 @@
 
   &.@{prefix}-tabs--left,
   &.@{prefix}-tabs--right {
+    .@{prefix}-tabs__sticky--left {
+      width: @tab-item-vertical-width;
+    }
+
     .@{prefix}-tabs__content-inner {
       position: relative;
       width: 100%;

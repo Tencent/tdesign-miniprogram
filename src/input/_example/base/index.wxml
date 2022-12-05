@@ -1,1 +1,15 @@
-<t-input value="{{value}}" label="标签文字" placeholder="请输入文字" />
+<t-input label="标签文字" placeholder="请输入文字"></t-input>
+
+<t-input placeholder="请输入文字">
+  <text slot="label">标签文字<text style="color: #e34d59"> *</text> </text>
+</t-input>
+
+<t-input label="标签文字" placeholder="请输入文字(选填)" />
+
+<t-input placeholder="请输入文字" />
+
+<t-input label="标签文字" placeholder="请输入文字" tips="辅助说明" />
+
+<t-input label="标签超长时自动换行" placeholder="请输入文字" />
+
+<t-input value="不可编辑文字" disabled />

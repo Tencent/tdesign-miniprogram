@@ -4,7 +4,7 @@ function animate(options) {
   var result = [];
 
   if (options.duration) {
-    result.push('--td-tab-content-transition-duration: ' + options.duration + 's');
+    result.push('transition-duration: ' + options.duration + 's');
     result.push(
       options.direction === 'Y'
         ? ';transform: translate3d( 0,' + -100 * options.currentIndex + '%, 0)'

@@ -5,6 +5,7 @@
       class="{{prefix}}-checkbox-option"
       label="{{item.label || item.text || ''}}"
       value="{{item.value || ''}}"
+      content="{{item.content || ''}}"
       check-all="{{item.checkAll}}"
       disabled="{{item.disabled}}"
       data-item="{{item}}"

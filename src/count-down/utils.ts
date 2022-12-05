@@ -1,10 +1,17 @@
 export interface TimeData {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
-  milliseconds: number;
+  DD: number;
+  HH: number;
+  mm: number;
+  ss: number;
+  SSS: number;
 }
+export const TimeDataUnit = {
+  DD: '天',
+  HH: '时',
+  mm: '分',
+  ss: '秒',
+  SSS: '毫秒',
+};
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -18,11 +25,11 @@ export const parseTimeData = function (time: number): TimeData {
   const seconds = Math.floor((time % MINUTE) / SECOND);
   const milliseconds = Math.floor(time % SECOND);
   return {
-    days,
-    hours,
-    minutes,
-    seconds,
-    milliseconds,
+    DD: days,
+    HH: hours,
+    mm: minutes,
+    ss: seconds,
+    SSS: milliseconds,
   };
 };
 

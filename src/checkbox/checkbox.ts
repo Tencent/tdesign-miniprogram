@@ -20,11 +20,15 @@ export default class CheckBox extends SuperComponent {
     '../checkbox-group/checkbox-group': {
       type: 'ancestor',
       linked(parent) {
-        const { value, disabled } = parent.data;
+        const { value, disabled, borderless } = parent.data;
         const valueSet = new Set(value);
         const data: any = {
           disabled: disabled || this.data.disabled,
         };
+
+        if (borderless) {
+          data.borderless = true;
+        }
 
         data.checked = valueSet.has(this.data.value);
 

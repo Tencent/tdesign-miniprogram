@@ -91,7 +91,7 @@ exports[`tabs :base 1`] = `
       </wx-view>
     </t-sticky>
     <wx-view
-      class="t-tabs__content t-tabs__content--animated"
+      class="t-tabs__content"
       bind:touchcancel="onTouchEnd"
       bind:touchend="onTouchEnd"
       bind:touchmove="onTouchMove"

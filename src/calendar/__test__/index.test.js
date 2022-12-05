@@ -40,24 +40,52 @@ describe('calendar', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
 
-    const $base = comp.querySelector('#base');
-    const [$disbledItem, $activeItem] = $base.querySelectorAll('.t-calendar__dates-item');
-    const $confirmBtn = $base.querySelector('.t-calendar__confirm-btn');
+    const $calendar = comp.querySelector('#base');
+    const [$disbledItem, , $activeItem] = $calendar.querySelectorAll('.t-calendar__dates-item');
+    const $confirmBtn = $calendar.querySelector('.t-calendar__confirm-btn');
+
+    expect($calendar.instance.data.value).toBe(date.getTime());
 
     $disbledItem.dispatchEvent('tap');
     await simulate.sleep();
 
-    expect($base.instance.base.value).toBe(null);
+    expect($calendar.instance.data.value).toBe(date.getTime());
 
     $activeItem.dispatchEvent('tap');
     await simulate.sleep();
 
-    expect($base.instance.base.value).toStrictEqual(date);
+    expect($calendar.instance.data.value).toBe(date.getTime()); // 点击时不修改 value 值
 
     $confirmBtn.dispatchEvent('tap');
     await simulate.sleep();
 
     expect(onConfirm).toHaveBeenCalled();
+    expect($calendar.instance.data.value).toBe(date.getTime() + 24 * 3600 * 1000);
+  });
+
+  it(':without-button', async () => {
+    const date = new Date(2022, 0, 1);
+    const id = simulate.load({
+      template: `<t-calendar minDate="{{min}}" confirm-btn="{{null}}" id="base" visible></t-calendar>`,
+      data: {
+        min: date.getTime(),
+      },
+      usingComponents: {
+        't-calendar': calendar,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $calendar = comp.querySelector('#base');
+    const [, $activeItem] = $calendar.querySelectorAll('.t-calendar__dates-item');
+
+    expect($calendar.instance.data.value).toBe(date.getTime());
+
+    $activeItem.dispatchEvent('tap');
+    await simulate.sleep();
+
+    expect($calendar.instance.data.value).toBe(date.getTime() + 24 * 3600 * 1000);
   });
 
   it(':confirm', async () => {
@@ -74,13 +102,13 @@ describe('calendar', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
 
-    const $base = comp.querySelector('#base');
-    const $closeBtn = $base.querySelector('.t-calendar__close-btn');
+    const $calendar = comp.querySelector('#base');
+    const $closeBtn = $calendar.querySelector('.t-calendar__close-btn');
 
     $closeBtn.dispatchEvent('tap');
     await simulate.sleep();
 
-    expect($base.instance.visible).toBeFalsy();
+    expect($calendar.instance.visible).toBeFalsy();
   });
 
   it(':custom button', async () => {
@@ -96,8 +124,8 @@ describe('calendar', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
 
-    const $base = comp.querySelector('#base');
-    const $confirmBtn = $base.querySelector('.t-calendar__confirm-btn');
+    const $calendar = comp.querySelector('#base');
+    const $confirmBtn = $calendar.querySelector('.t-calendar__confirm-btn');
 
     $confirmBtn.dispatchEvent('tap');
     await simulate.sleep();

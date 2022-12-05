@@ -4,6 +4,7 @@
     "multiple": "./multiple",
     "range": "./range",
     "custom-text": "./custom-text",
-    "custom-range": "./custom-range"
+    "custom-range": "./custom-range",
+    "custom-button": "./custom-button"
   }
 }
