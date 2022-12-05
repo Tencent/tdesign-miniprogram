@@ -14,7 +14,7 @@
   aria-role="{{ariaRole || 'button'}}"
   aria-labelledby="item-label"
 >
-  <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}" aria-hidden>
+  <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}">
     <view
       class="{{_.cls(classPrefix + '__content', [align, layout])}} {{prefix}}-class-content"
       style="{{gridItemContentStyle}}"
