@@ -27,7 +27,6 @@ exports[`grid :base 1`] = `
             bind:tap="onClick"
           >
             <wx-view
-              ariaHidden="{{true}}"
               class="t-grid-item__wrapper t-grid-item__wrapper--vertical"
               style="padding-left:4rpx;padding-top:4rpx"
             >
@@ -54,7 +53,6 @@ exports[`grid :base 1`] = `
             bind:tap="onClick"
           >
             <wx-view
-              ariaHidden="{{true}}"
               class="t-grid-item__wrapper t-grid-item__wrapper--vertical"
               style="padding-left:4rpx;padding-top:4rpx"
             >
