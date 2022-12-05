@@ -3,7 +3,7 @@
   <view slot="suffix-image">
     <image
       aria-role="img"
-      aria-label="图片验证码"
+      aria-label="验证码"
       style="width: 72px; height: 36px; display: block; margin-top: -6px; margin-bottom: -6px"
       src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png"
       mode="heightFix"
