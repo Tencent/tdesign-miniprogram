@@ -9,8 +9,8 @@
     hover-class="{{classPrefix}}__content--active"
     hover-stay-time="{{200}}"
     bindtap="toggle"
-    aria-role="tab"
     aria-selected="{{isChecked ? true : false}}"
+    aria-role="tab"
   >
     <view wx:if="{{icon}}" class="{{classPrefix}}__icon" style="height: {{iconOnly ? 24 : 20}}px">
       <t-badge
@@ -36,7 +36,7 @@
     </view>
   </view>
 
-  <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}" aria-role="dialog" aria-modal="true">
+  <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}">
     <view
       class="{{classPrefix}}__spread-item"
       hover-class="{{classPrefix}}__spread-item--active"
@@ -46,9 +46,11 @@
       wx:for-index="index"
       wx:key="index"
       bind:tap="selectChild"
+      aria-role="tab"
       data-value="{{child.value || index}}"
-      tabindex="{{index === 0 ? -1 : 0}}"
-      >{{ child.label }}
+    >
+      <view class="{{classPrefix}}__spread-item-split" wx:if="{{index !== 0}}" />
+      <view class="{{classPrefix}}__spread-item-text">{{ child.label }}</view>
     </view>
   </view>
 </view>
