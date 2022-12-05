@@ -3,7 +3,8 @@
   style="{{ customStyle }}"
   class="{{classPrefix}} {{classPrefix}}--size-{{size}} {{classPrefix}}--layout-{{layout}} {{prefix}}-class"
   aria-role="form"
-  aria-labelledby="{{label === 'slot' ? screenName : label}}"
+  aria-labelledby="{{label === 'slot' ? ariaLabel : label}}"
+  aria-describedby="{{label === 'slot' ? ariaLabel : label}}"
 >
   <view wx:if="{{prefixIcon || label}}" class="{{classPrefix}}__wrap--prefix">
     <view wx:if="{{prefixIcon}}" class="{{classPrefix}}__icon--prefix">
@@ -16,6 +17,8 @@
         size="{{prefixIconProps.size || '48rpx'}}"
         color="{{prefixIconProps.color}}"
         customStyle="{{prefixIconProps.customStyle}}"
+        ariaRole="button"
+        ariaLabel="{{ariaLabel}}"
       ></t-icon>
     </view>
     <view wx:if="{{label}}" class="{{classPrefix}}__label" aria-hidden>
@@ -29,9 +32,10 @@
       class="{{classPrefix}}__content {{prefix}}-is-{{status}}  {{borderless ? '' : classPrefix + '--border'}} {{ focus ? prefix + '-is-focus' : ''}}"
     >
       <input
-        id="{{label === 'slot' ? screenName : label}}"
+        id="{{label === 'slot' ? ariaLabel : label}}"
         aria-role="textbox"
-        aria-label="{{label === 'slot' ? screenName : label}}"
+        aria-label="{{label === 'slot' ? ariaLabel : label}}"
+        aria-roledescription="{{label === 'slot' ? ariaLabel : label}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholderStyle="{{placeholderStyle}}"
@@ -73,9 +77,11 @@
         color="{{clearableIconProps.color}}"
         customStyle="{{clearableIconProps.customStyle}}"
         bind:tap="clearInput"
+        ariaRole="button"
+        ariaLabel="清除"
       ></t-icon>
 
-      <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix">
+      <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix" aria-role="{{ariaRole}}">
         <text wx:if="{{suffix}}">{{suffix}}</text>
         <slot wx:else name="suffix" />
       </view>
@@ -88,6 +94,8 @@
           size="{{suffixIconProps.size || '48rpx'}}"
           color="{{suffixIconProps.color}}"
           customStyle="{{suffixIconProps.customStyle}}"
+          ariaRole="button"
+          ariaLabel="{{ariaLabel}}"
         ></t-icon>
         <slot wx:else name="suffixIcon" />
       </view>

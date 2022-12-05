@@ -220,11 +220,6 @@ const props: TdInputProps = {
     type: String,
     value: '',
   },
-  /** 原本旁白无法正常朗读的焦点，用screenName替代 */
-  screenName: {
-    type: String,
-    value: '',
-  },
 };
 
 export default props;

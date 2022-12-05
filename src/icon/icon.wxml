@@ -3,7 +3,7 @@
   style="{{ iconStyle }}"
   bind:tap="onTap"
   aria-hidden="{{ariaHidden}}"
-  aria-label="{{ariaLabel}}"
+  aria-label="{{ariaLabel || name}}"
   aria-role="{{ariaRole}}"
 >
   <view wx:if="{{ isImage }}" class="{{classPrefix}}--image">

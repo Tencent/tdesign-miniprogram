@@ -1,7 +1,7 @@
 <t-input label="标签文字" placeholder="请输入文字"></t-input>
 
-<t-input placeholder="请输入文字">
-  <text slot="label">标签文字<text style="color: #e34d59"> *</text> </text>
+<t-input placeholder="请输入文字" label="slot" ariaLabel="标签文字 *">
+  <text slot="label">标签文字<text style="color: #e34d59"> *</text></text>
 </t-input>
 
 <t-input label="标签文字" placeholder="请输入文字(选填)" />

@@ -21,7 +21,7 @@
   tips="{{phoneError ? '手机号输入不正确' : ''}}"
   bindchange="onPhoneInput"
 >
-  <view slot="suffix" style="display: flex; align-items: center">
+  <view slot="suffix" style="display: flex; align-items: center" ariaRole="button">
     <view class="suffix--line"></view>
     <view class="verify"> 发送验证码 </view>
   </view>
