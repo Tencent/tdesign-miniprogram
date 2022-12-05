@@ -1,4 +1,5 @@
 <wxs src="./message.wxs" module="this"></wxs>
+<import src="../common/template/icon.wxml" />
 
 <block wx:if="{{visible}}">
   <view
@@ -8,18 +9,14 @@
     id="{{classPrefix}}"
     aria-role="alert"
   >
-    <t-icon
-      wx:if="{{iconName}}"
-      class="{{classPrefix}}__icon--left {{prefix}}-class-icon"
-      name="{{iconProps.name || iconName}}"
-      prefix="{{iconProps.prefix}}"
-      size="{{iconProps.size || '44rpx'}}"
-      color="{{iconProps.color}}"
-      customStyle="{{iconProps.customStyle}}"
-      aria-hidden
-    />
-
-    <slot name="icon" />
+    <view wx:if="{{iconName || !this.isEmptyObj(iconData)}}" class="{{classPrefix}}__icon--left">
+      <slot wx:if="{{iconName === 'slot'}}" name="icon" />
+      <template
+        wx:else
+        is="icon"
+        data="{{tClass: prefix + '-class-icon', ariaHidden: true, name: iconName, ...iconData}}"
+      ></template>
+    </view>
 
     <view
       class="{{classPrefix}}__text-wrap {{marquee ? '{{classPrefix}}__text-nowrap' : ''}}"
@@ -43,18 +40,17 @@
     >
     <slot name="action" />
 
-    <t-icon
-      wx:if="{{closeBtn}}"
-      class="{{classPrefix}}__icon--right {{prefix}}-class-close-btn"
-      name="{{ closeIconProps.name || 'close' }}"
-      prefix="{{closeIconProps.prefix}}"
-      size="{{closeIconProps.size || '44rpx'}}"
-      color="{{closeIconProps.color}}"
-      customStyle="{{closeIconProps.customStyle}}"
+    <view
+      wx:if="{{ closeBtnName || !this.isEmptyObj(closeBtnData)}}"
+      class="{{classPrefix}}__icon--right"
       bind:tap="handleClose"
-      aria-role="button"
-      aria-label="关闭"
-    />
-    <slot name="closeBtn" />
+    >
+      <slot wx:if="{{closeBtnName === 'slot'}}" name="closeBtn" />
+      <template
+        wx:else
+        is="icon"
+        data="{{tClass: prefix + '-class-close-btn', ariaRole: 'button', ariaLabel: '关闭', name: closeBtnName, ...closeBtnData}}"
+      ></template>
+    </view>
   </view>
 </block>

@@ -66,7 +66,7 @@ describe('message', () => {
       // icon
       const $prefixIcon = comp.querySelector('#t-message >>> .t-message__icon--left');
       const iconId = simulate.load({
-        template: `<t-icon id="t-icon" name="{{name}}" size="44rpx"></t-icon>`,
+        template: `<t-icon id="t-icon" name="{{name}}"></t-icon>`,
         data: {
           name: 'notification',
         },

@@ -1,3 +1,7 @@
+var isEmptyObj = function (obj) {
+  return JSON.stringify(obj) === '{}';
+};
+
 var changeNumToStr = function (arr) {
   return arr.map(function (item) {
     return typeof item === 'number' ? item + 'rpx' : item;
@@ -16,4 +20,5 @@ var getMessageStyles = function (zIndex, offset, wrapTop, customStyle) {
 
 module.exports = {
   getMessageStyles: getMessageStyles,
+  isEmptyObj: isEmptyObj,
 };

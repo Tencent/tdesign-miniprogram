@@ -28,11 +28,6 @@ export interface TdMessageProps {
     type: null;
     value?: string | boolean;
   };
-  /** 关闭图标属性，透传至关闭操作按钮 icon */
-  closeIconProps: {
-    type: ObjectConstructor;
-    value?: object;
-  };
   /**
    * 用于自定义消息弹出内容
    */
@@ -70,14 +65,6 @@ export interface TdMessageProps {
   icon?: {
     type: null;
     value?: boolean | 'info' | 'bell';
-  };
-  /**
-   * 图标属性，透传至 icon
-   * @default {}
-   */
-  iconProps?: {
-    type: ObjectConstructor;
-    value?: object;
   };
   /**
    * 跑马灯效果。speed 指速度控制；loop 指循环播放次数，值为 -1 表示循环播放，值为 0 表示不循环播放；delay 表示延迟多久开始播放

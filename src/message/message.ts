@@ -35,7 +35,6 @@ export default class Message extends SuperComponent {
     loop: -1,
     animation: [],
     showAnimation: [],
-    iconName: '',
     wrapTop: -999, // 初始定位，保证在可视区域外。
   };
 
@@ -50,6 +49,14 @@ export default class Message extends SuperComponent {
           },
         });
       }
+    },
+
+    icon(icon) {
+      this.setIcon(icon);
+    },
+
+    closeBtn(closeBtn) {
+      this.setCloseBtn(closeBtn);
     },
   };
 
@@ -66,7 +73,6 @@ export default class Message extends SuperComponent {
 
   ready() {
     this.memoInitalData();
-    this.setIcon();
   }
 
   /** 记录组件设置的项目 */
@@ -86,23 +92,20 @@ export default class Message extends SuperComponent {
   }
 
   /** icon 值设置 */
-  setIcon(icon = this.properties.icon) {
-    // 使用空值
+  setIcon(icon) {
     if (!icon) {
-      this.setData({ iconName: '' });
-      return;
-    }
-    // 固定值
-    if (typeof icon === 'string') {
+      this.setData({ iconName: '', iconData: {} });
+    } else if (typeof icon === 'string') {
       this.setData({
-        iconName: `${icon}`,
+        iconName: icon,
+        iconData: {},
       });
-      return;
-    }
-
-    // 使用默认值
-    if (icon) {
-      let nextValue = 'notification';
+    } else if (typeof icon === 'object') {
+      this.setData({
+        iconName: '',
+        iconData: icon,
+      });
+    } else {
       const { theme } = this.properties;
       const themeMessage = {
         info: 'error-circle',
@@ -110,8 +113,28 @@ export default class Message extends SuperComponent {
         warning: 'error-circle',
         error: 'error-circle',
       };
-      nextValue = themeMessage[theme];
-      this.setData({ iconName: nextValue });
+      this.setData({ iconName: themeMessage[theme], iconData: {} });
+    }
+  }
+
+  setCloseBtn(closeBtn) {
+    if (!closeBtn) {
+      this.setData({ closeBtnName: '', closeBtnData: {} });
+    } else if (typeof closeBtn === 'string') {
+      this.setData({
+        closeBtnName: closeBtn,
+        closeBtnData: {},
+      });
+    } else if (typeof closeBtn === 'object') {
+      this.setData({
+        closeBtnName: '',
+        closeBtnData: closeBtn,
+      });
+    } else {
+      this.setData({
+        closeBtnName: 'close',
+        closeBtnData: {},
+      });
     }
   }
 
@@ -188,10 +211,9 @@ export default class Message extends SuperComponent {
   }
 
   show() {
-    const { duration, icon, marquee, offset } = this.properties;
+    const { duration, marquee, offset } = this.properties;
     this.setData({ visible: true, loop: marquee.loop });
     this.reset();
-    this.setIcon(icon);
     this.checkAnimation();
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
