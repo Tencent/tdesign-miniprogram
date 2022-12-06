@@ -56,6 +56,14 @@ export default class Calendar extends SuperComponent {
   };
 
   observers = {
+    'firstDayOfWeek,minDate,maxDate'(firstDayOfWeek, minDate, maxDate) {
+      if (this.base) {
+        this.base.firstDayOfWeek = firstDayOfWeek;
+        this.base.minDate = minDate;
+        this.base.maxDate = maxDate;
+        this.calcMonths();
+      }
+    },
     value(v) {
       if (this.base) {
         this.base.value = v;

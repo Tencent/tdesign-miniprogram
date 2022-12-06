@@ -15,7 +15,7 @@ Component({
       Message.warning({
         context: this,
         offset: [20, 32],
-        duration: -1,
+        duration: 5000,
         content: '这是一条需要用户关注到的警示通知',
       });
     },
@@ -24,8 +24,8 @@ Component({
       Message.success({
         context: this,
         offset: [20, 32],
-        duration: -1,
-        content: '这是一条需要成功的提示消息',
+        duration: 5000,
+        content: '这是一条成功的提示消息',
       });
     },
 
@@ -33,7 +33,7 @@ Component({
       Message.error({
         context: this,
         offset: [20, 32],
-        duration: -1,
+        duration: 5000,
         content: '这是一条错误提示通知',
       });
     },

@@ -5,6 +5,30 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.29.0 `2022-12-05` 
+### ❗ BREAKING CHANGES
+- `Loading`: `theme = spinner` 默认颜色改成黑色 @LeeJim ([#1152](https://github.com/Tencent/tdesign-miniprogram/pull/1152))
+- `Loading`: 简化 DOM @LeeJim ([#1152](https://github.com/Tencent/tdesign-miniprogram/pull/1152))
+
+### 🚀 Features
+- `ActionSheet`: 视觉升级 @LeeJim ([#1142](https://github.com/Tencent/tdesign-miniprogram/pull/1142))
+- `Drawer`: 视觉升级 @LeeJim ([#1147](https://github.com/Tencent/tdesign-miniprogram/pull/1147))
+- `Search`: 支持无障碍访问 @Isabella327 ([#1132](https://github.com/Tencent/tdesign-miniprogram/pull/1132))
+- `Message`: 支持无障碍访问 @zhangpaopao0609 ([#1150](https://github.com/Tencent/tdesign-miniprogram/pull/1150))
+- `Stepper`: 支持无障碍访问 @zhangpaopao0609 ([#1144](https://github.com/Tencent/tdesign-miniprogram/pull/1144))
+- `Progress`: 支持无障碍访问 @yaogengzhu ([#1156](https://github.com/Tencent/tdesign-miniprogram/pull/1156))
+- `Image`: 支持无障碍访问 @zhangpaopao0609 ([#1136](https://github.com/Tencent/tdesign-miniprogram/pull/1136))
+- `Radio`: 支持无障碍访问 @byq1213 ([#1139](https://github.com/Tencent/tdesign-miniprogram/pull/1139))
+- `Avatar`: 支持无障碍访问 @byq1213 ([#1137](https://github.com/Tencent/tdesign-miniprogram/pull/1137))
+- `ActionSheet`: 新增 description 和 align 属性 @LeeJim ([#1142](https://github.com/Tencent/tdesign-miniprogram/pull/1142))
+- `Loading`: 支持默认插槽、CSS Variables @LeeJim ([#1152](https://github.com/Tencent/tdesign-miniprogram/pull/1152))
+- `Drawer`: 新增支持 titile 属性，footer 插槽 @LeeJim ([#1147](https://github.com/Tencent/tdesign-miniprogram/pull/1147))
+- `ActionSheet`: 新增支持 CSS Variables @LeeJim ([#1142](https://github.com/Tencent/tdesign-miniprogram/pull/1142))
+
+### 🐞 Bug Fixes
+- `Checkbox`: 修复数组图标无法使用的问题 @LeeJim ([#1135](https://github.com/Tencent/tdesign-miniprogram/pull/1135))
+- `Cascader`: 修复重置 `options = []` 时报错的问题 @LeeJim ([#1163](https://github.com/Tencent/tdesign-miniprogram/pull/1163))
+
 ## 🌈 0.28.0 `2022-11-28` 
 ### ❗ BREAKING CHANGES
 - `Radio`:  调整 icon 属性，新增 dot 类型，并简化原有命名 @LeeJim ([#1098](https://github.com/Tencent/tdesign-miniprogram/pull/1098))
