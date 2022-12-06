@@ -22,8 +22,7 @@ jobs:
       - name: download miniprogram artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          workflow: ${{ github.event.workflow_run.workflow_id }}
-          run_id: ${{ github.event.workflow_run.id }}
+          pr: ${{github.event.pull_request.number}}
           name: miniprogram_dist
       - name: get preview qrcode
         id: preview
