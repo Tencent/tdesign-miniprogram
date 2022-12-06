@@ -16,8 +16,8 @@
         size="{{prefixIconProps.size || '48rpx'}}"
         color="{{prefixIconProps.color}}"
         customStyle="{{prefixIconProps.customStyle}}"
-        tIconAriaRole="button"
-        tIconAriaLabel="{{tIconAriaLabel}}"
+        aria-role="button"
+        aria-label="{{tIconAriaLabel}}"
       ></t-icon>
     </view>
     <view wx:if="{{label}}" class="{{classPrefix}}__label" aria-hidden>
@@ -30,8 +30,10 @@
     <view
       class="{{classPrefix}}__content {{prefix}}-is-{{status}}  {{borderless ? '' : classPrefix + '--border'}} {{ focus ? prefix + '-is-focus' : ''}}"
     >
-      <!-- 这里aria-role="textbox"和aria-label组合使用实现ios的聚合焦点播报效果 -->
-      <!-- 仅当aria-label不播报时（安卓端），aria-roledescription才会播报 -->
+      <!-- 这里aria-role="textbox"和aria-label组合使用实现ios的聚合焦点播报效果。
+        ios会播报aria-label，不会重复播报aria-roledescription的内容；
+        安卓不会播报aria-label，会播报aria-roledescription的内容
+      -->
       <input
         aria-role="textbox"
         aria-label="{{label === 'slot' ? tInputAriaLabel : label}}"
@@ -77,8 +79,8 @@
         color="{{clearableIconProps.color}}"
         customStyle="{{clearableIconProps.customStyle}}"
         bind:tap="clearInput"
-        tIconAriaRole="button"
-        tIconAriaLabel="清除"
+        aria-role="button"
+        aria-label="清除"
       ></t-icon>
 
       <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix">
@@ -94,8 +96,8 @@
           size="{{suffixIconProps.size || '48rpx'}}"
           color="{{suffixIconProps.color}}"
           customStyle="{{suffixIconProps.customStyle}}"
-          tIconAriaRole="button"
-          tIconAriaLabel="{{tIconAriaLabel}}"
+          aria-role="button"
+          aria-label="{{tIconAriaLabel}}"
         ></t-icon>
         <slot wx:else name="suffixIcon" />
       </view>

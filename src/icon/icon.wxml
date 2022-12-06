@@ -3,8 +3,8 @@
   style="{{ iconStyle }}"
   bind:tap="onTap"
   aria-hidden="{{ariaHidden}}"
-  aria-label="{{tIconAriaLabel || name}}"
-  aria-role="{{tIconAriaRole}}"
+  aria-label="{{ariaLabel}}"
+  aria-role="{{ariaRole}}"
 >
   <view wx:if="{{ isImage }}" class="{{classPrefix}}--image">
     <image src="{{ name }}" mode="aspectFit" class="{{classPrefix}}__image" />

@@ -45,9 +45,8 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       { key: 'ariaLabelledby', type: String },
       { key: 'ariaDescribedby', type: String },
       { key: 'ariaBusy', type: Boolean },
-      { key: 'tIconAriaRole', type: String },
-      { key: 'tIconAriaLabel', type: String },
-      { key: 'tInputAriaLabel', type: String },
+      { key: 'tIconAriaLabel', type: String }, // 用在需要给t-icon声明aria-label的场景
+      { key: 'tInputAriaLabel', type: String }, // 用在需要给t-input声明aria-label的场景
     ];
     ariaProps.forEach(({ key, type }) => {
       options.properties[key] = {
