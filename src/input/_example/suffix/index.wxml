@@ -1,9 +1,9 @@
-<t-input label="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" ariaLabel="提示" />
+<t-input label="标签文字" placeholder="请输入文字" suffixIcon="error-circle-filled" tIconAriaLabel="提示" />
 
 <t-input placeholder="请输入手机号码">
-  <view slot="suffix" style="display: flex; align-items: center" ariaRole="button">
+  <view slot="suffix" style="display: flex; align-items: center" aria-role="button">
     <t-button theme="primary" t-class="custom-button"> 操作按钮 </t-button>
   </view>
 </t-input>
 
-<t-input label="标签文字" placeholder="请输入文字" suffixIcon="user-avatar" ariaLabel="用户头像" />
+<t-input label="标签文字" placeholder="请输入文字" suffixIcon="user-avatar" tIconAriaLabel="用户头像" />

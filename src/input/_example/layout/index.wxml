@@ -3,5 +3,5 @@
   layout="vertical"
   placeholder="请输入文字"
   suffixIcon="error-circle-filled"
-  ariaLabel="提示"
+  tIconAriaLabel="提示"
 ></t-input>

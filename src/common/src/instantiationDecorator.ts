@@ -45,6 +45,9 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       { key: 'ariaLabelledby', type: String },
       { key: 'ariaDescribedby', type: String },
       { key: 'ariaBusy', type: Boolean },
+      { key: 'tIconAriaRole', type: String },
+      { key: 'tIconAriaLabel', type: String },
+      { key: 'tInputAriaLabel', type: String },
     ];
     ariaProps.forEach(({ key, type }) => {
       options.properties[key] = {
