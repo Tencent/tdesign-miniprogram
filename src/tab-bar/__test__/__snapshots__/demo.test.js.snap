@@ -67,7 +67,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_1"
     >
       
-    标签
+    标签一
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -75,7 +75,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_2"
     >
       
-    标签
+    标签二
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -83,7 +83,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_3"
     >
       
-    标签
+    标签三
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -91,7 +91,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_4"
     >
       
-    标签
+    标签四
   
     </t-tab-bar-item>
   </t-tab-bar>
@@ -137,19 +137,23 @@ exports[`TabBar TabBar icon-only demo works fine 1`] = `
     bind:change="onChange"
   >
     <t-tab-bar-item
-      icon="app"
+      ariaLabel="首页"
+      icon="home"
       value="label_1"
     />
     <t-tab-bar-item
+      ariaLabel=""
       icon="app"
       value="label_2"
     />
     <t-tab-bar-item
-      icon="app"
+      ariaLabel=""
+      icon="chat"
       value="label_3"
     />
     <t-tab-bar-item
-      icon="app"
+      ariaLabel=""
+      icon="user"
       value="label_4"
     />
   </t-tab-bar>
