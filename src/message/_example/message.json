@@ -3,7 +3,6 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "status-message": "./status-message",
-    "custom-navigation": "./custom-navigation"
+    "theme": "./theme"
   }
 }

@@ -1,6 +1,0 @@
-<t-message id="t-message" />
-<view class="box">
-  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showTextMessage" block
-    >自定义导航栏</t-button
-  >
-</view>
