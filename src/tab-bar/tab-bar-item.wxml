@@ -24,7 +24,6 @@
         visible="{{badgeProps.visible}}"
         offset="{{badgeProps.offset || [0,0]}}"
         t-class-count="{{prefix + '-badge-class'}}"
-        aria-hidden="true"
       >
         <t-icon name="{{icon}}" size="{{iconOnly ? 24 : 20}}" />
       </t-badge>

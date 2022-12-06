@@ -142,17 +142,17 @@ exports[`TabBar TabBar icon-only demo works fine 1`] = `
       value="label_1"
     />
     <t-tab-bar-item
-      ariaLabel=""
+      ariaLabel="app"
       icon="app"
       value="label_2"
     />
     <t-tab-bar-item
-      ariaLabel=""
+      ariaLabel="聊天"
       icon="chat"
       value="label_3"
     />
     <t-tab-bar-item
-      ariaLabel=""
+      ariaLabel="我的"
       icon="user"
       value="label_4"
     />
