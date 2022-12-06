@@ -19,12 +19,12 @@ jobs:
           message: |
             正在构建预览的二维码，请稍等...
             <!-- ${{steps.time.outputs.timestamp}} -->
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: download miniprogram artifact
+        uses: dawidd6/action-download-artifact@v2
         with:
-          node-version: '14.6.0'
-      - run: npm install && npm run build
-        shell: bash
+          workflow: ${{ github.event.workflow_run.workflow_id }}
+          run_id: ${{ github.event.workflow_run.id }}
+          name: miniprogram_dist
       - name: get preview qrcode
         id: preview
         uses: LeeJim/setup-miniprogram@main

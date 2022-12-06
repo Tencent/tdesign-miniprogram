@@ -6,7 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  check:
+  check-email:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,7 +19,7 @@ jobs:
       - name: check_local_email
         run: |
           log_emails=$(git log --pretty=format:"%ae %ce" -1) && if [[ ${log_emails} =~ '@tencent.com' ]];then echo "本地提交邮箱 $log_emails 校验非法，需要本地更改重新提交" && exit 2;else echo "邮箱 $log_emails 校验通过";fi
-  MAIN_PULL_REQUEST:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,3 +28,16 @@ jobs:
         run: npm run lint
       - name: unit test
         run: npm run test:unit
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./.github/actions/install-dep
+      - run: npm run build
+        shell: bash
+      - name: upload miniprogram artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: miniprogram_dist
+          path: _example
+          retention-days: 5
