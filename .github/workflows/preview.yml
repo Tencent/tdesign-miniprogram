@@ -19,11 +19,12 @@ jobs:
           message: |
             正在构建预览的二维码，请稍等...
             <!-- ${{steps.time.outputs.timestamp}} -->
-      - name: download miniprogram artifact
-        uses: dawidd6/action-download-artifact@v2
+      - uses: actions/checkout@v3
         with:
-          pr: ${{github.event.pull_request.number}}
-          name: miniprogram_dist
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: ./.github/actions/install-dep
+      - run: npm run build
+        shell: bash
       - name: get preview qrcode
         id: preview
         uses: LeeJim/setup-miniprogram@main
@@ -34,7 +35,7 @@ jobs:
           es6: true
           es7: true
           minify: true
-        env: 
+        env:
           MINI_APP_ID: ${{ secrets.TDESIGN_APP_ID }}
           MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}
       - name: Upload qrcode to Tencent COS
@@ -51,4 +52,4 @@ jobs:
         with:
           message: |
             <img alt="qrcode" src="${{ steps.cos.outputs.url }}" width="256" />
-          comment_tag: "<!-- ${{steps.time.outputs.timestamp}} -->"
+          comment_tag: '<!-- ${{steps.time.outputs.timestamp}} -->'

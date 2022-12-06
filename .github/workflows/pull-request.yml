@@ -1,7 +1,7 @@
 name: MAIN_PULL_REQUEST
 
 on:
-  pull_request: 
+  pull_request:
     branches: [develop, main]
     types: [opened, synchronize, reopened]
 
@@ -28,16 +28,3 @@ jobs:
         run: npm run lint
       - name: unit test
         run: npm run test:unit
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/actions/install-dep
-      - run: npm run build
-        shell: bash
-      - name: upload miniprogram artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: miniprogram_dist
-          path: _example
-          retention-days: 5
