@@ -40,32 +40,47 @@ export default class Rate extends SuperComponent {
     prefix,
     classPrefix: name,
     defaultTexts: ['极差', '失望', '一般', '满意', '惊喜'],
+    tipsVisible: false,
   };
 
-  onTouch(e: any) {
-    const { count, allowHalf, gap, value: currentValue } = this.properties as any;
-    const [touch] = e.touches;
-    const margin = rpx2px(gap);
-    const selQuery = this.createSelectorQuery();
-    selQuery
-      .select(`.${name}__wrapper`)
-      .boundingClientRect((rect: any) => {
-        const { width, left } = rect;
-        const starWidth = (width - (count - 1) * margin) / count;
-        const offsetX = touch.pageX - left;
-        const num = (offsetX + margin) / (starWidth + margin);
-        const remainder = num % 1;
-        const integral = num - remainder;
-        let value = remainder <= 0.5 && allowHalf ? integral + 0.5 : integral + 1;
-        if (value > count) {
-          value = count;
-        } else if (value < 0) {
-          value = 0;
-        }
-        if (value !== currentValue) {
-          this._trigger('change', { value });
-        }
-      })
-      .exec();
-  }
+  methods = {
+    onTouch(e: WechatMiniprogram.TouchEvent, eventType: 'start' | 'move') {
+      const { count, allowHalf, gap, value: currentValue } = this.properties as any;
+      const [touch] = e.touches;
+      const margin = rpx2px(gap);
+      const selQuery = this.createSelectorQuery();
+      selQuery
+        .select(`.${name}__wrapper`)
+        .boundingClientRect((rect: any) => {
+          const { width, left } = rect;
+          const starWidth = (width - (count - 1) * margin) / count;
+          const offsetX = touch.pageX - left;
+          const num = (offsetX + margin) / (starWidth + margin);
+          const remainder = num % 1;
+          const integral = num - remainder;
+          let value = remainder <= 0.5 && allowHalf ? integral + 0.5 : integral + 1;
+
+          if (value > count) {
+            value = count;
+          } else if (value < 0) {
+            value = 0;
+          }
+
+          if (eventType === 'move') {
+            this.setData({ tipsVisible: true });
+          }
+
+          if (value !== currentValue) {
+            this._trigger('change', { value });
+          }
+        })
+        .exec();
+    },
+    onTouchStart(e: WechatMiniprogram.TouchEvent) {
+      this.onTouch(e, 'start');
+    },
+    onTouchMove(e: WechatMiniprogram.TouchEvent) {
+      this.onTouch(e, 'move');
+    },
+  };
 }

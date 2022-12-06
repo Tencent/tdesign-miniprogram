@@ -1,30 +1,32 @@
 <view class="demo">
   <view class="demo-title">Rate 评分</view>
   <view class="demo-desc">用于对某行为/事物进行打分。</view>
-  <t-demo title="01 类型">
-    <view class="demo-section__desc">实心评分</view>
+  <t-demo title="01 组件类型">
+    <view class="demo-desc">实心评分</view>
     <base />
 
-    <view class="demo-section__desc">空心评分</view>
-    <un-filled />
+    <view class="demo-desc">自定义评分</view>
+    <custom />
 
-    <view class="demo-section__desc">自定义数量评分</view>
+    <view class="demo-desc">自定义评分数量</view>
     <count />
 
-    <view class="demo-section__desc">半星评分</view>
-    <allow-half />
-
-    <view class="demo-section__desc">带描述评分</view>
+    <view class="demo-desc">带描述评分</view>
     <show-text />
+  </t-demo>
 
-    <view class="demo-section__desc">禁用评分</view>
+  <t-demo title="02 组件状态" desc="交互方式：点击">
+    <allow-half />
+  </t-demo>
+
+  <t-demo title="03 组件样式">
+    <view class="demo-desc">评分大小</view>
+    <size />
+
+    <view class="demo-desc">禁用评分</view>
     <disabled />
 
-    <view class="demo-section__desc">设置评分颜色</view>
+    <view class="demo-desc">设置评分颜色</view>
     <color />
-  </t-demo>
-  <t-demo title="02 规格">
-    <view class="demo-section__desc">评价规格</view>
-    <size />
   </t-demo>
 </view>

@@ -9,6 +9,7 @@
 @rate-text-active-font-weight: var(--td-rate-text-active-font-weight, 600);
 
 .@{prefix}-rate {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -20,42 +21,42 @@
 
   &__icon {
     line-height: 1em;
-  }
 
-  &-selected {
-    color: @rate-selected-color;
+    &--selected {
+      color: @rate-selected-color;
 
-    &-half {
-      color: transparent;
-      background: linear-gradient(
-        to right,
-        @rate-selected-color 0%,
-        @rate-selected-color 50%,
-        @rate-unselected-color 51%,
-        @rate-unselected-color 100%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
+      &-half {
+        color: transparent;
+        background: linear-gradient(
+          to right,
+          @rate-selected-color 0%,
+          @rate-selected-color 50%,
+          @rate-unselected-color 51%,
+          @rate-unselected-color 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
     }
-  }
 
-  &-unselected {
-    color: @rate-unselected-color;
-  }
+    &--unselected {
+      color: @rate-unselected-color;
+    }
 
-  &-disabled {
-    color: @rate-disabled-color;
+    &--disabled {
+      color: @rate-disabled-color;
 
-    &-half {
-      background: linear-gradient(
-        to right,
-        @rate-disabled-color 0%,
-        @rate-disabled-color 50%,
-        @rate-unselected-color 51%,
-        @rate-unselected-color 100%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
+      &-half {
+        background: linear-gradient(
+          to right,
+          @rate-disabled-color 0%,
+          @rate-disabled-color 50%,
+          @rate-unselected-color 51%,
+          @rate-unselected-color 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
     }
   }
 
@@ -68,6 +69,32 @@
     &--active {
       color: @rate-text-active-color;
       font-weight: @rate-text-active-font-weight;
+    }
+  }
+
+  &__tips {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: calc(100% + 16rpx);
+    padding: 8rpx;
+    border-radius: 12rpx;
+    box-shadow: @shadow-1;
+    background-color: @bg-color-block;
+
+    &-item {
+      width: 64rpx;
+      border-radius: 6rpx;
+
+      &--active {
+        background-color: @gray-color-1;
+      }
+    }
+
+    &-text {
+      text-align: center;
+      font-size: 24rpx;
+      line-height: 40rpx;
     }
   }
 }

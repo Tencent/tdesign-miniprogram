@@ -11,6 +11,10 @@
   margin-bottom: 32rpx;
 }
 
+.demo-rate__title {
+  width: 200rpx;
+}
+
 .demo-rate__transparent {
   background-color: transparent;
   padding-left: 32rpx;

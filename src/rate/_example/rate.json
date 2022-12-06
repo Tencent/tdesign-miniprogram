@@ -2,6 +2,7 @@
   "navigationBarTitleText": "Rate",
   "usingComponents": {
     "base": "./base",
+    "custom": "./custom",
     "un-filled": "./un-filled",
     "count": "./count",
     "allow-half": "./allow-half",
