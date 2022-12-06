@@ -4,7 +4,7 @@ module.exports = {
       texts = defaultTexts;
     }
     var curVal = Math.floor(val - 1);
-    return texts[curVal];
+    return texts[curVal] || '未评分';
   },
   getIconName: function (defaultValue, value, index, variant) {
     var curVal = value ? value : defaultValue;

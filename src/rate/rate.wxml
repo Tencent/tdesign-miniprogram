@@ -1,4 +1,6 @@
+<wxs src="../common/utils.wxs" module="_" />
 <wxs src="./rate.wxs" module="utils" />
+
 <view class="{{ classPrefix }}">
   <view
     class="{{ classPrefix }}__wrapper {{prefix}}-class"
@@ -16,7 +18,7 @@
       style="margin-right:{{ count - index > 1 ? gap : 0 }}px;"
     />
   </view>
-  <text wx:if="{{showText}}" class="{{ classPrefix }}__text {{prefix}}-class-text"
+  <text wx:if="{{showText}}" class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
     >{{utils.getText(texts,value,defaultTexts)}}</text
   >
 </view>

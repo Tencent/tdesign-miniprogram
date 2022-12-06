@@ -17,17 +17,8 @@ isComponent: true
   }
 }
 ```
-### 主题定制
-CSS 变量名|说明
---|--
---td-rate-selected-color | 选中态评分颜色
---td-rate-unselected-color | 未选中态评分颜色
---td-rate-text-color | 辅助文字颜色
---td-rate-disabled-color | 禁用评分颜色
 
 ## 代码演示
-
-<img src="https://tdesign.gtimg.com/miniprogram/readme/rate.png" width="375px" height="50%">
 
 ### 实心评分
 

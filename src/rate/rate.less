@@ -1,19 +1,12 @@
 @import '../common/style/index.less';
 
-@rate-text-font-size: @font-size-m;
-@rate-text-padding-left: @spacer * 2;
-
-@rate-text-color: @text-placeholder-color;
-@rate-selected-color: #ed7b2f;
-@rate-unselected-color: #e3e6eb;
-@rate-disabled-color: #999999;
-
-page {
-  --td-rate-text-color: @rate-text-color;
-  --td-rate-selected-color: @rate-selected-color;
-  --td-rate-unselected-color: @rate-unselected-color;
-  --td-rate-disabled-color: @rate-disabled-color;
-}
+@rate-text-font-size: var(--td-rate-text-font-size, @font-size-m);
+@rate-text-color: var(--td-rate-text-color, @font-gray-4);
+@rate-text-active-color: var(--td-rate-text-active-color, @font-gray-1);
+@rate-selected-color: var(--td-rate-selected-color, @warning-color);
+@rate-unselected-color: var(--td-rate-unselected-color, @gray-color-4);
+@rate-disabled-color: var(--td-rate-disabled-color, @text-disabled-color);
+@rate-text-active-font-weight: var(--td-rate-text-active-font-weight, 600);
 
 .@{prefix}-rate {
   display: flex;
@@ -30,16 +23,16 @@ page {
   }
 
   &-selected {
-    color: var(--td-rate-selected-color);
+    color: @rate-selected-color;
 
     &-half {
       color: transparent;
       background: linear-gradient(
         to right,
-        var(--td-rate-selected-color) 0%,
-        var(--td-rate-selected-color) 50%,
-        var(--td-rate-unselected-color) 51%,
-        var(--td-rate-unselected-color) 100%
+        @rate-selected-color 0%,
+        @rate-selected-color 50%,
+        @rate-unselected-color 51%,
+        @rate-unselected-color 100%
       );
       -webkit-background-clip: text;
       background-clip: text;
@@ -47,19 +40,19 @@ page {
   }
 
   &-unselected {
-    color: var(--td-rate-unselected-color);
+    color: @rate-unselected-color;
   }
 
   &-disabled {
-    color: var(--td-rate-disabled-color);
+    color: @rate-disabled-color;
 
     &-half {
       background: linear-gradient(
         to right,
-        var(--td-rate-disabled-color) 0%,
-        var(--td-rate-disabled-color) 50%,
-        var(--td-rate-unselected-color) 51%,
-        var(--td-rate-unselected-color) 100%
+        @rate-disabled-color 0%,
+        @rate-disabled-color 50%,
+        @rate-unselected-color 51%,
+        @rate-unselected-color 100%
       );
       -webkit-background-clip: text;
       background-clip: text;
@@ -68,8 +61,13 @@ page {
 
   &__text {
     font-size: @rate-text-font-size;
-    color: var(--td-rate-text-color);
-    padding-left: @rate-text-padding-left;
+    color: @rate-text-color;
+    margin-left: 32rpx;
     vertical-align: middle;
+
+    &--active {
+      color: @rate-text-active-color;
+      font-weight: @rate-text-active-font-weight;
+    }
   }
 }

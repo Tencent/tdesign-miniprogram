@@ -40,7 +40,6 @@ export default class Rate extends SuperComponent {
     prefix,
     classPrefix: name,
     defaultTexts: ['极差', '失望', '一般', '满意', '惊喜'],
-    disabledColor: '#999999',
   };
 
   onTouch(e: any) {
