@@ -4,5 +4,5 @@
 </view>
 <view class="demo-rate">
   <view class="demo-rate__title">线描评分</view>
-  <t-rate default-value="{{3}}" />
+  <t-rate default-value="{{3}}" color="#00a870" />
 </view>

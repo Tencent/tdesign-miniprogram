@@ -4,7 +4,7 @@
 <view class="{{classPrefix}}">
   <view
     class="{{classPrefix}}__wrapper {{prefix}}-class"
-    style="font-size:{{ size }}px;"
+    style="font-size:{{ utils.regSize(size) }}"
     catch:touchmove="{{ !disabled ? 'onTouchMove' : '' }}"
     catch:tap="{{ !disabled ? 'onTap' : '' }}"
     catch:touchend="{{ !disabled ? 'onTouchEnd' : ''}}"
@@ -16,7 +16,7 @@
       t-class="{{prefix}}-class-icon"
       name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
       size="{{ size }}"
-      style="margin-right:{{ count - index > 1 ? gap : 0 }}px;"
+      style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
     />
   </view>
   <text wx:if="{{showText}}" class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
@@ -33,6 +33,7 @@
         class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
         name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
         size="{{ size }}"
+        style="{{utils.getColor(color)}}"
       />
       <view class="{{classPrefix}}__tips-text">{{utils.ceil(value) - 0.5}}</view>
     </view>
@@ -45,6 +46,7 @@
         class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
         name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
         size="{{ size }}"
+        style="{{utils.getColor(color)}}"
       />
       <view class="{{classPrefix}}__tips-text">{{tipsType == 'tap' ? utils.ceil(value) : value}}</view>
     </view>

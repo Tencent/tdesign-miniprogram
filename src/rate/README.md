@@ -64,7 +64,7 @@ custom-style | String | - | `0.25.0`。自定义组件样式 | N
 disabled | Boolean | - | 是否禁用评分 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。。`['t-class', 't-class-icon', 't-class-text']` | N
 gap | Number | 8 | 评分图标的间距 | N
-icon | String / Array | - | 自定义评分图标；此时不受 variant 影响。TS 类型：`string \| string[]` | N
+icon | String / Array | - | 自定义评分图标，[选中图标，未选中图标]；此时不受 variant 影响。TS 类型：`string \| string[]` | N
 show-text | Boolean | false | 是否显示对应的辅助文字 | N
 size | String | 24px | 评分图标的大小 | N
 texts | Array | [] | 评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']。TS 类型：`Array<string>` | N

@@ -6,17 +6,18 @@ module.exports = {
     var curVal = Math.floor(val - 1);
     return texts[curVal] || '未评分';
   },
+
   getIconName: function (defaultValue, value, index, variant, icon) {
     var curVal = value ? value : defaultValue;
     var name = ['star-filled', 'star-filled'];
 
     if (icon) {
-      name = icon.constructor == 'array' ? icon : [icon, icon];
+      name = icon.constructor == 'Array' ? icon : [icon, icon];
     } else if (variant === 'outline') {
-      name[0] = 'star';
+      name[1] = 'star';
     }
 
-    return name[curVal >= index + 1 ? 1 : 0];
+    return name[curVal >= index + 1 ? 0 : 1];
   },
 
   getIconClass: function (classPrefix, defaultValue, value, index, allowHalf, disabled) {
@@ -40,5 +41,21 @@ module.exports = {
 
   ceil: function (value) {
     return Math.ceil(value);
+  },
+
+  getColor: function (color) {
+    if (color.constructor === 'Array' && color.length === 2) {
+      return ';--td-rate-selected-color: ' + color[0] + '; --td-rate-unselected-color: ' + color[1];
+    }
+
+    if (typeof color === 'string') {
+      return ';--td-rate-selected-color: ' + color;
+    }
+
+    return '';
+  },
+
+  regSize: function (val) {
+    return val.indexOf('px') ? val : val + 'px';
   },
 };
