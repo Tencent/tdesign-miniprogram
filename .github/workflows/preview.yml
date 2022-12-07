@@ -19,12 +19,13 @@ jobs:
           message: |
             正在构建预览的二维码，请稍等...
           comment_tag: ${{steps.time.outputs.timestamp}}
-      - uses: xt0rted/pull-request-comment-branch@v1
+      - uses: LeeJim/pull-request-comment-branch@main
         id: comment-branch
       - uses: actions/checkout@v3
         if: success()
         with:
           ref: ${{ steps.comment-branch.outputs.head_ref }}
+          repository: ${{ steps.comment-branch.outputs.head_repo_name_with_owner }}
       - uses: ./.github/actions/install-dep
       - run: npm run build
         shell: bash
