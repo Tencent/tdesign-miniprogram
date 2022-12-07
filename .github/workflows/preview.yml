@@ -21,7 +21,7 @@ jobs:
           comment_tag: ${{steps.time.outputs.timestamp}}
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head_ref }}
       - uses: ./.github/actions/install-dep
       - run: npm run build
         shell: bash
