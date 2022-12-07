@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base'];
+const mapper = ['base', 'half-round'];
 
 describe('BackTop', () => {
   mapper.forEach((demoName) => {
