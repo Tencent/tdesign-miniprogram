@@ -165,6 +165,7 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
       class="card card--active"
     >
       <t-icon
+        ariaHidden="{{true}}"
         class="card__icon"
         name="check"
       />
@@ -180,6 +181,7 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
       class="card card--active"
     >
       <t-icon
+        ariaHidden="{{true}}"
         class="card__icon"
         name="check"
       />
@@ -223,6 +225,7 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
       class="card card--active"
     >
       <t-icon
+        ariaHidden="{{true}}"
         class="card__icon"
         name="check"
       />
@@ -237,6 +240,7 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
       class="card card--active"
     >
       <t-icon
+        ariaHidden="{{true}}"
         class="card__icon"
         name="check"
       />
@@ -261,15 +265,15 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
 </special>
 `;
 
-exports[`Checkbox Checkbox status demo works fine 1`] = `
-<status>
+exports[`Checkbox Checkbox special demo works fine 1`] = `
+<special>
   <t-checkbox-group
-    defaultValue="{{
+    value="{{
       Array [
         "checkbox1",
       ]
     }}"
-    disabled="{{true}}"
+    bind:change="onChange"
   >
     <t-checkbox
       label="选项禁用-已选"
@@ -298,6 +302,20 @@ exports[`Checkbox Checkbox type demo works fine 1`] = `
     defaultChecked="{{true}}"
     icon="rectangle"
     label="多选"
+  />
+  <wx-view
+    class="box"
+    style="height: 32rpx"
+  />
+  <t-checkbox
+    icon="{{
+      Array [
+        "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox-checked.png",
+        "https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/checkbox.png",
+      ]
+    }}"
+    label="图片图标"
+    value="checkbox1"
   />
 </type>
 `;

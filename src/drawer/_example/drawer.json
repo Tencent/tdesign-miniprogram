@@ -3,6 +3,8 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
-    "icon-drawer": "./icon-drawer"
+    "title": "./title",
+    "icon-drawer": "./icon",
+    "footer": "./footer"
   }
 }

@@ -11,12 +11,10 @@ exports[`Loading Loading base demo works fine 1`] = `
     />
     <t-loading
       size="40rpx"
-      tClassIndicator="indicator-black"
       theme="spinner"
     />
     <t-loading
       size="80rpx"
-      tClassIndicator="indicator-black"
       theme="dots"
     />
   </wx-view>
@@ -26,7 +24,7 @@ exports[`Loading Loading base demo works fine 1`] = `
 exports[`Loading Loading duration demo works fine 1`] = `
 <duration>
   <t-loading
-    duration="{{800}}"
+    duration="{{1200}}"
     size="52rpx"
     tClassText="text-l"
     text="加载中..."
@@ -35,13 +33,10 @@ exports[`Loading Loading duration demo works fine 1`] = `
   <wx-view
     class="slider-container"
   >
-    <wx-view>
-      速度调整
-    </wx-view>
     <t-slider
       class="slider-class"
       label="{{true}}"
-      max="{{2000}}"
+      max="{{1500}}"
       min="{{100}}"
       value="{{800}}"
       bind:change="durationChange"
@@ -70,22 +65,11 @@ exports[`Loading Loading horizontal demo works fine 1`] = `
       theme="circular"
     />
     <t-loading
+      inheritColor="{{true}}"
       size="40rpx"
-      tClassIndicator="indicator-black"
       text="加载中..."
       theme="spinner"
     />
-    <t-loading
-      size="40rpx"
-      theme="circular"
-    >
-      <span
-        slot="text"
-        style="color: #0052d9"
-      >
-        加载中...
-      </span>
-    </t-loading>
   </wx-view>
 </horizontal>
 `;
@@ -103,23 +87,33 @@ exports[`Loading Loading loadingProgress demo works fine 1`] = `
 exports[`Loading Loading size demo works fine 1`] = `
 <size>
   <wx-view
-    class="loading-container-flex-column"
+    class="loading-size-demo"
   >
     <t-loading
-      size="40rpx"
-      text="加载中(小)..."
+      class="large"
+      size="64rpx"
+      text="加载中..."
       theme="circular"
     />
+    <wx-view
+      class="demo-desc"
+    >
+      中尺寸
+    </wx-view>
+    <t-loading
+      class="middle"
+      size="56rpx"
+      text="加载中..."
+      theme="circular"
+    />
+    <wx-view
+      class="demo-desc"
+    >
+      小尺寸
+    </wx-view>
     <t-loading
       size="48rpx"
-      tClassText="text-m"
-      text="加载(中)..."
-      theme="circular"
-    />
-    <t-loading
-      size="52rpx"
-      tClassText="text-l"
-      text="加载中(大)..."
+      text="加载中..."
       theme="circular"
     />
   </wx-view>
@@ -168,11 +162,21 @@ exports[`Loading Loading text demo works fine 1`] = `
 
 exports[`Loading Loading vertical demo works fine 1`] = `
 <vertical>
-  <t-loading
-    layout="vertical"
-    size="40rpx"
-    text="加载中"
-    theme="circular"
-  />
+  <div
+    class="box"
+  >
+    <t-loading
+      layout="vertical"
+      size="40rpx"
+      text="加载中"
+      theme="circular"
+    />
+    <t-loading
+      layout="vertical"
+      size="40rpx"
+      text="加载中"
+      theme="spinner"
+    />
+  </div>
 </vertical>
 `;

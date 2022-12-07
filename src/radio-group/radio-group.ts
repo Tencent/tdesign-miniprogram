@@ -74,6 +74,9 @@ export default class RadioGroup extends SuperComponent {
       const { options, value, keys } = this.data;
       // 数字数组｜字符串数组｜对像数组
       if (!options?.length || !Array.isArray(options)) {
+        this.setData({
+          radioOptions: [],
+        });
         return;
       }
       const optionsValue = [];

@@ -1,0 +1,8 @@
+.box {
+  margin: 32rpx;
+}
+
+.button-host {
+  margin: 0 32rpx;
+  margin-top: auto;
+}
