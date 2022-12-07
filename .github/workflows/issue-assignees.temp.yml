@@ -36,7 +36,7 @@ jobs:
       - run: |
           contributors=${{ steps.assignees.outputs.contributors }}
           contributorstring=${contributors//,/ @}
-          echo "::set-output name=string::@$contributorstring"
+          echo "string=@$contributorstring" >> $GITHUB_OUTPUT
         id: contributors
 
       - name: 通知贡献者

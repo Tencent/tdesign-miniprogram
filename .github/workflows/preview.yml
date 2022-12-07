@@ -14,11 +14,11 @@ jobs:
           echo "timestamp=${timestamp}" >> $GITHUB_OUTPUT
         id: time
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v1
+        uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             正在构建预览的二维码，请稍等...
-            <!-- ${{steps.time.outputs.timestamp}} -->
+          comment_tag: ${{steps.time.outputs.timestamp}}
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
@@ -48,8 +48,8 @@ jobs:
           region: ap-guangzhou
           content: ${{ steps.preview.outputs.preview-qrcode }}
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v1
+        uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             <img alt="qrcode" src="${{ steps.cos.outputs.url }}" width="256" />
-          comment_tag: '<!-- ${{steps.time.outputs.timestamp}} -->'
+          comment_tag: ${{steps.time.outputs.timestamp}}
