@@ -16,7 +16,7 @@ Page({
 
   onPageScroll(e) {
     if (!this.windowHeight) {
-      this.windowHeight = wx.getSystemInfoSync().windowHeight;
+      this.windowHeight = wx.getSystemInfoSync().windowHeight - 200;
     }
     const isShowBackTop = e.scrollTop > this.windowHeight;
     if (isShowBackTop !== this.data.showBackTop) {
