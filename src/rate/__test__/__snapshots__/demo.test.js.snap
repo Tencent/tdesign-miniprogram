@@ -82,6 +82,7 @@ exports[`Rate Rate color demo works fine 1`] = `
       线描评分
     </wx-view>
     <t-rate
+      color="#00a870"
       defaultValue="{{3}}"
     />
   </wx-view>
