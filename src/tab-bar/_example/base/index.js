@@ -2,10 +2,10 @@ Component({
   data: {
     value: 'label_1',
     list: [
-      { value: 'label_1', label: '标签一', icon: 'app' },
-      { value: 'label_2', label: '标签二', icon: 'app' },
-      { value: 'label_3', label: '标签三', icon: 'app' },
-      { value: 'label_4', label: '标签四', icon: 'app' },
+      { value: 'label_1', label: '首页', icon: 'home' },
+      { value: 'label_2', label: '软件', icon: 'app' },
+      { value: 'label_3', label: '聊天', icon: 'chat' },
+      { value: 'label_4', label: '我的', icon: 'user' },
     ],
   },
 

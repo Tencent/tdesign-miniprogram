@@ -1,12 +1,12 @@
 const list = [
   {
     value: 'label_1',
-    label: '标签',
+    label: '标签一',
     icon: 'app',
   },
   {
     value: 'label_2',
-    label: '标签',
+    label: '标签二',
     icon: 'app',
   },
   {

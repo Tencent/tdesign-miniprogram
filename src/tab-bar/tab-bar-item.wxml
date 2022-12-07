@@ -11,7 +11,7 @@
     bindtap="toggle"
     aria-selected="{{(!hasChildren || !isSpread) && isChecked ? true : false}}"
     aria-expanded="{{hasChildren && isSpread ? true : ''}}"
-    aria-role="{{hasChildren && isSpread ? 'button' : 'tab'}}"
+    aria-role="{{hasChildren ? 'button' : 'tab'}}"
   >
     <view wx:if="{{icon}}" class="{{classPrefix}}__icon" style="height: {{iconOnly ? 24 : 20}}px">
       <t-badge
