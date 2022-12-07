@@ -1,4 +1,4 @@
-<view class="progress-container">
+<view class="progress-example">
   <t-progress percentage="{{percentage}}"></t-progress>
   <view class="button-group">
     <t-button bindtap="clickReduce" theme="primary" variant="plain" size="small">减少</t-button>

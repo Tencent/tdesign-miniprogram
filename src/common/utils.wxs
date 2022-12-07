@@ -11,6 +11,10 @@ function addUnit(value) {
   return REGEXP.test('' + value) ? value + 'px' : value;
 }
 
+function isString(string) {
+  return string && string.constructor === 'String';
+}
+
 function isArray(array) {
   return array && array.constructor === 'Array';
 }
@@ -55,6 +59,7 @@ function cls(base, arr) {
 
 module.exports = {
   addUnit: addUnit,
+  isString: isString,
   isArray: isArray,
   isObject: isObject,
   includes: includes,

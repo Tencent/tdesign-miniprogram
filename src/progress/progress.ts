@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
-import { isNumber } from '../common/utils';
+import { changeUnitToPx } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-progress`;
@@ -24,6 +24,7 @@ export default class Progress extends SuperComponent {
     heightBar: '',
     computedStatus: '',
     computedProgress: 0,
+    outerDiameter: 112, // 默认圆环外直径为112px
   };
 
   observers = {
@@ -39,6 +40,7 @@ export default class Progress extends SuperComponent {
     color(color) {
       this.setData({
         colorBar: getBackgroundColor(color),
+        colorCircle: typeof color === 'object' ? '' : color, // 环形不支持渐变，单独处理
       });
     },
 
@@ -46,8 +48,17 @@ export default class Progress extends SuperComponent {
       if (!strokeWidth) {
         return '';
       }
-      const height = isNumber(strokeWidth) ? `${strokeWidth}px` : strokeWidth;
-      this.setData({ heightBar: height });
+      const height = changeUnitToPx(strokeWidth);
+      this.setData({
+        heightBar: height * 2,
+        innerDiameter: this.data.outerDiameter - height * 2,
+      });
+    },
+
+    trackColor(trackColor) {
+      this.setData({
+        bgColorBar: trackColor,
+      });
     },
   };
 }

@@ -22,14 +22,14 @@ describe('progress', () => {
       status: 'error',
     });
 
-    const component = comp.querySelector('.base >>> .t-progress');
+    const component = comp.querySelector('.base >>> .t-class');
     expect(component.dom.getAttribute('class').includes('t-progress--status--error')).toBeTruthy();
   });
 
   it(`: label `, async () => {
     const id = simulate.load({
       template: `
-      <t-progress class="base" lable="{{label}}" percentage="{{percentage}}" ></t-progress>
+      <t-progress class="base" label="{{label}}" percentage="{{percentage}}" ></t-progress>
       `,
       data: {},
       methods: {
@@ -52,12 +52,12 @@ describe('progress', () => {
     expect($progress.data.computedProgress).toBe(100);
 
     // props: status
-    const component = comp.querySelector('.base >>> .t-progress');
+    const component = comp.querySelector('.base >>> .t-class');
     expect($progress.data.computedStatus).toBe('success');
     expect(component.dom.getAttribute('class').includes('t-progress--status--success')).toBeTruthy();
 
     // props: label
-    const label = comp.querySelector('.base >>> .t-progress__label');
+    const label = comp.querySelector('.base >>> .t-progress__info');
     expect(label.dom.textContent.trim()).toBe('100%');
   });
 
@@ -77,7 +77,7 @@ describe('progress', () => {
 
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
-    const barPercent = comp.querySelector('.base >>> .t-progress__bar-percent ');
+    const barPercent = comp.querySelector('.base >>> .t-class-bar ');
 
     comp.setData({
       color: 'rgb(0, 82, 222)',
@@ -121,7 +121,7 @@ describe('progress', () => {
       trackColor: 'rgb(0, 82, 200)',
     });
     const bar = comp.querySelector('.base >>> .t-progress__bar');
-    expect(bar.dom.getAttribute('style').includes('background: rgb(0, 82, 200)')).toBeTruthy();
+    expect(bar.dom.getAttribute('style').includes('background-color: rgb(0, 82, 200)')).toBeTruthy();
   });
 
   it(`: percentage `, () => {
@@ -143,15 +143,15 @@ describe('progress', () => {
 
     const $progress = comp.querySelector('.base');
     expect($progress.data.computedProgress).toBe(88);
-    const barPercent = comp.querySelector('.base >>> .t-progress__bar-percent');
+    const barPercent = comp.querySelector('.base >>> .t-progress__inner');
 
-    expect(barPercent.dom.getAttribute('style').includes('width:88%')).toBeTruthy();
+    expect(barPercent.dom.getAttribute('style').includes('width: 88%')).toBeTruthy();
 
     comp.setData({
       percentage: 100,
     });
     expect($progress.data.computedProgress).toBe(100);
-    expect(barPercent.dom.getAttribute('style').includes('width:100%')).toBeTruthy();
+    expect(barPercent.dom.getAttribute('style').includes('width: 100%')).toBeTruthy();
   });
 
   it(`: strokeWidth `, () => {
@@ -176,6 +176,6 @@ describe('progress', () => {
     });
 
     const bar = comp.querySelector('.base >>> .t-progress__bar');
-    expect(bar.dom.getAttribute('style').includes('height: 10px')).toBeTruthy();
+    expect(bar.dom.getAttribute('style').includes('height: 20px')).toBeTruthy();
   });
 });
