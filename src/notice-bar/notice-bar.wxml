@@ -1,13 +1,42 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
 <view wx:if="{{visible}}" style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class">
   <!-- prefixIcon -->
-  <view class="{{classPrefix}}__prefix-icon {{prefix}}-class-prefix-icon" bind:tap="clickPrefixIcon">
-    <t-icon wx:if="{{ iconName }}" name="{{ iconName }}" />
-    <slot wx:else name="prefixIcon" />
+  <view
+    wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}"
+    class="{{classPrefix}}__prefix-icon"
+    bind:tap="clickPrefixIcon"
+  >
+    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
+    <template
+      wx:else
+      is="icon"
+      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ...prefixIconData}}"
+    ></template>
   </view>
 
-  <!-- conten -->
+  <!-- content -->
   <view class="{{classPrefix}}__content-wrap" bind:tap="clickContent">
+    <!-- 垂直滚动通知：基于swiper实现，适用信息量短的多条公告消息，超出省略 -->
+    <view wx:if="{{ direction === 'vertical' && _.isArray(content) }}">
+      <swiper
+        autoplay="true"
+        vertical="true"
+        circular="true"
+        interval="2000"
+        display-multiple-items="1"
+        class="{{classPrefix}}__content--vertical"
+      >
+        <block wx:for="{{content}}" wx:key="index">
+          <swiper-item>
+            <view class="{{classPrefix}}__content--vertical-item"> {{item}} </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
     <view
+      wx:else
       class="{{classPrefix}}__content {{prefix}}-class-content {{ !marquee ? classPrefix + '__content-wrapable' : ''}}"
       animation="{{ animationData }}"
     >
@@ -23,8 +52,16 @@
   </view>
 
   <!-- suffixIcon -->
-  <view class="{{classPrefix}}__suffix-icon {{prefix}}-class-suffix-icon" bind:tap="clickSuffixIcon">
-    <t-icon wx:if="{{ suffixIcon }}" name="{{suffixIcon}}" />
-    <slot wx:else name="suffixIcon" />
+  <view
+    wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}"
+    class="{{classPrefix}}__suffix-icon"
+    bind:tap="clickSuffixIcon"
+  >
+    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffixIcon" />
+    <template
+      wx:else
+      is="icon"
+      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ...suffixIconData}}"
+    ></template>
   </view>
 </view>
