@@ -6,7 +6,8 @@
     class="{{classPrefix}}__wrapper {{prefix}}-class"
     style="font-size:{{ size }}px;"
     catch:touchmove="{{ !disabled ? 'onTouchMove' : '' }}"
-    catch:touchstart="{{ !disabled ? 'onTouchStart' : '' }}"
+    catch:tap="{{ !disabled ? 'onTap' : '' }}"
+    catch:touchend="{{ !disabled ? 'onTouchEnd' : ''}}"
   >
     <t-icon
       wx:for="{{ count }}"
@@ -21,22 +22,31 @@
   <text wx:if="{{showText}}" class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
     >{{utils.getText(texts,value,defaultTexts)}}</text
   >
-  <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips">
-    <view wx:if="{{allowHalf}}" class="{{classPrefix}}__tips-item {{classPrefix}}__tips-item--active">
+  <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px">
+    <view
+      wx:if="{{allowHalf && tipsType == 'tap'}}"
+      class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) - 0.5 == value]])}}"
+      bind:tap="onSelect"
+      data-value="{{utils.ceil(value) - 0.5}}"
+    >
       <t-icon
         class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
         name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
         size="{{ size }}"
       />
-      <view class="{{classPrefix}}__tips-text">{{value - 0.5}}</view>
+      <view class="{{classPrefix}}__tips-text">{{utils.ceil(value) - 0.5}}</view>
     </view>
-    <view class="{{classPrefix}}__tips-item">
+    <view
+      class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) == value && tipsType == 'tap']])}}"
+      bind:tap="onSelect"
+      data-value="{{utils.ceil(value)}}"
+    >
       <t-icon
         class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
         name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
         size="{{ size }}"
       />
-      <view class="{{classPrefix}}__tips-text">{{value}}</view>
+      <view class="{{classPrefix}}__tips-text">{{tipsType == 'tap' ? utils.ceil(value) : value}}</view>
     </view>
   </view>
 </view>

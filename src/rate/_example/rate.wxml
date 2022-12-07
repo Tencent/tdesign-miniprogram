@@ -16,7 +16,7 @@
   </t-demo>
 
   <t-demo title="02 组件状态" desc="交互方式：点击">
-    <allow-half />
+    <action />
   </t-demo>
 
   <t-demo title="03 组件样式">
@@ -29,4 +29,7 @@
     <view class="demo-desc">设置评分颜色</view>
     <color />
   </t-demo>
+
+  <t-demo title="04 特殊样式" desc="竖向带描述评分" />
+  <special />
 </view>

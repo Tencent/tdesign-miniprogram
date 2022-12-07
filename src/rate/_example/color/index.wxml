@@ -1,16 +1,8 @@
 <view class="demo-rate custom-color">
-  <view class="demo-rate__title">空心评分</view>
-  <!-- 设置评分颜色，设置属性： color-->
-  <t-rate data-index="{{0}}" value="{{value[0]}}" color="#FFC51C,#bbbbbb" bind:change="onChange" />
+  <view class="demo-rate__title">填充评分</view>
+  <t-rate default-value="{{3}}" allowHalf variant="filled" />
 </view>
-<view class="demo-rate custom-color">
-  <view class="demo-rate__title">实心评分</view>
-  <t-rate
-    data-index="{{1}}"
-    value="{{value[1]}}"
-    allowHalf
-    variant="filled"
-    color="#FFC51C,#bbbbbb"
-    bind:change="onChange"
-  />
+<view class="demo-rate">
+  <view class="demo-rate__title">线描评分</view>
+  <t-rate default-value="{{3}}" />
 </view>

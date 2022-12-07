@@ -1,6 +1,5 @@
 .demo-rate {
   background-color: #fff;
-  
   height: 96rpx;
   display: flex;
   align-items: center;
@@ -10,10 +9,6 @@
   border-top: solid 1rpx #f0f0f0;
   margin-top: 32rpx;
   margin-bottom: 32rpx;
-}
-
-.demo-rate__title {
-  width: 200rpx;
 }
 
 .demo-rate__transparent {

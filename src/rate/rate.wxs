@@ -37,4 +37,8 @@ module.exports = {
     }
     return className.join(' ');
   },
+
+  ceil: function (value) {
+    return Math.ceil(value);
+  },
 };

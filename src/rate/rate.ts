@@ -1,27 +1,10 @@
-/*
- * @Author: rileycai
- * @Date: 2021-09-21 19:01:54
- * @LastEditTime: 2021-11-10 14:30:02
- * @LastEditors: rileycai
- * @Description: Rate组件
- * @FilePath: /tdesign-miniprogram/src/rate/rate.ts
- */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { unitConvert } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-rate`;
-
-const rpx2px = (() => {
-  let systemInfo: any = null;
-  return (rpx: number): number => {
-    if (!systemInfo) {
-      systemInfo = wx.getSystemInfoSync();
-    }
-    return (rpx * (systemInfo ? systemInfo.screenWidth : 750)) / 750;
-  };
-})();
 
 @wxComponent()
 export default class Rate extends SuperComponent {
@@ -41,13 +24,15 @@ export default class Rate extends SuperComponent {
     classPrefix: name,
     defaultTexts: ['极差', '失望', '一般', '满意', '惊喜'],
     tipsVisible: false,
+    tipsLeft: 0,
+    tipsType: '',
   };
 
   methods = {
-    onTouch(e: WechatMiniprogram.TouchEvent, eventType: 'start' | 'move') {
-      const { count, allowHalf, gap, value: currentValue } = this.properties as any;
+    onTouch(e: WechatMiniprogram.TouchEvent, eventType: 'tap' | 'move') {
+      const { count, allowHalf, gap, value: currentValue, size } = this.properties;
       const [touch] = e.touches;
-      const margin = rpx2px(gap);
+      const margin = unitConvert(gap);
       const selQuery = this.createSelectorQuery();
       selQuery
         .select(`.${name}__wrapper`)
@@ -66,8 +51,12 @@ export default class Rate extends SuperComponent {
             value = 0;
           }
 
-          if (eventType === 'move') {
-            this.setData({ tipsVisible: true });
+          if (eventType === 'move' || (eventType === 'tap' && allowHalf)) {
+            this.setData({
+              tipsVisible: true,
+              tipsType: eventType,
+              tipsLeft: Math.ceil(value - 1) * (unitConvert(gap) + unitConvert(size)) + unitConvert(size) * 0.5,
+            });
           }
 
           if (value !== currentValue) {
@@ -76,11 +65,28 @@ export default class Rate extends SuperComponent {
         })
         .exec();
     },
-    onTouchStart(e: WechatMiniprogram.TouchEvent) {
-      this.onTouch(e, 'start');
+    onTap(e: WechatMiniprogram.TouchEvent) {
+      this.onTouch(e, 'tap');
     },
     onTouchMove(e: WechatMiniprogram.TouchEvent) {
       this.onTouch(e, 'move');
+    },
+    onTouchEnd() {
+      if (this.data.tipsVisible && this.data.tipsType === 'move') {
+        this.hideTips();
+      }
+    },
+    onSelect(e: WechatMiniprogram.TouchEvent) {
+      const { value } = e.currentTarget.dataset;
+      const { tipsType } = this.data;
+
+      if (tipsType === 'move') return;
+
+      this._trigger('change', { value });
+      this.hideTips();
+    },
+    hideTips() {
+      setTimeout(() => this.setData({ tipsVisible: false }), 300);
     },
   };
 }
