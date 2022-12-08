@@ -20,13 +20,16 @@ module.exports = {
     return name[curVal >= index + 1 ? 0 : 1];
   },
 
-  getIconClass: function (classPrefix, defaultValue, value, index, allowHalf, disabled) {
+  getIconClass: function (classPrefix, defaultValue, value, index, allowHalf, disabled, scaleIndex) {
     var curVal = value ? value : defaultValue;
     var className = [];
     if (curVal >= index + 1) {
       className.push(classPrefix + '--selected');
       if (disabled) {
         className.push(classPrefix + '--disabled');
+      }
+      if (scaleIndex === index + 1) {
+        className.push(classPrefix + '--current');
       }
     } else if (allowHalf && curVal - index > 0) {
       className.push(classPrefix + '--selected-half');

@@ -25,7 +25,8 @@ export default class Rate extends SuperComponent {
     defaultTexts: ['极差', '失望', '一般', '满意', '惊喜'],
     tipsVisible: false,
     tipsLeft: 0,
-    tipsType: '',
+    actionType: '',
+    scaleIndex: -1,
   };
 
   methods = {
@@ -52,10 +53,12 @@ export default class Rate extends SuperComponent {
           }
 
           if (eventType === 'move' || (eventType === 'tap' && allowHalf)) {
+            const left = Math.ceil(value - 1) * (unitConvert(gap) + unitConvert(size)) + unitConvert(size) * 0.5;
             this.setData({
               tipsVisible: true,
-              tipsType: eventType,
-              tipsLeft: Math.ceil(value - 1) * (unitConvert(gap) + unitConvert(size)) + unitConvert(size) * 0.5,
+              actionType: eventType,
+              scaleIndex: eventType === 'move' ? Math.ceil(value) : -1,
+              tipsLeft: Math.max(left, 0),
             });
           }
 
@@ -72,20 +75,19 @@ export default class Rate extends SuperComponent {
       this.onTouch(e, 'move');
     },
     onTouchEnd() {
-      if (this.data.tipsVisible && this.data.tipsType === 'move') {
-        this.hideTips();
+      if (this.data.actionType === 'move') {
+        this.setData({}, () => {
+          this.setData({ tipsVisible: false, scaleIndex: -1 });
+        });
       }
     },
     onSelect(e: WechatMiniprogram.TouchEvent) {
       const { value } = e.currentTarget.dataset;
-      const { tipsType } = this.data;
+      const { actionType } = this.data;
 
-      if (tipsType === 'move') return;
+      if (actionType === 'move') return;
 
       this._trigger('change', { value });
-      this.hideTips();
-    },
-    hideTips() {
       setTimeout(() => this.setData({ tipsVisible: false }), 300);
     },
   };

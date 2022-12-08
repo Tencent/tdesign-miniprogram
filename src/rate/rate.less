@@ -7,6 +7,7 @@
 @rate-unselected-color: var(--td-rate-unselected-color, @gray-color-4);
 @rate-disabled-color: var(--td-rate-disabled-color, @text-disabled-color);
 @rate-text-active-font-weight: var(--td-rate-text-active-font-weight, 600);
+@rate-icon-scale: var(--td-rate-icon-scale, 1.33);
 
 .@{prefix}-rate {
   position: relative;
@@ -21,6 +22,11 @@
 
   &__icon {
     line-height: 1em;
+    transition: transform 0.3s ease;
+
+    &--current {
+      transform: scale(@rate-icon-scale);
+    }
 
     &--selected {
       color: @rate-selected-color;
