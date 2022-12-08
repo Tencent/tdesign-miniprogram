@@ -6,10 +6,10 @@
   class="{{prefix}}-class {{classPrefix}} {{fixed ? classPrefix + '--fixed' : ''}} {{classPrefix + '--' + theme}}"
   bindtap="toTop"
 >
-  <view wx:if="{{iconName || !_.isEmptyObj(iconData)}}" class="{{classPrefix}}__icon">
+  <view wx:if="{{iconName || _.isNoEmptyObj(iconData)}}" class="{{classPrefix}}__icon">
     <slot wx:if="{{iconName === 'slot'}}" name="icon" />
     <template wx:else is="icon" data="{{tClass: prefix + '-class-icon', name: iconName, ...iconData}}"> </template>
   </view>
-  <view wx:if="{{!!text}}" class="{{classPrefix}}__text {{prefix}}-class-text">{{text}}</view>
+  <view wx:if="{{!!text}}" class="{{classPrefix}}__text--{{theme}} {{prefix}}-class-text">{{text}}</view>
   <slot />
 </view>

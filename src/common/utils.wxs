@@ -19,8 +19,8 @@ function isObject(obj) {
   return obj && obj.constructor === 'Object';
 }
 
-var isEmptyObj = function (obj) {
-  return JSON.stringify(obj) === '{}';
+var isNoEmptyObj = function (obj) {
+  return isObject(obj) && JSON.stringify(obj) !== '{}';
 };
 
 function includes(arr, value) {
@@ -61,7 +61,7 @@ module.exports = {
   addUnit: addUnit,
   isArray: isArray,
   isObject: isObject,
-  isEmptyObj: isEmptyObj,
+  isNoEmptyObj: isNoEmptyObj,
   includes: includes,
   cls: cls,
 };

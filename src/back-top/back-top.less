@@ -65,19 +65,24 @@
     border-radius: @back-top-half-round-border-radius 0 0 @back-top-half-round-border-radius;
     flex-direction: row;
     right: 0;
-
-    > .@{backtop}__text {
-      width: 2em;
-    }
-
-    > .@{backtop}__icon:not(:empty) + .@{backtop}__text {
-      margin-left: (@spacer / 2);
-    }
   }
 
-  &__text {
+  &__text--round,
+  &__text--round-dark,
+  &__text--half-round,
+  &__text--half-round-dark {
     font-size: @back-top-text-font-size;
     line-height: @back-top-text-line-height;
+  }
+
+  &__text--half-round,
+  &__text--half-round-dark {
+    width: 2em;
+  }
+
+  &__icon:not(:empty) + &__text--half-round,
+  &__icon:not(:empty) + &__text--half-round-dark {
+    margin-left: (@spacer / 2);
   }
 
   &__icon {
