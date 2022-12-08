@@ -21,14 +21,11 @@
     <step />
   </t-demo>
 
-  <t-demo title="02 状态" desc="基础滑动选择器">
+  <t-demo title="02 组件状态" desc="滑块禁用状态">
     <disabled />
   </t-demo>
 
-  <t-demo title="03 规格" desc="无标题滑动选择器">
-    <base />
-  </t-demo>
-  <t-demo desc="有标题滑动选择器">
-    <title />
+  <t-demo title="03 特殊样式" desc="胶囊型滑块">
+    <capsule />
   </t-demo>
 </view>
