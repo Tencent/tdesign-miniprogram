@@ -3,4 +3,6 @@
   font-size: 24rpx !important;
   width: 144rpx !important;
   height: 48rpx !important;
+  padding-left: 16rpx !important;
+  padding-right: 16rpx !important;
 }
