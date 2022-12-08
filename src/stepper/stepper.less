@@ -17,24 +17,19 @@
 @stepper-border-radius: var(--td-stepper-border-radius, 6rpx); // outline/filled 主题下的圆角大小
 @stepper-border-color: var(--td-stepper-border-color, @gray-color-4); // outline/filled 主题下的圆角颜色
 @stepper-input-color: var(--td-stepper-input-color, @text-level-1-color); // 输入框文本/图标颜色
-@stepper-input-disabled-color: (--td-stepper-input-disabled-color, @text-disabled-color); // 禁用态输入框文本/图标颜色
+@stepper-input-disabled-color: var(--td-stepper-input-disabled-color, @gray-color-4); // 禁用态输入框文本/图标颜色
 
 @stepper: ~'@{prefix}-stepper';
 
 .@{stepper} {
   display: flex;
   align-items: center;
+  color: @stepper-input-color;
 
   &__input {
     margin: 0 (@spacer / 2);
     text-align: center;
     vertical-align: top;
-  }
-
-  &__input,
-  &__input--small,
-  &__input--medium,
-  &__input--large {
     height: inherit;
     min-height: inherit;
   }
@@ -42,12 +37,20 @@
   &__minus,
   &__plus {
     padding: (@spacer / 2);
+    box-sizing: border-box;
   }
 
   &__input,
   &__minus-icon,
   &__plus-icon {
-    color: @stepper-input-color;
+    color: inherit;
+  }
+
+  &__input--normal,
+  &__input--filled,
+  &__input--outline {
+    height: inherit;
+    box-sizing: border-box;
   }
 
   &--small {
@@ -70,6 +73,7 @@
   }
 
   &__input--medium {
+    height: @stepper-medium-height;
     width: @stepper-medium-input-width;
   }
 
@@ -77,18 +81,23 @@
     width: @stepper-large-input-width;
   }
 
-  &__icon--small,
   &__icon--small {
+    // box-sizing: border-box;
+    width: @stepper-small-height;
+    height: @stepper-small-height;
     font-size: @stepper-small-icon-size;
   }
 
-  &__icon--medium,
   &__icon--medium {
+    width: @stepper-medium-height;
+    height: @stepper-medium-height;
     font-size: @stepper-medium-icon-size;
   }
 
-  &__icon--large,
   &__icon--large {
+    // box-sizing: border-box;
+    width: @stepper-large-height;
+    height: @stepper-large-height;
     font-size: @stepper-large-icon-size;
   }
 
@@ -115,12 +124,6 @@
   &__minus--filled,
   &__plus--filled {
     background-color: @gray-color-1;
-  }
-
-  &__input--normal,
-  &__input--filled,
-  &__input--outline {
-    height: inherit;
   }
 
   &__input--filled {

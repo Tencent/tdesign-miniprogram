@@ -9,7 +9,7 @@ exports[`stepper event : input 1`] = `
     ariaDisabled="{{false}}"
     ariaLabel="减少2"
     ariaRole="button"
-    class="t-stepper__minus t-stepper__icon--medium  t-stepper__minus--normal t-class-minus"
+    class="t-stepper__minus t-stepper__minus--normal t-stepper__icon--medium t-class-minus"
     catch:tap="minusValue"
   >
     <t-icon
@@ -47,11 +47,11 @@ exports[`stepper event : input 1`] = `
     ariaDisabled="{{false}}"
     ariaLabel="增加2"
     ariaRole="button"
-    class="t-stepper__plus t-stepper__plus--normal t-class-plus"
+    class="t-stepper__plus t-stepper__plus--normal t-stepper__icon--medium t-class-plus"
     catch:tap="plusValue"
   >
     <t-icon
-      class="t-stepper__plus-icon t-stepper__icon--medium "
+      class="t-stepper__plus-icon "
     >
       <wx-view
         ariaHidden="{{false}}"
@@ -79,7 +79,7 @@ exports[`stepper event : input 2`] = `
     ariaDisabled="{{false}}"
     ariaLabel="减少2"
     ariaRole="button"
-    class="t-stepper__minus t-stepper__icon--medium  t-stepper__minus--normal t-class-minus"
+    class="t-stepper__minus t-stepper__minus--normal t-stepper__icon--medium t-class-minus"
     catch:tap="minusValue"
   >
     <t-icon
@@ -117,11 +117,11 @@ exports[`stepper event : input 2`] = `
     ariaDisabled="{{false}}"
     ariaLabel="增加2"
     ariaRole="button"
-    class="t-stepper__plus t-stepper__plus--normal t-class-plus"
+    class="t-stepper__plus t-stepper__plus--normal t-stepper__icon--medium t-class-plus"
     catch:tap="plusValue"
   >
     <t-icon
-      class="t-stepper__plus-icon t-stepper__icon--medium "
+      class="t-stepper__plus-icon "
     >
       <wx-view
         ariaHidden="{{false}}"

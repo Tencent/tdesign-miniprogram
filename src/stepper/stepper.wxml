@@ -3,7 +3,7 @@
   class="{{classPrefix}} {{classPrefix}}--{{size}} {{ disabled ? classPrefix + '--disabled': ''}} {{prefix}}-class"
 >
   <view
-    class="{{classPrefix}}__minus {{classPrefix}}__icon--{{size}}  {{classPrefix}}__minus--{{theme}} {{prefix}}-class-minus"
+    class="{{classPrefix}}__minus {{classPrefix}}__minus--{{theme}} {{classPrefix}}__icon--{{size}} {{prefix}}-class-minus"
     catchtap="minusValue"
     aria-label="{{'减少' + step}}"
     aria-role="button"
@@ -27,7 +27,7 @@
     />
   </view>
   <view
-    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{prefix}}-class-plus"
+    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{classPrefix}}__icon--{{size}} {{prefix}}-class-plus"
     catchtap="plusValue"
     aria-label="{{'增加' + step}}"
     aria-role="button"
@@ -35,7 +35,7 @@
   >
     <t-icon
       name="add"
-      class="{{classPrefix}}__plus-icon {{classPrefix}}__icon--{{size}} {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--disabled': ''}}"
+      class="{{classPrefix}}__plus-icon {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--disabled': ''}}"
     />
   </view>
 </view>
