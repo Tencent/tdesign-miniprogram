@@ -3,14 +3,14 @@
 <view style="{{ customStyle }}" class="{{prefix}}-class {{classPrefix}}">
   <view class="{{classPrefix}}__content">
     <image
-      aria-hidden="true"
+      aria-hidden="{{true}}"
       wx:if="{{image}}"
       class="{{classPrefix}}__img {{prefix}}-class-image"
       src="{{image}}"
       mode="aspectFit"
     />
     <t-icon
-      aria-hidden="true"
+      aria-hidden="{{true}}"
       wx:elif="{{icon}}"
       name="{{icon}}"
       prefix="{{iconProps.prefix}}"
