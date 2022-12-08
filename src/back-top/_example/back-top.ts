@@ -1,15 +1,9 @@
 Page({
   data: {
+    round: false,
+    halfRound: false,
     showBackTop: false,
-    rowCols: [
-      { width: '332rpx', height: '342rpx' },
-      { width: '332rpx', height: '32rpx' },
-      { width: '214rpx', height: '32rpx' },
-      [
-        { width: '186rpx', height: '32rpx' },
-        { width: '64rpx', height: '32rpx', marginLeft: '82rpx' },
-      ],
-    ],
+    rowCol: [{ size: '163.5px', borderRadius: '12px' }, 1, { width: '61%' }],
   },
 
   windowHeight: null,
@@ -24,7 +18,22 @@ Page({
     }
   },
 
-  onBtnClick() {
+  onBtnClick(e: any) {
+    const source = e.currentTarget.dataset.source as string;
+    if (source === 'round') {
+      this.setData({
+        round: true,
+        halfRound: false,
+      });
+    }
+
+    if (source === 'half-round') {
+      this.setData({
+        halfRound: true,
+        round: false,
+      });
+    }
+
     wx.pageScrollTo({ duration: 300, scrollTop: 1000 });
   },
 });

@@ -9,3 +9,13 @@ exports[`BackTop BackTop base demo works fine 1`] = `
   />
 </base>
 `;
+
+exports[`BackTop BackTop half-round demo works fine 1`] = `
+<half-round>
+  <t-back-top
+    text="返回顶部"
+    theme="half-round-dark"
+    bind:to-top="onToTop"
+  />
+</half-round>
+`;

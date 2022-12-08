@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
-    "base": "./base"
+    "base": "./base",
+    "half-round": "./half-round"
   }
 }

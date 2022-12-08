@@ -7,29 +7,57 @@ const name = `${prefix}-back-top`;
 
 @wxComponent()
 export default class BackTop extends SuperComponent {
-  /**
-   * Component properties
-   */
   externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-text`];
+
+  options = {
+    multipleSlots: true,
+  };
 
   properties = props;
 
-  /**
-   * Component initial data
-   */
   data = {
     prefix,
     classPrefix: name,
   };
 
-  /**
-   * Component methods
-   */
-  toTop() {
-    this.triggerEvent('to-top');
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration: 300,
-    });
-  }
+  observers = {
+    icon() {
+      this.setIcon();
+    },
+  };
+
+  lifetimes = {
+    ready() {
+      this.setIcon();
+    },
+  };
+
+  methods = {
+    setIcon() {
+      const { icon } = this.properties;
+      if (!icon) {
+        this.setData({ iconName: '', iconData: {} });
+      } else if (typeof icon === 'string') {
+        this.setData({
+          iconName: icon,
+          iconData: {},
+        });
+      } else if (typeof icon === 'object') {
+        this.setData({
+          iconName: '',
+          iconData: icon,
+        });
+      } else {
+        this.setData({ iconName: 'backtop', iconData: {} });
+      }
+    },
+
+    toTop() {
+      this.triggerEvent('to-top');
+      wx.pageScrollTo({
+        scrollTop: 0,
+        duration: 300,
+      });
+    },
+  };
 }
