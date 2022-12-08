@@ -1,9 +1,9 @@
 <view class="progress-example">
-  <t-progress percentage="80"></t-progress>
+  <t-progress percentage="80" />
 </view>
 <view class="progress-example">
-  <t-progress theme="plump" percentage="80"></t-progress>
+  <t-progress theme="plump" percentage="80" />
 </view>
 <view class="progress-example">
-  <t-progress theme="circle" percentage="30"></t-progress>
+  <t-progress theme="circle" percentage="30" />
 </view>

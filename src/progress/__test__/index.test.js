@@ -176,6 +176,6 @@ describe('progress', () => {
     });
 
     const bar = comp.querySelector('.base >>> .t-progress__bar');
-    expect(bar.dom.getAttribute('style').includes('height: 20px')).toBeTruthy();
+    expect(bar.dom.getAttribute('style').includes('height: 10px')).toBeTruthy();
   });
 });

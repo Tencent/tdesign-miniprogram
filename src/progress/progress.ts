@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
-import { changeUnitToPx } from '../common/utils';
+import { unitConvert, getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-progress`;
@@ -24,7 +24,6 @@ export default class Progress extends SuperComponent {
     heightBar: '',
     computedStatus: '',
     computedProgress: 0,
-    outerDiameter: 112, // 默认圆环外直径为112px
   };
 
   observers = {
@@ -48,17 +47,35 @@ export default class Progress extends SuperComponent {
       if (!strokeWidth) {
         return '';
       }
-      const height = changeUnitToPx(strokeWidth);
       this.setData({
-        heightBar: height * 2,
-        innerDiameter: this.data.outerDiameter - height * 2,
+        heightBar: unitConvert(strokeWidth),
       });
+    },
+
+    theme(theme) {
+      if (theme === 'circle') {
+        this.getInnerDiameter();
+      }
     },
 
     trackColor(trackColor) {
       this.setData({
         bgColorBar: trackColor,
       });
+    },
+  };
+
+  methods = {
+    getInnerDiameter() {
+      const { strokeWidth } = this.properties;
+      const wrapID = `.${name}__canvas--circle`;
+      if (strokeWidth) {
+        getRect(this, wrapID).then((wrapRect) => {
+          this.setData({
+            innerDiameter: wrapRect.width - unitConvert(strokeWidth) * 2,
+          });
+        });
+      }
     },
   };
 }

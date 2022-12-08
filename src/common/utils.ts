@@ -89,25 +89,6 @@ export const addUnit = function (value?: string | number): string | undefined {
 };
 
 /**
- * 统一处理成默认单位 px
- * return number
- */
-export const changeUnitToPx = function (e: number | string) {
-  if (isNumber(e)) {
-    return Number(e);
-  }
-
-  if (String(e).indexOf('rpx') > -1) {
-    return Number(String(e).split('rpx')[0]) / 2;
-  }
-
-  if (String(e).indexOf('px') > -1) {
-    return Number(String(e).split('px')[0]);
-  }
-  return 0;
-};
-
-/**
  * 计算字符串字符的长度并可以截取字符串。
  * @param str 传入字符串（maxcharacter条件下，一个汉字表示两个字符）
  * @param max 规定最大字符串长度

@@ -1,12 +1,12 @@
 <view class="progress-example">
-  <t-progress theme="plump" percentage="80"></t-progress>
+  <t-progress theme="plump" percentage="80" />
 </view>
 <view class="progress-example">
-  <t-progress theme="plump" percentage="88" status="warning"></t-progress>
+  <t-progress theme="plump" percentage="88" status="warning" />
 </view>
 <view class="progress-example">
-  <t-progress theme="plump" percentage="88" status="error"></t-progress>
+  <t-progress theme="plump" percentage="88" status="error" />
 </view>
 <view class="progress-example">
-  <t-progress theme="plump" percentage="88" status="success"></t-progress>
+  <t-progress theme="plump" percentage="88" status="success" />
 </view>
