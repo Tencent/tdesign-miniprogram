@@ -12,7 +12,7 @@
   hover-stay-time="{{200}}"
   bindtap="onClick"
   aria-role="{{ariaRole || 'button'}}"
-  aria-labelledby="item-label"
+  aria-labelledby="{{labelId}}"
 >
   <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}">
     <view
@@ -55,7 +55,7 @@
           ></t-icon>
         </view>
       </t-badge>
-      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="item-label">
+      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{labelId}}">
         <view
           wx:if="{{text && text !== 'slot'}}"
           class="{{_.cls(classPrefix + '__text', [util.getImageSize(column), layout])}} {{prefix}}-class-text"
