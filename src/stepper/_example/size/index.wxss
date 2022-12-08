@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 32rpx;
+  margin-bottom: 32rpx;
   background-color: #fff;
 }
 
