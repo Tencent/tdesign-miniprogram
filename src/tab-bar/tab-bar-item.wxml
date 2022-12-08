@@ -52,11 +52,11 @@
       wx:for-index="index"
       wx:key="index"
       bind:tap="selectChild"
-      aria-role="tab"
       data-value="{{child.value || index}}"
+      aria-role="tab"
     >
       <view class="{{classPrefix}}__spread-item-split" wx:if="{{index !== 0}}" />
-      <view class="{{classPrefix}}__spread-item-text">{{ child.label }}</view>
+      <view class="{{classPrefix}}__spread-item-text" data-value="{{child.value || index}}">{{ child.label }}</view>
     </view>
   </view>
 </view>
