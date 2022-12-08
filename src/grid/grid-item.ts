@@ -56,7 +56,7 @@ export default class GridItem extends SuperComponent {
   lifetimes = {
     ready() {
       this.setData({
-        labelId: useId(name),
+        labelId: useId(),
       });
     },
   };
