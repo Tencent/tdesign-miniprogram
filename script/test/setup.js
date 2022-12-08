@@ -8,7 +8,7 @@ global.load = (path, demoName) => {
     less: true,
     rootPath: Path.resolve(__dirname, '../../src'),
     compilerOptions: {
-      maxBuffer: 1024 * (1024 + 100),
+      maxBuffer: 1024 * 1024 * 2,
     },
   });
 };

@@ -11,6 +11,11 @@ const props: TdRateProps = {
     type: Boolean,
     value: false,
   },
+  /** 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB'] */
+  color: {
+    type: null,
+    value: '#ED7B2F',
+  },
   /** 评分的数量 */
   count: {
     type: Number,
@@ -24,26 +29,29 @@ const props: TdRateProps = {
   /** 是否禁用评分 */
   disabled: {
     type: Boolean,
-    value: false,
   },
   /** 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。 */
   externalClasses: {
     type: Array,
   },
-  /** 评分图标的间距，默认单位为 `px`, 示例：`8` */
+  /** 评分图标的间距 */
   gap: {
     type: Number,
-    value: 8,
+    value: 4,
+  },
+  /** 自定义评分图标；此时不受 variant 影响 */
+  icon: {
+    type: null,
   },
   /** 是否显示对应的辅助文字 */
   showText: {
     type: Boolean,
     value: false,
   },
-  /** 评分图标的大小，默认单位为 `px`，示例：`20` */
+  /** 评分图标的大小 */
   size: {
     type: String,
-    value: '20',
+    value: '24px',
   },
   /** 评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分'] */
   texts: {

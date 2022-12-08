@@ -1,0 +1,23 @@
+.demo-rate {
+  background-color: #fff;
+  padding: 32rpx;
+  border-bottom: solid 1rpx #f0f0f0;
+  border-top: solid 1rpx #f0f0f0;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.rate-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.desc {
+  text-align: center;
+  margin-top: 24rpx;
+}
+
+.desc--active {
+  color: #ED7B2F;
+  font-weight: 600;
+}

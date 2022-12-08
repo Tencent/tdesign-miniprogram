@@ -1,8 +1,7 @@
 Component({
   data: {
-    value: 2,
+    value: 3,
   },
-
   methods: {
     onChange(e) {
       const { value } = e.detail;

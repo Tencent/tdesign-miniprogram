@@ -25,13 +25,13 @@ describe('Rate', () => {
     comp.attach(document.body);
 
     const box = comp.querySelector('.box >>> .t-rate__wrapper');
-    box.dispatchEvent('touchstart');
+    box.dispatchEvent('touchmove');
     await simulate.sleep(10);
 
     expect(mockFn).toHaveBeenCalledTimes(1);
 
     comp.setData({ disabled: true });
-    box.dispatchEvent('touchstart');
+    box.dispatchEvent('touchmove');
     await simulate.sleep(10);
 
     expect(mockFn).not.toHaveBeenCalledTimes(2);
@@ -52,15 +52,15 @@ describe('Rate', () => {
 
     const iconList = comp.querySelectorAll('.box >>> .t-rate__icon');
     iconList.forEach((it) => {
-      expect(it.dom.classList).toContain(`${tagName}--t-rate-unselected`);
+      expect(it.dom.classList).toContain(`${tagName}--t-rate__icon--unselected`);
     });
 
     comp.setData({ value: 0.5 });
-    expect(iconList[0].dom.classList).toContain(`${tagName}--t-rate-selected-half`);
+    expect(iconList[0].dom.classList).toContain(`${tagName}--t-rate__icon--selected-half`);
 
     comp.setData({ value: 1.5 });
-    expect(iconList[0].dom.classList).toContain(`${tagName}--t-rate-selected`);
-    expect(iconList[1].dom.classList).toContain(`${tagName}--t-rate-selected-half`);
+    expect(iconList[0].dom.classList).toContain(`${tagName}--t-rate__icon--selected`);
+    expect(iconList[1].dom.classList).toContain(`${tagName}--t-rate__icon--selected-half`);
   });
 
   it(':show-text default texts', async () => {
@@ -78,7 +78,7 @@ describe('Rate', () => {
 
     const box = comp.querySelector('.box');
     const text = box.querySelector('.t-rate__text');
-    expect(text.dom.textContent).toBe('');
+    expect(text.dom.textContent).toBe('未评分');
 
     comp.setData({ value: 1 });
     expect(text.dom.textContent).toBe(box.data.defaultTexts[0]);
@@ -113,7 +113,7 @@ describe('Rate', () => {
     const box = comp.querySelector('.box');
     const text = box.querySelector('.t-rate__text');
     comp.setData({ texts: texts });
-    expect(text.dom.textContent).toBe('');
+    expect(text.dom.textContent).toBe('未评分');
 
     comp.setData({ value: 1 });
     expect(text.dom.textContent).toBe(texts[0]);
