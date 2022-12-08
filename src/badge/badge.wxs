@@ -71,8 +71,8 @@ var getBadgeAriaLabel = function (props) {
     var str = '有' + props.count + '通知';
     return str;
   }
-  var str1 = '有' + props.maxCount + '+个消息';
-  var str2 = '有' + props.count + '个消息';
+  var str1 = '有' + props.maxCount + '+条消息';
+  var str2 = '有' + props.count + '条消息';
   return parseInt(props.count) > props.maxCount ? str1 : str2;
 };
 
