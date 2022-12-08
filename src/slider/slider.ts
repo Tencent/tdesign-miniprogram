@@ -83,11 +83,9 @@ export default class Slider extends SuperComponent {
         const left = (fullLineWidth * (newValue[0] - Number(min))) / (Number(max) - Number(min));
         const right = (fullLineWidth * (Number(max) - newValue[1])) / (Number(max) - Number(min));
         // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
-        this.setDotStyle(left, right);
+        this.setLineStyle(left, right);
       } else {
-        const left = (fullLineWidth * (Number(newValue) - Number(min))) / (Number(max) - Number(min));
-        this.setDotStyle(left, null);
-        this.getSingleBarWidth(newValue as number);
+        this.setSingleBarWidth(newValue as number);
       }
     },
     marks(val) {
@@ -146,7 +144,7 @@ export default class Slider extends SuperComponent {
     }
   }
 
-  getSingleBarWidth(value: number) {
+  setSingleBarWidth(value: number) {
     const { max, min } = this.properties;
     const width = `${((Number(value) - Number(min)) * 100) / (Number(max) - Number(min))}%`;
     this.setData({
@@ -179,33 +177,6 @@ export default class Slider extends SuperComponent {
       initialLeft: line.left - halfBlock,
       initialRight: line.right + halfBlock,
     });
-  }
-
-  setDotStyle(left: number, right: number) {
-    const { range } = this.properties;
-    const { blockSize } = this.data;
-    const halfBlock = Number(blockSize) / 2;
-    if (left !== null) {
-      this.setData({
-        activeLeft: left - halfBlock,
-      });
-    }
-
-    if (right !== null) {
-      this.setData({
-        activeRight: right - halfBlock,
-      });
-    }
-
-    if (range) {
-      this.setLineStyle();
-
-      const [a, b] = this.data._value as any;
-
-      this.setData({
-        dotTopValue: [a, b],
-      });
-    }
   }
 
   stepValue(value: number): number {
@@ -337,18 +308,27 @@ export default class Slider extends SuperComponent {
     this.triggerValue(newData);
   }
 
-  setLineStyle() {
-    const { activeLeft, activeRight, maxRange, blockSize } = this.data;
+  setLineStyle(left: number, right: number) {
+    const { blockSize, maxRange } = this.data;
     const halfBlock = Number(blockSize) / 2;
+    const activeLeft = left - halfBlock;
+    const activeRight = right - halfBlock;
+    const [a, b] = this.data._value as any;
+    const cut = (v) => parseInt(v, 10);
+
+    this.setData({
+      dotTopValue: [a, b],
+    });
+
     if (activeLeft + activeRight <= maxRange) {
       this.setData({
-        lineLeft: activeLeft + halfBlock,
-        lineRight: activeRight + halfBlock,
+        lineLeft: cut(activeLeft + halfBlock),
+        lineRight: cut(activeRight + halfBlock),
       });
     } else {
       this.setData({
-        lineLeft: maxRange + halfBlock - activeRight,
-        lineRight: maxRange - activeLeft + halfBlock * 1.5, //eslint-disable-line
+        lineLeft: cut(maxRange + halfBlock - activeRight),
+        lineRight: cut(maxRange - activeLeft + halfBlock * 1.5),
       });
     }
   }

@@ -60,10 +60,10 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-colors | Array | ['#0052D9', 'rgba(220, 220, 220, 1)'] | 颜色，[已选择, 未选择]。TS 类型：`Array<string>` | N
+colors | Array | [] | 颜色，[已选择, 未选择]。TS 类型：`Array<string>` | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用组件 | N
-disabled-color | Array | ['#bbd3fb', '#dcdcdc'] | 禁用状态滑动条的颜色，[已选, 未选]。TS 类型：`Array<string>` | N
+disabled-color | Array | [] | 禁用状态滑动条的颜色，[已选, 未选]。TS 类型：`Array<string>` | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名。`['t-class', 't-class-bar', 't-class-bar-active', 't-class-bar-disabled', 't-class-cursor']` | N
 label | String / Boolean / Slot | false | 滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值 | N
 marks | Object / Array | {} | 刻度标记，示例：`[0, 10, 40, 200]` 或者 `{ 5:  '5¥', 10: '10%' }`。TS 类型：`Record<number, string> \| Array<number>` | N

@@ -1,172 +1,157 @@
 @import '../common/style/index.less';
 
-@bar-height: 2rpx;
+@slider: ~'@{prefix}-slider';
+@slider-bar-height: var(--td-slider-bar-height, 8rpx);
 @block-color: #fff;
-@block-size: 16px;
-@dot-color: #0052d9;
+@slider-dot-size: var(--td-slider-dot-size, 40rpx);
+@slider-dot-color: var(--td-slider-dot-color, @gray-color-1);
+@slider-default-color: var(--td-slider-default-color, @gray-color-4);
+@slider-default-disabled-color: var(--td-slider-default-color, @gray-color-2);
+@slider-active-color: var(--td-slider-active-color, @brand-color);
+@slider-active-disabled-color: var(--td-slider-disabled-color, @primary-color-3);
+@slider-disabled-text-color: var(--td-slider-disabled-text-color, @font-gray-4);
 
-.@{prefix}-slider__container {
+.@{slider} {
   font-size: 14px;
-
-  .@{prefix}-slider--bottom {
-    padding-bottom: 40rpx;
-  }
-
-  .@{prefix}-slider__value,
-  .@{prefix}-slider__range-extreme,
-  .@{prefix}-slider__dot-value {
-    color: rgba(0, 0, 0, .9);
-  }
-
-  &.@{prefix}-is-disabled {
-    .@{prefix}-slider__value,
-    .@{prefix}-slider__range-extreme,
-    .@{prefix}-slider__dot-value,
-    .@{prefix}-slider__scale-desc {
-      color: rgba(0, 0, 0, .4);
-    }
-  }
-}
-
-.@{prefix}-slider__wrapper {
   display: flex;
   align-items: center;
-  height: 96rpx;
 
-  // 单点滑块样式
-  .@{prefix}-slider__main {
-    position: relative;
-    margin: 0 32rpx;
-    flex: 10;
-    padding: 16rpx 0;
-    background-clip: content-box;
-    height: @bar-height * 2;
-    border-radius: @bar-height;
-    display: inline-block;
-
-    .@{prefix}-slider__line {
-      position: absolute;
-      top: 8px;
-      height: @bar-height * 2;
-      border-radius: @bar-height;
-    }
-
-    .@{prefix}-slider__dot {
-      border-radius: 50%;
-      border: 4rpx solid @dot-color;
-      position: absolute;
-      background-color: @block-color;
-      width: @block-size;
-      height: @block-size;
-      top: @bar-height - @block-size - 2;
-      z-index: 2;
+  &--disabled {
+    .@{slider}__value,
+    .@{slider}__range-extreme,
+    .@{slider}__dot-value,
+    .@{slider}__scale-desc {
+      color: @slider-disabled-text-color;
     }
   }
 
-  .@{prefix}-slider__value {
-    display: inline-block;
+  &--top {
+    padding-top: 40rpx;
   }
 
-  .@{prefix}-slider__value--min {
+  &__line {
+    position: absolute;
+    top: 0;
+    height: @slider-bar-height;
+    border-radius: calc(@slider-bar-height / 2);
+    background-color: @slider-active-color;
+
+    &--disabled {
+      background-color: @slider-active-disabled-color;
+    }
+  }
+
+  &__dot {
+    border-radius: 50%;
+    border: 2rpx solid @slider-dot-color;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate3d(50%, -50%, 0);
+    z-index: 2;
+    background-color: @block-color;
+    width: @slider-dot-size;
+    height: @slider-dot-size;
+    box-shadow: @shadow-1;
+    box-sizing: border-box;
+
+    &--left {
+      left: 0;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    &-value {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      top: -52rpx;
+      text-align: center;
+      width: 48rpx;
+      height: 44rpx;
+      line-height: 44rpx;
+    }
+  }
+
+  &__value,
+  &__range-extreme,
+  &__dot-value {
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  &__value--min {
     margin-left: 32rpx;
   }
 
-  .@{prefix}-slider__value--max {
+  &__value--max {
     margin-right: 32rpx;
   }
 
-  .@{prefix}-slider__value--right {
+  &__value--right {
     flex-basis: 80rpx;
 
-    .@{prefix}-slider__value--text {
+    &__value--text {
       margin-right: 32rpx;
       text-align: right;
       display: block;
     }
   }
-}
 
-// 范围滑块样式
-.@{prefix}-slider__range-container {
-  display: flex;
-  padding: @block-size * 1.4 0 0 0;
+  &__bar {
+    margin: 16rpx 32rpx;
+    flex: 10;
+    background-clip: content-box;
+    height: @slider-bar-height;
+    border-radius: calc(@slider-bar-height / 2);
+    position: relative;
+    background-color: @slider-default-color;
 
-  .@{prefix}-slider__range-extreme {
-    display: inline-block;
+    &--disabled {
+      background-color: @slider-default-disabled-color;
+    }
   }
 
-  .@{prefix}-slider__range-extreme--min {
+  &__range-extreme--min {
     margin-left: 32rpx;
     text-align: left;
   }
 
-  .@{prefix}-slider__range-extreme--max {
+  &__range-extreme--max {
     margin-right: 32rpx;
     text-align: right;
   }
 
-  .@{prefix}-slider__bar {
-    margin: 0 32rpx;
-    flex: 10;
-    padding: 16rpx 0;
-    background-clip: content-box;
-    height: @bar-height * 2;
-    border-radius: @bar-height;
-    position: relative;
-    display: inline-block;
-
-    .@{prefix}-slider__dot {
+  // 刻度样式
+  &__scale {
+    &-item {
+      background-color: @slider-default-color;
+      width: @slider-bar-height;
+      height: 16rpx;
+      width: 16rpx;
       border-radius: 50%;
-      border: 4rpx solid @dot-color;
       position: absolute;
-      z-index: 2;
-      background-color: @block-color;
-      width: @block-size;
-      height: @block-size;
-      top: @bar-height - @block-size + 16;
+      top: 50%;
+      margin-top: -8rpx;
+      z-index: 1;
 
-      &--left {
-        left: 0;
+      &--active {
+        background-color: @slider-active-color;
       }
 
-      &--right {
-        right: 0;
+      &--disabled {
+        background-color: @slider-default-disabled-color;
       }
 
-      &-value {
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -52rpx;
-        text-align: center;
-        width: 48rpx;
-        height: 44rpx;
-        line-height: 44rpx;
+      &--active&--disabled {
+        background-color: @slider-active-disabled-color;
       }
     }
 
-    .@{prefix}-slider__line {
+    &-desc {
       position: absolute;
-      top: 16rpx;
-      height: 5rpx;
+      left: 50%;
+      color: rgba(0, 0, 0, 0.9);
+      transform: translateX(-50%);
+      bottom: 32rpx;
     }
-  }
-}
-
-// 刻度样式
-.@{prefix}-slider__scale-item {
-  background-color: #0052d9;
-  width: @bar-height * 2;
-  height: 14rpx;
-  position: absolute;
-  top: 6rpx;
-  z-index: 1;
-
-  .@{prefix}-slider__scale-desc {
-    position: absolute;
-    left: 50%;
-    color: rgba(0, 0, 0, .9);
-    transform: translateX(-50%);
-    bottom: 20rpx;
   }
 }

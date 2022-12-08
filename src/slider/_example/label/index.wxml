@@ -1,1 +1,5 @@
-<t-slider value="{{value}}" label="${value}" colors="{{colors}}" bind:change="handleChange"></t-slider>
+<t-slider value="{{value}}" label="${value}" bind:change="handleChange"></t-slider>
+
+<view class="demo-desc">带数值双游标滑块</view>
+
+<t-slider show-extreme-value label="${value}" default-value="{{ [40, 60] }}" range />

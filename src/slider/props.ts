@@ -9,7 +9,7 @@ const props: TdSliderProps = {
   /** 颜色，[已选择, 未选择] */
   colors: {
     type: Array,
-    value: ['#0052D9', 'rgba(220, 220, 220, 1)'],
+    value: [],
   },
   /** 自定义组件样式 */
   customStyle: {
@@ -24,7 +24,7 @@ const props: TdSliderProps = {
   /** 禁用状态滑动条的颜色，[已选, 未选] */
   disabledColor: {
     type: Array,
-    value: ['#bbd3fb', '#dcdcdc'],
+    value: [],
   },
   /** 组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名 */
   externalClasses: {
