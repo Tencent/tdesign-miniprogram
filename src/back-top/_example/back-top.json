@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Back top",
+  "navigationBarTitleText": "BackTop",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
