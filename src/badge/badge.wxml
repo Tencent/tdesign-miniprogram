@@ -3,8 +3,8 @@
 <view
   style="{{ customStyle }}"
   class="{{this.getBadgeOuterClass({shape})}} {{prefix}}-class"
-  aria-labelledby="labelledby"
-  aria-describedby="describedby"
+  aria-labelledby="{{ ariaLabelledby || 'labelledby' }}"
+  aria-describedby="{{ ariaDescribedby || 'describedby' }}"
   aria-role="{{ ariaRole || 'option'}}"
 >
   <view id="labelledby" class="{{classPrefix}}__content {{prefix}}-class-content">
