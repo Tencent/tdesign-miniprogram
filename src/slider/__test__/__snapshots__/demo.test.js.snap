@@ -8,6 +8,72 @@ exports[`Slider Slider base demo works fine 1`] = `
 </base>
 `;
 
+exports[`Slider Slider capsule demo works fine 1`] = `
+<capsule>
+  <t-slider
+    defaultValue="{{30}}"
+    theme="capsule"
+  />
+  <t-slider
+    defaultValue="{{
+      Array [
+        40,
+        60,
+      ]
+    }}"
+    range="{{true}}"
+    theme="capsule"
+  />
+  <t-slider
+    defaultValue="{{
+      Array [
+        40,
+        60,
+      ]
+    }}"
+    label="\${value}"
+    range="{{true}}"
+    theme="capsule"
+  />
+  <t-slider
+    defaultValue="{{60}}"
+    marks="{{
+      Object {
+        "0": "0",
+        "100": "100",
+        "20": "20",
+        "40": "40",
+        "60": "60",
+        "80": "80",
+      }
+    }}"
+    step="{{20}}"
+    theme="capsule"
+  />
+  <t-slider
+    defaultValue="{{
+      Array [
+        20,
+        80,
+      ]
+    }}"
+    marks="{{
+      Object {
+        "0": "0",
+        "100": "100",
+        "20": "20",
+        "40": "40",
+        "60": "60",
+        "80": "80",
+      }
+    }}"
+    range="{{true}}"
+    step="{{20}}"
+    theme="capsule"
+  />
+</capsule>
+`;
+
 exports[`Slider Slider disabled demo works fine 1`] = `
 <disabled>
   <t-slider

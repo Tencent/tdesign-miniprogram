@@ -194,20 +194,18 @@ export default class Slider extends SuperComponent {
 
   getSingleChangeValue(e: WechatMiniprogram.TouchEvent) {
     const { min, max } = this.properties;
-    const { initialLeft, maxRange, blockSize } = this.data;
+    const { initialLeft, maxRange } = this.data;
     const [touch] = e.changedTouches;
     const { pageX } = touch;
-    const halfBlock = Number(blockSize) / 2;
-
-    const currentLeft = pageX - initialLeft - halfBlock;
+    const currentLeft = pageX - initialLeft;
     let value = 0;
 
     if (currentLeft <= 0) {
       value = Number(min);
-    } else if (currentLeft >= maxRange + Number(blockSize)) {
+    } else if (currentLeft >= maxRange) {
       value = Number(max);
     } else {
-      value = Math.round((currentLeft / (maxRange + Number(blockSize))) * (Number(max) - Number(min)) + Number(min));
+      value = Math.round((currentLeft / maxRange) * (Number(max) - Number(min)) + Number(min));
     }
     return this.stepValue(value);
   }
@@ -221,12 +219,11 @@ export default class Slider extends SuperComponent {
    * @memberof Slider
    */
   convertPosToValue(posValue: number, dir: 0 | 1): number {
-    const { maxRange, blockSize } = this.data;
+    const { maxRange } = this.data;
     const { max, min } = this.properties;
-    const fullLineWidth = maxRange + blockSize;
     return dir === 0
-      ? (posValue / fullLineWidth) * (Number(max) - Number(min)) + Number(min)
-      : Number(max) - (posValue / fullLineWidth) * (Number(max) - Number(min));
+      ? (posValue / maxRange) * (Number(max) - Number(min)) + Number(min)
+      : Number(max) - (posValue / maxRange) * (Number(max) - Number(min));
   }
 
   // 点击范围选择滑动条的事件
@@ -239,7 +236,7 @@ export default class Slider extends SuperComponent {
     const { pageX } = touch;
     const halfBlock = Number(blockSize) / 2;
 
-    const currentLeft = pageX - initialLeft - halfBlock;
+    const currentLeft = pageX - initialLeft;
     if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
 
     this.gettingBoundingClientRect('#leftDot').then((leftDot: boundingClientRect) => {
@@ -252,11 +249,11 @@ export default class Slider extends SuperComponent {
         const isMoveLeft = distanceLeft < distanceRight;
         if (isMoveLeft) {
           // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
-          const left = pageX - initialLeft - halfBlock;
+          const left = pageX - initialLeft;
           const leftValue = this.convertPosToValue(left, 0);
           this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
         } else {
-          const right = -(pageX - initialRight) - halfBlock;
+          const right = -(pageX - initialRight);
           const rightValue = this.convertPosToValue(right, 1);
 
           this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
@@ -267,14 +264,12 @@ export default class Slider extends SuperComponent {
 
   onTouchMoveLeft(e: WechatMiniprogram.TouchEvent) {
     const { disabled } = this.properties;
-    const { initialLeft, blockSize, _value } = this.data;
+    const { initialLeft, _value } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
     const { pageX } = touch;
-
-    const halfBlock = Number(blockSize) / 2;
-    const currentLeft = pageX - initialLeft - halfBlock;
+    const currentLeft = pageX - initialLeft;
 
     const newData = [...(_value as number[])];
     const leftValue = this.convertPosToValue(currentLeft, 0);
@@ -286,14 +281,13 @@ export default class Slider extends SuperComponent {
 
   onTouchMoveRight(e: WechatMiniprogram.TouchEvent) {
     const { disabled } = this.properties;
-    const { initialRight, blockSize, _value } = this.data;
+    const { initialRight, _value } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
     const { pageX } = touch;
 
-    const halfBlock = Number(blockSize) / 2;
-    const currentRight = -(pageX - initialRight) - halfBlock;
+    const currentRight = -(pageX - initialRight);
 
     const newData = [...(_value as number[])];
     const rightValue = this.convertPosToValue(currentRight, 1);
