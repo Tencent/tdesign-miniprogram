@@ -20,40 +20,35 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/slider.png" width="375px" height="50%">
 
-### 类型
+### 组件类型
 
-基础滑动选择器
+单游标滑块
 
 {{ base }}
+
+双游标滑块
+
+{{ range }}
 
 带数值滑动选择器
 
 {{ label }}
 
-起始非零滑动选择器
-
-{{ max }}
-
 带刻度滑动选择器
 
 {{ step }}
 
-区间滑动选择器
+### 组件状态
 
-{{ range }}
-
-
-### 状态
-
-基础滑动选择器
+滑块禁用状态
 
 {{ disabled }}
 
-### 规格
+#### 特殊样式
 
-有标题滑动选择器
+胶囊型滑块
 
-{{ title }}
+{{ capsule }}
 
 ## API
 ### Slider Props
