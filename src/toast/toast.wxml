@@ -7,6 +7,7 @@
 >
   <view class="{{classPrefix}}__content {{classPrefix}}__content--{{direction}}">
     <t-icon
+      aria-hidden="true"
       wx:if="{{typeMapIcon!=='loading' || icon}}"
       name="{{typeMapIcon || icon}}"
       class="{{classPrefix}}__icon {{classPrefix}}__icon--{{direction}}"
@@ -20,7 +21,10 @@
       layout="vertical"
     />
     <slot name="icon" />
-    <view class="{{classPrefix}}__text {{typeMapIcon || icon ? classPrefix + '__text--' + direction : ''}}"
+    <view
+      aria-live="assertive"
+      aria-atomic="true"
+      class="{{classPrefix}}__text {{typeMapIcon || icon ? classPrefix + '__text--' + direction : ''}}"
       >{{message}}</view
     >
     <slot name="message" />
