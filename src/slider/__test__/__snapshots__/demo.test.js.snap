@@ -3,13 +3,7 @@
 exports[`Slider Slider base demo works fine 1`] = `
 <base>
   <t-slider
-    colors="{{
-      Array [
-        "#0052D9",
-        "#E7E7E7",
-      ]
-    }}"
-    defaultValue="60"
+    defaultValue="{{23}}"
   />
 </base>
 `;
@@ -17,20 +11,41 @@ exports[`Slider Slider base demo works fine 1`] = `
 exports[`Slider Slider disabled demo works fine 1`] = `
 <disabled>
   <t-slider
-    colors="{{
-      Array [
-        "#0052D9",
-        "#E7E7E7",
-      ]
-    }}"
     disabled="{{true}}"
-    disabledColor="{{
+    value="{{35}}"
+  />
+  <t-slider
+    disabled="{{true}}"
+    label="\${value}"
+    range="{{true}}"
+    showExtremeValue="{{true}}"
+    value="{{
       Array [
-        "#BBD3FB",
-        "#E7E7E7",
+        40,
+        60,
       ]
     }}"
-    value="60"
+  />
+  <t-slider
+    disabled="{{true}}"
+    marks="{{
+      Object {
+        "0": "0",
+        "100": "100",
+        "20": "20",
+        "40": "40",
+        "60": "60",
+        "80": "80",
+      }
+    }}"
+    range="{{true}}"
+    step="{{20}}"
+    value="{{
+      Array [
+        20,
+        60,
+      ]
+    }}"
   />
 </disabled>
 `;
@@ -38,15 +53,25 @@ exports[`Slider Slider disabled demo works fine 1`] = `
 exports[`Slider Slider label demo works fine 1`] = `
 <wx-label>
   <t-slider
-    colors="{{
+    label="\${value}"
+    value="{{35}}"
+    bind:change="handleChange"
+  />
+  <wx-view
+    class="demo-desc"
+  >
+    带数值双游标滑块
+  </wx-view>
+  <t-slider
+    defaultValue="{{
       Array [
-        "#0052D9",
-        "#E7E7E7",
+        40,
+        60,
       ]
     }}"
     label="\${value}"
-    value="{{50}}"
-    bind:change="handleChange"
+    range="{{true}}"
+    showExtremeValue="{{true}}"
   />
 </wx-label>
 `;
@@ -71,21 +96,13 @@ exports[`Slider Slider max demo works fine 1`] = `
 exports[`Slider Slider range demo works fine 1`] = `
 <range>
   <t-slider
-    colors="{{
-      Array [
-        "#0052D9",
-        "#E7E7E7",
-      ]
-    }}"
     defaultValue="{{
       Array [
-        30,
-        70,
+        35,
+        65,
       ]
     }}"
-    label="{{true}}"
     range="{{true}}"
-    showExtremeValue="{{true}}"
   />
 </range>
 `;
@@ -93,16 +110,44 @@ exports[`Slider Slider range demo works fine 1`] = `
 exports[`Slider Slider step demo works fine 1`] = `
 <step>
   <t-slider
-    defaultValue="{{50}}"
+    defaultValue="{{60}}"
     marks="{{
       Object {
-        "0": "小",
-        "100": "大",
-        "50": "中",
+        "0": "0",
+        "100": "100",
+        "20": "20",
+        "40": "40",
+        "60": "60",
+        "80": "80",
       }
     }}"
-    step="{{50}}"
+    step="{{20}}"
     bind:change="handleChange"
+  />
+  <wx-view
+    class="demo-desc"
+  >
+    带刻度双游标滑块
+  </wx-view>
+  <t-slider
+    defaultValue="{{
+      Array [
+        20,
+        60,
+      ]
+    }}"
+    marks="{{
+      Object {
+        "0": "0",
+        "100": "100",
+        "20": "20",
+        "40": "40",
+        "60": "60",
+        "80": "80",
+      }
+    }}"
+    range="{{true}}"
+    step="{{20}}"
   />
 </step>
 `;

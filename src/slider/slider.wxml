@@ -22,7 +22,9 @@
           wx:key="index"
           style="left:{{item}}%; transform: translateX({{- item}}%); {{t.getColor(disabled, _value >= item, disabledColor, colors)}}"
         >
-          <view wx:if="{{scaleTextArray.length}}" class="{{classPrefix}}__scale-desc"> {{scaleTextArray[index]}} </view>
+          <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}}}">
+            {{scaleTextArray[index]}}
+          </view>
         </view>
       </block>
       <view
@@ -66,7 +68,9 @@
           wx:key="index"
           style="left: {{item}}%;transform: translateX({{- item}}%); {{t.getColor(disabled, (dotTopValue[1] >= item && item >= dotTopValue[0]), disabledColor, colors)}}"
         >
-          <view wx:if="{{scaleTextArray.length}}" class="{{classPrefix}}__scale-desc">{{scaleTextArray[index]}}</view>
+          <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}"
+            >{{scaleTextArray[index]}}</view
+          >
         </view>
       </block>
       <view

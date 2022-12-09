@@ -3,6 +3,7 @@ import config from '../common/config';
 import { trimSingleValue, trimValue } from './tool';
 import props from './props';
 import type { SliderValue } from './type';
+import dom from '../behaviors/dom';
 
 const { prefix } = config;
 const name = `${prefix}-slider`;
@@ -42,6 +43,8 @@ export default class Slider extends SuperComponent {
 
   properties = props;
 
+  behaviors = [dom];
+
   controlledProps = [
     {
       key: 'value',
@@ -76,12 +79,11 @@ export default class Slider extends SuperComponent {
     },
     _value(newValue: SliderValue) {
       const { min, max, range } = this.properties;
-      const { maxRange, blockSize } = this.data;
-      const fullLineWidth = maxRange + Number(blockSize);
+      const { maxRange } = this.data;
 
       if (range) {
-        const left = (fullLineWidth * (newValue[0] - Number(min))) / (Number(max) - Number(min));
-        const right = (fullLineWidth * (Number(max) - newValue[1])) / (Number(max) - Number(min));
+        const left = (maxRange * (newValue[0] - Number(min))) / (Number(max) - Number(min));
+        const right = (maxRange * (Number(max) - newValue[1])) / (Number(max) - Number(min));
         // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
         this.setLineStyle(left, right);
       } else {
@@ -93,11 +95,13 @@ export default class Slider extends SuperComponent {
     },
   };
 
-  attached() {
-    const { value } = this.properties;
-    if (!value) this.handlePropsChange(0);
-    this.getInitialStyle();
-  }
+  lifetimes = {
+    attached() {
+      const { value } = this.properties;
+      if (!value) this.handlePropsChange(0);
+      this.getInitialStyle();
+    },
+  };
 
   triggerValue(value?: SliderValue) {
     this._trigger('change', {
@@ -146,36 +150,26 @@ export default class Slider extends SuperComponent {
 
   setSingleBarWidth(value: number) {
     const { max, min } = this.properties;
-    const width = `${((Number(value) - Number(min)) * 100) / (Number(max) - Number(min))}%`;
-    this.setData({
-      lineBarWidth: width,
-    });
-  }
+    const { maxRange, blockSize } = this.data;
+    const percentage = (Number(value) - Number(min)) / (Number(max) - Number(min));
+    const width = percentage * maxRange + blockSize / 2;
 
-  getSelectorQuery(id: string): Promise<boundingClientRect> {
-    return new Promise((resolve, reject) => {
-      wx.createSelectorQuery()
-        .in(this as WechatMiniprogram.Component.TrivialInstance)
-        .select(`#${id}`)
-        .boundingClientRect((rect) => {
-          if (rect) {
-            resolve(rect);
-          } else {
-            reject(rect);
-          }
-        })
-        .exec();
+    this.setData({
+      lineBarWidth: `${width}px`,
     });
   }
 
   async getInitialStyle() {
-    const line: boundingClientRect = await this.getSelectorQuery('sliderLine');
+    const line: boundingClientRect = await this.gettingBoundingClientRect('#sliderLine');
     const { blockSize } = this.data;
+    const { theme } = this.properties;
     const halfBlock = Number(blockSize) / 2;
+    const margin = (theme as any) === 'capsule' ? 6 : 0;
+
     this.setData({
-      maxRange: line.right - line.left - Number(blockSize),
-      initialLeft: line.left - halfBlock,
-      initialRight: line.right + halfBlock,
+      maxRange: line.right - line.left - Number(blockSize) - margin,
+      initialLeft: line.left + halfBlock,
+      initialRight: line.right - halfBlock,
     });
   }
 
@@ -248,8 +242,8 @@ export default class Slider extends SuperComponent {
     const currentLeft = pageX - initialLeft - halfBlock;
     if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
 
-    this.getSelectorQuery('leftDot').then((leftDot: boundingClientRect) => {
-      this.getSelectorQuery('rightDot').then((rightDot: boundingClientRect) => {
+    this.gettingBoundingClientRect('#leftDot').then((leftDot: boundingClientRect) => {
+      this.gettingBoundingClientRect('#rightDot').then((rightDot: boundingClientRect) => {
         // 点击处-halfblock 与 leftDot左侧的距离（绝对值）
         const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
         // 点击处-halfblock 与 rightDot左侧的距离（绝对值）
@@ -311,8 +305,6 @@ export default class Slider extends SuperComponent {
   setLineStyle(left: number, right: number) {
     const { blockSize, maxRange } = this.data;
     const halfBlock = Number(blockSize) / 2;
-    const activeLeft = left - halfBlock;
-    const activeRight = right - halfBlock;
     const [a, b] = this.data._value as any;
     const cut = (v) => parseInt(v, 10);
 
@@ -320,15 +312,15 @@ export default class Slider extends SuperComponent {
       dotTopValue: [a, b],
     });
 
-    if (activeLeft + activeRight <= maxRange) {
+    if (left + right <= maxRange) {
       this.setData({
-        lineLeft: cut(activeLeft + halfBlock),
-        lineRight: cut(activeRight + halfBlock),
+        lineLeft: cut(left + halfBlock),
+        lineRight: cut(right + halfBlock),
       });
     } else {
       this.setData({
-        lineLeft: cut(maxRange + halfBlock - activeRight),
-        lineRight: cut(maxRange - activeLeft + halfBlock * 1.5),
+        lineLeft: cut(maxRange + halfBlock - right),
+        lineRight: cut(maxRange - left + halfBlock * 1.5),
       });
     }
   }
