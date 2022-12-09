@@ -1,23 +1,27 @@
 <view class="demo">
   <view class="demo-title">Progress 进度条</view>
   <view class="demo-desc">在导航栏下方，用于给用户显示提示消息</view>
-  <t-demo title="01 类型" desc="基础进度条">
-    <base />
+  <t-demo title="01 组件类型">
+    <t-demo desc="基础进度条">
+      <base />
+    </t-demo>
+    <t-demo desc="过度样式">
+      <transition />
+    </t-demo>
+    <t-demo desc="自定义颜色/圆角">
+      <custom />
+    </t-demo>
   </t-demo>
 
-  <t-demo title="02 状态" desc="进度条状态">
-    <status />
-  </t-demo>
-
-  <t-demo desc="过度样式">
-    <transition />
-  </t-demo>
-
-  <t-demo desc="自定义颜色/圆角">
-    <custom />
-  </t-demo>
-
-  <t-demo title="03 规格" desc="带数值/无数值进度条">
-    <size />
+  <t-demo title="02 组件状态">
+    <t-demo desc="线性进度条">
+      <line />
+    </t-demo>
+    <t-demo desc="百分比内显进度条">
+      <plump />
+    </t-demo>
+    <t-demo desc="环形进度条">
+      <circle />
+    </t-demo>
   </t-demo>
 </view>

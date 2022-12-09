@@ -1,114 +1,202 @@
 @import '../common/style/index.less';
 
-// 颜色
-@progress-default-track-color: #e7e7e7;
-@progress-default: #0052d9;
-@progress-success: #078d5c;
-@progress-error: #e34d59;
-@progress-warning: #ed7b2f;
-@progress-inner-bg-color-active: #fff;
-// 尺寸
-@progress-stroke-width: 8rpx;
-@progress-stroke-width-8: @progress-stroke-width * 8;
+@progress-line-stroke-width: 12rpx; // line 进度条线宽
+@progress-stroke-plump-width: 40rpx; // plump 进度条线宽
+@progress-stroke-circle-width: 12rpx; // circle 进度条线宽
+@progress-line-icon-font-size: calc(@font-size-base + 2px);
+@progress-circle-icon-font-size: 96rpx;
+@progress-plump-label-font-size: @font-size-s;
+@progress-circle-width: 224rpx;
+@progress-circle-label-font-size: 40rpx;
+@progress-circle-label-line-height: 56rpx;
+@progress-circle-label-font-weight: 700;
+@progress-info-spacer: @spacer; // 间距
+@progress-inner-transition: all @anim-duration-base @anim-time-fn-easing;
 
-// 字体
-@progress-font-size: 32rpx;
-@progress-text-color: rgba(0, 0, 0, 0.9);
-@progress-text-height: 48rpx;
+@progress-track-bg-color: var(--td-progress-track-bg-color, @bg-color-component); // 进度条背景色值(未完成部分进度)
+@progress-inner-bg-color: var(--td-progress-inner-bg-color, @brand-color); // 进度条已完成进度色值(默认状态)
+@progress-inner-bg-color-success: var(
+  --td-progress-inner-bg-color-success,
+  @success-color
+); // 进度条已完成进度色值(success 状态)
+@progress-inner-bg-color-error: var(
+  --td-progress-inner-bg-color-error,
+  @error-color
+); // 进度条已完成进度色值(error 状态)
+@progress-inner-bg-color-warning: var(
+  --td-progress-inner-bg-color-warning,
+  @warning-color
+); // 进度条已完成进度色值(warning 状态)
+@progress-inner-bg-color-active: var(
+  --td-progress-inner-bg-color-active,
+  @bg-color-container
+); // 进度条已完成进度色值(active 状态)
+@progress-info-dark-color: var(
+  --td-progress-info-dark-color,
+  @text-color-primary
+); // 进度条深色label字体颜色(在进度条外或未完成进度灰色色块里显示的色值)
+@progress-info-light-color: var(
+  --td-progress-info-light-color,
+  @font-white-1
+); // 进度条浅色label字体颜色(在进度条色块内显示的色值)
+@progress-circle-inner-bg-color: var(--td-progress-circle-inner-bg-color, @white-color-1); // 环境进度条内圆背景色
 
-// 间距
-@progress-info-spacer: 16rpx;
-@progress-inner-border-radius: 100rpx;
+@progress: ~'@{prefix}-progress';
 
-.@{prefix}-progress {
+// 进度条基本样式
+.@{progress} {
   &__inner {
-    display: flex;
-    align-items: center;
-    min-height: @progress-stroke-width-8;
+    position: relative;
+    height: 100%;
+    background: @progress-inner-bg-color;
+    border-radius: @radius-round;
+    transition: @progress-inner-transition;
   }
 
   &__bar {
-    position: relative;
-    flex: 1;
-    height: @progress-stroke-width;
-    background: @progress-default-track-color;
-
-    &-percent {
-      position: absolute;
-      top: 0;
-      height: 100%;
-      background: @progress-default;
-      transition: all 0.3s ease-out;
-      border-radius: inherit;
-    }
+    width: 100%;
+    height: @progress-line-stroke-width;
+    overflow: hidden;
+    background: @progress-track-bg-color;
+    border-radius: @radius-round;
   }
 
-  &__label {
+  &__info {
+    margin-left: @progress-info-spacer;
+    color: @progress-info-dark-color;
+    white-space: nowrap;
+    display: inline-flex;
+  }
+}
+
+//标准进度条
+.@{progress}--thin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .@{progress}__icon {
+    font-size: @progress-line-icon-font-size;
+  }
+}
+
+//条形进度条 百分比内置
+.@{progress}--plump {
+  height: @progress-stroke-plump-width;
+  border-radius: calc(@progress-stroke-plump-width / 2);
+  display: flex;
+  align-items: center;
+
+  .@{progress}__info {
+    font-size: @progress-plump-label-font-size;
+  }
+}
+
+.@{progress}--over-ten {
+  .@{progress}__info {
+    position: absolute;
+    top: 50%;
+    right: @progress-info-spacer;
+    color: @progress-info-light-color;
+    transform: translateY(-50%);
+  }
+}
+
+.@{progress}--under-ten {
+  .@{progress}__info,
+  .@{progress}__inner {
     display: inline-block;
-    width: 84rpx;
-    text-align: right;
-    margin-left: 32rpx;
-    font-size: @progress-font-size;
-    color: @progress-text-color;
-    line-height: @progress-text-height;
+  }
+
+  .@{progress}__info {
+    vertical-align: top;
+  }
+}
+
+// 环形
+.@{progress}__canvas--circle {
+  position: relative;
+  width: @progress-circle-width;
+  height: @progress-circle-width;
+  border-radius: @radius-circle;
+
+  .@{progress}__canvas--inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - @progress-stroke-circle-width*2);
+    height: calc(100% - @progress-stroke-circle-width*2);
+    border-radius: @radius-circle;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: @progress-circle-inner-bg-color;
+  }
+
+  .@{progress}__info {
+    margin: 0;
+    font-size: @progress-circle-label-font-size;
+    font-weight: @progress-circle-label-font-weight;
+    line-height: @progress-circle-label-line-height;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .@{progress}__icon {
+    font-size: @progress-circle-icon-font-size;
   }
 }
 
 //进度条状态
-.@{prefix}-progress--status--active {
-  .@{prefix}-progress {
-    &__bar {
-      &-percent {
-        &::before {
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
-          z-index: 1;
-          content: '';
-          animation: progress-active-animation 2s cubic-bezier(0.23, 0.99, 0.86, 0.2) infinite;
-          background: @progress-inner-bg-color-active;
-          opacity: 0.2;
-        }
-      }
+.@{progress}--status--active {
+  .@{progress}__inner {
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      content: '';
+      animation: progress-active-animation 2s cubic-bezier(0.23, 0.99, 0.86, 0.2) infinite;
+      background: @progress-inner-bg-color-active;
+      opacity: 0.2;
     }
   }
 }
 
-.@{prefix}-progress--status--success {
-  .@{prefix}-progress {
-    &__bar {
-      &-percent {
-        background: @progress-success;
-      }
-    }
+.@{progress}--status--success {
+  .@{progress}__inner {
+    background: @progress-inner-bg-color-success;
+  }
+
+  .@{progress}__icon {
+    color: @success-color;
   }
 }
 
-.@{prefix}-progress--status--warning {
-  .@{prefix}-progress {
-    &__bar {
-      &-percent {
-        background: @progress-warning;
-      }
-    }
-    &__label {
-      color: @progress-warning;
-    }
+.@{progress}--status--warning {
+  .@{progress}__inner {
+    background: @progress-inner-bg-color-warning;
+  }
+
+  .@{progress}__icon {
+    color: @warning-color;
   }
 }
 
-.@{prefix}-progress--status--error {
-  .@{prefix}-progress {
-    &__bar {
-      &-percent {
-        background: @progress-error;
-      }
-    }
-    &__label {
-      color: @progress-error;
-    }
+.@{progress}--status--error {
+  .@{progress}__inner {
+    background: @progress-inner-bg-color-error;
+  }
+
+  .@{progress}__icon {
+    color: @error-color;
   }
 }
 
