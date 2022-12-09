@@ -217,25 +217,3 @@ exports[`Slider Slider step demo works fine 1`] = `
   />
 </step>
 `;
-
-exports[`Slider Slider title demo works fine 1`] = `
-<title>
-  <wx-view
-    class="label"
-  >
-    <wx-view>
-      选择器标题
-    </wx-view>
-    <t-slider
-      class="label-class"
-      colors="{{
-        Array [
-          "#0052D9",
-          "#E7E7E7",
-        ]
-      }}"
-      defaultValue="50"
-    />
-  </wx-view>
-</title>
-`;
