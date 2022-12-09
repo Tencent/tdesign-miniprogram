@@ -1,3 +1,0 @@
-<t-cell title="标题文字（单位）">
-  <t-stepper defaultValue="0" step="2" slot="right-icon" />
-</t-cell>

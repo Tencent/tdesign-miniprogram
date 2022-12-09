@@ -1,5 +1,0 @@
-<view class="pure-stepper-container">
-  <t-stepper disabled value="3" theme="grey" inputWidth="{{72}}" />
-  <t-stepper defaultValue="0" max="99" theme="grey" inputWidth="{{72}}" />
-  <t-stepper defaultValue="100" theme="grey" inputWidth="{{72}}" />
-</view>

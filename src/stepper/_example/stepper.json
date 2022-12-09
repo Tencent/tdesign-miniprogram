@@ -2,10 +2,9 @@
   "navigationBarTitleText": "Stepper 步进器",
   "usingComponents": {
     "base": "./base",
-    "step": "./step",
-    "input-width": "./input-width",
-    "other": "./other",
+    "min-max": "./min-max",
     "status": "./status",
-    "min-max": "./min-max"
+    "theme": "./theme",
+    "size": "./size"
   }
 }
