@@ -3,8 +3,8 @@
 <view
   style="{{ customStyle }}"
   class="{{this.getBadgeOuterClass({shape})}} {{prefix}}-class"
-  aria-labelledby="{{ ariaLabelledby || 'labelledby' }}"
-  aria-describedby="{{ ariaDescribedby || 'describedby' }}"
+  aria-labelledby="labelledby"
+  aria-describedby="describedby"
   aria-role="{{ ariaRole || 'option'}}"
 >
   <view id="labelledby" class="{{classPrefix}}__content {{prefix}}-class-content">
@@ -12,12 +12,12 @@
     <text wx:else class="{{classPrefix}}__content-text">{{content}}</text>
   </view>
   <view
-    aria-label="{{ this.getBadgeAriaLabel({dot, count, maxCount}) }}"
+    aria-label="{{ ariaLabel || this.getBadgeAriaLabel({dot, count, maxCount}) }}"
     id="describedby"
     wx:if="{{count !== 'slot' && this.isShowBadge({dot,count,showZero})}}"
     class="{{this.getBadgeInnerClass({dot, size, shape, count})}} {{prefix}}-has-count {{prefix}}-class-count"
     style="{{this.getBadgeStyles({color, offset})}}"
     >{{ this.getBadgeValue({dot, count, maxCount}) }}
   </view>
-  <slot id="describedby" name="count" wx:if="{{count === 'slot' || !count}}" />
+  <slot name="count" wx:if="{{count === 'slot' || !count}}" />
 </view>
