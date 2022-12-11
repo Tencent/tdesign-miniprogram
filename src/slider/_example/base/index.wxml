@@ -1,1 +1,1 @@
-<t-slider defaultValue="60" colors="{{colors}}" />
+<t-slider default-value="{{23}}" />

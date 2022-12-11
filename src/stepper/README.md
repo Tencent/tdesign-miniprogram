@@ -18,33 +18,31 @@ isComponent: true
 
 ## 代码演示
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/stepper.png" width="375px" height="50%">
+### 组件类型
 
-### 基本步进器
+基础步进器
 
 {{ base }}
 
-### 带单位的步进器
+### 组件状态
 
-{{ step }}
-
-### 纯步进器
-
-{{ input-width }}
-
-### 步进器状态
-
-#### 禁用
-
-{{ status }}
-
-#### 最小值/最大值
+最大最小状态
 
 {{ min-max }}
 
-#### 其他
+禁用状态
 
-{{ other }}
+{{ status }}
+
+### 组件样式
+
+步进器样式
+
+{{ theme }}
+
+步进器尺寸
+
+{{ size }}
 
 
 ## API
@@ -56,11 +54,12 @@ custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disable-input | Boolean | false | 禁用输入框 | N
 disabled | Boolean | false | 禁用全部操作 | N
 external-classes | Array | - | 组件类名，分别用于表示组件外层元素、输入框、右侧递增号、左侧递减号等元素类名。`['t-class', 't-class-input', 't-class-add', 't-class-minus']` | N
-input-width | Number | - | 输入框宽度 | N
+input-width | Number | - | 输入框宽度，默认单位 `px` | N
 max | Number | 100 | 最大值 | N
 min | Number | 0 | 最小值 | N
 step | Number | 1 | 步长 | N
-theme | String | normal | 组件风格。可选项：normal/grey | N
+size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum` | N
+theme | String | normal | 组件风格。可选项：normal/filled/outline | N
 value | String / Number | 0 | 值 | N
 default-value | String / Number | undefined | 值。非受控属性 | N
 

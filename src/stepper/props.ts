@@ -44,6 +44,11 @@ const props: TdStepperProps = {
     type: Number,
     value: 1,
   },
+  /** 组件尺寸 */
+  size: {
+    type: String,
+    value: 'medium',
+  },
   /** 组件风格 */
   theme: {
     type: String,

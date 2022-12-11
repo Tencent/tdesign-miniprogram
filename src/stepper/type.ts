@@ -68,12 +68,20 @@ export interface TdStepperProps {
     value?: number;
   };
   /**
+   * 组件尺寸
+   * @default medium
+   */
+  size?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件风格
    * @default normal
    */
   theme?: {
     type: StringConstructor;
-    value?: 'normal' | 'grey';
+    value?: 'normal' | 'filled' | 'outline';
   };
   /**
    * 值
