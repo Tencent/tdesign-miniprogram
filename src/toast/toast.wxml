@@ -4,12 +4,14 @@
   class="{{_.cls(classPrefix, [direction, theme, ['with-text', message]])}} {{prefix}}-class {{transitionClass}}"
   style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}} {{ customStyle }}"
   bind:transitionend="onTransitionEnd"
+  aria-role="button"
 >
   <view class="{{classPrefix}}__content {{classPrefix}}__content--{{direction}}">
     <t-icon
       wx:if="{{typeMapIcon!=='loading' || icon}}"
       name="{{typeMapIcon || icon}}"
       class="{{classPrefix}}__icon {{classPrefix}}__icon--{{direction}}"
+      aria-hidden
     />
     <t-loading
       wx:if="{{typeMapIcon === 'loading'}}"
@@ -18,6 +20,7 @@
       loading
       inherit-color
       layout="vertical"
+      aria-hidden
     />
     <slot name="icon" />
     <view class="{{classPrefix}}__text {{typeMapIcon || icon ? classPrefix + '__text--' + direction : ''}}"
