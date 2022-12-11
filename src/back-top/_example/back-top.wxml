@@ -25,6 +25,6 @@
     </view>
   </t-demo>
 
-  <base wx:if="{{round && showBackTop}}" />
-  <half-round wx:if="{{halfRound && showBackTop}}" />
+  <base wx:if="{{type == 'round' && showBackTop}}" />
+  <half-round wx:if="{{type == 'half-round' && showBackTop}}" />
 </view>

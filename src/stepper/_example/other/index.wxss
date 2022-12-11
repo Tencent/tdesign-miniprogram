@@ -1,6 +1,0 @@
-.pure-stepper-container {
-  padding: 24rpx 32rpx;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-}

@@ -1,5 +1,4 @@
-.progress-container {
-  background-color: #fff;
+.progress-example {
   padding: 16rpx 32rpx;
   margin-bottom: 32rpx;
 }

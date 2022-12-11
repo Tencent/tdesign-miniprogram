@@ -1,4 +1,0 @@
-<view class="label">
-  <view>选择器标题</view>
-  <t-slider class="label-class" defaultValue="50" colors="{{colors}}" />
-</view>
