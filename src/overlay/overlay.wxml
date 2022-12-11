@@ -5,6 +5,8 @@
   bind:tap="handleClick"
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
+  aria-role="button"
+  aria-label="Overlay 遮罩层"
 >
   <slot />
 </view>
