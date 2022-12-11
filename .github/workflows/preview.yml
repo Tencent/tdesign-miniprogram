@@ -14,16 +14,20 @@ jobs:
           echo "timestamp=${timestamp}" >> $GITHUB_OUTPUT
         id: time
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v1
+        uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             正在构建预览的二维码，请稍等...
-            <!-- ${{steps.time.outputs.timestamp}} -->
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+          comment_tag: ${{steps.time.outputs.timestamp}}
+      - uses: LeeJim/pull-request-comment-branch@main
+        id: comment-branch
+      - uses: actions/checkout@v3
+        if: success()
         with:
-          node-version: '14.6.0'
-      - run: npm install && npm run build
+          ref: ${{ steps.comment-branch.outputs.head_ref }}
+          repository: ${{ steps.comment-branch.outputs.head_repo_name_with_owner }}
+      - uses: ./.github/actions/install-dep
+      - run: npm run build
         shell: bash
       - name: get preview qrcode
         id: preview
@@ -35,7 +39,7 @@ jobs:
           es6: true
           es7: true
           minify: true
-        env: 
+        env:
           MINI_APP_ID: ${{ secrets.TDESIGN_APP_ID }}
           MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}
       - name: Upload qrcode to Tencent COS
@@ -48,8 +52,8 @@ jobs:
           region: ap-guangzhou
           content: ${{ steps.preview.outputs.preview-qrcode }}
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v1
+        uses: thollander/actions-comment-pull-request@v2
         with:
           message: |
             <img alt="qrcode" src="${{ steps.cos.outputs.url }}" width="256" />
-          comment_tag: "<!-- ${{steps.time.outputs.timestamp}} -->"
+          comment_tag: ${{steps.time.outputs.timestamp}}

@@ -3,8 +3,8 @@
 exports[`NoticeBar NoticeBar base demo works fine 1`] = `
 <base>
   <t-notice-bar
-    content="提示文字描述提示文字描述提示文字描述"
-    prefixIcon="null"
+    content="这是一条普通的通知信息"
+    prefixIcon="{{false}}"
     visible="{{true}}"
   />
 </base>
@@ -15,7 +15,9 @@ exports[`NoticeBar NoticeBar custom demo works fine 1`] = `
   <t-notice-bar
     content="提示文字描述提示文字描述提示文字描述"
     prefixIcon="sound"
+    suffixIcon="chevron-right"
     tClass="external-class"
+    tClassPrefixIcon="external-class-prefix-icon"
     visible="{{true}}"
   />
 </custom>
@@ -23,20 +25,6 @@ exports[`NoticeBar NoticeBar custom demo works fine 1`] = `
 
 exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
 <customization>
-  <t-notice-bar
-    content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
-    prefixIcon="null"
-    visible="{{true}}"
-  />
-  <t-notice-bar
-    content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
-    visible="{{true}}"
-  />
-  <t-notice-bar
-    content="提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述"
-    suffixIcon="chevron-right"
-    visible="{{true}}"
-  />
   <t-notice-bar
     visible="{{true}}"
   >
@@ -58,6 +46,7 @@ exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
     >
       <t-icon
         name="close"
+        size="44rpx"
       />
     </wx-view>
   </t-notice-bar>
@@ -67,11 +56,33 @@ exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
 exports[`NoticeBar NoticeBar event demo works fine 1`] = `
 <event>
   <t-notice-bar
-    content="提示文字描述提示文字描述提示文字描述"
+    content="这是一条普通的通知信息"
+    suffixIcon="close"
+    visible="{{true}}"
+    bind:click="click"
+  />
+  <t-notice-bar
+    content="这是一条普通的通知信息"
     suffixIcon="chevron-right"
     visible="{{true}}"
     bind:click="click"
   />
+  <t-notice-bar
+    visible="{{true}}"
+    bind:click="click"
+  >
+    <wx-view
+      slot="content"
+    >
+       这是一条普通的通知信息 
+    </wx-view>
+    <wx-view
+      class="extra"
+      slot="extra"
+    >
+      文字按钮
+    </wx-view>
+  </t-notice-bar>
   <t-notice-bar
     suffixIcon="close"
     visible="{{true}}"
@@ -80,7 +91,7 @@ exports[`NoticeBar NoticeBar event demo works fine 1`] = `
     <wx-view
       slot="content"
     >
-       提示文字描述提示文字描述 
+       这是一条普通的通知信息 
     </wx-view>
     <wx-view
       class="extra"
@@ -133,6 +144,21 @@ exports[`NoticeBar NoticeBar scrolling demo works fine 1`] = `
       }
     }}"
     visible="{{true}}"
+  />
+  <t-notice-bar
+    content="{{
+      Array [
+        "君不见",
+        "高堂明镜悲白发",
+        "朝如青丝暮成雪",
+        "人生得意须尽欢",
+        "莫使金樽空对月",
+      ]
+    }}"
+    direction="vertical"
+    prefixIcon="sound"
+    visible="{{true}}"
+    bind:click="click"
   />
 </scrolling>
 `;

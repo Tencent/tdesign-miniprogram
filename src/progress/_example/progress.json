@@ -4,8 +4,9 @@
   "usingComponents": {
     "base": "./base",
     "transition": "./transition",
-    "status": "./status",
     "custom": "./custom",
-    "size": "./size"
+    "line": "./line",
+    "plump": "./plump",
+    "circle": "./circle"
   }
 }

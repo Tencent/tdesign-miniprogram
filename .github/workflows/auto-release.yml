@@ -48,7 +48,7 @@ jobs:
           else
             echo "不属于 release pr 的 comment" && exit 1
           fi
-          echo "::set-output name=branch::${BASH_REMATCH[1]}"
+          echo "branch=${BASH_REMATCH[1]}" >> $GITHUB_OUTPUT
       # zsh $match[1]
       - uses: actions/checkout@v3
         with:

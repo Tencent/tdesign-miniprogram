@@ -1,5 +1,6 @@
 .extra {
-  display: inline-block !important;
-  font-weight: 700 !important;
-  border-bottom: 2rpx solid !important;
+  display: inline-block;
+  font-weight: 700;
+  border-bottom: 2rpx solid;
+  color: #0052d9;
 }

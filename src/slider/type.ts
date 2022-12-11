@@ -7,7 +7,7 @@
 export interface TdSliderProps {
   /**
    * 颜色，[已选择, 未选择]
-   * @default ['#0052D9', 'rgba(220, 220, 220, 1)']
+   * @default []
    */
   colors?: {
     type: ArrayConstructor;
@@ -31,7 +31,7 @@ export interface TdSliderProps {
   };
   /**
    * 禁用状态滑动条的颜色，[已选, 未选]
-   * @default ['#bbd3fb', '#dcdcdc']
+   * @default []
    */
   disabledColor?: {
     type: ArrayConstructor;
@@ -99,6 +99,14 @@ export interface TdSliderProps {
   step?: {
     type: NumberConstructor;
     value?: number;
+  };
+  /**
+   * 滑块风格
+   * @default default
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'default' | 'capsule';
   };
   /**
    * 滑块值

@@ -1,10 +1,25 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@backtop: ~"@{prefix}-back-top";
+@backtop: ~'@{prefix}-back-top';
 @back-top-text-font-size: @font-size;
-@back-top-icon-font-size: 32rpx;
-@back-top-default-color: #666;
+@back-top-text-line-height: 24rpx;
+@back-top-icon-font-size: 44rpx;
+@back-top-round-width: 96rpx;
+@back-top-half-round-width: 120rpx;
+@back-top-half-round-height: 80rpx;
+@back-top-fixed-right: @spacer;
+@back-top-fixed-bottom: @spacer-2;
+
+@back-top-round-color: var(--td-back-top-round-color, @font-gray-1); // 'round'主题内容颜色
+@back-top-round-bg-color: var(--td-back-top-round-bg-color, @white-color-1); // 'round'主题背景颜色
+@back-top-round-border-color: var(--td-back-top-round-border-color, @gray-color-4); // 'round'主题边框颜色
+@back-top-round-border-radius: var(--td-back-top-round-border-radius, @radius-circle); // 'round'主题圆角大小
+@back-top-round-dark-color: var(--td-back-top-round-dark-color, @font-white-1); // 'round-dark'主题内容颜色
+@back-top-round-dark-bg-color: var(--td-back-top-round-dark-bg-color, @gray-color-14); // 'round-dark'主题背景颜色
+@back-top-half-round-border-radius: var(
+  --td-back-top-half-round-border-radius,
+  @radius-round
+); // 'round-dark'主题圆角大小
 
 .@{backtop} {
   display: flex;
@@ -14,90 +29,66 @@
   background-color: transparent;
   overflow: hidden;
   box-sizing: border-box;
-  transition: height .2s;
+  transition: height 0.2s;
   height: auto;
 
-  &.@{prefix}-is-fixed {
+  &--fixed {
     position: fixed;
-    right: 32rpx;
-    bottom: 133rpx;
+    right: @back-top-fixed-right;
+    bottom: @back-top-fixed-bottom;
   }
 
-  &.@{prefix}-is-round,
-  &.@{prefix}-is-round-dark {
-    width: 96rpx;
-    height: 96rpx;
-    border-radius: 50%;
-
-    .@{backtop}__icon {
-      margin: 0;
-      // border: none;
-      border-radius: 0;
-      background-color: transparent;
-    }
-
-    .@{backtop}__text {
-      padding: 0;
-      margin-top: 0;
-    }
+  &--round,
+  &--round-dark {
+    width: @back-top-round-width;
+    height: @back-top-round-width;
+    border-radius: @back-top-round-border-radius;
   }
 
-  &.@{prefix}-is-round,
-  &.@{prefix}-is-half-round {
-    background-color: rgb(255, 255, 255);
-    color: #333;
-    border: 1rpx solid;
-    border-color: #ddd;
-
-    .@{backtop}__icon,
-    .@{backtop}__text {
-      color: #333;
-    }
+  &--round,
+  &--half-round {
+    color: @back-top-round-color;
+    border: 1rpx solid @back-top-round-border-color;
+    background-color: @back-top-round-bg-color;
   }
 
-  &.@{prefix}-is-round-dark,
-  &.@{prefix}-is-half-round-dark {
-    background-color: #000;
-    color: #fff;
-
-    .@{backtop}__icon,
-    .@{backtop}__text {
-      color: #fff;
-    }
+  &--round-dark,
+  &--half-round-dark {
+    color: @back-top-round-dark-color;
+    background-color: @back-top-round-dark-bg-color;
   }
 
-  &.@{prefix}-is-half-round,
-  &.@{prefix}-is-half-round-dark {
-    width: 120rpx;
-    height: 80rpx;
-    border-radius: 120rpx 0 0 120rpx;
+  &--half-round,
+  &--half-round-dark {
+    width: @back-top-half-round-width;
+    height: @back-top-half-round-height;
+    border-radius: @back-top-half-round-border-radius 0 0 @back-top-half-round-border-radius;
     flex-direction: row;
     right: 0;
-
-    .@{backtop}__icon {
-      margin: 0;
-      border-radius: 0;
-      background-color: transparent;
-    }
-
-    .@{backtop}__text {
-      padding: 0;
-      margin-left: 8rpx;
-      width: 2em;
-    }
   }
 
-  &__text {
+  &__text--round,
+  &__text--round-dark,
+  &__text--half-round,
+  &__text--half-round-dark {
     font-size: @back-top-text-font-size;
-    color: @back-top-default-color;
-    line-height: 24rpx;
+    line-height: @back-top-text-line-height;
+  }
+
+  &__text--half-round,
+  &__text--half-round-dark {
+    width: 2em;
+  }
+
+  &__icon:not(:empty) + &__text--half-round,
+  &__icon:not(:empty) + &__text--half-round-dark {
+    margin-left: (@spacer / 2);
   }
 
   &__icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: @back-top-default-color;
     font-size: @back-top-icon-font-size;
   }
 }
