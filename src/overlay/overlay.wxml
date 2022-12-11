@@ -16,6 +16,8 @@
   style="z-index: {{_zIndex}}; {{computedStyle}} {{customStyle}}"
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"
+  aria-role="button"
+  aria-label="Overlay 遮罩层"
 >
   <slot />
 </view>
