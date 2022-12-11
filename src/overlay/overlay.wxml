@@ -6,7 +6,7 @@
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
   aria-role="button"
-  aria-label="Overlay 遮罩层"
+  aria-label="关闭"
 >
   <slot />
 </view>
@@ -17,7 +17,7 @@
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"
   aria-role="button"
-  aria-label="Overlay 遮罩层"
+  aria-label="关闭"
 >
   <slot />
 </view>
