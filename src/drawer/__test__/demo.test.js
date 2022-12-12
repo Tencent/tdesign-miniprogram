@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'footer', 'icon', 'title'];
+const mapper = ['base', 'footer', 'icon-drawer', 'title'];
 
 describe('Drawer', () => {
   mapper.forEach((demoName) => {
