@@ -5,6 +5,48 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.30.0 `2022-12-12` 
+### ❗ BREAKING CHANGE
+- `Rate`: 属性 gap 默认值由 8 调整成 4 @LeeJim ([#1177](https://github.com/Tencent/tdesign-miniprogram/pull/1177))
+- `Rate`: 属性 size 默认值由 20 调整成 24 @LeeJim ([#1177](https://github.com/Tencent/tdesign-miniprogram/pull/1177))
+- `Stepper`:  属性 theme 的 gray 名为 filled，并新增 outline 主题 @anlyyao ([#1191](https://github.com/Tencent/tdesign-miniprogram/pull/1191))
+- `Slider`:  属性 colors 和 disabledColor 移除默认值 @LeeJim ([#1192](https://github.com/Tencent/tdesign-miniprogram/pull/1192))
+- `Calendar`: 按钮的插槽变更成和文档一致：`confirm-btn` @LeeJim ([#1204](https://github.com/Tencent/tdesign-miniprogram/pull/1204))
+
+### 🚀 Features
+- `Rate`: 视觉升级 @LeeJim ([#1177](https://github.com/Tencent/tdesign-miniprogram/pull/1177))
+- `Slider`: 视觉升级 @LeeJim ([#1192](https://github.com/Tencent/tdesign-miniprogram/pull/1192))
+- `Rate`: 新增 color 属性，并支持 CSS Variables @LeeJim ([#1177](https://github.com/Tencent/tdesign-miniprogram/pull/1177))
+- `Rate`: 新增 icon 属性，可自定义图标 @LeeJim ([#1177](https://github.com/Tencent/tdesign-miniprogram/pull/1177))
+- `NoticeBar`: 新增 direction 属性，新支持垂直方向滚动 @anlyyao ([#1036](https://github.com/Tencent/tdesign-miniprogram/pull/1036))
+- `Slider`: 新增 theme 属性，新增胶囊风格 @LeeJim ([#1192](https://github.com/Tencent/tdesign-miniprogram/pull/1192))
+- `Message`: 属性 icon 和 closeBtn 新增 Object 类型透传至 icon 组件 @anlyyao ([#1153](https://github.com/Tencent/tdesign-miniprogram/pull/1153))
+- `BackTop`: 属性 icon 新增支持 Object 类型透传至图标组件，并支持同名插槽 @anlyyao ([#1151](https://github.com/Tencent/tdesign-miniprogram/pull/1151))
+- `NoticeBar`: 属性 content 新增 Array 类型 @anlyyao ([#1036](https://github.com/Tencent/tdesign-miniprogram/pull/1036))
+- `NoticeBar`: 属性 suffixIcon 新增 Object 类型透传至图标组件 @anlyyao ([#1036](https://github.com/Tencent/tdesign-miniprogram/pull/1036))
+- `NoticeBar`: 属性 prefixIcon 新增 Boolean、Object 类型 @anlyyao ([#1036](https://github.com/Tencent/tdesign-miniprogram/pull/1036))
+- `Stepper`: input-width 属性默认单位更新为 px @anlyyao ([#1191](https://github.com/Tencent/tdesign-miniprogram/pull/1191))
+- `Progress`: 属性 theme 支持 plump  和 circle 类型 @anlyyao ([#1178](https://github.com/Tencent/tdesign-miniprogram/pull/1178))
+- `Message`: 新增 CSS Variables， 用于调整信息通知文本、背景颜色 @anlyyao ([#1153](https://github.com/Tencent/tdesign-miniprogram/pull/1153))
+- `BackTop`: 新增 CSS Variables @anlyyao ([#1151](https://github.com/Tencent/tdesign-miniprogram/pull/1151))
+- `Slider`: 支持 CSS Variables @LeeJim ([#1192](https://github.com/Tencent/tdesign-miniprogram/pull/1192))
+- `NoticeBar`: 新增 CSS Variables， 用于调整公告栏文本、背景颜色 @anlyyao ([#1036](https://github.com/Tencent/tdesign-miniprogram/pull/1036))
+- `Stepper`: 新增 CSS Variables， 用于调整步进器文本/图标颜色等 @anlyyao ([#1191](https://github.com/Tencent/tdesign-miniprogram/pull/1191))
+- `Progress`: 新增 CSS Variables， 用于调整进度条背景颜色 @anlyyao ([#1178](https://github.com/Tencent/tdesign-miniprogram/pull/1178))
+- `Grid`: 支持无障碍访问 @zhangpaopao0609 ([#1138](https://github.com/Tencent/tdesign-miniprogram/pull/1138))
+- `NavBar`: 支持无障碍访问 @Lindddt ([#1140](https://github.com/Tencent/tdesign-miniprogram/pull/1140))
+- `TabBar`: 支持无障碍访问 @Isabella327 ([#1148](https://github.com/Tencent/tdesign-miniprogram/pull/1148))
+
+
+### 🐞 Bug Fixes
+
+- `Message`: 修复入场动画错误 @anlyyao ([#1153](https://github.com/Tencent/tdesign-miniprogram/pull/1153))
+- `Calendar`: 修复 `max-date`, `min-date`, `firstDayOfWeek` 无法动态修改的问题 @LeeJim ([#1172](https://github.com/Tencent/tdesign-miniprogram/pull/1172))
+- `Switch`: 修复视觉问题 @LeeJim ([#1186](https://github.com/Tencent/tdesign-miniprogram/pull/1186))
+- `Calendar`: 修复小屏幕适配的问题 @LeeJim ([#1203](https://github.com/Tencent/tdesign-miniprogram/pull/1203))
+- `Calendar`: 修复按钮传入 text 不生效，以及不支持响应式的问题 @LeeJim ([#1204](https://github.com/Tencent/tdesign-miniprogram/pull/1204))
+
+
 ## 🌈 0.29.0 `2022-12-05` 
 ### ❗ BREAKING CHANGES
 - `Loading`: `theme = spinner` 默认颜色改成黑色 @LeeJim ([#1152](https://github.com/Tencent/tdesign-miniprogram/pull/1152))
