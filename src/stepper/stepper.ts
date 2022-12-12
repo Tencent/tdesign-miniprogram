@@ -13,7 +13,7 @@ export default class Stepper extends SuperComponent {
     addGlobalClass: true,
   };
 
-  properties = props;
+  properties = { ...props };
 
   controlledProps = [
     {

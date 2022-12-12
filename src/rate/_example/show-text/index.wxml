@@ -8,7 +8,6 @@
     showText="{{true}}"
     texts="{{texts}}"
     variant="filled"
-    size="{{16}}"
   />
 </view>
 <view class="demo-rate">

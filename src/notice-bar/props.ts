@@ -8,7 +8,12 @@ import { TdNoticeBarProps } from './type';
 const props: TdNoticeBarProps = {
   /** 文本内容 */
   content: {
+    type: null,
+  },
+  /** 滚动方向，可选 horizontal、vertical */
+  direction: {
     type: String,
+    value: 'horizontal',
   },
   /** 自定义组件样式 */
   customStyle: {
@@ -30,13 +35,13 @@ const props: TdNoticeBarProps = {
   },
   /** 前缀图标 */
   prefixIcon: {
-    type: String,
-    value: '',
+    type: null,
+    value: true,
   },
   /** 后缀图标 */
   suffixIcon: {
-    type: String,
-    value: '',
+    type: null,
+    value: null,
   },
   /** 内置主题 */
   theme: {

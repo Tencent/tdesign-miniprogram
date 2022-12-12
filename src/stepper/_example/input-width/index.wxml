@@ -1,2 +1,0 @@
-<!-- 受控用法 -->
-<t-stepper value="{{value}}" bind:change="handleChange" theme="grey" inputWidth="{{72}}" />

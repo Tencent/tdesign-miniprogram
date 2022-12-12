@@ -1,0 +1,11 @@
+<view class="demo-rate">
+  <view class="demo-rate__title">点击选择(半星)</view>
+  <t-rate value="{{value}}" variant="filled" allowHalf bind:change="onChange" />
+</view>
+
+<view class="demo-desc">交互方式：滑动</view>
+
+<view class="demo-rate">
+  <view class="demo-rate__title">滑动选择</view>
+  <t-rate default-value="{{3}}" variant="filled" />
+</view>

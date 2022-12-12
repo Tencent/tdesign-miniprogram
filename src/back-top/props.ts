@@ -22,8 +22,8 @@ const props: TdBackTopProps = {
   },
   /** 图标 */
   icon: {
-    type: String,
-    value: 'backtop',
+    type: null,
+    value: true,
   },
   /** 文案 */
   text: {

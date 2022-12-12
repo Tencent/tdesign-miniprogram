@@ -5,7 +5,7 @@ describe('slider', () => {
   const slider = load(path.resolve(__dirname, `../slider`), 't-slider');
 
   const left = 16;
-  const right = 319;
+  const right = 325;
   const createSelectorQuery = {
     left,
     right,
@@ -24,8 +24,12 @@ describe('slider', () => {
       return this;
     },
   };
-  const size = right - left;
-  const calc = (pos) => Math.ceil(((pos - left) / size) * 100);
+  const dotSize = 20;
+  const size = right - left - dotSize;
+  const calc = (pos) => {
+    const ans = Math.ceil(((pos - left - dotSize / 2) / size) * 100);
+    return Math.round(ans);
+  };
   const mockFn = jest.spyOn(wx, 'createSelectorQuery');
 
   mockFn.mockImplementation(() => createSelectorQuery);
@@ -99,7 +103,7 @@ describe('slider', () => {
       },
     });
     // mock function
-    const right = 319;
+    const right = 325;
     const left = 16;
 
     const comp = simulate.render(id);
@@ -120,8 +124,8 @@ describe('slider', () => {
 
     await simulate.sleep();
 
-    const size = right - left;
-    expect($slider.instance.data.value).toStrictEqual([0, Math.ceil(((100 - left) / size) * 100)]);
+    const size = right - left - dotSize;
+    expect($slider.instance.data.value).toStrictEqual([0, Math.ceil(((100 - left - dotSize / 2) / size) * 100)]);
   });
 
   it(':marks', async () => {
@@ -183,16 +187,16 @@ describe('slider', () => {
 
     expect($slider.instance.data.value).toStrictEqual([calc(100), 100]);
 
-    move($rightDot, 200);
+    move($rightDot, 300);
     await simulate.sleep();
 
-    expect($slider.instance.data.value).toStrictEqual([calc(100), calc(200)]);
+    expect($slider.instance.data.value).toStrictEqual([calc(100), calc(300)]);
 
     // disabled
     $slider.setData({ disabled: true });
     move($leftDot, 150);
     move($rightDot, 150);
-    expect($slider.instance.data.value).toStrictEqual([calc(100), calc(200)]);
+    expect($slider.instance.data.value).toStrictEqual([calc(100), calc(300)]);
   });
 
   it('value is over limited', async () => {
