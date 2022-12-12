@@ -3,7 +3,7 @@ name: Issue Add Assigness
 
 on:
   issues:
-    types: [opened, edited]
+    types: [opened]
 
 jobs:
   mark-duplicate:
