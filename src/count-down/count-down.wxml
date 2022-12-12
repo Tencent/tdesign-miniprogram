@@ -3,7 +3,7 @@
 <view
   style="{{ customStyle }}"
   class="{{classPrefix}} {{classPrefix}}--{{theme}} {{classPrefix}}--{{size}} {{prefix}}-class "
-  aria-role="button"
+  aria-role="option"
 >
   <slot wx:if="{{content !== 'default'}}" />
   <block wx:elif="{{theme == 'default'}}">{{formattedTime}}</block>
