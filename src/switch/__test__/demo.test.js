@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'status'];
+const mapper = ['base', 'color', 'label', 'size', 'status'];
 
 describe('Switch', () => {
   mapper.forEach((demoName) => {

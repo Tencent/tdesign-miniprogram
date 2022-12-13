@@ -8,6 +8,6 @@
     "scroll": "./scroll",
     "multiple": "./multiple",
     "card": "./card",
-    "icon-demo": "./icon"
+    "icon-grid": "./icon-grid"
   }
 }

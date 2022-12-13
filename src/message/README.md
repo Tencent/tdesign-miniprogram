@@ -26,7 +26,7 @@ import Message from 'tdesign-miniprogram/message/index';
 
 ## 代码演示
 
-### 基础消息通知
+### 组件类型
 
 弹窗内容为纯文本、标题和副标题、带输入框，用 API `Message.info` 方法调用反馈类对话框。
 
@@ -34,17 +34,11 @@ import Message from 'tdesign-miniprogram/message/index';
 {{ base }}
 
 
-### 不同状态的消息通知
+### 组件状态
 
 消息通知类型为普通（info）、警示（warning）、成功（success）、错误（error）  
 
-{{ status-message }}
-
-### 自定义导航栏
-
-当设置了 `navigationStyle = custom`，可以通过 offetset 来调整显示位置：
-
-{{ custom-navigation }}
+{{ theme }}
 
 ## API
 ### Message Props
