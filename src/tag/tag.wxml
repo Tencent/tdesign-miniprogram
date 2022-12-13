@@ -1,5 +1,5 @@
 <view class="{{className}} {{prefix}}-class" style="{{tagStyle}} {{ customStyle }}" bind:tap="handleClick">
-  <view aria-hidden="true" class="{{classPrefix}}__icon">
+  <view aria-hidden="{{true}}" class="{{classPrefix}}__icon">
     <t-icon wx:if="{{icon}}" name="{{icon}}" t-class="{{prefix}}-icon" />
     <slot wx:else name="icon" />
   </view>
