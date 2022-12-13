@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./rate.wxs" module="utils" />
 
-<view class="{{classPrefix}}">
+<view class="{{classPrefix}}" aria-role="radiogroup">
   <view
     class="{{classPrefix}}__wrapper {{prefix}}-class"
     style="font-size:{{ utils.regSize(size) }}"
@@ -10,25 +10,43 @@
     catch:touchend="{{ !disabled ? 'onTouchEnd' : ''}}"
     catch:touchcancel="{{ !disabled ? 'onTouchEnd' : ''}}"
   >
-    <t-icon
+    <view
       wx:for="{{ count }}"
       wx:key="*this"
-      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}} "
-      t-class="{{prefix}}-class-icon"
-      name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
-      size="{{ size }}"
       style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
-    />
+      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}} "
+      aria-role="radio"
+      aria-label="{{defaultTexts[index]}}"
+      aria-checked="{{value - 0.5 > index}}"
+    >
+      <t-icon
+        t-class="{{prefix}}-class-icon"
+        name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
+        size="{{ size }}"
+      />
+    </view>
   </view>
   <text wx:if="{{showText}}" class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
     >{{utils.getText(texts,value,defaultTexts)}}</text
   >
-  <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px">
+  <view
+    wx:if="{{tipsVisible}}"
+    class="{{classPrefix}}__tips"
+    style="left: {{tipsLeft}}px"
+    aria-role="alertdialog"
+    role="alertdialog"
+    aria-modal="{{tipsVisible}}"
+  >
     <view
       wx:if="{{allowHalf && actionType == 'tap'}}"
       class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) - 0.5 == value]])}}"
       bind:tap="onSelect"
       data-value="{{utils.ceil(value) - 0.5}}"
+      aria-role="button"
+      aria-label="半星"
+      aria-describedby="first-value"
+      tabindex="-1"
+      focus="{{tipsVisible}}"
     >
       <t-icon
         class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
@@ -36,12 +54,15 @@
         size="{{ size }}"
         style="{{utils.getColor(color)}}"
       />
-      <view class="{{classPrefix}}__tips-text">{{utils.ceil(value) - 0.5}}</view>
+      <view id="first-value" class="{{classPrefix}}__tips-text">{{utils.ceil(value) - 0.5}}</view>
     </view>
     <view
       class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) == value && actionType == 'tap']])}}"
       bind:tap="onSelect"
       data-value="{{utils.ceil(value)}}"
+      aria-role="button"
+      aria-label="全星"
+      aria-describedby="second-value"
     >
       <t-icon
         class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
@@ -49,7 +70,9 @@
         size="{{ size }}"
         style="{{utils.getColor(color)}}"
       />
-      <view class="{{classPrefix}}__tips-text">{{actionType == 'tap' ? utils.ceil(value) : value}}</view>
+      <view id="second-value" class="{{classPrefix}}__tips-text"
+        >{{actionType == 'tap' ? utils.ceil(value) : value}}</view
+      >
     </view>
   </view>
 </view>
