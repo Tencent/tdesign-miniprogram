@@ -1,24 +1,35 @@
 <wxs src="../common/utils.wxs" module="utils" />
 
 <view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
-  <t-cell
-    title="{{header}}"
-    note="{{headerRightContent}}"
-    bordered
-    right-icon="{{ ultimateExpandIcon ? (expanded ? 'chevron-up' : 'chevron-down') : '' }}"
+  <view
     class="{{classPrefix}}__title"
-    t-class="{{classPrefix}}__header {{prefix}}-class-header"
-    t-class-title="class-title {{ultimateDisabled ? 'class-title--disabled' : ''}}"
-    t-class-note="class-note {{ultimateDisabled ? 'class-note--disabled' : ''}}"
-    t-class-right-icon="class-right-icon {{ultimateDisabled ? 'class-right-icon--disabled' : ''}}"
-    t-class-hover="class-header-hover"
-    bind:click="onClick"
+    aria-role="button"
+    aria-expanded="{{expanded}}"
+    aria-disabled="{{ultimateDisabled}}"
+    bind:tap="onClick"
   >
-    <slot name="header" slot="title" />
-    <slot name="header-right-content" slot="note" />
-    <slot name="expand-icon" slot="right-icon" />
-  </t-cell>
-  <view class="{{classPrefix}}__wrapper" style="height: {{contentHeight}};" bind:transitionend="onTransitionEnd">
+    <t-cell
+      title="{{header}}"
+      note="{{headerRightContent}}"
+      bordered
+      right-icon="{{ ultimateExpandIcon ? (expanded ? 'chevron-up' : 'chevron-down') : '' }}"
+      t-class="{{classPrefix}}__header {{prefix}}-class-header"
+      t-class-title="class-title {{ultimateDisabled ? 'class-title--disabled' : ''}}"
+      t-class-note="class-note {{ultimateDisabled ? 'class-note--disabled' : ''}}"
+      t-class-right-icon="class-right-icon {{ultimateDisabled ? 'class-right-icon--disabled' : ''}}"
+      t-class-hover="class-header-hover"
+    >
+      <slot name="header" slot="title" />
+      <slot name="header-right-content" slot="note" />
+      <slot name="expand-icon" slot="right-icon" />
+    </t-cell>
+  </view>
+  <view
+    class="{{classPrefix}}__wrapper"
+    style="height: {{contentHeight}};"
+    aria-hidden="{{expanded ? '' : true}}"
+    bind:transitionend="onTransitionEnd"
+  >
     <view
       class="{{classPrefix}}__content {{classPrefix}}__content--{{expanded ? 'active' : ''}} {{prefix}}-class-content"
     >
