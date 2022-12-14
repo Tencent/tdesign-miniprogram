@@ -150,13 +150,13 @@ export default class StepItem extends SuperComponent {
         curSubStepItemsStatus: tempStatusList || [],
         computedIcon: this.data.icon || iconStatus,
         index,
-        isDot: theme === 'dot' && layout === 'vertical',
+        isDot: theme === 'dot',
         layout,
         theme,
         isLastChild: steps.length - 1 === index,
       });
     },
-    click() {
+    onTap() {
       this.parent.handleClick(this.data.index);
     },
   };

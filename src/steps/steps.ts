@@ -13,16 +13,10 @@ export default class Steps extends SuperComponent {
       linked(child) {
         this.updateChildren();
 
-        const { readonly, layout } = this.data;
-        let isLarge = false;
-
-        if (!readonly && layout === 'horizontal' && child.data.icon !== 'slot') {
-          isLarge = !!child.data.icon;
-        }
+        const { readonly } = this.data;
 
         child.setData({
           readonly,
-          isLarge,
         });
       },
     },

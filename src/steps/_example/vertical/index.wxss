@@ -1,4 +1,5 @@
-.demo-steps {
-  padding-top: 80rpx;
-  padding-left: 32rpx;
+.block {
+  background-color: #fff;
+  padding: 32rpx 0 32rpx 32rpx;
+  margin: 32rpx 0 48rpx;
 }
