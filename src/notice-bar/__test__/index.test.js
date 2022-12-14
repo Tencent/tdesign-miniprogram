@@ -137,7 +137,7 @@ describe('notice-bar', () => {
           prefixIcon="{{prefixIcon}}"></t-notice-bar>`,
         data: {
           visible: true,
-          prefixIcon: 'null',
+          prefixIcon: false,
         },
         usingComponents: {
           't-notice-bar': noticeBar,
@@ -146,8 +146,7 @@ describe('notice-bar', () => {
 
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
-      const $prefixIcon = comp.querySelector('.base >>> .t-notice-bar__prefix-icon');
-      expect($prefixIcon.dom.innerHTML).toBe('');
+      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon')).toBeUndefined();
 
       comp.setData({
         prefixIcon: 'add',
@@ -163,7 +162,9 @@ describe('notice-bar', () => {
         },
       });
       const iconComp = simulate.render(iconId);
-      expect($prefixIcon.dom.innerHTML).toContain(iconComp.dom.innerHTML);
+      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon').dom.innerHTML).toContain(
+        iconComp.dom.innerHTML,
+      );
     });
 
     const delay = 7100;

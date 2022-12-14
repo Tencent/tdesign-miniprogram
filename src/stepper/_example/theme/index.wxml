@@ -1,0 +1,13 @@
+<view class="stepper-example__wrapper">
+  <view class="stepper-example">
+    <t-stepper defaultValue="3" theme="filled" />
+  </view>
+
+  <view class="stepper-example">
+    <t-stepper defaultValue="3" theme="outline" />
+  </view>
+
+  <view class="stepper-example">
+    <t-stepper defaultValue="3" />
+  </view>
+</view>

@@ -6,6 +6,13 @@ import config from '../common/config';
 const { prefix } = config;
 const name = `${prefix}-notice-bar`;
 
+const THEME_ICON = {
+  info: 'error-circle-filled',
+  success: 'check-circle-filled',
+  warning: 'error-circle-filled',
+  error: 'close-circle-filled',
+};
+
 @wxComponent()
 export default class NoticeBar extends SuperComponent {
   externalClasses = [
@@ -51,7 +58,11 @@ export default class NoticeBar extends SuperComponent {
     },
 
     'prefixIcon, theme'() {
-      this.setIcon();
+      this.setPrefixIcon();
+    },
+
+    suffixIcon() {
+      this.setSuffixIcon();
     },
 
     content() {
@@ -154,7 +165,7 @@ export default class NoticeBar extends SuperComponent {
 
     show() {
       this.clearNoticeBarAnimation();
-      this.setIcon();
+      this.setPrefixIcon(this.properties.prefixIcon);
       this.initAnimation();
     },
 
@@ -164,21 +175,39 @@ export default class NoticeBar extends SuperComponent {
       this.nextAnimationContext = null;
     },
 
-    setIcon() {
+    setPrefixIcon() {
       const { prefixIcon, theme } = this.properties;
-      // 固定值
-      if (prefixIcon) {
+      if (!prefixIcon) {
+        this.setData({ prefixIconName: '', prefixIconData: {} });
+      } else if (typeof prefixIcon === 'string') {
         this.setData({
-          iconName: prefixIcon !== 'null' ? `${prefixIcon}` : '',
+          prefixIconName: prefixIcon,
+          prefixIconData: {},
+        });
+      } else if (typeof prefixIcon === 'object') {
+        this.setData({
+          prefixIconName: '',
+          prefixIconData: prefixIcon,
         });
       } else {
-        const themeNoticeBar = {
-          info: 'error-circle-filled',
-          success: 'check-circle-filled',
-          warning: 'error-circle-filled',
-          error: 'close-circle-filled',
-        };
-        this.setData({ iconName: themeNoticeBar[theme] });
+        this.setData({ prefixIconName: THEME_ICON[theme], prefixIconData: {} });
+      }
+    },
+
+    setSuffixIcon() {
+      const { suffixIcon } = this.properties;
+      if (suffixIcon) {
+        if (typeof suffixIcon === 'string') {
+          this.setData({
+            suffixIconName: suffixIcon,
+            suffixIconData: {},
+          });
+        } else if (typeof suffixIcon === 'object') {
+          this.setData({
+            suffixIconName: '',
+            suffixIconData: suffixIcon,
+          });
+        }
       }
     },
 

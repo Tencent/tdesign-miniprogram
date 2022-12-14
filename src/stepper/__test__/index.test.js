@@ -22,12 +22,12 @@ describe('stepper', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const component = comp.querySelector('.base >>> .t-stepper');
-      expect(component.dom.getAttribute('class').includes('t-is-disabled')).toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).toBeTruthy();
 
       comp.setData({
         disabled: false,
       });
-      expect(component.dom.getAttribute('class').includes('t-is-disabled')).not.toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).not.toBeTruthy();
     });
 
     it(': input-width', async () => {
@@ -48,7 +48,7 @@ describe('stepper', () => {
 
       const $input = comp.querySelector('.base >>> .t-stepper__input');
       // TODO: 获取的dom节点的样式似乎不能识别 `rpx`, 会将单位转变为 `px`, 小程序实际渲染没问题
-      expect($input.dom.getAttribute('style').includes('width: 80px')).toBeTruthy();
+      expect($input.dom.getAttribute('style').includes('width:80px')).toBeTruthy();
     });
 
     it(': theme', async () => {
@@ -57,7 +57,9 @@ describe('stepper', () => {
         class="base"
         theme="{{theme}}"
         ></t-stepper>`,
-        data: {},
+        data: {
+          theme: 'normal',
+        },
         usingComponents: {
           't-stepper': stepper,
         },
@@ -65,13 +67,13 @@ describe('stepper', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const component = comp.querySelector('.base >>> .t-stepper');
-      expect(component.dom.getAttribute('class').includes('t-stepper--normal')).toBeTruthy();
+      const component = comp.querySelector('.base >>> .t-stepper__minus');
+      expect(component.dom.getAttribute('class').includes(`t-stepper__minus--normal`)).toBeTruthy();
 
       comp.setData({
         theme: 'grey',
       });
-      expect(component.dom.getAttribute('class').includes('t-stepper--pure')).toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper__minus--grey')).toBeTruthy();
     });
 
     it(': step && max && min', async () => {
@@ -151,7 +153,7 @@ describe('stepper', () => {
 
       // (disabled = true), 事件不触发;
       const component = comp.querySelector('.base >>> .t-stepper');
-      expect(component.dom.getAttribute('class').includes('t-is-disabled')).toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).toBeTruthy();
 
       const minusIcon = comp.querySelector('.base >>> .t-stepper__minus');
       const plusIcon = comp.querySelector('.base >>> .t-stepper__plus');

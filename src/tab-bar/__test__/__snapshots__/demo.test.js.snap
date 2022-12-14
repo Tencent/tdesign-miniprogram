@@ -12,10 +12,10 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
           "count": 16,
         }
       }}"
-      icon="app"
+      icon="home"
       value="label1"
     >
-      标签
+      首页
     </t-tab-bar-item>
     <t-tab-bar-item
       badgeProps="{{
@@ -26,7 +26,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       icon="app"
       value="label2"
     >
-      标签
+      软件
     </t-tab-bar-item>
     <t-tab-bar-item
       badgeProps="{{
@@ -34,10 +34,10 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
           "count": "New",
         }
       }}"
-      icon="app"
+      icon="chat"
       value="label3"
     >
-      标签
+      聊天
     </t-tab-bar-item>
     <t-tab-bar-item
       badgeProps="{{
@@ -45,10 +45,10 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
           "count": "···",
         }
       }}"
-      icon="app"
+      icon="user"
       value="label4"
     >
-      标签
+      我的
     </t-tab-bar-item>
   </t-tab-bar>
 </badge>
@@ -63,11 +63,11 @@ exports[`TabBar TabBar base demo works fine 1`] = `
     bind:change="onChange"
   >
     <t-tab-bar-item
-      icon="app"
+      icon="home"
       value="label_1"
     >
       
-    标签
+    首页
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -75,23 +75,23 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_2"
     >
       
-    标签
+    软件
   
     </t-tab-bar-item>
     <t-tab-bar-item
-      icon="app"
+      icon="chat"
       value="label_3"
     >
       
-    标签
+    聊天
   
     </t-tab-bar-item>
     <t-tab-bar-item
-      icon="app"
+      icon="user"
       value="label_4"
     >
       
-    标签
+    我的
   
     </t-tab-bar-item>
   </t-tab-bar>
@@ -108,19 +108,23 @@ exports[`TabBar TabBar custom demo works fine 1`] = `
       bind:change="onChange"
     >
       <t-tab-bar-item
-        icon="app"
+        ariaLabel="首页"
+        icon="home"
         value="label_1"
       />
       <t-tab-bar-item
+        ariaLabel="软件"
         icon="app"
         value="label_2"
       />
       <t-tab-bar-item
-        icon="app"
+        ariaLabel="聊天"
+        icon="chat"
         value="label_3"
       />
       <t-tab-bar-item
-        icon="app"
+        ariaLabel="我的"
+        icon="user"
         value="label_4"
       />
     </t-tab-bar>
@@ -137,19 +141,23 @@ exports[`TabBar TabBar icon-only demo works fine 1`] = `
     bind:change="onChange"
   >
     <t-tab-bar-item
-      icon="app"
+      ariaLabel="首页"
+      icon="home"
       value="label_1"
     />
     <t-tab-bar-item
+      ariaLabel="软件"
       icon="app"
       value="label_2"
     />
     <t-tab-bar-item
-      icon="app"
+      ariaLabel="聊天"
+      icon="chat"
       value="label_3"
     />
     <t-tab-bar-item
-      icon="app"
+      ariaLabel="我的"
+      icon="user"
       value="label_4"
     />
   </t-tab-bar>
@@ -166,7 +174,8 @@ exports[`TabBar TabBar round demo works fine 1`] = `
     bind:change="onChange"
   >
     <t-tab-bar-item
-      icon="app"
+      ariaLabel="首页"
+      icon="home"
       value="label_1"
     >
       
@@ -174,6 +183,7 @@ exports[`TabBar TabBar round demo works fine 1`] = `
   
     </t-tab-bar-item>
     <t-tab-bar-item
+      ariaLabel="软件"
       icon="app"
       value="label_2"
     >
@@ -182,7 +192,8 @@ exports[`TabBar TabBar round demo works fine 1`] = `
   
     </t-tab-bar-item>
     <t-tab-bar-item
-      icon="app"
+      ariaLabel="聊天"
+      icon="chat"
       value="label_3"
     >
       
@@ -190,7 +201,8 @@ exports[`TabBar TabBar round demo works fine 1`] = `
   
     </t-tab-bar-item>
     <t-tab-bar-item
-      icon="app"
+      ariaLabel="我的"
+      icon="user"
       value="label_4"
     >
       
@@ -213,7 +225,7 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
       value="label_1"
     >
       
-    标签
+    标签一
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -221,7 +233,7 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
       value="label_2"
     >
       
-    标签
+    标签二
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -262,22 +274,22 @@ exports[`TabBar TabBar text-only demo works fine 1`] = `
     <t-tab-bar-item
       value="label_1"
     >
-       标签 
+       标签一 
     </t-tab-bar-item>
     <t-tab-bar-item
       value="label_2"
     >
-       标签 
+       标签二 
     </t-tab-bar-item>
     <t-tab-bar-item
       value="label_3"
     >
-       标签 
+       标签三 
     </t-tab-bar-item>
     <t-tab-bar-item
       value="label_4"
     >
-       标签 
+       标签四 
     </t-tab-bar-item>
   </t-tab-bar>
 </text-only>

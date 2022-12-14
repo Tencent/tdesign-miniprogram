@@ -1,1 +1,5 @@
-<t-slider defaultValue="{{50}}" marks="{{mask}}" step="{{50}}" bind:change="handleChange"></t-slider>
+<t-slider defaultValue="{{60}}" marks="{{marks}}" step="{{20}}" bind:change="handleChange" />
+
+<view class="demo-desc">带刻度双游标滑块</view>
+
+<t-slider range defaultValue="{{ [20, 60] }}" marks="{{marks}}" step="{{20}}" />

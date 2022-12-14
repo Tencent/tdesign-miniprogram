@@ -5,13 +5,14 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-content | String / Slot | - | \- | N
+content | String / Array / Slot | - | \- | N
 custom-style `v0.25.0` | String | - | \- | N
+direction | String | horizontal | options：horizontal/vertical | N
 external-classes | Array | - | `['t-class', 't-class-content', 't-class-prefix-icon', 't-class-extra', 't-class-suffix-icon']` | N
 extra | String / Slot | - | \- | N
 marquee | Boolean / Object | false | Typescript：`boolean \| DrawMarquee` `interface DrawMarquee { speed?: number; loop?: number; delay?: number }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/notice-bar/type.ts) | N
-prefix-icon | String | - | \- | N
-suffix-icon | String | - | \- | N
+prefix-icon | String / Boolean/ Object / Slot | - | \- | N
+suffix-icon | String / Boolean / Object / Slot | - | \- | N
 theme | String | info | options：info/success/warning/error | N
 visible | Boolean | false | \- | N
 default-visible | Boolean | false | uncontrolled property | N

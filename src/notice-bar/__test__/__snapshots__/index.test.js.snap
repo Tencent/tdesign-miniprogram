@@ -10,10 +10,14 @@ exports[`notice-bar props : marquee 1`] = `
       style=""
     >
       <wx-view
-        class="t-notice-bar__prefix-icon t-class-prefix-icon"
+        class="t-notice-bar__prefix-icon"
         bind:tap="clickPrefixIcon"
       >
-        <t-icon>
+        <t-icon
+          class=""
+          tClass="t-class-prefix-icon"
+          bind:click="onTplClick"
+        >
           <wx-view
             ariaHidden="{{false}}"
             ariaLabel=""
@@ -44,10 +48,6 @@ exports[`notice-bar props : marquee 1`] = `
       <wx-view
         class="t-notice-bar__extra t-class-extra"
         bind:tap="clickExtra"
-      />
-      <wx-view
-        class="t-notice-bar__suffix-icon t-class-suffix-icon"
-        bind:tap="clickSuffixIcon"
       />
     </wx-view>
   </t-notice-bar>

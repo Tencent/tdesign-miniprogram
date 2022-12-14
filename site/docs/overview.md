@@ -37,9 +37,17 @@ spline: explain
       <p class="name">Icon 图标</p>
     </a>
   </div>
+
+  <!-- <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/link">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-link.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-link-dark.png" />
+      <p class="name">Link 链接</p>
+    </a>
+  </div> -->
 </section>
 
-<h3>导航<em class="tag">6</em></h3>
+<h3>导航<em class="tag">7</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/drawer">
@@ -70,6 +78,13 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/sidebar">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-sidebar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-sidebar-dark.png" />
+      <p class="name">SideBar 侧边导航栏</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/tab-bar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabbar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabbar-dark.png" />
@@ -85,8 +100,22 @@ spline: explain
   </div>
 </section>
 
-<h3>输入<em class="tag">12</em></h3>
+<h3>输入<em class="tag">14</em></h3>
 <section class="image-group">
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/calendar">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-calendar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-calendar-dark.png" />
+      <p class="name">Calendar 日历</p>
+    </a>
+  </div>
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/cascader">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-cascader.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-cascader-dark.png" />
+      <p class="name">Cascader 级联选择器</p>
+    </a>
+  </div>
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/checkbox">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-checkbox.png" />
@@ -174,7 +203,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">15</em></h3>
+<h3>数据展示<em class="tag">16</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar">
@@ -265,6 +294,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/result">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-result.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-result-dark.png" />
+      <p class="name">Result 结果</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/skeleton">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-skeleton.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-skeleton-dark.png" />
@@ -297,7 +334,7 @@ spline: explain
   </div>
 </section>
 
-<h3>消息提醒<em class="tag">10</em></h3>
+<h3>消息提醒<em class="tag">11</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/action-sheet">
@@ -336,13 +373,13 @@ spline: explain
     </a>
   </div>
 
-  <!-- <div class="image-wrapper">
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/notice-bar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-noticebar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-noticebar-dark.png" />
       <p class="name">NoticeBar 消息提醒</p>
     </a>
-  </div> -->
+  </div>
 
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/popup">
