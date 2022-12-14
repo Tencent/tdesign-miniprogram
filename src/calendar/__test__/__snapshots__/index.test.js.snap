@@ -10,6 +10,8 @@ exports[`calendar :base 1`] = `
         bind:visible-change="handleClose"
       >
         <wx-view
+          ariaModal="true"
+          ariaRole="dialog"
           class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
           style="z-index:11500;"
           bind:transitionend="onTransitionEnd"
@@ -26,6 +28,7 @@ exports[`calendar :base 1`] = `
             >
               <wx-view
                 class="t-calendar__title"
+                tabindex="0"
               >
                 <wx-text>
                   请选择日期
@@ -37,8 +40,8 @@ exports[`calendar :base 1`] = `
               >
                 <wx-view
                   ariaHidden="{{false}}"
-                  ariaLabel=""
-                  ariaRole=""
+                  ariaLabel="关闭"
+                  ariaRole="button"
                   class="t-icon t-class"
                   style="font-size: 24px"
                   bind:tap="onTap"
@@ -49,6 +52,7 @@ exports[`calendar :base 1`] = `
                 </wx-view>
               </t-icon>
               <wx-view
+                ariaHidden="{{true}}"
                 class="t-calendar__days"
               >
                 <wx-view
@@ -110,6 +114,10 @@ exports[`calendar :base 1`] = `
                   <wx-view />
                   <wx-view />
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月1日, 星期六"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -127,6 +135,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月2日, 星期日"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -144,6 +156,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月3日, 星期一"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -161,6 +177,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月4日, 星期二"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -178,6 +198,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月5日, 星期三"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -195,6 +219,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月6日, 星期四"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -212,6 +240,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月7日, 星期五"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -229,6 +261,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月8日, 星期六"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -246,6 +282,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月9日, 星期日"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -263,6 +303,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月10日, 星期一"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -280,6 +324,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月11日, 星期二"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -297,6 +345,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月12日, 星期三"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -314,6 +366,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月13日, 星期四"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -331,6 +387,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月14日, 星期五"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -348,6 +408,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月15日, 星期六"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -365,6 +429,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月16日, 星期日"
+                    ariaPressed="true"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--selected"
                     data-date="{{
                       Object {
@@ -382,6 +450,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月17日, 星期一"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -399,6 +471,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月18日, 星期二"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -416,6 +492,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月19日, 星期三"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -433,6 +513,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月20日, 星期四"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -450,6 +534,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月21日, 星期五"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -467,6 +555,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月22日, 星期六"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -484,6 +576,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月23日, 星期日"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -501,6 +597,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月24日, 星期一"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -518,6 +618,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月25日, 星期二"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -535,6 +639,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月26日, 星期三"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -552,6 +660,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月27日, 星期四"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -569,6 +681,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月28日, 星期五"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -586,6 +702,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月29日, 星期六"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -603,6 +723,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月30日, 星期日"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {
@@ -620,6 +744,10 @@ exports[`calendar :base 1`] = `
                 
                   </wx-view>
                   <wx-view
+                    ariaDisabled="{{false}}"
+                    ariaLabel="10月31日, 星期一"
+                    ariaPressed="false"
+                    ariaRole="button"
                     class="t-calendar__dates-item  t-calendar__dates-item--"
                     data-date="{{
                       Object {

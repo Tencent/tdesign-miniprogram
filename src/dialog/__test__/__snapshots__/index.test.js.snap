@@ -10,6 +10,8 @@ exports[`dialog :base 1`] = `
       bind:visible-change="overlayClick"
     >
       <wx-view
+        ariaModal="true"
+        ariaRole="dialog"
         class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active t-class"
         style="z-index:11500;"
         bind:transitionend="onTransitionEnd"

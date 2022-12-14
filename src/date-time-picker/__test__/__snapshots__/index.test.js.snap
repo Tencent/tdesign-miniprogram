@@ -14,6 +14,8 @@ exports[`date-time-picker :base 1`] = `
         bind:visible-change="onPopupChange"
       >
         <wx-view
+          ariaModal="true"
+          ariaRole="dialog"
           class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
           style="z-index:11500;"
           bind:transitionend="onTransitionEnd"
@@ -478,6 +480,8 @@ exports[`date-time-picker :second 1`] = `
         bind:visible-change="onPopupChange"
       >
         <wx-view
+          ariaModal="true"
+          ariaRole="dialog"
           class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
           style="z-index:11500;"
           bind:transitionend="onTransitionEnd"
