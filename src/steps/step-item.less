@@ -1,51 +1,36 @@
 @import '../common/index.less';
 
-@connector-default-icon-width: 24px;
-@connector-normal-icon-width: 40px;
-@step-item-inner-max-width: 214px;
-@dot-steps-anchor-width: 12px;
-@title-content-margin-top: 5px;
-@title-color: rgba(0, 0, 0, 0.9);
-@title-color--default: rgba(0, 0, 0, 0.26);
-@step-error-title-color: @error-color;
-@step-error-bg-color: @error-color;
-@step-default-bg-color: #c5c5c5;
-
-@step-item-icon-color: #c5c5c5;
-@step-item-descrition-color: rgba(0, 0, 0, 0.4);
-@step-line-color: #c5c5c5;
-
+@step-item-dot-size: 16rpx;
 @step-item-circle-size: 44rpx;
 @step-item-circle-font-size: 28rpx;
+@step-item-descrition-color: var(--td-step-item-descrition-color, @font-gray-3);
 
-@step-item-dot-size: 16rpx;
+@step-item-default-circle-bg: var(--td-step-item-default-circle-bg, @gray-color-1);
+@step-item-default-circle-color: var(--td-step-item-default-circle-color, @font-gray-3);
+@step-item-default-title-color: var(--td-step-item-default-title-color, @font-gray-3);
+@step-item-default-icon-color: var(--td-step-item-default-icon-color, @font-gray-3);
+@step-item-default-dot-border-color: var(--td-step-item-default-dot-border-color, @gray-color-5);
 
-@step-item-default-circle-bg: @gray-color-1;
-@step-item-default-circle-color: @font-gray-3;
-@step-item-default-title-color: @font-gray-3;
-@step-item-default-icon-color: @font-gray-3;
-@step-item-default-dot-border-color: @gray-color-5;
+@step-item-process-circle-color: var(--td-step-item-process-circle-color, @white-color-1);
+@step-item-process-circle-bg: var(--td-step-item-process-circle-bg, @primary-color);
+@step-item-process-title-color: var(--td-step-item-process-title-color, @primary-color);
+@step-item-process-icon-color: var(--td-step-item-process-icon-color, @primary-color);
+@step-item-process-dot-border-color: var(--td-step-item-process-dot-border-color, @primary-color);
 
-@step-item-process-circle-color: @white-color-1;
-@step-item-process-circle-bg: @primary-color;
-@step-item-process-title-color: @primary-color;
-@step-item-process-icon-color: @primary-color;
-@step-item-process-dot-border-color: @primary-color;
+@step-item-finish-circle-color: var(--td-step-item-finish-circle-color, @primary-color);
+@step-item-finish-circle-bg: var(--td-step-item-finish-circle-bg, @primary-color-1);
+@step-item-finish-title-color: var(--td-step-item-finish-title-color, @font-gray-1);
+@step-item-finish-icon-color: var(--td-step-item-finish-icon-color, @primary-color);
+@step-item-finish-dot-border-color: var(--td-step-item-finish-dot-border-color, @primary-color);
 
-@step-item-finish-circle-color: @primary-color;
-@step-item-finish-circle-bg: @primary-color-1;
-@step-item-finish-title-color: @font-gray-1;
-@step-item-finish-icon-color: @primary-color;
-@step-item-finish-dot-border-color: @primary-color;
+@step-item-error-circle-color: var(--td-step-item-error-circle-color, @error-color);
+@step-item-error-circle-bg: var(--td-step-item-error-circle-bg, @error-color-1);
+@step-item-error-title-color: var(--td-step-item-error-title-color, @error-color);
+@step-item-error-icon-color: var(--td-step-item-error-icon-color, @error-color);
+@step-item-error-dot-border-color: var(--td-step-item-error-dot-border-color, @error-color);
 
-@step-item-error-circle-color: @error-color;
-@step-item-error-circle-bg: @error-color-1;
-@step-item-error-title-color: @error-color;
-@step-item-error-icon-color: @error-color;
-@step-item-error-dot-border-color: @error-color;
-
-@step-item-line-color: @gray-color-4;
-@step-item-finish-line-color: @primary-color;
+@step-item-line-color: var(--td-step-item-line-color, @gray-color-4);
+@step-item-finish-line-color: var(--td-step-item-finish-line-color, @primary-color);
 
 @step: ~'@{prefix}-step';
 @steps: ~'@{step}s';
@@ -211,34 +196,6 @@
   }
 }
 
-// 子步骤状态
-.default-sub-status(@status) {
-  & when(@status = default) {
-    color: #c5c5c5;
-    .@{item}-sub-dot-item {
-      background-color: #c5c5c5;
-    }
-  }
-  & when(@status = finish) {
-    color: #000000;
-    .@{item}-sub-dot-item {
-      background-color: @primary-color;
-    }
-  }
-  & when(@status = process) {
-    color: @primary-color;
-    .@{item}-sub-dot-item {
-      background-color: @primary-color;
-    }
-  }
-  & when(@status = error) {
-    color: @step-error-bg-color;
-    .@{item}-sub-dot-item {
-      background-color: @step-error-bg-color;
-    }
-  }
-}
-
 :host {
   flex: 1;
   vertical-align: top;
@@ -257,33 +214,6 @@
     .@{item}__content {
       max-width: 80px;
       margin-top: @spacer;
-    }
-
-    .@{item} {
-      &--finish {
-        .@{item}__title {
-          color: @title-color;
-        }
-      }
-
-      &--process {
-        .@{item}__title {
-          color: @primary-color;
-        }
-      }
-
-      &--error {
-        .@{item}__title {
-          color: @step-error-title-color;
-        }
-      }
-
-      &--default {
-        .@{item}__title,
-        .@{item}__description {
-          color: @title-color--default;
-        }
-      }
     }
   }
 

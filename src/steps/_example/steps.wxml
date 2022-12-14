@@ -8,7 +8,7 @@
 
   <vertical />
 
-  <t-demo title="02 组件状态" />
+  <t-demo title="02 组件状态" desc="选项卡状态" />
 
   <status />
 </view>
