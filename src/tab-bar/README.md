@@ -17,42 +17,36 @@ isComponent: true
 }
 ```
 
-### 主题定制
-
-CSS 变量名|说明
---|--
---td-tab-bar-border-color|顶部边框颜色
---td-tab-bar-bg-color|背景色
---td-tab-bar-hover-color|hover 时背景色
---td-tab-bar-item-color | 字体颜色
---td-tab-bar-item-active-color | 激活时字体颜色
 ## 代码演示
 
-
-
-### 基础标签栏
-
-文本标签栏，分为单层双层，可以自定义标签栏内容
-
-{{ base }}
-
-### 带徽章标签栏
-
-{{ badge }}
-
-### 纯文本标签栏
+### 组件类型
+#### 纯文本标签栏
 
 {{ text-only }}
 
-### 纯图标标签栏
+#### 图标加文字标签栏
 
-{{ icon-only }}
+{{ base }}
 
-### 双层级纯文本标签栏
+#### 纯图标标签栏
+
+{{ text-only }}
+
+#### 双层级纯文本标签栏
 
 {{ sub }}
 
-### 自定义主题
+### 组件样式
+
+#### 弱选中标签栏
+
+{{ badge }}
+
+#### 悬浮胶囊标签栏
+
+{{ round }}
+
+#### 自定义主题
 
 {{ custom }}
 

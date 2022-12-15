@@ -18,45 +18,46 @@ isComponent: true
 
 ## 代码演示
 
-## 类型
-### 基础文本框
+### 组件类型
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/input-1.png" width="375px" height="50%">
+基础输入框
 
 {{ base }}
 
-### 必填、选填文本框
-
-{{ require }}
-
-### 带提示信息文本框
+带操作输入框
 
 {{ suffix }}
 
-## 状态
-### 文本框状态
+带图标输入框
 
-{{ status }}
+{{ prefix }}
 
-## 特殊类型
-### 特殊文本类型
-
-{{ special }}
-
-## 规格
-### 文本框尺寸规格
-
-{{ size }}
-
-## 内容位置
-### 文本框内容位置
+文本框内容位置
 
 {{ align }}
 
-## 字数限制
-### 文本框字数限制
+文本框字数限制
 
 {{ maxlength }}
+
+特殊文本类型
+
+{{ special }}
+
+### 组件状态
+
+竖排样式
+
+{{ layout }}
+
+带边框样式
+
+{{ bordered }}
+
+自定义样式文本框
+
+{{ custom }}
+
 
 ## API
 ### Input Props

@@ -103,8 +103,8 @@ exports[`Drawer Drawer footer demo works fine 1`] = `
 </footer>
 `;
 
-exports[`Drawer Drawer icon demo works fine 1`] = `
-<wx-icon>
+exports[`Drawer Drawer icon-drawer demo works fine 1`] = `
+<icon-drawer>
   <wx-view
     class="box"
   >
@@ -125,7 +125,7 @@ exports[`Drawer Drawer icon demo works fine 1`] = `
     bind:item-click="itemClick"
     bind:overlay-click="overlayClick"
   />
-</wx-icon>
+</icon-drawer>
 `;
 
 exports[`Drawer Drawer title demo works fine 1`] = `

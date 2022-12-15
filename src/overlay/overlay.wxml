@@ -5,6 +5,8 @@
   bind:tap="handleClick"
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
+  aria-role="button"
+  aria-label="关闭"
 >
   <slot />
 </view>
@@ -14,6 +16,8 @@
   style="z-index: {{_zIndex}}; {{computedStyle}} {{customStyle}}"
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"
+  aria-role="button"
+  aria-label="关闭"
 >
   <slot />
 </view>

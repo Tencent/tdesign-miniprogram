@@ -19,35 +19,45 @@ isComponent: true
 
 ## 代码演示
 
-### 基础复选框
+### 组件类型
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/checkbox.png" width="375px" height="50%">
+纵向多选框
 
 {{ base }}
 
-### 右侧多选框
+横向多选框
 
-{{ right }}
+{{ horizontal }}
 
-### 带全选多选框
+带全选多选框
 
 {{ all }}
 
-### 限制最多可选数量
+### 组件状态
 
-{{ num }}
-
-### 状态
+多选框状态
 
 {{ status }}
 
-### 特殊类型
+### 组件样式
+
+勾选样式
 
 {{ type }}
 
-### 规格
+勾选显示位置
 
-{{ size }}
+{{ right }}
+
+非通栏多选样式
+
+{{ card }}
+
+### 组件规格
+
+多选框尺寸规格
+
+{{ special }}
 
 ## API
 ### Checkbox Props
