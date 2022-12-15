@@ -23,6 +23,7 @@
   bind:opensetting="opensetting"
   bind:launchapp="launchapp"
   bind:chooseavatar="chooseavatar"
+  aria-label="{{ariaLabel}}"
 >
   <t-icon
     wx:if="{{icon || iconProps.name}}"
