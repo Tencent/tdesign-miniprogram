@@ -249,6 +249,13 @@ export default class Swiper extends SuperComponent {
     this.timer = null;
   }
 
+  setItemCurrent(current) {
+    this.children = this.getRelationNodes('./swiper-item');
+    this.children.forEach((item) => {
+      item.setCurrent(current);
+    });
+  }
+
   /**
    * 跳转目标页
    * @param index 目标页索引
@@ -256,6 +263,7 @@ export default class Swiper extends SuperComponent {
    * @returns
    */
   goto(index: number, source: string) {
+    this.setItemCurrent(index);
     if (this.control.get() === index) {
       this.update(index);
       return;

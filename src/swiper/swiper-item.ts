@@ -20,6 +20,7 @@ export default class SwiperItem extends SuperComponent {
     index: 0,
     classPrefix: name,
     translate: '',
+    current: 0,
   };
 
   setIndex(index: number, direction: string) {
@@ -29,6 +30,12 @@ export default class SwiperItem extends SuperComponent {
       index,
       direction,
       translate,
+    });
+  }
+
+  setCurrent(current: number) {
+    this.setData({
+      current,
     });
   }
 }

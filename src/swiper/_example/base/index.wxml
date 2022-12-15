@@ -7,6 +7,6 @@
   navigation
 >
   <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
-    <image src="{{item.image}}" class="img" />
+    <image src="{{item.image}}" class="img" aria-label="{{item.label}}" />
   </t-swiper-item>
 </t-swiper>
