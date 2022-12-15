@@ -48,7 +48,74 @@ export default class Input extends SuperComponent {
     },
   };
 
+  observers = {
+    prefixIcon() {
+      this.setPrefixIcon();
+    },
+
+    suffixIcon() {
+      this.setSuffixIcon();
+    },
+
+    clearable() {
+      this.setClearableIcon();
+    },
+  };
+
   methods = {
+    setPrefixIcon() {
+      const { prefixIcon } = this.properties;
+      if (prefixIcon) {
+        if (typeof prefixIcon === 'string') {
+          this.setData({
+            prefixIconName: prefixIcon,
+            prefixIconData: {},
+          });
+        } else if (typeof prefixIcon === 'object') {
+          this.setData({
+            prefixIconName: '',
+            prefixIconData: prefixIcon,
+          });
+        }
+      }
+    },
+
+    setSuffixIcon() {
+      const { suffixIcon } = this.properties;
+      if (suffixIcon) {
+        if (typeof suffixIcon === 'string') {
+          this.setData({
+            suffixIconName: suffixIcon,
+            suffixIconData: {},
+          });
+        } else if (typeof suffixIcon === 'object') {
+          this.setData({
+            suffixIconName: '',
+            suffixIconData: suffixIcon,
+          });
+        }
+      }
+    },
+
+    setClearableIcon() {
+      const { clearable } = this.properties;
+      if (!clearable) {
+        this.setData({ clearableIconName: '', clearableIconData: {} });
+      } else if (typeof clearable === 'string') {
+        this.setData({
+          clearableIconName: clearable,
+          clearableIconData: {},
+        });
+      } else if (typeof clearable === 'object') {
+        this.setData({
+          clearableIconName: '',
+          clearableIconData: clearable,
+        });
+      } else {
+        this.setData({ clearableIconName: 'close-circle-filled', clearableIconData: {} });
+      }
+    },
+
     updateValue(value) {
       const { maxcharacter, maxlength } = this.properties;
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {

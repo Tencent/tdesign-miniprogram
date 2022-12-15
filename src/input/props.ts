@@ -23,13 +23,8 @@ const props: TdInputProps = {
   },
   /** 是否可清空 */
   clearable: {
-    type: Boolean,
+    type: null,
     value: false,
-  },
-  /** 透传至组件清楚图标 icon */
-  clearableIconProps: {
-    type: Object,
-    value: {},
   },
   /** 自定义组件样式 */
   customStyle: {
@@ -73,12 +68,8 @@ const props: TdInputProps = {
   },
   /** 组件前置图标，值为字符串则表示图标名称 */
   prefixIcon: {
-    type: String,
-  },
-  /** 透传至组件前缀图标 prefix-icon */
-  prefixIconProps: {
-    type: Object,
-    value: {},
+    type: null,
+    value: null,
   },
   /** 只读状态 */
   readonly: {
@@ -101,12 +92,8 @@ const props: TdInputProps = {
   },
   /** 后置文本内容，值为字符串则表示图标名称 */
   suffixIcon: {
-    type: String,
-  },
-  /** 透传至组件后缀图标 suffix-icon */
-  suffixIconProps: {
-    type: Object,
-    value: {},
+    type: null,
+    value: null,
   },
   /** 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式 */
   tips: {
