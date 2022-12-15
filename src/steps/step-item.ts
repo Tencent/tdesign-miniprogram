@@ -54,9 +54,9 @@ export default class StepItem extends SuperComponent {
       let curStatus = this.data.status;
 
       if (curStatus === 'default') {
-        if (index < current) {
+        if (index < Number(current)) {
           curStatus = 'finish';
-        } else if (index === current) {
+        } else if (index === Number(current)) {
           curStatus = currentStatus;
         }
       }
