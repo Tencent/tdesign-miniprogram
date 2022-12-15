@@ -3,7 +3,7 @@
   "usingComponents": {
     "horizontal": "./horizontal",
     "vertical": "./vertical",
-    "theme": "./theme",
+    "special": "./special",
     "status": "./status"
   }
 }

@@ -1,7 +1,0 @@
-<block>
-  <t-steps class="demo-steps" current="1" readonly="true" layout="vertical" theme="dot">
-    <t-step-item title="事件描述" />
-    <t-step-item title="事件描述" />
-    <t-step-item title="事件描述" />
-  </t-steps>
-</block>

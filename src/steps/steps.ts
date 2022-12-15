@@ -19,6 +19,9 @@ export default class Steps extends SuperComponent {
           readonly,
         });
       },
+      unlinked() {
+        this.updateLastChid();
+      },
     },
   };
 
@@ -49,18 +52,22 @@ export default class Steps extends SuperComponent {
     updateChildren() {
       const items = this.getRelationNodes('./step-item');
       const len = items.length;
-      const { current, currentStatus, readonly } = this.data;
+      const { current, currentStatus, readonly, theme, layout } = this.data;
 
       if (len) {
         items.forEach((item, index) => {
-          item.updateStatus(current, currentStatus, index, this.data.theme, this.data.layout, items, readonly);
+          item.updateStatus(current, currentStatus, index, theme, layout, items, readonly);
         });
       }
     },
-    handleClick(index) {
-      if (this.data.layout === 'vertical') {
-        return;
+    updateLastChid() {
+      const items = this.getRelationNodes('./step-item');
+
+      if (items?.length > 0) {
+        items.forEach((child, index) => child.setData({ isLastChild: index === items.length - 1 }));
       }
+    },
+    handleClick(index) {
       if (!this.data.readonly) {
         const preIndex = this.data.current;
         this._trigger('change', {

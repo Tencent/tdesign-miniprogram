@@ -11,4 +11,8 @@
   <t-demo title="02 组件状态" desc="选项卡状态" />
 
   <status />
+
+  <t-demo title="03 特殊类型" />
+
+  <special />
 </view>

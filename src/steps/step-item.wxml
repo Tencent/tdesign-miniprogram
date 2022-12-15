@@ -1,16 +1,16 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
-  class="{{prefix}}-step {{prefix}}-step--{{layout}} {{prefix}}-step--{{theme}}-anchor {{prefix}}-step--{{isLastChild ? 'last-child':'not-last-child'}} {{prefix}}-class {{readonly ? prefix + '-step--readonly' : ''}}"
+  style="{{customStyle}}"
+  class="{{_.cls(classPrefix, [layout, ['readonly', readonly]])}} {{prefix}}-class"
   bind:tap="onTap"
 >
   <!-- icon  -->
   <view class="{{_.cls(classPrefix + '__anchor', [layout])}}">
     <view wx:if="{{isDot}}" class="{{_.cls(classPrefix + '__dot', [curStatus])}}" />
-    <view wx:elif="{{computedIcon}}" class="{{_.cls(classPrefix + '__icon', [curStatus])}}">
-      <slot wx:if="{{computedIcon === 'slot'}}" name="icon" />
-      <t-icon wx:else name="{{computedIcon}}" size="22" />
+    <view wx:elif="{{icon}}" class="{{_.cls(classPrefix + '__icon', [curStatus])}}">
+      <slot name="icon" />
+      <t-icon name="{{icon}}" size="22" />
     </view>
     <view wx:else class="{{_.cls(classPrefix + '__circle', [curStatus])}}">
       <t-icon wx:if="{{curStatus == 'finish'}}" name="check" />
@@ -20,10 +20,11 @@
   </view>
 
   <!-- content -->
-  <view class="{{_.cls(classPrefix + '__content', [layout])}} {{prefix}}-class-content">
+  <view class="{{_.cls(classPrefix + '__content', [layout, ['last', isLastChild]])}} {{prefix}}-class-content">
     <view class="{{_.cls(classPrefix + '__title', [curStatus, layout])}} {{prefix}}-class-title">
       {{ title }}
       <slot name="title" />
+      <slot wx:if="{{layout === 'vertical'}}" name="title-right" />
     </view>
     <view class="{{_.cls(classPrefix + '__description', [layout])}} {{prefix}}-class-description">
       {{ content }}
