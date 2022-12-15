@@ -8,6 +8,6 @@
     "step": "./step",
     "range": "./range",
     "disabled": "./disabled",
-    "title": "./title"
+    "capsule": "./capsule"
   }
 }

@@ -30,11 +30,11 @@ export interface TdBackTopProps {
   };
   /**
    * 图标
-   * @default 'backtop'
+   * @default true
    */
   icon?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: boolean | string | object;
   };
   /**
    * 文案

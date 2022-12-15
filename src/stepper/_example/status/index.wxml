@@ -1,6 +1,3 @@
-<t-cell title="禁用">
-  <t-stepper disabled="true" slot="right-icon" />
-</t-cell>
-<t-cell title="禁用（单位）">
-  <t-stepper step="2" disabled="true" slot="right-icon" />
-</t-cell>
+<view class="stepper-example">
+  <t-stepper disabled theme="filled" />
+</view>

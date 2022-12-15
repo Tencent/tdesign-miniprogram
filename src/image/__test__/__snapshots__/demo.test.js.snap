@@ -14,6 +14,7 @@ exports[`Image Image base demo works fine 1`] = `
         裁切
       </wx-view>
       <t-image
+        ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="aspectFill"
         src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
@@ -29,6 +30,7 @@ exports[`Image Image base demo works fine 1`] = `
         适应高
       </wx-view>
       <t-image
+        ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="heightFix"
         src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
@@ -44,6 +46,7 @@ exports[`Image Image base demo works fine 1`] = `
         拉伸
       </wx-view>
       <t-image
+        ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
         width="72"
@@ -62,6 +65,7 @@ exports[`Image Image base demo works fine 1`] = `
         方形
       </wx-view>
       <t-image
+        ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="aspectFill"
         src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
@@ -77,6 +81,7 @@ exports[`Image Image base demo works fine 1`] = `
         圆角方形
       </wx-view>
       <t-image
+        ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         shape="round"
         src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
@@ -92,6 +97,7 @@ exports[`Image Image base demo works fine 1`] = `
         圆形
       </wx-view>
       <t-image
+        ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         shape="circle"
         src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"

@@ -3,32 +3,75 @@
 exports[`Progress Progress base demo works fine 1`] = `
 <base>
   <wx-view
-    class="progress-container"
-  >
-    <t-progress />
-  </wx-view>
-  <wx-view
-    class="progress-container"
+    class="progress-example"
   >
     <t-progress
-      percentage="88"
+      percentage="80"
     />
   </wx-view>
   <wx-view
-    class="progress-container"
+    class="progress-example"
   >
     <t-progress
-      color="#0052D9"
-      percentage="100"
+      percentage="80"
+      theme="plump"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="30"
+      theme="circle"
     />
   </wx-view>
 </base>
 `;
 
+exports[`Progress Progress circle demo works fine 1`] = `
+<circle>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="80"
+      theme="circle"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="88"
+      status="warning"
+      theme="circle"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="88"
+      status="error"
+      theme="circle"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="88"
+      status="success"
+      theme="circle"
+    />
+  </wx-view>
+</circle>
+`;
+
 exports[`Progress Progress custom demo works fine 1`] = `
 <custom>
   <wx-view
-    class="progress-container"
+    class="progress-example"
   >
     <t-progress
       color="#CD04FF"
@@ -38,7 +81,7 @@ exports[`Progress Progress custom demo works fine 1`] = `
     />
   </wx-view>
   <wx-view
-    class="progress-container"
+    class="progress-example"
   >
     <t-progress
       percentage="88"
@@ -48,45 +91,17 @@ exports[`Progress Progress custom demo works fine 1`] = `
 </custom>
 `;
 
-exports[`Progress Progress size demo works fine 1`] = `
-<size>
+exports[`Progress Progress line demo works fine 1`] = `
+<line>
   <wx-view
-    class="progress-container"
+    class="progress-example"
   >
     <t-progress
-      percentage="88"
+      percentage="80"
     />
   </wx-view>
   <wx-view
-    class="progress-container"
-  >
-    <t-progress
-      label="{{false}}"
-      percentage="72"
-    />
-  </wx-view>
-</size>
-`;
-
-exports[`Progress Progress status demo works fine 1`] = `
-<status>
-  <wx-view
-    class="progress-container"
-  >
-    <t-progress
-      percentage="88"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-container"
-  >
-    <t-progress
-      percentage="88"
-      status="error"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-container"
+    class="progress-example"
   >
     <t-progress
       percentage="88"
@@ -94,19 +109,68 @@ exports[`Progress Progress status demo works fine 1`] = `
     />
   </wx-view>
   <wx-view
-    class="progress-container"
+    class="progress-example"
   >
     <t-progress
-      percentage="100"
+      percentage="88"
+      status="error"
     />
   </wx-view>
-</status>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="88"
+      status="success"
+    />
+  </wx-view>
+</line>
+`;
+
+exports[`Progress Progress plump demo works fine 1`] = `
+<plump>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="80"
+      theme="plump"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="88"
+      status="warning"
+      theme="plump"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="88"
+      status="error"
+      theme="plump"
+    />
+  </wx-view>
+  <wx-view
+    class="progress-example"
+  >
+    <t-progress
+      percentage="88"
+      status="success"
+      theme="plump"
+    />
+  </wx-view>
+</plump>
 `;
 
 exports[`Progress Progress transition demo works fine 1`] = `
 <transition>
   <wx-view
-    class="progress-container"
+    class="progress-example"
   >
     <t-progress
       percentage="{{88}}"

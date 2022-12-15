@@ -9,6 +9,7 @@ exports[`image-viewer :base 1`] = `
   bind:load="onImageLoadSuccess"
 >
   <wx-view
+    ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
     style=" "
   >
@@ -42,13 +43,15 @@ exports[`image-viewer :base 1`] = `
             />
           </wx-view>
           <wx-view
-            class="t-class-text"
+            class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
       </wx-view>
     </t-loading>
   </wx-view>
   <wx-image
+    ariaHidden="{{true}}"
+    ariaLabel=""
     class="t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"
@@ -73,6 +76,7 @@ exports[`image-viewer :base 2`] = `
   bind:load="onImageLoadSuccess"
 >
   <wx-view
+    ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
     style=" "
   >
@@ -106,13 +110,15 @@ exports[`image-viewer :base 2`] = `
             />
           </wx-view>
           <wx-view
-            class="t-class-text"
+            class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
       </wx-view>
     </t-loading>
   </wx-view>
   <wx-image
+    ariaHidden="{{true}}"
+    ariaLabel=""
     class="t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"
@@ -137,6 +143,7 @@ exports[`image-viewer :base 3`] = `
   bind:load="onImageLoadSuccess"
 >
   <wx-view
+    ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
     style=" "
   >
@@ -170,13 +177,15 @@ exports[`image-viewer :base 3`] = `
             />
           </wx-view>
           <wx-view
-            class="t-class-text"
+            class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
       </wx-view>
     </t-loading>
   </wx-view>
   <wx-image
+    ariaHidden="{{true}}"
+    ariaLabel=""
     class="t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"

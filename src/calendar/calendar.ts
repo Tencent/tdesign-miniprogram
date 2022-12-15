@@ -25,6 +25,7 @@ export default class Calendar extends SuperComponent {
     classPrefix: name,
     months: [],
     scrollIntoView: '',
+    innerConfirmBtn: { content: '确认' },
   };
 
   controlledProps = [
@@ -40,22 +41,31 @@ export default class Calendar extends SuperComponent {
 
   lifetimes = {
     ready() {
-      let { confirmBtn } = this.data;
-
-      if (!confirmBtn && confirmBtn != null) {
-        confirmBtn = { content: '确认' };
-      }
       this.base = new TCalendar(this.properties);
       this.initialValue();
       this.setData({
         days: this.base.getDays(),
-        confirmBtn,
       });
       this.calcMonths();
     },
   };
 
   observers = {
+    confirmBtn(v) {
+      if (typeof v === 'string') {
+        this.setData({ innerConfirmBtn: v === 'slot' ? 'slot' : { content: v } });
+      } else if (typeof v === 'object') {
+        this.setData({ innerConfirmBtn: v });
+      }
+    },
+    'firstDayOfWeek,minDate,maxDate'(firstDayOfWeek, minDate, maxDate) {
+      if (this.base) {
+        this.base.firstDayOfWeek = firstDayOfWeek;
+        this.base.minDate = minDate;
+        this.base.maxDate = maxDate;
+        this.calcMonths();
+      }
+    },
     value(v) {
       if (this.base) {
         this.base.value = v;

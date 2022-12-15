@@ -47,13 +47,13 @@
           </view>
         </block>
       </scroll-view>
-      <view wx:if="{{confirmBtn != null}}" class="{{classPrefix}}__footer">
-        <slot wx:if="{{confirmBtn === 'slot'}}" name="confirmBtn" />
-        <block wx:elif="{{confirmBtn}}">
+      <view wx:if="{{innerConfirmBtn != null}}" class="{{classPrefix}}__footer">
+        <slot wx:if="{{innerConfirmBtn === 'slot'}}" name="confirm-btn" />
+        <block wx:elif="{{innerConfirmBtn}}">
           <!-- <t-button block theme="primary" v-bind="confirmBtn" bind:tap="handleConfirm" /> -->
           <template
             is="button"
-            data="{{...confirmBtn, block: true,  theme: 'primary', class: 't-calendar__confirm-btn' }}"
+            data="{{ block: true,  theme: 'primary', class: 't-calendar__confirm-btn', ...innerConfirmBtn }}"
           />
         </block>
       </view>

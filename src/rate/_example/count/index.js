@@ -1,6 +1,6 @@
 Component({
   data: {
-    value: 3,
+    value: 2,
   },
 
   methods: {

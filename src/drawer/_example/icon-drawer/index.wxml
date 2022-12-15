@@ -1,5 +1,5 @@
 <view class="box">
-  <t-button variant="outline" block bind:tap="openDrawerIcon">带图标抽屉</t-button>
+  <t-button variant="outline" block bind:tap="openDrawerIcon" size="large" theme="primary">带图标抽屉</t-button>
 </view>
 <t-drawer
   visible="{{visible}}"

@@ -1,0 +1,4 @@
+.stepper-example {
+  padding: 32rpx;
+  background-color: #fff;
+}

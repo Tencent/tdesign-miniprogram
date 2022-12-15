@@ -1,22 +1,55 @@
+<wxs src="../common/utils.wxs" module="_" />
 <wxs src="./rate.wxs" module="utils" />
-<view class="{{ classPrefix }}">
+
+<view class="{{classPrefix}}">
   <view
-    class="{{ classPrefix }}__wrapper {{prefix}}-class"
-    style="font-size:{{ size }}px;"
-    catch:touchmove="{{ !disabled ? 'onTouch' : '' }}"
-    catch:touchstart="{{ !disabled ? 'onTouch' : '' }}"
+    class="{{classPrefix}}__wrapper {{prefix}}-class"
+    style="font-size:{{ utils.regSize(size) }}"
+    catch:touchmove="{{ !disabled ? 'onTouchMove' : '' }}"
+    catch:tap="{{ !disabled ? 'onTap' : '' }}"
+    catch:touchend="{{ !disabled ? 'onTouchEnd' : ''}}"
+    catch:touchcancel="{{ !disabled ? 'onTouchEnd' : ''}}"
   >
     <t-icon
       wx:for="{{ count }}"
       wx:key="*this"
-      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix, defaultValue, value, index, allowHalf, disabled)}} "
+      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}} "
       t-class="{{prefix}}-class-icon"
-      name="{{utils.getIconName(defaultValue, value, index, variant)}}"
+      name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
       size="{{ size }}"
-      style="margin-right:{{ count - index > 1 ? gap : 0 }}px;"
+      style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
     />
   </view>
-  <text wx:if="{{showText}}" class="{{ classPrefix }}__text {{prefix}}-class-text"
+  <text wx:if="{{showText}}" class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
     >{{utils.getText(texts,value,defaultTexts)}}</text
   >
+  <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px">
+    <view
+      wx:if="{{allowHalf && actionType == 'tap'}}"
+      class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) - 0.5 == value]])}}"
+      bind:tap="onSelect"
+      data-value="{{utils.ceil(value) - 0.5}}"
+    >
+      <t-icon
+        class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
+        name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
+        size="{{ size }}"
+        style="{{utils.getColor(color)}}"
+      />
+      <view class="{{classPrefix}}__tips-text">{{utils.ceil(value) - 0.5}}</view>
+    </view>
+    <view
+      class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) == value && actionType == 'tap']])}}"
+      bind:tap="onSelect"
+      data-value="{{utils.ceil(value)}}"
+    >
+      <t-icon
+        class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
+        name="{{utils.getIconName(defaultValue, value, index, 'filled', icon)}}"
+        size="{{ size }}"
+        style="{{utils.getColor(color)}}"
+      />
+      <view class="{{classPrefix}}__tips-text">{{actionType == 'tap' ? utils.ceil(value) : value}}</view>
+    </view>
+  </view>
 </view>

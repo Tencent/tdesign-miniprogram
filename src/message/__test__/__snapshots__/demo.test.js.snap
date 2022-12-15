@@ -6,90 +6,75 @@ exports[`Message Message base demo works fine 1`] = `
     id="t-message"
   />
   <wx-view
-    class="box"
+    class="message-example"
   >
     <t-button
       block="{{true}}"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showTextMessage"
     >
-      纯文字通知
+      纯文字的通知
     </t-button>
     <t-button
       block="{{true}}"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showIconMessage"
     >
-      带图标通知
+      带图标的通知
     </t-button>
     <t-button
       block="{{true}}"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showCloseMessage"
     >
-      带关闭通知
+      带关闭的通知
     </t-button>
     <t-button
       block="{{true}}"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showScrollMessage"
     >
-      滚动通知
+      可滚动多通知
     </t-button>
     <t-button
       block="{{true}}"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showBtnMessage"
     >
-      带按钮通知
+      带按钮的通知
     </t-button>
   </wx-view>
 </base>
 `;
 
-exports[`Message Message custom-navigation demo works fine 1`] = `
-<custom-navigation>
+exports[`Message Message theme demo works fine 1`] = `
+<theme>
   <t-message
     id="t-message"
   />
   <wx-view
-    class="box"
+    class="message-example"
   >
     <t-button
       block="{{true}}"
       size="large"
       tClass="external-class"
-      variant="outline"
-      bind:tap="showTextMessage"
-    >
-      自定义导航栏
-    </t-button>
-  </wx-view>
-</custom-navigation>
-`;
-
-exports[`Message Message status-message demo works fine 1`] = `
-<status-message>
-  <t-message
-    id="t-message"
-  />
-  <wx-view
-    class="box"
-  >
-    <t-button
-      block="{{true}}"
-      size="large"
-      tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showInfoMessage"
     >
@@ -99,29 +84,32 @@ exports[`Message Message status-message demo works fine 1`] = `
       block="{{true}}"
       size="large"
       tClass="external-class"
-      variant="outline"
-      bind:tap="showWarnMessage"
-    >
-      警示提示通知
-    </t-button>
-    <t-button
-      block="{{true}}"
-      size="large"
-      tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showSuccessMessage"
     >
-      成功提示通知
+      成功通知
     </t-button>
     <t-button
       block="{{true}}"
       size="large"
       tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showWarnMessage"
+    >
+      警示通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showErrorMessage"
     >
-      错误提示通知
+      错误通知
     </t-button>
   </wx-view>
-</status-message>
+</theme>
 `;

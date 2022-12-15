@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['badge', 'base', 'border', 'card', 'description', 'icon', 'multiple', 'scroll'];
+const mapper = ['badge', 'base', 'border', 'card', 'description', 'icon-grid', 'multiple', 'scroll'];
 
 describe('Grid', () => {
   mapper.forEach((demoName) => {

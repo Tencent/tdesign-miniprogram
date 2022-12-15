@@ -14,6 +14,14 @@ export interface TdRateProps {
     value?: boolean;
   };
   /**
+   * 评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB']
+   * @default '#ED7B2F'
+   */
+  color?: {
+    type: null;
+    value?: string | Array<string>;
+  };
+  /**
    * 评分的数量
    * @default 5
    */
@@ -31,7 +39,6 @@ export interface TdRateProps {
   };
   /**
    * 是否禁用评分
-   * @default false
    */
   disabled?: {
     type: BooleanConstructor;
@@ -53,6 +60,13 @@ export interface TdRateProps {
     value?: number;
   };
   /**
+   * 自定义评分图标；此时不受 variant 影响
+   */
+  icon?: {
+    type: null;
+    value?: string | string[];
+  };
+  /**
    * 是否显示对应的辅助文字
    * @default false
    */
@@ -61,8 +75,8 @@ export interface TdRateProps {
     value?: boolean;
   };
   /**
-   * 评分图标的大小，默认单位为 `px`，示例：`20`
-   * @default 20
+   * 评分图标的大小
+   * @default 24px
    */
   size?: {
     type: StringConstructor;
