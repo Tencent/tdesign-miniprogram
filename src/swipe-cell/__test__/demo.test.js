@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['left', 'right'];
+const mapper = ['double', 'icon', 'left', 'right'];
 
 describe('SwipeCell', () => {
   mapper.forEach((demoName) => {

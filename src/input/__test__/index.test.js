@@ -119,7 +119,7 @@ describe('input', () => {
       expect($label).toBeDefined();
       expect($label.dom.textContent).toBe(component.instance.data.label);
 
-      const $clearable = comp.querySelector('.base >>> .t-class-clearable');
+      const $clearable = comp.querySelector('.base >>> .t-input__wrap--clearable-icon');
       expect($clearable).toBeDefined();
 
       const $suffix = comp.querySelector('.base >>> .t-input__wrap--suffix');

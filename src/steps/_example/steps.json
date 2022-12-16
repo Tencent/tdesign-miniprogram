@@ -1,13 +1,9 @@
 {
   "navigationBarTitleText": "Steps 步骤条",
   "usingComponents": {
-    "t-steps": "tdesign-miniprogram/steps/steps",
-    "t-step-item": "tdesign-miniprogram/steps/step-item",
     "horizontal": "./horizontal",
-    "readOnly": "./readonly",
     "vertical": "./vertical",
-    "theme": "./theme",
-    "double": "./double",
-    "customization": "./customization"
+    "special": "./special",
+    "status": "./status"
   }
 }
