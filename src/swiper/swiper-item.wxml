@@ -1,5 +1,5 @@
 <view
-  aria-hidden="{{current === index}}"
+  aria-hidden="{{current !== index}}"
   class="{{classPrefix}}"
   style="transform: {{translate}} translateZ(0px);{{ customStyle }}"
 >
