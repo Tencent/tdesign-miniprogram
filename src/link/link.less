@@ -1,0 +1,112 @@
+@import '../common/style/index.less';
+
+// 状态色 - 默认色
+@link-color-default-normal: var(--td-link-color-default-normal, @font-gray-1); // default 主题默认态颜色
+@link-color-default-active: var(--td-link-color-default-active, @brand-color-active); // default 主题激活态颜色
+@link-color-default-disabled: var(--td-link-color-default-disabled, @text-color-disabled); // default 主题禁用态颜色
+
+// 状态色 - 主色
+@link-color-primary-normal: var(--td-link-color-primary-normal, @brand-color); // primary 主题默认态颜色
+@link-color-primary-active: var(--td-link-color-primary-active, @brand-color-active); // primary 主题激活态颜色
+@link-color-primary-disabled: var(--td-link-color-primary-disabled, @brand-color-disabled); // primary 主题禁用态颜色
+
+// 状态色 - 成功
+@link-color-success-normal: var(--td-link-color-success-normal, @success-color); // success 主题默认态颜色
+@link-color-success-active: var(--td-link-color-success-active, @success-color-active); // success 主题激活态颜色
+@link-color-success-disabled: var(--td-link-color-success-disabled, @success-color-disabled); // success 主题禁用态颜色
+
+// 状态色 - 警告
+@link-color-warning-normal: var(--td-link-color-warning-normal, @warning-color); // warning 主题默认态颜色
+@link-color-warning-active: var(--td-link-color-warning-active, @warning-color-active); // warning 主题激活态颜色
+@link-color-warning-disabled: var(--td-link-color-warning-disabled, @warning-color-disabled); // warning 主题禁用态颜色
+
+// 状态色 - 危险
+@link-color-danger-normal: var(--td-link-color-danger-normal, @error-color); // danger 主题默认态颜色
+@link-color-danger-active: var(--td-link-color-danger-active, @error-color-active); // danger 主题激活态颜色
+@link-color-danger-disabled: var(--td-link-color-danger-disabled, @error-color-disabled); // danger 主题禁用态颜色
+
+// 字号
+@link-content-small-font-size: 24rpx;
+@link-content-small-line-height: 40rpx;
+@link-icon-small-font-size: 28rpx;
+
+@link-content-medium-font-size: 28rpx;
+@link-content-medium-line-height: 44rpx;
+@link-icon-medium-font-size: 32rpx;
+
+@link-content-large-font-size: 32rpx;
+@link-content-large-line-height: 48rpx;
+@link-icon-large-font-size: 36rpx;
+
+@themes: primary, success, warning, default, danger;
+
+@link: ~'@{prefix}-link';
+
+.link-size(@size) {
+  @contentFontSize: 'link-content-@{size}-font-size';
+  @contentLineHeight: 'link-content-@{size}-line-height';
+  @iconSize: 'link-icon-@{size}-font-size';
+
+  .@{link}--@{size} {
+    .@{link}__content {
+      font-size: @@contentFontSize;
+      line-height: @@contentLineHeight;
+    }
+    .@{link}__prefix-icon,
+    .@{link}__suffix-icon {
+      font-size: @@iconSize;
+    }
+  }
+}
+
+.link-status(@status) {
+  .for(@themes, @i: 1) when(@i =< length(@themes)) {
+    @theme: extract(@themes, @i);
+    @color: 'link-color-@{theme}-@{status}';
+
+    .@{link}--@{theme}-@{status} {
+      color: @@color;
+
+      &.@{link}--underline::after {
+        border-color: @@color;
+      }
+    }
+
+    .for(@themes, (@i + 1));
+  }
+  .for(@themes);
+}
+
+.link-size(small);
+.link-size(medium);
+.link-size(large);
+
+.link-status(normal);
+.link-status(active);
+.link-status(disabled);
+
+.@{link} {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: content-box;
+
+  &--underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0;
+    bottom: 0;
+    opacity: 1;
+    border-bottom: 1px solid rgb(205, 11, 231);
+  }
+
+  &__prefix-icon + &__content:not(:empty) {
+    padding-left: 8rpx;
+  }
+
+  &__content:not(:empty) + &__suffix-icon {
+    padding-left: 8rpx;
+  }
+}

@@ -58,7 +58,8 @@
     "pages/notice-bar/notice-bar",
     "pages/image-viewer/image-viewer",
     "pages/result/result",
-    "pages/result/result-page"
+    "pages/result/result-page",
+    "pages/link/link"
   ],
   "subpackages": [
     {
@@ -132,7 +133,8 @@
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
     "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
-    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer"
+    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer",
+    "t-link": "tdesign-miniprogram/link/link"
   },
   "window": {
     "backgroundTextStyle": "light",
