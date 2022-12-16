@@ -17,7 +17,9 @@
       class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}} "
       aria-role="radio"
       aria-label="{{defaultTexts[index]}}"
-      aria-checked="{{value - 0.5 > index}}"
+      aria-checked="{{value > index}}"
+      focus="{{index+1 == value && !tipsVisible}}"
+      tabindex="-1"
     >
       <t-icon
         t-class="{{prefix}}-class-icon"
@@ -35,8 +37,7 @@
     style="left: {{tipsLeft}}px"
     aria-role="alertdialog"
     role="alertdialog"
-    aria-modal="{{tipsVisible}}"
-  >
+    aria-modal="{{tipsVisible}}">
     <view
       wx:if="{{allowHalf && actionType == 'tap'}}"
       class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) - 0.5 == value]])}}"
