@@ -19,14 +19,14 @@ describe('collapse', () => {
     const $second = comp.querySelector('#second >>> .t-collapse-panel__title');
     const $transitionWrapper = comp.querySelector('#second >>> .t-collapse-panel__wrapper');
 
-    $second.dispatchEvent('click');
+    $second.dispatchEvent('tap');
     $transitionWrapper.dispatchEvent('transitionend');
 
     await simulate.sleep();
 
     expect($base.instance.data.value.includes(1)).toBeTruthy();
 
-    $second.dispatchEvent('click');
+    $second.dispatchEvent('tap');
 
     await simulate.sleep();
 
@@ -37,7 +37,7 @@ describe('collapse', () => {
 
     expect($base.instance.data.value.includes(0)).toBeTruthy();
 
-    $second.dispatchEvent('click');
+    $second.dispatchEvent('tap');
 
     await simulate.sleep();
 
