@@ -1,20 +1,19 @@
-<wxs src="./input.wxs" module="utils" />
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+<wxs src="./input.wxs" module="this" />
+
 <view
   style="{{ customStyle }}"
   class="{{classPrefix}} {{classPrefix}}--size-{{size}} {{classPrefix}}--layout-{{layout}} {{prefix}}-class"
 >
-  <view wx:if="{{prefixIcon || label}}" class="{{classPrefix}}__wrap--prefix">
-    <view wx:if="{{prefixIcon}}" class="{{classPrefix}}__icon--prefix">
-      <slot name="prefixIcon" wx:if="{{prefixIcon === 'slot'}}" />
-      <t-icon
+  <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData) || label}}" class="{{classPrefix}}__wrap--prefix">
+    <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}" class="{{classPrefix}}__icon--prefix">
+      <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
+      <template
         wx:else
-        class="{{prefix}}-class-prefix-icon"
-        name="{{prefixIconProps.name || prefixIcon}}"
-        prefix="{{prefixIconProps.prefix}}"
-        size="{{prefixIconProps.size || '48rpx'}}"
-        color="{{prefixIconProps.color}}"
-        customStyle="{{prefixIconProps.customStyle}}"
-      ></t-icon>
+        is="icon"
+        data="{{tClass: prefix + '-class-prefix-icon', size: 24, name: prefixIconName, ...prefixIconData}}"
+      ></template>
     </view>
     <view wx:if="{{label}}" class="{{classPrefix}}__label">
       <slot name="label" wx:if="{{label === 'slot'}}" />
@@ -29,8 +28,8 @@
       <input
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
-        placeholderStyle="{{placeholderStyle}}"
-        placeholder-class="{{classPrefix}}__placeholder"
+        placeholder-style="{{placeholderStyle}}"
+        placeholder-class="{{classPrefix}}__placeholder {{placeholderClass}}"
         value="{{value}}"
         bindinput="onInput"
         bindfocus="onFocus"
@@ -56,34 +55,29 @@
         safe-password-nonce="{{safePasswordNonce}}"
         safe-password-salt="{{safePasswordSalt}}"
         safe-password-custom-hash="{{safePasswordCustomHash}}"
-        class="{{utils.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
+        class="{{this.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
       />
 
-      <t-icon
-        wx:if="{{ clearable && value.length > 0}}"
-        class="{{classPrefix}}__wrap--clearable-icon {{prefix}}-class-clearable"
-        name="{{clearableIconProps.name || 'close-circle-filled'}}"
-        prefix="{{clearableIconProps.prefix}}"
-        size="{{clearableIconProps.size || '48rpx'}}"
-        color="{{clearableIconProps.color}}"
-        customStyle="{{clearableIconProps.customStyle}}"
+      <view
+        wx:if="{{(clearableName || _.isNoEmptyObj(clearableData)) && value.length > 0}}"
+        class="{{classPrefix}}__wrap--clearable-icon"
         bind:tap="clearInput"
-      ></t-icon>
-
+      >
+        <template
+          is="icon"
+          data="{{tClass: prefix + '-class-clearable', size: 24, name: clearableName, ...clearableData}}"
+        ></template>
+      </view>
       <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix">
         <text wx:if="{{suffix}}">{{suffix}}</text>
         <slot wx:else name="suffix" />
       </view>
       <view class="{{classPrefix}}__wrap--suffix-icon">
-        <t-icon
-          wx:if="{{suffixIcon}}"
-          class="{{prefix}}-class-suffix-icon"
-          name="{{suffixIconProps.name || suffixIcon}}"
-          prefix="{{suffixIconProps.prefix}}"
-          size="{{suffixIconProps.size || '48rpx'}}"
-          color="{{suffixIconProps.color}}"
-          customStyle="{{suffixIconProps.customStyle}}"
-        ></t-icon>
+        <template
+          wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}"
+          is="icon"
+          data="{{tClass: prefix + '-class-suffix-icon', size: 24, name: suffixIconName, ...suffixIconData}}"
+        ></template>
         <slot wx:else name="suffixIcon" />
       </view>
     </view>

@@ -1,14 +1,22 @@
+<wxs src="./calendar.wxs" module="_" />
 <import src="../common/template/button.wxml" />
 
 <view style="{{ customStyle }}">
   <t-popup visible="{{visible}}" bind:visible-change="handleClose" placement="bottom">
     <view class="{{classPrefix}}">
-      <view class="{{classPrefix}}__title">
+      <view class="{{classPrefix}}__title" tabindex="0">
         <slot wx:if="{{title === 'slot'}}" name="title" />
         <text wx:else>{{ title || '请选择日期' }}</text>
       </view>
-      <t-icon name="close" class="{{classPrefix}}__close-btn" size="24" bind:tap="handleClose" />
-      <view class="{{classPrefix}}__days">
+      <t-icon
+        name="close"
+        class="{{classPrefix}}__close-btn"
+        size="24"
+        aria-role="button"
+        aria-label="关闭"
+        bind:tap="handleClose"
+      />
+      <view aria-hidden class="{{classPrefix}}__days">
         <view wx:for="{{days}}" wx:key="index" class="{{classPrefix}}__days-item">{{ item }}</view>
       </view>
       <scroll-view
@@ -30,6 +38,9 @@
                 data-year="{{item.year}}"
                 data-month="{{item.month}}"
                 data-date="{{dateItem}}"
+                aria-role="button"
+                aria-label="{{_.getDateLabel(item, dateItem)}}"
+                aria-disabled="{{dateItem.type === 'disabled'}}"
                 bind:tap="handleSelect"
               >
                 <view wx:if="{{dateItem.prefix}}" class="{{classPrefix}}__dates-item-prefix"

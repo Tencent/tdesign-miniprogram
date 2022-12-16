@@ -33,6 +33,7 @@
     color="{{iconProps.color}}"
     customStyle="{{iconProps.customStyle}}"
     class="{{classPrefix}}__icon {{prefix}}-class-icon"
+    aria-hidden
   ></t-icon>
   <view wx:if="{{loading}}" class="{{classPrefix}}__loading">
     <t-loading

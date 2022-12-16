@@ -10,3 +10,7 @@
 .favor-btn {
   background-color: #0052d9;
 }
+
+.delete-btn {
+  background-color: #e34d59;
+}

@@ -41,7 +41,7 @@ exports[`input props : clearable && label && suffix 1`] = `
           holdKeyboard="{{false}}"
           password="{{false}}"
           placeholder=""
-          placeholderClass="t-input__placeholder"
+          placeholderClass="t-input__placeholder input-placeholder"
           placeholderStyle=""
           safePasswordCertPath=""
           safePasswordCustomHash=""
@@ -59,23 +59,29 @@ exports[`input props : clearable && label && suffix 1`] = `
           bind:input="onInput"
           bind:keyboardheightchange="onKeyboardHeightChange"
         />
-        <t-icon
-          class="t-input__wrap--clearable-icon t-class-clearable"
+        <wx-view
+          class="t-input__wrap--clearable-icon"
           bind:tap="clearInput"
         >
-          <wx-view
-            ariaHidden="{{false}}"
-            ariaLabel=""
-            ariaRole=""
-            class="t-icon t-class"
-            style="font-size: 48rpx"
-            bind:tap="onTap"
+          <t-icon
+            class=""
+            tClass="t-class-clearable"
+            bind:click="onTplClick"
           >
-            <wx-label
-              class="t-icon-close-circle-filled t-icon-base"
-            />
-          </wx-view>
-        </t-icon>
+            <wx-view
+              ariaHidden="{{false}}"
+              ariaLabel=""
+              ariaRole=""
+              class="t-icon t-class"
+              style="font-size: 24px"
+              bind:tap="onTap"
+            >
+              <wx-label
+                class="t-icon-close-circle-filled t-icon-base"
+              />
+            </wx-view>
+          </t-icon>
+        </wx-view>
         <wx-view
           class="t-input__wrap--suffix t-class-suffix"
         >
@@ -87,14 +93,16 @@ exports[`input props : clearable && label && suffix 1`] = `
           class="t-input__wrap--suffix-icon"
         >
           <t-icon
-            class="t-class-suffix-icon"
+            class=""
+            tClass="t-class-suffix-icon"
+            bind:click="onTplClick"
           >
             <wx-view
               ariaHidden="{{false}}"
               ariaLabel=""
               ariaRole=""
               class="t-icon t-class"
-              style="font-size: 48rpx"
+              style="font-size: 24px"
               bind:tap="onTap"
             >
               <wx-label
@@ -155,7 +163,7 @@ exports[`input slots : label 1`] = `
           holdKeyboard="{{false}}"
           password="{{false}}"
           placeholder=""
-          placeholderClass="t-input__placeholder"
+          placeholderClass="t-input__placeholder input-placeholder"
           placeholderStyle=""
           safePasswordCertPath=""
           safePasswordCustomHash=""
