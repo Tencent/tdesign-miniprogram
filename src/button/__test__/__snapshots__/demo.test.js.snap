@@ -184,7 +184,8 @@ exports[`Button Button shape demo works fine 1`] = `
       填充按钮
     </t-button>
     <t-button
-      icon="app"
+      ariaLabel="返回"
+      icon="chevron-left"
       shape="square"
       size="large"
       theme="primary"
@@ -204,7 +205,8 @@ exports[`Button Button shape demo works fine 1`] = `
       填充按钮
     </t-button>
     <t-button
-      icon="app"
+      ariaLabel="返回"
+      icon="chevron-left"
       shape="circle"
       size="large"
       theme="primary"
