@@ -11,8 +11,6 @@
         data-index="{{index}}"
         icon="{{item.icon}}"
         text="{{item.label}}"
-        tabindex="-1"
-        focus="{{index == 0}}"
       >
         <!-- <template is="item" data="{{classPrefix, item}}" /> -->
       </t-grid-item>
@@ -32,8 +30,6 @@
               bind:tap="onSelect"
               icon="{{item.icon}}"
               text="{{item.label}}"
-              tabindex="-1"
-              focus="{{index == 0}}"
             >
               <!-- <template is="item" data="{{classPrefix, item}}" /> -->
             </t-grid-item>
