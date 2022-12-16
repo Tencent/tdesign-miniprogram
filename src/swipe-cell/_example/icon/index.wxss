@@ -22,3 +22,11 @@
 .favor-btn {
   background-color: #0052d9;
 }
+
+.column {
+  flex-direction: column;
+}
+
+.padding-bottom {
+  padding-bottom: 8rpx;
+}
