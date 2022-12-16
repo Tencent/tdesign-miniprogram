@@ -27,6 +27,8 @@
         hover-class="{{classPrefix}}__cancel--hover"
         hover-stay-time="70"
         bind:tap="onCancel"
+        role="button"
+        aria-role="button"
       >
         {{ cancelText }}
       </view>

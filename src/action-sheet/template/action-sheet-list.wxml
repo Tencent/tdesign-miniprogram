@@ -4,6 +4,11 @@
     style="{{ item.color ? 'color: ' + item.color : '' }}"
     class="{{listThemeItemClass}}"
     bind:tap="onSelect"
+    role="button"
+    aria-role="button"
+    aria-label="{{item.label || item}}"
+    tabindex="-1"
+    focus="{{index == 0}}"
   >
     <t-icon wx:if="{{item.icon}}" name="{{item.icon}}" class="{{classPrefix}}__list-item-icon" size="48rpx"></t-icon>
     <view class="{{classPrefix}}__list-item-text">{{item.label || item}}</view>
