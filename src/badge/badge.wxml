@@ -7,11 +7,12 @@
   aria-describedby="describedby"
   aria-role="{{ ariaRole || 'option'}}"
 >
-  <view id="labelledby" class="{{classPrefix}}__content {{prefix}}-class-content">
+  <view id="labelledby" class="{{classPrefix}}__content {{prefix}}-class-content" aria-hidden="true">
     <slot wx:if="{{!content}}" class="{{classPrefix}}__content-slot" />
     <text wx:else class="{{classPrefix}}__content-text">{{content}}</text>
   </view>
   <view
+    aria-hidden="true"
     aria-label="{{ ariaLabel || this.getBadgeAriaLabel({dot, count, maxCount}) }}"
     id="describedby"
     wx:if="{{count !== 'slot' && this.isShowBadge({dot,count,showZero})}}"
