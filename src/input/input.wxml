@@ -59,13 +59,13 @@
       />
 
       <view
-        wx:if="{{(clearableIconName || _.isNoEmptyObj(clearableIconData)) && value.length > 0}}"
+        wx:if="{{(clearableName || _.isNoEmptyObj(clearableData)) && value.length > 0}}"
         class="{{classPrefix}}__wrap--clearable-icon"
         bind:tap="clearInput"
       >
         <template
           is="icon"
-          data="{{tClass: prefix + '-class-clearable', size: 24, name: clearableIconName, ...clearableIconData}}"
+          data="{{tClass: prefix + '-class-clearable', size: 24, name: clearableName, ...clearableData}}"
         ></template>
       </view>
       <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix">

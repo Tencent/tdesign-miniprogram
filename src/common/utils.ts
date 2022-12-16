@@ -178,3 +178,24 @@ export const unitConvert = (value: number | string): number => {
   }
   return value;
 };
+
+export const setIcon = (iconName, icon, defaultIcon) => {
+  if (icon) {
+    if (typeof icon === 'string') {
+      return {
+        [`${iconName}Name`]: icon,
+        [`${iconName}Data`]: {},
+      };
+    } else if (typeof icon === 'object') {
+      return {
+        [`${iconName}Name`]: '',
+        [`${iconName}Data`]: icon,
+      };
+    } else {
+      return {
+        [`${iconName}Name`]: defaultIcon,
+        [`${iconName}Data`]: {},
+      };
+    }
+  }
+};
