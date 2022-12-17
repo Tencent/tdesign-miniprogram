@@ -12,30 +12,35 @@ exports[`Swiper Swiper base demo works fine 1`] = `
   >
     <t-swiper-item>
       <wx-image
+        ariaLabel="光炫图案"
         class="img"
         src="https://tdesign.gtimg.com/site/swiper/01.png"
       />
     </t-swiper-item>
     <t-swiper-item>
       <wx-image
+        ariaLabel="闹钟图案"
         class="img"
         src="https://tdesign.gtimg.com/site/swiper/02.png"
       />
     </t-swiper-item>
     <t-swiper-item>
       <wx-image
+        ariaLabel="扇贝图案"
         class="img"
         src="https://tdesign.gtimg.com/site/swiper/03.png"
       />
     </t-swiper-item>
     <t-swiper-item>
       <wx-image
+        ariaLabel="喵咪图案"
         class="img"
         src="https://tdesign.gtimg.com/site/swiper/04.png"
       />
     </t-swiper-item>
     <t-swiper-item>
       <wx-image
+        ariaLabel="海滩图案"
         class="img"
         src="https://tdesign.gtimg.com/site/swiper/05.png"
       />

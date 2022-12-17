@@ -39,6 +39,7 @@ exports[`swiper props : direction 1`] = `
           id="number-0"
         >
           <wx-view
+            ariaHidden="{{false}}"
             class="t-swiper-item"
             style="transform: translate(0px, 0%) translateZ(0px);"
           >
@@ -52,6 +53,7 @@ exports[`swiper props : direction 1`] = `
           id="number-1"
         >
           <wx-view
+            ariaHidden="{{true}}"
             class="t-swiper-item"
             style="transform: translate(0px, 100%) translateZ(0px);"
           >
@@ -65,6 +67,7 @@ exports[`swiper props : direction 1`] = `
           id="number-2"
         >
           <wx-view
+            ariaHidden="{{true}}"
             class="t-swiper-item"
             style="transform: translate(0px, 200%) translateZ(0px);"
           >
@@ -78,6 +81,7 @@ exports[`swiper props : direction 1`] = `
           id="number-3"
         >
           <wx-view
+            ariaHidden="{{true}}"
             class="t-swiper-item"
             style="transform: translate(0px, 300%) translateZ(0px);"
           >
@@ -91,6 +95,7 @@ exports[`swiper props : direction 1`] = `
           id="number-4"
         >
           <wx-view
+            ariaHidden="{{true}}"
             class="t-swiper-item"
             style="transform: translate(0px, 400%) translateZ(0px);"
           >
@@ -155,6 +160,7 @@ exports[`swiper props : direction 1`] = `
           id="number-0"
         >
           <wx-view
+            ariaHidden="{{false}}"
             class="t-swiper-item"
             style="transform: translate(0%, 0px) translateZ(0px);"
           >
@@ -168,6 +174,7 @@ exports[`swiper props : direction 1`] = `
           id="number-1"
         >
           <wx-view
+            ariaHidden="{{true}}"
             class="t-swiper-item"
             style="transform: translate(100%, 0px) translateZ(0px);"
           >
@@ -200,11 +207,15 @@ exports[`swiper props : direction 1`] = `
             class="t-swiper-nav__btn"
           >
             <wx-view
+              ariaLabel="上一张"
+              ariaRole="button"
               class="t-swiper-nav__btn--prev"
               data-dir="prev"
               bind:tap="nav"
             />
             <wx-view
+              ariaLabel="下一张"
+              ariaRole="button"
               class="t-swiper-nav__btn--next"
               data-dir="next"
               bind:tap="nav"
