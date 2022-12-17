@@ -89,6 +89,36 @@ export default class PickerItem extends SuperComponent {
         });
       });
     },
+    onTap(e) {
+      const { index } = e.currentTarget.dataset;
+      const {
+        itemHeight,
+        data: { options, classPrefix },
+      } = this;
+      wx.createSelectorQuery()
+        .in(this)
+        .select(`#${classPrefix}__group`)
+        .node()
+        .exec((res) => {
+          const scrollView = res[0].node;
+          scrollView.scrollTo({
+            top: 0,
+          });
+        });
+      this.setData({
+        duration: DefaultDuration,
+        offset: -index * itemHeight,
+      });
+      wx.nextTick(() => {
+        this._selectedIndex = index;
+        this._selectedValue = options[index]?.value;
+        this._selectedLabel = options[index]?.label;
+        this.parent?.triggerColumnChange({
+          index,
+          column: this.columnIndex || 0,
+        });
+      });
+    },
 
     // 刷新选中状态
     update() {

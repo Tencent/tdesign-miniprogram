@@ -1,4 +1,6 @@
-<view
+<scroll-view
+  enhanced="true"
+  id="{{classPrefix}}__group"
   style="{{ customStyle }}"
   class="{{classPrefix}}__group"
   bind:touchstart="onTouchStart"
@@ -16,8 +18,9 @@
       wx:key="index"
       wx:for-item="option"
       data-index="{{ index }}"
+      bind:tap="onTap"
     >
       {{option.label}}
     </view>
   </view>
-</view>
+</scroll-view>
