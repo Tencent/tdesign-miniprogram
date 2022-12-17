@@ -8,48 +8,55 @@
       t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
       t-class-content="{{classPrefix}}__grid-content"
       aria-role="presentation"
-      aria-label="{{ file.type === 'video' ? '视频' : '图像' }}"
     >
       <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
-        <t-image
-          wx:if="{{file.type !== 'video'}}"
-          bindtap="onProofTap"
-          data-index="{{index}}"
-          t-class="{{classPrefix}}__thumbnail"
-          src="{{file.url}}"
-          mode="{{imageProps.mode}}"
-          error="{{imageProps.error}}"
-          lazy="{{imageProps.lazy}}"
-          loading="{{imageProps.loading}}"
-          shape="{{imageProps.shape || 'round'}}"
-          webp="{{imageProps.webp}}"
-          showMenuByLongpress="{{image.showMenuByLongpress}}"
-        />
-        <video
-          wx:if="{{file.type === 'video'}}"
-          class="{{classPrefix}}__thumbnail"
-          src="{{file.url}}"
-          controls
-          autoplay="{{false}}"
-          objectFit="contain"
-        />
-        <!-- 失败重试 -->
         <view
-          data-index="{{index}}"
-          wx:if="{{file.status && file.status != 'done'}}"
-          class="{{classPrefix}}__progress-mask"
-          data-file="{{file}}"
-          bind:tap="onFileClick"
+          class="{{classPrefix}}__wrapper"
+          style="{{gridItemStyle}}"
+          aria-role="button"
+          aria-label="{{ file.status && file.status != 'done' ? file.status == 'loading' ? file.percent ? '上传中' + file.percent + '%' : '上传中' : file.status == 'reload' ? '重新上传' : '上传失败' : file.type === 'video' ? '视频' : '图像' }}"
         >
-          <block wx:if="{{file.status == 'loading'}}">
-            <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" aria-hidden />
-            <view class="{{classPrefix}}__progress-text">{{file.percent ? file.percent + '%' : '上传中...'}}</view>
-          </block>
-          <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" aria-hidden />
-          <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text"
-            >{{file.status == 'reload' ? '重新上传' : '上传失败'}}</view
+          <t-image
+            wx:if="{{file.type !== 'video'}}"
+            bindtap="onProofTap"
+            data-index="{{index}}"
+            t-class="{{classPrefix}}__thumbnail"
+            src="{{file.url}}"
+            mode="{{imageProps.mode}}"
+            error="{{imageProps.error}}"
+            lazy="{{imageProps.lazy}}"
+            loading="{{imageProps.loading}}"
+            shape="{{imageProps.shape || 'round'}}"
+            webp="{{imageProps.webp}}"
+            showMenuByLongpress="{{image.showMenuByLongpress}}"
+          />
+          <video
+            wx:if="{{file.type === 'video'}}"
+            class="{{classPrefix}}__thumbnail"
+            src="{{file.url}}"
+            controls
+            autoplay="{{false}}"
+            objectFit="contain"
+          />
+          <!-- 失败重试 -->
+          <view
+            data-index="{{index}}"
+            wx:if="{{file.status && file.status != 'done'}}"
+            class="{{classPrefix}}__progress-mask"
+            data-file="{{file}}"
+            bind:tap="onFileClick"
           >
+            <block wx:if="{{file.status == 'loading'}}">
+              <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" aria-hidden />
+              <view class="{{classPrefix}}__progress-text">{{file.percent ? file.percent + '%' : '上传中...'}}</view>
+            </block>
+            <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" aria-hidden />
+            <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text"
+              >{{file.status == 'reload' ? '重新上传' : '上传失败'}}</view
+            >
+          </view>
         </view>
+
         <!-- 删除 -->
         <view
           class="{{classPrefix}}__close-btn hotspot-expanded"
