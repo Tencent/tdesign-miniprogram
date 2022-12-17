@@ -1,7 +1,9 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
+  id="{{classPrefix}}__group"
   style="{{ style }}"
   class="{{_.cls(classPrefix + '__group', [])}} class {{prefix}}-class"
+  enhanced="true"
   bind:touchstart="onTouchStart"
   catch:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
@@ -17,8 +19,9 @@
       wx:key="index"
       wx:for-item="option"
       data-index="{{ index }}"
+      bind:tap="onTap"
     >
       {{option.label}}
     </view>
   </view>
-</view>
+</scroll-view>
