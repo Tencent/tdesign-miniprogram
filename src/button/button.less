@@ -1,7 +1,6 @@
 @import '../common/style/index.less';
 
-@button-default-height: 40 * 2rpx;
-@button-default-line-height: @text-line-height;
+@button-default-height: var(--td-button-default-height, 80rpx);
 @button-default-font-size: @font-size * 1.6;
 @button-border-width: 1px;
 @button-border-radius: @radius-default;
@@ -348,7 +347,7 @@
       }
 
       &-m {
-        border-radius: (@button-default-height / 2);
+        border-radius: calc(@button-default-height / 2);
       }
 
       &-s {

@@ -1,14 +1,15 @@
 Component({
   data: {
+    confirmBtn: { content: '确定' },
     dialogKey: '',
     showConfirm: false,
     showWarnConfirm: false,
     showTooLongBtnContent: false,
     showMultiBtn: false,
     multiBtnList: [
-      { name: '取消', primary: false },
-      { name: '单行按钮最多十五个字符文案内容', primary: true },
-      { name: '按钮文案文字内容较长', primary: true, style: 'color:red;' },
+      { content: '次要按钮', theme: 'light' },
+      { content: '次要按钮', theme: 'light' },
+      { content: '主要按钮', theme: 'primary' },
     ],
   },
   methods: {

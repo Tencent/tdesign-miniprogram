@@ -1,5 +1,12 @@
 <view class="box">
-  <t-button t-class="external-class" size="large" variant="outline" data-key="showWithInput" bind:tap="showDialog" block
+  <t-button
+    t-class="external-class"
+    size="large"
+    theme="primary"
+    variant="outline"
+    data-key="showWithInput"
+    bind:tap="showDialog"
+    block
     >单行标题</t-button
   >
   <t-dialog
@@ -15,6 +22,7 @@
 
   <t-button
     t-class="external-class"
+    theme="primary"
     size="large"
     variant="outline"
     data-key="showTextAndTitleWithInput"

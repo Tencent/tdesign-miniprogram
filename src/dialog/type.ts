@@ -17,6 +17,7 @@ export interface TdDialogProps {
   /**
    * 多按钮排列方式
    * @default horizontal
+   * @deprecated
    */
   buttonLayout?: {
     type: StringConstructor;
@@ -24,7 +25,6 @@ export interface TdDialogProps {
   };
   /**
    * 取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件
-   * @default ''
    */
   cancelBtn?: {
     type: null;
@@ -32,7 +32,6 @@ export interface TdDialogProps {
   };
   /**
    * 点击蒙层时是否触发关闭事件
-   * @default true
    */
   closeOnOverlayClick?: {
     type: BooleanConstructor;
@@ -40,7 +39,6 @@ export interface TdDialogProps {
   };
   /**
    * 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件
-   * @default ''
    */
   confirmBtn?: {
     type: null;
@@ -93,6 +91,14 @@ export interface TdDialogProps {
     value?: boolean;
   };
   /**
+   * 样式风格
+   * @default default
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'default' | 'new';
+  };
+  /**
    * 标题
    */
   title?: {
@@ -101,7 +107,6 @@ export interface TdDialogProps {
   };
   /**
    * 控制对话框是否显示
-   * @default false
    */
   visible?: {
     type: BooleanConstructor;

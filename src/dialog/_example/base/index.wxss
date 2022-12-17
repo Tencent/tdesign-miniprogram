@@ -2,9 +2,8 @@
   margin: 32rpx;
 }
 
-.external-class {
-  margin: 0 0 32rpx 0;
-  height: 96rpx;
+.wrapper {
+  margin-bottom: 32rpx;
 }
 
 .long-content {
@@ -15,4 +14,8 @@
 }
 .long-content .content-cintainer {
   width: 540rpx;
+}
+
+.cancel {
+  background: red !important;
 }

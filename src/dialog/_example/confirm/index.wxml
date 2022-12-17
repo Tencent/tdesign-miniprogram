@@ -1,12 +1,19 @@
 <view class="box">
-  <t-button t-class="external-class" size="large" variant="outline" data-key="showConfirm" bind:tap="showDialog" block
+  <t-button
+    t-class="external-class"
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="showConfirm"
+    bind:tap="showDialog"
+    block
     >双按钮</t-button
   >
   <t-dialog
     visible="{{showConfirm}}"
     title="对话框标题"
     content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-    confirm-btn="按钮最多字数"
+    confirm-btn="{{ confirmBtn }}"
     cancel-btn="取消"
     bind:confirm="closeDialog"
     bind:cancel="closeDialog"
@@ -14,6 +21,7 @@
 
   <t-button
     t-class="external-class"
+    theme="primary"
     size="large"
     variant="outline"
     data-key="showWarnConfirm"
@@ -24,8 +32,7 @@
   <t-dialog
     visible="{{showWarnConfirm}}"
     title="对话框标题"
-    t-class-confirm="custom-confirm-btn"
-    confirm-btn="警示操作"
+    confirm-btn="{{ { content: '警示操作', theme: 'danger' } }}"
     cancel-btn="取消"
     bind:confirm="closeDialog"
     bind:cancel="closeDialog"
@@ -33,6 +40,7 @@
 
   <t-button
     t-class="external-class"
+    theme="primary"
     size="large"
     variant="outline"
     data-key="showTooLongBtnContent"
@@ -44,14 +52,21 @@
     visible="{{showTooLongBtnContent}}"
     title="对话框标题"
     content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-    confirm-btn="按钮文案文字内容较长"
+    confirm-btn="{{ confirmBtn }}"
     cancel-btn="取消"
     button-layout="vertical"
     bind:confirm="closeDialog"
     bind:cancel="closeDialog"
   />
 
-  <t-button t-class="external-class" size="large" variant="outline" data-key="showMultiBtn" bind:tap="showDialog" block
+  <t-button
+    t-class="external-class"
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="showMultiBtn"
+    bind:tap="showDialog"
+    block
     >多按钮</t-button
   >
   <t-dialog

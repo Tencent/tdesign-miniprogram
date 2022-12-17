@@ -136,7 +136,7 @@ Page({
           dialogConfig: modelConfigFactory({
             title: key === 'textAndTitle' ? title : '对话框带文本最大高度',
             content: key === 'textAndTitle' ? message : '',
-            confirmBtn: '我知道了',
+            confirmBtn: '知道了',
           }),
         });
         return;
@@ -192,7 +192,7 @@ Page({
           dialogConfig: modelConfigFactory({
             title,
             content: message,
-            buttonLayout: 'vertical', // 'horizontal' | 'vertical'
+            buttonLayout: 'horizontal', // 'horizontal' | 'vertical'
             actions: [
               { name: '取消', primary: false },
               { name: '单行按钮最多十五个字符文案内容', primary: true },

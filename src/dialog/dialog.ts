@@ -25,18 +25,53 @@ export default class Dialog extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    buttonVariant: 'text',
+  };
+
+  observers = {
+    'confirmBtn, cancelBtn'(confirm, cancel) {
+      const rect: Record<string, any> = {};
+      // 其中一个为 null，也应该属于 text
+      const allText = [confirm, cancel].every((item) => typeof item === 'string' || item == null);
+      const buttonMap = { confirm, cancel };
+
+      if (allText) {
+        this.setData({ buttonVariant: 'text' });
+      } else {
+        this.setData({ buttonVariant: 'base' });
+      }
+
+      Object.keys(buttonMap).forEach((key) => {
+        const btn = buttonMap[key];
+        if (typeof btn === 'string') {
+          rect[`_${key}`] = { content: btn };
+        } else if (btn && typeof btn === 'object') {
+          rect[`_${key}`] = btn;
+        }
+      });
+
+      this.setData({ ...rect });
+    },
   };
 
   methods = {
     onTplButtonTap(e) {
       const evtType = e.type;
-      const { type } = e.target.dataset;
+      const { type, extra } = e.target.dataset;
       const button = this.data[`${type}Btn`];
       const cbName = `bind${evtType}`;
 
+      if (type === 'action') {
+        this.onActionTap(extra);
+        return;
+      }
+
       if (typeof button[cbName] === 'function') {
         button[cbName](e);
+      } else if (['confirm', 'cancel'].includes(type)) {
+        this.triggerEvent(type);
       }
+
       if (evtType !== 'tap') {
         const success = e.detail?.errMsg.indexOf('ok') > -1;
         this.triggerEvent(success ? 'open-type-event' : 'open-type-error-event', e.detail);
@@ -72,9 +107,7 @@ export default class Dialog extends SuperComponent {
       this.triggerEvent('overlayClick');
     },
 
-    onActionTap(e: any) {
-      const { index } = e.currentTarget.dataset;
-
+    onActionTap(index: number) {
       this.triggerEvent('action', { index });
       if (this._onAction) {
         this._onAction({ index });
