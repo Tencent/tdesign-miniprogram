@@ -23,7 +23,12 @@ export default class TabPanel extends SuperComponent {
     classPrefix: name,
     active: false,
     hide: true,
+    id: '',
   };
+
+  setId(id) {
+    this.setData({ id });
+  }
 
   observers = {
     label() {

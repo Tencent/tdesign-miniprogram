@@ -1,6 +1,6 @@
 import dom from '../behaviors/dom';
 import touch from '../behaviors/touch';
-import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions, useId } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 
@@ -24,12 +24,14 @@ export default class Tabs extends SuperComponent {
       type: 'descendant',
       linked(target: any) {
         this.children.push(target);
+        this.initChildId();
         target.index = this.children.length - 1;
         this.updateTabs();
       },
       unlinked(target: WechatMiniprogram.Component.TrivialInstance) {
         this.children = this.children.filter((item) => item.index !== target.index);
         this.updateTabs(() => this.setTrack());
+        this.initChildId();
       },
     },
   };
@@ -64,10 +66,20 @@ export default class Tabs extends SuperComponent {
     isScrollY: false,
     direction: 'X',
     offset: 0,
+    tabPanelId: '',
   };
 
   created() {
     this.children = this.children || [];
+  }
+
+  initChildId() {
+    this.setData({
+      tabPanelId: `${useId()  }-`,
+    });
+    this.children.forEach((item, index) => {
+      item.setId(this.data.tabPanelId + index);
+    });
   }
 
   attached() {
