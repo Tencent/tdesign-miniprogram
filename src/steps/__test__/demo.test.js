@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['customization', 'double', 'horizontal', 'readonly', 'theme', 'vertical'];
+const mapper = ['horizontal', 'special', 'status', 'vertical'];
 
 describe('Steps', () => {
   mapper.forEach((demoName) => {

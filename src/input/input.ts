@@ -9,7 +9,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getCharacterLength } from '../common/utils';
+import { getCharacterLength, setIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-input`;
@@ -45,6 +45,29 @@ export default class Input extends SuperComponent {
     ready() {
       const { value } = this.properties;
       this.updateValue(value);
+    },
+  };
+
+  observers = {
+    prefixIcon(prefixIcon) {
+      const obj = setIcon('prefixIcon', prefixIcon, '');
+      this.setData({
+        ...obj,
+      });
+    },
+
+    suffixIcon(suffixIcon) {
+      const obj = setIcon('suffixIcon', suffixIcon, '');
+      this.setData({
+        ...obj,
+      });
+    },
+
+    clearable(clearable) {
+      const obj = setIcon('clearable', clearable, 'close-circle-filled');
+      this.setData({
+        ...obj,
+      });
     },
   };
 

@@ -45,7 +45,7 @@ function cls(base, arr) {
   for (size = arr.length; i < size; i++) {
     var item = arr[i];
 
-    if (item.constructor === 'Array') {
+    if (item && item.constructor === 'Array') {
       var key = arr[i][0];
       var value = arr[i][1];
 

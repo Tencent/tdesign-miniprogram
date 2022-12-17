@@ -3,10 +3,28 @@ Component({
     right: [
       {
         text: '编辑',
+        icon: {
+          name: 'edit',
+          size: 16,
+        },
         className: 'btn edit-btn',
       },
       {
         text: '删除',
+        icon: {
+          name: 'delete',
+          size: 16,
+        },
+        className: 'btn delete-btn',
+      },
+    ],
+    rightIcon: [
+      {
+        icon: 'edit',
+        className: 'btn edit-btn',
+      },
+      {
+        icon: 'delete',
         className: 'btn delete-btn',
       },
     ],

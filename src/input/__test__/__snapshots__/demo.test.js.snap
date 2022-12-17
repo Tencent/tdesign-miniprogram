@@ -26,20 +26,6 @@ exports[`Input Input base demo works fine 1`] = `
     placeholder="请输入文字"
   />
   <t-input
-    placeholder="请输入文字"
-  >
-    <wx-text
-      slot="label"
-    >
-      标签文字
-      <wx-text
-        style="color: #e34d59"
-      >
-         *
-      </wx-text>
-    </wx-text>
-  </t-input>
-  <t-input
     label="标签文字"
     placeholder="请输入文字(选填)"
   />
