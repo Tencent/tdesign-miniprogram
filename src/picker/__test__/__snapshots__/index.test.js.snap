@@ -27,24 +27,30 @@ exports[`picker :base 1`] = `
         />
         <wx-view
           class="t-picker t-class"
+          focus="{{true}}"
           slot="content"
           style=""
+          tabindex="-1"
         >
           <wx-view
             class="t-picker__toolbar"
           >
             <wx-view
+              ariaRole="button"
               class="t-picker__cancel t-class-cancel"
               bind:tap="onCancel"
             >
               取消
             </wx-view>
             <wx-view
+              ariaLabel="选择框"
               class="t-picker__title t-class-title"
+              focus="{{true}}"
             >
               
             </wx-view>
             <wx-view
+              ariaRole="button"
               class="t-picker__confirm t-class-confirm"
               bind:tap="onConfirm"
             >
@@ -72,6 +78,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
+                    bind:tap="onTap"
                   >
                     
       北京
@@ -80,6 +87,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{1}}"
+                    bind:tap="onTap"
                   >
                     
       上海
@@ -88,6 +96,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{2}}"
+                    bind:tap="onTap"
                   >
                     
       广州
@@ -96,6 +105,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{3}}"
+                    bind:tap="onTap"
                   >
                     
       深圳
@@ -104,13 +114,14 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{4}}"
+                    bind:tap="onTap"
                   >
                     
       成都
     
                   </wx-view>
                 </wx-view>
-              </wx-view>
+              </wx-scroll-view>
             </t-picker-item>
             <wx-view
               class="t-picker__mask t-picker__mask--top"

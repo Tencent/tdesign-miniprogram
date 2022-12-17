@@ -29,24 +29,30 @@ exports[`date-time-picker :base 1`] = `
             />
             <wx-view
               class="t-picker t-class"
+              focus="{{true}}"
               slot="content"
               style=""
+              tabindex="-1"
             >
               <wx-view
                 class="t-picker__toolbar"
               >
                 <wx-view
+                  ariaRole="button"
                   class="t-picker__cancel t-class-cancel"
                   bind:tap="onCancel"
                 >
                   取消
                 </wx-view>
                 <wx-view
+                  ariaLabel="选择日期选择框"
                   class="t-picker__title t-class-title"
+                  focus="{{true}}"
                 >
                   选择日期
                 </wx-view>
                 <wx-view
+                  ariaRole="button"
                   class="t-picker__confirm t-class-confirm"
                   bind:tap="onConfirm"
                 >
@@ -75,6 +81,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{0}}"
+                        bind:tap="onTap"
                       >
                         
       2000年
@@ -83,6 +90,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{1}}"
+                        bind:tap="onTap"
                       >
                         
       2001年
@@ -91,6 +99,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{2}}"
+                        bind:tap="onTap"
                       >
                         
       2002年
@@ -99,6 +108,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{3}}"
+                        bind:tap="onTap"
                       >
                         
       2003年
@@ -107,6 +117,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{4}}"
+                        bind:tap="onTap"
                       >
                         
       2004年
@@ -115,6 +126,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{5}}"
+                        bind:tap="onTap"
                       >
                         
       2005年
@@ -123,6 +135,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{6}}"
+                        bind:tap="onTap"
                       >
                         
       2006年
@@ -131,6 +144,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{7}}"
+                        bind:tap="onTap"
                       >
                         
       2007年
@@ -139,6 +153,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{8}}"
+                        bind:tap="onTap"
                       >
                         
       2008年
@@ -147,6 +162,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{9}}"
+                        bind:tap="onTap"
                       >
                         
       2009年
@@ -155,6 +171,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{10}}"
+                        bind:tap="onTap"
                       >
                         
       2010年
@@ -163,6 +180,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{11}}"
+                        bind:tap="onTap"
                       >
                         
       2011年
@@ -171,6 +189,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{12}}"
+                        bind:tap="onTap"
                       >
                         
       2012年
@@ -179,6 +198,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{13}}"
+                        bind:tap="onTap"
                       >
                         
       2013年
@@ -187,6 +207,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{14}}"
+                        bind:tap="onTap"
                       >
                         
       2014年
@@ -195,6 +216,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{15}}"
+                        bind:tap="onTap"
                       >
                         
       2015年
@@ -203,6 +225,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{16}}"
+                        bind:tap="onTap"
                       >
                         
       2016年
@@ -211,6 +234,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{17}}"
+                        bind:tap="onTap"
                       >
                         
       2017年
@@ -219,6 +243,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{18}}"
+                        bind:tap="onTap"
                       >
                         
       2018年
@@ -227,6 +252,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{19}}"
+                        bind:tap="onTap"
                       >
                         
       2019年
@@ -235,6 +261,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{20}}"
+                        bind:tap="onTap"
                       >
                         
       2020年
@@ -243,6 +270,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{21}}"
+                        bind:tap="onTap"
                       >
                         
       2021年
@@ -251,6 +279,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{22}}"
+                        bind:tap="onTap"
                       >
                         
       2022年
@@ -259,6 +288,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{23}}"
+                        bind:tap="onTap"
                       >
                         
       2023年
@@ -267,6 +297,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{24}}"
+                        bind:tap="onTap"
                       >
                         
       2024年
@@ -275,6 +306,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{25}}"
+                        bind:tap="onTap"
                       >
                         
       2025年
@@ -283,6 +315,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{26}}"
+                        bind:tap="onTap"
                       >
                         
       2026年
@@ -291,6 +324,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{27}}"
+                        bind:tap="onTap"
                       >
                         
       2027年
@@ -299,6 +333,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{28}}"
+                        bind:tap="onTap"
                       >
                         
       2028年
@@ -307,6 +342,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{29}}"
+                        bind:tap="onTap"
                       >
                         
       2029年
@@ -315,13 +351,14 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{30}}"
+                        bind:tap="onTap"
                       >
                         
       2030年
     
                       </wx-view>
                     </wx-view>
-                  </wx-view>
+                  </wx-scroll-view>
                 </t-picker-item>
                 <t-picker-item
                   class="t-date-time-picker__item"
@@ -342,6 +379,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{0}}"
+                        bind:tap="onTap"
                       >
                         
       1月
@@ -350,6 +388,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{1}}"
+                        bind:tap="onTap"
                       >
                         
       2月
@@ -358,6 +397,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{2}}"
+                        bind:tap="onTap"
                       >
                         
       3月
@@ -366,6 +406,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{3}}"
+                        bind:tap="onTap"
                       >
                         
       4月
@@ -374,6 +415,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{4}}"
+                        bind:tap="onTap"
                       >
                         
       5月
@@ -382,6 +424,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{5}}"
+                        bind:tap="onTap"
                       >
                         
       6月
@@ -390,6 +433,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{6}}"
+                        bind:tap="onTap"
                       >
                         
       7月
@@ -398,6 +442,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{7}}"
+                        bind:tap="onTap"
                       >
                         
       8月
@@ -406,6 +451,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{8}}"
+                        bind:tap="onTap"
                       >
                         
       9月
@@ -414,6 +460,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{9}}"
+                        bind:tap="onTap"
                       >
                         
       10月
@@ -422,6 +469,7 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{10}}"
+                        bind:tap="onTap"
                       >
                         
       11月
@@ -430,13 +478,14 @@ exports[`date-time-picker :base 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{11}}"
+                        bind:tap="onTap"
                       >
                         
       12月
     
                       </wx-view>
                     </wx-view>
-                  </wx-view>
+                  </wx-scroll-view>
                 </t-picker-item>
                 <wx-view
                   class="t-picker__mask t-picker__mask--top"
@@ -500,24 +549,30 @@ exports[`date-time-picker :second 1`] = `
             />
             <wx-view
               class="t-picker t-class"
+              focus="{{true}}"
               slot="content"
               style=""
+              tabindex="-1"
             >
               <wx-view
                 class="t-picker__toolbar"
               >
                 <wx-view
+                  ariaRole="button"
                   class="t-picker__cancel t-class-cancel"
                   bind:tap="onCancel"
                 >
                   取消
                 </wx-view>
                 <wx-view
+                  ariaLabel="选择框"
                   class="t-picker__title t-class-title"
+                  focus="{{true}}"
                 >
                   
                 </wx-view>
                 <wx-view
+                  ariaRole="button"
                   class="t-picker__confirm t-class-confirm"
                   bind:tap="onConfirm"
                 >
@@ -546,6 +601,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
+                        bind:tap="onTap"
                       >
                         
       2000年
@@ -554,6 +610,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{1}}"
+                        bind:tap="onTap"
                       >
                         
       2001年
@@ -562,6 +619,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{2}}"
+                        bind:tap="onTap"
                       >
                         
       2002年
@@ -570,6 +628,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{3}}"
+                        bind:tap="onTap"
                       >
                         
       2003年
@@ -578,6 +637,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{4}}"
+                        bind:tap="onTap"
                       >
                         
       2004年
@@ -586,6 +646,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{5}}"
+                        bind:tap="onTap"
                       >
                         
       2005年
@@ -594,6 +655,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{6}}"
+                        bind:tap="onTap"
                       >
                         
       2006年
@@ -602,6 +664,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{7}}"
+                        bind:tap="onTap"
                       >
                         
       2007年
@@ -610,6 +673,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{8}}"
+                        bind:tap="onTap"
                       >
                         
       2008年
@@ -618,6 +682,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{9}}"
+                        bind:tap="onTap"
                       >
                         
       2009年
@@ -626,6 +691,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{10}}"
+                        bind:tap="onTap"
                       >
                         
       2010年
@@ -634,6 +700,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{11}}"
+                        bind:tap="onTap"
                       >
                         
       2011年
@@ -642,6 +709,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{12}}"
+                        bind:tap="onTap"
                       >
                         
       2012年
@@ -650,6 +718,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{13}}"
+                        bind:tap="onTap"
                       >
                         
       2013年
@@ -658,6 +727,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{14}}"
+                        bind:tap="onTap"
                       >
                         
       2014年
@@ -666,6 +736,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{15}}"
+                        bind:tap="onTap"
                       >
                         
       2015年
@@ -674,6 +745,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{16}}"
+                        bind:tap="onTap"
                       >
                         
       2016年
@@ -682,6 +754,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{17}}"
+                        bind:tap="onTap"
                       >
                         
       2017年
@@ -690,6 +763,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{18}}"
+                        bind:tap="onTap"
                       >
                         
       2018年
@@ -698,6 +772,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{19}}"
+                        bind:tap="onTap"
                       >
                         
       2019年
@@ -706,6 +781,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{20}}"
+                        bind:tap="onTap"
                       >
                         
       2020年
@@ -714,6 +790,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{21}}"
+                        bind:tap="onTap"
                       >
                         
       2021年
@@ -722,6 +799,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{22}}"
+                        bind:tap="onTap"
                       >
                         
       2022年
@@ -730,6 +808,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{23}}"
+                        bind:tap="onTap"
                       >
                         
       2023年
@@ -738,6 +817,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{24}}"
+                        bind:tap="onTap"
                       >
                         
       2024年
@@ -746,6 +826,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{25}}"
+                        bind:tap="onTap"
                       >
                         
       2025年
@@ -754,6 +835,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{26}}"
+                        bind:tap="onTap"
                       >
                         
       2026年
@@ -762,6 +844,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{27}}"
+                        bind:tap="onTap"
                       >
                         
       2027年
@@ -770,6 +853,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{28}}"
+                        bind:tap="onTap"
                       >
                         
       2028年
@@ -778,6 +862,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{29}}"
+                        bind:tap="onTap"
                       >
                         
       2029年
@@ -786,13 +871,14 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{30}}"
+                        bind:tap="onTap"
                       >
                         
       2030年
     
                       </wx-view>
                     </wx-view>
-                  </wx-view>
+                  </wx-scroll-view>
                 </t-picker-item>
                 <t-picker-item
                   class="t-date-time-picker__item"
@@ -813,6 +899,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
+                        bind:tap="onTap"
                       >
                         
       1月
@@ -821,6 +908,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{1}}"
+                        bind:tap="onTap"
                       >
                         
       2月
@@ -829,6 +917,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{2}}"
+                        bind:tap="onTap"
                       >
                         
       3月
@@ -837,6 +926,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{3}}"
+                        bind:tap="onTap"
                       >
                         
       4月
@@ -845,6 +935,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{4}}"
+                        bind:tap="onTap"
                       >
                         
       5月
@@ -853,6 +944,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{5}}"
+                        bind:tap="onTap"
                       >
                         
       6月
@@ -861,6 +953,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{6}}"
+                        bind:tap="onTap"
                       >
                         
       7月
@@ -869,6 +962,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{7}}"
+                        bind:tap="onTap"
                       >
                         
       8月
@@ -877,6 +971,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{8}}"
+                        bind:tap="onTap"
                       >
                         
       9月
@@ -885,6 +980,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{9}}"
+                        bind:tap="onTap"
                       >
                         
       10月
@@ -893,6 +989,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{10}}"
+                        bind:tap="onTap"
                       >
                         
       11月
@@ -901,13 +998,14 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{11}}"
+                        bind:tap="onTap"
                       >
                         
       12月
     
                       </wx-view>
                     </wx-view>
-                  </wx-view>
+                  </wx-scroll-view>
                 </t-picker-item>
                 <t-picker-item
                   class="t-date-time-picker__item"
@@ -928,6 +1026,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
+                        bind:tap="onTap"
                       >
                         
       1日
@@ -936,6 +1035,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{1}}"
+                        bind:tap="onTap"
                       >
                         
       2日
@@ -944,6 +1044,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{2}}"
+                        bind:tap="onTap"
                       >
                         
       3日
@@ -952,6 +1053,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{3}}"
+                        bind:tap="onTap"
                       >
                         
       4日
@@ -960,6 +1062,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{4}}"
+                        bind:tap="onTap"
                       >
                         
       5日
@@ -968,6 +1071,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{5}}"
+                        bind:tap="onTap"
                       >
                         
       6日
@@ -976,6 +1080,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{6}}"
+                        bind:tap="onTap"
                       >
                         
       7日
@@ -984,6 +1089,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{7}}"
+                        bind:tap="onTap"
                       >
                         
       8日
@@ -992,6 +1098,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{8}}"
+                        bind:tap="onTap"
                       >
                         
       9日
@@ -1000,6 +1107,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{9}}"
+                        bind:tap="onTap"
                       >
                         
       10日
@@ -1008,6 +1116,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{10}}"
+                        bind:tap="onTap"
                       >
                         
       11日
@@ -1016,6 +1125,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{11}}"
+                        bind:tap="onTap"
                       >
                         
       12日
@@ -1024,6 +1134,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{12}}"
+                        bind:tap="onTap"
                       >
                         
       13日
@@ -1032,6 +1143,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{13}}"
+                        bind:tap="onTap"
                       >
                         
       14日
@@ -1040,6 +1152,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{14}}"
+                        bind:tap="onTap"
                       >
                         
       15日
@@ -1048,6 +1161,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{15}}"
+                        bind:tap="onTap"
                       >
                         
       16日
@@ -1056,6 +1170,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{16}}"
+                        bind:tap="onTap"
                       >
                         
       17日
@@ -1064,6 +1179,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{17}}"
+                        bind:tap="onTap"
                       >
                         
       18日
@@ -1072,6 +1188,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{18}}"
+                        bind:tap="onTap"
                       >
                         
       19日
@@ -1080,6 +1197,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{19}}"
+                        bind:tap="onTap"
                       >
                         
       20日
@@ -1088,6 +1206,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{20}}"
+                        bind:tap="onTap"
                       >
                         
       21日
@@ -1096,6 +1215,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{21}}"
+                        bind:tap="onTap"
                       >
                         
       22日
@@ -1104,6 +1224,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{22}}"
+                        bind:tap="onTap"
                       >
                         
       23日
@@ -1112,6 +1233,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{23}}"
+                        bind:tap="onTap"
                       >
                         
       24日
@@ -1120,6 +1242,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{24}}"
+                        bind:tap="onTap"
                       >
                         
       25日
@@ -1128,6 +1251,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{25}}"
+                        bind:tap="onTap"
                       >
                         
       26日
@@ -1136,6 +1260,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{26}}"
+                        bind:tap="onTap"
                       >
                         
       27日
@@ -1144,6 +1269,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{27}}"
+                        bind:tap="onTap"
                       >
                         
       28日
@@ -1152,6 +1278,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{28}}"
+                        bind:tap="onTap"
                       >
                         
       29日
@@ -1160,6 +1287,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{29}}"
+                        bind:tap="onTap"
                       >
                         
       30日
@@ -1168,13 +1296,14 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{30}}"
+                        bind:tap="onTap"
                       >
                         
       31日
     
                       </wx-view>
                     </wx-view>
-                  </wx-view>
+                  </wx-scroll-view>
                 </t-picker-item>
                 <t-picker-item
                   class="t-date-time-picker__item"
@@ -1195,6 +1324,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
+                        bind:tap="onTap"
                       >
                         
       0时
@@ -1203,6 +1333,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{1}}"
+                        bind:tap="onTap"
                       >
                         
       1时
@@ -1211,6 +1342,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{2}}"
+                        bind:tap="onTap"
                       >
                         
       2时
@@ -1219,6 +1351,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{3}}"
+                        bind:tap="onTap"
                       >
                         
       3时
@@ -1227,6 +1360,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{4}}"
+                        bind:tap="onTap"
                       >
                         
       4时
@@ -1235,6 +1369,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{5}}"
+                        bind:tap="onTap"
                       >
                         
       5时
@@ -1243,6 +1378,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{6}}"
+                        bind:tap="onTap"
                       >
                         
       6时
@@ -1251,6 +1387,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{7}}"
+                        bind:tap="onTap"
                       >
                         
       7时
@@ -1259,6 +1396,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{8}}"
+                        bind:tap="onTap"
                       >
                         
       8时
@@ -1267,6 +1405,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{9}}"
+                        bind:tap="onTap"
                       >
                         
       9时
@@ -1275,6 +1414,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{10}}"
+                        bind:tap="onTap"
                       >
                         
       10时
@@ -1283,6 +1423,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{11}}"
+                        bind:tap="onTap"
                       >
                         
       11时
@@ -1291,6 +1432,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{12}}"
+                        bind:tap="onTap"
                       >
                         
       12时
@@ -1299,6 +1441,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{13}}"
+                        bind:tap="onTap"
                       >
                         
       13时
@@ -1307,6 +1450,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{14}}"
+                        bind:tap="onTap"
                       >
                         
       14时
@@ -1315,6 +1459,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{15}}"
+                        bind:tap="onTap"
                       >
                         
       15时
@@ -1323,6 +1468,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{16}}"
+                        bind:tap="onTap"
                       >
                         
       16时
@@ -1331,6 +1477,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{17}}"
+                        bind:tap="onTap"
                       >
                         
       17时
@@ -1339,6 +1486,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{18}}"
+                        bind:tap="onTap"
                       >
                         
       18时
@@ -1347,6 +1495,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{19}}"
+                        bind:tap="onTap"
                       >
                         
       19时
@@ -1355,6 +1504,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{20}}"
+                        bind:tap="onTap"
                       >
                         
       20时
@@ -1363,6 +1513,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{21}}"
+                        bind:tap="onTap"
                       >
                         
       21时
@@ -1371,6 +1522,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{22}}"
+                        bind:tap="onTap"
                       >
                         
       22时
@@ -1379,13 +1531,14 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{23}}"
+                        bind:tap="onTap"
                       >
                         
       23时
     
                       </wx-view>
                     </wx-view>
-                  </wx-view>
+                  </wx-scroll-view>
                 </t-picker-item>
                 <t-picker-item
                   class="t-date-time-picker__item"
@@ -1406,6 +1559,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
+                        bind:tap="onTap"
                       >
                         
       0分
@@ -1414,6 +1568,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{1}}"
+                        bind:tap="onTap"
                       >
                         
       1分
@@ -1422,6 +1577,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{2}}"
+                        bind:tap="onTap"
                       >
                         
       2分
@@ -1430,6 +1586,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{3}}"
+                        bind:tap="onTap"
                       >
                         
       3分
@@ -1438,6 +1595,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{4}}"
+                        bind:tap="onTap"
                       >
                         
       4分
@@ -1446,6 +1604,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{5}}"
+                        bind:tap="onTap"
                       >
                         
       5分
@@ -1454,6 +1613,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{6}}"
+                        bind:tap="onTap"
                       >
                         
       6分
@@ -1462,6 +1622,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{7}}"
+                        bind:tap="onTap"
                       >
                         
       7分
@@ -1470,6 +1631,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{8}}"
+                        bind:tap="onTap"
                       >
                         
       8分
@@ -1478,6 +1640,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{9}}"
+                        bind:tap="onTap"
                       >
                         
       9分
@@ -1486,6 +1649,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{10}}"
+                        bind:tap="onTap"
                       >
                         
       10分
@@ -1494,6 +1658,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{11}}"
+                        bind:tap="onTap"
                       >
                         
       11分
@@ -1502,6 +1667,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{12}}"
+                        bind:tap="onTap"
                       >
                         
       12分
@@ -1510,6 +1676,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{13}}"
+                        bind:tap="onTap"
                       >
                         
       13分
@@ -1518,6 +1685,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{14}}"
+                        bind:tap="onTap"
                       >
                         
       14分
@@ -1526,6 +1694,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{15}}"
+                        bind:tap="onTap"
                       >
                         
       15分
@@ -1534,6 +1703,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{16}}"
+                        bind:tap="onTap"
                       >
                         
       16分
@@ -1542,6 +1712,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{17}}"
+                        bind:tap="onTap"
                       >
                         
       17分
@@ -1550,6 +1721,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{18}}"
+                        bind:tap="onTap"
                       >
                         
       18分
@@ -1558,6 +1730,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{19}}"
+                        bind:tap="onTap"
                       >
                         
       19分
@@ -1566,6 +1739,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{20}}"
+                        bind:tap="onTap"
                       >
                         
       20分
@@ -1574,6 +1748,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{21}}"
+                        bind:tap="onTap"
                       >
                         
       21分
@@ -1582,6 +1757,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{22}}"
+                        bind:tap="onTap"
                       >
                         
       22分
@@ -1590,6 +1766,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{23}}"
+                        bind:tap="onTap"
                       >
                         
       23分
@@ -1598,6 +1775,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{24}}"
+                        bind:tap="onTap"
                       >
                         
       24分
@@ -1606,6 +1784,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{25}}"
+                        bind:tap="onTap"
                       >
                         
       25分
@@ -1614,6 +1793,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{26}}"
+                        bind:tap="onTap"
                       >
                         
       26分
@@ -1622,6 +1802,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{27}}"
+                        bind:tap="onTap"
                       >
                         
       27分
@@ -1630,6 +1811,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{28}}"
+                        bind:tap="onTap"
                       >
                         
       28分
@@ -1638,6 +1820,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{29}}"
+                        bind:tap="onTap"
                       >
                         
       29分
@@ -1646,6 +1829,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{30}}"
+                        bind:tap="onTap"
                       >
                         
       30分
@@ -1654,6 +1838,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{31}}"
+                        bind:tap="onTap"
                       >
                         
       31分
@@ -1662,6 +1847,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{32}}"
+                        bind:tap="onTap"
                       >
                         
       32分
@@ -1670,6 +1856,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{33}}"
+                        bind:tap="onTap"
                       >
                         
       33分
@@ -1678,6 +1865,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{34}}"
+                        bind:tap="onTap"
                       >
                         
       34分
@@ -1686,6 +1874,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{35}}"
+                        bind:tap="onTap"
                       >
                         
       35分
@@ -1694,6 +1883,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{36}}"
+                        bind:tap="onTap"
                       >
                         
       36分
@@ -1702,6 +1892,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{37}}"
+                        bind:tap="onTap"
                       >
                         
       37分
@@ -1710,6 +1901,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{38}}"
+                        bind:tap="onTap"
                       >
                         
       38分
@@ -1718,6 +1910,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{39}}"
+                        bind:tap="onTap"
                       >
                         
       39分
@@ -1726,6 +1919,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{40}}"
+                        bind:tap="onTap"
                       >
                         
       40分
@@ -1734,6 +1928,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{41}}"
+                        bind:tap="onTap"
                       >
                         
       41分
@@ -1742,6 +1937,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{42}}"
+                        bind:tap="onTap"
                       >
                         
       42分
@@ -1750,6 +1946,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{43}}"
+                        bind:tap="onTap"
                       >
                         
       43分
@@ -1758,6 +1955,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{44}}"
+                        bind:tap="onTap"
                       >
                         
       44分
@@ -1766,6 +1964,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{45}}"
+                        bind:tap="onTap"
                       >
                         
       45分
@@ -1774,6 +1973,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{46}}"
+                        bind:tap="onTap"
                       >
                         
       46分
@@ -1782,6 +1982,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{47}}"
+                        bind:tap="onTap"
                       >
                         
       47分
@@ -1790,6 +1991,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{48}}"
+                        bind:tap="onTap"
                       >
                         
       48分
@@ -1798,6 +2000,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{49}}"
+                        bind:tap="onTap"
                       >
                         
       49分
@@ -1806,6 +2009,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{50}}"
+                        bind:tap="onTap"
                       >
                         
       50分
@@ -1814,6 +2018,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{51}}"
+                        bind:tap="onTap"
                       >
                         
       51分
@@ -1822,6 +2027,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{52}}"
+                        bind:tap="onTap"
                       >
                         
       52分
@@ -1830,6 +2036,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{53}}"
+                        bind:tap="onTap"
                       >
                         
       53分
@@ -1838,6 +2045,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{54}}"
+                        bind:tap="onTap"
                       >
                         
       54分
@@ -1846,6 +2054,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{55}}"
+                        bind:tap="onTap"
                       >
                         
       55分
@@ -1854,6 +2063,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{56}}"
+                        bind:tap="onTap"
                       >
                         
       56分
@@ -1862,6 +2072,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{57}}"
+                        bind:tap="onTap"
                       >
                         
       57分
@@ -1870,6 +2081,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{58}}"
+                        bind:tap="onTap"
                       >
                         
       58分
@@ -1878,13 +2090,14 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{59}}"
+                        bind:tap="onTap"
                       >
                         
       59分
     
                       </wx-view>
                     </wx-view>
-                  </wx-view>
+                  </wx-scroll-view>
                 </t-picker-item>
                 <t-picker-item
                   class="t-date-time-picker__item"
@@ -1905,6 +2118,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
+                        bind:tap="onTap"
                       >
                         
       0秒
@@ -1913,6 +2127,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{1}}"
+                        bind:tap="onTap"
                       >
                         
       1秒
@@ -1921,6 +2136,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{2}}"
+                        bind:tap="onTap"
                       >
                         
       2秒
@@ -1929,6 +2145,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{3}}"
+                        bind:tap="onTap"
                       >
                         
       3秒
@@ -1937,6 +2154,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{4}}"
+                        bind:tap="onTap"
                       >
                         
       4秒
@@ -1945,6 +2163,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{5}}"
+                        bind:tap="onTap"
                       >
                         
       5秒
@@ -1953,6 +2172,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{6}}"
+                        bind:tap="onTap"
                       >
                         
       6秒
@@ -1961,6 +2181,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{7}}"
+                        bind:tap="onTap"
                       >
                         
       7秒
@@ -1969,6 +2190,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{8}}"
+                        bind:tap="onTap"
                       >
                         
       8秒
@@ -1977,6 +2199,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{9}}"
+                        bind:tap="onTap"
                       >
                         
       9秒
@@ -1985,6 +2208,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{10}}"
+                        bind:tap="onTap"
                       >
                         
       10秒
@@ -1993,6 +2217,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{11}}"
+                        bind:tap="onTap"
                       >
                         
       11秒
@@ -2001,6 +2226,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{12}}"
+                        bind:tap="onTap"
                       >
                         
       12秒
@@ -2009,6 +2235,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{13}}"
+                        bind:tap="onTap"
                       >
                         
       13秒
@@ -2017,6 +2244,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{14}}"
+                        bind:tap="onTap"
                       >
                         
       14秒
@@ -2025,6 +2253,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{15}}"
+                        bind:tap="onTap"
                       >
                         
       15秒
@@ -2033,6 +2262,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{16}}"
+                        bind:tap="onTap"
                       >
                         
       16秒
@@ -2041,6 +2271,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{17}}"
+                        bind:tap="onTap"
                       >
                         
       17秒
@@ -2049,6 +2280,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{18}}"
+                        bind:tap="onTap"
                       >
                         
       18秒
@@ -2057,6 +2289,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{19}}"
+                        bind:tap="onTap"
                       >
                         
       19秒
@@ -2065,6 +2298,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{20}}"
+                        bind:tap="onTap"
                       >
                         
       20秒
@@ -2073,6 +2307,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{21}}"
+                        bind:tap="onTap"
                       >
                         
       21秒
@@ -2081,6 +2316,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{22}}"
+                        bind:tap="onTap"
                       >
                         
       22秒
@@ -2089,6 +2325,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{23}}"
+                        bind:tap="onTap"
                       >
                         
       23秒
@@ -2097,6 +2334,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{24}}"
+                        bind:tap="onTap"
                       >
                         
       24秒
@@ -2105,6 +2343,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{25}}"
+                        bind:tap="onTap"
                       >
                         
       25秒
@@ -2113,6 +2352,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{26}}"
+                        bind:tap="onTap"
                       >
                         
       26秒
@@ -2121,6 +2361,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{27}}"
+                        bind:tap="onTap"
                       >
                         
       27秒
@@ -2129,6 +2370,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{28}}"
+                        bind:tap="onTap"
                       >
                         
       28秒
@@ -2137,6 +2379,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{29}}"
+                        bind:tap="onTap"
                       >
                         
       29秒
@@ -2145,6 +2388,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{30}}"
+                        bind:tap="onTap"
                       >
                         
       30秒
@@ -2153,6 +2397,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{31}}"
+                        bind:tap="onTap"
                       >
                         
       31秒
@@ -2161,6 +2406,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{32}}"
+                        bind:tap="onTap"
                       >
                         
       32秒
@@ -2169,6 +2415,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{33}}"
+                        bind:tap="onTap"
                       >
                         
       33秒
@@ -2177,6 +2424,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{34}}"
+                        bind:tap="onTap"
                       >
                         
       34秒
@@ -2185,6 +2433,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{35}}"
+                        bind:tap="onTap"
                       >
                         
       35秒
@@ -2193,6 +2442,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{36}}"
+                        bind:tap="onTap"
                       >
                         
       36秒
@@ -2201,6 +2451,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{37}}"
+                        bind:tap="onTap"
                       >
                         
       37秒
@@ -2209,6 +2460,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{38}}"
+                        bind:tap="onTap"
                       >
                         
       38秒
@@ -2217,6 +2469,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{39}}"
+                        bind:tap="onTap"
                       >
                         
       39秒
@@ -2225,6 +2478,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{40}}"
+                        bind:tap="onTap"
                       >
                         
       40秒
@@ -2233,6 +2487,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{41}}"
+                        bind:tap="onTap"
                       >
                         
       41秒
@@ -2241,6 +2496,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{42}}"
+                        bind:tap="onTap"
                       >
                         
       42秒
@@ -2249,6 +2505,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{43}}"
+                        bind:tap="onTap"
                       >
                         
       43秒
@@ -2257,6 +2514,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{44}}"
+                        bind:tap="onTap"
                       >
                         
       44秒
@@ -2265,6 +2523,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{45}}"
+                        bind:tap="onTap"
                       >
                         
       45秒
@@ -2273,6 +2532,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{46}}"
+                        bind:tap="onTap"
                       >
                         
       46秒
@@ -2281,6 +2541,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{47}}"
+                        bind:tap="onTap"
                       >
                         
       47秒
@@ -2289,6 +2550,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{48}}"
+                        bind:tap="onTap"
                       >
                         
       48秒
@@ -2297,6 +2559,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{49}}"
+                        bind:tap="onTap"
                       >
                         
       49秒
@@ -2305,6 +2568,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{50}}"
+                        bind:tap="onTap"
                       >
                         
       50秒
@@ -2313,6 +2577,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{51}}"
+                        bind:tap="onTap"
                       >
                         
       51秒
@@ -2321,6 +2586,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{52}}"
+                        bind:tap="onTap"
                       >
                         
       52秒
@@ -2329,6 +2595,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{53}}"
+                        bind:tap="onTap"
                       >
                         
       53秒
@@ -2337,6 +2604,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{54}}"
+                        bind:tap="onTap"
                       >
                         
       54秒
@@ -2345,6 +2613,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{55}}"
+                        bind:tap="onTap"
                       >
                         
       55秒
@@ -2353,6 +2622,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{56}}"
+                        bind:tap="onTap"
                       >
                         
       56秒
@@ -2361,6 +2631,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{57}}"
+                        bind:tap="onTap"
                       >
                         
       57秒
@@ -2369,6 +2640,7 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{58}}"
+                        bind:tap="onTap"
                       >
                         
       58秒
@@ -2377,13 +2649,14 @@ exports[`date-time-picker :second 1`] = `
                       <wx-view
                         class="t-picker-item__item"
                         data-index="{{59}}"
+                        bind:tap="onTap"
                       >
                         
       59秒
     
                       </wx-view>
                     </wx-view>
-                  </wx-view>
+                  </wx-scroll-view>
                 </t-picker-item>
                 <wx-view
                   class="t-picker__mask t-picker__mask--top"
