@@ -2,7 +2,8 @@
 
 exports[`Picker Picker base demo works fine 1`] = `
 <base>
-  <wx-view
+  <wx-label
+    ariaRole="button"
     class="pannel-item"
     data-key="city"
     bind:tap="onClickPicker"
@@ -22,8 +23,9 @@ exports[`Picker Picker base demo works fine 1`] = `
       name="chevron-right"
       size="24px"
     />
-  </wx-view>
-  <wx-view
+  </wx-label>
+  <wx-label
+    ariaRole="button"
     class="pannel-item"
     data-key="yearSeasons"
     bind:tap="onClickPicker"
@@ -44,8 +46,9 @@ exports[`Picker Picker base demo works fine 1`] = `
       name="chevron-right"
       size="24px"
     />
-  </wx-view>
-  <wx-view
+  </wx-label>
+  <wx-label
+    ariaRole="button"
     class="pannel-item last"
     data-key="date"
     bind:tap="onClickPicker"
@@ -65,7 +68,7 @@ exports[`Picker Picker base demo works fine 1`] = `
       name="chevron-right"
       size="24px"
     />
-  </wx-view>
+  </wx-label>
   <t-picker
     cancelBtn="取消"
     confirmBtn="确认"
