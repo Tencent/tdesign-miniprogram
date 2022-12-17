@@ -42,15 +42,10 @@
           bind:tap="onFileClick"
         >
           <block wx:if="{{file.status == 'loading'}}">
-            <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" aria-label="上传中" />
+            <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" aria-hidden />
             <view class="{{classPrefix}}__progress-text">{{file.percent ? file.percent + '%' : '上传中...'}}</view>
           </block>
-          <t-icon
-            wx:else
-            name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}"
-            size="24"
-            aria-label="{{file.status == 'reload' ? '重新上传' : '上传失败'}}"
-          />
+          <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" aria-hidden />
           <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text"
             >{{file.status == 'reload' ? '重新上传' : '上传失败'}}</view
           >
