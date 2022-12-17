@@ -12,7 +12,8 @@
   hover-stay-time="{{200}}"
   bindtap="onClick"
   aria-role="{{ariaRole || 'button'}}"
-  aria-labelledby="{{labelId}}"
+  aria-label="{{ariaLabel}}"
+  aria-labelledby="{{ariaLabel ? '' : labelId}}"
 >
   <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}">
     <view

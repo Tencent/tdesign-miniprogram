@@ -7,6 +7,8 @@
       wx:for-item="file"
       t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
       t-class-content="{{classPrefix}}__grid-content"
+      aria-role="presentation"
+      aria-label="{{ file.type === 'video' ? '视频' : '图像' }}"
     >
       <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
         <t-image
@@ -40,16 +42,27 @@
           bind:tap="onFileClick"
         >
           <block wx:if="{{file.status == 'loading'}}">
-            <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" />
+            <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" aria-label="上传中" />
             <view class="{{classPrefix}}__progress-text">{{file.percent ? file.percent + '%' : '上传中...'}}</view>
           </block>
-          <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" />
+          <t-icon
+            wx:else
+            name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}"
+            size="24"
+            aria-label="{{file.status == 'reload' ? '重新上传' : '上传失败'}}"
+          />
           <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text"
             >{{file.status == 'reload' ? '重新上传' : '上传失败'}}</view
           >
         </view>
         <!-- 删除 -->
-        <view class="{{classPrefix}}__close-btn hotspot-expanded" bindtap="onDelete" data-index="{{index}}">
+        <view
+          class="{{classPrefix}}__close-btn hotspot-expanded"
+          bindtap="onDelete"
+          data-index="{{index}}"
+          aria-role="button"
+          aria-label="删除"
+        >
           <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
           <t-icon wx:else name="close" size="16" color="#fff" />
         </view>
@@ -61,6 +74,7 @@
       t-class="{{classPrefix}}__grid"
       t-class-content="{{classPrefix}}__grid-content"
       bindclick="onAddTap"
+      aria-label="上传文件"
     >
       <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
         <view class="{{classPrefix}}__add-icon">
