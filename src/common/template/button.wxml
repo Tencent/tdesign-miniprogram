@@ -5,6 +5,7 @@
     t-class="{{externalClass}}"
     disabled="{{disabled}}"
     data-type="{{type}}"
+    data-extra="{{extra}}"
     icon="{{icon}}"
     loading="{{loading}}"
     theme="{{theme}}"

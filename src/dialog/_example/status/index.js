@@ -1,4 +1,7 @@
 Component({
+  options: {
+    styleIsolation: 'apply-shared',
+  },
   data: {
     confirmBtn: { content: '确定', variant: 'base' },
     dialogKey: '',

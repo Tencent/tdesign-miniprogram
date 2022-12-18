@@ -9,7 +9,7 @@
   hover-stay-time="{{hoverStayTime}}"
   lang="{{lang}}"
   session-from="{{sessionFrom}}"
-  hover-class="{{variant == 'text' ? 'none' : 'button-hover'}}"
+  hover-class="button-hover"
   send-message-title="{{sendMessageTitle}}"
   send-message-path="{{sendMessagePath}}"
   send-message-img="{{sendMessageImg}}"

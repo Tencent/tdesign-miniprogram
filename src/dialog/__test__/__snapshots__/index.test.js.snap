@@ -31,7 +31,7 @@ exports[`dialog :base 1`] = `
               class="t-dialog__content t-class-content"
             />
             <wx-view
-              class="t-dialog__footer t-dialog__footer--default "
+              class="t-dialog__footer t-dialog__footer--full"
             />
           </wx-view>
         </wx-view>
