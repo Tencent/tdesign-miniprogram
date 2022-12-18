@@ -3,11 +3,11 @@ Component({
     right: [
       {
         text: '编辑',
-        className: 't-swipe-cell-demo-btn edit-btn',
+        className: 'btn edit-btn',
       },
       {
         text: '删除',
-        className: 't-swipe-cell-demo-btn delete-btn',
+        className: 'btn delete-btn',
       },
     ],
   },

@@ -10,3 +10,11 @@
   marquee="{{marquee2}}"
   content="提示文字描述提示文字描述提示文字描述提示文字描述文"
 ></t-notice-bar>
+
+<t-notice-bar
+  visible="{{true}}"
+  direction="vertical"
+  content="{{content}}"
+  prefixIcon="sound"
+  bind:click="click"
+></t-notice-bar>

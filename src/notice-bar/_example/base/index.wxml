@@ -1,1 +1,1 @@
-<t-notice-bar visible="{{true}}" prefixIcon="null" content="提示文字描述提示文字描述提示文字描述"></t-notice-bar>
+<t-notice-bar visible="{{true}}" prefixIcon="{{false}}" content="这是一条普通的通知信息"></t-notice-bar>

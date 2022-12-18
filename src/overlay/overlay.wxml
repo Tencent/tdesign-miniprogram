@@ -6,7 +6,7 @@
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
   aria-role="{{ ariaRole || 'button' }}"
-  aria-label="{{ ariaLabel || '背景蒙层' }}"
+  aria-label="{{ ariaLabel || '遮罩层，双击关闭' }}"
 >
   <slot />
 </view>
@@ -17,7 +17,7 @@
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"
   aria-role="{{ ariaRole || 'button' }}"
-  aria-label="{{ ariaLabel || '背景蒙层' }}"
+  aria-label="{{ ariaLabel || '遮罩层，双击关闭' }}"
 >
   <slot />
 </view>

@@ -2,6 +2,8 @@
 <view
   class="{{classPrefix}} {{active ? prefix + '-is-active': ''}}"
   style="{{ customStyle }}; {{ hide ? 'display: none' : ''}}"
+  id="{{id}}"
+  aria-role="tabpanel"
 >
   <view wx:if="{{panel}}">{{panel}}</view>
   <slot />

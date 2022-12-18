@@ -4,8 +4,8 @@
   "usingComponents": {
     "t-toast": "tdesign-miniprogram/toast/toast",
     "list": "./list",
-    "icon-list": "./icon-list",
+    "status": "./status",
     "grid": "./grid",
-    "grid-multi": "./grid-multi"
+    "align": "./align"
   }
 }

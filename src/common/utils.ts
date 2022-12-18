@@ -1,3 +1,5 @@
+const systemInfo = wx.getSystemInfoSync();
+
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
 export const debounce = function (func, wait = 500) {
@@ -165,4 +167,35 @@ export const getInstance = function (context?: Context, selector?: string) {
     return null;
   }
   return instance;
+};
+
+export const unitConvert = (value: number | string): number => {
+  if (typeof value === 'string') {
+    if (value.includes('rpx')) {
+      return (parseInt(value, 10) * (systemInfo?.screenWidth ?? 750)) / 750;
+    }
+    return parseInt(value, 10);
+  }
+  return value;
+};
+
+export const setIcon = (iconName, icon, defaultIcon) => {
+  if (icon) {
+    if (typeof icon === 'string') {
+      return {
+        [`${iconName}Name`]: icon,
+        [`${iconName}Data`]: {},
+      };
+    } else if (typeof icon === 'object') {
+      return {
+        [`${iconName}Name`]: '',
+        [`${iconName}Data`]: icon,
+      };
+    } else {
+      return {
+        [`${iconName}Name`]: defaultIcon,
+        [`${iconName}Data`]: {},
+      };
+    }
+  }
 };

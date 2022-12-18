@@ -1,19 +1,22 @@
 <wxs src="./message.wxs" module="this"></wxs>
+<import src="../common/template/icon.wxml" />
 
 <block wx:if="{{visible}}">
   <view
     class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{theme}}"
-    style="{{this.getMessageStyles(zIndex, offset, wrapTop, customStyle )}}"
+    style="{{this.getMessageStyles(zIndex, offset, wrapTop, customStyle)}}"
     animation="{{showAnimation}}"
     id="{{classPrefix}}"
+    aria-role="alert"
   >
-    <t-icon
-      wx:if="{{iconName}}"
-      name="{{iconName}}"
-      class="{{classPrefix}}__icon--left {{prefix}}-class-icon"
-      size="44rpx"
-    />
-    <slot name="icon" />
+    <view wx:if="{{iconName || !this.isEmptyObj(iconData)}}" class="{{classPrefix}}__icon--left">
+      <slot wx:if="{{iconName === 'slot'}}" name="icon" />
+      <template
+        wx:else
+        is="icon"
+        data="{{tClass: prefix + '-class-icon', ariaHidden: true, name: iconName, ...iconData}}"
+      ></template>
+    </view>
 
     <view
       class="{{classPrefix}}__text-wrap {{marquee ? '{{classPrefix}}__text-nowrap' : ''}}"
@@ -29,19 +32,25 @@
     <t-button
       wx:if="{{action}}"
       t-class="{{classPrefix}}__btn--right {{prefix}}-class-action"
+      theme="primary"
+      variant="outline"
       size="small"
       bind:tap="handleBtnClick"
       >{{action}}</t-button
     >
     <slot name="action" />
 
-    <t-icon
-      wx:if="{{closeBtn}}"
-      class="{{classPrefix}}__icon--right {{prefix}}-class-close-btn"
-      name="close"
-      size="20px"
+    <view
+      wx:if="{{ closeBtnName || !this.isEmptyObj(closeBtnData)}}"
+      class="{{classPrefix}}__icon--right"
       bind:tap="handleClose"
-    />
-    <slot name="closeBtn" />
+    >
+      <slot wx:if="{{closeBtnName === 'slot'}}" name="closeBtn" />
+      <template
+        wx:else
+        is="icon"
+        data="{{tClass: prefix + '-class-close-btn', ariaRole: 'button', ariaLabel: '关闭', name: closeBtnName, ...closeBtnData}}"
+      ></template>
+    </view>
   </view>
 </block>

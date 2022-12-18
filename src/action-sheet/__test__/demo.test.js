@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['grid', 'grid-multi', 'icon-list', 'list'];
+const mapper = ['align', 'grid', 'list', 'status'];
 
 describe('ActionSheet', () => {
   mapper.forEach((demoName) => {

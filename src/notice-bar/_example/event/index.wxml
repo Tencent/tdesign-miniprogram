@@ -1,11 +1,23 @@
 <t-notice-bar
   visible="{{visible}}"
-  suffixIcon="chevron-right"
-  content="提示文字描述提示文字描述提示文字描述"
+  suffixIcon="close"
+  content="这是一条普通的通知信息"
   bind:click="click"
 ></t-notice-bar>
 
+<t-notice-bar
+  visible="{{visible}}"
+  suffixIcon="chevron-right"
+  content="这是一条普通的通知信息"
+  bind:click="click"
+></t-notice-bar>
+
+<t-notice-bar visible="{{visible}}" bind:click="click">
+  <view slot="content"> 这是一条普通的通知信息 </view>
+  <view slot="extra" class="extra">文字按钮</view>
+</t-notice-bar>
+
 <t-notice-bar visible="{{visible}}" suffixIcon="close" bind:click="click">
-  <view slot="content"> 提示文字描述提示文字描述 </view>
+  <view slot="content"> 这是一条普通的通知信息 </view>
   <view slot="extra" class="extra">详情</view>
 </t-notice-bar>

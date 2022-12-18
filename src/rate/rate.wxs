@@ -4,35 +4,61 @@ module.exports = {
       texts = defaultTexts;
     }
     var curVal = Math.floor(val - 1);
-    return texts[curVal];
+    return texts[curVal] || '未评分';
   },
-  getIconName: function (defaultValue, value, index, variant) {
+
+  getIconName: function (defaultValue, value, index, variant, icon) {
     var curVal = value ? value : defaultValue;
-    var name = 'star-filled';
+    var name = ['star-filled', 'star-filled'];
 
-    if (curVal - index >= 1) {
-      return name;
-    } else {
-      return variant === 'outline' ? 'star' : 'star-filled';
+    if (icon) {
+      name = icon.constructor == 'Array' ? icon : [icon, icon];
+    } else if (variant === 'outline') {
+      name[1] = 'star';
     }
+
+    return name[curVal >= index + 1 ? 0 : 1];
   },
 
-  getIconClass: function (classPrefix, defaultValue, value, index, allowHalf, disabled) {
+  getIconClass: function (classPrefix, defaultValue, value, index, allowHalf, disabled, scaleIndex) {
     var curVal = value ? value : defaultValue;
     var className = [];
-    if (curVal - index >= 1) {
-      className.push(classPrefix + '-selected');
+    if (curVal >= index + 1) {
+      className.push(classPrefix + '--selected');
       if (disabled) {
-        className.push(classPrefix + '-disabled');
+        className.push(classPrefix + '--disabled');
+      }
+      if (scaleIndex === index + 1) {
+        className.push(classPrefix + '--current');
       }
     } else if (allowHalf && curVal - index > 0) {
-      className.push(classPrefix + '-selected-half');
+      className.push(classPrefix + '--selected-half');
       if (disabled) {
-        className.push(classPrefix + '-disabled-half');
+        className.push(classPrefix + '--disabled-half');
       }
     } else {
-      className.push(classPrefix + '-unselected');
+      className.push(classPrefix + '--unselected');
     }
     return className.join(' ');
+  },
+
+  ceil: function (value) {
+    return Math.ceil(value);
+  },
+
+  getColor: function (color) {
+    if (color.constructor === 'Array' && color.length === 2) {
+      return ';--td-rate-selected-color: ' + color[0] + '; --td-rate-unselected-color: ' + color[1];
+    }
+
+    if (typeof color === 'string') {
+      return ';--td-rate-selected-color: ' + color;
+    }
+
+    return '';
+  },
+
+  regSize: function (val) {
+    return val.indexOf('px') ? val : val + 'px';
   },
 };

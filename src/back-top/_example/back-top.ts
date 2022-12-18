@@ -1,30 +1,21 @@
 Page({
   data: {
+    type: 'round',
     showBackTop: false,
-    rowCols: [
-      { width: '332rpx', height: '342rpx' },
-      { width: '332rpx', height: '32rpx' },
-      { width: '214rpx', height: '32rpx' },
-      [
-        { width: '186rpx', height: '32rpx' },
-        { width: '64rpx', height: '32rpx', marginLeft: '82rpx' },
-      ],
-    ],
+    rowCol: [{ size: '163.5px', borderRadius: '12px' }, 1, { width: '61%' }],
   },
-
-  windowHeight: null,
 
   onPageScroll(e) {
-    if (!this.windowHeight) {
-      this.windowHeight = wx.getSystemInfoSync().windowHeight;
-    }
-    const isShowBackTop = e.scrollTop > this.windowHeight;
-    if (isShowBackTop !== this.data.showBackTop) {
-      this.setData({ showBackTop: isShowBackTop });
-    }
+    this.setData({ showBackTop: e.scrollTop > 100 });
   },
 
-  onBtnClick() {
+  onBtnClick(e: any) {
+    const { source: type } = e.currentTarget.dataset;
+
+    this.setData({
+      type,
+    });
+
     wx.pageScrollTo({ duration: 300, scrollTop: 1000 });
   },
 });

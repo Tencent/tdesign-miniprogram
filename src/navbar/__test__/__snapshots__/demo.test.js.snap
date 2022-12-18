@@ -20,11 +20,15 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
       slot="capsule"
     >
       <t-icon
+        ariaLabel="返回"
+        ariaRole="button"
         class="custom-capsule__icon"
         name="chevron-left"
         size="20"
       />
       <t-icon
+        ariaLabel="首页"
+        ariaRole="button"
         class="custom-capsule__icon"
         name="home"
         size="20"
@@ -61,6 +65,7 @@ exports[`Navbar Navbar img demo works fine 1`] = `
       slot="left"
     >
       <t-image
+        ariaLabel="导航栏图片"
         src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/mobile/%E5%8D%A0%E4%BD%8D%E5%9B%BE%402x.png"
         tClass="custom-image"
       />

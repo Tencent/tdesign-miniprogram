@@ -7,40 +7,21 @@ Component({
         theme: ActionSheetTheme.Grid,
         selector: '#t-action-sheet',
         context: this,
-        items: [
-          {
-            label: '标题文字',
-            icon: 'image',
-          },
-          {
-            label: '标题文字',
-            icon: 'image',
-          },
-          {
-            label: '标题文字',
-            icon: 'image',
-          },
-          {
-            label: '标题文字',
-            icon: 'image',
-          },
-          {
-            label: '标题文字',
-            icon: 'image',
-          },
-          {
-            label: '标题文字',
-            icon: 'image',
-          },
-          {
-            label: '标题文字',
-            icon: 'image',
-          },
-          {
-            label: '标题文字',
-            icon: 'image',
-          },
-        ],
+        items: new Array(8).fill({
+          label: '标题文字',
+          icon: 'image',
+        }),
+      });
+    },
+    handleMultiAction() {
+      ActionSheet.show({
+        theme: ActionSheetTheme.Grid,
+        selector: '#t-action-sheet',
+        context: this,
+        items: new Array(16).fill({
+          label: '标题文字',
+          icon: 'image',
+        }),
       });
     },
     handleSelected(e) {

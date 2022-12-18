@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/sr
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
-import { getRect } from '../common/utils';
+import { isNumber, getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
@@ -35,8 +35,7 @@ export default class Message extends SuperComponent {
     loop: -1,
     animation: [],
     showAnimation: [],
-    iconName: '',
-    wrapTop: -92,
+    wrapTop: -999, // 初始定位，保证在可视区域外。
   };
 
   observers = {
@@ -51,6 +50,14 @@ export default class Message extends SuperComponent {
         });
       }
     },
+
+    icon(icon) {
+      this.setIcon(icon);
+    },
+
+    closeBtn(closeBtn) {
+      this.setCloseBtn(closeBtn);
+    },
   };
 
   /** 延时关闭句柄 */
@@ -64,19 +71,8 @@ export default class Message extends SuperComponent {
     timingFunction: 'linear',
   });
 
-  // 入场动画
-  showAnimation = wx.createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' }).translateY(0).step().export();
-
-  // 出场动画
-  hideAnimation = wx
-    .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
-    .translateY(this.data.wrapTop)
-    .step()
-    .export();
-
   ready() {
     this.memoInitalData();
-    this.setIcon();
   }
 
   /** 记录组件设置的项目 */
@@ -96,23 +92,20 @@ export default class Message extends SuperComponent {
   }
 
   /** icon 值设置 */
-  setIcon(icon = this.properties.icon) {
-    // 使用空值
+  setIcon(icon) {
     if (!icon) {
-      this.setData({ iconName: '' });
-      return;
-    }
-    // 固定值
-    if (typeof icon === 'string') {
+      this.setData({ iconName: '', iconData: {} });
+    } else if (typeof icon === 'string') {
       this.setData({
-        iconName: `${icon}`,
+        iconName: icon,
+        iconData: {},
       });
-      return;
-    }
-
-    // 使用默认值
-    if (icon) {
-      let nextValue = 'notification';
+    } else if (typeof icon === 'object') {
+      this.setData({
+        iconName: '',
+        iconData: icon,
+      });
+    } else {
       const { theme } = this.properties;
       const themeMessage = {
         info: 'error-circle',
@@ -120,8 +113,28 @@ export default class Message extends SuperComponent {
         warning: 'error-circle',
         error: 'error-circle',
       };
-      nextValue = themeMessage[theme];
-      this.setData({ iconName: nextValue });
+      this.setData({ iconName: themeMessage[theme], iconData: {} });
+    }
+  }
+
+  setCloseBtn(closeBtn) {
+    if (!closeBtn) {
+      this.setData({ closeBtnName: '', closeBtnData: {} });
+    } else if (typeof closeBtn === 'string') {
+      this.setData({
+        closeBtnName: closeBtn,
+        closeBtnData: {},
+      });
+    } else if (typeof closeBtn === 'object') {
+      this.setData({
+        closeBtnName: '',
+        closeBtnData: closeBtn,
+      });
+    } else {
+      this.setData({
+        closeBtnName: 'close',
+        closeBtnData: {},
+      });
     }
   }
 
@@ -181,11 +194,26 @@ export default class Message extends SuperComponent {
     this.nextAnimationContext = 0;
   }
 
+  /** offset 默认单位是 rpx 统一处理成 px 大小，因为小程序dom中实际使用的是 px */
+  offsetUnitToPx(e: number | string) {
+    if (isNumber(e)) {
+      return Number(e) / 2;
+    }
+
+    if (String(e).indexOf('rpx') > -1) {
+      return Number(String(e).split('rpx')[0]) / 2;
+    }
+
+    if (String(e).indexOf('px') > -1) {
+      return Number(String(e).split('px')[0]);
+    }
+    return 0;
+  }
+
   show() {
-    const { duration, icon, marquee } = this.properties;
+    const { duration, marquee, offset } = this.properties;
     this.setData({ visible: true, loop: marquee.loop });
     this.reset();
-    this.setIcon(icon);
     this.checkAnimation();
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
@@ -196,16 +224,29 @@ export default class Message extends SuperComponent {
 
     const wrapID = `#${name}`;
     getRect(this, wrapID).then((wrapRect) => {
-      // 先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
+      // 入场动画。先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
       this.setData({ wrapTop: -wrapRect.height }, () => {
-        this.setData({ showAnimation: this.showAnimation });
+        this.setData({
+          showAnimation: wx
+            .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
+            .translateY(wrapRect.height + this.offsetUnitToPx(offset[0]))
+            .step()
+            .export(),
+        });
       });
     });
   }
 
   hide() {
     this.reset();
-    this.setData({ showAnimation: this.hideAnimation });
+    this.setData({
+      // 出场动画
+      showAnimation: wx
+        .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
+        .translateY(this.data.wrapTop)
+        .step()
+        .export(),
+    });
     setTimeout(() => {
       this.setData({ visible: false, animation: [] });
     }, SHOW_DURATION);

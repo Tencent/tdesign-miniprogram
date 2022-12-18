@@ -11,6 +11,10 @@ function addUnit(value) {
   return REGEXP.test('' + value) ? value + 'px' : value;
 }
 
+function isString(string) {
+  return string && string.constructor === 'String';
+}
+
 function isArray(array) {
   return array && array.constructor === 'Array';
 }
@@ -18,6 +22,10 @@ function isArray(array) {
 function isObject(obj) {
   return obj && obj.constructor === 'Object';
 }
+
+var isNoEmptyObj = function (obj) {
+  return isObject(obj) && JSON.stringify(obj) !== '{}';
+};
 
 function includes(arr, value) {
   if (!arr || !isArray(arr)) return false;
@@ -37,7 +45,7 @@ function cls(base, arr) {
   for (size = arr.length; i < size; i++) {
     var item = arr[i];
 
-    if (item.constructor === 'Array') {
+    if (item && item.constructor === 'Array') {
       var key = arr[i][0];
       var value = arr[i][1];
 
@@ -55,8 +63,10 @@ function cls(base, arr) {
 
 module.exports = {
   addUnit: addUnit,
+  isString: isString,
   isArray: isArray,
   isObject: isObject,
+  isNoEmptyObj: isNoEmptyObj,
   includes: includes,
   cls: cls,
 };

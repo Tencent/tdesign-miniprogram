@@ -42,6 +42,9 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       { key: 'ariaHidden', type: Boolean },
       { key: 'ariaRole', type: String },
       { key: 'ariaLabel', type: String },
+      { key: 'ariaLabelledby', type: String },
+      { key: 'ariaDescribedby', type: String },
+      { key: 'ariaBusy', type: Boolean },
     ];
     ariaProps.forEach(({ key, type }) => {
       options.properties[key] = {

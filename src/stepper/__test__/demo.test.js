@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'input-width', 'min-max', 'other', 'status', 'step'];
+const mapper = ['base', 'min-max', 'size', 'status', 'theme'];
 
 describe('Stepper', () => {
   mapper.forEach((demoName) => {

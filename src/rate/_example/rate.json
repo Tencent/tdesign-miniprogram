@@ -2,9 +2,11 @@
   "navigationBarTitleText": "Rate",
   "usingComponents": {
     "base": "./base",
+    "custom": "./custom",
+    "special": "./special",
     "un-filled": "./un-filled",
     "count": "./count",
-    "allow-half": "./allow-half",
+    "action": "./action",
     "show-text": "./show-text",
     "disabled": "./disabled",
     "color": "./color",
