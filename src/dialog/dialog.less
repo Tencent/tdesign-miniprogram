@@ -11,7 +11,6 @@
 // color
 @dialog-btn-bg-color-active: rgba(0, 0, 0, 0.05);
 @dialog-btn-border-color: #eee;
-@dialog-input-bg-color: #f0f0f0;
 
 @dialog-title-font-size: 36rpx;
 @dialog-title-color: @font-gray-1;
@@ -22,6 +21,11 @@
 @dialog-content-line-height: 48rpx;
 
 @dialog-close-color: @font-gray-3;
+
+@dialog-input-bg-color: @gray-color-1;
+@dialog-input-raidus: 8rpx;
+@dialog-input-height: 96rpx;
+@dialog-input-placeholder-color: @font-gray-3;
 
 .@{dialog} {
   overflow: hidden;
@@ -147,27 +151,20 @@
     }
   }
 
-  &__text {
-    & + .@{prefix}-dialog__input {
-      margin-top: @spacer-3;
-    }
+  input {
+    height: @dialog-input-height;
+    padding: 0 24rpx;
+    text-align: left;
+    margin-top: 32rpx;
+    border-radius: @dialog-input-raidus;
+    background-color: @dialog-input-bg-color;
   }
 
-  &__input {
-    width: 100%;
-    background-color: @dialog-input-bg-color;
-    font-size: @font-size-m;
-    color: @text-level-1-color;
-    border-radius: @border-radius / 2;
-    height: @dialog-input-height;
-    line-height: @text-line-height;
-    padding: @spacer-1;
-    margin-top: @spacer-1;
-    box-sizing: border-box;
-    text-align: left;
-
-    &-placeholder {
-      color: @text-level-4-color;
-    }
+  .placeholder {
+    color: @dialog-input-placeholder-color;
+    line-height: @dialog-input-height;
+    // height: 96rpx !important;
+    // display: flex;
+    // align-items: center;
   }
 }
