@@ -198,66 +198,6 @@ exports[`Dialog Dialog confirm demo works fine 1`] = `
 </confirm>
 `;
 
-exports[`Dialog Dialog inputDialog demo works fine 1`] = `
-<inputDialog>
-  <wx-view
-    class="box"
-  >
-    <t-button
-      block="{{true}}"
-      data-key="showWithInput"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      单行标题
-    </t-button>
-    <t-dialog
-      cancelBtn="取消"
-      confirmBtn="确认"
-      title="带输入框对话框"
-      visible="{{false}}"
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    >
-      <wx-input
-        placeholder="输入文案"
-        placeholderClass="placeholder"
-        slot="content"
-      />
-    </t-dialog>
-    <t-button
-      block="{{true}}"
-      data-key="showTextAndTitleWithInput"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      带说明文本
-    </t-button>
-    <t-dialog
-      cancelBtn="取消"
-      confirmBtn="确认"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      title="带输入框对话框"
-      visible="{{false}}"
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    >
-      <wx-input
-        placeholder="输入文案"
-        placeholderClass="placeholder"
-        slot="content"
-      />
-    </t-dialog>
-  </wx-view>
-</inputDialog>
-`;
-
 exports[`Dialog Dialog status demo works fine 1`] = `
 <status>
   <wx-view
