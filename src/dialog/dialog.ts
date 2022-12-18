@@ -50,12 +50,10 @@ export default class Dialog extends SuperComponent {
 
       Object.keys(buttonMap).forEach((key) => {
         const btn = buttonMap[key];
-        cls.push(`${classPrefix}__button--${key}`);
-        externalCls.push(`${prefix}-class-${key}`);
         const base: Record<string, any> = {
           block: true,
-          class: cls,
-          externalClass: externalCls,
+          class: [...cls, `${classPrefix}__button--${key}`],
+          externalClass: [...externalCls, `${prefix}-class-${key}`],
           variant: rect.buttonVariant,
         };
 

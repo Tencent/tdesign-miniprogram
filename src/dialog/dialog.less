@@ -2,16 +2,12 @@
 
 @dialog: ~'@{prefix}-dialog';
 @dialogBtn: ~'@{dialog}__button';
+
 // size
-@dialog-width: 322rpx * 2;
-@dialog-body-max-height: 388rpx * 2;
-@dialog-btn-height: 56rpx * 2;
-@dialog-input-height: 48rpx * 2;
+@dialog-width: 622rpx;
+@dialog-body-max-height: 912rpx;
 
 // color
-@dialog-btn-bg-color-active: rgba(0, 0, 0, 0.05);
-@dialog-btn-border-color: #eee;
-
 @dialog-title-font-size: 36rpx;
 @dialog-title-color: @font-gray-1;
 @dialog-title-line-height: 52rpx;
@@ -59,18 +55,17 @@
     color: @dialog-title-color;
   }
 
+  &__header + &__body {
+    margin-top: 16rpx;
+  }
+
   &__body {
     overflow-y: scroll;
     text-align: center;
     -webkit-overflow-scrolling: touch;
     font-size: @dialog-content-font-size;
     color: @dialog-content-color;
-    margin-top: 16rpx;
     line-height: @dialog-content-line-height;
-
-    &--without-title {
-      margin-top: 0;
-    }
 
     &-text {
       word-wrap: break-word;
@@ -88,10 +83,6 @@
   &__footer {
     display: flex;
     padding: 48rpx;
-
-    &-button-host {
-      width: 100%;
-    }
 
     &--column {
       flex-flow: column-reverse;

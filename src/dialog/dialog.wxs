@@ -2,11 +2,12 @@ module.exports.getTypeof = function (obj) {
   return typeof obj;
 };
 
-module.exports.getBtnClass = function (prefix, buttonLayout) {
-  var cls = [prefix + '__button'];
+module.exports.getActionClass = function (prefix, buttonLayout) {
+  var cls = [prefix + '__button', prefix + '__button--action'];
 
   if (buttonLayout) {
     cls.push(prefix + '__button--' + buttonLayout);
   }
+
   return cls.join(' ');
 };
