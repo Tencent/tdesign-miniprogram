@@ -3,8 +3,6 @@
   wx:if="{{realVisible}}"
   style="{{ utils.getPopupStyles(zIndex, customStyle) }}"
   class="{{className}} {{transitionClass}} {{prefix}}-class"
-  aria-role="dialog"
-  aria-modal="true"
   bind:transitionend="onTransitionEnd"
   aria-role="dialog"
   aria-modal="{{ true }}"
@@ -27,5 +25,4 @@
   prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
   bind:tap="handleOverlayClick"
   custom-style="{{overlayProps.customStyle || ''}}"
-  aria-label="关闭"
 />
