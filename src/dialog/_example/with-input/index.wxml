@@ -7,7 +7,7 @@
     data-key="showWithInput"
     bind:tap="showDialog"
     block
-    >单行标题</t-button
+    >输入类-无描述</t-button
   >
   <t-dialog
     visible="{{showWithInput}}"
@@ -28,7 +28,7 @@
     data-key="showTextAndTitleWithInput"
     bind:tap="showDialog"
     block
-    >带说明文本</t-button
+    >输入类-带描述</t-button
   >
   <t-dialog
     visible="{{showTextAndTitleWithInput}}"

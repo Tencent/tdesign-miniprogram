@@ -12,10 +12,8 @@
   font-size: 32rpx;
   color: #888;
 }
-.long-content .content-cintainer {
-  width: 540rpx;
-}
 
-.cancel {
-  background: red !important;
+.long-content .content-container {
+  width: 540rpx;
+  white-space: pre-line;
 }

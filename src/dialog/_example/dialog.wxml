@@ -8,7 +8,10 @@
     <confirm />
 
     <view class="demo-desc">输入类对话框</view>
-    <inputDialog />
+    <with-input />
+
+    <view class="demo-desc">带图片的对话框</view>
+    <with-image />
 
     <view class="demo-desc">命令调用</view>
     <command />
@@ -16,4 +19,7 @@
     <view class="demo-desc">自定义按钮</view>
     <buttonDemo />
   </t-demo>
+
+  <t-demo title="02 组件状态" />
+  <status />
 </view>
