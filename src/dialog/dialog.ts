@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { isObject, toCamel } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-dialog`;
@@ -30,23 +31,42 @@ export default class Dialog extends SuperComponent {
 
   observers = {
     'confirmBtn, cancelBtn'(confirm, cancel) {
-      const rect: Record<string, any> = {};
-      // 其中一个为 null，也应该属于 text
-      const allText = [confirm, cancel].every((item) => typeof item === 'string' || item == null);
+      const { prefix, classPrefix, buttonLayout } = this.data;
+      const rect: Record<string, any> = { buttonVariant: 'text' };
+      const useBaseVariant = [confirm, cancel].some(
+        (item) => isObject(item) && item.variant && item.variant !== 'text',
+      );
       const buttonMap = { confirm, cancel };
+      const cls = [`${classPrefix}__button`];
+      const externalCls = [];
 
-      if (allText) {
-        this.setData({ buttonVariant: 'text' });
+      if (useBaseVariant) {
+        rect.buttonVariant = 'base';
+        cls.push(`${classPrefix}__button--${buttonLayout}`);
       } else {
-        this.setData({ buttonVariant: 'base' });
+        cls.push(`${classPrefix}__button--text`);
+        externalCls.push(`${classPrefix}-button`);
       }
 
       Object.keys(buttonMap).forEach((key) => {
         const btn = buttonMap[key];
+        cls.push(`${classPrefix}__button--${key}`);
+        externalCls.push(`${prefix}-class-${key}`);
+        const base: Record<string, any> = {
+          block: true,
+          class: cls,
+          externalClass: externalCls,
+          variant: rect.buttonVariant,
+        };
+
+        if (key === 'cancel' && rect.buttonVariant === 'base') {
+          base.theme = 'light';
+        }
+
         if (typeof btn === 'string') {
-          rect[`_${key}`] = { content: btn };
+          rect[`_${key}`] = { ...base, content: btn };
         } else if (btn && typeof btn === 'object') {
-          rect[`_${key}`] = btn;
+          rect[`_${key}`] = { ...base, ...btn };
         }
       });
 
@@ -58,7 +78,7 @@ export default class Dialog extends SuperComponent {
     onTplButtonTap(e) {
       const evtType = e.type;
       const { type, extra } = e.target.dataset;
-      const button = this.data[`${type}Btn`];
+      const button = this.data[`_${type}`];
       const cbName = `bind${evtType}`;
 
       if (type === 'action') {
@@ -67,9 +87,15 @@ export default class Dialog extends SuperComponent {
       }
 
       if (typeof button[cbName] === 'function') {
-        button[cbName](e);
-      } else if (['confirm', 'cancel'].includes(type)) {
-        this.triggerEvent(type);
+        const closeFlag = button[cbName](e);
+        if (closeFlag) {
+          this.close();
+        }
+      }
+
+      const hasOpenType = 'openType' in button;
+      if (!hasOpenType && ['confirm', 'cancel'].includes(type)) {
+        this[toCamel(`on-${type}`)]?.(type);
       }
 
       if (evtType !== 'tap') {
@@ -94,6 +120,11 @@ export default class Dialog extends SuperComponent {
         this._onCancel();
         this.close();
       }
+    },
+
+    onClose() {
+      this.triggerEvent('close', { trigger: 'close-btn' });
+      this.close();
     },
 
     close() {

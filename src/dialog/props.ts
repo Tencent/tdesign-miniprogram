@@ -19,6 +19,11 @@ const props: TdDialogProps = {
   cancelBtn: {
     type: null,
   },
+  /** 是否展示关闭按钮，值为 `true` 显示默认关闭按钮；值为 `false` 则不显示关闭按钮；使用 Object 时透传至图标组件 */
+  closeBtn: {
+    type: null,
+    value: false,
+  },
   /** 点击蒙层时是否触发关闭事件 */
   closeOnOverlayClick: {
     type: Boolean,

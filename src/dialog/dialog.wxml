@@ -1,4 +1,5 @@
 <import src="../common/template/button.wxml" />
+<import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./dialog.wxs" module="this" />
 
@@ -17,6 +18,10 @@
 >
   <view slot="content" class="{{classPrefix}} {{prefix}}-class">
     <slot name="top" />
+    <view wx:if="{{closeBtn}}" class="{{classPrefix}}__close-btn" bind:tap="onClose">
+      <template wx:if="{{_.isObject(closeBtn)}}" is="icon" data="{{ name: 'close', size: 22, ...closeBtn }}" />
+      <t-icon wx:else name="close" size="22" />
+    </view>
     <view class="{{classPrefix}}__content {{prefix}}-class-content">
       <view wx:if="{{title}}" class="{{classPrefix}}__header">{{title}}</view>
       <slot name="title" />
@@ -33,50 +38,17 @@
         <block wx:for="{{actions}}" wx:key="index">
           <template
             is="button"
-            data="{{block: true, type: 'action', extra: index, externalClass: prefix + '-class-action', class: this.getBtnClass(classPrefix, null, buttonLayout), ...item }}"
+            data="{{block: true, type: 'action', extra: index, externalClass: prefix + '-class-action', class: this.getBtnClass(classPrefix, buttonLayout), ...item }}"
           />
         </block>
       </block>
       <slot name="actions" />
-      <t-button
-        wx:if="{{cancelBtn && buttonVariant == 'text'}}"
-        block
-        variant="text"
-        t-class="{{classPrefix}}-button {{prefix}}-class-cancel"
-        class="{{_.cls(classPrefix + '__button', ['text', 'cancel'])}}"
-        bind:tap="onCancel"
-      >
-        {{cancelBtn}}
-      </t-button>
-      <block wx:elif="{{cancelBtn && buttonVariant == 'base'}}">
-        <template
-          is="button"
-          data="{{block: true, type: 'cancel', theme: 'light', externalClass: prefix + '-class-cancel', class: this.getBtnClass(classPrefix, theme, buttonLayout), ..._cancel }}"
-        ></template>
+      <block wx:if="{{_cancel}}">
+        <template is="button" data="{{type: 'cancel', ..._cancel }}" />
       </block>
       <slot name="cancel-btn" />
-      <t-button
-        wx:if="{{confirmBtn && buttonVariant == 'text'}}"
-        block
-        variant="text"
-        theme="primary"
-        t-class="{{classPrefix}}-button {{prefix}}-class-confirm"
-        class="{{_.cls(classPrefix + '__button', ['text', 'confirm'])}}"
-        bind:tap="onConfirm"
-        bind:getuserinfo="openValueCBHandle"
-        bind:contact="openValueCBHandle"
-        bind:getphonenumber="openValueCBHandle"
-        bind:opensetting="openValueCBHandle"
-        bind:launchapp="openValueCBHandle"
-        bind:error="openValueErrCBHandle"
-      >
-        {{confirmBtn}}
-      </t-button>
-      <block wx:elif="{{confirmBtn && buttonVariant == 'base'}}">
-        <template
-          is="button"
-          data="{{block: true, type: 'confirm', theme: 'primary', externalClass: prefix + '-class-confirm', class: this.getBtnClass(classPrefix, theme, buttonLayout), ..._confirm}}"
-        ></template>
+      <block wx:if="{{_confirm}}">
+        <template is="button" data="{{type: 'confirm', theme: 'primary', ..._confirm}}" />
       </block>
       <slot name="confirm-btn" />
     </view>

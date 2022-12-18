@@ -1,8 +1,4 @@
-.box {
-  margin: 32rpx;
-}
-
 .external-class {
-  margin: 0 0 32rpx 0;
-  height: 96rpx;
+  margin: 32rpx;
+  display: block;
 }

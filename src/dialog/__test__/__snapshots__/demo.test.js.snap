@@ -7,48 +7,22 @@ exports[`Dialog Dialog base demo works fine 1`] = `
   >
     <t-button
       block="{{true}}"
-      data-key="showText"
-      size="large"
-      tClass="external-class"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      单行标题
-    </t-button>
-    <t-dialog
-      confirmBtn="我知道了"
-      title="对话框标题"
-      visible="{{false}}"
-      bind:confirm="closeDialog"
-    />
-    <t-button
-      block="{{true}}"
-      data-key="showMultiText"
-      size="large"
-      tClass="external-class"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      多行标题最大高度
-    </t-button>
-    <t-dialog
-      confirmBtn="我知道了"
-      title="对话框标题告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      visible="{{false}}"
-      bind:confirm="closeDialog"
-    />
-    <t-button
-      block="{{true}}"
       data-key="showTextAndTitle"
       size="large"
-      tClass="external-class"
+      tClass="wrapper"
+      theme="primary"
       variant="outline"
       bind:tap="showDialog"
     >
-      带说明文本
+      反馈类-基础
     </t-button>
     <t-dialog
-      confirmBtn="我知道了"
+      confirmBtn="{{
+        Object {
+          "content": "知道了",
+          "variant": "base",
+        }
+      }}"
       content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
       title="对话框标题"
       visible="{{false}}"
@@ -56,17 +30,45 @@ exports[`Dialog Dialog base demo works fine 1`] = `
     />
     <t-button
       block="{{true}}"
-      data-key="showMultiTextAndTitle"
+      data-key="showContentOnly"
       size="large"
-      tClass="external-class"
+      tClass="wrapper"
+      theme="primary"
       variant="outline"
       bind:tap="showDialog"
     >
-      带说明文本最大高度
+      反馈类-无标题
     </t-button>
     <t-dialog
-      confirmBtn="我知道了"
-      title="对话框带文本最大高度"
+      confirmBtn="{{
+        Object {
+          "content": "知道了",
+          "variant": "base",
+        }
+      }}"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      visible=""
+      bind:confirm="closeDialog"
+    />
+    <t-button
+      block="{{true}}"
+      data-key="showMultiTextAndTitle"
+      size="large"
+      tClass="wrapper"
+      theme="primary"
+      variant="outline"
+      bind:tap="showDialog"
+    >
+      反馈类-内容超长
+    </t-button>
+    <t-dialog
+      confirmBtn="{{
+        Object {
+          "content": "知道了",
+          "variant": "base",
+        }
+      }}"
+      title="对话框标题"
       visible="{{false}}"
       bind:confirm="closeDialog"
     >
@@ -76,10 +78,14 @@ exports[`Dialog Dialog base demo works fine 1`] = `
         slot="content"
       >
         <wx-view
-          class="content-cintainer"
+          class="content-container"
         >
-          
-        告知当前状态、信息和解决方法，等内容。描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案很多描述文案
+          这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
       
         </wx-view>
       </wx-scroll-view>
@@ -98,6 +104,7 @@ exports[`Dialog Dialog button demo works fine 1`] = `
       data-type="hasCancelBtn"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showDialog"
     >
@@ -117,22 +124,13 @@ exports[`Dialog Dialog command demo works fine 1`] = `
   >
     <t-button
       block="{{true}}"
-      data-type="hasCancelBtn"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showDialog"
     >
-      带取消按钮
-    </t-button>
-    <t-button
-      block="{{true}}"
-      size="large"
-      tClass="external-class"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      无取消按钮
+      命令行操作
     </t-button>
     <t-dialog
       id="t-dialog"
@@ -151,14 +149,20 @@ exports[`Dialog Dialog confirm demo works fine 1`] = `
       data-key="showConfirm"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showDialog"
     >
-      双按钮
+      确认类-带标题
     </t-button>
     <t-dialog
       cancelBtn="取消"
-      confirmBtn="按钮最多字数"
+      confirmBtn="{{
+        Object {
+          "content": "确定",
+          "variant": "base",
+        }
+      }}"
       content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
       title="对话框标题"
       visible="{{false}}"
@@ -170,73 +174,25 @@ exports[`Dialog Dialog confirm demo works fine 1`] = `
       data-key="showWarnConfirm"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showDialog"
     >
-      带警示按钮
+      确认类-无标题
     </t-button>
     <t-dialog
       cancelBtn="取消"
-      confirmBtn="警示操作"
-      tClassConfirm="custom-confirm-btn"
-      title="对话框标题"
-      visible="{{false}}"
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    />
-    <t-button
-      block="{{true}}"
-      data-key="showTooLongBtnContent"
-      size="large"
-      tClass="external-class"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      双按钮文字过长
-    </t-button>
-    <t-dialog
-      buttonLayout="vertical"
-      cancelBtn="取消"
-      confirmBtn="按钮文案文字内容较长"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      title="对话框标题"
-      visible="{{false}}"
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    />
-    <t-button
-      block="{{true}}"
-      data-key="showMultiBtn"
-      size="large"
-      tClass="external-class"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      多按钮
-    </t-button>
-    <t-dialog
-      actions="{{
-        Array [
-          Object {
-            "name": "取消",
-            "primary": false,
-          },
-          Object {
-            "name": "单行按钮最多十五个字符文案内容",
-            "primary": true,
-          },
-          Object {
-            "name": "按钮文案文字内容较长",
-            "primary": true,
-            "style": "color:red;",
-          },
-        ]
+      confirmBtn="{{
+        Object {
+          "content": "警示操作",
+          "theme": "danger",
+          "variant": "base",
+        }
       }}"
-      buttonLayout="vertical"
       content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      title="对话框标题"
       visible="{{false}}"
-      bind:action="closeDialog"
+      bind:cancel="closeDialog"
+      bind:confirm="closeDialog"
     />
   </wx-view>
 </confirm>
@@ -252,6 +208,7 @@ exports[`Dialog Dialog inputDialog demo works fine 1`] = `
       data-key="showWithInput"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showDialog"
     >
@@ -276,6 +233,7 @@ exports[`Dialog Dialog inputDialog demo works fine 1`] = `
       data-key="showTextAndTitleWithInput"
       size="large"
       tClass="external-class"
+      theme="primary"
       variant="outline"
       bind:tap="showDialog"
     >

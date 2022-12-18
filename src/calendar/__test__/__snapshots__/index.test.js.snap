@@ -740,6 +740,7 @@ exports[`calendar :base 1`] = `
               >
                 <t-button
                   class="t-calendar__confirm-btn"
+                  data-extra=""
                   data-type=""
                   tClass=""
                   bind:contact="onTplButtonTap"

@@ -12,7 +12,7 @@
   <t-dialog
     visible="{{showWithInput}}"
     title="带输入框对话框"
-    confirm-btn="确认"
+    confirm-btn="确定"
     cancel-btn="取消"
     bind:confirm="closeDialog"
     bind:cancel="closeDialog"
@@ -34,7 +34,7 @@
     visible="{{showTextAndTitleWithInput}}"
     title="带输入框对话框"
     content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-    confirm-btn="确认"
+    confirm-btn="确定"
     cancel-btn="取消"
     bind:confirm="closeDialog"
     bind:cancel="closeDialog"

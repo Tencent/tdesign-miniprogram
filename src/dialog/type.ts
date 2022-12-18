@@ -17,7 +17,6 @@ export interface TdDialogProps {
   /**
    * 多按钮排列方式
    * @default horizontal
-   * @deprecated
    */
   buttonLayout?: {
     type: StringConstructor;
@@ -29,6 +28,14 @@ export interface TdDialogProps {
   cancelBtn?: {
     type: null;
     value?: string | ButtonProps | null;
+  };
+  /**
+   * 是否展示关闭按钮，值为 `true` 显示默认关闭按钮；值为 `false` 则不显示关闭按钮；使用 Object 时透传至图标组件
+   * @default false
+   */
+  closeBtn?: {
+    type: null;
+    value?: boolean | object;
   };
   /**
    * 点击蒙层时是否触发关闭事件
@@ -89,14 +96,6 @@ export interface TdDialogProps {
   showOverlay?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 样式风格
-   * @default default
-   */
-  theme?: {
-    type: StringConstructor;
-    value?: 'default' | 'new';
   };
   /**
    * 标题

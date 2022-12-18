@@ -21,11 +21,20 @@
 @dialog-content-color: @font-gray-2;
 @dialog-content-line-height: 48rpx;
 
+@dialog-close-color: @font-gray-3;
+
 .@{dialog} {
   overflow: hidden;
   width: @dialog-width;
   border-radius: @border-radius;
   background-color: @bg-color-block;
+
+  &__close-btn {
+    position: absolute;
+    top: 16rpx;
+    right: 16rpx;
+    color: @dialog-close-color;
+  }
 
   &__content {
     padding: @spacer-4 @spacer-3 0;

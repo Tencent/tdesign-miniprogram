@@ -8,15 +8,15 @@ name | type | default | description | required
 actions | Array / Slot | - | Typescript：`Array<ButtonProps>`，[Button API Documents](./button?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
 button-layout | String | horizontal | options：horizontal/vertical | N
 cancel-btn | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
+close-btn | Boolean / Object | false | `0.31.0` | N
 close-on-overlay-click | Boolean | undefined | \- | N
 confirm-btn | String / Object / Slot | - | \- | N
 content | String / Slot | - | \- | N
-custom-style | String | - | `0.25.` | N
+custom-style | String | - | `0.25.0` | N
 external-classes | Array | - | `['t-class', 't-class-content', 't-class-confirm', 't-class-cancel']` | N
 overlay-props | Object | {} | \- | N
 prevent-scroll-through | Boolean | true | \- | N
 show-overlay | Boolean | true | \- | N
-theme | String | default | `0.31.0`。options：default/new | N
 title | String / Slot | - | \- | N
 visible | Boolean | - | \- | N
 z-index | Number | 11500 | \- | N
@@ -26,6 +26,6 @@ z-index | Number | 11500 | \- | N
 name | params | description
 -- | -- | --
 cancel | - | \-
-close | `(trigger: DialogEventSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)。<br/>`type DialogEventSource = 'cancel' \| 'overlay'`<br/>
+close | `(trigger: DialogEventSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)。<br/>`type DialogEventSource = 'cancel' \| 'overlay' \| 'close-btn'`<br/>
 confirm | - | \-
 overlay-click | - | \-
