@@ -12,7 +12,7 @@ exports[`picker :base 1`] = `
     bind:visible-change="onPopupChange"
   >
     <wx-view
-      ariaModal="true"
+      ariaModal="{{true}}"
       ariaRole="dialog"
       class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
       style="z-index:11500;"
@@ -127,7 +127,7 @@ exports[`picker :base 1`] = `
       bind:tap="handleOverlayClick"
     >
       <wx-view
-        ariaLabel="关闭"
+        ariaLabel="遮罩层，点击关闭"
         ariaRole="button"
         class="t-overlay t-fade-enter t-fade-enter-active"
         style="z-index: 11000;  "
