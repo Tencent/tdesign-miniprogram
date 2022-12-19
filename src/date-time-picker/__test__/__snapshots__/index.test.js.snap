@@ -61,7 +61,7 @@ exports[`date-time-picker :base 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group"
+                    class="t-picker-item__group t-picker-item__group--roomy"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -241,7 +241,7 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
-                        class="t-picker-item__item"
+                        class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{21}}"
                       >
                         
@@ -328,7 +328,7 @@ exports[`date-time-picker :base 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group"
+                    class="t-picker-item__group t-picker-item__group--roomy"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -404,7 +404,7 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
-                        class="t-picker-item__item"
+                        class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{8}}"
                       >
                         
@@ -439,7 +439,10 @@ exports[`date-time-picker :base 1`] = `
                   </wx-view>
                 </t-picker-item>
                 <wx-view
-                  class="t-picker__mask"
+                  class="t-picker__mask t-picker__mask--top"
+                />
+                <wx-view
+                  class="t-picker__mask t-picker__mask--bottom"
                 />
                 <wx-view
                   class="t-picker__indicator"
@@ -529,7 +532,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group"
+                    class="t-picker-item__group t-picker-item__group--narrow"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -541,7 +544,7 @@ exports[`date-time-picker :second 1`] = `
                       style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
                     >
                       <wx-view
-                        class="t-picker-item__item"
+                        class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
                       >
                         
@@ -796,7 +799,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group"
+                    class="t-picker-item__group t-picker-item__group--narrow"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -808,7 +811,7 @@ exports[`date-time-picker :second 1`] = `
                       style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
                     >
                       <wx-view
-                        class="t-picker-item__item"
+                        class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
                       >
                         
@@ -911,7 +914,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group"
+                    class="t-picker-item__group t-picker-item__group--narrow"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -923,7 +926,7 @@ exports[`date-time-picker :second 1`] = `
                       style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
                     >
                       <wx-view
-                        class="t-picker-item__item"
+                        class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
                       >
                         
@@ -1178,7 +1181,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group"
+                    class="t-picker-item__group t-picker-item__group--narrow"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -1190,7 +1193,7 @@ exports[`date-time-picker :second 1`] = `
                       style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
                     >
                       <wx-view
-                        class="t-picker-item__item"
+                        class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
                       >
                         
@@ -1389,7 +1392,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group"
+                    class="t-picker-item__group t-picker-item__group--narrow"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -1401,7 +1404,7 @@ exports[`date-time-picker :second 1`] = `
                       style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
                     >
                       <wx-view
-                        class="t-picker-item__item"
+                        class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
                       >
                         
@@ -1888,7 +1891,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group"
+                    class="t-picker-item__group t-picker-item__group--narrow"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -1900,7 +1903,7 @@ exports[`date-time-picker :second 1`] = `
                       style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
                     >
                       <wx-view
-                        class="t-picker-item__item"
+                        class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{0}}"
                       >
                         
@@ -2383,7 +2386,10 @@ exports[`date-time-picker :second 1`] = `
                   </wx-view>
                 </t-picker-item>
                 <wx-view
-                  class="t-picker__mask"
+                  class="t-picker__mask t-picker__mask--top"
+                />
+                <wx-view
+                  class="t-picker__mask t-picker__mask--bottom"
                 />
                 <wx-view
                   class="t-picker__indicator"
