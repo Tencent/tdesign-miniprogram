@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base'];
+const mapper = ['area', 'base', 'with-title'];
 
 describe('Picker', () => {
   mapper.forEach((demoName) => {

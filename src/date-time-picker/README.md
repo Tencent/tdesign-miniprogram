@@ -18,23 +18,23 @@ isComponent: true
 
 ## 代码演示
 
-### 基础时间选择器
+### 日期选择器
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/datetimepicker.png" width="375px" height="50%">
-
-#### 选择日期(年月日)
+#### 年月日选择器
 
 {{ year-month-date }}
 
-#### 选择日期(年月)
+#### 年月选择器
 
 {{ year-month }}
 
-#### 选择时间(时分)
+### 时间选择器器
 
-{{ time-min }}
+包括：`时分秒`、`时分`两个示例
 
-#### 选择日期时间(年月日时分)
+{{ time }}
+
+#### 年月日时分秒选择器
 
 {{ date-all }}
 

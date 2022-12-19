@@ -1,78 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Picker Picker base demo works fine 1`] = `
-<base>
-  <wx-view
-    class="pannel-item"
-    data-key="city"
-    bind:tap="onClickPicker"
-  >
-    <wx-view
-      class="pannel-label"
-    >
-      城市
-    </wx-view>
-    <wx-view
-      class="pannel-text empty"
-    >
-      选择城市
-    </wx-view>
-    <t-icon
-      color="rgba(0, 0, 0, 0.26)"
-      name="chevron-right"
-      size="24px"
-    />
-  </wx-view>
-  <wx-view
-    class="pannel-item"
-    data-key="yearSeasons"
-    bind:tap="onClickPicker"
-  >
-    <wx-view
-      class="pannel-label"
-    >
-      年份和季节
-    </wx-view>
-    <wx-view
-      class="pannel-text empty"
-    >
-      
-      选择年份和季节
-    </wx-view>
-    <t-icon
-      color="rgba(0, 0, 0, 0.26)"
-      name="chevron-right"
-      size="24px"
-    />
-  </wx-view>
-  <wx-view
-    class="pannel-item last"
-    data-key="date"
-    bind:tap="onClickPicker"
-  >
-    <wx-view
-      class="pannel-label"
-    >
-      日期
-    </wx-view>
-    <wx-view
-      class="pannel-text empty"
-    >
-       选择日期
-    </wx-view>
-    <t-icon
-      color="rgba(0, 0, 0, 0.26)"
-      name="chevron-right"
-      size="24px"
-    />
-  </wx-view>
+exports[`Picker Picker area demo works fine 1`] = `
+<area>
+  <t-cell
+    arrow="{{true}}"
+    class="block"
+    hover="{{true}}"
+    note=""
+    title="选择地区"
+    bind:click="onAreaPicker"
+  />
   <t-picker
     cancelBtn="取消"
     confirmBtn="确认"
-    data-key="city"
-    title=""
-    value="{{Array []}}"
-    visible="{{false}}"
+    title="选择地区"
+    value=""
+    visible=""
     bind:cancel="onPickerCancel"
     bind:change="onPickerChange"
     bind:pick="onColumnChange"
@@ -81,24 +24,151 @@ exports[`Picker Picker base demo works fine 1`] = `
       options="{{
         Array [
           Object {
-            "label": "北京",
-            "value": "北京",
+            "label": "北京市",
+            "value": "110000",
           },
           Object {
-            "label": "上海",
-            "value": "上海",
+            "label": "广东省",
+            "value": "440000",
+          },
+        ]
+      }}"
+    />
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "110100",
+          },
+        ]
+      }}"
+    />
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "东城区",
+            "value": "110101",
           },
           Object {
-            "label": "广州",
-            "value": "广州",
+            "label": "西城区",
+            "value": "110102",
           },
           Object {
-            "label": "深圳",
-            "value": "深圳",
+            "label": "朝阳区",
+            "value": "110105",
           },
           Object {
-            "label": "成都",
-            "value": "成都",
+            "label": "丰台区",
+            "value": "110106",
+          },
+          Object {
+            "label": "石景山区",
+            "value": "110107",
+          },
+          Object {
+            "label": "海淀区",
+            "value": "110108",
+          },
+          Object {
+            "label": "门头沟区",
+            "value": "110109",
+          },
+          Object {
+            "label": "房山区",
+            "value": "110111",
+          },
+          Object {
+            "label": "通州区",
+            "value": "110112",
+          },
+          Object {
+            "label": "顺义区",
+            "value": "110113",
+          },
+          Object {
+            "label": "昌平区",
+            "value": "110114",
+          },
+          Object {
+            "label": "大兴区",
+            "value": "110115",
+          },
+          Object {
+            "label": "怀柔区",
+            "value": "110116",
+          },
+          Object {
+            "label": "平谷区",
+            "value": "110117",
+          },
+          Object {
+            "label": "密云区",
+            "value": "110118",
+          },
+          Object {
+            "label": "延庆区",
+            "value": "110119",
+          },
+        ]
+      }}"
+    />
+  </t-picker>
+</area>
+`;
+
+exports[`Picker Picker base demo works fine 1`] = `
+<base>
+  <t-cell
+    arrow="{{true}}"
+    class="block"
+    hover="{{true}}"
+    note=""
+    title="选择城市"
+    bind:click="onCityPicker"
+  />
+  <t-cell
+    arrow="{{true}}"
+    class="block"
+    hover="{{true}}"
+    note=""
+    title="选择时间"
+    bind:click="onSeasonPicker"
+  />
+  <t-picker
+    cancelBtn="取消"
+    confirmBtn="确认"
+    data-key="city"
+    title="选择城市"
+    value=""
+    visible=""
+    bind:cancel="onPickerCancel"
+    bind:change="onPickerChange"
+    bind:pick="onColumnChange"
+  >
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "北京市",
+          },
+          Object {
+            "label": "上海市",
+            "value": "上海市",
+          },
+          Object {
+            "label": "广州市",
+            "value": "广州市",
+          },
+          Object {
+            "label": "深圳市",
+            "value": "深圳市",
+          },
+          Object {
+            "label": "成都市",
+            "value": "成都市",
           },
         ]
       }}"
@@ -107,10 +177,10 @@ exports[`Picker Picker base demo works fine 1`] = `
   <t-picker
     cancelBtn="取消"
     confirmBtn="确认"
-    data-key="yearSeasons"
-    title=""
-    value="{{Array []}}"
-    visible="{{false}}"
+    data-key="date"
+    title="选择时间"
+    value=""
+    visible=""
     bind:cancel="onPickerCancel"
     bind:change="onPickerChange"
     bind:pick="onColumnChange"
@@ -156,13 +226,34 @@ exports[`Picker Picker base demo works fine 1`] = `
       }}"
     />
   </t-picker>
+</base>
+`;
+
+exports[`Picker Picker with-title demo works fine 1`] = `
+<with-title>
+  <t-cell
+    arrow="{{true}}"
+    class="block"
+    hover="{{true}}"
+    note=""
+    title="带标题选择器"
+    bind:click="onTitlePicker"
+  />
+  <t-cell
+    arrow="{{true}}"
+    class="block"
+    hover="{{true}}"
+    note=""
+    title="无标题选择器"
+    bind:click="onWithoutTitlePicker"
+  />
   <t-picker
     cancelBtn="取消"
     confirmBtn="确认"
-    data-key="date"
+    data-key="city"
     title=""
-    value="{{Array []}}"
-    visible="{{false}}"
+    value=""
+    visible=""
     bind:cancel="onPickerCancel"
     bind:change="onPickerChange"
     bind:pick="onColumnChange"
@@ -171,204 +262,28 @@ exports[`Picker Picker base demo works fine 1`] = `
       options="{{
         Array [
           Object {
-            "label": "2021年",
-            "value": "2021",
+            "label": "北京市",
+            "value": "北京市",
           },
           Object {
-            "label": "2020年",
-            "value": "2020",
+            "label": "上海市",
+            "value": "上海市",
           },
           Object {
-            "label": "2019年",
-            "value": "2019",
-          },
-        ]
-      }}"
-    />
-    <t-picker-item
-      options="{{
-        Array [
-          Object {
-            "label": "1月",
-            "value": 1,
+            "label": "广州市",
+            "value": "广州市",
           },
           Object {
-            "label": "2月",
-            "value": 2,
+            "label": "深圳市",
+            "value": "深圳市",
           },
           Object {
-            "label": "3月",
-            "value": 3,
-          },
-          Object {
-            "label": "4月",
-            "value": 4,
-          },
-          Object {
-            "label": "5月",
-            "value": 5,
-          },
-          Object {
-            "label": "6月",
-            "value": 6,
-          },
-          Object {
-            "label": "7月",
-            "value": 7,
-          },
-          Object {
-            "label": "8月",
-            "value": 8,
-          },
-          Object {
-            "label": "9月",
-            "value": 9,
-          },
-          Object {
-            "label": "10月",
-            "value": 10,
-          },
-          Object {
-            "label": "11月",
-            "value": 11,
-          },
-          Object {
-            "label": "12月",
-            "value": 12,
-          },
-        ]
-      }}"
-    />
-    <t-picker-item
-      options="{{
-        Array [
-          Object {
-            "label": "1日",
-            "value": 1,
-          },
-          Object {
-            "label": "2日",
-            "value": 2,
-          },
-          Object {
-            "label": "3日",
-            "value": 3,
-          },
-          Object {
-            "label": "4日",
-            "value": 4,
-          },
-          Object {
-            "label": "5日",
-            "value": 5,
-          },
-          Object {
-            "label": "6日",
-            "value": 6,
-          },
-          Object {
-            "label": "7日",
-            "value": 7,
-          },
-          Object {
-            "label": "8日",
-            "value": 8,
-          },
-          Object {
-            "label": "9日",
-            "value": 9,
-          },
-          Object {
-            "label": "10日",
-            "value": 10,
-          },
-          Object {
-            "label": "11日",
-            "value": 11,
-          },
-          Object {
-            "label": "12日",
-            "value": 12,
-          },
-          Object {
-            "label": "13日",
-            "value": 13,
-          },
-          Object {
-            "label": "14日",
-            "value": 14,
-          },
-          Object {
-            "label": "15日",
-            "value": 15,
-          },
-          Object {
-            "label": "16日",
-            "value": 16,
-          },
-          Object {
-            "label": "17日",
-            "value": 17,
-          },
-          Object {
-            "label": "18日",
-            "value": 18,
-          },
-          Object {
-            "label": "19日",
-            "value": 19,
-          },
-          Object {
-            "label": "20日",
-            "value": 20,
-          },
-          Object {
-            "label": "21日",
-            "value": 21,
-          },
-          Object {
-            "label": "22日",
-            "value": 22,
-          },
-          Object {
-            "label": "23日",
-            "value": 23,
-          },
-          Object {
-            "label": "24日",
-            "value": 24,
-          },
-          Object {
-            "label": "25日",
-            "value": 25,
-          },
-          Object {
-            "label": "26日",
-            "value": 26,
-          },
-          Object {
-            "label": "27日",
-            "value": 27,
-          },
-          Object {
-            "label": "28日",
-            "value": 28,
-          },
-          Object {
-            "label": "29日",
-            "value": 29,
-          },
-          Object {
-            "label": "30日",
-            "value": 30,
-          },
-          Object {
-            "label": "31日",
-            "value": 31,
+            "label": "成都市",
+            "value": "成都市",
           },
         ]
       }}"
     />
   </t-picker>
-</base>
+</with-title>
 `;
