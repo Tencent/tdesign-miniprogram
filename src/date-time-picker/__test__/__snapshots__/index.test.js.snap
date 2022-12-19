@@ -453,7 +453,7 @@ exports[`date-time-picker :base 1`] = `
           bind:tap="handleOverlayClick"
         >
           <wx-view
-            ariaLabel="遮罩层，点击关闭"
+            ariaLabel="关闭"
             ariaRole="button"
             class="t-overlay t-fade-enter t-fade-enter-active"
             style="z-index: 11000;  "
@@ -2397,7 +2397,7 @@ exports[`date-time-picker :second 1`] = `
           bind:tap="handleOverlayClick"
         >
           <wx-view
-            ariaLabel="遮罩层，点击关闭"
+            ariaLabel="关闭"
             ariaRole="button"
             class="t-overlay t-fade-enter t-fade-enter-active"
             style="z-index: 11000;  "
