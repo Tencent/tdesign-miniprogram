@@ -5,32 +5,39 @@
     <base />
   </t-demo>
   <t-demo desc="带标题选择器">
-    <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.CITY_TITLE}}">
+    <label class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.CITY_TITLE}}" aria-role="button">
       <view class="pannel-label">城市</view>
       <view class="pannel-text {{cityTitleValue.length ? '' : 'empty'}}"
         >{{ cityTitleCurrentValue || '选择城市' }}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
-    </view>
-    <view
+    </label>
+    <label
       class="pannel-item"
       bind:tap="onClickPicker"
       data-title="选择年份和季节"
       data-key="{{PICKER_KEY.YEAR_SEASONS_TITLE}}"
+      aria-role="button"
     >
       <view class="pannel-label">年份和季节</view>
       <view class="pannel-text {{yearSeasonsTitleValue.length ? '' : 'empty'}}">
         {{ yearSeasonsTitleCurrentValue || '选择年份和季节' }}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
-    </view>
-    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择日期" data-key="{{PICKER_KEY.DATE_TITLE}}">
+    </label>
+    <label
+      class="pannel-item"
+      bind:tap="onClickPicker"
+      data-title="选择日期"
+      data-key="{{PICKER_KEY.DATE_TITLE}}"
+      aria-role="button"
+    >
       <view class="pannel-label">日期</view>
       <view class="pannel-text {{dateTitleValue.length ? '' : 'empty'}}">
         {{ dateTitleCurrentValue || '选择日期' }}</view
       >
       <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
-    </view>
+    </label>
   </t-demo>
 
   <!-- 城市带标题 -->
