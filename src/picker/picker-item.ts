@@ -40,6 +40,7 @@ export default class PickerItem extends SuperComponent {
     offset: 0, // 滚动偏移量
     duration: 0, // 滚动动画延迟
     value: '',
+    curIndex: 0,
   };
 
   methods = {
@@ -72,6 +73,7 @@ export default class PickerItem extends SuperComponent {
       // 调整偏移量
       const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
       this.setData({
+        curIndex: index,
         offset: -index * this.itemHeight,
       });
 
@@ -97,7 +99,10 @@ export default class PickerItem extends SuperComponent {
       const index = options.findIndex((item) => item.value === value);
       const selectedIndex = index > 0 ? index : 0;
 
-      this.setData({ offset: -selectedIndex * this.itemHeight });
+      this.setData({
+        offset: -selectedIndex * this.itemHeight,
+        curIndex: selectedIndex,
+      });
 
       this._selectedIndex = selectedIndex;
       this._selectedValue = options[selectedIndex]?.value;

@@ -7,17 +7,6 @@ Component({
       { label: '深圳市', value: '深圳市' },
       { label: '成都市', value: '成都市' },
     ],
-    years: [
-      { label: '2021年', value: '2021' },
-      { label: '2020年', value: '2020' },
-      { label: '2019年', value: '2019' },
-    ],
-    seasons: [
-      { label: '春', value: '春' },
-      { label: '夏', value: '夏' },
-      { label: '秋', value: '秋' },
-      { label: '冬', value: '冬' },
-    ],
   },
 
   methods: {
@@ -46,12 +35,12 @@ Component({
       });
     },
 
-    onCityPicker() {
-      this.setData({ cityVisible: true });
+    onTitlePicker() {
+      this.setData({ cityVisible: true, pickerTitle: '选择城市' });
     },
 
-    onSeasonPicker() {
-      this.setData({ dateVisible: true });
+    onWithoutTitlePicker() {
+      this.setData({ cityVisible: true, pickerTitle: '' });
     },
   },
 });

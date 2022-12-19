@@ -7,9 +7,6 @@ const name = `${prefix}-picker`;
 
 @wxComponent()
 export default class Picker extends SuperComponent {
-  /**
-   * Component properties
-   */
   properties = props;
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`];
@@ -33,17 +30,11 @@ export default class Picker extends SuperComponent {
     },
   };
 
-  /**
-   * Component initial data
-   */
   data = {
     prefix,
     classPrefix: name,
   };
 
-  /**
-   * Component methods
-   */
   methods = {
     getPickerColumns() {
       const pickerColumns = this.getRelationNodes('./picker-item');
@@ -57,13 +48,10 @@ export default class Picker extends SuperComponent {
       const { value } = this.properties;
       const pickerColumns = this.getPickerColumns();
 
-      if (!pickerColumns?.length) {
-        return;
-      }
-
       pickerColumns.forEach((child, index) => {
         child.setData({
           value: value?.[index] || '',
+          siblingCount: pickerColumns.length,
         });
         child.update();
       });
