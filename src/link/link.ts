@@ -46,7 +46,7 @@ export default class Link extends SuperComponent {
   methods = {
     setClass() {
       const { theme, status, size, underline, navigatorProps } = this.properties;
-      const classList = [name, `${name}--${theme}-${status}`, `${name}--${size}`];
+      const classList = [name, `${name}--${status}-${theme}`, `${name}--${size}`];
       if (underline) {
         classList.push(`${name}--underline`);
       }

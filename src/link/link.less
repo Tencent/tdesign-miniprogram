@@ -1,29 +1,30 @@
 @import '../common/style/index.less';
 
 // 状态色 - 默认色
-@link-color-default-normal: var(--td-link-color-default-normal, @font-gray-1); // default 主题默认态颜色
-@link-color-default-active: var(--td-link-color-default-active, @brand-color-active); // default 主题激活态颜色
-@link-color-default-disabled: var(--td-link-color-default-disabled, @text-color-disabled); // default 主题禁用态颜色
+
+@link-normal-default-color: var(--td-link-normal-default-color, @font-gray-1); // default 主题默认态颜色
+@link-active-default-color: var(--td-link-active-default-color, @brand-color-active); // default 主题激活态颜色
+@link-disabled-default-color: var(--td-link-disabled-default-color, @text-color-disabled); // default 主题禁用态颜色
 
 // 状态色 - 主色
-@link-color-primary-normal: var(--td-link-color-primary-normal, @brand-color); // primary 主题默认态颜色
-@link-color-primary-active: var(--td-link-color-primary-active, @brand-color-active); // primary 主题激活态颜色
-@link-color-primary-disabled: var(--td-link-color-primary-disabled, @brand-color-disabled); // primary 主题禁用态颜色
+@link-normal-primary-color: var(--td-link-normal-primary-color, @brand-color); // primary 主题默认态颜色
+@link-active-primary-color: var(--td-link-active-primary-color, @brand-color-active); // primary 主题激活态颜色
+@link-disabled-primary-color: var(--td-link-disabled-primary-color, @brand-color-disabled); // primary 主题禁用态颜色
 
 // 状态色 - 成功
-@link-color-success-normal: var(--td-link-color-success-normal, @success-color); // success 主题默认态颜色
-@link-color-success-active: var(--td-link-color-success-active, @success-color-active); // success 主题激活态颜色
-@link-color-success-disabled: var(--td-link-color-success-disabled, @success-color-disabled); // success 主题禁用态颜色
+@link-normal-success-color: var(--td-link-normal-success-color, @success-color); // success 主题默认态颜色
+@link-active-success-color: var(--td-link-active-success-color, @success-color-active); // success 主题激活态颜色
+@link-disabled-success-color: var(--td-link-disabled-success-color, @success-color-disabled); // success 主题禁用态颜色
 
 // 状态色 - 警告
-@link-color-warning-normal: var(--td-link-color-warning-normal, @warning-color); // warning 主题默认态颜色
-@link-color-warning-active: var(--td-link-color-warning-active, @warning-color-active); // warning 主题激活态颜色
-@link-color-warning-disabled: var(--td-link-color-warning-disabled, @warning-color-disabled); // warning 主题禁用态颜色
+@link-normal-warning-color: var(--td-link-normal-warning-color, @warning-color); // warning 主题默认态颜色
+@link-active-warning-color: var(--td-link-active-warning-color, @warning-color-active); // warning 主题激活态颜色
+@link-disabled-warning-color: var(--td-link-disabled-warning-color, @warning-color-disabled); // warning 主题禁用态颜色
 
 // 状态色 - 危险
-@link-color-danger-normal: var(--td-link-color-danger-normal, @error-color); // danger 主题默认态颜色
-@link-color-danger-active: var(--td-link-color-danger-active, @error-color-active); // danger 主题激活态颜色
-@link-color-danger-disabled: var(--td-link-color-danger-disabled, @error-color-disabled); // danger 主题禁用态颜色
+@link-normal-danger-color: var(--td-link-normal-danger-color, @error-color); // danger 主题默认态颜色
+@link-active-danger-color: var(--td-link-active-danger-color, @error-color-active); // danger 主题激活态颜色
+@link-disabled-danger-color: var(--td-link-disabled-danger-color, @error-color-disabled); // danger 主题禁用态颜色
 
 // 字号
 @link-content-small-font-size: 24rpx;
@@ -62,9 +63,9 @@
 .link-status(@status) {
   .for(@themes, @i: 1) when(@i =< length(@themes)) {
     @theme: extract(@themes, @i);
-    @color: 'link-color-@{theme}-@{status}';
+    @color: 'link-@{status}-@{theme}-color';
 
-    .@{link}--@{theme}-@{status} {
+    .@{link}--@{status}-@{theme} {
       color: @@color;
 
       &.@{link}--underline::after {
