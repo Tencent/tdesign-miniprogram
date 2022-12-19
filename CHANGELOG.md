@@ -5,6 +5,39 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.31.0 `2022-12-19` 
+### ❗ BREAKING CHANGES
+- `Input`: 移除 clearableIconProps、prefixIconProps、suffixIconProps 属性 @anlyyao ([#1188](https://github.com/Tencent/tdesign-miniprogram/pull/1188))
+- `SwipeCell`: 调整 DOM @anlyyao ([#1201](https://github.com/Tencent/tdesign-miniprogram/pull/1201))
+- `Dialog`: 属性 closeOnOverlayClick 默认值从 true 改成 undefined @LeeJim ([#1240](https://github.com/Tencent/tdesign-miniprogram/pull/1240))
+- `Dialog`: 调整 DOM @LeeJim ([#1240](https://github.com/Tencent/tdesign-miniprogram/pull/1240))
+
+### 🚀 Features
+- `Steps`: 视觉升级 @LeeJim ([#1225](https://github.com/Tencent/tdesign-miniprogram/pull/1225))
+- `Picker`: 视觉升级 @LeeJim ([#1248](https://github.com/Tencent/tdesign-miniprogram/pull/1248))
+- `Dialog`: 视觉升级 @LeeJim ([#1240](https://github.com/Tencent/tdesign-miniprogram/pull/1240))
+- `Dialog`: 新增 closeBtn 属性，支持关闭按钮 @LeeJim ([#1240](https://github.com/Tencent/tdesign-miniprogram/pull/1240))
+- `Dialog`: 支持 CSS Variables，支持主题定制 @LeeJim ([#1240](https://github.com/Tencent/tdesign-miniprogram/pull/1240))
+- `Picker`: 支持 CSS Variables，支持主题定制 @LeeJim ([#1248](https://github.com/Tencent/tdesign-miniprogram/pull/1248))
+- `DateTimePicker`: 支持 CSS Variables，支持主题定制 @LeeJim ([#1248](https://github.com/Tencent/tdesign-miniprogram/pull/1248))
+- `Input`:  clearable、prefixIcon、suffixIcon等属性新增 Object 类型，透传至 icon 组件 @anlyyao ([#1188](https://github.com/Tencent/tdesign-miniprogram/pull/1188))
+- `SwipeCell`: 属性 right 和 left 支持使用 icon @anlyyao ([#1201](https://github.com/Tencent/tdesign-miniprogram/pull/1201))
+- `Overlay`: 支持无障碍访问 @szu-bee ([#1205](https://github.com/Tencent/tdesign-miniprogram/pull/1205))
+- `BackTop`: 支持无障碍访问 @szu-bee ([#1206](https://github.com/Tencent/tdesign-miniprogram/pull/1206))
+- `CountDown`: 支持无障碍访问 @szu-bee ([#1207](https://github.com/Tencent/tdesign-miniprogram/pull/1207))
+- `Button`: 支持无障碍访问 @zhangpaopao0609 ([#1149](https://github.com/Tencent/tdesign-miniprogram/pull/1149))
+- `Collapse`: 支持无障碍访问 @gzzhanghao ([#1224](https://github.com/Tencent/tdesign-miniprogram/pull/1224))
+- `Calendar`: 支持无障碍访问 @gzzhanghao ([#1217](https://github.com/Tencent/tdesign-miniprogram/pull/1217))
+- `Fab`: 支持无障碍访问 @zhangpaopao0609 ([#1231](https://github.com/Tencent/tdesign-miniprogram/pull/1231))
+- `Tabs`: 支持无障碍访问 @zhangpaopao0609 ([#1227](https://github.com/Tencent/tdesign-miniprogram/pull/1227))
+- `Overlay`: 支持无障碍访问 @szu-bee ([#1205](https://github.com/Tencent/tdesign-miniprogram/pull/1205))
+- `Collapse`: 支持无障碍访问 @gzzhanghao ([#1224](https://github.com/Tencent/tdesign-miniprogram/pull/1224))
+- `Toast`: 支持无障碍访问 @huaiyinfeilong ([#1210](https://github.com/Tencent/tdesign-miniprogram/pull/1210))
+
+### 🐞 Bug Fixes
+- `TabBar`: 修复圆角下开启安全距离时视觉错误的问题 @LeeJim ([#1223](https://github.com/Tencent/tdesign-miniprogram/pull/1223))
+
+
 ## 🌈 0.30.0 `2022-12-12` 
 ### ❗ BREAKING CHANGE
 - `Rate`: 属性 gap 默认值由 8 调整成 4 @LeeJim ([#1177](https://github.com/Tencent/tdesign-miniprogram/pull/1177))
