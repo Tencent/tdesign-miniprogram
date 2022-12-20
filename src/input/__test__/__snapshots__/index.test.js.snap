@@ -27,7 +27,7 @@ exports[`input props : clearable && label && suffix 1`] = `
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content t-is-default   "
+        class="t-input__content t-input--default "
       >
         <wx-input
           adjustPosition="{{true}}"
@@ -78,7 +78,7 @@ exports[`input props : clearable && label && suffix 1`] = `
               ariaLabel="清除"
               ariaRole="button"
               class="t-icon t-class"
-              style="font-size: 24px"
+              style=""
               bind:tap="onTap"
             >
               <wx-label
@@ -89,6 +89,7 @@ exports[`input props : clearable && label && suffix 1`] = `
         </wx-view>
         <wx-view
           class="t-input__wrap--suffix t-class-suffix"
+          bind:tap="clickSuffix"
         >
           <wx-text>
             后置内容
@@ -96,6 +97,7 @@ exports[`input props : clearable && label && suffix 1`] = `
         </wx-view>
         <wx-view
           class="t-input__wrap--suffix-icon"
+          bind:tap="clickSuffixIcon"
         >
           <t-icon
             class=""
@@ -107,7 +109,7 @@ exports[`input props : clearable && label && suffix 1`] = `
               ariaLabel=""
               ariaRole="button"
               class="t-icon t-class"
-              style="font-size: 24px"
+              style=""
               bind:tap="onTap"
             >
               <wx-label
@@ -154,7 +156,7 @@ exports[`input slots : label 1`] = `
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content t-is-default   "
+        class="t-input__content t-input--default "
       >
         <wx-input
           adjustPosition="{{true}}"
@@ -193,9 +195,7 @@ exports[`input slots : label 1`] = `
         />
         <wx-view
           class="t-input__wrap--suffix t-class-suffix"
-        />
-        <wx-view
-          class="t-input__wrap--suffix-icon"
+          bind:tap="clickSuffix"
         />
       </wx-view>
     </wx-view>

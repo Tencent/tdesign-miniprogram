@@ -2,6 +2,7 @@
   label="标签文字"
   placeholder="请输入文字"
   suffixIcon="{{ { name: 'error-circle-filled', ariaLabel: '提示' } }}"
+  bind:click="click"
 />
 
 <t-input placeholder="请输入手机号码">

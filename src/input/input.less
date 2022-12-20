@@ -89,15 +89,21 @@
     &--suffix {
       flex: 0 0 auto;
       padding-left: @spacer-1;
-      color: @input-suffix-icon-color;
-      font-size: @font-size-m;
 
       &:empty {
         display: none;
       }
     }
 
+    &--prefix,
+    &--clearable-icon,
+    &--suffix-icon {
+      font-size: @font-size * 2.4;
+      color: @input-suffix-icon-color;
+    }
+
     &--suffix {
+      font-size: @font-size-m;
       color: @input-suffix-text-color;
     }
   }
@@ -168,21 +174,12 @@
   }
 }
 
-&.@{prefix}-is-focus {
-  border-color: @input-default-focus-border-color;
-  box-shadow: @shadow-1;
-}
-
 .input-status(@status) {
-  .@{prefix}-is-@{status} {
+  .@{prefix}-input--@{status} {
     @borderColor: 'input-@{status}-border-color';
     @tipsColor: 'input-@{status}-tips-color';
 
     &.@{prefix}-input--border {
-      border-color: @@borderColor;
-    }
-
-    &.@{prefix}-is-focus {
       border-color: @@borderColor;
     }
 
