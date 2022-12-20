@@ -1,14 +1,15 @@
 @import '../common/style/index.less';
 
-@item: ~'@{prefix}-picker-item';
-@picker-group-height: 400rpx;
-@picker-item-height: 80rpx;
-@picker-item-line-height: 80rpx;
-@picker-item-text-color: #000;
+@picker: ~'@{prefix}-picker';
+@item: ~'@{picker}-item';
+@picker-group-height: var(--td-picker-group-height, 400rpx);
+@picker-item-height: var(--td-picker-item-height, 80rpx);
+@picker-item-color: var(--td-picker-item-color, @font-gray-2);
+@picker-item-active-color: var(--td-picker-item-active-color, @font-gray-1);
 
 :host {
   display: flex;
-  flex: 1;
+  // padding: 0 40rpx;
 }
 
 .@{item} {
@@ -16,10 +17,20 @@
     height: @picker-group-height;
     overflow: hidden;
     flex: 1;
+    z-index: 1;
+    padding: 0 40rpx;
+
+    &--roomy {
+      padding: 0 64rpx;
+    }
+
+    &--narrow {
+      padding: 0 16rpx;
+    }
   }
 
   &__wrapper {
-    padding: 160rpx 0;
+    padding: 144rpx 0;
   }
 
   &__item {
@@ -27,7 +38,12 @@
     align-items: center;
     justify-content: center;
     height: @picker-item-height;
-    line-height: @picker-item-line-height;
-    color: @picker-item-text-color;
+    line-height: @picker-item-height;
+    color: @picker-item-color;
+
+    &--active {
+      color: @picker-item-active-color;
+      font-weight: 600;
+    }
   }
 }

@@ -30,6 +30,7 @@ describe('dialog', () => {
         visible
         confirm-btn="ok" 
         cancel-btn="cancel"
+        closeOnOverlayClick
         bind:open-type-event="handleOpenType"
         bind:open-type-error-event="handleOpenTypeError"
         bind:overlayClick="handleOverlayClick"
@@ -50,7 +51,7 @@ describe('dialog', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     // click confirm
-    const $confirm = comp.querySelector('#dialog >>> .t-dialog__footer-button--confirm');
+    const $confirm = comp.querySelector('#dialog >>> .t-dialog__button--confirm');
 
     $confirm.dispatchEvent('tap');
     await simulate.sleep();
@@ -58,19 +59,19 @@ describe('dialog', () => {
     expect(handleConfirm).toHaveBeenCalledTimes(1);
 
     // open-type
-    $confirm.dispatchEvent('getuserinfo');
+    $confirm.dispatchEvent('getuserinfo', { detail: { errMsg: 'ok' } });
     await simulate.sleep();
 
     expect(handleOpenType).toHaveBeenCalledTimes(1);
 
-    $confirm.dispatchEvent('error');
+    $confirm.dispatchEvent('error', { detail: { errMsg: 'fail' } });
     await simulate.sleep();
 
     expect(handleOpenType).toHaveBeenCalledTimes(1);
     expect(handleOpenTypeError).toHaveBeenCalledTimes(1);
 
     // click cancel
-    const $cancel = comp.querySelector('#dialog >>> .t-dialog__footer-button--cancel');
+    const $cancel = comp.querySelector('#dialog >>> .t-dialog__button--cancel');
 
     $cancel.dispatchEvent('tap');
     await simulate.sleep();
@@ -114,7 +115,7 @@ describe('dialog', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     // click confirm
-    const $confirm = comp.querySelector('#dialog >>> .t-dialog__footer-button--confirm');
+    const $confirm = comp.querySelector('#dialog >>> .t-dialog__button--confirm');
 
     $confirm.dispatchEvent('tap');
     await simulate.sleep();
@@ -153,7 +154,7 @@ describe('dialog', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     // click confirm
-    const $buttons = comp.querySelectorAll('#dialog >>> .t-dialog__footer-button-host');
+    const $buttons = comp.querySelectorAll('#dialog >>> .t-dialog__button--action');
 
     expect($buttons.length).toBe(1);
 
@@ -181,7 +182,7 @@ describe('dialog', () => {
     // alert
     const handleConfirm = jest.fn();
     Dialog.alert({ confirmBtn: 'ok' }).then(handleConfirm);
-    const $confirm = comp.querySelector('#dialog >>> .t-dialog__footer-button--confirm');
+    const $confirm = comp.querySelector('#dialog >>> .t-dialog__button--confirm');
     $confirm.dispatchEvent('tap');
     await simulate.sleep();
     expect(handleConfirm).toHaveBeenCalledTimes(1);
@@ -197,7 +198,7 @@ describe('dialog', () => {
     // click cancel
     const handleCancel = jest.fn();
     Dialog.confirm({ confirmBtn: 'ok', cancelBtn: 'fine' }).then(handleConfirm).catch(handleCancel);
-    const $cancel = comp.querySelector('#dialog >>> .t-dialog__footer-button--cancel');
+    const $cancel = comp.querySelector('#dialog >>> .t-dialog__button--cancel');
 
     $cancel.dispatchEvent('tap');
     await simulate.sleep();
@@ -206,9 +207,9 @@ describe('dialog', () => {
 
     // tap action
     const handleAction = jest.fn();
-    Dialog.action({ actions: [{ name: 'first' }] }).then(handleAction);
+    Dialog.action({ actions: [{ content: 'first' }] }).then(handleAction);
     // click confirm
-    const $buttons = comp.querySelectorAll('#dialog >>> .t-dialog__footer-button-host');
+    const $buttons = comp.querySelectorAll('#dialog >>> .t-dialog__button--action');
 
     expect($buttons.length).toBe(1);
     $buttons[0].dispatchEvent('tap');

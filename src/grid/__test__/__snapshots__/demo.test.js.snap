@@ -260,8 +260,8 @@ exports[`Grid Grid description demo works fine 1`] = `
 </description>
 `;
 
-exports[`Grid Grid icon demo works fine 1`] = `
-<wx-icon>
+exports[`Grid Grid icon-grid demo works fine 1`] = `
+<icon-grid>
   <t-grid
     class="block"
   >
@@ -282,7 +282,7 @@ exports[`Grid Grid icon demo works fine 1`] = `
       text="编辑"
     />
   </t-grid>
-</wx-icon>
+</icon-grid>
 `;
 
 exports[`Grid Grid multiple demo works fine 1`] = `

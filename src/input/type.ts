@@ -34,13 +34,8 @@ export interface TdInputProps {
    * @default false
    */
   clearable?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /** 透传至组件清楚图标 icon */
-  clearableIconProps: {
-    type: ObjectConstructor;
-    value?: object;
+    type: null;
+    value?: boolean | object;
   };
   /**
    * 自定义组件样式
@@ -113,13 +108,8 @@ export interface TdInputProps {
    * 组件前置图标，值为字符串则表示图标名称
    */
   prefixIcon?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /** 透传至组件前缀图标 prefix-icon */
-  prefixIconProps: {
-    type: ObjectConstructor;
-    value?: object;
+    type: null;
+    value?: string | object;
   };
   /**
    * 只读状态
@@ -156,13 +146,8 @@ export interface TdInputProps {
    * 后置文本内容，值为字符串则表示图标名称
    */
   suffixIcon?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /** 透传至组件后缀图标 suffix-icon */
-  suffixIconProps: {
-    type: ObjectConstructor;
-    value?: object;
+    type: null;
+    value?: string | object;
   };
   /**
    * 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式

@@ -4,6 +4,7 @@ exports[`countdown :autoStart 1`] = `
 <main>
   <t-count-down>
     <wx-view
+      ariaRole="option"
       class="t-count-down t-count-down--default t-count-down--medium t-class "
       style=""
     >
@@ -17,6 +18,7 @@ exports[`countdown :base 1`] = `
 <main>
   <t-count-down>
     <wx-view
+      ariaRole="option"
       class="t-count-down t-count-down--default t-count-down--medium t-class "
       style=""
     >
@@ -30,6 +32,7 @@ exports[`countdown :base 2`] = `
 <main>
   <t-count-down>
     <wx-view
+      ariaRole="option"
       class="t-count-down t-count-down--default t-count-down--medium t-class "
       style=""
     >
@@ -45,6 +48,7 @@ exports[`countdown :millisecond 1`] = `
     id="cd"
   >
     <wx-view
+      ariaRole="option"
       class="t-count-down t-count-down--default t-count-down--medium t-class "
       style=""
     >

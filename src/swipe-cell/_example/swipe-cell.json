@@ -5,6 +5,8 @@
   "backgroundColorBottom": "#f9f9f9",
   "usingComponents": {
     "left": "./left",
-    "right": "./right"
+    "right": "./right",
+    "double": "./double",
+    "iconDemo": "./icon"
   }
 }

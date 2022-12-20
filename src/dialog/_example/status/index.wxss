@@ -1,0 +1,4 @@
+.external-class {
+  margin: 32rpx;
+  display: block;
+}

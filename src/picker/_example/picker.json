@@ -1,8 +1,8 @@
 {
   "navigationBarTitleText": "Picker 选择器",
   "usingComponents": {
-    "t-picker": "tdesign-miniprogram/picker/picker",
-    "t-picker-item": "tdesign-miniprogram/picker/picker-item",
-    "base": "./base"
+    "base": "./base",
+    "with-title": "./with-title",
+    "area": "./area"
   }
 }

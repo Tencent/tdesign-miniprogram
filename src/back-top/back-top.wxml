@@ -5,8 +5,9 @@
   style="{{ customStyle }}"
   class="{{prefix}}-class {{classPrefix}} {{fixed ? classPrefix + '--fixed' : ''}} {{classPrefix + '--' + theme}}"
   bindtap="toTop"
+  aria-role="button"
 >
-  <view wx:if="{{iconName || _.isNoEmptyObj(iconData)}}" class="{{classPrefix}}__icon">
+  <view wx:if="{{iconName || _.isNoEmptyObj(iconData)}}" class="{{classPrefix}}__icon" aria-hidden>
     <slot wx:if="{{iconName === 'slot'}}" name="icon" />
     <template wx:else is="icon" data="{{tClass: prefix + '-class-icon', name: iconName, ...iconData}}"> </template>
   </view>

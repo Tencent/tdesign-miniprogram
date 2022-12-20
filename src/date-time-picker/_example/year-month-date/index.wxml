@@ -1,13 +1,12 @@
 <t-cell
-  title="选择日期(年月日)"
+  title="选择日期"
   hover
-  note="{{dateText || '年 月 日'}}"
+  note="{{dateText || ''}}"
   arrow
   data-mode="date"
   bindtap="showPicker"
   class="test"
   t-class="pannel-item"
-  t-class-note="{{dateText ? 'sub-text' : 'empty'}}"
 />
 
 <!-- 年月日 -->
@@ -22,4 +21,4 @@
   bindcancel="hidePicker"
   start="{{start}}"
   end="{{end}}"
-></t-date-time-picker>
+/>

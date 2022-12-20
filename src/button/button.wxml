@@ -9,7 +9,7 @@
   hover-stay-time="{{hoverStayTime}}"
   lang="{{lang}}"
   session-from="{{sessionFrom}}"
-  hover-class="{{variant == 'text' ? 'none' : 'button-hover'}}"
+  hover-class="button-hover"
   send-message-title="{{sendMessageTitle}}"
   send-message-path="{{sendMessagePath}}"
   send-message-img="{{sendMessageImg}}"
@@ -23,6 +23,7 @@
   bind:opensetting="opensetting"
   bind:launchapp="launchapp"
   bind:chooseavatar="chooseavatar"
+  aria-label="{{ariaLabel}}"
 >
   <t-icon
     wx:if="{{icon || iconProps.name}}"
@@ -32,6 +33,7 @@
     color="{{iconProps.color}}"
     customStyle="{{iconProps.customStyle}}"
     class="{{classPrefix}}__icon {{prefix}}-class-icon"
+    aria-hidden
   ></t-icon>
   <view wx:if="{{loading}}" class="{{classPrefix}}__loading">
     <t-loading

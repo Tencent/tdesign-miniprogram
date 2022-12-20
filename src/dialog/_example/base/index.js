@@ -1,5 +1,6 @@
 Component({
   data: {
+    confirmBtn: { content: '知道了', variant: 'base' },
     dialogKey: '',
     showText: false,
     showMultiText: false,

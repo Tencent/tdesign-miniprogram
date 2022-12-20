@@ -178,3 +178,29 @@ export const unitConvert = (value: number | string): number => {
   }
   return value;
 };
+
+export const setIcon = (iconName, icon, defaultIcon) => {
+  if (icon) {
+    if (typeof icon === 'string') {
+      return {
+        [`${iconName}Name`]: icon,
+        [`${iconName}Data`]: {},
+      };
+    } else if (typeof icon === 'object') {
+      return {
+        [`${iconName}Name`]: '',
+        [`${iconName}Data`]: icon,
+      };
+    } else {
+      return {
+        [`${iconName}Name`]: defaultIcon,
+        [`${iconName}Data`]: {},
+      };
+    }
+  }
+};
+
+export const isObject = (val) => typeof val === 'object' && val != null;
+export const isString = (val) => typeof val === 'string';
+
+export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());

@@ -1,31 +1,24 @@
-.t-swipe-cell-demo-btn-wrapper {
+.btn-wrapper {
   height: 100%;
 }
 
-.t-swipe-cell-demo-btn {
+.btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 144rpx !important;
+  width: 120rpx;
   height: 100%;
-  text-align: center;
   color: white;
 }
 
-.t-swipe-cell-demo-btn.delete-btn {
+.delete-btn {
   background-color: #e34d59;
 }
 
-.t-swipe-cell-demo-btn.edit-btn {
+.edit-btn {
   background-color: #ed7b2f;
 }
 
-.t-swipe-cell-demo-btn.favor-btn {
+.favor-btn {
   background-color: #0052d9;
-}
-
-.title-image-large {
-  margin-right: 8rpx;
-  width: 144rpx;
-  height: 144rpx;
 }

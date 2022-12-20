@@ -1,91 +1,90 @@
-<wxs src="./slider.wxs" module="utils" />
+<wxs src="./slider.wxs" module="t" />
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
   style="{{ customStyle }}"
-  class="{{classPrefix}}__container {{isScale && scaleTextArray.length ? classPrefix + '--bottom' : ''}} {{prefix}}-class {{disabled ? prefix + '-is-disabled ' + prefix + '-class-bar-disabled' : ''}}"
+  class="{{_.cls(classPrefix, [['top', label || scaleTextArray.length], ['disabled', disabled], ['range', range]])}} {{prefix}}-class"
 >
   <block wx:if="{{!range}}">
-    <view class="{{classPrefix}}__wrapper">
-      <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--min">
-        {{ label ? utils.getValue(label, min) : min}}
-      </text>
-      <view
-        id="sliderLine"
-        class="{{classPrefix}}__main {{prefix}}-class-bar"
-        style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
-        bind:tap="onSingleLineTap"
-      >
-        <block wx:if="{{isScale}}">
-          <view
-            class="{{classPrefix}}__scale-item"
-            wx:for="{{scaleArray}}"
-            wx:for-index="index"
-            wx:key="index"
-            style="background:{{_value < item ? (disabled ? disabledColor[1] : colors[1]) : ( disabled ? disabledColor[0] : colors[0])}}; left:{{item}}%; transform:translateX({{- item}}%);"
-          >
-            <view wx:if="{{scaleTextArray.length}}" class="{{classPrefix}}__scale-desc">
-              {{scaleTextArray[index]}}
-            </view>
-          </view>
-        </block>
+    <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--min">
+      {{ label ? t.getValue(label, min) : min}}
+    </text>
+    <view
+      id="sliderLine"
+      class="{{_.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']])}} {{prefix}}-class-bar"
+      style="{{t.getColor(disabled, false, disabledColor, colors)}}"
+      bind:tap="onSingleLineTap"
+    >
+      <block wx:if="{{isScale}}">
         <view
-          class="{{classPrefix}}__line {{prefix}}-class-bar-active"
-          style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; width: {{lineBarWidth}};"
+          class="{{_.cls(classPrefix + '__scale-item', [['active', _value >= item], ['disabled', disabled], theme, ['hidden', index == 0 || index == scaleArray.length - 1 || value == item]])}}"
+          wx:for="{{scaleArray}}"
+          wx:key="index"
+          style="left:{{item}}%; transform: translateX({{- item}}%); {{t.getColor(disabled, _value >= item, disabledColor, colors)}}"
         >
-          <view
-            id="singleDot"
-            class="{{classPrefix}}__dot {{prefix}}-class-cursor"
-            style="left: {{activeLeft}}px; border-color: {{disabled ? disabledColor[0] : ''}}"
-            bind:touchmove="onSingleLineTap"
-            bind:touchend="onTouchEnd"
-            bind:touchcancel="onTouchEnd"
-          />
+          <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}}}">
+            {{scaleTextArray[index]}}
+          </view>
+        </view>
+      </block>
+      <view
+        class="{{_.cls(classPrefix + '__line', [['disabled', disabled], theme, 'single'])}} {{prefix}}-class-bar-active"
+        style="width: {{lineBarWidth}}; {{t.getColor(disabled, true, disabledColor, colors)}}"
+      >
+        <view
+          id="singleDot"
+          class="{{classPrefix}}__dot {{prefix}}-class-cursor"
+          bind:touchmove="onSingleLineTap"
+          bind:touchend="onTouchEnd"
+          bind:touchcancel="onTouchEnd"
+        >
+          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, _value)}} </view>
         </view>
       </view>
-
-      <view wx:if="{{label}}" class="{{classPrefix}}__value {{classPrefix}}__value--right">
-        <text class="{{classPrefix}}__value--text"> {{utils.getValue(label, _value)}}</text>
-      </view>
-      <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--max">
-        {{ label ? utils.getValue(label, max) : max}}
-      </text>
     </view>
+    <!-- <view wx:if="{{label}}" class="{{classPrefix}}__value {{classPrefix}}__value--right">
+      <text class="{{classPrefix}}__value--text"> {{t.getValue(label, _value)}}</text>
+    </view> -->
+    <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--max">
+      {{ label ? t.getValue(label, max) : max}}
+    </text>
   </block>
   <!-- range选择器自定义 -->
   <block wx:if="{{range}}">
-    <view class="{{classPrefix}}__range-container">
-      <view wx:if="{{showExtremeValue}}" class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--min">
-        {{min}}
-      </view>
-      <view
-        id="sliderLine"
-        bind:tap="onLineTap"
-        class="{{classPrefix}}__bar {{prefix}}-class-bar"
-        style="background-color: {{disabled ? disabledColor[1] : colors[1]}};"
-      >
-        <block wx:if="{{isScale}}">
-          <view
-            class="{{classPrefix}}__scale-item"
-            wx:for="{{scaleArray}}"
-            wx:for-index="index"
-            wx:key="index"
-            style="background:{{dotTopValue[1] < item || item < dotTopValue[0] ? (disabled ? disabledColor[1] : colors[1]) : ( disabled ? disabledColor[0] : colors[0])}};left: {{item}}%;transform:translateX({{- item}}%);"
-          >
-            <view wx:if="{{scaleTextArray.length}}">{{scaleTextArray[index]}}</view>
-          </view>
-        </block>
+    <view wx:if="{{showExtremeValue}}" class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--min">
+      {{min}}
+    </view>
+    <view
+      id="sliderLine"
+      bind:tap="onLineTap"
+      class="{{_.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']])}} {{prefix}}-class-bar"
+      style="{{t.getColor(disabled, false, disabledColor, colors)}}"
+    >
+      <block wx:if="{{isScale}}">
         <view
-          class="{{classPrefix}}__line {{prefix}}-class-bar-active"
-          style="background-color: {{disabled ? disabledColor[0] : colors[0]}}; left: {{lineLeft}}px; right: {{lineRight}}px;"
-        />
+          class="{{_.cls(classPrefix + '__scale-item', [['active', dotTopValue[1] >= item && item >= dotTopValue[0]], ['disabled', disabled], theme, ['hidden', index == 0 || index == scaleArray.length - 1 || value == item]])}}"
+          wx:for="{{scaleArray}}"
+          wx:for-index="index"
+          wx:key="index"
+          style="left: {{item}}%;transform: translateX({{- item}}%); {{t.getColor(disabled, (dotTopValue[1] >= item && item >= dotTopValue[0]), disabledColor, colors)}}"
+        >
+          <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}"
+            >{{scaleTextArray[index]}}</view
+          >
+        </view>
+      </block>
+      <view
+        class="{{_.cls(classPrefix + '__line', [['disabled', disabled], theme])}} {{prefix}}-class-bar-active"
+        style="left: {{lineLeft}}px; right: {{lineRight}}px; {{t.getColor(disabled, true, disabledColor, colors)}}"
+      >
         <view
           id="leftDot"
           bind:touchmove="onTouchMoveLeft"
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
-          style="left: {{activeLeft}}px; border-color: {{disabled ? disabledColor[0] : ''}}"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{utils.getValue(label, dotTopValue[0])}} </view>
+          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, dotTopValue[0])}} </view>
         </view>
         <view
           id="rightDot"
@@ -93,14 +92,13 @@
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
-          style="right: {{activeRight}}px; border-color: {{disabled ? disabledColor[0] : ''}}"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{utils.getValue(label, dotTopValue[1])}} </view>
+          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, dotTopValue[1])}} </view>
         </view>
       </view>
-      <view wx:if="{{showExtremeValue}}" class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--max">
-        {{max}}
-      </view>
+    </view>
+    <view wx:if="{{showExtremeValue}}" class="{{classPrefix}}__range-extreme {{classPrefix}}__range-extreme--max">
+      {{max}}
     </view>
   </block>
 </view>

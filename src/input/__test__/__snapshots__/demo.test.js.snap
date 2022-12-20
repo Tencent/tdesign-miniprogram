@@ -26,20 +26,6 @@ exports[`Input Input base demo works fine 1`] = `
     placeholder="请输入文字"
   />
   <t-input
-    placeholder="请输入文字"
-  >
-    <wx-text
-      slot="label"
-    >
-      标签文字
-      <wx-text
-        style="color: #e34d59"
-      >
-         *
-      </wx-text>
-    </wx-text>
-  </t-input>
-  <t-input
     label="标签文字"
     placeholder="请输入文字(选填)"
   />
@@ -82,7 +68,12 @@ exports[`Input Input bordered demo works fine 1`] = `
     borderless="{{false}}"
     placeholder="请输入文字"
     status="error"
-    suffixIcon="error-circle-filled"
+    suffixIcon="{{
+      Object {
+        "ariaLabel": "提示",
+        "name": "error-circle-filled",
+      }
+    }}"
     tips="错误提示文字"
   />
 </bordered>
@@ -116,7 +107,12 @@ exports[`Input Input layout demo works fine 1`] = `
     label="标签文字"
     layout="vertical"
     placeholder="请输入文字"
-    suffixIcon="error-circle-filled"
+    suffixIcon="{{
+      Object {
+        "ariaLabel": "提示",
+        "name": "error-circle-filled",
+      }
+    }}"
   />
 </layout>
 `;
@@ -182,6 +178,8 @@ exports[`Input Input special demo works fine 1`] = `
         class="suffix--line"
       />
       <wx-image
+        ariaLabel="验证码"
+        ariaRole="img"
         class="image"
         mode="heightFix"
         src="https://wwcdn.weixin.qq.com/node/wework/images/202010241547.ac6876be9c.png"
@@ -204,6 +202,7 @@ exports[`Input Input special demo works fine 1`] = `
         class="suffix--line"
       />
       <wx-view
+        ariaRole="button"
         class="verify"
       >
          发送验证码 
@@ -252,7 +251,12 @@ exports[`Input Input suffix demo works fine 1`] = `
   <t-input
     label="标签文字"
     placeholder="请输入文字"
-    suffixIcon="error-circle-filled"
+    suffixIcon="{{
+      Object {
+        "ariaLabel": "提示",
+        "name": "error-circle-filled",
+      }
+    }}"
   />
   <t-input
     placeholder="请输入手机号码"
@@ -268,7 +272,12 @@ exports[`Input Input suffix demo works fine 1`] = `
   <t-input
     label="标签文字"
     placeholder="请输入文字"
-    suffixIcon="user-avatar"
+    suffixIcon="{{
+      Object {
+        "ariaLabel": "通讯录",
+        "name": "user-avatar",
+      }
+    }}"
   />
 </suffix>
 `;
