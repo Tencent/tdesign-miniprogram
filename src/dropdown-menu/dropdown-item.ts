@@ -45,6 +45,7 @@ export default class DropdownMenuItem extends SuperComponent {
     overlay: menuProps.showOverlay.value,
     labelAlias: 'label',
     valueAlias: 'value',
+    isTree: false,
   };
 
   parent = null;
@@ -103,23 +104,16 @@ export default class DropdownMenuItem extends SuperComponent {
         });
       }
     },
+    optionsLayout(v) {
+      this.setData({ isTree: v === 'tree' });
+    },
   };
 
   lifetimes = {
     attached() {
-      const { multiple, optionsLayout, value, defaultValue } = this.data;
-      const isTree = optionsLayout === 'tree';
-      const contentClassesObj = {
-        [`${prefix}-is-tree`]: isTree,
-        [`${prefix}-is-single`]: !isTree && !multiple,
-        [`${prefix}-is-multi`]: !isTree && multiple,
-      };
-      const contentClasses = Object.keys(contentClassesObj)
-        .filter((e) => contentClassesObj[e] === true)
-        .join(' ');
+      const { value, defaultValue } = this.data;
 
       this.setData({
-        contentClasses,
         initValue: clone(value || defaultValue),
       });
     },
