@@ -8,6 +8,8 @@ exports[`Overlay Overlay base demo works fine 1`] = `
   />
   <t-button
     block="{{true}}"
+    size="large"
+    theme="primary"
     variant="outline"
     bind:tap="handleClick"
   >
