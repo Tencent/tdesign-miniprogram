@@ -274,7 +274,7 @@ exports[`Input Input suffix demo works fine 1`] = `
     placeholder="请输入文字"
     suffixIcon="{{
       Object {
-        "ariaLabel": "用户头像",
+        "ariaLabel": "通讯录",
         "name": "user-avatar",
       }
     }}"
