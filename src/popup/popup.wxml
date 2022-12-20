@@ -3,9 +3,9 @@
   wx:if="{{realVisible}}"
   style="{{ utils.getPopupStyles(zIndex, customStyle) }}"
   class="{{className}} {{transitionClass}} {{prefix}}-class"
-  aria-role="dialog"
-  aria-modal="true"
   bind:transitionend="onTransitionEnd"
+  aria-role="dialog"
+  aria-modal="{{ true }}"
 >
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <view class="{{classPrefix}}__close" bind:tap="handleClose">

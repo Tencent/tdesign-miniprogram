@@ -75,7 +75,7 @@ export default class Tabs extends SuperComponent {
 
   initChildId() {
     this.setData({
-      tabPanelId: `${useId()  }-`,
+      tabPanelId: `${useId()}-`,
     });
     this.children.forEach((item, index) => {
       item.setId(this.data.tabPanelId + index);
