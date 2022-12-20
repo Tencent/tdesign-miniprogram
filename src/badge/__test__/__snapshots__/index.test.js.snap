@@ -6,8 +6,8 @@ exports[`badge :base 1`] = `
     class="badge"
   >
     <wx-view
-      ariaDescribedby="describedby"
-      ariaLabelledby="labelledby"
+      ariaDescribedby="t-badge__describedby"
+      ariaLabelledby="t-badge__labelledby"
       ariaRole="option"
       class="t-badge  t-class"
       style=""
@@ -15,7 +15,7 @@ exports[`badge :base 1`] = `
       <wx-view
         ariaHidden="true"
         class="t-badge__content t-class-content"
-        id="labelledby"
+        id="t-badge__labelledby"
       >
         <wx-text
           class="t-badge__content-text"
@@ -27,7 +27,7 @@ exports[`badge :base 1`] = `
         ariaHidden="true"
         ariaLabel="有新的消息"
         class="t-badge--basic t-badge--dot t-badge--medium t-badge--circle  t-has-count t-class-count"
-        id="describedby"
+        id="t-badge__describedby"
         style=""
       >
         
