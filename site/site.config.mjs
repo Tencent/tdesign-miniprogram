@@ -73,6 +73,13 @@ export default {
           path: '/miniprogram/components/icon',
           component: () => import('@/icon/README.md'),
         },
+        {
+          title: 'Link 链接',
+          name: 'link',
+          meta: { docType: 'base' },
+          path: '/miniprogram/components/link',
+          component: () => import('@/link/README.md'),
+        },
       ],
     },
     {
