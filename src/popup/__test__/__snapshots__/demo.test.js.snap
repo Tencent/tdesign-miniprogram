@@ -9,7 +9,9 @@ exports[`Popup Popup top demo works fine 1`] = `
   >
     <wx-view
       class="block block--top"
-    />
+    >
+      顶部弹出
+    </wx-view>
   </t-popup>
   <t-button
     block="{{true}}"

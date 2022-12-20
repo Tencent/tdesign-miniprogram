@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "t-popup": "../popup/popup",
+    "t-icon": "../icon/icon",
     "t-button": "../button/button"
   }
 }

@@ -1,0 +1,54 @@
+<view class="box">
+  <t-button
+    t-class="external-class"
+    size="large"
+    theme="primary"
+    variant="outline"
+    data-key="imageOnTop"
+    bind:tap="showDialog"
+    block
+    >图片置顶</t-button
+  >
+  <t-dialog
+    visible="{{imageOnTop}}"
+    title="带输入框对话框"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    confirm-btn="{{ {content: '确定', variant: 'base' } }}"
+    cancel-btn="取消"
+    bind:confirm="closeDialog"
+    bind:cancel="closeDialog"
+  >
+    <t-image
+      slot="top"
+      t-class="dialog-image"
+      src="https://how-to-cook-1255404841.cos.ap-shanghai.myqcloud.com/WeChatfc1b389a68ecb961fbd5b4c5d92cb0a8.png"
+    />
+  </t-dialog>
+
+  <t-button
+    t-class="external-class"
+    theme="primary"
+    size="large"
+    variant="outline"
+    data-key="imageOnMiddle"
+    bind:tap="showDialog"
+    block
+    >图片居中</t-button
+  >
+  <t-dialog
+    visible="{{imageOnMiddle}}"
+    title="带输入框对话框"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    confirm-btn="{{ {content: '确定', variant: 'base' } }}"
+    cancel-btn="取消"
+    bind:confirm="closeDialog"
+    bind:cancel="closeDialog"
+  >
+    <t-image
+      slot="middle"
+      class="image-host"
+      t-class="dialog-image"
+      src="https://how-to-cook-1255404841.cos.ap-shanghai.myqcloud.com/WeChatfc1b389a68ecb961fbd5b4c5d92cb0a8.png"
+    />
+  </t-dialog>
+</view>

@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'button', 'command', 'confirm', 'inputDialog'];
+const mapper = ['base', 'button', 'command', 'confirm', 'status', 'with-image', 'with-input'];
 
 describe('Dialog', () => {
   mapper.forEach((demoName) => {

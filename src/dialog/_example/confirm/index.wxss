@@ -6,7 +6,3 @@
   margin: 0 0 32rpx 0;
   height: 96rpx;
 }
-
-.custom-confirm-btn {
-  color: #ff4646 !important;
-}
