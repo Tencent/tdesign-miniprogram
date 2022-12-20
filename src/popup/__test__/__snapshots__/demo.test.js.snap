@@ -1,24 +1,175 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Popup Popup top demo works fine 1`] = `
-<top>
+exports[`Popup Popup base demo works fine 1`] = `
+<base>
   <t-popup
-    placement="top"
-    visible="{{false}}"
+    placement=""
+    visible=""
     bind:visible-change="onVisibleChange"
   >
     <wx-view
-      class="block block--top"
+      class="block block--"
     >
-      顶部弹出
+      
     </wx-view>
   </t-popup>
   <t-button
     block="{{true}}"
+    class="wrapper"
+    data-item="{{
+      Object {
+        "text": "顶部弹出",
+        "value": "top",
+      }
+    }}"
     size="large"
+    theme="primary"
+    variant="outline"
     bind:tap="handlePopup"
   >
     顶部弹出
   </t-button>
-</top>
+  <t-button
+    block="{{true}}"
+    class="wrapper"
+    data-item="{{
+      Object {
+        "text": "左侧弹出",
+        "value": "left",
+      }
+    }}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handlePopup"
+  >
+    左侧弹出
+  </t-button>
+  <t-button
+    block="{{true}}"
+    class="wrapper"
+    data-item="{{
+      Object {
+        "text": "中间弹出",
+        "value": "center",
+      }
+    }}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handlePopup"
+  >
+    中间弹出
+  </t-button>
+  <t-button
+    block="{{true}}"
+    class="wrapper"
+    data-item="{{
+      Object {
+        "text": "底部弹出",
+        "value": "bottom",
+      }
+    }}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handlePopup"
+  >
+    底部弹出
+  </t-button>
+  <t-button
+    block="{{true}}"
+    class="wrapper"
+    data-item="{{
+      Object {
+        "text": "右侧弹出",
+        "value": "right",
+      }
+    }}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handlePopup"
+  >
+    右侧弹出
+  </t-button>
+</base>
+`;
+
+exports[`Popup Popup custom-close demo works fine 1`] = `
+<custom-close>
+  <t-popup
+    placement="center"
+    visible=""
+    bind:visible-change="onVisibleChange"
+  >
+    <wx-view
+      class="block"
+    >
+      <t-icon
+        class="close-btn"
+        color="#fff"
+        name="close-circle"
+        size="32"
+        bind:tap="onClose"
+      />
+    </wx-view>
+  </t-popup>
+  <t-button
+    block="{{true}}"
+    class="wrapper"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handlePopup"
+  >
+    居中弹出层-带自定义关闭按钮
+  </t-button>
+</custom-close>
+`;
+
+exports[`Popup Popup with-title demo works fine 1`] = `
+<with-title>
+  <t-popup
+    placement="bottom"
+    visible=""
+    bind:visible-change="onVisibleChange"
+  >
+    <wx-view
+      class="block"
+    >
+      <wx-view
+        class="header"
+      >
+        <wx-view
+          ariaRole="button"
+          class="btn btn--cancel"
+        >
+          取消
+        </wx-view>
+        <wx-view
+          class="title"
+        >
+          标题文字
+        </wx-view>
+        <wx-view
+          ariaRole="button"
+          class="btn btn--confirm"
+        >
+          确定
+        </wx-view>
+      </wx-view>
+    </wx-view>
+  </t-popup>
+  <t-button
+    block="{{true}}"
+    class="wrapper"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handlePopup"
+  >
+    底部弹出层-带标题及操作
+  </t-button>
+</with-title>
 `;
