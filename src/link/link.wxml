@@ -29,8 +29,8 @@
     />
   </view>
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
-    <view wx:if="{{content}}">{{content}}</view>
-    <slot wx:else name="content" />
+    <block wx:if="{{content}}">{{content}}</block>
+    <slot name="content" />
   </view>
   <view wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}" class="{{classPrefix}}__suffix-icon">
     <slot wx:if="{{suffixIconName === 'slot'}}" name="suffixIcon" />
