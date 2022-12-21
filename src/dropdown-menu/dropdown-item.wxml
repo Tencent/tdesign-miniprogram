@@ -134,12 +134,17 @@
       <slot />
     </view>
     <view class="{{classPrefix}}__footer {{prefix}}-class-footer" wx:if="{{multiple || isTree}}">
-      <t-button block class="{{classPrefix}}__footer-btn" theme="light" disabled="{{!hasChanged}}" bindtap="handleReset"
+      <t-button
+        block
+        class="{{classPrefix}}__footer-btn {{classPrefix}}__reset-btn"
+        theme="light"
+        disabled="{{!hasChanged}}"
+        bindtap="handleReset"
         >重置</t-button
       >
       <t-button
         block
-        class="{{classPrefix}}__footer-btn"
+        class="{{classPrefix}}__footer-btn {{classPrefix}}__confirm-btn"
         theme="primary"
         disabled="{{!hasChanged}}"
         bindtap="handleConfirm"
