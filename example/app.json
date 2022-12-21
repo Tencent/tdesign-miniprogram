@@ -92,6 +92,10 @@
     {
       "root": "pages/swipe-cell/",
       "pages": ["swipe-cell"]
+    },
+    {
+      "root": "pages/tree-select/",
+      "pages": ["tree-select"]
     }
   ],
   "usingComponents": {

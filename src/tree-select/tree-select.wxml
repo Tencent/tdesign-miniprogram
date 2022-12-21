@@ -1,0 +1,81 @@
+<wxs module="_" src="../common/utils.wxs" />
+<wxs module="this" src="./index.wxs" />
+
+<view class="{{classPrefix}}" style="height: {{_.addUnit(height)}}; {{customStyle}}">
+  <scroll-view
+    scroll-y
+    class="{{_.cls(classPrefix + '__column', [this.getTreeClass(leafLevel - level, treeOptions.length)])}} {{prefix}}-class"
+    wx:for="{{treeOptions}}"
+    wx:key="level"
+    wx:for-index="level"
+  >
+    <t-side-bar
+      wx:if="{{level == 0}}"
+      value="{{value[level]}}"
+      bind:change="onRootChange"
+      t-class="{{classPrefix}}-column {{prefix}}-class-ancestor-column"
+    >
+      <t-side-bar-item
+        wx:for="{{treeOptions[level]}}"
+        wx:key="index"
+        label="{{item[labelAlias]}}"
+        value="{{item[valueAlias]}}"
+      />
+    </t-side-bar>
+    <block wx:elif="{{level != leafLevel}}">
+      <view
+        wx:for="{{treeOptions[level]}}"
+        wx:key="index"
+        bind:tap="handleTreeClick"
+        data-level="{{level}}"
+        data-value="{{item[valueAlias]}}"
+        class="{{_.cls(classPrefix + '__item', [['active', item[valueAlias] === value[level]]])}} {{prefix}}-class-ancestor-column"
+      >
+        {{item[labelAlias]}}
+      </view>
+    </block>
+
+    <block wx:else>
+      <block wx:if="{{!multiple}}">
+        <t-radio-group
+          class="{{classPrefix}}__radio {{prefix}}-class-leaf-column"
+          data-level="{{level}}"
+          value="{{value[level]}}"
+          bind:change="handleRadioChange"
+        >
+          <t-radio
+            wx:for="{{treeOptions[level]}}"
+            wx:key="value"
+            icon="line"
+            class="{{classPrefix}}__radio-item {{prefix}}-class-leaf-item"
+            t-class-label="{{prefix}}-class-leaf-item-label"
+            value="{{item[valueAlias]}}"
+            borderless
+            align="right"
+            >{{item[labelAlias]}}</t-radio
+          >
+        </t-radio-group>
+      </block>
+      <block wx:elif="{{multiple}}">
+        <t-checkbox-group
+          class="{{classPrefix}}__checkbox {{prefix}}-class-leaf-column"
+          value="{{value[level]}}"
+          bind:change="handleRadioChange"
+          data-level="{{level}}"
+        >
+          <t-checkbox
+            wx:for="{{treeOptions[level]}}"
+            wx:key="value"
+            align="right"
+            icon="line"
+            class="{{prefix}}-class-leaf-item"
+            t-class-label="{{prefix}}-class-leaf-item-label"
+            borderless
+            value="{{item[valueAlias]}}"
+            >{{item[labelAlias]}}</t-checkbox
+          >
+        </t-checkbox-group>
+      </block>
+    </block>
+  </scroll-view>
+</view>

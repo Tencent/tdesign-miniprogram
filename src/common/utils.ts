@@ -201,6 +201,7 @@ export const setIcon = (iconName, icon, defaultIcon) => {
 };
 
 export const isObject = (val) => typeof val === 'object' && val != null;
+
 export const isString = (val) => typeof val === 'string';
 
 export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
