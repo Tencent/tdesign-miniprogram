@@ -24,6 +24,7 @@
         <block wx:if="{{!multiple}}">
           <t-radio-group
             class="{{classPrefix}}__radio {{prefix}}-class-column"
+            t-class="{{classPrefix}}__radio-group"
             value="{{value}}"
             bind:change="handleRadioChange"
           >
@@ -34,7 +35,7 @@
               icon="line"
               align="right"
               t-class="radio"
-              t-class-label="radio__label radio__label--{{value == item[valueAlias] ? 'active' : ''}} {{prefix}}-class-column-item-label"
+              t-class-label="{{prefix}}-class-column-item-label"
               value="{{item[valueAlias]}}"
               label="{{item[labelAlias]}}"
               disabled="{{item.disabled}}"
@@ -62,10 +63,10 @@
           </t-checkbox-group>
         </block>
       </block>
-      <block wx:elif="{{optionsLayout === 'tree'}}">
+      <block wx:elif="{{isTree}}">
         <scroll-view
           scroll-y
-          class="{{classPrefix}}__column {{classPrefix}}__column--{{this.getTreeClass(leafLevel - level)}} {{prefix}}-class-tree"
+          class="{{_.cls(classPrefix + '__column', [this.getTreeClass(leafLevel - level)])}} {{prefix}}-class-tree"
           wx:for="{{treeOptions}}"
           wx:key="level"
           wx:for-index="level"
@@ -77,7 +78,7 @@
               bind:tap="handleTreeClick"
               data-level="{{level}}"
               data-value="{{item[valueAlias]}}"
-              class="{{classPrefix}}__tree-item {{item[valueAlias] === value[level] ? classPrefix + '__tree-item--active' : '' }} {{prefix}}-class-tree-item"
+              class="{{_.cls(classPrefix + '__tree-item', [['active', item[valueAlias] === value[level]]])}} {{prefix}}-class-tree-item"
             >
               {{item[labelAlias]}}
             </view>
@@ -94,9 +95,10 @@
                 <t-radio
                   wx:for="{{treeOptions[level]}}"
                   wx:key="value"
+                  icon="line"
                   class="{{classPrefix}}__radio-item {{prefix}}-class-tree-columns-item"
                   t-class="radio"
-                  t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}} {{prefix}}-class-tree-columns-item-label"
+                  t-class-label="{{prefix}}-class-tree-columns-item-label"
                   value="{{item[valueAlias]}}"
                   borderless
                   align="right"
@@ -115,9 +117,10 @@
                   wx:for="{{treeOptions[level]}}"
                   wx:key="value"
                   align="right"
+                  icon="line"
                   class="{{prefix}}-class-tree-columns-item"
                   t-class="radio"
-                  t-class-label="radio__label radio__label--{{value[level] === item[valueAlias] ? 'active' : ''}} {{prefix}}-class-tree-columns-item-label"
+                  t-class-label="{{prefix}}-class-tree-columns-item-label"
                   borderless
                   value="{{item[valueAlias]}}"
                   >{{item[labelAlias]}}</t-checkbox
@@ -130,7 +133,7 @@
 
       <slot />
     </view>
-    <view class="{{classPrefix}}__footer {{prefix}}-class-footer" wx:if="{{multiple || optionsLayout === 'tree'}}">
+    <view class="{{classPrefix}}__footer {{prefix}}-class-footer" wx:if="{{multiple || isTree}}">
       <t-button block class="{{classPrefix}}__footer-btn" theme="light" disabled="{{!hasChanged}}" bindtap="handleReset"
         >重置</t-button
       >

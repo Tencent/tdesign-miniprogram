@@ -1,26 +1,13 @@
 @import '../common/style/index.less';
 
-@dropdown-menu-primary-color: @primary-color;
-@dropdown-menu-primary-color-1: @primary-color-1;
+@dropdown-menu-bg-color: var(--td-dropdown-menu-bg-color, @bg-color-block);
+@dropdown-body-max-height: var(--td-dropdown-body-max-height, 560rpx);
 
-@dropdown-menu-color-block: @bg-color-block;
-
-@dropdown-menu-disabled-color: @text-level-4-color;
-
-@dropdown-menu-level-2-color: @text-level-2-color;
-
-@dropdown-menu-level-1-color: @text-level-1-color;
-
-@dropdown-menu-tree-col1-color: #f5f5f5;
-
-@dropdown-menu-tree-col2-color: #f9f9f9;
-
-@dropdown-item-max-height: 324px;
-
-@dropdown-item-border-radius: @border-radius;
-@cell-vertical-padding: 12px;
-@cell-horizontal-padding: 16px;
-@cell-border-color: @border-level-1-color;
+@tree-bg-color: var(--td-tree-bg-color, @bg-color-block);
+@tree-root-bg-color: var(--td-tree-root-bg-color, @gray-color-1);
+@tree-item-active-color: var(--td-tree-item-active-color, @primary-color);
+@tree-item-height: var(--td-tree-item-height, 96rpx);
+@tree-item-font-size: var(--td-tree-item-font-size, 32rpx);
 
 @item: ~'@{prefix}-dropdown-item';
 
@@ -34,7 +21,6 @@
   bottom: 0;
 
   &__content {
-    max-height: @dropdown-item-max-height;
     display: flex;
     flex-direction: column;
     z-index: 11600;
@@ -54,18 +40,25 @@
 
   &__body {
     flex: 1;
-    background: @dropdown-menu-color-block;
+    background: @dropdown-menu-bg-color;
     overflow: auto;
+    max-height: @dropdown-body-max-height;
 
     &--tree {
       display: flex;
       overflow: hidden;
     }
+
+    &--multi {
+      padding-top: @spacer;
+      padding-bottom: @spacer;
+      overflow-y: auto;
+    }
   }
 
   &__footer {
     display: flex;
-    background: @dropdown-menu-color-block;
+    background: @dropdown-menu-bg-color;
     position: relative;
     padding: 32rpx;
 
@@ -87,48 +80,34 @@
     flex: 1;
 
     &--ancestor {
-      background: #eee;
-    }
-
-    &--parent {
-      background-color: #f3f3f3;
+      background: @tree-root-bg-color;
     }
   }
 
-  &__checkbox-group {
-    display: grid;
-    padding: 32rpx;
-    grid-gap: 24rpx;
+  &__radio,
+  &__checkbox {
+    width: 100%;
+    overflow: scroll;
+  }
+
+  &__checkbox {
+    &-group {
+      display: grid;
+      padding: 32rpx;
+      grid-gap: 24rpx;
+    }
   }
 
   /** 树形结构 */
   &__tree {
     &-item {
-      height: 96rpx;
-      line-height: 96rpx;
-      font-size: 32rpx;
+      height: @tree-item-height;
+      line-height: @tree-item-height;
+      font-size: @tree-item-font-size;
       padding-left: 32rpx;
 
       &--active {
-        color: @primary-color;
-      }
-    }
-  }
-
-  /** multi 多选多列情况 */
-  &--multi {
-    .@{prefix}-dropdown-item__body {
-      padding-top: @spacer;
-      padding-bottom: @spacer;
-      overflow-y: auto;
-    }
-
-    .@{prefix}-dropdown-item__cell {
-      padding-top: @spacer;
-      padding-bottom: @spacer;
-
-      &:not(:last-child)::after {
-        display: none;
+        color: @tree-item-active-color;
       }
     }
   }
