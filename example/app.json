@@ -1,15 +1,12 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/picker/picker",
     "pages/button/button",
     "pages/button-group/button-group",
-    "pages/dialog/dialog",
     "pages/tabs/tabs",
     "pages/icon/icon",
     "pages/loading/loading",
     "pages/loading/loadingProgress/index",
-    "pages/rate/rate",
     "pages/progress/progress",
     "pages/cascader/cascader",
     "pages/cell/cell",
@@ -23,8 +20,6 @@
     "pages/stepper/stepper",
     "pages/slider/slider",
     "pages/radio/radio",
-    "pages/swipe-cell/swipe-cell",
-    "pages/swiper/swiper",
     "pages/switch/switch",
     "pages/sticky/sticky",
     "pages/tag/tag",
@@ -77,6 +72,26 @@
     {
       "root": "pages/calendar/",
       "pages": ["calendar"]
+    },
+    {
+      "root": "pages/dialog/",
+      "pages": ["dialog"]
+    },
+    {
+      "root": "pages/picker/",
+      "pages": ["picker"]
+    },
+    {
+      "root": "pages/rate/",
+      "pages": ["rate"]
+    },
+    {
+      "root": "pages/swiper/",
+      "pages": ["swiper"]
+    },
+    {
+      "root": "pages/swipe-cell/",
+      "pages": ["swipe-cell"]
     }
   ],
   "usingComponents": {
@@ -89,7 +104,6 @@
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-collapse": "tdesign-miniprogram/collapse/collapse",
     "t-collapse-panel": "tdesign-miniprogram/collapse/collapse-panel",
-    "t-dialog": "tdesign-miniprogram/dialog/dialog",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tabs/tab-panel",
     "t-loading": "tdesign-miniprogram/loading/loading",

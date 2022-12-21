@@ -49,5 +49,5 @@
     >
   </view>
 
-  <view wx:if="{{!borderless}}" class="{{classPrefix}}__border {{prefix}}-class-border"></view>
+  <view wx:if="{{!borderless}}" class="{{_.cls(classPrefix + '__border', [align])}} {{prefix}}-class-border" />
 </view>
