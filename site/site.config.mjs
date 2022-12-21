@@ -274,6 +274,13 @@ export default {
           component: () => import('@/textarea/README.md'),
         },
         {
+          title: 'TreeSelect 树形选择',
+          name: 'treeSelect',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/tree-select',
+          component: () => import('@/tree-select/README.md'),
+        },
+        {
           title: 'UpLoad 上传',
           name: 'upload',
           meta: { docType: 'form' },
