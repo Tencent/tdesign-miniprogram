@@ -112,7 +112,7 @@
     }
   },
   "lint-staged": {
-    "{src,example,script}/**/*.{js,ts,wxml,html,json,wxs,less}": [
+    "{src,example,script}/**/*.{js,ts,wxml,html,json,less}": [
       "prettier --write"
     ],
     "{src,example}/**/*.{js,ts}": [
