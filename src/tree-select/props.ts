@@ -6,10 +6,6 @@
 
 import { TdTreeSelectProps } from './type';
 const props: TdTreeSelectProps = {
-  /** 透传至 Checkbox 组件 */
-  checkboxProps: {
-    type: Object,
-  },
   /** 自定义组件样式 */
   customStyle: {
     type: String,
@@ -33,10 +29,6 @@ const props: TdTreeSelectProps = {
   options: {
     type: Array,
     value: [],
-  },
-  /** 透传至 Radio 组件 */
-  radioProps: {
-    type: Object,
   },
   /** 选中值 */
   value: {

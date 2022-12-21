@@ -86,7 +86,7 @@ export default class TreeSelect extends SuperComponent {
 
       value[0] = itemValue;
 
-      this._trigger('change', { value });
+      this._trigger('change', { value, level: 0 });
     },
 
     handleTreeClick(e) {
@@ -94,7 +94,7 @@ export default class TreeSelect extends SuperComponent {
       const { value } = this.data;
 
       value[level] = itemValue;
-      this._trigger('change', { value });
+      this._trigger('change', { value, level: 1 });
     },
 
     handleRadioChange(e) {
@@ -104,7 +104,7 @@ export default class TreeSelect extends SuperComponent {
 
       value[level] = itemValue;
 
-      this._trigger('change', { value });
+      this._trigger('change', { value, level });
     },
   };
 }

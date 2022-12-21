@@ -8,13 +8,6 @@ import { TreeOptionData, KeysType } from '../common/common';
 
 export interface TdTreeSelectProps<DataOption extends TreeOptionData = TreeOptionData> {
   /**
-   * 透传至 Checkbox 组件
-   */
-  checkboxProps?: {
-    type: ObjectConstructor;
-    value?: object;
-  };
-  /**
    * 自定义组件样式
    * @default ''
    */
@@ -52,13 +45,6 @@ export interface TdTreeSelectProps<DataOption extends TreeOptionData = TreeOptio
   options?: {
     type: ArrayConstructor;
     value?: Array<DataOption>;
-  };
-  /**
-   * 透传至 Radio 组件
-   */
-  radioProps?: {
-    type: ObjectConstructor;
-    value?: object;
   };
   /**
    * 选中值
