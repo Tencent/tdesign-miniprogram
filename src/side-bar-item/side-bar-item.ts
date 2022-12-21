@@ -29,7 +29,21 @@ export default class SideBarItem extends SuperComponent {
     active: false,
     isPre: false,
     isNext: false,
+    ariaActive: '',
+    disabled: false,
   };
+
+  ready() {
+    let ariaActive;
+    if (this.data.disabled) {
+      ariaActive = '已禁用';
+    } else if (this.data.active) {
+      ariaActive = '已选定';
+    }
+    this.setData({
+      ariaActive,
+    });
+  }
 
   methods = {
     updateActive(value) {
