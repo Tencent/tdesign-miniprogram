@@ -14,7 +14,7 @@
     multiple
   />
   <t-dropdown-item
-    label="最多四字三列"
+    label="三列多选"
     optionsColumns="3"
     options="{{tripleColumnsOptions}}"
     defaultValue="{{['option_1', 'option_2', 'option_3']}}"

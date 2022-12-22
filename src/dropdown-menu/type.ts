@@ -8,14 +8,6 @@ import { KeysType } from '../common/common';
 
 export interface TdDropdownMenuProps {
   /**
-   * 【讨论中】菜单标题和选项的选中态颜色
-   * @default ''
-   */
-  activeColor?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 是否在点击遮罩层后关闭菜单
    * @default true
    */
@@ -44,7 +36,7 @@ export interface TdDropdownMenuProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class', 't-class-menu', 't-class-menu-item', 't-class-menu-label', 't-class-menu-icon'];
+    value?: ['t-class', 't-class-item', 't-class-label', 't-class-icon'];
   };
   /**
    * 是否显示遮罩层
@@ -92,11 +84,6 @@ export interface TdDropdownItemProps {
       't-class-column',
       't-class-column-item',
       't-class-column-item-label',
-      't-class-tree',
-      't-class-tree-item',
-      't-class-tree-columns',
-      't-class-tree-columns-item',
-      't-class-tree-columns-item-label',
       't-class-footer',
     ];
   };
@@ -129,7 +116,7 @@ export interface TdDropdownItemProps {
    */
   options?: {
     type: ArrayConstructor;
-    value?: Array<TdDropdownItemOption>;
+    value?: Array<DropdownOption>;
   };
   /**
    * 选项分栏（1-3）
@@ -140,34 +127,34 @@ export interface TdDropdownItemProps {
     value?: string | number;
   };
   /**
-   * 选项排列
+   * 选项排列；不再支持 tree 布局，可与 treeSelect 配合使用
    * @default columns
+   * @deprecated
    */
   optionsLayout?: {
     type: StringConstructor;
-    value?: 'columns' | 'tree';
+    value?: string;
   };
   /**
    * 选中值
    */
   value?: {
     type: null;
-    value?: TdDropdownItemOptionValueType | Array<TdDropdownItemOptionValueType>;
+    value?: DropdownValue;
   };
   /**
    * 选中值，非受控属性
    */
   defaultValue?: {
     type: null;
-    value?: TdDropdownItemOptionValueType | Array<TdDropdownItemOptionValueType>;
+    value?: DropdownValue;
   };
 }
 
-export interface TdDropdownItemOption {
+export interface DropdownOption {
   label: string;
   disabled: boolean;
-  value: TdDropdownItemOptionValueType;
-  [key: string]: any;
+  value: DropdownValue;
 }
 
-export type TdDropdownItemOptionValueType = string | number;
+export type DropdownValue = string | number | Array<DropdownValue>;

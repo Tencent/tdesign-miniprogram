@@ -1,28 +1,40 @@
-const chineseNumber = '一二三四五六七八九十'.split('');
-
-const singleSelectOptions = new Array(8).fill(null).map((_, i) => ({
-  label: `选项${chineseNumber[i]}`,
-  value: `option_${i + 1}`,
-  disabled: false,
-}));
-
-singleSelectOptions.push({
-  label: '禁用选项',
-  value: 'disabled',
-  disabled: true,
-});
-
 Component({
   data: {
-    singleSelect: {
-      value: 'option_3',
-      options: singleSelectOptions,
+    product: {
+      value: 'all',
+      options: [
+        {
+          value: 'all',
+          label: '全部产品',
+        },
+        {
+          value: 'new',
+          label: '最新产品',
+        },
+        {
+          value: 'hot',
+          label: '最火产品',
+        },
+      ],
+    },
+    sorter: {
+      value: 'default',
+      options: [
+        {
+          value: 'default',
+          label: '默认排序',
+        },
+        {
+          value: 'price',
+          label: '价格从高到低',
+        },
+      ],
     },
   },
   methods: {
-    handleSingleSelect(e) {
+    onChange(e) {
       this.setData({
-        'singleSelect.value': e.detail.value,
+        'product.value': e.detail.value,
       });
     },
   },

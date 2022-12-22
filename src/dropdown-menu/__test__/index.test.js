@@ -43,45 +43,6 @@ describe('dropdown-menu', () => {
     await simulate.sleep();
 
     expect($first.instance.data.value).toBe(value);
-
-    const $items = $base.querySelectorAll('.t-dropdown-menu__item');
-    $items[2].dispatchEvent('tap');
-    await simulate.sleep(210);
-
-    // tree
-    const $tree = comp.querySelector('#tree');
-    const $treeRadio = $tree.querySelectorAll('.t-dropdown-item__radio-item');
-    const $treeRadioContent = $treeRadio[1].querySelector('.t-radio__content');
-    $treeRadioContent.dispatchEvent('tap');
-    await simulate.sleep();
-
-    expect($tree.instance.data.value).toStrictEqual(['0', '0-1']);
-
-    // reset
-    const $treeReset = $tree.querySelector('.t-dropdown-item__reset-btn');
-    $treeReset.dispatchEvent('tap');
-    await simulate.sleep();
-
-    expect($tree.instance.data.value).toStrictEqual(['0', '0-0']);
-
-    // change value
-    const $treeItem = $tree.querySelectorAll('.t-dropdown-item__tree-item');
-    $treeItem[1].dispatchEvent('tap');
-    await simulate.sleep();
-
-    const $treeRadio2 = $tree.querySelectorAll('.t-dropdown-item__radio-item');
-    const $treeRadioContent2 = $treeRadio2[1].querySelector('.t-radio__content');
-    $treeRadioContent2.dispatchEvent('tap');
-    await simulate.sleep();
-
-    expect($tree.instance.data.value).toStrictEqual(['1', '1-1']);
-
-    // confirm
-    const $treeConfirm = $tree.querySelector('.t-dropdown-item__confirm-btn');
-    $treeConfirm.dispatchEvent('tap');
-    await simulate.sleep();
-
-    expect($tree.instance.data.value).toStrictEqual(['1', '1-1']);
   });
 
   it('@close', async () => {

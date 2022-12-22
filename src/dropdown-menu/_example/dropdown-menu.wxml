@@ -5,22 +5,15 @@
     <single />
   </t-demo>
 
-  <t-demo desc="多选下拉菜单">
+  <t-demo desc="分栏下拉菜单">
     <multi />
   </t-demo>
 
-  <t-demo desc="树形下拉菜单">
+  <!-- <t-demo desc="树形下拉菜单">
     <tree />
-  </t-demo>
+  </t-demo> -->
 
-  <t-demo title="02 组件状态" desc="下拉菜单状态">
-    <t-dropdown-menu>
-      <t-dropdown-item label="默认菜单" />
-      <t-dropdown-item label="默认菜单" />
-    </t-dropdown-menu>
-
-    <view class="spacer" style="height: 32rpx" />
-
+  <t-demo title="02 组件状态" desc="禁用状态">
     <t-dropdown-menu>
       <t-dropdown-item disabled label="禁用菜单" />
       <t-dropdown-item disabled label="禁用菜单" />
