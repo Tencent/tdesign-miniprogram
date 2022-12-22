@@ -1,11 +1,4 @@
 <t-dropdown-menu>
-  <t-dropdown-item
-    label="菜单"
-    options="{{singleSelect.options}}"
-    value="{{singleSelect.value}}"
-    bindchange="handleSingleSelect"
-  />
-  <t-dropdown-item label="菜单" options="{{singleSelect.options}}" defaultValue="option_3" />
-  <t-dropdown-item label="菜单" options="{{singleSelect.options}}" defaultValue="option_3" />
-  <t-dropdown-item label="两字溢出" options="{{singleSelect.options}}" defaultValue="option_3" />
+  <t-dropdown-item options="{{product.options}}" value="{{product.value}}" bindchange="onChange" />
+  <t-dropdown-item options="{{sorter.options}}" default-value="{{sorter.value}}" />
 </t-dropdown-menu>

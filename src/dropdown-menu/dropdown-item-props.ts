@@ -44,7 +44,7 @@ const props: TdDropdownItemProps = {
     type: null,
     value: 1,
   },
-  /** 选项排列 */
+  /** 已废弃。选项排列；不再支持 tree 布局，可与 treeSelect 配合使用 */
   optionsLayout: {
     type: String,
     value: 'columns',
