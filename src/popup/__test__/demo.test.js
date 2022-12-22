@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['top'];
+const mapper = ['base', 'custom-close', 'with-title'];
 
 describe('Popup', () => {
   mapper.forEach((demoName) => {

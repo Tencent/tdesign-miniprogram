@@ -194,6 +194,10 @@
     height: 1px;
     background: @checkbox-border-color;
     transform: scaleY(0.5);
+
+    &--right {
+      left: 32rpx;
+    }
   }
 
   &--tag {
@@ -202,7 +206,7 @@
     padding-bottom: 16rpx;
     text-align: center;
     background-color: #f3f3f3;
-    border-radius: 8rpx;
+    border-radius: 12rpx;
 
     &.@{checkbox}--checked {
       color: @checkbox-tag-active-color;

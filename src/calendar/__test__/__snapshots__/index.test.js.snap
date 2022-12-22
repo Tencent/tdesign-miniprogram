@@ -3,809 +3,806 @@
 exports[`calendar :base 1`] = `
 <main>
   <t-calendar>
-    <wx-view
-      style=""
+    <t-popup
+      bind:visible-change="handleClose"
     >
-      <t-popup
-        bind:visible-change="handleClose"
+      <wx-view
+        ariaModal="{{true}}"
+        ariaRole="dialog"
+        class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
+        style="z-index:11500;"
+        bind:transitionend="onTransitionEnd"
       >
         <wx-view
-          ariaModal="{{true}}"
-          ariaRole="dialog"
-          class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
-          style="z-index:11500;"
-          bind:transitionend="onTransitionEnd"
+          class="t-popup__content t-class-content"
         >
           <wx-view
-            class="t-popup__content t-class-content"
+            class="t-popup__close"
+            bind:tap="handleClose"
+          />
+          <wx-view
+            class="t-calendar t-calendar--popup"
+            style=""
           >
             <wx-view
-              class="t-popup__close"
+              class="t-calendar__title"
+              tabindex="0"
+            >
+              <wx-text>
+                请选择日期
+              </wx-text>
+            </wx-view>
+            <t-icon
+              class="t-calendar__close-btn"
               bind:tap="handleClose"
-            />
-            <wx-view
-              class="t-calendar"
             >
               <wx-view
-                class="t-calendar__title"
-                tabindex="0"
+                ariaHidden="{{false}}"
+                ariaLabel="关闭"
+                ariaRole="button"
+                class="t-icon t-class"
+                style="font-size: 24px"
+                bind:tap="onTap"
               >
-                <wx-text>
-                  请选择日期
-                </wx-text>
+                <wx-label
+                  class="t-icon-close t-icon-base"
+                />
               </wx-view>
-              <t-icon
-                class="t-calendar__close-btn"
-                bind:tap="handleClose"
+            </t-icon>
+            <wx-view
+              ariaHidden="{{true}}"
+              class="t-calendar__days"
+            >
+              <wx-view
+                class="t-calendar__days-item"
               >
+                日
+              </wx-view>
+              <wx-view
+                class="t-calendar__days-item"
+              >
+                一
+              </wx-view>
+              <wx-view
+                class="t-calendar__days-item"
+              >
+                二
+              </wx-view>
+              <wx-view
+                class="t-calendar__days-item"
+              >
+                三
+              </wx-view>
+              <wx-view
+                class="t-calendar__days-item"
+              >
+                四
+              </wx-view>
+              <wx-view
+                class="t-calendar__days-item"
+              >
+                五
+              </wx-view>
+              <wx-view
+                class="t-calendar__days-item"
+              >
+                六
+              </wx-view>
+            </wx-view>
+            <wx-scroll-view
+              class="t-calendar__months"
+              enhanced="{{true}}"
+              scrollIntoView="year_2022_month_9"
+              scrollY="{{true}}"
+              showScrollbar="{{false}}"
+            >
+              <wx-view
+                class="t-calendar__month"
+                id="year_2022_month_9"
+              >
+                2022 年 10 月
+              </wx-view>
+              <wx-view
+                class="t-calendar__dates"
+              >
+                <wx-view />
+                <wx-view />
+                <wx-view />
+                <wx-view />
+                <wx-view />
+                <wx-view />
                 <wx-view
-                  ariaHidden="{{false}}"
-                  ariaLabel="关闭"
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月1日, 星期六"
                   ariaRole="button"
-                  class="t-icon t-class"
-                  style="font-size: 24px"
-                  bind:tap="onTap"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 1,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
                 >
-                  <wx-label
-                    class="t-icon-close t-icon-base"
-                  />
-                </wx-view>
-              </t-icon>
-              <wx-view
-                ariaHidden="{{true}}"
-                class="t-calendar__days"
-              >
-                <wx-view
-                  class="t-calendar__days-item"
-                >
-                  日
+                  
+            1
+            
                 </wx-view>
                 <wx-view
-                  class="t-calendar__days-item"
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月2日, 星期日"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 2,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
                 >
-                  一
+                  
+            2
+            
                 </wx-view>
                 <wx-view
-                  class="t-calendar__days-item"
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月3日, 星期一"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 3,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
                 >
-                  二
+                  
+            3
+            
                 </wx-view>
                 <wx-view
-                  class="t-calendar__days-item"
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月4日, 星期二"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 4,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
                 >
-                  三
+                  
+            4
+            
                 </wx-view>
                 <wx-view
-                  class="t-calendar__days-item"
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月5日, 星期三"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 5,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
                 >
-                  四
+                  
+            5
+            
                 </wx-view>
                 <wx-view
-                  class="t-calendar__days-item"
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月6日, 星期四"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 6,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
                 >
-                  五
+                  
+            6
+            
                 </wx-view>
                 <wx-view
-                  class="t-calendar__days-item"
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月7日, 星期五"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 7,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
                 >
-                  六
+                  
+            7
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月8日, 星期六"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 8,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            8
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月9日, 星期日"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 9,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            9
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月10日, 星期一"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 10,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            10
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月11日, 星期二"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 11,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            11
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月12日, 星期三"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 12,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            12
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月13日, 星期四"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 13,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            13
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月14日, 星期五"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 14,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            14
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月15日, 星期六"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 15,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            15
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="已选中, 10月16日, 星期日"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--selected"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 16,
+                      "type": "selected",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            16
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月17日, 星期一"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 17,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            17
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月18日, 星期二"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 18,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            18
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月19日, 星期三"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 19,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            19
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月20日, 星期四"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 20,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            20
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月21日, 星期五"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 21,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            21
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月22日, 星期六"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 22,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            22
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月23日, 星期日"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 23,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            23
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月24日, 星期一"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 24,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            24
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月25日, 星期二"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 25,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            25
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月26日, 星期三"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 26,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            26
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月27日, 星期四"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 27,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            27
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月28日, 星期五"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 28,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            28
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月29日, 星期六"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 29,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            29
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月30日, 星期日"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 30,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            30
+            
+                </wx-view>
+                <wx-view
+                  ariaDisabled="{{false}}"
+                  ariaLabel="10月31日, 星期一"
+                  ariaRole="button"
+                  class="t-calendar__dates-item  t-calendar__dates-item--"
+                  data-date="{{
+                    Object {
+                      "date": Object {},
+                      "day": 31,
+                      "type": "",
+                    }
+                  }}"
+                  data-month="{{9}}"
+                  data-year="{{2022}}"
+                  bind:tap="handleSelect"
+                >
+                  
+            31
+            
                 </wx-view>
               </wx-view>
-              <wx-scroll-view
-                class="t-calendar__months"
-                enhanced="{{true}}"
-                scrollIntoView="year_2022_month_9"
-                scrollY="{{true}}"
-                showScrollbar="{{false}}"
+            </wx-scroll-view>
+            <wx-view
+              class="t-calendar__footer"
+            >
+              <t-button
+                class="t-calendar__confirm-btn"
+                data-extra=""
+                data-type=""
+                tClass=""
+                bind:contact="onTplButtonTap"
+                bind:error="onTplButtonTap"
+                bind:getphonenumber="onTplButtonTap"
+                bind:getuserinfo="onTplButtonTap"
+                bind:launchapp="onTplButtonTap"
+                bind:opensetting="onTplButtonTap"
+                bind:tap="onTplButtonTap"
               >
-                <wx-view
-                  class="t-calendar__month"
-                  id="year_2022_month_9"
+                <wx-button
+                  appParameter=""
+                  ariaLabel=""
+                  class="t-button t-class t-button--primary t-button--size- t-button-- t-is-block t-button-- t-class"
+                  data-custom="{{null}}"
+                  formType=""
+                  hoverClass="button-hover"
+                  hoverStartTime="{{0}}"
+                  hoverStayTime="{{0}}"
+                  hoverStopPropagation="{{false}}"
+                  lang=""
+                  openType=""
+                  sendMessageImg=""
+                  sendMessagePath=""
+                  sendMessageTitle=""
+                  sessionFrom=""
+                  showMessageCard="{{false}}"
+                  style=""
+                  bind:chooseavatar="chooseavatar"
+                  bind:contact="contact"
+                  bind:error="error"
+                  bind:getphonenumber="getphonenumber"
+                  bind:getuserinfo="getuserinfo"
+                  bind:launchapp="launchapp"
+                  bind:opensetting="opensetting"
+                  catch:tap="handleTap"
                 >
-                  2022 年 10 月
-                </wx-view>
-                <wx-view
-                  class="t-calendar__dates"
-                >
-                  <wx-view />
-                  <wx-view />
-                  <wx-view />
-                  <wx-view />
-                  <wx-view />
-                  <wx-view />
                   <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月1日, 星期六"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 1,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
+                    class="t-button__content"
                   >
                     
-                1
-                
+                    确认
                   </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月2日, 星期日"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 2,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                2
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月3日, 星期一"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 3,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                3
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月4日, 星期二"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 4,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                4
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月5日, 星期三"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 5,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                5
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月6日, 星期四"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 6,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                6
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月7日, 星期五"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 7,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                7
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月8日, 星期六"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 8,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                8
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月9日, 星期日"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 9,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                9
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月10日, 星期一"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 10,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                10
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月11日, 星期二"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 11,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                11
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月12日, 星期三"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 12,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                12
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月13日, 星期四"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 13,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                13
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月14日, 星期五"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 14,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                14
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月15日, 星期六"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 15,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                15
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="已选中, 10月16日, 星期日"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--selected"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 16,
-                        "type": "selected",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                16
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月17日, 星期一"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 17,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                17
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月18日, 星期二"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 18,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                18
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月19日, 星期三"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 19,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                19
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月20日, 星期四"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 20,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                20
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月21日, 星期五"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 21,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                21
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月22日, 星期六"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 22,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                22
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月23日, 星期日"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 23,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                23
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月24日, 星期一"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 24,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                24
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月25日, 星期二"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 25,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                25
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月26日, 星期三"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 26,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                26
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月27日, 星期四"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 27,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                27
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月28日, 星期五"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 28,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                28
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月29日, 星期六"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 29,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                29
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月30日, 星期日"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 30,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                30
-                
-                  </wx-view>
-                  <wx-view
-                    ariaDisabled="{{false}}"
-                    ariaLabel="10月31日, 星期一"
-                    ariaRole="button"
-                    class="t-calendar__dates-item  t-calendar__dates-item--"
-                    data-date="{{
-                      Object {
-                        "date": Object {},
-                        "day": 31,
-                        "type": "",
-                      }
-                    }}"
-                    data-month="{{9}}"
-                    data-year="{{2022}}"
-                    bind:tap="handleSelect"
-                  >
-                    
-                31
-                
-                  </wx-view>
-                </wx-view>
-              </wx-scroll-view>
-              <wx-view
-                class="t-calendar__footer"
-              >
-                <t-button
-                  class="t-calendar__confirm-btn"
-                  data-extra=""
-                  data-type=""
-                  tClass=""
-                  bind:contact="onTplButtonTap"
-                  bind:error="onTplButtonTap"
-                  bind:getphonenumber="onTplButtonTap"
-                  bind:getuserinfo="onTplButtonTap"
-                  bind:launchapp="onTplButtonTap"
-                  bind:opensetting="onTplButtonTap"
-                  bind:tap="onTplButtonTap"
-                >
-                  <wx-button
-                    appParameter=""
-                    ariaLabel=""
-                    class="t-button t-class t-button--primary t-button--size- t-button-- t-is-block t-button-- t-class"
-                    data-custom="{{null}}"
-                    formType=""
-                    hoverClass="button-hover"
-                    hoverStartTime="{{0}}"
-                    hoverStayTime="{{0}}"
-                    hoverStopPropagation="{{false}}"
-                    lang=""
-                    openType=""
-                    sendMessageImg=""
-                    sendMessagePath=""
-                    sendMessageTitle=""
-                    sessionFrom=""
-                    showMessageCard="{{false}}"
-                    style=""
-                    bind:chooseavatar="chooseavatar"
-                    bind:contact="contact"
-                    bind:error="error"
-                    bind:getphonenumber="getphonenumber"
-                    bind:getuserinfo="getuserinfo"
-                    bind:launchapp="launchapp"
-                    bind:opensetting="opensetting"
-                    catch:tap="handleTap"
-                  >
-                    <wx-view
-                      class="t-button__content"
-                    >
-                      
-                      确认
-                    </wx-view>
-                  </wx-button>
-                </t-button>
-              </wx-view>
+                </wx-button>
+              </t-button>
             </wx-view>
           </wx-view>
         </wx-view>
-        <t-overlay
-          id="popup-overlay"
-          bind:tap="handleOverlayClick"
-        >
-          <wx-view
-            ariaLabel="关闭"
-            ariaRole="button"
-            class="t-overlay t-fade-enter t-fade-enter-active"
-            style="z-index: 11000;  "
-            bind:tap="handleClick"
-            catch:touchmove="noop"
-            bind:transitionend="onTransitionEnd"
-          />
-        </t-overlay>
-      </t-popup>
-    </wx-view>
+      </wx-view>
+      <t-overlay
+        id="popup-overlay"
+        bind:tap="handleOverlayClick"
+      >
+        <wx-view
+          ariaLabel="关闭"
+          ariaRole="button"
+          class="t-overlay t-fade-enter t-fade-enter-active"
+          style="z-index: 11000;  "
+          bind:tap="handleClick"
+          catch:touchmove="noop"
+          bind:transitionend="onTransitionEnd"
+        />
+      </t-overlay>
+    </t-popup>
   </t-calendar>
 </main>
 `;
