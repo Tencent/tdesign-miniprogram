@@ -4,7 +4,7 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">4</em></h3>
+<h3>基础<em class="tag">5</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/button">
@@ -38,13 +38,13 @@ spline: explain
     </a>
   </div>
 
-  <!-- <div class="image-wrapper">
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/link">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-link.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-link-dark.png" />
       <p class="name">Link 链接</p>
     </a>
-  </div> -->
+  </div>
 </section>
 
 <h3>导航<em class="tag">7</em></h3>
