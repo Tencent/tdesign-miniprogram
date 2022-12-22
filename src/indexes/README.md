@@ -12,27 +12,15 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-indexes": "tdesign-miniprogram/indexes/indexes"
+  "t-indexes": "tdesign-miniprogram/indexes/indexes",
+  "t-indexes-anchor": "tdesign-miniprogram/indexes-anchor/indexes-anchor"
 }
 ```
-### 主题定制
-CSS 变量名|说明
---|--
---td-indexes-title-color | 索引标题颜色;
---td-indexes-title-bg-color | 索引标题背景颜色;
---td-indexes-children-text-color | 索引内容文本颜色;
---td-indexes-children-bg-color | 索引内容背景颜色;
---td-indexes-index-text-color | 索引文本颜色;
---td-indexes-index-text-active-color | 索引文本激活态颜色;
---td-indexes-index-bg-color | 索引背景颜色;
---td-indexes-tips-text-color | 索引提示信息颜色;
---td-indexes-tips-bg-color | 索引提示信息颜色;
 
 ## 代码演示
 
 ### 基础索引
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/indexes.png" width="375px" height="50%">
 
 {{ display }}
 
@@ -41,13 +29,20 @@ CSS 变量名|说明
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
-height | Number | - | 列表高度，未设置默认占满设备高度 | N
-list | Array | [] | 必需。索引列表的列表数据。每个元素包含三个子元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。。TS 类型：`ListItem[] ` `interface ListItem { title: string;  index: string;  children: { title: string; [key: string]: any} [] }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/indexes/type.ts) | Y
-sticky | Boolean | true | 【开发中】索引是否吸顶，默认为true。TS 类型：`Boolean` | N
+custom-style | String | - | `0.25.0`。自定义组件样式 | N
+height | String / Number | - | 列表高度，未设置默认占满设备高度 | N
+index-list | Array | - | `0.32.0`。索引字符列表。不传默认 `A-Z`。TS 类型：`string [] \| number[]` | N
+list | Array | [] | 已废弃。索引列表的列表数据。每个元素包含三个子元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。。TS 类型：`ListItem[] ` `interface ListItem { title: string;  index: string;  children: { title: string; [key: string]: any} [] }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/indexes/type.ts) | N
+sticky | Boolean / Object | true | 索引是否吸顶，默认为true；传 Object 则透传至 Sticky 组件。TS 类型：`Boolean` | N
 
 ### Indexes Events
 
 名称 | 参数 | 描述
 -- | -- | --
 select | `(indexes: { groupIndex: string; childrenIndex: number })` | 点击行元素时触发事件
+
+### IndexesAnchor Props
+
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+index | String / Number | - | 索引字符 | N

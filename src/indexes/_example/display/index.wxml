@@ -1,1 +1,0 @@
-<t-indexes id="bar" list="{{ list }}" height="{{barHeight}}" bind:select="onSelect"></t-indexes>

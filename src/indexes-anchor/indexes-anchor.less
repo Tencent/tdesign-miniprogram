@@ -1,0 +1,21 @@
+@import '../common/style/index.less';
+
+@indexes-anchor-color: @font-gray-1;
+@indexes-anchor-bg-color: @gray-color-1;
+@indexes-anchor-font-size: 28rpx;
+@indexes-anchor-line-height: 44rpx;
+
+.@{prefix}-indexes-anchor {
+  &__header {
+    display: none;
+  }
+
+  &__slot:empty + &__header {
+    display: block;
+    padding: 8rpx 32rpx;
+    color: @indexes-anchor-color;
+    font-size: @indexes-anchor-font-size;
+    line-height: @indexes-anchor-line-height;
+    background-color: @indexes-anchor-bg-color;
+  }
+}
