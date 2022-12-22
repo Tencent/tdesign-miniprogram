@@ -25,7 +25,7 @@
     <template
       wx:else
       is="icon"
-      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ...prefixIconData}}"
+      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ariaHidden: true, ...prefixIconData}}"
     />
   </view>
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
@@ -37,7 +37,7 @@
     <template
       wx:else
       is="icon"
-      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ...suffixIconData}}"
+      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ariaHidden: true, ...suffixIconData}}"
     />
   </view>
 </navigator>
