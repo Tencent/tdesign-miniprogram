@@ -176,7 +176,7 @@ export default class Indexes extends SuperComponent {
       const getAnchorIndex = (touchY) => {
         const offsetY = touchY - this.sidebar.top;
 
-        if (offsetY < 0) {
+        if (offsetY <= 0) {
           return 0;
         }
 
