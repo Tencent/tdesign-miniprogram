@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link Link content demo works fine 1`] = `
+<content>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="跳转链接"
+      size="small"
+      theme="primary"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      status="active"
+    />
+  </wx-view>
+</content>
+`;
+
+exports[`Link Link prefix demo works fine 1`] = `
+<prefix>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="跳转链接"
+      prefixIcon="link"
+      size="small"
+      theme="primary"
+    />
+    <t-link
+      content="跳转链接"
+      prefixIcon="link"
+      size="small"
+    />
+  </wx-view>
+</prefix>
+`;
+
+exports[`Link Link size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="S号链接"
+      disabled="{{true}}"
+      size="small"
+      suffixIcon="jump"
+      theme="primary"
+    />
+    <t-link
+      content="M号链接"
+      disabled="{{true}}"
+      suffixIcon="jump"
+      theme="primary"
+    />
+    <t-link
+      content="L号链接"
+      disabled="{{true}}"
+      size="large"
+      suffixIcon="jump"
+      theme="primary"
+    />
+  </wx-view>
+</size>
+`;
+
+exports[`Link Link status demo works fine 1`] = `
+<status>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="跳转链接"
+      size="small"
+      status="disabled"
+      suffixIcon="jump"
+      theme="primary"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      status="disabled"
+      suffixIcon="jump"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      status="disabled"
+      suffixIcon="jump"
+      theme="danger"
+    />
+  </wx-view>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="跳转链接"
+      size="small"
+      status="disabled"
+      suffixIcon="jump"
+      theme="warning"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      status="disabled"
+      suffixIcon="jump"
+      theme="success"
+    />
+  </wx-view>
+</status>
+`;
+
+exports[`Link Link suffix demo works fine 1`] = `
+<suffix>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="跳转链接"
+      size="small"
+      suffixIcon="jump"
+      theme="primary"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      suffixIcon="jump"
+    />
+  </wx-view>
+</suffix>
+`;
+
+exports[`Link Link theme demo works fine 1`] = `
+<theme>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="跳转链接"
+      size="small"
+      suffixIcon="jump"
+      theme="primary"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      suffixIcon="jump"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      suffixIcon="jump"
+      theme="danger"
+    />
+  </wx-view>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="跳转链接"
+      size="small"
+      suffixIcon="jump"
+      theme="warning"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      suffixIcon="jump"
+      theme="success"
+    />
+  </wx-view>
+</theme>
+`;
+
+exports[`Link Link underline demo works fine 1`] = `
+<underline>
+  <wx-view
+    class="link-example"
+  >
+    <t-link
+      content="跳转链接"
+      size="small"
+      theme="primary"
+      underline="{{true}}"
+    />
+    <t-link
+      content="跳转链接"
+      size="small"
+      underline="{{true}}"
+    />
+  </wx-view>
+</underline>
+`;
