@@ -98,7 +98,7 @@ export default class Indexes extends SuperComponent {
 
     getAnchorsRect() {
       return Promise.all(
-        this.children.map((child) =>
+        this.$children.map((child) =>
           getRect(child, `.${name}-anchor`).then((rect) => {
             this.groupTop.push({
               height: rect.height,
@@ -199,7 +199,7 @@ export default class Indexes extends SuperComponent {
       const { sticky } = this.data;
 
       if (scrollTop < 0 && sticky) {
-        this.children[0].setData({ sticky: false });
+        this.$children[0].setData({ sticky: false });
         return;
       }
 
@@ -216,7 +216,7 @@ export default class Indexes extends SuperComponent {
         const offset = curGroup.top - scrollTop;
         const betwixt = offset < curGroup.height && offset > 0;
 
-        this.children.forEach((child, index) => {
+        this.$children.forEach((child, index) => {
           if (index === curIndex) {
             child.setData({
               sticky: true,

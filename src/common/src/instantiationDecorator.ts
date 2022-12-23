@@ -68,7 +68,7 @@ export const toComponent = function toComponent(options: Record<string, any>) {
         behaviors.push(
           Behavior({
             created() {
-              Object.defineProperty(this, 'parent', {
+              Object.defineProperty(this, '$parent', {
                 get: () => this.getRelationNodes(path)[0],
               });
             },
@@ -78,7 +78,7 @@ export const toComponent = function toComponent(options: Record<string, any>) {
         behaviors.push(
           Behavior({
             created() {
-              Object.defineProperty(this, 'children', {
+              Object.defineProperty(this, '$children', {
                 get: () => this.getRelationNodes(path) || [],
               });
             },
