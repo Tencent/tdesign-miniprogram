@@ -23,7 +23,7 @@
       class="{{_.cls(classPrefix + '__sidebar-item', [['active', activeAnchor === item]])}} {{prefix}}-class-sidebar-item"
       wx:for="{{ _indexList }}"
       wx:key="index"
-      bind:tap="onSelectAnchor"
+      bind:tap="onClick"
       data-index="{{index}}"
     >
       {{ item }}

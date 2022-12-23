@@ -33,7 +33,7 @@ custom-style | String | - | `0.25.0`。自定义组件样式 | N
 height | String / Number | - | 列表高度，未设置默认占满设备高度 | N
 index-list | Array | - | `0.32.0`。索引字符列表。不传默认 `A-Z`。TS 类型：`string [] \| number[]` | N
 list | Array | [] | 已废弃。索引列表的列表数据。每个元素包含三个子元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。。TS 类型：`ListItem[] ` `interface ListItem { title: string;  index: string;  children: { title: string; [key: string]: any} [] }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/indexes/type.ts) | N
-sticky | Boolean / Object | true | 索引是否吸顶，默认为true；传 Object 则透传至 Sticky 组件。TS 类型：`Boolean` | N
+sticky | Boolean | true | 索引是否吸顶，默认为true。TS 类型：`Boolean` | N
 
 ### Indexes Events
 
@@ -45,4 +45,6 @@ select | `(indexes: { groupIndex: string; childrenIndex: number })` | 点击行�
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+custom-style | String | - | 自定义组件样式 | N
+external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class']` | N
 index | String / Number | - | 索引字符 | N

@@ -1,6 +1,8 @@
-<view class="{{classPrefix}} {{prefix}}-class">
-  <view class="{{classPrefix}}__slot">
-    <slot />
+<view class="{{classPrefix}} {{prefix}}-class" style="{{customStyle}}">
+  <view class="{{classPrefix}}__wrapper {{classPrefix}}__wrapper--{{sticky ? 'sticky' : ''}}" style="{{anchorStyle}}">
+    <view class="{{classPrefix}}__slot">
+      <slot />
+    </view>
+    <view class="{{classPrefix}}__header"> {{index}} </view>
   </view>
-  <view class="{{classPrefix}}__header"> {{index}} </view>
 </view>

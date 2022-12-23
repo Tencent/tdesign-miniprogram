@@ -87,6 +87,10 @@ export default class Indexes extends SuperComponent {
 
     getAllRect() {
       this.getAnchorsRect().then(() => {
+        this.groupTop.forEach((item, index) => {
+          const next = this.groupTop[index + 1];
+          item.totalHeight = (next?.top || Infinity) - item.top;
+        });
         this.setAnchorOnScroll(0);
       });
       this.getSidebarRect();
@@ -132,8 +136,9 @@ export default class Indexes extends SuperComponent {
       }
     },
 
-    setAnchorWithIndex(index) {
-      const activeAnchor = this.data._indexList[index];
+    setAnchorByIndex(index) {
+      const { _indexList, sticky } = this.data;
+      const activeAnchor = _indexList[index];
       const target = this.groupTop.find((item) => item.anchor === activeAnchor);
       const rect: Record<string, any> = {};
 
@@ -146,12 +151,34 @@ export default class Indexes extends SuperComponent {
       });
       this.toggleTips(true);
       this.triggerEvent('select', { index: activeAnchor });
+
+      if (sticky) {
+        const { children } = this;
+        for (let i = 0, size = children.length; i < size; i += 1) {
+          const cur = children[i];
+          if (cur.data.index === activeAnchor) {
+            const styleCache = cur.data.customStyle;
+            cur.setData({
+              customStyle: `${styleCache};position: fixed; top: 0; left:0; right:0; z-index: 2`,
+            });
+
+            if (i - 1 >= 0) {
+              const pre = children[i - 1];
+              const styleCache = pre.data.customStyle;
+              pre.setData({
+                customStyle: `${styleCache};position: fixed; top: 0; left:0; right:0; z-index: 1`,
+              });
+            }
+            break;
+          }
+        }
+      }
     },
 
-    onSelectAnchor(e) {
+    onClick(e) {
       const { index } = e.currentTarget.dataset;
 
-      this.setAnchorWithIndex(index);
+      this.setAnchorByIndex(index);
     },
 
     onTouchMove(e) {
@@ -183,7 +210,7 @@ export default class Indexes extends SuperComponent {
       };
       const index = getAnchorIndex(touchY);
 
-      this.setAnchorWithIndex(index);
+      this.setAnchorByIndex(index);
     },
 
     setAnchorOnScroll(scrollTop: number) {
@@ -191,19 +218,51 @@ export default class Indexes extends SuperComponent {
         return;
       }
 
-      const nextAnchor = this.groupTop.findIndex((group) => group.top > scrollTop);
+      if (scrollTop <= 0) {
+        this.children[0].setData({ sticky: false });
+        return;
+      }
 
-      if (nextAnchor > -1) {
-        const curIndex = Math.max(nextAnchor - 1, 0);
-        this.setData({
-          activeAnchor: this.groupTop[curIndex].anchor,
-        });
+      const curGroup = this.groupTop.find(
+        (group) => scrollTop >= group.top - group.height && scrollTop <= group.top + group.totalHeight - group.height,
+      );
+
+      this.setData({
+        activeAnchor: curGroup.anchor,
+      });
+
+      if (this.data.sticky) {
+        const { children } = this;
+        const offset = curGroup.top - scrollTop;
+        const betwixt = offset < curGroup.height && offset > 0;
+
+        for (let i = 0, size = children.length; i < size; i += 1) {
+          const cur = children[i];
+          if (cur.data.index === curGroup.anchor) {
+            cur.setData({
+              sticky: true,
+              customStyle: `height: ${curGroup.height}px`,
+              anchorStyle: `transform: translate3d(0, ${betwixt ? offset : 0}px, 0)`,
+            });
+
+            if (i - 1 >= 0) {
+              const pre = children[i - 1];
+              pre.setData({
+                sticky: true,
+                customStyle: `height: ${curGroup.height}px`,
+                anchorStyle: `transform: translate3d(0, ${betwixt ? offset - curGroup.height : 0}px, 0)`,
+              });
+            }
+          } else if (!betwixt) {
+            cur.setData({ sticky: false, anchorStyle: '' });
+          }
+        }
       }
     },
 
     throttleScroll() {
       return new Promise<void>((resolve) => {
-        const delay = 100;
+        const delay = 16;
         const now = Date.now();
         if (this.lastScrollTime && this.lastScrollTime + delay > now) {
           if (this.scrollTimer) {
@@ -221,11 +280,9 @@ export default class Indexes extends SuperComponent {
     },
 
     onScroll(e) {
-      this.throttleScroll().then(() => {
-        const { scrollTop } = e.detail;
+      const { scrollTop } = e.detail;
 
-        this.setAnchorOnScroll(scrollTop);
-      });
+      this.setAnchorOnScroll(scrollTop);
     },
   };
 }

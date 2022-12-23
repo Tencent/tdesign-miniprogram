@@ -24,9 +24,9 @@ const props: TdIndexesProps = {
     type: Array,
     value: [],
   },
-  /** 索引是否吸顶，默认为true；传 Object 则透传至 Sticky 组件 */
+  /** 索引是否吸顶，默认为true */
   sticky: {
-    type: null,
+    type: Boolean,
     value: true,
   },
 };

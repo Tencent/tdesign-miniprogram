@@ -1,4 +1,4 @@
-<t-indexes bind:select="onSelect" index-list="{{indexList}}">
+<t-indexes bind:select="onSelect" index-list="{{indexList}}" sticky>
   <block wx:for="{{list}}" wx:key="index">
     <t-indexes-anchor index="{{item.index}}">
       <view class="capsule {{item.index == activeAnchor ? 'active' : ''}}">{{item.index}}</view>

@@ -6,6 +6,21 @@
 
 export interface TdIndexesAnchorProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  customStyle?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 组件类名，用于设置组件外层元素类名
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class'];
+  };
+  /**
    * 索引字符
    */
   index?: {
