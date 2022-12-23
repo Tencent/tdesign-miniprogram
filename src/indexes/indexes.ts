@@ -137,7 +137,7 @@ export default class Indexes extends SuperComponent {
     },
 
     setAnchorByIndex(index) {
-      const { _indexList, sticky } = this.data;
+      const { _indexList } = this.data;
       const activeAnchor = _indexList[index];
       const target = this.groupTop.find((item) => item.anchor === activeAnchor);
       const rect: Record<string, any> = {};
@@ -151,28 +151,6 @@ export default class Indexes extends SuperComponent {
       });
       this.toggleTips(true);
       this.triggerEvent('select', { index: activeAnchor });
-
-      if (sticky) {
-        const { children } = this;
-        for (let i = 0, size = children.length; i < size; i += 1) {
-          const cur = children[i];
-          if (cur.data.index === activeAnchor) {
-            const styleCache = cur.data.customStyle;
-            cur.setData({
-              customStyle: `${styleCache};position: fixed; top: 0; left:0; right:0; z-index: 2`,
-            });
-
-            if (i - 1 >= 0) {
-              const pre = children[i - 1];
-              const styleCache = pre.data.customStyle;
-              pre.setData({
-                customStyle: `${styleCache};position: fixed; top: 0; left:0; right:0; z-index: 1`,
-              });
-            }
-            break;
-          }
-        }
-      }
     },
 
     onClick(e) {
@@ -218,51 +196,52 @@ export default class Indexes extends SuperComponent {
         return;
       }
 
-      if (scrollTop <= 0) {
+      const { sticky } = this.data;
+
+      if (scrollTop < 0 && sticky) {
         this.children[0].setData({ sticky: false });
         return;
       }
 
-      const curGroup = this.groupTop.find(
+      const curIndex = this.groupTop.findIndex(
         (group) => scrollTop >= group.top - group.height && scrollTop <= group.top + group.totalHeight - group.height,
       );
+      const curGroup = this.groupTop[curIndex];
 
       this.setData({
         activeAnchor: curGroup.anchor,
       });
 
-      if (this.data.sticky) {
-        const { children } = this;
+      if (sticky) {
         const offset = curGroup.top - scrollTop;
         const betwixt = offset < curGroup.height && offset > 0;
 
-        for (let i = 0, size = children.length; i < size; i += 1) {
-          const cur = children[i];
-          if (cur.data.index === curGroup.anchor) {
-            cur.setData({
+        this.children.forEach((child, index) => {
+          if (index === curIndex) {
+            child.setData({
               sticky: true,
+              active: true,
               customStyle: `height: ${curGroup.height}px`,
               anchorStyle: `transform: translate3d(0, ${betwixt ? offset : 0}px, 0)`,
             });
-
-            if (i - 1 >= 0) {
-              const pre = children[i - 1];
-              pre.setData({
-                sticky: true,
-                customStyle: `height: ${curGroup.height}px`,
-                anchorStyle: `transform: translate3d(0, ${betwixt ? offset - curGroup.height : 0}px, 0)`,
-              });
-            }
-          } else if (!betwixt) {
-            cur.setData({ sticky: false, anchorStyle: '' });
+          } else if (index + 1 === curIndex) {
+            // 两个 anchor 同时出现时的上一个
+            child.setData({
+              sticky: true,
+              active: true,
+              customStyle: `height: ${curGroup.height}px`,
+              anchorStyle: `transform: translate3d(0, ${betwixt ? offset - curGroup.height : 0}px, 0)`,
+            });
+          } else {
+            child.setData({ active: false, sticky: false, anchorStyle: '' });
           }
-        }
+        });
       }
     },
 
     throttleScroll() {
       return new Promise<void>((resolve) => {
-        const delay = 16;
+        const delay = 100;
         const now = Date.now();
         if (this.lastScrollTime && this.lastScrollTime + delay > now) {
           if (this.scrollTimer) {

@@ -12,8 +12,3 @@ page {
   align-items: center;
   font-size: 14px;
 }
-
-.capsule.active {
-  color: #0052d9;
-  font-weight: bold;
-}

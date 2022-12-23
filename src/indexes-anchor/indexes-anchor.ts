@@ -16,6 +16,7 @@ export default class IndexesAnchor extends SuperComponent {
     classPrefix: name,
     anchorStyle: '',
     sticky: false,
+    active: false,
   };
 
   relations: RelationsOptions = {
@@ -23,6 +24,4 @@ export default class IndexesAnchor extends SuperComponent {
       type: 'parent',
     },
   };
-
-  methods = {};
 }
