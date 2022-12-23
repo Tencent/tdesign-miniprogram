@@ -29,8 +29,6 @@
     "pages/tab-bar/tab-bar",
     "pages/transition/transition",
     "pages/popup/popup",
-    "pages/indexes/indexes",
-    "pages/indexes/display/index",
     "pages/steps/steps",
     "pages/dropdown-menu/dropdown-menu",
     "pages/drawer/drawer",
@@ -96,6 +94,10 @@
     {
       "root": "pages/tree-select/",
       "pages": ["tree-select"]
+    },
+    {
+      "root": "pages/indexes/",
+      "pages": ["indexes", "base/index", "custom/index"]
     }
   ],
   "usingComponents": {

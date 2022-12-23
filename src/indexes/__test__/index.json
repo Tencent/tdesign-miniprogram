@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "t-indexes": "../indexes",
+    "t-indexes-anchor": "../../indexes-anchor/indexes-anchor"
+  }
+}

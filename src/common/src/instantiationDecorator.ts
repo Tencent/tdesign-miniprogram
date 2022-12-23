@@ -28,6 +28,8 @@ const ComponentNativeProps = [
  * @param options {}
  */
 export const toComponent = function toComponent(options: Record<string, any>) {
+  const { relations, behaviors = [] } = options;
+
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
       let opt = options.properties[k];
@@ -58,6 +60,35 @@ export const toComponent = function toComponent(options: Record<string, any>) {
   if (!options.lifetimes) options.lifetimes = {};
 
   const inits: { [key: string]: PropertyDescriptor } = {};
+
+  if (relations) {
+    Object.keys(relations).forEach((path) => {
+      const comp = relations[path];
+      if (['parent', 'ancestor'].includes(comp.type)) {
+        behaviors.push(
+          Behavior({
+            created() {
+              Object.defineProperty(this, '$parent', {
+                get: () => this.getRelationNodes(path)[0],
+              });
+            },
+          }),
+        );
+      } else {
+        behaviors.push(
+          Behavior({
+            created() {
+              Object.defineProperty(this, '$children', {
+                get: () => this.getRelationNodes(path) || [],
+              });
+            },
+          }),
+        );
+      }
+    });
+  }
+
+  options.behaviors = behaviors;
 
   Object.getOwnPropertyNames(options).forEach((k) => {
     const desc = Object.getOwnPropertyDescriptor(options, k);
