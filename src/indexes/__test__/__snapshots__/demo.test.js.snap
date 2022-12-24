@@ -330,327 +330,233 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
   <t-indexes
     indexList="{{
       Array [
-        "B",
-        "C",
-        "D",
-        "F",
-        "G",
-        "J",
-        "K",
+        1,
+        3,
+        5,
+        7,
+        8,
+        10,
+        "#",
       ]
     }}"
     sticky="{{true}}"
     bind:select="onSelect"
   >
     <t-indexes-anchor
-      index="B"
+      index="{{1}}"
     >
       <wx-view
         class="capsule"
       >
-        B
+        1
       </wx-view>
     </t-indexes-anchor>
     <t-cell-group>
       <t-cell
-        title="北京"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="白银"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="保定"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="宝鸡"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="保山"
-      />
-      <t-cell
-        title="包头"
-      />
-      <t-cell
-        title="巴中"
-      />
-      <t-cell
-        title="北海"
-      />
-      <t-cell
-        title="蚌埠"
-      />
-      <t-cell
-        title="本溪"
-      />
-      <t-cell
-        title="毕节"
-      />
-      <t-cell
-        title="滨州"
-      />
-      <t-cell
-        title="百色"
-      />
-      <t-cell
-        title="亳州"
+        bordered="{{false}}"
+        title="列表内容"
       />
     </t-cell-group>
     <t-indexes-anchor
-      index="C"
+      index="{{3}}"
     >
       <wx-view
         class="capsule"
       >
-        C
+        3
       </wx-view>
     </t-indexes-anchor>
     <t-cell-group>
       <t-cell
-        title="重庆"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="成都"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="长沙"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="长春"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="沧州"
-      />
-      <t-cell
-        title="常德"
-      />
-      <t-cell
-        title="昌都"
-      />
-      <t-cell
-        title="长治"
-      />
-      <t-cell
-        title="常州"
-      />
-      <t-cell
-        title="巢湖"
-      />
-      <t-cell
-        title="潮州"
-      />
-      <t-cell
-        title="承德"
-      />
-      <t-cell
-        title="郴州"
-      />
-      <t-cell
-        title="赤峰"
-      />
-      <t-cell
-        title="池州"
-      />
-      <t-cell
-        title="崇左"
-      />
-      <t-cell
-        title="楚雄"
-      />
-      <t-cell
-        title="滁州"
-      />
-      <t-cell
-        title="朝阳"
+        bordered="{{false}}"
+        title="列表内容"
       />
     </t-cell-group>
     <t-indexes-anchor
-      index="D"
+      index="{{5}}"
     >
       <wx-view
         class="capsule"
       >
-        D
+        5
       </wx-view>
     </t-indexes-anchor>
     <t-cell-group>
       <t-cell
-        title="大连"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="东莞"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="大理"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="丹东"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="大庆"
-      />
-      <t-cell
-        title="大同"
-      />
-      <t-cell
-        title="大兴安岭"
-      />
-      <t-cell
-        title="德宏"
-      />
-      <t-cell
-        title="德阳"
-      />
-      <t-cell
-        title="德州"
-      />
-      <t-cell
-        title="定西"
-      />
-      <t-cell
-        title="迪庆"
-      />
-      <t-cell
-        title="东营"
+        bordered="{{false}}"
+        title="列表内容"
       />
     </t-cell-group>
     <t-indexes-anchor
-      index="F"
+      index="{{7}}"
     >
       <wx-view
         class="capsule"
       >
-        F
+        7
       </wx-view>
     </t-indexes-anchor>
     <t-cell-group>
       <t-cell
-        title="福州"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="防城港"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="佛山"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="抚顺"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="抚州"
-      />
-      <t-cell
-        title="阜新"
-      />
-      <t-cell
-        title="阜阳"
+        bordered="{{false}}"
+        title="列表内容"
       />
     </t-cell-group>
     <t-indexes-anchor
-      index="G"
+      index="{{8}}"
     >
       <wx-view
         class="capsule"
       >
-        G
+        8
       </wx-view>
     </t-indexes-anchor>
     <t-cell-group>
       <t-cell
-        title="广州"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="桂林"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="贵阳"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="甘南"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="赣州"
-      />
-      <t-cell
-        title="甘孜"
-      />
-      <t-cell
-        title="广安"
-      />
-      <t-cell
-        title="广元"
-      />
-      <t-cell
-        title="贵港"
-      />
-      <t-cell
-        title="果洛"
+        bordered="{{false}}"
+        title="列表内容"
       />
     </t-cell-group>
     <t-indexes-anchor
-      index="J"
+      index="{{10}}"
     >
       <wx-view
         class="capsule"
       >
-        J
+        10
       </wx-view>
     </t-indexes-anchor>
     <t-cell-group>
       <t-cell
-        title="揭阳"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="吉林"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="晋江"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="吉安"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="胶州"
-      />
-      <t-cell
-        title="嘉兴"
-      />
-      <t-cell
-        title="济南"
-      />
-      <t-cell
-        title="鸡西"
-      />
-      <t-cell
-        title="荆州"
-      />
-      <t-cell
-        title="江门"
-      />
-      <t-cell
-        title="基隆"
+        bordered="{{false}}"
+        title="列表内容"
       />
     </t-cell-group>
     <t-indexes-anchor
-      index="K"
+      index="#"
     >
       <wx-view
         class="capsule"
       >
-        K
+        #
       </wx-view>
     </t-indexes-anchor>
     <t-cell-group>
       <t-cell
-        title="昆明"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="开封"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="康定"
+        bordered="{{true}}"
+        title="列表内容"
       />
       <t-cell
-        title="喀什"
+        bordered="{{true}}"
+        title="列表内容"
+      />
+      <t-cell
+        bordered="{{false}}"
+        title="列表内容"
       />
     </t-cell-group>
   </t-indexes>

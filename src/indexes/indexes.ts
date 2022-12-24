@@ -120,10 +120,12 @@ export default class Indexes extends SuperComponent {
     getSidebarRect() {
       getRect(this, `#id-${name}__bar`).then((rect) => {
         const { top, height } = rect;
+        const { length } = this.data._indexList;
+
         this.sidebar = {
           top,
           height,
-          itemHeight: height / this.data._indexList.length,
+          itemHeight: (height - (length - 1) * 2) / length, // margin = 2px
         };
       });
     },
@@ -144,6 +146,8 @@ export default class Indexes extends SuperComponent {
     },
 
     setAnchorByIndex(index) {
+      if (this.preIndex != null && this.preIndex === index) return;
+
       const { _indexList } = this.data;
       const activeAnchor = _indexList[index];
       const target = this.groupTop.find((item) => item.anchor === activeAnchor);
@@ -155,6 +159,7 @@ export default class Indexes extends SuperComponent {
         });
       }
 
+      this.preIndex = index;
       this.toggleTips(true);
       this.triggerEvent('select', { index: activeAnchor });
     },
@@ -166,7 +171,7 @@ export default class Indexes extends SuperComponent {
     },
 
     onTouchMove(e) {
-      this.onAnchorTouch(e.changedTouches[0].pageY);
+      this.onAnchorTouch(e);
     },
 
     onTouchCancel() {
@@ -175,12 +180,12 @@ export default class Indexes extends SuperComponent {
 
     onTouchEnd(e) {
       this.toggleTips(false);
-      this.onAnchorTouch(e.changedTouches[0].pageY);
+      this.onAnchorTouch(e);
     },
 
-    onAnchorTouch: throttle(function (touchY) {
-      const getAnchorIndex = (touchY) => {
-        const offsetY = touchY - this.sidebar.top;
+    onAnchorTouch: throttle(function (e: WechatMiniprogram.TouchEvent) {
+      const getAnchorIndex = (clientY) => {
+        const offsetY = clientY - this.sidebar.top;
 
         if (offsetY <= 0) {
           return 0;
@@ -192,7 +197,7 @@ export default class Indexes extends SuperComponent {
 
         return Math.floor(offsetY / this.sidebar.itemHeight);
       };
-      const index = getAnchorIndex(touchY);
+      const index = getAnchorIndex(e.changedTouches[0].clientY);
 
       this.setAnchorByIndex(index);
     }, 1000 / 30), // 30 frame
@@ -203,11 +208,6 @@ export default class Indexes extends SuperComponent {
       }
 
       const { sticky } = this.data;
-
-      if (scrollTop < 0 && sticky) {
-        this.$children[0].setData({ sticky: false });
-        return;
-      }
 
       const curIndex = this.groupTop.findIndex(
         (group) => scrollTop >= group.top - group.height && scrollTop <= group.top + group.totalHeight - group.height,
@@ -223,12 +223,12 @@ export default class Indexes extends SuperComponent {
 
       if (sticky) {
         const offset = curGroup.top - scrollTop;
-        const betwixt = offset < curGroup.height && offset > 0;
+        const betwixt = offset < curGroup.height && offset > 0 && scrollTop > 0;
 
         this.$children.forEach((child, index) => {
           if (index === curIndex) {
             child.setData({
-              sticky: true,
+              sticky: scrollTop > 0,
               active: true,
               customStyle: `height: ${curGroup.height}px`,
               anchorStyle: `transform: translate3d(0, ${betwixt ? offset : 0}px, 0)`,

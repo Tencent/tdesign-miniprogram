@@ -14,14 +14,21 @@ export const debounce = function (func, wait = 500) {
   };
 };
 
-export const throttle = (func, wait = 100) => {
+export const throttle = (func, wait = 100, options = null) => {
   let previous = 0;
   let timerid = null;
+
+  if (!options) {
+    options = {
+      leading: true,
+    };
+  }
 
   return function (...args) {
     const now = Date.now();
 
-    if (!previous) previous = now;
+    if (!previous && !options.leading) previous = now;
+
     const remaining = wait - (now - previous);
     const context = this;
 

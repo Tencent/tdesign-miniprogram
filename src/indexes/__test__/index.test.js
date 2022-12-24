@@ -1,33 +1,64 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
+import * as Util from '../../common/utils';
+
+beforeAll(() => {
+  global.getCurrentPages = jest.fn(() => {
+    return [
+      {
+        pageScroller: [jest.fn()],
+      },
+    ];
+  });
+});
 
 describe('indexes', () => {
   const id = load(path.resolve(__dirname, `./index`));
-
-  it(':props', () => {
-    const comp = simulate.render(id);
-    comp.attach(document.createElement('parent-wrapper'));
-    expect(comp.querySelector('.indexes').data.height).toBe(600);
-  });
 
   it('event scroll', async () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
     const $index = comp.querySelector('.indexes');
-    const $scrollView = $index.querySelector('.t-indexes__content');
 
-    // scroll
-    simulate.scroll($scrollView, 100, 1);
-    await simulate.sleep();
     // touch
     const $sidebar = $index.querySelector('.t-indexes__sidebar');
 
-    $sidebar.dispatchEvent('touchmove', {
-      changedTouches: [{ x: 0, y: 40 }],
+    const mock = jest.spyOn(Util, 'getRect');
+    let i = 0;
+    const top = 286;
+
+    mock.mockImplementation((x, y) => {
+      if (y.includes('bar')) {
+        return Promise.resolve({
+          top,
+          height: 64,
+        });
+      }
+      return Promise.resolve({ top: (i += 100), height: 150 });
     });
 
-    await simulate.sleep();
+    $sidebar.dispatchEvent('touchmove', {
+      changedTouches: [{ x: 0, y: top + 21 }],
+    });
+
+    await simulate.sleep(0);
+
     expect($index.data.showTips).toBeTruthy();
-    expect($index.data.activeAnchor).toBe('Z');
+    expect(comp.data.active).toBe('B');
+
+    $sidebar.dispatchEvent('touchcancel');
+
+    await simulate.sleep(500);
+
+    expect($index.data.showTips).toBeFalsy();
+
+    $sidebar.dispatchEvent('touchmove', {
+      changedTouches: [{ x: 0, y: top + 41 }],
+    });
+
+    await simulate.sleep(0);
+
+    expect($index.data.showTips).toBeTruthy();
+    expect(comp.data.active).toBe('C');
   });
 });
