@@ -2,6 +2,7 @@ import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/ind
 import config from '../common/config';
 import props from './props';
 import { getRect, throttle } from '../common/utils';
+import pageScrollMixin from '../mixins/page-scroll';
 
 const { prefix } = config;
 const name = `${prefix}-indexes`;
@@ -27,6 +28,12 @@ export default class Indexes extends SuperComponent {
       type: 'child',
     },
   };
+
+  behaviors = [
+    pageScrollMixin(function (event) {
+      this.onScroll(event);
+    }),
+  ];
 
   timer = null;
 
@@ -142,8 +149,9 @@ export default class Indexes extends SuperComponent {
       const target = this.groupTop.find((item) => item.anchor === activeAnchor);
 
       if (target) {
-        this.setData({
+        wx.pageScrollTo({
           scrollTop: target.top,
+          duration: 0,
         });
       }
 
@@ -240,9 +248,7 @@ export default class Indexes extends SuperComponent {
       }
     },
 
-    onScroll(e) {
-      const { scrollTop } = e.detail;
-
+    onScroll({ scrollTop }) {
       this.setAnchorOnScroll(scrollTop);
     },
   };

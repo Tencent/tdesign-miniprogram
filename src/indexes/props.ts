@@ -11,10 +11,6 @@ const props: TdIndexesProps = {
     type: String,
     value: '',
   },
-  /** 列表高度，未设置默认占满设备高度 */
-  height: {
-    type: null,
-  },
   /** 索引字符列表。不传默认 `A-Z` */
   indexList: {
     type: Array,

@@ -227,3 +227,8 @@ export const isObject = (val) => typeof val === 'object' && val != null;
 export const isString = (val) => typeof val === 'string';
 
 export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
+
+export const getCurrentPage = function <T>() {
+  const pages = getCurrentPages();
+  return pages[pages.length - 1] as T & WechatMiniprogram.Page.TrivialInstance;
+};

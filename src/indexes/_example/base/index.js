@@ -90,16 +90,8 @@ Page({
   },
 
   onSelect(e) {
-    const { indexes } = e.detail;
-    if (indexes.length < 2) {
-      console.warn('需要两个index才能确定city');
-      return;
-    }
-    const group = this.data.list[indexes[0]];
-    const city = group.children[indexes[1]];
-    wx.showToast({
-      icon: 'none',
-      title: `你选择了: ${group.title}>${city.title}`,
-    });
+    const { index } = e.detail;
+
+    console.log(index);
   },
 });

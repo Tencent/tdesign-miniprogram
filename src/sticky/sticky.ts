@@ -2,7 +2,8 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 import type { TdStickyProps } from './type';
-import { pageScrollMixin, getRect } from '../mixins/page-scroll';
+import pageScrollMixin from '../mixins/page-scroll';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-sticky`;
