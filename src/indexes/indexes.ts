@@ -1,7 +1,7 @@
 import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getRect } from '../common/utils';
+import { getRect, throttle } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-indexes`;
@@ -140,15 +140,13 @@ export default class Indexes extends SuperComponent {
       const { _indexList } = this.data;
       const activeAnchor = _indexList[index];
       const target = this.groupTop.find((item) => item.anchor === activeAnchor);
-      const rect: Record<string, any> = {};
 
       if (target) {
-        rect.scrollTop = target.top;
+        this.setData({
+          scrollTop: target.top,
+        });
       }
-      this.setData({
-        ...rect,
-        activeAnchor,
-      });
+
       this.toggleTips(true);
       this.triggerEvent('select', { index: activeAnchor });
     },
@@ -160,7 +158,7 @@ export default class Indexes extends SuperComponent {
     },
 
     onTouchMove(e) {
-      this.throttleScroll().then(() => this.onAnchorTouch(e.changedTouches[0].pageY));
+      this.onAnchorTouch(e.changedTouches[0].pageY);
     },
 
     onTouchCancel() {
@@ -172,7 +170,7 @@ export default class Indexes extends SuperComponent {
       this.onAnchorTouch(e.changedTouches[0].pageY);
     },
 
-    onAnchorTouch(touchY) {
+    onAnchorTouch: throttle(function (touchY) {
       const getAnchorIndex = (touchY) => {
         const offsetY = touchY - this.sidebar.top;
 
@@ -189,7 +187,7 @@ export default class Indexes extends SuperComponent {
       const index = getAnchorIndex(touchY);
 
       this.setAnchorByIndex(index);
-    },
+    }, 1000 / 30), // 30 frame
 
     setAnchorOnScroll(scrollTop: number) {
       if (!this.groupTop) {
@@ -206,6 +204,9 @@ export default class Indexes extends SuperComponent {
       const curIndex = this.groupTop.findIndex(
         (group) => scrollTop >= group.top - group.height && scrollTop <= group.top + group.totalHeight - group.height,
       );
+
+      if (curIndex === -1) return;
+
       const curGroup = this.groupTop[curIndex];
 
       this.setData({
@@ -237,25 +238,6 @@ export default class Indexes extends SuperComponent {
           }
         });
       }
-    },
-
-    throttleScroll() {
-      return new Promise<void>((resolve) => {
-        const delay = 100;
-        const now = Date.now();
-        if (this.lastScrollTime && this.lastScrollTime + delay > now) {
-          if (this.scrollTimer) {
-            clearTimeout(this.scrollTimer);
-          }
-          this.scrollTimer = setTimeout(() => {
-            this.lastScrollTime = now;
-            resolve();
-          }, delay);
-        } else {
-          this.lastScrollTime = now;
-          resolve();
-        }
-      });
     },
 
     onScroll(e) {

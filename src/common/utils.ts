@@ -14,6 +14,28 @@ export const debounce = function (func, wait = 500) {
   };
 };
 
+export const throttle = (func, wait = 100) => {
+  let previous = 0;
+  let timerid = null;
+
+  return function (...args) {
+    const now = Date.now();
+
+    if (!previous) previous = now;
+    const remaining = wait - (now - previous);
+    const context = this;
+
+    if (remaining <= 0) {
+      if (timerid) {
+        clearTimeout(timerid);
+        timerid = null;
+      }
+      previous = now;
+      func.apply(context, args);
+    }
+  };
+};
+
 export const classNames = function (...args) {
   const hasOwn = {}.hasOwnProperty;
   const classes = [];
