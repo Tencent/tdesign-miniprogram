@@ -1,61 +1,61 @@
 @import '../common/style/index.less';
 
-@avatar-bg-color: @primary-color-2;
-@avatar-content-color: @primary-color;
-@avatar-small-width: 80rpx;
-@avatar-medium-width: 96rpx;
-@avatar-large-width: 128rpx;
+@avatar-bg-color: var(--td-avatar-bg-color, @primary-color-2);
+@avatar-content-color: var(--td-avatar-content-color, @primary-color);
+@avatar-small-width: var(--td-avatar-small-width, 80rpx);
+@avatar-medium-width: var(--td-avatar-medium-width, 96rpx);
+@avatar-large-width: var(--td-avatar-large-width, 128rpx);
 
-@avatar-text-small-font-size: @font-size-s;
-@avatar-text-medium-font-size: @font-size-base;
-@avatar-text-large-font-size: 16px;
+@avatar-text-small-font-size: var(--td-avatar-text-small-font-size, @font-size-s);
+@avatar-text-medium-font-size: var(--td-avatar-text-medium-font-size, @font-size-base);
+@avatar-text-large-font-size: var(--td-avatar-text-large-font-size, 16px);
 
-@avatar-icon-small-font-size: 40rpx;
-@avatar-icon-medium-font-size: 48rpx;
-@avatar-icon-large-font-size: 64rpx;
+@avatar-icon-small-font-size: var(--td-avatar-icon-small-font-size, 40rpx);
+@avatar-icon-medium-font-size: var(--td-avatar-icon-medium-font-size, 48rpx);
+@avatar-icon-large-font-size: var(--td-avatar-icon-large-font-size, 64rpx);
 
-@avatar-border-width-small: 4rpx;
-@avatar-border-width-medium: 6rpx;
-@avatar-border-width-large: 8rpx;
-@avatar-border-color: #fff;
-@avatar-circle-border-radius: @radius-circle;
-@avatar-round-border-radius: @radius-default;
+@avatar-border-width-small: var(--td-avatar-border-width-small, 4rpx);
+@avatar-border-width-medium: var(--td-avatar-border-width-medium, 6rpx);
+@avatar-border-width-large: var(--td-avatar-border-width-large, 8rpx);
+@avatar-border-color: var(--td-avatar-border-color, #fff);
+@avatar-circle-border-radius: var(--td-avatar-circle-border-radius, @radius-circle);
+@avatar-round-border-radius: var(--td-avatar-round-border-radius, @radius-default);
 
 .@{prefix}-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  background-color: var(--td-avatar-bg-color, @avatar-bg-color); // 头像背景颜色
-  color: var(--td-avatar-content-color, @avatar-content-color); // 头像内容（文字、图标）颜色
+  background-color: @avatar-bg-color;
+  color: @avatar-content-color;
 
   &.@{prefix}-size-l {
-    width: var(--td-avatar-large-width, @avatar-large-width); // ‘large'尺寸头像宽高
-    height: var(--td-avatar-large-width, @avatar-large-width);
-    font-size: var(--td-avatar-text-large-font-size, @avatar-text-large-font-size); // ‘large'尺寸头像文本大小
+    width: @avatar-large-width;
+    height: @avatar-large-width;
+    font-size: @avatar-text-large-font-size;
 
     .@{prefix}-avatar__icon {
-      font-size: var(--td-avatar-icon-large-font-size, @avatar-icon-large-font-size); // ‘large'尺寸头像图标大小
+      font-size: @avatar-icon-large-font-size;
     }
   }
 
   &.@{prefix}-size-m {
-    width: var(--td-avatar-medium-width, @avatar-medium-width); // ‘medium’尺寸头像宽高
-    height: var(--td-avatar-medium-width, @avatar-medium-width);
-    font-size: var(--td-avatar-text-medium-font-size, @avatar-text-medium-font-size); // ‘medium'尺寸头像文本大小
+    width: @avatar-medium-width;
+    height: @avatar-medium-width;
+    font-size: @avatar-text-medium-font-size;
 
     .@{prefix}-avatar__icon {
-      font-size: var(--ts-avatar-icon-medium-font-size, @avatar-icon-medium-font-size); // ‘medium'尺寸头像图标大小
+      font-size: @avatar-icon-medium-font-size;
     }
   }
 
   &.@{prefix}-size-s {
-    width: var(--td-avatar-small-width, @avatar-small-width); // ‘small’尺寸头像宽高
-    height: var(--td-avatar-small-width, @avatar-small-width);
-    font-size: var(--td-avatar-text-small-font-size, @avatar-text-small-font-size); // ‘small'尺寸头像文本大小
+    width: @avatar-small-width;
+    height: @avatar-small-width;
+    font-size: @avatar-text-small-font-size;
 
     .@{prefix}-avatar__icon {
-      font-size: var(--td-avatar-icon-small-font-size, @avatar-icon-small-font-size); // ‘small'尺寸头像图标大小
+      font-size: @avatar-icon-small-font-size;
     }
   }
 
@@ -66,12 +66,12 @@
   }
 
   &--circle {
-    border-radius: var(--td-avatar-circle-border-radius, @avatar-circle-border-radius); // ‘circle’类型头像圆角大小
+    border-radius: @avatar-circle-border-radius;
     overflow: hidden;
   }
 
   &--round {
-    border-radius: var(--td-avatar-round-border-radius, @avatar-round-border-radius); // ‘round’类型头像圆角大小
+    border-radius: @avatar-round-border-radius;
     overflow: hidden;
   }
 
@@ -90,18 +90,18 @@
 
   //头像边框
   &--border {
-    border-color: var(--td-avatar-border-color, @avatar-border-color); // 头像边框颜色
+    border-color: @avatar-border-color;
     border-style: solid;
     &--small {
-      border-width: var(--td-avatar-border-width-small, @avatar-border-width-small); // ‘small'尺寸头像边框宽度
+      border-width: @avatar-border-width-small;
     }
 
     &--medium {
-      border-width: var(--td-avatar-border-width-medium, @avatar-border-width-medium); // ‘medium'尺寸头像边框宽度
+      border-width: @avatar-border-width-medium;
     }
 
     &--large {
-      border-width: var(--td-avatar-border-width-large, @avatar-border-width-large); // ‘large'尺寸头像边框宽度
+      border-width: @avatar-border-width-large;
     }
   }
 }

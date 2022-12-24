@@ -8,7 +8,7 @@ Page({
     scrollTop: 0,
     categories: [
       {
-        label: '选项选项选项',
+        label: '选项选项',
         title: '标题',
         items,
       },
