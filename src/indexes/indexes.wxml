@@ -1,16 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
-  <scroll-view
-    class="{{classPrefix}}__content"
-    scroll-y
-    scroll-with-animation="{{ false }}"
-    scroll-top="{{scrollTop}}"
-    style="height: {{_.addUnit(_height)}};"
-    bindscroll="onScroll"
-  >
-    <slot />
-  </scroll-view>
+  <slot />
 
   <view
     class="{{classPrefix}}__sidebar {{prefix}}-class-sidebar"

@@ -14,13 +14,6 @@ export interface TdIndexesProps {
     value?: string;
   };
   /**
-   * 列表高度，未设置默认占满设备高度
-   */
-  height?: {
-    type: null;
-    value?: string | number;
-  };
-  /**
    * 索引字符列表。不传默认 `A-Z`
    */
   indexList?: {
