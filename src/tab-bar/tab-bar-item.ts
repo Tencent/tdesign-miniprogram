@@ -1,7 +1,7 @@
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './tab-bar-item-props';
-import dom from '../behaviors/dom';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar-item`;
@@ -32,8 +32,6 @@ export default class TabBarItem extends SuperComponent {
     multipleSlots: true,
   };
 
-  behaviors = [dom];
-
   data = {
     prefix,
     classPrefix,
@@ -60,7 +58,7 @@ export default class TabBarItem extends SuperComponent {
 
   lifetimes = {
     async attached() {
-      const res = await this.gettingBoundingClientRect(`.${classPrefix}__text`);
+      const res = await getRect(this, `.${classPrefix}__text`);
 
       this.setData({ iconOnly: res.height === 0 });
     },

@@ -91,13 +91,19 @@ export const getAnimationFrame = function (cb: Function) {
     });
 };
 
-export const getRect = function (context: any, selector: string) {
-  return new Promise<WechatMiniprogram.BoundingClientRectCallbackResult>((resolve) => {
+export const getRect = function (context: any, selector: string, needAll: boolean = false) {
+  return new Promise<any>((resolve, reject) => {
     wx.createSelectorQuery()
       .in(context)
-      .select(selector)
-      .boundingClientRect()
-      .exec((rect = []) => resolve(rect[0]));
+      [needAll ? 'selectAll' : 'select'](selector)
+      .boundingClientRect((rect) => {
+        if (rect) {
+          resolve(rect);
+        } else {
+          reject(rect);
+        }
+      })
+      .exec();
   });
 };
 

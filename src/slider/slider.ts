@@ -3,7 +3,7 @@ import config from '../common/config';
 import { trimSingleValue, trimValue } from './tool';
 import props from './props';
 import type { SliderValue } from './type';
-import dom from '../behaviors/dom';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-slider`;
@@ -42,8 +42,6 @@ export default class Slider extends SuperComponent {
   ];
 
   properties = props;
-
-  behaviors = [dom];
 
   controlledProps = [
     {
@@ -160,7 +158,7 @@ export default class Slider extends SuperComponent {
   }
 
   async getInitialStyle() {
-    const line: boundingClientRect = await this.gettingBoundingClientRect('#sliderLine');
+    const line: boundingClientRect = await getRect(this, '#sliderLine');
     const { blockSize } = this.data;
     const { theme } = this.properties;
     const halfBlock = Number(blockSize) / 2;
@@ -239,26 +237,24 @@ export default class Slider extends SuperComponent {
     const currentLeft = pageX - initialLeft;
     if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
 
-    this.gettingBoundingClientRect('#leftDot').then((leftDot: boundingClientRect) => {
-      this.gettingBoundingClientRect('#rightDot').then((rightDot: boundingClientRect) => {
-        // 点击处-halfblock 与 leftDot左侧的距离（绝对值）
-        const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
-        // 点击处-halfblock 与 rightDot左侧的距离（绝对值）
-        const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
-        // 哪个绝对值小就移动哪个Dot
-        const isMoveLeft = distanceLeft < distanceRight;
-        if (isMoveLeft) {
-          // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
-          const left = pageX - initialLeft;
-          const leftValue = this.convertPosToValue(left, 0);
-          this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
-        } else {
-          const right = -(pageX - initialRight);
-          const rightValue = this.convertPosToValue(right, 1);
+    Promise.all([getRect(this, '#leftDot'), getRect(this, '#rightDot')]).then(([leftDot, rightDot]) => {
+      // 点击处-halfblock 与 leftDot左侧的距离（绝对值）
+      const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
+      // 点击处-halfblock 与 rightDot左侧的距离（绝对值）
+      const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
+      // 哪个绝对值小就移动哪个Dot
+      const isMoveLeft = distanceLeft < distanceRight;
+      if (isMoveLeft) {
+        // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
+        const left = pageX - initialLeft;
+        const leftValue = this.convertPosToValue(left, 0);
+        this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
+      } else {
+        const right = -(pageX - initialRight);
+        const rightValue = this.convertPosToValue(right, 1);
 
-          this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
-        }
-      });
+        this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
+      }
     });
   }
 
