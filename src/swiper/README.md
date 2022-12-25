@@ -22,18 +22,6 @@ isComponent: true
 
 swiper 必须配合 swiper-item 使用，swiper-item 作为轮播条目组件，宽高默认 100%。
 
-
-### 主题定制
-CSS 变量名|说明
---|--
---td-swiper-nav-dot-color | 点状导航器颜色
---td-swiper-nav-dot-active-color | 点状导航器激活态颜色
---td-swiper-nav-fraction-color | 分式导航器颜色
---td-swiper-nav-fraction-bg-color | 分式导航器背景颜色
---td-swiper-nav-btn-color | 按钮导航器颜色
---td-swiper-nav-btn-bg-color | 按钮导航器背景颜色
-
-
 ## 代码演示
 
 多种轮播样式，通过 `navigation` 设置导航样式，没有值则不显示，也可以自定义 `nav` 组件

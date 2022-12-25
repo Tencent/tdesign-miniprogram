@@ -17,11 +17,6 @@ isComponent: true
   }
 }
 ```
-### 主题定制
-CSS 变量名|说明
---|--
---td-side-bar-active-color | 选中态颜色
---td-side-bar-border-radius | 选中态边框圆角
 
 ## 代码演示
 
