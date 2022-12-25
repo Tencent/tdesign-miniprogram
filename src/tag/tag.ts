@@ -46,12 +46,12 @@ export default class Tag extends SuperComponent {
       const { size, shape, theme, variant, closable, disabled } = this.properties;
       const tagClass = [
         classPrefix,
-        `${classPrefix}--theme-${theme || 'default'}`,
-        `${classPrefix}--variant-${variant || 'dark'}`,
+        `${classPrefix}--${theme || 'default'}`,
+        `${classPrefix}--${variant}`,
         closable ? `${classPrefix}--closable ${prefix}-is-closable` : '',
         disabled ? `${classPrefix}--disabled ${prefix}-is-disabled` : '',
-        `${classPrefix}--size-${size || 'medium'}`,
-        `${classPrefix}--shape-${shape || 'square'}`,
+        `${classPrefix}--${size}`,
+        `${classPrefix}--${shape}`,
       ];
       const className = classNames(tagClass);
       this.setData({
