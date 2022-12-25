@@ -16,14 +16,6 @@ isComponent: true
 }
 ```
 
-### 主题定制
-
-CSS 变量名|说明
---|--
---td-divider-color | 分割线颜色
---td-divider-content-color | 分割线文本颜色
-
-
 ## 代码演示
 
 ### 基础分割符

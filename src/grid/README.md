@@ -17,14 +17,6 @@ isComponent: true
 }
 ```
 
-### 主题定制
-CSS 变量名|说明
---|--
---td-grid-bg-color | 宫格背景颜色
---td-grid-item-text-color  | 宫格文本颜色
---td-grid-item-description-color | 宫格描述信息文本颜色
---td-grid-item-hover-bg-color | 开启点击反馈时宫格背景颜色
-
 ## 代码演示
 
 ### 组件类型
