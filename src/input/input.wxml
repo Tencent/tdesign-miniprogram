@@ -11,7 +11,7 @@
 
   <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData) || label}}" class="{{classPrefix}}__wrap--prefix">
     <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}" class="{{classPrefix}}__icon--prefix">
-      <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
+      <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
       <template
         wx:else
         is="icon"
@@ -89,7 +89,7 @@
           is="icon"
           data="{{tClass: prefix + '-class-suffix-icon', ariaRole: 'button', size: 24, name: suffixIconName, ...suffixIconData}}"
         ></template>
-        <slot wx:else name="suffixIcon" />
+        <slot wx:else name="suffix-icon" />
       </view>
     </view>
     <view wx:if="{{tips && tips.length > 0}}" class="{{classPrefix}}__tips {{prefix}}-class-tips">{{tips}} </view>

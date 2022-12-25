@@ -50,7 +50,7 @@
         </view>
         <!-- 删除 -->
         <view class="{{classPrefix}}__close-btn hotspot-expanded" bindtap="onDelete" data-index="{{index}}">
-          <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
+          <slot wx:if="{{deleteBtn === 'slot'}}" name="delete-btn" />
           <t-icon wx:else name="close" size="16" color="#fff" />
         </view>
       </view>

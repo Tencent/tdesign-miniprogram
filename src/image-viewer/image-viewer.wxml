@@ -41,7 +41,7 @@
         data-source="button"
         bind:click="onClose"
       ></t-icon>
-      <slot name="closeBtn" />
+      <slot name="close-btn" />
       <view wx:if="{{showIndex}}" class="{{classPrefix}}__nav-index">
         {{currentSwiperIndex + 1}}/{{images.length}}
       </view>
@@ -55,7 +55,7 @@
         customStyle="{{deleteIconProps.customStyle}}"
         bind:click="onDelete"
       ></t-icon>
-      <slot name="deleteBtn" />
+      <slot name="delete-btn" />
     </view>
   </block>
 </view>
