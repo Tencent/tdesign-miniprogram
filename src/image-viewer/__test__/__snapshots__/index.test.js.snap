@@ -27,7 +27,7 @@ exports[`image-viewer :base 1`] = `
         >
           <wx-view
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-            style="width: 44rpx; height: 44rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+            style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
             <wx-view
               class="t-loading__dot"
@@ -94,7 +94,7 @@ exports[`image-viewer :base 2`] = `
         >
           <wx-view
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-            style="width: 44rpx; height: 44rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+            style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
             <wx-view
               class="t-loading__dot"
@@ -161,7 +161,7 @@ exports[`image-viewer :base 3`] = `
         >
           <wx-view
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-            style="width: 44rpx; height: 44rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+            style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
             <wx-view
               class="t-loading__dot"

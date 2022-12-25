@@ -1,6 +1,11 @@
 @import '../common/style/index.less';
 
-@toast-bg-color: @font-gray-2;
+@toast-color: var(--td-toast-color, @white-color-1);
+@toast-bg-color: var(--td-toast-bg-color, @font-gray-2);
+@toast-max-width: var(--td-toast-max-width, 374rpx);
+@toast-radius: var(--td-toast-radius, 8rpx);
+@toast-row-icon-size: var(--td-toast-row-icon-size, 48rpx);
+@toast-column-icon-size: var(--td-toast-column-icon-size, 64rpx);
 
 .@{prefix}-toast {
   position: fixed;
@@ -10,11 +15,11 @@
   z-index: 12001;
   opacity: 1;
   transition: opacity 300ms ease;
-  background-color: var(--td-toast-bg-color, @toast-bg-color);
-  border-radius: 8rpx;
+  background-color: @toast-bg-color;
+  border-radius: @toast-radius;
   font-size: 28rpx;
-  color: white;
-  max-width: 374rpx;
+  color: @toast-color;
+  max-width: @toast-max-width;
   width: fit-content;
   box-sizing: border-box;
 
@@ -56,10 +61,10 @@
   &__icon {
     &--row {
       display: flex;
-      font-size: var(--td-toast-icon-size-column, 48rpx);
+      font-size: @toast-row-icon-size;
     }
     &--column {
-      font-size: var(--td-toast-icon-size-column, 64rpx);
+      font-size: @toast-column-icon-size;
     }
   }
 

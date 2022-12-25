@@ -10,6 +10,7 @@
     theme="dots"
     size="44rpx"
     loading
+    inherit-color
     class="t-class-load"
     t-class-text="{{classPrefix}}--loading-text"
   ></t-loading>

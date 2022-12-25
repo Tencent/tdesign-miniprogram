@@ -10,12 +10,14 @@
 
 .@{prefix}-side-bar-item {
   position: relative;
-  padding-left: 32rpx;
+  padding: 32rpx;
   font-size: @side-bar-font-size;
   color: @side-bar-color;
   background: @side-bar-bg-color;
   height: @side-bar-item-height;
-  line-height: @side-bar-item-height;
+  box-sizing: border-box;
+  white-space: nowrap;
+  // line-height: @side-bar-item-height;
 
   &--active {
     font-weight: 600;
