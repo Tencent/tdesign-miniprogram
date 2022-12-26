@@ -18,8 +18,8 @@
   </block>
   <block wx:elif="{{gridThemeItems.length > 1}}">
     <view class="{{classPrefix}}__swiper-wrap">
-      <t-swiper height="{{456}}" autoplay="{{false}}" current="{{currentSwiperIndex}}" bindchange="onSwiperChange">
-        <t-swiper-item wx:for="{{gridThemeItems}}" wx:key="index">
+      <swiper style="height: 456rpx" autoplay="{{false}}" current="{{currentSwiperIndex}}" bindchange="onSwiperChange">
+        <swiper-item wx:for="{{gridThemeItems}}" wx:key="index">
           <t-grid align="center" t-class="{{classPrefix}}__grid" column="{{count / 2}}">
             <t-grid-item
               t-class="{{classPrefix}}__grid-item"
@@ -34,8 +34,8 @@
               <!-- <template is="item" data="{{classPrefix, item}}" /> -->
             </t-grid-item>
           </t-grid>
-        </t-swiper-item>
-      </t-swiper>
+        </swiper-item>
+      </swiper>
       <view class="{{classPrefix}}__nav">
         <view class="{{classPrefix}}__dots">
           <view
