@@ -19,7 +19,13 @@
 >
   <view slot="content" class="{{classPrefix}} {{prefix}}-class" tabindex="0">
     <slot name="top" />
-    <view wx:if="{{closeBtn}}" class="{{classPrefix}}__close-btn" bind:tap="onClose">
+    <view
+      wx:if="{{closeBtn}}"
+      class="{{classPrefix}}__close-btn"
+      bind:tap="onClose"
+      aria-role="button"
+      aria-label="关闭"
+    >
       <template wx:if="{{_.isObject(closeBtn)}}" is="icon" data="{{ name: 'close', size: 22, ...closeBtn }}" />
       <t-icon wx:else name="close" size="22" />
     </view>
