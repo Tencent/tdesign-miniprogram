@@ -19,13 +19,14 @@
   bindsuccess="onSuccess"
   bindfail="onFail"
   bindcomplete="onComplete"
+  aria-disabled="{{status === 'disabled'}}"
 >
   <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}" class="{{classPrefix}}__prefix-icon">
     <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
     <template
       wx:else
       is="icon"
-      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ...prefixIconData}}"
+      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ariaHidden: true, ...prefixIconData}}"
     />
   </view>
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
@@ -37,7 +38,7 @@
     <template
       wx:else
       is="icon"
-      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ...suffixIconData}}"
+      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ariaHidden: true, ...suffixIconData}}"
     />
   </view>
 </navigator>
