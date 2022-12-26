@@ -85,7 +85,7 @@ const props: TdSwiperProps = {
     value: 0,
   },
   /** 当 swiper-item 的个数大于等于 2，关闭 circular 并且开启 previous-margin 或 next-margin 的时候，可以指定这个边距是否应用到第一个、最后一个元素 */
-  snaoToEdge: {
+  snapToEdge: {
     type: Boolean,
     value: false,
   },

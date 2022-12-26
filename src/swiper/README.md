@@ -13,14 +13,13 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-swiper": "tdesign-miniprogram/swiper/swiper",
-  "t-swiper-item": "tdesign-miniprogram/swiper/swiper-item",
   "t-swiper-nav": "tdesign-miniprogram/swiper/swiper-nav",
 }
 ```
 
 ### 组件说明
 
-swiper 必须配合 swiper-item 使用，swiper-item 作为轮播条目组件，宽高默认 100%。
+从 `0.32.0` 版本开始，依赖原生 `swiper` 组件实现，移除了 `swiper-item` 组件，新增了 `list` 属性；
 
 ## 代码演示
 
@@ -28,23 +27,31 @@ swiper 必须配合 swiper-item 使用，swiper-item 作为轮播条目组件，
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/swiper.gif" width="375px" height="50%">
 
+### 组件类型
 
-### 点状(dots)轮播图
+#### 点状（dots）轮播图
+
 {{ base }}
 
-### 分式(fraction)导航器轮播图
-
-{{ fraction }}
-
-### 插槽自定义导航器轮播图
+#### 点条状（dots-bar）轮播图
 
 {{ custom }}
 
-### 按钮导航器轮播图
+#### 分式（fraction）导航器轮播图
+
+{{ fraction }}
+
+#### 切换按钮（controls）轮播图
 
 {{ nav-btn }}
 
-### 轮播图垂直样式
+#### 卡片式（cards）轮播图
+
+{{ cards }}
+
+### 组件样式
+
+#### 垂直模式
 
 {{ vertical }}
 
@@ -69,13 +76,13 @@ navigation | Object / Slot | - | 导航器全部配置 | N
 next-margin | String / Number | 0 | `0.32.0`。后边距，可用于露出后一项的一小部分。默认单位 `px` | N
 pagination-position | String | bottom | 页码信息展示位置。可选项：top-left/top/top-right/bottom-left/bottom/bottom-right | N
 previous-margin | String / Number | 0 | `0.32.0`。前边距，可用于露出前一项的一小部分。默认单位 `px` | N
-snao-to-edge | Boolean | false | `0.32.0`。当 swiper-item 的个数大于等于 2，关闭 circular 并且开启 previous-margin 或 next-margin 的时候，可以指定这个边距是否应用到第一个、最后一个元素 | N
+snap-to-edge | Boolean | false | `0.32.0`。当 swiper-item 的个数大于等于 2，关闭 circular 并且开启 previous-margin 或 next-margin 的时候，可以指定这个边距是否应用到第一个、最后一个元素 | N
 
 ### Swiper Events
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(current: number, source: SwiperChangeSource)` | 轮播切换时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' \| 'touch' \| ''`<br/>
+change | `(current: number, source: SwiperChangeSource)` | 轮播切换时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' \| 'touch' \| 'nav'`<br/>
 
 ### SwiperNavigation
 

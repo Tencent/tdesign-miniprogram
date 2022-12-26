@@ -1,4 +1,4 @@
-<wxs src="./swiper.wxs" module="swiper" />
+<wxs src="./index.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
 
 <view class="{{prefix}}-class {{classPrefix}}" style="{{customStyle}}">
@@ -12,15 +12,19 @@
     easing-function="{{easingFunction}}"
     previous-margin="{{previousMargin}}"
     next-margin="{{nextMargin}}"
-    snap-to-edge="{{snaoToEdge}}"
+    snap-to-edge="{{snapToEdge}}"
     display-multiple-items="{{displayMultipleItems}}"
     style="height: {{_.addUnit(height)}}"
     bindchange="onChange"
   >
-    <swiper-item wx:for="{{list}}" wx:key="index" style="margin: 0 12px">
+    <swiper-item
+      wx:for="{{list}}"
+      wx:key="index"
+      class="{{_.cls(classPrefix + '__item', [['preview', this.isPrev(current, index, list)], ['next', this.isNext(current, index, list)]])}}"
+    >
       <t-image
         class="{{classPrefix}}__image-host"
-        t-class="{{prefix}}-class-image {{classPrefix}}__image"
+        t-class="{{prefix}}-class-image {{this.isPrev(current, index, list) ? (prefix + '-class-prev-image') : ''}} {{this.isNext(current, index, list) ? (prefix + '-class-next-image') : ''}} {{classPrefix}}__image"
         custom-style="height: {{_.addUnit(height)}}"
         src="{{item}}"
         shape="round"
@@ -28,8 +32,9 @@
     </swiper-item>
   </swiper>
   <t-swiper-nav
-    id="swiperNav"
     wx:if="{{_navigation}}"
+    id="swiperNav"
+    t-class="{{prefix}}-class-nav"
     type="{{_navigation.type}}"
     minShowNum="{{_navigation.minShowNum}}"
     hasNavBtn="{{_navigation.hasNavBtn}}"

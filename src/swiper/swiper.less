@@ -1,11 +1,20 @@
 @import '../common/style/index.less';
 
+@swiper-item-padding: var(--td-swiper-item-padding, 0);
+
 .@{prefix}-swiper {
   position: relative;
-  overflow: hidden;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: @swiper-item-padding;
+  }
 
   &__image {
     width: 100%;
+    transition: all 0.3s ease;
 
     &-host {
       display: block;

@@ -7,7 +7,6 @@
     navigation="{{navigation}}"
     direction="vertical"
     paginationPosition="{{paginationPosition}}"
-    height="{{400}}"
     list="{{swiperList}}"
   >
   </t-swiper>

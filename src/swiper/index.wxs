@@ -1,0 +1,7 @@
+module.exports.isPrev = function(current, index, list) {
+  return (current - 1 + list.length) % list.length === index;
+}
+
+module.exports.isNext = function(current, index, list) {
+  return (current + 1 + list.length) % list.length === index;
+}

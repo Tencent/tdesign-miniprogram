@@ -24,12 +24,10 @@
       <nav-btn />
     </view>
 
-    <view class="swiper-box">
-      <view class="swiper-desc">卡片式（Cards）</view>
-      <cards />
-    </view>
+    <view class="demo-desc swiper-desc">卡片式（cards）</view>
+    <cards />
 
-    <t-demo title="02 组件样式" desc="轮播图垂直样式" />
+    <t-demo title="02 组件样式" desc="垂直模式" />
     <vertical />
   </view>
 </view>
