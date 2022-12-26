@@ -19,9 +19,13 @@
       <image src="{{checked ? iconVal[0] : iconVal[1]}}" class="{{classPrefix}}-icon__image" webp />
     </view>
     <block wx:else>
-      <t-icon wx:if="{{checked && icon == 'circle'}}" name="check-circle-filled" class="{{classPrefix}}__icon-wrap" />
+      <t-icon
+        wx:if="{{checked && (icon == 'circle' || icon == 'line')}}"
+        name="{{icon == 'circle' ? 'check-circle-filled' : 'check'}}"
+        class="{{classPrefix}}__icon-wrap"
+      />
       <view
-        wx:if="{{checked && (icon == 'line' || icon == 'dot')}}"
+        wx:if="{{checked && icon == 'dot'}}"
         class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
       />
       <view
