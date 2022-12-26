@@ -11,7 +11,7 @@
       placeholder="{{placeholder}}"
       placeholder-class="{{classPrefix}}__placeholder"
       placeholder-style="{{placeholderStyle}}"
-      value="{{value}}"
+      value="{{computedValue}}"
       auto-focus="{{autofocus}}"
       fixed="{{fixed}}"
       focus="{{focus}}"
