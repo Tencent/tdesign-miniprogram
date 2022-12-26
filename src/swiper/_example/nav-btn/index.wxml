@@ -4,8 +4,6 @@
   duration="{{duration}}"
   interval="{{interval}}"
   navigation="{{navigation}}"
+  list="{{swiperList}}"
 >
-  <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
-    <image src="{{item.image}}" class="img" />
-  </t-swiper-item>
 </t-swiper>

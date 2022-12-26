@@ -45,37 +45,15 @@ export default class Swiper extends SuperComponent {
   properties = props;
 
   observers = {
+    current(v) {
+      this.updateNav(v);
+    },
     navigation(val) {
       this.setData({
         _navigation: { ...defaultNavigation, ...val },
       });
     },
-    current(val) {
-      this.update(+val);
-    },
-    autoplay(val) {
-      if (val) {
-        this.play();
-      } else {
-        this.pause();
-      }
-    },
-    interval(val) {
-      if (this._old_interval && this._old_interval !== val) {
-        this.replay();
-      }
-      this._old_interval = val;
-    },
-    direction(val) {
-      // 属性变化时，重新初始化
-      if (this._old_direction && this._old_direction !== val) {
-        this.initItem();
-      }
-      this._old_direction = val;
-    },
   };
-
-  children = null;
 
   $nav = null;
 
@@ -87,22 +65,6 @@ export default class Swiper extends SuperComponent {
   control: ControlInstance = null;
 
   relations: RelationsOptions = {
-    './swiper-item': {
-      type: 'child',
-      linked: function () {
-        // 最后一个触发linked，才执行更新
-        clearTimeout(this.updateTimer);
-        // 若items变化，延迟检查更新
-        this.updateTimer = setTimeout(() => {
-          this.initItem();
-          this.updateNav(this.control.get());
-        });
-      },
-      unlinked: function () {
-        this.initItem();
-        this.update(0);
-      },
-    },
     './swiper-nav': {
       type: 'child',
     },
@@ -149,9 +111,12 @@ export default class Swiper extends SuperComponent {
     this.pause();
   }
 
-  ready() {
-    this.init();
-  }
+  lifetimes = {
+    ready() {
+      this.initNav();
+      this.updateNav(this.data.current);
+    },
+  };
 
   methods = {
     init() {
@@ -172,34 +137,45 @@ export default class Swiper extends SuperComponent {
         })
         .exec();
     },
+
+    initNav() {
+      const { _navigation } = this.data;
+      if (_navigation) {
+        // 启用内部导航器
+        this.$nav = this.selectComponent('#swiperNav');
+      } else {
+        // 启用插槽嵌入的导航器
+        this.$nav = this.getRelationNodes('./swiper-nav')?.[0];
+      }
+    },
+
+    updateNav(index) {
+      if (!this.$nav) return;
+      const { direction, paginationPosition, list } = this.properties;
+      this.$nav?.onChange({
+        index,
+        total: list.length,
+        direction,
+        paginationPosition,
+      });
+    },
+
+    onChange(e) {
+      const { current, source } = e.detail;
+
+      this.setData({ current });
+      this.triggerEvent('change', { current, source });
+    },
   };
 
-  /**
-   * 初始化 swiper-item
-   */
   initItem() {
     const { direction } = this.properties;
-    this.children = this.getRelationNodes('./swiper-item');
-    this.children.forEach((item, index) => {
+    this.$children.forEach((item, index) => {
       item.setIndex(index, direction);
     });
     this.setData({
-      total: this.children.length,
+      total: this.$children.length,
     });
-  }
-
-  /**
-   * 初始化 swiper-nav
-   */
-  initNav() {
-    const { _navigation } = this.data;
-    if (_navigation) {
-      // 启用内部导航器
-      this.$nav = this.selectComponent('#swiperNav');
-    } else {
-      // 启用插槽嵌入的导航器
-      this.$nav = this.getRelationNodes('./swiper-nav')?.[0];
-    }
   }
 
   /**
@@ -212,14 +188,10 @@ export default class Swiper extends SuperComponent {
     });
   }
 
-  /**
-   * 初始化current
-   * 需要通过wxs更新位置，存在短暂延迟
-   */
   initCurrent() {
     let index = +this.control.initValue;
     // 检查索引初始值超出范围
-    index = Math.min(index, this.children.length - 1);
+    index = Math.min(index, this.$children.length - 1);
     index = Math.max(index, 0);
     this.control.set(index, {
       currentInited: true,
@@ -249,12 +221,6 @@ export default class Swiper extends SuperComponent {
     this.timer = null;
   }
 
-  /**
-   * 跳转目标页
-   * @param index 目标页索引
-   * @param source 来源标记
-   * @returns
-   */
   goto(index: number, source: string) {
     if (this.control.get() === index) {
       this.update(index);
@@ -272,14 +238,9 @@ export default class Swiper extends SuperComponent {
     );
   }
 
-  /**
-   * 更新目标页
-   * @param index 目标页索引（一页可能有多个item）
-   * @returns
-   */
   update(index: number, finish?) {
-    if (!this.children) return;
-    const len = this.children.length;
+    if (!this.$children) return;
+    const len = this.$children.length;
     let fixIndex = +index;
     if (Number.isNaN(fixIndex)) return;
     if (fixIndex <= 0) {
@@ -289,21 +250,6 @@ export default class Swiper extends SuperComponent {
     }
     this.updateNav(fixIndex);
     this.control.set(fixIndex, this.calcOffset(fixIndex), finish);
-  }
-
-  /**
-   * 更新导航器
-   * @param index
-   */
-  updateNav(index) {
-    if (!this.$nav) return;
-    const { direction, paginationPosition } = this.properties;
-    this.$nav?.onChange({
-      index,
-      total: this.children.length,
-      direction,
-      paginationPosition,
-    });
   }
 
   calcOffset(index: number) {
@@ -319,13 +265,9 @@ export default class Swiper extends SuperComponent {
     };
   }
 
-  /**
-   * 下一页
-   * @param opt
-   */
   next(opt: SwitchOpt) {
     const innerVal = this.control.get();
-    const len = this.children.length;
+    const len = this.$children.length;
     let nextIndex = innerVal;
     if (opt.cycle && innerVal === len - 1) {
       // 最后一个时，跳转第一个
@@ -336,13 +278,9 @@ export default class Swiper extends SuperComponent {
     this.goto(nextIndex, opt.source);
   }
 
-  /**
-   * 上一页
-   * @param opt
-   */
   prev(opt: SwitchOpt) {
     const innerVal = this.control.get();
-    const len = this.children.length;
+    const len = this.$children.length;
     let nextIndex = innerVal;
     if (opt.cycle && innerVal === 0) {
       // 第一个时，跳转到最后一个
@@ -353,10 +291,6 @@ export default class Swiper extends SuperComponent {
     this.goto(nextIndex, opt.source);
   }
 
-  /**
-   * 内置导航组件，监听按钮点击
-   * @param e
-   */
   onSwiperNavBtnChange(e) {
     const { dir, ...rest } = e.detail;
     this.pause();

@@ -3,8 +3,10 @@
   autoplay="{{autoplay}}"
   duration="{{duration}}"
   interval="{{interval}}"
-  navigation="{{navigation}}"
-  paginationPosition="{{paginationPosition}}"
+  bindchange="onChange"
+  navigation="{{ { type: 'dots' } }}"
   list="{{swiperList}}"
+  previousMargin="34px"
+  nextMargin="34px"
 >
 </t-swiper>

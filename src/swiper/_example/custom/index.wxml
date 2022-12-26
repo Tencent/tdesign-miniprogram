@@ -1,7 +1,10 @@
-<t-swiper current="{{current}}" autoplay="{{autoplay}}" duration="{{duration}}" interval="{{interval}}">
-  <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
-    <image src="{{item.image}}" class="img" />
-  </t-swiper-item>
+<t-swiper
+  current="{{current}}"
+  autoplay="{{autoplay}}"
+  duration="{{duration}}"
+  interval="{{interval}}"
+  list="{{swiperList}}"
+>
   <!-- 使用插槽组合，可自定义nav组件 -->
   <t-swiper-nav slot="nav" type="dots-bar" />
 </t-swiper>

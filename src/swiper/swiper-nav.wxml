@@ -1,3 +1,5 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
   style="{{ customStyle }}"
   class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}--position-{{paginationPosition}}"
@@ -8,7 +10,7 @@
       wx:for="{{total}}"
       wx:for-index="idx"
       wx:key="idx"
-      class="{{classPrefix}}__{{type}}-item {{index === idx ? prefix + '-is-active' : ''}}"
+      class="{{_.cls(classPrefix + '__' + type + '-item', [['active', index === idx]])}}"
     />
   </view>
   <view wx:if="{{ type === 'fraction'}}" class="{{classPrefix}}__fraction"> {{index+1}}/{{total}} </view>

@@ -3,22 +3,13 @@
 .@{prefix}-swiper {
   position: relative;
   overflow: hidden;
-  height: 300rpx;
 
-  &__container {
-    // display: flex;
-    // flex-direction: row;
-    position: relative;
+  &__image {
     width: 100%;
-    height: 100%;
 
-    &.@{prefix}-in-animation {
-      transition-property: transform;
-    }
-
-    &.@{prefix}-is-hidden {
-      visibility: hidden;
-      transition-property: none;
+    &-host {
+      display: block;
+      width: 100%;
     }
   }
 }

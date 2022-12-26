@@ -62,33 +62,27 @@ export const toComponent = function toComponent(options: Record<string, any>) {
   const inits: { [key: string]: PropertyDescriptor } = {};
 
   if (relations) {
+    const getRelations = (relation, path) =>
+      Behavior({
+        created() {
+          Object.defineProperty(this, `$${relation}`, {
+            get: () => this.getRelationNodes(path) || [],
+          });
+        },
+      });
+    const map = {};
+
     Object.keys(relations).forEach((path) => {
       const comp = relations[path];
-      if (['parent', 'ancestor'].includes(comp.type)) {
-        behaviors.push(
-          Behavior({
-            created() {
-              Object.defineProperty(this, '$parent', {
-                get: () => this.getRelationNodes(path)[0],
-              });
-            },
-          }),
-        );
-      } else {
-        behaviors.push(
-          Behavior({
-            created() {
-              Object.defineProperty(this, '$children', {
-                get: () => this.getRelationNodes(path) || [],
-              });
-            },
-          }),
-        );
-      }
+      const relation = ['parent', 'ancestor'].includes(comp.type) ? 'parent' : 'children';
+      const mixin = getRelations(relation, path);
+      map[relation] = mixin;
     });
+
+    behaviors.push(...Object.keys(map).map((key) => map[key]));
   }
 
-  options.behaviors = behaviors;
+  options.behaviors = [...behaviors];
 
   Object.getOwnPropertyNames(options).forEach((k) => {
     const desc = Object.getOwnPropertyDescriptor(options, k);
