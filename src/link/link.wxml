@@ -19,6 +19,7 @@
   bindsuccess="onSuccess"
   bindfail="onFail"
   bindcomplete="onComplete"
+  aria-disabled="{{status === 'disabled'}}"
 >
   <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}" class="{{classPrefix}}__prefix-icon">
     <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
