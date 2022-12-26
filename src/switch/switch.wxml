@@ -13,6 +13,7 @@
   >
     <view
       class="{{_.cls(classPrefix + '__dot', [['checked', checked], ['plain', label.length != 2 && icon.length != 2 && !loading], size])}} {{prefix}}-class-dot"
+      aria-hidden="{{true}}"
     >
       <view
         wx:if="{{label}}"
