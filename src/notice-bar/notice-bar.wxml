@@ -8,7 +8,7 @@
     class="{{classPrefix}}__prefix-icon"
     bind:tap="clickPrefixIcon"
   >
-    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
+    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
     <template
       wx:else
       is="icon"
@@ -57,7 +57,7 @@
     class="{{classPrefix}}__suffix-icon"
     bind:tap="clickSuffixIcon"
   >
-    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffixIcon" />
+    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
     <template
       wx:else
       is="icon"

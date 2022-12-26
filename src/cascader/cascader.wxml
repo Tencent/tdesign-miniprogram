@@ -5,7 +5,7 @@
       {{title}}
     </view>
     <view class="{{name}}__close-btn" bind:tap="hide">
-      <slot name="closeBtn" />
+      <slot name="close-btn" />
       <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
     </view>
     <view class="{{name}}__content">

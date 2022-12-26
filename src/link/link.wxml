@@ -22,7 +22,7 @@
   aria-disabled="{{status === 'disabled'}}"
 >
   <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}" class="{{classPrefix}}__prefix-icon">
-    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
+    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
     <template
       wx:else
       is="icon"
@@ -34,7 +34,7 @@
     <slot name="content" />
   </view>
   <view wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}" class="{{classPrefix}}__suffix-icon">
-    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffixIcon" />
+    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
     <template
       wx:else
       is="icon"
