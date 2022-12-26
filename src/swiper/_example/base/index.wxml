@@ -4,9 +4,7 @@
   duration="{{duration}}"
   interval="{{interval}}"
   bindchange="onChange"
-  navigation
+  navigation="{{ { type: 'dots' } }}"
+  list="{{swiperList}}"
 >
-  <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
-    <image src="{{item.image}}" class="img" />
-  </t-swiper-item>
 </t-swiper>

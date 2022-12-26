@@ -74,9 +74,6 @@ describe('action-sheet', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $swiperItems = comp.querySelectorAll('#t-action-sheet >>> .t-swiper-item');
-      expect($swiperItems.length).toBe(Math.ceil(comp.data.items.length / comp.data.count));
-
       const $actionSheet = comp.querySelector('#t-action-sheet');
       // 手动触发 onSwiperChange 函数
       const mockData = { detail: { current: 1, source: 'touch' } };
