@@ -1,12 +1,5 @@
-/**
- * 轮播导航器
- * 同时支持两种方式
- * 1、swiper简易配置，参见swiper的navigation。提升易用性
- * 2、自定义组件插槽组合，slot=nav。提升灵活性，方便样式覆盖
- */
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import { DIRECTION, NavTypes } from './common/constants';
 
 const { prefix } = config;
 const name = `${prefix}-swiper-nav`;
@@ -26,7 +19,7 @@ export default class SwiperNav extends SuperComponent {
     // 页码导航类型
     type: {
       type: String,
-      value: NavTypes.dots,
+      value: 'dots',
     },
     // 最小显示数量，即小于这个数不会显示导航器
     minShowNum: {
@@ -36,7 +29,7 @@ export default class SwiperNav extends SuperComponent {
     /**
      * 是否开启导航按钮
      */
-    hasNavBtn: {
+    showControls: {
       type: Boolean,
       value: false,
     },
@@ -51,7 +44,7 @@ export default class SwiperNav extends SuperComponent {
   data = {
     index: 0,
     total: 0,
-    direction: DIRECTION.HOR,
+    direction: 'horizontal',
     prefix,
     classPrefix: name,
   };
@@ -68,13 +61,11 @@ export default class SwiperNav extends SuperComponent {
 
   nav(e) {
     const { dir } = e.target.dataset;
-    const opt = { source: 'nav', cycle: true };
-    // 触发导航按钮事件
-    this.triggerEvent('navBtnChange', { ...opt, dir });
-    // 插槽嵌入时主动调用API
+    const source = 'nav';
+
+    this.triggerEvent('navBtnChange', { dir, source });
     if (this.$swiper) {
-      this.$swiper?.pause();
-      this.$swiper?.[dir](opt);
+      this.$swiper?.doNavBtnChange(dir, source);
     }
   }
 }

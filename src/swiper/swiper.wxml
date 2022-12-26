@@ -37,8 +37,8 @@
     t-class="{{prefix}}-class-nav"
     type="{{_navigation.type}}"
     minShowNum="{{_navigation.minShowNum}}"
-    hasNavBtn="{{_navigation.hasNavBtn}}"
-    bind:navBtnChange="onSwiperNavBtnChange"
+    showControls="{{_navigation.showControls}}"
+    bind:navBtnChange="onNavBtnChange"
   />
   <slot name="nav" />
 </view>

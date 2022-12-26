@@ -14,6 +14,6 @@ Component({
     duration: 500,
     interval: 5000,
     swiperList,
-    navigation: { type: '', hasNavBtn: true },
+    navigation: { type: '', showControls: true },
   },
 });

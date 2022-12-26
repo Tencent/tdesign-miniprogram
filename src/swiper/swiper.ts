@@ -8,7 +8,7 @@ const name = `${prefix}-swiper`;
 const defaultNavigation = {
   type: 'dots',
   minShowNum: 2,
-  hasNavBtn: false,
+  showControls: false,
 };
 
 @wxComponent()
@@ -89,8 +89,13 @@ export default class Swiper extends SuperComponent {
       this.triggerEvent('change', { current, source });
     },
 
-    onSwiperNavBtnChange(e) {
+    onNavBtnChange(e) {
       const { dir, source } = e.detail;
+
+      this.doNavBtnChange(dir, source);
+    },
+
+    doNavBtnChange(dir, source) {
       const { current, list, loop } = this.data;
       const count = list.length;
       let nextPos = dir === 'next' ? current + 1 : current - 1;

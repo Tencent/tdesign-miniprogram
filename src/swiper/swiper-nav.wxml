@@ -1,13 +1,13 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view wx:if="{{hasNavBtn}}" class="{{classPrefix}}__btn">
+<view wx:if="{{showControls}}" class="{{classPrefix}}__btn">
   <view class="{{classPrefix}}__btn--prev" bind:tap="nav" data-dir="prev" />
   <view class="{{classPrefix}}__btn--next" bind:tap="nav" data-dir="next" />
 </view>
 <view
+  wx:if="{{total >= minShowNum}}"
   style="{{ customStyle }}"
   class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}__{{type}} {{classPrefix}}--{{paginationPosition}}"
-  wx:elif="{{total >= minShowNum}}"
 >
   <block wx:if="{{ type === 'dots' || type === 'dots-bar'}}">
     <view

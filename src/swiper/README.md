@@ -90,5 +90,5 @@ change | `(current: number, source: SwiperChangeSource)` | 轮播切换时触发
 -- | -- | -- | -- | --
 custom-style | String | - | `0.25.0`。自定义组件样式 | N
 min-show-num | Number | - | 小于这个数字不会显示导航器 | N
-show-slide-btn | Boolean | - | 表示是否显示两侧的滑动控制按钮 | N
+show-controls | Boolean | false | 是否显示两侧的控制按钮 | N
 type | String | - | 导航器类型，点状(dots)、点条状(dots-bar)、分式(fraction)等。TS 类型：`SwiperNavigationType` `type SwiperNavigationType = 'dots' \| 'dots-bar' \| 'fraction'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swiper/type.ts) | N
