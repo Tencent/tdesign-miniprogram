@@ -10,7 +10,7 @@
       <block wx:if="{{gridThemeItems.length}}">
         <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
       </block>
-      <view wx:elif="{{items && items.length}}" class="{{classPrefix}}__list">
+      <view wx:elif="{{items && items.length}}" class="{{classPrefix}}__list" aria-role="listbox">
         <block wx:for="{{ items }}" wx:key="index">
           <template
             is="list"
