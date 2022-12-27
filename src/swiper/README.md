@@ -62,7 +62,6 @@ isComponent: true
 -- | -- | -- | -- | --
 autoplay | Boolean | true | 是否自动播放 | N
 current | Number | 0 | 当前轮播在哪一项（下标） | N
-default-current | Number | undefined | 当前轮播在哪一项（下标）。非受控属性 | N
 custom-style | String | - | `0.25.0`。自定义组件样式 | N
 direction | String | horizontal | 轮播滑动方向，包括横向滑动和纵向滑动两个方向。可选项：horizontal/vertical | N
 display-multiple-items | Number | 1 | `0.32.0`。同时显示的滑块数量 | N
