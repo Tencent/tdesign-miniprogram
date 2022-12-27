@@ -37,7 +37,30 @@ exports[`notice-bar props : marquee 1`] = `
         bind:tap="clickContent"
       >
         <wx-view
-          animation=""
+          animation="{{
+            Object {
+              "actions": Array [
+                Object {
+                  "animates": Array [
+                    Object {
+                      "args": Array [
+                        -350,
+                      ],
+                      "type": "translateX",
+                    },
+                  ],
+                  "option": Object {
+                    "transformOrigin": "50% 50% 0",
+                    "transition": Object {
+                      "delay": 0,
+                      "duration": 8287.5,
+                      "timingFunction": "linear",
+                    },
+                  },
+                },
+              ],
+            }
+          }}"
           class="t-notice-bar__content t-class-content "
         >
            提示文字描述提示文字描述提示文字描述提示文字描述文 
