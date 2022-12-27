@@ -1,5 +1,7 @@
 @import '../common/style/index.less';
 
+@pull-down-refresh-color: var(--td-pull-down-refresh-color, @font-gray-3);
+
 .@{prefix}-pull-down-refresh {
   overflow: hidden;
   max-height: 100vh;
@@ -15,7 +17,7 @@
 
   &__tips {
     position: absolute;
-    color: #bbb;
+    color: @pull-down-refresh-color;
     font-size: 24rpx;
     top: 0;
     width: 100%;

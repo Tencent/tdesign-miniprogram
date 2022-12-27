@@ -1,8 +1,9 @@
 {
-  "navigationBarTitleText": "popup 弹窗",
+  "navigationBarTitleText": "Popup 弹窗",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "top": "./top/index",
-    "t-popup": "tdesign-miniprogram/popup/popup"
+    "base": "./base/index",
+    "with-title": "./with-title/index",
+    "custom-close": "./custom-close/index"
   }
 }

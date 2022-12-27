@@ -4,32 +4,13 @@ import path from 'path';
 describe('swiper', () => {
   const swiperComplex = load(path.resolve(__dirname, `./base/index`), 't-swiper-complex');
 
-  const createSelectorQuery = {
-    in() {
-      return this;
-    },
-    select() {
-      return this;
-    },
-    boundingClientRect(fn) {
-      fn({ width: 375, height: 200 });
-      return this;
-    },
-    exec() {
-      return this;
-    },
-  };
-  const mockFn = jest.spyOn(wx, 'createSelectorQuery');
-
-  mockFn.mockImplementation(() => createSelectorQuery);
-
   describe('props', () => {
-    it(': navigation', async () => {
+    it(':navigation', async () => {
       const comp = simulate.render(swiperComplex);
       comp.attach(document.createElement('parent-wrapper'));
       // link
       await simulate.sleep();
-      const $swiperItems = comp.querySelectorAll('#swiper1 >>> .t-swiper-item');
+      const $swiperItems = comp.querySelectorAll('#swiper1 >>> .t-swiper__item');
       const swiperItemLength = $swiperItems.length;
       expect(swiperItemLength).toBe(comp.data.swiperList.length);
 
@@ -43,7 +24,7 @@ describe('swiper', () => {
       comp.setData({
         navigation: {
           type: '',
-          hasNavBtn: true,
+          showControls: true,
         },
       });
 
@@ -58,53 +39,24 @@ describe('swiper', () => {
       expect(comp.data.current).toBe(1);
     });
 
-    it(': direction', async () => {
+    it(':nav-btn', async () => {
       const comp = simulate.render(swiperComplex);
       comp.attach(document.createElement('parent-wrapper'));
-      await simulate.sleep();
-      comp.setData({
-        direction: 'vertical',
-        autoplay: true,
-      });
-      expect(comp.toJSON()).toMatchSnapshot();
-      const $swiperItems = comp.querySelectorAll('#swiper1 >>> .t-swiper-item');
-      $swiperItems.forEach((item, index) => {
-        expect(item.dom.getAttribute('style')).toContain(`transform: translate(0px, ${100 * index}%) translateZ(0px);`);
-      });
-    });
+      const $btnPrev = comp.querySelector('#swiper2 >>> #customNav >>> .t-swiper-nav__btn--prev');
+      const $btnNext = comp.querySelector('#swiper2 >>> #customNav >>> .t-swiper-nav__btn--next');
 
-    it(': unlink', async () => {
-      const comp = simulate.render(swiperComplex);
-      comp.attach(document.createElement('parent-wrapper'));
-      await simulate.sleep();
-      expect(comp.querySelectorAll('#swiper1 >>> .t-swiper-item').length).toBe(comp.data.swiperList.length);
-
-      comp.setData({
-        autoplay: true,
-        interval: 80,
-        navigation: {
-          type: '',
-          hasNavBtn: true,
-        },
-        swiperList: comp.data.swiperList2, // item更新后，current 为 0
-      });
-
-      await simulate.sleep(80);
-      expect(comp.querySelectorAll('#swiper1 >>> .t-swiper-item').length).toBe(comp.data.swiperList2.length);
-
-      const $btnPrev = comp.querySelector('#swiper1 >>> .t-swiper-nav__btn--prev');
-      const $btnNext = comp.querySelector('#swiper1 >>> .t-swiper-nav__btn--next');
       $btnPrev.dispatchEvent('tap');
       await simulate.sleep();
-      expect(comp.data.current).toBe(comp.data.swiperList2.length - 1); // 最后一项
+      expect(comp.data.current).toBe(0); // 首项
+
       $btnNext.dispatchEvent('tap');
       await simulate.sleep();
-      expect(comp.data.current).toBe(0); // 首项
+      expect(comp.data.current).toBe(1); // 最后一项
     });
   });
 
   describe('slot', () => {
-    it(': navigation', async () => {
+    it(':navigation', async () => {
       const comp = simulate.render(swiperComplex);
       comp.attach(document.createElement('parent-wrapper'));
       await simulate.sleep();

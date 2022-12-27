@@ -6,14 +6,6 @@
 
 export interface TdSwiperProps {
   /**
-   * 轮播切换动画效果类型
-   * @default slide
-   */
-  animation?: {
-    type: StringConstructor;
-    value?: 'slide';
-  };
-  /**
    * 是否自动播放
    * @default true
    */
@@ -54,6 +46,14 @@ export interface TdSwiperProps {
     value?: 'horizontal' | 'vertical';
   };
   /**
+   * 同时显示的滑块数量
+   * @default 1
+   */
+  displayMultipleItems?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
    * 滑动动画时长
    * @default 300
    */
@@ -62,11 +62,20 @@ export interface TdSwiperProps {
     value?: number;
   };
   /**
-   * 当使用垂直方向滚动时的高度
+   * 指定 swiper 切换缓动动画类型
+   * @default default
+   */
+  easingFunction?: {
+    type: StringConstructor;
+    value?: 'default' | 'linear' | 'easeInCubic' | 'easeOutCubic' | 'easeInOutCubic';
+  };
+  /**
+   * 轮播的高度；默认单位 `px`
+   * @default '192px'
    */
   height?: {
-    type: NumberConstructor;
-    value?: number;
+    type: null;
+    value?: string | number;
   };
   /**
    * 轮播间隔时间
@@ -75,6 +84,13 @@ export interface TdSwiperProps {
   interval?: {
     type: NumberConstructor;
     value?: number;
+  };
+  /**
+   * 图片列表
+   */
+  list?: {
+    type: ArrayConstructor;
+    value?: string[];
   };
   /**
    * 是否循环播放
@@ -92,6 +108,14 @@ export interface TdSwiperProps {
     value?: SwiperNavigation;
   };
   /**
+   * 后边距，可用于露出后一项的一小部分。默认单位 `px`
+   * @default 0
+   */
+  nextMargin?: {
+    type: null;
+    value?: string | number;
+  };
+  /**
    * 页码信息展示位置
    * @default bottom
    */
@@ -99,16 +123,21 @@ export interface TdSwiperProps {
     type: StringConstructor;
     value?: 'top-left' | 'top' | 'top-right' | 'bottom-left' | 'bottom' | 'bottom-right';
   };
-}
-
-export interface TdSwiperItemProps {
   /**
-   * 自定义组件样式
-   * @default ''
+   * 前边距，可用于露出前一项的一小部分。默认单位 `px`
+   * @default 0
    */
-  customStyle?: {
-    type: StringConstructor;
-    value?: string;
+  previousMargin?: {
+    type: null;
+    value?: string | number;
+  };
+  /**
+   * 当 swiper-item 的个数大于等于 2，关闭 circular 并且开启 previous-margin 或 next-margin 的时候，可以指定这个边距是否应用到第一个、最后一个元素
+   * @default false
+   */
+  snapToEdge?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
 }
 

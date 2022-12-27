@@ -1,9 +1,9 @@
 @import '../common/style/index.less';
 
 //组合头像偏移量
-@avatar-group-offset-small: -4px;
-@avatar-group-offset-medium: -6px;
-@avatar-group-offset-large: -8px;
+@avatar-group-offset-small: var(--td-avatar-group-margin-left-small, -4px);
+@avatar-group-offset-medium: var(--td-avatar-group-margin-left-medium, -6px);
+@avatar-group-offset-large: var(--td-avatar-group-margin-left-large, -8px);
 
 .avatat-offset-left(@offset) {
   @{prefix}-avatar {
@@ -27,29 +27,29 @@
 
   &-offset-left {
     &-small {
-      .avatat-offset-left(var(--td-avatar-group-margin-left-small, @avatar-group-offset-small)); // ‘small’尺寸组合头像左偏移间距
+      .avatat-offset-left(@avatar-group-offset-small); // ‘small’尺寸组合头像左偏移间距
     }
 
     &-medium {
-      .avatat-offset-left(var(--td-avatar-group-margin-left-medium, @avatar-group-offset-medium)); // ‘medium’尺寸组合头像左偏移间距
+      .avatat-offset-left(@avatar-group-offset-medium); // ‘medium’尺寸组合头像左偏移间距
     }
 
     &-large {
-      .avatat-offset-left(var(--td-avatar-group-margin-left-large, @avatar-group-offset-large)); // ‘large’尺寸组合头像左偏移间距
+      .avatat-offset-left(@avatar-group-offset-large); // ‘large’尺寸组合头像左偏移间距
     }
   }
 
   &-offset-right {
     &-small {
-      .avatat-offset-right(var(--td-avatar-group-margin-left-small, @avatar-group-offset-small)); // ‘small’尺寸组合头像右偏移间距
+      .avatat-offset-right(@avatar-group-offset-small); // ‘small’尺寸组合头像右偏移间距
     }
 
     &-medium {
-      .avatat-offset-right(var(--td-avatar-group-margin-left-medium, @avatar-group-offset-medium)); // ‘medium’尺寸组合头像右偏移间距
+      .avatat-offset-right(@avatar-group-offset-medium); // ‘medium’尺寸组合头像右偏移间距
     }
 
     &-large {
-      .avatat-offset-right(var(--td-avatar-group-margin-left-large, @avatar-group-offset-large)); // ‘large’尺寸组合头像右偏移间距
+      .avatat-offset-right(@avatar-group-offset-large); // ‘large’尺寸组合头像右偏移间距
     }
   }
 

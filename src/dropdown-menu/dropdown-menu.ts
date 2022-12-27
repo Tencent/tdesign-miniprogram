@@ -10,15 +10,9 @@ export interface DropdownMenuProps extends TdDropdownMenuProps {}
 
 @wxComponent()
 export default class DropdownMenu extends SuperComponent {
-  externalClasses = [
-    `${prefix}-class`,
-    `${prefix}-class-menu`,
-    `${prefix}-class-menu-item`,
-    `${prefix}-class-menu-label`,
-    `${prefix}-class-menu-icon`,
-  ];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-label`, `${prefix}-class-icon`];
 
-  properties = props; // todo: zindex activeColor
+  properties = props; // todo: zindex
 
   nodes = null;
 
@@ -87,7 +81,7 @@ export default class DropdownMenu extends SuperComponent {
     },
     getAllItems() {
       const nodes = this.getRelationNodes('./dropdown-item');
-      const menus = nodes.map((a) => a.data);
+      const menus = nodes.map(({ data }) => ({ label: data.label, disabled: data.disabled }));
 
       this.nodes = nodes;
       this.setData({

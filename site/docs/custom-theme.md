@@ -6,9 +6,32 @@ spline: explain
 
 组件库通用的 Design Token 均使用 CSS Variables 声明，你可以在自己的项目中声明同名变量来覆盖他们的值。
 
-但在 **小程序需要特殊处理**。
+## 全局自定义
 
-在 TDesign 小程序里，CSS Variables 均在 `page` 上声明，以 `Rate` 举例：
+小程序的 CSS Variables 全部定义考验在这里看到: [_variables.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/style/_variables.less)
+
+如果你想改变主题色，主要改变这几个变量即可：
+
+```css
+@primary-color: var(--td-primary-color, #0052d9); // 主题色
+@success-color: var(--td-success-color, #00a870); // 成功
+@warning-color: var(--td-warning-color, #ed7b2f); // 警告
+@error-color: var(--td-error-color, #e34d59); // 失败
+```
+
+在 `app.css` 文件添加下行代码即可：
+
+```css
+page {
+  --td-primary-color: navy; // 任何你想要的主题色
+}
+```
+
+> 当然，[_variables.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/style/_variables.less) 里面都是通用的全局变量，都可以修改
+
+## 局部自定义
+
+在 TDesign 小程序里，你也可以只给某个组件修改主题，下面以 `Rate` 举例：
 
 ```css
 page {
@@ -17,31 +40,11 @@ page {
 }
 ```
 
-此时如果你要修改对应的颜色，不能在 `page` 上声明，因为可能**权重不够**：
-
-![css-specific](/miniprogram/css-specific.png)
-
-比较妥当的做法是，在使用组件的外层元素修改同名变量，假设 `WXML` 是这样的：
-
-```html
-<view class="wrapper">
-  <rate default-value="2" />
-</view>
-```
-
-那么 `CSS` 可以这么定义:
-
-```css
-.wrapper {
-  --td-rate-selected-color: navy;
-}
-```
-
 ## 自定义 TabBar
 
 当然，有些组件可能不会被包裹在 `page` 里，比如自定义 `tab-bar`。
 
-此时，可以通过给组件增加 `class` 来实现自定义主题：
+此时，可以通过给组件增加 `class` 来实现：
 
 ```html
 <t-tab-bar class="custom-tab-bar">
@@ -57,4 +60,4 @@ page {
 }
 ```
 
-> 目前仅有部分组件支持自定义主题，支持的组件在其文档有陈列对应的 CSS Varialbes，如 [TabBar](https://tdesign.tencent.com/miniprogram/components/tab-bar)
+> 目前仅有部分组件支持自定义主题，支持的组件在其文档有陈列对应的 CSS Varialbes，可以访问 [tab-bar-item.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/tab-bar/tab-bar-item.less)

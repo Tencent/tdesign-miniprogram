@@ -22,8 +22,13 @@
         name="{{indeterminate ? ('minus-' + icon + '-filled') : ('check-' + icon + '-filled')}}"
         class="{{_.cls(classPrefix + '__icon-wrapper', [])}}"
       />
+      <t-icon
+        wx:if="{{checked && icon == 'line'}}"
+        name="{{indeterminate ? ('minus-' + icon + '-filled') : 'check'}}"
+        class="{{_.cls(classPrefix + '__icon-wrapper', [])}}"
+      />
       <view
-        wx:elif="{{!checked && (icon == 'circle' || icon == 'rectangle') || checked && icon == 'line'}}"
+        wx:elif="{{!checked && (icon == 'circle' || icon == 'rectangle')}}"
         class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
       />
       <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
@@ -44,5 +49,8 @@
       >{{content}}<slot name="content"
     /></view>
   </view>
-  <view wx:if="{{theme == 'default' && !borderless}}" class="{{classPrefix}}__border {{prefix}}-class-border" />
+  <view
+    wx:if="{{theme == 'default' && !borderless}}"
+    class="{{_.cls(classPrefix + '__border', [align])}} {{prefix}}-class-border"
+  />
 </view>

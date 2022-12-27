@@ -4,11 +4,13 @@ page {
 
 .swiper-demo {
   .swiper-box {
-    margin: 0 32rpx 32rpx;
-    border-radius: 16rpx;
-    overflow: hidden;
-    // fix: 小程序webview圆角BUG，下面的样式规避圆角在真机失效的问题
-    // https://developers.weixin.qq.com/community/develop/doc/00026658428810dd8c07c062556400
-    transform: translateY(0);
+    margin: 0 32rpx 48rpx;
+  }
+  .swiper-desc {
+    margin-bottom: 32rpx;
+    font-weight: 400;
+    font-size: 28rpx;
+    line-height: 44rpx;
+    color: rgba(0, 0, 0, 0.6);
   }
 }

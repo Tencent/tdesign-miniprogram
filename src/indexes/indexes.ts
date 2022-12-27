@@ -1,204 +1,255 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { getRect, throttle } from '../common/utils';
+import pageScrollMixin from '../mixins/page-scroll';
 
 const { prefix } = config;
 const name = `${prefix}-indexes`;
 
-const topOffset = 40; // 滑动选中高亮的顶部偏移(px)
-
 @wxComponent()
-export default class IndexBar extends SuperComponent {
-  externalClasses = [`${prefix}-class`, `${prefix}-class-index`];
+export default class Indexes extends SuperComponent {
+  externalClasses = [`${prefix}-class`, `${prefix}-class-sidebar`, `${prefix}-class-sidebar-item`];
 
   properties = props;
-
-  observers = {
-    list(this: IndexBar, newValue) {
-      let groups = newValue;
-      // 分组没有title属性时，默认以index作为title
-      if (!!newValue.length && newValue[0].title === undefined) {
-        groups = groups.map((g) => {
-          return { title: g.index, ...g };
-        });
-      }
-      this.setData({ groups });
-    },
-    height(this: IndexBar) {
-      this.getDomInfo();
-    },
-  };
 
   data = {
     prefix,
     classPrefix: name,
-    clientHeight: 0,
-    groups: [],
-    activeGroup: null, // 当前高亮group
-    currentGroup: null, // 当前跳转group
-    showScrollTip: false,
+    _height: 0,
+    _indexList: [],
+    scrollTop: 0,
+    activeAnchor: null,
+    showTips: false,
   };
+
+  relations: RelationsOptions = {
+    '../indexes-anchor/indexes-anchor': {
+      type: 'child',
+    },
+  };
+
+  behaviors = [
+    pageScrollMixin(function (event) {
+      this.onScroll(event);
+    }),
+  ];
 
   timer = null;
 
-  groupTop = null;
+  groupTop = [];
 
-  btnBar = null;
+  sidebar = null;
 
-  ready() {
-    this.getHeight();
-  }
+  observers = {
+    indexList(v) {
+      this.setIndexList(v);
+    },
+    height(v) {
+      this.setHeight(v);
+    },
+  };
 
-  getHeight() {
-    wx.getSystemInfo({
-      success: (res) => {
-        this.setData(
-          {
-            clientHeight: res.windowHeight,
-          },
-          () => {
-            this.getDomInfo();
-          },
-        );
-      },
-    });
-  }
+  lifetimes = {
+    ready() {
+      if (this.data._height === 0) {
+        this.setHeight();
+      }
+      if (this.data._indexList?.length === 0) {
+        this.setIndexList();
+      }
+    },
+  };
 
-  getDomInfo() {
-    const query = this.createSelectorQuery();
-    query.select(`#id-${name}__bar`).boundingClientRect();
-    query.selectAll(`.${name}__group`).boundingClientRect();
-    query.exec((res) => {
-      if (!res[0]) return;
-      this.btnBar = {
-        top: res[0].top,
-        height: res[0].height,
-        itemHeight: res[0].height / this.data.groups.length,
+  methods = {
+    setHeight(height: string | number) {
+      if (!height) {
+        const { windowHeight } = wx.getSystemInfoSync();
+        height = windowHeight;
+      }
+      this.setData(
+        {
+          _height: height,
+        },
+        () => {
+          this.getAllRect();
+        },
+      );
+    },
+
+    setIndexList(list) {
+      if (!list) {
+        const start = 'A'.charCodeAt(0);
+        const alphabet = [];
+
+        for (let i = start, end = start + 26; i < end; i += 1) {
+          alphabet.push(String.fromCharCode(i));
+        }
+
+        this.setData({ _indexList: alphabet });
+      } else {
+        this.setData({ _indexList: list });
+      }
+    },
+
+    getAllRect() {
+      this.getAnchorsRect().then(() => {
+        this.groupTop.forEach((item, index) => {
+          const next = this.groupTop[index + 1];
+          item.totalHeight = (next?.top || Infinity) - item.top;
+        });
+        this.setAnchorOnScroll(0);
+      });
+      this.getSidebarRect();
+    },
+
+    getAnchorsRect() {
+      return Promise.all(
+        this.$children.map((child) =>
+          getRect(child, `.${name}-anchor`).then((rect) => {
+            this.groupTop.push({
+              height: rect.height,
+              top: rect.top,
+              anchor: child.data.index,
+            });
+          }),
+        ),
+      );
+    },
+
+    getSidebarRect() {
+      getRect(this, `#id-${name}__bar`).then((rect) => {
+        const { top, height } = rect;
+        const { length } = this.data._indexList;
+
+        this.sidebar = {
+          top,
+          height,
+          itemHeight: (height - (length - 1) * 2) / length, // margin = 2px
+        };
+      });
+    },
+
+    toggleTips(flag: boolean) {
+      if (!flag) {
+        clearInterval(this.timer);
+        this.timer = setTimeout(() => {
+          this.setData({
+            showTips: false,
+          });
+        }, 300);
+      } else {
+        this.setData({
+          showTips: true,
+        });
+      }
+    },
+
+    setAnchorByIndex(index) {
+      if (this.preIndex != null && this.preIndex === index) return;
+
+      const { _indexList } = this.data;
+      const activeAnchor = _indexList[index];
+      const target = this.groupTop.find((item) => item.anchor === activeAnchor);
+
+      if (target) {
+        wx.pageScrollTo({
+          scrollTop: target.top,
+          duration: 0,
+        });
+      }
+
+      this.preIndex = index;
+      this.toggleTips(true);
+      this.triggerEvent('select', { index: activeAnchor });
+    },
+
+    onClick(e) {
+      const { index } = e.currentTarget.dataset;
+
+      this.setAnchorByIndex(index);
+    },
+
+    onTouchMove(e) {
+      this.onAnchorTouch(e);
+    },
+
+    onTouchCancel() {
+      this.toggleTips(false);
+    },
+
+    onTouchEnd(e) {
+      this.toggleTips(false);
+      this.onAnchorTouch(e);
+    },
+
+    onAnchorTouch: throttle(function (e: WechatMiniprogram.TouchEvent) {
+      const getAnchorIndex = (clientY) => {
+        const offsetY = clientY - this.sidebar.top;
+
+        if (offsetY <= 0) {
+          return 0;
+        }
+
+        if (offsetY > this.sidebar.height) {
+          return this.data._indexList.length - 1;
+        }
+
+        return Math.floor(offsetY / this.sidebar.itemHeight);
       };
-      if (!res[1]) return;
-      // 计算每个group的scrollTop
-      this.groupTop = res[1].map((element) => element.height);
-      this.groupTop.reduce((acc, cur, index) => {
-        const amount = acc + cur;
-        this.groupTop[index] = amount;
+      const index = getAnchorIndex(e.changedTouches[0].clientY);
 
-        return amount;
-      });
-    });
-  }
+      this.setAnchorByIndex(index);
+    }, 1000 / 30), // 30 frame
 
-  // 通过点击索引的点击位置，判断点击的索引下标位置。
-  computedIndex(tapY) {
-    const offsetY = tapY - this.btnBar.top;
-    let index;
-    if (offsetY < 0) {
-      index = 0;
-    } else if (offsetY > this.btnBar.height) {
-      index = this.data.groups.length - 1;
-    } else {
-      index = Math.floor(offsetY / this.btnBar.itemHeight);
-    }
-    return index;
-  }
-
-  // 通过scroll-view滑动高度计算当前下标位置
-  computedIndexByScrollTop(scrollTop: number): number {
-    if (!this.groupTop) {
-      return -1;
-    }
-
-    return this.groupTop.findIndex((element) => element - topOffset > scrollTop);
-  }
-
-  // 在scroll-view滑动过程中，高亮对应的index
-  activeIndexWhenScroll(scrollTop: number) {
-    const curIndex = this.computedIndexByScrollTop(scrollTop);
-    if (curIndex >= 0) {
-      this.setData({
-        activeGroup: this.data.groups[curIndex],
-      });
-    }
-  }
-
-  scrollToY(tapY) {
-    const index = this.computedIndex(tapY);
-    this.scrollToAnchor(index);
-  }
-
-  scrollToAnchor(index) {
-    this.switchScrollTip(true);
-    const curGroup = this.data.groups[index];
-    this.setData({
-      activeGroup: curGroup,
-      currentGroup: curGroup,
-    });
-  }
-
-  switchScrollTip(val) {
-    val = !!val;
-    const switchFun = (value) => {
-      if (this.data.showScrollTip === value) {
+    setAnchorOnScroll(scrollTop: number) {
+      if (!this.groupTop) {
         return;
       }
+
+      const { sticky } = this.data;
+
+      const curIndex = this.groupTop.findIndex(
+        (group) => scrollTop >= group.top - group.height && scrollTop <= group.top + group.totalHeight - group.height,
+      );
+
+      if (curIndex === -1) return;
+
+      const curGroup = this.groupTop[curIndex];
+
       this.setData({
-        showScrollTip: value,
+        activeAnchor: curGroup.anchor,
       });
-    };
-    // 关闭tip有延时，开启无延时
-    if (!val) {
-      clearInterval(this.timer);
-      this.timer = setTimeout(() => {
-        switchFun(false);
-      }, 300);
-    } else {
-      switchFun(true);
-    }
-  }
 
-  // 控制触发频率(防抖)
-  throttleScroll() {
-    return new Promise<void>((resolve) => {
-      const delay = 100;
-      const now = Date.now();
-      if (this.lastScrollTime && this.lastScrollTime + delay > now) {
-        if (this.scrollTimer) {
-          clearTimeout(this.scrollTimer);
-        }
-        this.scrollTimer = setTimeout(() => {
-          this.lastScrollTime = now;
-          resolve();
-        }, delay);
-      } else {
-        this.lastScrollTime = now;
-        resolve();
+      if (sticky) {
+        const offset = curGroup.top - scrollTop;
+        const betwixt = offset < curGroup.height && offset > 0 && scrollTop > 0;
+
+        this.$children.forEach((child, index) => {
+          if (index === curIndex) {
+            child.setData({
+              sticky: scrollTop > 0,
+              active: true,
+              customStyle: `height: ${curGroup.height}px`,
+              anchorStyle: `transform: translate3d(0, ${betwixt ? offset : 0}px, 0)`,
+            });
+          } else if (index + 1 === curIndex) {
+            // 两个 anchor 同时出现时的上一个
+            child.setData({
+              sticky: true,
+              active: true,
+              customStyle: `height: ${curGroup.height}px`,
+              anchorStyle: `transform: translate3d(0, ${betwixt ? offset - curGroup.height : 0}px, 0)`,
+            });
+          } else {
+            child.setData({ active: false, sticky: false, anchorStyle: '' });
+          }
+        });
       }
-    });
-  }
+    },
 
-  onTouchStart() {}
-
-  onTouchMove(e) {
-    this.throttleScroll().then(() => this.scrollToY(e.changedTouches[0].pageY));
-  }
-
-  onTouchCancel() {
-    this.switchScrollTip(false);
-  }
-
-  onTouchEnd(e) {
-    this.switchScrollTip(false);
-    this.scrollToY(e.changedTouches[0].pageY);
-  }
-
-  onCellTap(e) {
-    const { indexes } = e.currentTarget.dataset;
-    this.triggerEvent('select', { indexes });
-  }
-
-  onListScroll(e) {
-    this.throttleScroll().then(() => {
-      const { scrollTop } = e.detail;
-      this.activeIndexWhenScroll(scrollTop);
-    });
-  }
+    onScroll({ scrollTop }) {
+      this.setAnchorOnScroll(scrollTop);
+    },
+  };
 }

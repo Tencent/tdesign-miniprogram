@@ -1,119 +1,64 @@
 @import '../common/style/index.less';
 
-@font-size: 32rpx;
-@color: #000;
+@indexes-sidebar-color: var(--td-indexes-sidebar-color, @font-gray-1);
+@indexes-sidebar-item-size: var(--td-indexes-sidebar-item-size, 40rpx);
+@indexes-sidebar-font-size: var(--td-indexes-sidebar-font-size, 24rpx);
+@indexes-sidebar-line-height: var(--td-indexes-sidebar-line-height, 40rpx);
+@indexes-sidebar-active-color: var(--td-indexes-sidebar-active-color, @white-color-1);
+@indexes-sidebar-active-bg-color: var(--td-indexes-sidebar-active-bg-color, @primary-color);
 
-@cell-height: 112rpx;
-
-@hint-font-size: 24rpx;
-@hint-line-height: 48rpx;
-@hint-color: #000;
-
-@primary-color: #0071ce;
-
-@front-background-color: white;
-
-@active-color: #0052d9;
-@active-font-size: 32rpx;
-@active-line-height: 56rpx;
-
-page {
-  --td-indexes-title-color: @text-level-3-color;
-  --td-indexes-title-bg-color: @bg-color-fade;
-  --td-indexes-children-text-color: @color;
-  --td-indexes-children-bg-color: @front-background-color;
-  --td-indexes-index-text-color: @hint-color;
-  --td-indexes-index-text-active-color: @active-color;
-  --td-indexes-index-bg-color: @front-background-color;
-  --td-indexes-tips-text-color: @front-background-color;
-  --td-indexes-tips-bg-color: @active-color;
-}
+@indexes-sidebar-tips-size: var(--td-indexes-sidebar-tips-size, 96rpx);
+@indexes-sidebar-tips-font-size: var(--td-indexes-sidebar-tips-font-size, 40rpx);
+@indexes-sidebar-tips-color: var(--td-indexes-sidebar-tips-color, @primary-color);
+@indexes-sidebar-tips-bg-color: var(--td-indexes-sidebar-tips-bg-color, @primary-color-1);
+@indexes-sidebar-tips-right: var(--td-indexes-sidebar-tips-right, 76rpx);
 
 .@{prefix}-indexes {
   position: relative;
+  height: 100vh;
 
-  &__title {
-    color: var(--td-indexes-title-color);
-    background-color: var(--td-indexes-title-bg-color);
-  }
-
-  &__row {
-    font-size: @font-size;
-    color: var(--td-indexes-children-text-color);
-    background-color: var(--td-indexes-children-bg-color);
-    height: @cell-height;
-    display: flex;
-    align-items: center;
-
-    &::after {
-      display: none;
-    }
-  }
-
-  &__index {
-    font-size: @font-size;
-    position: absolute;
-    top: 60rpx;
+  &__sidebar {
+    position: fixed;
     right: 0;
-    width: 100rpx;
-    font-size: 24rpx;
-    color: var(--td-indexes-index-text-color);
-    background-color: var(--td-indexes-index-bg-color);
-    font-size: @hint-font-size;
-    line-height: @hint-line-height;
-    text-align: center;
+    width: @indexes-sidebar-item-size;
+    color: @indexes-sidebar-color;
+    font-size: @indexes-sidebar-font-size;
+    line-height: @indexes-sidebar-line-height;
     display: flex;
     flex-flow: column nowrap;
     top: 50%;
     transform: translateY(-50%);
 
-    .index-icon {
-      font-size: 32rpx;
+    &-item {
+      border-radius: 50%;
+      position: relative;
+      text-align: center;
+
+      &--active {
+        background-color: @indexes-sidebar-active-bg-color;
+        color: @indexes-sidebar-active-color;
+      }
     }
-  }
 
-  &__bar {
-    display: flex;
-    flex-flow: column nowrap;
-  }
-
-  &__btn {
-    position: relative;
-
-    &.is-actived {
-      color: var(--td-indexes-index-text-active-color);
-      font-size: @active-font-size;
-      line-height: @active-line-height;
+    &-item + &-item {
+      margin-top: 4rpx;
     }
-  }
 
-  &__tips {
-    width: 80rpx;
-    height: 80rpx;
-    line-height: 80rpx;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 40rpx;
-    font-weight: 700;
-    color: var(--td-indexes-tips-text-color);
-    background-color: var(--td-indexes-tips-bg-color);
-    border-radius: 40rpx 40rpx 0;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 88rpx;
-    margin: auto;
-    transform: rotate(-45deg);
-
-    &-text {
-      transform: rotate(45deg);
+    &-tips {
+      width: @indexes-sidebar-tips-size;
+      height: @indexes-sidebar-tips-size;
+      line-height: @indexes-sidebar-tips-size;
+      text-align: center;
+      font-size: @indexes-sidebar-tips-font-size;
+      font-weight: 700;
+      color: @indexes-sidebar-tips-color;
+      background-color: @indexes-sidebar-tips-bg-color;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      bottom: 0;
+      transform: translateY(-50%);
+      right: @indexes-sidebar-tips-right;
     }
-  }
-
-  /* 覆盖weUI样式 */
-  .weui-cells__title {
-    font-size: 28rpx;
-    font-weight: 800;
-    color: @hint-color;
   }
 }

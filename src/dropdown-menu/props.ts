@@ -6,11 +6,6 @@
 
 import { TdDropdownMenuProps } from './type';
 const props: TdDropdownMenuProps = {
-  /** 【讨论中】菜单标题和选项的选中态颜色 */
-  activeColor: {
-    type: String,
-    value: '',
-  },
   /** 是否在点击遮罩层后关闭菜单 */
   closeOnClickOverlay: {
     type: Boolean,

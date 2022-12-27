@@ -54,6 +54,10 @@ const form = {
       name: 'Textarea',
       label: '多行输入框',
     },
+    {
+      name: 'TreeSelect',
+      label: '树形选择',
+    },
     // {
     //   name: 'PeriodSelector',
     //   label: '时间段选择器',

@@ -1,55 +1,25 @@
 @import '../common/index.less';
 
-.hairline-common() {
-  position: absolute;
-  box-sizing: border-box;
-  transform-origin: center; /* cover wechat button:after default transforn-origin */
-  content: ' ';
-  pointer-events: none;
-}
-
-.hairline(@border-color: #eee) {
-  .hairline-common();
-  top: -50%;
-  right: -50%;
-  bottom: -50%;
-  left: -50%;
-  border: 0 solid @border-color;
-  transform: scale(0.5);
-}
-
-.hairline-bottom(@border-color: #eee, @left: 0) {
-  .hairline-common();
-  top: auto;
-  right: 0;
-  bottom: 0;
-  left: @left;
-  border-bottom: 1px solid @border-color;
-  transform: scaleY(0.5);
-}
-
-@collapse-header-text-color: @font-gray-1;
-@collapse-content-text-color: @font-gray-1;
-@collapse-header-text-diabled-color: @text-level-4-color;
+@collapse-header-text-color: var(--td-collapse-header-text-color, @font-gray-1);
+@collapse-content-text-color: var(--td-collapse-content-text-color, @font-gray-1);
+@collapse-header-text-diabled-color: var(--td-collapse-header-text-diabled-color, @text-level-4-color);
 
 // font-size
-@collapse-title-font-size: @font-size * 1.6;
-@collapse-extra-font-size: @font-size * 1.6;
-@collapse-content-font-size: @font-size * 1.4;
+@collapse-title-font-size: var(--td-collapse-title-font-size, @font-size-m);
+@collapse-extra-font-size: var(--td-collapse-extra-font-size, @font-size-m);
+@collapse-content-font-size: var(--td-collapse-content-font-size, @font-size-base);
 
-@collapse-header-height: 96rpx;
-@collapse-horizontal-padding: 32rpx;
-@collapse-content-padding: 32rpx;
-@collapse-content-line-height: 1.5;
-
-@collapse-border: 1px solid #eee;
-@collapse-shadow-bottom: inset 0 -1px 0 0 #eeeeee;
+@collapse-header-height: var(--td-collapse-header-height, 96rpx);
+@collapse-horizontal-padding: var(--td-collapse-horizontal-padding, 32rpx);
+@collapse-content-padding: var(--td-collapse-content-padding, 32rpx);
+@collapse-content-line-height: var(--td-collapse-content-line-height, 1.5);
+@collapse-border-color: var(--td-collapse-border-color, @border-color);
 
 .@{prefix}-collapse-panel {
   // height: @collapse-header-height;
   overflow: hidden;
   transition: height 200ms ease-in-out;
-  box-shadow: @collapse-shadow-bottom;
+  .border(bottom, @collapse-border-color);
   background-color: #fff;
 
   &--active {
@@ -72,8 +42,12 @@
     align-items: center;
     padding-left: @collapse-horizontal-padding;
     height: @collapse-header-height;
-    box-shadow: @collapse-shadow-bottom;
     color: @collapse-header-text-color;
+    .border(bottom, @collapse-border-color);
+
+    &:after {
+      left: 32rpx;
+    }
   }
 
   &__header-right {
@@ -99,7 +73,7 @@
   }
 
   &__body {
-    box-shadow: @collapse-shadow-bottom;
+    .border(bottom, @collapse-border-color);
   }
 
   &__wrapper {

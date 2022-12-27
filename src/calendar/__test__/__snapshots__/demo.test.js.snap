@@ -97,3 +97,18 @@ exports[`Calendar Calendar range demo works fine 1`] = `
   />
 </range>
 `;
+
+exports[`Calendar Calendar without-popup demo works fine 1`] = `
+<without-popup>
+  <wx-view
+    class="demo-desc"
+  >
+    不使用 Popup
+  </wx-view>
+  <t-calendar
+    type="multiple"
+    usePopup="{{false}}"
+    bind:select="handleSelect"
+  />
+</without-popup>
+`;

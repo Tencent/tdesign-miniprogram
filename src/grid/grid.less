@@ -1,11 +1,12 @@
 @import '../common/style/index.less';
 
-@grid-bg-color: #fff;
+@grid-bg-color: var(--td-grid-bg-color, @bg-color-block);
+@grid-card-radius: var(--td-grid-card-radius, @radius-large);
 
 .@{prefix}-grid {
   position: relative;
   overflow: hidden;
-  background-color: var(--td-grid-bg-color, @grid-bg-color);
+  background-color: @grid-bg-color;
 
   &__content {
     width: auto;
@@ -13,7 +14,7 @@
 
   &--card {
     margin: 0 32rpx;
-    border-radius: @radius-large;
+    border-radius: @grid-card-radius;
     overflow: hidden;
   }
 }

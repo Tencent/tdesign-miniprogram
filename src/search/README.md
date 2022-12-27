@@ -16,18 +16,6 @@ isComponent: true
 }
 ```
 
-### 主题定制
-CSS 变量名|说明
---|--
---td-search-icon-color | 图标颜色
---td-search-label-color | 左侧文本颜色
---td-search-action-color | 右侧操作按钮颜色
---td-search-text-color | 输入框文本颜色
---td-search-placeholder-color | 输入框placeholder占位符颜色
---td-search-bg-color | 输入框背景颜色
---td-search-border-color | 输入框边框颜色
---td-search-focus-border-color | 聚焦时输入框边框颜色
-
 ## 代码演示
 
 ### 基础搜索框

@@ -2,7 +2,6 @@
   "component": true,
   "usingComponents": {
     "t-swiper": "tdesign-miniprogram/swiper/swiper",
-    "t-swiper-item": "tdesign-miniprogram/swiper/swiper-item",
     "t-swiper-nav": "tdesign-miniprogram/swiper/swiper-nav"
   }
 }

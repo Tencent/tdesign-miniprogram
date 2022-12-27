@@ -40,7 +40,6 @@ export interface TdTagProps {
   };
   /**
    * 标签中的图标，可自定义图标呈现
-   * @default ''
    */
   icon?: {
     type: StringConstructor;
@@ -50,8 +49,7 @@ export interface TdTagProps {
    * 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80
    */
   maxWidth?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
   /**
@@ -106,6 +104,7 @@ export interface TdCheckTagProps {
   /**
    * 标签是否可关闭
    * @default false
+   * @deprecated
    */
   closable?: {
     type: BooleanConstructor;
@@ -115,8 +114,7 @@ export interface TdCheckTagProps {
    * 组件子元素
    */
   content?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
   /**
@@ -144,7 +142,6 @@ export interface TdCheckTagProps {
   };
   /**
    * 标签图标
-   * @default ''
    */
   icon?: {
     type: StringConstructor;
@@ -153,6 +150,7 @@ export interface TdCheckTagProps {
   /**
    * 标签类型，有三种：方形、圆角方形、标记型
    * @default square
+   * @deprecated
    */
   shape?: {
     type: StringConstructor;
