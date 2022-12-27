@@ -1,22 +1,25 @@
 @import '../common/style/index.less';
 
-@loading-color: @font-gray-3;
+@image-color: var(--td-image-color, @font-gray-3);
+@image-loading-bg-color: var(--td-image-loading-bg-color, @gray-color-1);
+@image-loading-color: var(--td-image-loading-color, @font-gray-3);
+@image-round-radius: var(--td-image-round-radius, @radius-default);
 
 .@{prefix}-image {
-  color: var(--td-loading-color, @loading-color);
+  color: @image-color;
   vertical-align: top;
 
   &__mask {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f2f2f2;
-    color: #ccc;
+    background-color: @image-loading-bg-color;
+    color: @image-loading-color;
   }
 
   &--loading-text {
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
   }
 
   &__common {
@@ -26,12 +29,12 @@
 
   &--shape {
     &-circle {
-      border-radius: @border-radius-50;
+      border-radius: 50%;
       overflow: hidden;
     }
 
     &-round {
-      border-radius: var(--td-image-round-radius, @radius-default);
+      border-radius: @image-round-radius;
       overflow: hidden;
     }
 

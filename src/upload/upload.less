@@ -1,7 +1,11 @@
 @import '../common/style/index.less';
 
+@upload-add-color: var(--td-upload-add-color, @font-gray-3);
+@upload-add-bg-color: var(--td-upload-add-bg-color, @gray-color-1);
+@upload-radius: var(--td-upload-radius, @radius-default);
+
 .@{prefix}-upload {
-  .@{prefix}-upload__grid {
+  &__grid {
     &-content {
       padding: 0;
     }
@@ -17,9 +21,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f3f3f3;
-    color: #a6a6a6;
-    border-radius: @radius-default;
+    background-color: @upload-add-bg-color;
+    color: @upload-add-color;
+    border-radius: @upload-radius;
   }
 
   &__thumbnail {
@@ -31,7 +35,7 @@
 
   &__wrapper {
     position: relative;
-    border-radius: @radius-default;
+    border-radius: @upload-radius;
     overflow: hidden;
   }
 
@@ -44,12 +48,12 @@
     justify-content: center;
     width: 40rpx;
     height: 40rpx;
-    border-top-right-radius: @radius-default;
-    border-bottom-left-radius: @radius-default;
+    border-top-right-radius: @upload-radius;
+    border-bottom-left-radius: @upload-radius;
     background-color: @font-gray-3;
   }
 
-  .@{prefix}-upload__progress {
+  &__progress {
     &-mask {
       position: absolute;
       left: 0;
@@ -60,8 +64,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-radius: @radius-default;
-      color: #fff;
+      border-radius: @upload-radius;
+      color: @white-color-1;
       padding: 32rpx 0;
     }
 

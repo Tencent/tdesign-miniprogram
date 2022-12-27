@@ -1,19 +1,21 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<view wx:if="{{showControls}}" class="{{classPrefix}}__btn">
+  <view class="{{classPrefix}}__btn--prev" bind:tap="nav" data-dir="prev" />
+  <view class="{{classPrefix}}__btn--next" bind:tap="nav" data-dir="next" />
+</view>
 <view
-  style="{{ customStyle }}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}--position-{{paginationPosition}}"
   wx:if="{{total >= minShowNum}}"
+  style="{{ customStyle }}"
+  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}__{{type}} {{classPrefix}}--{{paginationPosition}}"
 >
-  <view wx:if="{{ type === 'dots' || type === 'dots-bar'}}" class="{{classPrefix}}__{{type}}">
+  <block wx:if="{{ type === 'dots' || type === 'dots-bar'}}">
     <view
       wx:for="{{total}}"
       wx:for-index="idx"
       wx:key="idx"
-      class="{{classPrefix}}__{{type}}-item {{index === idx ? prefix + '-is-active' : ''}}"
+      class="{{_.cls(classPrefix + '__' + type + '-item', [['active', index === idx], direction])}}"
     />
-  </view>
-  <view wx:if="{{ type === 'fraction'}}" class="{{classPrefix}}__fraction"> {{index+1}}/{{total}} </view>
-  <view wx:if="{{hasNavBtn}}" class="{{classPrefix}}__btn">
-    <view class="{{classPrefix}}__btn--prev" bind:tap="nav" data-dir="prev" />
-    <view class="{{classPrefix}}__btn--next" bind:tap="nav" data-dir="next" />
-  </view>
+  </block>
+  <block wx:if="{{ type === 'fraction'}}"> {{index + 1}}/{{total}} </block>
 </view>

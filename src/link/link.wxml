@@ -1,0 +1,44 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<navigator
+  class="{{className}} {{prefix}}-class"
+  target="{{navigatorProps.target}}"
+  url="{{navigatorProps.url}}"
+  open-type="{{navigatorProps.openType || 'navigate'}}"
+  delta="{{navigatorProps.delta}}"
+  app-id="{{navigatorProps.appId}}"
+  path="{{navigatorProps.path}}"
+  extra-data="{{navigatorProps.extraData}}"
+  version="{{navigatorProps.version}}"
+  short-link="{{navigatorProps.shortLink}}"
+  hover-class="{{navigatorProps.hoverClass}}"
+  hover-stop-propagation="navigatorProps.hoverStopPropagation"
+  hover-start-time="{{navigatorProps.hoverStartTime}}"
+  hover-stay-time="{{navigatorProps.hoverStayTime}}"
+  bindsuccess="onSuccess"
+  bindfail="onFail"
+  bindcomplete="onComplete"
+  aria-disabled="{{status === 'disabled'}}"
+>
+  <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}" class="{{classPrefix}}__prefix-icon">
+    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
+    <template
+      wx:else
+      is="icon"
+      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ariaHidden: true, ...prefixIconData}}"
+    />
+  </view>
+  <view class="{{classPrefix}}__content {{prefix}}-class-content">
+    <block wx:if="{{content}}">{{content}}</block>
+    <slot name="content" />
+  </view>
+  <view wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}" class="{{classPrefix}}__suffix-icon">
+    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
+    <template
+      wx:else
+      is="icon"
+      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ariaHidden: true, ...suffixIconData}}"
+    />
+  </view>
+</navigator>

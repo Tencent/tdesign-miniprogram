@@ -8,13 +8,13 @@ import matter from 'gray-matter';
 
 const componentPath = path.join(__dirname, './component.vue').replaceAll('\\', '/');
 
-const DEAULT_TABS = [
+const DEFAULT_TABS = [
   { tab: 'demo', name: '示例' },
   { tab: 'api', name: 'API' },
   { tab: 'design', name: '指南' },
 ];
 
-export default function mdToVue(options) {
+export default function mdToVue(options: any) {
   const mdSegment = customRender(options);
   const { demoCodesImportsStr = '', demoCodesDefsStr } = options;
 
@@ -54,7 +54,7 @@ function customRender({ source, file, md }: any) {
     description: '',
     isComponent: false,
     tdDocHeader: true,
-    tdDocTabs: DEAULT_TABS,
+    tdDocTabs: DEFAULT_TABS,
     apiFlag: /#+\s*API\n/i,
     docClass: '',
     lastUpdated: Math.round(fs.statSync(file).mtimeMs),
@@ -67,9 +67,6 @@ function customRender({ source, file, md }: any) {
 
   // split md
   let [demoMd = '', apiMd = ''] = content.split(pageData.apiFlag);
-
-  // fix table | render error
-  apiMd = apiMd.replace(/`[^`]+`/g, (str) => str.replace(/\|/g, '\\|'));
 
   const mdSegment = {
     ...pageData,

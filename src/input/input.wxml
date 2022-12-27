@@ -11,7 +11,7 @@
 
   <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData) || label}}" class="{{classPrefix}}__wrap--prefix">
     <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}" class="{{classPrefix}}__icon--prefix">
-      <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
+      <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
       <template
         wx:else
         is="icon"
@@ -86,7 +86,7 @@
         class="{{classPrefix}}__wrap--suffix-icon"
         bind:tap="clickSuffixIcon"
       >
-        <slot wx:if="{{suffixIconName === 'slot'}}" name="suffixIcon" />
+        <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
         <template
           wx:else
           is="icon"

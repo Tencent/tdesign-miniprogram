@@ -1,70 +1,64 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
-import EXAMPLE from './contant';
+import * as Util from '../../common/utils';
+
+beforeAll(() => {
+  global.getCurrentPages = jest.fn(() => {
+    return [
+      {
+        pageScroller: [jest.fn()],
+      },
+    ];
+  });
+});
 
 describe('indexes', () => {
-  const indexes = load(path.resolve(__dirname, `../indexes`), 't-indexes');
-
-  const id = simulate.load({
-    template: `<t-indexes class="indexes" height={{height}} list={{list}}></t-indexes>`,
-    data: {
-      list: EXAMPLE,
-      height: 600,
-    },
-    usingComponents: {
-      't-indexes': indexes,
-    },
-  });
-
-  it(':props', () => {
-    const comp = simulate.render(id);
-    comp.attach(document.createElement('parent-wrapper'));
-    expect(comp.querySelector('.indexes').data.height).toBe(600);
-  });
-
-  it(':list', () => {
-    const comp = simulate.render(id);
-    comp.attach(document.createElement('parent-wrapper'));
-    const $index = comp.querySelector('.indexes');
-    const $scrollGroup = $index.querySelector('.t-indexes__group');
-    // title不存在时，默认使用index
-    expect($scrollGroup.data.title).toBe('A');
-  });
+  const id = load(path.resolve(__dirname, `./index`));
 
   it('event scroll', async () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
     const $index = comp.querySelector('.indexes');
-    const $scrollView = $index.querySelector('.t-indexes__content');
 
-    // scroll
-    simulate.scroll($scrollView, 100, 1);
-    await simulate.sleep();
     // touch
-    const $bar = $index.querySelector('.t-indexes__bar');
-    const touch = async () => {
-      $bar.dispatchEvent('touchstart', {
-        touches: [{ x: 0, y: 100 }],
-      });
-      $bar.dispatchEvent('touchmove', {
-        touches: [{ x: 0, y: 200 }],
-      });
-      $bar.dispatchEvent('touchend', {
-        changedTouches: [{ x: 0, y: 200 }],
-      });
-    };
-    touch();
-    await simulate.sleep();
-    expect($index.data.showScrollTip).toBeTruthy();
-    expect($index.data.activeGroup.index).toBe('G');
-    const $cell = $index.querySelector('#cell_6_0');
-    $cell.dispatchEvent('tap', {
-      changedTouches: [
-        {
-          pageY: 200,
-        },
-      ],
+    const $sidebar = $index.querySelector('.t-indexes__sidebar');
+
+    const mock = jest.spyOn(Util, 'getRect');
+    let i = 0;
+    const top = 286;
+
+    mock.mockImplementation((x, y) => {
+      if (y.includes('bar')) {
+        return Promise.resolve({
+          top,
+          height: 64,
+        });
+      }
+      return Promise.resolve({ top: (i += 100), height: 150 });
     });
-    expect($index.data.currentGroup.title).toBe('G开头');
+
+    $sidebar.dispatchEvent('touchmove', {
+      changedTouches: [{ x: 0, y: top + 21 }],
+    });
+
+    await simulate.sleep(0);
+
+    expect($index.data.showTips).toBeTruthy();
+    expect(comp.data.active).toBe('B');
+
+    $sidebar.dispatchEvent('touchcancel');
+
+    await simulate.sleep(500);
+
+    expect($index.data.showTips).toBeFalsy();
+
+    $sidebar.dispatchEvent('touchmove', {
+      changedTouches: [{ x: 0, y: top + 41 }],
+    });
+
+    await simulate.sleep(0);
+
+    expect($index.data.showTips).toBeTruthy();
+    expect(comp.data.active).toBe('C');
   });
 });

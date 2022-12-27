@@ -1,20 +1,10 @@
 const imageCdn = 'https://tdesign.gtimg.com/site/swiper';
 const swiperList = [
-  {
-    image: `${imageCdn}/01.png`,
-  },
-  {
-    image: `${imageCdn}/02.png`,
-  },
-  {
-    image: `${imageCdn}/03.png`,
-  },
-  {
-    image: `${imageCdn}/04.png`,
-  },
-  {
-    image: `${imageCdn}/05.png`,
-  },
+  `${imageCdn}/01.png`,
+  `${imageCdn}/02.png`,
+  `${imageCdn}/03.png`,
+  `${imageCdn}/04.png`,
+  `${imageCdn}/05.png`,
 ];
 
 Component({

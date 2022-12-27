@@ -36,12 +36,16 @@ const props: TdCalendarProps = {
   /** 标题，不传默认为“请选择日期” */
   title: {
     type: String,
-    value: '',
   },
   /** 日历的选择类型，single = 单选；multiple = 多选; range = 区间选择 */
   type: {
     type: String,
     value: 'single',
+  },
+  /** 是否使用弹出层包裹日历 */
+  usePopup: {
+    type: Boolean,
+    value: true,
   },
   /** 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组 */
   value: {
@@ -52,7 +56,7 @@ const props: TdCalendarProps = {
   defaultValue: {
     type: null,
   },
-  /** 是否显示日历 */
+  /** 是否显示日历；`usePopup` 为 true 时有效 */
   visible: {
     type: Boolean,
     value: false,

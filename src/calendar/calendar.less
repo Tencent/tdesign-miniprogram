@@ -1,27 +1,34 @@
 @import '../common/style/index.less';
 
-@title-font-size: 18px;
-@title-color: @text-level-1-color;
-@days-item-color: @text-level-2-color;
-@dates-item-suffix-color: @text-level-3-color;
-@calendar-disabled-color: @text-level-4-color;
-@calendar-centre-color: @primary-color-1;
+@calendar-radius: var(--td-calendar-radius, 24rpx);
+@calendar-bg-color: var(--td-calendar-bg-color, @bg-color-block);
+@calendar-active-color: var(--td-calendar-active-color, @primary-color);
+@calendar-selected-color: var(--td-calendar-selected-color, @text-anti-primary-color);
+@calendar-title-font-size: var(--td-calendar-title-font-size, 18px);
+@calendar-title-color: var(--td-calendar-title-color, @text-level-1-color);
+@calendar-days-color: var(--td-calendar-days-color, @text-level-2-color);
+@calendar-item-suffix-color: var(--td-calendar-item-suffix-color, @text-level-3-color);
+@calendar-item-centre-color: var(--td-calendar-item-centre-color, @primary-color-1);
+@calendar-item-disabled-color: var(--td-calendar-item-disabled-color, @text-level-4-color);
 
 .@{prefix}-calendar {
   position: relative;
   z-index: 9999;
-  background: #fff;
+  background: @calendar-bg-color;
   overflow-x: hidden;
-  border-top-left-radius: 24rpx;
-  border-top-right-radius: 24rpx;
+
+  &--popup {
+    border-top-left-radius: @calendar-radius;
+    border-top-right-radius: @calendar-radius;
+  }
 
   &__title {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: @title-font-size;
+    font-size: @calendar-title-font-size;
     font-weight: 600;
-    color: @title-color;
+    color: @calendar-title-color;
     height: 52rpx;
     padding: 32rpx;
   }
@@ -45,17 +52,8 @@
     &-item {
       height: 92rpx;
       font-size: 28rpx;
-      color: @days-item-color;
+      color: @calendar-days-color;
     }
-  }
-
-  &__value {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 12rpx 0;
-    color: #909399;
-    font-size: 28rpx;
   }
 
   &__content {
@@ -66,7 +64,7 @@
 
   &__month {
     font-size: 28rpx;
-    color: @title-color;
+    color: @calendar-title-color;
     font-weight: 600;
     padding: 32rpx 0 0;
 
@@ -116,24 +114,24 @@
 
       &-suffix {
         bottom: 8rpx;
-        color: @dates-item-suffix-color;
+        color: @calendar-item-suffix-color;
 
         &--selected,
         &--start,
         &--end {
-          color: #fff;
+          color: @calendar-selected-color;
         }
 
         &--disabled {
-          color: @calendar-disabled-color;
+          color: @calendar-item-disabled-color;
         }
       }
 
       &--selected,
       &--start,
       &--end {
-        background: #0053db;
-        color: #fff;
+        background: @calendar-active-color;
+        color: @calendar-selected-color;
         border-radius: 8rpx;
       }
 
@@ -153,7 +151,7 @@
           top: 0;
           width: 8rpx;
           height: 100%;
-          background: #0053db;
+          background: @calendar-active-color;
         }
 
         &:before {
@@ -163,7 +161,7 @@
 
       &--centre {
         border-radius: 0;
-        background-color: @calendar-centre-color;
+        background-color: @calendar-item-centre-color;
 
         &::before,
         &::after {
@@ -173,7 +171,7 @@
           top: 0;
           width: 8rpx;
           height: 100%;
-          background-color: @calendar-centre-color;
+          background-color: @calendar-item-centre-color;
         }
 
         &:before {
@@ -186,14 +184,14 @@
       }
 
       &--disabled {
-        color: @calendar-disabled-color;
+        color: @calendar-item-disabled-color;
         cursor: default;
       }
     }
   }
 
   &__footer {
-    border-top: 1px solid #e7e7e7;
+    border-top: 1px solid @border-color;
     padding: 32rpx;
   }
 }

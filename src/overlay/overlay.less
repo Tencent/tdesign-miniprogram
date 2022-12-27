@@ -1,6 +1,8 @@
 @import '../common/style/index.less';
 
 @overlay: ~'@{prefix}-overlay';
+@overlay-bg-color: var(--td-overlay-bg-color, @font-gray-2);
+@overlay-transition-duration: var(--td-overlay-transition-duration, 300ms);
 
 .@{overlay} {
   position: fixed;
@@ -8,8 +10,8 @@
   left: 0;
   width: 100%;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  transition: opacity 300ms ease;
+  background-color: @overlay-bg-color;
+  transition: opacity @overlay-transition-duration ease;
 }
 
 .t-fade-enter {

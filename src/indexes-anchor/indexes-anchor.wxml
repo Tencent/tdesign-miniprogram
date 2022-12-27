@@ -1,0 +1,10 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<view class="{{classPrefix}} {{prefix}}-class" style="{{customStyle}}">
+  <view class="{{_.cls(classPrefix + '__wrapper', [['sticky', sticky], ['active', active]])}}" style="{{anchorStyle}}">
+    <view class="{{classPrefix}}__slot">
+      <slot />
+    </view>
+    <view class="{{classPrefix}}__header"> {{index}} </view>
+  </view>
+</view>

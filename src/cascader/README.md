@@ -15,16 +15,6 @@ isComponent: true
 }
 ```
 
-## 主题定制
-
-CSS 变量名|说明
---|--
---td-cascader-active-color | 激活时颜色
---td-cascader-title-color | 标题颜色
---td-cascader-options-title-color | 次标题颜色
---td-cascader-border-color | 步骤条下方边框颜色
---td-cascader-step-arrow-color | 步骤条箭头颜色
-
 ## 代码演示
 
 ### 基础用法

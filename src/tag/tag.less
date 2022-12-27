@@ -1,1 +1,203 @@
-@import './common/base.less';
+@import '../common/index.less';
+
+// themes
+@tag-default-color: var(--td-tag-default-color, @gray-color-3);
+@tag-default-light-color: var(--td-tag-default-light-color, @gray-color-1);
+@tag-primary-color: var(--td-tag-primary-color, @primary-color);
+@tag-primary-light-color: var(--td-tag-primary-light-color, @primary-color-1);
+@tag-success-color: var(--td-tag-success-color, @success-color);
+@tag-success-light-color: var(--td-tag-success-light-color, @success-color-1);
+@tag-warning-color: var(--td-tag-warning-color, @warning-color);
+@tag-warning-light-color: var(--td-tag-warning-light-color, @warning-color-1);
+@tag-danger-color: var(--td-tag-danger-color, @error-color);
+@tag-danger-light-color: var(--td-tag-danger-light-color, @error-color-1);
+
+// variant
+@tag-outline-bg-color: var(--td-tag-outline-bg-color, @bg-color-block);
+@tag-default-font-color: var(--td-tag-default-font-color, @font-gray-1);
+
+// status
+@tag-disabled-color: var(--td-tag-disabled-color, @font-gray-4);
+@tag-disabled-background-color: var(--td-tag-disabled-background-color, @gray-color-2);
+@tag-disabled-border-color: var(--td-tag-disabled-border-color, @gray-color-4);
+
+// size
+@tag-small-padding: var(--td-tag-small-padding, 12rpx - 1px);
+@tag-medium-padding: var(--td-tag-medium-padding, 16rpx - 1px);
+@tag-large-padding: var(--td-tag-large-padding, 16rpx - 1px);
+@tag-extra-large-padding: var(--td-tag-extra-large-padding, 32rpx - 1px);
+
+@tag-small-font-size: var(--td-tag-small-font-size, @font-size);
+@tag-medium-font-size: var(--td-tag-medium-font-size, @font-size-s);
+@tag-large-font-size: var(--td-tag-large-font-size, @font-size-base);
+@tag-extra-large-font-size: var(--td-tag-extra-large-font-size, @font-size-base);
+
+@tag-small-icon-size: var(--td-tag-small-icon-size, 24rpx);
+@tag-medium-icon-size: var(--td-tag-medium-icon-size, 28rpx);
+@tag-large-icon-size: var(--td-tag-large-icon-size, 32rpx);
+@tag-extra-large-icon-size: var(--td-tag-extra-large-icon-size, 32rpx);
+
+@tag-small-height: var(--td-tag-small-height, 40rpx);
+@tag-medium-height: var(--td-tag-medium-height, 48rpx);
+@tag-large-height: var(--td-tag-large-height, 56rpx);
+@tag-extra-large-height: var(--td-tag-extra-large-height, 80rpx);
+
+@tag-square-border-radius: var(--td-tag-square-border-radius, 8rpx);
+@tag-round-border-radius: var(--td-tag-round-border-radius, 999px);
+@tag-mark-border-radius: var(--td-tag-mark-border-radius, @tag-round-border-radius);
+
+@tag-close-icon-color: var(--td-tag-close-icon-color, @font-gray-3);
+
+.genVariant(@variant) {
+  @themes: default, primary, success, warning, danger;
+  each(@themes, {
+    @theme-color: 'tag-@{value}-color';
+    @theme-light-color: 'tag-@{value}-light-color';
+
+    &.@{prefix}-tag--@{value} {
+      color: if(@variant = dark, @white-color-1, @@theme-color);
+      border-color: if(@variant = light, @@theme-light-color, @@theme-color);
+      background-color: if(@variant = dark, @@theme-color, @@theme-light-color);
+    }
+  });
+}
+
+.@{prefix}-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 2rpx solid transparent;
+  box-sizing: border-box;
+  border-radius: @tag-square-border-radius;
+  font-size: @tag-medium-font-size;
+  user-select: none;
+  vertical-align: middle;
+
+  &__text {
+    word-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__icon,
+  &__icon-close {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon-close {
+    color: @tag-close-icon-color;
+  }
+
+  &__icon:not(:empty) + &__text:not(:empty),
+  &__text:not(:empty) + &__icon-close:not(:empty) {
+    margin-left: 8rpx;
+  }
+
+  &.@{prefix}-tag {
+    &--small {
+      height: @tag-small-height;
+      line-height: @tag-small-height;
+      padding: 0 @tag-small-padding;
+      font-size: @tag-small-font-size;
+
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-small-icon-size;
+      }
+    }
+
+    &--medium {
+      height: @tag-medium-height;
+      line-height: @tag-medium-height;
+      padding: 0 @tag-medium-padding;
+      font-size: @tag-medium-font-size;
+
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-medium-icon-size;
+      }
+    }
+
+    &--large {
+      height: @tag-large-height;
+      line-height: @tag-large-height;
+      padding: 0 @tag-large-padding;
+      font-size: @tag-large-font-size;
+
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-large-icon-size;
+      }
+    }
+
+    &--extra-large {
+      height: @tag-extra-large-height;
+      line-height: @tag-extra-large-height;
+      padding: 0 @tag-extra-large-padding;
+      font-size: @tag-extra-large-font-size;
+
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-extra-large-icon-size;
+      }
+    }
+  }
+
+  &.@{prefix}-tag {
+    &--square {
+      border-radius: @tag-square-border-radius;
+    }
+
+    &--round {
+      border-radius: @tag-round-border-radius;
+    }
+
+    &--mark {
+      border-radius: 0 @tag-mark-border-radius @tag-mark-border-radius 0;
+    }
+  }
+
+  &--dark {
+    .genVariant(dark);
+    &.@{prefix}-tag--default {
+      color: @tag-default-font-color;
+    }
+  }
+
+  &--outline {
+    .genVariant(outline);
+    &.@{prefix}-tag--default {
+      color: @tag-default-font-color;
+    }
+    each(@themes, {
+      &.@{prefix}-tag--@{value} {
+        background-color: @tag-outline-bg-color;
+      }
+    });
+  }
+
+  &--light {
+    .genVariant(light);
+    &.@{prefix}-tag--default {
+      color: @tag-default-font-color;
+    }
+  }
+
+  &--light-outline {
+    .genVariant(light-outline);
+    &.@{prefix}-tag--default {
+      color: @tag-default-font-color;
+      border-color: @gray-color-4;
+    }
+  }
+
+  &.@{prefix}-tag--closable {
+    &.@{prefix}-tag--disabled {
+      cursor: not-allowed;
+      color: @tag-disabled-color;
+      background-color: @tag-disabled-background-color;
+      border-color: @tag-disabled-border-color;
+    }
+  }
+}

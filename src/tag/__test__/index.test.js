@@ -29,12 +29,12 @@ describe('tag', () => {
         comp.attach(document.createElement('parent-wrapper'));
 
         const $tag = comp.querySelector('.base >>> .t-tag');
-        expect($tag.dom.getAttribute('class').includes('t-tag--theme-default')).toBeTruthy();
+        expect($tag.dom.getAttribute('class').includes('t-tag--default')).toBeTruthy();
 
         comp.setData({
           theme: 'warning',
         });
-        expect($tag.dom.getAttribute('class').includes('t-tag--theme-warning')).toBeTruthy();
+        expect($tag.dom.getAttribute('class').includes('t-tag--warning')).toBeTruthy();
       });
 
       it(`: variant`, async () => {
@@ -46,7 +46,7 @@ describe('tag', () => {
             >危险</t-tag>`,
 
           data: {
-            variant: '',
+            variant: 'dark',
           },
           methods: {},
           usingComponents: {
@@ -58,12 +58,12 @@ describe('tag', () => {
         comp.attach(document.createElement('parent-wrapper'));
 
         const $tag = comp.querySelector('.base >>> .t-tag');
-        expect($tag.dom.getAttribute('class').includes('t-tag--variant-dark')).toBeTruthy();
+        expect($tag.dom.getAttribute('class').includes('t-tag--dark')).toBeTruthy();
 
         comp.setData({
           variant: 'outline',
         });
-        expect($tag.dom.getAttribute('class').includes('t-tag--variant-outline')).toBeTruthy();
+        expect($tag.dom.getAttribute('class').includes('t-tag--outline')).toBeTruthy();
       });
 
       it(`: size`, async () => {
@@ -75,7 +75,7 @@ describe('tag', () => {
             >危险</t-tag>`,
 
           data: {
-            size: '',
+            size: 'medium',
           },
           methods: {},
           usingComponents: {
@@ -87,12 +87,12 @@ describe('tag', () => {
         comp.attach(document.createElement('parent-wrapper'));
 
         const $tag = comp.querySelector('.base >>> .t-tag');
-        expect($tag.dom.getAttribute('class').includes('t-tag--size-medium')).toBeTruthy();
+        expect($tag.dom.getAttribute('class').includes('t-tag--medium')).toBeTruthy();
 
         comp.setData({
           size: 'large',
         });
-        expect($tag.dom.getAttribute('class').includes('t-tag--size-large')).toBeTruthy();
+        expect($tag.dom.getAttribute('class').includes('t-tag--large')).toBeTruthy();
       });
 
       it(`: shape`, async () => {
@@ -104,7 +104,7 @@ describe('tag', () => {
             >危险</t-tag>`,
 
           data: {
-            shape: '',
+            shape: 'square',
           },
           methods: {},
           usingComponents: {
@@ -116,12 +116,12 @@ describe('tag', () => {
         comp.attach(document.createElement('parent-wrapper'));
 
         const $tag = comp.querySelector('.base >>> .t-tag');
-        expect($tag.dom.getAttribute('class').includes('t-tag--shape-square')).toBeTruthy();
+        expect($tag.dom.getAttribute('class').includes('t-tag--square')).toBeTruthy();
 
         comp.setData({
           shape: 'round',
         });
-        expect($tag.dom.getAttribute('class').includes('t-tag--shape-round')).toBeTruthy();
+        expect($tag.dom.getAttribute('class').includes('t-tag--round')).toBeTruthy();
       });
 
       it(`: closable && disabled`, async () => {
@@ -268,7 +268,7 @@ describe('tag', () => {
             >选中</t-check-tag>`,
 
           data: {
-            size: '',
+            size: 'medium',
           },
           methods: {},
           usingComponents: {
@@ -282,43 +282,12 @@ describe('tag', () => {
         const $CheckTag = comp.querySelector('.base >>> .t-tag');
 
         // size预期值为 `medium`,
-        expect($CheckTag.dom.getAttribute('class').includes('t-tag--size-medium')).toBeTruthy();
+        expect($CheckTag.dom.getAttribute('class').includes('t-tag--medium')).toBeTruthy();
 
         comp.setData({
           size: 'large',
         });
-        expect($CheckTag.dom.getAttribute('class').includes('t-tag--size-large')).toBeTruthy();
-      });
-
-      it(`: shape`, async () => {
-        const id = simulate.load({
-          template: `
-            <t-check-tag
-              class="base"
-              shape="{{shape}}"
-            >选中</t-check-tag>`,
-
-          data: {
-            shape: '',
-          },
-          methods: {},
-          usingComponents: {
-            't-check-tag': CheckTag,
-          },
-        });
-
-        const comp = simulate.render(id);
-        comp.attach(document.createElement('parent-wrapper'));
-
-        const $CheckTag = comp.querySelector('.base >>> .t-tag');
-
-        // shape预期值为 `square`
-        expect($CheckTag.dom.getAttribute('class').includes('t-tag--shape-square')).toBeTruthy();
-
-        comp.setData({
-          shape: 'round',
-        });
-        expect($CheckTag.dom.getAttribute('class').includes('t-tag--shape-round')).toBeTruthy();
+        expect($CheckTag.dom.getAttribute('class').includes('t-tag--large')).toBeTruthy();
       });
 
       it(`: closable && disabled`, async () => {
@@ -392,7 +361,6 @@ describe('tag', () => {
     describe('event', () => {
       it(`: mutiple`, async () => {
         const handleChange = jest.fn();
-        const handleClose = jest.fn();
         const id = simulate.load({
           template: `
             <t-check-tag
@@ -402,7 +370,6 @@ describe('tag', () => {
               checked="{{checked}}"
               defaultChecked="{{defaultChecked}}"
               bind:change="handleChange"
-              bind:close="handleClose"
             >选中</t-check-tag>`,
 
           data: {
@@ -413,7 +380,6 @@ describe('tag', () => {
           },
           methods: {
             handleChange,
-            handleClose,
           },
           usingComponents: {
             't-check-tag': CheckTag,
@@ -435,17 +401,12 @@ describe('tag', () => {
         });
 
         const $click = $CheckTag.querySelector('.t-tag');
-        const $close = comp.querySelector('.base >>> .t-tag__icon-close');
 
         $click.dispatchEvent('tap');
         await simulate.sleep(10);
         await simulate.sleep(10);
         expect(handleChange).toHaveBeenCalledTimes(0);
         expect($CheckTag.data.checked).toBe(false);
-
-        $close.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClose).toHaveBeenCalledTimes(0);
 
         // 非禁用态时，触发事件， checked取反
         await simulate.sleep(10);
@@ -470,10 +431,6 @@ describe('tag', () => {
         $click.dispatchEvent('tap');
         await simulate.sleep(10);
         expect($CheckTag.data.checked).toBe(true);
-
-        $close.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClose).toHaveBeenCalledTimes(1);
       });
     });
   });

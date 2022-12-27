@@ -135,7 +135,7 @@ exports[`DropdownMenu DropdownMenu multi demo works fine 1`] = `
           "option_3",
         ]
       }}"
-      label="最多四字三列"
+      label="三列多选"
       multiple="{{true}}"
       options="{{
         Array [
@@ -211,214 +211,36 @@ exports[`DropdownMenu DropdownMenu single demo works fine 1`] = `
 <single>
   <t-dropdown-menu>
     <t-dropdown-item
-      label="菜单"
       options="{{
         Array [
           Object {
-            "disabled": false,
-            "label": "选项一",
-            "value": "option_1",
+            "label": "全部产品",
+            "value": "all",
           },
           Object {
-            "disabled": false,
-            "label": "选项二",
-            "value": "option_2",
+            "label": "最新产品",
+            "value": "new",
           },
           Object {
-            "disabled": false,
-            "label": "选项三",
-            "value": "option_3",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项四",
-            "value": "option_4",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项五",
-            "value": "option_5",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项六",
-            "value": "option_6",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项七",
-            "value": "option_7",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项八",
-            "value": "option_8",
-          },
-          Object {
-            "disabled": true,
-            "label": "禁用选项",
-            "value": "disabled",
+            "label": "最火产品",
+            "value": "hot",
           },
         ]
       }}"
-      value="option_3"
-      bind:change="handleSingleSelect"
+      value="all"
+      bind:change="onChange"
     />
     <t-dropdown-item
-      defaultValue="option_3"
-      label="菜单"
+      defaultValue="default"
       options="{{
         Array [
           Object {
-            "disabled": false,
-            "label": "选项一",
-            "value": "option_1",
+            "label": "默认排序",
+            "value": "default",
           },
           Object {
-            "disabled": false,
-            "label": "选项二",
-            "value": "option_2",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项三",
-            "value": "option_3",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项四",
-            "value": "option_4",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项五",
-            "value": "option_5",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项六",
-            "value": "option_6",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项七",
-            "value": "option_7",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项八",
-            "value": "option_8",
-          },
-          Object {
-            "disabled": true,
-            "label": "禁用选项",
-            "value": "disabled",
-          },
-        ]
-      }}"
-    />
-    <t-dropdown-item
-      defaultValue="option_3"
-      label="菜单"
-      options="{{
-        Array [
-          Object {
-            "disabled": false,
-            "label": "选项一",
-            "value": "option_1",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项二",
-            "value": "option_2",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项三",
-            "value": "option_3",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项四",
-            "value": "option_4",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项五",
-            "value": "option_5",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项六",
-            "value": "option_6",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项七",
-            "value": "option_7",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项八",
-            "value": "option_8",
-          },
-          Object {
-            "disabled": true,
-            "label": "禁用选项",
-            "value": "disabled",
-          },
-        ]
-      }}"
-    />
-    <t-dropdown-item
-      defaultValue="option_3"
-      label="两字溢出"
-      options="{{
-        Array [
-          Object {
-            "disabled": false,
-            "label": "选项一",
-            "value": "option_1",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项二",
-            "value": "option_2",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项三",
-            "value": "option_3",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项四",
-            "value": "option_4",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项五",
-            "value": "option_5",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项六",
-            "value": "option_6",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项七",
-            "value": "option_7",
-          },
-          Object {
-            "disabled": false,
-            "label": "选项八",
-            "value": "option_8",
-          },
-          Object {
-            "disabled": true,
-            "label": "禁用选项",
-            "value": "disabled",
+            "label": "价格从高到低",
+            "value": "price",
           },
         ]
       }}"

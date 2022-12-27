@@ -1,12 +1,12 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@cell-group-title-font-size: 28rpx;
-@cell-group-title-line-height: 90rpx;
-@cell-group-title-padding-left: 32rpx;
-@cell-group-title-bg-color: @bg-color-fade;
-@cell-group-title-color: @text-level-3-color;
-@cell-group-border-color: @border-level-1-color;
+@cell-group-title-font-size: var(--td-cell-group-title-font-size, 28rpx);
+@cell-group-title-line-height: var(--td-cell-group-title-line-height, 90rpx);
+@cell-group-title-padding-left: var(--td-cell-group-title-padding-left, 32rpx);
+@cell-group-title-bg-color: var(--td-cell-group-title-bg-color, @bg-color-fade);
+@cell-group-title-color: var(--td-cell-group-title-color, @text-level-3-color);
+@cell-group-border-color: var(--td-cell-group-border-color, @border-level-1-color);
 
 .@{prefix}-cell-group {
   position: relative;

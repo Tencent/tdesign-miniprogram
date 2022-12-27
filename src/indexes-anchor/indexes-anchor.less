@@ -1,0 +1,45 @@
+@import '../common/style/index.less';
+
+@indexes-anchor-color: var(--td-indexes-anchor-color, @font-gray-1);
+@indexes-anchor-active-color: var(--td-indexes-anchor-active-color, @primary-color);
+@indexes-anchor-bg-color: var(--td-indexes-anchor-bg-color, @gray-color-1);
+@indexes-anchor-font-size: var(--td-indexes-anchor-font-size, 28rpx);
+@indexes-anchor-line-height: var(--td-indexes-anchor-line-height, 44rpx);
+@indexes-anchor-active-font-weight: var(--td-indexes-anchor-active-font-weight, 600);
+
+.@{prefix}-indexes-anchor {
+  color: @indexes-anchor-color;
+  font-size: @indexes-anchor-font-size;
+  line-height: @indexes-anchor-line-height;
+
+  &__header {
+    display: none;
+  }
+
+  &__slot {
+    overflow: hidden;
+  }
+
+  &__slot:empty + &__header {
+    display: block;
+    padding: 8rpx 32rpx;
+    background-color: @indexes-anchor-bg-color;
+  }
+
+  &__wrapper {
+    will-change: transform;
+
+    &--sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+    }
+
+    &--active {
+      color: @indexes-anchor-active-color;
+      font-weight: @indexes-anchor-active-font-weight;
+    }
+  }
+}

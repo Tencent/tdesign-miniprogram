@@ -1,20 +1,20 @@
 @import '../common/style/index.less';
 
-@footer-copyright-color: @font-gray-3;
-@footer-copyright-font-size: @font-size-s;
-@footer-copyright-line-height: 40rpx;
-@footer-link-color: @primary-color;
-@footer-link-font-size: @font-size-s;
-@footer-link-line-height: 40rpx;
-@footer-link-margin-bottom: (@spacer / 2);
-@footer-link-dividing-line-padding: @spacer-1;
-@footer-link-dividing-line-color: @font-gray-3;
-@footer-logo-icon-width: 48rpx;
-@footer-logo-icon-height: 48rpx;
-@footer-logo-icon-margin-right: @spacer;
-@footer-logo-title-font-size: @font-size-m;
-@footer-logo-title-url-width: 256rpx;
-@footer-logo-title-line-height: 48rpx;
+@footer-copyright-color: var(--td-footer-copyright-color, @font-gray-3);
+@footer-copyright-font-size: var(--td-footer-copyright-font-size, @font-size-s);
+@footer-copyright-line-height: var(--td-footer-copyright-line-height, 40rpx);
+@footer-link-color: var(--td-footer-link-color, @primary-color);
+@footer-link-font-size: var(--td-footer-link-font-size, @font-size-s);
+@footer-link-line-height: var(--td-footer-link-line-height, 40rpx);
+@footer-link-margin-bottom: var(--td-footer-link-margin-bottom, 8rpx);
+@footer-link-dividing-line-padding: var(--td-footer-link-dividing-line-padding, @spacer-1);
+@footer-link-dividing-line-color: var(--td-footer-link-dividing-line-color, @font-gray-3);
+@footer-logo-icon-width: var(--td-footer-logo-icon-width, 48rpx);
+@footer-logo-icon-height: var(--td-footer-logo-icon-height, 48rpx);
+@footer-logo-icon-margin-right: var(--td-footer-logo-icon-margin-right, @spacer);
+@footer-logo-title-font-size: var(--td-footer-logo-title-font-size, @font-size-m);
+@footer-logo-title-url-width: var(--td-footer-logo-title-url-width, 256rpx);
+@footer-logo-title-line-height: var(--td-footer-logo-title-line-height, 48rpx);
 
 .@{prefix}-footer {
   display: flex;
@@ -23,30 +23,30 @@
   justify-content: flex-start;
 
   &__copyright-info {
-    font-size: var(--td-footer-copyright-font-size, @footer-copyright-font-size); // 版权信息文本大小
-    line-height: var(--td-footer-copyright-line-height, @footer-copyright-line-height); // 版权信息文本行高
-    color: var(--td-footer-copyright-color, @footer-copyright-color); // 版权信息文本颜色
+    font-size: @footer-copyright-font-size; // 版权信息文本大小
+    line-height: @footer-copyright-line-height; // 版权信息文本行高
+    color: @footer-copyright-color; // 版权信息文本颜色
   }
 
   &__link-list {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: var(--td-footer-link-margin-bottom, @footer-link-margin-bottom); // 链接底部间距
+    margin-bottom: @footer-link-margin-bottom; // 链接底部间距
   }
 
   &__link-item {
-    color: var(--td-footer-link-color, @footer-link-color); // 链接文本颜色
-    font-size: var(--td-footer-link-font-size, @footer-link-font-size); // 链接文本大小
-    line-height: var(--td-footer-link-line-height, @footer-link-line-height); // 链接文本行高
+    color: @footer-link-color; // 链接文本颜色
+    font-size: @footer-link-font-size; // 链接文本大小
+    line-height: @footer-link-line-height; // 链接文本行高
     text-decoration: underline;
   }
 
   &__link-line {
-    font-size: var(--td-footer-link-font-size, 24rpx);
-    color: var(--td-footer-link-dividing-line-color, @footer-link-dividing-line-color); // 链接分界线颜色
+    font-size: 24rpx;
+    color: @footer-link-dividing-line-color; // 链接分界线颜色
     display: inline-block;
-    padding: 0 var(--td-footer-link-dividing-line-padding, @footer-link-dividing-line-padding); // 链接分界线左右间距
+    padding: 0 @footer-link-dividing-line-padding; // 链接分界线左右间距
   }
 
   &__logo {
@@ -56,19 +56,19 @@
   }
 
   &__icon {
-    width: var(--td-footer-logo-icon-width, @footer-logo-icon-width); // 图标宽度
-    height: var(--td-footer-logo-icon-height, @footer-logo-icon-height); // 图标高度
-    margin-right: var(--td-footer-logo-icon-margin-right, @footer-logo-icon-margin-right); // 图标右部间距
+    width: @footer-logo-icon-width; // 图标宽度
+    height: @footer-logo-icon-height; // 图标高度
+    margin-right: @footer-logo-icon-margin-right; // 图标右部间距
   }
 
   &__title {
     font-weight: bold;
-    font-size: var(--td-footer-logo-title-font-size, @footer-logo-title-font-size); // 图标配置，标题文本大小
-    line-height: var(--td-footer-logo-title-line-height, @footer-logo-title-line-height); // 图标配置，标题文本行高
+    font-size: @footer-logo-title-font-size; // 图标配置，标题文本大小
+    line-height: @footer-logo-title-line-height; // 图标配置，标题文本行高
     font-style: italic;
   }
 
   &__title-url {
-    width: var(--td-footer-logo-title-url-width, @footer-logo-title-url-width); // 图标配置，链接跳转地址宽度
+    width: @footer-logo-title-url-width; // 图标配置，链接跳转地址宽度
   }
 }

@@ -1,5 +1,0 @@
-<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="top">
-  <view class="block block--top">顶部弹出</view>
-</t-popup>
-
-<t-button block size="large" bind:tap="handlePopup">顶部弹出</t-button>

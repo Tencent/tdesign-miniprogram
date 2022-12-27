@@ -36,26 +36,25 @@ export default class CheckTag extends SuperComponent {
   };
 
   observers = {
-    'size, shape, closable, disabled, checked'() {
+    'size, closable, disabled, checked'() {
       this.setClass();
     },
   };
 
   methods = {
     setClass() {
-      const { prefix, classPrefix } = this.data;
-      const { size, shape, variant, closable, disabled, checked, defaultChecked } = this.properties;
+      const { classPrefix } = this.data;
+      const { size, variant, closable, disabled, checked, defaultChecked } = this.properties;
       const isChecked = checked || defaultChecked;
       const tagClass = [
         classPrefix,
         `${classPrefix}--checkable`,
-        closable ? `${classPrefix}--closable ${prefix}-is-closable` : '',
-        disabled ? `${classPrefix}--disabled ${prefix}-is-disabled` : '',
-        isChecked ? `${classPrefix}--checked ${prefix}-is-checked` : '',
-        `${classPrefix}--theme-${isChecked ? 'primary' : 'default'}`,
-        `${classPrefix}--size-${size || 'medium'}`,
-        `${classPrefix}--shape-${shape || 'square'}`,
-        `${classPrefix}--variant-${variant || 'dark'}`,
+        closable ? `${classPrefix}--closable` : '',
+        disabled ? `${classPrefix}--disabled` : '',
+        isChecked ? `${classPrefix}--checked` : '',
+        `${classPrefix}--${isChecked ? 'primary' : 'default'}`,
+        `${classPrefix}--${size}`,
+        `${classPrefix}--${variant}`,
       ];
       const className = classNames(tagClass);
       this.setData({
@@ -63,18 +62,14 @@ export default class CheckTag extends SuperComponent {
       });
     },
 
-    handleClose(e: WechatMiniprogram.BaseEvent) {
-      if (this.data.disabled) return;
-      this.triggerEvent('close', e);
-    },
-
-    handleChange() {
+    onClick() {
       if (this.data.disabled) return;
       const { checked, defaultChecked } = this.properties;
       const isChecked = checked || defaultChecked;
       this.setData({
         checked: !isChecked,
       });
+      this._trigger('click');
       this._trigger('change', { checked: !isChecked });
     },
   };

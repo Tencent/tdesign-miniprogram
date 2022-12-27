@@ -2,7 +2,7 @@
   <slot />
   <!-- 自定义折叠元素 -->
   <view class="{{classPrefix}}__collapse--slot {{collapseAvatar ? prefix + '-is-hidden' : ''}}">
-    <slot name="collapseAvatar" />
+    <slot name="collapse-avatar" />
   </view>
   <!-- 默认折叠元素 -->
   <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">

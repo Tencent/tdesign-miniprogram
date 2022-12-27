@@ -2,7 +2,6 @@
   "navigationBarTitleText": "Dropdown Menu 下拉菜单",
   "usingComponents": {
     "single": "./single",
-    "multi": "./multi",
-    "tree": "./tree"
+    "multi": "./multi"
   }
 }

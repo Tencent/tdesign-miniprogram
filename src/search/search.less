@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@seach-bg-color: var(--td-seach-bg-color, @gray-color-1);
+@search-bg-color: var(--td-search-bg-color, @gray-color-1);
 @search-text-color: var(--td-search-text-color, @font-gray-1);
 @search-label-color: var(--search-label-color, @font-gray-1);
 @search-font-size: var(--td-search-font-size, @font-size-m);
@@ -29,12 +29,12 @@
     display: flex;
     height: @search-height;
     align-items: center;
-    border: 2rpx solid @seach-bg-color;
-    background: @seach-bg-color;
+    border: 2rpx solid @search-bg-color;
+    background: @search-bg-color;
     padding: @search-padding;
 
     &.@{prefix}-is-focused {
-      border-color: @seach-bg-color;
+      border-color: @search-bg-color;
     }
 
     &--round {

@@ -7,11 +7,8 @@
     navigation="{{navigation}}"
     direction="vertical"
     paginationPosition="{{paginationPosition}}"
-    height="{{400}}"
+    list="{{swiperList}}"
   >
-    <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
-      <image src="{{item.image}}" class="img" mode="aspectFill" />
-    </t-swiper-item>
   </t-swiper>
 </view>
 

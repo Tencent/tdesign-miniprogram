@@ -27,10 +27,6 @@ const nav = {
       label: '步骤条',
     },
     {
-      name: 'Sticky',
-      label: '吸顶',
-    },
-    {
       name: 'TabBar',
       label: '标签栏',
     },
