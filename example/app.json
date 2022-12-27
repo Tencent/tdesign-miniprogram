@@ -2,7 +2,6 @@
   "pages": [
     "pages/home/home",
     "pages/button/button",
-    "pages/button-group/button-group",
     "pages/tabs/tabs",
     "pages/icon/icon",
     "pages/loading/loading",
@@ -113,7 +112,6 @@
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tabs/tab-panel",
     "t-loading": "tdesign-miniprogram/loading/loading",
-    "t-button-group": "tdesign-miniprogram/button-group/button-group",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-rate": "tdesign-miniprogram/rate/rate",
     "t-progress": "tdesign-miniprogram/progress/progress",

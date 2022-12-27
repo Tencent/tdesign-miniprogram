@@ -87,24 +87,4 @@ describe('button', () => {
     await simulate.sleep(10);
     expect(handler).toHaveBeenCalledTimes(14);
   });
-
-  it(':with group', () => {
-    const buttonGroup = load(path.resolve(__dirname, '../../button-group/button-group'));
-    const id = simulate.load({
-      template: `<t-button-group type="primary" class="button-group">
-        <t-button></t-button>
-      </t-button-group>`,
-      usingComponents: {
-        't-button': button,
-        't-button-group': buttonGroup,
-      },
-    });
-
-    const comp = simulate.render(id);
-    comp.attach(document.createElement('parent-wrapper'));
-
-    const { classList } = comp.querySelector('.button-group >>> .t-button-group').dom;
-
-    expect(/t-button-group/.test(classList)).toBeTruthy();
-  });
 });
