@@ -102,9 +102,6 @@ export default class ActionSheet extends SuperComponent {
 
     onCancel() {
       this.triggerEvent('cancel');
-      this.setData({
-        visible: false,
-      });
     },
   };
 }
