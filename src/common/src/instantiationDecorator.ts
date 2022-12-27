@@ -66,7 +66,10 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       Behavior({
         created() {
           Object.defineProperty(this, `$${relation}`, {
-            get: () => this.getRelationNodes(path) || [],
+            get: () => {
+              const nodes = this.getRelationNodes(path) || [];
+              return relation === 'parent' ? nodes[0] : nodes;
+            },
           });
         },
       });

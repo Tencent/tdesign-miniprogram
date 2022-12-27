@@ -36,7 +36,9 @@ export default class SideBar extends SuperComponent {
 
   observers = {
     value(v) {
-      this.updateChild(v);
+      this.$children.forEach((item) => {
+        item.updateActive(v);
+      });
     },
   };
 
@@ -48,15 +50,6 @@ export default class SideBar extends SuperComponent {
   methods = {
     doChange({ value, label }) {
       this._trigger('change', { value, label });
-    },
-    updateChild(val) {
-      const items = this.getRelationNodes(relationsPath);
-
-      if (items.length) {
-        items.forEach((item) => {
-          item.updateActive(val);
-        });
-      }
     },
   };
 }

@@ -84,10 +84,9 @@ export default class Radio extends SuperComponent {
     },
     doChange() {
       const { value, checked } = this.data;
-      const [parent] = this.getRelationNodes('../radio-group/radio-group') ?? [null];
 
-      if (parent) {
-        parent.updateValue(value);
+      if (this.$parent) {
+        this.$parent.updateValue(value);
       } else {
         this._trigger('change', { checked: !checked });
       }

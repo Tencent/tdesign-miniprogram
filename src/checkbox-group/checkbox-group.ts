@@ -54,7 +54,7 @@ export default class CheckBoxGroup extends SuperComponent {
 
   methods = {
     getChilds() {
-      let items = this.getRelationNodes('../checkbox/checkbox');
+      let items = this.$children;
       if (!items.length) {
         items = this.selectAllComponents(`.${prefix}-checkbox-option`);
       }

@@ -47,7 +47,7 @@ export default class Collapse extends SuperComponent {
 
   methods = {
     updateExpanded() {
-      const panels = this.getRelationNodes('./collapse-panel');
+      const panels = this.$children;
 
       if (panels.length === 0) return;
 
