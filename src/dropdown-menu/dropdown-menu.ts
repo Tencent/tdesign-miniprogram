@@ -81,7 +81,12 @@ export default class DropdownMenu extends SuperComponent {
     },
     getAllItems() {
       const nodes = this.getRelationNodes('./dropdown-item');
-      const menus = nodes.map(({ data }) => ({ label: data.label, disabled: data.disabled }));
+      const menus = nodes.map(({ data }) => ({
+        label: data.label,
+        disabled: data.disabled,
+        optionsColumns: data.optionsColumns,
+        multiple: data.multiple,
+      }));
 
       this.nodes = nodes;
       this.setData({

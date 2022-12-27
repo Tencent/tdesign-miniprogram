@@ -8,6 +8,7 @@
   aria-checked="{{checked}}"
   aria-label="{{label + content}}"
   aria-disabled="{{disabled}}"
+  tabindex="{{tabindex}}"
 >
   <view
     class="{{_.cls(classPrefix + '__icon', [align, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
