@@ -227,6 +227,10 @@ export const setIcon = (iconName, icon, defaultIcon) => {
       };
     }
   }
+  return {
+    [`${iconName}Name`]: '',
+    [`${iconName}Data`]: {},
+  };
 };
 
 export const isObject = (val) => typeof val === 'object' && val != null;
