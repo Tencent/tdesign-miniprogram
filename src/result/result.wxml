@@ -1,23 +1,23 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
 <view style="{{customStyle}}" class="{{classPrefix}} {{classPrefix}}--theme-{{theme}} {{prefix}}-class">
   <view aria-hidden="true" class="{{classPrefix}}__thumb">
     <t-image wx:if="{{image}}" t-class="{{prefix}}-class-image" src="{{image}}" mode="aspectFit" />
-    <t-icon
-      wx:elif="{{ iconName }}"
-      name="{{ iconName }}"
-      prefix="{{iconProps.prefix}}"
-      size="{{iconProps.size || '140rpx'}}"
-      color="{{iconProps.color}}"
-      customStyle="{{iconProps.customStyle}}"
-    ></t-icon>
-    <slot wx:else name="image" class="{{prefix}}-class-image" />
+    <template
+      wx:elif="{{iconName || _.isNoEmptyObj(iconData)}}"
+      is="icon"
+      data="{{class: classPrefix + '__icon', name: iconName, ...iconData}}"
+    />
+    <slot wx:else name="image" />
   </view>
 
   <view class="{{classPrefix}}__title {{prefix}}-class-title">
-    <view wx:if="{{title}}"> {{title}} </view>
-    <slot wx:else name="title" />
+    <block wx:if="{{title}}"> {{title}} </block>
+    <slot name="title" />
   </view>
   <view class="{{classPrefix}}__description {{prefix}}-class-description">
-    <view wx:if="{{description}}"> {{description}} </view>
-    <slot wx:else name="description" />
+    <block wx:if="{{description}}"> {{description}} </block>
+    <slot name="description" />
   </view>
 </view>

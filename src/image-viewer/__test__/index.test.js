@@ -39,13 +39,13 @@ describe('image-viewer', () => {
     const handleClose = jest.fn();
     const handleDelete = jest.fn();
     const id = simulate.load({
-      template: `<t-image-viewer 
-        id="base" 
-        visible 
+      template: `<t-image-viewer
+        id="base"
+        visible
         closeBtn
         deleteBtn
         bind:delete="handleDelete"
-        bind:close="handleClose" 
+        bind:close="handleClose"
         images="{{images}}" />`,
       data: {
         images: ['a.png', 'b.png'],
@@ -64,7 +64,7 @@ describe('image-viewer', () => {
     // close
     const $close = comp.querySelector('#base >>> .t-image-viewer__nav-close');
 
-    $close.dispatchEvent('click');
+    $close.dispatchEvent('tap');
     await simulate.sleep();
 
     expect(handleClose).toHaveBeenCalled();
@@ -72,7 +72,7 @@ describe('image-viewer', () => {
     // delete
     const $delete = comp.querySelector('#base >>> .t-image-viewer__nav-delete');
 
-    $delete.dispatchEvent('click');
+    $delete.dispatchEvent('tap');
     await simulate.sleep();
 
     expect(handleDelete).toHaveBeenCalled();

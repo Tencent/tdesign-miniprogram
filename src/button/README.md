@@ -65,8 +65,7 @@ custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 禁用状态 | N
 external-classes | Array | - | 组件类名。`['t-class', 't-class-icon', 't-class-loading']` | N
 ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
-icon | String | - | 图标名称 | N
-icon-props | Object | {} | 图标属性，透传至 icon | N
+icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 loading | Boolean | false | 是否显示为加载状态 | N
 loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
 shape | String | rectangle | 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形。可选项：rectangle/square/round/circle | N

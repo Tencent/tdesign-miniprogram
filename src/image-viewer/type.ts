@@ -48,23 +48,13 @@ export interface TdImageViewerProps {
   };
   /** 是否显示删除操作 */
   deleteBtn?: {
-    type: BooleanConstructor;
-    value: false;
+    type: null;
+    value?: boolean | string | object;
   };
   /** 是否显示关闭操作 */
   closeBtn?: {
-    type: BooleanConstructor;
-    value: false;
-  };
-  /** 删除图标属性，透传至删除操作按钮 icon */
-  deleteIconProps: {
-    type: ObjectConstructor;
-    value?: object;
-  };
-  /** 关闭图标属性，透传至关闭操作按钮 icon */
-  closeIconProps: {
-    type: ObjectConstructor;
-    value?: object;
+    type: null;
+    value?: boolean | string | object;
   };
   /**
    * 隐藏/显示预览

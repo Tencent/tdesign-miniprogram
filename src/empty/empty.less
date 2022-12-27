@@ -1,6 +1,9 @@
 @import '../common/style/index.less';
 
+@empty-icon-font-size: 192rpx;
+
 @empty-description-color: var(--td-empty-description-color, @font-gray-3);
+@empty-icon-color: var(--td-empty-icon-color, @font-gray-3);
 @empty-description-font-size: var(--td-empty-description-font-size, @font-size-base);
 @empty-description-line-height: var(--td-empty-description-line-height, 44rpx);
 @empty-description-margin-top: var(--td-empty-description-margin-top, @spacer-2);
@@ -9,18 +12,18 @@
 .@{prefix}-empty {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
-  &__content {
-    text-align: center;
+  &__icon {
+    font-size: @empty-icon-font-size;
+    color: @empty-icon-color;
   }
 
-  &__img {
-    width: 100rpx;
-    height: 100rpx;
+  &__thumb + &__description:not(:empty) {
+    margin-top: @empty-description-margin-top; // 描述内容顶部间距
   }
 
   &__description {
-    margin-top: @empty-description-margin-top; // 描述内容顶部间距
     text-align: center;
     color: @empty-description-color; // 描述内容颜色
     font-size: @empty-description-font-size; // 描述内容字体大小

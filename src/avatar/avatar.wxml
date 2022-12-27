@@ -1,3 +1,5 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
 <wxs src="./avatar.wxs" module="this" />
 
 <view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getAvatarStyles(isShow, zIndex, customStyle)}}">
@@ -37,15 +39,11 @@
         error="{{alt}}"
         bind:error="onLoadError"
       />
-      <t-icon
-        wx:elif="{{icon}}"
-        name="{{icon || iconProps.name}}"
-        prefix="{{iconProps.prefix}}"
-        size="{{iconProps.size}}"
-        color="{{iconProps.color}}"
-        customStyle="{{iconProps.customStyle}}"
-        class="{{classPrefix}}__icon {{prefix}}-class-icon"
-      ></t-icon>
+      <template
+        wx:elif="{{iconName || _.isNoEmptyObj(iconData)}}"
+        is="icon"
+        data="{{class: classPrefix + '__icon', tClass: prefix + '-class-icon', name: iconName, ...iconData}}"
+      />
       <view wx:else class="{{classPrefix}}__text {{prefix}}-class-content">
         <slot />
       </view>
