@@ -40,9 +40,7 @@ exports[`notice-bar props : marquee 1`] = `
           animation=""
           class="t-notice-bar__content t-class-content "
         >
-          <wx-view>
-             提示文字描述提示文字描述提示文字描述提示文字描述文 
-          </wx-view>
+           提示文字描述提示文字描述提示文字描述提示文字描述文 
         </wx-view>
       </wx-view>
       <wx-view
