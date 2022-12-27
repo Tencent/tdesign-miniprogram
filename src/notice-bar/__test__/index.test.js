@@ -17,13 +17,12 @@ mockGetAnimationFrame.mockImplementation((cb) => {
 });
 
 // 调用函数第1次的返回值 nodeRect
-mockGetRect.mockImplementationOnce(() => {
-  return {
-    width: 350,
-  };
-});
-// 调用函数第2次的返回值 warpID
-mockGetRect.mockImplementationOnce(() => {
+mockGetRect.mockImplementation((context, id) => {
+  if (id === '.t-notice-bar__content') {
+    return {
+      width: 350,
+    };
+  }
   return {
     width: 313,
   };
