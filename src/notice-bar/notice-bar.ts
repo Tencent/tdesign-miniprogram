@@ -1,17 +1,10 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
-import { getRect, getAnimationFrame } from '../common/utils';
+import { getRect, getAnimationFrame, setIcon } from '../common/utils';
 import props from './props';
 import config from '../common/config';
 
 const { prefix } = config;
 const name = `${prefix}-notice-bar`;
-
-const THEME_ICON = {
-  info: 'error-circle-filled',
-  success: 'check-circle-filled',
-  warning: 'error-circle-filled',
-  error: 'close-circle-filled',
-};
 
 @wxComponent()
 export default class NoticeBar extends SuperComponent {
@@ -57,12 +50,15 @@ export default class NoticeBar extends SuperComponent {
       }
     },
 
-    'prefixIcon, theme'() {
-      this.setPrefixIcon();
+    prefixIcon(prefixIcon) {
+      this.setPrefixIcon(prefixIcon);
     },
 
-    suffixIcon() {
-      this.setSuffixIcon();
+    suffixIcon(suffixIcon) {
+      const obj = setIcon('suffixIcon', suffixIcon, '');
+      this.setData({
+        ...obj,
+      });
     },
 
     content() {
@@ -175,40 +171,11 @@ export default class NoticeBar extends SuperComponent {
       this.nextAnimationContext = null;
     },
 
-    setPrefixIcon() {
-      const { prefixIcon, theme } = this.properties;
-      if (!prefixIcon) {
-        this.setData({ prefixIconName: '', prefixIconData: {} });
-      } else if (typeof prefixIcon === 'string') {
-        this.setData({
-          prefixIconName: prefixIcon,
-          prefixIconData: {},
-        });
-      } else if (typeof prefixIcon === 'object') {
-        this.setData({
-          prefixIconName: '',
-          prefixIconData: prefixIcon,
-        });
-      } else {
-        this.setData({ prefixIconName: THEME_ICON[theme], prefixIconData: {} });
-      }
-    },
-
-    setSuffixIcon() {
-      const { suffixIcon } = this.properties;
-      if (suffixIcon) {
-        if (typeof suffixIcon === 'string') {
-          this.setData({
-            suffixIconName: suffixIcon,
-            suffixIconData: {},
-          });
-        } else if (typeof suffixIcon === 'object') {
-          this.setData({
-            suffixIconName: '',
-            suffixIconData: suffixIcon,
-          });
-        }
-      }
+    setPrefixIcon(prefixIcon) {
+      const obj = setIcon('prefixIcon', prefixIcon, 'error-circle-filled');
+      this.setData({
+        ...obj,
+      });
     },
 
     clickPrefixIcon() {
