@@ -37,10 +37,9 @@ export default class Textarea extends SuperComponent {
     count: 0,
   };
 
-  lifetimes = {
-    ready() {
-      const { value } = this.properties;
-      this.updateValue(value);
+  observers = {
+    value(val) {
+      this.updateValue(val);
     },
   };
 
@@ -50,18 +49,18 @@ export default class Textarea extends SuperComponent {
       if (maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
         this.setData({
-          value: characters,
+          computedValue: characters,
           count: length,
         });
       } else if (maxlength > 0 && !Number.isNaN(maxlength)) {
         const { length, characters } = getCharacterLength('maxlength', value, maxlength);
         this.setData({
-          value: characters,
+          computedValue: characters,
           count: length,
         });
       } else {
         this.setData({
-          value,
+          computedValue: value,
           count: value ? String(value).length : 0,
         });
       }
@@ -70,7 +69,7 @@ export default class Textarea extends SuperComponent {
     onInput(event) {
       const { value } = event.detail;
       this.updateValue(value);
-      this.triggerEvent('change', { value: this.data.value });
+      this.triggerEvent('change', { value: this.data.computedValue });
     },
     onFocus(event) {
       this.triggerEvent('focus', {
