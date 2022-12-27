@@ -77,14 +77,14 @@
           data="{{tClass: prefix + '-class-clearable', ariaRole: 'button', ariaLabel: '清除', name: clearableName, ...clearableData}}"
         ></template>
       </view>
-      <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix" bind:tap="clickSuffix">
+      <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix" bind:tap="onSuffixClick">
         <text wx:if="{{suffix}}">{{suffix}}</text>
         <slot wx:else name="suffix" />
       </view>
       <view
         wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}"
         class="{{classPrefix}}__wrap--suffix-icon"
-        bind:tap="clickSuffixIcon"
+        bind:tap="onSuffixIconClick"
       >
         <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
         <template

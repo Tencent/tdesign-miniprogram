@@ -107,10 +107,10 @@ export default class Input extends SuperComponent {
     onConfirm(e) {
       this.triggerEvent('enter', e.detail);
     },
-    clickSuffix() {
+    onSuffixClick() {
       this.triggerEvent('click', { trigger: 'suffix' });
     },
-    clickSuffixIcon() {
+    onSuffixIconClick() {
       this.triggerEvent('click', { trigger: 'suffix-icon' });
     },
     clearInput(e) {

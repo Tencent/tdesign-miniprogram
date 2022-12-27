@@ -5,7 +5,7 @@
 @input-small-vertical-padding: 24rpx;
 @input-small-horizontal-padding: 32rpx;
 
-@input-default-border-color: var(--td-input-default-border-color, rgba(220, 220, 220, 1)); // 'default' 状态边框颜色
+@input-default-border-color: var(--td-input-default-border-color, @border-color); // 'default' 状态边框颜色
 @input-default-focus-border-color: var(
   --td-input-default-focus-border-color,
   @primary-color
@@ -98,7 +98,7 @@
     &--prefix,
     &--clearable-icon,
     &--suffix-icon {
-      font-size: @font-size * 2.4;
+      font-size: 48rpx;
       color: @input-suffix-icon-color;
     }
 
