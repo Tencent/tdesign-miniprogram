@@ -44,9 +44,7 @@ export default class Grid extends SuperComponent {
 
   methods = {
     doForChild(action: (item: WechatMiniprogram.Component.TrivialInstance) => void) {
-      const children = this.getRelationNodes('./grid-item') ?? [];
-
-      children.forEach(action);
+      this.$children.forEach(action);
     },
     updateContentStyle() {
       const contentStyles = [];

@@ -1,0 +1,39 @@
+@import '../common/style/index.less';
+
+@tree-bg-color: var(--td-tree-bg-color, @bg-color-block);
+@tree-root-bg-color: var(--td-tree-root-bg-color, @gray-color-1);
+@tree-item-active-color: var(--td-tree-item-active-color, @primary-color);
+@tree-item-height: var(--td-tree-item-height, 112rpx);
+@tree-item-font-size: var(--td-tree-item-font-size, 32rpx);
+
+.@{prefix}-tree-select {
+  display: flex;
+  background-color: @tree-bg-color;
+
+  &__column {
+    flex: 1;
+
+    &--left {
+      background: @tree-root-bg-color;
+    }
+
+    &--right {
+      flex: 2;
+    }
+  }
+
+  &__item {
+    height: @tree-item-height;
+    line-height: @tree-item-height;
+    font-size: @tree-item-font-size;
+    padding-left: 32rpx;
+
+    &--active {
+      color: @tree-item-active-color;
+    }
+  }
+
+  &-column {
+    width: 100%;
+  }
+}

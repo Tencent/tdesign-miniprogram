@@ -1,82 +1,79 @@
 @import '../common/style/index.less';
 
 @button-default-height: var(--td-button-default-height, 80rpx);
-@button-default-font-size: @font-size * 1.6;
-@button-border-width: 1px;
-@button-border-radius: @radius-default;
-@button-small-height: 32 * 2rpx;
-@button-small-line-height: 32 * 2rpx;
-@button-large-height: 48 * 2rpx;
+@button-default-font-size: var(--td-button-default-font-size, @font-size-m);
+@button-border-width: var(--td-button-border-width, 1px);
+@button-border-radius: var(--td-button-border-radius, @radius-default);
+@button-small-height: var(--td-button-small-height, 64rpx);
+@button-small-line-height: var(--td-button-small-line-height, 64rpx);
+@button-large-height: var(--td-button-large-height, 96rpx);
 
-@button-font-weight: 600;
+@button-font-weight: var(--td-button-font-weight, 600);
 
 // button icon
-@button-icon-spacer: @spacer;
-@button-icon-border-radius: 8rpx;
+@button-icon-spacer: var(--td-button-icon-spacer, @spacer);
+@button-icon-border-radius: var(--td-button-icon-border-radius, 8rpx);
 
 // padding
-@button-padding-horizontal: 48rpx;
+@button-padding-horizontal: var(--td-button-padding-horizontal, 48rpx);
 
 // 图标大小
-@button-icon-size-s: 40rpx;
-@button-icon-size-m: 44rpx;
-@button-icon-size-l: 48rpx;
+@button-icon-size-s: var(--td-button-icon-size-s, 40rpx);
+@button-icon-size-m: var(--td-button-icon-size-m, 44rpx);
+@button-icon-size-l: var(--td-button-icon-size-l, 48rpx);
 
-// 颜色相关
-@primary-color-disabled: #bbd3fb;
-@danger-color-disabled: #f8b9be;
 // default
-@button-default-color: rgba(0, 0, 0, 0.9);
-@button-default-bg-color: @gray-color-3;
-@button-default-border-color: @gray-color-4;
-@button-default-disabled-color: rgba(0, 0, 0, 0.26);
+@button-default-color: var(--td-button-default-color, @font-gray-1);
+@button-default-bg-color: var(--td-button-default-bg-color, @gray-color-3);
+@button-default-border-color: var(--td-button-default-border-color, @gray-color-4);
+@button-default-disabled-color: var(--td-button-default-disabled-color, @font-gray-4);
 // primary
-@button-primary-color: @text-anti-primary-color;
-@button-primary-border-color: @primary-color;
-@button-primary-bg-color: @primary-color;
-@button-primary-disabled-color: @primary-color-disabled;
+@button-primary-color: var(--td-button-primary-color, @text-anti-primary-color);
+@button-primary-border-color: var(--td-button-primary-border-color, @primary-color);
+@button-primary-bg-color: var(--td-button-primary-bg-color, @primary-color);
+@button-primary-disabled-color: var(--td-button-primary-disabled-color, @primary-color-3);
 // light
-@button-light-color: @primary-color;
-@button-light-border-color: @primary-color-2;
-@button-light-bg-color: @primary-color-2;
-@button-light-disabled-color: @primary-color-3;
-@button-light-disabled-bg: @primary-color-1;
+@button-light-color: var(--td-button-light-color, @primary-color);
+@button-light-border-color: var(--td-button-light-border-color, @primary-color-2);
+@button-light-bg-color: var(--td-button-light-bg-color, @primary-color-2);
+@button-light-disabled-color: var(--td-button-light-disabled-color, @primary-color-3);
+@button-light-disabled-bg: var(--td-button-light-disabled-bg, @primary-color-1);
 // danger
-@button-danger-color: @text-anti-primary-color;
-@button-danger-border-color: @error-color;
-@button-danger-bg-color: @error-color;
-@button-danger-disabled-color: @danger-color-disabled;
+@button-danger-color: var(--td-button-danger-color, @text-anti-primary-color);
+@button-danger-border-color: var(--td-button-danger-border-color, @error-color);
+@button-danger-bg-color: var(--td-button-danger-bg-color, @error-color);
+@button-danger-disabled-color: var(--td-button-danger-disabled-color, @error-color-3);
 // primary + outline
-@button-primary-outline-color: @primary-color;
-@button-primary-outline-disabled-color: @primary-color-disabled;
+@button-primary-outline-color: var(--td-button-primary-outline-color, @primary-color);
+@button-primary-outline-disabled-color: var(--td-button-primary-outline-disabled-color, @primary-color-3);
 // danger + outline
-@button-danger-outline-color: @error-color;
-@button-danger-outline-disabled-color: @button-danger-disabled-color;
+@button-danger-outline-color: var(--td-button-danger-outline-color, @error-color);
+@button-danger-outline-disabled-color: var(--td-button-danger-outline-disabled-color, @button-danger-disabled-color);
 // light + outline
-@button-light-outline-color: @primary-color;
-@button-light-outline-disabled-color: @primary-color-disabled;
+@button-light-outline-color: var(--td-button-light-outline-color, @primary-color);
+@button-light-outline-disabled-color: var(--td-button-light-outline-disabled-color, @primary-color-3);
 // primary + dashed
-@button-primary-dashed-color: @primary-color;
-@button-primary-dashed-disabled-color: @primary-color-disabled;
+@button-primary-dashed-color: var(--td-button-primary-dashed-color, @primary-color);
+@button-primary-dashed-disabled-color: var(--td-button-primary-dashed-disabled-color, @primary-color-3);
 // danger + dashed
-@button-danger-dashed-color: @error-color;
-@button-danger-dashed-disabled-color: @button-danger-disabled-color;
+@button-danger-dashed-color: var(--td-button-danger-dashed-color, @error-color);
+@button-danger-dashed-disabled-color: var(--td-button-danger-dashed-disabled-color, @button-danger-disabled-color);
 // primary + text
-@button-primary-text-color: @primary-color;
-@button-primary-text-disabled-color: @primary-color-disabled;
+@button-primary-text-color: var(--td-button-primary-text-color, @primary-color);
+@button-primary-text-disabled-color: var(--td-button-primary-text-disabled-color, @primary-color-3);
 // danger + text
-@button-danger-text-color: @error-color;
-@button-danger-text-disabled-color: @button-danger-disabled-color;
+@button-danger-text-color: var(--td-button-danger-text-color, @error-color);
+@button-danger-text-disabled-color: var(--td-button-danger-text-disabled-color, @button-danger-disabled-color);
 // light + text
-@button-light-text-color: @primary-color;
+@button-light-text-color: var(--td-button-light-text-color, @primary-color);
 // ghost 优先级高于 theme，固定透明背景，白色边框，白色字体
-@button-ghost-color: #fff;
-@button-ghost-border-color: @button-ghost-color;
-@button-ghost-disabled-color: rgba(255, 255, 255, 0.35);
-@button-ghost-primary-color: @primary-color;
-@button-ghost-primary-border-color: @primary-color;
-@button-ghost-danger-color: @error-color;
-@button-ghost-danger-border-color: @error-color;
+@button-ghost-color: var(--td-button-ghost-color, @bg-color-block);
+@button-ghost-border-color: var(--td-button-ghost-border-color, @button-ghost-color);
+@button-ghost-disabled-color: var(--td-button-ghost-disabled-color, rgba(255, 255, 255, 0.35));
+@button-ghost-primary-color: var(--td-button-ghost-primary-color, @primary-color);
+@button-ghost-primary-border-color: var(--td-button-ghost-primary-border-color, @primary-color);
+@button-ghost-danger-color: var(--td-button-ghost-danger-color, @error-color);
+@button-ghost-danger-border-color: var(--td-button-ghost-danger-border-color, @error-color);
 
 @button: ~'@{prefix}-button';
 
@@ -97,9 +94,9 @@
   border-radius: @button-border-radius;
   outline: none;
   font-family: PingFang SC, Microsoft YaHei, Arial Regular;
-  padding-left: (@button-padding-horizontal - @button-border-width);
-  padding-right: (@button-padding-horizontal - @button-border-width);
-  font-weight: var(--td-button-font-weight, @button-font-weight);
+  padding-left: calc(@button-padding-horizontal - @button-border-width);
+  padding-right: calc(@button-padding-horizontal - @button-border-width);
+  font-weight: @button-font-weight;
 
   /* stylelint-disable-next-line */
   -webkit-appearance: none;
@@ -120,51 +117,51 @@
   }
 
   &--default {
-    color: var(--td-button-default-color, @button-default-color);
-    background-color: var(--td-button-default-bg-color, @button-default-bg-color);
-    border: 1px solid var(--td-button-default-border-color, @button-default-bg-color);
+    color: @button-default-color;
+    background-color: @button-default-bg-color;
+    border: 1px solid @button-default-bg-color;
 
     &.@{prefix}-is-disabled {
-      color: var(--td-button-default-disabled-color, @button-default-disabled-color);
+      color: @button-default-disabled-color;
     }
   }
 
   &--primary {
-    color: var(--td-button-primary-color, @button-primary-color);
-    background-color: var(--td-button-primary-bg-color, @button-primary-bg-color);
-    border: 1px solid var(--td-button-primary-border-color, @button-primary-border-color);
+    color: @button-primary-color;
+    background-color: @button-primary-bg-color;
+    border: 1px solid @button-primary-border-color;
 
     &.@{prefix}-is-disabled {
-      background-color: var(--td-button-primary-disabled-color, @button-primary-disabled-color);
-      border-color: var(--td-button-primary-disabled-color, @button-primary-disabled-color);
+      background-color: @button-primary-disabled-color;
+      border-color: @button-primary-disabled-color;
     }
   }
 
   &--light {
-    color: var(--td-button-light-color, @button-light-color);
-    background-color: var(--td-button-light-bg-color, @button-light-bg-color);
-    border: 1px solid var(--td-button-light-border-color, @button-light-border-color);
+    color: @button-light-color;
+    background-color: @button-light-bg-color;
+    border: 1px solid @button-light-border-color;
 
     &.@{prefix}-is-disabled {
-      color: var(--td-button-light-disabled-color, @button-light-disabled-color);
-      background-color: var(--td-button-light-disabled-color, @button-light-disabled-bg);
-      border-color: var(--td-button-light-disabled-color, @button-light-disabled-bg);
+      color: @button-light-disabled-color;
+      background-color: @button-light-disabled-bg;
+      border-color: @button-light-disabled-bg;
     }
   }
 
   &--danger {
-    color: var(--td-button-danger-color, @button-danger-color);
-    background-color: var(--td-button-danger-bg-color, @button-danger-bg-color);
-    border: 1px solid var(--td-button-danger-border-color, @button-danger-border-color);
+    color: @button-danger-color;
+    background-color: @button-danger-bg-color;
+    border: 1px solid @button-danger-border-color;
 
     &.@{prefix}-is-disabled {
-      background-color: var(--td-button-danger-disabled-color, @button-danger-disabled-color);
-      border-color: var(--td-button-danger-disabled-color, @button-danger-disabled-color);
+      background-color: @button-danger-disabled-color;
+      border-color: @button-danger-disabled-color;
     }
   }
 
   &--text {
-    color: var(--td-button-default-color, @button-default-color);
+    color: @button-default-color;
     background: none;
     border: 0;
 
@@ -176,90 +173,90 @@
     }
 
     &.@{prefix}-is-disabled {
-      color: var(--td-button-default-disabled-color, @button-default-disabled-color);
+      color: @button-default-disabled-color;
     }
 
     &.@{prefix}-button--primary {
-      color: var(--td-button-primary-text-color, @button-primary-text-color);
+      color: @button-primary-text-color;
       background: none;
 
       &.@{prefix}-is-disabled {
-        color: var(--td-button-primary-text-disabled-color, @button-primary-text-disabled-color);
+        color: @button-primary-text-disabled-color;
         background: none;
       }
     }
 
     &.@{prefix}-button--danger {
-      color: var(--td-button-danger-text-color, @button-danger-text-color);
+      color: @button-danger-text-color;
       background: none;
 
       &.@{prefix}-is-disabled {
-        color: var(--td-button-danger-text-disabled-color, @button-danger-text-disabled-color);
+        color: @button-danger-text-disabled-color;
         background: none;
       }
     }
 
     &.@{prefix}-button--light {
-      color: var(--td-button-light-text-color, @button-light-text-color);
+      color: @button-light-text-color;
       background: none;
     }
   }
 
   &--ghost {
     background-color: transparent;
-    border: 1px solid var(--td-button-ghost-color, @button-ghost-color);
-    color: var(--td-button-ghost-border-color, @button-ghost-border-color);
+    border: 1px solid @button-ghost-color;
+    color: @button-ghost-border-color;
 
     &.@{prefix}-is-disabled {
-      color: var(--td-button-ghost-disabled-color, @button-ghost-disabled-color);
-      border-color: var(--td-button-ghost-disabled-color, @button-ghost-disabled-color);
+      color: @button-ghost-disabled-color;
+      border-color: @button-ghost-disabled-color;
     }
 
     &.@{button}--primary {
-      color: var(--td-button-ghost-primary-color, @button-ghost-primary-color);
-      border-color: var(--td-button-ghost-primary-border-color, @button-ghost-primary-border-color);
+      color: @button-ghost-primary-color;
+      border-color: @button-ghost-primary-border-color;
     }
 
     &.@{button}--danger {
-      color: var(--td-button-ghost-danger-color, @button-ghost-danger-color);
-      border-color: var(--td-button-ghost-danger-border-color, @button-ghost-danger-border-color);
+      color: @button-ghost-danger-color;
+      border-color: @button-ghost-danger-border-color;
     }
   }
 
   &--outline {
-    border-color: var(--td-button-default-border-color, @button-default-border-color);
+    border-color: @button-default-border-color;
     background-color: transparent;
 
     &.@{prefix}-button--primary {
-      color: var(--td-button-primary-outline-color, @button-primary-outline-color);
-      border-color: var(--td-button-primary-outline-color, @button-primary-outline-color);
+      color: @button-primary-outline-color;
+      border-color: @button-primary-outline-color;
 
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: var(--td-button-primary-outline-disabled-color, @button-primary-outline-disabled-color);
-        border-color: var(--td-button-primary-outline-disabled-color, @button-primary-outline-disabled-color);
+        color: @button-primary-outline-disabled-color;
+        border-color: @button-primary-outline-disabled-color;
       }
     }
 
     &.@{prefix}-button--danger {
-      color: var(--td-button-danger-outline-color, @button-danger-outline-color);
-      border-color: var(--td-button-danger-outline-color, @button-danger-outline-color);
+      color: @button-danger-outline-color;
+      border-color: @button-danger-outline-color;
 
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: var(--td-button-danger-outline-disabled-color, @button-danger-outline-disabled-color);
-        border-color: var(--td-button-danger-outline-disabled-color, @button-danger-outline-disabled-color);
+        color: @button-danger-outline-disabled-color;
+        border-color: @button-danger-outline-disabled-color;
       }
     }
 
     &.@{prefix}-button--light {
-      background-color: var(--td-button-light-outline-bg, @button-light-bg-color);
-      border-color: var(--td-button-light-outline-color, @button-light-outline-color);
+      background-color: @button-light-bg-color;
+      border-color: @button-light-outline-color;
 
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: var(--td-button-light-outline-disabled-color, @button-light-outline-disabled-color);
-        border-color: var(--td-button-light-outline-disabled-color, @button-light-outline-disabled-color);
+        color: @button-light-outline-disabled-color;
+        border-color: @button-light-outline-disabled-color;
       }
     }
   }
@@ -269,22 +266,22 @@
     border-style: dashed;
 
     &.@{prefix}-button--primary {
-      color: var(--td-button-primary-dashed-color, @button-primary-dashed-color);
-      border-color: var(--td-button-primary-dashed-color, @button-primary-dashed-color);
+      color: @button-primary-dashed-color;
+      border-color: @button-primary-dashed-color;
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: var(--td-button-primary-dashed-disabled-color, @button-primary-dashed-disabled-color);
-        border-color: var(--td-button-primary-dashed-disabled-color, @button-primary-dashed-disabled-color);
+        color: @button-primary-dashed-disabled-color;
+        border-color: @button-primary-dashed-disabled-color;
       }
     }
 
     &.@{prefix}-button--danger {
-      color: var(--td-button-danger-dashed-color, @button-danger-dashed-color);
-      border-color: var(--td-button-danger-dashed-color, @button-danger-dashed-color);
+      color: @button-danger-dashed-color;
+      border-color: @button-danger-dashed-color;
       &.@{prefix}-is-disabled {
         background-color: transparent;
-        color: var(--td-button-danger-dashed-disabled-color, @button-danger-dashed-disabled-color);
-        border-color: var(--td-button-danger-dashed-disabled-color, @button-danger-dashed-disabled-color);
+        color: @button-danger-dashed-disabled-color;
+        border-color: @button-danger-dashed-disabled-color;
       }
     }
   }
@@ -343,7 +340,7 @@
   &--round {
     &.@{prefix}-button--size {
       &-l {
-        border-radius: (@button-large-height / 2);
+        border-radius: calc(@button-large-height / 2);
       }
 
       &-m {
@@ -351,7 +348,7 @@
       }
 
       &-s {
-        border-radius: (@button-small-height / 2);
+        border-radius: calc(@button-small-height / 2);
       }
     }
   }
@@ -421,16 +418,5 @@
 
   .indicator-blue {
     color: white;
-  }
-}
-
-// button group
-.@{prefix}-button-group {
-  & .@{prefix}-button {
-    border: 0;
-    border-radius: 0;
-    box-shadow: 0;
-    width: 100%;
-    height: 100%;
   }
 }

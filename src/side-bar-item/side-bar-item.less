@@ -1,23 +1,28 @@
 @import '../common/style/index.less';
 
-@side-bar-active-color: @primary-color;
-@side-bar-border-radius: 18rpx;
-
-page {
-  --td-side-bar-active-color: @side-bar-active-color;
-  --td-side-bar-border-radius: @side-bar-border-radius;
-}
+@side-bar-color: var(--td-side-bar-color, @font-gray-1);
+@side-bar-font-size: var(--td-side-bar-font-size, 32rpx);
+@side-bar-item-height: var(--td-side-bar-item-height, 112rpx);
+@side-bar-bg-color: var(--td-side-bar-bg-color, @gray-color-1);
+@side-bar-disabled-color: var(--td-side-bar-disabled-color, @font-gray-4);
+@side-bar-active-color: var(--td-side-bar-active-color, @primary-color);
+@side-bar-border-radius: var(--td-side-bar-border-radius, 18rpx);
 
 .@{prefix}-side-bar-item {
   position: relative;
   padding: 32rpx;
-  font-size: 28rpx;
-  color: @font-gray-1;
-  background: @gray-color-1;
+  font-size: @side-bar-font-size;
+  color: @side-bar-color;
+  background: @side-bar-bg-color;
+  height: @side-bar-item-height;
+  box-sizing: border-box;
+  white-space: nowrap;
+  // line-height: @side-bar-item-height;
 
   &--active {
+    font-weight: 600;
     background: @bg-color-block;
-    color: var(--td-side-bar-active-color, @side-bar-active-color);
+    color: @side-bar-active-color;
   }
 
   &__prefix,
@@ -25,8 +30,8 @@ page {
     z-index: 1;
     position: absolute;
     right: 0;
-    width: calc(var(--td-side-bar-border-radius, @side-bar-border-radius) * 2);
-    height: calc(var(--td-side-bar-border-radius, @side-bar-border-radius) * 2);
+    width: calc(@side-bar-border-radius * 2);
+    height: calc(@side-bar-border-radius * 2);
     background: #fff;
 
     &::after {
@@ -34,28 +39,28 @@ page {
       display: block;
       width: 100%;
       height: 100%;
-      background-color: @gray-color-1;
+      background-color: @side-bar-bg-color;
     }
   }
 
   &__prefix {
-    top: calc(var(--td-side-bar-border-radius, @side-bar-border-radius) * -2);
+    top: calc(@side-bar-border-radius * -2);
 
     &::after {
-      border-bottom-right-radius: var(--td-side-bar-border-radius, @side-bar-border-radius);
+      border-bottom-right-radius: @side-bar-border-radius;
     }
   }
 
   &__suffix {
-    bottom: calc(var(--td-side-bar-border-radius, @side-bar-border-radius) * -2);
+    bottom: calc(@side-bar-border-radius * -2);
 
     &::after {
-      border-top-right-radius: var(--td-side-bar-border-radius, @side-bar-border-radius);
+      border-top-right-radius: @side-bar-border-radius;
     }
   }
 
   &--disabled {
-    color: @font-gray-4;
+    color: @side-bar-disabled-color;
   }
 
   &__line {
@@ -65,7 +70,7 @@ page {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    background: var(--td-side-bar-active-color, @side-bar-active-color);
+    background: @side-bar-active-color;
     border-radius: 8rpx;
   }
 }

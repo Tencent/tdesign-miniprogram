@@ -26,20 +26,17 @@ export default class AvatarGroup extends SuperComponent {
   relations: RelationsOptions = {
     './avatar': {
       type: 'descendant',
-      linked(this: AvatarGroup) {
-        this.children = this.getRelationNodes('./avatar');
-      },
     },
   };
 
   ready() {
     this.setData({
-      length: this.children.length,
+      length: this.$children.length,
     });
-    this.handleHasChild(this.children, this.data.hasChild);
-    this.handleChildSlot(this.properties.max, this.children, this.handleChildMax);
-    this.handleChildSize(this.properties.size, this.children);
-    this.handleChildCascading(this.properties.cascading, this.children);
+    this.handleHasChild(this.$children, this.data.hasChild);
+    this.handleChildSlot(this.properties.max, this.$children, this.handleChildMax);
+    this.handleChildSize(this.properties.size, this.$children);
+    this.handleChildCascading(this.properties.cascading, this.$children);
   }
 
   lifetimes = {

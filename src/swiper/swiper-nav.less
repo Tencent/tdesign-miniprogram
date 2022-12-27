@@ -1,20 +1,21 @@
 @import '../common/style/index.less';
 
-@swiper-nav-dot-color: rgba(255, 255, 255, 0.55);
-@swiper-nav-dot-active-color: #fff;
-@swiper-nav-fraction-color: #fff;
-@swiper-nav-fraction-bg-color: rgba(0, 0, 0, 0.4);
-@swiper-nav-btn-color: #fff;
-@swiper-nav-btn-bg-color: rgba(0, 0, 0, 0.4);
+// dot & dots-bar
+@swiper-nav-dot-color: var(--td-swiper-nav-dot-color, @font-white-2);
+@swiper-nav-dot-active-color: var(--td-swiper-nav-dot-active-color, @font-white-1);
+@swiper-nav-dot-size: var(--td-swiper-nav-dot-size, 12rpx);
+@swiper-nav-dots-bar-active-width: var(--td-swiper-nav-dots-bar-active-width, 40rpx);
 
-page {
-  --td-swiper-nav-dot-color: @swiper-nav-dot-color;
-  --td-swiper-nav-dot-active-color: @swiper-nav-dot-active-color;
-  --td-swiper-nav-fraction-color: @swiper-nav-fraction-color;
-  --td-swiper-nav-fraction-bg-color: @swiper-nav-fraction-bg-color;
-  --td-swiper-nav-btn-color: @swiper-nav-btn-color;
-  --td-swiper-nav-btn-bg-color: @swiper-nav-btn-bg-color;
-}
+// fraction
+@swiper-nav-fraction-color: var(--td-swiper-nav-fraction-color, @font-white-1);
+@swiper-nav-fraction-bg-color: var(--td-swiper-nav-fraction-bg-color, @font-gray-3);
+@swiper-nav-fraction-height: var(--td-swiper-nav-fraction-height, 48rpx);
+@swiper-nav-fraction-font-size: var(--td-swiper-nav-fraction-font-size, 24rpx);
+
+// button
+@swiper-nav-btn-color: var(--td-swiper-nav-btn-color, @font-white-1);
+@swiper-nav-btn-bg-color: var(--td-swiper-nav-btn-bg-color, @font-gray-3);
+@swiper-nav-btn-size: var(--td-swiper-nav-btn-size, 48rpx);
 
 .@{prefix}-swiper-nav {
   &__dots,
@@ -23,126 +24,101 @@ page {
     flex-direction: row;
 
     &-item {
-      width: 12rpx;
-      height: 12rpx;
-      background: var(--td-swiper-nav-dot-color, @swiper-nav-dot-color);
+      width: @swiper-nav-dot-size;
+      height: @swiper-nav-dot-size;
+      background: @swiper-nav-dot-color;
       border-radius: 50%;
       margin: 0 10rpx;
       transition: all 0.4s ease-in;
 
-      &.@{prefix}-is-active {
-        background-color: var(--td-swiper-nav-dot-active-color, @swiper-nav-dot-active-color);
+      &--vertical {
+        margin: 10rpx 0;
+      }
+
+      &--active {
+        background-color: @swiper-nav-dot-active-color;
       }
     }
   }
 
   &__dots-bar {
     &-item {
-      &.@{prefix}-is-active {
-        width: 40rpx;
-        border-radius: 6rpx;
-        background-color: var(--td-swiper-nav-dot-active-color, @swiper-nav-dot-active-color);
+      &--vertical&--active {
+        width: @swiper-nav-dot-size;
+        height: @swiper-nav-dots-bar-active-width;
+      }
+      &--active {
+        width: @swiper-nav-dots-bar-active-width;
+        border-radius: calc(@swiper-nav-dot-size / 2);
+        background-color: @swiper-nav-dot-active-color;
       }
     }
   }
 
-  &--position {
-    &-left .@{prefix}-swiper-nav__dots,
-    &-left .@{prefix}-swiper-nav__dots-bar,
-    &-left .@{prefix}-swiper-nav__fraction {
-      position: absolute;
-      left: 24rpx;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &-right .@{prefix}-swiper-nav__dots,
-    &-right .@{prefix}-swiper-nav__dots-bar,
-    &-right .@{prefix}-swiper-nav__fraction {
-      position: absolute;
-      right: 24rpx;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    &-top-left .@{prefix}-swiper-nav__dots,
-    &-top-left .@{prefix}-swiper-nav__dots-bar,
-    &-top-left .@{prefix}-swiper-nav__fraction {
-      position: absolute;
-      top: 24rpx;
-      left: 24rpx;
-    }
-
-    &-top .@{prefix}-swiper-nav__dots,
-    &-top .@{prefix}-swiper-nav__dots-bar,
-    &-top .@{prefix}-swiper-nav__fraction {
-      position: absolute;
-      left: 50%;
-      top: 24rpx;
-      transform: translateX(-50%);
-    }
-
-    &-top-right .@{prefix}-swiper-nav__dots,
-    &-top-right .@{prefix}-swiper-nav__dots-bar,
-    &-top-right .@{prefix}-swiper-nav__fraction {
-      position: absolute;
-      top: 24rpx;
-      right: 24rpx;
-    }
-
-    &-bottom-left .@{prefix}-swiper-nav__dots,
-    &-bottom-left .@{prefix}-swiper-nav__dots-bar,
-    &-bottom-left .@{prefix}-swiper-nav__fraction {
-      position: absolute;
-      left: 24rpx;
-      bottom: 24rpx;
-    }
-
-    &-bottom .@{prefix}-swiper-nav__dots,
-    &-bottom .@{prefix}-swiper-nav__dots-bar,
-    &-bottom .@{prefix}-swiper-nav__fraction {
-      position: absolute;
-      left: 50%;
-      bottom: 24rpx;
-      transform: translateX(-50%);
-    }
-
-    &-bottom-right .@{prefix}-swiper-nav__dots,
-    &-bottom-right .@{prefix}-swiper-nav__dots-bar,
-    &-bottom-right .@{prefix}-swiper-nav__fraction {
-      position: absolute;
-      right: 24rpx;
-      bottom: 24rpx;
-    }
+  &--left {
+    position: absolute;
+    left: 24rpx;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  &--vertical &__dots,
-  &--vertical &__dots-bar {
+  &--right {
+    position: absolute;
+    right: 24rpx;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &--top-left {
+    position: absolute;
+    top: 24rpx;
+    left: 24rpx;
+  }
+
+  &--top {
+    position: absolute;
+    left: 50%;
+    top: 24rpx;
+    transform: translateX(-50%);
+  }
+
+  &--top-right {
+    position: absolute;
+    top: 24rpx;
+    right: 24rpx;
+  }
+
+  &--bottom-left {
+    position: absolute;
+    left: 24rpx;
+    bottom: 24rpx;
+  }
+
+  &--bottom {
+    position: absolute;
+    left: 50%;
+    bottom: 24rpx;
+    transform: translateX(-50%);
+  }
+
+  &--bottom-right {
+    position: absolute;
+    right: 24rpx;
+    bottom: 24rpx;
+  }
+
+  &--vertical {
     flex-direction: column;
-
-    &-item {
-      margin: 10rpx 0;
-    }
-  }
-
-  &--vertical &__dots-bar {
-    &-item {
-      &.@{prefix}-is-active {
-        width: 12rpx;
-        height: 40rpx;
-      }
-    }
   }
 
   &__fraction {
-    width: 40rpx;
-    padding: 0 20rpx;
-    height: 40rpx;
-    line-height: 40rpx;
-    border-radius: 20rpx;
-    background: var(--td-swiper-nav-fraction-bg-color, @swiper-nav-fraction-bg-color);
-    color: var(--td-swiper-nav-fraction-color, @swiper-nav-fraction-color);
-    font-size: 24rpx;
+    padding: 0 16rpx;
+    height: @swiper-nav-fraction-height;
+    line-height: @swiper-nav-fraction-height;
+    border-radius: calc(@swiper-nav-fraction-height / 2);
+    background: @swiper-nav-fraction-bg-color;
+    color: @swiper-nav-fraction-color;
+    font-size: @swiper-nav-fraction-font-size;
   }
 
   &__btn {
@@ -151,10 +127,10 @@ page {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 40rpx;
-      height: 40rpx;
+      width: @swiper-nav-btn-size;
+      height: @swiper-nav-btn-size;
       border-radius: 50%;
-      background: var(--td-swiper-nav-btn-bg-color, @swiper-nav-btn-bg-color);
+      background: @swiper-nav-btn-bg-color;
 
       &::after {
         position: absolute;
@@ -164,7 +140,7 @@ page {
         content: '';
         width: 12rpx;
         height: 12rpx;
-        border-color: var(--td-swiper-nav-btn-color, @swiper-nav-btn-color);
+        border-color: @swiper-nav-btn-color;
         border-style: solid;
       }
     }

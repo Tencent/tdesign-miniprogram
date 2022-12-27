@@ -10,6 +10,6 @@
     aria-hidden="{{ariaHidden}}"
     aria-label="{{ariaLabel}}"
     aria-role="{{ariaRole}}"
-    bind:click="onTplClick"
+    bind:click="{{bindclick || ''}}"
   />
 </template>

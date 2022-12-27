@@ -5,7 +5,7 @@ exports[`image :base 1`] = `
   <t-image>
     <wx-view
       ariaHidden="{{false}}"
-      class="t-class t-image t-image__mask t-image--faild t-image--shape-square"
+      class="t-class t-image t-image__mask t-image--failed t-image--shape-square"
       style=" "
     >
       <wx-view

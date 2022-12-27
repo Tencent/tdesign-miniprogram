@@ -24,7 +24,7 @@
       id="{{classPrefix}}__text-wrap"
     >
       <view class="{{classPrefix}}__text {{prefix}}-class-content" id="{{classPrefix}}__text" animation="{{animation}}">
-        <view wx:if="{{content}}">{{content}}</view>
+        <block wx:if="{{content}}">{{content}}</block>
         <slot name="content"></slot>
       </view>
     </view>
@@ -33,7 +33,7 @@
       wx:if="{{action}}"
       t-class="{{classPrefix}}__btn--right {{prefix}}-class-action"
       theme="primary"
-      variant="outline"
+      variant="text"
       size="small"
       bind:tap="handleBtnClick"
       >{{action}}</t-button
@@ -45,7 +45,7 @@
       class="{{classPrefix}}__icon--right"
       bind:tap="handleClose"
     >
-      <slot wx:if="{{closeBtnName === 'slot'}}" name="closeBtn" />
+      <slot wx:if="{{closeBtnName === 'slot'}}" name="close-btn" />
       <template
         wx:else
         is="icon"

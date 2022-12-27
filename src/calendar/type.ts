@@ -54,7 +54,6 @@ export interface TdCalendarProps {
   };
   /**
    * 标题，不传默认为“请选择日期”
-   * @default ''
    */
   title?: {
     type: StringConstructor;
@@ -67,6 +66,14 @@ export interface TdCalendarProps {
   type?: {
     type: StringConstructor;
     value?: 'single' | 'multiple' | 'range';
+  };
+  /**
+   * 是否使用弹出层包裹日历
+   * @default true
+   */
+  usePopup?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组
@@ -83,7 +90,7 @@ export interface TdCalendarProps {
     value?: number | number[];
   };
   /**
-   * 是否显示日历
+   * 是否显示日历；`usePopup` 为 true 时有效
    * @default false
    */
   visible?: {

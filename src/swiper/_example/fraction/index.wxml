@@ -5,8 +5,6 @@
   interval="{{interval}}"
   navigation="{{navigation}}"
   paginationPosition="{{paginationPosition}}"
+  list="{{swiperList}}"
 >
-  <t-swiper-item wx:for="{{swiperList}}" wx:key="index">
-    <image src="{{item.image}}" class="img" />
-  </t-swiper-item>
 </t-swiper>

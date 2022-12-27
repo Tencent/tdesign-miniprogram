@@ -8,7 +8,7 @@
     class="{{classPrefix}}__prefix-icon"
     bind:tap="clickPrefixIcon"
   >
-    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefixIcon" />
+    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
     <template
       wx:else
       is="icon"
@@ -40,15 +40,15 @@
       class="{{classPrefix}}__content {{prefix}}-class-content {{ !marquee ? classPrefix + '__content-wrapable' : ''}}"
       animation="{{ animationData }}"
     >
-      <view wx:if="{{content}}"> {{content}} </view>
-      <slot wx:else name="content" />
+      <block wx:if="{{content}}"> {{content}} </block>
+      <slot name="content" />
     </view>
   </view>
 
   <!-- extra -->
   <view class="{{classPrefix}}__extra {{prefix}}-class-extra" bind:tap="clickExtra">
-    <view wx:if="{{ extra }}"> {{extra}} </view>
-    <slot wx:else name="extra" />
+    <block wx:if="{{ extra }}"> {{extra}} </block>
+    <slot name="extra" />
   </view>
 
   <!-- suffixIcon -->
@@ -57,7 +57,7 @@
     class="{{classPrefix}}__suffix-icon"
     bind:tap="clickSuffixIcon"
   >
-    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffixIcon" />
+    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
     <template
       wx:else
       is="icon"

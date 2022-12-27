@@ -17,7 +17,6 @@ Component({
         context: this,
         offset: ['20rpx', '32rpx'],
         duration: 5000,
-        icon: 'error-circle',
         content: '这是一条带图标的消息通知 5s消失',
       });
     },
@@ -26,9 +25,9 @@ Component({
       Message.info({
         context: this,
         offset: ['20rpx', 32],
-        icon: 'error-circle',
-        content: '这是一条带关闭的消息通知 常驻可关闭',
+        content: '这是一条带关闭的消息通知',
         duration: -1,
+        action: '按钮',
         closeBtn: true,
       });
     },
@@ -48,7 +47,7 @@ Component({
       Message.info({
         context: this,
         offset: [20, 32],
-        icon: 'notification',
+        icon: 'notification-filled',
         content: '这是一条带操作的消息通知',
         duration: -1,
         action: '按钮',

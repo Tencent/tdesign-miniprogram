@@ -2,57 +2,32 @@
   <view class="demo-title">Swiper 轮播</view>
   <view class="demo-desc"> 用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置。 </view>
   <view class="demo-section">
-    <t-demo title="01 类型" desc="轮播图的多种样式"></t-demo>
+    <t-demo title="01 组件类型" />
     <view class="swiper-box">
+      <view class="swiper-desc">点状（dots）</view>
       <!-- 受控属性示例 -->
       <base />
     </view>
 
     <view class="swiper-box">
-      <fraction />
-    </view>
-
-    <view class="swiper-box swiper-box2">
+      <view class="swiper-desc">点条状（dots-bar）</view>
       <custom />
     </view>
 
+    <view class="swiper-box swiper-box2">
+      <view class="swiper-desc">分式（fraction）</view>
+      <fraction />
+    </view>
+
     <view class="swiper-box">
+      <view class="swiper-desc">切换按钮（controls）</view>
       <nav-btn />
     </view>
-    <t-demo title="02 垂直" desc="轮播图垂直样式"></t-demo>
+
+    <view class="demo-desc swiper-desc">卡片式（cards）</view>
+    <cards />
+
+    <t-demo title="02 组件样式" desc="垂直模式" />
     <vertical />
   </view>
-  <!-- <view class="demo-section">
-    <t-demo title="原生swiper" desc="效果对比"></t-demo>
-    <view class="swiper-box">
-      <swiper
-        class="swiper-wrap"
-        autoplay="{{autoplay}}"
-        duration="{{duration}}"
-        interval="{{interval}}"
-        indicator-dots="{{true}}"
-        current="{{current}}"
-      >
-        <swiper-item wx:for="{{items}}" wx:key="index">
-          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" /></view>
-        </swiper-item>
-      </swiper>
-    </view>
-    <view class="swiper-demo-space" />
-    <view class="swiper-box">
-      <swiper
-        class="swiper-wrap"
-        autoplay="{{autoplay}}"
-        duration="{{duration}}"
-        interval="{{interval}}"
-        indicator-dots
-        vertical
-        current="{{current}}"
-      >
-        <swiper-item wx:for="{{items}}" wx:key="index">
-          <view class="item {{item.cls}}">{{index}}<image src="{{item.image}}" class="img" /></view>
-        </swiper-item>
-      </swiper>
-    </view>
-  </view> -->
 </view>

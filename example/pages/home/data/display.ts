@@ -15,6 +15,10 @@ const display = {
     //   label: '海报分享',
     // },
     {
+      name: 'Cell',
+      label: '单元格',
+    },
+    {
       name: 'Collapse',
       label: '折叠面板',
     },
@@ -35,6 +39,10 @@ const display = {
       label: '页脚',
     },
     {
+      name: 'Grid',
+      label: '宫格',
+    },
+    {
       name: 'Image',
       label: '图片',
     },
@@ -51,12 +59,16 @@ const display = {
       label: '结果',
     },
     {
-      name: 'Swiper',
-      label: '轮播图',
-    },
-    {
       name: 'Skeleton',
       label: '骨架屏',
+    },
+    {
+      name: 'Sticky',
+      label: '吸顶容器',
+    },
+    {
+      name: 'Swiper',
+      label: '轮播图',
     },
     {
       name: 'Tag',

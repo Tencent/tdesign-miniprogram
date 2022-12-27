@@ -11,7 +11,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
     >
       <t-side-bar-item
         badgeProps=""
-        label="选项选项选项"
+        label="选项选项"
         value="{{0}}"
       />
       <t-side-bar-item

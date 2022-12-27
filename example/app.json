@@ -1,15 +1,11 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/picker/picker",
     "pages/button/button",
-    "pages/button-group/button-group",
-    "pages/dialog/dialog",
     "pages/tabs/tabs",
     "pages/icon/icon",
     "pages/loading/loading",
     "pages/loading/loadingProgress/index",
-    "pages/rate/rate",
     "pages/progress/progress",
     "pages/cascader/cascader",
     "pages/cell/cell",
@@ -23,8 +19,6 @@
     "pages/stepper/stepper",
     "pages/slider/slider",
     "pages/radio/radio",
-    "pages/swipe-cell/swipe-cell",
-    "pages/swiper/swiper",
     "pages/switch/switch",
     "pages/sticky/sticky",
     "pages/tag/tag",
@@ -34,8 +28,6 @@
     "pages/tab-bar/tab-bar",
     "pages/transition/transition",
     "pages/popup/popup",
-    "pages/indexes/indexes",
-    "pages/indexes/display/index",
     "pages/steps/steps",
     "pages/dropdown-menu/dropdown-menu",
     "pages/drawer/drawer",
@@ -58,7 +50,8 @@
     "pages/notice-bar/notice-bar",
     "pages/image-viewer/image-viewer",
     "pages/result/result",
-    "pages/result/result-page"
+    "pages/result/result-page",
+    "pages/link/link"
   ],
   "subpackages": [
     {
@@ -76,6 +69,34 @@
     {
       "root": "pages/calendar/",
       "pages": ["calendar"]
+    },
+    {
+      "root": "pages/dialog/",
+      "pages": ["dialog"]
+    },
+    {
+      "root": "pages/picker/",
+      "pages": ["picker"]
+    },
+    {
+      "root": "pages/rate/",
+      "pages": ["rate"]
+    },
+    {
+      "root": "pages/swiper/",
+      "pages": ["swiper"]
+    },
+    {
+      "root": "pages/swipe-cell/",
+      "pages": ["swipe-cell"]
+    },
+    {
+      "root": "pages/tree-select/",
+      "pages": ["tree-select"]
+    },
+    {
+      "root": "pages/indexes/",
+      "pages": ["indexes", "base/index", "custom/index"]
     }
   ],
   "usingComponents": {
@@ -88,11 +109,9 @@
     "t-cell-group": "tdesign-miniprogram/cell-group/cell-group",
     "t-collapse": "tdesign-miniprogram/collapse/collapse",
     "t-collapse-panel": "tdesign-miniprogram/collapse/collapse-panel",
-    "t-dialog": "tdesign-miniprogram/dialog/dialog",
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tabs/tab-panel",
     "t-loading": "tdesign-miniprogram/loading/loading",
-    "t-button-group": "tdesign-miniprogram/button-group/button-group",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-rate": "tdesign-miniprogram/rate/rate",
     "t-progress": "tdesign-miniprogram/progress/progress",
@@ -107,9 +126,6 @@
     "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
     "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
     "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
-    "t-swiper": "tdesign-miniprogram/swiper/swiper",
-    "t-swiper-item": "tdesign-miniprogram/swiper/swiper-item",
-    "t-swiper-nav": "tdesign-miniprogram/swiper/swiper-nav",
     "t-sticky": "tdesign-miniprogram/sticky/sticky",
     "t-fab": "tdesign-miniprogram/fab/fab",
     "t-tab-bar": "tdesign-miniprogram/tab-bar/tab-bar",
@@ -132,7 +148,8 @@
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
     "t-action-sheet": "tdesign-miniprogram/action-sheet/action-sheet",
-    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer"
+    "t-image-viewer": "tdesign-miniprogram/image-viewer/image-viewer",
+    "t-link": "tdesign-miniprogram/link/link"
   },
   "window": {
     "backgroundTextStyle": "light",

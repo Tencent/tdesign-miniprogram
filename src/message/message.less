@@ -17,6 +17,7 @@
 @message-success-color: var(--td-message-success-color, @success-color); // 'success'主题色
 @message-warning-color: var(--td-message-warning-color, @warning-color); // 'warning'主题色
 @message-error-color: var(--td-message-error-color, @error-color); // 'error'主题色
+@message-close-icon-color: var(--td-message-close-icon-color, @font-gray-3); // 关闭按钮图标颜色
 
 @message: ~'@{prefix}-message';
 
@@ -79,6 +80,10 @@
     margin-right: @spacer;
   }
 
+  &__icon--right {
+    color: @message-close-icon-color;
+  }
+
   &__icon--right,
   .@{message}__btn--right {
     flex: 0 0 auto;
@@ -90,6 +95,6 @@
     line-height: @message-content-height;
     height: @message-content-height;
     border-radius: @message-border-radius;
-    padding: @spacer * 0.75 @spacer * 0.75;
+    padding: 0;
   }
 }

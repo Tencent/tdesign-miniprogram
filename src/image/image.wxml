@@ -10,6 +10,7 @@
     theme="dots"
     size="44rpx"
     loading
+    inherit-color
     class="t-class-load"
     t-class-text="{{classPrefix}}--loading-text"
   ></t-loading>
@@ -22,7 +23,7 @@
 <view
   wx:elif="{{isFailed}}"
   style="{{innerStyle}} {{customStyle}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--faild {{classPrefix}}--shape-{{shape}}"
+  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--failed {{classPrefix}}--shape-{{shape}}"
   aria-hidden="{{ariaHidden}}"
 >
   <view wx:if="{{error === 'default'}}" style="font-size: 44rpx" class="{{prefix}}-class-load">

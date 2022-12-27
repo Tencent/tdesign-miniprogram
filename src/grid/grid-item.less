@@ -1,20 +1,21 @@
 @import '../common/style/index.less';
 
 @item: ~'@{prefix}-grid-item';
-@grid-item-padding: 32rpx;
-@grid-item-bg-color: @bg-color-container;
-@grid-item-image-width: 96rpx;
-@grid-item-text-color: @font-gray-1;
-@grid-item-text-font-size: 28rpx;
-@grid-item-text-line-height: 44rpx;
-@grid-item-text-padding-top: 16rpx;
-@grid-item-description-font-size: 24rpx;
-@grid-item-description-line-height: 40rpx;
-@grid-item-description-color: @font-gray-3;
-@grid-item-description-padding-top: 8rpx;
-@grid-item-hover-bg-color: #f2f3f5;
-@grid-item-horizontal-text-padding-left: 24rpx;
-@grid-item-horizontal-text-description-top: 4rpx;
+
+@grid-item-padding: var(--td-grid-item-padding, 32rpx);
+@grid-item-bg-color: var(--td-grid-item-bg-color, @bg-color-container);
+@grid-item-image-width: var(--td-grid-item-image-width, 96rpx);
+@grid-item-text-color: var(--td-grid-item-text-color, @font-gray-1);
+@grid-item-text-font-size: var(--td-grid-item-text-font-size, 28rpx);
+@grid-item-text-line-height: var(--td-grid-item-text-line-height, 44rpx);
+@grid-item-text-padding-top: var(--td-grid-item-text-padding-top, 16rpx);
+@grid-item-description-font-size: var(--td-grid-item-description-font-size, 24rpx);
+@grid-item-description-line-height: var(--td-grid-item-description-line-height, 40rpx);
+@grid-item-description-color: var(--td-grid-item-description-color, @font-gray-3);
+@grid-item-description-padding-top: var(--td-grid-item-description-padding-top, 8rpx);
+@grid-item-hover-bg-color: var(--td-grid-item-hover-bg-color, @gray-color-1);
+@grid-item-horizontal-text-padding-left: var(--td-grid-item-horizontal-text-padding-left, 24rpx);
+@grid-item-horizontal-text-description-top: var(--td-grid-item-horizontal-text-description-top, 4rpx);
 
 .@{item} {
   box-sizing: border-box;
@@ -24,7 +25,7 @@
   vertical-align: top;
 
   &--hover {
-    background-color: var(--td-grid-item-hover-bg-color, @grid-item-hover-bg-color);
+    background-color: @grid-item-hover-bg-color;
   }
 
   &--auto-size {
@@ -92,7 +93,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--td-grid-item-icon-bg, @gray-color-2);
+      background: @gray-color-2;
       border-radius: @radius-default;
     }
   }
@@ -108,7 +109,7 @@
 
   &__text {
     width: inherit;
-    color: var(--td-grid-item-text-color, @grid-item-text-color);
+    color: @grid-item-text-color;
     font-size: @grid-item-text-font-size;
     line-height: @grid-item-text-line-height;
     padding-top: @grid-item-text-padding-top;
@@ -126,7 +127,7 @@
 
   &__description {
     width: inherit;
-    color: var(--td-grid-item-description-color, @grid-item-description-color);
+    color: @grid-item-description-color;
     font-size: @grid-item-description-font-size;
     line-height: @grid-item-description-line-height;
 

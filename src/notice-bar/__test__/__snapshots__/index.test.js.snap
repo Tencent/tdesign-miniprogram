@@ -16,7 +16,7 @@ exports[`notice-bar props : marquee 1`] = `
         <t-icon
           class=""
           tClass="t-class-prefix-icon"
-          bind:click="onTplClick"
+          bind:click=""
         >
           <wx-view
             ariaHidden="{{false}}"
@@ -37,12 +37,33 @@ exports[`notice-bar props : marquee 1`] = `
         bind:tap="clickContent"
       >
         <wx-view
-          animation=""
+          animation="{{
+            Object {
+              "actions": Array [
+                Object {
+                  "animates": Array [
+                    Object {
+                      "args": Array [
+                        -350,
+                      ],
+                      "type": "translateX",
+                    },
+                  ],
+                  "option": Object {
+                    "transformOrigin": "50% 50% 0",
+                    "transition": Object {
+                      "delay": 0,
+                      "duration": 8287.5,
+                      "timingFunction": "linear",
+                    },
+                  },
+                },
+              ],
+            }
+          }}"
           class="t-notice-bar__content t-class-content "
         >
-          <wx-view>
-             提示文字描述提示文字描述提示文字描述提示文字描述文 
-          </wx-view>
+           提示文字描述提示文字描述提示文字描述提示文字描述文 
         </wx-view>
       </wx-view>
       <wx-view

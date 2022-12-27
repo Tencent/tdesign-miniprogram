@@ -1,16 +1,18 @@
 @import '../common/style/index.less';
 
-@side-bar-width: 206rpx;
+@side-bar-width: var(--td-side-bar-width, 206rpx);
+@side-bar-height: var(--td-side-bar-height, 100%);
+@side-bar-bg-color: var(--td-side-bar-bg-color, @gray-color-1);
 
 .@{prefix}-side-bar {
   display: flex;
   flex-direction: column;
   width: @side-bar-width;
-  height: 100%;
+  height: @side-bar-height;
   overflow-y: auto;
 
   &__padding {
     flex: 1;
-    background-color: @gray-color-1;
+    background-color: @side-bar-bg-color;
   }
 }

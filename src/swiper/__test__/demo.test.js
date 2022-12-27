@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'custom', 'fraction', 'nav-btn', 'vertical'];
+const mapper = ['base', 'cards', 'custom', 'fraction', 'nav-btn', 'vertical'];
 
 describe('Swiper', () => {
   mapper.forEach((demoName) => {

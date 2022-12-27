@@ -1,0 +1,6 @@
+<t-indexes class="indexes" height="{{height}}" index-list="{{ ['A', 'B', 'C'] }}" bind:select="onSelect">
+  <t-indexes-anchor index="A" />
+  <view height="50vh" />
+  <t-indexes-anchor index="B" />
+  <t-indexes-anchor index="C" />
+</t-indexes>

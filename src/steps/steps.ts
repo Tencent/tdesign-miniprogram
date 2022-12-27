@@ -50,22 +50,17 @@ export default class Steps extends SuperComponent {
 
   methods = {
     updateChildren() {
-      const items = this.getRelationNodes('./step-item');
-      const len = items.length;
       const { current, currentStatus, readonly, theme, layout } = this.data;
+      const items = this.$children;
 
-      if (len) {
-        items.forEach((item, index) => {
-          item.updateStatus(current, currentStatus, index, theme, layout, items, readonly);
-        });
-      }
+      items.forEach((item, index) => {
+        item.updateStatus(current, currentStatus, index, theme, layout, items, readonly);
+      });
     },
     updateLastChid() {
-      const items = this.getRelationNodes('./step-item');
+      const items = this.$children;
 
-      if (items?.length > 0) {
-        items.forEach((child, index) => child.setData({ isLastChild: index === items.length - 1 }));
-      }
+      items.forEach((child, index) => child.setData({ isLastChild: index === items.length - 1 }));
     },
     handleClick(index) {
       if (!this.data.readonly) {
