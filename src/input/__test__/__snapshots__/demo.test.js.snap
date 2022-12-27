@@ -257,6 +257,7 @@ exports[`Input Input suffix demo works fine 1`] = `
         "name": "error-circle-filled",
       }
     }}"
+    bind:click="click"
   />
   <t-input
     placeholder="请输入手机号码"

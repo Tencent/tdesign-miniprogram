@@ -15,7 +15,7 @@
       <template
         wx:else
         is="icon"
-        data="{{tClass: prefix + '-class-prefix-icon', ariaHidden: true, size: 24, name: prefixIconName, ...prefixIconData}}"
+        data="{{tClass: prefix + '-class-prefix-icon', ariaHidden: true, name: prefixIconName, ...prefixIconData}}"
       ></template>
     </view>
     <view wx:if="{{label}}" class="{{classPrefix}}__label" aria-hidden>
@@ -25,9 +25,7 @@
   </view>
 
   <view class="{{classPrefix}}__wrap">
-    <view
-      class="{{classPrefix}}__content {{prefix}}-is-{{status}}  {{borderless ? '' : classPrefix + '--border'}} {{ focus ? prefix + '-is-focus' : ''}}"
-    >
+    <view class="{{classPrefix}}__content {{classPrefix}}--{{status}} {{borderless ? '' : classPrefix + '--border'}}">
       <input
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
@@ -76,20 +74,24 @@
       >
         <template
           is="icon"
-          data="{{tClass: prefix + '-class-clearable', ariaRole: 'button', ariaLabel: '清除', size: 24, name: clearableName, ...clearableData}}"
+          data="{{tClass: prefix + '-class-clearable', ariaRole: 'button', ariaLabel: '清除', name: clearableName, ...clearableData}}"
         ></template>
       </view>
-      <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix">
+      <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix" bind:tap="onSuffixClick">
         <text wx:if="{{suffix}}">{{suffix}}</text>
         <slot wx:else name="suffix" />
       </view>
-      <view class="{{classPrefix}}__wrap--suffix-icon">
+      <view
+        wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}"
+        class="{{classPrefix}}__wrap--suffix-icon"
+        bind:tap="onSuffixIconClick"
+      >
+        <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
         <template
-          wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}"
+          wx:else
           is="icon"
-          data="{{tClass: prefix + '-class-suffix-icon', ariaRole: 'button', size: 24, name: suffixIconName, ...suffixIconData}}"
+          data="{{tClass: prefix + '-class-suffix-icon', ariaRole: 'button', name: suffixIconName, ...suffixIconData}}"
         ></template>
-        <slot wx:else name="suffix-icon" />
       </view>
     </view>
     <view wx:if="{{tips && tips.length > 0}}" class="{{classPrefix}}__tips {{prefix}}-class-tips">{{tips}} </view>
