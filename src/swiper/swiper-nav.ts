@@ -49,23 +49,21 @@ export default class SwiperNav extends SuperComponent {
     classPrefix: name,
   };
 
-  ready() {
-    this.$swiper = this.getRelationNodes('./swiper')?.[0];
-  }
+  methods = {
+    onChange(opt: NavOptions) {
+      this.setData({
+        ...opt,
+      });
+    },
 
-  onChange(opt: NavOptions) {
-    this.setData({
-      ...opt,
-    });
-  }
+    nav(e) {
+      const { dir } = e.target.dataset;
+      const source = 'nav';
 
-  nav(e) {
-    const { dir } = e.target.dataset;
-    const source = 'nav';
-
-    this.triggerEvent('navBtnChange', { dir, source });
-    if (this.$swiper) {
-      this.$swiper?.doNavBtnChange(dir, source);
-    }
-  }
+      this.triggerEvent('navBtnChange', { dir, source });
+      if (this.$parent) {
+        this.$parent?.doNavBtnChange(dir, source);
+      }
+    },
+  };
 }
