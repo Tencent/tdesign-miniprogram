@@ -105,7 +105,7 @@ exports[`Steps Steps special demo works fine 1`] = `
   <wx-view
     class="demo-desc"
   >
-    纵向自定义步骤条
+    垂直自定义步骤条
   </wx-view>
   <wx-view
     class="block"

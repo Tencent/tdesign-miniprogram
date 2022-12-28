@@ -25,9 +25,13 @@ isComponent: true
 
 #### 水平步骤条
 
+支持三种类型：序号、图标、简略
+
 {{ horizontal }}
 
-#### 竖向只读步骤条
+#### 垂直步骤条
+
+支持三种类型：序号、图标、简略
 
 {{ vertical }}
 
@@ -35,9 +39,18 @@ isComponent: true
 
 #### 选项卡状态
 
+共支持 4 种状态：未完成（default）、已完成（finish）、进行中（process）、错误（error）
+
 {{ status }}
 
 ### 特殊类型
+
+通过已有特性，改造出两种常见类型：
+
+- 垂直自定义（在 Cascader 中使用）
+- 纯展示步骤条
+
+可以参考以下代码实现
 
 {{ special }}
 

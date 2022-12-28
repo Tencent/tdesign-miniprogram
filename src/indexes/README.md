@@ -22,7 +22,11 @@ isComponent: true
 ### 基础索引
 
 
-{{ display }}
+{{ base }}
+
+### 自定义索引
+
+{{ custom }}
 
 ### API
 ### Indexes Props
