@@ -1,11 +1,12 @@
-import { SuperComponent, wxComponent, RelationsOptions, useId } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 import touch from '../mixins/touch';
-import { getRect } from '../common/utils';
+import { getRect, uniqueFactory } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-tabs`;
+const getUniqueID = uniqueFactory('tabs');
 
 enum Position {
   top = 'top',
@@ -66,30 +67,32 @@ export default class Tabs extends SuperComponent {
     isScrollY: false,
     direction: 'X',
     offset: 0,
-    tabPanelId: '',
+    tabID: '',
   };
 
-  created() {
-    this.children = this.children || [];
-  }
+  lifetimes = {
+    created() {
+      this.children = this.children || [];
+    },
+
+    attached() {
+      wx.nextTick(() => {
+        this.setTrack();
+      });
+
+      this.adjustPlacement();
+      getRect(this, `.${name}`).then((rect) => {
+        this.containerWidth = rect.width;
+      });
+      this.setData({
+        tabID: getUniqueID(),
+      });
+    },
+  };
 
   initChildId() {
-    this.setData({
-      tabPanelId: `${useId()}-`,
-    });
     this.children.forEach((item, index) => {
-      item.setId(this.data.tabPanelId + index);
-    });
-  }
-
-  attached() {
-    wx.nextTick(() => {
-      this.setTrack();
-    });
-
-    this.adjustPlacement();
-    getRect(this, `.${name}`).then((rect) => {
-      this.containerWidth = rect.width;
+      item.setId(`${this.data.tabID}_${index}`);
     });
   }
 

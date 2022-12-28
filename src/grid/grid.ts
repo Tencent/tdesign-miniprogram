@@ -37,9 +37,6 @@ export default class Grid extends SuperComponent {
     attached() {
       this.updateContentStyle();
     },
-    created() {
-      this.children = [];
-    },
   };
 
   methods = {

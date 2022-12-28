@@ -1,3 +1,5 @@
+import { prefix } from './config';
+
 const systemInfo = wx.getSystemInfoSync();
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
@@ -252,5 +254,5 @@ export const getCurrentPage = function <T>() {
 
 export const uniqueFactory = (compName) => {
   let number = 0;
-  return () => `${compName}_${number++}`;
+  return () => `${prefix}_${compName}_${number++}`;
 };
