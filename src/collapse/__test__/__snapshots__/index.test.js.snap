@@ -32,6 +32,7 @@ exports[`collapse :base 1`] = `
               tClassTitle="class-title "
             >
               <wx-view
+                ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
                 hoverStayTime="70"
@@ -118,6 +119,7 @@ exports[`collapse :base 1`] = `
               tClassTitle="class-title "
             >
               <wx-view
+                ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
                 hoverStayTime="70"
@@ -211,6 +213,7 @@ exports[`collapse :base 1`] = `
               tClassTitle="class-title "
             >
               <wx-view
+                ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
                 hoverStayTime="70"
@@ -295,6 +298,7 @@ exports[`collapse :base 1`] = `
               tClassTitle="class-title "
             >
               <wx-view
+                ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
                 hoverStayTime="70"
@@ -392,6 +396,7 @@ exports[`collapse :defaultExpandAll 1`] = `
             tClassTitle="class-title "
           >
             <wx-view
+              ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
@@ -476,6 +481,7 @@ exports[`collapse :defaultExpandAll 1`] = `
             tClassTitle="class-title "
           >
             <wx-view
+              ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
@@ -575,6 +581,7 @@ exports[`collapse :disabled 1`] = `
             tClassTitle="class-title "
           >
             <wx-view
+              ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
@@ -661,6 +668,7 @@ exports[`collapse :disabled 1`] = `
             tClassTitle="class-title "
           >
             <wx-view
+              ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
