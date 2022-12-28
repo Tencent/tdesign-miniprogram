@@ -4,8 +4,8 @@
 
 <view style="{{customStyle}}" class="{{classPrefix}}">
   <view
-    aria-role="progressbar"
-    role="progressbar"
+    aria-role="{{ariaRole || 'progressbar'}}"
+    role="{{ ariaRole || 'progressbar'}}"
     aria-valuenow="{{computedProgress}}"
     aria-valuemin="0"
     aria-valuemax="100"
@@ -13,6 +13,8 @@
     aria-labelledby="{{ ariaLabelledby }}"
     aria-describedby="{{ ariaDescribedby }}"
     aria-busy="{{ ariaBusy }}"
+    aria-live="assertive"
+    aria-atomic="additions"
     wx:if="{{theme === this.PRO_THEME.LINE}}"
     class="{{classPrefix }}--thin {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
@@ -38,8 +40,8 @@
 
   <view
     wx:if="{{theme === this.PRO_THEME.PLUMP}}"
-    aria-role="progressbar"
-    role="progressbar"
+    aria-role="{{ariaRole || 'progressbar'}}"
+    role="{{ ariaRole || 'progressbar'}}"
     aria-valuenow="{{computedProgress}}"
     aria-valuemin="0"
     aria-valuemax="100"
@@ -47,6 +49,8 @@
     aria-labelledby="{{ ariaLabelledby }}"
     aria-describedby="{{ ariaDescribedby }}"
     aria-busy="{{ ariaBusy }}"
+    aria-live="assertive"
+    aria-atomic="additions"
     class="{{classPrefix}}__bar {{classPrefix}}--plump {{computedProgress > 10 ? classPrefix + '--over-ten':  classPrefix + '--under-ten'}} {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
     style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
   >
@@ -67,14 +71,16 @@
 
   <view
     wx:if="{{theme === this.PRO_THEME.CIRCLE}}"
-    aria-role="progressbar"
-    role="progressbar"
+    aria-role="{{ ariaRole || 'progressbar' }}"
+    role="{{ ariaRole || 'progressbar' }}"
     aria-valuenow="{{computedProgress}}"
     aria-valuemin="0"
     aria-valuemax="100"
-    aria-label="{{ ariaLabel || this.getAriaLabel(status)  }}"
+    aria-label="{{ ariaLabel || this.getAriaLabel(status) }}"
     aria-labelledby="{{ ariaLabelledby }}"
     aria-describedby="{{ ariaDescribedby }}"
+    aria-live="assertive"
+    aria-atomic="additions"
     aria-busy="{{ ariaBusy }}"
     class="{{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
