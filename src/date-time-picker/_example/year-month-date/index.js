@@ -10,7 +10,7 @@ Page({
     end: '2030-09-09 12:12:12',
   },
   showPicker(e) {
-    const { mode } = e?.currentTarget?.dataset;
+    const { mode } = e.currentTarget.dataset;
     this.setData({
       mode,
       [`${mode}Visible`]: true,
@@ -23,7 +23,7 @@ Page({
     });
   },
   onConfirm(e) {
-    const { value } = e?.detail;
+    const { value } = e.detail;
     const { mode } = this.data;
 
     console.log('confim', value);
@@ -37,6 +37,6 @@ Page({
   },
 
   onColumnChange(e) {
-    console.log('pick', e?.detail?.value);
+    console.log('pick', e.detail.value);
   },
 });
