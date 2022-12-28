@@ -18,9 +18,19 @@ isComponent: true
 
 ## 代码演示
 
-### 顶部弹出层
+### 组件类型
 
-{{ top }}
+基础弹出层
+
+{{ base }}
+
+### 组件示例
+
+应用示例
+
+{{ with-title }}
+
+{{ custom-close }}
 
 ## API
 ### Popup Props

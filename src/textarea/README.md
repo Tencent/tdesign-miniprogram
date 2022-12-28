@@ -30,8 +30,7 @@ isComponent: true
 
 自动增高多行文本框
 
-{{ autoSize }}
-
+{{ autosize }}
 
 设置最大字符个数
 
@@ -52,6 +51,7 @@ isComponent: true
 标签外置输入框
 
 {{ custom }}
+
 ## 提示
 
 - 如果需要在页面中调整 `textarea` 中 `placeholder` 样式，请使用名称为`t-textarea__placeholder`的Class选择器，直接覆盖组件内部样式（注意权重）。
