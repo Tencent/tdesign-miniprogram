@@ -91,12 +91,4 @@ export interface TdBadgeProps {
     type: StringConstructor;
     value?: 'small' | 'medium';
   };
-  labelledbyId: {
-    type: StringConstructor;
-    value: string;
-  };
-  describedbyId: {
-    type: StringConstructor;
-    value: string;
-  };
 }

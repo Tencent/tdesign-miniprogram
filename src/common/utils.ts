@@ -249,3 +249,8 @@ export const getCurrentPage = function <T>() {
   const pages = getCurrentPages();
   return pages[pages.length - 1] as T & WechatMiniprogram.Page.TrivialInstance;
 };
+
+export const uniqueFactory = (compName) => {
+  let number = 0;
+  return () => `${compName}_${number++}`;
+};
