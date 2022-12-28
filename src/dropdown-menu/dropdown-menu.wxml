@@ -8,11 +8,12 @@
     data-index="{{index}}"
     class="{{_.cls(classPrefix + '__item', [['active', activeIdx == index], ['disabled', item.disabled]])}} {{prefix}}-class-item"
     aria-hidden="{{activeIdx !== -1 && activeIdx !== index }}"
-    aria-label="{{item.label}} 下拉{{item.multiple ? '多选' : '' }}{{item.optionsColumns > 1 ? item.optionsColumns+'列' : ''}}菜单 {{activeIdx === index ? '已展开' : '未展开'}}"
     aria-disabled="{{item.disabled}}"
     aria-role="button"
+    aria-expanded="{{activeIdx === index}}"
+    aria-haspopup="menu"
   >
-    <view class="{{classPrefix}}__title {{prefix}}-class-label" aria-hidden="{{true}}">{{item.label}}</view>
+    <view class="{{classPrefix}}__title {{prefix}}-class-label">{{item.label}}</view>
     <t-icon
       name="caret-down-small"
       t-class="{{prefix}}-class-icon"

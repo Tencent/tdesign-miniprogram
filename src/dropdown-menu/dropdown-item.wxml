@@ -27,18 +27,19 @@
         value="{{value}}"
         bind:change="handleRadioChange"
       >
-        <block wx:for="{{options}}" wx:key="index" tabindex="0">
-          <t-radio
-            class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
-            icon="line"
-            align="right"
-            t-class="radio"
-            t-class-label="{{prefix}}-class-column-item-label"
-            value="{{item[valueAlias]}}"
-            label="{{item[labelAlias]}}"
-            disabled="{{item.disabled}}"
-          ></t-radio>
-        </block>
+        <t-radio
+          wx:for="{{options}}"
+          wx:key="index"
+          tabindex="0"
+          class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
+          icon="line"
+          align="right"
+          t-class="radio"
+          t-class-label="{{prefix}}-class-column-item-label"
+          value="{{item[valueAlias]}}"
+          label="{{item[labelAlias]}}"
+          disabled="{{item.disabled}}"
+        ></t-radio>
       </t-radio-group>
       <!-- 多选列表 -->
       <t-checkbox-group
@@ -49,8 +50,9 @@
         value="{{value}}"
         bind:change="handleRadioChange"
       >
-        <block wx:for="{{options}}" wx:key="index" tabindex="0">
+        <block wx:for="{{options}}" wx:key="index">
           <t-checkbox
+            tabindex="0"
             class="{{classPrefix}}__checkbox-item {{prefix}}-class-column-item"
             theme="tag"
             value="{{item[valueAlias]}}"
