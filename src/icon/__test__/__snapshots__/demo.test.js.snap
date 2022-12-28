@@ -3650,8 +3650,8 @@ exports[`Icon Icon iconImage demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png"
-        name="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png"
+        data-name="https://oteam-tdesign-1258344706.cos.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png"
+        name="https://oteam-tdesign-1258344706.cos.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png"
         size="24"
         bind:click="onIconTap"
       />
@@ -3660,8 +3660,8 @@ exports[`Icon Icon iconImage demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-copy.png"
-        name="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-copy.png"
+        data-name="https://oteam-tdesign-1258344706.cos.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-copy.png"
+        name="https://oteam-tdesign-1258344706.cos.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-copy.png"
         size="24"
         bind:click="onIconTap"
       />

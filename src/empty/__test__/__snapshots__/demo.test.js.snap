@@ -18,7 +18,6 @@ exports[`Empty Empty buttonEmpty demo works fine 1`] = `
     <t-button
       size="large"
       slot="action"
-      tClass="t-empty__button"
       theme="primary"
     >
       操作按钮
@@ -31,7 +30,7 @@ exports[`Empty Empty imageEmpty demo works fine 1`] = `
 <imageEmpty>
   <t-empty
     description="描述文字"
-    image="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/empty__demo-image.png"
+    image="https://oteam-tdesign-1258344706.cos.ap-guangzhou.tencentcos.cn/miniprogram/images/empty-image.png"
     tClass="empty-cls"
     tClassImage="t-empty__image"
   />

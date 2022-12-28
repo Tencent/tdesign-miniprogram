@@ -8,7 +8,10 @@
   align-items: flex-end;
 }
 
-.external-class {
+.box:not(:first-child) {
   margin-top: 32rpx;
-  margin-right: 32rpx;
+}
+
+.box t-button + t-button {
+  margin-left: 32rpx;
 }

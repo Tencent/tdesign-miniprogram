@@ -3,8 +3,6 @@
   <t-button theme="primary" size="large" icon="chevron-left" shape="square" aria-label="返回"></t-button>
 </view>
 
-<view style="height: 32rpx" />
-
 <view class="box align-bottom">
   <t-button theme="primary" size="large" shape="round">填充按钮</t-button>
   <t-button theme="primary" size="large" icon="chevron-left" shape="circle" aria-label="返回"></t-button>

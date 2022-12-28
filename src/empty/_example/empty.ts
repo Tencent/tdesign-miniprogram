@@ -4,8 +4,4 @@
  * @Description:
  * @FilePath: /tdesign-miniprogram/example/pages/empty/empty.ts
  */
-Page({
-  goEmptyPage() {
-    wx.navigateTo({ url: './empty-page' });
-  },
-});
+Page({});
