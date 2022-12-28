@@ -173,6 +173,7 @@ exports[`Progress Progress transition demo works fine 1`] = `
     class="progress-example"
   >
     <t-progress
+      ariaRole="region"
       percentage="{{88}}"
     />
     <wx-view
