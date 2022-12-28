@@ -21,13 +21,7 @@ const props: TdEmptyProps = {
   },
   /** 图标名称 */
   icon: {
-    type: String,
-    value: '',
-  },
-  /** 图标属性，透传至 icon */
-  iconProps: {
-    type: Object,
-    value: {},
+    type: null,
   },
   /** 图片地址 */
   image: {

@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent, isObject, RelationsOptions, useId } from '../common/src/index';
 import config from '../common/config';
 import props from './grid-item-props';
+import { setIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-grid-item`;
@@ -51,6 +52,15 @@ export default class GridItem extends SuperComponent {
     layout: 'vertical',
     column: 0,
     labelId: '',
+  };
+
+  observers = {
+    icon(icon) {
+      const obj = setIcon('icon', icon, '');
+      this.setData({
+        ...obj,
+      });
+    },
   };
 
   lifetimes = {
