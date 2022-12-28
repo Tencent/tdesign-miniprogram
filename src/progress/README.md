@@ -1,6 +1,6 @@
 ---
-title: Progress
-description: 进度条。
+title: Progress 进度条
+description: 用于展示任务当前的进度。
 spline: message
 isComponent: true
 ---
@@ -21,6 +21,7 @@ isComponent: true
 ## 代码演示
 
 ### 01 组件类型
+
 基础进度条
 
 {{ base }}
@@ -32,8 +33,6 @@ isComponent: true
 自定义颜色/圆角
 
 {{ custom }}
-
-
 
 ### 02 组件状态
 

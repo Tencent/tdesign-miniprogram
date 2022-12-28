@@ -1,5 +1,5 @@
 ---
-title: Empty 空内容
+title: Empty 空状态
 description: 用于空状态时的占位提示。
 spline: data
 isComponent: true
