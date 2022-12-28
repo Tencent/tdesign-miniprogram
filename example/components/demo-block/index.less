@@ -1,23 +1,24 @@
 @import '../../../src/common/style/_variables.less';
 
 .demo-block {
-  margin: @spacer-3 0 0;
-  line-height: @text-line-height;
-  font-size: @font-size-m;
+  margin: @spacer-4 0 0;
 
-  &__heander {
+  &__header {
     color: @text-level-1-color;
-    margin: @spacer @spacer-2;
+    margin: 0 @spacer-2;
 
     &-title {
       font-weight: 700;
+      font-size: 36rpx;
+      line-height: 52rpx;
     }
 
     &-desc {
-      margin: @spacer 0 @spacer-2;
+      margin-top: @spacer;
       font-size: @font-size-base;
       white-space: pre-line;
       color: @font-gray-2;
+      line-height: 22px;
     }
   }
 
@@ -49,6 +50,6 @@
   margin-top: 0px;
 
   .demo-block_subtitle {
-    margin-top: 32rpx;
+    margin-top: @spacer-3;
   }
 }
