@@ -6,12 +6,12 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 allow-half | Boolean | false | \- | N
-color | String / Array | '#ED7B2F' | Typescript：`string \| Array<string>` | N
+color | String / Array | '#ED7B2F' | `0.30.0`。Typescript：`string \| Array<string>` | N
 count | Number | 5 | \- | N
 custom-style | String | - | `0.25.0` | N
 disabled | Boolean | - | \- | N
 external-classes | Array | - | `['t-class', 't-class-icon', 't-class-text']` | N
-gap | Number | 4 | \- | N
+gap | String / Number | 8 | \- | N
 icon | String / Array | - | Typescript：`string \| string[]` | N
 show-text | Boolean | false | \- | N
 size | String | 24px | \- | N
