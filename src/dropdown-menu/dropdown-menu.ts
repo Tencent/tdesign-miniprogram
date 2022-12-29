@@ -39,8 +39,8 @@ export default class DropdownMenu extends SuperComponent {
   methods = {
     toggle(index: number) {
       const { activeIdx, duration } = this.data;
-      const prevItem = this.$children[activeIdx];
-      const currItem = this.$children[index];
+      const prevItem = this.nodes[activeIdx];
+      const currItem = this.nodes[index];
 
       if (currItem?.data.disabled) return;
 
@@ -80,8 +80,10 @@ export default class DropdownMenu extends SuperComponent {
       }
     },
     getAllItems() {
-      const menus = this.$children.map(({ data }) => ({ label: data.label, disabled: data.disabled }));
+      const nodes = this.getRelationNodes('./dropdown-item');
+      const menus = nodes.map(({ data }) => ({ label: data.label, disabled: data.disabled }));
 
+      this.nodes = nodes;
       this.setData({
         menus,
       });
