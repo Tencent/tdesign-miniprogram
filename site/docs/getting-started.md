@@ -65,7 +65,7 @@ npm i tdesign-miniprogram -S --production
 接着就可以在 wxml 中直接使用组件
 
 ```html
-<t-button type="primary">按钮</t-button>
+<t-button theme="primary">按钮</t-button>
 ```
 
 ## 在开发者工具中预览
