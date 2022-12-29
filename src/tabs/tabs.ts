@@ -92,7 +92,7 @@ export default class Tabs extends SuperComponent {
 
   initChildId() {
     this.children.forEach((item, index) => {
-      item.setId(`${this.data.tabID}_${index}`);
+      item.setId(`${this.data.tabID}_panel_${index}`);
     });
   }
 
@@ -187,21 +187,22 @@ export default class Tabs extends SuperComponent {
       if (!rect) return;
       let count = 0;
       let distance = 0;
+      let totalSize = 0;
 
       res.forEach((item) => {
         if (count < currentIndex) {
           distance += isScrollX ? item.width : item.height;
           count += 1;
         }
+        totalSize += isScrollX ? item.width : item.height;
       });
 
       if (this.containerWidth) {
         const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.data.offset);
-        if (offset > 0) {
-          this.setData({
-            offset,
-          });
-        }
+        const maxOffset = totalSize - this.containerWidth;
+        this.setData({
+          offset: Math.min(Math.max(offset, 0), maxOffset),
+        });
       }
 
       if (isScrollX) {
