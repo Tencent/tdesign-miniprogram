@@ -3,6 +3,7 @@
 
 <view class="{{prefix}}-class {{classPrefix}}" style="{{customStyle}}">
   <swiper
+    class="{{classPrefix}}-host"
     autoplay="{{autoplay}}"
     current="{{current}}"
     interval="{{interval}}"
@@ -27,7 +28,6 @@
         t-class="{{prefix}}-class-image {{this.isPrev(current, index, list) ? (prefix + '-class-prev-image') : ''}} {{this.isNext(current, index, list) ? (prefix + '-class-next-image') : ''}} {{classPrefix}}__image"
         custom-style="height: {{_.addUnit(height)}}"
         src="{{item}}"
-        shape="round"
       />
     </swiper-item>
   </swiper>
