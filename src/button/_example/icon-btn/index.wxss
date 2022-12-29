@@ -1,11 +1,11 @@
-.box {
+.button-example {
   margin: 0 32rpx;
 }
 
-.box t-button + t-button {
+.button-example t-button + t-button {
   margin-left: 32rpx;
 }
 
-.box + .box {
+.button-example:not(:first-child) {
   margin-top: 32rpx;
 }

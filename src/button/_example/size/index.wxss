@@ -1,17 +1,6 @@
-.box {
-  margin: 0 32rpx;
-}
-
-.align-bottom {
+.button-example {
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
-.box:not(:first-child) {
-  margin-top: 32rpx;
-}
-
-.box t-button + t-button {
-  margin-left: 32rpx;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 32rpx;
 }

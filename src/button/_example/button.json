@@ -8,6 +8,7 @@
     "block-btn": "./block-btn",
     "ghost-btn": "./ghost-btn",
     "shape": "./shape",
-    "theme": "./theme"
+    "theme": "./theme",
+    "disabled": "./disabled"
   }
 }
