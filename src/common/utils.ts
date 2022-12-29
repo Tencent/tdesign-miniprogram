@@ -1,3 +1,5 @@
+import { prefix } from './config';
+
 const systemInfo = wx.getSystemInfoSync();
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
@@ -248,4 +250,9 @@ export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperC
 export const getCurrentPage = function <T>() {
   const pages = getCurrentPages();
   return pages[pages.length - 1] as T & WechatMiniprogram.Page.TrivialInstance;
+};
+
+export const uniqueFactory = (compName) => {
+  let number = 0;
+  return () => `${prefix}_${compName}_${number++}`;
 };
