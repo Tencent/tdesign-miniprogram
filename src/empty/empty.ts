@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
+import { setIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-empty`;
@@ -18,5 +19,14 @@ export default class extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+  };
+
+  observers = {
+    icon(icon) {
+      const obj = setIcon('icon', icon, '');
+      this.setData({
+        ...obj,
+      });
+    },
   };
 }

@@ -1,7 +1,7 @@
 .group {
   display: flex;
   align-items: center;
-  margin-bottom: 32rpx;
+  margin-top: 32rpx;
 }
 
 .group-avatar {

@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "t-icon": "../icon/icon"
+    "t-icon": "../icon/icon",
+    "t-image": "../image/image"
   }
 }

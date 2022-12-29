@@ -4,13 +4,13 @@
 
   <t-demo title="01 类型" desc="基础折叠面板">
     <base />
+  </t-demo>
 
-    <view class="demo-section__desc">带操作说明</view>
-
+  <t-demo desc="带操作说明">
     <action />
+  </t-demo>
 
-    <view class="demo-section__desc">手风琴式</view>
-
+  <t-demo desc="手风琴式">
     <accordion />
   </t-demo>
 

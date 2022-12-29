@@ -2,6 +2,8 @@
 
 @item: ~'@{prefix}-grid-item';
 
+@grid-item-icon-font-size: 48rpx;
+
 @grid-item-padding: var(--td-grid-item-padding, 32rpx);
 @grid-item-bg-color: var(--td-grid-item-bg-color, @bg-color-container);
 @grid-item-image-width: var(--td-grid-item-image-width, 96rpx);
@@ -134,5 +136,9 @@
     &--horizontal {
       text-align-last: left;
     }
+  }
+
+  &__icon {
+    font-size: @grid-item-icon-font-size;
   }
 }

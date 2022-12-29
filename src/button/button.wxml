@@ -1,3 +1,6 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
 <button
   style="{{ customStyle }}"
   data-custom="{{ customDataset }}"
@@ -25,16 +28,11 @@
   bind:chooseavatar="chooseavatar"
   aria-label="{{ariaLabel}}"
 >
-  <t-icon
-    wx:if="{{icon || iconProps.name}}"
-    name="{{icon || iconProps.name}}"
-    prefix="{{iconProps.prefix}}"
-    size="{{iconProps.size}}"
-    color="{{iconProps.color}}"
-    customStyle="{{iconProps.customStyle}}"
-    class="{{classPrefix}}__icon {{prefix}}-class-icon"
-    aria-hidden
-  ></t-icon>
+  <template
+    wx:if="{{iconName || _.isNoEmptyObj(iconData)}}"
+    is="icon"
+    data="{{class: classPrefix + '__icon', tClass: prefix + '-class-icon', ariaHidden: true, name: iconName, ...iconData}}"
+  />
   <view wx:if="{{loading}}" class="{{classPrefix}}__loading">
     <t-loading
       delay="{{loadingProps.delay || 0}}"

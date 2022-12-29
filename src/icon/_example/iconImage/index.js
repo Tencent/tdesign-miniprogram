@@ -1,8 +1,8 @@
 Component({
   data: {
     imageIconList: [
-      'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png',
-      'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-copy.png',
+      'https://oteam-tdesign-1258344706.cos.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png',
+      'https://oteam-tdesign-1258344706.cos.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-copy.png',
     ],
   },
 

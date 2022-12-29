@@ -40,13 +40,7 @@ const props: TdButtonProps = {
   },
   /** 图标名称 */
   icon: {
-    type: String,
-    value: '',
-  },
-  /** 图标属性，透传至 icon */
-  iconProps: {
-    type: Object,
-    value: {},
+    type: null,
   },
   /** 是否显示为加载状态 */
   loading: {

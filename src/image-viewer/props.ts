@@ -34,23 +34,13 @@ const props: TdImageViewerProps = {
   },
   /** 是否显示删除操作 */
   deleteBtn: {
-    type: Boolean,
+    type: null,
     value: false,
   },
   /** 是否显示关闭操作 */
   closeBtn: {
-    type: Boolean,
+    type: null,
     value: false,
-  },
-  /** 删除图标属性，透传至删除操作按钮 icon */
-  deleteIconProps: {
-    type: Object,
-    value: {},
-  },
-  /** 关闭图标属性，透传至关闭操作按钮 icon */
-  closeIconProps: {
-    type: Object,
-    value: {},
   },
   /** 隐藏/显示预览 */
   visible: {
