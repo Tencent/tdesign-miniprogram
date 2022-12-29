@@ -2,201 +2,129 @@
 
 exports[`Progress Progress base demo works fine 1`] = `
 <base>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="80"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="80"
-      theme="plump"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="30"
-      theme="circle"
-    />
-  </wx-view>
+  <t-progress
+    percentage="80"
+  />
+  <t-progress
+    percentage="80"
+    theme="plump"
+  />
+  <t-progress
+    percentage="30"
+    theme="circle"
+  />
 </base>
 `;
 
 exports[`Progress Progress circle demo works fine 1`] = `
 <circle>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="80"
-      theme="circle"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="warning"
-      theme="circle"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="error"
-      theme="circle"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="success"
-      theme="circle"
-    />
-  </wx-view>
+  <t-progress
+    percentage="80"
+    theme="circle"
+  />
+  <t-progress
+    percentage="88"
+    status="warning"
+    theme="circle"
+  />
+  <t-progress
+    percentage="88"
+    status="error"
+    theme="circle"
+  />
+  <t-progress
+    percentage="88"
+    status="success"
+    theme="circle"
+  />
 </circle>
 `;
 
 exports[`Progress Progress custom demo works fine 1`] = `
 <custom>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      color="#CD04FF"
-      percentage="88"
-      tClassLabel="external-class-label"
-      trackColor="#EAC9FF"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      tClassBar="external-class-bar"
-    />
-  </wx-view>
+  <t-progress
+    color="#CD04FF"
+    percentage="88"
+    tClassLabel="external-class-label"
+    trackColor="#EAC9FF"
+  />
+  <t-progress
+    percentage="88"
+    tClassBar="external-class-bar"
+  />
 </custom>
 `;
 
 exports[`Progress Progress line demo works fine 1`] = `
 <line>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="80"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="warning"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="error"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="success"
-    />
-  </wx-view>
+  <t-progress
+    percentage="80"
+  />
+  <t-progress
+    percentage="88"
+    status="warning"
+  />
+  <t-progress
+    percentage="88"
+    status="error"
+  />
+  <t-progress
+    percentage="88"
+    status="success"
+  />
 </line>
 `;
 
 exports[`Progress Progress plump demo works fine 1`] = `
 <plump>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="80"
-      theme="plump"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="warning"
-      theme="plump"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="error"
-      theme="plump"
-    />
-  </wx-view>
-  <wx-view
-    class="progress-example"
-  >
-    <t-progress
-      percentage="88"
-      status="success"
-      theme="plump"
-    />
-  </wx-view>
+  <t-progress
+    percentage="80"
+    theme="plump"
+  />
+  <t-progress
+    percentage="88"
+    status="warning"
+    theme="plump"
+  />
+  <t-progress
+    percentage="88"
+    status="error"
+    theme="plump"
+  />
+  <t-progress
+    percentage="88"
+    status="success"
+    theme="plump"
+  />
 </plump>
 `;
 
 exports[`Progress Progress transition demo works fine 1`] = `
 <transition>
+  <t-progress
+    percentage="{{88}}"
+  />
   <wx-view
-    class="progress-example"
+    class="button-group"
   >
-    <t-progress
-      percentage="{{88}}"
-    />
-    <wx-view
-      class="button-group"
+    <t-button
+      size="small"
+      theme="primary"
+      variant="plain"
+      bind:tap="clickReduce"
     >
-      <t-button
-        size="small"
-        theme="primary"
-        variant="plain"
-        bind:tap="clickReduce"
-      >
-        减少
-      </t-button>
-      <wx-view
-        class="space"
-      />
-      <t-button
-        size="small"
-        theme="primary"
-        bind:tap="clickAdd"
-      >
-        增加
-      </t-button>
-    </wx-view>
+      减少
+    </t-button>
+    <wx-view
+      class="space"
+    />
+    <t-button
+      size="small"
+      theme="primary"
+      bind:tap="clickAdd"
+    >
+      增加
+    </t-button>
   </wx-view>
 </transition>
 `;

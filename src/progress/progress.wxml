@@ -29,7 +29,7 @@
       <template
         wx:if="{{_.includes(this.STATUS, status)}}"
         is="icon"
-        data="{{class: classPrefix + '__icon', size:'40rpx', name: this.LINE_STATUS_ICON[status]}}"
+        data="{{class: classPrefix + '__icon', size:'44rpx', name: this.LINE_STATUS_ICON[status]}}"
       ></template>
       <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
