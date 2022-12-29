@@ -27,6 +27,7 @@ exports[`dialog :base 1`] = `
           <wx-view
             class="t-dialog t-class"
             slot="content"
+            tabindex="0"
           >
             <wx-view
               class="t-dialog__content t-class-content"
