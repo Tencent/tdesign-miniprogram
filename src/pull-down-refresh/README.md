@@ -18,20 +18,12 @@ isComponent: true
 
 ## 代码演示
 
-### 基础下拉刷新
+### 顶部下拉刷新
 
 由于组件内无法监听页面滚动，需要由页面获取组件实例，并将页面滚动事件传递到组件。
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/pullDownRefresh-1.png" width="35%" height="35%">
-<img src="https://tdesign.gtimg.com/miniprogram/readme/pullDownRefresh-2.png" width="35%" height="35%">
-
-### 顶部下拉刷新
-
 {{ base }}
 
-### 中间下拉刷新
-
-{{ refresh-timeout }}
 
 
 > 在使用 pull-down-refresh 组件的页面，建议开启 `disableScroll: true`

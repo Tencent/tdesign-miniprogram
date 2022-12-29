@@ -16,7 +16,6 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
         "刷新完成",
       ]
     }}"
-    tClassIndicator="indicator-blue"
     value="{{false}}"
     bind:refresh="onPullDownRefresh"
   >
@@ -34,16 +33,6 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
         用于快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新。
       </wx-view>
       <wx-view
-        class="demo-subtitle"
-      >
-        01 类型 
-      </wx-view>
-      <wx-view
-        class="demo-desc"
-      >
-         下拉刷新大致分为顶部下拉和中间下拉 
-      </wx-view>
-      <wx-view
         class="pulldown-reflesh__content"
       >
         <t-skeleton
@@ -51,36 +40,63 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
           rowCol="{{
             Array [
               Object {
+                "borderRadius": "24rpx",
                 "height": "342rpx",
                 "width": "100%",
               },
-              Array [
-                Object {
-                  "height": "32rpx",
-                  "width": "340rpx",
-                },
-                Object {
-                  "height": "32rpx",
-                  "marginLeft": "22rpx",
-                  "width": "340rpx",
-                },
-              ],
-              Array [
-                Object {
-                  "height": "32rpx",
-                  "width": "218rpx",
-                },
-                Object {
-                  "height": "32rpx",
-                  "marginLeft": "144rpx",
-                  "width": "218rpx",
-                },
-              ],
             ]
           }}"
-          tClassCol="external-class-col"
-          tClassRow="external-class-row"
         />
+        <wx-view
+          class="row"
+        >
+          <t-skeleton
+            loading="{{true}}"
+            rowCol="{{
+              Array [
+                Array [
+                  Object {
+                    "width": "327rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "width": "200rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "borderRadius": "24rpx",
+                    "size": "327rpx",
+                  },
+                ],
+              ]
+            }}"
+          />
+          <t-skeleton
+            loading="{{true}}"
+            rowCol="{{
+              Array [
+                Array [
+                  Object {
+                    "width": "327rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "width": "200rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "borderRadius": "24rpx",
+                    "size": "327rpx",
+                  },
+                ],
+              ]
+            }}"
+          />
+        </wx-view>
         <wx-view
           class="text"
         >
@@ -90,72 +106,4 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
     </wx-view>
   </t-pull-down-refresh>
 </base>
-`;
-
-exports[`PullDownRefresh PullDownRefresh refresh-timeout demo works fine 1`] = `
-<refresh-timeout>
-  <t-pull-down-refresh
-    loadingProps="{{
-      Object {
-        "size": "60rpx",
-      }
-    }}"
-    loadingTexts="{{
-      Array [
-        "继续拉哦",
-        "该松手啦",
-        "努力刷新中",
-        "完成~",
-      ]
-    }}"
-    refreshTimeout="2000"
-    tClassIndicator="indicator-blue"
-    bind:timeout="handleTimeout"
-  >
-    <wx-view
-      class="pulldown-reflesh__content"
-    >
-      <t-skeleton
-        loading="{{true}}"
-        rowCol="{{
-          Array [
-            Object {
-              "height": "342rpx",
-              "width": "100%",
-            },
-            Array [
-              Object {
-                "height": "32rpx",
-                "width": "340rpx",
-              },
-              Object {
-                "height": "32rpx",
-                "marginLeft": "22rpx",
-                "width": "340rpx",
-              },
-            ],
-            Array [
-              Object {
-                "height": "32rpx",
-                "width": "218rpx",
-              },
-              Object {
-                "height": "32rpx",
-                "marginLeft": "144rpx",
-                "width": "218rpx",
-              },
-            ],
-          ]
-        }}"
-        tClass="external-class"
-        tClassCol="external-class-col"
-      />
-      <wx-view
-        class="text"
-      >
-        拖拽该区域演示 中间下拉刷新
-      </wx-view>
-    </wx-view>
-  </t-pull-down-refresh>
-</refresh-timeout>
 `;
