@@ -9,6 +9,7 @@
 @cascader-border-color: var(--td-cascader-border-color, @border-level-1-color);
 
 @cascader-options-height: var(--td-cascader-options-height, 640rpx);
+@cascder-title-font-size: var(--td-cascder-title-font-size, 36rpx);
 
 // steps
 @cascader-step-height: var(--td-cascader-step-height, 88rpx);
@@ -36,7 +37,7 @@
     font-weight: 700;
     text-align: center;
     line-height: 48px;
-    font-size: 16px;
+    font-size: @cascder-title-font-size;
   }
 
   &__content {
@@ -77,8 +78,8 @@
     height: @cascader-step-height;
 
     &s {
-      padding: 0 16px;
-      border-bottom: 1px solid @cascader-border-color;
+      padding: 0 32rpx 10rpx;
+      .border(bottom, @cascader-border-color);
     }
 
     &-dot {
