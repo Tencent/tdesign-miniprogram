@@ -36,7 +36,7 @@ exports[`tabs :base 1`] = `
                 class="t-tabs__nav t-tabs__nav--left"
               >
                 <wx-view
-                  ariaControls="t_tabs_0_0"
+                  ariaControls="t_tabs_0_panel_0"
                   ariaDisabled="{{false}}"
                   ariaRole="tab"
                   ariaSelected="{{true}}"
@@ -51,7 +51,7 @@ exports[`tabs :base 1`] = `
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  ariaControls="t_tabs_0_1"
+                  ariaControls="t_tabs_0_panel_1"
                   ariaDisabled="{{false}}"
                   ariaRole="tab"
                   ariaSelected="{{false}}"
@@ -66,7 +66,7 @@ exports[`tabs :base 1`] = `
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  ariaControls="t_tabs_0_2"
+                  ariaControls="t_tabs_0_panel_2"
                   ariaDisabled="{{false}}"
                   ariaRole="tab"
                   ariaSelected="{{false}}"
@@ -81,7 +81,7 @@ exports[`tabs :base 1`] = `
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  ariaControls="t_tabs_0_3"
+                  ariaControls="t_tabs_0_panel_3"
                   ariaDisabled="{{false}}"
                   ariaRole="tab"
                   ariaSelected="{{false}}"
