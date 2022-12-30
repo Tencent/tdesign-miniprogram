@@ -32,6 +32,7 @@ exports[`collapse :base 1`] = `
               tClassTitle="class-title "
             >
               <wx-view
+                ariaLabel=""
                 ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
@@ -119,6 +120,7 @@ exports[`collapse :base 1`] = `
               tClassTitle="class-title "
             >
               <wx-view
+                ariaLabel=""
                 ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
@@ -213,6 +215,7 @@ exports[`collapse :base 1`] = `
               tClassTitle="class-title "
             >
               <wx-view
+                ariaLabel=""
                 ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
@@ -298,6 +301,7 @@ exports[`collapse :base 1`] = `
               tClassTitle="class-title "
             >
               <wx-view
+                ariaLabel=""
                 ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
@@ -396,6 +400,7 @@ exports[`collapse :defaultExpandAll 1`] = `
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
               ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
@@ -481,6 +486,7 @@ exports[`collapse :defaultExpandAll 1`] = `
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
               ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
@@ -581,6 +587,7 @@ exports[`collapse :disabled 1`] = `
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
               ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
@@ -668,6 +675,7 @@ exports[`collapse :disabled 1`] = `
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
               ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"

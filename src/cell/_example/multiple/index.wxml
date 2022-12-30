@@ -4,7 +4,7 @@
   <t-cell title="单行标题" description="一段很长很长的内容文字" arrow>
     <t-badge count="{{16}}" slot="note" />
   </t-cell>
-  <t-cell title="单行标题" description="一段很长很长的内容文字" arrow>
+  <t-cell title="单行标题" description="一段很长很长的内容文字">
     <t-switch defaultValue="{{true}}" slot="note" />
   </t-cell>
   <t-cell title="单行标题" description="一段很长很长的内容文字" note="辅助信息" arrow> </t-cell>
