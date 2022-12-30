@@ -6,7 +6,7 @@ exports[`switch Props :base 1`] = `
     <wx-view
       ariaChecked="{{false}}"
       ariaDisabled="{{false}}"
-      ariaRole="checkbox"
+      ariaRole="switch"
       class="t-class t-switch"
       disabled="{{false}}"
       style=""
