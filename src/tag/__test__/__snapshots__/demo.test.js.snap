@@ -12,18 +12,26 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         light
       </wx-text>
       <t-check-tag
+        content="{{
+          Array [
+            "已选中态",
+            "未选中态",
+          ]
+        }}"
         size="large"
         variant="light"
-      >
-        未选中态
-      </t-check-tag>
+      />
       <t-check-tag
-        checked="{{true}}"
+        content="{{
+          Array [
+            "已选中态",
+            "未选中态",
+          ]
+        }}"
+        defaultChecked="{{true}}"
         size="large"
         variant="light"
-      >
-        已选中态
-      </t-check-tag>
+      />
     </wx-view>
     <wx-view
       class="block"
@@ -32,18 +40,26 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         dark
       </wx-text>
       <t-check-tag
+        content="{{
+          Array [
+            "已选中态",
+            "未选中态",
+          ]
+        }}"
         size="large"
         variant="dark"
-      >
-        未选中态
-      </t-check-tag>
+      />
       <t-check-tag
-        checked="{{true}}"
+        content="{{
+          Array [
+            "已选中态",
+            "未选中态",
+          ]
+        }}"
+        defaultChecked="{{true}}"
         size="large"
         variant="dark"
-      >
-        已选中态
-      </t-check-tag>
+      />
     </wx-view>
     <wx-view
       class="block"
@@ -52,18 +68,26 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         outline
       </wx-text>
       <t-check-tag
+        content="{{
+          Array [
+            "已选中态",
+            "未选中态",
+          ]
+        }}"
         size="large"
         variant="outline"
-      >
-        未选中态
-      </t-check-tag>
+      />
       <t-check-tag
-        checked="{{true}}"
+        content="{{
+          Array [
+            "已选中态",
+            "未选中态",
+          ]
+        }}"
+        defaultChecked="{{true}}"
         size="large"
         variant="outline"
-      >
-        已选中态
-      </t-check-tag>
+      />
     </wx-view>
     <wx-view
       class="block"
@@ -72,18 +96,26 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         light-outline
       </wx-text>
       <t-check-tag
+        content="{{
+          Array [
+            "已选中态",
+            "未选中态",
+          ]
+        }}"
         size="large"
         variant="light-outline"
-      >
-        未选中态
-      </t-check-tag>
+      />
       <t-check-tag
-        checked="{{true}}"
+        content="{{
+          Array [
+            "已选中态",
+            "未选中态",
+          ]
+        }}"
+        defaultChecked="{{true}}"
         size="large"
         variant="light-outline"
-      >
-        已选中态
-      </t-check-tag>
+      />
     </wx-view>
   </wx-view>
 </checkable>
@@ -91,20 +123,24 @@ exports[`Tag Tag checkable demo works fine 1`] = `
 
 exports[`Tag Tag closable demo works fine 1`] = `
 <closable>
-  <t-tag
-    closable="{{true}}"
-    variant="light"
-    bind:close="handleClose0"
+  <wx-view
+    class="demo"
   >
-    文字标签
-  </t-tag>
-  <t-tag
-    closable="{{true}}"
-    variant="outline"
-    bind:close="handleClose1"
-  >
-    文字标签
-  </t-tag>
+    <t-tag
+      closable="{{true}}"
+      variant="light"
+      bind:close="handleClose0"
+    >
+      文字标签
+    </t-tag>
+    <t-tag
+      closable="{{true}}"
+      variant="outline"
+      bind:close="handleClose1"
+    >
+      文字标签
+    </t-tag>
+  </wx-view>
 </closable>
 `;
 
