@@ -6,7 +6,7 @@
   disabled="{{disabled}}"
   aria-checked="{{checked}}"
   aria-disabled="{{disabled}}"
-  aria-role="checkbox"
+  aria-role="switch"
 >
   <view
     class="{{_.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled], size])}} {{prefix}}-class-body"
