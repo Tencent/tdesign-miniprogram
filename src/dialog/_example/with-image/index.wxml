@@ -21,7 +21,7 @@
     <t-image
       slot="top"
       t-class="dialog-image"
-      src="https://how-to-cook-1255404841.cos.ap-shanghai.myqcloud.com/WeChatfc1b389a68ecb961fbd5b4c5d92cb0a8.png"
+      src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
     />
   </t-dialog>
 
@@ -48,7 +48,7 @@
       slot="middle"
       class="image-host"
       t-class="dialog-image"
-      src="https://how-to-cook-1255404841.cos.ap-shanghai.myqcloud.com/WeChatfc1b389a68ecb961fbd5b4c5d92cb0a8.png"
+      src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
     />
   </t-dialog>
 </view>
