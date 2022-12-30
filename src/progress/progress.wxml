@@ -17,6 +17,7 @@
       aria-describedby="{{ ariaDescribedby }}"
       aria-busy="{{ ariaBusy }}"
       class="{{classPrefix }}__bar"
+      tabindex="0"
       style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
     >
       <view
@@ -45,6 +46,7 @@
     aria-describedby="{{ ariaDescribedby }}"
     aria-busy="{{ ariaBusy }}"
     wx:if="{{theme === this.PRO_THEME.PLUMP}}"
+    tabindex="0"
     class="{{classPrefix}}__bar {{classPrefix}}--plump {{computedProgress > 10 ? classPrefix + '--over-ten':  classPrefix + '--under-ten'}} {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
     style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
   >
@@ -80,6 +82,7 @@
       aria-labelledby="{{ ariaLabelledby }}"
       aria-describedby="{{ ariaDescribedby }}"
       aria-busy="{{ ariaBusy }}"
+      tabindex="0"
       class="{{classPrefix}}__canvas--circle"
       style="background-image: conic-gradient( {{colorCircle || this.STATUS_COLOR[status] || '#0052d9'}} {{computedProgress}}%, {{bgColorBar || '#e7e7e7'}} 0%);"
     >
