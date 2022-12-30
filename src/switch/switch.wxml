@@ -1,10 +1,18 @@
 <wxs src="../common/utils.wxs" module="_" />
-<view style="{{ customStyle }}" class="{{ prefix }}-class {{classPrefix}}" bind:tap="handleSwitch">
+<view
+  style="{{ customStyle }}"
+  class="{{ prefix }}-class {{classPrefix}}"
+  bind:tap="handleSwitch"
+  aria-checked="{{checked}}"
+  aria-disabled="{{disabled}}"
+  aria-role="switch"
+>
   <view
     class="{{_.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled], size])}} {{prefix}}-class-body"
   >
     <view
       class="{{_.cls(classPrefix + '__dot', [['checked', checked], ['plain', label.length != 2 && icon.length != 2 && !loading], size])}} {{prefix}}-class-dot"
+      aria-hidden="{{true}}"
     >
       <view
         wx:if="{{label}}"
