@@ -13,7 +13,7 @@ describe('empty', () => {
         template: `<t-empty class="base" image="{{image}}" description="{{description}}" />`,
         data: {
           description: '描述文字',
-          image: 'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/empty__demo-image.png',
+          image: 'https://tdesign.gtimg.com/miniprogram/empty__demo-image.png',
         },
         methods: {},
         usingComponents: {
@@ -29,7 +29,7 @@ describe('empty', () => {
       const imageId = simulate.load({
         template: `<t-image id="t-image" src="{{image}}" mode="aspectFit"></t-image>`,
         data: {
-          image: 'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/empty__demo-image.png',
+          image: 'https://tdesign.gtimg.com/miniprogram/empty__demo-image.png',
         },
         usingComponents: {
           't-image': image,
