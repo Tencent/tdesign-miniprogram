@@ -7,7 +7,6 @@
     bindtap="handleToggle"
     data-index="{{index}}"
     class="{{_.cls(classPrefix + '__item', [['active', activeIdx == index], ['disabled', item.disabled]])}} {{prefix}}-class-item"
-    aria-hidden="{{activeIdx !== -1 && activeIdx !== index }}"
     aria-disabled="{{item.disabled}}"
     aria-role="button"
     aria-expanded="{{activeIdx === index}}"
