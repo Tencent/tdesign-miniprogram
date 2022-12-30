@@ -256,3 +256,13 @@ export const uniqueFactory = (compName) => {
   let number = 0;
   return () => `${prefix}_${compName}_${number++}`;
 };
+
+export const calcIcon = (icon: string | Record<string, any>) => {
+  if (typeof icon === 'string') {
+    return { name: icon };
+  }
+  if (isObject(icon)) {
+    return icon;
+  }
+  return null;
+};
