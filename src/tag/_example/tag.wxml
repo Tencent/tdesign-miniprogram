@@ -4,8 +4,8 @@
   <t-demo title="01 组件类型">
     <type />
   </t-demo>
-  <t-demo title="" desc="可关闭的标签">
-    <closable class="group margin" />
+  <t-demo desc="可关闭的标签">
+    <closable />
   </t-demo>
   <t-demo desc="可点击的标签">
     <checkable />
