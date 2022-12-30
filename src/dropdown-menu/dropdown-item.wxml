@@ -65,7 +65,7 @@
         block
         class="{{classPrefix}}__footer-btn {{classPrefix}}__reset-btn"
         theme="light"
-        disabled="{{!hasChanged}}"
+        disabled="{{value.length == 0}}"
         bindtap="handleReset"
         >重置</t-button
       >
@@ -73,7 +73,7 @@
         block
         class="{{classPrefix}}__footer-btn {{classPrefix}}__confirm-btn"
         theme="primary"
-        disabled="{{!hasChanged}}"
+        disabled="{{value.length == 0}}"
         bindtap="handleConfirm"
         >确定</t-button
       >

@@ -3,7 +3,6 @@ import config from '../common/config';
 import props from './dropdown-item-props';
 import menuProps from './props';
 import type { TdDropdownItemProps } from './type';
-import { equal, clone } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-dropdown-item`;
@@ -86,11 +85,6 @@ export default class DropdownMenuItem extends SuperComponent {
         });
       }
     },
-    'initValue, value'(v1, v2) {
-      this.setData({
-        hasChanged: !equal(v1, v2),
-      });
-    },
     label() {
       this.parent?.getAllItems();
     },
@@ -100,16 +94,6 @@ export default class DropdownMenuItem extends SuperComponent {
           this.setData({ wrapperVisible: true });
         });
       }
-    },
-  };
-
-  lifetimes = {
-    attached() {
-      const { value, defaultValue } = this.data;
-
-      this.setData({
-        initValue: clone(value || defaultValue),
-      });
     },
   };
 
@@ -164,7 +148,7 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     handleReset() {
-      this._trigger('change', { value: clone(this.data.initValue) });
+      this._trigger('change', { value: [] });
     },
 
     handleConfirm() {
