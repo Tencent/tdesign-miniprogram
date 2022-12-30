@@ -9,6 +9,7 @@ describe('stepper', () => {
       const id = simulate.load({
         template: `<t-stepper
         class="base"
+        value="1"
         disabled="{{disabled}}"
         ></t-stepper>`,
         data: {
@@ -21,7 +22,7 @@ describe('stepper', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const component = comp.querySelector('.base >>> .t-stepper');
+      const component = comp.querySelector('.base >>> .t-stepper__minus');
       expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).toBeTruthy();
 
       comp.setData({
@@ -139,6 +140,7 @@ describe('stepper', () => {
         bind:change="handleChange"
         ></t-stepper>`,
         data: {
+          value: 1,
           disabled: true,
         },
         methods: {
@@ -152,7 +154,7 @@ describe('stepper', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       // (disabled = true), 事件不触发;
-      const component = comp.querySelector('.base >>> .t-stepper');
+      const component = comp.querySelector('.base >>> .t-stepper__minus');
       expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).toBeTruthy();
 
       const minusIcon = comp.querySelector('.base >>> .t-stepper__minus');
@@ -169,7 +171,7 @@ describe('stepper', () => {
         value: 10,
         disabled: false,
       });
-      expect(component.dom.getAttribute('class').includes('t-is-disabled')).not.toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).not.toBeTruthy();
 
       minusIcon.dispatchEvent('tap');
       await simulate.sleep(10);

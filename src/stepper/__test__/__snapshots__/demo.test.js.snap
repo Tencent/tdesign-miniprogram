@@ -6,7 +6,7 @@ exports[`Stepper Stepper base demo works fine 1`] = `
     class="stepper-example"
   >
     <t-stepper
-      defaultValue="0"
+      defaultValue="3"
       theme="filled"
     />
   </wx-view>
@@ -16,36 +16,23 @@ exports[`Stepper Stepper base demo works fine 1`] = `
 exports[`Stepper Stepper min-max demo works fine 1`] = `
 <min-max>
   <wx-view
-    class="stepper-example__wrapper"
+    class="stepper-example"
   >
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="5"
-        min="5"
-        theme="filled"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="99"
-        max="999"
-        min="5"
-        theme="filled"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="999"
-        max="999"
-        theme="filled"
-      />
-    </wx-view>
+    <t-stepper
+      defaultValue="0"
+      theme="filled"
+    />
+    <t-stepper
+      defaultValue="99"
+      max="999"
+      min="5"
+      theme="filled"
+    />
+    <t-stepper
+      defaultValue="999"
+      max="999"
+      theme="filled"
+    />
   </wx-view>
 </min-max>
 `;
@@ -53,95 +40,24 @@ exports[`Stepper Stepper min-max demo works fine 1`] = `
 exports[`Stepper Stepper size demo works fine 1`] = `
 <size>
   <wx-view
-    class="stepper-example__wrapper"
+    class="stepper-example"
   >
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        size="large"
-        theme="filled"
-        value="{{3}}"
-        bind:change="handleChange"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-        max="99"
-        theme="filled"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-        size="small"
-        theme="filled"
-      />
-    </wx-view>
-  </wx-view>
-  <wx-view
-    class="stepper-example__wrapper"
-  >
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        size="large"
-        theme="outline"
-        value="{{3}}"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-        max="99"
-        theme="outline"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-        size="small"
-        theme="outline"
-      />
-    </wx-view>
-  </wx-view>
-  <wx-view
-    class="stepper-example__wrapper"
-  >
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        size="large"
-        value="{{3}}"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-        max="99"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-        size="small"
-      />
-    </wx-view>
+    <t-stepper
+      size="large"
+      theme="filled"
+      value="{{3}}"
+      bind:change="handleChange"
+    />
+    <t-stepper
+      defaultValue="3"
+      max="99"
+      theme="filled"
+    />
+    <t-stepper
+      defaultValue="3"
+      size="small"
+      theme="filled"
+    />
   </wx-view>
 </size>
 `;
@@ -162,31 +78,19 @@ exports[`Stepper Stepper status demo works fine 1`] = `
 exports[`Stepper Stepper theme demo works fine 1`] = `
 <theme>
   <wx-view
-    class="stepper-example__wrapper"
+    class="stepper-example"
   >
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-        theme="filled"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-        theme="outline"
-      />
-    </wx-view>
-    <wx-view
-      class="stepper-example"
-    >
-      <t-stepper
-        defaultValue="3"
-      />
-    </wx-view>
+    <t-stepper
+      defaultValue="3"
+      theme="filled"
+    />
+    <t-stepper
+      defaultValue="3"
+      theme="outline"
+    />
+    <t-stepper
+      defaultValue="3"
+    />
   </wx-view>
 </theme>
 `;
