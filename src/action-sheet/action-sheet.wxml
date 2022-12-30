@@ -5,8 +5,8 @@
 
 <view id="{{classPrefix}}" style="{{customStyle}}" class="{{classPrefix}} {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
-    <view class="{{classPrefix}}__content {{prefix}}-class-content" tabindex="-1">
-      <view wx:if="{{description}}" class="{{_.cls(classPrefix + '__description', [align])}}">{{description}}</view>
+    <view class="{{classPrefix}}__content {{prefix}}-class-content" tabindex="0">
+      <view wx:if="{{description}}" tabindex="0" class="{{_.cls(classPrefix + '__description', [align])}}">{{description}}</view>
       <block wx:if="{{gridThemeItems.length}}">
         <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
       </block>
