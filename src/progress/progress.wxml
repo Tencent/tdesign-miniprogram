@@ -4,19 +4,18 @@
 
 <view style="{{customStyle}}" class="{{classPrefix}}">
   <view
-    aria-role="progressbar"
-    role="progressbar"
-    aria-valuenow="{{computedProgress}}"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    aria-label="{{ ariaLabel || this.getAriaLabel(status) }}"
-    aria-labelledby="{{ ariaLabelledby }}"
-    aria-describedby="{{ ariaDescribedby }}"
-    aria-busy="{{ ariaBusy }}"
     wx:if="{{theme === this.PRO_THEME.LINE}}"
     class="{{classPrefix }}--thin {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
     <view
+      aria-role="{{ ariaRole || 'progressbar' }}"
+      aria-valuenow="{{computedProgress}}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-label="{{ ariaLabel || this.getAriaLabel(status) }}"
+      aria-labelledby="{{ ariaLabelledby }}"
+      aria-describedby="{{ ariaDescribedby }}"
+      aria-busy="{{ ariaBusy }}"
       class="{{classPrefix }}__bar"
       style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
     >
@@ -25,7 +24,7 @@
         style="background: {{colorBar}}; width: {{computedProgress + '%'}}"
       ></view>
     </view>
-    <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label">
+    <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label" aria-hidden="{{ true }}">
       <template
         wx:if="{{_.includes(this.STATUS, status)}}"
         is="icon"
@@ -37,9 +36,7 @@
   </view>
 
   <view
-    wx:if="{{theme === this.PRO_THEME.PLUMP}}"
-    aria-role="progressbar"
-    role="progressbar"
+    aria-role="{{ ariaRole || 'progressbar' }}"
     aria-valuenow="{{computedProgress}}"
     aria-valuemin="0"
     aria-valuemax="100"
@@ -47,6 +44,7 @@
     aria-labelledby="{{ ariaLabelledby }}"
     aria-describedby="{{ ariaDescribedby }}"
     aria-busy="{{ ariaBusy }}"
+    wx:if="{{theme === this.PRO_THEME.PLUMP}}"
     class="{{classPrefix}}__bar {{classPrefix}}--plump {{computedProgress > 10 ? classPrefix + '--over-ten':  classPrefix + '--under-ten'}} {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
     style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
   >
@@ -59,7 +57,11 @@
       </view>
       <slot wx:else name="label"></slot>
     </view>
-    <view wx:if="{{label && computedProgress <= 10}}" class="{{ classPrefix }}__info {{prefix}}-class-label">
+    <view
+      wx:if="{{label && computedProgress <= 10}}"
+      class="{{ classPrefix }}__info {{prefix}}-class-label"
+      aria-hidden="{{ true }}"
+    >
       <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
     <slot wx:else name="label"></slot>
@@ -67,18 +69,17 @@
 
   <view
     wx:if="{{theme === this.PRO_THEME.CIRCLE}}"
-    aria-role="progressbar"
-    role="progressbar"
-    aria-valuenow="{{computedProgress}}"
-    aria-valuemin="0"
-    aria-valuemax="100"
-    aria-label="{{ ariaLabel || this.getAriaLabel(status)  }}"
-    aria-labelledby="{{ ariaLabelledby }}"
-    aria-describedby="{{ ariaDescribedby }}"
-    aria-busy="{{ ariaBusy }}"
     class="{{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
     <view
+      aria-role="{{ ariaRole || 'progressbar' }}"
+      aria-valuenow="{{computedProgress}}"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-label="{{ ariaLabel || this.getAriaLabel(status)  }}"
+      aria-labelledby="{{ ariaLabelledby }}"
+      aria-describedby="{{ ariaDescribedby }}"
+      aria-busy="{{ ariaBusy }}"
       class="{{classPrefix}}__canvas--circle"
       style="background-image: conic-gradient( {{colorCircle || this.STATUS_COLOR[status] || '#0052d9'}} {{computedProgress}}%, {{bgColorBar || '#e7e7e7'}} 0%);"
     >
@@ -86,7 +87,7 @@
         class="{{classPrefix}}__canvas--inner {{prefix}}-class-bar"
         style="{{innerDiameter? 'width:'+ innerDiameter*2 + 'rpx;' + 'height:'+ innerDiameter*2 + 'rpx;': ''}}"
       >
-        <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label">
+        <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label" aria-hidden="{{ true }}">
           <template
             wx:if="{{_.includes(this.STATUS, status)}}"
             is="icon"
