@@ -3,7 +3,6 @@
   style="{{ customStyle }}"
   class="{{ prefix }}-class {{classPrefix}}"
   bind:tap="handleSwitch"
-  disabled="{{disabled}}"
   aria-checked="{{checked}}"
   aria-disabled="{{disabled}}"
   aria-role="switch"
