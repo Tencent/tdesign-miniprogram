@@ -4,6 +4,8 @@
 <view
   class="{{_.cls(classPrefix, [['active', active], ['disabled', disabled]])}} {{prefix}}-class"
   bind:tap="handleClick"
+  aria-role="radio"
+  aria-checked="{{active}}"
 >
   <block wx:if="{{active}}">
     <view class="{{classPrefix}}__line"></view>
