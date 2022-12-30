@@ -1,4 +1,0 @@
-<view class="demo-rate">
-  <view class="demo-rate__title">仅展示</view>
-  <t-rate value="{{value}}" variant="filled" disabled bind:change="onChange" />
-</view>

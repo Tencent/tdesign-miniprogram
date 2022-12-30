@@ -5,7 +5,6 @@
 @rate-text-active-color: var(--td-rate-text-active-color, @font-gray-1);
 @rate-selected-color: var(--td-rate-selected-color, @warning-color);
 @rate-unselected-color: var(--td-rate-unselected-color, @gray-color-4);
-@rate-disabled-color: var(--td-rate-disabled-color, @text-disabled-color);
 @rate-text-active-font-weight: var(--td-rate-text-active-font-weight, 600);
 @rate-icon-scale: var(--td-rate-icon-scale, 1.33);
 
@@ -47,22 +46,6 @@
 
     &--unselected {
       color: @rate-unselected-color;
-    }
-
-    &--disabled {
-      color: @rate-disabled-color;
-
-      &-half {
-        background: linear-gradient(
-          to right,
-          @rate-disabled-color 0%,
-          @rate-disabled-color 50%,
-          @rate-unselected-color 51%,
-          @rate-unselected-color 100%
-        );
-        -webkit-background-clip: text;
-        background-clip: text;
-      }
     }
   }
 
