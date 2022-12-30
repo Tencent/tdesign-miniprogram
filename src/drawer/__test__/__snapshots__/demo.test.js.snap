@@ -86,7 +86,7 @@ exports[`Drawer Drawer footer demo works fine 1`] = `
     }}"
     placement="left"
     title="标题"
-    visible="{{true}}"
+    visible="{{false}}"
     bind:item-click="itemClick"
     bind:overlay-click="overlayClick"
   >
