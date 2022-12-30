@@ -16,7 +16,7 @@ exports[`Upload Upload messageFile demo works fine 1`] = `
           Object {
             "name": "uploaded1.png",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
+            "url": "https://tdesign.gtimg.com/miniprogram/images/upload1.png",
           },
         ]
       }}"
@@ -52,17 +52,17 @@ exports[`Upload Upload multiple demo works fine 1`] = `
           Object {
             "name": "uploaded1.png",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
+            "url": "https://tdesign.gtimg.com/miniprogram/images/upload1.png",
           },
           Object {
             "name": "uploaded2.png",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
+            "url": "https://tdesign.gtimg.com/miniprogram/images/upload3.png",
           },
           Object {
             "name": "uploaded1.png",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
+            "url": "https://tdesign.gtimg.com/miniprogram/images/upload4.png",
           },
         ]
       }}"
@@ -93,15 +93,8 @@ exports[`Upload Upload single demo works fine 1`] = `
     class="wrapper"
   >
     <t-upload
-      files="{{
-        Array [
-          Object {
-            "name": "uploaded1.png",
-            "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
-          },
-        ]
-      }}"
+      files="{{Array []}}"
+      max="{{1}}"
       mediaType="{{
         Array [
           "video",
@@ -127,26 +120,26 @@ exports[`Upload Upload status demo works fine 1`] = `
             "name": "uploaded1.png",
             "status": "loading",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
+            "url": "https://tdesign.gtimg.com/miniprogram/images/upload1.png",
           },
           Object {
             "name": "uploaded2.png",
             "percent": 68,
             "status": "loading",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
+            "url": "https://tdesign.gtimg.com/miniprogram/images/upload2.png",
           },
           Object {
             "name": "uploaded3.png",
             "status": "reload",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
+            "url": "https://tdesign.gtimg.com/miniprogram/images/upload3.png",
           },
           Object {
             "name": "uploaded4.png",
             "status": "failed",
             "type": "image",
-            "url": "https://tdesign.gtimg.com/site/upload1.png",
+            "url": "https://tdesign.gtimg.com/miniprogram/images/upload4.png",
           },
         ]
       }}"
