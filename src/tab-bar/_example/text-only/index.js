@@ -1,11 +1,11 @@
 Component({
   data: {
-    value: 'label_1',
+    value: 'home',
     list: [
-      { value: 'label_1', label: '标签一' },
-      { value: 'label_2', label: '标签二' },
-      { value: 'label_3', label: '标签三' },
-      { value: 'label_4', label: '标签四' },
+      { value: 'home', label: '首页' },
+      { value: 'app', label: '应用' },
+      { value: 'chat', label: '聊天' },
+      { value: 'user', label: '我的' },
     ],
   },
 
