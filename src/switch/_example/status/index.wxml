@@ -2,10 +2,10 @@
 
 <view class="group">
   <t-cell title="加载状态">
-    <t-switch defaultValue="{{true}}" loading slot="note" />
+    <t-switch defaultValue="{{false}}" loading slot="note" />
   </t-cell>
   <t-cell title="加载状态">
-    <t-switch defaultValue="{{false}}" loading slot="note" />
+    <t-switch defaultValue="{{true}}" loading slot="note" />
   </t-cell>
 </view>
 
