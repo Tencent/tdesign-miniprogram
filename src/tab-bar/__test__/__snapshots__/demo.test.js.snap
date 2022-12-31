@@ -75,7 +75,7 @@ exports[`TabBar TabBar base demo works fine 1`] = `
       value="label_2"
     >
       
-    软件
+    应用
   
     </t-tab-bar-item>
     <t-tab-bar-item
@@ -222,41 +222,41 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
   >
     <t-tab-bar-item
       subTabBar=""
-      value="label_1"
+      value="home"
     >
       
-    标签一
+    首页
   
     </t-tab-bar-item>
     <t-tab-bar-item
       subTabBar=""
-      value="label_2"
+      value="app"
     >
       
-    标签二
+    应用
   
     </t-tab-bar-item>
     <t-tab-bar-item
       subTabBar="{{
         Array [
           Object {
-            "label": "展开项三",
-            "value": "spread_3",
+            "label": "基本信息",
+            "value": "info",
           },
           Object {
-            "label": "展开项二",
-            "value": "spread_2",
+            "label": "个人主页",
+            "value": "home-page",
           },
           Object {
-            "label": "展开项一",
-            "value": "spread_1",
+            "label": "设置",
+            "value": "setting",
           },
         ]
       }}"
-      value="label_3"
+      value="user"
     >
       
-    展开项
+    我的
   
     </t-tab-bar-item>
   </t-tab-bar>
@@ -268,28 +268,28 @@ exports[`TabBar TabBar text-only demo works fine 1`] = `
   <t-tab-bar
     split="{{false}}"
     theme="tag"
-    value="label_1"
+    value="home"
     bind:change="onChange"
   >
     <t-tab-bar-item
-      value="label_1"
+      value="home"
     >
-       标签一 
+       首页 
     </t-tab-bar-item>
     <t-tab-bar-item
-      value="label_2"
+      value="app"
     >
-       标签二 
+       应用 
     </t-tab-bar-item>
     <t-tab-bar-item
-      value="label_3"
+      value="chat"
     >
-       标签三 
+       聊天 
     </t-tab-bar-item>
     <t-tab-bar-item
-      value="label_4"
+      value="user"
     >
-       标签四 
+       我的 
     </t-tab-bar-item>
   </t-tab-bar>
 </text-only>

@@ -1,29 +1,29 @@
 const list = [
   {
-    value: 'label_1',
-    label: '标签一',
+    value: 'home',
+    label: '首页',
+    icon: 'home',
+  },
+  {
+    value: 'app',
+    label: '应用',
     icon: 'app',
   },
   {
-    value: 'label_2',
-    label: '标签二',
-    icon: 'app',
-  },
-  {
-    value: 'label_3',
-    label: '展开项',
+    value: 'user',
+    label: '我的',
     children: [
       {
-        value: 'spread_3',
-        label: '展开项三',
+        value: 'info',
+        label: '基本信息',
       },
       {
-        value: 'spread_2',
-        label: '展开项二',
+        value: 'home-page',
+        label: '个人主页',
       },
       {
-        value: 'spread_1',
-        label: '展开项一',
+        value: 'setting',
+        label: '设置',
       },
     ],
   },
