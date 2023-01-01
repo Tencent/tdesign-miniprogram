@@ -22,11 +22,11 @@
 
 .@{checkbox} {
   display: inline-flex;
+  vertical-align: middle;
   position: relative;
-  flex-direction: row;
   font-size: @checkbox-font-size;
-  position: relative;
   background: @checkbox-bg-color;
+
   &:focus {
     outline: 0;
   }
@@ -39,6 +39,7 @@
   &--right {
     flex-direction: row-reverse;
   }
+
   .limit-title-row {
     display: -webkit-box;
     -webkit-box-orient: vertical;
