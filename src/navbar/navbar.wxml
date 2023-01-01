@@ -12,10 +12,8 @@
       </view>
     </view>
     <view class="{{classPrefix}}__center t-class-center">
-      <block wx:if="{{title}}">
-        <slot wx:if="{{title === 'slot'}}" name="title" class="t-class-title"></slot>
-        <text wx:else class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
-      </block>
+      <slot name="title" class="t-class-title" />
+      <text wx:if="{{title}}" class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
     </view>
   </view>
 </view>
