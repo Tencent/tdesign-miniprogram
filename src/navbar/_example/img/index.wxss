@@ -3,6 +3,6 @@
 }
 
 .custom-image {
-  height: 50rpx;
-  width: 280rpx;
+  height: 48rpx;
+  width: 204rpx;
 }
