@@ -3,8 +3,6 @@
 exports[`Search Search base demo works fine 1`] = `
 <base>
   <t-search
-    center="{{true}}"
-    label="1"
     placeholder="搜索预设文案"
     value=""
   />
@@ -20,12 +18,14 @@ exports[`Search Search status demo works fine 1`] = `
     placeholder="搜索预设文案"
     shape="round"
   />
+  <wx-view
+    class="demo-desc"
+  >
+    默认状态其他对齐方式
+  </wx-view>
   <t-search
     action="取消"
-    placeholder="搜索预设文案"
-  />
-  <t-search
-    action="取消"
+    center="{{true}}"
     placeholder="搜索预设文案"
     value=""
     bind:change="onChange"
