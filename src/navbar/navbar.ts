@@ -72,7 +72,6 @@ export default class Navbar extends SuperComponent {
     if (!rect) return;
     wx.getSystemInfo({
       success: (res) => {
-        const { customStyle } = this.properties;
         const boxStyleList = [];
         const { statusBarHeight } = wx.getSystemInfoSync();
 
@@ -83,7 +82,7 @@ export default class Navbar extends SuperComponent {
         boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
         boxStyleList.push(`--td-navbar-capsule-width:${rect.width}px`); // 胶囊宽度
         this.setData({
-          boxStyle: `${boxStyleList.join('; ')}${customStyle ? `;${customStyle}` : ''}`,
+          boxStyle: `${boxStyleList.join('; ')}`,
         });
       },
       fail: (err) => {
