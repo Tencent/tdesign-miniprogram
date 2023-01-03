@@ -62,7 +62,7 @@ export default defineComponent({
       return path.slice(path.lastIndexOf('/') + 1);
     },
     liveUrl() {
-      return `//tdesign.tencent.com/miniprogram-live/m2w/program/miniprogram/#!pages/${this.name}/${this.name}.html`;
+      return `/miniprogram-live/m2w/program/miniprogram/#!pages/${this.name}/${this.name}.html`;
     },
     qrcode() {
       const { path } = this.$route;
