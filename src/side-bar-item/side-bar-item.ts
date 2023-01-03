@@ -35,9 +35,7 @@ export default class SideBarItem extends SuperComponent {
 
   ready() {
     let ariaActive;
-    if (this.data.disabled) {
-      ariaActive = '已禁用';
-    } else if (this.data.active) {
+    if (this.data.active) {
       ariaActive = '已选定';
     }
     this.setData({
