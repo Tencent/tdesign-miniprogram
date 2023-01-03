@@ -3,7 +3,7 @@
 <wxs src="./input.wxs" module="this" />
 
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{classPrefix}} {{classPrefix}}--size-{{size}} {{classPrefix}}--layout-{{layout}} {{prefix}}-class"
   aria-describedby
 >

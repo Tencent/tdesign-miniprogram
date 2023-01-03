@@ -1,7 +1,7 @@
 <!-- 加载中占位 -->
 <view
   wx:if="{{isLoading}}"
-  style="{{innerStyle}} {{customStyle}}"
+  style="{{innerStyle}} {{style}}"
   class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
   aria-hidden="{{ariaHidden}}"
 >
@@ -22,7 +22,7 @@
 <!-- 加载失败占位 -->
 <view
   wx:elif="{{isFailed}}"
-  style="{{innerStyle}} {{customStyle}}"
+  style="{{innerStyle}} {{style}}"
   class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--failed {{classPrefix}}--shape-{{shape}}"
   aria-hidden="{{ariaHidden}}"
 >
@@ -38,7 +38,7 @@
   hidden="{{isLoading || isFailed}}"
   class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--shape-{{shape}}"
   src="{{src}}"
-  style="{{innerStyle}}{{customStyle}}"
+  style="{{innerStyle}}{{style}}"
   mode="{{mode}}"
   webp="{{webp}}"
   lazy-load="{{lazy}}"

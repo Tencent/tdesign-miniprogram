@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{ prefix }}-class {{classPrefix}}"
   bind:tap="handleSwitch"
   aria-checked="{{checked}}"

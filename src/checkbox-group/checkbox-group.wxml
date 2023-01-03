@@ -1,4 +1,4 @@
-<view class="{{ classPrefix }} {{prefix}}-class" style="{{customStyle}}">
+<view class="{{ classPrefix }} {{prefix}}-class" style="{{style}}">
   <slot />
   <block wx:for="{{checkboxOptions}}" wx:key="value">
     <t-checkbox

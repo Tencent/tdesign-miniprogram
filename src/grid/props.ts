@@ -22,7 +22,7 @@ const props: TdGridProps = {
     value: 4,
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

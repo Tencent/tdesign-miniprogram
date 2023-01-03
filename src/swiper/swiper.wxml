@@ -1,7 +1,7 @@
 <wxs src="./index.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view class="{{prefix}}-class {{classPrefix}}" style="{{customStyle}}">
+<view class="{{prefix}}-class {{classPrefix}}" style="{{style}}">
   <swiper
     class="{{classPrefix}}-host"
     autoplay="{{autoplay}}"

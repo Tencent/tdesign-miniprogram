@@ -230,7 +230,7 @@ export default class Indexes extends SuperComponent {
             child.setData({
               sticky: scrollTop > 0,
               active: true,
-              customStyle: `height: ${curGroup.height}px`,
+              style: `height: ${curGroup.height}px`,
               anchorStyle: `transform: translate3d(0, ${betwixt ? offset : 0}px, 0)`,
             });
           } else if (index + 1 === curIndex) {
@@ -238,7 +238,7 @@ export default class Indexes extends SuperComponent {
             child.setData({
               sticky: true,
               active: true,
-              customStyle: `height: ${curGroup.height}px`,
+              style: `height: ${curGroup.height}px`,
               anchorStyle: `transform: translate3d(0, ${betwixt ? offset - curGroup.height : 0}px, 0)`,
             });
           } else {

@@ -6,7 +6,7 @@
 </view>
 <view
   wx:if="{{total >= minShowNum}}"
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}__{{type}} {{classPrefix}}--{{paginationPosition}}"
 >
   <block wx:if="{{ type === 'dots' || type === 'dots-bar'}}">

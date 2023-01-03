@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{_.cls(classPrefix + '__group', [['narrow', siblingCount > 4], ['roomy', siblingCount <= 2]])}}"
   bind:touchstart="onTouchStart"
   catch:touchmove="onTouchMove"
