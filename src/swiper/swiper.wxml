@@ -32,12 +32,15 @@
     </swiper-item>
   </swiper>
   <t-swiper-nav
-    wx:if="{{_navigation}}"
-    id="swiperNav"
+    wx:if="{{navigation}}"
     t-class="{{prefix}}-class-nav"
-    type="{{_navigation.type}}"
-    minShowNum="{{_navigation.minShowNum}}"
-    showControls="{{_navigation.showControls}}"
+    type="{{navigation.type || 'dots'}}"
+    current="{{current}}"
+    total="{{list.length}}"
+    direction="{{direction}}"
+    pagination-position="{{paginationPosition}}"
+    min-show-num="{{navigation.minShowNum || 2}}"
+    show-controls="{{navigation.showControls || false}}"
     bind:navBtnChange="onNavBtnChange"
   />
   <slot name="nav" />
