@@ -23,7 +23,7 @@ exports[`Sticky Props :base 1`] = `
             <wx-button
               appParameter=""
               ariaLabel=""
-              class="t-button t-class t-button--default t-button--size-m t-button--rectangle t-button--base t-class"
+              class="t-button t-class t-button--default t-button--size-medium t-button--rectangle t-button--base t-class"
               data-custom="{{null}}"
               formType=""
               hoverClass="button-hover"
@@ -76,7 +76,7 @@ exports[`Sticky Props :base 1`] = `
             <wx-button
               appParameter=""
               ariaLabel=""
-              class="t-button t-class t-button--default t-button--size-m t-button--rectangle t-button--base t-class"
+              class="t-button t-class t-button--default t-button--size-medium t-button--rectangle t-button--base t-class"
               data-custom="{{null}}"
               formType=""
               hoverClass="button-hover"
@@ -129,7 +129,7 @@ exports[`Sticky Props :base 1`] = `
             <wx-button
               appParameter=""
               ariaLabel=""
-              class="t-button t-class t-button--default t-button--size-m t-button--rectangle t-button--base t-class"
+              class="t-button t-class t-button--default t-button--size-medium t-button--rectangle t-button--base t-class"
               data-custom="{{null}}"
               formType=""
               hoverClass="button-hover"
@@ -184,7 +184,7 @@ exports[`Sticky Props :base 1`] = `
               <wx-button
                 appParameter=""
                 ariaLabel=""
-                class="t-button t-class t-button--default t-button--size-m t-button--rectangle t-button--base t-class"
+                class="t-button t-class t-button--default t-button--size-medium t-button--rectangle t-button--base t-class"
                 data-custom="{{null}}"
                 formType=""
                 hoverClass="button-hover"

@@ -752,7 +752,7 @@ exports[`calendar :base 1`] = `
                 <wx-button
                   appParameter=""
                   ariaLabel=""
-                  class="t-button t-class t-button--primary t-button--size- t-button-- t-is-block t-button-- t-class"
+                  class="t-button t-class t-button--primary t-button--size- t-button-- t-button--block t-button-- t-class"
                   data-custom="{{null}}"
                   formType=""
                   hoverClass="button-hover"
