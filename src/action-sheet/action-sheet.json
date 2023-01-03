@@ -3,9 +3,8 @@
   "usingComponents": {
     "t-icon": "../icon/icon",
     "t-popup": "../popup/popup",
-    "t-swiper": "../swiper/swiper",
-    "t-image": "../image/image",
     "t-grid": "../grid/grid",
-    "t-grid-item": "../grid/grid-item"
+    "t-grid-item": "../grid/grid-item",
+    "t-swiper-nav": "../swiper/swiper-nav"
   }
 }
