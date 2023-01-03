@@ -31,12 +31,7 @@ const props: TdAvatarProps = {
   },
   /** 图标 */
   icon: {
-    type: String,
-  },
-  /** 图标属性，透传至 icon */
-  iconProps: {
-    type: Object,
-    value: {},
+    type: null,
   },
   /** 图片地址 */
   image: {

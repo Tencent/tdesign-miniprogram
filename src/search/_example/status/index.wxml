@@ -2,6 +2,6 @@
 
 <t-search placeholder="搜索预设文案" shape="round" />
 
-<t-search placeholder="搜索预设文案" action="取消" />
+<view class="demo-desc">默认状态其他对齐方式</view>
 
-<t-search value="{{value}}" placeholder="搜索预设文案" action="取消" bind:change="onChange" />
+<t-search value="{{value}}" center placeholder="搜索预设文案" action="取消" bind:change="onChange" />

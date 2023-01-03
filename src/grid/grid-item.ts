@@ -1,9 +1,12 @@
-import { SuperComponent, wxComponent, isObject, RelationsOptions, useId } from '../common/src/index';
+import { SuperComponent, wxComponent, isObject, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './grid-item-props';
+import { uniqueFactory, setIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-grid-item`;
+const getUniqueID = uniqueFactory('grid_item');
+
 enum LinkTypes {
   'redirect-to' = 'redirectTo',
   'switch-tab' = 'switchTab',
@@ -50,13 +53,22 @@ export default class GridItem extends SuperComponent {
     align: 'center',
     layout: 'vertical',
     column: 0,
-    labelId: '',
+    labelID: '',
+  };
+
+  observers = {
+    icon(icon) {
+      const obj = setIcon('icon', icon, '');
+      this.setData({
+        ...obj,
+      });
+    },
   };
 
   lifetimes = {
     ready() {
       this.setData({
-        labelId: useId(),
+        labelID: getUniqueID(),
       });
     },
   };

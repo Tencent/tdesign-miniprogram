@@ -1,3 +1,5 @@
+import { prefix } from './config';
+
 const systemInfo = wx.getSystemInfoSync();
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
@@ -175,21 +177,6 @@ export const getCharacterLength = (type: string, str: string, max?: number) => {
 export const chunk = (arr: any[], size: number) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 
-export const equal = (v1, v2) => {
-  if (Array.isArray(v1) && Array.isArray(v2)) {
-    if (v1.length !== v2.length) return false;
-    return v1.every((item, index) => equal(item, v2[index]));
-  }
-  return v1 === v2;
-};
-
-export const clone = (val) => {
-  if (Array.isArray(val)) {
-    return val.map((item) => clone(item));
-  }
-  return val;
-};
-
 export const getInstance = function (context?: Context, selector?: string) {
   if (!context) {
     const pages = getCurrentPages();
@@ -248,4 +235,19 @@ export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperC
 export const getCurrentPage = function <T>() {
   const pages = getCurrentPages();
   return pages[pages.length - 1] as T & WechatMiniprogram.Page.TrivialInstance;
+};
+
+export const uniqueFactory = (compName) => {
+  let number = 0;
+  return () => `${prefix}_${compName}_${number++}`;
+};
+
+export const calcIcon = (icon: string | Record<string, any>) => {
+  if (typeof icon === 'string') {
+    return { name: icon };
+  }
+  if (isObject(icon)) {
+    return icon;
+  }
+  return null;
 };

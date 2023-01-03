@@ -6,6 +6,7 @@
   aria-role="checkbox"
   aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
   aria-disabled="{{disabled ? true : false}}"
+  tabindex="{{tabindex}}"
 >
   <view
     wx:if="{{theme == 'default'}}"

@@ -6,3 +6,7 @@ t-search {
 t-search + t-search {
   margin-top: 32rpx;
 }
+
+.demo-desc {
+  margin: 48rpx 32rpx 32rpx;
+}

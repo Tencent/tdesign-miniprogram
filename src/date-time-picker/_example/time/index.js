@@ -9,7 +9,7 @@ Component({
   },
   methods: {
     showPicker(e) {
-      const { mode } = e?.currentTarget?.dataset;
+      const { mode } = e.currentTarget.dataset;
       this.setData({
         mode,
         [`${mode}Visible`]: true,
@@ -22,7 +22,7 @@ Component({
       });
     },
     onConfirm(e) {
-      const { value } = e?.detail;
+      const { value } = e.detail;
       const { mode } = this.data;
 
       console.log('confim', value);
@@ -36,7 +36,7 @@ Component({
     },
 
     onColumnChange(e) {
-      console.log('pick', e?.detail?.value);
+      console.log('pick', e.detail.value);
     },
   },
 });

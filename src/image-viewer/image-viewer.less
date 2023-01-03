@@ -2,6 +2,8 @@
 
 @image-viewer: ~'@{prefix}-image-viewer';
 
+@image-viewer-icon-font-size: 48rpx;
+
 @image-viewer-nav-height: var(--td-image-viewer-nav-height, 96rpx);
 @image-viewer-nav-bg-color: var(--td-image-viewer-nav-bg-color, @font-gray-3);
 @image-viewer-nav-color: var(--td-image-viewer-nav-color, @text-anti-primary-color);
@@ -70,6 +72,11 @@
 
     &-delete {
       margin-right: @image-viewer-delete-margin-right; // 删除操作按钮右部间距
+    }
+
+    &-close,
+    &-delete {
+      font-size: @image-viewer-icon-font-size;
     }
 
     &-index {

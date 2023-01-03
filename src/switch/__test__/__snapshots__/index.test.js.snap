@@ -4,6 +4,9 @@ exports[`switch Props :base 1`] = `
 <main>
   <t-switch>
     <wx-view
+      ariaChecked="{{false}}"
+      ariaDisabled="{{false}}"
+      ariaRole="switch"
       class="t-class t-switch"
       style=""
       bind:tap="handleSwitch"
@@ -12,6 +15,7 @@ exports[`switch Props :base 1`] = `
         class="t-switch__body t-switch__body--medium t-class-body"
       >
         <wx-view
+          ariaHidden="{{true}}"
           class="t-switch__dot t-switch__dot--plain t-switch__dot--medium t-class-dot"
         >
           <wx-view

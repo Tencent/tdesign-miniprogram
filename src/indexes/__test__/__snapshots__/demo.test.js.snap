@@ -11,30 +11,39 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="阿坝"
       />
       <t-cell
+        ariaRole="button"
         title="阿拉善"
       />
       <t-cell
+        ariaRole="button"
         title="阿里"
       />
       <t-cell
+        ariaRole="button"
         title="安康"
       />
       <t-cell
+        ariaRole="button"
         title="安庆"
       />
       <t-cell
+        ariaRole="button"
         title="鞍山"
       />
       <t-cell
+        ariaRole="button"
         title="安顺"
       />
       <t-cell
+        ariaRole="button"
         title="安阳"
       />
       <t-cell
+        ariaRole="button"
         title="澳门"
       />
     </t-cell-group>
@@ -43,45 +52,59 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="北京"
       />
       <t-cell
+        ariaRole="button"
         title="白银"
       />
       <t-cell
+        ariaRole="button"
         title="保定"
       />
       <t-cell
+        ariaRole="button"
         title="宝鸡"
       />
       <t-cell
+        ariaRole="button"
         title="保山"
       />
       <t-cell
+        ariaRole="button"
         title="包头"
       />
       <t-cell
+        ariaRole="button"
         title="巴中"
       />
       <t-cell
+        ariaRole="button"
         title="北海"
       />
       <t-cell
+        ariaRole="button"
         title="蚌埠"
       />
       <t-cell
+        ariaRole="button"
         title="本溪"
       />
       <t-cell
+        ariaRole="button"
         title="毕节"
       />
       <t-cell
+        ariaRole="button"
         title="滨州"
       />
       <t-cell
+        ariaRole="button"
         title="百色"
       />
       <t-cell
+        ariaRole="button"
         title="亳州"
       />
     </t-cell-group>
@@ -90,60 +113,79 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="重庆"
       />
       <t-cell
+        ariaRole="button"
         title="成都"
       />
       <t-cell
+        ariaRole="button"
         title="长沙"
       />
       <t-cell
+        ariaRole="button"
         title="长春"
       />
       <t-cell
+        ariaRole="button"
         title="沧州"
       />
       <t-cell
+        ariaRole="button"
         title="常德"
       />
       <t-cell
+        ariaRole="button"
         title="昌都"
       />
       <t-cell
+        ariaRole="button"
         title="长治"
       />
       <t-cell
+        ariaRole="button"
         title="常州"
       />
       <t-cell
+        ariaRole="button"
         title="巢湖"
       />
       <t-cell
+        ariaRole="button"
         title="潮州"
       />
       <t-cell
+        ariaRole="button"
         title="承德"
       />
       <t-cell
+        ariaRole="button"
         title="郴州"
       />
       <t-cell
+        ariaRole="button"
         title="赤峰"
       />
       <t-cell
+        ariaRole="button"
         title="池州"
       />
       <t-cell
+        ariaRole="button"
         title="崇左"
       />
       <t-cell
+        ariaRole="button"
         title="楚雄"
       />
       <t-cell
+        ariaRole="button"
         title="滁州"
       />
       <t-cell
+        ariaRole="button"
         title="朝阳"
       />
     </t-cell-group>
@@ -152,42 +194,55 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="大连"
       />
       <t-cell
+        ariaRole="button"
         title="东莞"
       />
       <t-cell
+        ariaRole="button"
         title="大理"
       />
       <t-cell
+        ariaRole="button"
         title="丹东"
       />
       <t-cell
+        ariaRole="button"
         title="大庆"
       />
       <t-cell
+        ariaRole="button"
         title="大同"
       />
       <t-cell
+        ariaRole="button"
         title="大兴安岭"
       />
       <t-cell
+        ariaRole="button"
         title="德宏"
       />
       <t-cell
+        ariaRole="button"
         title="德阳"
       />
       <t-cell
+        ariaRole="button"
         title="德州"
       />
       <t-cell
+        ariaRole="button"
         title="定西"
       />
       <t-cell
+        ariaRole="button"
         title="迪庆"
       />
       <t-cell
+        ariaRole="button"
         title="东营"
       />
     </t-cell-group>
@@ -196,12 +251,15 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="鄂尔多斯"
       />
       <t-cell
+        ariaRole="button"
         title="恩施"
       />
       <t-cell
+        ariaRole="button"
         title="鄂州"
       />
     </t-cell-group>
@@ -210,24 +268,31 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="福州"
       />
       <t-cell
+        ariaRole="button"
         title="防城港"
       />
       <t-cell
+        ariaRole="button"
         title="佛山"
       />
       <t-cell
+        ariaRole="button"
         title="抚顺"
       />
       <t-cell
+        ariaRole="button"
         title="抚州"
       />
       <t-cell
+        ariaRole="button"
         title="阜新"
       />
       <t-cell
+        ariaRole="button"
         title="阜阳"
       />
     </t-cell-group>
@@ -236,33 +301,43 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="广州"
       />
       <t-cell
+        ariaRole="button"
         title="桂林"
       />
       <t-cell
+        ariaRole="button"
         title="贵阳"
       />
       <t-cell
+        ariaRole="button"
         title="甘南"
       />
       <t-cell
+        ariaRole="button"
         title="赣州"
       />
       <t-cell
+        ariaRole="button"
         title="甘孜"
       />
       <t-cell
+        ariaRole="button"
         title="广安"
       />
       <t-cell
+        ariaRole="button"
         title="广元"
       />
       <t-cell
+        ariaRole="button"
         title="贵港"
       />
       <t-cell
+        ariaRole="button"
         title="果洛"
       />
     </t-cell-group>
@@ -271,36 +346,47 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="揭阳"
       />
       <t-cell
+        ariaRole="button"
         title="吉林"
       />
       <t-cell
+        ariaRole="button"
         title="晋江"
       />
       <t-cell
+        ariaRole="button"
         title="吉安"
       />
       <t-cell
+        ariaRole="button"
         title="胶州"
       />
       <t-cell
+        ariaRole="button"
         title="嘉兴"
       />
       <t-cell
+        ariaRole="button"
         title="济南"
       />
       <t-cell
+        ariaRole="button"
         title="鸡西"
       />
       <t-cell
+        ariaRole="button"
         title="荆州"
       />
       <t-cell
+        ariaRole="button"
         title="江门"
       />
       <t-cell
+        ariaRole="button"
         title="基隆"
       />
     </t-cell-group>
@@ -309,15 +395,19 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
     <t-cell-group>
       <t-cell
+        ariaRole="button"
         title="昆明"
       />
       <t-cell
+        ariaRole="button"
         title="开封"
       />
       <t-cell
+        ariaRole="button"
         title="康定"
       />
       <t-cell
+        ariaRole="button"
         title="喀什"
       />
     </t-cell-group>

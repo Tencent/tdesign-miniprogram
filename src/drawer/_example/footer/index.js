@@ -1,6 +1,6 @@
 Component({
   data: {
-    visible: true,
+    visible: false,
     placement: 'left',
     baseSidebar: [
       {

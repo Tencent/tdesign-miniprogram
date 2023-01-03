@@ -6,6 +6,8 @@ exports[`cell :base 1`] = `
     id="cell"
   >
     <wx-view
+      ariaLabel=""
+      ariaRole=""
       class="t-class t-cell   t-cell--middle"
       hoverClass="t-cell--hover-class"
       hoverStayTime="70"

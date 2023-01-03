@@ -28,7 +28,7 @@
             class="{{_.cls(classPrefix + '__item', [theme, ['evenly', spaceEvenly], placement, ['disabled', item.disabled], ['active', currentIndex === index]])}} {{currentIndex === index ? prefix + '-class-active' : ''}} {{prefix}}-class-item"
             bind:tap="onTabTap"
             aria-role="tab"
-            aria-controls="{{tabPanelId+index}}"
+            aria-controls="{{tabID + '_panel_' + index}}"
             aria-selected="{{currentIndex === index}}"
             aria-disabled="{{item.disabled}}"
           >

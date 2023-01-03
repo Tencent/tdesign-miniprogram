@@ -49,16 +49,8 @@ export interface TdAvatarProps {
    * 图标
    */
   icon?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 图标属性，透传至 icon
-   * @default {}
-   */
-  iconProps?: {
-    type: ObjectConstructor;
-    value?: object;
+    type: null;
+    value?: string | object;
   };
   /**
    * 图片地址

@@ -81,7 +81,6 @@ exports[`Cell Cell multiple demo works fine 1`] = `
       />
     </t-cell>
     <t-cell
-      arrow="{{true}}"
       description="一段很长很长的内容文字"
       title="单行标题"
     >

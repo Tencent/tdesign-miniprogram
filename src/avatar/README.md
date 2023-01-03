@@ -64,8 +64,7 @@ badge-props | Object | - | 头像右上角提示信息，继承 Badge 组件的�
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class', 't-class-image', 't-class-icon', 't-class-alt', 't-class-content']` | N
 hide-on-load-failed | Boolean | false | 加载失败时隐藏图片 | N
-icon | String / Slot | - | 图标 | N
-icon-props | Object | {} | 图标属性，透传至 icon | N
+icon | String / Object | - | 图标。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 image | String | - | 图片地址 | N
 image-props | Object | - | 透传至 Image 组件 | N
 shape | String | circle | 形状。可选项：circle/round。TS 类型：`ShapeEnum ` `type ShapeEnum = 'circle' \| 'round'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N

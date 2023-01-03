@@ -90,21 +90,20 @@ exports[`Badge Badge size demo works fine 1`] = `
   <wx-view
     class="block"
   >
-    <t-badge
-      count="12"
-      offset="{{
-        Array [
-          10,
-          7,
-        ]
+    <t-avatar
+      badgeProps="{{
+        Object {
+          "count": 12,
+          "offset": Array [
+            10,
+            7,
+          ],
+          "size": "large",
+        }
       }}"
+      icon="user"
       size="large"
-    >
-      <t-avatar
-        icon="user"
-        size="large"
-      />
-    </t-badge>
+    />
   </wx-view>
   <wx-view
     class="demo-desc"
@@ -114,19 +113,19 @@ exports[`Badge Badge size demo works fine 1`] = `
   <wx-view
     class="block"
   >
-    <t-badge
-      count="12"
-      offset="{{
-        Array [
-          6,
-          5,
-        ]
+    <t-avatar
+      badgeProps="{{
+        Object {
+          "count": 12,
+          "offset": Array [
+            6,
+            5,
+          ],
+        }
       }}"
-    >
-      <t-avatar
-        icon="user"
-      />
-    </t-badge>
+      icon="user"
+      size="large"
+    />
   </wx-view>
 </size>
 `;

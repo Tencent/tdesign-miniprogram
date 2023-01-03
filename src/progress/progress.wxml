@@ -4,19 +4,19 @@
 
 <view style="{{customStyle}}" class="{{classPrefix}}">
   <view
+    aria-role="progressbar"
+    role="progressbar"
+    aria-valuenow="{{computedProgress}}"
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-label="{{ ariaLabel || this.getAriaLabel(status) }}"
+    aria-labelledby="{{ ariaLabelledby }}"
+    aria-describedby="{{ ariaDescribedby }}"
+    aria-busy="{{ ariaBusy }}"
     wx:if="{{theme === this.PRO_THEME.LINE}}"
     class="{{classPrefix }}--thin {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
     <view
-      aria-role="progressbar"
-      role="progressbar"
-      aria-valuenow="{{computedProgress}}"
-      aria-valuemin="0"
-      aria-valuemax="100"
-      aria-label="{{ ariaLabel }}"
-      aria-labelledby="{{ ariaLabelledby }}"
-      aria-describedby="{{ ariaDescribedby }}"
-      aria-busy="{{ ariaBusy }}"
       class="{{classPrefix }}__bar"
       style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
     >
@@ -29,7 +29,7 @@
       <template
         wx:if="{{_.includes(this.STATUS, status)}}"
         is="icon"
-        data="{{class: classPrefix + '__icon', size:'40rpx', name: this.LINE_STATUS_ICON[status]}}"
+        data="{{class: classPrefix + '__icon', size:'44rpx', name: this.LINE_STATUS_ICON[status]}}"
       ></template>
       <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
@@ -43,7 +43,7 @@
     aria-valuenow="{{computedProgress}}"
     aria-valuemin="0"
     aria-valuemax="100"
-    aria-label="{{ ariaLabel }}"
+    aria-label="{{ ariaLabel || this.getAriaLabel(status) }}"
     aria-labelledby="{{ ariaLabelledby }}"
     aria-describedby="{{ ariaDescribedby }}"
     aria-busy="{{ ariaBusy }}"
@@ -72,7 +72,7 @@
     aria-valuenow="{{computedProgress}}"
     aria-valuemin="0"
     aria-valuemax="100"
-    aria-label="{{ ariaLabel }}"
+    aria-label="{{ ariaLabel || this.getAriaLabel(status)  }}"
     aria-labelledby="{{ ariaLabelledby }}"
     aria-describedby="{{ ariaDescribedby }}"
     aria-busy="{{ ariaBusy }}"

@@ -23,9 +23,6 @@
     <view class="demo-desc">评分大小</view>
     <size />
 
-    <view class="demo-desc">禁用评分</view>
-    <disabled />
-
     <view class="demo-desc">设置评分颜色</view>
     <color />
   </t-demo>

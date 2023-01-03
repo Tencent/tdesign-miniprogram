@@ -1,20 +1,14 @@
-<view
-  style="{{ customStyle }}"
-  class="{{classPrefix}} {{classPrefix}}--{{size}} {{ disabled ? classPrefix + '--disabled': ''}} {{prefix}}-class"
->
+<view style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{size}} {{prefix}}-class">
   <view
-    class="{{classPrefix}}__minus {{classPrefix}}__minus--{{theme}} {{classPrefix}}__icon--{{size}} {{prefix}}-class-minus"
+    class="{{classPrefix}}__minus {{classPrefix}}__minus--{{theme}} {{classPrefix}}__icon--{{size}} {{ disabled || disableMinus || currentValue <= min ? classPrefix + '--disabled': ''}} {{prefix}}-class-minus"
     catchtap="minusValue"
     aria-label="{{'减少' + step}}"
     aria-role="button"
     aria-disabled="{{disabled || disableMinus || currentValue <= min}}"
   >
-    <t-icon
-      name="remove"
-      class="{{classPrefix}}__minus-icon {{ disabled || disableMinus || currentValue <= min ? classPrefix + '--disabled': ''}}"
-    />
+    <t-icon name="remove" class="{{classPrefix}}__minus-icon" />
   </view>
-  <view class="{{classPrefix}}__input--{{theme}}">
+  <view class="{{classPrefix}}__input--{{theme}} {{ disabled ? classPrefix + '--disabled': ''}}">
     <input
       style="{{inputWidth? 'width:' + inputWidth + 'px;': ''}}"
       class="{{classPrefix}}__input {{classPrefix}}__input--{{size}} {{prefix}}-class-input"
@@ -27,15 +21,12 @@
     />
   </view>
   <view
-    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{classPrefix}}__icon--{{size}} {{prefix}}-class-plus"
+    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{classPrefix}}__icon--{{size}}  {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--disabled': ''}} {{prefix}}-class-plus"
     catchtap="plusValue"
     aria-label="{{'增加' + step}}"
     aria-role="button"
     aria-disabled="{{disabled || disablePlus|| currentValue >= max}}"
   >
-    <t-icon
-      name="add"
-      class="{{classPrefix}}__plus-icon {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--disabled': ''}}"
-    />
+    <t-icon name="add" class="{{classPrefix}}__plus-icon" />
   </view>
 </view>

@@ -4,7 +4,6 @@
   "backgroundColor": "#fff",
   "disableScroll": true,
   "usingComponents": {
-    "base": "./base",
-    "refresh-timeout": "./refresh-timeout"
+    "base": "./base"
   }
 }

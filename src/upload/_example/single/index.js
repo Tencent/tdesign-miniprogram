@@ -1,12 +1,6 @@
 Component({
   data: {
-    fileList: [
-      {
-        url: 'https://tdesign.gtimg.com/site/upload1.png',
-        name: 'uploaded1.png',
-        type: 'image',
-      },
-    ],
+    fileList: [],
   },
   methods: {
     handleAdd(e) {

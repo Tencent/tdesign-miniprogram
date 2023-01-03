@@ -60,7 +60,6 @@ export default class Navbar extends SuperComponent {
     prefix,
     classPrefix: name,
     boxStyle: '',
-    ios: false,
     showTitle: '',
   };
 
@@ -73,22 +72,17 @@ export default class Navbar extends SuperComponent {
     if (!rect) return;
     wx.getSystemInfo({
       success: (res) => {
-        const { customStyle } = this.properties;
-        const ios = !!(res.system.toLowerCase().search('ios') + 1);
-        const navbarHeight = ios ? 44 : 48;
         const boxStyleList = [];
         const { statusBarHeight } = wx.getSystemInfoSync();
 
-        boxStyleList.push(`--td-navbar-padding-top:${statusBarHeight}px;`);
+        boxStyleList.push(`--td-navbar-padding-top:${statusBarHeight}px`);
         if (rect && res?.windowWidth) {
-          boxStyleList.push(`--navbar-right:${res.windowWidth - rect.left}px;`); // 导航栏右侧小程序胶囊按钮宽度
+          boxStyleList.push(`--td-navbar-right:${res.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
         }
-        boxStyleList.push(`--capsule-height:${rect.height}px;`); // 胶囊高度
-        boxStyleList.push(`--capsule-width:${rect.width}px;`); // 胶囊宽度
-        boxStyleList.push(`--navbar-height:${navbarHeight}px;`); // navbar高度
+        boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
+        boxStyleList.push(`--td-navbar-capsule-width:${rect.width}px`); // 胶囊宽度
         this.setData({
-          ios,
-          boxStyle: `${boxStyleList.join(';')}${customStyle ? `;${customStyle}` : ''}`,
+          boxStyle: `${boxStyleList.join('; ')}`,
         });
       },
       fail: (err) => {

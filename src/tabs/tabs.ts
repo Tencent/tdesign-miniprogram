@@ -1,11 +1,12 @@
-import { SuperComponent, wxComponent, RelationsOptions, useId } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 import touch from '../mixins/touch';
-import { getRect } from '../common/utils';
+import { getRect, uniqueFactory } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-tabs`;
+const getUniqueID = uniqueFactory('tabs');
 
 enum Position {
   top = 'top',
@@ -66,30 +67,32 @@ export default class Tabs extends SuperComponent {
     isScrollY: false,
     direction: 'X',
     offset: 0,
-    tabPanelId: '',
+    tabID: '',
   };
 
-  created() {
-    this.children = this.children || [];
-  }
+  lifetimes = {
+    created() {
+      this.children = this.children || [];
+    },
+
+    attached() {
+      wx.nextTick(() => {
+        this.setTrack();
+      });
+
+      this.adjustPlacement();
+      getRect(this, `.${name}`).then((rect) => {
+        this.containerWidth = rect.width;
+      });
+      this.setData({
+        tabID: getUniqueID(),
+      });
+    },
+  };
 
   initChildId() {
-    this.setData({
-      tabPanelId: `${useId()}-`,
-    });
     this.children.forEach((item, index) => {
-      item.setId(this.data.tabPanelId + index);
-    });
-  }
-
-  attached() {
-    wx.nextTick(() => {
-      this.setTrack();
-    });
-
-    this.adjustPlacement();
-    getRect(this, `.${name}`).then((rect) => {
-      this.containerWidth = rect.width;
+      item.setId(`${this.data.tabID}_panel_${index}`);
     });
   }
 
@@ -184,21 +187,22 @@ export default class Tabs extends SuperComponent {
       if (!rect) return;
       let count = 0;
       let distance = 0;
+      let totalSize = 0;
 
       res.forEach((item) => {
         if (count < currentIndex) {
           distance += isScrollX ? item.width : item.height;
           count += 1;
         }
+        totalSize += isScrollX ? item.width : item.height;
       });
 
       if (this.containerWidth) {
         const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.data.offset);
-        if (offset > 0) {
-          this.setData({
-            offset,
-          });
-        }
+        const maxOffset = totalSize - this.containerWidth;
+        this.setData({
+          offset: Math.min(Math.max(offset, 0), maxOffset),
+        });
       }
 
       if (isScrollX) {

@@ -15,7 +15,7 @@ Component({
     },
 
     onPickerChange(e) {
-      const { key } = e?.currentTarget?.dataset;
+      const { key } = e.currentTarget.dataset;
       const { value } = e.detail;
 
       console.log('picker change:', e.detail);
@@ -27,7 +27,7 @@ Component({
     },
 
     onPickerCancel(e) {
-      const { key } = e?.currentTarget?.dataset;
+      const { key } = e.currentTarget.dataset;
       console.log(e, '取消');
       console.log('picker1 cancel:');
       this.setData({

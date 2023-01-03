@@ -1,15 +1,11 @@
 <view class="demo-desc">Large</view>
 
 <view class="block">
-  <t-badge count="12" size="large" offset="{{ [10, 7] }}">
-    <t-avatar icon="user" size="large" />
-  </t-badge>
+  <t-avatar icon="user" size="large" badge-props="{{ {count: 12, size: 'large', offset: [10, 7]} }}" />
 </view>
 
 <view class="demo-desc">Middle</view>
 
 <view class="block">
-  <t-badge count="12" offset="{{ [6, 5] }}">
-    <t-avatar icon="user" />
-  </t-badge>
+  <t-avatar icon="user" size="large" badge-props="{{ {count: 12, offset: [6, 5]} }}" />
 </view>

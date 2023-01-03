@@ -4,6 +4,8 @@
   hover-class="{{classPrefix}}--hover-class"
   hover-stay-time="70"
   bind:tap="onClick"
+  aria-role="{{ariaRole || (arrow ? 'button' : '')}}"
+  aria-label="{{ariaLabel}}"
 >
   <view class="{{classPrefix}}__left {{prefix}}-class-left">
     <t-icon wx:if="{{ leftIcon }}" name="{{leftIcon}}" class="{{classPrefix}}__left-icon {{prefix}}-class-left-icon" />

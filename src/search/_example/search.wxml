@@ -6,7 +6,7 @@
       <base />
     </view>
   </t-demo>
-  <t-demo title="02 组件样式">
+  <t-demo title="02 组件样式" desc="搜索框形状">
     <view class="demo-section__wrapper">
       <status />
     </view>

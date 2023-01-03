@@ -7,7 +7,7 @@ on:
 jobs:
   request-preview:
     runs-on: ubuntu-latest
-    if: github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.comment.body == '预览'
+    if: github.event_name == 'issue_comment' && github.event.issue.pull_request && startsWith(github.event.comment.body, '预览')
     steps:
       - run: |
           timestamp=$(date +%s)
@@ -29,6 +29,13 @@ jobs:
       - uses: ./.github/actions/install-dep
       - run: npm run build
         shell: bash
+      - id: get-robot
+        run: |
+          comment=${{ env.comment }}
+          echo "robot=${comment: 2: 1}" >> $GITHUB_OUTPUT
+        shell: bash
+        env:
+          comment: ${{ github.event.comment.body }}
       - name: get preview qrcode
         id: preview
         uses: LeeJim/setup-miniprogram@main
@@ -39,6 +46,7 @@ jobs:
           es6: true
           es7: true
           minify: true
+          robot: ${{ steps.get-robot.outputs.robot }}
         env:
           MINI_APP_ID: ${{ secrets.TDESIGN_APP_ID }}
           MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}

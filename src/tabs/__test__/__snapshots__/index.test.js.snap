@@ -36,7 +36,7 @@ exports[`tabs :base 1`] = `
                 class="t-tabs__nav t-tabs__nav--left"
               >
                 <wx-view
-                  ariaControls="t-id-3-0"
+                  ariaControls="t_tabs_0_panel_0"
                   ariaDisabled="{{false}}"
                   ariaRole="tab"
                   ariaSelected="{{true}}"
@@ -51,7 +51,7 @@ exports[`tabs :base 1`] = `
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  ariaControls="t-id-3-1"
+                  ariaControls="t_tabs_0_panel_1"
                   ariaDisabled="{{false}}"
                   ariaRole="tab"
                   ariaSelected="{{false}}"
@@ -66,7 +66,7 @@ exports[`tabs :base 1`] = `
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  ariaControls="t-id-3-2"
+                  ariaControls="t_tabs_0_panel_2"
                   ariaDisabled="{{false}}"
                   ariaRole="tab"
                   ariaSelected="{{false}}"
@@ -81,7 +81,7 @@ exports[`tabs :base 1`] = `
                   </wx-view>
                 </wx-view>
                 <wx-view
-                  ariaControls="t-id-3-3"
+                  ariaControls="t_tabs_0_panel_3"
                   ariaDisabled="{{false}}"
                   ariaRole="tab"
                   ariaSelected="{{false}}"
@@ -124,7 +124,7 @@ exports[`tabs :base 1`] = `
           <wx-view
             ariaRole="tabpanel"
             class="t-tab-panel t-is-active"
-            id="t-id-3-0"
+            id="t_tabs_0_panel_0"
             style="; "
           >
             标签一内容
@@ -134,7 +134,7 @@ exports[`tabs :base 1`] = `
           <wx-view
             ariaRole="tabpanel"
             class="t-tab-panel "
-            id="t-id-3-1"
+            id="t_tabs_0_panel_1"
             style="; display: none"
           >
             标签1内容
@@ -144,7 +144,7 @@ exports[`tabs :base 1`] = `
           <wx-view
             ariaRole="tabpanel"
             class="t-tab-panel "
-            id="t-id-3-2"
+            id="t_tabs_0_panel_2"
             style="; display: none"
           >
             标签2内容
@@ -154,7 +154,7 @@ exports[`tabs :base 1`] = `
           <wx-view
             ariaRole="tabpanel"
             class="t-tab-panel "
-            id="t-id-3-3"
+            id="t_tabs_0_panel_3"
             style="; display: none"
           >
             标签3内容

@@ -1,41 +1,27 @@
 <view class="demo">
   <view class="demo-title">NoticeBar 公告栏</view>
   <view class="demo-desc"> 在导航栏下方，用于给用户显示提示消息。 </view>
-  <t-demo title="01 组件类型">
-    <view class="demo-section__desc">纯文字的公告栏</view>
-    <view class="box">
-      <base />
-    </view>
-
-    <view class="demo-section__desc">带图标的公告栏</view>
-    <view class="box">
-      <iconDemo />
-    </view>
-
-    <view class="demo-section__desc">带操作的公告栏</view>
-    <view class="box">
-      <event />
-    </view>
-
-    <view class="demo-section__desc">自定义样式的公告栏</view>
-    <view class="box">
-      <custom />
-    </view>
-
-    <view class="demo-section__desc">自定义内容的公告栏</view>
-    <view class="box">
-      <customization />
-    </view>
+  <t-demo title="01 组件类型" desc="纯文字的公告栏">
+    <base />
   </t-demo>
+  <t-demo desc="带图标的公告栏">
+    <iconDemo />
+  </t-demo>
+  <t-demo desc="带操作的公告栏">
+    <event />
+  </t-demo>
+  <t-demo desc="自定义样式的公告栏">
+    <custom />
+  </t-demo>
+  <t-demo desc="自定义内容的公告栏">
+    <customization />
+  </t-demo>
+
   <t-demo title="02 组件状态" desc="公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）">
-    <view class="box">
-      <theme />
-    </view>
+    <theme />
   </t-demo>
 
   <t-demo title="03 可滚动公告栏" desc="可滚动公告栏有水平（horizontal）和垂直（vertical）">
-    <view class="box">
-      <scrolling />
-    </view>
+    <scrolling />
   </t-demo>
 </view>

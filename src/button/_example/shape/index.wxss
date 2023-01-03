@@ -4,6 +4,10 @@
   margin: 0 32rpx;
 }
 
+.box:not(:first-child) {
+  margin-top: 32rpx;
+}
+
 .box t-button + t-button {
   margin-left: 32rpx;
 }

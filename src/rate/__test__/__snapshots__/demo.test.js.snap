@@ -46,7 +46,7 @@ exports[`Rate Rate base demo works fine 1`] = `
     <wx-view
       class="demo-rate__title"
     >
-      请点击评分
+      实心评分
     </wx-view>
     <t-rate
       value="{{3}}"
@@ -128,26 +128,6 @@ exports[`Rate Rate custom demo works fine 1`] = `
 </custom>
 `;
 
-exports[`Rate Rate disabled demo works fine 1`] = `
-<disabled>
-  <wx-view
-    class="demo-rate"
-  >
-    <wx-view
-      class="demo-rate__title"
-    >
-      仅展示
-    </wx-view>
-    <t-rate
-      disabled="{{true}}"
-      value="{{3}}"
-      variant="filled"
-      bind:change="onChange"
-    />
-  </wx-view>
-</disabled>
-`;
-
 exports[`Rate Rate show-text demo works fine 1`] = `
 <show-text>
   <wx-view
@@ -156,7 +136,7 @@ exports[`Rate Rate show-text demo works fine 1`] = `
     <wx-view
       class="demo-rate__title"
     >
-      请点击评分
+      带描述评分
     </wx-view>
     <t-rate
       data-index="{{0}}"
@@ -181,7 +161,7 @@ exports[`Rate Rate show-text demo works fine 1`] = `
     <wx-view
       class="demo-rate__title"
     >
-      请点击评分
+      带描述评分
     </wx-view>
     <t-rate
       data-index="{{1}}"
@@ -197,12 +177,13 @@ exports[`Rate Rate show-text demo works fine 1`] = `
     <wx-view
       class="demo-rate__title"
     >
-      请点击评分
+      带描述评分
     </wx-view>
     <t-rate
       data-index="{{2}}"
       showText="{{true}}"
       value="{{0}}"
+      variant="filled"
       bind:change="onChange"
     />
   </wx-view>

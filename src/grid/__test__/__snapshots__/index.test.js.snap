@@ -18,7 +18,7 @@ exports[`grid :base 1`] = `
           bind:click="handleClick"
         >
           <wx-view
-            ariaLabelledby="t-id-0"
+            ariaLabelledby="t_grid_item_0"
             ariaRole="button"
             class="t-grid-item t-class"
             hoverClass=""
@@ -36,7 +36,7 @@ exports[`grid :base 1`] = `
               >
                 <wx-view
                   class="t-grid-item__words t-grid-item__words--vertical"
-                  id="t-id-0"
+                  id="t_grid_item_0"
                 />
               </wx-view>
             </wx-view>
@@ -44,7 +44,7 @@ exports[`grid :base 1`] = `
         </t-grid-item>
         <t-grid-item>
           <wx-view
-            ariaLabelledby="t-id-1"
+            ariaLabelledby="t_grid_item_1"
             ariaRole="button"
             class="t-grid-item t-class"
             hoverClass=""
@@ -62,7 +62,7 @@ exports[`grid :base 1`] = `
               >
                 <wx-view
                   class="t-grid-item__words t-grid-item__words--vertical"
-                  id="t-id-1"
+                  id="t_grid_item_1"
                 />
               </wx-view>
             </wx-view>

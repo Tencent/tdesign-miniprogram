@@ -1,4 +1,5 @@
 <import src="../common/template/image.wxml" />
+<import src="../common/template/icon.wxml" />
 <wxs module="util">
   module.exports.getImageSize = function(column) { if (column >= 5) return 'small'; if (column == 4) return 'middle';
   return 'large'; }
@@ -12,7 +13,7 @@
   hover-stay-time="{{200}}"
   bindtap="onClick"
   aria-role="{{ariaRole || 'button'}}"
-  aria-labelledby="{{labelId}}"
+  aria-labelledby="{{labelID}}"
 >
   <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}">
     <view
@@ -45,17 +46,14 @@
             />
           </block>
           <slot wx:else name="image" />
-          <t-icon
-            wx:if="{{icon}}"
-            name="{{iconProps.name || icon}}"
-            prefix="{{iconProps.prefix}}"
-            size="{{iconProps.size || '48rpx'}}"
-            color="{{iconProps.color}}"
-            customStyle="{{iconProps.customStyle}}"
-          ></t-icon>
+          <template
+            wx:if="{{iconName || _.isNoEmptyObj(iconData)}}"
+            is="icon"
+            data="{{class: classPrefix + '__icon', name: iconName, ...iconData}}"
+          />
         </view>
       </t-badge>
-      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{labelId}}">
+      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{labelID}}">
         <view
           wx:if="{{text && text !== 'slot'}}"
           class="{{_.cls(classPrefix + '__text', [util.getImageSize(column), layout])}} {{prefix}}-class-text"

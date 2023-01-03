@@ -192,9 +192,6 @@ exports[`Button Button shape demo works fine 1`] = `
     />
   </wx-view>
   <wx-view
-    style="height: 32rpx"
-  />
-  <wx-view
     class="box align-bottom"
   >
     <t-button
@@ -222,13 +219,11 @@ exports[`Button Button size demo works fine 1`] = `
   >
     <t-button
       size="large"
-      tClass="external-class"
       theme="primary"
     >
       大号按钮 44
     </t-button>
     <t-button
-      tClass="external-class"
       theme="primary"
     >
       中号按钮 40
@@ -239,7 +234,6 @@ exports[`Button Button size demo works fine 1`] = `
   >
     <t-button
       size="small"
-      tClass="external-class"
       theme="primary"
     >
       小号按钮 36

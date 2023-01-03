@@ -6,17 +6,8 @@ Component({
     loadingProps: {
       size: '50rpx',
     },
-    rowCol: [
-      { width: '100%', height: '342rpx' },
-      [
-        { width: '340rpx', height: '32rpx' },
-        { width: '340rpx', height: '32rpx', marginLeft: '22rpx' },
-      ],
-      [
-        { width: '218rpx', height: '32rpx' },
-        { width: '218rpx', height: '32rpx', marginLeft: '144rpx' },
-      ],
-    ],
+    rowCol1: [{ width: '100%', height: '342rpx', borderRadius: '24rpx' }],
+    rowCol2: [[{ width: '327rpx' }], [{ width: '200rpx' }], [{ size: '327rpx', borderRadius: '24rpx' }]],
   },
 
   methods: {
