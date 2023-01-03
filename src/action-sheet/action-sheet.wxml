@@ -1,7 +1,7 @@
 <wxs src="./action-sheet.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
-<import src="./template/action-sheet-list.wxml" />
-<import src="./template/action-sheet-grid.wxml" />
+<import src="./template/list.wxml" />
+<import src="./template/grid.wxml" />
 
 <view id="{{classPrefix}}" style="{{customStyle}}" class="{{classPrefix}} {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">

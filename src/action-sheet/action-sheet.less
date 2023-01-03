@@ -13,6 +13,7 @@
 
 .@{action-sheet} {
   &__content {
+    padding-top: 16rpx;
     color: @action-sheet-color;
     border-top-left-radius: @action-sheet-border-radius;
     border-top-right-radius: @action-sheet-border-radius;
@@ -25,6 +26,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .ellipsis {
     word-wrap: normal;
     white-space: nowrap;
@@ -33,7 +35,11 @@
   }
 
   &__grid {
-    padding: 16rpx 0 48rpx;
+    padding-bottom: 16rpx;
+
+    &--swiper {
+      padding-bottom: 48rpx;
+    }
   }
 
   &__description {
@@ -83,28 +89,13 @@
     }
   }
 
-  &__swiper-wrap {
-    position: relative;
-    background-color: @bg-color-block;
-  }
+  &__swiper {
+    border-top-left-radius: @action-sheet-border-radius;
+    border-top-right-radius: @action-sheet-border-radius;
 
-  &__square {
-    height: 148rpx;
-    margin-bottom: 32rpx;
-
-    &-image {
-      width: 72rpx;
-      height: 72rpx;
-      padding: 10rpx;
-    }
-
-    &-text {
-      width: 100%;
-      margin-top: 10rpx;
-      font-size: 28rpx;
-      color: rgba(0, 0, 0, 0.9);
-      text-align: center;
-      .ellipsis();
+    &-wrap {
+      margin-top: 8rpx;
+      position: relative;
     }
   }
 
