@@ -1,9 +1,9 @@
-.demo-textarea {
+.textarea-example {
   padding: 32rpx;
   background-color: #fff;
 }
 
-.demo-textarea--label {
+.textarea-example__label {
   display: block;
   color: rgba(0, 0, 0, 0.9);
   font-size: 24rpx;
