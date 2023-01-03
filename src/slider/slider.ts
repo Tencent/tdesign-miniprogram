@@ -26,6 +26,7 @@ type dataType = {
   scaleTextArray: any[];
   _value: SliderValue;
   prefix: string;
+  isChange: boolean;
 };
 
 interface boundingClientRect {
@@ -70,6 +71,7 @@ export default class Slider extends SuperComponent {
     scaleArray: [],
     scaleTextArray: [],
     prefix,
+    isChange: false,
   };
 
   observers = {
@@ -77,7 +79,7 @@ export default class Slider extends SuperComponent {
       this.handlePropsChange(newValue);
     },
     _value(newValue: SliderValue) {
-      const { min, max, range } = this.properties;
+      const { min, max, range, label } = this.properties;
       const { maxRange } = this.data;
 
       if (range) {
@@ -87,6 +89,17 @@ export default class Slider extends SuperComponent {
         this.setLineStyle(left, right);
       } else {
         this.setSingleBarWidth(newValue as number);
+      }
+
+      if(!label){
+        this.setData({
+          isChange: true,
+        })
+        setTimeout(() => {
+          this.setData({
+            isChange: false,
+          })
+        }, 2e3);
       }
     },
     marks(val) {
