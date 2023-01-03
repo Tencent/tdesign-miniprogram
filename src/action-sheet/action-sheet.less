@@ -21,13 +21,13 @@
     overflow: hidden;
   }
 
-  .flex-center {
+  .flex-center() {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .ellipsis {
+  .ellipsis() {
     word-wrap: normal;
     white-space: nowrap;
     overflow: hidden;
@@ -89,14 +89,9 @@
     }
   }
 
-  &__swiper {
-    border-top-left-radius: @action-sheet-border-radius;
-    border-top-right-radius: @action-sheet-border-radius;
-
-    &-wrap {
-      margin-top: 8rpx;
-      position: relative;
-    }
+  &__swiper-wrap {
+    margin-top: 8rpx;
+    position: relative;
   }
 
   &__footer {
