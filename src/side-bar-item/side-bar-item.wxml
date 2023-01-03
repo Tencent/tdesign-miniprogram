@@ -2,9 +2,10 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
+  class="{{_.cls(classPrefix, [['active', active], ['disabled', disabled]])}} {{prefix}}-class"
   aria-role="button"
+  aria-disabled="{{disabled}}"
   aria-label="{{ariaActive}}{{label}}"
-  class="{{_.cls(classPrefix, [['active', active], ['disabled', disabled]])}}"
   bind:tap="handleClick"
 >
   <block wx:if="{{active}}">
