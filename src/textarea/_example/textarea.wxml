@@ -10,16 +10,19 @@
   <t-demo title="" desc="自动增高多行文本框">
     <autosize />
   </t-demo>
-  <t-demo desc="设置最大字符个数">
+  <t-demo desc="设置字符数限制">
     <maxlength />
   </t-demo>
-  <t-demo desc="设置最大字符个数，一个汉字表示两个字符">
+  <t-demo>
     <maxcharacter />
   </t-demo>
-  <t-demo title="02 组件状态" desc="禁用多行文本框">
+  <t-demo title="02 组件状态" desc="禁用状态">
     <disabled />
   </t-demo>
-  <t-demo title="03 自定义组件样式" desc="标签外置输入框">
+  <t-demo title="03 组件样式" desc="卡片样式">
+    <card />
+  </t-demo>
+  <t-demo title="04 特殊样式" desc="标签外置输入框">
     <custom />
   </t-demo>
 </view>
