@@ -23,14 +23,14 @@ var CIRCLE_STATUS_ICON = {
   warning: 'error',
 };
 
-var getAriaLabel = function (status) {
+var getAriaLabel = function (status, computedProgress) {
   if (status === 'error') {
-    return '进度失败';
+    return '进度失败' + '，当前进度' + computedProgress + '%';
   }
   if (status === 'warning') {
-    return '进度异常';
+    return '进度异常' + '，当前进度' + computedProgress + '%';
   }
-  return '';
+  return '当前进度' + computedProgress + '%';
 };
 
 module.exports = {
