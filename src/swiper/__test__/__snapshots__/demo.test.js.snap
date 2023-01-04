@@ -106,6 +106,7 @@ exports[`Swiper Swiper custom demo works fine 1`] = `
         "https://tdesign.gtimg.com/site/swiper/05.png",
       ]
     }}"
+    navigation="{{false}}"
   >
     <t-swiper-nav
       slot="nav"

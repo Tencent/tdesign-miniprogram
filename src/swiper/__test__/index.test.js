@@ -14,9 +14,6 @@ describe('swiper', () => {
       const swiperItemLength = $swiperItems.length;
       expect(swiperItemLength).toBe(comp.data.swiperList.length);
 
-      const $swiperNav = comp.querySelector('#swiper1 >>> #swiperNav >>> .t-swiper-nav');
-      expect($swiperNav).toBeDefined();
-
       expect(comp.querySelector('#swiper1 >>> .t-swiper-nav__fraction').dom.textContent.trim()).toBe(
         `${comp.data.current + 1}/${swiperItemLength}`,
       );
