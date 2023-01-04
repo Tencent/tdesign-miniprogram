@@ -1,4 +1,4 @@
-const image = 'https://tdesign.gtimg.com/miniprogram/images/miniprogram.png';
+const image = 'https://tdesign.gtimg.com/miniprogram/images/mobile.png';
 const items = new Array(12).fill({ label: '标题文字', image }, 0, 12);
 
 Page({
@@ -8,7 +8,7 @@ Page({
     scrollTop: 0,
     categories: [
       {
-        label: '选项选项选项选项',
+        label: '选项选项',
         title: '标题',
         items,
       },

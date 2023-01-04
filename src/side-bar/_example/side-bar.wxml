@@ -1,13 +1,24 @@
 <view class="demo-title">SideBar 侧边导航</view>
 <view class="demo-desc">用于内容分类后的展示切换。</view>
-<t-demo title="01 组件类型" desc="侧边导航用法">
-  <view class="wrapper">
-    <t-button variant="outline" theme="primary" block bind:tap="toNavigation" data-target="base">锚点用法</t-button>
+<t-demo title="01 组件类型" desc="侧边导航用法" />
+<view class="wrapper">
+  <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="base"
+    >锚点用法</t-button
+  >
 
-    <view style="height: 32rpx" />
+  <view style="height: 32rpx" />
 
-    <t-button variant="outline" theme="primary" block bind:tap="toNavigation" data-target="switch">切页用法</t-button>
-  </view>
-</t-demo>
+  <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="switch"
+    >切页用法</t-button
+  >
+</view>
+
+<t-demo title="02 组件样式" desc="侧边导航样式" />
+
+<view class="wrapper">
+  <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="custom"
+    >自定义样式</t-button
+  >
+</view>
 
 <!-- <t-demo title="02 组件状态" desc="侧边导航状态"> -->
