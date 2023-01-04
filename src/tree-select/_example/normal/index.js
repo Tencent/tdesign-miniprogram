@@ -115,8 +115,6 @@ const generateTree = () => {
     options.push(item);
   });
 
-  console.log(options);
-
   return options;
 };
 

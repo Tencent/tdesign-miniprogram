@@ -4,6 +4,8 @@
 <view class="{{classPrefix}}" style="height: {{_.addUnit(height)}}; {{customStyle}}">
   <scroll-view
     scroll-y
+    enhanced
+    show-scrollbar="{{false}}"
     class="{{_.cls(classPrefix + '__column', [this.getTreeClass(leafLevel - level, treeOptions.length)])}} {{prefix}}-class"
     wx:for="{{treeOptions}}"
     wx:key="level"
