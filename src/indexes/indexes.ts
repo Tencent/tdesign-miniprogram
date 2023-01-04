@@ -162,6 +162,10 @@ export default class Indexes extends SuperComponent {
       this.preIndex = index;
       this.toggleTips(true);
       this.triggerEvent('select', { index: activeAnchor });
+
+      if (activeAnchor !== this.data.activeAnchor) {
+        this.triggerEvent('change', { index: activeAnchor });
+      }
     },
 
     onClick(e) {
@@ -216,6 +220,10 @@ export default class Indexes extends SuperComponent {
       if (curIndex === -1) return;
 
       const curGroup = this.groupTop[curIndex];
+
+      if (this.data.activeAnchor !== curGroup.anchor) {
+        this.triggerEvent('change', { index: curGroup.anchor });
+      }
 
       this.setData({
         activeAnchor: curGroup.anchor,
