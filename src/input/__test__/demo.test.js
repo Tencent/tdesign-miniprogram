@@ -7,9 +7,11 @@ import path from 'path';
 
 const mapper = [
   'align',
+  'banner',
   'base',
   'bordered',
   'custom',
+  'label',
   'layout',
   'maxlength',
   'prefix',

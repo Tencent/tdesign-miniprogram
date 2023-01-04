@@ -57,18 +57,16 @@ describe('input', () => {
       expect(component.instance.data.count).toBe(10);
     });
 
-    it(': borderless && align && size', async () => {
+    it(': borderless && align ', async () => {
       const id = simulate.load({
         template: `<t-input
         class="base"
         align="{{align}}"
-        size="{{size}}"
         borderless="{{borderless}}"
         ></t-input>`,
         data: {
-          borderless: false,
+          borderless: true,
           align: 'center',
-          size: 'small',
         },
         usingComponents: {
           't-input': input,
@@ -77,12 +75,8 @@ describe('input', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const component = comp.querySelector('.base >>> .t-input__content');
-      expect(component.dom.getAttribute('class').includes('t-input--border')).toBeTruthy();
-
-      expect(
-        comp.querySelector('.base >>> .t-input').dom.getAttribute('class').includes('t-input--size-small'),
-      ).toBeTruthy();
+      const component = comp.querySelector('.base >>> .t-input__wrapper');
+      expect(component.dom.getAttribute('class').includes('t-input--border')).toBeFalsy();
 
       const $input = comp.querySelector('.base >>> .t-input__control');
       expect($input.dom.getAttribute('class').includes('t-input__control--center')).toBeTruthy();

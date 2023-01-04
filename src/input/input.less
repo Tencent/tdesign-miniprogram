@@ -1,18 +1,7 @@
 @import '../common/style/index.less';
 
-@input-medium-vertical-padding: 32rpx;
-@input-medium-horizontal-padding: 32rpx;
-@input-small-vertical-padding: 24rpx;
-@input-small-horizontal-padding: 32rpx;
-
-@input-default-border-color: var(--td-input-default-border-color, @border-color); // 'default' 状态边框颜色
-@input-default-focus-border-color: var(
-  --td-input-default-focus-border-color,
-  @primary-color
-); // 'default' 状态聚焦时边框颜色，其他状态聚焦与边框颜色保持一致
-@input-success-border-color: var(--td-input-success-border-color, @success-color); // 'success' 状态边框颜色
-@input-warning-border-color: var(--td-input-warning-border-color, @warning-color); // 'warning' 状态边框颜色
-@input-error-border-color: var(--td-input-error-border-color, @error-color); // 'error' 状态边框颜色
+@input-border-width: 2rpx;
+@input-vertical-padding: var(--td-input-vertical-padding, 32rpx); //输入框垂直方向内间距
 
 @input-default-text-color: var(--td-input-default-text-color, @font-gray-1); // 'default' 状态输入框文本颜色
 @input-success-text-color: var(--td-input-success-text-color, @success-color); // 'success' 状态输入框文本颜色
@@ -25,6 +14,7 @@
 @input-error-tips-color: var(--td-input-error-tips-color, @error-color); // 'error' 状态辅助文本颜色
 
 @input-bg-color: var(--td-input-bg-color, @bg-color-block); // 输入框背景颜色
+@input-border-color: var(--td-input-border-color, @gray-color-3); // 输入框分割线颜色
 @input-placeholder-text-color: var(--td-input-placeholder-text-color, @text-color-placeholder); // 输入框占位符文本颜色
 @input-prefix-icon-color: var(--td-input-prefix-icon-color, @font-gray-1); // // 输入框前缀图标颜色
 @input-suffix-icon-color: var(--td-input-suffix-icon-color, @font-gray-3); // 输入框后缀图标颜色
@@ -34,14 +24,22 @@
 @input-border-radius: var(--td-input-border-radius, @radius-default); // 边框圆角大小
 
 .@{prefix}-input {
-  position: relative;
-  display: flex;
-  background: @input-bg-color;
+  background-color: @input-bg-color;
 
-  &--layout {
-    &-vertical {
-      flex-direction: column;
-    }
+  &__wrapper {
+    display: flex;
+    flex: 1;
+    margin-left: @spacer-2;
+    padding: @input-vertical-padding @input-vertical-padding @input-vertical-padding 0;
+  }
+
+  &--border {
+    padding: @input-vertical-padding @input-vertical-padding calc((@input-vertical-padding - @input-border-width)) 0;
+    border-bottom: @input-border-width solid @input-border-color;
+  }
+
+  &--layout-vertical {
+    flex-direction: column;
   }
 
   &__wrap--prefix {
@@ -54,8 +52,8 @@
   }
 
   &__label:not(:empty) {
-    min-width: 96rpx;
-    max-width: 162rpx;
+    min-width: 2em;
+    max-width: 5em;
     font-size: @font-size-m;
     line-height: 48rpx;
     color: @input-label-text-color;
@@ -72,14 +70,14 @@
 
   &__wrap {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     flex: auto;
-    align-items: center;
+    justify-content: center;
 
     .@{prefix}-input__content {
       display: flex;
       align-items: center;
-      width: 100%;
       line-height: 48rpx;
       font-size: @font-size-m;
     }
@@ -125,6 +123,7 @@
     box-sizing: border-box;
     width: 100%;
     min-width: 0; // for flex-shrink in field__button
+    min-height: 48rpx;
     margin: 0;
     padding: 0;
     color: @input-default-text-color;
@@ -162,42 +161,21 @@
 
   &__tips {
     font-size: @font-size-s;
-    color: @input-default-tips-color;
     line-height: 40rpx;
     padding-top: 8rpx;
-  }
-
-  &--border {
-    padding: 24rpx 32rpx;
-    border-radius: @input-border-radius;
-    border: 3rpx solid @input-default-border-color;
   }
 }
 
 .input-status(@status) {
-  .@{prefix}-input--@{status} {
-    @borderColor: 'input-@{status}-border-color';
-    @tipsColor: 'input-@{status}-tips-color';
+  @tipsColor: 'input-@{status}-tips-color';
 
-    &.@{prefix}-input--border {
-      border-color: @@borderColor;
-    }
-
-    & + .@{prefix}-input__tips {
-      color: @@borderColor;
-    }
+  .@{prefix}-input--@{status} + .@{prefix}-input__tips {
+    color: @@tipsColor;
   }
 }
 
 // status
+.input-status(default);
 .input-status(success);
 .input-status(warning);
 .input-status(error);
-
-// size
-.@{prefix}-input--size-medium {
-  padding: @input-medium-vertical-padding @input-medium-horizontal-padding;
-}
-.@{prefix}-input--size-small {
-  padding: @input-small-vertical-padding @input-small-horizontal-padding;
-}
