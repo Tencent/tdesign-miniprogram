@@ -8,15 +8,14 @@
     class="{{classPrefix }}--thin {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
     <view
-      aria-role="{{ ariaRole || 'progressbar' }}"
+      aria-role="progressbar"
       aria-valuemin="0"
       aria-valuemax="100"
       aria-valuenow="{{computedProgress}}"
-      aria-label="{{ ariaLabel || this.getAriaLabel(status, computedProgress) }}"
-      aria-labelledby="{{ ariaLabelledby }}"
-      aria-describedby="{{ ariaDescribedby }}"
-      aria-busy="{{ ariaBusy }}"
-      aria-live="polite"
+      aria-valuetext="{{ this.getAriaLabel(status) + computedProgress + '%'}}"
+      aria-label="{{ ios  ? (ariaLive === 'polite' ?  this.getAriaLabel(status)  + ariaLabel :  this.getAriaLabel(status)) : this.getAriaLabel(status)  + ariaLabel }}"
+      aria-live="{{ ariaLive }}"
+      tabindex="0"
       class="{{classPrefix }}__bar"
       style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
     >
@@ -37,15 +36,14 @@
   </view>
 
   <view
-    aria-role="{{ ariaRole || 'progressbar' }}"
+    aria-role="progressbar"
     aria-valuemin="0"
     aria-valuemax="100"
     aria-valuenow="{{computedProgress}}"
-    aria-label="{{ ariaLabel || this.getAriaLabel(status, computedProgress) }}"
-    aria-labelledby="{{ ariaLabelledby }}"
-    aria-describedby="{{ ariaDescribedby }}"
-    aria-busy="{{ ariaBusy }}"
-    aria-live="polite"
+    aria-valuetext="{{ this.getAriaLabel(status) + computedProgress + '%'}}"
+    aria-label="{{ ios  ? (ariaLive === 'polite' ?  this.getAriaLabel(status)  + ariaLabel :  this.getAriaLabel(status)) : this.getAriaLabel(status)  + ariaLabel }}"
+    aria-live="{{ ariaLive }}"
+    tabindex="0"
     wx:if="{{theme === this.PRO_THEME.PLUMP}}"
     class="{{classPrefix}}__bar {{classPrefix}}--plump {{computedProgress > 10 ? classPrefix + '--over-ten':  classPrefix + '--under-ten'}} {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
     style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
@@ -74,15 +72,14 @@
     class="{{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
     <view
-      aria-role="{{ ariaRole || 'progressbar' }}"
+      aria-role="progressbar"
       aria-valuemin="0"
       aria-valuemax="100"
       aria-valuenow="{{computedProgress}}"
-      aria-label="{{ ariaLabel || this.getAriaLabel(status, computedProgress)  }}"
-      aria-labelledby="{{ ariaLabelledby }}"
-      aria-describedby="{{ ariaDescribedby }}"
-      aria-busy="{{ ariaBusy }}"
-      aria-live="polite"
+      aria-valuetext="{{ this.getAriaLabel(status) + computedProgress + '%'}}"
+      aria-label="{{ ios  ? (ariaLive === 'polite' ?  this.getAriaLabel(status)  + ariaLabel :  this.getAriaLabel(status)) : this.getAriaLabel(status)  + ariaLabel }}"
+      aria-live="{{ ariaLive }}"
+      tabindex="0"
       class="{{classPrefix}}__canvas--circle"
       style="background-image: conic-gradient( {{colorCircle || this.STATUS_COLOR[status] || '#0052d9'}} {{computedProgress}}%, {{bgColorBar || '#e7e7e7'}} 0%);"
     >
