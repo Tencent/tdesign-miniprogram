@@ -51,7 +51,8 @@ sticky | Boolean | true | 索引是否吸顶，默认为true。TS 类型：`Bool
 
 名称 | 参数 | 描述
 -- | -- | --
-select | `(indexes: { groupIndex: string; childrenIndex: number })` | 点击行元素时触发事件
+select | `(indexe: string | number)` | 点击侧边栏时触发事件
+change | `(indexe: string | number)` | `0.34.0`。索引发生变更时触发事件
 
 ### IndexesAnchor Props
 
