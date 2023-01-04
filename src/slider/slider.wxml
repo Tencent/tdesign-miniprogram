@@ -40,8 +40,7 @@
           bind:touchcancel="onTouchEnd"
         >
           <view
-            wx:if="{{isChange}}"
-            id="singleValue"
+            wx:if="{{label || isChange}}"
             class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
             aria-role="alert"
             aria-live="assertive"
@@ -55,7 +54,7 @@
             aria-valuemax="{{max}}"
             aria-valuemin="{{min}}"
             aria-valuenow="{{_value}}"
-            aria-labelledby="singleValue"
+            aria-valuetext="{{t.getValue(label, _value) || _value}}"
           ></view>
         </view>
       </view>
@@ -104,8 +103,7 @@
           class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
         >
           <view
-            wx:if="{{isChange}}"
-            id="leftValue"
+            wx:if="{{label || isChange}}"
             class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
             aria-role="alert"
             aria-live="assertive"
@@ -119,7 +117,7 @@
             aria-valuemax="{{dotTopValue[1]}}"
             aria-valuemin="{{min}}"
             aria-valuenow="{{dotTopValue[0]}}"
-            aria-labelledby="leftValue"
+            aria-valuetext="{{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}"
           ></view>
         </view>
         <view
@@ -130,8 +128,7 @@
           class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
         >
           <view
-            wx:if="{{isChange}}"
-            id="rightValue"
+            wx:if="{{label || isChange}}"
             class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
             aria-role="alert"
             aria-live="assertive"
@@ -145,7 +142,7 @@
             aria-valuemax="{{max}}"
             aria-valuemin="{{dotTopValue[0]}}"
             aria-valuenow="{{dotTopValue[1]}}"
-            aria-labelledby="rightValue"
+            aria-valuetext="{{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}"
           >
           </view>
         </view>
