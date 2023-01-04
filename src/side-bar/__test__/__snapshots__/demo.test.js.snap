@@ -11,7 +11,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
     >
       <t-side-bar-item
         badgeProps=""
-        label="选项选项"
+        label="选项选项选项选项"
         value="{{0}}"
       />
       <t-side-bar-item
@@ -63,7 +63,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
           column="{{3}}"
         >
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -73,7 +73,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -83,7 +83,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -93,7 +93,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -103,7 +103,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -113,7 +113,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -123,7 +123,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -133,7 +133,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -143,7 +143,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -153,7 +153,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -163,7 +163,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -173,111 +173,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-        </t-grid>
-      </wx-view>
-      <wx-view
-        class="section"
-      >
-        <wx-view
-          class="title"
-        >
-          标题
-        </wx-view>
-        <t-grid
-          border="{{false}}"
-          column="{{3}}"
-        >
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -301,7 +197,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
           column="{{3}}"
         >
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -311,7 +207,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -321,7 +217,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -331,7 +227,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -341,7 +237,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -351,7 +247,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -361,7 +257,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -371,7 +267,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -381,81 +277,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-        </t-grid>
-      </wx-view>
-      <wx-view
-        class="section"
-      >
-        <wx-view
-          class="title"
-        >
-          标题
-        </wx-view>
-        <t-grid
-          border="{{false}}"
-          column="{{3}}"
-        >
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
-            imageProps="{{
-              Object {
-                "lazy": true,
-                "shape": "round",
-              }
-            }}"
-            text="标题文字"
-          />
-          <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -479,7 +301,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
           column="{{3}}"
         >
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -489,7 +311,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -499,7 +321,185 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             text="标题文字"
           />
           <t-grid-item
-            image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+        </t-grid>
+      </wx-view>
+      <wx-view
+        class="section"
+      >
+        <wx-view
+          class="title"
+        >
+          标题
+        </wx-view>
+        <t-grid
+          border="{{false}}"
+          column="{{3}}"
+        >
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+        </t-grid>
+      </wx-view>
+      <wx-view
+        class="section"
+      >
+        <wx-view
+          class="title"
+        >
+          标题
+        </wx-view>
+        <t-grid
+          border="{{false}}"
+          column="{{3}}"
+        >
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
+            imageProps="{{
+              Object {
+                "lazy": true,
+                "shape": "round",
+              }
+            }}"
+            text="标题文字"
+          />
+          <t-grid-item
+            image="https://tdesign.gtimg.com/miniprogram/images/miniprogram.png"
             imageProps="{{
               Object {
                 "lazy": true,
@@ -586,7 +586,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -597,7 +597,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -608,7 +608,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -619,7 +619,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -630,7 +630,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -641,7 +641,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -652,7 +652,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -663,7 +663,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -674,7 +674,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -685,7 +685,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -696,7 +696,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -707,7 +707,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -732,7 +732,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -743,7 +743,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -754,7 +754,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -765,7 +765,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -776,7 +776,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -787,7 +787,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -798,7 +798,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -809,7 +809,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -820,7 +820,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -831,7 +831,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -869,7 +869,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -880,7 +880,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -891,7 +891,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -902,7 +902,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -913,7 +913,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -924,7 +924,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -935,7 +935,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -946,7 +946,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -971,7 +971,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -982,7 +982,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -993,7 +993,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -1004,7 +1004,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -1015,7 +1015,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>
@@ -1026,7 +1026,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
               lazy="{{true}}"
               shape="round"
               slot="image"
-              src="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+              src="https://tdesign.gtimg.com/miniprogram/images/desktop.png"
               tClass="image"
             />
           </t-cell>

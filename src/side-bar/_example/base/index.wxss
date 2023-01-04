@@ -22,6 +22,7 @@ page .round-image {
 .side-bar-wrapper .title {
   padding-left: 40rpx;
   margin-bottom: 8rpx;
+  line-height: 52rpx;
 }
 
 .side-bar-wrapper .image {
