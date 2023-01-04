@@ -23,7 +23,7 @@ var CIRCLE_STATUS_ICON = {
   warning: 'error',
 };
 
-var getAriaLabel = function (status) {
+var getIosAriaLabel = function (status) {
   if (status === 'error') {
     return '进度失败';
   }
@@ -33,6 +33,16 @@ var getAriaLabel = function (status) {
   return '';
 };
 
+var getAndroidAriaLabel = function (status, computedProgress) {
+  if (status === 'error') {
+    return '进度失败' + computedProgress + '%';
+  }
+  if (status === 'warning') {
+    return '进度异常' + computedProgress + '%';
+  }
+  return computedProgress + '%';
+};
+
 module.exports = {
   STATUS: STATUS,
   STATUS_TEXT: STATUS_TEXT,
@@ -40,5 +50,6 @@ module.exports = {
   STATUS_COLOR: STATUS_COLOR,
   LINE_STATUS_ICON: LINE_STATUS_ICON,
   CIRCLE_STATUS_ICON: CIRCLE_STATUS_ICON,
-  getAriaLabel: getAriaLabel,
+  getAndroidAriaLabel: getAndroidAriaLabel,
+  getIosAriaLabel: getIosAriaLabel,
 };
