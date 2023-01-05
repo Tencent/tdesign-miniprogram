@@ -25,7 +25,7 @@ var CIRCLE_STATUS_ICON = {
 
 /**
  * 由于android和iOS在无障碍模式下，语音朗读有部分差异,  因此特殊处理
- * 1. android在同iOS有相同属性下，不会发出aria-valuenow，不会发出声音，需要给aria-lable 添加相应文案。
+ * 1. android在同iOS有相同属性下，只读取aria-lable，不会读取aria-valuenow，需要给aria-lable 添加相应文案。
  * 2. iOS 会读取aria-label，同时也会读取aria-valuenow，会发出两次语音，因此也需要特殊处理。
  * 3. 对于动态朗读部分，优先读取用户自定义设置的airra-label，如果没有设置，则读取默认的文案。(文档中也需要提示用户两者的差异)
  */
