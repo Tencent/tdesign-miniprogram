@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "count-down 倒计时",
+  "navigationBarTitleText": "CountDown",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",

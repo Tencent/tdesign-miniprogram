@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "Button 按钮",
+  "navigationBarTitleText": "Button",
+  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
     "size": "./size",

@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Picker 选择器",
+  "navigationBarTitleText": "Picker",
   "usingComponents": {
     "base": "./base",
     "with-title": "./with-title",

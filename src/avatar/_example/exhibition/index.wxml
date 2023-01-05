@@ -1,12 +1,10 @@
-<view class="demo-avatar">
-  <view class="avatar-example">
-    <t-avatar-group max="5" cascading="left-up" collapseAvatar="+5" size="medium">
-      <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
-    </t-avatar-group>
-  </view>
-  <view class="avatar-example">
-    <t-avatar-group max="5" collapseAvatar="+5" size="medium">
-      <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
-    </t-avatar-group>
-  </view>
+<view class="avatar-example">
+  <t-avatar-group max="5" cascading="left-up" collapseAvatar="+5" size="medium">
+    <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
+  </t-avatar-group>
+</view>
+<view class="avatar-example">
+  <t-avatar-group max="5" collapseAvatar="+5" size="medium">
+    <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
+  </t-avatar-group>
 </view>

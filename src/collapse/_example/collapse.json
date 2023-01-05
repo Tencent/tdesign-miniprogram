@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Collapse 折叠面板",
+  "navigationBarTitleText": "Collapse",
   "usingComponents": {
     "base": "./base",
     "action": "./action",
