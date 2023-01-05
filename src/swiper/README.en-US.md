@@ -13,6 +13,7 @@ display-multiple-items | Number | 1 | `0.32.0` | N
 duration | Number | 300 | \- | N
 easing-function | String | default | `0.32.0`。options：default/linear/easeInCubic/easeOutCubic/easeInOutCubic | N
 height | String / Number | 192 | \- | N
+image-props | Object | - | `0.34.0` | N
 interval | Number | 5000 | \- | N
 list | Array | - | `0.32.0`。Typescript：`string[]` | N
 loop | Boolean | true | \- | N
