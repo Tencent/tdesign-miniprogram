@@ -5,7 +5,7 @@
 
 <t-notice-bar
   visible="{{visible}}"
-  suffixIcon="chevron-right"
+  suffixIcon="{{chevronRightValue}}"
   content="这是一条普通的通知信息"
   bind:click="click"
 ></t-notice-bar>
