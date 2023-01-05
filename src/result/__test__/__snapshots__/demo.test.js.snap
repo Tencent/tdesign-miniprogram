@@ -3,7 +3,7 @@
 exports[`Result Result custom demo works fine 1`] = `
 <custom>
   <t-result
-    image="/assets/illustration@2x.png"
+    image="https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/result-image.png"
     tClassImage="external-class-image"
   >
     <wx-view
