@@ -11,8 +11,9 @@
       t-class-content="{{prefix}}-class-content"
       bordered="{{true}}"
       size="{{size}}"
+      icon="{{ collapseAvatar ? '' : 'user-add'}}"
       aria-role="none"
-      >{{collapseAvatar || '+N'}}</t-avatar
+      >{{collapseAvatar}}</t-avatar
     >
   </view>
 </view>

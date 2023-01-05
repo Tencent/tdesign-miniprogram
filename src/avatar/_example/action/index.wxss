@@ -1,7 +1,3 @@
-.demo-avatar {
-  margin: 0 32rpx;
-}
-
-.avatar-example {
-  margin-bottom: 48rpx;
+.avatar-example:not(:last-child) {
+  margin-bottom: 32rpx;
 }

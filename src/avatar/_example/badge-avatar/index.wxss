@@ -1,9 +1,4 @@
-.demo-avatar {
-  display: flex;
-  margin: 0 32rpx;
-}
-
-.avatar-example {
+.avatar-example:not(:last-child) {
   margin-right: 64rpx;
 }
 

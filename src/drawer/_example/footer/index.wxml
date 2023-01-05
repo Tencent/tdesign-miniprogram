@@ -1,6 +1,5 @@
-<view class="box">
-  <t-button variant="outline" bind:tap="openDrawerBase" block size="large" theme="primary">带底部插槽</t-button>
-</view>
+<t-button variant="outline" bind:tap="openDrawerBase" block size="large" theme="primary">带底部插槽</t-button>
+
 <t-drawer
   visible="{{visible}}"
   placement="{{placement}}"

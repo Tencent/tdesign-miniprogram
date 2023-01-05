@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "cell 单元格",
+  "navigationBarTitleText": "Cell",
   "usingComponents": {
     "base": "./base",
     "multiple": "./multiple",
