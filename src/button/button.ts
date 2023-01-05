@@ -49,9 +49,9 @@ export default class Button extends SuperComponent {
         `${prefix}-class`,
         `${name}--${this.data.theme || 'default'}`,
         `${name}--size-${this.data.size || 'medium'}`,
+        `${name}--${this.data.shape || 'rectangle'}`,
+        `${name}--${this.data.variant || 'base'}`,
       ];
-
-      classList.push(`${name}--${this.data.shape || 'rectangle'}`);
 
       if (this.data.block) {
         classList.push(`${name}--block`);
@@ -59,7 +59,6 @@ export default class Button extends SuperComponent {
       if (this.data.disabled) {
         classList.push(`${name}--disabled`);
       }
-      classList.push(`${name}--${this.data.variant || 'base'}`);
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);
       }

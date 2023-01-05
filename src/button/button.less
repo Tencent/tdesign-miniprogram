@@ -164,16 +164,13 @@
   text-align: center;
   background-image: none;
   transition: all 0.3s;
-  user-select: none;
   touch-action: manipulation;
   border-radius: @button-border-radius;
   outline: none;
   font-family: PingFang SC, Microsoft YaHei, Arial Regular;
   font-weight: @button-font-weight;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  user-select: none;
+
+  .cursor-pointer();
 
   /* stylelint-disable-next-line */
   -webkit-appearance: none;
