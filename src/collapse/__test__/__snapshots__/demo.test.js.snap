@@ -38,7 +38,6 @@ exports[`Collapse Collapse accordion demo works fine 1`] = `
     <t-collapse-panel
       disabled="{{true}}"
       header="折叠面板标题"
-      headerRightContent="收起"
       value="{{3}}"
     >
       
@@ -143,7 +142,6 @@ exports[`Collapse Collapse theme demo works fine 1`] = `
     <t-collapse-panel
       disabled="{{true}}"
       header="折叠面板标题"
-      headerRightContent="收起"
       value="{{3}}"
     >
       
