@@ -68,6 +68,7 @@ display-multiple-items | Number | 1 | `0.32.0`。同时显示的滑块数量 | N
 duration | Number | 300 | 滑动动画时长 | N
 easing-function | String | default | `0.32.0`。指定 swiper 切换缓动动画类型。可选项：default/linear/easeInCubic/easeOutCubic/easeInOutCubic | N
 height | String / Number | 192 | 轮播的高度；默认单位 `px` | N
+image-props | Object | - | `0.34.0`。透传至 Image 组件 | N
 interval | Number | 5000 | 轮播间隔时间 | N
 list | Array | - | `0.32.0`。图片列表。TS 类型：`string[]` | N
 loop | Boolean | true | 是否循环播放 | N

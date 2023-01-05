@@ -70,6 +70,13 @@ export interface TdSwiperProps {
     value?: string | number;
   };
   /**
+   * 透传至 Image 组件
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: object;
+  };
+  /**
    * 轮播间隔时间
    * @default 5000
    */
