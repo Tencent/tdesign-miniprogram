@@ -83,6 +83,7 @@ snap-to-edge | Boolean | false | `0.32.0`。当 swiper-item 的个数大于等�
 名称 | 参数 | 描述
 -- | -- | --
 change | `(current: number, source: SwiperChangeSource)` | 轮播切换时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' \| 'touch' \| 'nav'`<br/>
+click | `(index: number)` | `0.34.0`。点击轮播项时触发
 
 ### SwiperNavigation
 

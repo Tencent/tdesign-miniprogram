@@ -28,6 +28,8 @@ exports[`swiper snapshot 1`] = `
       >
         <swiper-item
           class="t-swiper__item t-swiper__item--preview"
+          data-index="{{0}}"
+          bind:tap="onTap"
         >
           <t-image
             class="t-swiper__image-host"
@@ -96,6 +98,8 @@ exports[`swiper snapshot 1`] = `
         </swiper-item>
         <swiper-item
           class="t-swiper__item"
+          data-index="{{1}}"
+          bind:tap="onTap"
         >
           <t-image
             class="t-swiper__image-host"
@@ -164,6 +168,8 @@ exports[`swiper snapshot 1`] = `
         </swiper-item>
         <swiper-item
           class="t-swiper__item t-swiper__item--next"
+          data-index="{{2}}"
+          bind:tap="onTap"
         >
           <t-image
             class="t-swiper__image-host"
@@ -232,6 +238,8 @@ exports[`swiper snapshot 1`] = `
         </swiper-item>
         <swiper-item
           class="t-swiper__item"
+          data-index="{{3}}"
+          bind:tap="onTap"
         >
           <t-image
             class="t-swiper__image-host"
@@ -300,6 +308,8 @@ exports[`swiper snapshot 1`] = `
         </swiper-item>
         <swiper-item
           class="t-swiper__item"
+          data-index="{{4}}"
+          bind:tap="onTap"
         >
           <t-image
             class="t-swiper__image-host"
@@ -406,6 +416,8 @@ exports[`swiper snapshot 1`] = `
       >
         <swiper-item
           class="t-swiper__item t-swiper__item--preview t-swiper__item--next"
+          data-index="{{0}}"
+          bind:tap="onTap"
         >
           <t-image
             class="t-swiper__image-host"
@@ -474,6 +486,8 @@ exports[`swiper snapshot 1`] = `
         </swiper-item>
         <swiper-item
           class="t-swiper__item"
+          data-index="{{1}}"
+          bind:tap="onTap"
         >
           <t-image
             class="t-swiper__image-host"
