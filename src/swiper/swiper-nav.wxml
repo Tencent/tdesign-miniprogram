@@ -14,8 +14,8 @@
       wx:for="{{total}}"
       wx:for-index="idx"
       wx:key="idx"
-      class="{{_.cls(classPrefix + '__' + type + '-item', [['active', index === idx], direction])}}"
+      class="{{_.cls(classPrefix + '__' + type + '-item', [['active', current === idx], direction])}}"
     />
   </block>
-  <block wx:if="{{ type === 'fraction'}}"> {{index + 1}}/{{total}} </block>
+  <block wx:if="{{ type === 'fraction'}}"> {{current + 1}}/{{total}} </block>
 </view>

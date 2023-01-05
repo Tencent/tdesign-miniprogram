@@ -1,5 +1,8 @@
 <wxs src="../common/utils.wxs" module="_" />
-<view class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} {{prefix}}-class" style="{{boxStyle}}">
+<view
+  class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} {{prefix}}-class"
+  style="{{boxStyle}}; {{customStyle}}"
+>
   <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder" />
   <view class="{{classPrefix}}__content">
     <view class="{{classPrefix}}__left {{prefix}}-class-left">
@@ -12,10 +15,8 @@
       </view>
     </view>
     <view class="{{classPrefix}}__center t-class-center">
-      <block wx:if="{{title}}">
-        <slot wx:if="{{title === 'slot'}}" name="title" class="t-class-title"></slot>
-        <text wx:else class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
-      </block>
+      <slot name="title" class="t-class-title" />
+      <text wx:if="{{title}}" class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
     </view>
   </view>
 </view>

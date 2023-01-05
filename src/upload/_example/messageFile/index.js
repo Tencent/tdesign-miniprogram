@@ -2,7 +2,7 @@ Component({
   data: {
     originFiles: [
       {
-        url: 'https://tdesign.gtimg.com/site/upload1.png',
+        url: 'https://tdesign.gtimg.com/miniprogram/images/upload1.png',
         name: 'uploaded1.png',
         type: 'image',
       },

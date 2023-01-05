@@ -22,14 +22,6 @@ export interface TdSwiperProps {
     value?: number;
   };
   /**
-   * 当前轮播在哪一项（下标），非受控属性
-   * @default 0
-   */
-  defaultCurrent?: {
-    type: NumberConstructor;
-    value?: number;
-  };
-  /**
    * 自定义组件样式
    * @default ''
    */
@@ -71,11 +63,18 @@ export interface TdSwiperProps {
   };
   /**
    * 轮播的高度；默认单位 `px`
-   * @default '192px'
+   * @default 192
    */
   height?: {
     type: null;
     value?: string | number;
+  };
+  /**
+   * 透传至 Image 组件
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 轮播间隔时间
@@ -101,11 +100,12 @@ export interface TdSwiperProps {
     value?: boolean;
   };
   /**
-   * 导航器全部配置
+   * 导航器全部配置，true 的话使用默认配置
+   * @default true
    */
   navigation?: {
-    type: ObjectConstructor;
-    value?: SwiperNavigation;
+    type: null;
+    value?: SwiperNavigation | boolean;
   };
   /**
    * 后边距，可用于露出后一项的一小部分。默认单位 `px`
@@ -143,18 +143,39 @@ export interface TdSwiperProps {
 
 export interface SwiperNavigation {
   /**
+   * 当前轮播在哪一项（下标）
+   * @default 0
+   */
+  current?: number;
+  /**
    * 自定义组件样式
    * @default ''
    */
   customStyle?: string;
   /**
+   * 轮播滑动方向，包括横向滑动和纵向滑动两个方向
+   * @default horizontal
+   */
+  direction?: 'horizontal' | 'vertical';
+  /**
    * 小于这个数字不会显示导航器
    */
   minShowNum?: number;
   /**
-   * 表示是否显示两侧的滑动控制按钮
+   * 页码信息展示位置
+   * @default bottom
    */
-  showSlideBtn?: boolean;
+  paginationPosition?: 'top-left' | 'top' | 'top-right' | 'bottom-left' | 'bottom' | 'bottom-right';
+  /**
+   * 是否显示两侧的控制按钮
+   * @default false
+   */
+  showControls?: boolean;
+  /**
+   * 总共的项数
+   * @default 0
+   */
+  total?: number;
   /**
    * 导航器类型，点状(dots)、点条状(dots-bar)、分式(fraction)等
    * @default ''

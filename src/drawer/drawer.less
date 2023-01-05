@@ -10,7 +10,8 @@
 @drawer-item-padding: var(--td-drawer-item-padding, 32rpx);
 @drawer-item-height: var(--td-drawer-item-height, 48rpx);
 @drawer-item-icon-size: var(--td-drawer-item-icon-size, 48rpx);
-@drawer-sidebar-height: var(--td-drawer-sidebar-height, 1024rpx);
+@drawer-sidebar-height: var(--td-drawer-sidebar-height, 70vh);
+@drawer-footer-padding-bottom: var(--td-drawer-footer-padding-bottom, 40rpx);
 
 .@{prefix}-drawer {
   background: @drawer-bg-color;
@@ -18,6 +19,8 @@
   width: @drawer-width;
   display: flex;
   flex-direction: column;
+  padding-bottom: env(safe-area-inset-bottom, 28px);
+  padding-bottom: constant(safe-area-inset-bottom, 28px);
 
   &__title {
     font-weight: 600;
@@ -53,7 +56,6 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding-bottom: env(safe-area-inset-bottom, 28px);
-    padding-bottom: constant(safe-area-inset-bottom, 28px);
+    padding-bottom: @drawer-footer-padding-bottom;
   }
 }

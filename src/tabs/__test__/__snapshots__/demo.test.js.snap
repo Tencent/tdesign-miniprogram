@@ -9,11 +9,11 @@ exports[`Tabs Tabs base demo works fine 1`] = `
     bind:click="onTabsClick"
   >
     <t-tab-panel
-      label="标签页一"
+      label="选项"
       value="0"
     />
     <t-tab-panel
-      label="标签页二"
+      label="选项"
       value="1"
     />
   </t-tabs>
@@ -24,15 +24,38 @@ exports[`Tabs Tabs base demo works fine 1`] = `
     bind:click="onTabsClick"
   >
     <t-tab-panel
-      label="标签页一"
+      label="选项"
       value="0"
     />
     <t-tab-panel
-      label="标签页二"
+      label="选项"
       value="1"
     />
     <t-tab-panel
-      label="标签页三"
+      label="上限六个文字"
+      value="2"
+    />
+  </t-tabs>
+  <t-tabs
+    defaultValue="{{0}}"
+    tClass="custom-tabs"
+    bind:change="onTabsChange"
+    bind:click="onTabsClick"
+  >
+    <t-tab-panel
+      label="选项"
+      value="0"
+    />
+    <t-tab-panel
+      label="选项"
+      value="1"
+    />
+    <t-tab-panel
+      label="选项"
+      value="2"
+    />
+    <t-tab-panel
+      label="上限四字"
       value="2"
     />
   </t-tabs>
@@ -50,20 +73,24 @@ exports[`Tabs Tabs base demo works fine 1`] = `
     bind:scroll="onStickyScroll"
   >
     <t-tab-panel
-      label="标签页一"
+      label="选项"
       value="0"
     />
     <t-tab-panel
-      label="标签页二"
+      label="选项"
       value="1"
     />
     <t-tab-panel
-      label="标签页三"
+      label="选项"
       value="2"
     />
     <t-tab-panel
-      label="标签页四"
+      label="选项"
       value="3"
+    />
+    <t-tab-panel
+      label="上限三字"
+      value="4"
     />
   </t-tabs>
 </base>
@@ -123,15 +150,15 @@ exports[`Tabs Tabs size demo works fine 1`] = `
       value="0"
     />
     <t-tab-panel
-      label="标签页二"
+      label="选项"
       value="1"
     />
     <t-tab-panel
-      label="标签页三"
+      label="选项"
       value="2"
     />
     <t-tab-panel
-      label="标签页四"
+      label="选项"
       value="3"
     />
   </t-tabs>
@@ -139,23 +166,23 @@ exports[`Tabs Tabs size demo works fine 1`] = `
     style="height: 16px"
   />
   <t-tabs
+    class="bigger"
     defaultValue="{{0}}"
-    tClassActive="active-item"
   >
     <t-tab-panel
       label="大尺寸"
       value="0"
     />
     <t-tab-panel
-      label="标签页二"
+      label="选项"
       value="1"
     />
     <t-tab-panel
-      label="标签页三"
+      label="选项"
       value="2"
     />
     <t-tab-panel
-      label="标签页四"
+      label="选项"
       value="3"
     />
   </t-tabs>
@@ -165,21 +192,21 @@ exports[`Tabs Tabs size demo works fine 1`] = `
 exports[`Tabs Tabs status demo works fine 1`] = `
 <status>
   <t-tabs
-    defaultValue="0"
+    value="0"
     bind:change="onTabsChange"
     bind:click="onTabsClick"
   >
     <t-tab-panel
-      label="标签页一"
+      label="选中"
       value="0"
     />
     <t-tab-panel
-      label="标签页二"
+      label="默认"
       value="1"
     />
     <t-tab-panel
       disabled="{{true}}"
-      label="禁用状态"
+      label="禁用"
       value="2"
     />
   </t-tabs>

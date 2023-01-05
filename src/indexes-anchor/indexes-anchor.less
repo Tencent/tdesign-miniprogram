@@ -3,6 +3,7 @@
 @indexes-anchor-color: var(--td-indexes-anchor-color, @font-gray-1);
 @indexes-anchor-active-color: var(--td-indexes-anchor-active-color, @primary-color);
 @indexes-anchor-bg-color: var(--td-indexes-anchor-bg-color, @gray-color-1);
+@indexes-anchor-active-bg-color: var(--td-indexes-anchor-active-bg-color, @bg-color-block);
 @indexes-anchor-font-size: var(--td-indexes-anchor-font-size, 28rpx);
 @indexes-anchor-line-height: var(--td-indexes-anchor-line-height, 44rpx);
 @indexes-anchor-active-font-weight: var(--td-indexes-anchor-active-font-weight, 600);
@@ -14,6 +15,13 @@
 
   &__header {
     display: none;
+    padding: 8rpx 32rpx;
+    background-color: @indexes-anchor-bg-color;
+
+    &--active {
+      background-color: @indexes-anchor-active-bg-color;
+      .border(bottom);
+    }
   }
 
   &__slot {
@@ -22,8 +30,6 @@
 
   &__slot:empty + &__header {
     display: block;
-    padding: 8rpx 32rpx;
-    background-color: @indexes-anchor-bg-color;
   }
 
   &__wrapper {

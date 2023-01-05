@@ -11,4 +11,10 @@ page {
   display: flex;
   align-items: center;
   font-size: 14px;
+  box-sizing: border-box;
+}
+
+.capsule--active {
+  background: #fff;
+  border: 1px solid #e7e7e7;
 }

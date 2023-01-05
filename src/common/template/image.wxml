@@ -11,6 +11,7 @@
     showMenuByLongpress="{{showMenuByLongpress}}"
     bind:error="{{binderror}}"
     bind:load="{{bindload}}"
+    class="{{class}}"
     t-class="{{tClass}}"
     t-class-load="{{tClassLoad}}"
   />

@@ -3,6 +3,7 @@
 @upload-add-color: var(--td-upload-add-color, @font-gray-3);
 @upload-add-bg-color: var(--td-upload-add-bg-color, @gray-color-1);
 @upload-radius: var(--td-upload-radius, @radius-default);
+@upload-add-icon-font-size: var(--td-upload-add-icon-font-size, 56rpx);
 
 .@{prefix}-upload {
   &__grid {
@@ -21,6 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: @upload-add-icon-font-size;
     background-color: @upload-add-bg-color;
     color: @upload-add-color;
     border-radius: @upload-radius;

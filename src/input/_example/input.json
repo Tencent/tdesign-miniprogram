@@ -12,6 +12,8 @@
     "maxlength": "./maxlength",
     "special": "./special",
     "status": "./status",
-    "custom": "./custom"
+    "custom": "./custom",
+    "labelDemo": "./label",
+    "banner": "./banner"
   }
 }

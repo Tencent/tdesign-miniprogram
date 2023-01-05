@@ -1,4 +1,3 @@
-<import src="./action-sheet-item.wxml" />
 <template name="grid">
   <block wx:if="{{gridThemeItems.length === 1}}">
     <t-grid align="center" t-class="{{classPrefix}}__grid" column="{{count / 2}}" class="{{classPrefix}}__single-wrap">
@@ -11,8 +10,8 @@
         data-index="{{index}}"
         icon="{{item.icon}}"
         text="{{item.label}}"
+        image="{{item.image}}"
       >
-        <!-- <template is="item" data="{{classPrefix, item}}" /> -->
       </t-grid-item>
     </t-grid>
   </block>
@@ -20,7 +19,7 @@
     <view class="{{classPrefix}}__swiper-wrap">
       <swiper style="height: 456rpx" autoplay="{{false}}" current="{{currentSwiperIndex}}" bindchange="onSwiperChange">
         <swiper-item wx:for="{{gridThemeItems}}" wx:key="index">
-          <t-grid align="center" t-class="{{classPrefix}}__grid" column="{{count / 2}}">
+          <t-grid align="center" t-class="{{classPrefix}}__grid {{classPrefix}}__grid--swiper" column="{{count / 2}}">
             <t-grid-item
               t-class="{{classPrefix}}__grid-item"
               class="{{classPrefix}}__square"
@@ -30,8 +29,8 @@
               bind:tap="onSelect"
               icon="{{item.icon}}"
               text="{{item.label}}"
+              image="{{item.image}}"
             >
-              <!-- <template is="item" data="{{classPrefix, item}}" /> -->
             </t-grid-item>
           </t-grid>
         </swiper-item>

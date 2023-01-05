@@ -1,14 +1,9 @@
-<view class="box">
+<view class="button-example">
   <t-button theme="primary" icon="app" content="填充按钮"></t-button>
-  <t-button theme="primary" icon="app" shape="round">带图标按钮</t-button>
-</view>
-
-<view class="box">
   <t-button theme="primary" icon="chevron-left" shape="square" aria-label="返回"></t-button>
-  <t-button theme="primary" icon="chevron-left" shape="circle" aria-label="返回"></t-button>
 </view>
 
-<view class="box">
-  <t-button theme="primary" shape="square" loading></t-button>
+<view class="button-example">
   <t-button theme="primary" loading>加载中...</t-button>
+  <t-button theme="primary" shape="square" loading></t-button>
 </view>

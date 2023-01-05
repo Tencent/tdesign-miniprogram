@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "t-rate": "tdesign-miniprogram/rate/rate"
+    "t-input": "tdesign-miniprogram/input/input"
   }
 }

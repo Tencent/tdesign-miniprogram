@@ -33,7 +33,6 @@
   suffix="元"
   align="right"
   bindchange="onPriceInput"
-  value="{{price}}"
   tips="{{priceError ? '请输入正确的价格' : ''}}"
   t-class-tips="tips"
 />

@@ -35,6 +35,11 @@ exports[`Swiper Swiper cards demo works fine 1`] = `
       autoplay="{{false}}"
       current="{{0}}"
       duration="{{500}}"
+      imageProps="{{
+        Object {
+          "shape": "round",
+        }
+      }}"
       interval="{{5000}}"
       list="{{
         Array [
@@ -64,6 +69,11 @@ exports[`Swiper Swiper cards demo works fine 1`] = `
       class="scale-card-theme"
       current="{{0}}"
       duration="{{500}}"
+      imageProps="{{
+        Object {
+          "shape": "round",
+        }
+      }}"
       interval="{{5000}}"
       list="{{
         Array [
@@ -106,6 +116,7 @@ exports[`Swiper Swiper custom demo works fine 1`] = `
         "https://tdesign.gtimg.com/site/swiper/05.png",
       ]
     }}"
+    navigation="{{false}}"
   >
     <t-swiper-nav
       slot="nav"

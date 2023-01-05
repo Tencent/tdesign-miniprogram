@@ -1,0 +1,36 @@
+page {
+  background-color: #fff;
+}
+
+page .round-image {
+  border-radius: 12rpx;
+}
+
+.side-bar-wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.side-bar-wrapper .content {
+  flex: 1;
+}
+
+.side-bar-wrapper .section {
+  padding: 32rpx 0;
+}
+
+.side-bar-wrapper .title {
+  padding-left: 40rpx;
+  margin-bottom: 8rpx;
+  line-height: 52rpx;
+}
+
+.side-bar-wrapper .image {
+  width: 96rpx;
+  height: 96rpx;
+}
+
+page .side-bar-wrapper {
+  --td-side-bar-border-radius: 6px;
+  --td-side-bar-active-color: green;
+}

@@ -4,6 +4,7 @@ exports[`Textarea Textarea autosize demo works fine 1`] = `
 <autosize>
   <t-textarea
     autosize="{{true}}"
+    label="标签文字"
     placeholder="请输入文字"
   />
 </autosize>
@@ -17,13 +18,29 @@ exports[`Textarea Textarea base demo works fine 1`] = `
 </base>
 `;
 
+exports[`Textarea Textarea card demo works fine 1`] = `
+<card>
+  <wx-view
+    class="textarea-example"
+  >
+    <t-textarea
+      customStyle="border-radius: 18rpx;"
+      indicator="{{true}}"
+      label="标签文字"
+      maxlength="500"
+      placeholder="请输入文字"
+    />
+  </wx-view>
+</card>
+`;
+
 exports[`Textarea Textarea custom demo works fine 1`] = `
 <custom>
   <wx-view
-    class="demo-textarea"
+    class="textarea-example"
   >
     <wx-text
-      class="demo-textarea--label"
+      class="textarea-example__label"
     >
       标签文字
     </wx-text>
@@ -41,6 +58,7 @@ exports[`Textarea Textarea disabled demo works fine 1`] = `
 <disabled>
   <t-textarea
     disabled="{{true}}"
+    label="标签文字"
     placeholder="请输入文字"
     value="不可编辑文字"
   />
@@ -60,9 +78,9 @@ exports[`Textarea Textarea maxcharacter demo works fine 1`] = `
 <maxcharacter>
   <t-textarea
     indicator="{{true}}"
-    label="设置最大字符个数，一个汉字表示两个字符"
+    label="标签文字"
     maxcharacter="200"
-    placeholder="请输入文字"
+    placeholder="设置最大字符个数，一个汉字表示两个字符"
   />
 </maxcharacter>
 `;
@@ -71,9 +89,9 @@ exports[`Textarea Textarea maxlength demo works fine 1`] = `
 <maxlength>
   <t-textarea
     indicator="{{true}}"
-    label="设置最大字符个数"
+    label="标签文字"
     maxlength="200"
-    placeholder="请输入文字"
+    placeholder="设置最大字符个数"
   />
 </maxlength>
 `;

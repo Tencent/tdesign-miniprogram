@@ -19,6 +19,20 @@ exports[`Input Input align demo works fine 1`] = `
 </align>
 `;
 
+exports[`Input Input banner demo works fine 1`] = `
+<banner>
+  <wx-view
+    class="input-example"
+  >
+    <t-input
+      customStyle="border-radius: 12rpx;"
+      label="标签文字"
+      placeholder="请输入文字"
+    />
+  </wx-view>
+</banner>
+`;
+
 exports[`Input Input base demo works fine 1`] = `
 <base>
   <t-input
@@ -37,68 +51,49 @@ exports[`Input Input base demo works fine 1`] = `
     placeholder="请输入文字"
     tips="辅助说明"
   />
-  <t-input
-    label="标签超长时自动换行"
-    placeholder="请输入文字"
-  />
-  <t-input
-    disabled="{{true}}"
-    value="不可编辑文字"
-  />
 </base>
 `;
 
 exports[`Input Input bordered demo works fine 1`] = `
 <bordered>
-  <t-input
-    borderless="{{false}}"
-    placeholder="请输入文字"
-  />
-  <t-input
-    borderless="{{false}}"
-    placeholder="请输入文字"
-    status="success"
-  />
-  <t-input
-    borderless="{{false}}"
-    placeholder="请输入文字"
-    status="warning"
-  />
-  <t-input
-    borderless="{{false}}"
-    placeholder="请输入文字"
-    status="error"
-    suffixIcon="{{
-      Object {
-        "ariaLabel": "提示",
-        "name": "error-circle-filled",
-      }
-    }}"
-    tips="错误提示文字"
-  />
+  <wx-view
+    class="custom-theme"
+  >
+    <t-input
+      bordered="{{false}}"
+      customStyle="border: 2rpx solid rgba(220,220,220,1);border-radius: 12rpx;margin: 0 32rpx;"
+      placeholder="请输入文字"
+      suffixIcon="{{
+        Object {
+          "ariaLabel": "提示",
+          "name": "error-circle-filled",
+        }
+      }}"
+    />
+  </wx-view>
 </bordered>
 `;
 
 exports[`Input Input custom demo works fine 1`] = `
 <custom>
   <wx-view
-    class="wrapper"
+    class="input-example custom-theme"
   >
     <t-input
-      label="标签文字"
-      placeholder="请输入文字"
-    />
-  </wx-view>
-  <wx-view
-    class="margin"
-  >
-    <t-input
-      customStyle="border-radius: 12rpx;"
       label="标签文字"
       placeholder="请输入文字"
     />
   </wx-view>
 </custom>
+`;
+
+exports[`Input Input label demo works fine 1`] = `
+<wx-label>
+  <t-input
+    label="标签超长时最多十个字"
+    placeholder="请输入文字"
+  />
+</wx-label>
 `;
 
 exports[`Input Input layout demo works fine 1`] = `
@@ -120,12 +115,16 @@ exports[`Input Input layout demo works fine 1`] = `
 exports[`Input Input maxlength demo works fine 1`] = `
 <maxlength>
   <t-input
+    label="标签文字"
     maxlength="{{10}}"
-    placeholder="最大输入10个字符"
+    placeholder="请输入文字"
+    tips="最大输入10个字符"
   />
   <t-input
+    label="标签文字"
     maxcharacter="{{10}}"
-    placeholder="最大输入10个字符，汉字算两个"
+    placeholder="请输入文字"
+    tips="最大输入10个字符，汉字算两个"
   />
 </maxlength>
 `;
@@ -216,7 +215,6 @@ exports[`Input Input special demo works fine 1`] = `
     suffix="元"
     tClassTips="tips"
     tips=""
-    value="10.2"
     bind:change="onPriceInput"
   />
   <t-input
@@ -260,11 +258,12 @@ exports[`Input Input suffix demo works fine 1`] = `
     bind:click="click"
   />
   <t-input
+    label="标签文字"
     placeholder="请输入手机号码"
   >
     <t-button
+      size="extra-small"
       slot="suffix"
-      tClass="custom-button"
       theme="primary"
     >
        操作按钮 

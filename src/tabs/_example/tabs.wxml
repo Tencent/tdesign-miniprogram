@@ -7,12 +7,12 @@
   <t-demo desc="等距选项卡">
     <scroll />
   </t-demo>
-  <t-demo desc="带徽章选项卡">
+  <t-demo desc="带徽标选项卡">
     <with-badge />
   </t-demo>
   <t-demo desc="带内容区选项卡">
     <with-content />
-    <vertical />
+    <!-- <vertical /> -->
   </t-demo>
   <t-demo title="02 组件状态" desc="选项卡状态">
     <status />

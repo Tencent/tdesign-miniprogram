@@ -7,6 +7,7 @@
     "disabled": "./disabled",
     "maxcharacter": "./maxcharacter",
     "maxlength": "./maxlength",
+    "card": "./card",
     "custom": "./custom"
   }
 }

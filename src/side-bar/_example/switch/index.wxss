@@ -32,8 +32,3 @@ page .round-image {
   width: 96rpx;
   height: 96rpx;
 }
-
-page .side-bar-wrapper {
-  --td-side-bar-border-radius: 6px;
-  --td-side-bar-active-color: green;
-}

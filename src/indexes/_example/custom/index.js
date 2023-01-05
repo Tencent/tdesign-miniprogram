@@ -35,12 +35,15 @@ Page({
   data: {
     list,
     indexList: list.map((item) => item.index),
-    activeAnchor: '',
+    curIndex: '',
   },
 
-  onSelect(e) {
+  onChange(e) {
     const { index } = e.detail;
 
     console.log(index);
+    this.setData({
+      curIndex: index,
+    });
   },
 });

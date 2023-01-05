@@ -3,6 +3,7 @@
 @side-bar-color: var(--td-side-bar-color, @font-gray-1);
 @side-bar-font-size: var(--td-side-bar-font-size, 32rpx);
 @side-bar-item-height: var(--td-side-bar-item-height, 112rpx);
+@side-bar-item-line-height: var(--td-side-bar-item-line-height, 48rpx);
 @side-bar-bg-color: var(--td-side-bar-bg-color, @gray-color-1);
 @side-bar-disabled-color: var(--td-side-bar-disabled-color, @font-gray-4);
 @side-bar-active-color: var(--td-side-bar-active-color, @primary-color);
@@ -14,10 +15,10 @@
   font-size: @side-bar-font-size;
   color: @side-bar-color;
   background: @side-bar-bg-color;
-  height: @side-bar-item-height;
+  min-height: @side-bar-item-height;
   box-sizing: border-box;
-  white-space: nowrap;
-  // line-height: @side-bar-item-height;
+  white-space: wrap;
+  line-height: @side-bar-item-line-height;
 
   &--active {
     font-weight: 600;

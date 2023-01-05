@@ -91,7 +91,7 @@ describe('upload', () => {
       // expect(comp.toJSON()).toMatchSnapshot();
 
       const iconId = simulate.load({
-        template: `<t-icon name="add" size="40rpx" color="rgba(0,0,0,0.26)"></t-icon>`,
+        template: `<t-icon name="add"></t-icon>`,
         usingComponents: {
           't-icon': icon,
         },

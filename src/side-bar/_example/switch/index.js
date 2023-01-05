@@ -1,4 +1,4 @@
-const image = 'https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png';
+const image = 'https://tdesign.gtimg.com/miniprogram/images/desktop.png';
 const items = new Array(12).fill({ label: '标题文字', image }, 0, 12);
 
 Page({

@@ -38,7 +38,21 @@
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, _value)}} </view>
+          <view
+            class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
+            aria-role="region"
+            aria-live="assertive"
+          >
+            {{t.getValue(label, _value) || _value}}
+          </view>
+          <view
+            class="{{classPrefix}}__dot-slider"
+            aria-role="slider"
+            aria-disabled="{{disabled}}"
+            aria-valuemax="{{max}}"
+            aria-valuemin="{{min}}"
+            aria-valuenow="{{_value}}"
+          ></view>
         </view>
       </view>
     </view>
@@ -84,7 +98,21 @@
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, dotTopValue[0])}} </view>
+          <view
+            class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
+            aria-role="region"
+            aria-live="assertive"
+          >
+            {{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}
+          </view>
+          <view
+            class="{{classPrefix}}__dot-slider"
+            aria-role="slider"
+            aria-disabled="{{disabled}}"
+            aria-valuemax="{{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}"
+            aria-valuemin="{{min}}"
+            aria-valuenow="{{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}"
+          ></view>
         </view>
         <view
           id="rightDot"
@@ -93,7 +121,22 @@
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, dotTopValue[1])}} </view>
+          <view
+            class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
+            aria-role="region"
+            aria-live="assertive"
+          >
+            {{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}
+          </view>
+          <view
+            class="{{classPrefix}}__dot-slider"
+            aria-role="slider"
+            aria-disabled="{{disabled}}"
+            aria-valuemax="{{max}}"
+            aria-valuemin="{{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}"
+            aria-valuenow="{{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}"
+          >
+          </view>
         </view>
       </view>
     </view>
