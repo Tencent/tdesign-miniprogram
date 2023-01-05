@@ -24,6 +24,8 @@
       wx:for="{{list}}"
       wx:key="index"
       class="{{_.cls(classPrefix + '__item', [['preview', this.isPrev(current, index, list)], ['next', this.isNext(current, index, list)]])}}"
+      data-index="{{index}}"
+      bind:tap="onTap"
     >
       <template
         is="image"

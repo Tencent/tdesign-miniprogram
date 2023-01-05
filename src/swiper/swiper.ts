@@ -61,6 +61,12 @@ export default class Swiper extends SuperComponent {
       });
     },
 
+    onTap(e) {
+      const { index } = e.currentTarget.dataset;
+
+      this.triggerEvent('click', { index });
+    },
+
     onChange(e) {
       const { current, source } = e.detail;
 

@@ -17,10 +17,14 @@ Component({
   },
 
   methods: {
+    onTap(e) {
+      const { index } = e.detail;
+
+      console.log(index);
+    },
     onChange(e) {
-      const {
-        detail: { current, source },
-      } = e;
+      const { current, source } = e.detail;
+
       console.log(current, source);
     },
   },
