@@ -44,9 +44,14 @@ export default class Button extends SuperComponent {
 
   methods = {
     setClass() {
-      const classList = [name, `${prefix}-class`, `${name}--${this.data.theme}`, `${name}--size-${this.data.size}`];
-
-      classList.push(`${name}--${this.data.shape}`);
+      const classList = [
+        name,
+        `${prefix}-class`,
+        `${name}--${this.data.theme || 'default'}`,
+        `${name}--size-${this.data.size || 'medium'}`,
+        `${name}--${this.data.shape || 'rectangle'}`,
+        `${name}--${this.data.variant || 'base'}`,
+      ];
 
       if (this.data.block) {
         classList.push(`${name}--block`);
@@ -54,7 +59,6 @@ export default class Button extends SuperComponent {
       if (this.data.disabled) {
         classList.push(`${name}--disabled`);
       }
-      classList.push(`${name}--${this.data.variant}`);
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);
       }

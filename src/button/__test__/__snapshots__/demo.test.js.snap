@@ -169,27 +169,21 @@ exports[`Button Button icon-btn demo works fine 1`] = `
     <t-button
       content="填充按钮"
       icon="app"
+      size="large"
       theme="primary"
     />
+    <t-button
+      loading="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      加载中
+    </t-button>
     <t-button
       ariaLabel="返回"
       icon="chevron-left"
       shape="square"
-      theme="primary"
-    />
-  </wx-view>
-  <wx-view
-    class="button-example"
-  >
-    <t-button
-      loading="{{true}}"
-      theme="primary"
-    >
-      加载中...
-    </t-button>
-    <t-button
-      loading="{{true}}"
-      shape="square"
+      size="large"
       theme="primary"
     />
   </wx-view>
