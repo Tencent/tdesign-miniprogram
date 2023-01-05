@@ -135,6 +135,7 @@ exports[`Image Image status demo works fine 1`] = `
       <t-image
         height="72"
         id="loading-img"
+        shape="round"
         width="72"
       />
     </wx-view>
@@ -176,6 +177,7 @@ exports[`Image Image status demo works fine 1`] = `
       <t-image
         height="72"
         id="loading-img"
+        shape="round"
         src=""
         width="72"
       />
