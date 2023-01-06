@@ -16,6 +16,7 @@ exports[`Cell Cell base demo works fine 1`] = `
       title="单行标题"
     />
     <t-cell
+      ariaLabel="单行标题，有16条消息"
       arrow="{{true}}"
       hover="{{true}}"
       title="单行标题"
