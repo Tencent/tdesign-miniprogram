@@ -46,6 +46,7 @@ exports[`tabs :base 1`] = `
                   bind:tap="onTabTap"
                 >
                   <wx-view
+                    ariaHidden=""
                     class="t-tabs__item-inner t-tabs__item-inner--line t-tabs__item-inner--active"
                   >
                     标签页一
@@ -62,6 +63,7 @@ exports[`tabs :base 1`] = `
                   bind:tap="onTabTap"
                 >
                   <wx-view
+                    ariaHidden=""
                     class="t-tabs__item-inner t-tabs__item-inner--line"
                   >
                     label1
@@ -78,6 +80,7 @@ exports[`tabs :base 1`] = `
                   bind:tap="onTabTap"
                 >
                   <wx-view
+                    ariaHidden=""
                     class="t-tabs__item-inner t-tabs__item-inner--line"
                   >
                     label2
@@ -94,6 +97,7 @@ exports[`tabs :base 1`] = `
                   bind:tap="onTabTap"
                 >
                   <wx-view
+                    ariaHidden=""
                     class="t-tabs__item-inner t-tabs__item-inner--line"
                   >
                     label3
