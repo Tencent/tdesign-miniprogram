@@ -62,16 +62,13 @@ function cls(base, arr) {
 }
 
 function getBadgeAriaLabel(options) {
-  if (options.dot) {
+  var maxCount = options.maxCount || 99;
+  if (options.dot || isNaN(options.count)) {
     return '有新的消息';
   }
-  if (isNaN(options.count) || isNaN(options.maxCount)) {
-    var str = '有' + options.count + '通知';
-    return str;
-  }
-  var str1 = '有' + options.maxCount + '+条消息';
+  var str1 = '有' + maxCount + '+条消息';
   var str2 = '有' + options.count + '条消息';
-  return parseInt(options.count) > options.maxCount ? str1 : str2;
+  return Number(options.count) > Number(maxCount) ? str1 : str2;
 }
 
 module.exports = {
