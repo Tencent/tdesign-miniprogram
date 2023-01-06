@@ -61,6 +61,19 @@ function cls(base, arr) {
   return res.join(' ');
 }
 
+function getBadgeAriaLabel(options) {
+  if (options.dot) {
+    return '有新的消息';
+  }
+  if (isNaN(options.count) || isNaN(options.maxCount)) {
+    var str = '有' + options.count + '通知';
+    return str;
+  }
+  var str1 = '有' + options.maxCount + '+条消息';
+  var str2 = '有' + options.count + '条消息';
+  return parseInt(options.count) > options.maxCount ? str1 : str2;
+}
+
 module.exports = {
   addUnit: addUnit,
   isString: isString,
@@ -69,4 +82,5 @@ module.exports = {
   isNoEmptyObj: isNoEmptyObj,
   includes: includes,
   cls: cls,
+  getBadgeAriaLabel: getBadgeAriaLabel,
 };
