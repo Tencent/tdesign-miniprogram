@@ -19,6 +19,10 @@
     border-top-right-radius: @action-sheet-border-radius;
     background-color: @bg-color-block;
     overflow: hidden;
+
+    &:focus {
+      outline: 0;
+    }
   }
 
   .flex-center() {
@@ -48,6 +52,10 @@
     font-size: 28rpx;
     text-align: @action-sheet-text-align;
     padding: 24rpx 32rpx;
+
+    &:focus {
+      outline: 0;
+    }
     .border(bottom, @action-sheet-border-color);
 
     &--left {
@@ -66,6 +74,9 @@
       height: @action-sheet-list-item-height;
       padding: 0 32rpx;
 
+      &:focus {
+        outline: 0;
+      }
       &--left {
         justify-content: start;
 
