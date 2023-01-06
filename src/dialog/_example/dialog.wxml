@@ -21,11 +21,11 @@
     <status />
   </t-demo>
 
-  <t-demo title="03 组件用法" desc="命令调用">
+  <t-demo title="03 组件用法" desc="命令调用" padding>
     <command />
   </t-demo>
 
-  <t-demo desc="自定义按钮">
+  <t-demo desc="自定义按钮" padding>
     <buttonDemo />
   </t-demo>
 </view>

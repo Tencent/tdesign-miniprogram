@@ -10,6 +10,5 @@
 }
 
 .long-content .content-container {
-  width: 540rpx;
   white-space: pre-line;
 }
