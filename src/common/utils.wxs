@@ -68,7 +68,7 @@ function getBadgeAriaLabel(options) {
   }
   var str1 = '有' + maxCount + '+条消息';
   var str2 = '有' + options.count + '条消息';
-  return Number(options.count) > Number(maxCount) ? str1 : str2;
+  return Number(options.count) > maxCount ? str1 : str2;
 }
 
 module.exports = {
