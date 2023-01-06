@@ -36,7 +36,7 @@
 具体使用方式，可以参考小程序官网文档： [《NPM 支持》](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)
 
 ```bash
-npm i tdesign-miniprogram -S --production
+npm i tdesign-miniprogram -S --omit=dev
 ```
 
 > 建议使用 NPM，不再推荐“源码拷贝的方式”
