@@ -16,7 +16,7 @@
 >
   <view
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
-    style="transform: translate3d(0, {{barHeight + 'rpx'}}, 0);"
+    style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'rpx, 0);' : ''}}"
   >
     <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}rpx">
       <t-loading
