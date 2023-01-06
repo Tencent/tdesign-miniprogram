@@ -31,6 +31,7 @@
             aria-controls="{{tabID + '_panel_' + index}}"
             aria-selected="{{currentIndex === index}}"
             aria-disabled="{{item.disabled}}"
+            aria-label="{{ item.badgeProps.dot || item.badgeProps.count ? _.getBadgeAriaLabel({ ...item.badgeProps }) : ariaLabel }}"
           >
             <view class="{{_.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])}}">
               <block wx:if="{{item.badgeProps}}">
