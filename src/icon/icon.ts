@@ -8,8 +8,6 @@ const name = `${prefix}-icon`;
 
 @wxComponent()
 export default class Icon extends SuperComponent {
-  behaviors: ['wx://form-field-icon'];
-
   externalClasses = [`${prefix}-class`];
 
   properties = props;
