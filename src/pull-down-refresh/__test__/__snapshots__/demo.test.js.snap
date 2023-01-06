@@ -18,6 +18,7 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
     }}"
     value="{{false}}"
     bind:refresh="onPullDownRefresh"
+    bind:scroll="onScroll"
   >
     <wx-view
       class="demo"
@@ -47,6 +48,106 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
             ]
           }}"
         />
+        <wx-view
+          class="row"
+        >
+          <t-skeleton
+            loading="{{true}}"
+            rowCol="{{
+              Array [
+                Array [
+                  Object {
+                    "width": "327rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "width": "200rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "borderRadius": "24rpx",
+                    "size": "327rpx",
+                  },
+                ],
+              ]
+            }}"
+          />
+          <t-skeleton
+            loading="{{true}}"
+            rowCol="{{
+              Array [
+                Array [
+                  Object {
+                    "width": "327rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "width": "200rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "borderRadius": "24rpx",
+                    "size": "327rpx",
+                  },
+                ],
+              ]
+            }}"
+          />
+        </wx-view>
+        <wx-view
+          class="row"
+        >
+          <t-skeleton
+            loading="{{true}}"
+            rowCol="{{
+              Array [
+                Array [
+                  Object {
+                    "width": "327rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "width": "200rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "borderRadius": "24rpx",
+                    "size": "327rpx",
+                  },
+                ],
+              ]
+            }}"
+          />
+          <t-skeleton
+            loading="{{true}}"
+            rowCol="{{
+              Array [
+                Array [
+                  Object {
+                    "width": "327rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "width": "200rpx",
+                  },
+                ],
+                Array [
+                  Object {
+                    "borderRadius": "24rpx",
+                    "size": "327rpx",
+                  },
+                ],
+              ]
+            }}"
+          />
+        </wx-view>
         <wx-view
           class="row"
         >

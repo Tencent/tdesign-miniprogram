@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -29,6 +29,12 @@ export default class PullDownRefresh extends SuperComponent {
 
   options = {
     multipleSlots: true,
+  };
+
+  relations: RelationsOptions = {
+    '../back-top/back-top': {
+      type: 'descendant',
+    },
   };
 
   properties = props;
@@ -97,9 +103,12 @@ export default class PullDownRefresh extends SuperComponent {
       });
     },
     onScroll(e) {
+      const { scrollTop } = e.detail;
+
       this.setData({
-        enableToRefresh: e.detail.scrollTop === 0,
+        enableToRefresh: scrollTop === 0,
       });
+      this.triggerEvent('scroll', { scrollTop });
     },
     onTouchStart(e: WechatMiniprogram.Component.TrivialInstance) {
       if (this.isPulling || !this.data.enableToRefresh) return;

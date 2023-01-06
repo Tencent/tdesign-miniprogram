@@ -3,6 +3,7 @@
   loadingProps="{{loadingProps}}"
   loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
   bind:refresh="onPullDownRefresh"
+  bind:scroll="onScroll"
 >
   <!-- 包裹页面全部内容 -->
   <view class="demo">
@@ -14,7 +15,16 @@
         <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
         <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
       </view>
+      <view class="row">
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+      </view>
+      <view class="row">
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+      </view>
       <view class="text">拖拽该区域演示 顶部下拉刷新</view>
     </view>
+    <t-back-top wx:if="{{backTopVisible}}" />
   </view>
 </t-pull-down-refresh>
