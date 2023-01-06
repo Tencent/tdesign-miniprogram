@@ -21,7 +21,19 @@ export default class SideBarItem extends SuperComponent {
     },
   };
 
-  observers = {};
+  observers = {
+    active: function () {
+      let ariaActive;
+      if (this.data.active) {
+        ariaActive = '已选定';
+      } else {
+        ariaActive = '';
+      }
+      this.setData({
+        ariaActive,
+      });
+    },
+  };
 
   data = {
     classPrefix: name,
@@ -32,16 +44,6 @@ export default class SideBarItem extends SuperComponent {
     ariaActive: '',
     disabled: false,
   };
-
-  ready() {
-    let ariaActive;
-    if (this.data.active) {
-      ariaActive = '已选定';
-    }
-    this.setData({
-      ariaActive,
-    });
-  }
 
   methods = {
     updateActive(value) {
