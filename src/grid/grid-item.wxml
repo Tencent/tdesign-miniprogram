@@ -56,7 +56,7 @@
       <view
         class="{{_.cls(classPrefix + '__words', [layout])}}"
         id="{{labelID}}"
-        aria-label="{{ badgeProps.dot || badgeProps.count ? text + ',' +  description + ',' + _.getBadgeAriaLabel({ ...badgeProps }) : ariaLabel }}"
+        aria-label="{{ ariaLabel || (badgeProps.dot || badgeProps.count ? text + ',' +  description + ',' + _.getBadgeAriaLabel({ ...badgeProps }) : '') }}"
       >
         <view
           wx:if="{{text && text !== 'slot'}}"

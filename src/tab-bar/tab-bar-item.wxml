@@ -12,9 +12,14 @@
     aria-selected="{{(!hasChildren || !isSpread) && isChecked ? true : false}}"
     aria-expanded="{{hasChildren && isSpread ? true : ''}}"
     aria-role="{{hasChildren ? 'button' : 'tab'}}"
-    aria-label="{{ badgeProps.dot || badgeProps.count ? _.getBadgeAriaLabel({ ...badgeProps }) : ariaLabel }}"
+    aria-label="{{ ariaLabel || (badgeProps.dot || badgeProps.count ? _.getBadgeAriaLabel({ ...badgeProps }) : '') }}"
   >
-    <view wx:if="{{icon}}" class="{{classPrefix}}__icon" style="height: {{iconOnly ? 24 : 20}}px">
+    <view
+      wx:if="{{icon}}"
+      class="{{classPrefix}}__icon"
+      style="height: {{iconOnly ? 24 : 20}}px"
+      aria-hidden="{{ badgeProps.dot || badgeProps.count }}"
+    >
       <t-badge
         wx:if="{{badgeProps.dot || badgeProps.count}}"
         count="{{badgeProps.count}}"
