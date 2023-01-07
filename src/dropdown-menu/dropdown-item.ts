@@ -3,6 +3,7 @@ import config from '../common/config';
 import props from './dropdown-item-props';
 import menuProps from './props';
 import type { TdDropdownItemProps } from './type';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-dropdown-item`;
@@ -108,19 +109,15 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     getParentBottom(parent, cb) {
-      const query = wx.createSelectorQuery().in(parent);
-      query
-        .select(`#${prefix}-bar`)
-        .boundingClientRect((res) => {
-          this.setData(
-            {
-              top: res.bottom,
-              maskHeight: res.top,
-            },
-            cb,
-          );
-        })
-        .exec();
+      getRect(parent, `#${prefix}-bar`).then((rect) => {
+        this.setData(
+          {
+            top: rect.bottom,
+            maskHeight: rect.top,
+          },
+          cb,
+        );
+      });
     },
 
     handleTreeClick(e) {

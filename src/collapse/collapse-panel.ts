@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/ind
 import config from '../common/config';
 import props from './collapse-panel-props';
 import type { TdCollapsePanelProps } from './type';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-collapse-panel`;
@@ -73,21 +74,8 @@ export default class CollapsePanel extends SuperComponent {
       this.setData({ expanded });
       this.updateStyle(expanded);
     },
-    getRect(selector: string): Promise<WechatMiniprogram.BoundingClientRectCallbackResult> {
-      return new Promise((resolve) => {
-        wx.createSelectorQuery()
-          .in(this as WechatMiniprogram.Component.TrivialInstance)
-          .select(selector)
-          .boundingClientRect((rect) => {
-            if (rect) {
-              resolve(rect);
-            }
-          })
-          .exec();
-      });
-    },
     updateStyle(expanded: boolean) {
-      return this.getRect(`.${name}__content`)
+      return getRect(this, `.${name}__content`)
         .then((rect: WechatMiniprogram.BoundingClientRectCallbackResult) => rect.height)
         .then((height: number) => {
           if (expanded) {
