@@ -29,14 +29,6 @@ exports[`Avatar Avatar action demo works fine 1`] = `
       bordered="{{true}}"
       image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
     />
-    <t-avatar
-      ariaLabel="添加"
-      ariaRole="button"
-      bordered="{{true}}"
-      icon="user-add"
-      slot="collapseAvatar"
-      bind:tap="onAddTap"
-    />
   </t-avatar-group>
 </action>
 `;

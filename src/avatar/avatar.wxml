@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./avatar.wxs" module="this" />
 
-<view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getAvatarStyles(isShow, zIndex, customStyle)}}">
+<view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getStyles(isShow, zIndex, customStyle)}}">
   <t-badge
     color="{{badgeProps.color}}"
     content="{{badgeProps.content}}"
@@ -18,8 +18,8 @@
     t-class-count="{{badgeProps.tClassCount}}"
   >
     <view
-      class="{{this.getAvatarOuterClass(classPrefix, size, shape, bordered)}} {{prefix}}-class-image "
-      style="{{this.getAvatarSizePx(size)}}"
+      class="{{this.getClass(classPrefix, size, shape, bordered)}} {{prefix}}-class-image"
+      style="{{this.getSize(size)}}"
       aria-label="{{ ariaLabel || alt ||'头像'}}"
       aria-role="{{ ariaRole || 'img'}}"
       aria-hidden="{{ ariaHidden }}"

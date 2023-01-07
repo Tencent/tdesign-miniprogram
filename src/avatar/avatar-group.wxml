@@ -1,7 +1,7 @@
 <view style="{{ customStyle }}" class="{{className}}">
   <slot />
   <!-- 自定义折叠元素 -->
-  <view class="{{classPrefix}}__collapse--slot {{collapseAvatar ? prefix + '-is-hidden' : ''}}">
+  <view class="{{classPrefix}}__collapse--slot">
     <slot name="collapse-avatar" />
   </view>
   <!-- 默认折叠元素 -->
@@ -9,7 +9,7 @@
     <t-avatar
       t-class-image="{{prefix}}-class-image"
       t-class-content="{{prefix}}-class-content"
-      bordered="{{true}}"
+      bordered
       size="{{size}}"
       icon="{{ collapseAvatar ? '' : 'user-add'}}"
       aria-role="none"
