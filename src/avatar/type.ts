@@ -23,6 +23,14 @@ export interface TdAvatarProps {
     value?: BadgeProps;
   };
   /**
+   * 是否显示外边框
+   * @default false
+   */
+  bordered?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 自定义组件样式
    * @default ''
    */
@@ -46,7 +54,7 @@ export interface TdAvatarProps {
     value?: boolean;
   };
   /**
-   * 图标
+   * 图标。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。
    */
   icon?: {
     type: null;
@@ -76,20 +84,12 @@ export interface TdAvatarProps {
     value?: ShapeEnum;
   };
   /**
-   * 尺寸，示例值：small/medium/large/24px/38px 等，默认为 large
-   * @default ''
+   * 尺寸，示例值：small/medium/large/24px/38px 等
+   * @default medium
    */
   size?: {
     type: StringConstructor;
     value?: string;
-  };
-  /**
-   * 是否显示外边框
-   * @default true
-   */
-  bordered?: {
-    type: BooleanConstructor;
-    value?: boolean;
   };
 }
 
