@@ -8,11 +8,18 @@
     style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
     class="{{prefix}}-class-indicator {{classPrefix}}__bar {{classPrefix}}__bar--{{progress < 0 ? 'animation' : progress < 100 ? 'static': ''}} {{progress >= 100 || !loading ? classPrefix + '__bar--loaded' : ''}}"
   ></view>
-  <view class="{{classPrefix}} {{classPrefix + '--' + layout}}" style="{{show ? '' : 'display:none'}}" wx:else>
+  <view
+    aria-role="{{ theme !== 'error' ? ariaRole  || 'option' :  ''}}"
+    aria-label="{{ theme !== 'error' ? ariaLabel || text || '加载中' : '' }}"
+    class="{{classPrefix}} {{classPrefix + '--' + layout}}"
+    style="{{show ? '' : 'display:none'}}"
+    wx:else
+  >
     <view
       wx:if="{{indicator && theme != 'error'}}"
       class="{{prefix}}-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
       style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+      aria-hidden="{{true}}"
     >
       <view wx:if="{{ theme === 'spinner' }}" wx:for="{{12}}" wx:key="index" class="{{classPrefix}}__dot" />
       <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular" />
