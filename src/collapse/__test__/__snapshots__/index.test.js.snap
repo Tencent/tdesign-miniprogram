@@ -82,13 +82,12 @@ exports[`collapse :base 1`] = `
             </t-cell>
           </wx-view>
           <wx-view
+            animation=""
             ariaHidden=""
             class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
           >
             <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+              class="t-collapse-panel__content t-class-content"
             >
               
       
@@ -170,13 +169,12 @@ exports[`collapse :base 1`] = `
             </t-cell>
           </wx-view>
           <wx-view
+            animation=""
             ariaHidden="{{true}}"
             class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
           >
             <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+              class="t-collapse-panel__content t-class-content"
             >
               
       
@@ -265,13 +263,12 @@ exports[`collapse :base 1`] = `
             </t-cell>
           </wx-view>
           <wx-view
+            animation=""
             ariaHidden="{{true}}"
             class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
           >
             <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+              class="t-collapse-panel__content t-class-content"
             >
               
       
@@ -351,13 +348,12 @@ exports[`collapse :base 1`] = `
             </t-cell>
           </wx-view>
           <wx-view
+            animation=""
             ariaHidden=""
             class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
           >
             <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+              class="t-collapse-panel__content t-class-content"
             >
               
       
@@ -450,13 +446,12 @@ exports[`collapse :defaultExpandAll 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation=""
           ariaHidden="{{true}}"
           class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       
@@ -536,13 +531,12 @@ exports[`collapse :defaultExpandAll 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation=""
           ariaHidden=""
           class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       
@@ -637,13 +631,36 @@ exports[`collapse :disabled 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation="{{
+            Object {
+              "actions": Array [
+                Object {
+                  "animates": Array [
+                    Object {
+                      "args": Array [
+                        "height",
+                        "0px",
+                      ],
+                      "type": "style",
+                    },
+                  ],
+                  "option": Object {
+                    "transformOrigin": "50% 50% 0",
+                    "transition": Object {
+                      "delay": 0,
+                      "duration": 300,
+                      "timingFunction": "ease-in-out",
+                    },
+                  },
+                },
+              ],
+            }
+          }}"
           ariaHidden=""
           class="t-collapse-panel__wrapper"
-          style="height: auto;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       
@@ -725,13 +742,12 @@ exports[`collapse :disabled 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation=""
           ariaHidden="{{true}}"
           class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       
