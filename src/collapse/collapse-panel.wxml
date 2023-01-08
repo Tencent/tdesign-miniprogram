@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="utils" />
 
-<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
+<view style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
   <view
     class="{{classPrefix}}__title"
     aria-role="button"
@@ -13,10 +13,10 @@
       note="{{headerRightContent}}"
       bordered
       right-icon="{{ ultimateExpandIcon ? (expanded ? 'chevron-up' : 'chevron-down') : '' }}"
-      t-class="{{classPrefix}}__header {{prefix}}-class-header"
+      t-class="{{classPrefix}}__header {{classPrefix}}__header--{{placement}} {{prefix}}-class-header"
       t-class-title="class-title {{ultimateDisabled ? 'class-title--disabled' : ''}}"
       t-class-note="class-note {{ultimateDisabled ? 'class-note--disabled' : ''}}"
-      t-class-right-icon="class-right-icon {{ultimateDisabled ? 'class-right-icon--disabled' : ''}}"
+      t-class-right-icon="class-right-icon {{classPrefix}}__arrow--{{placement}} {{ultimateDisabled ? 'class-right-icon--disabled' : ''}}"
       t-class-hover="class-header-hover"
     >
       <slot name="header" slot="title" />
@@ -32,4 +32,3 @@
     </view>
   </view>
 </view>
-<!-- parentDisabled -->

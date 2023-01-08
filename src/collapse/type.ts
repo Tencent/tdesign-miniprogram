@@ -95,7 +95,6 @@ export interface TdCollapsePanelProps {
   };
   /**
    * 当前折叠面板展开图标，优先级大于 Collapse 的同名属性
-   * @default true
    */
   expandIcon?: {
     type: BooleanConstructor;
@@ -121,6 +120,14 @@ export interface TdCollapsePanelProps {
   headerRightContent?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 选项卡内容的位置
+   * @default bottom
+   */
+  placement?: {
+    type: StringConstructor;
+    value?: 'bottom' | 'top';
   };
   /**
    * 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识

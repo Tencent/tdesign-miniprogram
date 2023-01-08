@@ -37,6 +37,11 @@ const props: TdCollapsePanelProps = {
   headerRightContent: {
     type: String,
   },
+  /** 选项卡内容的位置 */
+  placement: {
+    type: String,
+    value: 'bottom',
+  },
   /** 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识 */
   value: {
     type: null,
