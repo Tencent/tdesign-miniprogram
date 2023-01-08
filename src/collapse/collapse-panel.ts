@@ -7,8 +7,6 @@ import { getRect } from '../common/utils';
 const { prefix } = config;
 const name = `${prefix}-collapse-panel`;
 
-const nextTick = () => new Promise((resolve) => setTimeout(resolve, 20));
-
 export interface CollapsePanelProps extends TdCollapsePanelProps {}
 @wxComponent()
 export default class CollapsePanel extends SuperComponent {
@@ -39,7 +37,6 @@ export default class CollapsePanel extends SuperComponent {
 
   data = {
     prefix,
-    contentHeight: 0,
     expanded: false,
     classPrefix: name,
     classBasePrefix: prefix,
@@ -53,17 +50,10 @@ export default class CollapsePanel extends SuperComponent {
 
       return new Promise((resolve) => wx.nextTick(resolve));
     },
+
     updateExpanded(activeValues) {
       if (!this.parent) {
-        return Promise.resolve()
-          .then(nextTick)
-          .then(() => {
-            const data: Record<string, boolean | string> = { transition: true };
-            if (this.data.expanded) {
-              data.contentHeight = 'auto';
-            }
-            this.setData(data);
-          });
+        return;
       }
 
       const { value } = this.properties;
@@ -74,19 +64,23 @@ export default class CollapsePanel extends SuperComponent {
       this.setData({ expanded });
       this.updateStyle(expanded);
     },
+
     updateStyle(expanded: boolean) {
       return getRect(this, `.${name}__content`)
         .then((rect: WechatMiniprogram.BoundingClientRectCallbackResult) => rect.height)
         .then((height: number) => {
+          const animation = wx.createAnimation({
+            duration: 300,
+            timingFunction: 'ease-in-out',
+          });
+
           if (expanded) {
-            return this.set({
-              contentHeight: height ? `${height}px` : 'auto',
-            });
+            animation.height(height).step();
+          } else {
+            animation.height(0).step();
           }
 
-          return this.set({ contentHeight: `${height}px` })
-            .then(nextTick)
-            .then(() => this.set({ contentHeight: 0 }));
+          this.setData({ animation: animation.export() });
         });
     },
 
@@ -97,14 +91,6 @@ export default class CollapsePanel extends SuperComponent {
       if (ultimateDisabled) return;
 
       this.parent.switch(value);
-    },
-
-    onTransitionEnd() {
-      if (this.data.expanded) {
-        this.setData({
-          contentHeight: 'auto',
-        });
-      }
     },
   };
 }

@@ -24,15 +24,8 @@
       <slot name="expand-icon" slot="right-icon" />
     </t-cell>
   </view>
-  <view
-    class="{{classPrefix}}__wrapper"
-    style="height: {{contentHeight}};"
-    aria-hidden="{{expanded ? '' : true}}"
-    bind:transitionend="onTransitionEnd"
-  >
-    <view
-      class="{{classPrefix}}__content {{classPrefix}}__content--{{expanded ? 'active' : ''}} {{prefix}}-class-content"
-    >
+  <view class="{{classPrefix}}__wrapper" animation="{{animation}}" aria-hidden="{{expanded ? '' : true}}">
+    <view class="{{classPrefix}}__content {{prefix}}-class-content">
       {{content}}
       <slot />
       <slot name="content" />
