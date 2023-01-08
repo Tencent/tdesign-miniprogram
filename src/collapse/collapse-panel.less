@@ -22,10 +22,6 @@
   .border(bottom, @collapse-border-color);
   background-color: @collapse-panel-bg-color;
 
-  &--active {
-    height: auto;
-  }
-
   &--disabled {
     pointer-events: none;
 
@@ -33,6 +29,11 @@
     .@{prefix}-collapse-panel__header {
       opacity: 0.3;
     }
+  }
+
+  &--top {
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   &__header {
@@ -43,7 +44,14 @@
     padding-left: @collapse-horizontal-padding;
     height: @collapse-header-height;
     color: @collapse-header-text-color;
-    .border(bottom, @collapse-border-color);
+
+    &--top {
+      .border(top, @collapse-border-color);
+    }
+
+    &--bottom {
+      .border(bottom, @collapse-border-color);
+    }
 
     &:after {
       left: 32rpx;
@@ -82,6 +90,10 @@
     font-size: @collapse-content-font-size;
     padding: @collapse-content-padding;
     line-height: @collapse-content-line-height;
+  }
+
+  &__arrow--top {
+    transform: rotate(180deg);
   }
 }
 
