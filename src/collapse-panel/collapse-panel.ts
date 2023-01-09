@@ -1,6 +1,6 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import props from './collapse-panel-props';
+import props from './props';
 import type { TdCollapsePanelProps } from './type';
 import { getRect } from '../common/utils';
 
@@ -17,7 +17,7 @@ export default class CollapsePanel extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './collapse': {
+    '../collapse/collapse': {
       type: 'ancestor',
       linked(target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
