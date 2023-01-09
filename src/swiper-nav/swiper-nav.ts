@@ -1,8 +1,11 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import { TdSwiperNavProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-swiper-nav`;
+
+export interface SwiperNavProps extends TdSwiperNavProps {}
 
 @wxComponent()
 export default class SwiperNav extends SuperComponent {
@@ -40,7 +43,7 @@ export default class SwiperNav extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './swiper': {
+    '../swiper/swiper': {
       type: 'parent',
     },
   };
