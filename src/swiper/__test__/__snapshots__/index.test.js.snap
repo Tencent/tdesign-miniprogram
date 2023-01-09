@@ -577,6 +577,7 @@ exports[`swiper snapshot 1`] = `
       >
         <wx-view
           class="t-swiper-nav__btn"
+          style=""
         >
           <wx-view
             class="t-swiper-nav__btn--prev"
