@@ -13,7 +13,7 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-avatar": "tdesign-miniprogram/avatar/avatar",
-  "t-avatar-group": "tdesign-miniprogram/avatar/avatar-group"
+  "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group"
 }
 ```
 
@@ -81,7 +81,7 @@ error | \- | 图片加载失败时触发
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-cascading | String | 'right-up' | 图片之间的层叠关系，可选值：左侧图片在上和右侧图片在上。可选项：left-up/right-up。TS 类型：`CascadingValue` `type CascadingValue = 'left-up' \| 'right-up'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
+cascading | String | 'right-up' | 图片之间的层叠关系，可选值：左侧图片在上和右侧图片在上。可选项：left-up/right-up。TS 类型：`CascadingValue` `type CascadingValue = 'left-up' \| 'right-up'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar-group/type.ts) | N
 collapse-avatar | String / Slot | - | 头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多` | N
 custom-style | String | - | `0.25.0`。自定义组件样式 | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class', 't-class-image', 't-class-content']` | N

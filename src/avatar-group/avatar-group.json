@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "t-avatar": "./avatar"
+    "t-avatar": "../avatar/avatar"
   }
 }
