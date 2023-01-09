@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Navbar Navbar back demo works fine 1`] = `
-<back>
-  <t-navbar
-    leftArrow="{{true}}"
-    title="标题文字"
-    bind:go-back="handleBack"
-  />
-</back>
-`;
-
 exports[`Navbar Navbar back-home demo works fine 1`] = `
 <back-home>
   <t-navbar
@@ -41,8 +31,15 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
 exports[`Navbar Navbar base demo works fine 1`] = `
 <base>
   <t-navbar
+    class="block"
     tClassTitle="nav-title"
     title="标题文字"
+  />
+  <t-navbar
+    class="block"
+    leftArrow="{{true}}"
+    title="标题文字"
+    bind:go-back="handleBack"
   />
 </base>
 `;
@@ -91,6 +88,26 @@ exports[`Navbar Navbar left-title demo works fine 1`] = `
       标题左对齐
     </wx-view>
   </t-navbar>
+  <wx-view
+    class="demo-desc"
+  >
+    标题尺寸
+  </wx-view>
+  <t-navbar
+    leftArrow="{{true}}"
+  >
+    <wx-text
+      class="left-text"
+      slot="left"
+    >
+      返回
+    </wx-text>
+  </t-navbar>
+  <wx-view
+    class="header-title"
+  >
+    大标题尺寸
+  </wx-view>
 </left-title>
 `;
 
