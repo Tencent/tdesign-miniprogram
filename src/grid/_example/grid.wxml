@@ -10,7 +10,7 @@
   <t-demo desc="带边框的宫格">
     <border />
   </t-demo>
-  <t-demo desc="带徽章的宫格">
+  <t-demo desc="带徽标的宫格">
     <badge />
   </t-demo>
   <t-demo desc="可滑动的宫格">
@@ -19,7 +19,7 @@
   <t-demo title="02 组件样式" desc="可传图标的宫格">
     <icon-grid />
   </t-demo>
-  <t-demo desc="多行宫格">
+  <t-demo desc="通栏宫格">
     <multiple />
   </t-demo>
   <t-demo desc="卡片宫格">
