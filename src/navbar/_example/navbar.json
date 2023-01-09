@@ -3,7 +3,6 @@
   "usingComponents": {
     "base": "./base",
     "search": "./search",
-    "back": "./back",
     "back-home": "./back-home",
     "img": "./img",
     "left-title": "./left-title",
