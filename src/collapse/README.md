@@ -21,7 +21,7 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-collapse": "tdesign-miniprogram/collapse/collapse",
-  "t-collapse-panel": "tdesign-miniprogram/collapse/collapse-panel"
+  "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel"
 }
 ```
 
