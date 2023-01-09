@@ -1,6 +1,6 @@
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import props from './tab-bar-item-props';
+import props from './props';
 import { getRect } from '../common/utils';
 
 const { prefix } = config;
@@ -11,11 +11,10 @@ export default class TabBarItem extends SuperComponent {
   parent = null;
 
   relations: RelationsOptions = {
-    './tab-bar': {
+    '../tab-bar/tab-bar': {
       type: 'ancestor',
       linked(parent) {
         const { theme, split, shape } = parent.data;
-        this.parent = parent;
 
         this.setData({
           theme,
@@ -71,7 +70,6 @@ export default class TabBarItem extends SuperComponent {
       });
     },
     toggle() {
-      const { parent } = this;
       const { currentName, hasChildren, isSpread } = this.data;
 
       if (hasChildren) {
@@ -79,14 +77,13 @@ export default class TabBarItem extends SuperComponent {
           isSpread: !isSpread,
         });
       }
-      parent.updateValue(currentName);
-      parent.changeOtherSpread(currentName);
+      this.$parent.updateValue(currentName);
+      this.$parent.changeOtherSpread(currentName);
     },
     selectChild(event) {
-      const { parent } = this;
       const { value } = event.target.dataset;
 
-      parent.updateValue(value);
+      this.$parent.updateValue(value);
       this.setData({
         isSpread: false,
       });
