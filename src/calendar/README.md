@@ -76,6 +76,6 @@ visible | Boolean | false | 是否显示日历；`usePopup` 为 true 时有效 |
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: timestamp)` | `0.28.0`。不显示 confirm-btn 时，完成选择时触发（暂不支持 type = multiple）
-close | `(trigger: CalendarTrigger)` | 关闭按钮时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts)。<br/>`type CalendarTrigger = 'close-btn' \| 'confirm-btn' \| 'overlay'`<br/>
+close | `(trigger: CalendarTrigger)` | `0.34.0`。关闭按钮时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts)。<br/>`type CalendarTrigger = 'close-btn' \| 'confirm-btn' \| 'overlay'`<br/>
 confirm | `(value: timestamp)` | 点击确认按钮时触发
 select | `(value: timestamp)` | `0.28.0`。点击日期时触发
