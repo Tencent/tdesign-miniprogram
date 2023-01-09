@@ -2697,7 +2697,7 @@
       ],
       "externalClasses": ["t-class", "t-class-content", "t-class-title", "t-class-description", "t-class-extra"],
       "tpl": "<t-step-item title=\"步骤描述\"></t-step-item>",
-      "path": "./steps/step-item"
+      "path": "./step-item/step-item"
     },
     "t-stepper": {
       "key": "t-stepper",
@@ -2826,7 +2826,7 @@
       ],
       "tpl": "<t-steps><t-step-item title=\"步骤描述1\" /><t-step-item title=\"步骤描述2\" /></t-steps>",
       "require": {
-        "t-step-item": "./steps/step-item"
+        "t-step-item": "./step-item/step-item"
       },
       "path": "./steps/steps"
     },
