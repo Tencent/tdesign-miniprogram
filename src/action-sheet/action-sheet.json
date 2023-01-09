@@ -5,6 +5,6 @@
     "t-popup": "../popup/popup",
     "t-grid": "../grid/grid",
     "t-grid-item": "../grid/grid-item",
-    "t-swiper-nav": "../swiper/swiper-nav"
+    "t-swiper-nav": "../swiper-nav/swiper-nav"
   }
 }

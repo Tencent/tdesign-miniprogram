@@ -30,7 +30,7 @@ export default class Swiper extends SuperComponent {
   $nav = null;
 
   relations: RelationsOptions = {
-    './swiper-nav': {
+    '../swiper-nav/swiper-nav': {
       type: 'child',
     },
   };
