@@ -12,7 +12,7 @@ Component({
     handleConfirm(e) {
       const { value } = e.detail;
 
-      this.setData({ value, visible: false });
+      this.setData({ value });
       console.log(value);
     },
   },
