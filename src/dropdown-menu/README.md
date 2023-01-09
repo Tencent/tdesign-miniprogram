@@ -23,7 +23,7 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-dropdown-menu": "tdesign-miniprogram/dropdown-menu/dropdown-menu",
-  "t-dropdown-item": "tdesign-miniprogram/dropdown-menu/dropdown-item"
+  "t-dropdown-item": "tdesign-miniprogram/dropdown-item/dropdown-item"
 }
 ```
 
@@ -53,14 +53,6 @@ external-classes | Array | - | 组件类名，分别用于设置 组件外层类
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 z-index | Number | 11600 | 菜单栏 z-index 层级 | N
 
-### DropdownMenu Function
-
-方法名 | 说明 | 参数 | 返回值
---|--|--|--
-toggle | 切换下拉菜单的展示状态，传入索引值则切换对应菜单，不传值则关闭当前菜单 | index?: number | `void`
-
-> 通过 `this.selectComponent` 获取组件示例，调用即可
-
 ### DropdownItem Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
@@ -71,11 +63,11 @@ external-classes | Array | - | 组件类名，分别用于设置 组件外层类
 keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段别名。TS 类型：`KeysType` | N
 label | String | - | 标题 | N
 multiple | Boolean | false | 是否多选 | N
-options | Array | [] | 选项数据。TS 类型：`Array<DropdownOption>` `interface DropdownOption { label: string; disabled: boolean; value: DropdownValue; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-menu/type.ts) | N
+options | Array | [] | 选项数据。TS 类型：`Array<DropdownOption>` `interface DropdownOption { label: string; disabled: boolean; value: DropdownValue; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-item/type.ts) | N
 options-columns | String / Number | 1 | 选项分栏（1-3） | N
 options-layout | String | columns | 已废弃。选项排列；不再支持 tree 布局，可与 treeSelect 配合使用 | N
-value | String / Number / Array | undefined | 选中值。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-menu/type.ts) | N
-default-value | String / Number / Array | undefined | 选中值。非受控属性。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-menu/type.ts) | N
+value | String / Number / Array | undefined | 选中值。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-item/type.ts) | N
+default-value | String / Number / Array | undefined | 选中值。非受控属性。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-item/type.ts) | N
 
 ### DropdownItem Events
 

@@ -1,10 +1,10 @@
-<wxs module="this" src="./util.wxs" />
+<wxs module="this" src="./index.wxs" />
 <wxs module="_" src="../common/utils.wxs" />
 
 <view
   wx:if="{{wrapperVisible}}"
   class="{{classPrefix}} {{prefix}}-class"
-  style="{{this.getDropdownItemStyles(top, zIndex, customStyle)}}"
+  style="{{this.getStyles(top, zIndex, customStyle)}}"
 >
   <t-popup
     visible="{{show}}"

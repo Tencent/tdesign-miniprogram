@@ -1,7 +1,7 @@
 import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
-import props from './dropdown-item-props';
-import menuProps from './props';
+import props from './props';
+import menuProps from '../dropdown-menu/props';
 import type { TdDropdownItemProps } from './type';
 import { getRect } from '../common/utils';
 
@@ -42,7 +42,7 @@ export default class DropdownMenuItem extends SuperComponent {
   parent = null;
 
   relations: RelationsOptions = {
-    './dropdown-menu': {
+    '../dropdown-menu/dropdown-menu': {
       type: 'parent',
       linked(target) {
         const { zIndex, duration, showOverlay } = target.properties;
