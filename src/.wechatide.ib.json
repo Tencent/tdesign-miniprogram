@@ -1939,7 +1939,7 @@
         }
       ],
       "tpl": "<t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item>",
-      "path": "./picker/picker-item"
+      "path": "./picker-item/picker-item"
     },
     "t-picker": {
       "key": "t-picker",
@@ -2008,7 +2008,7 @@
       ],
       "tpl": "<t-picker visible=\"{{true}}\" cancelBtn=\"取消\" confirmBtn=\"确认\"><t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item></t-picker>",
       "require": {
-        "t-picker-item": "./picker/picker-item"
+        "t-picker-item": "./picker-item/picker-item"
       },
       "path": "./picker/picker"
     },
