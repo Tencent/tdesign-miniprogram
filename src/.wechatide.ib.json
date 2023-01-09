@@ -1339,7 +1339,7 @@
       ],
       "externalClasses": ["t-class", "t-class-image", "t-class-text", "t-class-description"],
       "tpl": "<t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item>",
-      "path": "./grid/grid-item"
+      "path": "./grid-item/grid-item"
     },
     "t-grid": {
       "key": "t-grid",
@@ -1380,7 +1380,7 @@
       "externalClasses": ["t-class"],
       "tpl": "<t-grid column=\"{{2}}\"><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item></t-grid>",
       "require": {
-        "t-grid-item": "./grid/grid-item"
+        "t-grid-item": "./grid-item/grid-item"
       },
       "path": "./grid/grid"
     },
