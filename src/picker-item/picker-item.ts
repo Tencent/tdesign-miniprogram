@@ -1,6 +1,6 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import props from './picker-item-props';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-picker-item`;
@@ -19,11 +19,8 @@ const range = function (num: number, min: number, max: number) {
 @wxComponent()
 export default class PickerItem extends SuperComponent {
   relations: RelationsOptions = {
-    './picker': {
+    '../picker/picker': {
       type: 'parent',
-      linked(this: PickerItem, parent) {
-        this.parent = parent;
-      },
     },
   };
 
@@ -85,7 +82,7 @@ export default class PickerItem extends SuperComponent {
         this._selectedIndex = index;
         this._selectedValue = options[index]?.value;
         this._selectedLabel = options[index]?.label;
-        this.parent?.triggerColumnChange({
+        this.$parent?.triggerColumnChange({
           index,
           column: this.columnIndex || 0,
         });
