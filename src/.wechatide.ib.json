@@ -3171,7 +3171,7 @@
         }
       ],
       "tpl": "<t-tab-panel label=\"标签页一\" value=\"0\">标签一内容</t-tab-panel>",
-      "path": "./tabs/tab-panel"
+      "path": "./tab-panel/tab-panel"
     },
     "t-tabs": {
       "key": "t-tabs",
@@ -3219,7 +3219,7 @@
       ],
       "tpl": "<t-tabs defaultValue=\"{{0}}\"><t-tab-panel label=\"标签页一\" value=\"0\">标签一内容</t-tab-panel><t-tab-panel label=\"标签页二\" value=\"1\">标签二内容</t-tab-panel></t-tabs>",
       "require": {
-        "t-tab-panel": "./tabs/tab-panel"
+        "t-tab-panel": "./tab-panel/tab-panel"
       },
       "path": "./tabs/tabs"
     },
