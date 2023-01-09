@@ -1,5 +1,5 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
-import props from './tab-panel-props';
+import props from './props';
 import config from '../common/config';
 
 const { prefix } = config;
@@ -8,11 +8,8 @@ const name = `${prefix}-tab-panel`;
 @wxComponent()
 export default class TabPanel extends SuperComponent {
   relations: RelationsOptions = {
-    './tabs': {
+    '../tabs/tabs': {
       type: 'ancestor',
-      linked(parent: any) {
-        this.parent = parent;
-      },
     },
   };
 
@@ -44,9 +41,7 @@ export default class TabPanel extends SuperComponent {
   }
 
   update() {
-    if (this.parent) {
-      this.parent.updateTabs();
-    }
+    this.$parent?.updateTabs();
   }
 
   render(active: Boolean, parent: any) {
