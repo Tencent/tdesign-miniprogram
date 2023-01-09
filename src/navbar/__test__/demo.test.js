@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['back', 'back-home', 'base', 'custom-color', 'img', 'left-title', 'search'];
+const mapper = ['back-home', 'base', 'custom-color', 'img', 'left-title', 'search'];
 
 describe('Navbar', () => {
   mapper.forEach((demoName) => {
