@@ -544,7 +544,7 @@
         }
       ],
       "tpl": "<t-check-tag>check tag</t-check-tag>",
-      "path": "./tag/check-tag"
+      "path": "./check-tag/check-tag"
     },
     "t-checkbox-group": {
       "key": "t-checkbox-group",

@@ -1,6 +1,6 @@
 import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
-import props from './check-tag-props';
+import props from './props';
 import { classNames, calcIcon } from '../common/utils';
 
 const { prefix } = config;

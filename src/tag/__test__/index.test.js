@@ -4,7 +4,7 @@ import path from 'path';
 
 describe('tag', () => {
   const Tag = load(path.resolve(__dirname, `../tag`));
-  const CheckTag = load(path.resolve(__dirname, `../check-tag`));
+  const CheckTag = load(path.resolve(__dirname, `../../check-tag/check-tag`));
 
   describe('tag', () => {
     describe('props', () => {
