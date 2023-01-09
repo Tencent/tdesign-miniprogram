@@ -1,6 +1,8 @@
 Component({
   data: {
-    img: 'https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png',
+    img1: 'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/grid-1.png',
+    img2: 'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/grid-2.png',
+    img3: 'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/grid-3.png',
     border: {
       color: '#f6f6f6',
     },
