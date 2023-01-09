@@ -1,6 +1,6 @@
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import props from './step-item-props';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-steps-item`;
@@ -11,8 +11,8 @@ export default class StepItem extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './steps': {
-      type: 'ancestor',
+    '../steps/steps': {
+      type: 'parent',
     },
   };
 
