@@ -30,7 +30,7 @@ export default class Avatar extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './avatar-group': {
+    '../avatar-group/avatar-group': {
       type: 'ancestor',
       linked(parent) {
         this.parent = parent;

@@ -1,6 +1,6 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import avatarGroupProps from './avatar-group-props';
+import avatarGroupProps from './props';
 
 const { prefix } = config;
 const name = `${prefix}-avatar-group`;
@@ -24,7 +24,7 @@ export default class AvatarGroup extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './avatar': {
+    '../avatar/avatar': {
       type: 'descendant',
     },
   };
