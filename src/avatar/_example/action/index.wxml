@@ -1,28 +1,3 @@
-<view class="demo-avatar">
-  <view class="avatar-example">
-    <t-avatar-group max="5" cascading="left-up" size="medium">
-      <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
-      <t-avatar
-        slot="collapseAvatar"
-        icon="user-add"
-        bindtap="onAddTap"
-        bordered
-        aria-role="button"
-        aria-label="添加"
-      />
-    </t-avatar-group>
-  </view>
-  <view class="avatar-example">
-    <t-avatar-group max="5" size="medium">
-      <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
-      <t-avatar
-        slot="collapseAvatar"
-        icon="user-add"
-        bindtap="onAddTap"
-        bordered
-        aria-role="button"
-        aria-label="添加"
-      />
-    </t-avatar-group>
-  </view>
-</view>
+<t-avatar-group max="5">
+  <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
+</t-avatar-group>

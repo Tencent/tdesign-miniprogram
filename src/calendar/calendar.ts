@@ -122,8 +122,17 @@ export default class Calendar extends SuperComponent {
         months,
       });
     },
+    close(trigger) {
+      if (this.data.autoClose) {
+        this.setData({ visible: false });
+      }
+      this.triggerEvent('close', { trigger });
+    },
+    onVisibleChange() {
+      this.close('overlay');
+    },
     handleClose() {
-      this.setData({ visible: false });
+      this.close('close-btn');
     },
     handleSelect(e) {
       const { date, year, month } = e.currentTarget.dataset;
@@ -148,6 +157,7 @@ export default class Calendar extends SuperComponent {
       const rawValue = this.base.getTrimValue();
       const value = this.toTime(rawValue);
 
+      this.close('confirm-btn');
       this._trigger('confirm', { value });
     },
     toTime(val) {

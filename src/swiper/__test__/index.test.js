@@ -4,6 +4,13 @@ import path from 'path';
 describe('swiper', () => {
   const swiperComplex = load(path.resolve(__dirname, `./base/index`), 't-swiper-complex');
 
+  it('snapshot', () => {
+    const comp = simulate.render(swiperComplex);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    expect(comp.toJSON()).toMatchSnapshot();
+  });
+
   describe('props', () => {
     it(':navigation', async () => {
       const comp = simulate.render(swiperComplex);
@@ -13,9 +20,6 @@ describe('swiper', () => {
       const $swiperItems = comp.querySelectorAll('#swiper1 >>> .t-swiper__item');
       const swiperItemLength = $swiperItems.length;
       expect(swiperItemLength).toBe(comp.data.swiperList.length);
-
-      const $swiperNav = comp.querySelector('#swiper1 >>> #swiperNav >>> .t-swiper-nav');
-      expect($swiperNav).toBeDefined();
 
       expect(comp.querySelector('#swiper1 >>> .t-swiper-nav__fraction').dom.textContent.trim()).toBe(
         `${comp.data.current + 1}/${swiperItemLength}`,

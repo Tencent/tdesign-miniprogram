@@ -22,11 +22,7 @@ isComponent: true
 
 {{ base }}
 
-### 带返回导航栏
-
-{{ back }}
-
-### 带返回，主页按钮导航栏
+### 胶囊样式导航栏
 
 {{ back-home }}
 
@@ -38,7 +34,7 @@ isComponent: true
 
 {{ img }}
 
-### 标题左对齐
+### 组件样式
 
 {{ left-title }}
 

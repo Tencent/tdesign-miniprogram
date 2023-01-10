@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import ImageProps from './props';
 import config from '../common/config';
-import { addUnit } from '../common/utils';
+import { addUnit, getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-image`;
@@ -63,15 +63,11 @@ export default class Image extends SuperComponent {
       if (mode === 'heightFix' && isInCompatible) {
         // 实现heightFix模式，保持高度和宽高比，设置对应的宽度
         const { height: picHeight, width: picWidth } = e.detail;
-        const query = this.createSelectorQuery();
-        query
-          .select('#image')
-          .boundingClientRect((res) => {
-            const { height } = res;
-            const resultWidth = ((height / picHeight) * picWidth).toFixed(2);
-            this.setData({ innerStyle: `height: ${addUnit(height)}; width: ${resultWidth}px;` });
-          })
-          .exec();
+        getRect(this, '#image').then((rect) => {
+          const { height } = rect;
+          const resultWidth = ((height / picHeight) * picWidth).toFixed(2);
+          this.setData({ innerStyle: `height: ${addUnit(height)}; width: ${resultWidth}px;` });
+        });
       }
       this.setData({
         isLoading: false,

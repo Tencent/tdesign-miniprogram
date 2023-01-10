@@ -1,1 +1,7 @@
-<t-textarea label="设置最大字符个数" placeholder="请输入文字" maxlength="200" indicator />
+<t-textarea
+  label="标签文字"
+  placeholder="设置最大字符个数"
+  maxlength="200"
+  disableDefaultPadding="{{true}}"
+  indicator
+/>

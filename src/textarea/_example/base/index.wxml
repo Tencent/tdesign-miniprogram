@@ -1,1 +1,1 @@
-<t-textarea placeholder="请输入文字" />
+<t-textarea placeholder="请输入文字" disableDefaultPadding="{{true}}" />

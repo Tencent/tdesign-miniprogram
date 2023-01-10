@@ -1,9 +1,9 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "0.33.0",
+  "version": "0.34.0",
   "description": "tdesign-miniprogram",
-  "title": "tdesign-miniprogram",
+  "title": "tdesign-ßminiprogram",
   "main": "miniprogram_dist/index.js",
   "miniprogram": "miniprogram_dist",
   "keywords": [

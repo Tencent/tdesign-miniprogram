@@ -14,11 +14,6 @@ const props: TdSwiperProps = {
   /** 当前轮播在哪一项（下标） */
   current: {
     type: Number,
-    value: null,
-  },
-  /** 当前轮播在哪一项（下标），非受控属性 */
-  defaultCurrent: {
-    type: Number,
     value: 0,
   },
   /** 自定义组件样式 */
@@ -49,7 +44,11 @@ const props: TdSwiperProps = {
   /** 轮播的高度；默认单位 `px` */
   height: {
     type: null,
-    value: '192px',
+    value: 192,
+  },
+  /** 透传至 Image 组件 */
+  imageProps: {
+    type: Object,
   },
   /** 轮播间隔时间 */
   interval: {
@@ -65,9 +64,10 @@ const props: TdSwiperProps = {
     type: Boolean,
     value: true,
   },
-  /** 导航器全部配置 */
+  /** 导航器全部配置，true 的话使用默认配置 */
   navigation: {
-    type: Object,
+    type: null,
+    value: true,
   },
   /** 后边距，可用于露出后一项的一小部分。默认单位 `px` */
   nextMargin: {

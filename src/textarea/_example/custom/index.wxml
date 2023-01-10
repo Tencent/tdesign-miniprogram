@@ -1,4 +1,4 @@
-<view class="demo-textarea">
-  <text class="demo-textarea--label">标签文字</text>
-  <t-textarea placeholder="请输入文字" bordered maxlength="100" indicator />
+<view class="textarea-example">
+  <text class="textarea-example__label">标签文字</text>
+  <t-textarea placeholder="请输入文字" bordered maxlength="100" disableDefaultPadding="{{true}}" indicator />
 </view>

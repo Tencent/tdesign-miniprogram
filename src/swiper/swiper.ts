@@ -5,12 +5,6 @@ import props from './props';
 const { prefix } = config;
 const name = `${prefix}-swiper`;
 
-const defaultNavigation = {
-  type: 'dots',
-  minShowNum: 2,
-  showControls: false,
-};
-
 @wxComponent()
 export default class Swiper extends SuperComponent {
   externalClasses = [
@@ -31,55 +25,46 @@ export default class Swiper extends SuperComponent {
     current(v) {
       this.updateNav(v);
     },
-    navigation(val) {
-      this.setData({
-        _navigation: { ...defaultNavigation, ...val },
-      });
-    },
   };
 
   $nav = null;
 
   relations: RelationsOptions = {
-    './swiper-nav': {
+    '../swiper-nav/swiper-nav': {
       type: 'child',
     },
   };
 
   data = {
-    _navigation: null,
     prefix,
     classPrefix: name,
   };
 
   lifetimes = {
     ready() {
-      this.initNav();
-      this.updateNav(this.data.current);
+      this.updateNav();
     },
   };
 
   methods = {
-    initNav() {
-      const { _navigation } = this.data;
-      if (_navigation) {
-        // 启用内部导航器
-        this.$nav = this.selectComponent('#swiperNav');
-      } else {
-        // 启用插槽嵌入的导航器
-        this.$nav = this.getRelationNodes('./swiper-nav')?.[0];
-      }
-    },
+    updateNav() {
+      if (this.data.navigation) return;
+      const $nav = this.getRelationNodes('./swiper-nav')?.[0];
+      if (!$nav) return;
+      const { current, direction, paginationPosition, list } = this.properties;
 
-    updateNav(index) {
-      if (!this.$nav) return;
-      const { direction, paginationPosition, list } = this.properties;
-      this.$nav?.onChange({
-        index,
+      $nav.setData({
+        current,
         total: list.length,
         direction,
         paginationPosition,
       });
+    },
+
+    onTap(e) {
+      const { index } = e.currentTarget.dataset;
+
+      this.triggerEvent('click', { index });
     },
 
     onChange(e) {

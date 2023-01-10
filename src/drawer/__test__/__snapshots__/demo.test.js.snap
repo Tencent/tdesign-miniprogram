@@ -2,19 +2,15 @@
 
 exports[`Drawer Drawer base demo works fine 1`] = `
 <base>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerBase"
-    >
-      基础抽屉
-    </t-button>
-  </wx-view>
+    基础抽屉
+  </t-button>
   <t-drawer
     items=""
     placement="left"
@@ -27,19 +23,15 @@ exports[`Drawer Drawer base demo works fine 1`] = `
 
 exports[`Drawer Drawer footer demo works fine 1`] = `
 <footer>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerBase"
-    >
-      带底部插槽
-    </t-button>
-  </wx-view>
+    带底部插槽
+  </t-button>
   <t-drawer
     items="{{
       Array [
@@ -103,177 +95,17 @@ exports[`Drawer Drawer footer demo works fine 1`] = `
 </footer>
 `;
 
-exports[`Drawer Drawer footer demo works fine 1`] = `
-<footer>
-  <wx-view
-    class="box"
+exports[`Drawer Drawer icon-drawer demo works fine 1`] = `
+<icon-drawer>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerIcon"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerBase"
-    >
-      带底部插槽
-    </t-button>
-  </wx-view>
-  <t-drawer
-    items="{{
-      Array [
-        Object {
-          "title": "菜单一",
-        },
-        Object {
-          "title": "菜单二",
-        },
-        Object {
-          "title": "菜单三",
-        },
-        Object {
-          "title": "菜单四",
-        },
-        Object {
-          "title": "菜单五",
-        },
-        Object {
-          "title": "菜单六",
-        },
-        Object {
-          "title": "菜单七",
-        },
-        Object {
-          "title": "菜单八",
-        },
-        Object {
-          "title": "菜单四",
-        },
-        Object {
-          "title": "菜单五",
-        },
-        Object {
-          "title": "菜单六",
-        },
-        Object {
-          "title": "菜单七",
-        },
-        Object {
-          "title": "菜单八",
-        },
-      ]
-    }}"
-    placement="left"
-    title="标题"
-    visible="{{true}}"
-    bind:item-click="itemClick"
-    bind:overlay-click="overlayClick"
-  >
-    <t-button
-      block="{{true}}"
-      class="button-host"
-      size="large="
-      slot="footer"
-      variant="outline"
-    >
-      操作
-    </t-button>
-  </t-drawer>
-</footer>
-`;
-
-exports[`Drawer Drawer footer demo works fine 1`] = `
-<footer>
-  <wx-view
-    class="box"
-  >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerBase"
-    >
-      带底部插槽
-    </t-button>
-  </wx-view>
-  <t-drawer
-    items="{{
-      Array [
-        Object {
-          "title": "菜单一",
-        },
-        Object {
-          "title": "菜单二",
-        },
-        Object {
-          "title": "菜单三",
-        },
-        Object {
-          "title": "菜单四",
-        },
-        Object {
-          "title": "菜单五",
-        },
-        Object {
-          "title": "菜单六",
-        },
-        Object {
-          "title": "菜单七",
-        },
-        Object {
-          "title": "菜单八",
-        },
-        Object {
-          "title": "菜单四",
-        },
-        Object {
-          "title": "菜单五",
-        },
-        Object {
-          "title": "菜单六",
-        },
-        Object {
-          "title": "菜单七",
-        },
-        Object {
-          "title": "菜单八",
-        },
-      ]
-    }}"
-    placement="left"
-    title="标题"
-    visible="{{true}}"
-    bind:item-click="itemClick"
-    bind:overlay-click="overlayClick"
-  >
-    <t-button
-      block="{{true}}"
-      class="button-host"
-      size="large="
-      slot="footer"
-      variant="outline"
-    >
-      操作
-    </t-button>
-  </t-drawer>
-</footer>
-`;
-
-exports[`Drawer Drawer icon demo works fine 1`] = `
-<wx-icon>
-  <wx-view
-    class="box"
-  >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerIcon"
-    >
-      带图标抽屉
-    </t-button>
-  </wx-view>
+    带图标抽屉
+  </t-button>
   <t-drawer
     items=""
     placement="left"
@@ -286,19 +118,15 @@ exports[`Drawer Drawer icon demo works fine 1`] = `
 
 exports[`Drawer Drawer title demo works fine 1`] = `
 <title>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerBase"
-    >
-      带标题抽屉
-    </t-button>
-  </wx-view>
+    带标题抽屉
+  </t-button>
   <t-drawer
     items=""
     placement="left"

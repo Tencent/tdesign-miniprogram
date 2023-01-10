@@ -1,0 +1,3 @@
+.custom-theme {
+  --td-input-vertical-padding: 24rpx;
+}

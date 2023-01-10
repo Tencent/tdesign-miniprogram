@@ -2,199 +2,191 @@
 
 exports[`Dialog Dialog base demo works fine 1`] = `
 <base>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    data-key="showTextAndTitle"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
   >
-    <t-button
-      block="{{true}}"
-      data-key="showTextAndTitle"
-      size="large"
-      tClass="wrapper"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
+    
+  反馈类-基础
+
+  </t-button>
+  <t-dialog
+    confirmBtn="{{
+      Object {
+        "content": "知道了",
+        "variant": "base",
+      }
+    }}"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    title="对话框标题"
+    visible="{{false}}"
+    bind:confirm="closeDialog"
+  />
+  <t-button
+    block="{{true}}"
+    data-key="showContentOnly"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  反馈类-无标题
+
+  </t-button>
+  <t-dialog
+    confirmBtn="{{
+      Object {
+        "content": "知道了",
+        "variant": "base",
+      }
+    }}"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    visible=""
+    bind:confirm="closeDialog"
+  />
+  <t-button
+    block="{{true}}"
+    data-key="showMultiTextAndTitle"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  反馈类-内容超长
+
+  </t-button>
+  <t-dialog
+    confirmBtn="{{
+      Object {
+        "content": "知道了",
+        "variant": "base",
+      }
+    }}"
+    title="对话框标题"
+    visible="{{false}}"
+    bind:confirm="closeDialog"
+  >
+    <wx-scroll-view
+      class="long-content"
+      scrollY="{{true}}"
+      slot="content"
     >
-      反馈类-基础
-    </t-button>
-    <t-dialog
-      confirmBtn="{{
-        Object {
-          "content": "知道了",
-          "variant": "base",
-        }
-      }}"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      title="对话框标题"
-      visible="{{false}}"
-      bind:confirm="closeDialog"
-    />
-    <t-button
-      block="{{true}}"
-      data-key="showContentOnly"
-      size="large"
-      tClass="wrapper"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      反馈类-无标题
-    </t-button>
-    <t-dialog
-      confirmBtn="{{
-        Object {
-          "content": "知道了",
-          "variant": "base",
-        }
-      }}"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      visible=""
-      bind:confirm="closeDialog"
-    />
-    <t-button
-      block="{{true}}"
-      data-key="showMultiTextAndTitle"
-      size="large"
-      tClass="wrapper"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      反馈类-内容超长
-    </t-button>
-    <t-dialog
-      confirmBtn="{{
-        Object {
-          "content": "知道了",
-          "variant": "base",
-        }
-      }}"
-      title="对话框标题"
-      visible="{{false}}"
-      bind:confirm="closeDialog"
-    >
-      <wx-scroll-view
-        class="long-content"
-        scrollY="{{true}}"
-        slot="content"
+      <wx-view
+        class="content-container"
       >
-        <wx-view
-          class="content-container"
-        >
-          这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
         这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-        这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-      
-        </wx-view>
-      </wx-scroll-view>
-    </t-dialog>
-  </wx-view>
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+    
+      </wx-view>
+    </wx-scroll-view>
+  </t-dialog>
 </base>
 `;
 
 exports[`Dialog Dialog button demo works fine 1`] = `
 <wx-button>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    data-type="hasCancelBtn"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
   >
-    <t-button
-      block="{{true}}"
-      data-type="hasCancelBtn"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      开放能力 按钮
-    </t-button>
-    <t-dialog
-      id="t-dialog"
-    />
-  </wx-view>
+    
+  开放能力按钮
+
+  </t-button>
+  <t-dialog
+    id="t-dialog"
+  />
 </wx-button>
 `;
 
 exports[`Dialog Dialog command demo works fine 1`] = `
 <command>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      命令行操作
-    </t-button>
-    <t-dialog
-      id="t-dialog"
-    />
-  </wx-view>
+     命令行操作 
+  </t-button>
+  <t-dialog
+    id="t-dialog"
+  />
 </command>
 `;
 
 exports[`Dialog Dialog confirm demo works fine 1`] = `
 <confirm>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    data-key="showConfirm"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
   >
-    <t-button
-      block="{{true}}"
-      data-key="showConfirm"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      确认类-带标题
-    </t-button>
-    <t-dialog
-      cancelBtn="取消"
-      confirmBtn="{{
-        Object {
-          "content": "确定",
-          "variant": "base",
-        }
-      }}"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      title="对话框标题"
-      visible="{{false}}"
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    />
-    <t-button
-      block="{{true}}"
-      data-key="showWarnConfirm"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      确认类-无标题
-    </t-button>
-    <t-dialog
-      cancelBtn="取消"
-      confirmBtn="{{
-        Object {
-          "content": "警示操作",
-          "theme": "danger",
-          "variant": "base",
-        }
-      }}"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      visible="{{false}}"
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    />
-  </wx-view>
+    
+  确认类-带标题
+
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "确定",
+        "variant": "base",
+      }
+    }}"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    title="对话框标题"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  />
+  <t-button
+    block="{{true}}"
+    data-key="showWarnConfirm"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  确认类-无标题
+
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "警示操作",
+        "theme": "danger",
+        "variant": "base",
+      }
+    }}"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  />
 </confirm>
 `;
 
@@ -207,14 +199,15 @@ exports[`Dialog Dialog status demo works fine 1`] = `
   </wx-view>
   <t-button
     block="{{true}}"
-    class="external-class"
     data-key="showConfirm"
     size="large"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
   >
-    文字按钮
+    
+  文字按钮
+
   </t-button>
   <t-dialog
     cancelBtn="取消"
@@ -232,14 +225,15 @@ exports[`Dialog Dialog status demo works fine 1`] = `
   </wx-view>
   <t-button
     block="{{true}}"
-    class="external-class"
     data-key="showWarnConfirm"
     size="large"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
   >
-    水平基础按钮
+    
+  水平基础按钮
+
   </t-button>
   <t-dialog
     cancelBtn="取消"
@@ -261,14 +255,15 @@ exports[`Dialog Dialog status demo works fine 1`] = `
   </wx-view>
   <t-button
     block="{{true}}"
-    class="external-class"
     data-key="showTooLongBtnContent"
     size="large"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
   >
-    垂直基础按钮
+    
+  垂直基础按钮
+
   </t-button>
   <t-dialog
     buttonLayout="vertical"
@@ -292,14 +287,15 @@ exports[`Dialog Dialog status demo works fine 1`] = `
   </wx-view>
   <t-button
     block="{{true}}"
-    class="external-class"
     data-key="showMultiBtn"
     size="large"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
   >
-    多按钮
+    
+  多按钮
+
   </t-button>
   <t-dialog
     actions="{{
@@ -331,14 +327,15 @@ exports[`Dialog Dialog status demo works fine 1`] = `
   </wx-view>
   <t-button
     block="{{true}}"
-    class="external-class"
     data-key="showCloseBtn"
     size="large"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
   >
-    带关闭按钮
+    
+  带关闭按钮
+
   </t-button>
   <t-dialog
     cancelBtn="取消"
@@ -360,132 +357,120 @@ exports[`Dialog Dialog status demo works fine 1`] = `
 
 exports[`Dialog Dialog with-image demo works fine 1`] = `
 <with-image>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    data-key="imageOnTop"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
   >
-    <t-button
-      block="{{true}}"
-      data-key="imageOnTop"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      图片置顶
-    </t-button>
-    <t-dialog
-      cancelBtn="取消"
-      confirmBtn="{{
-        Object {
-          "content": "确定",
-          "variant": "base",
-        }
-      }}"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      title="带输入框对话框"
-      visible=""
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    >
-      <t-image
-        slot="top"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
-        tClass="dialog-image"
-      />
-    </t-dialog>
-    <t-button
-      block="{{true}}"
-      data-key="imageOnMiddle"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      图片居中
-    </t-button>
-    <t-dialog
-      cancelBtn="取消"
-      confirmBtn="{{
-        Object {
-          "content": "确定",
-          "variant": "base",
-        }
-      }}"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      title="带输入框对话框"
-      visible=""
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    >
-      <t-image
-        class="image-host"
-        slot="middle"
-        src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
-        tClass="dialog-image"
-      />
-    </t-dialog>
-  </wx-view>
+    图片置顶
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "确定",
+        "variant": "base",
+      }
+    }}"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    title="带输入框对话框"
+    visible=""
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  >
+    <t-image
+      slot="top"
+      src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
+      tClass="dialog-image"
+    />
+  </t-dialog>
+  <t-button
+    block="{{true}}"
+    data-key="imageOnMiddle"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    图片居中
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "确定",
+        "variant": "base",
+      }
+    }}"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    title="带输入框对话框"
+    visible=""
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  >
+    <t-image
+      class="image-host"
+      slot="middle"
+      src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
+      tClass="dialog-image"
+    />
+  </t-dialog>
 </with-image>
 `;
 
 exports[`Dialog Dialog with-input demo works fine 1`] = `
 <with-input>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    data-key="showWithInput"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
   >
-    <t-button
-      block="{{true}}"
-      data-key="showWithInput"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      输入类-无描述
-    </t-button>
-    <t-dialog
-      cancelBtn="取消"
-      confirmBtn="确定"
-      title="带输入框对话框"
-      visible="{{false}}"
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    >
-      <wx-input
-        placeholder="输入文案"
-        placeholderClass="placeholder"
-        slot="content"
-      />
-    </t-dialog>
-    <t-button
-      block="{{true}}"
-      data-key="showTextAndTitleWithInput"
-      size="large"
-      tClass="external-class"
-      theme="primary"
-      variant="outline"
-      bind:tap="showDialog"
-    >
-      输入类-带描述
-    </t-button>
-    <t-dialog
-      cancelBtn="取消"
-      confirmBtn="确定"
-      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-      title="带输入框对话框"
-      visible="{{false}}"
-      bind:cancel="closeDialog"
-      bind:confirm="closeDialog"
-    >
-      <wx-input
-        placeholder="输入文案"
-        placeholderClass="placeholder"
-        slot="content"
-      />
-    </t-dialog>
-  </wx-view>
+    输入类-无描述
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="确定"
+    title="带输入框对话框"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  >
+    <wx-input
+      placeholder="输入文案"
+      placeholderClass="placeholder"
+      slot="content"
+    />
+  </t-dialog>
+  <t-button
+    block="{{true}}"
+    data-key="showTextAndTitleWithInput"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    输入类-带描述
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="确定"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    title="带输入框对话框"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  >
+    <wx-input
+      placeholder="输入文案"
+      placeholderClass="placeholder"
+      slot="content"
+    />
+  </t-dialog>
 </with-input>
 `;

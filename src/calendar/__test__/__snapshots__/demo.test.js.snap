@@ -4,6 +4,7 @@ exports[`Calendar Calendar base demo works fine 1`] = `
 <base>
   <t-calendar
     visible="{{false}}"
+    bind:close="onClose"
     bind:confirm="handleConfirm"
   />
   <t-cell

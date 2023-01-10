@@ -5,6 +5,6 @@
     <view class="{{classPrefix}}__slot">
       <slot />
     </view>
-    <view class="{{classPrefix}}__header"> {{index}} </view>
+    <view class="{{_.cls(classPrefix + '__header', [['active', active]])}}"> {{index}} </view>
   </view>
 </view>

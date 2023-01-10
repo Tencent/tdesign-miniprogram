@@ -4,7 +4,7 @@ exports[`calendar :base 1`] = `
 <main>
   <t-calendar>
     <t-popup
-      bind:visible-change="handleClose"
+      bind:visible-change="onVisibleChange"
     >
       <wx-view
         ariaModal="{{true}}"
@@ -752,7 +752,7 @@ exports[`calendar :base 1`] = `
                 <wx-button
                   appParameter=""
                   ariaLabel=""
-                  class="t-button t-class t-button--primary t-button--size- t-button-- t-is-block t-button-- t-class"
+                  class="t-button t-class t-button--primary t-button--size-medium t-button--rectangle t-button--base t-button--block"
                   data-custom="{{null}}"
                   formType=""
                   hoverClass="button-hover"

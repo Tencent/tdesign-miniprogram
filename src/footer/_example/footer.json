@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "footer 页脚",
+  "navigationBarTitleText": "Footer",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",

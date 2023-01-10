@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "t-grid": "../grid",
-    "t-grid-item": "../grid-item"
+    "t-grid-item": "../../grid-item/grid-item"
   }
 }

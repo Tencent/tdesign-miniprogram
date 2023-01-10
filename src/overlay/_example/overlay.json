@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Overlay 遮罩层",
+  "navigationBarTitleText": "Overlay",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base"

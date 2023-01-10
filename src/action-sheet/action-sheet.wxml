@@ -1,12 +1,14 @@
 <wxs src="./action-sheet.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
-<import src="./template/action-sheet-list.wxml" />
-<import src="./template/action-sheet-grid.wxml" />
+<import src="./template/list.wxml" />
+<import src="./template/grid.wxml" />
 
 <view id="{{classPrefix}}" style="{{customStyle}}" class="{{classPrefix}} {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
     <view class="{{classPrefix}}__content {{prefix}}-class-content" tabindex="0">
-      <view wx:if="{{description}}" tabindex="0" class="{{_.cls(classPrefix + '__description', [align])}}">{{description}}</view>
+      <view wx:if="{{description}}" tabindex="0" class="{{_.cls(classPrefix + '__description', [align])}}"
+        >{{description}}</view
+      >
       <block wx:if="{{gridThemeItems.length}}">
         <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
       </block>

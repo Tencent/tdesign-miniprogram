@@ -47,19 +47,18 @@ export default class Button extends SuperComponent {
       const classList = [
         name,
         `${prefix}-class`,
-        `${name}--${this.data.theme}`,
-        `${name}--size-${this.data.size.slice(0, 1)}`,
+        `${name}--${this.data.theme || 'default'}`,
+        `${name}--size-${this.data.size || 'medium'}`,
+        `${name}--${this.data.shape || 'rectangle'}`,
+        `${name}--${this.data.variant || 'base'}`,
       ];
 
-      classList.push(`${name}--${this.data.shape}`);
-
       if (this.data.block) {
-        classList.push(`${prefix}-is-block`);
+        classList.push(`${name}--block`);
       }
       if (this.data.disabled) {
-        classList.push(`${prefix}-is-disabled`);
+        classList.push(`${name}--disabled`);
       }
-      classList.push(`${name}--${this.data.variant}`);
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);
       }

@@ -4,6 +4,8 @@ exports[`Textarea Textarea autosize demo works fine 1`] = `
 <autosize>
   <t-textarea
     autosize="{{true}}"
+    disableDefaultPadding="{{true}}"
+    label="标签文字"
     placeholder="请输入文字"
   />
 </autosize>
@@ -12,23 +14,42 @@ exports[`Textarea Textarea autosize demo works fine 1`] = `
 exports[`Textarea Textarea base demo works fine 1`] = `
 <base>
   <t-textarea
+    disableDefaultPadding="{{true}}"
     placeholder="请输入文字"
   />
 </base>
 `;
 
+exports[`Textarea Textarea card demo works fine 1`] = `
+<card>
+  <wx-view
+    class="textarea-example"
+  >
+    <t-textarea
+      customStyle="border-radius: 18rpx;"
+      disableDefaultPadding="{{true}}"
+      indicator="{{true}}"
+      label="标签文字"
+      maxlength="500"
+      placeholder="请输入文字"
+    />
+  </wx-view>
+</card>
+`;
+
 exports[`Textarea Textarea custom demo works fine 1`] = `
 <custom>
   <wx-view
-    class="demo-textarea"
+    class="textarea-example"
   >
     <wx-text
-      class="demo-textarea--label"
+      class="textarea-example__label"
     >
       标签文字
     </wx-text>
     <t-textarea
       bordered="{{true}}"
+      disableDefaultPadding="{{true}}"
       indicator="{{true}}"
       maxlength="100"
       placeholder="请输入文字"
@@ -41,6 +62,8 @@ exports[`Textarea Textarea disabled demo works fine 1`] = `
 <disabled>
   <t-textarea
     disabled="{{true}}"
+    disableDefaultPadding="{{true}}"
+    label="标签文字"
     placeholder="请输入文字"
     value="不可编辑文字"
   />
@@ -50,6 +73,7 @@ exports[`Textarea Textarea disabled demo works fine 1`] = `
 exports[`Textarea Textarea label demo works fine 1`] = `
 <wx-label>
   <t-textarea
+    disableDefaultPadding="{{true}}"
     label="标签文字"
     placeholder="请输入文字"
   />
@@ -59,10 +83,11 @@ exports[`Textarea Textarea label demo works fine 1`] = `
 exports[`Textarea Textarea maxcharacter demo works fine 1`] = `
 <maxcharacter>
   <t-textarea
+    disableDefaultPadding="{{true}}"
     indicator="{{true}}"
-    label="设置最大字符个数，一个汉字表示两个字符"
+    label="标签文字"
     maxcharacter="200"
-    placeholder="请输入文字"
+    placeholder="设置最大字符个数，一个汉字表示两个字符"
   />
 </maxcharacter>
 `;
@@ -70,10 +95,11 @@ exports[`Textarea Textarea maxcharacter demo works fine 1`] = `
 exports[`Textarea Textarea maxlength demo works fine 1`] = `
 <maxlength>
   <t-textarea
+    disableDefaultPadding="{{true}}"
     indicator="{{true}}"
-    label="设置最大字符个数"
+    label="标签文字"
     maxlength="200"
-    placeholder="请输入文字"
+    placeholder="设置最大字符个数"
   />
 </maxlength>
 `;

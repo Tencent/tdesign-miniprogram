@@ -22,6 +22,7 @@ exports[`Swiper Swiper base demo works fine 1`] = `
       }
     }}"
     bind:change="onChange"
+    bind:click="onTap"
   />
 </base>
 `;
@@ -35,6 +36,11 @@ exports[`Swiper Swiper cards demo works fine 1`] = `
       autoplay="{{false}}"
       current="{{0}}"
       duration="{{500}}"
+      imageProps="{{
+        Object {
+          "shape": "round",
+        }
+      }}"
       interval="{{5000}}"
       list="{{
         Array [
@@ -64,6 +70,11 @@ exports[`Swiper Swiper cards demo works fine 1`] = `
       class="scale-card-theme"
       current="{{0}}"
       duration="{{500}}"
+      imageProps="{{
+        Object {
+          "shape": "round",
+        }
+      }}"
       interval="{{5000}}"
       list="{{
         Array [
@@ -106,12 +117,12 @@ exports[`Swiper Swiper custom demo works fine 1`] = `
         "https://tdesign.gtimg.com/site/swiper/05.png",
       ]
     }}"
-  >
-    <t-swiper-nav
-      slot="nav"
-      type="dots-bar"
-    />
-  </t-swiper>
+    navigation="{{
+      Object {
+        "type": "dots-bar",
+      }
+    }}"
+  />
 </custom>
 `;
 
