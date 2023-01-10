@@ -82,5 +82,7 @@ export default class Toast extends SuperComponent {
       }
       this.triggerEvent('destory');
     },
+
+    loop() {},
   };
 }

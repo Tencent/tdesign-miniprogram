@@ -1,7 +1,7 @@
 <view class="tr">
   <view class="col">
     <view class="text">加载默认提示</view>
-    <t-image id="loading-img" width="72" height="72" />
+    <t-image id="loading-img" shape="round" width="72" height="72" />
   </view>
   <view class="col">
     <view class="text">加载自定义提示</view>
@@ -14,7 +14,7 @@
 <view class="tr">
   <view class="col">
     <view class="text">失败默认提示</view>
-    <t-image id="loading-img" src="" width="72" height="72" />
+    <t-image id="loading-img" shape="round" src="" width="72" height="72" />
   </view>
   <view class="col">
     <view class="text">失败自定义提示</view>

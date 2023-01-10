@@ -2,6 +2,6 @@ page {
   background-color: #fff;
 }
 
-.wrapper {
-  padding: 0 32rpx;
+.t-button {
+  margin-top: 32rpx;
 }

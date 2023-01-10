@@ -64,7 +64,7 @@ const display = {
     },
     {
       name: 'Sticky',
-      label: '吸顶容器',
+      label: '吸顶',
     },
     {
       name: 'Swiper',

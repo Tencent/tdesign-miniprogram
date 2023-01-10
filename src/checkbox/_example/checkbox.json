@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Checkbox 多选框",
+  "navigationBarTitleText": "Checkbox",
   "usingComponents": {
     "base": "./base",
     "right": "./right",

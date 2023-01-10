@@ -16,7 +16,7 @@ export default class Picker extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './picker-item': {
+    '../picker-item/picker-item': {
       type: 'child',
       linked(this: Picker) {
         this.updateChildren();

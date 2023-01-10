@@ -4,6 +4,13 @@ import path from 'path';
 describe('swiper', () => {
   const swiperComplex = load(path.resolve(__dirname, `./base/index`), 't-swiper-complex');
 
+  it('snapshot', () => {
+    const comp = simulate.render(swiperComplex);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    expect(comp.toJSON()).toMatchSnapshot();
+  });
+
   describe('props', () => {
     it(':navigation', async () => {
       const comp = simulate.render(swiperComplex);

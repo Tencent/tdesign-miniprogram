@@ -30,7 +30,7 @@ export default class Swiper extends SuperComponent {
   $nav = null;
 
   relations: RelationsOptions = {
-    './swiper-nav': {
+    '../swiper-nav/swiper-nav': {
       type: 'child',
     },
   };
@@ -59,6 +59,12 @@ export default class Swiper extends SuperComponent {
         direction,
         paginationPosition,
       });
+    },
+
+    onTap(e) {
+      const { index } = e.currentTarget.dataset;
+
+      this.triggerEvent('click', { index });
     },
 
     onChange(e) {

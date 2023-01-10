@@ -36,7 +36,7 @@ describe('Avatar & Avatar Groups', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const $avatar = comp.querySelector('.text-avatar >>> .t-avatar');
-      expect($avatar.dom.getAttribute('class').includes('t-size-m')).toBeTruthy();
+      expect($avatar.dom.getAttribute('class').includes('t-avatar--medium')).toBeTruthy();
 
       const $text = comp.querySelector('.text-avatar >>> .t-avatar__text');
       expect($text.dom.textContent).toBe('A');
@@ -66,7 +66,7 @@ describe('Avatar & Avatar Groups', () => {
 
       const $group = comp.querySelectorAll('.avatar-group >>> .t-avatar');
       $group.forEach((v) => {
-        expect(v.dom.getAttribute('class').includes('t-size-s')).toBeTruthy();
+        expect(v.dom.getAttribute('class').includes('t-avatar--medium')).toBeTruthy();
       });
     });
 
@@ -77,7 +77,7 @@ describe('Avatar & Avatar Groups', () => {
       const $group = comp.querySelectorAll('.avatar-group-size >>> .t-avatar');
       $group.forEach((v) => {
         if (v.querySelector('.t-image')) {
-          expect(v.dom.getAttribute('class').includes('t-size-l')).toBeTruthy();
+          expect(v.dom.getAttribute('class').includes('t-avatar--large')).toBeTruthy();
         }
       });
     });

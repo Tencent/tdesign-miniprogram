@@ -46,6 +46,10 @@ const props: TdSwiperProps = {
     type: null,
     value: 192,
   },
+  /** 透传至 Image 组件 */
+  imageProps: {
+    type: Object,
+  },
   /** 轮播间隔时间 */
   interval: {
     type: Number,

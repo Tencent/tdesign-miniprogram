@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "Fab 悬浮按钮",
+  "navigationBarTitleText": "Fab",
+  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
     "advance": "./advance"

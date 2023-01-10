@@ -1,6 +1,8 @@
 <wxs src="./index.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
 
+<import src="../common/template/image.wxml" />
+
 <view class="{{prefix}}-class {{classPrefix}}" style="{{customStyle}}">
   <swiper
     class="{{classPrefix}}-host"
@@ -22,12 +24,12 @@
       wx:for="{{list}}"
       wx:key="index"
       class="{{_.cls(classPrefix + '__item', [['preview', this.isPrev(current, index, list)], ['next', this.isNext(current, index, list)]])}}"
+      data-index="{{index}}"
+      bind:tap="onTap"
     >
-      <t-image
-        class="{{classPrefix}}__image-host"
-        t-class="{{prefix}}-class-image {{this.isPrev(current, index, list) ? (prefix + '-class-prev-image') : ''}} {{this.isNext(current, index, list) ? (prefix + '-class-next-image') : ''}} {{classPrefix}}__image"
-        custom-style="height: {{_.addUnit(height)}}"
-        src="{{item}}"
+      <template
+        is="image"
+        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), customStyle: 'height: ' + _.addUnit(height), src: item, ...imageProps }}"
       />
     </swiper-item>
   </swiper>

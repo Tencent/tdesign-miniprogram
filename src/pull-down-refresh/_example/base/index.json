@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "t-back-top": "tdesign-miniprogram/back-top/back-top",
     "t-pull-down-refresh": "tdesign-miniprogram/pull-down-refresh/pull-down-refresh"
   }
 }

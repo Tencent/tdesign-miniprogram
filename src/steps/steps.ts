@@ -8,8 +8,8 @@ const name = `${prefix}-steps`;
 @wxComponent()
 export default class Steps extends SuperComponent {
   relations: RelationsOptions = {
-    './step-item': {
-      type: 'descendant',
+    '../step-item/step-item': {
+      type: 'child',
       linked(child) {
         this.updateChildren();
 

@@ -8,7 +8,7 @@ const classPrefix = `${prefix}-tab-bar`;
 @wxComponent()
 export default class Tabbar extends SuperComponent {
   relations: RelationsOptions = {
-    './tab-bar-item': {
+    '../tab-bar-item/tab-bar-item': {
       type: 'descendant',
     },
   };

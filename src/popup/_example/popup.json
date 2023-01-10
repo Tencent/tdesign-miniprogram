@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Popup 弹窗",
+  "navigationBarTitleText": "Popup",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base/index",

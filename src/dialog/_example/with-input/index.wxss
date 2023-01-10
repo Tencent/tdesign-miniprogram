@@ -1,12 +1,3 @@
-.box {
-  margin: 32rpx;
-}
-
-.external-class {
-  margin: 0 0 32rpx 0;
-  height: 96rpx;
-}
-
 .placeholder {
   color: rgba(0, 0, 0, 0.26);
   line-height: 96rpx;
