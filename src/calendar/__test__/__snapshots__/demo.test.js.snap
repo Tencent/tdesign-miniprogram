@@ -21,7 +21,6 @@ exports[`Calendar Calendar custom-button demo works fine 1`] = `
   <t-calendar
     confirmBtn="{{null}}"
     minDate="{{1641052800000}}"
-    type="range"
     visible="{{false}}"
     bind:change="onChange"
   />

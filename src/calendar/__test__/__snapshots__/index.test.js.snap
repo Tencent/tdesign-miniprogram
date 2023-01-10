@@ -780,7 +780,7 @@ exports[`calendar :base 1`] = `
                     class="t-button__content"
                   >
                     
-                    确认
+                    确定
                   </wx-view>
                 </wx-button>
               </t-button>
