@@ -99,7 +99,9 @@
     }
   ],
   "usingComponents": {
-    "t-demo": "./components/demo-block/index"
+    "t-demo": "./components/demo-block/index",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-icon": "tdesign-miniprogram/icon/icon"
   },
   "window": {
     "backgroundTextStyle": "light",
