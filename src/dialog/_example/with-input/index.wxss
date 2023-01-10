@@ -1,3 +1,7 @@
+.wrapper {
+  margin-bottom: 32rpx;
+}
+
 .placeholder {
   color: rgba(0, 0, 0, 0.26);
   line-height: 96rpx;

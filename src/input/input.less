@@ -1,6 +1,5 @@
 @import '../common/style/index.less';
 
-@input-border-width: 2rpx;
 @input-vertical-padding: var(--td-input-vertical-padding, 32rpx); //输入框垂直方向内间距
 
 @input-default-text-color: var(--td-input-default-text-color, @font-gray-1); // 'default' 状态输入框文本颜色
@@ -34,8 +33,11 @@
   }
 
   &--border {
-    padding: @input-vertical-padding @input-vertical-padding calc((@input-vertical-padding - @input-border-width)) 0;
-    border-bottom: @input-border-width solid @input-border-color;
+    position: relative;
+
+    &::after {
+      .hairline-bottom(@input-border-color);
+    }
   }
 
   &--layout-vertical {

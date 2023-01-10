@@ -1,6 +1,14 @@
-<t-button size="large" theme="primary" variant="outline" data-key="showWithInput" bind:tap="showDialog" block
-  >输入类-无描述</t-button
+<t-button
+  t-class="wrapper"
+  size="large"
+  theme="primary"
+  variant="outline"
+  data-key="showWithInput"
+  bind:tap="showDialog"
+  block
 >
+  输入类-无描述
+</t-button>
 <t-dialog
   visible="{{showWithInput}}"
   title="带输入框对话框"
@@ -13,6 +21,7 @@
 </t-dialog>
 
 <t-button
+  t-class="wrapper"
   theme="primary"
   size="large"
   variant="outline"
