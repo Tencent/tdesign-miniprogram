@@ -70,14 +70,14 @@ export default class CollapsePanel extends SuperComponent {
         .then((rect: WechatMiniprogram.BoundingClientRectCallbackResult) => rect.height)
         .then((height: number) => {
           const animation = wx.createAnimation({
-            duration: 300,
+            duration: 0,
             timingFunction: 'ease-in-out',
           });
 
           if (expanded) {
-            animation.height(height).step();
+            animation.height(height).top(0).step({ duration: 300 }).height('auto').step();
           } else {
-            animation.height(0).step();
+            animation.height(height).top(1).step({ duration: 1 }).height(0).step({ duration: 300 });
           }
 
           this.setData({ animation: animation.export() });
