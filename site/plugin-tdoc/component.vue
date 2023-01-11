@@ -67,8 +67,14 @@ export default defineComponent({
     qrcode() {
       const { path } = this.$route;
       const name = path.slice(path.lastIndexOf('/') + 1);
+      const files = import.meta.globEager('../public/assets/qrcode/*.png');
+      const filsList = Object.values(files).map((v) => v.default);
+      const file = filsList.filter((val) => {
+        return val.indexOf(name) !== -1 ? val : '';
+      });
+      const fileName = `..${file[0]}`;
       // new URL(): https://cn.vitejs.dev/guide/assets.html#new-url-url-import-meta-url
-      return new URL(`../public/assets/qrcode/${name}.png`, import.meta.url).href;
+      return new URL(fileName, import.meta.url).href;
     },
   },
 
