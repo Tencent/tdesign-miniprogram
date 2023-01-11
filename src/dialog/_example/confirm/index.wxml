@@ -1,4 +1,12 @@
-<t-button theme="primary" size="large" variant="outline" data-key="showConfirm" bind:tap="showDialog" block>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showConfirm"
+  bind:tap="showDialog"
+  block
+>
   确认类-带标题
 </t-button>
 <t-dialog
@@ -11,7 +19,15 @@
   bind:cancel="closeDialog"
 />
 
-<t-button theme="primary" size="large" variant="outline" data-key="showWarnConfirm" bind:tap="showDialog" block>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showWarnConfirm"
+  bind:tap="showDialog"
+  block
+>
   确认类-无标题
 </t-button>
 <t-dialog

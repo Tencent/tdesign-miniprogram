@@ -16,6 +16,7 @@ exports[`Textarea Textarea base demo works fine 1`] = `
   <t-textarea
     disableDefaultPadding="{{true}}"
     placeholder="请输入文字"
+    tClass="external-class"
   />
 </base>
 `;
@@ -32,6 +33,7 @@ exports[`Textarea Textarea card demo works fine 1`] = `
       label="标签文字"
       maxlength="500"
       placeholder="请输入文字"
+      tClass="external-class"
     />
   </wx-view>
 </card>
@@ -49,10 +51,12 @@ exports[`Textarea Textarea custom demo works fine 1`] = `
     </wx-text>
     <t-textarea
       bordered="{{true}}"
+      customStyle="height: 248rpx"
       disableDefaultPadding="{{true}}"
       indicator="{{true}}"
       maxlength="100"
       placeholder="请输入文字"
+      tClass="external-class"
     />
   </wx-view>
 </custom>
@@ -65,6 +69,7 @@ exports[`Textarea Textarea disabled demo works fine 1`] = `
     disableDefaultPadding="{{true}}"
     label="标签文字"
     placeholder="请输入文字"
+    tClass="external-class"
     value="不可编辑文字"
   />
 </disabled>
@@ -76,6 +81,7 @@ exports[`Textarea Textarea label demo works fine 1`] = `
     disableDefaultPadding="{{true}}"
     label="标签文字"
     placeholder="请输入文字"
+    tClass="external-class"
   />
 </wx-label>
 `;
@@ -88,6 +94,7 @@ exports[`Textarea Textarea maxcharacter demo works fine 1`] = `
     label="标签文字"
     maxcharacter="200"
     placeholder="设置最大字符个数，一个汉字表示两个字符"
+    tClass="external-class"
   />
 </maxcharacter>
 `;
@@ -100,6 +107,7 @@ exports[`Textarea Textarea maxlength demo works fine 1`] = `
     label="标签文字"
     maxlength="200"
     placeholder="设置最大字符个数"
+    tClass="external-class"
   />
 </maxlength>
 `;

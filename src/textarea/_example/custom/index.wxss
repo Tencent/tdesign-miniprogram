@@ -1,6 +1,11 @@
 .textarea-example {
-  padding: 32rpx;
+  padding: 32rpx 32rpx 48rpx;
   background-color: #fff;
+}
+
+.external-class {
+  padding-top: 24rpx !important;
+  padding-bottom: 24rpx !important;
 }
 
 .textarea-example__label {
