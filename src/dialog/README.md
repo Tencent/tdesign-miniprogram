@@ -61,10 +61,10 @@ isComponent: true
 -- | -- | -- | -- | --
 actions | Array / Slot | - | 操作栏。TS 类型：`Array<ButtonProps>`，[Button API Documents](./button?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
 button-layout | String | horizontal | 多按钮排列方式。可选项：horizontal/vertical | N
-cancel-btn | String / Object / Slot | - | 取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
+cancel-btn | String / Object / Slot | - | 取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 Slot 自定义按钮时，需自行控制取消事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
 close-btn | Boolean / Object | false | `0.31.0`。是否展示关闭按钮，值为 `true` 显示默认关闭按钮；值为 `false` 则不显示关闭按钮；使用 Object 时透传至图标组件 | N
 close-on-overlay-click | Boolean | undefined | 点击蒙层时是否触发关闭事件 | N
-confirm-btn | String / Object / Slot | - | 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件 | N
+confirm-btn | String / Object / Slot | - | 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 Slot 自定义按钮时，需自行控制确认事件 | N
 content | String / Slot | - | 内容 | N
 custom-style | String | - | `0.25.0`。自定义组件样式 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、组件内容部分、确认按钮、取消按钮 等元素类名。`['t-class', 't-class-content', 't-class-confirm', 't-class-cancel']` | N

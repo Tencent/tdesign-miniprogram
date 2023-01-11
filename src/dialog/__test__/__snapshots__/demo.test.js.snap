@@ -139,6 +139,7 @@ exports[`Dialog Dialog confirm demo works fine 1`] = `
     block="{{true}}"
     data-key="showConfirm"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
@@ -165,6 +166,7 @@ exports[`Dialog Dialog confirm demo works fine 1`] = `
     block="{{true}}"
     data-key="showWarnConfirm"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
@@ -201,6 +203,7 @@ exports[`Dialog Dialog status demo works fine 1`] = `
     block="{{true}}"
     data-key="showConfirm"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
@@ -227,6 +230,7 @@ exports[`Dialog Dialog status demo works fine 1`] = `
     block="{{true}}"
     data-key="showWarnConfirm"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
@@ -257,6 +261,7 @@ exports[`Dialog Dialog status demo works fine 1`] = `
     block="{{true}}"
     data-key="showTooLongBtnContent"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
@@ -289,6 +294,7 @@ exports[`Dialog Dialog status demo works fine 1`] = `
     block="{{true}}"
     data-key="showMultiBtn"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
@@ -329,6 +335,7 @@ exports[`Dialog Dialog status demo works fine 1`] = `
     block="{{true}}"
     data-key="showCloseBtn"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
@@ -361,11 +368,14 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
     block="{{true}}"
     data-key="imageOnTop"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
   >
-    图片置顶
+    
+  图片置顶
+
   </t-button>
   <t-dialog
     cancelBtn="取消"
@@ -391,11 +401,14 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
     block="{{true}}"
     data-key="imageOnMiddle"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
   >
-    图片居中
+    
+  图片居中
+
   </t-button>
   <t-dialog
     cancelBtn="取消"
@@ -427,11 +440,14 @@ exports[`Dialog Dialog with-input demo works fine 1`] = `
     block="{{true}}"
     data-key="showWithInput"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
   >
-    输入类-无描述
+    
+  输入类-无描述
+
   </t-button>
   <t-dialog
     cancelBtn="取消"
@@ -451,6 +467,7 @@ exports[`Dialog Dialog with-input demo works fine 1`] = `
     block="{{true}}"
     data-key="showTextAndTitleWithInput"
     size="large"
+    tClass="wrapper"
     theme="primary"
     variant="outline"
     bind:tap="showDialog"
