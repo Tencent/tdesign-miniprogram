@@ -25,6 +25,11 @@ const props: TdIndexesProps = {
     type: Boolean,
     value: true,
   },
+  /** 锚点吸顶时与顶部的距离	 */
+  stickyOffset: {
+    type: Number,
+    value: 0,
+  },
 };
 
 export default props;

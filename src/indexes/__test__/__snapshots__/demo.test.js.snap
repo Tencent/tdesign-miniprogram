@@ -429,7 +429,8 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
         "#",
       ]
     }}"
-    sticky="{{true}}"
+    stickyOffset="{{8}}"
+    tClass="wrapper"
     bind:change="onChange"
   >
     <t-indexes-anchor
