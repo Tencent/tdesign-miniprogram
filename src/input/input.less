@@ -33,11 +33,7 @@
   }
 
   &--border {
-    position: relative;
-
-    &::after {
-      .hairline-bottom(@input-border-color);
-    }
+    .border(bottom, @input-border-color);
   }
 
   &--layout-vertical {
