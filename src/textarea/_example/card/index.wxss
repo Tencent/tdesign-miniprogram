@@ -5,5 +5,5 @@
 }
 
 .external-class {
-  height: 212rpx;
+  height: 312rpx;
 }
