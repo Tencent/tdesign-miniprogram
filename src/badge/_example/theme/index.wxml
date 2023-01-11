@@ -1,13 +1,13 @@
 <view class="demo-desc">圆形徽标</view>
 <view class="demo-wrapper">
-  <t-badge count="2">
+  <t-badge count="2" offset="{{ [-2, -2] }}">
     <t-icon name="notification" size="24" />
   </t-badge>
 </view>
 
 <view class="demo-desc">方形徽标</view>
 <view class="demo-wrapper">
-  <t-badge count="2" shape="square">
+  <t-badge count="2" shape="square" offset="{{ [-2, -2] }}">
     <t-icon name="notification" size="24" />
   </t-badge>
 </view>

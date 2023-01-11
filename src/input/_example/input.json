@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Input 输入框",
+  "navigationBarTitleText": "Input",
   "usingComponents": {
     "t-input": "tdesign-miniprogram/input/input",
     "base": "./base",

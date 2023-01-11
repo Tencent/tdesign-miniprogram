@@ -16,6 +16,8 @@
   z-index: 9999;
   background: @calendar-bg-color;
   overflow-x: hidden;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 
   &--popup {
     border-top-left-radius: @calendar-radius;
@@ -95,8 +97,9 @@
       height: 120rpx;
       line-height: 48rpx;
       font-weight: 600;
-      cursor: pointer;
       margin-top: 16rpx;
+
+      .cursor-pointer();
 
       &-prefix,
       &-suffix {
@@ -191,7 +194,6 @@
   }
 
   &__footer {
-    border-top: 1px solid @border-color;
     padding: 32rpx;
   }
 }

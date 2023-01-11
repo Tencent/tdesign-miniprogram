@@ -4,7 +4,7 @@
 <button
   style="{{ customStyle }}"
   data-custom="{{ customDataset }}"
-  class="{{className}} {{prefix}}-class"
+  class="{{className}}"
   form-type="{{type}}"
   open-type="{{disabled ? '' : openType}}"
   hover-stop-propagation="{{hoverStopPropagation}}"

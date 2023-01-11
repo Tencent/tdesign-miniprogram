@@ -3,6 +3,7 @@ import props from './props';
 import config from '../common/config';
 import touch from '../mixins/touch';
 import { getRect, uniqueFactory } from '../common/utils';
+import { TdTabsProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-tabs`;
@@ -14,6 +15,9 @@ enum Position {
   bottom = 'bottom',
   left = 'left',
 }
+
+export interface TabsProps extends TdTabsProps {}
+
 @wxComponent()
 export default class Tabs extends SuperComponent {
   behaviors = [touch];
@@ -21,7 +25,7 @@ export default class Tabs extends SuperComponent {
   externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`, `${prefix}-class-track`];
 
   relations: RelationsOptions = {
-    './tab-panel': {
+    '../tab-panel/tab-panel': {
       type: 'descendant',
       linked(target: any) {
         this.children.push(target);

@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, RelationsOptions, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -14,6 +14,12 @@ export default class BackTop extends SuperComponent {
   };
 
   properties = props;
+
+  relations: RelationsOptions = {
+    '../pull-down-refresh/pull-down-refresh': {
+      type: 'ancestor',
+    },
+  };
 
   data = {
     prefix,
@@ -54,10 +60,14 @@ export default class BackTop extends SuperComponent {
 
     toTop() {
       this.triggerEvent('to-top');
-      wx.pageScrollTo({
-        scrollTop: 0,
-        duration: 300,
-      });
+      if (this.$parent) {
+        this.$parent?.setScrollTop(0);
+      } else {
+        wx.pageScrollTo({
+          scrollTop: 0,
+          duration: 300,
+        });
+      }
     },
   };
 }

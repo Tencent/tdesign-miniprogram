@@ -1,6 +1,6 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import props from '../checkbox/checkbox-group-props';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;

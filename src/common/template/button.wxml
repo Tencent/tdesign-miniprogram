@@ -9,6 +9,7 @@
     icon="{{icon}}"
     loading="{{loading}}"
     theme="{{theme}}"
+    ghost="{{ghost}}"
     shape="{{shape}}"
     size="{{size}}"
     variant="{{variant}}"

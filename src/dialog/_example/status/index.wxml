@@ -1,14 +1,7 @@
 <view class="demo-desc">文字按钮</view>
-<t-button
-  class="external-class"
-  theme="primary"
-  size="large"
-  variant="outline"
-  data-key="showConfirm"
-  bind:tap="showDialog"
-  block
-  >文字按钮</t-button
->
+<t-button theme="primary" size="large" variant="outline" data-key="showConfirm" bind:tap="showDialog" block>
+  文字按钮
+</t-button>
 <t-dialog
   visible="{{showConfirm}}"
   title="对话框标题"
@@ -20,16 +13,9 @@
 />
 
 <view class="demo-desc">水平基础按钮</view>
-<t-button
-  class="external-class"
-  theme="primary"
-  size="large"
-  variant="outline"
-  data-key="showWarnConfirm"
-  bind:tap="showDialog"
-  block
-  >水平基础按钮</t-button
->
+<t-button theme="primary" size="large" variant="outline" data-key="showWarnConfirm" bind:tap="showDialog" block>
+  水平基础按钮
+</t-button>
 <t-dialog
   visible="{{showWarnConfirm}}"
   content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
@@ -40,16 +26,9 @@
 />
 
 <view class="demo-desc">垂直基础按钮</view>
-<t-button
-  class="external-class"
-  theme="primary"
-  size="large"
-  variant="outline"
-  data-key="showTooLongBtnContent"
-  bind:tap="showDialog"
-  block
-  >垂直基础按钮</t-button
->
+<t-button theme="primary" size="large" variant="outline" data-key="showTooLongBtnContent" bind:tap="showDialog" block>
+  垂直基础按钮
+</t-button>
 <t-dialog
   visible="{{showTooLongBtnContent}}"
   title="对话框标题"
@@ -62,16 +41,9 @@
 />
 
 <view class="demo-desc">多按钮</view>
-<t-button
-  class="external-class"
-  theme="primary"
-  size="large"
-  variant="outline"
-  data-key="showMultiBtn"
-  bind:tap="showDialog"
-  block
-  >多按钮</t-button
->
+<t-button theme="primary" size="large" variant="outline" data-key="showMultiBtn" bind:tap="showDialog" block>
+  多按钮
+</t-button>
 <t-dialog
   visible="{{showMultiBtn}}"
   title="对话框标题"
@@ -82,16 +54,9 @@
 />
 
 <view class="demo-desc">带关闭按钮</view>
-<t-button
-  class="external-class"
-  theme="primary"
-  size="large"
-  variant="outline"
-  data-key="showCloseBtn"
-  bind:tap="showDialog"
-  block
-  >带关闭按钮</t-button
->
+<t-button theme="primary" size="large" variant="outline" data-key="showCloseBtn" bind:tap="showDialog" block>
+  带关闭按钮
+</t-button>
 <t-dialog
   visible="{{showCloseBtn}}"
   title="对话框标题"

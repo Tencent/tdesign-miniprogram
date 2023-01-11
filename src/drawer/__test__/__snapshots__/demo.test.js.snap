@@ -2,19 +2,15 @@
 
 exports[`Drawer Drawer base demo works fine 1`] = `
 <base>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerBase"
-    >
-      基础抽屉
-    </t-button>
-  </wx-view>
+    基础抽屉
+  </t-button>
   <t-drawer
     items=""
     placement="left"
@@ -27,19 +23,15 @@ exports[`Drawer Drawer base demo works fine 1`] = `
 
 exports[`Drawer Drawer footer demo works fine 1`] = `
 <footer>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerBase"
-    >
-      带底部插槽
-    </t-button>
-  </wx-view>
+    带底部插槽
+  </t-button>
   <t-drawer
     items="{{
       Array [
@@ -105,19 +97,15 @@ exports[`Drawer Drawer footer demo works fine 1`] = `
 
 exports[`Drawer Drawer icon-drawer demo works fine 1`] = `
 <icon-drawer>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerIcon"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerIcon"
-    >
-      带图标抽屉
-    </t-button>
-  </wx-view>
+    带图标抽屉
+  </t-button>
   <t-drawer
     items=""
     placement="left"
@@ -130,19 +118,15 @@ exports[`Drawer Drawer icon-drawer demo works fine 1`] = `
 
 exports[`Drawer Drawer title demo works fine 1`] = `
 <title>
-  <wx-view
-    class="box"
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
   >
-    <t-button
-      block="{{true}}"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="openDrawerBase"
-    >
-      带标题抽屉
-    </t-button>
-  </wx-view>
+    带标题抽屉
+  </t-button>
   <t-drawer
     items=""
     placement="left"

@@ -17,10 +17,10 @@
     >
       <block wx:if="{{isScale}}">
         <view
-          class="{{_.cls(classPrefix + '__scale-item', [['active', _value >= item], ['disabled', disabled], theme, ['hidden', index == 0 || index == scaleArray.length - 1 || value == item]])}}"
+          class="{{_.cls(classPrefix + '__scale-item', [['active', _value >= item.val], ['disabled', disabled], theme, ['hidden', (index == 0 || index == scaleArray.length - 1) && theme == 'capsule' || value == item.val]])}}"
           wx:for="{{scaleArray}}"
           wx:key="index"
-          style="left:{{item}}%; transform: translateX({{- item}}%); {{t.getColor(disabled, _value >= item, disabledColor, colors)}}"
+          style="left:{{item.left}}px; transform: translateX(-50%); {{t.getColor(disabled, _value >= item.val, disabledColor, colors)}}"
         >
           <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}}}">
             {{scaleTextArray[index]}}
@@ -76,11 +76,11 @@
     >
       <block wx:if="{{isScale}}">
         <view
-          class="{{_.cls(classPrefix + '__scale-item', [['active', dotTopValue[1] >= item && item >= dotTopValue[0]], ['disabled', disabled], theme, ['hidden', index == 0 || index == scaleArray.length - 1 || value == item]])}}"
+          class="{{_.cls(classPrefix + '__scale-item', [['active', dotTopValue[1] >= item.val && item.val >= dotTopValue[0]], ['disabled', disabled], theme, ['hidden', (index == 0 || index == scaleArray.length - 1) && theme == 'capsule' || value == item.val]])}}"
           wx:for="{{scaleArray}}"
           wx:for-index="index"
           wx:key="index"
-          style="left: {{item}}%;transform: translateX({{- item}}%); {{t.getColor(disabled, (dotTopValue[1] >= item && item >= dotTopValue[0]), disabledColor, colors)}}"
+          style="left: {{item.left}}px; transform: translateX(-50%); {{t.getColor(disabled, (dotTopValue[1] >= item.val && item.val >= dotTopValue[0]), disabledColor, colors)}}"
         >
           <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}"
             >{{scaleTextArray[index]}}</view

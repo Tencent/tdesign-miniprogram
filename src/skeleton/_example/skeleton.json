@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Skeleton 骨架屏",
+  "navigationBarTitleText": "Skeleton",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",

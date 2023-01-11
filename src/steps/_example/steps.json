@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Steps 步骤条",
+  "navigationBarTitleText": "Steps",
   "usingComponents": {
     "horizontal": "./horizontal",
     "vertical": "./vertical",

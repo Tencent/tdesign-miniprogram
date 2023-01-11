@@ -1,6 +1,6 @@
 <view class="demo">
   <view class="demo-title">Cascader 级联选择器</view>
-  <view class="demo-desc">级联选择器适用于有清晰层级结构的数据集合，用户可以通过逐级查看并选择。</view>
+  <view class="demo-desc">用于多层级数据的逐级选择。</view>
 
   <t-demo title="01 类型" desc="">
     <base />

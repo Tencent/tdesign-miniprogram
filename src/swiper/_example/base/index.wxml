@@ -3,8 +3,9 @@
   autoplay="{{autoplay}}"
   duration="{{duration}}"
   interval="{{interval}}"
-  bindchange="onChange"
   navigation="{{ { type: 'dots' } }}"
   list="{{swiperList}}"
+  bind:click="onTap"
+  bind:change="onChange"
 >
 </t-swiper>

@@ -2,6 +2,6 @@
   "component": true,
   "usingComponents": {
     "t-tabs": "../tabs",
-    "t-tab-panel": "../tab-panel"
+    "t-tab-panel": "../../tab-panel/tab-panel"
   }
 }

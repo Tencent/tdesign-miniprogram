@@ -22,6 +22,7 @@ exports[`Swiper Swiper base demo works fine 1`] = `
       }
     }}"
     bind:change="onChange"
+    bind:click="onTap"
   />
 </base>
 `;
@@ -116,13 +117,12 @@ exports[`Swiper Swiper custom demo works fine 1`] = `
         "https://tdesign.gtimg.com/site/swiper/05.png",
       ]
     }}"
-    navigation="{{false}}"
-  >
-    <t-swiper-nav
-      slot="nav"
-      type="dots-bar"
-    />
-  </t-swiper>
+    navigation="{{
+      Object {
+        "type": "dots-bar",
+      }
+    }}"
+  />
 </custom>
 `;
 

@@ -1,6 +1,6 @@
 name: 反馈 Bug
 description: 通过 github 模板进行 Bug 反馈。
-title: "[组件名称] 描述问题的标题"
+title: '[组件名称] 描述问题的标题'
 body:
   - type: markdown
     attributes:
@@ -51,25 +51,13 @@ body:
     id: frameworkVersion
     attributes:
       label: 框架版本
-      placeholder: Vue(3.2.0)
-
-  - type: input
-    id: browsersVersion
-    attributes:
-      label: 浏览器版本
-      placeholder: Chrome(8.213.231.123)
+      placeholder: miniprogram(3.2.0)
 
   - type: input
     id: systemVersion
     attributes:
-      label: 系统版本
-      placeholder: MacOS(11.2.3)
-
-  - type: input
-    id: nodeVersion
-    attributes:
-      label: Node版本
-      placeholder: 请填写
+      label: 基础库版本
+      placeholder: 2.11.3
 
   - type: textarea
     id: remarks

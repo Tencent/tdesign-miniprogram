@@ -2,6 +2,7 @@
 @import '../common/style/index.less';
 
 @cell-font-size: var(--td-cell-font-size, @font-size-m);
+@cell-height: var(--td-cell-height, auto);
 @cell-line-height: var(--td-cell-line-height, 48rpx);
 @cell-vertical-padding: var(--td-cell-vertical-padding, 32rpx);
 @cell-horizontal-padding: var(--td-cell-horizontal-padding, 32rpx);
@@ -25,9 +26,11 @@
   display: flex;
   box-sizing: border-box;
   width: 100%;
+  overflow: hidden;
   padding: @cell-vertical-padding @cell-horizontal-padding;
   font-size: @cell-font-size;
   line-height: @cell-line-height;
+  height: @cell-height;
   color: @cell-text-color;
   background-color: @cell-bg-color;
 
