@@ -3,6 +3,7 @@
 exports[`tabs :base 1`] = `
 <t-tabs
   id="base"
+  placement="top"
 >
   <wx-view
     class="t-tabs t-tabs--left t-class"
@@ -28,8 +29,8 @@ exports[`tabs :base 1`] = `
               enableFlex="{{true}}"
               scrollLeft="{{0}}"
               scrollWithAnimation="{{true}}"
-              scrollX="{{false}}"
-              scrollY="{{true}}"
+              scrollX="{{true}}"
+              scrollY=""
             >
               <wx-view
                 ariaRole="tablist"
@@ -98,8 +99,8 @@ exports[`tabs :base 1`] = `
                 <wx-view
                   class="t-tabs__track t-tabs__track--left t-class-track"
                   style="-webkit-transform: translateX(0px);
-        transform: translateX(0px);
-      "
+          transform: translateX(0px);
+        "
                 />
               </wx-view>
             </wx-scroll-view>
