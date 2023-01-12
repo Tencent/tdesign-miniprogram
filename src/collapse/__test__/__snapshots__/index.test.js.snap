@@ -643,12 +643,45 @@ exports[`collapse :disabled 1`] = `
                       ],
                       "type": "style",
                     },
+                    Object {
+                      "args": Array [
+                        "top",
+                        "0px",
+                      ],
+                      "type": "style",
+                    },
                   ],
                   "option": Object {
                     "transformOrigin": "50% 50% 0",
                     "transition": Object {
                       "delay": 0,
                       "duration": 300,
+                      "timingFunction": "ease-in-out",
+                    },
+                  },
+                },
+                Object {
+                  "animates": Array [
+                    Object {
+                      "args": Array [
+                        "height",
+                        "auto",
+                      ],
+                      "type": "style",
+                    },
+                    Object {
+                      "args": Array [
+                        "top",
+                        "0px",
+                      ],
+                      "type": "style",
+                    },
+                  ],
+                  "option": Object {
+                    "transformOrigin": "50% 50% 0",
+                    "transition": Object {
+                      "delay": 0,
+                      "duration": 0,
                       "timingFunction": "ease-in-out",
                     },
                   },

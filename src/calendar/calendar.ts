@@ -25,7 +25,7 @@ export default class Calendar extends SuperComponent {
     classPrefix: name,
     months: [],
     scrollIntoView: '',
-    innerConfirmBtn: { content: '确认' },
+    innerConfirmBtn: { content: '确定' },
   };
 
   controlledProps = [

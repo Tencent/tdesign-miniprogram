@@ -37,6 +37,14 @@ export interface TdIndexesProps {
     type: BooleanConstructor;
     value?: Boolean;
   };
+  /**
+   * 锚点吸顶时与顶部的距离
+   * @default 0
+   */
+  stickyOffset?: {
+    type: NumberConstructor;
+    value?: number;
+  };
 }
 
 export interface ListItem {

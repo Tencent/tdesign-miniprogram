@@ -18,7 +18,6 @@
 @collapse-panel-bg-color: var(--td-collapse-panel-bg-color, @bg-color-block);
 
 .@{prefix}-collapse-panel {
-  overflow: hidden;
   .border(bottom, @collapse-border-color);
   background-color: @collapse-panel-bg-color;
 
@@ -83,6 +82,7 @@
 
   &__wrapper {
     height: 0;
+    overflow: hidden;
   }
 
   &__content {

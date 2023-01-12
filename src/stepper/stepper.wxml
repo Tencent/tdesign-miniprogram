@@ -1,6 +1,6 @@
 <view style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{size}} {{prefix}}-class">
   <view
-    class="{{classPrefix}}__minus {{classPrefix}}__minus--{{theme}} {{classPrefix}}__icon--{{size}} {{ disabled || disableMinus || currentValue <= min ? classPrefix + '--disabled': ''}} {{prefix}}-class-minus"
+    class="{{classPrefix}}__minus {{classPrefix}}__minus--{{theme}} {{classPrefix}}__icon--{{size}} {{ disabled || disableMinus || currentValue <= min ? classPrefix + '--' + theme + '-disabled': ''}} {{prefix}}-class-minus"
     catchtap="minusValue"
     aria-label="{{'减少' + step}}"
     aria-role="button"
@@ -8,7 +8,7 @@
   >
     <t-icon name="remove" class="{{classPrefix}}__minus-icon" />
   </view>
-  <view class="{{classPrefix}}__input--{{theme}} {{ disabled ? classPrefix + '--disabled': ''}}">
+  <view class="{{classPrefix}}__input--{{theme}} {{ disabled ? classPrefix + '--' + theme + '-disabled': ''}}">
     <input
       style="{{inputWidth? 'width:' + inputWidth + 'px;': ''}}"
       class="{{classPrefix}}__input {{classPrefix}}__input--{{size}} {{prefix}}-class-input"
@@ -21,7 +21,7 @@
     />
   </view>
   <view
-    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{classPrefix}}__icon--{{size}}  {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--disabled': ''}} {{prefix}}-class-plus"
+    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{classPrefix}}__icon--{{size}}  {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--' + theme + '-disabled': ''}} {{prefix}}-class-plus"
     catchtap="plusValue"
     aria-label="{{'增加' + step}}"
     aria-role="button"
