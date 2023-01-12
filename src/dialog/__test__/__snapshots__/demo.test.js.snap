@@ -425,10 +425,9 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
     bind:confirm="closeDialog"
   >
     <t-image
-      class="image-host"
       slot="middle"
       src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
-      tClass="dialog-image"
+      tClass="image-host dialog-image"
     />
   </t-dialog>
 </with-image>

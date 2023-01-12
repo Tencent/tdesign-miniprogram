@@ -13,7 +13,7 @@
     <t-icon
       wx:for="{{ count }}"
       wx:key="*this"
-      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}} "
+      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
       t-class="{{prefix}}-class-icon"
       name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
       size="{{ size }}"

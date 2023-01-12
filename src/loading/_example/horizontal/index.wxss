@@ -4,7 +4,7 @@
   color: #000;
 }
 
-.loading-container-flex t-loading {
+.wrapper {
   display: flex;
   margin-right: 64px;
 }

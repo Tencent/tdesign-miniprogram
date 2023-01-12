@@ -245,11 +245,11 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
         class="option"
       >
         <t-slider
-          class="swiper-slider"
           label=""
           max="{{5000}}"
           min="{{1000}}"
           step="{{500}}"
+          tClass="swiper-slider"
           tClassBar="external-class-bar"
           value="{{5000}}"
           bind:change="onIntervalChange"
@@ -273,11 +273,11 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
         class="option"
       >
         <t-slider
-          class="swiper-slider"
           label=""
           max="{{2000}}"
           min="{{200}}"
           step="{{100}}"
+          tClass="swiper-slider"
           tClassBar="external-class-bar"
           value="{{500}}"
           bind:change="onDurationChange"

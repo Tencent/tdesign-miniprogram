@@ -32,8 +32,7 @@ exports[`swiper snapshot 1`] = `
           bind:tap="onTap"
         >
           <t-image
-            class="t-swiper__image-host"
-            tClass="t-swiper__image t-class-image t-class-prev-image"
+            tClass="t-swiper__image-host t-swiper__image t-class-image t-class-prev-image"
             tClassLoad=""
             bind:error=""
             bind:load=""
@@ -41,14 +40,14 @@ exports[`swiper snapshot 1`] = `
             <wx-view
               ariaHidden="{{false}}"
               class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-              style=" height: 192px"
+              style=" "
             >
               <t-loading
-                class="t-class-load"
+                tClass="t-class-load"
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -89,7 +88,7 @@ exports[`swiper snapshot 1`] = `
               mode="scaleToFill"
               showMenuByLongpress="{{false}}"
               src="https://tdesign.gtimg.com/miniprogram/images//swiper1.png"
-              style="height: 192px"
+              style=""
               webp="{{false}}"
               bind:error="onLoadError"
               bind:load="onLoaded"
@@ -102,8 +101,7 @@ exports[`swiper snapshot 1`] = `
           bind:tap="onTap"
         >
           <t-image
-            class="t-swiper__image-host"
-            tClass="t-swiper__image t-class-image"
+            tClass="t-swiper__image-host t-swiper__image t-class-image"
             tClassLoad=""
             bind:error=""
             bind:load=""
@@ -111,14 +109,14 @@ exports[`swiper snapshot 1`] = `
             <wx-view
               ariaHidden="{{false}}"
               class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-              style=" height: 192px"
+              style=" "
             >
               <t-loading
-                class="t-class-load"
+                tClass="t-class-load"
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -159,7 +157,7 @@ exports[`swiper snapshot 1`] = `
               mode="scaleToFill"
               showMenuByLongpress="{{false}}"
               src="https://tdesign.gtimg.com/miniprogram/images//swiper2.png"
-              style="height: 192px"
+              style=""
               webp="{{false}}"
               bind:error="onLoadError"
               bind:load="onLoaded"
@@ -172,8 +170,7 @@ exports[`swiper snapshot 1`] = `
           bind:tap="onTap"
         >
           <t-image
-            class="t-swiper__image-host"
-            tClass="t-swiper__image t-class-image t-class-next-image"
+            tClass="t-swiper__image-host t-swiper__image t-class-image t-class-next-image"
             tClassLoad=""
             bind:error=""
             bind:load=""
@@ -181,14 +178,14 @@ exports[`swiper snapshot 1`] = `
             <wx-view
               ariaHidden="{{false}}"
               class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-              style=" height: 192px"
+              style=" "
             >
               <t-loading
-                class="t-class-load"
+                tClass="t-class-load"
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -229,7 +226,7 @@ exports[`swiper snapshot 1`] = `
               mode="scaleToFill"
               showMenuByLongpress="{{false}}"
               src="https://tdesign.gtimg.com/miniprogram/images//swiper3.png"
-              style="height: 192px"
+              style=""
               webp="{{false}}"
               bind:error="onLoadError"
               bind:load="onLoaded"
@@ -242,8 +239,7 @@ exports[`swiper snapshot 1`] = `
           bind:tap="onTap"
         >
           <t-image
-            class="t-swiper__image-host"
-            tClass="t-swiper__image t-class-image"
+            tClass="t-swiper__image-host t-swiper__image t-class-image"
             tClassLoad=""
             bind:error=""
             bind:load=""
@@ -251,14 +247,14 @@ exports[`swiper snapshot 1`] = `
             <wx-view
               ariaHidden="{{false}}"
               class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-              style=" height: 192px"
+              style=" "
             >
               <t-loading
-                class="t-class-load"
+                tClass="t-class-load"
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -299,7 +295,7 @@ exports[`swiper snapshot 1`] = `
               mode="scaleToFill"
               showMenuByLongpress="{{false}}"
               src="https://tdesign.gtimg.com/miniprogram/images//swiper4.png"
-              style="height: 192px"
+              style=""
               webp="{{false}}"
               bind:error="onLoadError"
               bind:load="onLoaded"
@@ -312,8 +308,7 @@ exports[`swiper snapshot 1`] = `
           bind:tap="onTap"
         >
           <t-image
-            class="t-swiper__image-host"
-            tClass="t-swiper__image t-class-image"
+            tClass="t-swiper__image-host t-swiper__image t-class-image"
             tClassLoad=""
             bind:error=""
             bind:load=""
@@ -321,14 +316,14 @@ exports[`swiper snapshot 1`] = `
             <wx-view
               ariaHidden="{{false}}"
               class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-              style=" height: 192px"
+              style=" "
             >
               <t-loading
-                class="t-class-load"
+                tClass="t-class-load"
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -369,7 +364,7 @@ exports[`swiper snapshot 1`] = `
               mode="scaleToFill"
               showMenuByLongpress="{{false}}"
               src="https://tdesign.gtimg.com/miniprogram/images//swiper5.png"
-              style="height: 192px"
+              style=""
               webp="{{false}}"
               bind:error="onLoadError"
               bind:load="onLoaded"
@@ -420,8 +415,7 @@ exports[`swiper snapshot 1`] = `
           bind:tap="onTap"
         >
           <t-image
-            class="t-swiper__image-host"
-            tClass="t-swiper__image t-class-image t-class-prev-image t-class-next-image"
+            tClass="t-swiper__image-host t-swiper__image t-class-image t-class-prev-image t-class-next-image"
             tClassLoad=""
             bind:error=""
             bind:load=""
@@ -429,14 +423,14 @@ exports[`swiper snapshot 1`] = `
             <wx-view
               ariaHidden="{{false}}"
               class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-              style=" height: 192px"
+              style=" "
             >
               <t-loading
-                class="t-class-load"
+                tClass="t-class-load"
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -477,7 +471,7 @@ exports[`swiper snapshot 1`] = `
               mode="scaleToFill"
               showMenuByLongpress="{{false}}"
               src="https://tdesign.gtimg.com/miniprogram/images//01.png"
-              style="height: 192px"
+              style=""
               webp="{{false}}"
               bind:error="onLoadError"
               bind:load="onLoaded"
@@ -490,8 +484,7 @@ exports[`swiper snapshot 1`] = `
           bind:tap="onTap"
         >
           <t-image
-            class="t-swiper__image-host"
-            tClass="t-swiper__image t-class-image"
+            tClass="t-swiper__image-host t-swiper__image t-class-image"
             tClassLoad=""
             bind:error=""
             bind:load=""
@@ -499,14 +492,14 @@ exports[`swiper snapshot 1`] = `
             <wx-view
               ariaHidden="{{false}}"
               class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-              style=" height: 192px"
+              style=" "
             >
               <t-loading
-                class="t-class-load"
+                tClass="t-class-load"
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -547,7 +540,7 @@ exports[`swiper snapshot 1`] = `
               mode="scaleToFill"
               showMenuByLongpress="{{false}}"
               src="https://tdesign.gtimg.com/miniprogram/images//02.png"
-              style="height: 192px"
+              style=""
               webp="{{false}}"
               bind:error="onLoadError"
               bind:load="onLoaded"

@@ -27,12 +27,12 @@ exports[`Textarea Textarea card demo works fine 1`] = `
     class="textarea-example"
   >
     <t-textarea
-      customStyle="border-radius: 18rpx;"
       disableDefaultPadding="{{true}}"
       indicator="{{true}}"
       label="标签文字"
       maxlength="500"
       placeholder="请输入文字"
+      style="border-radius: 18rpx;"
       tClass="external-class"
     />
   </wx-view>
@@ -51,11 +51,11 @@ exports[`Textarea Textarea custom demo works fine 1`] = `
     </wx-text>
     <t-textarea
       bordered="{{true}}"
-      customStyle="height: 248rpx"
       disableDefaultPadding="{{true}}"
       indicator="{{true}}"
       maxlength="100"
       placeholder="请输入文字"
+      style="height: 248rpx"
       tClass="external-class"
     />
   </wx-view>

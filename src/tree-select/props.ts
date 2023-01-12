@@ -7,7 +7,7 @@
 import { TdTreeSelectProps } from './type';
 const props: TdTreeSelectProps = {
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

@@ -11,6 +11,6 @@
   theme="primary"
   bind:tap="handlePopup"
   data-item="{{item}}"
-  class="wrapper"
+  t-class="wrapper"
   >{{item.text}}</t-button
 >

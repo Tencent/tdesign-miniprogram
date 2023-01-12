@@ -7,6 +7,6 @@
     maxlength="100"
     disableDefaultPadding="{{true}}"
     indicator
-    customStyle="{{customStyle}}"
+    style="{{style}}"
   />
 </view>

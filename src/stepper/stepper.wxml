@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{size}} {{prefix}}-class">
+<view style="{{ style }}" class="{{classPrefix}} {{classPrefix}}--{{size}} {{prefix}}-class">
   <view
     class="{{classPrefix}}__minus {{classPrefix}}__minus--{{theme}} {{classPrefix}}__icon--{{size}} {{ disabled || disableMinus || currentValue <= min ? classPrefix + '--' + theme + '-disabled': ''}} {{prefix}}-class-minus"
     catchtap="minusValue"

@@ -1,6 +1,6 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{bordered? classPrefix +  '--border' : ''}} {{prefix}}-class">
+<view style="{{ style }}" class="{{classPrefix}} {{bordered? classPrefix +  '--border' : ''}} {{prefix}}-class">
   <view class="{{classPrefix}}__label {{prefix}}-class-label">
-    <view wx:if="{{ label && label.length > 0 }}">{{ label }}</view>
+    <block wx:if="{{ label && label.length > 0 }}">{{ label }}</block>
     <slot wx:else name="label" />
   </view>
   <view class="{{classPrefix}}__wrapper">

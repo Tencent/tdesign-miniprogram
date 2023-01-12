@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="utils" />
 <view
-  style="{{ customStyle }};{{ !text && theme != 'error' && 'width: ' + utils.addUnit(size) + '; height: ' + utils.addUnit(size)}}"
-  class="{{prefix}}-class"
+  style="{{ style }};{{ !text && theme != 'error' && 'width: ' + utils.addUnit(size) + '; height: ' + utils.addUnit(size)}}"
+  class="class {{prefix}}-class"
 >
   <view
     wx:if="{{theme === 'bar' && theme !== 'error'}}"

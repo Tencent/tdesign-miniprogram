@@ -1,5 +1,5 @@
 <view
-  class="{{ prefix ? prefix : classPrefix}} {{componentPrefix}}-class"
+  class="{{ prefix ? prefix : classPrefix}} class {{componentPrefix}}-class"
   style="{{ iconStyle }}"
   bind:tap="onTap"
   aria-hidden="{{ariaHidden}}"

@@ -2,6 +2,6 @@
   display: flex;
 }
 
-.box t-loading {
+.wrapper {
   margin-right: 64px;
 }

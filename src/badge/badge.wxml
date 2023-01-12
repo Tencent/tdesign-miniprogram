@@ -1,8 +1,8 @@
 <wxs src="./badge.wxs" module="this" />
 
 <view
-  style="{{ customStyle }}"
-  class="{{this.getBadgeOuterClass({shape})}} {{prefix}}-class"
+  style="{{ style }}"
+  class="{{this.getBadgeOuterClass({shape})}} class {{prefix}}-class"
   aria-labelledby="{{labelID}}"
   aria-describedby="{{descriptionID}}"
   aria-role="{{ ariaRole || 'option'}}"

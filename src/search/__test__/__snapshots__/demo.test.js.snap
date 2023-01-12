@@ -21,9 +21,13 @@ exports[`Search Search status demo works fine 1`] = `
     <t-search
       placeholder="搜索预设文案"
     />
-    <wx-view
-      class="space"
-    />
+  </wx-view>
+  <wx-view
+    class="space"
+  />
+  <wx-view
+    class="example-search"
+  >
     <t-search
       placeholder="搜索预设文案"
       shape="round"

@@ -9,6 +9,7 @@ module.exports = {
   testMatch: ['<rootDir>/src/**/__test__/**/*.test.{js,ts}'],
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
   collectCoverage: true,
+  coverageProvider: 'v8',
   coverageDirectory: '<rootDir>/test/unit/coverage',
   reporters: [
     'default',
@@ -24,6 +25,9 @@ module.exports = {
   coverageReporters: ['html', 'json-summary'],
   globals: {
     CONFIG_PREFIX: 't',
+  },
+  transform: {
+    '\\.[jt]sx?$': ['<rootDir>/script/test/transform.js'],
   },
   globalSetup: '<rootDir>/script/test/globalSetup.js',
   snapshotSerializers: ['miniprogram-simulate/jest-snapshot-plugin'],

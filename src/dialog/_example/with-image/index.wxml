@@ -43,8 +43,7 @@
 >
   <t-image
     slot="middle"
-    class="image-host"
-    t-class="dialog-image"
+    t-class="image-host dialog-image"
     src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
   />
 </t-dialog>
