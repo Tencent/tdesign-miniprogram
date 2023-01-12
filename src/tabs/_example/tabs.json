@@ -7,7 +7,6 @@
     "status": "./status",
     "with-badge": "./with-badge",
     "theme": "./theme",
-    "with-content": "./with-content",
-    "vertical": "./vertical"
+    "with-content": "./with-content"
   }
 }
