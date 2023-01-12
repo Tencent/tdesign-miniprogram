@@ -6,7 +6,7 @@ const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
 @wxComponent()
 export default class CheckBoxGroup extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = ['class', `${prefix}-class`];
 
   relations: RelationsOptions = {
     '../checkbox/checkbox': {

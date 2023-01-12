@@ -25,9 +25,9 @@ exports[`Input Input banner demo works fine 1`] = `
     class="input-example"
   >
     <t-input
-      style="border-radius: 12rpx;"
       label="标签文字"
       placeholder="请输入文字"
+      style="border-radius: 12rpx;"
     />
   </wx-view>
 </banner>
@@ -66,8 +66,8 @@ exports[`Input Input bordered demo works fine 1`] = `
     </wx-view>
     <t-input
       borderless="{{true}}"
-      style="border: 2rpx solid rgba(220,220,220,1);border-radius: 12rpx;"
       placeholder="请输入文字"
+      style="border: 2rpx solid rgba(220,220,220,1);border-radius: 12rpx;"
       suffixIcon="{{
         Object {
           "ariaLabel": "提示",

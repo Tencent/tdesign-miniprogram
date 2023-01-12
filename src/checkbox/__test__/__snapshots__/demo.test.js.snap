@@ -166,8 +166,8 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
     >
       <t-icon
         ariaHidden="{{true}}"
-        class="card__icon"
         name="check"
+        tClass="card__icon"
       />
       <t-checkbox
         borderless="{{true}}"
@@ -182,8 +182,8 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
     >
       <t-icon
         ariaHidden="{{true}}"
-        class="card__icon"
         name="check"
+        tClass="card__icon"
       />
       <t-checkbox
         borderless="{{true}}"
@@ -226,8 +226,8 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
     >
       <t-icon
         ariaHidden="{{true}}"
-        class="card__icon"
         name="check"
+        tClass="card__icon"
       />
       <t-checkbox
         borderless="{{true}}"
@@ -241,8 +241,8 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
     >
       <t-icon
         ariaHidden="{{true}}"
-        class="card__icon"
         name="check"
+        tClass="card__icon"
       />
       <t-checkbox
         borderless="{{true}}"

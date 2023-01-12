@@ -169,7 +169,7 @@ export const wxComponent = function wxComponent() {
       current.options.addGlobalClass = true;
     }
 
-    current.options.virtualHost = true;
+    current.options.virtualHost = false;
 
     const obj = toComponent(toObject(current));
     Component(obj);

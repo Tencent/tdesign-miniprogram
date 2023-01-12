@@ -10,11 +10,6 @@ const props: TdFabProps = {
   buttonProps: {
     type: Object,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: 'right: 16px; bottom: 32px;',
-  },
   /** 图标 */
   icon: {
     type: String,

@@ -15,14 +15,15 @@
     overlay-props="{{ { style: 'position: absolute' } }}"
     bind:leaved="onLeaved"
     bind:visible-change="handleMaskClick"
-    t-class="{{classPrefix}}__popup-host"
+    class="{{classPrefix}}__popup-host"
     t-class-content="{{classPrefix}}__content {{prefix}}-class-content"
   >
     <view class="{{classPrefix}}__body">
       <!-- 单选列表 -->
       <t-radio-group
         wx:if="{{!multiple}}"
-        t-class="{{classPrefix}}__radio {{prefix}}-class-column {{classPrefix}}__radio-group"
+        class="{{classPrefix}}__radio {{prefix}}-class-column"
+        t-class="{{classPrefix}}__radio-group"
         value="{{value}}"
         bind:change="handleRadioChange"
       >
@@ -32,7 +33,8 @@
           tabindex="0"
           icon="line"
           align="right"
-          t-class="{{classPrefix}}__radio-item {{prefix}}-class-column-item radio"
+          class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
+          t-class="radio"
           t-class-label="{{prefix}}-class-column-item-label"
           value="{{item[valueAlias]}}"
           label="{{item[labelAlias]}}"
@@ -42,7 +44,8 @@
       <!-- 多选列表 -->
       <t-checkbox-group
         wx:else
-        t-class="{{classPrefix}}__checkbox {{prefix}}-class-column {{classPrefix}}__checkbox-group"
+        class="{{classPrefix}}__checkbox {{prefix}}-class-column"
+        t-class="{{classPrefix}}__checkbox-group"
         style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
         value="{{value}}"
         bind:change="handleRadioChange"

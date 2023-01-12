@@ -8,7 +8,7 @@ const name = `${prefix}-icon`;
 
 @wxComponent()
 export default class Icon extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = ['class', `${prefix}-class`];
 
   properties = props;
 

@@ -105,8 +105,8 @@ exports[`Radio Radio special demo works fine 1`] = `
       class="card card--active"
     >
       <t-icon
-        class="card__icon"
         name="check"
+        tClass="card__icon"
       />
       <t-radio
         borderless="{{true}}"
@@ -154,8 +154,8 @@ exports[`Radio Radio special demo works fine 1`] = `
       class="card card--active"
     >
       <t-icon
-        class="card__icon"
         name="check"
+        tClass="card__icon"
       />
       <t-radio
         borderless="{{true}}"

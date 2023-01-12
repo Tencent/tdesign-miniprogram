@@ -1,4 +1,4 @@
-<view style="{{ style }}" class="{{classPrefix}} {{prefix}}-class" aria-role="radiogroup">
+<view style="{{ style }}" class="{{classPrefix}} class {{prefix}}-class" aria-role="radiogroup">
   <slot />
   <block wx:for="{{radioOptions}}" wx:key="value">
     <t-radio

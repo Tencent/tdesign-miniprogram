@@ -13,7 +13,8 @@
     <t-icon
       wx:for="{{ count }}"
       wx:key="*this"
-      t-class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}} {{prefix}}-class-icon"
+      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
+      t-class="{{prefix}}-class-icon"
       name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
       size="{{ size }}"
       style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
@@ -31,7 +32,7 @@
         data-value="{{utils.ceil(value) - 0.5}}"
       >
         <t-icon
-          t-class="{{classPrefix }}__icon {{classPrefix }}__icon--selected-half"
+          class="{{classPrefix }}__icon {{classPrefix }}__icon--selected-half"
           name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
           size="{{ size }}"
           style="{{utils.getColor(color)}}"
@@ -44,7 +45,7 @@
         data-value="{{utils.ceil(value)}}"
       >
         <t-icon
-          t-class="{{_.cls(classPrefix + '__icon', ['selected'])}}"
+          class="{{_.cls(classPrefix + '__icon', ['selected'])}}"
           name="{{utils.getIconName(defaultValue, value, index, 'filled', icon)}}"
           size="{{ size }}"
           style="{{utils.getColor(color)}}"
@@ -59,7 +60,7 @@
       data-value="{{utils.ceil(value)}}"
     >
       <t-icon
-        t-class="{{_.cls(classPrefix + '__icon', [['selected', utils.ceil(value) == value], ['selected-half', utils.ceil(value) != value]]) }}"
+        class="{{_.cls(classPrefix + '__icon', [['selected', utils.ceil(value) == value], ['selected-half', utils.ceil(value) != value]]) }}"
         name="{{utils.getIconName(defaultValue, value, index, 'filled', icon)}}"
         size="{{ size }}"
         style="{{utils.getColor(color)}}; font-size: {{size}};"

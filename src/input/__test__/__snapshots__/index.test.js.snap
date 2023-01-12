@@ -80,7 +80,7 @@ exports[`input props : clearable && label && suffix 1`] = `
                 ariaHidden="{{false}}"
                 ariaLabel="清除"
                 ariaRole="button"
-                class="t-icon t-class"
+                class="t-icon class t-class"
                 style=""
                 bind:tap="onTap"
               >
@@ -111,7 +111,7 @@ exports[`input props : clearable && label && suffix 1`] = `
                 ariaHidden="{{false}}"
                 ariaLabel=""
                 ariaRole="button"
-                class="t-icon t-class"
+                class="t-icon class t-class"
                 style=""
                 bind:tap="onTap"
               >
