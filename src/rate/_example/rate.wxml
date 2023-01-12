@@ -15,7 +15,7 @@
     <show-text />
   </t-demo>
 
-  <t-demo title="02 组件状态" desc="交互方式：点击">
+  <t-demo title="02 组件状态">
     <action />
   </t-demo>
 
