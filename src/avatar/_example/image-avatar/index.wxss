@@ -1,3 +1,3 @@
-.avatar-example:not(:last-child) {
+.t-avatar__wrapper {
   margin-right: 64rpx;
 }

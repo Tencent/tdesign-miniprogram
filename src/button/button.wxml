@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <button
-  style="{{ customStyle }}"
+  style="{{ style }}"
   data-custom="{{ customDataset }}"
   class="{{className}}"
   form-type="{{type}}"
@@ -35,7 +35,6 @@
   />
   <t-loading
     wx:if="{{loading}}"
-    class="{{classPrefix}}__loading"
     delay="{{loadingProps.delay || 0}}"
     duration="{{loadingProps.duration || 800}}"
     indicator="{{loadingProps.indicator || true}}"
@@ -48,7 +47,7 @@
     text="{{loadingProps.text }}"
     theme="{{loadingProps.theme || 'circular'}}"
     loading
-    t-class="{{classPrefix}}__loading--wrapper"
+    t-class="{{classPrefix}}__loading {{classPrefix}}__loading--wrapper"
     t-class-indicator="{{classPrefix}}__loading--indicator {{prefix}}-class-loading"
   ></t-loading>
   <view class="{{classPrefix}}__content">

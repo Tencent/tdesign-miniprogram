@@ -4,26 +4,25 @@
 <view
   wx:if="{{wrapperVisible}}"
   class="{{classPrefix}} {{prefix}}-class"
-  style="{{this.getStyles(top, zIndex, customStyle)}}"
+  style="{{this.getStyles(top, zIndex, style)}}"
 >
   <t-popup
     visible="{{show}}"
     z-index="{{zIndex + 1}}"
     duration="{{duration}}"
     show-overlay="{{showOverlay}}"
-    custom-style="position: absolute;"
-    overlayProps="{{ { customStyle: 'position: absolute' } }}"
+    style="position: absolute"
+    overlay-props="{{ { style: 'position: absolute' } }}"
     bind:leaved="onLeaved"
     bind:visible-change="handleMaskClick"
-    class="{{classPrefix}}__popup-host"
+    t-class="{{classPrefix}}__popup-host"
     t-class-content="{{classPrefix}}__content {{prefix}}-class-content"
   >
     <view class="{{classPrefix}}__body">
       <!-- 单选列表 -->
       <t-radio-group
         wx:if="{{!multiple}}"
-        class="{{classPrefix}}__radio {{prefix}}-class-column"
-        t-class="{{classPrefix}}__radio-group"
+        t-class="{{classPrefix}}__radio {{prefix}}-class-column {{classPrefix}}__radio-group"
         value="{{value}}"
         bind:change="handleRadioChange"
       >
@@ -31,10 +30,9 @@
           wx:for="{{options}}"
           wx:key="index"
           tabindex="0"
-          class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
           icon="line"
           align="right"
-          t-class="radio"
+          t-class="{{classPrefix}}__radio-item {{prefix}}-class-column-item radio"
           t-class-label="{{prefix}}-class-column-item-label"
           value="{{item[valueAlias]}}"
           label="{{item[labelAlias]}}"
@@ -44,9 +42,8 @@
       <!-- 多选列表 -->
       <t-checkbox-group
         wx:else
-        class="{{classPrefix}}__checkbox {{prefix}}-class-column"
-        t-class="{{classPrefix}}__checkbox-group"
-        custom-style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
+        t-class="{{classPrefix}}__checkbox {{prefix}}-class-column {{classPrefix}}__checkbox-group"
+        style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
         value="{{value}}"
         bind:change="handleRadioChange"
       >

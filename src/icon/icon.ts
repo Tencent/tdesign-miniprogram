@@ -20,7 +20,7 @@ export default class Icon extends SuperComponent {
   };
 
   observers = {
-    'name, color, size, customStyle'() {
+    'name, color, size, style'() {
       this.setIconStyle();
     },
   };
@@ -31,7 +31,7 @@ export default class Icon extends SuperComponent {
     },
 
     setIconStyle() {
-      const { name, color, size, customStyle } = this.properties;
+      const { name, color, size, style } = this.properties;
       const isImage = name.indexOf('/') !== -1;
       const sizeValue = addUnit(size);
       const sizeStyle = isImage ? { width: sizeValue, height: sizeValue } : {};
@@ -43,7 +43,7 @@ export default class Icon extends SuperComponent {
           ...colorStyle,
           ...fontStyle,
           ...sizeStyle,
-        })}${customStyle ? `;${customStyle}` : ''}`,
+        })}${style ? `;${style}` : ''}`,
       });
     },
   };

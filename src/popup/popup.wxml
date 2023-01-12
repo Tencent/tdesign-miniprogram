@@ -3,7 +3,7 @@
 
 <view
   wx:if="{{realVisible}}"
-  style="{{ utils.getPopupStyles(zIndex, customStyle) }}"
+  style="{{ utils.getPopupStyles(zIndex, style) }}"
   class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
   aria-role="dialog"
@@ -26,5 +26,5 @@
   z-index="{{overlayProps.zIndex || 11000}}"
   prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
   bind:tap="handleOverlayClick"
-  custom-style="{{overlayProps.customStyle || ''}}"
+  style="{{overlayProps.style || ''}}"
 />

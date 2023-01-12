@@ -3,6 +3,6 @@
   padding: 16rpx 32rpx;
 }
 
-.example-search .space {
+.space {
   height: 32rpx;
 }

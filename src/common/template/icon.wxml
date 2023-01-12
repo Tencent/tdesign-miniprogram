@@ -1,8 +1,7 @@
 <template name="icon">
   <t-icon
-    customStyle="{{customStyle}}"
-    class="{{class}}"
-    t-class="{{tClass}}"
+    style="{{style}}"
+    t-class="{{class}} {{tClass}}"
     prefix="{{prefix}}"
     name="{{name}}"
     size="{{size}}"

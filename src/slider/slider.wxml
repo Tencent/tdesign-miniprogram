@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{_.cls(classPrefix, [['top', label || scaleTextArray.length], ['disabled', disabled], ['range', range]])}} {{prefix}}-class"
 >
   <block wx:if="{{!range}}">

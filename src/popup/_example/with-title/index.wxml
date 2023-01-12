@@ -8,6 +8,4 @@
   </view>
 </t-popup>
 
-<t-button block size="large" variant="outline" theme="primary" bind:tap="handlePopup" class="wrapper"
-  >底部弹出层-带标题及操作</t-button
->
+<t-button block size="large" variant="outline" theme="primary" bind:tap="handlePopup">底部弹出层-带标题及操作</t-button>

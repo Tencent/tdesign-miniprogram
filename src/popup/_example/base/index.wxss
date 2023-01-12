@@ -23,7 +23,6 @@
   height: 240px;
 }
 
-.wrapper {
-  margin: 32rpx;
-  display: block;
+.wrapper + .wrapper {
+  margin-top: 32rpx;
 }

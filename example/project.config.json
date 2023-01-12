@@ -24,7 +24,7 @@
     "showShadowRootInWxmlPanel": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.11.3",
+  "libVersion": "2.20.2",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {

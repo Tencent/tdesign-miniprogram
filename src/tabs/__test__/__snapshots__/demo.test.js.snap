@@ -393,28 +393,28 @@ exports[`Tabs Tabs with-content demo works fine 1`] = `
     bind:click="onTabsClick"
   >
     <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
+      style="display:flex;justify-content:center;align-items:center;min-height: 120px"
       label="选项一"
       value="0"
     >
       选项一内容
     </t-tab-panel>
     <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
+      style="display:flex;justify-content:center;align-items:center;min-height: 120px"
       label="选项二"
       value="1"
     >
       选项二内容
     </t-tab-panel>
     <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
+      style="display:flex;justify-content:center;align-items:center;min-height: 120px"
       label="选项三"
       value="2"
     >
       选项三内容
     </t-tab-panel>
     <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
+      style="display:flex;justify-content:center;align-items:center;min-height: 120px"
       label="选项四"
       value="3"
     >

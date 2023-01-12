@@ -1,5 +1,5 @@
 Component({
   data: {
-    customStyle: 'height: 248rpx',
+    style: 'height: 248rpx',
   },
 });
