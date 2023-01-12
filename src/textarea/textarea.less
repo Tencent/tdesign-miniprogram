@@ -41,6 +41,7 @@
   &__label:not(:empty) {
     font-size: @textarea-label-font-size;
     color: @textarea-label-color;
+    flex-shrink: 0;
     line-height: @textarea-label-line-height;
     padding-bottom: @textarea-label-padding-bottom;
     overflow: hidden;
@@ -53,6 +54,7 @@
     flex-direction: column;
     width: 100%;
     flex: 1 1 auto;
+    overflow: hidden;
 
     &-inner {
       flex: 1 1 auto;
