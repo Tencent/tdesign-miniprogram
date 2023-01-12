@@ -134,7 +134,12 @@
     }
   }
 
-  &--disabled {
+  &--normal-disabled {
+    color: @stepper-input-disabled-color;
+  }
+
+  &--filled-disabled,
+  &--outline-disabled {
     color: @stepper-input-disabled-color;
     background-color: @stepper-input-disabled-bg;
   }

@@ -23,12 +23,12 @@ describe('stepper', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const component = comp.querySelector('.base >>> .t-stepper__minus');
-      expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--normal-disabled')).toBeTruthy();
 
       comp.setData({
         disabled: false,
       });
-      expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).not.toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--normal-disabled')).not.toBeTruthy();
     });
 
     it(': input-width', async () => {
@@ -155,7 +155,7 @@ describe('stepper', () => {
 
       // (disabled = true), 事件不触发;
       const component = comp.querySelector('.base >>> .t-stepper__minus');
-      expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--normal-disabled')).toBeTruthy();
 
       const minusIcon = comp.querySelector('.base >>> .t-stepper__minus');
       const plusIcon = comp.querySelector('.base >>> .t-stepper__plus');
@@ -171,7 +171,7 @@ describe('stepper', () => {
         value: 10,
         disabled: false,
       });
-      expect(component.dom.getAttribute('class').includes('t-stepper--disabled')).not.toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--normal-disabled')).not.toBeTruthy();
 
       minusIcon.dispatchEvent('tap');
       await simulate.sleep(10);
@@ -218,7 +218,7 @@ describe('stepper', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const component = comp.querySelector('.base >>> .t-stepper');
-      expect(component.dom.getAttribute('class').includes('t-is-disabled')).not.toBeTruthy();
+      expect(component.dom.getAttribute('class').includes('t-stepper--normal-disabled')).not.toBeTruthy();
 
       const minusIcon = comp.querySelector('.base >>> .t-stepper__minus');
       const plusIcon = comp.querySelector('.base >>> .t-stepper__plus');
