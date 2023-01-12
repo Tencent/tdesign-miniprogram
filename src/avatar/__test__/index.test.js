@@ -19,7 +19,7 @@ describe('Avatar & Avatar Groups', () => {
 
       const $image = comp.querySelector('.image-avatar >>> #image');
       expect($image.toJSON().attrs.filter((v) => v.name === 'src')[0].value).toBe(
-        'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png',
+        'https://tdesign.gtimg.com/miniprogram/images/avatar1.png',
       );
     });
 

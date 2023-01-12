@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "Tag",
+  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "theme": "./theme",
     "size": "./size",

@@ -17,7 +17,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="aspectFill"
-        src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -33,7 +33,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="heightFix"
-        src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -48,7 +48,7 @@ exports[`Image Image base demo works fine 1`] = `
       <t-image
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
-        src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -68,7 +68,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="aspectFill"
-        src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -84,7 +84,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         shape="round"
-        src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -100,7 +100,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         shape="circle"
-        src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -113,7 +113,7 @@ exports[`Image Image size demo works fine 1`] = `
   <t-image
     mode="aspectFill"
     shape="round"
-    src="https://we-retail-static-1300977798.cos.ap-guangzhou.myqcloud.com/retail-ui/components-exp/image/image-2.jpg"
+    src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
     tClass="size-l"
   />
 </size>

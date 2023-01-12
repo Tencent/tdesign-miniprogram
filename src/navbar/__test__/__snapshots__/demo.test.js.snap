@@ -63,7 +63,7 @@ exports[`Navbar Navbar img demo works fine 1`] = `
     >
       <t-image
         ariaLabel="导航栏图片"
-        src="https://tdesign.gtimg.com/miniprogram/images/navbar-logo.png"
+        src="https://tdesign.gtimg.com/miniprogram/images/logo1.png"
         tClass="custom-image"
       />
     </wx-view>
