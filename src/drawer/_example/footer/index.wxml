@@ -8,5 +8,7 @@
   bind:overlay-click="overlayClick"
   bind:item-click="itemClick"
 >
-  <t-button slot="footer" class="button-host" size="large=" block variant="outline">操作</t-button>
+  <view class="button-host">
+    <t-button slot="footer" size="large=" block variant="outline">操作</t-button>
+  </view>
 </t-drawer>

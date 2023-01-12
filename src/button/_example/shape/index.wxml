@@ -5,4 +5,4 @@
   <t-button theme="primary" size="large" icon="chevron-left" shape="circle" aria-label="返回"></t-button>
 </view>
 
-<t-button theme="primary" size="large" shape="round" block t-class="external-class">填充按钮</t-button>
+<t-button theme="primary" size="large" block t-class="external-class">填充按钮</t-button>

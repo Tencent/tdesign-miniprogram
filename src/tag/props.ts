@@ -12,7 +12,7 @@ const props: TdTagProps = {
     value: false,
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

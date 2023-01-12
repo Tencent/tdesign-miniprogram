@@ -1,6 +1,5 @@
 @import '../common/style/index.less';
 
-@textarea-height: 144rpx; // 指定文本框高度
 @textarea-vertical-padding: 32rpx; // 文本框垂直方向间距
 @textarea-horizontal-padding: 32rpx; // 文本框水平方向间距
 @textarea-text-line-height: 48rpx; // 输入框文本行高
@@ -33,12 +32,16 @@
 @textarea-disabled-text-color: var(--td-textarea-disabled-text-color, @font-gray-4);
 
 .@{prefix}-textarea {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
   padding: @textarea-vertical-padding @textarea-horizontal-padding;
   background-color: @textarea-background-color;
 
   &__label:not(:empty) {
     font-size: @textarea-label-font-size;
     color: @textarea-label-color;
+    flex-shrink: 0;
     line-height: @textarea-label-line-height;
     padding-bottom: @textarea-label-padding-bottom;
     overflow: hidden;
@@ -47,13 +50,19 @@
   }
 
   &__wrapper {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    flex: 1 1 auto;
+    overflow: hidden;
 
     &-inner {
+      flex: 1 1 auto;
       box-sizing: border-box;
       width: inherit;
-      height: @textarea-height;
       min-width: 0;
+      height: 100%;
+      min-height: 20px;
       margin: 0;
       padding: 0;
       text-align: left;

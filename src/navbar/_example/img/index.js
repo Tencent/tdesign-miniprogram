@@ -1,5 +1,5 @@
 Component({
   data: {
-    image: 'https://tdesign.gtimg.com/miniprogram/images/navbar-logo.png',
+    image: 'https://tdesign.gtimg.com/miniprogram/images/logo1.png',
   },
 });

@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./input.wxs" module="this" />
 
-<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class" aria-describedby>
+<view style="{{ style }}" class="{{classPrefix}} {{prefix}}-class" aria-describedby>
   <view
     class="{{classPrefix}}__wrapper {{classPrefix}}--layout-{{layout}} {{borderless ? '': classPrefix + '--border'}}"
   >

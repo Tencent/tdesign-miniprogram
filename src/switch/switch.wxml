@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{ prefix }}-class {{classPrefix}}"
   bind:tap="handleSwitch"
   aria-checked="{{checked}}"
@@ -18,12 +18,12 @@
         wx:if="{{label}}"
         class="{{_.cls(classPrefix + '__label', [['checked', checked], size])}} {{prefix}}-class-label"
       >
-        <t-loading wx:if="{{loading}}" inherit-color size="32rpx" class="{{classPrefix}}__loading" />
+        <t-loading wx:if="{{loading}}" inherit-color size="32rpx" t-class="{{classPrefix}}__loading" />
         <text wx:elif="{{label.length == 2}}">{{checked ? label[1] : label[0]}}</text>
         <t-icon
           wx:elif="{{icon.length == 2}}"
           name="{{checked ? icon[1] : icon[0]}}"
-          class="{{_.cls(classPrefix + '__icon', [['checked', checked], size])}}"
+          t-class="{{_.cls(classPrefix + '__icon', [['checked', checked], size])}}"
         />
       </view>
     </view>

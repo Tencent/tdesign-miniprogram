@@ -22,7 +22,7 @@ exports[`notice-bar props : marquee 1`] = `
             ariaHidden="{{false}}"
             ariaLabel=""
             ariaRole=""
-            class="t-icon t-class"
+            class="t-icon class t-class"
             style=""
             bind:tap="onTap"
           >

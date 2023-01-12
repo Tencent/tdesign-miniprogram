@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{className}}">
+<view style="{{ style }}" class="{{className}}">
   <slot />
   <!-- 自定义折叠元素 -->
   <view class="{{classPrefix}}__collapse--slot">

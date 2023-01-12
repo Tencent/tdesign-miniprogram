@@ -3,9 +3,12 @@
 <import src="./template/list.wxml" />
 <import src="./template/grid.wxml" />
 
-<view id="{{classPrefix}}" style="{{customStyle}}" class="{{classPrefix}} {{prefix}}-class">
+<view id="{{classPrefix}}" style="{{style}}" class="{{classPrefix}} {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
-    <view class="{{classPrefix}}__content {{prefix}}-class-content" tabindex="0">
+    <view
+      class="{{_.cls(classPrefix + '__content', [['grid', gridThemeItems.length]])}} {{prefix}}-class-content"
+      tabindex="0"
+    >
       <view wx:if="{{description}}" tabindex="0" class="{{_.cls(classPrefix + '__description', [align])}}"
         >{{description}}</view
       >

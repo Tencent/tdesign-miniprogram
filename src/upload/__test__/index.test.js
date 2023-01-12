@@ -30,7 +30,7 @@ const mockFn = jest
       {
         fileType: 'image',
         size: 219906,
-        tempFilePath: 'https://tdesign.gtimg.com/site/upload1.png',
+        tempFilePath: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
       },
     ],
   })
@@ -41,7 +41,7 @@ const mockFn = jest
       {
         fileType: 'image',
         size: 219906,
-        tempFilePath: 'https://tdesign.gtimg.com/site/upload1.png',
+        tempFilePath: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
       },
     ],
   })
@@ -59,7 +59,7 @@ const mockFn = jest
       {
         fileType: 'image',
         size: 219906,
-        tempFilePath: 'https://tdesign.gtimg.com/site/upload1.png',
+        tempFilePath: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
       },
     ],
   });
@@ -215,7 +215,7 @@ describe('upload', () => {
           max: 2,
           originFiles: [
             {
-              url: 'https://tdesign.gtimg.com/site/upload1.png',
+              url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
               name: 'uploaded1.png',
               type: 'image',
             },
@@ -286,7 +286,7 @@ describe('upload', () => {
           },
           originFiles: [
             {
-              url: 'https://tdesign.gtimg.com/site/upload1.png',
+              url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
               name: 'uploaded1.png',
               type: 'image',
             },
@@ -364,7 +364,7 @@ describe('upload', () => {
         data: {
           originFiles: [
             {
-              url: 'https://tdesign.gtimg.com/site/upload1.png',
+              url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
               name: 'uploaded1.png',
               type: 'image',
             },

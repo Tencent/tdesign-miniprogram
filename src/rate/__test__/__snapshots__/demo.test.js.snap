@@ -3,15 +3,19 @@
 exports[`Rate Rate action demo works fine 1`] = `
 <action>
   <wx-view
+    class="demo-desc"
+  >
+    只可选全星时
+  </wx-view>
+  <wx-view
     class="demo-rate"
   >
     <wx-view
       class="demo-rate__title"
     >
-      点击选择(半星)
+      点击或滑动
     </wx-view>
     <t-rate
-      allowHalf="{{true}}"
       value="{{3.5}}"
       variant="filled"
       bind:change="onChange"
@@ -20,7 +24,7 @@ exports[`Rate Rate action demo works fine 1`] = `
   <wx-view
     class="demo-desc"
   >
-    交互方式：滑动
+    只可选半星时
   </wx-view>
   <wx-view
     class="demo-rate"
@@ -28,9 +32,10 @@ exports[`Rate Rate action demo works fine 1`] = `
     <wx-view
       class="demo-rate__title"
     >
-      滑动选择
+      点击或滑动
     </wx-view>
     <t-rate
+      allowHalf="{{true}}"
       defaultValue="{{3}}"
       variant="filled"
     />

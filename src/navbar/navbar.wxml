@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
   class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} {{prefix}}-class"
-  style="{{boxStyle}}; {{customStyle}}"
+  style="{{boxStyle}}; {{style}}"
 >
   <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder" />
   <view class="{{classPrefix}}__content">

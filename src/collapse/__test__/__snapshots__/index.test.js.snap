@@ -25,7 +25,7 @@ exports[`collapse :base 1`] = `
             bind:tap="onClick"
           >
             <t-cell
-              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
               tClassHover="class-header-hover"
               tClassNote="class-note "
               tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
@@ -62,13 +62,13 @@ exports[`collapse :base 1`] = `
                   class="t-cell__right t-class-right"
                 >
                   <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
+                    tClass="t-cell__right-icon t-class-right-icon"
                   >
                     <wx-view
                       ariaHidden="{{false}}"
                       ariaLabel=""
                       ariaRole=""
-                      class="t-icon t-class"
+                      class="t-icon class t-class"
                       style=""
                       bind:tap="onTap"
                     >
@@ -149,13 +149,13 @@ exports[`collapse :base 1`] = `
                   class="t-cell__right t-class-right"
                 >
                   <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
+                    tClass="t-cell__right-icon t-class-right-icon"
                   >
                     <wx-view
                       ariaHidden="{{false}}"
                       ariaLabel=""
                       ariaRole=""
-                      class="t-icon t-class"
+                      class="t-icon class t-class"
                       style=""
                       bind:tap="onTap"
                     >
@@ -243,13 +243,13 @@ exports[`collapse :base 1`] = `
                   class="t-cell__right t-class-right"
                 >
                   <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
+                    tClass="t-cell__right-icon t-class-right-icon"
                   >
                     <wx-view
                       ariaHidden="{{false}}"
                       ariaLabel=""
                       ariaRole=""
-                      class="t-icon t-class"
+                      class="t-icon class t-class"
                       style=""
                       bind:tap="onTap"
                     >
@@ -291,7 +291,7 @@ exports[`collapse :base 1`] = `
             bind:tap="onClick"
           >
             <t-cell
-              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
               tClassHover="class-header-hover"
               tClassNote="class-note "
               tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
@@ -328,13 +328,13 @@ exports[`collapse :base 1`] = `
                   class="t-cell__right t-class-right"
                 >
                   <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
+                    tClass="t-cell__right-icon t-class-right-icon"
                   >
                     <wx-view
                       ariaHidden="{{false}}"
                       ariaLabel=""
                       ariaRole=""
-                      class="t-icon t-class"
+                      class="t-icon class t-class"
                       style=""
                       bind:tap="onTap"
                     >
@@ -426,13 +426,13 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -474,7 +474,7 @@ exports[`collapse :defaultExpandAll 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
             tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
@@ -511,13 +511,13 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -574,7 +574,7 @@ exports[`collapse :disabled 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
             tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
@@ -611,13 +611,13 @@ exports[`collapse :disabled 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -643,12 +643,45 @@ exports[`collapse :disabled 1`] = `
                       ],
                       "type": "style",
                     },
+                    Object {
+                      "args": Array [
+                        "top",
+                        "0px",
+                      ],
+                      "type": "style",
+                    },
                   ],
                   "option": Object {
                     "transformOrigin": "50% 50% 0",
                     "transition": Object {
                       "delay": 0,
                       "duration": 300,
+                      "timingFunction": "ease-in-out",
+                    },
+                  },
+                },
+                Object {
+                  "animates": Array [
+                    Object {
+                      "args": Array [
+                        "height",
+                        "auto",
+                      ],
+                      "type": "style",
+                    },
+                    Object {
+                      "args": Array [
+                        "top",
+                        "0px",
+                      ],
+                      "type": "style",
+                    },
+                  ],
+                  "option": Object {
+                    "transformOrigin": "50% 50% 0",
+                    "transition": Object {
+                      "delay": 0,
+                      "duration": 0,
                       "timingFunction": "ease-in-out",
                     },
                   },
@@ -722,13 +755,13 @@ exports[`collapse :disabled 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >

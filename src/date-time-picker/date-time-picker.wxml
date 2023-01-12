@@ -1,5 +1,5 @@
 <t-picker
-  custom-style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{classPrefix}}"
   visible="{{visible}}"
   value="{{columnsValue}}"

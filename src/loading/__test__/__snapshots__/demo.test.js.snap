@@ -6,14 +6,17 @@ exports[`Loading Loading base demo works fine 1`] = `
     class="loading-container-flex"
   >
     <t-loading
+      class="wrapper"
       size="40rpx"
       theme="circular"
     />
     <t-loading
+      class="wrapper"
       size="40rpx"
       theme="spinner"
     />
     <t-loading
+      class="wrapper"
       size="80rpx"
       theme="dots"
     />
@@ -60,11 +63,13 @@ exports[`Loading Loading horizontal demo works fine 1`] = `
     class="loading-container-flex"
   >
     <t-loading
+      class="wrapper"
       size="40rpx"
       text="加载中..."
       theme="circular"
     />
     <t-loading
+      class="wrapper"
       inheritColor="{{true}}"
       size="40rpx"
       text="加载中..."
@@ -166,12 +171,14 @@ exports[`Loading Loading vertical demo works fine 1`] = `
     class="box"
   >
     <t-loading
+      class="wrapper"
       layout="vertical"
       size="40rpx"
       text="加载中"
       theme="circular"
     />
     <t-loading
+      class="wrapper"
       layout="vertical"
       size="40rpx"
       text="加载中"

@@ -3,7 +3,7 @@
 
 <import src="../common/template/image.wxml" />
 
-<view class="{{prefix}}-class {{classPrefix}}" style="{{customStyle}}">
+<view class="{{prefix}}-class {{classPrefix}}" style="{{style}}">
   <swiper
     class="{{classPrefix}}-host"
     autoplay="{{autoplay}}"
@@ -29,7 +29,7 @@
     >
       <template
         is="image"
-        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), customStyle: 'height: ' + _.addUnit(height), src: item, ...imageProps }}"
+        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: item, ...imageProps }}"
       />
     </swiper-item>
   </swiper>

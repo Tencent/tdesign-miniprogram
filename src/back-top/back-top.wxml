@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{prefix}}-class {{classPrefix}} {{fixed ? classPrefix + '--fixed' : ''}} {{classPrefix + '--' + theme}}"
   bindtap="toTop"
   aria-role="button"

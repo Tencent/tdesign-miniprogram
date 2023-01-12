@@ -2,33 +2,36 @@
 
 exports[`Search Search base demo works fine 1`] = `
 <base>
-  <t-search
-    placeholder="搜索预设文案"
-    value=""
-  />
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      placeholder="搜索预设文案"
+      value=""
+    />
+  </wx-view>
 </base>
 `;
 
 exports[`Search Search status demo works fine 1`] = `
 <status>
-  <t-search
-    placeholder="搜索预设文案"
-  />
-  <t-search
-    placeholder="搜索预设文案"
-    shape="round"
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      placeholder="搜索预设文案"
+    />
+  </wx-view>
+  <wx-view
+    class="space"
   />
   <wx-view
-    class="demo-desc"
+    class="example-search"
   >
-    默认状态其他对齐方式
+    <t-search
+      placeholder="搜索预设文案"
+      shape="round"
+    />
   </wx-view>
-  <t-search
-    action="取消"
-    center="{{true}}"
-    placeholder="搜索预设文案"
-    value=""
-    bind:change="onChange"
-  />
 </status>
 `;

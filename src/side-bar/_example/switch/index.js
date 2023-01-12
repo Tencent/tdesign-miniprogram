@@ -1,10 +1,10 @@
-const image = 'https://tdesign.gtimg.com/miniprogram/images/desktop.png';
+const image = 'https://tdesign.gtimg.com/miniprogram/images/example2.png';
 const items = new Array(12).fill({ label: '标题文字', image }, 0, 12);
 
 Page({
   offsetTopList: [],
   data: {
-    sideBarIndex: 0,
+    sideBarIndex: 1,
     scrollTop: 0,
     categories: [
       {
@@ -23,8 +23,7 @@ Page({
       {
         label: '选项',
         title: '标题',
-        disabled: true,
-        items: [],
+        items: items.slice(0, 6),
       },
       {
         label: '选项',
@@ -37,7 +36,8 @@ Page({
       {
         label: '选项',
         title: '标题',
-        items: items.slice(0, 6),
+        disabled: true,
+        items: [],
       },
     ],
   },

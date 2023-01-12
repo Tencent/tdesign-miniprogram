@@ -30,17 +30,24 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
 
 exports[`Navbar Navbar base demo works fine 1`] = `
 <base>
-  <t-navbar
+  <wx-view
     class="block"
-    tClassTitle="nav-title"
-    title="标题文字"
-  />
-  <t-navbar
+  >
+    <t-navbar
+      tClassTitle="nav-title"
+      title="标题文字"
+    />
+  </wx-view>
+  <wx-view
     class="block"
-    leftArrow="{{true}}"
-    title="标题文字"
-    bind:go-back="handleBack"
-  />
+  >
+    <t-navbar
+      class="block"
+      leftArrow="{{true}}"
+      title="标题文字"
+      bind:go-back="handleBack"
+    />
+  </wx-view>
 </base>
 `;
 
@@ -63,7 +70,7 @@ exports[`Navbar Navbar img demo works fine 1`] = `
     >
       <t-image
         ariaLabel="导航栏图片"
-        src="https://tdesign.gtimg.com/miniprogram/images/navbar-logo.png"
+        src="https://tdesign.gtimg.com/miniprogram/images/logo1.png"
         tClass="custom-image"
       />
     </wx-view>
@@ -73,11 +80,14 @@ exports[`Navbar Navbar img demo works fine 1`] = `
 
 exports[`Navbar Navbar left-title demo works fine 1`] = `
 <left-title>
-  <t-navbar
+  <wx-view
     class="block"
-    leftArrow="{{true}}"
-    title="标题居中"
-  />
+  >
+    <t-navbar
+      leftArrow="{{true}}"
+      title="标题居中"
+    />
+  </wx-view>
   <t-navbar
     leftArrow="{{true}}"
   >
