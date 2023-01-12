@@ -53,7 +53,14 @@
     }
 
     &:after {
+      display: none;
       left: 32rpx;
+    }
+
+    &--expanded {
+      &:after {
+        display: block;
+      }
     }
 
     &-right {

@@ -1,4 +1,4 @@
-<wxs src="../common/utils.wxs" module="utils" />
+<wxs src="../common/utils.wxs" module="_" />
 
 <view style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
   <view
@@ -13,7 +13,7 @@
       note="{{headerRightContent}}"
       bordered
       right-icon="{{ ultimateExpandIcon ? (expanded ? 'chevron-up' : 'chevron-down') : '' }}"
-      t-class="{{classPrefix}}__header {{classPrefix}}__header--{{placement}} {{prefix}}-class-header"
+      t-class="{{_.cls(classPrefix + '__header', [placement, ['expanded', expanded]])}} {{prefix}}-class-header"
       t-class-title="class-title {{ultimateDisabled ? 'class-title--disabled' : ''}}"
       t-class-note="class-note {{ultimateDisabled ? 'class-note--disabled' : ''}}"
       t-class-right-icon="class-right-icon {{classPrefix}}__arrow--{{placement}} {{ultimateDisabled ? 'class-right-icon--disabled' : ''}}"

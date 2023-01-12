@@ -25,7 +25,7 @@ exports[`collapse :base 1`] = `
             bind:tap="onClick"
           >
             <t-cell
-              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
               tClassHover="class-header-hover"
               tClassNote="class-note "
               tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
@@ -291,7 +291,7 @@ exports[`collapse :base 1`] = `
             bind:tap="onClick"
           >
             <t-cell
-              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
               tClassHover="class-header-hover"
               tClassNote="class-note "
               tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
@@ -474,7 +474,7 @@ exports[`collapse :defaultExpandAll 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
             tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
@@ -574,7 +574,7 @@ exports[`collapse :disabled 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
             tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
