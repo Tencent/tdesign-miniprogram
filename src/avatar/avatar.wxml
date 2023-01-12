@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./avatar.wxs" module="this" />
 
-<view class="{{classPrefix}}__wrapper {{prefix}}-class" style="{{this.getStyles(isShow, zIndex, style)}}">
+<view class="{{classPrefix}}__wrapper class {{prefix}}-class" style="{{this.getStyles(isShow, zIndex, style)}}">
   <t-badge
     color="{{badgeProps.color}}"
     content="{{badgeProps.content}}"

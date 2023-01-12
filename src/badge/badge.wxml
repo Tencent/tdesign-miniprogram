@@ -2,7 +2,7 @@
 
 <view
   style="{{ style }}"
-  class="{{this.getBadgeOuterClass({shape})}} {{prefix}}-class"
+  class="{{this.getBadgeOuterClass({shape})}} class {{prefix}}-class"
   aria-labelledby="{{labelID}}"
   aria-describedby="{{descriptionID}}"
   aria-role="{{ ariaRole || 'option'}}"

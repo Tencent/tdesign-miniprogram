@@ -47,7 +47,7 @@ exports[`swiper snapshot 1`] = `
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -116,7 +116,7 @@ exports[`swiper snapshot 1`] = `
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -185,7 +185,7 @@ exports[`swiper snapshot 1`] = `
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -254,7 +254,7 @@ exports[`swiper snapshot 1`] = `
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -323,7 +323,7 @@ exports[`swiper snapshot 1`] = `
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -430,7 +430,7 @@ exports[`swiper snapshot 1`] = `
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view
@@ -499,7 +499,7 @@ exports[`swiper snapshot 1`] = `
                 tClassText="t-image--loading-text"
               >
                 <wx-view
-                  class="t-class"
+                  class="class t-class"
                   style=";width: 44rpx; height: 44rpx"
                 >
                   <wx-view

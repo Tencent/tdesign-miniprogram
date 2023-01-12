@@ -3,7 +3,7 @@
 
 <view
   style="{{ style }}"
-  class="{{_.cls(classPrefix, [['top', label || scaleTextArray.length], ['disabled', disabled], ['range', range]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [['top', label || scaleTextArray.length], ['disabled', disabled], ['range', range]])}} class {{prefix}}-class"
 >
   <block wx:if="{{!range}}">
     <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--min">

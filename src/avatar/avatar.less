@@ -21,6 +21,8 @@
 @avatar-circle-border-radius: var(--td-avatar-circle-border-radius, @radius-circle);
 @avatar-round-border-radius: var(--td-avatar-round-border-radius, @radius-default);
 
+@avatar-margin-left: var(--td-avatar-margin-left, 0);
+
 .@{prefix}-avatar {
   display: flex;
   align-items: center;
@@ -28,6 +30,13 @@
   box-sizing: border-box;
   background-color: @avatar-bg-color;
   color: @avatar-content-color;
+
+  &__wrapper {
+    display: inline-flex;
+    position: relative;
+    vertical-align: top;
+    margin-left: @avatar-margin-left;
+  }
 
   &--large {
     width: @avatar-large-width;
@@ -104,9 +113,4 @@
       border-width: @avatar-border-width-large;
     }
   }
-}
-
-.@{prefix}-avatar__wrapper {
-  display: inline-flex;
-  position: relative;
 }

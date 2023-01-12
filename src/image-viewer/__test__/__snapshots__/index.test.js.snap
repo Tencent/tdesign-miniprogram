@@ -17,7 +17,7 @@ exports[`image-viewer :base 1`] = `
       tClassText="t-image--loading-text"
     >
       <wx-view
-        class="t-class"
+        class="class t-class"
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
@@ -83,7 +83,7 @@ exports[`image-viewer :base 2`] = `
       tClassText="t-image--loading-text"
     >
       <wx-view
-        class="t-class"
+        class="class t-class"
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
@@ -149,7 +149,7 @@ exports[`image-viewer :base 3`] = `
       tClassText="t-image--loading-text"
     >
       <wx-view
-        class="t-class"
+        class="class t-class"
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
