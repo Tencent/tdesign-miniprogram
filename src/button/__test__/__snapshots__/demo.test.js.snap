@@ -225,7 +225,6 @@ exports[`Button Button shape demo works fine 1`] = `
   </wx-view>
   <t-button
     block="{{true}}"
-    shape="round"
     size="large"
     tClass="external-class"
     theme="primary"

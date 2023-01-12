@@ -47,10 +47,10 @@ export default class Button extends SuperComponent {
       const classList = [
         name,
         `${prefix}-class`,
-        `${name}--${this.data.theme || 'default'}`,
-        `${name}--size-${this.data.size || 'medium'}`,
-        `${name}--${this.data.shape || 'rectangle'}`,
         `${name}--${this.data.variant || 'base'}`,
+        `${name}--${this.data.theme || 'default'}`,
+        `${name}--${this.data.shape || 'rectangle'}`,
+        `${name}--size-${this.data.size || 'medium'}`,
       ];
 
       if (this.data.block) {
