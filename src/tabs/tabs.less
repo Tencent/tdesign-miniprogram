@@ -73,18 +73,6 @@
       height: @tab-item-height;
     }
 
-    &--left,
-    &--right {
-      height: @tab-item-vertical-height;
-      line-height: @tab-item-vertical-height;
-      width: @tab-item-vertical-width;
-      background-color: rgb(243, 243, 243);
-
-      &.@{prefix}-is-active {
-        background-color: #fff;
-      }
-    }
-
     &-inner {
       &--tag {
         width: 100%;
@@ -180,11 +168,6 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-
-    &--left,
-    &--right {
-      flex-direction: column;
-    }
   }
 
   &__track {
@@ -193,18 +176,6 @@
     z-index: 1;
     transition-duration: 0.3s;
     background-color: @tab-track-color;
-
-    &--left {
-      left: 0;
-      top: 0;
-      width: @tab-track-thickness;
-    }
-
-    &--right {
-      right: 0;
-      top: 0;
-      width: @tab-track-thickness;
-    }
 
     &--top,
     &--bottom {
@@ -225,12 +196,6 @@
 
     &--top {
       .border(bottom, @tab-border-color);
-    }
-
-    &--left,
-    &--right {
-      width: @tab-item-vertical-width;
-      max-height: 100vh;
     }
   }
 
@@ -258,34 +223,5 @@
 
   &--bottom {
     flex-direction: column-reverse;
-  }
-
-  &--left,
-  &--right {
-    .@{prefix}-tabs__sticky--left {
-      width: @tab-item-vertical-width;
-    }
-
-    .@{prefix}-tabs__content-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      transition-property: transform;
-    }
-
-    .@{prefix}-tabs__content {
-      width: calc(100% - @tab-item-vertical-width);
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: @tab-item-vertical-width;
-      overflow: hidden;
-    }
-  }
-
-  &--right {
-    flex-direction: row-reverse;
   }
 }
