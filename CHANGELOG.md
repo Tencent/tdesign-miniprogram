@@ -5,6 +5,27 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.0.0-rc `2023-01-12` 
+### ❗ Breaking Changes
+- 全部组件开启 vritualHost，当基础库版本低于 2.19.2 自动关闭 @LeeJim ([#1495](https://github.com/Tencent/tdesign-miniprogram/pull/1495))
+- 全部组件使用 style 属性替代 customStyle @LeeJim ([#1495](https://github.com/Tencent/tdesign-miniprogram/pull/1495))
+- `Tabs`: 废弃 placement 属性，左右布局请使用 SideBar 组件 @LeeJim ([#1492](https://github.com/Tencent/tdesign-miniprogram/pull/1492))
+
+### 🚀 Features
+- `Cell`: 新增 CSS Varialbes 用于控制高度 @LeeJim ([#1482](https://github.com/Tencent/tdesign-miniprogram/pull/1482))
+- `Indexes`: 新增支持 stickyOffset 属性，用于调整吸顶时的距离 @LeeJim ([#1485](https://github.com/Tencent/tdesign-miniprogram/pull/1485))
+- `Button`: 支持 0.5px 边框 @anlyyao ([#1474](https://github.com/Tencent/tdesign-miniprogram/pull/1474))
+
+### 🐞 Bug Fixes
+- `Button`: 修复 `shape = 'round'` 或 `‘circle’` 时，`border`样式错误 @anlyyao ([#1491](https://github.com/Tencent/tdesign-miniprogram/pull/1491))
+- `Calendar`: 修复视觉问题 @LeeJim ([#1473](https://github.com/Tencent/tdesign-miniprogram/pull/1473))
+- `Collapse`: 当 panel 内容为动态内容时，支持展开 @LeeJim ([#1477](https://github.com/Tencent/tdesign-miniprogram/pull/1477))
+- `Textarea`: 支持自适应父容器高度 @anlyyao ([#1484](https://github.com/Tencent/tdesign-miniprogram/pull/1484))
+- `Dialog`: 修复 confirmBtn 为 string 类型时，样式错误 @anlyyao ([#1474](https://github.com/Tencent/tdesign-miniprogram/pull/1474))
+- `Stepper`: 修复 `theme='normal'`时禁用态视觉错误 @anlyyao ([#1487](https://github.com/Tencent/tdesign-miniprogram/pull/1487))
+- `Rate`: 修复半选时 tips 的图标 @LeeJim ([#1490](https://github.com/Tencent/tdesign-miniprogram/pull/1490))
+- `Collapse`:  面板收起时，隐藏 header 的边框 @LeeJim ([#1493](https://github.com/Tencent/tdesign-miniprogram/pull/1493))
+
 ## 🌈 0.34.0 `2023-01-09` 
 ### ❗ Breaking Changes
 - `Avatar`: 优化类名，符合 BEM 规范 @LeeJim ([#1441](https://github.com/Tencent/tdesign-miniprogram/pull/1441))
