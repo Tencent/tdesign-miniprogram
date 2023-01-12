@@ -32,6 +32,7 @@ export interface TdTabsProps {
   /**
    * 选项卡位置
    * @default top
+   * @deprecated
    */
   placement?: {
     type: StringConstructor;

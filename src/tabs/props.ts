@@ -19,11 +19,6 @@ const props: TdTabsProps = {
   externalClasses: {
     type: Array,
   },
-  /** 选项卡位置 */
-  placement: {
-    type: String,
-    value: 'top',
-  },
   /** 是否展示底部激活线条 */
   showBottomLine: {
     type: Boolean,
