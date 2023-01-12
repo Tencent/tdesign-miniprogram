@@ -14,7 +14,7 @@ page .round-image {
 
 .side-bar-wrapper .content {
   flex: 1;
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 
 .side-bar-wrapper .section {
@@ -31,4 +31,5 @@ page .round-image {
 .side-bar-wrapper .image {
   width: 96rpx;
   height: 96rpx;
+  border: 2rpx solid #e7e7e7;
 }

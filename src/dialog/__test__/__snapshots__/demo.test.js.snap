@@ -393,7 +393,7 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
   >
     <t-image
       slot="top"
-      src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
+      src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
       tClass="dialog-image"
     />
   </t-dialog>
@@ -427,7 +427,7 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
     <t-image
       class="image-host"
       slot="middle"
-      src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
+      src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
       tClass="dialog-image"
     />
   </t-dialog>

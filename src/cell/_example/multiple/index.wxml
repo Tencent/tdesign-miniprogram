@@ -21,7 +21,7 @@
     title="多行带图片"
     description="一段很长很长的内容文字"
     align="top"
-    image="https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png"
+    image="https://tdesign.gtimg.com/miniprogram/images/cell1.png"
     hover
   />
 </view>
