@@ -22,7 +22,7 @@ const getAccessToken = (appId, appSecret) => {
  * @parameter body
  * @parameter scene //跳转带参
  * @parameter path  //跳转页面
- * @return 成功时返回的是 Buffer，失败时返回 JSON
+ * @return 二成功时返回的是 Buffer ，失败时返回 JSON
  */
 const getUnlimitedQRCode = (token, parameter, config) => {
   const url = `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${token}`;
