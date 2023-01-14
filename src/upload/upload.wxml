@@ -63,7 +63,8 @@
     >
       <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
         <slot name="add-content" />
-        <view class="{{classPrefix}}__add-icon">
+        <block wx:if="{{addContent}}">{{addContent}}</block>
+        <view wx:else class="{{classPrefix}}__add-icon">
           <t-icon name="add" />
         </view>
       </view>
