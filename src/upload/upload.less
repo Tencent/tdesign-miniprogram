@@ -19,13 +19,17 @@
   &__add-icon {
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     font-size: @upload-add-icon-font-size;
     background-color: @upload-add-bg-color;
     color: @upload-add-color;
     border-radius: @upload-radius;
+
+    &:only-child {
+      display: flex;
+    }
   }
 
   &__thumbnail {

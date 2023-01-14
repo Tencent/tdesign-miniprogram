@@ -329,7 +329,7 @@ describe('upload', () => {
           id="t-upload"
           addContent="slot"
         >
-          <text slot="add-content"> {{text}} </text>
+          <text slot="add-content" class="custom-add"> {{text}} </text>
         </t-upload>
       `,
         data: {
@@ -342,7 +342,7 @@ describe('upload', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $addIcon = comp.querySelector('#t-upload >>> .t-upload__add-icon');
+      const $addIcon = comp.querySelector('#t-upload >>> .custom-add');
       expect($addIcon.dom.textContent).toContain(comp.data.text);
     });
   });
