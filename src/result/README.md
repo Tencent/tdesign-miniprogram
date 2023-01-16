@@ -40,6 +40,18 @@ isComponent: true
 
 {{ custom }}
 
+## FAQ
+
+<details>
+  <summary>
+    本地图片无法正确引用?
+    <span class="icon">👇</span>
+  </summary>
+  <p style="margin-top: 10px; color: rgba(0, 0, 0, .6)">
+    建议使用绝对路径，而不是相对路径。绝对路径以 app.json 所在位置为基准。
+  </p>
+</details>
+
 ## API
 ### Result Props
 
