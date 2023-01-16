@@ -58,7 +58,7 @@ exports[`picker :base 1`] = `
               id="cityItem"
             >
               <wx-view
-                class="t-picker-item__group t-picker-item__group--roomy"
+                class="t-picker-item__group class t-class"
                 style=""
                 bind:touchcancel="onTouchEnd"
                 bind:touchend="onTouchEnd"
