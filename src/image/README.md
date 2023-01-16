@@ -27,7 +27,7 @@ isComponent: true
 
 {{ status }}
 
-## FAQ
+## 常见问题
 
 <details>
   <summary>

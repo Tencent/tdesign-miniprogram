@@ -40,7 +40,7 @@ isComponent: true
 
 {{ custom }}
 
-## FAQ
+## 常见问题
 
 <details>
   <summary>
