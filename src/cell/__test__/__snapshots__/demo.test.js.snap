@@ -139,46 +139,42 @@ exports[`Cell Cell multiple demo works fine 1`] = `
 
 exports[`Cell Cell theme demo works fine 1`] = `
 <theme>
-  <wx-view
-    class="demo-section__wrapper"
+  <t-cell-group
+    theme="card"
   >
-    <t-cell-group
-      theme="card"
+    <t-cell
+      arrow="{{true}}"
+      hover="{{true}}"
+      title="单行标题"
     >
-      <t-cell
-        arrow="{{true}}"
-        hover="{{true}}"
-        title="单行标题"
-      >
-        <t-icon
-          color="#0052d4"
-          name="service"
-          slot="left-icon"
-        />
-      </t-cell>
-      <t-cell
-        arrow="{{true}}"
-        hover="{{true}}"
-        title="单行标题"
-      >
-        <t-icon
-          color="#0052d4"
-          name="internet"
-          slot="left-icon"
-        />
-      </t-cell>
-      <t-cell
-        arrow="{{true}}"
-        hover="{{true}}"
-        title="单行标题"
-      >
-        <t-icon
-          color="#0052d4"
-          name="lock-on"
-          slot="left-icon"
-        />
-      </t-cell>
-    </t-cell-group>
-  </wx-view>
+      <t-icon
+        color="#0052d4"
+        name="service"
+        slot="left-icon"
+      />
+    </t-cell>
+    <t-cell
+      arrow="{{true}}"
+      hover="{{true}}"
+      title="单行标题"
+    >
+      <t-icon
+        color="#0052d4"
+        name="internet"
+        slot="left-icon"
+      />
+    </t-cell>
+    <t-cell
+      arrow="{{true}}"
+      hover="{{true}}"
+      title="单行标题"
+    >
+      <t-icon
+        color="#0052d4"
+        name="lock-on"
+        slot="left-icon"
+      />
+    </t-cell>
+  </t-cell-group>
 </theme>
 `;
