@@ -24,6 +24,8 @@ export default class PickerItem extends SuperComponent {
     },
   };
 
+  externalClasses = ['class', `${prefix}-class`];
+
   properties = props;
 
   observers = {
@@ -33,6 +35,7 @@ export default class PickerItem extends SuperComponent {
   };
 
   data = {
+    prefix,
     classPrefix: name,
     offset: 0, // 滚动偏移量
     duration: 0, // 滚动动画延迟
