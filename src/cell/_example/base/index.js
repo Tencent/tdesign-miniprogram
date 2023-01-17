@@ -1,3 +1,1 @@
-Component({
-  data: {},
-});
+Component({});

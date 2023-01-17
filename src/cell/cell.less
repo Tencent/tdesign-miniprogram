@@ -20,6 +20,8 @@
 @cell-right-icon-color: var(--td-cell-right-icon-color, @font-gray-3);
 @cell-image-width: var(--td-cell-image-width, 96rpx);
 @cell-image-height: var(--td-cell-image-height, 96rpx);
+@cell-border-left-space: var(--td-border-left-space, @cell-horizontal-padding);
+@cell-border-right-space: var(--td-border-right-space, 0);
 
 .@{prefix}-cell {
   position: relative;
@@ -36,7 +38,8 @@
 
   &::after {
     .hairline-bottom(@cell-border-color);
-    left: 32rpx;
+    left: @cell-border-left-space;
+    right: @cell-border-right-space;
   }
 
   &--borderless::after {
