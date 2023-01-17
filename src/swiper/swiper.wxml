@@ -37,7 +37,7 @@
     wx:if="{{navigation}}"
     t-class="{{prefix}}-class-nav"
     type="{{navigation.type || 'dots'}}"
-    current="{{_current}}"
+    current="{{navCurrent}}"
     total="{{list.length}}"
     direction="{{direction}}"
     pagination-position="{{paginationPosition}}"

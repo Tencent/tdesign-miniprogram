@@ -22,7 +22,7 @@ export default class Swiper extends SuperComponent {
   properties = props;
 
   observers = {
-    _current(v) {
+    navCurrent(v) {
       this.updateNav(v);
     },
   };
@@ -43,7 +43,7 @@ export default class Swiper extends SuperComponent {
   lifetimes = {
     ready() {
       const { current } = this.properties;
-      this.setData({ _current: current });
+      this.setData({ navCurrent: current });
     },
   };
 
@@ -72,7 +72,7 @@ export default class Swiper extends SuperComponent {
       const { current, source } = e.detail;
 
       this.setData({
-        _current: current,
+        navCurrent: current,
       });
 
       this.triggerEvent('change', { current, source });
