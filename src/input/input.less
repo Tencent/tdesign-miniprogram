@@ -14,6 +14,8 @@
 
 @input-bg-color: var(--td-input-bg-color, @bg-color-block); // 输入框背景颜色
 @input-border-color: var(--td-input-border-color, @gray-color-3); // 输入框分割线颜色
+@input-border-left-space: var(--td-input-border-left-space, 32rpx);
+@input-border-right-space: var(--td-input-border-right-space, 0);
 @input-placeholder-text-color: var(--td-input-placeholder-text-color, @text-color-placeholder); // 输入框占位符文本颜色
 @input-prefix-icon-color: var(--td-input-prefix-icon-color, @font-gray-1); // // 输入框前缀图标颜色
 @input-suffix-icon-color: var(--td-input-suffix-icon-color, @font-gray-3); // 输入框后缀图标颜色
@@ -30,6 +32,11 @@
 
   &--border {
     .border(bottom, @input-border-color);
+
+    &:after {
+      left: @input-border-left-space;
+      right: @input-border-right-space;
+    }
   }
 
   &--layout-vertical {
