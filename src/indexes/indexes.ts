@@ -261,7 +261,7 @@ export default class Indexes extends SuperComponent {
     },
 
     onScroll({ scrollTop }) {
-      this.setAnchorOnScroll(scrollTop);
+      throttle(this.setAnchorOnScroll(scrollTop));
     },
   };
 }
