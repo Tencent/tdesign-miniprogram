@@ -4,6 +4,6 @@
     placeholder="请输入文字"
     borderless="{{true}}"
     suffixIcon="{{ { name: 'error-circle-filled', ariaLabel: '提示' } }}"
-    customStyle="{{customStyle}}"
+    style="{{style}}"
   />
 </view>

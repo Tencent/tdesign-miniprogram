@@ -1,4 +1,6 @@
-<t-navbar class="block" left-arrow title="标题居中" />
+<view class="block">
+  <t-navbar left-arrow title="标题居中" />
+</view>
 
 <t-navbar left-arrow>
   <view slot="left" class="custom-title">标题左对齐</view>

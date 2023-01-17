@@ -9,7 +9,7 @@ exports[`calendar :base 1`] = `
       <wx-view
         ariaModal="{{true}}"
         ariaRole="dialog"
-        class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
+        class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active class t-class"
         style="z-index:11500;"
         bind:transitionend="onTransitionEnd"
       >
@@ -40,7 +40,7 @@ exports[`calendar :base 1`] = `
                 ariaHidden="{{false}}"
                 ariaLabel="关闭"
                 ariaRole="button"
-                class="t-icon t-class"
+                class="t-icon class t-class"
                 style="font-size: 24px"
                 bind:tap="onTap"
               >
@@ -752,7 +752,7 @@ exports[`calendar :base 1`] = `
                 <wx-button
                   appParameter=""
                   ariaLabel=""
-                  class="t-button t-class t-button--primary t-button--size-medium t-button--rectangle t-button--base t-button--block"
+                  class="class t-button t-class t-button--base t-button--primary t-button--rectangle t-button--size-medium t-button--block"
                   data-custom="{{null}}"
                   formType=""
                   hoverClass="t-button--hover"

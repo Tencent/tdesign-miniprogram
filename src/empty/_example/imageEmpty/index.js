@@ -1,5 +1,5 @@
 Component({
   data: {
-    image: 'https://oteam-tdesign-1258344706.cos.ap-guangzhou.tencentcos.cn/miniprogram/images/empty-image.png',
+    image: 'https://tdesign.gtimg.com/miniprogram/images/empty1.png',
   },
 });

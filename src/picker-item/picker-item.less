@@ -18,15 +18,6 @@
     overflow: hidden;
     flex: 1;
     z-index: 1;
-    padding: 0 40rpx;
-
-    &--roomy {
-      padding: 0 64rpx;
-    }
-
-    &--narrow {
-      padding: 0 16rpx;
-    }
   }
 
   &__wrapper {
@@ -34,9 +25,10 @@
   }
 
   &__item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     height: @picker-item-height;
     line-height: @picker-item-height;
     color: @picker-item-color;

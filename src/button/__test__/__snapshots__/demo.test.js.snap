@@ -167,12 +167,14 @@ exports[`Button Button icon-btn demo works fine 1`] = `
     class="button-example"
   >
     <t-button
+      class="margin"
       content="填充按钮"
       icon="app"
       size="large"
       theme="primary"
     />
     <t-button
+      class="margin"
       loading="{{true}}"
       size="large"
       theme="primary"
@@ -181,6 +183,7 @@ exports[`Button Button icon-btn demo works fine 1`] = `
     </t-button>
     <t-button
       ariaLabel="返回"
+      class="margin"
       icon="chevron-left"
       shape="square"
       size="large"
@@ -225,7 +228,6 @@ exports[`Button Button shape demo works fine 1`] = `
   </wx-view>
   <t-button
     block="{{true}}"
-    shape="round"
     size="large"
     tClass="external-class"
     theme="primary"

@@ -16,6 +16,10 @@ const defaultOptionLabel = '选择选项';
 export default class Cascader extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
+  options: WechatMiniprogram.Component.ComponentOptions = {
+    multipleSlots: true,
+  };
+
   properties = props;
 
   data = {

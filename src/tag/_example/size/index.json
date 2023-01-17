@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "t-tag": "tdesign-miniprogram/tag/tag",
-    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag"
+    "t-tag": "tdesign-miniprogram/tag/tag"
   }
 }

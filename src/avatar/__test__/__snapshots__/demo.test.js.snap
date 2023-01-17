@@ -7,27 +7,27 @@ exports[`Avatar Avatar action demo works fine 1`] = `
   >
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
   </t-avatar-group>
 </action>
@@ -46,7 +46,7 @@ exports[`Avatar Avatar badge-avatar demo works fine 1`] = `
       }
     }}"
     class="avatar-example"
-    image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
   />
   <t-avatar
     badgeProps="{{
@@ -107,27 +107,27 @@ exports[`Avatar Avatar exhibition demo works fine 1`] = `
   >
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
     />
     <t-avatar
       bordered="{{true}}"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
   </t-avatar-group>
 </exhibition>
@@ -151,11 +151,11 @@ exports[`Avatar Avatar image-avatar demo works fine 1`] = `
 <image-avatar>
   <t-avatar
     class="avatar-example"
-    image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
   />
   <t-avatar
     class="avatar-example"
-    image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     shape="round"
   />
 </image-avatar>
@@ -168,7 +168,7 @@ exports[`Avatar Avatar size demo works fine 1`] = `
   >
     <t-avatar
       class="avatar-example--large"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
       size="large"
     />
     <t-avatar
@@ -189,7 +189,7 @@ exports[`Avatar Avatar size demo works fine 1`] = `
   >
     <t-avatar
       class="avatar-example--medium"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
     <t-avatar
       class="avatar-example--medium"
@@ -209,7 +209,7 @@ exports[`Avatar Avatar size demo works fine 1`] = `
   >
     <t-avatar
       class="avatar-example--small"
-      image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
       size="small"
     />
     <t-avatar

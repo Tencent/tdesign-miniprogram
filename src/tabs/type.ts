@@ -18,7 +18,7 @@ export interface TdTabsProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -32,6 +32,7 @@ export interface TdTabsProps {
   /**
    * 选项卡位置
    * @default top
+   * @deprecated
    */
   placement?: {
     type: StringConstructor;

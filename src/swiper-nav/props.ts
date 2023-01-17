@@ -12,7 +12,7 @@ const props: TdSwiperNavProps = {
     value: 0,
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

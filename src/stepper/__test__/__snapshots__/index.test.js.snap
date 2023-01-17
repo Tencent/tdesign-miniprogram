@@ -19,7 +19,7 @@ exports[`stepper event : input 1`] = `
         ariaHidden="{{false}}"
         ariaLabel=""
         ariaRole=""
-        class="t-icon t-class"
+        class="t-icon class t-class"
         style=""
         bind:tap="onTap"
       >
@@ -57,7 +57,7 @@ exports[`stepper event : input 1`] = `
         ariaHidden="{{false}}"
         ariaLabel=""
         ariaRole=""
-        class="t-icon t-class"
+        class="t-icon class t-class"
         style=""
         bind:tap="onTap"
       >
@@ -89,7 +89,7 @@ exports[`stepper event : input 2`] = `
         ariaHidden="{{false}}"
         ariaLabel=""
         ariaRole=""
-        class="t-icon t-class"
+        class="t-icon class t-class"
         style=""
         bind:tap="onTap"
       >
@@ -127,7 +127,7 @@ exports[`stepper event : input 2`] = `
         ariaHidden="{{false}}"
         ariaLabel=""
         ariaRole=""
-        class="t-icon t-class"
+        class="t-icon class t-class"
         style=""
         bind:tap="onTap"
       >

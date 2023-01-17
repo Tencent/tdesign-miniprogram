@@ -5,26 +5,43 @@ const { getAccessToken, getUnlimitedQRCode } = require('./api');
 const APP_ID = process.argv[process.argv.indexOf('--APP_ID') + 1]; // 在 --APP_ID 后面
 const APP_SECRET = process.argv[process.argv.indexOf('--APP_SECRET') + 1]; // --APP_SECRET 后面
 
-const pagesFolder = path.join(__dirname, '../../example/pages');
-const pages = fs.readdirSync(pagesFolder);
+// 去读 app.json 中 pages && subpackages 字段
+const { pages, subpackages } = require('../../example/app.json');
 
-const timestamp = new Date().getTime();
+const isExistStr = (str, arr) => {
+  const temp = [...new Set(str.split('/').slice(1))].join('-');
+  return arr.includes(temp);
+};
 
-/**
- * 清空目标文件夹下内容
- * @param dirPath
- */
-const getEmptyFolder = (dirPath) => {
-  const dirList = fs.readdirSync(dirPath);
-  dirList.forEach((fileName) => {
-    fs.unlinkSync(`${dirPath}/${fileName}`);
+const getImageList = () => {
+  const imageFolderDir = path.resolve(__dirname, `../../site/public/assets/qrcode`);
+  const images = fs.readdirSync(imageFolderDir);
+  const imageOldList = [];
+  images.forEach((item) => {
+    imageOldList.push(item.split('.')[0]);
   });
+  return imageOldList;
+};
+
+const getNewPageList = (list) => {
+  const pageList = [];
+  const imageOldList = getImageList();
+  list.forEach((item) => {
+    if (Object.prototype.toString.call(item) === '[object Object]') {
+      item.pages.forEach((subItem) => {
+        if (!isExistStr(item.root + subItem, imageOldList)) {
+          pageList.push(item.root + subItem);
+        }
+      });
+    } else if (!isExistStr(item, imageOldList)) {
+      pageList.push(item);
+    }
+  });
+
+  return pageList;
 };
 
 const getUnlimitedQRCodeImage = (appid, appSecret) => {
-  const targetFolder = path.resolve(__dirname, `../../site/public/assets/qrcode`);
-  getEmptyFolder(targetFolder);
-
   getAccessToken(appid, appSecret).then((e) => {
     if (e.access_token) {
       const token = e.access_token;
@@ -38,11 +55,16 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
         responseType: 'arraybuffer',
       };
 
+      const pageList = getNewPageList(pages.concat(subpackages));
+
       // 循环 pages, 获取相应小程序码
-      pages.forEach((item) => {
+      pageList.forEach((item, index) => {
+        const temp = [...new Set(item.split('/').slice(1))];
+        const fileName = temp.join('-');
+
         const specialParameter = {
-          page: `pages/${item}/${item}`, // 扫码进入的小程序页面路径
-          scene: `name=${item}`, // 标识
+          page: item, // 扫码进入的小程序页面路径
+          scene: `name=${temp[0]}`, // 标识
         };
         getUnlimitedQRCode(token, JSON.stringify({ ...specialParameter, ...baseParameter }), { ...baseConfig }).then(
           (res) => {
@@ -50,11 +72,13 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
             if (res.length < 200) {
               const { errcode, errmsg } = JSON.parse(res.toString());
               // eslint-disable-next-line no-console
-              console.log('===小程序码获取失败===', { errcode, errmsg });
+              console.log('===小程序码获取失败===', item, { errcode, errmsg });
               return;
             }
+
             const buffer = Buffer.from(res, 'base64');
-            const destPath = path.resolve(__dirname, `../../site/public/assets/qrcode/${item}-${timestamp}.png`);
+            const destPath = path.resolve(__dirname, `../../site/public/assets/qrcode/${fileName}.png`);
+
             fs.writeFile(
               destPath,
               buffer,

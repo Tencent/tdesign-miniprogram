@@ -7,7 +7,7 @@
 import { TdPickerItemProps } from './type';
 const props: TdPickerItemProps = {
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

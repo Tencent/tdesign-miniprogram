@@ -7,7 +7,7 @@
 import { TdToastProps } from './type';
 const props: TdToastProps = {
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

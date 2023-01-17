@@ -6,12 +6,6 @@
   --td-loading-text-font-size: 28rpx;
 }
 
-.loading-size-demo t-loading {
-  display: block;
-  box-sizing: border-box;
-  margin: 32rpx 0 48rpx;
-}
-
 .demo-desc {
-  margin-left: 0;
+  margin: 48rpx 0 32rpx;
 }

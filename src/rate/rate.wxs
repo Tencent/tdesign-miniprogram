@@ -33,6 +33,9 @@ module.exports = {
       }
     } else if (allowHalf && curVal - index > 0) {
       className.push(classPrefix + '--selected-half');
+      if (scaleIndex === index + 1) {
+        className.push(classPrefix + '--current');
+      }
       if (disabled) {
         className.push(classPrefix + '--disabled-half');
       }

@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "TreeSelect",
-  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
     "normal": "./normal",

@@ -185,6 +185,7 @@
   outline: none;
   font-family: PingFang SC, Microsoft YaHei, Arial Regular;
   font-weight: @button-font-weight;
+  vertical-align: top;
 
   .cursor-pointer();
 
@@ -389,21 +390,35 @@
 
   // 圆角长方形
   &--round {
-    &.@{button}--size {
-      &-large {
-        border-radius: calc(@button-large-height / 2);
-      }
+    &.@{button}--size-large {
+      border-radius: calc(@button-large-height / 2);
 
-      &-medium {
-        border-radius: calc(@button-medium-height / 2);
+      &::after {
+        border-radius: @button-large-height;
       }
+    }
 
-      &-small {
-        border-radius: calc(@button-small-height / 2);
+    &.@{button}--size-medium {
+      border-radius: calc(@button-medium-height / 2);
+
+      &::after {
+        border-radius: @button-medium-height;
       }
+    }
 
-      &-extra-small {
-        border-radius: calc(28px / 2);
+    &.@{button}--size-small {
+      border-radius: calc(@button-small-height / 2);
+
+      &::after {
+        border-radius: @button-small-height;
+      }
+    }
+
+    &.@{button}--size-extra-small {
+      border-radius: calc(@button-extra-small-height / 2);
+
+      &::after {
+        border-radius: @button-extra-small-height;
       }
     }
   }
@@ -412,48 +427,57 @@
   &--square {
     padding: 0;
 
-    &.@{button}--size {
-      &-large {
-        width: @button-large-height;
-      }
+    &.@{button}--size-large {
+      width: @button-large-height;
+    }
 
-      &-medium {
-        width: @button-medium-height;
-      }
+    &.@{button}--size-medium {
+      width: @button-medium-height;
+    }
 
-      &-small {
-        width: @button-small-height;
-      }
+    &.@{button}--size-small {
+      width: @button-small-height;
+    }
 
-      &-extra-small {
-        width: 28px;
-      }
+    &.@{button}--size-extra-small {
+      width: @button-extra-small-height;
     }
   }
 
   // 圆形
   &--circle {
     padding: 0;
+    border-radius: 50%;
 
-    &.@{button}--size {
-      &-large {
+    &.@{button}--size-large {
+      width: @button-large-height;
+
+      &::after {
         border-radius: 50%;
-        width: @button-large-height;
       }
+    }
 
-      &-medium {
+    &.@{button}--size-medium {
+      width: @button-medium-height;
+
+      &::after {
         border-radius: 50%;
-        width: @button-medium-height;
       }
+    }
 
-      &-small {
+    &.@{button}--size-small {
+      width: @button-small-height;
+
+      &::after {
         border-radius: 50%;
-        width: @button-small-height;
       }
+    }
 
-      &-extra-small {
+    &.@{button}--size-extra-small {
+      width: @button-extra-small-height;
+
+      &::after {
         border-radius: 50%;
-        width: 28px;
       }
     }
   }

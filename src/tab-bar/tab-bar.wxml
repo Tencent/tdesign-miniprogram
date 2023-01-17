@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{_.cls(classPrefix, [['border', bordered], ['fixed', fixed], ['safe', safeAreaInsetBottom], shape])}} {{prefix}}-class"
   aria-role="tablist"
 >

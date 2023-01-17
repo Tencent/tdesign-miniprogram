@@ -54,7 +54,7 @@ export default class Rate extends SuperComponent {
           this.setData({
             tipsVisible: true,
             actionType: eventType,
-            scaleIndex: eventType === 'move' ? Math.ceil(value) : -1,
+            scaleIndex: Math.ceil(value),
             tipsLeft: Math.max(left, 0),
           });
         }
@@ -84,7 +84,7 @@ export default class Rate extends SuperComponent {
       if (actionType === 'move') return;
 
       this._trigger('change', { value });
-      setTimeout(() => this.setData({ tipsVisible: false }), 300);
+      setTimeout(() => this.setData({ tipsVisible: false, scaleIndex: -1 }), 300);
     },
   };
 }

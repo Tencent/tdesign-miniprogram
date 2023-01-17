@@ -6,13 +6,13 @@ exports[`dialog :base 1`] = `
     id="dialog"
   >
     <t-popup
-      class="t-dialog__wrapper"
+      tClass="t-dialog__wrapper"
       bind:visible-change="overlayClick"
     >
       <wx-view
         ariaModal="{{true}}"
         ariaRole="dialog"
-        class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active t-class"
+        class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active class t-class"
         style="z-index:11500;"
         bind:transitionend="onTransitionEnd"
       >
