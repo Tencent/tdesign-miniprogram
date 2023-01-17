@@ -75,7 +75,7 @@ describe('input', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const component = comp.querySelector('.base >>> .t-input__wrapper');
+      const component = comp.querySelector('.base >>> .t-input');
       expect(component.dom.getAttribute('class').includes('t-input--border')).toBeFalsy();
 
       const $input = comp.querySelector('.base >>> .t-input__control');

@@ -21,6 +21,7 @@ export default class Input extends SuperComponent {
   };
 
   externalClasses = [
+    'class',
     `${prefix}-class`,
     `${prefix}-class-prefix-icon`,
     `${prefix}-class-label`,

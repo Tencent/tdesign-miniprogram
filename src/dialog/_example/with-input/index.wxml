@@ -17,7 +17,14 @@
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
-  <input slot="content" placeholder="输入文案" placeholder-class="placeholder" />
+  <t-input
+    borderless
+    class="dialog-input"
+    clearable
+    slot="content"
+    placeholder="输入12文案"
+    placeholder-class="placeholder"
+  />
 </t-dialog>
 
 <t-button
@@ -39,5 +46,12 @@
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
-  <input slot="content" placeholder="输入文案" placeholder-class="placeholder" />
+  <t-input
+    borderless
+    class="dialog-input"
+    clearable
+    slot="content"
+    placeholder="输入12文案"
+    placeholder-class="placeholder"
+  />
 </t-dialog>
