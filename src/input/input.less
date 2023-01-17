@@ -24,13 +24,9 @@
 
 .@{prefix}-input {
   background-color: @input-bg-color;
-
-  &__wrapper {
-    display: flex;
-    flex: 1;
-    margin-left: @spacer-2;
-    padding: @input-vertical-padding @input-vertical-padding @input-vertical-padding 0;
-  }
+  display: flex;
+  flex: 1;
+  padding: @input-vertical-padding;
 
   &--border {
     .border(bottom, @input-border-color);
