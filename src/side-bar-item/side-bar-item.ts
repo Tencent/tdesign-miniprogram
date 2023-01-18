@@ -21,7 +21,11 @@ export default class SideBarItem extends SuperComponent {
     },
   };
 
-  observers = {};
+  observers = {
+    icon(v) {
+      this.setData({ _icon: typeof v === 'string' ? { name: v } : v });
+    },
+  };
 
   data = {
     classPrefix: name,
