@@ -423,3 +423,27 @@ exports[`Tabs Tabs with-content demo works fine 1`] = `
   </t-tabs>
 </with-content>
 `;
+
+exports[`Tabs Tabs with-icon demo works fine 1`] = `
+<with-icon>
+  <t-tabs
+    defaultValue="{{0}}"
+  >
+    <t-tab-panel
+      icon="app"
+      label="选项"
+      value="{{0}}"
+    />
+    <t-tab-panel
+      icon="app"
+      label="选项"
+      value="{{1}}"
+    />
+    <t-tab-panel
+      icon="app"
+      label="选项"
+      value="{{2}}"
+    />
+  </t-tabs>
+</with-icon>
+`;
