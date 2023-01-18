@@ -27,6 +27,10 @@ isComponent: true
 
 {{ scroll }}
 
+### 带图标选项卡
+
+{{ with-icon }}
+
 ### 带徽章选项卡
 
 {{ with-badge }}
