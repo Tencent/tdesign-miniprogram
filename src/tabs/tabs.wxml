@@ -1,4 +1,5 @@
 <import src="../common/template/badge.wxml" />
+<import src="../common/template/icon.wxml" />
 <wxs src="./tabs.wxs" module="filters" />
 <wxs src="../common/utils.wxs" module="_" />
 
@@ -33,6 +34,7 @@
             aria-disabled="{{item.disabled}}"
           >
             <view class="{{_.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])}}">
+              <template wx:if="{{item.icon}}" is="icon" data="{{ class: classPrefix + '__icon', ...item.icon }}" />
               <block wx:if="{{item.badgeProps}}">
                 <template is="badge" data="{{ ...item.badgeProps, content: item.label }}" />
               </block>

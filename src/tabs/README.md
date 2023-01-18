@@ -27,6 +27,10 @@ isComponent: true
 
 {{ scroll }}
 
+### 带图标选项卡
+
+{{ with-icon }}
+
 ### 带徽章选项卡
 
 {{ with-badge }}
@@ -111,7 +115,6 @@ Page({
 animation | Object | - | 动画效果设置。其中 duration 表示动画时长。TS 类型：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 custom-style | String | - | `0.25.0`。自定义组件样式 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名。`['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
-placement | String | top | 已废弃。选项卡位置。可选项：left/top | N
 show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
 space-evenly | Boolean | true | 选项卡头部空间是否均分 | N
 sticky | Boolean | false | 是否开启粘性布局 | N
@@ -137,6 +140,7 @@ badge-props | Object | null | 透传至 Badge 组件 | N
 custom-style | String | - | `0.25.0`。自定义组件样式 | N
 destroy-on-hide | Boolean | true | 【实现有误，暂不支持】选项卡内容隐藏时是否销毁 | N
 disabled | Boolean | false | 是否禁用当前选项卡 | N
+icon | String / Object | - | `1.0.0-rc.1`。图标，传对象则透传至 Icon | N
 label | String | - | 选项卡名称 | N
 panel | String / Slot | - | 用于自定义选项卡面板内容 | N
 value | String / Number | - | 选项卡的值，唯一标识。TS 类型：`TabValue`，[Tabs API Documents](./tabs?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-panel/type.ts) | N

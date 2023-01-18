@@ -40,6 +40,13 @@ export interface TdTabPanelProps {
     value?: boolean;
   };
   /**
+   * 图标，传对象则透传至 Icon
+   */
+  icon?: {
+    type: null;
+    value?: string | object;
+  };
+  /**
    * 选项卡名称
    * @default ''
    */
