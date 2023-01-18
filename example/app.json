@@ -55,7 +55,7 @@
   "subpackages": [
     {
       "root": "pages/side-bar/",
-      "pages": ["side-bar", "base/index", "switch/index", "custom/index"]
+      "pages": ["side-bar", "base/index", "switch/index", "custom/index", "with-icon/index"]
     },
     {
       "root": "pages/action-sheet/",

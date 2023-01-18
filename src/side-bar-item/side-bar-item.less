@@ -8,8 +8,12 @@
 @side-bar-disabled-color: var(--td-side-bar-disabled-color, @font-gray-4);
 @side-bar-active-color: var(--td-side-bar-active-color, @primary-color);
 @side-bar-border-radius: var(--td-side-bar-border-radius, 18rpx);
+@side-bar-icon-size: var(--td-side-bar-icon-size, 40rpx);
 
 .@{prefix}-side-bar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   padding: 32rpx;
   font-size: @side-bar-font-size;
@@ -24,6 +28,11 @@
     font-weight: 600;
     background: @bg-color-block;
     color: @side-bar-active-color;
+  }
+
+  &__icon {
+    font-size: @side-bar-icon-size;
+    margin-right: 4rpx;
   }
 
   &__prefix,
