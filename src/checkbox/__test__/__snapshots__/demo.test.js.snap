@@ -265,15 +265,15 @@ exports[`Checkbox Checkbox special demo works fine 1`] = `
 </special>
 `;
 
-exports[`Checkbox Checkbox special demo works fine 1`] = `
-<special>
+exports[`Checkbox Checkbox status demo works fine 1`] = `
+<status>
   <t-checkbox-group
-    value="{{
+    defaultValue="{{
       Array [
         "checkbox1",
       ]
     }}"
-    bind:change="onChange"
+    disabled="{{true}}"
   >
     <t-checkbox
       label="选项禁用-已选"
