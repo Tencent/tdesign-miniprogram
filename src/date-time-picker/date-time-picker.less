@@ -1,0 +1,12 @@
+@import '../common/style/index.less';
+
+@data-time-picker-year-width: var(--td-data-time-picker-year-width, 128rpx);
+
+.@{prefix}-date-time-picker {
+  &__item {
+    &--roomly {
+      width: @data-time-picker-year-width;
+      flex: 0 0 @data-time-picker-year-width;
+    }
+  }
+}

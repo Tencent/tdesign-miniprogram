@@ -7,7 +7,10 @@
   <t-demo desc="带图标的公告栏">
     <iconDemo />
   </t-demo>
-  <t-demo desc="带操作的公告栏">
+  <t-demo desc="带关闭的公告栏">
+    <suffixIcon />
+  </t-demo>
+  <t-demo desc="带入口的公告栏">
     <event />
   </t-demo>
   <t-demo desc="自定义样式的公告栏">

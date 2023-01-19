@@ -26,6 +26,10 @@ const props: TdTabPanelProps = {
     type: Boolean,
     value: false,
   },
+  /** 图标，传对象则透传至 Icon */
+  icon: {
+    type: null,
+  },
   /** 选项卡名称 */
   label: {
     type: String,

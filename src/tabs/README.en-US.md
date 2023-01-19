@@ -8,7 +8,6 @@ name | type | default | description | required
 animation | Object | - | Typescript：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 custom-style | String | - | `0.25.0` | N
 external-classes | Array | - | `['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
-placement | String | top | `deprecated`。options：left/top | N
 show-bottom-line | Boolean | true | \- | N
 space-evenly | Boolean | true | \- | N
 sticky | Boolean | false | \- | N
@@ -34,6 +33,7 @@ badge-props | Object | null | \- | N
 custom-style | String | - | `0.25.0` | N
 destroy-on-hide | Boolean | true | \- | N
 disabled | Boolean | false | \- | N
+icon | String / Object | - | `1.0.0-rc.1` | N
 label | String | - | \- | N
 panel | String / Slot | - | \- | N
 value | String / Number | - | Typescript：`TabValue`，[Tabs API Documents](./tabs?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-panel/type.ts) | N

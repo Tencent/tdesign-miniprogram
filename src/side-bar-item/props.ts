@@ -15,6 +15,10 @@ const props: TdSideBarItemProps = {
     type: Boolean,
     value: false,
   },
+  /* 图标，传对象则透传至 Icon */
+  icon: {
+    type: null,
+  },
   /** 展示的标签 */
   label: {
     type: String,

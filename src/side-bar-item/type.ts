@@ -21,6 +21,12 @@ export interface TdSideBarItemProps {
     value?: boolean;
   };
   /**
+   * 图标，传对象则透传至 Icon
+   */
+  icon?: {
+    type: null;
+  };
+  /**
    * 展示的标签
    * @default ''
    */

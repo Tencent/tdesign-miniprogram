@@ -93,6 +93,12 @@ export default class Tabs extends SuperComponent {
       const { children } = this;
       const tabs = children.map((child: any) => child.data);
 
+      tabs.forEach((item) => {
+        if (typeof item.icon === 'string') {
+          item.icon = { name: item.icon };
+        }
+      });
+
       this.setData({ tabs }, cb);
       this.setCurrentIndexByName(this.properties.value);
     },
