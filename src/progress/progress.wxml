@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./progress.wxs" module="this" />
 
-<view style="{{style}}" class="{{classPrefix}}">
+<view style="{{style}};{{customStyle}}" class="{{classPrefix}}">
   <view
     aria-role="progressbar"
     role="progressbar"

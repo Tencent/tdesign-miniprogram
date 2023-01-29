@@ -6,11 +6,6 @@
 
 import { TdSearchProps } from './type';
 const props: TdSearchProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 自定义右侧操作按钮文字 */
   action: {
     type: String,

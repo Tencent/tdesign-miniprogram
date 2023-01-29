@@ -3,6 +3,7 @@
 
 <navigator
   class="{{className}} {{prefix}}-class"
+  style="{{style}};{{customStyle}}"
   target="{{navigatorProps.target}}"
   url="{{navigatorProps.url}}"
   open-type="{{navigatorProps.openType || 'navigate'}}"

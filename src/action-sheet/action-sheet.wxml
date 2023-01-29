@@ -3,7 +3,7 @@
 <import src="./template/list.wxml" />
 <import src="./template/grid.wxml" />
 
-<view id="{{classPrefix}}" style="{{style}}" class="{{classPrefix}} {{prefix}}-class">
+<view id="{{classPrefix}}" style="{{style}};{{cutsomStyle}}" class="{{classPrefix}} {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
     <view
       class="{{_.cls(classPrefix + '__content', [['grid', gridThemeItems.length]])}} {{prefix}}-class-content"

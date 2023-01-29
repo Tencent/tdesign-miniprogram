@@ -8,7 +8,6 @@ name | type | default | description | required
 align | String | middle | options：top/middle/bottom | N
 arrow | Boolean | false | \- | N
 bordered | Boolean | true | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 description | String / Slot | - | \- | N
 external-classes | Array | - | `['t-class', 't-class-title', 't-class-note', 't-class-description', 't-class-thumb', 't-class-hover', 't-class-left', 't-class-right']` | N
 hover | Boolean | - | \- | N

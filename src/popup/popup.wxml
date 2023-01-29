@@ -3,7 +3,7 @@
 
 <view
   wx:if="{{realVisible}}"
-  style="{{ utils.getPopupStyles(zIndex, style) }}"
+  style="{{utils.getPopupStyles(zIndex)}};{{style}};{{customStyle}}"
   class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} class {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
   aria-role="dialog"

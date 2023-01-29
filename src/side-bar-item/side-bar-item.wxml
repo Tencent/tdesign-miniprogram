@@ -4,6 +4,7 @@
 
 <view
   class="{{_.cls(classPrefix, [['active', active], ['disabled', disabled]])}} {{prefix}}-class"
+  style="{{style}};{{customStyle}}"
   bind:tap="handleClick"
   aria-role="button"
   aria-label="{{ active ? '已选中' + label : label}}"

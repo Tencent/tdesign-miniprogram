@@ -49,7 +49,6 @@ action | String / Slot | - | 操作 | N
 align | String | left | 文本对齐方式。可选项：left/center。TS 类型：`MessageAlignType` `type MessageAlignType = 'left' \| 'center'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/message/type.ts) | N
 close-btn | String / Boolean / Object / Slot | false | 关闭按钮，可以自定义。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string ，如：'user'，则显示组件内置图标，为 'slot' 则表示使用插槽。值类型为 object ，则会透传至 icon 组件。| N
 content | String / Slot | - | 用于自定义消息弹出内容 | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 duration | Number | 3000 | 消息内置计时器，计时到达时会触发 duration-end 事件。单位：毫秒。值为 0 则表示没有计时器。 | N
 external-classes | Array | - | 样式类名，分别用于设置 组件外层、消息内容、左侧图标、操作按钮、关闭按钮等元素类名。`['t-class', 't-class-content', 't-class-icon', 't-class-action', 't-class-close-btn']` | N
 icon | String / Boolean / Object / Slot | true | 消息提醒前面的图标，可以自定义。值为 true 则根据 theme 显示对应的图标，值为 false 则不显示图标。值为 true 显示默认关闭按钮，值为 false 不显示关闭按钮。值类型为 string ，如：'info'，则显示组件内置图标，为 'slot' 则表示使用插槽。值类型为 object ，则会透传至 icon 组件。| N

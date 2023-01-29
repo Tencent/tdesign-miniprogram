@@ -1,7 +1,11 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view wx:if="{{visible}}" style="{{ style }}" class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class">
+<view
+  wx:if="{{visible}}"
+  style="{{style}};{{customStyle}}"
+  class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class"
+>
   <!-- prefixIcon -->
   <view
     wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}"

@@ -8,7 +8,6 @@ name | type | default | description | required
 block | Boolean | false | make button to be a block-level element | N
 content | String / Slot | - | button's children elements | N
 custom-dataset | Object | - | Typescript：`any` | N
-custom-style `v0.25.0` | String | - | \- | N
 disabled | Boolean | false | disable the button, make it can not be clicked | N
 external-classes | Array | - | `['t-class', 't-class-icon', 't-class-loading']` | N
 ghost | Boolean | false | make background-color to be transparent | N

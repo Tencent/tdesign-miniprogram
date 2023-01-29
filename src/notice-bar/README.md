@@ -67,7 +67,6 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 content | String / Array / Slot | - | 文本内容 | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 direction | String | horizontal | 滚动方向。可选项：horizontal/vertical | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、文本内容、前缀图标、右侧额外信息、后缀图标 等元素类名。。`['t-class', 't-class-content', 't-class-prefix-icon', 't-class-extra', 't-class-suffix-icon']` | N
 extra | String / Slot | - | 右侧额外信息 | N

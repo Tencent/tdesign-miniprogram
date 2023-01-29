@@ -37,11 +37,6 @@ const props: TdDialogProps = {
   content: {
     type: String,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 组件类名，分别用于设置 组件外层元素、组件内容部分、确认按钮、取消按钮 等元素类名 */
   externalClasses: {
     type: Array,

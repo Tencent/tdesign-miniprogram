@@ -2,7 +2,7 @@
 <view
   wx:if="{{realVisible}}"
   class="{{_.cls(classPrefix, [direction, theme, ['with-text', message]])}} {{prefix}}-class {{transitionClass}}"
-  style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}} {{ style }}"
+  style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}} {{style}};{{customStyle}}"
   bind:transitionend="onTransitionEnd"
   catch:touchstart="loop"
 >

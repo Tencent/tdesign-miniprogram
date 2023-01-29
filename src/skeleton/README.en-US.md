@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 animation | String | none | options：gradient/flashed/none | N
-custom-style `v0.25.0` | String | - | \- | N
 delay | Number | 0 | \- | N
 external-classes | Array | - | `['t-class', 't-class-avatar', 't-class-image', 't-class-text']` | N
 loading | Boolean | true | \- | N

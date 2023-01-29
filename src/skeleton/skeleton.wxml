@@ -1,6 +1,6 @@
 <wxs src="./skeleton.wxs" module="this" />
 
-<view wx:if="{{ loading }}" style="{{ style }}" class="{{classPrefix}} {{prefix}}-class ">
+<view wx:if="{{ loading }}" style="{{style}};{{customStyle}}" class="{{classPrefix}} {{prefix}}-class ">
   <view wx:if="{{ parsedRowcols.length }}" class="{{classPrefix}}__content">
     <view
       wx:for="{{parsedRowcols}}"

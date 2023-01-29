@@ -11,11 +11,6 @@ const props: TdNavbarProps = {
     type: Boolean,
     value: true,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack */
   delta: {
     type: Number,

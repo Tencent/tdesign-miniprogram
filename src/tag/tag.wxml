@@ -1,6 +1,10 @@
 <import src="../common/template/icon.wxml" />
 
-<view class="{{className}} class {{prefix}}-class" style="{{tagStyle}} {{ style }}" bind:tap="handleClick">
+<view
+  class="{{className}} class {{prefix}}-class"
+  style="{{tagStyle}} {{style}};{{customStyle}}"
+  bind:tap="handleClick"
+>
   <view aria-hidden="{{true}}" class="{{classPrefix}}__icon">
     <template wx:if="{{_icon}}" is="icon" data="{{ tClass: prefix + '-icon', ..._icon }}" />
     <slot name="icon" />

@@ -10,11 +10,6 @@ const props: TdCellGroupProps = {
   bordered: {
     type: Boolean,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 组件类名 */
   externalClasses: {
     type: Array,

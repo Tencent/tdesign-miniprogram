@@ -18,9 +18,9 @@ module.exports = {
     }
   },
 
-  getStyles: function (isShow, zIndex, style) {
+  getStyles: function (isShow, zIndex) {
     var displayStyle = isShow ? '' : 'display: none;';
     var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
-    return displayStyle + zIndexStyle + style;
+    return displayStyle + zIndexStyle;
   },
 };

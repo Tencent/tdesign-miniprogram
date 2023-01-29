@@ -1,5 +1,8 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{ style }}" class="{{prefix}}-class {{_.cls(classPrefix, [['hairline--top-bottom', border], theme])}}">
+<view
+  style="{{style}};{{customStyle}}"
+  class="{{prefix}}-class {{_.cls(classPrefix, [['hairline--top-bottom', border], theme])}}"
+>
   <slot />
 </view>

@@ -1,4 +1,4 @@
-<view style="{{ style }}" class="{{classPrefix}} {{prefix}}-class">
+<view style="{{style}};{{customStyle}}" class="{{classPrefix}} {{prefix}}-class">
   <t-grid gutter="{{gutter}}" border="{{false}}" align="center" column="{{column}}">
     <!-- 图片/视频 -->
     <t-grid-item

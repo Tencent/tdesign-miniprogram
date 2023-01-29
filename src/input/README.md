@@ -74,7 +74,6 @@ align | String | left | 文本内容位置，居左/居中/居右。可选项：
 layout | String | horizontal | 标题输入框布局方式。可选项：vertical/horizontal | N
 borderless | Boolean | false | 是否开启无边框模式 | N
 clearable | Boolean / Object | false | 是否可清空，默认不启动。值为 `true` 表示使用默认清除空按钮，值为 `Object` 表示透传至 `icon` | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名。`['t-class','t-class-prefix-icon', 't-class-label', 't-class-input',  't-class-clearable', 't-class-suffix', 't-class-suffix-icon', 't-class-tips']` | N

@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 closable | Boolean | false | \- | N
-custom-style | String | - | `0.25.0` | N
 disabled | Boolean | false | \- | N
 external-classes | Array | - | `['t-class']` | N
 icon | String / Object / Slot | - | \- | N
@@ -31,7 +30,6 @@ checked | Boolean | undefined | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
 closable | Boolean | false | `deprecated` | N
 content | String / Number / Array / Slot | - | Typescript：`string \| number \| string[]` | N
-custom-style | String | - | `0.25.0` | N
 disabled | Boolean | false | \- | N
 external-classes | Array | - | `['t-class']` | N
 icon | String / Object / Slot | - | \- | N

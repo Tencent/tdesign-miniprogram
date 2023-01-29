@@ -21,11 +21,6 @@ const props: TdRateProps = {
     type: Number,
     value: 5,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 是否禁用评分 */
   disabled: {
     type: Boolean,

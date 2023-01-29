@@ -8,7 +8,6 @@ name | type | default | description | required
 allow-half | Boolean | false | \- | N
 color | String / Array | '#ED7B2F' | `0.30.0`。Typescript：`string \| Array<string>` | N
 count | Number | 5 | \- | N
-custom-style | String | - | `0.25.0` | N
 disabled | Boolean | - | \- | N
 external-classes | Array | - | `['t-class', 't-class-icon', 't-class-text']` | N
 gap | String / Number | 8 | \- | N

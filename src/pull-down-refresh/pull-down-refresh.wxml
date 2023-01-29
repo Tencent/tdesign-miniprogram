@@ -1,5 +1,5 @@
 <scroll-view
-  style="{{ style }}"
+  style="{{style}};{{customStyle}}"
   class="{{classPrefix}} {{prefix}}-class"
   scroll-top="{{scrollTop}}"
   bind:touchstart="onTouchStart"

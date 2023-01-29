@@ -10,11 +10,6 @@ const props: TdStickyProps = {
   container: {
     type: null,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 是否禁用组件 */
   disabled: {
     type: Boolean,

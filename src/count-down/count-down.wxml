@@ -1,7 +1,7 @@
 <wxs module="_"> module.exports.format = function(num) { return num < 10 ? '0' + num : num; } </wxs>
 
 <view
-  style="{{ style }}"
+  style="{{style}};{{customStyle}}"
   class="{{classPrefix}} {{classPrefix}}--{{theme}} {{classPrefix}}--{{size}} {{prefix}}-class "
   aria-role="option"
 >

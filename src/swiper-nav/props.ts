@@ -11,11 +11,6 @@ const props: TdSwiperNavProps = {
     type: Number,
     value: 0,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 轮播滑动方向，包括横向滑动和纵向滑动两个方向 */
   direction: {
     type: String,

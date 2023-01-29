@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 close-on-overlay-click | Boolean | undefined | \- | N
-custom-style | String | - | \- | N
 destroy-on-close | Boolean | false | \- | N
 footer | Slot | - | \- | N
 items | Array | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/drawer/type.ts) | N

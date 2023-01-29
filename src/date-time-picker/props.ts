@@ -16,11 +16,6 @@ const props: TdDateTimePickerProps = {
     type: String,
     value: '',
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 选择器的最大可选时间，默认为当前时间+10年 */
   end: {
     type: null,

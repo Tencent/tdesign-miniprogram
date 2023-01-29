@@ -66,7 +66,6 @@ close-btn | Boolean / Object | false | `0.31.0`。是否展示关闭按钮，值
 close-on-overlay-click | Boolean | undefined | 点击蒙层时是否触发关闭事件 | N
 confirm-btn | String / Object / Slot | - | 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 Slot 自定义按钮时，需自行控制确认事件 | N
 content | String / Slot | - | 内容 | N
-custom-style | String | - | `0.25.0`。自定义组件样式 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、组件内容部分、确认按钮、取消按钮 等元素类名。`['t-class', 't-class-content', 't-class-confirm', 't-class-cancel']` | N
 overlay-props | Object | {} | 透传至 Overlay 组件 | N
 prevent-scroll-through | Boolean | true | 防止滚动穿透 | N

@@ -6,11 +6,6 @@
 
 import { TdImageViewerProps } from './type';
 const props: TdImageViewerProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 遮罩的背景颜色 */
   backgroundColor: {
     type: String,

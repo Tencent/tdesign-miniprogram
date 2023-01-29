@@ -3,6 +3,7 @@
 
 <view
   class="{{prefix}}-class {{classPrefix}}"
+  style="{{style}};{{customStyle}}"
   data-key="cell"
   capture-bind:tap="onTap"
   bindtouchstart="{{disabled || swipe.startDrag}}"

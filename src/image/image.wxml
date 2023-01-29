@@ -1,7 +1,7 @@
 <!-- 加载中占位 -->
 <view
   wx:if="{{isLoading}}"
-  style="{{innerStyle}} {{style}}"
+  style="{{innerStyle}};{{style}};{{customStyle}}"
   class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
   aria-hidden="{{ariaHidden}}"
 >

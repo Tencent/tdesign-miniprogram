@@ -45,7 +45,6 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-custom-style | String | - | 自定义组件样式 | N
 height | String / Number | 336 | 高度，默认单位为 px | N
 keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段别名。TS 类型：`KeysType` | N
 multiple | Boolean | false | 是否多选 | N

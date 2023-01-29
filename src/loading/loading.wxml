@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="utils" />
 <view
-  style="{{ style }};{{ !text && theme != 'error' && 'width: ' + utils.addUnit(size) + '; height: ' + utils.addUnit(size)}}"
+  style="{{style}};{{customStyle}};{{ !text && theme != 'error' && 'width: ' + utils.addUnit(size) + '; height: ' + utils.addUnit(size)}}"
   class="class {{prefix}}-class"
 >
   <view
