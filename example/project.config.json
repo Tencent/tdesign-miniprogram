@@ -58,7 +58,7 @@
       "list": [
         {
           "id": -1,
-          "name": "custom",
+          "name": "button",
           "pathName": "pages/button/button",
           "query": "",
           "scene": null
@@ -97,6 +97,12 @@
           "id": -1,
           "name": "search",
           "pathName": "pages/search/search",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "checkbox",
+          "pathName": "pages/checkbox/checkbox",
           "scene": null
         }
       ]

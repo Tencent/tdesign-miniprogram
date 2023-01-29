@@ -96,13 +96,27 @@
 @button-ghost-danger-color: var(--td-button-ghost-danger-color, @error-color);
 @button-ghost-danger-border-color: var(--td-button-ghost-danger-border-color, @error-color);
 
-// 激活态背景色
+// 激活态背景和边框色
 @button-default-active-bg-color: var(--td-button-default-active-bg-color, @gray-color-5);
+@button-default-active-border-color: var(--td-button-default-border-bg-color, @gray-color-5);
 @button-light-active-bg-color: var(--td-button-light-active-bg-color, @primary-color-2);
+@button-light-active-border-color: var(--td-button-light-active-border-color, @primary-color-2);
 @button-primary-active-bg-color: var(--td-button-primary-active-bg-color, @primary-color-9);
+@button-primary-active-border-color: var(--td-button-primary-active-border-color, @primary-color-9);
 @button-danger-active-bg-color: var(--td-button-danger-active-bg-color, @error-color-7);
-@button-outline-active-bg-color: var(--td-button-outline-active-bg-color, @gray-color-1);
-@button-text-active-bg-color: var(--td-button-text-active-bg-color, @primary-color-1);
+@button-danger-active-border-color: var(--td-button-danger-active-border-color, @error-color-7);
+@button-default-outline-active-bg-color: var(--td-button-default-outline-active-bg-color, @gray-color-1);
+@button-default-outline-active-border-color: var(--td-button-default-outline-active-border-color, @gray-color-3);
+@button-primary-outline-active-bg-color: var(--td-button-primary-outline-active-bg-color, @gray-color-1);
+@button-primary-outline-active-border-color: var(--td-button-primary-outline-active-border-color, @primary-color-8);
+@button-danger-outline-active-bg-color: var(--td-button-danger-outline-active-bg-color, @error-color-1);
+@button-danger-outline-active-border-color: var(--td-button-danger-outline-active-border-color, @error-color-6);
+@button-light-outline-active-bg-color: var(--td-button-light-outline-active-bg-color, @gray-color-1);
+@button-light-outline-active-border-color: var(--td-button-light-outline-active-border-color, @primary-color-8);
+@button-default-text-active-bg-color: var(--td-button-default-text-active-bg-color, @gray-color-1);
+@button-primary-text-active-bg-color: var(--td-button-primary-text-active-bg-color, @primary-color-1);
+@button-danger-text-active-bg-color: var(--td-button-danger-text-active-bg-color, @error-color-1);
+@button-light-text-active-bg-color: var(--td-button-light-text-active-bg-color, @primary-color-1);
 
 @button: ~'@{prefix}-button';
 
@@ -133,6 +147,7 @@
   @disabledBorderColor: 'button-@{theme}-disabled-border-color';
   @disabledBgColor: 'button-@{theme}-disabled-bg';
   @activeBgColor: 'button-@{theme}-active-bg-color';
+  @activeBorderColor: 'button-@{theme}-active-border-color';
 
   .@{button}--@{theme} {
     color: @@color;
@@ -147,6 +162,7 @@
       z-index: 0;
       &::after {
         background-color: @@activeBgColor;
+        border-color: @@activeBorderColor;
       }
     }
 
@@ -205,12 +221,16 @@
     }
 
     &.@{button}--hover::after {
-      background-color: @button-text-active-bg-color;
+      background-color: @button-default-text-active-bg-color;
     }
 
     &.@{button}--primary {
       color: @button-primary-text-color;
       background: none;
+
+      &.@{button}--hover::after {
+        background-color: @button-primary-text-active-bg-color;
+      }
 
       &.@{button}--disabled {
         color: @button-primary-text-disabled-color;
@@ -222,6 +242,10 @@
       color: @button-danger-text-color;
       background: none;
 
+      &.@{button}--hover::after {
+        background-color: @button-danger-text-active-bg-color;
+      }
+
       &.@{button}--disabled {
         color: @button-danger-text-disabled-color;
         background: none;
@@ -231,6 +255,10 @@
     &.@{button}--light {
       color: @button-light-text-color;
       background: none;
+
+      &.@{button}--hover::after {
+        background-color: @button-light-text-active-bg-color;
+      }
     }
 
     &.@{button}--disabled {
@@ -284,7 +312,8 @@
     }
 
     &.@{button}--hover::after {
-      background-color: @button-outline-active-bg-color;
+      background-color: @button-default-outline-active-bg-color;
+      border-color: @button-default-outline-active-border-color;
     }
 
     &.@{button}--primary {
@@ -292,6 +321,11 @@
 
       &::after {
         border-color: @button-primary-outline-border-color;
+      }
+
+      &.@{button}--hover::after {
+        background-color: @button-primary-outline-active-bg-color;
+        border-color: @button-primary-outline-active-border-color;
       }
 
       &.@{button}--disabled {
@@ -311,6 +345,11 @@
         border-color: @button-danger-outline-border-color;
       }
 
+      &.@{button}--hover::after {
+        background-color: @button-danger-outline-active-bg-color;
+        border-color: @button-danger-outline-active-border-color;
+      }
+
       &.@{button}--disabled {
         background-color: transparent;
         color: @button-danger-outline-disabled-color;
@@ -327,6 +366,11 @@
 
       &::after {
         border-color: @button-light-outline-border-color;
+      }
+
+      &.@{button}--hover::after {
+        background-color: @button-light-outline-active-bg-color;
+        border-color: @button-light-outline-active-border-color;
       }
 
       &.@{button}--disabled {
