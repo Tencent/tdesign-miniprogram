@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`swiper props : direction 1`] = `
+exports[`swiper snapshot 1`] = `
 <t-swiper-complex>
   <t-swiper
     id="swiper1"
@@ -8,112 +8,379 @@ exports[`swiper props : direction 1`] = `
   >
     <wx-view
       class="t-class t-swiper"
-      id="swiper"
       style=""
     >
-      <wx-view
-        $gdc="{{[Function]}}"
-        $wxs:bindtouchcancel="{{[Function]}}"
-        $wxs:bindtouchend="{{[Function]}}"
-        $wxs:bindtouchstart="{{[Function]}}"
-        $wxs:capture-catch:touchmove="{{[Function]}}"
-        $wxs:change:currentInited="{{[Function]}}"
-        $wxs:change:direction="{{[Function]}}"
-        $wxs:change:height="{{[Function]}}"
-        $wxs:change:offsetX="{{[Function]}}"
-        $wxs:change:offsetY="{{[Function]}}"
-        $wxs:change:total="{{[Function]}}"
-        $wxs:change:width="{{[Function]}}"
-        class="t-swiper__container {{prefix}}-is-hidden"
-        currentInited="{{true}}"
-        direction="vertical"
-        height="{{200}}"
-        id="swiperContainer"
-        offsetX="{{-375}}"
-        offsetY="{{-200}}"
-        style="transition-duration: 0.1s;transition-timing-function:linear;"
-        total="{{5}}"
-        width="{{375}}"
+      <wx-swiper
+        autoplay="{{false}}"
+        circular="{{true}}"
+        class="t-swiper-host"
+        current="{{1}}"
+        displayMultipleItems="{{1}}"
+        duration="{{100}}"
+        easingFunction="default"
+        interval="{{100}}"
+        nextMargin="{{0}}"
+        previousMargin="{{0}}"
+        snapToEdge="{{false}}"
+        style="height: 192px"
+        vertical="{{false}}"
+        bind:change="onChange"
       >
-        <t-swiper-item
-          id="number-0"
+        <swiper-item
+          class="t-swiper__item t-swiper__item--preview"
+          data-index="{{0}}"
+          bind:tap="onTap"
         >
-          <wx-view
-            class="t-swiper-item"
-            style="transform: translate(0px, 0%) translateZ(0px);"
+          <t-image
+            tClass="t-swiper__image-host t-swiper__image t-class-image t-class-prev-image"
+            tClassLoad=""
+            bind:error=""
+            bind:load=""
           >
+            <wx-view
+              ariaHidden="{{false}}"
+              class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+              style=" "
+            >
+              <t-loading
+                tClass="t-class-load"
+                tClassText="t-image--loading-text"
+              >
+                <wx-view
+                  class="class t-class"
+                  style=";width: 44rpx; height: 44rpx"
+                >
+                  <wx-view
+                    class="t-loading t-loading--horizontal"
+                    style=""
+                  >
+                    <wx-view
+                      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+                      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+                    >
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+                      />
+                    </wx-view>
+                    <wx-view
+                      class="t-loading__text t-loading__text--horizontal t-class-text"
+                    />
+                  </wx-view>
+                </wx-view>
+              </t-loading>
+            </wx-view>
             <wx-image
-              class="img"
-              src="https://tdesign.gtimg.com/site/swiper/01.png"
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              class="t-class t-image t-image--shape-square"
+              hidden="{{true}}"
+              id="image"
+              lazyLoad="{{false}}"
+              mode="scaleToFill"
+              showMenuByLongpress="{{false}}"
+              src="https://tdesign.gtimg.com/miniprogram/images//swiper1.png"
+              style=""
+              webp="{{false}}"
+              bind:error="onLoadError"
+              bind:load="onLoaded"
             />
-          </wx-view>
-        </t-swiper-item>
-        <t-swiper-item
-          id="number-1"
+          </t-image>
+        </swiper-item>
+        <swiper-item
+          class="t-swiper__item"
+          data-index="{{1}}"
+          bind:tap="onTap"
         >
-          <wx-view
-            class="t-swiper-item"
-            style="transform: translate(0px, 100%) translateZ(0px);"
+          <t-image
+            tClass="t-swiper__image-host t-swiper__image t-class-image"
+            tClassLoad=""
+            bind:error=""
+            bind:load=""
           >
+            <wx-view
+              ariaHidden="{{false}}"
+              class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+              style=" "
+            >
+              <t-loading
+                tClass="t-class-load"
+                tClassText="t-image--loading-text"
+              >
+                <wx-view
+                  class="class t-class"
+                  style=";width: 44rpx; height: 44rpx"
+                >
+                  <wx-view
+                    class="t-loading t-loading--horizontal"
+                    style=""
+                  >
+                    <wx-view
+                      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+                      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+                    >
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+                      />
+                    </wx-view>
+                    <wx-view
+                      class="t-loading__text t-loading__text--horizontal t-class-text"
+                    />
+                  </wx-view>
+                </wx-view>
+              </t-loading>
+            </wx-view>
             <wx-image
-              class="img"
-              src="https://tdesign.gtimg.com/site/swiper/02.png"
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              class="t-class t-image t-image--shape-square"
+              hidden="{{true}}"
+              id="image"
+              lazyLoad="{{false}}"
+              mode="scaleToFill"
+              showMenuByLongpress="{{false}}"
+              src="https://tdesign.gtimg.com/miniprogram/images//swiper2.png"
+              style=""
+              webp="{{false}}"
+              bind:error="onLoadError"
+              bind:load="onLoaded"
             />
-          </wx-view>
-        </t-swiper-item>
-        <t-swiper-item
-          id="number-2"
+          </t-image>
+        </swiper-item>
+        <swiper-item
+          class="t-swiper__item t-swiper__item--next"
+          data-index="{{2}}"
+          bind:tap="onTap"
         >
-          <wx-view
-            class="t-swiper-item"
-            style="transform: translate(0px, 200%) translateZ(0px);"
+          <t-image
+            tClass="t-swiper__image-host t-swiper__image t-class-image t-class-next-image"
+            tClassLoad=""
+            bind:error=""
+            bind:load=""
           >
+            <wx-view
+              ariaHidden="{{false}}"
+              class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+              style=" "
+            >
+              <t-loading
+                tClass="t-class-load"
+                tClassText="t-image--loading-text"
+              >
+                <wx-view
+                  class="class t-class"
+                  style=";width: 44rpx; height: 44rpx"
+                >
+                  <wx-view
+                    class="t-loading t-loading--horizontal"
+                    style=""
+                  >
+                    <wx-view
+                      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+                      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+                    >
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+                      />
+                    </wx-view>
+                    <wx-view
+                      class="t-loading__text t-loading__text--horizontal t-class-text"
+                    />
+                  </wx-view>
+                </wx-view>
+              </t-loading>
+            </wx-view>
             <wx-image
-              class="img"
-              src="https://tdesign.gtimg.com/site/swiper/03.png"
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              class="t-class t-image t-image--shape-square"
+              hidden="{{true}}"
+              id="image"
+              lazyLoad="{{false}}"
+              mode="scaleToFill"
+              showMenuByLongpress="{{false}}"
+              src="https://tdesign.gtimg.com/miniprogram/images//swiper3.png"
+              style=""
+              webp="{{false}}"
+              bind:error="onLoadError"
+              bind:load="onLoaded"
             />
-          </wx-view>
-        </t-swiper-item>
-        <t-swiper-item
-          id="number-3"
+          </t-image>
+        </swiper-item>
+        <swiper-item
+          class="t-swiper__item"
+          data-index="{{3}}"
+          bind:tap="onTap"
         >
-          <wx-view
-            class="t-swiper-item"
-            style="transform: translate(0px, 300%) translateZ(0px);"
+          <t-image
+            tClass="t-swiper__image-host t-swiper__image t-class-image"
+            tClassLoad=""
+            bind:error=""
+            bind:load=""
           >
+            <wx-view
+              ariaHidden="{{false}}"
+              class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+              style=" "
+            >
+              <t-loading
+                tClass="t-class-load"
+                tClassText="t-image--loading-text"
+              >
+                <wx-view
+                  class="class t-class"
+                  style=";width: 44rpx; height: 44rpx"
+                >
+                  <wx-view
+                    class="t-loading t-loading--horizontal"
+                    style=""
+                  >
+                    <wx-view
+                      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+                      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+                    >
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+                      />
+                    </wx-view>
+                    <wx-view
+                      class="t-loading__text t-loading__text--horizontal t-class-text"
+                    />
+                  </wx-view>
+                </wx-view>
+              </t-loading>
+            </wx-view>
             <wx-image
-              class="img"
-              src="https://tdesign.gtimg.com/site/swiper/04.png"
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              class="t-class t-image t-image--shape-square"
+              hidden="{{true}}"
+              id="image"
+              lazyLoad="{{false}}"
+              mode="scaleToFill"
+              showMenuByLongpress="{{false}}"
+              src="https://tdesign.gtimg.com/miniprogram/images//swiper4.png"
+              style=""
+              webp="{{false}}"
+              bind:error="onLoadError"
+              bind:load="onLoaded"
             />
-          </wx-view>
-        </t-swiper-item>
-        <t-swiper-item
-          id="number-4"
+          </t-image>
+        </swiper-item>
+        <swiper-item
+          class="t-swiper__item"
+          data-index="{{4}}"
+          bind:tap="onTap"
         >
-          <wx-view
-            class="t-swiper-item"
-            style="transform: translate(0px, 400%) translateZ(0px);"
+          <t-image
+            tClass="t-swiper__image-host t-swiper__image t-class-image"
+            tClassLoad=""
+            bind:error=""
+            bind:load=""
           >
+            <wx-view
+              ariaHidden="{{false}}"
+              class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+              style=" "
+            >
+              <t-loading
+                tClass="t-class-load"
+                tClassText="t-image--loading-text"
+              >
+                <wx-view
+                  class="class t-class"
+                  style=";width: 44rpx; height: 44rpx"
+                >
+                  <wx-view
+                    class="t-loading t-loading--horizontal"
+                    style=""
+                  >
+                    <wx-view
+                      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+                      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+                    >
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+                      />
+                    </wx-view>
+                    <wx-view
+                      class="t-loading__text t-loading__text--horizontal t-class-text"
+                    />
+                  </wx-view>
+                </wx-view>
+              </t-loading>
+            </wx-view>
             <wx-image
-              class="img"
-              src="https://tdesign.gtimg.com/site/swiper/05.png"
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              class="t-class t-image t-image--shape-square"
+              hidden="{{true}}"
+              id="image"
+              lazyLoad="{{false}}"
+              mode="scaleToFill"
+              showMenuByLongpress="{{false}}"
+              src="https://tdesign.gtimg.com/miniprogram/images//swiper5.png"
+              style=""
+              webp="{{false}}"
+              bind:error="onLoadError"
+              bind:load="onLoaded"
             />
-          </wx-view>
-        </t-swiper-item>
-      </wx-view>
+          </t-image>
+        </swiper-item>
+      </wx-swiper>
       <t-swiper-nav
-        id="swiperNav"
-        bind:navBtnChange="onSwiperNavBtnChange"
+        tClass="t-class-nav"
+        bind:navBtnChange="onNavBtnChange"
       >
         <wx-view
-          class="t-class t-swiper-nav t-swiper-nav--vertical t-swiper-nav--position-bottom-right"
+          class="t-class t-swiper-nav t-swiper-nav--horizontal t-swiper-nav__fraction t-swiper-nav--bottom-right"
           style=""
         >
-          <wx-view
-            class="t-swiper-nav__fraction"
-          >
-             2/5 
-          </wx-view>
+           2/5 
         </wx-view>
       </t-swiper-nav>
     </wx-view>
@@ -124,92 +391,197 @@ exports[`swiper props : direction 1`] = `
   >
     <wx-view
       class="t-class t-swiper"
-      id="swiper"
       style=""
     >
-      <wx-view
-        $gdc="{{[Function]}}"
-        $wxs:bindtouchcancel="{{[Function]}}"
-        $wxs:bindtouchend="{{[Function]}}"
-        $wxs:bindtouchstart="{{[Function]}}"
-        $wxs:capture-catch:touchmove="{{[Function]}}"
-        $wxs:change:currentInited="{{[Function]}}"
-        $wxs:change:direction="{{[Function]}}"
-        $wxs:change:height="{{[Function]}}"
-        $wxs:change:offsetX="{{[Function]}}"
-        $wxs:change:offsetY="{{[Function]}}"
-        $wxs:change:total="{{[Function]}}"
-        $wxs:change:width="{{[Function]}}"
-        class="t-swiper__container {{prefix}}-is-hidden"
-        currentInited="{{true}}"
-        direction="horizontal"
-        height="{{200}}"
-        id="swiperContainer"
-        offsetX="{{-375}}"
-        offsetY="{{0}}"
-        style="transition-duration: 0.3s;transition-timing-function:linear;"
-        total="{{2}}"
-        width="{{375}}"
+      <wx-swiper
+        autoplay="{{true}}"
+        circular="{{true}}"
+        class="t-swiper-host"
+        current="{{1}}"
+        displayMultipleItems="{{1}}"
+        duration="{{300}}"
+        easingFunction="default"
+        interval="{{5000}}"
+        nextMargin="{{0}}"
+        previousMargin="{{0}}"
+        snapToEdge="{{false}}"
+        style="height: 192px"
+        vertical="{{false}}"
+        bind:change="onChange"
       >
-        <t-swiper-item
-          id="number-0"
+        <swiper-item
+          class="t-swiper__item t-swiper__item--preview t-swiper__item--next"
+          data-index="{{0}}"
+          bind:tap="onTap"
+        >
+          <t-image
+            tClass="t-swiper__image-host t-swiper__image t-class-image t-class-prev-image t-class-next-image"
+            tClassLoad=""
+            bind:error=""
+            bind:load=""
+          >
+            <wx-view
+              ariaHidden="{{false}}"
+              class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+              style=" "
+            >
+              <t-loading
+                tClass="t-class-load"
+                tClassText="t-image--loading-text"
+              >
+                <wx-view
+                  class="class t-class"
+                  style=";width: 44rpx; height: 44rpx"
+                >
+                  <wx-view
+                    class="t-loading t-loading--horizontal"
+                    style=""
+                  >
+                    <wx-view
+                      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+                      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+                    >
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+                      />
+                    </wx-view>
+                    <wx-view
+                      class="t-loading__text t-loading__text--horizontal t-class-text"
+                    />
+                  </wx-view>
+                </wx-view>
+              </t-loading>
+            </wx-view>
+            <wx-image
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              class="t-class t-image t-image--shape-square"
+              hidden="{{true}}"
+              id="image"
+              lazyLoad="{{false}}"
+              mode="scaleToFill"
+              showMenuByLongpress="{{false}}"
+              src="https://tdesign.gtimg.com/miniprogram/images//01.png"
+              style=""
+              webp="{{false}}"
+              bind:error="onLoadError"
+              bind:load="onLoaded"
+            />
+          </t-image>
+        </swiper-item>
+        <swiper-item
+          class="t-swiper__item"
+          data-index="{{1}}"
+          bind:tap="onTap"
+        >
+          <t-image
+            tClass="t-swiper__image-host t-swiper__image t-class-image"
+            tClassLoad=""
+            bind:error=""
+            bind:load=""
+          >
+            <wx-view
+              ariaHidden="{{false}}"
+              class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
+              style=" "
+            >
+              <t-loading
+                tClass="t-class-load"
+                tClassText="t-image--loading-text"
+              >
+                <wx-view
+                  class="class t-class"
+                  style=";width: 44rpx; height: 44rpx"
+                >
+                  <wx-view
+                    class="t-loading t-loading--horizontal"
+                    style=""
+                  >
+                    <wx-view
+                      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+                      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+                    >
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+                      />
+                      <wx-view
+                        class="t-loading__dot"
+                        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+                      />
+                    </wx-view>
+                    <wx-view
+                      class="t-loading__text t-loading__text--horizontal t-class-text"
+                    />
+                  </wx-view>
+                </wx-view>
+              </t-loading>
+            </wx-view>
+            <wx-image
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              class="t-class t-image t-image--shape-square"
+              hidden="{{true}}"
+              id="image"
+              lazyLoad="{{false}}"
+              mode="scaleToFill"
+              showMenuByLongpress="{{false}}"
+              src="https://tdesign.gtimg.com/miniprogram/images//02.png"
+              style=""
+              webp="{{false}}"
+              bind:error="onLoadError"
+              bind:load="onLoaded"
+            />
+          </t-image>
+        </swiper-item>
+      </wx-swiper>
+      <t-swiper-nav
+        tClass="t-class-nav"
+        bind:navBtnChange="onNavBtnChange"
+      >
+        <wx-view
+          class="t-class t-swiper-nav t-swiper-nav--horizontal t-swiper-nav__dots t-swiper-nav--bottom"
+          style=""
         >
           <wx-view
-            class="t-swiper-item"
-            style="transform: translate(0%, 0px) translateZ(0px);"
-          >
-            <wx-image
-              class="img"
-              src="https://tdesign.gtimg.com/site/swiper/01.png"
-            />
-          </wx-view>
-        </t-swiper-item>
-        <t-swiper-item
-          id="number-1"
-        >
+            class="t-swiper-nav__dots-item t-swiper-nav__dots-item--horizontal"
+          />
           <wx-view
-            class="t-swiper-item"
-            style="transform: translate(100%, 0px) translateZ(0px);"
-          >
-            <wx-image
-              class="img"
-              src="https://tdesign.gtimg.com/site/swiper/02.png"
-            />
-          </wx-view>
-        </t-swiper-item>
-      </wx-view>
+            class="t-swiper-nav__dots-item t-swiper-nav__dots-item--active t-swiper-nav__dots-item--horizontal"
+          />
+        </wx-view>
+      </t-swiper-nav>
       <t-swiper-nav
         id="customNav"
         slot="nav"
       >
         <wx-view
-          class="t-class t-swiper-nav t-swiper-nav--horizontal t-swiper-nav--position-bottom"
+          class="t-swiper-nav__btn"
           style=""
         >
           <wx-view
-            class="t-swiper-nav__dots-bar"
-          >
-            <wx-view
-              class="t-swiper-nav__dots-bar-item "
-            />
-            <wx-view
-              class="t-swiper-nav__dots-bar-item t-is-active"
-            />
-          </wx-view>
+            class="t-swiper-nav__btn--prev"
+            data-dir="prev"
+            bind:tap="nav"
+          />
           <wx-view
-            class="t-swiper-nav__btn"
-          >
-            <wx-view
-              class="t-swiper-nav__btn--prev"
-              data-dir="prev"
-              bind:tap="nav"
-            />
-            <wx-view
-              class="t-swiper-nav__btn--next"
-              data-dir="next"
-              bind:tap="nav"
-            />
-          </wx-view>
+            class="t-swiper-nav__btn--next"
+            data-dir="next"
+            bind:tap="nav"
+          />
         </wx-view>
       </t-swiper-nav>
     </wx-view>

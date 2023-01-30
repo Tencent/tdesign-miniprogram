@@ -3,8 +3,8 @@
 
 <view
   wx:if="{{realVisible}}"
-  style="{{ utils.getPopupStyles(zIndex, customStyle) }}"
-  class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} {{prefix}}-class"
+  style="{{ utils.getPopupStyles(zIndex, style) }}"
+  class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} class {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
   aria-role="dialog"
   aria-modal="{{ true }}"
@@ -12,7 +12,7 @@
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <view class="{{classPrefix}}__close" bind:tap="handleClose">
       <t-icon name="close" wx:if="{{closeBtn}}" size="64rpx" />
-      <slot name="closeBtn" class="{{classPrefix}}-slot" />
+      <slot name="close-btn" class="{{classPrefix}}-slot" />
     </view>
     <slot name="content" />
     <slot />
@@ -26,5 +26,5 @@
   z-index="{{overlayProps.zIndex || 11000}}"
   prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
   bind:tap="handleOverlayClick"
-  custom-style="{{overlayProps.customStyle || ''}}"
+  style="{{overlayProps.style || ''}}"
 />

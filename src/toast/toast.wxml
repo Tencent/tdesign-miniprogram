@@ -2,15 +2,16 @@
 <view
   wx:if="{{realVisible}}"
   class="{{_.cls(classPrefix, [direction, theme, ['with-text', message]])}} {{prefix}}-class {{transitionClass}}"
-  style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}} {{ customStyle }}"
+  style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}} {{ style }}"
   bind:transitionend="onTransitionEnd"
+  catch:touchstart="loop"
 >
   <view class="{{classPrefix}}__content {{classPrefix}}__content--{{direction}}">
     <t-icon
       aria-hidden="{{true}}"
       wx:if="{{typeMapIcon!=='loading' || icon}}"
       name="{{typeMapIcon || icon}}"
-      class="{{classPrefix}}__icon {{classPrefix}}__icon--{{direction}}"
+      t-class="{{classPrefix}}__icon {{classPrefix}}__icon--{{direction}}"
     />
     <t-loading
       wx:if="{{typeMapIcon === 'loading'}}"
@@ -30,7 +31,7 @@
   </view>
 </view>
 <t-overlay
-  customStyle="{{ overlayProps.customStyle }}"
+  style="{{ overlayProps.style }}"
   visible="{{realVisible && (showOverlay || preventScrollThrough)}}"
   z-index="{{overlayProps.zIndex}}"
   backgroundColor="{{preventScrollThrough ? 'transparent' : overlayProps.backgroundColor}}"

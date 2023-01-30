@@ -1,4 +1,4 @@
-import { styles } from '../common/utils';
+import { styles, setIcon } from '../common/utils';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
@@ -42,6 +42,20 @@ export default class ImageViewer extends SuperComponent {
     visible(value) {
       this.setData({
         currentSwiperIndex: value ? this.properties.initialIndex : 0,
+      });
+    },
+
+    closeBtn(closeBtn) {
+      const obj = setIcon('closeBtn', closeBtn, 'close');
+      this.setData({
+        ...obj,
+      });
+    },
+
+    deleteBtn(deleteBtn) {
+      const obj = setIcon('deleteBtn', deleteBtn, 'delete');
+      this.setData({
+        ...obj,
       });
     },
   };
@@ -118,13 +132,8 @@ export default class ImageViewer extends SuperComponent {
       this._trigger('change', { index: current });
     },
 
-    onClose(e: WechatMiniprogram.TouchEvent) {
-      const {
-        target: {
-          dataset: { source },
-        },
-      } = e;
-      this._trigger('close', { visible: false, trigger: source, index: this.data.currentSwiperIndex });
+    onClose() {
+      this._trigger('close', { visible: false, trigger: 'button', index: this.data.currentSwiperIndex });
     },
 
     onDelete() {

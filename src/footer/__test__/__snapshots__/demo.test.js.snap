@@ -2,21 +2,17 @@
 
 exports[`Footer Footer base demo works fine 1`] = `
 <base>
-  <wx-view
-    class="demo-footer"
-  >
-    <t-footer
-      copyright="Copyright © 2021-2031 TD.All Rights Reserved."
-      theme="text"
-    />
-  </wx-view>
+  <t-footer
+    copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+    theme="text"
+  />
 </base>
 `;
 
 exports[`Footer Footer link demo works fine 1`] = `
 <link>
   <wx-view
-    class="demo-footer"
+    class="footer-example"
   >
     <t-footer
       copyright="Copyright © 2021-2031 TD.All Rights Reserved."
@@ -33,7 +29,7 @@ exports[`Footer Footer link demo works fine 1`] = `
     />
   </wx-view>
   <wx-view
-    class="demo-footer"
+    class="footer-example"
   >
     <t-footer
       copyright="Copyright © 2021-2031 TD.All Rights Reserved."
@@ -60,12 +56,12 @@ exports[`Footer Footer link demo works fine 1`] = `
 exports[`Footer Footer logo demo works fine 1`] = `
 <logo>
   <wx-view
-    class="demo-footer"
+    class="footer-example"
   >
     <t-footer
       logo="{{
         Object {
-          "icon": "https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png",
+          "icon": "https://tdesign.gtimg.com/miniprogram/images/logo2.png",
           "title": "品牌名称",
         }
       }}"
@@ -73,12 +69,12 @@ exports[`Footer Footer logo demo works fine 1`] = `
     />
   </wx-view>
   <wx-view
-    class="demo-footer"
+    class="footer-example"
   >
     <t-footer
       logo="{{
         Object {
-          "url": "https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png",
+          "url": "https://tdesign.gtimg.com/miniprogram/images/logo1.png",
         }
       }}"
       theme="logo"

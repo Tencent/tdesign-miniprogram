@@ -1,3 +1,0 @@
-<view style="{{ customStyle }}" class="{{className}}">
-  <slot></slot>
-</view>

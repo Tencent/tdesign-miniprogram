@@ -7,7 +7,7 @@
 import { TdResultProps } from './type';
 const props: TdResultProps = {
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },
@@ -21,13 +21,8 @@ const props: TdResultProps = {
   },
   /** 图标名称 */
   icon: {
-    type: String,
-    value: '',
-  },
-  /** 图标属性，透传至 icon */
-  iconProps: {
-    type: Object,
-    value: {},
+    type: null,
+    value: true,
   },
   /** 图片地址 */
   image: {

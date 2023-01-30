@@ -4,7 +4,6 @@ exports[`image-viewer :base 1`] = `
 <t-image
   class="t-image-viewer__image"
   data-index="{{0}}"
-  style="width: 200rpx; height: 200rpx; left: 50%; transform: translate(-50%, -50%)"
   tClass="t-image--external"
   bind:load="onImageLoadSuccess"
 >
@@ -14,11 +13,11 @@ exports[`image-viewer :base 1`] = `
     style=" "
   >
     <t-loading
-      class="t-class-load"
+      tClass="t-class-load"
       tClassText="t-image--loading-text"
     >
       <wx-view
-        class="t-class"
+        class="class t-class"
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
@@ -27,7 +26,7 @@ exports[`image-viewer :base 1`] = `
         >
           <wx-view
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-            style="width: 44rpx; height: 44rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+            style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
             <wx-view
               class="t-loading__dot"
@@ -71,7 +70,6 @@ exports[`image-viewer :base 2`] = `
 <t-image
   class="t-image-viewer__image"
   data-index="{{0}}"
-  style="width: 100vw; height: 828rpx"
   tClass="t-image--external"
   bind:load="onImageLoadSuccess"
 >
@@ -81,11 +79,11 @@ exports[`image-viewer :base 2`] = `
     style=" "
   >
     <t-loading
-      class="t-class-load"
+      tClass="t-class-load"
       tClassText="t-image--loading-text"
     >
       <wx-view
-        class="t-class"
+        class="class t-class"
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
@@ -94,7 +92,7 @@ exports[`image-viewer :base 2`] = `
         >
           <wx-view
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-            style="width: 44rpx; height: 44rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+            style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
             <wx-view
               class="t-loading__dot"
@@ -138,7 +136,6 @@ exports[`image-viewer :base 3`] = `
 <t-image
   class="t-image-viewer__image"
   data-index="{{0}}"
-  style="width: 1075.2rpx; height: 100vh; left: 50%; transform: translate(-50%, -50%)"
   tClass="t-image--external"
   bind:load="onImageLoadSuccess"
 >
@@ -148,11 +145,11 @@ exports[`image-viewer :base 3`] = `
     style=" "
   >
     <t-loading
-      class="t-class-load"
+      tClass="t-class-load"
       tClassText="t-image--loading-text"
     >
       <wx-view
-        class="t-class"
+        class="class t-class"
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
@@ -161,7 +158,7 @@ exports[`image-viewer :base 3`] = `
         >
           <wx-view
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-            style="width: 44rpx; height: 44rpx;  ; animation-duration: 0.8s; animation-play-state: running;"
+            style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
             <wx-view
               class="t-loading__dot"

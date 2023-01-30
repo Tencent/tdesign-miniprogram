@@ -5,7 +5,7 @@ exports[`image :base 1`] = `
   <t-image>
     <wx-view
       ariaHidden="{{false}}"
-      class="t-class t-image t-image__mask t-image--faild t-image--shape-square"
+      class="t-class t-image t-image__mask t-image--failed t-image--shape-square"
       style=" "
     >
       <wx-view
@@ -17,7 +17,7 @@ exports[`image :base 1`] = `
             ariaHidden="{{false}}"
             ariaLabel="加载失败"
             ariaRole="img"
-            class="t-icon t-class"
+            class="t-icon class t-class"
             style=""
             bind:tap="onTap"
           >

@@ -22,7 +22,10 @@ export default class SideBarItem extends SuperComponent {
   };
 
   observers = {
-    active: function () {
+    icon(v) {
+      this.setData({ _icon: typeof v === 'string' ? { name: v } : v });
+    },
+    active() {
       let ariaActive;
       if (this.data.active) {
         ariaActive = '已选定';

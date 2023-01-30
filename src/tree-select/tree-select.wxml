@@ -1,9 +1,11 @@
 <wxs module="_" src="../common/utils.wxs" />
 <wxs module="this" src="./index.wxs" />
 
-<view class="{{classPrefix}}" style="height: {{_.addUnit(height)}}; {{customStyle}}">
+<view class="{{classPrefix}}" style="height: {{_.addUnit(height)}}; {{style}}">
   <scroll-view
     scroll-y
+    enhanced
+    show-scrollbar="{{false}}"
     class="{{_.cls(classPrefix + '__column', [this.getTreeClass(leafLevel - level, treeOptions.length)])}} {{prefix}}-class"
     wx:for="{{treeOptions}}"
     wx:key="level"

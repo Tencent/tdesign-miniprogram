@@ -1,36 +1,30 @@
-const imageCdn = 'https://tdesign.gtimg.com/site/swiper';
+const imageCdn = 'https://tdesign.gtimg.com/miniprogram/images/';
 const swiperList = [
-  {
-    image: `${imageCdn}/01.png`,
-  },
-  {
-    image: `${imageCdn}/02.png`,
-  },
-  {
-    image: `${imageCdn}/03.png`,
-  },
-  {
-    image: `${imageCdn}/04.png`,
-  },
-  {
-    image: `${imageCdn}/05.png`,
-  },
+  `${imageCdn}/swiper1.png`,
+  `${imageCdn}/swiper2.png`,
+  `${imageCdn}/swiper3.png`,
+  `${imageCdn}/swiper4.png`,
+  `${imageCdn}/swiper5.png`,
 ];
 
 Component({
   data: {
-    current: 1,
-    autoplay: true,
+    current: 0,
+    autoplay: false,
     duration: 500,
     interval: 5000,
     swiperList,
   },
 
   methods: {
+    onTap(e) {
+      const { index } = e.detail;
+
+      console.log(index);
+    },
     onChange(e) {
-      const {
-        detail: { current, source },
-      } = e;
+      const { current, source } = e.detail;
+
       console.log(current, source);
     },
   },

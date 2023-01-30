@@ -3,7 +3,8 @@
 @tabs: ~'@{prefix}-tabs';
 @item: ~'@{tabs}__item';
 
-@tab-nav-bg-color: var(--td-tab-nav-bg-color, #fff);
+@tab-font-size: var(--tab-font-size, 28rpx);
+@tab-nav-bg-color: var(--td-tab-nav-bg-color, @bg-color-block);
 
 @tab-item-height: var(--td-tab-item-height, 96rpx);
 @tab-item-vertical-height: var(--td-tab-item-vertical-height, 108rpx);
@@ -25,9 +26,11 @@
 @tab-item-tag-bg: var(--td-tab-item-tag-bg, @gray-color-1);
 @tab-item-tag-active-bg: var(--td-tab-item-tag-active-bg, @primary-color-1);
 
+@tab-icon-size: var(--td-tab-icon-size, 36rpx);
+
 .@{prefix}-tabs {
   position: relative;
-  font-size: 28rpx;
+  font-size: @tab-font-size;
   background: @tab-nav-bg-color;
 
   &__wrapper {
@@ -37,6 +40,7 @@
 
     &--card {
       background: @gray-color-1;
+      --td-tab-border-color: transparent;
     }
   }
 
@@ -71,19 +75,11 @@
       height: @tab-item-height;
     }
 
-    &--left,
-    &--right {
-      height: @tab-item-vertical-height;
-      line-height: @tab-item-vertical-height;
-      width: @tab-item-vertical-width;
-      background-color: rgb(243, 243, 243);
-
-      &.@{prefix}-is-active {
-        background-color: #fff;
-      }
-    }
-
     &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       &--tag {
         width: 100%;
         text-align: center;
@@ -167,6 +163,11 @@
     }
   }
 
+  &__icon {
+    font-size: @tab-icon-size;
+    margin-right: 4rpx;
+  }
+
   &__content {
     overflow: hidden;
   }
@@ -178,11 +179,6 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-
-    &--left,
-    &--right {
-      flex-direction: column;
-    }
   }
 
   &__track {
@@ -191,18 +187,6 @@
     z-index: 1;
     transition-duration: 0.3s;
     background-color: @tab-track-color;
-
-    &--left {
-      left: 0;
-      top: 0;
-      width: @tab-track-thickness;
-    }
-
-    &--right {
-      right: 0;
-      top: 0;
-      width: @tab-track-thickness;
-    }
 
     &--top,
     &--bottom {
@@ -219,30 +203,10 @@
     &--bottom {
       height: @tab-item-height;
       position: relative;
-
-      &::after {
-        content: '';
-      }
     }
 
     &--top {
-      &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 1px;
-        background-color: @tab-border-color;
-        transform: scaleY(0.5);
-      }
-    }
-
-    &--left,
-    &--right {
-      width: @tab-item-vertical-width;
-      max-height: 100vh;
+      .border(bottom, @tab-border-color);
     }
   }
 
@@ -250,8 +214,8 @@
     display: block;
   }
 
-  &.@{prefix}-tabs--top,
-  &.@{prefix}-tabs--bottom {
+  &--top,
+  &--bottom {
     flex-wrap: wrap;
 
     .@{prefix}-tabs__content {
@@ -268,36 +232,7 @@
     }
   }
 
-  &.@{prefix}-tabs--bottom {
+  &--bottom {
     flex-direction: column-reverse;
-  }
-
-  &.@{prefix}-tabs--left,
-  &.@{prefix}-tabs--right {
-    .@{prefix}-tabs__sticky--left {
-      width: @tab-item-vertical-width;
-    }
-
-    .@{prefix}-tabs__content-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      transition-property: transform;
-    }
-
-    .@{prefix}-tabs__content {
-      width: calc(100% - @tab-item-vertical-width);
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: @tab-item-vertical-width;
-      overflow: hidden;
-    }
-  }
-
-  &.@{prefix}-tabs--right {
-    flex-direction: row-reverse;
   }
 }

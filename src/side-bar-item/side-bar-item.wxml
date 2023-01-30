@@ -1,4 +1,5 @@
 <import src="../common/template/badge" />
+<import src="../common/template/icon" />
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
@@ -7,12 +8,16 @@
   aria-disabled="{{disabled}}"
   aria-label="{{ariaActive}}{{label}}"
   bind:tap="handleClick"
+  aria-role="button"
+  aria-label="{{ active ? '已选中' + label : label}}"
+  aria-disabled="{{disabled}}"
 >
   <block wx:if="{{active}}">
     <view class="{{classPrefix}}__line"></view>
     <view class="{{classPrefix}}__prefix"></view>
     <view class="{{classPrefix}}__suffix"></view>
   </block>
+  <template wx:if="{{_icon}}" is="icon" data="{{ class: classPrefix + '__icon', ..._icon }}" />
   <block wx:if="{{badgeProps}}">
     <template is="badge" data="{{ ...badgeProps, content: label }}" />
   </block>

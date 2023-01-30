@@ -1,7 +1,3 @@
-.box {
-  margin: 32rpx;
-}
-
 .wrapper {
   margin-bottom: 32rpx;
 }
@@ -14,6 +10,5 @@
 }
 
 .long-content .content-container {
-  width: 540rpx;
   white-space: pre-line;
 }

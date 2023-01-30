@@ -2,7 +2,7 @@
 
 @slider: ~'@{prefix}-slider';
 @slider-bar-height: var(--td-slider-bar-height, 8rpx);
-@block-color: #fff;
+@slider-dot-bg-color: var(--td-slider-dot-bg-color, @bg-color-block);
 @slider-dot-size: var(--td-slider-dot-size, 40rpx);
 @slider-dot-color: var(--td-slider-dot-color, @gray-color-1);
 @slider-default-color: var(--td-slider-default-color, @gray-color-4);
@@ -63,7 +63,7 @@
     right: 0;
     transform: translate3d(50%, -50%, 0);
     z-index: 2;
-    background-color: @block-color;
+    background-color: @slider-dot-bg-color;
     width: @slider-dot-size;
     height: @slider-dot-size;
     box-shadow: @shadow-1;
@@ -90,6 +90,24 @@
   &__range-extreme,
   &__dot-value {
     color: rgba(0, 0, 0, 0.9);
+    &--sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
+      border: 0;
+    }
+  }
+  &__dot-slider {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
   &__value--min {

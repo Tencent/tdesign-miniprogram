@@ -1,4 +1,4 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
+<view style="{{ style }}" class="class {{classPrefix}} {{prefix}}-class">
   <view
     class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center ? 'center' : ''}} {{classPrefix}}__input-box--{{shape}} {{prefix}}-class-input-container"
   >
@@ -52,5 +52,5 @@
   >
     {{action}}
   </view>
-  <slot name="action-text" />
+  <slot name="action" />
 </view>

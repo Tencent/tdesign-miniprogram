@@ -2,6 +2,6 @@
   "component": true,
   "usingComponents": {
     "t-dropdown-menu": "../dropdown-menu",
-    "t-dropdown-item": "../dropdown-item"
+    "t-dropdown-item": "../../dropdown-item/dropdown-item"
   }
 }

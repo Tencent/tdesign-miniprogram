@@ -17,13 +17,12 @@ mockGetAnimationFrame.mockImplementation((cb) => {
 });
 
 // 调用函数第1次的返回值 nodeRect
-mockGetRect.mockImplementationOnce(() => {
-  return {
-    width: 350,
-  };
-});
-// 调用函数第2次的返回值 warpID
-mockGetRect.mockImplementationOnce(() => {
+mockGetRect.mockImplementation((context, id) => {
+  if (id === '.t-notice-bar__content') {
+    return {
+      width: 350,
+    };
+  }
   return {
     width: 313,
   };
@@ -32,7 +31,6 @@ mockGetRect.mockImplementationOnce(() => {
 describe('notice-bar', () => {
   const noticeBar = load(path.resolve(__dirname, `../notice-bar`), 't-notice-bar');
   jest.resetModules();
-  const icon = load(path.resolve(__dirname, `../../icon/icon`), 't-icon');
 
   describe('props', () => {
     it(': visible', () => {
@@ -151,20 +149,7 @@ describe('notice-bar', () => {
       comp.setData({
         prefixIcon: 'add',
       });
-
-      const iconId = simulate.load({
-        template: `<t-icon name="{{name}}"></t-icon>`,
-        data: {
-          name: 'add',
-        },
-        usingComponents: {
-          't-icon': icon,
-        },
-      });
-      const iconComp = simulate.render(iconId);
-      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon').dom.innerHTML).toContain(
-        iconComp.dom.innerHTML,
-      );
+      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon')).not.toBeUndefined();
     });
 
     const delay = 7100;

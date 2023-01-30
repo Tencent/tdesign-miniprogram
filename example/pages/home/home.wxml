@@ -1,6 +1,6 @@
 <view class="main">
   <view class="title-wrap">
-    <image class="title-icon" mode="aspectFit" src="/assets/TDesignLogo@2x.png" />
+    <image class="title-icon" mode="aspectFit" src="/assets/TDesignLogo@2x.png" aria-label="TDesign Logo" />
   </view>
   <view class="desc"> TDesign 适配微信小程序的组件库 </view>
   <pull-down-list

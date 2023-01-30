@@ -1,0 +1,19 @@
+<view style="{{ style }}" class="{{className}}">
+  <slot />
+  <!-- 自定义折叠元素 -->
+  <view class="{{classPrefix}}__collapse--slot">
+    <slot name="collapse-avatar" />
+  </view>
+  <!-- 默认折叠元素 -->
+  <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">
+    <t-avatar
+      t-class-image="{{prefix}}-class-image"
+      t-class-content="{{prefix}}-class-content"
+      bordered
+      size="{{size}}"
+      icon="{{ collapseAvatar ? '' : 'user-add'}}"
+      aria-role="none"
+      >{{collapseAvatar}}</t-avatar
+    >
+  </view>
+</view>

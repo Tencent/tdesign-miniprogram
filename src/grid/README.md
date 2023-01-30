@@ -13,17 +13,9 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-grid": "tdesign-miniprogram/grid/grid",
-  "t-grid-item": "tdesign-miniprogram/grid/grid-item"
+  "t-grid-item": "tdesign-miniprogram/grid-item/grid-item"
 }
 ```
-
-### 主题定制
-CSS 变量名|说明
---|--
---td-grid-bg-color | 宫格背景颜色
---td-grid-item-text-color  | 宫格文本颜色
---td-grid-item-description-color | 宫格描述信息文本颜色
---td-grid-item-hover-bg-color | 开启点击反馈时宫格背景颜色
 
 ## 代码演示
 
@@ -81,12 +73,11 @@ theme | String | default | 宫格的风格。可选项：default/card | N
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-badge-props | Object | null | 透传至 Badge 属性。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/grid/type.ts) | N
+badge-props | Object | null | 透传至 Badge 属性。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/grid-item/type.ts) | N
 custom-style | String | - | 自定义组件样式 | N
 description | String / Slot | - | 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点 | N
 external-classes | Array | - | 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名。`['t-class', 't-class-image', 't-class-text', 't-class-description']` | N
-icon | String | - | 图标名称 | N
-icon-props | Object | {} | 图标属性，透传至 icon | N
+icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` | N
 image | String / Slot | - | 图片，可以是图片地址，也可以自定义图片节点 | N
 image-props | Object | - | 透传至 Image 组件 | N
 jump-type | String | navigate-to | 链接跳转类型。可选项：redirect-to/switch-tab/relaunch/navigate-to | N

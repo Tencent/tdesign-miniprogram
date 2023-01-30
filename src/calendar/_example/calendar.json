@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "Calendar",
   "usingComponents": {
     "base": "./base",
     "multiple": "./multiple",

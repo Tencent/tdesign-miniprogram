@@ -1,7 +1,9 @@
-<view class="{{className}} {{prefix}}-class" style="{{tagStyle}} {{ customStyle }}" bind:tap="handleClick">
-  <view class="{{classPrefix}}__icon">
-    <t-icon wx:if="{{icon}}" name="{{icon}}" t-class="{{prefix}}-icon" />
-    <slot wx:else name="icon" />
+<import src="../common/template/icon.wxml" />
+
+<view class="{{className}} class {{prefix}}-class" style="{{tagStyle}} {{ style }}" bind:tap="handleClick">
+  <view aria-hidden="{{true}}" class="{{classPrefix}}__icon">
+    <template wx:if="{{_icon}}" is="icon" data="{{ tClass: prefix + '-icon', ..._icon }}" />
+    <slot name="icon" />
   </view>
   <view class="{{classPrefix}}__text">
     <slot />
@@ -12,5 +14,7 @@
     t-class="{{prefix}}-icon"
     bind:tap="handleClose"
     name="close"
+    aria-role="button"
+    aria-label="关闭"
   />
 </view>

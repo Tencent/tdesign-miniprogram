@@ -7,7 +7,7 @@
 import { TdEmptyProps } from './type';
 const props: TdEmptyProps = {
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },
@@ -21,13 +21,7 @@ const props: TdEmptyProps = {
   },
   /** 图标名称 */
   icon: {
-    type: String,
-    value: '',
-  },
-  /** 图标属性，透传至 icon */
-  iconProps: {
-    type: Object,
-    value: {},
+    type: null,
   },
   /** 图片地址 */
   image: {

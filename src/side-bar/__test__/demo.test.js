@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'switch'];
+const mapper = ['base', 'custom', 'switch', 'with-icon'];
 
 describe('SideBar', () => {
   mapper.forEach((demoName) => {

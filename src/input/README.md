@@ -72,7 +72,7 @@ isComponent: true
 -- | -- | -- | -- | --
 align | String | left | 文本内容位置，居左/居中/居右。可选项：left/center/right | N
 layout | String | horizontal | 标题输入框布局方式。可选项：vertical/horizontal | N
-borderless | Boolean | true | 是否开启无边框模式 | N
+borderless | Boolean | false | 是否开启无边框模式 | N
 clearable | Boolean / Object | false | 是否可清空，默认不启动。值为 `true` 表示使用默认清除空按钮，值为 `Object` 表示透传至 `icon` | N
 custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用输入框 | N
@@ -85,7 +85,7 @@ maxlength | Number | - | 用户最多可以输入的文本长度，一个中文�
 placeholder | String | undefined | 占位符 | N
 prefix-icon | String / Object / Slot | - | 组件前置图标。值为字符串表示图标名称，值为 `'slot'` 表示使用插槽，值为 `Object` 类型，表示透传至 `icon`。 | N
 readonly | Boolean | false | 【开发中】只读状态 | N
-size | String | medium | 输入框尺寸。可选项：small/medium。TS 类型：`'medium' \| 'small'` | N
+size | String | medium | 【已废弃】输入框尺寸。可选项：small/medium。TS 类型：`'medium' \| 'small'` | N
 status | String | - | 输入框状态。可选项：success/warning/error | N
 suffix | String / Slot | - | 后置图标前的后置内容 | N
 suffix-icon | String  / Object / Slot | - | 后置文本内容。值为字符串表示图标名称，值为 `'slot'` 表示使用插槽，值为 `Object` 类型，表示透传至 `icon`。 | N
@@ -124,3 +124,4 @@ clear | \- | 清空按钮点击时触发
 enter | `(value: InputValue)` | 回车键按下时触发
 focus | `(value: InputValue)` | 获得焦点时触发
 keyboardheightchange | `(height: number, duration: number)` | 键盘高度发生变化的时候触发此事件
+click `v0.32.0`| `(trigger: InputTrigger)` | 点击事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts)。<br/>`type InputTrigger = 'suffix' \| 'suffix-icon';`<br/>

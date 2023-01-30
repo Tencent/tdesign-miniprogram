@@ -1,0 +1,14 @@
+<template name="list">
+  <view
+    data-index="{{index}}"
+    style="{{ item.color ? 'color: ' + item.color : '' }}"
+    class="{{listThemeItemClass}}"
+    bind:tap="onSelect"
+    aria-role="{{ariaRole || 'button'}}"
+    aria-label="{{item.label || item}}"
+    tabindex="0"
+  >
+    <t-icon wx:if="{{item.icon}}" name="{{item.icon}}" class="{{classPrefix}}__list-item-icon" size="48rpx"></t-icon>
+    <view class="{{classPrefix}}__list-item-text">{{item.label || item}}</view>
+  </view>
+</template>

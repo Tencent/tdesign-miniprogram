@@ -1,7 +1,7 @@
 import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { classNames, isNumber } from '../common/utils';
+import { classNames, isNumber, calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-tag`;
@@ -17,10 +17,11 @@ export default class Tag extends SuperComponent {
 
   properties = props;
 
-  externalClasses = [`${prefix}-class`];
+  externalClasses = ['class', `${prefix}-class`];
 
-  options = {
+  options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
+    styleIsolation: 'apply-shared',
   };
 
   lifetimes = {
@@ -38,6 +39,12 @@ export default class Tag extends SuperComponent {
     maxWidth() {
       this.setTagStyle();
     },
+
+    icon(v) {
+      this.setData({
+        _icon: calcIcon(v),
+      });
+    },
   };
 
   methods = {
@@ -46,12 +53,12 @@ export default class Tag extends SuperComponent {
       const { size, shape, theme, variant, closable, disabled } = this.properties;
       const tagClass = [
         classPrefix,
-        `${classPrefix}--theme-${theme || 'default'}`,
-        `${classPrefix}--variant-${variant || 'dark'}`,
+        `${classPrefix}--${theme || 'default'}`,
+        `${classPrefix}--${variant}`,
         closable ? `${classPrefix}--closable ${prefix}-is-closable` : '',
         disabled ? `${classPrefix}--disabled ${prefix}-is-disabled` : '',
-        `${classPrefix}--size-${size || 'medium'}`,
-        `${classPrefix}--shape-${shape || 'square'}`,
+        `${classPrefix}--${size}`,
+        `${classPrefix}--${shape}`,
       ];
       const className = classNames(tagClass);
       this.setData({

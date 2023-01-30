@@ -1,5 +1,5 @@
-t-badge + t-badge {
-  margin-left: 48px;
+.wrapper {
+  margin-right: 48px;
 }
 
 .demo-wrapper {

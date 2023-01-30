@@ -3,7 +3,8 @@ import config from '../common/config';
 import { trimSingleValue, trimValue } from './tool';
 import props from './props';
 import type { SliderValue } from './type';
-import dom from '../behaviors/dom';
+import { getRect } from '../common/utils';
+import Bus from '../common/bus';
 
 const { prefix } = config;
 const name = `${prefix}-slider`;
@@ -34,6 +35,7 @@ interface boundingClientRect {
 @wxComponent()
 export default class Slider extends SuperComponent {
   externalClasses = [
+    'class',
     `${prefix}-class`,
     `${prefix}-class-bar`,
     `${prefix}-class-bar-active`,
@@ -42,8 +44,6 @@ export default class Slider extends SuperComponent {
   ];
 
   properties = props;
-
-  behaviors = [dom];
 
   controlledProps = [
     {
@@ -91,11 +91,18 @@ export default class Slider extends SuperComponent {
       }
     },
     marks(val) {
-      this.handleMask(val);
+      if (this.data.initialLeft != null) {
+        this.handleMask(val);
+      } else {
+        this.bus.on('initial', () => this.handleMask(val));
+      }
     },
   };
 
   lifetimes = {
+    created() {
+      this.bus = new Bus();
+    },
     attached() {
       const { value } = this.properties;
       if (!value) this.handlePropsChange(0);
@@ -128,10 +135,20 @@ export default class Slider extends SuperComponent {
   }
 
   handleMask(marks: any) {
+    const calcPos = (arr: number[]) => {
+      const { theme } = this.properties;
+      const { blockSize, maxRange } = this.data;
+      const margin = (theme as any) === 'capsule' ? blockSize / 2 : 0;
+
+      return arr.map((item) => ({
+        val: item,
+        left: Math.round((item / 100) * maxRange) + margin,
+      }));
+    };
     if (marks?.length && Array.isArray(marks)) {
       this.setData({
         isScale: true,
-        scaleArray: marks,
+        scaleArray: calcPos(marks),
         scaleTextArray: [],
       });
     }
@@ -142,17 +159,18 @@ export default class Slider extends SuperComponent {
 
       this.setData({
         isScale: scaleArray.length > 0,
-        scaleArray,
+        scaleArray: calcPos(scaleArray),
         scaleTextArray,
       });
     }
   }
 
   setSingleBarWidth(value: number) {
-    const { max, min } = this.properties;
+    const { max, min, theme } = this.properties;
     const { maxRange, blockSize } = this.data;
+    const halfBlock = (theme as any) === 'capsule' ? Number(blockSize) / 2 : 0;
     const percentage = (Number(value) - Number(min)) / (Number(max) - Number(min));
-    const width = percentage * maxRange + blockSize / 2;
+    const width = percentage * maxRange + halfBlock;
 
     this.setData({
       lineBarWidth: `${width}px`,
@@ -160,17 +178,26 @@ export default class Slider extends SuperComponent {
   }
 
   async getInitialStyle() {
-    const line: boundingClientRect = await this.gettingBoundingClientRect('#sliderLine');
+    const line: boundingClientRect = await getRect(this, '#sliderLine');
     const { blockSize } = this.data;
     const { theme } = this.properties;
     const halfBlock = Number(blockSize) / 2;
-    const margin = (theme as any) === 'capsule' ? 6 : 0;
+    let maxRange = line.right - line.left;
+    let initialLeft = line.left;
+    let initialRight = line.right;
+
+    if ((theme as any) === 'capsule') {
+      maxRange = maxRange - Number(blockSize) - 6; // 6 是边框宽度
+      initialLeft -= halfBlock;
+      initialRight -= halfBlock;
+    }
 
     this.setData({
-      maxRange: line.right - line.left - Number(blockSize) - margin,
-      initialLeft: line.left + halfBlock,
-      initialRight: line.right - halfBlock,
+      maxRange,
+      initialLeft,
+      initialRight,
     });
+    this.bus.emit('initial');
   }
 
   stepValue(value: number): number {
@@ -228,37 +255,35 @@ export default class Slider extends SuperComponent {
 
   // 点击范围选择滑动条的事件
   onLineTap(e: WechatMiniprogram.TouchEvent) {
-    const { disabled } = this.properties;
+    const { disabled, theme } = this.properties;
     const { initialLeft, initialRight, maxRange, blockSize } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
     const { pageX } = touch;
-    const halfBlock = Number(blockSize) / 2;
+    const halfBlock = (theme as any) === 'capsule' ? Number(blockSize) / 2 : 0;
 
     const currentLeft = pageX - initialLeft;
     if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
 
-    this.gettingBoundingClientRect('#leftDot').then((leftDot: boundingClientRect) => {
-      this.gettingBoundingClientRect('#rightDot').then((rightDot: boundingClientRect) => {
-        // 点击处-halfblock 与 leftDot左侧的距离（绝对值）
-        const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
-        // 点击处-halfblock 与 rightDot左侧的距离（绝对值）
-        const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
-        // 哪个绝对值小就移动哪个Dot
-        const isMoveLeft = distanceLeft < distanceRight;
-        if (isMoveLeft) {
-          // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
-          const left = pageX - initialLeft;
-          const leftValue = this.convertPosToValue(left, 0);
-          this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
-        } else {
-          const right = -(pageX - initialRight);
-          const rightValue = this.convertPosToValue(right, 1);
+    Promise.all([getRect(this, '#leftDot'), getRect(this, '#rightDot')]).then(([leftDot, rightDot]) => {
+      // 点击处-halfblock 与 leftDot左侧的距离（绝对值）
+      const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
+      // 点击处-halfblock 与 rightDot左侧的距离（绝对值）
+      const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
+      // 哪个绝对值小就移动哪个Dot
+      const isMoveLeft = distanceLeft < distanceRight;
+      if (isMoveLeft) {
+        // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
+        const left = pageX - initialLeft;
+        const leftValue = this.convertPosToValue(left, 0);
+        this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
+      } else {
+        const right = -(pageX - initialRight);
+        const rightValue = this.convertPosToValue(right, 1);
 
-          this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
-        }
-      });
+        this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
+      }
     });
   }
 
@@ -297,8 +322,9 @@ export default class Slider extends SuperComponent {
   }
 
   setLineStyle(left: number, right: number) {
+    const { theme } = this.properties;
     const { blockSize, maxRange } = this.data;
-    const halfBlock = Number(blockSize) / 2;
+    const halfBlock = (theme as any) === 'capsule' ? Number(blockSize) / 2 : 0;
     const [a, b] = this.data._value as any;
     const cut = (v) => parseInt(v, 10);
 

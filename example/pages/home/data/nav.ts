@@ -20,15 +20,11 @@ const nav = {
     },
     {
       name: 'SideBar',
-      label: '侧边导航',
+      label: '侧边栏',
     },
     {
       name: 'Steps',
       label: '步骤条',
-    },
-    {
-      name: 'Sticky',
-      label: '吸顶',
     },
     {
       name: 'TabBar',

@@ -1,7 +1,7 @@
-import dom from '../behaviors/dom';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { getRect } from '../common/utils';
 
 let ARRAY: WechatMiniprogram.Component.TrivialInstance[] = [];
 
@@ -11,8 +11,6 @@ const ContainerClass = `.${name}`;
 
 @wxComponent()
 export default class SwiperCell extends SuperComponent {
-  behaviors = [dom];
-
   externalClasses = [`${prefix}-class`];
 
   options = {
@@ -31,18 +29,21 @@ export default class SwiperCell extends SuperComponent {
 
   attached() {
     ARRAY.push(this as WechatMiniprogram.Component.TrivialInstance);
-    wx.nextTick(() => {
-      this.setSwipeWidth();
-    });
   }
 
-  async setSwipeWidth() {
-    const rightRect = await this.gettingBoundingClientRect(`${ContainerClass}__right`);
-    const leftRect = await this.gettingBoundingClientRect(`${ContainerClass}__left`);
-    this.setData({
-      leftWidth: leftRect.width,
-      rightWidth: rightRect.width,
-    });
+  ready() {
+    this.setSwipeWidth();
+  }
+
+  setSwipeWidth() {
+    Promise.all([getRect(this, `${ContainerClass}__left`), getRect(this, `${ContainerClass}__right`)]).then(
+      ([leftRect, rightRect]) => {
+        this.setData({
+          leftWidth: leftRect.width,
+          rightWidth: rightRect.width,
+        });
+      },
+    );
   }
 
   detached() {

@@ -1,9 +1,9 @@
-.box {
+.button-example {
   display: flex;
-  align-items: start;
-  margin: 0 32rpx;
+  justify-content: space-between;
+  margin: 0 32rpx 32rpx;
 }
 
-.box t-button + t-button {
-  margin-left: 32rpx;
+.external-class {
+  border-radius: 0 !important;
 }

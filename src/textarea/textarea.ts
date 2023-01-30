@@ -37,6 +37,12 @@ export default class Textarea extends SuperComponent {
     count: 0,
   };
 
+  observers = {
+    value(val) {
+      this.updateCount(val);
+    },
+  };
+
   lifetimes = {
     ready() {
       const { value } = this.properties;
@@ -45,26 +51,42 @@ export default class Textarea extends SuperComponent {
   };
 
   methods = {
-    updateValue(value) {
+    updateCount(val) {
       const { maxcharacter, maxlength } = this.properties;
+      const { count } = this.calculateValue(val, maxcharacter, maxlength);
+      this.setData({
+        count,
+      });
+    },
+
+    updateValue(val) {
+      const { maxcharacter, maxlength } = this.properties;
+      const { value, count } = this.calculateValue(val, maxcharacter, maxlength);
+      this.setData({
+        value,
+        count,
+      });
+    },
+
+    calculateValue(value, maxcharacter, maxlength) {
       if (maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
-        this.setData({
+        return {
           value: characters,
           count: length,
-        });
-      } else if (maxlength > 0 && !Number.isNaN(maxlength)) {
-        const { length, characters } = getCharacterLength('maxlength', value, maxlength);
-        this.setData({
-          value: characters,
-          count: length,
-        });
-      } else {
-        this.setData({
-          value,
-          count: value ? String(value).length : 0,
-        });
+        };
       }
+      if (maxlength > 0 && !Number.isNaN(maxlength)) {
+        const { length, characters } = getCharacterLength('maxlength', value, maxlength);
+        return {
+          value: characters,
+          count: length,
+        };
+      }
+      return {
+        value,
+        count: value ? String(value).length : 0,
+      };
     },
 
     onInput(event) {
@@ -91,6 +113,9 @@ export default class Textarea extends SuperComponent {
       this.triggerEvent('lineChange', {
         ...event.detail,
       });
+    },
+    onKeyboardHeightChange(e) {
+      this.triggerEvent('keyboardheightchange', e.detail);
     },
   };
 }

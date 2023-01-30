@@ -1,26 +1,26 @@
 module.exports = {
-  getAvatarOuterClass: function (classPrefix, size, shape, bordered) {
-    var isIncludePx = size.indexOf('px') > -1;
-    var borderSize = isIncludePx ? 'medium' : size;
+  getClass: function (classPrefix, size, shape, bordered) {
+    var hasPx = (size || '').indexOf('px') > -1;
+    var borderSize = hasPx ? 'medium' : size;
     var classNames = [
       classPrefix,
       classPrefix + (shape === 'round' ? '--round' : '--circle'),
-      bordered ? classPrefix + '--border' + ' ' + classPrefix + '--border--' + borderSize : '',
-      isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1),
+      bordered ? classPrefix + '--border' + ' ' + classPrefix + '--border-' + borderSize : '',
+      hasPx ? '' : classPrefix + '--' + size,
     ];
     return classNames.join(' ');
   },
 
-  getAvatarSizePx: function (size = 'medium') {
+  getSize: function (size = 'medium') {
     var pxIndex = size.indexOf('px');
     if (pxIndex > -1) {
       return 'width:' + size + ';height:' + size + ';font-size:' + ((size.slice(0, pxIndex) / 8) * 3 + 2) + 'px;';
     }
   },
 
-  getAvatarStyles: function (isShow, zIndex, customStyle) {
+  getStyles: function (isShow, zIndex, style) {
     var displayStyle = isShow ? '' : 'display: none;';
     var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
-    return displayStyle + zIndexStyle + customStyle;
+    return displayStyle + zIndexStyle + style;
   },
 };

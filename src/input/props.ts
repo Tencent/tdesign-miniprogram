@@ -19,7 +19,7 @@ const props: TdInputProps = {
   /** 是否开启无边框模式 */
   borderless: {
     type: Boolean,
-    value: true,
+    value: false,
   },
   /** 是否可清空 */
   clearable: {
@@ -27,7 +27,7 @@ const props: TdInputProps = {
     value: false,
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

@@ -1,29 +1,8 @@
-<view class="box align-bottom">
+<view class="button-example">
   <t-button theme="primary" size="large">填充按钮</t-button>
   <t-button theme="primary" size="large" icon="chevron-left" shape="square" aria-label="返回"></t-button>
-</view>
-
-<view style="height: 32rpx" />
-
-<view class="box align-bottom">
   <t-button theme="primary" size="large" shape="round">填充按钮</t-button>
   <t-button theme="primary" size="large" icon="chevron-left" shape="circle" aria-label="返回"></t-button>
 </view>
 
-<!-- <view class="box align-bottom">
-  <t-button theme="primary" size="large" icon="app" shape="round">按钮</t-button>
-  <t-button theme="primary" icon="app" shape="round">按钮</t-button>
-  <t-button theme="primary" size="small" icon="app" shape="round">按钮</t-button>
-</view>
-
-<view class="box align-bottom">
-  <t-button theme="primary" size="large" icon="app" shape="square"></t-button>
-  <t-button theme="primary" icon="app" shape="square"></t-button>
-  <t-button theme="primary" size="small" icon="app" shape="square"></t-button>
-</view>
-
-<view class="box align-bottom">
-  <t-button theme="primary" size="large" icon="app" shape="circle"></t-button>
-  <t-button theme="primary" icon="app" shape="circle"></t-button>
-  <t-button theme="primary" size="small" icon="app" shape="circle"></t-button>
-</view> -->
+<t-button theme="primary" size="large" block t-class="external-class">填充按钮</t-button>

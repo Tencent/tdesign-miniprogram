@@ -1,17 +1,17 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{_.cls(classPrefix, [align, theme, ['checked', checked], ['block', block]])}} {{prefix}}-class"
   aria-role="checkbox"
   aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
   aria-disabled="{{disabled ? true : false}}"
+  bind:tap="onChange"
+  tabindex="{{tabindex}}"
 >
   <view
     wx:if="{{theme == 'default'}}"
     class="{{_.cls(classPrefix + '__icon', [align, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
-    data-target="icon"
-    bind:tap="onChange"
   >
     <view wx:if="{{_.isArray(icon)}}" class="{{classPrefix}}__icon">
       <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
@@ -22,14 +22,19 @@
         name="{{indeterminate ? ('minus-' + icon + '-filled') : ('check-' + icon + '-filled')}}"
         class="{{_.cls(classPrefix + '__icon-wrapper', [])}}"
       />
+      <t-icon
+        wx:if="{{checked && icon == 'line'}}"
+        name="{{indeterminate ? ('minus-' + icon + '-filled') : 'check'}}"
+        class="{{_.cls(classPrefix + '__icon-wrapper', [])}}"
+      />
       <view
-        wx:elif="{{!checked && (icon == 'circle' || icon == 'rectangle') || checked && icon == 'line'}}"
+        wx:elif="{{!checked && (icon == 'circle' || icon == 'rectangle')}}"
         class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
       />
       <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
     </block>
   </view>
-  <view class="{{classPrefix}}__content" data-target="text" bind:tap="onChange">
+  <view class="{{classPrefix}}__content" data-target="text" catch:tap="onChange">
     <view
       class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"

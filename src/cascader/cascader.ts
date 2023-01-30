@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { TdCascaderProps } from './type';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-cascader`;
@@ -15,6 +16,10 @@ const defaultOptionLabel = '选择选项';
 export default class Cascader extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
+  options: WechatMiniprogram.Component.ComponentOptions = {
+    multipleSlots: true,
+  };
+
   properties = props;
 
   data = {
@@ -24,6 +29,7 @@ export default class Cascader extends SuperComponent {
     selectedIndexes: [],
     selectedValue: [],
     defaultOptionLabel,
+    scrollTopList: [],
     steps: [defaultOptionLabel],
   };
 
@@ -33,6 +39,7 @@ export default class Cascader extends SuperComponent {
         const $tabs = this.selectComponent('#tabs');
 
         $tabs?.setTrack();
+        this.updateScrollTop();
       }
     },
     'value, options'() {
@@ -69,6 +76,13 @@ export default class Cascader extends SuperComponent {
         stepIndex: items.length - 1,
       });
     },
+    async stepIndex() {
+      const { visible } = this.data;
+
+      if (visible) {
+        this.updateScrollTop();
+      }
+    },
   };
 
   methods = {
@@ -95,6 +109,19 @@ export default class Cascader extends SuperComponent {
             return [i, ...res];
           }
         }
+      }
+    },
+    updateScrollTop() {
+      const { visible, items, selectedIndexes, stepIndex } = this.data;
+
+      if (visible) {
+        getRect(this, '.cascader-radio-group-0').then((rect) => {
+          const eachRadioHeight = rect.height / items[0]?.length;
+
+          this.setData({
+            [`scrollTopList[${stepIndex}]`]: eachRadioHeight * selectedIndexes[stepIndex],
+          });
+        });
       }
     },
     hide() {

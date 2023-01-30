@@ -10,17 +10,12 @@ const props: TdFabProps = {
   buttonProps: {
     type: Object,
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: 'right: 16px; bottom: 32px;',
-  },
   /** 图标 */
   icon: {
     type: String,
     value: '',
   },
-  /** 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `customStyle`） */
+  /** 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `style`） */
   style: {
     type: String,
     value: 'right: 16px; bottom: 32px;',

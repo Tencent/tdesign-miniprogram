@@ -1,6 +1,6 @@
 <template name="image">
   <t-image
-    customStyle="{{customStyle}}"
+    style="{{style}}"
     error="{{error || 'default'}}"
     lazy="{{lazy}}"
     loading="{{count || 'default'}}"
@@ -11,7 +11,7 @@
     showMenuByLongpress="{{showMenuByLongpress}}"
     bind:error="{{binderror}}"
     bind:load="{{bindload}}"
-    t-class="{{tClass}}"
+    t-class="{{class}} {{tClass}}"
     t-class-load="{{tClassLoad}}"
   />
 </template>

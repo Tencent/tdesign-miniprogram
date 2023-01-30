@@ -14,7 +14,7 @@ exports[`collapse :base 1`] = `
         id="first"
       >
         <wx-view
-          class="t-collapse-panel t-class"
+          class="t-collapse-panel t-collapse-panel--bottom t-class"
           style=""
         >
           <wx-view
@@ -25,13 +25,15 @@ exports[`collapse :base 1`] = `
             bind:tap="onClick"
           >
             <t-cell
-              tClass="t-collapse-panel__header t-class-header"
+              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
               tClassHover="class-header-hover"
               tClassNote="class-note "
-              tClassRightIcon="class-right-icon "
+              tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
               tClassTitle="class-title "
             >
               <wx-view
+                ariaLabel=""
+                ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
                 hoverStayTime="70"
@@ -60,13 +62,13 @@ exports[`collapse :base 1`] = `
                   class="t-cell__right t-class-right"
                 >
                   <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
+                    tClass="t-cell__right-icon t-class-right-icon"
                   >
                     <wx-view
                       ariaHidden="{{false}}"
                       ariaLabel=""
                       ariaRole=""
-                      class="t-icon t-class"
+                      class="t-icon class t-class"
                       style=""
                       bind:tap="onTap"
                     >
@@ -80,13 +82,12 @@ exports[`collapse :base 1`] = `
             </t-cell>
           </wx-view>
           <wx-view
+            animation=""
             ariaHidden=""
             class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
           >
             <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+              class="t-collapse-panel__content t-class-content"
             >
               
       
@@ -100,7 +101,7 @@ exports[`collapse :base 1`] = `
         id="second"
       >
         <wx-view
-          class="t-collapse-panel t-class"
+          class="t-collapse-panel t-collapse-panel--bottom t-class"
           style=""
         >
           <wx-view
@@ -111,13 +112,15 @@ exports[`collapse :base 1`] = `
             bind:tap="onClick"
           >
             <t-cell
-              tClass="t-collapse-panel__header t-class-header"
+              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
               tClassHover="class-header-hover"
               tClassNote="class-note "
-              tClassRightIcon="class-right-icon "
+              tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
               tClassTitle="class-title "
             >
               <wx-view
+                ariaLabel=""
+                ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
                 hoverStayTime="70"
@@ -146,13 +149,13 @@ exports[`collapse :base 1`] = `
                   class="t-cell__right t-class-right"
                 >
                   <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
+                    tClass="t-cell__right-icon t-class-right-icon"
                   >
                     <wx-view
                       ariaHidden="{{false}}"
                       ariaLabel=""
                       ariaRole=""
-                      class="t-icon t-class"
+                      class="t-icon class t-class"
                       style=""
                       bind:tap="onTap"
                     >
@@ -166,13 +169,12 @@ exports[`collapse :base 1`] = `
             </t-cell>
           </wx-view>
           <wx-view
+            animation=""
             ariaHidden="{{true}}"
             class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
           >
             <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+              class="t-collapse-panel__content t-class-content"
             >
               
       
@@ -193,7 +195,7 @@ exports[`collapse :base 1`] = `
     >
       <t-collapse-panel>
         <wx-view
-          class="t-collapse-panel t-class"
+          class="t-collapse-panel t-collapse-panel--bottom t-class"
           style=""
         >
           <wx-view
@@ -204,13 +206,15 @@ exports[`collapse :base 1`] = `
             bind:tap="onClick"
           >
             <t-cell
-              tClass="t-collapse-panel__header t-class-header"
+              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
               tClassHover="class-header-hover"
               tClassNote="class-note "
-              tClassRightIcon="class-right-icon "
+              tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
               tClassTitle="class-title "
             >
               <wx-view
+                ariaLabel=""
+                ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
                 hoverStayTime="70"
@@ -239,13 +243,13 @@ exports[`collapse :base 1`] = `
                   class="t-cell__right t-class-right"
                 >
                   <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
+                    tClass="t-cell__right-icon t-class-right-icon"
                   >
                     <wx-view
                       ariaHidden="{{false}}"
                       ariaLabel=""
                       ariaRole=""
-                      class="t-icon t-class"
+                      class="t-icon class t-class"
                       style=""
                       bind:tap="onTap"
                     >
@@ -259,13 +263,12 @@ exports[`collapse :base 1`] = `
             </t-cell>
           </wx-view>
           <wx-view
+            animation=""
             ariaHidden="{{true}}"
             class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
           >
             <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+              class="t-collapse-panel__content t-class-content"
             >
               
       
@@ -277,7 +280,7 @@ exports[`collapse :base 1`] = `
       </t-collapse-panel>
       <t-collapse-panel>
         <wx-view
-          class="t-collapse-panel t-class"
+          class="t-collapse-panel t-collapse-panel--bottom t-class"
           style=""
         >
           <wx-view
@@ -288,13 +291,15 @@ exports[`collapse :base 1`] = `
             bind:tap="onClick"
           >
             <t-cell
-              tClass="t-collapse-panel__header t-class-header"
+              tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
               tClassHover="class-header-hover"
               tClassNote="class-note "
-              tClassRightIcon="class-right-icon "
+              tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
               tClassTitle="class-title "
             >
               <wx-view
+                ariaLabel=""
+                ariaRole=""
                 class="t-class t-cell   t-cell--middle"
                 hoverClass="t-cell--hover-class"
                 hoverStayTime="70"
@@ -323,13 +328,13 @@ exports[`collapse :base 1`] = `
                   class="t-cell__right t-class-right"
                 >
                   <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
+                    tClass="t-cell__right-icon t-class-right-icon"
                   >
                     <wx-view
                       ariaHidden="{{false}}"
                       ariaLabel=""
                       ariaRole=""
-                      class="t-icon t-class"
+                      class="t-icon class t-class"
                       style=""
                       bind:tap="onTap"
                     >
@@ -343,13 +348,12 @@ exports[`collapse :base 1`] = `
             </t-cell>
           </wx-view>
           <wx-view
+            animation=""
             ariaHidden=""
             class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
           >
             <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+              class="t-collapse-panel__content t-class-content"
             >
               
       
@@ -374,7 +378,7 @@ exports[`collapse :defaultExpandAll 1`] = `
   >
     <t-collapse-panel>
       <wx-view
-        class="t-collapse-panel t-class"
+        class="t-collapse-panel t-collapse-panel--bottom t-class"
         style=""
       >
         <wx-view
@@ -385,13 +389,15 @@ exports[`collapse :defaultExpandAll 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
-            tClassRightIcon="class-right-icon "
+            tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
+              ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
@@ -420,13 +426,13 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -440,13 +446,12 @@ exports[`collapse :defaultExpandAll 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation=""
           ariaHidden="{{true}}"
           class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       
@@ -458,7 +463,7 @@ exports[`collapse :defaultExpandAll 1`] = `
     </t-collapse-panel>
     <t-collapse-panel>
       <wx-view
-        class="t-collapse-panel t-class"
+        class="t-collapse-panel t-collapse-panel--bottom t-class"
         style=""
       >
         <wx-view
@@ -469,13 +474,15 @@ exports[`collapse :defaultExpandAll 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
-            tClassRightIcon="class-right-icon "
+            tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
+              ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
@@ -504,13 +511,13 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -524,13 +531,12 @@ exports[`collapse :defaultExpandAll 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation=""
           ariaHidden=""
           class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       
@@ -557,7 +563,7 @@ exports[`collapse :disabled 1`] = `
       id="first"
     >
       <wx-view
-        class="t-collapse-panel t-class"
+        class="t-collapse-panel t-collapse-panel--bottom t-class"
         style=""
       >
         <wx-view
@@ -568,13 +574,15 @@ exports[`collapse :disabled 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
-            tClassRightIcon="class-right-icon "
+            tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
+              ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
@@ -603,13 +611,13 @@ exports[`collapse :disabled 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -623,13 +631,69 @@ exports[`collapse :disabled 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation="{{
+            Object {
+              "actions": Array [
+                Object {
+                  "animates": Array [
+                    Object {
+                      "args": Array [
+                        "height",
+                        "0px",
+                      ],
+                      "type": "style",
+                    },
+                    Object {
+                      "args": Array [
+                        "top",
+                        "0px",
+                      ],
+                      "type": "style",
+                    },
+                  ],
+                  "option": Object {
+                    "transformOrigin": "50% 50% 0",
+                    "transition": Object {
+                      "delay": 0,
+                      "duration": 300,
+                      "timingFunction": "ease-in-out",
+                    },
+                  },
+                },
+                Object {
+                  "animates": Array [
+                    Object {
+                      "args": Array [
+                        "height",
+                        "auto",
+                      ],
+                      "type": "style",
+                    },
+                    Object {
+                      "args": Array [
+                        "top",
+                        "0px",
+                      ],
+                      "type": "style",
+                    },
+                  ],
+                  "option": Object {
+                    "transformOrigin": "50% 50% 0",
+                    "transition": Object {
+                      "delay": 0,
+                      "duration": 0,
+                      "timingFunction": "ease-in-out",
+                    },
+                  },
+                },
+              ],
+            }
+          }}"
           ariaHidden=""
           class="t-collapse-panel__wrapper"
-          style="height: auto;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       
@@ -643,7 +707,7 @@ exports[`collapse :disabled 1`] = `
       id="second"
     >
       <wx-view
-        class="t-collapse-panel t-class"
+        class="t-collapse-panel t-collapse-panel--bottom t-class"
         style=""
       >
         <wx-view
@@ -654,13 +718,15 @@ exports[`collapse :disabled 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
-            tClassRightIcon="class-right-icon "
+            tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
+              ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
               hoverStayTime="70"
@@ -689,13 +755,13 @@ exports[`collapse :disabled 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -709,13 +775,12 @@ exports[`collapse :disabled 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation=""
           ariaHidden="{{true}}"
           class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       

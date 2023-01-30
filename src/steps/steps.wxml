@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{customStyle}}" class="{{_.cls(classPrefix, [layout, ['readonly', readonly]])}} {{prefix}}-class">
+<view style="{{style}}" class="{{_.cls(classPrefix, [layout, ['readonly', readonly]])}} {{prefix}}-class">
   <slot />
 </view>

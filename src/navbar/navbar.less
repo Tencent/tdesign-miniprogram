@@ -1,22 +1,29 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@navbar-color: @font-gray-1;
-@navbar-bg-color: @bg-color-block;
-@navbar-height: 88rpx;
-@navbar-right: 190rpx; // 默认右上角胶囊按钮宽度，组件会在初始化时尝试自动获取胶囊按钮宽度并覆写该值
-@navbar-padding-top: 40rpx; // 导航栏顶部间距，组件会在初始化时尝试取右侧系统胶囊位置进行覆盖
-@navbar-title-font-weight: 600;
-@navbar-left-arrow-size: 48rpx;
+@navbar-color: var(--td-navbar-color, @font-gray-1);
+@navbar-bg-color: var(--td-navbar-bg-color, @bg-color-block);
+@navbar-height: var(--td-navbar-height, 96rpx);
+@navbar-right: var(
+  --td-navbar-right,
+  190rpx
+); // 默认右上角胶囊按钮宽度，组件会在初始化时尝试自动获取胶囊按钮宽度并覆写该值
+@navbar-padding-top: var(
+  --td-navbar-padding-top,
+  40rpx
+); // 导航栏顶部间距，组件会在初始化时尝试取右侧系统胶囊位置进行覆盖
+@navbar-title-font-size: var(--td-navbar-title-font-size, 36rpx);
+@navbar-title-font-weight: var(--td-navbar-title-font-weight, 600);
+@navbar-left-arrow-size: var(--td-navbar-left-arrow-size, 48rpx);
 
 // capsule
-@navbar-capsule-border-color: #e3e6ea;
-@navbar-capsule-border-radius: 32rpx;
-@navbar-capsule-width: 176rpx;
+@navbar-capsule-border-color: var(--td-navbar-capsule-border-color, #e3e6ea);
+@navbar-capsule-border-radius: var(--td-navbar-capsule-border-radius, 32rpx);
+@navbar-capsule-width: var(--td-navbar-capsule-width, 176rpx);
+@navbar-capsule-height: var(--td-navbar-capsule-height, 64rpx);
+// var(--capsule-height)
 
 .@{prefix}-navbar {
-  overflow: hidden;
-
   &--fixed {
     .@{prefix}-navbar__content {
       position: fixed;
@@ -47,8 +54,8 @@
   }
 
   &__placeholder {
-    height: var(--td-navbar-height, 88rpx);
-    padding-top: var(--td-navbar-padding-top, @navbar-padding-top);
+    height: @navbar-height;
+    padding-top: @navbar-padding-top;
     position: relative;
     visibility: hidden;
   }
@@ -56,12 +63,12 @@
   &__content {
     position: relative;
     z-index: 1;
-    height: var(--td-navbar-height, @navbar-height);
-    width: calc(100% - var(--td-navbar-right, @navbar-right));
-    padding-right: var(--td-navbar-right, @navbar-right);
-    padding-top: var(--td-navbar-padding-top, @navbar-padding-top);
-    color: var(--td-navbar-color, @navbar-color);
-    background-color: var(--td-navbar-bg-color, @navbar-bg-color);
+    height: @navbar-height;
+    width: calc(100% - @navbar-right);
+    padding-right: @navbar-right;
+    padding-top: @navbar-padding-top;
+    color: @navbar-color;
+    background-color: @navbar-bg-color;
     display: flex;
     align-items: center;
   }
@@ -69,22 +76,22 @@
   &__left {
     position: relative;
     box-sizing: border-box;
-    // width: var(--td-navbar-right, @navbar-right);
+    // width: @navbar-right;
     display: flex;
     align-items: center;
 
     &-arrow {
-      font-size: var(--td-navbar-left-arrow-size, @navbar-left-arrow-size);
+      font-size: @navbar-left-arrow-size;
     }
   }
 
   &__capsule {
     box-sizing: border-box;
     margin-left: 24rpx;
-    width: var(--td-navbar-capsule-width, @navbar-capsule-width);
-    height: var(--capsule-height);
-    border-radius: var(--td-navbar-capsule-border-radius, @navbar-capsule-border-radius);
-    border: 1rpx solid var(--td-navbar-capsule-border-color, @navbar-capsule-border-color);
+    width: @navbar-capsule-width;
+    height: @navbar-capsule-height;
+    border-radius: @navbar-capsule-border-radius;
+    border: 1rpx solid @navbar-capsule-border-color;
     display: flex;
     align-items: center;
 
@@ -97,10 +104,10 @@
     font-size: 36rpx;
     text-align: center;
     position: absolute;
-    left: var(--td-navbar-right, @navbar-right);
-    width: calc(100% - var(--td-navbar-right, @navbar-right) * 2);
-    height: var(--td-navbar-height, @navbar-height);
-    line-height: var(--td-navbar-height, @navbar-height);
+    left: @navbar-right;
+    width: calc(100% - @navbar-right * 2);
+    height: @navbar-height;
+    line-height: @navbar-height;
     flex: 1;
     display: flex;
     align-items: center;
@@ -112,10 +119,11 @@
     }
 
     &-title {
+      font-size: @navbar-title-font-size;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      font-weight: var(--td-navbar-title-font-weight, @navbar-title-font-weight);
+      font-weight: @navbar-title-font-weight;
     }
   }
 

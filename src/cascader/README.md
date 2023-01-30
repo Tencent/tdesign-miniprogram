@@ -5,6 +5,13 @@ spline: form
 isComponent: true
 ---
 
+<div style="background: #ecf2fe; display: flex; align-items: center; line-height: 20px; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <svg fill="none" viewBox="0 0 16 16" width="16px" height="16px" style="margin-right: 5px">
+    <path fill="#0052d9" d="M8 15A7 7 0 108 1a7 7 0 000 14zM7.4 4h1.2v1.2H7.4V4zm.1 2.5h1V12h-1V6.5z" fillOpacity="0.9"></path>
+  </svg>
+  该组件于 0.23.0 版本上线，请留意版本。
+</div>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -14,16 +21,6 @@ isComponent: true
   "t-cascader": "tdesign-miniprogram/cascader/cascader"
 }
 ```
-
-## 主题定制
-
-CSS 变量名|说明
---|--
---td-cascader-active-color | 激活时颜色
---td-cascader-title-color | 标题颜色
---td-cascader-options-title-color | 次标题颜色
---td-cascader-border-color | 步骤条下方边框颜色
---td-cascader-step-arrow-color | 步骤条箭头颜色
 
 ## 代码演示
 

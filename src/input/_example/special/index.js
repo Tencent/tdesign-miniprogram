@@ -3,7 +3,6 @@ Component({
     textPassword: '123456',
     phoneError: false,
     phoneNumber: '17600600600',
-    price: '10.2',
     priceError: false,
   },
 

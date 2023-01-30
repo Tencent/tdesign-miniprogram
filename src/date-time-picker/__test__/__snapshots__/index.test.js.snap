@@ -16,7 +16,7 @@ exports[`date-time-picker :base 1`] = `
         <wx-view
           ariaModal="{{true}}"
           ariaRole="dialog"
-          class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
+          class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active class t-class"
           style="z-index:11500;"
           bind:transitionend="onTransitionEnd"
         >
@@ -61,7 +61,7 @@ exports[`date-time-picker :base 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group t-picker-item__group--roomy"
+                    class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -328,7 +328,7 @@ exports[`date-time-picker :base 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group t-picker-item__group--roomy"
+                    class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -487,7 +487,7 @@ exports[`date-time-picker :second 1`] = `
         <wx-view
           ariaModal="{{true}}"
           ariaRole="dialog"
-          class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active t-class"
+          class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active class t-class"
           style="z-index:11500;"
           bind:transitionend="onTransitionEnd"
         >
@@ -528,11 +528,11 @@ exports[`date-time-picker :second 1`] = `
                 class="t-picker__main"
               >
                 <t-picker-item
-                  class="t-date-time-picker__item"
+                  class="t-date-time-picker__item t-date-time-picker__item--roomly"
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group t-picker-item__group--narrow"
+                    class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -799,7 +799,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group t-picker-item__group--narrow"
+                    class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -914,7 +914,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group t-picker-item__group--narrow"
+                    class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -1181,7 +1181,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group t-picker-item__group--narrow"
+                    class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -1392,7 +1392,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group t-picker-item__group--narrow"
+                    class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"
@@ -1891,7 +1891,7 @@ exports[`date-time-picker :second 1`] = `
                   index="index"
                 >
                   <wx-view
-                    class="t-picker-item__group t-picker-item__group--narrow"
+                    class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
                     bind:touchend="onTouchEnd"

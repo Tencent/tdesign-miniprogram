@@ -1,9 +1,14 @@
-.demo-textarea {
-  padding: 32rpx;
+.textarea-example {
+  padding: 32rpx 32rpx 48rpx;
   background-color: #fff;
 }
 
-.demo-textarea--label {
+.external-class {
+  padding-top: 24rpx !important;
+  padding-bottom: 24rpx !important;
+}
+
+.textarea-example__label {
   display: block;
   color: rgba(0, 0, 0, 0.9);
   font-size: 24rpx;

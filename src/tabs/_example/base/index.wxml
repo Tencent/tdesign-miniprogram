@@ -1,12 +1,19 @@
 <t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs">
-  <t-tab-panel label="标签页一" value="0"></t-tab-panel>
-  <t-tab-panel label="标签页二" value="1"></t-tab-panel>
+  <t-tab-panel label="选项" value="0" />
+  <t-tab-panel label="选项" value="1" />
 </t-tabs>
 
 <t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs">
-  <t-tab-panel label="标签页一" value="0"></t-tab-panel>
-  <t-tab-panel label="标签页二" value="1"></t-tab-panel>
-  <t-tab-panel label="标签页三" value="2"></t-tab-panel>
+  <t-tab-panel label="选项" value="0" />
+  <t-tab-panel label="选项" value="1" />
+  <t-tab-panel label="上限六个文字" value="2" />
+</t-tabs>
+
+<t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs">
+  <t-tab-panel label="选项" value="0" />
+  <t-tab-panel label="选项" value="1" />
+  <t-tab-panel label="选项" value="2" />
+  <t-tab-panel label="上限四字" value="2" />
 </t-tabs>
 
 <t-tabs
@@ -18,8 +25,9 @@
   bind:scroll="onStickyScroll"
   t-class="custom-tabs"
 >
-  <t-tab-panel label="标签页一" value="0"></t-tab-panel>
-  <t-tab-panel label="标签页二" value="1"></t-tab-panel>
-  <t-tab-panel label="标签页三" value="2"></t-tab-panel>
-  <t-tab-panel label="标签页四" value="3"></t-tab-panel>
+  <t-tab-panel label="选项" value="0" />
+  <t-tab-panel label="选项" value="1" />
+  <t-tab-panel label="选项" value="2" />
+  <t-tab-panel label="选项" value="3" />
+  <t-tab-panel label="上限三字" value="4" />
 </t-tabs>

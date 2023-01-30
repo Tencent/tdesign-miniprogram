@@ -7,16 +7,11 @@
   paginationPosition="{{paginationPosition}}"
   navigation="{{navigation}}"
   autoplay="{{autoplay}}"
+  list="{{swiperList}}"
   bind:change="onChange"
 >
-  <t-swiper-item wx:for="{{swiperList}}" wx:key="index" id="number-{{index}}">
-    <image src="{{item.image}}" class="img" />
-  </t-swiper-item>
 </t-swiper>
 
-<t-swiper id="swiper2" current="{{current}}" bind:change="onChange">
-  <t-swiper-item wx:for="{{swiperList2}}" wx:key="index" id="number-{{index}}">
-    <image src="{{item.image}}" class="img" />
-  </t-swiper-item>
-  <t-swiper-nav id="customNav" slot="nav" type="dots-bar" hasNavBtn="{{true}}" />
+<t-swiper id="swiper2" current="{{current}}" list="{{swiperList2}}" bind:change="onChange">
+  <t-swiper-nav id="customNav" slot="nav" type="dots-bar" showControls="{{true}}" />
 </t-swiper>

@@ -1,27 +1,31 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
+  style="{{ style }}"
   class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class"
   disabled="{{disabled}}"
   aria-role="radio"
   aria-checked="{{checked}}"
   aria-label="{{label + content}}"
   aria-disabled="{{disabled}}"
+  tabindex="{{tabindex}}"
+  bind:tap="handleTap"
 >
   <view
     class="{{_.cls(classPrefix + '__icon', [align, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
-    data-target="icon"
-    bind:tap="handleTap"
   >
     <slot name="icon" wx:if="{{slotIcon}}" />
     <view wx:elif="{{customIcon}}" class="{{classPrefix}}__image">
       <image src="{{checked ? iconVal[0] : iconVal[1]}}" class="{{classPrefix}}-icon__image" webp />
     </view>
     <block wx:else>
-      <t-icon wx:if="{{checked && icon == 'circle'}}" name="check-circle-filled" class="{{classPrefix}}__icon-wrap" />
+      <t-icon
+        wx:if="{{checked && (icon == 'circle' || icon == 'line')}}"
+        name="{{icon == 'circle' ? 'check-circle-filled' : 'check'}}"
+        class="{{classPrefix}}__icon-wrap"
+      />
       <view
-        wx:if="{{checked && (icon == 'line' || icon == 'dot')}}"
+        wx:if="{{checked && icon == 'dot'}}"
         class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
       />
       <view
@@ -33,7 +37,7 @@
     </block>
   </view>
 
-  <view class="{{classPrefix}}__content" data-target="text" bind:tap="handleTap">
+  <view class="{{classPrefix}}__content" data-target="text" catch:tap="handleTap">
     <view
       class="{{classPrefix}}__title {{disabled ? classPrefix + '__title--disabled' : ''}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"

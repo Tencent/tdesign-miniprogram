@@ -1,15 +1,18 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
 <view wx:if="{{visible}}" id="{{classPrefix}}" class="{{classPrefix}} {{prefix}}-class">
   <view class="{{classPrefix}}__mask" style="{{ 'background-color: ' + backgroundColor }}" />
   <block wx:if="{{images && images.length}}">
     <view slot="content" class="{{classPrefix}}__content">
-      <t-swiper
+      <swiper
         height="{{windowHeight * 2}}"
-        t-class="swiper"
+        class="swiper"
         autoplay="{{false}}"
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
       >
-        <t-swiper-item
+        <swiper-item
           wx:for="{{images}}"
           wx:key="index"
           class="{{classPrefix}}__preview-image"
@@ -26,36 +29,31 @@
             class="{{classPrefix}}__image"
             bindload="onImageLoadSuccess"
           ></t-image>
-        </t-swiper-item>
-      </t-swiper>
+        </swiper-item>
+      </swiper>
     </view>
     <view class="{{classPrefix}}__nav">
-      <t-icon
-        wx:if="{{closeBtn}}"
+      <view
+        wx:if="{{closeBtnName || _.isNoEmptyObj(closeBtnData)}}"
         class="{{classPrefix}}__nav-close"
-        name="{{ closeIconProps.name || 'close' }}"
-        prefix="{{closeIconProps.prefix}}"
-        size="{{closeIconProps.size || '48rpx'}}"
-        color="{{closeIconProps.color}}"
-        customStyle="{{closeIconProps.customStyle}}"
-        data-source="button"
-        bind:click="onClose"
-      ></t-icon>
-      <slot name="closeBtn" />
+        bind:tap="onClose"
+      >
+        <slot wx:if="{{closeBtnName === 'slot'}}" name="close-btn" />
+        <template wx:else is="icon" data="{{ name: closeBtnName, ...closeBtnData}}"></template>
+      </view>
+
       <view wx:if="{{showIndex}}" class="{{classPrefix}}__nav-index">
         {{currentSwiperIndex + 1}}/{{images.length}}
       </view>
-      <t-icon
-        wx:if="{{deleteBtn}}"
+
+      <view
+        wx:if="{{deleteBtnName || _.isNoEmptyObj(deleteBtnData)}}"
         class="{{classPrefix}}__nav-delete"
-        name="{{ deleteIconProps.name || 'delete' }}"
-        prefix="{{deleteIconProps.prefix}}"
-        size="{{deleteIconProps.size || '48rpx'}}"
-        color="{{deleteIconProps.color}}"
-        customStyle="{{deleteIconProps.customStyle}}"
-        bind:click="onDelete"
-      ></t-icon>
-      <slot name="deleteBtn" />
+        bind:tap="onDelete"
+      >
+        <slot wx:if="{{deleteBtnName === 'slot'}}" name="delete-btn" />
+        <template wx:else is="icon" data="{{ name: deleteBtnName, ...deleteBtnData}}"></template>
+      </view>
     </view>
   </block>
 </view>

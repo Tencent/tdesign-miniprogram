@@ -22,7 +22,7 @@ const props: TdRateProps = {
     value: 5,
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },
@@ -36,10 +36,10 @@ const props: TdRateProps = {
   },
   /** 评分图标的间距 */
   gap: {
-    type: Number,
-    value: 4,
+    type: null,
+    value: 8,
   },
-  /** 自定义评分图标；此时不受 variant 影响 */
+  /** 自定义评分图标，[选中图标，未选中图标]；此时不受 variant 影响 */
   icon: {
     type: null,
   },

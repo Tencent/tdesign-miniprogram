@@ -2,8 +2,8 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
-  class="{{_.cls(classPrefix, [['top', label || scaleTextArray.length], ['disabled', disabled], ['range', range]])}} {{prefix}}-class"
+  style="{{ style }}"
+  class="{{_.cls(classPrefix, [['top', label || scaleTextArray.length], ['disabled', disabled], ['range', range]])}} class {{prefix}}-class"
 >
   <block wx:if="{{!range}}">
     <text wx:if="{{showExtremeValue}}" class="{{classPrefix}}__value {{classPrefix}}__value--min">
@@ -17,10 +17,10 @@
     >
       <block wx:if="{{isScale}}">
         <view
-          class="{{_.cls(classPrefix + '__scale-item', [['active', _value >= item], ['disabled', disabled], theme, ['hidden', index == 0 || index == scaleArray.length - 1 || value == item]])}}"
+          class="{{_.cls(classPrefix + '__scale-item', [['active', _value >= item.val], ['disabled', disabled], theme, ['hidden', (index == 0 || index == scaleArray.length - 1) && theme == 'capsule' || value == item.val]])}}"
           wx:for="{{scaleArray}}"
           wx:key="index"
-          style="left:{{item}}%; transform: translateX({{- item}}%); {{t.getColor(disabled, _value >= item, disabledColor, colors)}}"
+          style="left:{{item.left}}px; transform: translateX(-50%); {{t.getColor(disabled, _value >= item.val, disabledColor, colors)}}"
         >
           <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}}}">
             {{scaleTextArray[index]}}
@@ -38,7 +38,21 @@
           bind:touchend="onTouchEnd"
           bind:touchcancel="onTouchEnd"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, _value)}} </view>
+          <view
+            class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
+            aria-role="region"
+            aria-live="assertive"
+          >
+            {{t.getValue(label, _value) || _value}}
+          </view>
+          <view
+            class="{{classPrefix}}__dot-slider"
+            aria-role="slider"
+            aria-disabled="{{disabled}}"
+            aria-valuemax="{{max}}"
+            aria-valuemin="{{min}}"
+            aria-valuenow="{{_value}}"
+          ></view>
         </view>
       </view>
     </view>
@@ -62,11 +76,11 @@
     >
       <block wx:if="{{isScale}}">
         <view
-          class="{{_.cls(classPrefix + '__scale-item', [['active', dotTopValue[1] >= item && item >= dotTopValue[0]], ['disabled', disabled], theme, ['hidden', index == 0 || index == scaleArray.length - 1 || value == item]])}}"
+          class="{{_.cls(classPrefix + '__scale-item', [['active', dotTopValue[1] >= item.val && item.val >= dotTopValue[0]], ['disabled', disabled], theme, ['hidden', (index == 0 || index == scaleArray.length - 1) && theme == 'capsule' || value == item.val]])}}"
           wx:for="{{scaleArray}}"
           wx:for-index="index"
           wx:key="index"
-          style="left: {{item}}%;transform: translateX({{- item}}%); {{t.getColor(disabled, (dotTopValue[1] >= item && item >= dotTopValue[0]), disabledColor, colors)}}"
+          style="left: {{item.left}}px; transform: translateX(-50%); {{t.getColor(disabled, (dotTopValue[1] >= item.val && item.val >= dotTopValue[0]), disabledColor, colors)}}"
         >
           <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}"
             >{{scaleTextArray[index]}}</view
@@ -84,7 +98,21 @@
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, dotTopValue[0])}} </view>
+          <view
+            class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
+            aria-role="region"
+            aria-live="assertive"
+          >
+            {{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}
+          </view>
+          <view
+            class="{{classPrefix}}__dot-slider"
+            aria-role="slider"
+            aria-disabled="{{disabled}}"
+            aria-valuemax="{{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}"
+            aria-valuemin="{{min}}"
+            aria-valuenow="{{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}"
+          ></view>
         </view>
         <view
           id="rightDot"
@@ -93,7 +121,22 @@
           bind:touchcancel="onTouchEnd"
           class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
         >
-          <view wx:if="{{label}}" class="{{classPrefix}}__dot-value"> {{t.getValue(label, dotTopValue[1])}} </view>
+          <view
+            class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
+            aria-role="region"
+            aria-live="assertive"
+          >
+            {{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}
+          </view>
+          <view
+            class="{{classPrefix}}__dot-slider"
+            aria-role="slider"
+            aria-disabled="{{disabled}}"
+            aria-valuemax="{{max}}"
+            aria-valuemin="{{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}"
+            aria-valuenow="{{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}"
+          >
+          </view>
         </view>
       </view>
     </view>

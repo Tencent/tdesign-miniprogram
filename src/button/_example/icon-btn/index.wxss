@@ -1,11 +1,3 @@
-.box {
-  margin: 0 32rpx;
-}
-
-.box t-button + t-button {
+.margin {
   margin-left: 32rpx;
-}
-
-.box + .box {
-  margin-top: 32rpx;
 }

@@ -1,9 +1,11 @@
 @import '../common/style/index.less';
 
+@fab-shadow: var(--td-fab-shadow, @shadow-2);
+
 .@{prefix}-fab {
   position: fixed;
 
   &__button {
-    box-shadow: @shadow-2;
+    box-shadow: @fab-shadow;
   }
 }
