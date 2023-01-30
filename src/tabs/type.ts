@@ -30,15 +30,6 @@ export interface TdTabsProps {
     value?: ['t-class', 't-class-item', 't-class-active', 't-class-track'];
   };
   /**
-   * 选项卡位置
-   * @default top
-   * @deprecated
-   */
-  placement?: {
-    type: StringConstructor;
-    value?: 'left' | 'top';
-  };
-  /**
    * 是否展示底部激活线条
    * @default true
    */

@@ -52,5 +52,5 @@
   >
     {{action}}
   </view>
-  <slot name="action-text" />
+  <slot name="action" />
 </view>

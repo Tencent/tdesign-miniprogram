@@ -92,6 +92,12 @@
           "name": "image-viewer",
           "pathName": "pages/image-viewer/image-viewer",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "search",
+          "pathName": "pages/search/search",
+          "scene": null
         }
       ]
     }

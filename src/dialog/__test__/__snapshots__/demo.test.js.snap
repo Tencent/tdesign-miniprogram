@@ -456,8 +456,11 @@ exports[`Dialog Dialog with-input demo works fine 1`] = `
     bind:cancel="closeDialog"
     bind:confirm="closeDialog"
   >
-    <wx-input
-      placeholder="输入文案"
+    <t-input
+      borderless="{{true}}"
+      class="dialog-input"
+      clearable="{{true}}"
+      placeholder="输入12文案"
       placeholderClass="placeholder"
       slot="content"
     />
@@ -482,8 +485,11 @@ exports[`Dialog Dialog with-input demo works fine 1`] = `
     bind:cancel="closeDialog"
     bind:confirm="closeDialog"
   >
-    <wx-input
-      placeholder="输入文案"
+    <t-input
+      borderless="{{true}}"
+      class="dialog-input"
+      clearable="{{true}}"
+      placeholder="输入12文案"
       placeholderClass="placeholder"
       slot="content"
     />

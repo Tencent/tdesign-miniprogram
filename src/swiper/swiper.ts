@@ -22,7 +22,7 @@ export default class Swiper extends SuperComponent {
   properties = props;
 
   observers = {
-    current(v) {
+    navCurrent(v) {
       this.updateNav(v);
     },
   };
@@ -42,19 +42,20 @@ export default class Swiper extends SuperComponent {
 
   lifetimes = {
     ready() {
-      this.updateNav();
+      const { current } = this.properties;
+      this.setData({ navCurrent: current });
     },
   };
 
   methods = {
-    updateNav() {
+    updateNav(currentValue) {
       if (this.data.navigation) return;
       const $nav = this.getRelationNodes('./swiper-nav')?.[0];
       if (!$nav) return;
-      const { current, direction, paginationPosition, list } = this.properties;
+      const { direction, paginationPosition, list } = this.properties;
 
       $nav.setData({
-        current,
+        current: currentValue,
         total: list.length,
         direction,
         paginationPosition,
@@ -70,7 +71,10 @@ export default class Swiper extends SuperComponent {
     onChange(e) {
       const { current, source } = e.detail;
 
-      this.setData({ current });
+      this.setData({
+        navCurrent: current,
+      });
+
       this.triggerEvent('change', { current, source });
     },
 

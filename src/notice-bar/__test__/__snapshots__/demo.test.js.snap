@@ -26,6 +26,7 @@ exports[`NoticeBar NoticeBar custom demo works fine 1`] = `
 exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
 <customization>
   <t-notice-bar
+    suffixIcon="slot"
     visible="{{true}}"
   >
     <wx-view
@@ -36,13 +37,20 @@ exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
     
       <wx-view
         class="extra"
-        bind:tap="clickDetail"
       >
-         详情 
+        <t-link
+          content="详情"
+          navigatorProps="{{
+            Object {
+              "url": "/pages/xxx/xxx",
+            }
+          }}"
+          theme="primary"
+        />
       </wx-view>
     </wx-view>
     <wx-view
-      slot="suffixIcon"
+      slot="suffix-icon"
     >
       <t-icon
         name="close"
@@ -56,50 +64,32 @@ exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
 exports[`NoticeBar NoticeBar event demo works fine 1`] = `
 <event>
   <t-notice-bar
-    content="这是一条普通的通知信息"
-    suffixIcon="close"
+    suffixIcon="chevron-right"
     visible="{{true}}"
     bind:click="click"
-  />
+  >
+    <wx-view
+      slot="content"
+    >
+       这是一条普通的通知信息 
+    </wx-view>
+    <t-link
+      content="详情"
+      navigatorProps="{{
+        Object {
+          "url": "/pages/xxx/xxx",
+        }
+      }}"
+      slot="extra"
+      theme="primary"
+    />
+  </t-notice-bar>
   <t-notice-bar
     content="这是一条普通的通知信息"
     suffixIcon="chevron-right"
     visible="{{true}}"
     bind:click="click"
   />
-  <t-notice-bar
-    visible="{{true}}"
-    bind:click="click"
-  >
-    <wx-view
-      slot="content"
-    >
-       这是一条普通的通知信息 
-    </wx-view>
-    <wx-view
-      class="extra"
-      slot="extra"
-    >
-      文字按钮
-    </wx-view>
-  </t-notice-bar>
-  <t-notice-bar
-    suffixIcon="close"
-    visible="{{true}}"
-    bind:click="click"
-  >
-    <wx-view
-      slot="content"
-    >
-       这是一条普通的通知信息 
-    </wx-view>
-    <wx-view
-      class="extra"
-      slot="extra"
-    >
-      详情
-    </wx-view>
-  </t-notice-bar>
 </event>
 `;
 

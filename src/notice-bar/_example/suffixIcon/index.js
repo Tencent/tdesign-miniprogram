@@ -1,9 +1,6 @@
 Component({
   data: {
     visible: true,
-    navigatorProps: {
-      url: '/pages/xxx/xxx',
-    },
   },
 
   methods: {

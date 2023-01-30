@@ -26,6 +26,8 @@
 @tab-item-tag-bg: var(--td-tab-item-tag-bg, @gray-color-1);
 @tab-item-tag-active-bg: var(--td-tab-item-tag-active-bg, @primary-color-1);
 
+@tab-icon-size: var(--td-tab-icon-size, 36rpx);
+
 .@{prefix}-tabs {
   position: relative;
   font-size: @tab-font-size;
@@ -74,6 +76,10 @@
     }
 
     &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       &--tag {
         width: 100%;
         text-align: center;
@@ -155,6 +161,11 @@
         border-bottom-left-radius: 18rpx;
       }
     }
+  }
+
+  &__icon {
+    font-size: @tab-icon-size;
+    margin-right: 4rpx;
   }
 
   &__content {
