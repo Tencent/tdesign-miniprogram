@@ -3,7 +3,7 @@ page {
 }
 
 .capsule {
-  margin: 8px;
+  margin: 0 8px;
   height: 30px;
   border-radius: 15px;
   background-color: #f3f3f3;
@@ -17,4 +17,8 @@ page {
 .capsule--active {
   background: #fff;
   border: 1px solid #e7e7e7;
+}
+
+.wrapper {
+  padding-top: 8px;
 }

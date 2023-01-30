@@ -544,7 +544,7 @@
         }
       ],
       "tpl": "<t-check-tag>check tag</t-check-tag>",
-      "path": "./tag/check-tag"
+      "path": "./check-tag/check-tag"
     },
     "t-checkbox-group": {
       "key": "t-checkbox-group",
@@ -1339,7 +1339,7 @@
       ],
       "externalClasses": ["t-class", "t-class-image", "t-class-text", "t-class-description"],
       "tpl": "<t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item>",
-      "path": "./grid/grid-item"
+      "path": "./grid-item/grid-item"
     },
     "t-grid": {
       "key": "t-grid",
@@ -1380,7 +1380,7 @@
       "externalClasses": ["t-class"],
       "tpl": "<t-grid column=\"{{2}}\"><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item></t-grid>",
       "require": {
-        "t-grid-item": "./grid/grid-item"
+        "t-grid-item": "./grid-item/grid-item"
       },
       "path": "./grid/grid"
     },
@@ -1402,7 +1402,7 @@
           "label": ""
         },
         {
-          "key": "customStyle",
+          "key": "style",
           "type": ["String"],
           "desc": "自定义样式",
           "label": ""
@@ -1939,7 +1939,7 @@
         }
       ],
       "tpl": "<t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item>",
-      "path": "./picker/picker-item"
+      "path": "./picker-item/picker-item"
     },
     "t-picker": {
       "key": "t-picker",
@@ -2008,7 +2008,7 @@
       ],
       "tpl": "<t-picker visible=\"{{true}}\" cancelBtn=\"取消\" confirmBtn=\"确认\"><t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item></t-picker>",
       "require": {
-        "t-picker-item": "./picker/picker-item"
+        "t-picker-item": "./picker-item/picker-item"
       },
       "path": "./picker/picker"
     },
@@ -2697,7 +2697,7 @@
       ],
       "externalClasses": ["t-class", "t-class-content", "t-class-title", "t-class-description", "t-class-extra"],
       "tpl": "<t-step-item title=\"步骤描述\"></t-step-item>",
-      "path": "./steps/step-item"
+      "path": "./step-item/step-item"
     },
     "t-stepper": {
       "key": "t-stepper",
@@ -2826,7 +2826,7 @@
       ],
       "tpl": "<t-steps><t-step-item title=\"步骤描述1\" /><t-step-item title=\"步骤描述2\" /></t-steps>",
       "require": {
-        "t-step-item": "./steps/step-item"
+        "t-step-item": "./step-item/step-item"
       },
       "path": "./steps/steps"
     },
@@ -3076,7 +3076,7 @@
         }
       ],
       "tpl": "<t-tab-bar-item wx:for=\"{{[{value: 'label_1',label: '标签栏一',icon: 'app'},{value: 'label_2',label: '标签栏二',icon: 'app'}]}}\" wx:for-item=\"item\" wx:for-index=\"index\" wx:key=\"index\" value=\"{{item.value}}\">{{item.label}}</t-tab-bar-item>",
-      "path": "./tab-bar/tab-bar-item"
+      "path": "./tab-bar-item/tab-bar-item"
     },
     "t-tab-bar": {
       "key": "t-tab-bar",
@@ -3130,7 +3130,7 @@
       ],
       "tpl": "<t-tab-bar value=\"label_1\"><t-tab-bar-item wx:for=\"{{[{value: 'label_1',label: '标签栏一',icon: 'app'},{value: 'label_2',label: '标签栏二',icon: 'app'}]}}\" wx:for-item=\"item\" wx:for-index=\"index\" wx:key=\"index\" value=\"{{item.value}}\">{{item.label}}</t-tab-bar-item></t-tab-bar>",
       "require": {
-        "t-tab-bar-item": "./tab-bar/tab-bar-item"
+        "t-tab-bar-item": "./tab-bar-item/tab-bar-item"
       },
       "path": "./tab-bar/tab-bar"
     },
@@ -3171,7 +3171,7 @@
         }
       ],
       "tpl": "<t-tab-panel label=\"标签页一\" value=\"0\">标签一内容</t-tab-panel>",
-      "path": "./tabs/tab-panel"
+      "path": "./tab-panel/tab-panel"
     },
     "t-tabs": {
       "key": "t-tabs",
@@ -3219,7 +3219,7 @@
       ],
       "tpl": "<t-tabs defaultValue=\"{{0}}\"><t-tab-panel label=\"标签页一\" value=\"0\">标签一内容</t-tab-panel><t-tab-panel label=\"标签页二\" value=\"1\">标签二内容</t-tab-panel></t-tabs>",
       "require": {
-        "t-tab-panel": "./tabs/tab-panel"
+        "t-tab-panel": "./tab-panel/tab-panel"
       },
       "path": "./tabs/tabs"
     },

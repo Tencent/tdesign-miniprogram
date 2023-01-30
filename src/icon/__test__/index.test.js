@@ -26,7 +26,7 @@ describe('icon', () => {
       template: `<t-icon class="icon" size="{{size}}" name="{{name}}"></t-icon>`,
       data: {
         size: 20,
-        name: 'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/miniprogram/images/icon-image.png',
+        name: 'https://tdesign.gtimg.com/miniprogram/images/icon-image.png',
       },
       usingComponents: {
         't-icon': icon,

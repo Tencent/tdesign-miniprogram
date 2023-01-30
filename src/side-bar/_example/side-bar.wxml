@@ -10,6 +10,12 @@
   </t-button>
 </t-demo>
 
+<t-demo desc="带图标侧边导航" padding>
+  <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="with-icon">
+    带图标侧边导航
+  </t-button>
+</t-demo>
+
 <t-demo title="02 组件样式" desc="侧边导航样式" padding>
   <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="custom">
     自定义样式

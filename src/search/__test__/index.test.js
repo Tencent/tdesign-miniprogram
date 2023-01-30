@@ -23,7 +23,7 @@ describe('search', () => {
 
     it(':action string', () => {
       const id = simulate.load({
-        template: `<t-search class="search" action="{{action}}"></t-search>`,
+        template: `<t-search id="search" action="{{action}}"></t-search>`,
         usingComponents: {
           't-search': search,
         },
@@ -34,7 +34,7 @@ describe('search', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $search = comp.querySelector('.search >>> .t-search__search-action');
+      const $search = comp.querySelector('#search >>> .t-search__search-action');
       expect($search.dom.textContent.trim()).toBe('提交');
     });
 

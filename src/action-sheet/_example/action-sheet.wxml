@@ -9,7 +9,7 @@
     <grid />
   </t-demo>
 
-  <t-demo title="02 组件状态" desc="宫格型动作面板" padding>
+  <t-demo title="02 组件状态" desc="列表型选项状态" padding>
     <status />
   </t-demo>
 

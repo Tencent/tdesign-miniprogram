@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['accordion', 'action', 'base', 'theme'];
+const mapper = ['accordion', 'action', 'base', 'placement', 'theme'];
 
 describe('Collapse', () => {
   mapper.forEach((demoName) => {

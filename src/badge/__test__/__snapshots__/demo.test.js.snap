@@ -11,7 +11,7 @@ exports[`Badge Badge base demo works fine 1`] = `
     class="demo-wrapper"
   >
     <t-badge
-      class="badge-item"
+      class="wrapper"
       content="消息"
       dot="{{true}}"
       offset="{{
@@ -22,6 +22,7 @@ exports[`Badge Badge base demo works fine 1`] = `
       }}"
     />
     <t-badge
+      class="wrapper"
       dot="{{true}}"
       offset="{{
         Array [
@@ -36,6 +37,7 @@ exports[`Badge Badge base demo works fine 1`] = `
       />
     </t-badge>
     <t-badge
+      class="wrapper"
       dot="{{true}}"
       offset="{{
         Array [
@@ -58,6 +60,7 @@ exports[`Badge Badge base demo works fine 1`] = `
     class="demo-wrapper"
   >
     <t-badge
+      class="wrapper"
       content="消息"
       count="8"
       offset="{{
@@ -67,6 +70,7 @@ exports[`Badge Badge base demo works fine 1`] = `
       }}"
     />
     <t-badge
+      class="wrapper"
       count="2"
       offset="{{
         Array [
@@ -81,6 +85,7 @@ exports[`Badge Badge base demo works fine 1`] = `
       />
     </t-badge>
     <t-badge
+      class="wrapper"
       count="8"
       offset="{{
         Array [

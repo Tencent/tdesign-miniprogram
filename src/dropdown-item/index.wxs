@@ -1,0 +1,9 @@
+var getStyles = function (top, zIndex, style) {
+  var topStyle = top ? 'top:' + top + 'px;' : '';
+  var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  return topStyle + zIndexStyle + style;
+};
+
+module.exports = {
+  getStyles: getStyles,
+};

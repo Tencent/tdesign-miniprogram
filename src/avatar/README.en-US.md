@@ -27,7 +27,7 @@ error | \- | trigger on image load failed
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-cascading | String | 'right-up' | multiple images cascading。options：left-up/right-up。Typescript：`CascadingValue` `type CascadingValue = 'left-up' \| 'right-up'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
+cascading | String | 'right-up' | multiple images cascading。options：left-up/right-up。Typescript：`CascadingValue` `type CascadingValue = 'left-up' \| 'right-up'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar-group/type.ts) | N
 collapse-avatar | String / Slot | - | \- | N
 custom-style | String | - | `0.25.0` | N
 external-classes | Array | - | `['t-class', 't-class-image', 't-class-content']` | N

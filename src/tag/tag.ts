@@ -17,10 +17,11 @@ export default class Tag extends SuperComponent {
 
   properties = props;
 
-  externalClasses = [`${prefix}-class`];
+  externalClasses = ['class', `${prefix}-class`];
 
-  options = {
+  options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
+    styleIsolation: 'apply-shared',
   };
 
   lifetimes = {

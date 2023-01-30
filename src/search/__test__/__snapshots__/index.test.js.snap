@@ -6,7 +6,7 @@ exports[`search Props :base 1`] = `
     class="search"
   >
     <wx-view
-      class="t-search t-class"
+      class="class t-search t-class"
       style=""
     >
       <wx-view
@@ -19,7 +19,7 @@ exports[`search Props :base 1`] = `
             ariaHidden="{{true}}"
             ariaLabel=""
             ariaRole=""
-            class="t-icon t-class"
+            class="t-icon class t-class"
             style="font-size: 24px"
             bind:tap="onTap"
           >

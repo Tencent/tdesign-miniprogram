@@ -1,6 +1,6 @@
 import { isPlainObject, toObject } from './flatTool';
-
 import { SuperComponent } from './superComponent';
+import { canUseVirtualHost } from '../version';
 
 // 将 on 开头的生命周期函数转变成非 on 开头的
 const RawLifeCycles = ['Created', 'Attached', 'Ready', 'Moved', 'Detached', 'Error'];
@@ -167,6 +167,10 @@ export const wxComponent = function wxComponent() {
     current.options = current.options || {};
     if (current.options.addGlobalClass === undefined) {
       current.options.addGlobalClass = true;
+    }
+
+    if (canUseVirtualHost()) {
+      current.options.virtualHost = true;
     }
 
     const obj = toComponent(toObject(current));

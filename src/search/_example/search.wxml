@@ -2,13 +2,12 @@
   <view class="demo-title">Search 搜索框</view>
   <view class="demo-desc">用于用户输入搜索信息，并进行页面内容搜索。</view>
   <t-demo title="01 组件类型" desc="基础搜索框">
-    <view class="demo-section__wrapper">
-      <base />
-    </view>
+    <base />
   </t-demo>
   <t-demo title="02 组件样式" desc="搜索框形状">
-    <view class="demo-section__wrapper">
-      <status />
-    </view>
+    <status />
+  </t-demo>
+  <t-demo desc="默认状态其他对齐方式">
+    <other />
   </t-demo>
 </view>

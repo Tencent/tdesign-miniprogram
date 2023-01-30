@@ -16,7 +16,7 @@ export default class Badge extends SuperComponent {
     multipleSlots: true,
   };
 
-  externalClasses = [`${prefix}-class`, `${prefix}-class-count`, `${prefix}-class-content`];
+  externalClasses = ['class', `${prefix}-class`, `${prefix}-class-count`, `${prefix}-class-content`];
 
   properties = props;
 

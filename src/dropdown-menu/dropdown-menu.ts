@@ -25,7 +25,7 @@ export default class DropdownMenu extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './dropdown-item': {
+    '../dropdown-item/dropdown-item': {
       type: 'child',
     },
   };

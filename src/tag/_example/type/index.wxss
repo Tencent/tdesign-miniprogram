@@ -13,6 +13,6 @@
   margin-bottom: 32rpx;
 }
 
-t-tag + t-tag {
+.t-tag {
   margin-left: 32rpx;
 }

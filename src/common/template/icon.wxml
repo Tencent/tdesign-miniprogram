@@ -1,6 +1,6 @@
 <template name="icon">
   <t-icon
-    customStyle="{{customStyle}}"
+    style="{{style}}"
     class="{{class}}"
     t-class="{{tClass}}"
     prefix="{{prefix}}"

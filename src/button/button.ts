@@ -11,7 +11,7 @@ const name = `${prefix}-button`;
 export interface ButtonProps extends TdButtonProps {}
 @wxComponent()
 export default class Button extends SuperComponent {
-  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
+  externalClasses = ['class', `${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
 
   behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
 
@@ -47,10 +47,10 @@ export default class Button extends SuperComponent {
       const classList = [
         name,
         `${prefix}-class`,
-        `${name}--${this.data.theme || 'default'}`,
-        `${name}--size-${this.data.size || 'medium'}`,
-        `${name}--${this.data.shape || 'rectangle'}`,
         `${name}--${this.data.variant || 'base'}`,
+        `${name}--${this.data.theme || 'default'}`,
+        `${name}--${this.data.shape || 'rectangle'}`,
+        `${name}--size-${this.data.size || 'medium'}`,
       ];
 
       if (this.data.block) {
