@@ -1,6 +1,14 @@
-<t-button size="large" theme="primary" variant="outline" data-key="imageOnTop" bind:tap="showDialog" block
-  >图片置顶</t-button
+<t-button
+  t-class="wrapper"
+  size="large"
+  theme="primary"
+  variant="outline"
+  data-key="imageOnTop"
+  bind:tap="showDialog"
+  block
 >
+  图片置顶
+</t-button>
 <t-dialog
   visible="{{imageOnTop}}"
   title="带输入框对话框"
@@ -10,16 +18,20 @@
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
-  <t-image
-    slot="top"
-    t-class="dialog-image"
-    src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
-  />
+  <t-image slot="top" t-class="dialog-image" src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png" />
 </t-dialog>
 
-<t-button theme="primary" size="large" variant="outline" data-key="imageOnMiddle" bind:tap="showDialog" block
-  >图片居中</t-button
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="imageOnMiddle"
+  bind:tap="showDialog"
+  block
 >
+  图片居中
+</t-button>
 <t-dialog
   visible="{{imageOnMiddle}}"
   title="带输入框对话框"
@@ -31,8 +43,7 @@
 >
   <t-image
     slot="middle"
-    class="image-host"
-    t-class="dialog-image"
-    src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/dialog.png"
+    t-class="image-host dialog-image"
+    src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
   />
 </t-dialog>

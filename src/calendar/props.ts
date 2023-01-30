@@ -6,13 +6,18 @@
 
 import { TdCalendarProps } from './type';
 const props: TdCalendarProps = {
+  /** 自动关闭；在点击关闭按钮、确认按钮、遮罩层时自动关闭，不需要手动设置 visible */
+  autoClose: {
+    type: Boolean,
+    value: true,
+  },
   /** 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。 */
   confirmBtn: {
     type: null,
     value: '',
   },
   /** 自定义组件样式 */
-  customStyle: {
+  style: {
     type: String,
     value: '',
   },

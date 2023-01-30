@@ -57,7 +57,7 @@ export interface TdTextareaProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -156,6 +156,53 @@ export interface TdTextareaProps {
    * 显示文本计数器，如 0/140。当 `maxlength < 0 && maxcharacter < 0` 成立时， indicator无效
    */
   indicator?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 指定focus时的光标位置
+   * @default -1
+   */
+  cursor: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /** 是否显示键盘上方带有”完成“按钮那一栏
+   * @default true
+   */
+  showConfirmBar: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 光标起始位置，自动聚集时有效，需与selection-end搭配使用
+   * @default -1
+   */
+  selectionStart?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 光标结束位置，自动聚集时有效，需与selection-start搭配使用
+   * @default -1
+   */
+  selectionEnd?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 是否去掉 iOS 下的默认内边距
+   * @default false
+   */
+  disableDefaultPadding?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * focus时，点击页面的时候不收起键盘
+   * @default false
+   */
+  holdKeyboard?: {
     type: BooleanConstructor;
     value?: boolean;
   };

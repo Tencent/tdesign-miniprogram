@@ -13,7 +13,7 @@
     <t-icon
       wx:for="{{ count }}"
       wx:key="*this"
-      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}} "
+      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
       t-class="{{prefix}}-class-icon"
       name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
       size="{{ size }}"
@@ -24,32 +24,48 @@
     >{{utils.getText(texts,value,defaultTexts)}}</text
   >
   <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px">
+    <block wx:if="{{actionType == 'tap'}}">
+      <view
+        wx:if="{{allowHalf}}"
+        class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) - 0.5 == value]])}}"
+        bind:tap="onSelect"
+        data-value="{{utils.ceil(value) - 0.5}}"
+      >
+        <t-icon
+          class="{{classPrefix }}__icon {{classPrefix }}__icon--selected-half"
+          name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
+          size="{{ size }}"
+          style="{{utils.getColor(color)}}"
+        />
+        <view class="{{classPrefix}}__tips-text">{{utils.ceil(value) - 0.5}}</view>
+      </view>
+      <view
+        class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) == value]])}}"
+        bind:tap="onSelect"
+        data-value="{{utils.ceil(value)}}"
+      >
+        <t-icon
+          class="{{_.cls(classPrefix + '__icon', ['selected'])}}"
+          name="{{utils.getIconName(defaultValue, value, index, 'filled', icon)}}"
+          size="{{ size }}"
+          style="{{utils.getColor(color)}}"
+        />
+        <view class="{{classPrefix}}__tips-text">{{utils.ceil(value)}}</view>
+      </view>
+    </block>
     <view
-      wx:if="{{allowHalf && actionType == 'tap'}}"
-      class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) - 0.5 == value]])}}"
-      bind:tap="onSelect"
-      data-value="{{utils.ceil(value) - 0.5}}"
-    >
-      <t-icon
-        class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
-        name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
-        size="{{ size }}"
-        style="{{utils.getColor(color)}}"
-      />
-      <view class="{{classPrefix}}__tips-text">{{utils.ceil(value) - 0.5}}</view>
-    </view>
-    <view
+      wx:else
       class="{{_.cls(classPrefix + '__tips-item', [['active', utils.ceil(value) == value && actionType == 'tap']])}}"
       bind:tap="onSelect"
       data-value="{{utils.ceil(value)}}"
     >
       <t-icon
-        class="{{classPrefix }}__icon {{classPrefix }}__icon--selected"
+        class="{{_.cls(classPrefix + '__icon', [['selected', utils.ceil(value) == value], ['selected-half', utils.ceil(value) != value]]) }}"
         name="{{utils.getIconName(defaultValue, value, index, 'filled', icon)}}"
         size="{{ size }}"
-        style="{{utils.getColor(color)}}"
+        style="{{utils.getColor(color)}}; font-size: {{size}};"
       />
-      <view class="{{classPrefix}}__tips-text">{{actionType == 'tap' ? utils.ceil(value) : value}}</view>
+      <view class="{{classPrefix}}__tips-text">{{value}}</view>
     </view>
   </view>
 </view>

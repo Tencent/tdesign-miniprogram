@@ -13,12 +13,15 @@
 
 .@{action-sheet} {
   &__content {
-    padding-top: 16rpx;
     color: @action-sheet-color;
     border-top-left-radius: @action-sheet-border-radius;
     border-top-right-radius: @action-sheet-border-radius;
     background-color: @bg-color-block;
     overflow: hidden;
+
+    &--grid {
+      padding-top: 16rpx;
+    }
 
     &:focus {
       outline: 0;

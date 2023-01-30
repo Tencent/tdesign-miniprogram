@@ -1,11 +1,3 @@
-.demo-section__wrapper {
-  margin: 32rpx 0;
-}
-
-.t-class-left {
-  align-self: flex-start;
-}
-
 .avatar {
   width: 96rpx;
   height: 96rpx;

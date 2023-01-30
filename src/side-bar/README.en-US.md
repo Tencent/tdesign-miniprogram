@@ -21,5 +21,6 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 badge-props | Object | - | \- | N
 disabled | Boolean | false | \- | N
+icon | String / Object | - | `1.0.0-rc.1` | N
 label | String | - | \- | N
 value | String / Number | - | \- | N

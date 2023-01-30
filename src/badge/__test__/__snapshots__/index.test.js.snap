@@ -9,7 +9,7 @@ exports[`badge :base 1`] = `
       ariaDescribedby="t_badge_0_description"
       ariaLabelledby="t_badge_0_label"
       ariaRole="option"
-      class="t-badge  t-class"
+      class="t-badge  class t-class"
       style=""
     >
       <wx-view

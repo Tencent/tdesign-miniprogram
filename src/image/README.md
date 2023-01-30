@@ -6,6 +6,7 @@ isComponent: true
 ---
 
 <span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-100%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -25,6 +26,19 @@ isComponent: true
 ### 加载状态
 
 {{ status }}
+
+## 常见问题
+
+<details>
+  <summary>
+    本地图片无法正确引用?
+    <span class="icon">👇</span>
+  </summary>
+  <p style="margin-top: 10px; color: rgba(0, 0, 0, .6)">
+    建议使用绝对路径，而不是相对路径。绝对路径以 app.json 所在位置为基准。
+  </p>
+</details>
+
 
 ## API
 ### Image Props

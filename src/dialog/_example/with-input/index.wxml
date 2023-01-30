@@ -1,6 +1,14 @@
-<t-button size="large" theme="primary" variant="outline" data-key="showWithInput" bind:tap="showDialog" block
-  >输入类-无描述</t-button
+<t-button
+  t-class="wrapper"
+  size="large"
+  theme="primary"
+  variant="outline"
+  data-key="showWithInput"
+  bind:tap="showDialog"
+  block
 >
+  输入类-无描述
+</t-button>
 <t-dialog
   visible="{{showWithInput}}"
   title="带输入框对话框"
@@ -9,10 +17,18 @@
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
-  <input slot="content" placeholder="输入文案" placeholder-class="placeholder" />
+  <t-input
+    borderless
+    class="dialog-input"
+    clearable
+    slot="content"
+    placeholder="输入12文案"
+    placeholder-class="placeholder"
+  />
 </t-dialog>
 
 <t-button
+  t-class="wrapper"
   theme="primary"
   size="large"
   variant="outline"
@@ -30,5 +46,12 @@
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
-  <input slot="content" placeholder="输入文案" placeholder-class="placeholder" />
+  <t-input
+    borderless
+    class="dialog-input"
+    clearable
+    slot="content"
+    placeholder="输入12文案"
+    placeholder-class="placeholder"
+  />
 </t-dialog>

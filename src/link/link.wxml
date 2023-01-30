@@ -12,7 +12,7 @@
   extra-data="{{navigatorProps.extraData}}"
   version="{{navigatorProps.version}}"
   short-link="{{navigatorProps.shortLink}}"
-  hover-class="{{navigatorProps.hoverClass}}"
+  hover-class="none {{navigatorProps.hoverClass}}"
   hover-stop-propagation="navigatorProps.hoverStopPropagation"
   hover-start-time="{{navigatorProps.hoverStartTime}}"
   hover-stay-time="{{navigatorProps.hoverStayTime}}"

@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{ customStyle }}" class="{{ classPrefix }} {{prefix}}-class" id="t-bar">
+<view style="{{ style }}" class="{{ classPrefix }} {{prefix}}-class" id="t-bar">
   <view
     wx:for="{{menus}}"
     wx:key="index"
@@ -15,8 +15,7 @@
     <view class="{{classPrefix}}__title {{prefix}}-class-label">{{item.label}}</view>
     <t-icon
       name="caret-down-small"
-      t-class="{{prefix}}-class-icon"
-      class="{{classPrefix}}__icon {{classPrefix}}__icon--{{activeIdx == index ? 'active' : ''}}"
+      t-class="{{classPrefix}}__icon {{classPrefix}}__icon--{{activeIdx == index ? 'active' : ''}} {{prefix}}-class-icon"
       aria-hidden="{{true}}"
     />
   </view>

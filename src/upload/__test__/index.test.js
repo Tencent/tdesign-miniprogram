@@ -30,7 +30,7 @@ const mockFn = jest
       {
         fileType: 'image',
         size: 219906,
-        tempFilePath: 'https://tdesign.gtimg.com/site/upload1.png',
+        tempFilePath: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
       },
     ],
   })
@@ -41,7 +41,7 @@ const mockFn = jest
       {
         fileType: 'image',
         size: 219906,
-        tempFilePath: 'https://tdesign.gtimg.com/site/upload1.png',
+        tempFilePath: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
       },
     ],
   })
@@ -59,7 +59,7 @@ const mockFn = jest
       {
         fileType: 'image',
         size: 219906,
-        tempFilePath: 'https://tdesign.gtimg.com/site/upload1.png',
+        tempFilePath: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
       },
     ],
   });
@@ -215,7 +215,7 @@ describe('upload', () => {
           max: 2,
           originFiles: [
             {
-              url: 'https://tdesign.gtimg.com/site/upload1.png',
+              url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
               name: 'uploaded1.png',
               type: 'image',
             },
@@ -286,7 +286,7 @@ describe('upload', () => {
           },
           originFiles: [
             {
-              url: 'https://tdesign.gtimg.com/site/upload1.png',
+              url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
               name: 'uploaded1.png',
               type: 'image',
             },
@@ -329,7 +329,7 @@ describe('upload', () => {
           id="t-upload"
           addContent="slot"
         >
-          <text slot="add-content"> {{text}} </text>
+          <text slot="add-content" class="custom-add"> {{text}} </text>
         </t-upload>
       `,
         data: {
@@ -342,7 +342,7 @@ describe('upload', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $addIcon = comp.querySelector('#t-upload >>> .t-upload__add-icon');
+      const $addIcon = comp.querySelector('#t-upload >>> .custom-add');
       expect($addIcon.dom.textContent).toContain(comp.data.text);
     });
   });
@@ -364,7 +364,7 @@ describe('upload', () => {
         data: {
           originFiles: [
             {
-              url: 'https://tdesign.gtimg.com/site/upload1.png',
+              url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
               name: 'uploaded1.png',
               type: 'image',
             },

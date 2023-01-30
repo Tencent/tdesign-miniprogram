@@ -6,6 +6,10 @@
     <base />
   </t-demo>
 
+  <t-demo desc="向上展开">
+    <placement />
+  </t-demo>
+
   <t-demo desc="带操作说明">
     <action />
   </t-demo>

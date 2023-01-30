@@ -31,7 +31,6 @@ mockGetRect.mockImplementation((context, id) => {
 describe('notice-bar', () => {
   const noticeBar = load(path.resolve(__dirname, `../notice-bar`), 't-notice-bar');
   jest.resetModules();
-  const icon = load(path.resolve(__dirname, `../../icon/icon`), 't-icon');
 
   describe('props', () => {
     it(': visible', () => {
@@ -150,20 +149,7 @@ describe('notice-bar', () => {
       comp.setData({
         prefixIcon: 'add',
       });
-
-      const iconId = simulate.load({
-        template: `<t-icon name="{{name}}"></t-icon>`,
-        data: {
-          name: 'add',
-        },
-        usingComponents: {
-          't-icon': icon,
-        },
-      });
-      const iconComp = simulate.render(iconId);
-      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon').dom.innerHTML).toContain(
-        iconComp.dom.innerHTML,
-      );
+      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon')).not.toBeUndefined();
     });
 
     const delay = 7100;

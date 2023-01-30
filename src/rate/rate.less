@@ -20,7 +20,9 @@
   }
 
   &__icon {
+    display: block;
     line-height: 1em;
+    width: 1em;
     transition: transform 0.3s ease;
 
     &--current {
@@ -73,6 +75,9 @@
     transform: translateX(-50%);
 
     &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 64rpx;
       border-radius: 6rpx;
 

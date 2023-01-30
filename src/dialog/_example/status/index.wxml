@@ -1,5 +1,13 @@
 <view class="demo-desc">文字按钮</view>
-<t-button theme="primary" size="large" variant="outline" data-key="showConfirm" bind:tap="showDialog" block>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showConfirm"
+  bind:tap="showDialog"
+  block
+>
   文字按钮
 </t-button>
 <t-dialog
@@ -13,7 +21,15 @@
 />
 
 <view class="demo-desc">水平基础按钮</view>
-<t-button theme="primary" size="large" variant="outline" data-key="showWarnConfirm" bind:tap="showDialog" block>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showWarnConfirm"
+  bind:tap="showDialog"
+  block
+>
   水平基础按钮
 </t-button>
 <t-dialog
@@ -26,7 +42,15 @@
 />
 
 <view class="demo-desc">垂直基础按钮</view>
-<t-button theme="primary" size="large" variant="outline" data-key="showTooLongBtnContent" bind:tap="showDialog" block>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showTooLongBtnContent"
+  bind:tap="showDialog"
+  block
+>
   垂直基础按钮
 </t-button>
 <t-dialog
@@ -41,7 +65,15 @@
 />
 
 <view class="demo-desc">多按钮</view>
-<t-button theme="primary" size="large" variant="outline" data-key="showMultiBtn" bind:tap="showDialog" block>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showMultiBtn"
+  bind:tap="showDialog"
+  block
+>
   多按钮
 </t-button>
 <t-dialog
@@ -54,7 +86,15 @@
 />
 
 <view class="demo-desc">带关闭按钮</view>
-<t-button theme="primary" size="large" variant="outline" data-key="showCloseBtn" bind:tap="showDialog" block>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showCloseBtn"
+  bind:tap="showDialog"
+  block
+>
   带关闭按钮
 </t-button>
 <t-dialog

@@ -82,15 +82,18 @@ exports[`Drawer Drawer footer demo works fine 1`] = `
     bind:item-click="itemClick"
     bind:overlay-click="overlayClick"
   >
-    <t-button
-      block="{{true}}"
+    <wx-view
       class="button-host"
-      size="large="
-      slot="footer"
-      variant="outline"
     >
-      操作
-    </t-button>
+      <t-button
+        block="{{true}}"
+        size="large="
+        slot="footer"
+        variant="outline"
+      >
+        操作
+      </t-button>
+    </wx-view>
   </t-drawer>
 </footer>
 `;

@@ -9,7 +9,7 @@ export interface TdIndexesProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -36,6 +36,14 @@ export interface TdIndexesProps {
   sticky?: {
     type: BooleanConstructor;
     value?: Boolean;
+  };
+  /**
+   * 锚点吸顶时与顶部的距离
+   * @default 0
+   */
+  stickyOffset?: {
+    type: NumberConstructor;
+    value?: number;
   };
 }
 
