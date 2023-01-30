@@ -58,6 +58,10 @@
 @button-danger-disabled-color: var(--td-button-danger-disabled-color, @text-anti-primary-color);
 @button-danger-disabled-bg: var(--td-button-danger-disabled-bg, @error-color-3);
 @button-danger-disabled-border-color: var(--td-button-danger-disabled-border-color, @error-color-3);
+// default + outline
+@button-default-outline-color: var(--td-button-default-outline-color, @font-gray-1);
+@button-default-outline-border-color: var(--td-button-default-outline-border-color, @gray-color-4);
+@button-default-outline-disabled-color: var(--td-button-default-outline-disabled-color, @gray-color-4);
 // primary + outline
 @button-primary-outline-color: var(--td-button-primary-outline-color, @primary-color);
 @button-primary-outline-border-color: var(--td-button-primary-outline-border-color, @button-primary-outline-color);
@@ -65,7 +69,7 @@
 // danger + outline
 @button-danger-outline-color: var(--td-button-danger-outline-color, @error-color);
 @button-danger-outline-border-color: var(--td-button-danger-outline-border-color, @button-danger-outline-color);
-@button-danger-outline-disabled-color: var(--td-button-danger-outline-disabled-color, @button-danger-disabled-color);
+@button-danger-outline-disabled-color: var(--td-button-danger-outline-disabled-color, @error-color-3);
 // light + outline
 @button-light-outline-color: var(--td-button-light-outline-color, @primary-color);
 @button-light-outline-border-color: var(--td-button-light-outline-border-color, @button-light-outline-color);
@@ -105,18 +109,18 @@
 @button-primary-active-border-color: var(--td-button-primary-active-border-color, @primary-color-9);
 @button-danger-active-bg-color: var(--td-button-danger-active-bg-color, @error-color-7);
 @button-danger-active-border-color: var(--td-button-danger-active-border-color, @error-color-7);
-@button-default-outline-active-bg-color: var(--td-button-default-outline-active-bg-color, @gray-color-1);
-@button-default-outline-active-border-color: var(--td-button-default-outline-active-border-color, @gray-color-3);
-@button-primary-outline-active-bg-color: var(--td-button-primary-outline-active-bg-color, @gray-color-1);
-@button-primary-outline-active-border-color: var(--td-button-primary-outline-active-border-color, @primary-color-8);
-@button-danger-outline-active-bg-color: var(--td-button-danger-outline-active-bg-color, @error-color-1);
-@button-danger-outline-active-border-color: var(--td-button-danger-outline-active-border-color, @error-color-6);
-@button-light-outline-active-bg-color: var(--td-button-light-outline-active-bg-color, @gray-color-1);
-@button-light-outline-active-border-color: var(--td-button-light-outline-active-border-color, @primary-color-8);
-@button-default-text-active-bg-color: var(--td-button-default-text-active-bg-color, @gray-color-1);
-@button-primary-text-active-bg-color: var(--td-button-primary-text-active-bg-color, @primary-color-1);
-@button-danger-text-active-bg-color: var(--td-button-danger-text-active-bg-color, @error-color-1);
-@button-light-text-active-bg-color: var(--td-button-light-text-active-bg-color, @primary-color-1);
+@button-default-outline-active-bg-color: var(--td-button-default-outline-active-bg-color, @gray-color-3);
+@button-default-outline-active-border-color: var(--td-button-default-outline-active-border-color, @gray-color-4);
+@button-primary-outline-active-bg-color: var(--td-button-primary-outline-active-bg-color, @gray-color-3);
+@button-primary-outline-active-border-color: var(--td-button-primary-outline-active-border-color, @primary-color-9);
+@button-danger-outline-active-bg-color: var(--td-button-danger-outline-active-bg-color, @gray-color-3);
+@button-danger-outline-active-border-color: var(--td-button-danger-outline-active-border-color, @error-color-7);
+@button-light-outline-active-bg-color: var(--td-button-light-outline-active-bg-color, @primary-color-2);
+@button-light-outline-active-border-color: var(--td-button-light-outline-active-border-color, @primary-color-9);
+@button-default-text-active-bg-color: var(--td-button-default-text-active-bg-color, @gray-color-3);
+@button-primary-text-active-bg-color: var(--td-button-primary-text-active-bg-color, @gray-color-3);
+@button-danger-text-active-bg-color: var(--td-button-danger-text-active-bg-color, @gray-color-3);
+@button-light-text-active-bg-color: var(--td-button-light-text-active-bg-color, @gray-color-3);
 
 @button: ~'@{prefix}-button';
 
@@ -305,15 +309,24 @@
   }
 
   &--outline {
+    color: @button-default-outline-color;
     background-color: transparent;
 
     &::after {
-      border-color: @button-default-border-color;
+      border-color: @button-default-outline-border-color;
     }
 
     &.@{button}--hover::after {
       background-color: @button-default-outline-active-bg-color;
       border-color: @button-default-outline-active-border-color;
+    }
+
+    &.@{button}--disabled {
+      color: @button-default-outline-disabled-color;
+
+      &::after {
+        border-color: @button-default-outline-disabled-color;
+      }
     }
 
     &.@{button}--primary {
@@ -323,9 +336,13 @@
         border-color: @button-primary-outline-border-color;
       }
 
-      &.@{button}--hover::after {
-        background-color: @button-primary-outline-active-bg-color;
-        border-color: @button-primary-outline-active-border-color;
+      &.@{button}--hover {
+        color: @button-primary-outline-active-border-color;
+
+        &::after {
+          background-color: @button-primary-outline-active-bg-color;
+          border-color: @button-primary-outline-active-border-color;
+        }
       }
 
       &.@{button}--disabled {
@@ -345,9 +362,13 @@
         border-color: @button-danger-outline-border-color;
       }
 
-      &.@{button}--hover::after {
-        background-color: @button-danger-outline-active-bg-color;
-        border-color: @button-danger-outline-active-border-color;
+      &.@{button}--hover {
+        color: @button-danger-outline-active-border-color;
+
+        &::after {
+          background-color: @button-danger-outline-active-bg-color;
+          border-color: @button-danger-outline-active-border-color;
+        }
       }
 
       &.@{button}--disabled {
@@ -368,9 +389,13 @@
         border-color: @button-light-outline-border-color;
       }
 
-      &.@{button}--hover::after {
-        background-color: @button-light-outline-active-bg-color;
-        border-color: @button-light-outline-active-border-color;
+      &.@{button}--hover {
+        color: @button-light-outline-active-border-color;
+
+        &::after {
+          background-color: @button-light-outline-active-bg-color;
+          border-color: @button-light-outline-active-border-color;
+        }
       }
 
       &.@{button}--disabled {
