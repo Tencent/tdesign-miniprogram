@@ -24,6 +24,7 @@ export default class BackTop extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    _icon: null,
   };
 
   observers = {
@@ -41,20 +42,16 @@ export default class BackTop extends SuperComponent {
   methods = {
     setIcon() {
       const { icon } = this.properties;
-      if (!icon) {
-        this.setData({ iconName: '', iconData: {} });
-      } else if (typeof icon === 'string') {
+      const isBool = typeof icon === 'boolean';
+
+      if ((isBool && icon) || typeof icon === 'string') {
         this.setData({
-          iconName: icon,
-          iconData: {},
+          _icon: { name: isBool ? 'backtop' : icon },
         });
       } else if (typeof icon === 'object') {
         this.setData({
-          iconName: '',
-          iconData: icon,
+          _icon: icon,
         });
-      } else {
-        this.setData({ iconName: 'backtop', iconData: {} });
       }
     },
 
