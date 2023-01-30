@@ -22,13 +22,12 @@ exports[`image-viewer :base 1`] = `
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
-          ariaLabel="加载中"
-          ariaRole="option"
           class="t-loading t-loading--horizontal"
           style=""
         >
           <wx-view
-            ariaHidden="{{true}}"
+            ariaLabel="加载中"
+            ariaRole="img"
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
             style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
@@ -46,6 +45,8 @@ exports[`image-viewer :base 1`] = `
             />
           </wx-view>
           <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
             class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
@@ -92,13 +93,12 @@ exports[`image-viewer :base 2`] = `
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
-          ariaLabel="加载中"
-          ariaRole="option"
           class="t-loading t-loading--horizontal"
           style=""
         >
           <wx-view
-            ariaHidden="{{true}}"
+            ariaLabel="加载中"
+            ariaRole="img"
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
             style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
@@ -116,6 +116,8 @@ exports[`image-viewer :base 2`] = `
             />
           </wx-view>
           <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
             class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
@@ -162,13 +164,12 @@ exports[`image-viewer :base 3`] = `
         style=";width: 44rpx; height: 44rpx"
       >
         <wx-view
-          ariaLabel="加载中"
-          ariaRole="option"
           class="t-loading t-loading--horizontal"
           style=""
         >
           <wx-view
-            ariaHidden="{{true}}"
+            ariaLabel="加载中"
+            ariaRole="img"
             class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
             style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
           >
@@ -186,6 +187,8 @@ exports[`image-viewer :base 3`] = `
             />
           </wx-view>
           <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
             class="t-loading__text t-loading__text--horizontal t-class-text"
           />
         </wx-view>
