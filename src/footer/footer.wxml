@@ -1,4 +1,6 @@
-<view style="{{style}};{{customStyle}}" class="{{classPrefix}}">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}}">
   <!-- theme 为 logo -->
   <block wx:if="{{theme === 'logo'}}">
     <view class="{{classPrefix}}__logo">

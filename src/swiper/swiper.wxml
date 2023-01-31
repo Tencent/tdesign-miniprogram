@@ -3,7 +3,7 @@
 
 <import src="../common/template/image.wxml" />
 
-<view class="{{prefix}}-class {{classPrefix}}" style="{{style}};{{customStyle}}">
+<view class="{{prefix}}-class {{classPrefix}}" style="{{_._style([style, customStyle])}}">
   <swiper
     class="{{classPrefix}}-host"
     autoplay="{{autoplay}}"

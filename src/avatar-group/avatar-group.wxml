@@ -1,4 +1,6 @@
-<view style="{{style}};{{customStyle}}" class="{{className}}">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{className}}">
   <slot />
   <!-- 自定义折叠元素 -->
   <view class="{{classPrefix}}__collapse--slot">

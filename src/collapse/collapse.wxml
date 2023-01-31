@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{style}};{{customStyle}}"
+  style="{{_._style([style, customStyle])}}"
   class="{{prefix}}-class {{_.cls(classPrefix, [['hairline--top-bottom', border], theme])}}"
 >
   <slot />

@@ -5,7 +5,7 @@
   wx:if="{{visible}}"
   id="{{classPrefix}}"
   class="{{classPrefix}} {{prefix}}-class"
-  style="{{style}};{{customStyle}}"
+  style="{{_._style([style, customStyle])}}"
 >
   <view class="{{classPrefix}}__mask" style="{{ 'background-color: ' + backgroundColor }}" />
   <block wx:if="{{images && images.length}}">

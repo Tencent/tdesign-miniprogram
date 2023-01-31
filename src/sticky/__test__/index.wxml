@@ -1,5 +1,5 @@
 <view class="demo tdesign-demo-sticky-base">
-  <t-sticky id="base-sticky" bind:scroll="handleScroll">
+  <t-sticky id="base-sticky" style="{{style}}" customStyle="{{customStyle}}" bind:scroll="handleScroll">
     <t-button class="base-btn">基础吸顶 </t-button>
   </t-sticky>
 

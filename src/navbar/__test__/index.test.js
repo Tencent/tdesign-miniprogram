@@ -4,6 +4,28 @@ import path from 'path';
 describe('navbar', () => {
   const navbar = load(path.resolve(__dirname, `../navbar`), 't-navbar');
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-navbar class="navbar" style="{{style}}" customStyle="{{customStyle}}"></t-navbar>`,
+      usingComponents: {
+        't-navbar': navbar,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $navbar = comp.querySelector('.navbar >>> .t-navbar');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($navbar.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($navbar.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':base', async () => {
     const id = simulate.load({
       template: `<t-navbar visible="{{visible}}" animation="{{animation}}" title="test" />`,
@@ -52,9 +74,9 @@ describe('navbar', () => {
     const handleFail = jest.fn();
     const handleComplete = jest.fn();
     const id = simulate.load({
-      template: `<t-navbar 
-        id="base" 
-        visible 
+      template: `<t-navbar
+        id="base"
+        visible
         left-arrow
         bind:go-back="handleBack"
         bind:success="handleSuccess"

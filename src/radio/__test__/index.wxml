@@ -1,5 +1,5 @@
-<t-radio-group class="group" value="{{value}}" bind:change="onChange">
-  <t-radio class="a" value="1"></t-radio>
+<t-radio-group class="group" style="{{style}}" customStyle="{{customStyle}}" value="{{value}}" bind:change="onChange">
+  <t-radio class="a" style="{{style}}" customStyle="{{customStyle}}" value="1"></t-radio>
   <t-radio class="b" value="2"></t-radio>
   <t-radio class="c" value="3" content-disabled></t-radio>
 </t-radio-group>

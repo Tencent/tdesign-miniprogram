@@ -4,6 +4,28 @@ import path from 'path';
 describe('result', () => {
   const result = load(path.resolve(__dirname, `../result`));
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-result class="result" style="{{style}}" customStyle="{{customStyle}}"></t-result>`,
+      usingComponents: {
+        't-result': result,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $result = comp.querySelector('.result >>> .t-result');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($result.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($result.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':props', () => {
     const id = simulate.load({
       template: `<t-result class="result" title="{{title}}" theme="{{theme}}" description="{{description}}"></t-result>`,

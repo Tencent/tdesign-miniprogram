@@ -1,5 +1,7 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <t-popup
-  style="{{style}};{{customStyle}}"
+  style="{{_._style([style, customStyle])}}"
   bind:visible-change="visibleChange"
   visible="{{visible}}"
   zIndex="{{zIndex}}"

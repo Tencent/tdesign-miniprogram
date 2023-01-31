@@ -26,9 +26,6 @@ module.exports = {
   globals: {
     CONFIG_PREFIX: 't',
   },
-  transform: {
-    '\\.[jt]sx?$': ['<rootDir>/script/test/transform.js'],
-  },
   globalSetup: '<rootDir>/script/test/globalSetup.js',
   snapshotSerializers: ['miniprogram-simulate/jest-snapshot-plugin'],
 };

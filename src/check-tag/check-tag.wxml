@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <import src="../common/template/icon.wxml" />
 
-<view style="{{style}};{{customStyle}}" class="{{className}} {{prefix}}-class" bind:tap="onClick">
+<view style="{{_._style([style, customStyle])}}" class="{{className}} {{prefix}}-class" bind:tap="onClick">
   <view aria-hidden="{{true}}" class="{{classPrefix}}__icon">
     <template wx:if="{{_icon}}" is="icon" data="{{ tClass: prefix + '-icon', ..._icon }}" />
     <slot name="icon" />

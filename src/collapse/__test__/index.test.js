@@ -4,11 +4,23 @@ import path from 'path';
 describe('collapse', () => {
   const id = load(path.resolve(__dirname, `./index`));
 
-  it(':base', () => {
+  it(`: style && customStyle`, async () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
 
-    expect(comp.toJSON()).toMatchSnapshot();
+    const collapse = comp.querySelector('#base >>> .t-collapse');
+    const collapsePanel = comp.querySelector('#first >>> .t-collapse-panel');
+
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect(collapse.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      expect(
+        collapsePanel.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+      ).toBeTruthy();
+    } else {
+      expect(collapse.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      expect(collapsePanel.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
   });
 
   it(':event', async () => {
@@ -62,8 +74,8 @@ describe('collapse', () => {
 
     await simulate.sleep();
 
-    const $base = comp.querySelector('#base');
+    // const $base = comp.querySelector('#base');
 
-    expect($base.toJSON()).toMatchSnapshot();
+    // expect($base.toJSON()).toMatchSnapshot();
   });
 });

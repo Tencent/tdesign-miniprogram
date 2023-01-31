@@ -1,7 +1,9 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
   wx:if="{{realVisible && preventScrollThrough}}"
   class="{{prefix}}-overlay {{transitionClass}}"
-  style="z-index: {{_zIndex}}; {{computedStyle}}; {{style}};{{customStyle}}"
+  style="{{_._style(['z-index:' + _zIndex, computedStyle, style, customStyle])}}"
   bind:tap="handleClick"
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
@@ -13,7 +15,7 @@
 <view
   wx:elif="{{realVisible}}"
   class="{{prefix}}-overlay {{transitionClass}}"
-  style="z-index: {{_zIndex}}; {{computedStyle}}; {{style}};{{customStyle}}"
+  style="{{_._style(['z-index:' + _zIndex, computedStyle, style, customStyle])}}"
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"
   aria-role="{{ ariaRole || 'button' }}"

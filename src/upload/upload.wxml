@@ -1,4 +1,6 @@
-<view style="{{style}};{{customStyle}}" class="{{classPrefix}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
   <t-grid gutter="{{gutter}}" border="{{false}}" align="center" column="{{column}}">
     <!-- 图片/视频 -->
     <t-grid-item

@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{style}};{{customStyle}}" class="{{classPrefix}} {{prefix}}-class">
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
   <view
     class="{{classPrefix}}__sidebar {{prefix}}-class-sidebar"
     id="id-{{classPrefix}}__bar"

@@ -1,5 +1,7 @@
 <t-swiper
   id="swiper1"
+  style="{{style}}"
+  customStyle="{{customStyle}}"
   current="{{current}}"
   duration="{{duration}}"
   interval="{{interval}}"

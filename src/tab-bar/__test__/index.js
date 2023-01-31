@@ -25,6 +25,8 @@ Component({
       },
       { value: undefined, label: 'value4', icon: 'app' },
     ],
+    style: 'color: red',
+    customStyle: 'font-size: 9px',
   },
 
   methods: {

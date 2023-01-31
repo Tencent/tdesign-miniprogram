@@ -1,5 +1,7 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <scroll-view
-  style="{{style}};{{customStyle}}"
+  style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} {{prefix}}-class"
   scroll-top="{{scrollTop}}"
   bind:touchstart="onTouchStart"

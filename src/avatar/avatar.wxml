@@ -4,7 +4,7 @@
 
 <view
   class="{{classPrefix}}__wrapper class {{prefix}}-class"
-  style="{{this.getStyles(isShow, zIndex)}} {{style}};{{customStyle}}"
+  style="{{_._style([this.getStyles(isShow, zIndex), style, customStyle])}}"
 >
   <t-badge
     color="{{badgeProps.color}}"

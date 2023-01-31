@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{style}};{{customStyle}}"
+  style="{{_._style([style, customStyle])}}"
   class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class"
   disabled="{{disabled}}"
   aria-role="radio"

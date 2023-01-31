@@ -1,8 +1,9 @@
+<wxs src="../common/utils.wxs" module="_" />
 <import src="../common/template/icon.wxml" />
 
 <view
   class="{{className}} class {{prefix}}-class"
-  style="{{tagStyle}} {{style}};{{customStyle}}"
+  style="{{_._style([tagStyle, style, customStyle])}}"
   bind:tap="handleClick"
 >
   <view aria-hidden="{{true}}" class="{{classPrefix}}__icon">

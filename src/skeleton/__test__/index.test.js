@@ -24,6 +24,30 @@ describe('skeleton', () => {
   const skeleton = load(path.resolve(__dirname, `../skeleton`), 't-skeleton');
 
   describe('Props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-skeleton class="skeleton" style="{{style}}" customStyle="{{customStyle}}"></t-skeleton>`,
+        usingComponents: {
+          't-skeleton': skeleton,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $skeleton = comp.querySelector('.skeleton >>> .t-skeleton');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect(
+          $skeleton.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+        ).toBeTruthy();
+      } else {
+        expect($skeleton.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(':text rowCol', () => {
       const id = simulate.load({
         template: `<t-skeleton class="skeleton" rowCol="{{rowCol}}" loading="{{loading}}"></t-skeleton>`,

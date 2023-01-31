@@ -1,6 +1,8 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
-  class="{{ transitionClass }}"
-  style="{{ visible ? '' : 'display: none' }};{{style}};{{customStyle}}"
+  class="{{classPrefix}} {{ transitionClass }}"
+  style="{{_._style([visible ? '' : 'display: none', style, customStyle])}}"
   bind:transitionend="onTransitionEnd"
 >
   <slot />

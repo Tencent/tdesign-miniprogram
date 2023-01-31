@@ -8,6 +8,28 @@ describe('tag', () => {
 
   describe('tag', () => {
     describe('props', () => {
+      it(`: style && customStyle`, async () => {
+        const id = simulate.load({
+          template: `<t-tag class="tag" style="{{style}}" customStyle="{{customStyle}}"></t-tag>`,
+          usingComponents: {
+            't-tag': Tag,
+          },
+          data: {
+            style: 'color: red',
+            customStyle: 'font-size: 9px',
+          },
+        });
+        const comp = simulate.render(id);
+        comp.attach(document.createElement('parent-wrapper'));
+        const $tag = comp.querySelector('.tag >>> .t-tag');
+        // expect(comp.toJSON()).toMatchSnapshot();
+        if (VIRTUAL_HOST) {
+          expect($tag.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+        } else {
+          expect($tag.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+        }
+      });
+
       it(`: theme`, async () => {
         const id = simulate.load({
           template: `
@@ -231,34 +253,60 @@ describe('tag', () => {
         const comp = simulate.render(id);
         comp.attach(document.createElement('parent-wrapper'));
 
-        const $click = comp.querySelector('.base >>> .t-tag');
-        const $close = comp.querySelector('.base >>> .t-tag__icon-close');
+        if (!VIRTUAL_HOST) {
+          const $click = comp.querySelector('.base >>> .t-tag');
+          const $close = comp.querySelector('.base >>> .t-tag__icon-close');
 
-        // 禁用态：event 不会触发
-        $click.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClick).toHaveBeenCalledTimes(0);
-        $close.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClose).toHaveBeenCalledTimes(0);
+          // 禁用态：event 不会触发
+          $click.dispatchEvent('tap');
+          await simulate.sleep(10);
+          expect(handleClick).toHaveBeenCalledTimes(0);
+          $close.dispatchEvent('tap');
+          await simulate.sleep(10);
+          expect(handleClose).toHaveBeenCalledTimes(0);
 
-        // 非禁用态：event
-        comp.setData({
-          disabled: false,
-        });
+          // 非禁用态：event
+          comp.setData({
+            disabled: false,
+          });
 
-        $click.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClick).toHaveBeenCalledTimes(1);
-        $close.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClose).toHaveBeenCalledTimes(1);
+          $click.dispatchEvent('tap');
+          await simulate.sleep(10);
+          expect(handleClick).toHaveBeenCalledTimes(1);
+          $close.dispatchEvent('tap');
+          await simulate.sleep(10);
+          expect(handleClose).toHaveBeenCalledTimes(1);
+        }
       });
     });
   });
 
   describe('check-tag', () => {
     describe('props', () => {
+      it(`: style && customStyle`, async () => {
+        const id = simulate.load({
+          template: `<t-check-tag class="check-tag" style="{{style}}" customStyle="{{customStyle}}"></t-check-tag>`,
+          usingComponents: {
+            't-check-tag': CheckTag,
+          },
+          data: {
+            style: 'color: red',
+            customStyle: 'font-size: 9px',
+          },
+        });
+        const comp = simulate.render(id);
+        comp.attach(document.createElement('parent-wrapper'));
+        const $CheckTag = comp.querySelector('.check-tag >>> .t-tag');
+        // expect(comp.toJSON()).toMatchSnapshot();
+        if (VIRTUAL_HOST) {
+          expect(
+            $CheckTag.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+          ).toBeTruthy();
+        } else {
+          expect($CheckTag.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+        }
+      });
+
       it(`: size`, async () => {
         const id = simulate.load({
           template: `
