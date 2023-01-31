@@ -55,6 +55,8 @@ exports[`swiper snapshot 1`] = `
                     style=""
                   >
                     <wx-view
+                      ariaLabel="加载中"
+                      ariaRole="img"
                       class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
                       style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
                     >
@@ -72,6 +74,8 @@ exports[`swiper snapshot 1`] = `
                       />
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
+                      ariaLabel=""
                       class="t-loading__text t-loading__text--horizontal t-class-text"
                     />
                   </wx-view>
@@ -124,6 +128,8 @@ exports[`swiper snapshot 1`] = `
                     style=""
                   >
                     <wx-view
+                      ariaLabel="加载中"
+                      ariaRole="img"
                       class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
                       style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
                     >
@@ -141,6 +147,8 @@ exports[`swiper snapshot 1`] = `
                       />
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
+                      ariaLabel=""
                       class="t-loading__text t-loading__text--horizontal t-class-text"
                     />
                   </wx-view>
@@ -193,6 +201,8 @@ exports[`swiper snapshot 1`] = `
                     style=""
                   >
                     <wx-view
+                      ariaLabel="加载中"
+                      ariaRole="img"
                       class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
                       style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
                     >
@@ -210,6 +220,8 @@ exports[`swiper snapshot 1`] = `
                       />
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
+                      ariaLabel=""
                       class="t-loading__text t-loading__text--horizontal t-class-text"
                     />
                   </wx-view>
@@ -262,6 +274,8 @@ exports[`swiper snapshot 1`] = `
                     style=""
                   >
                     <wx-view
+                      ariaLabel="加载中"
+                      ariaRole="img"
                       class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
                       style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
                     >
@@ -279,6 +293,8 @@ exports[`swiper snapshot 1`] = `
                       />
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
+                      ariaLabel=""
                       class="t-loading__text t-loading__text--horizontal t-class-text"
                     />
                   </wx-view>
@@ -331,6 +347,8 @@ exports[`swiper snapshot 1`] = `
                     style=""
                   >
                     <wx-view
+                      ariaLabel="加载中"
+                      ariaRole="img"
                       class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
                       style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
                     >
@@ -348,6 +366,8 @@ exports[`swiper snapshot 1`] = `
                       />
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
+                      ariaLabel=""
                       class="t-loading__text t-loading__text--horizontal t-class-text"
                     />
                   </wx-view>
@@ -438,6 +458,8 @@ exports[`swiper snapshot 1`] = `
                     style=""
                   >
                     <wx-view
+                      ariaLabel="加载中"
+                      ariaRole="img"
                       class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
                       style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
                     >
@@ -455,6 +477,8 @@ exports[`swiper snapshot 1`] = `
                       />
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
+                      ariaLabel=""
                       class="t-loading__text t-loading__text--horizontal t-class-text"
                     />
                   </wx-view>
@@ -507,6 +531,8 @@ exports[`swiper snapshot 1`] = `
                     style=""
                   >
                     <wx-view
+                      ariaLabel="加载中"
+                      ariaRole="img"
                       class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
                       style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
                     >
@@ -524,6 +550,8 @@ exports[`swiper snapshot 1`] = `
                       />
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
+                      ariaLabel=""
                       class="t-loading__text t-loading__text--horizontal t-class-text"
                     />
                   </wx-view>
