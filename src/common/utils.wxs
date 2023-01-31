@@ -4,7 +4,7 @@
  * addUnit */
 // 为 css 添加单位
 function addUnit(value) {
-  var REGEXP = getRegExp('^d+(.d+)?$');
+  var REGEXP = getRegExp('^\d+(.\d+)?$');
   if (value == null) {
     return undefined;
   }

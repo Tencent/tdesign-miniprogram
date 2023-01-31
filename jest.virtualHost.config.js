@@ -15,14 +15,14 @@ module.exports = {
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
   collectCoverage: true,
   coverageProvider: 'v8',
-  coverageDirectory: '<rootDir>/test/unit/coverage',
+  coverageDirectory: '<rootDir>/test/unit-virtualHost/coverage',
   reporters: [
     'default',
     [
       './node_modules/jest-html-reporter',
       {
-        pageTitle: 'TDesign-miniprogram Unit Test Report',
-        outputPath: './test/unit/report/test-report.html',
+        pageTitle: 'TDesign-miniprogram Unit Test Report(virtualHost)',
+        outputPath: './test/unit-virtualHost/report/test-report.html',
       },
     ],
   ],

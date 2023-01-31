@@ -8,6 +8,7 @@ example/pages/*
 !example/pages/home
 test/e2e
 test/unit
+test/unit-virtualHost
 .DS_Store
 node_modules
 package-lock.json
