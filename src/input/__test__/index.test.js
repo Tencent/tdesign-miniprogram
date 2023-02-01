@@ -125,7 +125,7 @@ describe('input', () => {
     it(': label', async () => {
       const id = simulate.load({
         template: `
-        <t-input class="base" label="slot">
+        <t-input class="base">
           <text slot="label">标签文字<text style="color: #e34d59"> *</text> </text>
         </t-input>`,
         data: {},

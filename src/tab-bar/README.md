@@ -78,6 +78,6 @@ change | `(value: string \| number)` | 选中标签切换时触发
 -- | -- | -- | -- | --
 badge-props | Object | - | 图标右上角提示信息。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
 custom-style | String | - | `0.25.0`。自定义组件样式 | N
-icon | String / Slot | - | 图标名称 | N
+icon | String / Object / Slot | - | 图标名称。传入对象时透传至 Icon 组件 | N
 sub-tab-bar | Array | - | 二级菜单。TS 类型：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
 value | String / Number | - | 标识符 | N

@@ -27,6 +27,7 @@
 .@{prefix}-input {
   background-color: @input-bg-color;
   display: flex;
+  align-items: center;
   flex: 1;
   padding: @input-vertical-padding;
 
@@ -43,12 +44,8 @@
     flex-direction: column;
   }
 
-  &__wrap--prefix {
-    display: flex;
-    padding-right: @spacer-2;
-  }
-
   &__icon--prefix {
+    font-size: 48rpx;
     color: @input-prefix-icon-color;
   }
 
@@ -67,6 +64,14 @@
 
   &__icon--prefix:not(:empty) + &__label:not(:empty) {
     padding-left: 8rpx;
+  }
+
+  &__label:not(:empty) + &__wrap {
+    margin-left: @spacer-2;
+  }
+
+  &__icon--prefix:not(:empty) + &__label:empty {
+    margin-right: @spacer-2;
   }
 
   &__wrap {
@@ -95,7 +100,6 @@
       }
     }
 
-    &--prefix,
     &--clearable-icon,
     &--suffix-icon {
       font-size: 48rpx;
@@ -108,9 +112,7 @@
     }
   }
 
-  &__wrap--prefix,
   &__icon--prefix,
-  &__label,
   &__tips,
   &__wrap--clearable-icon,
   &__wrap--suffix-icon,

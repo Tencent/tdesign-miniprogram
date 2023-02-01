@@ -1,7 +1,7 @@
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getRect } from '../common/utils';
+import { getRect, calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar-item`;
@@ -51,6 +51,11 @@ export default class TabBarItem extends SuperComponent {
     subTabBar(value: Record<string, any>[]) {
       this.setData({
         hasChildren: value.length > 0,
+      });
+    },
+    icon(v) {
+      this.setData({
+        _icon: calcIcon(v),
       });
     },
   };

@@ -41,7 +41,7 @@ export interface TdToastProps {
    * @default ''
    */
   icon?: {
-    type: StringConstructor;
+    type: null;
     value?: string;
   };
   /**

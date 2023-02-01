@@ -27,8 +27,7 @@ const props: TdToastProps = {
   },
   /** 自定义图标 */
   icon: {
-    type: String,
-    value: '',
+    type: null,
   },
   /** 弹窗显示文字 */
   message: {
