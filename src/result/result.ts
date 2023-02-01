@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
-import { setIcon } from '../common/utils';
+import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-result`;
@@ -48,9 +48,8 @@ export default class extends SuperComponent {
   methods = {
     initIcon() {
       const { icon, theme } = this.properties;
-      const obj = setIcon('icon', icon, THEME_ICON[theme]);
       this.setData({
-        ...obj,
+        _icon: calcIcon(icon, THEME_ICON[theme]),
       });
     },
   };

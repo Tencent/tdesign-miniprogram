@@ -17,7 +17,7 @@ const props: TdTabBarItemProps = {
   },
   /** 图标名称 */
   icon: {
-    type: String,
+    type: null,
   },
   /** 二级菜单 */
   subTabBar: {

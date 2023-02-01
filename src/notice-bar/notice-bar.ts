@@ -1,5 +1,5 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
-import { getRect, getAnimationFrame, setIcon } from '../common/utils';
+import { getRect, getAnimationFrame, calcIcon } from '../common/utils';
 import props from './props';
 import config from '../common/config';
 
@@ -54,10 +54,9 @@ export default class NoticeBar extends SuperComponent {
       this.setPrefixIcon(prefixIcon);
     },
 
-    suffixIcon(suffixIcon) {
-      const obj = setIcon('suffixIcon', suffixIcon, '');
+    suffixIcon(v) {
       this.setData({
-        ...obj,
+        _suffixIcon: calcIcon(v),
       });
     },
 
@@ -171,10 +170,9 @@ export default class NoticeBar extends SuperComponent {
       this.nextAnimationContext = null;
     },
 
-    setPrefixIcon(prefixIcon) {
-      const obj = setIcon('prefixIcon', prefixIcon, 'error-circle-filled');
+    setPrefixIcon(v) {
       this.setData({
-        ...obj,
+        _prefixIcon: calcIcon(v, 'error-circle-filled'),
       });
     },
 

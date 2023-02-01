@@ -76,7 +76,7 @@
     font-size: @message-icon-size;
   }
 
-  &__icon--left {
+  &__icon--left:not(:empty) {
     margin-right: @spacer;
   }
 
@@ -84,7 +84,7 @@
     color: @message-close-icon-color;
   }
 
-  &__icon--right,
+  &__icon--right:not(:empty),
   .@{message}__btn--right {
     flex: 0 0 auto;
     margin-left: @spacer;

@@ -70,6 +70,10 @@ exports[`notice-bar props : marquee 1`] = `
         class="t-notice-bar__extra t-class-extra"
         bind:tap="clickExtra"
       />
+      <wx-view
+        class="t-notice-bar__suffix-icon"
+        bind:tap="clickSuffixIcon"
+      />
     </wx-view>
   </t-notice-bar>
 </main>

@@ -76,11 +76,11 @@
     -webkit-box-orient: vertical;
     white-space: pre-line;
 
-    &--column:not(:empty) {
+    &--column:not(:empty):not(:only-child) {
       margin-top: 16rpx;
     }
 
-    &--row {
+    &--row:not(:empty):not(:only-child) {
       margin-left: 16rpx;
     }
   }

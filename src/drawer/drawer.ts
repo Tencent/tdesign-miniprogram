@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { ComponentsOptionsType, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -8,6 +8,10 @@ const name = `${prefix}-drawer`;
 @wxComponent()
 export default class Drawer extends SuperComponent {
   externalClasses = [];
+
+  options: ComponentsOptionsType = {
+    multipleSlots: true,
+  };
 
   properties = props;
 

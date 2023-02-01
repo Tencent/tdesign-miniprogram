@@ -1,6 +1,7 @@
 import { SuperComponent, RelationsOptions, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-back-top`;
@@ -40,19 +41,10 @@ export default class BackTop extends SuperComponent {
   };
 
   methods = {
-    setIcon() {
-      const { icon } = this.properties;
-      const isBool = typeof icon === 'boolean';
-
-      if ((isBool && icon) || typeof icon === 'string') {
-        this.setData({
-          _icon: { name: isBool ? 'backtop' : icon },
-        });
-      } else if (typeof icon === 'object') {
-        this.setData({
-          _icon: icon,
-        });
-      }
+    setIcon(v) {
+      this.setData({
+        _icon: calcIcon(v, 'backtop'),
+      });
     },
 
     toTop() {

@@ -7,4 +7,5 @@
 >
   <view wx:if="{{panel}}">{{panel}}</view>
   <slot />
+  <slot name="panel" />
 </view>

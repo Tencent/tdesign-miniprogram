@@ -1,7 +1,7 @@
 <view style="{{ style }}" class="{{classPrefix}} {{bordered? classPrefix +  '--border' : ''}} {{prefix}}-class">
   <view class="{{classPrefix}}__label {{prefix}}-class-label">
-    <block wx:if="{{ label && label.length > 0 }}">{{ label }}</block>
-    <slot wx:else name="label" />
+    <block wx:if="{{label}}">{{ label }}</block>
+    <slot name="label" />
   </view>
   <view class="{{classPrefix}}__wrapper">
     <textarea
