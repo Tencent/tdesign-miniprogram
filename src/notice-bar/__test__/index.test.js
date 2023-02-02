@@ -168,12 +168,15 @@ describe('notice-bar', () => {
 
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
-      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon')).toBeUndefined();
+
+      const $noticeBar = comp.querySelector('.base');
+
+      expect($noticeBar.data._prefixIcon).toBe(null);
 
       comp.setData({
         prefixIcon: 'add',
       });
-      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon')).not.toBeUndefined();
+      expect($noticeBar.data._prefixIcon).toStrictEqual({ name: 'add' });
     });
 
     const delay = 7100;

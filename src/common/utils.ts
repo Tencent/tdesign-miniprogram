@@ -226,6 +226,8 @@ export const setIcon = (iconName, icon, defaultIcon) => {
   };
 };
 
+export const isBool = (val) => typeof val === 'boolean';
+
 export const isObject = (val) => typeof val === 'object' && val != null;
 
 export const isString = (val) => typeof val === 'string';
@@ -242,9 +244,9 @@ export const uniqueFactory = (compName) => {
   return () => `${prefix}_${compName}_${number++}`;
 };
 
-export const calcIcon = (icon: string | Record<string, any>) => {
-  if (typeof icon === 'string') {
-    return { name: icon };
+export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {
+  if ((isBool(icon) && icon && defaultIcon) || isString(icon)) {
+    return { name: isBool(icon) ? defaultIcon : icon };
   }
   if (isObject(icon)) {
     return icon;

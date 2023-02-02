@@ -33,7 +33,7 @@
       ></template>
       <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
-    <slot wx:else name="label"></slot>
+    <slot wx:else name="label" />
   </view>
 
   <view
@@ -57,12 +57,12 @@
       <view wx:if="{{label && computedProgress > 10}}" class="{{classPrefix }}__info {{prefix}}-class-label">
         <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
       </view>
-      <slot wx:else name="label"></slot>
+      <slot wx:else name="label" />
     </view>
     <view wx:if="{{label && computedProgress <= 10}}" class="{{ classPrefix }}__info {{prefix}}-class-label">
       <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
-    <slot wx:else name="label"></slot>
+    <slot wx:else name="label" />
   </view>
 
   <view
@@ -94,7 +94,7 @@
           ></template>
           <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
         </view>
-        <slot wx:else name="label"></slot>
+        <slot wx:else name="label" />
       </view>
     </view>
   </view>

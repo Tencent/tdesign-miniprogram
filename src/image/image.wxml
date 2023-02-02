@@ -16,10 +16,8 @@
     t-class="t-class-load"
     t-class-text="{{classPrefix}}--loading-text"
   ></t-loading>
-  <view wx:elif="{{loading !== 'slot' && loading !== ''}}" class="{{classPrefix}}__common {{prefix}}-class-load">
-    {{loading}}
-  </view>
-  <slot wx:else name="loading" class="{{prefix}}-class-load" />
+  <view wx:elif="{{loading !== ''}}" class="{{classPrefix}}__common {{prefix}}-class-load"> {{loading}} </view>
+  <slot name="loading" />
 </view>
 <!-- 加载失败占位 -->
 <view
@@ -31,8 +29,8 @@
   <view wx:if="{{error === 'default'}}" style="font-size: 44rpx" class="{{prefix}}-class-load">
     <t-icon name="close" aria-role="img" aria-label="加载失败" />
   </view>
-  <view wx:elif="{{error && error !== 'slot'}}" class="{{classPrefix}}__common {{prefix}}-class-load"> {{error}} </view>
-  <slot wx:else name="error" class="{{prefix}}-class-load"></slot>
+  <view wx:elif="{{error}}" class="{{classPrefix}}__common {{prefix}}-class-load"> {{error}} </view>
+  <slot name="error" />
 </view>
 <!-- 图片 -->
 <image

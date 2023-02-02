@@ -1,4 +1,4 @@
-import { styles, setIcon } from '../common/utils';
+import { styles, calcIcon } from '../common/utils';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
@@ -45,17 +45,15 @@ export default class ImageViewer extends SuperComponent {
       });
     },
 
-    closeBtn(closeBtn) {
-      const obj = setIcon('closeBtn', closeBtn, 'close');
+    closeBtn(v) {
       this.setData({
-        ...obj,
+        _closeBtn: calcIcon(v, 'close'),
       });
     },
 
-    deleteBtn(deleteBtn) {
-      const obj = setIcon('deleteBtn', deleteBtn, 'delete');
+    deleteBtn(v) {
       this.setData({
-        ...obj,
+        _deleteBtn: calcIcon(v, 'delete'),
       });
     },
   };
@@ -132,8 +130,9 @@ export default class ImageViewer extends SuperComponent {
       this._trigger('change', { index: current });
     },
 
-    onClose() {
-      this._trigger('close', { visible: false, trigger: 'button', index: this.data.currentSwiperIndex });
+    onClose(e) {
+      const { source } = e.currentTarget.dataset;
+      this._trigger('close', { visible: false, trigger: source || 'button', index: this.data.currentSwiperIndex });
     },
 
     onDelete() {

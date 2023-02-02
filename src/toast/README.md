@@ -39,7 +39,7 @@ isComponent: true
 direction | String | row | 图标排列方式。可选项：row/column | N
 duration | Number | 2000 | 弹窗显示毫秒数 | N
 external-classes | Array | - | 组件类名。`['t-class']` | N
-icon | String | - | 自定义图标 | N
+icon | String / Object / Slot | - | 自定义图标。传入对象则透传至 Icon 组件 | N
 message | String / Slot | - | 弹窗显示文字 | N
 overlay-props | Object | {} | 遮罩层属性，透传至 Overlay | N
 placement | String | middle | 弹窗展示位置。可选项： top/middle/bottom | N

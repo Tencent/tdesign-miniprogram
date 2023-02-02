@@ -43,7 +43,7 @@
         加载失败
         <text class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage" aria-role="button">刷新</text>
       </view>
-      <block wx:if="{{text && text !== 'slot'}}">{{text}}</block>
+      <block wx:if="{{text}}">{{text}}</block>
       <slot name="text" />
       <slot />
     </view>

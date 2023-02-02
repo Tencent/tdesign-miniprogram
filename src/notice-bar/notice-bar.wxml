@@ -7,16 +7,12 @@
   class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class"
 >
   <!-- prefixIcon -->
-  <view
-    wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}"
-    class="{{classPrefix}}__prefix-icon"
-    bind:tap="clickPrefixIcon"
-  >
-    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
+  <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon">
+    <slot name="prefix-icon" />
     <template
-      wx:else
+      wx:if="{{_prefixIcon}}"
       is="icon"
-      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ...prefixIconData}}"
+      data="{{tClass: prefix + '-class-prefix-icon', ..._prefixIcon }}"
     ></template>
   </view>
 
@@ -56,16 +52,12 @@
   </view>
 
   <!-- suffixIcon -->
-  <view
-    wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}"
-    class="{{classPrefix}}__suffix-icon"
-    bind:tap="clickSuffixIcon"
-  >
-    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
+  <view class="{{classPrefix}}__suffix-icon" bind:tap="clickSuffixIcon">
+    <slot name="suffix-icon" />
     <template
-      wx:else
+      wx:if="{{_suffixIcon}}"
       is="icon"
-      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ...suffixIconData}}"
+      data="{{tClass: prefix + '-class-suffix-icon', ..._suffixIcon }}"
     ></template>
   </view>
 </view>

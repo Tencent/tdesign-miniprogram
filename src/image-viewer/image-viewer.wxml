@@ -7,7 +7,12 @@
   class="{{classPrefix}} {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
 >
-  <view class="{{classPrefix}}__mask" style="{{ 'background-color: ' + backgroundColor }}" />
+  <view
+    class="{{classPrefix}}__mask"
+    data-source="overlay"
+    bind:tap="onClose"
+    style="{{ 'background-color: ' + backgroundColor }}"
+  />
   <block wx:if="{{images && images.length}}">
     <view slot="content" class="{{classPrefix}}__content">
       <swiper
@@ -17,13 +22,7 @@
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
       >
-        <swiper-item
-          wx:for="{{images}}"
-          wx:key="index"
-          class="{{classPrefix}}__preview-image"
-          data-source="overlay"
-          bind:tap="onClose"
-        >
+        <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
             t-class="t-image--external"
             style="{{imagesShape[index].style}}"
@@ -38,26 +37,18 @@
       </swiper>
     </view>
     <view class="{{classPrefix}}__nav">
-      <view
-        wx:if="{{closeBtnName || _.isNoEmptyObj(closeBtnData)}}"
-        class="{{classPrefix}}__nav-close"
-        bind:tap="onClose"
-      >
-        <slot wx:if="{{closeBtnName === 'slot'}}" name="close-btn" />
-        <template wx:else is="icon" data="{{ name: closeBtnName, ...closeBtnData}}"></template>
+      <view class="{{classPrefix}}__nav-close" catch:tap="onClose">
+        <slot name="close-btn" />
+        <template wx:if="{{_closeBtn}}" is="icon" data="{{ ..._closeBtn }}" />
       </view>
 
       <view wx:if="{{showIndex}}" class="{{classPrefix}}__nav-index">
         {{currentSwiperIndex + 1}}/{{images.length}}
       </view>
 
-      <view
-        wx:if="{{deleteBtnName || _.isNoEmptyObj(deleteBtnData)}}"
-        class="{{classPrefix}}__nav-delete"
-        bind:tap="onDelete"
-      >
-        <slot wx:if="{{deleteBtnName === 'slot'}}" name="delete-btn" />
-        <template wx:else is="icon" data="{{ name: deleteBtnName, ...deleteBtnData}}"></template>
+      <view class="{{classPrefix}}__nav-delete" bind:tap="onDelete">
+        <slot name="delete-btn" />
+        <template is="icon" data="{{ ..._deleteBtn }}" />
       </view>
     </view>
   </block>

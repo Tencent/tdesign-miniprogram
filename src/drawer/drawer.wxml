@@ -11,6 +11,7 @@
   closeOnOverlayClick="{{closeOnOverlayClick}}"
 >
   <view class="{{classPrefix}}">
+    <slot name="title" />
     <view wx:if="{{title}}" class="{{classPrefix}}__title">{{title}}</view>
     <scroll-view class="{{classPrefix}}__sidebar" scroll-y>
       <view
