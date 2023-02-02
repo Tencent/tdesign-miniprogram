@@ -1,6 +1,9 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{ style }}" class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class">
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{classPrefix}}--{{placement}} {{prefix}}-class"
+>
   <view
     class="{{classPrefix}}__title"
     aria-role="button"

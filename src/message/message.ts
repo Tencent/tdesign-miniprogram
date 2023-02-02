@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/sr
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
-import { getRect, unitConvert, setIcon } from '../common/utils';
+import { getRect, unitConvert, calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
@@ -51,17 +51,15 @@ export default class Message extends SuperComponent {
       }
     },
 
-    icon(icon) {
-      const obj = setIcon('icon', icon, 'error-circle-filled');
+    icon(v) {
       this.setData({
-        ...obj,
+        _icon: calcIcon(v, 'error-circle-filled'),
       });
     },
 
-    closeBtn(closeBtn) {
-      const obj = setIcon('closeBtn', closeBtn, 'close');
+    closeBtn(v) {
       this.setData({
-        ...obj,
+        _closeBtn: calcIcon(v, 'close'),
       });
     },
   };

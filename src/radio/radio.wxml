@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ style }}"
+  style="{{_._style([style, customStyle])}}"
   class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class"
   disabled="{{disabled}}"
   aria-role="radio"
@@ -44,13 +44,16 @@
     >
       {{label}}
       <slot />
+      <slot name="label" />
     </view>
 
     <view
       class="{{classPrefix}}__description {{disabled ? classPrefix + '__description--disabled' : ''}} {{prefix}}-class-content "
       style="-webkit-line-clamp:{{maxContentRow}}"
-      >{{content}}</view
     >
+      {{content}}
+      <slot name="content" />
+    </view>
   </view>
 
   <view wx:if="{{!borderless}}" class="{{_.cls(classPrefix + '__border', [align])}} {{prefix}}-class-border" />

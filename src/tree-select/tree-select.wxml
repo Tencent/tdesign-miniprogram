@@ -1,7 +1,7 @@
 <wxs module="_" src="../common/utils.wxs" />
 <wxs module="this" src="./index.wxs" />
 
-<view class="{{classPrefix}}" style="height: {{_.addUnit(height)}}; {{style}}">
+<view class="{{classPrefix}}" style="{{_._style(['height:' + _.addUnit(height) , style, customStyle])}}">
   <scroll-view
     scroll-y
     enhanced

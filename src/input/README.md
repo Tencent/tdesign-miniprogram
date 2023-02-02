@@ -74,21 +74,20 @@ align | String | left | 文本内容位置，居左/居中/居右。可选项：
 layout | String | horizontal | 标题输入框布局方式。可选项：vertical/horizontal | N
 borderless | Boolean | false | 是否开启无边框模式 | N
 clearable | Boolean / Object | false | 是否可清空，默认不启动。值为 `true` 表示使用默认清除空按钮，值为 `Object` 表示透传至 `icon` | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
 external-classes | Array | - | 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名。`['t-class','t-class-prefix-icon', 't-class-label', 't-class-input',  't-class-clearable', 't-class-suffix', 't-class-suffix-icon', 't-class-tips']` | N
 format | Function | - | 【开发中】指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => number | string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
-label | String / Slot | - | 左侧文本。值为 `'slot'` 表示使用插槽，不传表示不显示文本。 | N
+label | String / Slot | - | 左侧文本。 | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 maxlength | Number | - | 用户最多可以输入的文本长度，一个中文等于一个计数长度。值为空，则表示不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 placeholder | String | undefined | 占位符 | N
-prefix-icon | String / Object / Slot | - | 组件前置图标。值为字符串表示图标名称，值为 `'slot'` 表示使用插槽，值为 `Object` 类型，表示透传至 `icon`。 | N
+prefix-icon | String / Object / Slot | - | 组件前置图标。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 readonly | Boolean | false | 【开发中】只读状态 | N
 size | String | medium | 【已废弃】输入框尺寸。可选项：small/medium。TS 类型：`'medium' \| 'small'` | N
 status | String | - | 输入框状态。可选项：success/warning/error | N
 suffix | String / Slot | - | 后置图标前的后置内容 | N
-suffix-icon | String  / Object / Slot | - | 后置文本内容。值为字符串表示图标名称，值为 `'slot'` 表示使用插槽，值为 `Object` 类型，表示透传至 `icon`。 | N
+suffix-icon | String  / Object / Slot | - | 后置文本内容。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 tips | String / Slot | - | 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式 | N
 type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password/nickname | N
 value | String / Number | - | 输入框的值。TS 类型：`InputValue` `type InputValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N

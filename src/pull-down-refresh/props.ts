@@ -6,11 +6,6 @@
 
 import { TdPullDownRefreshProps } from './type';
 const props: TdPullDownRefreshProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 加载loading样式 */
   externalClasses: {
     type: Array,

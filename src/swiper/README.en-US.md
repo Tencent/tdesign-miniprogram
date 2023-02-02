@@ -7,7 +7,6 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 autoplay | Boolean | true | \- | N
 current | Number | 0 | \- | N
-custom-style | String | - | `0.25.0` | N
 direction | String | horizontal | options：horizontal/vertical | N
 display-multiple-items | Number | 1 | `0.32.0` | N
 duration | Number | 300 | \- | N
@@ -35,7 +34,6 @@ click | `(index: number)` | `0.34.0`
 name | type | default | description | required
 -- | -- | -- | -- | --
 current | Number | 0 | `0.34.0` | N
-custom-style | String | - | `0.34.0` | N
 direction | String | horizontal | `0.34.0`。options：horizontal/vertical | N
 min-show-num | Number | 2 | \- | N
 pagination-position | String | bottom | `0.34.0`。options：top-left/top/top-right/bottom-left/bottom/bottom-right | N

@@ -27,11 +27,6 @@ export default class Overlay extends SuperComponent {
       type: Boolean,
       value: true,
     },
-
-    style: {
-      type: String,
-      value: '',
-    },
   };
 
   behaviors = [transition()];

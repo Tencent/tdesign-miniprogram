@@ -5,7 +5,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style | String | - | \- | N
 error | String / Slot | 'default' | \- | N
 external-classes | Array | - | `['t-class', 't-class-load']` | N
 height | String / Number | - | \- | N

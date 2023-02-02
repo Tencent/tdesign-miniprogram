@@ -68,10 +68,17 @@
 
     &-close {
       margin-left: @image-viewer-close-margin-left; // 关闭操作按钮左部间距
+
+      &:empty {
+        display: none;
+      }
     }
 
     &-delete {
       margin-right: @image-viewer-delete-margin-right; // 删除操作按钮右部间距
+      &:empty {
+        display: none;
+      }
     }
 
     &-close,

@@ -15,6 +15,23 @@ beforeAll(() => {
 describe('indexes', () => {
   const id = load(path.resolve(__dirname, `./index`));
 
+  it(`: style && customStyle`, async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $index = comp.querySelector('.indexes >>> .t-indexes');
+    const $indexAnchor = comp.querySelector('.indexes >>> .t-indexes-anchor');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($index.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      expect(
+        $indexAnchor.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+      ).toBeTruthy();
+    } else {
+      expect($index.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      expect($indexAnchor.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it('event scroll', async () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));

@@ -5,7 +5,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style | String | - | `0.25.0` | N
 default-expand-all | Boolean | false | \- | N
 disabled | Boolean | - | \- | N
 expand-icon | Boolean / Slot | true | \- | N
@@ -25,7 +24,6 @@ change | `(value: CollapseValue)` | \-
 name | type | default | description | required
 -- | -- | -- | -- | --
 content | String / Slot | - | \- | N
-custom-style | String | - | `0.25.0` | N
 disabled | Boolean | undefined | \- | N
 expand-icon | Boolean / Slot | undefined | \- | N
 external-classes | Array | - | `['t-class', 't-class-header', 't-class-content']` | N

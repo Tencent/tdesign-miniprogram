@@ -1,6 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
+
 <view
-  style="{{ style }}"
+  style="{{_._style([style, customStyle])}}"
   class="{{_.cls(classPrefix + '__group', [])}} class {{prefix}}-class"
   bind:touchstart="onTouchStart"
   catch:touchmove="onTouchMove"

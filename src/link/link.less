@@ -103,11 +103,11 @@
     border-bottom: 1px solid rgb(205, 11, 231);
   }
 
-  &__prefix-icon + &__content:not(:empty) {
+  &__prefix-icon:not(:empty) + &__content:not(:empty) {
     padding-left: 8rpx;
   }
 
-  &__content:not(:empty) + &__suffix-icon {
+  &__content:not(:empty) + &__suffix-icon:not(:empty) {
     padding-left: 8rpx;
   }
 }

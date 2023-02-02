@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 content | String / Array / Slot | - | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 direction | String | horizontal | options：horizontal/vertical | N
 external-classes | Array | - | `['t-class', 't-class-content', 't-class-prefix-icon', 't-class-extra', 't-class-suffix-icon']` | N
 extra | String / Slot | - | \- | N

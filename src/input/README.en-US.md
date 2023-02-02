@@ -10,7 +10,6 @@ align | String | left | options：left/center/right | N
 layout | String | horizontal | options：vertical/horizontal | N
 borderless | Boolean | true | \- | N
 clearable | Boolean | false | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 disabled | Boolean | - | \- | N
 error-message | String | - | `deprecated` | N
 external-classes | Array | - | `['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg']` | N

@@ -27,15 +27,15 @@ export default class Divider extends SuperComponent {
   };
 
   observers = {
-    'lineColor, style'() {
+    lineColor() {
       this.setStyle();
     },
   };
 
   methods = {
     setStyle() {
-      const { lineColor, style } = this.properties;
-      const dividerStyle = `${lineColor ? `border-color: ${lineColor};` : ''}${style ? `${style}` : ''}`;
+      const { lineColor } = this.properties;
+      const dividerStyle = `${lineColor ? `border-color: ${lineColor};` : ''}`;
       this.setData({
         dividerStyle,
       });

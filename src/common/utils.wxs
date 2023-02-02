@@ -4,7 +4,7 @@
  * addUnit */
 // 为 css 添加单位
 function addUnit(value) {
-  var REGEXP = getRegExp('^\d+(.\d+)?$');
+  var REGEXP = getRegExp('^d+(.d+)?$');
   if (value == null) {
     return undefined;
   }
@@ -71,6 +71,26 @@ function getBadgeAriaLabel(options) {
   return Number(options.count) > maxCount ? str1 : str2;
 }
 
+function endsWith(str, endStr) {
+  return str.slice(-endStr.length) === endStr ? true : false;
+}
+
+function _style(arr) {
+  var res = [];
+  var r = arr.filter(function (s) {
+    return s && s.trim();
+  });
+
+  for (i = 0; i < r.length; i++) {
+    if (endsWith(r[i], ';')) {
+      res.push(r[i]);
+    } else {
+      res.push(r[i] + ';');
+    }
+  }
+  return res.join(' ');
+}
+
 module.exports = {
   addUnit: addUnit,
   isString: isString,
@@ -80,4 +100,5 @@ module.exports = {
   includes: includes,
   cls: cls,
   getBadgeAriaLabel: getBadgeAriaLabel,
+  _style: _style,
 };

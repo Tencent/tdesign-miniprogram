@@ -45,7 +45,6 @@ isComponent: true
 -- | -- | -- | -- | --
 cancel-btn | String | 取消 | 取消按钮文字 | N
 confirm-btn | String | - | 确定按钮文字 | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 end | String / Number | - | 选择器的最大可选时间，默认为当前时间+10年 | N
 external-classes | Array | - | 组件类名，分别用于设置组件外层元素、确认按钮、取消按钮、标题等元素类名。`['t-class', 't-class-confirm', 't-class-cancel', 't-class-title']` | N
 footer | Slot | true | 底部内容 | N

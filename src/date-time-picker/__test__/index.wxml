@@ -1,6 +1,9 @@
 <t-date-time-picker
+  id="month"
   title="选择日期"
   visible="{{monthVisible}}"
+  style="{{style}}"
+  customStyle="{{customStyle}}"
   mode="month"
   value="{{month}}"
   format="YYYY-MM"

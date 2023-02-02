@@ -8,6 +8,8 @@ Component({
     // 指定选择区间起始值
     start: '2000-01-01 00:00:00',
     end: '2030-09-09 12:12:12',
+    style: 'color: red',
+    customStyle: 'font-size: 9px',
   },
   methods: {
     showPicker(e) {

@@ -26,6 +26,8 @@ exports[`Transition Transition base demo works fine 1`] = `
     Toggle
   </t-button>
   <t-transition
+    customStyle="font-size: 9px"
+    style="display:none"
     visible="{{false}}"
   >
     <wx-view

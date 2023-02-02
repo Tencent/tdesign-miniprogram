@@ -17,7 +17,13 @@ describe('Sticky Props', () => {
   it(':base', async () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
-    expect(comp.toJSON()).toMatchSnapshot();
+    // expect(comp.toJSON()).toMatchSnapshot();
+    const $sticky = comp.querySelector('#base-sticky >>> .t-sticky');
+    if (VIRTUAL_HOST) {
+      expect($sticky.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($sticky.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
   });
 
   it(':contentStyle', async () => {

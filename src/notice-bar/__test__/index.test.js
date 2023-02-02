@@ -33,6 +33,30 @@ describe('notice-bar', () => {
   jest.resetModules();
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-notice-bar class="notice-bar" visible style="{{style}}" customStyle="{{customStyle}}"></t-notice-bar>`,
+        usingComponents: {
+          't-notice-bar': noticeBar,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $noticeBar = comp.querySelector('.notice-bar >>> .t-notice-bar');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect(
+          $noticeBar.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+        ).toBeTruthy();
+      } else {
+        expect($noticeBar.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': visible', () => {
       const id = simulate.load({
         template: `<t-notice-bar
@@ -144,12 +168,15 @@ describe('notice-bar', () => {
 
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
-      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon')).toBeUndefined();
+
+      const $noticeBar = comp.querySelector('.base');
+
+      expect($noticeBar.data._prefixIcon).toBe(null);
 
       comp.setData({
         prefixIcon: 'add',
       });
-      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon')).not.toBeUndefined();
+      expect($noticeBar.data._prefixIcon).toStrictEqual({ name: 'add' });
     });
 
     const delay = 7100;

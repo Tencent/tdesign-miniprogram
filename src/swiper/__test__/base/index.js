@@ -20,6 +20,8 @@ Component({
     autoplay: false,
     swiperList,
     swiperList2,
+    style: 'color: red',
+    customStyle: 'font-size: 9px',
   },
 
   methods: {

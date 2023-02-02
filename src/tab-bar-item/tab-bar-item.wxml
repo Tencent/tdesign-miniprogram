@@ -1,7 +1,8 @@
+<import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ style }}"
+  style="{{_._style([style, customStyle])}}"
   class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}}"
 >
   <view
@@ -31,9 +32,9 @@
         offset="{{badgeProps.offset || [0,0]}}"
         t-class-count="{{prefix + '-badge-class'}}"
       >
-        <t-icon name="{{icon}}" size="{{iconOnly ? 24 : 20}}" />
+        <template is="icon" data="{{ size: iconOnly ? 24 : 20, ..._icon }}" />
       </t-badge>
-      <t-icon wx:else name="{{icon}}" size="{{iconOnly ? 24 : 20}}" aria-hidden="{{iconOnly ? false : true}}" />
+      <template wx:else is="icon" data="{{ ariaHidden: !iconOnly, size: iconOnly ? 24 : 20, ..._icon }}" />
       <slot name="icon" />
     </view>
     <view class="{{_.cls(classPrefix + '__text', [['small', !!icon]])}}">

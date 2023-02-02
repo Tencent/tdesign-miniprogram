@@ -6,11 +6,6 @@
 
 import { TdDropdownItemProps } from './type';
 const props: TdDropdownItemProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 是否禁用 */
   disabled: {
     type: Boolean,

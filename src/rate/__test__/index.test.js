@@ -5,6 +5,28 @@ describe('Rate', () => {
   const tagName = 'rate';
   const Rate = load(path.resolve(__dirname, `../rate`), tagName);
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-rate class="rate" style="{{style}}" customStyle="{{customStyle}}"></t-rate>`,
+      usingComponents: {
+        't-rate': Rate,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $rate = comp.querySelector('.rate >>> .t-rate');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($rate.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($rate.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':disabled', async () => {
     const mockFn = jest.fn();
     const id = simulate.load({
@@ -50,17 +72,19 @@ describe('Rate', () => {
     const comp = simulate.render(id);
     comp.attach(document.body);
 
-    const iconList = comp.querySelectorAll('.box >>> .t-rate__icon');
-    iconList.forEach((it) => {
-      expect(it.dom.classList).toContain(`${tagName}--t-rate__icon--unselected`);
-    });
+    if (!VIRTUAL_HOST) {
+      const iconList = comp.querySelectorAll('.box >>> .t-rate__icon');
+      iconList.forEach((it) => {
+        expect(it.dom.classList).toContain(`${tagName}--t-rate__icon--unselected`);
+      });
 
-    comp.setData({ value: 0.5 });
-    expect(iconList[0].dom.classList).toContain(`${tagName}--t-rate__icon--selected-half`);
+      comp.setData({ value: 0.5 });
+      expect(iconList[0].dom.classList).toContain(`${tagName}--t-rate__icon--selected-half`);
 
-    comp.setData({ value: 1.5 });
-    expect(iconList[0].dom.classList).toContain(`${tagName}--t-rate__icon--selected`);
-    expect(iconList[1].dom.classList).toContain(`${tagName}--t-rate__icon--selected-half`);
+      comp.setData({ value: 1.5 });
+      expect(iconList[0].dom.classList).toContain(`${tagName}--t-rate__icon--selected`);
+      expect(iconList[1].dom.classList).toContain(`${tagName}--t-rate__icon--selected-half`);
+    }
   });
 
   it(':show-text default texts', async () => {

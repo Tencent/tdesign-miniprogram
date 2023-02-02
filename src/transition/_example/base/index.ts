@@ -4,6 +4,8 @@ Component({
   },
   data: {
     visible: false,
+    style: 'display:none',
+    customStyle: 'font-size: 9px',
   },
   methods: {
     onTriggerClick() {

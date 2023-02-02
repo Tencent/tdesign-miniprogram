@@ -21,11 +21,6 @@ const props: TdActionSheetProps = {
     type: Number,
     value: 8,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 动作面板描述文字 */
   description: {
     type: String,

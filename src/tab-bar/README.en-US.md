@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 bordered | Boolean | true | \- | N
-custom-style | String | - | `0.25.0` | N
 external-classes | Array | - | `['t-class']` | N
 fixed | Boolean | true | \- | N
 safe-area-inset-bottom | Boolean | true | \- | N
@@ -27,7 +26,6 @@ change | `(value: string \| number)` | \-
 name | type | default | description | required
 -- | -- | -- | -- | --
 badge-props | Object | - | Typescript：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
-custom-style | String | - | `0.25.0` | N
 icon | String / Slot | - | \- | N
 sub-tab-bar | Array | - | Typescript：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
 value | String / Number | - | \- | N
