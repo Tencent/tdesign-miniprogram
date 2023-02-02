@@ -6,7 +6,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | \- | N
 disable-input | Boolean | false | \- | N
 disabled | Boolean | false | \- | N
 external-classes | Array | - | `['t-class', 't-class-input', 't-class-add', 't-class-minus']` | N

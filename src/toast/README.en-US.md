@@ -5,7 +5,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | \- | N
 direction | String | row | options：row/column | N
 duration | Number | 2000 | \- | N
 external-classes | Array | - | `['t-class']` | N

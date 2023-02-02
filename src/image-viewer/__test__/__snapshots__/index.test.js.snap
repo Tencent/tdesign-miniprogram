@@ -10,7 +10,7 @@ exports[`image-viewer :base 1`] = `
   <wx-view
     ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-    style=" "
+    style=""
   >
     <t-loading
       tClass="t-class-load"
@@ -18,7 +18,7 @@ exports[`image-viewer :base 1`] = `
     >
       <wx-view
         class="class t-class"
-        style=";width: 44rpx; height: 44rpx"
+        style="width: 44rpx; height: 44rpx;"
       >
         <wx-view
           class="t-loading t-loading--horizontal"
@@ -80,7 +80,7 @@ exports[`image-viewer :base 2`] = `
   <wx-view
     ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-    style=" "
+    style=""
   >
     <t-loading
       tClass="t-class-load"
@@ -88,7 +88,7 @@ exports[`image-viewer :base 2`] = `
     >
       <wx-view
         class="class t-class"
-        style=";width: 44rpx; height: 44rpx"
+        style="width: 44rpx; height: 44rpx;"
       >
         <wx-view
           class="t-loading t-loading--horizontal"
@@ -150,7 +150,7 @@ exports[`image-viewer :base 3`] = `
   <wx-view
     ariaHidden="{{false}}"
     class="t-class t-image t-image__mask t-image--loading t-image--shape-square"
-    style=" "
+    style=""
   >
     <t-loading
       tClass="t-class-load"
@@ -158,7 +158,7 @@ exports[`image-viewer :base 3`] = `
     >
       <wx-view
         class="class t-class"
-        style=";width: 44rpx; height: 44rpx"
+        style="width: 44rpx; height: 44rpx;"
       >
         <wx-view
           class="t-loading t-loading--horizontal"

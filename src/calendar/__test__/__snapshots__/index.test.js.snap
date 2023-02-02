@@ -41,7 +41,7 @@ exports[`calendar :base 1`] = `
                 ariaLabel="关闭"
                 ariaRole="button"
                 class="t-icon class t-class"
-                style="font-size: 24px"
+                style="font-size: 24px;"
                 bind:tap="onTap"
               >
                 <wx-label
@@ -789,6 +789,7 @@ exports[`calendar :base 1`] = `
         </wx-view>
       </wx-view>
       <t-overlay
+        class="test"
         id="popup-overlay"
         bind:tap="handleOverlayClick"
       >
@@ -796,7 +797,7 @@ exports[`calendar :base 1`] = `
           ariaLabel="关闭"
           ariaRole="button"
           class="t-overlay t-fade-enter t-fade-enter-active"
-          style="z-index: 11000;  "
+          style="z-index:11000;"
           bind:tap="handleClick"
           catch:touchmove="noop"
           bind:transitionend="onTransitionEnd"

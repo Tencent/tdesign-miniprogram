@@ -34,7 +34,6 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 action | String / Slot | '' | 自定义右侧操作按钮文字 | N
 center | Boolean | false | 是否居中 | N
 disabled | Boolean | false | 是否禁用 | N

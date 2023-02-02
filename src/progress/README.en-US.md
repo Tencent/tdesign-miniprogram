@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 color | String / Object / Array | '' | Typescript：`string \| Array<string> \| Record<string, string>` | N
-custom-style | String | - | \- | N
 external-classes `v0.25.0` | Array | - | `['t-class', 't-class-bar', 't-class-label']` | N
 label | String / Boolean / Slot | true | \- | N
 percentage | Number | 0 | \- | N

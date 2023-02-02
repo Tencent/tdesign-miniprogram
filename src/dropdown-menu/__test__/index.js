@@ -24,6 +24,8 @@ Component({
       options: singleSelectOptions,
     },
     closeOnClickOverlay: true,
+    style: 'color: red',
+    customStyle: 'font-size: 9px',
   },
   methods: {
     handleSingleSelect(e) {

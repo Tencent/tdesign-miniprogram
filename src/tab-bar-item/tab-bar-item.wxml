@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ style }}"
+  style="{{_._style([style, customStyle])}}"
   class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}}"
 >
   <view

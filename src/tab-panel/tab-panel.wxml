@@ -1,7 +1,8 @@
-<wxs src="../common/utils.wxs" module="utils" />
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
   class="{{classPrefix}} {{active ? prefix + '-is-active': ''}}"
-  style="{{ style }}; {{ hide ? 'display: none' : ''}}"
+  style="{{_._style([style, customStyle, (hide ? 'display: none' : '')])}}"
   id="{{id}}"
   aria-role="tabpanel"
 >

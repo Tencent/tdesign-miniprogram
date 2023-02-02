@@ -28,7 +28,7 @@ const ComponentNativeProps = [
  * @param options {}
  */
 export const toComponent = function toComponent(options: Record<string, any>) {
-  const { relations, behaviors = [] } = options;
+  const { relations, behaviors = [], properties } = options;
 
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
@@ -39,7 +39,8 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       }
       options.properties[k] = opt;
     });
-    // aria
+
+    // 内置 aria 相关属性
     const ariaProps = [
       { key: 'ariaHidden', type: Boolean },
       { key: 'ariaRole', type: String },
@@ -53,6 +54,10 @@ export const toComponent = function toComponent(options: Record<string, any>) {
         type,
       };
     });
+
+    // 处理 style 和 customStyle 属性
+    options.properties.style = { type: String, value: '' };
+    options.properties.customStyle = { type: String, value: '' };
   }
 
   if (!options.methods) options.methods = {};

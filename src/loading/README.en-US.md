@@ -6,7 +6,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | \- | N
 delay | Number | 0 | \- | N
 duration | Number | 800 | \- | N
 external-classes | Array | - | `['t-class', 't-class-text', 't-class-indicator']` | N

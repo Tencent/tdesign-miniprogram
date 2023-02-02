@@ -6,11 +6,6 @@
 
 import { TdLoadingProps } from './type';
 const props: TdLoadingProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒 */
   delay: {
     type: Number,

@@ -1,6 +1,8 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
   class="{{ prefix ? prefix : classPrefix}} class {{componentPrefix}}-class"
-  style="{{ iconStyle }}"
+  style="{{_._style([iconStyle, style, customStyle])}}"
   bind:tap="onTap"
   aria-hidden="{{ariaHidden}}"
   aria-label="{{ariaLabel}}"

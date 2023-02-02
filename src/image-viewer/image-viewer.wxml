@@ -1,7 +1,12 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view wx:if="{{visible}}" id="{{classPrefix}}" class="{{classPrefix}} {{prefix}}-class">
+<view
+  wx:if="{{visible}}"
+  id="{{classPrefix}}"
+  class="{{classPrefix}} {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+>
   <view
     class="{{classPrefix}}__mask"
     data-source="overlay"

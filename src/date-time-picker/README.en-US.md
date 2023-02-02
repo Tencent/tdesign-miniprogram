@@ -7,7 +7,6 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 cancel-btn | String | 取消 | \- | N
 confirm-btn | String | - | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 end | String / Number | - | \- | N
 external-classes | Array | - | `['t-class', 't-class-confirm', 't-class-cancel', 't-class-title']` | N
 footer | Slot | true | \- | N

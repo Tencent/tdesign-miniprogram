@@ -1,5 +1,12 @@
-<t-checkbox-group max="{{max}}" class="group" value="{{value}}" bind:change="handleChange">
-  <t-checkbox class="a" value="1"></t-checkbox>
+<t-checkbox-group
+  max="{{max}}"
+  style="{{style}}"
+  customStyle="{{customStyle}}"
+  class="group"
+  value="{{value}}"
+  bind:change="handleChange"
+>
+  <t-checkbox class="a" style="{{style}}" customStyle="{{customStyle}}" value="1"></t-checkbox>
   <t-checkbox class="b" value="2"></t-checkbox>
   <t-checkbox class="c" value="3"></t-checkbox>
   <t-checkbox checkAll class="d" value="4"></t-checkbox>

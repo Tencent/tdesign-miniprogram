@@ -36,11 +36,6 @@ const props: TdTextareaProps = {
     type: Number,
     value: 0,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 是否禁用文本框 */
   disabled: {
     type: Boolean,

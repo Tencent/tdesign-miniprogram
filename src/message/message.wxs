@@ -8,14 +8,14 @@ var changeNumToStr = function (arr) {
   });
 };
 
-var getMessageStyles = function (zIndex, offset, wrapTop, style) {
+var getMessageStyles = function (zIndex, offset, wrapTop) {
   var arr = changeNumToStr(offset);
   var styleOffset = '';
   styleOffset += 'top:' + changeNumToStr([wrapTop * 2]) + ';';
   styleOffset += 'right:' + arr[1] + ';';
   styleOffset += 'left:' + arr[1] + ';';
   var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
-  return zIndexStyle + styleOffset + style;
+  return zIndexStyle + styleOffset;
 };
 
 module.exports = {

@@ -6,11 +6,6 @@
 
 import { TdToastProps } from './type';
 const props: TdToastProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 图标排列方式 */
   direction: {
     type: String,

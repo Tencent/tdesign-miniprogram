@@ -4,14 +4,21 @@ import path from 'path';
 describe('swiper', () => {
   const swiperComplex = load(path.resolve(__dirname, `./base/index`), 't-swiper-complex');
 
-  it('snapshot', () => {
-    const comp = simulate.render(swiperComplex);
-    comp.attach(document.createElement('parent-wrapper'));
-
-    expect(comp.toJSON()).toMatchSnapshot();
-  });
-
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const comp = simulate.render(swiperComplex);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      // expect(comp.toJSON()).toMatchSnapshot();
+
+      const $swiper = comp.querySelector('#swiper1 >>> .t-swiper');
+      if (VIRTUAL_HOST) {
+        expect($swiper.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($swiper.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(':navigation', async () => {
       const comp = simulate.render(swiperComplex);
       comp.attach(document.createElement('parent-wrapper'));

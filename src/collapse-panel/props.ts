@@ -10,11 +10,6 @@ const props: TdCollapsePanelProps = {
   content: {
     type: String,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 禁止当前面板展开，优先级大于 Collapse 的同名属性 */
   disabled: {
     type: Boolean,

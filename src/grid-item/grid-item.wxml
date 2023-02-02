@@ -8,7 +8,7 @@
 
 <view
   class="{{_.cls(classPrefix, [['auto-size', column == 0]])}} {{prefix}}-class"
-  style="{{ gridItemStyle }}"
+  style="{{_._style([gridItemStyle, style, customStyle])}}"
   hover-class="{{hover ? classPrefix + '--hover':''}}"
   hover-stay-time="{{200}}"
   bindtap="onClick"

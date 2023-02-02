@@ -36,11 +36,6 @@ const props: TdSwitchProps = {
     type: String,
     value: 'medium',
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 开关值 */
   value: {
     type: null,

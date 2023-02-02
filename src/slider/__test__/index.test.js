@@ -33,6 +33,28 @@ describe('slider', () => {
 
   mockFn.mockImplementation(() => createSelectorQuery);
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-slider class="slider" style="{{style}}" customStyle="{{customStyle}}"></t-slider>`,
+      usingComponents: {
+        't-slider': slider,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $slider = comp.querySelector('.slider >>> .t-slider');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($slider.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($slider.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':base', async () => {
     const id = simulate.load({
       template: `<t-slider id="base" value="{{value}}" bind:change="handleChange"></t-slider>`,

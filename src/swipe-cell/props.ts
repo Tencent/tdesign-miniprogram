@@ -6,11 +6,6 @@
 
 import { TdSwipeCellProps } from './type';
 const props: TdSwipeCellProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 是否禁用滑动 */
   disabled: {
     type: Boolean,

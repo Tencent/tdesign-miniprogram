@@ -10,11 +10,6 @@ const props: TdTabsProps = {
   animation: {
     type: Object,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名 */
   externalClasses: {
     type: Array,

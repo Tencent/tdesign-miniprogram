@@ -42,7 +42,6 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 close-on-overlay-click | Boolean | true | 点击蒙层时是否触发抽屉关闭事件 | N
-custom-style | String | - | `v0.25.0`。自定义组件样式 | N
 destroy-on-close | Boolean | false | 抽屉关闭时是否销毁节点 | N
 footer | Slot | - | `v0.29.0`。抽屉的底部 | N
 items | Array | - | 抽屉里的列表项。TS 类型：`DrawerItem[] ` `interface DrawerItem { title: string; icon: string; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/drawer/type.ts) | N

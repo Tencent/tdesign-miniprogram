@@ -6,11 +6,6 @@
 
 import { TdCollapseProps } from './type';
 const props: TdCollapseProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 默认是否展开全部 */
   defaultExpandAll: {
     type: Boolean,

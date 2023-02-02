@@ -8,7 +8,6 @@ name | type | default | description | required
 color | String | - | \- | N
 content | String | - | \- | N
 count | String / Number / Slot | 0 | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 dot | Boolean | false | \- | N
 external-classes | Array | - | `['t-class', 't-class-content', 't-class-count']` | N
 max-count | Number | 99 | \- | N

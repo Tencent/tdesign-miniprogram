@@ -1,4 +1,9 @@
-<view style="{{ style }}" class="{{classPrefix}} {{bordered? classPrefix +  '--border' : ''}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{bordered? classPrefix +  '--border' : ''}} {{prefix}}-class"
+>
   <view class="{{classPrefix}}__label {{prefix}}-class-label">
     <block wx:if="{{label}}">{{ label }}</block>
     <slot name="label" />

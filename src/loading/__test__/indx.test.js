@@ -5,6 +5,30 @@ describe('loading', () => {
   const loading = load(path.resolve(__dirname, `../loading`));
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-loading class="loading" style="{{style}}" customStyle="{{customStyle}}"></t-loading>`,
+        usingComponents: {
+          't-loading': loading,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $loading = comp.querySelector('.loading >>> .class');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect(
+          $loading.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+        ).toBeTruthy();
+      } else {
+        expect($loading.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(`: loading`, async () => {
       const id = simulate.load({
         template: `<t-loading class="base" loading="{{loading}}" delay="{{delay}}"></t-loading>`,

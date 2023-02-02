@@ -26,6 +26,8 @@ Component({
         status: 'error',
       },
     ],
+    style: 'color: red',
+    customStyle: 'font-size: 9px',
   },
   methods: {
     onChange1(e) {

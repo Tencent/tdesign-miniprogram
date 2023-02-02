@@ -5,7 +5,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style | String | - | \- | N
 height | String / Number | 336 | \- | N
 keys | Object | - | Typescript：`KeysType` | N
 multiple | Boolean | false | \- | N

@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <button
-  style="{{ style }}"
+  style="{{_._style([style, customStyle])}}"
   data-custom="{{ customDataset }}"
   class="class {{className}}"
   form-type="{{type}}"
