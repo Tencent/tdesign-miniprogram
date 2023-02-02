@@ -137,14 +137,14 @@ describe('message', () => {
         context: $message.instance,
         offset: [20, 32],
         marquee: { speed: 100, loop: 3, delay: 0 },
-        icon: '',
+        icon: false,
         content: 'icon 使用空值',
-        duration: 10,
+        duration: 0,
       });
       await simulate.sleep(540);
       // icon 为空
       const $prefixIcon = comp.querySelector('#t-message >>> .t-message__icon--left');
-      expect($prefixIcon).toBeUndefined();
+      expect($prefixIcon.dom.innerHTML).toBe('');
       Message.hide();
       await simulate.sleep(500);
       expect($message.instance.data.visible).toBe(false);

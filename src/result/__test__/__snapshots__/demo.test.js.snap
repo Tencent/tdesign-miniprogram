@@ -76,7 +76,6 @@ exports[`Result Result theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-result
-        description=""
         theme="success"
         title="成功状态"
       />
@@ -87,7 +86,6 @@ exports[`Result Result theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-result
-        description=""
         theme="error"
         title="失败状态"
       />
@@ -98,7 +96,6 @@ exports[`Result Result theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-result
-        description=""
         theme="warning"
         title="警示状态"
       />
@@ -109,7 +106,6 @@ exports[`Result Result theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-result
-        description=""
         theme="default"
         title="默认状态"
       />

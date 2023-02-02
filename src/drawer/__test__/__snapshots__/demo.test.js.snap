@@ -12,7 +12,7 @@ exports[`Drawer Drawer base demo works fine 1`] = `
     基础抽屉
   </t-button>
   <t-drawer
-    items=""
+    items="{{Array []}}"
     placement="left"
     visible=""
     bind:item-click="itemClick"
@@ -33,49 +33,7 @@ exports[`Drawer Drawer footer demo works fine 1`] = `
     带底部插槽
   </t-button>
   <t-drawer
-    items="{{
-      Array [
-        Object {
-          "title": "菜单一",
-        },
-        Object {
-          "title": "菜单二",
-        },
-        Object {
-          "title": "菜单三",
-        },
-        Object {
-          "title": "菜单四",
-        },
-        Object {
-          "title": "菜单五",
-        },
-        Object {
-          "title": "菜单六",
-        },
-        Object {
-          "title": "菜单七",
-        },
-        Object {
-          "title": "菜单八",
-        },
-        Object {
-          "title": "菜单四",
-        },
-        Object {
-          "title": "菜单五",
-        },
-        Object {
-          "title": "菜单六",
-        },
-        Object {
-          "title": "菜单七",
-        },
-        Object {
-          "title": "菜单八",
-        },
-      ]
-    }}"
+    items="{{Array []}}"
     placement="left"
     title="标题"
     visible="{{false}}"
@@ -110,7 +68,7 @@ exports[`Drawer Drawer icon-drawer demo works fine 1`] = `
     带图标抽屉
   </t-button>
   <t-drawer
-    items=""
+    items="{{Array []}}"
     placement="left"
     visible=""
     bind:item-click="itemClick"
@@ -131,7 +89,7 @@ exports[`Drawer Drawer title demo works fine 1`] = `
     带标题抽屉
   </t-button>
   <t-drawer
-    items=""
+    items="{{Array []}}"
     placement="left"
     title="标题"
     visible=""
