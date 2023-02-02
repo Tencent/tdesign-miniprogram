@@ -31,7 +31,6 @@ export default class Message extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    visible: false,
     loop: -1,
     animation: [],
     showAnimation: [],

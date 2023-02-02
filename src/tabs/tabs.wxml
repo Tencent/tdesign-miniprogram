@@ -8,7 +8,7 @@
     t-class="{{_.cls(classPrefix + '__sticky', [placement])}}"
     disabled="{{ !sticky }}"
     z-index="{{ stickyProps.zIndex || '1' }}"
-    offset-top="{{ stickyProps.offsetTop }}"
+    offset-top="{{ stickyProps.offsetTop || 0 }}"
     container="{{ stickyProps.container }}"
     bind:scroll="onTouchScroll"
   >

@@ -10,6 +10,7 @@ Page({
       {
         label: '选项',
         title: '标题',
+        badgeProps: {},
         items,
       },
       {
@@ -23,6 +24,7 @@ Page({
       {
         label: '选项',
         title: '标题',
+        badgeProps: {},
         items: items.slice(0, 6),
       },
       {
@@ -36,6 +38,7 @@ Page({
       {
         label: '选项',
         title: '标题',
+        badgeProps: {},
         disabled: true,
         items: [],
       },
