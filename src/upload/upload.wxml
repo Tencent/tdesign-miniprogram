@@ -15,8 +15,8 @@
         <view
           class="{{classPrefix}}__wrapper"
           style="{{gridItemStyle}}"
-          aria-role="button"
-          aria-label="{{ file.status && file.status != 'done' ? file.status == 'loading' ? file.percent ? '上传中' + file.percent + '%' : '上传中' : file.status == 'reload' ? '重新上传' : '上传失败' : file.type === 'video' ? '视频' : '图像' }}"
+          aria-role="{{file.status && file.status != 'done' ? 'text' : 'button'}}"
+          aria-label="{{file.status && file.status != 'done' ? file.status == 'loading' ? file.percent ? '上传中' + file.percent + '%' : '上传中' : file.status == 'reload' ? '重新上传' : '上传失败' : file.type === 'video' ? '视频' : '图像' }}"
         >
           <t-image
             wx:if="{{file.type !== 'video'}}"
@@ -53,9 +53,9 @@
               <view class="{{classPrefix}}__progress-text">{{file.percent ? file.percent + '%' : '上传中...'}}</view>
             </block>
             <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" aria-hidden />
-            <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text"
-              >{{file.status == 'reload' ? '重新上传' : '上传失败'}}</view
-            >
+            <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text">
+              {{file.status == 'reload' ? '重新上传' : '上传失败'}}
+            </view>
           </view>
         </view>
 
@@ -71,6 +71,7 @@
         </view>
       </view>
     </t-grid-item>
+
     <!-- 添加 -->
     <t-grid-item
       wx:if="{{customLimit > 0}}"
