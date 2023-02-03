@@ -1,8 +1,2 @@
-<view class="demo-avatar">
-  <view class="avatar-example">
-    <t-avatar t-class-content="external-class-content" aria-label="字符头像">A</t-avatar>
-  </view>
-  <view class="avatar-example">
-    <t-avatar shape="round" t-class-content="external-class-content">A</t-avatar>
-  </view>
-</view>
+<t-avatar class="avatar-example" t-class-content="external-class-content" aria-label="字符头像">A</t-avatar>
+<t-avatar class="avatar-example" t-class-content="external-class-content" shape="round">A</t-avatar>

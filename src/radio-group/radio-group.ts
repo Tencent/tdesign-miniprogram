@@ -7,7 +7,7 @@ const name = `${prefix}-radio-group`;
 
 @wxComponent()
 export default class RadioGroup extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = ['class', `${prefix}-class`];
 
   data = {
     prefix,
@@ -52,7 +52,8 @@ export default class RadioGroup extends SuperComponent {
 
   methods = {
     getChilds() {
-      let items = this.getRelationNodes('../radio/radio');
+      let items = this.$children;
+
       if (!items?.length) {
         items = this.selectAllComponents(`.${prefix}-radio-option`);
       }

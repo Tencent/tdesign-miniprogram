@@ -16,7 +16,7 @@ export interface TdFabProps {
    * 自定义组件样式
    * @default right: 16px; bottom: 32px;
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -25,14 +25,6 @@ export interface TdFabProps {
    * @default ''
    */
   icon?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `customStyle`）
-   * @default right: 16px; bottom: 32px;
-   */
-  style?: {
     type: StringConstructor;
     value?: string;
   };

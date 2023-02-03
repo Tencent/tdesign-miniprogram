@@ -10,7 +10,7 @@ export default class Grid extends SuperComponent {
   externalClasses = ['t-class'];
 
   relations: RelationsOptions = {
-    './grid-item': {
+    '../grid-item/grid-item': {
       type: 'descendant',
     },
   };
@@ -37,16 +37,11 @@ export default class Grid extends SuperComponent {
     attached() {
       this.updateContentStyle();
     },
-    created() {
-      this.children = [];
-    },
   };
 
   methods = {
     doForChild(action: (item: WechatMiniprogram.Component.TrivialInstance) => void) {
-      const children = this.getRelationNodes('./grid-item') ?? [];
-
-      children.forEach(action);
+      this.$children.forEach(action);
     },
     updateContentStyle() {
       const contentStyles = [];

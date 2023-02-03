@@ -1,23 +1,25 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
   wx:if="{{realVisible && preventScrollThrough}}"
   class="{{prefix}}-overlay {{transitionClass}}"
-  style="z-index: {{_zIndex}}; {{computedStyle}} {{customStyle}}"
+  style="{{_._style(['z-index:' + _zIndex, computedStyle, style, customStyle])}}"
   bind:tap="handleClick"
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
-  aria-role="button"
-  aria-label="关闭"
+  aria-role="{{ ariaRole || 'button' }}"
+  aria-label="{{ ariaLabel || '关闭' }}"
 >
   <slot />
 </view>
 <view
   wx:elif="{{realVisible}}"
   class="{{prefix}}-overlay {{transitionClass}}"
-  style="z-index: {{_zIndex}}; {{computedStyle}} {{customStyle}}"
+  style="{{_._style(['z-index:' + _zIndex, computedStyle, style, customStyle])}}"
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"
-  aria-role="button"
-  aria-label="关闭"
+  aria-role="{{ ariaRole || 'button' }}"
+  aria-label="{{ ariaLabel || '关闭' }}"
 >
   <slot />
 </view>

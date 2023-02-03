@@ -1,3 +1,5 @@
+@import '../src/common/style/_variables.less';
+
 page {
   background: #f6f6f6; // 和设计师确认过，统一改成这个颜色
 }
@@ -8,54 +10,17 @@ page {
   // padding-bottom: constant(safe-area-inset-bottom, 28px);
 
   &-title {
-    font-size: 40rpx;
+    font-size: 48rpx;
     font-weight: 700;
-    line-height: 56rpx;
+    line-height: 64rpx;
     margin: 48rpx 32rpx 0;
-    color: rgba(0, 0, 0, 0.9);
+    color: @font-gray-1;
   }
 
   &-desc {
     font-size: 28rpx;
-    color: rgba(0, 0, 0, 0.6);
-    margin: 8rpx 32rpx;
-    line-height: 36rpx;
-  }
-
-  &-section {
-    margin-top: 56rpx;
-
-    &__title {
-      font-size: 32rpx;
-      margin: 32rpx 32rpx 0;
-      color: rgba(0, 0, 0, 0.9);
-      line-height: 48rpx;
-    }
-
-    &__sub-title {
-      font-size: 28rpx;
-      margin: 32rpx 32rpx 24rpx 32rpx;
-      color: rgba(0, 0, 0, 0.9);
-      line-height: 44rpx;
-    }
-
-    &__desc {
-      font-size: 24rpx;
-      color: rgba(0, 0, 0, 0.4);
-      margin: 8rpx 32rpx;
-      line-height: 40rpx;
-    }
-
-    &__container {
-      padding: 0 32rpx;
-    }
-
-    .button-group {
-      margin: 56rrpx 0rpx;
-    }
-
-    .button-group-item {
-      margin-bottom: 48rrpx;
-    }
+    color: @font-gray-2;
+    margin: 16rpx 32rpx 0;
+    line-height: 44rpx;
   }
 }

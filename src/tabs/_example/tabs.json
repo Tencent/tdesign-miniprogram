@@ -5,9 +5,9 @@
     "scroll": "./scroll",
     "size": "./size",
     "status": "./status",
+    "with-icon": "./with-icon",
     "with-badge": "./with-badge",
     "theme": "./theme",
-    "with-content": "./with-content",
-    "vertical": "./vertical"
+    "with-content": "./with-content"
   }
 }

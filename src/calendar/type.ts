@@ -8,6 +8,14 @@ import { ButtonProps } from '../button/index';
 
 export interface TdCalendarProps {
   /**
+   * 自动关闭；在点击关闭按钮、确认按钮、遮罩层时自动关闭，不需要手动设置 visible
+   * @default true
+   */
+  autoClose?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。
    * @default ''
    */
@@ -19,7 +27,7 @@ export interface TdCalendarProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -54,7 +62,6 @@ export interface TdCalendarProps {
   };
   /**
    * 标题，不传默认为“请选择日期”
-   * @default ''
    */
   title?: {
     type: StringConstructor;
@@ -67,6 +74,14 @@ export interface TdCalendarProps {
   type?: {
     type: StringConstructor;
     value?: 'single' | 'multiple' | 'range';
+  };
+  /**
+   * 是否使用弹出层包裹日历
+   * @default true
+   */
+  usePopup?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组
@@ -83,7 +98,7 @@ export interface TdCalendarProps {
     value?: number | number[];
   };
   /**
-   * 是否显示日历
+   * 是否显示日历；`usePopup` 为 true 时有效
    * @default false
    */
   visible?: {

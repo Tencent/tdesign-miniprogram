@@ -6,15 +6,14 @@ exports[`DateTimePicker DateTimePicker date-all demo works fine 1`] = `
     arrow="{{true}}"
     data-mode="datetime"
     hover="{{true}}"
-    note="年月日时分"
+    note=""
     tClass="pannel-item"
-    tClassNote="empty"
-    title="选择日期时间(年月日时分)"
+    title="选择日期时间"
     bind:tap="showPicker"
   />
   <t-date-time-picker
-    format="YYYY-MM-DD HH:mm"
-    mode="minute"
+    format="YYYY-MM-DD HH:mm:ss"
+    mode="second"
     title="选择日期和时间"
     value="{{1640217600000}}"
     visible="{{false}}"
@@ -25,17 +24,50 @@ exports[`DateTimePicker DateTimePicker date-all demo works fine 1`] = `
 </date-all>
 `;
 
-exports[`DateTimePicker DateTimePicker time-min demo works fine 1`] = `
-<time-min>
+exports[`DateTimePicker DateTimePicker time demo works fine 1`] = `
+<time>
+  <wx-view
+    class="demo-desc"
+  >
+    时分秒选择器
+  </wx-view>
   <t-cell
     arrow="{{true}}"
-    data-mode="time"
+    data-mode="second"
     hover="{{true}}"
-    note="时 分"
+    note=""
     tClass="pannel-item"
-    tClassNote="empty"
-    title="选择时间(时分)"
+    title="选择时间"
     bind:tap="showPicker"
+  />
+  <wx-view
+    class="demo-desc"
+  >
+    时分选择器
+  </wx-view>
+  <t-cell
+    arrow="{{true}}"
+    data-mode="minute"
+    hover="{{true}}"
+    note=""
+    tClass="pannel-item"
+    title="选择时间"
+    bind:tap="showPicker"
+  />
+  <t-date-time-picker
+    format="HH:mm:ss"
+    mode="{{
+      Array [
+        "null",
+        "second",
+      ]
+    }}"
+    title="选择时间"
+    value="10:00:00"
+    visible=""
+    bind:cancel="hidePicker"
+    bind:change="onConfirm"
+    bind:pick="onColumnChange"
   />
   <t-date-time-picker
     format="HH:mm"
@@ -46,13 +78,13 @@ exports[`DateTimePicker DateTimePicker time-min demo works fine 1`] = `
       ]
     }}"
     title="选择时间"
-    value="10:00"
-    visible="{{false}}"
+    value="23:59"
+    visible=""
     bind:cancel="hidePicker"
     bind:change="onConfirm"
     bind:pick="onColumnChange"
   />
-</time-min>
+</time>
 `;
 
 exports[`DateTimePicker DateTimePicker year-month demo works fine 1`] = `
@@ -61,10 +93,9 @@ exports[`DateTimePicker DateTimePicker year-month demo works fine 1`] = `
     arrow="{{true}}"
     data-mode="month"
     hover="{{true}}"
-    note="年 月"
+    note=""
     tClass="pannel-item"
-    tClassNote="empty"
-    title="选择日期(年月)"
+    title="选择日期"
     bind:tap="showPicker"
   />
   <t-date-time-picker
@@ -89,10 +120,9 @@ exports[`DateTimePicker DateTimePicker year-month-date demo works fine 1`] = `
     class="test"
     data-mode="date"
     hover="{{true}}"
-    note="年 月 日"
+    note=""
     tClass="pannel-item"
-    tClassNote="empty"
-    title="选择日期(年月日)"
+    title="选择日期"
     bind:tap="showPicker"
   />
   <t-date-time-picker

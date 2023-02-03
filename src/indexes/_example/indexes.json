@@ -1,5 +1,7 @@
 {
-  "navigationBarTitleText": "Indexes 索引",
+  "navigationBarTitleText": "Indexes",
   "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {}
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button"
+  }
 }

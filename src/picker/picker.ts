@@ -7,9 +7,6 @@ const name = `${prefix}-picker`;
 
 @wxComponent()
 export default class Picker extends SuperComponent {
-  /**
-   * Component properties
-   */
   properties = props;
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`];
@@ -19,7 +16,7 @@ export default class Picker extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './picker-item': {
+    '../picker-item/picker-item': {
       type: 'child',
       linked(this: Picker) {
         this.updateChildren();
@@ -33,52 +30,32 @@ export default class Picker extends SuperComponent {
     },
   };
 
-  /**
-   * Component initial data
-   */
   data = {
     prefix,
     classPrefix: name,
   };
 
-  /**
-   * Component methods
-   */
   methods = {
-    getPickerColumns() {
-      const pickerColumns = this.getRelationNodes('./picker-item');
-      if (Array.isArray(pickerColumns)) {
-        return pickerColumns;
-      }
-      return [];
-    },
-
     updateChildren() {
       const { value } = this.properties;
-      const pickerColumns = this.getPickerColumns();
 
-      if (!pickerColumns?.length) {
-        return;
-      }
-
-      pickerColumns.forEach((child, index) => {
+      this.$children.forEach((child, index) => {
         child.setData({
           value: value?.[index] || '',
+          siblingCount: this.$children.length,
         });
         child.update();
       });
     },
 
     getSelectedValue() {
-      const pickerColumns = this.getPickerColumns();
-      const value = pickerColumns.map((item) => item._selectedValue);
-      const label = pickerColumns.map((item) => item._selectedLabel);
+      const value = this.$children.map((item) => item._selectedValue);
+      const label = this.$children.map((item) => item._selectedLabel);
       return [value, label];
     },
 
     getColumnIndexes() {
-      const pickerColumns = this.getPickerColumns();
-      const columns = pickerColumns.map((pickerColumn, columnIndex) => {
+      const columns = this.$children.map((pickerColumn, columnIndex) => {
         return {
           column: columnIndex,
           index: pickerColumn._selectedIndex,
@@ -121,7 +98,6 @@ export default class Picker extends SuperComponent {
   };
 
   ready() {
-    const columns = this.getPickerColumns();
-    columns.map((column, index) => (column.columnIndex = index));
+    this.$children.map((column, index) => (column.columnIndex = index));
   }
 }

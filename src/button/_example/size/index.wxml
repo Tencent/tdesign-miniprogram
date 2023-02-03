@@ -1,25 +1,6 @@
-<view class="box align-bottom">
-  <t-button t-class="external-class" theme="primary" size="large">大号按钮 44</t-button>
-  <t-button t-class="external-class" theme="primary">中号按钮 40</t-button>
+<view class="button-example">
+  <t-button theme="primary" size="large">按钮48</t-button>
+  <t-button theme="primary">按钮40</t-button>
+  <t-button theme="primary" size="small">按钮32</t-button>
+  <t-button theme="primary" size="extra-small">按钮28</t-button>
 </view>
-<view class="box">
-  <t-button t-class="external-class" theme="primary" size="small">小号按钮 36</t-button>
-</view>
-
-<!-- <view class="box align-bottom">
-  <t-button t-class="external-class" theme="primary" size="large" icon="app" shape="round">按钮</t-button>
-  <t-button t-class="external-class" theme="primary" icon="app" shape="round">按钮</t-button>
-  <t-button t-class="external-class" theme="primary" size="small" icon="app" shape="round">按钮</t-button>
-</view>
-
-<view class="box align-bottom">
-  <t-button t-class="external-class" theme="primary" size="large" icon="app" shape="square"></t-button>
-  <t-button t-class="external-class" theme="primary" icon="app" shape="square"></t-button>
-  <t-button t-class="external-class" theme="primary" size="small" icon="app" shape="square"></t-button>
-</view>
-
-<view class="box align-bottom">
-  <t-button t-class="external-class" theme="primary" size="large" icon="app" shape="circle"></t-button>
-  <t-button t-class="external-class" theme="primary" icon="app" shape="circle"></t-button>
-  <t-button t-class="external-class" theme="primary" size="small" icon="app" shape="circle"></t-button>
-</view> -->

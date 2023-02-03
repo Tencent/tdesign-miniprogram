@@ -5,31 +5,35 @@ exports[`input props : clearable && label && suffix 1`] = `
   class="base"
 >
   <wx-view
-    class="t-input t-input--size-medium t-input--layout-horizontal t-class"
+    ariaDescribedby="{{true}}"
+    class="t-input t-input--border t-input--layout-horizontal class t-class"
     style=""
   >
     <wx-view
-      class="t-input__wrap--prefix"
+      class="t-input__icon--prefix"
+    />
+    <wx-view
+      ariaHidden="{{true}}"
+      class="t-input__label"
     >
-      <wx-view
-        class="t-input__label"
+      <wx-text
+        class="t-class-label"
       >
-        <wx-text
-          class="t-class-label"
-        >
-          tdesign
-        </wx-text>
-      </wx-view>
+        tdesign
+      </wx-text>
     </wx-view>
     <wx-view
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content t-is-default   "
+        class="t-input__content t-input--default"
       >
         <wx-input
           adjustPosition="{{true}}"
           alwaysEmbed="{{false}}"
+          ariaLabel="tdesign"
+          ariaRole="textbox"
+          ariaRoledescription="tdesign"
           autoFocus="{{false}}"
           class="t-input__control t-input__control--left t-class-input"
           confirmHold="{{false}}"
@@ -66,14 +70,14 @@ exports[`input props : clearable && label && suffix 1`] = `
           <t-icon
             class=""
             tClass="t-class-clearable"
-            bind:click="onTplClick"
+            bind:click=""
           >
             <wx-view
               ariaHidden="{{false}}"
-              ariaLabel=""
-              ariaRole=""
-              class="t-icon t-class"
-              style="font-size: 24px"
+              ariaLabel="清除"
+              ariaRole="button"
+              class="t-icon class t-class"
+              style="color: inherit; font-size: inherit;"
               bind:tap="onTap"
             >
               <wx-label
@@ -84,6 +88,7 @@ exports[`input props : clearable && label && suffix 1`] = `
         </wx-view>
         <wx-view
           class="t-input__wrap--suffix t-class-suffix"
+          bind:tap="onSuffixClick"
         >
           <wx-text>
             后置内容
@@ -91,18 +96,19 @@ exports[`input props : clearable && label && suffix 1`] = `
         </wx-view>
         <wx-view
           class="t-input__wrap--suffix-icon"
+          bind:tap="onSuffixIconClick"
         >
           <t-icon
             class=""
             tClass="t-class-suffix-icon"
-            bind:click="onTplClick"
+            bind:click=""
           >
             <wx-view
               ariaHidden="{{false}}"
               ariaLabel=""
-              ariaRole=""
-              class="t-icon t-class"
-              style="font-size: 24px"
+              ariaRole="button"
+              class="t-icon class t-class"
+              style="color: inherit; font-size: inherit;"
               bind:tap="onTap"
             >
               <wx-label
@@ -122,36 +128,40 @@ exports[`input slots : label 1`] = `
   class="base"
 >
   <wx-view
-    class="t-input t-input--size-medium t-input--layout-horizontal t-class"
+    ariaDescribedby="{{true}}"
+    class="t-input t-input--border t-input--layout-horizontal class t-class"
     style=""
   >
     <wx-view
-      class="t-input__wrap--prefix"
+      class="t-input__icon--prefix"
+    />
+    <wx-view
+      ariaHidden="{{true}}"
+      class="t-input__label"
     >
-      <wx-view
-        class="t-input__label"
+      <wx-text
+        slot="label"
       >
+        标签文字
         <wx-text
-          slot="label"
+          style="color: #e34d59"
         >
-          标签文字
-          <wx-text
-            style="color: #e34d59"
-          >
-            *
-          </wx-text>
+          *
         </wx-text>
-      </wx-view>
+      </wx-text>
     </wx-view>
     <wx-view
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content t-is-default   "
+        class="t-input__content t-input--default"
       >
         <wx-input
           adjustPosition="{{true}}"
           alwaysEmbed="{{false}}"
+          ariaLabel=""
+          ariaRole="textbox"
+          ariaRoledescription=""
           autoFocus="{{false}}"
           class="t-input__control t-input__control--left t-class-input"
           confirmHold="{{false}}"
@@ -183,9 +193,11 @@ exports[`input slots : label 1`] = `
         />
         <wx-view
           class="t-input__wrap--suffix t-class-suffix"
+          bind:tap="onSuffixClick"
         />
         <wx-view
           class="t-input__wrap--suffix-icon"
+          bind:tap="onSuffixIconClick"
         />
       </wx-view>
     </wx-view>

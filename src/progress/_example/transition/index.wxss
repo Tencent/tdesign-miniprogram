@@ -1,12 +1,6 @@
-.progress-example {
-  padding: 16rpx 32rpx;
-  margin-bottom: 32rpx;
-}
-
 .button-group {
   display: flex;
   justify-content: center;
-  padding-bottom: 16rpx;
 }
 
 .button-group .space {

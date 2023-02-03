@@ -6,7 +6,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | \- | N
 description | String / Slot | - | \- | N
 external-classes | Array | - | \- | N
 icon | String | - | \- | N

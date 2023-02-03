@@ -1,83 +1,11 @@
 <view class="area-picker-demo">
   <view class="demo-title">Picker 选择器</view>
   <view class="demo-desc">用于一组预设数据中的选择。</view>
-  <t-demo title="01 类型" desc="基础选择器">
+  <t-demo title="01 组件类型" desc="基础选择器">
     <base />
+    <area />
   </t-demo>
-  <t-demo desc="带标题选择器">
-    <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.CITY_TITLE}}">
-      <view class="pannel-label">城市</view>
-      <view class="pannel-text {{cityTitleValue.length ? '' : 'empty'}}"
-        >{{ cityTitleCurrentValue || '选择城市' }}</view
-      >
-      <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
-    </view>
-    <view
-      class="pannel-item"
-      bind:tap="onClickPicker"
-      data-title="选择年份和季节"
-      data-key="{{PICKER_KEY.YEAR_SEASONS_TITLE}}"
-    >
-      <view class="pannel-label">年份和季节</view>
-      <view class="pannel-text {{yearSeasonsTitleValue.length ? '' : 'empty'}}">
-        {{ yearSeasonsTitleCurrentValue || '选择年份和季节' }}</view
-      >
-      <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
-    </view>
-    <view class="pannel-item" bind:tap="onClickPicker" data-title="选择日期" data-key="{{PICKER_KEY.DATE_TITLE}}">
-      <view class="pannel-label">日期</view>
-      <view class="pannel-text {{dateTitleValue.length ? '' : 'empty'}}">
-        {{ dateTitleCurrentValue || '选择日期' }}</view
-      >
-      <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
-    </view>
+  <t-demo title="02 组件样式" desc="是否带标题">
+    <with-title />
   </t-demo>
-
-  <!-- 城市带标题 -->
-  <t-picker
-    visible="{{cityTitleVisible}}"
-    value="{{cityTitleValue}}"
-    data-key="cityTitle"
-    title="选中城市"
-    cancelBtn="取消"
-    confirmBtn="确认"
-    bindchange="onPickerChange"
-    bindpick="onColumnChange"
-    bindcancel="onPickerCancel"
-  >
-    <t-picker-item options="{{citys}}"></t-picker-item>
-  </t-picker>
-
-  <!-- 年+季节 带标题 -->
-  <t-picker
-    visible="{{yearSeasonsTitleVisible}}"
-    value="{{yearSeasonsTitleValue}}"
-    data-key="yearSeasonsTitle"
-    title="选择年份和季节"
-    cancelBtn="取消"
-    confirmBtn="确认"
-    bindchange="onPickerChange"
-    bindpick="onColumnChange"
-    bindcancel="onPickerCancel"
-  >
-    <t-picker-item options="{{years}}"></t-picker-item>
-    <t-picker-item options="{{seasons}}"></t-picker-item>
-  </t-picker>
-
-  <!-- 年月日带标题 -->
-  <t-picker
-    visible="{{dateTitleVisible}}"
-    value="{{dateTitleValue}}"
-    data-key="dateTitle"
-    title="选择日期"
-    cancelBtn="取消"
-    confirmBtn="确认"
-    bindchange="onPickerChange"
-    bindpick="onColumnChange"
-    bindcancel="onPickerCancel"
-  >
-    <t-picker-item options="{{years}}"></t-picker-item>
-    <t-picker-item options="{{months}}"></t-picker-item>
-    <t-picker-item options="{{days}}"></t-picker-item>
-  </t-picker>
 </view>

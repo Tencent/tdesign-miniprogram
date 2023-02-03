@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['display'];
+const mapper = ['base', 'custom'];
 
 describe('Indexes', () => {
   mapper.forEach((demoName) => {

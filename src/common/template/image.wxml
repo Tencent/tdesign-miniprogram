@@ -1,17 +1,17 @@
 <template name="image">
   <t-image
-    customStyle="{{customStyle}}"
+    style="{{style || ''}}"
     error="{{error || 'default'}}"
-    lazy="{{lazy}}"
+    lazy="{{lazy || false}}"
     loading="{{count || 'default'}}"
     shape="{{shape || 'square'}}"
-    src="{{src}}"
+    src="{{src || ''}}"
     mode="{{mode || 'scaleToFill'}}"
-    webp="{{webp}}"
-    showMenuByLongpress="{{showMenuByLongpress}}"
+    webp="{{webp || false}}"
+    showMenuByLongpress="{{showMenuByLongpress || false}}"
     bind:error="{{binderror}}"
     bind:load="{{bindload}}"
-    t-class="{{tClass}}"
+    t-class="{{class}} {{tClass}}"
     t-class-load="{{tClassLoad}}"
   />
 </template>

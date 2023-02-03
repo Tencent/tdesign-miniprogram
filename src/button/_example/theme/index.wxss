@@ -1,7 +1,10 @@
-.box {
-  margin: 0 32rpx 32rpx;
+.button-example {
+  margin: 0 32rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32rpx;
 }
 
-.box t-button + t-button {
-  margin-left: 16rpx;
+.button-example:not(:last-child) {
+  margin-bottom: 32rpx;
 }

@@ -1,0 +1,72 @@
+import { SuperComponent, wxComponent } from '../common/src/index';
+import config from '../common/config';
+import props from './props';
+import { calcIcon } from '../common/utils';
+
+const { prefix } = config;
+const name = `${prefix}-link`;
+
+@wxComponent()
+export default class Link extends SuperComponent {
+  externalClasses = [];
+
+  properties = props;
+
+  data = {
+    prefix,
+    classPrefix: name,
+  };
+
+  observers = {
+    'theme, status, size, underline, navigatorProps'() {
+      this.setClass();
+    },
+
+    prefixIcon(v) {
+      this.setData({
+        _prefixIcon: calcIcon(v),
+      });
+    },
+
+    suffixIcon(v) {
+      this.setData({
+        _suffixIcon: calcIcon(v),
+      });
+    },
+  };
+
+  lifetimes = {
+    attached() {
+      this.setClass();
+    },
+  };
+
+  methods = {
+    setClass() {
+      const { theme, status, size, underline, navigatorProps } = this.properties;
+      const classList = [name, `${name}--${status}-${theme}`, `${name}--${size}`];
+      if (underline) {
+        classList.push(`${name}--underline`);
+      }
+      if ((navigatorProps && !navigatorProps.url) || status === 'disabled') {
+        classList.push(`${name}--disabled`);
+      }
+
+      this.setData({
+        className: classList.join(' '),
+      });
+    },
+
+    onSuccess(e) {
+      this.triggerEvent('success', e);
+    },
+
+    onFail(e) {
+      this.triggerEvent('fail', e);
+    },
+
+    onComplete(e) {
+      this.triggerEvent('complete', e);
+    },
+  };
+}

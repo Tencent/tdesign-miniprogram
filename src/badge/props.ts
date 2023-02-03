@@ -3,8 +3,8 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
-
 import { TdBadgeProps } from './type';
+
 const props: TdBadgeProps = {
   /** 颜色 */
   color: {
@@ -20,11 +20,6 @@ const props: TdBadgeProps = {
   count: {
     type: null,
     value: 0,
-  },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
   },
   /** 是否为红点 */
   dot: {

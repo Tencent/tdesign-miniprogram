@@ -1,0 +1,2 @@
+<view class="demo-desc">不使用 Popup</view>
+<t-calendar use-popup="{{false}}" type="multiple" bind:select="handleSelect" />

@@ -15,16 +15,13 @@
     <show-text />
   </t-demo>
 
-  <t-demo title="02 组件状态" desc="交互方式：点击">
+  <t-demo title="02 组件状态">
     <action />
   </t-demo>
 
   <t-demo title="03 组件样式">
     <view class="demo-desc">评分大小</view>
     <size />
-
-    <view class="demo-desc">禁用评分</view>
-    <disabled />
 
     <view class="demo-desc">设置评分颜色</view>
     <color />

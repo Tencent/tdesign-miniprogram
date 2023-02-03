@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Badge 徽标",
+  "navigationBarTitleText": "Badge",
   "usingComponents": {
     "base": "./base",
     "theme": "./theme",

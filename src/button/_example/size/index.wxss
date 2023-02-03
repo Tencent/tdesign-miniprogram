@@ -1,14 +1,6 @@
-.box {
-  margin: 0 32rpx;
-}
-
-.align-bottom {
+.button-example {
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
-.external-class {
-  margin-top: 32rpx;
-  margin-right: 32rpx;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 32rpx;
 }

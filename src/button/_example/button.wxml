@@ -21,8 +21,8 @@
     <block-btn />
   </t-demo>
 
-  <t-demo title="02 组件状态">
-    <base disabled />
+  <t-demo title="02 组件状态" desc="按钮禁用态">
+    <disabled />
   </t-demo>
 
   <t-demo title="03 组件样式" desc="按钮尺寸">

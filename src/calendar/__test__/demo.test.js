@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'custom-button', 'custom-range', 'custom-text', 'multiple', 'range'];
+const mapper = ['base', 'custom-button', 'custom-range', 'custom-text', 'multiple', 'range', 'without-popup'];
 
 describe('Calendar', () => {
   mapper.forEach((demoName) => {

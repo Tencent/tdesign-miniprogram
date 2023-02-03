@@ -4,6 +4,7 @@ exports[`Calendar Calendar base demo works fine 1`] = `
 <base>
   <t-calendar
     visible="{{false}}"
+    bind:close="onClose"
     bind:confirm="handleConfirm"
   />
   <t-cell
@@ -20,7 +21,6 @@ exports[`Calendar Calendar custom-button demo works fine 1`] = `
   <t-calendar
     confirmBtn="{{null}}"
     minDate="{{1641052800000}}"
-    type="range"
     visible="{{false}}"
     bind:change="onChange"
   />
@@ -96,4 +96,19 @@ exports[`Calendar Calendar range demo works fine 1`] = `
     bind:tap="handleCalendar"
   />
 </range>
+`;
+
+exports[`Calendar Calendar without-popup demo works fine 1`] = `
+<without-popup>
+  <wx-view
+    class="demo-desc"
+  >
+    不使用 Popup
+  </wx-view>
+  <t-calendar
+    type="multiple"
+    usePopup="{{false}}"
+    bind:select="handleSelect"
+  />
+</without-popup>
 `;

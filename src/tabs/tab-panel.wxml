@@ -1,8 +1,0 @@
-<wxs src="../common/utils.wxs" module="utils" />
-<view
-  class="{{classPrefix}} {{active ? prefix + '-is-active': ''}}"
-  style="{{ customStyle }}; {{ hide ? 'display: none' : ''}}"
->
-  <view wx:if="{{panel}}">{{panel}}</view>
-  <slot />
-</view>

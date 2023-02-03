@@ -1,13 +1,13 @@
 @import '../common/style/index.less';
 
-@countdown-small-unit-margin: @spacer * 0.5; // 'small'尺寸单位分割文本左右间距
-@countdown-medium-unit-margin: @spacer * 0.625; // 'medium'尺寸单位分割文本左右间距
-@countdown-large-unit-margin: @spacer * 0.75; // 'large'尺寸单位分割文本左右间距
+@countdown-small-unit-margin: calc(@spacer * 0.5); // 'small'尺寸单位分割文本左右间距
+@countdown-medium-unit-margin: calc(@spacer * 0.625); // 'medium'尺寸单位分割文本左右间距
+@countdown-large-unit-margin: calc(@spacer * 0.75); // 'large'尺寸单位分割文本左右间距
 @countdown-unit-color: @font-gray-1; // 带单位分割线文本颜色
 @countdown-no-unit-color: @error-color-6; // 无单位分割线文本颜色
-@countdown-large-no-unit-margin: @spacer * 0.75; // 'large'尺寸无单位分割文本左右间距
-@countdown-medium-no-unit-margin: @spacer * 0.375; // 'medium'尺寸无单位分割文本左右间距
-@countdown-small-no-unit-margin: @spacer * 0.25; // 'small'尺寸无单位分割文本左右间距
+@countdown-large-no-unit-margin: calc(@spacer * 0.75); // 'large'尺寸无单位分割文本左右间距
+@countdown-medium-no-unit-margin: calc(@spacer * 0.375); // 'medium'尺寸无单位分割文本左右间距
+@countdown-small-no-unit-margin: calc(@spacer * 0.25); // 'small'尺寸无单位分割文本左右间距
 @countdown-small-bg-width: 40rpx; // 'small'尺寸方/圆底背景宽高
 @countdown-medium-bg-width: 48rpx; // 'medium'尺寸方/圆底背景宽高
 @countdown-large-bg-width: 56rpx; // 'large'尺寸方/圆底背景宽高
@@ -20,15 +20,15 @@
 @countdown-medium-default-font-size: @font-size-m; // 'medium'尺寸纯数字倒计时文本大小
 @countdown-medium-square-font-size: @font-size-base; // 'medium'尺寸带方形底倒计时文本大小
 @countdown-medium-round-font-size: @font-size-base; // 'medium'尺寸带圆形底倒计时文本大小
-@countdown-medium-hightlight-font-size: @font-size * 1.8; // 'medium'尺寸高亮倒计时文本大小
+@countdown-medium-hightlight-font-size: 36rpx; // 'medium'尺寸高亮倒计时文本大小
 @countdown-medium-unit-font-size: @font-size-s; // 'medium'尺寸单位分割文本大小
 @countdown-medium-no-unit-font-size: @font-size-m; // 'medium'尺寸无单位分割文本大小
-@countdown-large-default-font-size: @font-size * 1.8; // 'large'尺寸纯数字倒计时文本大小
+@countdown-large-default-font-size: 36rpx; // 'large'尺寸纯数字倒计时文本大小
 @countdown-large-square-font-size: @font-size-m; // 'large'尺寸带方形底倒计时文本大小
 @countdown-large-round-font-size: @font-size-m; // 'large'尺寸带圆形底倒计时文本大小
-@countdown-large-hightlight-font-size: @font-size * 1.8; // 'large'尺寸高亮倒计时文本大小
+@countdown-large-hightlight-font-size: 36rpx; // 'large'尺寸高亮倒计时文本大小
 @countdown-large-unit-font-size: @font-size-base; // 'large'尺寸单位分割文本大小
-@countdown-large-no-unit-font-size: @font-size * 1.8; // 'large'尺寸无单位分割文本大小
+@countdown-large-no-unit-font-size: 36rpx; // 'large'尺寸无单位分割文本大小
 
 // 纯数字倒计时文本颜色
 @countdown-default-text-color: var(--td-countdown-default-color, @font-gray-1);

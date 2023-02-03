@@ -6,7 +6,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style | String | - | \- | N
 disabled | Boolean | - | \- | N
 opened   | Boolean / Array | false  | \- | N
 left | Array / Slot | - | Typescript：`Array<SwipeActionItem>` | N

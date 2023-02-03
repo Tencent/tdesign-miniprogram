@@ -2,7 +2,6 @@ import { TdPopupProps } from './type';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { classNames } from '../common/utils';
 import transition from '../mixins/transition';
 
 delete props.visible;
@@ -14,7 +13,7 @@ const name = `${prefix}-popup`;
 
 @wxComponent()
 export default class Popup extends SuperComponent {
-  externalClasses = [`${prefix}-class`, `${prefix}-class-content`];
+  externalClasses = ['class', `${prefix}-class`, `${prefix}-class-content`];
 
   behaviors = [transition()];
 
@@ -27,26 +26,9 @@ export default class Popup extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    className: name,
-  };
-
-  lifetimes = {
-    attached() {
-      this.setClass();
-    },
   };
 
   methods = {
-    setClass() {
-      const { placement, showOverlay } = this.properties;
-      const className = classNames(name, `${name}--${placement}`, {
-        [`${name}--overlay-transparent`]: !showOverlay,
-      });
-      this.setData({
-        className,
-      });
-    },
-
     onStopPropagation() {},
 
     handleOverlayClick() {

@@ -1,6 +1,9 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view wx:if="{{ title }}" class="{{ classPrefix }}__title {{prefix}}-class-title"> {{ title }} </view>
-<view style="{{ customStyle }}" class="{{_.cls(classPrefix, [[bordered, 'bordered'], theme])}} {{prefix}}-class">
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{_.cls(classPrefix, [[bordered, 'bordered'], theme])}} {{prefix}}-class"
+>
   <slot />
 </view>

@@ -1,23 +1,22 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
 <wxs src="./empty.wxs" module="utils" />
 
-<view style="{{ customStyle }}" class="{{prefix}}-class {{classPrefix}}">
-  <view class="{{classPrefix}}__content">
-    <image wx:if="{{image}}" class="{{classPrefix}}__img {{prefix}}-class-image" src="{{image}}" mode="aspectFit" />
-    <t-icon
-      wx:elif="{{icon}}"
-      name="{{icon}}"
-      prefix="{{iconProps.prefix}}"
-      size="{{iconProps.size || '192rpx'}}"
-      color="{{iconProps.color || 'rgba(0, 0, 0, .26)'}}"
-      customStyle="{{iconProps.customStyle}}"
-    ></t-icon>
-    <slot wx:else name="image" class="{{classPrefix}}__img {{prefix}}-class-image" />
-    <view wx:if="{{description}}" class="{{classPrefix}}__description {{prefix}}-class-description"
-      >{{description}}</view
-    >
-    <slot wx:else name="description" class="{{classPrefix}}__description {{prefix}}-class-description" />
-    <view class="{{classPrefix}}__actions {{prefix}}-class-actions">
-      <slot name="action" />
-    </view>
+<view style="{{_._style([style, customStyle])}}" class="{{prefix}}-class {{classPrefix}}">
+  <view aria-hidden="true" class="{{classPrefix}}__thumb">
+    <t-image wx:if="{{image}}" t-class="{{prefix}}-class-image" src="{{image}}" mode="aspectFit" />
+    <template
+      wx:elif="{{iconName || _.isNoEmptyObj(iconData)}}"
+      is="icon"
+      data="{{class: classPrefix + '__icon', name: iconName, ...iconData}}"
+    />
+    <slot wx:else name="image" />
+  </view>
+  <view class="{{classPrefix}}__description {{prefix}}-class-description">
+    <block wx:if="{{description}}"> {{description}} </block>
+    <slot name="description" />
+  </view>
+  <view class="{{classPrefix}}__actions {{prefix}}-class-actions">
+    <slot name="action" />
   </view>
 </view>

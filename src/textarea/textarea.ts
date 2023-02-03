@@ -1,11 +1,3 @@
-/*
- * @Author: rileycai
- * @Date: 2021-09-22 10:33:54
- * @LastEditTime: 2021-09-28 10:26:44
- * @LastEditors: Please set LastEditors
- * @Description: 新增textarea组件
- * @FilePath: /tdesign-miniprogram/src/textarea/textarea.ts
- */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
@@ -17,7 +9,7 @@ const name = `${prefix}-textarea`;
 @wxComponent()
 export default class Textarea extends SuperComponent {
   options = {
-    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+    multipleSlots: true,
   };
 
   behaviors = ['wx://form-field'];
@@ -37,6 +29,12 @@ export default class Textarea extends SuperComponent {
     count: 0,
   };
 
+  observers = {
+    value(val) {
+      this.updateCount(val);
+    },
+  };
+
   lifetimes = {
     ready() {
       const { value } = this.properties;
@@ -45,26 +43,42 @@ export default class Textarea extends SuperComponent {
   };
 
   methods = {
-    updateValue(value) {
+    updateCount(val) {
       const { maxcharacter, maxlength } = this.properties;
+      const { count } = this.calculateValue(val, maxcharacter, maxlength);
+      this.setData({
+        count,
+      });
+    },
+
+    updateValue(val) {
+      const { maxcharacter, maxlength } = this.properties;
+      const { value, count } = this.calculateValue(val, maxcharacter, maxlength);
+      this.setData({
+        value,
+        count,
+      });
+    },
+
+    calculateValue(value, maxcharacter, maxlength) {
       if (maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
-        this.setData({
+        return {
           value: characters,
           count: length,
-        });
-      } else if (maxlength > 0 && !Number.isNaN(maxlength)) {
-        const { length, characters } = getCharacterLength('maxlength', value, maxlength);
-        this.setData({
-          value: characters,
-          count: length,
-        });
-      } else {
-        this.setData({
-          value,
-          count: value ? String(value).length : 0,
-        });
+        };
       }
+      if (maxlength > 0 && !Number.isNaN(maxlength)) {
+        const { length, characters } = getCharacterLength('maxlength', value, maxlength);
+        return {
+          value: characters,
+          count: length,
+        };
+      }
+      return {
+        value,
+        count: value ? String(value).length : 0,
+      };
     },
 
     onInput(event) {
@@ -91,6 +105,9 @@ export default class Textarea extends SuperComponent {
       this.triggerEvent('lineChange', {
         ...event.detail,
       });
+    },
+    onKeyboardHeightChange(e) {
+      this.triggerEvent('keyboardheightchange', e.detail);
     },
   };
 }

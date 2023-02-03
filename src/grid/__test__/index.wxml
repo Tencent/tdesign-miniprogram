@@ -1,4 +1,11 @@
-<t-grid id="grid" gutter="{{gutter}}" border="{{border}}">
-  <t-grid-item id="a" bind:click="handleClick" url="{{url}}" jumpType="{{jumpType}}"></t-grid-item>
+<t-grid id="grid" style="{{style}}" customStyle="{{customStyle}}" gutter="{{gutter}}" border="{{border}}">
+  <t-grid-item
+    id="a"
+    style="{{style}}"
+    customStyle="{{customStyle}}"
+    bind:click="handleClick"
+    url="{{url}}"
+    jumpType="{{jumpType}}"
+  ></t-grid-item>
   <t-grid-item></t-grid-item>
 </t-grid>

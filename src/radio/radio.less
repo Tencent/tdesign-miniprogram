@@ -29,7 +29,9 @@
   font-size: @radio-font-size;
   background: @radio-bg-color;
   position: relative;
-
+  &:focus {
+    outline: 0;
+  }
   &--block {
     display: flex;
     padding: @radio-vertical-padding;
@@ -204,5 +206,9 @@
     left: 96rpx;
     right: 0;
     transform: scaleY(0.5);
+
+    &--right {
+      left: 32rpx;
+    }
   }
 }

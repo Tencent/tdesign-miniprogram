@@ -5,6 +5,28 @@ describe('input', () => {
   const input = load(path.resolve(__dirname, `../input`), 't-input');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-input class="input" style="{{style}}" customStyle="{{customStyle}}"></t-input>`,
+        usingComponents: {
+          't-input': input,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $input = comp.querySelector('.input >>> .t-input');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect($input.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($input.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': maxcharacter', async () => {
       const handleChange = jest.fn();
       const id = simulate.load({
@@ -57,18 +79,16 @@ describe('input', () => {
       expect(component.instance.data.count).toBe(10);
     });
 
-    it(': borderless && align && size', async () => {
+    it(': borderless && align ', async () => {
       const id = simulate.load({
         template: `<t-input
         class="base"
         align="{{align}}"
-        size="{{size}}"
         borderless="{{borderless}}"
         ></t-input>`,
         data: {
-          borderless: false,
+          borderless: true,
           align: 'center',
-          size: 'small',
         },
         usingComponents: {
           't-input': input,
@@ -77,12 +97,8 @@ describe('input', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const component = comp.querySelector('.base >>> .t-input__content');
-      expect(component.dom.getAttribute('class').includes('t-input--border')).toBeTruthy();
-
-      expect(
-        comp.querySelector('.base >>> .t-input').dom.getAttribute('class').includes('t-input--size-small'),
-      ).toBeTruthy();
+      const component = comp.querySelector('.base >>> .t-input');
+      expect(component.dom.getAttribute('class').includes('t-input--border')).toBeFalsy();
 
       const $input = comp.querySelector('.base >>> .t-input__control');
       expect($input.dom.getAttribute('class').includes('t-input__control--center')).toBeTruthy();
@@ -131,7 +147,7 @@ describe('input', () => {
     it(': label', async () => {
       const id = simulate.load({
         template: `
-        <t-input class="base" label="slot">
+        <t-input class="base">
           <text slot="label">标签文字<text style="color: #e34d59"> *</text> </text>
         </t-input>`,
         data: {},

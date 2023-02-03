@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "icon 图标",
+  "navigationBarTitleText": "Icon",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",

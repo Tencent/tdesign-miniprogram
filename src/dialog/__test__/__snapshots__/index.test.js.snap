@@ -6,13 +6,13 @@ exports[`dialog :base 1`] = `
     id="dialog"
   >
     <t-popup
-      class="t-dialog__wrapper"
+      tClass="t-dialog__wrapper"
       bind:visible-change="overlayClick"
     >
       <wx-view
-        ariaModal="true"
+        ariaModal="{{true}}"
         ariaRole="dialog"
-        class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active t-class"
+        class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active class t-class"
         style="z-index:11500;"
         bind:transitionend="onTransitionEnd"
       >
@@ -31,12 +31,13 @@ exports[`dialog :base 1`] = `
               class="t-dialog__content t-class-content"
             />
             <wx-view
-              class="t-dialog__footer t-dialog__footer--default "
+              class="t-dialog__footer t-dialog__footer--full"
             />
           </wx-view>
         </wx-view>
       </wx-view>
       <t-overlay
+        class="test"
         id="popup-overlay"
         bind:tap="handleOverlayClick"
       >
@@ -44,7 +45,7 @@ exports[`dialog :base 1`] = `
           ariaLabel="关闭"
           ariaRole="button"
           class="t-overlay t-fade-enter t-fade-enter-active"
-          style="z-index: 11000;  "
+          style="z-index:11000;"
           bind:tap="handleClick"
           catch:touchmove="noop"
           bind:transitionend="onTransitionEnd"

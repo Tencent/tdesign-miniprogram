@@ -1,9 +1,9 @@
 {
-  "navigationBarTitleText": "DateTimePicker 时间选择器",
+  "navigationBarTitleText": "DateTimePicker",
   "usingComponents": {
     "year-month-date": "./year-month-date",
     "year-month": "./year-month",
-    "time-min": "./time-min",
+    "time": "./time",
     "date-all": "./date-all"
   }
 }

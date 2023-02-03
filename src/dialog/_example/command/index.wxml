@@ -1,7 +1,2 @@
-<view class="box">
-  <t-button t-class="external-class" size="large" variant="outline" data-type="hasCancelBtn" bind:tap="showDialog" block
-    >带取消按钮</t-button
-  >
-  <t-button t-class="external-class" size="large" variant="outline" bind:tap="showDialog" block>无取消按钮</t-button>
-  <t-dialog id="t-dialog" />
-</view>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showDialog" block> 命令行操作 </t-button>
+<t-dialog id="t-dialog" />

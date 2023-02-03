@@ -10,14 +10,13 @@ Component({
     },
     onChange(e) {
       const { value } = e.detail;
-      const [start, end] = value;
       const format = (val) => {
         const date = new Date(val);
         return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
       };
 
       this.setData({
-        note: `${format(start)} - ${format(end)}`,
+        note: `${format(value)}`,
       });
     },
   },

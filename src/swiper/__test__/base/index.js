@@ -1,30 +1,13 @@
-const imageCdn = 'https://tdesign.gtimg.com/site/swiper';
+const imageCdn = 'https://tdesign.gtimg.com/miniprogram/images/';
 const swiperList = [
-  {
-    image: `${imageCdn}/01.png`,
-  },
-  {
-    image: `${imageCdn}/02.png`,
-  },
-  {
-    image: `${imageCdn}/03.png`,
-  },
-  {
-    image: `${imageCdn}/04.png`,
-  },
-  {
-    image: `${imageCdn}/05.png`,
-  },
+  `${imageCdn}/swiper1.png`,
+  `${imageCdn}/swiper2.png`,
+  `${imageCdn}/swiper3.png`,
+  `${imageCdn}/swiper4.png`,
+  `${imageCdn}/swiper5.png`,
 ];
 
-const swiperList2 = [
-  {
-    image: `${imageCdn}/01.png`,
-  },
-  {
-    image: `${imageCdn}/02.png`,
-  },
-];
+const swiperList2 = [`${imageCdn}/01.png`, `${imageCdn}/02.png`];
 
 Component({
   data: {
@@ -37,6 +20,8 @@ Component({
     autoplay: false,
     swiperList,
     swiperList2,
+    style: 'color: red',
+    customStyle: 'font-size: 9px',
   },
 
   methods: {

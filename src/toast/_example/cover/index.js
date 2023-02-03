@@ -7,7 +7,7 @@ Page({
       selector: '#t-toast',
       message: '禁止滑动和点击',
       direction: 'column',
-      duration: 5000,
+      duration: 3000,
       preventScrollThrough: true,
       icon: 'poweroff',
     });

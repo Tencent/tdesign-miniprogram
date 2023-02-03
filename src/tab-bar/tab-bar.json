@@ -1,6 +1,4 @@
 {
   "component": true,
-  "usingComponents": {
-    "t-tab-bar-item": "./tab-bar-item"
-  }
+  "usingComponents": {}
 }

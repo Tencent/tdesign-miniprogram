@@ -1,7 +1,9 @@
-<t-search placeholder="搜索预设文案" />
+<view class="example-search">
+  <t-search placeholder="搜索预设文案" />
+</view>
 
-<t-search placeholder="搜索预设文案" shape="round" />
+<view class="space"></view>
 
-<t-search placeholder="搜索预设文案" action="取消" />
-
-<t-search value="{{value}}" placeholder="搜索预设文案" action="取消" bind:change="onChange" />
+<view class="example-search">
+  <t-search placeholder="搜索预设文案" shape="round" />
+</view>

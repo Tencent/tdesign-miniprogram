@@ -9,6 +9,7 @@ module.exports = {
   testMatch: ['<rootDir>/src/**/__test__/**/*.test.{js,ts}'],
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
   collectCoverage: true,
+  coverageProvider: 'v8',
   coverageDirectory: '<rootDir>/test/unit/coverage',
   reporters: [
     'default',

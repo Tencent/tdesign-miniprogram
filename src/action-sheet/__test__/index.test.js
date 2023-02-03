@@ -12,6 +12,31 @@ describe('action-sheet', () => {
   const actionSheet = load(path.resolve(__dirname, `../action-sheet`), 't-action-sheet');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-action-sheet id="t-action-sheet" visible style="{{style}}" customStyle="{{customStyle}}" />`,
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+        usingComponents: {
+          't-action-sheet': actionSheet,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $actionSheet = comp.querySelector('#t-action-sheet >>> .t-action-sheet');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect(
+          $actionSheet.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+        ).toBeTruthy();
+      } else {
+        expect($actionSheet.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': cancel-text', async () => {
       const id = simulate.load({
         template: `<t-action-sheet id="t-action-sheet"
@@ -73,26 +98,25 @@ describe('action-sheet', () => {
       });
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
-
-      const $swiperItems = comp.querySelectorAll('#t-action-sheet >>> .t-swiper-item');
-      expect($swiperItems.length).toBe(Math.ceil(comp.data.items.length / comp.data.count));
-
+      // expect(comp.toJSON()).toMatchSnapshot();
       const $actionSheet = comp.querySelector('#t-action-sheet');
       // 手动触发 onSwiperChange 函数
       const mockData = { detail: { current: 1, source: 'touch' } };
       $actionSheet.instance.onSwiperChange(mockData);
       expect($actionSheet.instance.data.currentSwiperIndex).toBe(mockData.detail.current);
 
-      const $gridItems = $actionSheet.querySelectorAll('.t-action-sheet__square');
-      expect($gridItems.length).toEqual(3);
+      if (!VIRTUAL_HOST) {
+        const $gridItems = $actionSheet.querySelectorAll('.t-action-sheet__square');
+        expect($gridItems.length).toEqual(3);
 
-      // current = 1
-      const index = 2;
-      $gridItems[index].dispatchEvent('tap');
-      await simulate.sleep(10);
-      expect(handleSelected).toHaveBeenCalledTimes(1);
-      expect(clickItemValue.index).toEqual(index);
-      expect(clickItemValue.selected).toEqual(comp.instance.data.items[index]);
+        // current = 1
+        const index = 2;
+        $gridItems[index].dispatchEvent('tap');
+        await simulate.sleep(10);
+        expect(handleSelected).toHaveBeenCalledTimes(1);
+        expect(clickItemValue.index).toEqual(index);
+        expect(clickItemValue.selected).toEqual(comp.instance.data.items[index]);
+      }
     });
   });
 
@@ -195,11 +219,13 @@ describe('action-sheet', () => {
       expect($cancel).toBeUndefined();
 
       // 模拟点击遮罩层
-      const $popupOverlay = comp.querySelector('#t-action-sheet >>> #popup-overlay');
-      $popupOverlay.dispatchEvent('tap');
-      await simulate.sleep(0);
-      expect(handleVisibleChange).toHaveBeenCalledTimes(1);
-      expect(visibleValue).toEqual(false);
+      if (!VIRTUAL_HOST) {
+        const $popupOverlay = comp.querySelector('#t-action-sheet >>> #popup-overlay');
+        $popupOverlay.dispatchEvent('tap');
+        await simulate.sleep(0);
+        expect(handleVisibleChange).toHaveBeenCalledTimes(1);
+        expect(visibleValue).toEqual(false);
+      }
     });
   });
 
@@ -259,20 +285,22 @@ describe('action-sheet', () => {
       expect(visibleValue).toBe(true);
       // expect(comp.toJSON()).toMatchSnapshot();
       // click overlay
-      const $overlay = comp.querySelector('#t-action-sheet >>> #popup-overlay');
-      $overlay.dispatchEvent('tap');
-      await simulate.sleep();
-      expect(handleVisibleChange).toHaveBeenCalledTimes(2);
-      show();
-      show();
-      close();
-      // close
-      close({
-        selector: '#t-action-sheet',
-        context: $actionSheet.instance,
-      });
-      expect(handleVisibleChange).toHaveBeenCalledTimes(4);
-      expect(visibleValue).toBe(false);
+      if (!VIRTUAL_HOST) {
+        const $overlay = comp.querySelector('#t-action-sheet >>> #popup-overlay');
+        $overlay.dispatchEvent('tap');
+        await simulate.sleep();
+        expect(handleVisibleChange).toHaveBeenCalledTimes(2);
+        show();
+        show();
+        close();
+        // close
+        close({
+          selector: '#t-action-sheet',
+          context: $actionSheet.instance,
+        });
+        expect(handleVisibleChange).toHaveBeenCalledTimes(4);
+        expect(visibleValue).toBe(false);
+      }
     });
   });
 });

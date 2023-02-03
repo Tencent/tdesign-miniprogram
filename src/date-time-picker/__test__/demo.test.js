@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['date-all', 'time-min', 'year-month', 'year-month-date'];
+const mapper = ['date-all', 'time', 'year-month', 'year-month-date'];
 
 describe('DateTimePicker', () => {
   mapper.forEach((demoName) => {

@@ -7,6 +7,34 @@ describe('drawer', () => {
     it(`: visible`, () => {
       const id = simulate.load({
         template: `<t-drawer
+          class="drawer"
+          visible="{{visible}}"
+          style="{{style}}"
+          customStyle="{{customStyle}}"
+        ></t-drawer>`,
+        data: {
+          visible: true,
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+        methods: {},
+        usingComponents: {
+          't-drawer': drawer,
+        },
+      });
+
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      // expect(comp.toJSON()).toMatchSnapshot();
+      const $popup = comp.querySelector('.drawer >>> .t-popup');
+      if (VIRTUAL_HOST) {
+        expect($popup.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
+    it(`: visible`, () => {
+      const id = simulate.load({
+        template: `<t-drawer
           class="base"
           visible="{{visible}}"
         ></t-drawer>`,
@@ -118,31 +146,33 @@ describe('drawer', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      // showOverlay为false
-      expect(comp.querySelector('.base >>> #popup-overlay')).toBeUndefined();
-
-      const popup = comp.querySelector('.base >>> .t-popup');
-      popup.dispatchEvent('visible-change');
-      await simulate.sleep(10);
-      expect(overlayClick).toHaveBeenCalledTimes(0);
-
-      // showOverlay为 true， overlayClick 事件执行
-      comp.setData({
-        visible: true,
-        showOverlay: true,
-      });
-      const $popupOverlay = comp.querySelector('.base >>> #popup-overlay');
-
-      $popupOverlay.dispatchEvent('tap');
-      await simulate.sleep(0);
-      expect(overlayClick).toHaveBeenCalledTimes(1);
-
       const items = comp.querySelectorAll('.base >>> .t-drawer__sidebar-item');
       expect(items.length).toBe(comp.data.sidebar.length);
       const index = 1;
       items[index].dispatchEvent('tap');
       await simulate.sleep(10);
       expect(clickItemValue.item).toEqual(comp.data.sidebar[index]);
+
+      if (!VIRTUAL_HOST) {
+        // showOverlay为false
+        expect(comp.querySelector('.base >>> #popup-overlay')).toBeUndefined();
+
+        const popup = comp.querySelector('.base >>> .t-popup');
+        popup.dispatchEvent('visible-change');
+        await simulate.sleep(10);
+        expect(overlayClick).toHaveBeenCalledTimes(0);
+
+        // showOverlay为 true， overlayClick 事件执行
+        comp.setData({
+          visible: true,
+          showOverlay: true,
+        });
+        const $popupOverlay = comp.querySelector('.base >>> #popup-overlay');
+
+        $popupOverlay.dispatchEvent('tap');
+        await simulate.sleep(0);
+        expect(overlayClick).toHaveBeenCalledTimes(1);
+      }
     });
   });
 });

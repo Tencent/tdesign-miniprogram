@@ -3,7 +3,10 @@
 exports[`Transition Transition appear demo works fine 1`] = `
 <appear>
   <t-button
+    block="{{true}}"
     size="large"
+    theme="primary"
+    variant="outline"
     bind:tap="onTriggerClick"
   >
     Toggle attach
@@ -14,12 +17,17 @@ exports[`Transition Transition appear demo works fine 1`] = `
 exports[`Transition Transition base demo works fine 1`] = `
 <base>
   <t-button
+    block="{{true}}"
     size="large"
+    theme="primary"
+    variant="outline"
     bind:tap="onTriggerClick"
   >
     Toggle
   </t-button>
   <t-transition
+    customStyle="font-size: 9px"
+    style="display:none"
     visible="{{false}}"
   >
     <wx-view
@@ -32,7 +40,10 @@ exports[`Transition Transition base demo works fine 1`] = `
 exports[`Transition Transition custom demo works fine 1`] = `
 <custom>
   <t-button
+    block="{{true}}"
     size="large"
+    theme="primary"
+    variant="outline"
     bind:tap="onTriggerClick"
   >
     Toggle
@@ -51,10 +62,13 @@ exports[`Transition Transition custom demo works fine 1`] = `
 exports[`Transition Transition destroy demo works fine 1`] = `
 <destroy>
   <t-button
+    block="{{true}}"
     size="large"
+    theme="primary"
+    variant="outline"
     bind:tap="onTriggerClick"
   >
-    Toggle
+    Toggle attach
   </t-button>
   <t-transition
     destroyOnHide="{{true}}"

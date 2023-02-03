@@ -5,12 +5,3 @@
 .block + .block {
   margin-top: 32rpx;
 }
-
-t-tag {
-  display: inline-flex;
-  vertical-align: top;
-}
-
-.block t-tag + t-tag {
-  margin-left: 16rpx;
-}

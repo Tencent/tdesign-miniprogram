@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Grid宫格",
+  "navigationBarTitleText": "Grid",
   "usingComponents": {
     "base": "./base",
     "border": "./border",

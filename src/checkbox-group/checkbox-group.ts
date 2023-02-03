@@ -1,12 +1,12 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import props from '../checkbox/checkbox-group-props';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
 @wxComponent()
 export default class CheckBoxGroup extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = ['class', `${prefix}-class`];
 
   relations: RelationsOptions = {
     '../checkbox/checkbox': {
@@ -54,7 +54,7 @@ export default class CheckBoxGroup extends SuperComponent {
 
   methods = {
     getChilds() {
-      let items = this.getRelationNodes('../checkbox/checkbox');
+      let items = this.$children;
       if (!items.length) {
         items = this.selectAllComponents(`.${prefix}-checkbox-option`);
       }

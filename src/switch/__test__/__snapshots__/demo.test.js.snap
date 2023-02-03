@@ -3,7 +3,7 @@
 exports[`Switch Switch base demo works fine 1`] = `
 <base>
   <t-cell
-    title="默认"
+    title="基础开关"
   >
     <t-switch
       defaultValue="{{true}}"
@@ -20,41 +20,10 @@ exports[`Switch Switch color demo works fine 1`] = `
   >
     <t-cell
       bordered="{{false}}"
-      title="自定义颜色"
+      title="自定义颜色开关"
     >
       <t-switch
         defaultValue="{{true}}"
-        loading="{{true}}"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      bordered="{{false}}"
-      title="自定义颜色"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        label="{{
-          Array [
-            "关",
-            "开",
-          ]
-        }}"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      bordered="{{false}}"
-      title="自定义颜色"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        icon="{{
-          Array [
-            "close",
-            "check",
-          ]
-        }}"
         slot="note"
       />
     </t-cell>
@@ -65,7 +34,7 @@ exports[`Switch Switch color demo works fine 1`] = `
 exports[`Switch Switch label demo works fine 1`] = `
 <wx-label>
   <t-cell
-    title="默认"
+    title="带文字开关"
   >
     <t-switch
       label="{{
@@ -80,7 +49,7 @@ exports[`Switch Switch label demo works fine 1`] = `
     />
   </t-cell>
   <t-cell
-    title="默认关"
+    title="带图标开关"
   >
     <t-switch
       defaultValue="{{true}}"
@@ -128,102 +97,6 @@ exports[`Switch Switch size demo works fine 1`] = `
       />
     </t-cell>
   </wx-view>
-  <wx-view
-    class="group"
-  >
-    <t-cell
-      title="大尺寸 32"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        label="{{
-          Array [
-            "关",
-            "开",
-          ]
-        }}"
-        size="large"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      title="中尺寸 28"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        label="{{
-          Array [
-            "关",
-            "开",
-          ]
-        }}"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      title="小尺寸 24"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        label="{{
-          Array [
-            "关",
-            "开",
-          ]
-        }}"
-        size="small"
-        slot="note"
-      />
-    </t-cell>
-  </wx-view>
-  <wx-view
-    class="group"
-  >
-    <t-cell
-      title="大尺寸 32"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        icon="{{
-          Array [
-            "close",
-            "check",
-          ]
-        }}"
-        size="large"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      title="中尺寸 28"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        icon="{{
-          Array [
-            "close",
-            "check",
-          ]
-        }}"
-        slot="note"
-      />
-    </t-cell>
-    <t-cell
-      title="小尺寸 24"
-    >
-      <t-switch
-        defaultValue="{{true}}"
-        icon="{{
-          Array [
-            "close",
-            "check",
-          ]
-        }}"
-        size="small"
-        slot="note"
-      />
-    </t-cell>
-  </wx-view>
 </size>
 `;
 
@@ -241,7 +114,7 @@ exports[`Switch Switch status demo works fine 1`] = `
       title="加载状态"
     >
       <t-switch
-        defaultValue="{{true}}"
+        defaultValue="{{false}}"
         loading="{{true}}"
         slot="note"
       />
@@ -250,7 +123,7 @@ exports[`Switch Switch status demo works fine 1`] = `
       title="加载状态"
     >
       <t-switch
-        defaultValue="{{false}}"
+        defaultValue="{{true}}"
         loading="{{true}}"
         slot="note"
       />

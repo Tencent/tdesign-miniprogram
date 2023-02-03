@@ -5,13 +5,3 @@
 .pannel-item::after {
   border: 0;
 }
-
-.sub-text {
-  color: #000;
-  opacity: 0.9;
-}
-
-.empty {
-  color: #000;
-  opacity: 0.32;
-}

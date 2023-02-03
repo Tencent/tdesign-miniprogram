@@ -11,12 +11,25 @@ exports[`Badge Badge base demo works fine 1`] = `
     class="demo-wrapper"
   >
     <t-badge
-      class="badge-item"
+      class="wrapper"
       content="消息"
       dot="{{true}}"
+      offset="{{
+        Array [
+          -4,
+          4,
+        ]
+      }}"
     />
     <t-badge
+      class="wrapper"
       dot="{{true}}"
+      offset="{{
+        Array [
+          1,
+          -1,
+        ]
+      }}"
     >
       <t-icon
         name="notification"
@@ -24,7 +37,14 @@ exports[`Badge Badge base demo works fine 1`] = `
       />
     </t-badge>
     <t-badge
+      class="wrapper"
       dot="{{true}}"
+      offset="{{
+        Array [
+          1,
+          1,
+        ]
+      }}"
     >
       <t-button>
         按钮
@@ -40,11 +60,24 @@ exports[`Badge Badge base demo works fine 1`] = `
     class="demo-wrapper"
   >
     <t-badge
+      class="wrapper"
       content="消息"
       count="8"
+      offset="{{
+        Array [
+          -8,
+        ]
+      }}"
     />
     <t-badge
+      class="wrapper"
       count="2"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
     >
       <t-icon
         name="notification"
@@ -52,7 +85,14 @@ exports[`Badge Badge base demo works fine 1`] = `
       />
     </t-badge>
     <t-badge
-      count="99"
+      class="wrapper"
+      count="8"
+      offset="{{
+        Array [
+          2,
+          2,
+        ]
+      }}"
     >
       <t-button>
         按钮
@@ -69,6 +109,12 @@ exports[`Badge Badge base demo works fine 1`] = `
   >
     <t-badge
       count="NEW"
+      offset="{{
+        Array [
+          0,
+          2,
+        ]
+      }}"
     >
       <t-button
         icon="notification"
@@ -90,21 +136,20 @@ exports[`Badge Badge size demo works fine 1`] = `
   <wx-view
     class="block"
   >
-    <t-badge
-      count="12"
-      offset="{{
-        Array [
-          10,
-          7,
-        ]
+    <t-avatar
+      badgeProps="{{
+        Object {
+          "count": 8,
+          "offset": Array [
+            7,
+            7,
+          ],
+          "size": "large",
+        }
       }}"
+      icon="user"
       size="large"
-    >
-      <t-avatar
-        icon="user"
-        size="large"
-      />
-    </t-badge>
+    />
   </wx-view>
   <wx-view
     class="demo-desc"
@@ -114,19 +159,18 @@ exports[`Badge Badge size demo works fine 1`] = `
   <wx-view
     class="block"
   >
-    <t-badge
-      count="12"
-      offset="{{
-        Array [
-          6,
-          5,
-        ]
+    <t-avatar
+      badgeProps="{{
+        Object {
+          "count": 8,
+          "offset": Array [
+            5,
+            5,
+          ],
+        }
       }}"
-    >
-      <t-avatar
-        icon="user"
-      />
-    </t-badge>
+      icon="user"
+    />
   </wx-view>
 </size>
 `;
@@ -143,6 +187,12 @@ exports[`Badge Badge theme demo works fine 1`] = `
   >
     <t-badge
       count="2"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
     >
       <t-icon
         name="notification"
@@ -160,6 +210,12 @@ exports[`Badge Badge theme demo works fine 1`] = `
   >
     <t-badge
       count="2"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
       shape="square"
     >
       <t-icon

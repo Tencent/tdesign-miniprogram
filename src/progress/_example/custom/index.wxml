@@ -1,6 +1,2 @@
-<view class="progress-example">
-  <t-progress percentage="88" trackColor="#EAC9FF" color="#CD04FF" t-class-label="external-class-label" />
-</view>
-<view class="progress-example">
-  <t-progress percentage="88" t-class-bar="external-class-bar" />
-</view>
+<t-progress percentage="88" trackColor="#EAC9FF" color="#CD04FF" t-class-label="external-class-label" />
+<t-progress percentage="88" t-class-bar="external-class-bar" />

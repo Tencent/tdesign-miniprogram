@@ -1,24 +1,30 @@
 @import '../common/style/index.less';
 
+@swiper-radius: var(--td-swiper-radius, @radius-large);
+@swiper-item-padding: var(--td-swiper-item-padding, 0);
+
 .@{prefix}-swiper {
   position: relative;
-  overflow: hidden;
-  height: 300rpx;
 
-  &__container {
-    // display: flex;
-    // flex-direction: row;
-    position: relative;
+  &-host {
+    border-radius: @swiper-radius;
+    overflow: hidden;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: @swiper-item-padding;
+  }
+
+  &__image {
     width: 100%;
-    height: 100%;
+    transition: all 0.3s ease;
 
-    &.@{prefix}-in-animation {
-      transition-property: transform;
-    }
-
-    &.@{prefix}-is-hidden {
-      visibility: hidden;
-      transition-property: none;
+    &-host {
+      display: block;
+      width: 100%;
     }
   }
 }

@@ -1,21 +1,19 @@
 <wxs src="./message.wxs" module="this"></wxs>
+<wxs src="../common/utils.wxs" module="_" />
+
 <import src="../common/template/icon.wxml" />
 
 <block wx:if="{{visible}}">
   <view
     class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{theme}}"
-    style="{{this.getMessageStyles(zIndex, offset, wrapTop, customStyle)}}"
+    style="{{_._style([this.getMessageStyles(zIndex, offset, wrapTop), style, customStyle])}}"
     animation="{{showAnimation}}"
     id="{{classPrefix}}"
     aria-role="alert"
   >
-    <view wx:if="{{iconName || !this.isEmptyObj(iconData)}}" class="{{classPrefix}}__icon--left">
-      <slot wx:if="{{iconName === 'slot'}}" name="icon" />
-      <template
-        wx:else
-        is="icon"
-        data="{{tClass: prefix + '-class-icon', ariaHidden: true, name: iconName, ...iconData}}"
-      ></template>
+    <view class="{{classPrefix}}__icon--left">
+      <slot name="icon" />
+      <template wx:if="{{_icon}}" is="icon" data="{{tClass: prefix + '-class-icon', ariaHidden: true, ..._icon }}" />
     </view>
 
     <view
@@ -24,8 +22,8 @@
       id="{{classPrefix}}__text-wrap"
     >
       <view class="{{classPrefix}}__text {{prefix}}-class-content" id="{{classPrefix}}__text" animation="{{animation}}">
-        <view wx:if="{{content}}">{{content}}</view>
-        <slot name="content"></slot>
+        <block wx:if="{{content}}">{{content}}</block>
+        <slot name="content" />
       </view>
     </view>
 
@@ -33,24 +31,20 @@
       wx:if="{{action}}"
       t-class="{{classPrefix}}__btn--right {{prefix}}-class-action"
       theme="primary"
-      variant="outline"
+      variant="text"
       size="small"
       bind:tap="handleBtnClick"
       >{{action}}</t-button
     >
     <slot name="action" />
 
-    <view
-      wx:if="{{ closeBtnName || !this.isEmptyObj(closeBtnData)}}"
-      class="{{classPrefix}}__icon--right"
-      bind:tap="handleClose"
-    >
-      <slot wx:if="{{closeBtnName === 'slot'}}" name="closeBtn" />
+    <view class="{{classPrefix}}__icon--right" bind:tap="handleClose">
+      <slot name="close-btn" />
       <template
-        wx:else
+        wx:if="{{_closeBtn}}"
         is="icon"
-        data="{{tClass: prefix + '-class-close-btn', ariaRole: 'button', ariaLabel: '关闭', name: closeBtnName, ...closeBtnData}}"
-      ></template>
+        data="{{tClass: prefix + '-class-close-btn', ariaRole: 'button', ariaLabel: '关闭', ..._closeBtn }}"
+      />
     </view>
   </view>
 </block>

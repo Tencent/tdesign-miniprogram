@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/sr
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
-import { isNumber, getRect } from '../common/utils';
+import { getRect, unitConvert, calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
@@ -31,7 +31,6 @@ export default class Message extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    visible: false,
     loop: -1,
     animation: [],
     showAnimation: [],
@@ -51,12 +50,16 @@ export default class Message extends SuperComponent {
       }
     },
 
-    icon(icon) {
-      this.setIcon(icon);
+    icon(v) {
+      this.setData({
+        _icon: calcIcon(v, 'error-circle-filled'),
+      });
     },
 
-    closeBtn(closeBtn) {
-      this.setCloseBtn(closeBtn);
+    closeBtn(v) {
+      this.setData({
+        _closeBtn: calcIcon(v, 'close'),
+      });
     },
   };
 
@@ -89,53 +92,6 @@ export default class Message extends SuperComponent {
 
   detached() {
     this.clearMessageAnimation();
-  }
-
-  /** icon 值设置 */
-  setIcon(icon) {
-    if (!icon) {
-      this.setData({ iconName: '', iconData: {} });
-    } else if (typeof icon === 'string') {
-      this.setData({
-        iconName: icon,
-        iconData: {},
-      });
-    } else if (typeof icon === 'object') {
-      this.setData({
-        iconName: '',
-        iconData: icon,
-      });
-    } else {
-      const { theme } = this.properties;
-      const themeMessage = {
-        info: 'error-circle',
-        success: 'check-circle',
-        warning: 'error-circle',
-        error: 'error-circle',
-      };
-      this.setData({ iconName: themeMessage[theme], iconData: {} });
-    }
-  }
-
-  setCloseBtn(closeBtn) {
-    if (!closeBtn) {
-      this.setData({ closeBtnName: '', closeBtnData: {} });
-    } else if (typeof closeBtn === 'string') {
-      this.setData({
-        closeBtnName: closeBtn,
-        closeBtnData: {},
-      });
-    } else if (typeof closeBtn === 'object') {
-      this.setData({
-        closeBtnName: '',
-        closeBtnData: closeBtn,
-      });
-    } else {
-      this.setData({
-        closeBtnName: 'close',
-        closeBtnData: {},
-      });
-    }
   }
 
   /** 检查是否需要开启一个新的动画循环 */
@@ -194,22 +150,6 @@ export default class Message extends SuperComponent {
     this.nextAnimationContext = 0;
   }
 
-  /** offset 默认单位是 rpx 统一处理成 px 大小，因为小程序dom中实际使用的是 px */
-  offsetUnitToPx(e: number | string) {
-    if (isNumber(e)) {
-      return Number(e) / 2;
-    }
-
-    if (String(e).indexOf('rpx') > -1) {
-      return Number(String(e).split('rpx')[0]) / 2;
-    }
-
-    if (String(e).indexOf('px') > -1) {
-      return Number(String(e).split('px')[0]);
-    }
-    return 0;
-  }
-
   show() {
     const { duration, marquee, offset } = this.properties;
     this.setData({ visible: true, loop: marquee.loop });
@@ -229,7 +169,7 @@ export default class Message extends SuperComponent {
         this.setData({
           showAnimation: wx
             .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
-            .translateY(wrapRect.height + this.offsetUnitToPx(offset[0]))
+            .translateY(wrapRect.height + unitConvert(offset[0]))
             .step()
             .export(),
         });

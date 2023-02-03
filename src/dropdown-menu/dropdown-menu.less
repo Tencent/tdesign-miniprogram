@@ -1,36 +1,22 @@
 @import '../common/style/index.less';
 
-@dropdown-menu-primary-color: @primary-color;
-@dropdown-menu-primary-color-1: @primary-color-1;
-
-@dropdown-menu-color-block: @bg-color-block;
-
-@dropdown-menu-disabled-color: @text-level-4-color;
-
-@dropdown-menu-level-2-color: @text-level-2-color;
-
-@dropdown-menu-level-1-color: @text-level-1-color;
-
-@dropdown-item-height: 100%;
-
-@dropdown-item-border-radius: @border-radius;
-@cell-vertical-padding: 12px;
-@cell-horizontal-padding: 16px;
-@cell-border-color: @border-level-1-color;
+@dropdown-menu-bg-color: var(--td-dropdown-menu-bg-colorm, @bg-color-block);
+@dropdown-menu-color: var(--td-dropdown-menu-colorm, @font-gray-1);
+@dropdown-menu-active-color: var(--td-dropdown-menu-active-colorm, @primary-color);
+@dropdown-menu-disabled-color: var(--td-dropdown-menu-disabled-colorm, @font-gray-4);
+@dropdown-menu-font-size: var(--td-dropdown-menu-font-sizem, 28rpx);
+@dropdown-menu-icon-size: var(--td-dropdown-menu-icon-sizem, 48rpx);
 
 @dropdownMenu: ~'@{prefix}-dropdown-menu';
 
-/** dropdwon-menu */
 .@{dropdownMenu} {
-  &__bar {
-    position: relative;
-    display: flex;
-    height: 48px;
-    background: @dropdown-menu-color-block;
+  position: relative;
+  display: flex;
+  height: 48px;
+  background: @dropdown-menu-bg-color;
 
-    &::after {
-      .hairline-bottom();
-    }
+  &::after {
+    .hairline-bottom();
   }
 
   &__item {
@@ -41,21 +27,19 @@
     padding: 0 @spacer;
     position: relative;
     overflow: hidden;
-    color: @dropdown-menu-level-1-color;
+    color: @dropdown-menu-color;
 
-    &.@{prefix}-is-active {
-      color: @dropdown-menu-primary-color;
+    &--active {
+      color: @dropdown-menu-active-color;
     }
 
-    &.@{prefix}-is-disabled {
-      .@{dropdownMenu}__icon,
-      .@{dropdownMenu}__title {
-        color: @dropdown-menu-disabled-color;
-      }
+    &--disabled {
+      color: @dropdown-menu-disabled-color;
     }
   }
 
   &__icon {
+    font-size: @dropdown-menu-icon-size;
     transition: transform 240ms ease;
 
     &--active {
@@ -67,6 +51,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 32rpx;
+    font-size: @dropdown-menu-font-size;
   }
 }

@@ -7,15 +7,10 @@
 
 import { TdIconProps } from './type';
 const props: TdIconProps = {
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 图标颜色 */
   color: {
     type: String,
-    value: '',
+    value: 'inherit',
   },
   /** 图标名称 */
   name: {
@@ -26,7 +21,7 @@ const props: TdIconProps = {
   /** 图标尺寸，支持 'small', 'medium', 'large'，'35px', '3em' 等 */
   size: {
     type: String,
-    value: undefined,
+    value: 'inherit',
   },
   /** 自定义图标前缀 */
   prefix: {

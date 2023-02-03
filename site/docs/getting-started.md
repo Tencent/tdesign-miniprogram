@@ -4,13 +4,6 @@ description: TDesign 微信小程序组件库。
 spline: explain
 ---
 
-<div style="background: rgba(0, 168, 112, .1); display: flex; align-items: center; line-height: 20px; padding: 14px 24px; border-radius: 3px; color: #555a65">
-  <svg fill="none" viewBox="0 0 16 16" width="16px" height="16px" style="margin-right: 5px">
-    <path fill="#00a870" d="M8 15A7 7 0 108 1a7 7 0 000 14zM7.4 4h1.2v1.2H7.4V4zm.1 2.5h1V12h-1V6.5z" fillOpacity="0.9"></path>
-  </svg>
-  目前组件库处于 Beta 阶段，快速迭代中，请留意版本变化。
-</div>
-
 ## 预览
 
 小程序组件示例小程序，请使用微信扫码预览 ↓
@@ -65,7 +58,7 @@ npm i tdesign-miniprogram -S --production
 接着就可以在 wxml 中直接使用组件
 
 ```html
-<t-button type="primary">按钮</t-button>
+<t-button theme="primary">按钮</t-button>
 ```
 
 ## 在开发者工具中预览

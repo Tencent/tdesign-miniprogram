@@ -1,22 +1,22 @@
 @import '../common/style/index.less';
 
-@skeleton-animation-gradient: rgba(0, 0, 0, 4%);
-@skeleton-animation-flashed: rgba(90%, 90%, 90%, 0.3);
-@skeleton-bg-color: @gray-color-1;
-@skeleton-row-spacing: @spacer-2;
-@skeleton-text-height: 32rpx;
-@skeleton-rect-height: 32rpx;
-@skeleton-circle-height: 96rpx;
-@skeleton-text-border-radius: @radius-small;
-@skeleton-rect-border-radius: @radius-default;
-@skeleton-circle-border-radius: @radius-circle;
+@skeleton-animation-gradient: var(--td-skeleton-animation-gradient, rgba(0, 0, 0, 4%));
+@skeleton-animation-flashed: var(--td-skeleton-animation-flashed, rgba(90%, 90%, 90%, 0.3));
+@skeleton-bg-color: var(--td-skeleton-bg-color, @gray-color-1);
+@skeleton-row-spacing: var(--td-skeleton-row-spacing, @spacer-2);
+@skeleton-text-height: var(--td-skeleton-text-height, 32rpx);
+@skeleton-rect-height: var(--td-skeleton-rect-height, 32rpx);
+@skeleton-circle-height: var(--td-skeleton-circle-height, 96rpx);
+@skeleton-text-border-radius: var(--td-skeleton-text-border-radius, @radius-small);
+@skeleton-rect-border-radius: var(--td-skeleton-rect-border-radius, @radius-default);
+@skeleton-circle-border-radius: var(--td-skeleton-circle-border-radius, @radius-circle);
 
 .@{prefix}-skeleton {
   box-sizing: border-box;
 
   &__row {
     display: flex;
-    margin-bottom: var(--td-skeleton-row-spacing, @skeleton-row-spacing); // 骨架屏行间距
+    margin-bottom: @skeleton-row-spacing; // 骨架屏行间距
     align-items: center;
     justify-content: space-between;
   }
@@ -27,7 +27,7 @@
   }
 
   &__col {
-    background-color: var(--td-skeleton-bg-color, @skeleton-bg-color); // 骨架屏背景颜色
+    background-color: @skeleton-bg-color; // 骨架屏背景颜色
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,19 +41,19 @@
   &--type {
     &-text {
       width: 100%;
-      height: var(--td-skeleton-text-height, @skeleton-text-height); // 'text'类型骨架屏列高
-      border-radius: var(--td-skeleton-text-border-radius, @skeleton-text-border-radius); // 'text'类型骨架屏列圆角
+      height: @skeleton-text-height; // 'text'类型骨架屏列高
+      border-radius: @skeleton-text-border-radius; // 'text'类型骨架屏列圆角
     }
 
     &-rect {
       width: 100%;
-      height: var(--td-skeleton-rect-height, @skeleton-rect-height); // 'rect'类型骨架屏列高
-      border-radius: var(--td-skeleton-rect-border-radius, @skeleton-rect-border-radius); // rect'类型骨架屏列圆角
+      height: @skeleton-rect-height; // 'rect'类型骨架屏列高
+      border-radius: @skeleton-rect-border-radius; // rect'类型骨架屏列圆角
     }
 
     &-circle {
-      width: var(--td-skeleton-circle-height, @skeleton-circle-height); // 'circle'类型骨架屏列宽
-      height: var(--td-skeleton-circle-height, @skeleton-circle-height); // 'circle'类型骨架屏列高
+      width: @skeleton-circle-height; // 'circle'类型骨架屏列宽
+      height: @skeleton-circle-height; // 'circle'类型骨架屏列高
       border-radius: var(
         --td-skeleton-circle-border-radius,
         @skeleton-circle-border-radius

@@ -1,11 +1,13 @@
 {
-  "navigationBarTitleText": "Dialog 对话框",
+  "navigationBarTitleText": "Dialog",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
     "confirm": "./confirm",
-    "inputDialog": "./inputDialog",
+    "with-input": "./with-input",
+    "with-image": "./with-image",
     "command": "./command",
+    "status": "./status",
     "buttonDemo": "./button"
   }
 }

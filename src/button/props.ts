@@ -19,11 +19,6 @@ const props: TdButtonProps = {
   customDataset: {
     type: null,
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 禁用状态 */
   disabled: {
     type: Boolean,
@@ -40,13 +35,7 @@ const props: TdButtonProps = {
   },
   /** 图标名称 */
   icon: {
-    type: String,
-    value: '',
-  },
-  /** 图标属性，透传至 icon */
-  iconProps: {
-    type: Object,
-    value: {},
+    type: null,
   },
   /** 是否显示为加载状态 */
   loading: {
