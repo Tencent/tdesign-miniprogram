@@ -1,0 +1,3 @@
+<t-avatar-group max="5">
+  <t-avatar wx:for="{{pics}}" wx:for-item="pic" wx:key="index" image="{{pic}}" bordered />
+</t-avatar-group>

@@ -1,4 +1,6 @@
-<view class="{{classPrefix}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
   <t-grid gutter="{{gutter}}" border="{{false}}" align="center" column="{{column}}">
     <!-- 图片/视频 -->
     <t-grid-item
@@ -8,14 +10,20 @@
       t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
       t-class-content="{{classPrefix}}__grid-content"
     >
-      <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
-        <image
+      <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
+        <t-image
           wx:if="{{file.type !== 'video'}}"
           bindtap="onProofTap"
           data-index="{{index}}"
-          class="{{classPrefix}}__thumbnail"
+          t-class="{{classPrefix}}__thumbnail"
           src="{{file.url}}"
-          mode="scaleToFill"
+          mode="{{imageProps.mode}}"
+          error="{{imageProps.error}}"
+          lazy="{{imageProps.lazy}}"
+          loading="{{imageProps.loading}}"
+          shape="{{imageProps.shape || 'round'}}"
+          webp="{{imageProps.webp}}"
+          showMenuByLongpress="{{image.showMenuByLongpress}}"
         />
         <video
           wx:if="{{file.type === 'video'}}"
@@ -28,18 +36,23 @@
         <!-- 失败重试 -->
         <view
           data-index="{{index}}"
-          wx:if="{{file.percent !== undefined && file.percent !== 100}}"
+          wx:if="{{file.status && file.status != 'done'}}"
           class="{{classPrefix}}__progress-mask"
+          data-file="{{file}}"
+          bind:tap="onFileClick"
         >
-          <view wx:if="{{file.percent === -1}}" class="{{classPrefix}}__progress-failed">
-            <t-icon name="refresh" size="45rpx" color="#fff" />
-          </view>
-          <view wx:else class="{{classPrefix}}__progress-value">{{file.percent}}%</view>
+          <block wx:if="{{file.status == 'loading'}}">
+            <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" />
+            <view class="{{classPrefix}}__progress-text">{{file.percent ? file.percent + '%' : '上传中...'}}</view>
+          </block>
+          <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" />
+          <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text"
+            >{{file.status == 'reload' ? '重新上传' : '上传失败'}}</view
+          >
         </view>
         <!-- 删除 -->
-        <view class="{{classPrefix}}__close-btn" bindtap="onDelete" data-index="{{index}}">
-          <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
-          <t-icon wx:else name="close" size="34rpx" color="#fff" />
+        <view class="{{classPrefix}}__close-btn hotspot-expanded" bindtap="onDelete" data-index="{{index}}">
+          <t-icon name="close" size="16" color="#fff" />
         </view>
       </view>
     </t-grid-item>
@@ -50,10 +63,11 @@
       t-class-content="{{classPrefix}}__grid-content"
       bindclick="onAddTap"
     >
-      <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
-        <view class="{{classPrefix}}__add-icon">
-          <slot wx:if="{{addContent === 'slot'}}" name="addContent" />
-          <t-icon wx:else name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
+      <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
+        <slot name="add-content" />
+        <block wx:if="{{addContent}}">{{addContent}}</block>
+        <view wx:else class="{{classPrefix}}__add-icon">
+          <t-icon name="add" />
         </view>
       </view>
     </t-grid-item>

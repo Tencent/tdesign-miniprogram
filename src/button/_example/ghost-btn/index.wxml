@@ -1,0 +1,5 @@
+<view class="button-example">
+  <t-button theme="primary" ghost size="large">幽灵按钮</t-button>
+  <t-button theme="danger" ghost size="large">幽灵按钮</t-button>
+  <t-button ghost size="large">幽灵按钮</t-button>
+</view>

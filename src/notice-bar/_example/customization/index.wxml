@@ -1,0 +1,12 @@
+<!-- slot实现自定义content内容 -->
+<t-notice-bar visible="{{true}}" suffixIcon="slot">
+  <view slot="content">
+    提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
+    <view class="extra">
+      <t-link content="详情" theme="primary" navigator-props="{{navigatorProps}}" />
+    </view>
+  </view>
+  <view slot="suffix-icon">
+    <t-icon name="close" size="44rpx"></t-icon>
+  </view>
+</t-notice-bar>

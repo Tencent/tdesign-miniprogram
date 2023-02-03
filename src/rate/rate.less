@@ -1,6 +1,15 @@
 @import '../common/style/index.less';
 
+@rate-text-font-size: var(--td-rate-text-font-size, @font-size-m);
+@rate-text-color: var(--td-rate-text-color, @font-gray-4);
+@rate-text-active-color: var(--td-rate-text-active-color, @font-gray-1);
+@rate-selected-color: var(--td-rate-selected-color, @warning-color);
+@rate-unselected-color: var(--td-rate-unselected-color, @gray-color-4);
+@rate-text-active-font-weight: var(--td-rate-text-active-font-weight, 600);
+@rate-icon-scale: var(--td-rate-icon-scale, 1.33);
+
 .@{prefix}-rate {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -10,14 +19,77 @@
     display: inline-flex;
   }
 
-  &__star {
+  &__icon {
+    display: block;
     line-height: 1em;
+    width: 1em;
+    transition: transform 0.3s ease;
+
+    &--current {
+      transform: scale(@rate-icon-scale);
+    }
+
+    &--selected {
+      color: @rate-selected-color;
+
+      &-half {
+        color: transparent;
+        background: linear-gradient(
+          to right,
+          @rate-selected-color 0%,
+          @rate-selected-color 50%,
+          @rate-unselected-color 51%,
+          @rate-unselected-color 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+    }
+
+    &--unselected {
+      color: @rate-unselected-color;
+    }
   }
 
-  &__desc {
-    font-size: 32rpx;
-    color: @text-placeholder-color;
-    padding-left: 32rpx;
+  &__text {
+    font-size: @rate-text-font-size;
+    color: @rate-text-color;
+    margin-left: 32rpx;
     vertical-align: middle;
+
+    &--active {
+      color: @rate-text-active-color;
+      font-weight: @rate-text-active-font-weight;
+    }
+  }
+
+  &__tips {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: calc(100% + 16rpx);
+    padding: 8rpx;
+    border-radius: 12rpx;
+    box-shadow: @shadow-1;
+    background-color: @bg-color-block;
+    transform: translateX(-50%);
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 64rpx;
+      border-radius: 6rpx;
+
+      &--active {
+        background-color: @gray-color-1;
+      }
+    }
+
+    &-text {
+      text-align: center;
+      font-size: 24rpx;
+      line-height: 40rpx;
+    }
   }
 }

@@ -1,0 +1,27 @@
+<view class="demo">
+  <view class="demo-title">Avatar 头像</view>
+  <view class="demo-desc">用于告知用户，该区域的状态变化或者待处理任务的数量。</view>
+  <t-demo title="01 组件类型" desc="图片头像" padding>
+    <imageAvatar />
+  </t-demo>
+  <t-demo desc="字符头像" padding>
+    <characterAvatar />
+  </t-demo>
+  <t-demo desc="图标头像" padding>
+    <iconAvatar />
+  </t-demo>
+
+  <t-demo title="02 组件样式" desc="纯展示" padding>
+    <exhibition />
+  </t-demo>
+  <t-demo desc="带操作" padding>
+    <action />
+  </t-demo>
+  <t-demo desc="徽标头像" padding>
+    <badgeAvatar />
+  </t-demo>
+
+  <t-demo title="03 组件尺寸" desc=" large/medium/small 尺寸" padding>
+    <size />
+  </t-demo>
+</view>

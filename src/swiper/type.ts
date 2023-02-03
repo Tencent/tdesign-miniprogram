@@ -2,19 +2,11 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
+import { SwiperNavProps } from '../swiper-nav/index';
+
 export interface TdSwiperProps {
-  /**
-   * 轮播切换动画效果类型
-   * @default slide
-   */
-  animation?: {
-    type: StringConstructor;
-    value?: 'slide';
-    required?: boolean;
-  };
   /**
    * 是否自动播放
    * @default true
@@ -22,7 +14,6 @@ export interface TdSwiperProps {
   autoplay?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 当前轮播在哪一项（下标）
@@ -31,7 +22,14 @@ export interface TdSwiperProps {
   current?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 轮播滑动方向，包括横向滑动和纵向滑动两个方向
@@ -40,7 +38,14 @@ export interface TdSwiperProps {
   direction?: {
     type: StringConstructor;
     value?: 'horizontal' | 'vertical';
-    required?: boolean;
+  };
+  /**
+   * 同时显示的滑块数量
+   * @default 1
+   */
+  displayMultipleItems?: {
+    type: NumberConstructor;
+    value?: number;
   };
   /**
    * 滑动动画时长
@@ -49,15 +54,29 @@ export interface TdSwiperProps {
   duration?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
-   * 当使用垂直方向滚动时的高度
+   * 指定 swiper 切换缓动动画类型
+   * @default default
+   */
+  easingFunction?: {
+    type: StringConstructor;
+    value?: 'default' | 'linear' | 'easeInCubic' | 'easeOutCubic' | 'easeInOutCubic';
+  };
+  /**
+   * 轮播的高度；默认单位 `px`
+   * @default 192
    */
   height?: {
-    type: NumberConstructor;
-    value?: number;
-    required?: boolean;
+    type: null;
+    value?: string | number;
+  };
+  /**
+   * 透传至 Image 组件
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 轮播间隔时间
@@ -66,18 +85,60 @@ export interface TdSwiperProps {
   interval?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
   /**
-   * 导航配置。`navigation.type` 表示导航器风格，圆点/分式等，没有值则不显示。`navigation.minShowNum` 表示小于这个数字不会显示导航器。`navigation.showSlideBtn` 表示是否显示两侧的滑动控制按钮
+   * 图片列表
+   */
+  list?: {
+    type: ArrayConstructor;
+    value?: string[];
+  };
+  /**
+   * 是否循环播放
+   * @default true
+   */
+  loop?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 导航器全部配置，true 的话使用默认配置
+   * @default true
    */
   navigation?: {
-    type: ObjectConstructor;
-    value?: Navigation;
-    required?: boolean;
+    type: null;
+    value?: SwiperNavProps | boolean;
   };
-};
-
-export interface Navigation { type?: NavigationVariant; minShowNum?: number; showSlideBtn?: boolean  };
-
-export type NavigationVariant = 'dots' | 'dots-bar' | 'fraction';
+  /**
+   * 后边距，可用于露出后一项的一小部分。默认单位 `px`
+   * @default 0
+   */
+  nextMargin?: {
+    type: null;
+    value?: string | number;
+  };
+  /**
+   * 页码信息展示位置
+   * @default bottom
+   */
+  paginationPosition?: {
+    type: StringConstructor;
+    value?: 'top-left' | 'top' | 'top-right' | 'bottom-left' | 'bottom' | 'bottom-right';
+  };
+  /**
+   * 前边距，可用于露出前一项的一小部分。默认单位 `px`
+   * @default 0
+   */
+  previousMargin?: {
+    type: null;
+    value?: string | number;
+  };
+  /**
+   * 当 swiper-item 的个数大于等于 2，关闭 circular 并且开启 previous-margin 或 next-margin 的时候，可以指定这个边距是否应用到第一个、最后一个元素
+   * @default false
+   */
+  snapToEdge?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+}

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-steps": "tdesign-miniprogram/steps/steps",
+    "t-step-item": "tdesign-miniprogram/step-item/step-item"
+  }
+}

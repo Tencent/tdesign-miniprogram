@@ -1,155 +1,96 @@
-import TComponent from '../common/component';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
+import type { TdCollapsePanelProps } from './type';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-collapse-panel`;
 
-const nextTick = () => new Promise((resolve) => setTimeout(resolve, 20));
+export interface CollapsePanelProps extends TdCollapsePanelProps {}
+@wxComponent()
+export default class CollapsePanel extends SuperComponent {
+  externalClasses = [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-header`];
 
-TComponent({
-  externalClasses: [`${prefix}-class`],
-  relations: {
+  options = {
+    multipleSlots: true,
+  };
+
+  relations: RelationsOptions = {
     '../collapse/collapse': {
       type: 'ancestor',
-      linked(this, target: WechatMiniprogram.Component.TrivialInstance) {
+      linked(target: WechatMiniprogram.Component.TrivialInstance) {
         this.parent = target;
+        const { value, defaultExpandAll, expandMutex, expandIcon, disabled } = target.properties;
+        const activeValues = defaultExpandAll && !expandMutex ? [this.properties.value] : value;
+
+        this.setData({
+          ultimateExpandIcon: expandIcon || this.properties.expandIcon,
+          ultimateDisabled: this.properties.disabled == null ? disabled : this.properties.disabled,
+        });
+        this.updateExpanded(activeValues);
       },
     },
-  },
-  properties: {
-    name: null,
-    title: null,
-    extra: null,
-    icon: String,
-    label: String,
-    disabled: Boolean,
-    clickable: Boolean,
-    border: {
-      type: Boolean,
-      value: true,
-    },
-    isLink: {
-      type: Boolean,
-      value: true,
-    },
-    labelWidth: {
-      type: Number,
-      value: 80,
-    },
-    content: null,
-  },
+  };
 
-  data: {
-    contentHeight: 0,
+  properties = props;
+
+  data = {
+    prefix,
     expanded: false,
-    transition: false,
     classPrefix: name,
     classBasePrefix: prefix,
-  },
-  methods: {
-    ready() {
-      this.updateExpanded();
-    },
+    ultimateExpandIcon: false,
+    ultimateDisabled: false,
+  };
+
+  methods = {
     set(data: Record<string, object | any>) {
       this.setData(data);
 
       return new Promise((resolve) => wx.nextTick(resolve));
     },
-    updateExpanded() {
+
+    updateExpanded(activeValues) {
       if (!this.parent) {
-        return Promise.resolve()
-          .then(nextTick)
-          .then(() => {
-            const data: Record<string, boolean | string> = { transition: true };
-            if (this.data.expanded) {
-              data.contentHeight = 'auto';
-            }
-            this.setData(data);
-          });
+        return;
       }
 
-      const { value, accordion } = this.parent.data;
-      const { children = [] } = this.parent;
-      const { name } = this.properties;
+      const { value } = this.properties;
+      const expanded = activeValues.includes(value);
 
-      const index = children.indexOf(this);
-      const currentName = name == null ? index : name;
+      if (expanded === this.properties.expanded) return;
 
-      const expanded = accordion
-        ? value === currentName
-        : (value || []).some((name: string | number) => name === currentName);
-
-      // const stack: string[] = [];
-      const stack: any = [];
-
-      if (expanded !== this.data.expanded) {
-        stack.push(this.updateStyle(expanded));
-      }
-
-      stack.push(this.set({ index, expanded }));
-      return Promise.all(stack)
-        .then(nextTick)
-        .then(() => {
-          const data: Record<string, boolean | string> = { transition: true };
-          if (this.data.expanded) {
-            data.contentHeight = 'auto';
-          }
-          this.setData(data);
-        });
+      this.setData({ expanded });
+      this.updateStyle(expanded);
     },
-    getRect(
-      selector: string,
-      all?: boolean,
-    ): Promise<WechatMiniprogram.BoundingClientRectCallbackResult> {
-      return new Promise((resolve) => {
-        wx.createSelectorQuery()
-          .in(this as WechatMiniprogram.Component.TrivialInstance)
-          [all ? 'selectAll' : 'select'](selector)
-          .boundingClientRect((rect) => {
-            if (all && Array.isArray(rect) && rect.length) {
-              resolve(rect);
-            }
 
-            if (!all && rect) {
-              resolve(rect);
-            }
-          })
-          .exec();
-      });
-    },
     updateStyle(expanded: boolean) {
-      return this.getRect(`.${name}__content`)
+      return getRect(this, `.${name}__content`)
         .then((rect: WechatMiniprogram.BoundingClientRectCallbackResult) => rect.height)
         .then((height: number) => {
+          const animation = wx.createAnimation({
+            duration: 0,
+            timingFunction: 'ease-in-out',
+          });
+
           if (expanded) {
-            return this.set({
-              contentHeight: height ? `${height}px` : 'auto',
-            });
+            animation.height(height).top(0).step({ duration: 300 }).height('auto').step();
+          } else {
+            animation.height(height).top(1).step({ duration: 1 }).height(0).step({ duration: 300 });
           }
 
-          return this.set({ contentHeight: `${height}px` })
-            .then(nextTick)
-            .then(() => this.set({ contentHeight: 0 }));
+          this.setData({ animation: animation.export() });
         });
     },
 
     onClick() {
-      if (this.disabled) {
-        return;
-      }
-      const { name } = this.properties;
-      const { expanded } = this.data;
-      const index = this.parent.children.indexOf(this);
-      const currentName = name == null ? index : name;
-      this.parent.switch(currentName, !expanded);
-    },
+      const { ultimateDisabled } = this.data;
+      const { value } = this.properties;
 
-    onTransitionEnd() {
-      if (this.data.expanded) {
-        this.setData({
-          contentHeight: 'auto',
-        });
-      }
+      if (ultimateDisabled) return;
+
+      this.parent.switch(value);
     },
-  },
-});
+  };
+}

@@ -7,9 +7,9 @@
 
 export interface TdIconProps {
   /**
-   * 图标自定义样式
+   * 自定义组件样式
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
     required?: boolean;

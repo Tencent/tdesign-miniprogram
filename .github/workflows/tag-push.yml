@@ -1,6 +1,7 @@
 name: TAG_PUSH
 
-on: create
+on:
+  create
 
 jobs:
   TAG_PUSH:
@@ -31,6 +32,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.TDESIGN_NPM_TOKEN }}
+          tag: ${{ contains(github.ref_name, 'alpha') && 'alpha' || 'latest' }}
       - if: steps.publish.outputs.type != 'none'
         run: |
           echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"

@@ -1,26 +1,23 @@
-<wxs src="../common/utils.wxs" module="utils" />
-<view class="{{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+<view
+  style="{{_._style([style, customStyle, (!text && theme != 'error' && 'width: ' + _.addUnit(size) + '; height: ' + _.addUnit(size))])}}"
+  class="class {{prefix}}-class"
+>
   <view
     wx:if="{{theme === 'bar' && theme !== 'error'}}"
     style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
     class="{{prefix}}-class-indicator {{classPrefix}}__bar {{classPrefix}}__bar--{{progress < 0 ? 'animation' : progress < 100 ? 'static': ''}} {{progress >= 100 || !loading ? classPrefix + '__bar--loaded' : ''}}"
   ></view>
-  <view
-    class="{{classPrefix}} {{classPrefix + '--' + layout}}"
-    style="{{show ? '' : 'display:none'}}"
-    wx:else
-  >
+  <view class="{{classPrefix}} {{classPrefix + '--' + layout}}" style="{{show ? '' : 'display:none'}}" wx:else>
     <view
-      wx:if="{{ theme !== 'error' }}"
+      wx:if="{{indicator && theme != 'error'}}"
       class="{{prefix}}-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
-      style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-    >
-      <view
-        wx:if="{{ theme === 'spinner' }}"
-        wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12]}}"
-        wx:key="index"
-        class="{{classPrefix}}__dot"
-      />
+      style="width: {{ _.addUnit(size) }}; height: {{ _.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+      aria-role="{{ theme !== 'error' ? ariaRole  || 'img' :  ''}}"
+      aria-label="{{ ariaLabel || text || '加载中'  }}"
+
+      >
+      <view wx:if="{{ theme === 'spinner' }}" wx:for="{{12}}" wx:key="index" class="{{classPrefix}}__dot" />
       <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular" />
       <block wx:if="{{ theme === 'dots' }}">
         <view
@@ -37,15 +34,18 @@
         ></view>
       </block>
     </view>
-    <view class="{{prefix}}-class-text">
+    <view
+      class="{{_.cls(classPrefix + '__text', [layout])}} {{prefix}}-class-text"
+      aria-hidden="{{indicator && theme != 'error'}}"
+      aria-label="{{ ariaLabel || text }}"
+    >
       <view wx:if="{{theme === 'error'}}">
-        <span>加载失败</span>
-        <span class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage">刷新</span>
+        加载失败
+        <text class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage" aria-role="button">刷新</text>
       </view>
-      <view class="{{classPrefix}}__text" wx:else>
-        {{text}}
-        <slot name="text" />
-      </view>
+      <block wx:if="{{text}}">{{text}}</block>
+      <slot name="text" />
+      <slot />
     </view>
   </view>
 </view>

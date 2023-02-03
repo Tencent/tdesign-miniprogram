@@ -1,0 +1,11 @@
+<t-radio-group class="group" style="{{style}}" customStyle="{{customStyle}}" value="{{value}}" bind:change="onChange">
+  <t-radio class="a" style="{{style}}" customStyle="{{customStyle}}" value="1"></t-radio>
+  <t-radio class="b" value="2"></t-radio>
+  <t-radio class="c" value="3" content-disabled></t-radio>
+</t-radio-group>
+
+<t-radio class="single" />
+
+<t-radio class="disable" disabled />
+
+<t-radio-group options="{{options}}" defaultValue="a" id="optionsGroup" />

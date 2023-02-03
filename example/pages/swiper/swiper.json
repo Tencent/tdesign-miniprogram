@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "Swiper",
-  "navigationBarBackgroundColor": "#fff",
-  "backgroundColor": "#fff",
-  "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
-  }
-}

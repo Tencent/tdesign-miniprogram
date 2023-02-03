@@ -1,5 +1,6 @@
-import { RouteRecordRaw, createRouter, createWebHistory, createWebHashHistory, RouterOptions } from 'vue-router';
-import siteConfig from './config';
+import { RouteRecordRaw, createRouter, createWebHistory, RouterOptions } from 'vue-router';
+// @ts-ignore
+import siteConfig from './site.config';
 
 const { docs } = siteConfig;
 
@@ -57,17 +58,16 @@ router.beforeEach((to, from, next) => {
   // @ts-ignore
   if (typeof NProgress !== 'undefined') {
     // @ts-ignore
-    NProgress.start();
+    window.NProgress && window.NProgress.start();
   }
   next();
 });
 
 router.afterEach(() => {
   // @ts-ignore
-  if (typeof NProgress !== 'undefined') {
-    // @ts-ignore
-    NProgress.done();
-  }
+  window.NProgress && window.NProgress.done();
+  // @ts-ignore
+  document.querySelector('td-stats')?.track?.();
 });
 
 export default router;

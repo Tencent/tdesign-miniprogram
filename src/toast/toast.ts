@@ -1,80 +1,90 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
-import { TdToastProps } from './type';
 import config from '../common/config';
-import Props from './props';
+import props from './props';
+import { ToastOptionsType } from './index';
+import transition from '../mixins/transition';
+import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-toast`;
 
+type Timer = NodeJS.Timeout | null;
+
 @wxComponent()
 export default class Toast extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
   options = {
-    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+    multipleSlots: true,
   };
 
-  hideTimer: number | null = null;
+  behaviors = [transition()];
 
-  removeTimer: number | null = null;
-
-  typeMapIcon: Record<string, string> = {
-    loading: 'loading',
-    success: 'check-circle',
-    fail: 'error-circle',
-  };
+  hideTimer: Timer = null;
 
   data = {
-    inserted: false,
-    show: false,
+    prefix,
     classPrefix: name,
     typeMapIcon: '',
   };
 
-  properties = Props;
-
-  show(options: TdToastProps) {
-    if (this.hideTimer) clearTimeout(this.hideTimer);
-    if (this.removeTimer) clearTimeout(this.removeTimer);
-    const typeMapIcon =
-      Object.keys(this.typeMapIcon).indexOf(options?.theme as any) !== -1
-        ? this.typeMapIcon[options?.theme as any]
-        : '';
-
-    const data = {
-      ...options,
-      show: true,
-      typeMapIcon,
-      inserted: true,
-    };
-    const { duration } = data;
-    this.setData(data);
-    this.hideTimer = setTimeout(() => {
-      this.clear();
-    }, duration as any);
-  }
-
-  clear() {
-    this.setData({ show: false });
-    this.removeTimer = setTimeout(() => {
-      this.setData({
-        inserted: false,
-      });
-    }, 300);
-  }
+  properties = props;
 
   detached() {
     this.destroyed();
   }
 
-  destroyed() {
-    if (this.removeTimer) {
-      clearTimeout(this.removeTimer);
-      this.removeTimer = null;
-    }
-    if (this.hideTimer) {
-      clearTimeout(this.hideTimer);
-      this.hideTimer = null;
-    }
-  }
+  methods = {
+    show(options: ToastOptionsType) {
+      if (this.hideTimer) clearTimeout(this.hideTimer);
+      const iconMap = {
+        loading: 'loading',
+        success: 'check-circle',
+        warning: 'error-circle',
+        fail: 'close-circle',
+      };
+      const typeMapIcon = iconMap[options?.theme];
+      const defaultOptions = {
+        direction: props.direction.value,
+        duration: props.duration.value,
+        icon: props.icon.value,
+        message: props.message.value,
+        placement: props.placement.value,
+        preventScrollThrough: props.preventScrollThrough.value,
+        theme: props.theme.value,
+      };
+
+      const data = {
+        ...defaultOptions,
+        ...options,
+        visible: true,
+        isLoading: options?.theme === 'loading',
+        _icon: calcIcon(typeMapIcon ?? options.icon),
+      };
+      const { duration } = data;
+      this.setData(data);
+
+      if (duration > 0) {
+        this.hideTimer = setTimeout(() => {
+          this.hide();
+        }, duration);
+      }
+    },
+
+    hide() {
+      this.setData({ visible: false });
+      this.data?.close?.();
+      this.triggerEvent('close');
+    },
+
+    destroyed() {
+      if (this.hideTimer) {
+        clearTimeout(this.hideTimer);
+        this.hideTimer = null;
+      }
+      this.triggerEvent('destory');
+    },
+
+    loop() {},
+  };
 }

@@ -1,0 +1,2 @@
+<t-calendar minDate="{{min}}" visible="{{visible}}" confirm-btn="{{null}}" bind:change="onChange" />
+<t-cell arrow title="不显示按钮" bind:tap="handleCalendar" note="{{note}}" />

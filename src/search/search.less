@@ -1,16 +1,17 @@
 @import '../common/style/index.less';
 
-@search-input-height: 80rpx;
-@search-input-text-color: rgba(0, 0, 0, 0.9);
-@search-input-text-disable: rgba(0, 0, 0, 0.26);
-@search-input-bg: rgba(243, 243, 243, 1);
-@search-label-padding-right: 8rpx;
-@search-input-padding-vertical: 16rpx;
-@search-input-padding-horizontal: 24rpx;
-@search-input-radius-square: 8rpx;
-@search-input-radius-round: @search-input-height / 2;
-@search-input-font-size: @font-size-m;
-@h-space-nest: @spacer;
+@search-bg-color: var(--td-search-bg-color, @gray-color-1);
+@search-text-color: var(--td-search-text-color, @font-gray-1);
+@search-label-color: var(--search-label-color, @font-gray-1);
+@search-font-size: var(--td-search-font-size, @font-size-m);
+@search-height: var(--td-search-height, 80rpx);
+@search-padding: var(--td-search-padding, 16rpx 24rpx);
+@search-placeholder-color: var(--td-search-placeholder-color, @font-gray-3);
+@search-icon-color: var(--td-search-icon-color, @font-gray-3);
+@search-square-radius: var(--td-search-square-radius, @radius-default);
+@search-round-radius: calc(@search-height / 2);
+@search-action-color: var(--td-search-action-color, @primary-color);
+@search-right-icon-color: var(--td-search-right-icon-color, @font-gray-3);
 
 .@{prefix}-search {
   display: flex;
@@ -18,62 +19,67 @@
   align-items: center;
 
   &__label {
-    padding: @search-label-padding-right;
-    color: @search-input-text-color;
+    padding: 8rpx;
+    color: @search-label-color;
   }
 
   &__input-box {
     flex: 1;
     box-sizing: border-box;
     display: flex;
-    height: @search-input-height;
+    height: @search-height;
     align-items: center;
-    border: 2rpx solid @search-input-bg;
-    background: @search-input-bg;
-    padding: @search-input-padding-vertical @search-input-padding-horizontal;
+    border: 2rpx solid @search-bg-color;
+    background: @search-bg-color;
+    padding: @search-padding;
 
     &.@{prefix}-is-focused {
-      border-color: @search-input-bg;
+      border-color: @search-bg-color;
     }
 
     &--round {
-      border-radius: @search-input-radius-round;
+      border-radius: @search-round-radius;
     }
 
     &--square {
-      border-radius: @search-input-radius-square;
+      border-radius: @search-square-radius;
     }
 
-    &--center.@{prefix}-not-focused {
-      justify-content: center;
+    &--center {
+      text-align: center;
     }
 
     .@{prefix}-input__keyword {
       display: inline-block;
       flex: 1;
-      color: @search-input-text-color;
-      font-size: @search-input-font-size;
-      padding-left: @h-space-nest;
+      color: @search-text-color;
+      font-size: @search-font-size;
+      padding-left: 10rpx;
     }
 
     .@{prefix}-icon {
-      color: @search-input-text-disable;
+      color: @search-icon-color;
     }
+  }
+
+  &__right {
+    position: relative;
+    margin-left: 10px;
+    color: @search-right-icon-color;
+    .hotspot-expanded();
   }
 
   &__search-action {
     margin-left: 30rpx;
-    font-size: @search-input-font-size;
-    color: @search-input-text-disable;
-  }
-
-  &__placeholder-center {
-    font-size: @search-input-font-size;
-    color: @search-input-text-disable;
-    margin-left: @h-space-nest;
+    font-size: @search-font-size;
+    color: @search-action-color;
   }
 
   &__placeholder {
-    color: @search-input-text-disable;
+    color: @search-placeholder-color;
+
+    &--center {
+      text-align: center;
+    }
   }
 }

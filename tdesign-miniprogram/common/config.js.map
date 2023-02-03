@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/common/config.ts"],"names":[],"mappings":"AAAA,eAAe;IACb,MAAM,EAAE,GAAG;CACZ,CAAC","file":"config.js","sourcesContent":["export default {\n  prefix: \"t\",\n};\n"]}

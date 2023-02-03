@@ -6,10 +6,15 @@
 
 import { TdCheckboxProps } from './type';
 const props: TdCheckboxProps = {
-  /** 复选框和内容相对位置 */
+  /** 多选框和内容相对位置 */
   align: {
     type: String,
     value: 'left',
+  },
+  /** 是否为块级元素 */
+  block: {
+    type: Boolean,
+    value: true,
   },
   /** 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 */
   checkAll: {
@@ -26,12 +31,7 @@ const props: TdCheckboxProps = {
     type: Boolean,
     value: false,
   },
-  /** 复选框颜色 */
-  color: {
-    type: String,
-    value: '#0052d9',
-  },
-  /** 复选框内容 */
+  /** 多选框内容 */
   content: {
     type: String,
   },
@@ -44,13 +44,14 @@ const props: TdCheckboxProps = {
     type: Boolean,
     value: undefined,
   },
-  /** 组件类名，分别用于设置 组件外层、复选框图标、主文案、内容 等元素类名 */
+  /** 组件类名，分别用于设置 组件外层、多选框图标、主文案、内容 等元素类名 */
   externalClasses: {
     type: Array,
   },
-  /** 自定义选中图标和非选中图标。示例：[选中态图标地址，非选中态图标地址] */
+  /** 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标 */
   icon: {
-    type: Array,
+    type: null,
+    value: 'circle',
   },
   /** 是否为半选 */
   indeterminate: {
@@ -76,15 +77,14 @@ const props: TdCheckboxProps = {
     type: String,
     value: '',
   },
-  /** 组件是否只读 */
+  /** 只读状态 */
   readonly: {
     type: Boolean,
     value: false,
   },
-  /** 复选框的值 */
+  /** 多选框的值 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
 };
 

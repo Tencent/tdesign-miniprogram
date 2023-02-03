@@ -1,0 +1,2 @@
+<t-input label="小规格H48" placeholder="请输入文字" size="small" />
+<t-input label="中规格H56" placeholder="请输入文字" />

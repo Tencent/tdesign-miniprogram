@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-26 17:12:37
  * */
 
 import { TdPopupProps } from './type';
@@ -20,14 +19,19 @@ const props: TdPopupProps = {
   content: {
     type: String,
   },
-  /** 是否在关闭浮层时销毁浮层 */
-  destroyOnClose: {
-    type: Boolean,
-    value: false,
+  /** 动画过渡时间 */
+  duration: {
+    type: Number,
+    value: 240,
   },
   /** 组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名 */
   externalClasses: {
     type: Array,
+  },
+  /** 遮罩层的属性，透传至 overlay */
+  overlayProps: {
+    type: Object,
+    value: {},
   },
   /** 浮层出现位置 */
   placement: {
@@ -51,11 +55,17 @@ const props: TdPopupProps = {
   /** 是否显示浮层 */
   visible: {
     type: Boolean,
+    value: null,
+  },
+  /** 是否显示浮层，非受控属性 */
+  defaultVisible: {
+    type: Boolean,
     value: false,
   },
-  /** 组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500 */
+  /** 组件层级，Web 侧样式默认为 5500，移动端样式默认为 1500，小程序样式默认为11500 */
   zIndex: {
     type: Number,
+    value: 11500,
   },
 };
 

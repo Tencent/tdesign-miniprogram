@@ -1,0 +1,5 @@
+.extra {
+  display: inline-block;
+  font-weight: 700;
+  color: #0052d9;
+}

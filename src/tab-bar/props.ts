@@ -11,11 +11,6 @@ const props: TdTabBarProps = {
     type: Boolean,
     value: true,
   },
-  /** 标签颜色设置。示例：[选中标签的颜色, 未选中的标签颜色] */
-  color: {
-    type: Array,
-    value: ['#0052D9', 'rgba(0, 0, 0, .6)'],
-  },
   /** 组件类名，用于设置外层元素类名 */
   externalClasses: {
     type: Array,
@@ -30,22 +25,30 @@ const props: TdTabBarProps = {
     type: Boolean,
     value: true,
   },
+  /** 标签栏的形状 */
+  shape: {
+    type: String,
+    value: 'normal',
+  },
   /** 是否需要分割线 */
   split: {
     type: Boolean,
     value: true,
   },
+  /** 选项风格 */
+  theme: {
+    type: String,
+    value: 'normal',
+  },
   /** 当前选中标签的索引 */
   value: {
-    type: String,
-    optionalTypes: [Number, Array],
+    type: null,
     value: null,
   },
   /** 当前选中标签的索引，非受控属性 */
   defaultValue: {
-    type: String,
-    optionalTypes: [Number, Array],
-    value: 0,
+    type: null,
+    value: null,
   },
 };
 

@@ -1,0 +1,9 @@
+<view class="group">
+  <t-skeleton class="group-avatar" rowCol="{{rowColsAvater}}" loading></t-skeleton>
+  <t-skeleton class="group-content" rowCol="{{rowColsContent}}" loading></t-skeleton>
+</view>
+
+<view class="group">
+  <t-skeleton class="group-avatar" rowCol="{{rowColsImage}}" loading></t-skeleton>
+  <t-skeleton class="group-content" rowCol="{{rowColsContent}}" loading></t-skeleton>
+</view>

@@ -4,11 +4,15 @@
  * addUnit */
 // 为 css 添加单位
 function addUnit(value) {
-  var REGEXP = getRegExp('^\d+(\.\d+)?$');
+  var REGEXP = getRegExp('^\d+(.\d+)?$');
   if (value == null) {
     return undefined;
   }
   return REGEXP.test('' + value) ? value + 'px' : value;
+}
+
+function isString(string) {
+  return string && string.constructor === 'String';
 }
 
 function isArray(array) {
@@ -19,8 +23,71 @@ function isObject(obj) {
   return obj && obj.constructor === 'Object';
 }
 
+var isNoEmptyObj = function (obj) {
+  return isObject(obj) && JSON.stringify(obj) !== '{}';
+};
+
+function includes(arr, value) {
+  if (!arr || !isArray(arr)) return false;
+
+  var i = 0;
+  var len = arr.length;
+
+  for (; i < len; i++) {
+    if (arr[i] === value) return true;
+  }
+  return false;
+}
+
+function cls(base, arr) {
+  var res = [base];
+  var i = 0;
+  for (size = arr.length; i < size; i++) {
+    var item = arr[i];
+
+    if (item && item.constructor === 'Array') {
+      var key = arr[i][0];
+      var value = arr[i][1];
+
+      if (value) {
+        res.push(base + '--' + key);
+      }
+    } else if (typeof item === 'string') {
+      if (item) {
+        res.push(base + '--' + item);
+      }
+    }
+  }
+  return res.join(' ');
+}
+
+function endsWith(str, endStr) {
+  return str.slice(-endStr.length) === endStr ? true : false;
+}
+
+function _style(arr) {
+  var res = [];
+  var r = arr.filter(function (s) {
+    return s && s.trim();
+  });
+
+  for (i = 0; i < r.length; i++) {
+    if (endsWith(r[i], ';')) {
+      res.push(r[i]);
+    } else {
+      res.push(r[i] + ';');
+    }
+  }
+  return res.join(' ');
+}
+
 module.exports = {
   addUnit: addUnit,
+  isString: isString,
   isArray: isArray,
   isObject: isObject,
+  isNoEmptyObj: isNoEmptyObj,
+  includes: includes,
+  cls: cls,
+  _style: _style,
 };

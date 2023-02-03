@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "Steps",
+  "usingComponents": {
+    "horizontal": "./horizontal",
+    "vertical": "./vertical",
+    "special": "./special",
+    "status": "./status"
+  }
+}

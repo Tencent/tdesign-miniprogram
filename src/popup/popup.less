@@ -1,28 +1,14 @@
 @import '../common/style/index.less';
 
-@popup: ~"@{prefix}-popup";
-@popup-position: ~"@{popup}--position";
-@popup-transition: ~"@{popup}--transition";
+@popup: ~'@{prefix}-popup';
+@popup-position: ~'@{popup}--position';
+@popup-transition: ~'@{popup}--transition';
 
 .@{popup} {
   position: fixed;
-  z-index: 2500;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
-
-  &__overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .6);
-  }
+  z-index: 11500;
+  max-height: 100vh;
+  transition: all 300ms ease;
 
   &__content {
     position: relative;
@@ -37,175 +23,66 @@
     line-height: 1;
   }
 
-  &--overlay-transparent &__overlay {
-    background-color: rgba(0, 0, 0, 0);
-  }
-
-  &--position-top &__content {
-    position: absolute;
+  &--top {
     top: 0;
-    width: 100vw;
+    left: 0;
+    width: 100%;
   }
 
-  &--position-bottom &__content {
-    position: absolute;
+  &--bottom {
     bottom: 0;
+    left: 0;
     width: 100vw;
   }
 
-  &--position-left &__content {
-    position: absolute;
+  &--left {
+    top: 0;
     left: 0;
     height: 100vh;
   }
 
-  &--position-right &__content {
-    position: absolute;
+  &--right {
+    top: 0;
     right: 0;
     height: 100vh;
   }
 
-  &.@{popup-transition}-enter {
-    .@{popup}__overlay {
+  &--center {
+    top: 50%;
+    left: 50%;
+    transform: scale(1) translate3d(-50%, -50%, 0);
+    transform-origin: 0% 0%;
+  }
+
+  &.@{prefix}-fade-enter,
+  &.@{prefix}-fade-leave-to {
+    &.@{popup}--top {
+      transform: translateY(-100%);
+    }
+
+    &.@{popup}--bottom {
+      transform: translateY(100%);
+    }
+
+    &.@{popup}--left {
+      transform: translateX(-100%);
+    }
+
+    &.@{popup}--right {
+      transform: translateX(100%);
+    }
+
+    &.@{popup}--center {
+      transform: scale(0.6) translate3d(-50%, -50%, 0);
       opacity: 0;
-    }
-
-    .@{popup}__content {
-      opacity: 0;
-      transform: scale(.8);
-    }
-
-    &.@{popup-position}-top {
-      .@{popup}__content {
-        transform: translateY(-100%);
-      }
-    }
-
-    &.@{popup-position}-bottom {
-      .@{popup}__content {
-        transform: translateY(100%);
-      }
-    }
-
-    &.@{popup-position}-left {
-      .@{popup}__content {
-        transform: translateX(-100%);
-      }
-    }
-
-    &.@{popup-position}-right {
-      .@{popup}__content {
-        transform: translateX(100%);
-      }
     }
   }
 
-  &.@{popup-transition}-enter-to {
-    .@{popup}__overlay {
-      opacity: 1;
-      transition: opacity .3s;
-    }
-
-    .@{popup}__content {
-      opacity: 1;
-      transform: none;
-      transition: opacity .3s, transform .3s;
-    }
-
-    &.@{popup-position}-top {
-      .@{popup}__content {
-        transform: none;
-      }
-    }
-
-    &.@{popup-position}-bottom {
-      .@{popup}__content {
-        transform: none;
-      }
-    }
-
-    &.@{popup-position}-left {
-      .@{popup}__content {
-        transform: none;
-      }
-    }
-
-    &.@{popup-position}-right {
-      .@{popup}__content {
-        transform: none;
-      }
-    }
-  }
-
-  &.@{popup-transition}-leave {
-    .@{popup}__overlay {
-      opacity: 1;
-    }
-
-    .@{popup}__content {
-      opacity: 1;
-      transform: none;
-    }
-
-    &.@{popup-position}-top {
-      .@{popup}__content {
-        transform: none;
-      }
-    }
-
-    &.@{popup-position}-bottom {
-      .@{popup}__content {
-        transform: none;
-      }
-    }
-
-    &.@{popup-position}-left {
-      .@{popup}__content {
-        transform: none;
-      }
-    }
-
-    &.@{popup-position}-right {
-      .@{popup}__content {
-        transform: none;
-      }
-    }
-  }
-
-  &.@{popup-transition}-leave-to {
-    .@{popup}__overlay {
+  &.@{prefix}-dialog-enter,
+  &.@{prefix}-dialog-leave-to {
+    &.@{popup}--center {
+      transform: scale(0.6) translate3d(-50%, -50%, 0);
       opacity: 0;
-      transition: opacity .3s;
-    }
-
-    .@{popup}__content {
-      opacity: 0;
-      transform: scale(.8);
-      transition: opacity .3s, transform .3s;
-    }
-
-    &.@{popup-position}-top {
-      .@{popup}__content {
-        transform: translateY(-100%);
-      }
-    }
-
-    &.@{popup-position}-bottom {
-      .@{popup}__content {
-        transform: translateY(100%);
-      }
-    }
-
-    &.@{popup-position}-left {
-      .@{popup}__content {
-        transform: translateX(-100%);
-      }
-    }
-
-    &.@{popup-position}-right {
-      .@{popup}__content {
-        transform: translateX(100%);
-      }
     }
   }
 }

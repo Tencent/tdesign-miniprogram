@@ -5,6 +5,7 @@ spline: navigation
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-93%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -12,78 +13,42 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-tab-bar": "tdesign-miniprogram/tab-bar/tab-bar",
-  "t-tab-bar-item": "tdesign-miniprogram/tab-bar/tab-bar-item"
+  "t-tab-bar-item": "tdesign-miniprogram/tab-bar-item/tab-bar-item"
 }
 ```
 
 ## 代码演示
 
-### 基础标签栏
+### 组件类型
+#### 纯文本标签栏
 
-文本标签栏，分为单层双层，可以自定义标签栏内容
+{{ text-only }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabbar-1.png" width="375px" height="50%">
+#### 图标加文字标签栏
 
-```html
-<!-- 单层级纯文本标签栏 -->
-<t-tab-bar
-  wx:for="{{demoList_1}}"
-  wx:for-item="list"
-  wx:for-index="index"
-  wx:key="index"
-  value="{{value}}"
-  bindchange="onChange"
->
-  <t-tab-bar-item wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-    {{item.text}}
-  </t-tab-bar-item>
-</t-tab-bar>
-```
+{{ base }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabbar-4.png" width="375px" height="50%">
+#### 纯图标标签栏
 
-```html
-<!-- 双层级纯文本标签栏 -->
-<t-tab-bar value="{{value}}" bindchange="onChange">
-  <t-tab-bar-item
-    wx:for="{{list_5}}"
-    wx:for-item="item"
-    wx:for-index="index"
-    wx:key="index"
-    name="{{item.name}}"
-    children="{{item.children}}"
-  >
-    {{item.text}}
-  </t-tab-bar-item>
-</t-tab-bar>
-```
+{{ text-only }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/tabbar-2.png" width="375px" height="50%">
+#### 双层级纯文本标签栏
 
-```html
-<!-- 文本加图标标签栏 -->
-<t-cell-group title="文本加图标标签栏">
-  <t-tab-bar
-    wx:for="{{demoList_2}}"
-    wx:for-item="list"
-    wx:for-index="index"
-    wx:key="index"
-    value="{{value}}"
-    bindchange="onChange"
-  >
-    <t-tab-bar-item
-      wx:for="{{list}}"
-      wx:for-item="item"
-      wx:for-index="index"
-      wx:key="index"
-      icon="{{item.icon}}"
-      name="{{item.name}}"
-    >
-      {{item.text}}
-    </t-tab-bar-item>
-  </t-tab-bar>
-</t-cell-group>
-```
+{{ sub }}
+
+### 组件样式
+
+#### 弱选中标签栏
+
+{{ badge }}
+
+#### 悬浮胶囊标签栏
+
+{{ round }}
+
+#### 自定义主题
+
+{{ custom }}
 
 ## API
 ### TabBar Props
@@ -91,25 +56,26 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 bordered | Boolean | true | 是否显示外边框 | N
-color | Array | ['#0052D9', 'rgba(0, 0, 0, .6)'] | 标签颜色设置。示例：[选中标签的颜色, 未选中的标签颜色]。TS 类型：`Array<string>` | N
 external-classes | Array | - | 组件类名，用于设置外层元素类名。`['t-class']` | N
 fixed | Boolean | true | 是否固定在底部 | N
 safe-area-inset-bottom | Boolean | true | 是否为 iPhoneX 留出底部安全距离 | N
+shape | String | normal | 标签栏的形状。可选项：normal/round | N
 split | Boolean | true | 是否需要分割线 | N
-value | String / Number / Array | 0 | 当前选中标签的索引。TS 类型：`string | number | Array<string | number>` | N
-defaultValue | String / Number / Array | 0 | （非受控）当前选中标签的索引。TS 类型：`string | number | Array<string | number>` | N
+theme | String | normal | 选项风格。可选项：normal/tag | N
+value | String / Number / Array | null | 当前选中标签的索引。TS 类型：`string \| number \| Array<string \| number>` | N
+default-value | String / Number / Array | undefined | 当前选中标签的索引。非受控属性。TS 类型：`string \| number \| Array<string \| number>` | N
 
 ### TabBar Events
 
 名称 | 参数 | 描述
 -- | -- | --
-change | (value: String / Number) | 选中标签切换时触发
+change | `(value: string \| number)` | 选中标签切换时触发
 
 ### TabBarItem Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-badge-props | Object | - | 图标右上角提示信息。TS 类型：`TdBadgeProps`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar/type.ts) | N
-icon | String / Slot | - | 图标名称 | N
-sub-tab-bar | Array | - | 二级菜单。TS 类型：`SubTabBarItem[] `。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar/type.ts) | N
+badge-props | Object | - | 图标右上角提示信息。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
+icon | String / Object / Slot | - | 图标名称。传入对象时透传至 Icon 组件 | N
+sub-tab-bar | Array | - | 二级菜单。TS 类型：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
 value | String / Number | - | 标识符 | N

@@ -1,0 +1,104 @@
+@import '../common/style/index.less';
+
+@notice-bar-font-size: @font-size-base;
+@notice-bar-horizontal-padding: 32rpx;
+@notice-bar-vertical-padding: 26rpx;
+@notice-bar-line-height: 44rpx;
+@notice-bar-icon-font-size: 44rpx;
+
+@notice-bar-font-color: var(--td-notice-bar-font-color, @font-gray-1); // 公告栏文本颜色
+@notice-bar-info-color: var(--td-notice-bar-info-color, @primary-color-8); // 'info' 主题色
+@notice-bar-info-bg-color: var(--td-notice-bar-info-bg-color, @primary-color-1); // 'info' 主题背景色
+@notice-bar-success-color: var(--td-notice-bar-success-color, @success-color-5); // 'success' 主题色
+@notice-bar-success-bg-color: var(--td-notice-bar-success-bg-color, @success-color-1); // 'success' 主题背景色
+@notice-bar-warning-color: var(--td-notice-bar-warning-color, @warning-color-5); // 'warning' 主题色
+@notice-bar-warning-bg-color: var(--td-notice-bar-warning-bg-color, @warning-color-1); // 'warning' 主题背景色
+@notice-bar-error-color: var(--td-notice-bar-error-color, @error-color-6); // 'error' 主题色
+@notice-bar-error-bg-color: var(--td-notice-bar-error-bg-color, @error-color-1); // 'error' 主题背景色
+@notice-bar-suffix-icon-color: var(--td-notice-bar-suffix-icon-color, @font-gray-3); // 后缀图标颜色
+@notice-bar-extra-font-color: var(--td-notice-bar-extra-font-color, @primary-color-8); // 额外信息文本颜色
+
+@notice-bar: ~'@{prefix}-notice-bar';
+
+.@{notice-bar} {
+  display: flex;
+  align-items: flex-start;
+  padding: @notice-bar-vertical-padding @notice-bar-horizontal-padding;
+  font-size: @notice-bar-font-size;
+
+  &__content-wrap {
+    flex: 1;
+    overflow-x: hidden;
+    line-height: @notice-bar-line-height;
+    color: @notice-bar-font-color;
+  }
+
+  &__content {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  &__content-wrapable {
+    white-space: normal;
+  }
+
+  &__content--vertical {
+    height: @notice-bar-line-height;
+    line-height: @notice-bar-line-height;
+
+    &-item {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &__prefix-icon {
+    color: inherit;
+  }
+
+  &__prefix-icon:not(:empty) {
+    padding-right: @spacer;
+  }
+
+  &__suffix-icon {
+    color: @notice-bar-suffix-icon-color;
+  }
+
+  &__prefix-icon,
+  &__suffix-icon {
+    font-size: @notice-bar-icon-font-size;
+  }
+
+  &__extra {
+    color: @notice-bar-extra-font-color;
+    line-height: @notice-bar-line-height;
+    font-weight: 700;
+  }
+
+  &__extra:not(:empty),
+  &__suffix-icon:not(:empty) {
+    padding-left: @spacer;
+  }
+
+  // theme
+  &--info {
+    color: @notice-bar-info-color;
+    background-color: @notice-bar-info-bg-color;
+  }
+
+  &--success {
+    color: @notice-bar-success-color;
+    background-color: @notice-bar-success-bg-color;
+  }
+
+  &--warning {
+    color: @notice-bar-warning-color;
+    background-color: @notice-bar-warning-bg-color;
+  }
+
+  &--error {
+    color: @notice-bar-error-color;
+    background-color: @notice-bar-error-bg-color;
+  }
+}

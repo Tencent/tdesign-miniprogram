@@ -1,17 +1,25 @@
 @import '../common/style/index.less';
 
-@message-horizen-padding: 32rpx;
+@message-horizontal-padding: 32rpx;
 @message-vertical-padding: 24rpx;
-@message-font-size: 28rpx;
-@message-line-height: 44rpx;
-@message-font-color: #0052d9;
-@message-align: flex-start;
-@message-icon-size: @icon-l;
-@message-border-radius: 8rpx;
-@message-z-index: 5000;
-@gutter: 16rpx;
+@message-z-index: 15000;
 
-@message: ~"@{prefix}-message";
+@message-align: flex-start;
+@message-icon-size: 44rpx;
+@message-content-height: 44rpx;
+@message-content-font-size: @font-size-base;
+
+@message-bg-color: var(--td-message-bg-color, @bg-color-container); // 消息通知背景颜色
+@message-box-shadow: var(--td-message-box-shadow, @shadow-4); // 消息通知阴影
+@message-border-radius: var(--td-message-border-radius, @radius-default); // 消息通知圆角大小
+@message-content-font-color: var(--td-message-content-font-color, @font-gray-1); // 内容文本颜色
+@message-info-color: var(--td-message-info-color, @primary-color); // 'info'主题色
+@message-success-color: var(--td-message-success-color, @success-color); // 'success'主题色
+@message-warning-color: var(--td-message-warning-color, @warning-color); // 'warning'主题色
+@message-error-color: var(--td-message-error-color, @error-color); // 'error'主题色
+@message-close-icon-color: var(--td-message-close-icon-color, @font-gray-3); // 关闭按钮图标颜色
+
+@message: ~'@{prefix}-message';
 
 .@{message} {
   position: fixed;
@@ -22,25 +30,24 @@
   justify-content: @message-align;
   align-items: center;
   z-index: @message-z-index;
-  color: @message-font-color;
-  padding: @message-vertical-padding @message-horizen-padding;
+  padding: @message-vertical-padding @message-horizontal-padding;
   box-sizing: border-box;
   border-radius: @message-border-radius;
-  font-size: @message-font-size;
   line-height: 1;
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, .2);
-  opacity: 0;
+  background-color: @message-bg-color;
+  box-shadow: @message-box-shadow;
 
   &__text {
     display: inline-block;
+    color: @message-content-font-color;
+    font-size: @message-content-font-size;
+    line-height: @message-content-height;
   }
 
   &__text-wrap {
     flex: 1 1 auto;
     overflow-x: hidden;
     text-overflow: ellipsis;
-    line-height: @message-line-height;
   }
 
   &__text-nowrap {
@@ -49,40 +56,45 @@
   }
 
   &--info {
-    color: @primary-color;
+    color: @message-info-color;
   }
 
   &--success {
-    color: @success-color;
+    color: @message-success-color;
   }
 
   &--warning {
-    color: @warning-color;
+    color: @message-warning-color;
   }
 
   &--error {
-    color: @error-color;
+    color: @message-error-color;
   }
 
-  .@{message}__icon--left {
-    margin-right: @gutter;
+  &__icon--left,
+  &__icon--right {
+    font-size: @message-icon-size;
   }
 
-  .@{message}__icon--right,
+  &__icon--left:not(:empty) {
+    margin-right: @spacer;
+  }
+
+  &__icon--right {
+    color: @message-close-icon-color;
+  }
+
+  &__icon--right:not(:empty),
   .@{message}__btn--right {
     flex: 0 0 auto;
-    margin-left: @gutter;
+    margin-left: @spacer;
   }
 
-  .@{message}__btn--right  {
-    font-size: inherit;
-    line-height: inherit;
-    height: 44rpx;
-    line-height: 44rpx;
+  .@{message}__btn--right {
+    font-size: @message-content-font-size;
+    line-height: @message-content-height;
+    height: @message-content-height;
     border-radius: @message-border-radius;
-    border-color: inherit;
-    color: inherit;
-    min-height: 0;
-    background: transparent;
+    padding: 0;
   }
 }

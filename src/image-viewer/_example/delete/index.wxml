@@ -1,0 +1,12 @@
+<t-button theme="primary" size="large" variant="outline" block bind:tap="clickHandle">带操作图片预览</t-button>
+<t-toast id="t-toast" />
+<t-image-viewer
+  deleteBtn="{{deleteBtn}}"
+  closeBtn="{{closeBtn}}"
+  showIndex="{{showIndex}}"
+  visible="{{visible}}"
+  images="{{images}}"
+  bind:change="onChange"
+  bind:delete="onDelete"
+  bind:close="onClose"
+></t-image-viewer>

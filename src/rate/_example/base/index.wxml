@@ -1,0 +1,5 @@
+<view class="demo-rate">
+  <view class="demo-rate__title">实心评分</view>
+  <!-- 实心评分，设置属性：variant-->
+  <t-rate value="{{value}}" variant="filled" bind:change="onChange" />
+</view>

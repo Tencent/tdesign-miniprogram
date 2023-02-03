@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "t-avatar-group": "../../avatar-group/avatar-group",
+    "t-avatar": "../avatar"
+  }
+}

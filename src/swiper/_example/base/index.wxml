@@ -1,0 +1,11 @@
+<t-swiper
+  current="{{current}}"
+  autoplay="{{autoplay}}"
+  duration="{{duration}}"
+  interval="{{interval}}"
+  navigation="{{ { type: 'dots' } }}"
+  list="{{swiperList}}"
+  bind:click="onTap"
+  bind:change="onChange"
+>
+</t-swiper>

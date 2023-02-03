@@ -1,12 +1,19 @@
-<view class="{{classPrefix}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class" aria-role="radiogroup">
   <slot />
   <block wx:for="{{radioOptions}}" wx:key="value">
     <t-radio
       class="{{prefix}}-radio-option"
       label="{{item.label}}"
       value="{{item.value}}"
+      checked="{{item.checked}}"
+      data-index="{{index}}"
       data-value="{{item.value}}"
       disabled="{{item.disabled}}"
+      align="{{align}}"
+      icon="{{icon}}"
+      borderless="{{borderless}}"
       bind:change="handleRadioChange"
     />
   </block>

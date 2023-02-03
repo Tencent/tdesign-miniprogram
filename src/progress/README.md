@@ -1,13 +1,18 @@
 ---
-title: Progress
-description: 进度条。
+title: Progress 进度条
+description: 用于展示任务当前的进度。
 spline: message
 isComponent: true
 ---
 
-### 特性和兼容性
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-88%25-blue" /></span>
 
-无
+<div style="background: #ecf2fe; display: flex; align-items: center; line-height: 20px; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <svg fill="none" viewBox="0 0 16 16" width="16px" height="16px" style="margin-right: 5px">
+    <path fill="#0052d9" d="M8 15A7 7 0 108 1a7 7 0 000 14zM7.4 4h1.2v1.2H7.4V4zm.1 2.5h1V12h-1V6.5z" fillOpacity="0.9"></path>
+  </svg>
+  该组件于 0.7.3 版本上线，请留意版本。
+</div>
 
 ## 引入
 
@@ -21,20 +26,46 @@ isComponent: true
 }
 ```
 
+## 代码演示
+
+### 01 组件类型
+
+基础进度条
+
+{{ base }}
+
+过度样式
+
+{{ transition }}
+
+自定义颜色/圆角
+
+{{ custom }}
+
+### 02 组件状态
+
+线性进度条
+
+{{ line }}
+
+百分比内显进度条
+
+{{ plump }}
+
+环形进度条
+
+{{ circle }}
+
 ## API
+### Progress Props
 
-### `<Progress>` 组件
-
-组件路径：`tdesign-miniprogram/progress/progress`
-
-#### Props
-
-| 属性        | 值类型    | 默认值  | 说明                                               |
-| ----------- | --------- | ------- | -------------------------------------------------- | ------------------- |
-| percentage  | `Number   | String` | 0                                                  | 百分比（必填）      |
-| showInfo    | `Boolean` | `true ` | 是否显示进度条文字内容                             |
-| activeColor | `String`  | `-`     | 已加载进度条背景色                                 |
-| bgColor     | `String`  | `-`     | 进度条背景色                                       |
-| textColor   | `String`  | `-`     | 进度条文字内容颜色                                 |
-| type        | `String`  | `info`  | 进度条类型，可选`info`,`success`,`error`,`warning` |
-| strokeWidth | `Number   | String` | 3                                                  | 进度条宽度，单位 px |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+color | String / Object / Array | '' | 进度条颜色。示例：'#ED7B2F' 或 'orange' 或 `['#f00', '#0ff', '#f0f']` 或 `{ '0%': '#f00', '100%': '#0ff' }` 或  `{ from: '#000', to: '#000' }` 等。TS 类型：`string \| Array<string> \| Record<string, string>` | N
+external-classes | Array | - | 组件类名，分别用于设置 组件外层、进度文字等元素类名。。`['t-class', 't-class-bar', 't-class-label']` | N
+label | String / Boolean / Slot | true | 进度百分比，可自定义 | N
+percentage | Number | 0 | 进度条百分比 | N
+status | String | - | 进度条状态。可选项：success/error/warning/active。TS 类型：`StatusEnum` `type StatusEnum = 'success' \| 'error' \| 'warning' \| 'active'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/progress/type.ts) | N
+stroke-width | String / Number | - | 进度条线宽，默认单位 `px`。| N
+theme | String | line | 进度条风格。值为 line，标签（label）显示在进度条右侧；值为 plump，标签（label）显示在进度条里面；值为 circle，标签（label）显示在进度条正中间。可选项：line/plump/circle。TS 类型：`ThemeEnum` `type ThemeEnum = 'line' \| 'plump' \| 'circle'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/progress/type.ts) | N
+track-color | String | '' | 进度条未完成部分颜色 | N

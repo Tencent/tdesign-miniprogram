@@ -2,10 +2,9 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
-
 import { TdBadgeProps } from './type';
+
 const props: TdBadgeProps = {
   /** 颜色 */
   color: {
@@ -19,8 +18,7 @@ const props: TdBadgeProps = {
   },
   /** 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为空表示使用插槽渲染 */
   count: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: 0,
   },
   /** 是否为红点 */

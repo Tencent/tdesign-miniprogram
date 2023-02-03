@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "Fab",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "base": "./base",
+    "advance": "./advance"
+  }
+}

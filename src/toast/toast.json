@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "t-icon": "../icon/icon",
-    "t-loading": "../loading/loading"
+    "t-loading": "../loading/loading",
+    "t-overlay": "../overlay/overlay"
   }
 }

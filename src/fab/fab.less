@@ -1,1 +1,11 @@
-@import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@fab-shadow: var(--td-fab-shadow, @shadow-2);
+
+.@{prefix}-fab {
+  position: fixed;
+
+  &__button {
+    box-shadow: @fab-shadow;
+  }
+}

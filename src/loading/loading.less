@@ -2,10 +2,15 @@
 
 @loading: ~'@{prefix}-loading';
 
+@loading-color: var(--td-loading-color, @primary-color);
+@loading-text-font-size: var(--td-loading-text-font-size, 24rpx);
+@loading-text-line-height: var(--td-loading-text-line-height, 40rpx);
+
 .@{loading} {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-size: 24rpx;
 
   &__spinner {
     position: relative;
@@ -15,7 +20,7 @@
     max-width: 100%;
     max-height: 100%;
     animation: rotate 0.8s linear infinite;
-    color: #0052d9;
+    color: @loading-color;
 
     &.reverse {
       animation-name: rotateReverse;
@@ -23,6 +28,7 @@
 
     &--spinner {
       animation-timing-function: steps(12);
+      color: @font-gray-1;
 
       .@{loading}__dot {
         position: absolute;
@@ -82,32 +88,38 @@
     }
   }
 
-  &--vertical {
-    flex-direction: column;
+  &__text {
+    font-size: @loading-text-font-size;
+    line-height: @loading-text-line-height;
 
-    .@{loading}__text {
+    &--vertical:not(:first-child):not(:empty) {
       margin-top: 12rpx;
     }
-  }
 
-  &--horizontal {
-    flex-direction: row;
-
-    .@{loading}__text {
+    &--horizontal:not(:first-child):not(:empty) {
       margin-left: 16rpx;
     }
   }
 
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    vertical-align: top;
+  }
+
   &__refresh-btn {
     margin-left: 16rpx;
-    color: #0052d9;
+    color: @loading-color;
   }
 
   &__bar {
     height: 6rpx;
     width: 80%;
     transition: 0.5s;
-    background-color: #0052d9;
+    background-color: @loading-color;
     display: none;
 
     &--static {
@@ -192,7 +204,7 @@
 
 @keyframes dotting {
   0% {
-    opacity: 0.4;
+    opacity: 0.15;
   }
 
   1% {
@@ -204,10 +216,10 @@
   }
 
   34% {
-    opacity: 0.4;
+    opacity: 0.15;
   }
 
   100% {
-    opacity: 0.4;
+    opacity: 0.15;
   }
 }

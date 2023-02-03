@@ -1,0 +1,32 @@
+<t-cell class="block" title="选择城市" arrow hover note="{{cityText}}" bind:click="onCityPicker" />
+
+<t-cell class="block" title="选择时间" arrow hover note="{{dateText}}" bind:click="onSeasonPicker" />
+
+<t-picker
+  visible="{{cityVisible}}"
+  value="{{cityValue}}"
+  data-key="city"
+  title="选择城市"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{citys}}"></t-picker-item>
+</t-picker>
+
+<t-picker
+  visible="{{dateVisible}}"
+  value="{{dateValue}}"
+  data-key="date"
+  title="选择时间"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{years}}"></t-picker-item>
+  <t-picker-item options="{{seasons}}"></t-picker-item>
+</t-picker>

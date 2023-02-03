@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dialog :base 1`] = `
+<main>
+  <t-dialog
+    id="dialog"
+  >
+    <t-popup
+      tClass="t-dialog__wrapper"
+      bind:visible-change="overlayClick"
+    >
+      <wx-view
+        ariaModal="{{true}}"
+        ariaRole="dialog"
+        class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active class t-class"
+        style="z-index:11500;"
+        bind:transitionend="onTransitionEnd"
+      >
+        <wx-view
+          class="t-popup__content t-class-content"
+        >
+          <wx-view
+            class="t-popup__close"
+            bind:tap="handleClose"
+          />
+          <wx-view
+            class="t-dialog t-class"
+            slot="content"
+          >
+            <wx-view
+              class="t-dialog__content t-class-content"
+            />
+            <wx-view
+              class="t-dialog__footer t-dialog__footer--full"
+            />
+          </wx-view>
+        </wx-view>
+      </wx-view>
+      <t-overlay
+        class="test"
+        id="popup-overlay"
+        bind:tap="handleOverlayClick"
+      >
+        <wx-view
+          ariaLabel="关闭"
+          ariaRole="button"
+          class="t-overlay t-fade-enter t-fade-enter-active"
+          style="z-index:11000;"
+          bind:tap="handleClick"
+          catch:touchmove="noop"
+          bind:transitionend="onTransitionEnd"
+        />
+      </t-overlay>
+    </t-popup>
+  </t-dialog>
+</main>
+`;

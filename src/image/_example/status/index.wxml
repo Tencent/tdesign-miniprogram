@@ -1,0 +1,25 @@
+<view class="tr">
+  <view class="col">
+    <view class="text">加载默认提示</view>
+    <t-image id="loading-img" shape="round" width="72" height="72" />
+  </view>
+  <view class="col">
+    <view class="text">加载自定义提示</view>
+    <t-image id="loading-img-custom" shape="round" loading="slot" width="72" height="72">
+      <t-loading slot="loading" theme="circular" size="40rpx" loading />
+    </t-image>
+  </view>
+</view>
+
+<view class="tr">
+  <view class="col">
+    <view class="text">失败默认提示</view>
+    <t-image id="loading-img" shape="round" src="" width="72" height="72" />
+  </view>
+  <view class="col">
+    <view class="text">失败自定义提示</view>
+    <t-image src="" shape="round" error="slot" width="72" height="72">
+      <text class="error-text" slot="error">加载失败</text>
+    </t-image>
+  </view>
+</view>

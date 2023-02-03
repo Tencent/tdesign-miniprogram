@@ -1,0 +1,15 @@
+<t-checkbox-group value="{{demoCheckbox1}}" bind:change="handleGroupChange">
+  <t-checkbox value="checkbox1" label="多选" />
+  <t-checkbox value="checkbox2" label="多选" />
+  <t-checkbox
+    value="checkbox3"
+    label="多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行"
+    max-label-row="2"
+  />
+  <t-checkbox
+    value="checkbox4"
+    label="多选"
+    max-content-row="2"
+    content="描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息"
+  />
+</t-checkbox-group>

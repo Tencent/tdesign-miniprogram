@@ -1,0 +1,4 @@
+<t-result t-class-image="external-class-image" image="https://tdesign.gtimg.com/miniprogram/images/result-image.png">
+  <view slot="title"> 自定义结果 </view>
+  <view slot="description"> 描述文字 </view>
+</t-result>

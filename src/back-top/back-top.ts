@@ -1,34 +1,62 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, RelationsOptions, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-back-top`;
 
 @wxComponent()
 export default class BackTop extends SuperComponent {
-  /**
-   * Component properties
-   */
-  externalClasses = ['t-class', 't-class-icon', 't-class-text'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-text`];
+
+  options = {
+    multipleSlots: true,
+  };
 
   properties = props;
 
-  /**
-   * Component initial data
-   */
+  relations: RelationsOptions = {
+    '../pull-down-refresh/pull-down-refresh': {
+      type: 'ancestor',
+    },
+  };
+
   data = {
     prefix,
     classPrefix: name,
+    _icon: null,
   };
 
-  /**
-   * Component methods
-   */
-  toTop() {
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration: 300,
-    });
-  }
+  observers = {
+    icon() {
+      this.setIcon();
+    },
+  };
+
+  lifetimes = {
+    ready() {
+      this.setIcon();
+    },
+  };
+
+  methods = {
+    setIcon(v) {
+      this.setData({
+        _icon: calcIcon(v, 'backtop'),
+      });
+    },
+
+    toTop() {
+      this.triggerEvent('to-top');
+      if (this.$parent) {
+        this.$parent?.setScrollTop(0);
+      } else {
+        wx.pageScrollTo({
+          scrollTop: 0,
+          duration: 300,
+        });
+      }
+    },
+  };
 }

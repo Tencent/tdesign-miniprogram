@@ -1,6 +1,6 @@
 const display = {
-  name: '信息展示',
-  icon: '/assets/image@2x.png',
+  name: '数据展示',
+  icon: 'image',
   childArr: [
     {
       name: 'Avatar',
@@ -11,10 +11,6 @@ const display = {
       label: '徽标',
     },
     // {
-    //   name: 'Calendar',
-    //   label: '日历',
-    // },
-    // {
     //   name: 'CanvasPoster',
     //   label: '海报分享',
     // },
@@ -22,22 +18,14 @@ const display = {
       name: 'Cell',
       label: '单元格',
     },
-    // {
-    //   name: 'Collapse',
-    //   label: '折叠面板',
-    // },
+    {
+      name: 'Collapse',
+      label: '折叠面板',
+    },
     {
       name: 'CountDown',
       label: '倒计时',
     },
-    {
-      name: 'Divider',
-      label: '分割线',
-    },
-    // {
-    //   name: 'DropdownMenu',
-    //   label: '下拉菜单',
-    // },
     {
       name: 'Empty',
       label: '空状态',
@@ -58,17 +46,17 @@ const display = {
       name: 'Image',
       label: '图片',
     },
-    // {
-    //   name: 'Preview',
-    //   label: '图片预览',
-    // },
     {
-      name: 'Swiper',
-      label: '轮播图',
+      name: 'ImageViewer',
+      label: '图片预览',
     },
     {
-      name: 'Tag',
-      label: '标签',
+      name: 'Progress',
+      label: '进度条',
+    },
+    {
+      name: 'Result',
+      label: '结果',
     },
     {
       name: 'Skeleton',
@@ -77,6 +65,14 @@ const display = {
     {
       name: 'Sticky',
       label: '吸顶',
+    },
+    {
+      name: 'Swiper',
+      label: '轮播图',
+    },
+    {
+      name: 'Tag',
+      label: '标签',
     },
   ],
 };

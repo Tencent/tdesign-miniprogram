@@ -1,1 +1,61 @@
-@import (css) '../common/index.wxss';
+@import '../common/style/index.less';
+
+@drawer-width: var(--td-drawer-width, 560rpx);
+@drawer-title-font-size: var(--td-drawer-title-font-size, 36rpx);
+@drawer-title-padding: var(--td-drawer-title-padding, 48rpx 32rpx 16rpx);
+@drawer-bg-color: var(--td-drawer-bg-color, @bg-color-block);
+@drawer-border-color: var(--td-drawer-border-color, @border-color);
+@drawer-title-color: var(--td-drawer-title-color, @font-gray-1);
+@drawer-icon-color: var(--td-drawer-title-color, @drawer-title-color);
+@drawer-item-padding: var(--td-drawer-item-padding, 32rpx);
+@drawer-item-height: var(--td-drawer-item-height, 48rpx);
+@drawer-item-icon-size: var(--td-drawer-item-icon-size, 48rpx);
+@drawer-sidebar-height: var(--td-drawer-sidebar-height, 70vh);
+@drawer-footer-padding-bottom: var(--td-drawer-footer-padding-bottom, 40rpx);
+
+.@{prefix}-drawer {
+  background: @drawer-bg-color;
+  height: 100vh;
+  width: @drawer-width;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: env(safe-area-inset-bottom, 28px);
+  padding-bottom: constant(safe-area-inset-bottom, 28px);
+
+  &__title {
+    font-weight: 600;
+    font-size: @drawer-title-font-size;
+    padding: 48rpx 32rpx 16rpx;
+  }
+
+  &__sidebar {
+    height: @drawer-sidebar-height;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      .border(bottom, @drawer-border-color);
+      padding: @drawer-item-padding 0;
+      margin-left: @drawer-item-padding;
+      line-height: @drawer-item-height;
+
+      &-title {
+        flex: 1;
+        color: var(--td-drawer-title-color);
+      }
+
+      &-icon {
+        padding-right: 16rpx;
+        color: @drawer-icon-color;
+        font-size: @drawer-item-icon-size;
+      }
+    }
+  }
+
+  &__footer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: @drawer-footer-padding-bottom;
+  }
+}

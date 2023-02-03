@@ -1,154 +1,138 @@
 @import '../common/style/index.less';
 
-@dialog: ~"@{prefix}-dialog";
+@dialog: ~'@{prefix}-dialog';
+@dialogBtn: ~'@{dialog}__button';
+
 // size
-@dialog-width: 322rpx * 2;
-@dialog-body-min-height: 88rpx * 2;
-@dialog-body-max-height: 388rpx * 2;
-@dialog-btn-height: 56rpx * 2;
-@dialog-input-height: 48rpx * 2;
+@dialog-width: var(--td-dialog-width, 622rpx);
+@dialog-body-max-height: var(--td-dialog-body-max-height, 912rpx);
 
 // color
-@dialog-btn-bg-color-active: rgba(0, 0, 0, .05);
-@dialog-btn-border-color: #eee;
-@dialog-input-bg-color: #f0f0f0;
+@dialog-title-font-size: var(--td-dialog-title-font-size, 36rpx);
+@dialog-title-color: var(--td-dialog-title-color, @font-gray-1);
+@dialog-title-line-height: var(--td-dialog-title-line-height, 52rpx);
 
-page {
-  .@{dialog} {
-    overflow: hidden;
-    width: @dialog-width;
-    border-radius: @border-radius;
-    background-color: @bg-color-block;
+@dialog-content-font-size: var(--td-dialog-content-font-size, 32rpx);
+@dialog-content-color: var(--td-dialog-content-color, @font-gray-2);
+@dialog-content-line-height: var(--td-dialog-content-line-height, 48rpx);
 
-    &__content {
-      padding: @spacer-4 @spacer-3;
-      min-height: @dialog-body-min-height;
-      max-height: @dialog-body-max-height;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      font-size: @font-size-m;
-      line-height: @text-line-height;
+@dialog-close-color: var(--td-dialog-close-color, @font-gray-3);
+
+.@{dialog} {
+  overflow: hidden;
+  width: @dialog-width;
+  border-radius: @border-radius;
+  background-color: @bg-color-block;
+
+  &__close-btn {
+    position: absolute;
+    top: 16rpx;
+    right: 16rpx;
+    color: @dialog-close-color;
+  }
+
+  &__content {
+    padding: @spacer-4 @spacer-3 0;
+    max-height: @dialog-body-max-height;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: @font-size-m;
+    line-height: @text-line-height;
+  }
+
+  &__header {
+    text-align: center;
+    font-weight: bold;
+    font-size: @dialog-title-font-size;
+    line-height: @dialog-title-line-height;
+    color: @dialog-title-color;
+  }
+
+  &__header + &__body {
+    margin-top: 16rpx;
+  }
+
+  &__body {
+    overflow-y: scroll;
+    text-align: center;
+    -webkit-overflow-scrolling: touch;
+    font-size: @dialog-content-font-size;
+    color: @dialog-content-color;
+    line-height: @dialog-content-line-height;
+
+    &-text {
+      word-wrap: break-word;
     }
 
-    &__header {
-      text-align: center;
-      font-weight: bold;
-      font-size: @font-size-m;
-      line-height: @text-line-height;
-      color: @text-level-1-color;
-    }
-
-    &__body {
-      overflow-y: scroll;
-      text-align: center;
-      -webkit-overflow-scrolling: touch;
-      font-size: @font-size-m;
-      color: @text-level-3-color;
-      margin-top: @spacer-2;
-
-      &--without-title {
-        margin-top: 0;
-      }
-
-      &-text {
-        word-wrap: break-word;
-      }
-
-      &--left {
-        text-align: left;
-      }
-
-      &--right {
-        text-align: right;
-      }
-    }
-
-    &__footer {
-      display: flex;
-
-      &--column {
-        flex-flow: column-reverse;
-
-        .@{dialog}__button {
-          width: 100%;
-        }
-      }
-    }
-
-    &__button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-      font-size: @font-size-m;
-      padding: 0 @spacer-3;
-      background-color: @bg-color-block;
-      width: @dialog-width;
-      height: @dialog-btn-height;
-      line-height: @dialog-btn-height;
-      border-radius: 0;
-      border: 1rpx solid @border-color;
-      border-left: 0;
-      border-bottom: 0;
-
-      &-half {
-        width: (@dialog-width / 2 );
-      }
-
-      &-confirm {
-        color: @primary-color;
-        font-weight: bold;
-      }
-
-      &-cancel {
-        color: @text-level-1-color;
-        font-weight: normal;
-      }
-
-      &-bounce-enter {
-        transform: translate3d(-50%, -50%, 0) scale(.7);
-        opacity: 0;
-      }
-
-      &-bounce-leave-active {
-        transform: translate3d(-50%, -50%, 0) scale(.9);
-        opacity: 0;
-      }
-
-      &::after {
-        border-radius: 0;
-        border-color: @dialog-btn-bg-color-active;
-      }
-
-      &--active,
-      &:active {
-        background-color: @dialog-btn-bg-color-active;
-      }
-    }
-
-    &__text {
-      & + .@{prefix}-dialog__input {
-        margin-top: @spacer-3;
-      }
-    }
-
-    &__input {
-      width: 100%;
-      background-color: @dialog-input-bg-color;
-      font-size: @font-size-m;
-      color: @text-level-1-color;
-      border-radius: @border-radius / 2;
-      height: @dialog-input-height;
-      line-height: @text-line-height;
-      padding: @spacer-1;
-      margin-top: @spacer-1;
-      box-sizing: border-box;
+    &--left {
       text-align: left;
+    }
 
-      &-placeholder {
-        color: @text-level-4-color;
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    padding: 48rpx;
+
+    &--column {
+      flex-flow: column-reverse;
+
+      .@{dialog}__button {
+        width: 100%;
+      }
+    }
+
+    &--full {
+      padding: 64rpx 0 0;
+    }
+  }
+
+  &-button {
+    border-radius: 0 !important;
+
+    &:after {
+      border-radius: 0;
+    }
+  }
+
+  &__button {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &--horizontal + &--horizontal {
+      margin-left: 24rpx;
+    }
+
+    &--vertical + &--vertical {
+      margin-bottom: 24rpx;
+    }
+
+    &--text {
+      flex: 1;
+      --td-button-medium-height: 112rpx;
+      border-radius: 0;
+
+      &:before {
+        content: ' ';
+        position: absolute;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        border-top: 1px solid @border-color;
+        border-left: 1px solid @border-color;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        width: 200%;
+        height: 200%;
+        border-radius: 0;
       }
     }
   }

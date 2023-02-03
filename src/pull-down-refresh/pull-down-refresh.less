@@ -1,49 +1,32 @@
 @import '../common/style/index.less';
 
+@pull-down-refresh-color: var(--td-pull-down-refresh-color, @font-gray-3);
+
 .@{prefix}-pull-down-refresh {
-  &__bar {
-    overflow: hidden;
+  overflow: hidden;
+  max-height: 100vh;
+  height: 100%;
+
+  &__track {
     position: relative;
-    background: #f6f6f6;
-    color: #bbb;
-    font-size: 24rpx;
 
-    &--refreshing {
-      transition: height .5s;
-
-      .@{prefix}-pull-down-refresh__loading {
-        animation: rotateLoading .5s linear infinite;
-      }
-    }
-
-    &--success {
-      .refresh-bar__loading {
-        display: none;
-      }
-    }
-
-    &--finishing {
-      transition: height 1s;
-
-      .@{prefix}-pull-down-refresh__loading {
-        visibility: hidden;
-      }
+    &--loosing {
+      transition: transform ease 0.24s;
     }
   }
 
-  &__content {
-    margin-top: 55rpx;
+  &__tips {
+    position: absolute;
+    color: @pull-down-refresh-color;
+    font-size: 24rpx;
+    top: 0;
+    width: 100%;
+    transform: translateY(-100%);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
-
-  &__loading {
-    position: relative;
-    box-sizing: border-box;
-    width: auto;
-    height: auto;
+    overflow: hidden;
   }
 
   &__text {
@@ -52,15 +35,5 @@
 
   &__wrap {
     position: relative;
-  }
-}
-
-@keyframes rotateLoading {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
   }
 }

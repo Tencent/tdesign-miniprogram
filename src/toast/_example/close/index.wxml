@@ -1,0 +1,4 @@
+<t-toast id="t-toast" />
+
+<t-button theme="primary" size="large" variant="outline" bind:tap="handleShow" block>显示提示</t-button>
+<t-button theme="primary" size="large" variant="outline" bind:tap="handleHide" block>关闭提示</t-button>

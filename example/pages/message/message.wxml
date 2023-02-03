@@ -1,7 +1,0 @@
-<view class="demo">
-  <view class="demo-title">Message 消息通知</view>
-  <view class="demo-desc"> 用于轻量级反馈或提示，不会打断用户操作。 </view>
-  <t-demo title="01 类型" operList="{{operList1}}" bindclickoper="showMessage"> </t-demo>
-  <t-demo title="02 状态" operList="{{operList2}}" bindclickoper="showMessage"> </t-demo>
-  <t-message id="t-message" bind:actionBtnClick="clickMessageBtnHadnle" t-class="t-class-content" />
-</view>

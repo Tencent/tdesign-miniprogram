@@ -1,0 +1,6 @@
+<t-tab-bar defaultValue="label1" split="{{false}}">
+  <t-tab-bar-item badge-props="{{ {count: 16} }}" value="label1" icon="home">首页</t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{ { dot: true } }}" value="label2" icon="app">软件</t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{ {count: 'New'} }}" value="label3" icon="chat">聊天</t-tab-bar-item>
+  <t-tab-bar-item badge-props="{{ {count: '···'} }}" value="label4" icon="user">我的</t-tab-bar-item>
+</t-tab-bar>

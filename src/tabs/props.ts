@@ -10,30 +10,47 @@ const props: TdTabsProps = {
   animation: {
     type: Object,
   },
-  /** 组件类名，分别用于设置 组件外层元素 等类名 */
+  /** 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名 */
   externalClasses: {
     type: Array,
-  },
-  /** 选项卡位置 */
-  placement: {
-    type: String,
-    value: 'top',
   },
   /** 是否展示底部激活线条 */
   showBottomLine: {
     type: Boolean,
     value: true,
   },
+  /** 选项卡头部空间是否均分 */
+  spaceEvenly: {
+    type: Boolean,
+    value: true,
+  },
+  /** 是否开启粘性布局 */
+  sticky: {
+    type: Boolean,
+    value: false,
+  },
+  /** 透传至 Sticky 组件 */
+  stickyProps: {
+    type: Object,
+  },
+  /** 是否可以滑动切换 */
+  swipeable: {
+    type: Boolean,
+    value: true,
+  },
+  /** 标签的样式 */
+  theme: {
+    type: String,
+    value: 'line',
+  },
   /** 激活的选项卡值 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: null,
   },
   /** 激活的选项卡值，非受控属性 */
   defaultValue: {
     type: null,
-    value: undefined,
   },
 };
 

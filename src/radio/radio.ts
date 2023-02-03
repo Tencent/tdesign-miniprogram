@@ -1,5 +1,5 @@
 import config from '../common/config';
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import Props from './props';
 
 const { prefix } = config;
@@ -16,11 +16,25 @@ export default class Radio extends SuperComponent {
     `${prefix}-class-label`,
     `${prefix}-class-icon`,
     `${prefix}-class-content`,
+    `${prefix}-class-border`,
   ];
 
-  relations = {
+  behaviors = ['wx://form-field'];
+
+  parent = null;
+
+  relations: RelationsOptions = {
     '../radio-group/radio-group': {
-      type: 'ancestor' as 'ancestor',
+      type: 'ancestor',
+      linked(parent) {
+        this.parent = parent;
+        if (parent.data.align) {
+          this.setData({ align: parent.data.align });
+        }
+        if (parent.data.borderless) {
+          this.setData({ borderless: true });
+        }
+      },
     },
   };
 
@@ -34,7 +48,13 @@ export default class Radio extends SuperComponent {
     },
   };
 
-  properties = Props;
+  properties = {
+    ...Props,
+    borderless: {
+      type: Boolean,
+      value: false,
+    },
+  };
 
   controlledProps = [
     {
@@ -43,20 +63,11 @@ export default class Radio extends SuperComponent {
     },
   ];
 
-  observers = {
-    checked(isChecked: Boolean) {
-      this.setData({
-        active: isChecked,
-      });
-    },
-  };
-
   data = {
     prefix,
-    active: false,
     classPrefix: name,
-    classBasePrefix: prefix,
     customIcon: false,
+    slotIcon: false,
     optionLinked: false,
     iconVal: [],
   };
@@ -69,21 +80,24 @@ export default class Radio extends SuperComponent {
 
       if (target === 'text' && this.data.contentDisabled) return;
 
-      const { value, active } = this.data;
-      const [parent] = this.getRelationNodes('../radio-group/radio-group');
+      this.doChange();
+    },
+    doChange() {
+      const { value, checked } = this.data;
 
-      if (parent) {
-        parent.updateValue(value);
+      if (this.$parent) {
+        this.$parent.updateValue(value);
       } else {
-        this._trigger('change', { checked: !active });
+        this._trigger('change', { checked: !checked });
       }
     },
     initStatus() {
       const { icon } = this.data;
-      const isIdArr = Array.isArray(icon);
+      const isIdArr = Array.isArray(this.parent?.icon || icon);
 
       this.setData({
         customIcon: isIdArr,
+        slotIcon: icon === 'slot',
         iconVal: !isIdArr ? iconDefault[icon] : this.data.icon,
       });
     },

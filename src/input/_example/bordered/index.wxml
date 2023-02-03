@@ -1,0 +1,9 @@
+<view class="input-example">
+  <view class="input-example__label"> 标签文字 </view>
+  <t-input
+    placeholder="请输入文字"
+    borderless="{{true}}"
+    suffixIcon="{{ { name: 'error-circle-filled', ariaLabel: '提示' } }}"
+    style="{{style}}"
+  />
+</view>

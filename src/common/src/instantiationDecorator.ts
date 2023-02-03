@@ -1,6 +1,6 @@
 import { isPlainObject, toObject } from './flatTool';
-
 import { SuperComponent } from './superComponent';
+import { canUseVirtualHost } from '../version';
 
 // 将 on 开头的生命周期函数转变成非 on 开头的
 const RawLifeCycles = ['Created', 'Attached', 'Ready', 'Moved', 'Detached', 'Error'];
@@ -28,7 +28,8 @@ const ComponentNativeProps = [
  * @param options {}
  */
 export const toComponent = function toComponent(options: Record<string, any>) {
-  // 处理 properties 属性
+  const { relations, behaviors = [], properties } = options;
+
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
       let opt = options.properties[k];
@@ -38,15 +39,58 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       }
       options.properties[k] = opt;
     });
+
+    // 内置 aria 相关属性
+    const ariaProps = [
+      { key: 'ariaHidden', type: Boolean },
+      { key: 'ariaRole', type: String },
+      { key: 'ariaLabel', type: String },
+      { key: 'ariaLabelledby', type: String },
+      { key: 'ariaDescribedby', type: String },
+      { key: 'ariaBusy', type: Boolean },
+    ];
+    ariaProps.forEach(({ key, type }) => {
+      options.properties[key] = {
+        type,
+      };
+    });
+
+    // 处理 style 和 customStyle 属性
+    options.properties.style = { type: String, value: '' };
+    options.properties.customStyle = { type: String, value: '' };
   }
 
-  // 处理自定义的方法和生命周期函数
   if (!options.methods) options.methods = {};
 
-  // 使用 lifetimes 处理生命周期函数
   if (!options.lifetimes) options.lifetimes = {};
 
   const inits: { [key: string]: PropertyDescriptor } = {};
+
+  if (relations) {
+    const getRelations = (relation, path) =>
+      Behavior({
+        created() {
+          Object.defineProperty(this, `$${relation}`, {
+            get: () => {
+              const nodes = this.getRelationNodes(path) || [];
+              return relation === 'parent' ? nodes[0] : nodes;
+            },
+          });
+        },
+      });
+    const map = {};
+
+    Object.keys(relations).forEach((path) => {
+      const comp = relations[path];
+      const relation = ['parent', 'ancestor'].includes(comp.type) ? 'parent' : 'children';
+      const mixin = getRelations(relation, path);
+      map[relation] = mixin;
+    });
+
+    behaviors.push(...Object.keys(map).map((key) => map[key]));
+  }
+
+  options.behaviors = [...behaviors];
 
   Object.getOwnPropertyNames(options).forEach((k) => {
     const desc = Object.getOwnPropertyDescriptor(options, k);
@@ -81,8 +125,11 @@ export const toComponent = function toComponent(options: Record<string, any>) {
         const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
         const props = this.properties;
 
-        if (props[defaultKey] != null) {
-          // props[defaultKey] 的默认值需设置成 undefined
+        if (props[key] == null) {
+          this._selfControlled = true;
+        }
+
+        if (props[key] == null && props[defaultKey] != null) {
           this.setData({
             [key]: props[defaultKey],
           });
@@ -94,19 +141,11 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       const target = controlledProps.find((item) => item.event == evtName);
       if (target) {
         const { key } = target;
-        const props = this.properties;
-        const defaultKey = `default${key.replace(/^(\w)/, (m, m1) => m1.toUpperCase())}`;
 
-        if (props[defaultKey] != null) {
-          const ans = {};
-          if (Array.isArray(props[key])) {
-            ans[key] = props[key].concat(detail[key]);
-          } else if (typeof props[key] === 'object') {
-            ans[key] = { ...props[key], ...detail[key] };
-          } else {
-            ans[key] = detail[key];
-          }
-          this.setData(ans);
+        if (this._selfControlled) {
+          this.setData({
+            [key]: detail[key],
+          });
         }
       }
       this.triggerEvent(evtName, detail, opts);
@@ -133,6 +172,10 @@ export const wxComponent = function wxComponent() {
     current.options = current.options || {};
     if (current.options.addGlobalClass === undefined) {
       current.options.addGlobalClass = true;
+    }
+
+    if (canUseVirtualHost()) {
+      current.options.virtualHost = true;
     }
 
     const obj = toComponent(toObject(current));

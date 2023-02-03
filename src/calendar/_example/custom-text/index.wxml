@@ -1,0 +1,9 @@
+<t-calendar
+  visible="{{visible}}"
+  value="{{value}}"
+  minDate="{{minDate}}"
+  maxDate="{{maxDate}}"
+  format="{{format}}"
+  bind:confirm="handleConfirm"
+/>
+<t-cell arrow title="自定义文案" bind:tap="handleCalendar" />

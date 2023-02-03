@@ -1,9 +1,14 @@
 _site
 miniprogram_dist
+_wechatide
 dist
-_example
+/_example
+example/pages/*
+!example/pages/gulp-error
+!example/pages/home
 test/e2e
 test/unit
+test/unit-virtualHost
 .DS_Store
 node_modules
 package-lock.json
@@ -20,3 +25,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+tdesign-miniprogram
+m2w_dist

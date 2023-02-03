@@ -1,0 +1,30 @@
+<view class="demo">
+  <view class="demo-title">BackTop 返回顶部</view>
+  <view class="demo-desc"> 用于当页面过长往下滑动时，帮助用户快速回到页面顶部。</view>
+
+  <t-demo title="组件类型" desc="圆形返回顶部" padding>
+    <t-button theme="primary" size="large" block variant="outline" data-source="round" bindtap="onBtnClick">
+      圆形返回顶部
+    </t-button>
+  </t-demo>
+  <t-demo desc="半圆形返回顶部" padding>
+    <t-button theme="primary" size="large" block variant="outline" data-source="half-round" bindtap="onBtnClick">
+      半圆形返回顶部
+    </t-button>
+  </t-demo>
+  <t-demo padding>
+    <view class="container-flex">
+      <t-skeleton rowCol="{{rowCol}}" class="skeleton-item" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol}}" class="skeleton-item" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol}}" class="skeleton-item" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol}}" class="skeleton-item" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol}}" class="skeleton-item" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol}}" class="skeleton-item" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol}}" class="skeleton-item" loading></t-skeleton>
+      <t-skeleton rowCol="{{rowCol}}" class="skeleton-item" loading></t-skeleton>
+    </view>
+  </t-demo>
+
+  <base wx:if="{{type == 'round' && showBackTop}}" />
+  <half-round wx:if="{{type == 'half-round' && showBackTop}}" />
+</view>

@@ -1,21 +1,22 @@
 @import '../common/index.less';
 
 @tab-bar-cls: ~'@{prefix}-tab-bar';
-@tab-bar-height: 48px;
-@tab-bar-bg-color: @bg-color-block;
-@tab-bar-border-color: @border-level-1-color;
+
+@tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-block);
+@tab-bar-border-color: var(--td-tab-bar-border-color, @border-level-1-color);
+@tab-bar-round-shadow: var(--td-tab-bar-round-shadow, @shadow-3);
 
 .@{tab-bar-cls} {
-  width: 100%;
-  height: @tab-bar-height;
-  background-color: @tab-bar-bg-color;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   position: relative;
   font-size: 16px;
+  background-color: @tab-bar-bg-color;
+  box-sizing: border-box;
 
-  &--border::before {
+  &--normal&--border::before {
+    z-index: 1;
     .hairline-top(@color: @tab-bar-border-color);
   }
 
@@ -23,16 +24,23 @@
     position: fixed;
     left: 0;
     bottom: 0;
+    right: 0;
   }
 
-  &--safe {
+  &--normal&--safe {
     padding-bottom: constant(safe-area-inset-bottom);
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  @{tab-bar-cls}-item:first-child {
-    &::before {
-      border: unset;
-    }
+  &--round {
+    margin-left: 32rpx;
+    margin-right: 32rpx;
+    border-radius: 999px;
+    box-shadow: @tab-bar-round-shadow;
+  }
+
+  &--fixed&--round&--safe {
+    bottom: constant(safe-area-inset-bottom);
+    bottom: env(safe-area-inset-bottom);
   }
 }

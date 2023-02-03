@@ -1,0 +1,23 @@
+<t-dropdown-menu>
+  <t-dropdown-item
+    label="单列多选"
+    options="{{multipleSelect.options}}"
+    value="{{multipleSelect.value}}"
+    bindchange="handleMultipleSelect"
+    multiple
+  />
+  <t-dropdown-item
+    label="双列多选"
+    optionsColumns="2"
+    options="{{doubleColumnsOptions}}"
+    defaultValue="{{['option_1', 'option_2']}}"
+    multiple
+  />
+  <t-dropdown-item
+    label="三列多选"
+    optionsColumns="3"
+    options="{{tripleColumnsOptions}}"
+    defaultValue="{{['option_1', 'option_2', 'option_3']}}"
+    multiple
+  />
+</t-dropdown-menu>

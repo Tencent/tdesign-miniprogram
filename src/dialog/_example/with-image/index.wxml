@@ -1,0 +1,49 @@
+<t-button
+  t-class="wrapper"
+  size="large"
+  theme="primary"
+  variant="outline"
+  data-key="imageOnTop"
+  bind:tap="showDialog"
+  block
+>
+  图片置顶
+</t-button>
+<t-dialog
+  visible="{{imageOnTop}}"
+  title="带输入框对话框"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ {content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+>
+  <t-image slot="top" t-class="dialog-image" src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png" />
+</t-dialog>
+
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="imageOnMiddle"
+  bind:tap="showDialog"
+  block
+>
+  图片居中
+</t-button>
+<t-dialog
+  visible="{{imageOnMiddle}}"
+  title="带输入框对话框"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ {content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+>
+  <t-image
+    slot="middle"
+    t-class="image-host dialog-image"
+    src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
+  />
+</t-dialog>

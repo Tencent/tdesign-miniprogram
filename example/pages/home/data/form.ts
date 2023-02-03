@@ -1,10 +1,14 @@
 const form = {
-  name: '表单',
-  icon: '/assets/bulletpoint@2x.png',
+  name: '输入',
+  icon: 'bulletpoint',
   childArr: [
     {
-      name: 'Button',
-      label: '按钮',
+      name: 'Calendar',
+      label: '日历',
+    },
+    {
+      name: 'Cascader',
+      label: '级联选择器',
     },
     {
       name: 'Checkbox',
@@ -14,17 +18,9 @@ const form = {
       name: 'DateTimePicker',
       label: '时间选择器',
     },
-    // {
-    //   name: 'Fab',
-    //   label: '悬浮按钮',
-    // },
     {
       name: 'Input',
       label: '输入框',
-    },
-    {
-      name: 'Textarea',
-      label: '多行输入框',
     },
     {
       name: 'Picker',
@@ -53,6 +49,14 @@ const form = {
     {
       name: 'Switch',
       label: '开关',
+    },
+    {
+      name: 'Textarea',
+      label: '多行文本框',
+    },
+    {
+      name: 'TreeSelect',
+      label: '树形选择器',
     },
     // {
     //   name: 'PeriodSelector',

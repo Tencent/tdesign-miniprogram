@@ -1,0 +1,29 @@
+.size-xl {
+  width: 120px;
+  height: 120px;
+}
+
+.size-l {
+  width: 72px;
+  height: 72px;
+}
+
+.size-m {
+  width: 56px;
+  height: 56px;
+}
+
+.size-s {
+  width: 48px;
+  height: 48px;
+}
+
+.size-xs {
+  width: 32px;
+  height: 32px;
+}
+
+.size-xss {
+  width: 24px;
+  height: 24px;
+}

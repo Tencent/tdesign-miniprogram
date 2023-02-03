@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-transition": "../transition/transition",
-    "t-icon": "../icon/icon"
-  }
-}

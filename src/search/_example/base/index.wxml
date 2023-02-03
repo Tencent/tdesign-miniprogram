@@ -1,0 +1,3 @@
+<view class="example-search">
+  <t-search model:value="{{value}}" placeholder="搜索预设文案" />
+</view>

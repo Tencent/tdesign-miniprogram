@@ -1,29 +1,26 @@
 module.exports = {
-  getTClass: function (size) {
-    var isIncludePx = size.indexOf('px') > -1;
-    return isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1);
-  },
-  getAvatarOuterClass: function (classPrefix, size, shape) {
-    var isIncludePx = size.indexOf('px') > -1;
+  getClass: function (classPrefix, size, shape, bordered) {
+    var hasPx = (size || '').indexOf('px') > -1;
+    var borderSize = hasPx ? 'medium' : size;
     var classNames = [
       classPrefix,
       classPrefix + (shape === 'round' ? '--round' : '--circle'),
-      isIncludePx ? '' : 't-size-' + (size || 'medium').slice(0, 1),
+      bordered ? classPrefix + '--border' + ' ' + classPrefix + '--border-' + borderSize : '',
+      hasPx ? '' : classPrefix + '--' + size,
     ];
     return classNames.join(' ');
   },
-  getAvatarSizePx: function (size) {
-    var isIncludePx = size.indexOf('px') > -1;
-    if (isIncludePx) {
-      return 'width:' + size + ';height:' + size + ';';
+
+  getSize: function (size = 'medium') {
+    var pxIndex = size.indexOf('px');
+    if (pxIndex > -1) {
+      return 'width:' + size + ';height:' + size + ';font-size:' + ((size.slice(0, pxIndex) / 8) * 3 + 2) + 'px;';
     }
   },
+
   getStyles: function (isShow, zIndex) {
-    var styles = 'z-index:' + zIndex + ';';
-    return styles + (isShow ? '' : 'display: none;');
-  },
-  getIconClass: function (classPrefix, size) {
-    if (size.indexOf('px') > -1) return;
-    return classPrefix + '__icon--default-' + (size || 'medium').slice(0, 1);
+    var displayStyle = isShow ? '' : 'display: none;';
+    var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+    return displayStyle + zIndexStyle;
   },
 };

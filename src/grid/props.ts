@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdGridProps } from './type';
@@ -14,11 +13,10 @@ const props: TdGridProps = {
   },
   /** 边框，默认不显示。值为 true 则显示默认边框，值类型为 object 则表示自定义边框样式 */
   border: {
-    type: Boolean,
-    optionalTypes: [Object],
+    type: null,
     value: false,
   },
-  /** 每一行的列数量 */
+  /** 每一行的列数量；为 0 时等于固定大小 */
   column: {
     type: Number,
     value: 4,
@@ -35,6 +33,11 @@ const props: TdGridProps = {
   hover: {
     type: Boolean,
     value: false,
+  },
+  /** 宫格的风格 */
+  theme: {
+    type: String,
+    value: 'default',
   },
 };
 

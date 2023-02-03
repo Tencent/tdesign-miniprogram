@@ -1,0 +1,86 @@
+@import '../common/style/index.less';
+
+@side-bar-color: var(--td-side-bar-color, @font-gray-1);
+@side-bar-font-size: var(--td-side-bar-font-size, 32rpx);
+@side-bar-item-height: var(--td-side-bar-item-height, 112rpx);
+@side-bar-item-line-height: var(--td-side-bar-item-line-height, 48rpx);
+@side-bar-bg-color: var(--td-side-bar-bg-color, @gray-color-1);
+@side-bar-disabled-color: var(--td-side-bar-disabled-color, @font-gray-4);
+@side-bar-active-color: var(--td-side-bar-active-color, @primary-color);
+@side-bar-border-radius: var(--td-side-bar-border-radius, 18rpx);
+@side-bar-icon-size: var(--td-side-bar-icon-size, 40rpx);
+
+.@{prefix}-side-bar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 32rpx;
+  font-size: @side-bar-font-size;
+  color: @side-bar-color;
+  background: @side-bar-bg-color;
+  min-height: @side-bar-item-height;
+  box-sizing: border-box;
+  white-space: wrap;
+  line-height: @side-bar-item-line-height;
+
+  &--active {
+    font-weight: 600;
+    background: @bg-color-block;
+    color: @side-bar-active-color;
+  }
+
+  &__icon {
+    font-size: @side-bar-icon-size;
+    margin-right: 4rpx;
+  }
+
+  &__prefix,
+  &__suffix {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    width: calc(@side-bar-border-radius * 2);
+    height: calc(@side-bar-border-radius * 2);
+    background: #fff;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: @side-bar-bg-color;
+    }
+  }
+
+  &__prefix {
+    top: calc(@side-bar-border-radius * -2);
+
+    &::after {
+      border-bottom-right-radius: @side-bar-border-radius;
+    }
+  }
+
+  &__suffix {
+    bottom: calc(@side-bar-border-radius * -2);
+
+    &::after {
+      border-top-right-radius: @side-bar-border-radius;
+    }
+  }
+
+  &--disabled {
+    color: @side-bar-disabled-color;
+  }
+
+  &__line {
+    width: 6rpx;
+    height: 28rpx;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: @side-bar-active-color;
+    border-radius: 8rpx;
+  }
+}

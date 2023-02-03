@@ -6,7 +6,7 @@ const { prefix } = config;
 const name = `${prefix}-divider`;
 @wxComponent()
 export default class Divider extends SuperComponent {
-  externalClasses = ['t-class', 't-class-content'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-content`];
 
   options = {
     addGlobalClass: true,
@@ -22,6 +22,23 @@ export default class Divider extends SuperComponent {
    * 组件的初始数据
    */
   data = {
+    prefix,
     classPrefix: name,
+  };
+
+  observers = {
+    lineColor() {
+      this.setStyle();
+    },
+  };
+
+  methods = {
+    setStyle() {
+      const { lineColor } = this.properties;
+      const dividerStyle = `${lineColor ? `border-color: ${lineColor};` : ''}`;
+      this.setData({
+        dividerStyle,
+      });
+    },
   };
 }

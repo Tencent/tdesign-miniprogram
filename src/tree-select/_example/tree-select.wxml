@@ -1,0 +1,15 @@
+<view class="demo">
+  <view class="demo-title">TreeSelect 树形选择</view>
+  <view class="demo-desc">适用于选择树形的数据结构。</view>
+  <t-demo title="01 组件类型" desc="基础树形选择">
+    <base />
+  </t-demo>
+
+  <t-demo desc="多选树形选择">
+    <multiple />
+  </t-demo>
+
+  <t-demo title="02 组件状态" desc="三级树形选择">
+    <normal />
+  </t-demo>
+</view>

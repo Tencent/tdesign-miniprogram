@@ -7,9 +7,6 @@ const name = `${prefix}-cell`;
 
 @wxComponent()
 export default class Cell extends SuperComponent {
-  /**
-   * Component properties
-   */
   externalClasses = [
     `${prefix}-class`,
     `${prefix}-class-title`,
@@ -18,7 +15,9 @@ export default class Cell extends SuperComponent {
     `${prefix}-class-hover`,
     `${prefix}-class-image`,
     `${prefix}-class-left`,
+    `${prefix}-class-left-icon`,
     `${prefix}-class-right`,
+    `${prefix}-class-right-icon`,
   ];
 
   options = {
@@ -27,17 +26,11 @@ export default class Cell extends SuperComponent {
 
   properties = props;
 
-  /**
-   * Component initial data
-   */
   data = {
     prefix,
     classPrefix: name,
   };
 
-  /**
-   * Component methods
-   */
   onClick(e) {
     this.triggerEvent('click', e.detail);
     this.jumpLink();

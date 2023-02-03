@@ -1,0 +1,25 @@
+<view class="demo-desc">圆形徽标</view>
+<view class="demo-wrapper">
+  <t-badge count="2" offset="{{ [-2, -2] }}">
+    <t-icon name="notification" size="24" />
+  </t-badge>
+</view>
+
+<view class="demo-desc">方形徽标</view>
+<view class="demo-wrapper">
+  <t-badge count="2" shape="square" offset="{{ [-2, -2] }}">
+    <t-icon name="notification" size="24" />
+  </t-badge>
+</view>
+
+<view class="demo-desc">气泡徽标</view>
+<view class="demo-wrapper">
+  <t-badge count="领积分" shape="bubble">
+    <t-button icon="shop" shape="square" size="large" />
+  </t-badge>
+</view>
+
+<view class="demo-desc" style="margin-bottom: 32rpx">角标</view>
+<t-cell title="单行标题">
+  <t-badge count="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+</t-cell>

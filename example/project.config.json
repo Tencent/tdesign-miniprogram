@@ -24,7 +24,7 @@
     "showShadowRootInWxmlPanel": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.11.3",
+  "libVersion": "2.20.2",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {
@@ -58,7 +58,7 @@
       "list": [
         {
           "id": -1,
-          "name": "custom",
+          "name": "button",
           "pathName": "pages/button/button",
           "query": "",
           "scene": null
@@ -79,6 +79,30 @@
           "id": -1,
           "name": "swiper",
           "pathName": "pages/swiper/swiper",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "actionSheet",
+          "pathName": "pages/action-sheet/action-sheet",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "image-viewer",
+          "pathName": "pages/image-viewer/image-viewer",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "search",
+          "pathName": "pages/search/search",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "checkbox",
+          "pathName": "pages/checkbox/checkbox",
           "scene": null
         }
       ]

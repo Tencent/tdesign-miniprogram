@@ -1,27 +1,37 @@
-<t-popup visible="{{visible}}" bind:close="onClickOverlay" position="{{position}}">
-  <view
-    class="t-drawer__sidebar"
-    style="{{position === 'left' || position === 'right' ? 'width:' + drawerSize : 'height:' + drawerSize}}"
-  >
-    <view class="t-drawer__sidebar-header">
-      <view class="t-drawer__header-title">
-        <slot name="title"></slot>
+<wxs src="../common/utils.wxs" module="_" />
+
+<t-popup
+  style="{{_._style([style, customStyle])}}"
+  bind:visible-change="visibleChange"
+  visible="{{visible}}"
+  zIndex="{{zIndex}}"
+  placement="{{placement == 'right' ? 'right' : 'left'}}"
+  showOverlay="{{showOverlay}}"
+  destroyOnClose="{{destroyOnClose}}"
+  closeOnOverlayClick="{{closeOnOverlayClick}}"
+>
+  <view class="{{classPrefix}}">
+    <slot name="title" />
+    <view wx:if="{{title}}" class="{{classPrefix}}__title">{{title}}</view>
+    <scroll-view class="{{classPrefix}}__sidebar" scroll-y>
+      <view
+        class="{{classPrefix}}__sidebar-item"
+        wx:for="{{items}}"
+        wx:item="item"
+        wx:key="index"
+        data-item="{{item}}"
+        data-index="{{index}}"
+        bindtap="itemClick"
+      >
+        <view wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
+          <t-icon name="{{item.icon}}" />
+        </view>
+        <view class="{{classPrefix}}__sidebar-item-title"> {{item.title}} </view>
       </view>
-      <label class="t-drawer__close-btn" wx:if="{{closeBtn}}" bind:tap="onClose"></label>
-    </view>
-    <view class="t-drawer__sidebar-content">
-      <view wx:for="{{sidebar}}" wx:key="index" class="t-drawer__sidebar-item">
-        <image
-          class="t-drawer__sidebar-item-icon"
-          wx:if="{{item.icon}}"
-          src="{{item.icon}}"
-        ></image>
-        <view class="t-drawer__sidebar-item-name">{{item.name}}</view>
-      </view>
-      <slot></slot>
-    </view>
-    <view class="t-drawer__sidebar-footer">
-      <slot name="footer"></slot>
+    </scroll-view>
+    <view class="{{classPrefix}}__footer">
+      <slot />
+      <slot name="footer" />
     </view>
   </view>
 </t-popup>

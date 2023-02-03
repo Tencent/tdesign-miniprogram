@@ -2,27 +2,65 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
+
+import { ButtonProps } from '../button/index';
 
 export interface TdPickerProps {
   /**
+   * 自动关闭；在确认、取消、点击遮罩层自动关闭，不需要手动设置 visible
+   * @default true
+   */
+  autoClose?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 取消按钮文字
-   * @default 取消
+   * @default true
    */
   cancelBtn?: {
-    type: StringConstructor;
-    value?: string;
-    required?: boolean;
+    type: null;
+    value?: boolean | string | ButtonProps;
+  };
+  /**
+   * 配置每一列的选项
+   * @default []
+   */
+  columns: {
+    type: ArrayConstructor;
+    value?: Array<PickerColumn> | ((item: Array<PickerValue>) => Array<PickerColumn>);
   };
   /**
    * 确定按钮文字
-   * @default 确认
+   * @default true
    */
   confirmBtn?: {
+    type: null;
+    value?: boolean | string | ButtonProps;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
+  };
+  /**
+   * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
+   * @default true
+   */
+  header?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 自定义label
+   */
+  renderLabel?: {
+    type: StringConstructor;
+    value?: (item: PickerColumnItem) => string;
   };
   /**
    * 标题
@@ -31,7 +69,6 @@ export interface TdPickerProps {
   title?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 选中值
@@ -39,7 +76,13 @@ export interface TdPickerProps {
   value?: {
     type: ArrayConstructor;
     value?: Array<PickerValue>;
-    required?: boolean;
+  };
+  /**
+   * 选中值，非受控属性
+   */
+  defaultValue?: {
+    type: ArrayConstructor;
+    value?: Array<PickerValue>;
   };
   /**
    * 是否显示
@@ -48,31 +91,14 @@ export interface TdPickerProps {
   visible?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
-};
+}
 
-export interface TdPickerItemProps {
-  /**
-   * 数据源
-   * @default []
-   */
-  options?: {
-    type: ArrayConstructor;
-    value?: Array<PickerItemOption>;
-    required?: boolean;
-  };
-  /**
-   * 默认选中的侯选项
-   */
-  value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
-    required?: boolean;
-  };
-};
+export type PickerColumn = PickerColumnItem[];
+
+export interface PickerColumnItem {
+  label: string;
+  value: string;
+}
 
 export type PickerValue = string | number;
-
-export interface PickerItemOption { label: string; value: string | number };

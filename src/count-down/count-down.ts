@@ -1,17 +1,14 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { isSameSecond, parseFormat, parseTimeData } from './utils';
+import { isSameSecond, parseFormat, parseTimeData, TimeDataUnit } from './utils';
 
 const { prefix } = config;
 const name = `${prefix}-count-down`;
-const simpleTick = function (fn: (...args: any[]) => void): any {
-  return setTimeout(fn, 30);
-};
 
 @wxComponent()
 export default class CountDown extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-count`, `${prefix}-class-split`];
 
   properties = props;
 
@@ -22,100 +19,87 @@ export default class CountDown extends SuperComponent {
   };
 
   data = {
+    prefix,
     classPrefix: name,
+    timeDataUnit: TimeDataUnit,
     timeData: parseTimeData(0),
     formattedTime: '0',
   };
 
-  tid: null | number = null;
+  timeoutId: null | number = null;
 
-  detached() {
-    this.destroyed();
-  }
-
-  destroyed() {
-    if (this.tid) {
-      clearTimeout(this.tid);
-      this.tid = null;
-    }
-  }
-
-  // 开始
-  start() {
-    if (this.counting) {
-      return;
-    }
-
-    this.counting = true;
-    this.endTime = Date.now() + this.remain;
-    this.tick();
-  }
-
-  // 暂停
-  pause() {
-    this.counting = false;
-    this.tid && clearTimeout(this.tid);
-  }
-
-  // 重置
-  reset() {
-    this.pause();
-    this.remain = this.properties.time;
-    this.setRemain(this.remain);
-
-    if (this.properties.autoStart) {
-      this.start();
-    }
-  }
-
-  tick() {
-    if (this.properties.millisecond) {
-      this.microTick();
-    } else {
-      this.macroTick();
-    }
-  }
-
-  microTick() {
-    this.tid = simpleTick(() => {
-      this.setRemain(this.getRemain());
-
-      if (this.remain !== 0) {
-        this.microTick();
+  lifetimes = {
+    detached() {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+        this.timeoutId = null;
       }
-    });
-  }
+    },
+  };
 
-  macroTick() {
-    this.tid = simpleTick(() => {
-      const remain: number = this.getRemain();
-
-      if (!isSameSecond(remain, this.remain) || remain === 0) {
-        this.setRemain(remain);
+  methods = {
+    start() {
+      if (this.counting) {
+        return;
       }
 
-      if (this.remain !== 0) {
-        this.macroTick();
-      }
-    });
-  }
+      this.counting = true;
+      this.endTime = Date.now() + this.remain;
+      this.doCount();
+    },
 
-  getRemain(): number {
-    return Math.max(this.endTime - Date.now(), 0);
-  }
+    pause() {
+      this.counting = false;
+      this.timeoutId && clearTimeout(this.timeoutId);
+    },
 
-  setRemain(remain: number) {
-    this.remain = remain;
-    const timeData = parseTimeData(remain);
-    this.triggerEvent('change', timeData);
-    const { timeText } = parseFormat(remain, this.properties.format as any as string);
-    this.setData({
-      formattedTime: timeText.replace(/:/g, ' : '),
-    });
-
-    if (remain === 0) {
+    reset() {
       this.pause();
-      this.triggerEvent('finish');
-    }
-  }
+      this.remain = this.properties.time;
+      this.updateTime(this.remain);
+
+      if (this.properties.autoStart) {
+        this.start();
+      }
+    },
+
+    getTime(): number {
+      return Math.max(this.endTime - Date.now(), 0);
+    },
+
+    updateTime(remain: number) {
+      const { format } = this.properties;
+      this.remain = remain;
+      const timeData = parseTimeData(remain);
+      this.triggerEvent('change', timeData);
+      const { timeText } = parseFormat(remain, format as any as string);
+      const timeRange = format.split(':');
+      this.setData({
+        timeRange,
+        timeData,
+        formattedTime: timeText.replace(/:/g, ' : '),
+      });
+
+      if (remain === 0) {
+        this.pause();
+        this.triggerEvent('finish');
+      }
+    },
+
+    doCount() {
+      this.timeoutId = setTimeout(() => {
+        const time = this.getTime();
+
+        if (this.properties.millisecond) {
+          this.updateTime(time);
+        } else if (!isSameSecond(time, this.remain) || time === 0) {
+          this.updateTime(time);
+        }
+
+        if (time !== 0) {
+          this.doCount();
+        }
+      }, 33); // 30 帧，因此 1000 / 30 = 33
+    },
+  };
 }

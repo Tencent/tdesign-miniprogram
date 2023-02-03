@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "Loading",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "base": "./base",
+    "horizontal": "./horizontal",
+    "vertical": "./vertical",
+    "text": "./text",
+    "error": "./error",
+    "status": "./status",
+    "duration": "./duration",
+    "size": "./size"
+  }
+}

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sticky Sticky base demo works fine 1`] = `
+<base>
+  <t-sticky>
+    <t-button
+      size="large"
+      tClass="external-class"
+      theme="primary"
+    >
+      基础吸顶
+    </t-button>
+  </t-sticky>
+</base>
+`;
+
+exports[`Sticky Sticky container demo works fine 1`] = `
+<container>
+  <wx-view
+    class="wrapper"
+  >
+    <t-sticky
+      container="{{[Function]}}"
+    >
+      <t-button
+        size="large"
+        tClass="external-class green-button"
+      >
+        指定容器
+      </t-button>
+    </t-sticky>
+  </wx-view>
+</container>
+`;
+
+exports[`Sticky Sticky offset demo works fine 1`] = `
+<offset>
+  <t-sticky
+    offsetTop="{{40}}"
+  >
+    <t-button
+      size="large"
+      tClass="external-class"
+      theme="danger"
+    >
+      吸顶距离
+    </t-button>
+  </t-sticky>
+</offset>
+`;

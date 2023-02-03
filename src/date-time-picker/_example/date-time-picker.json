@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "DateTimePicker",
+  "usingComponents": {
+    "year-month-date": "./year-month-date",
+    "year-month": "./year-month",
+    "time": "./time",
+    "date-all": "./date-all"
+  }
+}

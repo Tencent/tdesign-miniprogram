@@ -9,8 +9,11 @@ const gulpLess = require('gulp-less');
 const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
 const mpNpm = require('gulp-mp-npm');
+const gulpIf = require('gulp-if');
 
 const config = require('./config');
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 // set displayName
 const setDisplayName = (tasks, moduleName) => {
@@ -34,19 +37,22 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
 
 /* return gulpfile base tasks */
 module.exports = (src, dist, moduleName) => {
-  const tsProject = gulpTs.createProject('tsconfig.json');
+  const tsProject = gulpTs.createProject('tsconfig.json', {
+    declaration: true,
+    removeComments: isProduction,
+  });
 
   // options
-  const srcOptions = { base: src, ignore: ['**/__test__', '**/__test__/**'] };
+  const ignore = ['**/__test__', '**/__test__/**', '**/_example/**'];
+  const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
-
   // 文件匹配路径
   const globs = {
     ts: `${src}/**/*.ts`, // 匹配 ts 文件
     js: `${src}/**/*.js`, // 匹配 js 文件
     wxs: `${src}/**/*.wxs`, // 匹配 wxs 文件
-    json: `${src}/**/*.json`, // 匹配 json 文件
+    json: [`${src}/**/*.json`], // 匹配 json 文件
     less: `${src}/**/*.less`, // 匹配 less 文件
     wxss: `${src}/**/*.wxss`, // 匹配 wxss 文件
     md: `${src}/**/*.md`, // 匹配 md 文件
@@ -60,7 +66,7 @@ module.exports = (src, dist, moduleName) => {
     `!${globs.json}`,
     `!${globs.less}`,
     `!${globs.wxss}`,
-    `!${globs.md}`,
+    '!**/_example/**',
   ];
 
   // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
@@ -87,8 +93,7 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp resetError`
    * 重置gulpError
    * */
-  tasks.resetError = () =>
-    gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
+  tasks.resetError = () => gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
 
   /** `gulp copy`
    * 清理
@@ -108,16 +113,15 @@ module.exports = (src, dist, moduleName) => {
       .pipe(
         plumber({
           errorHandler: (err) => {
-            console.log(err);
             tasks.handleError(err.message);
           },
         }),
       )
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
-      .pipe(sourcemaps.init())
+      .pipe(gulpIf(!isProduction, sourcemaps.init()))
       .pipe(tsProject()) // 编译ts
       .pipe(mpNpm())
-      .pipe(sourcemaps.write('.'))
+      .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
       .pipe(gulp.dest(dist));
 
   /** `gulp js`
@@ -141,8 +145,7 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp json`
    * 处理json
    * */
-  tasks.json = () =>
-    gulp.src(globs.json, { ...srcOptions, since: since(tasks.json) }).pipe(gulp.dest(dist));
+  tasks.json = () => gulp.src(globs.json, { ...srcOptions, dot: true, since: since(tasks.json) }).pipe(gulp.dest(dist));
 
   /** `gulp less`
    * 处理less
@@ -159,23 +162,21 @@ module.exports = (src, dist, moduleName) => {
         }),
       )
       .pipe(generateConfigReplaceTask(config, { stringify: false }))
-      .pipe(sourcemaps.init())
+      .pipe(gulpIf(!isProduction, sourcemaps.init()))
       .pipe(gulpLess()) // 编译less
       .pipe(rename({ extname: '.wxss' }))
-      .pipe(sourcemaps.write('.'))
+      .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
       .pipe(gulp.dest(dist));
 
   /** `gulp wxss`
    * 处理wxss
    * */
-  tasks.wxss = () =>
-    gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
+  tasks.wxss = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
 
   /** `gulp common`
    * 拷贝common中样式
    */
-  tasks.common = () =>
-    gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
+  tasks.common = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
 
   // set displayName
   setDisplayName(tasks, moduleName);

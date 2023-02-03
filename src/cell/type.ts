@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2022-01-11 17:36:12
  * */
 
 export interface TdCellProps {
@@ -13,7 +12,6 @@ export interface TdCellProps {
   align?: {
     type: StringConstructor;
     value?: 'top' | 'middle' | 'bottom';
-    required?: boolean;
   };
   /**
    * 是否显示右侧箭头
@@ -22,7 +20,6 @@ export interface TdCellProps {
   arrow?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否显示下边框
@@ -31,7 +28,14 @@ export interface TdCellProps {
   bordered?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 下方内容描述
@@ -39,15 +43,22 @@ export interface TdCellProps {
   description?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 组件类名，分别用于设置 组件外层类名、标题类名、右侧说明文字类名、下方描述内容类名、图片类名、激活态类名、左侧图标类名、右侧图标类名 等
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class', 't-class-title', 't-class-note', 't-class-description', 't-class-thumb', 't-class-hover', 't-class-left', 't-class-right'];
-    required?: boolean;
+    value?: [
+      't-class',
+      't-class-title',
+      't-class-note',
+      't-class-description',
+      't-class-thumb',
+      't-class-hover',
+      't-class-left',
+      't-class-right',
+    ];
   };
   /**
    * 是否开启点击反馈
@@ -55,7 +66,6 @@ export interface TdCellProps {
   hover?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 主图
@@ -63,7 +73,6 @@ export interface TdCellProps {
   image?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 链接跳转类型
@@ -72,7 +81,6 @@ export interface TdCellProps {
   jumpType?: {
     type: StringConstructor;
     value?: 'switchTab' | 'reLaunch' | 'redirectTo' | 'navigateTo';
-    required?: boolean;
   };
   /**
    * 左侧图标，出现在单元格标题的左侧
@@ -80,7 +88,6 @@ export interface TdCellProps {
   leftIcon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 和标题同行的说明文字
@@ -88,7 +95,6 @@ export interface TdCellProps {
   note?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 是否显示表单必填星号
@@ -97,7 +103,6 @@ export interface TdCellProps {
   required?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 最右侧图标
@@ -105,7 +110,6 @@ export interface TdCellProps {
   rightIcon?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 标题
@@ -113,7 +117,6 @@ export interface TdCellProps {
   title?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 点击后跳转链接地址。如果值为空，则表示不需要跳转
@@ -122,6 +125,5 @@ export interface TdCellProps {
   url?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
 }

@@ -1,3 +1,9 @@
+import { prefix } from './config';
+
+const systemInfo = wx.getSystemInfoSync();
+
+type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
+
 export const debounce = function (func, wait = 500) {
   let timerId;
   return function (...rest) {
@@ -7,6 +13,35 @@ export const debounce = function (func, wait = 500) {
     timerId = setTimeout(() => {
       func.apply(this, rest);
     }, wait);
+  };
+};
+
+export const throttle = (func, wait = 100, options = null) => {
+  let previous = 0;
+  let timerid = null;
+
+  if (!options) {
+    options = {
+      leading: true,
+    };
+  }
+
+  return function (...args) {
+    const now = Date.now();
+
+    if (!previous && !options.leading) previous = now;
+
+    const remaining = wait - (now - previous);
+    const context = this;
+
+    if (remaining <= 0) {
+      if (timerid) {
+        clearTimeout(timerid);
+        timerid = null;
+      }
+      previous = now;
+      func.apply(context, args);
+    }
   };
 };
 
@@ -48,7 +83,7 @@ export const styles = function (styleObj) {
     .join('; ');
 };
 
-export const requestAnimationFrame = function (cb: Function) {
+export const getAnimationFrame = function (cb: Function) {
   return wx
     .createSelectorQuery()
     .selectViewport()
@@ -56,6 +91,22 @@ export const requestAnimationFrame = function (cb: Function) {
     .exec(() => {
       cb();
     });
+};
+
+export const getRect = function (context: any, selector: string, needAll: boolean = false) {
+  return new Promise<any>((resolve, reject) => {
+    wx.createSelectorQuery()
+      .in(context)
+      [needAll ? 'selectAll' : 'select'](selector)
+      .boundingClientRect((rect) => {
+        if (rect) {
+          resolve(rect);
+        } else {
+          reject(rect);
+        }
+      })
+      .exec();
+  });
 };
 
 const isDef = function (value: any): boolean {
@@ -76,52 +127,129 @@ export const addUnit = function (value?: string | number): string | undefined {
 
 /**
  * 计算字符串字符的长度并可以截取字符串。
- * @param str 传入字符串
- * @param maxCharacter 规定最大字符串长度
- * @returns 当没有传入maxCharacter时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
+ * @param str 传入字符串（maxcharacter条件下，一个汉字表示两个字符）
+ * @param max 规定最大字符串长度
+ * @returns 当没有传入maxCharacter/maxLength 时返回字符串字符长度，当传入maxCharacter/maxLength时返回截取之后的字符串和长度。
  */
-export const getCharacterLength = (
-  str: string,
-  maxCharacter?: number,
-): { length: number; characters: string } => {
-  const hasMaxCharacter = typeof maxCharacter === 'number';
+export const getCharacterLength = (type: string, str: string, max?: number) => {
   if (!str || str.length === 0) {
-    if (hasMaxCharacter) {
-      return {
-        length: 0,
-        characters: str,
-      };
-    }
     return {
       length: 0,
       characters: '',
     };
   }
-  let len = 0;
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < str.length; i++) {
-    let currentStringLength = 0;
-    if (str.charCodeAt(i) > 127 || str.charCodeAt(i) === 94) {
-      currentStringLength = 2;
-    } else {
-      currentStringLength = 1;
+
+  if (type === 'maxcharacter') {
+    let len = 0;
+    for (let i = 0; i < str.length; i += 1) {
+      let currentStringLength = 0;
+      if (str.charCodeAt(i) > 127 || str.charCodeAt(i) === 94) {
+        currentStringLength = 2;
+      } else {
+        currentStringLength = 1;
+      }
+      if (len + currentStringLength > max) {
+        return {
+          length: len,
+          characters: str.slice(0, i),
+        };
+      }
+      len += currentStringLength;
     }
-    if (hasMaxCharacter && len + currentStringLength > maxCharacter) {
-      return {
-        length: len,
-        characters: str.slice(0, i),
-      };
-    }
-    len += currentStringLength;
-  }
-  if (hasMaxCharacter) {
     return {
       length: len,
       characters: str,
     };
+  } else if (type === 'maxlength') {
+    const length = str.length > max ? max : str.length;
+    return {
+      length,
+      characters: str.slice(0, length),
+    };
+  }
+
+  return {
+    length: str.length,
+    characters: str,
+  };
+};
+
+export const chunk = (arr: any[], size: number) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
+
+export const getInstance = function (context?: Context, selector?: string) {
+  if (!context) {
+    const pages = getCurrentPages();
+    const page = pages[pages.length - 1];
+    context = page.$$basePage || page;
+  }
+  const instance = context ? context.selectComponent(selector) : null;
+  if (!instance) {
+    console.warn('未找到组件,请检查selector是否正确');
+    return null;
+  }
+  return instance;
+};
+
+export const unitConvert = (value: number | string): number => {
+  if (typeof value === 'string') {
+    if (value.includes('rpx')) {
+      return (parseInt(value, 10) * (systemInfo?.screenWidth ?? 750)) / 750;
+    }
+    return parseInt(value, 10);
+  }
+  return value;
+};
+
+export const setIcon = (iconName, icon, defaultIcon) => {
+  if (icon) {
+    if (typeof icon === 'string') {
+      return {
+        [`${iconName}Name`]: icon,
+        [`${iconName}Data`]: {},
+      };
+    } else if (typeof icon === 'object') {
+      return {
+        [`${iconName}Name`]: '',
+        [`${iconName}Data`]: icon,
+      };
+    } else {
+      return {
+        [`${iconName}Name`]: defaultIcon,
+        [`${iconName}Data`]: {},
+      };
+    }
   }
   return {
-    length: len,
-    characters: '',
+    [`${iconName}Name`]: '',
+    [`${iconName}Data`]: {},
   };
+};
+
+export const isBool = (val) => typeof val === 'boolean';
+
+export const isObject = (val) => typeof val === 'object' && val != null;
+
+export const isString = (val) => typeof val === 'string';
+
+export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
+
+export const getCurrentPage = function <T>() {
+  const pages = getCurrentPages();
+  return pages[pages.length - 1] as T & WechatMiniprogram.Page.TrivialInstance;
+};
+
+export const uniqueFactory = (compName) => {
+  let number = 0;
+  return () => `${prefix}_${compName}_${number++}`;
+};
+
+export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {
+  if ((isBool(icon) && icon && defaultIcon) || isString(icon)) {
+    return { name: isBool(icon) ? defaultIcon : icon };
+  }
+  if (isObject(icon)) {
+    return icon;
+  }
+  return null;
 };

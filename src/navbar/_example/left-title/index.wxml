@@ -1,0 +1,14 @@
+<view class="block">
+  <t-navbar left-arrow title="标题居中" />
+</view>
+
+<t-navbar left-arrow>
+  <view slot="left" class="custom-title">标题左对齐</view>
+</t-navbar>
+
+<view class="demo-desc">标题尺寸</view>
+
+<t-navbar left-arrow>
+  <text class="left-text" slot="left">返回</text>
+</t-navbar>
+<view class="header-title">大标题尺寸</view>

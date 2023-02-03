@@ -1,0 +1,7 @@
+page {
+  background-color: #fff;
+}
+
+.t-button {
+  margin-top: 32rpx;
+}

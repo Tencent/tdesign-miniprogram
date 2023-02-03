@@ -1,0 +1,10 @@
+.button-example {
+  margin: 0 32rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32rpx;
+}
+
+.button-example:not(:last-child) {
+  margin-bottom: 32rpx;
+}

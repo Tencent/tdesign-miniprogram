@@ -1,0 +1,40 @@
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showConfirm"
+  bind:tap="showDialog"
+  block
+>
+  确认类-带标题
+</t-button>
+<t-dialog
+  visible="{{showConfirm}}"
+  title="对话框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ confirmBtn }}"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+/>
+
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showWarnConfirm"
+  bind:tap="showDialog"
+  block
+>
+  确认类-无标题
+</t-button>
+<t-dialog
+  visible="{{showWarnConfirm}}"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ { content: '警示操作', variant: 'base', theme: 'danger' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+/>

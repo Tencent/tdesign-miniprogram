@@ -1,7 +1,8 @@
 const gulp = require('gulp');
+const rename = require('gulp-rename');
 const dist = require('./gulpfile.dist');
 const example = require('./gulpfile.example');
-
+const wechatide = require('./gulpfile.wechatide');
 /** `gulp build`
  * 构建
  * */
@@ -17,10 +18,13 @@ const watch = gulp.parallel(dist.watch, example.watch);
  * */
 const dev = gulp.series(build, watch);
 
+const { generate } = wechatide;
+
 // `gulp --tasks --gulpfile script/gulpfile.js` list tasks
 module.exports = {
   dev,
   build,
   watch,
   default: dev,
+  generate,
 };

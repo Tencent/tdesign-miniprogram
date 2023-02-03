@@ -1,0 +1,199 @@
+@import '../common/style/index.less';
+
+@calendar-radius: var(--td-calendar-radius, 24rpx);
+@calendar-bg-color: var(--td-calendar-bg-color, @bg-color-block);
+@calendar-active-color: var(--td-calendar-active-color, @primary-color);
+@calendar-selected-color: var(--td-calendar-selected-color, @text-anti-primary-color);
+@calendar-title-font-size: var(--td-calendar-title-font-size, 18px);
+@calendar-title-color: var(--td-calendar-title-color, @text-level-1-color);
+@calendar-days-color: var(--td-calendar-days-color, @text-level-2-color);
+@calendar-item-suffix-color: var(--td-calendar-item-suffix-color, @text-level-3-color);
+@calendar-item-centre-color: var(--td-calendar-item-centre-color, @primary-color-1);
+@calendar-item-disabled-color: var(--td-calendar-item-disabled-color, @text-level-4-color);
+
+.@{prefix}-calendar {
+  position: relative;
+  z-index: 9999;
+  background: @calendar-bg-color;
+  overflow-x: hidden;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+
+  &--popup {
+    border-top-left-radius: @calendar-radius;
+    border-top-right-radius: @calendar-radius;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: @calendar-title-font-size;
+    font-weight: 600;
+    color: @calendar-title-color;
+    height: 52rpx;
+    padding: 32rpx;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 32rpx;
+    right: 32rpx;
+    margin: -24rpx;
+    padding: 24rpx;
+  }
+
+  &__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 8rpx;
+    padding: 0 32rpx;
+    text-align: center;
+    line-height: 92rpx;
+
+    &-item {
+      height: 92rpx;
+      font-size: 28rpx;
+      color: @calendar-days-color;
+    }
+  }
+
+  &__content {
+    min-height: 400rpx;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__month {
+    font-size: 28rpx;
+    color: @calendar-title-color;
+    font-weight: 600;
+    padding: 32rpx 0 0;
+
+    &s {
+      height: 60vh;
+      padding: 0 32rpx 32rpx;
+      box-sizing: border-box;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__dates {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 8rpx;
+
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32rpx;
+      border-radius: 16rpx;
+      height: 120rpx;
+      line-height: 48rpx;
+      font-weight: 600;
+      margin-top: 16rpx;
+
+      .cursor-pointer();
+
+      &-prefix,
+      &-suffix {
+        position: absolute;
+        font-size: 20rpx;
+        line-height: 32rpx;
+        width: 100%;
+        text-align: center;
+        font-weight: 400;
+      }
+
+      &-prefix {
+        top: 8rpx;
+      }
+
+      &-suffix {
+        bottom: 8rpx;
+        color: @calendar-item-suffix-color;
+
+        &--selected,
+        &--start,
+        &--end {
+          color: @calendar-selected-color;
+        }
+
+        &--disabled {
+          color: @calendar-item-disabled-color;
+        }
+      }
+
+      &--selected,
+      &--start,
+      &--end {
+        background: @calendar-active-color;
+        color: @calendar-selected-color;
+        border-radius: 8rpx;
+      }
+
+      &--start {
+        border-radius: 8rpx 0 0 8rpx;
+      }
+
+      &--end {
+        border-radius: 0 8rpx 8rpx 0;
+      }
+
+      &--start + &--end {
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          width: 8rpx;
+          height: 100%;
+          background: @calendar-active-color;
+        }
+
+        &:before {
+          left: -8rpx;
+        }
+      }
+
+      &--centre {
+        border-radius: 0;
+        background-color: @calendar-item-centre-color;
+
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          width: 8rpx;
+          height: 100%;
+          background-color: @calendar-item-centre-color;
+        }
+
+        &:before {
+          left: -8rpx;
+        }
+
+        &:after {
+          right: -8rpx;
+        }
+      }
+
+      &--disabled {
+        color: @calendar-item-disabled-color;
+        cursor: default;
+      }
+    }
+  }
+
+  &__footer {
+    padding: 32rpx;
+  }
+}

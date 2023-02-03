@@ -6,17 +6,17 @@ import matter from 'gray-matter';
 
 // import testCoverage from '../test-coverage';
 
-const componentPath = path.join(__dirname, './component.vue');
+const componentPath = path.join(__dirname, './component.vue').replaceAll('\\', '/');
 
-const DEAULT_TABS = [
+const DEFAULT_TABS = [
   { tab: 'demo', name: '示例' },
   { tab: 'api', name: 'API' },
   { tab: 'design', name: '指南' },
 ];
 
-export default function mdToVue(options) {
+export default function mdToVue(options: any) {
   const mdSegment = customRender(options);
-  const { demoCodesImportsStr, demoCodesDefsStr } = options;
+  const { demoCodesImportsStr = '', demoCodesDefsStr } = options;
 
   // let coverage = '';
   // if (mdSegment.isComponent) {
@@ -49,12 +49,12 @@ function customRender({ source, file, md }: any) {
   // md top data
   const pageData = {
     spline: '',
-    toc: false,
+    toc: true,
     title: '',
     description: '',
     isComponent: false,
     tdDocHeader: true,
-    tdDocTabs: DEAULT_TABS,
+    tdDocTabs: DEFAULT_TABS,
     apiFlag: /#+\s*API\n/i,
     docClass: '',
     lastUpdated: Math.round(fs.statSync(file).mtimeMs),
@@ -68,9 +68,6 @@ function customRender({ source, file, md }: any) {
   // split md
   let [demoMd = '', apiMd = ''] = content.split(pageData.apiFlag);
 
-  // fix table | render error
-  apiMd = apiMd.replace(/`[^`]+`/g, (str) => str.replace(/\|/g, '\\|'));
-
   const mdSegment = {
     ...pageData,
     componentName,
@@ -81,7 +78,7 @@ function customRender({ source, file, md }: any) {
   };
 
   if (pageData.isComponent) {
-    mdSegment.demoMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${demoMd.replace(/<!--[\s\S]+?-->/g, '')}`).html;
+    mdSegment.demoMd = md.render.call(md, `${demoMd.replace(/<!--[\s\S]+?-->/g, '')}`).html;
     mdSegment.apiMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${apiMd.replace(/<!--[\s\S]+?-->/g, '')}`).html;
   } else {
     mdSegment.docMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${content.replace(/<!--[\s\S]+?-->/g, '')}`).html;

@@ -5,6 +5,8 @@ spline: base
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-100%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -17,64 +19,47 @@ isComponent: true
 
 ## 代码演示
 
-### 基础图片
+### 裁切样式
 
-`mode`属性控制图片的缩放/裁剪模式，并可通过`class`设置图片圆角样式
+{{ base }}
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/image-1.png" width="375px" height="50%">
+### 加载状态
 
-```html
-<!-- 裁切样式 裁切 -->
-<t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
+{{ status }}
 
-<!-- 圆角样式 圆角方形 -->
-<t-image class="size-l radius-m" src="xxx.jpg" mode="aspectFill"></t-image>
-```
+## 常见问题
 
-### 特殊图片
+<details>
+  <summary>
+    本地图片无法正确引用?
+    <span class="icon">👇</span>
+  </summary>
+  <p style="margin-top: 10px; color: rgba(0, 0, 0, .6)">
+    建议使用绝对路径，而不是相对路径。绝对路径以 app.json 所在位置为基准。
+  </p>
+</details>
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/image-2.png" width="375px" height="50%">
-
-```html
-<!-- 加载中 默认提示 -->
-<t-image id="loading-img" class="size-l radius-m" src="" mode="aspectFill"></t-image>
-
-<!-- 加载中 自定义提示 -->
-<t-image id="loading-img-custom" class="size-l radius-m" src="" mode="aspectFill" loading="slot">
-  <t-loading
-    slot="loading"
-    theme="circular"
-    size="40rpx"
-    loading
-    style="opacity: 0.6"
-    t-class-text="loading-text"
-    t-class="loading-container"
-    class="custom-loading"
-  ></t-loading>
-</t-image>
-
-<!-- 加载失败 默认提示 -->
-<t-image class="size-l radius-m" src="" mode="aspectFill"></t-image>
-
-<!-- 加载失败 自定义提示 -->
-<t-image class="size-l radius-m" src="" mode="aspectFill" loadFailed="slot">
-  <view slot="loadFailed" class="custom-loading-failed">加载失败</view>
-</t-image>
-```
 
 ## API
-
 ### Image Props
 
-| 名称                   | 类型          | 默认值      | 说明                                                                                                                                                                                                                                                 | 必传 |
-| ---------------------- | ------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
-| external-classes       | Array         | -           | 组件类名，分别用于设置加载组件外层元素，中间内容等元素类名。`['t-class', 't-class-load']`                                                                                                                                                            | N    |
-| load-failed            | String / Slot | 'default'   | 加载失败时显示的内容，值为 'default' 则表示使用默认加载失败风格，值为空或者 'slot' 表示使用插槽渲染，值为其他则表示普通文本内容，如“加载失败”                                                                                                        | N    |
-| loading                | String / Slot | 'default'   | 加载态内容，值为 'default' 则表示使用默认加载中风格，值为空或者 'slot' 表示使用插槽渲染，值为其他则表示普通文本内容，如“加载中”                                                                                                                      | N    |
-| src                    | String        | -           | 图片资源地址                                                                                                                                                                                                                                         | N    |
-| mode                   | String        | scaleToFill | 图片裁剪、缩放的模式 [查看小程序文档](https://developers.weixin.qq.com/miniprogram/dev/component/image.html)。可选项：scaleToFill/aspectFit/aspectFill/widthFix/heightFix/top/bottom/center/left/right/top left/top right/bottom left/bottom right   | N    |
-| webp                   | Boolean       | false       | 默认不解析 webP 格式，只支持网络资源                                                                                                                                                                                                                 | N    |
-| lazy-load              | Boolean       | false       | 图片懒加载，在即将进入一定范围（上下三屏）时才开始加载                                                                                                                                                                                               | N    |
-| show-menu-by-longpress | Boolean       | false       | 长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单。<br>支持识别的码：小程序码 <br>仅小程序支持识别的码：微信个人码、微信群码、企业微信个人码、 企业微信群码与企业微信互通群码； | N    |
-| binderror              | Eventhandle   | -           | 当错误发生时触发，event.detail = {errMsg}                                                                                                                                                                                                            | N    |
-| bindload               | Eventhandle   | -           | 当图片载入完毕时触发，event.detail = {height, width}                                                                                                                                                                                                 | N    |
+名称 | 类型 | 默认值 | 说明 | 必传
+-- | -- | -- | -- | --
+error | String / Slot | 'default' | 加载失败时显示的内容。值为 `default` 则表示使用默认加载失败风格；值为其他则表示普通文本内容，如“加载失败” | N
+external-classes | Array | - | 组件类名，分别用于设置加载组件外层元素，中间内容等元素类名。`['t-class', 't-class-load']` | N
+height | String / Number | - | 高度，默认单位为`px` | N
+lazy | Boolean | false | 是否开启图片懒加载 | N
+loading | String / Slot | 'default' | 加载态内容。值为 `default` 则表示使用默认加载中风格；值为其他则表示普通文本内容，如“加载中” | N
+mode | String | scaleToFill | 图片裁剪、缩放的模式；[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/image.html)。可选项：scaleToFill/aspectFit/aspectFill/widthFix/heightFix/top/bottom/center/left/right/top left/top right/bottom left/bottom right | N
+shape | String | square | 图片圆角类型。可选项：circle/round/square | N
+show-menu-by-longpress | Boolean | false | 长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单。 | N
+src | String | - | 图片链接 | N
+webp | Boolean | false | 默认不解析 webP 格式，只支持网络资源 | N
+width | String / Number | - | 宽度，默认单位为`px` | N
+
+### Image Events
+
+名称 | 参数 | 描述
+-- | -- | --
+error | \- | 图片加载失败时触发
+load | \- | 图片加载完成时触发

@@ -1,0 +1,19 @@
+var getListThemeItemClass = function (props) {
+  var classPrefix = props.classPrefix;
+  var item = props.item;
+  var prefix = props.prefix;
+  var classList = [classPrefix + '__list-item'];
+  if (item.disabled) {
+    classList.push(prefix + '-is-disabled');
+  }
+  return classList.join(' ');
+};
+
+var isImage = function (name) {
+  return name.indexOf('/') !== -1;
+};
+
+module.exports = {
+  getListThemeItemClass: getListThemeItemClass,
+  isImage: isImage,
+};

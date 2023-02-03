@@ -1,0 +1,9 @@
+<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
+  <view class="block">
+    <t-icon t-class="close-btn" name="close-circle" size="32" color="#fff" bind:tap="onClose" />
+  </view>
+</t-popup>
+
+<t-button block size="large" variant="outline" theme="primary" bind:tap="handlePopup"
+  >居中弹出层-带自定义关闭按钮</t-button
+>

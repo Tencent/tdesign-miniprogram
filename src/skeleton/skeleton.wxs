@@ -1,0 +1,30 @@
+var getStyle = function (object) {
+  var styleList = [];
+  if (object.width) {
+    styleList.push('width:' + object.width);
+  }
+  styleList.push(object.height ? 'height:' + object.height : 'height:16px');
+  if (object.background) {
+    styleList.push('background:' + object.background);
+  }
+  if (object.backgroundColor) {
+    styleList.push('background-color:' + object.backgroundColor);
+  }
+  if (object.margin) {
+    styleList.push('margin:' + object.margin);
+  }
+  if (object.marginRight) {
+    styleList.push('margin-right:' + object.marginRight);
+  }
+  if (object.marginLeft) {
+    styleList.push('margin-left:' + object.marginLeft);
+  }
+  if (object.borderRadius) {
+    styleList.push('border-radius:' + object.borderRadius);
+  }
+  return styleList.join(';');
+};
+
+module.exports = {
+  getStyle: getStyle,
+};

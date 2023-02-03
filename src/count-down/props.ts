@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdCountDownProps } from './type';
@@ -27,10 +26,24 @@ const props: TdCountDownProps = {
     type: Boolean,
     value: false,
   },
+  /** 倒计时尺寸 */
+  size: {
+    type: String,
+    value: 'medium',
+  },
+  /** 使用时间单位分割 */
+  splitWithUnit: {
+    type: Boolean,
+    value: false,
+  },
+  /** 倒计时风格 */
+  theme: {
+    type: String,
+    value: 'default',
+  },
   /** 倒计时时长，单位毫秒 */
   time: {
     type: Number,
-    required: true,
   },
 };
 

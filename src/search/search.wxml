@@ -1,28 +1,20 @@
-<view class="{{classPrefix}} {{prefix}}-class">
-  <view
-    class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center && !value && 'center'}} {{classPrefix}}__input-box--{{shape}} "
-    bind:tap="tapWhenCenterActiveHandle"
-  >
-    <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label"> {{label}} </view>
-    <slot wx:else name="label" />
+<wxs src="../common/utils.wxs" module="_" />
 
+<view style="{{_._style([style, customStyle])}}" class="class {{classPrefix}} {{prefix}}-class">
+  <view
+    class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center ? 'center' : ''}} {{classPrefix}}__input-box--{{shape}} {{prefix}}-class-input-container"
+  >
+    <!-- <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label">{{label}}</view>
+    <slot name="label" /> -->
     <t-icon
       wx:if="{{leftIcon}}"
       name="{{leftIcon}}"
-      size="20px"
+      size="24"
       class="{{prefix}}-icon {{prefix}}-class-left"
-    >
-    </t-icon>
-    <slot wx:else name="left-icon" />
-
-    <view
-      wx:if="{{center && !localValue.focus && !value}}"
-      class="{{classPrefix}}__placeholder-center {{!value && placeholder-class}}"
-    >
-      {{value || placeholder}}
-    </view>
+      aria-hidden="{{true}}"
+    />
+    <slot name="left-icon" />
     <input
-      wx:else
       type="text"
       name="input"
       disabled="{{disabled}}"
@@ -31,32 +23,36 @@
       value="{{value}}"
       confirm-type="search"
       placeholder="{{placeholder}}"
-      placeholder-class="{{classPrefix}}__placeholder"
+      placeholder-class="{{classPrefix}}__placeholder {{classPrefix}}__placeholder--{{center ? 'center': 'normal'}}"
       bind:input="onInput"
       bind:focus="onFocus"
       bind:blur="onBlur"
       bind:confirm="onConfirm"
     />
-    <block wx:if="{{value !=='' && (!center || focus)}}">
+    <view
+      wx:if="{{value !==''}}"
+      class="{{classPrefix}}__right {{prefix}}-class-right"
+      bind:tap="handleClear"
+      aria-role="button"
+      aria-label="清除"
+    >
       <t-icon
         wx:if="{{rightIcon}}"
-        class="{{prefix}}-icon {{prefix}}-class-right"
         name="{{rightIcon}}"
+        class="{{prefix}}-icon"
         size="18px"
         color="rgba(187,187,187,1)"
-        bind:tap="onClear"
-      >
-      </t-icon>
-      <slot wx:else name="right-icon" />
-    </block>
+      />
+      <slot name="right-icon" />
+    </view>
   </view>
-
   <view
     wx:if="{{action}}"
-    class="{{classPrefix}}__search-action {{prefix}}-class-cancel"
-    bindtap="onCancel"
+    class="{{classPrefix}}__search-action {{prefix}}-class-action"
+    bindtap="onActionClick"
+    aria-role="button"
   >
     {{action}}
   </view>
-  <slot wx:else name="action-text" />
+  <slot name="action" />
 </view>
