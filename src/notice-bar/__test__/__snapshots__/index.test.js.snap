@@ -23,7 +23,7 @@ exports[`notice-bar props : marquee 1`] = `
             ariaLabel=""
             ariaRole=""
             class="t-icon class t-class"
-            style=""
+            style="color: inherit; font-size: inherit;"
             bind:tap="onTap"
           >
             <wx-label

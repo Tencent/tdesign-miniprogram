@@ -48,7 +48,7 @@ exports[`message props : style && customStyle 1`] = `
             ariaLabel=""
             ariaRole=""
             class="t-icon class t-class"
-            style=""
+            style="color: inherit; font-size: inherit;"
             bind:tap="onTap"
           >
             <wx-label
@@ -84,7 +84,7 @@ exports[`message props : style && customStyle 1`] = `
             ariaLabel="关闭"
             ariaRole="button"
             class="t-icon class t-class"
-            style=""
+            style="color: inherit; font-size: inherit;"
             bind:tap="onTap"
           >
             <wx-label
