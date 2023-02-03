@@ -1,13 +1,13 @@
 <template name="badge">
   <t-badge
-    color="{{color}}"
-    content="{{content}}"
+    color="{{color || ''}}"
+    content="{{content || ''}}"
     count="{{count || 0}}"
-    dot="{{dot}}"
+    dot="{{dot || false}}"
     max-count="{{maxCount || 99}}"
-    offset="{{offset}}"
+    offset="{{offset || []}}"
     shape="{{shape || 'circle'}}"
-    show-zero="{{showZero}}"
+    show-zero="{{showZero || false}}"
     size="{{size || 'medium'}}"
     t-class="{{class}} {{tClass}}"
     t-class-content="{{tClassContent}}"

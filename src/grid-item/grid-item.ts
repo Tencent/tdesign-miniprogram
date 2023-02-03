@@ -51,7 +51,6 @@ export default class GridItem extends SuperComponent {
     gridItemWrapperStyle: '',
     gridItemContentStyle: '',
     align: 'center',
-    layout: 'vertical',
     column: 0,
     labelID: '',
   };

@@ -18,7 +18,7 @@ exports[`image :base 1`] = `
             ariaLabel="加载失败"
             ariaRole="img"
             class="t-icon class t-class"
-            style=""
+            style="color: inherit; font-size: inherit;"
             bind:tap="onTap"
           >
             <wx-label

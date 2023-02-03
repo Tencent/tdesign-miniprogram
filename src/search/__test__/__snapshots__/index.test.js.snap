@@ -20,7 +20,7 @@ exports[`search Props :base 1`] = `
             ariaLabel=""
             ariaRole=""
             class="t-icon class t-class"
-            style="font-size: 24px;"
+            style="color: inherit; font-size: 24px;"
             bind:tap="onTap"
           >
             <wx-label

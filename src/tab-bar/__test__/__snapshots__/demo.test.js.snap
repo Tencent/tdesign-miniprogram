@@ -221,7 +221,7 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
     theme="tag"
   >
     <t-tab-bar-item
-      subTabBar=""
+      subTabBar="{{Array []}}"
       value="home"
     >
       
@@ -229,7 +229,7 @@ exports[`TabBar TabBar sub demo works fine 1`] = `
   
     </t-tab-bar-item>
     <t-tab-bar-item
-      subTabBar=""
+      subTabBar="{{Array []}}"
       value="app"
     >
       

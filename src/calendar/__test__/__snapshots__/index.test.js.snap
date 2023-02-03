@@ -41,7 +41,7 @@ exports[`calendar :base 1`] = `
                 ariaLabel="关闭"
                 ariaRole="button"
                 class="t-icon class t-class"
-                style="font-size: 24px;"
+                style="color: inherit; font-size: 24px;"
                 bind:tap="onTap"
               >
                 <wx-label
@@ -756,10 +756,10 @@ exports[`calendar :base 1`] = `
                   data-custom="{{null}}"
                   formType=""
                   hoverClass="t-button--hover"
-                  hoverStartTime="{{0}}"
-                  hoverStayTime="{{0}}"
+                  hoverStartTime="{{20}}"
+                  hoverStayTime="{{70}}"
                   hoverStopPropagation="{{false}}"
-                  lang=""
+                  lang="en"
                   openType=""
                   sendMessageImg=""
                   sendMessagePath=""

@@ -3,7 +3,7 @@
 exports[`Popup Popup base demo works fine 1`] = `
 <base>
   <t-popup
-    placement=""
+    placement="top"
     visible=""
     bind:visible-change="onVisibleChange"
   >

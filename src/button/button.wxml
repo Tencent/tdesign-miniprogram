@@ -41,10 +41,10 @@
     inheritColor="{{loadingProps.indicator || false}}"
     layout="{{loadingProps.layout || 'horizontal'}}"
     pause="{{loadingProps.pause || false}}"
-    progress="{{loadingProps.progress}}"
-    reverse="{{loadingProps.reverse}}"
+    progress="{{loadingProps.progress || 0}}"
+    reverse="{{loadingProps.reverse || false}}"
     size="{{loadingProps.size || '40rpx'}}"
-    text="{{loadingProps.text }}"
+    text="{{loadingProps.text || '' }}"
     theme="{{loadingProps.theme || 'circular'}}"
     loading
     t-class="{{classPrefix}}__loading {{classPrefix}}__loading--wrapper"

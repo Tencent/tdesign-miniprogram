@@ -2,6 +2,7 @@ Component({
   data: {
     visible: false,
     placement: 'left',
+    sidebar: [],
     baseSidebar: [
       {
         title: '菜单一',

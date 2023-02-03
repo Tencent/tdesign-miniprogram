@@ -10,7 +10,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
       bind:change="onSideBarChange"
     >
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         label="选项选项选项选项"
         value="{{0}}"
       />
@@ -24,7 +24,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
         value="{{1}}"
       />
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         label="选项"
         value="{{2}}"
       />
@@ -38,7 +38,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
         value="{{3}}"
       />
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         label="选项"
         value="{{4}}"
       />
@@ -525,7 +525,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
       bind:change="onSideBarChange"
     >
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         label="选项选项"
         value="{{0}}"
       />
@@ -539,7 +539,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
         value="{{1}}"
       />
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         label="选项"
         value="{{2}}"
       />
@@ -553,7 +553,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
         value="{{3}}"
       />
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         label="选项"
         value="{{4}}"
       />
@@ -1040,7 +1040,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
       bind:change="onSideBarChange"
     >
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         disabled=""
         label="选项"
         value="{{0}}"
@@ -1056,7 +1056,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
         value="{{1}}"
       />
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         disabled=""
         label="选项"
         value="{{2}}"
@@ -1072,7 +1072,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
         value="{{3}}"
       />
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         disabled="{{true}}"
         label="选项"
         value="{{4}}"
@@ -1562,7 +1562,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
       bind:change="onSideBarChange"
     >
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         icon="app"
         label="选项"
         value="{{0}}"
@@ -1578,7 +1578,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
         value="{{1}}"
       />
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         icon="app"
         label="选项"
         value="{{2}}"
@@ -1594,7 +1594,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
         value="{{3}}"
       />
       <t-side-bar-item
-        badgeProps=""
+        badgeProps="{{Object {}}}"
         icon="app"
         label="选项"
         value="{{4}}"
