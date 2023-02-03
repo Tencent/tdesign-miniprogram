@@ -41,7 +41,7 @@ exports[`cell :base 1`] = `
             ariaLabel=""
             ariaRole=""
             class="t-icon class t-class"
-            style="color: inherit; font-size: inherit;"
+            style=""
             bind:tap="onTap"
           >
             <wx-label

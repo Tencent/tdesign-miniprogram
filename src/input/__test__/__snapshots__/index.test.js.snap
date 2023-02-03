@@ -77,7 +77,7 @@ exports[`input props : clearable && label && suffix 1`] = `
               ariaLabel="清除"
               ariaRole="button"
               class="t-icon class t-class"
-              style="color: inherit; font-size: inherit;"
+              style=""
               bind:tap="onTap"
             >
               <wx-label
@@ -108,7 +108,7 @@ exports[`input props : clearable && label && suffix 1`] = `
               ariaLabel=""
               ariaRole="button"
               class="t-icon class t-class"
-              style="color: inherit; font-size: inherit;"
+              style=""
               bind:tap="onTap"
             >
               <wx-label
