@@ -5,9 +5,11 @@
   wx:if="{{visible}}"
   style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} {{classPrefix}}--{{theme}} class {{prefix}}-class"
+  aria-role="{{ariaRole || ''}}"
+  aria-label="{{ariaLabel}}"
 >
   <!-- prefixIcon -->
- <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon" tabIndex="-1">
+  <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon" tabIndex="-1">
     <slot name="prefix-icon" />
     <template
       wx:if="{{_prefixIcon}}"
@@ -17,7 +19,7 @@
   </view>
 
   <!-- content -->
-  <view class="{{classPrefix}}__content-wrap" bind:tap="clickContent" tabIndex="0">
+  <view class="{{classPrefix}}__content-wrap" bind:tap="clickContent">
     <!-- 垂直滚动通知：基于swiper实现，适用信息量短的多条公告消息，超出省略 -->
     <view wx:if="{{ direction === 'vertical' && _.isArray(content) }}">
       <swiper
@@ -50,7 +52,7 @@
   </view>
 
   <!-- suffixIcon -->
-  <view class="{{classPrefix}}__suffix-icon" bind:tap="clickSuffixIcon" tabIndex="-1">
+  <view class="{{classPrefix}}__suffix-icon" bind:tap="clickSuffixIcon">
     <slot name="suffix-icon" />
     <template
       wx:if="{{_suffixIcon}}"
