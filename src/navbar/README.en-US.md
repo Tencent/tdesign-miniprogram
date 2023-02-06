@@ -7,7 +7,6 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 animation | Boolean | true | \- | N
 capsule | Slot | - | \- | N
-custom-style | String | - | `0.25.0` | N
 delta | Number | 1 | \- | N
 external-classes | Array | - | `['t-class', 't-class-title', 't-class-left-icon', 't-class-home-icon', 't-class-capsule']` | N
 fixed | Boolean | true | \- | N

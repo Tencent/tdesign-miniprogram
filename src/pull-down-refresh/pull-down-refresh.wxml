@@ -1,5 +1,7 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <scroll-view
-  style="{{ customStyle }}"
+  style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} {{prefix}}-class"
   scroll-top="{{scrollTop}}"
   bind:touchstart="onTouchStart"
@@ -16,7 +18,7 @@
 >
   <view
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
-    style="transform: translate3d(0, {{barHeight + 'rpx'}}, 0);"
+    style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'rpx, 0);' : ''}}"
   >
     <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}rpx">
       <t-loading
@@ -27,8 +29,8 @@
         layout="{{loadingProps.layout || 'horizontal'}}"
         loading="{{loadingProps.loading || true}}"
         pause="{{loadingProps.pause || false}}"
-        progress="{{loadingProps.progress}}"
-        reverse="{{loadingProps.reverse}}"
+        progress="{{loadingProps.progress || 0}}"
+        reverse="{{loadingProps.reverse || false}}"
         size="{{loadingProps.size || '50rpx'}}"
         text="{{loadingProps.text || loadingTexts[refreshStatus]}}"
         theme="{{loadingProps.theme || 'circular'}}"

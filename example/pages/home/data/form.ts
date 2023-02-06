@@ -52,11 +52,11 @@ const form = {
     },
     {
       name: 'Textarea',
-      label: '多行输入框',
+      label: '多行文本框',
     },
     {
       name: 'TreeSelect',
-      label: '树形选择',
+      label: '树形选择器',
     },
     // {
     //   name: 'PeriodSelector',

@@ -2,388 +2,228 @@
 
 exports[`Avatar Avatar action demo works fine 1`] = `
 <action>
-  <wx-view
-    class="demo-avatar"
+  <t-avatar-group
+    max="5"
   >
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar-group
-        cascading="left-up"
-        max="5"
-        size="medium"
-      >
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        />
-        <t-avatar
-          ariaLabel="添加"
-          ariaRole="button"
-          bordered="{{true}}"
-          icon="user-add"
-          slot="collapseAvatar"
-          bind:tap="onAddTap"
-        />
-      </t-avatar-group>
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar-group
-        max="5"
-        size="medium"
-      >
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        />
-        <t-avatar
-          ariaLabel="添加"
-          ariaRole="button"
-          bordered="{{true}}"
-          icon="user-add"
-          slot="collapseAvatar"
-          bind:tap="onAddTap"
-        />
-      </t-avatar-group>
-    </wx-view>
-  </wx-view>
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+  </t-avatar-group>
 </action>
 `;
 
 exports[`Avatar Avatar badge-avatar demo works fine 1`] = `
 <badge-avatar>
-  <wx-view
-    class="demo-avatar"
+  <t-avatar
+    badgeProps="{{
+      Object {
+        "dot": true,
+        "offset": Array [
+          4,
+          4,
+        ],
+      }
+    }}"
+    class="avatar-example"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+  />
+  <t-avatar
+    badgeProps="{{
+      Object {
+        "count": 8,
+        "offset": Array [
+          6,
+          6,
+        ],
+      }
+    }}"
+    class="avatar-example"
+    tClassContent="external-class-content"
   >
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        badgeProps="{{
-          Object {
-            "dot": true,
-          }
-        }}"
-        image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-      />
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        badgeProps="{{
-          Object {
-            "count": 8,
-          }
-        }}"
-        tClassContent="external-class-content"
-      >
-        A
-      </t-avatar>
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        badgeProps="{{
-          Object {
-            "count": 12,
-          }
-        }}"
-        icon="user"
-      />
-    </wx-view>
-  </wx-view>
+    A
+  </t-avatar>
+  <t-avatar
+    badgeProps="{{
+      Object {
+        "count": 12,
+        "offset": Array [
+          6,
+          6,
+        ],
+      }
+    }}"
+    class="avatar-example"
+    icon="user"
+  />
 </badge-avatar>
 `;
 
 exports[`Avatar Avatar character-avatar demo works fine 1`] = `
 <character-avatar>
-  <wx-view
-    class="demo-avatar"
+  <t-avatar
+    ariaLabel="字符头像"
+    class="avatar-example"
+    tClassContent="external-class-content"
   >
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        ariaLabel="字符头像"
-        tClassContent="external-class-content"
-      >
-        A
-      </t-avatar>
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        shape="round"
-        tClassContent="external-class-content"
-      >
-        A
-      </t-avatar>
-    </wx-view>
-  </wx-view>
+    A
+  </t-avatar>
+  <t-avatar
+    class="avatar-example"
+    shape="round"
+    tClassContent="external-class-content"
+  >
+    A
+  </t-avatar>
 </character-avatar>
 `;
 
 exports[`Avatar Avatar exhibition demo works fine 1`] = `
 <exhibition>
-  <wx-view
-    class="demo-avatar"
+  <t-avatar-group
+    cascading="left-up"
+    collapseAvatar="+5"
+    max="5"
   >
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar-group
-        cascading="left-up"
-        collapseAvatar="+5"
-        max="5"
-        size="medium"
-      >
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        />
-      </t-avatar-group>
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar-group
-        collapseAvatar="+5"
-        max="5"
-        size="medium"
-      >
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png"
-        />
-        <t-avatar
-          bordered="{{true}}"
-          image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        />
-      </t-avatar-group>
-    </wx-view>
-  </wx-view>
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
+    />
+    <t-avatar
+      bordered="{{true}}"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+  </t-avatar-group>
 </exhibition>
 `;
 
 exports[`Avatar Avatar icon-avatar demo works fine 1`] = `
 <icon-avatar>
-  <wx-view
-    class="demo-avatar"
-  >
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        icon="user"
-      />
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        icon="user"
-        shape="round"
-      />
-    </wx-view>
-  </wx-view>
+  <t-avatar
+    class="avatar-example"
+    icon="user"
+  />
+  <t-avatar
+    class="avatar-example"
+    icon="user"
+    shape="round"
+  />
 </icon-avatar>
 `;
 
 exports[`Avatar Avatar image-avatar demo works fine 1`] = `
 <image-avatar>
-  <wx-view
-    class="demo-avatar"
-  >
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-      />
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        shape="round"
-      />
-    </wx-view>
-  </wx-view>
+  <t-avatar
+    class="avatar-example"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+  />
+  <t-avatar
+    class="avatar-example"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    shape="round"
+  />
 </image-avatar>
 `;
 
 exports[`Avatar Avatar size demo works fine 1`] = `
 <size>
   <wx-view
-    class="demo-avatar"
+    class="avatar-example"
   >
-    <wx-view
-      class="avatar-example"
+    <t-avatar
+      class="avatar-example--large"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      size="large"
+    />
+    <t-avatar
+      class="avatar-example--large"
+      size="large"
+      tClassContent="external-class-content"
     >
-      <t-avatar
-        image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        size="large"
-      />
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        size="large"
-        tClassContent="external-class-content"
-      >
-        A
-      </t-avatar>
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        icon="user"
-        size="large"
-      />
-    </wx-view>
+      A
+    </t-avatar>
+    <t-avatar
+      class="avatar-example--large"
+      icon="user"
+      size="large"
+    />
   </wx-view>
   <wx-view
-    class="demo-avatar"
+    class="avatar-example"
   >
-    <wx-view
-      class="avatar-example"
+    <t-avatar
+      class="avatar-example--medium"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+    <t-avatar
+      class="avatar-example--medium"
+      size="medium"
+      tClassContent="external-class-content"
     >
-      <t-avatar
-        image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-      />
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        size="medium"
-        tClassContent="external-class-content"
-      >
-        A
-      </t-avatar>
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        icon="user"
-        size="medium"
-      />
-    </wx-view>
+      A
+    </t-avatar>
+    <t-avatar
+      class="avatar-example--medium"
+      icon="user"
+      size="medium"
+    />
   </wx-view>
   <wx-view
-    class="demo-avatar"
+    class="avatar-example"
   >
-    <wx-view
-      class="avatar-example"
+    <t-avatar
+      class="avatar-example--small"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      size="small"
+    />
+    <t-avatar
+      class="avatar-example--small"
+      size="small"
+      tClassContent="external-class-content"
     >
-      <t-avatar
-        image="https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png"
-        size="small"
-      />
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        size="small"
-        tClassContent="external-class-content"
-      >
-        A
-      </t-avatar>
-    </wx-view>
-    <wx-view
-      class="avatar-example"
-    >
-      <t-avatar
-        icon="user"
-        size="small"
-      />
-    </wx-view>
+      A
+    </t-avatar>
+    <t-avatar
+      class="avatar-example--small"
+      icon="user"
+      size="small"
+    />
   </wx-view>
 </size>
 `;

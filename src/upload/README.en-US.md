@@ -8,7 +8,6 @@ name | type | default | description | required
 add-content | String / Slot | - | \- | N
 allow-upload-duplicate-file | Boolean | false | \- | N
 config | Object | - | Typescript：`UploadMpConfig` `type UploadMpConfig = ImageConfig \| VideoConfig` `interface ImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> }` `type SizeTypeValues = 'original' \| 'compressed'` `type SourceTypeValues = 'album' \| 'camera'` `interface VideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' \| 'front' }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
-custom-style | String | - | \- | N
 file-list-display | Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 files | Array | - | Typescript：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' \| 'video'; percent?: number; status: 'loading' \| 'reload' \| 'failed' \| 'done' }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 default-files | Array | undefined | uncontrolled property。Typescript：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' \| 'video'; percent?: number; status: 'loading' \| 'reload' \| 'failed' \| 'done' }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N

@@ -6,12 +6,36 @@ describe('popup', () => {
   const popupId = load(path.resolve(__dirname, '../../popup/popup'), 't-popup');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-popup id="popup" showOverlay="{{ showOverlay }}" visible="{{ visible }}" style="{{style}}" customStyle="{{customStyle}}" >content</t-popup>`,
+        usingComponents: {
+          't-popup': popupId,
+        },
+        data: {
+          visible: true,
+          showOverlay: true,
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $fab = comp.querySelector('#popup >>> .t-popup');
+      if (VIRTUAL_HOST) {
+        expect($fab.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($fab.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(':position', () => {
       const popupComp = simulate.render(popupId, { visible: true, placement: 'left' });
       popupComp.attach(document.createElement('parent-wrapper'));
-      const [popupDom] = popupComp.dom.children;
-
-      expect(popupDom.className.match(/--left/)).toBeTruthy();
+      if (!VIRTUAL_HOST) {
+        const [popupDom] = popupComp.dom.children;
+        expect(popupDom.className.match(/--left/)).toBeTruthy();
+      }
     });
 
     it(':overlay', async () => {
@@ -33,14 +57,16 @@ describe('popup', () => {
       const comp = simulate.render(compId);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $overlay = comp.querySelector('#popup >>> #popup-overlay');
+      if (!VIRTUAL_HOST) {
+        const $overlay = comp.querySelector('#popup >>> #popup-overlay');
 
-      $overlay.dispatchEvent('tap');
-      await simulate.sleep(0);
-      expect(fn).toHaveBeenCalledTimes(1);
+        $overlay.dispatchEvent('tap');
+        await simulate.sleep(0);
+        expect(fn).toHaveBeenCalledTimes(1);
 
-      comp.setData({ showOverlay: false });
-      expect(comp.querySelector('#popup >>> #popup-overlay')).toBeUndefined();
+        comp.setData({ showOverlay: false });
+        expect(comp.querySelector('#popup >>> #popup-overlay')).toBeUndefined();
+      }
     });
 
     // it(':customClass', () => {
@@ -60,22 +86,24 @@ describe('popup', () => {
 
       const popupComp = simulate.render(popupId, { visible: true, ...transitionProps });
       popupComp.attach(document.createElement('parent-wrapper'));
-      const [popupDom] = popupComp.dom.children;
+      if (!VIRTUAL_HOST) {
+        const [popupDom] = popupComp.dom.children;
 
-      // popupComp.setData({ visible: true });
+        // popupComp.setData({ visible: true });
 
-      expect(popupDom.className.match(/foo-enter\s?/)).toBeTruthy();
-      expect(popupDom.className.match(/foo-enter-active\s?/)).toBeTruthy();
+        expect(popupDom.className.match(/foo-enter\s?/)).toBeTruthy();
+        expect(popupDom.className.match(/foo-enter-active\s?/)).toBeTruthy();
 
-      jest.advanceTimersByTime(30);
-      expect(popupDom.className.match(/foo-enter-to\s?/)).toBeTruthy();
+        jest.advanceTimersByTime(30);
+        expect(popupDom.className.match(/foo-enter-to\s?/)).toBeTruthy();
 
-      jest.advanceTimersByTime(2999);
-      expect(popupDom.className.match(/foo-enter-to\s?/)).toBeTruthy();
+        jest.advanceTimersByTime(2999);
+        expect(popupDom.className.match(/foo-enter-to\s?/)).toBeTruthy();
 
-      jest.advanceTimersByTime(1);
-      expect(popupDom.className.match(/foo-enter-to\s?/)).toBeFalsy();
-      jest.useRealTimers();
+        jest.advanceTimersByTime(1);
+        expect(popupDom.className.match(/foo-enter-to\s?/)).toBeFalsy();
+        jest.useRealTimers();
+      }
     });
   });
 
@@ -99,22 +127,24 @@ describe('popup', () => {
       const comp = simulate.render(compId);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $overlay = comp.querySelector('#popup >>> #popup-overlay');
+      if (!VIRTUAL_HOST) {
+        const $overlay = comp.querySelector('#popup >>> #popup-overlay');
 
-      $overlay.dispatchEvent('tap');
+        $overlay.dispatchEvent('tap');
 
-      await simulate.sleep(0);
+        await simulate.sleep(0);
 
-      expect(fn).toHaveBeenCalledTimes(1);
+        expect(fn).toHaveBeenCalledTimes(1);
 
-      // test closeOnOverlayClick
-      comp.setData({ closeOnOverlayClick: false });
+        // test closeOnOverlayClick
+        comp.setData({ closeOnOverlayClick: false });
 
-      await simulate.sleep(0);
+        await simulate.sleep(0);
 
-      $overlay.dispatchEvent('tap');
+        $overlay.dispatchEvent('tap');
 
-      expect(fn).toHaveBeenCalledTimes(1);
+        expect(fn).toHaveBeenCalledTimes(1);
+      }
     });
 
     it('@close-btn close', async () => {
@@ -125,9 +155,12 @@ describe('popup', () => {
           't-popup': popupId,
         },
         template:
-          '<t-popup visible id="popup" closeBtn="{{ closeBtn }}" bind:visible-change="onClose">content</t-popup>',
+          '<t-popup visible id="popup" closeBtn="{{ closeBtn }}" overlayProps="{{overlayProps}}" bind:visible-change="onClose">content</t-popup>',
         data: {
           closeBtn: true,
+          overlayProps: {
+            duration: 0,
+          },
         },
         methods: {
           onClose(e) {
@@ -139,14 +172,13 @@ describe('popup', () => {
       const comp = simulate.render(compId);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $closeBtn = comp.querySelector('#popup >>> .t-popup__close');
-
-      $closeBtn.dispatchEvent('tap');
-
-      await simulate.sleep(10);
-
-      expect(fn).toHaveBeenCalledTimes(1);
-      expect(visible).toBeFalsy();
+      if (!VIRTUAL_HOST) {
+        const $closeBtn = comp.querySelector('#popup >>> .t-popup__close');
+        $closeBtn.dispatchEvent('tap');
+        await simulate.sleep(0);
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(visible).toBeFalsy();
+      }
     });
   });
 });

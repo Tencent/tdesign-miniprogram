@@ -1,8 +1,9 @@
 <wxs src="./badge.wxs" module="this" />
+<wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
-  class="{{this.getBadgeOuterClass({shape})}} {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+  class="{{this.getBadgeOuterClass({shape})}} class {{prefix}}-class"
   aria-labelledby="{{labelID}}"
   aria-describedby="{{descriptionID}}"
   aria-role="{{ ariaRole || 'option'}}"
@@ -12,13 +13,13 @@
     <text wx:else class="{{classPrefix}}__content-text">{{content}}</text>
   </view>
   <view
-    aria-hidden="true"
-    aria-label="{{ ariaLabel || this.getBadgeAriaLabel({dot, count, maxCount}) }}"
+    wx:if="{{this.isShowBadge({dot,count,showZero})}}"
     id="{{descriptionID}}"
-    wx:if="{{count !== 'slot' && this.isShowBadge({dot,count,showZero})}}"
     class="{{this.getBadgeInnerClass({dot, size, shape, count})}} {{prefix}}-has-count {{prefix}}-class-count"
     style="{{this.getBadgeStyles({color, offset})}}"
+    aria-hidden="true"
+    aria-label="{{ ariaLabel || this.getBadgeAriaLabel({dot, count, maxCount}) }}"
     >{{ this.getBadgeValue({dot, count, maxCount}) }}
   </view>
-  <slot name="count" wx:if="{{count === 'slot' || !count}}" />
+  <slot name="count" />
 </view>

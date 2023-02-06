@@ -36,11 +36,6 @@ const props: TdTextareaProps = {
     type: Number,
     value: 0,
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 是否禁用文本框 */
   disabled: {
     type: Boolean,
@@ -102,6 +97,36 @@ const props: TdTextareaProps = {
    * 显示文本计数器，如 0/140。当 `maxlength < 0 && maxcharacter < 0` 成立时， indicator无效
    */
   indicator: {
+    type: Boolean,
+    value: false,
+  },
+  /** 指定focus时的光标位置 */
+  cursor: {
+    type: Number,
+    value: -1,
+  },
+  /** 是否显示键盘上方带有”完成“按钮那一栏 */
+  showConfirmBar: {
+    type: Boolean,
+    value: true,
+  },
+  /** 光标起始位置，自动聚集时有效，需与selection-end搭配使用 */
+  selectionStart: {
+    type: Number,
+    value: -1,
+  },
+  /** 光标结束位置，自动聚集时有效，需与selection-start搭配使用 */
+  selectionEnd: {
+    type: Number,
+    value: -1,
+  },
+  /** 是否去掉 iOS 下的默认内边距 */
+  disableDefaultPadding: {
+    type: Boolean,
+    value: false,
+  },
+  /** focus时，点击页面的时候不收起键盘 */
+  holdKeyboard: {
     type: Boolean,
     value: false,
   },

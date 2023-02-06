@@ -1,7 +1,8 @@
 Component({
   data: {
-    visible: true,
+    visible: false,
     placement: 'left',
+    sidebar: [],
     baseSidebar: [
       {
         title: '菜单一',

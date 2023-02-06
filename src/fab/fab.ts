@@ -9,7 +9,7 @@ const name = `${prefix}-fab`;
 export default class Fab extends SuperComponent {
   properties = props;
 
-  externalClasses = [`${prefix}-class`, `${prefix}-class-button`];
+  externalClasses = [`class`, `${prefix}-class`, `${prefix}-class-button`];
 
   data = {
     prefix,

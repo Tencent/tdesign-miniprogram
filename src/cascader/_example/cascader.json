@@ -1,5 +1,5 @@
 {
-  "component": true,
+  "navigationBarTitleText": "Cascader",
   "usingComponents": {
     "base": "./base",
     "theme-tab": "./theme-tab",

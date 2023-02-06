@@ -40,6 +40,8 @@ Component({
     [`${PICKER_KEY.CITY}Value`]: [],
     [`${PICKER_KEY.YEAR_SEASONS}Value`]: [],
     [`${PICKER_KEY.DATE}Value`]: [],
+    style: 'color: red',
+    customStyle: 'font-size: 9px',
   },
 
   methods: {

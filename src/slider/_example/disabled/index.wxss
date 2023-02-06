@@ -1,0 +1,5 @@
+.wrapper {
+  margin-top: 32rpx;
+  background: #fff;
+  padding-top: 40rpx;
+}

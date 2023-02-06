@@ -61,6 +61,26 @@ function cls(base, arr) {
   return res.join(' ');
 }
 
+function endsWith(str, endStr) {
+  return str.slice(-endStr.length) === endStr ? true : false;
+}
+
+function _style(arr) {
+  var res = [];
+  var r = arr.filter(function (s) {
+    return s && s.trim();
+  });
+
+  for (i = 0; i < r.length; i++) {
+    if (endsWith(r[i], ';')) {
+      res.push(r[i]);
+    } else {
+      res.push(r[i] + ';');
+    }
+  }
+  return res.join(' ');
+}
+
 module.exports = {
   addUnit: addUnit,
   isString: isString,
@@ -69,4 +89,5 @@ module.exports = {
   isNoEmptyObj: isNoEmptyObj,
   includes: includes,
   cls: cls,
+  _style: _style,
 };

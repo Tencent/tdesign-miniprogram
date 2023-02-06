@@ -1,8 +1,8 @@
 <!-- theme 为 logo -->
-<view class="demo-footer">
+<view class="footer-example">
   <t-footer theme="logo" logo="{{logoList[0]}}" />
 </view>
 
-<view class="demo-footer">
+<view class="footer-example">
   <t-footer theme="logo" logo="{{logoList[1]}}" />
 </view>

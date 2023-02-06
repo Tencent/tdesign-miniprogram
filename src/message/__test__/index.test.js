@@ -22,6 +22,44 @@ describe('message', () => {
   const icon = load(path.resolve(__dirname, `../../icon/icon`), 't-icon');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-message id="t-message" ></t-message>`,
+        usingComponents: {
+          't-message': message,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $message = comp.querySelector('#t-message');
+
+      mockInstance.mockImplementation(() => $message.instance);
+
+      const style = 'color: red';
+      const customStyle = 'font-size: 9px';
+
+      Message.warning({
+        context: $message.instance,
+        offset: [20, 32],
+        content: '这是一条带关闭的消息通知',
+        duration: 0,
+        style: style,
+        customStyle: customStyle,
+        closeBtn: true,
+      });
+      await simulate.sleep(540);
+
+      expect(comp.toJSON()).toMatchSnapshot();
+
+      const $style = comp.querySelector('#t-message >>> .t-message');
+      if (VIRTUAL_HOST) {
+        expect($style.dom.getAttribute('style').includes(`${style}; ${customStyle}`)).toBeTruthy();
+      } else {
+        expect($style.dom.getAttribute('style').includes(`${customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': icon', async () => {
       const id = simulate.load({
         template: `<t-message id="t-message" />`,
@@ -99,14 +137,14 @@ describe('message', () => {
         context: $message.instance,
         offset: [20, 32],
         marquee: { speed: 100, loop: 3, delay: 0 },
-        icon: '',
+        icon: false,
         content: 'icon 使用空值',
-        duration: 10,
+        duration: 0,
       });
       await simulate.sleep(540);
       // icon 为空
       const $prefixIcon = comp.querySelector('#t-message >>> .t-message__icon--left');
-      expect($prefixIcon).toBeUndefined();
+      expect($prefixIcon.dom.innerHTML).toBe('');
       Message.hide();
       await simulate.sleep(500);
       expect($message.instance.data.visible).toBe(false);

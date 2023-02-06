@@ -8,11 +8,13 @@ const name = `${prefix}-avatar`;
 
 @wxComponent()
 export default class Avatar extends SuperComponent {
-  options = {
-    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+  options: WechatMiniprogram.Component.ComponentOptions = {
+    multipleSlots: true,
+    styleIsolation: 'apply-shared',
   };
 
   externalClasses = [
+    'class',
     `${prefix}-class`,
     `${prefix}-class-image`,
     `${prefix}-class-icon`,
@@ -27,14 +29,17 @@ export default class Avatar extends SuperComponent {
     classPrefix: name,
     isShow: true,
     zIndex: 0,
-    isChild: false,
   };
 
   relations: RelationsOptions = {
-    './avatar-group': {
+    '../avatar-group/avatar-group': {
       type: 'ancestor',
-      linked(this, target) {
-        this.parent = target;
+      linked(parent) {
+        this.parent = parent;
+
+        this.setData({
+          size: this.data.size ?? parent.data.size,
+        });
       },
     },
   };
@@ -49,45 +54,23 @@ export default class Avatar extends SuperComponent {
   };
 
   methods = {
-    /**
-     * @description avatar-group子节点缩紧，avatar无
-     * @param isChild 是否为avatar-group子节点
-     */
-    updateIsChild(isChild) {
-      this.setData({
-        isChild,
-      });
-    },
-
-    /**
-     * @description 控制avatar显隐
-     */
-    updateShow() {
+    hide() {
       this.setData({
         isShow: false,
       });
     },
-    /**
-     * @description 控制avatar尺寸
-     */
-    updateSize(size) {
-      if (this.properties.size) return;
-      this.setData({ size });
-    },
-    /**
-     * @description 控制avatar左侧在上/右侧在上
-     */
+
     updateCascading(zIndex) {
       this.setData({ zIndex });
     },
-  };
 
-  onLoadError(e: any) {
-    if (this.properties.hideOnLoadFailed) {
-      this.setData({
-        isShow: false,
-      });
-    }
-    this.triggerEvent('error', e.detail);
-  }
+    onLoadError(e: WechatMiniprogram.CustomEvent) {
+      if (this.properties.hideOnLoadFailed) {
+        this.setData({
+          isShow: false,
+        });
+      }
+      this.triggerEvent('error', e.detail);
+    },
+  };
 }

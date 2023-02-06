@@ -1,4 +1,6 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
   <t-grid gutter="{{gutter}}" border="{{false}}" align="center" column="{{column}}">
     <!-- 图片/视频 -->
     <t-grid-item
@@ -50,8 +52,7 @@
         </view>
         <!-- 删除 -->
         <view class="{{classPrefix}}__close-btn hotspot-expanded" bindtap="onDelete" data-index="{{index}}">
-          <slot wx:if="{{deleteBtn === 'slot'}}" name="delete-btn" />
-          <t-icon wx:else name="close" size="16" color="#fff" />
+          <t-icon name="close" size="16" color="#fff" />
         </view>
       </view>
     </t-grid-item>
@@ -63,9 +64,10 @@
       bindclick="onAddTap"
     >
       <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
-        <view class="{{classPrefix}}__add-icon">
-          <slot wx:if="{{addContent === 'slot'}}" name="add-content" />
-          <t-icon wx:else name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
+        <slot name="add-content" />
+        <block wx:if="{{addContent}}">{{addContent}}</block>
+        <view wx:else class="{{classPrefix}}__add-icon">
+          <t-icon name="add" />
         </view>
       </view>
     </t-grid-item>

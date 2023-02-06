@@ -16,8 +16,10 @@ Component({
 
       this.setData({
         note: format(value),
-        visible: false,
       });
+    },
+    onClose({ detail }) {
+      console.log(detail.trigger);
     },
   },
 });

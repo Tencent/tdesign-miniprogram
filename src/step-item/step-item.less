@@ -1,0 +1,228 @@
+@import '../common/index.less';
+
+@step-item-dot-size: var(--td-step-item-dot-size, 16rpx);
+@step-item-circle-size: var(--td-step-item-circle-size, 44rpx);
+@step-item-circle-font-size: var(--td-step-item-circle-font-size, 28rpx);
+@step-item-descrition-color: var(--td-step-item-descrition-color, @font-gray-3);
+
+@step-item-default-circle-bg: var(--td-step-item-default-circle-bg, @gray-color-1);
+@step-item-default-circle-color: var(--td-step-item-default-circle-color, @font-gray-3);
+@step-item-default-title-color: var(--td-step-item-default-title-color, @font-gray-3);
+@step-item-default-icon-color: var(--td-step-item-default-icon-color, @font-gray-3);
+@step-item-default-dot-border-color: var(--td-step-item-default-dot-border-color, @gray-color-5);
+
+@step-item-process-circle-color: var(--td-step-item-process-circle-color, @white-color-1);
+@step-item-process-circle-bg: var(--td-step-item-process-circle-bg, @primary-color);
+@step-item-process-title-color: var(--td-step-item-process-title-color, @primary-color);
+@step-item-process-icon-color: var(--td-step-item-process-icon-color, @primary-color);
+@step-item-process-dot-border-color: var(--td-step-item-process-dot-border-color, @primary-color);
+
+@step-item-finish-circle-color: var(--td-step-item-finish-circle-color, @primary-color);
+@step-item-finish-circle-bg: var(--td-step-item-finish-circle-bg, @primary-color-1);
+@step-item-finish-title-color: var(--td-step-item-finish-title-color, @font-gray-1);
+@step-item-finish-icon-color: var(--td-step-item-finish-icon-color, @primary-color);
+@step-item-finish-dot-border-color: var(--td-step-item-finish-dot-border-color, @primary-color);
+
+@step-item-error-circle-color: var(--td-step-item-error-circle-color, @error-color);
+@step-item-error-circle-bg: var(--td-step-item-error-circle-bg, @error-color-1);
+@step-item-error-title-color: var(--td-step-item-error-title-color, @error-color);
+@step-item-error-icon-color: var(--td-step-item-error-icon-color, @error-color);
+@step-item-error-dot-border-color: var(--td-step-item-error-dot-border-color, @error-color);
+
+@step-item-line-color: var(--td-step-item-line-color, @gray-color-4);
+@step-item-finish-line-color: var(--td-step-item-finish-line-color, @primary-color);
+
+@step: ~'@{prefix}-step';
+@steps: ~'@{step}s';
+@item: ~'@{steps}-item';
+
+.color-generate() {
+  @status: default, process, finish, error;
+  each(@status, {
+    @bgVar: ~"step-item-@{value}-circle-bg";
+    @colorVar: ~"step-item-@{value}-circle-color";
+    @titleColorVar: ~"step-item-@{value}-title-color";
+    @iconColorVar: ~"step-item-@{value}-icon-color";
+    @dotBorderColorVar: ~"step-item-@{value}-dot-border-color";
+
+    &__circle--@{value} {
+      color: @@colorVar;
+      background-color: @@bgVar;
+    }
+
+    &__title--@{value} {
+      color: @@titleColorVar;
+    }
+
+    &__icon--@{value} {
+      color: @@iconColorVar;
+    }
+
+    &__dot--@{value} {
+      border-color: @@dotBorderColorVar;
+    }
+  });
+}
+
+.@{item} {
+  flex: 1;
+  vertical-align: top;
+  position: relative;
+  display: flex;
+
+  .color-generate();
+
+  &--horizontal {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__anchor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--vertical {
+      width: @step-item-circle-size;
+      height: @step-item-circle-size;
+    }
+  }
+
+  &__circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: @step-item-circle-size;
+    height: @step-item-circle-size;
+    text-align: center;
+    border-radius: 50%;
+    font-size: @step-item-circle-font-size;
+  }
+
+  &__icon {
+    z-index: 1;
+    vertical-align: top;
+    font-size: @font-size-base;
+    position: relative;
+
+    &--finsh,
+    &--process {
+      color: @primary-color;
+    }
+  }
+
+  &__dot {
+    width: @step-item-dot-size;
+    height: @step-item-dot-size;
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+
+    &--finish {
+      background-color: @step-item-process-dot-border-color;
+    }
+
+    &--error {
+      background-color: @step-item-error-dot-border-color;
+    }
+  }
+
+  &__content {
+    text-align: center;
+
+    &--horizontal {
+      max-width: 80px;
+      margin-top: 16rpx;
+    }
+
+    &--vertical {
+      margin-left: 16rpx;
+      flex: 1;
+      padding-bottom: 32rpx;
+    }
+
+    &--vertical&--last {
+      padding-bottom: 0;
+    }
+  }
+
+  &__title {
+    position: relative;
+    line-height: @step-item-circle-size;
+    font-size: @font-size-base;
+
+    &--process {
+      font-weight: 600;
+    }
+
+    &--vertical {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8rpx;
+    }
+  }
+
+  &__description {
+    color: @step-item-descrition-color;
+    line-height: 40rpx;
+    font-size: @font-size-s;
+
+    &--vertical {
+      text-align: left;
+    }
+  }
+
+  &__extra {
+    &:not(:empty) {
+      margin-top: 16rpx;
+    }
+  }
+
+  &__line {
+    background-color: @step-item-line-color;
+    content: '';
+    display: block;
+    position: absolute;
+
+    &--horizontal {
+      height: 1px;
+      transform: translateY(-50%);
+      width: calc(100% - 32rpx - @step-item-circle-size);
+      top: calc(@step-item-circle-size / 2 + 1px);
+      left: calc(50% + @step-item-circle-size / 2 + 16rpx);
+    }
+
+    &--horizontal&--dot {
+      top: calc(@step-item-dot-size / 2);
+    }
+
+    &--finish {
+      background-color: @step-item-finish-line-color;
+    }
+
+    &--vertical {
+      height: calc(100% - 32rpx - @step-item-circle-size);
+      width: 1px;
+      transform: translateX(-50%);
+      left: calc(@step-item-circle-size / 2);
+      top: calc(@step-item-circle-size + 16rpx);
+    }
+
+    &--vertical&--dot {
+      top: @step-item-circle-size;
+      height: calc(100% - @step-item-circle-size);
+    }
+  }
+}
+
+:host {
+  flex: 1;
+  vertical-align: top;
+  position: relative;
+  align-self: flex-start;
+  width: inherit;
+}

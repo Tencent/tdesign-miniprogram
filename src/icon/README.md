@@ -6,6 +6,7 @@ isComponent: true
 ---
 
 <span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-100%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -15,6 +16,18 @@ isComponent: true
   "t-icon": "tdesign-miniprogram/icon/icon"
 }
 ```
+
+## 常见问题
+
+<details>
+  <summary>
+    控制台告警：Faild to load font
+    <span class="icon">👇</span>
+  </summary>
+  <p style="margin-top: 10px; color: rgba(0, 0, 0, .6)">
+    告警属于开发者工具的 bug，可以忽略，具体可以看 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/font/wx.loadFontFace.html" target="_blank">官网文档</a>
+  </p>
+</details>
 
 ## 代码演示
 
@@ -76,10 +89,9 @@ isComponent: true
 | 属性        | 值类型   | 默认值    | 必传 | 说明                                                              |
 | ----------- | -------- | ---------- | ---- |----------------------------------------------------------------- |
 | name        | String | -         | Y    | 图标名称或图片链接                           |
-| size        | String | inherit   | N    | 图标大小, 如 `20`, `20px`, `48rpx`, 默认单位是 `px` |
-| color       | String | initial   | N    | 图标颜色                                                          |
+| size        | String | -   | N    | 图标大小, 如 `20`, `20px`, `48rpx`, 默认单位是 `px` |
+| color       | String | -   | N    | 图标颜色                                                          |
 | prefix      | String | -         | N    | 自定义图标前缀                                                    |
-| custom-style | String | -         | N    | 自定义组件样式                                                        |
 | external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、图片图标、基础图标等元素类名。`['t-class']` | N
 
 #### Events

@@ -24,7 +24,7 @@
     <view class="label">自动播放间隔时间(单位毫秒)</view>
     <view class="option">
       <t-slider
-        class="swiper-slider"
+        t-class="swiper-slider"
         t-class-bar="external-class-bar"
         value="{{interval}}"
         min="{{1000}}"
@@ -40,7 +40,7 @@
     <view class="label">动画持续时间(单位毫秒)</view>
     <view class="option">
       <t-slider
-        class="swiper-slider"
+        t-class="swiper-slider"
         t-class-bar="external-class-bar"
         value="{{duration}}"
         min="{{200}}"

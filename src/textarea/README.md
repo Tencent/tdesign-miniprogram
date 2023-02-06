@@ -67,7 +67,6 @@ autosize | Boolean | false | 是否自动增高，值为 autosize 时，style.he
 confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键盘不收起点 | N
 confirm-type | String | done | 设置键盘右下角按钮的文字，仅在 type='text'时生效。可选项：send/search/next/go/done。TS 类型：`'return' \| 'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
 cursor-spacing | Number | 0 | 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 是否禁用文本框 | N
 external-classes | Array | - | 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名。`['t-class', 't-class-textarea', 't-class-label, 't-class-indicator]` | N
 focus | Boolean | false | 自动聚焦 | N
@@ -81,6 +80,12 @@ value | String | - | 文本框值 | N
 default-value | String | undefined | 文本框值。非受控属性 | N
 fixed | Boolean | false | 如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true | N
 bordered | Boolean | false | 是否显示外边框 | N
+cursor | Number | -1 | 指定 focus 时的光标位置 | N
+disable-default-padding | Boolean | false | 是否去掉 iOS 下的默认内边距 | N
+show-confirm-bar | Boolean | true | 是否显示键盘上方带有”完成“按钮那一栏 | N
+selection-start | Number | -1 | 光标起始位置，自动聚集时有效，需与 selection-end 搭配使用 | N
+selection-end | Number | -1 | 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 | N
+hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N
 
 ### Textarea Events
 
@@ -91,3 +96,4 @@ change | `(value: TextareaValue)` | 输入内容变化时触发
 enter | `(value: TextareaValue)` | 点击完成时触发
 focus | `(value: TextareaValue)` | 获得焦点时触发
 line-change | `(value: TextareaValue)` | 行高发生变化时触发
+keyboardheightchange | `(height: number, duration: number)` | 键盘高度发生变化的时候触发此事件

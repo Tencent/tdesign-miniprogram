@@ -1,5 +1,5 @@
-<t-steps class="a1" default-current="0" layout="{{layout}}">
-  <t-step-item class="item" title="步骤1"></t-step-item>
+<t-steps class="a1" default-current="0" style="{{style}}" customStyle="{{customStyle}}" layout="{{layout}}">
+  <t-step-item class="a1-child item" style="{{style}}" customStyle="{{customStyle}}" title="步骤1"></t-step-item>
   <t-step-item class="item" title="步骤2"></t-step-item>
 </t-steps>
 

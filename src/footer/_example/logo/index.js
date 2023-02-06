@@ -2,11 +2,11 @@ Component({
   data: {
     logoList: [
       {
-        icon: 'https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png', // 占位图片
+        icon: 'https://tdesign.gtimg.com/miniprogram/images/logo2.png',
         title: '品牌名称',
       },
       {
-        url: 'https://cdn-we-retail.ym.tencent.com/miniapp/articleFooter/example3.png', // 占位图片
+        url: 'https://tdesign.gtimg.com/miniprogram/images/logo1.png',
       },
     ],
   },

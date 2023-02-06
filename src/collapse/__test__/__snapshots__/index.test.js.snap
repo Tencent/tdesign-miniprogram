@@ -1,373 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`collapse :base 1`] = `
-<main>
-  <t-collapse
-    id="base"
-    bind:change="handleChange"
-  >
-    <wx-view
-      class="t-class t-collapse t-collapse--default"
-      style=""
-    >
-      <t-collapse-panel
-        id="first"
-      >
-        <wx-view
-          class="t-collapse-panel t-class"
-          style=""
-        >
-          <wx-view
-            ariaDisabled="{{false}}"
-            ariaExpanded="{{true}}"
-            ariaRole="button"
-            class="t-collapse-panel__title"
-            bind:tap="onClick"
-          >
-            <t-cell
-              tClass="t-collapse-panel__header t-class-header"
-              tClassHover="class-header-hover"
-              tClassNote="class-note "
-              tClassRightIcon="class-right-icon "
-              tClassTitle="class-title "
-            >
-              <wx-view
-                ariaRole=""
-                class="t-class t-cell   t-cell--middle"
-                hoverClass="t-cell--hover-class"
-                hoverStayTime="70"
-                style=""
-                bind:tap="onClick"
-              >
-                <wx-view
-                  class="t-cell__left t-class-left"
-                />
-                <wx-view
-                  class="t-cell__title t-class-title"
-                >
-                  <wx-view
-                    class="t-cell__title-text"
-                  >
-                     first 
-                  </wx-view>
-                  <wx-view
-                    class="t-cell__description t-class-description"
-                  />
-                </wx-view>
-                <wx-view
-                  class="t-cell__note t-class-note"
-                />
-                <wx-view
-                  class="t-cell__right t-class-right"
-                >
-                  <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
-                  >
-                    <wx-view
-                      ariaHidden="{{false}}"
-                      ariaLabel=""
-                      ariaRole=""
-                      class="t-icon t-class"
-                      style=""
-                      bind:tap="onTap"
-                    >
-                      <wx-label
-                        class="t-icon-chevron-up t-icon-base"
-                      />
-                    </wx-view>
-                  </t-icon>
-                </wx-view>
-              </wx-view>
-            </t-cell>
-          </wx-view>
-          <wx-view
-            ariaHidden=""
-            class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
-          >
-            <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
-            >
-              
-      
-      
-              内容1
-            </wx-view>
-          </wx-view>
-        </wx-view>
-      </t-collapse-panel>
-      <t-collapse-panel
-        id="second"
-      >
-        <wx-view
-          class="t-collapse-panel t-class"
-          style=""
-        >
-          <wx-view
-            ariaDisabled="{{false}}"
-            ariaExpanded="{{false}}"
-            ariaRole="button"
-            class="t-collapse-panel__title"
-            bind:tap="onClick"
-          >
-            <t-cell
-              tClass="t-collapse-panel__header t-class-header"
-              tClassHover="class-header-hover"
-              tClassNote="class-note "
-              tClassRightIcon="class-right-icon "
-              tClassTitle="class-title "
-            >
-              <wx-view
-                ariaRole=""
-                class="t-class t-cell   t-cell--middle"
-                hoverClass="t-cell--hover-class"
-                hoverStayTime="70"
-                style=""
-                bind:tap="onClick"
-              >
-                <wx-view
-                  class="t-cell__left t-class-left"
-                />
-                <wx-view
-                  class="t-cell__title t-class-title"
-                >
-                  <wx-view
-                    class="t-cell__title-text"
-                  >
-                     second 
-                  </wx-view>
-                  <wx-view
-                    class="t-cell__description t-class-description"
-                  />
-                </wx-view>
-                <wx-view
-                  class="t-cell__note t-class-note"
-                />
-                <wx-view
-                  class="t-cell__right t-class-right"
-                >
-                  <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
-                  >
-                    <wx-view
-                      ariaHidden="{{false}}"
-                      ariaLabel=""
-                      ariaRole=""
-                      class="t-icon t-class"
-                      style=""
-                      bind:tap="onTap"
-                    >
-                      <wx-label
-                        class="t-icon-chevron-down t-icon-base"
-                      />
-                    </wx-view>
-                  </t-icon>
-                </wx-view>
-              </wx-view>
-            </t-cell>
-          </wx-view>
-          <wx-view
-            ariaHidden="{{true}}"
-            class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
-          >
-            <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
-            >
-              
-      
-      
-              内容2
-            </wx-view>
-          </wx-view>
-        </wx-view>
-      </t-collapse-panel>
-    </wx-view>
-  </t-collapse>
-  <t-collapse
-    id="expandAll"
-  >
-    <wx-view
-      class="t-class t-collapse t-collapse--default"
-      style=""
-    >
-      <t-collapse-panel>
-        <wx-view
-          class="t-collapse-panel t-class"
-          style=""
-        >
-          <wx-view
-            ariaDisabled="{{false}}"
-            ariaExpanded="{{false}}"
-            ariaRole="button"
-            class="t-collapse-panel__title"
-            bind:tap="onClick"
-          >
-            <t-cell
-              tClass="t-collapse-panel__header t-class-header"
-              tClassHover="class-header-hover"
-              tClassNote="class-note "
-              tClassRightIcon="class-right-icon "
-              tClassTitle="class-title "
-            >
-              <wx-view
-                ariaRole=""
-                class="t-class t-cell   t-cell--middle"
-                hoverClass="t-cell--hover-class"
-                hoverStayTime="70"
-                style=""
-                bind:tap="onClick"
-              >
-                <wx-view
-                  class="t-cell__left t-class-left"
-                />
-                <wx-view
-                  class="t-cell__title t-class-title"
-                >
-                  <wx-view
-                    class="t-cell__title-text"
-                  >
-                     first 
-                  </wx-view>
-                  <wx-view
-                    class="t-cell__description t-class-description"
-                  />
-                </wx-view>
-                <wx-view
-                  class="t-cell__note t-class-note"
-                />
-                <wx-view
-                  class="t-cell__right t-class-right"
-                >
-                  <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
-                  >
-                    <wx-view
-                      ariaHidden="{{false}}"
-                      ariaLabel=""
-                      ariaRole=""
-                      class="t-icon t-class"
-                      style=""
-                      bind:tap="onTap"
-                    >
-                      <wx-label
-                        class="t-icon-chevron-down t-icon-base"
-                      />
-                    </wx-view>
-                  </t-icon>
-                </wx-view>
-              </wx-view>
-            </t-cell>
-          </wx-view>
-          <wx-view
-            ariaHidden="{{true}}"
-            class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
-          >
-            <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
-            >
-              
-      
-      
-              内容1
-            </wx-view>
-          </wx-view>
-        </wx-view>
-      </t-collapse-panel>
-      <t-collapse-panel>
-        <wx-view
-          class="t-collapse-panel t-class"
-          style=""
-        >
-          <wx-view
-            ariaDisabled="{{false}}"
-            ariaExpanded="{{true}}"
-            ariaRole="button"
-            class="t-collapse-panel__title"
-            bind:tap="onClick"
-          >
-            <t-cell
-              tClass="t-collapse-panel__header t-class-header"
-              tClassHover="class-header-hover"
-              tClassNote="class-note "
-              tClassRightIcon="class-right-icon "
-              tClassTitle="class-title "
-            >
-              <wx-view
-                ariaRole=""
-                class="t-class t-cell   t-cell--middle"
-                hoverClass="t-cell--hover-class"
-                hoverStayTime="70"
-                style=""
-                bind:tap="onClick"
-              >
-                <wx-view
-                  class="t-cell__left t-class-left"
-                />
-                <wx-view
-                  class="t-cell__title t-class-title"
-                >
-                  <wx-view
-                    class="t-cell__title-text"
-                  >
-                     second 
-                  </wx-view>
-                  <wx-view
-                    class="t-cell__description t-class-description"
-                  />
-                </wx-view>
-                <wx-view
-                  class="t-cell__note t-class-note"
-                />
-                <wx-view
-                  class="t-cell__right t-class-right"
-                >
-                  <t-icon
-                    class="t-cell__right-icon t-class-right-icon"
-                  >
-                    <wx-view
-                      ariaHidden="{{false}}"
-                      ariaLabel=""
-                      ariaRole=""
-                      class="t-icon t-class"
-                      style=""
-                      bind:tap="onTap"
-                    >
-                      <wx-label
-                        class="t-icon-chevron-up t-icon-base"
-                      />
-                    </wx-view>
-                  </t-icon>
-                </wx-view>
-              </wx-view>
-            </t-cell>
-          </wx-view>
-          <wx-view
-            ariaHidden=""
-            class="t-collapse-panel__wrapper"
-            style="height: 0;"
-            bind:transitionend="onTransitionEnd"
-          >
-            <wx-view
-              class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
-            >
-              
-      
-      
-              内容2
-            </wx-view>
-          </wx-view>
-        </wx-view>
-      </t-collapse-panel>
-    </wx-view>
-  </t-collapse>
-</main>
-`;
-
 exports[`collapse :defaultExpandAll 1`] = `
 <t-collapse
   id="expandAll"
@@ -378,7 +10,7 @@ exports[`collapse :defaultExpandAll 1`] = `
   >
     <t-collapse-panel>
       <wx-view
-        class="t-collapse-panel t-class"
+        class="t-collapse-panel t-collapse-panel--bottom t-class"
         style=""
       >
         <wx-view
@@ -389,13 +21,14 @@ exports[`collapse :defaultExpandAll 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
-            tClassRightIcon="class-right-icon "
+            tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
               ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
@@ -425,13 +58,13 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -445,13 +78,12 @@ exports[`collapse :defaultExpandAll 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation=""
           ariaHidden="{{true}}"
           class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       
@@ -463,7 +95,7 @@ exports[`collapse :defaultExpandAll 1`] = `
     </t-collapse-panel>
     <t-collapse-panel>
       <wx-view
-        class="t-collapse-panel t-class"
+        class="t-collapse-panel t-collapse-panel--bottom t-class"
         style=""
       >
         <wx-view
@@ -474,13 +106,14 @@ exports[`collapse :defaultExpandAll 1`] = `
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
-            tClassRightIcon="class-right-icon "
+            tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
             tClassTitle="class-title "
           >
             <wx-view
+              ariaLabel=""
               ariaRole=""
               class="t-class t-cell   t-cell--middle"
               hoverClass="t-cell--hover-class"
@@ -510,13 +143,13 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
+                  tClass="t-cell__right-icon t-class-right-icon"
                 >
                   <wx-view
                     ariaHidden="{{false}}"
                     ariaLabel=""
                     ariaRole=""
-                    class="t-icon t-class"
+                    class="t-icon class t-class"
                     style=""
                     bind:tap="onTap"
                   >
@@ -530,200 +163,12 @@ exports[`collapse :defaultExpandAll 1`] = `
           </t-cell>
         </wx-view>
         <wx-view
+          animation=""
           ariaHidden=""
           class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
         >
           <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
-          >
-            
-      
-      
-            内容2
-          </wx-view>
-        </wx-view>
-      </wx-view>
-    </t-collapse-panel>
-  </wx-view>
-</t-collapse>
-`;
-
-exports[`collapse :disabled 1`] = `
-<t-collapse
-  id="base"
-  bind:change="handleChange"
->
-  <wx-view
-    class="t-class t-collapse t-collapse--default"
-    style=""
-  >
-    <t-collapse-panel
-      id="first"
-    >
-      <wx-view
-        class="t-collapse-panel t-class"
-        style=""
-      >
-        <wx-view
-          ariaDisabled="{{false}}"
-          ariaExpanded="{{true}}"
-          ariaRole="button"
-          class="t-collapse-panel__title"
-          bind:tap="onClick"
-        >
-          <t-cell
-            tClass="t-collapse-panel__header t-class-header"
-            tClassHover="class-header-hover"
-            tClassNote="class-note "
-            tClassRightIcon="class-right-icon "
-            tClassTitle="class-title "
-          >
-            <wx-view
-              ariaRole=""
-              class="t-class t-cell   t-cell--middle"
-              hoverClass="t-cell--hover-class"
-              hoverStayTime="70"
-              style=""
-              bind:tap="onClick"
-            >
-              <wx-view
-                class="t-cell__left t-class-left"
-              />
-              <wx-view
-                class="t-cell__title t-class-title"
-              >
-                <wx-view
-                  class="t-cell__title-text"
-                >
-                   first 
-                </wx-view>
-                <wx-view
-                  class="t-cell__description t-class-description"
-                />
-              </wx-view>
-              <wx-view
-                class="t-cell__note t-class-note"
-              />
-              <wx-view
-                class="t-cell__right t-class-right"
-              >
-                <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
-                >
-                  <wx-view
-                    ariaHidden="{{false}}"
-                    ariaLabel=""
-                    ariaRole=""
-                    class="t-icon t-class"
-                    style=""
-                    bind:tap="onTap"
-                  >
-                    <wx-label
-                      class="t-icon-chevron-up t-icon-base"
-                    />
-                  </wx-view>
-                </t-icon>
-              </wx-view>
-            </wx-view>
-          </t-cell>
-        </wx-view>
-        <wx-view
-          ariaHidden=""
-          class="t-collapse-panel__wrapper"
-          style="height: auto;"
-          bind:transitionend="onTransitionEnd"
-        >
-          <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content--active t-class-content"
-          >
-            
-      
-      
-            内容1
-          </wx-view>
-        </wx-view>
-      </wx-view>
-    </t-collapse-panel>
-    <t-collapse-panel
-      id="second"
-    >
-      <wx-view
-        class="t-collapse-panel t-class"
-        style=""
-      >
-        <wx-view
-          ariaDisabled="{{false}}"
-          ariaExpanded="{{false}}"
-          ariaRole="button"
-          class="t-collapse-panel__title"
-          bind:tap="onClick"
-        >
-          <t-cell
-            tClass="t-collapse-panel__header t-class-header"
-            tClassHover="class-header-hover"
-            tClassNote="class-note "
-            tClassRightIcon="class-right-icon "
-            tClassTitle="class-title "
-          >
-            <wx-view
-              ariaRole=""
-              class="t-class t-cell   t-cell--middle"
-              hoverClass="t-cell--hover-class"
-              hoverStayTime="70"
-              style=""
-              bind:tap="onClick"
-            >
-              <wx-view
-                class="t-cell__left t-class-left"
-              />
-              <wx-view
-                class="t-cell__title t-class-title"
-              >
-                <wx-view
-                  class="t-cell__title-text"
-                >
-                   second 
-                </wx-view>
-                <wx-view
-                  class="t-cell__description t-class-description"
-                />
-              </wx-view>
-              <wx-view
-                class="t-cell__note t-class-note"
-              />
-              <wx-view
-                class="t-cell__right t-class-right"
-              >
-                <t-icon
-                  class="t-cell__right-icon t-class-right-icon"
-                >
-                  <wx-view
-                    ariaHidden="{{false}}"
-                    ariaLabel=""
-                    ariaRole=""
-                    class="t-icon t-class"
-                    style=""
-                    bind:tap="onTap"
-                  >
-                    <wx-label
-                      class="t-icon-chevron-down t-icon-base"
-                    />
-                  </wx-view>
-                </t-icon>
-              </wx-view>
-            </wx-view>
-          </t-cell>
-        </wx-view>
-        <wx-view
-          ariaHidden="{{true}}"
-          class="t-collapse-panel__wrapper"
-          style="height: 0;"
-          bind:transitionend="onTransitionEnd"
-        >
-          <wx-view
-            class="t-collapse-panel__content t-collapse-panel__content-- t-class-content"
+            class="t-collapse-panel__content t-class-content"
           >
             
       

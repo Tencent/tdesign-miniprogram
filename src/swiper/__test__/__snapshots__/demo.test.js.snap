@@ -9,11 +9,11 @@ exports[`Swiper Swiper base demo works fine 1`] = `
     interval="{{5000}}"
     list="{{
       Array [
-        "https://tdesign.gtimg.com/site/swiper/01.png",
-        "https://tdesign.gtimg.com/site/swiper/02.png",
-        "https://tdesign.gtimg.com/site/swiper/03.png",
-        "https://tdesign.gtimg.com/site/swiper/04.png",
-        "https://tdesign.gtimg.com/site/swiper/05.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
       ]
     }}"
     navigation="{{
@@ -22,6 +22,7 @@ exports[`Swiper Swiper base demo works fine 1`] = `
       }
     }}"
     bind:change="onChange"
+    bind:click="onTap"
   />
 </base>
 `;
@@ -35,14 +36,19 @@ exports[`Swiper Swiper cards demo works fine 1`] = `
       autoplay="{{false}}"
       current="{{0}}"
       duration="{{500}}"
+      imageProps="{{
+        Object {
+          "shape": "round",
+        }
+      }}"
       interval="{{5000}}"
       list="{{
         Array [
-          "https://tdesign.gtimg.com/site/swiper/01.png",
-          "https://tdesign.gtimg.com/site/swiper/02.png",
-          "https://tdesign.gtimg.com/site/swiper/03.png",
-          "https://tdesign.gtimg.com/site/swiper/04.png",
-          "https://tdesign.gtimg.com/site/swiper/05.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
         ]
       }}"
       navigation="{{
@@ -64,14 +70,19 @@ exports[`Swiper Swiper cards demo works fine 1`] = `
       class="scale-card-theme"
       current="{{0}}"
       duration="{{500}}"
+      imageProps="{{
+        Object {
+          "shape": "round",
+        }
+      }}"
       interval="{{5000}}"
       list="{{
         Array [
-          "https://tdesign.gtimg.com/site/swiper/01.png",
-          "https://tdesign.gtimg.com/site/swiper/02.png",
-          "https://tdesign.gtimg.com/site/swiper/03.png",
-          "https://tdesign.gtimg.com/site/swiper/04.png",
-          "https://tdesign.gtimg.com/site/swiper/05.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
         ]
       }}"
       navigation="{{
@@ -99,19 +110,19 @@ exports[`Swiper Swiper custom demo works fine 1`] = `
     interval="{{5000}}"
     list="{{
       Array [
-        "https://tdesign.gtimg.com/site/swiper/01.png",
-        "https://tdesign.gtimg.com/site/swiper/02.png",
-        "https://tdesign.gtimg.com/site/swiper/03.png",
-        "https://tdesign.gtimg.com/site/swiper/04.png",
-        "https://tdesign.gtimg.com/site/swiper/05.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
       ]
     }}"
-  >
-    <t-swiper-nav
-      slot="nav"
-      type="dots-bar"
-    />
-  </t-swiper>
+    navigation="{{
+      Object {
+        "type": "dots-bar",
+      }
+    }}"
+  />
 </custom>
 `;
 
@@ -124,11 +135,11 @@ exports[`Swiper Swiper fraction demo works fine 1`] = `
     interval="{{5000}}"
     list="{{
       Array [
-        "https://tdesign.gtimg.com/site/swiper/01.png",
-        "https://tdesign.gtimg.com/site/swiper/02.png",
-        "https://tdesign.gtimg.com/site/swiper/03.png",
-        "https://tdesign.gtimg.com/site/swiper/04.png",
-        "https://tdesign.gtimg.com/site/swiper/05.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
       ]
     }}"
     navigation="{{
@@ -150,11 +161,11 @@ exports[`Swiper Swiper nav-btn demo works fine 1`] = `
     interval="{{5000}}"
     list="{{
       Array [
-        "https://tdesign.gtimg.com/site/swiper/01.png",
-        "https://tdesign.gtimg.com/site/swiper/02.png",
-        "https://tdesign.gtimg.com/site/swiper/03.png",
-        "https://tdesign.gtimg.com/site/swiper/04.png",
-        "https://tdesign.gtimg.com/site/swiper/05.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
       ]
     }}"
     loop="{{false}}"
@@ -181,11 +192,11 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
       interval="{{5000}}"
       list="{{
         Array [
-          "https://tdesign.gtimg.com/site/swiper/01.png",
-          "https://tdesign.gtimg.com/site/swiper/02.png",
-          "https://tdesign.gtimg.com/site/swiper/03.png",
-          "https://tdesign.gtimg.com/site/swiper/04.png",
-          "https://tdesign.gtimg.com/site/swiper/05.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
         ]
       }}"
       navigation="{{
@@ -234,11 +245,11 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
         class="option"
       >
         <t-slider
-          class="swiper-slider"
           label=""
           max="{{5000}}"
           min="{{1000}}"
           step="{{500}}"
+          tClass="swiper-slider"
           tClassBar="external-class-bar"
           value="{{5000}}"
           bind:change="onIntervalChange"
@@ -262,11 +273,11 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
         class="option"
       >
         <t-slider
-          class="swiper-slider"
           label=""
           max="{{2000}}"
           min="{{200}}"
           step="{{100}}"
+          tClass="swiper-slider"
           tClassBar="external-class-bar"
           value="{{500}}"
           bind:change="onDurationChange"

@@ -33,7 +33,6 @@ isComponent: true
 -- | -- | -- | -- | --
 auto-start | Boolean | true | 是否自动开始倒计时 | N
 content | String / Slot | 'default' | 最终倒计时的展示内容，值为'default'时使用默认的格式，否则使用自定义样式插槽 | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 format | String | HH:mm:ss | 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒 | N
 millisecond | Boolean | false | 是否开启毫秒级渲染 | N
 size | String `v0.5.1` | 'medium' | 倒计时尺寸。可选项：small/medium/large | N

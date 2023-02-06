@@ -162,6 +162,10 @@ export default class Indexes extends SuperComponent {
       this.preIndex = index;
       this.toggleTips(true);
       this.triggerEvent('select', { index: activeAnchor });
+
+      if (activeAnchor !== this.data.activeAnchor) {
+        this.triggerEvent('change', { index: activeAnchor });
+      }
     },
 
     onClick(e) {
@@ -207,7 +211,9 @@ export default class Indexes extends SuperComponent {
         return;
       }
 
-      const { sticky } = this.data;
+      const { sticky, stickyOffset } = this.data;
+
+      scrollTop += stickyOffset;
 
       const curIndex = this.groupTop.findIndex(
         (group) => scrollTop >= group.top - group.height && scrollTop <= group.top + group.totalHeight - group.height,
@@ -217,29 +223,35 @@ export default class Indexes extends SuperComponent {
 
       const curGroup = this.groupTop[curIndex];
 
+      if (this.data.activeAnchor !== curGroup.anchor) {
+        this.triggerEvent('change', { index: curGroup.anchor });
+      }
+
       this.setData({
         activeAnchor: curGroup.anchor,
       });
 
       if (sticky) {
         const offset = curGroup.top - scrollTop;
-        const betwixt = offset < curGroup.height && offset > 0 && scrollTop > 0;
+        const betwixt = offset < curGroup.height && offset > 0 && scrollTop > stickyOffset;
 
         this.$children.forEach((child, index) => {
           if (index === curIndex) {
             child.setData({
-              sticky: scrollTop > 0,
+              sticky: scrollTop > stickyOffset,
               active: true,
-              customStyle: `height: ${curGroup.height}px`,
-              anchorStyle: `transform: translate3d(0, ${betwixt ? offset : 0}px, 0)`,
+              style: `height: ${curGroup.height}px`,
+              anchorStyle: `transform: translate3d(0, ${betwixt ? offset : 0}px, 0); top: ${stickyOffset}px`,
             });
           } else if (index + 1 === curIndex) {
             // 两个 anchor 同时出现时的上一个
             child.setData({
               sticky: true,
               active: true,
-              customStyle: `height: ${curGroup.height}px`,
-              anchorStyle: `transform: translate3d(0, ${betwixt ? offset - curGroup.height : 0}px, 0)`,
+              style: `height: ${curGroup.height}px`,
+              anchorStyle: `transform: translate3d(0, ${
+                betwixt ? offset - curGroup.height : 0
+              }px, 0); top: ${stickyOffset}px`,
             });
           } else {
             child.setData({ active: false, sticky: false, anchorStyle: '' });

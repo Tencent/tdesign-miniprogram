@@ -9,7 +9,7 @@ const name = `${prefix}-empty`;
 @wxComponent()
 export default class extends SuperComponent {
   options = {
-    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+    multipleSlots: true,
   };
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-description`, `${prefix}-class-image`];

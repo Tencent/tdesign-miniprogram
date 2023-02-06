@@ -21,6 +21,8 @@
 @avatar-circle-border-radius: var(--td-avatar-circle-border-radius, @radius-circle);
 @avatar-round-border-radius: var(--td-avatar-round-border-radius, @radius-default);
 
+@avatar-margin-left: var(--td-avatar-margin-left, 0);
+
 .@{prefix}-avatar {
   display: flex;
   align-items: center;
@@ -29,7 +31,14 @@
   background-color: @avatar-bg-color;
   color: @avatar-content-color;
 
-  &.@{prefix}-size-l {
+  &__wrapper {
+    display: inline-flex;
+    position: relative;
+    vertical-align: top;
+    margin-left: @avatar-margin-left;
+  }
+
+  &--large {
     width: @avatar-large-width;
     height: @avatar-large-width;
     font-size: @avatar-text-large-font-size;
@@ -39,7 +48,7 @@
     }
   }
 
-  &.@{prefix}-size-m {
+  &--medium {
     width: @avatar-medium-width;
     height: @avatar-medium-width;
     font-size: @avatar-text-medium-font-size;
@@ -49,7 +58,7 @@
     }
   }
 
-  &.@{prefix}-size-s {
+  &--small {
     width: @avatar-small-width;
     height: @avatar-small-width;
     font-size: @avatar-text-small-font-size;
@@ -92,15 +101,15 @@
   &--border {
     border-color: @avatar-border-color;
     border-style: solid;
-    &--small {
+    &-small {
       border-width: @avatar-border-width-small;
     }
 
-    &--medium {
+    &-medium {
       border-width: @avatar-border-width-medium;
     }
 
-    &--large {
+    &-large {
       border-width: @avatar-border-width-large;
     }
   }

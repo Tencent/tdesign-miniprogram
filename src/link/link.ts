@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { setIcon } from '../common/utils';
+import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-link`;
@@ -22,17 +22,15 @@ export default class Link extends SuperComponent {
       this.setClass();
     },
 
-    prefixIcon(prefixIcon) {
-      const obj = setIcon('prefixIcon', prefixIcon, '');
+    prefixIcon(v) {
       this.setData({
-        ...obj,
+        _prefixIcon: calcIcon(v),
       });
     },
 
-    suffixIcon(suffixIcon) {
-      const obj = setIcon('suffixIcon', suffixIcon, '');
+    suffixIcon(v) {
       this.setData({
-        ...obj,
+        _suffixIcon: calcIcon(v),
       });
     },
   };

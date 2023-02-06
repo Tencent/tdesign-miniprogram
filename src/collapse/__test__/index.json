@@ -2,6 +2,6 @@
   "component": true,
   "usingComponents": {
     "t-collapse": "../collapse",
-    "t-collapse-panel": "../collapse-panel"
+    "t-collapse-panel": "../../collapse-panel/collapse-panel"
   }
 }

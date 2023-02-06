@@ -1,15 +1,15 @@
 Component({
   data: {
-    image: 'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png',
+    image: 'https://tdesign.gtimg.com/miniprogram/images/avatar1.png',
     pics: [
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/4.png',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/5.png',
-      'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png',
+      'https://tdesign.gtimg.com/miniprogram/images/avatar1.png',
+      'https://tdesign.gtimg.com/miniprogram/images/avatar2.png',
+      'https://tdesign.gtimg.com/miniprogram/images/avatar3.png',
+      'https://tdesign.gtimg.com/miniprogram/images/avatar4.png',
+      'https://tdesign.gtimg.com/miniprogram/images/avatar5.png',
+      'https://tdesign.gtimg.com/miniprogram/images/avatar1.png',
     ],
-    errorImage: 'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar',
+    errorImage: 'https://tdesign.gtimg.com/miniprogram/images/avatar1',
     text: '',
     hideOnLoadFailed: false,
   },

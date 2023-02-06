@@ -1,34 +1,5 @@
-<view class="stepper-example__wrapper">
-  <view class="stepper-example">
-    <t-stepper value="{{value}}" size="large" theme="filled" bind:change="handleChange" />
-  </view>
-  <view class="stepper-example">
-    <t-stepper defaultValue="3" max="99" theme="filled" />
-  </view>
-  <view class="stepper-example">
-    <t-stepper defaultValue="3" size="small" theme="filled" />
-  </view>
-</view>
-<view class="stepper-example__wrapper">
-  <view class="stepper-example">
-    <t-stepper value="{{value}}" size="large" theme="outline" />
-  </view>
-  <view class="stepper-example">
-    <t-stepper defaultValue="3" max="99" theme="outline" />
-  </view>
-  <view class="stepper-example">
-    <t-stepper defaultValue="3" size="small" theme="outline" />
-  </view>
-</view>
-
-<view class="stepper-example__wrapper">
-  <view class="stepper-example">
-    <t-stepper value="{{value}}" size="large" />
-  </view>
-  <view class="stepper-example">
-    <t-stepper defaultValue="3" max="99" />
-  </view>
-  <view class="stepper-example">
-    <t-stepper defaultValue="3" size="small" />
-  </view>
+<view class="stepper-example">
+  <t-stepper value="{{value}}" size="large" theme="filled" bind:change="handleChange" />
+  <t-stepper defaultValue="3" max="99" theme="filled" />
+  <t-stepper defaultValue="3" size="small" theme="filled" />
 </view>

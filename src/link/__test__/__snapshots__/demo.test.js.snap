@@ -13,7 +13,6 @@ exports[`Link Link content demo works fine 1`] = `
     <t-link
       content="跳转链接"
       size="small"
-      status="active"
     />
   </wx-view>
 </content>

@@ -3,7 +3,7 @@
 exports[`Indexes Indexes base demo works fine 1`] = `
 <base>
   <t-indexes
-    sticky="{{true}}"
+    indexList="{{Array []}}"
     bind:select="onSelect"
   >
     <t-indexes-anchor
@@ -429,8 +429,9 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
         "#",
       ]
     }}"
-    sticky="{{true}}"
-    bind:select="onSelect"
+    stickyOffset="{{8}}"
+    tClass="wrapper"
+    bind:change="onChange"
   >
     <t-indexes-anchor
       index="{{1}}"

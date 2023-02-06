@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 colors | Array | [] | Typescript：`Array<string>` | N
-custom-style | String | - | `0.25.0` | N
 disabled | Boolean | false | \- | N
 disabled-color | Array | [] | Typescript：`Array<string>` | N
 external-classes | Array | - | `['t-class', 't-class-bar', 't-class-bar-active', 't-class-bar-disabled', 't-class-cursor']` | N

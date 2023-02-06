@@ -1,8 +1,3 @@
-.box {
-  margin: 32rpx;
-}
-
-.external-class {
-  margin: 0 0 32rpx 0;
-  height: 96rpx;
+.wrapper {
+  margin-bottom: 32rpx;
 }

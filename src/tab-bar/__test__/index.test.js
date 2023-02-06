@@ -4,6 +4,24 @@ import path from 'path';
 describe('tab-bar', () => {
   const id = load(path.resolve(__dirname, `./index`), 't-tab-bar');
 
+  it(`: style && customStyle`, async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $tabBar = comp.querySelector('#base >>> .t-tab-bar');
+    const $tabBarItem = comp.querySelector('#base >>> .t-tab-bar-item');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($tabBar.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      expect(
+        $tabBarItem.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+      ).toBeTruthy();
+    } else {
+      expect($tabBar.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      expect($tabBarItem.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':base', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));

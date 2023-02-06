@@ -1,8 +1,8 @@
-t-search {
-  background: #fff;
-  display: block;
+.example-search {
+  background-color: #fff;
+  padding: 16rpx 32rpx;
 }
 
-t-search + t-search {
-  margin-top: 32rpx;
+.space {
+  height: 32rpx;
 }

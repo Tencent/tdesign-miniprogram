@@ -39,11 +39,6 @@ const props: TdCheckboxProps = {
   contentDisabled: {
     type: Boolean,
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 是否禁用组件 */
   disabled: {
     type: Boolean,
@@ -53,7 +48,7 @@ const props: TdCheckboxProps = {
   externalClasses: {
     type: Array,
   },
-  /** 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 fill-circle 表示填充圆形图标、值为 stroke-line 表示描边型图标、值为 fill-rectangle 表示填充矩形图标 */
+  /** 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标 */
   icon: {
     type: null,
     value: 'circle',

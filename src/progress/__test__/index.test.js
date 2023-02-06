@@ -3,6 +3,29 @@ import path from 'path';
 
 describe('progress', () => {
   const progress = load(path.resolve(__dirname, `../progress`));
+
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-progress class="progress" style="{{style}}" customStyle="{{customStyle}}"></t-progress>`,
+      usingComponents: {
+        't-progress': progress,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $progress = comp.querySelector('.progress >>> .t-progress');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($progress.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($progress.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(`: status `, () => {
     const id = simulate.load({
       template: `

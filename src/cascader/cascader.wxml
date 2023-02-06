@@ -1,5 +1,7 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="hide">
-  <view style="{{ customStyle }}" class="{{name}}">
+  <view style="{{_._style([style, customStyle])}}" class="{{name}}">
     <view class="{{name}}__title">
       <slot name="title" />
       {{title}}
@@ -18,7 +20,7 @@
             <view class="{{name}}__step-label {{name}}__step-label--{{index === stepIndex ? 'active' : ''}}">
               {{ item }}
             </view>
-            <t-icon name="chevron-right" size="22" class="{{name}}__step-arrow" />
+            <t-icon name="chevron-right" size="22" t-class="{{name}}__step-arrow" />
           </view>
         </view>
         <block wx:if="{{theme == 'tab'}}">
@@ -42,18 +44,19 @@
           scroll-y
           scroll-top="{{scrollTopList[index]}}"
         >
-          <t-radio-group
-            class="cascader-radio-group-{{index}}"
-            value="{{selectedValue[index]}}"
-            keys="{{keys}}"
-            options="{{options}}"
-            bind:change="handleSelect"
-            data-level="{{index}}"
-            align="right"
-            icon="line"
-            borderless
-          >
-          </t-radio-group>
+          <view class="cascader-radio-group-{{index}}">
+            <t-radio-group
+              value="{{selectedValue[index]}}"
+              keys="{{keys}}"
+              options="{{options}}"
+              bind:change="handleSelect"
+              data-level="{{index}}"
+              align="right"
+              icon="line"
+              borderless
+            >
+            </t-radio-group>
+          </view>
         </scroll-view>
       </view>
     </view>

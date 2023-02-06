@@ -13,7 +13,7 @@
 
 // large
 @badge-large-font-size: var(--td-badge-large-font-size, @font-size-s);
-@badge-large-height: var(--td-badge-large-height, 36rpx);
+@badge-large-height: var(--td-badge-large-height, 40rpx);
 @badge-large-padding: var(--td-badge-large-padding, 10rpx);
 
 .@{prefix}-badge {
@@ -69,7 +69,7 @@
       width: 0;
       height: 0;
       bottom: 0;
-      left: calc(-1 * @badge-basic-height);
+      left: calc(-1 * @badge-basic-height + 1rpx);
       border-bottom: @badge-basic-height solid @badge-color;
       border-left: @badge-basic-height solid transparent;
     }
@@ -80,7 +80,7 @@
       width: 0;
       height: 0;
       bottom: 0;
-      right: calc(-1 * @badge-basic-height);
+      right: calc(-1 * @badge-basic-height + 1rpx);
       border-bottom: @badge-basic-height solid @badge-color;
       border-right: @badge-basic-height solid transparent;
     }
@@ -94,6 +94,7 @@
   &--large {
     font-size: @badge-large-font-size;
     height: @badge-large-height;
+    min-width: @badge-large-height;
     line-height: @badge-large-height;
     padding: 0 @badge-large-padding;
   }
@@ -107,5 +108,10 @@
     position: absolute;
     right: 0;
     top: 0;
+  }
+
+  &__content-text {
+    display: block;
+    line-height: 48rpx;
   }
 }

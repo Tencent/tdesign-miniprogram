@@ -24,15 +24,36 @@ describe('slider', () => {
       return this;
     },
   };
-  const dotSize = 20;
-  const size = right - left - dotSize;
+  const size = right - left;
   const calc = (pos) => {
-    const ans = Math.ceil(((pos - left - dotSize / 2) / size) * 100);
-    return Math.round(ans);
+    const ans = Math.round(((pos - left) / size) * 100);
+    return ans;
   };
   const mockFn = jest.spyOn(wx, 'createSelectorQuery');
 
   mockFn.mockImplementation(() => createSelectorQuery);
+
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-slider class="slider" style="{{style}}" customStyle="{{customStyle}}"></t-slider>`,
+      usingComponents: {
+        't-slider': slider,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $slider = comp.querySelector('.slider >>> .t-slider');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($slider.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($slider.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
 
   it(':base', async () => {
     const id = simulate.load({
@@ -102,9 +123,6 @@ describe('slider', () => {
         't-slider': slider,
       },
     });
-    // mock function
-    const right = 325;
-    const left = 16;
 
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
@@ -124,8 +142,7 @@ describe('slider', () => {
 
     await simulate.sleep();
 
-    const size = right - left - dotSize;
-    expect($slider.instance.data.value).toStrictEqual([0, Math.ceil(((100 - left - dotSize / 2) / size) * 100)]);
+    expect($slider.instance.data.value).toStrictEqual([0, calc(100)]);
   });
 
   it(':marks', async () => {
@@ -144,6 +161,8 @@ describe('slider', () => {
     });
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
+
+    await simulate.sleep();
 
     const $scaleDescList = comp.querySelectorAll('#base >>> .t-slider__scale-desc');
 

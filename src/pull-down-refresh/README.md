@@ -33,7 +33,6 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 external-classes | Array | - | 加载loading样式。`['t-class', 't-class-loading','t-class-text', 't-class-indicator']` | N
 loading-bar-height | String / Number | 50 | 加载中下拉高度，如果值为数字则单位是：'px' | N
 loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/pull-down-refresh/type.ts) | N

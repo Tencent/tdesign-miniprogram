@@ -1,7 +1,5 @@
 {
-  "component": true,
-  "navigationBarTitleText": "TreeSelect 树形选择",
-  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "TreeSelect",
   "usingComponents": {
     "base": "./base",
     "normal": "./normal",

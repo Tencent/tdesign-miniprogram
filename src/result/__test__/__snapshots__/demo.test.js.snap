@@ -3,7 +3,7 @@
 exports[`Result Result custom demo works fine 1`] = `
 <custom>
   <t-result
-    image="/assets/illustration@2x.png"
+    image="https://tdesign.gtimg.com/miniprogram/images/result-image.png"
     tClassImage="external-class-image"
   >
     <wx-view
@@ -76,7 +76,6 @@ exports[`Result Result theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-result
-        description=""
         theme="success"
         title="成功状态"
       />
@@ -87,7 +86,6 @@ exports[`Result Result theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-result
-        description=""
         theme="error"
         title="失败状态"
       />
@@ -98,7 +96,6 @@ exports[`Result Result theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-result
-        description=""
         theme="warning"
         title="警示状态"
       />
@@ -109,7 +106,6 @@ exports[`Result Result theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-result
-        description=""
         theme="default"
         title="默认状态"
       />

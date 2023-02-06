@@ -1,9 +1,0 @@
-<view style="{{ customStyle }}" class="{{className}} {{prefix}}-class" bind:tap="onClick">
-  <view class="{{classPrefix}}__icon">
-    <t-icon wx:if="{{icon}}" name="{{icon}}" t-class="{{prefix}}-icon" />
-    <slot wx:else name="icon" />
-  </view>
-  <view class="{{classPrefix}}__text">
-    <slot />
-  </view>
-</view>

@@ -6,28 +6,27 @@ exports[`input props : clearable && label && suffix 1`] = `
 >
   <wx-view
     ariaDescribedby="{{true}}"
-    class="t-input t-input--size-medium t-input--layout-horizontal t-class"
+    class="t-input t-input--border t-input--layout-horizontal class t-class"
     style=""
   >
     <wx-view
-      class="t-input__wrap--prefix"
+      class="t-input__icon--prefix"
+    />
+    <wx-view
+      ariaHidden="{{true}}"
+      class="t-input__label"
     >
-      <wx-view
-        ariaHidden="{{true}}"
-        class="t-input__label"
+      <wx-text
+        class="t-class-label"
       >
-        <wx-text
-          class="t-class-label"
-        >
-          tdesign
-        </wx-text>
-      </wx-view>
+        tdesign
+      </wx-text>
     </wx-view>
     <wx-view
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content t-input--default "
+        class="t-input__content t-input--default"
       >
         <wx-input
           adjustPosition="{{true}}"
@@ -77,7 +76,7 @@ exports[`input props : clearable && label && suffix 1`] = `
               ariaHidden="{{false}}"
               ariaLabel="清除"
               ariaRole="button"
-              class="t-icon t-class"
+              class="t-icon class t-class"
               style=""
               bind:tap="onTap"
             >
@@ -108,7 +107,7 @@ exports[`input props : clearable && label && suffix 1`] = `
               ariaHidden="{{false}}"
               ariaLabel=""
               ariaRole="button"
-              class="t-icon t-class"
+              class="t-icon class t-class"
               style=""
               bind:tap="onTap"
             >
@@ -130,40 +129,39 @@ exports[`input slots : label 1`] = `
 >
   <wx-view
     ariaDescribedby="{{true}}"
-    class="t-input t-input--size-medium t-input--layout-horizontal t-class"
+    class="t-input t-input--border t-input--layout-horizontal class t-class"
     style=""
   >
     <wx-view
-      class="t-input__wrap--prefix"
+      class="t-input__icon--prefix"
+    />
+    <wx-view
+      ariaHidden="{{true}}"
+      class="t-input__label"
     >
-      <wx-view
-        ariaHidden="{{true}}"
-        class="t-input__label"
+      <wx-text
+        slot="label"
       >
+        标签文字
         <wx-text
-          slot="label"
+          style="color: #e34d59"
         >
-          标签文字
-          <wx-text
-            style="color: #e34d59"
-          >
-            *
-          </wx-text>
+          *
         </wx-text>
-      </wx-view>
+      </wx-text>
     </wx-view>
     <wx-view
       class="t-input__wrap"
     >
       <wx-view
-        class="t-input__content t-input--default "
+        class="t-input__content t-input--default"
       >
         <wx-input
           adjustPosition="{{true}}"
           alwaysEmbed="{{false}}"
-          ariaLabel="slot"
+          ariaLabel=""
           ariaRole="textbox"
-          ariaRoledescription="slot"
+          ariaRoledescription=""
           autoFocus="{{false}}"
           class="t-input__control t-input__control--left t-class-input"
           confirmHold="{{false}}"
@@ -196,6 +194,10 @@ exports[`input slots : label 1`] = `
         <wx-view
           class="t-input__wrap--suffix t-class-suffix"
           bind:tap="onSuffixClick"
+        />
+        <wx-view
+          class="t-input__wrap--suffix-icon"
+          bind:tap="onSuffixIconClick"
         />
       </wx-view>
     </wx-view>

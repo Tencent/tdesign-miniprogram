@@ -5,6 +5,30 @@ describe('textarea', () => {
   const textarea = load(path.resolve(__dirname, `../textarea`), 't-textarea');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-textarea class="textarea" style="{{style}}" customStyle="{{customStyle}}"></t-textarea>`,
+        usingComponents: {
+          't-textarea': textarea,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $textarea = comp.querySelector('.textarea >>> .t-textarea');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect(
+          $textarea.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+        ).toBeTruthy();
+      } else {
+        expect($textarea.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': label', () => {
       const id = simulate.load({
         template: `<t-textarea

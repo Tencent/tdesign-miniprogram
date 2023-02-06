@@ -345,48 +345,6 @@ exports[`Tabs Tabs theme demo works fine 1`] = `
 </theme>
 `;
 
-exports[`Tabs Tabs vertical demo works fine 1`] = `
-<vertical>
-  <t-tabs
-    defaultValue="{{1}}"
-    placement="left"
-    bind:change="onTabsChange"
-    bind:click="onTabsClick"
-  >
-    <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页一"
-      panel="标签一内容区"
-      value="0"
-    />
-    <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页二"
-      panel="标签二内容区"
-      value="1"
-    />
-    <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页三"
-      panel="标签三内容区"
-      value="2"
-    />
-    <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页四"
-      panel="标签四内容区"
-      value="3"
-    />
-    <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页五"
-      panel="标签五内容区"
-      value="4"
-    />
-  </t-tabs>
-</vertical>
-`;
-
 exports[`Tabs Tabs with-badge demo works fine 1`] = `
 <with-badge>
   <t-tabs
@@ -435,33 +393,57 @@ exports[`Tabs Tabs with-content demo works fine 1`] = `
     bind:click="onTabsClick"
   >
     <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页一"
+      label="选项一"
+      style="display:flex;justify-content:center;align-items:center;min-height: 120px"
       value="0"
     >
-      标签一内容
+      选项一内容
     </t-tab-panel>
     <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页二"
+      label="选项二"
+      style="display:flex;justify-content:center;align-items:center;min-height: 120px"
       value="1"
     >
-      标签二内容
+      选项二内容
     </t-tab-panel>
     <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页三"
+      label="选项三"
+      style="display:flex;justify-content:center;align-items:center;min-height: 120px"
       value="2"
     >
-      标签三内容
+      选项三内容
     </t-tab-panel>
     <t-tab-panel
-      customStyle="display:flex;justify-content:center;align-items:center;min-height: 120px"
-      label="标签页四"
+      label="选项四"
+      style="display:flex;justify-content:center;align-items:center;min-height: 120px"
       value="3"
     >
-      标签四内容
+      选项四内容
     </t-tab-panel>
   </t-tabs>
 </with-content>
+`;
+
+exports[`Tabs Tabs with-icon demo works fine 1`] = `
+<with-icon>
+  <t-tabs
+    defaultValue="{{0}}"
+  >
+    <t-tab-panel
+      icon="app"
+      label="选项"
+      value="{{0}}"
+    />
+    <t-tab-panel
+      icon="app"
+      label="选项"
+      value="{{1}}"
+    />
+    <t-tab-panel
+      icon="app"
+      label="选项"
+      value="{{2}}"
+    />
+  </t-tabs>
+</with-icon>
 `;

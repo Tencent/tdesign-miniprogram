@@ -43,14 +43,13 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 background-color | String / Number | rgba(0, 0, 0, 1) | 遮罩的背景颜色 | N
 images | Array | [] | 图片数组。TS 类型：`Array<string>` | N
 initial-index | Number | 0 | 默认展示第几项 | N
 show-index | Boolean | false | 是否显示页码 | N
-delete-btn | Boolean / String / Object / Slot | false | 是否显示删除操作，前提需要开启页码。值为字符串表示图标名称，值为 `'slot'` 表示使用插槽，值为 `true` 表示使用默认图标 `delete`，值为 `Object` 类型，表示透传至 `icon`，不传表示不显示图标。 | N
+delete-btn | Boolean / String / Object / Slot | false | 是否显示删除操作，前提需要开启页码。值为字符串表示图标名称，值为 `true` 表示使用默认图标 `delete`，值为 `Object` 类型，表示透传至 `icon`，不传表示不显示图标。 | N
  | N
-close-btn | Boolean / String / Object / Slot | false | 是否显示关闭操作，前提需要开启页码。值为字符串表示图标名称，值为 `'slot'` 表示使用插槽，值为 `true` 表示使用默认图标 `close`，值为 `Object` 类型，表示透传至 `icon` ，不传表示不显示图标。 | N
+close-btn | Boolean / String / Object / Slot | false | 是否显示关闭操作，前提需要开启页码。值为字符串表示图标名称，值为 `true` 表示使用默认图标 `close`，值为 `Object` 类型，表示透传至 `icon` ，不传表示不显示图标。 | N
  | N
 visible | Boolean | false | 隐藏/显示预览 | N
 default-visible | Boolean | undefined | 隐藏/显示预览。非受控属性 |

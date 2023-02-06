@@ -14,10 +14,11 @@
 @stepper-large-input-width: 90rpx;
 @stepper-border-width: 2rpx;
 
-@stepper-border-radius: var(--td-stepper-border-radius, 6rpx); // outline/filled 主题下的圆角大小
+@stepper-border-radius: var(--td-stepper-border-radius, @radius-small); // outline/filled 主题下的圆角大小
 @stepper-border-color: var(--td-stepper-border-color, @gray-color-4); // outline/filled 主题下的圆角颜色
-@stepper-input-color: var(--td-stepper-input-color, @text-level-1-color); // 输入框文本/图标颜色
-@stepper-input-disabled-color: var(--td-stepper-input-disabled-color, @gray-color-4); // 禁用态输入框文本/图标颜色
+@stepper-input-color: var(--td-stepper-input-color, @font-gray-1); // 输入框文本/图标颜色
+@stepper-input-disabled-color: var(--td-stepper-input-disabled-color, @font-gray-4); // 禁用态输入框文本/图标颜色
+@stepper-input-disabled-bg: var(--td-stepper-input-disabled-bg, @gray-color-2); // 禁用态输入框文本/图标颜色
 
 @stepper: ~'@{prefix}-stepper';
 
@@ -82,7 +83,6 @@
   }
 
   &__icon--small {
-    // box-sizing: border-box;
     width: @stepper-small-height;
     height: @stepper-small-height;
     font-size: @stepper-small-icon-size;
@@ -95,7 +95,6 @@
   }
 
   &__icon--large {
-    // box-sizing: border-box;
     width: @stepper-large-height;
     height: @stepper-large-height;
     font-size: @stepper-large-icon-size;
@@ -135,7 +134,13 @@
     }
   }
 
-  &--disabled {
+  &--normal-disabled {
     color: @stepper-input-disabled-color;
+  }
+
+  &--filled-disabled,
+  &--outline-disabled {
+    color: @stepper-input-disabled-color;
+    background-color: @stepper-input-disabled-bg;
   }
 }

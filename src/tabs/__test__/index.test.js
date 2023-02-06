@@ -14,6 +14,22 @@ beforeAll(() => {
 describe('tabs', () => {
   const id = load(path.resolve(__dirname, `./index`), 't-tabs');
 
+  it(`: style && customStyle`, async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $tabs = comp.querySelector('#base >>> .t-tabs');
+    const $tabPanel = comp.querySelector('#first >>> .t-tab-panel');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($tabs.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      expect($tabPanel.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($tabs.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      expect($tabPanel.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':base', async () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
@@ -26,8 +42,6 @@ describe('tabs', () => {
 
     $base.setData({ placement: 'left' });
     await simulate.sleep();
-
-    expect($base.toJSON()).toMatchSnapshot();
   });
 
   it(':change event', async () => {

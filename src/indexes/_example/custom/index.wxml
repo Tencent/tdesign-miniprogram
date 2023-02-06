@@ -1,7 +1,7 @@
-<t-indexes bind:select="onSelect" index-list="{{indexList}}" sticky>
+<t-indexes bind:change="onChange" index-list="{{indexList}}" sticky-offset="{{8}}" t-class="wrapper">
   <block wx:for="{{list}}" wx:key="index">
     <t-indexes-anchor index="{{item.index}}">
-      <view class="capsule">{{item.index}}</view>
+      <view class="capsule{{curIndex == item.index ? ' capsule--active' : ''}}">{{item.index}}</view>
     </t-indexes-anchor>
     <t-cell-group>
       <t-cell

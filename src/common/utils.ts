@@ -177,21 +177,6 @@ export const getCharacterLength = (type: string, str: string, max?: number) => {
 export const chunk = (arr: any[], size: number) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 
-export const equal = (v1, v2) => {
-  if (Array.isArray(v1) && Array.isArray(v2)) {
-    if (v1.length !== v2.length) return false;
-    return v1.every((item, index) => equal(item, v2[index]));
-  }
-  return v1 === v2;
-};
-
-export const clone = (val) => {
-  if (Array.isArray(val)) {
-    return val.map((item) => clone(item));
-  }
-  return val;
-};
-
 export const getInstance = function (context?: Context, selector?: string) {
   if (!context) {
     const pages = getCurrentPages();
@@ -241,6 +226,8 @@ export const setIcon = (iconName, icon, defaultIcon) => {
   };
 };
 
+export const isBool = (val) => typeof val === 'boolean';
+
 export const isObject = (val) => typeof val === 'object' && val != null;
 
 export const isString = (val) => typeof val === 'string';
@@ -255,4 +242,14 @@ export const getCurrentPage = function <T>() {
 export const uniqueFactory = (compName) => {
   let number = 0;
   return () => `${prefix}_${compName}_${number++}`;
+};
+
+export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {
+  if ((isBool(icon) && icon && defaultIcon) || isString(icon)) {
+    return { name: isBool(icon) ? defaultIcon : icon };
+  }
+  if (isObject(icon)) {
+    return icon;
+  }
+  return null;
 };

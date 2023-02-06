@@ -11,11 +11,6 @@ const props: TdDrawerProps = {
     type: Boolean,
     value: true,
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 抽屉关闭时是否销毁节点 */
   destroyOnClose: {
     type: Boolean,

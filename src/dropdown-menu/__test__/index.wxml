@@ -1,4 +1,9 @@
-<t-dropdown-menu id="base" closeOnClickOverlay="{{closeOnClickOverlay}}">
+<t-dropdown-menu
+  id="base"
+  style="{{style}}"
+  customStyle="{{customStyle}}"
+  closeOnClickOverlay="{{closeOnClickOverlay}}"
+>
   <t-dropdown-item
     id="first"
     label="菜单"

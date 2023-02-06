@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { SwiperNavProps } from '../swiper-nav/index';
+
 export interface TdSwiperProps {
   /**
    * 是否自动播放
@@ -22,18 +24,10 @@ export interface TdSwiperProps {
     value?: number;
   };
   /**
-   * 当前轮播在哪一项（下标），非受控属性
-   * @default 0
-   */
-  defaultCurrent?: {
-    type: NumberConstructor;
-    value?: number;
-  };
-  /**
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -71,11 +65,18 @@ export interface TdSwiperProps {
   };
   /**
    * 轮播的高度；默认单位 `px`
-   * @default '192px'
+   * @default 192
    */
   height?: {
     type: null;
     value?: string | number;
+  };
+  /**
+   * 透传至 Image 组件
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 轮播间隔时间
@@ -101,11 +102,12 @@ export interface TdSwiperProps {
     value?: boolean;
   };
   /**
-   * 导航器全部配置
+   * 导航器全部配置，true 的话使用默认配置
+   * @default true
    */
   navigation?: {
-    type: ObjectConstructor;
-    value?: SwiperNavigation;
+    type: null;
+    value?: SwiperNavProps | boolean;
   };
   /**
    * 后边距，可用于露出后一项的一小部分。默认单位 `px`
@@ -140,26 +142,3 @@ export interface TdSwiperProps {
     value?: boolean;
   };
 }
-
-export interface SwiperNavigation {
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  customStyle?: string;
-  /**
-   * 小于这个数字不会显示导航器
-   */
-  minShowNum?: number;
-  /**
-   * 表示是否显示两侧的滑动控制按钮
-   */
-  showSlideBtn?: boolean;
-  /**
-   * 导航器类型，点状(dots)、点条状(dots-bar)、分式(fraction)等
-   * @default ''
-   */
-  type?: SwiperNavigationType;
-}
-
-export type SwiperNavigationType = 'dots' | 'dots-bar' | 'fraction';

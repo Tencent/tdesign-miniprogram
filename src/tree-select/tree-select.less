@@ -5,20 +5,28 @@
 @tree-item-active-color: var(--td-tree-item-active-color, @primary-color);
 @tree-item-height: var(--td-tree-item-height, 112rpx);
 @tree-item-font-size: var(--td-tree-item-font-size, 32rpx);
+@tree-colum-width: var(--td-tree-colum-width, 206rpx);
 
 .@{prefix}-tree-select {
   display: flex;
   background-color: @tree-bg-color;
 
   &__column {
-    flex: 1;
+    width: @tree-colum-width;
 
     &--left {
       background: @tree-root-bg-color;
     }
 
     &--right {
-      flex: 2;
+      flex: 1;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+      color: transparent;
     }
   }
 

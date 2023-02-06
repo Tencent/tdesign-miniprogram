@@ -2,17 +2,17 @@ Component({
   data: {
     originFiles: [
       {
-        url: 'https://tdesign.gtimg.com/site/upload1.png',
+        url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
         name: 'uploaded1.png',
         type: 'image',
       },
       {
-        url: 'https://tdesign.gtimg.com/site/upload1.png',
+        url: 'https://tdesign.gtimg.com/miniprogram/images/example6.png',
         name: 'uploaded2.png',
         type: 'image',
       },
       {
-        url: 'https://tdesign.gtimg.com/site/upload1.png',
+        url: 'https://tdesign.gtimg.com/miniprogram/images/example5.png',
         name: 'uploaded1.png',
         type: 'image',
       },

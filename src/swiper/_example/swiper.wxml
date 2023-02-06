@@ -1,33 +1,30 @@
 <view class="demo swiper-demo">
-  <view class="demo-title">Swiper 轮播</view>
+  <view class="demo-title">Swiper 轮播图</view>
   <view class="demo-desc"> 用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置。 </view>
   <view class="demo-section">
-    <t-demo title="01 组件类型" />
-    <view class="swiper-box">
-      <view class="swiper-desc">点状（dots）</view>
+    <t-demo title="01 组件类型" desc="点状（dots）" padding>
       <!-- 受控属性示例 -->
       <base />
-    </view>
+    </t-demo>
 
-    <view class="swiper-box">
-      <view class="swiper-desc">点条状（dots-bar）</view>
+    <t-demo desc="点条状（dots-bar）" padding>
       <custom />
-    </view>
+    </t-demo>
 
-    <view class="swiper-box swiper-box2">
-      <view class="swiper-desc">分式（fraction）</view>
+    <t-demo desc="分式（fraction）" padding>
       <fraction />
-    </view>
+    </t-demo>
 
-    <view class="swiper-box">
-      <view class="swiper-desc">切换按钮（controls）</view>
+    <t-demo desc="切换按钮（controls）" padding>
       <nav-btn />
-    </view>
+    </t-demo>
 
-    <view class="demo-desc swiper-desc">卡片式（cards）</view>
-    <cards />
+    <t-demo desc="切换按钮（controls）">
+      <cards />
+    </t-demo>
 
-    <t-demo title="02 组件样式" desc="垂直模式" />
-    <vertical />
+    <t-demo title="02 组件样式" desc="垂直模式">
+      <vertical />
+    </t-demo>
   </view>
 </view>

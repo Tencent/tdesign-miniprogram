@@ -2,6 +2,6 @@
   "component": true,
   "usingComponents": {
     "t-swiper": "../../swiper",
-    "t-swiper-nav": "../../swiper-nav"
+    "t-swiper-nav": "../../../swiper-nav/swiper-nav"
   }
 }

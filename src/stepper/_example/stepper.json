@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Stepper 步进器",
+  "navigationBarTitleText": "Stepper",
   "usingComponents": {
     "base": "./base",
     "min-max": "./min-max",

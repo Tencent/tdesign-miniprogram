@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Radio 单选框",
+  "navigationBarTitleText": "Radio",
   "usingComponents": {
     "horizontal": "./horizontal",
     "base": "./base",

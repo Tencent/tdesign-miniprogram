@@ -1,4 +1,7 @@
-.external-class {
-  margin: 32rpx;
-  display: block;
+.demo-desc {
+  margin: 0 0 32rpx;
+}
+
+.wrapper {
+  margin-bottom: 32rpx;
 }

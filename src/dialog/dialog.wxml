@@ -5,8 +5,8 @@
 
 <t-popup
   name="dialog"
-  custom-style="{{ customStyle }}"
-  class="{{classPrefix}}__wrapper"
+  style="{{_._style([style, customStyle])}}"
+  t-class="{{classPrefix}}__wrapper"
   visible="{{visible}}"
   showOverlay="{{showOverlay}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"

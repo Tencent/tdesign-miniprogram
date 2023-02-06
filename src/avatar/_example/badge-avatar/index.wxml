@@ -1,11 +1,8 @@
-<view class="demo-avatar">
-  <view class="avatar-example">
-    <t-avatar image="{{image}}" badge-props="{{ {dot: true} }}" />
-  </view>
-  <view class="avatar-example">
-    <t-avatar badge-props="{{ {count: 8} }}" t-class-content="external-class-content">A</t-avatar>
-  </view>
-  <view class="avatar-example">
-    <t-avatar icon="user" badge-props="{{ {count: 12} }}" />
-  </view>
-</view>
+<t-avatar class="avatar-example" image="{{image}}" badge-props="{{ {dot: true, offset: [4, 4] } }}" />
+<t-avatar
+  class="avatar-example"
+  t-class-content="external-class-content"
+  badge-props="{{ {count: 8, offset: [6, 6] } }}"
+  >A</t-avatar
+>
+<t-avatar class="avatar-example" icon="user" badge-props="{{ {count: 12,  offset: [6, 6] } }}" />

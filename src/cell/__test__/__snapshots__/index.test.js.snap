@@ -6,6 +6,7 @@ exports[`cell :base 1`] = `
     id="cell"
   >
     <wx-view
+      ariaLabel=""
       ariaRole=""
       class="t-class t-cell   t-cell--middle"
       hoverClass="t-cell--hover-class"
@@ -33,13 +34,13 @@ exports[`cell :base 1`] = `
         class="t-cell__right t-class-right"
       >
         <t-icon
-          class="t-cell__right-icon t-class-right-icon"
+          tClass="t-cell__right-icon t-class-right-icon"
         >
           <wx-view
             ariaHidden="{{false}}"
             ariaLabel=""
             ariaRole=""
-            class="t-icon t-class"
+            class="t-icon class t-class"
             style=""
             bind:tap="onTap"
           >
