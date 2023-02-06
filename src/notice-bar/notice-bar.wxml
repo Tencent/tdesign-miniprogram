@@ -9,7 +9,7 @@
   aria-label="{{ariaLabel}}"
 >
   <!-- prefixIcon -->
-  <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon" tabIndex="-1">
+  <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon">
     <slot name="prefix-icon" />
     <template
       wx:if="{{_prefixIcon}}"
