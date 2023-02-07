@@ -11,7 +11,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
     >
       <t-side-bar-item
         badgeProps="{{Object {}}}"
-        label="选项选项选项选项"
+        label="选项一"
         value="{{0}}"
       />
       <t-side-bar-item
@@ -20,12 +20,12 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             "dot": true,
           }
         }}"
-        label="选项"
+        label="选项二"
         value="{{1}}"
       />
       <t-side-bar-item
         badgeProps="{{Object {}}}"
-        label="选项"
+        label="选项三"
         value="{{2}}"
       />
       <t-side-bar-item
@@ -34,12 +34,12 @@ exports[`SideBar SideBar base demo works fine 1`] = `
             "count": 6,
           }
         }}"
-        label="选项"
+        label="选项四"
         value="{{3}}"
       />
       <t-side-bar-item
         badgeProps="{{Object {}}}"
-        label="选项"
+        label="选项五"
         value="{{4}}"
       />
     </t-side-bar>
@@ -56,7 +56,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题一
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -190,7 +190,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题二
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -294,7 +294,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题三
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -398,7 +398,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题四
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -472,7 +472,7 @@ exports[`SideBar SideBar base demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题五
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -526,7 +526,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
     >
       <t-side-bar-item
         badgeProps="{{Object {}}}"
-        label="选项选项"
+        label="选项一"
         value="{{0}}"
       />
       <t-side-bar-item
@@ -535,12 +535,12 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
             "dot": true,
           }
         }}"
-        label="选项"
+        label="选项二"
         value="{{1}}"
       />
       <t-side-bar-item
         badgeProps="{{Object {}}}"
-        label="选项"
+        label="选项三"
         value="{{2}}"
       />
       <t-side-bar-item
@@ -549,12 +549,12 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
             "count": 6,
           }
         }}"
-        label="选项"
+        label="选项四"
         value="{{3}}"
       />
       <t-side-bar-item
         badgeProps="{{Object {}}}"
-        label="选项"
+        label="选项五"
         value="{{4}}"
       />
     </t-side-bar>
@@ -571,7 +571,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题一
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -705,7 +705,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题二
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -809,7 +809,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题三
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -913,7 +913,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题四
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -987,7 +987,7 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题五
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -1042,7 +1042,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
       <t-side-bar-item
         badgeProps="{{Object {}}}"
         disabled=""
-        label="选项"
+        label="选项一"
         value="{{0}}"
       />
       <t-side-bar-item
@@ -1052,13 +1052,13 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
           }
         }}"
         disabled=""
-        label="选项"
+        label="选项二"
         value="{{1}}"
       />
       <t-side-bar-item
         badgeProps="{{Object {}}}"
         disabled=""
-        label="选项"
+        label="选项三"
         value="{{2}}"
       />
       <t-side-bar-item
@@ -1068,13 +1068,13 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
           }
         }}"
         disabled=""
-        label="选项"
+        label="选项四"
         value="{{3}}"
       />
       <t-side-bar-item
         badgeProps="{{Object {}}}"
         disabled="{{true}}"
-        label="选项"
+        label="选项五"
         value="{{4}}"
       />
     </t-side-bar>
@@ -1091,7 +1091,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题一
         </wx-view>
         <t-cell-group>
           <t-cell
@@ -1237,7 +1237,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题二
         </wx-view>
         <t-cell-group>
           <t-cell
@@ -1361,7 +1361,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题三
         </wx-view>
         <t-cell-group>
           <t-cell
@@ -1441,7 +1441,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题四
         </wx-view>
         <t-cell-group>
           <t-cell
@@ -1543,7 +1543,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题五
         </wx-view>
         <t-cell-group />
       </wx-scroll-view>
@@ -1564,7 +1564,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
       <t-side-bar-item
         badgeProps="{{Object {}}}"
         icon="app"
-        label="选项"
+        label="选项一"
         value="{{0}}"
       />
       <t-side-bar-item
@@ -1574,13 +1574,13 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
           }
         }}"
         icon="app"
-        label="选项"
+        label="选项二"
         value="{{1}}"
       />
       <t-side-bar-item
         badgeProps="{{Object {}}}"
         icon="app"
-        label="选项"
+        label="选项三"
         value="{{2}}"
       />
       <t-side-bar-item
@@ -1590,13 +1590,13 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
           }
         }}"
         icon="app"
-        label="选项"
+        label="选项四"
         value="{{3}}"
       />
       <t-side-bar-item
         badgeProps="{{Object {}}}"
         icon="app"
-        label="选项"
+        label="选项五"
         value="{{4}}"
       />
     </t-side-bar>
@@ -1613,7 +1613,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题一
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -1747,7 +1747,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题二
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -1851,7 +1851,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题三
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -1955,7 +1955,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题四
         </wx-view>
         <t-grid
           border="{{false}}"
@@ -2029,7 +2029,7 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
         <wx-view
           class="title"
         >
-          标题
+          标题五
         </wx-view>
         <t-grid
           border="{{false}}"
