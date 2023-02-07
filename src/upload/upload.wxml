@@ -16,7 +16,7 @@
           class="{{classPrefix}}__wrapper"
           style="{{gridItemStyle}}"
           aria-role="{{file.status && file.status != 'done' ? 'text' : 'button'}}"
-          aria-label="{{file.status && file.status != 'done' ? file.status == 'loading' ? file.percent ? '上传中' + file.percent + '%' : '上传中' : file.status == 'reload' ? '重新上传' : '上传失败' : file.type === 'video' ? '视频' : '图像' }}"
+          aria-label="{{(file.status && file.status != 'done') ? (file.status == 'loading' ? (file.percent ? '上传中' + file.percent + '%' : '上传中') : (file.status == 'reload' ? '重新上传' : '上传失败')) : (file.type === 'video' ? '视频' : '图像') }}"
         >
           <t-image
             wx:if="{{file.type !== 'video'}}"
@@ -78,7 +78,7 @@
       t-class="{{classPrefix}}__grid"
       t-class-content="{{classPrefix}}__grid-content"
       bindclick="onAddTap"
-      aria-label="上传文件"
+      aria-label="上传"
     >
       <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
         <slot name="add-content" />
