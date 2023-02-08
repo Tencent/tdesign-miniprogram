@@ -68,9 +68,17 @@
     padding-right: @navbar-right;
     padding-top: @navbar-padding-top;
     color: @navbar-color;
-    background-color: @navbar-bg-color;
     display: flex;
     align-items: center;
+  }
+
+  &__bg {
+    background-color: @navbar-bg-color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
 
   &__left {

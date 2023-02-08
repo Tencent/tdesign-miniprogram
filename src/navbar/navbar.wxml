@@ -5,16 +5,24 @@
 >
   <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder" />
   <view class="{{classPrefix}}__content">
+    <view class="{{classPrefix}}__bg" style="{{gradientStyle}}" />
     <view class="{{classPrefix}}__left {{prefix}}-class-left">
-      <view wx:if="{{leftArrow}}" class="{{classPrefix}}__btn" bind:tap="goBack" aria-role="button" aria-label="返回">
+      <view
+        wx:if="{{leftArrow}}"
+        class="{{classPrefix}}__btn"
+        style="{{!holdLeft?gradientStyle:''}}"
+        bind:tap="goBack"
+        aria-role="button"
+        aria-label="返回"
+      >
         <t-icon name="chevron-left" class="{{classPrefix}}__left-arrow" />
       </view>
-      <slot name="left" />
+      <slot name="left" style="{{!holdLeft?gradientStyle:''}}" />
       <view class="{{classPrefix}}__capsule">
         <slot name="capsule" />
       </view>
     </view>
-    <view class="{{classPrefix}}__center t-class-center">
+    <view class="{{classPrefix}}__center t-class-center" style="{{!holdTitle?gradientStyle:''}}">
       <slot name="title" />
       <text wx:if="{{title}}" class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
     </view>

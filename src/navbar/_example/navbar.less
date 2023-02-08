@@ -1,16 +1,23 @@
-.t-navbar--fixed .t-navbar__content {
-  position: relative !important;
-  padding-top: 0;
+.gradient-navbar {
+  .t-navbar--fixed .t-navbar__content {
+    z-index: 9999;
+  }
 }
+.demo {
+  .t-navbar--fixed .t-navbar__content {
+    position: relative !important;
+    padding-top: 0;
+  }
 
-.t-navbar__placeholder {
-  display: none !important;
-}
+  .t-navbar__placeholder {
+    display: none !important;
+  }
 
-.block {
-  display: block;
-}
+  .block {
+    display: block;
+  }
 
-.block + .block {
-  margin-top: 48rpx;
+  .block + .block {
+    margin-top: 48rpx;
+  }
 }

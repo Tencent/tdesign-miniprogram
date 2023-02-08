@@ -1,6 +1,8 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { getRect } from '../common/utils';
+import pageScrollMixin from '../mixins/page-scroll';
 
 const { prefix } = config;
 const name = `${prefix}-navbar`;
@@ -20,12 +22,37 @@ export default class Navbar extends SuperComponent {
 
   timer = null;
 
+  navbarHeight = 0;
+
   options = {
     addGlobalClass: true,
     multipleSlots: true,
   };
 
-  properties = props;
+  properties = {
+    ...props,
+    // 是否开启渐变效果
+    gradient: {
+      type: Boolean,
+      value: false,
+    },
+    // 开启渐变后是否一直显示左侧内容
+    holdLeft: {
+      type: Boolean,
+      value: true,
+    },
+    // 开启渐变后是否一直显示标题
+    holdTitle: {
+      type: Boolean,
+      value: false,
+    },
+  };
+
+  behaviors = [
+    pageScrollMixin(function (event) {
+      this.onScroll(event);
+    }),
+  ];
 
   observers = {
     visible(this: Navbar, visible) {
@@ -61,6 +88,7 @@ export default class Navbar extends SuperComponent {
     classPrefix: name,
     boxStyle: '',
     showTitle: '',
+    gradientStyle: '',
   };
 
   attached() {
@@ -89,6 +117,13 @@ export default class Navbar extends SuperComponent {
         console.error('navbar 获取系统信息失败', err);
       },
     });
+
+    getRect(this, `.${this.data.prefix}-class`).then((rect) => {
+      this.navbarHeight = rect.height;
+    });
+    if (this.properties.gradient) {
+      this.setData({ gradientStyle: 'opacity: 0;' });
+    }
   }
 
   methods = {
@@ -110,6 +145,24 @@ export default class Navbar extends SuperComponent {
             that.triggerEvent('success', e);
           },
         });
+      }
+    },
+    onScroll({ scrollTop }) {
+      const { gradient } = this.data;
+      if (gradient) {
+        const threshold = this.navbarHeight || 68;
+        let opacity = 0;
+        if (scrollTop > threshold) {
+          opacity = 1;
+        } else if (scrollTop <= 0) {
+          opacity = 0;
+        } else {
+          opacity = parseFloat((scrollTop / threshold).toFixed(2));
+        }
+        const gradientStyle = `opacity: ${opacity};`;
+        if (gradientStyle !== this.data.gradientStyle) {
+          this.setData({ gradientStyle });
+        }
       }
     },
   };
