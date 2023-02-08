@@ -5,7 +5,7 @@
   wx:if="{{visible}}"
   style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} {{classPrefix}}--{{theme}} class {{prefix}}-class"
-  aria-role="{{ariaRole || ''}}"
+  aria-role="ariaRole || (extra || _suffixIcon ? 'button': '')"
   aria-label="{{ariaLabel}}"
 >
   <!-- prefixIcon -->
@@ -57,7 +57,7 @@
     <template
       wx:if="{{_suffixIcon}}"
       is="icon"
-      data="{{tClass: prefix + '-class-suffix-icon', ..._suffixIcon }}"
+      data="{{tClass: prefix + '-class-suffix-icon', ariaRole: 'button', ..._suffixIcon }}"
     ></template>
   </view>
 </view>
