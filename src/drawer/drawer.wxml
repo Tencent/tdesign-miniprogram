@@ -22,7 +22,7 @@
         data-item="{{item}}"
         data-index="{{index}}"
         bindtap="itemClick"
-        aria-role="button"
+        aria-role="{{ ariaRole || 'button' }}"
         aria-label="{{item.title}}"
       >
         <view aria-hidden="{{true}}" wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
