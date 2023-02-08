@@ -20,7 +20,7 @@
     class="{{this.getBadgeInnerClass({dot, size, shape, count})}} {{prefix}}-has-count {{prefix}}-class-count"
     style="{{this.getBadgeStyles({color, offset})}}"
     aria-hidden="true"
-    aria-label="{{ ariaLabel || this.getBadgeAriaLabel({dot, count, maxCount}) }}"
+    aria-label="{{ ariaLabel || _.getBadgeAriaLabel({dot, count, maxCount}) }}"
     >{{ this.getBadgeValue({dot, count, maxCount}) }}
   </view>
   <slot name="count" />
