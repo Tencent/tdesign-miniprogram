@@ -57,7 +57,7 @@
     <template
       wx:if="{{_suffixIcon}}"
       is="icon"
-      data="{{tClass: prefix + '-class-suffix-icon', ariaRole: 'button', ..._suffixIcon }}"
+      data="{{tClass: prefix + '-class-suffix-icon', ..._suffixIcon }}"
     ></template>
   </view>
 </view>
