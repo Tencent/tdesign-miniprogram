@@ -86,7 +86,7 @@ export default class Upload extends SuperComponent {
       // 开始调用上传函数
       const task = this.data.requestMethod(files);
       if (task instanceof Promise) {
-        return task;
+        return task.then(files => resolve(files));
       }
       resolve({});
     });
