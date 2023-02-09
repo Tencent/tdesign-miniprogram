@@ -33,4 +33,5 @@ module.exports = {
   },
   globalSetup: '<rootDir>/script/test/globalSetup.js',
   snapshotSerializers: ['miniprogram-simulate/jest-snapshot-plugin'],
+  snapshotResolver: '<rootDir>/script/test/snapshotResolver.js',
 };
