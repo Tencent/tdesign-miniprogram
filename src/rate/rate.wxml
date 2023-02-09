@@ -9,21 +9,38 @@
     catch:tap="{{ !disabled ? 'onTap' : '' }}"
     catch:touchend="{{ !disabled ? 'onTouchEnd' : ''}}"
     catch:touchcancel="{{ !disabled ? 'onTouchEnd' : ''}}"
+    aria-role="slider"
+    aria-valuemax="{{count}}"
+    aria-valuemin="{{0}}"
+    aria-valuenow="{{value}}"
+    aria-valuetext="{{utils.getText(texts,value,defaultTexts)}}"
   >
-    <t-icon
+    <view
       wx:for="{{ count }}"
       wx:key="*this"
       class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
-      t-class="{{prefix}}-class-icon"
-      name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
-      size="{{ size }}"
       style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
-    />
+      aria-role="radio"
+      aria-label="{{defaultTexts[index]}}"
+      aria-checked="{{value > index}}"
+      focus="{{index+1 == value && !tipsVisible}}"
+      tabindex="-1"
+    >
+      <t-icon
+        t-class="{{prefix}}-class-icon"
+        name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
+        size="{{ size }}"
+      />
+    </view>
   </view>
-  <text wx:if="{{showText}}" class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
-    >{{utils.getText(texts,value,defaultTexts)}}</text
+  <text
+    wx:if="{{showText||isChange}}"
+    class="{{_.cls(classPrefix + '__text', [['active', value > 0], ['sr-only', !showText]])}} {{prefix}}-class-text"
+    aria-role="alert"
+    aria-live="assertive"
+    >{{utils.getText(texts,value,defaultTexts)}} {{allowHalf?value+'星':''}}</text
   >
-  <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px">
+  <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px" aria-hidden="true">
     <block wx:if="{{actionType == 'tap'}}">
       <view
         wx:if="{{allowHalf}}"
