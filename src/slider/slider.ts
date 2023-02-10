@@ -91,16 +91,14 @@ export default class Slider extends SuperComponent {
         this.setSingleBarWidth(newValue as number);
       }
 
-      if (!label) {
+      this.setData({
+        isChange: true,
+      });
+      setTimeout(() => {
         this.setData({
-          isChange: true,
+          isChange: false,
         });
-        setTimeout(() => {
-          this.setData({
-            isChange: false,
-          });
-        }, 2e3);
-      }
+      }, 2e3);
     },
     marks(val) {
       if (this.data.initialLeft != null) {
