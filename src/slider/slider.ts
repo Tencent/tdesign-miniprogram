@@ -79,7 +79,7 @@ export default class Slider extends SuperComponent {
       this.handlePropsChange(newValue);
     },
     _value(newValue: SliderValue) {
-      const { min, max, range, label } = this.properties;
+      const { min, max, range } = this.properties;
       const { maxRange } = this.data;
 
       if (range) {
