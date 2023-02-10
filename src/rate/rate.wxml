@@ -18,8 +18,6 @@
     <view
       wx:for="{{ count }}"
       wx:key="*this"
-      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
-      style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
       aria-role="radio"
       aria-label="{{defaultTexts[index]}}"
       aria-checked="{{value > index}}"
@@ -27,6 +25,8 @@
       tabindex="-1"
     >
       <t-icon
+        class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
+        style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
         t-class="{{prefix}}-class-icon"
         name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
         size="{{ size }}"
