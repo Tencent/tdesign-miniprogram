@@ -38,7 +38,7 @@
     class="{{_.cls(classPrefix + '__text', [['active', value > 0], ['sr-only', !showText]])}} {{prefix}}-class-text"
     aria-role="alert"
     aria-live="assertive"
-    >{{utils.getText(texts,value,defaultTexts)}} {{allowHalf?value+'星':''}}</text
+    >{{utils.getText(texts,value,defaultTexts)}}{{allowHalf?value+'星':''}}</text
   >
   <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px" aria-hidden="true">
     <block wx:if="{{actionType == 'tap'}}">
