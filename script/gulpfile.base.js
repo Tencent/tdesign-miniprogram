@@ -43,7 +43,7 @@ module.exports = (src, dist, moduleName) => {
   });
 
   // options
-  const ignore = ['**/__test__', '**/__test__/**', '**/_example/**'];
+  const ignore = ['**/__test__', '**/__test__/**', '**/_example/**', '**/_common/**'];
   const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
