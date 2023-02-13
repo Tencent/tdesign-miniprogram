@@ -26,7 +26,6 @@ exports[`NoticeBar NoticeBar custom demo works fine 1`] = `
 exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
 <customization>
   <t-notice-bar
-    suffixIcon="slot"
     visible="{{true}}"
   >
     <wx-view
@@ -100,7 +99,7 @@ exports[`NoticeBar NoticeBar iconDemo demo works fine 1`] = `
     visible="{{true}}"
   >
     <wx-view
-      slot="prefixIcon"
+      slot="prefix-icon"
     >
       <t-icon
         name="error-circle-filled"
