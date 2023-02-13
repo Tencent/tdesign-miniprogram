@@ -5,10 +5,6 @@ import Props from './props';
 const { prefix } = config;
 const name = `${prefix}-radio`;
 
-const iconDefault = {
-  'fill-circle': ['check-circle-filled', 'circle'],
-  'stroke-line': ['check', ''],
-};
 @wxComponent()
 export default class Radio extends SuperComponent {
   externalClasses = [
@@ -98,7 +94,7 @@ export default class Radio extends SuperComponent {
       this.setData({
         customIcon: isIdArr,
         slotIcon: icon === 'slot',
-        iconVal: !isIdArr ? iconDefault[icon] : this.data.icon,
+        iconVal: isIdArr ? this.parent?.icon || icon : [],
       });
     },
 
