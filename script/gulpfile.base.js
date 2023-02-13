@@ -48,14 +48,15 @@ module.exports = (src, dist, moduleName) => {
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
   // 文件匹配路径
+  const gulpIgnore = [`!${src}/_common/**`];
   const globs = {
-    ts: `${src}/**/*.ts`, // 匹配 ts 文件
+    ts: [`${src}/**/*.ts`, ...gulpIgnore], // 匹配 ts 文件 （暂时排除 _common 文件夹）
     js: `${src}/**/*.js`, // 匹配 js 文件
     wxs: `${src}/**/*.wxs`, // 匹配 wxs 文件
     json: [`${src}/**/*.json`], // 匹配 json 文件
-    less: `${src}/**/*.less`, // 匹配 less 文件
+    less: [`${src}/**/*.less`, ...gulpIgnore], // 匹配 less 文件
     wxss: `${src}/**/*.wxss`, // 匹配 wxss 文件
-    md: `${src}/**/*.md`, // 匹配 md 文件
+    md: [`${src}/**/*.md`, ...gulpIgnore], // 匹配 md 文件
   };
   // 匹配需要拷贝的文件
   globs.copy = [
