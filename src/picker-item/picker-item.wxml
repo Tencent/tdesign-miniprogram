@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
-<view
+<scroll-view
   id="{{classPrefix}}__group"
   style="{{ style }}"
   class="{{_.cls(classPrefix + '__group', [])}} class {{prefix}}-class"
