@@ -344,4 +344,6 @@ export default class Slider extends SuperComponent {
       });
     }
   }
+
+  onTouchEnd() {}
 }
