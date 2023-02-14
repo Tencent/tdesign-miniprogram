@@ -4,6 +4,29 @@ import path from 'path';
 describe('calendar', () => {
   const calendar = load(path.resolve(__dirname, `../calendar`), 't-calendar');
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-calendar class="calendar" style="{{style}}" customStyle="{{customStyle}}"></t-calendar>`,
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+
+      usingComponents: {
+        't-calendar': calendar,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $calendar = comp.querySelector('.calendar >>> .t-calendar');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($calendar.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($calendar.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':base', () => {
     const id = simulate.load({
       template: `<t-calendar value="{{value}}" minDate="{{minDate}}" maxDate="{{maxDate}}" visible></t-calendar>`,
@@ -42,7 +65,6 @@ describe('calendar', () => {
 
     const $calendar = comp.querySelector('#base');
     const [$disbledItem, , $activeItem] = $calendar.querySelectorAll('.t-calendar__dates-item');
-    const $confirmBtn = $calendar.querySelector('.t-calendar__confirm-btn');
 
     expect($calendar.instance.data.value).toBe(date.getTime());
 
@@ -56,11 +78,14 @@ describe('calendar', () => {
 
     expect($calendar.instance.data.value).toBe(date.getTime()); // 点击时不修改 value 值
 
-    $confirmBtn.dispatchEvent('tap');
-    await simulate.sleep();
+    if (!VIRTUAL_HOST) {
+      const $confirmBtn = $calendar.querySelector('.t-calendar__confirm-btn');
+      $confirmBtn.dispatchEvent('tap');
+      await simulate.sleep();
 
-    expect(onConfirm).toHaveBeenCalled();
-    expect($calendar.instance.data.value).toBe(date.getTime() + 24 * 3600 * 1000);
+      expect(onConfirm).toHaveBeenCalled();
+      expect($calendar.instance.data.value).toBe(date.getTime() + 24 * 3600 * 1000);
+    }
   });
 
   it(':without-button', async () => {
@@ -103,12 +128,14 @@ describe('calendar', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     const $calendar = comp.querySelector('#base');
-    const $closeBtn = $calendar.querySelector('.t-calendar__close-btn');
+    if (!VIRTUAL_HOST) {
+      const $closeBtn = $calendar.querySelector('.t-calendar__close-btn');
 
-    $closeBtn.dispatchEvent('tap');
-    await simulate.sleep();
+      $closeBtn.dispatchEvent('tap');
+      await simulate.sleep();
 
-    expect($calendar.instance.visible).toBeFalsy();
+      expect($calendar.instance.visible).toBeFalsy();
+    }
   });
 
   it(':custom button', async () => {
@@ -125,11 +152,14 @@ describe('calendar', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     const $calendar = comp.querySelector('#base');
-    const $confirmBtn = $calendar.querySelector('.t-calendar__confirm-btn');
 
-    $confirmBtn.dispatchEvent('tap');
-    await simulate.sleep();
+    if (!VIRTUAL_HOST) {
+      const $confirmBtn = $calendar.querySelector('.t-calendar__confirm-btn');
 
-    expect($confirmBtn.dom.textContent).toBe('ok');
+      $confirmBtn.dispatchEvent('tap');
+      await simulate.sleep();
+
+      expect($confirmBtn.dom.textContent).toBe('ok');
+    }
   });
 });

@@ -75,6 +75,28 @@ describe('upload', () => {
   const icon = load(path.resolve(__dirname, `../../icon/icon`), 't-icon');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-upload class="upload" style="{{style}}" customStyle="{{customStyle}}"></t-upload>`,
+        usingComponents: {
+          't-upload': upload,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $upload = comp.querySelector('.upload >>> .t-upload');
+      // expect(comp.toJSON()).toMatchSnapshot();;
+      if (VIRTUAL_HOST) {
+        expect($upload.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($upload.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': add-content', () => {
       const id = simulate.load({
         template: `<t-upload id="t-upload"></t-upload>`,
@@ -97,7 +119,9 @@ describe('upload', () => {
         },
       });
       const iconComp = simulate.render(iconId);
-      expect($addIcon.dom.innerHTML).toContain(iconComp.dom.innerHTML);
+      if (!VIRTUAL_HOST) {
+        expect($addIcon.dom.innerHTML).toContain(iconComp.dom.innerHTML);
+      }
     });
     it(': grid-config && gutter', () => {
       const id = simulate.load({
@@ -137,7 +161,7 @@ describe('upload', () => {
       );
 
       // gridConfig: column
-      expect($gridItem.dom.getAttribute('style')).toStrictEqual(`width:${100 / comp.data.gridConfig.column}%`);
+      expect($gridItem.dom.getAttribute('style')).toStrictEqual(`width:${100 / comp.data.gridConfig.column}%;`);
     });
     it(': size-limit', async () => {
       let successFiles;

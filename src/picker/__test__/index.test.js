@@ -15,12 +15,29 @@ describe('picker', () => {
     };
   };
 
+  it(': style && customStyle', () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    comp.setData({ cityVisible: true });
+    // const $city = comp.querySelector('#city');
+    // expect($city.toJSON()).toMatchSnapshot();
+    const $picker = comp.querySelector('#city >>> .t-picker');
+    const $pickerItemGroup = comp.querySelector('#city >>> .t-picker-item__group');
+
+    if (VIRTUAL_HOST) {
+      expect($picker.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      expect(
+        $pickerItemGroup.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+      ).toBeTruthy();
+    }
+  });
+
   it(':base', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
 
-    const $city = comp.querySelector('#city');
-    comp.setData({ cityVisible: true });
+    const $city = comp.querySelector('#yearSeasons');
+    comp.setData({ yearSeasonsVisible: true });
 
     expect($city.toJSON()).toMatchSnapshot();
   });

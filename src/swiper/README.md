@@ -62,7 +62,6 @@ isComponent: true
 -- | -- | -- | -- | --
 autoplay | Boolean | true | 是否自动播放 | N
 current | Number | 0 | 当前轮播在哪一项（下标） | N
-custom-style | String | - | `0.25.0`。自定义组件样式 | N
 direction | String | horizontal | 轮播滑动方向，包括横向滑动和纵向滑动两个方向。可选项：horizontal/vertical | N
 display-multiple-items | Number | 1 | `0.32.0`。同时显示的滑块数量 | N
 duration | Number | 300 | 滑动动画时长 | N
@@ -90,7 +89,6 @@ click | `(index: number)` | `0.34.0`。点击轮播项时触发
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 current | Number | 0 | `0.34.0`。当前轮播在哪一项（下标） | N
-custom-style | String | - | `0.34.0`。自定义组件样式 | N
 direction | String | horizontal | `0.34.0`。轮播滑动方向，包括横向滑动和纵向滑动两个方向。可选项：horizontal/vertical | N
 min-show-num | Number | 2 | 小于这个数字不会显示导航器 | N
 pagination-position | String | bottom | `0.34.0`。页码信息展示位置。可选项：top-left/top/top-right/bottom-left/bottom/bottom-right | N

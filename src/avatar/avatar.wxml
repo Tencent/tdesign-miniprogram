@@ -2,16 +2,19 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./avatar.wxs" module="this" />
 
-<view class="{{classPrefix}}__wrapper class {{prefix}}-class" style="{{this.getStyles(isShow, zIndex, style)}}">
+<view
+  class="{{classPrefix}}__wrapper class {{prefix}}-class"
+  style="{{_._style([this.getStyles(isShow, zIndex), style, customStyle])}}"
+>
   <t-badge
-    color="{{badgeProps.color}}"
-    content="{{badgeProps.content}}"
-    count="{{badgeProps.count}}"
-    dot="{{badgeProps.dot}}"
+    color="{{badgeProps.color || ''}}"
+    content="{{badgeProps.content || ''}}"
+    count="{{badgeProps.count || 0}}"
+    dot="{{badgeProps.dot || false}}"
     max-count="{{badgeProps.maxCount || 99}}"
-    offset="{{badgeProps.offset}}"
+    offset="{{badgeProps.offset || []}}"
     shape="{{badgeProps.shape || 'circle'}}"
-    show-zero="{{badgeProps.showZero}}"
+    show-zero="{{badgeProps.showZero || false}}"
     size="{{badgeProps.size || 'medium'}}"
     t-class="{{badgeProps.tClass}}"
     t-class-content="{{badgeProps.tClassContent}}"
@@ -28,14 +31,14 @@
         wx:if="{{image}}"
         t-class="{{prefix}}-image {{classPrefix}}__image"
         t-class-load="{{prefix}}-class-alt"
-        style="{{imageProps.style}}"
+        style="{{imageProps.style || ''}}"
         src="{{image}}"
         mode="{{imageProps.mode || 'aspectFill'}}"
-        lazy="{{imageProps.lazy}}"
-        loading="{{imageProps.loading}}"
+        lazy="{{imageProps.lazy || false}}"
+        loading="{{imageProps.loading || 'default'}}"
         shape="{{imageProps.shape || 'round'}}"
-        webp="{{imageProps.webp}}"
-        error="{{alt}}"
+        webp="{{imageProps.webp || false}}"
+        error="{{alt || 'default'}}"
         bind:error="onLoadError"
       />
       <template

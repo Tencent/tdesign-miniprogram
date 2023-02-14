@@ -4,6 +4,30 @@ import path from 'path';
 describe('image-viewer', () => {
   const imageViewer = load(path.resolve(__dirname, `../image-viewer`), 't-image-viewer');
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-image-viewer class="imageViewer" visible style="{{style}}" customStyle="{{customStyle}}"></t-image-viewer>`,
+      usingComponents: {
+        't-image-viewer': imageViewer,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $imageViewer = comp.querySelector('.imageViewer >>> .t-image-viewer');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect(
+        $imageViewer.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+      ).toBeTruthy();
+    } else {
+      expect($imageViewer.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':base', async () => {
     const id = simulate.load({
       template: `<t-image-viewer visible id="base" images="{{images}}" />`,

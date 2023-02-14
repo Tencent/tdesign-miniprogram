@@ -2,7 +2,7 @@
 <t-cell
   title="选择时间"
   hover
-  note="{{secondText}}"
+  note="{{secondText || ''}}"
   arrow
   data-mode="second"
   bindtap="showPicker"
@@ -13,7 +13,7 @@
 <t-cell
   title="选择时间"
   hover
-  note="{{minuteText}}"
+  note="{{minuteText || ''}}"
   arrow
   data-mode="minute"
   bindtap="showPicker"

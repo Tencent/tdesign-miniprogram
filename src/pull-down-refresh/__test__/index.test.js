@@ -5,6 +5,30 @@ describe('pull-down-refresh', () => {
   const pullDownRefresh = load(path.resolve(__dirname, `../pull-down-refresh`), 't-pull-down-refresh');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-pull-down-refresh class="pull-down-refresh" style="{{style}}" customStyle="{{customStyle}}"></t-pull-down-refresh>`,
+        usingComponents: {
+          't-pull-down-refresh': pullDownRefresh,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $pullDownRefresh = comp.querySelector('.pull-down-refresh >>> .t-pull-down-refresh');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect(
+          $pullDownRefresh.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+        ).toBeTruthy();
+      } else {
+        expect($pullDownRefresh.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': maxBarHeight', async () => {
       const id = simulate.load({
         template: `<t-pull-down-refresh

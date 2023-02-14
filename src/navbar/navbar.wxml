@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
   class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} {{prefix}}-class"
-  style="{{boxStyle}}; {{style}}"
+  style="{{_._style([boxStyle, style, customStyle])}}"
 >
   <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder" />
   <view class="{{classPrefix}}__content">
@@ -15,7 +15,7 @@
       </view>
     </view>
     <view class="{{classPrefix}}__center t-class-center">
-      <slot name="title" class="t-class-title" />
+      <slot name="title" />
       <text wx:if="{{title}}" class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
     </view>
   </view>

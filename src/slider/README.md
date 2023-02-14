@@ -56,7 +56,6 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 colors | Array | [] | 颜色，[已选择, 未选择]。TS 类型：`Array<string>` | N
-custom-style | String | - | `0.25.0`。自定义组件样式 | N
 disabled | Boolean | false | 是否禁用组件 | N
 disabled-color | Array | [] | 禁用状态滑动条的颜色，[已选, 未选]。TS 类型：`Array<string>` | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名。`['t-class', 't-class-bar', 't-class-bar-active', 't-class-bar-disabled', 't-class-cursor']` | N

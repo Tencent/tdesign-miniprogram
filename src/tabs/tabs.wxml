@@ -3,12 +3,12 @@
 <wxs src="./tabs.wxs" module="filters" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{ style }}" class="{{_.cls(classPrefix, [placement])}} {{prefix}}-class">
+<view style="{{_._style([style, customStyle])}}" class="{{_.cls(classPrefix, [placement])}} {{prefix}}-class">
   <t-sticky
     t-class="{{_.cls(classPrefix + '__sticky', [placement])}}"
     disabled="{{ !sticky }}"
     z-index="{{ stickyProps.zIndex || '1' }}"
-    offset-top="{{ stickyProps.offsetTop }}"
+    offset-top="{{ stickyProps.offsetTop || 0 }}"
     container="{{ stickyProps.container }}"
     bind:scroll="onTouchScroll"
   >

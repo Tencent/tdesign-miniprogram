@@ -68,7 +68,6 @@ isComponent: true
 block | Boolean | false | 是否为块级元素 | N
 content | String / Slot | - | 按钮内容 | N
 custom-dataset | Object | - | 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取。TS 类型：`any` | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 disabled | Boolean | false | 禁用状态 | N
 external-classes | Array | - | 组件类名。`['t-class', 't-class-icon', 't-class-loading']` | N
 ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N

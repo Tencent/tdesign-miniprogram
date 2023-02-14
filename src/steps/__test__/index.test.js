@@ -10,6 +10,21 @@ describe('Steps', () => {
     comp.attach(document.body);
   });
 
+  it(`: style && customStyle`, async () => {
+    const $steps = comp.querySelector('.a1 >>> .t-steps');
+    const $stepsItem = comp.querySelector('.a1 >>> .t-steps-item');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($steps.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      expect(
+        $stepsItem.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+      ).toBeTruthy();
+    } else {
+      expect($steps.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      expect($stepsItem.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':default-current', async () => {
     const items = comp.querySelectorAll('.a1 >>> .item');
     ['process', 'default'].forEach((it, index) => {

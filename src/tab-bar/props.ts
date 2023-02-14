@@ -11,11 +11,6 @@ const props: TdTabBarProps = {
     type: Boolean,
     value: true,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 组件类名，用于设置外层元素类名 */
   externalClasses: {
     type: Array,

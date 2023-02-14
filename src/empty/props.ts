@@ -6,11 +6,6 @@
 
 import { TdEmptyProps } from './type';
 const props: TdEmptyProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 描述文字 */
   description: {
     type: String,

@@ -4,7 +4,7 @@
   <t-demo title="01 组件类型" desc="基础进度条" padding>
     <base />
   </t-demo>
-  <t-demo desc="过度样式" padding>
+  <t-demo desc="过渡样式" padding>
     <transition />
   </t-demo>
   <t-demo desc="自定义颜色/圆角" padding>

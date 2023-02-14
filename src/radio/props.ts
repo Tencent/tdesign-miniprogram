@@ -40,11 +40,6 @@ const props: TdRadioProps = {
     type: Boolean,
     value: false,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 是否为禁用态 */
   disabled: {
     type: Boolean,

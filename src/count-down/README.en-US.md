@@ -8,7 +8,6 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 auto-start | Boolean | true | \- | N
 content | String / Slot | 'default' | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 format | String | HH:mm:ss | \- | N
 millisecond | Boolean | false | \- | N
 size | String `v0.5.1` | 'small' | options：small/medium/large | N

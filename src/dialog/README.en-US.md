@@ -12,7 +12,6 @@ close-btn | Boolean / Object | false | `0.31.0` | N
 close-on-overlay-click | Boolean | undefined | \- | N
 confirm-btn | String / Object / Slot | - | \- | N
 content | String / Slot | - | \- | N
-custom-style | String | - | `0.25.0` | N
 external-classes | Array | - | `['t-class', 't-class-content', 't-class-confirm', 't-class-cancel']` | N
 overlay-props | Object | {} | \- | N
 prevent-scroll-through | Boolean | true | \- | N

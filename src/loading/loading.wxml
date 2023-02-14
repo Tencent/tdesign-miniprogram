@@ -1,6 +1,6 @@
-<wxs src="../common/utils.wxs" module="utils" />
+<wxs src="../common/utils.wxs" module="_" />
 <view
-  style="{{ style }};{{ !text && theme != 'error' && 'width: ' + utils.addUnit(size) + '; height: ' + utils.addUnit(size)}}"
+  style="{{_._style([style, customStyle, (!text && theme != 'error' && 'width: ' + _.addUnit(size) + '; height: ' + _.addUnit(size))])}}"
   class="class {{prefix}}-class"
 >
   <view
@@ -12,8 +12,11 @@
     <view
       wx:if="{{indicator && theme != 'error'}}"
       class="{{prefix}}-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
-      style="width: {{ utils.addUnit(size) }}; height: {{ utils.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-    >
+      style="width: {{ _.addUnit(size) }}; height: {{ _.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+      aria-role="{{ theme !== 'error' ? ariaRole  || 'img' :  ''}}"
+      aria-label="{{ ariaLabel || text || '加载中'  }}"
+
+      >
       <view wx:if="{{ theme === 'spinner' }}" wx:for="{{12}}" wx:key="index" class="{{classPrefix}}__dot" />
       <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular" />
       <block wx:if="{{ theme === 'dots' }}">
@@ -31,12 +34,16 @@
         ></view>
       </block>
     </view>
-    <view class="{{utils.cls(classPrefix + '__text', [layout])}} {{prefix}}-class-text">
+    <view
+      class="{{_.cls(classPrefix + '__text', [layout])}} {{prefix}}-class-text"
+      aria-hidden="{{indicator && theme != 'error'}}"
+      aria-label="{{ ariaLabel || text }}"
+    >
       <view wx:if="{{theme === 'error'}}">
         加载失败
-        <text class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage">刷新</text>
+        <text class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage" aria-role="button">刷新</text>
       </view>
-      <block wx:if="{{text && text !== 'slot'}}">{{text}}</block>
+      <block wx:if="{{text}}">{{text}}</block>
       <slot name="text" />
       <slot />
     </view>

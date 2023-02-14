@@ -10,6 +10,28 @@ const layout = ['horizontal', 'vertical'];
 describe('Divider', () => {
   const divider = load(path.resolve(__dirname, `../divider`), 't-divider');
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-divider class="divider" style="{{style}}" customStyle="{{customStyle}}"></t-divider>`,
+      usingComponents: {
+        't-divider': divider,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $divider = comp.querySelector('.divider >>> .t-divider');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($divider.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($divider.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(`:base`, () => {
     const id = simulate.load({
       template: `<t-divider class="divider"></t-divider>`,

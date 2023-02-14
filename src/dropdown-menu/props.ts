@@ -11,11 +11,6 @@ const props: TdDropdownMenuProps = {
     type: Boolean,
     value: true,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 动画时长 */
   duration: {
     type: null,

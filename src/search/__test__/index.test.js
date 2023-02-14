@@ -5,6 +5,28 @@ describe('search', () => {
   const search = load(path.resolve(__dirname, `../search`), 't-search');
 
   describe('Props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-search class="search" style="{{style}}" customStyle="{{customStyle}}"></t-search>`,
+        usingComponents: {
+          't-search': search,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $search = comp.querySelector('.search >>> .t-search');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect($search.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($search.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(`:base`, () => {
       const id = simulate.load({
         template: `<t-search class="search" action="{{action}}"></t-search>`,

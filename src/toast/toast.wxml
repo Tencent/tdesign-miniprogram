@@ -1,39 +1,36 @@
+<import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
+
 <view
   wx:if="{{realVisible}}"
   class="{{_.cls(classPrefix, [direction, theme, ['with-text', message]])}} {{prefix}}-class {{transitionClass}}"
-  style="top: {{placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'}} {{ style }}"
+  style="{{_._style([ 'top:' + (placement === 'top' ? '25%' : placement === 'bottom' ? '75%': '45%'), style, customStyle])}}"
   bind:transitionend="onTransitionEnd"
   catch:touchstart="loop"
 >
   <view class="{{classPrefix}}__content {{classPrefix}}__content--{{direction}}">
-    <t-icon
-      aria-hidden="{{true}}"
-      wx:if="{{typeMapIcon!=='loading' || icon}}"
-      name="{{typeMapIcon || icon}}"
-      t-class="{{classPrefix}}__icon {{classPrefix}}__icon--{{direction}}"
-    />
     <t-loading
-      wx:if="{{typeMapIcon === 'loading'}}"
+      wx:if="{{isLoading}}"
       theme="circular"
       size="{{direction === 'row' ? '48rpx' : '64rpx'}}"
       loading
       inherit-color
       layout="vertical"
     />
+    <template
+      wx:elif="{{_icon}}"
+      is="icon"
+      data="{{ ariaHidden: true, tClass: classPrefix + '__icon ' + classPrefix + '__icon--' + direction, ..._icon }}"
+    />
     <slot name="icon" />
-    <view
-      aria-role="alert"
-      class="{{classPrefix}}__text {{typeMapIcon || icon ? classPrefix + '__text--' + direction : ''}}"
-      >{{message}}</view
-    >
+    <view aria-role="alert" class="{{classPrefix}}__text {{classPrefix}}__text--{{direction}}">{{message}}</view>
     <slot name="message" />
   </view>
 </view>
 <t-overlay
-  style="{{ overlayProps.style }}"
+  style="{{ overlayProps.style || ''}}"
   visible="{{realVisible && (showOverlay || preventScrollThrough)}}"
-  z-index="{{overlayProps.zIndex}}"
-  backgroundColor="{{preventScrollThrough ? 'transparent' : overlayProps.backgroundColor}}"
+  z-index="{{overlayProps.zIndex || 11000}}"
+  backgroundColor="{{preventScrollThrough ? 'transparent' : overlayProps.backgroundColor || ''}}"
   preventScrollThrough="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
 />

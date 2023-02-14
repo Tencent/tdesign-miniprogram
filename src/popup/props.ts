@@ -19,11 +19,6 @@ const props: TdPopupProps = {
   content: {
     type: String,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 动画过渡时间 */
   duration: {
     type: Number,

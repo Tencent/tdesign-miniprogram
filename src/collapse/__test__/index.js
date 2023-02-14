@@ -4,6 +4,8 @@ Component({
     expandMutex: false,
     defaultExpandAll: false,
     secondDisabled: false,
+    style: 'color: red',
+    customStyle: 'font-size: 9px',
   },
   methods: {
     handleChange(e) {

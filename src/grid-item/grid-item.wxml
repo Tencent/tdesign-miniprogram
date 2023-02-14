@@ -8,7 +8,7 @@
 
 <view
   class="{{_.cls(classPrefix, [['auto-size', column == 0]])}} {{prefix}}-class"
-  style="{{ gridItemStyle }}"
+  style="{{_._style([gridItemStyle, style, customStyle])}}"
   hover-class="{{hover ? classPrefix + '--hover':''}}"
   hover-stay-time="{{200}}"
   bindtap="onClick"
@@ -23,14 +23,14 @@
       <slot />
       <t-badge
         wx:if="{{image || icon}}"
-        color="{{badgeProps.color}}"
-        content="{{badgeProps.content}}"
-        count="{{badgeProps.count}}"
-        dot="{{badgeProps.dot}}"
+        color="{{badgeProps.color || ''}}"
+        content="{{badgeProps.content || ''}}"
+        count="{{badgeProps.count || 0}}"
+        dot="{{badgeProps.dot || false}}"
         max-count="{{badgeProps.maxCount || 99}}"
-        offset="{{badgeProps.offset}}"
+        offset="{{badgeProps.offset || []}}"
         shape="{{badgeProps.shape || 'circle'}}"
-        show-zero="{{badgeProps.showZero}}"
+        show-zero="{{badgeProps.showZero || false}}"
         size="{{badgeProps.size || 'medium'}}"
         t-class="{{badgeProps.tClass}}"
         t-class-content="{{badgeProps.tClassContent}}"
@@ -39,13 +39,13 @@
         <view
           class="{{_.cls(classPrefix + '__image', [util.getImageSize(column), ['icon', icon]])}} {{prefix}}-class-image"
         >
-          <block wx:if="{{image && image !== 'slot'}}">
+          <block wx:if="{{image}}">
             <template
               is="image"
               data="{{ src: image, shape: 'round', mode: 'widthFix', tClass: _.cls(classPrefix + '__image', [util.getImageSize(column)]), ...imageProps }}"
             />
           </block>
-          <slot wx:else name="image" />
+          <slot name="image" />
           <template
             wx:if="{{iconName || _.isNoEmptyObj(iconData)}}"
             is="icon"
@@ -55,19 +55,19 @@
       </t-badge>
       <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{labelID}}">
         <view
-          wx:if="{{text && text !== 'slot'}}"
+          wx:if="{{text}}"
           class="{{_.cls(classPrefix + '__text', [util.getImageSize(column), layout])}} {{prefix}}-class-text"
         >
           {{text}}
         </view>
-        <slot wx:else name="text" class="{{prefix}}-class-text" />
+        <slot name="text" />
         <view
-          wx:if="{{description && description!== 'slot'}}"
+          wx:if="{{description}}"
           class="{{_.cls(classPrefix + '__description', [util.getImageSize(column), layout])}} {{prefix}}-class-description"
         >
           {{description}}
         </view>
-        <slot wx:else name="description" class="{{prefix}}-class-description" />
+        <slot name="description" />
       </view>
     </view>
   </view>

@@ -5,6 +5,23 @@ describe('Checkbox', () => {
   const id = load(path.resolve(__dirname, './index'));
 
   describe('with group', () => {
+    it(`: style && customStyle`, async () => {
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const group = comp.querySelector('.group >>> .t-checkbox-group');
+      const a = comp.querySelector('.a >>> .t-checkbox');
+
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect(group.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+        expect(a.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect(group.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+        expect(a.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(':checked', async () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));

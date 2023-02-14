@@ -39,7 +39,6 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-custom-style | String | - | 自定义组件样式 | N
 disabled | Boolean | - | 是否禁用滑动 | N
 opened   | Boolean / Array | false  | 操作项是否呈现为打开态，值为数组时表示分别控制左右滑动的展开和收起状态。TS 类型：`boolean| Array<boolean>` | N   |
 left | Array / Slot | - | 左侧滑动操作项。所有行为同 `right`。TS 类型：`Array<SwipeActionItem>` | N

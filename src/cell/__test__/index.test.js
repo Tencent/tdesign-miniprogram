@@ -3,6 +3,30 @@ import path from 'path';
 
 describe('cell', () => {
   const cell = load(path.resolve(__dirname, `../cell`));
+
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-cell class="cell" style="{{style}}" customStyle="{{customStyle}}"></t-cell>`,
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+
+      usingComponents: {
+        't-cell': cell,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $cell = comp.querySelector('.cell >>> .t-cell');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($cell.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($cell.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(`:base`, () => {
     const id = load({
       template: `<t-cell id="cell"></t-cell>`,

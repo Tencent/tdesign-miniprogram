@@ -89,10 +89,9 @@ isComponent: true
 | 属性        | 值类型   | 默认值    | 必传 | 说明                                                              |
 | ----------- | -------- | ---------- | ---- |----------------------------------------------------------------- |
 | name        | String | -         | Y    | 图标名称或图片链接                           |
-| size        | String | inherit   | N    | 图标大小, 如 `20`, `20px`, `48rpx`, 默认单位是 `px` |
-| color       | String | initial   | N    | 图标颜色                                                          |
+| size        | String | -   | N    | 图标大小, 如 `20`, `20px`, `48rpx`, 默认单位是 `px` |
+| color       | String | -   | N    | 图标颜色                                                          |
 | prefix      | String | -         | N    | 自定义图标前缀                                                    |
-| custom-style | String | -         | N    | 自定义组件样式                                                        |
 | external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、图片图标、基础图标等元素类名。`['t-class']` | N
 
 #### Events

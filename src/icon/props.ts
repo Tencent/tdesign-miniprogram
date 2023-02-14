@@ -7,11 +7,6 @@
 
 import { TdIconProps } from './type';
 const props: TdIconProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 图标颜色 */
   color: {
     type: String,
@@ -26,7 +21,7 @@ const props: TdIconProps = {
   /** 图标尺寸，支持 'small', 'medium', 'large'，'35px', '3em' 等 */
   size: {
     type: String,
-    value: undefined,
+    value: '',
   },
   /** 自定义图标前缀 */
   prefix: {

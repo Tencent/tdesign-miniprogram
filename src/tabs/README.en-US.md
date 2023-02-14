@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 animation | Object | - | Typescript：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
-custom-style | String | - | `0.25.0` | N
 external-classes | Array | - | `['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
 show-bottom-line | Boolean | true | \- | N
 space-evenly | Boolean | true | \- | N
@@ -30,7 +29,6 @@ scroll | `(scrollTop: number, isFixed: boolean)` | \-
 name | type | default | description | required
 -- | -- | -- | -- | --
 badge-props | Object | null | \- | N
-custom-style | String | - | `0.25.0` | N
 destroy-on-hide | Boolean | true | \- | N
 disabled | Boolean | false | \- | N
 icon | String / Object | - | `1.0.0-rc.1` | N

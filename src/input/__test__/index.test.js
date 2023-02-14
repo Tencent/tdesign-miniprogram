@@ -5,6 +5,28 @@ describe('input', () => {
   const input = load(path.resolve(__dirname, `../input`), 't-input');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-input class="input" style="{{style}}" customStyle="{{customStyle}}"></t-input>`,
+        usingComponents: {
+          't-input': input,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $input = comp.querySelector('.input >>> .t-input');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect($input.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($input.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': maxcharacter', async () => {
       const handleChange = jest.fn();
       const id = simulate.load({
@@ -125,7 +147,7 @@ describe('input', () => {
     it(': label', async () => {
       const id = simulate.load({
         template: `
-        <t-input class="base" label="slot">
+        <t-input class="base">
           <text slot="label">标签文字<text style="color: #e34d59"> *</text> </text>
         </t-input>`,
         data: {},

@@ -1,5 +1,7 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
-  style="{{ style }}"
+  style="{{_._style([style, customStyle])}}"
   class="{{prefix}}-class {{classPrefix}} {{ hover ? classPrefix + '--hover' : ''}} {{ !bordered ? classPrefix + '--borderless' : ''}} {{classPrefix}}--{{align}}"
   hover-class="{{classPrefix}}--hover-class"
   hover-stay-time="70"

@@ -2,6 +2,7 @@
 
 @checkbox: ~'@{prefix}-checkbox';
 
+@checkbox-border-width: 6rpx;
 @checkbox-icon-size: var(--td-checkbox-icon-size, 48rpx);
 @checkbox-font-size: var(--td-checkbox-font-size, 32rpx);
 @checkbox-title-line-height: var(--td-checkbox-title-line-height, 48rpx);
@@ -95,9 +96,9 @@
     }
 
     &-circle {
-      width: 84rpx;
-      height: 84rpx;
-      border: 3px solid @checkbox-icon-color;
+      width: calc((@checkbox-icon-size - @checkbox-border-width) * 2);
+      height: calc((@checkbox-icon-size - @checkbox-border-width) * 2);
+      border: @checkbox-border-width solid @checkbox-icon-color;
       border-radius: 50%;
       position: absolute;
       top: 50%;
@@ -111,9 +112,9 @@
     }
 
     &-rectangle {
-      width: 72rpx;
-      height: 72rpx;
-      border: 3px solid @checkbox-icon-color;
+      width: calc((@checkbox-icon-size - @checkbox-border-width * 2) * 2);
+      height: calc((@checkbox-icon-size - @checkbox-border-width * 2) * 2);
+      border: @checkbox-border-width solid @checkbox-icon-color;
       border-radius: 4rpx;
       position: absolute;
       top: 50%;

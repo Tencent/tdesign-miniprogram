@@ -12,7 +12,6 @@ checked | Boolean | false | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
 content | String / Slot | - | \- | N
 content-disabled | Boolean | - | \- | N
-custom-style | String | - | `0.25.0` | N
 disabled | Boolean | undefined | \- | N
 external-classes | Array | - | `['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border']` | N
 icon | String / Array | 'circle' | Typescript：`'circle' \| 'line' \| 'rectangle' \| string[]` | N
@@ -34,7 +33,6 @@ change | `(checked: boolean)` | \-
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style | String | - | `0.25.0` | N
 disabled | Boolean | false | \- | N
 max | Number | undefined | \- | N
 name | String | - | \- | N

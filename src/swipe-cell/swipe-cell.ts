@@ -23,7 +23,6 @@ export default class SwiperCell extends SuperComponent {
     prefix,
     wrapperStyle: '',
     closed: true,
-    opened: false,
     classPrefix: name,
   };
 

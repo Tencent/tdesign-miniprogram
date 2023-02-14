@@ -26,11 +26,6 @@ const props: TdInputProps = {
     type: null,
     value: false,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 是否禁用输入框 */
   disabled: {
     type: Boolean,

@@ -73,7 +73,6 @@ isComponent: true
 allow-half | Boolean | false | 是否允许半选 | N
 color | String / Array | '#ED7B2F' | `0.30.0`。评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB']。TS 类型：`string \| Array<string>` | N
 count | Number | 5 | 评分的数量 | N
-custom-style | String | - | `0.25.0`。自定义组件样式 | N
 disabled | Boolean | - | 是否禁用评分 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。。`['t-class', 't-class-icon', 't-class-text']` | N
 gap | Number | 8 | 评分图标的间距 | N

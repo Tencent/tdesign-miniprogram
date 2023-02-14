@@ -8,7 +8,6 @@ name | type | default | description | required
 close-btn | Boolean / Slot | - | \- | N
 close-on-overlay-click | Boolean | true | \- | N
 content | String / Slot | - | \- | N
-custom-style | String | - | \- | N
 duration | Number | 240 | \- | N
 external-classes | Array | - | `['t-class', 't-class-overlay', 't-class-content']` | N
 overlay-props | Object | {} | \- | N

@@ -19,11 +19,6 @@ const props: TdUploadProps = {
   config: {
     type: Object,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 已上传文件列表 */
   files: {
     type: Array,

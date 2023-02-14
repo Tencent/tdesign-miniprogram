@@ -51,7 +51,6 @@ export default class GridItem extends SuperComponent {
     gridItemWrapperStyle: '',
     gridItemContentStyle: '',
     align: 'center',
-    layout: 'vertical',
     column: 0,
     labelID: '',
   };
@@ -75,7 +74,6 @@ export default class GridItem extends SuperComponent {
 
   updateStyle() {
     const { hover, align } = this.parent.properties;
-    const { style } = this.properties;
     const gridItemStyles = [];
     const gridItemWrapperStyles = [];
     const gridItemContentStyles = [];
@@ -86,7 +84,7 @@ export default class GridItem extends SuperComponent {
     paddingStyle && gridItemWrapperStyles.push(paddingStyle);
     borderStyle && gridItemContentStyles.push(borderStyle);
     this.setData({
-      gridItemStyle: `${gridItemStyles.join(';')}${style ? `;${style}` : ''}`,
+      gridItemStyle: `${gridItemStyles.join(';')}`,
       gridItemWrapperStyle: gridItemWrapperStyles.join(';'),
       gridItemContentStyle: gridItemContentStyles.join(';'),
       hover,

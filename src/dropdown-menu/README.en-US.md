@@ -6,7 +6,6 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 close-on-click-overlay | Boolean | true | \- | N
-custom-style | String | - | `0.25.0` | N
 duration | String / Number | 200 | \- | N
 external-classes | Array | - | `['t-class', 't-class-item', 't-class-label', 't-class-icon']` | N
 show-overlay | Boolean | true | \- | N
@@ -16,7 +15,6 @@ z-index | Number | 11600 | \- | N
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style | String | - | `0.25.0` | N
 disabled | Boolean | false | \- | N
 external-classes | Array | - | `['t-class','t-class-content', 't-class-column', 't-class-column-item', 't-class-column-item-label',  't-class-footer']` | N
 keys | Object | - | Typescript：`KeysType` | N

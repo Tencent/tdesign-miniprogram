@@ -10,18 +10,17 @@ exports[`input props : clearable && label && suffix 1`] = `
     style=""
   >
     <wx-view
-      class="t-input__wrap--prefix"
+      class="t-input__icon--prefix"
+    />
+    <wx-view
+      ariaHidden="{{true}}"
+      class="t-input__label"
     >
-      <wx-view
-        ariaHidden="{{true}}"
-        class="t-input__label"
+      <wx-text
+        class="t-class-label"
       >
-        <wx-text
-          class="t-class-label"
-        >
-          tdesign
-        </wx-text>
-      </wx-view>
+        tdesign
+      </wx-text>
     </wx-view>
     <wx-view
       class="t-input__wrap"
@@ -134,23 +133,22 @@ exports[`input slots : label 1`] = `
     style=""
   >
     <wx-view
-      class="t-input__wrap--prefix"
+      class="t-input__icon--prefix"
+    />
+    <wx-view
+      ariaHidden="{{true}}"
+      class="t-input__label"
     >
-      <wx-view
-        ariaHidden="{{true}}"
-        class="t-input__label"
+      <wx-text
+        slot="label"
       >
+        标签文字
         <wx-text
-          slot="label"
+          style="color: #e34d59"
         >
-          标签文字
-          <wx-text
-            style="color: #e34d59"
-          >
-            *
-          </wx-text>
+          *
         </wx-text>
-      </wx-view>
+      </wx-text>
     </wx-view>
     <wx-view
       class="t-input__wrap"
@@ -161,9 +159,9 @@ exports[`input slots : label 1`] = `
         <wx-input
           adjustPosition="{{true}}"
           alwaysEmbed="{{false}}"
-          ariaLabel="slot"
+          ariaLabel=""
           ariaRole="textbox"
-          ariaRoledescription="slot"
+          ariaRoledescription=""
           autoFocus="{{false}}"
           class="t-input__control t-input__control--left t-class-input"
           confirmHold="{{false}}"
@@ -196,6 +194,10 @@ exports[`input slots : label 1`] = `
         <wx-view
           class="t-input__wrap--suffix t-class-suffix"
           bind:tap="onSuffixClick"
+        />
+        <wx-view
+          class="t-input__wrap--suffix-icon"
+          bind:tap="onSuffixIconClick"
         />
       </wx-view>
     </wx-view>

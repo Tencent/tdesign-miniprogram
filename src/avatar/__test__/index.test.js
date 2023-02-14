@@ -3,8 +3,33 @@ import path from 'path';
 
 describe('Avatar & Avatar Groups', () => {
   const id = load(path.resolve(__dirname, './index'));
+  jest.resetModules();
+  const avatar = load(path.resolve(__dirname, `../avatar`));
 
   describe('Avatar Props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-avatar class="avatar" style="{{style}}" customStyle="{{customStyle}}"></t-avatar>`,
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+
+        usingComponents: {
+          't-avatar': avatar,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $avatar = comp.querySelector('.avatar >>> .t-avatar__wrapper');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect($avatar.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($avatar.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(':icon', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));

@@ -100,7 +100,7 @@ exports[`NoticeBar NoticeBar iconDemo demo works fine 1`] = `
     visible="{{true}}"
   >
     <wx-view
-      slot="prefixIcon"
+      slot="prefix-icon"
     >
       <t-icon
         name="error-circle-filled"

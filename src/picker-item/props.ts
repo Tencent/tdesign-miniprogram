@@ -6,11 +6,6 @@
 
 import { TdPickerItemProps } from './type';
 const props: TdPickerItemProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 格式化标签 */
   format: {
     type: null,

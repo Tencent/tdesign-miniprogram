@@ -3,6 +3,7 @@
 
 <navigator
   class="{{className}} {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
   target="{{navigatorProps.target}}"
   url="{{navigatorProps.url}}"
   open-type="{{navigatorProps.openType || 'navigate'}}"
@@ -21,24 +22,24 @@
   bindcomplete="onComplete"
   aria-disabled="{{status === 'disabled'}}"
 >
-  <view wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}" class="{{classPrefix}}__prefix-icon">
-    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
+  <view class="{{classPrefix}}__prefix-icon">
+    <slot name="prefix-icon" />
     <template
-      wx:else
+      wx:if="{{_prefixIcon}}"
       is="icon"
-      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ariaHidden: true, ...prefixIconData}}"
+      data="{{tClass: prefix + '-class-prefix-icon', ariaHidden: true, ..._prefixIcon }}"
     />
   </view>
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <block wx:if="{{content}}">{{content}}</block>
     <slot name="content" />
   </view>
-  <view wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}" class="{{classPrefix}}__suffix-icon">
-    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
+  <view class="{{classPrefix}}__suffix-icon">
+    <slot name="suffix-icon" />
     <template
-      wx:else
+      wx:if="{{_suffixIcon}}"
       is="icon"
-      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ariaHidden: true, ...suffixIconData}}"
+      data="{{tClass: prefix + '-class-suffix-icon', ariaHidden: true, ..._suffixIcon }}"
     />
   </view>
 </navigator>
