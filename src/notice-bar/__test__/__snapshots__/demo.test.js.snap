@@ -26,6 +26,7 @@ exports[`NoticeBar NoticeBar custom demo works fine 1`] = `
 exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
 <customization>
   <t-notice-bar
+    suffixIcon="slot"
     visible="{{true}}"
   >
     <wx-view

@@ -1,5 +1,5 @@
 <!-- slot实现自定义content内容 -->
-<t-notice-bar visible="{{true}}">
+<t-notice-bar visible="{{true}}" suffixIcon="slot">
   <view slot="content">
     提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
     <view class="extra">

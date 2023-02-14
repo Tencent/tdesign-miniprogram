@@ -61,6 +61,23 @@ docClass: timeline
 - `Picker`: 修复样式、优化布局以及交互体验 @LeeJim ([#1513](https://github.com/Tencent/tdesign-miniprogram/pull/1513))
 - `Swiper`: 修复 `autoplay` 状态下，`swiper` 偶现左右抖动问题 @anlyyao ([#1494](https://github.com/Tencent/tdesign-miniprogram/pull/1494))
 
+## 🌈 1.0.0-rc.1 `2023-01-18` 
+### ❗ BREAKING CHANGES
+- `Dialog`: 移除内置的 input 样式 @LeeJim ([#1516](https://github.com/Tencent/tdesign-miniprogram/pull/1516))
+- `Input`: 优化 DOM，移除外置的 wapper 元素 @LeeJim ([#1516](https://github.com/Tencent/tdesign-miniprogram/pull/1516))
+
+### 🚀 Features
+- `Cell`: 新增底边框左右边距 CSS Variables @anlyyao ([#1515](https://github.com/Tencent/tdesign-miniprogram/pull/1515))
+- `Cell`: 补充 CSS Variables @anlyyao ([#1517](https://github.com/Tencent/tdesign-miniprogram/pull/1517))
+- `SideBar`: 支持传入 Icon @LeeJim ([#1520](https://github.com/Tencent/tdesign-miniprogram/pull/1520))
+- `Tabs`: 支持传入 icon @LeeJim ([#1519](https://github.com/Tencent/tdesign-miniprogram/pull/1519))
+### 🐞 Bug Fixes
+- `Upload`: 修复 add-content 不生效的问题 @LeeJim ([#1507](https://github.com/Tencent/tdesign-miniprogram/pull/1507))
+- `Upload`: 优化插槽渲染，不再需要传入 add-content = 'slot' @LeeJim ([#1507](https://github.com/Tencent/tdesign-miniprogram/pull/1507))
+- `Cascader`: 修复 slot 无法使用的问题 @LeeJim ([#1508](https://github.com/Tencent/tdesign-miniprogram/pull/1508))
+- `Picker`: 修复样式、优化布局以及交互体验 @LeeJim ([#1513](https://github.com/Tencent/tdesign-miniprogram/pull/1513))
+- `Swiper`: 修复 `autoplay` 状态下，`swiper` 偶现左右抖动问题 @anlyyao ([#1494](https://github.com/Tencent/tdesign-miniprogram/pull/1494))
+
 ## 🌈 1.0.0-rc `2023-01-12` 
 ### ❗ Breaking Changes
 - 全部组件开启 vritualHost，当基础库版本低于 2.19.2 自动关闭 @LeeJim ([#1495](https://github.com/Tencent/tdesign-miniprogram/pull/1495))
