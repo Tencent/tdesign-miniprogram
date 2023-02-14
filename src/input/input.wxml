@@ -87,5 +87,6 @@
       </view>
     </view>
     <view wx:if="{{tips && tips.length > 0}}" class="{{classPrefix}}__tips {{prefix}}-class-tips">{{tips}} </view>
+    <slot name="tips" />
   </view>
 </view>
