@@ -1,0 +1,27 @@
+module.exports.getWrapperAriaRole = function (file) {
+  return file.status && file.status != 'done' ? 'text' : 'button';
+};
+
+module.exports.getWrapperAriaLabel = function (file) {
+  if (file.status && file.status != 'done') {
+    if (file.status == 'loading') {
+      if (file.percent) {
+        return '上传中:' + file.percent + '%';
+      } else {
+        return '上传中';
+      }
+    } else {
+      if (file.status == 'reload') {
+        return '重新上传';
+      } else {
+        return '上传失败';
+      }
+    }
+  } else {
+    if (file.type === 'video') {
+      return '视频';
+    } else {
+      return '图像';
+    }
+  }
+};
