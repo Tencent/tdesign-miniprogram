@@ -150,7 +150,7 @@ exports[`Image Image status demo works fine 1`] = `
       <t-image
         height="72"
         id="loading-img-custom"
-        loading="slot"
+        loading=""
         shape="round"
         width="72"
       >
@@ -191,7 +191,7 @@ exports[`Image Image status demo works fine 1`] = `
         失败自定义提示
       </wx-view>
       <t-image
-        error="slot"
+        error=""
         height="72"
         shape="round"
         src=""
