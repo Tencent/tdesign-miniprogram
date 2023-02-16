@@ -3,7 +3,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{classPrefix}} {{classPrefix}}--{{theme}} {{classPrefix}}--{{size}} {{prefix}}-class "
+  class="{{classPrefix}} {{classPrefix}}--{{theme}} {{classPrefix}}--{{size}} class {{prefix}}-class "
   aria-role="option"
 >
   <slot wx:if="{{content !== 'default'}}" name="content" />

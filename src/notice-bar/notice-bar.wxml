@@ -4,7 +4,7 @@
 <view
   wx:if="{{visible}}"
   style="{{_._style([style, customStyle])}}"
-  class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class"
+  class="{{classPrefix}} {{classPrefix}}--{{theme}} class {{prefix}}-class"
 >
   <!-- prefixIcon -->
   <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon">

@@ -7,7 +7,7 @@ const name = `${prefix}-radio-group`;
 
 @wxComponent()
 export default class RadioGroup extends SuperComponent {
-  externalClasses = ['class', `${prefix}-class`];
+  externalClasses = [`${prefix}-class`];
 
   data = {
     prefix,

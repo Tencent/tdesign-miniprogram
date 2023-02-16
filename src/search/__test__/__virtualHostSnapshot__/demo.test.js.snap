@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Search base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      placeholder="搜索预设文案"
+      value=""
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`Search Search status demo works fine 1`] = `
+<status>
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      placeholder="搜索预设文案"
+    />
+  </wx-view>
+  <wx-view
+    class="space"
+  />
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      placeholder="搜索预设文案"
+      shape="round"
+    />
+  </wx-view>
+</status>
+`;

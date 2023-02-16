@@ -7,9 +7,12 @@ const name = `${prefix}-footer`;
 
 @wxComponent()
 export default class Footer extends SuperComponent {
+  externalClasses = [`${prefix}-class`];
+
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
   };
 }

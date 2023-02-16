@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{ prefix }}-class {{classPrefix}}"
+  class="class {{ prefix }}-class {{classPrefix}}"
   bind:tap="handleSwitch"
   aria-checked="{{checked}}"
   aria-disabled="{{disabled}}"
