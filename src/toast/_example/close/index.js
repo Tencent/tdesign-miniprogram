@@ -5,6 +5,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
+      duration: -1,
       message: '轻提示文字内容',
     });
   },

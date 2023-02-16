@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Search Search action demo works fine 1`] = `
+<action>
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      action=""
+      center="{{true}}"
+      placeholder="搜索预设文案"
+      value=""
+      bind:action-click="actionHandle"
+      bind:blur="blurHandle"
+      bind:change="changeHandle"
+      bind:clear="clearHandle"
+      bind:focus="focusHandle"
+    />
+  </wx-view>
+</action>
+`;
+
 exports[`Search Search base demo works fine 1`] = `
 <base>
   <wx-view
@@ -13,8 +33,23 @@ exports[`Search Search base demo works fine 1`] = `
 </base>
 `;
 
-exports[`Search Search status demo works fine 1`] = `
-<status>
+exports[`Search Search other demo works fine 1`] = `
+<other>
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      center="{{true}}"
+      placeholder="搜索预设文案"
+      value=""
+      bind:change="onChange"
+    />
+  </wx-view>
+</other>
+`;
+
+exports[`Search Search shape demo works fine 1`] = `
+<shape>
   <wx-view
     class="example-search"
   >
@@ -22,9 +57,6 @@ exports[`Search Search status demo works fine 1`] = `
       placeholder="搜索预设文案"
     />
   </wx-view>
-  <wx-view
-    class="space"
-  />
   <wx-view
     class="example-search"
   >
@@ -33,5 +65,5 @@ exports[`Search Search status demo works fine 1`] = `
       shape="round"
     />
   </wx-view>
-</status>
+</shape>
 `;

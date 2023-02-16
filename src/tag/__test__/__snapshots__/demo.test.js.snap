@@ -12,6 +12,7 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         light
       </wx-text>
       <t-check-tag
+        class="margin-16"
         content="{{
           Array [
             "已选中态",
@@ -22,6 +23,7 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         variant="light"
       />
       <t-check-tag
+        class="margin-16"
         content="{{
           Array [
             "已选中态",
@@ -40,6 +42,7 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         dark
       </wx-text>
       <t-check-tag
+        class="margin-16"
         content="{{
           Array [
             "已选中态",
@@ -50,6 +53,7 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         variant="dark"
       />
       <t-check-tag
+        class="margin-16"
         content="{{
           Array [
             "已选中态",
@@ -68,6 +72,7 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         outline
       </wx-text>
       <t-check-tag
+        class="margin-16"
         content="{{
           Array [
             "已选中态",
@@ -78,6 +83,7 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         variant="outline"
       />
       <t-check-tag
+        class="margin-16"
         content="{{
           Array [
             "已选中态",
@@ -96,6 +102,7 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         light-outline
       </wx-text>
       <t-check-tag
+        class="margin-16"
         content="{{
           Array [
             "已选中态",
@@ -106,6 +113,7 @@ exports[`Tag Tag checkable demo works fine 1`] = `
         variant="light-outline"
       />
       <t-check-tag
+        class="margin-16"
         content="{{
           Array [
             "已选中态",
@@ -127,6 +135,7 @@ exports[`Tag Tag closable demo works fine 1`] = `
     class="demo"
   >
     <t-tag
+      class="margin-16"
       closable="{{true}}"
       variant="light"
       bind:close="handleClose0"
@@ -134,6 +143,7 @@ exports[`Tag Tag closable demo works fine 1`] = `
       文字标签
     </t-tag>
     <t-tag
+      class="margin-16"
       closable="{{true}}"
       variant="outline"
       bind:close="handleClose1"
@@ -150,24 +160,28 @@ exports[`Tag Tag size demo works fine 1`] = `
     class="block"
   >
     <t-tag
+      class="margin-16"
       size="extra-large"
       variant="light"
     >
       加大尺寸
     </t-tag>
     <t-tag
+      class="margin-16"
       size="large"
       variant="light"
     >
       大尺寸
     </t-tag>
     <t-tag
+      class="margin-16"
       size="medium"
       variant="light"
     >
       中尺寸
     </t-tag>
     <t-tag
+      class="margin-16"
       size="small"
       variant="light"
     >
@@ -178,6 +192,7 @@ exports[`Tag Tag size demo works fine 1`] = `
     class="block"
   >
     <t-tag
+      class="margin-8"
       closable="{{true}}"
       size="extra-large"
       variant="light"
@@ -185,6 +200,7 @@ exports[`Tag Tag size demo works fine 1`] = `
       加大尺寸
     </t-tag>
     <t-tag
+      class="margin-8"
       closable="{{true}}"
       size="large"
       variant="light"
@@ -192,6 +208,7 @@ exports[`Tag Tag size demo works fine 1`] = `
       大尺寸
     </t-tag>
     <t-tag
+      class="margin-8"
       closable="{{true}}"
       size="medium"
       variant="light"
@@ -199,6 +216,7 @@ exports[`Tag Tag size demo works fine 1`] = `
       中尺寸
     </t-tag>
     <t-tag
+      class="margin-8"
       closable="{{true}}"
       size="small"
       variant="light"
@@ -215,29 +233,34 @@ exports[`Tag Tag theme demo works fine 1`] = `
     class="block"
   >
     <t-tag
+      class="margin-16"
       variant="light"
     >
       默认
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="primary"
       variant="light"
     >
       主要
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="warning"
       variant="light"
     >
       警告
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="danger"
       variant="light"
     >
       危险
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="success"
       variant="light"
     >
@@ -247,25 +270,32 @@ exports[`Tag Tag theme demo works fine 1`] = `
   <wx-view
     class="block"
   >
-    <t-tag>
+    <t-tag
+      class="margin-16"
+      theme="default"
+    >
       默认
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="primary"
     >
       主要
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="warning"
     >
       警告
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="danger"
     >
       危险
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="success"
     >
       成功
@@ -275,29 +305,34 @@ exports[`Tag Tag theme demo works fine 1`] = `
     class="block"
   >
     <t-tag
+      class="margin-16"
       variant="outline"
     >
       默认
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="primary"
       variant="outline"
     >
       主要
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="warning"
       variant="outline"
     >
       警告
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="danger"
       variant="outline"
     >
       危险
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="success"
       variant="outline"
     >
@@ -308,29 +343,34 @@ exports[`Tag Tag theme demo works fine 1`] = `
     class="block"
   >
     <t-tag
+      class="margin-16"
       variant="light-outline"
     >
       默认
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="primary"
       variant="light-outline"
     >
       主要
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="warning"
       variant="light-outline"
     >
       警告
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="danger"
       variant="light-outline"
     >
       危险
     </t-tag>
     <t-tag
+      class="margin-16"
       theme="success"
       variant="light-outline"
     >
@@ -351,11 +391,13 @@ exports[`Tag Tag type demo works fine 1`] = `
       基础标签
     </wx-view>
     <t-tag
+      class="margin-16"
       variant="light"
     >
       标签文字
     </t-tag>
     <t-tag
+      class="margin-16"
       variant="outline"
     >
       标签文字
@@ -370,18 +412,21 @@ exports[`Tag Tag type demo works fine 1`] = `
       圆弧标签
     </wx-view>
     <t-tag
+      class="margin-16"
       shape="round"
       variant="light"
     >
       标签文字
     </t-tag>
     <t-tag
+      class="margin-16"
       shape="round"
       variant="outline"
     >
       标签文字
     </t-tag>
     <t-tag
+      class="margin-16"
       shape="mark"
       variant="outline"
     >
@@ -397,12 +442,14 @@ exports[`Tag Tag type demo works fine 1`] = `
       带图标的标签
     </wx-view>
     <t-tag
+      class="margin-16"
       icon="discount"
       variant="light"
     >
        标签文字 
     </t-tag>
     <t-tag
+      class="margin-16"
       icon="discount"
       variant="outline"
     >
