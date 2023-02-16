@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch Switch base demo works fine 1`] = `
+<base>
+  <t-cell
+    title="基础开关"
+  >
+    <t-switch
+      defaultValue="{{true}}"
+      slot="note"
+    />
+  </t-cell>
+</base>
+`;
+
+exports[`Switch Switch color demo works fine 1`] = `
+<color>
+  <wx-view
+    class="custom-color"
+  >
+    <t-cell
+      bordered="{{false}}"
+      title="自定义颜色开关"
+    >
+      <t-switch
+        defaultValue="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+  </wx-view>
+</color>
+`;
+
+exports[`Switch Switch label demo works fine 1`] = `
+<wx-label>
+  <t-cell
+    title="带文字开关"
+  >
+    <t-switch
+      label="{{
+        Array [
+          "关",
+          "开",
+        ]
+      }}"
+      slot="note"
+      value="{{true}}"
+      bind:change="handleChange"
+    />
+  </t-cell>
+  <t-cell
+    title="带图标开关"
+  >
+    <t-switch
+      defaultValue="{{true}}"
+      icon="{{
+        Array [
+          "close",
+          "check",
+        ]
+      }}"
+      slot="note"
+    />
+  </t-cell>
+</wx-label>
+`;
+
+exports[`Switch Switch size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="group"
+  >
+    <t-cell
+      title="大尺寸 32"
+    >
+      <t-switch
+        defaultValue="{{true}}"
+        size="large"
+        slot="note"
+      />
+    </t-cell>
+    <t-cell
+      title="中尺寸 28"
+    >
+      <t-switch
+        defaultValue="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+    <t-cell
+      title="小尺寸 24"
+    >
+      <t-switch
+        defaultValue="{{true}}"
+        size="small"
+        slot="note"
+      />
+    </t-cell>
+  </wx-view>
+</size>
+`;
+
+exports[`Switch Switch status demo works fine 1`] = `
+<status>
+  <wx-view
+    class="demo-desc"
+  >
+    加载状态
+  </wx-view>
+  <wx-view
+    class="group"
+  >
+    <t-cell
+      title="加载状态"
+    >
+      <t-switch
+        defaultValue="{{false}}"
+        loading="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+    <t-cell
+      title="加载状态"
+    >
+      <t-switch
+        defaultValue="{{true}}"
+        loading="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    禁用状态
+  </wx-view>
+  <wx-view
+    class="group"
+  >
+    <t-cell
+      title="禁用状态"
+    >
+      <t-switch
+        disabled="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+    <t-cell
+      bordered="{{false}}"
+      title="禁用状态"
+    >
+      <t-switch
+        defaultValue="{{true}}"
+        disabled="{{true}}"
+        slot="note"
+      />
+    </t-cell>
+  </wx-view>
+</status>
+`;

@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio Radio align demo works fine 1`] = `
+<align>
+  <t-radio
+    defaultChecked="{{true}}"
+    label="单选"
+    value="radio1"
+  />
+  <wx-view
+    class="block"
+  />
+  <t-radio
+    align="right"
+    defaultChecked="{{true}}"
+    label="单选"
+    value="radio2"
+  />
+</align>
+`;
+
+exports[`Radio Radio base demo works fine 1`] = `
+<base>
+  <t-radio-group
+    defaultValue="radio1"
+    bind:change="onChange"
+  >
+    <t-radio
+      label="单选"
+      value="radio1"
+    />
+    <t-radio
+      label="单选"
+      value="radio2"
+    />
+    <t-radio
+      label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选"
+      value="radio3"
+    />
+    <t-radio
+      content="描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息"
+      label="单选"
+      value="radio4"
+    />
+  </t-radio-group>
+</base>
+`;
+
+exports[`Radio Radio card demo works fine 1`] = `
+<card>
+  <t-radio-group
+    defaultValue="radio1"
+    tClass="theme-card"
+  >
+    <t-radio
+      defaultChecked="{{true}}"
+      label="单选"
+      value="radio1"
+    />
+    <t-radio
+      label="单选"
+      value="radio2"
+    />
+    <t-radio
+      label="单选标题多行单选标题多行单选标题多行单选标题多行单选标题多行"
+      value="radio3"
+    />
+  </t-radio-group>
+</card>
+`;
+
+exports[`Radio Radio horizontal demo works fine 1`] = `
+<horizontal>
+  <t-radio-group
+    borderless="{{true}}"
+    defaultValue="0"
+    tClass="box"
+  >
+    <t-radio
+      block="{{false}}"
+      label="单选标题"
+      value="0"
+    />
+    <t-radio
+      block="{{false}}"
+      label="单选标题"
+      value="1"
+    />
+    <t-radio
+      block="{{false}}"
+      label="上限四字"
+      value="2"
+    />
+  </t-radio-group>
+</horizontal>
+`;
+
+exports[`Radio Radio special demo works fine 1`] = `
+<special>
+  <t-radio-group
+    value="{{0}}"
+    bind:change="onChange"
+  >
+    <wx-view
+      class="card card--active"
+    >
+      <t-icon
+        name="check"
+        tClass="card__icon"
+      />
+      <t-radio
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="单选"
+        value="{{0}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-radio
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="单选"
+        value="{{1}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-radio
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="单选"
+        value="{{2}}"
+      />
+    </wx-view>
+  </t-radio-group>
+  <wx-view
+    class="demo-desc"
+    style="margin: 48rpx 32rpx 32rpx"
+  >
+    横向卡片单选框
+  </wx-view>
+  <t-radio-group
+    tClass="horizontal-box"
+    value="{{0}}"
+    bind:change="onChange1"
+  >
+    <wx-view
+      class="card card--active"
+    >
+      <t-icon
+        name="check"
+        tClass="card__icon"
+      />
+      <t-radio
+        borderless="{{true}}"
+        icon="none"
+        label="单选"
+        value="{{0}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-radio
+        borderless="{{true}}"
+        icon="none"
+        label="单选"
+        value="{{1}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-radio
+        borderless="{{true}}"
+        icon="none"
+        label="单选"
+        value="{{2}}"
+      />
+    </wx-view>
+  </t-radio-group>
+</special>
+`;
+
+exports[`Radio Radio status demo works fine 1`] = `
+<status>
+  <t-radio-group
+    defaultValue="radio1"
+    disabled="{{true}}"
+  >
+    <t-radio
+      label="单选"
+      value="radio1"
+    />
+    <t-radio
+      label="单选"
+      value="radio2"
+    />
+  </t-radio-group>
+</status>
+`;
+
+exports[`Radio Radio theme demo works fine 1`] = `
+<theme>
+  <t-radio
+    defaultChecked="{{true}}"
+    icon="line"
+    label="单选"
+  />
+  <wx-view
+    class="gutter"
+    style="height: 32rpx"
+  />
+  <t-radio
+    defaultChecked="{{true}}"
+    icon="dot"
+    label="单选"
+  />
+</theme>
+`;
