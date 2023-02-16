@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <import src="../common/template/button.wxml" />
 
-<view class="{{_.cls(classPrefix, [['popup', usePopup]])}}" style="{{_._style([style, customStyle])}}">
+<view class="{{_.cls(classPrefix, [['popup', usePopup]])}} class" style="{{_._style([style, customStyle])}}">
   <view class="{{classPrefix}}__title" tabindex="0">
     <slot name="title" />
     <text>{{ title || '请选择日期' }}</text>

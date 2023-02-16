@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <navigator
-  class="{{className}} {{prefix}}-class"
+  class="{{className}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
   target="{{navigatorProps.target}}"
   url="{{navigatorProps.url}}"

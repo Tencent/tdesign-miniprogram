@@ -3,7 +3,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  class="{{_.cls(classPrefix, [['active', active], ['disabled', disabled]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [['active', active], ['disabled', disabled]])}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
   bind:tap="handleClick"
   aria-role="button"

@@ -2,6 +2,7 @@
 
 <t-popup
   style="{{_._style([style, customStyle])}}"
+  class="class"
   bind:visible-change="visibleChange"
   visible="{{visible}}"
   zIndex="{{zIndex}}"

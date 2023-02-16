@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view class="{{layout==='vertical'? classPrefix + '--vertical-center' : ''}}">
+<view class="class {{layout==='vertical'? classPrefix + '--vertical-center' : ''}}">
   <view
     class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--{{layout}} {{classPrefix}}--{{align}} {{dashed? classPrefix + '--dashed' : ''}} "
     style="{{_._style([dividerStyle, style, customStyle])}}"

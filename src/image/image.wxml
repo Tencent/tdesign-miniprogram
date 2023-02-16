@@ -4,7 +4,7 @@
 <view
   wx:if="{{isLoading}}"
   style="{{_._style([innerStyle, style, customStyle])}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
   aria-hidden="{{ariaHidden}}"
 >
   <t-loading

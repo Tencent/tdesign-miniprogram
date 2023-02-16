@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{prefix}}-class {{classPrefix}} {{ hover ? classPrefix + '--hover' : ''}} {{ !bordered ? classPrefix + '--borderless' : ''}} {{classPrefix}}--{{align}}"
+  class="class {{prefix}}-class {{classPrefix}} {{ hover ? classPrefix + '--hover' : ''}} {{ !bordered ? classPrefix + '--borderless' : ''}} {{classPrefix}}--{{align}}"
   hover-class="{{classPrefix}}--hover-class"
   hover-stay-time="70"
   bind:tap="onClick"
