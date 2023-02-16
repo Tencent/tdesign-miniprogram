@@ -33,6 +33,7 @@
 
 /* 横向布局 */
 .horizontal-box {
+  width: calc(100% - 64rpx);
   display: flex;
   align-items: center;
   margin: 32rpx;

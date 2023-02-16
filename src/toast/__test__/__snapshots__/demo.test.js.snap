@@ -58,24 +58,27 @@ exports[`Toast Toast close demo works fine 1`] = `
   <t-toast
     id="t-toast"
   />
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="handleShow"
+  <wx-view
+    class="toast-example"
   >
-    显示提示
-  </t-button>
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="handleHide"
-  >
-    关闭提示
-  </t-button>
+    <t-button
+      class="margin-16"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="handleShow"
+    >
+      显示提示
+    </t-button>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="handleHide"
+    >
+      关闭提示
+    </t-button>
+  </wx-view>
 </close>
 `;
 

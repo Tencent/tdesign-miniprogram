@@ -5,3 +5,7 @@
 .block + .block {
   margin-top: 48rpx;
 }
+
+.block .margin-16:not(:last-child) {
+  margin-right: 32rpx;
+}

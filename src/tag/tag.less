@@ -105,6 +105,11 @@
       .@{prefix}-icon-close {
         font-size: @tag-small-icon-size;
       }
+
+      .@{prefix}-tag__icon:not(:empty) + .@{prefix}-tag__text:not(:empty),
+      .@{prefix}-tag__text:not(:empty) + .@{prefix}-tag__icon-close:not(:empty) {
+        margin-left: 4rpx;
+      }
     }
 
     &--medium {

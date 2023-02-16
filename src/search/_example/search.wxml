@@ -4,10 +4,13 @@
   <t-demo title="01 组件类型" desc="基础搜索框">
     <base />
   </t-demo>
-  <t-demo title="02 组件样式" desc="搜索框形状">
-    <status />
+  <t-demo desc="获取焦点后显示取消按钮">
+    <action />
   </t-demo>
-  <t-demo desc="默认状态其他对齐方式">
+  <t-demo title="02 组件样式" desc="搜索框形状">
+    <shape />
+  </t-demo>
+  <t-demo title="03 组件状态" desc="默认状态其他对齐方式">
     <other />
   </t-demo>
 </view>
