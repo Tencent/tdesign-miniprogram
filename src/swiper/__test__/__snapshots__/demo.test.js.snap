@@ -11,9 +11,9 @@ exports[`Swiper Swiper base demo works fine 1`] = `
       Array [
         "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
         "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
       ]
     }}"
     navigation="{{
@@ -46,9 +46,9 @@ exports[`Swiper Swiper cards demo works fine 1`] = `
         Array [
           "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
           "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
         ]
       }}"
       navigation="{{
@@ -80,9 +80,9 @@ exports[`Swiper Swiper cards demo works fine 1`] = `
         Array [
           "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
           "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
         ]
       }}"
       navigation="{{
@@ -112,9 +112,9 @@ exports[`Swiper Swiper custom demo works fine 1`] = `
       Array [
         "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
         "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
       ]
     }}"
     navigation="{{
@@ -137,9 +137,9 @@ exports[`Swiper Swiper fraction demo works fine 1`] = `
       Array [
         "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
         "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
       ]
     }}"
     navigation="{{
@@ -163,9 +163,9 @@ exports[`Swiper Swiper nav-btn demo works fine 1`] = `
       Array [
         "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
         "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
-        "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+        "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
       ]
     }}"
     loop="{{false}}"
@@ -194,9 +194,9 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
         Array [
           "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
           "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper3.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper4.png",
-          "https://tdesign.gtimg.com/miniprogram/images//swiper5.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper2.png",
+          "https://tdesign.gtimg.com/miniprogram/images//swiper1.png",
         ]
       }}"
       navigation="{{

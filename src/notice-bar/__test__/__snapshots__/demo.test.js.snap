@@ -153,6 +153,17 @@ exports[`NoticeBar NoticeBar scrolling demo works fine 1`] = `
 </scrolling>
 `;
 
+exports[`NoticeBar NoticeBar suffixIcon demo works fine 1`] = `
+<suffixIcon>
+  <t-notice-bar
+    content="这是一条普通的通知信息"
+    suffixIcon="close"
+    visible="{{true}}"
+    bind:click="click"
+  />
+</suffixIcon>
+`;
+
 exports[`NoticeBar NoticeBar theme demo works fine 1`] = `
 <theme>
   <t-notice-bar
