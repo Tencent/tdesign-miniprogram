@@ -14,7 +14,6 @@
   bindtap="onClick"
   aria-role="{{ariaRole || 'button'}}"
   aria-label="{{ariaLabel}}"
-  aria-labelledby="{{labelID}}"
 >
   <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}">
     <view
