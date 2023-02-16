@@ -22,7 +22,7 @@ exports[`calendar :base 1`] = `
             bind:tap="handleClose"
           />
           <wx-view
-            class="t-calendar t-calendar--popup class"
+            class="t-calendar t-calendar--popup class t-class"
             style=""
           >
             <wx-view

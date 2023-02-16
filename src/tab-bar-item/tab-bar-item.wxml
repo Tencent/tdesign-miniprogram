@@ -3,7 +3,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}} class"
+  class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}} class {{prefix}}-class"
 >
   <view
     class="{{_.cls(classPrefix + '__content', [['checked', isChecked], theme])}}"

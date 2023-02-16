@@ -7,6 +7,8 @@ const name = `${prefix}-tab-panel`;
 
 @wxComponent()
 export default class TabPanel extends SuperComponent {
+  externalClasses = [`${prefix}-class`];
+
   relations: RelationsOptions = {
     '../tabs/tabs': {
       type: 'ancestor',

@@ -1,6 +1,10 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view wx:if="{{showControls}}" class="class {{classPrefix}}__btn" style="{{_._style([style, customStyle])}}">
+<view
+  wx:if="{{showControls}}"
+  class="class {{prefix}}-class {{classPrefix}}__btn"
+  style="{{_._style([style, customStyle])}}"
+>
   <view class="{{classPrefix}}__btn--prev" bind:tap="nav" data-dir="prev" />
   <view class="{{classPrefix}}__btn--next" bind:tap="nav" data-dir="next" />
 </view>

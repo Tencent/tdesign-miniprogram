@@ -7,6 +7,8 @@ const name = `${prefix}-transition`;
 
 @wxComponent()
 export default class Transition extends SuperComponent {
+  externalClasses = [`${prefix}-class`];
+
   behaviors = [transition()];
 
   data = {
