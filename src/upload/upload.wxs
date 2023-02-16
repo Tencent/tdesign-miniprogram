@@ -5,23 +5,11 @@ module.exports.getWrapperAriaRole = function (file) {
 module.exports.getWrapperAriaLabel = function (file) {
   if (file.status && file.status != 'done') {
     if (file.status == 'loading') {
-      if (file.percent) {
-        return '上传中:' + file.percent + '%';
-      } else {
-        return '上传中';
-      }
+      return file.percent ? '上传中:' + file.percent + '%' : '上传中';
     } else {
-      if (file.status == 'reload') {
-        return '重新上传';
-      } else {
-        return '上传失败';
-      }
+      return file.status == 'reload' ? '重新上传' : '上传失败';
     }
   } else {
-    if (file.type === 'video') {
-      return '视频';
-    } else {
-      return '图像';
-    }
+    return file.type === 'video' ? '视频' : '图像';
   }
 };
