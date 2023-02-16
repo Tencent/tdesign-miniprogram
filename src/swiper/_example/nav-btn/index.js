@@ -1,4 +1,4 @@
-const imageCdn = 'https://tdesign.gtimg.com/miniprogram/images/';
+const imageCdn = 'https://tdesign.gtimg.com/miniprogram/images';
 const swiperList = [
   `${imageCdn}/swiper1.png`,
   `${imageCdn}/swiper2.png`,
