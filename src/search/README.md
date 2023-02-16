@@ -18,16 +18,27 @@ isComponent: true
 
 ## 代码演示
 
-### 基础搜索框
+### 01 组件类型
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/search.png" width="375px" height="50%">
+基础搜索框
 
 {{ base }}
 
+获取焦点后显示取消按钮
 
-### 状态
+{{ action }}
 
-{{ status }}
+### 02 组件样式
+
+搜索框形状
+
+{{ shape }}
+
+### 03 组件状态
+
+默认状态其他对齐方式
+
+{{ other }}
 
 ## API
 ### Search Props
