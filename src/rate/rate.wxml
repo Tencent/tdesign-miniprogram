@@ -15,15 +15,7 @@
     aria-valuenow="{{value}}"
     aria-valuetext="{{utils.getText(texts,value,defaultTexts)}}"
   >
-    <view
-      wx:for="{{ count }}"
-      wx:key="*this"
-      aria-role="radio"
-      aria-label="{{defaultTexts[index]}}"
-      aria-checked="{{value > index}}"
-      focus="{{index+1 == value && !tipsVisible}}"
-      tabindex="-1"
-    >
+    <view wx:for="{{ count }}" wx:key="*this">
       <t-icon
         class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
         style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
