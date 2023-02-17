@@ -40,6 +40,7 @@ exports[`Cell Cell base demo works fine 1`] = `
   />
   <t-cell
     arrow="{{true}}"
+    bordered="{{false}}"
     hover="{{true}}"
     leftIcon="lock-on"
     title="单行标题"
@@ -119,6 +120,7 @@ exports[`Cell Cell multiple demo works fine 1`] = `
   </t-cell>
   <t-cell
     align="top"
+    bordered="{{false}}"
     description="一段很长很长的内容文字"
     hover="{{true}}"
     image="https://tdesign.gtimg.com/miniprogram/images/cell1.png"

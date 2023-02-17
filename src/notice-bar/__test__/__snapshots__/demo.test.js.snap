@@ -74,6 +74,7 @@ exports[`NoticeBar NoticeBar event demo works fine 1`] = `
        这是一条普通的通知信息 
     </wx-view>
     <t-link
+      class="extra"
       content="详情"
       navigatorProps="{{
         Object {
@@ -82,6 +83,7 @@ exports[`NoticeBar NoticeBar event demo works fine 1`] = `
       }}"
       slot="extra"
       theme="primary"
+      underline="{{true}}"
     />
   </t-notice-bar>
   <t-notice-bar
@@ -97,6 +99,7 @@ exports[`NoticeBar NoticeBar iconDemo demo works fine 1`] = `
 <iconDemo>
   <t-notice-bar
     content="提示文字描述提示文字描述提示文字描述"
+    prefixIcon="{{false}}"
     visible="{{true}}"
   >
     <wx-view

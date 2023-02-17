@@ -83,9 +83,10 @@ export const styles = function (styleObj) {
     .join('; ');
 };
 
-export const getAnimationFrame = function (cb: Function) {
+export const getAnimationFrame = function (context: any, cb: Function) {
   return wx
     .createSelectorQuery()
+    .in(context)
     .selectViewport()
     .boundingClientRect()
     .exec(() => {

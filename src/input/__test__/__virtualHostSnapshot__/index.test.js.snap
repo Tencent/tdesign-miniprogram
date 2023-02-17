@@ -10,17 +10,21 @@ exports[`input props : clearable && label && suffix 1`] = `
     style=""
   >
     <wx-view
-      class="t-input__icon--prefix"
-    />
-    <wx-view
-      ariaHidden="{{true}}"
-      class="t-input__label"
+      class="t-input__wrap--prefix"
     >
-      <wx-text
-        class="t-class-label"
+      <wx-view
+        class="t-input__icon--prefix"
+      />
+      <wx-view
+        ariaHidden="{{true}}"
+        class="t-input__label"
       >
-        tdesign
-      </wx-text>
+        <wx-text
+          class="t-class-label"
+        >
+          tdesign
+        </wx-text>
+      </wx-view>
     </wx-view>
     <wx-view
       class="t-input__wrap"
@@ -35,7 +39,7 @@ exports[`input props : clearable && label && suffix 1`] = `
           ariaRole="textbox"
           ariaRoledescription="tdesign"
           autoFocus="{{false}}"
-          class="t-input__control t-input__control--left t-class-input"
+          class="t-input__control t-input--left t-class-input"
           confirmHold="{{false}}"
           confirmType="done"
           cursor="{{0}}"
@@ -133,22 +137,26 @@ exports[`input slots : label 1`] = `
     style=""
   >
     <wx-view
-      class="t-input__icon--prefix"
-    />
-    <wx-view
-      ariaHidden="{{true}}"
-      class="t-input__label"
+      class="t-input__wrap--prefix"
     >
-      <wx-text
-        slot="label"
+      <wx-view
+        class="t-input__icon--prefix"
+      />
+      <wx-view
+        ariaHidden="{{true}}"
+        class="t-input__label"
       >
-        标签文字
         <wx-text
-          style="color: #e34d59"
+          slot="label"
         >
-          *
+          标签文字
+          <wx-text
+            style="color: #e34d59"
+          >
+            *
+          </wx-text>
         </wx-text>
-      </wx-text>
+      </wx-view>
     </wx-view>
     <wx-view
       class="t-input__wrap"
@@ -163,7 +171,7 @@ exports[`input slots : label 1`] = `
           ariaRole="textbox"
           ariaRoledescription=""
           autoFocus="{{false}}"
-          class="t-input__control t-input__control--left t-class-input"
+          class="t-input__control t-input--left t-class-input"
           confirmHold="{{false}}"
           confirmType="done"
           cursor="{{0}}"

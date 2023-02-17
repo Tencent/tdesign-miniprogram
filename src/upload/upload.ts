@@ -20,6 +20,7 @@ export default class Upload extends SuperComponent {
     proofs: [],
     customFiles: [] as UploadFile[], // 内部动态修改的files
     customLimit: 0, // 内部动态修改的limit
+    column: 4,
   };
 
   properties = props;

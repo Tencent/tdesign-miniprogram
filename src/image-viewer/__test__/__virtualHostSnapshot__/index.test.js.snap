@@ -55,7 +55,7 @@ exports[`image-viewer :base 1`] = `
   <wx-image
     ariaHidden="{{true}}"
     ariaLabel=""
-    class="t-class t-image t-image--shape-square"
+    class="class t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"
     lazyLoad="{{true}}"
@@ -125,7 +125,7 @@ exports[`image-viewer :base 2`] = `
   <wx-image
     ariaHidden="{{true}}"
     ariaLabel=""
-    class="t-class t-image t-image--shape-square"
+    class="class t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"
     lazyLoad="{{true}}"
@@ -195,7 +195,7 @@ exports[`image-viewer :base 3`] = `
   <wx-image
     ariaHidden="{{true}}"
     ariaLabel=""
-    class="t-class t-image t-image--shape-square"
+    class="class t-class t-image t-image--shape-square"
     hidden="{{true}}"
     id="image"
     lazyLoad="{{true}}"
