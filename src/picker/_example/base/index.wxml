@@ -1,6 +1,6 @@
-<t-cell class="block" title="选择城市" arrow hover note="{{cityText}}" bind:click="onCityPicker" />
+<t-cell class="mb-16" title="选择城市" arrow hover note="{{cityText}}" bind:click="onCityPicker" />
 
-<t-cell class="block" title="选择时间" arrow hover note="{{dateText}}" bind:click="onSeasonPicker" />
+<t-cell class="mb-16" title="选择时间" arrow hover note="{{dateText}}" bind:click="onSeasonPicker" />
 
 <t-picker
   visible="{{cityVisible}}"

@@ -65,7 +65,6 @@ exports[`Navbar Navbar img demo works fine 1`] = `
 <img>
   <t-navbar>
     <wx-view
-      class="custom-left"
       slot="left"
     >
       <t-image

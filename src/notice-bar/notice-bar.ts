@@ -88,7 +88,7 @@ export default class NoticeBar extends SuperComponent {
       // 获取外部容器和滚动内容的宽度
       const warpID = `.${name}__content-wrap`;
       const nodeID = `.${name}__content`;
-      getAnimationFrame(() => {
+      getAnimationFrame(this, () => {
         Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
           const { marquee } = this.properties;
 
@@ -133,7 +133,7 @@ export default class NoticeBar extends SuperComponent {
           .export(),
       });
 
-      getAnimationFrame(() => {
+      getAnimationFrame(this, () => {
         // 滚动内容: 最终位置
         this.setData({
           animationData: wx

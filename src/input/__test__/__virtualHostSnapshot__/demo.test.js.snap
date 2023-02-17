@@ -220,6 +220,7 @@ exports[`Input Input special demo works fine 1`] = `
     suffix="元"
     tClassTips="tips"
     tips=""
+    type="number"
     bind:change="onPriceInput"
   />
   <t-input
