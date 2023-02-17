@@ -25,7 +25,7 @@
 <view
   wx:elif="{{isFailed}}"
   style="{{_._style([innerStyle, style, customStyle])}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--failed {{classPrefix}}--shape-{{shape}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--failed {{classPrefix}}--shape-{{shape}}"
   aria-hidden="{{ariaHidden}}"
 >
   <view wx:if="{{error === 'default'}}" style="font-size: 44rpx" class="{{prefix}}-class-load">
@@ -38,7 +38,7 @@
 <image
   id="image"
   hidden="{{isLoading || isFailed}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--shape-{{shape}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}--shape-{{shape}}"
   src="{{src}}"
   style="{{_._style([innerStyle, style, customStyle])}}"
   mode="{{mode}}"
