@@ -30,7 +30,7 @@ export default class TabPanel extends SuperComponent {
   }
 
   observers = {
-    label() {
+    'label, badgeProps, disabled, icon, panel, value'() {
       this.update();
     },
   };
