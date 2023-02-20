@@ -158,7 +158,7 @@ export default class Message extends SuperComponent {
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
         this.hide();
-        this.triggerEvent('durationEnd', { self: this });
+        this.triggerEvent('duration-end', { self: this });
       }, duration) as unknown as number;
     }
 
@@ -203,10 +203,10 @@ export default class Message extends SuperComponent {
 
   handleClose() {
     this.hide();
-    this.triggerEvent('closeBtnClick');
+    this.triggerEvent('close-btn-click');
   }
 
   handleBtnClick() {
-    this.triggerEvent('actionBtnClick', { self: this });
+    this.triggerEvent('action-btn-click', { self: this });
   }
 }
