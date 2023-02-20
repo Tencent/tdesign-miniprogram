@@ -52,7 +52,7 @@ describe('dialog', () => {
         closeOnOverlayClick
         bind:open-type-event="handleOpenType"
         bind:open-type-error-event="handleOpenTypeError"
-        bind:overlayClick="handleOverlayClick"
+        bind:overlay-click="handleOverlayClick"
         bind:cancel="handleCancel"
         bind:confirm="handleConfirm" />`,
       methods: {
