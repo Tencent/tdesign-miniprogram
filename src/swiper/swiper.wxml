@@ -43,7 +43,7 @@
     pagination-position="{{paginationPosition || 'bottom'}}"
     min-show-num="{{navigation.minShowNum || 2}}"
     show-controls="{{navigation.showControls || false}}"
-    bind:navBtnChange="onNavBtnChange"
+    bind:nav-btn-change="onNavBtnChange"
   />
   <slot name="nav" />
 </view>
