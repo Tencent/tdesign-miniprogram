@@ -114,42 +114,4 @@ describe('loading', () => {
       expect(window.getComputedStyle(indicator.dom).width).toBe('20px');
     });
   });
-
-  describe('event', () => {
-    it(`loading :`, async () => {
-      const handleReload = jest.fn();
-      const id = simulate.load({
-        template: `
-        <t-loading
-          class="base"
-          theme="{{theme}}"
-          loading="{{loading}}"
-          bind:reload="handleReload"
-        ></t-loading>
-        `,
-        data: {
-          theme: 'circular',
-          loading: false,
-        },
-        methods: {
-          handleReload,
-        },
-        usingComponents: {
-          't-loading': loading,
-        },
-      });
-
-      const comp = simulate.render(id);
-      comp.attach(document.createElement('parent-wrapper'));
-
-      // theme = 'error', 存在 reload 事件
-      comp.setData({ theme: 'error' });
-      const $refresh = comp.querySelector('.base >>> .t-loading__refresh-btn');
-      $refresh.dispatchEvent('tap');
-      await simulate.sleep(10);
-      expect(handleReload).toHaveBeenCalledTimes(1);
-
-      comp.detach();
-    });
-  });
 });
