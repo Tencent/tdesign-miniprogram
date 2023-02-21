@@ -1,7 +1,10 @@
 <import src="../common/template/button.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view class="{{classPrefix}} class {{prefix}}-class" style="{{_._style([style, customStyle])}}">
+<view
+  class="{{classPrefix}} class {{prefix}}-class"
+  style="right: 16px; bottom: 32px; {{_._style([style, customStyle])}}"
+>
   <template
     is="button"
     data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-fab__button', content: text, ariaLabel}}"
