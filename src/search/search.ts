@@ -13,7 +13,7 @@ export default class Search extends SuperComponent {
     `${prefix}-class-input`,
     `${prefix}-class-action`,
     `${prefix}-class-left`,
-    `${prefix}-class-right`,
+    `${prefix}-class-clear`,
   ];
 
   options = {
