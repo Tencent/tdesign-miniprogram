@@ -4,6 +4,5 @@
 }
 
 .wrapper {
-  min-width: 20%;
-  margin-right: 40rpx;
+  margin-right: 40px;
 }
