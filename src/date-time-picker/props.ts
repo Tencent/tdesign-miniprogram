@@ -24,11 +24,6 @@ const props: TdDateTimePickerProps = {
   externalClasses: {
     type: Array,
   },
-  /** 底部内容 */
-  footer: {
-    type: Boolean,
-    value: true,
-  },
   /** 用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format) */
   format: {
     type: String,
