@@ -42,7 +42,7 @@ const props: TdButtonProps = {
     type: Boolean,
     value: false,
   },
-  /** 加载loading样式 */
+  /** 透传至 Loading 组件 */
   loadingProps: {
     type: Object,
   },
