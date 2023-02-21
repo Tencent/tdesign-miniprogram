@@ -26,7 +26,7 @@ type dataType = {
   scaleTextArray: any[];
   _value: SliderValue;
   prefix: string;
-  isChange: boolean;
+  isVisibleToScreenReader: boolean;
 };
 
 interface boundingClientRect {
@@ -71,7 +71,7 @@ export default class Slider extends SuperComponent {
     scaleArray: [],
     scaleTextArray: [],
     prefix,
-    isChange: false,
+    isVisibleToScreenReader: false,
   };
 
   observers = {
@@ -92,11 +92,11 @@ export default class Slider extends SuperComponent {
       }
 
       this.setData({
-        isChange: true,
+        isVisibleToScreenReader: true,
       });
       setTimeout(() => {
         this.setData({
-          isChange: false,
+          isVisibleToScreenReader: false,
         });
       }, 2e3);
     },
