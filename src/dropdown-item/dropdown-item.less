@@ -1,11 +1,11 @@
 @import '../common/style/index.less';
 
-@dropdown-menu-bg-color: var(--td-dropdown-menu-bg-color, @bg-color-block);
+@dropdown-menu-bg-color: var(--td-dropdown-menu-bg-color, @bg-color-container);
 @dropdown-body-max-height: var(--td-dropdown-body-max-height, 560rpx);
 
-@tree-bg-color: var(--td-tree-bg-color, @bg-color-block);
-@tree-root-bg-color: var(--td-tree-root-bg-color, @gray-color-1);
-@tree-item-active-color: var(--td-tree-item-active-color, @primary-color);
+@tree-bg-color: var(--td-tree-bg-color, @bg-color-container);
+@tree-root-bg-color: var(--td-tree-root-bg-color, @bg-color-secondarycontainer);
+@tree-item-active-color: var(--td-tree-item-active-color, @brand-color);
 @tree-item-height: var(--td-tree-item-height, 96rpx);
 @tree-item-font-size: var(--td-tree-item-font-size, 32rpx);
 
@@ -61,11 +61,7 @@
     background: @dropdown-menu-bg-color;
     position: relative;
     padding: 32rpx;
-
-    &::before {
-      z-index: 1;
-      .hairline-top();
-    }
+    .border(top, @component-border);
 
     &-btn {
       flex: 1;
