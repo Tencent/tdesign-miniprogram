@@ -8,8 +8,8 @@ exports[`cell :base 1`] = `
     <wx-view
       ariaLabel=""
       ariaRole=""
-      class="class t-class t-cell   t-cell--middle"
-      hoverClass="t-cell--hover-class"
+      class="class t-class t-cell  t-cell--middle"
+      hoverClass=""
       hoverStayTime="70"
       style=""
       bind:tap="onClick"
