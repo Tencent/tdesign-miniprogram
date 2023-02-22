@@ -7,7 +7,7 @@
 import { TdRadioGroupProps } from './type';
 const props: TdRadioGroupProps = {
   /** 复选框和内容相对位置；仅在使用 options 时生效 */
-  align: {
+  placement: {
     type: String,
     value: null,
   },

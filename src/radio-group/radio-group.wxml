@@ -11,7 +11,7 @@
       data-index="{{index}}"
       data-value="{{item.value}}"
       disabled="{{item.disabled}}"
-      align="{{align}}"
+      placement="{{placement}}"
       icon="{{icon}}"
       borderless="{{borderless}}"
       bind:change="handleRadioChange"
