@@ -52,7 +52,7 @@ exports[`message props : style && customStyle 1`] = `
             bind:tap="onTap"
           >
             <wx-label
-              class="t-icon-error-circle-filled t-icon-base"
+              class="t-icon-info-circle-filled t-icon-base"
             />
           </wx-view>
         </t-icon>
