@@ -3,7 +3,7 @@
 exports[`Footer Footer base demo works fine 1`] = `
 <base>
   <t-footer
-    copyright="Copyright © 2021-2031 TD.All Rights Reserved."
+    text="Copyright © 2021-2031 TD.All Rights Reserved."
     theme="text"
   />
 </base>
@@ -15,8 +15,7 @@ exports[`Footer Footer link demo works fine 1`] = `
     class="footer-example"
   >
     <t-footer
-      copyright="Copyright © 2021-2031 TD.All Rights Reserved."
-      textLinkList="{{
+      links="{{
         Array [
           Object {
             "name": "底部链接",
@@ -25,6 +24,7 @@ exports[`Footer Footer link demo works fine 1`] = `
           },
         ]
       }}"
+      text="Copyright © 2021-2031 TD.All Rights Reserved."
       theme="text"
     />
   </wx-view>
@@ -32,8 +32,7 @@ exports[`Footer Footer link demo works fine 1`] = `
     class="footer-example"
   >
     <t-footer
-      copyright="Copyright © 2021-2031 TD.All Rights Reserved."
-      textLinkList="{{
+      links="{{
         Array [
           Object {
             "name": "底部链接",
@@ -47,6 +46,7 @@ exports[`Footer Footer link demo works fine 1`] = `
           },
         ]
       }}"
+      text="Copyright © 2021-2031 TD.All Rights Reserved."
       theme="text"
     />
   </wx-view>

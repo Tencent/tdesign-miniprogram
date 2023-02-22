@@ -8,7 +8,7 @@ exports[`Footer :base 1`] = `
       style=""
     >
       <wx-view
-        class="t-footer__copyright-info"
+        class="t-footer__text"
       >
         
       </wx-view>

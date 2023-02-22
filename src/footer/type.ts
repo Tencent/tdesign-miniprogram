@@ -9,7 +9,7 @@ export interface TdFooterProps {
    * 版权信息，type 为`text`生效
    * @default ''
    */
-  copyright?: {
+  text?: {
     type: StringConstructor;
     value?: string;
   };
@@ -32,7 +32,7 @@ export interface TdFooterProps {
    * 链接列表，type 为`text`生效。name 表示链接名称， url 表示链接 page 路径，目前只支持小程序内部跳转，openType 表示跳转方式
    * @default []
    */
-  textLinkList?: {
+  links?: {
     type: ArrayConstructor;
     value?: Array<LinkObj>;
   };
