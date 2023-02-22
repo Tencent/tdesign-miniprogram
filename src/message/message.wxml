@@ -30,14 +30,15 @@
     <t-link
       wx:if="{{_link.content}}"
       class="{{classPrefix}}__link {{prefix}}-class-link"
+      style="{{_._style([_link.style, _link.customStyle])}}"
       theme="{{_link.theme || 'primary'}}"
       size="{{_link.size || 'medium'}}"
-      prefixIcon="{{_link.prefixIcon}}"
-      suffixIcon="{{_link.suffixIcon}}"
+      prefixIcon="{{_link.prefixIcon || false}}"
+      suffixIcon="{{_link.suffixIcon || false}}"
       status="{{_link.status || 'normal'}}"
-      underline="{{_link.underline}}"
-      content="{{ _link.content}}"
-      navigatorProps="{{_link.navigatorProps}}"
+      underline="{{_link.underline || false}}"
+      content="{{_link.content || ''}}"
+      navigatorProps="{{_link.navigatorProps || null}}"
       bind:complete="handleLinkClick"
     />
     <slot name="link" />

@@ -67,11 +67,7 @@ export default class Message extends SuperComponent {
 
     link(v) {
       const _link = isObject(v) ? { ...v } : { content: v };
-      this.setData({
-        _link: {
-          ..._link,
-        },
-      });
+      this.setData({ _link });
     },
 
     closeBtn(v) {
