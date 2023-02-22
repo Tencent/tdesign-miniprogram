@@ -15,15 +15,15 @@
     aria-valuenow="{{value}}"
     aria-valuetext="{{utils.getText(texts,value,defaultTexts)}}"
   >
-    <view wx:for="{{ count }}" wx:key="*this">
-      <t-icon
-        class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
-        style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
-        t-class="{{prefix}}-class-icon"
-        name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
-        size="{{ size }}"
-      />
-    </view>
+    <t-icon
+      wx:for="{{ count }}"
+      wx:key="*this"
+      class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
+      style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
+      t-class="{{prefix}}-class-icon"
+      name="{{utils.getIconName(defaultValue, value, index, variant, icon)}}"
+      size="{{ size }}"
+    />
   </view>
   <text
     wx:if="{{showText||isChange}}"
