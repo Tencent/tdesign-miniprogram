@@ -13,7 +13,6 @@ exports[`Search Search action demo works fine 1`] = `
       bind:action-click="actionHandle"
       bind:blur="blurHandle"
       bind:change="changeHandle"
-      bind:clear="clearHandle"
       bind:focus="focusHandle"
     />
   </wx-view>

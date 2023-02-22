@@ -11,7 +11,7 @@
 @search-square-radius: var(--td-search-square-radius, @radius-default);
 @search-round-radius: calc(@search-height / 2);
 @search-action-color: var(--td-search-action-color, @brand-color);
-@search-right-icon-color: var(--td-search-right-icon-color, @font-gray-3);
+@search-clear-icon-color: var(--td-search-clear-icon-color, @font-gray-3);
 
 .@{prefix}-search {
   display: flex;
@@ -62,10 +62,10 @@
     }
   }
 
-  &__right {
+  &__clear {
     position: relative;
     margin-left: 10px;
-    color: @search-right-icon-color;
+    color: @search-clear-icon-color;
     .hotspot-expanded();
   }
 
