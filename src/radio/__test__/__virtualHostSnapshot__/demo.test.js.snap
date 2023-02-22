@@ -11,9 +11,9 @@ exports[`Radio Radio align demo works fine 1`] = `
     class="block"
   />
   <t-radio
-    align="right"
     defaultChecked="{{true}}"
     label="单选"
+    placement="right"
     value="radio2"
   />
 </align>
