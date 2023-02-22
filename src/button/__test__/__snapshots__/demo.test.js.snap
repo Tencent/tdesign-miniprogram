@@ -182,9 +182,9 @@ exports[`Button Button icon-btn demo works fine 1`] = `
       加载中
     </t-button>
     <t-button
-      ariaLabel="返回"
+      ariaLabel="搜索"
       class="margin"
-      icon="chevron-left"
+      icon="search"
       shape="square"
       size="large"
       theme="primary"
@@ -205,8 +205,8 @@ exports[`Button Button shape demo works fine 1`] = `
       填充按钮
     </t-button>
     <t-button
-      ariaLabel="返回"
-      icon="chevron-left"
+      ariaLabel="搜索"
+      icon="search"
       shape="square"
       size="large"
       theme="primary"
@@ -219,8 +219,8 @@ exports[`Button Button shape demo works fine 1`] = `
       填充按钮
     </t-button>
     <t-button
-      ariaLabel="返回"
-      icon="chevron-left"
+      ariaLabel="搜索"
+      icon="search"
       shape="circle"
       size="large"
       theme="primary"

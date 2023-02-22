@@ -31,14 +31,6 @@ export interface TdButtonProps {
     value?: any;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 禁用状态
    * @default false
    */
@@ -77,7 +69,7 @@ export interface TdButtonProps {
     value?: boolean;
   };
   /**
-   * 加载loading样式
+   * 透传至 Loading 组件
    */
   loadingProps?: {
     type: ObjectConstructor;
