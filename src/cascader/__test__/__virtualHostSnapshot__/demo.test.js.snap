@@ -1,0 +1,878 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cascader Cascader base demo works fine 1`] = `
+<base>
+  <t-cell
+    arrow="{{true}}"
+    note="请选择地址"
+    title="地址"
+    bind:click="showCascader"
+  />
+  <t-cascader
+    options="{{
+      Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "label": "东城区",
+                  "value": "110101",
+                },
+                Object {
+                  "label": "西城区",
+                  "value": "110102",
+                },
+                Object {
+                  "label": "朝阳区",
+                  "value": "110105",
+                },
+                Object {
+                  "label": "丰台区",
+                  "value": "110106",
+                },
+                Object {
+                  "label": "石景山区",
+                  "value": "110107",
+                },
+                Object {
+                  "label": "海淀区",
+                  "value": "110108",
+                },
+                Object {
+                  "label": "门头沟区",
+                  "value": "110109",
+                },
+                Object {
+                  "label": "房山区",
+                  "value": "110111",
+                },
+                Object {
+                  "label": "通州区",
+                  "value": "110112",
+                },
+                Object {
+                  "label": "顺义区",
+                  "value": "110113",
+                },
+                Object {
+                  "label": "昌平区",
+                  "value": "110114",
+                },
+                Object {
+                  "label": "大兴区",
+                  "value": "110115",
+                },
+                Object {
+                  "label": "怀柔区",
+                  "value": "110116",
+                },
+                Object {
+                  "label": "平谷区",
+                  "value": "110117",
+                },
+                Object {
+                  "label": "密云区",
+                  "value": "110118",
+                },
+                Object {
+                  "label": "延庆区",
+                  "value": "110119",
+                },
+              ],
+              "label": "北京市",
+              "value": "110100",
+            },
+          ],
+          "label": "北京市",
+          "value": "110000",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "label": "和平区",
+                  "value": "120101",
+                },
+                Object {
+                  "label": "河东区",
+                  "value": "120102",
+                },
+                Object {
+                  "label": "河西区",
+                  "value": "120103",
+                },
+                Object {
+                  "label": "南开区",
+                  "value": "120104",
+                },
+                Object {
+                  "label": "河北区",
+                  "value": "120105",
+                },
+                Object {
+                  "label": "红桥区",
+                  "value": "120106",
+                },
+                Object {
+                  "label": "东丽区",
+                  "value": "120110",
+                },
+                Object {
+                  "label": "西青区",
+                  "value": "120111",
+                },
+                Object {
+                  "label": "津南区",
+                  "value": "120112",
+                },
+                Object {
+                  "label": "北辰区",
+                  "value": "120113",
+                },
+                Object {
+                  "label": "武清区",
+                  "value": "120114",
+                },
+                Object {
+                  "label": "宝坻区",
+                  "value": "120115",
+                },
+                Object {
+                  "label": "滨海新区",
+                  "value": "120116",
+                },
+                Object {
+                  "label": "宁河区",
+                  "value": "120117",
+                },
+                Object {
+                  "label": "静海区",
+                  "value": "120118",
+                },
+                Object {
+                  "label": "蓟州区",
+                  "value": "120119",
+                },
+              ],
+              "label": "天津市",
+              "value": "120100",
+            },
+          ],
+          "label": "天津市",
+          "value": "120000",
+        },
+      ]
+    }}"
+    title="请选择地址"
+    visible="{{false}}"
+    bind:change="onChange"
+  />
+</base>
+`;
+
+exports[`Cascader Cascader keys demo works fine 1`] = `
+<keys>
+  <t-cell
+    arrow="{{true}}"
+    note="请选择地址"
+    title="地址"
+    bind:click="showCascader"
+  />
+  <t-cascader
+    class="demo"
+    keys="{{
+      Object {
+        "children": "sub",
+        "label": "name",
+        "value": "id",
+      }
+    }}"
+    options="{{
+      Array [
+        Object {
+          "id": "110000",
+          "name": "北京市",
+          "sub": Array [
+            Object {
+              "id": "110100",
+              "name": "北京市",
+              "sub": Array [
+                Object {
+                  "id": "110101",
+                  "name": "东城区",
+                },
+                Object {
+                  "id": "110102",
+                  "name": "西城区",
+                },
+                Object {
+                  "id": "110105",
+                  "name": "朝阳区",
+                },
+                Object {
+                  "id": "110106",
+                  "name": "丰台区",
+                },
+                Object {
+                  "id": "110107",
+                  "name": "石景山区",
+                },
+                Object {
+                  "id": "110108",
+                  "name": "海淀区",
+                },
+                Object {
+                  "id": "110109",
+                  "name": "门头沟区",
+                },
+                Object {
+                  "id": "110111",
+                  "name": "房山区",
+                },
+                Object {
+                  "id": "110112",
+                  "name": "通州区",
+                },
+                Object {
+                  "id": "110113",
+                  "name": "顺义区",
+                },
+                Object {
+                  "id": "110114",
+                  "name": "昌平区",
+                },
+                Object {
+                  "id": "110115",
+                  "name": "大兴区",
+                },
+                Object {
+                  "id": "110116",
+                  "name": "怀柔区",
+                },
+                Object {
+                  "id": "110117",
+                  "name": "平谷区",
+                },
+                Object {
+                  "id": "110118",
+                  "name": "密云区",
+                },
+                Object {
+                  "id": "110119",
+                  "name": "延庆区",
+                },
+              ],
+            },
+          ],
+        },
+        Object {
+          "id": "120000",
+          "name": "天津市",
+          "sub": Array [
+            Object {
+              "id": "120100",
+              "name": "天津市",
+              "sub": Array [
+                Object {
+                  "id": "120101",
+                  "name": "和平区",
+                },
+                Object {
+                  "id": "120102",
+                  "name": "河东区",
+                },
+                Object {
+                  "id": "120103",
+                  "name": "河西区",
+                },
+                Object {
+                  "id": "120104",
+                  "name": "南开区",
+                },
+                Object {
+                  "id": "120105",
+                  "name": "河北区",
+                },
+                Object {
+                  "id": "120106",
+                  "name": "红桥区",
+                },
+                Object {
+                  "id": "120110",
+                  "name": "东丽区",
+                },
+                Object {
+                  "id": "120111",
+                  "name": "西青区",
+                },
+                Object {
+                  "id": "120112",
+                  "name": "津南区",
+                },
+                Object {
+                  "id": "120113",
+                  "name": "北辰区",
+                },
+                Object {
+                  "id": "120114",
+                  "name": "武清区",
+                },
+                Object {
+                  "id": "120115",
+                  "name": "宝坻区",
+                },
+                Object {
+                  "id": "120116",
+                  "name": "滨海新区",
+                },
+                Object {
+                  "id": "120117",
+                  "name": "宁河区",
+                },
+                Object {
+                  "id": "120118",
+                  "name": "静海区",
+                },
+                Object {
+                  "id": "120119",
+                  "name": "蓟州区",
+                },
+              ],
+            },
+          ],
+        },
+      ]
+    }}"
+    title="请选择地址"
+    visible="{{false}}"
+    bind:change="onChange"
+  />
+</keys>
+`;
+
+exports[`Cascader Cascader theme-tab demo works fine 1`] = `
+<theme-tab>
+  <t-cell
+    arrow="{{true}}"
+    note="请选择地址"
+    title="地址"
+    bind:click="showCascader"
+  />
+  <t-cascader
+    options="{{
+      Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "label": "东城区",
+                  "value": "110101",
+                },
+                Object {
+                  "label": "西城区",
+                  "value": "110102",
+                },
+                Object {
+                  "label": "朝阳区",
+                  "value": "110105",
+                },
+                Object {
+                  "label": "丰台区",
+                  "value": "110106",
+                },
+                Object {
+                  "label": "石景山区",
+                  "value": "110107",
+                },
+                Object {
+                  "label": "海淀区",
+                  "value": "110108",
+                },
+                Object {
+                  "label": "门头沟区",
+                  "value": "110109",
+                },
+                Object {
+                  "label": "房山区",
+                  "value": "110111",
+                },
+                Object {
+                  "label": "通州区",
+                  "value": "110112",
+                },
+                Object {
+                  "label": "顺义区",
+                  "value": "110113",
+                },
+                Object {
+                  "label": "昌平区",
+                  "value": "110114",
+                },
+                Object {
+                  "label": "大兴区",
+                  "value": "110115",
+                },
+                Object {
+                  "label": "怀柔区",
+                  "value": "110116",
+                },
+                Object {
+                  "label": "平谷区",
+                  "value": "110117",
+                },
+                Object {
+                  "label": "密云区",
+                  "value": "110118",
+                },
+                Object {
+                  "label": "延庆区",
+                  "value": "110119",
+                },
+              ],
+              "label": "北京市",
+              "value": "110100",
+            },
+          ],
+          "label": "北京市",
+          "value": "110000",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "label": "和平区",
+                  "value": "120101",
+                },
+                Object {
+                  "label": "河东区",
+                  "value": "120102",
+                },
+                Object {
+                  "label": "河西区",
+                  "value": "120103",
+                },
+                Object {
+                  "label": "南开区",
+                  "value": "120104",
+                },
+                Object {
+                  "label": "河北区",
+                  "value": "120105",
+                },
+                Object {
+                  "label": "红桥区",
+                  "value": "120106",
+                },
+                Object {
+                  "label": "东丽区",
+                  "value": "120110",
+                },
+                Object {
+                  "label": "西青区",
+                  "value": "120111",
+                },
+                Object {
+                  "label": "津南区",
+                  "value": "120112",
+                },
+                Object {
+                  "label": "北辰区",
+                  "value": "120113",
+                },
+                Object {
+                  "label": "武清区",
+                  "value": "120114",
+                },
+                Object {
+                  "label": "宝坻区",
+                  "value": "120115",
+                },
+                Object {
+                  "label": "滨海新区",
+                  "value": "120116",
+                },
+                Object {
+                  "label": "宁河区",
+                  "value": "120117",
+                },
+                Object {
+                  "label": "静海区",
+                  "value": "120118",
+                },
+                Object {
+                  "label": "蓟州区",
+                  "value": "120119",
+                },
+              ],
+              "label": "天津市",
+              "value": "120100",
+            },
+          ],
+          "label": "天津市",
+          "value": "120000",
+        },
+      ]
+    }}"
+    theme="tab"
+    title="请选择地址"
+    visible="{{false}}"
+    bind:change="onChange"
+  />
+</theme-tab>
+`;
+
+exports[`Cascader Cascader with-title demo works fine 1`] = `
+<with-title>
+  <t-cell
+    arrow="{{true}}"
+    note="请选择地址"
+    title="地址"
+    bind:click="showCascader"
+  />
+  <t-cascader
+    options="{{
+      Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "label": "东城区",
+                  "value": "110101",
+                },
+                Object {
+                  "label": "西城区",
+                  "value": "110102",
+                },
+                Object {
+                  "label": "朝阳区",
+                  "value": "110105",
+                },
+                Object {
+                  "label": "丰台区",
+                  "value": "110106",
+                },
+                Object {
+                  "label": "石景山区",
+                  "value": "110107",
+                },
+                Object {
+                  "label": "海淀区",
+                  "value": "110108",
+                },
+                Object {
+                  "label": "门头沟区",
+                  "value": "110109",
+                },
+                Object {
+                  "label": "房山区",
+                  "value": "110111",
+                },
+                Object {
+                  "label": "通州区",
+                  "value": "110112",
+                },
+                Object {
+                  "label": "顺义区",
+                  "value": "110113",
+                },
+                Object {
+                  "label": "昌平区",
+                  "value": "110114",
+                },
+                Object {
+                  "label": "大兴区",
+                  "value": "110115",
+                },
+                Object {
+                  "label": "怀柔区",
+                  "value": "110116",
+                },
+                Object {
+                  "label": "平谷区",
+                  "value": "110117",
+                },
+                Object {
+                  "label": "密云区",
+                  "value": "110118",
+                },
+                Object {
+                  "label": "延庆区",
+                  "value": "110119",
+                },
+              ],
+              "label": "北京市",
+              "value": "110100",
+            },
+          ],
+          "label": "北京市",
+          "value": "110000",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "label": "和平区",
+                  "value": "120101",
+                },
+                Object {
+                  "label": "河东区",
+                  "value": "120102",
+                },
+                Object {
+                  "label": "河西区",
+                  "value": "120103",
+                },
+                Object {
+                  "label": "南开区",
+                  "value": "120104",
+                },
+                Object {
+                  "label": "河北区",
+                  "value": "120105",
+                },
+                Object {
+                  "label": "红桥区",
+                  "value": "120106",
+                },
+                Object {
+                  "label": "东丽区",
+                  "value": "120110",
+                },
+                Object {
+                  "label": "西青区",
+                  "value": "120111",
+                },
+                Object {
+                  "label": "津南区",
+                  "value": "120112",
+                },
+                Object {
+                  "label": "北辰区",
+                  "value": "120113",
+                },
+                Object {
+                  "label": "武清区",
+                  "value": "120114",
+                },
+                Object {
+                  "label": "宝坻区",
+                  "value": "120115",
+                },
+                Object {
+                  "label": "滨海新区",
+                  "value": "120116",
+                },
+                Object {
+                  "label": "宁河区",
+                  "value": "120117",
+                },
+                Object {
+                  "label": "静海区",
+                  "value": "120118",
+                },
+                Object {
+                  "label": "蓟州区",
+                  "value": "120119",
+                },
+              ],
+              "label": "天津市",
+              "value": "120100",
+            },
+          ],
+          "label": "天津市",
+          "value": "120000",
+        },
+      ]
+    }}"
+    subTitles="{{
+      Array [
+        "请选择省份",
+        "请选择城市",
+        "请选择区/县",
+      ]
+    }}"
+    title="请选择地址"
+    visible="{{false}}"
+    bind:change="onChange"
+  />
+</with-title>
+`;
+
+exports[`Cascader Cascader with-value demo works fine 1`] = `
+<with-value>
+  <t-cell
+    arrow="{{true}}"
+    note="请选择地址"
+    title="地址"
+    bind:click="showCascader"
+  />
+  <t-cascader
+    options="{{
+      Array [
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "label": "东城区",
+                  "value": "110101",
+                },
+                Object {
+                  "label": "西城区",
+                  "value": "110102",
+                },
+                Object {
+                  "label": "朝阳区",
+                  "value": "110105",
+                },
+                Object {
+                  "label": "丰台区",
+                  "value": "110106",
+                },
+                Object {
+                  "label": "石景山区",
+                  "value": "110107",
+                },
+                Object {
+                  "label": "海淀区",
+                  "value": "110108",
+                },
+                Object {
+                  "label": "门头沟区",
+                  "value": "110109",
+                },
+                Object {
+                  "label": "房山区",
+                  "value": "110111",
+                },
+                Object {
+                  "label": "通州区",
+                  "value": "110112",
+                },
+                Object {
+                  "label": "顺义区",
+                  "value": "110113",
+                },
+                Object {
+                  "label": "昌平区",
+                  "value": "110114",
+                },
+                Object {
+                  "label": "大兴区",
+                  "value": "110115",
+                },
+                Object {
+                  "label": "怀柔区",
+                  "value": "110116",
+                },
+                Object {
+                  "label": "平谷区",
+                  "value": "110117",
+                },
+                Object {
+                  "label": "密云区",
+                  "value": "110118",
+                },
+                Object {
+                  "label": "延庆区",
+                  "value": "110119",
+                },
+              ],
+              "label": "北京市",
+              "value": "110100",
+            },
+          ],
+          "label": "北京市",
+          "value": "110000",
+        },
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "label": "和平区",
+                  "value": "120101",
+                },
+                Object {
+                  "label": "河东区",
+                  "value": "120102",
+                },
+                Object {
+                  "label": "河西区",
+                  "value": "120103",
+                },
+                Object {
+                  "label": "南开区",
+                  "value": "120104",
+                },
+                Object {
+                  "label": "河北区",
+                  "value": "120105",
+                },
+                Object {
+                  "label": "红桥区",
+                  "value": "120106",
+                },
+                Object {
+                  "label": "东丽区",
+                  "value": "120110",
+                },
+                Object {
+                  "label": "西青区",
+                  "value": "120111",
+                },
+                Object {
+                  "label": "津南区",
+                  "value": "120112",
+                },
+                Object {
+                  "label": "北辰区",
+                  "value": "120113",
+                },
+                Object {
+                  "label": "武清区",
+                  "value": "120114",
+                },
+                Object {
+                  "label": "宝坻区",
+                  "value": "120115",
+                },
+                Object {
+                  "label": "滨海新区",
+                  "value": "120116",
+                },
+                Object {
+                  "label": "宁河区",
+                  "value": "120117",
+                },
+                Object {
+                  "label": "静海区",
+                  "value": "120118",
+                },
+                Object {
+                  "label": "蓟州区",
+                  "value": "120119",
+                },
+              ],
+              "label": "天津市",
+              "value": "120100",
+            },
+          ],
+          "label": "天津市",
+          "value": "120000",
+        },
+      ]
+    }}"
+    title="请选择地址"
+    value="120119"
+    visible="{{false}}"
+    bind:change="onChange"
+  />
+</with-value>
+`;

@@ -4,7 +4,7 @@
 <view
   wx:if="{{visible}}"
   id="{{classPrefix}}"
-  class="{{classPrefix}} {{prefix}}-class"
+  class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
 >
   <view

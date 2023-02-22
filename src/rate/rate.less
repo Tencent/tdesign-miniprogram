@@ -4,7 +4,7 @@
 @rate-text-color: var(--td-rate-text-color, @font-gray-4);
 @rate-text-active-color: var(--td-rate-text-active-color, @font-gray-1);
 @rate-selected-color: var(--td-rate-selected-color, @warning-color);
-@rate-unselected-color: var(--td-rate-unselected-color, @gray-color-4);
+@rate-unselected-color: var(--td-rate-unselected-color, @bg-color-secondarycomponent);
 @rate-text-active-font-weight: var(--td-rate-text-active-font-weight, 600);
 @rate-icon-scale: var(--td-rate-icon-scale, 1.33);
 
@@ -71,7 +71,7 @@
     padding: 8rpx;
     border-radius: 12rpx;
     box-shadow: @shadow-1;
-    background-color: @bg-color-block;
+    background-color: @bg-color-container;
     transform: translateX(-50%);
 
     &-item {
@@ -82,7 +82,7 @@
       border-radius: 6rpx;
 
       &--active {
-        background-color: @gray-color-1;
+        background-color: @bg-color-secondarycontainer;
       }
     }
 

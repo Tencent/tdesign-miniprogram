@@ -3,7 +3,7 @@
 
 <view
   wx:if="{{wrapperVisible}}"
-  class="{{classPrefix}} {{prefix}}-class"
+  class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style([this.getStyles(top, zIndex), style, customStyle])}}"
 >
   <t-popup

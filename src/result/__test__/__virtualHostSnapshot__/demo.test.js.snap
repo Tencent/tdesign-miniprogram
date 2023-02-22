@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Result Result custom demo works fine 1`] = `
+<custom>
+  <t-result
+    image="https://tdesign.gtimg.com/miniprogram/images/result-image.png"
+    tClassImage="external-class-image"
+  >
+    <wx-view
+      slot="title"
+    >
+       自定义结果 
+    </wx-view>
+    <wx-view
+      slot="description"
+    >
+       描述文字 
+    </wx-view>
+  </t-result>
+</custom>
+`;
+
+exports[`Result Result description demo works fine 1`] = `
+<description>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description="描述文字"
+        theme="success"
+        title="成功状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description="描述文字"
+        theme="error"
+        title="失败状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description="描述文字"
+        theme="warning"
+        title="警示状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        description="描述文字"
+        theme="default"
+        title="默认状态"
+      />
+    </wx-view>
+  </wx-view>
+</description>
+`;
+
+exports[`Result Result theme demo works fine 1`] = `
+<theme>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        theme="success"
+        title="成功状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        theme="error"
+        title="失败状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        theme="warning"
+        title="警示状态"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-result
+        theme="default"
+        title="默认状态"
+      />
+    </wx-view>
+  </wx-view>
+</theme>
+`;

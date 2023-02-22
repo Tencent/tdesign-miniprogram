@@ -133,7 +133,7 @@ export default class Dialog extends SuperComponent {
       if (this.properties.closeOnOverlayClick) {
         this.triggerEvent('close', { trigger: 'overlay' });
       }
-      this.triggerEvent('overlayClick');
+      this.triggerEvent('overlay-click');
     },
 
     onActionTap(index: number) {

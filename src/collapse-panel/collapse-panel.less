@@ -2,7 +2,7 @@
 
 @collapse-header-text-color: var(--td-collapse-header-text-color, @font-gray-1);
 @collapse-content-text-color: var(--td-collapse-content-text-color, @font-gray-1);
-@collapse-header-text-diabled-color: var(--td-collapse-header-text-diabled-color, @text-level-4-color);
+@collapse-header-text-diabled-color: var(--td-collapse-header-text-diabled-color, @font-gray-4);
 
 // font-size
 @collapse-title-font-size: var(--td-collapse-title-font-size, @font-size-m);
@@ -15,7 +15,7 @@
 @collapse-content-line-height: var(--td-collapse-content-line-height, 1.5);
 @collapse-border-color: var(--td-collapse-border-color, @border-color);
 
-@collapse-panel-bg-color: var(--td-collapse-panel-bg-color, @bg-color-block);
+@collapse-panel-bg-color: var(--td-collapse-panel-bg-color, @bg-color-container);
 
 .@{prefix}-collapse-panel {
   .border(bottom, @collapse-border-color);
@@ -109,19 +109,19 @@
     font-size: @collapse-title-font-size;
 
     &--disabled {
-      color: @text-disabled-color;
+      color: @font-gray-4;
     }
   }
 
   &-note {
     &--disabled {
-      color: @text-disabled-color !important;
+      color: @font-gray-4 !important;
     }
   }
 
   &-right-icon {
     &--disabled {
-      color: @text-disabled-color !important;
+      color: @font-gray-4 !important;
     }
   }
 }

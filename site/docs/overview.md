@@ -201,6 +201,15 @@ spline: explain
       <p class="name">Textarea 多行文本框</p>
     </a>
   </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/textarea">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-treeselect.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-treeselect-dark.png" />
+      <p class="name">TreeSelect 树形选择</p>
+    </a>
+  </div>
+  
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/upload">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-upload.png" />
@@ -253,14 +262,6 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/dropdown-menu">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-dropdownmenu.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-dropdownmenu-dark.png" />
-      <p class="name">DropdownMenu 下拉菜单</p>
-    </a>
-  </div>
-
-  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/empty">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-empty.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-empty-dark.png" />
@@ -277,14 +278,6 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/grid">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid-dark.png" />
-      <p class="name">Grid 宫格</p>
-    </a>
-  </div>
-
-  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/image">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image-dark.png" />
@@ -293,10 +286,26 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/grid">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid-dark.png" />
+      <p class="name">Grid 宫格</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/image-viewer">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-imageviewer.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-imageviewer-dark.png" />
       <p class="name">ImageViewer 图片预览</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/progress">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-progress.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-progress-dark.png" />
+      <p class="name">Progress 进度条</p>
     </a>
   </div>
 
@@ -358,6 +367,15 @@ spline: explain
       <p class="name">Dialog 对话框</p>
     </a>
   </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/dropdown-menu">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-dropdownmenu.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-dropdownmenu-dark.png" />
+      <p class="name">DropdownMenu 下拉菜单</p>
+    </a>
+  </div>
+
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/loading">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-loading.png" />
@@ -384,18 +402,20 @@ spline: explain
 
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/popup">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-overlay.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-overlay-dark.png" />
+      <p class="name">Overlay 遮罩层</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/popup">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-popup.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-popup-dark.png" />
       <p class="name">Popup 弹出层</p>
     </a>
   </div>
-  <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/progress">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-progress.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-progress-dark.png" />
-      <p class="name">Progress 进度条</p>
-    </a>
-  </div>
+  
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/pull-down-refresh">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-pulldownrefresh.png" />

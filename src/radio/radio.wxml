@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [align, ['block', block]])}} class {{prefix}}-class"
   disabled="{{disabled}}"
   aria-role="radio"
   aria-checked="{{checked}}"

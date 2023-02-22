@@ -7,7 +7,7 @@
 <wxs module="_" src="../common/utils.wxs" />
 
 <view
-  class="{{_.cls(classPrefix, [['auto-size', column == 0]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [['auto-size', column == 0]])}} class {{prefix}}-class"
   style="{{_._style([gridItemStyle, style, customStyle])}}"
   hover-class="{{hover ? classPrefix + '--hover':''}}"
   hover-stay-time="{{200}}"

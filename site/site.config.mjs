@@ -261,7 +261,7 @@ export default {
           component: () => import('@/tree-select/README.md'),
         },
         {
-          title: 'UpLoad 上传',
+          title: 'Upload 上传',
           name: 'upload',
           meta: { docType: 'form' },
           path: '/miniprogram/components/upload',

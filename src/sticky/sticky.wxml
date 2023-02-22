@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  class="{{classPrefix}} {{prefix}}-class"
+  class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style(['z-index:' + zIndex, containerStyle, style, customStyle])}}"
 >
   <view class="{{classPrefix}}__content" style="z-index:{{ zIndex }};{{ contentStyle }}">

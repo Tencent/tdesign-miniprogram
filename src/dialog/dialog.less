@@ -21,8 +21,8 @@
 .@{dialog} {
   overflow: hidden;
   width: @dialog-width;
-  border-radius: @border-radius;
-  background-color: @bg-color-block;
+  border-radius: @radius-default;
+  background-color: @bg-color-container;
 
   &__close-btn {
     position: absolute;
@@ -39,7 +39,6 @@
     flex-direction: column;
     justify-content: center;
     font-size: @font-size-m;
-    line-height: @text-line-height;
   }
 
   &__header {

@@ -32,3 +32,4 @@ name | params | description
 -- | -- | --
 change | `(value: DropdownValue)` | \-
 confirm | `(value: DropdownValue)` | \-
+reset | \- | \-
