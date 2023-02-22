@@ -5,7 +5,7 @@
   wx:if="{{visible}}"
   style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} {{classPrefix}}--{{theme}} class {{prefix}}-class"
-  aria-role="ariaRole || (extra || _suffixIcon ? 'button': '')"
+  aria-role="{{ariaRole || (_suffixIcon ? 'button': '')}}"
   aria-label="{{ariaLabel}}"
 >
   <!-- prefixIcon -->
