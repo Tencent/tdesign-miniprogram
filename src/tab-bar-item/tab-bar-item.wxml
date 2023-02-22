@@ -3,7 +3,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}}"
+  class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}} class {{prefix}}-class"
 >
   <view
     class="{{_.cls(classPrefix + '__content', [['checked', isChecked], theme])}}"
@@ -23,11 +23,11 @@
     >
       <t-badge
         wx:if="{{badgeProps.dot || badgeProps.count}}"
-        count="{{badgeProps.count}}"
+        count="{{badgeProps.count || 0}}"
         max-count="{{badgeProps.maxCount || 99}}"
-        dot="{{badgeProps.dot}}"
-        content="{{badgeProps.content}}"
-        size="{{badgeProps.size}}"
+        dot="{{badgeProps.dot || false}}"
+        content="{{badgeProps.content || ''}}"
+        size="{{badgeProps.size || 'medium'}}"
         visible="{{badgeProps.visible}}"
         offset="{{badgeProps.offset || [0,0]}}"
         t-class-count="{{prefix + '-badge-class'}}"

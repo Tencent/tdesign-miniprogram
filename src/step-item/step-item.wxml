@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [layout, ['readonly', readonly]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [layout, ['readonly', readonly]])}} class {{prefix}}-class"
   bind:tap="onTap"
 >
   <!-- icon  -->
@@ -21,6 +21,7 @@
 
   <!-- content -->
   <view class="{{_.cls(classPrefix + '__content', [layout, ['last', isLastChild]])}} {{prefix}}-class-content">
+    <slot />
     <view class="{{_.cls(classPrefix + '__title', [curStatus, layout])}} {{prefix}}-class-title">
       {{ title }}
       <slot name="title" />

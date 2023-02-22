@@ -7,7 +7,7 @@
 <wxs module="_" src="../common/utils.wxs" />
 
 <view
-  class="{{_.cls(classPrefix, [['auto-size', column == 0]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [['auto-size', column == 0]])}} class {{prefix}}-class"
   style="{{_._style([gridItemStyle, style, customStyle])}}"
   hover-class="{{hover ? classPrefix + '--hover':''}}"
   hover-stay-time="{{200}}"
@@ -23,14 +23,14 @@
       <slot />
       <t-badge
         wx:if="{{image || icon}}"
-        color="{{badgeProps.color}}"
-        content="{{badgeProps.content}}"
-        count="{{badgeProps.count}}"
-        dot="{{badgeProps.dot}}"
+        color="{{badgeProps.color || ''}}"
+        content="{{badgeProps.content || ''}}"
+        count="{{badgeProps.count || 0}}"
+        dot="{{badgeProps.dot || false}}"
         max-count="{{badgeProps.maxCount || 99}}"
-        offset="{{badgeProps.offset}}"
+        offset="{{badgeProps.offset || []}}"
         shape="{{badgeProps.shape || 'circle'}}"
-        show-zero="{{badgeProps.showZero}}"
+        show-zero="{{badgeProps.showZero || false}}"
         size="{{badgeProps.size || 'medium'}}"
         t-class="{{badgeProps.tClass}}"
         t-class-content="{{badgeProps.tClassContent}}"

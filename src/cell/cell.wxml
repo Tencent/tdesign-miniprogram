@@ -2,8 +2,8 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{prefix}}-class {{classPrefix}} {{ hover ? classPrefix + '--hover' : ''}} {{ !bordered ? classPrefix + '--borderless' : ''}} {{classPrefix}}--{{align}}"
-  hover-class="{{classPrefix}}--hover-class"
+  class="class {{prefix}}-class {{classPrefix}} {{ !bordered || isLastChild ? classPrefix + '--borderless' : ''}} {{classPrefix}}--{{align}}"
+  hover-class="{{ hover ? classPrefix + '--hover' : ''}}"
   hover-stay-time="70"
   bind:tap="onClick"
   aria-role="{{ariaRole || (arrow ? 'button' : '')}}"

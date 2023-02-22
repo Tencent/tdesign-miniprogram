@@ -2,7 +2,7 @@
 
 <t-picker
   style="{{_._style([style, customStyle])}}"
-  class="{{classPrefix}}"
+  class="class {{prefix}}-class {{classPrefix}}"
   visible="{{visible}}"
   value="{{columnsValue}}"
   bind:pick="onColumnChange"
@@ -23,5 +23,4 @@
     options="{{item}}"
     index="index"
   />
-  <slot slot="footer" name="footer" />
 </t-picker>

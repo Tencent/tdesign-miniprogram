@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'custom', 'customization', 'event', 'iconDemo', 'scrolling', 'theme'];
+const mapper = ['base', 'custom', 'customization', 'event', 'iconDemo', 'scrolling', 'suffixIcon', 'theme'];
 
 describe('NoticeBar', () => {
   mapper.forEach((demoName) => {

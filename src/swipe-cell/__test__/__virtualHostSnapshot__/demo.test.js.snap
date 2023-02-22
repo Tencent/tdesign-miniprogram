@@ -1,0 +1,230 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwipeCell SwipeCell double demo works fine 1`] = `
+<double>
+  <t-swipe-cell
+    left="{{
+      Array [
+        Object {
+          "className": "btn favor-btn",
+          "text": "选择",
+        },
+      ]
+    }}"
+    right="{{
+      Array [
+        Object {
+          "className": "btn delete-btn",
+          "text": "删除",
+        },
+      ]
+    }}"
+    bind:click="onActionClick"
+  >
+    <t-cell
+      bordered="{{false}}"
+      note="辅助信息"
+      title="左右滑操作"
+    />
+  </t-swipe-cell>
+</double>
+`;
+
+exports[`SwipeCell SwipeCell icon demo works fine 1`] = `
+<wx-icon>
+  <t-swipe-cell
+    right="{{
+      Array [
+        Object {
+          "className": "btn edit-btn",
+          "icon": Object {
+            "name": "edit",
+            "size": 16,
+          },
+          "text": "编辑",
+        },
+        Object {
+          "className": "btn delete-btn",
+          "icon": Object {
+            "name": "delete",
+            "size": 16,
+          },
+          "text": "删除",
+        },
+      ]
+    }}"
+    bind:click="onActionClick"
+  >
+    <t-cell
+      bordered="{{false}}"
+      note="辅助信息"
+      title="左滑-带图标文本双操作"
+    />
+  </t-swipe-cell>
+  <t-swipe-cell
+    right="{{
+      Array [
+        Object {
+          "className": "btn edit-btn",
+          "icon": "edit",
+        },
+        Object {
+          "className": "btn delete-btn",
+          "icon": "delete",
+        },
+      ]
+    }}"
+  >
+    <t-cell
+      bordered="{{false}}"
+      note="辅助信息"
+      title="左滑-仅带图标双操作"
+    />
+  </t-swipe-cell>
+  <t-swipe-cell>
+    <t-cell
+      bordered="{{false}}"
+      description="一段很长很长的内容文字"
+      image="https://tdesign.gtimg.com/miniprogram/images/default.svg"
+      note="辅助信息"
+      title="左滑大列表-仅带图标双操作"
+    />
+    <wx-view
+      class="btn-wrapper"
+      slot="right"
+    >
+      <wx-view
+        class="btn edit-btn column"
+        bind:tap="onEdit"
+      >
+        <t-icon
+          class="padding-bottom"
+          name="edit"
+          size="32rpx"
+        />
+        
+      编辑
+    
+      </wx-view>
+      <wx-view
+        class="btn delete-btn column"
+        bind:tap="onDelete"
+      >
+        <t-icon
+          class="padding-bottom"
+          name="delete"
+          size="32rpx"
+        />
+        
+      删除
+    
+      </wx-view>
+    </wx-view>
+  </t-swipe-cell>
+</wx-icon>
+`;
+
+exports[`SwipeCell SwipeCell left demo works fine 1`] = `
+<left>
+  <t-swipe-cell>
+    <t-cell
+      bordered="{{false}}"
+      note="辅助信息"
+      title="左滑单操作"
+    />
+    <wx-view
+      class="btn delete-btn"
+      slot="right"
+      bind:tap="onDelete"
+    >
+      删除
+    </wx-view>
+  </t-swipe-cell>
+  <t-swipe-cell>
+    <t-cell
+      bordered="{{false}}"
+      description="一段很长很长的内容文字"
+      image="https://tdesign.gtimg.com/miniprogram/images/default.svg"
+      note="辅助信息"
+      title="左滑大列表"
+    />
+    <wx-view
+      class="btn delete-btn"
+      slot="right"
+      bind:tap="onDelete"
+    >
+      删除
+    </wx-view>
+  </t-swipe-cell>
+  <t-swipe-cell
+    right="{{
+      Array [
+        Object {
+          "className": "btn edit-btn",
+          "text": "编辑",
+        },
+        Object {
+          "className": "btn delete-btn",
+          "text": "删除",
+        },
+      ]
+    }}"
+    bind:click="onActionClick"
+  >
+    <t-cell
+      bordered="{{false}}"
+      note="辅助信息"
+      title="左滑双操作"
+    />
+  </t-swipe-cell>
+  <t-swipe-cell>
+    <t-cell
+      bordered="{{false}}"
+      note="辅助信息"
+      title="左滑多操作"
+    />
+    <wx-view
+      class="btn-wrapper"
+      slot="right"
+    >
+      <wx-view
+        class="btn favor-btn"
+        bind:tap="onFavor"
+      >
+        收藏
+      </wx-view>
+      <wx-view
+        class="btn edit-btn"
+        bind:tap="onEdit"
+      >
+        编辑
+      </wx-view>
+      <wx-view
+        class="btn delete-btn"
+        bind:tap="onDelete"
+      >
+        删除
+      </wx-view>
+    </wx-view>
+  </t-swipe-cell>
+</left>
+`;
+
+exports[`SwipeCell SwipeCell right demo works fine 1`] = `
+<right>
+  <t-swipe-cell>
+    <t-cell
+      bordered="{{false}}"
+      note="辅助信息"
+      title="右滑单操作"
+    />
+    <wx-view
+      class="btn favor-btn"
+      slot="left"
+      bind:tap="onChoice"
+    >
+      选择
+    </wx-view>
+  </t-swipe-cell>
+</right>
+`;

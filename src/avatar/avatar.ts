@@ -14,7 +14,6 @@ export default class Avatar extends SuperComponent {
   };
 
   externalClasses = [
-    'class',
     `${prefix}-class`,
     `${prefix}-class-image`,
     `${prefix}-class-icon`,

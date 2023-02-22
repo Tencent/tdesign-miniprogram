@@ -5,10 +5,6 @@ import Props from './props';
 const { prefix } = config;
 const name = `${prefix}-radio`;
 
-const iconDefault = {
-  'fill-circle': ['check-circle-filled', 'circle'],
-  'stroke-line': ['check', ''],
-};
 @wxComponent()
 export default class Radio extends SuperComponent {
   externalClasses = [
@@ -28,8 +24,8 @@ export default class Radio extends SuperComponent {
       type: 'ancestor',
       linked(parent) {
         this.parent = parent;
-        if (parent.data.align) {
-          this.setData({ align: parent.data.align });
+        if (parent.data.placement) {
+          this.setData({ placement: parent.data.placement });
         }
         if (parent.data.borderless) {
           this.setData({ borderless: true });
@@ -98,7 +94,7 @@ export default class Radio extends SuperComponent {
       this.setData({
         customIcon: isIdArr,
         slotIcon: icon === 'slot',
-        iconVal: !isIdArr ? iconDefault[icon] : this.data.icon,
+        iconVal: isIdArr ? this.parent?.icon || icon : [],
       });
     },
 

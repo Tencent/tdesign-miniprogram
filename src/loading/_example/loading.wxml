@@ -15,13 +15,6 @@
   <t-demo desc="纯文字" padding>
     <text />
   </t-demo>
-  <t-demo desc="加载失败" padding>
-    <error />
-  </t-demo>
-
-  <!-- <t-demo desc="进度条加载" padding>
-    <t-button size="large" plain block bind:tap="goToProgress">页面进度条加载</t-button>
-  </t-demo> -->
 
   <t-demo title="02 组件尺寸" desc="大尺寸" padding>
     <size />

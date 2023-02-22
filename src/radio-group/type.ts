@@ -11,7 +11,7 @@ export interface TdRadioGroupProps<T = RadioValue> {
    * 复选框和内容相对位置；仅在使用 options 时生效
    * @default left
    */
-  align?: {
+  placement?: {
     type: StringConstructor;
     value?: 'left' | 'right';
   };

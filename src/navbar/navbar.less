@@ -2,7 +2,7 @@
 @import '../common/style/index.less';
 
 @navbar-color: var(--td-navbar-color, @font-gray-1);
-@navbar-bg-color: var(--td-navbar-bg-color, @bg-color-block);
+@navbar-bg-color: var(--td-navbar-bg-color, @bg-color-container);
 @navbar-height: var(--td-navbar-height, 96rpx);
 @navbar-right: var(
   --td-navbar-right,
@@ -79,6 +79,7 @@
     // width: @navbar-right;
     display: flex;
     align-items: center;
+    margin-left: @spacer-1;
 
     &-arrow {
       font-size: @navbar-left-arrow-size;
@@ -87,13 +88,24 @@
 
   &__capsule {
     box-sizing: border-box;
-    margin-left: 24rpx;
     width: @navbar-capsule-width;
     height: @navbar-capsule-height;
-    border-radius: @navbar-capsule-border-radius;
-    border: 1rpx solid @navbar-capsule-border-color;
     display: flex;
     align-items: center;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      box-sizing: border-box;
+      border-radius: calc(@navbar-capsule-border-radius * 2);
+      border: 2rpx solid @navbar-capsule-border-color;
+    }
 
     &:empty {
       display: none;
@@ -125,9 +137,5 @@
       overflow: hidden;
       font-weight: @navbar-title-font-weight;
     }
-  }
-
-  &__btn {
-    margin-left: 24rpx;
   }
 }

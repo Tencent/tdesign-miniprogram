@@ -2,6 +2,7 @@
 
 <t-popup
   style="{{_._style([style, customStyle])}}"
+  class="class"
   bind:visible-change="visibleChange"
   visible="{{visible}}"
   zIndex="{{zIndex}}"
@@ -22,8 +23,10 @@
         data-item="{{item}}"
         data-index="{{index}}"
         bindtap="itemClick"
+        aria-role="{{ ariaRole || 'button' }}"
+        aria-label="{{item.title}}"
       >
-        <view wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
+        <view aria-hidden="{{true}}" wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
           <t-icon name="{{item.icon}}" />
         </view>
         <view class="{{classPrefix}}__sidebar-item-title"> {{item.title}} </view>

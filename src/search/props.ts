@@ -60,6 +60,11 @@ const props: TdSearchProps = {
     type: String,
     value: '',
   },
+  /** 是否启用清除控件 */
+  clearable: {
+    type: Boolean,
+    value: true,
+  },
 };
 
 export default props;

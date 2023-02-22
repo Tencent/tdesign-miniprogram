@@ -13,7 +13,6 @@ export default class Input extends SuperComponent {
   };
 
   externalClasses = [
-    'class',
     `${prefix}-class`,
     `${prefix}-class-prefix-icon`,
     `${prefix}-class-label`,
@@ -37,7 +36,7 @@ export default class Input extends SuperComponent {
   lifetimes = {
     ready() {
       const { value } = this.properties;
-      this.updateValue(value);
+      this.updateValue(value == null ? '' : value);
     },
   };
 

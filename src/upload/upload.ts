@@ -1,6 +1,6 @@
 import { isObject, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
-import { UploadMpConfig, UploadFile } from './type';
+import { UploadFile } from './type';
 import config from '../common/config';
 
 const { prefix } = config;
@@ -20,13 +20,6 @@ export default class Upload extends SuperComponent {
     proofs: [],
     customFiles: [] as UploadFile[], // 内部动态修改的files
     customLimit: 0, // 内部动态修改的limit
-    // 以下是声明properties
-    config: {} as UploadMpConfig,
-    files: [] as UploadFile[],
-    max: 0,
-    sizeLimit: 0,
-    requestMethod: null,
-    gridItemStyle: '',
     column: 4,
   };
 
@@ -51,17 +44,19 @@ export default class Upload extends SuperComponent {
     },
   };
 
+  lifetimes = {
+    ready() {
+      this.handleLimit(this.data.customFiles, this.data.max);
+      this.updateGrid();
+    },
+  };
+
   onProofTap(e: any) {
     const { index } = e.currentTarget.dataset;
     wx.previewImage({
       urls: this.data.customFiles.filter((file) => file.percent !== -1).map((file) => file.url),
       current: this.data.customFiles[index]?.url,
     });
-  }
-
-  ready() {
-    this.handleLimit(this.data.customFiles, this.data.max);
-    this.updateGrid();
   }
 
   handleLimit(customFiles: UploadFile[], max: number) {
@@ -79,39 +74,6 @@ export default class Upload extends SuperComponent {
       proofs,
       customLimit: max === 0 ? Number.MAX_SAFE_INTEGER : max - customFiles.length,
     });
-  }
-
-  uploadFiles(files: UploadFile[]) {
-    return new Promise((resolve) => {
-      // 开始调用上传函数
-      const task = this.data.requestMethod(files);
-      if (task instanceof Promise) {
-        return task;
-      }
-      resolve({});
-    });
-  }
-
-  startUpload(files: UploadFile[]) {
-    // 如果传入了上传函数，则进度设为0并开始上传，否则跳过上传
-    if (typeof this.data.requestMethod === 'function') {
-      return this.uploadFiles(files)
-        .then(() => {
-          files.forEach((file) => {
-            file.percent = 100;
-          });
-          this.triggerSuccessEvent(files);
-        })
-        .catch((err) => {
-          this.triggerFailEvent(err);
-        });
-    }
-
-    // 如果没有上传函数，success事件与微信api上传成功关联
-    this.triggerSuccessEvent(files);
-
-    this.handleLimit(this.data.customFiles, this.data.max);
-    return Promise.resolve();
   }
 
   triggerSuccessEvent(files) {
@@ -179,6 +141,39 @@ export default class Upload extends SuperComponent {
   }
 
   methods = {
+    uploadFiles(files: UploadFile[]) {
+      return new Promise((resolve) => {
+        // 开始调用上传函数
+        const task = this.data.requestMethod(files);
+        if (task instanceof Promise) {
+          return task;
+        }
+        resolve({});
+      });
+    },
+
+    startUpload(files: UploadFile[]) {
+      // 如果传入了上传函数，则进度设为0并开始上传，否则跳过上传
+      if (typeof this.data.requestMethod === 'function') {
+        return this.uploadFiles(files)
+          .then(() => {
+            files.forEach((file) => {
+              file.percent = 100;
+            });
+            this.triggerSuccessEvent(files);
+          })
+          .catch((err) => {
+            this.triggerFailEvent(err);
+          });
+      }
+
+      // 如果没有上传函数，success事件与微信api上传成功关联
+      this.triggerSuccessEvent(files);
+
+      this.handleLimit(this.data.customFiles, this.data.max);
+      return Promise.resolve();
+    },
+
     onAddTap() {
       const { mediaType, source } = this.properties;
 

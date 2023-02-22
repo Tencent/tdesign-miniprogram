@@ -1,4 +1,4 @@
-<t-cell class="block" title="选择地区" arrow hover note="{{areaText}}" bind:click="onAreaPicker" />
+<t-cell title="选择地区" arrow hover note="{{areaText}}" bind:click="onAreaPicker" />
 
 <t-picker
   visible="{{areaVisible}}"

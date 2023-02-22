@@ -8,13 +8,12 @@ const name = `${prefix}-search`;
 @wxComponent()
 export default class Search extends SuperComponent {
   externalClasses = [
-    'class',
     `${prefix}-class`,
     `${prefix}-class-input-container`,
     `${prefix}-class-input`,
     `${prefix}-class-action`,
     `${prefix}-class-left`,
-    `${prefix}-class-right`,
+    `${prefix}-class-clear`,
   ];
 
   options = {

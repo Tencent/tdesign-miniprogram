@@ -21,7 +21,7 @@ const props: TdIconProps = {
   /** 图标尺寸，支持 'small', 'medium', 'large'，'35px', '3em' 等 */
   size: {
     type: String,
-    value: undefined,
+    value: '',
   },
   /** 自定义图标前缀 */
   prefix: {

@@ -35,7 +35,6 @@ interface boundingClientRect {
 @wxComponent()
 export default class Slider extends SuperComponent {
   externalClasses = [
-    'class',
     `${prefix}-class`,
     `${prefix}-class-bar`,
     `${prefix}-class-bar-active`,
@@ -344,4 +343,6 @@ export default class Slider extends SuperComponent {
       });
     }
   }
+
+  onTouchEnd() {}
 }

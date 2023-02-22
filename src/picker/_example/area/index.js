@@ -91,6 +91,8 @@ const match = (v1, v2, size) => v1.toString().slice(0, size) === v2.toString().s
 
 Component({
   data: {
+    areaText: '',
+    areaValue: [],
     provinces: getOptions(areaList.provinces),
     cities: [],
     counties: [],

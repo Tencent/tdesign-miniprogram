@@ -38,7 +38,7 @@ export default class Textarea extends SuperComponent {
   lifetimes = {
     ready() {
       const { value } = this.properties;
-      this.updateValue(value);
+      this.updateValue(value == null ? '' : value);
     },
   };
 
@@ -102,7 +102,7 @@ export default class Textarea extends SuperComponent {
       });
     },
     onLineChange(event) {
-      this.triggerEvent('lineChange', {
+      this.triggerEvent('line-change', {
         ...event.detail,
       });
     },

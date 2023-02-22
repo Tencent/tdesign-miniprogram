@@ -33,6 +33,13 @@ export default {
           component: () => import('~/CHANGELOG.md'),
         },
         {
+          title: '样式覆盖',
+          name: 'custom-style',
+          meta: { docType: 'explain' },
+          path: '/miniprogram/custom-style',
+          component: () => import('@docs/custom-style.md'),
+        },
+        {
           title: '自定义主题',
           name: 'custom-theme',
           meta: { docType: 'explain' },
@@ -254,7 +261,7 @@ export default {
           component: () => import('@/tree-select/README.md'),
         },
         {
-          title: 'UpLoad 上传',
+          title: 'Upload 上传',
           name: 'upload',
           meta: { docType: 'form' },
           path: '/miniprogram/components/upload',

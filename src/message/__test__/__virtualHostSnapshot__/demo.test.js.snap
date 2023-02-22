@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Message Message base demo works fine 1`] = `
+<base>
+  <t-message
+    id="t-message"
+  />
+  <wx-view
+    class="message-example"
+  >
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showTextMessage"
+    >
+      纯文字的通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showIconMessage"
+    >
+      带图标的通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showCloseMessage"
+    >
+      带关闭的通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showScrollMessage"
+    >
+      可滚动多通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showBtnMessage"
+    >
+      带按钮的通知
+    </t-button>
+  </wx-view>
+</base>
+`;
+
+exports[`Message Message theme demo works fine 1`] = `
+<theme>
+  <t-message
+    id="t-message"
+  />
+  <wx-view
+    class="message-example"
+  >
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showInfoMessage"
+    >
+      普通通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showSuccessMessage"
+    >
+      成功通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showWarnMessage"
+    >
+      警示通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showErrorMessage"
+    >
+      错误通知
+    </t-button>
+  </wx-view>
+</theme>
+`;
