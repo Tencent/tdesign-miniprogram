@@ -2,6 +2,6 @@
   "component": true,
   "usingComponents": {
     "t-icon": "../icon/icon",
-    "t-button": "../button/button"
+    "t-link": "../link/link"
   }
 }

@@ -1,7 +1,7 @@
 @import '../common/style/index.less';
 
+@message-height: 96rpx;
 @message-horizontal-padding: 32rpx;
-@message-vertical-padding: 24rpx;
 @message-z-index: 15000;
 
 @message-align: flex-start;
@@ -28,9 +28,10 @@
   right: 0;
   display: flex;
   justify-content: @message-align;
+  height: @message-height;
   align-items: center;
   z-index: @message-z-index;
-  padding: @message-vertical-padding @message-horizontal-padding;
+  padding: 0 @message-horizontal-padding;
   box-sizing: border-box;
   border-radius: @message-border-radius;
   line-height: 1;
@@ -85,16 +86,8 @@
   }
 
   &__icon--right:not(:empty),
-  .@{message}__btn--right {
+  &__link {
     flex: 0 0 auto;
     margin-left: @spacer;
-  }
-
-  .@{message}__btn--right {
-    font-size: @message-content-font-size;
-    line-height: @message-content-height;
-    height: @message-content-height;
-    border-radius: @message-border-radius;
-    padding: 0;
   }
 }

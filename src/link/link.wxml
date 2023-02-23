@@ -33,6 +33,7 @@
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <block wx:if="{{content}}">{{content}}</block>
     <slot name="content" />
+    <slot />
   </view>
   <view class="{{classPrefix}}__suffix-icon">
     <slot name="suffix-icon" />
