@@ -18,10 +18,10 @@ exports[`cell :base 1`] = `
         class="t-cell__left t-class-left"
       />
       <wx-view
-        class="t-cell__title t-class-title"
+        class="t-cell__title"
       >
         <wx-view
-          class="t-cell__title-text"
+          class="t-cell__title-text  t-class-title"
         />
         <wx-view
           class="t-cell__description t-class-description"
