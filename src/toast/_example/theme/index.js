@@ -25,8 +25,8 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '失败文案',
-      theme: 'fail',
+      message: '错误文案',
+      theme: 'error',
       direction: 'column',
     });
   },

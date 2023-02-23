@@ -88,6 +88,6 @@ export interface TdToastProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: 'loading' | 'success' | 'fail';
+    value?: 'loading' | 'success' | 'error';
   };
 }
