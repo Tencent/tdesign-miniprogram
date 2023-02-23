@@ -21,6 +21,7 @@
           wx:for="{{scaleArray}}"
           wx:key="index"
           style="left:{{item.left}}px; transform: translateX(-50%); {{t.getColor(disabled, _value >= item.val, disabledColor, colors)}}"
+          aria-hidden="{{true}}"
         >
           <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}}}">
             {{scaleTextArray[index]}}
@@ -39,9 +40,11 @@
           bind:touchcancel="onTouchEnd"
         >
           <view
+            wx:if="{{label || isVisibleToScreenReader}}"
             class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
-            aria-role="region"
+            aria-role="alert"
             aria-live="assertive"
+            aria-hidden="{{!isVisibleToScreenReader}}"
           >
             {{t.getValue(label, _value) || _value}}
           </view>
@@ -52,6 +55,7 @@
             aria-valuemax="{{max}}"
             aria-valuemin="{{min}}"
             aria-valuenow="{{_value}}"
+            aria-valuetext="{{t.getValue(label, _value) || _value}}"
           ></view>
         </view>
       </view>
@@ -81,6 +85,7 @@
           wx:for-index="index"
           wx:key="index"
           style="left: {{item.left}}px; transform: translateX(-50%); {{t.getColor(disabled, (dotTopValue[1] >= item.val && item.val >= dotTopValue[0]), disabledColor, colors)}}"
+          aria-hidden="{{true}}"
         >
           <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}"
             >{{scaleTextArray[index]}}</view
@@ -99,9 +104,11 @@
           class="{{classPrefix}}__dot {{classPrefix}}__dot--left {{prefix}}-class-cursor"
         >
           <view
+            wx:if="{{label || isVisibleToScreenReader}}"
             class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
-            aria-role="region"
+            aria-role="alert"
             aria-live="assertive"
+            aria-hidden="{{!isVisibleToScreenReader}}"
           >
             {{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}
           </view>
@@ -109,9 +116,10 @@
             class="{{classPrefix}}__dot-slider"
             aria-role="slider"
             aria-disabled="{{disabled}}"
-            aria-valuemax="{{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}"
+            aria-valuemax="{{max}}"
             aria-valuemin="{{min}}"
-            aria-valuenow="{{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}"
+            aria-valuenow="{{dotTopValue[0]}}"
+            aria-valuetext="{{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}"
           ></view>
         </view>
         <view
@@ -122,9 +130,11 @@
           class="{{classPrefix}}__dot {{classPrefix}}__dot--right {{prefix}}-class-cursor"
         >
           <view
+            wx:if="{{label || isVisibleToScreenReader}}"
             class="{{_.cls(classPrefix+'__dot-value', [['sr-only', !label]])}}"
-            aria-role="region"
+            aria-role="alert"
             aria-live="assertive"
+            aria-hidden="{{!isVisibleToScreenReader}}"
           >
             {{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}
           </view>
@@ -133,8 +143,9 @@
             aria-role="slider"
             aria-disabled="{{disabled}}"
             aria-valuemax="{{max}}"
-            aria-valuemin="{{t.getValue(label, dotTopValue[0]) || dotTopValue[0]}}"
-            aria-valuenow="{{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}"
+            aria-valuemin="{{min}}"
+            aria-valuenow="{{dotTopValue[1]}}"
+            aria-valuetext="{{t.getValue(label, dotTopValue[1]) || dotTopValue[1]}}"
           >
           </view>
         </view>
