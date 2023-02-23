@@ -16,7 +16,7 @@ interface DialogAlertOptionsType {
   confirmBtn?: string | object;
 }
 
-interface DialogComfirmOptionsType extends DialogAlertOptionsType {
+interface DialogConfirmOptionsType extends DialogAlertOptionsType {
   cancelButtonText?: string;
 }
 
@@ -62,10 +62,10 @@ export default {
         ...otherOptions,
         visible: true,
       });
-      instance._onComfirm = resolve;
+      instance._onConfirm = resolve;
     });
   },
-  confirm(options: DialogComfirmOptionsType) {
+  confirm(options: DialogConfirmOptionsType) {
     const { context, selector = '#t-dialog', ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
@@ -75,11 +75,11 @@ export default {
         ...otherOptions,
         visible: true,
       });
-      instance._onComfirm = resolve;
+      instance._onConfirm = resolve;
       instance._onCancel = reject;
     });
   },
-  close(options: DialogComfirmOptionsType) {
+  close(options: DialogConfirmOptionsType) {
     const { context, selector = '#t-dialog' } = { ...options };
     const instance = getInstance(context, selector);
     if (instance) {

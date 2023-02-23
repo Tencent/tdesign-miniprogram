@@ -104,8 +104,8 @@ export default class Dialog extends SuperComponent {
 
     onConfirm() {
       this.triggerEvent('confirm');
-      if (this._onComfirm) {
-        this._onComfirm();
+      if (this._onConfirm) {
+        this._onConfirm();
         this.close();
       }
     },
