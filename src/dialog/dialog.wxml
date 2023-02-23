@@ -17,7 +17,7 @@
   placement="center"
   bind:visible-change="overlayClick"
 >
-  <view slot="content" class="{{classPrefix}} {{prefix}}-class" tabindex="0">
+  <view slot="content" class="{{classPrefix}} {{prefix}}-class" tabindex>
     <slot name="top" />
     <view
       wx:if="{{closeBtn}}"
@@ -30,12 +30,12 @@
       <t-icon wx:else name="close" size="22" />
     </view>
     <view class="{{classPrefix}}__content {{prefix}}-class-content">
-      <view wx:if="{{title}}" class="{{classPrefix}}__header">{{title}}</view>
-      <slot name="title" />
-      <view wx:if="{{content}}" class="{{classPrefix}}__body">
+      <view wx:if="{{title}}" class="{{classPrefix}}__header" tabindex="0">{{title}}</view>
+      <slot name="title" tabindex="0" />
+      <view wx:if="{{content}}" class="{{classPrefix}}__body" tabindex="0">
         <text class="{{classPrefix}}__body-text">{{content}}</text>
       </view>
-      <slot name="content" />
+      <slot name="content" tabindex="0" />
     </view>
     <slot name="middle" />
     <view
