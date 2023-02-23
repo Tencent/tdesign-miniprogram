@@ -30,7 +30,7 @@ exports[`Avatar & Avatar Groups Avatar Props : style && customStyle 1`] = `
               ariaHidden="{{false}}"
               ariaLabel="头像"
               ariaRole="img"
-              class="t-avatar t-avatar--circle  t-avatar--medium t-class-image"
+              class="t-avatar t-avatar--circle t-avatar--medium t-class-image"
               style=""
             >
               <wx-view

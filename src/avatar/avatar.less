@@ -14,10 +14,6 @@
 @avatar-icon-medium-font-size: var(--td-avatar-icon-medium-font-size, 48rpx);
 @avatar-icon-large-font-size: var(--td-avatar-icon-large-font-size, 64rpx);
 
-@avatar-border-width-small: var(--td-avatar-border-width-small, 4rpx);
-@avatar-border-width-medium: var(--td-avatar-border-width-medium, 6rpx);
-@avatar-border-width-large: var(--td-avatar-border-width-large, 8rpx);
-@avatar-border-color: var(--td-avatar-border-color, #fff);
 @avatar-circle-border-radius: var(--td-avatar-circle-border-radius, @radius-circle);
 @avatar-round-border-radius: var(--td-avatar-round-border-radius, @radius-default);
 
@@ -94,23 +90,6 @@
     &:empty {
       width: 0;
       height: 0;
-    }
-  }
-
-  //头像边框
-  &--border {
-    border-color: @avatar-border-color;
-    border-style: solid;
-    &-small {
-      border-width: @avatar-border-width-small;
-    }
-
-    &-medium {
-      border-width: @avatar-border-width-medium;
-    }
-
-    &-large {
-      border-width: @avatar-border-width-large;
     }
   }
 }
