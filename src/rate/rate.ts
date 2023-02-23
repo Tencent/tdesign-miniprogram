@@ -27,7 +27,7 @@ export default class Rate extends SuperComponent {
     tipsLeft: 0,
     actionType: '',
     scaleIndex: -1,
-    isChange: false,
+    isVisibleToScreenReader: false,
   };
 
   methods = {
@@ -71,11 +71,11 @@ export default class Rate extends SuperComponent {
     onTouchMove(e: WechatMiniprogram.TouchEvent) {
       this.onTouch(e, 'move');
       this.setData({
-        isChange: true,
+        isVisibleToScreenReader: true,
       });
       setTimeout(() => {
         this.setData({
-          isChange: false,
+          isVisibleToScreenReader: false,
         });
       }, 2e3);
     },
