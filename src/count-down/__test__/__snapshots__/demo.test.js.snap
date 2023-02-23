@@ -105,7 +105,8 @@ exports[`CountDown CountDown base demo works fine 1`] = `
       <t-count-down
         content="default"
         splitWithUnit="{{true}}"
-        theme="hightlight"
+        tClassCount="external-count"
+        tClassSplit="external-split"
         time="{{5760000}}"
       />
     </wx-view>
@@ -298,47 +299,6 @@ exports[`CountDown CountDown size demo works fine 1`] = `
         size="large"
         splitWithUnit="{{true}}"
         theme="round"
-        time="{{5760000}}"
-      />
-    </wx-view>
-  </wx-view>
-  <wx-view
-    class="demo-count-down"
-  >
-    <wx-text
-      class="demo-count-down-desc"
-    >
-       无底色带单位 
-    </wx-text>
-    <wx-view
-      class="demo-count-down-content"
-    >
-      <t-count-down
-        format="HH:mm:ss"
-        size="small"
-        splitWithUnit="{{true}}"
-        theme="hightlight"
-        time="{{5760000}}"
-      />
-    </wx-view>
-    <wx-view
-      class="demo-count-down-content"
-    >
-      <t-count-down
-        format="HH:mm:ss"
-        splitWithUnit="{{true}}"
-        theme="hightlight"
-        time="{{5760000}}"
-      />
-    </wx-view>
-    <wx-view
-      class="demo-count-down-content"
-    >
-      <t-count-down
-        format="HH:mm:ss"
-        size="large"
-        splitWithUnit="{{true}}"
-        theme="hightlight"
         time="{{5760000}}"
       />
     </wx-view>
