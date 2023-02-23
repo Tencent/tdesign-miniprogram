@@ -4,7 +4,6 @@ exports[`Footer Footer base demo works fine 1`] = `
 <base>
   <t-footer
     text="Copyright © 2021-2031 TD.All Rights Reserved."
-    theme="text"
   />
 </base>
 `;
@@ -25,7 +24,6 @@ exports[`Footer Footer link demo works fine 1`] = `
         ]
       }}"
       text="Copyright © 2021-2031 TD.All Rights Reserved."
-      theme="text"
     />
   </wx-view>
   <wx-view
@@ -47,7 +45,6 @@ exports[`Footer Footer link demo works fine 1`] = `
         ]
       }}"
       text="Copyright © 2021-2031 TD.All Rights Reserved."
-      theme="text"
     />
   </wx-view>
 </link>
@@ -65,7 +62,6 @@ exports[`Footer Footer logo demo works fine 1`] = `
           "title": "品牌名称",
         }
       }}"
-      theme="logo"
     />
   </wx-view>
   <wx-view
@@ -77,7 +73,6 @@ exports[`Footer Footer logo demo works fine 1`] = `
           "url": "https://tdesign.gtimg.com/miniprogram/images/logo1.png",
         }
       }}"
-      theme="logo"
     />
   </wx-view>
 </logo>

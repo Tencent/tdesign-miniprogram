@@ -20,11 +20,6 @@ const props: TdFooterProps = {
     type: Array,
     value: [],
   },
-  /** 页脚展示类型 */
-  theme: {
-    type: String,
-    value: 'text',
-  },
 };
 
 export default props;

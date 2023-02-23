@@ -1,15 +1,15 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
-  <!-- theme 为 logo -->
-  <block wx:if="{{theme === 'logo'}}">
+  <!-- logo -->
+  <block wx:if="{{logo}}">
     <view class="{{classPrefix}}__logo">
       <t-image t-class="{{classPrefix}}__icon" src="{{logo.icon}}" wx:if="{{logo.icon}}" />
       <view class="{{classPrefix}}__title" wx:if="{{logo.title}}">{{logo.title}}</view>
       <t-image t-class="{{classPrefix}}__title-url" src="{{logo.url}}" mode="widthFix" wx:elif="{{logo.url}}" />
     </view>
   </block>
-  <!-- theme 为 text -->
+  <!-- text -->
   <block wx:else>
     <view wx:if="{{links.length > 0}}" class="{{classPrefix}}__link-list">
       <block wx:for="{{links}}" wx:key="name" wx:for-item="item">

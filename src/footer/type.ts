@@ -14,14 +14,6 @@ export interface TdFooterProps {
     value?: string;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 图标配置，type 为`logo`生效。`logo.icon` 表示图标链接地址，`logo.title` 表示标题文本，`logo.url` 表示链接跳转地址
    */
   logo?: {
@@ -35,14 +27,6 @@ export interface TdFooterProps {
   links?: {
     type: ArrayConstructor;
     value?: Array<LinkObj>;
-  };
-  /**
-   * 页脚展示类型
-   * @default 'text'
-   */
-  theme?: {
-    type: StringConstructor;
-    value?: 'text' | 'logo';
   };
 }
 

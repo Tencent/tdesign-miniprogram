@@ -3,10 +3,11 @@
 @footer-text-color: var(--td-footer-text-color, @font-gray-3);
 @footer-text-font-size: var(--td-footer-text-font-size, @font-size-s);
 @footer-text-line-height: var(--td-footer-text-line-height, 40rpx);
+@footer-text-margin-top: var(--td-footer-text-margin-top, 8rpx);
 @footer-link-color: var(--td-footer-link-color, @brand-color);
 @footer-link-font-size: var(--td-footer-link-font-size, @font-size-s);
 @footer-link-line-height: var(--td-footer-link-line-height, 40rpx);
-@footer-link-margin-bottom: var(--td-footer-link-margin-bottom, 8rpx);
+
 @footer-link-dividing-line-padding: var(--td-footer-link-dividing-line-padding, @spacer-1);
 @footer-link-dividing-line-color: var(--td-footer-link-dividing-line-color, @font-gray-3);
 @footer-logo-icon-width: var(--td-footer-logo-icon-width, 48rpx);
@@ -28,11 +29,14 @@
     color: @footer-text-color; // 版权信息文本颜色
   }
 
+  &__link-list + &__text:not(:empty) {
+    margin-top: @footer-text-margin-top; // 版权信息顶部间距
+  }
+
   &__link-list {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: @footer-link-margin-bottom; // 链接底部间距
   }
 
   &__link-item {
