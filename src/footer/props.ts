@@ -7,7 +7,7 @@
 import { TdFooterProps } from './type';
 const props: TdFooterProps = {
   /** 版权信息，type 为`text`生效 */
-  copyright: {
+  text: {
     type: String,
     value: '',
   },
@@ -16,14 +16,9 @@ const props: TdFooterProps = {
     type: Object,
   },
   /** 链接列表，type 为`text`生效。name 表示链接名称， url 表示链接 page 路径，目前只支持小程序内部跳转，openType 表示跳转方式 */
-  textLinkList: {
+  links: {
     type: Array,
     value: [],
-  },
-  /** 页脚展示类型 */
-  theme: {
-    type: String,
-    value: 'text',
   },
 };
 
