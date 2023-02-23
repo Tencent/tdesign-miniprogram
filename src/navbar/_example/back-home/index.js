@@ -1,7 +1,10 @@
 Component({
   methods: {
+    onBack() {
+      wx.navigateBack();
+    },
     onGoHome() {
-      wx.navigateTo({
+      wx.reLaunch({
         url: '/pages/home/home',
       });
     },
