@@ -73,7 +73,7 @@ hover | Boolean | - | 是否开启点击反馈 | N
 suffix-icon | String / Object / Slot | - | 前置图标 | N
 theme | String | default | 组件风格，依次为默认色、品牌色、危险色、警告色、成功色。可选项：default/primary/danger/warning/success | N
 underline | Boolean | - | 是否显示链接下划线 | N
-
+external-classes | Array | - | 样式类名。`['t-class', 't-class-hover', 't-class-prefix-icon', 't-class-content', 't-class-suffix-icon']` | N
 ### Link Events
 
 名称 | 参数 | 描述

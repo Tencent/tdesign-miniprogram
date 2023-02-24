@@ -8,7 +8,13 @@ const name = `${prefix}-link`;
 
 @wxComponent()
 export default class Link extends SuperComponent {
-  externalClasses = [];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-hover`,
+    `${prefix}-class-prefix-icon`,
+    `${prefix}-class-content`,
+    `${prefix}-class-suffix-icon`,
+  ];
 
   properties = props;
 
