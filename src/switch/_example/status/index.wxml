@@ -4,7 +4,7 @@
   <t-cell title="加载状态">
     <t-switch defaultValue="{{false}}" loading slot="note" />
   </t-cell>
-  <t-cell title="加载状态">
+  <t-cell title="加载状态" bordered="{{false}}">
     <t-switch defaultValue="{{true}}" loading slot="note" />
   </t-cell>
 </view>

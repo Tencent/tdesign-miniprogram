@@ -113,6 +113,13 @@ export interface TdMessageProps {
     type: NumberConstructor;
     value?: number;
   };
+  /**
+   * 链接名称。值为字符串表示链接名称，值为 `Object` 类型，表示透传至 `Link`。
+   */
+  link?: {
+    type: null;
+    value?: string | object;
+  };
 }
 
 export type MessageAlignType = 'left' | 'center';

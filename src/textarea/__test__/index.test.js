@@ -130,7 +130,7 @@ describe('textarea', () => {
         class="base"
         maxcharacter="{{maxcharacter}}"
         value="{{value}}"
-        bind:lineChange="handleLineChange"
+        bind:line-change="handleLineChange"
         >
         </t-textarea>`,
         data: {

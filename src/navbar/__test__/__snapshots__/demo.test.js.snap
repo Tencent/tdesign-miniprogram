@@ -15,6 +15,7 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
         class="custom-capsule__icon"
         name="chevron-left"
         size="20"
+        bind:tap="onBack"
       />
       <t-icon
         ariaLabel="首页"
@@ -22,6 +23,7 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
         class="custom-capsule__icon"
         name="home"
         size="20"
+        bind:tap="onGoHome"
       />
     </wx-view>
   </t-navbar>
@@ -65,7 +67,6 @@ exports[`Navbar Navbar img demo works fine 1`] = `
 <img>
   <t-navbar>
     <wx-view
-      class="custom-left"
       slot="left"
     >
       <t-image

@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [align, theme, ['checked', checked], ['block', block]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [placement, theme, ['checked', checked], ['block', block]])}} class {{prefix}}-class"
   aria-role="checkbox"
   aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
   aria-disabled="{{disabled ? true : false}}"
@@ -11,7 +11,7 @@
 >
   <view
     wx:if="{{theme == 'default'}}"
-    class="{{_.cls(classPrefix + '__icon', [align, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
+    class="{{_.cls(classPrefix + '__icon', [placement, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
   >
     <view wx:if="{{_.isArray(icon)}}" class="{{classPrefix}}__icon">
       <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
@@ -51,6 +51,6 @@
   </view>
   <view
     wx:if="{{theme == 'default' && !borderless}}"
-    class="{{_.cls(classPrefix + '__border', [align])}} {{prefix}}-class-border"
+    class="{{_.cls(classPrefix + '__border', [placement])}} {{prefix}}-class-border"
   />
 </view>

@@ -100,4 +100,12 @@ export interface TdSearchProps {
     type: StringConstructor;
     value?: string;
   };
+  /**
+   * 是否启用清除控件
+   * @default true
+   */
+  clearable: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
 }

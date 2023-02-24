@@ -2,7 +2,7 @@
 
 <view
   wx:if="{{realVisible && preventScrollThrough}}"
-  class="{{prefix}}-overlay {{transitionClass}}"
+  class="{{prefix}}-overlay {{transitionClass}} class"
   style="{{_._style(['z-index:' + _zIndex, computedStyle, style, customStyle])}}"
   bind:tap="handleClick"
   catchtouchmove="noop"
@@ -14,7 +14,7 @@
 </view>
 <view
   wx:elif="{{realVisible}}"
-  class="{{prefix}}-overlay {{transitionClass}}"
+  class="{{prefix}}-overlay {{transitionClass}} class"
   style="{{_._style(['z-index:' + _zIndex, computedStyle, style, customStyle])}}"
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"

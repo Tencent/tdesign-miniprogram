@@ -102,7 +102,7 @@ export default class Textarea extends SuperComponent {
       });
     },
     onLineChange(event) {
-      this.triggerEvent('lineChange', {
+      this.triggerEvent('line-change', {
         ...event.detail,
       });
     },

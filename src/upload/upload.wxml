@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./upload.wxs" module="this" />
 
-<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
   <t-grid gutter="{{gutter}}" border="{{false}}" align="center" column="{{column}}">
     <!-- 图片/视频 -->
     <t-grid-item
@@ -23,14 +23,15 @@
           bindtap="onProofTap"
           data-index="{{index}}"
           t-class="{{classPrefix}}__thumbnail"
+          style="{{imageProps.style || ''}}"
           src="{{file.url}}"
-          mode="{{imageProps.mode}}"
-          error="{{imageProps.error}}"
-          lazy="{{imageProps.lazy}}"
-          loading="{{imageProps.loading}}"
+          mode="{{imageProps.mode || 'aspectFill'}}"
+          error="{{imageProps.error || 'default'}}"
+          lazy="{{imageProps.lazy || false}}"
+          loading="{{imageProps.loading || 'default'}}"
           shape="{{imageProps.shape || 'round'}}"
-          webp="{{imageProps.webp}}"
-          showMenuByLongpress="{{image.showMenuByLongpress}}"
+          webp="{{imageProps.webp || false}}"
+          showMenuByLongpress="{{imageProps.showMenuByLongpress || false}}"
         />
         <video
           wx:if="{{file.type === 'video'}}"

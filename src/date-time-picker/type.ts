@@ -43,14 +43,6 @@ export interface TdDateTimePickerProps {
     value?: ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
   };
   /**
-   * 底部内容
-   * @default true
-   */
-  footer?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format)
    * @default ''
    */

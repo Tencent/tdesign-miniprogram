@@ -2,7 +2,7 @@ function getInputClass(classPrefix, suffix, align, disabled) {
   var className = [classPrefix + '__control'];
 
   if (align) {
-    className.push(classPrefix + '__control--' + align);
+    className.push(classPrefix + '--' + align);
   }
 
   if (disabled) {

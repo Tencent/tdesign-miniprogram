@@ -4,7 +4,7 @@
 <view
   wx:if="{{isLoading}}"
   style="{{_._style([innerStyle, style, customStyle])}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
   aria-hidden="{{ariaHidden}}"
 >
   <t-loading
@@ -16,27 +16,29 @@
     t-class="t-class-load"
     t-class-text="{{classPrefix}}--loading-text"
   ></t-loading>
-  <view wx:elif="{{loading !== ''}}" class="{{classPrefix}}__common {{prefix}}-class-load"> {{loading}} </view>
-  <slot name="loading" />
+  <view wx:elif="{{loading !== '' && loading !== 'slot'}}" class="{{classPrefix}}__common {{prefix}}-class-load">
+    {{loading}}
+  </view>
+  <slot wx:else name="loading" />
 </view>
 <!-- 加载失败占位 -->
 <view
   wx:elif="{{isFailed}}"
   style="{{_._style([innerStyle, style, customStyle])}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--failed {{classPrefix}}--shape-{{shape}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}__mask {{classPrefix}}--failed {{classPrefix}}--shape-{{shape}}"
   aria-hidden="{{ariaHidden}}"
 >
   <view wx:if="{{error === 'default'}}" style="font-size: 44rpx" class="{{prefix}}-class-load">
     <t-icon name="close" aria-role="img" aria-label="加载失败" />
   </view>
-  <view wx:elif="{{error}}" class="{{classPrefix}}__common {{prefix}}-class-load"> {{error}} </view>
-  <slot name="error" />
+  <view wx:elif="{{error && error !== 'slot'}}" class="{{classPrefix}}__common {{prefix}}-class-load"> {{error}} </view>
+  <slot wx:else name="error" />
 </view>
 <!-- 图片 -->
 <image
   id="image"
   hidden="{{isLoading || isFailed}}"
-  class="{{prefix}}-class {{classPrefix}} {{classPrefix}}--shape-{{shape}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}--shape-{{shape}}"
   src="{{src}}"
   style="{{_._style([innerStyle, style, customStyle])}}"
   mode="{{mode}}"

@@ -2,7 +2,7 @@
 
 <scroll-view
   style="{{_._style([style, customStyle])}}"
-  class="{{classPrefix}} {{prefix}}-class"
+  class="{{classPrefix}} class {{prefix}}-class"
   scroll-top="{{scrollTop}}"
   bind:touchstart="onTouchStart"
   bind:touchmove="onTouchMove"

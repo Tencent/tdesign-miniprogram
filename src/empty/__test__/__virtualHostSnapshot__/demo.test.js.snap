@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Empty Empty base demo works fine 1`] = `
+<base>
+  <t-empty
+    description="描述文字"
+    icon="info-circle-filled"
+  />
+</base>
+`;
+
+exports[`Empty Empty buttonEmpty demo works fine 1`] = `
+<buttonEmpty>
+  <t-empty
+    description="描述文字"
+    icon="info-circle-filled"
+  >
+    <t-button
+      size="large"
+      slot="action"
+      theme="primary"
+    >
+      操作按钮
+    </t-button>
+  </t-empty>
+</buttonEmpty>
+`;
+
+exports[`Empty Empty imageEmpty demo works fine 1`] = `
+<imageEmpty>
+  <t-empty
+    description="描述文字"
+    image="https://tdesign.gtimg.com/miniprogram/images/empty1.png"
+    tClass="empty-cls"
+    tClassImage="t-empty__image"
+  />
+</imageEmpty>
+`;

@@ -11,7 +11,7 @@ const name = `${prefix}-button`;
 export interface ButtonProps extends TdButtonProps {}
 @wxComponent()
 export default class Button extends SuperComponent {
-  externalClasses = ['class', `${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
 
   behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
 

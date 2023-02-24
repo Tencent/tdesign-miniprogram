@@ -9,7 +9,7 @@ export interface TdCheckboxProps {
    * 多选框和内容相对位置
    * @default left
    */
-  align?: {
+  placement?: {
     type: StringConstructor;
     value?: 'left' | 'right';
   };

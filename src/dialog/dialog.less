@@ -21,8 +21,8 @@
 .@{dialog} {
   overflow: hidden;
   width: @dialog-width;
-  border-radius: @border-radius;
-  background-color: @bg-color-block;
+  border-radius: @radius-default;
+  background-color: @bg-color-container;
 
   &__close-btn {
     position: absolute;
@@ -39,7 +39,6 @@
     flex-direction: column;
     justify-content: center;
     font-size: @font-size-m;
-    line-height: @text-line-height;
   }
 
   &__header {
@@ -92,14 +91,6 @@
     }
   }
 
-  &-button {
-    border-radius: 0 !important;
-
-    &:after {
-      border-radius: 0;
-    }
-  }
-
   &__button {
     position: relative;
     flex: 1;
@@ -117,6 +108,7 @@
 
     &--text {
       flex: 1;
+      --td-button-border-radius: 0;
       --td-button-medium-height: 112rpx;
       border-radius: 0;
 

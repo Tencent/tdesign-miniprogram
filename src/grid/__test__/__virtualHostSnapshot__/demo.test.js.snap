@@ -1,0 +1,362 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid Grid badge demo works fine 1`] = `
+<badge>
+  <t-grid
+    class="t-grid badge"
+  >
+    <t-grid-item
+      badgeProps="{{
+        Object {
+          "dot": true,
+        }
+      }}"
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      badgeProps="{{
+        Object {
+          "count": 8,
+        }
+      }}"
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      badgeProps="{{
+        Object {
+          "count": 13,
+        }
+      }}"
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      badgeProps="{{
+        Object {
+          "count": "NEW",
+        }
+      }}"
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+  </t-grid>
+</badge>
+`;
+
+exports[`Grid Grid base demo works fine 1`] = `
+<base>
+  <t-grid
+    class="block"
+    column="{{5}}"
+  >
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="最多四字"
+    />
+  </t-grid>
+  <t-grid
+    class="block"
+  >
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="最多五个字"
+    />
+  </t-grid>
+  <t-grid
+    class="block"
+    column="{{3}}"
+  >
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="最多六个文字"
+    />
+  </t-grid>
+</base>
+`;
+
+exports[`Grid Grid border demo works fine 1`] = `
+<border>
+  <wx-view
+    class="block"
+  >
+    <t-grid
+      border="{{
+        Object {
+          "color": "#f6f6f6",
+        }
+      }}"
+      column="{{3}}"
+    >
+      <t-grid-item
+        image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+        text="标题文字"
+      />
+      <t-grid-item
+        image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+        text="标题文字"
+      />
+      <t-grid-item
+        image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+        text="标题文字"
+      />
+    </t-grid>
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-grid
+      align="left"
+      border="{{
+        Object {
+          "color": "#f6f6f6",
+        }
+      }}"
+      column="{{2}}"
+    >
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+        layout="horizontal"
+        text="标题文字"
+      />
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+        layout="horizontal"
+        text="标题最多六字"
+      />
+    </t-grid>
+  </wx-view>
+</border>
+`;
+
+exports[`Grid Grid card demo works fine 1`] = `
+<card>
+  <t-grid
+    class="block"
+    column="{{4}}"
+    theme="card"
+  >
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="最多五个字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="最多五个字"
+    />
+  </t-grid>
+</card>
+`;
+
+exports[`Grid Grid description demo works fine 1`] = `
+<description>
+  <wx-view
+    class="block"
+  >
+    <t-grid
+      column="{{3}}"
+    >
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+        text="标题文字"
+      />
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+        text="标题文字"
+      />
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+        text="标题文字"
+      />
+    </t-grid>
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-grid
+      align="left"
+      column="{{2}}"
+    >
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+        layout="horizontal"
+        text="标题文字"
+      />
+      <t-grid-item
+        description="描述文字"
+        image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+        layout="horizontal"
+        text="标题文字"
+      />
+    </t-grid>
+  </wx-view>
+</description>
+`;
+
+exports[`Grid Grid icon-grid demo works fine 1`] = `
+<icon-grid>
+  <t-grid
+    class="block"
+  >
+    <t-grid-item
+      icon="share"
+      text="分享"
+    />
+    <t-grid-item
+      icon="star"
+      text="收藏"
+    />
+    <t-grid-item
+      icon="download"
+      text="保存"
+    />
+    <t-grid-item
+      icon="edit-1"
+      text="编辑"
+    />
+  </t-grid>
+</icon-grid>
+`;
+
+exports[`Grid Grid multiple demo works fine 1`] = `
+<multiple>
+  <t-grid
+    class="block"
+    column="{{4}}"
+  >
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="最多五个字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="最多五个字"
+    />
+  </t-grid>
+</multiple>
+`;
+
+exports[`Grid Grid scroll demo works fine 1`] = `
+<scroll>
+  <t-grid
+    class="block"
+    column="{{0}}"
+  >
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="标题文字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example1.png"
+      text="最多五个字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example2.png"
+      text="最多五个字"
+    />
+    <t-grid-item
+      image="https://tdesign.gtimg.com/miniprogram/images/example3.png"
+      text="最多五个字"
+    />
+  </t-grid>
+</scroll>
+`;
