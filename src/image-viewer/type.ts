@@ -14,7 +14,7 @@ export interface TdImageViewerProps {
     value?: string;
   };
   /**
-   * 遮罩的背景颜色
+   * 已废弃。遮罩的背景颜色
    * @default rgba(0, 0, 0, .6)
    */
   backgroundColor?: {

@@ -7,17 +7,12 @@
   class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
 >
-  <view
-    class="{{classPrefix}}__mask"
-    data-source="overlay"
-    bind:tap="onClose"
-    style="{{ 'background-color: ' + backgroundColor }}"
-  />
+  <view class="{{classPrefix}}__mask" data-source="overlay" bind:tap="onClose" />
   <block wx:if="{{images && images.length}}">
-    <view slot="content" class="{{classPrefix}}__content">
+    <view class="{{classPrefix}}__content">
       <swiper
-        height="{{windowHeight * 2}}"
         class="swiper"
+        style="{{swiperStyle[currentSwiperIndex].style}}"
         autoplay="{{false}}"
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
@@ -25,7 +20,7 @@
         <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
             t-class="t-image--external"
-            style="{{imagesShape[index].style}}"
+            style="{{imagesStyle[index].style || ''}}"
             mode="aspectFit"
             lazy
             src="{{item}}"

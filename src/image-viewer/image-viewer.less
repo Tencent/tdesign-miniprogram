@@ -4,6 +4,7 @@
 
 @image-viewer-icon-font-size: 48rpx;
 
+@image-viewer-mask-bg-color: var(--td-image-viewer-mask-bg-color, rgba(0, 0, 0, 1));
 @image-viewer-nav-height: var(--td-image-viewer-nav-height, 96rpx);
 @image-viewer-nav-bg-color: var(--td-image-viewer-nav-bg-color, @font-gray-3);
 @image-viewer-nav-color: var(--td-image-viewer-nav-color, @font-white-1);
@@ -29,6 +30,7 @@
     top: 0;
     width: 100%;
     height: 100%;
+    background-color: @image-viewer-mask-bg-color;
   }
 
   &__content {

@@ -6,7 +6,7 @@
 
 import { TdImageViewerProps } from './type';
 const props: TdImageViewerProps = {
-  /** 遮罩的背景颜色 */
+  /** 已废弃。遮罩的背景颜色 */
   backgroundColor: {
     type: String,
     optionalTypes: [Number],
