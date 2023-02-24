@@ -43,12 +43,12 @@ export default class Link extends SuperComponent {
 
   methods = {
     setClass() {
-      const { theme, status, size, underline, navigatorProps } = this.properties;
-      const classList = [name, `${name}--${status}-${theme}`, `${name}--${size}`];
+      const { theme, size, underline, navigatorProps, disabled } = this.properties;
+      const classList = [name, `${name}--${theme}`, `${name}--${size}`];
       if (underline) {
         classList.push(`${name}--underline`);
       }
-      if ((navigatorProps && !navigatorProps.url) || status === 'disabled') {
+      if ((navigatorProps && !navigatorProps.url) || disabled) {
         classList.push(`${name}--disabled`);
       }
 
