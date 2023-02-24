@@ -14,7 +14,7 @@
   bindtap="onClick"
   aria-role="{{ariaRole || 'button'}}"
   aria-label="{{ariaLabel}}"
-  aria-labelledby="{{ariaLabel ? labelID : undefined}}"
+  aria-describedby="{{describeID}}"
 >
   <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}">
     <view
@@ -54,7 +54,7 @@
           />
         </view>
       </t-badge>
-      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{labelID}}">
+      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{describeID}}">
         <view
           wx:if="{{text}}"
           class="{{_.cls(classPrefix + '__text', [util.getImageSize(column), layout])}} {{prefix}}-class-text"
