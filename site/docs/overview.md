@@ -78,7 +78,7 @@ spline: explain
     </a>
   </div>
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/sidebar">
+    <a class="item" href="/miniprogram/components/side-bar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-sidebar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-sidebar-dark.png" />
       <p class="name">SideBar 侧边导航栏</p>
@@ -203,7 +203,7 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/textarea">
+    <a class="item" href="/miniprogram/components/tree-select">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-treeselect.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-treeselect-dark.png" />
       <p class="name">TreeSelect 树形选择</p>
@@ -401,7 +401,7 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/popup">
+    <a class="item" href="/miniprogram/components/overlay">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-overlay.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-overlay-dark.png" />
       <p class="name">Overlay 遮罩层</p>
