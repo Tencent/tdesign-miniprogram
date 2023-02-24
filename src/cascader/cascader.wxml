@@ -13,7 +13,15 @@
     <view class="{{name}}__content">
       <block wx:if="{{steps && steps.length}}">
         <view wx:if="{{theme == 'step'}}" class="{{name}}__steps">
-          <view wx:for="{{steps}}" wx:key="index" class="{{name}}__step" bind:tap="onStepClick" data-index="{{index}}">
+          <view
+            wx:for="{{steps}}"
+            wx:key="index"
+            class="{{name}}__step"
+            bind:tap="onStepClick"
+            data-index="{{index}}"
+            aria-role="button"
+            aria-label="{{ item === defaultOptionLabel ? item : '已选中,' + item  }}"
+          >
             <view
               class="{{name}}__step-dot {{name}}__step-dot--{{item !== defaultOptionLabel ? 'active' : ''}} {{name}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
             ></view>
@@ -43,6 +51,7 @@
           class="{{name}}__options"
           scroll-y
           scroll-top="{{scrollTopList[index]}}"
+          aria-hidden="{{ stepIndex !== index}}"
         >
           <view class="cascader-radio-group-{{index}}">
             <t-radio-group
