@@ -8,7 +8,7 @@
     </view>
     <view class="{{name}}__close-btn" bind:tap="hide">
       <slot name="close-btn" />
-      <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
+      <t-icon wx:if="{{closeBtn}}" aria-role="button" aria-label="关闭" size="24" name="close" />
     </view>
     <view class="{{name}}__content">
       <block wx:if="{{steps && steps.length}}">
