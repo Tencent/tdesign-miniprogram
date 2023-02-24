@@ -283,5 +283,43 @@ exports[`Picker Picker with-title demo works fine 1`] = `
       }}"
     />
   </t-picker>
+  <t-picker
+    cancelBtn="取消"
+    confirmBtn="确认"
+    data-key="city2"
+    title=""
+    value="{{Array []}}"
+    visible=""
+    bind:cancel="onPickerCancel"
+    bind:change="onPickerChange"
+    bind:pick="onColumnChange"
+  >
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "北京市",
+          },
+          Object {
+            "label": "上海市",
+            "value": "上海市",
+          },
+          Object {
+            "label": "广州市",
+            "value": "广州市",
+          },
+          Object {
+            "label": "深圳市",
+            "value": "深圳市",
+          },
+          Object {
+            "label": "成都市",
+            "value": "成都市",
+          },
+        ]
+      }}"
+    />
+  </t-picker>
 </with-title>
 `;
