@@ -17,7 +17,6 @@ exports[`Rate Rate action demo works fine 1`] = `
     </wx-view>
     <t-rate
       value="{{3.5}}"
-      variant="filled"
       bind:change="onChange"
     />
   </wx-view>
@@ -37,7 +36,6 @@ exports[`Rate Rate action demo works fine 1`] = `
     <t-rate
       allowHalf="{{true}}"
       defaultValue="{{3}}"
-      variant="filled"
     />
   </wx-view>
 </action>
@@ -55,7 +53,6 @@ exports[`Rate Rate base demo works fine 1`] = `
     </wx-view>
     <t-rate
       value="{{3}}"
-      variant="filled"
       bind:change="onChange"
     />
   </wx-view>
@@ -75,7 +72,6 @@ exports[`Rate Rate color demo works fine 1`] = `
     <t-rate
       allowHalf="{{true}}"
       defaultValue="{{3}}"
-      variant="filled"
     />
   </wx-view>
   <wx-view
@@ -89,6 +85,12 @@ exports[`Rate Rate color demo works fine 1`] = `
     <t-rate
       color="#00a870"
       defaultValue="{{3}}"
+      icon="{{
+        Array [
+          "star-filled",
+          "star",
+        ]
+      }}"
     />
   </wx-view>
 </color>
@@ -107,7 +109,6 @@ exports[`Rate Rate count demo works fine 1`] = `
     <t-rate
       count="{{3}}"
       value="{{2}}"
-      variant="filled"
       bind:change="onChange"
     />
   </wx-view>
@@ -156,7 +157,6 @@ exports[`Rate Rate show-text demo works fine 1`] = `
         ]
       }}"
       value="{{3}}"
-      variant="filled"
       bind:change="onChange"
     />
   </wx-view>
@@ -172,7 +172,6 @@ exports[`Rate Rate show-text demo works fine 1`] = `
       data-index="{{1}}"
       showText="{{true}}"
       value="{{3}}"
-      variant="filled"
       bind:change="onChange"
     />
   </wx-view>
@@ -188,7 +187,6 @@ exports[`Rate Rate show-text demo works fine 1`] = `
       data-index="{{2}}"
       showText="{{true}}"
       value="{{0}}"
-      variant="filled"
       bind:change="onChange"
     />
   </wx-view>
@@ -208,7 +206,6 @@ exports[`Rate Rate size demo works fine 1`] = `
     <t-rate
       data-index="{{0}}"
       value="{{3}}"
-      variant="filled"
       bind:change="onChange"
     />
   </wx-view>
@@ -224,7 +221,6 @@ exports[`Rate Rate size demo works fine 1`] = `
       data-index="{{1}}"
       size="{{20}}"
       value="{{3}}"
-      variant="filled"
       bind:change="onChange"
     />
   </wx-view>
