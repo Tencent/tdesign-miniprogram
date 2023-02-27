@@ -21,9 +21,8 @@ interface DialogConfirmOptionsType extends DialogAlertOptionsType {
 }
 
 interface Action {
-  name: string;
-  primary?: boolean;
-  style?: string;
+  content: string;
+  theme?: 'default' | 'primary' | 'danger' | 'light';
 }
 
 interface DialogActionOptionsType {
@@ -92,15 +91,17 @@ export default {
     const { context, selector = '#t-dialog', actions, ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
-    if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > 7))) {
-      console.warn('action 数量建议控制在1至7个');
+    const { buttonLayout = 'vertical' } = options;
+    const maxLengthSuggestion = buttonLayout === 'vertical' ? 7 : 3;
+    if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > maxLengthSuggestion))) {
+      console.warn(`action 数量建议控制在1至${maxLengthSuggestion}个`);
     }
 
     return new Promise((resolve) => {
       instance.setData({
         actions,
-        buttonLayout: 'vertical',
         ...otherOptions,
+        buttonLayout,
         visible: true,
       });
       instance._onAction = resolve;
