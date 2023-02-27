@@ -12,6 +12,7 @@
 @drawer-item-icon-size: var(--td-drawer-item-icon-size, 48rpx);
 @drawer-sidebar-height: var(--td-drawer-sidebar-height, 70vh);
 @drawer-footer-padding-bottom: var(--td-drawer-footer-padding-bottom, 40rpx);
+@drawer-hover-color: var(--td-drawer-hover-color, @bg-color-secondarycontainer);
 
 .@{prefix}-drawer {
   background: @drawer-bg-color;
@@ -21,6 +22,10 @@
   flex-direction: column;
   padding-bottom: env(safe-area-inset-bottom, 28px);
   padding-bottom: constant(safe-area-inset-bottom, 28px);
+
+  &--hover {
+    background-color: @drawer-hover-color;
+  }
 
   &__title {
     font-weight: 600;
@@ -35,9 +40,12 @@
       display: flex;
       align-items: center;
       .border(bottom, @drawer-border-color);
-      padding: @drawer-item-padding 0;
-      margin-left: @drawer-item-padding;
+      padding: @drawer-item-padding 0 @drawer-item-padding @drawer-item-padding;
       line-height: @drawer-item-height;
+
+      &::after {
+        left: @drawer-item-padding;
+      }
 
       &-title {
         flex: 1;
