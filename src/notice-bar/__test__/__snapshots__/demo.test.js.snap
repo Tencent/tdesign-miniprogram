@@ -26,37 +26,30 @@ exports[`NoticeBar NoticeBar custom demo works fine 1`] = `
 exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
 <customization>
   <t-notice-bar
-    suffixIcon="slot"
     visible="{{true}}"
   >
     <wx-view
+      class="inline"
       slot="content"
     >
-      
-    提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
-    
-      <wx-view
-        class="extra"
-      >
-        <t-link
-          content="详情"
-          navigatorProps="{{
-            Object {
-              "url": "/pages/xxx/xxx",
-            }
-          }}"
-          theme="primary"
-        />
-      </wx-view>
+       提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述 
     </wx-view>
-    <wx-view
+    <t-link
+      content="详情"
+      navigatorProps="{{
+        Object {
+          "url": "/pages/xxx/xxx",
+        }
+      }}"
+      slot="operation"
+      theme="primary"
+      underline="{{false}}"
+    />
+    <t-icon
+      name="close"
+      size="44rpx"
       slot="suffix-icon"
-    >
-      <t-icon
-        name="close"
-        size="44rpx"
-      />
-    </wx-view>
+    />
   </t-notice-bar>
 </customization>
 `;
@@ -69,21 +62,21 @@ exports[`NoticeBar NoticeBar event demo works fine 1`] = `
     bind:click="click"
   >
     <wx-view
+      class="inline"
       slot="content"
     >
        这是一条普通的通知信息 
     </wx-view>
     <t-link
-      class="extra"
       content="详情"
       navigatorProps="{{
         Object {
           "url": "/pages/xxx/xxx",
         }
       }}"
-      slot="extra"
+      slot="operation"
       theme="primary"
-      underline="{{true}}"
+      underline="{{false}}"
     />
   </t-notice-bar>
   <t-notice-bar

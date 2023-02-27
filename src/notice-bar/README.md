@@ -26,7 +26,7 @@ isComponent: true
 
 ## 代码演示
 
-### 组件类型
+### 01 组件类型
 
 纯文字的公告栏
 
@@ -36,7 +36,11 @@ isComponent: true
 
 {{ iconDemo }}
 
-带操作的公告栏
+带关闭的公告栏
+
+{{ suffixIcon }}
+
+带入口的公告栏
 
 {{ event }}
 
@@ -48,13 +52,13 @@ isComponent: true
 
 {{ customization }}
 
-### 组件状态
+### 02 组件状态
 
 公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）
 
 {{ theme }}
 
-### 可滚动公告栏
+### 03 可滚动公告栏
 
 可滚动公告栏有水平（horizontal）和垂直（vertical）
 
@@ -68,8 +72,8 @@ isComponent: true
 -- | -- | -- | -- | --
 content | String / Array / Slot | - | 文本内容 | N
 direction | String | horizontal | 滚动方向。可选项：horizontal/vertical | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、文本内容、前缀图标、右侧额外信息、后缀图标 等元素类名。。`['t-class', 't-class-content', 't-class-prefix-icon', 't-class-extra', 't-class-suffix-icon']` | N
-extra | String / Slot | - | 右侧额外信息 | N
+external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、文本内容、前缀图标、右侧额外信息、后缀图标 等元素类名。。`['t-class', 't-class-content', 't-class-prefix-icon', 't-class-operation', 't-class-suffix-icon']` | N
+operation | String / Slot | - | 右侧额外信息 | N
 marquee | Boolean / Object | false | 跑马灯效果。speed 指速度控制；loop 指循环播放次数，值为 -1 表示循环播放，值为 0 表示不循环播放；delay 表示延迟多久开始播放【仅在 direction='horizontal' 有效】。TS 类型：`boolean \| DrawMarquee` `interface DrawMarquee { speed?: number; loop?: number; delay?: number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/notice-bar/type.ts) | N
 prefix-icon | String / Boolean / Object / Slot | - | 前缀图标。值为字符串表示图标名称，值为 `false` 表示不显示前缀图标，值为 `Object` 类型，表示透传至 `icon`，不传表示使用主题图标。| N
 suffix-icon | String / Object / Slot | - | 后缀图标。值为字符串表示图标名称。值为 `Object` 类型，表示透传至 `icon`，不传表示不显示后缀图标。 | N
@@ -81,4 +85,4 @@ default-visible | Boolean | false | 显示/隐藏。非受控属性 | N
 
 名称 | 参数 | 描述
 -- | -- | --
-click | `(trigger: NoticeBarTrigger)` | 点击事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/notice-bar/type.ts)。<br/>`type NoticeBarTrigger = 'prefix-icon' \| 'content' \| 'extra' \| 'suffix-icon';`<br/>
+click | `(trigger: NoticeBarTrigger)` | 点击事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/notice-bar/type.ts)。<br/>`type NoticeBarTrigger = 'prefix-icon' \| 'content' \| 'operation' \| 'suffix-icon';`<br/>
