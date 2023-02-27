@@ -7,14 +7,12 @@ module.exports = {
     return texts[curVal] || '未评分';
   },
 
-  getIconName: function (defaultValue, value, index, variant, icon) {
+  getIconName: function (defaultValue, value, index, icon) {
     var curVal = value ? value : defaultValue;
     var name = ['star-filled', 'star-filled'];
 
     if (icon) {
       name = icon.constructor == 'Array' ? icon : [icon, icon];
-    } else if (variant === 'outline') {
-      name[1] = 'star';
     }
 
     return name[curVal >= index + 1 ? 0 : 1];
