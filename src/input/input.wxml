@@ -88,15 +88,11 @@
         />
       </view>
     </view>
-    <<<<<<< HEAD
-    <view wx:if="{{tips && tips.length > 0}}" class="{{classPrefix}}__tips {{prefix}}-class-tips">{{tips}} </view>
-    =======
     <view
       wx:if="{{tips && tips.length > 0}}"
       class="{{classPrefix}}__tips {{classPrefix}}--{{align}} {{prefix}}-class-tips"
       >{{tips}}
     </view>
-    >>>>>>> develop
     <slot name="tips" />
   </view>
 </view>
