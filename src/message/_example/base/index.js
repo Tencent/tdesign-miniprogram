@@ -50,7 +50,12 @@ Component({
         icon: 'notification-filled',
         content: '这是一条带操作的消息通知',
         duration: -1,
-        action: '按钮',
+        link: {
+          content: '链接',
+          navigatorProps: {
+            url: '/page/xxx/xxx',
+          },
+        },
       });
     },
   },

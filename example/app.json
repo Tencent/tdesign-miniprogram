@@ -5,7 +5,6 @@
     "pages/tabs/tabs",
     "pages/icon/icon",
     "pages/loading/loading",
-    "pages/loading/loadingProgress/index",
     "pages/progress/progress",
     "pages/cascader/cascader",
     "pages/cell/cell",

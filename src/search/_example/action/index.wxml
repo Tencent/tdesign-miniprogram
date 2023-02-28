@@ -6,7 +6,6 @@
     action="{{actionText}}"
     bind:blur="blurHandle"
     bind:focus="focusHandle"
-    bind:clear="clearHandle"
     bind:action-click="actionHandle"
     bind:change="changeHandle"
   />

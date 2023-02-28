@@ -41,7 +41,7 @@ export default class Toast extends SuperComponent {
         loading: 'loading',
         success: 'check-circle',
         warning: 'error-circle',
-        fail: 'close-circle',
+        error: 'close-circle',
       };
       const typeMapIcon = iconMap[options?.theme];
       const defaultOptions = {

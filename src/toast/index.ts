@@ -2,7 +2,7 @@ import { getInstance } from '../common/utils';
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
-type ToastType = 'loading' | 'success' | 'fail';
+type ToastType = 'loading' | 'success' | 'error';
 type ToastPositionType = 'top' | 'middle' | 'bottom';
 type ToastDirectionType = 'row' | 'column';
 

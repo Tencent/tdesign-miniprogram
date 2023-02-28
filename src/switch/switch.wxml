@@ -17,9 +17,9 @@
     >
       <view
         wx:if="{{label}}"
-        class="{{_.cls(classPrefix + '__label', [['checked', checked], size])}} {{prefix}}-class-label"
+        class="{{_.cls(classPrefix + '__label', [['checked', checked], ['disabled', disabled], size])}} {{prefix}}-class-label"
       >
-        <t-loading wx:if="{{loading}}" inherit-color size="32rpx" t-class="{{classPrefix}}__loading" />
+        <t-loading wx:if="{{loading}}" inherit-color size="32rpx" />
         <text wx:elif="{{label.length == 2}}">{{checked ? label[1] : label[0]}}</text>
         <t-icon
           wx:elif="{{icon.length == 2}}"

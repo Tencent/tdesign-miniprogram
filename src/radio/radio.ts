@@ -24,8 +24,8 @@ export default class Radio extends SuperComponent {
       type: 'ancestor',
       linked(parent) {
         this.parent = parent;
-        if (parent.data.align) {
-          this.setData({ align: parent.data.align });
+        if (parent.data.placement) {
+          this.setData({ placement: parent.data.placement });
         }
         if (parent.data.borderless) {
           this.setData({ borderless: true });

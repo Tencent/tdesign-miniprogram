@@ -27,7 +27,7 @@ exports[`notice-bar props : marquee 1`] = `
             bind:tap="onTap"
           >
             <wx-label
-              class="t-icon-error-circle-filled t-icon-base"
+              class="t-icon-info-circle-filled t-icon-base"
             />
           </wx-view>
         </t-icon>
@@ -63,13 +63,13 @@ exports[`notice-bar props : marquee 1`] = `
           }}"
           class="t-notice-bar__content t-class-content "
         >
-           提示文字描述提示文字描述提示文字描述提示文字描述文 
+          提示文字描述提示文字描述提示文字描述提示文字描述文
+          <wx-view
+            class="t-notice-bar__operation t-class-operation"
+            catch:tap="clickOperation"
+          />
         </wx-view>
       </wx-view>
-      <wx-view
-        class="t-notice-bar__extra t-class-extra"
-        bind:tap="clickExtra"
-      />
       <wx-view
         class="t-notice-bar__suffix-icon"
         bind:tap="clickSuffixIcon"

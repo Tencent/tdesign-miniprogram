@@ -30,8 +30,8 @@ exports[`collapse :defaultExpandAll 1`] = `
             <wx-view
               ariaLabel=""
               ariaRole=""
-              class="class t-class t-cell   t-cell--middle"
-              hoverClass="t-cell--hover-class"
+              class="class t-class t-cell  t-cell--middle"
+              hoverClass=""
               hoverStayTime="70"
               style=""
               bind:tap="onClick"
@@ -40,10 +40,10 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__left t-class-left"
               />
               <wx-view
-                class="t-cell__title t-class-title"
+                class="t-cell__title"
               >
                 <wx-view
-                  class="t-cell__title-text"
+                  class="t-cell__title-text  t-class-title"
                 >
                    first 
                 </wx-view>
@@ -115,8 +115,8 @@ exports[`collapse :defaultExpandAll 1`] = `
             <wx-view
               ariaLabel=""
               ariaRole=""
-              class="class t-class t-cell   t-cell--middle"
-              hoverClass="t-cell--hover-class"
+              class="class t-class t-cell  t-cell--middle"
+              hoverClass=""
               hoverStayTime="70"
               style=""
               bind:tap="onClick"
@@ -125,10 +125,10 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__left t-class-left"
               />
               <wx-view
-                class="t-cell__title t-class-title"
+                class="t-cell__title"
               >
                 <wx-view
-                  class="t-cell__title-text"
+                  class="t-cell__title-text  t-class-title"
                 >
                    second 
                 </wx-view>

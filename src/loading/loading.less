@@ -109,34 +109,6 @@
     flex-direction: row;
     vertical-align: top;
   }
-
-  &__refresh-btn {
-    margin-left: 16rpx;
-    color: @loading-color;
-  }
-
-  &__bar {
-    height: 6rpx;
-    width: 80%;
-    transition: 0.5s;
-    background-color: @loading-color;
-    display: none;
-
-    &--static {
-      display: block;
-    }
-
-    &--loaded {
-      opacity: 0;
-      height: 0;
-      animation: t-bar-loaded 1s ease-out;
-    }
-
-    &--animation {
-      animation: t-bar 8s linear;
-      display: block;
-    }
-  }
 }
 
 @keyframes t-bar {

@@ -1,5 +1,5 @@
 ---
-title: Checkbox 复选框
+title: Checkbox 多选框
 description: 用于预设的一组选项中执行多项选择，并呈现选择结果。
 spline: form
 isComponent: true
@@ -64,7 +64,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-align | String | left | 多选框和内容相对位置。可选项：left/right | N
+placement | String | left | 多选框和内容相对位置。可选项：left/right | N
 block | Boolean | true | 是否为块级元素 | N
 check-all | Boolean | false | 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 | N
 checked | Boolean | false | 是否选中 | N

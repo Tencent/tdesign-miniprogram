@@ -16,14 +16,13 @@ interface DialogAlertOptionsType {
   confirmBtn?: string | object;
 }
 
-interface DialogComfirmOptionsType extends DialogAlertOptionsType {
+interface DialogConfirmOptionsType extends DialogAlertOptionsType {
   cancelButtonText?: string;
 }
 
 interface Action {
-  name: string;
-  primary?: boolean;
-  style?: string;
+  content: string;
+  theme?: 'default' | 'primary' | 'danger' | 'light';
 }
 
 interface DialogActionOptionsType {
@@ -62,10 +61,10 @@ export default {
         ...otherOptions,
         visible: true,
       });
-      instance._onComfirm = resolve;
+      instance._onConfirm = resolve;
     });
   },
-  confirm(options: DialogComfirmOptionsType) {
+  confirm(options: DialogConfirmOptionsType) {
     const { context, selector = '#t-dialog', ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
@@ -75,11 +74,11 @@ export default {
         ...otherOptions,
         visible: true,
       });
-      instance._onComfirm = resolve;
+      instance._onConfirm = resolve;
       instance._onCancel = reject;
     });
   },
-  close(options: DialogComfirmOptionsType) {
+  close(options: DialogConfirmOptionsType) {
     const { context, selector = '#t-dialog' } = { ...options };
     const instance = getInstance(context, selector);
     if (instance) {
@@ -92,15 +91,17 @@ export default {
     const { context, selector = '#t-dialog', actions, ...otherOptions } = { ...defaultOptions, ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
-    if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > 7))) {
-      console.warn('action 数量建议控制在1至7个');
+    const { buttonLayout = 'vertical' } = options;
+    const maxLengthSuggestion = buttonLayout === 'vertical' ? 7 : 3;
+    if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > maxLengthSuggestion))) {
+      console.warn(`action 数量建议控制在1至${maxLengthSuggestion}个`);
     }
 
     return new Promise((resolve) => {
       instance.setData({
         actions,
-        buttonLayout: 'vertical',
         ...otherOptions,
+        buttonLayout,
         visible: true,
       });
       instance._onAction = resolve;
