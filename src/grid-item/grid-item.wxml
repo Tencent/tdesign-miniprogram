@@ -13,7 +13,8 @@
   hover-stay-time="{{200}}"
   bindtap="onClick"
   aria-role="{{ariaRole || 'button'}}"
-  aria-labelledby="{{labelID}}"
+  aria-label="{{ariaLabel}}"
+  aria-describedby="{{describedbyID}}"
 >
   <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}">
     <view
@@ -55,7 +56,7 @@
       </t-badge>
       <view
         class="{{_.cls(classPrefix + '__words', [layout])}}"
-        id="{{labelID}}"
+        id="{{describedbyID}}"
         aria-label="{{ ariaLabel || (badgeProps.dot || badgeProps.count ? text + ',' +  description + ',' + _.getBadgeAriaLabel({ ...badgeProps }) : '') }}"
       >
         <view
