@@ -52,7 +52,7 @@ export default class GridItem extends SuperComponent {
     gridItemContentStyle: '',
     align: 'center',
     column: 0,
-    describeID: '',
+    describedbyID: '',
   };
 
   observers = {
@@ -67,7 +67,7 @@ export default class GridItem extends SuperComponent {
   lifetimes = {
     ready() {
       this.setData({
-        describeID: getUniqueID(),
+        describedbyID: getUniqueID(),
       });
     },
   };

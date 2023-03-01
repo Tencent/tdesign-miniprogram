@@ -15,8 +15,8 @@
       <view
         class="{{classPrefix}}__wrapper"
         style="{{gridItemStyle}}"
-        aria-role="{{this.getWrapperAriaRole(file)}}"
-        aria-label="{{this.getWrapperAriaLabel(file)}}"
+        aria-role="{{ariaRole || this.getWrapperAriaRole(file)}}"
+        aria-label="{{ariaLabel || this.getWrapperAriaLabel(file)}}"
       >
         <t-image
           wx:if="{{file.type !== 'video'}}"
