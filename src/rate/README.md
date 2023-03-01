@@ -40,8 +40,6 @@ isComponent: true
 
 ### 组件状态
 
-交互方式：点击
-
 {{ action }}
 
 ### 组件样式
@@ -49,10 +47,6 @@ isComponent: true
 评分大小
 
 {{ size }}
-
-禁用评分
-
-{{ disabled }}
 
 设置评分颜色
 
@@ -74,15 +68,15 @@ allow-half | Boolean | false | 是否允许半选 | N
 color | String / Array | '#ED7B2F' | `0.30.0`。评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB']。TS 类型：`string \| Array<string>` | N
 count | Number | 5 | 评分的数量 | N
 disabled | Boolean | - | 是否禁用评分 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。。`['t-class', 't-class-icon', 't-class-text']` | N
+external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。`['t-class', 't-class-icon', 't-class-text']` | N
 gap | Number | 8 | 评分图标的间距 | N
-icon | String / Array | - | `0.30.0`。自定义评分图标，[选中图标，未选中图标]；此时不受 variant 影响。TS 类型：`string \| string[]` | N
+icon | String / Array | - | `0.30.0`。自定义评分图标，[选中图标，未选中图标]。TS 类型：`string \| string[]` | N
 show-text | Boolean | false | 是否显示对应的辅助文字 | N
 size | String | 24px | 评分图标的大小 | N
 texts | Array | [] | 评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']。TS 类型：`Array<string>` | N
 value | Number | 0 | 选择评分的值 | N
 default-value | Number | undefined | 选择评分的值。非受控属性 | N
-variant | String | outline | 形状类型，有描边类型和填充类型两种。可选项：outline/filled | N
+variant | String | outline | 废弃。形状类型，有描边类型和填充类型两种。可选项：outline/filled | N
 
 ### Rate Events
 

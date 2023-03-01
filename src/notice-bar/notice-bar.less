@@ -16,7 +16,7 @@
 @notice-bar-error-color: var(--td-notice-bar-error-color, @error-color-6); // 'error' 主题色
 @notice-bar-error-bg-color: var(--td-notice-bar-error-bg-color, @error-color-1); // 'error' 主题背景色
 @notice-bar-suffix-icon-color: var(--td-notice-bar-suffix-icon-color, @font-gray-3); // 后缀图标颜色
-@notice-bar-extra-font-color: var(--td-notice-bar-extra-font-color, @brand-color); // 额外信息文本颜色
+@notice-bar-operation-font-color: var(--td-notice-bar-operation-font-color, @brand-color); // 额外信息文本颜色
 
 @notice-bar: ~'@{prefix}-notice-bar';
 
@@ -34,7 +34,6 @@
   }
 
   &__content {
-    display: inline-block;
     white-space: nowrap;
   }
 
@@ -70,13 +69,13 @@
     font-size: @notice-bar-icon-font-size;
   }
 
-  &__extra {
-    color: @notice-bar-extra-font-color;
-    line-height: @notice-bar-line-height;
+  &__operation {
+    display: inline-flex;
+    vertical-align: top;
+    color: @notice-bar-operation-font-color;
     font-weight: 700;
   }
 
-  &__extra:not(:empty),
   &__suffix-icon:not(:empty) {
     padding-left: @spacer;
   }

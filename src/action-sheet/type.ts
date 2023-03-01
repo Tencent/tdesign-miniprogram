@@ -30,14 +30,6 @@ export interface TdActionSheetProps {
     value?: number;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 动作面板描述文字
    * @default ''
    */

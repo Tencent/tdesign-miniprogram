@@ -1,9 +1,11 @@
 module.exports = {
-  getClass: function (classPrefix, size, shape) {
+  getClass: function (classPrefix, size, shape, bordered) {
     var hasPx = (size || '').indexOf('px') > -1;
+    var borderSize = hasPx ? 'medium' : size;
     var classNames = [
       classPrefix,
       classPrefix + (shape === 'round' ? '--round' : '--circle'),
+      bordered ? classPrefix + '--border' + ' ' + classPrefix + '--border-' + borderSize : '',
       hasPx ? '' : classPrefix + '--' + size,
     ];
     return classNames.join(' ');

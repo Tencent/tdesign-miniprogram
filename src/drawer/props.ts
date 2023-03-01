@@ -33,7 +33,6 @@ const props: TdDrawerProps = {
   /** 抽屉的标题 */
   title: {
     type: String,
-    value: '',
   },
   /** 组件是否可见 */
   visible: {

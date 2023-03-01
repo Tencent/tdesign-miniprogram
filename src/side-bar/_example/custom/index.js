@@ -45,11 +45,13 @@ Page({
   },
   onLoad() {
     const query = wx.createSelectorQuery().in(this);
+    const { sideBarIndex } = this.data;
 
     query
       .selectAll('.title')
       .boundingClientRect((rects) => {
         this.offsetTopList = rects.map((item) => item.top);
+        this.setData({ scrollTop: rects[sideBarIndex].top });
       })
       .exec();
   },

@@ -24,7 +24,7 @@ export default class Message extends SuperComponent {
     `${prefix}-class`,
     `${prefix}-class-content`,
     `${prefix}-class-icon`,
-    `${prefix}-class-action`,
+    `${prefix}-class-link`,
     `${prefix}-class-close-btn`,
   ];
 

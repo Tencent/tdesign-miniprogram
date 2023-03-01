@@ -21,7 +21,7 @@
     t-class-count="{{badgeProps.tClassCount}}"
   >
     <view
-      class="{{this.getClass(classPrefix, size, shape)}} {{prefix}}-class-image"
+      class="{{this.getClass(classPrefix, size, shape, bordered)}} {{prefix}}-class-image"
       style="{{this.getSize(size)}}"
       aria-label="{{ ariaLabel || alt ||'头像'}}"
       aria-role="{{ ariaRole || 'img'}}"
