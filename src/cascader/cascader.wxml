@@ -51,7 +51,7 @@
               options="{{options}}"
               bind:change="handleSelect"
               data-level="{{index}}"
-              align="right"
+              placement="right"
               icon="line"
               borderless
             >
