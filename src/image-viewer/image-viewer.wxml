@@ -6,6 +6,8 @@
   id="{{classPrefix}}"
   class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
+  aria-role="dialog"
+  aria-modal="{{ true }}"
 >
   <view
     class="{{classPrefix}}__mask"
@@ -22,7 +24,7 @@
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
       >
-        <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
+        <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image" ria-role="img" aria-label="图像">
           <t-image
             t-class="t-image--external"
             style="{{imagesShape[index].style}}"
@@ -37,7 +39,7 @@
       </swiper>
     </view>
     <view class="{{classPrefix}}__nav">
-      <view class="{{classPrefix}}__nav-close" catch:tap="onClose">
+      <view class="{{classPrefix}}__nav-close" catch:tap="onClose" aria-role="button" aria-label="关闭">
         <slot name="close-btn" />
         <template wx:if="{{_closeBtn}}" is="icon" data="{{ ..._closeBtn }}" />
       </view>
@@ -46,7 +48,7 @@
         {{currentSwiperIndex + 1}}/{{images.length}}
       </view>
 
-      <view class="{{classPrefix}}__nav-delete" bind:tap="onDelete">
+      <view class="{{classPrefix}}__nav-delete" bind:tap="onDelete" aria-role="button" aria-label="删除">
         <slot name="delete-btn" />
         <template is="icon" data="{{ ..._deleteBtn }}" />
       </view>
