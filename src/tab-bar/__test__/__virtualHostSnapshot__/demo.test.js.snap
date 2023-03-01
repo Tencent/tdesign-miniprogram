@@ -7,6 +7,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
     split="{{false}}"
   >
     <t-tab-bar-item
+      ariaLabel="首页，有16条消息"
       badgeProps="{{
         Object {
           "count": 16,
@@ -18,6 +19,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       首页
     </t-tab-bar-item>
     <t-tab-bar-item
+      ariaLabel="软件，有新的消息"
       badgeProps="{{
         Object {
           "dot": true,
@@ -29,6 +31,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       软件
     </t-tab-bar-item>
     <t-tab-bar-item
+      ariaLabel="聊天，有新的消息"
       badgeProps="{{
         Object {
           "count": "New",
@@ -40,6 +43,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       聊天
     </t-tab-bar-item>
     <t-tab-bar-item
+      ariaLabel="我的，有新的消息"
       badgeProps="{{
         Object {
           "count": "···",
