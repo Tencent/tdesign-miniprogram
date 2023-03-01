@@ -23,14 +23,6 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
     value?: KeysType;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 可选项数据源
    * @default []
    */
@@ -48,7 +40,7 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
   };
   /**
    * 展示风格
-   * @default 'step'
+   * @default step
    */
   theme?: {
     type: StringConstructor;

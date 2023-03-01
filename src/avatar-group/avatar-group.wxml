@@ -9,9 +9,8 @@
   <!-- 默认折叠元素 -->
   <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">
     <t-avatar
-      t-class-image="{{prefix}}-class-image"
+      t-class-image="{{prefix}}-avatar--border {{prefix}}-avatar--border-{{size}} {{prefix}}-class-image"
       t-class-content="{{prefix}}-class-content"
-      bordered
       size="{{size}}"
       icon="{{ collapseAvatar ? '' : 'user-add'}}"
       aria-role="none"

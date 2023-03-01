@@ -23,6 +23,7 @@ name | params | description
 -- | -- | --
 cancel | - | \-
 change | `(value: Array<PickerValue>, label: string, columns: Array<{ column: number; index: number }> )` | \-
+close | `(trigger: TriggerSource)` | `1.0.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'cancel-btn' \| 'confrim-btn'`<br/>
 confirm | `(value: Array<PickerValue>, label: string, columns: Array<{ column: number; index: number }> )` | \-
 pick | `(value: Array<PickerValue>, label: string, column: number, index: number)` | \-
 

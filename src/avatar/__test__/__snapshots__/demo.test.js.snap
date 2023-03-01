@@ -3,30 +3,25 @@
 exports[`Avatar Avatar action demo works fine 1`] = `
 <action>
   <t-avatar-group
+    cascading="right-up"
     max="5"
   >
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
   </t-avatar-group>
@@ -101,32 +96,25 @@ exports[`Avatar Avatar character-avatar demo works fine 1`] = `
 exports[`Avatar Avatar exhibition demo works fine 1`] = `
 <exhibition>
   <t-avatar-group
-    cascading="left-up"
     collapseAvatar="+5"
     max="5"
   >
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
     />
     <t-avatar
-      bordered="{{true}}"
       image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
     />
   </t-avatar-group>

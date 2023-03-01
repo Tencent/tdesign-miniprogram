@@ -1,2 +1,2 @@
 <!-- 基础页脚 只有版权信息 -->
-<t-footer theme="text" copyright="{{copyright}}"></t-footer>
+<t-footer text="{{text}}"></t-footer>

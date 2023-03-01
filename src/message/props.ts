@@ -67,6 +67,10 @@ const props: TdMessageProps = {
     type: Number,
     value: 15000,
   },
+  /** 链接名称。值为字符串表示链接名称，值为 `Object` 类型，表示透传至 `Link`。 */
+  link: {
+    type: null,
+  },
 };
 
 export default props;

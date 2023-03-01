@@ -62,16 +62,3 @@
     <t-count-down size="large" format="HH:mm:ss" time="{{ time }}" splitWithUnit theme="round" />
   </view>
 </view>
-
-<view class="demo-count-down">
-  <text class="demo-count-down-desc"> 无底色带单位 </text>
-  <view class="demo-count-down-content">
-    <t-count-down size="small" format="HH:mm:ss" time="{{ time }}" splitWithUnit theme="hightlight" />
-  </view>
-  <view class="demo-count-down-content">
-    <t-count-down format="HH:mm:ss" time="{{ time }}" splitWithUnit theme="hightlight" />
-  </view>
-  <view class="demo-count-down-content">
-    <t-count-down size="large" format="HH:mm:ss" time="{{ time }}" splitWithUnit theme="hightlight" />
-  </view>
-</view>

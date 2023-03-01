@@ -64,5 +64,6 @@ visible | Boolean | false | 是否显示 | N
 -- | -- | --
 cancel | \- | 取消按钮点击时触发
 change | `(value: DateValue)` | 确认按钮点击时触发
-confirm | `(value: DateValue)` | 【开发中】确认按钮点击时触发
+close | `(trigger: TriggerSource)` | `1.0.1`。关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'cancel-btn' \| 'confrim-btn'`<br/>
+confirm | `(value: DateValue)` | `1.0.1`。确认按钮点击时触发
 pick | `(value: DateValue)` | 选中值发生变化时触发

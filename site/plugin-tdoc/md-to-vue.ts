@@ -62,7 +62,7 @@ function customRender({ source, file, md }: any) {
   };
 
   // md filename
-  const reg = file.match(/src\/(\w+-?\w+)\/(\w+-?\w+)\.md/);
+  const reg = file.match(/src\/(\S*)(?=\/\S*.md)/);
   const componentName = reg && reg[1];
 
   // split md
@@ -79,9 +79,15 @@ function customRender({ source, file, md }: any) {
 
   if (pageData.isComponent) {
     mdSegment.demoMd = md.render.call(md, `${demoMd.replace(/<!--[\s\S]+?-->/g, '')}`).html;
-    mdSegment.apiMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${apiMd.replace(/<!--[\s\S]+?-->/g, '')}`).html;
+    mdSegment.apiMd = md.render.call(
+      md,
+      `${pageData.toc ? '[toc]\n' : ''}${apiMd.replace(/<!--[\s\S]+?-->/g, '')}`,
+    ).html;
   } else {
-    mdSegment.docMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${content.replace(/<!--[\s\S]+?-->/g, '')}`).html;
+    mdSegment.docMd = md.render.call(
+      md,
+      `${pageData.toc ? '[toc]\n' : ''}${content.replace(/<!--[\s\S]+?-->/g, '')}`,
+    ).html;
   }
 
   // 设计指南内容 不展示 design Tab 则不解析
