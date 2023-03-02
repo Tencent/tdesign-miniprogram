@@ -1,7 +1,7 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "tdesign-miniprogram",
   "title": "tdesign-ßminiprogram",
   "main": "miniprogram_dist/index.js",
@@ -33,6 +33,7 @@
     "cover": "jest --coverage",
     "test": "jest && jest -c jest.virtualHost.config.js && jest -c jest.e2e.config.js",
     "test:virtualHost": "jest -c jest.virtualHost.config.js",
+    "test:snap-update": "npm run test:virtualHost -- -u && npm run test:unit -- -u",
     "test:demo": "node gen-demo-test.js",
     "test:unit": "jest",
     "test:e2e": "jest -c jest.e2e.config.js",
