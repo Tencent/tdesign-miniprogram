@@ -26,8 +26,12 @@ export default class Drawer extends SuperComponent {
       const { showOverlay } = this.data;
 
       this.setData({
-        visible: visible,
+        visible,
       });
+
+      if (!visible) {
+        this.triggerEvent('close', { trigger: 'overlay' });
+      }
 
       if (showOverlay) {
         this.triggerEvent('overlay-click', { visible: visible });
@@ -36,6 +40,7 @@ export default class Drawer extends SuperComponent {
 
     itemClick(detail) {
       const { index, item } = detail.currentTarget.dataset;
+
       this.triggerEvent('item-click', {
         sibarItem: { index: index, item: item },
       });

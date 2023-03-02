@@ -27,7 +27,12 @@ Component({
         offset: ['20rpx', 32],
         content: '这是一条带关闭的消息通知',
         duration: -1,
-        action: '按钮',
+        link: {
+          content: '按钮',
+          navigatorProps: {
+            url: '/page/xxx/xxx',
+          },
+        },
         closeBtn: true,
       });
     },

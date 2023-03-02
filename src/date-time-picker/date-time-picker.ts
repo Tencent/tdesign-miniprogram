@@ -360,6 +360,7 @@ export default class DateTimePicker extends SuperComponent {
 
       const value = format ? date.format(format) : date.valueOf();
       this._trigger('change', { value });
+      this.triggerEvent('confirm', { value });
       this.resetColumns();
     },
 
@@ -372,6 +373,12 @@ export default class DateTimePicker extends SuperComponent {
       if (!e.detail.visible) {
         this.resetColumns();
       }
+    },
+
+    onClose(e) {
+      const { trigger } = e.detail;
+
+      this.triggerEvent('close', { trigger });
     },
 
     resetColumns() {

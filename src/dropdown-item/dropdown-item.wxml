@@ -32,7 +32,6 @@
           wx:key="index"
           tabindex="0"
           icon="line"
-          align="right"
           class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
           t-class="radio"
           t-class-label="{{prefix}}-class-column-item-label"

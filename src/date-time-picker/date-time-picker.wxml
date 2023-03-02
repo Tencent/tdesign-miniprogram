@@ -9,6 +9,7 @@
   bind:change="onConfirm"
   bind:cancel="onCancel"
   bind:visible-change="onVisibleChange"
+  bind:close="onClose"
   header="{{header}}"
   title="{{title}}"
   confirmBtn="{{confirmBtn || locale.confirm}}"

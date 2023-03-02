@@ -1,12 +1,12 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<t-popup class="class" visible="{{visible}}" placement="bottom" bind:visible-change="hide">
+<t-popup class="class" visible="{{visible}}" placement="bottom" bind:visible-change="onVisibleChange">
   <view style="{{_._style([style, customStyle])}}" class="{{name}}">
     <view class="{{name}}__title">
       <slot name="title" />
       {{title}}
     </view>
-    <view class="{{name}}__close-btn" bind:tap="hide">
+    <view class="{{name}}__close-btn" bind:tap="onClose">
       <slot name="close-btn" />
       <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
     </view>
@@ -51,7 +51,7 @@
               options="{{options}}"
               bind:change="handleSelect"
               data-level="{{index}}"
-              align="right"
+              placement="right"
               icon="line"
               borderless
             >

@@ -18,4 +18,4 @@ progress | Number | - | \- | N
 reverse | Boolean | - | \- | N
 size | String | '40rpx' | \- | N
 text | String / Slot | - | \- | N
-theme | String | circular | options：circular/spinner/bar/error/dots | N
+theme | String | circular | options：circular/spinner/dots | N
