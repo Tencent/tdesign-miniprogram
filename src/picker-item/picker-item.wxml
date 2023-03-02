@@ -21,8 +21,10 @@
       data-index="{{ index }}"
       aria-role="option"
       aria-hidden="{{curIndex !== index}}"
+      aria-label="{{option.label + '，按住后上下滑动选择'}}"
     >
       {{option.label}}
     </view>
   </view>
+  <view aria-role="alert">{{ options[curIndex].label }}</view>
 </view>
