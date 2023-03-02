@@ -14,8 +14,8 @@
 
 <view class="demo-desc">气泡徽标</view>
 <view class="demo-wrapper">
-  <t-badge count="领积分" shape="bubble">
-    <t-button icon="shop" ariaLabel="按钮" shape="square" size="large" />
+  <t-badge count="领积分" shape="bubble" ariaRole="button">
+    <t-button icon="shop" ariaLabel="商店" shape="square" size="large" />
   </t-badge>
 </view>
 

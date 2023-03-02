@@ -22,7 +22,7 @@
 
 <view class="demo-desc">自定义徽标</view>
 <view class="demo-wrapper">
-  <t-badge count="NEW" offset="{{ [0, 2] }}">
-    <t-button icon="notification" ariaLabel="按钮" shape="square" size="large" />
+  <t-badge count="NEW" offset="{{ [0, 2] }}" ariaRole="button">
+    <t-button icon="notification" ariaLabel="通知" shape="square" size="large" />
   </t-badge>
 </view>
