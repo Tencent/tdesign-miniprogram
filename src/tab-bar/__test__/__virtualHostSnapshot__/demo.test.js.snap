@@ -31,7 +31,7 @@ exports[`TabBar TabBar badge demo works fine 1`] = `
       软件
     </t-tab-bar-item>
     <t-tab-bar-item
-      ariaLabel="聊天，有新的消息"
+      ariaLabel="聊天，有New通知"
       badgeProps="{{
         Object {
           "count": "New",
