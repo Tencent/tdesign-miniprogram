@@ -4,7 +4,7 @@
  * addUnit */
 // 为 css 添加单位
 function addUnit(value) {
-  var REGEXP = getRegExp('^d+(.d+)?$');
+  var REGEXP = getRegExp('^\d+(.\d+)?$');
   if (value == null) {
     return undefined;
   }
@@ -63,8 +63,11 @@ function cls(base, arr) {
 
 function getBadgeAriaLabel(options) {
   var maxCount = options.maxCount || 99;
-  if (options.dot || options.count === '...') {
+  if (options.dot) {
     return '有新的消息';
+  }
+  if (options.count === '...') {
+    return '有很多消息';
   }
   if (isNaN(options.count)) {
     return options.count;
