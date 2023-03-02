@@ -61,6 +61,17 @@ export default class PickerItem extends SuperComponent {
         offset: range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0),
         duration: DefaultDuration,
       });
+
+      const { offset } = this.data;
+
+      if (offset === this.StartOffset) {
+        return;
+      }
+      // 调整偏移量
+      const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
+      this.setData({
+        curIndex: index,
+      });
     },
 
     onTouchEnd() {
