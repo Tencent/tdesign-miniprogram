@@ -9,7 +9,7 @@ const props: TdRadioGroupProps = {
   /** 复选框和内容相对位置；仅在使用 options 时生效 */
   placement: {
     type: String,
-    value: null,
+    value: 'left',
   },
   /** 是否开启无边框模式 */
   borderless: {
@@ -21,10 +21,10 @@ const props: TdRadioGroupProps = {
     type: Boolean,
     value: undefined,
   },
-  /** 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标；仅在使用 options 时生效 */
+  /** 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 circle 表示图标为填充型图标，值为 line 表示图标为描边型图标；仅在使用 options 时生效 */
   icon: {
     type: null,
-    value: 'fill-circle',
+    value: 'circle',
   },
   /** 用来定义 value / label 在 `options` 中对应的字段别名 */
   keys: {

@@ -32,12 +32,12 @@ export default class CheckBoxGroup extends SuperComponent {
     value() {
       this.updateChildren();
     },
+    options() {
+      this.initWithOptions();
+    },
   };
 
   lifetimes = {
-    attached() {
-      this.initWithOptions();
-    },
     ready() {
       this.setCheckall();
     },
@@ -112,7 +112,7 @@ export default class CheckBoxGroup extends SuperComponent {
     },
 
     initWithOptions() {
-      const { options } = this.data;
+      const { options, value } = this.data;
 
       if (!options?.length || !Array.isArray(options)) return;
 
@@ -122,8 +122,9 @@ export default class CheckBoxGroup extends SuperComponent {
           ? {
               label: `${item}`,
               value: item,
+              checked: value?.includes(item),
             }
-          : { ...item };
+          : { ...item, checked: value?.includes(item.value) };
       });
 
       this.setData({
