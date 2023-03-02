@@ -41,6 +41,7 @@ export default class PickerItem extends SuperComponent {
     duration: 0, // 滚动动画延迟
     value: '',
     curIndex: 0,
+    isScrolling: false,
   };
 
   methods = {
@@ -63,6 +64,7 @@ export default class PickerItem extends SuperComponent {
         offset,
         duration: DefaultDuration,
         curIndex: index,
+        isScrolling: true,
       });
     },
 
@@ -78,6 +80,7 @@ export default class PickerItem extends SuperComponent {
       this.setData({
         curIndex: index,
         offset: -index * this.itemHeight,
+        isScrolling: false,
       });
 
       if (index === this._selectedIndex) {
