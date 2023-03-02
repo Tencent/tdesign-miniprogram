@@ -56,37 +56,25 @@ export default class PickerItem extends SuperComponent {
       // touch偏移增量
       const touchDeltaY = event.touches[0].clientY - StartY;
       const deltaY = this.calculateViewDeltaY(touchDeltaY);
-
-      this.setData({
-        offset: range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0),
-        duration: DefaultDuration,
-      });
-
-      const { offset } = this.data;
-
-      if (offset === this.StartOffset) {
-        return;
-      }
-      // 调整偏移量
+      const offset = range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0);
       const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
+
       this.setData({
+        offset,
+        duration: DefaultDuration,
         curIndex: index,
       });
     },
 
     onTouchEnd() {
-      const { offset } = this.data;
+      const { offset, index } = this.data;
       const { options } = this.properties;
 
       if (offset === this.StartOffset) {
         return;
       }
-      // 调整偏移量
-      const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
-      this.setData({
-        curIndex: index,
-        offset: -index * this.itemHeight,
-      });
+
+      this.setData({ offset: -index * this.itemHeight });
 
       if (index === this._selectedIndex) {
         return;
