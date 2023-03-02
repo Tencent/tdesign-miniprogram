@@ -1,7 +1,12 @@
 <wxs src="./badge.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
 
-// labelID 用于描述当前元素的文本 descriptionID 用于描述badge消息的文本 role=option一般用于多个内容合并焦点连续朗读
+<!--
+  1. labelID 用于描述当前元素的文本
+  2. descriptionID 用于描述badge消息的文本
+  3. role=option一般用于多个内容合并焦点连续朗读
+-->
+
 <view
   style="{{_._style([style, customStyle])}}"
   class="{{this.getBadgeOuterClass({shape})}} class {{prefix}}-class"
