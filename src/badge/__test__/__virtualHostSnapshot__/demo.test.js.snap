@@ -110,6 +110,7 @@ exports[`Badge Badge base demo works fine 1`] = `
     class="demo-wrapper"
   >
     <t-badge
+      ariaRole="button"
       count="NEW"
       offset="{{
         Array [
@@ -119,7 +120,7 @@ exports[`Badge Badge base demo works fine 1`] = `
       }}"
     >
       <t-button
-        ariaLabel="按钮"
+        ariaLabel="通知"
         icon="notification"
         shape="square"
         size="large"
@@ -238,11 +239,12 @@ exports[`Badge Badge theme demo works fine 1`] = `
     class="demo-wrapper"
   >
     <t-badge
+      ariaRole="button"
       count="领积分"
       shape="bubble"
     >
       <t-button
-        ariaLabel="按钮"
+        ariaLabel="商店"
         icon="shop"
         shape="square"
         size="large"
