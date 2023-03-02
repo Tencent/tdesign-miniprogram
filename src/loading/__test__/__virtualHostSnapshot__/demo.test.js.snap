@@ -48,15 +48,6 @@ exports[`Loading Loading duration demo works fine 1`] = `
 </duration>
 `;
 
-exports[`Loading Loading error demo works fine 1`] = `
-<error>
-  <t-loading
-    theme="error"
-    bind:reload="reloadPage"
-  />
-</error>
-`;
-
 exports[`Loading Loading horizontal demo works fine 1`] = `
 <horizontal>
   <wx-view
@@ -77,16 +68,6 @@ exports[`Loading Loading horizontal demo works fine 1`] = `
     />
   </wx-view>
 </horizontal>
-`;
-
-exports[`Loading Loading loadingProgress demo works fine 1`] = `
-<loadingProgress>
-  <t-loading
-    loading="{{false}}"
-    progress="{{100}}"
-    theme="bar"
-  />
-</loadingProgress>
 `;
 
 exports[`Loading Loading size demo works fine 1`] = `
