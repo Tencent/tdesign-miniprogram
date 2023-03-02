@@ -4,6 +4,7 @@ spline: explain
 toc: false
 docClass: timeline
 ---
+
 ## 🌈 1.0.1 `2023-03-01` 
 ### 🚀 Features
 - `Cascader`: 新增 close 事件 @LeeJim ([#1685](https://github.com/Tencent/tdesign-miniprogram/pull/1685))
@@ -19,6 +20,7 @@ docClass: timeline
 - `DropdownMenu`: 修复 radio 图标显示位置不正确的问题 @LeeJim ([#1693](https://github.com/Tencent/tdesign-miniprogram/pull/1693))
 - `TreeSelect`: 修复 radio 图标显示位置不正确的问题 @LeeJim ([#1693](https://github.com/Tencent/tdesign-miniprogram/pull/1693))
 - `Message`:  更新内嵌 `link` 组件的属性 @anlyyao ([#1694](https://github.com/Tencent/tdesign-miniprogram/pull/1694))
+
 ## 🌈 1.0.0 `2023-02-27` 
 ### ❗ Breaking Changes
 - `Cell`: 调整 hover 状态对应的类名 @anlyyao ([#1635](https://github.com/Tencent/tdesign-miniprogram/pull/1635))
