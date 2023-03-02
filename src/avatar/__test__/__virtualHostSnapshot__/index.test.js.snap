@@ -14,10 +14,6 @@ exports[`Avatar & Avatar Groups Avatar Props : style && customStyle 1`] = `
         tClassContent=""
         tClassCount=""
       >
-        
-
-// labelID 用于描述当前元素的文本 descriptionID 用于描述badge消息的文本 role=option一般用于多个内容合并焦点连续朗读
-
         <wx-view
           ariaDescribedby="t_badge_0_description"
           ariaLabelledby="t_badge_0_label"
