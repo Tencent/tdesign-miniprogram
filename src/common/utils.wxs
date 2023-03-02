@@ -67,7 +67,7 @@ function getBadgeAriaLabel(options) {
     return '有新的消息';
   }
   if (isNaN(options.count)) {
-    return '有' + options.count + '通知';
+    return options.count;
   }
   var str1 = '有' + maxCount + '+条消息';
   var str2 = '有' + options.count + '条消息';
