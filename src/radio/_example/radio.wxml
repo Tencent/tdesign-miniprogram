@@ -4,7 +4,7 @@
   <t-demo title="01 组件类型" desc="纵向单选框">
     <base />
   </t-demo>
-  <!-- 
+
   <t-demo title="" desc="横向单选框">
     <horizontal />
   </t-demo>
@@ -27,5 +27,5 @@
 
   <t-demo title="04 特殊样式" desc="纵向卡片单选框">
     <special />
-  </t-demo> -->
+  </t-demo>
 </view>
