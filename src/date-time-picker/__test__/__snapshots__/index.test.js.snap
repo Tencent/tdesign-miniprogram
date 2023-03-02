@@ -38,10 +38,13 @@ exports[`date-time-picker :base 1`] = `
                 class="t-picker__toolbar"
               >
                 <wx-view
+                  ariaRole="button"
                   class="t-picker__cancel t-class-cancel"
                   bind:tap="onCancel"
                 >
-                  取消
+                  
+        取消
+      
                 </wx-view>
                 <wx-view
                   class="t-picker__title t-class-title"
@@ -49,10 +52,13 @@ exports[`date-time-picker :base 1`] = `
                   选择日期
                 </wx-view>
                 <wx-view
+                  ariaRole="button"
                   class="t-picker__confirm t-class-confirm"
                   bind:tap="onConfirm"
                 >
-                  确定
+                  
+        确定
+      
                 </wx-view>
               </wx-view>
               <wx-view
@@ -63,6 +69,7 @@ exports[`date-time-picker :base 1`] = `
                   index="index"
                 >
                   <wx-view
+                    ariaRole="listbox"
                     class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
@@ -75,6 +82,9 @@ exports[`date-time-picker :base 1`] = `
                       style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, -924px, 0)"
                     >
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2000年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{0}}"
                       >
@@ -83,6 +93,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2001年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{1}}"
                       >
@@ -91,6 +104,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2002年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{2}}"
                       >
@@ -99,6 +115,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2003年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{3}}"
                       >
@@ -107,6 +126,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2004年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{4}}"
                       >
@@ -115,6 +137,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2005年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{5}}"
                       >
@@ -123,6 +148,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2006年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{6}}"
                       >
@@ -131,6 +159,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2007年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{7}}"
                       >
@@ -139,6 +170,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2008年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{8}}"
                       >
@@ -147,6 +181,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2009年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{9}}"
                       >
@@ -155,6 +192,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2010年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{10}}"
                       >
@@ -163,6 +203,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2011年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{11}}"
                       >
@@ -171,6 +214,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2012年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{12}}"
                       >
@@ -179,6 +225,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2013年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{13}}"
                       >
@@ -187,6 +236,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2014年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{14}}"
                       >
@@ -195,6 +247,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2015年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{15}}"
                       >
@@ -203,6 +258,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2016年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{16}}"
                       >
@@ -211,6 +269,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2017年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{17}}"
                       >
@@ -219,6 +280,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2018年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{18}}"
                       >
@@ -227,6 +291,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2019年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{19}}"
                       >
@@ -235,6 +302,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2020年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{20}}"
                       >
@@ -243,6 +313,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{false}}"
+                        ariaLabel="2021年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{21}}"
                       >
@@ -251,6 +324,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2022年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{22}}"
                       >
@@ -259,6 +335,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2023年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{23}}"
                       >
@@ -267,6 +346,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2024年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{24}}"
                       >
@@ -275,6 +357,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2025年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{25}}"
                       >
@@ -283,6 +368,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2026年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{26}}"
                       >
@@ -291,6 +379,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2027年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{27}}"
                       >
@@ -299,6 +390,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2028年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{28}}"
                       >
@@ -307,6 +401,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2029年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{29}}"
                       >
@@ -315,6 +412,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2030年，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{30}}"
                       >
@@ -323,6 +423,11 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                     </wx-view>
+                    <wx-view
+                      ariaRole="alert"
+                    >
+                      2021年
+                    </wx-view>
                   </wx-view>
                 </t-picker-item>
                 <t-picker-item
@@ -330,6 +435,7 @@ exports[`date-time-picker :base 1`] = `
                   index="index"
                 >
                   <wx-view
+                    ariaRole="listbox"
                     class="t-picker-item__group class t-class"
                     style=""
                     bind:touchcancel="onTouchEnd"
@@ -342,6 +448,9 @@ exports[`date-time-picker :base 1`] = `
                       style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, -352px, 0)"
                     >
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="1月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{0}}"
                       >
@@ -350,6 +459,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="2月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{1}}"
                       >
@@ -358,6 +470,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="3月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{2}}"
                       >
@@ -366,6 +481,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="4月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{3}}"
                       >
@@ -374,6 +492,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="5月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{4}}"
                       >
@@ -382,6 +503,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="6月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{5}}"
                       >
@@ -390,6 +514,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="7月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{6}}"
                       >
@@ -398,6 +525,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="8月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{7}}"
                       >
@@ -406,6 +536,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{false}}"
+                        ariaLabel="9月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{8}}"
                       >
@@ -414,6 +547,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="10月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{9}}"
                       >
@@ -422,6 +558,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="11月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{10}}"
                       >
@@ -430,6 +569,9 @@ exports[`date-time-picker :base 1`] = `
     
                       </wx-view>
                       <wx-view
+                        ariaHidden="{{true}}"
+                        ariaLabel="12月，按住后上下滑动选择"
+                        ariaRole="option"
                         class="t-picker-item__item"
                         data-index="{{11}}"
                       >
@@ -437,6 +579,11 @@ exports[`date-time-picker :base 1`] = `
       12月
     
                       </wx-view>
+                    </wx-view>
+                    <wx-view
+                      ariaRole="alert"
+                    >
+                      9月
                     </wx-view>
                   </wx-view>
                 </t-picker-item>
