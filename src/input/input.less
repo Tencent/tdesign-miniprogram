@@ -27,6 +27,7 @@
 .@{prefix}-input {
   background-color: @input-bg-color;
   display: flex;
+  align-items: center;
   flex: 1;
   padding: @input-vertical-padding;
 
@@ -67,6 +68,14 @@
 
   &__icon--prefix:not(:empty) + &__label:not(:empty) {
     padding-left: 8rpx;
+  }
+
+  &__label:not(:empty) + &__wrap {
+    margin-left: @spacer-2;
+  }
+
+  &__icon--prefix:not(:empty) + &__label:empty {
+    margin-right: @spacer-2;
   }
 
   &__wrap {

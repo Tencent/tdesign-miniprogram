@@ -10,7 +10,11 @@ exports[`input props : clearable && label && suffix 1`] = `
     style=""
   >
     <wx-view
-      class="t-input__wrap--prefix"
+      class="t-input__icon--prefix"
+    />
+    <wx-view
+      ariaHidden="{{true}}"
+      class="t-input__label"
     >
       <wx-view
         class="t-input__icon--prefix"
@@ -19,12 +23,8 @@ exports[`input props : clearable && label && suffix 1`] = `
         ariaHidden="{{true}}"
         class="t-input__label"
       >
-        <wx-text
-          class="t-class-label"
-        >
-          tdesign
-        </wx-text>
-      </wx-view>
+        tdesign
+      </wx-text>
     </wx-view>
     <wx-view
       class="t-input__wrap"
@@ -137,7 +137,11 @@ exports[`input slots : label 1`] = `
     style=""
   >
     <wx-view
-      class="t-input__wrap--prefix"
+      class="t-input__icon--prefix"
+    />
+    <wx-view
+      ariaHidden="{{true}}"
+      class="t-input__label"
     >
       <wx-view
         class="t-input__icon--prefix"
@@ -146,17 +150,13 @@ exports[`input slots : label 1`] = `
         ariaHidden="{{true}}"
         class="t-input__label"
       >
+        标签文字
         <wx-text
-          slot="label"
+          style="color: #e34d59"
         >
-          标签文字
-          <wx-text
-            style="color: #e34d59"
-          >
-            *
-          </wx-text>
+          *
         </wx-text>
-      </wx-view>
+      </wx-text>
     </wx-view>
     <wx-view
       class="t-input__wrap"
