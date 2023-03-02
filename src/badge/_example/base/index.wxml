@@ -2,7 +2,7 @@
 <view class="demo-wrapper">
   <t-badge dot offset="{{ [-4, 4] }}" class="wrapper" content="消息" />
   <t-badge dot offset="{{ [1, -1] }}" class="wrapper">
-    <t-icon name="notification" size="24" />
+    <t-icon name="notification" size="24" ariaLabel="通知" />
   </t-badge>
   <t-badge dot offset="{{ [1, 1] }}" class="wrapper">
     <t-button>按钮</t-button>
@@ -13,7 +13,7 @@
 <view class="demo-wrapper">
   <t-badge count="8" content="消息" offset="{{ [-8] }}" class="wrapper" />
   <t-badge count="2" offset="{{ [-2, -2] }}" class="wrapper">
-    <t-icon name="notification" size="24" />
+    <t-icon name="notification" size="24" ariaLabel="通知" />
   </t-badge>
   <t-badge count="8" offset="{{ [2, 2] }}" class="wrapper">
     <t-button>按钮</t-button>
@@ -23,6 +23,6 @@
 <view class="demo-desc">自定义徽标</view>
 <view class="demo-wrapper">
   <t-badge count="NEW" offset="{{ [0, 2] }}">
-    <t-button icon="notification" shape="square" size="large" />
+    <t-button icon="notification" ariaLabel="按钮" shape="square" size="large" />
   </t-badge>
 </view>

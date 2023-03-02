@@ -5,7 +5,7 @@
   <t-tab-bar-item badge-props="{{ { dot: true } }}" ariaLabel="软件，有新的消息" value="label2" icon="app"
     >软件</t-tab-bar-item
   >
-  <t-tab-bar-item badge-props="{{ {count: 'New'} }}" ariaLabel="聊天，有新的消息" value="label3" icon="chat"
+  <t-tab-bar-item badge-props="{{ {count: 'New'} }}" ariaLabel="聊天，有New通知" value="label3" icon="chat"
     >聊天</t-tab-bar-item
   >
   <t-tab-bar-item badge-props="{{ {count: '···'} }}" ariaLabel="我的，有新的消息" value="label4" icon="user"

@@ -1,21 +1,21 @@
 <view class="demo-desc">圆形徽标</view>
 <view class="demo-wrapper">
   <t-badge count="2" offset="{{ [-2, -2] }}">
-    <t-icon name="notification" size="24" />
+    <t-icon name="notification" size="24" ariaLabel="通知" />
   </t-badge>
 </view>
 
 <view class="demo-desc">方形徽标</view>
 <view class="demo-wrapper">
   <t-badge count="2" shape="square" offset="{{ [-2, -2] }}">
-    <t-icon name="notification" size="24" />
+    <t-icon name="notification" size="24" ariaLabel="通知" />
   </t-badge>
 </view>
 
 <view class="demo-desc">气泡徽标</view>
 <view class="demo-wrapper">
   <t-badge count="领积分" shape="bubble">
-    <t-button icon="shop" shape="square" size="large" />
+    <t-button icon="shop" ariaLabel="按钮" shape="square" size="large" />
   </t-badge>
 </view>
 
