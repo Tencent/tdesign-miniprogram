@@ -424,6 +424,7 @@ exports[`date-time-picker :base 1`] = `
                       </wx-view>
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
                       ariaRole="alert"
                       class="t-picker-item__aria__content"
                     >
@@ -582,6 +583,7 @@ exports[`date-time-picker :base 1`] = `
                       </wx-view>
                     </wx-view>
                     <wx-view
+                      ariaHidden="{{true}}"
                       ariaRole="alert"
                       class="t-picker-item__aria__content"
                     >

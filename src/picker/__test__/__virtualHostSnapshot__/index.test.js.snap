@@ -98,6 +98,7 @@ exports[`picker :base 1`] = `
             </wx-view>
           </wx-view>
           <wx-view
+            ariaHidden="{{true}}"
             ariaRole="alert"
             class="t-picker-item__aria__content"
           >
@@ -163,6 +164,7 @@ exports[`picker :base 1`] = `
             </wx-view>
           </wx-view>
           <wx-view
+            ariaHidden="{{true}}"
             ariaRole="alert"
             class="t-picker-item__aria__content"
           >
