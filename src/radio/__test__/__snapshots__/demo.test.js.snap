@@ -43,7 +43,7 @@ exports[`Radio Radio base demo works fine 1`] = `
         },
       ]
     }}"
-    value="{{0}}"
+    value="{{1}}"
     bind:change="onChange"
   />
 </base>
