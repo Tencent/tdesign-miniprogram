@@ -98,7 +98,7 @@ export default class ActionSheet extends SuperComponent {
       const realIndex = isSwiperMode ? index + currentSwiperIndex * count : index;
       if (item) {
         this.triggerEvent('selected', { selected: item, index: realIndex });
-        this.trigger('close', { trigger: 'select' });
+        this.triggerEvent('close', { trigger: 'select' });
         this._trigger('visible-change', { visible: false });
       }
     },
