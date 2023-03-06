@@ -19,7 +19,7 @@
             class="{{name}}__step"
             bind:tap="onStepClick"
             data-index="{{index}}"
-            aria-role="button"
+            aria-role="{{ item === defaultOptionLabel ? 'text' : 'button' }}"
             aria-label="{{ item === defaultOptionLabel ? item : '已选中,' + item  }}"
           >
             <view
@@ -37,9 +37,9 @@
           </t-tabs>
         </block>
       </block>
-      <view wx:if="{{ subTitles && subTitles[stepIndex] }}" class="{{name}}__options-title"
-        >{{subTitles[stepIndex]}}</view
-      >
+      <view wx:if="{{ subTitles && subTitles[stepIndex] }}" class="{{name}}__options-title">
+        {{subTitles[stepIndex]}}
+      </view>
       <view
         class="{{name}}__options-container"
         style="width: {{items.length + 1}}00vw; transform: translateX(-{{stepIndex}}00vw)"
@@ -51,9 +51,8 @@
           class="{{name}}__options"
           scroll-y
           scroll-top="{{scrollTopList[index]}}"
-          aria-hidden="{{ stepIndex !== index}}"
         >
-          <view class="cascader-radio-group-{{index}}">
+          <view class="cascader-radio-group-{{index}}" aria-hidden="{{ stepIndex !== index}}">
             <t-radio-group
               value="{{selectedValue[index]}}"
               keys="{{keys}}"
