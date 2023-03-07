@@ -7,7 +7,12 @@
   class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
 >
-  <view class="{{classPrefix}}__mask" data-source="overlay" bind:tap="onClose" />
+  <view
+    class="{{classPrefix}}__mask"
+    data-source="overlay"
+    bind:tap="onClose"
+    style="{{ 'background-color: ' + backgroundColor }}"
+  />
   <block wx:if="{{images && images.length}}">
     <view class="{{classPrefix}}__content">
       <swiper

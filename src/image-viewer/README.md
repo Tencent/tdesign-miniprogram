@@ -43,7 +43,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-background-color | String / Number | rgba(0, 0, 0, 1) | 已废弃。遮罩的背景颜色 | N
+background-color | String / Number | rgba(0, 0, 0, 1) | 遮罩的背景颜色 | N
 images | Array | [] | 图片数组。TS 类型：`Array<string>` | N
 initial-index | Number | 0 | 默认展示第几项 | N
 show-index | Boolean | false | 是否显示页码 | N
