@@ -40,6 +40,29 @@ exports[`Checkbox Checkbox all demo works fine 1`] = `
 exports[`Checkbox Checkbox base demo works fine 1`] = `
 <base>
   <t-checkbox-group
+    options="{{
+      Array [
+        Object {
+          "label": "多选",
+          "value": "checkbox1",
+        },
+        Object {
+          "label": "多选",
+          "value": "checkbox2",
+        },
+        Object {
+          "label": "多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行",
+          "maxLabelRow": 2,
+          "value": "checkbox3",
+        },
+        Object {
+          "content": "描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息",
+          "label": "多选",
+          "maxContentRow": 2,
+          "value": "checkbox4",
+        },
+      ]
+    }}"
     value="{{
       Array [
         "checkbox1",
@@ -47,27 +70,7 @@ exports[`Checkbox Checkbox base demo works fine 1`] = `
       ]
     }}"
     bind:change="handleGroupChange"
-  >
-    <t-checkbox
-      label="多选"
-      value="checkbox1"
-    />
-    <t-checkbox
-      label="多选"
-      value="checkbox2"
-    />
-    <t-checkbox
-      label="多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行"
-      maxLabelRow="2"
-      value="checkbox3"
-    />
-    <t-checkbox
-      content="描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息"
-      label="多选"
-      maxContentRow="2"
-      value="checkbox4"
-    />
-  </t-checkbox-group>
+  />
 </base>
 `;
 
