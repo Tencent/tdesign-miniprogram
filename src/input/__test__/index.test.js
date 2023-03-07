@@ -190,7 +190,7 @@ describe('input', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const clearable = comp.querySelector('.base >>> .t-input__wrap--clearable-icon');
-      clearable.dispatchEvent('tap');
+      clearable.dispatchEvent('touchstart');
       await simulate.sleep(0);
       expect(handleClear.mock.calls[0][0].detail).toStrictEqual({});
     });
