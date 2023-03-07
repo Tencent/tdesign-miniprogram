@@ -55,7 +55,7 @@ exports[`Badge Badge base demo works fine 1`] = `
   <wx-view
     class="demo-desc"
   >
-    数字徽标
+    数字徽标-
   </wx-view>
   <wx-view
     class="demo-wrapper"
@@ -99,6 +99,81 @@ exports[`Badge Badge base demo works fine 1`] = `
       <t-button>
         按钮
       </t-button>
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    数字徽标二
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      ariaLabel="99+"
+      ariaRole="button"
+      class="wrapper"
+      count="100"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
+    >
+      <t-button
+        ariaLabel="收藏"
+        icon="{{
+          Object {
+            "name": "star",
+          }
+        }}"
+        shape="square"
+      />
+    </t-badge>
+    <t-badge
+      ariaLabel="62赞"
+      ariaRole="button"
+      class="wrapper"
+      count="62"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
+    >
+      <t-button
+        ariaLabel="赞"
+        icon="{{
+          Object {
+            "name": "thumb-up",
+          }
+        }}"
+        shape="square"
+      />
+    </t-badge>
+    <t-badge
+      ariaLabel="19评论"
+      ariaRole="button"
+      class="wrapper"
+      count="19"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
+    >
+      <t-button
+        ariaLabel="评论"
+        icon="{{
+          Object {
+            "name": "edit",
+          }
+        }}"
+        shape="square"
+      />
     </t-badge>
   </wx-view>
   <wx-view
