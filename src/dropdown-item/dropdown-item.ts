@@ -37,6 +37,7 @@ export default class DropdownMenuItem extends SuperComponent {
     overlay: menuProps.showOverlay.value,
     labelAlias: 'label',
     valueAlias: 'value',
+    computedLabel: '',
   };
 
   relations: RelationsOptions = {
@@ -79,11 +80,11 @@ export default class DropdownMenuItem extends SuperComponent {
 
       if (target) {
         this.setData({
-          label: target[labelAlias],
+          computedLabel: target[labelAlias],
         });
       }
     },
-    label() {
+    'label, computedLabel'() {
       this.$parent?.getAllItems();
     },
     show(visible) {
