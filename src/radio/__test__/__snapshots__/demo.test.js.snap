@@ -22,27 +22,30 @@ exports[`Radio Radio align demo works fine 1`] = `
 exports[`Radio Radio base demo works fine 1`] = `
 <base>
   <t-radio-group
-    defaultValue="radio1"
+    options="{{
+      Array [
+        Object {
+          "label": "单选",
+          "value": 0,
+        },
+        Object {
+          "label": "单选",
+          "value": 1,
+        },
+        Object {
+          "label": "单选单选单选单选单选单选单选单选单选单选单选单选单选单选",
+          "value": 2,
+        },
+        Object {
+          "content": "描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息",
+          "label": "单选",
+          "value": 3,
+        },
+      ]
+    }}"
+    value="{{1}}"
     bind:change="onChange"
-  >
-    <t-radio
-      label="单选"
-      value="radio1"
-    />
-    <t-radio
-      label="单选"
-      value="radio2"
-    />
-    <t-radio
-      label="单选单选单选单选单选单选单选单选单选单选单选单选单选单选"
-      value="radio3"
-    />
-    <t-radio
-      content="描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息"
-      label="单选"
-      value="radio4"
-    />
-  </t-radio-group>
+  />
 </base>
 `;
 

@@ -10,11 +10,7 @@ exports[`input props : clearable && label && suffix 1`] = `
     style=""
   >
     <wx-view
-      class="t-input__icon--prefix"
-    />
-    <wx-view
-      ariaHidden="{{true}}"
-      class="t-input__label"
+      class="t-input__wrap--prefix"
     >
       <wx-view
         class="t-input__icon--prefix"
@@ -23,8 +19,12 @@ exports[`input props : clearable && label && suffix 1`] = `
         ariaHidden="{{true}}"
         class="t-input__label"
       >
-        tdesign
-      </wx-text>
+        <wx-text
+          class="t-class-label"
+        >
+          tdesign
+        </wx-text>
+      </wx-view>
     </wx-view>
     <wx-view
       class="t-input__wrap"
@@ -47,6 +47,7 @@ exports[`input props : clearable && label && suffix 1`] = `
           disabled="{{false}}"
           focus="{{false}}"
           holdKeyboard="{{false}}"
+          maxlength="{{-1}}"
           password="{{false}}"
           placeholder=""
           placeholderClass="t-input__placeholder input-placeholder"
@@ -69,7 +70,7 @@ exports[`input props : clearable && label && suffix 1`] = `
         />
         <wx-view
           class="t-input__wrap--clearable-icon"
-          bind:tap="clearInput"
+          bind:touchstart="clearInput"
         >
           <t-icon
             class=""
@@ -137,11 +138,7 @@ exports[`input slots : label 1`] = `
     style=""
   >
     <wx-view
-      class="t-input__icon--prefix"
-    />
-    <wx-view
-      ariaHidden="{{true}}"
-      class="t-input__label"
+      class="t-input__wrap--prefix"
     >
       <wx-view
         class="t-input__icon--prefix"
@@ -150,13 +147,17 @@ exports[`input slots : label 1`] = `
         ariaHidden="{{true}}"
         class="t-input__label"
       >
-        标签文字
         <wx-text
-          style="color: #e34d59"
+          slot="label"
         >
-          *
+          标签文字
+          <wx-text
+            style="color: #e34d59"
+          >
+            *
+          </wx-text>
         </wx-text>
-      </wx-text>
+      </wx-view>
     </wx-view>
     <wx-view
       class="t-input__wrap"
@@ -179,6 +180,7 @@ exports[`input slots : label 1`] = `
           disabled="{{false}}"
           focus="{{false}}"
           holdKeyboard="{{false}}"
+          maxlength="{{-1}}"
           password="{{false}}"
           placeholder=""
           placeholderClass="t-input__placeholder input-placeholder"
