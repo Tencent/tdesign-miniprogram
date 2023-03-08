@@ -25,6 +25,7 @@
         class="{{classPrefix}}__radio {{prefix}}-class-column"
         t-class="{{classPrefix}}__radio-group"
         value="{{value}}"
+        placement="right"
         bind:change="handleRadioChange"
       >
         <t-radio
