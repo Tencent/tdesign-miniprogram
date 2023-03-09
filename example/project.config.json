@@ -385,6 +385,18 @@
           "pathName": "pages/upload/upload",
           "query": "",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "search",
+          "pathName": "pages/search/search",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "checkbox",
+          "pathName": "pages/checkbox/checkbox",
+          "scene": null
         }
       ]
     }

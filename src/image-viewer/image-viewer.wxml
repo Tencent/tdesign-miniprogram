@@ -16,10 +16,10 @@
     style="{{ 'background-color: ' + backgroundColor }}"
   />
   <block wx:if="{{images && images.length}}">
-    <view slot="content" class="{{classPrefix}}__content">
+    <view class="{{classPrefix}}__content">
       <swiper
-        height="{{windowHeight * 2}}"
         class="swiper"
+        style="{{swiperStyle[currentSwiperIndex].style}}"
         autoplay="{{false}}"
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
@@ -27,7 +27,7 @@
         <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image" ria-role="img" aria-label="图像">
           <t-image
             t-class="t-image--external"
-            style="{{imagesShape[index].style}}"
+            style="{{imagesStyle[index].style || ''}}"
             mode="aspectFit"
             lazy
             src="{{item}}"

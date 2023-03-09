@@ -67,4 +67,4 @@ progress | Number | - | 加载进度 | N
 reverse | Boolean | - | 加载动画是否反向 | N
 size | String | '40rpx' | 尺寸，示例：40rpx/20px | N
 text | String / Slot | - | 加载提示文案 | N
-theme | String | circular | 加载组件类型。可选项：circular/spinner/bar/error/dots | N
+theme | String | circular | 加载组件类型。可选项：circular/spinner/dots | N
