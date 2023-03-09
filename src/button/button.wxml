@@ -6,7 +6,7 @@
   data-custom="{{ customDataset }}"
   class="class {{className}}"
   form-type="{{type}}"
-  open-type="{{disabled || loading || openType}}"
+  open-type="{{disabled || loading ? '' : openType}}"
   hover-stop-propagation="{{hoverStopPropagation}}"
   hover-start-time="{{hoverStartTime}}"
   hover-stay-time="{{hoverStayTime}}"
