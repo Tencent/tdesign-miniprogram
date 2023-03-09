@@ -24,7 +24,7 @@
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
       >
-        <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image" ria-role="img" aria-label="图像">
+        <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
             t-class="t-image--external"
             style="{{imagesStyle[index].style || ''}}"
@@ -34,6 +34,8 @@
             data-index="{{index}}"
             class="{{classPrefix}}__image"
             bindload="onImageLoadSuccess"
+            aria-role="img"
+            :aria-label="图像{{index}}"
           ></t-image>
         </swiper-item>
       </swiper>
