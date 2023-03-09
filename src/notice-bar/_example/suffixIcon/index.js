@@ -1,6 +1,8 @@
 Component({
   data: {
     visible: true,
+
+    closeIcon: { name: 'close', ariaLabel: '关闭', ariaRole: 'button' },
   },
 
   methods: {

@@ -1,4 +1,5 @@
 <t-notice-bar
+  ariaRole="button"
   visible="{{true}}"
   prefixIcon="sound"
   suffixIcon="chevron-right"
