@@ -21,18 +21,10 @@ export interface TdDateTimePickerProps {
     value?: string;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 选择器的最大可选时间，默认为当前时间+10年
    */
   end?: {
-    type: StringConstructor;
+    type: null;
     value?: string | number;
   };
   /**
@@ -41,14 +33,6 @@ export interface TdDateTimePickerProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
-  };
-  /**
-   * 底部内容
-   * @default true
-   */
-  footer?: {
-    type: BooleanConstructor;
-    value?: boolean;
   };
   /**
    * 用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format)
@@ -71,7 +55,7 @@ export interface TdDateTimePickerProps {
    * @default 'date'
    */
   mode?: {
-    type: StringConstructor;
+    type: null;
     value?: DateTimePickerMode;
   };
   /**
@@ -86,7 +70,7 @@ export interface TdDateTimePickerProps {
    * 选择器的最小可选时间，默认为当前时间-10年
    */
   start?: {
-    type: StringConstructor;
+    type: null;
     value?: string | number;
   };
   /**
@@ -101,14 +85,14 @@ export interface TdDateTimePickerProps {
    * 选中值
    */
   value?: {
-    type: StringConstructor;
+    type: null;
     value?: DateValue;
   };
   /**
    * 选中值，非受控属性
    */
   defaultValue?: {
-    type: StringConstructor;
+    type: null;
     value?: DateValue;
   };
   /**

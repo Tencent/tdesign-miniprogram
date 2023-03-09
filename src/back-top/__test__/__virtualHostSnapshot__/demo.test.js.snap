@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackTop BackTop base demo works fine 1`] = `
+<base>
+  <t-back-top
+    text="顶部"
+    theme="round"
+    bind:to-top="onToTop"
+  />
+</base>
+`;
+
+exports[`BackTop BackTop half-round demo works fine 1`] = `
+<half-round>
+  <t-back-top
+    text="返回顶部"
+    theme="half-round-dark"
+    bind:to-top="onToTop"
+  />
+</half-round>
+`;

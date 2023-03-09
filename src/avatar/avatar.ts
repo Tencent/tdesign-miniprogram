@@ -14,7 +14,6 @@ export default class Avatar extends SuperComponent {
   };
 
   externalClasses = [
-    'class',
     `${prefix}-class`,
     `${prefix}-class-image`,
     `${prefix}-class-icon`,
@@ -29,6 +28,7 @@ export default class Avatar extends SuperComponent {
     classPrefix: name,
     isShow: true,
     zIndex: 0,
+    bordered: false,
   };
 
   relations: RelationsOptions = {
@@ -39,6 +39,7 @@ export default class Avatar extends SuperComponent {
 
         this.setData({
           size: this.data.size ?? parent.data.size,
+          bordered: true,
         });
       },
     },

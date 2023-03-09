@@ -5,13 +5,23 @@
   <block wx:for="{{checkboxOptions}}" wx:key="value">
     <t-checkbox
       class="{{prefix}}-checkbox-option"
+      data-item="{{item}}"
       label="{{item.label || item.text || ''}}"
       value="{{item.value || ''}}"
+      block="{{item.block || true}}"
+      check-all="{{item.checkAll || false}}"
+      checked="{{item.checked || false}}"
       content="{{item.content || ''}}"
-      check-all="{{item.checkAll}}"
+      content-disabled="{{item.contentDisabled || false}}"
+      icon="{{item.icon || 'circle'}}"
+      indeterminate="{{item.indeterminate || false}}"
       disabled="{{item.disabled}}"
-      data-item="{{item}}"
+      max-content-row="{{item.maxContentRow || 5}}"
+      max-label-row="{{item.maxLabelRow || 3}}"
+      name="{{item.name || ''}}"
+      readonly="{{item.readonly || false}}"
       bind:change="handleInnerChildChange"
-    ></t-checkbox>
+      placement="{{item.placement || 'left'}}"
+    />
   </block>
 </view>

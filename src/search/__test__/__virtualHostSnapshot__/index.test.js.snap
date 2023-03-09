@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`search Props :base 1`] = `
+<main>
+  <t-search
+    class="search"
+  >
+    <wx-view
+      class="class t-search t-class"
+      style=""
+    >
+      <wx-view
+        class="t-search__input-box t-not-focused t-search__input-box-- t-search__input-box--square t-class-input-container"
+      >
+        <t-icon
+          class="t-icon t-class-left"
+        >
+          <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
+            ariaRole=""
+            class="t-icon class t-class"
+            style="font-size: 24px;"
+            bind:tap="onTap"
+          >
+            <wx-label
+              class="t-icon-search t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
+        <wx-input
+          class="t-input__keyword t-class-input"
+          confirmType="search"
+          disabled="{{false}}"
+          focus="{{false}}"
+          name="input"
+          placeholder=""
+          placeholderClass="t-search__placeholder t-search__placeholder--normal"
+          type="text"
+          value=""
+          bind:blur="onBlur"
+          bind:confirm="onConfirm"
+          bind:focus="onFocus"
+          bind:input="onInput"
+        />
+      </wx-view>
+      <wx-view
+        ariaRole="button"
+        class="t-search__search-action t-class-action"
+        bind:tap="onActionClick"
+      >
+        
+    提交
+  
+      </wx-view>
+    </wx-view>
+  </t-search>
+</main>
+`;

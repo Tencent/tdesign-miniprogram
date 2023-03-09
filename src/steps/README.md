@@ -84,5 +84,5 @@ external-classes | Array | - | 组件类名，用于设置组件外层元素元�
 icon | String / Slot | - | 图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标 | N
 status | String | default | 当前步骤的状态：默认状态（未开始）、进行中状态、完成状态、错误状态。可选项：default/process/finish/error。TS 类型：`StepStatus` `type StepStatus = 'default' \| 'process' \| 'finish' \| 'error'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/step-item/type.ts) | N
 style | String | - | 自定义组件样式 | N
-sub-step-items | Array | [] | 子步骤条，仅支持 layout  = 'vertical' 时。TS 类型：`SubStepItem[]` `interface SubStepItem { status: StepStatus, title: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/step-item/type.ts) | N
+sub-step-items | Array | [] | 废弃。子步骤条，仅支持 layout  = 'vertical' 时 | N
 title | String / Slot | '' | 标题 | N

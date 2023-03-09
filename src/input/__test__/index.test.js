@@ -101,7 +101,7 @@ describe('input', () => {
       expect(component.dom.getAttribute('class').includes('t-input--border')).toBeFalsy();
 
       const $input = comp.querySelector('.base >>> .t-input__control');
-      expect($input.dom.getAttribute('class').includes('t-input__control--center')).toBeTruthy();
+      expect($input.dom.getAttribute('class').includes('t-input--center')).toBeTruthy();
     });
 
     // clearable label suffix
@@ -190,7 +190,7 @@ describe('input', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const clearable = comp.querySelector('.base >>> .t-input__wrap--clearable-icon');
-      clearable.dispatchEvent('tap');
+      clearable.dispatchEvent('touchstart');
       await simulate.sleep(0);
       expect(handleClear.mock.calls[0][0].detail).toStrictEqual({});
     });

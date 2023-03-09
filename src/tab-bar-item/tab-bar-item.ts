@@ -8,6 +8,8 @@ const classPrefix = `${prefix}-tab-bar-item`;
 
 @wxComponent()
 export default class TabBarItem extends SuperComponent {
+  externalClasses = [`${prefix}-class`];
+
   parent = null;
 
   relations: RelationsOptions = {

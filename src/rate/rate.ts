@@ -62,19 +62,28 @@ export default class Rate extends SuperComponent {
         if (value !== currentValue) {
           this._trigger('change', { value });
         }
+
+        if (this.touchEnd) {
+          this.hideTips();
+        }
       });
     },
     onTap(e: WechatMiniprogram.TouchEvent) {
       this.onTouch(e, 'tap');
     },
+    onTouchStart() {
+      this.touchEnd = false;
+    },
     onTouchMove(e: WechatMiniprogram.TouchEvent) {
       this.onTouch(e, 'move');
     },
     onTouchEnd() {
+      this.touchEnd = true;
+      this.hideTips();
+    },
+    hideTips() {
       if (this.data.actionType === 'move') {
-        this.setData({}, () => {
-          this.setData({ tipsVisible: false, scaleIndex: -1 });
-        });
+        this.setData({ tipsVisible: false, scaleIndex: -1 });
       }
     },
     onSelect(e: WechatMiniprogram.TouchEvent) {

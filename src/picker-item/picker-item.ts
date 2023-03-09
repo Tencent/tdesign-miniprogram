@@ -24,7 +24,7 @@ export default class PickerItem extends SuperComponent {
     },
   };
 
-  externalClasses = ['class', `${prefix}-class`];
+  externalClasses = [`${prefix}-class`];
 
   properties = props;
 

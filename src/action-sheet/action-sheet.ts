@@ -74,12 +74,14 @@ export default class ActionSheet extends SuperComponent {
 
     /** 指令调用隐藏 */
     close() {
+      this.triggerEvent('close', { trigger: 'command' });
       this._trigger('visible-change', { visible: false });
     },
 
     /** 默认点击遮罩关闭 */
     onPopupVisibleChange({ detail }) {
       if (!detail.visible) {
+        this.triggerEvent('close', { trigger: 'overlay' });
         this._trigger('visible-change', { visible: false });
       }
       if (this.autoClose) {
@@ -96,6 +98,7 @@ export default class ActionSheet extends SuperComponent {
       const realIndex = isSwiperMode ? index + currentSwiperIndex * count : index;
       if (item) {
         this.triggerEvent('selected', { selected: item, index: realIndex });
+        this.triggerEvent('close', { trigger: 'select' });
         this._trigger('visible-change', { visible: false });
       }
     },

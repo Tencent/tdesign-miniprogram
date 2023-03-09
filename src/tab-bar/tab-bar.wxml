@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [['border', bordered], ['fixed', fixed], ['safe', safeAreaInsetBottom], shape])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [['border', bordered], ['fixed', fixed], ['safe', safeAreaInsetBottom], shape])}} class {{prefix}}-class"
   aria-role="tablist"
 >
   <slot />

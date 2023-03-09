@@ -15,10 +15,13 @@
 @stepper-border-width: 2rpx;
 
 @stepper-border-radius: var(--td-stepper-border-radius, @radius-small); // outline/filled 主题下的圆角大小
-@stepper-border-color: var(--td-stepper-border-color, @gray-color-4); // outline/filled 主题下的圆角颜色
+@stepper-border-color: var(--td-stepper-border-color, @component-border); // outline/filled 主题下的圆角颜色
 @stepper-input-color: var(--td-stepper-input-color, @font-gray-1); // 输入框文本/图标颜色
 @stepper-input-disabled-color: var(--td-stepper-input-disabled-color, @font-gray-4); // 禁用态输入框文本/图标颜色
-@stepper-input-disabled-bg: var(--td-stepper-input-disabled-bg, @gray-color-2); // 禁用态输入框文本/图标颜色
+@stepper-input-disabled-bg: var(
+  --td-stepper-input-disabled-bg,
+  @bg-color-component-disabled
+); // 禁用态输入框文本/图标颜色
 
 @stepper: ~'@{prefix}-stepper';
 
@@ -122,11 +125,11 @@
 
   &__minus--filled,
   &__plus--filled {
-    background-color: @gray-color-1;
+    background-color: @bg-color-secondarycontainer;
   }
 
   &__input--filled {
-    background-color: @gray-color-1;
+    background-color: @bg-color-secondarycontainer;
     margin: 0 8rpx;
 
     .@{stepper}__input {

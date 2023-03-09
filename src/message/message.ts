@@ -2,20 +2,29 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/sr
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
-import { getRect, unitConvert, calcIcon } from '../common/utils';
+import { getRect, unitConvert, calcIcon, isObject } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
 
 // 展示动画持续时间
 const SHOW_DURATION = 500;
+
+// 主题图标
+const THEME_ICON = {
+  info: 'info-circle-filled',
+  success: 'check-circle-filled',
+  warning: 'info-circle-filled',
+  error: 'error-circle-filled',
+};
+
 @wxComponent()
 export default class Message extends SuperComponent {
   externalClasses = [
     `${prefix}-class`,
     `${prefix}-class-content`,
     `${prefix}-class-icon`,
-    `${prefix}-class-action`,
+    `${prefix}-class-link`,
     `${prefix}-class-close-btn`,
   ];
 
@@ -50,10 +59,15 @@ export default class Message extends SuperComponent {
       }
     },
 
-    icon(v) {
+    'icon, theme'(icon, theme) {
       this.setData({
-        _icon: calcIcon(v, 'error-circle-filled'),
+        _icon: calcIcon(icon, THEME_ICON[theme]),
       });
+    },
+
+    link(v) {
+      const _link = isObject(v) ? { ...v } : { content: v };
+      this.setData({ _link });
     },
 
     closeBtn(v) {
@@ -158,7 +172,7 @@ export default class Message extends SuperComponent {
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
         this.hide();
-        this.triggerEvent('durationEnd', { self: this });
+        this.triggerEvent('duration-end', { self: this });
       }, duration) as unknown as number;
     }
 
@@ -203,10 +217,10 @@ export default class Message extends SuperComponent {
 
   handleClose() {
     this.hide();
-    this.triggerEvent('closeBtnClick');
+    this.triggerEvent('close-btn-click');
   }
 
-  handleBtnClick() {
-    this.triggerEvent('actionBtnClick', { self: this });
+  handleLinkClick() {
+    this.triggerEvent('link-click');
   }
 }

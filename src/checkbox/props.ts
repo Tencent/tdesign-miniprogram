@@ -7,7 +7,7 @@
 import { TdCheckboxProps } from './type';
 const props: TdCheckboxProps = {
   /** 多选框和内容相对位置 */
-  align: {
+  placement: {
     type: String,
     value: 'left',
   },

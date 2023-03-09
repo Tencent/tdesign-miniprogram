@@ -73,9 +73,10 @@ external-classes | Array | - | 组件类名。`['t-class', 't-class-icon', 't-cl
 ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 loading | Boolean | false | 是否显示为加载状态 | N
-loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
+loading-props | Object | - | 透传至 Loading 组件。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
 shape | String | rectangle | 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形。可选项：rectangle/square/round/circle | N
 size | String | medium | 组件尺寸。可选项：extra-small/small/medium/large。TS 类型：`SizeEnum` | N
+suffix | Slot | - | 右侧内容，可用于定义右侧图标 | N
 theme | String | default | 组件风格，依次为品牌色、危险色。可选项：default/primary/danger/light | N
 type | String | - | 同小程序的 formType。可选项：submit/reset | N
 variant | String | base | 按钮形式，基础、线框、文字。可选项：base/outline/dashed/text | N

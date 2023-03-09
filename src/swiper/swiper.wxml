@@ -3,7 +3,7 @@
 
 <import src="../common/template/image.wxml" />
 
-<view class="{{prefix}}-class {{classPrefix}}" style="{{_._style([style, customStyle])}}">
+<view class="class {{prefix}}-class {{classPrefix}}" style="{{_._style([style, customStyle])}}">
   <swiper
     class="{{classPrefix}}-host"
     autoplay="{{autoplay}}"
@@ -31,7 +31,7 @@
     >
       <template
         is="image"
-        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: item, ...imageProps }}"
+        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: item, mode: 'aspectFill', ...imageProps }}"
       />
     </swiper-item>
   </swiper>
@@ -45,7 +45,7 @@
     pagination-position="{{paginationPosition || 'bottom'}}"
     min-show-num="{{navigation.minShowNum || 2}}"
     show-controls="{{navigation.showControls || false}}"
-    bind:navBtnChange="onNavBtnChange"
+    bind:nav-btn-change="onNavBtnChange"
   />
   <slot name="nav" />
 </view>

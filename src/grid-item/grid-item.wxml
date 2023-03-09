@@ -7,13 +7,14 @@
 <wxs module="_" src="../common/utils.wxs" />
 
 <view
-  class="{{_.cls(classPrefix, [['auto-size', column == 0]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [['auto-size', column == 0]])}} class {{prefix}}-class"
   style="{{_._style([gridItemStyle, style, customStyle])}}"
   hover-class="{{hover ? classPrefix + '--hover':''}}"
   hover-stay-time="{{200}}"
   bindtap="onClick"
   aria-role="{{ariaRole || 'button'}}"
-  aria-labelledby="{{labelID}}"
+  aria-label="{{ariaLabel}}"
+  aria-describedby="{{describedbyID}}"
 >
   <view class="{{_.cls(classPrefix + '__wrapper', [layout])}}" style="{{gridItemWrapperStyle}}">
     <view
@@ -53,7 +54,7 @@
           />
         </view>
       </t-badge>
-      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{labelID}}">
+      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{describedbyID}}">
         <view
           wx:if="{{text}}"
           class="{{_.cls(classPrefix + '__text', [util.getImageSize(column), layout])}} {{prefix}}-class-text"

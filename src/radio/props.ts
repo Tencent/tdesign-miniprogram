@@ -7,7 +7,7 @@
 import { TdRadioProps } from './type';
 const props: TdRadioProps = {
   /** 复选框和内容相对位置 */
-  align: {
+  placement: {
     type: String,
     value: 'left',
   },

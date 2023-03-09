@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['content', 'prefix', 'size', 'status', 'suffix', 'theme', 'underline'];
+const mapper = ['content', 'disabled', 'prefix', 'size', 'suffix', 'theme', 'underline'];
 
 describe('Link', () => {
   mapper.forEach((demoName) => {
