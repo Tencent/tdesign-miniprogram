@@ -16,11 +16,6 @@ const props: TdPickerProps = {
     type: null,
     value: true,
   },
-  /** 配置每一列的选项 */
-  columns: {
-    type: null,
-    value: [],
-  },
   /** 确定按钮文字 */
   confirmBtn: {
     type: null,

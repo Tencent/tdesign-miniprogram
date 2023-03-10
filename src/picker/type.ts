@@ -5,7 +5,7 @@
  * */
 
 import { ButtonProps } from '../button/index';
-import { TNode, KeysType } from '../common/common';
+import { KeysType } from '../common/common';
 
 export interface TdPickerProps {
   /**
@@ -23,14 +23,6 @@ export interface TdPickerProps {
   cancelBtn?: {
     type: null;
     value?: boolean | string | ButtonProps;
-  };
-  /**
-   * 配置每一列的选项
-   * @default []
-   */
-  columns?: {
-    type: ArrayConstructor;
-    value?: Array<PickerColumn> | ((item: Array<PickerValue>) => Array<PickerColumn>);
   };
   /**
    * 确定按钮文字
