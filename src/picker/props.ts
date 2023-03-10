@@ -31,9 +31,9 @@ const props: TdPickerProps = {
     type: Boolean,
     value: true,
   },
-  /** 自定义label */
-  renderLabel: {
-    type: null,
+  /** 用来定义 value / label 在 `options` 中对应的字段别名 */
+  keys: {
+    type: Object,
   },
   /** 标题 */
   title: {

@@ -7,11 +7,11 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 auto-close | Boolean | true | \- | N
 cancel-btn | String / Boolean / Object | true | Typescript：`boolean \| string \| ButtonProps` | N
-columns | Array / Function | [] | required。Typescript：`Array<PickerColumn> \| ((item: Array<PickerValue>)  => Array<PickerColumn>)` `type PickerColumn = PickerColumnItem[]` `interface PickerColumnItem { label: string,value: string}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | Y
+columns | Array / Function | [] | Typescript：`Array<PickerColumn> \| ((item: Array<PickerValue>)  => Array<PickerColumn>)` `type PickerColumn = PickerColumnItem[]` `interface PickerColumnItem { label: string,value: string}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 confirm-btn | String / Boolean / Object | true | Typescript：`boolean \| string \| ButtonProps`，[Button API Documents](./button?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
-footer | Slot | - | \- | N
+footer | Slot | - | `deprecated` | N
 header | Boolean / Slot | true | \- | N
-render-label | String / Function | - | Typescript：`(item: PickerColumnItem) => string` | N
+keys | Object | - | Typescript：`KeysType` | N
 title | String | '' | \- | N
 value | Array | - | Typescript：`Array<PickerValue>` `type PickerValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 default-value | Array | undefined | uncontrolled property。Typescript：`Array<PickerValue>` `type PickerValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N

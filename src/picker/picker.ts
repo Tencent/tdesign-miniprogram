@@ -28,11 +28,19 @@ export default class Picker extends SuperComponent {
     value() {
       this.updateChildren();
     },
+    keys(obj) {
+      this.setData({
+        labelAlias: obj.label || 'label',
+        valueAlias: obj.value || 'value',
+      });
+    },
   };
 
   data = {
     prefix,
     classPrefix: name,
+    labelAlias: 'label',
+    valueAlias: 'value',
   };
 
   methods = {
