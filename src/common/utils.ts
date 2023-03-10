@@ -227,11 +227,11 @@ export const setIcon = (iconName, icon, defaultIcon) => {
   };
 };
 
-export const isBool = (val) => typeof val === 'boolean';
+export const isBool = (val: unknown): val is boolean => typeof val === 'boolean';
 
-export const isObject = (val) => typeof val === 'object' && val != null;
+export const isObject = (val: unknown): val is Record<string, unknown> => typeof val === 'object' && val != null;
 
-export const isString = (val) => typeof val === 'string';
+export const isString = (val: unknown): val is string => typeof val === 'string';
 
 export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
 
@@ -245,12 +245,20 @@ export const uniqueFactory = (compName) => {
   return () => `${prefix}_${compName}_${number++}`;
 };
 
-export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {
-  if ((isBool(icon) && icon && defaultIcon) || isString(icon)) {
-    return { name: isBool(icon) ? defaultIcon : icon };
+export const calcIcon = (icon: unknown, defaultIcon?: string): Record<string, unknown> | null => {
+  if (isBool(icon) && icon && defaultIcon) {
+    return { name: defaultIcon };
   }
+
+  if (isString(icon)) {
+    return {
+      name: icon,
+    };
+  }
+
   if (isObject(icon)) {
     return icon;
   }
+
   return null;
 };

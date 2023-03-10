@@ -14,6 +14,10 @@ const THEME_ICON = {
   error: 'error-circle-filled',
 };
 
+const DEFAULT_PREFIX_ICON = {
+  ariaHidden: true,
+};
+
 @wxComponent()
 export default class NoticeBar extends SuperComponent {
   externalClasses = [
@@ -180,8 +184,21 @@ export default class NoticeBar extends SuperComponent {
 
     setPrefixIcon(v) {
       const { theme } = this.properties;
+      const prefixIconValue = calcIcon(v, THEME_ICON[theme]);
+
+      // when prefix icon value is null
+      if (prefixIconValue === null) {
+        this.setData({
+          _prefixIcon: prefixIconValue,
+        });
+        return;
+      }
+
       this.setData({
-        _prefixIcon: calcIcon(v, THEME_ICON[theme]),
+        _prefixIcon: {
+          ...DEFAULT_PREFIX_ICON,
+          ...prefixIconValue,
+        },
       });
     },
 
