@@ -9,6 +9,7 @@
   z-index: 11500;
   max-height: 100vh;
   transition: all 300ms ease;
+  background-color: @bg-color-container;
 
   &__content {
     position: relative;
@@ -27,12 +28,17 @@
     top: 0;
     left: 0;
     width: 100%;
+    border-bottom-left-radius: @radius-default;
+    border-bottom-right-radius: @radius-default;
   }
 
   &--bottom {
     bottom: 0;
     left: 0;
     width: 100vw;
+    border-top-left-radius: @radius-default;
+    border-top-right-radius: @radius-default;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   &--left {
@@ -52,6 +58,7 @@
     left: 50%;
     transform: scale(1) translate3d(-50%, -50%, 0);
     transform-origin: 0% 0%;
+    border-radius: @radius-default;
   }
 
   &.@{prefix}-fade-enter,

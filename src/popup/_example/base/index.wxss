@@ -1,5 +1,5 @@
 .block {
-  background: #fff;
+  /*background: #fff;*/
   color: #333;
   display: flex;
   align-items: center;
