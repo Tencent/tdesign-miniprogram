@@ -67,6 +67,7 @@ exports[`input props : clearable && label && suffix 1`] = `
           bind:focus="onFocus"
           bind:input="onInput"
           bind:keyboardheightchange="onKeyboardHeightChange"
+          bind:nicknamereview="onNickNameReview"
         />
         <wx-view
           class="t-input__wrap--clearable-icon"
@@ -200,6 +201,7 @@ exports[`input slots : label 1`] = `
           bind:focus="onFocus"
           bind:input="onInput"
           bind:keyboardheightchange="onKeyboardHeightChange"
+          bind:nicknamereview="onNickNameReview"
         />
         <wx-view
           class="t-input__wrap--suffix t-class-suffix"
