@@ -9,7 +9,7 @@
   </t-badge>
 </view>
 
-<view class="demo-desc">数字徽标-</view>
+<view class="demo-desc">数字徽标</view>
 <view class="demo-wrapper">
   <t-badge count="8" content="消息" offset="{{ [-8] }}" class="wrapper" />
   <t-badge count="2" offset="{{ [-2, -2] }}" class="wrapper">
@@ -17,19 +17,6 @@
   </t-badge>
   <t-badge count="8" offset="{{ [2, 2] }}" class="wrapper">
     <t-button>按钮</t-button>
-  </t-badge>
-</view>
-
-<view class="demo-desc">数字徽标二</view>
-<view class="demo-wrapper">
-  <t-badge count="100" offset="{{ [-2, -2] }}" class="wrapper" ariaRole="button" ariaLabel="99+">
-    <t-button icon="{{ { name: 'star' } }}" ariaLabel="收藏" shape="square" />
-  </t-badge>
-  <t-badge count="62" offset="{{ [-2, -2] }}" class="wrapper" ariaRole="button" ariaLabel="62赞">
-    <t-button icon="{{ { name: 'thumb-up' } }}" ariaLabel="赞" shape="square" />
-  </t-badge>
-  <t-badge count="19" offset="{{ [-2, -2] }}" class="wrapper" ariaRole="button" ariaLabel="19评论">
-    <t-button icon="{{ { name: 'edit' } }}" ariaLabel="评论" shape="square" />
   </t-badge>
 </view>
 
