@@ -13,10 +13,6 @@ exports[`calendar :base 1`] = `
       class="t-popup__content t-class-content"
     >
       <wx-view
-        class="t-popup__close"
-        bind:tap="handleClose"
-      />
-      <wx-view
         class="t-calendar t-calendar--popup class t-class"
         style=""
       >
@@ -24,9 +20,77 @@ exports[`calendar :base 1`] = `
           class="t-calendar__title"
           tabindex="0"
         >
+          <wx-text>
+            请选择日期
+          </wx-text>
+        </wx-view>
+        <wx-view
+          ariaHidden="{{false}}"
+          ariaLabel="关闭"
+          ariaRole="button"
+          class="t-icon class t-class"
+          style="font-size: 24px;"
+          bind:tap="onTap"
+        >
+          <wx-label
+            class="t-icon-close t-icon-base"
+          />
+        </wx-view>
+        <wx-view
+          ariaHidden="{{true}}"
+          class="t-calendar__days"
+        >
           <wx-view
-            class="t-calendar t-calendar--popup class t-class"
-            style=""
+            class="t-calendar__days-item"
+          >
+            日
+          </wx-view>
+          <wx-view
+            class="t-calendar__days-item"
+          >
+            一
+          </wx-view>
+          <wx-view
+            class="t-calendar__days-item"
+          >
+            二
+          </wx-view>
+          <wx-view
+            class="t-calendar__days-item"
+          >
+            三
+          </wx-view>
+          <wx-view
+            class="t-calendar__days-item"
+          >
+            四
+          </wx-view>
+          <wx-view
+            class="t-calendar__days-item"
+          >
+            五
+          </wx-view>
+          <wx-view
+            class="t-calendar__days-item"
+          >
+            六
+          </wx-view>
+        </wx-view>
+        <wx-scroll-view
+          class="t-calendar__months"
+          enhanced="{{true}}"
+          scrollIntoView="year_2022_month_9"
+          scrollY="{{true}}"
+          showScrollbar="{{false}}"
+        >
+          <wx-view
+            class="t-calendar__month"
+            id="year_2022_month_9"
+          >
+            2022 年 10 月
+          </wx-view>
+          <wx-view
+            class="t-calendar__dates"
           >
             <wx-view />
             <wx-view />
@@ -655,12 +719,50 @@ exports[`calendar :base 1`] = `
             
             </wx-view>
           </wx-view>
-          <wx-view
-            class="t-popup__close"
-            bind:tap="handleClose"
-          />
+        </wx-scroll-view>
+        <wx-view
+          class="t-calendar__footer"
+        >
+          <wx-button
+            appParameter=""
+            ariaLabel=""
+            class="class t-button t-class t-button--base t-button--primary t-button--rectangle t-button--size-medium t-button--block"
+            data-custom="{{null}}"
+            formType=""
+            hoverClass="t-button--hover"
+            hoverStartTime="{{20}}"
+            hoverStayTime="{{70}}"
+            hoverStopPropagation="{{false}}"
+            lang="en"
+            openType=""
+            sendMessageImg=""
+            sendMessagePath=""
+            sendMessageTitle=""
+            sessionFrom=""
+            showMessageCard="{{false}}"
+            style=""
+            bind:chooseavatar="chooseavatar"
+            bind:contact="contact"
+            bind:error="error"
+            bind:getphonenumber="getphonenumber"
+            bind:getuserinfo="getuserinfo"
+            bind:launchapp="launchapp"
+            bind:opensetting="opensetting"
+            catch:tap="handleTap"
+          >
+            <wx-view
+              class="t-button__content"
+            >
+              
+              确定
+            </wx-view>
+          </wx-button>
         </wx-view>
       </wx-view>
+      <wx-view
+        class="t-popup__close"
+        bind:tap="handleClose"
+      />
     </wx-view>
   </wx-view>
   <wx-view
