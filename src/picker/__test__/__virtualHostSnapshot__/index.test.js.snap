@@ -24,28 +24,8 @@ exports[`picker :base 1`] = `
         class="t-picker__toolbar"
       >
         <wx-view
-          class="t-picker__cancel t-class-cancel"
-          bind:tap="onCancel"
-        >
-          取消
-        </wx-view>
-        <wx-view
-          class="t-picker__title t-class-title"
-        >
-          
-        </wx-view>
-        <wx-view
-          class="t-picker__confirm t-class-confirm"
-          bind:tap="onConfirm"
-        >
-          确认
-        </wx-view>
-      </wx-view>
-      <wx-view
-        class="t-picker__main"
-      >
-        <wx-view
-          class="t-picker-item__group class t-class"
+          class="t-picker t-class"
+          slot="content"
           style=""
           bind:touchcancel="onTouchEnd"
           bind:touchend="onTouchEnd"
@@ -129,13 +109,8 @@ exports[`picker :base 1`] = `
           </wx-view>
         </wx-view>
         <wx-view
-          class="t-picker__mask t-picker__mask--top"
-        />
-        <wx-view
-          class="t-picker__mask t-picker__mask--bottom"
-        />
-        <wx-view
-          class="t-picker__indicator"
+          class="t-popup__close"
+          bind:tap="handleClose"
         />
       </wx-view>
     </wx-view>
