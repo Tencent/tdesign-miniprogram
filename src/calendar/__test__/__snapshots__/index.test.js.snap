@@ -771,7 +771,7 @@ exports[`calendar :base 1`] = `
                   bind:getuserinfo="getuserinfo"
                   bind:launchapp="launchapp"
                   bind:opensetting="opensetting"
-                  catch:tap="handleTap"
+                  catch:tap=""
                 >
                   <wx-view
                     class="t-button__content"
