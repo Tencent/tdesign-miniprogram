@@ -63,22 +63,8 @@ var isShowBadge = function (props) {
   return true;
 };
 
-var getBadgeAriaLabel = function (props) {
-  if (props.dot) {
-    return '有新的消息';
-  }
-  if (isNaN(props.count) || isNaN(props.maxCount)) {
-    var str = '有' + props.count + '通知';
-    return str;
-  }
-  var str1 = '有' + props.maxCount + '+条消息';
-  var str2 = '有' + props.count + '条消息';
-  return parseInt(props.count) > props.maxCount ? str1 : str2;
-};
-
 module.exports.getBadgeValue = getBadgeValue;
 module.exports.getBadgeStyles = getBadgeStyles;
 module.exports.getBadgeOuterClass = getBadgeOuterClass;
 module.exports.getBadgeInnerClass = getBadgeInnerClass;
-module.exports.getBadgeAriaLabel = getBadgeAriaLabel;
 module.exports.isShowBadge = isShowBadge;

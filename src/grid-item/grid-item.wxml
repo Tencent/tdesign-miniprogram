@@ -54,7 +54,11 @@
           />
         </view>
       </t-badge>
-      <view class="{{_.cls(classPrefix + '__words', [layout])}}" id="{{describedbyID}}">
+      <view
+        class="{{_.cls(classPrefix + '__words', [layout])}}"
+        id="{{describedbyID}}"
+        aria-label="{{ ariaLabel || (badgeProps.dot || badgeProps.count ? text + ',' +  description + ',' + _.getBadgeAriaLabel({ ...badgeProps }) : '') }}"
+      >
         <view
           wx:if="{{text}}"
           class="{{_.cls(classPrefix + '__text', [util.getImageSize(column), layout])}} {{prefix}}-class-text"
