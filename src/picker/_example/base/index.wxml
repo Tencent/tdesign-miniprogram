@@ -13,7 +13,7 @@
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"
 >
-  <t-picker-item options="{{citys}}"></t-picker-item>
+  <t-picker-item options="{{citys}}" />
 </t-picker>
 
 <t-picker

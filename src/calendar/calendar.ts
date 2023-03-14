@@ -81,6 +81,13 @@ export default class Calendar extends SuperComponent {
         }
       }
     },
+    format(v) {
+      this.base.format = v;
+
+      if (this.base && !this.data.usePopup) {
+        this.calcMonths();
+      }
+    },
   };
 
   methods = {

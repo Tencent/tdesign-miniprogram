@@ -61,24 +61,67 @@ function cls(base, arr) {
   return res.join(' ');
 }
 
-function endsWith(str, endStr) {
-  return str.slice(-endStr.length) === endStr ? true : false;
+function getBadgeAriaLabel(options) {
+  var maxCount = options.maxCount || 99;
+  if (options.dot) {
+    return '有新的消息';
+  }
+  if (options.count === '...') {
+    return '有很多消息';
+  }
+  if (isNaN(options.count)) {
+    return options.count;
+  }
+  var str1 = '有' + maxCount + '+条消息';
+  var str2 = '有' + options.count + '条消息';
+  return Number(options.count) > maxCount ? str1 : str2;
 }
 
-function _style(arr) {
-  var res = [];
-  var r = arr.filter(function (s) {
-    return s && s.trim();
-  });
+function endsWith(str, endStr) {
+  return str.slice(-endStr.length) === endStr ? str : str + endStr;
+}
 
-  for (i = 0; i < r.length; i++) {
-    if (endsWith(r[i], ';')) {
-      res.push(r[i]);
-    } else {
-      res.push(r[i] + ';');
-    }
+function keys(obj) {
+  return JSON.stringify(obj)
+    .replace(getRegExp('{|}|"', 'g'), '')
+    .split(',')
+    .map(function (item) {
+      return item.split(':')[0];
+    });
+}
+
+function kebabCase(str) {
+  return str
+    .replace(getRegExp('[A-Z]', 'g'), function (ele) {
+      return '-' + ele;
+    })
+    .toLowerCase();
+}
+
+function _style(styles) {
+  if (isArray(styles)) {
+    return styles
+      .filter(function (item) {
+        return item != null && item !== '';
+      })
+      .map(function (item) {
+        return isArray(item) ? style(item) : endsWith(item, ';');
+      })
+      .join(' ');
   }
-  return res.join(' ');
+
+  if (isObject(styles)) {
+    return keys(styles)
+      .filter(function (key) {
+        return styles[key] != null && styles[key] !== '';
+      })
+      .map(function (key) {
+        return [kebabCase(key), [styles[key]]].join(':');
+      })
+      .join(';');
+  }
+
+  return styles;
 }
 
 module.exports = {
@@ -89,5 +132,6 @@ module.exports = {
   isNoEmptyObj: isNoEmptyObj,
   includes: includes,
   cls: cls,
+  getBadgeAriaLabel: getBadgeAriaLabel,
   _style: _style,
 };

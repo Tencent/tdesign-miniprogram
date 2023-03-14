@@ -92,7 +92,9 @@ export default class CheckBoxGroup extends SuperComponent {
         const items = this.getChilds();
         newValue =
           !checked && indeterminate
-            ? items.map((item) => item.data.value)
+            ? items
+                .filter(({ data }) => !(data.disabled && !newValue.includes(data.value)))
+                .map((item) => item.data.value)
             : items
                 .filter(({ data }) => {
                   if (data.disabled) {
