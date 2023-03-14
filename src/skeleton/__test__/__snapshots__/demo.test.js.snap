@@ -48,7 +48,7 @@ exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
       rowCol="{{
         Array [
           Object {
-            "size": "48px",
+            "size": "96rpx",
             "type": "circle",
           },
         ]
@@ -78,7 +78,7 @@ exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
       rowCol="{{
         Array [
           Object {
-            "size": "48px",
+            "size": "96rpx",
             "type": "rect",
           },
         ]
@@ -113,56 +113,56 @@ exports[`Skeleton Skeleton grid demo works fine 1`] = `
         Array [
           Array [
             Object {
-              "borderRadius": "6px",
-              "height": "48px",
-              "width": "48px",
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
             },
             Object {
-              "borderRadius": "6px",
-              "height": "48px",
-              "width": "48px",
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
             },
             Object {
-              "borderRadius": "6px",
-              "height": "48px",
-              "width": "48px",
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
             },
             Object {
-              "borderRadius": "6px",
-              "height": "48px",
-              "width": "48px",
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
             },
             Object {
-              "borderRadius": "6px",
-              "height": "48px",
-              "width": "48px",
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
             },
           ],
           Array [
             Object {
-              "borderRadius": "3px",
-              "height": "16px",
-              "width": "48px",
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
             },
             Object {
-              "borderRadius": "3px",
-              "height": "16px",
-              "width": "48px",
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
             },
             Object {
-              "borderRadius": "3px",
-              "height": "16px",
-              "width": "48px",
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
             },
             Object {
-              "borderRadius": "3px",
-              "height": "16px",
-              "width": "48px",
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
             },
             Object {
-              "borderRadius": "3px",
-              "height": "16px",
-              "width": "48px",
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
             },
           ],
         ]
@@ -182,8 +182,8 @@ exports[`Skeleton Skeleton image-group demo works fine 1`] = `
       rowCol="{{
         Array [
           Object {
-            "borderRadius": "12px",
-            "size": "163.5px",
+            "borderRadius": "24rpx",
+            "size": "327rpx",
           },
           1,
           Object {
@@ -197,8 +197,8 @@ exports[`Skeleton Skeleton image-group demo works fine 1`] = `
       rowCol="{{
         Array [
           Object {
-            "borderRadius": "12px",
-            "size": "163.5px",
+            "borderRadius": "24rpx",
+            "size": "327rpx",
           },
           1,
           Object {
