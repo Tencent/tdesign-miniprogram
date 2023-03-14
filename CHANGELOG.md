@@ -29,7 +29,6 @@ docClass: timeline
 ### 🚧 Others
 - `Picker`: 文档中移除 render-label、columns 还不支持的属性 @LeeJim ([#1759](https://github.com/Tencent/tdesign-miniprogram/pull/1759))
 
-
 ## 🌈 1.0.2 `2023-03-07` 
 ### 🐞 Bug Fixes
 - `Radio`: 修复使用 options 时可传入的属性不齐的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
