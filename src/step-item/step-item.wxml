@@ -4,6 +4,7 @@
   style="{{_._style([style, customStyle])}}"
   class="{{_.cls(classPrefix, [layout, ['readonly', readonly]])}} class {{prefix}}-class"
   bind:tap="onTap"
+  aria-role="{{ariaRole || readonly ? 'option' : 'button'}}"
 >
   <!-- icon  -->
   <view class="{{_.cls(classPrefix + '__anchor', [layout])}}">
@@ -12,7 +13,7 @@
       <slot name="icon" />
       <t-icon name="{{icon}}" size="22" />
     </view>
-    <view wx:else class="{{_.cls(classPrefix + '__circle', [curStatus])}}">
+    <view wx:else class="{{_.cls(classPrefix + '__circle', [curStatus])}}" aria-label="第{{index+1}}步">
       <t-icon wx:if="{{curStatus == 'finish'}}" name="check" />
       <t-icon wx:elif="{{curStatus == 'error'}}" name="close" />
       <block wx:else>{{index + 1}}</block>
