@@ -23,7 +23,7 @@ export default {
           name: 'used',
           meta: { docType: 'explain' },
           path: '/miniprogram/used',
-          component: () => import('@/../USED.md'),
+          component: () => import('@pages/used.vue'),
         },
         {
           title: '更新日志',
