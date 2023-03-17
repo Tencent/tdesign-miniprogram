@@ -131,4 +131,5 @@ clear | \- | 清空按钮点击时触发
 enter | `(value: InputValue)` | 回车键按下时触发
 focus | `(value: InputValue)` | 获得焦点时触发
 keyboardheightchange | `(height: number, duration: number)` | 键盘高度发生变化的时候触发此事件
+nicknamereview | `(pass: boolean, timeout: boolean)`| 用户昵称审核完毕后触发，仅在 type 为 "nickname" 时有效
 click `v0.32.0`| `(trigger: InputTrigger)` | 点击事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts)。<br/>`type InputTrigger = 'suffix' \| 'suffix-icon';`<br/>

@@ -32,50 +32,12 @@
 </template>
 
 <script lang="ts">
-import { onMounted } from 'vue';
+import projects from '../data/projects'
 
 export default {
   data() {
     return {
-      projects: [
-        {
-          name: '未来运动场',
-          tags: ['趣味游戏'],
-          preview: ['https://tdesign.gtimg.com/miniprogram/case/weilaiyundongchang.png'],
-          qrcode: 'https://tdesign.gtimg.com/miniprogram/case/weilaiyundongchang-code.jpg',
-        },
-        {
-          name: '程序员做饭指南',
-          tags: ['效率工具', '开源项目'],
-          preview: ['https://tdesign.gtimg.com/miniprogram/case/zuofanzhinan.png'],
-          qrcode: 'https://tdesign.gtimg.com/miniprogram/case/zuofanzhinan-code.jpg',
-          url: 'https://github.com/LeeJim/HowToCookOnMiniprogram',
-        },
-        {
-          name: '小云卡片',
-          tags: ['效率工具'],
-          preview: ['https://tdesign.gtimg.com/miniprogram/case/xiaoyunkapian.png'],
-          qrcode: 'https://tdesign.gtimg.com/miniprogram/case/xiaoyunkapian-code.jpg'
-        },
-        {
-          name: '小楼助教',
-          tags: ['效率工具'],
-          preview: ['https://tdesign.gtimg.com/miniprogram/case/xiaolouzhujiao.png'],
-          qrcode: 'https://tdesign.gtimg.com/miniprogram/case/xiaolouzhujiao-code.png'
-        },
-        {
-          name: 'frmall',
-          tags: ['电商', '开源项目'],
-          preview: ['https://tdesign.gtimg.com/miniprogram/case/frmall.png'],
-          qrcode: 'https://tdesign.gtimg.com/miniprogram/case/frmall-code.jpg',
-        },
-        {
-          name: 'Coding 鱼塘',
-          tags: ['效率工具'],
-          preview: ['https://tdesign.gtimg.com/miniprogram/case/codingyutang.png'],
-          qrcode: 'https://tdesign.gtimg.com/miniprogram/case/codingyutang-code.jpg',
-        },
-      ]
+      projects,
     }
   },
   mounted() {
@@ -138,6 +100,10 @@ ul {
 
   &__link {
     text-decoration: none;
+
+    &:visited {
+      color: #181818;
+    }
 
     &:hover {
       color: var(--brand-main);

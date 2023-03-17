@@ -25,7 +25,7 @@
       </view>
     </view>
     <slot />
-    <view wx:if="{{showCancel}}" class="{{classPrefix}}__footer {{classPrefix}}__safe">
+    <view wx:if="{{showCancel}}" class="{{classPrefix}}__footer">
       <view class="{{classPrefix}}__gap-{{theme}}" />
       <view
         class="{{classPrefix}}__cancel {{prefix}}-class-cancel"

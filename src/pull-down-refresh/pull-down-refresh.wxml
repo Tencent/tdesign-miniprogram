@@ -20,7 +20,7 @@
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
     style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'rpx, 0);' : ''}}"
   >
-    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}rpx">
+    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}rpx" aria-live="polite">
       <t-loading
         wx:if="{{refreshStatus === 2}}"
         delay="{{loadingProps.delay || 0}}"
