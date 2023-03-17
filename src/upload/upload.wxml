@@ -20,7 +20,8 @@
       >
         <t-image
           wx:if="{{file.type !== 'video'}}"
-          bindtap="onProofTap"
+          data-file="{{file}}"
+          bind:tap="onProofTap"
           data-index="{{index}}"
           t-class="{{classPrefix}}__thumbnail"
           style="{{imageProps.style || ''}}"
@@ -34,6 +35,8 @@
           showMenuByLongpress="{{imageProps.showMenuByLongpress || false}}"
         />
         <video
+          data-file="{{file}}"
+          bind:tap="onFileClick"
           wx:if="{{file.type === 'video'}}"
           class="{{classPrefix}}__thumbnail"
           src="{{file.url}}"
