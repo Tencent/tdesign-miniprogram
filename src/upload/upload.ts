@@ -186,9 +186,9 @@ export default class Upload extends SuperComponent {
     },
 
     chooseMedia(mediaType) {
-      const { config, sizeLimit, max } = this.data;
+      const { config, sizeLimit, max, customFiles } = this.data;
       wx.chooseMedia({
-        count: max === 0 ? 9 : max, // 在 iOS 里，0 是无效的，会导致抛异常
+        count: max === 0 ? 9 : max - customFiles.length, // 在 iOS 里，0 是无效的，会导致抛异常
         mediaType,
         ...config,
         success: (res) => {
