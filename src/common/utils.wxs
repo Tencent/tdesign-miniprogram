@@ -78,7 +78,7 @@ function getBadgeAriaLabel(options) {
 }
 
 function endsWith(str, endStr) {
-  return str.slice(-endStr.length) === endStr ? str : str + endStr;
+  return toString(str).slice(-endStr.length) === endStr ? str : str + endStr;
 }
 
 function keys(obj) {
