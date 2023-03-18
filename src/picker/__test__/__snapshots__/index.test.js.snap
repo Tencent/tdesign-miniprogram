@@ -16,7 +16,7 @@ exports[`picker :base 1`] = `
       ariaModal="{{true}}"
       ariaRole="dialog"
       class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active class t-class"
-      style="z-index:11500;"
+      style="z-index:11500;;"
       bind:transitionend="onTransitionEnd"
     >
       <wx-view

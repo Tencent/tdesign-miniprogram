@@ -14,7 +14,7 @@ exports[`dialog :base 1`] = `
         ariaModal="{{true}}"
         ariaRole="dialog"
         class="t-popup t-popup--center t-dialog-enter t-dialog-enter-active class t-class"
-        style="z-index:11500;"
+        style="z-index:11500;;"
         bind:transitionend="onTransitionEnd"
       >
         <wx-view
