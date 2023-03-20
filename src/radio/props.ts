@@ -9,7 +9,7 @@ const props: TdRadioProps = {
   /** 复选框和内容相对位置 */
   placement: {
     type: String,
-    value: 'left',
+    value: null,
   },
   /** 是否允许取消选中 */
   allowUncheck: {
