@@ -412,6 +412,10 @@ exports[`date-time-picker :base 1`] = `
     
               </wx-view>
             </wx-view>
+            <wx-view
+              class="t-popup__close"
+              bind:tap="handleClose"
+            />
           </wx-view>
           <wx-view
             class="t-picker__mask t-picker__mask--top"
