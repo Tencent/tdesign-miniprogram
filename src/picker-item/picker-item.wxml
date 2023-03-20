@@ -26,7 +26,7 @@
       {{option[labelAlias]}}
     </view>
   </view>
-  <view class="{{classPrefix}}__aria__content" aria-role="alert" aria-hidden="{{!isScrolling}}"
-    >{{ options[curIndex].label }}</view
-  >
+  <view class="{{classPrefix}}__aria__content" aria-role="alert" aria-hidden="{{!isScrolling}}">
+    {{ options[curIndex].label }}
+  </view>
 </view>
