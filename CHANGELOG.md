@@ -5,6 +5,23 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.0.4 `2023-03-20` 
+### 🚀 Features
+- `PullDownRefresh`: 支持无障碍访问支持 @shinyina ([#1241](https://github.com/Tencent/tdesign-miniprogram/pull/1241))
+- `Steps`: 支持无障碍访问 @tangzixuan ([#1783](https://github.com/Tencent/tdesign-miniprogram/pull/1783))
+
+### 🐞 Bug Fixes
+- `Textarea`: 修复 `autosize` 为 `true` 时，`placeholder` 上移问题 @anlyyao ([#1781](https://github.com/Tencent/tdesign-miniprogram/pull/1781))
+- `Switch`: 修复 label 和 icon 渲染顺序错误的问题 @LeeJim ([#1809](https://github.com/Tencent/tdesign-miniprogram/pull/1809))
+- `Loading`: 修复错误的 style 导致 wxs 报错 @LeeJim ([#1810](https://github.com/Tencent/tdesign-miniprogram/pull/1810))
+- `Radio`: 修复 placement 优先级的问题 @LeeJim ([#1812](https://github.com/Tencent/tdesign-miniprogram/pull/1812))
+- `Button`: 解决多个插槽的渲染问题 @LeeJim ([#1813](https://github.com/Tencent/tdesign-miniprogram/pull/1813))
+- `Link`: 解决多个插槽无法渲染的问题 @LeeJim ([#1816](https://github.com/Tencent/tdesign-miniprogram/pull/1816))
+- `TabPanel`: 解决多个插槽无法渲染的问题 @LeeJim ([#1816](https://github.com/Tencent/tdesign-miniprogram/pull/1816))
+- `Upload`: 修复点击事件失效问题 @yaogengzhu ([#1802](https://github.com/Tencent/tdesign-miniprogram/pull/1802))
+- `Upload`: 修复 limit 限制的问题 @yaogengzhu ([#1800](https://github.com/Tencent/tdesign-miniprogram/pull/1800))
+
+
 ## 🌈 1.0.3 `2023-03-14` 
 ### 🚀 Features
 - `Picker`: 新增支持 keys 属性 @LeeJim ([#1759](https://github.com/Tencent/tdesign-miniprogram/pull/1759))

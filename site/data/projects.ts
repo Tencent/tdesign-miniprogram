@@ -61,4 +61,10 @@ export default
       preview: ['https://tdesign.gtimg.com/miniprogram/case/codingyutang.png'],
       qrcode: 'https://tdesign.gtimg.com/miniprogram/case/codingyutang-code.jpg',
     },
+    {
+      name: '智写 AI',
+      tags: ['效率工具'],
+      preview: ['https://tdesign.gtimg.com/miniprogram/case/zhixieai.png'],
+      qrcode: 'https://tdesign.gtimg.com/miniprogram/case/zhixieai-code.png',
+    },
   ]
