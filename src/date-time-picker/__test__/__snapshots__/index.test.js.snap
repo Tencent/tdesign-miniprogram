@@ -26,10 +26,6 @@ exports[`date-time-picker :base 1`] = `
             class="t-popup__content t-class-content"
           >
             <wx-view
-              class="t-popup__close"
-              bind:tap="handleClose"
-            />
-            <wx-view
               class="t-picker t-class"
               slot="content"
               style=""
@@ -602,6 +598,10 @@ exports[`date-time-picker :base 1`] = `
                 />
               </wx-view>
             </wx-view>
+            <wx-view
+              class="t-popup__close"
+              bind:tap="handleClose"
+            />
           </wx-view>
         </wx-view>
         <t-overlay

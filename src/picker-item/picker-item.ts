@@ -21,6 +21,16 @@ export default class PickerItem extends SuperComponent {
   relations: RelationsOptions = {
     '../picker/picker': {
       type: 'parent',
+      linked(parent) {
+        if ('keys' in parent.data) {
+          const { keys } = parent.data;
+
+          this.setData({
+            labelAlias: keys?.label || 'label',
+            valueAlias: keys?.value || 'value',
+          });
+        }
+      },
     },
   };
 
@@ -42,6 +52,8 @@ export default class PickerItem extends SuperComponent {
     value: '',
     curIndex: 0,
     isScrolling: false,
+    labelAlias: 'label',
+    valueAlias: 'value',
   };
 
   methods = {
@@ -69,7 +81,7 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchEnd() {
-      const { offset } = this.data;
+      const { offset, labelAlias, valueAlias } = this.data;
       const { options } = this.properties;
 
       if (offset === this.StartOffset) {
@@ -89,8 +101,8 @@ export default class PickerItem extends SuperComponent {
 
       wx.nextTick(() => {
         this._selectedIndex = index;
-        this._selectedValue = options[index]?.value;
-        this._selectedLabel = options[index]?.label;
+        this._selectedValue = options[index]?.[valueAlias];
+        this._selectedLabel = options[index]?.[labelAlias];
         this.$parent?.triggerColumnChange({
           index,
           column: this.columnIndex || 0,
@@ -100,9 +112,9 @@ export default class PickerItem extends SuperComponent {
 
     // 刷新选中状态
     update() {
-      const { options, value } = this.data;
+      const { options, value, labelAlias, valueAlias } = this.data;
 
-      const index = options.findIndex((item) => item.value === value);
+      const index = options.findIndex((item) => item[valueAlias] === value);
       const selectedIndex = index > 0 ? index : 0;
 
       this.setData({
@@ -111,8 +123,8 @@ export default class PickerItem extends SuperComponent {
       });
 
       this._selectedIndex = selectedIndex;
-      this._selectedValue = options[selectedIndex]?.value;
-      this._selectedLabel = options[selectedIndex]?.label;
+      this._selectedValue = options[selectedIndex]?.[valueAlias];
+      this._selectedLabel = options[selectedIndex]?.[labelAlias];
     },
 
     resetOrigin() {

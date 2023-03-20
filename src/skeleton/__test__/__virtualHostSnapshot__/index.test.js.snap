@@ -26,7 +26,7 @@ exports[`skeleton Props :inner rowCol 1`] = `
       >
         <wx-view
           class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
-          style="height:16px"
+          style=""
         />
       </wx-view>
     </wx-view>
@@ -56,7 +56,7 @@ exports[`skeleton Props :text rowCol 1`] = `
       >
         <wx-view
           class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
-          style="height:16px"
+          style=""
         />
       </wx-view>
       <wx-view
@@ -64,7 +64,7 @@ exports[`skeleton Props :text rowCol 1`] = `
       >
         <wx-view
           class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
-          style="height:16px"
+          style=""
         />
       </wx-view>
       <wx-view
@@ -84,7 +84,7 @@ exports[`skeleton Props :text rowCol 1`] = `
       >
         <wx-view
           class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
-          style="width:440rpx;height:16px"
+          style="width:440rpx"
         />
       </wx-view>
     </wx-view>
@@ -114,7 +114,7 @@ exports[`skeleton Props :text rowCol2 1`] = `
       >
         <wx-view
           class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
-          style="height:16px"
+          style=""
         />
       </wx-view>
       <wx-view
@@ -122,7 +122,7 @@ exports[`skeleton Props :text rowCol2 1`] = `
       >
         <wx-view
           class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
-          style="height:16px"
+          style=""
         />
       </wx-view>
       <wx-view
@@ -142,7 +142,7 @@ exports[`skeleton Props :text rowCol2 1`] = `
       >
         <wx-view
           class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
-          style="width:220px;height:16px"
+          style="width:220px"
         />
       </wx-view>
     </wx-view>

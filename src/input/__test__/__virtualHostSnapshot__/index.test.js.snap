@@ -44,6 +44,7 @@ exports[`input props : clearable && label && suffix 1`] = `
         disabled="{{false}}"
         focus="{{false}}"
         holdKeyboard="{{false}}"
+        maxlength="{{-1}}"
         password="{{false}}"
         placeholder=""
         placeholderClass="t-input__placeholder input-placeholder"
@@ -63,10 +64,11 @@ exports[`input props : clearable && label && suffix 1`] = `
         bind:focus="onFocus"
         bind:input="onInput"
         bind:keyboardheightchange="onKeyboardHeightChange"
+        bind:nicknamereview="onNickNameReview"
       />
       <wx-view
         class="t-input__wrap--clearable-icon"
-        bind:tap="clearInput"
+        bind:touchstart="clearInput"
       >
         <wx-view
           ariaHidden="{{false}}"
@@ -160,6 +162,7 @@ exports[`input slots : label 1`] = `
         disabled="{{false}}"
         focus="{{false}}"
         holdKeyboard="{{false}}"
+        maxlength="{{-1}}"
         password="{{false}}"
         placeholder=""
         placeholderClass="t-input__placeholder input-placeholder"
@@ -179,6 +182,7 @@ exports[`input slots : label 1`] = `
         bind:focus="onFocus"
         bind:input="onInput"
         bind:keyboardheightchange="onKeyboardHeightChange"
+        bind:nicknamereview="onNickNameReview"
       />
       <wx-view
         class="t-input__wrap--suffix t-class-suffix"

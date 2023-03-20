@@ -17,6 +17,10 @@ export default class Button extends SuperComponent {
 
   properties = props;
 
+  options = {
+    multipleSlots: true,
+  };
+
   data = {
     prefix,
     className: '',

@@ -180,7 +180,7 @@ describe('upload', () => {
         ></t-upload>
         `,
         data: {
-          sizeLimit: 10240,
+          sizeLimit: 102,
         },
         methods: {
           handleSelectChange,

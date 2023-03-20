@@ -13,10 +13,6 @@ exports[`calendar :base 1`] = `
       class="t-popup__content t-class-content"
     >
       <wx-view
-        class="t-popup__close"
-        bind:tap="handleClose"
-      />
-      <wx-view
         class="t-calendar t-calendar--popup class t-class"
         style=""
       >
@@ -752,7 +748,7 @@ exports[`calendar :base 1`] = `
             bind:getuserinfo="getuserinfo"
             bind:launchapp="launchapp"
             bind:opensetting="opensetting"
-            catch:tap="handleTap"
+            catch:tap=""
           >
             <wx-view
               class="t-button__content"
@@ -763,6 +759,10 @@ exports[`calendar :base 1`] = `
           </wx-button>
         </wx-view>
       </wx-view>
+      <wx-view
+        class="t-popup__close"
+        bind:tap="handleClose"
+      />
     </wx-view>
   </wx-view>
   <wx-view

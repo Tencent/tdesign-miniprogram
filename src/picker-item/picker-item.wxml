@@ -23,7 +23,7 @@
       aria-hidden="{{curIndex !== index}}"
       aria-label="{{option.label + '，按住后上下滑动选择'}}"
     >
-      {{option.label}}
+      {{option[labelAlias]}}
     </view>
   </view>
   <view class="{{classPrefix}}__aria__content" aria-role="alert" aria-hidden="{{!isScrolling}}"

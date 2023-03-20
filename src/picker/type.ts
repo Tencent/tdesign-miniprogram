@@ -5,6 +5,7 @@
  * */
 
 import { ButtonProps } from '../button/index';
+import { KeysType } from '../common/common';
 
 export interface TdPickerProps {
   /**
@@ -24,14 +25,6 @@ export interface TdPickerProps {
     value?: boolean | string | ButtonProps;
   };
   /**
-   * 配置每一列的选项
-   * @default []
-   */
-  columns: {
-    type: ArrayConstructor;
-    value?: Array<PickerColumn> | ((item: Array<PickerValue>) => Array<PickerColumn>);
-  };
-  /**
    * 确定按钮文字
    * @default true
    */
@@ -48,11 +41,11 @@ export interface TdPickerProps {
     value?: boolean;
   };
   /**
-   * 自定义label
+   * 用来定义 value / label 在 `options` 中对应的字段别名
    */
-  renderLabel?: {
-    type: StringConstructor;
-    value?: (item: PickerColumnItem) => string;
+  keys?: {
+    type: ObjectConstructor;
+    value?: KeysType;
   };
   /**
    * 标题

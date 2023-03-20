@@ -32,8 +32,12 @@
             aria-controls="{{tabID + '_panel_' + index}}"
             aria-selected="{{currentIndex === index}}"
             aria-disabled="{{item.disabled}}"
+            aria-label="{{ ariaLabel || (item.badgeProps.dot || item.badgeProps.count ? item.label + _.getBadgeAriaLabel({ ...item.badgeProps }) : '') }}"
           >
-            <view class="{{_.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])}}">
+            <view
+              class="{{_.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])}}"
+              aria-hidden="{{ item.badgeProps.dot || item.badgeProps.count }}"
+            >
               <template wx:if="{{item.icon}}" is="icon" data="{{ class: classPrefix + '__icon', ...item.icon }}" />
               <block wx:if="{{item.badgeProps}}">
                 <template is="badge" data="{{ ...item.badgeProps, content: item.label }}" />

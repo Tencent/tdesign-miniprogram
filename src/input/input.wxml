@@ -26,6 +26,7 @@
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content {{classPrefix}}--{{status}}">
       <input
+        maxlength="{{maxlength}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholder-style="{{placeholderStyle}}"
@@ -35,7 +36,8 @@
         bindfocus="onFocus"
         bindblur="onBlur"
         bindconfirm="onConfirm"
-        bind:keyboardheightchange="onKeyboardHeightChange"
+        bindkeyboardheightchange="onKeyboardHeightChange"
+        bindnicknamereview="onNickNameReview"
         password="{{type === 'password'}}"
         type="{{type === 'password' ? 'text' : type}}"
         focus="{{focus}}"
@@ -68,7 +70,7 @@
       <view
         wx:if="{{_clearIcon && value.length > 0}}"
         class="{{classPrefix}}__wrap--clearable-icon"
-        bind:tap="clearInput"
+        bind:touchstart="clearInput"
       >
         <template
           is="icon"
