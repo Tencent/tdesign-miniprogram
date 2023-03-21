@@ -26,7 +26,6 @@ export default class GridItem extends SuperComponent {
 
   options = {
     multipleSlots: true,
-    // virtualHost: true,
   };
 
   relations: RelationsOptions = {
