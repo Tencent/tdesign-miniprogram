@@ -4,6 +4,10 @@ Component({
     navigatorProps: {
       url: '/pages/xxx/xxx',
     },
+    chevronRightIcon: {
+      name: 'chevron-right',
+      ariaHidden: true,
+    },
   },
 
   methods: {
