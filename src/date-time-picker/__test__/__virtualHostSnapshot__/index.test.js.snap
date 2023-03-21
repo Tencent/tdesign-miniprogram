@@ -407,7 +407,9 @@ exports[`date-time-picker :base 1`] = `
               ariaRole="alert"
               class="t-picker-item__aria__content"
             >
-              2021年
+              
+    2021年
+  
             </wx-view>
           </wx-view>
           <wx-view
@@ -561,7 +563,9 @@ exports[`date-time-picker :base 1`] = `
               ariaRole="alert"
               class="t-picker-item__aria__content"
             >
-              9月
+              
+    9月
+  
             </wx-view>
           </wx-view>
           <wx-view

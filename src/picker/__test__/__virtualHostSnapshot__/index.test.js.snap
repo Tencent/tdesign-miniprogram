@@ -98,7 +98,9 @@ exports[`picker :base 1`] = `
             ariaRole="alert"
             class="t-picker-item__aria__content"
           >
-            2021年
+            
+    2021年
+  
           </wx-view>
         </wx-view>
         <wx-view
@@ -164,7 +166,9 @@ exports[`picker :base 1`] = `
             ariaRole="alert"
             class="t-picker-item__aria__content"
           >
-            春
+            
+    春
+  
           </wx-view>
         </wx-view>
         <wx-view
