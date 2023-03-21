@@ -1,0 +1,30 @@
+<view class="demo">
+  <view class="demo-title">Layout 布局</view>
+  <view class="demo-desc">
+    以规则的网格阵列来指导和规范页面中的版面布局以及信息分布，提高界面内布局的一致性，节约成本。
+  </view>
+  <t-demo title="01 组件类型" desc="基础用法">
+    <t-row>
+      <t-col span="8" t-class="dark">col-8</t-col>
+      <t-col span="8" t-class="light">col-8</t-col>
+      <t-col span="8" t-class="dark">col-8</t-col>
+    </t-row>
+
+    <t-row>
+      <t-col span="4" t-class="dark">col-4</t-col>
+      <t-col span="16" offset="4" t-class="light">col-16 col-offset-4</t-col>
+    </t-row>
+
+    <t-row>
+      <t-col offset="12" span="12" t-class="dark">col-12 col-offset-12</t-col>
+    </t-row>
+  </t-demo>
+
+  <t-demo desc="在列元素之间增加间距">
+    <t-row gutter="16">
+      <t-col span="8" t-class="dark">col-8</t-col>
+      <t-col span="8" t-class="light">col-8</t-col>
+      <t-col span="8" t-class="dark">col-8</t-col>
+    </t-row>
+  </t-demo>
+</view>

@@ -4,7 +4,7 @@
  * addUnit */
 // 为 css 添加单位
 function addUnit(value) {
-  var REGEXP = getRegExp('^\d+(.\d+)?$');
+  var REGEXP = getRegExp('^-?d+(.d+)?$');
   if (value == null) {
     return undefined;
   }
@@ -124,6 +124,14 @@ function _style(styles) {
   return styles;
 }
 
+function formatNumToString(value) {
+  var res = '';
+  if (!isNaN(value) && typeof value === 'number') {
+    res = value.toString();
+  }
+  return res;
+}
+
 module.exports = {
   addUnit: addUnit,
   isString: isString,
@@ -134,4 +142,5 @@ module.exports = {
   cls: cls,
   getBadgeAriaLabel: getBadgeAriaLabel,
   _style: _style,
+  formatNumToString: formatNumToString,
 };
