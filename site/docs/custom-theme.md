@@ -13,7 +13,7 @@ spline: explain
 如果你想改变主题色，主要改变这几个变量即可：
 
 ```css
-@primary-color: var(--td-primary-color, #0052d9); // 主题色
+@brand-color: var(--td-brand-color, #0052d9); // 主题色
 @success-color: var(--td-success-color, #00a870); // 成功
 @warning-color: var(--td-warning-color, #ed7b2f); // 警告
 @error-color: var(--td-error-color, #e34d59); // 失败
@@ -23,7 +23,7 @@ spline: explain
 
 ```css
 page {
-  --td-primary-color: navy; // 任何你想要的主题色
+  --td-brand-color: navy; // 任何你想要的主题色
 }
 ```
 
