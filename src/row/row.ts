@@ -1,16 +1,13 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 
 const { prefix } = config;
 @wxComponent()
 export default class Row extends SuperComponent {
   externalClasses = [];
 
-  properties = {
-    gutter: {
-      type: Number,
-    },
-  };
+  properties = props;
 
   data = {
     prefix,
