@@ -1,5 +1,7 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import config from '../common/config';
 
+const { prefix } = config;
 @wxComponent()
 export default class Row extends SuperComponent {
   externalClasses = [];
@@ -10,7 +12,9 @@ export default class Row extends SuperComponent {
     },
   };
 
-  data = {};
+  data = {
+    prefix,
+  };
 
   relations: RelationsOptions = {
     '../col/col': {

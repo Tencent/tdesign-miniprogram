@@ -2,7 +2,7 @@
 <wxs src="./col.wxs" module="utils" />
 
 <view
-  class="{{prefix}}-class {{ _.cls(classPrefix, [_.formatNumToString(span)]) }} {{ offset ? classPrefix + '--offset-' + offset : '' }}"
+  class="class {{prefix}}-class {{ _.cls(classPrefix, [_.formatNumToString(span)]) }} {{ offset ? classPrefix + '--offset-' + offset : '' }}"
   style="{{ utils.getColStyles({ gutter }) }}"
 >
   <slot />

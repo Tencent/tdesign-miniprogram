@@ -27,8 +27,4 @@ export default class Col extends SuperComponent {
       type: 'parent',
     },
   };
-
-  observers = {};
-
-  methods = {};
 }
