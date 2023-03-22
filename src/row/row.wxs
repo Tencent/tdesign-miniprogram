@@ -1,0 +1,16 @@
+var utils = require('../common/utils.wxs');
+
+function getRowStyles(data) {
+  if (!data.gutter) {
+    return '';
+  }
+
+  return utils._style({
+    'margin-right': utils.addUnit(-data.gutter / 2),
+    'margin-left': utils.addUnit(-data.gutter / 2),
+  });
+}
+
+module.exports = {
+  getRowStyles: getRowStyles,
+};

@@ -34,10 +34,11 @@ const base = {
       name: 'Link',
       label: '链接',
     },
-    // {
-    //   name: 'Layout',
-    //   label: '布局',
-    // },
+    {
+      name: 'Layout',
+      label: '布局',
+      path: '/pages/col/col',
+    },
     // {
     //   name: 'Typography',
     //   label: '字体',
