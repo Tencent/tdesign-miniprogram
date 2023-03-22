@@ -91,7 +91,7 @@ export default {
           title: 'Layout 布局',
           name: 'layout',
           meta: { docType: 'base' },
-          path: '/miniprogram/components/layout',
+          path: '/miniprogram/components/col',
           component: () => import('@/col/README.md'),
         },
         {
