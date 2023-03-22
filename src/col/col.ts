@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-col`;
@@ -8,14 +9,7 @@ const name = `${prefix}-col`;
 export default class Col extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
-  properties = {
-    span: {
-      type: Number,
-    },
-    offset: {
-      type: Number,
-    },
-  };
+  properties = props;
 
   data = {
     prefix,
