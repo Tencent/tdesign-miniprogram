@@ -12,7 +12,7 @@ const props: TdColProps = {
   },
   /** 列的宽度（默认单位px） */
   span: {
-    type: Number,
+    type: null,
   },
 };
 

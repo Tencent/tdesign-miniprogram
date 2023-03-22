@@ -16,7 +16,7 @@ export interface TdColProps {
    * 列的宽度（默认单位px）
    */
   span?: {
-    type: NumberConstructor;
-    value?: number;
+    type: null;
+    value?: string | number;
   };
 }

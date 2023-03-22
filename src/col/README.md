@@ -32,13 +32,12 @@ isComponent: true
 
 
 ## API
-
 ### Col Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 offset | String / Number | - | 列的偏移量（默认单位px） | N
-span | Number | - | 列的宽度（默认单位px） | N
+span | String / Number | - | 列的宽度（默认单位px） | N
 
 ### Row Props
 
