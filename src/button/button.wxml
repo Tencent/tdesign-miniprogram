@@ -18,7 +18,7 @@
   send-message-img="{{sendMessageImg}}"
   app-parameter="{{appParameter}}"
   show-message-card="{{showMessageCard}}"
-  catch:tap="{{ disabled || loading ? '' : 'handleTap'}}"
+  catch:tap="handleTap"
   bind:getuserinfo="getuserinfo"
   bind:contact="contact"
   bind:getphonenumber="getphonenumber"
