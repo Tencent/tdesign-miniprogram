@@ -9,6 +9,7 @@ export default class Row extends SuperComponent {
   properties = {
     gutter: {
       type: Number,
+      optionalTypes: [String],
     },
   };
 

@@ -11,9 +11,11 @@ export default class Col extends SuperComponent {
   properties = {
     span: {
       type: Number,
+      optionalTypes: [String],
     },
     offset: {
       type: Number,
+      optionalTypes: [String],
     },
   };
 
