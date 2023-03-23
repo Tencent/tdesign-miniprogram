@@ -52,7 +52,7 @@ function cls(base, arr) {
       if (value) {
         res.push(base + '--' + key);
       }
-    } else if (typeof item === 'string') {
+    } else if (typeof item === 'string' || typeof item === 'number') {
       if (item) {
         res.push(base + '--' + item);
       }
@@ -124,14 +124,6 @@ function _style(styles) {
   return styles;
 }
 
-function formatNumToString(value) {
-  var res = '';
-  if (!isNaN(value) && typeof value === 'number') {
-    res = value.toString();
-  }
-  return res;
-}
-
 module.exports = {
   addUnit: addUnit,
   isString: isString,
@@ -142,5 +134,4 @@ module.exports = {
   cls: cls,
   getBadgeAriaLabel: getBadgeAriaLabel,
   _style: _style,
-  formatNumToString: formatNumToString,
 };
