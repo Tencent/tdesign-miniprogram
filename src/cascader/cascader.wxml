@@ -19,7 +19,7 @@
             class="{{name}}__step"
             bind:tap="onStepClick"
             data-index="{{index}}"
-            aria-role="{{ item === defaultOptionLabel ? 'text' : 'button' }}"
+            aria-role="{{ item === defaultOptionLabel ? 'option' : 'button' }}"
             aria-label="{{ item === defaultOptionLabel ? item : '已选中,' + item  }}"
           >
             <view
