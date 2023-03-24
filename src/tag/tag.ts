@@ -17,7 +17,7 @@ export default class Tag extends SuperComponent {
 
   properties = props;
 
-  externalClasses = ['class', `${prefix}-class`];
+  externalClasses = [`${prefix}-class`];
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,

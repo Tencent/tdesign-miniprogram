@@ -2,6 +2,7 @@
 
 <t-popup
   style="{{_._style([style, customStyle])}}"
+  class="class"
   bind:visible-change="visibleChange"
   visible="{{visible}}"
   zIndex="{{zIndex}}"
@@ -16,6 +17,10 @@
     <scroll-view class="{{classPrefix}}__sidebar" scroll-y>
       <view
         class="{{classPrefix}}__sidebar-item"
+        hover-class="{{classPrefix}}--hover"
+        hover-stop-propagation="{{false}}"
+        hover-start-time="{{0}}"
+        hover-stay-time="{{100}}"
         wx:for="{{items}}"
         wx:item="item"
         wx:key="index"

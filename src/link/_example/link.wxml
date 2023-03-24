@@ -17,7 +17,7 @@
     <theme />
   </t-demo>
   <t-demo desc="禁用状态">
-    <status />
+    <disabled />
   </t-demo>
   <t-demo title="03 组件样式" desc="链接尺寸">
     <size />

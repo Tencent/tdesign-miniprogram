@@ -1,5 +1,9 @@
 Component({
   data: {
+    cityText: '',
+    cityValue: [],
+    dateText: '',
+    dateValue: [],
     citys: [
       { label: '北京市', value: '北京市' },
       { label: '上海市', value: '上海市' },

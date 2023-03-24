@@ -20,4 +20,5 @@
   align="top"
   image="https://tdesign.gtimg.com/miniprogram/images/cell1.png"
   hover
+  bordered="{{false}}"
 />

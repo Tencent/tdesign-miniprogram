@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'duration', 'error', 'horizontal', 'loadingProgress', 'size', 'status', 'text', 'vertical'];
+const mapper = ['base', 'duration', 'horizontal', 'size', 'status', 'text', 'vertical'];
 
 describe('Loading', () => {
   mapper.forEach((demoName) => {

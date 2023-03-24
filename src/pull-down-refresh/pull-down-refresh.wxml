@@ -2,7 +2,7 @@
 
 <scroll-view
   style="{{_._style([style, customStyle])}}"
-  class="{{classPrefix}} {{prefix}}-class"
+  class="{{classPrefix}} class {{prefix}}-class"
   scroll-top="{{scrollTop}}"
   bind:touchstart="onTouchStart"
   bind:touchmove="onTouchMove"
@@ -20,7 +20,7 @@
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
     style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'rpx, 0);' : ''}}"
   >
-    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}rpx">
+    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}rpx" aria-live="polite">
       <t-loading
         wx:if="{{refreshStatus === 2}}"
         delay="{{loadingProps.delay || 0}}"

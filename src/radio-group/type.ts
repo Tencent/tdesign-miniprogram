@@ -11,7 +11,7 @@ export interface TdRadioGroupProps<T = RadioValue> {
    * 复选框和内容相对位置；仅在使用 options 时生效
    * @default left
    */
-  align?: {
+  placement?: {
     type: StringConstructor;
     value?: 'left' | 'right';
   };
@@ -44,7 +44,7 @@ export interface TdRadioGroupProps<T = RadioValue> {
    */
   icon?: {
     type: null;
-    value?: 'fill-circle' | 'stroke-line' | Array<string>;
+    value?: 'circle' | 'line' | 'dot' | Array<string>;
   };
   /**
    * 用来定义 value / label 在 `options` 中对应的字段别名

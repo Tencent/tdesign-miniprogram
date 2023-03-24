@@ -60,6 +60,16 @@ const props: TdSearchProps = {
     type: String,
     value: '',
   },
+  /** 是否启用清除控件 */
+  clearable: {
+    type: Boolean,
+    value: true,
+  },
+  /** 控制拉起的键盘类型 */
+  type: {
+    type: String,
+    value: 'text',
+  },
 };
 
 export default props;

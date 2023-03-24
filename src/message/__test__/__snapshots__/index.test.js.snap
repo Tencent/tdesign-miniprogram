@@ -31,7 +31,7 @@ exports[`message props : style && customStyle 1`] = `
         }
       }}"
       ariaRole="alert"
-      class="t-message t-class t-message--warning"
+      class="t-message class t-class t-message--warning"
       id="t-message"
       style="z-index:15000;top:-92rpx;right:32rpx;left:32rpx; color: red; font-size: 9px;"
     >
@@ -52,7 +52,7 @@ exports[`message props : style && customStyle 1`] = `
             bind:tap="onTap"
           >
             <wx-label
-              class="t-icon-error-circle-filled t-icon-base"
+              class="t-icon-info-circle-filled t-icon-base"
             />
           </wx-view>
         </t-icon>

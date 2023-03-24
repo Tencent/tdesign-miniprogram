@@ -3,7 +3,7 @@
 @action-sheet: ~'@{prefix}-action-sheet';
 
 @action-sheet-list-item-height: var(--td-action-sheet-list-item-height, 112rpx);
-@action-sheet-list-item-disabled-color: var(--td-action-sheet-list-item-disabled-color, @text-disabled-color);
+@action-sheet-list-item-disabled-color: var(--td-action-sheet-list-item-disabled-color, @font-gray-4);
 @action-sheet-border-color: var(--td-action-sheet-border-color, @gray-color-1);
 @action-sheet-color: var(--td-action-sheet-color, @font-gray-1);
 @action-sheet-border-radius: var(--td-action-sheet-border-radius, @radius-extra-large);
@@ -16,7 +16,7 @@
     color: @action-sheet-color;
     border-top-left-radius: @action-sheet-border-radius;
     border-top-right-radius: @action-sheet-border-radius;
-    background-color: @bg-color-block;
+    background-color: @bg-color-container;
     overflow: hidden;
 
     &--grid {
@@ -109,7 +109,7 @@
   }
 
   &__footer {
-    background-color: @bg-color-block;
+    background-color: @bg-color-container;
   }
 
   &__gap-list {
@@ -146,9 +146,5 @@
         background-color: #0052d9;
       }
     }
-  }
-  &__safe {
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
   }
 }

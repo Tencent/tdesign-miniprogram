@@ -12,7 +12,7 @@ const mockGetAnimationFrame = jest.spyOn(Util, 'getAnimationFrame');
 const mockGetRect = jest.spyOn(Util, 'getRect');
 
 // 设置每次调用函数的值
-mockGetAnimationFrame.mockImplementation((cb) => {
+mockGetAnimationFrame.mockImplementation((context, cb) => {
   return cb();
 });
 
@@ -129,15 +129,15 @@ describe('notice-bar', () => {
       expect($content.dom.textContent.trim()).toBe($noticeBar.instance.data.content);
     });
 
-    it(': extra', () => {
+    it(': operation', () => {
       const id = simulate.load({
         template: `<t-notice-bar
           class="base"
           visible="{{visible}}"
-          extra="{{extra}}"></t-notice-bar>`,
+          operation="{{operation}}"></t-notice-bar>`,
         data: {
           visible: true,
-          extra: 'notice-bar extra',
+          operation: 'notice-bar operation',
         },
         usingComponents: {
           't-notice-bar': noticeBar,
@@ -146,9 +146,9 @@ describe('notice-bar', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
       const $noticeBar = comp.querySelector('.base');
-      const $extra = comp.querySelector('.base >>> .t-notice-bar__extra');
+      const $operation = comp.querySelector('.base >>> .t-notice-bar__operation');
 
-      expect($extra.dom.textContent.trim()).toBe($noticeBar.instance.data.extra);
+      expect($operation.dom.textContent.trim()).toBe($noticeBar.instance.data.operation);
     });
 
     it(': prefix-icon', () => {
@@ -262,7 +262,7 @@ describe('notice-bar', () => {
           class="base
           visible="{{visible}}"
           suffixIcon="chevron-right"
-          extra="详情"
+          operation="详情"
           content="提示文字描述提示文字描述提示文字描述"
           bind:click="click"
         ></t-notice-bar>`,
@@ -279,26 +279,21 @@ describe('notice-bar', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
       const $prefixIcon = comp.querySelector('.base >>> .t-notice-bar__prefix-icon');
-      const $content = comp.querySelector('.base >>> .t-notice-bar__content');
-      const $extra = comp.querySelector('.base >>> .t-notice-bar__extra');
+      const $operation = comp.querySelector('.base >>> .t-notice-bar__operation');
       const $suffixIcon = comp.querySelector('.base >>> .t-notice-bar__suffix-icon');
       $prefixIcon.dispatchEvent('tap');
       await simulate.sleep(0);
       expect(triggerName).toBe('prefix-icon');
       expect(click).toHaveBeenCalledTimes(1);
-      $content.dispatchEvent('tap');
+      $operation.dispatchEvent('tap');
       await simulate.sleep(0);
-      expect(triggerName).toBe('content');
+      expect(triggerName).toBe('operation');
       expect(click).toHaveBeenCalledTimes(2);
-      $extra.dispatchEvent('tap');
-      await simulate.sleep(0);
-      expect(triggerName).toBe('extra');
-      expect(click).toHaveBeenCalledTimes(3);
 
       $suffixIcon.dispatchEvent('tap');
       await simulate.sleep(0);
       expect(triggerName).toBe('suffix-icon');
-      expect(click).toHaveBeenCalledTimes(4);
+      expect(click).toHaveBeenCalledTimes(3);
     });
   });
 });

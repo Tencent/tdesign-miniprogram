@@ -4,7 +4,7 @@
 <view
   wx:if="{{visible}}"
   style="{{_._style([style, customStyle])}}"
-  class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class"
+  class="{{classPrefix}} {{classPrefix}}--{{theme}} class {{prefix}}-class"
 >
   <!-- prefixIcon -->
   <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon">
@@ -40,15 +40,13 @@
       class="{{classPrefix}}__content {{prefix}}-class-content {{ !marquee ? classPrefix + '__content-wrapable' : ''}}"
       animation="{{ animationData }}"
     >
-      <block wx:if="{{content}}"> {{content}} </block>
+      <block wx:if="{{content}}">{{content}}</block>
       <slot name="content" />
+      <view class="{{classPrefix}}__operation {{prefix}}-class-operation" catch:tap="clickOperation">
+        <block wx:if="{{ operation }}">{{operation}}</block>
+        <slot name="operation" />
+      </view>
     </view>
-  </view>
-
-  <!-- extra -->
-  <view class="{{classPrefix}}__extra {{prefix}}-class-extra" bind:tap="clickExtra">
-    <block wx:if="{{ extra }}"> {{extra}} </block>
-    <slot name="extra" />
   </view>
 
   <!-- suffixIcon -->

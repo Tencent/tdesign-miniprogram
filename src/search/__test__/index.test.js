@@ -120,15 +120,14 @@ describe('search', () => {
       ).toBeTruthy();
     });
 
-    it(':left-icon & right-icon', () => {
+    it(':left-icon', () => {
       const id = simulate.load({
-        template: `<t-search class="search" left-icon="{{leftIcon}}" right-icon="{{rightIcon}}" value="{{value}}"></t-search>`,
+        template: `<t-search class="search" left-icon="{{leftIcon}}" value="{{value}}"></t-search>`,
         usingComponents: {
           't-search': search,
         },
         data: {
           leftIcon: 'add-circle',
-          rightIcon: 'caret-right',
           value: 'test',
         },
       });
@@ -137,9 +136,6 @@ describe('search', () => {
 
       const $leftIcon = comp.querySelector('.search >>> .t-icon-add-circle');
       expect($leftIcon).toBeDefined();
-
-      const $rightIcon = comp.querySelector('.search >>> .t-icon-caret-right');
-      expect($rightIcon).toBeDefined();
     });
 
     it(':shape', () => {
@@ -210,7 +206,7 @@ describe('search', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $clear = comp.querySelector('.search >>> .t-search__right');
+      const $clear = comp.querySelector('.search >>> .t-search__clear');
       $clear.dispatchEvent('tap');
       await simulate.sleep(20);
       expect(onClear).toHaveBeenCalledTimes(1);

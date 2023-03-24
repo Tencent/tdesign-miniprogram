@@ -34,7 +34,7 @@ isComponent: true
 
 {{ base }}
 
-过度样式
+过渡样式
 
 {{ transition }}
 

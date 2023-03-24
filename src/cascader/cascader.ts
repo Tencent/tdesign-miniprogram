@@ -124,8 +124,15 @@ export default class Cascader extends SuperComponent {
         });
       }
     },
-    hide() {
+    hide(trigger) {
       this.setData({ visible: false });
+      this.triggerEvent('close', { trigger: trigger });
+    },
+    onVisibleChange() {
+      this.hide('overlay');
+    },
+    onClose() {
+      this.hide('close-btn');
     },
     onStepClick(e) {
       const { index } = e.currentTarget.dataset;
@@ -152,7 +159,7 @@ export default class Cascader extends SuperComponent {
       selectedIndexes[level] = index;
       selectedIndexes.length = level + 1;
 
-      this.triggerEvent('pick', item[keys?.value ?? 'value'], index);
+      this.triggerEvent('pick', { value: item[keys?.value ?? 'value'], index });
 
       if (item?.[keys?.children ?? 'children']?.length) {
         this.setData({ selectedIndexes });
@@ -165,7 +172,7 @@ export default class Cascader extends SuperComponent {
             selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
           });
         });
-        this.hide();
+        this.hide('finish');
       }
     },
   };

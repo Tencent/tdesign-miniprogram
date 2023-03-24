@@ -155,7 +155,7 @@ describe('message', () => {
     it(': closeBtnClick', async () => {
       const actionBtnClick = jest.fn();
       const id = simulate.load({
-        template: `<t-message id="t-message" bind:closeBtnClick="actionBtnClick"/>`,
+        template: `<t-message id="t-message" bind:close-btn-click="actionBtnClick"/>`,
         usingComponents: {
           't-message': message,
         },

@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`skeleton Props :inner rowCol 1`] = `
+<main>
+  <wx-view
+    class="t-skeleton class t-class "
+    style=""
+  >
+    <wx-view
+      class="t-skeleton__content"
+    >
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:24%;height:32rpx;margin-right:32rpx"
+        />
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:76%;height:32rpx"
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style=""
+        />
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</main>
+`;
+
+exports[`skeleton Props :text rowCol 1`] = `
+<main>
+  <wx-view
+    class="t-skeleton class t-class "
+    style=""
+  >
+    <wx-view
+      class="t-skeleton__content"
+    >
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:686rpx;height:32rpx"
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style=""
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style=""
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:38rpx;height:32rpx;margin-right:20rpx;margin-left:20rpx"
+        />
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:38rpx;height:32rpx"
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:440rpx"
+        />
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</main>
+`;
+
+exports[`skeleton Props :text rowCol2 1`] = `
+<main>
+  <wx-view
+    class="t-skeleton class t-class "
+    style=""
+  >
+    <wx-view
+      class="t-skeleton__content"
+    >
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:343px;height:16px"
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style=""
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style=""
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:14px;height:16px;margin-right:10px;margin-left:10px"
+        />
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:small;height:small"
+        />
+      </wx-view>
+      <wx-view
+        class="t-skeleton__row t-class-row"
+      >
+        <wx-view
+          class="t-skeleton__col t-skeleton--type-text t-skeleton--animation-none t-class-col"
+          style="width:220px"
+        />
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</main>
+`;

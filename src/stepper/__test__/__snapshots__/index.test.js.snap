@@ -2,7 +2,7 @@
 
 exports[`stepper event : input 1`] = `
 <wx-view
-  class="t-stepper t-stepper--medium t-class"
+  class="t-stepper t-stepper--medium class t-class"
   style=""
 >
   <wx-view
@@ -72,7 +72,7 @@ exports[`stepper event : input 1`] = `
 
 exports[`stepper event : input 2`] = `
 <wx-view
-  class="t-stepper t-stepper--medium t-class"
+  class="t-stepper t-stepper--medium class t-class"
   style=""
 >
   <wx-view

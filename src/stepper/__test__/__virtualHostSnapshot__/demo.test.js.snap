@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper Stepper base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="stepper-example"
+  >
+    <t-stepper
+      defaultValue="3"
+      theme="filled"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`Stepper Stepper min-max demo works fine 1`] = `
+<min-max>
+  <wx-view
+    class="stepper-example"
+  >
+    <t-stepper
+      defaultValue="0"
+      theme="filled"
+    />
+    <t-stepper
+      defaultValue="99"
+      max="999"
+      min="5"
+      theme="filled"
+    />
+    <t-stepper
+      defaultValue="999"
+      max="999"
+      theme="filled"
+    />
+  </wx-view>
+</min-max>
+`;
+
+exports[`Stepper Stepper size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="stepper-example"
+  >
+    <t-stepper
+      size="large"
+      theme="filled"
+      value="{{3}}"
+      bind:change="handleChange"
+    />
+    <t-stepper
+      defaultValue="3"
+      max="99"
+      theme="filled"
+    />
+    <t-stepper
+      defaultValue="3"
+      size="small"
+      theme="filled"
+    />
+  </wx-view>
+</size>
+`;
+
+exports[`Stepper Stepper status demo works fine 1`] = `
+<status>
+  <wx-view
+    class="stepper-example"
+  >
+    <t-stepper
+      disabled="{{true}}"
+      theme="filled"
+    />
+  </wx-view>
+</status>
+`;
+
+exports[`Stepper Stepper theme demo works fine 1`] = `
+<theme>
+  <wx-view
+    class="stepper-example"
+  >
+    <t-stepper
+      defaultValue="3"
+      theme="filled"
+    />
+    <t-stepper
+      defaultValue="3"
+      theme="outline"
+    />
+    <t-stepper
+      defaultValue="3"
+    />
+  </wx-view>
+</theme>
+`;

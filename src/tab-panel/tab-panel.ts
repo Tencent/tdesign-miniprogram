@@ -7,10 +7,16 @@ const name = `${prefix}-tab-panel`;
 
 @wxComponent()
 export default class TabPanel extends SuperComponent {
+  externalClasses = [`${prefix}-class`];
+
   relations: RelationsOptions = {
     '../tabs/tabs': {
       type: 'ancestor',
     },
+  };
+
+  options = {
+    multipleSlots: true,
   };
 
   properties = props;
@@ -28,7 +34,7 @@ export default class TabPanel extends SuperComponent {
   }
 
   observers = {
-    label() {
+    'label, badgeProps, disabled, icon, panel, value'() {
       this.update();
     },
   };

@@ -14,4 +14,3 @@
     <close class="box" />
   </t-demo>
 </view>
-<t-toast id="t-toast" />

@@ -8,22 +8,25 @@
   aria-describedby
 >
   <!-- aria-describedby用于关联该行设置了aria-hidden的元素最近的焦点，解决触发焦点过度上下偏移的问题 -->
-  <view class="{{classPrefix}}__icon--prefix">
-    <slot name="prefix-icon" />
-    <template
-      wx:if="{{_prefixIcon}}"
-      is="icon"
-      data="{{tClass: prefix + '-class-prefix-icon', ariaHidden: true, ..._prefixIcon}}"
-    />
-  </view>
-  <view class="{{classPrefix}}__label" aria-hidden>
-    <slot name="label" />
-    <text wx:if="{{label}}" class="{{prefix}}-class-label">{{label}}</text>
+  <view class="{{classPrefix}}__wrap--prefix">
+    <view class="{{classPrefix}}__icon--prefix">
+      <slot name="prefix-icon" />
+      <template
+        wx:if="{{_prefixIcon}}"
+        is="icon"
+        data="{{tClass: prefix + '-class-prefix-icon', ariaHidden: true, ..._prefixIcon}}"
+      />
+    </view>
+    <view class="{{classPrefix}}__label" aria-hidden>
+      <slot name="label" />
+      <text wx:if="{{label}}" class="{{prefix}}-class-label">{{label}}</text>
+    </view>
   </view>
 
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content {{classPrefix}}--{{status}}">
       <input
+        maxlength="{{maxlength}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholder-style="{{placeholderStyle}}"
@@ -33,7 +36,8 @@
         bindfocus="onFocus"
         bindblur="onBlur"
         bindconfirm="onConfirm"
-        bind:keyboardheightchange="onKeyboardHeightChange"
+        bindkeyboardheightchange="onKeyboardHeightChange"
+        bindnicknamereview="onNickNameReview"
         password="{{type === 'password'}}"
         type="{{type === 'password' ? 'text' : type}}"
         focus="{{focus}}"
@@ -66,7 +70,7 @@
       <view
         wx:if="{{_clearIcon && value.length > 0}}"
         class="{{classPrefix}}__wrap--clearable-icon"
-        bind:tap="clearInput"
+        bind:touchstart="clearInput"
       >
         <template
           is="icon"
@@ -86,7 +90,11 @@
         />
       </view>
     </view>
-    <view wx:if="{{tips && tips.length > 0}}" class="{{classPrefix}}__tips {{prefix}}-class-tips">{{tips}} </view>
+    <view
+      wx:if="{{tips && tips.length > 0}}"
+      class="{{classPrefix}}__tips {{classPrefix}}--{{align}} {{prefix}}-class-tips"
+      >{{tips}}
+    </view>
     <slot name="tips" />
   </view>
 </view>

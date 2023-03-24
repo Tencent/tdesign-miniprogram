@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
-  class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, ['fixed', fixed])}} {{visibleClass}} class {{prefix}}-class"
   style="{{_._style([boxStyle, style, customStyle])}}"
 >
   <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder" />
@@ -10,13 +10,13 @@
         <t-icon name="chevron-left" class="{{classPrefix}}__left-arrow" />
       </view>
       <slot name="left" />
-      <view class="{{classPrefix}}__capsule">
+      <view class="{{classPrefix}}__capsule {{prefix}}-class-capsule">
         <slot name="capsule" />
       </view>
     </view>
-    <view class="{{classPrefix}}__center t-class-center">
+    <view class="{{classPrefix}}__center {{prefix}}-class-center">
       <slot name="title" />
-      <text wx:if="{{title}}" class="{{classPrefix}}__center-title t-class-title">{{showTitle}}</text>
+      <text wx:if="{{title}}" class="{{classPrefix}}__center-title {{prefix}}-class-title">{{showTitle}}</text>
     </view>
   </view>
 </view>

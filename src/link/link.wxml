@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <navigator
-  class="{{className}} {{prefix}}-class"
+  class="{{className}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
   target="{{navigatorProps.target}}"
   url="{{navigatorProps.url}}"
@@ -13,7 +13,7 @@
   extra-data="{{navigatorProps.extraData}}"
   version="{{navigatorProps.version}}"
   short-link="{{navigatorProps.shortLink}}"
-  hover-class="none {{navigatorProps.hoverClass}}"
+  hover-class="{{ hover && !disabled && classPrefix + '--hover' }} {{prefix}}-class-hover {{navigatorProps.hoverClass}}"
   hover-stop-propagation="navigatorProps.hoverStopPropagation"
   hover-start-time="{{navigatorProps.hoverStartTime}}"
   hover-stay-time="{{navigatorProps.hoverStayTime}}"
@@ -22,7 +22,7 @@
   bindcomplete="onComplete"
   aria-disabled="{{status === 'disabled'}}"
 >
-  <view class="{{classPrefix}}__prefix-icon">
+  <view class="{{classPrefix}}__prefix-icon {{prefix}}-class-prefix-icon">
     <slot name="prefix-icon" />
     <template
       wx:if="{{_prefixIcon}}"
@@ -33,8 +33,9 @@
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <block wx:if="{{content}}">{{content}}</block>
     <slot name="content" />
+    <slot />
   </view>
-  <view class="{{classPrefix}}__suffix-icon">
+  <view class="{{classPrefix}}__suffix-icon {{prefix}}-class-suffix-icon">
     <slot name="suffix-icon" />
     <template
       wx:if="{{_suffixIcon}}"
