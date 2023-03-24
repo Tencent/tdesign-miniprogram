@@ -15,6 +15,10 @@ export default class TabPanel extends SuperComponent {
     },
   };
 
+  options = {
+    multipleSlots: true,
+  };
+
   properties = props;
 
   data = {
