@@ -65,6 +65,11 @@ const props: TdSearchProps = {
     type: Boolean,
     value: true,
   },
+  /** 控制拉起的键盘类型 */
+  type: {
+    type: String,
+    value: 'text',
+  },
 };
 
 export default props;
