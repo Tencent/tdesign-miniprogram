@@ -19,7 +19,7 @@
   change:rightWidth="{{swipe.initRightWidth}}"
 >
   <view id="wrapper">
-    <view class="{{classPrefix}}__left" data-key="left">
+    <view class="{{classPrefix}}__left" data-key="left" aria-hidden="{{ariaHiddenLeft}}">
       <slot name="left" />
       <view
         wx:for="{{left}}"
@@ -38,7 +38,7 @@
       </view>
     </view>
     <slot />
-    <view class="{{classPrefix}}__right" data-key="right">
+    <view class="{{classPrefix}}__right" data-key="right" aria-hidden="{{ariaHiddenRight}}">
       <slot name="right" />
       <view
         wx:for="{{right}}"

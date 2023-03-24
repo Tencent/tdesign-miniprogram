@@ -24,6 +24,8 @@ export default class SwiperCell extends SuperComponent {
     wrapperStyle: '',
     closed: true,
     classPrefix: name,
+    ariaHiddenLeft: true,
+    ariaHiddenRight: true,
   };
 
   attached() {
@@ -43,6 +45,23 @@ export default class SwiperCell extends SuperComponent {
         });
       },
     );
+  }
+
+  setAriaValue({ offset }) {
+    if (offset > 0) {
+      this.setData({
+        ariaHiddenLeft: false,
+      });
+    } else if (offset < 0) {
+      this.setData({
+        ariaHiddenRight: false,
+      });
+    } else {
+      this.setData({
+        ariaHiddenLeft: true,
+        ariaHiddenRight: true,
+      });
+    }
   }
 
   detached() {
