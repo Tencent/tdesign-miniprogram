@@ -1,4 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
+<wxs src="./cascader.wxs" module="aria" />
 
 <t-popup class="class" visible="{{visible}}" placement="bottom" bind:visible-change="hide">
   <view style="{{_._style([style, customStyle])}}" class="{{name}}">
@@ -20,7 +21,7 @@
             bind:tap="onStepClick"
             data-index="{{index}}"
             aria-role="{{ item === defaultOptionLabel ? 'option' : 'button' }}"
-            aria-label="{{ item === defaultOptionLabel ? item : '已选中,' + item  }}"
+            aria-label="{{ item === defaultOptionLabel ? item : aria.getAriaLabel(index, item)  }}"
           >
             <view
               class="{{name}}__step-dot {{name}}__step-dot--{{item !== defaultOptionLabel ? 'active' : ''}} {{name}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"

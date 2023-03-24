@@ -1,0 +1,7 @@
+function getAriaLabel(index,  content) {
+  return '第' + (index + 1) + '级：'+ content;
+}
+
+module.exports = {
+  getAriaLabel: getAriaLabel,
+};
