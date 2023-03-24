@@ -21,10 +21,13 @@ exports[`date-time-picker :base 1`] = `
           class="t-picker__toolbar"
         >
           <wx-view
+            ariaRole="button"
             class="t-picker__cancel t-class-cancel"
             bind:tap="onCancel"
           >
-            取消
+            
+        取消
+      
           </wx-view>
           <wx-view
             class="t-picker__title t-class-title"
@@ -32,10 +35,13 @@ exports[`date-time-picker :base 1`] = `
             选择日期
           </wx-view>
           <wx-view
+            ariaRole="button"
             class="t-picker__confirm t-class-confirm"
             bind:tap="onConfirm"
           >
-            确定
+            
+        确定
+      
           </wx-view>
         </wx-view>
         <wx-view
@@ -50,6 +56,7 @@ exports[`date-time-picker :base 1`] = `
             bind:touchstart="onTouchStart"
           >
             <wx-view
+              ariaHidden="{{true}}"
               class="t-picker-item__wrapper"
               style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, -924px, 0)"
             >
@@ -302,6 +309,39 @@ exports[`date-time-picker :base 1`] = `
     
               </wx-view>
             </wx-view>
+            <wx-view
+              class="t-picker-item__accessible"
+            >
+              <wx-view
+                ariaLabel="选择上一项：2020年"
+                ariaRole="button"
+                class="t-picker-item__accessible--button"
+                bind:tap="onClickPrev"
+              >
+                
+      -
+    
+              </wx-view>
+              <wx-view
+                ariaLabel="当前选择的是：2021年"
+                ariaRole="text"
+                class="t-picker-item__accessible--current"
+              >
+                
+      -
+    
+              </wx-view>
+              <wx-view
+                ariaLabel="选择下一项：2022年"
+                ariaRole="button"
+                class="t-picker-item__accessible--button"
+                bind:tap="onClickNext"
+              >
+                
+      -
+    
+              </wx-view>
+            </wx-view>
           </wx-view>
           <wx-view
             class="t-picker-item__group class t-class"
@@ -312,6 +352,7 @@ exports[`date-time-picker :base 1`] = `
             bind:touchstart="onTouchStart"
           >
             <wx-view
+              ariaHidden="{{true}}"
               class="t-picker-item__wrapper"
               style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, -352px, 0)"
             >
@@ -413,9 +454,38 @@ exports[`date-time-picker :base 1`] = `
               </wx-view>
             </wx-view>
             <wx-view
-              class="t-popup__close"
-              bind:tap="handleClose"
-            />
+              class="t-picker-item__accessible"
+            >
+              <wx-view
+                ariaLabel="选择上一项：8月"
+                ariaRole="button"
+                class="t-picker-item__accessible--button"
+                bind:tap="onClickPrev"
+              >
+                
+      -
+    
+              </wx-view>
+              <wx-view
+                ariaLabel="当前选择的是：9月"
+                ariaRole="text"
+                class="t-picker-item__accessible--current"
+              >
+                
+      -
+    
+              </wx-view>
+              <wx-view
+                ariaLabel="选择下一项：10月"
+                ariaRole="button"
+                class="t-picker-item__accessible--button"
+                bind:tap="onClickNext"
+              >
+                
+      -
+    
+              </wx-view>
+            </wx-view>
           </wx-view>
           <wx-view
             class="t-picker__mask t-picker__mask--top"
