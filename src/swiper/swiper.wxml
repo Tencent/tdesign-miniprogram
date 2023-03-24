@@ -28,10 +28,11 @@
       bind:tap="onTap"
       aria-hidden="{{navCurrent !== index}}"
       aria-role="image"
+      aria-label="{{_.isObject(item) ? item.ariaLabel : ''}}"
     >
       <template
         is="image"
-        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: item, mode: 'aspectFill', ...imageProps }}"
+        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: _.isObject(item) ? item.value : item, mode: 'aspectFill', ...imageProps }}"
       />
     </swiper-item>
   </swiper>
