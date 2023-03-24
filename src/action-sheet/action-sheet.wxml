@@ -1,27 +1,38 @@
 <wxs src="./action-sheet.wxs" module="this" />
-<import src="./template/action-sheet-list.wxml" />
-<import src="./template/action-sheet-grid.wxml" />
-<view id="{{classPrefix}}" class="{{classPrefix}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+<import src="./template/list.wxml" />
+<import src="./template/grid.wxml" />
+
+<view id="{{classPrefix}}" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
-    <block wx:if="{{gridThemeItems.length}}">
-      <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
-    </block>
-    <block wx:elif="{{items && items.length}}">
-      <view class="{{classPrefix}}__list" wx:for="{{ items }}" wx:key="index">
-        <template
-          is="list"
-          data="{{index, classPrefix, listThemeItemClass: this.getListThemeItemClass({ item, prefix, classPrefix }), item}}"
-        />
+    <view
+      class="{{_.cls(classPrefix + '__content', [['grid', gridThemeItems.length]])}} {{prefix}}-class-content"
+      tabindex="0"
+    >
+      <view wx:if="{{description}}" tabindex="0" class="{{_.cls(classPrefix + '__description', [align])}}"
+        >{{description}}</view
+      >
+      <block wx:if="{{gridThemeItems.length}}">
+        <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
+      </block>
+      <view wx:elif="{{items && items.length}}" class="{{classPrefix}}__list">
+        <block wx:for="{{ items }}" wx:key="index">
+          <template
+            is="list"
+            data="{{index, classPrefix, listThemeItemClass: _.cls(classPrefix + '__list-item', [align, [disabled, item.disabled]]), item}}"
+          />
+        </block>
       </view>
-    </block>
+    </view>
     <slot />
-    <view wx:if="{{showCancel}}" class="{{classPrefix}}__footer {{classPrefix}}__safe">
+    <view wx:if="{{showCancel}}" class="{{classPrefix}}__footer">
       <view class="{{classPrefix}}__gap-{{theme}}" />
       <view
-        class="{{classPrefix}}__cancel"
+        class="{{classPrefix}}__cancel {{prefix}}-class-cancel"
         hover-class="{{classPrefix}}__cancel--hover"
         hover-stay-time="70"
         bind:tap="onCancel"
+        aria-role="button"
       >
         {{ cancelText }}
       </view>

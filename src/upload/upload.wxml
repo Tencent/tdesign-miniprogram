@@ -1,4 +1,7 @@
-<view class="{{classPrefix}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+<wxs src="./upload.wxs" module="this" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
   <t-grid gutter="{{gutter}}" border="{{false}}" align="center" column="{{column}}">
     <!-- 图片/视频 -->
     <t-grid-item
@@ -7,23 +10,33 @@
       wx:for-item="file"
       t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
       t-class-content="{{classPrefix}}__grid-content"
+      aria-role="presentation"
     >
-      <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
+      <view
+        class="{{classPrefix}}__wrapper"
+        style="{{gridItemStyle}}"
+        aria-role="{{ariaRole || this.getWrapperAriaRole(file)}}"
+        aria-label="{{ariaLabel || this.getWrapperAriaLabel(file)}}"
+      >
         <t-image
           wx:if="{{file.type !== 'video'}}"
-          bindtap="onProofTap"
+          data-file="{{file}}"
+          bind:tap="onProofTap"
           data-index="{{index}}"
           t-class="{{classPrefix}}__thumbnail"
+          style="{{imageProps.style || ''}}"
           src="{{file.url}}"
-          mode="{{imageProps.mode}}"
-          error="{{imageProps.error}}"
-          lazy="{{imageProps.lazy}}"
-          loading="{{imageProps.loading}}"
-          shape="{{imageProps.shape}}"
-          webp="{{imageProps.webp}}"
-          showMenuByLongpress="{{image.showMenuByLongpress}}"
+          mode="{{imageProps.mode || 'aspectFill'}}"
+          error="{{imageProps.error || 'default'}}"
+          lazy="{{imageProps.lazy || false}}"
+          loading="{{imageProps.loading || 'default'}}"
+          shape="{{imageProps.shape || 'round'}}"
+          webp="{{imageProps.webp || false}}"
+          showMenuByLongpress="{{imageProps.showMenuByLongpress || false}}"
         />
         <video
+          data-file="{{file}}"
+          bind:tap="onFileClick"
           wx:if="{{file.type === 'video'}}"
           class="{{classPrefix}}__thumbnail"
           src="{{file.url}}"
@@ -34,32 +47,47 @@
         <!-- 失败重试 -->
         <view
           data-index="{{index}}"
-          wx:if="{{file.percent !== undefined && file.percent !== 100}}"
+          wx:if="{{file.status && file.status != 'done'}}"
           class="{{classPrefix}}__progress-mask"
+          data-file="{{file}}"
+          bind:tap="onFileClick"
         >
-          <view wx:if="{{file.percent === -1}}" class="{{classPrefix}}__progress-failed">
-            <t-icon name="refresh" size="45rpx" color="#fff" />
+          <block wx:if="{{file.status == 'loading'}}">
+            <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" aria-hidden />
+            <view class="{{classPrefix}}__progress-text">{{file.percent ? file.percent + '%' : '上传中...'}}</view>
+          </block>
+          <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" aria-hidden />
+          <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text">
+            {{file.status == 'reload' ? '重新上传' : '上传失败'}}
           </view>
-          <view wx:else class="{{classPrefix}}__progress-value">{{file.percent}}%</view>
-        </view>
-        <!-- 删除 -->
-        <view class="{{classPrefix}}__close-btn hotspot-expanded" bindtap="onDelete" data-index="{{index}}">
-          <slot wx:if="{{deleteBtn === 'slot'}}" name="deleteBtn" />
-          <t-icon wx:else name="close" size="34rpx" color="#fff" />
         </view>
       </view>
+
+      <!-- 删除 -->
+      <view
+        class="{{classPrefix}}__close-btn hotspot-expanded"
+        bindtap="onDelete"
+        data-index="{{index}}"
+        aria-role="button"
+        aria-label="删除"
+      >
+        <t-icon name="close" size="16" color="#fff" />
+      </view>
     </t-grid-item>
+
     <!-- 添加 -->
     <t-grid-item
       wx:if="{{customLimit > 0}}"
       t-class="{{classPrefix}}__grid"
       t-class-content="{{classPrefix}}__grid-content"
       bindclick="onAddTap"
+      aria-label="上传"
     >
-      <view class="{{classPrefix}}__wrapper" slot="image" style="{{gridItemStyle}}">
-        <view class="{{classPrefix}}__add-icon">
-          <slot wx:if="{{addContent === 'slot'}}" name="addContent" />
-          <t-icon wx:else name="add" size="40rpx" color="rgba(0,0,0,0.26)" />
+      <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
+        <slot name="add-content" />
+        <block wx:if="{{addContent}}">{{addContent}}</block>
+        <view wx:else class="{{classPrefix}}__add-icon">
+          <t-icon name="add" />
         </view>
       </view>
     </t-grid-item>

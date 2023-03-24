@@ -1,0 +1,4 @@
+<t-divider dashed />
+<t-divider dashed content="文字信息" align="left" />
+<t-divider dashed content="文字信息" />
+<t-divider dashed content="文字信息" align="right" />

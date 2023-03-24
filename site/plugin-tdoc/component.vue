@@ -5,12 +5,13 @@
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
       <div class="td-doc-main" v-show="tab === 'demo'">
         <div name="DEMO" v-html="info.demoMd"></div>
-        <!-- <QrCode :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" /> -->
         <td-doc-phone>
           <div class="qrcode__wrapper" slot="qrcode">
-            <img class="qrcode" :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" />
+            <img class="qrcode" :src="qrcode" />
+            <!-- <img class="qrcode" :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" /> -->
           </div>
-          <iframe :src="liveUrl" frameborder="0" width="100%" height="100%" style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden; border-top: 8px solid #f8f8f8;"></iframe>
+          <iframe :src="liveUrl" frameborder="0" width="100%" height="100%"
+            style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden; border-top: 8px solid #f8f8f8"></iframe>
         </td-doc-phone>
         <td-contributors platform="miniprogram" framework="wx" :component-name="name"></td-contributors>
       </div>
@@ -18,7 +19,7 @@
       <div v-show="tab === 'design'" name="DESIGN" v-html="info.designMd"></div>
     </template>
     <div name="DOC" :class="info.docClass" v-else v-html="info.docMd"></div>
-    <div style="margin-top: 48px;">
+    <div style="margin-top: 48px">
       <td-doc-history :time="info.lastUpdated"></td-doc-history>
     </div>
     <td-doc-footer slot="doc-footer" platform="mobile"></td-doc-footer>
@@ -53,11 +54,17 @@ export default defineComponent({
     },
     name() {
       const { path } = this.$route;
-      return path.slice(path.lastIndexOf('/') + 1)
+      return path.slice(path.lastIndexOf('/') + 1);
     },
     liveUrl() {
-      return `//tdesign.tencent.com/miniprogram-live/m2w/program/miniprogram/#!pages/${this.name}/${this.name}.html`
-    }
+      return `/miniprogram-live/m2w/program/miniprogram/#!pages/${this.name}/${this.name}.html`;
+    },
+    qrcode() {
+      const { path } = this.$route;
+      const name = path.slice(path.lastIndexOf('/') + 1);
+      // new URL(): https://cn.vitejs.dev/guide/assets.html#new-url-url-import-meta-url
+      return new URL(`../public/assets/qrcode/${name}.png`, import.meta.url).href;
+    },
   },
 
   mounted() {
@@ -65,12 +72,10 @@ export default defineComponent({
     const { tdDocContent, tdDocHeader, tdDocTabs } = this.$refs;
 
     if (info.isComponent) {
-      tdDocTabs.onchange = ({ detail: currentTab }) => this.tab = currentTab;
+      tdDocTabs.onchange = ({ detail: currentTab }) => (this.tab = currentTab);
       tdDocHeader.componentName = info.componentName;
     }
-    
     Prismjs.highlightAll();
-    
     tdDocHeader.spline = info.spline;
     tdDocHeader.docInfo = { title: info.title, desc: info.description };
 
@@ -93,17 +98,17 @@ export default defineComponent({
     text-align: center;
     background-color: #fff;
     border-radius: 6px 6px 0 0;
-    border: 1px solid #DCDCDC;
-    
+    border: 1px solid #dcdcdc;
+
     &--gray {
       background-color: #eee;
     }
 
-    :root[theme-mode="dark"] & img {
+    :root[theme-mode='dark'] & img {
       filter: unset;
     }
 
-    div[name=DEMO] & + pre {
+    div[name='DEMO'] &+pre {
       margin-top: 0;
       border-top-left-radius: 0;
       border-top-right-radius: 0;

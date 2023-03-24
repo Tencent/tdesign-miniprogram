@@ -1,0 +1,13 @@
+<wxs src="./calendar.wxs" module="this" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<t-popup
+  wx:if="{{usePopup}}"
+  class="class"
+  visible="{{visible}}"
+  bind:visible-change="onVisibleChange"
+  placement="bottom"
+>
+  <include src="./template.wxml" />
+</t-popup>
+<include wx:else src="./template.wxml" />

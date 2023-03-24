@@ -1,16 +1,25 @@
-<wxs src="./tag.wxs" module="this" />
+<wxs src="../common/utils.wxs" module="_" />
+<import src="../common/template/icon.wxml" />
+
 <view
-  class="{{classBasePrefix}}-class {{ this.getTagClass({classBasePrefix, classPrefix, theme, size, variant, shape, disabled, closable}) }}"
+  class="{{className}} class {{prefix}}-class"
+  style="{{_._style([tagStyle, style, customStyle])}}"
+  bind:tap="handleClick"
 >
-  <t-icon wx:if="{{icon}}" name="{{icon}}" />
-  <view class="{{classPrefix}}__text" style="{{ this.getTagStyle(maxWidth) }}">
+  <view aria-hidden="{{true}}" class="{{classPrefix}}__icon">
+    <template wx:if="{{_icon}}" is="icon" data="{{ tClass: prefix + '-icon', ..._icon }}" />
+    <slot name="icon" />
+  </view>
+  <view class="{{classPrefix}}__text">
     <slot />
   </view>
-  <view
-    wx:if="{{ closable && !disabled }}"
-    class="{{classPrefix}}__icon-close hotspot-expanded relative"
-    bind:tap="hangleClose"
-  >
-    <t-icon name="close" size="{{this.getIconSize(size)}}" />
-  </view>
+  <t-icon
+    wx:if="{{ closable }}"
+    class="{{classPrefix}}__icon-close"
+    t-class="{{prefix}}-icon"
+    catch:tap="handleClose"
+    name="close"
+    aria-role="button"
+    aria-label="关闭"
+  />
 </view>

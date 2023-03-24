@@ -5,6 +5,7 @@ spline: form
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-91%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-90%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-92%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-89%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -12,73 +13,60 @@ isComponent: true
 ```json
 "usingComponents": {
   "t-picker": "tdesign-miniprogram/picker/picker",
-  "t-picker-item": "tdesign-miniprogram/picker/picker-item",
+  "t-picker-item": "tdesign-miniprogram/picker-item/picker-item",
 }
 ```
 
 ## 代码演示
 
-### 基础选择器
+### 组件类型
+#### 基础选择器
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/picker.png" width="375px" height="50%">
+单项和多选选择
 
-```html
-<t-picker
-  visible="{{true}}"
-  title="请选择城市"
-  bindchange="onPickerChange"
-  bindconfirm="onPicker1Confirm"
-  bindcancel="onPicker1Cancel"
->
-  <t-picker-item options="{{citys}}" value="{{selectedCityValue}}" />
-</t-picker>
-```
+{{ base }}
 
-```js
-Page({
-  data: {
-    citys: [
-      { label: '广州市', value: '广州市' },
-      { label: '韶关市', value: '韶关市' },
-      { label: '深圳市', value: '深圳市' },
-      { label: '珠海市', value: '珠海市' },
-      { label: '汕头市', value: '汕头市' },
-    ],
-  },
-  onPicker1Confirm(e) {
-    console.log('picker1 confirm:', e.detail);
-    this.setData({
-      selectedCityValue: e.detail.value?.value,
-    });
-  },
-});
-```
+#### 地区选择器
+
+支持省市区切换，支持数据联动
+
+{{ area }}
+
+### 组件状态
+
+是否带标题
+
+{{ with-title }}
 
 ## API
 ### Picker Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-cancel-btn | String | 取消 | 取消按钮文字 | N
-confirm-btn | String | 确认 | 确定按钮文字 | N
-footer | Slot | - | 底部内容 | N
+auto-close | Boolean | true | 自动关闭；在确认、取消、点击遮罩层自动关闭，不需要手动设置 visible | N
+cancel-btn | String / Boolean / Object | true | 取消按钮文字。TS 类型：`boolean \| string \| ButtonProps` | N
+confirm-btn | String / Boolean / Object | true | 确定按钮文字。TS 类型：`boolean \| string \| ButtonProps`，[Button API Documents](./button?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
+footer | Slot | - | 已废弃。底部内容 | N
 header | Boolean / Slot | true | 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 | N
+keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段别名。TS 类型：`KeysType` | N
 title | String | '' | 标题 | N
-value | Array | - | 选中值。TS 类型：`Array<PickerValue>` `type PickerValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
-default-value | Array | undefined | 选中值。非受控属性。TS 类型：`Array<PickerValue>` `type PickerValue = string | number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
+value | Array | - | 选中值。TS 类型：`Array<PickerValue>` `type PickerValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
+default-value | Array | undefined | 选中值。非受控属性。TS 类型：`Array<PickerValue>` `type PickerValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 visible | Boolean | false | 是否显示 | N
 
 ### Picker Events
 
 名称 | 参数 | 描述
 -- | -- | --
-cancel | `({})` | 点击取消按钮时触发
-change | `(value: Array<PickerValue>)` | 选中变化时候触发
-confirm | `({})` | 点击确认确认按钮时触发
+cancel | - | 点击取消按钮时触发
+change | `(value: Array<PickerValue>, label: string, columns: Array<{ column: number; index: number }> )` | 选中变化时候触发，即确认变化时触发
+close | `(trigger: TriggerSource)` | `1.0.1`。关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'cancel-btn' \| 'confrim-btn'`<br/>
+confirm | `(value: Array<PickerValue>, label: string, columns: Array<{ column: number; index: number }> )` | 点击确认按钮时触发
+pick | `(value: Array<PickerValue>, label: string, column: number, index: number)` | 任何一列选中都会触发，不同的列参数不同。`column` 表示第几列变化，`index` 表示变化那一列的选中项下标
 
 ### PickerItem Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-options | Array | [] | 数据源。TS 类型：`Array<PickerItemOption>` `interface PickerItemOption { label: string; value: string | number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
-value | String / Number | - | 默认选中的选项 | N
+format | Function | - | 格式化标签。TS 类型：`(option: PickerItemOption) => string` | N
+options | Array | [] | 数据源。TS 类型：`PickerItemOption[]` `interface PickerItemOption { label: string; value: string \| number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker-item/type.ts) | N

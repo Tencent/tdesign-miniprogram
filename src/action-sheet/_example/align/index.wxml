@@ -1,0 +1,3 @@
+<t-action-sheet id="t-action-sheet" bind:selected="handleSelected" />
+
+<t-button size="large" variant="outline" bind:tap="handleAction" block theme="primary">左对齐列表型</t-button>

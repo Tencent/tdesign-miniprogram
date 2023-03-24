@@ -1,0 +1,14 @@
+<t-button variant="outline" bind:tap="openDrawerBase" block size="large" theme="primary">带底部插槽</t-button>
+
+<t-drawer
+  visible="{{visible}}"
+  placement="{{placement}}"
+  title="标题"
+  items="{{sidebar}}"
+  bind:overlay-click="overlayClick"
+  bind:item-click="itemClick"
+>
+  <view class="button-host">
+    <t-button slot="footer" size="large=" block variant="outline">操作</t-button>
+  </view>
+</t-drawer>

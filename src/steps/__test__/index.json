@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "t-steps": "../steps",
+    "t-step-item": "../../step-item/step-item"
+  }
+}

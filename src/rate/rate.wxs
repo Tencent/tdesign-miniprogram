@@ -4,46 +4,62 @@ module.exports = {
       texts = defaultTexts;
     }
     var curVal = Math.floor(val - 1);
-    return texts[curVal];
+    return texts[curVal] || '未评分';
   },
-  getIconName: function (defaultValue, value, index, allowHalf, icon, halfIcon, variant) {
+
+  getIconName: function (defaultValue, value, index, icon) {
     var curVal = value ? value : defaultValue;
-    if (curVal - index >= 1) {
-      return icon;
-    } else if (allowHalf && curVal - index > 0) {
-      return halfIcon;
-    } else {
-      return variant === 'outline' ? 'star' : 'star-filled';
+    var name = ['star-filled', 'star-filled'];
+
+    if (icon) {
+      name = icon.constructor == 'Array' ? icon : [icon, icon];
     }
+
+    return name[curVal >= index + 1 ? 0 : 1];
   },
-  getIconColor: function (defaultValue, value, index, allowHalf, disabled, color, disabledColor) {
+
+  getIconClass: function (classPrefix, defaultValue, value, index, allowHalf, disabled, scaleIndex) {
     var curVal = value ? value : defaultValue;
-    var colorList = color.split(',');
-    var primaryColor = colorList[0] || color;
-    var defaultColor = colorList[1] || '#E3E6EB';
-    if (curVal - index >= 1) {
-      return disabled ? disabledColor : primaryColor;
+    var className = [];
+    if (curVal >= index + 1) {
+      className.push(classPrefix + '--selected');
+      if (disabled) {
+        className.push(classPrefix + '--disabled');
+      }
+      if (scaleIndex === index + 1) {
+        className.push(classPrefix + '--current');
+      }
     } else if (allowHalf && curVal - index > 0) {
-      return 'transparent';
+      className.push(classPrefix + '--selected-half');
+      if (scaleIndex === index + 1) {
+        className.push(classPrefix + '--current');
+      }
+      if (disabled) {
+        className.push(classPrefix + '--disabled-half');
+      }
     } else {
-      return defaultColor;
+      className.push(classPrefix + '--unselected');
     }
+    return className.join(' ');
   },
-  getBackgroundColor: function (disabled, color, disabledColor) {
-    var colorList = color.split(',');
-    var primaryColor = colorList[0] || color;
-    var defaultColor = colorList[1] || '#E3E6EB';
-    var linearColor = disabled ? disabledColor : primaryColor;
-    return (
-      'background:linear-gradient(to right, ' +
-      linearColor +
-      ' 0%,' +
-      linearColor +
-      ' 50%, ' +
-      defaultColor +
-      ' 51%, ' +
-      defaultColor +
-      ' 100%);-webkit-background-clip:text;background-clip:text;'
-    );
+
+  ceil: function (value) {
+    return Math.ceil(value);
+  },
+
+  getColor: function (color) {
+    if (color.constructor === 'Array' && color.length === 2) {
+      return ';--td-rate-selected-color: ' + color[0] + '; --td-rate-unselected-color: ' + color[1];
+    }
+
+    if (typeof color === 'string') {
+      return ';--td-rate-selected-color: ' + color;
+    }
+
+    return '';
+  },
+
+  regSize: function (val) {
+    return val.indexOf('px') ? val : val + 'px';
   },
 };

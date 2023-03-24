@@ -1,0 +1,1 @@
+<t-slider defaultValue="30" min="{{30}}" max="{{200}}" label colors="{{colors}}"></t-slider>

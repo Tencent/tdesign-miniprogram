@@ -1,5 +1,16 @@
-<view class="{{classPrefix}} t-class">
-  <view class="{{classPrefix}}__content" style="{{ contentStyle }}">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{_.cls(classPrefix, [theme])}} class {{prefix}}-class">
+  <view wx:if="{{column > 0}}" class="{{classPrefix}}__content" style="{{ contentStyle }}">
     <slot />
   </view>
+  <scroll-view
+    wx:else
+    scroll-x
+    scroll-with-animation
+    class="{{classPrefix}}__content"
+    style="{{ 'white-space: nowrap;' + contentStyle }}"
+  >
+    <slot />
+  </scroll-view>
 </view>

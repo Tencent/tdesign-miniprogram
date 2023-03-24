@@ -1,17 +1,23 @@
-<view class="{{ classPrefix }}">
-  <view class="{{ classPrefix }}__bar" style="z-index: {{zIndex}}" id="t-bar">
-    <view
-      wx:for="{{menus}}"
-      wx:key="item"
-      class="{{ classPrefix }}__item {{ activeIdx == index ? prefix + '-is-active' : ''}} {{ item.disabled ? prefix + '-is-disabled' : ''}}"
-    >
-      <view class="{{ classPrefix }}__title" bindtap="toggleDropdown" data-index="{{index}}"> {{item.label}} </view>
-      <t-icon
-        name="caret-down-small"
-        size="48rpx"
-        class="{{classPrefix}}__icon {{classPrefix}}__icon--{{activeIdx == index ? 'active' : ''}}"
-      />
-    </view>
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{ classPrefix }} class {{prefix}}-class" id="t-bar">
+  <view
+    wx:for="{{menus}}"
+    wx:key="index"
+    bindtap="handleToggle"
+    data-index="{{index}}"
+    class="{{_.cls(classPrefix + '__item', [['active', activeIdx == index], ['disabled', item.disabled]])}} {{prefix}}-class-item"
+    aria-disabled="{{item.disabled}}"
+    aria-role="button"
+    aria-expanded="{{activeIdx === index}}"
+    aria-haspopup="menu"
+  >
+    <view class="{{classPrefix}}__title {{prefix}}-class-label">{{item.label}}</view>
+    <t-icon
+      name="caret-down-small"
+      t-class="{{classPrefix}}__icon {{classPrefix}}__icon--{{activeIdx == index ? 'active' : ''}} {{prefix}}-class-icon"
+      aria-hidden="{{true}}"
+    />
   </view>
-  <slot></slot>
+  <slot />
 </view>

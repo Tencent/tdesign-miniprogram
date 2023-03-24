@@ -1,0 +1,109 @@
+<view class="demo-desc">文字按钮</view>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showConfirm"
+  bind:tap="showDialog"
+  block
+>
+  文字按钮
+</t-button>
+<t-dialog
+  visible="{{showConfirm}}"
+  title="对话框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="确定"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+/>
+
+<view class="demo-desc">水平基础按钮</view>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showWarnConfirm"
+  bind:tap="showDialog"
+  block
+>
+  水平基础按钮
+</t-button>
+<t-dialog
+  visible="{{showWarnConfirm}}"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ { content: '确定', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+/>
+
+<view class="demo-desc">垂直基础按钮</view>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showTooLongBtnContent"
+  bind:tap="showDialog"
+  block
+>
+  垂直基础按钮
+</t-button>
+<t-dialog
+  visible="{{showTooLongBtnContent}}"
+  title="对话框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ confirmBtn }}"
+  cancel-btn="取消"
+  button-layout="vertical"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+/>
+
+<view class="demo-desc">多按钮</view>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showMultiBtn"
+  bind:tap="showDialog"
+  block
+>
+  多按钮
+</t-button>
+<t-dialog
+  visible="{{showMultiBtn}}"
+  title="对话框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  button-layout="vertical"
+  actions="{{ multiBtnList }}"
+  bind:action="closeDialog"
+/>
+
+<view class="demo-desc">带关闭按钮</view>
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showCloseBtn"
+  bind:tap="showDialog"
+  block
+>
+  带关闭按钮
+</t-button>
+<t-dialog
+  visible="{{showCloseBtn}}"
+  title="对话框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  close-btn
+  confirm-btn="{{ { content: '警示操作', variant: 'base' } }}"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+/>

@@ -1,0 +1,19 @@
+{
+  "navigationBarTitleText": "Input",
+  "usingComponents": {
+    "t-input": "tdesign-miniprogram/input/input",
+    "base": "./base",
+    "suffix": "./suffix",
+    "prefix": "./prefix",
+    "layout": "./layout",
+    "bordered": "./bordered",
+    "size": "./size",
+    "align": "./align",
+    "maxlength": "./maxlength",
+    "special": "./special",
+    "status": "./status",
+    "custom": "./custom",
+    "labelDemo": "./label",
+    "banner": "./banner"
+  }
+}

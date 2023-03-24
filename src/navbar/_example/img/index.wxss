@@ -1,0 +1,4 @@
+.custom-image {
+  height: 48rpx;
+  width: 204rpx;
+}

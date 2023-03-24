@@ -1,0 +1,14 @@
+<view class="block">
+  <t-grid border="{{border}}" column="{{3}}">
+    <t-grid-item text="标题文字" image="{{img1}}" />
+    <t-grid-item text="标题文字" image="{{img2}}" />
+    <t-grid-item text="标题文字" image="{{img3}}" />
+  </t-grid>
+</view>
+
+<view class="block">
+  <t-grid border="{{border}}" column="{{2}}" align="left">
+    <t-grid-item text="标题文字" description="描述文字" layout="horizontal" image="{{img1}}" />
+    <t-grid-item text="标题最多六字" description="描述文字" layout="horizontal" image="{{img2}}" />
+  </t-grid>
+</view>

@@ -1,6 +1,10 @@
+<import src="../common/template/icon.wxml" />
 <wxs src="./swipe-cell.wxs" module="swipe"></wxs>
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
-  class="{{prefix}}-class {{classPrefix}}"
+  class="class {{prefix}}-class {{classPrefix}}"
+  style="{{_._style([style, customStyle])}}"
   data-key="cell"
   capture-bind:tap="onTap"
   bindtouchstart="{{disabled || swipe.startDrag}}"
@@ -19,13 +23,18 @@
       <slot name="left" />
       <view
         wx:for="{{left}}"
-        class="{{item.className}}"
+        class="{{classPrefix}}__content {{item.className}}"
         style="{{item.style}}"
         wx:key="index"
         data-action="{{item}}"
         bind:tap="onActionTap"
       >
-        {{item.text}}
+        <template
+          wx:if="{{item.icon}}"
+          is="icon"
+          data="{{class: classPrefix + '__icon', name: item.icon, ...item.icon}}"
+        ></template>
+        <text wx:if="{{item.text}}" class="{{classPrefix}}__text">{{item.text}}</text>
       </view>
     </view>
     <slot />
@@ -33,13 +42,18 @@
       <slot name="right" />
       <view
         wx:for="{{right}}"
-        class="{{item.className}}"
+        class="{{classPrefix}}__content {{item.className}}"
         style="{{item.style}}"
         wx:key="index"
         data-action="{{item}}"
         bind:tap="onActionTap"
       >
-        {{item.text}}
+        <template
+          wx:if="{{item.icon}}"
+          is="icon"
+          data="{{class: classPrefix + '__icon', name: item.icon, ...item.icon}}"
+        ></template>
+        <text wx:if="{{item.text}}" class="{{classPrefix}}__text">{{item.text}}</text>
       </view>
     </view>
   </view>

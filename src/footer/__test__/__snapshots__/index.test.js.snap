@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer :base 1`] = `
+<main>
+  <main>
+    <wx-view
+      class="t-footer class t-class"
+      style=""
+    >
+      <wx-view
+        class="t-footer__text"
+      >
+        
+      </wx-view>
+    </wx-view>
+  </main>
+</main>
+`;

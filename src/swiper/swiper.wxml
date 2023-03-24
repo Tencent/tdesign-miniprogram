@@ -1,43 +1,49 @@
-<wxs src="./swiper.wxs" module="swiper" />
-<!-- 支持传入height指定容器高度，单位rpx -->
-<view
-  id="swiper"
-  class="{{prefix}}-class {{classPrefix}}"
-  style="{{height?'height:'+height+'rpx':''}}"
->
-  <view
-    id="swiperContainer"
-    class="{{classPrefix}}__container {{inited? '{{prefix}}-in-animation' : '{{prefix}}-is-hidden'}}"
-    style="transition-duration: {{duration/1000}}s;transition-timing-function:{{easings.linear}};"
-    bindtouchstart="{{swiper.startDrag}}"
-    capture-catch:touchmove="{{swiper.onDrag}}"
-    bindtouchend="{{swiper.endDrag}}"
-    bindtouchcancel="{{swiper.endDrag}}"
-    offsetX="{{offsetX}}"
-    offsetY="{{offsetY}}"
-    width="{{_width}}"
-    height="{{_height}}"
-    direction="{{direction}}"
-    total="{{total}}"
-    currentInited="{{currentInited}}"
-    change:offsetX="{{swiper.changeOffsetX}}"
-    change:offsetY="{{swiper.changeOffsetY}}"
-    change:width="{{swiper.changeWidth}}"
-    change:height="{{swiper.changeHeight}}"
-    change:direction="{{swiper.changeDirection}}"
-    change:total="{{swiper.changeTotal}}"
-    change:currentInited="{{swiper.changeCurrentInited}}"
+<wxs src="./index.wxs" module="this" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<import src="../common/template/image.wxml" />
+
+<view class="class {{prefix}}-class {{classPrefix}}" style="{{_._style([style, customStyle])}}">
+  <swiper
+    class="{{classPrefix}}-host"
+    autoplay="{{autoplay}}"
+    current="{{current}}"
+    interval="{{interval}}"
+    duration="{{duration}}"
+    circular="{{loop}}"
+    vertical="{{direction == 'vertical'}}"
+    easing-function="{{easingFunction}}"
+    previous-margin="{{previousMargin}}"
+    next-margin="{{nextMargin}}"
+    snap-to-edge="{{snapToEdge}}"
+    display-multiple-items="{{displayMultipleItems}}"
+    style="height: {{_.addUnit(height)}}"
+    bindchange="onChange"
   >
-    <slot />
-  </view>
+    <swiper-item
+      wx:for="{{list}}"
+      wx:key="index"
+      class="{{_.cls(classPrefix + '__item', [['preview', this.isPrev(current, index, list)], ['next', this.isNext(current, index, list)]])}}"
+      data-index="{{index}}"
+      bind:tap="onTap"
+    >
+      <template
+        is="image"
+        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: item, mode: 'aspectFill', ...imageProps }}"
+      />
+    </swiper-item>
+  </swiper>
   <t-swiper-nav
-    id="swiperNav"
-    wx:if="{{_navigation}}"
-    type="{{_navigation.type}}"
-    minShowNum="{{_navigation.minShowNum}}"
-    hasNavBtn="{{_navigation.hasNavBtn}}"
-    bind:navBtnChange="onSwiperNavBtnChange"
+    wx:if="{{navigation}}"
+    t-class="{{prefix}}-class-nav"
+    type="{{navigation.type || 'dots'}}"
+    current="{{navCurrent || 0}}"
+    total="{{list.length || 0}}"
+    direction="{{direction || 'horizontal'}}"
+    pagination-position="{{paginationPosition || 'bottom'}}"
+    min-show-num="{{navigation.minShowNum || 2}}"
+    show-controls="{{navigation.showControls || false}}"
+    bind:nav-btn-change="onNavBtnChange"
   />
-  <!-- 同时支持插槽组合 -->
   <slot name="nav" />
 </view>

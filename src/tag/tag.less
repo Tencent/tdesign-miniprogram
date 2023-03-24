@@ -1,57 +1,65 @@
 @import '../common/index.less';
 
-@color-white: #fff;
+// themes
+@tag-default-color: var(--td-tag-default-color, @bg-color-component);
+@tag-default-light-color: var(--td-tag-default-light-color, @bg-color-secondarycontainer);
+@tag-primary-color: var(--td-tag-primary-color, @brand-color);
+@tag-primary-light-color: var(--td-tag-primary-light-color, @brand-color-light);
+@tag-success-color: var(--td-tag-success-color, @success-color);
+@tag-success-light-color: var(--td-tag-success-light-color, @success-color-1);
+@tag-warning-color: var(--td-tag-warning-color, @warning-color);
+@tag-warning-light-color: var(--td-tag-warning-light-color, @warning-color-1);
+@tag-danger-color: var(--td-tag-danger-color, @error-color);
+@tag-danger-light-color: var(--td-tag-danger-light-color, @error-color-1);
 
-@tag-default-color: #444;
-@tag-default-background-color: #f5f5f5;
-@tag-default-border-color: #f5f5f5;
+// variant
+@tag-outline-bg-color: var(--td-tag-outline-bg-color, @bg-color-container);
+@tag-default-font-color: var(--td-tag-default-font-color, @font-gray-1);
 
-@tag-primary-color: @primary-color;
-@tag-info-color: #bbb;
-@tag-success-color: @success-color;
-@tag-warning-color: @warning-color;
-@tag-danger-color: @error-color;
+// status
+@tag-disabled-color: var(--td-tag-disabled-color, @font-gray-4);
+@tag-disabled-background-color: var(--td-tag-disabled-background-color, @bg-color-component-disabled);
+@tag-disabled-border-color: var(--td-tag-disabled-border-color, @component-border);
 
-@tag-disabled-color: #bbb;
-@tag-disabled-background-color: #f5f5f5;
-@tag-disabled-border-color: #f5f5f5;
+// size
+@tag-small-padding: var(--td-tag-small-padding, 12rpx - 1px);
+@tag-medium-padding: var(--td-tag-medium-padding, 16rpx - 1px);
+@tag-large-padding: var(--td-tag-large-padding, 16rpx - 1px);
+@tag-extra-large-padding: var(--td-tag-extra-large-padding, 32rpx - 1px);
 
-@tag-small-padding: 3px;
-@tag-medium-padding: 3px;
-@tag-large-padding: 3px;
+@tag-small-font-size: var(--td-tag-small-font-size, @font-size);
+@tag-medium-font-size: var(--td-tag-medium-font-size, @font-size-s);
+@tag-large-font-size: var(--td-tag-large-font-size, @font-size-base);
+@tag-extra-large-font-size: var(--td-tag-extra-large-font-size, @font-size-base);
 
-@tag-small-font-size: 12px;
-@tag-medium-font-size: 14px;
-@tag-large-font-size: 16px;
+@tag-small-icon-size: var(--td-tag-small-icon-size, 24rpx);
+@tag-medium-icon-size: var(--td-tag-medium-icon-size, 28rpx);
+@tag-large-icon-size: var(--td-tag-large-icon-size, 32rpx);
+@tag-extra-large-icon-size: var(--td-tag-extra-large-icon-size, 32rpx);
 
-@border-radius-square: 2px;
-@border-radius-round: 4px;
-@border-radius-circle: 999px;
+@tag-small-height: var(--td-tag-small-height, 40rpx);
+@tag-medium-height: var(--td-tag-medium-height, 48rpx);
+@tag-large-height: var(--td-tag-large-height, 56rpx);
+@tag-extra-large-height: var(--td-tag-extra-large-height, 80rpx);
 
-@themes: primary, success, warning, info, danger;
+@tag-square-border-radius: var(--td-tag-square-border-radius, 8rpx);
+@tag-round-border-radius: var(--td-tag-round-border-radius, 999px);
+@tag-mark-border-radius: var(--td-tag-mark-border-radius, @tag-round-border-radius);
 
-.genEffect(@fontColorWeight; @borderColorWeight; @backgroundColorWeight; @hoverColorWeight) {
-  &.@{prefix}-tag--theme-default {
-    color: @tag-default-color;
-    border-color: @tag-default-border-color;
-    background-color: @tag-default-background-color;
-  }
+@tag-close-icon-color: var(--td-tag-close-icon-color, @font-gray-3);
 
-  .for(@themes, @i: 1) when(@i =< length(@themes)) {
-    @theme: extract(@themes, @i);
+.genVariant(@variant) {
+  @themes: default, primary, success, warning, danger;
+  each(@themes, {
+    @theme-color: 'tag-@{value}-color';
+    @theme-light-color: 'tag-@{value}-light-color';
 
-    @theme-color: 'tag-@{theme}-color';
-
-    &.@{prefix}-tag--theme-@{theme} {
-      background-color: mix(@@theme-color, @color-white, @backgroundColorWeight);
-      border-color: mix(@@theme-color, @color-white, @borderColorWeight);
-      color: mix(@@theme-color, @color-white, @fontColorWeight);
+    &.@{prefix}-tag--@{value} {
+      color: if(@variant = dark, @font-white-1, @@theme-color);
+      border-color: if(@variant = light, @@theme-light-color, @@theme-color);
+      background-color: if(@variant = dark, @@theme-color, @@theme-light-color);
     }
-
-    .for(@themes, (@i + 1));
-  }
-
-  .for(@themes);
+  });
 }
 
 .@{prefix}-tag {
@@ -59,102 +67,134 @@
   align-items: center;
   border: 2rpx solid transparent;
   box-sizing: border-box;
-  border-radius: @border-radius-square;
-  padding: 0 24rpx;
-  font-size: 24rpx;
-  // max-width: 240rpx;
+  border-radius: @tag-square-border-radius;
+  font-size: @tag-medium-font-size;
   user-select: none;
+  vertical-align: middle;
 
   &__text {
     word-wrap: normal;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 48rpx;
-    line-height: 48rpx;
   }
 
-  &--variant {
-    &-dark {
-      .genEffect(0, 100, 100, 100);
-    }
-
-    &-light {
-      .genEffect(100, 10, 10, 10);
-    }
-
-    &-outline {
-      .genEffect(100, 50, 0, 5);
-    }
-
-    &-light-outline {
-      .genEffect(100, 50, 10, 5);
-    }
-  }
-
-  &__content {
-    width: 100%;
-  }
-
-  .@{prefix}__icon {
-    font-size: @tag-medium-font-size;
-  }
-
+  &__icon,
   &__icon-close {
     display: flex;
     align-items: center;
-    margin-left: 16rpx;
   }
 
-  &.@{prefix}-tag--size {
-    &-small {
-      height: 44rpx;
-      line-height: 40rpx;
-      padding: 0 16rpx;
-      font-size: 20rpx;
+  &__icon-close {
+    color: @tag-close-icon-color;
+  }
 
-      .@{prefix}-icon {
-        font-size: 20rpx;
+  &__icon:not(:empty) + &__text:not(:empty),
+  &__text:not(:empty) + &__icon-close:not(:empty) {
+    margin-left: 8rpx;
+  }
+
+  &.@{prefix}-tag {
+    &--small {
+      height: @tag-small-height;
+      line-height: @tag-small-height;
+      padding: 0 @tag-small-padding;
+      font-size: @tag-small-font-size;
+
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-small-icon-size;
+      }
+
+      .@{prefix}-tag__icon:not(:empty) + .@{prefix}-tag__text:not(:empty),
+      .@{prefix}-tag__text:not(:empty) + .@{prefix}-tag__icon-close:not(:empty) {
+        margin-left: 4rpx;
       }
     }
 
-    &-medium {
-      height: 48rpx;
-      line-height: 44rpx;
-      padding: 0 24rpx;
-      font-size: 24rpx;
+    &--medium {
+      height: @tag-medium-height;
+      line-height: @tag-medium-height;
+      padding: 0 @tag-medium-padding;
+      font-size: @tag-medium-font-size;
 
-      .@{prefix}-icon {
-        font-size: 24rpx;
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-medium-icon-size;
       }
     }
 
-    &-large {
-      height: 60rpx;
-      line-height: 56rpx;
-      padding: 0 24rpx;
-      font-size: 28rpx;
+    &--large {
+      height: @tag-large-height;
+      line-height: @tag-large-height;
+      padding: 0 @tag-large-padding;
+      font-size: @tag-large-font-size;
 
-      .@{prefix}-icon {
-        font-size: 28rpx;
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-large-icon-size;
+      }
+    }
+
+    &--extra-large {
+      height: @tag-extra-large-height;
+      line-height: @tag-extra-large-height;
+      padding: 0 @tag-extra-large-padding;
+      font-size: @tag-extra-large-font-size;
+
+      .@{prefix}-icon,
+      .@{prefix}-icon-close {
+        font-size: @tag-extra-large-icon-size;
       }
     }
   }
 
-  &.@{prefix}-tag--square {
-    border-radius: @border-radius-square;
+  &.@{prefix}-tag {
+    &--square {
+      border-radius: @tag-square-border-radius;
+    }
+
+    &--round {
+      border-radius: @tag-round-border-radius;
+    }
+
+    &--mark {
+      border-radius: 0 @tag-mark-border-radius @tag-mark-border-radius 0;
+    }
   }
 
-  &.@{prefix}-tag--round {
-    border-radius: @border-radius-round;
+  &--dark {
+    .genVariant(dark);
+    &.@{prefix}-tag--default {
+      color: @tag-default-font-color;
+    }
   }
 
-  &.@{prefix}-tag--circle {
-    border-radius: @border-radius-circle;
+  &--outline {
+    .genVariant(outline);
+    &.@{prefix}-tag--default {
+      color: @tag-default-font-color;
+    }
+    each(@themes, {
+      &.@{prefix}-tag--@{value} {
+        background-color: @tag-outline-bg-color;
+      }
+    });
   }
 
-  &.@{prefix}-tag--half-circle {
-    border-radius: 0 @border-radius-circle @border-radius-circle 0;
+  &--light {
+    .genVariant(light);
+    &.@{prefix}-tag--default {
+      color: @tag-default-font-color;
+    }
+  }
+
+  &--light-outline {
+    .genVariant(light-outline);
+    &.@{prefix}-tag--default {
+      color: @tag-default-font-color;
+      border-color: @component-border;
+    }
   }
 
   &.@{prefix}-tag--closable {

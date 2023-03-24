@@ -1,0 +1,16 @@
+<view class="demo">
+  <view class="demo-title">SwipeCell 滑动操作</view>
+  <view class="demo-desc">用于承载列表中的更多操作，通过左右滑动来展示，按钮的宽度固定高度根据列表高度而变化。</view>
+  <t-demo title="01 组件类型" desc="左滑单操作">
+    <left />
+  </t-demo>
+  <t-demo desc="右滑单操作">
+    <right />
+  </t-demo>
+  <t-demo desc="左右滑操作">
+    <double />
+  </t-demo>
+  <t-demo desc="带图标的滑动操作">
+    <iconDemo />
+  </t-demo>
+</view>

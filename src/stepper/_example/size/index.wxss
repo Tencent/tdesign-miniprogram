@@ -1,0 +1,7 @@
+.stepper-example {
+  padding: 32rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48rpx;
+  background-color: #fff;
+}

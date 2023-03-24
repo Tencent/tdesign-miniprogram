@@ -19,10 +19,6 @@ const props: TdUploadProps = {
   config: {
     type: Object,
   },
-  /** 删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。 */
-  deleteBtn: {
-    type: String,
-  },
   /** 已上传文件列表 */
   files: {
     type: Array,
@@ -36,7 +32,7 @@ const props: TdUploadProps = {
   gridConfig: {
     type: Object,
   },
-  /** 预览窗格的 gutter 大小，单位 rpx */
+  /** 预览窗格的 `gutter` 大小，单位 rpx */
   gutter: {
     type: Number,
     value: 16,
@@ -61,8 +57,12 @@ const props: TdUploadProps = {
   },
   /** 图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }` */
   sizeLimit: {
-    type: Number,
-    optionalTypes: [Object],
+    type: null,
+  },
+  /** 来源 */
+  source: {
+    type: String,
+    value: 'media',
   },
 };
 

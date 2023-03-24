@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge Badge base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="demo-desc"
+  >
+    红点徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      class="wrapper"
+      content="消息"
+      dot="{{true}}"
+      offset="{{
+        Array [
+          -4,
+          4,
+        ]
+      }}"
+    />
+    <t-badge
+      class="wrapper"
+      dot="{{true}}"
+      offset="{{
+        Array [
+          1,
+          -1,
+        ]
+      }}"
+    >
+      <t-icon
+        ariaLabel="通知"
+        name="notification"
+        size="24"
+      />
+    </t-badge>
+    <t-badge
+      class="wrapper"
+      dot="{{true}}"
+      offset="{{
+        Array [
+          1,
+          1,
+        ]
+      }}"
+    >
+      <t-button>
+        按钮
+      </t-button>
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    数字徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      class="wrapper"
+      content="消息"
+      count="8"
+      offset="{{
+        Array [
+          -8,
+        ]
+      }}"
+    />
+    <t-badge
+      class="wrapper"
+      count="2"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
+    >
+      <t-icon
+        ariaLabel="通知"
+        name="notification"
+        size="24"
+      />
+    </t-badge>
+    <t-badge
+      class="wrapper"
+      count="8"
+      offset="{{
+        Array [
+          2,
+          2,
+        ]
+      }}"
+    >
+      <t-button>
+        按钮
+      </t-button>
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    自定义徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      ariaRole="button"
+      count="NEW"
+      offset="{{
+        Array [
+          0,
+          2,
+        ]
+      }}"
+    >
+      <t-button
+        ariaLabel="通知"
+        icon="notification"
+        shape="square"
+        size="large"
+      />
+    </t-badge>
+  </wx-view>
+</base>
+`;
+
+exports[`Badge Badge size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="demo-desc"
+  >
+    Large
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-avatar
+      badgeProps="{{
+        Object {
+          "count": 8,
+          "offset": Array [
+            7,
+            7,
+          ],
+          "size": "large",
+        }
+      }}"
+      icon="user"
+      size="large"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    Middle
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-avatar
+      badgeProps="{{
+        Object {
+          "count": 8,
+          "offset": Array [
+            5,
+            5,
+          ],
+        }
+      }}"
+      icon="user"
+    />
+  </wx-view>
+</size>
+`;
+
+exports[`Badge Badge theme demo works fine 1`] = `
+<theme>
+  <wx-view
+    class="demo-desc"
+  >
+    圆形徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      count="2"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
+    >
+      <t-icon
+        ariaLabel="通知"
+        name="notification"
+        size="24"
+      />
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    方形徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      count="2"
+      offset="{{
+        Array [
+          -2,
+          -2,
+        ]
+      }}"
+      shape="square"
+    >
+      <t-icon
+        ariaLabel="通知"
+        name="notification"
+        size="24"
+      />
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    气泡徽标
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-badge
+      ariaRole="button"
+      count="领积分"
+      shape="bubble"
+    >
+      <t-button
+        ariaLabel="商店"
+        icon="shop"
+        shape="square"
+        size="large"
+      />
+    </t-badge>
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+    style="margin-bottom: 32rpx"
+  >
+    角标
+  </wx-view>
+  <t-cell
+    title="单行标题"
+  >
+    <t-badge
+      count="New"
+      offset="{{
+        Array [
+          0,
+          0,
+        ]
+      }}"
+      shape="ribbon"
+      slot="note"
+    />
+  </t-cell>
+</theme>
+`;

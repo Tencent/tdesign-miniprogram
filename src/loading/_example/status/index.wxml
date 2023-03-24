@@ -1,0 +1,5 @@
+<view class="loading-container-flex">
+  <t-switch value="{{isCheck}}" bindchange="switchChange" colors="{{['#00A870']}}" slot="note" />
+  <span class="text-info"> {{isCheck?'请求发起，延迟显示loading加载':'请求结束，隐藏loading加载'}} </span>
+</view>
+<t-loading theme="circular" size="40rpx" text="加载中..." loading="{{isCheck}}" delay="{{1000}}"></t-loading>

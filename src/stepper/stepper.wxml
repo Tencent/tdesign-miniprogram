@@ -1,34 +1,37 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
-  class="{{classPrefix}} {{classPrefix}}--{{theme === 'grey' ? 'pure' : 'normal'}} {{ disabled ? prefix + '-is-disabled': ''}} {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{classPrefix}}--{{size}} class {{prefix}}-class"
 >
   <view
-    class="{{classPrefix}}__minus {{prefix}}-class-minus {{ disabled || disableMinus || currentValue <= min ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
+    class="{{classPrefix}}__minus {{classPrefix}}__minus--{{theme}} {{classPrefix}}__icon--{{size}} {{ disabled || disableMinus || currentValue <= min ? classPrefix + '--' + theme + '-disabled': ''}} {{prefix}}-class-minus"
     catchtap="minusValue"
+    aria-label="{{'减少' + step}}"
+    aria-role="button"
+    aria-disabled="{{disabled || disableMinus || currentValue <= min}}"
   >
-    <t-icon
-      name="remove"
-      class="{{classPrefix}}__minus-icon"
-      color="{{ disabled || disableMinus || currentValue <= min ? '#ccc': '#444'}}"
-      size="{{theme === 'grey' ? '32rpx' : '40rpx'}}"
+    <t-icon name="remove" class="{{classPrefix}}__minus-icon" />
+  </view>
+  <view class="{{classPrefix}}__input--{{theme}} {{ disabled ? classPrefix + '--' + theme + '-disabled': ''}}">
+    <input
+      style="{{inputWidth? 'width:' + inputWidth + 'px;': ''}}"
+      class="{{classPrefix}}__input {{classPrefix}}__input--{{size}} {{prefix}}-class-input"
+      disabled="{{ disabled || disableInput }}"
+      type="number"
+      value="{{ currentValue }}"
+      catchinput="inputHandle"
+      catchfocus="focusHandle"
+      catchblur="blurHandle"
     />
   </view>
-  <input
-    class="{{classPrefix}}__input {{prefix}}-class-input"
-    style="width: {{inputWidth || 100}}rpx"
-    disabled="{{ disabled || disableInput }}"
-    type="number"
-    value="{{ currentValue }}"
-    catchblur="blurHandler"
-  />
   <view
-    class="{{classPrefix}}__plus {{prefix}}-class-plus {{ disabled || disablePlus|| currentValue >= max ? prefix + '-is-disabled': ''}} hotspot-expanded relative"
+    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{classPrefix}}__icon--{{size}}  {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--' + theme + '-disabled': ''}} {{prefix}}-class-plus"
     catchtap="plusValue"
+    aria-label="{{'增加' + step}}"
+    aria-role="button"
+    aria-disabled="{{disabled || disablePlus|| currentValue >= max}}"
   >
-    <t-icon
-      name="add"
-      class="{{classPrefix}}__plus-icon"
-      color="{{ disabled || disablePlus|| currentValue >= max ? '#ccc': '#444'}}"
-      size="{{theme === 'grey' ? '32rpx' : '40rpx'}}"
-    />
+    <t-icon name="add" class="{{classPrefix}}__plus-icon" />
   </view>
 </view>

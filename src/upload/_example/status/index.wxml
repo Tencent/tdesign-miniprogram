@@ -1,0 +1,10 @@
+<view class="wrapper">
+  <t-upload
+    media-type="{{['video','image']}}"
+    files="{{originFiles}}"
+    gridConfig="{{gridConfig}}"
+    bind:success="handleSuccess"
+    bind:remove="handleRemove"
+    bind:click="handleClick"
+  />
+</view>

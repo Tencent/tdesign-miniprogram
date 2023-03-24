@@ -2,10 +2,9 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-26 17:12:37
  * */
 
-import { TdTransitionProps } from '../transition/type';
+import { TdTransitionProps } from '../transition/index';
 
 export interface TdPopupProps {
   /**
@@ -14,7 +13,6 @@ export interface TdPopupProps {
   closeBtn?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 点击遮罩层是否关闭
@@ -23,7 +21,6 @@ export interface TdPopupProps {
   closeOnOverlayClick?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 浮层里面的内容
@@ -31,16 +28,22 @@ export interface TdPopupProps {
   content?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
-   * 是否在关闭浮层时销毁浮层
-   * @default false
+   * 自定义组件样式
+   * @default ''
    */
-  destroyOnClose?: {
-    type: BooleanConstructor;
-    value?: boolean;
-    required?: boolean;
+  style?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 动画过渡时间
+   * @default 240
+   */
+  duration?: {
+    type: NumberConstructor;
+    value?: number;
   };
   /**
    * 组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名
@@ -48,7 +51,14 @@ export interface TdPopupProps {
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-overlay', 't-class-content'];
-    required?: boolean;
+  };
+  /**
+   * 遮罩层的属性，透传至 overlay
+   * @default {}
+   */
+  overlayProps?: {
+    type: ObjectConstructor;
+    value?: object;
   };
   /**
    * 浮层出现位置
@@ -57,7 +67,6 @@ export interface TdPopupProps {
   placement?: {
     type: StringConstructor;
     value?: 'top' | 'left' | 'right' | 'bottom' | 'center';
-    required?: boolean;
   };
   /**
    * 防止滚动穿透
@@ -66,7 +75,6 @@ export interface TdPopupProps {
   preventScrollThrough?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 是否显示遮罩层
@@ -75,7 +83,6 @@ export interface TdPopupProps {
   showOverlay?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 动画效果定义
@@ -83,7 +90,6 @@ export interface TdPopupProps {
   transitionProps?: {
     type: ObjectConstructor;
     value?: TdTransitionProps;
-    required?: boolean;
   };
   /**
    * 是否显示浮层
@@ -92,16 +98,25 @@ export interface TdPopupProps {
   visible?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
-   * 组件层级，Web 侧样式默认为 5500，移动端和小程序样式默认为 1500
+   * 是否显示浮层，非受控属性
+   * @default false
+   */
+  defaultVisible?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 组件层级，Web 侧样式默认为 5500，移动端样式默认为 1500，小程序样式默认为11500
+   * @default 11500
    */
   zIndex?: {
     type: NumberConstructor;
     value?: number;
-    required?: boolean;
   };
-};
+}
 
-export interface PopupVisibleChangeContext { trigger: 'close-btn' | 'overlay' };
+export interface PopupVisibleChangeContext {
+  trigger: 'close-btn' | 'overlay';
+}

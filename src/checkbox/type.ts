@@ -9,9 +9,17 @@ export interface TdCheckboxProps {
    * 多选框和内容相对位置
    * @default left
    */
-  align?: {
+  placement?: {
     type: StringConstructor;
     value?: 'left' | 'right';
+  };
+  /**
+   * 是否为块级元素
+   * @default true
+   */
+  block?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用
@@ -38,14 +46,6 @@ export interface TdCheckboxProps {
     value?: boolean;
   };
   /**
-   * 多选框颜色
-   * @default #0052d9
-   */
-  color?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 多选框内容
    */
   content?: {
@@ -58,6 +58,14 @@ export interface TdCheckboxProps {
   contentDisabled?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 是否禁用组件
@@ -74,11 +82,12 @@ export interface TdCheckboxProps {
     value?: ['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border'];
   };
   /**
-   * 自定义选中图标和非选中图标。示例：[选中态图标地址，非选中态图标地址]
+   * 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标
+   * @default 'circle'
    */
   icon?: {
-    type: ArrayConstructor;
-    value?: Array<string>;
+    type: null;
+    value?: 'circle' | 'line' | 'rectangle' | string[];
   };
   /**
    * 是否为半选
@@ -131,69 +140,7 @@ export interface TdCheckboxProps {
    * 多选框的值
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
+    type: null;
+    value?: string | number | boolean;
   };
 }
-
-export interface TdCheckboxGroupProps {
-  /**
-   * 是否禁用组件
-   * @default false
-   */
-  disabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 支持最多选中的数量
-   */
-  max?: {
-    type: NumberConstructor;
-    value?: number;
-  };
-  /**
-   * 统一设置内部复选框 HTML 属性
-   * @default ''
-   */
-  name?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 以配置形式设置子元素。示例1：`['北京', '上海']` ，示例2: `[{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]`。checkAll 值为 true 表示当前选项为「全选选项」
-   * @default []
-   */
-  options?: {
-    type: ArrayConstructor;
-    value?: Array<CheckboxOption>;
-  };
-  /**
-   * 选中值
-   * @default []
-   */
-  value?: {
-    type: ArrayConstructor;
-    value?: CheckboxGroupValue;
-  };
-  /**
-   * 选中值，非受控属性
-   * @default []
-   */
-  defaultValue?: {
-    type: ArrayConstructor;
-    value?: CheckboxGroupValue;
-  };
-}
-
-export type CheckboxOption = string | number | CheckboxOptionObj;
-
-export interface CheckboxOptionObj {
-  label?: string;
-  value?: string | number;
-  disabled?: boolean;
-  checkAll?: true;
-}
-
-export type CheckboxGroupValue = Array<string | number>;

@@ -1,0 +1,30 @@
+.custom-title {
+  margin-left: 16rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.block {
+  display: block;
+  margin-bottom: 48rpx;
+}
+
+.demo-desc {
+  margin-top: 48rpx;
+  margin-bottom: 32rpx;
+}
+
+.left-text {
+  display: block;
+  margin-left: 8rpx;
+  font-size: 16px;
+}
+
+.header-title {
+  font-size: 28px;
+  line-height: 36px;
+  padding: 8rpx 32rpx 16rpx;
+  background-color: #fff;
+  font-weight: 600;
+  color: rgba(0, 0, 0 .9);
+}

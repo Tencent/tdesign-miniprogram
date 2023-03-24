@@ -1,6 +1,15 @@
-<label
-  class="t-class {{ prefix?prefix:classPrefix}} {{ prefix?prefix:classPrefix }}-{{ name }} {{ classPrefix }}-base"
-  style="{{ color ? 'color:' + color : '' }};{{ fontSize ? 'font-size:'+ fontSize : '' }};{{ customStyle }}"
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  class="{{ prefix ? prefix : classPrefix}} class {{componentPrefix}}-class"
+  style="{{_._style([iconStyle, style, customStyle])}}"
   bind:tap="onTap"
+  aria-hidden="{{ariaHidden}}"
+  aria-label="{{ariaLabel}}"
+  aria-role="{{ariaRole}}"
 >
-</label>
+  <view wx:if="{{ isImage }}" class="{{classPrefix}}--image">
+    <image src="{{ name }}" mode="aspectFit" class="{{classPrefix}}__image" />
+  </view>
+  <label wx:else class="{{ prefix ? prefix : classPrefix }}-{{ name }} {{ classPrefix }}-base"> </label>
+</view>

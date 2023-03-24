@@ -1,0 +1,13 @@
+<t-indexes
+  class="indexes"
+  height="{{height}}"
+  style="{{style}}"
+  customStyle="{{customStyle}}"
+  index-list="{{ ['A', 'B', 'C'] }}"
+  bind:select="onSelect"
+>
+  <t-indexes-anchor index="A" style="{{style}}" customStyle="{{customStyle}}" />
+  <view height="50vh" />
+  <t-indexes-anchor index="B" />
+  <t-indexes-anchor index="C" />
+</t-indexes>

@@ -1,0 +1,11 @@
+.large {
+  --td-loading-text-font-size: 32rpx;
+}
+
+.middle {
+  --td-loading-text-font-size: 28rpx;
+}
+
+.demo-desc {
+  margin: 48rpx 0 32rpx;
+}

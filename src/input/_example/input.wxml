@@ -1,0 +1,42 @@
+<view class="input-example">
+  <view class="demo-title">Input 输入框</view>
+  <view class="demo-desc">用于单行文本信息输入。</view>
+  <t-demo title="01 组件类型" desc="基础输入框">
+    <base />
+  </t-demo>
+  <t-demo desc="带字数限制输入框">
+    <maxlength />
+  </t-demo>
+  <t-demo desc="带操作输入框">
+    <suffix />
+  </t-demo>
+  <t-demo desc="带图标输入框">
+    <prefix />
+  </t-demo>
+  <t-demo desc="特定类型输入框">
+    <special />
+  </t-demo>
+
+  <t-demo title="02 组件状态" desc="输入框状态">
+    <status />
+  </t-demo>
+  <t-demo desc="信息超长状态">
+    <labelDemo />
+  </t-demo>
+
+  <t-demo title="03 组件样式" desc="内容位置">
+    <align />
+  </t-demo>
+  <t-demo desc="竖排样式">
+    <layout />
+  </t-demo>
+  <t-demo desc="非通栏样式">
+    <banner />
+  </t-demo>
+  <t-demo desc="标签外置样式">
+    <bordered />
+  </t-demo>
+  <t-demo desc="自定义样式输入框">
+    <custom />
+  </t-demo>
+</view>

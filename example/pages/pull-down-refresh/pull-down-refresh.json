@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "PullDownRefresh 下拉刷新",
-  "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
-  }
-}

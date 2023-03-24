@@ -1,0 +1,24 @@
+<t-cell title="单行标题" description="一段很长很长的内容文字" hover arrow />
+<t-cell title="单行标题" description="一段很长很长的内容文字" hover arrow required />
+<t-cell title="单行标题" description="一段很长很长的内容文字" hover arrow>
+  <t-badge count="{{16}}" slot="note" />
+</t-cell>
+<t-cell title="单行标题" description="一段很长很长的内容文字" hover>
+  <t-switch defaultValue="{{true}}" slot="note" />
+</t-cell>
+<t-cell title="单行标题" description="一段很长很长的内容文字" note="辅助信息" hover arrow />
+<t-cell title="单行标题" description="一段很长很长的内容文字" leftIcon="lock-on" hover arrow />
+<t-cell title="多行标题" description="一段很长很长的内容文字，长文本自动换行，该选项的描述是一段很长的内容" hover />
+<t-cell title="多行带头像" description="一段很长很长很长的内容文字" hover arrow>
+  <view class="avatar" slot="left-icon">
+    <open-data type="userAvatarUrl" />
+  </view>
+</t-cell>
+<t-cell
+  title="多行带图片"
+  description="一段很长很长的内容文字"
+  align="top"
+  image="https://tdesign.gtimg.com/miniprogram/images/cell1.png"
+  hover
+  bordered="{{false}}"
+/>

@@ -1,26 +1,25 @@
-<view
-  wx:if="{{ loading }}"
-  class="t-class {{classPrefix}} {{ animation ? classPrefix + '--animate-' + animation : '' }}"
->
-  <view wx:if="{{ theme === 'avatar-text' }}" class="t-class-avatar {{classPrefix}}__avatar " />
-  <view wx:if="{{theme === 'avatar-text' || 'text' }}" class="{{classPrefix}}__content">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view wx:if="{{ loading }}" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class ">
+  <view wx:if="{{ parsedRowcols.length }}" class="{{classPrefix}}__content">
     <view
-      wx:for="{{ rowCol.length }}"
-      wx:key="index"
+      wx:for="{{parsedRowcols}}"
       wx:for-index="index"
-      class="{{classPrefix}}__row"
-      style="justify-content: {{ isNumList[index] ? 'space-between' : '' }}"
+      wx:for-item="row"
+      wx:key="index"
+      class="{{classPrefix}}__row {{prefix}}-class-row"
     >
       <view
-        wx:for="{{ rowStyles[index] }}"
-        wx:key="col"
-        wx:for-item="item"
-        class="t-class-text {{classPrefix}}__item"
-        style="width: {{ item.width }}; height: {{item.height ? item.height : '32rpx' }}; margin-right: {{ item.marginRight ? item.marginRight : '' }}; margin-left: {{ item.marginLeft ? item.marginLeft : '' }}"
+        wx:for="{{ row }}"
+        wx:for-index="index"
+        wx:for-item="col"
+        wx:key="index"
+        class="{{col.class}} {{prefix}}-class-col"
+        style="{{_._style(col.style)}}"
       ></view>
     </view>
   </view>
 </view>
-<view wx:else class="{{classPrefix}}__content">
+<view wx:else class="class {{classPrefix}}__content">
   <slot />
 </view>

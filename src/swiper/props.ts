@@ -2,16 +2,10 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdSwiperProps } from './type';
 const props: TdSwiperProps = {
-  /** 轮播切换动画效果类型 */
-  animation: {
-    type: String,
-    value: 'slide',
-  },
   /** 是否自动播放 */
   autoplay: {
     type: Boolean,
@@ -27,23 +21,68 @@ const props: TdSwiperProps = {
     type: String,
     value: 'horizontal',
   },
+  /** 同时显示的滑块数量 */
+  displayMultipleItems: {
+    type: Number,
+    value: 1,
+  },
   /** 滑动动画时长 */
   duration: {
     type: Number,
     value: 300,
   },
-  /** 当使用垂直方向滚动时的高度 */
+  /** 指定 swiper 切换缓动动画类型 */
+  easingFunction: {
+    type: String,
+    value: 'default',
+  },
+  /** 轮播的高度；默认单位 `px` */
   height: {
-    type: Number,
+    type: null,
+    value: 192,
+  },
+  /** 透传至 Image 组件 */
+  imageProps: {
+    type: Object,
   },
   /** 轮播间隔时间 */
   interval: {
     type: Number,
     value: 5000,
   },
-  /** 导航配置。`navigation.type` 表示导航器风格，圆点/分式等，没有值则不显示。`navigation.minShowNum` 表示小于这个数字不会显示导航器。`navigation.showSlideBtn` 表示是否显示两侧的滑动控制按钮 */
+  /** 图片列表 */
+  list: {
+    type: Array,
+  },
+  /** 是否循环播放 */
+  loop: {
+    type: Boolean,
+    value: true,
+  },
+  /** 导航器全部配置，true 的话使用默认配置 */
   navigation: {
-    type: Object,
+    type: null,
+    value: true,
+  },
+  /** 后边距，可用于露出后一项的一小部分。默认单位 `px` */
+  nextMargin: {
+    type: null,
+    value: 0,
+  },
+  /** 页码信息展示位置 */
+  paginationPosition: {
+    type: String,
+    value: 'bottom',
+  },
+  /** 前边距，可用于露出前一项的一小部分。默认单位 `px` */
+  previousMargin: {
+    type: null,
+    value: 0,
+  },
+  /** 当 swiper-item 的个数大于等于 2，关闭 circular 并且开启 previous-margin 或 next-margin 的时候，可以指定这个边距是否应用到第一个、最后一个元素 */
+  snapToEdge: {
+    type: Boolean,
+    value: false,
   },
 };
 

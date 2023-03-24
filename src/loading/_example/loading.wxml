@@ -1,0 +1,30 @@
+<view class="demo">
+  <view class="demo-title">Loading 加载</view>
+  <view class="demo-desc"
+    >用于表示页面或操作的加载状态，给予用户反馈的同时减缓等待的焦虑感，由一个或一组反馈动效组成。</view
+  >
+  <t-demo title="01 组件类型" desc="纯图标" padding>
+    <base />
+  </t-demo>
+  <t-demo desc="图标加文字横向" padding>
+    <horizontal />
+  </t-demo>
+  <t-demo desc="图标加文字竖向" padding>
+    <vertical />
+  </t-demo>
+  <t-demo desc="纯文字" padding>
+    <text />
+  </t-demo>
+
+  <t-demo title="02 组件尺寸" desc="大尺寸" padding>
+    <size />
+  </t-demo>
+
+  <!-- <t-demo title="02 组件状态" desc="如果加载状态在延迟内结束，则不显示" padding>
+    <status />
+  </t-demo> -->
+
+  <t-demo title="03 加载速度" desc="加载速度调整" padding>
+    <duration />
+  </t-demo>
+</view>

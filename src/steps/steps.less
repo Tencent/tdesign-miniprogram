@@ -4,15 +4,8 @@
 @steps: ~'@{step}s';
 @item: ~'@{step}-item';
 
-@{steps} {
+:host {
   display: flex;
-}
-
-@{item} {
-  flex: 1;
-  vertical-align: top;
-  position: relative;
-  align-self: flex-start;
 }
 
 .@{step} {
@@ -28,9 +21,5 @@
   // 垂直
   &--vertical {
     flex-direction: column;
-
-    @{item} {
-      width: 100%;
-    }
   }
 }

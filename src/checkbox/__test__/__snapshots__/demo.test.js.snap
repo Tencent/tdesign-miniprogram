@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox Checkbox all demo works fine 1`] = `
+<all>
+  <t-checkbox-group
+    defaultValue="{{
+      Array [
+        1,
+        2,
+        3,
+        "",
+      ]
+    }}"
+    options="{{
+      Array [
+        Object {
+          "checkAll": true,
+          "label": "全选",
+        },
+        Object {
+          "label": "多选",
+          "value": 1,
+        },
+        Object {
+          "label": "多选",
+          "value": 2,
+        },
+        Object {
+          "content": "单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息",
+          "label": "多选",
+          "value": 3,
+        },
+      ]
+    }}"
+    bind:change="onCheckAllChange"
+  />
+</all>
+`;
+
+exports[`Checkbox Checkbox base demo works fine 1`] = `
+<base>
+  <t-checkbox-group
+    options="{{
+      Array [
+        Object {
+          "label": "多选",
+          "value": "checkbox1",
+        },
+        Object {
+          "label": "多选",
+          "value": "checkbox2",
+        },
+        Object {
+          "label": "多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行",
+          "maxLabelRow": 2,
+          "value": "checkbox3",
+        },
+        Object {
+          "content": "描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息",
+          "label": "多选",
+          "maxContentRow": 2,
+          "value": "checkbox4",
+        },
+      ]
+    }}"
+    value="{{
+      Array [
+        "checkbox1",
+        "checkbox2",
+      ]
+    }}"
+    bind:change="handleGroupChange"
+  />
+</base>
+`;
+
+exports[`Checkbox Checkbox card demo works fine 1`] = `
+<card>
+  <t-checkbox-group
+    defaultValue="{{
+      Array [
+        "1",
+        "2",
+      ]
+    }}"
+    tClass="theme-card"
+  >
+    <t-checkbox
+      label="多选"
+      value="1"
+    />
+    <t-checkbox
+      label="多选"
+      value="2"
+    />
+    <t-checkbox
+      label="多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题"
+      value="3"
+    />
+  </t-checkbox-group>
+</card>
+`;
+
+exports[`Checkbox Checkbox horizontal demo works fine 1`] = `
+<horizontal>
+  <t-checkbox-group
+    borderless="{{true}}"
+    defaultValue="{{
+      Array [
+        "checkbox1",
+        "checkbox2",
+      ]
+    }}"
+    tClass="box"
+    bind:change="onChange"
+  >
+    <t-checkbox
+      block="{{false}}"
+      label="多选标题"
+      value="checkbox1"
+    />
+    <t-checkbox
+      block="{{false}}"
+      label="多选标题"
+      value="checkbox2"
+    />
+    <t-checkbox
+      block="{{false}}"
+      label="上限四字"
+      value="checkbox3"
+    />
+  </t-checkbox-group>
+</horizontal>
+`;
+
+exports[`Checkbox Checkbox right demo works fine 1`] = `
+<right>
+  <t-checkbox
+    checked="{{true}}"
+    label="多选"
+    value="1"
+  />
+  <wx-view
+    class="box"
+    style="height: 32rpx"
+  />
+  <t-checkbox
+    align="right"
+    checked="{{true}}"
+    label="多选"
+    value="2"
+  />
+</right>
+`;
+
+exports[`Checkbox Checkbox special demo works fine 1`] = `
+<special>
+  <t-checkbox-group
+    value="{{
+      Array [
+        0,
+        1,
+      ]
+    }}"
+    bind:change="onChange"
+  >
+    <wx-view
+      class="card card--active"
+    >
+      <t-icon
+        ariaHidden="{{true}}"
+        name="check"
+        tClass="card__icon"
+      />
+      <t-checkbox
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="多选"
+        value="{{0}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card card--active"
+    >
+      <t-icon
+        ariaHidden="{{true}}"
+        name="check"
+        tClass="card__icon"
+      />
+      <t-checkbox
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="多选"
+        value="{{1}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-checkbox
+        borderless="{{true}}"
+        content="描述信息描述信息描述信息描述信息描述信息"
+        icon="none"
+        label="多选"
+        value="{{2}}"
+      />
+    </wx-view>
+  </t-checkbox-group>
+  <wx-view
+    class="demo-desc"
+    style="margin: 48rpx 32rpx 32rpx"
+  >
+    横向卡片多选框
+  </wx-view>
+  <t-checkbox-group
+    tClass="horizontal-box"
+    value="{{
+      Array [
+        0,
+        1,
+      ]
+    }}"
+    bind:change="onChange1"
+  >
+    <wx-view
+      class="card card--active"
+    >
+      <t-icon
+        ariaHidden="{{true}}"
+        name="check"
+        tClass="card__icon"
+      />
+      <t-checkbox
+        borderless="{{true}}"
+        icon="none"
+        label="多选"
+        value="{{0}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card card--active"
+    >
+      <t-icon
+        ariaHidden="{{true}}"
+        name="check"
+        tClass="card__icon"
+      />
+      <t-checkbox
+        borderless="{{true}}"
+        icon="none"
+        label="多选"
+        value="{{1}}"
+      />
+    </wx-view>
+    <wx-view
+      class="card "
+    >
+      <t-checkbox
+        borderless="{{true}}"
+        icon="none"
+        label="多选"
+        value="{{2}}"
+      />
+    </wx-view>
+  </t-checkbox-group>
+</special>
+`;
+
+exports[`Checkbox Checkbox status demo works fine 1`] = `
+<status>
+  <t-checkbox-group
+    defaultValue="{{
+      Array [
+        "checkbox1",
+      ]
+    }}"
+    disabled="{{true}}"
+  >
+    <t-checkbox
+      label="选项禁用-已选"
+      value="checkbox1"
+    />
+    <t-checkbox
+      label="选项禁用-默认"
+      value="checkbox2"
+    />
+  </t-checkbox-group>
+</status>
+`;
+
+exports[`Checkbox Checkbox type demo works fine 1`] = `
+<type>
+  <t-checkbox
+    defaultChecked="{{true}}"
+    icon="line"
+    label="多选"
+  />
+  <wx-view
+    class="box"
+    style="height: 32rpx"
+  />
+  <t-checkbox
+    defaultChecked="{{true}}"
+    icon="rectangle"
+    label="多选"
+  />
+  <wx-view
+    class="box"
+    style="height: 32rpx"
+  />
+  <t-checkbox
+    icon="{{
+      Array [
+        "https://tdesign.gtimg.com/miniprogram/checkbox-checked.png",
+        "https://tdesign.gtimg.com/miniprogram/checkbox.png",
+      ]
+    }}"
+    label="图片图标"
+    value="checkbox1"
+  />
+</type>
+`;

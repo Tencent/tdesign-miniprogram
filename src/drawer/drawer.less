@@ -1,27 +1,67 @@
 @import '../common/style/index.less';
 
+@drawer-width: var(--td-drawer-width, 560rpx);
+@drawer-title-font-size: var(--td-drawer-title-font-size, 36rpx);
+@drawer-title-padding: var(--td-drawer-title-padding, 48rpx 32rpx 16rpx);
+@drawer-bg-color: var(--td-drawer-bg-color, @bg-color-container);
+@drawer-border-color: var(--td-drawer-border-color, @border-color);
+@drawer-title-color: var(--td-drawer-title-color, @font-gray-1);
+@drawer-icon-color: var(--td-drawer-title-color, @drawer-title-color);
+@drawer-item-padding: var(--td-drawer-item-padding, 32rpx);
+@drawer-item-height: var(--td-drawer-item-height, 48rpx);
+@drawer-item-icon-size: var(--td-drawer-item-icon-size, 48rpx);
+@drawer-sidebar-height: var(--td-drawer-sidebar-height, 70vh);
+@drawer-footer-padding-bottom: var(--td-drawer-footer-padding-bottom, 40rpx);
+@drawer-hover-color: var(--td-drawer-hover-color, @bg-color-secondarycontainer);
+
 .@{prefix}-drawer {
+  background: @drawer-bg-color;
+  height: 100vh;
+  width: @drawer-width;
+  display: flex;
+  flex-direction: column;
+
+  &--hover {
+    background-color: @drawer-hover-color;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: @drawer-title-font-size;
+    padding: 48rpx 32rpx 16rpx;
+  }
+
   &__sidebar {
-    width: calc(100vw * 0.82);
-    height: 100vh;
-    background: #fff;
+    height: @drawer-sidebar-height;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      .border(bottom, @drawer-border-color);
+      padding: @drawer-item-padding 0 @drawer-item-padding @drawer-item-padding;
+      line-height: @drawer-item-height;
+
+      &::after {
+        left: @drawer-item-padding;
+      }
+
+      &-title {
+        flex: 1;
+        color: var(--td-drawer-title-color);
+      }
+
+      &-icon {
+        padding-right: 16rpx;
+        color: @drawer-icon-color;
+        font-size: @drawer-item-icon-size;
+      }
+    }
   }
 
-  &__sidebar-item {
-    display: flex;
-    align-items: center;
-    border-bottom: 1rpx solid #e7e7e7;
-    padding: 24rpx 0;
-    margin-left: 32rpx;
-  }
-
-  &__sidebar-item-title {
+  &__footer {
     flex: 1;
-  }
-
-  &__sidebar-item-icon {
-    width: 48rpx;
-    height: 48rpx;
-    padding-right: 16rpx;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: @drawer-footer-padding-bottom;
   }
 }

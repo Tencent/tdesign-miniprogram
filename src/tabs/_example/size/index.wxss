@@ -1,0 +1,3 @@
+.bigger {
+  --tab-font-size: 32rpx;
+}

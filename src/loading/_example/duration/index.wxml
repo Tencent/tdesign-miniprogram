@@ -1,0 +1,17 @@
+<t-loading
+  theme="circular"
+  size="52rpx"
+  text="加载中..."
+  t-class-text="text-l"
+  duration="{{2000 - duration}}"
+></t-loading>
+<view class="slider-container">
+  <t-slider
+    class="slider-class"
+    value="{{duration}}"
+    min="{{100}}"
+    max="{{1500}}"
+    label
+    bind:change="durationChange"
+  ></t-slider>
+</view>

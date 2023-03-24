@@ -1,58 +1,25 @@
-<view class="{{classPrefix}} t-class">
-  <scroll-view
-    class="{{classPrefix}}__content"
-    scroll-y
-    scroll-into-view="index_{{ currentGroup.index }}"
-    scroll-with-animation="{{ false }}"
-    style="height: {{ height ? height + 'px' : clientHeight + 'px' }};"
-    bindscroll="onListScroll"
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
+  <view
+    class="{{classPrefix}}__sidebar {{prefix}}-class-sidebar"
+    id="id-{{classPrefix}}__bar"
+    catch:touchmove="onTouchMove"
+    catch:touchcancel="onTouchCancel"
+    catch:touchend="onTouchEnd"
   >
-    <t-cell-group
-      t-class="{{classPrefix}}__group"
-      class="{{classPrefix}}__group"
-      wx:for="{{ groups }}"
-      wx:key="index"
-      wx:for-item="group"
-      wx:for-index="gindex"
-      id="index_{{ group.index }}"
-      title="{{ group.title }}"
-    >
-      <t-cell
-        t-class="{{classPrefix}}__row"
-        wx:for="{{ group.children }}"
-        wx:key="title"
-        wx:for-item="row"
-        wx:for-index="rindex"
-        bind:tap="onCellTap"
-        data-indexes="{{ [gindex, rindex] }}"
-        title="{{ row.title }}"
-      ></t-cell>
-    </t-cell-group>
-  </scroll-view>
-  <view class="{{classPrefix}}__index t-class-index">
     <view
-      class="{{classPrefix}}__bar"
-      id="id-{{classPrefix}}__bar"
-      catch:touchstart="onTouchStart"
-      catch:touchmove="onTouchMove"
-      catch:touchcancel="onTouchCancel"
-      catch:touchend="onTouchEnd"
+      class="{{_.cls(classPrefix + '__sidebar-item', [['active', activeAnchor === item]])}} {{prefix}}-class-sidebar-item"
+      wx:for="{{ _indexList }}"
+      wx:key="index"
+      bind:tap="onClick"
+      data-index="{{index}}"
     >
-      <view
-        class="{{classPrefix}}__btn {{activeGroup.index === group.index ? 'is-actived' : ''}}"
-        wx:for="{{ groups }}"
-        wx:key="index"
-        wx:for-item="group"
-        data-group="{{ group }}"
-      >
-        {{ group.index }}
-        <view
-          class="{{classPrefix}}__tips"
-          wx:if="{{ showScrollTip && currentGroup.index === group.index }}"
-        >
-          <view class="{{classPrefix}}__tips-text">{{ currentGroup.index }}</view>
-        </view>
+      <view aria-role="button" aria-label="{{ activeAnchor === item ? '已选中' + item : ''}}"> {{ item }} </view>
+      <view class="{{classPrefix}}__sidebar-tips" wx:if="{{ showTips && activeAnchor === item }}">
+        {{ activeAnchor }}
       </view>
     </view>
   </view>
+  <slot />
 </view>

@@ -1,0 +1,31 @@
+{
+  "test-template": {
+    "prefix": "ttest",
+    "body": [
+      "import simulate from 'miniprogram-simulate';",
+      "import path from 'path';",
+      "",
+      "describe('$1', () => {",
+      "  const $1 = simulate.load(path.resolve(__dirname, `../$1`), 't-$1', {",
+      "    less: true,",
+      "    rootPath: path.resolve(__dirname, '../..')",
+      "  });",
+      "",
+      "  it(':$2', () => {",
+      "    const id = simulate.load({",
+      "      template: `<t-$1></t-$1>`,",
+      "      usingComponents: {",
+      "        't-$1': $1",
+      "      }",
+      "    })",
+      "    const comp = simulate.render(id);",
+      "    comp.attach(document.createElement('parent-wrapper'));",
+      "",
+      "    expect(comp.toJSON()).toMatchSnapshot();",
+      "  });",
+      "});",
+    ],
+    "scope": "javascript,typescript",
+    "description": "测试用例模板"
+  }
+}

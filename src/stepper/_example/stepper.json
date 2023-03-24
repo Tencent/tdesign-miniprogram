@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Stepper",
+  "usingComponents": {
+    "base": "./base",
+    "min-max": "./min-max",
+    "status": "./status",
+    "theme": "./theme",
+    "size": "./size"
+  }
+}

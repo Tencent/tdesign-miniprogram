@@ -4,12 +4,12 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-export interface TdRadioProps {
+export interface TdRadioProps<T = RadioValue> {
   /**
    * 复选框和内容相对位置
    * @default left
    */
-  align?: {
+  placement?: {
     type: StringConstructor;
     value?: 'left' | 'right';
   };
@@ -18,6 +18,14 @@ export interface TdRadioProps {
    * @default false
    */
   allowUncheck?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否为块级元素
+   * @default true
+   */
+  block?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -38,14 +46,6 @@ export interface TdRadioProps {
     value?: boolean;
   };
   /**
-   * 单选按钮颜色
-   * @default #0052d9
-   */
-  color?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 单选内容
    */
   content?: {
@@ -59,6 +59,14 @@ export interface TdRadioProps {
   contentDisabled?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 是否为禁用态
@@ -75,13 +83,12 @@ export interface TdRadioProps {
     value?: ['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border'];
   };
   /**
-   * 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标
-   * @default 'fill-circle'
+   * 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 circle 表示图标为填充型图标，值为 line 表示图标为描边型图标
+   * @default 'circle'
    */
   icon?: {
-    type: StringConstructor;
-    optionalTypes: Array<ArrayConstructor>;
-    value?: 'fill-circle' | 'stroke-line' | Array<string>;
+    type: null;
+    value?: 'circle' | 'line' | Array<string>;
   };
   /**
    * 主文案
@@ -119,61 +126,9 @@ export interface TdRadioProps {
    * @default false
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
-    value?: RadioValue;
-  };
-}
-
-export interface TdRadioGroupProps {
-  /**
-   * 是否禁用全部子单选框
-   */
-  disabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * HTML 元素原生属性
-   * @default ''
-   */
-  name?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同
-   */
-  options?: {
-    type: ArrayConstructor;
-    value?: Array<RadioOption>;
-  };
-  /**
-   * 选中的值
-   * @default false
-   */
-  value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
-    value?: RadioValue;
-  };
-  /**
-   * 选中的值，非受控属性
-   * @default false
-   */
-  defaultValue?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor | BooleanConstructor>;
-    value?: RadioValue;
+    type: null;
+    value?: T;
   };
 }
 
 export type RadioValue = string | number | boolean;
-
-export type RadioOption = string | number | RadioOptionObj;
-
-export interface RadioOptionObj {
-  label?: string;
-  value?: string | number;
-  disabled?: boolean;
-}

@@ -8,22 +8,19 @@ const name = `${prefix}-steps`;
 @wxComponent()
 export default class Steps extends SuperComponent {
   relations: RelationsOptions = {
-    './step-item': {
-      type: 'descendant',
+    '../step-item/step-item': {
+      type: 'child',
       linked(child) {
         this.updateChildren();
 
-        const { readonly, layout } = this.data;
-        let isLarge = false;
-
-        if (!readonly && layout === 'horizontal') {
-          isLarge = !!child.data.icon;
-        }
+        const { readonly } = this.data;
 
         child.setData({
           readonly,
-          isLarge,
         });
+      },
+      unlinked() {
+        this.updateLastChid();
       },
     },
   };
@@ -53,20 +50,19 @@ export default class Steps extends SuperComponent {
 
   methods = {
     updateChildren() {
-      const items = this.getRelationNodes('./step-item');
-      const len = items.length;
-      const { current, currentStatus, readonly } = this.data;
+      const { current, currentStatus, readonly, theme, layout } = this.data;
+      const items = this.$children;
 
-      if (len) {
-        items.forEach((item, index) => {
-          item.updateStatus(current, currentStatus, index, this.data.theme, this.data.layout, items, readonly);
-        });
-      }
+      items.forEach((item, index) => {
+        item.updateStatus(current, currentStatus, index, theme, layout, items, readonly);
+      });
+    },
+    updateLastChid() {
+      const items = this.$children;
+
+      items.forEach((child, index) => child.setData({ isLastChild: index === items.length - 1 }));
     },
     handleClick(index) {
-      if (this.data.layout === 'vertical') {
-        return;
-      }
       if (!this.data.readonly) {
         const preIndex = this.data.current;
         this._trigger('change', {

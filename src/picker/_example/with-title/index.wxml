@@ -1,0 +1,31 @@
+<t-cell class="mb-16" title="带标题选择器" arrow hover note="{{cityText}}" bind:click="onTitlePicker" />
+
+<t-cell title="无标题选择器" arrow hover note="{{city2Text}}" bind:click="onWithoutTitlePicker" />
+
+<t-picker
+  visible="{{cityVisible}}"
+  value="{{cityValue}}"
+  data-key="city"
+  title="{{cityTitle}}"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{citys}}"></t-picker-item>
+</t-picker>
+
+<t-picker
+  visible="{{city2Visible}}"
+  value="{{city2Value}}"
+  data-key="city2"
+  title="{{city2Title}}"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{citys}}"></t-picker-item>
+</t-picker>

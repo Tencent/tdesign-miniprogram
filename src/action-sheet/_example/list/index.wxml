@@ -1,0 +1,7 @@
+<t-action-sheet id="t-action-sheet" bind:selected="handleSelected" />
+
+<t-button size="large" variant="outline" bind:tap="handleAction" block theme="primary">列表型</t-button>
+
+<t-button size="large" variant="outline" bind:tap="showDescAction" block theme="primary">带描述列表型</t-button>
+
+<t-button size="large" variant="outline" bind:tap="showIconAction" block theme="primary">带图标列表型</t-button>

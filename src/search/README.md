@@ -5,6 +5,7 @@ spline: form
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-96%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-86%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-96%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-100%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -17,29 +18,28 @@ isComponent: true
 
 ## 代码演示
 
-### 基础搜索框
+### 01 组件类型
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/search.png" width="375px" height="50%">
+基础搜索框
 
-```html
-<t-search placeholder="搜索预设文案" center="{{true}}" />
-```
+{{ base }}
 
-### 双向绑定用法
+获取焦点后显示取消按钮
 
-通过双向绑定，在输入框里输入文字时，`value` 的值也会同时跟着变化。
+{{ action }}
 
-```html
-<t-search model:value="{{value}}" placeholder="搜索预设文案" center="{{true}}" />
-```
+### 02 组件样式
 
-```js
-Page({
-  data: {
-    value: ''
-  },
-})
-```
+搜索框形状
+
+{{ shape }}
+
+### 03 组件状态
+
+默认状态其他对齐方式
+
+{{ other }}
+
 ## API
 ### Search Props
 
@@ -48,14 +48,16 @@ Page({
 action | String / Slot | '' | 自定义右侧操作按钮文字 | N
 center | Boolean | false | 是否居中 | N
 disabled | Boolean | false | 是否禁用 | N
-external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-cancel','t-class-left','t-class-right']` | N
+external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-action','t-class-left','t-class-clear']` | N
 focus | Boolean | false | 是否聚焦 | N
-label | String | '' | 左侧文本 | N
+label | String | '' | 已废弃。左侧文本 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
 placeholder | String | '' | 占位符 | N
-right-icon | String / Slot | 'close' | 右侧图标 | N
+right-icon | String / Slot | 'close-circle-filled' | 已废弃。右侧图标 | N
+clearable | Boolean | true | 是否启用清除控件 | N
 shape | String | 'square' | 搜索框形状。可选项：square/round | N
 value | String | '' | 值 | N
+type | String | 'text' | 拉起键盘的类型，可选项：text/number/idcard/digit/nickname | N
 
 ### Search Events
 

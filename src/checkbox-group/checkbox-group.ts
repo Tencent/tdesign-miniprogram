@@ -1,16 +1,16 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import Props from '../checkbox/checkbox-group-props';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
 @wxComponent()
 export default class CheckBoxGroup extends SuperComponent {
-  externalClasses = ['t-class'];
+  externalClasses = [`${prefix}-class`];
 
-  relations = {
+  relations: RelationsOptions = {
     '../checkbox/checkbox': {
-      type: 'descendant' as 'descendant',
+      type: 'descendant',
     },
   };
 
@@ -21,20 +21,23 @@ export default class CheckBoxGroup extends SuperComponent {
   };
 
   properties = {
-    ...Props,
-    customStyle: String,
+    ...props,
+    borderless: {
+      type: Boolean,
+      value: false,
+    },
   };
 
   observers = {
     value() {
       this.updateChildren();
     },
+    options() {
+      this.initWithOptions();
+    },
   };
 
   lifetimes = {
-    attached() {
-      this.initWithOptions();
-    },
     ready() {
       this.setCheckall();
     },
@@ -51,7 +54,7 @@ export default class CheckBoxGroup extends SuperComponent {
 
   methods = {
     getChilds() {
-      let items = this.getRelationNodes('../checkbox/checkbox');
+      let items = this.$children;
       if (!items.length) {
         items = this.selectAllComponents(`.${prefix}-checkbox-option`);
       }
@@ -89,7 +92,9 @@ export default class CheckBoxGroup extends SuperComponent {
         const items = this.getChilds();
         newValue =
           !checked && indeterminate
-            ? items.map((item) => item.data.value)
+            ? items
+                .filter(({ data }) => !(data.disabled && !newValue.includes(data.value)))
+                .map((item) => item.data.value)
             : items
                 .filter(({ data }) => {
                   if (data.disabled) {
@@ -109,7 +114,7 @@ export default class CheckBoxGroup extends SuperComponent {
     },
 
     initWithOptions() {
-      const { options } = this.data;
+      const { options, value } = this.data;
 
       if (!options?.length || !Array.isArray(options)) return;
 
@@ -119,8 +124,9 @@ export default class CheckBoxGroup extends SuperComponent {
           ? {
               label: `${item}`,
               value: item,
+              checked: value?.includes(item),
             }
-          : { ...item };
+          : { ...item, checked: value?.includes(item.value) };
       });
 
       this.setData({

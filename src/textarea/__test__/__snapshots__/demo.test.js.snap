@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea Textarea autosize demo works fine 1`] = `
+<autosize>
+  <t-textarea
+    autosize="{{true}}"
+    disableDefaultPadding="{{true}}"
+    label="标签文字"
+    placeholder="请输入文字"
+  />
+</autosize>
+`;
+
+exports[`Textarea Textarea base demo works fine 1`] = `
+<base>
+  <t-textarea
+    disableDefaultPadding="{{true}}"
+    placeholder="请输入文字"
+    tClass="external-class"
+  />
+</base>
+`;
+
+exports[`Textarea Textarea card demo works fine 1`] = `
+<card>
+  <wx-view
+    class="textarea-example"
+  >
+    <t-textarea
+      disableDefaultPadding="{{true}}"
+      indicator="{{true}}"
+      label="标签文字"
+      maxlength="500"
+      placeholder="请输入文字"
+      style="border-radius: 18rpx;"
+      tClass="external-class"
+    />
+  </wx-view>
+</card>
+`;
+
+exports[`Textarea Textarea custom demo works fine 1`] = `
+<custom>
+  <wx-view
+    class="textarea-example"
+  >
+    <wx-text
+      class="textarea-example__label"
+    >
+      标签文字
+    </wx-text>
+    <t-textarea
+      bordered="{{true}}"
+      disableDefaultPadding="{{true}}"
+      indicator="{{true}}"
+      maxlength="100"
+      placeholder="请输入文字"
+      style="height: 248rpx"
+      tClass="external-class"
+    />
+  </wx-view>
+</custom>
+`;
+
+exports[`Textarea Textarea disabled demo works fine 1`] = `
+<disabled>
+  <t-textarea
+    disabled="{{true}}"
+    disableDefaultPadding="{{true}}"
+    label="标签文字"
+    placeholder="请输入文字"
+    tClass="external-class"
+    value="不可编辑文字"
+  />
+</disabled>
+`;
+
+exports[`Textarea Textarea label demo works fine 1`] = `
+<wx-label>
+  <t-textarea
+    disableDefaultPadding="{{true}}"
+    label="标签文字"
+    placeholder="请输入文字"
+    tClass="external-class"
+  />
+</wx-label>
+`;
+
+exports[`Textarea Textarea maxcharacter demo works fine 1`] = `
+<maxcharacter>
+  <t-textarea
+    disableDefaultPadding="{{true}}"
+    indicator="{{true}}"
+    label="标签文字"
+    maxcharacter="200"
+    placeholder="设置最大字符个数，一个汉字表示两个字符"
+    tClass="external-class"
+  />
+</maxcharacter>
+`;
+
+exports[`Textarea Textarea maxlength demo works fine 1`] = `
+<maxlength>
+  <t-textarea
+    disableDefaultPadding="{{true}}"
+    indicator="{{true}}"
+    label="标签文字"
+    maxlength="200"
+    placeholder="设置最大字符个数"
+    tClass="external-class"
+  />
+</maxlength>
+`;

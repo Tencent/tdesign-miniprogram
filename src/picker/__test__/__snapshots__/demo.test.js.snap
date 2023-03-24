@@ -1,0 +1,325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Picker Picker area demo works fine 1`] = `
+<area>
+  <t-cell
+    arrow="{{true}}"
+    hover="{{true}}"
+    note=""
+    title="选择地区"
+    bind:click="onAreaPicker"
+  />
+  <t-picker
+    cancelBtn="取消"
+    confirmBtn="确认"
+    title="选择地区"
+    value="{{Array []}}"
+    visible=""
+    bind:cancel="onPickerCancel"
+    bind:change="onPickerChange"
+    bind:pick="onColumnChange"
+  >
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "110000",
+          },
+          Object {
+            "label": "广东省",
+            "value": "440000",
+          },
+        ]
+      }}"
+    />
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "110100",
+          },
+        ]
+      }}"
+    />
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "东城区",
+            "value": "110101",
+          },
+          Object {
+            "label": "西城区",
+            "value": "110102",
+          },
+          Object {
+            "label": "朝阳区",
+            "value": "110105",
+          },
+          Object {
+            "label": "丰台区",
+            "value": "110106",
+          },
+          Object {
+            "label": "石景山区",
+            "value": "110107",
+          },
+          Object {
+            "label": "海淀区",
+            "value": "110108",
+          },
+          Object {
+            "label": "门头沟区",
+            "value": "110109",
+          },
+          Object {
+            "label": "房山区",
+            "value": "110111",
+          },
+          Object {
+            "label": "通州区",
+            "value": "110112",
+          },
+          Object {
+            "label": "顺义区",
+            "value": "110113",
+          },
+          Object {
+            "label": "昌平区",
+            "value": "110114",
+          },
+          Object {
+            "label": "大兴区",
+            "value": "110115",
+          },
+          Object {
+            "label": "怀柔区",
+            "value": "110116",
+          },
+          Object {
+            "label": "平谷区",
+            "value": "110117",
+          },
+          Object {
+            "label": "密云区",
+            "value": "110118",
+          },
+          Object {
+            "label": "延庆区",
+            "value": "110119",
+          },
+        ]
+      }}"
+    />
+  </t-picker>
+</area>
+`;
+
+exports[`Picker Picker base demo works fine 1`] = `
+<base>
+  <t-cell
+    arrow="{{true}}"
+    class="mb-16"
+    hover="{{true}}"
+    note=""
+    title="选择城市"
+    bind:click="onCityPicker"
+  />
+  <t-cell
+    arrow="{{true}}"
+    class="mb-16"
+    hover="{{true}}"
+    note=""
+    title="选择时间"
+    bind:click="onSeasonPicker"
+  />
+  <t-picker
+    cancelBtn="取消"
+    confirmBtn="确认"
+    data-key="city"
+    title="选择城市"
+    value="{{Array []}}"
+    visible=""
+    bind:cancel="onPickerCancel"
+    bind:change="onPickerChange"
+    bind:pick="onColumnChange"
+  >
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "北京市",
+          },
+          Object {
+            "label": "上海市",
+            "value": "上海市",
+          },
+          Object {
+            "label": "广州市",
+            "value": "广州市",
+          },
+          Object {
+            "label": "深圳市",
+            "value": "深圳市",
+          },
+          Object {
+            "label": "成都市",
+            "value": "成都市",
+          },
+        ]
+      }}"
+    />
+  </t-picker>
+  <t-picker
+    cancelBtn="取消"
+    confirmBtn="确认"
+    data-key="date"
+    title="选择时间"
+    value="{{Array []}}"
+    visible=""
+    bind:cancel="onPickerCancel"
+    bind:change="onPickerChange"
+    bind:pick="onColumnChange"
+  >
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "2021年",
+            "value": "2021",
+          },
+          Object {
+            "label": "2020年",
+            "value": "2020",
+          },
+          Object {
+            "label": "2019年",
+            "value": "2019",
+          },
+        ]
+      }}"
+    />
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "春",
+            "value": "春",
+          },
+          Object {
+            "label": "夏",
+            "value": "夏",
+          },
+          Object {
+            "label": "秋",
+            "value": "秋",
+          },
+          Object {
+            "label": "冬",
+            "value": "冬",
+          },
+        ]
+      }}"
+    />
+  </t-picker>
+</base>
+`;
+
+exports[`Picker Picker with-title demo works fine 1`] = `
+<with-title>
+  <t-cell
+    arrow="{{true}}"
+    class="mb-16"
+    hover="{{true}}"
+    note=""
+    title="带标题选择器"
+    bind:click="onTitlePicker"
+  />
+  <t-cell
+    arrow="{{true}}"
+    hover="{{true}}"
+    note=""
+    title="无标题选择器"
+    bind:click="onWithoutTitlePicker"
+  />
+  <t-picker
+    cancelBtn="取消"
+    confirmBtn="确认"
+    data-key="city"
+    title=""
+    value="{{Array []}}"
+    visible=""
+    bind:cancel="onPickerCancel"
+    bind:change="onPickerChange"
+    bind:pick="onColumnChange"
+  >
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "北京市",
+          },
+          Object {
+            "label": "上海市",
+            "value": "上海市",
+          },
+          Object {
+            "label": "广州市",
+            "value": "广州市",
+          },
+          Object {
+            "label": "深圳市",
+            "value": "深圳市",
+          },
+          Object {
+            "label": "成都市",
+            "value": "成都市",
+          },
+        ]
+      }}"
+    />
+  </t-picker>
+  <t-picker
+    cancelBtn="取消"
+    confirmBtn="确认"
+    data-key="city2"
+    title=""
+    value="{{Array []}}"
+    visible=""
+    bind:cancel="onPickerCancel"
+    bind:change="onPickerChange"
+    bind:pick="onColumnChange"
+  >
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "北京市",
+          },
+          Object {
+            "label": "上海市",
+            "value": "上海市",
+          },
+          Object {
+            "label": "广州市",
+            "value": "广州市",
+          },
+          Object {
+            "label": "深圳市",
+            "value": "深圳市",
+          },
+          Object {
+            "label": "成都市",
+            "value": "成都市",
+          },
+        ]
+      }}"
+    />
+  </t-picker>
+</with-title>
+`;

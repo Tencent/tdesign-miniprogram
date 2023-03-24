@@ -1,0 +1,20 @@
+.demo-count-down-desc {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 28rpx;
+}
+
+.demo-count-down-content {
+  margin: 32rpx 0 48rpx;
+}
+
+.external-count {
+  color: #e34d59;
+  font-size: 36rpx;
+  line-height: 48rpx;
+  vertical-align: middle;
+}
+
+.external-split {
+  font-size: 20rpx;
+  margin: 0 10rpx;
+}

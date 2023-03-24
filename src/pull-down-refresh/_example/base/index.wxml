@@ -1,0 +1,30 @@
+<t-pull-down-refresh
+  value="{{baseRefresh.value}}"
+  loadingProps="{{loadingProps}}"
+  loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
+  bind:refresh="onPullDownRefresh"
+  bind:scroll="onScroll"
+>
+  <!-- 包裹页面全部内容 -->
+  <view class="demo">
+    <view class="demo-title">PullDownRefresh 下拉刷新</view>
+    <view class="demo-desc">用于快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新。</view>
+    <view class="pulldown-reflesh__content">
+      <t-skeleton rowCol="{{rowCol1}}" loading></t-skeleton>
+      <view class="row">
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+      </view>
+      <view class="row">
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+      </view>
+      <view class="row">
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+        <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
+      </view>
+      <view class="text">拖拽该区域演示 顶部下拉刷新</view>
+    </view>
+    <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
+  </view>
+</t-pull-down-refresh>

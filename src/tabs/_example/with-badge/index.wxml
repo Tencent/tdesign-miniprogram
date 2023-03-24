@@ -1,0 +1,5 @@
+<t-tabs defaultValue="{{0}}">
+  <t-tab-panel label="选项" value="0" badge-props="{{ { dot: true, offset: ['-10rpx', '4rpx'] } }}" />
+  <t-tab-panel label="选项" value="1" badge-props="{{ { count: 8, offset: ['-16rpx', '8rpx'] } }}" />
+  <t-tab-panel label="选项" value="2" />
+</t-tabs>

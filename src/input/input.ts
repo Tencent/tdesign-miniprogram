@@ -1,15 +1,7 @@
-/*
- * @Author: rileycai
- * @Date: 2021-09-21 19:10:10
- * @LastEditTime: 2021-09-28 10:26:57
- * @LastEditors: Please set LastEditors
- * @Description: textarea从input组件拆分出去
- * @FilePath: /tdesign-miniprogram/src/input/input.ts
- */
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getCharacterLength } from '../common/utils';
+import { getCharacterLength, calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-input`;
@@ -17,55 +9,108 @@ const name = `${prefix}-input`;
 @wxComponent()
 export default class Input extends SuperComponent {
   options = {
-    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+    multipleSlots: true,
   };
 
-  externalClasses = ['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-prefix-icon`,
+    `${prefix}-class-label`,
+    `${prefix}-class-input`,
+    `${prefix}-class-clearable`,
+    `${prefix}-class-suffix`,
+    `${prefix}-class-suffix-icon`,
+    `${prefix}-class-tips`,
+  ];
 
   behaviors = ['wx://form-field'];
 
   properties = props;
 
-  controlledProps = [
-    {
-      key: 'value',
-      event: 'change',
-    },
-  ];
-
   data = {
+    prefix,
     classPrefix: name,
     classBasePrefix: prefix,
-    characterLength: 0,
+  };
+
+  lifetimes = {
+    ready() {
+      const { value } = this.properties;
+      this.updateValue(value == null ? '' : value);
+    },
+  };
+
+  observers = {
+    prefixIcon(v) {
+      this.setData({
+        _prefixIcon: calcIcon(v),
+      });
+    },
+
+    suffixIcon(v) {
+      this.setData({
+        _suffixIcon: calcIcon(v),
+      });
+    },
+
+    clearable(v) {
+      this.setData({
+        _clearIcon: calcIcon(v, 'close-circle-filled'),
+      });
+    },
   };
 
   methods = {
-    onInput(event) {
-      const { value } = event.detail;
-      const { maxcharacter } = this.properties;
+    updateValue(value) {
+      const { maxcharacter, maxlength } = this.properties;
       if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { characters = '', length = 0 } = getCharacterLength(value, maxcharacter);
-
-        this._trigger('change', { value: characters });
+        const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
         this.setData({
-          characterLength: length,
+          value: characters,
+          count: length,
+        });
+      } else if (maxlength > 0 && !Number.isNaN(maxlength)) {
+        const { length, characters } = getCharacterLength('maxlength', value, maxlength);
+        this.setData({
+          value: characters,
+          count: length,
         });
       } else {
-        this._trigger('change', { value });
+        this.setData({
+          value,
+          count: value ? String(value).length : 0,
+        });
       }
     },
-    onFocus(event) {
-      this.triggerEvent('focus', event.detail);
+    onInput(e) {
+      const { value, cursor, keyCode } = e.detail;
+      this.updateValue(value);
+      this.triggerEvent('change', { value: this.data.value, cursor, keyCode });
     },
-    onBlur(event) {
-      this.triggerEvent('blur', event.detail);
+    onFocus(e) {
+      this.triggerEvent('focus', e.detail);
     },
-    onConfirm(event) {
-      this.triggerEvent('enter', event.detail);
+    onBlur(e) {
+      this.triggerEvent('blur', e.detail);
     },
-    clearInput(event) {
-      this.triggerEvent('clear', event.detail);
+    onConfirm(e) {
+      this.triggerEvent('enter', e.detail);
+    },
+    onSuffixClick() {
+      this.triggerEvent('click', { trigger: 'suffix' });
+    },
+    onSuffixIconClick() {
+      this.triggerEvent('click', { trigger: 'suffix-icon' });
+    },
+    clearInput(e) {
+      this.triggerEvent('clear', e.detail);
       this.setData({ value: '' });
+    },
+    onKeyboardHeightChange(e) {
+      this.triggerEvent('keyboardheightchange', e.detail);
+    },
+    onNickNameReview(e) {
+      this.triggerEvent('nicknamereview', e.detail);
     },
   };
 }

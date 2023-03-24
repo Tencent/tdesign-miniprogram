@@ -1,14 +1,27 @@
-<view class="{{ classPrefix }} {{prefix}}-class" style="{{customStyle}}">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view class="{{ classPrefix }} class {{prefix}}-class" style="{{_._style([style, customStyle])}}">
   <slot />
   <block wx:for="{{checkboxOptions}}" wx:key="value">
     <t-checkbox
       class="{{prefix}}-checkbox-option"
+      data-item="{{item}}"
       label="{{item.label || item.text || ''}}"
       value="{{item.value || ''}}"
-      check-all="{{item.checkAll}}"
+      block="{{item.block || true}}"
+      check-all="{{item.checkAll || false}}"
+      checked="{{item.checked || false}}"
+      content="{{item.content || ''}}"
+      content-disabled="{{item.contentDisabled || false}}"
+      icon="{{item.icon || 'circle'}}"
+      indeterminate="{{item.indeterminate || false}}"
       disabled="{{item.disabled}}"
-      data-item="{{item}}"
+      max-content-row="{{item.maxContentRow || 5}}"
+      max-label-row="{{item.maxLabelRow || 3}}"
+      name="{{item.name || ''}}"
+      readonly="{{item.readonly || false}}"
       bind:change="handleInnerChildChange"
-    ></t-checkbox>
+      placement="{{item.placement || 'left'}}"
+    />
   </block>
 </view>

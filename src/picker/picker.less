@@ -1,22 +1,33 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@picker-font-size: 32rpx;
-@picker-font-weight: 500;
-@picker-toolbar-height: 96rpx;
-@picker-button-padding: 32rpx;
-@picker-item-height: 80rpx;
-@picker-color-top: #fff;
-@picker-background-color: rgba(255, 255, 255, 1);
-@picker-mask-color-top: hsla(0, 0%, 100%, 0.92);
-@picker-mask-color-bottom: hsla(0, 0%, 100%, 0.4);
+@picker: ~'@{prefix}-picker';
 
-.@{prefix}-picker {
+@picker-border-radius: var(--td-picker-border-radius, 24rpx);
+@picker-toolbar-height: var(--td-picker-toolbar-height, 116rpx);
+
+@picker-cancel-color: var(--td-picker-cancel-color, @font-gray-2);
+@picker-confirm-color: var(--td-picker-confirm-color, @brand-color);
+@picker-button-font-size: var(--td-picker-button-font-size, 32rpx);
+
+@picker-title-font-size: var(--td-picker-title-font-size, 36rpx);
+@picker-title-font-weight: var(--td-picker-title-font-weight, 600);
+@picker-title-line-height: var(--td-picker-title-line-height, 52rpx);
+@picker-title-color: var(--td-picker-title-color, @font-gray-1);
+
+@picker-item-height: var(--td-picker-item-height, 80rpx);
+@picker-bg-color: var(--td-picker-bg-color, @bg-color-container);
+@picker-mask-color-top: var(--td-picker-mask-color-top, hsla(0, 0%, 100%, 0.92));
+@picker-mask-color-bottom: var(--td-picker-mask-color-bottom, hsla(0, 0%, 100%, 0.4));
+
+@picker-indicator-bg-color: var(--td-picker-indicator-bg-color, @bg-color-secondarycontainer);
+@picker-indicator-border-radius: var(--td-picker-indicator-border-radius, 12rpx);
+
+.@{picker} {
   position: relative;
-  background-color: @picker-background-color;
-  font-size: @picker-font-size;
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
+  background-color: @picker-bg-color;
+  border-top-left-radius: @picker-border-radius;
+  border-top-right-radius: @picker-border-radius;
 
   &__toolbar {
     display: flex;
@@ -24,12 +35,18 @@
     justify-content: space-between;
     overflow: hidden;
     height: @picker-toolbar-height;
-    box-shadow: inset 0 -1rpx 0 0 @border-level-1-color;
   }
 
   &__title {
-    color: @text-level-1-color;
-    font-weight: @picker-font-weight;
+    flex: 1;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: @picker-title-color;
+    line-height: @picker-title-line-height;
+    font-weight: @picker-title-font-weight;
+    font-size: @picker-title-font-size;
   }
 
   &__cancel,
@@ -38,81 +55,56 @@
     align-items: center;
     justify-content: center;
     user-select: none;
-    font-size: @picker-font-size;
+    font-size: @picker-button-font-size;
     height: 100%;
-    padding: 0 @picker-button-padding;
-
-    // &:active {
-    //   opacity: .5;
-    // }
+    padding: 0 32rpx;
   }
 
   &__cancel {
-    color: @text-level-2-color;
+    color: @picker-cancel-color;
   }
 
   &__confirm {
-    color: @primary-color;
+    color: @picker-confirm-color;
   }
 
   &__main {
     position: relative;
     display: flex;
+    justify-content: center;
+    padding-left: 64rpx;
+    padding-right: 64rpx;
   }
 
   &__mask {
     position: absolute;
-    top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
+    right: 0;
     z-index: 3;
-
-    background-image: linear-gradient(top, @picker-color-top, @picker-mask-color-bottom),
-      -webkit-linear-gradient(bottom, @picker-mask-color-top, @picker-mask-color-bottom);
-    background-image: linear-gradient(180deg, @picker-mask-color-top, @picker-mask-color-bottom),
-      linear-gradient(0deg, @picker-mask-color-top, @picker-mask-color-bottom);
-    background-position: top, bottom;
-    background-size: 100% @picker-item-height * 2;
-    background-repeat: no-repeat;
-    background-position: top, bottom;
-    transform: translateZ(0);
     backface-visibility: hidden;
     pointer-events: none;
+    height: 96rpx;
+
+    &--top {
+      top: 0;
+      background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &--bottom {
+      bottom: 0;
+      background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+      transform: matrix(1, 0, 0, -1, 0, 0);
+    }
   }
 
   &__indicator {
-    width: 100%;
     height: @picker-item-height;
     position: absolute;
-    left: 0;
-    top: @picker-item-height * 2;
-    z-index: 3;
+    left: 32rpx;
+    right: 32rpx;
+    top: 144rpx;
     pointer-events: none;
-
-    &::before {
-      content: ' ';
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      height: 1rpx;
-      border-top: 1rpx solid @border-level-1-color;
-      color: @border-level-1-color;
-      transform-origin: 0 0;
-    }
-
-    &::after {
-      content: ' ';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      height: 1rpx;
-      transform-origin: 0 100%;
-      color: @border-level-1-color;
-      border-bottom: 1rpx solid @border-level-1-color;
-    }
+    background-color: @picker-indicator-bg-color;
+    border-radius: @picker-indicator-border-radius;
   }
 }

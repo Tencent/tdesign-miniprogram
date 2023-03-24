@@ -1,0 +1,5 @@
+<t-checkbox value="1" label="多选" checked />
+
+<view class="box" style="height: 32rpx" />
+
+<t-checkbox value="2" label="多选" align="right" checked />

@@ -13,18 +13,18 @@ export interface TdFabProps {
     value?: object;
   };
   /**
-   * 图标
-   * @default ''
+   * 自定义组件样式
+   * @default right: 16px; bottom: 32px;
    */
-  icon?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
   /**
-   * 悬浮按钮的样式，常用于调整位置
-   * @default right: 16px; bottom: 32px;
+   * 图标
+   * @default ''
    */
-  style?: {
+  icon?: {
     type: StringConstructor;
     value?: string;
   };

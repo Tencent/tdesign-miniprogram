@@ -1,4 +1,5 @@
 import props from './props';
+import { getInstance } from '../common/utils';
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
@@ -15,14 +16,13 @@ interface DialogAlertOptionsType {
   confirmBtn?: string | object;
 }
 
-interface DialogComfirmOptionsType extends DialogAlertOptionsType {
+interface DialogConfirmOptionsType extends DialogAlertOptionsType {
   cancelButtonText?: string;
 }
 
 interface Action {
-  name: string;
-  primary?: boolean;
-  style?: string;
+  content: string;
+  theme?: 'default' | 'primary' | 'danger' | 'light';
 }
 
 interface DialogActionOptionsType {
@@ -49,24 +49,10 @@ const defaultOptions = {
   visible: props.visible.value,
 };
 
-const getDialogInstance = function (context?: Context, selector = '#t-dialog') {
-  if (!context) {
-    const pages = getCurrentPages();
-    const page = pages[pages.length - 1];
-    context = page.$$basePage || page;
-  }
-  const instance = context ? context.selectComponent(selector) : null;
-  if (!instance) {
-    console.warn('未找到dialog组件,请检查selector是否正确');
-    return null;
-  }
-  return instance;
-};
-
 export default {
   alert(options: DialogAlertOptionsType) {
-    const { context, selector, ...otherOptions } = { ...defaultOptions, ...options };
-    const instance = getDialogInstance(context, selector);
+    const { context, selector = '#t-dialog', ...otherOptions } = { ...defaultOptions, ...options };
+    const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
 
     return new Promise((resolve) => {
@@ -75,12 +61,12 @@ export default {
         ...otherOptions,
         visible: true,
       });
-      instance._onComfirm = resolve;
+      instance._onConfirm = resolve;
     });
   },
-  confirm(options: DialogComfirmOptionsType) {
-    const { context, selector, ...otherOptions } = { ...defaultOptions, ...options };
-    const instance = getDialogInstance(context, selector);
+  confirm(options: DialogConfirmOptionsType) {
+    const { context, selector = '#t-dialog', ...otherOptions } = { ...defaultOptions, ...options };
+    const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
 
     return new Promise((resolve, reject) => {
@@ -88,12 +74,13 @@ export default {
         ...otherOptions,
         visible: true,
       });
-      instance._onComfirm = resolve;
+      instance._onConfirm = resolve;
       instance._onCancel = reject;
     });
   },
-  close() {
-    const instance = getDialogInstance();
+  close(options: DialogConfirmOptionsType) {
+    const { context, selector = '#t-dialog' } = { ...options };
+    const instance = getInstance(context, selector);
     if (instance) {
       instance.close();
       return Promise.resolve();
@@ -101,18 +88,20 @@ export default {
     return Promise.reject();
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
-    const { context, selector, actions, ...otherOptions } = { ...defaultOptions, ...options };
-    const instance = getDialogInstance(context, selector);
+    const { context, selector = '#t-dialog', actions, ...otherOptions } = { ...defaultOptions, ...options };
+    const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
-    if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > 7))) {
-      console.warn('action 数量建议控制在1至7个');
+    const { buttonLayout = 'vertical' } = options;
+    const maxLengthSuggestion = buttonLayout === 'vertical' ? 7 : 3;
+    if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > maxLengthSuggestion))) {
+      console.warn(`action 数量建议控制在1至${maxLengthSuggestion}个`);
     }
 
     return new Promise((resolve) => {
       instance.setData({
         actions,
-        buttonLayout: 'vertical',
         ...otherOptions,
+        buttonLayout,
         visible: true,
       });
       instance._onAction = resolve;

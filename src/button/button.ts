@@ -2,22 +2,26 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { canIUseFormFieldButton } from '../common/version';
+import { setIcon } from '../common/utils';
+import type { TdButtonProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-button`;
 
+export interface ButtonProps extends TdButtonProps {}
 @wxComponent()
 export default class Button extends SuperComponent {
   externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
 
   behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
 
-  // 组件的对外属性
   properties = props;
 
-  // 组件的内部数据
+  options = {
+    multipleSlots: true,
+  };
+
   data = {
-    // 按钮样式列表
     prefix,
     className: '',
     classPrefix: name,
@@ -27,46 +31,38 @@ export default class Button extends SuperComponent {
     'theme, size, plain, block, shape, disabled, loading'() {
       this.setClass();
     },
+
+    icon(icon) {
+      const obj = setIcon('icon', icon, '');
+      this.setData({
+        ...obj,
+      });
+    },
   };
 
-  /* 组件生命周期 */
   lifetimes = {
-    // 组件实例被创建
-    // created() {},
-    // 组件实例进入页面节点树
     attached() {
       this.setClass();
     },
-    // 页面组件初始化完成
-    // ready() { },
-    // 组件实例被移动到节点树另一个位置
-    // moved() {},
-    // 组件实例被从页面节点树移除
-    // detached() { },
   };
 
-  /* Methods */
   methods = {
     setClass() {
       const classList = [
         name,
         `${prefix}-class`,
+        `${name}--${this.data.variant || 'base'}`,
         `${name}--${this.data.theme || 'default'}`,
-        `${name}--size-${this.data.size.slice(0, 1)}`,
+        `${name}--${this.data.shape || 'rectangle'}`,
+        `${name}--size-${this.data.size || 'medium'}`,
       ];
 
-      classList.push(`${name}--${this.data.shape}`);
-
       if (this.data.block) {
-        classList.push(`${prefix}-is-block`);
+        classList.push(`${name}--block`);
       }
       if (this.data.disabled) {
-        classList.push(`${prefix}-is-disabled`);
+        classList.push(`${name}--disabled`);
       }
-      // if (this.data.loading) {
-      //   classList.push(`${prefix}-is-loading`);
-      // }
-      classList.push(`${name}--${this.data.variant}`);
       if (this.data.ghost) {
         classList.push(`${name}--ghost`);
       }
@@ -92,10 +88,13 @@ export default class Button extends SuperComponent {
     launchapp(e) {
       this.triggerEvent('launchapp', e.detail);
     },
+    chooseavatar(e) {
+      this.triggerEvent('chooseavatar', e.detail);
+    },
     handleTap(e) {
-      if (this.data.disabled) return;
+      if (this.data.disabled || this.data.loading) return;
 
-      this.triggerEvent('tap', e.detail);
+      this.triggerEvent('tap', e);
     },
   };
 }

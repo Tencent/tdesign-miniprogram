@@ -1,62 +1,149 @@
 @import '../common/style/index.less';
 
-.@{prefix}-stepper {
+@stepper-small-height: 40rpx;
+@stepper-medium-height: 48rpx;
+@stepper-large-height: 56rpx;
+@stepper-small-font-size: 20rpx;
+@stepper-medium-font-size: 24rpx;
+@stepper-large-font-size: 32rpx;
+@stepper-small-icon-size: 24rpx;
+@stepper-medium-icon-size: 32rpx;
+@stepper-large-icon-size: 40rpx;
+@stepper-small-input-width: 68rpx;
+@stepper-medium-input-width: 76rpx;
+@stepper-large-input-width: 90rpx;
+@stepper-border-width: 2rpx;
+
+@stepper-border-radius: var(--td-stepper-border-radius, @radius-small); // outline/filled 主题下的圆角大小
+@stepper-border-color: var(--td-stepper-border-color, @component-border); // outline/filled 主题下的圆角颜色
+@stepper-input-color: var(--td-stepper-input-color, @font-gray-1); // 输入框文本/图标颜色
+@stepper-input-disabled-color: var(--td-stepper-input-disabled-color, @font-gray-4); // 禁用态输入框文本/图标颜色
+@stepper-input-disabled-bg: var(
+  --td-stepper-input-disabled-bg,
+  @bg-color-component-disabled
+); // 禁用态输入框文本/图标颜色
+
+@stepper: ~'@{prefix}-stepper';
+
+.@{stepper} {
   display: flex;
   align-items: center;
+  color: @stepper-input-color;
 
-  &.@{prefix}-stepper--normal {
-    .@{prefix}-stepper__input {
-      display: block;
-      font-size: 32rpx;
-      color: #000;
-      text-align: center;
-      border: 0;
-      vertical-align: top;
-      background: 0;
-      height: 48rpx;
-    }
+  &__input {
+    margin: 0 8rpx;
+    text-align: center;
+    vertical-align: top;
+    height: inherit;
+    min-height: inherit;
+  }
 
-    .@{prefix}-stepper__minus,
-    .@{prefix}-stepper__plus {
-      display: block;
-      box-sizing: border-box;
-      height: 48rpx;
-      padding-top: 5rpx;
+  &__minus,
+  &__plus {
+    padding: 8rpx;
+    box-sizing: border-box;
+  }
+
+  &__input,
+  &__minus-icon,
+  &__plus-icon {
+    color: inherit;
+  }
+
+  &__input--normal,
+  &__input--filled,
+  &__input--outline {
+    height: inherit;
+    box-sizing: border-box;
+  }
+
+  &--small {
+    height: @stepper-small-height;
+    font-size: @stepper-small-font-size;
+  }
+
+  &--medium {
+    height: @stepper-medium-height;
+    font-size: @stepper-medium-font-size;
+  }
+
+  &--large {
+    height: @stepper-large-height;
+    font-size: @stepper-large-font-size;
+  }
+
+  &__input--small {
+    width: @stepper-small-input-width;
+  }
+
+  &__input--medium {
+    height: @stepper-medium-height;
+    width: @stepper-medium-input-width;
+  }
+
+  &__input--large {
+    width: @stepper-large-input-width;
+  }
+
+  &__icon--small {
+    width: @stepper-small-height;
+    height: @stepper-small-height;
+    font-size: @stepper-small-icon-size;
+  }
+
+  &__icon--medium {
+    width: @stepper-medium-height;
+    height: @stepper-medium-height;
+    font-size: @stepper-medium-icon-size;
+  }
+
+  &__icon--large {
+    width: @stepper-large-height;
+    height: @stepper-large-height;
+    font-size: @stepper-large-icon-size;
+  }
+
+  &__minus--outline,
+  &__plus--outline {
+    border: @stepper-border-width solid @stepper-border-color;
+  }
+
+  &__input--outline {
+    border: none;
+    border-top: @stepper-border-width solid @stepper-border-color;
+    border-bottom: @stepper-border-width solid @stepper-border-color;
+  }
+
+  &__minus--outline,
+  &__minus--filled {
+    border-radius: @stepper-border-radius 0 0 @stepper-border-radius;
+  }
+  &__plus--outline,
+  &__plus--filled {
+    border-radius: 0 @stepper-border-radius @stepper-border-radius 0;
+  }
+
+  &__minus--filled,
+  &__plus--filled {
+    background-color: @bg-color-secondarycontainer;
+  }
+
+  &__input--filled {
+    background-color: @bg-color-secondarycontainer;
+    margin: 0 8rpx;
+
+    .@{stepper}__input {
+      margin: 0;
     }
   }
 
-  // 简洁模式样式
-  &.@{prefix}-stepper--pure {
-    .@{prefix}-stepper__input {
-      border-radius: 4rpx;
-      height: 48rpx;
-      margin: 0 10rpx;
-      background-color: #f1f2f5;
-      text-align: center;
-      font-size: 24rpx;
-    }
-
-    .@{prefix}-stepper__minus,
-    .@{prefix}-stepper__plus {
-      box-sizing: border-box;
-      border-radius: 4rpx;
-      background-color: #f1f2f5;
-      height: 48rpx;
-      width: 48rpx;
-    }
-
-    .@{prefix}-stepper__minus-icon,
-    .@{prefix}-stepper__plus-icon {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
+  &--normal-disabled {
+    color: @stepper-input-disabled-color;
   }
 
-  .@{prefix}-is-disabled {
-    .@{prefix}-stepper__input {
-      color: rgba(0, 0, 0, 0.26);
-    }
+  &--filled-disabled,
+  &--outline-disabled {
+    color: @stepper-input-disabled-color;
+    background-color: @stepper-input-disabled-bg;
   }
 }

@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Navbar back-home demo works fine 1`] = `
+<back-home>
+  <t-navbar
+    title="标题文字"
+  >
+    <wx-view
+      class="custom-capsule"
+      slot="capsule"
+    >
+      <t-icon
+        ariaLabel="返回"
+        ariaRole="button"
+        class="custom-capsule__icon"
+        name="chevron-left"
+        size="20"
+        bind:tap="onBack"
+      />
+      <t-icon
+        ariaLabel="首页"
+        ariaRole="button"
+        class="custom-capsule__icon"
+        name="home"
+        size="20"
+        bind:tap="onGoHome"
+      />
+    </wx-view>
+  </t-navbar>
+</back-home>
+`;
+
+exports[`Navbar Navbar base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="block"
+  >
+    <t-navbar
+      tClassTitle="nav-title"
+      title="标题文字"
+    />
+  </wx-view>
+  <wx-view
+    class="block"
+  >
+    <t-navbar
+      class="block"
+      leftArrow="{{true}}"
+      title="标题文字"
+      bind:go-back="handleBack"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`Navbar Navbar custom-color demo works fine 1`] = `
+<custom-color>
+  <t-navbar
+    class="custom-navbar"
+    leftArrow="{{true}}"
+    title="标题文字"
+  />
+</custom-color>
+`;
+
+exports[`Navbar Navbar img demo works fine 1`] = `
+<img>
+  <t-navbar>
+    <wx-view
+      slot="left"
+    >
+      <t-image
+        ariaLabel="导航栏图片"
+        src="https://tdesign.gtimg.com/miniprogram/images/logo1.png"
+        tClass="custom-image"
+      />
+    </wx-view>
+  </t-navbar>
+</img>
+`;
+
+exports[`Navbar Navbar left-title demo works fine 1`] = `
+<left-title>
+  <wx-view
+    class="block"
+  >
+    <t-navbar
+      leftArrow="{{true}}"
+      title="标题居中"
+    />
+  </wx-view>
+  <t-navbar
+    leftArrow="{{true}}"
+  >
+    <wx-view
+      class="custom-title"
+      slot="left"
+    >
+      标题左对齐
+    </wx-view>
+  </t-navbar>
+  <wx-view
+    class="demo-desc"
+  >
+    标题尺寸
+  </wx-view>
+  <t-navbar
+    leftArrow="{{true}}"
+  >
+    <wx-text
+      class="left-text"
+      slot="left"
+    >
+      返回
+    </wx-text>
+  </t-navbar>
+  <wx-view
+    class="header-title"
+  >
+    大标题尺寸
+  </wx-view>
+</left-title>
+`;
+
+exports[`Navbar Navbar search demo works fine 1`] = `
+<search>
+  <t-navbar
+    leftIcon="slot"
+  >
+    <wx-view
+      class="search-box"
+      slot="left"
+    >
+      <t-search
+        placeholder="搜索内容"
+        shape="round"
+      />
+    </wx-view>
+  </t-navbar>
+</search>
+`;

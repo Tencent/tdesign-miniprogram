@@ -1,0 +1,19 @@
+<t-swiper
+  id="swiper1"
+  style="{{style}}"
+  customStyle="{{customStyle}}"
+  current="{{current}}"
+  duration="{{duration}}"
+  interval="{{interval}}"
+  direction="{{direction}}"
+  paginationPosition="{{paginationPosition}}"
+  navigation="{{navigation}}"
+  autoplay="{{autoplay}}"
+  list="{{swiperList}}"
+  bind:change="onChange"
+>
+</t-swiper>
+
+<t-swiper id="swiper2" current="{{current}}" list="{{swiperList2}}" bind:change="onChange">
+  <t-swiper-nav id="customNav" slot="nav" type="dots-bar" showControls="{{true}}" />
+</t-swiper>

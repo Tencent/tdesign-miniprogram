@@ -1,0 +1,4 @@
+<t-dropdown-menu>
+  <t-dropdown-item options="{{product.options}}" value="{{product.value}}" bindchange="onChange" />
+  <t-dropdown-item options="{{sorter.options}}" default-value="{{sorter.value}}" />
+</t-dropdown-menu>

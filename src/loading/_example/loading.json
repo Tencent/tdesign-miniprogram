@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Loading",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "horizontal": "./horizontal",
+    "vertical": "./vertical",
+    "text": "./text",
+    "status": "./status",
+    "duration": "./duration",
+    "size": "./size"
+  }
+}

@@ -1,19 +1,35 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
+import { getRect, unitConvert, calcIcon, isObject } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
 
 // 展示动画持续时间
 const SHOW_DURATION = 500;
+
+// 主题图标
+const THEME_ICON = {
+  info: 'info-circle-filled',
+  success: 'check-circle-filled',
+  warning: 'info-circle-filled',
+  error: 'error-circle-filled',
+};
+
 @wxComponent()
 export default class Message extends SuperComponent {
-  externalClasses = ['t-class', 't-class-content', 't-class-icon', 't-class-action', 't-class-close-btn'];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-content`,
+    `${prefix}-class-icon`,
+    `${prefix}-class-link`,
+    `${prefix}-class-close-btn`,
+  ];
 
-  options = {
-    styleIsolation: 'apply-shared' as const,
+  options: ComponentsOptionsType = {
+    styleIsolation: 'apply-shared',
     multipleSlots: true,
   };
 
@@ -24,12 +40,10 @@ export default class Message extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    visible: false,
     loop: -1,
     animation: [],
     showAnimation: [],
-    iconName: '',
-    wrapTop: -92,
+    wrapTop: -999, // 初始定位，保证在可视区域外。
   };
 
   observers = {
@@ -44,6 +58,23 @@ export default class Message extends SuperComponent {
         });
       }
     },
+
+    'icon, theme'(icon, theme) {
+      this.setData({
+        _icon: calcIcon(icon, THEME_ICON[theme]),
+      });
+    },
+
+    link(v) {
+      const _link = isObject(v) ? { ...v } : { content: v };
+      this.setData({ _link });
+    },
+
+    closeBtn(v) {
+      this.setData({
+        _closeBtn: calcIcon(v, 'close'),
+      });
+    },
   };
 
   /** 延时关闭句柄 */
@@ -57,25 +88,8 @@ export default class Message extends SuperComponent {
     timingFunction: 'linear',
   });
 
-  // 入场动画
-  showAnimation = wx
-    .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
-    .translateY(0)
-    .opacity(1)
-    .step()
-    .export();
-
-  // 出场动画
-  hideAnimation = wx
-    .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
-    .translateY(this.data.wrapTop)
-    .opacity(0)
-    .step()
-    .export();
-
   ready() {
     this.memoInitalData();
-    this.setIcon();
   }
 
   /** 记录组件设置的项目 */
@@ -94,43 +108,13 @@ export default class Message extends SuperComponent {
     this.clearMessageAnimation();
   }
 
-  /** icon 值设置 */
-  setIcon(icon = this.properties.icon) {
-    // 使用空值
-    if (!icon) {
-      this.setData({ iconName: '' });
-      return;
-    }
-    // 固定值
-    if (typeof icon === 'string') {
-      this.setData({
-        iconName: `${icon}`,
-      });
-      return;
-    }
-
-    // 使用默认值
-    if (icon) {
-      let nextValue = 'notification';
-      const { theme } = this.properties;
-      const themeMessage = {
-        info: 'error-circle',
-        success: 'check-circle',
-        warning: 'error-circle',
-        error: 'error-circle',
-      };
-      nextValue = themeMessage[theme];
-      this.setData({ iconName: nextValue });
-    }
-  }
-
   /** 检查是否需要开启一个新的动画循环 */
   checkAnimation() {
-    const speeding = this.properties.marquee.speed;
-
     if (!this.properties.marquee) {
       return;
     }
+
+    const speeding = this.properties.marquee.speed;
 
     if (this.data.loop > 0) {
       this.data.loop -= 1;
@@ -146,19 +130,19 @@ export default class Message extends SuperComponent {
 
     const warpID = `#${name}__text-wrap`;
     const nodeID = `#${name}__text`;
-    Promise.all([this.queryWidth(nodeID), this.queryWidth(warpID)]).then(([nodeWidth, warpWidth]) => {
+    Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
       this.setData(
         {
-          animation: this.resetAnimation.translateX(warpWidth).step().export(),
+          animation: this.resetAnimation.translateX(wrapRect.width).step().export(),
         },
         () => {
-          const durationTime = ((nodeWidth + warpWidth) / speeding) * 1000;
+          const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
           const nextAnimation = wx
             .createAnimation({
               // 默认50px/s
               duration: durationTime,
             })
-            .translateX(-nodeWidth)
+            .translateX(-nodeRect.width)
             .step()
             .export();
 
@@ -174,30 +158,6 @@ export default class Message extends SuperComponent {
     });
   }
 
-  /** 获取元素宽度 */
-  queryWidth(queryName: string): Promise<number> {
-    return new Promise((resolve) => {
-      this.createSelectorQuery()
-        .select(queryName)
-        .boundingClientRect(({ width }) => {
-          resolve(width);
-        })
-        .exec();
-    });
-  }
-
-  /** 获取元素长度 */
-  queryHeight(queryName: string): Promise<number> {
-    return new Promise((resolve) => {
-      this.createSelectorQuery()
-        .select(queryName)
-        .boundingClientRect(({ height }) => {
-          resolve(height);
-        })
-        .exec();
-    });
-  }
-
   /** 清理动画循环 */
   clearMessageAnimation() {
     clearTimeout(this.nextAnimationContext);
@@ -205,30 +165,42 @@ export default class Message extends SuperComponent {
   }
 
   show() {
-    const { duration, icon } = this.properties;
-    this.setData({ visible: true, loop: this.properties.marquee.loop });
+    const { duration, marquee, offset } = this.properties;
+    this.setData({ visible: true, loop: marquee.loop });
     this.reset();
-    this.setIcon(icon);
     this.checkAnimation();
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
         this.hide();
-        this.triggerEvent('durationEnd', { self: this });
+        this.triggerEvent('duration-end', { self: this });
       }, duration) as unknown as number;
     }
 
     const wrapID = `#${name}`;
-    this.queryHeight(wrapID).then((wrapHeight) => {
-      // 先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
-      this.setData({ wrapTop: -wrapHeight }, () => {
-        this.setData({ showAnimation: this.showAnimation });
+    getRect(this, wrapID).then((wrapRect) => {
+      // 入场动画。先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
+      this.setData({ wrapTop: -wrapRect.height }, () => {
+        this.setData({
+          showAnimation: wx
+            .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
+            .translateY(wrapRect.height + unitConvert(offset[0]))
+            .step()
+            .export(),
+        });
       });
     });
   }
 
   hide() {
     this.reset();
-    this.setData({ showAnimation: this.hideAnimation });
+    this.setData({
+      // 出场动画
+      showAnimation: wx
+        .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
+        .translateY(this.data.wrapTop)
+        .step()
+        .export(),
+    });
     setTimeout(() => {
       this.setData({ visible: false, animation: [] });
     }, SHOW_DURATION);
@@ -245,10 +217,10 @@ export default class Message extends SuperComponent {
 
   handleClose() {
     this.hide();
-    this.triggerEvent('closeBtnClick');
+    this.triggerEvent('close-btn-click');
   }
 
-  handleBtnClick() {
-    this.triggerEvent('actionBtnClick', { self: this });
+  handleLinkClick() {
+    this.triggerEvent('link-click');
   }
 }

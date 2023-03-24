@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-side-bar": "../../side-bar",
+    "t-side-bar-item": "../../../side-bar-item/side-bar-item"
+  }
+}

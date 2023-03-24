@@ -11,7 +11,7 @@ const name = `${prefix}-action-sheet`;
 export default class ActionSheet extends SuperComponent {
   static show = show;
 
-  externalClasses = [`${prefix}-class`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-cancel`];
 
   properties = {
     ...props,
@@ -33,6 +33,7 @@ export default class ActionSheet extends SuperComponent {
 
   ready() {
     this.memoInitialData();
+    this.splitGridThemeActions();
   }
 
   methods = {
@@ -53,13 +54,15 @@ export default class ActionSheet extends SuperComponent {
     },
 
     /** 指令调用显示 */
-    show() {
+    show(options) {
+      this.setData({
+        ...this.initialData,
+        ...options,
+        visible: true,
+      });
       this.splitGridThemeActions();
+      this.autoClose = true;
       this._trigger('visible-change', { visible: true });
-    },
-
-    resetData(cb: () => void) {
-      this.setData({ ...this.initialData }, cb);
     },
 
     memoInitialData() {
@@ -71,24 +74,31 @@ export default class ActionSheet extends SuperComponent {
 
     /** 指令调用隐藏 */
     close() {
+      this.triggerEvent('close', { trigger: 'command' });
       this._trigger('visible-change', { visible: false });
     },
 
     /** 默认点击遮罩关闭 */
     onPopupVisibleChange({ detail }) {
       if (!detail.visible) {
+        this.triggerEvent('close', { trigger: 'overlay' });
         this._trigger('visible-change', { visible: false });
+      }
+      if (this.autoClose) {
+        this.setData({ visible: false });
+        this.autoClose = false;
       }
     },
 
     onSelect(event: WechatMiniprogram.TouchEvent) {
-      const { currentSwiperIndex, items, gridThemeItems, count } = this.data;
+      const { currentSwiperIndex, items, gridThemeItems, count, theme } = this.data;
       const { index } = event.currentTarget.dataset;
-      const isSwiperMode = items.length > count;
+      const isSwiperMode = theme === ActionSheetTheme.Grid;
       const item = isSwiperMode ? gridThemeItems[currentSwiperIndex][index] : items[index];
       const realIndex = isSwiperMode ? index + currentSwiperIndex * count : index;
       if (item) {
         this.triggerEvent('selected', { selected: item, index: realIndex });
+        this.triggerEvent('close', { trigger: 'select' });
         this._trigger('visible-change', { visible: false });
       }
     },

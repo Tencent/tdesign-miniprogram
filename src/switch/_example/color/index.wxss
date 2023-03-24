@@ -1,0 +1,3 @@
+.custom-color {
+  --td-switch-checked-color: #00A870;
+}

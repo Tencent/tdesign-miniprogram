@@ -1,0 +1,8 @@
+<t-avatar class="avatar-example" image="{{image}}" badge-props="{{ {dot: true, offset: [4, 4] } }}" />
+<t-avatar
+  class="avatar-example"
+  t-class-content="external-class-content"
+  badge-props="{{ {count: 8, offset: [6, 6] } }}"
+  >A</t-avatar
+>
+<t-avatar class="avatar-example" icon="user" badge-props="{{ {count: 12,  offset: [6, 6] } }}" />

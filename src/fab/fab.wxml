@@ -1,9 +1,12 @@
 <import src="../common/template/button.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
 
-<view class="{{classPrefix}} {{prefix}}-class" style="{{style}}">
+<view
+  class="{{classPrefix}} class {{prefix}}-class"
+  style="right: 16px; bottom: 32px; {{_._style([style, customStyle])}}"
+>
   <template
     is="button"
-    class="{{classPrefix}}__button"
-    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-class-button'}}"
+    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-fab__button', content: text, ariaLabel}}"
   />
 </view>

@@ -1,0 +1,24 @@
+page {
+  background-color: #fff;
+}
+
+.capsule {
+  margin: 0 8px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: #f3f3f3;
+  padding-left: 32rpx;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.capsule--active {
+  background: #fff;
+  border: 1px solid #e7e7e7;
+}
+
+.wrapper {
+  padding-top: 8px;
+}

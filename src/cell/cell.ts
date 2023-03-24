@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -7,9 +7,6 @@ const name = `${prefix}-cell`;
 
 @wxComponent()
 export default class Cell extends SuperComponent {
-  /**
-   * Component properties
-   */
   externalClasses = [
     `${prefix}-class`,
     `${prefix}-class-title`,
@@ -18,9 +15,16 @@ export default class Cell extends SuperComponent {
     `${prefix}-class-hover`,
     `${prefix}-class-image`,
     `${prefix}-class-left`,
+    `${prefix}-class-left-icon`,
     `${prefix}-class-right`,
     `${prefix}-class-right-icon`,
   ];
+
+  relations: RelationsOptions = {
+    '../cell-group/cell-group': {
+      type: 'parent',
+    },
+  };
 
   options = {
     multipleSlots: true,
@@ -28,17 +32,12 @@ export default class Cell extends SuperComponent {
 
   properties = props;
 
-  /**
-   * Component initial data
-   */
   data = {
     prefix,
     classPrefix: name,
+    isLastChild: false,
   };
 
-  /**
-   * Component methods
-   */
   onClick(e) {
     this.triggerEvent('click', e.detail);
     this.jumpLink();

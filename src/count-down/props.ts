@@ -29,7 +29,7 @@ const props: TdCountDownProps = {
   /** 倒计时尺寸 */
   size: {
     type: String,
-    value: 'small',
+    value: 'medium',
   },
   /** 使用时间单位分割 */
   splitWithUnit: {
@@ -44,7 +44,6 @@ const props: TdCountDownProps = {
   /** 倒计时时长，单位毫秒 */
   time: {
     type: Number,
-    required: true,
   },
 };
 

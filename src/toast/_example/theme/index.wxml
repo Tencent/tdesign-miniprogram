@@ -1,0 +1,5 @@
+<t-toast id="t-toast" />
+
+<t-button theme="primary" size="large" variant="outline" bind:tap="showSuccessToast" block>成功提示</t-button>
+<t-button theme="primary" size="large" variant="outline" bind:tap="showWarningToast" block>警告提示</t-button>
+<t-button theme="primary" size="large" variant="outline" bind:tap="showErrorToast" block>错误提示</t-button>

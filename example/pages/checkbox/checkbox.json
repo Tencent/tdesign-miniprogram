@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "Checkbox 复选框",
-  "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
-  }
-}

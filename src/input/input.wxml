@@ -1,52 +1,100 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+<wxs src="./input.wxs" module="this" />
+
 <view
-  class="{{classPrefix}} {{!!errorMessage ? classBasePrefix + '-is-error' : ''}}  {{classPrefix}}--size-{{size}} {{classPrefix + '--bordered'}} t-class"
+  style="{{_._style([style, customStyle])}}"
+  class="{{_.cls(classPrefix, [['border', !borderless]])}} {{classPrefix}}--layout-{{layout}} class {{prefix}}-class"
+  aria-describedby
 >
-  <view wx:if="{{label}}" class="{{classPrefix + '__name'}}">
-    <slot name="label" wx:if="{{label === 'slot'}}" />
-    <text wx:else>{{label}}</text>
+  <!-- aria-describedby用于关联该行设置了aria-hidden的元素最近的焦点，解决触发焦点过度上下偏移的问题 -->
+  <view class="{{classPrefix}}__wrap--prefix">
+    <view class="{{classPrefix}}__icon--prefix">
+      <slot name="prefix-icon" />
+      <template
+        wx:if="{{_prefixIcon}}"
+        is="icon"
+        data="{{tClass: prefix + '-class-prefix-icon', ariaHidden: true, ..._prefixIcon}}"
+      />
+    </view>
+    <view class="{{classPrefix}}__label" aria-hidden>
+      <slot name="label" />
+      <text wx:if="{{label}}" class="{{prefix}}-class-label">{{label}}</text>
+    </view>
   </view>
 
   <view class="{{classPrefix}}__wrap">
-    <view class="{{classPrefix}}__content">
+    <view class="{{classPrefix}}__content {{classPrefix}}--{{status}}">
       <input
-        maxlength="{{maxlength || -1}}"
+        maxlength="{{maxlength}}"
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
-        placeholder-class="{{classPrefix}}__placeholder t-class-placeholder"
-        model:value="{{value}}"
+        placeholder-style="{{placeholderStyle}}"
+        placeholder-class="{{classPrefix}}__placeholder {{placeholderClass}}"
+        value="{{value}}"
         bindinput="onInput"
         bindfocus="onFocus"
         bindblur="onBlur"
         bindconfirm="onConfirm"
+        bindkeyboardheightchange="onKeyboardHeightChange"
+        bindnicknamereview="onNickNameReview"
         password="{{type === 'password'}}"
         type="{{type === 'password' ? 'text' : type}}"
         focus="{{focus}}"
         confirm-type="{{confirmType}}"
         confirm-hold="{{confirmHold}}"
+        cursor="{{cursor}}"
+        cursor-spacing="{{cursorSpacing}}"
         adjust-position="{{adjustPosition}}"
-        class="{{classPrefix}}__control {{suffix || align ==='right' ? classPrefix + '__control--right':''}} {{align === 'center' ? classPrefix + '__control--center':''}}  t-class-input"
+        auto-focus="{{autoFocus}}"
+        always-embed="{{alwaysEmbed}}"
+        selection-start="{{selectionStart}}"
+        selection-end="{{selectionEnd}}"
+        hold-keyboard="{{holdKeyboard}}"
+        safe-password-cert-path="{{safePasswordCertPath}}"
+        safe-password-length="{{safePasswordLength}}"
+        safe-password-time-stamp="{{safePasswordTimeStamp}}"
+        safe-password-nonce="{{safePasswordNonce}}"
+        safe-password-salt="{{safePasswordSalt}}"
+        safe-password-custom-hash="{{safePasswordCustomHash}}"
+        class="{{this.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
+        aria-role="textbox"
+        aria-label="{{label}}"
+        aria-roledescription="{{label}}"
       />
+      <!--
+          这里aria-role="textbox"和aria-label组合使用实现ios的聚合焦点播报效果。
+          ios会播报aria-label，不会重复播报aria-roledescription的内容；
+          安卓不会播报aria-label，会播报aria-roledescription的内容
+        -->
       <view
-        wx:if="{{ clearable && (value.length > 0 || characterLength > 0)}}"
-        class="{{classPrefix}}__wrap--icon"
-        bind:tap="clearInput"
+        wx:if="{{_clearIcon && value.length > 0}}"
+        class="{{classPrefix}}__wrap--clearable-icon"
+        bind:touchstart="clearInput"
       >
-        <t-icon name="close-circle-filled" customStyle="font-size: 39rpx" />
+        <template
+          is="icon"
+          data="{{tClass: prefix + '-class-clearable', ariaRole: 'button', ariaLabel: '清除', ..._clearIcon }}"
+        />
       </view>
-      <view class="{{classPrefix}}__wrap--suffix">
+      <view class="{{classPrefix}}__wrap--suffix {{prefix}}-class-suffix" bind:tap="onSuffixClick">
+        <text wx:if="{{suffix}}">{{suffix}}</text>
         <slot name="suffix" />
       </view>
-      <view wx:if="{{suffix}}" class="{{classPrefix}}__wrap--suffix-text">
-        <text>{{suffix}}</text>
-      </view>
-      <view wx:if="{{suffixIcon}}" class="{{classPrefix}}__wrap--icon">
-        <t-icon name="{{suffixIcon}}" customStyle="font-size: 39rpx" />
+      <view class="{{classPrefix}}__wrap--suffix-icon" bind:tap="onSuffixIconClick">
+        <slot name="suffix-icon" />
+        <template
+          wx:if="{{_suffixIcon}}"
+          is="icon"
+          data="{{tClass: prefix + '-class-suffix-icon', ariaRole: 'button', ..._suffixIcon }}"
+        />
       </view>
     </view>
     <view
-      wx:if="{{errorMessage && errorMessage.length > 0}}"
-      class="{{classPrefix}}__error-msg t-class-error-msg"
-      >{{errorMessage}}
+      wx:if="{{tips && tips.length > 0}}"
+      class="{{classPrefix}}__tips {{classPrefix}}--{{align}} {{prefix}}-class-tips"
+      >{{tips}}
     </view>
+    <slot name="tips" />
   </view>
 </view>

@@ -4,22 +4,33 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { ButtonProps } from '../button/index';
+import { KeysType } from '../common/common';
+
 export interface TdPickerProps {
   /**
+   * 自动关闭；在确认、取消、点击遮罩层自动关闭，不需要手动设置 visible
+   * @default true
+   */
+  autoClose?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 取消按钮文字
-   * @default 取消
+   * @default true
    */
   cancelBtn?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: boolean | string | ButtonProps;
   };
   /**
    * 确定按钮文字
-   * @default 确认
+   * @default true
    */
   confirmBtn?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: boolean | string | ButtonProps;
   };
   /**
    * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
@@ -28,6 +39,13 @@ export interface TdPickerProps {
   header?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 用来定义 value / label 在 `options` 中对应的字段别名
+   */
+  keys?: {
+    type: ObjectConstructor;
+    value?: KeysType;
   };
   /**
    * 标题
@@ -61,28 +79,11 @@ export interface TdPickerProps {
   };
 }
 
-export interface TdPickerItemProps {
-  /**
-   * 数据源
-   * @default []
-   */
-  options?: {
-    type: ArrayConstructor;
-    value?: Array<PickerItemOption>;
-  };
-  /**
-   * 默认选中的选项
-   */
-  value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
-  };
+export type PickerColumn = PickerColumnItem[];
+
+export interface PickerColumnItem {
+  label: string;
+  value: string;
 }
 
 export type PickerValue = string | number;
-
-export interface PickerItemOption {
-  label: string;
-  value: string | number;
-}

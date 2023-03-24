@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "Popup",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base/index",
+    "with-title": "./with-title/index",
+    "custom-close": "./custom-close/index"
+  }
+}

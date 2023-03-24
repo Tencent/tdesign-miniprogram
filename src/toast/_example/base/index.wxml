@@ -1,0 +1,7 @@
+<t-toast id="t-toast" />
+
+<t-button size="large" variant="outline" theme="primary" bind:tap="showText" block>纯文本</t-button>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showMultiText" block>多行文字</t-button>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showHorizontalText" block>带横向图标</t-button>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showVerticalText" block>带竖向图标</t-button>
+<t-button size="large" variant="outline" theme="primary" bind:tap="showLoading" block>加载状态</t-button>

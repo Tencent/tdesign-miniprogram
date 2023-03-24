@@ -1,0 +1,4 @@
+.search-box {
+  --td-search-height: 64rpx;
+  width: 252px;
+}

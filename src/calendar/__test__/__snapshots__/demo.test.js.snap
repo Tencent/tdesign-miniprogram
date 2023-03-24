@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar Calendar base demo works fine 1`] = `
+<base>
+  <t-calendar
+    visible="{{false}}"
+    bind:close="onClose"
+    bind:confirm="handleConfirm"
+  />
+  <t-cell
+    arrow="{{true}}"
+    note=""
+    title="单个选择日历"
+    bind:tap="handleCalendar"
+  />
+</base>
+`;
+
+exports[`Calendar Calendar custom-button demo works fine 1`] = `
+<custom-button>
+  <t-calendar
+    confirmBtn="{{null}}"
+    minDate="{{1641052800000}}"
+    visible="{{false}}"
+    bind:change="onChange"
+  />
+  <t-cell
+    arrow="{{true}}"
+    note=""
+    title="不显示按钮"
+    bind:tap="handleCalendar"
+  />
+</custom-button>
+`;
+
+exports[`Calendar Calendar custom-range demo works fine 1`] = `
+<custom-range>
+  <t-calendar
+    maxDate="{{1669478400000}}"
+    minDate="{{1643644800000}}"
+    value="{{1652544000000}}"
+    visible="{{false}}"
+    bind:confirm="handleConfirm"
+  />
+  <t-cell
+    arrow="{{true}}"
+    title="自定义区间"
+    bind:tap="handleCalendar"
+  />
+</custom-range>
+`;
+
+exports[`Calendar Calendar custom-text demo works fine 1`] = `
+<custom-text>
+  <t-calendar
+    format="{{[Function]}}"
+    maxDate="{{1647273600000}}"
+    minDate="{{1643644800000}}"
+    value="{{1644854400000}}"
+    visible="{{false}}"
+    bind:confirm="handleConfirm"
+  />
+  <t-cell
+    arrow="{{true}}"
+    title="自定义文案"
+    bind:tap="handleCalendar"
+  />
+</custom-text>
+`;
+
+exports[`Calendar Calendar multiple demo works fine 1`] = `
+<multiple>
+  <t-calendar
+    type="multiple"
+    visible="{{false}}"
+    bind:confirm="handleConfirm"
+  />
+  <t-cell
+    arrow="{{true}}"
+    title="多个选择日历"
+    bind:tap="handleCalendar"
+  />
+</multiple>
+`;
+
+exports[`Calendar Calendar range demo works fine 1`] = `
+<range>
+  <t-calendar
+    type="range"
+    visible="{{false}}"
+    bind:confirm="handleConfirm"
+  />
+  <t-cell
+    arrow="{{true}}"
+    title="区间选择日历"
+    bind:tap="handleCalendar"
+  />
+</range>
+`;
+
+exports[`Calendar Calendar without-popup demo works fine 1`] = `
+<without-popup>
+  <wx-view
+    class="demo-desc"
+  >
+    不使用 Popup
+  </wx-view>
+  <t-calendar
+    type="multiple"
+    usePopup="{{false}}"
+    bind:select="handleSelect"
+  />
+</without-popup>
+`;

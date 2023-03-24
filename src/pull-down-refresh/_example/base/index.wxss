@@ -1,0 +1,40 @@
+.demo {
+  padding-bottom: 56rpx;
+}
+
+.demo-title {
+  font-size: 48rpx;
+  font-weight: 700;
+  line-height: 64rpx;
+  margin: 48rpx 32rpx 0;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.demo-desc {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 16rpx 32rpx 0;
+  line-height: 44rpx;
+}
+
+.pulldown-reflesh__content {
+  margin: 64rpx 32rpx 0;
+  position: relative;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32rpx;
+}
+
+.text {
+  position: absolute;
+  top: 152rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.26);
+  width: 686rpx;
+}
