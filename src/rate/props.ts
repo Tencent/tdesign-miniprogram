@@ -34,7 +34,7 @@ const props: TdRateProps = {
     type: null,
     value: 8,
   },
-  /** 自定义评分图标，[选中图标，未选中图标]；此时不受 variant 影响 */
+  /** 自定义评分图标，[选中图标，未选中图标] */
   icon: {
     type: null,
   },
@@ -62,11 +62,6 @@ const props: TdRateProps = {
   defaultValue: {
     type: Number,
     value: 0,
-  },
-  /** 形状类型，有描边类型和填充类型两种 */
-  variant: {
-    type: String,
-    value: 'outline',
   },
 };
 

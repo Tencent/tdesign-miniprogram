@@ -20,5 +20,5 @@ default-visible | Boolean | undefined | required。uncontrolled property | Y
 name | params | description
 -- | -- | --
 cancel | \- | \-
-close | \- | \-
+close | `(trigger: TriggerSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'command' \| 'select' `<br/>
 selected | `(selected: ActionSheetItem \| string, index: number)` | \-

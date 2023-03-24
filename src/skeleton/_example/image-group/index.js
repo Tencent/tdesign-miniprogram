@@ -1,5 +1,5 @@
 Component({
   data: {
-    rowCol: [{ size: '163.5px', borderRadius: '12px' }, 1, { width: '61%' }],
+    rowCol: [{ size: '327rpx', borderRadius: '24rpx' }, 1, { width: '61%' }],
   },
 });

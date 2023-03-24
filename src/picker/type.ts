@@ -5,6 +5,7 @@
  * */
 
 import { ButtonProps } from '../button/index';
+import { KeysType } from '../common/common';
 
 export interface TdPickerProps {
   /**
@@ -24,28 +25,12 @@ export interface TdPickerProps {
     value?: boolean | string | ButtonProps;
   };
   /**
-   * 配置每一列的选项
-   * @default []
-   */
-  columns: {
-    type: ArrayConstructor;
-    value?: Array<PickerColumn> | ((item: Array<PickerValue>) => Array<PickerColumn>);
-  };
-  /**
    * 确定按钮文字
    * @default true
    */
   confirmBtn?: {
     type: null;
     value?: boolean | string | ButtonProps;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
@@ -56,11 +41,11 @@ export interface TdPickerProps {
     value?: boolean;
   };
   /**
-   * 自定义label
+   * 用来定义 value / label 在 `options` 中对应的字段别名
    */
-  renderLabel?: {
-    type: StringConstructor;
-    value?: (item: PickerColumnItem) => string;
+  keys?: {
+    type: ObjectConstructor;
+    value?: KeysType;
   };
   /**
    * 标题

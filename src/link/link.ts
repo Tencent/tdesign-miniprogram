@@ -18,6 +18,10 @@ export default class Link extends SuperComponent {
 
   properties = props;
 
+  options = {
+    multipleSlots: true,
+  };
+
   data = {
     prefix,
     classPrefix: name,

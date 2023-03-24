@@ -40,8 +40,8 @@ exports[`Switch Switch label demo works fine 1`] = `
     <t-switch
       label="{{
         Array [
-          "关",
           "开",
+          "关",
         ]
       }}"
       slot="note"
@@ -57,8 +57,8 @@ exports[`Switch Switch label demo works fine 1`] = `
       defaultValue="{{true}}"
       icon="{{
         Array [
-          "close",
           "check",
+          "close",
         ]
       }}"
       slot="note"

@@ -25,6 +25,7 @@
         class="{{classPrefix}}__radio {{prefix}}-class-column"
         t-class="{{classPrefix}}__radio-group"
         value="{{value}}"
+        placement="right"
         bind:change="handleRadioChange"
       >
         <t-radio
@@ -32,7 +33,6 @@
           wx:key="index"
           tabindex="0"
           icon="line"
-          align="right"
           class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
           t-class="radio"
           t-class-label="{{prefix}}-class-column-item-label"

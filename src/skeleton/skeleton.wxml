@@ -1,4 +1,3 @@
-<wxs src="./skeleton.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
 
 <view wx:if="{{ loading }}" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class ">
@@ -16,7 +15,7 @@
         wx:for-item="col"
         wx:key="index"
         class="{{col.class}} {{prefix}}-class-col"
-        style="{{this.getStyle(col.style)}}"
+        style="{{_._style(col.style)}}"
       ></view>
     </view>
   </view>

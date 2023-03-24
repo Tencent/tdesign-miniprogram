@@ -103,5 +103,5 @@ external-classes | Array | - | 组件类名，用于设置组件外层元素类�
 名称 | 参数 | 描述
 -- | -- | --
 cancel | \- | 点击取消按钮时触发
-close | \- | 关闭时触发
+close | `(trigger: TriggerSource)` | 关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'command' \| 'select' `<br/>
 selected | `(selected: ActionSheetItem \| string, index: number)` | 选择菜单项时触发

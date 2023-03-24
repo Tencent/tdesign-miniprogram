@@ -1,13 +1,13 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./cascader.wxs" module="aria" />
 
-<t-popup class="class" visible="{{visible}}" placement="bottom" bind:visible-change="hide">
+<t-popup class="class" visible="{{visible}}" placement="bottom" bind:visible-change="onVisibleChange">
   <view style="{{_._style([style, customStyle])}}" class="{{name}}">
     <view class="{{name}}__title">
       <slot name="title" />
       {{title}}
     </view>
-    <view class="{{name}}__close-btn" bind:tap="hide">
+    <view class="{{name}}__close-btn" bind:tap="onClose">
       <slot name="close-btn" />
       <t-icon wx:if="{{closeBtn}}" aria-role="button" aria-label="关闭" size="24" name="close" />
     </view>
@@ -60,7 +60,7 @@
               options="{{options}}"
               bind:change="handleSelect"
               data-level="{{index}}"
-              align="right"
+              placement="right"
               icon="line"
               borderless
             >

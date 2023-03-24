@@ -5,21 +5,6 @@ function getValue(label, value) {
   if (REGEXP.test(label)) return label.replace(REGEXP, value);
 }
 
-function getColor(disable, active, disabledColor, colors) {
-  var index = active ? 0 : 1;
-
-  if (disable && disabledColor.constructor === 'Array' && disabledColor.length == 2) {
-    return 'background-color: ' + disabledColor[index];
-  }
-
-  if (!disable && colors.constructor === 'Array' && colors.length == 2) {
-    return 'background-color: ' + colors[index];
-  }
-
-  return '';
-}
-
 module.exports = {
   getValue: getValue,
-  getColor: getColor,
 };

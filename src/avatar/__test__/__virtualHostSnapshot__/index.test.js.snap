@@ -2,45 +2,35 @@
 
 exports[`Avatar & Avatar Groups Avatar Props : style && customStyle 1`] = `
 <main>
-  <main
-    class="avatar"
+  <wx-view
+    class="t-avatar__wrapper class t-class"
+    style="color: red; font-size: 9px;"
   >
     <wx-view
-      class="t-avatar__wrapper class t-class"
-      style="color: red; font-size: 9px;"
+      ariaDescribedby="t_badge_0_description"
+      ariaLabelledby="t_badge_0_label"
+      ariaRole="option"
+      class="t-badge  class t-class"
+      style=""
     >
-      <t-badge
-        tClass=""
-        tClassContent=""
-        tClassCount=""
+      <wx-view
+        ariaHidden="true"
+        class="t-badge__content t-class-content"
+        id="t_badge_0_label"
       >
         <wx-view
-          ariaDescribedby="t_badge_0_description"
-          ariaLabelledby="t_badge_0_label"
-          ariaRole="option"
-          class="t-badge  class t-class"
+          ariaHidden="{{false}}"
+          ariaLabel="头像"
+          ariaRole="img"
+          class="t-avatar t-avatar--circle  t-avatar--medium t-class-image"
           style=""
         >
           <wx-view
-            ariaHidden="true"
-            class="t-badge__content t-class-content"
-            id="t_badge_0_label"
-          >
-            <wx-view
-              ariaHidden="{{false}}"
-              ariaLabel="头像"
-              ariaRole="img"
-              class="t-avatar t-avatar--circle t-avatar--medium t-class-image"
-              style=""
-            >
-              <wx-view
-                class="t-avatar__text t-class-content"
-              />
-            </wx-view>
-          </wx-view>
+            class="t-avatar__text t-class-content"
+          />
         </wx-view>
-      </t-badge>
+      </wx-view>
     </wx-view>
-  </main>
+  </wx-view>
 </main>
 `;

@@ -2,6 +2,7 @@ import { isObject, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import { UploadFile } from './type';
 import config from '../common/config';
+import { isOverSize } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-upload`;
@@ -52,6 +53,7 @@ export default class Upload extends SuperComponent {
   };
 
   onProofTap(e: any) {
+    this.onFileClick(e);
     const { index } = e.currentTarget.dataset;
     wx.previewImage({
       urls: this.data.customFiles.filter((file) => file.percent !== -1).map((file) => file.url),
@@ -185,9 +187,9 @@ export default class Upload extends SuperComponent {
     },
 
     chooseMedia(mediaType) {
-      const { config, sizeLimit, max } = this.data;
+      const { config, sizeLimit, customLimit } = this.data;
       wx.chooseMedia({
-        count: max === 0 ? 9 : max, // 在 iOS 里，0 是无效的，会导致抛异常
+        count: customLimit,
         mediaType,
         ...config,
         success: (res) => {
@@ -196,10 +198,17 @@ export default class Upload extends SuperComponent {
           // 支持单/多文件
           res.tempFiles.forEach((temp) => {
             const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
-            if (sizeLimit && size > sizeLimit) {
-              wx.showToast({ icon: 'none', title: `${fileType === 'image' ? '图片' : '视频'}大小超过限制` });
+
+            if (isOverSize(size, sizeLimit)) {
+              let title = `${fileType === 'image' ? '图片' : '视频'}大小超过限制`;
+
+              if (typeof sizeLimit !== 'number') {
+                title = sizeLimit.message.replace('{sizeLimit}', sizeLimit?.size);
+              }
+              wx.showToast({ icon: 'none', title });
               return;
             }
+
             const name = this.getRandFileName(tempFilePath);
             files.push({
               name,
@@ -237,10 +246,17 @@ export default class Upload extends SuperComponent {
           // 支持单/多文件
           res.tempFiles.forEach((temp) => {
             const { size, type: fileType, path: tempFilePath, ...res } = temp;
-            if (sizeLimit && size > sizeLimit) {
-              wx.showToast({ icon: 'none', title: `${fileType === 'image' ? '图片' : '视频'}大小超过限制` });
+
+            if (isOverSize(size, sizeLimit)) {
+              let title = `${fileType === 'image' ? '图片' : '视频'}大小超过限制`;
+
+              if (typeof sizeLimit !== 'number') {
+                title = sizeLimit.message.replace('{sizeLimit}', sizeLimit?.size);
+              }
+              wx.showToast({ icon: 'none', title });
               return;
             }
+
             const name = this.getRandFileName(tempFilePath);
             files.push({
               name,

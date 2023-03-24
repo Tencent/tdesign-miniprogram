@@ -7,19 +7,10 @@
 export interface TdDrawerProps {
   /**
    * 点击蒙层时是否触发抽屉关闭事件
-   * @default true
    */
   closeOnOverlayClick?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 抽屉关闭时是否销毁节点
@@ -54,7 +45,6 @@ export interface TdDrawerProps {
   };
   /**
    * 抽屉的标题
-   * @default ''
    */
   title?: {
     type: StringConstructor;
