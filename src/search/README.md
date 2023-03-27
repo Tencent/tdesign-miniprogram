@@ -57,6 +57,7 @@ right-icon | String / Slot | 'close-circle-filled' | 已废弃。右侧图标 | 
 clearable | Boolean | true | 是否启用清除控件 | N
 shape | String | 'square' | 搜索框形状。可选项：square/round | N
 value | String | '' | 值 | N
+type | String | 'text' | 拉起键盘的类型，可选项：text/number/idcard/digit/nickname | N
 
 ### Search Events
 

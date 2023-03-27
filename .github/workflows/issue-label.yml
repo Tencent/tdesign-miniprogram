@@ -15,18 +15,18 @@ jobs:
           label=${{ github.event.label.name }}
           if [[ $label = "easy" ]]
           then
-            echo "level=简单" >> $GITHUB_OUTPUT
+            echo "level=低" >> $GITHUB_OUTPUT
             echo "duration=1" >> $GITHUB_OUTPUT
             deadline=$(date -d "+3 days" +'%Y-%m-%d')
             echo "deadline=${deadline}" >> $GITHUB_OUTPUT
           elif [[ $label = "middle" ]]
           then
-            echo "level=中等" >> $GITHUB_OUTPUT
+            echo "level=中" >> $GITHUB_OUTPUT
             echo "duration=3" >> $GITHUB_OUTPUT
             deadline=$(date -d "+7 days" +'%Y-%m-%d')
             echo "deadline=${deadline}" >> $GITHUB_OUTPUT
           else
-            echo "level=困难" >> $GITHUB_OUTPUT
+            echo "level=高" >> $GITHUB_OUTPUT
             echo "duration=5" >> $GITHUB_OUTPUT
             deadline=$(date -d "+10 days" +'%Y-%m-%d')
             echo "deadline=${deadline}" >> $GITHUB_OUTPUT

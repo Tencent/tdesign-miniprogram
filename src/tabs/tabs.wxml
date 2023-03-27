@@ -15,11 +15,13 @@
     <view class="{{_.cls(classPrefix + '__wrapper', [theme])}}">
       <scroll-view
         class="{{_.cls(classPrefix + '__scroll', [placement])}}"
+        enhanced
         enable-flex
         scroll-left="{{offset}}"
         scroll-x="{{isScrollX}}"
         scroll-y="{{isScrollY}}"
         scroll-with-animation
+        show-scrollbar="{{false}}"
       >
         <view class="{{_.cls(classPrefix + '__nav', [placement])}}" aria-role="tablist">
           <view

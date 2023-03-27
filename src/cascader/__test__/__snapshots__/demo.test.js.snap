@@ -166,8 +166,10 @@ exports[`Cascader Cascader base demo works fine 1`] = `
       ]
     }}"
     title="请选择地址"
+    value=""
     visible="{{false}}"
     bind:change="onChange"
+    bind:pick="onPick"
   />
 </base>
 `;
