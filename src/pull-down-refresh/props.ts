@@ -23,7 +23,7 @@ const props: TdPullDownRefreshProps = {
   /** 提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'] */
   loadingTexts: {
     type: Array,
-    value: ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'],
+    value: [],
   },
   /** 最大下拉高度，如果值为数字则单位是：'px' */
   maxBarHeight: {
