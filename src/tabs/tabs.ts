@@ -140,17 +140,19 @@ export default class Tabs extends SuperComponent {
     },
 
     getTrackSize() {
-      return new Promise<number>((resolve) => {
+      return new Promise<number>((resolve, reject) => {
         if (this.trackWidth) {
           resolve(this.trackWidth);
           return;
         }
-        getRect(this, `.${prefix}-tabs__track`).then((res) => {
-          if (res) {
-            this.trackWidth = res.width;
-            resolve(this.trackWidth);
-          }
-        });
+        getRect(this, `.${prefix}-tabs__track`)
+          .then((res) => {
+            if (res) {
+              this.trackWidth = res.width;
+              resolve(this.trackWidth);
+            }
+          })
+          .catch(reject);
       });
     },
 
@@ -185,7 +187,7 @@ export default class Tabs extends SuperComponent {
           });
         }
 
-        if (isScrollX) {
+        if (isScrollX && this.data.theme === 'line') {
           const trackLineWidth = await this.getTrackSize();
           distance += (rect.width - trackLineWidth) / 2;
         }
