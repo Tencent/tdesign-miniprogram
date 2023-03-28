@@ -199,6 +199,10 @@
   }
 
   &__scroll {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     &--top,
     &--bottom {
       height: @tab-item-height;

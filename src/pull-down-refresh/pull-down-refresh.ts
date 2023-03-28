@@ -25,7 +25,7 @@ export default class PullDownRefresh extends SuperComponent {
   /** 关闭动画耗时setTimeout句柄 */
   closingAnimateTimeFlag = 0;
 
-  externalClasses = [`${prefix}-class`, `${prefix}-class-loading`, `${prefix}-class-tex`, `${prefix}-class-indicator`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-loading`, `${prefix}-class-text`, `${prefix}-class-indicator`];
 
   options = {
     multipleSlots: true,
@@ -52,8 +52,13 @@ export default class PullDownRefresh extends SuperComponent {
   lifetimes = {
     attached() {
       const { screenWidth } = wx.getSystemInfoSync();
-      const { maxBarHeight, loadingBarHeight } = this.properties;
-
+      const { maxBarHeight, loadingBarHeight, loadingTexts } = this.properties;
+      this.setData({
+        loadingTexts:
+          Array.isArray(loadingTexts) && loadingTexts.length >= 4
+            ? loadingTexts
+            : ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'],
+      });
       this.pixelRatio = 750 / screenWidth;
 
       if (maxBarHeight) {
