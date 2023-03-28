@@ -12,7 +12,7 @@
   hover-stay-time="{{hoverStayTime}}"
   lang="{{lang}}"
   session-from="{{sessionFrom}}"
-  hover-class="{{disabled || loading ? '' : classPrefix + '--hover'}}"
+  hover-class="{{disabled || loading ? '' : (hoverClass || classPrefix + '--hover')}}"
   send-message-title="{{sendMessageTitle}}"
   send-message-path="{{sendMessagePath}}"
   send-message-img="{{sendMessageImg}}"
