@@ -48,12 +48,12 @@ export default class Message extends SuperComponent {
 
   observers = {
     marquee(val) {
-      if (JSON.stringify(val) === '{}') {
+      if (JSON.stringify(val) === '{}' || JSON.stringify(val) === 'true') {
         this.setData({
           marquee: {
             speed: 50,
             loop: -1,
-            delay: 5000,
+            delay: 0,
           },
         });
       }
@@ -110,11 +110,12 @@ export default class Message extends SuperComponent {
 
   /** 检查是否需要开启一个新的动画循环 */
   checkAnimation() {
-    if (!this.properties.marquee) {
+    const { marquee } = this.properties;
+    if (!marquee || marquee.loop === 0) {
       return;
     }
 
-    const speeding = this.properties.marquee.speed;
+    const speeding = marquee.speed;
 
     if (this.data.loop > 0) {
       this.data.loop -= 1;
@@ -166,7 +167,7 @@ export default class Message extends SuperComponent {
 
   show() {
     const { duration, marquee, offset } = this.properties;
-    this.setData({ visible: true, loop: marquee.loop });
+    this.setData({ visible: true, loop: marquee.loop || this.data.loop });
     this.reset();
     this.checkAnimation();
     if (duration && duration > 0) {
