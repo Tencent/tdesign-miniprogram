@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "popup 弹窗",
-  "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
-  }
-}

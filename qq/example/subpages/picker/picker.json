@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "Picker 选择器",
-  "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
-  }
-}
