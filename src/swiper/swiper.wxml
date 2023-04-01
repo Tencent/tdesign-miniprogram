@@ -29,7 +29,7 @@
     >
       <template
         is="image"
-        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: item, mode: 'aspectFill', ...imageProps }}"
+        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'width: 100%;height: ' + _.addUnit(height), src: item, mode: 'aspectFill', ...imageProps }}"
       />
     </swiper-item>
   </swiper>

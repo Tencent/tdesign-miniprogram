@@ -17,7 +17,7 @@ const config = require('./config');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const srcExamplePath = 'qq/example';
+const srcExamplePath = 'example';
 
 // set displayName
 const setDisplayName = (tasks, moduleName) => {
@@ -56,6 +56,20 @@ const isNeedReplacePath = function (file) {
 
 function replaceCommonPath() {
   return gulpIf(isNeedReplacePath, replace('../common/', './common/'));
+}
+
+// replace usingComponents json
+function replaceComponentsPath() {
+  return gulpIf(true, replace('tdesign-miniprogram/', 'tdesign-qq-miniprogram/'));
+}
+
+const isExamplePath = (file) => {
+  return /\/_example\//.test(file.path) || /example/.test(file.path);
+};
+
+// add index in usingComponents json
+function replaceRelativeComponentsPathInExample() {
+  return gulpIf(isExamplePath, replace(/\.\/([a-zA-Z][-a-zA-Z]*)"/g, './$1/index"'));
 }
 
 // generate config replace task
@@ -133,7 +147,8 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp resetError`
    * 重置gulpError
    * */
-  tasks.resetError = () => gulp.src(gulpErrorPath, { base: srcExamplePath, allowEmpty: true }).pipe(gulp.dest('_example/'));
+  tasks.resetError = () =>
+    gulp.src(gulpErrorPath, { base: srcExamplePath, allowEmpty: true }).pipe(gulp.dest('_example/'));
 
   /** `gulp copy`
    * 清理
@@ -175,6 +190,7 @@ module.exports = (src, dist, moduleName) => {
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(fileter())
+      .pipe(replaceComponentsPath())
       .pipe(replaceCommonPath())
       .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
@@ -199,6 +215,8 @@ module.exports = (src, dist, moduleName) => {
       .src(globs.json, { ...srcOptions, since: since(tasks.json) })
       .pipe(fileter())
       .pipe(replaceCommonPath())
+      .pipe(replaceRelativeComponentsPathInExample())
+      .pipe(replaceComponentsPath())
       .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
@@ -211,6 +229,7 @@ module.exports = (src, dist, moduleName) => {
       .pipe(
         plumber({
           errorHandler: (err) => {
+            console.log(err);
             tasks.handleError(err.message);
           },
         }),
@@ -220,9 +239,6 @@ module.exports = (src, dist, moduleName) => {
       .pipe(gulpLess()) // 编译less
       .pipe(rename({ extname: '.wxss' }))
       .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
-      .pipe(fileter())
-      .pipe(replaceCommonPath())
-      .pipe(renameFilePath())
       .pipe(gulp.dest(dist));
 
   /** `gulp wxss`

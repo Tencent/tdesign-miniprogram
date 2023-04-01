@@ -1,7 +1,7 @@
 import { chunk } from '../common/utils';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
-import { ActionSheetTheme, show } from './index';
+import { ActionSheetTheme, show } from './show';
 import props from './props';
 
 const { prefix } = config;
