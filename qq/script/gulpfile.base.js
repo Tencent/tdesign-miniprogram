@@ -86,12 +86,13 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
 /* return gulpfile base tasks */
 module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json', {
-    declaration: !isProduction,
+    declaration: true,
     removeComments: isProduction,
   });
 
   // options
-  const srcOptions = { base: src, ignore: ['**/__test__', '**/__test__/**'] };
+  const ignore = ['**/__test__', '**/__test__/**', '**/_example/**', '**/_common/**'];
+  const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = `${srcExamplePath}/utils/gulpError.js`;
 
@@ -103,7 +104,7 @@ module.exports = (src, dist, moduleName) => {
     json: `${src}/**/*.json`, // 匹配 json 文件
     less: `${src}/**/*.less`, // 匹配 less 文件
     wxss: `${src}/**/*.wxss`, // 匹配 wxss 文件
-    md: `${src}/**/*.md`, // 匹配 md 文件
+    // md: `${src}/**/*.md`, // 匹配 md 文件
     wxml: `${src}/**/*.wxml`,
   };
   // 匹配需要拷贝的文件
@@ -115,7 +116,8 @@ module.exports = (src, dist, moduleName) => {
     `!${globs.json}`,
     `!${globs.less}`,
     `!${globs.wxss}`,
-    `!${globs.md}`,
+    // `!${globs.md}`,
+    '!**/_example/**',
     `!${globs.wxml}`,
   ];
 
@@ -212,7 +214,7 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.json = () =>
     gulp
-      .src(globs.json, { ...srcOptions, since: since(tasks.json) })
+      .src(globs.json, { ...srcOptions, dot: true, since: since(tasks.json) })
       .pipe(fileter())
       .pipe(replaceCommonPath())
       .pipe(replaceRelativeComponentsPathInExample())
@@ -266,7 +268,7 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp common`
    * 拷贝common中样式
    */
-  // tasks.common = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
+  tasks.common = () => gulp.src(globs.wxss, { ...srcOptions, since: since(tasks.wxss) }).pipe(gulp.dest(dist));
 
   // set displayName
   setDisplayName(tasks, moduleName);
