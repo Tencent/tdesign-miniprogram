@@ -58,7 +58,7 @@ router.beforeEach((to, from, next) => {
   // @ts-ignore
   if (typeof NProgress !== 'undefined') {
     // @ts-ignore
-    NProgress.start();
+    window.NProgress && window.NProgress.start();
   }
   next();
 });
