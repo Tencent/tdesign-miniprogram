@@ -137,7 +137,13 @@ export default class Slider extends SuperComponent {
 
     // 基本样式未初始化，等待初始化后在改变数据。
     if (this.data.maxRange === 0) {
-      this.getInitialStyle().then(setValueAndTrigger);
+      this.getInitialStyle()
+        .then(() => {
+          setValueAndTrigger();
+        })
+        .catch(() => {
+          setValueAndTrigger();
+        });
       return;
     }
 
