@@ -28,6 +28,7 @@ export default class Avatar extends SuperComponent {
     classPrefix: name,
     isShow: true,
     zIndex: 0,
+    borderedWithGroup: false,
   };
 
   relations: RelationsOptions = {
@@ -38,7 +39,7 @@ export default class Avatar extends SuperComponent {
 
         this.setData({
           size: this.data.size ?? parent.data.size,
-          bordered: true,
+          borderedWithGroup: true,
         });
       },
     },
