@@ -16,7 +16,7 @@ export default {
           name: 'develop',
           meta: { docType: 'explain' },
           path: '/qq-miniprogram/develop',
-          component: () => import('@/../CONTRIBUTING.md'),
+          component: () => import('../CONTRIBUTING.md'),
         },
         // {
         //   title: '谁在用',
