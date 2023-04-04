@@ -1,8 +1,9 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
-  class="{{ className }}"
-  wx:if="{{ !(destroyOnHide && !dataVisible) }}"
-  style="{{ dataVisible ? '' : 'display: none' }}"
-  bindtransitionend="onTransitionEnd"
+  class="class {{prefix}}-class {{classPrefix}} {{ transitionClass }}"
+  style="{{_._style([visible ? '' : 'display: none', style, customStyle])}}"
+  bind:transitionend="onTransitionEnd"
 >
   <slot />
 </view>

@@ -1,0 +1,38 @@
+.block {
+  width: 100vw;
+  height: 240px;
+  background: #fff;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+}
+
+.wrapper {
+  margin: 32rpx;
+  display: block;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 116rpx;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 36rpx;
+}
+
+.btn {
+  font-size: 32rpx;
+  padding: 32rpx;
+}
+
+.btn--cancel {
+  color: rgba(0, 0, 0, .6);
+}
+
+.btn--confirm {
+  color: #0052d9;
+}

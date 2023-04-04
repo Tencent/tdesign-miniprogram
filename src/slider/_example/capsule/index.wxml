@@ -1,0 +1,9 @@
+<t-slider defaultValue="{{30}}" theme="capsule" />
+
+<t-slider defaultValue="{{ [40, 60] }}" range theme="capsule" />
+
+<t-slider defaultValue="{{ [40, 60] }}" range label="${value}" theme="capsule" />
+
+<t-slider defaultValue="{{60}}" marks="{{marks}}" step="{{20}}" theme="capsule" />
+
+<t-slider defaultValue="{{ [20, 80] }}" range marks="{{marks}}" step="{{20}}" theme="capsule" />

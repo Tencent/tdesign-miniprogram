@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionSheet ActionSheet align demo works fine 1`] = `
+<align>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    左对齐列表型
+  </t-button>
+</align>
+`;
+
+exports[`ActionSheet ActionSheet grid demo works fine 1`] = `
+<grid>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    常规宫格型
+  </t-button>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleMultiAction"
+  >
+    带翻页宫格型
+  </t-button>
+</grid>
+`;
+
+exports[`ActionSheet ActionSheet list demo works fine 1`] = `
+<list>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    列表型
+  </t-button>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDescAction"
+  >
+    带描述列表型
+  </t-button>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="showIconAction"
+  >
+    带图标列表型
+  </t-button>
+</list>
+`;
+
+exports[`ActionSheet ActionSheet status demo works fine 1`] = `
+<status>
+  <t-action-sheet
+    id="t-action-sheet"
+    bind:selected="handleSelected"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    列表型选项状态
+  </t-button>
+</status>
+`;

@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton Skeleton animation demo works fine 1`] = `
+<animation>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      渐变加载效果
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        animation="gradient"
+        loading="{{true}}"
+        theme="paragraph"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      闪烁加载效果
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        animation="flashed"
+        loading="{{true}}"
+        theme="paragraph"
+      />
+    </wx-view>
+  </wx-view>
+</animation>
+`;
+
+exports[`Skeleton Skeleton cell-group demo works fine 1`] = `
+<cell-group>
+  <wx-view
+    class="group"
+  >
+    <t-skeleton
+      class="group-avatar"
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "size": "96rpx",
+            "type": "circle",
+          },
+        ]
+      }}"
+    />
+    <t-skeleton
+      class="group-content"
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "width": "50%",
+          },
+          Object {
+            "width": "100%",
+          },
+        ]
+      }}"
+    />
+  </wx-view>
+  <wx-view
+    class="group"
+  >
+    <t-skeleton
+      class="group-avatar"
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "size": "96rpx",
+            "type": "rect",
+          },
+        ]
+      }}"
+    />
+    <t-skeleton
+      class="group-content"
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "width": "50%",
+          },
+          Object {
+            "width": "100%",
+          },
+        ]
+      }}"
+    />
+  </wx-view>
+</cell-group>
+`;
+
+exports[`Skeleton Skeleton grid demo works fine 1`] = `
+<grid>
+  <wx-view
+    class="wrapper"
+  >
+    <t-skeleton
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Array [
+            Object {
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
+            },
+            Object {
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
+            },
+            Object {
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
+            },
+            Object {
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
+            },
+            Object {
+              "borderRadius": "12rpx",
+              "height": "96rpx",
+              "width": "96rpx",
+            },
+          ],
+          Array [
+            Object {
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
+            },
+            Object {
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
+            },
+            Object {
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
+            },
+            Object {
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
+            },
+            Object {
+              "borderRadius": "6rpx",
+              "height": "32rpx",
+              "width": "96rpx",
+            },
+          ],
+        ]
+      }}"
+    />
+  </wx-view>
+</grid>
+`;
+
+exports[`Skeleton Skeleton image-group demo works fine 1`] = `
+<image-group>
+  <wx-view
+    class="group"
+  >
+    <t-skeleton
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "borderRadius": "24rpx",
+            "size": "327rpx",
+          },
+          1,
+          Object {
+            "width": "61%",
+          },
+        ]
+      }}"
+    />
+    <t-skeleton
+      loading="{{true}}"
+      rowCol="{{
+        Array [
+          Object {
+            "borderRadius": "24rpx",
+            "size": "327rpx",
+          },
+          1,
+          Object {
+            "width": "61%",
+          },
+        ]
+      }}"
+    />
+  </wx-view>
+</image-group>
+`;
+
+exports[`Skeleton Skeleton theme demo works fine 1`] = `
+<theme>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      头像骨架屏
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        loading="{{true}}"
+        theme="avatar"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      图片骨架屏
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        loading="{{true}}"
+        theme="image"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      文本骨架屏
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        loading="{{true}}"
+        theme="text"
+      />
+    </wx-view>
+  </wx-view>
+  <wx-view>
+    <wx-view
+      class="demo-section__desc"
+    >
+      段落骨架屏
+    </wx-view>
+    <wx-view
+      class="demo-section__content"
+    >
+      <t-skeleton
+        loading="{{true}}"
+        theme="paragraph"
+      />
+    </wx-view>
+  </wx-view>
+</theme>
+`;

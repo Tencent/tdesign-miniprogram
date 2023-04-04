@@ -1,6 +1,0 @@
-{
-  extends: ["../.stylelintrc"],
-  rules: {
-    "declaration-no-important": null
-  },
-}

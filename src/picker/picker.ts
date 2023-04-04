@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -7,68 +7,105 @@ const name = `${prefix}-picker`;
 
 @wxComponent()
 export default class Picker extends SuperComponent {
-  /**
-   * Component properties
-   */
   properties = props;
 
-  externalClasses = ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`];
 
   options = {
     multipleSlots: true,
   };
 
-  relations = {
-    './picker-item': {
-      type: 'child' as 'child',
+  relations: RelationsOptions = {
+    '../picker-item/picker-item': {
+      type: 'child',
+      linked(this: Picker) {
+        this.updateChildren();
+      },
     },
   };
 
-  /**
-   * Component initial data
-   */
+  observers = {
+    value() {
+      this.updateChildren();
+    },
+    keys(obj) {
+      this.setData({
+        labelAlias: obj.label || 'label',
+        valueAlias: obj.value || 'value',
+      });
+    },
+  };
+
   data = {
+    prefix,
     classPrefix: name,
+    labelAlias: 'label',
+    valueAlias: 'value',
   };
 
-  /**
-   * Component methods
-   */
   methods = {
-    getPickerColumns() {
-      const pickerColumns = this.getRelationNodes('./picker-item');
-      if (Array.isArray(pickerColumns)) {
-        return pickerColumns;
-      }
-      return [];
-    },
-    getSelectedValues() {
-      const pickerColumns = this.getPickerColumns();
-      if (pickerColumns?.length === 0) {
-        return { index: undefined, value: undefined };
-      }
+    updateChildren() {
+      const { value } = this.properties;
 
-      const selectedValues = {
-        index: pickerColumns.map((pickerColumn) => pickerColumn._selectedIndex),
-        value: pickerColumns.map((pickerColumn) => pickerColumn._selectedValue),
-      };
-
-      return selectedValues;
+      this.$children.forEach((child, index) => {
+        child.setData({
+          value: value?.[index] || '',
+        });
+        child.update();
+      });
     },
+
+    getSelectedValue() {
+      const value = this.$children.map((item) => item._selectedValue);
+      const label = this.$children.map((item) => item._selectedLabel);
+      return [value, label];
+    },
+
+    getColumnIndexes() {
+      const columns = this.$children.map((pickerColumn, columnIndex) => {
+        return {
+          column: columnIndex,
+          index: pickerColumn._selectedIndex,
+        };
+      });
+      return columns;
+    },
+
     onConfirm() {
-      this.triggerEvent('confirm', this.getSelectedValues());
+      const [value, label] = this.getSelectedValue();
+      const columns = this.getColumnIndexes();
+
+      this.close('confirm-btn');
+      this.triggerEvent('change', { value, label, columns });
+      this.triggerEvent('confirm', { value, label, columns });
     },
+
+    triggerColumnChange({ column, index }) {
+      const [value, label] = this.getSelectedValue();
+      this.triggerEvent('pick', { value, label, column, index });
+    },
+
     onCancel() {
+      this.close('cancel-btn');
       this.triggerEvent('cancel');
     },
-    triggerChange({ column, index, value }) {
-      this.triggerEvent('change', { column, index, value });
+
+    onPopupChange(e) {
+      const { visible } = e.detail;
+
+      this.close('overlay');
+      this.triggerEvent('visible-change', { visible });
+    },
+
+    close(trigger) {
+      if (this.data.autoClose) {
+        this.setData({ visible: false });
+      }
+      this.triggerEvent('close', { trigger });
     },
   };
 
-  // 给 column 打标 标识顺序
   ready() {
-    const columns = this.getPickerColumns();
-    columns.map((column, index) => (column.columnIndex = index));
+    this.$children.map((column, index) => (column.columnIndex = index));
   }
 }

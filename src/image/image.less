@@ -1,32 +1,46 @@
 @import '../common/style/index.less';
-@import '../common/style/_variables.less';
+
+@image-color: var(--td-image-color, @font-gray-3);
+@image-loading-bg-color: var(--td-image-loading-bg-color, @bg-color-secondarycontainer);
+@image-loading-color: var(--td-image-loading-color, @font-gray-3);
+@image-round-radius: var(--td-image-round-radius, @radius-default);
 
 .@{prefix}-image {
+  color: @image-color;
+  vertical-align: top;
+
   &__mask {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f2f2f2;
-    color: #ccc;
+    background-color: @image-loading-bg-color;
+    color: @image-loading-color;
   }
 
   &--loading-text {
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
   }
 
   &__common {
     width: 100%;
     height: 100%;
   }
-}
 
-.round {
-  border-radius: @border-radius;
-  overflow: hidden;
-}
+  &--shape {
+    &-circle {
+      border-radius: 50%;
+      overflow: hidden;
+    }
 
-.circle {
-  border-radius: @border-radius-50;
-  overflow: hidden;
+    &-round {
+      border-radius: @image-round-radius;
+      overflow: hidden;
+    }
+
+    &-square {
+      border-radius: 0;
+      overflow: hidden;
+    }
+  }
 }

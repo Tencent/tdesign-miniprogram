@@ -1,0 +1,10 @@
+<view class="demo">
+  <view class="demo-title">Message 消息通知</view>
+  <view class="demo-desc"> 用于轻量级反馈或提示，不会打断用户操作。 </view>
+  <t-demo title="01 组件类型" desc="消息通知内容为文本、带操作按钮">
+    <base />
+  </t-demo>
+  <t-demo title="02 组件状态" desc="消息组件风格">
+    <theme />
+  </t-demo>
+</view>

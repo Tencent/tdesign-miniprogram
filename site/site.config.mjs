@@ -23,7 +23,7 @@ export default {
           name: 'used',
           meta: { docType: 'explain' },
           path: '/miniprogram/used',
-          component: () => import('@/../USED.md'),
+          component: () => import('@pages/used.vue'),
         },
         {
           title: '更新日志',
@@ -31,6 +31,20 @@ export default {
           meta: { docType: 'explain' },
           path: '/miniprogram/changelog',
           component: () => import('~/CHANGELOG.md'),
+        },
+        {
+          title: '样式覆盖',
+          name: 'custom-style',
+          meta: { docType: 'explain' },
+          path: '/miniprogram/custom-style',
+          component: () => import('@docs/custom-style.md'),
+        },
+        {
+          title: '自定义主题',
+          name: 'custom-theme',
+          meta: { docType: 'explain' },
+          path: '/miniprogram/custom-theme',
+          component: () => import('@docs/custom-theme.md'),
         },
         {
           title: '组件概览',
@@ -73,6 +87,20 @@ export default {
           path: '/miniprogram/components/icon',
           component: () => import('@/icon/README.md'),
         },
+        {
+          title: 'Layout 布局',
+          name: 'layout',
+          meta: { docType: 'base' },
+          path: '/miniprogram/components/col',
+          component: () => import('@/col/README.md'),
+        },
+        {
+          title: 'Link 链接',
+          name: 'link',
+          meta: { docType: 'base' },
+          path: '/miniprogram/components/link',
+          component: () => import('@/link/README.md'),
+        },
       ],
     },
     {
@@ -80,19 +108,19 @@ export default {
       type: 'component',
       children: [
         {
+          title: 'BackTop 返回顶部',
+          name: 'back-top',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/back-top',
+          component: () => import('@/back-top/README.md'),
+        },
+        {
           title: 'Drawer 抽屉',
           name: 'drawer',
           meta: { docType: 'navigation' },
           path: '/miniprogram/components/drawer',
           component: () => import('@/drawer/README.md'),
         },
-        // {
-        //   title: 'ImageViewer 图片预览',
-        //   name: 'image-viewer',
-        //   meta: { docType: 'navigation' },
-        //   path: '/miniprogram/components/image-viewer',
-        //   component: () => import('@/image-viewer/README.md'),
-        // },
         {
           title: 'Indexes 索引',
           name: 'indexes',
@@ -101,19 +129,19 @@ export default {
           component: () => import('@/indexes/README.md'),
         },
         {
-          title: 'Navbar 导航条',
+          title: 'Navbar 导航栏',
           name: 'navbar',
           meta: { docType: 'navigation' },
           path: '/miniprogram/components/navbar',
           component: () => import('@/navbar/README.md'),
         },
-        // {
-        //   title: 'SegmentedControl 分段器',
-        //   name: 'segmented-control',
-        //   meta: { docType: 'navigation' },
-        //   path: '/miniprogram/components/segmented-control',
-        //   component: () => import('@/segmented-control/README.md'),
-        // },
+        {
+          title: 'SideBar 侧边栏',
+          name: 'sidebar',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/side-bar',
+          component: () => import('@/side-bar/README.md'),
+        },
         {
           title: 'Steps 步骤条',
           name: 'steps',
@@ -142,7 +170,21 @@ export default {
       type: 'component',
       children: [
         {
-          title: 'CheckBox 复选框',
+          title: 'Calendar 日历',
+          name: 'calendar',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/calendar',
+          component: () => import('@/calendar/README.md'),
+        },
+        {
+          title: 'Cascader 级联选择器',
+          name: 'cascader',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/cascader',
+          component: () => import('@/cascader/README.md'),
+        },
+        {
+          title: 'CheckBox 多选框',
           name: 'checkbox',
           meta: { docType: 'form' },
           path: '/miniprogram/components/checkbox',
@@ -219,7 +261,14 @@ export default {
           component: () => import('@/textarea/README.md'),
         },
         {
-          title: 'UpLoad 上传',
+          title: 'TreeSelect 树形选择',
+          name: 'treeSelect',
+          meta: { docType: 'form' },
+          path: '/miniprogram/components/tree-select',
+          component: () => import('@/tree-select/README.md'),
+        },
+        {
+          title: 'Upload 上传',
           name: 'upload',
           meta: { docType: 'form' },
           path: '/miniprogram/components/upload',
@@ -245,7 +294,6 @@ export default {
           path: '/miniprogram/components/badge',
           component: () => import('@/badge/README.md'),
         },
-
         {
           title: 'Cell 单元格',
           name: 'cell',
@@ -268,13 +316,6 @@ export default {
           component: () => import('@/count-down/README.md'),
         },
         {
-          title: 'DropdownMenu 下拉菜单',
-          name: 'dropdown-menu',
-          meta: { docType: 'data' },
-          path: '/miniprogram/components/dropdown-menu',
-          component: () => import('@/dropdown-menu/README.md'),
-        },
-        {
           title: 'Empty 空状态',
           name: 'empty',
           meta: { docType: 'data' },
@@ -289,6 +330,13 @@ export default {
           component: () => import('@/footer/README.md'),
         },
         {
+          title: 'Image 图片',
+          name: 'image',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/image',
+          component: () => import('@/image/README.md'),
+        },
+        {
           title: 'Grid 宫格',
           name: 'grid',
           meta: { docType: 'data' },
@@ -296,11 +344,25 @@ export default {
           component: () => import('@/grid/README.md'),
         },
         {
-          title: 'Image 图片',
-          name: 'image',
+          title: 'ImageViewer 图片预览',
+          name: 'image-viewer',
           meta: { docType: 'data' },
-          path: '/miniprogram/components/image',
-          component: () => import('@/image/README.md'),
+          path: '/miniprogram/components/image-viewer',
+          component: () => import('@/image-viewer/README.md'),
+        },
+        {
+          title: 'Progress 进度条',
+          name: 'progress',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/progress',
+          component: () => import('@/progress/README.md'),
+        },
+        {
+          title: 'Result 结果',
+          name: 'result',
+          meta: { docType: 'data' },
+          path: '/miniprogram/components/result',
+          component: () => import('@/result/README.md'),
         },
         {
           title: 'Skeleton 骨架屏',
@@ -310,9 +372,9 @@ export default {
           component: () => import('@/skeleton/README.md'),
         },
         {
-          title: 'Sticky 吸顶容器',
+          title: 'Sticky 吸顶',
           name: 'sticky',
-          meta: { docType: 'data' },
+          meta: { docType: 'navigation' },
           path: '/miniprogram/components/sticky',
           component: () => import('@/sticky/README.md'),
         },
@@ -333,7 +395,7 @@ export default {
       ],
     },
     {
-      title: '消息提醒',
+      title: '反馈',
       type: 'component', // 组件文档
       children: [
         {
@@ -344,18 +406,18 @@ export default {
           component: () => import('@/action-sheet/README.md'),
         },
         {
-          title: 'BackTop 返回顶部',
-          name: 'back-top',
-          meta: { docType: 'navigation' },
-          path: '/miniprogram/components/back-top',
-          component: () => import('@/back-top/README.md'),
-        },
-        {
-          title: 'Dialog 弹出框',
+          title: 'Dialog 对话框',
           name: 'dialog',
           meta: { docType: 'message' },
           path: '/miniprogram/components/dialog',
           component: () => import('@/dialog/README.md'),
+        },
+        {
+          title: 'DropdownMenu 下拉菜单',
+          name: 'dropdown-menu',
+          meta: { docType: 'navigation' },
+          path: '/miniprogram/components/dropdown-menu',
+          component: () => import('@/dropdown-menu/README.md'),
         },
         {
           title: 'Loading 加载',
@@ -371,26 +433,26 @@ export default {
           path: '/miniprogram/components/message',
           component: () => import('@/message/README.md'),
         },
-        // {
-        //   title: 'NoticeBar 公告栏',
-        //   name: 'noticebar',
-        //   meta: { docType: 'message' },
-        //   path: '/miniprogram/components/noticebar',
-        //   component: () => import('@/noticebar/README.md'),
-        // },
+        {
+          title: 'NoticeBar 公告栏',
+          name: 'noticebar',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/notice-bar',
+          component: () => import('@/notice-bar/README.md'),
+        },
+        {
+          title: 'Overlay 遮罩层',
+          name: 'overlay',
+          meta: { docType: 'message' },
+          path: '/miniprogram/components/overlay',
+          component: () => import('@/overlay/README.md'),
+        },
         {
           title: 'Popup 弹出层',
           name: 'popup',
           meta: { docType: 'message' },
           path: '/miniprogram/components/popup',
           component: () => import('@/popup/README.md'),
-        },
-        {
-          title: 'Progress 进度条',
-          name: 'progress',
-          meta: { docType: 'message' },
-          path: '/miniprogram/components/progress',
-          component: () => import('@/progress/README.md'),
         },
         {
           title: 'PullDownRefresh 下拉刷新',

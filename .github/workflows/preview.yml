@@ -1,0 +1,67 @@
+name: PREVIEW
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  request-preview:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'issue_comment' && github.event.issue.pull_request && startsWith(github.event.comment.body, '预览')
+    steps:
+      - run: |
+          timestamp=$(date +%s)
+          echo "timestamp=${timestamp}" >> $GITHUB_OUTPUT
+        id: time
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            正在构建预览的二维码，请稍等...
+          comment_tag: ${{steps.time.outputs.timestamp}}
+      - uses: LeeJim/pull-request-comment-branch@main
+        id: comment-branch
+      - uses: actions/checkout@v3
+        if: success()
+        with:
+          ref: ${{ steps.comment-branch.outputs.head_ref }}
+          repository: ${{ steps.comment-branch.outputs.head_repo_name_with_owner }}
+      - uses: ./.github/actions/install-dep
+      - run: npm run build
+        shell: bash
+      - id: get-robot
+        run: |
+          comment=${{ env.comment }}
+          echo "robot=${comment: 2: 1}" >> $GITHUB_OUTPUT
+        shell: bash
+        env:
+          comment: ${{ github.event.comment.body }}
+      - name: get preview qrcode
+        id: preview
+        uses: LeeJim/setup-miniprogram@main
+        with:
+          project_type: miniProgram
+          action_type: preview
+          project_path: ./_example
+          es6: true
+          es7: true
+          minify: true
+          robot: ${{ steps.get-robot.outputs.robot }}
+        env:
+          MINI_APP_ID: ${{ secrets.TDESIGN_APP_ID }}
+          MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}
+      - name: Upload qrcode to Tencent COS
+        uses: LeeJim/tencent-cos-action@main
+        id: cos
+        with:
+          secretId: ${{ secrets.TENCENT_COS_SECRET_ID }}
+          secretKey: ${{ secrets.TENCENT_COS_SECRET_KEY }}
+          bucket: mp-qrcode-1255404841
+          region: ap-guangzhou
+          content: ${{ steps.preview.outputs.preview-qrcode }}
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          message: |
+            <img alt="qrcode" src="${{ steps.cos.outputs.url }}" width="256" />
+          comment_tag: ${{steps.time.outputs.timestamp}}

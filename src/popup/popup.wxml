@@ -1,23 +1,31 @@
-<t-transition
-  visible="{{visible}}"
-  custom-class="{{className}}"
-  name="{{dataTransitionProps.name}}"
-  appear="{{dataTransitionProps.appear}}"
-  durations="{{dataTransitionProps.durations}}"
-  destoryOnHide="{{destroyOnClose}}"
-  catch:touchmove="{{preventScrollThrough ? 'preventEvent' : ''}}"
+<wxs src="./popup.wxs" module="utils" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  wx:if="{{realVisible}}"
+  style="{{_._style([utils.getPopupStyles(zIndex), style, customStyle])}}"
+  class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} class {{prefix}}-class"
+  bind:transitionend="onTransitionEnd"
+  aria-role="dialog"
+  aria-modal="{{ true }}"
 >
-  <view
-    class="{{classPrefix}}__overlay {{prefix}}-class-overlay"
-    bind:tap="onOverlayClick"
-    style="z-index:{{zIndex -1}}"
-  />
-  <view class="{{classPrefix}}__content {{prefix}}-class-content" style="z-index:{{zIndex}}">
-    <view class="{{classPrefix}}__close">
-      <t-icon name="close" wx:if="{{closeBtn}}" bind:tap="onCloseClick" size="64rpx" />
-      <slot name="closeBtn" class="{{classPrefix}}-slot" />
-    </view>
+  <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <slot name="content" />
     <slot />
+    <view class="{{classPrefix}}__close" bind:tap="handleClose">
+      <t-icon name="close" wx:if="{{closeBtn}}" size="64rpx" />
+      <slot name="close-btn" class="{{classPrefix}}-slot" />
+    </view>
   </view>
-</t-transition>
+</view>
+
+<t-overlay
+  id="popup-overlay"
+  wx:if="{{showOverlay}}"
+  visible="{{visible}}"
+  class="test"
+  z-index="{{overlayProps.zIndex || 11000}}"
+  prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
+  bind:tap="handleOverlayClick"
+  style="{{overlayProps.style || ''}}"
+/>

@@ -1,0 +1,5 @@
+<view class="button-example">
+  <t-button theme="primary" icon="app" content="填充按钮" size="large" class="margin"></t-button>
+  <t-button theme="primary" size="large" loading class="margin">加载中</t-button>
+  <t-button theme="primary" icon="search" shape="square" size="large" class="margin" aria-label="搜索"></t-button>
+</view>

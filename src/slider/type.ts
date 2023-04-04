@@ -6,12 +6,12 @@
 
 export interface TdSliderProps {
   /**
-   * 颜色，[已选择, 未选择]
-   * @default ['#0052D9', 'rgba(220, 220, 220, 1)']
+   * 自定义组件样式
+   * @default ''
    */
-  colors?: {
-    type: ArrayConstructor;
-    value?: Array<string>;
+  style?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 是否禁用组件
@@ -20,14 +20,6 @@ export interface TdSliderProps {
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 禁用状态滑动条的颜色，[已选, 未选]
-   * @default ['#bbd3fb', '#dcdcdc']
-   */
-  disabledColor?: {
-    type: ArrayConstructor;
-    value?: Array<string>;
   };
   /**
    * 组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名
@@ -41,8 +33,7 @@ export interface TdSliderProps {
    * @default false
    */
   label?: {
-    type: StringConstructor;
-    optionalTypes: Array<BooleanConstructor>;
+    type: null;
     value?: string | boolean;
   };
   /**
@@ -50,8 +41,7 @@ export interface TdSliderProps {
    * @default {}
    */
   marks?: {
-    type: ObjectConstructor;
-    optionalTypes: Array<ArrayConstructor>;
+    type: null;
     value?: Record<number, string> | Array<number>;
   };
   /**
@@ -95,19 +85,27 @@ export interface TdSliderProps {
     value?: number;
   };
   /**
+   * 滑块风格
+   * @default default
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'default' | 'capsule';
+  };
+  /**
    * 滑块值
+   * @default 0
    */
   value?: {
-    type: NumberConstructor;
-    optionalTypes: Array<ArrayConstructor>;
+    type: null;
     value?: SliderValue;
   };
   /**
    * 滑块值，非受控属性
+   * @default 0
    */
   defaultValue?: {
-    type: NumberConstructor;
-    optionalTypes: Array<ArrayConstructor>;
+    type: null;
     value?: SliderValue;
   };
 }

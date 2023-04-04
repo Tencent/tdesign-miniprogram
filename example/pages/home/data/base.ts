@@ -1,5 +1,5 @@
 const base = {
-  name: '设计基础',
+  name: '基础',
   icon: 'app',
   childArr: [
     // {
@@ -30,10 +30,15 @@ const base = {
       name: 'Icon',
       label: '图标',
     },
-    // {
-    //   name: 'Layout',
-    //   label: '布局',
-    // },
+    {
+      name: 'Link',
+      label: '链接',
+    },
+    {
+      name: 'Layout',
+      label: '布局',
+      path: '/pages/col/col',
+    },
     // {
     //   name: 'Typography',
     //   label: '字体',

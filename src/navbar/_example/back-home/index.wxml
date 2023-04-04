@@ -1,0 +1,20 @@
+<t-navbar title="标题文字">
+  <view slot="capsule" class="custom-capsule">
+    <t-icon
+      size="20"
+      bind:tap="onBack"
+      aria-role="button"
+      aria-label="返回"
+      name="chevron-left"
+      class="custom-capsule__icon"
+    />
+    <t-icon
+      size="20"
+      bind:tap="onGoHome"
+      aria-role="button"
+      aria-label="首页"
+      name="home"
+      class="custom-capsule__icon"
+    />
+  </view>
+</t-navbar>

@@ -1,0 +1,5 @@
+<t-radio value="radio1" label="单选" default-checked />
+
+<view class="block"></view>
+
+<t-radio value="radio2" label="单选" placement="right" default-checked />

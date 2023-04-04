@@ -1,0 +1,16 @@
+<view class="demo">
+  <view class="demo-title">Transition 过渡</view>
+  <view class="demo-desc">过渡。</view>
+  <t-demo title="01 组件类型" desc="基础示例" padding>
+    <base />
+  </t-demo>
+  <t-demo desc="自定义动画" padding>
+    <custom />
+  </t-demo>
+  <t-demo desc="首次出现动画" padding>
+    <appear />
+  </t-demo>
+  <t-demo desc="隐藏不渲染" padding>
+    <destroy />
+  </t-demo>
+</view>

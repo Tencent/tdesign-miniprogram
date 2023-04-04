@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider :base 1`] = `
+<main>
+  <t-divider
+    class="divider"
+  >
+    <wx-view
+      class="class t-class "
+    >
+      <wx-view
+        class="t-divider t-divider--horizontal t-divider--center  "
+        style=""
+      >
+        <wx-view
+          class="t-class-content t-divider__content"
+        />
+      </wx-view>
+    </wx-view>
+  </t-divider>
+</main>
+`;

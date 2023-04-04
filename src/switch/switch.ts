@@ -12,11 +12,10 @@ export default class Switch extends SuperComponent {
 
   properties = props;
 
-  // 组件的内部数据
   data = {
+    prefix,
     classPrefix: name,
-    isActive: false,
-    bodyStyle: '',
+    checked: false,
   };
 
   // lifetimes = {
@@ -25,7 +24,7 @@ export default class Switch extends SuperComponent {
   //     const [activeValue] = customValue;
 
   //     this.setData({
-  //       isActive: value === activeValue,
+  //       checked: value === activeValue,
   //     });
 
   //   },
@@ -42,14 +41,13 @@ export default class Switch extends SuperComponent {
       const [activeValue] = this.data.customValue;
 
       this.setData({
-        isActive: val === activeValue,
+        checked: val === activeValue,
       });
-      this.handleColorChange();
     },
   };
 
   methods = {
-    switchChange() {
+    handleSwitch() {
       const { disabled, value, customValue } = this.data;
       const [activeValue, inactiveValue] = customValue;
       if (disabled) return;
@@ -57,21 +55,6 @@ export default class Switch extends SuperComponent {
       this._trigger('change', {
         value: value === activeValue ? inactiveValue : activeValue,
       });
-    },
-    handleColorChange() {
-      const { disabled, colors = [] } = this.data;
-      const [activedColor = '#0052d9', inactivedColor = 'rgba(0, 0, 0, .26)'] = colors;
-      if (!disabled) {
-        this.setData({
-          bodyStyle: `background-color: ${this.data.isActive ? activedColor : inactivedColor}`,
-        });
-      }
-    },
-    onTapBackground() {
-      this.switchChange();
-    },
-    onTapDot() {
-      this.switchChange();
     },
   };
 }

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`image :base 1`] = `
+<main>
+  <t-image>
+    <wx-view
+      ariaHidden="{{false}}"
+      class="class t-class t-image t-image__mask t-image--failed t-image--shape-square"
+      style=""
+    >
+      <wx-view
+        class="t-class-load"
+        style="font-size: 44rpx"
+      >
+        <t-icon>
+          <wx-view
+            ariaHidden="{{false}}"
+            ariaLabel="加载失败"
+            ariaRole="img"
+            class="t-icon class t-class"
+            style=""
+            bind:tap="onTap"
+          >
+            <wx-label
+              class="t-icon-close t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
+      </wx-view>
+    </wx-view>
+    <wx-image
+      ariaHidden="{{true}}"
+      ariaLabel=""
+      class="class t-class t-image t-image--shape-square"
+      hidden="{{true}}"
+      id="image"
+      lazyLoad="{{false}}"
+      mode="scaleToFill"
+      showMenuByLongpress="{{false}}"
+      src=""
+      style=""
+      webp="{{false}}"
+      bind:error="onLoadError"
+      bind:load="onLoaded"
+    />
+  </t-image>
+</main>
+`;
+
+exports[`image :success 1`] = `
+<main>
+  <t-image
+    id="root"
+    bind:load="handleLoad"
+  >
+    <wx-image
+      ariaHidden="{{false}}"
+      ariaLabel=""
+      class="class t-class t-image t-image--shape-square"
+      hidden="{{false}}"
+      id="image"
+      lazyLoad="{{false}}"
+      mode="heightFix"
+      showMenuByLongpress="{{false}}"
+      src="https://www.tencent.com/img/index/menu_logo.png"
+      style="height: 0px; width: 0.00px;"
+      webp="{{false}}"
+      bind:error="onLoadError"
+      bind:load="onLoaded"
+    />
+  </t-image>
+</main>
+`;

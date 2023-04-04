@@ -1,0 +1,65 @@
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showTextAndTitle"
+  bind:tap="showDialog"
+  block
+>
+  反馈类-基础
+</t-button>
+<t-dialog
+  visible="{{showTextAndTitle}}"
+  title="对话框标题"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ confirmBtn }}"
+  bind:confirm="closeDialog"
+/>
+
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showContentOnly"
+  bind:tap="showDialog"
+  block
+>
+  反馈类-无标题
+</t-button>
+<t-dialog
+  visible="{{showContentOnly}}"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="{{ confirmBtn }}"
+  bind:confirm="closeDialog"
+/>
+
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showMultiTextAndTitle"
+  bind:tap="showDialog"
+  block
+>
+  反馈类-内容超长
+</t-button>
+<t-dialog
+  visible="{{showMultiTextAndTitle}}"
+  title="对话框标题"
+  confirm-btn="{{ confirmBtn }}"
+  bind:confirm="closeDialog"
+>
+  <scroll-view slot="content" scroll-y class="long-content">
+    <view class="content-container"
+      >这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+    </view>
+  </scroll-view>
+</t-dialog>

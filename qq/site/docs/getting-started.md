@@ -16,7 +16,7 @@ spline: explain
 小程序组件示例小程序，请使用QQ扫码预览 ↓
 <br/>
 
-<img width="260" src="https://tdesign.gtimg.com/site/qrcode.jpeg" />
+<img width="260" src="https://spark-static.gamecenter.qq.com/xy/openqa/qrcode.jpeg" />
 
 ## 使用之前
 
@@ -26,7 +26,7 @@ spline: explain
 
 ### 使用 NPM
 
-小程序已经支持使用 NPM 安装第三方包，详见 [NPM 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)
+小程序已经支持使用 NPM 安装第三方包，详见 [NPM 支持](https://q.qq.com/wiki/cloud/guide/functions/npm.html)
 
 ```bash
 npm i tdesign-qq-miniprogram -S --production

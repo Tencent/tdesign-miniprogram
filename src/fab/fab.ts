@@ -9,7 +9,7 @@ const name = `${prefix}-fab`;
 export default class Fab extends SuperComponent {
   properties = props;
 
-  externalClasses = [`${prefix}-class`, `${prefix}-class-button`];
+  externalClasses = [`class`, `${prefix}-class`, `${prefix}-class-button`];
 
   data = {
     prefix,
@@ -18,6 +18,18 @@ export default class Fab extends SuperComponent {
       size: 'large',
       shape: 'circle',
       theme: 'primary',
+    },
+  };
+
+  observers = {
+    text(val) {
+      if (val) {
+        this.setData({
+          baseButtonProps: {
+            shape: 'round',
+          },
+        });
+      }
     },
   };
 

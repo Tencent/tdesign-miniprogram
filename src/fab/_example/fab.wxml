@@ -1,0 +1,19 @@
+<view class="demo-title">Fab 悬浮按钮</view>
+<view class="demo-desc">当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布</view>
+<t-demo title="01 组件类型" desc="纯图标悬浮按钮">
+  <view class="wrapper">
+    <t-button theme="primary" size="large" block variant="outline" bind:tap="handleChange" data-type="base">
+      纯图标悬浮按钮
+    </t-button>
+  </view>
+</t-demo>
+<t-demo desc="图标加文字悬浮按钮">
+  <view class="wrapper">
+    <t-button theme="primary" size="large" block variant="outline" bind:tap="handleChange" data-type="advance">
+      图标加文字悬浮按钮
+    </t-button>
+  </view>
+</t-demo>
+
+<base wx:if="{{type == 'base'}}" />
+<advance wx:else />

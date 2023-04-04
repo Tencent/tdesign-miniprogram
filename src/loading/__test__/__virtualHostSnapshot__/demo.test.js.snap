@@ -1,0 +1,170 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Loading base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="loading-container-flex"
+  >
+    <t-loading
+      class="wrapper"
+      size="40rpx"
+      theme="circular"
+    />
+    <t-loading
+      class="wrapper"
+      size="40rpx"
+      theme="spinner"
+    />
+    <t-loading
+      class="wrapper"
+      size="80rpx"
+      theme="dots"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`Loading Loading duration demo works fine 1`] = `
+<duration>
+  <t-loading
+    duration="{{1200}}"
+    size="52rpx"
+    tClassText="text-l"
+    text="加载中..."
+    theme="circular"
+  />
+  <wx-view
+    class="slider-container"
+  >
+    <t-slider
+      class="slider-class"
+      label="{{true}}"
+      max="{{1500}}"
+      min="{{100}}"
+      value="{{800}}"
+      bind:change="durationChange"
+    />
+  </wx-view>
+</duration>
+`;
+
+exports[`Loading Loading horizontal demo works fine 1`] = `
+<horizontal>
+  <wx-view
+    class="loading-container-flex"
+  >
+    <t-loading
+      class="wrapper"
+      size="40rpx"
+      text="加载中..."
+      theme="circular"
+    />
+    <t-loading
+      class="wrapper"
+      inheritColor="{{true}}"
+      size="40rpx"
+      text="加载中..."
+      theme="spinner"
+    />
+  </wx-view>
+</horizontal>
+`;
+
+exports[`Loading Loading size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="loading-size-demo"
+  >
+    <t-loading
+      class="large"
+      size="64rpx"
+      text="加载中..."
+      theme="circular"
+    />
+    <wx-view
+      class="demo-desc"
+    >
+      中尺寸
+    </wx-view>
+    <t-loading
+      class="middle"
+      size="56rpx"
+      text="加载中..."
+      theme="circular"
+    />
+    <wx-view
+      class="demo-desc"
+    >
+      小尺寸
+    </wx-view>
+    <t-loading
+      size="48rpx"
+      text="加载中..."
+      theme="circular"
+    />
+  </wx-view>
+</size>
+`;
+
+exports[`Loading Loading status demo works fine 1`] = `
+<status>
+  <wx-view
+    class="loading-container-flex"
+  >
+    <t-switch
+      colors="{{
+        Array [
+          "#00A870",
+        ]
+      }}"
+      slot="note"
+      value="{{false}}"
+      bind:change="switchChange"
+    />
+    <span
+      class="text-info"
+    >
+       请求结束，隐藏loading加载 
+    </span>
+  </wx-view>
+  <t-loading
+    delay="{{1000}}"
+    loading="{{false}}"
+    size="40rpx"
+    text="加载中..."
+    theme="circular"
+  />
+</status>
+`;
+
+exports[`Loading Loading text demo works fine 1`] = `
+<wx-text>
+  <t-loading
+    indicator="{{false}}"
+    text="加载中..."
+  />
+</wx-text>
+`;
+
+exports[`Loading Loading vertical demo works fine 1`] = `
+<vertical>
+  <div
+    class="box"
+  >
+    <t-loading
+      class="wrapper"
+      layout="vertical"
+      size="40rpx"
+      text="加载中"
+      theme="circular"
+    />
+    <t-loading
+      class="wrapper"
+      layout="vertical"
+      size="40rpx"
+      text="加载中"
+      theme="spinner"
+    />
+  </div>
+</vertical>
+`;

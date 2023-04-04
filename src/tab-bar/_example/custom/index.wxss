@@ -1,0 +1,7 @@
+.wrapper {
+  --td-tab-bar-border-color: #e7e7e7;
+  --td-tab-bar-bg-color: #eee;
+  --td-tab-bar-hover-color: #ddd;
+  --td-tab-bar-item-color: #bbb;
+  --td-tab-bar-item-active-color: #333;
+}

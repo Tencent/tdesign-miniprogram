@@ -1,0 +1,8 @@
+<view class="page">
+  <view class="demo-section__wrapper">
+    <t-result theme="success" title="成功状态" description="描述文字" />
+  </view>
+  <view class="demo-section__wrapper">
+    <t-button theme="primary" block size="large" variant="outline" bind:tap="goBack">返回</t-button>
+  </view>
+</view>

@@ -6,13 +6,13 @@
 
 import { TdStepperProps } from './type';
 const props: TdStepperProps = {
-  /** 禁用全部操作 */
-  disabled: {
+  /** 禁用输入框 */
+  disableInput: {
     type: Boolean,
     value: false,
   },
-  /** 禁用输入框 */
-  disableInput: {
+  /** 禁用全部操作 */
+  disabled: {
     type: Boolean,
     value: false,
   },
@@ -38,6 +38,11 @@ const props: TdStepperProps = {
   step: {
     type: Number,
     value: 1,
+  },
+  /** 组件尺寸 */
+  size: {
+    type: String,
+    value: 'medium',
   },
   /** 组件风格 */
   theme: {

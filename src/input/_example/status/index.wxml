@@ -1,0 +1,3 @@
+<t-input label="标签文字" placeholder="请输入文字" value="已输入文字" status="error" tips="辅助说明" />
+
+<t-input label="标签文字" value="不可编辑文字" disabled />

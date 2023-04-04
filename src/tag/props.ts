@@ -22,13 +22,11 @@ const props: TdTagProps = {
   },
   /** 标签中的图标，可自定义图标呈现 */
   icon: {
-    type: String,
-    value: '',
+    type: null,
   },
   /** 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80 */
   maxWidth: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
   /** 标签类型，有三种：方形、圆角方形、标记型 */
   shape: {

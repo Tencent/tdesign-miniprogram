@@ -1,0 +1,176 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`picker :base 1`] = `
+<t-picker
+  data-key="yearSeasons"
+  id="yearSeasons"
+  bind:cancel="onPickerCancel"
+  bind:change="onPickerChange"
+  bind:pick="onColumnChange"
+>
+  <t-popup
+    class="class"
+    bind:visible-change="onPopupChange"
+  >
+    <wx-view
+      ariaModal="{{true}}"
+      ariaRole="dialog"
+      class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active class t-class"
+      style="z-index:11500;"
+      bind:transitionend="onTransitionEnd"
+    >
+      <wx-view
+        class="t-popup__content t-class-content"
+      >
+        <wx-view
+          class="t-picker t-class"
+          slot="content"
+          style=""
+        >
+          <wx-view
+            class="t-picker__toolbar"
+          >
+            <wx-view
+              class="t-picker__cancel t-class-cancel"
+              bind:tap="onCancel"
+            >
+              取消
+            </wx-view>
+            <wx-view
+              class="t-picker__title t-class-title"
+            >
+              
+            </wx-view>
+            <wx-view
+              class="t-picker__confirm t-class-confirm"
+              bind:tap="onConfirm"
+            >
+              确认
+            </wx-view>
+          </wx-view>
+          <wx-view
+            class="t-picker__main"
+          >
+            <t-picker-item>
+              <wx-view
+                class="t-picker-item__group class t-class"
+                style=""
+                bind:touchcancel="onTouchEnd"
+                bind:touchend="onTouchEnd"
+                catch:touchmove="onTouchMove"
+                bind:touchstart="onTouchStart"
+              >
+                <wx-view
+                  class="t-picker-item__wrapper"
+                  style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
+                >
+                  <wx-view
+                    class="t-picker-item__item t-picker-item__item--active"
+                    data-index="{{0}}"
+                  >
+                    
+      2021年
+    
+                  </wx-view>
+                  <wx-view
+                    class="t-picker-item__item"
+                    data-index="{{1}}"
+                  >
+                    
+      2020年
+    
+                  </wx-view>
+                  <wx-view
+                    class="t-picker-item__item"
+                    data-index="{{2}}"
+                  >
+                    
+      2019年
+    
+                  </wx-view>
+                </wx-view>
+              </wx-view>
+            </t-picker-item>
+            <t-picker-item>
+              <wx-view
+                class="t-picker-item__group class t-class"
+                style=""
+                bind:touchcancel="onTouchEnd"
+                bind:touchend="onTouchEnd"
+                catch:touchmove="onTouchMove"
+                bind:touchstart="onTouchStart"
+              >
+                <wx-view
+                  class="t-picker-item__wrapper"
+                  style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
+                >
+                  <wx-view
+                    class="t-picker-item__item t-picker-item__item--active"
+                    data-index="{{0}}"
+                  >
+                    
+      春
+    
+                  </wx-view>
+                  <wx-view
+                    class="t-picker-item__item"
+                    data-index="{{1}}"
+                  >
+                    
+      夏
+    
+                  </wx-view>
+                  <wx-view
+                    class="t-picker-item__item"
+                    data-index="{{2}}"
+                  >
+                    
+      秋
+    
+                  </wx-view>
+                  <wx-view
+                    class="t-picker-item__item"
+                    data-index="{{3}}"
+                  >
+                    
+      冬
+    
+                  </wx-view>
+                </wx-view>
+              </wx-view>
+            </t-picker-item>
+            <wx-view
+              class="t-picker__mask t-picker__mask--top"
+            />
+            <wx-view
+              class="t-picker__mask t-picker__mask--bottom"
+            />
+            <wx-view
+              class="t-picker__indicator"
+            />
+          </wx-view>
+        </wx-view>
+        <wx-view
+          class="t-popup__close"
+          bind:tap="handleClose"
+        />
+      </wx-view>
+    </wx-view>
+    <t-overlay
+      class="test"
+      id="popup-overlay"
+      bind:tap="handleOverlayClick"
+    >
+      <wx-view
+        ariaLabel="关闭"
+        ariaRole="button"
+        class="t-overlay t-fade-enter t-fade-enter-active class"
+        style="z-index:11000;"
+        bind:tap="handleClick"
+        catch:touchmove="noop"
+        bind:transitionend="onTransitionEnd"
+      />
+    </t-overlay>
+  </t-popup>
+</t-picker>
+`;

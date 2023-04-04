@@ -1,0 +1,32 @@
+<view class="demo">
+  <view class="demo-title">Rate 评分</view>
+  <view class="demo-desc">用于对某行为/事物进行打分。</view>
+  <t-demo title="01 组件类型">
+    <view class="demo-desc">实心评分</view>
+    <base />
+
+    <view class="demo-desc">自定义评分</view>
+    <custom />
+
+    <view class="demo-desc">自定义评分数量</view>
+    <count />
+
+    <view class="demo-desc">带描述评分</view>
+    <show-text />
+  </t-demo>
+
+  <t-demo title="02 组件状态">
+    <action />
+  </t-demo>
+
+  <t-demo title="03 组件样式">
+    <view class="demo-desc">评分大小</view>
+    <size />
+
+    <view class="demo-desc">设置评分颜色</view>
+    <color />
+  </t-demo>
+
+  <t-demo title="04 特殊样式" desc="竖向带描述评分" />
+  <special />
+</view>

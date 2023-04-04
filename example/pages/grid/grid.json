@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "Grid宫格",
-  "usingComponents": {
-    "t-demo": "../../components/demo-block/index"
-  }
-}

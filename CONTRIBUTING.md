@@ -54,14 +54,14 @@ npm start
 此时会同时启动 `dist` 与 `example` 的构建服务，对应的开发路径与构建路径分别为：
 
 - `src` -> `miniprogram_dist`
-- `example` -> `_example`
+- `src/*/_exmaple` -> `example` -> `_example`
 
 使用微信开发者工具导入项目 `_example` 文件夹
 
 ### 组件开发
 
 - 在 `src` 路径下创建组件文件夹及对应的 `wxml` `ts` `json` `md` 文件
-- 在 `example/pages` 路径下创建组件示例页面，路由路径规范未`pages/${组件名}/${组件名}`，例如 `pages/button/button`
+- 在文件夹内创建 `_example`，路径下创建组件示例页面，路由路径规范为 `src/${组件名}/_example/${组件名}`，例如 `src/button/_example/button`。代码最终会拷贝到 `example/${组件名}/${组件名}` 目录。
 - 进行组件开发与示例页开发
 
 ### 官方文档开发

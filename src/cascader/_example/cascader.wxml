@@ -1,0 +1,23 @@
+<view class="demo">
+  <view class="demo-title">Cascader 级联选择器</view>
+  <view class="demo-desc">用于多层级数据的逐级选择。</view>
+
+  <t-demo title="01 类型" desc="">
+    <base />
+  </t-demo>
+  <t-demo desc="选项卡风格">
+    <theme-tab />
+  </t-demo>
+
+  <t-demo title="02 进阶" desc="带初始值">
+    <with-value />
+  </t-demo>
+
+  <t-demo desc="自定义 keys">
+    <keys />
+  </t-demo>
+
+  <t-demo desc="使用次级标题">
+    <with-title />
+  </t-demo>
+</view>

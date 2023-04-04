@@ -1,5 +1,9 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
-  class="{{classPrefix}} {{bordered ? classPrefix + '--border' : ''}} {{fixed ? classPrefix + '--fixed' : ''}} {{safeAreaInsetBottom ? classPrefix + '--safe' : ''}} t-class"
+  style="{{_._style([style, customStyle])}}"
+  class="{{_.cls(classPrefix, [['border', bordered], ['fixed', fixed], ['safe', safeAreaInsetBottom], shape])}} class {{prefix}}-class"
+  aria-role="tablist"
 >
   <slot />
 </view>

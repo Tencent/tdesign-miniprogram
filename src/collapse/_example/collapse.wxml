@@ -1,0 +1,24 @@
+<view class="demo">
+  <view class="demo-title">Collapse 折叠面板</view>
+  <view class="demo-desc">用于对复杂区域进行分组和隐藏 常用于订单信息展示等</view>
+
+  <t-demo title="01 组件类型" desc="基础折叠面板">
+    <base />
+  </t-demo>
+
+  <t-demo desc="向上展开">
+    <placement />
+  </t-demo>
+
+  <t-demo desc="带操作说明">
+    <action />
+  </t-demo>
+
+  <t-demo desc="手风琴式">
+    <accordion />
+  </t-demo>
+
+  <t-demo title="02 组件样式" desc="卡片折叠面板">
+    <theme />
+  </t-demo>
+</view>

@@ -18,8 +18,7 @@ export interface TdRateProps {
    * @default '#ED7B2F'
    */
   color?: {
-    type: StringConstructor;
-    optionalTypes: Array<ArrayConstructor>;
+    type: null;
     value?: string | Array<string>;
   };
   /**
@@ -31,20 +30,41 @@ export interface TdRateProps {
     value?: number;
   };
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 是否禁用评分
-   * @default false
    */
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
   };
   /**
-   * 评分图标的间距
-   * @default 6
+   * 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。
+   */
+  externalClasses?: {
+    type: ArrayConstructor;
+    value?: ['t-class', 't-class-icon', 't-class-text'];
+  };
+  /**
+   * 评分图标的间距，默认单位为 `px`, 示例：`8`
+   * @default 8
    */
   gap?: {
-    type: NumberConstructor;
-    value?: number;
+    type: null;
+    value?: string | number;
+  };
+  /**
+   * 自定义评分图标，[选中图标，未选中图标]
+   */
+  icon?: {
+    type: null;
+    value?: string | string[];
   };
   /**
    * 是否显示对应的辅助文字
@@ -55,8 +75,8 @@ export interface TdRateProps {
     value?: boolean;
   };
   /**
-   * 评分图标的大小，示例：`20`
-   * @default ''
+   * 评分图标的大小
+   * @default 24px
    */
   size?: {
     type: StringConstructor;
@@ -85,13 +105,5 @@ export interface TdRateProps {
   defaultValue?: {
     type: NumberConstructor;
     value?: number;
-  };
-  /**
-   * 形状类型，有描边类型和填充类型两种
-   * @default outline
-   */
-  variant?: {
-    type: StringConstructor;
-    value?: 'outline' | 'filled';
   };
 }

@@ -1,22 +1,21 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
-@link-color: #266fe8;
-@footer-info-font-size: @font-size-s;
-@footer-item-font-size: @font-size-s;
-@footer-title-font-size: @font-size-m;
-@footer-info-line-height: 32rpx;
-@footer-item-line-height: 40rpx;
-@footer-title-line-height: 48rpx;
-@footer-link-list-margin-bottom: 12rpx;
-@footer-icon-margin-right: 16rpx;
-@footer-item-padding-left: 6rpx;
-@footer-custom-item-padding: 10rpx;
-@footer-icon-width: 48rpx;
-@footer-icon-height: 48rpx;
-@footer-title-url-width: 256rpx;
-@footer-item-color: @link-color;
-@footer-copyright-info-color: @text-level-4-color;
+@footer-text-color: var(--td-footer-text-color, @font-gray-3);
+@footer-text-font-size: var(--td-footer-text-font-size, @font-size-s);
+@footer-text-line-height: var(--td-footer-text-line-height, 40rpx);
+@footer-text-margin-top: var(--td-footer-text-margin-top, 8rpx);
+@footer-link-color: var(--td-footer-link-color, @brand-color);
+@footer-link-font-size: var(--td-footer-link-font-size, @font-size-s);
+@footer-link-line-height: var(--td-footer-link-line-height, 40rpx);
+
+@footer-link-dividing-line-padding: var(--td-footer-link-dividing-line-padding, @spacer-1);
+@footer-link-dividing-line-color: var(--td-footer-link-dividing-line-color, @font-gray-3);
+@footer-logo-icon-width: var(--td-footer-logo-icon-width, 48rpx);
+@footer-logo-icon-height: var(--td-footer-logo-icon-height, 48rpx);
+@footer-logo-icon-margin-right: var(--td-footer-logo-icon-margin-right, @spacer);
+@footer-logo-title-font-size: var(--td-footer-logo-title-font-size, @font-size-m);
+@footer-logo-title-url-width: var(--td-footer-logo-title-url-width, 256rpx);
+@footer-logo-title-line-height: var(--td-footer-logo-title-line-height, 48rpx);
 
 .@{prefix}-footer {
   display: flex;
@@ -24,33 +23,34 @@
   align-items: center;
   justify-content: flex-start;
 
-  &__copyright-info {
-    font-size: @footer-info-font-size;
-    line-height: @footer-info-line-height;
-    color: @footer-copyright-info-color;
+  &__text {
+    font-size: @footer-text-font-size; // 版权信息文本大小
+    line-height: @footer-text-line-height; // 版权信息文本行高
+    color: @footer-text-color; // 版权信息文本颜色
+  }
+
+  &__link-list + &__text:not(:empty) {
+    margin-top: @footer-text-margin-top; // 版权信息顶部间距
   }
 
   &__link-list {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: @footer-link-list-margin-bottom;
   }
 
   &__link-item {
-    color: @footer-item-color;
-    font-size: @footer-item-font-size;
-    line-height: @footer-item-line-height;
-    padding-left: @footer-item-padding-left;
+    color: @footer-link-color; // 链接文本颜色
+    font-size: @footer-link-font-size; // 链接文本大小
+    line-height: @footer-link-line-height; // 链接文本行高
     text-decoration: underline;
   }
 
-  &__link-item:not(:last-child)::after {
-    content: '|';
-    color: @footer-item-color;
+  &__link-line {
+    font-size: 24rpx;
+    color: @footer-link-dividing-line-color; // 链接分界线颜色
     display: inline-block;
-    padding-left: @footer-custom-item-padding;
-    padding-right: @footer-custom-item-padding;
+    padding: 0 @footer-link-dividing-line-padding; // 链接分界线左右间距
   }
 
   &__logo {
@@ -60,19 +60,19 @@
   }
 
   &__icon {
-    width: @footer-icon-width;
-    height: @footer-icon-height;
-    margin-right: @footer-icon-margin-right;
+    width: @footer-logo-icon-width; // 图标宽度
+    height: @footer-logo-icon-height; // 图标高度
+    margin-right: @footer-logo-icon-margin-right; // 图标右部间距
   }
 
   &__title {
     font-weight: bold;
-    font-size: @footer-title-font-size;
-    line-height: @footer-title-line-height;
+    font-size: @footer-logo-title-font-size; // 图标配置，标题文本大小
+    line-height: @footer-logo-title-line-height; // 图标配置，标题文本行高
     font-style: italic;
   }
 
   &__title-url {
-    width: @footer-title-url-width;
+    width: @footer-logo-title-url-width; // 图标配置，链接跳转地址宽度
   }
 }

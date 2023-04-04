@@ -1,37 +1,45 @@
-<view
-  class="{{classPrefix}} t-class"
+<wxs src="../common/utils.wxs" module="_" />
+
+<scroll-view
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} class {{prefix}}-class"
+  scroll-top="{{scrollTop}}"
   bind:touchstart="onTouchStart"
   bind:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
+  bind:scroll="onScroll"
+  bindscrolltoupper="onScrollToTop"
+  bindscrolltolower="onScrollToBottom"
+  scroll-y
+  enable-back-to-top
+  enhanced
+  scroll-with-animation
+  bounces="{{false}}"
 >
   <view
-    class="{{classPrefix}}__bar {{classPrefix + '__bar--' + refreshTypes[refreshStatus]}}"
-    style="height: {{barHeight + 'rpx'}};"
+    class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
+    style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'rpx, 0);' : ''}}"
   >
-    <view class="{{classPrefix}}__content">
-      <view
-        class="{{classPrefix}}__loading t-class-loading"
-        style="width: {{loadingProps.size || '50rpx'}}; height: {{loadingProps.size || '50rpx'}}; transform: rotate({{rotate}}deg);"
+    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}rpx" aria-live="polite">
+      <t-loading
+        wx:if="{{refreshStatus === 2}}"
+        delay="{{loadingProps.delay || 0}}"
+        duration="{{loadingProps.duration || 800}}"
+        indicator="{{loadingProps.indicator || true}}"
+        layout="{{loadingProps.layout || 'horizontal'}}"
+        loading="{{loadingProps.loading || true}}"
+        pause="{{loadingProps.pause || false}}"
+        progress="{{loadingProps.progress || 0}}"
+        reverse="{{loadingProps.reverse || false}}"
+        size="{{loadingProps.size || '50rpx'}}"
+        text="{{loadingProps.text || loadingTexts[refreshStatus]}}"
+        theme="{{loadingProps.theme || 'circular'}}"
+        t-class-indicator="{{prefix}}-class-indicator"
+      />
+      <view wx:elif="{{refreshStatus >= 0}}" class="{{classPrefix}}__text {{prefix}}-class-text"
+        >{{loadingTexts[refreshStatus]}}</view
       >
-        <t-loading
-          delay="{{loadingProps.delay || 0}}"
-          duration="{{loadingProps.duration || 800}}"
-          indicator="{{loadingProps.indicator || true}}"
-          layout="{{loadingProps.layout || 'horizontal'}}"
-          loading="{{loadingProps.loading || true}}"
-          pause="{{loadingProps.pause || true}}"
-          progress="{{loadingProps.progress}}"
-          reverse="{{loadingProps.reverse}}"
-          size="{{loadingProps.size || '50rpx'}}"
-          text="{{loadingProps.text}}"
-          theme="{{loadingProps.theme || 'circular'}}"
-          t-class-indicator="t-class-indicator"
-        ></t-loading>
-      </view>
-      <view class="{{classPrefix}}__text t-class-text">{{loadingTexts[refreshStatus]}}</view>
     </view>
-  </view>
-  <view class="{{classPrefix}}__wrap">
     <slot />
   </view>
-</view>
+</scroll-view>

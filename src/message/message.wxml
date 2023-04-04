@@ -1,51 +1,56 @@
 <wxs src="./message.wxs" module="this"></wxs>
+<wxs src="../common/utils.wxs" module="_" />
+
+<import src="../common/template/icon.wxml" />
 
 <block wx:if="{{visible}}">
   <view
-    class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{theme}}"
-    style="z-index: {{zIndex}};{{this.getMessageStylesOffset({ offset })}};transform: translateY({{wrapTop}}px)"
+    class="{{classPrefix}} class {{prefix}}-class {{classPrefix}}--{{theme}}"
+    style="{{_._style([this.getMessageStyles(zIndex, offset, wrapTop), style, customStyle])}}"
     animation="{{showAnimation}}"
     id="{{classPrefix}}"
+    aria-role="alert"
   >
-    <t-icon
-      wx:if="{{iconName}}"
-      name="{{iconName}}"
-      class="{{classPrefix}}__icon--left {{prefix}}-class-icon"
-      size="44rpx"
-    />
-    <slot name="icon" />
+    <view class="{{classPrefix}}__icon--left">
+      <slot name="icon" />
+      <template wx:if="{{_icon}}" is="icon" data="{{tClass: prefix + '-class-icon', ariaHidden: true, ..._icon }}" />
+    </view>
 
     <view
       class="{{classPrefix}}__text-wrap {{marquee ? '{{classPrefix}}__text-nowrap' : ''}}"
       style="text-align: {{align}}"
       id="{{classPrefix}}__text-wrap"
     >
-      <view
-        class="{{classPrefix}}__text {{prefix}}-class-content"
-        id="{{classPrefix}}__text"
-        animation="{{animation}}"
-      >
-        <view wx:if="{{content}}">{{content}}</view>
-        <slot name="content"></slot>
+      <view class="{{classPrefix}}__text {{prefix}}-class-content" id="{{classPrefix}}__text" animation="{{animation}}">
+        <block wx:if="{{content}}">{{content}}</block>
+        <slot name="content" />
+        <slot />
       </view>
     </view>
-
-    <t-button
-      wx:if="{{action}}"
-      t-class="{{classPrefix}}__btn--right {{prefix}}-class-action"
-      size="small"
-      bind:tap="handleBtnClick"
-      >{{action}}</t-button
-    >
-    <slot name="action" />
-
-    <t-icon
-      wx:if="{{closeBtn}}"
-      class="{{classPrefix}}__icon--right {{prefix}}-class-close-btn"
-      name="close"
-      size="20px"
-      bind:tap="handleClose"
+    <t-link
+      wx:if="{{_link.content}}"
+      class="{{classPrefix}}__link {{prefix}}-class-link"
+      style="{{_._style([_link.style, _link.customStyle])}}"
+      disabled="{{_link.disabled || false}}"
+      hover="{{_link.hover || true}}"
+      theme="{{_link.theme || 'primary'}}"
+      size="{{_link.size || 'medium'}}"
+      prefixIcon="{{_link.prefixIcon || false}}"
+      suffixIcon="{{_link.suffixIcon || false}}"
+      underline="{{_link.underline || false}}"
+      content="{{_link.content || ''}}"
+      navigatorProps="{{_link.navigatorProps || null}}"
+      bind:complete="handleLinkClick"
     />
-    <slot name="closeBtn" />
+    <slot name="link" />
+
+    <view class="{{classPrefix}}__icon--right" bind:tap="handleClose">
+      <slot name="close-btn" />
+      <template
+        wx:if="{{_closeBtn}}"
+        is="icon"
+        data="{{tClass: prefix + '-class-close-btn', ariaRole: 'button', ariaLabel: '关闭', ..._closeBtn }}"
+      />
+    </view>
   </view>
 </block>

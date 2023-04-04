@@ -6,18 +6,26 @@
 
 export interface TdStepperProps {
   /**
-   * 禁用全部操作
-   * @default false
+   * 自定义组件样式
+   * @default ''
    */
-  disabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
+  style?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 禁用输入框
    * @default false
    */
   disableInput?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 禁用全部操作
+   * @default false
+   */
+  disabled?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -60,12 +68,20 @@ export interface TdStepperProps {
     value?: number;
   };
   /**
+   * 组件尺寸
+   * @default medium
+   */
+  size?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件风格
    * @default normal
    */
   theme?: {
     type: StringConstructor;
-    value?: 'normal' | 'grey';
+    value?: 'normal' | 'filled' | 'outline';
   };
   /**
    * 值

@@ -1,0 +1,15 @@
+<t-radio-group value="{{value}}" bind:change="onChange">
+  <view wx:for="{{3}}" wx:key="index" class="card {{value == index ? 'card--active' : ''}}">
+    <t-icon wx:if="{{value == index}}" name="check" t-class="card__icon" />
+    <t-radio value="{{index}}" label="单选" content="描述信息描述信息描述信息描述信息描述信息" icon="none" borderless />
+  </view>
+</t-radio-group>
+
+<view class="demo-desc" style="margin: 48rpx 32rpx 32rpx">横向卡片单选框</view>
+
+<t-radio-group t-class="horizontal-box" value="{{value1}}" bind:change="onChange1">
+  <view wx:for="{{3}}" wx:key="index" class="card {{value1 == index ? 'card--active' : ''}}">
+    <t-icon wx:if="{{value1 == index}}" name="check" t-class="card__icon" />
+    <t-radio value="{{index}}" label="单选" icon="none" borderless />
+  </view>
+</t-radio-group>

@@ -1,0 +1,5 @@
+<view class="demo__list">
+  <view class="demo__card" wx:for="{{imageIconList}}" wx:key="index">
+    <t-icon name="{{item}}" size="24" data-name="{{item}}" bind:click="onIconTap" />
+  </view>
+</view>

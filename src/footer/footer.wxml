@@ -1,21 +1,18 @@
-<view class="{{classPrefix}}">
-  <!-- theme 为 logo -->
-  <block wx:if="{{theme === 'logo'}}">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
+  <!-- logo -->
+  <block wx:if="{{logo}}">
     <view class="{{classPrefix}}__logo">
-      <image class="{{classPrefix}}__icon" src="{{logo.icon}}" wx:if="{{logo.icon}}" />
+      <t-image t-class="{{classPrefix}}__icon" src="{{logo.icon}}" wx:if="{{logo.icon}}" />
       <view class="{{classPrefix}}__title" wx:if="{{logo.title}}">{{logo.title}}</view>
-      <image
-        class="{{classPrefix}}__title-url"
-        src="{{logo.url}}"
-        mode="widthFix"
-        wx:elif="{{logo.url}}"
-      />
+      <t-image t-class="{{classPrefix}}__title-url" src="{{logo.url}}" mode="widthFix" wx:elif="{{logo.url}}" />
     </view>
   </block>
-  <!-- theme 为 text -->
+  <!-- text -->
   <block wx:else>
-    <view wx:if="{{textLinkList.length > 0}}" class="{{classPrefix}}__link-list">
-      <block wx:for="{{textLinkList}}" wx:key="name" wx:for-item="item">
+    <view wx:if="{{links.length > 0}}" class="{{classPrefix}}__link-list">
+      <block wx:for="{{links}}" wx:key="name" wx:for-item="item">
         <navigator
           url="{{item.url}}"
           open-type="{{item.openType}}"
@@ -24,8 +21,11 @@
         >
           {{item.name}}
         </navigator>
+        <view aria-hidden="{{true}}" wx:if="{{index !== (links.length - 1)}}" class="{{classPrefix}}__link-line"
+          >|</view
+        >
       </block>
     </view>
-    <view class="{{classPrefix}}__copyright-info">{{copyright}}</view>
+    <view class="{{classPrefix}}__text">{{text}}</view>
   </block>
 </view>

@@ -30,9 +30,10 @@ export interface TdUploadProps {
     value?: UploadMpConfig;
   };
   /**
-   * 删除图标。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。
+   * 自定义组件样式
+   * @default ''
    */
-  deleteBtn?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -55,14 +56,10 @@ export interface TdUploadProps {
    */
   gridConfig?: {
     type: ObjectConstructor;
-    value?: {
-      column?: number;
-      width?: number;
-      height?: number;
-    };
+    value?: { column?: number; width?: number; height?: number };
   };
   /**
-   * 预览窗格的 gutter 大小，单位 rpx
+   * 预览窗格的 `gutter` 大小，单位 rpx
    * @default 16
    */
   gutter?: {
@@ -103,9 +100,16 @@ export interface TdUploadProps {
    * 图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`
    */
   sizeLimit?: {
-    type: NumberConstructor;
-    optionalTypes: Array<ObjectConstructor>;
+    type: null;
     value?: number | SizeLimitObj;
+  };
+  /**
+   * 来源
+   * @default media
+   */
+  source?: {
+    type: StringConstructor;
+    value?: 'media' | 'messageFile';
   };
 }
 
@@ -128,12 +132,20 @@ export interface VideoConfig {
   camera?: 'back' | 'front';
 }
 
+export interface UploadDisplayDragEvents {
+  onDrop?: (event: DragEvent) => void;
+  onDragenter?: (event: DragEvent) => void;
+  onDragover?: (event: DragEvent) => void;
+  onDragleave?: (event: DragEvent) => void;
+}
+
 export interface UploadFile {
   url: string;
   name?: string;
   size?: number;
   type?: 'image' | 'video';
   percent?: number;
+  status: 'loading' | 'reload' | 'failed' | 'done';
 }
 
 export type MediaType = 'image' | 'video';

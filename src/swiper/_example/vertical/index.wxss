@@ -1,0 +1,63 @@
+.swiper-box {
+  margin: 0 32rpx 32rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.swiper-box .img {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-switch {
+  margin: 22rpx 0;
+}
+
+.swiper-switch .t-switch__label {
+  display: none;
+}
+
+.cell {
+  padding: 10rpx 0;
+  font-size: 28rpx;
+  color: #999;
+}
+.cell.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell .label {
+  color: #999;
+  margin-right: 20rpx;
+}
+
+.cell .option {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.cell .option-desc {
+  width: 68rpx;
+  padding-left: 32rpx;
+}
+
+.cell .swiper-slider {
+  flex: 1;
+}
+
+.swiper-box-vertical .item {
+  line-height: 400rpx;
+}
+
+.swiper-box-option {
+  overflow: visible;
+  border-radius: 0;
+}
+
+.external-class-bar {
+  margin: 0 !important;
+}

@@ -2,17 +2,23 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 export interface TdBackTopProps {
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
+  };
   /**
    * 组件类名，分别用于设置外层元素、图标、文本内容等元素类名
    */
   externalClasses?: {
     type: ArrayConstructor;
     value?: ['t-class', 't-class-icon', 't-class-text'];
-    required?: boolean;
   };
   /**
    * 是否绝对定位固定到屏幕右下方
@@ -21,16 +27,14 @@ export interface TdBackTopProps {
   fixed?: {
     type: BooleanConstructor;
     value?: boolean;
-    required?: boolean;
   };
   /**
    * 图标
-   * @default 'backtop'
+   * @default true
    */
   icon?: {
-    type: StringConstructor;
-    value?: string;
-    required?: boolean;
+    type: null;
+    value?: boolean | string | object;
   };
   /**
    * 文案
@@ -39,7 +43,6 @@ export interface TdBackTopProps {
   text?: {
     type: StringConstructor;
     value?: string;
-    required?: boolean;
   };
   /**
    * 预设的样式类型
@@ -48,6 +51,5 @@ export interface TdBackTopProps {
   theme?: {
     type: StringConstructor;
     value?: 'round' | 'half-round' | 'round-dark' | 'half-round-dark';
-    required?: boolean;
   };
-};
+}

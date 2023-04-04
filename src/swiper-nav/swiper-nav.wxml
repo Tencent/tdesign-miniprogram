@@ -1,0 +1,25 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  wx:if="{{showControls}}"
+  class="class {{prefix}}-class {{classPrefix}}__btn"
+  style="{{_._style([style, customStyle])}}"
+>
+  <view class="{{classPrefix}}__btn--prev" bind:tap="nav" data-dir="prev" />
+  <view class="{{classPrefix}}__btn--next" bind:tap="nav" data-dir="next" />
+</view>
+<view
+  wx:if="{{total >= minShowNum}}"
+  style="{{_._style([style, customStyle])}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}--{{direction}} {{classPrefix}}__{{type}} {{classPrefix}}--{{paginationPosition}}"
+>
+  <block wx:if="{{ type === 'dots' || type === 'dots-bar'}}">
+    <view
+      wx:for="{{total}}"
+      wx:for-index="idx"
+      wx:key="idx"
+      class="{{_.cls(classPrefix + '__' + type + '-item', [['active', current === idx], direction])}}"
+    />
+  </block>
+  <block wx:if="{{ type === 'fraction'}}"> {{current + 1}}/{{total}} </block>
+</view>

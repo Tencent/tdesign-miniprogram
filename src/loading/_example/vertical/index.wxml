@@ -1,0 +1,4 @@
+<div class="box">
+  <t-loading theme="circular" size="40rpx" text="加载中" layout="vertical" class="wrapper" />
+  <t-loading theme="spinner" size="40rpx" text="加载中" layout="vertical" class="wrapper" />
+</div>

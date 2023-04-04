@@ -1,0 +1,28 @@
+.custom-color {
+  --td-rate-selected-color: #f96102;
+  --td-rate-unselected-color: #bbbbbb;
+}
+
+.demo-rate {
+  background-color: #fff;
+  
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  border-bottom: solid 1rpx #f0f0f0;
+  border-top: solid 1rpx #f0f0f0;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
+}
+
+.demo-rate__title {
+  width: 200rpx;
+}
+
+.demo-rate__transparent {
+  background-color: transparent;
+  padding-left: 32rpx;
+  border: 0;
+}

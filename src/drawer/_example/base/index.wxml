@@ -1,0 +1,9 @@
+<t-button variant="outline" bind:tap="openDrawerBase" block size="large" theme="primary">基础抽屉</t-button>
+
+<t-drawer
+  visible="{{visible}}"
+  placement="{{placement}}"
+  items="{{sidebar}}"
+  bind:overlay-click="overlayClick"
+  bind:item-click="itemClick"
+></t-drawer>

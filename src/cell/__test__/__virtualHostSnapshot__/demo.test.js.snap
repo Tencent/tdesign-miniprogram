@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cell Cell base demo works fine 1`] = `
+<base>
+  <t-cell
+    arrow="{{true}}"
+    hover="{{true}}"
+    title="单行标题"
+  />
+  <t-cell
+    arrow="{{true}}"
+    hover="{{true}}"
+    required="{{true}}"
+    title="单行标题"
+  />
+  <t-cell
+    ariaLabel="单行标题，有16条消息"
+    arrow="{{true}}"
+    hover="{{true}}"
+    title="单行标题"
+  >
+    <t-badge
+      count="{{16}}"
+      slot="note"
+    />
+  </t-cell>
+  <t-cell
+    hover="{{true}}"
+    title="单行标题"
+  >
+    <t-switch
+      defaultValue="{{true}}"
+      slot="note"
+    />
+  </t-cell>
+  <t-cell
+    arrow="{{true}}"
+    hover="{{true}}"
+    note="辅助信息"
+    title="单行标题"
+  />
+  <t-cell
+    arrow="{{true}}"
+    bordered="{{false}}"
+    hover="{{true}}"
+    leftIcon="lock-on"
+    title="单行标题"
+  />
+</base>
+`;
+
+exports[`Cell Cell multiple demo works fine 1`] = `
+<multiple>
+  <t-cell
+    arrow="{{true}}"
+    description="一段很长很长的内容文字"
+    hover="{{true}}"
+    title="单行标题"
+  />
+  <t-cell
+    arrow="{{true}}"
+    description="一段很长很长的内容文字"
+    hover="{{true}}"
+    required="{{true}}"
+    title="单行标题"
+  />
+  <t-cell
+    arrow="{{true}}"
+    description="一段很长很长的内容文字"
+    hover="{{true}}"
+    title="单行标题"
+  >
+    <t-badge
+      count="{{16}}"
+      slot="note"
+    />
+  </t-cell>
+  <t-cell
+    description="一段很长很长的内容文字"
+    hover="{{true}}"
+    title="单行标题"
+  >
+    <t-switch
+      defaultValue="{{true}}"
+      slot="note"
+    />
+  </t-cell>
+  <t-cell
+    arrow="{{true}}"
+    description="一段很长很长的内容文字"
+    hover="{{true}}"
+    note="辅助信息"
+    title="单行标题"
+  />
+  <t-cell
+    arrow="{{true}}"
+    description="一段很长很长的内容文字"
+    hover="{{true}}"
+    leftIcon="lock-on"
+    title="单行标题"
+  />
+  <t-cell
+    description="一段很长很长的内容文字，长文本自动换行，该选项的描述是一段很长的内容"
+    hover="{{true}}"
+    title="多行标题"
+  />
+  <t-cell
+    arrow="{{true}}"
+    description="一段很长很长很长的内容文字"
+    hover="{{true}}"
+    title="多行带头像"
+  >
+    <wx-view
+      class="avatar"
+      slot="left-icon"
+    >
+      <wx-open-data
+        type="userAvatarUrl"
+      />
+    </wx-view>
+  </t-cell>
+  <t-cell
+    align="top"
+    bordered="{{false}}"
+    description="一段很长很长的内容文字"
+    hover="{{true}}"
+    image="https://tdesign.gtimg.com/miniprogram/images/cell1.png"
+    title="多行带图片"
+  />
+</multiple>
+`;
+
+exports[`Cell Cell theme demo works fine 1`] = `
+<theme>
+  <t-cell-group
+    theme="card"
+  >
+    <t-cell
+      arrow="{{true}}"
+      hover="{{true}}"
+      leftIcon="service"
+      title="单行标题"
+    />
+    <t-cell
+      arrow="{{true}}"
+      hover="{{true}}"
+      leftIcon="internet"
+      title="单行标题"
+    />
+    <t-cell
+      arrow="{{true}}"
+      hover="{{true}}"
+      leftIcon="lock-on"
+      title="单行标题"
+    />
+  </t-cell-group>
+</theme>
+`;

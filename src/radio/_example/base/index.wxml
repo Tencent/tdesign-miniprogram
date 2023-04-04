@@ -1,0 +1,1 @@
+<t-radio-group bind:change="onChange" value="{{current}}" options="{{options}}" />

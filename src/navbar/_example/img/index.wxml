@@ -1,0 +1,5 @@
+<t-navbar>
+  <view slot="left">
+    <t-image t-class="custom-image" src="{{image}}" aria-label="导航栏图片" />
+  </view>
+</t-navbar>

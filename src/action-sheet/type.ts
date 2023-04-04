@@ -6,8 +6,16 @@
 
 export interface TdActionSheetProps {
   /**
+   * 水平对齐方式
+   * @default center
+   */
+  align?: {
+    type: StringConstructor;
+    value?: 'center' | 'left';
+  };
+  /**
    * 设置取消按钮的文本
-   * @default 取消
+   * @default ''
    */
   cancelText?: {
     type: StringConstructor;
@@ -20,6 +28,14 @@ export interface TdActionSheetProps {
   count?: {
     type: NumberConstructor;
     value?: number;
+  };
+  /**
+   * 动作面板描述文字
+   * @default ''
+   */
+  description?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 菜单项

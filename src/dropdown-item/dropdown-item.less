@@ -1,0 +1,103 @@
+@import '../common/style/index.less';
+
+@dropdown-menu-bg-color: var(--td-dropdown-menu-bg-color, @bg-color-container);
+@dropdown-body-max-height: var(--td-dropdown-body-max-height, 560rpx);
+
+@tree-bg-color: var(--td-tree-bg-color, @bg-color-container);
+@tree-root-bg-color: var(--td-tree-root-bg-color, @bg-color-secondarycontainer);
+@tree-item-active-color: var(--td-tree-item-active-color, @brand-color);
+@tree-item-height: var(--td-tree-item-height, 96rpx);
+@tree-item-font-size: var(--td-tree-item-font-size, 32rpx);
+
+@item: ~'@{prefix}-dropdown-item';
+
+/** dropdown-item */
+.@{item} {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  bottom: 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    z-index: 11600;
+    overflow: hidden;
+  }
+
+  &__popup-host {
+    // 为了解决虚拟节点偶尔出现的问题
+    display: block;
+    width: 100%;
+    height: max-content;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  &__body {
+    flex: 1;
+    background: @dropdown-menu-bg-color;
+    overflow: auto;
+    max-height: @dropdown-body-max-height;
+
+    &--tree {
+      display: flex;
+      overflow: hidden;
+    }
+
+    &--multi {
+      padding-top: @spacer;
+      padding-bottom: @spacer;
+      overflow-y: auto;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    background: @dropdown-menu-bg-color;
+    position: relative;
+    padding: 32rpx;
+    .border(top, @component-border);
+
+    &-btn {
+      flex: 1;
+    }
+
+    &-btn + &-btn {
+      margin-left: 32rpx;
+    }
+  }
+
+  &__radio,
+  &__checkbox {
+    width: 100%;
+    overflow: scroll;
+    box-sizing: border-box;
+  }
+
+  &__checkbox {
+    &-group {
+      display: grid;
+      padding: 32rpx;
+      grid-gap: 24rpx;
+    }
+  }
+
+  /** 树形结构 */
+  &__tree {
+    &-item {
+      height: @tree-item-height;
+      line-height: @tree-item-height;
+      font-size: @tree-item-font-size;
+      padding-left: 32rpx;
+
+      &--active {
+        color: @tree-item-active-color;
+      }
+    }
+  }
+}

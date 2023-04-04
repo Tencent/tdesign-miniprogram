@@ -1,0 +1,20 @@
+.block {
+  margin: 0 32rpx;
+}
+
+.block + .block {
+  margin-top: 32rpx;
+}
+
+.block .margin-16,
+.block .margin-8 {
+  vertical-align: top;
+}
+
+.block .margin-16:not(:last-child) {
+  margin-right: 32rpx;
+}
+
+.block .margin-8:not(:last-child) {
+  margin-right: 16rpx;
+}

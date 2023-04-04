@@ -1,0 +1,64 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<t-popup class="class" visible="{{visible}}" placement="bottom" bind:visible-change="onVisibleChange">
+  <view style="{{_._style([style, customStyle])}}" class="{{name}}">
+    <view class="{{name}}__title">
+      <slot name="title" />
+      {{title}}
+    </view>
+    <view class="{{name}}__close-btn" bind:tap="onClose">
+      <slot name="close-btn" />
+      <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
+    </view>
+    <view class="{{name}}__content">
+      <block wx:if="{{steps && steps.length}}">
+        <view wx:if="{{theme == 'step'}}" class="{{name}}__steps">
+          <view wx:for="{{steps}}" wx:key="index" class="{{name}}__step" bind:tap="onStepClick" data-index="{{index}}">
+            <view
+              class="{{name}}__step-dot {{name}}__step-dot--{{item !== defaultOptionLabel ? 'active' : ''}} {{name}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
+            ></view>
+            <view class="{{name}}__step-label {{name}}__step-label--{{index === stepIndex ? 'active' : ''}}">
+              {{ item }}
+            </view>
+            <t-icon name="chevron-right" size="22" t-class="{{name}}__step-arrow" />
+          </view>
+        </view>
+        <block wx:if="{{theme == 'tab'}}">
+          <t-tabs id="tabs" value="{{stepIndex}}" bind:change="onTabChange" space-evenly="{{false}}">
+            <t-tab-panel wx:for="{{steps}}" wx:key="index" value="{{index}}" label="{{item}}" />
+          </t-tabs>
+        </block>
+      </block>
+      <view wx:if="{{ subTitles && subTitles[stepIndex] }}" class="{{name}}__options-title"
+        >{{subTitles[stepIndex]}}</view
+      >
+      <view
+        class="{{name}}__options-container"
+        style="width: {{items.length + 1}}00vw; transform: translateX(-{{stepIndex}}00vw)"
+      >
+        <scroll-view
+          wx:for="{{items}}"
+          wx:for-item="options"
+          wx:key="index"
+          class="{{name}}__options"
+          scroll-y
+          scroll-top="{{scrollTopList[index]}}"
+        >
+          <view class="cascader-radio-group-{{index}}">
+            <t-radio-group
+              value="{{selectedValue[index]}}"
+              keys="{{keys}}"
+              options="{{options}}"
+              bind:change="handleSelect"
+              data-level="{{index}}"
+              placement="right"
+              icon="line"
+              borderless
+            >
+            </t-radio-group>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</t-popup>

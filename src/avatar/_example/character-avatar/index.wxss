@@ -1,0 +1,9 @@
+.avatar-example:not(:last-child) {
+  margin-right: 64rpx;
+}
+
+.external-class-content {
+  color: #fff;
+  background-color: #0052d9;
+  font-weight: 400;
+}

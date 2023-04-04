@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-11-24 10:58:05
  * */
 
 import { TdBackTopProps } from './type';
@@ -18,8 +17,8 @@ const props: TdBackTopProps = {
   },
   /** 图标 */
   icon: {
-    type: String,
-    value: 'backtop',
+    type: null,
+    value: true,
   },
   /** 文案 */
   text: {

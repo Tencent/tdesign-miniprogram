@@ -1,0 +1,22 @@
+.avatar-example {
+  display: flex;
+  margin-bottom: 32rpx;
+}
+
+.external-class-content {
+  color: #fff;
+  background-color: #0052d9;
+  font-weight: 400;
+}
+
+.avatar-example--small:not(:last-child) {
+  margin-right: 112rpx;
+}
+
+.avatar-example--medium:not(:last-child) {
+  margin-right: 96rpx;
+}
+
+.avatar-example--large:not(:last-child) {
+  margin-right: 64rpx;
+}

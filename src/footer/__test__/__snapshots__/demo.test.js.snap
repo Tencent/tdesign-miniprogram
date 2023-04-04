@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Footer base demo works fine 1`] = `
+<base>
+  <t-footer
+    text="Copyright © 2021-2031 TD.All Rights Reserved."
+  />
+</base>
+`;
+
+exports[`Footer Footer link demo works fine 1`] = `
+<link>
+  <wx-view
+    class="footer-example"
+  >
+    <t-footer
+      links="{{
+        Array [
+          Object {
+            "name": "底部链接",
+            "openType": "navigate",
+            "url": "/pages/index",
+          },
+        ]
+      }}"
+      text="Copyright © 2021-2031 TD.All Rights Reserved."
+    />
+  </wx-view>
+  <wx-view
+    class="footer-example"
+  >
+    <t-footer
+      links="{{
+        Array [
+          Object {
+            "name": "底部链接",
+            "openType": "navigate",
+            "url": "/pages/index",
+          },
+          Object {
+            "name": "底部链接",
+            "openType": "navigateBack",
+            "url": "",
+          },
+        ]
+      }}"
+      text="Copyright © 2021-2031 TD.All Rights Reserved."
+    />
+  </wx-view>
+</link>
+`;
+
+exports[`Footer Footer logo demo works fine 1`] = `
+<logo>
+  <wx-view
+    class="footer-example"
+  >
+    <t-footer
+      logo="{{
+        Object {
+          "icon": "https://tdesign.gtimg.com/miniprogram/images/logo2.png",
+          "title": "品牌名称",
+        }
+      }}"
+    />
+  </wx-view>
+  <wx-view
+    class="footer-example"
+  >
+    <t-footer
+      logo="{{
+        Object {
+          "url": "https://tdesign.gtimg.com/miniprogram/images/logo1.png",
+        }
+      }}"
+    />
+  </wx-view>
+</logo>
+`;

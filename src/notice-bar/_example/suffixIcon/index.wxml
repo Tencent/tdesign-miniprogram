@@ -1,0 +1,6 @@
+<t-notice-bar
+  visible="{{visible}}"
+  suffixIcon="close"
+  content="这是一条普通的通知信息"
+  bind:click="click"
+></t-notice-bar>

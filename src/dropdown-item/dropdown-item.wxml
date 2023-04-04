@@ -1,0 +1,86 @@
+<wxs module="this" src="./index.wxs" />
+<wxs module="_" src="../common/utils.wxs" />
+
+<view
+  wx:if="{{wrapperVisible}}"
+  class="{{classPrefix}} class {{prefix}}-class"
+  style="{{_._style([this.getStyles(top, zIndex), style, customStyle])}}"
+>
+  <t-popup
+    visible="{{show}}"
+    z-index="{{zIndex + 1}}"
+    duration="{{duration}}"
+    show-overlay="{{showOverlay}}"
+    style="position: absolute"
+    overlay-props="{{ { style: 'position: absolute' } }}"
+    bind:leaved="onLeaved"
+    bind:visible-change="handleMaskClick"
+    class="{{classPrefix}}__popup-host"
+    t-class-content="{{classPrefix}}__content {{prefix}}-class-content"
+  >
+    <view class="{{classPrefix}}__body">
+      <!-- 单选列表 -->
+      <t-radio-group
+        wx:if="{{!multiple}}"
+        class="{{classPrefix}}__radio {{prefix}}-class-column"
+        t-class="{{classPrefix}}__radio-group"
+        value="{{value}}"
+        placement="right"
+        bind:change="handleRadioChange"
+      >
+        <t-radio
+          wx:for="{{options}}"
+          wx:key="index"
+          tabindex="0"
+          icon="line"
+          class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
+          t-class="radio"
+          t-class-label="{{prefix}}-class-column-item-label"
+          value="{{item[valueAlias]}}"
+          label="{{item[labelAlias]}}"
+          disabled="{{item.disabled}}"
+        ></t-radio>
+      </t-radio-group>
+      <!-- 多选列表 -->
+      <t-checkbox-group
+        wx:else
+        class="{{classPrefix}}__checkbox {{prefix}}-class-column"
+        t-class="{{classPrefix}}__checkbox-group"
+        style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
+        value="{{value}}"
+        bind:change="handleRadioChange"
+      >
+        <block wx:for="{{options}}" wx:key="index">
+          <t-checkbox
+            tabindex="0"
+            class="{{classPrefix}}__checkbox-item {{prefix}}-class-column-item"
+            theme="tag"
+            value="{{item[valueAlias]}}"
+            label="{{item[labelAlias]}}"
+            disabled="{{item.disabled}}"
+          ></t-checkbox>
+        </block>
+      </t-checkbox-group>
+
+      <slot />
+    </view>
+    <view class="{{classPrefix}}__footer {{prefix}}-class-footer" wx:if="{{multiple}}">
+      <t-button
+        block
+        class="{{classPrefix}}__footer-btn {{classPrefix}}__reset-btn"
+        theme="light"
+        disabled="{{value.length == 0}}"
+        bindtap="handleReset"
+        >重置</t-button
+      >
+      <t-button
+        block
+        class="{{classPrefix}}__footer-btn {{classPrefix}}__confirm-btn"
+        theme="primary"
+        disabled="{{value.length == 0}}"
+        bindtap="handleConfirm"
+        >确定</t-button
+      >
+    </view>
+  </t-popup>
+</view>

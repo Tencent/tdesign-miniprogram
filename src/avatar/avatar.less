@@ -1,58 +1,71 @@
 @import '../common/style/index.less';
 
+@avatar-bg-color: var(--td-avatar-bg-color, @brand-color-light-active);
+@avatar-content-color: var(--td-avatar-content-color, @brand-color);
+@avatar-small-width: var(--td-avatar-small-width, 80rpx);
+@avatar-medium-width: var(--td-avatar-medium-width, 96rpx);
+@avatar-large-width: var(--td-avatar-large-width, 128rpx);
+
+@avatar-text-small-font-size: var(--td-avatar-text-small-font-size, @font-size-s);
+@avatar-text-medium-font-size: var(--td-avatar-text-medium-font-size, @font-size-base);
+@avatar-text-large-font-size: var(--td-avatar-text-large-font-size, 16px);
+
+@avatar-icon-small-font-size: var(--td-avatar-icon-small-font-size, 40rpx);
+@avatar-icon-medium-font-size: var(--td-avatar-icon-medium-font-size, 48rpx);
+@avatar-icon-large-font-size: var(--td-avatar-icon-large-font-size, 64rpx);
+
+@avatar-border-width-small: var(--td-avatar-border-width-small, 4rpx);
+@avatar-border-width-medium: var(--td-avatar-border-width-medium, 6rpx);
+@avatar-border-width-large: var(--td-avatar-border-width-large, 8rpx);
+@avatar-border-color: var(--td-avatar-border-color, #fff);
+@avatar-circle-border-radius: var(--td-avatar-circle-border-radius, @radius-circle);
+@avatar-round-border-radius: var(--td-avatar-round-border-radius, @radius-default);
+
+@avatar-margin-left: var(--td-avatar-margin-left, 0);
+
 .@{prefix}-avatar {
-  font-weight: 600;
-  font-size: 28rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  overflow: hidden;
-  border-radius: 999rpx;
+  background-color: @avatar-bg-color;
+  color: @avatar-content-color;
 
   &__wrapper {
-    float: left;
+    display: inline-flex;
     position: relative;
-    background-color: #d4e3fc;
-    color: #0052d9;
-    border-radius: 999rpx;
+    vertical-align: top;
+    margin-left: @avatar-margin-left;
+  }
 
-    .@{prefix}-badge {
-      &-host {
-        position: absolute;
-      }
+  &--large {
+    width: @avatar-large-width;
+    height: @avatar-large-width;
+    font-size: @avatar-text-large-font-size;
 
-      &__round {
-        top: -10%;
-        right: -10%;
-      }
-
-      &__circle {
-        top: -5%;
-        right: -5%;
-      }
+    .@{prefix}-avatar__icon {
+      font-size: @avatar-icon-large-font-size;
     }
   }
 
-  &.@{prefix}-size-l {
-    width: 128rpx;
-    height: 128rpx;
-    font-weight: 600;
-    font-size: 36rpx;
+  &--medium {
+    width: @avatar-medium-width;
+    height: @avatar-medium-width;
+    font-size: @avatar-text-medium-font-size;
+
+    .@{prefix}-avatar__icon {
+      font-size: @avatar-icon-medium-font-size;
+    }
   }
 
-  &.@{prefix}-size-m {
-    width: 96rpx;
-    height: 96rpx;
-    font-weight: 600;
-    font-size: 32rpx;
-  }
+  &--small {
+    width: @avatar-small-width;
+    height: @avatar-small-width;
+    font-size: @avatar-text-small-font-size;
 
-  &.@{prefix}-size-s {
-    width: 64rpx;
-    height: 64rpx;
-    font-weight: 600;
-    font-size: 24rpx;
+    .@{prefix}-avatar__icon {
+      font-size: @avatar-icon-small-font-size;
+    }
   }
 
   .@{prefix}-image,
@@ -62,12 +75,12 @@
   }
 
   &--circle {
-    border-radius: 999rpx;
+    border-radius: @avatar-circle-border-radius;
     overflow: hidden;
   }
 
   &--round {
-    border-radius: 10rpx;
+    border-radius: @avatar-round-border-radius;
     overflow: hidden;
   }
 
@@ -78,25 +91,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 999rpx;
-
     &:empty {
       width: 0;
       height: 0;
     }
   }
 
-  &__icon--default {
-    &-l {
-      font-size: 64rpx;
+  // 头像边框
+  &--border {
+    border-color: @avatar-border-color;
+    border-style: solid;
+    &-small {
+      border-width: @avatar-border-width-small;
     }
 
-    &-m {
-      font-size: 48rpx;
+    &-medium {
+      border-width: @avatar-border-width-medium;
     }
 
-    &-s {
-      font-size: 32rpx;
+    &-large {
+      border-width: @avatar-border-width-large;
     }
   }
 }

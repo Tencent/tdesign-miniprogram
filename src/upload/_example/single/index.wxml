@@ -1,0 +1,10 @@
+<view class="wrapper">
+  <t-upload
+    mediaType="{{['video','image']}}"
+    max="{{1}}"
+    files="{{fileList}}"
+    bind:add="handleAdd"
+    bind:remove="handleRemove"
+  >
+  </t-upload>
+</view>

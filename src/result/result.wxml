@@ -1,0 +1,22 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{classPrefix}}--theme-{{theme}} class {{prefix}}-class"
+>
+  <view aria-hidden="true" class="{{classPrefix}}__thumb">
+    <t-image wx:if="{{image}}" t-class="{{prefix}}-class-image" src="{{image}}" mode="aspectFit" />
+    <template wx:elif="{{_icon}}" is="icon" data="{{class: classPrefix + '__icon', ..._icon }}" />
+    <slot name="image" />
+  </view>
+
+  <view class="{{classPrefix}}__title {{prefix}}-class-title">
+    <block wx:if="{{title}}"> {{title}} </block>
+    <slot name="title" />
+  </view>
+  <view class="{{classPrefix}}__description {{prefix}}-class-description">
+    <block wx:if="{{description}}"> {{description}} </block>
+    <slot name="description" />
+  </view>
+</view>

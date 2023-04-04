@@ -1,7 +1,15 @@
 const form = {
-  name: '表单',
+  name: '输入',
   icon: 'bulletpoint',
   childArr: [
+    {
+      name: 'Calendar',
+      label: '日历',
+    },
+    {
+      name: 'Cascader',
+      label: '级联选择器',
+    },
     {
       name: 'Checkbox',
       label: '多选框',
@@ -13,10 +21,6 @@ const form = {
     {
       name: 'Input',
       label: '输入框',
-    },
-    {
-      name: 'Textarea',
-      label: '多行输入框',
     },
     {
       name: 'Picker',
@@ -45,6 +49,14 @@ const form = {
     {
       name: 'Switch',
       label: '开关',
+    },
+    {
+      name: 'Textarea',
+      label: '多行文本框',
+    },
+    {
+      name: 'TreeSelect',
+      label: '树形选择器',
     },
     // {
     //   name: 'PeriodSelector',

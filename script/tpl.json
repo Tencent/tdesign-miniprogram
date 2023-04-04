@@ -1,0 +1,267 @@
+{
+  "t-action-sheet": {
+    "tpl": "<t-action-sheet id=\"t-action-sheet-imperative\" visible=\"{{false}}\"></t-action-sheet>"
+  },
+  "t-avatar-group": {
+    "tpl": "<t-avatar-group max=\"2\" collapseAvatar=\"+5\"><t-avatar wx:for=\"{{['https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/2.png','https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/3.png']}}\" wx:key=\"index\" image=\"{{item}}\" style=\"margin-right: -16rpx\" /></t-avatar-group>",
+    "require": {
+      "t-avatar": "./avatar/avatar"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-avatar.png"
+  },
+  "t-avatar": {
+    "tpl": "<t-avatar icon=\"user\" alt=\"avatar\"/>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-avatar.png"
+  },
+  "t-back-top": {
+    "tpl": "<t-back-top />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-backtop.png"
+  },
+  "t-badge": {
+    "tpl": "<t-badge content=\"消息\" dot />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-badge.png"
+  },
+  "t-button": {
+    "tpl": "<t-button theme=\"primary\" block content=\"强按钮\"></t-button>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-button.png"
+  },
+  "t-cell": {
+    "tpl": "<t-cell title=\"单行标题\" hover />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-cell.png"
+  },
+  "t-cell-group": {
+    "tpl": "<t-cell-group title=\"01 基础用法\"><t-cell title=\"单行标题\" required /><t-cell title=\"单行标题\" hover note=\"辅助信息\" /><t-cell title=\"单行标题\" hover arrow /><t-cell title=\"单行标题\" hover note=\"辅助信息\" arrow /></t-cell-group>",
+    "require": {
+      "t-cell": "./cell/cell"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-cell.png"
+  },
+  "t-check-tag": {
+    "tpl": "<t-check-tag>check tag</t-check-tag>"
+  },
+  "t-checkbox": {
+    "tpl": "<t-checkbox label=\"多选框\" checked=\"{{true}}\"></t-checkbox>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-checkbox.png"
+  },
+  "t-checkbox-group": {
+    "tpl": "<t-checkbox-group value=\"{{['checkbox1']}}\"><t-checkbox value=\"checkbox1\" label=\"多选\" /><t-checkbox value=\"checkbox2\" label=\"多选\" /><t-checkbox value=\"checkbox3\" label=\"多选\" /></t-checkbox-group>",
+    "require": {
+      "t-checkbox": "./checkbox/checkbox"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-checkbox.png"
+  },
+  "t-collapse-panel": {
+    "tpl": "<t-collapse-panel header=\"折叠面板标题\" value=\"{{0}}\">此处可自定义内容</t-collapse-panel>"
+  },
+  "t-collapse": {
+    "tpl": "<t-collapse value=\"{{[0]}}\"><t-collapse-panel header=\"折叠面板标题\" value=\"{{0}}\">此处可自定义内容</t-collapse-panel></t-collapse>",
+    "require": {
+      "t-collapse-panel": "./collapse/collapse-panel"
+    }
+  },
+  "t-count-down": {
+    "tpl": "<t-count-down time=\"{{ 96 * 60 * 1000 }}\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-countdown.png"
+  },
+  "t-date-time-picker": {
+    "tpl": "<t-date-time-picker title=\"选择日期\" visible=\"{{true}}\" mode=\"{{['date']}}\" format=\"YYYY-MM-DD\"></t-date-time-picker>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-datetimepicker.png"
+  },
+  "t-dialog": {
+    "tpl": "<t-dialog visible=\"{{true}}\" title=\"对话框标题\" content=\"告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内\" confirm-btn=\"我知道了\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-dialog.png"
+  },
+  "t-divider": {
+    "tpl": "<t-divider />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-divider.png"
+  },
+  "t-drawer": {
+    "tpl": "<t-drawer visible=\"{{true}}\" placement=\"left\" items=\"{{[{title: '菜单一'},{title: '菜单二'}]}}\"></t-drawer>"
+  },
+  "t-dropdown-item": {
+    "tpl": "<t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" />"
+  },
+  "t-dropdown-menu": {
+    "tpl": "<t-dropdown-menu><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /><t-dropdown-item label=\"菜单\" options=\"{{[{label:'选项一',value:'option_1',disabled:false},{label:'选项二',value:'option_2',disabled:false},{label:'选项三',value:'option_3',disabled:false}]}}\" defaultValue=\"option_3\" /></t-dropdown-menu>",
+    "require": {
+      "t-dropdown-menu": "./dropdown-menu/dropdown-item"
+    }
+  },
+  "t-empty": {
+    "tpl": "<t-empty icon=\"info-circle-filled\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-empty.png"
+  },
+  "t-fab": {
+    "tpl": "<t-fab icon=\"add\" />"
+  },
+  "t-footer": {
+    "tpl": "<t-footer theme=\"text\" copyright=\"Copyright © 2021-2031 TD.All Rights Reserved.\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-footer.png"
+  },
+  "t-grid-item": {
+    "tpl": "<t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid.png"
+  },
+  "t-grid": {
+    "tpl": "<t-grid column=\"{{2}}\"><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item><t-grid-item text=\"标题文字\"><image style=\"width: 96rpx; height: 96rpx\" src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" slot=\"image\" /></t-grid-item></t-grid>",
+    "require": {
+      "t-grid-item": "./grid/grid-item"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid.png"
+  },
+  "t-icon": {
+    "tpl": "<t-icon name=\"add-circle\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-icon.png"
+  },
+  "t-image": {
+    "tpl": "<t-image src=\"https://tdesign.gtimg.com/mobile/%E5%9B%BE%E7%89%87.png\" mode=\"aspectFill\"></t-image>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-image.png"
+  },
+  "t-indexes": {
+    "tpl": "<t-indexes id=\"bar\" list=\"{{ [{ title: 'A开头', index: 'A', children: [{ title: '阿坝' }]},{ title: 'B开头', index: 'B', children: [{ title: '北京' }]}] }}\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-indexes.png"
+  },
+  "t-input": {
+    "tpl": "<t-input placeholder=\"请输入文字\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-input.png"
+  },
+  "t-loading": {
+    "tpl": "<t-loading theme=\"circular\" size=\"40rpx\"></t-loading>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-loading.png"
+  },
+  "t-message": {
+    "tpl": "<t-message id=\"t-message\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-message.png"
+  },
+  "t-navbar": {
+    "tpl": "<t-navbar title=\"标题\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-navbar.png"
+  },
+  "t-picker-item": {
+    "tpl": "<t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-picker.png"
+  },
+  "t-picker": {
+    "tpl": "<t-picker visible=\"{{true}}\" cancelBtn=\"取消\" confirmBtn=\"确认\"><t-picker-item options=\"{{[{ label: '上海', value: '上海' },{ label: '广州', value: '广州' },{ label: '深圳', value: '深圳' }]}}\" value=\"广州\"></t-picker-item></t-picker>",
+    "require": {
+      "t-picker-item": "./picker/picker-item"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-picker.png"
+  },
+  "t-popup": {
+    "tpl": "<t-popup visible=\"{{true}}\" placement=\"top\"><view style=\"width: 100vw; height: 35vh; background: #fff\" /></t-popup>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-popup.png"
+  },
+  "t-progress": {
+    "tpl": "<t-progress></t-progress>"
+  },
+  "t-pull-down-refresh": {
+    "tpl": "<t-pull-down-refresh id=\"pull-down-refresh\" loadingTexts=\"{{['继续拉哦', '该松手啦', '努力刷新中', '完成~']}}\"><view style=\"height: 300rpx; background: #fff; text-align: center\">拖拽该区域演示 中间下拉刷新</view></t-pull-down-refresh>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-pulldownrefresh.png"
+  },
+  "t-radio-group": {
+    "tpl": "<t-radio-group defaultValue=\"radio1\"><t-radio value=\"radio1\" label=\"单选\" /><t-radio value=\"radio2\" label=\"单选\" /></t-radio-group>",
+    "require": {
+      "t-radio": "./radio/radio"
+    },
+    "icon:": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-radio.png"
+  },
+  "t-radio": {
+    "tpl": "<t-radio value=\"radio\" label=\"单选\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-radio.png"
+  },
+  "t-rate": {
+    "tpl": "<t-rate defaultValue=\"{{4}}\" variant=\"filled\"></t-rate>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-rate.png"
+  },
+  "t-search": {
+    "tpl": "<t-search></t-search>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-search.png"
+  },
+  "t-skeleton": {
+    "tpl": "<t-skeleton rowCol=\"{{ [{ width: '686rpx', height: '32rpx' }, 1, 1, { width: '380rpx', height: '32rpx' }]}}\" loading></t-skeleton>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-skeleton.png"
+  },
+  "t-slider": {
+    "tpl": "<t-slider />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-slider.png"
+  },
+  "t-stepper": {
+    "tpl": "<t-stepper />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-stepper.png"
+  },
+  "t-step-item": {
+    "tpl": "<t-step-item title=\"步骤描述\"></t-step-item>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-steps.png"
+  },
+  "t-steps": {
+    "tpl": "<t-steps><t-step-item title=\"步骤描述1\" /><t-step-item title=\"步骤描述2\" /></t-steps>",
+    "require": {
+      "t-step-item": "./steps/step-item"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-steps.png"
+  },
+  "t-sticky": {
+    "tpl": "<t-sticky></t-sticky>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-sticky.png"
+  },
+  "t-swipe-cell": {
+    "tpl": "<t-swipe-cell><t-cell title=\"列表-左滑单操作\" note=\"辅助信息\" /><view slot=\"right\">删除</view></t-swipe-cell>",
+    "require": {
+      "t-cell": "./cell/cell"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-swipecell.png"
+  },
+  "t-swiper": {
+    "tpl": "<t-swiper current=\"{{1}}\" autoplay=\"{{true}}\" duration=\"{{500}}\" interval=\"{{5000}}\" navigation><t-swiper-item wx:for=\"{{[{image: 'https://tdesign.gtimg.com/site/swiper/01.png'},{image: 'https://tdesign.gtimg.com/site/swiper/02.png'}]}}\" wx:key=\"index\"><image src=\"{{item.image}}\" style=\"width: 100%; height: 100%\" /></t-swiper-item></t-swiper>",
+    "require": {
+      "t-swiper-item": "./swiper/swiper-item"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-swiper.png"
+  },
+  "t-switch": {
+    "tpl": "<t-switch defaultValue=\"{{true}}\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-switch.png"
+  },
+  "t-tab-bar-item": {
+    "tpl": "<t-tab-bar-item wx:for=\"{{[{value: 'label_1',label: '标签栏一',icon: 'app'},{value: 'label_2',label: '标签栏二',icon: 'app'}]}}\" wx:for-item=\"item\" wx:for-index=\"index\" wx:key=\"index\" value=\"{{item.value}}\">{{item.label}}</t-tab-bar-item>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabbar.png"
+  },
+  "t-tab-bar": {
+    "tpl": "<t-tab-bar value=\"label_1\"><t-tab-bar-item wx:for=\"{{[{value: 'label_1',label: '标签栏一',icon: 'app'},{value: 'label_2',label: '标签栏二',icon: 'app'}]}}\" wx:for-item=\"item\" wx:for-index=\"index\" wx:key=\"index\" value=\"{{item.value}}\">{{item.label}}</t-tab-bar-item></t-tab-bar>",
+    "require": {
+      "t-tab-bar-item": "./tab-bar/tab-bar-item"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabbar.png"
+  },
+  "t-tab-panel": {
+    "tpl": "<t-tab-panel label=\"标签页一\" value=\"0\">标签一内容</t-tab-panel>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabs.png"
+  },
+  "t-tabs": {
+    "tpl": "<t-tabs defaultValue=\"{{0}}\"><t-tab-panel label=\"标签页一\" value=\"0\">标签一内容</t-tab-panel><t-tab-panel label=\"标签页二\" value=\"1\">标签二内容</t-tab-panel></t-tabs>",
+    "require": {
+      "t-tab-panel": "./tabs/tab-panel"
+    },
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tabs.png"
+  },
+  "t-tag": {
+    "tpl": "<t-tag theme=\"primary\">重要</t-tag>",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-tag.png"
+  },
+  "t-textarea": {
+    "tpl": "<t-textarea />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-textarea.png"
+  },
+  "t-toast": {
+    "tpl": "<t-toast id=\"t-toast\" />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-toast.png"
+  },
+  "t-transition": {
+    "tpl": "<t-transition visible appear></t-transition>"
+  },
+  "t-upload": {
+    "tpl": "<t-upload />",
+    "icon": "https://tdesign.gtimg.com/site/miniprogram-doc/doc-upload.png"
+  }
+}

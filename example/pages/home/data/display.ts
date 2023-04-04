@@ -1,5 +1,5 @@
 const display = {
-  name: '信息展示',
+  name: '数据展示',
   icon: 'image',
   childArr: [
     {
@@ -10,10 +10,6 @@ const display = {
       name: 'Badge',
       label: '徽标',
     },
-    // {
-    //   name: 'Calendar',
-    //   label: '日历',
-    // },
     // {
     //   name: 'CanvasPoster',
     //   label: '海报分享',
@@ -29,10 +25,6 @@ const display = {
     {
       name: 'CountDown',
       label: '倒计时',
-    },
-    {
-      name: 'DropdownMenu',
-      label: '下拉菜单',
     },
     {
       name: 'Empty',
@@ -54,17 +46,17 @@ const display = {
       name: 'Image',
       label: '图片',
     },
-    // {
-    //   name: 'Preview',
-    //   label: '图片预览',
-    // },
     {
-      name: 'Swiper',
-      label: '轮播图',
+      name: 'ImageViewer',
+      label: '图片预览',
     },
     {
-      name: 'Tag',
-      label: '标签',
+      name: 'Progress',
+      label: '进度条',
+    },
+    {
+      name: 'Result',
+      label: '结果',
     },
     {
       name: 'Skeleton',
@@ -75,8 +67,12 @@ const display = {
       label: '吸顶',
     },
     {
-      name: 'NoticeBar',
-      label: '公告栏',
+      name: 'Swiper',
+      label: '轮播图',
+    },
+    {
+      name: 'Tag',
+      label: '标签',
     },
   ],
 };

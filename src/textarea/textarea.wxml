@@ -1,29 +1,48 @@
-<view class="{{classPrefix}} {{prefix}}-class">
-  <view class="{{classPrefix}}__name {{prefix}}-class-label">
-    <view wx:if="{{ label && label.length > 0 }}">{{ label }}</view>
-    <slot wx:else name="label" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{bordered? classPrefix +  '--border' : ''}} class {{prefix}}-class"
+>
+  <view class="{{classPrefix}}__label {{prefix}}-class-label">
+    <block wx:if="{{label}}">{{ label }}</block>
+    <slot name="label" />
   </view>
   <view class="{{classPrefix}}__wrapper">
     <textarea
-      maxlength="{{maxlength || -1}}"
+      class="{{classPrefix}}__wrapper-inner {{disabled? prefix +  '-is-disabled' : ''}} {{prefix}}-class-textarea"
+      maxlength="{{maxlength}}"
       disabled="{{disabled}}"
       placeholder="{{placeholder}}"
-      class="{{classPrefix}}__wrapper-textarea {{prefix}}-class-textarea"
-      placeholder-class="{{classPrefix}}__placeholder {{prefix}}-class-placeholder"
-      model:value="{{value}}"
+      placeholder-class="{{classPrefix}}__placeholder"
+      placeholder-style="{{placeholderStyle}}"
+      value="{{value}}"
       auto-focus="{{autofocus}}"
+      fixed="{{fixed}}"
       focus="{{focus}}"
+      cursor="{{cursor}}"
+      cursor-spacing="{{cursorSpacing}}"
       auto-height="{{autosize}}"
       adjust-position="{{adjustPosition}}"
       confirm-type="{{confirmType}}"
       confirm-hold="{{confirmHold}}"
+      disable-default-padding="{{disableDefaultPadding}}"
+      show-confirm-bar="{{showConfirmBar}}"
+      selection-start="{{selectionStart}}"
+      selection-end="{{selectionEnd}}"
+      hold-keyboard="{{holdKeyboard}}"
       bindinput="onInput"
       bindfocus="onFocus"
       bindblur="onBlur"
       bindconfirm="onConfirm"
       bindlinechange="onLineChange"
+      bind:keyboardheightchange="onKeyboardHeightChange"
     />
-    <view class="{{classPrefix}}__count" wx:if="{{maxlength}}"> {{inputValue.length}} / {{maxlength}} </view>
-    <view class="{{classPrefix}}__count" wx:elif="{{maxcharacter}}"> {{characterLength}} / {{maxcharacter}} </view>
+    <view
+      wx:if="{{indicator && (maxcharacter > 0 || maxlength > 0 )}}"
+      class="{{classPrefix}}__indicator {{prefix}}-class-indicator"
+    >
+      {{count}} / {{maxcharacter || maxlength}}
+    </view>
   </view>
 </view>

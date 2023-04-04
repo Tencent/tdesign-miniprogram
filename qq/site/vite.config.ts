@@ -23,6 +23,7 @@ export default ({ mode }: any) => {
         '@common': path.resolve(__dirname, '../common'),
         '@components': path.resolve(__dirname, './components'),
         '@docs': path.resolve(__dirname, './docs'),
+        '@pages': path.resolve(__dirname, './pages'),
       },
     },
     server: {

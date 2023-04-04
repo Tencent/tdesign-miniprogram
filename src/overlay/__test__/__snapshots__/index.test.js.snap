@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`overlay :base 1`] = `
+<main>
+  <t-overlay>
+    <wx-view
+      ariaLabel="关闭"
+      ariaRole="button"
+      class="t-overlay t-fade-enter t-fade-enter-active class"
+      style="z-index:11000;"
+      bind:tap="handleClick"
+      catch:touchmove="noop"
+      bind:transitionend="onTransitionEnd"
+    />
+  </t-overlay>
+</main>
+`;

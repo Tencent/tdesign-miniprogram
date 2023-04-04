@@ -3,6 +3,10 @@ const nav = {
   icon: 'view-module',
   childArr: [
     {
+      name: 'BackTop',
+      label: '返回顶部',
+    },
+    {
       name: 'Drawer',
       label: '抽屉',
     },
@@ -14,10 +18,10 @@ const nav = {
       name: 'Navbar',
       label: '导航栏',
     },
-    // {
-    //   name: 'SegmentedControl',
-    //   label: '分段器',
-    // },
+    {
+      name: 'SideBar',
+      label: '侧边栏',
+    },
     {
       name: 'Steps',
       label: '步骤条',

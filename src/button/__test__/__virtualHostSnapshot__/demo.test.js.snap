@@ -1,0 +1,368 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Button base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="light"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      size="large"
+    >
+      填充按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+</base>
+`;
+
+exports[`Button Button block-btn demo works fine 1`] = `
+<block-btn>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+  </wx-view>
+</block-btn>
+`;
+
+exports[`Button Button disabled demo works fine 1`] = `
+<disabled>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      disabled="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      disabled="{{true}}"
+      size="large"
+      theme="light"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      disabled="{{true}}"
+      size="large"
+    >
+      填充按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      disabled="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      disabled="{{true}}"
+      size="large"
+      theme="primary"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+</disabled>
+`;
+
+exports[`Button Button ghost-btn demo works fine 1`] = `
+<ghost-btn>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      ghost="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      幽灵按钮
+    </t-button>
+    <t-button
+      ghost="{{true}}"
+      size="large"
+      theme="danger"
+    >
+      幽灵按钮
+    </t-button>
+    <t-button
+      ghost="{{true}}"
+      size="large"
+    >
+      幽灵按钮
+    </t-button>
+  </wx-view>
+</ghost-btn>
+`;
+
+exports[`Button Button group-btn demo works fine 1`] = `
+<group-btn>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="light"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+  </wx-view>
+</group-btn>
+`;
+
+exports[`Button Button icon-btn demo works fine 1`] = `
+<icon-btn>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      class="margin"
+      content="填充按钮"
+      icon="app"
+      size="large"
+      theme="primary"
+    />
+    <t-button
+      class="margin"
+      loading="{{true}}"
+      size="large"
+      theme="primary"
+    >
+      加载中
+    </t-button>
+    <t-button
+      ariaLabel="搜索"
+      class="margin"
+      icon="search"
+      shape="square"
+      size="large"
+      theme="primary"
+    />
+  </wx-view>
+</icon-btn>
+`;
+
+exports[`Button Button shape demo works fine 1`] = `
+<shape>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      ariaLabel="搜索"
+      icon="search"
+      shape="square"
+      size="large"
+      theme="primary"
+    />
+    <t-button
+      shape="round"
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      ariaLabel="搜索"
+      icon="search"
+      shape="circle"
+      size="large"
+      theme="primary"
+    />
+  </wx-view>
+  <t-button
+    block="{{true}}"
+    size="large"
+    tClass="external-class"
+    theme="primary"
+  >
+    填充按钮
+  </t-button>
+</shape>
+`;
+
+exports[`Button Button size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+    >
+      按钮48
+    </t-button>
+    <t-button
+      theme="primary"
+    >
+      按钮40
+    </t-button>
+    <t-button
+      size="small"
+      theme="primary"
+    >
+      按钮32
+    </t-button>
+    <t-button
+      size="extra-small"
+      theme="primary"
+    >
+      按钮28
+    </t-button>
+  </wx-view>
+</size>
+`;
+
+exports[`Button Button theme demo works fine 1`] = `
+<theme>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      size="large"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      size="large"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      size="large"
+      theme="primary"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      size="large"
+      theme="danger"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="danger"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="danger"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+  <wx-view
+    class="button-example"
+  >
+    <t-button
+      size="large"
+      theme="light"
+    >
+      填充按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="light"
+      variant="outline"
+    >
+      描边按钮
+    </t-button>
+    <t-button
+      size="large"
+      theme="light"
+      variant="text"
+    >
+      文字按钮
+    </t-button>
+  </wx-view>
+</theme>
+`;

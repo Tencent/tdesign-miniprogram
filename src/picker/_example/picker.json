@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Picker",
+  "usingComponents": {
+    "base": "./base",
+    "with-title": "./with-title",
+    "area": "./area"
+  }
+}

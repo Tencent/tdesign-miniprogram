@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "Radio",
+  "usingComponents": {
+    "horizontal": "./horizontal",
+    "base": "./base",
+    "align": "./align",
+    "card": "./card",
+    "status": "./status",
+    "theme": "./theme",
+    "special": "./special"
+  }
+}

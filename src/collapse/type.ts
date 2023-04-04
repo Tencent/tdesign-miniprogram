@@ -6,6 +6,14 @@
 
 export interface TdCollapseProps {
   /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 默认是否展开全部
    * @default false
    */
@@ -37,7 +45,16 @@ export interface TdCollapseProps {
     value?: boolean;
   };
   /**
+   * 折叠面板风格
+   * @default default
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'default' | 'card';
+  };
+  /**
    * 展开的面板集合
+   * @default []
    */
   value?: {
     type: ArrayConstructor;
@@ -45,58 +62,11 @@ export interface TdCollapseProps {
   };
   /**
    * 展开的面板集合，非受控属性
+   * @default []
    */
   defaultValue?: {
     type: ArrayConstructor;
     value?: CollapseValue;
-  };
-}
-
-export interface TdCollapsePanelProps {
-  /**
-   * 折叠面板内容
-   */
-  content?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 禁止当前面板展开，优先级大于 Collapse 的同名属性
-   */
-  disabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 当前折叠面板展开图标，优先级大于 Collapse 的同名属性
-   * @default true
-   */
-  expandIcon?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 面板头内容
-   */
-  header?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 面板头的右侧区域，一般用于呈现面板操作
-   */
-  headerRightContent?: {
-    type: StringConstructor;
-    optionalTypes: Array<BooleanConstructor>;
-    value?: string | boolean;
-  };
-  /**
-   * 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识
-   */
-  value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
   };
 }
 

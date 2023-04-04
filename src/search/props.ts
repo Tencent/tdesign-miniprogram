@@ -48,7 +48,7 @@ const props: TdSearchProps = {
   /** 右侧图标 */
   rightIcon: {
     type: String,
-    value: 'close',
+    value: 'close-circle-filled',
   },
   /** 搜索框形状 */
   shape: {
@@ -59,6 +59,16 @@ const props: TdSearchProps = {
   value: {
     type: String,
     value: '',
+  },
+  /** 是否启用清除控件 */
+  clearable: {
+    type: Boolean,
+    value: true,
+  },
+  /** 控制拉起的键盘类型 */
+  type: {
+    type: String,
+    value: 'text',
   },
 };
 

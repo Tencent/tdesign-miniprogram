@@ -6,20 +6,29 @@
 
 import { TdPickerProps } from './type';
 const props: TdPickerProps = {
+  /** 自动关闭；在确认、取消、点击遮罩层自动关闭，不需要手动设置 visible */
+  autoClose: {
+    type: Boolean,
+    value: true,
+  },
   /** 取消按钮文字 */
   cancelBtn: {
-    type: String,
-    value: '',
+    type: null,
+    value: true,
   },
   /** 确定按钮文字 */
   confirmBtn: {
-    type: String,
-    value: '',
+    type: null,
+    value: true,
   },
   /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 */
   header: {
     type: Boolean,
     value: true,
+  },
+  /** 用来定义 value / label 在 `options` 中对应的字段别名 */
+  keys: {
+    type: Object,
   },
   /** 标题 */
   title: {

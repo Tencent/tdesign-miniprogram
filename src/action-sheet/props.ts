@@ -6,6 +6,11 @@
 
 import { TdActionSheetProps } from './type';
 const props: TdActionSheetProps = {
+  /** 水平对齐方式 */
+  align: {
+    type: String,
+    value: 'center',
+  },
   /** 设置取消按钮的文本 */
   cancelText: {
     type: String,
@@ -15,6 +20,11 @@ const props: TdActionSheetProps = {
   count: {
     type: Number,
     value: 8,
+  },
+  /** 动作面板描述文字 */
+  description: {
+    type: String,
+    value: '',
   },
   /** 菜单项 */
   items: {

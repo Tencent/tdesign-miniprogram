@@ -7,9 +7,14 @@
 import { TdCheckboxProps } from './type';
 const props: TdCheckboxProps = {
   /** 多选框和内容相对位置 */
-  align: {
+  placement: {
     type: String,
     value: 'left',
+  },
+  /** 是否为块级元素 */
+  block: {
+    type: Boolean,
+    value: true,
   },
   /** 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 */
   checkAll: {
@@ -25,11 +30,6 @@ const props: TdCheckboxProps = {
   defaultChecked: {
     type: Boolean,
     value: false,
-  },
-  /** 多选框颜色 */
-  color: {
-    type: String,
-    value: '#0052d9',
   },
   /** 多选框内容 */
   content: {
@@ -48,9 +48,10 @@ const props: TdCheckboxProps = {
   externalClasses: {
     type: Array,
   },
-  /** 自定义选中图标和非选中图标。示例：[选中态图标地址，非选中态图标地址] */
+  /** 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标 */
   icon: {
-    type: Array,
+    type: null,
+    value: 'circle',
   },
   /** 是否为半选 */
   indeterminate: {
@@ -83,8 +84,7 @@ const props: TdCheckboxProps = {
   },
   /** 多选框的值 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
   },
 };
 

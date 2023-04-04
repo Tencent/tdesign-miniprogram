@@ -1,0 +1,55 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  wx:if="{{visible}}"
+  id="{{classPrefix}}"
+  class="{{classPrefix}} class {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+>
+  <view
+    class="{{classPrefix}}__mask"
+    data-source="overlay"
+    bind:tap="onClose"
+    style="{{ 'background-color: ' + backgroundColor }}"
+  />
+  <block wx:if="{{images && images.length}}">
+    <view class="{{classPrefix}}__content">
+      <swiper
+        class="swiper"
+        style="{{swiperStyle[currentSwiperIndex].style}}"
+        autoplay="{{false}}"
+        current="{{currentSwiperIndex}}"
+        bindchange="onSwiperChange"
+      >
+        <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
+          <t-image
+            t-class="t-image--external"
+            style="{{imagesStyle[index].style || ''}}"
+            mode="aspectFit"
+            lazy
+            src="{{item}}"
+            data-index="{{index}}"
+            class="{{classPrefix}}__image"
+            bindload="onImageLoadSuccess"
+          ></t-image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="{{classPrefix}}__nav">
+      <view class="{{classPrefix}}__nav-close" catch:tap="onClose">
+        <slot name="close-btn" />
+        <template wx:if="{{_closeBtn}}" is="icon" data="{{ ..._closeBtn }}" />
+      </view>
+
+      <view wx:if="{{showIndex}}" class="{{classPrefix}}__nav-index">
+        {{currentSwiperIndex + 1}}/{{images.length}}
+      </view>
+
+      <view class="{{classPrefix}}__nav-delete" bind:tap="onDelete">
+        <slot name="delete-btn" />
+        <template is="icon" data="{{ ..._deleteBtn }}" />
+      </view>
+    </view>
+  </block>
+</view>

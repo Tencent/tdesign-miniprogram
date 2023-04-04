@@ -1,0 +1,6 @@
+<view class="button-example">
+  <t-button theme="primary" size="large">按钮48</t-button>
+  <t-button theme="primary">按钮40</t-button>
+  <t-button theme="primary" size="small">按钮32</t-button>
+  <t-button theme="primary" size="extra-small">按钮28</t-button>
+</view>

@@ -1,0 +1,8 @@
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.button-group .space {
+  width: 32rpx;
+}

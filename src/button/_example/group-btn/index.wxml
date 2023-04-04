@@ -1,0 +1,4 @@
+<view class="button-example">
+  <t-button theme="light" block size="large">填充按钮</t-button>
+  <t-button theme="primary" block size="large">填充按钮</t-button>
+</view>

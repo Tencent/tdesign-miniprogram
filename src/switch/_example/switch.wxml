@@ -1,0 +1,24 @@
+<view class="demo">
+  <view class="demo-title">Switch 开关</view>
+  <view class="demo-desc">用于控制某个功能的开启和关闭。</view>
+
+  <t-demo title="01 组件类型" desc="基础开关">
+    <base />
+  </t-demo>
+
+  <t-demo desc="带描述开关">
+    <label />
+  </t-demo>
+
+  <t-demo desc="自定义颜色开关">
+    <color />
+  </t-demo>
+
+  <t-demo title="02 组件状态">
+    <status />
+  </t-demo>
+
+  <t-demo title="03 组件样式" desc="开关尺寸">
+    <size />
+  </t-demo>
+</view>

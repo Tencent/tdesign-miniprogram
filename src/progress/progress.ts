@@ -2,13 +2,14 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
+import { unitConvert, getRect } from '../common/utils';
 
 const { prefix } = config;
-const classPrefix = `${prefix}-progress`;
+const name = `${prefix}-progress`;
 
 @wxComponent()
 export default class Progress extends SuperComponent {
-  externalClasses = [`${prefix}-class-label`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-bar`, `${prefix}-class-label`];
 
   options = {
     multipleSlots: true,
@@ -18,8 +19,9 @@ export default class Progress extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix,
+    classPrefix: name,
     colorBar: '',
+    heightBar: '',
     computedStatus: '',
     computedProgress: 0,
   };
@@ -37,7 +39,43 @@ export default class Progress extends SuperComponent {
     color(color) {
       this.setData({
         colorBar: getBackgroundColor(color),
+        colorCircle: typeof color === 'object' ? '' : color, // 环形不支持渐变，单独处理
       });
+    },
+
+    strokeWidth(strokeWidth) {
+      if (!strokeWidth) {
+        return '';
+      }
+      this.setData({
+        heightBar: unitConvert(strokeWidth),
+      });
+    },
+
+    theme(theme) {
+      if (theme === 'circle') {
+        this.getInnerDiameter();
+      }
+    },
+
+    trackColor(trackColor) {
+      this.setData({
+        bgColorBar: trackColor,
+      });
+    },
+  };
+
+  methods = {
+    getInnerDiameter() {
+      const { strokeWidth } = this.properties;
+      const wrapID = `.${name}__canvas--circle`;
+      if (strokeWidth) {
+        getRect(this, wrapID).then((wrapRect) => {
+          this.setData({
+            innerDiameter: wrapRect.width - unitConvert(strokeWidth) * 2,
+          });
+        });
+      }
     },
   };
 }

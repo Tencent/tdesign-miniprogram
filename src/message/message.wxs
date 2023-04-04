@@ -1,16 +1,24 @@
+var isEmptyObj = function (obj) {
+  return JSON.stringify(obj) === '{}';
+};
+
 var changeNumToStr = function (arr) {
   return arr.map(function (item) {
     return typeof item === 'number' ? item + 'rpx' : item;
   });
 };
 
-var getMessageStylesOffset = function (props) {
-  var arr = changeNumToStr(props.offset);
+var getMessageStyles = function (zIndex, offset, wrapTop) {
+  var arr = changeNumToStr(offset);
   var styleOffset = '';
-  styleOffset += 'top:' + arr[0] + ';';
+  styleOffset += 'top:' + changeNumToStr([wrapTop * 2]) + ';';
   styleOffset += 'right:' + arr[1] + ';';
   styleOffset += 'left:' + arr[1] + ';';
-  return styleOffset;
+  var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  return zIndexStyle + styleOffset;
 };
 
-module.exports.getMessageStylesOffset = getMessageStylesOffset;
+module.exports = {
+  getMessageStyles: getMessageStyles,
+  isEmptyObj: isEmptyObj,
+};

@@ -1,0 +1,51 @@
+<wxs module="_">
+  module.exports.getText = function(value, curr) { if (value > curr) return '已完成步骤'; if (value == curr)
+  return'当前步骤'; return '未完成步骤'; }
+</wxs>
+
+<view class="demo-desc">垂直带序号步骤条</view>
+
+<view class="block">
+  <t-steps layout="vertical" current="{{first}}" bind:change="onFirstChange">
+    <t-step-item wx:for="{{4}}" wx:key="index" title="{{_.getText(first, index)}}" content="可自定义此处内容" />
+  </t-steps>
+</view>
+
+<view class="demo-desc">垂直带图标步骤条</view>
+
+<view class="block">
+  <t-steps layout="vertical" current="{{second}}" bind:change="onSecondChange">
+    <t-step-item
+      wx:for="{{4}}"
+      wx:key="index"
+      title="{{_.getText(second, index)}}"
+      content="可自定义此处内容"
+      icon="cart"
+    />
+  </t-steps>
+</view>
+
+<view class="demo-desc">垂直简略步骤条</view>
+
+<view class="block">
+  <t-steps layout="vertical" theme="dot" current="{{third}}" bind:change="onThirdChange">
+    <t-step-item wx:for="{{4}}" wx:key="index" title="{{_.getText(third, index)}}" content="可自定义此处内容" />
+  </t-steps>
+</view>
+
+<view class="demo-desc">垂直带自定义内容步骤条</view>
+
+<view class="block">
+  <t-steps layout="vertical" current="{{third}}" bind:change="onThirdChange">
+    <t-step-item wx:for="{{3}}" wx:key="index" title="{{_.getText(third, index)}}" content="可自定义此处内容">
+      <view wx:if="{{index == 1}}" slot="extra">
+        <image
+          src="https://tdesign.gtimg.com/miniprogram/images/steps1.png"
+          alt="图标"
+          style="width: 100%"
+          mode="widthFix"
+        />
+      </view>
+    </t-step-item>
+  </t-steps>
+</view>

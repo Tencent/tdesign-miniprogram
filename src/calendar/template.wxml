@@ -1,0 +1,71 @@
+<wxs src="../common/utils.wxs" module="_" />
+<import src="../common/template/button.wxml" />
+
+<view
+  class="{{_.cls(classPrefix, [['popup', usePopup]])}} class {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+>
+  <view class="{{classPrefix}}__title" tabindex="0">
+    <slot name="title" />
+    <text>{{ title || '请选择日期' }}</text>
+  </view>
+  <t-icon
+    wx:if="{{usePopup}}"
+    name="close"
+    class="{{classPrefix}}__close-btn"
+    size="24"
+    aria-role="button"
+    aria-label="关闭"
+    bind:tap="handleClose"
+  />
+  <view aria-hidden class="{{classPrefix}}__days">
+    <view wx:for="{{days}}" wx:key="index" class="{{classPrefix}}__days-item">{{ item }}</view>
+  </view>
+  <scroll-view
+    class="{{classPrefix}}__months"
+    scroll-into-view="{{scrollIntoView}}"
+    scroll-y
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <block wx:for="{{months}}" wx:key="index">
+      <view class="{{classPrefix}}__month" id="year_{{item.year}}_month_{{item.month}}"
+        >{{ item.year }} 年 {{ item.month + 1 }} 月</view
+      >
+      <view class="{{classPrefix}}__dates">
+        <view wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}" wx:key="index" />
+        <block wx:for="{{item.months}}" wx:for-index="dateIndex" wx:for-item="dateItem" wx:key="dateIndex">
+          <view
+            class="{{classPrefix}}__dates-item {{dateItem.className}} {{classPrefix}}__dates-item--{{dateItem.type}}"
+            data-year="{{item.year}}"
+            data-month="{{item.month}}"
+            data-date="{{dateItem}}"
+            aria-role="button"
+            aria-label="{{this.getDateLabel(item, dateItem)}}"
+            aria-disabled="{{dateItem.type === 'disabled'}}"
+            bind:tap="handleSelect"
+          >
+            <view wx:if="{{dateItem.prefix}}" class="{{classPrefix}}__dates-item-prefix">{{ dateItem.prefix }}</view>
+            {{ dateItem.day }}
+            <view
+              wx:if="{{dateItem.suffix}}"
+              class="{{classPrefix}}__dates-item-suffix {{classPrefix}}__dates-item-suffix--{{dateItem.type}}"
+            >
+              {{ dateItem.suffix }}
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </scroll-view>
+  <view wx:if="{{innerConfirmBtn != null && usePopup}}" class="{{classPrefix}}__footer">
+    <slot wx:if="{{innerConfirmBtn === 'slot'}}" name="confirm-btn" />
+    <block wx:elif="{{innerConfirmBtn}}">
+      <!-- <t-button block theme="primary" v-bind="confirmBtn" bind:tap="handleConfirm" /> -->
+      <template
+        is="button"
+        data="{{ block: true,  theme: 'primary', class: 't-calendar__confirm-btn', ...innerConfirmBtn }}"
+      />
+    </block>
+  </view>
+</view>

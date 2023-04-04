@@ -1,0 +1,8 @@
+<view class="demo-rate">
+  <view class="demo-rate__title">大尺寸 24</view>
+  <t-rate value="{{value[0]}}" data-index="{{0}}" bind:change="onChange" />
+</view>
+<view class="demo-rate">
+  <view class="demo-rate__title">小尺寸 20</view>
+  <t-rate value="{{value[1]}}" data-index="{{1}}" bind:change="onChange" size="{{20}}" />
+</view>

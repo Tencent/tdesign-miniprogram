@@ -1,47 +1,56 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
-  class="{{classPrefix}} {{prefix}}-class {{classPrefix}}--{{align}} {{classPrefix}}--{{theme}} {{checked ? prefix + '-is-actived' : ''}}"
+  style="{{_._style([style, customStyle])}}"
+  class="{{_.cls(classPrefix, [placement, theme, ['checked', checked], ['block', block]])}} class {{prefix}}-class"
+  aria-role="checkbox"
+  aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
+  aria-disabled="{{disabled ? true : false}}"
+  bind:tap="onChange"
+  tabindex="{{tabindex}}"
 >
-  <!-- icon -->
   <view
     wx:if="{{theme == 'default'}}"
-    class="{{classPrefix}}__icon-{{align}} {{prefix}}-class-icon"
-    data-target="icon"
-    bind:tap="onChange"
+    class="{{_.cls(classPrefix + '__icon', [placement, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
   >
-    <block wx:if="{{icon.length > 0}}">
-      <view class="{{classPrefix}}__icon">
-        <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
-      </view>
-    </block>
+    <view wx:if="{{_.isArray(icon)}}" class="{{classPrefix}}__icon">
+      <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
+    </view>
     <block wx:else>
       <t-icon
-        color="{{checked && !disabled ? color : ''}}"
-        name="{{checked ? (indeterminate ? 'minus-circle-filled' : 'check-circle-filled') : 'circle'}}"
-        class="{{classPrefix}}__btn {{checked ? prefix + '-is-checked' : ''}} {{disabled ? prefix + '-is-disabled' : ''}}"
+        wx:if="{{checked && (icon == 'circle' || icon == 'rectangle')}}"
+        name="{{indeterminate ? ('minus-' + icon + '-filled') : ('check-' + icon + '-filled')}}"
+        class="{{_.cls(classPrefix + '__icon-wrapper', [])}}"
       />
+      <t-icon
+        wx:if="{{checked && icon == 'line'}}"
+        name="{{indeterminate ? ('minus-' + icon + '-filled') : 'check'}}"
+        class="{{_.cls(classPrefix + '__icon-wrapper', [])}}"
+      />
+      <view
+        wx:elif="{{!checked && (icon == 'circle' || icon == 'rectangle')}}"
+        class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
+      />
+      <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
     </block>
   </view>
-  <!-- 文本内容 -->
-  <view
-    class="{{classPrefix}}__content {{disabled ? prefix + '-is-disabled' : ''}}"
-    data-target="text"
-    bind:tap="onChange"
-  >
-    <!-- title -->
-    <view class="{{classPrefix}}__title {{prefix}}-class-label" style="-webkit-line-clamp:{{maxLabelRow}}">
+  <view class="{{classPrefix}}__content" data-target="text" catch:tap="onChange">
+    <view
+      class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
+      style="-webkit-line-clamp:{{maxLabelRow}}"
+    >
       {{label}}
       <slot />
       <slot name="label" />
     </view>
-    <!-- content -->
-    <view class="{{classPrefix}}__description {{prefix}}-class-content " style="-webkit-line-clamp:{{maxContentRow}}">
-      {{content}}
-      <slot name="content" />
-    </view>
+    <view
+      class="{{_.cls(classPrefix + '__description', [['disabled', disabled]])}} {{prefix}}-class-content "
+      style="-webkit-line-clamp:{{maxContentRow}}"
+      >{{content}}<slot name="content"
+    /></view>
   </view>
-  <!-- 内置下边框 -->
   <view
     wx:if="{{theme == 'default' && !borderless}}"
-    class="{{classPrefix}}__border {{classPrefix}}__border--{{align}} {{prefix}}-class-border"
+    class="{{_.cls(classPrefix + '__border', [placement])}} {{prefix}}-class-border"
   />
 </view>

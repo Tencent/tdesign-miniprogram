@@ -1,0 +1,3 @@
+<t-side-bar id="base" value="{{sideBarIndex}}" style="{{style}}" customStyle="{{customStyle}}">
+  <t-side-bar-item style="{{style}}" customStyle="{{customStyle}}" value="1" label="选项卡"></t-side-bar-item>
+</t-side-bar>

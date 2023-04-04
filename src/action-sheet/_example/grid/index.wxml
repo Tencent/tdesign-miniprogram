@@ -1,0 +1,5 @@
+<t-action-sheet id="t-action-sheet" bind:selected="handleSelected" />
+
+<t-button size="large" variant="outline" bind:tap="handleAction" block theme="primary">常规宫格型</t-button>
+
+<t-button size="large" variant="outline" bind:tap="handleMultiAction" block theme="primary">带翻页宫格型</t-button>

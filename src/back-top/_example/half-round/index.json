@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-back-top": "tdesign-miniprogram/back-top/back-top"
+  }
+}

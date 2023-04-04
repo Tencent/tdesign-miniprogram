@@ -17,10 +17,10 @@ export default class Collapse extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
   relations: RelationsOptions = {
-    './collapse-panel': {
+    '../collapse-panel/collapse-panel': {
       type: 'descendant',
       linked() {
-        // this.updateExpanded();
+        this.updateExpanded();
       },
     },
   };
@@ -35,6 +35,7 @@ export default class Collapse extends SuperComponent {
   properties = props;
 
   data = {
+    prefix,
     classPrefix: name,
   };
 
@@ -46,14 +47,11 @@ export default class Collapse extends SuperComponent {
 
   methods = {
     updateExpanded() {
-      const panels = this.getRelationNodes('./collapse-panel');
-
-      if (panels.length === 0) return;
-
-      panels.forEach((child: WechatMiniprogram.Component.TrivialInstance) => {
+      this.$children.forEach((child: WechatMiniprogram.Component.TrivialInstance) => {
         child.updateExpanded(this.properties.value);
       });
     },
+
     switch(panelValue: CollapseValue) {
       const { expandMutex, value: activeValues } = this.properties;
       let value = [];

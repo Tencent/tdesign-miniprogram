@@ -1,26 +1,171 @@
 @import '../common/style/index.less';
 
-@tab-item-height--horizontal: 92rpx;
-@tab-item-height--vertical: 108rpx;
-@tab-item-width--vertical: 208rpx;
+@tabs: ~'@{prefix}-tabs';
+@item: ~'@{tabs}__item';
+
+@tab-font-size: var(--tab-font-size, 28rpx);
+@tab-nav-bg-color: var(--td-tab-nav-bg-color, @bg-color-container);
+
+@tab-item-height: var(--td-tab-item-height, 96rpx);
+@tab-item-vertical-height: var(--td-tab-item-vertical-height, 108rpx);
+@tab-item-vertical-width: var(--td-tab-item-vertical-width, 208rpx);
+
+@tab-item-color: var(--td-tab-item-color, @font-gray-1);
+@tab-item-active-color: var(--td-tab-item-active-color, @brand-color);
+@tab-item-disabled-color: var(--td-tab-item-disabled-color, @font-gray-4);
+@tab-border-color: var(--td-tab-border-color, @component-stroke);
+
+// track
+@tab-track-color: var(--td-tab-track-color, @brand-color);
+@tab-track-thickness: var(--td-tab-track-thickness, 6rpx);
+@tab-track-width: var(--td-tab-track-width, 32rpx);
+@tab-track-radius: var(--td-tab-track-radius, 8rpx);
+
+// theme = tag
+@tab-item-tag-height: var(--td-tab-item-tag-height, 64rpx);
+@tab-item-tag-bg: var(--td-tab-item-tag-bg, @bg-color-secondarycontainer);
+@tab-item-tag-active-bg: var(--td-tab-item-tag-active-bg, @brand-color-light);
+
+@tab-icon-size: var(--td-tab-icon-size, 36rpx);
 
 .@{prefix}-tabs {
-  display: flex;
-  font-size: 28rpx;
-  background-color: #fff;
+  position: relative;
+  font-size: @tab-font-size;
+  background: @tab-nav-bg-color;
 
-  .@{prefix}-is-active {
-    font-weight: 700;
-    color: #0052d9;
-  }
+  &__wrapper {
+    display: flex;
+    overflow: hidden;
+    background: @tab-nav-bg-color;
 
-  .@{prefix}-is-disabled {
-    color: #c8c9cc;
+    &--card {
+      background: @bg-color-secondarycontainer;
+      --td-tab-border-color: transparent;
+    }
   }
 
   &__item {
-    flex: 1;
+    position: relative;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
     font-weight: 400;
+    color: @tab-item-color;
+    padding: 0 32rpx;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &--active {
+      font-weight: 600;
+      color: @tab-item-active-color;
+    }
+
+    &--disabled {
+      color: @tab-item-disabled-color;
+    }
+
+    &--evenly {
+      flex: 1;
+    }
+
+    &--top,
+    &--bottom {
+      height: @tab-item-height;
+    }
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--tag {
+        width: 100%;
+        text-align: center;
+        padding: 0 32rpx;
+        line-height: @tab-item-tag-height;
+        border-radius: calc(@tab-item-tag-height / 2);
+        background-color: @tab-item-tag-bg;
+      }
+
+      &--active&--tag {
+        background-color: @tab-item-tag-active-bg;
+      }
+    }
+
+    &--tag:not(&--evenly) {
+      padding: 0 8rpx;
+
+      &:first-child {
+        margin-left: 16rpx;
+      }
+
+      &:last-child {
+        padding-right: 24rpx;
+      }
+    }
+
+    &--tag {
+      padding: 0 16rpx;
+    }
+
+    &--card {
+      &.@{item}--active {
+        background-color: @bg-color-container;
+        border-radius: 18rpx 18rpx 0 0;
+
+        &:first-child {
+          border-top-left-radius: 0;
+        }
+
+        &:last-child {
+          border-top-right-radius: 0;
+        }
+      }
+
+      &.@{item}--pre {
+        border-bottom-right-radius: 18rpx;
+      }
+    }
+
+    &-prefix,
+    &-suffix {
+      position: absolute;
+      bottom: 0;
+      width: 36rpx;
+      height: 36rpx;
+      background: #fff;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: @bg-color-secondarycontainer;
+      }
+    }
+
+    &-prefix {
+      right: 0;
+
+      &::after {
+        border-bottom-right-radius: 18rpx;
+      }
+    }
+
+    &-suffix {
+      left: 0;
+
+      &::after {
+        border-bottom-left-radius: 18rpx;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: @tab-icon-size;
+    margin-right: 4rpx;
   }
 
   &__content {
@@ -29,7 +174,6 @@
 
   &__nav {
     position: relative;
-    z-index: 0;
     user-select: none;
     width: 100%;
     display: flex;
@@ -41,111 +185,54 @@
     position: absolute;
     font-weight: 600;
     z-index: 1;
+    transition-duration: 0.3s;
+    background-color: @tab-track-color;
+
+    &--top,
+    &--bottom {
+      left: 0;
+      bottom: 1rpx;
+      width: @tab-track-width;
+      height: @tab-track-thickness;
+      border-radius: @tab-track-radius;
+    }
+  }
+
+  &__scroll {
+    &--top,
+    &--bottom {
+      height: @tab-item-height;
+      position: relative;
+    }
+
+    &--top {
+      .border(bottom, @tab-border-color);
+    }
   }
 
   &__content-inner {
     display: block;
   }
 
-  &.@{prefix}-tabs--top,
-  &.@{prefix}-tabs--bottom {
+  &--top,
+  &--bottom {
     flex-wrap: wrap;
 
-    .@{prefix}-tabs__content-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      transition-property: transform;
-    }
-
-    .@{prefix}-tabs__scroll {
-      position: relative;
-
-      &::after {
-        content: '';
-      }
-    }
-
-    .@{prefix}-tabs__item {
-      height: @tab-item-height--horizontal;
-      line-height: @tab-item-height--horizontal;
-      text-align: center;
-      min-width: 162rpx;
-    }
-
-    .@{prefix}-tabs__track {
-      left: 0;
-      bottom: 0;
-      height: 4rpx;
-    }
-
     .@{prefix}-tabs__content {
       width: 100%;
+
+      &--animated .@{prefix}-tabs__content-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        will-change: left;
+        transition-property: transform;
+      }
     }
   }
 
-  &.@{prefix}-tabs--top {
-    .@{prefix}-tabs__scroll {
-      border-bottom: solid 1rpx rgba(150, 95, 95, 0.12);
-    }
-  }
-
-  &.@{prefix}-tabs--bottom {
+  &--bottom {
     flex-direction: column-reverse;
-  }
-
-  &.@{prefix}-tabs--left,
-  &.@{prefix}-tabs--right {
-    .@{prefix}-tabs__content-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      transition-property: transform;
-    }
-
-    .@{prefix}-tabs__scroll {
-      width: auto;
-    }
-
-    .@{prefix}-tabs__nav {
-      flex-direction: column;
-    }
-
-    .@{prefix}-tabs__item {
-      text-align: center;
-      height: @tab-item-height--vertical;
-      line-height: @tab-item-height--vertical;
-      width: @tab-item-width--vertical;
-      background-color: rgb(243, 243, 243);
-
-      &.@{prefix}-is-active {
-        background-color: #fff;
-      }
-    }
-
-    .@{prefix}-tabs__content {
-      width: 100%;
-    }
-  }
-
-  &.@{prefix}-tabs--left {
-    .@{prefix}-tabs__track {
-      left: 0;
-      top: 0;
-      width: 4rpx;
-    }
-  }
-
-  &.@{prefix}-tabs--right {
-    flex-direction: row-reverse;
-
-    .@{prefix}-tabs__track {
-      right: 0;
-      top: 0;
-      width: 4rpx;
-    }
   }
 }

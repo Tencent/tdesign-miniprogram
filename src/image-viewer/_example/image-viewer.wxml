@@ -1,0 +1,10 @@
+<view class="demo">
+  <view class="demo-title">ImageViewer 图片预览</view>
+  <view class="demo-desc">用于图片内容的缩略展示与查看。</view>
+  <t-demo title="01 类型" desc="基础图片预览" padding>
+    <base />
+  </t-demo>
+  <t-demo desc="带操作图片预览" padding>
+    <delete />
+  </t-demo>
+</view>

@@ -1,30 +1,61 @@
-<view wx:if="{{visible}}" class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class">
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  wx:if="{{visible}}"
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{classPrefix}}--{{theme}} class {{prefix}}-class"
+>
   <!-- prefixIcon -->
-  <view class="{{classPrefix}}__prefix-icon {{prefix}}-class-prefix-icon" bind:tap="clickPrefixIcon">
-    <t-icon wx:if="{{ iconName }}" name="{{ iconName }}" />
-    <slot wx:else name="prefixIcon" />
+  <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon">
+    <slot name="prefix-icon" />
+    <template
+      wx:if="{{_prefixIcon}}"
+      is="icon"
+      data="{{tClass: prefix + '-class-prefix-icon', ..._prefixIcon }}"
+    ></template>
   </view>
 
-  <!-- conten -->
+  <!-- content -->
   <view class="{{classPrefix}}__content-wrap" bind:tap="clickContent">
+    <!-- 垂直滚动通知：基于swiper实现，适用信息量短的多条公告消息，超出省略 -->
+    <view wx:if="{{ direction === 'vertical' && _.isArray(content) }}">
+      <swiper
+        autoplay="true"
+        vertical="true"
+        circular="true"
+        interval="2000"
+        display-multiple-items="1"
+        class="{{classPrefix}}__content--vertical"
+      >
+        <block wx:for="{{content}}" wx:key="index">
+          <swiper-item>
+            <view class="{{classPrefix}}__content--vertical-item"> {{item}} </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
     <view
+      wx:else
       class="{{classPrefix}}__content {{prefix}}-class-content {{ !marquee ? classPrefix + '__content-wrapable' : ''}}"
       animation="{{ animationData }}"
     >
-      <view wx:if="{{content}}"> {{content}} </view>
-      <slot wx:else name="content" />
+      <block wx:if="{{content}}">{{content}}</block>
+      <slot name="content" />
+      <view class="{{classPrefix}}__operation {{prefix}}-class-operation" catch:tap="clickOperation">
+        <block wx:if="{{ operation }}">{{operation}}</block>
+        <slot name="operation" />
+      </view>
     </view>
   </view>
 
-  <!-- extra -->
-  <view class="{{classPrefix}}__extra {{prefix}}-class-extra" bind:tap="clickExtra">
-    <view wx:if="{{ extra }}"> {{extra}} </view>
-    <slot wx:else name="extra" />
-  </view>
-
   <!-- suffixIcon -->
-  <view class="{{classPrefix}}__suffix-icon {{prefix}}-class-suffix-icon" bind:tap="clickSuffixIcon">
-    <t-icon wx:if="{{ suffixIcon }}" name="{{suffixIcon}}" />
-    <slot wx:else name="suffixIcon" />
+  <view class="{{classPrefix}}__suffix-icon" bind:tap="clickSuffixIcon">
+    <slot name="suffix-icon" />
+    <template
+      wx:if="{{_suffixIcon}}"
+      is="icon"
+      data="{{tClass: prefix + '-class-suffix-icon', ..._suffixIcon }}"
+    ></template>
   </view>
 </view>

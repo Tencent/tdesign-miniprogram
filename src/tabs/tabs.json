@@ -1,3 +1,8 @@
 {
-  "component": true
+  "component": true,
+  "usingComponents": {
+    "t-sticky": "../sticky/sticky",
+    "t-badge": "../badge/badge",
+    "t-icon": "../icon/icon"
+  }
 }

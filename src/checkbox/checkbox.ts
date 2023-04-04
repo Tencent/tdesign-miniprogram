@@ -1,9 +1,9 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import Props from './props';
 
 const { prefix } = config;
-const classPrefix = `${prefix}-checkbox`;
+const name = `${prefix}-checkbox`;
 @wxComponent()
 export default class CheckBox extends SuperComponent {
   externalClasses = [
@@ -16,15 +16,19 @@ export default class CheckBox extends SuperComponent {
 
   behaviors = ['wx://form-field'];
 
-  relations = {
+  relations: RelationsOptions = {
     '../checkbox-group/checkbox-group': {
-      type: 'ancestor' as 'ancestor',
+      type: 'ancestor',
       linked(parent) {
-        const { value, disabled } = parent.data;
+        const { value, disabled, borderless } = parent.data;
         const valueSet = new Set(value);
         const data: any = {
           disabled: disabled || this.data.disabled,
         };
+
+        if (borderless) {
+          data.borderless = true;
+        }
 
         data.checked = valueSet.has(this.data.value);
 
@@ -40,7 +44,7 @@ export default class CheckBox extends SuperComponent {
 
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    styleIsolation: 'shared',
+    // styleIsolation: 'shared',
   };
 
   properties = {
@@ -57,7 +61,7 @@ export default class CheckBox extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix,
+    classPrefix: name,
   };
 
   controlledProps = [
@@ -81,7 +85,7 @@ export default class CheckBox extends SuperComponent {
       }
 
       const checked = !this.data.checked;
-      const [parent] = this.getRelationNodes('../checkbox-group/checkbox-group');
+      const parent = this.$parent;
 
       if (parent) {
         parent.updateValue({ ...this.data, checked });

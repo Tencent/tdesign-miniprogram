@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar Avatar action demo works fine 1`] = `
+<action>
+  <t-avatar-group
+    cascading="right-up"
+    max="5"
+  >
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+  </t-avatar-group>
+</action>
+`;
+
+exports[`Avatar Avatar badge-avatar demo works fine 1`] = `
+<badge-avatar>
+  <t-avatar
+    badgeProps="{{
+      Object {
+        "dot": true,
+        "offset": Array [
+          4,
+          4,
+        ],
+      }
+    }}"
+    class="avatar-example"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+  />
+  <t-avatar
+    badgeProps="{{
+      Object {
+        "count": 8,
+        "offset": Array [
+          6,
+          6,
+        ],
+      }
+    }}"
+    class="avatar-example"
+    tClassContent="external-class-content"
+  >
+    A
+  </t-avatar>
+  <t-avatar
+    badgeProps="{{
+      Object {
+        "count": 12,
+        "offset": Array [
+          6,
+          6,
+        ],
+      }
+    }}"
+    class="avatar-example"
+    icon="user"
+  />
+</badge-avatar>
+`;
+
+exports[`Avatar Avatar character-avatar demo works fine 1`] = `
+<character-avatar>
+  <t-avatar
+    ariaLabel="字符头像"
+    class="avatar-example"
+    tClassContent="external-class-content"
+  >
+    A
+  </t-avatar>
+  <t-avatar
+    class="avatar-example"
+    shape="round"
+    tClassContent="external-class-content"
+  >
+    A
+  </t-avatar>
+</character-avatar>
+`;
+
+exports[`Avatar Avatar exhibition demo works fine 1`] = `
+<exhibition>
+  <t-avatar-group
+    collapseAvatar="+5"
+    max="5"
+  >
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
+    />
+    <t-avatar
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+  </t-avatar-group>
+</exhibition>
+`;
+
+exports[`Avatar Avatar icon-avatar demo works fine 1`] = `
+<icon-avatar>
+  <t-avatar
+    class="avatar-example"
+    icon="user"
+  />
+  <t-avatar
+    class="avatar-example"
+    icon="user"
+    shape="round"
+  />
+</icon-avatar>
+`;
+
+exports[`Avatar Avatar image-avatar demo works fine 1`] = `
+<image-avatar>
+  <t-avatar
+    class="avatar-example"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+  />
+  <t-avatar
+    class="avatar-example"
+    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    shape="round"
+  />
+</image-avatar>
+`;
+
+exports[`Avatar Avatar size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="avatar-example"
+  >
+    <t-avatar
+      class="avatar-example--large"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      size="large"
+    />
+    <t-avatar
+      class="avatar-example--large"
+      size="large"
+      tClassContent="external-class-content"
+    >
+      A
+    </t-avatar>
+    <t-avatar
+      class="avatar-example--large"
+      icon="user"
+      size="large"
+    />
+  </wx-view>
+  <wx-view
+    class="avatar-example"
+  >
+    <t-avatar
+      class="avatar-example--medium"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    />
+    <t-avatar
+      class="avatar-example--medium"
+      size="medium"
+      tClassContent="external-class-content"
+    >
+      A
+    </t-avatar>
+    <t-avatar
+      class="avatar-example--medium"
+      icon="user"
+      size="medium"
+    />
+  </wx-view>
+  <wx-view
+    class="avatar-example"
+  >
+    <t-avatar
+      class="avatar-example--small"
+      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      size="small"
+    />
+    <t-avatar
+      class="avatar-example--small"
+      size="small"
+      tClassContent="external-class-content"
+    >
+      A
+    </t-avatar>
+    <t-avatar
+      class="avatar-example--small"
+      icon="user"
+      size="small"
+    />
+  </wx-view>
+</size>
+`;

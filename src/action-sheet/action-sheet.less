@@ -1,19 +1,40 @@
 @import '../common/style/index.less';
 
 @action-sheet: ~'@{prefix}-action-sheet';
-@action-sheet-list-item-height: 96rpx;
-@action-sheet-gap-bg-color: #f3f3f3;
-@action-sheet-list-item-color--disabled: rgba(0, 0, 0, 0.26);
-@action-sheet-square-image-size: 72rpx;
-@action-sheet-square-image-padding: 10rpx;
+
+@action-sheet-list-item-height: var(--td-action-sheet-list-item-height, 112rpx);
+@action-sheet-list-item-disabled-color: var(--td-action-sheet-list-item-disabled-color, @font-gray-4);
+@action-sheet-border-color: var(--td-action-sheet-border-color, @gray-color-1);
+@action-sheet-color: var(--td-action-sheet-color, @font-gray-1);
+@action-sheet-border-radius: var(--td-action-sheet-border-radius, @radius-extra-large);
+@action-sheet-description-color: var(--td-action-sheet-description-color, @font-gray-3);
+@action-sheet-text-align: var(--td-action-sheet-text-align, center);
+@action-sheet-cancel-height: var(--td-action-sheet-cancel-height, 96rpx);
 
 .@{action-sheet} {
-  .flex-center {
+  &__content {
+    color: @action-sheet-color;
+    border-top-left-radius: @action-sheet-border-radius;
+    border-top-right-radius: @action-sheet-border-radius;
+    background-color: @bg-color-container;
+    overflow: hidden;
+
+    &--grid {
+      padding-top: 16rpx;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .flex-center() {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .ellipsis {
+
+  .ellipsis() {
     word-wrap: normal;
     white-space: nowrap;
     overflow: hidden;
@@ -21,28 +42,61 @@
   }
 
   &__grid {
-    padding: 48rpx 0 16rpx 0;
-    &-item {
-      margin-bottom: 32rpx;
+    padding-bottom: 16rpx;
+
+    &--swiper {
+      padding-bottom: 48rpx;
+    }
+  }
+
+  &__description {
+    color: @action-sheet-description-color;
+    line-height: 44rpx;
+    font-size: 28rpx;
+    text-align: @action-sheet-text-align;
+    padding: 24rpx 32rpx;
+
+    &:focus {
+      outline: 0;
+    }
+    .border(bottom, @action-sheet-border-color);
+
+    &--left {
+      text-align: left;
+
+      &::after {
+        left: 32rpx;
+      }
     }
   }
 
   &__list {
-    background-color: @bg-color-block;
-    border-bottom: 1rpx solid #f6f6f6;
-    &:last-child {
-      border-bottom: none;
-    }
     &-item {
-      height: @action-sheet-list-item-height;
       .flex-center();
-      &.@{prefix}-is-disabled {
-        color: @action-sheet-list-item-color--disabled;
+      .border(bottom, @action-sheet-border-color);
+      height: @action-sheet-list-item-height;
+      padding: 0 32rpx;
+
+      &:focus {
+        outline: 0;
       }
+      &--left {
+        justify-content: start;
+
+        &::after {
+          left: 32rpx;
+        }
+      }
+
+      &--disabled {
+        color: @action-sheet-list-item-disabled-color;
+      }
+
       &-text {
         font-size: @font-size-m;
         .ellipsis();
       }
+
       &-icon {
         margin-right: 16rpx;
       }
@@ -50,47 +104,29 @@
   }
 
   &__swiper-wrap {
+    margin-top: 8rpx;
     position: relative;
-    background-color: @bg-color-block;
-  }
-
-  &__square {
-    height: 148rpx;
-    margin-bottom: 32rpx;
-    &-image {
-      width: @action-sheet-square-image-size;
-      height: @action-sheet-square-image-size;
-      padding: @action-sheet-square-image-padding;
-      image {
-        width: @action-sheet-square-image-size;
-        height: @action-sheet-square-image-size;
-      }
-    }
-    &-text {
-      width: 100%;
-      margin-top: 10rpx;
-      font-size: 28rpx;
-      color: rgba(0, 0, 0, 0.9);
-      text-align: center;
-      .ellipsis();
-    }
   }
 
   &__footer {
-    background-color: @bg-color-block;
+    background-color: @bg-color-container;
   }
+
   &__gap-list {
     height: 16rpx;
-    background-color: @action-sheet-gap-bg-color;
+    background-color: @action-sheet-border-color;
   }
+
   &__gap-grid {
     height: 1rpx;
-    background-color: @action-sheet-gap-bg-color;
+    background-color: @action-sheet-border-color;
   }
+
   &__cancel {
     .flex-center();
-    height: @action-sheet-list-item-height;
+    height: @action-sheet-cancel-height;
   }
+
   &__dots {
     position: absolute;
     left: 50%;
@@ -110,9 +146,5 @@
         background-color: #0052d9;
       }
     }
-  }
-  &__safe {
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
   }
 }

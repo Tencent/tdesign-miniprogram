@@ -7,7 +7,6 @@
 export interface TdDrawerProps {
   /**
    * 点击蒙层时是否触发抽屉关闭事件
-   * @default true
    */
   closeOnOverlayClick?: {
     type: BooleanConstructor;
@@ -34,7 +33,7 @@ export interface TdDrawerProps {
    */
   placement?: {
     type: StringConstructor;
-    value?: 'left' | 'right' | 'top' | 'bottom';
+    value?: 'left' | 'right';
   };
   /**
    * 是否显示遮罩层
@@ -45,6 +44,13 @@ export interface TdDrawerProps {
     value?: boolean;
   };
   /**
+   * 抽屉的标题
+   */
+  title?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 组件是否可见
    * @default false
    */
@@ -53,7 +59,8 @@ export interface TdDrawerProps {
     value?: boolean;
   };
   /**
-   * 抽屉层级，样式默认为 1500
+   * 抽屉层级，样式默认为 11500
+   * @default 11500
    */
   zIndex?: {
     type: NumberConstructor;

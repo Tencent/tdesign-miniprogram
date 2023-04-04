@@ -15,11 +15,6 @@ const props: TdFabProps = {
     type: String,
     value: '',
   },
-  /** 悬浮按钮的样式，常用于调整位置 */
-  style: {
-    type: String,
-    value: 'right: 16px; bottom: 32px;',
-  },
   /** 文本内容 */
   text: {
     type: String,
