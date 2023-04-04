@@ -16,7 +16,7 @@ spline: explain
 小程序组件示例小程序，请使用QQ扫码预览 ↓
 <br/>
 
-<img width="260" src="https://tdesign.gtimg.com/site/qrcode.jpeg" />
+<img width="260" src="https://spark-static.gamecenter.qq.com/xy/openqa/qrcode.jpeg" />
 
 ## 使用之前
 
