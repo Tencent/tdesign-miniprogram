@@ -1,6 +1,6 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import props from '../checkbox/checkbox-group-props';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-checkbox-group`;
@@ -32,12 +32,12 @@ export default class CheckBoxGroup extends SuperComponent {
     value() {
       this.updateChildren();
     },
+    options() {
+      this.initWithOptions();
+    },
   };
 
   lifetimes = {
-    attached() {
-      this.initWithOptions();
-    },
     ready() {
       this.setCheckall();
     },
@@ -92,7 +92,9 @@ export default class CheckBoxGroup extends SuperComponent {
         const items = this.getChilds();
         newValue =
           !checked && indeterminate
-            ? items.map((item) => item.data.value)
+            ? items
+                .filter(({ data }) => !(data.disabled && !newValue.includes(data.value)))
+                .map((item) => item.data.value)
             : items
                 .filter(({ data }) => {
                   if (data.disabled) {
@@ -112,7 +114,7 @@ export default class CheckBoxGroup extends SuperComponent {
     },
 
     initWithOptions() {
-      const { options } = this.data;
+      const { options, value } = this.data;
 
       if (!options?.length || !Array.isArray(options)) return;
 
@@ -122,8 +124,9 @@ export default class CheckBoxGroup extends SuperComponent {
           ? {
               label: `${item}`,
               value: item,
+              checked: value?.includes(item),
             }
-          : { ...item };
+          : { ...item, checked: value?.includes(item.value) };
       });
 
       this.setData({

@@ -1,6 +1,7 @@
 Component({
   data: {
     placement: 'left',
+    sidebar: [],
     baseSidebar: [
       {
         title: '菜单一',

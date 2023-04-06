@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "DateTimePicker 时间选择器",
+  "navigationBarTitleText": "DateTimePicker",
   "usingComponents": {
     "year-month-date": "./year-month-date",
     "year-month": "./year-month",

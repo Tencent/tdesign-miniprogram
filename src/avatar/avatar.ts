@@ -1,14 +1,16 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import avatarProps from './props';
+import { setIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-avatar`;
 
 @wxComponent()
 export default class Avatar extends SuperComponent {
-  options = {
-    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+  options: WechatMiniprogram.Component.ComponentOptions = {
+    multipleSlots: true,
+    styleIsolation: 'apply-shared',
   };
 
   externalClasses = [
@@ -26,58 +28,50 @@ export default class Avatar extends SuperComponent {
     classPrefix: name,
     isShow: true,
     zIndex: 0,
-    isChild: false,
+    borderedWithGroup: false,
   };
 
   relations: RelationsOptions = {
-    './avatar-group': {
+    '../avatar-group/avatar-group': {
       type: 'ancestor',
-      linked(this, target) {
-        this.parent = target;
+      linked(parent) {
+        this.parent = parent;
+
+        this.setData({
+          size: this.data.size ?? parent.data.size,
+          borderedWithGroup: true,
+        });
       },
     },
   };
 
-  methods = {
-    /**
-     * @description avatar-group子节点缩紧，avatar无
-     * @param isChild 是否为avatar-group子节点
-     */
-    updateIsChild(isChild) {
+  observers = {
+    icon(icon) {
+      const obj = setIcon('icon', icon, '');
       this.setData({
-        isChild,
+        ...obj,
       });
-    },
-
-    /**
-     * @description 控制avatar显隐
-     */
-    updateShow() {
-      this.setData({
-        isShow: false,
-      });
-    },
-    /**
-     * @description 控制avatar尺寸
-     */
-    updateSize(size) {
-      if (this.properties.size) return;
-      this.setData({ size });
-    },
-    /**
-     * @description 控制avatar左侧在上/右侧在上
-     */
-    updateCascading(zIndex) {
-      this.setData({ zIndex });
     },
   };
 
-  onLoadError(e: any) {
-    if (this.properties.hideOnLoadFailed) {
+  methods = {
+    hide() {
       this.setData({
         isShow: false,
       });
-    }
-    this.triggerEvent('error', e.detail);
-  }
+    },
+
+    updateCascading(zIndex) {
+      this.setData({ zIndex });
+    },
+
+    onLoadError(e: WechatMiniprogram.CustomEvent) {
+      if (this.properties.hideOnLoadFailed) {
+        this.setData({
+          isShow: false,
+        });
+      }
+      this.triggerEvent('error', e.detail);
+    },
+  };
 }

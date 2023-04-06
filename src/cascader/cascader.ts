@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { TdCascaderProps } from './type';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-cascader`;
@@ -15,7 +16,18 @@ const defaultOptionLabel = '选择选项';
 export default class Cascader extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
+  options: WechatMiniprogram.Component.ComponentOptions = {
+    multipleSlots: true,
+  };
+
   properties = props;
+
+  controlledProps = [
+    {
+      key: 'value',
+      event: 'change',
+    },
+  ];
 
   data = {
     prefix,
@@ -24,6 +36,7 @@ export default class Cascader extends SuperComponent {
     selectedIndexes: [],
     selectedValue: [],
     defaultOptionLabel,
+    scrollTopList: [],
     steps: [defaultOptionLabel],
   };
 
@@ -33,10 +46,9 @@ export default class Cascader extends SuperComponent {
         const $tabs = this.selectComponent('#tabs');
 
         $tabs?.setTrack();
+        this.updateScrollTop();
+        this.initWithValue();
       }
-    },
-    'value, options'() {
-      this.initWithValue();
     },
     'selectedIndexes, options'() {
       const { options, selectedIndexes, keys } = this.data;
@@ -69,16 +81,25 @@ export default class Cascader extends SuperComponent {
         stepIndex: items.length - 1,
       });
     },
+    async stepIndex() {
+      const { visible } = this.data;
+
+      if (visible) {
+        this.updateScrollTop();
+      }
+    },
   };
 
   methods = {
     initWithValue() {
-      if (this.data.value != null) {
+      if (this.data.value != null && this.data.value !== '') {
         const selectedIndexes = this.getIndexesByValue(this.data.options, this.data.value);
 
         if (selectedIndexes) {
           this.setData({ selectedIndexes });
         }
+      } else {
+        this.setData({ selectedIndexes: [] });
       }
     },
     getIndexesByValue(options: OptionsType, value) {
@@ -97,8 +118,28 @@ export default class Cascader extends SuperComponent {
         }
       }
     },
-    hide() {
+    updateScrollTop() {
+      const { visible, items, selectedIndexes, stepIndex } = this.data;
+
+      if (visible) {
+        getRect(this, '.cascader-radio-group-0').then((rect) => {
+          const eachRadioHeight = rect.height / items[0]?.length;
+
+          this.setData({
+            [`scrollTopList[${stepIndex}]`]: eachRadioHeight * selectedIndexes[stepIndex],
+          });
+        });
+      }
+    },
+    hide(trigger) {
       this.setData({ visible: false });
+      this.triggerEvent('close', { trigger: trigger });
+    },
+    onVisibleChange() {
+      this.hide('overlay');
+    },
+    onClose() {
+      this.hide('close-btn');
     },
     onStepClick(e) {
       const { index } = e.currentTarget.dataset;
@@ -125,7 +166,7 @@ export default class Cascader extends SuperComponent {
       selectedIndexes[level] = index;
       selectedIndexes.length = level + 1;
 
-      this.triggerEvent('pick', item[keys?.value ?? 'value'], index);
+      this.triggerEvent('pick', { value: item[keys?.value ?? 'value'], index, level });
 
       if (item?.[keys?.children ?? 'children']?.length) {
         this.setData({ selectedIndexes });
@@ -133,12 +174,12 @@ export default class Cascader extends SuperComponent {
         // setCascaderValue(item.value);
         this.setData({ selectedIndexes }, () => {
           const { items } = this.data;
-          this.triggerEvent('change', {
+          this._trigger('change', {
             value: item[keys?.value ?? 'value'],
             selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
           });
         });
-        this.hide();
+        this.hide('finish');
       }
     },
   };

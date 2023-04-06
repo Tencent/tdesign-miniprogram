@@ -34,7 +34,7 @@ isComponent: true
 
 {{ base }}
 
-过度样式
+过渡样式
 
 {{ transition }}
 
@@ -62,7 +62,6 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 color | String / Object / Array | '' | 进度条颜色。示例：'#ED7B2F' 或 'orange' 或 `['#f00', '#0ff', '#f0f']` 或 `{ '0%': '#f00', '100%': '#0ff' }` 或  `{ from: '#000', to: '#000' }` 等。TS 类型：`string \| Array<string> \| Record<string, string>` | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层、进度文字等元素类名。。`['t-class', 't-class-bar', 't-class-label']` | N
 label | String / Boolean / Slot | true | 进度百分比，可自定义 | N
 percentage | Number | 0 | 进度条百分比 | N

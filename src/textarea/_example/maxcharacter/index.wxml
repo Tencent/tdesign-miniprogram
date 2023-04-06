@@ -1,1 +1,8 @@
-<t-textarea label="设置最大字符个数，一个汉字表示两个字符" placeholder="请输入文字" maxcharacter="200" indicator />
+<t-textarea
+  t-class="external-class"
+  label="标签文字"
+  placeholder="设置最大字符个数，一个汉字表示两个字符"
+  maxcharacter="200"
+  disableDefaultPadding="{{true}}"
+  indicator
+/>

@@ -1,9 +1,16 @@
 @import '../common/style/index.less';
 
+@swiper-radius: var(--td-swiper-radius, @radius-large);
 @swiper-item-padding: var(--td-swiper-item-padding, 0);
 
 .@{prefix}-swiper {
   position: relative;
+
+  &-host {
+    border-radius: @swiper-radius;
+    overflow: hidden;
+    transform: translateY(0);
+  }
 
   &__item {
     display: flex;

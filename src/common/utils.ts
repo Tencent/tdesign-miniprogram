@@ -1,3 +1,5 @@
+import { prefix } from './config';
+
 const systemInfo = wx.getSystemInfoSync();
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
@@ -81,9 +83,10 @@ export const styles = function (styleObj) {
     .join('; ');
 };
 
-export const getAnimationFrame = function (cb: Function) {
+export const getAnimationFrame = function (context: any, cb: Function) {
   return wx
     .createSelectorQuery()
+    .in(context)
     .selectViewport()
     .boundingClientRect()
     .exec(() => {
@@ -175,21 +178,6 @@ export const getCharacterLength = (type: string, str: string, max?: number) => {
 export const chunk = (arr: any[], size: number) =>
   Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 
-export const equal = (v1, v2) => {
-  if (Array.isArray(v1) && Array.isArray(v2)) {
-    if (v1.length !== v2.length) return false;
-    return v1.every((item, index) => equal(item, v2[index]));
-  }
-  return v1 === v2;
-};
-
-export const clone = (val) => {
-  if (Array.isArray(val)) {
-    return val.map((item) => clone(item));
-  }
-  return val;
-};
-
 export const getInstance = function (context?: Context, selector?: string) {
   if (!context) {
     const pages = getCurrentPages();
@@ -239,6 +227,8 @@ export const setIcon = (iconName, icon, defaultIcon) => {
   };
 };
 
+export const isBool = (val) => typeof val === 'boolean';
+
 export const isObject = (val) => typeof val === 'object' && val != null;
 
 export const isString = (val) => typeof val === 'string';
@@ -248,4 +238,35 @@ export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperC
 export const getCurrentPage = function <T>() {
   const pages = getCurrentPages();
   return pages[pages.length - 1] as T & WechatMiniprogram.Page.TrivialInstance;
+};
+
+export const uniqueFactory = (compName) => {
+  let number = 0;
+  return () => `${prefix}_${compName}_${number++}`;
+};
+
+export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {
+  if ((isBool(icon) && icon && defaultIcon) || isString(icon)) {
+    return { name: isBool(icon) ? defaultIcon : icon };
+  }
+  if (isObject(icon)) {
+    return icon;
+  }
+  return null;
+};
+
+export const isOverSize = (size, sizeLimit) => {
+  if (!sizeLimit) return false;
+
+  const base = 1000;
+  const unitMap = {
+    B: 1,
+    KB: base,
+    MB: base * base,
+    GB: base * base * base,
+  };
+  const computedSize =
+    typeof sizeLimit === 'number' ? sizeLimit * base : sizeLimit?.size * unitMap[sizeLimit?.unit ?? 'KB']; // 单位 KB
+
+  return size > computedSize;
 };

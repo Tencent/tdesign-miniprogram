@@ -2,14 +2,14 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
-  class="{{prefix}}-class {{classPrefix}} {{fixed ? classPrefix + '--fixed' : ''}} {{classPrefix + '--' + theme}}"
+  style="{{_._style([style, customStyle])}}"
+  class="class {{prefix}}-class {{_.cls(classPrefix, [['fixed', fixed], theme])}}"
   bindtap="toTop"
   aria-role="button"
 >
-  <view wx:if="{{iconName || _.isNoEmptyObj(iconData)}}" class="{{classPrefix}}__icon" aria-hidden>
-    <slot wx:if="{{iconName === 'slot'}}" name="icon" />
-    <template wx:else is="icon" data="{{tClass: prefix + '-class-icon', name: iconName, ...iconData}}"> </template>
+  <view class="{{classPrefix}}__icon" aria-hidden>
+    <slot name="icon" />
+    <template wx:if="{{_icon}}" is="icon" data="{{tClass: prefix + '-class-icon', ..._icon }}" />
   </view>
   <view wx:if="{{!!text}}" class="{{classPrefix}}__text--{{theme}} {{prefix}}-class-text">{{text}}</view>
   <slot />

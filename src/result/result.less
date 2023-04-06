@@ -1,5 +1,7 @@
 @import '../common/style/index.less';
 
+@result-icon-font-size: 160rpx;
+
 @result-title-font-size: var(--td-result-title-font-size, @font-size-l);
 @result-title-line-height: var(--td-result-title-line-height, 56rpx);
 @result-title-color: var(--td-result-title-color, @font-gray-1);
@@ -8,18 +10,22 @@
 @result-description-line-height: var(--td-result-description-line-height, 44rpx);
 @result-description-color: var(--td-result-description-color, @font-gray-2);
 
-@result-icon-default-color: var(--td-result-icon-default-color, @primary-color);
+@result-icon-default-color: var(--td-result-icon-default-color, @brand-color);
 @result-icon-success-color: var(--td-result-icon-success-color, @success-color);
 @result-icon-warning-color: var(--td-result-icon-warning-color, @warning-color);
 @result-icon-error-color: var(--td-result-icon-error-color, @error-color);
 
-@result-title-margin-top: var(--td-result-title-margin-top, @spacer);
-@result-description-margin-top: var(--td-result-description-margin-top, 24rpx);
+@result-title-margin-top: var(--td-result-title-margin-top, @spacer-1);
+@result-description-margin-top: var(--td-result-description-margin-top, @spacer);
 
 .@{prefix}-result {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &__icon {
+    font-size: @result-icon-font-size;
+  }
 
   &__title {
     line-height: @result-title-line-height; // 标题行高
@@ -28,7 +34,7 @@
     color: @result-title-color; // 标题颜色
   }
 
-  &__thumb + &__title:not(:empty) {
+  &__thumb:not(:empty) + &__title:not(:empty) {
     margin-top: @result-title-margin-top; // 标题内容上边距
   }
 

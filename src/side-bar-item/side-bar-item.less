@@ -3,26 +3,36 @@
 @side-bar-color: var(--td-side-bar-color, @font-gray-1);
 @side-bar-font-size: var(--td-side-bar-font-size, 32rpx);
 @side-bar-item-height: var(--td-side-bar-item-height, 112rpx);
-@side-bar-bg-color: var(--td-side-bar-bg-color, @gray-color-1);
+@side-bar-item-line-height: var(--td-side-bar-item-line-height, 48rpx);
+@side-bar-bg-color: var(--td-side-bar-bg-color, @bg-color-secondarycontainer);
 @side-bar-disabled-color: var(--td-side-bar-disabled-color, @font-gray-4);
-@side-bar-active-color: var(--td-side-bar-active-color, @primary-color);
+@side-bar-active-color: var(--td-side-bar-active-color, @brand-color);
 @side-bar-border-radius: var(--td-side-bar-border-radius, 18rpx);
+@side-bar-icon-size: var(--td-side-bar-icon-size, 40rpx);
 
 .@{prefix}-side-bar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   padding: 32rpx;
   font-size: @side-bar-font-size;
   color: @side-bar-color;
   background: @side-bar-bg-color;
-  height: @side-bar-item-height;
+  min-height: @side-bar-item-height;
   box-sizing: border-box;
-  white-space: nowrap;
-  // line-height: @side-bar-item-height;
+  white-space: wrap;
+  line-height: @side-bar-item-line-height;
 
   &--active {
     font-weight: 600;
-    background: @bg-color-block;
+    background: @bg-color-container;
     color: @side-bar-active-color;
+  }
+
+  &__icon {
+    font-size: @side-bar-icon-size;
+    margin-right: 4rpx;
   }
 
   &__prefix,

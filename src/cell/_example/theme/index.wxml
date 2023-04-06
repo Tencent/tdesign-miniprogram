@@ -1,13 +1,5 @@
-<view class="demo-section__wrapper">
-  <t-cell-group theme="card">
-    <t-cell title="单行标题" hover arrow>
-      <t-icon name="service" color="#0052d4" slot="left-icon" />
-    </t-cell>
-    <t-cell title="单行标题" hover arrow>
-      <t-icon name="internet" color="#0052d4" slot="left-icon" />
-    </t-cell>
-    <t-cell title="单行标题" hover arrow>
-      <t-icon name="lock-on" color="#0052d4" slot="left-icon" />
-    </t-cell>
-  </t-cell-group>
-</view>
+<t-cell-group theme="card">
+  <t-cell title="单行标题" leftIcon="service" hover arrow />
+  <t-cell title="单行标题" leftIcon="internet" hover arrow />
+  <t-cell title="单行标题" leftIcon="lock-on" hover arrow />
+</t-cell-group>

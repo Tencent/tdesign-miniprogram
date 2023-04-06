@@ -16,7 +16,7 @@ export interface TdNoticeBarProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -33,12 +33,12 @@ export interface TdNoticeBarProps {
    */
   externalClasses?: {
     type: ArrayConstructor;
-    value?: ['t-class', 't-class-content', 't-class-prefix-icon', 't-class-extra', 't-class-suffix-icon'];
+    value?: ['t-class', 't-class-content', 't-class-prefix-icon', 't-class-operation', 't-class-suffix-icon'];
   };
   /**
    * 右侧额外信息
    */
-  extra?: {
+  operation?: {
     type: StringConstructor;
     value?: string;
   };

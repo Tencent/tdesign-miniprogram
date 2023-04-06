@@ -2,8 +2,7 @@
   "component": true,
   "usingComponents": {
     "t-grid": "../grid/grid",
-    "t-grid-item": "../grid/grid-item",
-    "t-popup": "../popup/popup",
+    "t-grid-item": "../grid-item/grid-item",
     "t-icon": "../icon/icon",
     "t-image": "../image/image"
   }

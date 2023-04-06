@@ -1,5 +1,5 @@
 ---
-title: Divider 分割符
+title: Divider 分割线
 description: 用于分割、组织、细化有一定逻辑的组织元素内容和页面结构。
 spline: message
 isComponent: true
@@ -35,7 +35,6 @@ isComponent: true
 -- | -- | -- | -- | --
 align | String | center | 文本位置（仅在水平分割线有效）。可选项：left/right/center | N
 content | String / Slot | - | 子元素 | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 dashed | Boolean | false | 是否虚线（仅在水平分割线有效） | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、分隔线类名 等。`['t-class', 't-class-line', 't-class-content']` | N
 layout | String | horizontal | 分隔线类型有两种：水平和垂直。可选项：horizontal/vertical | N

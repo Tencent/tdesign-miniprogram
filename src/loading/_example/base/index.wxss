@@ -3,7 +3,6 @@
   align-items: center;
 }
 
-.loading-container-flex t-loading {
-  min-width: 20%;
-  margin-right: 40rpx;
+.wrapper {
+  margin-right: 40px;
 }

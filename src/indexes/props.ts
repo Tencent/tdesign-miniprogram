@@ -6,11 +6,6 @@
 
 import { TdIndexesProps } from './type';
 const props: TdIndexesProps = {
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 索引字符列表。不传默认 `A-Z` */
   indexList: {
     type: Array,
@@ -24,6 +19,11 @@ const props: TdIndexesProps = {
   sticky: {
     type: Boolean,
     value: true,
+  },
+  /** 锚点吸顶时与顶部的距离	 */
+  stickyOffset: {
+    type: Number,
+    value: 0,
   },
 };
 

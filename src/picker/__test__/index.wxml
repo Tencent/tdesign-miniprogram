@@ -22,6 +22,8 @@
 <t-picker
   id="city"
   visible="{{cityVisible}}"
+  style="{{style}}"
+  customStyle="{{customStyle}}"
   value="{{cityValue}}"
   data-key="city"
   title="{{pickerTitle}}"
@@ -31,11 +33,12 @@
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"
 >
-  <t-picker-item id="cityItem" options="{{citys}}"></t-picker-item>
+  <t-picker-item id="cityItem" style="{{style}}" customStyle="{{customStyle}}" options="{{citys}}"></t-picker-item>
 </t-picker>
 
 <!-- 年+ 季节 不带标题 -->
 <t-picker
+  id="yearSeasons"
   visible="{{yearSeasonsVisible}}"
   value="{{yearSeasonsValue}}"
   data-key="yearSeasons"

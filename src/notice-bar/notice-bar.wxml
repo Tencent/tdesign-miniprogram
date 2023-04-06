@@ -1,18 +1,18 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view wx:if="{{visible}}" style="{{ customStyle }}" class="{{classPrefix}} {{classPrefix}}--{{theme}} {{prefix}}-class">
+<view
+  wx:if="{{visible}}"
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{classPrefix}}--{{theme}} class {{prefix}}-class"
+>
   <!-- prefixIcon -->
-  <view
-    wx:if="{{prefixIconName || _.isNoEmptyObj(prefixIconData)}}"
-    class="{{classPrefix}}__prefix-icon"
-    bind:tap="clickPrefixIcon"
-  >
-    <slot wx:if="{{prefixIconName === 'slot'}}" name="prefix-icon" />
+  <view class="{{classPrefix}}__prefix-icon" bind:tap="clickPrefixIcon">
+    <slot name="prefix-icon" />
     <template
-      wx:else
+      wx:if="{{_prefixIcon}}"
       is="icon"
-      data="{{tClass: prefix + '-class-prefix-icon', name: prefixIconName, ...prefixIconData}}"
+      data="{{tClass: prefix + '-class-prefix-icon', ..._prefixIcon }}"
     ></template>
   </view>
 
@@ -40,28 +40,22 @@
       class="{{classPrefix}}__content {{prefix}}-class-content {{ !marquee ? classPrefix + '__content-wrapable' : ''}}"
       animation="{{ animationData }}"
     >
-      <block wx:if="{{content}}"> {{content}} </block>
+      <block wx:if="{{content}}">{{content}}</block>
       <slot name="content" />
+      <view class="{{classPrefix}}__operation {{prefix}}-class-operation" catch:tap="clickOperation">
+        <block wx:if="{{ operation }}">{{operation}}</block>
+        <slot name="operation" />
+      </view>
     </view>
   </view>
 
-  <!-- extra -->
-  <view class="{{classPrefix}}__extra {{prefix}}-class-extra" bind:tap="clickExtra">
-    <block wx:if="{{ extra }}"> {{extra}} </block>
-    <slot name="extra" />
-  </view>
-
   <!-- suffixIcon -->
-  <view
-    wx:if="{{suffixIconName || _.isNoEmptyObj(suffixIconData)}}"
-    class="{{classPrefix}}__suffix-icon"
-    bind:tap="clickSuffixIcon"
-  >
-    <slot wx:if="{{suffixIconName === 'slot'}}" name="suffix-icon" />
+  <view class="{{classPrefix}}__suffix-icon" bind:tap="clickSuffixIcon">
+    <slot name="suffix-icon" />
     <template
-      wx:else
+      wx:if="{{_suffixIcon}}"
       is="icon"
-      data="{{tClass: prefix + '-class-suffix-icon', name: suffixIconName, ...suffixIconData}}"
+      data="{{tClass: prefix + '-class-suffix-icon', ..._suffixIcon }}"
     ></template>
   </view>
 </view>

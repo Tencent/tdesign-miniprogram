@@ -1,13 +1,12 @@
 {
   "navigationBarTitleText": "Link",
-  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "content": "./content",
     "underline": "./underline",
     "prefix": "./prefix",
     "suffix": "./suffix",
     "theme": "./theme",
-    "status": "./status",
+    "disabled": "./disabled",
     "size": "./size"
   }
 }

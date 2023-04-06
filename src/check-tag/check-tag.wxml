@@ -1,0 +1,15 @@
+<wxs src="../common/utils.wxs" module="_" />
+<import src="../common/template/icon.wxml" />
+
+<view style="{{_._style([style, customStyle])}}" class="{{className}} class {{prefix}}-class" bind:tap="onClick">
+  <view aria-hidden="{{true}}" class="{{classPrefix}}__icon">
+    <template wx:if="{{_icon}}" is="icon" data="{{ tClass: prefix + '-icon', ..._icon }}" />
+    <slot name="icon" />
+  </view>
+  <view class="{{classPrefix}}__text">
+    <slot />
+    <slot name="content" />
+    <block wx:if="{{_.isArray(content) && content.length == 2}}">{{checked ? content[0] : content[1]}}</block>
+    <block wx:else>{{content}}</block>
+  </view>
+</view>

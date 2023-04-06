@@ -7,14 +7,12 @@ module.exports = {
     return texts[curVal] || '未评分';
   },
 
-  getIconName: function (defaultValue, value, index, variant, icon) {
+  getIconName: function (defaultValue, value, index, icon) {
     var curVal = value ? value : defaultValue;
     var name = ['star-filled', 'star-filled'];
 
     if (icon) {
       name = icon.constructor == 'Array' ? icon : [icon, icon];
-    } else if (variant === 'outline') {
-      name[1] = 'star';
     }
 
     return name[curVal >= index + 1 ? 0 : 1];
@@ -33,6 +31,9 @@ module.exports = {
       }
     } else if (allowHalf && curVal - index > 0) {
       className.push(classPrefix + '--selected-half');
+      if (scaleIndex === index + 1) {
+        className.push(classPrefix + '--current');
+      }
       if (disabled) {
         className.push(classPrefix + '--disabled-half');
       }

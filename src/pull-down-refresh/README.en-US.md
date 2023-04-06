@@ -5,7 +5,6 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | \- | N
 external-classes | Array | - | `['t-class', 't-class-loading','t-class-text', 't-class-indicator']` | N
 loading-bar-height | String / Number | 50 | \- | N
 loading-props | Object | - | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/pull-down-refresh/type.ts) | N

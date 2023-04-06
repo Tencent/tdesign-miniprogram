@@ -18,34 +18,46 @@ isComponent: true
 
 ## 代码演示
 
-### 基础搜索框
+### 01 组件类型
 
-<img src="https://tdesign.gtimg.com/miniprogram/readme/search.png" width="375px" height="50%">
+基础搜索框
 
 {{ base }}
 
+获取焦点后显示取消按钮
 
-### 状态
+{{ action }}
 
-{{ status }}
+### 02 组件样式
+
+搜索框形状
+
+{{ shape }}
+
+### 03 组件状态
+
+默认状态其他对齐方式
+
+{{ other }}
 
 ## API
 ### Search Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 action | String / Slot | '' | 自定义右侧操作按钮文字 | N
 center | Boolean | false | 是否居中 | N
 disabled | Boolean | false | 是否禁用 | N
-external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-action','t-class-left','t-class-right']` | N
+external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-action','t-class-left','t-class-clear']` | N
 focus | Boolean | false | 是否聚焦 | N
-label | String | '' | 左侧文本 | N
+label | String | '' | 已废弃。左侧文本 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
 placeholder | String | '' | 占位符 | N
-right-icon | String / Slot | 'close-circle-filled' | 右侧图标 | N
+right-icon | String / Slot | 'close-circle-filled' | 已废弃。右侧图标 | N
+clearable | Boolean | true | 是否启用清除控件 | N
 shape | String | 'square' | 搜索框形状。可选项：square/round | N
 value | String | '' | 值 | N
+type | String | 'text' | 拉起键盘的类型，可选项：text/number/idcard/digit/nickname | N
 
 ### Search Events
 

@@ -1,5 +1,5 @@
 ---
-title: SideBar 侧边导航
+title: SideBar 侧边栏
 description: 用于内容分类后的展示切换。
 spline: navigation
 isComponent: true
@@ -35,6 +35,14 @@ isComponent: true
 
 {{ switch }}
 
+### 带图标侧边导航
+
+{{ with-icon }}
+
+### 自定义样式
+
+{{ custom }}
+
 ## API
 ### SideBar Props
 
@@ -56,5 +64,6 @@ click | `(value: number \| string, label: string)` | 点击选项时触发
 -- | -- | -- | -- | --
 badge-props | Object | - | 透传至 Badge 组件 | N
 disabled | Boolean | false | 是否禁用 | N
+icon | String / Object | - | `1.0.0-rc.1`。图标，传对象则透传至 Icon | N
 label | String | - | 展示的标签 | N
 value | String / Number | - | 当前选项的值 | N

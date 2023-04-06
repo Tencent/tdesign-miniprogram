@@ -1,8 +1,0 @@
-t-search {
-  background: #fff;
-  display: block;
-}
-
-t-search + t-search {
-  margin-top: 32rpx;
-}

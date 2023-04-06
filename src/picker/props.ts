@@ -16,24 +16,9 @@ const props: TdPickerProps = {
     type: null,
     value: true,
   },
-  /** 配置每一列的选项 */
-  columns: {
-    type: null,
-    value: [],
-  },
   /** 确定按钮文字 */
   confirmBtn: {
     type: null,
-    value: true,
-  },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
-  /** 底部内容 */
-  footer: {
-    type: Boolean,
     value: true,
   },
   /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 */
@@ -41,9 +26,9 @@ const props: TdPickerProps = {
     type: Boolean,
     value: true,
   },
-  /** 自定义label */
-  renderLabel: {
-    type: null,
+  /** 用来定义 value / label 在 `options` 中对应的字段别名 */
+  keys: {
+    type: Object,
   },
   /** 标题 */
   title: {

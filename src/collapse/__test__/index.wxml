@@ -1,11 +1,15 @@
 <t-collapse
   id="base"
+  style="{{style}}"
+  customStyle="{{customStyle}}"
   defaultExpandAll="{{defaultExpandAll}}"
   expandMutex="{{expandMutex}}"
   value="{{activeValues}}"
   bind:change="handleChange"
 >
-  <t-collapse-panel id="first" header="first" value="{{0}}" expandIcon>内容1</t-collapse-panel>
+  <t-collapse-panel id="first" style="{{style}}" customStyle="{{customStyle}}" header="first" value="{{0}}" expandIcon
+    >内容1</t-collapse-panel
+  >
   <t-collapse-panel id="second" disabled="{{secondDisabled}}" header="second" value="{{1}}" expandIcon
     >内容2</t-collapse-panel
   >

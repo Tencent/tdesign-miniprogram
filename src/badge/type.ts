@@ -33,7 +33,7 @@ export interface TdBadgeProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -90,13 +90,5 @@ export interface TdBadgeProps {
   size?: {
     type: StringConstructor;
     value?: 'small' | 'medium';
-  };
-  labelledbyId: {
-    type: StringConstructor;
-    value: string;
-  };
-  describedbyId: {
-    type: StringConstructor;
-    value: string;
   };
 }

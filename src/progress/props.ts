@@ -11,11 +11,6 @@ const props: TdProgressProps = {
     type: null,
     value: '',
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 组件类名，分别用于设置 组件外层、进度文字等元素类名。 */
   externalClasses: {
     type: Array,

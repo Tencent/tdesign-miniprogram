@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@toast-color: var(--td-toast-color, @white-color-1);
+@toast-color: var(--td-toast-color, @font-white-1);
 @toast-bg-color: var(--td-toast-bg-color, @font-gray-2);
 @toast-max-width: var(--td-toast-max-width, 374rpx);
 @toast-radius: var(--td-toast-radius, 8rpx);
@@ -76,11 +76,11 @@
     -webkit-box-orient: vertical;
     white-space: pre-line;
 
-    &--column:not(:empty) {
+    &--column:not(:empty):not(:only-child) {
       margin-top: 16rpx;
     }
 
-    &--row {
+    &--row:not(:empty):not(:only-child) {
       margin-left: 16rpx;
     }
   }

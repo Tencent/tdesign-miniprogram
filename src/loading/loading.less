@@ -2,7 +2,7 @@
 
 @loading: ~'@{prefix}-loading';
 
-@loading-color: var(--td-loading-color, @primary-color);
+@loading-color: var(--td-loading-color, @brand-color);
 @loading-text-font-size: var(--td-loading-text-font-size, 24rpx);
 @loading-text-line-height: var(--td-loading-text-line-height, 40rpx);
 
@@ -108,34 +108,6 @@
   &--horizontal {
     flex-direction: row;
     vertical-align: top;
-  }
-
-  &__refresh-btn {
-    margin-left: 16rpx;
-    color: @loading-color;
-  }
-
-  &__bar {
-    height: 6rpx;
-    width: 80%;
-    transition: 0.5s;
-    background-color: @loading-color;
-    display: none;
-
-    &--static {
-      display: block;
-    }
-
-    &--loaded {
-      opacity: 0;
-      height: 0;
-      animation: t-bar-loaded 1s ease-out;
-    }
-
-    &--animation {
-      animation: t-bar 8s linear;
-      display: block;
-    }
   }
 }
 

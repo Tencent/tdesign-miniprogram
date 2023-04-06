@@ -4,10 +4,32 @@ import path from 'path';
 
 describe('tag', () => {
   const Tag = load(path.resolve(__dirname, `../tag`));
-  const CheckTag = load(path.resolve(__dirname, `../check-tag`));
+  const CheckTag = load(path.resolve(__dirname, `../../check-tag/check-tag`));
 
   describe('tag', () => {
     describe('props', () => {
+      it(`: style && customStyle`, async () => {
+        const id = simulate.load({
+          template: `<t-tag class="tag" style="{{style}}" customStyle="{{customStyle}}"></t-tag>`,
+          usingComponents: {
+            't-tag': Tag,
+          },
+          data: {
+            style: 'color: red',
+            customStyle: 'font-size: 9px',
+          },
+        });
+        const comp = simulate.render(id);
+        comp.attach(document.createElement('parent-wrapper'));
+        const $tag = comp.querySelector('.tag >>> .t-tag');
+        // expect(comp.toJSON()).toMatchSnapshot();
+        if (VIRTUAL_HOST) {
+          expect($tag.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+        } else {
+          expect($tag.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+        }
+      });
+
       it(`: theme`, async () => {
         const id = simulate.load({
           template: `
@@ -231,34 +253,60 @@ describe('tag', () => {
         const comp = simulate.render(id);
         comp.attach(document.createElement('parent-wrapper'));
 
-        const $click = comp.querySelector('.base >>> .t-tag');
-        const $close = comp.querySelector('.base >>> .t-tag__icon-close');
+        if (!VIRTUAL_HOST) {
+          const $click = comp.querySelector('.base >>> .t-tag');
+          const $close = comp.querySelector('.base >>> .t-tag__icon-close');
 
-        // 禁用态：event 不会触发
-        $click.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClick).toHaveBeenCalledTimes(0);
-        $close.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClose).toHaveBeenCalledTimes(0);
+          // 禁用态：event 不会触发
+          $click.dispatchEvent('tap');
+          await simulate.sleep(10);
+          expect(handleClick).toHaveBeenCalledTimes(0);
+          $close.dispatchEvent('tap');
+          await simulate.sleep(10);
+          expect(handleClose).toHaveBeenCalledTimes(0);
 
-        // 非禁用态：event
-        comp.setData({
-          disabled: false,
-        });
+          // 非禁用态：event
+          comp.setData({
+            disabled: false,
+          });
 
-        $click.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClick).toHaveBeenCalledTimes(1);
-        $close.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect(handleClose).toHaveBeenCalledTimes(1);
+          $click.dispatchEvent('tap');
+          await simulate.sleep(10);
+          expect(handleClick).toHaveBeenCalledTimes(1);
+          $close.dispatchEvent('tap');
+          await simulate.sleep(10);
+          expect(handleClose).toHaveBeenCalledTimes(1);
+        }
       });
     });
   });
 
   describe('check-tag', () => {
     describe('props', () => {
+      it(`: style && customStyle`, async () => {
+        const id = simulate.load({
+          template: `<t-check-tag class="check-tag" style="{{style}}" customStyle="{{customStyle}}"></t-check-tag>`,
+          usingComponents: {
+            't-check-tag': CheckTag,
+          },
+          data: {
+            style: 'color: red',
+            customStyle: 'font-size: 9px',
+          },
+        });
+        const comp = simulate.render(id);
+        comp.attach(document.createElement('parent-wrapper'));
+        const $CheckTag = comp.querySelector('.check-tag >>> .t-tag');
+        // expect(comp.toJSON()).toMatchSnapshot();
+        if (VIRTUAL_HOST) {
+          expect(
+            $CheckTag.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+          ).toBeTruthy();
+        } else {
+          expect($CheckTag.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+        }
+      });
+
       it(`: size`, async () => {
         const id = simulate.load({
           template: `
@@ -290,17 +338,15 @@ describe('tag', () => {
         expect($CheckTag.dom.getAttribute('class').includes('t-tag--large')).toBeTruthy();
       });
 
-      it(`: closable && disabled`, async () => {
+      it(`:disabled`, async () => {
         const id = simulate.load({
           template: `
             <t-check-tag
               class="base"
-              closable="{{closable}}"
               disabled="{{disabled}}"
             >危险</t-check-tag>`,
 
           data: {
-            closable: false,
             disabled: false,
           },
           methods: {},
@@ -313,15 +359,12 @@ describe('tag', () => {
         comp.attach(document.createElement('parent-wrapper'));
 
         const $CheckTag = comp.querySelector('.base >>> .t-tag');
-        expect($CheckTag.dom.getAttribute('class').includes('t-tag--closable')).not.toBeTruthy();
         expect($CheckTag.dom.getAttribute('class').includes('t-tag--disabled')).not.toBeTruthy();
 
         comp.setData({
           disabled: true,
-          closable: true,
         });
 
-        expect($CheckTag.dom.getAttribute('class').includes('t-tag--closable')).toBeTruthy();
         expect($CheckTag.dom.getAttribute('class').includes('t-tag--disabled')).toBeTruthy();
       });
 
@@ -330,8 +373,7 @@ describe('tag', () => {
           template: `
             <t-check-tag
               class="base"
-              checked="{{checked}}"
-              defaultChecked="{{defaultChecked}}"
+              checked
             >选中</t-check-tag>`,
 
           data: {
@@ -348,12 +390,6 @@ describe('tag', () => {
 
         const $CheckTag = comp.querySelector('.base >>> .t-tag');
 
-        // checked || defaultChecked 为true
-        await simulate.sleep(10);
-        comp.setData({
-          checked: false,
-          defaultChecked: true,
-        });
         expect($CheckTag.dom.getAttribute('class').includes('t-tag--checked')).toBeTruthy();
       });
     });
@@ -368,7 +404,6 @@ describe('tag', () => {
               closable="{{closable}}"
               disabled="{{disabled}}"
               checked="{{checked}}"
-              defaultChecked="{{defaultChecked}}"
               bind:change="handleChange"
             >选中</t-check-tag>`,
 
@@ -376,7 +411,6 @@ describe('tag', () => {
             disabled: true,
             closable: true,
             checked: false,
-            defaultChecked: false,
           },
           methods: {
             handleChange,
@@ -390,47 +424,21 @@ describe('tag', () => {
         comp.attach(document.createElement('parent-wrapper'));
 
         const $CheckTag = comp.querySelector('.base');
-
-        // 禁用态时，不触发事件，checked不变
-        await simulate.sleep(10);
-        $CheckTag.setData({
-          disabled: true,
-          closable: true,
-          checked: false,
-          defaultChecked: true,
-        });
-
         const $click = $CheckTag.querySelector('.t-tag');
 
         $click.dispatchEvent('tap');
         await simulate.sleep(10);
-        await simulate.sleep(10);
         expect(handleChange).toHaveBeenCalledTimes(0);
         expect($CheckTag.data.checked).toBe(false);
 
-        // 非禁用态时，触发事件， checked取反
-        await simulate.sleep(10);
         $CheckTag.setData({
           disabled: false,
-          checked: false,
-          defaultChecked: true,
-          closable: true,
         });
 
         $click.dispatchEvent('tap');
         await simulate.sleep(10);
         expect(handleChange).toHaveBeenCalledTimes(1);
         expect($CheckTag.data.checked).toBe(false);
-
-        $CheckTag.setData({
-          disabled: false,
-          checked: false,
-          defaultChecked: false,
-        });
-
-        $click.dispatchEvent('tap');
-        await simulate.sleep(10);
-        expect($CheckTag.data.checked).toBe(true);
       });
     });
   });

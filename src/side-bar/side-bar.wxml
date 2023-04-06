@@ -1,4 +1,6 @@
-<view class="{{classPrefix}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view class="{{classPrefix}} class {{prefix}}-class" style="{{_._style([style, customStyle])}}">
   <slot />
   <view class="{{classPrefix}}__padding"></view>
 </view>

@@ -1,13 +1,6 @@
-.box {
-  margin: 0 32rpx;
-}
-
-.box t-button + t-button {
-  margin-left: 32rpx;
-}
-
-.full-width {
-  background: #181818;
-  padding: 16rpx 0;
-  margin-top: 32rpx;
+.button-example {
+  display: flex;
+  justify-content: space-between;
+  background-color: #181818;
+  padding: 32rpx;
 }

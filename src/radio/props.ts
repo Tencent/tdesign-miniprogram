@@ -7,9 +7,9 @@
 import { TdRadioProps } from './type';
 const props: TdRadioProps = {
   /** 复选框和内容相对位置 */
-  align: {
+  placement: {
     type: String,
-    value: 'left',
+    value: null,
   },
   /** 是否允许取消选中 */
   allowUncheck: {
@@ -39,11 +39,6 @@ const props: TdRadioProps = {
   contentDisabled: {
     type: Boolean,
     value: false,
-  },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
   },
   /** 是否为禁用态 */
   disabled: {

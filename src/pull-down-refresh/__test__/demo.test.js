@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'refresh-timeout'];
+const mapper = ['base'];
 
 describe('PullDownRefresh', () => {
   mapper.forEach((demoName) => {

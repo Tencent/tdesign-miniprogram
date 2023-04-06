@@ -4,13 +4,14 @@
 @indexes-sidebar-item-size: var(--td-indexes-sidebar-item-size, 40rpx);
 @indexes-sidebar-font-size: var(--td-indexes-sidebar-font-size, 24rpx);
 @indexes-sidebar-line-height: var(--td-indexes-sidebar-line-height, 40rpx);
-@indexes-sidebar-active-color: var(--td-indexes-sidebar-active-color, @white-color-1);
-@indexes-sidebar-active-bg-color: var(--td-indexes-sidebar-active-bg-color, @primary-color);
+@indexes-sidebar-active-color: var(--td-indexes-sidebar-active-color, @font-white-1);
+@indexes-sidebar-active-bg-color: var(--td-indexes-sidebar-active-bg-color, @brand-color);
+@indexes-sidebar-right: var(--td-indexes-sidebar-right, 16rpx);
 
 @indexes-sidebar-tips-size: var(--td-indexes-sidebar-tips-size, 96rpx);
 @indexes-sidebar-tips-font-size: var(--td-indexes-sidebar-tips-font-size, 40rpx);
-@indexes-sidebar-tips-color: var(--td-indexes-sidebar-tips-color, @primary-color);
-@indexes-sidebar-tips-bg-color: var(--td-indexes-sidebar-tips-bg-color, @primary-color-1);
+@indexes-sidebar-tips-color: var(--td-indexes-sidebar-tips-color, @brand-color);
+@indexes-sidebar-tips-bg-color: var(--td-indexes-sidebar-tips-bg-color, @brand-color-light);
 @indexes-sidebar-tips-right: var(--td-indexes-sidebar-tips-right, 76rpx);
 
 .@{prefix}-indexes {
@@ -19,7 +20,7 @@
 
   &__sidebar {
     position: fixed;
-    right: 0;
+    right: @indexes-sidebar-right;
     width: @indexes-sidebar-item-size;
     color: @indexes-sidebar-color;
     font-size: @indexes-sidebar-font-size;

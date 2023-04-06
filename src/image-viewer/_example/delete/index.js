@@ -12,12 +12,8 @@ Component({
     clickHandle() {
       this.setData({
         images: [
-          'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/miniprogram-doc/doc-steps.png',
-          'https://oteam-tdesign-1258344706.cos-internal.ap-guangzhou.tencentcos.cn/site/miniprogram-doc/demo/image-viewer/demo-image.png',
-          'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/preview1.png',
-          'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/preview2.png',
-          'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/preview3.png',
-          'https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/miniprogram/images/preview4.png',
+          'https://tdesign.gtimg.com/miniprogram/images/swiper1.png',
+          'https://tdesign.gtimg.com/miniprogram/images/swiper2.png',
         ],
         showIndex: true,
         visible: true,

@@ -5,10 +5,6 @@ import Props from './props';
 const { prefix } = config;
 const name = `${prefix}-radio`;
 
-const iconDefault = {
-  'fill-circle': ['check-circle-filled', 'circle'],
-  'stroke-line': ['check', ''],
-};
 @wxComponent()
 export default class Radio extends SuperComponent {
   externalClasses = [
@@ -21,16 +17,10 @@ export default class Radio extends SuperComponent {
 
   behaviors = ['wx://form-field'];
 
-  parent = null;
-
   relations: RelationsOptions = {
     '../radio-group/radio-group': {
       type: 'ancestor',
       linked(parent) {
-        this.parent = parent;
-        if (parent.data.align) {
-          this.setData({ align: parent.data.align });
-        }
         if (parent.data.borderless) {
           this.setData({ borderless: true });
         }
@@ -45,6 +35,11 @@ export default class Radio extends SuperComponent {
   lifetimes = {
     attached() {
       this.initStatus();
+    },
+    ready() {
+      this.setData({
+        _placement: this.data.placement ?? this.$parent?.data?.placement ?? 'left',
+      });
     },
   };
 
@@ -70,6 +65,7 @@ export default class Radio extends SuperComponent {
     slotIcon: false,
     optionLinked: false,
     iconVal: [],
+    _placement: '',
   };
 
   methods = {
@@ -93,12 +89,12 @@ export default class Radio extends SuperComponent {
     },
     initStatus() {
       const { icon } = this.data;
-      const isIdArr = Array.isArray(this.parent?.icon || icon);
+      const isIdArr = Array.isArray(this.$parent?.icon || icon);
 
       this.setData({
         customIcon: isIdArr,
         slotIcon: icon === 'slot',
-        iconVal: !isIdArr ? iconDefault[icon] : this.data.icon,
+        iconVal: isIdArr ? this.$parent?.icon || icon : [],
       });
     },
 

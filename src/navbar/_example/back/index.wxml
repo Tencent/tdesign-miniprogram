@@ -1,1 +1,0 @@
-<t-navbar title="标题文字" left-arrow bind:go-back="handleBack" />

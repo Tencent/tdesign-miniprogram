@@ -11,11 +11,6 @@ const props: TdTagProps = {
     type: Boolean,
     value: false,
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 */
   disabled: {
     type: Boolean,
@@ -27,7 +22,7 @@ const props: TdTagProps = {
   },
   /** 标签中的图标，可自定义图标呈现 */
   icon: {
-    type: String,
+    type: null,
   },
   /** 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80 */
   maxWidth: {

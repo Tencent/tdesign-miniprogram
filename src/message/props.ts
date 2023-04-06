@@ -24,11 +24,6 @@ const props: TdMessageProps = {
   content: {
     type: String,
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 消息内置计时器，计时到达时会触发 duration-end 事件。单位：毫秒。值为 0 则表示没有计时器。 */
   duration: {
     type: Number,
@@ -71,6 +66,10 @@ const props: TdMessageProps = {
   zIndex: {
     type: Number,
     value: 15000,
+  },
+  /** 链接名称。值为字符串表示链接名称，值为 `Object` 类型，表示透传至 `Link`。 */
+  link: {
+    type: null,
   },
 };
 

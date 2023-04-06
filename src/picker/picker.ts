@@ -16,7 +16,7 @@ export default class Picker extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './picker-item': {
+    '../picker-item/picker-item': {
       type: 'child',
       linked(this: Picker) {
         this.updateChildren();
@@ -28,11 +28,19 @@ export default class Picker extends SuperComponent {
     value() {
       this.updateChildren();
     },
+    keys(obj) {
+      this.setData({
+        labelAlias: obj.label || 'label',
+        valueAlias: obj.value || 'value',
+      });
+    },
   };
 
   data = {
     prefix,
     classPrefix: name,
+    labelAlias: 'label',
+    valueAlias: 'value',
   };
 
   methods = {
@@ -42,7 +50,6 @@ export default class Picker extends SuperComponent {
       this.$children.forEach((child, index) => {
         child.setData({
           value: value?.[index] || '',
-          siblingCount: this.$children.length,
         });
         child.update();
       });
@@ -68,7 +75,7 @@ export default class Picker extends SuperComponent {
       const [value, label] = this.getSelectedValue();
       const columns = this.getColumnIndexes();
 
-      this.close();
+      this.close('confirm-btn');
       this.triggerEvent('change', { value, label, columns });
       this.triggerEvent('confirm', { value, label, columns });
     },
@@ -79,21 +86,22 @@ export default class Picker extends SuperComponent {
     },
 
     onCancel() {
-      this.close();
+      this.close('cancel-btn');
       this.triggerEvent('cancel');
     },
 
     onPopupChange(e) {
       const { visible } = e.detail;
 
-      this.close();
+      this.close('overlay');
       this.triggerEvent('visible-change', { visible });
     },
 
-    close() {
+    close(trigger) {
       if (this.data.autoClose) {
         this.setData({ visible: false });
       }
+      this.triggerEvent('close', { trigger });
     },
   };
 

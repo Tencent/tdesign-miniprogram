@@ -7,6 +7,31 @@ import * as Util from '../../common/utils';
 describe('toast', () => {
   const toast = load(path.resolve(__dirname, `../toast`), 't-toast');
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-toast id="toast" style="{{style}}" customStyle="{{customStyle}}"></t-toast>`,
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+      usingComponents: {
+        't-toast': toast,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $toastInstance = comp.querySelector('#toast');
+    $toastInstance.instance.show({ message: 'test', duration: 0 });
+    await simulate.sleep(0);
+    // expect(comp.toJSON()).toMatchSnapshot();
+    const $toast = comp.querySelector('#toast >>> .t-toast');
+    if (VIRTUAL_HOST) {
+      expect($toast.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($toast.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':base', async () => {
     const close = jest.fn();
     const destory = jest.fn();

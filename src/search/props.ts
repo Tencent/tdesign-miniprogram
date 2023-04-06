@@ -6,11 +6,6 @@
 
 import { TdSearchProps } from './type';
 const props: TdSearchProps = {
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 自定义右侧操作按钮文字 */
   action: {
     type: String,
@@ -64,6 +59,16 @@ const props: TdSearchProps = {
   value: {
     type: String,
     value: '',
+  },
+  /** 是否启用清除控件 */
+  clearable: {
+    type: Boolean,
+    value: true,
+  },
+  /** 控制拉起的键盘类型 */
+  type: {
+    type: String,
+    value: 'text',
   },
 };
 

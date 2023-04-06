@@ -8,7 +8,17 @@ describe('grid', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
 
-    expect(comp.toJSON()).toMatchSnapshot();
+    const $grid = comp.querySelector('#grid >>> .t-grid');
+    const $gridItem = comp.querySelector('#grid >>> .t-grid-item');
+
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect($grid.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      expect($gridItem.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+    } else {
+      expect($grid.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      expect($gridItem.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
   });
 
   it(':border', () => {

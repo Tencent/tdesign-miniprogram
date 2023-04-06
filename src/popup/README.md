@@ -40,7 +40,6 @@ isComponent: true
 close-btn | Boolean / Slot | - | 关闭按钮，值类型为 Boolean 时表示是否显示关闭按钮。也可以自定义关闭按钮 | N
 close-on-overlay-click | Boolean | true | 点击遮罩层是否关闭 | N
 content | String / Slot | - | 浮层里面的内容 | N
-custom-style | String | - | 自定义组件样式 | N
 duration | Number | 240 | 动画过渡时间 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名。`['t-class', 't-class-overlay', 't-class-content']` | N
 overlay-props | Object | {} | 遮罩层的属性，透传至 overlay | N

@@ -6,11 +6,6 @@
 
 import { TdTreeSelectProps } from './type';
 const props: TdTreeSelectProps = {
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 高度，默认单位为 px */
   height: {
     type: null,

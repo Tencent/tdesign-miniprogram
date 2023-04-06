@@ -1,4 +1,4 @@
-<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{cur.value}}">
+<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{cur.value || 'top'}}">
   <view class="block block--{{cur.value}}">{{cur.text}}</view>
 </t-popup>
 
@@ -11,6 +11,6 @@
   theme="primary"
   bind:tap="handlePopup"
   data-item="{{item}}"
-  class="wrapper"
+  t-class="wrapper"
   >{{item.text}}</t-button
 >

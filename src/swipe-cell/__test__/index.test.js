@@ -4,6 +4,30 @@ import path from 'path';
 describe('SwipeCell', () => {
   const swipeCell = load(path.resolve(__dirname, '../swipe-cell'));
 
+  it(`: style && customStyle`, async () => {
+    const id = simulate.load({
+      template: `<t-swipe-cell class="swipe-cell" style="{{style}}" customStyle="{{customStyle}}"></t-swipe-cell>`,
+      usingComponents: {
+        't-swipe-cell': swipeCell,
+      },
+      data: {
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $swipeCell = comp.querySelector('.swipe-cell >>> .t-swipe-cell');
+    // expect(comp.toJSON()).toMatchSnapshot();
+    if (VIRTUAL_HOST) {
+      expect(
+        $swipeCell.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+      ).toBeTruthy();
+    } else {
+      expect($swipeCell.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+    }
+  });
+
   it(':props data', async () => {
     const onActionClick = jest.fn();
     const id = simulate.load({

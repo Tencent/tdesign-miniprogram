@@ -7,6 +7,28 @@ describe('switch', () => {
   const switchComp = load(path.resolve(__dirname, `../switch`), 't-switch');
 
   describe('Props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-switch class="switch" style="{{style}}" customStyle="{{customStyle}}"></switch>`,
+        usingComponents: {
+          't-switch': switchComp,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $switch = comp.querySelector('.switch >>> .t-switch');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect($switch.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($switch.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(':base', () => {
       const id = simulate.load({
         template: `<t-switch></t-switch>`,
@@ -61,7 +83,7 @@ describe('switch', () => {
           't-switch': switchComp,
         },
         data: {
-          label: ['关', '开'],
+          label: ['开', '关'],
         },
       });
       const comp = simulate.render(id);

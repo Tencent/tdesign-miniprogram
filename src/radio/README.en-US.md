@@ -5,14 +5,13 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-align | String | left | options：left/right | N
+placement | String | left | options：left/right | N
 allow-uncheck | Boolean | false | \- | N
 block | Boolean | true | \- | N
 checked | Boolean | false | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
 content | String / Slot | - | \- | N
 content-disabled | Boolean | false | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 disabled | Boolean | undefined | \- | N
 external-classes | Array | - | `['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border']` | N
 icon | String / Array | 'circle' | Typescript：`'circle' \| 'line' \| Array<string>` | N
@@ -32,9 +31,8 @@ change | `(checked: boolean)` | \-
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-align | String | left | options：left/right | N
+placement | String | left | options：left/right | N
 borderless | Boolean | false | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 disabled | Boolean | undefined | \- | N
 icon | String / Array | 'circle' | Typescript：`'circle' | 'line' | Array<string>` | N
 keys | Object | - | Typescript：`KeysType` | N

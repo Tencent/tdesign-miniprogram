@@ -26,7 +26,7 @@ isComponent: true
 
 ## 代码演示
 
-### 类型
+### 组件类型
 
 基础结果
 
@@ -40,16 +40,26 @@ isComponent: true
 
 {{ custom }}
 
+## 常见问题
+
+<details>
+  <summary>
+    本地图片无法正确引用?
+    <span class="icon">👇</span>
+  </summary>
+  <p style="margin-top: 10px; color: rgba(0, 0, 0, .6)">
+    建议使用绝对路径，而不是相对路径。绝对路径以 app.json 所在位置为基准。
+  </p>
+</details>
+
 ## API
 ### Result Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 description | String / Slot | - | 描述文字 | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-image', 't-class-title', 't-class-description']` | N
-icon | String | - | 图标名称 | N
-icon-props | Object | {} | 图标属性，透传至 icon | N
+icon | String / Boolean / Object | true | 图标名称。值为字符串表示图标名称，值为 `false` 表示不显示图标，值为 `Object` 类型，表示透传至 `icon`，不传表示使用主题图标。 | N
 image | String / Slot | - | 图片地址 | N
 theme | String | default | 内置主题。可选项：default/success/warning/error | N
 title | String / Slot | '' | 标题 | N

@@ -5,6 +5,28 @@ describe('search', () => {
   const search = load(path.resolve(__dirname, `../search`), 't-search');
 
   describe('Props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-search class="search" style="{{style}}" customStyle="{{customStyle}}"></t-search>`,
+        usingComponents: {
+          't-search': search,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $search = comp.querySelector('.search >>> .t-search');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect($search.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($search.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(`:base`, () => {
       const id = simulate.load({
         template: `<t-search class="search" action="{{action}}"></t-search>`,
@@ -23,7 +45,7 @@ describe('search', () => {
 
     it(':action string', () => {
       const id = simulate.load({
-        template: `<t-search class="search" action="{{action}}"></t-search>`,
+        template: `<t-search id="search" action="{{action}}"></t-search>`,
         usingComponents: {
           't-search': search,
         },
@@ -34,7 +56,7 @@ describe('search', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $search = comp.querySelector('.search >>> .t-search__search-action');
+      const $search = comp.querySelector('#search >>> .t-search__search-action');
       expect($search.dom.textContent.trim()).toBe('提交');
     });
 
@@ -98,15 +120,14 @@ describe('search', () => {
       ).toBeTruthy();
     });
 
-    it(':left-icon & right-icon', () => {
+    it(':left-icon', () => {
       const id = simulate.load({
-        template: `<t-search class="search" left-icon="{{leftIcon}}" right-icon="{{rightIcon}}" value="{{value}}"></t-search>`,
+        template: `<t-search class="search" left-icon="{{leftIcon}}" value="{{value}}"></t-search>`,
         usingComponents: {
           't-search': search,
         },
         data: {
           leftIcon: 'add-circle',
-          rightIcon: 'caret-right',
           value: 'test',
         },
       });
@@ -115,9 +136,6 @@ describe('search', () => {
 
       const $leftIcon = comp.querySelector('.search >>> .t-icon-add-circle');
       expect($leftIcon).toBeDefined();
-
-      const $rightIcon = comp.querySelector('.search >>> .t-icon-caret-right');
-      expect($rightIcon).toBeDefined();
     });
 
     it(':shape', () => {
@@ -188,7 +206,7 @@ describe('search', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
-      const $clear = comp.querySelector('.search >>> .t-search__right');
+      const $clear = comp.querySelector('.search >>> .t-search__clear');
       $clear.dispatchEvent('tap');
       await simulate.sleep(20);
       expect(onClear).toHaveBeenCalledTimes(1);

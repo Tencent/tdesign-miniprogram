@@ -1,0 +1,63 @@
+<import src="../common/template/icon.wxml" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{_.cls(classPrefix, [['split', split], ['text-only', !icon], ['crowded', crowded], shape])}} class {{prefix}}-class"
+>
+  <view
+    class="{{_.cls(classPrefix + '__content', [['checked', isChecked], theme])}}"
+    hover-class="{{classPrefix}}__content--active"
+    hover-stay-time="{{200}}"
+    bindtap="toggle"
+    aria-selected="{{(!hasChildren || !isSpread) && isChecked ? true : false}}"
+    aria-expanded="{{hasChildren && isSpread ? true : ''}}"
+    aria-role="{{hasChildren ? 'button' : 'tab'}}"
+    aria-label="{{ ariaLabel || (badgeProps.dot || badgeProps.count ? _.getBadgeAriaLabel({ ...badgeProps }) : '') }}"
+  >
+    <view
+      wx:if="{{icon}}"
+      class="{{classPrefix}}__icon"
+      style="height: {{iconOnly ? 24 : 20}}px"
+      aria-hidden="{{ badgeProps.dot || badgeProps.count }}"
+    >
+      <t-badge
+        wx:if="{{badgeProps.dot || badgeProps.count}}"
+        count="{{badgeProps.count || 0}}"
+        max-count="{{badgeProps.maxCount || 99}}"
+        dot="{{badgeProps.dot || false}}"
+        content="{{badgeProps.content || ''}}"
+        size="{{badgeProps.size || 'medium'}}"
+        visible="{{badgeProps.visible}}"
+        offset="{{badgeProps.offset || [0,0]}}"
+        t-class-count="{{prefix + '-badge-class'}}"
+      >
+        <template is="icon" data="{{ size: iconOnly ? 24 : 20, ..._icon }}" />
+      </t-badge>
+      <template wx:else is="icon" data="{{ ariaHidden: !iconOnly, size: iconOnly ? 24 : 20, ..._icon }}" />
+      <slot name="icon" />
+    </view>
+    <view class="{{_.cls(classPrefix + '__text', [['small', !!icon]])}}">
+      <t-icon wx:if="{{hasChildren}}" name="view-list" size="16" t-class="{{classPrefix}}__icon-menu" />
+      <slot />
+    </view>
+  </view>
+
+  <view class="{{classPrefix}}__spread" wx:if="{{hasChildren && isSpread}}">
+    <view
+      class="{{classPrefix}}__spread-item"
+      hover-class="{{classPrefix}}__spread-item--active"
+      hover-stay-time="{{200}}"
+      wx:for="{{subTabBar}}"
+      wx:for-item="child"
+      wx:for-index="index"
+      wx:key="index"
+      bind:tap="selectChild"
+      data-value="{{child.value || index}}"
+      aria-role="tab"
+    >
+      <view class="{{classPrefix}}__spread-item-split" wx:if="{{index !== 0}}" />
+      <view class="{{classPrefix}}__spread-item-text" data-value="{{child.value || index}}">{{ child.label }}</view>
+    </view>
+  </view>
+</view>

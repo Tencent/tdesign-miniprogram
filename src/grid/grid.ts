@@ -10,7 +10,7 @@ export default class Grid extends SuperComponent {
   externalClasses = ['t-class'];
 
   relations: RelationsOptions = {
-    './grid-item': {
+    '../grid-item/grid-item': {
       type: 'descendant',
     },
   };
@@ -36,9 +36,6 @@ export default class Grid extends SuperComponent {
   lifetimes = {
     attached() {
       this.updateContentStyle();
-    },
-    created() {
-      this.children = [];
     },
   };
 

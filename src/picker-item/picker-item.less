@@ -1,0 +1,41 @@
+@import '../common/style/index.less';
+
+@picker: ~'@{prefix}-picker';
+@item: ~'@{picker}-item';
+@picker-group-height: var(--td-picker-group-height, 400rpx);
+@picker-item-height: var(--td-picker-item-height, 80rpx);
+@picker-item-color: var(--td-picker-item-color, @font-gray-2);
+@picker-item-active-color: var(--td-picker-item-active-color, @font-gray-1);
+
+:host {
+  display: flex;
+  // padding: 0 40rpx;
+}
+
+.@{item} {
+  &__group {
+    height: @picker-group-height;
+    overflow: hidden;
+    flex: 1;
+    z-index: 1;
+  }
+
+  &__wrapper {
+    padding: 144rpx 0;
+  }
+
+  &__item {
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: @picker-item-height;
+    line-height: @picker-item-height;
+    color: @picker-item-color;
+
+    &--active {
+      color: @picker-item-active-color;
+      font-weight: 600;
+    }
+  }
+}

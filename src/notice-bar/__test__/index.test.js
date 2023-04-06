@@ -12,7 +12,7 @@ const mockGetAnimationFrame = jest.spyOn(Util, 'getAnimationFrame');
 const mockGetRect = jest.spyOn(Util, 'getRect');
 
 // 设置每次调用函数的值
-mockGetAnimationFrame.mockImplementation((cb) => {
+mockGetAnimationFrame.mockImplementation((context, cb) => {
   return cb();
 });
 
@@ -31,9 +31,32 @@ mockGetRect.mockImplementation((context, id) => {
 describe('notice-bar', () => {
   const noticeBar = load(path.resolve(__dirname, `../notice-bar`), 't-notice-bar');
   jest.resetModules();
-  const icon = load(path.resolve(__dirname, `../../icon/icon`), 't-icon');
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-notice-bar class="notice-bar" visible style="{{style}}" customStyle="{{customStyle}}"></t-notice-bar>`,
+        usingComponents: {
+          't-notice-bar': noticeBar,
+        },
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $noticeBar = comp.querySelector('.notice-bar >>> .t-notice-bar');
+      // expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect(
+          $noticeBar.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+        ).toBeTruthy();
+      } else {
+        expect($noticeBar.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(': visible', () => {
       const id = simulate.load({
         template: `<t-notice-bar
@@ -106,15 +129,15 @@ describe('notice-bar', () => {
       expect($content.dom.textContent.trim()).toBe($noticeBar.instance.data.content);
     });
 
-    it(': extra', () => {
+    it(': operation', () => {
       const id = simulate.load({
         template: `<t-notice-bar
           class="base"
           visible="{{visible}}"
-          extra="{{extra}}"></t-notice-bar>`,
+          operation="{{operation}}"></t-notice-bar>`,
         data: {
           visible: true,
-          extra: 'notice-bar extra',
+          operation: 'notice-bar operation',
         },
         usingComponents: {
           't-notice-bar': noticeBar,
@@ -123,9 +146,9 @@ describe('notice-bar', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
       const $noticeBar = comp.querySelector('.base');
-      const $extra = comp.querySelector('.base >>> .t-notice-bar__extra');
+      const $operation = comp.querySelector('.base >>> .t-notice-bar__operation');
 
-      expect($extra.dom.textContent.trim()).toBe($noticeBar.instance.data.extra);
+      expect($operation.dom.textContent.trim()).toBe($noticeBar.instance.data.operation);
     });
 
     it(': prefix-icon', () => {
@@ -145,25 +168,15 @@ describe('notice-bar', () => {
 
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
-      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon')).toBeUndefined();
+
+      const $noticeBar = comp.querySelector('.base');
+
+      expect($noticeBar.data._prefixIcon).toBe(null);
 
       comp.setData({
         prefixIcon: 'add',
       });
-
-      const iconId = simulate.load({
-        template: `<t-icon name="{{name}}"></t-icon>`,
-        data: {
-          name: 'add',
-        },
-        usingComponents: {
-          't-icon': icon,
-        },
-      });
-      const iconComp = simulate.render(iconId);
-      expect(comp.querySelector('.base >>> .t-notice-bar__prefix-icon').dom.innerHTML).toContain(
-        iconComp.dom.innerHTML,
-      );
+      expect($noticeBar.data._prefixIcon).toStrictEqual({ name: 'add' });
     });
 
     const delay = 7100;
@@ -249,7 +262,7 @@ describe('notice-bar', () => {
           class="base
           visible="{{visible}}"
           suffixIcon="chevron-right"
-          extra="详情"
+          operation="详情"
           content="提示文字描述提示文字描述提示文字描述"
           bind:click="click"
         ></t-notice-bar>`,
@@ -266,26 +279,21 @@ describe('notice-bar', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
       const $prefixIcon = comp.querySelector('.base >>> .t-notice-bar__prefix-icon');
-      const $content = comp.querySelector('.base >>> .t-notice-bar__content');
-      const $extra = comp.querySelector('.base >>> .t-notice-bar__extra');
+      const $operation = comp.querySelector('.base >>> .t-notice-bar__operation');
       const $suffixIcon = comp.querySelector('.base >>> .t-notice-bar__suffix-icon');
       $prefixIcon.dispatchEvent('tap');
       await simulate.sleep(0);
       expect(triggerName).toBe('prefix-icon');
       expect(click).toHaveBeenCalledTimes(1);
-      $content.dispatchEvent('tap');
+      $operation.dispatchEvent('tap');
       await simulate.sleep(0);
-      expect(triggerName).toBe('content');
+      expect(triggerName).toBe('operation');
       expect(click).toHaveBeenCalledTimes(2);
-      $extra.dispatchEvent('tap');
-      await simulate.sleep(0);
-      expect(triggerName).toBe('extra');
-      expect(click).toHaveBeenCalledTimes(3);
 
       $suffixIcon.dispatchEvent('tap');
       await simulate.sleep(0);
       expect(triggerName).toBe('suffix-icon');
-      expect(click).toHaveBeenCalledTimes(4);
+      expect(click).toHaveBeenCalledTimes(3);
     });
   });
 });

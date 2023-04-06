@@ -5,7 +5,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
 
-const mapper = ['base', 'status'];
+const mapper = ['action', 'base', 'other', 'shape'];
 
 describe('Search', () => {
   mapper.forEach((demoName) => {

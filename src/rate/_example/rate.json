@@ -8,7 +8,6 @@
     "count": "./count",
     "action": "./action",
     "show-text": "./show-text",
-    "disabled": "./disabled",
     "color": "./color",
     "size": "./size"
   }

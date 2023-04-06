@@ -1,9 +1,17 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
+import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-result`;
+
+const THEME_ICON = {
+  default: 'error-circle',
+  success: 'check-circle',
+  warning: 'error-circle',
+  error: 'close-circle',
+};
 
 @wxComponent()
 export default class extends SuperComponent {
@@ -27,27 +35,22 @@ export default class extends SuperComponent {
 
   lifetimes = {
     ready() {
-      this.setIcon();
+      this.initIcon();
+    },
+  };
+
+  observers = {
+    'icon, theme'() {
+      this.initIcon();
     },
   };
 
   methods = {
-    setIcon() {
+    initIcon() {
       const { icon, theme } = this.properties;
-      // 固定值
-      if (icon) {
-        this.setData({
-          iconName: icon !== 'null' ? `${icon}` : '',
-        });
-      } else {
-        const themeResult = {
-          default: 'error-circle',
-          success: 'check-circle',
-          warning: 'error-circle',
-          error: 'close-circle',
-        };
-        this.setData({ iconName: themeResult[theme] });
-      }
+      this.setData({
+        _icon: calcIcon(icon, THEME_ICON[theme]),
+      });
     },
   };
 }

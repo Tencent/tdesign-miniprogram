@@ -39,7 +39,7 @@ export interface TdMessageProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -112,6 +112,13 @@ export interface TdMessageProps {
   zIndex?: {
     type: NumberConstructor;
     value?: number;
+  };
+  /**
+   * 链接名称。值为字符串表示链接名称，值为 `Object` 类型，表示透传至 `Link`。
+   */
+  link?: {
+    type: null;
+    value?: string | object;
   };
 }
 

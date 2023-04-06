@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupChange">
-  <view slot="content" style="{{ customStyle }}" class="{{classPrefix}} {{prefix}}-class">
+<t-popup class="class" visible="{{visible}}" placement="bottom" bind:visible-change="onPopupChange">
+  <view slot="content" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
     <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
       <view class="{{classPrefix}}__cancel {{prefix}}-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel"
         >{{cancelBtn}}</view
@@ -11,7 +11,6 @@
         >{{confirmBtn}}</view
       >
     </view>
-    <!-- 扩展插槽 -->
     <slot name="header" />
     <view class="{{_.cls(classPrefix + '__main', [])}}">
       <slot />
@@ -19,7 +18,5 @@
       <view class="{{classPrefix}}__mask {{classPrefix}}__mask--bottom" />
       <view class="{{classPrefix}}__indicator"></view>
     </view>
-    <!-- 扩展插槽 -->
-    <slot name="footer" />
   </view>
 </t-popup>

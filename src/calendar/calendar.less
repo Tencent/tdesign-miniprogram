@@ -1,15 +1,15 @@
 @import '../common/style/index.less';
 
 @calendar-radius: var(--td-calendar-radius, 24rpx);
-@calendar-bg-color: var(--td-calendar-bg-color, @bg-color-block);
-@calendar-active-color: var(--td-calendar-active-color, @primary-color);
-@calendar-selected-color: var(--td-calendar-selected-color, @text-anti-primary-color);
+@calendar-bg-color: var(--td-calendar-bg-color, @bg-color-container);
+@calendar-active-color: var(--td-calendar-active-color, @brand-color);
+@calendar-selected-color: var(--td-calendar-selected-color, @font-white-1);
 @calendar-title-font-size: var(--td-calendar-title-font-size, 18px);
-@calendar-title-color: var(--td-calendar-title-color, @text-level-1-color);
-@calendar-days-color: var(--td-calendar-days-color, @text-level-2-color);
-@calendar-item-suffix-color: var(--td-calendar-item-suffix-color, @text-level-3-color);
-@calendar-item-centre-color: var(--td-calendar-item-centre-color, @primary-color-1);
-@calendar-item-disabled-color: var(--td-calendar-item-disabled-color, @text-level-4-color);
+@calendar-title-color: var(--td-calendar-title-color, @font-gray-1);
+@calendar-days-color: var(--td-calendar-days-color, @font-gray-2);
+@calendar-item-suffix-color: var(--td-calendar-item-suffix-color, @font-gray-3);
+@calendar-item-centre-color: var(--td-calendar-item-centre-color, @brand-color-light);
+@calendar-item-disabled-color: var(--td-calendar-item-disabled-color, @font-gray-4);
 
 .@{prefix}-calendar {
   position: relative;
@@ -31,6 +31,10 @@
     color: @calendar-title-color;
     height: 52rpx;
     padding: 32rpx;
+
+    &:focus {
+      outline: 0;
+    }
   }
 
   &__close-btn {
@@ -95,8 +99,9 @@
       height: 120rpx;
       line-height: 48rpx;
       font-weight: 600;
-      cursor: pointer;
       margin-top: 16rpx;
+
+      .cursor-pointer();
 
       &-prefix,
       &-suffix {
@@ -191,7 +196,6 @@
   }
 
   &__footer {
-    border-top: 1px solid @border-color;
     padding: 32rpx;
   }
 }

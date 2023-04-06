@@ -1,10 +1,10 @@
 @import '../common/style/index.less';
 
-@dropdown-menu-bg-color: var(--td-dropdown-menu-bg-colorm, @bg-color-block);
+@dropdown-menu-bg-color: var(--td-dropdown-menu-bg-colorm, @bg-color-container);
 @dropdown-menu-color: var(--td-dropdown-menu-colorm, @font-gray-1);
-@dropdown-menu-active-color: var(--td-dropdown-menu-active-colorm, @primary-color);
+@dropdown-menu-active-color: var(--td-dropdown-menu-active-colorm, @brand-color);
 @dropdown-menu-disabled-color: var(--td-dropdown-menu-disabled-colorm, @font-gray-4);
-@dropdown-menu-font-size: var(--td-dropdown-menu-font-sizem, 32rpx);
+@dropdown-menu-font-size: var(--td-dropdown-menu-font-sizem, 28rpx);
 @dropdown-menu-icon-size: var(--td-dropdown-menu-icon-sizem, 48rpx);
 
 @dropdownMenu: ~'@{prefix}-dropdown-menu';
@@ -14,10 +14,7 @@
   display: flex;
   height: 48px;
   background: @dropdown-menu-bg-color;
-
-  &::after {
-    .hairline-bottom();
-  }
+  .border(bottom);
 
   &__item {
     display: flex;

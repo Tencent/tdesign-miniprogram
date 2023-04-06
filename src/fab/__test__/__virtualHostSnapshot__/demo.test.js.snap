@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fab Fab advance demo works fine 1`] = `
+<advance>
+  <t-fab
+    buttonProps="{{
+      Object {
+        "icon": "call",
+        "openType": "getPhoneNumber",
+      }
+    }}"
+    icon="add"
+    text="获取手机号"
+    bind:click="handleClick"
+  />
+</advance>
+`;
+
+exports[`Fab Fab base demo works fine 1`] = `
+<base>
+  <t-fab
+    ariaLabel="增加"
+    icon="add"
+    bind:click="handleClick"
+  />
+</base>
+`;

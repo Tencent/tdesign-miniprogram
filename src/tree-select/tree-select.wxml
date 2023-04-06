@@ -1,9 +1,11 @@
 <wxs module="_" src="../common/utils.wxs" />
 <wxs module="this" src="./index.wxs" />
 
-<view class="{{classPrefix}}" style="height: {{_.addUnit(height)}}; {{customStyle}}">
+<view class="{{classPrefix}} class" style="{{_._style(['height:' + _.addUnit(height) , style, customStyle])}}">
   <scroll-view
     scroll-y
+    enhanced
+    show-scrollbar="{{false}}"
     class="{{_.cls(classPrefix + '__column', [this.getTreeClass(leafLevel - level, treeOptions.length)])}} {{prefix}}-class"
     wx:for="{{treeOptions}}"
     wx:key="level"
@@ -50,7 +52,7 @@
         t-class-label="{{prefix}}-class-right-item-label"
         value="{{item[valueAlias]}}"
         borderless
-        align="right"
+        placement="right"
         >{{item[labelAlias]}}</t-radio
       >
     </t-radio-group>
@@ -64,7 +66,7 @@
       <t-checkbox
         wx:for="{{treeOptions[level]}}"
         wx:key="value"
-        align="right"
+        placement="right"
         icon="line"
         class="{{prefix}}-class-right-item"
         t-class-label="{{prefix}}-class-right-item-label"

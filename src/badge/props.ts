@@ -3,8 +3,6 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
-
-import { useId } from '../common/src/index';
 import { TdBadgeProps } from './type';
 
 const props: TdBadgeProps = {
@@ -22,11 +20,6 @@ const props: TdBadgeProps = {
   count: {
     type: null,
     value: 0,
-  },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
   },
   /** 是否为红点 */
   dot: {
@@ -60,14 +53,6 @@ const props: TdBadgeProps = {
   size: {
     type: String,
     value: 'medium',
-  },
-  labelledbyId: {
-    type: String,
-    value: `labelledbyId_${useId()}`,
-  },
-  describedbyId: {
-    type: String,
-    value: `describedbyId_${useId()}`,
   },
 };
 

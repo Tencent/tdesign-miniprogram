@@ -11,11 +11,6 @@ const props: TdDrawerProps = {
     type: Boolean,
     value: true,
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 抽屉关闭时是否销毁节点 */
   destroyOnClose: {
     type: Boolean,
@@ -38,7 +33,6 @@ const props: TdDrawerProps = {
   /** 抽屉的标题 */
   title: {
     type: String,
-    value: '',
   },
   /** 组件是否可见 */
   visible: {

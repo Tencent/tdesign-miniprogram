@@ -1,12 +1,4 @@
-<view class="progress-example">
-  <t-progress percentage="80" />
-</view>
-<view class="progress-example">
-  <t-progress percentage="88" status="warning" />
-</view>
-<view class="progress-example">
-  <t-progress percentage="88" status="error" />
-</view>
-<view class="progress-example">
-  <t-progress percentage="88" status="success" />
-</view>
+<t-progress percentage="80" />
+<t-progress percentage="88" status="warning" />
+<t-progress percentage="88" status="error" />
+<t-progress percentage="88" status="success" />

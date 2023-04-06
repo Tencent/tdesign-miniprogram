@@ -48,7 +48,6 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 animation | String | none | 动画效果，有「渐变加载动画」和「闪烁加载动画」两种。值为 'none' 则表示没有动画。可选项：gradient/flashed/none | N
-custom-style `v0.25.0` | String | - | 自定义组件样式 | N
 delay | Number | 0 | 【开发中】延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒 | N
 external-classes | Array | - | 组件类名，分别用于设置组件外层元素、头像、图片、文本等元素类名。`['t-class', 't-class-avatar', 't-class-image', 't-class-text']` | N
 loading | Boolean | true | 是否为加载状态，如果是则显示骨架图，如果不是则显示加载完成的内容 | N

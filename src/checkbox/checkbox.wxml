@@ -1,17 +1,17 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  style="{{ customStyle }}"
-  class="{{_.cls(classPrefix, [align, theme, ['checked', checked], ['block', block]])}} {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+  class="{{_.cls(classPrefix, [placement, theme, ['checked', checked], ['block', block]])}} class {{prefix}}-class"
   aria-role="checkbox"
   aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
   aria-disabled="{{disabled ? true : false}}"
+  bind:tap="onChange"
+  tabindex="{{tabindex}}"
 >
   <view
     wx:if="{{theme == 'default'}}"
-    class="{{_.cls(classPrefix + '__icon', [align, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
-    data-target="icon"
-    bind:tap="onChange"
+    class="{{_.cls(classPrefix + '__icon', [placement, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
   >
     <view wx:if="{{_.isArray(icon)}}" class="{{classPrefix}}__icon">
       <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
@@ -34,7 +34,7 @@
       <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
     </block>
   </view>
-  <view class="{{classPrefix}}__content" data-target="text" bind:tap="onChange">
+  <view class="{{classPrefix}}__content" data-target="text" catch:tap="onChange">
     <view
       class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"
@@ -51,6 +51,6 @@
   </view>
   <view
     wx:if="{{theme == 'default' && !borderless}}"
-    class="{{_.cls(classPrefix + '__border', [align])}} {{prefix}}-class-border"
+    class="{{_.cls(classPrefix + '__border', [placement])}} {{prefix}}-class-border"
   />
 </view>

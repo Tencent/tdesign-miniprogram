@@ -1,7 +1,7 @@
 Component({
-  methods: {
-    clickDetail() {
-      console.log('click detail text');
+  data: {
+    navigatorProps: {
+      url: '/pages/xxx/xxx',
     },
   },
 });

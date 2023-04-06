@@ -33,7 +33,7 @@ export interface TdRateProps {
    * 自定义组件样式
    * @default ''
    */
-  customStyle?: {
+  style?: {
     type: StringConstructor;
     value?: string;
   };
@@ -56,11 +56,11 @@ export interface TdRateProps {
    * @default 8
    */
   gap?: {
-    type: NumberConstructor;
-    value?: number;
+    type: null;
+    value?: string | number;
   };
   /**
-   * 自定义评分图标；此时不受 variant 影响
+   * 自定义评分图标，[选中图标，未选中图标]
    */
   icon?: {
     type: null;
@@ -105,13 +105,5 @@ export interface TdRateProps {
   defaultValue?: {
     type: NumberConstructor;
     value?: number;
-  };
-  /**
-   * 形状类型，有描边类型和填充类型两种
-   * @default outline
-   */
-  variant?: {
-    type: StringConstructor;
-    value?: 'outline' | 'filled';
   };
 }

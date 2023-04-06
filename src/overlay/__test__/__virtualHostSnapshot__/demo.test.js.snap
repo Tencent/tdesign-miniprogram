@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Overlay Overlay base demo works fine 1`] = `
+<base>
+  <t-overlay
+    visible="{{false}}"
+    bind:click="handleOverlayClick"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleClick"
+  >
+    基础用法
+  </t-button>
+</base>
+`;

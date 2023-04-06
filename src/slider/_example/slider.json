@@ -1,6 +1,5 @@
 {
-  "navigationBarTitleText": "Slider 滑块",
-  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "Slider",
   "usingComponents": {
     "base": "./base",
     "label": "./label",

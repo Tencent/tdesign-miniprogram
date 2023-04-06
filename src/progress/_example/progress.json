@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "Progress 进度条",
+  "navigationBarTitleText": "Progress",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",

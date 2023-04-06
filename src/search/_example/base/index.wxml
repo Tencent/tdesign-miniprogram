@@ -1,1 +1,3 @@
-<t-search model:value="{{value}}" label="1" placeholder="搜索预设文案" center="{{true}}" />
+<view class="example-search">
+  <t-search model:value="{{value}}" placeholder="搜索预设文案" />
+</view>

@@ -1,7 +1,12 @@
-<view style="{{ customStyle }}" class="{{classPrefix}} {{bordered? classPrefix +  '--border' : ''}} {{prefix}}-class">
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{bordered? classPrefix +  '--border' : ''}} class {{prefix}}-class"
+>
   <view class="{{classPrefix}}__label {{prefix}}-class-label">
-    <view wx:if="{{ label && label.length > 0 }}">{{ label }}</view>
-    <slot wx:else name="label" />
+    <block wx:if="{{label}}">{{ label }}</block>
+    <slot name="label" />
   </view>
   <view class="{{classPrefix}}__wrapper">
     <textarea
@@ -11,20 +16,27 @@
       placeholder="{{placeholder}}"
       placeholder-class="{{classPrefix}}__placeholder"
       placeholder-style="{{placeholderStyle}}"
-      value="{{computedValue}}"
+      value="{{value}}"
       auto-focus="{{autofocus}}"
       fixed="{{fixed}}"
       focus="{{focus}}"
+      cursor="{{cursor}}"
       cursor-spacing="{{cursorSpacing}}"
       auto-height="{{autosize}}"
       adjust-position="{{adjustPosition}}"
       confirm-type="{{confirmType}}"
       confirm-hold="{{confirmHold}}"
+      disable-default-padding="{{disableDefaultPadding}}"
+      show-confirm-bar="{{showConfirmBar}}"
+      selection-start="{{selectionStart}}"
+      selection-end="{{selectionEnd}}"
+      hold-keyboard="{{holdKeyboard}}"
       bindinput="onInput"
       bindfocus="onFocus"
       bindblur="onBlur"
       bindconfirm="onConfirm"
       bindlinechange="onLineChange"
+      bind:keyboardheightchange="onKeyboardHeightChange"
     />
     <view
       wx:if="{{indicator && (maxcharacter > 0 || maxlength > 0 )}}"

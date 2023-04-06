@@ -2,8 +2,8 @@
 @import '../common/style/index.less';
 
 @navbar-color: var(--td-navbar-color, @font-gray-1);
-@navbar-bg-color: var(--td-navbar-bg-color, @bg-color-block);
-@navbar-height: var(--td-navbar-height, 88rpx);
+@navbar-bg-color: var(--td-navbar-bg-color, @bg-color-container);
+@navbar-height: var(--td-navbar-height, 96rpx);
 @navbar-right: var(
   --td-navbar-right,
   190rpx
@@ -12,6 +12,7 @@
   --td-navbar-padding-top,
   40rpx
 ); // 导航栏顶部间距，组件会在初始化时尝试取右侧系统胶囊位置进行覆盖
+@navbar-title-font-size: var(--td-navbar-title-font-size, 36rpx);
 @navbar-title-font-weight: var(--td-navbar-title-font-weight, 600);
 @navbar-left-arrow-size: var(--td-navbar-left-arrow-size, 48rpx);
 
@@ -19,10 +20,10 @@
 @navbar-capsule-border-color: var(--td-navbar-capsule-border-color, #e3e6ea);
 @navbar-capsule-border-radius: var(--td-navbar-capsule-border-radius, 32rpx);
 @navbar-capsule-width: var(--td-navbar-capsule-width, 176rpx);
+@navbar-capsule-height: var(--td-navbar-capsule-height, 64rpx);
+// var(--capsule-height)
 
 .@{prefix}-navbar {
-  overflow: hidden;
-
   &--fixed {
     .@{prefix}-navbar__content {
       position: fixed;
@@ -53,7 +54,7 @@
   }
 
   &__placeholder {
-    height: 88rpx;
+    height: @navbar-height;
     padding-top: @navbar-padding-top;
     position: relative;
     visibility: hidden;
@@ -78,6 +79,7 @@
     // width: @navbar-right;
     display: flex;
     align-items: center;
+    margin-left: @spacer-1;
 
     &-arrow {
       font-size: @navbar-left-arrow-size;
@@ -86,13 +88,24 @@
 
   &__capsule {
     box-sizing: border-box;
-    margin-left: 24rpx;
     width: @navbar-capsule-width;
-    height: var(--capsule-height);
-    border-radius: @navbar-capsule-border-radius;
-    border: 1rpx solid @navbar-capsule-border-color;
+    height: @navbar-capsule-height;
     display: flex;
     align-items: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      box-sizing: border-box;
+      border-radius: calc(@navbar-capsule-border-radius * 2);
+      border: 2rpx solid @navbar-capsule-border-color;
+    }
 
     &:empty {
       display: none;
@@ -118,14 +131,11 @@
     }
 
     &-title {
+      font-size: @navbar-title-font-size;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
       font-weight: @navbar-title-font-weight;
     }
-  }
-
-  &__btn {
-    margin-left: 24rpx;
   }
 }

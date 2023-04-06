@@ -1,4 +1,3 @@
-
 .wrapper {
   flex-wrap: wrap;
   margin: 0 32rpx;
@@ -9,13 +8,27 @@
 }
 
 .block {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  font-size: 14px;
+  align-items: center;
   line-height: 76rpx;
   color: rgba(0, 0, 0, 0.4);
-  gap: 32rpx;
 }
+
+.block text {
+  display: block;
+  width: 160rpx;
+  margin-right: 32rpx;
+}
+
+/* .block t-check-tag {
+  margin-right: 32rpx;
+} */
 
 .block + .block {
   margin-top: 32rpx;
+}
+
+.block .margin-16:not(:last-child) {
+  margin-right: 32rpx;
 }

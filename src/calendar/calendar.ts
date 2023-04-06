@@ -25,7 +25,7 @@ export default class Calendar extends SuperComponent {
     classPrefix: name,
     months: [],
     scrollIntoView: '',
-    innerConfirmBtn: { content: '确认' },
+    innerConfirmBtn: { content: '确定' },
   };
 
   controlledProps = [
@@ -81,6 +81,13 @@ export default class Calendar extends SuperComponent {
         }
       }
     },
+    format(v) {
+      this.base.format = v;
+
+      if (this.base && !this.data.usePopup) {
+        this.calcMonths();
+      }
+    },
   };
 
   methods = {
@@ -122,8 +129,17 @@ export default class Calendar extends SuperComponent {
         months,
       });
     },
+    close(trigger) {
+      if (this.data.autoClose) {
+        this.setData({ visible: false });
+      }
+      this.triggerEvent('close', { trigger });
+    },
+    onVisibleChange() {
+      this.close('overlay');
+    },
     handleClose() {
-      this.setData({ visible: false });
+      this.close('close-btn');
     },
     handleSelect(e) {
       const { date, year, month } = e.currentTarget.dataset;
@@ -148,6 +164,7 @@ export default class Calendar extends SuperComponent {
       const rawValue = this.base.getTrimValue();
       const value = this.toTime(rawValue);
 
+      this.close('confirm-btn');
       this._trigger('confirm', { value });
     },
     toTime(val) {

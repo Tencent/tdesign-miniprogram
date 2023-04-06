@@ -3,6 +3,7 @@ import config from '../common/config';
 import props from './props';
 import { ToastOptionsType } from './index';
 import transition from '../mixins/transition';
+import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-toast`;
@@ -14,7 +15,7 @@ export default class Toast extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
   options = {
-    multipleSlots: true, // 在组件定义时的选项中启用多slot支持
+    multipleSlots: true,
   };
 
   behaviors = [transition()];
@@ -40,9 +41,9 @@ export default class Toast extends SuperComponent {
         loading: 'loading',
         success: 'check-circle',
         warning: 'error-circle',
-        fail: 'close-circle',
+        error: 'close-circle',
       };
-      const typeMapIcon = iconMap[options?.theme] || '';
+      const typeMapIcon = iconMap[options?.theme];
       const defaultOptions = {
         direction: props.direction.value,
         duration: props.duration.value,
@@ -57,7 +58,8 @@ export default class Toast extends SuperComponent {
         ...defaultOptions,
         ...options,
         visible: true,
-        typeMapIcon,
+        isLoading: options?.theme === 'loading',
+        _icon: calcIcon(typeMapIcon ?? options.icon),
       };
       const { duration } = data;
       this.setData(data);
@@ -82,5 +84,7 @@ export default class Toast extends SuperComponent {
       }
       this.triggerEvent('destory');
     },
+
+    loop() {},
   };
 }

@@ -25,7 +25,7 @@ export default class DropdownMenu extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    './dropdown-item': {
+    '../dropdown-item/dropdown-item': {
       type: 'child',
     },
   };
@@ -80,7 +80,10 @@ export default class DropdownMenu extends SuperComponent {
       }
     },
     getAllItems() {
-      const menus = this.$children.map(({ data }) => ({ label: data.label, disabled: data.disabled }));
+      const menus = this.$children.map(({ data }) => ({
+        label: data.label || data.computedLabel,
+        disabled: data.disabled,
+      }));
 
       this.setData({
         menus,

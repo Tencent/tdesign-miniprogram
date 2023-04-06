@@ -1,4 +1,3 @@
-
 .demo {
   padding: 0 32rpx 48rpx;
 }
@@ -9,10 +8,10 @@
 
 .demo-desc {
   font-size: 14px;
-  color: rgba(0, 0, 0, .6);
+  color: rgba(0, 0, 0, 0.6);
   margin-bottom: 32rpx;
 }
 
-t-tag + t-tag {
-  margin-left: 32rpx;
+.demo .margin-16:not(:last-child) {
+  margin-right: 32rpx;
 }

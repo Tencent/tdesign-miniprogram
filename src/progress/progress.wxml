@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./progress.wxs" module="this" />
 
-<view style="{{customStyle}}" class="{{classPrefix}}">
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class">
   <view
     aria-role="{{ariaRole || 'progressbar'}}"
     aria-valuenow="{{computedProgress}}"
@@ -30,11 +30,11 @@
       <template
         wx:if="{{_.includes(this.STATUS, status)}}"
         is="icon"
-        data="{{class: classPrefix + '__icon', size:'40rpx', name: this.LINE_STATUS_ICON[status]}}"
+        data="{{class: classPrefix + '__icon', size:'44rpx', name: this.LINE_STATUS_ICON[status]}}"
       ></template>
       <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
-    <slot wx:else name="label"></slot>
+    <slot name="label" />
   </view>
 
   <view
@@ -59,12 +59,12 @@
       <view wx:if="{{label && computedProgress > 10}}" class="{{classPrefix }}__info {{prefix}}-class-label">
         <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
       </view>
-      <slot wx:else name="label"></slot>
+      <slot name="label" />
     </view>
     <view wx:if="{{label && computedProgress <= 10}}" class="{{ classPrefix }}__info {{prefix}}-class-label">
       <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
-    <slot wx:else name="label"></slot>
+    <slot name="label" />
   </view>
 
   <view
@@ -97,7 +97,7 @@
           ></template>
           <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
         </view>
-        <slot wx:else name="label"></slot>
+        <slot name="label" />
       </view>
     </view>
   </view>

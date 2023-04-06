@@ -8,6 +8,32 @@ describe('transition', () => {
   });
 
   describe('props', () => {
+    it(`: style && customStyle`, async () => {
+      const comp = simulate.render(transitionId);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const [transitionDom] = comp.dom.children;
+
+      // enter
+      comp.setData({
+        visible: true,
+        style: 'color: red',
+        customStyle: 'font-size: 9px',
+      });
+      expect(transitionDom.style.display).toEqual('');
+      // expect(comp.toJSON()).toMatchSnapshot();
+
+      const $transition = comp.querySelector('.t-transition');
+
+      if (VIRTUAL_HOST) {
+        expect(
+          $transition.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`),
+        ).toBeTruthy();
+      } else {
+        expect($transition.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(':visible', () => {
       const transitionComp = simulate.render(transitionId);
       transitionComp.attach(document.createElement('parent-wrapper'));

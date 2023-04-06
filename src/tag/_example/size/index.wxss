@@ -6,11 +6,15 @@
   margin-top: 32rpx;
 }
 
-t-tag {
-  display: inline-flex;
+.block .margin-16,
+.block .margin-8 {
   vertical-align: top;
 }
 
-.block t-tag + t-tag {
-  margin-left: 16rpx;
+.block .margin-16:not(:last-child) {
+  margin-right: 32rpx;
+}
+
+.block .margin-8:not(:last-child) {
+  margin-right: 16rpx;
 }

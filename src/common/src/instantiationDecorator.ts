@@ -1,6 +1,6 @@
 import { isPlainObject, toObject } from './flatTool';
-
 import { SuperComponent } from './superComponent';
+import { canUseVirtualHost } from '../version';
 
 // 将 on 开头的生命周期函数转变成非 on 开头的
 const RawLifeCycles = ['Created', 'Attached', 'Ready', 'Moved', 'Detached', 'Error'];
@@ -28,7 +28,7 @@ const ComponentNativeProps = [
  * @param options {}
  */
 export const toComponent = function toComponent(options: Record<string, any>) {
-  const { relations, behaviors = [] } = options;
+  const { relations, behaviors = [], properties, externalClasses = [] } = options;
 
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
@@ -39,7 +39,8 @@ export const toComponent = function toComponent(options: Record<string, any>) {
       }
       options.properties[k] = opt;
     });
-    // aria
+
+    // 内置 aria 相关属性
     const ariaProps = [
       { key: 'ariaHidden', type: Boolean },
       { key: 'ariaRole', type: String },
@@ -53,6 +54,10 @@ export const toComponent = function toComponent(options: Record<string, any>) {
         type,
       };
     });
+
+    // 处理 style 和 customStyle 属性
+    options.properties.style = { type: String, value: '' };
+    options.properties.customStyle = { type: String, value: '' };
   }
 
   if (!options.methods) options.methods = {};
@@ -86,6 +91,8 @@ export const toComponent = function toComponent(options: Record<string, any>) {
   }
 
   options.behaviors = [...behaviors];
+
+  options.externalClasses = ['class', ...externalClasses];
 
   Object.getOwnPropertyNames(options).forEach((k) => {
     const desc = Object.getOwnPropertyDescriptor(options, k);
@@ -167,6 +174,10 @@ export const wxComponent = function wxComponent() {
     current.options = current.options || {};
     if (current.options.addGlobalClass === undefined) {
       current.options.addGlobalClass = true;
+    }
+
+    if (canUseVirtualHost()) {
+      current.options.virtualHost = true;
     }
 
     const obj = toComponent(toObject(current));

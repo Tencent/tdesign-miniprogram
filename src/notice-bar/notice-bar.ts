@@ -1,10 +1,18 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
-import { getRect, getAnimationFrame, setIcon } from '../common/utils';
+import { getRect, getAnimationFrame, calcIcon } from '../common/utils';
 import props from './props';
 import config from '../common/config';
 
 const { prefix } = config;
 const name = `${prefix}-notice-bar`;
+
+// 主题图标
+const THEME_ICON = {
+  info: 'info-circle-filled',
+  success: 'check-circle-filled',
+  warning: 'info-circle-filled',
+  error: 'error-circle-filled',
+};
 
 @wxComponent()
 export default class NoticeBar extends SuperComponent {
@@ -12,7 +20,7 @@ export default class NoticeBar extends SuperComponent {
     `${prefix}-class`,
     `${prefix}-class-content`,
     `${prefix}-class-prefix-icon`,
-    `${prefix}-class-extra`,
+    `${prefix}-class-operation`,
     `${prefix}-class-suffix-icon`,
   ];
 
@@ -54,10 +62,9 @@ export default class NoticeBar extends SuperComponent {
       this.setPrefixIcon(prefixIcon);
     },
 
-    suffixIcon(suffixIcon) {
-      const obj = setIcon('suffixIcon', suffixIcon, '');
+    suffixIcon(v) {
       this.setData({
-        ...obj,
+        _suffixIcon: calcIcon(v),
       });
     },
 
@@ -89,7 +96,7 @@ export default class NoticeBar extends SuperComponent {
       // 获取外部容器和滚动内容的宽度
       const warpID = `.${name}__content-wrap`;
       const nodeID = `.${name}__content`;
-      getAnimationFrame(() => {
+      getAnimationFrame(this, () => {
         Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
           const { marquee } = this.properties;
 
@@ -100,20 +107,17 @@ export default class NoticeBar extends SuperComponent {
           if (marquee || wrapRect.width < nodeRect.width) {
             const speeding = marquee.speed || 50;
             const delaying = marquee.delay || 0;
-            const loops = marquee.loop - 1 || -1;
             const animationDuration = ((wrapRect.width + nodeRect.width) / speeding) * 1000;
             const firstAnimationDuration = (nodeRect.width / speeding) * 1000;
-
             this.setData({
               wrapWidth: Number(wrapRect.width),
               nodeWidth: Number(nodeRect.width),
               animationDuration: animationDuration,
               delay: delaying,
-              loop: loops,
+              loop: marquee.loop - 1,
               firstAnimationDuration: firstAnimationDuration,
             });
-
-            this.startScrollAnimation(true);
+            marquee.loop !== 0 && this.startScrollAnimation(true);
           }
         });
       });
@@ -134,7 +138,7 @@ export default class NoticeBar extends SuperComponent {
           .export(),
       });
 
-      getAnimationFrame(() => {
+      getAnimationFrame(this, () => {
         // 滚动内容: 最终位置
         this.setData({
           animationData: wx
@@ -171,10 +175,10 @@ export default class NoticeBar extends SuperComponent {
       this.nextAnimationContext = null;
     },
 
-    setPrefixIcon(prefixIcon) {
-      const obj = setIcon('prefixIcon', prefixIcon, 'error-circle-filled');
+    setPrefixIcon(v) {
+      const { theme } = this.properties;
       this.setData({
-        ...obj,
+        _prefixIcon: calcIcon(v, THEME_ICON[theme]),
       });
     },
 
@@ -190,8 +194,8 @@ export default class NoticeBar extends SuperComponent {
       this.triggerEvent('click', { trigger: 'suffix-icon' });
     },
 
-    clickExtra() {
-      this.triggerEvent('click', { trigger: 'extra' });
+    clickOperation() {
+      this.triggerEvent('click', { trigger: 'operation' });
     },
   };
 }

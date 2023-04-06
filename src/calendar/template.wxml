@@ -1,9 +1,13 @@
+<wxs src="../common/utils.wxs" module="_" />
 <import src="../common/template/button.wxml" />
 
-<view class="{{_.cls(classPrefix, [['popup', usePopup]])}}" style="{{customStyle}}">
+<view
+  class="{{_.cls(classPrefix, [['popup', usePopup]])}} class {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+>
   <view class="{{classPrefix}}__title" tabindex="0">
-    <slot wx:if="{{title === 'slot'}}" name="title" />
-    <text wx:else>{{ title || '请选择日期' }}</text>
+    <slot name="title" />
+    <text>{{ title || '请选择日期' }}</text>
   </view>
   <t-icon
     wx:if="{{usePopup}}"

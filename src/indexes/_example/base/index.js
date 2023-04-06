@@ -1,5 +1,6 @@
 Page({
   data: {
+    indexList: [],
     list: [
       {
         index: 'A',
@@ -87,6 +88,12 @@ Page({
         children: ['昆明', '开封', '康定', '喀什'],
       },
     ],
+  },
+
+  onReady() {
+    this.setData({
+      indexList: this.data.list.map((item) => item.index),
+    });
   },
 
   onSelect(e) {

@@ -3,8 +3,33 @@ import path from 'path';
 
 describe('Avatar & Avatar Groups', () => {
   const id = load(path.resolve(__dirname, './index'));
+  jest.resetModules();
+  const avatar = load(path.resolve(__dirname, `../avatar`));
 
   describe('Avatar Props', () => {
+    it(`: style && customStyle`, async () => {
+      const id = simulate.load({
+        template: `<t-avatar class="avatar" style="{{style}}" customStyle="{{customStyle}}"></t-avatar>`,
+        data: {
+          style: 'color: red',
+          customStyle: 'font-size: 9px',
+        },
+
+        usingComponents: {
+          't-avatar': avatar,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $avatar = comp.querySelector('.avatar >>> .t-avatar__wrapper');
+      expect(comp.toJSON()).toMatchSnapshot();
+      if (VIRTUAL_HOST) {
+        expect($avatar.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
+      } else {
+        expect($avatar.dom.getAttribute('style').includes(`${comp.data.customStyle}`)).toBeTruthy();
+      }
+    });
+
     it(':icon', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
@@ -19,7 +44,7 @@ describe('Avatar & Avatar Groups', () => {
 
       const $image = comp.querySelector('.image-avatar >>> #image');
       expect($image.toJSON().attrs.filter((v) => v.name === 'src')[0].value).toBe(
-        'https://cdn-we-retail.ym.tencent.com/retail-ui/components-exp/avatar/avatar-v2/1.png',
+        'https://tdesign.gtimg.com/miniprogram/images/avatar1.png',
       );
     });
 
@@ -36,7 +61,7 @@ describe('Avatar & Avatar Groups', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const $avatar = comp.querySelector('.text-avatar >>> .t-avatar');
-      expect($avatar.dom.getAttribute('class').includes('t-size-m')).toBeTruthy();
+      expect($avatar.dom.getAttribute('class').includes('t-avatar--medium')).toBeTruthy();
 
       const $text = comp.querySelector('.text-avatar >>> .t-avatar__text');
       expect($text.dom.textContent).toBe('A');
@@ -66,7 +91,7 @@ describe('Avatar & Avatar Groups', () => {
 
       const $group = comp.querySelectorAll('.avatar-group >>> .t-avatar');
       $group.forEach((v) => {
-        expect(v.dom.getAttribute('class').includes('t-size-s')).toBeTruthy();
+        expect(v.dom.getAttribute('class').includes('t-avatar--medium')).toBeTruthy();
       });
     });
 
@@ -77,7 +102,7 @@ describe('Avatar & Avatar Groups', () => {
       const $group = comp.querySelectorAll('.avatar-group-size >>> .t-avatar');
       $group.forEach((v) => {
         if (v.querySelector('.t-image')) {
-          expect(v.dom.getAttribute('class').includes('t-size-l')).toBeTruthy();
+          expect(v.dom.getAttribute('class').includes('t-avatar--large')).toBeTruthy();
         }
       });
     });

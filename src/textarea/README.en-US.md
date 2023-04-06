@@ -11,7 +11,6 @@ autosize | Boolean | false | \- | N
 confirm-hold | Boolean | false | \- | N
 confirm-type | String | done | options：send/search/next/go/done。Typescript：`'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
 cursor-spacing | Number | 0 | \- | N
-custom-style `v0.25.0` | String | - | \- | N
 disabled | Boolean | false | \- | N
 external-classes | Array | - | `['t-class', 't-class-textarea', 't-class-label']` | N
 focus | Boolean | false | \- | N

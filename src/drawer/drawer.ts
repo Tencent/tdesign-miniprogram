@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
+import { ComponentsOptionsType, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -8,6 +8,10 @@ const name = `${prefix}-drawer`;
 @wxComponent()
 export default class Drawer extends SuperComponent {
   externalClasses = [];
+
+  options: ComponentsOptionsType = {
+    multipleSlots: true,
+  };
 
   properties = props;
 
@@ -22,8 +26,12 @@ export default class Drawer extends SuperComponent {
       const { showOverlay } = this.data;
 
       this.setData({
-        visible: visible,
+        visible,
       });
+
+      if (!visible) {
+        this.triggerEvent('close', { trigger: 'overlay' });
+      }
 
       if (showOverlay) {
         this.triggerEvent('overlay-click', { visible: visible });
@@ -32,6 +40,7 @@ export default class Drawer extends SuperComponent {
 
     itemClick(detail) {
       const { index, item } = detail.currentTarget.dataset;
+
       this.triggerEvent('item-click', {
         sibarItem: { index: index, item: item },
       });
