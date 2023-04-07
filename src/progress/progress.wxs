@@ -26,6 +26,7 @@ var CIRCLE_STATUS_ICON = {
 /**
  * 由于android和iOS在无障碍模式下，语音朗读有部分差异,  因此特殊处理
  * 1. android在同iOS有相同属性下，只读取aria-lable，不会读取aria-valuenow，需要给aria-lable 添加相应文案。
+ *  （推翻1 ，不知道啥原因的影响，aria-valuenow 可读可不读 但是读的时候不会加%，因此需要aria-lable 加 %）
  * 2. iOS 会读取aria-label，同时也会读取aria-valuenow，会发出两次语音，因此也需要特殊处理。
  * 3. 对于动态朗读部分，优先读取用户自定义设置的airra-label，如果没有设置，则读取默认的文案。(文档中也需要提示用户两者的差异)
  */
@@ -41,12 +42,12 @@ var getIOSAriaLabel = function (status) {
 
 var getAndroidAriaLabel = function (status, computedProgress) {
   if (status === 'error') {
-    return '进度失败' + computedProgress + '%';
+    return '%' + '，进度失败';
   }
   if (status === 'warning') {
-    return '进度异常' + computedProgress + '%';
+    return '%' + '，进度异常';
   }
-  return computedProgress + '%';
+  return '%';
 };
 
 module.exports = {

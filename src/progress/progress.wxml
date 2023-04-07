@@ -2,13 +2,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./progress.wxs" module="this" />
 
-<!--
-  1. 安卓和iOS存在一些差异 原因： (如当前进度为 80)  【两者相同：本身progressbar系统特性文案 + 自定义ariaLabel】
-  a: iOS 特性读出 80% 、而安卓只读 80 (无%)
-  b: 为了让安卓能正常的读出百分%， 因此做了一个拼接 '%', 这也导致了安卓被读了两次。
-  c: 所以下文才有了两个处理函数 getIOSAriaLabel 、 getAndroidAriaLabel
--->
-
 <view style="{{_._style([style, customStyle])}}" class="{{classPrefix}}">
   <view
     wx:if="{{theme === this.PRO_THEME.LINE}}"
