@@ -2,7 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./progress.wxs" module="this" />
 
-<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}}">
+<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class">
   <view
     wx:if="{{theme === this.PRO_THEME.LINE}}"
     class="{{classPrefix }}--thin {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
@@ -30,7 +30,7 @@
       ></template>
       <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
-    <slot wx:else name="label" />
+    <slot name="label" />
   </view>
 
   <view
@@ -51,7 +51,7 @@
       <view wx:if="{{label && computedProgress > 10}}" class="{{classPrefix }}__info {{prefix}}-class-label">
         <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
       </view>
-      <slot wx:else name="label" />
+      <slot name="label" />
     </view>
     <view
       wx:if="{{label && computedProgress <= 10}}"
@@ -60,7 +60,7 @@
     >
       <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
-    <slot wx:else name="label" />
+    <slot name="label" />
   </view>
 
   <view
@@ -89,7 +89,7 @@
           ></template>
           <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
         </view>
-        <slot wx:else name="label" />
+        <slot name="label" />
       </view>
     </view>
   </view>

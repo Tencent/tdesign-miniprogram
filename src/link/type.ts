@@ -37,12 +37,27 @@ export interface TdLinkProps {
     value?: SizeEnum;
   };
   /**
-   * 组件状态
+   * 已废弃。组件状态
    * @default normal
    */
   status?: {
     type: StringConstructor;
     value?: 'normal' | 'active' | 'disabled';
+  };
+  /**
+   * 禁用态
+   * @default false
+   */
+  disabled?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否开启点击反馈
+   */
+  hover?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 前置图标

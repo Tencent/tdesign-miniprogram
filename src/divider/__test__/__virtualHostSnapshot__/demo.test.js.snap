@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider Divider base demo works fine 1`] = `
+<base>
+  <t-divider />
+  <wx-view
+    class="divider-demo__title"
+  >
+    带文字水平分割线
+  </wx-view>
+  <t-divider
+    align="left"
+    content="文字信息"
+  />
+  <t-divider
+    content="文字信息"
+  />
+  <t-divider
+    align="right"
+    content="文字信息"
+  />
+  <wx-view
+    class="divider-demo__title"
+  >
+    垂直分割线
+  </wx-view>
+  <wx-view
+    class="divider-wrapper"
+  >
+    <wx-text
+      class="demo-6__text-color"
+    >
+      文字信息
+    </wx-text>
+    <t-divider
+      layout="vertical"
+    />
+    <wx-text
+      class="demo-6__text-color"
+    >
+      文字信息
+    </wx-text>
+    <t-divider
+      layout="vertical"
+    />
+    <wx-text
+      class="demo-6__text-color"
+    >
+      文字信息
+    </wx-text>
+  </wx-view>
+</base>
+`;
+
+exports[`Divider Divider theme demo works fine 1`] = `
+<theme>
+  <t-divider
+    dashed="{{true}}"
+  />
+  <t-divider
+    align="left"
+    content="文字信息"
+    dashed="{{true}}"
+  />
+  <t-divider
+    content="文字信息"
+    dashed="{{true}}"
+  />
+  <t-divider
+    align="right"
+    content="文字信息"
+    dashed="{{true}}"
+  />
+</theme>
+`;

@@ -3,7 +3,7 @@
 <wxs src="./tabs.wxs" module="filters" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{_._style([style, customStyle])}}" class="{{_.cls(classPrefix, [placement])}} {{prefix}}-class">
+<view style="{{_._style([style, customStyle])}}" class="{{_.cls(classPrefix, [placement])}} class {{prefix}}-class">
   <t-sticky
     t-class="{{_.cls(classPrefix + '__sticky', [placement])}}"
     disabled="{{ !sticky }}"
@@ -15,11 +15,13 @@
     <view class="{{_.cls(classPrefix + '__wrapper', [theme])}}">
       <scroll-view
         class="{{_.cls(classPrefix + '__scroll', [placement])}}"
+        enhanced
         enable-flex
         scroll-left="{{offset}}"
         scroll-x="{{isScrollX}}"
         scroll-y="{{isScrollY}}"
         scroll-with-animation
+        show-scrollbar="{{false}}"
       >
         <view class="{{_.cls(classPrefix + '__nav', [placement])}}" aria-role="tablist">
           <view
@@ -32,8 +34,12 @@
             aria-controls="{{tabID + '_panel_' + index}}"
             aria-selected="{{currentIndex === index}}"
             aria-disabled="{{item.disabled}}"
+            aria-label="{{ ariaLabel || (item.badgeProps.dot || item.badgeProps.count ? item.label + _.getBadgeAriaLabel({ ...item.badgeProps }) : '') }}"
           >
-            <view class="{{_.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])}}">
+            <view
+              class="{{_.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])}}"
+              aria-hidden="{{ item.badgeProps.dot || item.badgeProps.count }}"
+            >
               <template wx:if="{{item.icon}}" is="icon" data="{{ class: classPrefix + '__icon', ...item.icon }}" />
               <block wx:if="{{item.badgeProps}}">
                 <template is="badge" data="{{ ...item.badgeProps, content: item.label }}" />

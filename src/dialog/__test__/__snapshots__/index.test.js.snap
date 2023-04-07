@@ -6,6 +6,7 @@ exports[`dialog :base 1`] = `
     id="dialog"
   >
     <t-popup
+      class="class"
       tClass="t-dialog__wrapper"
       bind:visible-change="overlayClick"
     >
@@ -20,10 +21,6 @@ exports[`dialog :base 1`] = `
           class="t-popup__content t-class-content"
         >
           <wx-view
-            class="t-popup__close"
-            bind:tap="handleClose"
-          />
-          <wx-view
             class="t-dialog t-class"
             slot="content"
           >
@@ -34,6 +31,10 @@ exports[`dialog :base 1`] = `
               class="t-dialog__footer t-dialog__footer--full"
             />
           </wx-view>
+          <wx-view
+            class="t-popup__close"
+            bind:tap="handleClose"
+          />
         </wx-view>
       </wx-view>
       <t-overlay
@@ -44,7 +45,7 @@ exports[`dialog :base 1`] = `
         <wx-view
           ariaLabel="关闭"
           ariaRole="button"
-          class="t-overlay t-fade-enter t-fade-enter-active"
+          class="t-overlay t-fade-enter t-fade-enter-active class"
           style="z-index:11000;"
           bind:tap="handleClick"
           catch:touchmove="noop"

@@ -20,7 +20,8 @@ export default class ImageViewer extends SuperComponent {
     currentSwiperIndex: 0,
     windowHeight: 0,
     windowWidth: 0,
-    imagesShape: {},
+    swiperStyle: {},
+    imagesStyle: {},
   };
 
   options = {
@@ -108,10 +109,17 @@ export default class ImageViewer extends SuperComponent {
         },
       } = e;
       const { mode, styleObj } = this.calcImageDisplayStyle(width, height);
-      const origin = this.data.imagesShape;
+      const originImagesStyle = this.data.imagesStyle;
+      const originSwiperStyle = this.data.swiperStyle;
       this.setData({
-        imagesShape: {
-          ...origin,
+        swiperStyle: {
+          ...originSwiperStyle,
+          [index]: {
+            style: `height: ${styleObj.height}`,
+          },
+        },
+        imagesStyle: {
+          ...originImagesStyle,
           [index]: {
             mode,
             style: styles({ ...styleObj }),

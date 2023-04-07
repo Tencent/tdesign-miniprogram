@@ -1,5 +1,11 @@
 Component({
   data: {
+    cityText: '',
+    city2Text: '',
+    cityValue: [],
+    city2Value: [],
+    cityTitle: '',
+    city2Title: '',
     citys: [
       { label: '北京市', value: '北京市' },
       { label: '上海市', value: '上海市' },
@@ -36,11 +42,11 @@ Component({
     },
 
     onTitlePicker() {
-      this.setData({ cityVisible: true, pickerTitle: '选择城市' });
+      this.setData({ cityVisible: true, cityTitle: '选择城市' });
     },
 
     onWithoutTitlePicker() {
-      this.setData({ cityVisible: true, pickerTitle: '' });
+      this.setData({ city2Visible: true, city2Title: '' });
     },
   },
 });

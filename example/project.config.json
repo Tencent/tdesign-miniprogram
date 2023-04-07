@@ -57,40 +57,333 @@
       "current": 0,
       "list": [
         {
-          "id": -1,
+          "name": "action-sheet",
+          "pathName": "pages/action-sheet/action-sheet",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "avatar",
+          "pathName": "pages/avatar/avatar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "badge",
+          "pathName": "pages/badge/badge",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "back-top",
+          "pathName": "pages/back-top/back-top",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "button",
           "pathName": "pages/button/button",
           "query": "",
           "scene": null
         },
         {
-          "id": -1,
-          "name": "rate",
-          "pathName": "pages/rate/rate",
+          "name": "calendar",
+          "pathName": "pages/calendar/calendar",
+          "query": "",
           "scene": null
         },
         {
-          "id": -1,
-          "name": "indexes",
-          "pathName": "pages/indexes/indexes",
+          "name": "cascader",
+          "pathName": "pages/cascader/cascader",
+          "query": "",
           "scene": null
         },
         {
-          "id": -1,
-          "name": "swiper",
-          "pathName": "pages/swiper/swiper",
+          "name": "cell",
+          "pathName": "pages/cell/cell",
+          "query": "",
           "scene": null
         },
         {
-          "id": -1,
-          "name": "actionSheet",
-          "pathName": "pages/action-sheet/action-sheet",
+          "name": "collapse",
+          "pathName": "pages/collapse/collapse",
+          "query": "",
           "scene": null
         },
         {
-          "id": -1,
+          "name": "count-down",
+          "pathName": "pages/count-down/count-down",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "checkbox",
+          "pathName": "pages/checkbox/checkbox",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "dialog",
+          "pathName": "pages/dialog/dialog",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "divider",
+          "pathName": "pages/divider/divider",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "date-time-picker",
+          "pathName": "pages/date-time-picker/date-time-picker",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "drawer",
+          "pathName": "pages/drawer/drawer",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "dropdown-menu",
+          "pathName": "pages/dropdown-menu/dropdown-menu",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "empty",
+          "pathName": "pages/empty/empty",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "fab",
+          "pathName": "pages/fab/fab",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "footer",
+          "pathName": "pages/footer/footer",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "grid",
+          "pathName": "pages/grid/grid",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "icon",
+          "pathName": "pages/icon/icon",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "image",
+          "pathName": "pages/image/image",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "image-viewer",
           "pathName": "pages/image-viewer/image-viewer",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "input",
+          "pathName": "pages/input/input",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "link",
+          "pathName": "pages/link/link",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "message",
+          "pathName": "pages/message/message",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "navbar",
+          "pathName": "pages/navbar/navbar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "notice-bar",
+          "pathName": "pages/notice-bar/notice-bar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "loading",
+          "pathName": "pages/loading/loading",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "indexes",
+          "pathName": "pages/indexes/indexes",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "progress",
+          "pathName": "pages/progress/progress",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "overlay",
+          "pathName": "pages/overlay/overlay",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "picker",
+          "pathName": "pages/picker/picker",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "popup",
+          "pathName": "pages/popup/popup",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pull-down-refresh",
+          "pathName": "pages/pull-down-refresh/pull-down-refresh",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "radio",
+          "pathName": "pages/radio/radio",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "rate",
+          "pathName": "pages/rate/rate",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "result",
+          "pathName": "pages/result/result",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "search",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "slider",
+          "pathName": "pages/slider/slider",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "side-bar",
+          "pathName": "pages/side-bar/side-bar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "skeleton",
+          "pathName": "pages/skeleton/skeleton",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "steps",
+          "pathName": "pages/steps/steps",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "stepper",
+          "pathName": "pages/stepper/stepper",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "sticky",
+          "pathName": "pages/sticky/sticky",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "switch",
+          "pathName": "pages/switch/switch",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "swiper",
+          "pathName": "pages/swiper/swiper",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "swipe-cell",
+          "pathName": "pages/swipe-cell/swipe-cell",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "tab-bar",
+          "pathName": "pages/tab-bar/tab-bar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "tabs",
+          "pathName": "pages/tabs/tabs",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "tag",
+          "pathName": "pages/tag/tag",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "textarea",
+          "pathName": "pages/textarea/textarea",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "toast",
+          "pathName": "pages/toast/toast",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "tree-select",
+          "pathName": "pages/tree-select/tree-select",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "upload",
+          "pathName": "pages/upload/upload",
+          "query": "",
           "scene": null
         },
         {

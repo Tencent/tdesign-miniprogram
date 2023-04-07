@@ -2,20 +2,29 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/sr
 import config from '../common/config';
 import { MessageProps } from './message.interface';
 import props from './props';
-import { getRect, unitConvert, calcIcon } from '../common/utils';
+import { getRect, unitConvert, calcIcon, isObject } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
 
 // 展示动画持续时间
 const SHOW_DURATION = 500;
+
+// 主题图标
+const THEME_ICON = {
+  info: 'info-circle-filled',
+  success: 'check-circle-filled',
+  warning: 'info-circle-filled',
+  error: 'error-circle-filled',
+};
+
 @wxComponent()
 export default class Message extends SuperComponent {
   externalClasses = [
     `${prefix}-class`,
     `${prefix}-class-content`,
     `${prefix}-class-icon`,
-    `${prefix}-class-action`,
+    `${prefix}-class-link`,
     `${prefix}-class-close-btn`,
   ];
 
@@ -39,21 +48,26 @@ export default class Message extends SuperComponent {
 
   observers = {
     marquee(val) {
-      if (JSON.stringify(val) === '{}') {
+      if (JSON.stringify(val) === '{}' || JSON.stringify(val) === 'true') {
         this.setData({
           marquee: {
             speed: 50,
             loop: -1,
-            delay: 5000,
+            delay: 0,
           },
         });
       }
     },
 
-    icon(v) {
+    'icon, theme'(icon, theme) {
       this.setData({
-        _icon: calcIcon(v, 'error-circle-filled'),
+        _icon: calcIcon(icon, THEME_ICON[theme]),
       });
+    },
+
+    link(v) {
+      const _link = isObject(v) ? { ...v } : { content: v };
+      this.setData({ _link });
     },
 
     closeBtn(v) {
@@ -96,11 +110,12 @@ export default class Message extends SuperComponent {
 
   /** 检查是否需要开启一个新的动画循环 */
   checkAnimation() {
-    if (!this.properties.marquee) {
+    const { marquee } = this.properties;
+    if (!marquee || marquee.loop === 0) {
       return;
     }
 
-    const speeding = this.properties.marquee.speed;
+    const speeding = marquee.speed;
 
     if (this.data.loop > 0) {
       this.data.loop -= 1;
@@ -152,13 +167,13 @@ export default class Message extends SuperComponent {
 
   show() {
     const { duration, marquee, offset } = this.properties;
-    this.setData({ visible: true, loop: marquee.loop });
+    this.setData({ visible: true, loop: marquee.loop || this.data.loop });
     this.reset();
     this.checkAnimation();
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
         this.hide();
-        this.triggerEvent('durationEnd', { self: this });
+        this.triggerEvent('duration-end', { self: this });
       }, duration) as unknown as number;
     }
 
@@ -203,10 +218,10 @@ export default class Message extends SuperComponent {
 
   handleClose() {
     this.hide();
-    this.triggerEvent('closeBtnClick');
+    this.triggerEvent('close-btn-click');
   }
 
-  handleBtnClick() {
-    this.triggerEvent('actionBtnClick', { self: this });
+  handleLinkClick() {
+    this.triggerEvent('link-click');
   }
 }

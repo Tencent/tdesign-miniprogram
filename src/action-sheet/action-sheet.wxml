@@ -3,7 +3,7 @@
 <import src="./template/list.wxml" />
 <import src="./template/grid.wxml" />
 
-<view id="{{classPrefix}}" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
+<view id="{{classPrefix}}" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
   <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
     <view
       class="{{_.cls(classPrefix + '__content', [['grid', gridThemeItems.length]])}} {{prefix}}-class-content"
@@ -25,7 +25,7 @@
       </view>
     </view>
     <slot />
-    <view wx:if="{{showCancel}}" class="{{classPrefix}}__footer {{classPrefix}}__safe">
+    <view wx:if="{{showCancel}}" class="{{classPrefix}}__footer">
       <view class="{{classPrefix}}__gap-{{theme}}" />
       <view
         class="{{classPrefix}}__cancel {{prefix}}-class-cancel"

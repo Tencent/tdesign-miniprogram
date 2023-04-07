@@ -31,14 +31,6 @@ export interface TdButtonProps {
     value?: any;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 禁用状态
    * @default false
    */
@@ -77,7 +69,7 @@ export interface TdButtonProps {
     value?: boolean;
   };
   /**
-   * 加载loading样式
+   * 透传至 Loading 组件
    */
   loadingProps?: {
     type: ObjectConstructor;
@@ -136,6 +128,14 @@ export interface TdButtonProps {
       | 'openSetting'
       | 'feedback'
       | 'chooseAvatar';
+  };
+  /**
+   * 指定按钮按下去的样式类，按钮不为加载或禁用状态时有效。当 `hover-class="none"` 时，没有点击态效果
+   * @default ''
+   */
+  hoverClass?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 指定是否阻止本节点的祖先节点出现点击态

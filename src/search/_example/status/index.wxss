@@ -1,8 +1,0 @@
-.example-search {
-  background-color: #fff;
-  padding: 16rpx 32rpx;
-}
-
-.space {
-  height: 32rpx;
-}

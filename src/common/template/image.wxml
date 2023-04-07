@@ -1,6 +1,12 @@
 <template name="image">
   <t-image
+    class="{{class}}"
+    t-class="{{tClass}}"
+    t-class-load="{{tClassLoad}}"
     style="{{style || ''}}"
+    customStyle="{{customStyle || ''}}"
+    height="{{height || ''}}"
+    width="{{width || ''}}"
     error="{{error || 'default'}}"
     lazy="{{lazy || false}}"
     loading="{{count || 'default'}}"
@@ -11,7 +17,5 @@
     showMenuByLongpress="{{showMenuByLongpress || false}}"
     bind:error="{{binderror}}"
     bind:load="{{bindload}}"
-    t-class="{{class}} {{tClass}}"
-    t-class-load="{{tClassLoad}}"
   />
 </template>

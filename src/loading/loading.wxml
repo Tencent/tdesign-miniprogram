@@ -1,51 +1,39 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
-  style="{{_._style([style, customStyle, (!text && theme != 'error' && 'width: ' + _.addUnit(size) + '; height: ' + _.addUnit(size))])}}"
-  class="class {{prefix}}-class"
+  style="{{_._style([style, customStyle, !text ? ('width: ' + _.addUnit(size) + '; height: ' + _.addUnit(size)) : ''])}} {{show ? '' : 'display:none'}} {{inheritColor ? 'color: inherit' : ''}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix + '--' + layout}}"
 >
   <view
-    wx:if="{{theme === 'bar' && theme !== 'error'}}"
-    style="{{progress >= 0 ? 'width:' + progress + '%' : ''}}"
-    class="{{prefix}}-class-indicator {{classPrefix}}__bar {{classPrefix}}__bar--{{progress < 0 ? 'animation' : progress < 100 ? 'static': ''}} {{progress >= 100 || !loading ? classPrefix + '__bar--loaded' : ''}}"
-  ></view>
-  <view class="{{classPrefix}} {{classPrefix + '--' + layout}}" style="{{show ? '' : 'display:none'}}" wx:else>
-    <view
-      wx:if="{{indicator && theme != 'error'}}"
-      class="{{prefix}}-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
-      style="width: {{ _.addUnit(size) }}; height: {{ _.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-      aria-role="{{ theme !== 'error' ? ariaRole  || 'img' :  ''}}"
-      aria-label="{{ ariaLabel || text || '加载中'  }}"
-
-      >
-      <view wx:if="{{ theme === 'spinner' }}" wx:for="{{12}}" wx:key="index" class="{{classPrefix}}__dot" />
-      <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular" />
-      <block wx:if="{{ theme === 'dots' }}">
-        <view
-          class="{{classPrefix}}__dot"
-          style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + 0 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-        ></view>
-        <view
-          class="{{classPrefix}}__dot"
-          style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 1 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-        ></view>
-        <view
-          class="{{classPrefix}}__dot"
-          style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 2 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
-        ></view>
-      </block>
-    </view>
-    <view
-      class="{{_.cls(classPrefix + '__text', [layout])}} {{prefix}}-class-text"
-      aria-hidden="{{indicator && theme != 'error'}}"
-      aria-label="{{ ariaLabel || text }}"
-    >
-      <view wx:if="{{theme === 'error'}}">
-        加载失败
-        <text class="{{classPrefix}}__refresh-btn" bind:tap="refreshPage" aria-role="button">刷新</text>
-      </view>
-      <block wx:if="{{text}}">{{text}}</block>
-      <slot name="text" />
-      <slot />
-    </view>
+    wx:if="{{indicator}}"
+    class="{{prefix}}-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
+    style="width: {{ _.addUnit(size) }}; height: {{ _.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+    aria-role="{{ariaRole  || 'img'}}"
+    aria-label="{{ ariaLabel || text || '加载中'  }}"
+  >
+    <view wx:if="{{ theme === 'spinner' }}" wx:for="{{12}}" wx:key="index" class="{{classPrefix}}__dot" />
+    <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular" />
+    <block wx:if="{{ theme === 'dots' }}">
+      <view
+        class="{{classPrefix}}__dot"
+        style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + 0 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+      ></view>
+      <view
+        class="{{classPrefix}}__dot"
+        style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 1 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+      ></view>
+      <view
+        class="{{classPrefix}}__dot"
+        style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 2 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+      ></view>
+    </block>
+  </view>
+  <view
+    class="{{_.cls(classPrefix + '__text', [layout])}} {{prefix}}-class-text"
+    aria-hidden="{{indicator}}"
+    aria-label="{{ ariaLabel || text }}"
+  >
+    <block wx:if="{{text}}">{{text}}</block>
+    <slot name="text" />
+    <slot />
   </view>
 </view>

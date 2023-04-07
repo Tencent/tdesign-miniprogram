@@ -28,7 +28,7 @@ const ComponentNativeProps = [
  * @param options {}
  */
 export const toComponent = function toComponent(options: Record<string, any>) {
-  const { relations, behaviors = [], properties } = options;
+  const { relations, behaviors = [], properties, externalClasses = [] } = options;
 
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
@@ -91,6 +91,8 @@ export const toComponent = function toComponent(options: Record<string, any>) {
   }
 
   options.behaviors = [...behaviors];
+
+  options.externalClasses = ['class', ...externalClasses];
 
   Object.getOwnPropertyNames(options).forEach((k) => {
     const desc = Object.getOwnPropertyDescriptor(options, k);

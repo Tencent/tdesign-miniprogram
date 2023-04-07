@@ -7,7 +7,7 @@ exports[`switch Props :base 1`] = `
       ariaChecked="{{false}}"
       ariaDisabled="{{false}}"
       ariaRole="switch"
-      class="t-class t-switch"
+      class="class t-class t-switch"
       style=""
       bind:tap="handleSwitch"
     >

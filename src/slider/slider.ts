@@ -26,6 +26,7 @@ type dataType = {
   scaleTextArray: any[];
   _value: SliderValue;
   prefix: string;
+  isVisibleToScreenReader: boolean;
 };
 
 interface boundingClientRect {
@@ -35,7 +36,6 @@ interface boundingClientRect {
 @wxComponent()
 export default class Slider extends SuperComponent {
   externalClasses = [
-    'class',
     `${prefix}-class`,
     `${prefix}-class-bar`,
     `${prefix}-class-bar-active`,
@@ -71,6 +71,7 @@ export default class Slider extends SuperComponent {
     scaleArray: [],
     scaleTextArray: [],
     prefix,
+    isVisibleToScreenReader: false,
   };
 
   observers = {
@@ -89,6 +90,15 @@ export default class Slider extends SuperComponent {
       } else {
         this.setSingleBarWidth(newValue as number);
       }
+
+      this.setData({
+        isVisibleToScreenReader: true,
+      });
+      setTimeout(() => {
+        this.setData({
+          isVisibleToScreenReader: false,
+        });
+      }, 2e3);
     },
     marks(val) {
       if (this.data.initialLeft != null) {
@@ -344,4 +354,6 @@ export default class Slider extends SuperComponent {
       });
     }
   }
+
+  onTouchEnd() {}
 }

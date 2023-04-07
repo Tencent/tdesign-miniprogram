@@ -22,7 +22,7 @@ describe('Avatar & Avatar Groups', () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
       const $avatar = comp.querySelector('.avatar >>> .t-avatar__wrapper');
-      // expect(comp.toJSON()).toMatchSnapshot();
+      expect(comp.toJSON()).toMatchSnapshot();
       if (VIRTUAL_HOST) {
         expect($avatar.dom.getAttribute('style').includes(`${comp.data.style}; ${comp.data.customStyle}`)).toBeTruthy();
       } else {

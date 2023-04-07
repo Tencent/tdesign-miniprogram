@@ -2,4 +2,4 @@
 
 <view class="block"></view>
 
-<t-radio value="radio2" label="单选" align="right" default-checked />
+<t-radio value="radio2" label="单选" placement="right" default-checked />

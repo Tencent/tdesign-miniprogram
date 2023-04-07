@@ -37,9 +37,8 @@ export default class DropdownMenuItem extends SuperComponent {
     overlay: menuProps.showOverlay.value,
     labelAlias: 'label',
     valueAlias: 'value',
+    computedLabel: '',
   };
-
-  parent = null;
 
   relations: RelationsOptions = {
     '../dropdown-menu/dropdown-menu': {
@@ -47,7 +46,6 @@ export default class DropdownMenuItem extends SuperComponent {
       linked(target) {
         const { zIndex, duration, showOverlay } = target.properties;
 
-        this.parent = target;
         this.setData({
           zIndex,
           duration,
@@ -82,16 +80,16 @@ export default class DropdownMenuItem extends SuperComponent {
 
       if (target) {
         this.setData({
-          label: target[labelAlias],
+          computedLabel: target[labelAlias],
         });
       }
     },
-    label() {
-      this.parent?.getAllItems();
+    'label, computedLabel'() {
+      this.$parent?.getAllItems();
     },
     show(visible) {
       if (visible) {
-        this.getParentBottom(this.parent, () => {
+        this.getParentBottom(() => {
           this.setData({ wrapperVisible: true });
         });
       }
@@ -100,7 +98,7 @@ export default class DropdownMenuItem extends SuperComponent {
 
   methods = {
     closeDropdown() {
-      this.parent?.setData({
+      this.$parent?.setData({
         activeIdx: -1,
       });
       this.setData({
@@ -108,8 +106,8 @@ export default class DropdownMenuItem extends SuperComponent {
       });
     },
 
-    getParentBottom(parent, cb) {
-      getRect(parent, `#${prefix}-bar`).then((rect) => {
+    getParentBottom(cb) {
+      getRect(this.$parent, `#${prefix}-bar`).then((rect) => {
         this.setData(
           {
             top: rect.bottom,
@@ -139,13 +137,14 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     handleMaskClick() {
-      if (this.parent?.properties.closeOnClickOverlay) {
+      if (this.$parent?.properties.closeOnClickOverlay) {
         this.closeDropdown();
       }
     },
 
     handleReset() {
       this._trigger('change', { value: [] });
+      this._trigger('reset');
     },
 
     handleConfirm() {

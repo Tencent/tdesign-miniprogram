@@ -1,0 +1,7 @@
+.toast-example {
+  text-align: center;
+}
+
+.margin-16 {
+  margin-right: 32rpx;
+}

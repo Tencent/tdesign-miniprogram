@@ -6,14 +6,6 @@
 
 export interface TdPickerItemProps {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 格式化标签
    */
   format?: {

@@ -4,13 +4,15 @@ exports[`date-time-picker :base 1`] = `
 <main>
   <t-date-time-picker>
     <t-picker
-      class="t-date-time-picker"
+      class="class t-class t-date-time-picker"
       bind:cancel="onCancel"
       bind:change="onConfirm"
+      bind:close="onClose"
       bind:pick="onColumnChange"
       bind:visible-change="onVisibleChange"
     >
       <t-popup
+        class="class"
         bind:visible-change="onPopupChange"
       >
         <wx-view
@@ -23,10 +25,6 @@ exports[`date-time-picker :base 1`] = `
           <wx-view
             class="t-popup__content t-class-content"
           >
-            <wx-view
-              class="t-popup__close"
-              bind:tap="handleClose"
-            />
             <wx-view
               class="t-picker t-class"
               slot="content"
@@ -449,6 +447,10 @@ exports[`date-time-picker :base 1`] = `
                 />
               </wx-view>
             </wx-view>
+            <wx-view
+              class="t-popup__close"
+              bind:tap="handleClose"
+            />
           </wx-view>
         </wx-view>
         <t-overlay
@@ -459,7 +461,7 @@ exports[`date-time-picker :base 1`] = `
           <wx-view
             ariaLabel="关闭"
             ariaRole="button"
-            class="t-overlay t-fade-enter t-fade-enter-active"
+            class="t-overlay t-fade-enter t-fade-enter-active class"
             style="z-index:11000;"
             bind:tap="handleClick"
             catch:touchmove="noop"

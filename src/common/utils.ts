@@ -83,9 +83,10 @@ export const styles = function (styleObj) {
     .join('; ');
 };
 
-export const getAnimationFrame = function (cb: Function) {
+export const getAnimationFrame = function (context: any, cb: Function) {
   return wx
     .createSelectorQuery()
+    .in(context)
     .selectViewport()
     .boundingClientRect()
     .exec(() => {
@@ -252,4 +253,20 @@ export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: strin
     return icon;
   }
   return null;
+};
+
+export const isOverSize = (size, sizeLimit) => {
+  if (!sizeLimit) return false;
+
+  const base = 1000;
+  const unitMap = {
+    B: 1,
+    KB: base,
+    MB: base * base,
+    GB: base * base * base,
+  };
+  const computedSize =
+    typeof sizeLimit === 'number' ? sizeLimit * base : sizeLimit?.size * unitMap[sizeLimit?.unit ?? 'KB']; // 单位 KB
+
+  return size > computedSize;
 };

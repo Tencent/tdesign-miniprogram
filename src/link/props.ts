@@ -23,10 +23,20 @@ const props: TdLinkProps = {
     type: String,
     value: 'medium',
   },
-  /** 组件状态 */
+  /** 已废弃。组件状态 */
   status: {
     type: String,
     value: 'normal',
+  },
+  /** 禁用态 */
+  disabled: {
+    type: Boolean,
+    value: false,
+  },
+  /** 是否开启点击反馈 */
+  hover: {
+    type: Boolean,
+    value: false,
   },
   /** 前置图标 */
   suffixIcon: {

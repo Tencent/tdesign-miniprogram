@@ -5,7 +5,7 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-align | String | left | options：left/right | N
+placement | String | left | options：left/right | N
 block | Boolean | true | \- | N
 check-all | Boolean | false | \- | N
 checked | Boolean | false | \- | N

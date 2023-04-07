@@ -100,4 +100,20 @@ export interface TdSearchProps {
     type: StringConstructor;
     value?: string;
   };
+  /**
+   * 是否启用清除控件
+   * @default true
+   */
+  clearable: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 可以控制拉起的键盘类型
+   * @default 'text'
+   */
+  type: {
+    type: StringConstructor;
+    value?: string;
+  };
 }

@@ -5,7 +5,7 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-align | String | left | options：left/right | N
+placement | String | left | options：left/right | N
 allow-uncheck | Boolean | false | \- | N
 block | Boolean | true | \- | N
 checked | Boolean | false | \- | N
@@ -31,7 +31,7 @@ change | `(checked: boolean)` | \-
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-align | String | left | options：left/right | N
+placement | String | left | options：left/right | N
 borderless | Boolean | false | \- | N
 disabled | Boolean | undefined | \- | N
 icon | String / Array | 'circle' | Typescript：`'circle' | 'line' | Array<string>` | N

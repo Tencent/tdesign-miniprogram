@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer Drawer base demo works fine 1`] = `
+<base>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
+  >
+    基础抽屉
+  </t-button>
+  <t-drawer
+    items="{{Array []}}"
+    placement="left"
+    visible=""
+    bind:item-click="itemClick"
+    bind:overlay-click="overlayClick"
+  />
+</base>
+`;
+
+exports[`Drawer Drawer footer demo works fine 1`] = `
+<footer>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
+  >
+    带底部插槽
+  </t-button>
+  <t-drawer
+    items="{{Array []}}"
+    placement="left"
+    title="标题"
+    visible="{{false}}"
+    bind:item-click="itemClick"
+    bind:overlay-click="overlayClick"
+  >
+    <wx-view
+      class="button-host"
+    >
+      <t-button
+        block="{{true}}"
+        size="large="
+        slot="footer"
+        variant="outline"
+      >
+        操作
+      </t-button>
+    </wx-view>
+  </t-drawer>
+</footer>
+`;
+
+exports[`Drawer Drawer icon-drawer demo works fine 1`] = `
+<icon-drawer>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerIcon"
+  >
+    带图标抽屉
+  </t-button>
+  <t-drawer
+    items="{{Array []}}"
+    placement="left"
+    visible=""
+    bind:item-click="itemClick"
+    bind:overlay-click="overlayClick"
+  />
+</icon-drawer>
+`;
+
+exports[`Drawer Drawer title demo works fine 1`] = `
+<title>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="openDrawerBase"
+  >
+    带标题抽屉
+  </t-button>
+  <t-drawer
+    items="{{Array []}}"
+    placement="left"
+    title="标题"
+    visible=""
+    bind:item-click="itemClick"
+    bind:overlay-click="overlayClick"
+  />
+</title>
+`;

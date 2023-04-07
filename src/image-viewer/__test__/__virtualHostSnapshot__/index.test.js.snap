@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`image-viewer :base 1`] = `
+<wx-view
+  ariaHidden="{{false}}"
+  class="class t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  style=""
+>
+  <wx-view
+    class="class t-class t-loading t-loading--horizontal"
+    style="width: 44rpx; height: 44rpx;  color: inherit"
+  >
+    <wx-view
+      ariaLabel="加载中"
+      ariaRole="img"
+      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+    >
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+      />
+    </wx-view>
+    <wx-view
+      ariaHidden="{{true}}"
+      ariaLabel=""
+      class="t-loading__text t-loading__text--horizontal t-class-text"
+    />
+  </wx-view>
+</wx-view>
+`;
+
+exports[`image-viewer :base 2`] = `
+<wx-view
+  ariaHidden="{{false}}"
+  class="class t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  style=""
+>
+  <wx-view
+    class="class t-class t-loading t-loading--horizontal"
+    style="width: 44rpx; height: 44rpx;  color: inherit"
+  >
+    <wx-view
+      ariaLabel="加载中"
+      ariaRole="img"
+      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+    >
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+      />
+    </wx-view>
+    <wx-view
+      ariaHidden="{{true}}"
+      ariaLabel=""
+      class="t-loading__text t-loading__text--horizontal t-class-text"
+    />
+  </wx-view>
+</wx-view>
+`;
+
+exports[`image-viewer :base 3`] = `
+<wx-view
+  ariaHidden="{{false}}"
+  class="class t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  style=""
+>
+  <wx-view
+    class="class t-class t-loading t-loading--horizontal"
+    style="width: 44rpx; height: 44rpx;  color: inherit"
+  >
+    <wx-view
+      ariaLabel="加载中"
+      ariaRole="img"
+      class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+      style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
+    >
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+      />
+    </wx-view>
+    <wx-view
+      ariaHidden="{{true}}"
+      ariaLabel=""
+      class="t-loading__text t-loading__text--horizontal t-class-text"
+    />
+  </wx-view>
+</wx-view>
+`;

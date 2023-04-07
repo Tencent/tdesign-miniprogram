@@ -23,7 +23,7 @@ export default {
           name: 'used',
           meta: { docType: 'explain' },
           path: '/miniprogram/used',
-          component: () => import('@/../USED.md'),
+          component: () => import('@pages/used.vue'),
         },
         {
           title: '更新日志',
@@ -31,6 +31,13 @@ export default {
           meta: { docType: 'explain' },
           path: '/miniprogram/changelog',
           component: () => import('~/CHANGELOG.md'),
+        },
+        {
+          title: '样式覆盖',
+          name: 'custom-style',
+          meta: { docType: 'explain' },
+          path: '/miniprogram/custom-style',
+          component: () => import('@docs/custom-style.md'),
         },
         {
           title: '自定义主题',
@@ -81,6 +88,13 @@ export default {
           component: () => import('@/icon/README.md'),
         },
         {
+          title: 'Layout 布局',
+          name: 'layout',
+          meta: { docType: 'base' },
+          path: '/miniprogram/components/col',
+          component: () => import('@/col/README.md'),
+        },
+        {
           title: 'Link 链接',
           name: 'link',
           meta: { docType: 'base' },
@@ -122,7 +136,7 @@ export default {
           component: () => import('@/navbar/README.md'),
         },
         {
-          title: 'SideBar 侧边导航',
+          title: 'SideBar 侧边栏',
           name: 'sidebar',
           meta: { docType: 'navigation' },
           path: '/miniprogram/components/side-bar',
@@ -170,7 +184,7 @@ export default {
           component: () => import('@/cascader/README.md'),
         },
         {
-          title: 'CheckBox 复选框',
+          title: 'CheckBox 多选框',
           name: 'checkbox',
           meta: { docType: 'form' },
           path: '/miniprogram/components/checkbox',
@@ -254,7 +268,7 @@ export default {
           component: () => import('@/tree-select/README.md'),
         },
         {
-          title: 'UpLoad 上传',
+          title: 'Upload 上传',
           name: 'upload',
           meta: { docType: 'form' },
           path: '/miniprogram/components/upload',
@@ -358,7 +372,7 @@ export default {
           component: () => import('@/skeleton/README.md'),
         },
         {
-          title: 'Sticky 吸顶容器',
+          title: 'Sticky 吸顶',
           name: 'sticky',
           meta: { docType: 'navigation' },
           path: '/miniprogram/components/sticky',
@@ -392,7 +406,7 @@ export default {
           component: () => import('@/action-sheet/README.md'),
         },
         {
-          title: 'Dialog 弹出框',
+          title: 'Dialog 对话框',
           name: 'dialog',
           meta: { docType: 'message' },
           path: '/miniprogram/components/dialog',

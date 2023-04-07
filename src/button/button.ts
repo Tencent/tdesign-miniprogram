@@ -11,11 +11,15 @@ const name = `${prefix}-button`;
 export interface ButtonProps extends TdButtonProps {}
 @wxComponent()
 export default class Button extends SuperComponent {
-  externalClasses = ['class', `${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`];
 
   behaviors = canIUseFormFieldButton() ? ['wx://form-field-button'] : [];
 
   properties = props;
+
+  options = {
+    multipleSlots: true,
+  };
 
   data = {
     prefix,
@@ -88,7 +92,7 @@ export default class Button extends SuperComponent {
       this.triggerEvent('chooseavatar', e.detail);
     },
     handleTap(e) {
-      if (this.data.disabled) return;
+      if (this.data.disabled || this.data.loading) return;
 
       this.triggerEvent('tap', e);
     },

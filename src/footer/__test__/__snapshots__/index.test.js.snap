@@ -4,11 +4,11 @@ exports[`Footer :base 1`] = `
 <main>
   <main>
     <wx-view
-      class="t-footer"
+      class="t-footer class t-class"
       style=""
     >
       <wx-view
-        class="t-footer__copyright-info"
+        class="t-footer__text"
       >
         
       </wx-view>

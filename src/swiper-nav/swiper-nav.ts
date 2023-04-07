@@ -58,7 +58,7 @@ export default class SwiperNav extends SuperComponent {
       const { dir } = e.target.dataset;
       const source = 'nav';
 
-      this.triggerEvent('navBtnChange', { dir, source });
+      this.triggerEvent('nav-btn-change', { dir, source });
       if (this.$parent) {
         this.$parent?.doNavBtnChange(dir, source);
       }

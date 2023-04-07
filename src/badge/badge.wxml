@@ -1,6 +1,12 @@
 <wxs src="./badge.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
 
+<!--
+  1. labelID 用于描述当前元素的文本
+  2. descriptionID 用于描述badge消息的文本
+  3. role=option一般用于多个内容合并焦点连续朗读
+-->
+
 <view
   style="{{_._style([style, customStyle])}}"
   class="{{this.getBadgeOuterClass({shape})}} class {{prefix}}-class"
@@ -13,13 +19,26 @@
     <text wx:else class="{{classPrefix}}__content-text">{{content}}</text>
   </view>
   <view
+    aria-hidden="true"
+    aria-label="{{ ariaLabel || _.getBadgeAriaLabel({dot, count, maxCount}) }}"
     wx:if="{{this.isShowBadge({dot,count,showZero})}}"
     id="{{descriptionID}}"
     class="{{this.getBadgeInnerClass({dot, size, shape, count})}} {{prefix}}-has-count {{prefix}}-class-count"
     style="{{this.getBadgeStyles({color, offset})}}"
     aria-hidden="true"
-    aria-label="{{ ariaLabel || this.getBadgeAriaLabel({dot, count, maxCount}) }}"
-    >{{ this.getBadgeValue({dot, count, maxCount}) }}
+    aria-label="{{ ariaLabel || _.getBadgeAriaLabel({dot, count, maxCount}) }}"
+  >
+    <view
+      wx:if="{{shape == 'ribbon'}}"
+      class="t-badge__ribbon--before"
+      style="{{color ? 'border-color: ' + color : ''}}"
+    />
+    {{ this.getBadgeValue({dot, count, maxCount}) }}
+    <view
+      wx:if="{{shape == 'ribbon'}}"
+      class="t-badge__ribbon--after"
+      style="{{color ? 'border-color: ' + color : ''}}"
+    />
   </view>
   <slot name="count" />
 </view>

@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [align, ['block', block]])}} {{prefix}}-class"
+  class="{{_.cls(classPrefix, [_placement, ['block', block]])}} class {{prefix}}-class"
   disabled="{{disabled}}"
   aria-role="radio"
   aria-checked="{{checked}}"
@@ -12,7 +12,7 @@
   bind:tap="handleTap"
 >
   <view
-    class="{{_.cls(classPrefix + '__icon', [align, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
+    class="{{_.cls(classPrefix + '__icon', [_placement, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
   >
     <slot name="icon" wx:if="{{slotIcon}}" />
     <view wx:elif="{{customIcon}}" class="{{classPrefix}}__image">
@@ -56,5 +56,5 @@
     </view>
   </view>
 
-  <view wx:if="{{!borderless}}" class="{{_.cls(classPrefix + '__border', [align])}} {{prefix}}-class-border" />
+  <view wx:if="{{!borderless}}" class="{{_.cls(classPrefix + '__border', [_placement])}} {{prefix}}-class-border" />
 </view>

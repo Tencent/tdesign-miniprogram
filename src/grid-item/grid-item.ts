@@ -26,7 +26,6 @@ export default class GridItem extends SuperComponent {
 
   options = {
     multipleSlots: true,
-    // virtualHost: true,
   };
 
   relations: RelationsOptions = {
@@ -52,7 +51,7 @@ export default class GridItem extends SuperComponent {
     gridItemContentStyle: '',
     align: 'center',
     column: 0,
-    labelID: '',
+    describedbyID: '',
   };
 
   observers = {
@@ -67,7 +66,7 @@ export default class GridItem extends SuperComponent {
   lifetimes = {
     ready() {
       this.setData({
-        labelID: getUniqueID(),
+        describedbyID: getUniqueID(),
       });
     },
   };

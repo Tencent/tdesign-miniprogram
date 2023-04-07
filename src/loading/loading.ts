@@ -9,7 +9,7 @@ const name = `${prefix}-loading`;
 export interface LoadingProps extends TdLoadingProps {}
 @wxComponent()
 export default class Loading extends SuperComponent {
-  externalClasses = ['class', `${prefix}-class`, `${prefix}-class-text`, `${prefix}-class-indicator`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-text`, `${prefix}-class-indicator`];
 
   data = {
     prefix,

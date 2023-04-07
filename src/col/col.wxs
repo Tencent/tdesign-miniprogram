@@ -1,0 +1,16 @@
+var utils = require('../common/utils.wxs');
+
+function getColStyles(data) {
+  if (!data.gutter) {
+    return '';
+  }
+
+  return utils._style({
+    'padding-right': utils.addUnit(data.gutter / 2),
+    'padding-left': utils.addUnit(data.gutter / 2),
+  });
+}
+
+module.exports = {
+  getColStyles: getColStyles,
+};

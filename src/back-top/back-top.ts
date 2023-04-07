@@ -36,7 +36,8 @@ export default class BackTop extends SuperComponent {
 
   lifetimes = {
     ready() {
-      this.setIcon();
+      const { icon } = this.properties;
+      this.setIcon(icon);
     },
   };
 

@@ -4,6 +4,7 @@ exports[`calendar :base 1`] = `
 <main>
   <t-calendar>
     <t-popup
+      class="class"
       bind:visible-change="onVisibleChange"
     >
       <wx-view
@@ -17,11 +18,7 @@ exports[`calendar :base 1`] = `
           class="t-popup__content t-class-content"
         >
           <wx-view
-            class="t-popup__close"
-            bind:tap="handleClose"
-          />
-          <wx-view
-            class="t-calendar t-calendar--popup"
+            class="t-calendar t-calendar--popup class t-class"
             style=""
           >
             <wx-view
@@ -786,6 +783,10 @@ exports[`calendar :base 1`] = `
               </t-button>
             </wx-view>
           </wx-view>
+          <wx-view
+            class="t-popup__close"
+            bind:tap="handleClose"
+          />
         </wx-view>
       </wx-view>
       <t-overlay
@@ -796,7 +797,7 @@ exports[`calendar :base 1`] = `
         <wx-view
           ariaLabel="关闭"
           ariaRole="button"
-          class="t-overlay t-fade-enter t-fade-enter-active"
+          class="t-overlay t-fade-enter t-fade-enter-active class"
           style="z-index:11000;"
           bind:tap="handleClick"
           catch:touchmove="noop"
