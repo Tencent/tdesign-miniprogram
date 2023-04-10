@@ -57,7 +57,7 @@ describe('loading', () => {
       expect(comp.data.show).not.toBeTruthy();
 
       const $loading = comp.querySelector('.base >>> .t-loading');
-      expect($loading.dom.getAttribute('style').includes('display:none')).toBeTruthy();
+      expect($loading.dom.style.display).toBe('none');
     });
 
     it(`: theme`, () => {

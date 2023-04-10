@@ -74,6 +74,11 @@ const props: TdButtonProps = {
   openType: {
     type: String,
   },
+  /** 指定按钮按下去的样式类，按钮不为加载或禁用状态时有效。当 `hover-class="none"` 时，没有点击态效果 */
+  hoverClass: {
+    type: String,
+    value: '',
+  },
   /** 指定是否阻止本节点的祖先节点出现点击态 */
   hoverStopPropagation: {
     type: Boolean,

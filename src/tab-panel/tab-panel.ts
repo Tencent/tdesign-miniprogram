@@ -53,7 +53,7 @@ export default class TabPanel extends SuperComponent {
   render(active: Boolean, parent: any) {
     this.setData({
       active,
-      hide: !parent.animated && !active,
+      hide: !parent.data.animation && !active,
     });
   }
 }
