@@ -50,7 +50,7 @@
               options="{{items[stepIndex]}}"
               bind:change="handleSelect"
               data-level="{{stepIndex}}"
-              align="right"
+              placement="right"
               icon="line"
               borderless
             >
