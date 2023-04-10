@@ -783,10 +783,44 @@ exports[`calendar :base 1`] = `
               </t-button>
             </wx-view>
           </wx-view>
-          <wx-view
-            class="t-popup__close"
-            bind:tap="handleClose"
-          />
+        </wx-scroll-view>
+        <wx-view
+          class="t-calendar__footer"
+        >
+          <wx-button
+            appParameter=""
+            ariaLabel=""
+            class="class t-button t-class t-button--base t-button--primary t-button--rectangle t-button--size-medium t-button--block"
+            data-custom="{{null}}"
+            formType=""
+            hoverClass="t-button--hover"
+            hoverStartTime="{{20}}"
+            hoverStayTime="{{70}}"
+            hoverStopPropagation="{{false}}"
+            lang="en"
+            openType=""
+            sendMessageImg=""
+            sendMessagePath=""
+            sendMessageTitle=""
+            sessionFrom=""
+            showMessageCard="{{false}}"
+            style=""
+            bind:chooseavatar="chooseavatar"
+            bind:contact="contact"
+            bind:error="error"
+            bind:getphonenumber="getphonenumber"
+            bind:getuserinfo="getuserinfo"
+            bind:launchapp="launchapp"
+            bind:opensetting="opensetting"
+            catch:tap="handleTap"
+          >
+            <wx-view
+              class="t-button__content"
+            >
+              
+              确定
+            </wx-view>
+          </wx-button>
         </wx-view>
       </wx-view>
       <t-overlay
