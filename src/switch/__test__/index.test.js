@@ -83,7 +83,7 @@ describe('switch', () => {
           't-switch': switchComp,
         },
         data: {
-          label: ['关', '开'],
+          label: ['开', '关'],
         },
       });
       const comp = simulate.render(id);

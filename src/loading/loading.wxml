@@ -1,12 +1,12 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
-  style="{{_._style([style, customStyle, (!text && 'width: ' + _.addUnit(size) + '; height: ' + _.addUnit(size))])}} {{show ? '' : 'display:none'}} {{inheritColor ? 'color: inherit' : ''}}"
+  style="{{_._style([style, customStyle, !text ? ('width: ' + _.addUnit(size) + '; height: ' + _.addUnit(size)) : '', show ? '' : 'display: none', inheritColor ? 'color: inherit' : ''])}}"
   class="class {{prefix}}-class {{classPrefix}} {{classPrefix + '--' + layout}}"
 >
   <view
     wx:if="{{indicator}}"
     class="{{prefix}}-class-indicator {{classPrefix}}__spinner {{classPrefix}}__spinner--{{ theme }} {{reverse ? 'reverse' : ''}}"
-    style="width: {{ _.addUnit(size) }}; height: {{ _.addUnit(size) }}; {{inheritColor ? 'color: inherit' : ''}} {{indicator ? '' : 'display:none'}}; {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
+    style="width: {{ _.addUnit(size) }}; height: {{ _.addUnit(size) }}; {{inheritColor ? 'color: inherit;' : ''}} {{indicator ? '' : 'display: none;'}} {{duration ? 'animation-duration: ' + duration / 1000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
     aria-role="{{ariaRole  || 'img'}}"
     aria-label="{{ ariaLabel || text || '加载中'  }}"
   >

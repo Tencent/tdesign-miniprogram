@@ -1,6 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <t-popup
+  wx:if="{{!destroyOnClose || visible}}"
   style="{{_._style([style, customStyle])}}"
   class="class"
   bind:visible-change="visibleChange"
@@ -8,7 +9,6 @@
   zIndex="{{zIndex}}"
   placement="{{placement == 'right' ? 'right' : 'left'}}"
   showOverlay="{{showOverlay}}"
-  destroyOnClose="{{destroyOnClose}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
 >
   <view class="{{classPrefix}}">

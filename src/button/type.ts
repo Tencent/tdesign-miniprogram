@@ -130,6 +130,14 @@ export interface TdButtonProps {
       | 'chooseAvatar';
   };
   /**
+   * 指定按钮按下去的样式类，按钮不为加载或禁用状态时有效。当 `hover-class="none"` 时，没有点击态效果
+   * @default ''
+   */
+  hoverClass?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 指定是否阻止本节点的祖先节点出现点击态
    * @default false
    */

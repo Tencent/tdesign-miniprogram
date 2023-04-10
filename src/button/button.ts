@@ -17,6 +17,10 @@ export default class Button extends SuperComponent {
 
   properties = props;
 
+  options = {
+    multipleSlots: true,
+  };
+
   data = {
     prefix,
     className: '',
@@ -88,7 +92,7 @@ export default class Button extends SuperComponent {
       this.triggerEvent('chooseavatar', e.detail);
     },
     handleTap(e) {
-      if (this.data.disabled) return;
+      if (this.data.disabled || this.data.loading) return;
 
       this.triggerEvent('tap', e);
     },

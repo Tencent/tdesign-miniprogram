@@ -12,6 +12,7 @@ test/unit-virtualHost
 .DS_Store
 node_modules
 package-lock.json
+yarn.lock
 
 # Log files
 npm-debug.log*
