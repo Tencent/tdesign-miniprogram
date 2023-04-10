@@ -110,11 +110,22 @@ exports[`Swiper Swiper custom demo works fine 1`] = `
     interval="{{5000}}"
     list="{{
       Array [
-        "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
-        "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
-        "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
-        "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
-        "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+        Object {
+          "ariaLabel": "图片1",
+          "value": "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+        },
+        Object {
+          "ariaLabel": "图片2",
+          "value": "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
+        },
+        Object {
+          "ariaLabel": "图片1",
+          "value": "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+        },
+        Object {
+          "ariaLabel": "图片2",
+          "value": "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
+        },
       ]
     }}"
     navigation="{{
@@ -161,11 +172,22 @@ exports[`Swiper Swiper nav-btn demo works fine 1`] = `
     interval="{{5000}}"
     list="{{
       Array [
-        "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
-        "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
-        "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
-        "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
-        "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+        Object {
+          "ariaLabel": "图片1",
+          "value": "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+        },
+        Object {
+          "ariaLabel": "图片2",
+          "value": "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
+        },
+        Object {
+          "ariaLabel": "图片1",
+          "value": "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+        },
+        Object {
+          "ariaLabel": "图片2",
+          "value": "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
+        },
       ]
     }}"
     loop="{{false}}"
@@ -192,11 +214,22 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
       interval="{{5000}}"
       list="{{
         Array [
-          "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
-          "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
-          "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
-          "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
-          "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+          Object {
+            "ariaLabel": "图片1",
+            "value": "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+          },
+          Object {
+            "ariaLabel": "图片2",
+            "value": "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
+          },
+          Object {
+            "ariaLabel": "图片1",
+            "value": "https://tdesign.gtimg.com/miniprogram/images/swiper1.png",
+          },
+          Object {
+            "ariaLabel": "图片2",
+            "value": "https://tdesign.gtimg.com/miniprogram/images/swiper2.png",
+          },
         ]
       }}"
       navigation="{{
