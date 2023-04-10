@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`image-viewer :base 1`] = `
-<t-image
-  class="t-image-viewer__image"
-  data-index="{{0}}"
-  tClass="t-image--external"
-  bind:load="onImageLoadSuccess"
+<wx-view
+  ariaHidden="{{false}}"
+  class="class t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  style=""
 >
   <wx-view
     class="class t-class t-loading t-loading--horizontal"
@@ -18,60 +17,32 @@ exports[`image-viewer :base 1`] = `
       style="width: 44rpx; height: 44rpx; color: inherit;  animation-duration: 0.8s; animation-play-state: running;"
     >
       <wx-view
-        class="class t-class t-loading t-loading--horizontal"
-        style="width: 44rpx; height: 44rpx;  color: inherit"
-      >
-        <wx-view
-          ariaLabel="加载中"
-          ariaRole="img"
-          class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-          style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
-        >
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
-          />
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
-          />
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
-          />
-        </wx-view>
-        <wx-view
-          ariaHidden="{{true}}"
-          ariaLabel=""
-          class="t-loading__text t-loading__text--horizontal t-class-text"
-        />
-      </wx-view>
-    </t-loading>
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+      />
+    </wx-view>
+    <wx-view
+      ariaHidden="{{true}}"
+      ariaLabel=""
+      class="t-loading__text t-loading__text--horizontal t-class-text"
+    />
   </wx-view>
-  <wx-image
-    ariaHidden="{{true}}"
-    ariaLabel=""
-    class="class t-class t-image t-image--shape-square"
-    hidden="{{true}}"
-    id="image"
-    lazyLoad="{{true}}"
-    mode="aspectFit"
-    showMenuByLongpress="{{false}}"
-    src="a.png"
-    style=""
-    webp="{{false}}"
-    bind:error="onLoadError"
-    bind:load="onLoaded"
-  />
-</t-image>
+</wx-view>
 `;
 
 exports[`image-viewer :base 2`] = `
-<t-image
-  class="t-image-viewer__image"
-  data-index="{{0}}"
-  tClass="t-image--external"
-  bind:load="onImageLoadSuccess"
+<wx-view
+  ariaHidden="{{false}}"
+  class="class t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  style=""
 >
   <wx-view
     class="class t-class t-loading t-loading--horizontal"
@@ -84,60 +55,32 @@ exports[`image-viewer :base 2`] = `
       style="width: 44rpx; height: 44rpx; color: inherit;  animation-duration: 0.8s; animation-play-state: running;"
     >
       <wx-view
-        class="class t-class t-loading t-loading--horizontal"
-        style="width: 44rpx; height: 44rpx;  color: inherit"
-      >
-        <wx-view
-          ariaLabel="加载中"
-          ariaRole="img"
-          class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-          style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
-        >
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
-          />
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
-          />
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
-          />
-        </wx-view>
-        <wx-view
-          ariaHidden="{{true}}"
-          ariaLabel=""
-          class="t-loading__text t-loading__text--horizontal t-class-text"
-        />
-      </wx-view>
-    </t-loading>
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+      />
+    </wx-view>
+    <wx-view
+      ariaHidden="{{true}}"
+      ariaLabel=""
+      class="t-loading__text t-loading__text--horizontal t-class-text"
+    />
   </wx-view>
-  <wx-image
-    ariaHidden="{{true}}"
-    ariaLabel=""
-    class="class t-class t-image t-image--shape-square"
-    hidden="{{true}}"
-    id="image"
-    lazyLoad="{{true}}"
-    mode="aspectFit"
-    showMenuByLongpress="{{false}}"
-    src="a.png"
-    style=""
-    webp="{{false}}"
-    bind:error="onLoadError"
-    bind:load="onLoaded"
-  />
-</t-image>
+</wx-view>
 `;
 
 exports[`image-viewer :base 3`] = `
-<t-image
-  class="t-image-viewer__image"
-  data-index="{{0}}"
-  tClass="t-image--external"
-  bind:load="onImageLoadSuccess"
+<wx-view
+  ariaHidden="{{false}}"
+  class="class t-class t-image t-image__mask t-image--loading t-image--shape-square"
+  style=""
 >
   <wx-view
     class="class t-class t-loading t-loading--horizontal"
@@ -150,50 +93,23 @@ exports[`image-viewer :base 3`] = `
       style="width: 44rpx; height: 44rpx; color: inherit;  animation-duration: 0.8s; animation-play-state: running;"
     >
       <wx-view
-        class="class t-class t-loading t-loading--horizontal"
-        style="width: 44rpx; height: 44rpx;  color: inherit"
-      >
-        <wx-view
-          ariaLabel="加载中"
-          ariaRole="img"
-          class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-          style="width: 44rpx; height: 44rpx; color: inherit ; animation-duration: 0.8s; animation-play-state: running;"
-        >
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
-          />
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
-          />
-          <wx-view
-            class="t-loading__dot"
-            style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
-          />
-        </wx-view>
-        <wx-view
-          ariaHidden="{{true}}"
-          ariaLabel=""
-          class="t-loading__text t-loading__text--horizontal t-class-text"
-        />
-      </wx-view>
-    </t-loading>
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+      />
+      <wx-view
+        class="t-loading__dot"
+        style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+      />
+    </wx-view>
+    <wx-view
+      ariaHidden="{{true}}"
+      ariaLabel=""
+      class="t-loading__text t-loading__text--horizontal t-class-text"
+    />
   </wx-view>
-  <wx-image
-    ariaHidden="{{true}}"
-    ariaLabel=""
-    class="class t-class t-image t-image--shape-square"
-    hidden="{{true}}"
-    id="image"
-    lazyLoad="{{true}}"
-    mode="aspectFit"
-    showMenuByLongpress="{{false}}"
-    src="a.png"
-    style=""
-    webp="{{false}}"
-    bind:error="onLoadError"
-    bind:load="onLoaded"
-  />
-</t-image>
+</wx-view>
 `;
