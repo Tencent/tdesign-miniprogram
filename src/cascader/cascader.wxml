@@ -41,26 +41,16 @@
       <view wx:if="{{ subTitles && subTitles[stepIndex] }}" class="{{name}}__options-title">
         {{subTitles[stepIndex]}}
       </view>
-      <view
-        class="{{name}}__options-container"
-        style="width: {{items.length + 1}}00vw; transform: translateX(-{{stepIndex}}00vw)"
-      >
-        <scroll-view
-          wx:for="{{items}}"
-          wx:for-item="options"
-          wx:key="index"
-          class="{{name}}__options"
-          scroll-y
-          scroll-top="{{scrollTopList[index]}}"
-        >
-          <view class="cascader-radio-group-{{index}}" aria-hidden="{{ stepIndex !== index}}">
+      <view class="{{name}}__options-container">
+        <scroll-view class="{{name}}__options" scroll-y scroll-top="{{scrollTopList[stepIndex]}}">
+          <view class="cascader-radio-group-{{stepIndex}}">
             <t-radio-group
-              value="{{selectedValue[index]}}"
+              value="{{selectedValue[stepIndex]}}"
               keys="{{keys}}"
-              options="{{options}}"
+              options="{{items[stepIndex]}}"
               bind:change="handleSelect"
-              data-level="{{index}}"
-              placement="right"
+              data-level="{{stepIndex}}"
+              align="right"
               icon="line"
               borderless
             >
