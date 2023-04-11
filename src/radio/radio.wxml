@@ -39,7 +39,7 @@
 
   <view class="{{classPrefix}}__content" data-target="text" catch:tap="handleTap">
     <view
-      class="{{classPrefix}}__title {{disabled ? classPrefix + '__title--disabled' : ''}} {{prefix}}-class-label"
+      class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"
     >
       {{label}}
@@ -48,12 +48,10 @@
     </view>
 
     <view
-      class="{{classPrefix}}__description {{disabled ? classPrefix + '__description--disabled' : ''}} {{prefix}}-class-content "
+      class="{{_.cls(classPrefix + '__description', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-content "
       style="-webkit-line-clamp:{{maxContentRow}}"
-    >
-      {{content}}
-      <slot name="content" />
-    </view>
+      >{{content}}<slot name="content"
+    /></view>
   </view>
 
   <view wx:if="{{!borderless}}" class="{{_.cls(classPrefix + '__border', [_placement])}} {{prefix}}-class-border" />

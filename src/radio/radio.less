@@ -9,8 +9,10 @@
 @radio-border-color: var(--td-radio-border-color, @component-stroke);
 @radio-label-color: var(--td-radio-label-color, @font-gray-1);
 @radio-label-disabled-color: var(--td-radio-label-disabled-color, @font-gray-4);
+@radio-label-checked-color: var(--td-radio-label-checked-color, @font-gray-1);
 @radio-content-color: var(--td-radio-content-color, @font-gray-2);
 @radio-content-disabled-color: var(--td-radio-content-disabled-color, @font-gray-4);
+@radio-content-checked-color: var(--td-radio-content-checked-color, @font-gray-2);
 @radio-icon-color: var(--td-radio-icon-color, @component-border);
 @radio-icon-disabled-color: var(--td-radio-icon-disabled-color, @brand-color-disabled);
 @radio-icon-disabled-bg-color: var(--td-radio-icon-disabled-bg-color, @bg-color-component-disabled);
@@ -176,6 +178,10 @@
       cursor: not-allowed;
       color: @radio-label-disabled-color;
     }
+
+    &--checked {
+      color: @radio-label-checked-color;
+    }
   }
 
   &__description {
@@ -187,6 +193,10 @@
     &--disabled {
       cursor: not-allowed;
       color: @radio-content-disabled-color;
+    }
+
+    &--checked {
+      color: @radio-content-checked-color;
     }
 
     &:empty {
