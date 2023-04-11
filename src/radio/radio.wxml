@@ -28,10 +28,9 @@
         wx:if="{{checked && icon == 'dot'}}"
         class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
       />
-      <view
-        wx:if="{{!checked && (icon == 'circle' || icon == 'dot')}}"
-        class="{{_.cls(classPrefix + '__icon-circle', [['disabled', disabled]])}}"
-      ></view>
+      <view wx:if="{{!checked && (icon == 'circle' || icon == 'dot')}}" class="{{classPrefix + '__icon-circle'}}">
+        <view class="{{_.cls(classPrefix + '__icon-circle-inner', [['disabled', disabled]])}}"> </view>
+      </view>
       <!-- line && unchecked 为空 需要展位元素 -->
       <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
     </block>
