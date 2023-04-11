@@ -19,6 +19,8 @@ spline: explain
 @error-color: var(--td-error-color, #e34d59); // 失败
 ```
 
+> ⚠️ 注意：1.0.0 版本之前主题色的变量是 --td-primary-color
+
 在 `app.css` 文件添加下行代码即可：
 
 ```css
