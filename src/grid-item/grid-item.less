@@ -7,8 +7,12 @@
 @grid-item-padding: var(--td-grid-item-padding, 32rpx);
 @grid-item-bg-color: var(--td-grid-item-bg-color, @bg-color-container);
 @grid-item-image-width: var(--td-grid-item-image-width, 96rpx);
+@grid-item-image-small-width: var(--td-grid-item-image-small-width, 64rpx);
+@grid-item-image-middle-width: var(--td-grid-item-image-middle-width, 80rpx);
 @grid-item-text-color: var(--td-grid-item-text-color, @font-gray-1);
 @grid-item-text-font-size: var(--td-grid-item-text-font-size, 28rpx);
+@grid-item-text-small-font-size: var(--td-grid-item-text-small-font-size, 24rpx);
+@grid-item-text-middle-font-size: var(--td-grid-item-text-middle-font-size, 24rpx);
 @grid-item-text-line-height: var(--td-grid-item-text-line-height, 44rpx);
 @grid-item-text-padding-top: var(--td-grid-item-text-padding-top, 16rpx);
 @grid-item-description-font-size: var(--td-grid-item-description-font-size, 24rpx);
@@ -76,13 +80,13 @@
       height: @grid-item-image-width;
 
       &.@{item}__image--small {
-        width: 64rpx;
-        height: 64rpx;
+        width: @grid-item-image-small-width;
+        height: @grid-item-image-small-width;
       }
 
       &.@{item}__image--middle {
-        width: 80rpx;
-        height: 80rpx;
+        width: @grid-item-image-middle-width;
+        height: @grid-item-image-middle-width;
       }
 
       .@{prefix}-grid__image {
@@ -116,9 +120,12 @@
     line-height: @grid-item-text-line-height;
     padding-top: @grid-item-text-padding-top;
 
-    &--small,
+    &--small {
+      font-size: @grid-item-text-small-font-size;
+    }
+
     &--middle {
-      font-size: 24rpx;
+      font-size: @grid-item-text-middle-font-size;
     }
 
     &--horizontal {
