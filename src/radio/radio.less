@@ -18,6 +18,8 @@
 @radio-icon-disabled-bg-color: var(--td-radio-icon-disabled-bg-color, @bg-color-component-disabled);
 @radio-icon-checked-color: var(--td-radio-icon-checked-color, @brand-color);
 
+@radio-content-font-size: var(--td-radio-content-font-size, 28rpx);
+
 .limit-title-row {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -187,7 +189,7 @@
   &__description {
     .limit-title-row();
     color: @radio-content-color;
-    font-size: 28rpx;
+    font-size: @radio-content-font-size;
     line-height: @radio-content-line-height;
 
     &--disabled {
