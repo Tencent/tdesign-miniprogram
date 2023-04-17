@@ -5,6 +5,24 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.1.2 `2023-04-17` 
+### 🚀 Features
+- `Swiper`: 支持无障碍访问 @zhangpaopao0609 ([#1598](https://github.com/Tencent/tdesign-miniprogram/pull/1598))
+- `Divider`: 新增 CSS Variables 用于控制分割线样式 @favouredddd ([#1890](https://github.com/Tencent/tdesign-miniprogram/pull/1890))
+- `Grid`: 补充 CSS Variables 以修改不同列数下的图片尺寸和文字大小 @lolhezihehe ([#1903](https://github.com/Tencent/tdesign-miniprogram/pull/1903))
+- `Radio`: 新增 CSS Variables 用于控制内容字体大小 @favouredddd ([#1895](https://github.com/Tencent/tdesign-miniprogram/pull/1895))
+
+### 🐞 Bug Fixes
+- `loading`: 修复  `inheritColor = true` 时，因样式问题导致组件一直处于加载状态 @Cyrus97 ([#1873](https://github.com/Tencent/tdesign-miniprogram/pull/1873))
+- `Empty`: 支持描述内容超出自动换行 @favouredddd ([#1870](https://github.com/Tencent/tdesign-miniprogram/pull/1870))
+- `Row`: 增加默认样式实现垂直居中 @tomcat-hz ([#1866](https://github.com/Tencent/tdesign-miniprogram/pull/1866))
+- `Progress`: 优化无障碍访问体验 @yaogengzhu ([#1354](https://github.com/Tencent/tdesign-miniprogram/pull/1354))
+- `Radio`: 优化样式，新增 CSS Variables 控制文字激活态颜色 @LeeJim ([#1889](https://github.com/Tencent/tdesign-miniprogram/pull/1889))
+- `ActionSheet`: 解决 show 方法的 TS 报错 @LeeJim ([#1907](https://github.com/Tencent/tdesign-miniprogram/pull/1907))
+- `Radio`: 修复图标尺寸无法调整的问题 @bitjian ([#1909](https://github.com/Tencent/tdesign-miniprogram/pull/1909))
+- Button: 修复 type = submit 时，disabled 未生效的问题 @bitjian ([#1878](https://github.com/Tencent/tdesign-miniprogram/pull/1878))
+
+
 ## 🌈 1.1.1 `2023-04-03` 
 ### 🚀 Features
 - `Button`: 新增 hover-class 属性 @anlyyao ([#1847](https://github.com/Tencent/tdesign-miniprogram/pull/1847))
