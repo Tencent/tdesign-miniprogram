@@ -71,18 +71,22 @@
     }
 
     &-circle {
-      width: 84rpx;
-      height: 84rpx;
-      border: 3px solid @radio-icon-color;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.5);
+      width: @radio-icon-size;
+      height: @radio-icon-size;
       box-sizing: border-box;
-
-      &--disabled {
-        background: @radio-icon-disabled-bg-color;
+      &-inner {
+        width: calc(200% - 6rpx);
+        height: calc(200% - 6rpx);
+        border-radius: 50%;
+        border: 3px solid @radio-icon-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+        box-sizing: border-box;
+        &--disabled {
+          background: @radio-icon-disabled-bg-color;
+        }
       }
     }
 
