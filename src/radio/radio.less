@@ -74,7 +74,9 @@
       width: @radio-icon-size;
       height: @radio-icon-size;
       box-sizing: border-box;
-      &-inner {
+
+      &::after {
+        content: '';
         width: calc(200% - 6rpx);
         height: calc(200% - 6rpx);
         border-radius: 50%;
@@ -84,9 +86,10 @@
         left: 50%;
         transform: translate(-50%, -50%) scale(0.5);
         box-sizing: border-box;
-        &--disabled {
-          background: @radio-icon-disabled-bg-color;
-        }
+      }
+
+      &--disabled::after {
+        background: @radio-icon-disabled-bg-color;
       }
     }
 
