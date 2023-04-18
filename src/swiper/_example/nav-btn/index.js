@@ -1,10 +1,21 @@
 const imageCdn = 'https://tdesign.gtimg.com/miniprogram/images';
 const swiperList = [
-  `${imageCdn}/swiper1.png`,
-  `${imageCdn}/swiper2.png`,
-  `${imageCdn}/swiper1.png`,
-  `${imageCdn}/swiper2.png`,
-  `${imageCdn}/swiper1.png`,
+  {
+    value: `${imageCdn}/swiper1.png`,
+    ariaLabel: '图片1',
+  },
+  {
+    value: `${imageCdn}/swiper2.png`,
+    ariaLabel: '图片2',
+  },
+  {
+    value: `${imageCdn}/swiper1.png`,
+    ariaLabel: '图片1',
+  },
+  {
+    value: `${imageCdn}/swiper2.png`,
+    ariaLabel: '图片2',
+  },
 ];
 
 Component({
