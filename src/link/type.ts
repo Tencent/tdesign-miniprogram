@@ -15,11 +15,11 @@ export interface TdLinkProps {
     value?: string;
   };
   /**
-   * 与 navigator 原生组件属性保持一致，具体使用参考：https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html。
+   * 跳转页面参数。url 指跳转路径；events 页面间通信接口；routeType 自定义路由类型；delta 返回的页面数，具体可参考：https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.switchTab.html。
    */
   navigatorProps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: navigatePropsValue;
   };
   /**
    * 前置图标
@@ -81,4 +81,12 @@ export interface TdLinkProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+}
+
+export interface navigatePropsValue {
+  type: 'switch-tab' | 'relaunch' | 'redirect-to' | 'navigate-to' | 'navigate-back';
+  url: string;
+  events?: object;
+  routeType?: string;
+  delta?: number;
 }
