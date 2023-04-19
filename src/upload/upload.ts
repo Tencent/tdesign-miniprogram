@@ -34,11 +34,8 @@ export default class Upload extends SuperComponent {
   ];
 
   observers = {
-    files(files: UploadFile) {
-      this.handleLimit(files, this.data.max);
-    },
-    max(max) {
-      this.handleLimit(this.data.customFiles, max);
+    'files, max'(files: UploadFile, max: number) {
+      this.handleLimit(files, max);
     },
     gridConfig() {
       this.updateGrid();
@@ -62,19 +59,13 @@ export default class Upload extends SuperComponent {
   }
 
   handleLimit(customFiles: UploadFile[], max: number) {
-    while (max !== 0 && customFiles.length - max > 0) {
-      customFiles.pop();
+    if (max === 0) {
+      max = 20;
     }
-    const proofs = [];
-    customFiles.forEach((item: UploadFile) => {
-      if (item.type !== 'video') {
-        proofs.push(item.url);
-      }
-    });
+
     this.setData({
-      customFiles,
-      proofs,
-      customLimit: max === 0 ? Number.MAX_SAFE_INTEGER : max - customFiles.length,
+      customFiles: customFiles.length > max ? customFiles.slice(0, max) : customFiles,
+      customLimit: max - customFiles.length,
     });
   }
 
@@ -188,6 +179,7 @@ export default class Upload extends SuperComponent {
 
     chooseMedia(mediaType) {
       const { config, sizeLimit, customLimit } = this.data;
+
       wx.chooseMedia({
         count: customLimit,
         mediaType,
