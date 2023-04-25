@@ -38,7 +38,7 @@
     delay="{{loadingProps.delay || 0}}"
     duration="{{loadingProps.duration || 800}}"
     indicator="{{loadingProps.indicator || true}}"
-    inheritColor="{{loadingProps.indicator || false}}"
+    inheritColor="{{loadingProps.inheritColor || true}}"
     layout="{{loadingProps.layout || 'horizontal'}}"
     pause="{{loadingProps.pause || false}}"
     progress="{{loadingProps.progress || 0}}"
