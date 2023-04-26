@@ -5,6 +5,22 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.1.3 `2023-04-26` 
+### 🚀 Features
+- `Rate`: 支持无障碍访问 @byq1213 ([#1574](https://github.com/Tencent/tdesign-miniprogram/pull/1574))
+- `Tabs`: 新增外部样式类 `t-class-content` @LeeJim ([#1931](https://github.com/Tencent/tdesign-miniprogram/pull/1931))
+- `CollapsePanel`: 新增 headerLeftIcon 属性，支持面板头左侧使用图标 @LeeJim ([#1933](https://github.com/Tencent/tdesign-miniprogram/pull/1933))
+- `Tabs`: 新增 middle 插槽 @LeeJim ([#1936](https://github.com/Tencent/tdesign-miniprogram/pull/1936))
+### 🐞 Bug Fixes
+- `Upload`: 修复 max 属性相关的问题 @LeeJim ([#1914](https://github.com/Tencent/tdesign-miniprogram/pull/1914))
+- `NavBar`: 修复胶囊边框层级过高，遮挡内容点击事件的问题 @LeeJim ([#1920](https://github.com/Tencent/tdesign-miniprogram/pull/1920))
+- `Button`: 修复 variant=outline 状态下 loading 不展示的问题 @lolhezihehe ([#1922](https://github.com/Tencent/tdesign-miniprogram/pull/1922))
+- `NavBar`: 解决内容垂直居中的问题 @LeeJim ([#1926](https://github.com/Tencent/tdesign-miniprogram/pull/1926))
+- `DropdownMenu`: 修复单选情况下无法使用多列的问题 @LeeJim ([#1927](https://github.com/Tencent/tdesign-miniprogram/pull/1927))
+- `Link`: 修复 disabled 态下仍能跳转的问题 @anlyyao ([#1928](https://github.com/Tencent/tdesign-miniprogram/pull/1928))
+- `Calendar`: 修复 format 报错的问题 @LeeJim ([#1930](https://github.com/Tencent/tdesign-miniprogram/pull/1930))
+- `Input`: 修复垂直布局时样式错误 @anlyyao ([#1934](https://github.com/Tencent/tdesign-miniprogram/pull/1934))
+
 ## 🌈 1.1.2 `2023-04-17` 
 ### 🚀 Features
 - `Swiper`: 支持无障碍访问 @zhangpaopao0609 ([#1598](https://github.com/Tencent/tdesign-miniprogram/pull/1598))
