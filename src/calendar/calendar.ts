@@ -40,8 +40,10 @@ export default class Calendar extends SuperComponent {
   ];
 
   lifetimes = {
-    ready() {
+    created() {
       this.base = new TCalendar(this.properties);
+    },
+    ready() {
       this.initialValue();
       this.setData({
         days: this.base.getDays(),
@@ -59,32 +61,25 @@ export default class Calendar extends SuperComponent {
       }
     },
     'firstDayOfWeek,minDate,maxDate'(firstDayOfWeek, minDate, maxDate) {
-      if (this.base) {
-        this.base.firstDayOfWeek = firstDayOfWeek;
-        this.base.minDate = minDate;
-        this.base.maxDate = maxDate;
-        this.calcMonths();
-      }
+      firstDayOfWeek && (this.base.firstDayOfWeek = firstDayOfWeek);
+      minDate && (this.base.minDate = minDate);
+      maxDate && (this.base.maxDate = maxDate);
+      this.calcMonths();
     },
     value(v) {
-      if (this.base) {
-        this.base.value = v;
-      }
+      this.base.value = v;
     },
     visible(v) {
       if (v) {
         this.scrollIntoView();
-
-        if (this.base) {
-          this.base.value = this.data.value;
-          this.calcMonths();
-        }
+        this.base.value = this.data.value;
+        this.calcMonths();
       }
     },
     format(v) {
       this.base.format = v;
 
-      if (this.base && !this.data.usePopup) {
+      if (!this.data.usePopup) {
         this.calcMonths();
       }
     },
