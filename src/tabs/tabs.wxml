@@ -66,7 +66,7 @@
     bind:touchcancel="onTouchEnd"
   >
     <view
-      class="{{classPrefix}}__content-inner"
+      class="{{classPrefix}}__content-inner {{prefix}}-class-content"
       style="{{ filters.animate({duration: animation.duration, currentIndex:currentIndex, direction}) }}"
     >
       <slot />
