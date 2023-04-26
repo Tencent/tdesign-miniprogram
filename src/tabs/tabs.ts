@@ -15,7 +15,13 @@ export interface TabsProps extends TdTabsProps {}
 export default class Tabs extends SuperComponent {
   behaviors = [touch];
 
-  externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`, `${prefix}-class-track`];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-item`,
+    `${prefix}-class-active`,
+    `${prefix}-class-track`,
+    `${prefix}-class-content`,
+  ];
 
   relations: RelationsOptions = {
     '../tab-panel/tab-panel': {
