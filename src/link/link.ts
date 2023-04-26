@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { navigatePropsValue } from './type';
 import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
@@ -67,16 +68,26 @@ export default class Link extends SuperComponent {
       });
     },
 
-    onSuccess(e) {
-      this.triggerEvent('success', e);
+    onClick() {
+      const { navigatorProps } = this.properties;
+      this.jumpLink(navigatorProps);
     },
 
-    onFail(e) {
-      this.triggerEvent('fail', e);
-    },
-
-    onComplete(e) {
-      this.triggerEvent('complete', e);
+    jumpLink(navigatorProps: navigatePropsValue) {
+      const { disabled } = this.properties;
+      if (!navigatorProps || !navigatorProps.url || disabled) return;
+      wx[navigatorProps.type]({
+        ...navigatorProps,
+        fail: (e) => {
+          this.triggerEvent('fail', e);
+        },
+        success: (e) => {
+          this.triggerEvent('success', e);
+        },
+        complete: (e) => {
+          this.triggerEvent('complete', e);
+        },
+      });
     },
   };
 }

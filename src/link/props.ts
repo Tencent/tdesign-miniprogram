@@ -10,7 +10,7 @@ const props: TdLinkProps = {
   content: {
     type: String,
   },
-  /** 与 navigator 原生组件属性保持一致，具体使用参考：https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html。 */
+  /** 跳转页面参数。url 指跳转路径；events 页面间通信接口；routeType 自定义路由类型；delta 返回的页面数，具体可参考：https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.switchTab.html。*/
   navigatorProps: {
     type: Object,
   },

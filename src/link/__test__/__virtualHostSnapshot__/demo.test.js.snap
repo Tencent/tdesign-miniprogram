@@ -8,8 +8,17 @@ exports[`Link Link content demo works fine 1`] = `
     <t-link
       content="跳转链接"
       hover="{{true}}"
+      navigatorProps="{{
+        Object {
+          "type": "navigateTo",
+          "url": "/pages/home/home",
+        }
+      }}"
       size="small"
       theme="primary"
+      bind:complete="handleComplete"
+      bind:fail="handleFail"
+      bind:success="handleSuccess"
     />
     <t-link
       content="跳转链接"

@@ -1,4 +1,13 @@
 <view class="link-example">
-  <t-link size="small" theme="primary" content="跳转链接" hover />
-  <t-link size="small" content="跳转链接" hover />
+  <t-link
+    size="small"
+    theme="primary"
+    content="跳转链接"
+    hover
+    navigatorProps="{{navigatorProps}}"
+    bind:complete="handleComplete"
+    bind:fail="handleFail"
+    bind:success="handleSuccess"
+  />
+  <t-link size="small" hover content="跳转链接" />
 </view>
