@@ -58,6 +58,7 @@
       </scroll-view>
     </view>
   </t-sticky>
+  <slot name="middle" />
   <view
     class="{{_.cls(classPrefix + '__content', [['animated', animation]])}}"
     bind:touchstart="onTouchStart"
@@ -66,7 +67,7 @@
     bind:touchcancel="onTouchEnd"
   >
     <view
-      class="{{classPrefix}}__content-inner"
+      class="{{classPrefix}}__content-inner {{prefix}}-class-content"
       style="{{ filters.animate({duration: animation.duration, currentIndex:currentIndex, direction}) }}"
     >
       <slot />

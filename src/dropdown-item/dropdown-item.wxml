@@ -24,6 +24,7 @@
         wx:if="{{!multiple}}"
         class="{{classPrefix}}__radio {{prefix}}-class-column"
         t-class="{{classPrefix}}__radio-group"
+        style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
         value="{{value}}"
         placement="right"
         bind:change="handleRadioChange"

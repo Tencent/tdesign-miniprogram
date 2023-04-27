@@ -29,6 +29,11 @@ exports[`Link Link disabled demo works fine 1`] = `
       content="跳转链接"
       disabled="{{true}}"
       hover="{{true}}"
+      navigatorProps="{{
+        Object {
+          "url": "/pages/home/home",
+        }
+      }}"
       size="small"
       suffixIcon="jump"
       theme="primary"

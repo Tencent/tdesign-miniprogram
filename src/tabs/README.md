@@ -114,6 +114,7 @@ Page({
 -- | -- | -- | -- | --
 animation | Object | - | 动画效果设置。其中 duration 表示动画时长。（单位秒）TS 类型：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名。`['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
+middle | Slot | - | 中间内容，介于头部和内容之间 | N
 show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
 space-evenly | Boolean | true | 选项卡头部空间是否均分 | N
 sticky | Boolean | false | 是否开启粘性布局 | N

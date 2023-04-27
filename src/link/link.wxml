@@ -5,7 +5,7 @@
   class="{{className}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
   target="{{navigatorProps.target}}"
-  url="{{navigatorProps.url}}"
+  url="{{ !disabled && navigatorProps.url}}"
   open-type="{{navigatorProps.openType || 'navigate'}}"
   delta="{{navigatorProps.delta}}"
   app-id="{{navigatorProps.appId}}"

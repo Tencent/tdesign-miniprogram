@@ -27,6 +27,7 @@ export default class Rate extends SuperComponent {
     tipsLeft: 0,
     actionType: '',
     scaleIndex: -1,
+    isVisibleToScreenReader: false,
   };
 
   methods = {
@@ -76,6 +77,7 @@ export default class Rate extends SuperComponent {
     },
     onTouchMove(e: WechatMiniprogram.TouchEvent) {
       this.onTouch(e, 'move');
+      this.showAlertText()
     },
     onTouchEnd() {
       this.touchEnd = true;
@@ -94,6 +96,18 @@ export default class Rate extends SuperComponent {
 
       this._trigger('change', { value });
       setTimeout(() => this.setData({ tipsVisible: false, scaleIndex: -1 }), 300);
+    },
+    // 旁白模式: 变更数值时显示告警文案
+    showAlertText() {
+      if (this.data.isVisibleToScreenReader === true) return;
+      this.setData({
+        isVisibleToScreenReader: true,
+      });
+      setTimeout(() => {
+        this.setData({
+          isVisibleToScreenReader: false,
+        });
+      }, 2e3);
     },
   };
 }
