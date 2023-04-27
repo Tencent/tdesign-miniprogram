@@ -10,10 +10,11 @@
 @image-viewer-nav-index-font-size: var(--td-image-viewer-nav-index-font-size, @font-size-base);
 @image-viewer-close-margin-left: var(--td-image-viewer-close-margin-left, @spacer-1);
 @image-viewer-delete-margin-right: var(--td-image-viewer-delete-margin-right, @spacer-1);
+@image-viewer-top: var(--td-image-viewer-top, @position-fixed-top);
 
 .@{image-viewer} {
   position: fixed;
-  top: 0;
+  top: @image-viewer-top;
   left: 0;
   bottom: 0;
   right: 0;
@@ -23,7 +24,7 @@
   overflow: hidden;
 
   &__mask {
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     left: 0;
     top: 0;
@@ -56,7 +57,7 @@
 
   &__nav {
     width: 100%;
-    position: fixed;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: space-between;
