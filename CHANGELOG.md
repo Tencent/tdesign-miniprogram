@@ -24,6 +24,7 @@ docClass: timeline
 ## 🌈 1.1.2 `2023-04-17` 
 ### 🚀 Features
 - `Swiper`: 支持无障碍访问 @zhangpaopao0609 ([#1598](https://github.com/Tencent/tdesign-miniprogram/pull/1598))
+- `Swiper`: list 属性支持 SwiperList[] 类型 @zhangpaopao0609 ([#1598](https://github.com/Tencent/tdesign-miniprogram/pull/1598))
 - `Divider`: 新增 CSS Variables 用于控制分割线样式 @favouredddd ([#1890](https://github.com/Tencent/tdesign-miniprogram/pull/1890))
 - `Grid`: 补充 CSS Variables 以修改不同列数下的图片尺寸和文字大小 @lolhezihehe ([#1903](https://github.com/Tencent/tdesign-miniprogram/pull/1903))
 - `Radio`: 新增 CSS Variables 用于控制内容字体大小 @favouredddd ([#1895](https://github.com/Tencent/tdesign-miniprogram/pull/1895))
