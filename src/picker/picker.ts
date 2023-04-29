@@ -49,7 +49,7 @@ export default class Picker extends SuperComponent {
 
       this.$children.forEach((child, index) => {
         child.setData({
-          value: value?.[index] || '',
+          value: value?.[index] ?? '',
         });
         child.update();
       });
