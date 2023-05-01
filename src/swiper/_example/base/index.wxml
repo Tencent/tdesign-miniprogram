@@ -7,5 +7,6 @@
   list="{{swiperList}}"
   bind:click="onTap"
   bind:change="onChange"
+  bind:image-load="onImageLoad"
 >
 </t-swiper>
