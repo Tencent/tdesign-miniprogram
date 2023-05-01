@@ -297,6 +297,10 @@ export default class Slider extends SuperComponent {
     });
   }
 
+  onTouchStart(e: WechatMiniprogram.TouchEvent) {
+    this.triggerEvent('dragstart', { e });
+  }
+
   onTouchMoveLeft(e: WechatMiniprogram.TouchEvent) {
     const { disabled } = this.properties;
     const { initialLeft, _value } = this.data;
@@ -355,5 +359,7 @@ export default class Slider extends SuperComponent {
     }
   }
 
-  onTouchEnd() {}
+  onTouchEnd(e: WechatMiniprogram.TouchEvent) {
+    this.triggerEvent('dragend', { e });
+  }
 }

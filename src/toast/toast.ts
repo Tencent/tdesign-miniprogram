@@ -30,9 +30,17 @@ export default class Toast extends SuperComponent {
 
   properties = props;
 
-  detached() {
-    this.destroyed();
-  }
+  lifetimes = {
+    detached() {
+      this.destroyed();
+    },
+  };
+
+  pageLifetimes = {
+    hide() {
+      this.hide();
+    },
+  };
 
   methods = {
     show(options: ToastOptionsType) {
