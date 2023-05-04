@@ -26,6 +26,7 @@
         style="{{duration ? 'animation-duration: ' + duration/1000 + 's; animation-delay:' + duration * 2 / 3000 + 's;' : ''}} animation-play-state: {{pause ? 'paused' : 'running'}};"
       ></view>
     </block>
+    <slot name="indicator" />
   </view>
   <view
     class="{{_.cls(classPrefix + '__text', [layout])}} {{prefix}}-class-text"
