@@ -1,8 +1,6 @@
 Component({
   data: {
-    baseRefresh: {
-      value: false,
-    },
+    enable: false,
     loadingProps: {
       size: '50rpx',
     },
@@ -14,7 +12,7 @@ Component({
   methods: {
     onPullDownRefresh() {
       setTimeout(() => {
-        this.setData({ 'baseRefresh.value': false });
+        this.setData({ enable: false });
       }, 1500);
     },
     onScroll(e) {
