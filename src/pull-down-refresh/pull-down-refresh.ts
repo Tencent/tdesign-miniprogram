@@ -89,8 +89,14 @@ export default class PullDownRefresh extends SuperComponent {
     value(val) {
       if (!val) {
         clearTimeout(this.maxRefreshAnimateTimeFlag);
-        this.setData({ refreshStatus: 3 });
+        if (this.data.refreshStatus > 0) {
+          this.setData({
+            refreshStatus: 3,
+          });
+        }
         this.close();
+      } else {
+        this.doRefresh();
       }
     },
   };
@@ -134,12 +140,7 @@ export default class PullDownRefresh extends SuperComponent {
       const offset = pageY - this.startPoint.pageY;
 
       if (offset > 0) {
-        if (offset > this.maxBarHeight) {
-          // 限高
-          this.setRefreshBarHeight(this.maxBarHeight);
-        } else {
-          this.setRefreshBarHeight(offset);
-        }
+        this.setRefreshBarHeight(offset);
       }
     },
 
@@ -156,29 +157,35 @@ export default class PullDownRefresh extends SuperComponent {
 
       // 松开时高度超过阈值则触发刷新
       if (barHeight > this.loadingBarHeight) {
-        this.setData({
-          barHeight: this.loadingBarHeight,
-          refreshStatus: 2,
-        });
-
-        this.triggerEvent('change', { value: true });
-        this.triggerEvent('refresh');
-        this.maxRefreshAnimateTimeFlag = setTimeout(() => {
-          this.maxRefreshAnimateTimeFlag = null;
-
-          if (this.data.refreshStatus === 2) {
-            // 超时回调
-            this.triggerEvent('timeout');
-            this.close(); // 超时仍未被回调，则直接结束下拉
-          }
-        }, this.properties.refreshTimeout as any) as any as number;
+        this.doRefresh();
       } else {
         this.close();
       }
     },
 
-    setRefreshBarHeight(barHeight: number) {
+    doRefresh() {
+      this.setData({
+        barHeight: this.loadingBarHeight,
+        refreshStatus: 2,
+      });
+
+      this.triggerEvent('change', { value: true });
+      this.triggerEvent('refresh');
+      this.maxRefreshAnimateTimeFlag = setTimeout(() => {
+        this.maxRefreshAnimateTimeFlag = null;
+
+        if (this.data.refreshStatus === 2) {
+          // 超时回调
+          this.triggerEvent('timeout');
+          this.close(); // 超时仍未被回调，则直接结束下拉
+        }
+      }, this.properties.refreshTimeout as any) as any as number;
+    },
+
+    setRefreshBarHeight(value: number) {
+      const barHeight = Math.min(value, this.maxBarHeight);
       const data: Record<string, any> = { barHeight };
+
       if (barHeight >= this.loadingBarHeight) {
         data.refreshStatus = 1;
       } else {
