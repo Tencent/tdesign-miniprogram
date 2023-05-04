@@ -4,17 +4,21 @@
   style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} class {{prefix}}-class"
   scroll-top="{{scrollTop}}"
+  scroll-y
+  enable-back-to-top="{{enableBackToTop}}"
+  enable-passive="{{enablePassive}}"
+  lower-threshold="{{lowerThreshold}}"
+  upper-threshold="{{upperThreshold}}"
+  scroll-into-view="{{scrollIntoView}}"
+  enhanced
+  scroll-with-animation
+  bounces="{{false}}"
   bind:touchstart="onTouchStart"
   bind:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
   bind:scroll="onScroll"
   bindscrolltoupper="onScrollToTop"
   bindscrolltolower="onScrollToBottom"
-  scroll-y
-  enable-back-to-top
-  enhanced
-  scroll-with-animation
-  bounces="{{false}}"
 >
   <view
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
