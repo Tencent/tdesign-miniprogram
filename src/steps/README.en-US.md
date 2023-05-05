@@ -12,7 +12,7 @@ external-classes | Array | - | `['t-class']` | N
 layout | String | horizontal | options：horizontal/vertical | N
 readonly | Boolean | false | \- | N
 separator | String | line | options：line/dashed/arrow | N
-style | String | - | \- | N
+sequence | String | positive | options：positive/reverse | N
 theme | String | default | options：default/dot | N
 
 ### Steps Events
@@ -25,10 +25,9 @@ change | `({current: string \| number, previous: string \| number})` | \-
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-content | String / Slot | '' | \- | N
+content | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 external-classes | Array | - | `['t-class', 't-class-content', 't-class-title', 't-class-description', 't-class-extra']` | N
-icon | String / Slot | - | \- | N
+icon | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 status | String | default | options：default/process/finish/error。Typescript：`StepStatus` `type StepStatus = 'default' \| 'process' \| 'finish' \| 'error'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/step-item/type.ts) | N
-style | String | - | \- | N
-sub-step-items | Array | [] | Typescript：`SubStepItem[]` `interface SubStepItem { status: StepStatus, title: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/step-item/type.ts) | N
-title | String / Slot | '' | \- | N
+sub-step-items | Array | [] | `deprecated`。Typescript：`SubStepItem[]` `interface SubStepItem { status: StepStatus, title: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/step-item/type.ts) | N
+title | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
