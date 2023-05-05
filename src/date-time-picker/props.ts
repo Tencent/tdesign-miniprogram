@@ -24,12 +24,12 @@ const props: TdDateTimePickerProps = {
   externalClasses: {
     type: Array,
   },
-  /** 用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format) */
+  /** 用于格式化 pick、change、confirm 事件返回的值，[详细文档](https://day.js.org/docs/en/display/format) */
   format: {
     type: String,
-    value: '',
+    value: 'YYYY-MM-DD HH:mm:ss',
   },
-  /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 */
+  /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容 */
   header: {
     type: Boolean,
     value: true,
@@ -47,6 +47,10 @@ const props: TdDateTimePickerProps = {
   /** 选择器的最小可选时间，默认为当前时间-10年 */
   start: {
     type: null,
+  },
+  /** 时间间隔步数，示例：`{ minute: 5 }` */
+  steps: {
+    type: Object,
   },
   /** 标题 */
   title: {
