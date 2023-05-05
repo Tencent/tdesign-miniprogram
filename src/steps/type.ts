@@ -59,12 +59,12 @@ export interface TdStepsProps {
     value?: 'line' | 'dashed' | 'arrow';
   };
   /**
-   * 自定义组件样式
-   * @default ''
+   * 步骤条顺序
+   * @default positive
    */
-  style?: {
+  sequence?: {
     type: StringConstructor;
-    value?: string;
+    value?: 'positive' | 'reverse';
   };
   /**
    * 步骤条风格
