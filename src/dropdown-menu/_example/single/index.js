@@ -2,24 +2,20 @@ Component({
   data: {
     product: {
       value: 'all',
-      options: new Array(20).fill({
-        value: 'all',
-        label: '全部产品',
-      }),
-      // options: [
-      //   {
-      //     value: 'all',
-      //     label: '全部产品',
-      //   },
-      //   {
-      //     value: 'new',
-      //     label: '最新产品',
-      //   },
-      //   {
-      //     value: 'hot',
-      //     label: '最火产品',
-      //   },
-      // ],
+      options: [
+        {
+          value: 'all',
+          label: '全部产品',
+        },
+        {
+          value: 'new',
+          label: '最新产品',
+        },
+        {
+          value: 'hot',
+          label: '最火产品',
+        },
+      ],
     },
     sorter: {
       value: 'default',
