@@ -1,4 +1,4 @@
-import Toast from 'tdesign-miniprogram/toast/index';
+import ActionSheet from 'tdesign-miniprogram/action-sheet/index';
 
 Component({
   data: {
@@ -30,10 +30,18 @@ Component({
     onDelete(e) {
       const { index } = e.detail;
 
-      Toast({
+      console.log(index);
+
+      ActionSheet.show({
         context: this,
-        selector: '#t-toast',
-        message: `删除第${index + 1}个`,
+        selector: '#t-action-sheet',
+        description: '要删除这张照片吗？',
+        items: [
+          {
+            label: '删除',
+            color: '#d54941',
+          },
+        ],
       });
     },
 

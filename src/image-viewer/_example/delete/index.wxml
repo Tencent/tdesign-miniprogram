@@ -1,5 +1,7 @@
 <t-button theme="primary" size="large" variant="outline" block bind:tap="onClick">带操作图片预览</t-button>
-<t-toast id="t-toast" />
+
+<t-action-sheet id="t-action-sheet" />
+
 <t-image-viewer
   deleteBtn="{{deleteBtn}}"
   closeBtn="{{closeBtn}}"
