@@ -9,7 +9,7 @@ Component({
     images: [],
   },
   methods: {
-    clickHandle() {
+    onClick() {
       this.setData({
         images: [
           'https://tdesign.gtimg.com/miniprogram/images/swiper1.png',
@@ -20,20 +20,14 @@ Component({
       });
     },
     onChange(e) {
-      const {
-        detail: { index },
-      } = e;
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: `翻到第${index + 1}个`,
-      });
+      const { index } = e.detail;
+
+      console.log('change', index);
     },
 
     onDelete(e) {
-      const {
-        detail: { index },
-      } = e;
+      const { index } = e.detail;
+
       Toast({
         context: this,
         selector: '#t-toast',
@@ -42,22 +36,8 @@ Component({
     },
 
     onClose(e) {
-      const {
-        detail: { trigger },
-      } = e;
-      if (trigger === 'overlay') {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: '点击overlay关闭',
-        });
-      } else if (trigger === 'button') {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: `点击button关闭`,
-        });
-      }
+      const { trigger } = e.detail;
+      console.log(trigger);
       this.setData({
         visible: false,
       });

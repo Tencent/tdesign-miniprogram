@@ -5,6 +5,22 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.1.5 `2023-05-08` 
+### 🚀 Features
+- `PulldownRefresh`: 支持透传更多属性至 scroll-view 组件 @LeeJim ([#1959](https://github.com/Tencent/tdesign-miniprogram/pull/1959))
+- `DateTimePicker`: 新增 steps 属性，用于调整时间间隔步数 @LeeJim ([#1961](https://github.com/Tencent/tdesign-miniprogram/pull/1961))
+- `Steps`: 新增 sequence 属性，支持逆序展示 @LeeJim ([#1962](https://github.com/Tencent/tdesign-miniprogram/pull/1962))
+- `DropdownMenu`: 新增 CSS Variable 用于调整边框宽度 @LeeJim ([#1967](https://github.com/Tencent/tdesign-miniprogram/pull/1967))
+### 🐞 Bug Fixes
+- `Tabs`: 修复 track 位置计算错误的问题 @LeeJim ([#1958](https://github.com/Tencent/tdesign-miniprogram/pull/1958))
+- `PulldownRefresh`: 解决 value = true 时无法触发加载状态的问题 @LeeJim ([#1960](https://github.com/Tencent/tdesign-miniprogram/pull/1960))
+- `Steps`: 修复 icon 插槽无法使用的问题 @LeeJim ([#1962](https://github.com/Tencent/tdesign-miniprogram/pull/1962))
+- `Stepper`: 修复无法输入空值的问题 @anlyyao ([#1971](https://github.com/Tencent/tdesign-miniprogram/pull/1971))
+- `Calendar`: 解决 usePopup = false 时，没有自动定位到当前值的问题 @LeeJim ([#1969](https://github.com/Tencent/tdesign-miniprogram/pull/1969))
+- `ActionSheet`: 修复使用命令行方式点击取消按钮无法关闭的问题 @LeeJim ([#1968](https://github.com/Tencent/tdesign-miniprogram/pull/1968))
+### 🚧 Others
+- `Picker`: 完善文档，增加 TS 定义的关联链接。 @LeeJim ([#1956](https://github.com/Tencent/tdesign-miniprogram/pull/1956))
+
 ## 🌈 1.1.4 `2023-05-01` 
 ### 🚀 Features
 - `ImageViewer`: 新增 usingCustomNavigation 属性，处理使用自定义导航栏时被遮挡的问题 @LeeJim ([#1944](https://github.com/Tencent/tdesign-miniprogram/pull/1944))

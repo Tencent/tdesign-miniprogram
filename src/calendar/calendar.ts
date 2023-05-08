@@ -49,6 +49,10 @@ export default class Calendar extends SuperComponent {
         days: this.base.getDays(),
       });
       this.calcMonths();
+
+      if (!this.data.usePopup) {
+        this.scrollIntoView();
+      }
     },
   };
 

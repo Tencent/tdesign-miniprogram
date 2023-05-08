@@ -4,23 +4,27 @@
   style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} class {{prefix}}-class"
   scroll-top="{{scrollTop}}"
+  scroll-y
+  enable-back-to-top="{{enableBackToTop}}"
+  enable-passive="{{enablePassive}}"
+  lower-threshold="{{lowerThreshold}}"
+  upper-threshold="{{upperThreshold}}"
+  scroll-into-view="{{scrollIntoView}}"
+  enhanced
+  scroll-with-animation
+  bounces="{{false}}"
   bind:touchstart="onTouchStart"
   bind:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
   bind:scroll="onScroll"
   bindscrolltoupper="onScrollToTop"
   bindscrolltolower="onScrollToBottom"
-  scroll-y
-  enable-back-to-top
-  enhanced
-  scroll-with-animation
-  bounces="{{false}}"
 >
   <view
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
     style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'rpx, 0);' : ''}}"
   >
-    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}rpx" aria-live="polite">
+    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}px" aria-live="polite">
       <t-loading
         wx:if="{{refreshStatus === 2}}"
         delay="{{loadingProps.delay || 0}}"

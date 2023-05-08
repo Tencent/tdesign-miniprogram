@@ -39,6 +39,11 @@ const props: TdStepsProps = {
     type: String,
     value: 'line',
   },
+  /** 步骤条顺序 */
+  sequence: {
+    type: String,
+    value: 'positive',
+  },
   /** 步骤条风格 */
   theme: {
     type: String,
