@@ -20,28 +20,37 @@
   >
     <view class="{{classPrefix}}__body">
       <!-- 单选列表 -->
-      <t-radio-group
+      <scroll-view
         wx:if="{{!multiple}}"
-        class="{{classPrefix}}__radio {{prefix}}-class-column"
-        t-class="{{classPrefix}}__radio-group"
-        style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
-        value="{{value}}"
-        placement="right"
-        bind:change="handleRadioChange"
+        class="{{classPrefix}}__scroll"
+        scroll-y
+        scroll-into-view="id{{value}}"
       >
-        <t-radio
-          wx:for="{{options}}"
-          wx:key="index"
-          tabindex="0"
-          icon="line"
-          class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
-          t-class="radio"
-          t-class-label="{{prefix}}-class-column-item-label"
-          value="{{item[valueAlias]}}"
-          label="{{item[labelAlias]}}"
-          disabled="{{item.disabled}}"
-        ></t-radio>
-      </t-radio-group>
+        <t-radio-group
+          class="{{classPrefix}}__radio {{prefix}}-class-column"
+          t-class="{{classPrefix}}__radio-group"
+          style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
+          value="{{value}}"
+          placement="right"
+          bind:change="handleRadioChange"
+        >
+          <view wx:for="{{options}}"
+                wx:key="index"
+                id="id{{item[valueAlias]}}"
+          >
+            <t-radio
+              tabindex="0"
+              icon="line"
+              class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"
+              t-class="radio"
+              t-class-label="{{prefix}}-class-column-item-label"
+              value="{{item[valueAlias]}}"
+              label="{{item[labelAlias]}}"
+              disabled="{{item.disabled}}"
+            />
+          </view>
+        </t-radio-group>
+      </scroll-view>
       <!-- 多选列表 -->
       <t-checkbox-group
         wx:else
