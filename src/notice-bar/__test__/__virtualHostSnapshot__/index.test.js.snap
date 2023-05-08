@@ -2,69 +2,79 @@
 
 exports[`notice-bar props : marquee 1`] = `
 <main>
-  <wx-view
-    class="t-notice-bar t-notice-bar--info class t-class"
-    style=""
+  <t-notice-bar
+    class="base"
   >
     <wx-view
-      class="t-notice-bar__prefix-icon"
-      bind:tap="clickPrefixIcon"
+      class="t-notice-bar t-notice-bar--info class t-class"
+      style=""
     >
       <wx-view
-        ariaHidden="{{false}}"
-        ariaLabel=""
-        ariaRole=""
-        class="t-icon class t-class"
-        style=""
-        bind:tap="onTap"
+        class="t-notice-bar__prefix-icon"
+        bind:tap="clickPrefixIcon"
       >
-        <wx-label
-          class="t-icon-info-circle-filled t-icon-base"
-        />
+        <t-icon
+          class=""
+          tClass="t-class-prefix-icon"
+          bind:click=""
+        >
+          <wx-view
+            ariaHidden="{{false}}"
+            ariaLabel=""
+            ariaRole=""
+            class="t-icon class t-class"
+            style=""
+            bind:tap="onTap"
+          >
+            <wx-label
+              class="t-icon-info-circle-filled t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
       </wx-view>
-    </wx-view>
-    <wx-view
-      class="t-notice-bar__content-wrap"
-      bind:tap="clickContent"
-    >
       <wx-view
-        animation="{{
-          Object {
-            "actions": Array [
-              Object {
-                "animates": Array [
-                  Object {
-                    "args": Array [
-                      -350,
-                    ],
-                    "type": "translateX",
-                  },
-                ],
-                "option": Object {
-                  "transformOrigin": "50% 50% 0",
-                  "transition": Object {
-                    "delay": 0,
-                    "duration": 8287.5,
-                    "timingFunction": "linear",
+        class="t-notice-bar__content-wrap"
+        bind:tap="clickContent"
+      >
+        <wx-view
+          animation="{{
+            Object {
+              "actions": Array [
+                Object {
+                  "animates": Array [
+                    Object {
+                      "args": Array [
+                        -350,
+                      ],
+                      "type": "translateX",
+                    },
+                  ],
+                  "option": Object {
+                    "transformOrigin": "50% 50% 0",
+                    "transition": Object {
+                      "delay": 0,
+                      "duration": 8287.5,
+                      "timingFunction": "linear",
+                    },
                   },
                 },
-              },
-            ],
-          }
-        }}"
-        class="t-notice-bar__content t-class-content "
-      >
-        提示文字描述提示文字描述提示文字描述提示文字描述文
-        <wx-view
-          class="t-notice-bar__operation t-class-operation"
-          catch:tap="clickOperation"
-        />
+              ],
+            }
+          }}"
+          class="t-notice-bar__content t-class-content "
+        >
+          提示文字描述提示文字描述提示文字描述提示文字描述文
+          <wx-view
+            class="t-notice-bar__operation t-class-operation"
+            catch:tap="clickOperation"
+          />
+        </wx-view>
       </wx-view>
+      <wx-view
+        class="t-notice-bar__suffix-icon"
+        bind:tap="clickSuffixIcon"
+      />
     </wx-view>
-    <wx-view
-      class="t-notice-bar__suffix-icon"
-      bind:tap="clickSuffixIcon"
-    />
-  </wx-view>
+  </t-notice-bar>
 </main>
 `;
