@@ -105,6 +105,10 @@ export default class ActionSheet extends SuperComponent {
 
     onCancel() {
       this.triggerEvent('cancel');
+      if (this.autoClose) {
+        this.setData({ visible: false });
+        this.autoClose = false;
+      }
     },
   };
 }
