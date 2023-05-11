@@ -78,20 +78,12 @@ export interface TdPickerProps {
     value?: boolean;
   };
   /**
-   * 蒙层样式
+   * popup组件样式
    * @default {}
    */
-  overlayProps: {
-    type: ObjectConstructor;
-    value?: object;
-  };
-  /**
-   * pop组件层级，Web 侧样式默认为 5500，移动端样式默认为 1500，小程序样式默认为11500
-   * @default {}
-   */
-  zIndex?: {
-    type: NumberConstructor;
-    value?: number;
+  popupProps: {
+    type: object;
+    value?: {};
   };
 }
 
