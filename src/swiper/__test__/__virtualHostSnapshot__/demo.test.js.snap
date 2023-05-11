@@ -23,6 +23,7 @@ exports[`Swiper Swiper base demo works fine 1`] = `
     }}"
     bind:change="onChange"
     bind:click="onTap"
+    bind:image-load="onImageLoad"
   />
 </base>
 `;
