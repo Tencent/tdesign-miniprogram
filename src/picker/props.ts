@@ -49,6 +49,17 @@ const props: TdPickerProps = {
     type: Boolean,
     value: false,
   },
+  /** 组件层级，Web 侧样式默认为 5500，移动端样式默认为 1500，小程序样式默认为11500 */
+  zIndex: {
+    type: Number,
+    value: 11500,
+  },
+
+  /** 遮罩层的属性，透传至 overlay */
+  overlayProps: {
+    type: Object,
+    value: {},
+  },
 };
 
 export default props;
