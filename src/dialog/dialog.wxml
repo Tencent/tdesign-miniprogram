@@ -44,11 +44,11 @@
         </block>
       </block>
       <slot name="actions" />
-      <block wx:if="{{_cancel}}">
+      <block wx:if="{{cancelBtn}}">
         <template is="button" data="{{type: 'cancel', ..._cancel }}" />
       </block>
       <slot name="cancel-btn" />
-      <block wx:if="{{_confirm}}">
+      <block wx:if="{{confirmBtn}}">
         <template is="button" data="{{type: 'confirm', theme: 'primary', ..._confirm}}" />
       </block>
       <slot name="confirm-btn" />
