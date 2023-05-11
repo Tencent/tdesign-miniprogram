@@ -41,6 +41,8 @@ export default class Picker extends SuperComponent {
     classPrefix: name,
     labelAlias: 'label',
     valueAlias: 'value',
+    defaultPopUpProps: {},
+    defaultPopUpzIndex: 11500,
   };
 
   methods = {

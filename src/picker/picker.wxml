@@ -5,8 +5,8 @@
   visible="{{visible}}"
   placement="bottom"
   bind:visible-change="onPopupChange"
-  z-index="{{ popupProps.zIndex }}"
-  overlay-props="{{ popupProps.overlayProps || {} }}"
+  z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
+  overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
 >
   <view slot="content" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
     <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
