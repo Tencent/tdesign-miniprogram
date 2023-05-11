@@ -1,6 +1,13 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<t-popup class="class" visible="{{visible}}" placement="bottom" bind:visible-change="onPopupChange">
+<t-popup
+  class="class"
+  visible="{{visible}}"
+  placement="bottom"
+  bind:visible-change="onPopupChange"
+  z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
+  overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
+>
   <view slot="content" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
     <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
       <view class="{{classPrefix}}__cancel {{prefix}}-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel"

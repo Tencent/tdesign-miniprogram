@@ -49,6 +49,11 @@ const props: TdPickerProps = {
     type: Boolean,
     value: false,
   },
+  /** popupProps透传 */
+  popupProps: {
+    type: Object,
+    value: {},
+  },
 };
 
 export default props;
