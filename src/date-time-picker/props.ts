@@ -71,6 +71,12 @@ const props: TdDateTimePickerProps = {
     type: Boolean,
     value: false,
   },
+
+  /** popupProps */
+  popupProps: {
+    type: Object,
+    value: {},
+  },
 };
 
 export default props;

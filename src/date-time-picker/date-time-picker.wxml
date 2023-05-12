@@ -1,5 +1,4 @@
 <wxs src="../common/utils.wxs" module="_" />
-
 <t-picker
   style="{{_._style([style, customStyle])}}"
   class="class {{prefix}}-class {{classPrefix}}"
@@ -14,9 +13,9 @@
   title="{{title}}"
   confirmBtn="{{confirmBtn || locale.confirm}}"
   cancelBtn="{{cancelBtn || locale.cancel}}"
+  popupProps="{{ popupProps }}"
 >
   <slot slot="header" name="header" />
-
   <t-picker-item
     wx:for="{{columns}}"
     wx:key="index"
