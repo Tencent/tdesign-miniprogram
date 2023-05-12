@@ -121,6 +121,8 @@ export default class Slider extends SuperComponent {
   };
 
   triggerValue(value?: SliderValue) {
+    if (this.preval === value) return;
+    this.preval = value;
     this._trigger('change', {
       value: trimValue(value, this.properties),
     });
