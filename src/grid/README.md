@@ -82,3 +82,10 @@ jump-type | String | navigate-to | 链接跳转类型。可选项：redirect-to/
 layout | String | vertical | 内容布局方式。可选项：vertical/horizontal | N
 text | String / Slot | - | 文本，可以通过 Props 传入文本，也可以自定义标题节点 | N
 url | String | - | 点击后的跳转链接 | N
+
+### GridItem Events
+
+名称 | 参数 | 描述
+-- | -- | --
+click | \- | 点击子项后触发
+
