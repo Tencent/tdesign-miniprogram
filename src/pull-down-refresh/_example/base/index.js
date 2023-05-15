@@ -9,6 +9,12 @@ Component({
     backTopVisible: false,
   },
 
+  ready() {
+    setTimeout(() => {
+      this.setData({ enable: true });
+    }, 1000);
+  },
+
   methods: {
     onRefresh() {
       this.setData({ enable: true });
