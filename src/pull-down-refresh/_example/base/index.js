@@ -9,14 +9,8 @@ Component({
     backTopVisible: false,
   },
 
-  ready() {
-    setTimeout(() => {
-      this.setData({ enable: true });
-    }, 1000);
-  },
-
   methods: {
-    onPullDownRefresh() {
+    onRefresh() {
       this.setData({ enable: true });
       setTimeout(() => {
         this.setData({ enable: false });
