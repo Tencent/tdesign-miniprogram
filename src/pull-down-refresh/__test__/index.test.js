@@ -79,7 +79,7 @@ describe('pull-down-refresh', () => {
           bind:refresh="handleRefresh"
           bind:timeout ="handleTimeout"
           bind:change="handleChange"
-        ></t-pull-down-refresh>`,
+        />`,
         usingComponents: {
           't-pull-down-refresh': pullDownRefresh,
         },
@@ -128,9 +128,9 @@ describe('pull-down-refresh', () => {
       };
       move1();
       await simulate.sleep(300);
-      expect(handleChange).toHaveBeenCalledTimes(2);
+      expect(handleChange).toHaveBeenCalledTimes(1);
       expect(handleRefresh).toHaveBeenCalledTimes(1);
-      expect(handleTimeout).toHaveBeenCalledTimes(1);
+      expect(handleTimeout).toHaveBeenCalledTimes(0);
 
       comp.setData({
         maxBarHeight: 10,
@@ -149,7 +149,7 @@ describe('pull-down-refresh', () => {
       };
       move2();
       await simulate.sleep(300);
-      expect(handleChange).toHaveBeenCalledTimes(4);
+      expect(handleChange).toHaveBeenCalledTimes(1);
 
       const move3 = () => {
         $scrollView.dispatchEvent('touchstart');
@@ -166,7 +166,7 @@ describe('pull-down-refresh', () => {
       };
       move4();
       await simulate.sleep(300);
-      expect(handleChange).toHaveBeenCalledTimes(5);
+      expect(handleChange).toHaveBeenCalledTimes(1);
 
       comp.detach();
     });

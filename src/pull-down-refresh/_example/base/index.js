@@ -16,7 +16,8 @@ Component({
   },
 
   methods: {
-    onPullDownRefresh() {
+    onRefresh() {
+      this.setData({ enable: true });
       setTimeout(() => {
         this.setData({ enable: false });
       }, 1500);

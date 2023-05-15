@@ -77,6 +77,14 @@ export interface TdPickerProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+  /**
+   * popup组件样式
+   * @default {}
+   */
+  popupProps: {
+    type: object;
+    value?: {};
+  };
 }
 
 export type PickerValue = string | number;

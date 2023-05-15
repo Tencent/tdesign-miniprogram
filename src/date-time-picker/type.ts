@@ -111,6 +111,15 @@ export interface TdDateTimePickerProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+
+  /**
+   * 透传给picker内部的pop组件
+   * @default {}
+   */
+  popupProps: {
+    type: Object;
+    value: {};
+  };
 }
 
 export type DateTimePickerMode = TimeModeValues | Array<TimeModeValues>;

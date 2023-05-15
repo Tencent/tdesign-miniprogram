@@ -11,7 +11,6 @@ current-status | String | process | options：default/process/finish/error | N
 external-classes | Array | - | `['t-class']` | N
 layout | String | horizontal | options：horizontal/vertical | N
 readonly | Boolean | false | \- | N
-separator | String | line | options：line/dashed/arrow | N
 sequence | String | positive | options：positive/reverse | N
 theme | String | default | options：default/dot | N
 

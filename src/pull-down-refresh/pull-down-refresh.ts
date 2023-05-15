@@ -94,7 +94,7 @@ export default class PullDownRefresh extends SuperComponent {
             refreshStatus: 3,
           });
         }
-        this.close();
+        this.setData({ barHeight: 0 });
       } else {
         this.doRefresh();
       }
@@ -152,14 +152,16 @@ export default class PullDownRefresh extends SuperComponent {
 
       const barHeight = pageY - this.startPoint.pageY;
       this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
+      this.isPulling = false;
 
       this.setData({ loosing: true });
 
       // 松开时高度超过阈值则触发刷新
       if (barHeight > this.loadingBarHeight) {
-        this.doRefresh();
+        this._trigger('change', { value: true });
+        this.triggerEvent('refresh');
       } else {
-        this.close();
+        this.setData({ barHeight: 0 });
       }
     },
 
@@ -167,17 +169,16 @@ export default class PullDownRefresh extends SuperComponent {
       this.setData({
         barHeight: this.loadingBarHeight,
         refreshStatus: 2,
+        loosing: true,
       });
 
-      this.triggerEvent('change', { value: true });
-      this.triggerEvent('refresh');
       this.maxRefreshAnimateTimeFlag = setTimeout(() => {
         this.maxRefreshAnimateTimeFlag = null;
 
         if (this.data.refreshStatus === 2) {
           // 超时回调
           this.triggerEvent('timeout');
-          this.close(); // 超时仍未被回调，则直接结束下拉
+          this._trigger('change', { value: false });
         }
       }, this.properties.refreshTimeout as any) as any as number;
     },
@@ -194,18 +195,6 @@ export default class PullDownRefresh extends SuperComponent {
       return new Promise((resolve) => {
         this.setData(data, () => resolve(barHeight));
       });
-    },
-
-    close() {
-      const animationDuration = 240;
-
-      this.setData({ barHeight: 0 });
-      this.triggerEvent('change', { value: false });
-      this.closingAnimateTimeFlag = setTimeout(() => {
-        this.closingAnimateTimeFlag = null;
-        this.setData({ refreshStatus: -1 });
-        this.isPulling = false; // 退出下拉状态
-      }, animationDuration) as any as number;
     },
 
     setScrollTop(scrollTop: number) {

@@ -22,6 +22,8 @@ export default class ActionSheet extends SuperComponent {
     classPrefix: name,
     gridThemeItems: [],
     currentSwiperIndex: 0,
+    defaultPopUpProps: {},
+    defaultPopUpzIndex: 11500,
   };
 
   controlledProps = [
