@@ -65,6 +65,8 @@ export default class Dialog extends SuperComponent {
           rect[`_${key}`] = { ...base, content: btn };
         } else if (btn && typeof btn === 'object') {
           rect[`_${key}`] = { ...base, ...btn };
+        } else {
+          rect[`_${key}`] = null;
         }
       });
 
