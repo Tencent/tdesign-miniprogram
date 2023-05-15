@@ -157,7 +157,8 @@ export default class PullDownRefresh extends SuperComponent {
 
       // 松开时高度超过阈值则触发刷新
       if (barHeight > this.loadingBarHeight) {
-        this.doRefresh();
+        this.triggerEvent('change', { value: true });
+        this.triggerEvent('refresh');
       } else {
         this.close();
       }
@@ -169,8 +170,6 @@ export default class PullDownRefresh extends SuperComponent {
         refreshStatus: 2,
       });
 
-      this.triggerEvent('change', { value: true });
-      this.triggerEvent('refresh');
       this.maxRefreshAnimateTimeFlag = setTimeout(() => {
         this.maxRefreshAnimateTimeFlag = null;
 
