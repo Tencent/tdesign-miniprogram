@@ -57,6 +57,9 @@ export default class Calendar extends SuperComponent {
   };
 
   observers = {
+    type(v) {
+      this.base.type = v;
+    },
     confirmBtn(v) {
       if (typeof v === 'string') {
         this.setData({ innerConfirmBtn: v === 'slot' ? 'slot' : { content: v } });
