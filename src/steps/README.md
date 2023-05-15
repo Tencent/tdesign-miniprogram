@@ -65,7 +65,6 @@ current-status | String | process | 用于控制 current 指向的步骤条的�
 external-classes | Array | - | 组件类名，用于设置组件外层元素元素类名。`['t-class']` | N
 layout | String | horizontal | 步骤条方向，有两种：横向和纵向。可选项：horizontal/vertical | N
 readonly | Boolean | false | 只读状态 | N
-separator | String | line | 步骤条分割符。可选项：line/dashed/arrow | N
 sequence | String | positive | 步骤条顺序。可选项：positive/reverse | N
 theme | String | default | 步骤条风格。可选项：default/dot | N
 
