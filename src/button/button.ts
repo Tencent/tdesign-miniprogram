@@ -28,7 +28,7 @@ export default class Button extends SuperComponent {
   };
 
   observers = {
-    'theme, size, plain, block, shape, disabled, loading'() {
+    'theme, size, plain, block, shape, disabled, loading, variant'() {
       this.setClass();
     },
 
