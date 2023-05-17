@@ -10,6 +10,7 @@
 @action-sheet-description-color: var(--td-action-sheet-description-color, @font-gray-3);
 @action-sheet-text-align: var(--td-action-sheet-text-align, center);
 @action-sheet-cancel-height: var(--td-action-sheet-cancel-height, 96rpx);
+@action-sheet-cancel-color:var (--td-action-sheet-cancel-color, @font-gray-1);
 
 .@{action-sheet} {
   &__content {
@@ -124,6 +125,7 @@
 
   &__cancel {
     .flex-center();
+    color: @action-sheet-cancel-color;
     height: @action-sheet-cancel-height;
   }
 
