@@ -5,6 +5,16 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.1.7 `2023-05-23` 
+### 🚀 Features
+- `ActionSheet`: 新增 CSS Variable 用于控制取消按钮颜色 @favouredddd ([#2007](https://github.com/Tencent/tdesign-miniprogram/pull/2007))
+### 🐞 Bug Fixes
+- `ActionSheet`: 解决 ActionSheet 引入报错 @anlyyao ([#2008](https://github.com/Tencent/tdesign-miniprogram/pull/2008))
+- `Sticky`: 处理在锁定的情况下，宽度计算错误的问题 @LeeJim ([#2012](https://github.com/Tencent/tdesign-miniprogram/pull/2012))
+- `SideBarItem`: 修复选中态样式问题 @betavs ([#2011](https://github.com/Tencent/tdesign-miniprogram/pull/2011))
+- `TabBar`: 修正 virtualHost 不可用时的宽度 @LeeJim ([#2013](https://github.com/Tencent/tdesign-miniprogram/pull/2013))
+- `Icon`: 更正图标命名 @anlyyao ([#2020](https://github.com/Tencent/tdesign-miniprogram/pull/2020))
+
 ## 🌈 1.1.6 `2023-05-15` 
 ### 🚀 Features
 - `Icon`: 更新版本至 v0.1.4 @anlyyao ([#1979](https://github.com/Tencent/tdesign-miniprogram/pull/1979))
