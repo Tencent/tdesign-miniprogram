@@ -84,6 +84,36 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="arrow-down-triangle-filled"
+        name="arrow-down-triangle-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        arrow-down-triangle-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="arrow-down-triangle"
+        name="arrow-down-triangle"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        arrow-down-triangle
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="arrow-down"
         name="arrow-down"
         size="48rpx"
