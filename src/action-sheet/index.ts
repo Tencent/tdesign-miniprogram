@@ -1,5 +1,13 @@
-import ActionSheet from './action-sheet';
+import { show, close, ActionSheetItem, ActionSheetTheme, ActionSheetShowOption } from './show';
 
-export * from './show';
+export { ActionSheetItem, ActionSheetTheme, ActionSheetShowOption };
 
-export default ActionSheet;
+export default {
+  show(options: ActionSheetShowOption) {
+    return show(options);
+  },
+
+  close(options: ActionSheetShowOption) {
+    return close(options);
+  },
+};

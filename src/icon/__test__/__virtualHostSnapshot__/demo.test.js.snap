@@ -159,30 +159,60 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="arrow-up-triangle-filled"
-        name="arrow-up-triangle-filled"
+        data-name="arrow-triangle-down-filled"
+        name="arrow-triangle-down-filled"
         size="48rpx"
         bind:click="onIconTap"
       />
       <wx-view
         class="demo__card-name"
       >
-        arrow-up-triangle-filled
+        arrow-triangle-down-filled
       </wx-view>
     </wx-view>
     <wx-view
       class="demo__card"
     >
       <t-icon
-        data-name="arrow-up-triangle"
-        name="arrow-up-triangle"
+        data-name="arrow-triangle-down"
+        name="arrow-triangle-down"
         size="48rpx"
         bind:click="onIconTap"
       />
       <wx-view
         class="demo__card-name"
       >
-        arrow-up-triangle
+        arrow-triangle-down
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="arrow-triangle-up-filled"
+        name="arrow-triangle-up-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        arrow-triangle-up-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="arrow-triangle-up"
+        name="arrow-triangle-up"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        arrow-triangle-up
       </wx-view>
     </wx-view>
     <wx-view
