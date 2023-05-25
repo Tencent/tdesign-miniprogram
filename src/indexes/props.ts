@@ -6,6 +6,11 @@
 
 import { TdIndexesProps } from './type';
 const props: TdIndexesProps = {
+  /** 是否异步数据 */
+  async: {
+    type: Boolean,
+    value: false,
+  },
   /** 索引字符列表。不传默认 `A-Z` */
   indexList: {
     type: Array,

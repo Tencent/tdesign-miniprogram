@@ -6,6 +6,14 @@
 
 export interface TdIndexesProps {
   /**
+   * 是否异步数据
+   * @default false
+   */
+  async?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 自定义组件样式
    * @default ''
    */
