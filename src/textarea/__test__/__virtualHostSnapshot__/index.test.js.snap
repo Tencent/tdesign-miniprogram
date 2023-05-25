@@ -41,6 +41,7 @@ exports[`textarea slots : label 1`] = `
         selectionEnd="{{-1}}"
         selectionStart="{{-1}}"
         showConfirmBar="{{true}}"
+        style=""
         value=""
         bind:blur="onBlur"
         bind:confirm="onConfirm"
