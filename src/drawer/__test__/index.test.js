@@ -106,8 +106,8 @@ describe('drawer', () => {
     const overlayClick = jest.fn();
     let clickItemValue;
     const itemClick = (e) => {
-      const { sibarItem } = e.detail;
-      clickItemValue = sibarItem;
+      const { sidebarItem } = e.detail;
+      clickItemValue = sidebarItem;
     };
 
     it(`: mutiple`, async () => {

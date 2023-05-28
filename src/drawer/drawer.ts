@@ -42,7 +42,7 @@ export default class Drawer extends SuperComponent {
       const { index, item } = detail.currentTarget.dataset;
 
       this.triggerEvent('item-click', {
-        sibarItem: { index: index, item: item },
+        sidebarItem: { index: index, item: item },
       });
     },
   };
