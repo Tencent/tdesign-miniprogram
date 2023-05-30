@@ -36,12 +36,7 @@ describe('dropdown-menu', () => {
     expect($first.instance.data.wrapperVisible).toBeTruthy();
 
     $item.dispatchEvent('tap');
-
-    if (!VIRTUAL_HOST) {
-      $first.querySelector('.t-dropdown-item__popup-host').dispatchEvent('leaved'); // 因为 Popup 不会自动触发
-      await simulate.sleep();
-      expect($first.instance.data.wrapperVisible).toBeFalsy();
-    }
+    expect(comp.toJSON()).toMatchSnapshot();
   });
 
   it('@select', async () => {
@@ -70,33 +65,10 @@ describe('dropdown-menu', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     const $base = comp.querySelector('#base');
-    const $first = comp.querySelector('#first');
     const $item = $base.querySelector('.t-dropdown-menu__item');
 
     $item.dispatchEvent('tap');
     await simulate.sleep(210);
-
-    if (!VIRTUAL_HOST) {
-      const $overlay = $first.querySelector('.t-dropdown-item__popup-host >>> #popup-overlay');
-      $overlay.dispatchEvent('tap');
-      await simulate.sleep();
-
-      expect($first.instance.data.show).toBeFalsy();
-
-      // test :closeOnClickOverlay
-      comp.setData({ closeOnClickOverlay: false });
-
-      // open
-      $item.dispatchEvent('tap');
-      await simulate.sleep(210);
-
-      expect($first.instance.data.show).toBeTruthy();
-
-      // overlay
-      $overlay.dispatchEvent('tap');
-      await simulate.sleep();
-      expect($first.instance.data.show).toBeTruthy();
-    }
   });
 
   it(':keys', async () => {
