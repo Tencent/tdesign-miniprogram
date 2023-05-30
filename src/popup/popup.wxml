@@ -23,9 +23,8 @@
   id="popup-overlay"
   wx:if="{{showOverlay}}"
   visible="{{visible}}"
-  class="test"
   z-index="{{overlayProps.zIndex || 11000}}"
   prevent-scroll-through="{{preventScrollThrough || overlayProps.preventScrollThrough}}"
   bind:tap="handleOverlayClick"
-  style="{{overlayProps.style || ''}}"
+  custom-style="{{overlayProps.style || ''}}"
 />
