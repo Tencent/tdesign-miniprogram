@@ -166,13 +166,14 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getOptionByType(type) {
-      const { locale } = this.data;
+      const { locale, steps } = this.data;
       const options: ColumnItemValue[] = [];
 
       const minEdge = this.getOptionEdge('min', type);
       const maxEdge = this.getOptionEdge('max', type);
+      const step = steps?.[type] ?? 1;
 
-      for (let i = minEdge; i <= maxEdge; i += 1) {
+      for (let i = minEdge; i <= maxEdge; i += step) {
         const label = type === 'month' ? i + 1 : i;
         options.push({
           value: `${i}`,

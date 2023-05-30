@@ -237,6 +237,15 @@ exports[`Rate Rate special demo works fine 1`] = `
     >
       <t-rate
         size="30"
+        texts="{{
+          Array [
+            "非常糟糕",
+            "有些糟糕",
+            "可以尝试",
+            "可以前往",
+            "推荐前往",
+          ]
+        }}"
         value="{{4}}"
         bind:change="onChange"
       />

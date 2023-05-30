@@ -101,6 +101,10 @@ export default class Stepper extends SuperComponent {
   }
 
   inputHandle(e) {
+    // 允许输入空值
+    if (e.detail.value === '') {
+      return;
+    }
     const value = this.changeValue(e);
     this.triggerEvent('input', { value });
   }

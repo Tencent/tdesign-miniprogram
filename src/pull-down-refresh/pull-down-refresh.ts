@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { unitConvert } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-pull-down-refresh`;
@@ -13,11 +14,9 @@ export default class PullDownRefresh extends SuperComponent {
 
   isPulling = false; // 是否下拉中
 
-  maxBarHeight: number = 0; // 最大下拉高度，单位 rpx
-
-  // 触发刷新的下拉高度，单位rpx
+  // 触发刷新的下拉高度，单位 px
   // 松开时下拉高度大于这个值即会触发刷新，触发刷新后松开，会恢复到这个高度并保持，直到刷新结束
-  loadingBarHeight = 200;
+  loadingBarHeight = 100;
 
   /** 开始刷新 - 刷新成功/失败 最大间隔时间setTimeout句柄 */
   maxRefreshAnimateTimeFlag = 0;
@@ -52,7 +51,7 @@ export default class PullDownRefresh extends SuperComponent {
   lifetimes = {
     attached() {
       const { screenWidth } = wx.getSystemInfoSync();
-      const { maxBarHeight, loadingBarHeight, loadingTexts } = this.properties;
+      const { loadingBarHeight, loadingTexts } = this.properties;
       this.setData({
         loadingTexts:
           Array.isArray(loadingTexts) && loadingTexts.length >= 4
@@ -61,15 +60,22 @@ export default class PullDownRefresh extends SuperComponent {
       });
       this.pixelRatio = 750 / screenWidth;
 
-      if (maxBarHeight) {
-        this.maxBarHeight = this.toRpx(maxBarHeight);
-      }
+      Object.defineProperty(this, 'maxBarHeight', {
+        get() {
+          return unitConvert(this.data.maxBarHeight);
+        },
+      });
+
+      Object.defineProperty(this, 'loadingBarHeight', {
+        get() {
+          return unitConvert(this.data.loadingBarHeight);
+        },
+      });
 
       if (loadingBarHeight) {
         this.setData({
-          computedLoadingBarHeight: this.toRpx(loadingBarHeight),
+          computedLoadingBarHeight: unitConvert(loadingBarHeight),
         });
-        this.loadingBarHeight = this.toRpx(loadingBarHeight);
       }
     },
 
@@ -83,18 +89,15 @@ export default class PullDownRefresh extends SuperComponent {
     value(val) {
       if (!val) {
         clearTimeout(this.maxRefreshAnimateTimeFlag);
-        this.setData({ refreshStatus: 3 });
-        this.close();
+        if (this.data.refreshStatus > 0) {
+          this.setData({
+            refreshStatus: 3,
+          });
+        }
+        this.setData({ barHeight: 0 });
+      } else {
+        this.doRefresh();
       }
-    },
-    maxBarHeight(val) {
-      this.maxBarHeight = this.toRpx(val);
-    },
-    loadingBarHeight(val) {
-      this.setData({
-        computedLoadingBarHeight: this.toRpx(val),
-      });
-      this.loadingBarHeight = this.toRpx(val);
     },
   };
 
@@ -135,16 +138,9 @@ export default class PullDownRefresh extends SuperComponent {
 
       const { pageY } = touches[0];
       const offset = pageY - this.startPoint.pageY;
-      const barHeight = this.toRpx(offset);
 
-      if (barHeight > 0) {
-        if (barHeight > this.maxBarHeight) {
-          // 限高
-          this.setRefreshBarHeight(this.maxBarHeight);
-          // this.startPoint.pageY = pageY - this.toPx(this.maxBarHeight); // 限高的同时修正起点，避免触摸点上移时无效果
-        } else {
-          this.setRefreshBarHeight(barHeight);
-        }
+      if (offset > 0) {
+        this.setRefreshBarHeight(offset);
       }
     },
 
@@ -154,45 +150,43 @@ export default class PullDownRefresh extends SuperComponent {
       if (changedTouches.length !== 1) return;
       const { pageY } = changedTouches[0];
 
-      const barHeight = this.toRpx(pageY - this.startPoint.pageY);
+      const barHeight = pageY - this.startPoint.pageY;
       this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
+      this.isPulling = false;
 
       this.setData({ loosing: true });
 
       // 松开时高度超过阈值则触发刷新
       if (barHeight > this.loadingBarHeight) {
-        this.setData({
-          barHeight: this.loadingBarHeight,
-          refreshStatus: 2,
-        });
-
-        this.triggerEvent('change', { value: true });
+        this._trigger('change', { value: true });
         this.triggerEvent('refresh');
-        this.maxRefreshAnimateTimeFlag = setTimeout(() => {
-          this.maxRefreshAnimateTimeFlag = null;
-
-          if (this.data.refreshStatus === 2) {
-            // 超时回调
-            this.triggerEvent('timeout');
-            this.close(); // 超时仍未被回调，则直接结束下拉
-          }
-        }, this.properties.refreshTimeout as any) as any as number;
       } else {
-        this.close();
+        this.setData({ barHeight: 0 });
       }
     },
 
-    toRpx(v: number | string): number {
-      if (typeof v === 'number') return v * this.pixelRatio;
-      return parseInt(v, 10);
+    doRefresh() {
+      this.setData({
+        barHeight: this.loadingBarHeight,
+        refreshStatus: 2,
+        loosing: true,
+      });
+
+      this.maxRefreshAnimateTimeFlag = setTimeout(() => {
+        this.maxRefreshAnimateTimeFlag = null;
+
+        if (this.data.refreshStatus === 2) {
+          // 超时回调
+          this.triggerEvent('timeout');
+          this._trigger('change', { value: false });
+        }
+      }, this.properties.refreshTimeout as any) as any as number;
     },
 
-    toPx(v: number) {
-      return v / this.pixelRatio;
-    },
-
-    setRefreshBarHeight(barHeight: number) {
+    setRefreshBarHeight(value: number) {
+      const barHeight = Math.min(value, this.maxBarHeight);
       const data: Record<string, any> = { barHeight };
+
       if (barHeight >= this.loadingBarHeight) {
         data.refreshStatus = 1;
       } else {
@@ -201,18 +195,6 @@ export default class PullDownRefresh extends SuperComponent {
       return new Promise((resolve) => {
         this.setData(data, () => resolve(barHeight));
       });
-    },
-
-    close() {
-      const animationDuration = 240;
-
-      this.setData({ barHeight: 0 });
-      this.triggerEvent('change', { value: false });
-      this.closingAnimateTimeFlag = setTimeout(() => {
-        this.closingAnimateTimeFlag = null;
-        this.setData({ refreshStatus: -1 });
-        this.isPulling = false; // 退出下拉状态
-      }, animationDuration) as any as number;
     },
 
     setScrollTop(scrollTop: number) {

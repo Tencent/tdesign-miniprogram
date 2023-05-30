@@ -136,7 +136,7 @@ exports[`navbar :menu button 1`] = `
 <main>
   <wx-view
     class="t-navbar t-navbar--fixed  class t-class"
-    style="--td-navbar-padding-top:20px; --td-navbar-right:414px; --td-navbar-capsule-height: 10px; --td-navbar-capsule-width:40px;"
+    style="--td-navbar-padding-top:20px; --td-navbar-right:414px; --td-navbar-capsule-height: 10px; --td-navbar-capsule-width: 40px; --td-navbar-height: -10px;"
   >
     <wx-view
       class="t-navbar__placeholder"

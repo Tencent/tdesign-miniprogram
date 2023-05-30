@@ -6,14 +6,6 @@
 
 export interface TdLoadingProps {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒
    * @default 0
    */
@@ -37,7 +29,7 @@ export interface TdLoadingProps {
     value?: ['t-class', 't-class-text', 't-class-indicator'];
   };
   /**
-   * 是否显示加载指示符
+   * 加载指示符，值为 true 显示默认指示符，值为 false 则不显示，也可以自定义指示符
    * @default true
    */
   indicator?: {
@@ -111,6 +103,6 @@ export interface TdLoadingProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: 'circular' | 'spinner' | 'bar' | 'error' | 'dots';
+    value?: 'circular' | 'spinner' | 'dots';
   };
 }

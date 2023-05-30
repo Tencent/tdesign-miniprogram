@@ -6,14 +6,6 @@
 
 export interface TdCollapseProps {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 默认是否展开全部
    * @default false
    */
@@ -29,7 +21,7 @@ export interface TdCollapseProps {
     value?: boolean;
   };
   /**
-   * 展开图标。值为 undefined 或 false 则不显示展开图标；值为 true 显示默认图标；值类型为函数，则表示完全自定义展开图标
+   * 展开图标
    * @default true
    */
   expandIcon?: {

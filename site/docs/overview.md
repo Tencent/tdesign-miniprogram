@@ -286,18 +286,18 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/image">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image-dark.png" />
-      <p class="name">Image 图片</p>
-    </a>
-  </div>
-
-  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/grid">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid-dark.png" />
       <p class="name">Grid 宫格</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/image">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image-dark.png" />
+      <p class="name">Image 图片</p>
     </a>
   </div>
 

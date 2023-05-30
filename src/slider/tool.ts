@@ -13,9 +13,6 @@
  * @return {number}
  */
 export const trimSingleValue = (value: any, min: number, max: number): number => {
-  if (typeof value !== 'number') {
-    return min;
-  }
   if (value < min) {
     return min;
   }

@@ -26,10 +26,13 @@
       class="{{_.cls(classPrefix + '__item', [['preview', this.isPrev(current, index, list)], ['next', this.isNext(current, index, list)]])}}"
       data-index="{{index}}"
       bind:tap="onTap"
+      aria-hidden="{{navCurrent !== index}}"
+      aria-role="image"
+      aria-label="{{_.isObject(item) ? item.ariaLabel : ''}}"
     >
       <template
         is="image"
-        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: item, mode: 'aspectFill', ...imageProps }}"
+        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: _.isObject(item) ? item.value : item, mode: 'aspectFill', dataset: index, ...imageProps, bindload: 'onImageLoad' }}"
       />
     </swiper-item>
   </swiper>

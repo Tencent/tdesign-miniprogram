@@ -30,14 +30,6 @@ export interface TdBadgeProps {
     value?: string | number;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 是否为红点
    * @default false
    */
@@ -73,7 +65,7 @@ export interface TdBadgeProps {
    */
   shape?: {
     type: StringConstructor;
-    value?: 'circle' | 'round' | 'ribbon' | 'bubble';
+    value?: 'circle' | 'square' | 'bubble' | 'ribbon';
   };
   /**
    * 当数值为 0 时，是否展示徽标
@@ -89,6 +81,6 @@ export interface TdBadgeProps {
    */
   size?: {
     type: StringConstructor;
-    value?: 'small' | 'medium';
+    value?: 'medium' | 'large';
   };
 }

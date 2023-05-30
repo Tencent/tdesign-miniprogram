@@ -9,12 +9,16 @@
 @radio-border-color: var(--td-radio-border-color, @component-stroke);
 @radio-label-color: var(--td-radio-label-color, @font-gray-1);
 @radio-label-disabled-color: var(--td-radio-label-disabled-color, @font-gray-4);
+@radio-label-checked-color: var(--td-radio-label-checked-color, @font-gray-1);
 @radio-content-color: var(--td-radio-content-color, @font-gray-2);
 @radio-content-disabled-color: var(--td-radio-content-disabled-color, @font-gray-4);
+@radio-content-checked-color: var(--td-radio-content-checked-color, @font-gray-2);
 @radio-icon-color: var(--td-radio-icon-color, @component-border);
 @radio-icon-disabled-color: var(--td-radio-icon-disabled-color, @brand-color-disabled);
 @radio-icon-disabled-bg-color: var(--td-radio-icon-disabled-bg-color, @bg-color-component-disabled);
 @radio-icon-checked-color: var(--td-radio-icon-checked-color, @brand-color);
+
+@radio-content-font-size: var(--td-radio-content-font-size, 28rpx);
 
 .limit-title-row {
   display: -webkit-box;
@@ -67,17 +71,24 @@
     }
 
     &-circle {
-      width: 84rpx;
-      height: 84rpx;
-      border: 3px solid @radio-icon-color;
-      border-radius: 50%;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.5);
+      width: @radio-icon-size;
+      height: @radio-icon-size;
       box-sizing: border-box;
 
-      &--disabled {
+      &::after {
+        content: '';
+        width: calc(200% - 6rpx);
+        height: calc(200% - 6rpx);
+        border-radius: 50%;
+        border: 3px solid @radio-icon-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+        box-sizing: border-box;
+      }
+
+      &--disabled::after {
         background: @radio-icon-disabled-bg-color;
       }
     }
@@ -176,17 +187,25 @@
       cursor: not-allowed;
       color: @radio-label-disabled-color;
     }
+
+    &--checked {
+      color: @radio-label-checked-color;
+    }
   }
 
   &__description {
     .limit-title-row();
     color: @radio-content-color;
-    font-size: 28rpx;
+    font-size: @radio-content-font-size;
     line-height: @radio-content-line-height;
 
     &--disabled {
       cursor: not-allowed;
       color: @radio-content-disabled-color;
+    }
+
+    &--checked {
+      color: @radio-content-checked-color;
     }
 
     &:empty {

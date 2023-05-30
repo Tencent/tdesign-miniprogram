@@ -28,6 +28,10 @@ const props: TdCollapsePanelProps = {
   header: {
     type: String,
   },
+  /** 面板头左侧图标 */
+  headerLeftIcon: {
+    type: String,
+  },
   /** 面板头的右侧区域，一般用于呈现面板操作 */
   headerRightContent: {
     type: String,
