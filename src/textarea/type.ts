@@ -26,8 +26,8 @@ export interface TdTextareaProps {
    * @default false
    */
   autosize?: {
-    type: BooleanConstructor;
-    value?: boolean;
+    type: null;
+    value?: boolean | object;
   };
   /**
    * 点击键盘右下角按钮时是否保持键盘不收起点
