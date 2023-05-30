@@ -25,7 +25,7 @@
           >
             <view
               class="{{name}}__step-dot {{name}}__step-dot--{{item !== defaultOptionLabel ? 'active' : ''}} {{name}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
-            ></view>
+            />
             <view class="{{name}}__step-label {{name}}__step-label--{{index === stepIndex ? 'active' : ''}}">
               {{ item }}
             </view>
