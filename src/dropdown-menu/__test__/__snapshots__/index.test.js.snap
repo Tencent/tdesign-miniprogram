@@ -89,7 +89,7 @@ exports[`dropdown-menu :base 1`] = `
             <wx-view
               ariaModal="{{true}}"
               ariaRole="dialog"
-              class="t-popup t-popup--top t-fade-enter t-fade-enter-active class t-class"
+              class="t-popup t-popup--top t-fade-enter-active t-fade-enter-to class t-class"
               style="z-index:11601; position: absolute;"
               bind:transitionend="onTransitionEnd"
             >
@@ -621,7 +621,7 @@ exports[`dropdown-menu :base 1`] = `
               <wx-view
                 ariaLabel="关闭"
                 ariaRole="button"
-                class="t-overlay t-fade-enter t-fade-enter-active class"
+                class="t-overlay t-fade-enter-active t-fade-enter-to class"
                 style="z-index:11000; position: absolute;"
                 bind:tap="handleClick"
                 catch:touchmove="noop"
