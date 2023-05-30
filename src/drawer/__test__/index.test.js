@@ -106,8 +106,8 @@ describe('drawer', () => {
     const overlayClick = jest.fn();
     let clickItemValue;
     const itemClick = (e) => {
-      const { sidebarItem } = e.detail;
-      clickItemValue = sidebarItem;
+      const { item } = e.detail;
+      clickItemValue = item;
     };
 
     it(`: mutiple`, async () => {
@@ -151,7 +151,7 @@ describe('drawer', () => {
       const index = 1;
       items[index].dispatchEvent('tap');
       await simulate.sleep(10);
-      expect(clickItemValue.item).toEqual(comp.data.sidebar[index]);
+      expect(clickItemValue).toEqual(comp.data.sidebar[index]);
 
       if (!VIRTUAL_HOST) {
         // showOverlay为false
