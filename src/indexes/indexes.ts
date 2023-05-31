@@ -56,7 +56,7 @@ export default class Indexes extends SuperComponent {
       if (this.data._height === 0) {
         this.setHeight();
       }
-      if (this.data._indexList?.length === 0 && !this.data.async) {
+      if (this.data.indexList === null) {
         this.setIndexList();
       }
     },
