@@ -35,7 +35,7 @@ describe('Sticky Props', () => {
 
     simulate.scroll($demo, 500, 4);
     await simulate.sleep(20);
-    expect($sticky.instance.data.contentStyle).toBe('position:fixed;top:0px;');
+    expect($sticky.instance.data.contentStyle).toBe('position:fixed;top:0px;left:0;right:0;');
   });
 
   it(':offset-top', async () => {
@@ -46,7 +46,7 @@ describe('Sticky Props', () => {
 
     simulate.scroll($demo, 500, 4);
     await simulate.sleep(20);
-    expect($sticky.instance.data.contentStyle).toBe('position:fixed;top:100px;');
+    expect($sticky.instance.data.contentStyle).toBe('position:fixed;top:100px;left:0;right:0;');
   });
 
   it(':disabled', async () => {

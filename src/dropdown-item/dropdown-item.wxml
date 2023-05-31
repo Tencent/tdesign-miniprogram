@@ -11,11 +11,11 @@
     z-index="{{zIndex + 1}}"
     duration="{{duration}}"
     show-overlay="{{showOverlay}}"
-    style="position: absolute"
+    custom-style="position: absolute"
     overlay-props="{{ { style: 'position: absolute' } }}"
     bind:leaved="onLeaved"
     bind:visible-change="handleMaskClick"
-    class="{{classPrefix}}__popup-host"
+    t-class="{{classPrefix}}__popup-host"
     t-class-content="{{classPrefix}}__content {{prefix}}-class-content"
   >
     <view class="{{classPrefix}}__body">
