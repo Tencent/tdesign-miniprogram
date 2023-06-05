@@ -22,6 +22,7 @@
       focus="{{localValue.focus}}"
       value="{{value}}"
       confirm-type="search"
+      cursor-spacing="{{cursorSpacing}}"
       placeholder="{{placeholder}}"
       placeholder-class="{{classPrefix}}__placeholder {{classPrefix}}__placeholder--{{center ? 'center': 'normal'}}"
       bind:input="onInput"
