@@ -44,7 +44,7 @@ isComponent: true
 -- | -- | -- | -- | --
 container | Function | - | 函数返回容器对应的 NodesRef 节点，将对应节点指定为组件的外部容器，滚动时组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置。 | N
 disabled | Boolean | false | 是否禁用组件 | N
-external-classes | Array | - | 根结点外部样式。`['t-class']` | N
+external-classes | Array | - | 根结点外部样式。`['t-class', 't-class-content']` | N
 offset-top | String / Number | 0 | 吸顶时与顶部的距离，单位`px` | N
 z-index | Number | 99 | 吸顶时的 z-index | N
 

@@ -33,7 +33,7 @@ export interface TdPickerProps {
     value?: boolean | string | ButtonProps;
   };
   /**
-   * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
+   * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容
    * @default true
    */
   header?: {
@@ -77,13 +77,14 @@ export interface TdPickerProps {
     type: BooleanConstructor;
     value?: boolean;
   };
-}
-
-export type PickerColumn = PickerColumnItem[];
-
-export interface PickerColumnItem {
-  label: string;
-  value: string;
+  /**
+   * popup组件样式
+   * @default {}
+   */
+  popupProps: {
+    type: object;
+    value?: {};
+  };
 }
 
 export type PickerValue = string | number;

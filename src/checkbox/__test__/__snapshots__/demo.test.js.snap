@@ -136,7 +136,7 @@ exports[`Checkbox Checkbox horizontal demo works fine 1`] = `
 exports[`Checkbox Checkbox right demo works fine 1`] = `
 <right>
   <t-checkbox
-    checked="{{true}}"
+    defaultChecked="{{true}}"
     label="多选"
     value="1"
   />
@@ -145,9 +145,9 @@ exports[`Checkbox Checkbox right demo works fine 1`] = `
     style="height: 32rpx"
   />
   <t-checkbox
-    align="right"
-    checked="{{true}}"
+    defaultChecked="{{true}}"
     label="多选"
+    placement="right"
     value="2"
   />
 </right>

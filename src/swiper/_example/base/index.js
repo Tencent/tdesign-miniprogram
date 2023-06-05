@@ -27,5 +27,8 @@ Component({
 
       console.log(current, source);
     },
+    onImageLoad(e) {
+      console.log(e.detail.index);
+    },
   },
 });

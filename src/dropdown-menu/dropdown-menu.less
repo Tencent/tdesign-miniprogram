@@ -6,6 +6,7 @@
 @dropdown-menu-disabled-color: var(--td-dropdown-menu-disabled-colorm, @font-gray-4);
 @dropdown-menu-font-size: var(--td-dropdown-menu-font-sizem, 28rpx);
 @dropdown-menu-icon-size: var(--td-dropdown-menu-icon-sizem, 48rpx);
+@dropdown-menu-border-width: var(--td-dropdown-menu-border-width, 1px);
 
 @dropdownMenu: ~'@{prefix}-dropdown-menu';
 
@@ -15,6 +16,10 @@
   height: 48px;
   background: @dropdown-menu-bg-color;
   .border(bottom);
+
+  &:after {
+    height: @dropdown-menu-border-width;
+  }
 
   &__item {
     display: flex;

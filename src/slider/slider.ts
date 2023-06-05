@@ -121,6 +121,8 @@ export default class Slider extends SuperComponent {
   };
 
   triggerValue(value?: SliderValue) {
+    if (this.preval === value) return;
+    this.preval = value;
     this._trigger('change', {
       value: trimValue(value, this.properties),
     });
@@ -212,11 +214,12 @@ export default class Slider extends SuperComponent {
 
   stepValue(value: number): number {
     const { step, min, max } = this.properties;
-
-    if (Number(step) < 1 || Number(step) > Number(max) - Number(min)) return value;
-
-    const closestStep = trimSingleValue(Math.round(value / Number(step)) * Number(step), Number(min), Number(max));
-
+    const decimal = String(step).indexOf('.') > -1 ? String(step).length - String(step).indexOf('.') - 1 : 0;
+    const closestStep = trimSingleValue(
+      Number((Math.round(value / Number(step)) * Number(step)).toFixed(decimal)),
+      Number(min),
+      Number(max),
+    );
     return closestStep as number;
   }
 
@@ -236,13 +239,12 @@ export default class Slider extends SuperComponent {
     const { pageX } = touch;
     const currentLeft = pageX - initialLeft;
     let value = 0;
-
     if (currentLeft <= 0) {
       value = Number(min);
     } else if (currentLeft >= maxRange) {
       value = Number(max);
     } else {
-      value = Math.round((currentLeft / maxRange) * (Number(max) - Number(min)) + Number(min));
+      value = (currentLeft / maxRange) * (Number(max) - Number(min)) + Number(min);
     }
     return this.stepValue(value);
   }
@@ -295,6 +297,10 @@ export default class Slider extends SuperComponent {
         this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
       }
     });
+  }
+
+  onTouchStart(e: WechatMiniprogram.TouchEvent) {
+    this.triggerEvent('dragstart', { e });
   }
 
   onTouchMoveLeft(e: WechatMiniprogram.TouchEvent) {
@@ -355,5 +361,7 @@ export default class Slider extends SuperComponent {
     }
   }
 
-  onTouchEnd() {}
+  onTouchEnd(e: WechatMiniprogram.TouchEvent) {
+    this.triggerEvent('dragend', { e });
+  }
 }

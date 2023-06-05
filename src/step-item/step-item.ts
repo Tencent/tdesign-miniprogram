@@ -26,7 +26,6 @@ export default class StepItem extends SuperComponent {
 
   properties = props;
 
-  // 组件的内部数据
   data = {
     classPrefix: name,
     prefix,
@@ -35,10 +34,11 @@ export default class StepItem extends SuperComponent {
     curStatus: '',
     layout: 'vertical',
     isLastChild: false,
+    sequence: 'positive',
   };
 
   methods = {
-    updateStatus(current, currentStatus, index, theme, layout, steps) {
+    updateStatus({ current, currentStatus, index, theme, layout, items, sequence }) {
       let curStatus = this.data.status;
 
       if (curStatus === 'default') {
@@ -55,7 +55,8 @@ export default class StepItem extends SuperComponent {
         isDot: theme === 'dot',
         layout,
         theme,
-        isLastChild: steps.length - 1 === index,
+        sequence,
+        isLastChild: index === (sequence === 'positive' ? items.length - 1 : 0),
       });
     },
 

@@ -24,6 +24,39 @@ exports[`DateTimePicker DateTimePicker date-all demo works fine 1`] = `
 </date-all>
 `;
 
+exports[`DateTimePicker DateTimePicker steps demo works fine 1`] = `
+<steps>
+  <t-cell
+    arrow="{{true}}"
+    hover="{{true}}"
+    note=""
+    tClass="pannel-item"
+    title="选择时间"
+    bind:tap="showPicker"
+  />
+  <t-date-time-picker
+    format="HH:mm:ss"
+    mode="{{
+      Array [
+        "null",
+        "second",
+      ]
+    }}"
+    steps="{{
+      Object {
+        "minute": 5,
+      }
+    }}"
+    title="选择时间"
+    value="10:00:00"
+    visible="{{false}}"
+    bind:cancel="hidePicker"
+    bind:change="onConfirm"
+    bind:pick="onColumnChange"
+  />
+</steps>
+`;
+
 exports[`DateTimePicker DateTimePicker time demo works fine 1`] = `
 <time>
   <wx-view

@@ -1,0 +1,640 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dropdown-menu :base 1`] = `
+<main>
+  <t-dropdown-menu
+    id="base"
+  >
+    <wx-view
+      class="t-dropdown-menu class t-class"
+      id="t-bar"
+      style="color: red; font-size: 9px;"
+    >
+      <wx-view
+        ariaDisabled="{{false}}"
+        ariaExpanded="{{true}}"
+        ariaHaspopup="menu"
+        ariaRole="button"
+        class="t-dropdown-menu__item t-dropdown-menu__item--active t-class-item"
+        data-index="{{0}}"
+        bind:tap="handleToggle"
+      >
+        <wx-view
+          class="t-dropdown-menu__title t-class-label"
+        >
+          菜单
+        </wx-view>
+        <t-icon
+          tClass="t-dropdown-menu__icon t-dropdown-menu__icon--active t-class-icon"
+        >
+          <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
+            ariaRole=""
+            class="t-icon class t-class"
+            style=""
+            bind:tap="onTap"
+          >
+            <wx-label
+              class="t-icon-caret-down-small t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
+      </wx-view>
+      <wx-view
+        ariaDisabled="{{false}}"
+        ariaExpanded="{{false}}"
+        ariaHaspopup="menu"
+        ariaRole="button"
+        class="t-dropdown-menu__item t-class-item"
+        data-index="{{1}}"
+        bind:tap="handleToggle"
+      >
+        <wx-view
+          class="t-dropdown-menu__title t-class-label"
+        >
+          单列多选
+        </wx-view>
+        <t-icon
+          tClass="t-dropdown-menu__icon t-dropdown-menu__icon-- t-class-icon"
+        >
+          <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
+            ariaRole=""
+            class="t-icon class t-class"
+            style=""
+            bind:tap="onTap"
+          >
+            <wx-label
+              class="t-icon-caret-down-small t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
+      </wx-view>
+      <t-dropdown-item
+        id="first"
+        bind:change="handleSingleSelect"
+      >
+        <wx-view
+          class="t-dropdown-item class t-class"
+          style="z-index:11600;"
+        >
+          <t-popup
+            tClass="t-dropdown-item__popup-host"
+            tClassContent="t-dropdown-item__content t-class-content"
+            bind:leaved="onLeaved"
+            bind:visible-change="handleMaskClick"
+          >
+            <wx-view
+              ariaModal="{{true}}"
+              ariaRole="dialog"
+              class="t-popup t-popup--top t-fade-enter t-fade-enter-active class t-class"
+              style="z-index:11601; position: absolute;"
+              bind:transitionend="onTransitionEnd"
+            >
+              <wx-view
+                class="t-popup__content t-class-content"
+              >
+                <wx-view
+                  class="t-dropdown-item__body"
+                >
+                  <wx-scroll-view
+                    class="t-dropdown-item__scroll"
+                    scrollIntoView="id_option_3"
+                    scrollY="{{true}}"
+                  >
+                    <t-radio-group
+                      class="t-dropdown-item__radio t-class-column"
+                      tClass="t-dropdown-item__radio-group"
+                      bind:change="handleRadioChange"
+                    >
+                      <wx-view
+                        ariaRole="radiogroup"
+                        class="t-radio-group class t-class"
+                        style="grid-template-columns: repeat(1, 1fr);"
+                      >
+                        <wx-view
+                          id="id_option_1"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{false}}"
+                              ariaDisabled="{{false}}"
+                              ariaLabel="选项一"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{false}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-class-icon"
+                              >
+                                <wx-view
+                                  class="placeholder"
+                                />
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      选项一
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                        <wx-view
+                          id="id_option_2"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{false}}"
+                              ariaDisabled="{{false}}"
+                              ariaLabel="选项二"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{false}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-class-icon"
+                              >
+                                <wx-view
+                                  class="placeholder"
+                                />
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      选项二
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                        <wx-view
+                          id="id_option_3"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{true}}"
+                              ariaDisabled="{{false}}"
+                              ariaLabel="选项三"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{false}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-radio__icon--checked t-class-icon"
+                              >
+                                <t-icon
+                                  class="t-radio__icon-wrap"
+                                >
+                                  <wx-view
+                                    ariaHidden="{{false}}"
+                                    ariaLabel=""
+                                    ariaRole=""
+                                    class="t-icon class t-class"
+                                    style=""
+                                    bind:tap="onTap"
+                                  >
+                                    <wx-label
+                                      class="t-icon-check t-icon-base"
+                                    />
+                                  </wx-view>
+                                </t-icon>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-radio__title--checked t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      选项三
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-radio__description--checked t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                        <wx-view
+                          id="id_option_4"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{false}}"
+                              ariaDisabled="{{false}}"
+                              ariaLabel="选项四"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{false}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-class-icon"
+                              >
+                                <wx-view
+                                  class="placeholder"
+                                />
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      选项四
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                        <wx-view
+                          id="id_option_5"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{false}}"
+                              ariaDisabled="{{false}}"
+                              ariaLabel="选项五"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{false}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-class-icon"
+                              >
+                                <wx-view
+                                  class="placeholder"
+                                />
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      选项五
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                        <wx-view
+                          id="id_option_6"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{false}}"
+                              ariaDisabled="{{false}}"
+                              ariaLabel="选项六"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{false}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-class-icon"
+                              >
+                                <wx-view
+                                  class="placeholder"
+                                />
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      选项六
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                        <wx-view
+                          id="id_option_7"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{false}}"
+                              ariaDisabled="{{false}}"
+                              ariaLabel="选项七"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{false}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-class-icon"
+                              >
+                                <wx-view
+                                  class="placeholder"
+                                />
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      选项七
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                        <wx-view
+                          id="id_option_8"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{false}}"
+                              ariaDisabled="{{false}}"
+                              ariaLabel="选项八"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{false}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-class-icon"
+                              >
+                                <wx-view
+                                  class="placeholder"
+                                />
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      选项八
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                        <wx-view
+                          id="id_disabled"
+                        >
+                          <t-radio
+                            class="t-dropdown-item__radio-item t-class-column-item"
+                            tabindex="0"
+                            tClass="radio"
+                            tClassLabel="t-class-column-item-label"
+                          >
+                            <wx-view
+                              ariaChecked="{{false}}"
+                              ariaDisabled="{{true}}"
+                              ariaLabel="禁用选项"
+                              ariaRole="radio"
+                              class="t-radio t-radio--block class t-class"
+                              disabled="{{true}}"
+                              style=""
+                              tabindex=""
+                              bind:tap="handleTap"
+                            >
+                              <wx-view
+                                class="t-radio__icon t-radio__icon--disabled t-class-icon"
+                              >
+                                <wx-view
+                                  class="placeholder"
+                                />
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__content"
+                                data-target="text"
+                                catch:tap="handleTap"
+                              >
+                                <wx-view
+                                  class="t-radio__title t-radio__title--disabled t-class-label"
+                                  style="-webkit-line-clamp:3"
+                                >
+                                  
+      禁用选项
+      
+                                </wx-view>
+                                <wx-view
+                                  class="t-radio__description t-radio__description--disabled t-class-content "
+                                  style="-webkit-line-clamp:5"
+                                >
+                                  
+                                </wx-view>
+                              </wx-view>
+                              <wx-view
+                                class="t-radio__border t-class-border"
+                              />
+                            </wx-view>
+                          </t-radio>
+                        </wx-view>
+                      </wx-view>
+                    </t-radio-group>
+                  </wx-scroll-view>
+                </wx-view>
+                <wx-view
+                  class="t-popup__close"
+                  bind:tap="handleClose"
+                />
+              </wx-view>
+            </wx-view>
+            <t-overlay
+              id="popup-overlay"
+              bind:tap="handleOverlayClick"
+            >
+              <wx-view
+                ariaLabel="关闭"
+                ariaRole="button"
+                class="t-overlay t-fade-enter t-fade-enter-active class"
+                style="z-index:11000; position: absolute;"
+                bind:tap="handleClick"
+                catch:touchmove="noop"
+                bind:transitionend="onTransitionEnd"
+              />
+            </t-overlay>
+          </t-popup>
+        </wx-view>
+      </t-dropdown-item>
+      <t-dropdown-item
+        id="second"
+      />
+    </wx-view>
+  </t-dropdown-menu>
+</main>
+`;

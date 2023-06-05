@@ -4,7 +4,13 @@
 <import src="./template/grid.wxml" />
 
 <view id="{{classPrefix}}" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
-  <t-popup visible="{{visible}}" placement="bottom" bind:visible-change="onPopupVisibleChange">
+  <t-popup
+    visible="{{visible}}"
+    placement="bottom"
+    bind:visible-change="onPopupVisibleChange"
+    z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
+    overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
+  >
     <view
       class="{{_.cls(classPrefix + '__content', [['grid', gridThemeItems.length]])}} {{prefix}}-class-content"
       tabindex="0"

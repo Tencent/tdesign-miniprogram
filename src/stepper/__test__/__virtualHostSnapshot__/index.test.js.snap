@@ -12,18 +12,22 @@ exports[`stepper event : input 1`] = `
     class="t-stepper__minus t-stepper__minus--normal t-stepper__icon--medium  t-class-minus"
     catch:tap="minusValue"
   >
-    <wx-view
-      ariaHidden="{{false}}"
-      ariaLabel=""
-      ariaRole=""
-      class="t-icon class t-class"
-      style=""
-      bind:tap="onTap"
+    <t-icon
+      class="t-stepper__minus-icon"
     >
-      <wx-label
-        class="t-icon-remove t-icon-base"
-      />
-    </wx-view>
+      <wx-view
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        ariaRole=""
+        class="t-icon class t-class"
+        style=""
+        bind:tap="onTap"
+      >
+        <wx-label
+          class="t-icon-remove t-icon-base"
+        />
+      </wx-view>
+    </t-icon>
   </wx-view>
   <wx-view
     class="t-stepper__input--normal "
@@ -46,18 +50,22 @@ exports[`stepper event : input 1`] = `
     class="t-stepper__plus t-stepper__plus--normal t-stepper__icon--medium   t-class-plus"
     catch:tap="plusValue"
   >
-    <wx-view
-      ariaHidden="{{false}}"
-      ariaLabel=""
-      ariaRole=""
-      class="t-icon class t-class"
-      style=""
-      bind:tap="onTap"
+    <t-icon
+      class="t-stepper__plus-icon"
     >
-      <wx-label
-        class="t-icon-add t-icon-base"
-      />
-    </wx-view>
+      <wx-view
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        ariaRole=""
+        class="t-icon class t-class"
+        style=""
+        bind:tap="onTap"
+      >
+        <wx-label
+          class="t-icon-add t-icon-base"
+        />
+      </wx-view>
+    </t-icon>
   </wx-view>
 </wx-view>
 `;
@@ -74,18 +82,22 @@ exports[`stepper event : input 2`] = `
     class="t-stepper__minus t-stepper__minus--normal t-stepper__icon--medium  t-class-minus"
     catch:tap="minusValue"
   >
-    <wx-view
-      ariaHidden="{{false}}"
-      ariaLabel=""
-      ariaRole=""
-      class="t-icon class t-class"
-      style=""
-      bind:tap="onTap"
+    <t-icon
+      class="t-stepper__minus-icon"
     >
-      <wx-label
-        class="t-icon-remove t-icon-base"
-      />
-    </wx-view>
+      <wx-view
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        ariaRole=""
+        class="t-icon class t-class"
+        style=""
+        bind:tap="onTap"
+      >
+        <wx-label
+          class="t-icon-remove t-icon-base"
+        />
+      </wx-view>
+    </t-icon>
   </wx-view>
   <wx-view
     class="t-stepper__input--normal "
@@ -108,18 +120,22 @@ exports[`stepper event : input 2`] = `
     class="t-stepper__plus t-stepper__plus--normal t-stepper__icon--medium   t-class-plus"
     catch:tap="plusValue"
   >
-    <wx-view
-      ariaHidden="{{false}}"
-      ariaLabel=""
-      ariaRole=""
-      class="t-icon class t-class"
-      style=""
-      bind:tap="onTap"
+    <t-icon
+      class="t-stepper__plus-icon"
     >
-      <wx-label
-        class="t-icon-add t-icon-base"
-      />
-    </wx-view>
+      <wx-view
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        ariaRole=""
+        class="t-icon class t-class"
+        style=""
+        bind:tap="onTap"
+      >
+        <wx-label
+          class="t-icon-add t-icon-base"
+        />
+      </wx-view>
+    </t-icon>
   </wx-view>
 </wx-view>
 `;

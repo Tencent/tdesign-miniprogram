@@ -64,15 +64,20 @@ Component({
     options: data.areaList,
     note: '请选择地址',
     visible: false,
+    value: '',
   },
   methods: {
     showCascader() {
       this.setData({ visible: true });
     },
+    onPick(e) {
+      console.log(e.detail);
+    },
     onChange(e) {
-      const { selectedOptions } = e.detail;
+      const { selectedOptions, value } = e.detail;
 
       this.setData({
+        value,
         note: selectedOptions.map((item) => item.label).join('/'),
       });
     },

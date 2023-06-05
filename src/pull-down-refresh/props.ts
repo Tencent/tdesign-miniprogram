@@ -6,14 +6,23 @@
 
 import { TdPullDownRefreshProps } from './type';
 const props: TdPullDownRefreshProps = {
+  /** iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向。自 2.27.3 版本开始，若非显式设置为 false，则在显示尺寸大于屏幕 90% 时自动开启 */
+  enableBackToTop: {
+    type: Boolean,
+    value: true,
+  },
+  /** 开启 passive 特性，能优化一定的滚动性能 */
+  enablePassive: {
+    type: Boolean,
+    value: false,
+  },
   /** 加载loading样式 */
   externalClasses: {
     type: Array,
   },
   /** 加载中下拉高度，如果值为数字则单位是：'px' */
   loadingBarHeight: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: 50,
   },
   /** 加载loading样式 */
@@ -25,16 +34,30 @@ const props: TdPullDownRefreshProps = {
     type: Array,
     value: [],
   },
+  /** 距底部/右边多远时，触发 scrolltolower 事件 */
+  lowerThreshold: {
+    type: null,
+    value: 50,
+  },
   /** 最大下拉高度，如果值为数字则单位是：'px' */
   maxBarHeight: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: 80,
   },
   /** 刷新超时时间 */
   refreshTimeout: {
     type: Number,
     value: 3000,
+  },
+  /** 值应为某子元素id（id不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素 */
+  scrollIntoView: {
+    type: String,
+    value: '',
+  },
+  /** 距顶部/左边多远时，触发 scrolltoupper 事件 */
+  upperThreshold: {
+    type: null,
+    value: 50,
   },
   /** 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态 */
   value: {

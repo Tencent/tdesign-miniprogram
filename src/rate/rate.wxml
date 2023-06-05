@@ -10,21 +10,36 @@
     catch:tap="{{ !disabled ? 'onTap' : '' }}"
     catch:touchend="{{ !disabled ? 'onTouchEnd' : ''}}"
     catch:touchcancel="{{ !disabled ? 'onTouchEnd' : ''}}"
+    aria-role="slider"
+    aria-valuemax="{{count}}"
+    aria-valuemin="{{0}}"
+    aria-valuenow="{{value}}"
+    aria-valuetext="{{utils.getText(texts,value,defaultTexts)}}"
   >
     <t-icon
       wx:for="{{ count }}"
       wx:key="*this"
       class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
+      style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
       t-class="{{prefix}}-class-icon"
       name="{{utils.getIconName(defaultValue, value, index, icon)}}"
       size="{{ size }}"
-      style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
     />
   </view>
-  <text wx:if="{{showText}}" class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
+  <text
+    wx:if="{{showText}}"
+    class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
+    aria-hidden="{{true}}"
     >{{utils.getText(texts,value,defaultTexts)}}</text
   >
-  <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px">
+  <text
+    wx:if="{{isVisibleToScreenReader}}"
+    class="{{_.cls(classPrefix + '__text', [['active', value > 0], ['sr-only', isVisibleToScreenReader]])}} {{prefix}}-class-text"
+    aria-role="alert"
+    aria-live="assertive"
+    >{{value+'星'}} {{utils.getText(texts,value,defaultTexts)}}</text
+  >
+  <view wx:if="{{tipsVisible}}" class="{{classPrefix}}__tips" style="left: {{tipsLeft}}px" aria-hidden="{{true}}">
     <block wx:if="{{actionType == 'tap'}}">
       <view
         wx:if="{{allowHalf}}"

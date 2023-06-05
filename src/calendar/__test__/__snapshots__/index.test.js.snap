@@ -790,7 +790,6 @@ exports[`calendar :base 1`] = `
         </wx-view>
       </wx-view>
       <t-overlay
-        class="test"
         id="popup-overlay"
         bind:tap="handleOverlayClick"
       >

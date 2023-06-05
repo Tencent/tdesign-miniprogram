@@ -42,6 +42,7 @@
 
   &--layout-vertical {
     flex-direction: column;
+    align-items: start;
   }
 
   &__wrap--prefix {
@@ -60,6 +61,8 @@
     line-height: 48rpx;
     color: @input-label-text-color;
     margin-right: @spacer-2;
+    word-wrap: break-word;
+
     .@{prefix}-input--layout-vertical & {
       font-size: @font-size-base;
       padding-bottom: 8rpx;
@@ -79,6 +82,7 @@
   }
 
   &__wrap {
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
