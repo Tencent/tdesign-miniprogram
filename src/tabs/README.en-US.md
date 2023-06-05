@@ -7,6 +7,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 animation | Object | - | Typescript：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tabs/type.ts) | N
 external-classes | Array | - | `['t-class', 't-class-item', 't-class-active', 't-class-track']` | N
+middle | Slot | - | \- | N
 show-bottom-line | Boolean | true | \- | N
 space-evenly | Boolean | true | \- | N
 sticky | Boolean | false | \- | N

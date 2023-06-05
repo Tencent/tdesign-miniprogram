@@ -38,6 +38,7 @@ export default class DropdownMenuItem extends SuperComponent {
     labelAlias: 'label',
     valueAlias: 'value',
     computedLabel: '',
+    firstCheckedValue: '', // 用于多选再次打开自动定位到首个选项
   };
 
   relations: RelationsOptions = {
@@ -133,6 +134,11 @@ export default class DropdownMenuItem extends SuperComponent {
 
       if (!this.data.multiple) {
         this.closeDropdown();
+      } else {
+        const firstChecked = this.data.options.find((item) => value.includes(item.value));
+        if (firstChecked) {
+          this.data.firstCheckedValue = firstChecked.value;
+        }
       }
     },
 
@@ -150,6 +156,8 @@ export default class DropdownMenuItem extends SuperComponent {
     handleConfirm() {
       this._trigger('confirm', { value: this.data.value });
       this.closeDropdown();
+      // 在关闭popup后才自动滚动到首个选项
+      this.setData({ firstCheckedValue: this.data.firstCheckedValue });
     },
 
     onLeaved() {

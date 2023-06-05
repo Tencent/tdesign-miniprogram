@@ -18,8 +18,15 @@
   display: flex;
   width: 100%;
 
-  // 垂直
   &--vertical {
     flex-direction: column;
+  }
+
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+
+  &--vertical&--reverse {
+    flex-direction: column-reverse;
   }
 }

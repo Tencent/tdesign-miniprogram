@@ -108,4 +108,12 @@ export interface TdSearchProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+  /**
+   * 可以控制拉起的键盘类型
+   * @default 'text'
+   */
+  type: {
+    type: StringConstructor;
+    value?: string;
+  };
 }

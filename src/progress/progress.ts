@@ -24,7 +24,22 @@ export default class Progress extends SuperComponent {
     heightBar: '',
     computedStatus: '',
     computedProgress: 0,
+    isIOS: false,
   };
+
+  attached() {
+    wx.getSystemInfo({
+      success: (res) => {
+        const isIOS = !!(res.system.toLowerCase().search('ios') + 1);
+        this.setData({
+          isIOS,
+        });
+      },
+      fail: (err) => {
+        console.error('progress 获取系统信息失败', err);
+      },
+    });
+  }
 
   observers = {
     percentage(percentage) {

@@ -80,7 +80,8 @@ export default class Navbar extends SuperComponent {
           boxStyleList.push(`--td-navbar-right:${res.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
         }
         boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
-        boxStyleList.push(`--td-navbar-capsule-width:${rect.width}px`); // 胶囊宽度
+        boxStyleList.push(`--td-navbar-capsule-width: ${rect.width}px`); // 胶囊宽度
+        boxStyleList.push(`--td-navbar-height: ${(rect.top - statusBarHeight) * 2 + rect.height}px`);
         this.setData({
           boxStyle: `${boxStyleList.join('; ')}`,
         });

@@ -88,6 +88,13 @@ export default {
           component: () => import('@/icon/README.md'),
         },
         {
+          title: 'Layout 布局',
+          name: 'layout',
+          meta: { docType: 'base' },
+          path: '/miniprogram/components/col',
+          component: () => import('@/col/README.md'),
+        },
+        {
           title: 'Link 链接',
           name: 'link',
           meta: { docType: 'base' },

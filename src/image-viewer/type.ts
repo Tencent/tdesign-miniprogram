@@ -6,21 +6,28 @@
 
 export interface TdImageViewerProps {
   /**
-   * 自定义组件样式
-   * @default ''
+   * 遮罩的背景颜色
+   * @default 'rgba(0, 0, 0, 1)'
    */
-  style?: {
+  backgroundColor?: {
     type: StringConstructor;
     value?: string;
   };
   /**
-   * 遮罩的背景颜色
-   * @default rgba(0, 0, 0, .6)
+   * 是否显示关闭操作，前提需要开启页码。值为字符串表示图标名称，值为 `true` 表示使用默认图标 `close`，值为 `Object` 类型，表示透传至 `icon` ，不传表示不显示图标
+   * @default false
    */
-  backgroundColor?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
-    value?: string | number;
+  closeBtn?: {
+    type: null;
+    value?: string | boolean | object;
+  };
+  /**
+   * 是否显示删除操作，前提需要开启页码。值为字符串表示图标名称，值为 `true` 表示使用默认图标 `delete`，值为 `Object` 类型，表示透传至 `icon`，不传表示不显示图标
+   * @default false
+   */
+  deleteBtn?: {
+    type: null;
+    value?: string | boolean | object;
   };
   /**
    * 图片数组
@@ -31,12 +38,12 @@ export interface TdImageViewerProps {
     value?: Array<string>;
   };
   /**
-   * 默认展示第几项
+   * 初始化页码
    * @default 0
    */
   initialIndex?: {
     type: NumberConstructor;
-    value?: number;
+    value?: Number;
   };
   /**
    * 是否显示页码
@@ -46,15 +53,13 @@ export interface TdImageViewerProps {
     type: BooleanConstructor;
     value?: boolean;
   };
-  /** 是否显示删除操作 */
-  deleteBtn?: {
-    type: null;
-    value?: boolean | string | object;
-  };
-  /** 是否显示关闭操作 */
-  closeBtn?: {
-    type: null;
-    value?: boolean | string | object;
+  /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 隐藏/显示预览

@@ -28,7 +28,7 @@ export default class Button extends SuperComponent {
   };
 
   observers = {
-    'theme, size, plain, block, shape, disabled, loading'() {
+    'theme, size, plain, block, shape, disabled, loading, variant'() {
       this.setClass();
     },
 
@@ -92,7 +92,7 @@ export default class Button extends SuperComponent {
       this.triggerEvent('chooseavatar', e.detail);
     },
     handleTap(e) {
-      if (this.data.disabled) return;
+      if (this.data.disabled || this.data.loading) return;
 
       this.triggerEvent('tap', e);
     },

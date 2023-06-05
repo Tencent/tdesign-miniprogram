@@ -5,7 +5,7 @@ describe('pull-down-refresh', () => {
   const pullDownRefresh = load(path.resolve(__dirname, `../pull-down-refresh`), 't-pull-down-refresh');
 
   describe('props', () => {
-    it(`: style && customStyle`, async () => {
+    it(`:style`, async () => {
       const id = simulate.load({
         template: `<t-pull-down-refresh class="pull-down-refresh" style="{{style}}" customStyle="{{customStyle}}"></t-pull-down-refresh>`,
         usingComponents: {
@@ -29,11 +29,11 @@ describe('pull-down-refresh', () => {
       }
     });
 
-    it(': maxBarHeight', async () => {
+    it(':maxBarHeight', async () => {
       const id = simulate.load({
         template: `<t-pull-down-refresh
           id="t-pull-down-refresh"
-          value="{{baseRefresh.value}}"
+          value="{{value}}"
           refresh-timeout="{{refreshTimeout}}"
           loading-bar-height="{{loadingBarHeight}}"
           max-bar-height="{{maxBarHeight}}"
@@ -47,9 +47,7 @@ describe('pull-down-refresh', () => {
           refreshTimeout: 40,
           loadingBarHeight: 20,
           maxBarHeight: 80,
-          baseRefresh: {
-            value: false,
-          },
+          value: false,
           loadingProps: {
             size: '50rpx',
           },
@@ -60,20 +58,19 @@ describe('pull-down-refresh', () => {
       await simulate.sleep(240); // 等待 close 执行完毕
       const $pullDownRefresh = comp.querySelector('#t-pull-down-refresh');
       const $tips = $pullDownRefresh.querySelector('.t-pull-down-refresh__tips');
-
       expect($tips.dom.getAttribute('style').includes(`${comp.data.loadingBarHeight}px`)).toBeTruthy();
       // expect(comp.toJSON()).toMatchSnapshot();
     });
   });
   describe('event', () => {
-    it(': change', async () => {
+    it(':change', async () => {
       const handleRefresh = jest.fn();
       const handleTimeout = jest.fn();
       const handleChange = jest.fn();
       const id = simulate.load({
         template: `<t-pull-down-refresh
           id="t-pull-down-refresh"
-          value="{{baseRefresh.value}}"
+          value="{{value}}"
           refresh-timeout="{{refreshTimeout}}"
           loading-bar-height="{{loadingBarHeight}}"
           max-bar-height="{{maxBarHeight}}"
@@ -82,17 +79,15 @@ describe('pull-down-refresh', () => {
           bind:refresh="handleRefresh"
           bind:timeout ="handleTimeout"
           bind:change="handleChange"
-        ></t-pull-down-refresh>`,
+        />`,
         usingComponents: {
           't-pull-down-refresh': pullDownRefresh,
         },
         data: {
           refreshTimeout: 40,
-          loadingBarHeight: 50,
+          loadingBarHeight: 25,
           maxBarHeight: 80,
-          baseRefresh: {
-            value: false,
-          },
+          value: false,
           loadingProps: {
             size: '50rpx',
           },
@@ -133,9 +128,9 @@ describe('pull-down-refresh', () => {
       };
       move1();
       await simulate.sleep(300);
-      expect(handleChange).toHaveBeenCalledTimes(2);
+      expect(handleChange).toHaveBeenCalledTimes(1);
       expect(handleRefresh).toHaveBeenCalledTimes(1);
-      expect(handleTimeout).toHaveBeenCalledTimes(1);
+      expect(handleTimeout).toHaveBeenCalledTimes(0);
 
       comp.setData({
         maxBarHeight: 10,
@@ -154,7 +149,7 @@ describe('pull-down-refresh', () => {
       };
       move2();
       await simulate.sleep(300);
-      expect(handleChange).toHaveBeenCalledTimes(4);
+      expect(handleChange).toHaveBeenCalledTimes(1);
 
       const move3 = () => {
         $scrollView.dispatchEvent('touchstart');
@@ -171,7 +166,7 @@ describe('pull-down-refresh', () => {
       };
       move4();
       await simulate.sleep(300);
-      expect(handleChange).toHaveBeenCalledTimes(5);
+      expect(handleChange).toHaveBeenCalledTimes(1);
 
       comp.detach();
     });

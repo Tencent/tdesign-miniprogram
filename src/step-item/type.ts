@@ -36,16 +36,9 @@ export interface TdStepItemProps {
     value?: StepStatus;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 子步骤条，仅支持 layout  = 'vertical' 时
    * @default []
+   * @deprecated
    */
   subStepItems?: {
     type: ArrayConstructor;

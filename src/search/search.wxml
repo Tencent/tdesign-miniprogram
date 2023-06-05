@@ -15,7 +15,7 @@
     />
     <slot name="left-icon" />
     <input
-      type="text"
+      type="{{type}}"
       name="input"
       disabled="{{disabled}}"
       class="{{prefix}}-input__keyword {{prefix}}-class-input"

@@ -771,7 +771,7 @@ exports[`calendar :base 1`] = `
                   bind:getuserinfo="getuserinfo"
                   bind:launchapp="launchapp"
                   bind:opensetting="opensetting"
-                  catch:tap=""
+                  catch:tap="handleTap"
                 >
                   <wx-view
                     class="t-button__content"
@@ -790,7 +790,6 @@ exports[`calendar :base 1`] = `
         </wx-view>
       </wx-view>
       <t-overlay
-        class="test"
         id="popup-overlay"
         bind:tap="handleOverlayClick"
       >
