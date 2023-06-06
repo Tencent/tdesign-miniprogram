@@ -49,6 +49,7 @@ action | String / Slot | '' | 自定义右侧操作按钮文字 | N
 center | Boolean | false | 是否居中 | N
 disabled | Boolean | false | 是否禁用 | N
 external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-action','t-class-left','t-class-clear']` | N
+cursor-spacing | Number | 0 | 搜索框聚焦时底部与键盘的距离 | N
 focus | Boolean | false | 是否聚焦 | N
 label | String | '' | 已废弃。左侧文本 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
