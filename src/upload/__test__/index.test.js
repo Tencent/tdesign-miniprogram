@@ -157,7 +157,7 @@ describe('upload', () => {
 
       // gridConfig: width、 height
       expect($gridItemWrapper.dom.getAttribute('style')).toEqual(
-        `width:${comp.data.gridConfig.width}px;height:${comp.data.gridConfig.height}px`,
+        `min-width:${comp.data.gridConfig.width}px;width:100%;height:${comp.data.gridConfig.height}px`,
       );
 
       // gridConfig: column
