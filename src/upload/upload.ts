@@ -128,7 +128,7 @@ export default class Upload extends SuperComponent {
     if (!isObject(gridConfig)) gridConfig = {};
     const { column = 4, width = 160, height = 160 } = gridConfig as any;
     this.setData({
-      gridItemStyle: `width:${width}rpx;height:${height}rpx`,
+      gridItemStyle: `min-width:${width}rpx;width:100%;height:${height}rpx`,
       column: column,
     });
   }
