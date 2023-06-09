@@ -4,8 +4,6 @@ const icons = [
   'add',
   'app',
   'arrow-down-rectangle',
-  'arrow-down-triangle-filled',
-  'arrow-down-triangle',
   'arrow-down',
   'arrow-left',
   'arrow-right',
