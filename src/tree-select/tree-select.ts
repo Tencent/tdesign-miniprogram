@@ -44,7 +44,7 @@ export default class TreeSelect extends SuperComponent {
 
   methods = {
     buildTreeOptions() {
-      const { options, value, multiple } = this.data;
+      const { options, value, multiple, valueAlias } = this.data;
       const treeOptions = [];
       let level = -1;
       let node = { children: options };
@@ -60,7 +60,7 @@ export default class TreeSelect extends SuperComponent {
           const [firstChild] = list;
           node = firstChild;
         } else {
-          const child = list.find((child) => child.value === thisValue);
+          const child = list.find((child) => child[valueAlias] === thisValue);
           node = child ?? list[0];
         }
       }
