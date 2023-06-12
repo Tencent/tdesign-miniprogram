@@ -48,6 +48,10 @@ isComponent: true
 
 ### 自定义组件样式
 
+卡片样式
+
+{{ card }}
+
 标签外置输入框
 
 {{ custom }}
