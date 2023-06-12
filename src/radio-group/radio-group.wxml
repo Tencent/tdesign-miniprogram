@@ -9,7 +9,7 @@
       data-value="{{item.value}}"
       block="{{item.block || true}}"
       label="{{item.label || ''}}"
-      value="{{item.value || index}}"
+      value="{{item.value}}"
       checked="{{item.checked || false}}"
       content="{{item.content || ''}}"
       content-disabled="{{item.contentDisabled || false}}"

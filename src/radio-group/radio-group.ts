@@ -41,7 +41,7 @@ export default class RadioGroup extends SuperComponent {
     value(v) {
       this.getChilds().forEach((item) => {
         item.setData({
-          checked: v === item.dataset.value,
+          checked: v === item.data.value,
         });
       });
     },
