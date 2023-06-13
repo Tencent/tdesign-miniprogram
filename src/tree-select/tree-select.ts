@@ -2,6 +2,8 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
+import type { TreeOptionData } from '../common/common';
+
 const { prefix } = config;
 const name = `${prefix}-tree-select`;
 
@@ -16,8 +18,6 @@ export default class TreeSelect extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    labelAlias: 'label',
-    valueAlias: 'value',
   };
 
   properties = props;
@@ -33,25 +33,22 @@ export default class TreeSelect extends SuperComponent {
     value() {
       this.buildTreeOptions();
     },
-
-    keys(obj) {
-      this.setData({
-        labelAlias: obj.label || 'label',
-        valueAlias: obj.value || 'value',
-      });
-    },
   };
 
   methods = {
     buildTreeOptions() {
-      const { options, value, multiple } = this.data;
+      const { options, value, multiple, keys } = this.data;
       const treeOptions = [];
       let level = -1;
       let node = { children: options };
 
       while (node && node.children) {
         level += 1;
-        const list = node.children;
+        const list = node.children.map((item: TreeOptionData) => ({
+          label: item[keys?.label || 'label'],
+          value: item[keys?.value || 'value'],
+          children: item.children,
+        }));
         const thisValue = value?.[level];
 
         treeOptions.push([...list]);

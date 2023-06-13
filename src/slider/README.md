@@ -77,3 +77,7 @@ default-value | Number / Array | undefined | 滑块值。非受控属性。TS �
 change | `(value: SliderValue)` | 滑块值变化时触发
 dragend | \- | 结束拖动时触发
 dragstart | \- | 开始拖动时触发
+
+## FAQ
+
+当 slider 外层使用 `hidden` 包裹，需要在 `hidden = false` 时，重新调用组件的 `getInitialStyle` 方法，才能正常渲染。
