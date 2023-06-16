@@ -14,6 +14,7 @@
 <t-notice-bar
   visible="{{true}}"
   direction="vertical"
+  interval="{{3000}}"
   content="{{content}}"
   prefixIcon="sound"
   bind:click="click"
