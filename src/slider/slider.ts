@@ -102,9 +102,9 @@ export default class Slider extends SuperComponent {
     },
     marks(val) {
       if (this.data.initialLeft != null) {
-        this.handleMask(val);
+        this.handleMark(val);
       } else {
-        this.bus.on('initial', () => this.handleMask(val));
+        this.bus.on('initial', () => this.handleMark(val));
       }
     },
   };
@@ -146,15 +146,15 @@ export default class Slider extends SuperComponent {
     setValueAndTrigger();
   }
 
-  handleMask(marks: any) {
+  handleMark(marks: any) {
     const calcPos = (arr: number[]) => {
-      const { theme } = this.properties;
+      const { max, theme } = this.properties;
       const { blockSize, maxRange } = this.data;
       const margin = (theme as any) === 'capsule' ? blockSize / 2 : 0;
 
       return arr.map((item) => ({
         val: item,
-        left: Math.round((item / 100) * maxRange) + margin,
+        left: Math.round((item / Number(max)) * maxRange) + margin,
       }));
     };
     if (marks?.length && Array.isArray(marks)) {
