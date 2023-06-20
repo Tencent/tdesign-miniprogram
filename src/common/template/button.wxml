@@ -14,6 +14,7 @@
     size="{{size || 'medium'}}"
     variant="{{variant || 'base'}}"
     open-type="{{openType || ''}}"
+    hover-class="{{hoverClass}}"
     hover-stop-propagation="{{hoverStopPropagation || false}}"
     hover-start-time="{{hoverStartTime || 20}}"
     hover-stay-time="{{hoverStayTime || 70}}"
