@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.1.10 `2023-06-20` 
+### 🚀 Features
+- `Tabs`: 新增 split 属性 @LeeJim ([#2113](https://github.com/Tencent/tdesign-miniprogram/pull/2113))
+- `NoticeBar`: 新增 interval 属性 @betavs ([#2097](https://github.com/Tencent/tdesign-miniprogram/pull/2097))
+### 🐞 Bug Fixes
+- `Grid`: 修复 `align=left` 无效的问题 @anlyyao ([#2110](https://github.com/Tencent/tdesign-miniprogram/pull/2110))
+- `Fab`: 修复 `buttonProps` 中的 `hoverClass`属性透传至 `button` 无效 @anlyyao ([#2093](https://github.com/Tencent/tdesign-miniprogram/pull/2093))
+- `Upload`: 修复图片尺寸超出的问题 @betavs ([#2098](https://github.com/Tencent/tdesign-miniprogram/pull/2098))
+- `Slider`: 修复使用 max 之后刻度展示错误的问题 @betavs ([#2114](https://github.com/Tencent/tdesign-miniprogram/pull/2114))
+- `Input`: 修复 `type=number` 时，`value=0` 无效的问题 @anlyyao ([#2108](https://github.com/Tencent/tdesign-miniprogram/pull/2108))
+- `Slider`: 修复异步展示时导致刻度渲染错误的问题 @LeeJim ([#2115](https://github.com/Tencent/tdesign-miniprogram/pull/2115))
+- `ActionSheet`: 修复点击 disabled 的选项仍触发 close、visible-change 事件 @LeeJim ([#2117](https://github.com/Tencent/tdesign-miniprogram/pull/2117))
+- `Stepper`: 保证值发生变化才触发 change 事件 @LeeJim ([#2118](https://github.com/Tencent/tdesign-miniprogram/pull/2118))
+
+
 ## 🌈 1.1.9 `2023-06-13` 
 ### 🚀 Features
 - `CheckBox`: 自定义图标增加半选中态  @lolhezihehe ([#2056](https://github.com/Tencent/tdesign-miniprogram/pull/2056))
