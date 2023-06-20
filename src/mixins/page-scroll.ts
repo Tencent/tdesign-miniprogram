@@ -11,7 +11,7 @@ const onPageScroll = function (event?: IPageScrollOption) {
   if (!page) return;
   const { pageScroller } = page;
 
-  pageScroller.forEach((scroller: Scroller) => {
+  pageScroller?.forEach((scroller: Scroller) => {
     if (typeof scroller === 'function') {
       // @ts-ignore
       scroller(event);
