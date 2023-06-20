@@ -10,6 +10,7 @@ direction | String | horizontal | options：horizontal/vertical | N
 external-classes | Array | - | `['t-class', 't-class-content', 't-class-prefix-icon', 't-class-operation', 't-class-suffix-icon']` | N
 operation | String / Slot | - | \- | N
 marquee | Boolean / Object | false | Typescript：`boolean \| DrawMarquee` `interface DrawMarquee { speed?: number; loop?: number; delay?: number }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/notice-bar/type.ts) | N
+interval | Number | 2000 | - | N
 prefix-icon | String / Boolean/ Object / Slot | - | \- | N
 suffix-icon | String / Boolean / Object / Slot | - | \- | N
 theme | String | info | options：info/success/warning/error | N
