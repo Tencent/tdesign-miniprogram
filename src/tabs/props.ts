@@ -6,7 +6,7 @@
 
 import { TdTabsProps } from './type';
 const props: TdTabsProps = {
-  /** 动画效果设置。其中 duration 表示动画时长 */
+  /** 动画效果设置。其中 duration 表示动画时长。（单位：秒） */
   animation: {
     type: Object,
   },
@@ -21,6 +21,11 @@ const props: TdTabsProps = {
   },
   /** 选项卡头部空间是否均分 */
   spaceEvenly: {
+    type: Boolean,
+    value: true,
+  },
+  /** 是否展示分割线 */
+  split: {
     type: Boolean,
     value: true,
   },
