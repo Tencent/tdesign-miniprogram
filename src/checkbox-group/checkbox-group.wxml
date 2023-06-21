@@ -19,6 +19,7 @@
       max-content-row="{{item.maxContentRow || 5}}"
       max-label-row="{{item.maxLabelRow || 3}}"
       name="{{item.name || ''}}"
+      borderless="{{borderless}}"
       readonly="{{item.readonly || false}}"
       bind:change="handleInnerChildChange"
       placement="{{item.placement || 'left'}}"
