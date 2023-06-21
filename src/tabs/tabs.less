@@ -194,7 +194,10 @@
   &__scroll {
     position: relative;
     height: @tab-item-height;
-    .border(bottom, @tab-border-color);
+
+    &--split {
+      .border(bottom, @tab-border-color);
+    }
 
     &::-webkit-scrollbar {
       display: none;

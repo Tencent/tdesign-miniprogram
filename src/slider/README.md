@@ -80,4 +80,14 @@ dragstart | \- | 开始拖动时触发
 
 ## FAQ
 
-当 slider 外层使用 `hidden` 包裹，需要在 `hidden = false` 时，重新调用组件的 `getInitialStyle` 方法，才能正常渲染。
+当 slider 外层使用 `hidden` 包裹，需要在 `hidden = false` 时，重新调用组件的 `init` 方法，才能正常渲染。如下：
+
+```html
+<t-slider id="slider" />
+```
+
+```js
+const $slider = this.selectComponent('#slider');
+
+$slider.init();
+```

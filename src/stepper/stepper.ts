@@ -24,6 +24,7 @@ export default class Stepper extends SuperComponent {
 
   observers = {
     value(v) {
+      this.preValue = Number(v);
       this.setData({
         currentValue: Number(v),
       });
@@ -65,6 +66,8 @@ export default class Stepper extends SuperComponent {
   }
 
   setValue(value) {
+    if (this.preValue === value) return;
+    this.preValue = value;
     this._trigger('change', { value });
   }
 

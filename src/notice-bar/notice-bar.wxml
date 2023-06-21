@@ -24,7 +24,7 @@
         autoplay="true"
         vertical="true"
         circular="true"
-        interval="2000"
+        interval="{{interval}}"
         display-multiple-items="1"
         class="{{classPrefix}}__content--vertical"
       >
