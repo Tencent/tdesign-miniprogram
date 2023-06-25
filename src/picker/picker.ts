@@ -25,7 +25,7 @@ export default class Picker extends SuperComponent {
   };
 
   observers = {
-    value() {
+    visible() {
       this.updateChildren();
     },
     keys(obj) {
@@ -47,11 +47,11 @@ export default class Picker extends SuperComponent {
 
   methods = {
     updateChildren() {
-      const { value } = this.properties;
+      const { value, defaultValue } = this.properties;
 
       this.$children.forEach((child, index) => {
         child.setData({
-          value: value?.[index] ?? '',
+          value: value?.[index] ?? defaultValue?.[index] ?? '',
         });
         child.update();
       });
