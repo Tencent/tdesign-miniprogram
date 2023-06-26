@@ -92,6 +92,7 @@ change | `(checked: boolean)` | 值变化时触发
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+borderless | Boolean | false | 是否开启无边框模式 | N
 disabled | Boolean | false | 是否禁用组件 | N
 max | Number | undefined | 支持最多选中的数量 | N
 name | String | - | 统一设置内部复选框 HTML 属性 | N

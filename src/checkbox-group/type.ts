@@ -13,6 +13,11 @@ export interface TdCheckboxGroupProps {
     type: StringConstructor;
     value?: string;
   };
+  /** 是否开启无边框模式 */
+  borderless: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
   /**
    * 是否禁用组件
    * @default false

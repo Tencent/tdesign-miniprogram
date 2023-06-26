@@ -33,6 +33,7 @@ change | `(checked: boolean)` | \-
 
 name | type | default | description | required
 -- | -- | -- | -- | --
+borderless | Boolean | false | \- | N
 disabled | Boolean | false | \- | N
 max | Number | undefined | \- | N
 name | String | - | \- | N

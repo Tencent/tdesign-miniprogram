@@ -11,6 +11,11 @@ const props: TdCheckboxGroupProps = {
     type: String,
     value: '',
   },
+  /** 是否开启无边框模式 */
+  borderless: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否禁用组件 */
   disabled: {
     type: Boolean,
