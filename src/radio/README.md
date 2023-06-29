@@ -53,7 +53,7 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 placement | String | left | 复选框和内容相对位置。可选项：left/right | N
-allow-uncheck | Boolean | false | 【开发中】是否允许取消选中 | N
+allow-uncheck | Boolean | false | 是否允许取消选中 | N
 block | Boolean | true | 是否为块级元素 | N
 checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
