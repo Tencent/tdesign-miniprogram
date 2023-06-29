@@ -1,8 +1,8 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view class="class {{prefix}}-class {{layout==='vertical'? classPrefix + '--vertical-center' : ''}}">
+<view class="{{layout==='vertical'? classPrefix + '--vertical-center' : ''}}">
   <view
-    class="{{classPrefix}} {{classPrefix}}--{{layout}} {{classPrefix}}--{{align}} {{dashed? classPrefix + '--dashed' : ''}} "
+    class="{{classPrefix}} class {{prefix}}-class {{classPrefix}}--{{layout}} {{classPrefix}}--{{align}} {{dashed? classPrefix + '--dashed' : ''}} "
     style="{{_._style([dividerStyle, style, customStyle])}}"
   >
     <view class="{{prefix}}-class-content {{classPrefix}}__content">
