@@ -23,7 +23,7 @@ export default class CheckBox extends SuperComponent {
         const { value, disabled, borderless } = parent.data;
         const valueSet = new Set(value);
         const data: any = {
-          disabled: disabled || this.data.disabled,
+          disabled: this.data.disabled == null ? disabled : this.data.disabled,
         };
 
         if (borderless) {
