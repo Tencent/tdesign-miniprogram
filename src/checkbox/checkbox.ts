@@ -53,10 +53,6 @@ export default class CheckBox extends SuperComponent {
       type: String,
       value: 'default',
     },
-    borderless: {
-      type: Boolean,
-      value: false,
-    },
   };
 
   data = {
