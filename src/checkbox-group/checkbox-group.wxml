@@ -15,7 +15,7 @@
       content-disabled="{{item.contentDisabled || false}}"
       icon="{{item.icon || 'circle'}}"
       indeterminate="{{item.indeterminate || false}}"
-      disabled="{{item.disabled}}"
+      disabled="{{ item.disabled == null ? disabled : item.disabled }}"
       max-content-row="{{item.maxContentRow || 5}}"
       max-label-row="{{item.maxLabelRow || 3}}"
       name="{{item.name || ''}}"

@@ -20,13 +20,7 @@ export default class CheckBoxGroup extends SuperComponent {
     checkboxOptions: [],
   };
 
-  properties = {
-    ...props,
-    borderless: {
-      type: Boolean,
-      value: false,
-    },
-  };
+  properties = props;
 
   observers = {
     value() {
