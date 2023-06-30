@@ -124,6 +124,7 @@ describe('radio', () => {
 
       const group = comp.querySelector('#optionsGroup');
       group.instance.handleRadioChange({
+        detail: { checked: false },
         target: {
           dataset: { value: 'b' },
         },
