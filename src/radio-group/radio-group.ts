@@ -65,9 +65,10 @@ export default class RadioGroup extends SuperComponent {
     },
 
     handleRadioChange(e) {
-      const { value, index } = e.target.dataset;
+      const { checked } = e.detail;
+      const { value, index, allowUncheck } = e.target.dataset;
 
-      this._trigger('change', { value, index });
+      this._trigger('change', checked === false && allowUncheck ? { value: null, index: null } : { value, index });
     },
 
     // 支持自定义options
