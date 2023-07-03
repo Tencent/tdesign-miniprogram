@@ -105,6 +105,7 @@ export default class DropdownMenuItem extends SuperComponent {
       this.setData({
         show: false,
       });
+      this.triggerEvent('close');
     },
 
     getParentBottom(cb) {
