@@ -5,6 +5,29 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.1.11 `2023-07-04` 
+### 🚀 Features
+- `CheckboxGroup`: 新增 borderless 属性 @betavs ([#2124](https://github.com/Tencent/tdesign-miniprogram/pull/2124))
+- `Radio`: 允许取消选中 @betavs ([#2141](https://github.com/Tencent/tdesign-miniprogram/pull/2141))
+- `DropdownItem`: 新增 close 事件 @LeeJim ([#2147](https://github.com/Tencent/tdesign-miniprogram/pull/2147))
+### 🐞 Bug Fixes
+- `Tabs`: 解决选项过多时样式错误的问题 @betavs ([#2123](https://github.com/Tencent/tdesign-miniprogram/pull/2123))
+- `Picker`: 修复默认值无效 @betavs ([#2126](https://github.com/Tencent/tdesign-miniprogram/pull/2126))
+- `Stepper`: 修复精度缺失问题 @anlyyao ([#2130](https://github.com/Tencent/tdesign-miniprogram/pull/2130))
+- `Radio`: 修复自定义图标大小之后的垂直对齐问题 @betavs ([#2135](https://github.com/Tencent/tdesign-miniprogram/pull/2135))
+- `Checkbox`: 修复自定义图标尺寸后的垂直对齐问题 @LeeJim ([#2136](https://github.com/Tencent/tdesign-miniprogram/pull/2136))
+- `CheckboxGroup`: 修复使用 options 时，disabled 不生效的问题 @LeeJim ([#2137](https://github.com/Tencent/tdesign-miniprogram/pull/2137))
+- `Checkbox`: 修复 disabled 优先级的问题 @LeeJim ([#2137](https://github.com/Tencent/tdesign-miniprogram/pull/2137))
+- `Search`: 截获点击 clear 触发的 tap 事件 @LeeJim ([#2139](https://github.com/Tencent/tdesign-miniprogram/pull/2139))
+- `Divider`: 修复外部样式类的位置 @LeeJim ([#2140](https://github.com/Tencent/tdesign-miniprogram/pull/2140))
+- `Toast`: 解决 close 事件重复触发 @LeeJim ([#2146](https://github.com/Tencent/tdesign-miniprogram/pull/2146))
+- `Popup`: 修复底部弹出时的宽度问题 @LeeJim ([#2152](https://github.com/Tencent/tdesign-miniprogram/pull/2152))
+
+### 🚧 Others
+
+- 解决控制台报警的问题 @LeeJim ([#2149](https://github.com/Tencent/tdesign-miniprogram/pull/2149))
+
+
 ## 🌈 1.1.10 `2023-06-20` 
 ### 🚀 Features
 - `Tabs`: 新增 split 属性 @LeeJim ([#2113](https://github.com/Tencent/tdesign-miniprogram/pull/2113))
