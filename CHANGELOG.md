@@ -27,7 +27,6 @@ docClass: timeline
 
 - 解决控制台报警的问题 @LeeJim ([#2149](https://github.com/Tencent/tdesign-miniprogram/pull/2149))
 
-
 ## 🌈 1.1.10 `2023-06-20` 
 ### 🚀 Features
 - `Tabs`: 新增 split 属性 @LeeJim ([#2113](https://github.com/Tencent/tdesign-miniprogram/pull/2113))
