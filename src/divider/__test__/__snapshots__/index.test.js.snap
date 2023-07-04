@@ -6,10 +6,10 @@ exports[`Divider :base 1`] = `
     class="divider"
   >
     <wx-view
-      class="class t-class "
+      class=""
     >
       <wx-view
-        class="t-divider t-divider--horizontal t-divider--center  "
+        class="t-divider class t-class t-divider--horizontal t-divider--center  "
         style=""
       >
         <wx-view

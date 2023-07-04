@@ -6,15 +6,14 @@
 
 import { TdCheckboxGroupProps } from './type';
 const props: TdCheckboxGroupProps = {
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
-  /** 是否禁用组件 */
-  disabled: {
+  /** 是否开启无边框模式 */
+  borderless: {
     type: Boolean,
     value: false,
+  },
+  /** 是否禁用组件，默认为 false。 CheckboxGroup.disabled < Checkbox.disabled ，后续新增 Form 组件后，Form.disabled 优先级最低 */
+  disabled: {
+    type: Boolean,
   },
   /** 支持最多选中的数量 */
   max: {

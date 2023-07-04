@@ -6,18 +6,18 @@
 
 export interface TdCheckboxProps {
   /**
-   * 多选框和内容相对位置
-   * @default left
-   */
-  placement?: {
-    type: StringConstructor;
-    value?: 'left' | 'right';
-  };
-  /**
    * 是否为块级元素
    * @default true
    */
   block?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否开启无边框模式
+   * @default false
+   */
+  borderless?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -60,15 +60,7 @@ export interface TdCheckboxProps {
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 是否禁用组件
+   * 是否禁用组件。如果父组件存在 CheckboxGroup，默认值由 CheckboxGroup.disabled 控制。优先级：Checkbox.disabled > CheckboxGroup.disabled > Form.disabled
    */
   disabled?: {
     type: BooleanConstructor;
@@ -82,7 +74,7 @@ export interface TdCheckboxProps {
     value?: ['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border'];
   };
   /**
-   * 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标
+   * 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标，半选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标
    * @default 'circle'
    */
   icon?: {
@@ -127,6 +119,14 @@ export interface TdCheckboxProps {
   name?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 多选框和内容相对位置
+   * @default left
+   */
+  placement?: {
+    type: StringConstructor;
+    value?: 'left' | 'right';
   };
   /**
    * 只读状态
