@@ -28,7 +28,7 @@
       </view>
     </view>
     <t-link
-      wx:if="{{_link.content}}"
+      wx:if="{{_link && _link.content}}"
       class="{{classPrefix}}__link {{prefix}}-class-link"
       style="{{_._style([_link.style, _link.customStyle])}}"
       disabled="{{_link.disabled || false}}"
