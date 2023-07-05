@@ -7,6 +7,8 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 external-classes | Array | - | `['t-class', 't-class-icon', 't-class-text']` | N
+visibility-height | Number | 200 | \- | N
+scroll-top | Number | 0 | \- | N
 fixed | Boolean | true | \- | N
 icon | String / Boolean / Object / Slot | - | \- | N
 text | String | '' | \- | N
