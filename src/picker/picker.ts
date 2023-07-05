@@ -25,7 +25,7 @@ export default class Picker extends SuperComponent {
   };
 
   observers = {
-    visible() {
+    'value, visible'() {
       this.updateChildren();
     },
     keys(obj) {
