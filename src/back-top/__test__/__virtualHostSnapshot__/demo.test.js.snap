@@ -3,6 +3,7 @@
 exports[`BackTop BackTop base demo works fine 1`] = `
 <base>
   <t-back-top
+    scrollTop="{{0}}"
     text="顶部"
     theme="round"
     bind:to-top="onToTop"
@@ -13,6 +14,7 @@ exports[`BackTop BackTop base demo works fine 1`] = `
 exports[`BackTop BackTop half-round demo works fine 1`] = `
 <half-round>
   <t-back-top
+    scrollTop="{{0}}"
     text="返回顶部"
     theme="half-round-dark"
     bind:to-top="onToTop"
