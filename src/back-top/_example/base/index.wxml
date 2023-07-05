@@ -1,1 +1,6 @@
-<t-back-top theme="{{backTopTheme}}" text="{{backTopText}}" bind:to-top="onToTop"></t-back-top>
+<t-back-top
+  theme="{{backTopTheme}}"
+  text="{{backTopText}}"
+  scroll-top="{{scrollTop}}"
+  bind:to-top="onToTop"
+></t-back-top>

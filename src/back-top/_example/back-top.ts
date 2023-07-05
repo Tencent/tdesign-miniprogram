@@ -1,12 +1,13 @@
 Page({
   data: {
     type: 'round',
-    showBackTop: false,
+    scrollTop: 0,
     rowCol: [{ size: '327rpx', borderRadius: '24rpx' }, 1, { width: '61%' }],
   },
 
   onPageScroll(e) {
-    this.setData({ showBackTop: e.scrollTop > 100 });
+    const { scrollTop } = e;
+    this.setData({ scrollTop });
   },
 
   onBtnClick(e: any) {
