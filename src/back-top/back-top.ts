@@ -26,11 +26,18 @@ export default class BackTop extends SuperComponent {
     prefix,
     classPrefix: name,
     _icon: null,
+    hidden: true,
   };
 
   observers = {
     icon() {
       this.setIcon();
+    },
+
+    scrollTop(value: number) {
+      const { visibilityHeight } = this.properties;
+
+      this.setData({ hidden: value < visibilityHeight });
     },
   };
 

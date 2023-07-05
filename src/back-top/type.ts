@@ -21,6 +21,20 @@ export interface TdBackTopProps {
     value?: ['t-class', 't-class-icon', 't-class-text'];
   };
   /**
+   * 滚动高度达到此参数值才出现
+   */
+  visibilityHeight?: {
+    type: NumberConstructor;
+    value?: 200;
+  };
+  /**
+   * 页面滚动距离
+   */
+  scrollTop?: {
+    type: NumberConstructor;
+    value: 0;
+  };
+  /**
    * 是否绝对定位固定到屏幕右下方
    * @default true
    */
