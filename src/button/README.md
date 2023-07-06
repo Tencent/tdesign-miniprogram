@@ -104,4 +104,6 @@ bindchooseavatar | Eventhandle | - | 获取用户头像回调，open-type=choose
 
 名称 | 参数 | 描述
 -- | -- | --
-tap | `event` | 点击按钮，当按钮不为加载或禁用状态时触发
+tap | `event` | （即将废弃，建议使用 `click`）点击按钮，当按钮不为加载或禁用状态时触发
+click | `event` | 点击按钮，当按钮不为加载或禁用状态时触发
+
