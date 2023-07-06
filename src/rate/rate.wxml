@@ -5,7 +5,7 @@
   <view
     class="{{classPrefix}}__wrapper {{prefix}}-class"
     style="font-size:{{ utils.regSize(size) }}"
-    catch:touchstart="onTouchStart"
+    catch:touchstart="{{ !disabled ? 'onTouchStart' : '' }}"
     catch:touchmove="{{ !disabled ? 'onTouchMove' : '' }}"
     catch:tap="{{ !disabled ? 'onTap' : '' }}"
     catch:touchend="{{ !disabled ? 'onTouchEnd' : ''}}"
