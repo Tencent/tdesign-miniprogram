@@ -1,12 +1,7 @@
 import simulate from 'miniprogram-simulate';
 import path from 'path';
-import similateApi from 'miniprogram-simulate/src/api';
 import Message from '../index';
 import * as Util from '../../common/utils';
-
-global.wx = {
-  ...similateApi,
-};
 
 const mockGetRect = jest.spyOn(Util, 'getRect');
 mockGetRect.mockImplementation(() => {
