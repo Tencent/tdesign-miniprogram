@@ -86,6 +86,14 @@ export interface TdPullDownRefreshProps {
     value?: string;
   };
   /**
+   * 滚动条显隐控制 (同时开启 enhanced 属性后生效)
+   * @default true
+   */
+  showScrollbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 距顶部/左边多远时，触发 scrolltoupper 事件
    * @default 50
    */
