@@ -19,7 +19,9 @@
         enable-flex
         scroll-left="{{offset}}"
         scroll-x="{{true}}"
+        scroll-anchoring
         scroll-with-animation
+        enable-passive
         show-scrollbar="{{false}}"
         bind:scroll="onScroll"
       >
