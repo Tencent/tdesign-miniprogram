@@ -79,9 +79,8 @@ export default class Rate extends SuperComponent {
       this.onTouch(e, 'move');
       this.showAlertText();
     },
-    onTouchEnd(e) {
+    onTouchEnd() {
       this.touchEnd = true;
-      this.onTouch(e, 'tap');
       this.hideTips();
     },
     hideTips() {
