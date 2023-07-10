@@ -33,7 +33,7 @@ export default class Rate extends SuperComponent {
   methods = {
     onTouch(e: WechatMiniprogram.TouchEvent, eventType: 'tap' | 'move') {
       const { count, allowHalf, gap, value: currentValue, size } = this.properties;
-      const [touch] = e.touches;
+      const [touch] = e.changedTouches;
       const margin = unitConvert(gap);
       getRect(this, `.${name}__wrapper`).then((rect) => {
         const { width, left } = rect;
@@ -77,10 +77,11 @@ export default class Rate extends SuperComponent {
     },
     onTouchMove(e: WechatMiniprogram.TouchEvent) {
       this.onTouch(e, 'move');
-      this.showAlertText()
+      this.showAlertText();
     },
-    onTouchEnd() {
+    onTouchEnd(e) {
       this.touchEnd = true;
+      this.onTouch(e, 'tap');
       this.hideTips();
     },
     hideTips() {
