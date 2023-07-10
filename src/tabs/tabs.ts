@@ -64,6 +64,7 @@ export default class Tabs extends SuperComponent {
     currentIndex: -1,
     trackStyle: '',
     offset: 0,
+    scrollLeft: 0,
     tabID: '',
     placement: 'top',
   };
@@ -96,7 +97,7 @@ export default class Tabs extends SuperComponent {
     onScroll(e) {
       const { scrollLeft } = e.detail;
       this.setData({
-        offset: scrollLeft,
+        scrollLeft,
       });
     },
     updateTabs(cb) {
@@ -190,7 +191,7 @@ export default class Tabs extends SuperComponent {
         });
 
         if (this.containerWidth) {
-          const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.data.offset);
+          const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.data.scrollLeft);
           const maxOffset = totalSize - this.containerWidth;
           this.setData({
             offset: Math.min(Math.max(offset, 0), maxOffset),
