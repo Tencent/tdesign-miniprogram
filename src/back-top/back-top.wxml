@@ -6,6 +6,7 @@
   class="class {{prefix}}-class {{_.cls(classPrefix, [['fixed', fixed], theme])}}"
   bindtap="toTop"
   aria-role="button"
+  hidden="{{hidden}}"
 >
   <view class="{{classPrefix}}__icon" aria-hidden>
     <slot name="icon" />

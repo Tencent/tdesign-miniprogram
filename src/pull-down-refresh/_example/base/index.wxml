@@ -25,6 +25,6 @@
       </view>
       <view class="text">拖拽该区域演示 顶部下拉刷新</view>
     </view>
-    <t-back-top wx:if="{{backTopVisible}}" text="顶部" />
+    <t-back-top text="顶部" scroll-top="{{scrollTop}}" visibility-height="{{100}}" />
   </view>
 </t-pull-down-refresh>

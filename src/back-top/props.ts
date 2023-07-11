@@ -10,6 +10,16 @@ const props: TdBackTopProps = {
   externalClasses: {
     type: Array,
   },
+  /** 滚动高度达到此参数值才出现 */
+  visibilityHeight: {
+    type: Number,
+    value: 200,
+  },
+  /** 页面滚动距离 */
+  scrollTop: {
+    type: Number,
+    value: 0,
+  },
   /** 是否绝对定位固定到屏幕右下方 */
   fixed: {
     type: Boolean,
