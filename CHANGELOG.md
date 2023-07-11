@@ -5,6 +5,19 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.1.12 `2023-07-11` 
+### 🚀 Features
+- `PullDownRefresh`: 增加 show-scrollbar 属性 @lolhezihehe ([#2163](https://github.com/Tencent/tdesign-miniprogram/pull/2163))
+### 🐞 Bug Fixes
+- `Rate`: 修复无法点击的问题 @AntzyMo ([#2158](https://github.com/Tencent/tdesign-miniprogram/pull/2158))
+- `Rate`: 使事件冒泡至上层元素 @LeeJim ([#2168](https://github.com/Tencent/tdesign-miniprogram/pull/2168))
+- `DateTimePicker`: 修复无法选择的问题 @betavs ([#2169](https://github.com/Tencent/tdesign-miniprogram/pull/2169))
+- `Tabs`: 修复超出时滚动不流畅的问题 @LeeJim ([#2170](https://github.com/Tencent/tdesign-miniprogram/pull/2170))
+- `TreeSelect`: 修复多选时 value 使用空数组报错的问题 @LeeJim ([#2173](https://github.com/Tencent/tdesign-miniprogram/pull/2173))
+### 🚧 Others
+- 移除开启 virtual-host 场景的 snapshot 测试 @LeeJim ([#2161](https://github.com/Tencent/tdesign-miniprogram/pull/2161))
+- 修复控制台告警 @betavs ([#2164](https://github.com/Tencent/tdesign-miniprogram/pull/2164))
+
 ## 🌈 1.1.11 `2023-07-04` 
 ### 🚀 Features
 - `CheckboxGroup`: 新增 borderless 属性 @betavs ([#2124](https://github.com/Tencent/tdesign-miniprogram/pull/2124))
