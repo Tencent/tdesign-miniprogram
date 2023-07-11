@@ -66,7 +66,7 @@ export default class TreeSelect extends SuperComponent {
 
       if (multiple) {
         const finalValue = this.data.value || this.data.defaultValue;
-        if (!Array.isArray(finalValue[leafLevel])) {
+        if (finalValue[leafLevel] != null && !Array.isArray(finalValue[leafLevel])) {
           throw TypeError('应传入数组类型的 value');
         }
       }
