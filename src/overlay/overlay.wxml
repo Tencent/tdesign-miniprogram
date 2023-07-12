@@ -3,7 +3,7 @@
 <view
   wx:if="{{realVisible && preventScrollThrough}}"
   class="{{prefix}}-overlay {{transitionClass}} class"
-  style="{{_._style(['z-index:' + _zIndex, computedStyle, style, customStyle])}}"
+  style="{{_._style(['--td-overlay-transition-duration:' + duration + 'ms', 'z-index:' + _zIndex, computedStyle, style, customStyle])}}"
   bind:tap="handleClick"
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
