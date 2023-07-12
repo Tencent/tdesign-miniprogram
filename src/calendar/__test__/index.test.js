@@ -64,11 +64,11 @@ describe('calendar', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     const $calendar = comp.querySelector('#base');
-    const [$disbledItem, , $activeItem] = $calendar.querySelectorAll('.t-calendar__dates-item');
+    const [$disabledItem, , $activeItem] = $calendar.querySelectorAll('.t-calendar__dates-item');
 
     expect($calendar.instance.data.value).toBe(date.getTime());
 
-    $disbledItem.dispatchEvent('tap');
+    $disabledItem.dispatchEvent('tap');
     await simulate.sleep();
 
     expect($calendar.instance.data.value).toBe(date.getTime());
