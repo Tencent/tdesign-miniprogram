@@ -10,6 +10,7 @@
   lower-threshold="{{lowerThreshold}}"
   upper-threshold="{{upperThreshold}}"
   scroll-into-view="{{scrollIntoView}}"
+  show-scrollbar="{{showScrollbar}}"
   enhanced
   scroll-with-animation
   bounces="{{false}}"
