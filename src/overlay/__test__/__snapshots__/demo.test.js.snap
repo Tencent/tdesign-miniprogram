@@ -3,6 +3,7 @@
 exports[`Overlay Overlay base demo works fine 1`] = `
 <base>
   <t-overlay
+    duration="{{500}}"
     visible="{{false}}"
     bind:click="handleOverlayClick"
   />
