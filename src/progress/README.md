@@ -69,3 +69,12 @@ status | String | - | 进度条状态。可选项：success/error/warning/active
 stroke-width | String / Number | - | 进度条线宽，默认单位 `px`。| N
 theme | String | line | 进度条风格。值为 line，标签（label）显示在进度条右侧；值为 plump，标签（label）显示在进度条里面；值为 circle，标签（label）显示在进度条正中间。可选项：line/plump/circle。TS 类型：`ThemeEnum` `type ThemeEnum = 'line' \| 'plump' \| 'circle'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/progress/type.ts) | N
 track-color | String | '' | 进度条未完成部分颜色 | N
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-progress-circle-inner-bg-color | @font-white-1 | - 
+--td-progress-inner-bg-color | @brand-color | - 
+--td-progress-track-bg-color | @bg-color-component | - 

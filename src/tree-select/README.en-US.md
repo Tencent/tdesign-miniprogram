@@ -17,3 +17,15 @@ default-value | String / Number / Array | undefined | uncontrolled property。Ty
 name | params | description
 -- | -- | --
 change | `(value: TreeSelectValue, level: TreeLevel) ` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tree-select/type.ts)。<br/>`type TreeLevel: 0 \| 1 \| 2`<br/>
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-tree-bg-color | @bg-color-container | - 
+--td-tree-colum-width | 206rpx | - 
+--td-tree-item-active-color | @brand-color | - 
+--td-tree-item-font-size | 32rpx | - 
+--td-tree-item-height | 112rpx | - 
+--td-tree-root-bg-color | @bg-color-secondarycontainer | - 

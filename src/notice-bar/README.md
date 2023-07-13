@@ -87,3 +87,20 @@ default-visible | Boolean | false | 显示/隐藏。非受控属性 | N
 名称 | 参数 | 描述
 -- | -- | --
 click | `(trigger: NoticeBarTrigger)` | 点击事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/notice-bar/type.ts)。<br/>`type NoticeBarTrigger = 'prefix-icon' \| 'content' \| 'operation' \| 'suffix-icon';`<br/>
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-notice-bar-error-bg-color | @error-color-1 | - 
+--td-notice-bar-error-color | @error-color-6 | - 
+--td-notice-bar-font-color | @font-gray-1 | - 
+--td-notice-bar-info-bg-color | @brand-color-light | - 
+--td-notice-bar-info-color | @brand-color | - 
+--td-notice-bar-operation-font-color | @brand-color | - 
+--td-notice-bar-success-bg-color | @success-color-1 | - 
+--td-notice-bar-success-color | @success-color | - 
+--td-notice-bar-suffix-icon-color | @font-gray-3 | - 
+--td-notice-bar-warning-bg-color | @warning-color-1 | - 
+--td-notice-bar-warning-color | @warning-color | - 

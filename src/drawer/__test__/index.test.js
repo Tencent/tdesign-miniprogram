@@ -110,7 +110,7 @@ describe('drawer', () => {
       clickItemValue = item;
     };
 
-    it(`: mutiple`, async () => {
+    it(`: multiple`, async () => {
       const id = simulate.load({
         template: `
         <t-drawer

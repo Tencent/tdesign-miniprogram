@@ -89,3 +89,29 @@ url | String | - | 点击后的跳转链接 | N
 -- | -- | --
 click | \- | 点击子项后触发
 
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-grid-bg-color | @bg-color-container | - 
+--td-grid-card-radius | @radius-large | - 
+--td-grid-item-bg-color | @bg-color-container | - 
+--td-grid-item-description-color | @font-gray-3 | - 
+--td-grid-item-description-font-size | 24rpx | - 
+--td-grid-item-description-line-height | 40rpx | - 
+--td-grid-item-description-padding-top | 8rpx | - 
+--td-grid-item-horizontal-text-description-top | 4rpx | - 
+--td-grid-item-horizontal-text-padding-left | 24rpx | - 
+--td-grid-item-hover-bg-color | @bg-color-secondarycontainer | - 
+--td-grid-item-image-middle-width | 80rpx | - 
+--td-grid-item-image-small-width | 64rpx | - 
+--td-grid-item-image-width | 96rpx | - 
+--td-grid-item-padding | 32rpx | - 
+--td-grid-item-text-color | @font-gray-1 | - 
+--td-grid-item-text-font-size | 28rpx | - 
+--td-grid-item-text-line-height | 44rpx | - 
+--td-grid-item-text-middle-font-size | 24rpx | - 
+--td-grid-item-text-padding-top | 16rpx | - 
+--td-grid-item-text-small-font-size | 24rpx | - 

@@ -85,3 +85,30 @@ collapse-avatar | String / Slot | - | 头像数量超出时，会出现一个头
 external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class', 't-class-image', 't-class-content']` | N
 max | Number | - | 能够同时显示的最多头像数量 | N
 size | String | medium | 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size | N
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-avatar-group-margin-left-large | -8px | - 
+--td-avatar-group-margin-left-medium | -6px | - 
+--td-avatar-group-margin-left-small | -4px | - 
+--td-avatar-bg-color | @brand-color-light-active | - 
+--td-avatar-border-color | #fff | - 
+--td-avatar-border-width-large | 8rpx | - 
+--td-avatar-border-width-medium | 6rpx | - 
+--td-avatar-border-width-small | 4rpx | - 
+--td-avatar-circle-border-radius | @radius-circle | - 
+--td-avatar-content-color | @brand-color | - 
+--td-avatar-icon-large-font-size | 64rpx | - 
+--td-avatar-icon-medium-font-size | 48rpx | - 
+--td-avatar-icon-small-font-size | 40rpx | - 
+--td-avatar-large-width | 128rpx | - 
+--td-avatar-margin-left | 0 | - 
+--td-avatar-medium-width | 96rpx | - 
+--td-avatar-round-border-radius | @radius-default | - 
+--td-avatar-small-width | 80rpx | - 
+--td-avatar-text-large-font-size | 16px | - 
+--td-avatar-text-medium-font-size | @font-size-base | - 
+--td-avatar-text-small-font-size | @font-size-s | - 

@@ -34,9 +34,9 @@
 @switch-dot-small-size: var(--td-switch-dot-small-size, 36rpx);
 @switch-dot-plain-small-size: var(--td-switch-dot-plain-small-size, 28rpx);
 
-@swtich-label-font-size: var(--td-swtich-label-font-size, 28rpx);
-@swtich-label-large-font-size: var(--td-swtich-label-font-size, 32rpx);
-@swtich-label-small-font-size: var(--td-swtich-label-font-size, 24rpx);
+@switch-label-font-size: var(--td-switch-label-font-size, 28rpx);
+@switch-label-large-font-size: var(--td-switch-label-large-font-size, 32rpx);
+@switch-label-small-font-size: var(--td-switch-label-small-font-size, 24rpx);
 
 @switch-label-color: var(--td-switch-label-color, @font-gray-4);
 @switch-label-checked-color: var(--td-switch-label-checked-color, @switch-checked-color);
@@ -61,7 +61,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    font-size: @swtich-label-font-size;
+    font-size: @switch-label-font-size;
     color: @switch-label-color;
     overflow: hidden;
 
@@ -78,11 +78,11 @@
     }
 
     &--large {
-      font-size: @swtich-label-large-font-size;
+      font-size: @switch-label-large-font-size;
     }
 
     &--small {
-      font-size: @swtich-label-small-font-size;
+      font-size: @switch-label-small-font-size;
     }
 
     &:empty {

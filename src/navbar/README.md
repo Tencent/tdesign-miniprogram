@@ -66,3 +66,19 @@ complete | \- | navigateBack 执行完成后触发（失败或成功均会触发
 fail | \- | navigateBack 执行失败后触发
 go-back | \- | 点击左侧箭头时触发
 success | \- | navigateBack 执行成功后触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-navbar-bg-color | @bg-color-container | - 
+--td-navbar-capsule-border-color | #e3e6ea | - 
+--td-navbar-capsule-border-radius | 32rpx | - 
+--td-navbar-capsule-height | 64rpx | - 
+--td-navbar-capsule-width | 176rpx | - 
+--td-navbar-color | @font-gray-1 | - 
+--td-navbar-height | 96rpx | - 
+--td-navbar-left-arrow-size | 48rpx | - 
+--td-navbar-title-font-size | 36rpx | - 
+--td-navbar-title-font-weight | 600 | - 
