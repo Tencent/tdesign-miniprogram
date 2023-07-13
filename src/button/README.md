@@ -69,7 +69,6 @@ block | Boolean | false | 是否为块级元素 | N
 content | String / Slot | - | 按钮内容 | N
 custom-dataset | Object | - | 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取。TS 类型：`any` | N
 disabled | Boolean | false | 禁用状态 | N
-external-classes | Array | - | 组件类名。`['t-class', 't-class-icon', 't-class-loading']` | N
 ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 loading | Boolean | false | 是否显示为加载状态 | N
@@ -106,6 +105,12 @@ bindchooseavatar | Eventhandle | - | 获取用户头像回调，open-type=choose
 -- | -- | --
 tap | `event` | 点击按钮，当按钮不为加载或禁用状态时触发
 
+### Button 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-icon | 图标样式类
+t-class-loading | 加载样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。
