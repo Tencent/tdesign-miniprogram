@@ -82,3 +82,18 @@ cancel | - | 如果“取消”按钮存在，则点击“取消”按钮时触�
 close | `(trigger: DialogEventSource)` | 关闭事件，点击 取消按钮 或 点击蒙层 时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)。<br/>`type DialogEventSource = 'cancel' \| 'overlay' \| 'close-btn'`<br/>
 confirm | - | 如果“确认”按钮存在，则点击“确认”按钮时触发
 overlay-click | - | 如果蒙层存在，点击蒙层时触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-dialog-body-max-height | 912rpx | - 
+--td-dialog-close-color | @font-gray-3 | - 
+--td-dialog-content-color | @font-gray-2 | - 
+--td-dialog-content-font-size | 32rpx | - 
+--td-dialog-content-line-height | 48rpx | - 
+--td-dialog-title-color | @font-gray-1 | - 
+--td-dialog-title-font-size | 36rpx | - 
+--td-dialog-title-line-height | 52rpx | - 
+--td-dialog-width | 622rpx | - 

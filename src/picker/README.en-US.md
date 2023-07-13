@@ -31,3 +31,28 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 format | Function | - | Typescript：`(option: PickerItemOption) => string` | N
 options | Array | [] | Typescript：`PickerItemOption[]` `interface PickerItemOption { label: string; value: string \| number }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker-item/type.ts) | N
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-picker-group-height | 400rpx | - 
+--td-picker-bg-color | @bg-color-container | - 
+--td-picker-border-radius | 24rpx | - 
+--td-picker-button-font-size | 32rpx | - 
+--td-picker-cancel-color | @font-gray-2 | - 
+--td-picker-confirm-color | @brand-color | - 
+--td-picker-indicator-bg-color | @bg-color-secondarycontainer | - 
+--td-picker-indicator-border-radius | 12rpx | - 
+--td-picker-mask-color-bottom | hsla(0, 0%, 100%, 0.4) | - 
+--td-picker-mask-color-top | hsla(0, 0%, 100%, 0.92) | - 
+--td-picker-title-color | @font-gray-1 | - 
+--td-picker-title-font-size | 36rpx | - 
+--td-picker-title-font-weight | 600 | - 
+--td-picker-title-line-height | 52rpx | - 
+--td-picker-toolbar-height | 116rpx | - 
+--td-picker-item-active-color | @font-gray-1 | - 
+--td-picker-item-color | @font-gray-2 | - 
+--td-picker-item-height | 80rpx | - 
+

@@ -96,3 +96,22 @@ pagination-position | String | bottom | `0.34.0`。页码信息展示位置。�
 show-controls | Boolean | false | `0.32.0`。是否显示两侧的控制按钮 | N
 total | Number | 0 | `0.34.0`。总共的项数 | N
 type | String | dots | 导航器类型，点状(dots)、点条状(dots-bar)、分式(fraction)等。TS 类型：`SwiperNavigationType` `type SwiperNavigationType = 'dots' \| 'dots-bar' \| 'fraction'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swiper-nav/type.ts) | N
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-swiper-item-padding | 0 | - 
+--td-swiper-radius | @radius-large | - 
+--td-swiper-nav-btn-bg-color | @font-gray-3 | - 
+--td-swiper-nav-btn-color | @font-white-1 | - 
+--td-swiper-nav-btn-size | 48rpx | - 
+--td-swiper-nav-dot-active-color | @font-white-1 | - 
+--td-swiper-nav-dot-color | @font-white-2 | - 
+--td-swiper-nav-dot-size | 12rpx | - 
+--td-swiper-nav-dots-bar-active-width | 40rpx | - 
+--td-swiper-nav-fraction-bg-color | @font-gray-3 | - 
+--td-swiper-nav-fraction-color | @font-white-1 | - 
+--td-swiper-nav-fraction-font-size | 24rpx | - 
+--td-swiper-nav-fraction-height | 48rpx | - 

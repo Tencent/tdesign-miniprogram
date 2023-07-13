@@ -38,3 +38,14 @@ content | String / Slot | - | 子元素 | N
 dashed | Boolean | false | 是否虚线（仅在水平分割线有效） | N
 external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、分隔线类名 等。`['t-class', 't-class-line', 't-class-content']` | N
 layout | String | horizontal | 分隔线类型有两种：水平和垂直。可选项：horizontal/vertical | N
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-divider-color | @bg-color-component | - 
+--td-divider-content-color | @font-gray-3 | - 
+--td-divider-content-font-size | 24rpx | - 
+--td-divider-content-line-height | 40rpx | - 
+--td-divider-content-line-style | solid | - 
