@@ -1,4 +1,4 @@
-// 由于开启 vritualHost=true 之后，selectComponent 无法获取，暂时在单测关闭 virtualHost
+// 由于开启 virtualHost=true 之后，selectComponent 无法获取，暂时在单测关闭 virtualHost
 const path = require('path');
 const babelJest = require('babel-jest');
 

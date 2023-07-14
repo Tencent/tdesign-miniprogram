@@ -49,9 +49,18 @@ exports[`cell :base 1`] = `
 
 exports[`cell :with group 1`] = `
 <main>
+<<<<<<< HEAD
   <wx-view
     class="t-cell-group t-cell-group--false t-cell-group--default class t-class"
     style=""
   />
+=======
+  <main>
+    <wx-view
+      class="t-cell-group t-cell-group--default class t-class"
+      style=""
+    />
+  </main>
+>>>>>>> develop
 </main>
 `;

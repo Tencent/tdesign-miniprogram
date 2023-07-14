@@ -72,4 +72,16 @@ export default [
     preview: ['https://tdesign.gtimg.com/miniprogram/case/haoyongqrcode.png'],
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/haoyongqrcode-code.png',
   },
+  {
+    name: '去野户外club',
+    tags: ['效率工具'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/intowild.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/intowild-code.jpeg',
+  },
+  {
+    name: '库壁啦',
+    tags: ['效率工具'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/bikula.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/bikula-code.jpeg',
+  },
 ];

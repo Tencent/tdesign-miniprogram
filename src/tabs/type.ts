@@ -8,7 +8,7 @@ import { StickyProps } from '../sticky/index';
 
 export interface TdTabsProps {
   /**
-   * 动画效果设置。其中 duration 表示动画时长
+   * 动画效果设置。其中 duration 表示动画时长。（单位：秒）
    */
   animation?: {
     type: ObjectConstructor;
@@ -34,6 +34,14 @@ export interface TdTabsProps {
    * @default true
    */
   spaceEvenly?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否展示分割线
+   * @default true
+   */
+  split?: {
     type: BooleanConstructor;
     value?: boolean;
   };

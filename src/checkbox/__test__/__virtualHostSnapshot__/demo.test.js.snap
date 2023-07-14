@@ -40,6 +40,7 @@ exports[`Checkbox Checkbox all demo works fine 1`] = `
 exports[`Checkbox Checkbox base demo works fine 1`] = `
 <base>
   <t-checkbox-group
+    borderless="{{true}}"
     options="{{
       Array [
         Object {

@@ -73,4 +73,24 @@ default-value | String / Number / Array | undefined | 选中值。非受控属�
 -- | -- | --
 change | `(value: DropdownValue)` | 值改变时触发
 confirm | `(value: DropdownValue)` | 点击确认时触发
-reset | - | 点击重置时触发
+reset | \- | 点击重置时触发
+close | \- | 关闭时触发
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-dropdown-menu-active-colorm | @brand-color | - 
+--td-dropdown-menu-bg-colorm | @bg-color-container | - 
+--td-dropdown-menu-border-width | 1px | - 
+--td-dropdown-menu-colorm | @font-gray-1 | - 
+--td-dropdown-menu-disabled-colorm | @font-gray-4 | - 
+--td-dropdown-menu-font-sizem | 28rpx | - 
+--td-dropdown-menu-icon-sizem | 48rpx | - 
+--td-dropdown-body-max-height | 560rpx | - 
+--td-dropdown-menu-bg-color | @bg-color-container | - 
+--td-tree-bg-color | @bg-color-container | - 
+--td-tree-item-active-color | @brand-color | - 
+--td-tree-item-font-size | 32rpx | - 
+--td-tree-item-height | 96rpx | - 
+--td-tree-root-bg-color | @bg-color-secondarycontainer | - 

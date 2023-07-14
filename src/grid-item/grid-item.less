@@ -53,6 +53,15 @@
       flex-direction: row;
       padding-left: @grid-item-padding;
     }
+
+    &--left {
+      justify-self: flex-start;
+      align-items: flex-start;
+
+      .@{prefix}-grid-item__words {
+        text-align: left;
+      }
+    }
   }
 
   &__words {
@@ -101,15 +110,6 @@
       justify-content: center;
       background: @bg-color-secondarycontainer;
       border-radius: @radius-default;
-    }
-  }
-
-  &--left {
-    justify-self: flex-start;
-    align-items: flex-start;
-
-    .@{prefix}-grid-item__words {
-      text-align: left;
     }
   }
 

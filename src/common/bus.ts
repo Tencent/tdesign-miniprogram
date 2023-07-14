@@ -1,11 +1,17 @@
 export default class Bus {
   listeners: Map<string, any>;
+  emited: Set<string>;
 
   constructor() {
     this.listeners = new Map();
+    this.emited = new Set();
   }
 
   on(evtName: string, listener) {
+    if (this.emited.has(evtName)) {
+      listener();
+      return;
+    }
     const target = this.listeners.get(evtName) || [];
 
     target.push(listener);
@@ -18,6 +24,7 @@ export default class Bus {
 
     if (listeners) {
       listeners.forEach((func) => func());
+      this.emited.add(evtName);
     }
   }
 }

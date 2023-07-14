@@ -31,6 +31,7 @@ exports[`search Props :base 1`] = `
         <wx-input
           class="t-input__keyword t-class-input"
           confirmType="search"
+          cursorSpacing="{{0}}"
           disabled="{{false}}"
           focus="{{false}}"
           name="input"
@@ -47,7 +48,7 @@ exports[`search Props :base 1`] = `
       <wx-view
         ariaRole="button"
         class="t-search__search-action t-class-action"
-        bind:tap="onActionClick"
+        catch:tap="onActionClick"
       >
         
     提交

@@ -14,12 +14,14 @@
   >
     <view class="{{_.cls(classPrefix + '__wrapper', [theme])}}">
       <scroll-view
-        class="{{_.cls(classPrefix + '__scroll', [placement])}}"
+        class="{{_.cls(classPrefix + '__scroll', [placement, ['split', split]])}}"
         enhanced
         enable-flex
         scroll-left="{{offset}}"
         scroll-x="{{true}}"
+        scroll-anchoring
         scroll-with-animation
+        enable-passive
         show-scrollbar="{{false}}"
         bind:scroll="onScroll"
       >

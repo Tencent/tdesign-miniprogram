@@ -3,7 +3,7 @@
 @tabs: ~'@{prefix}-tabs';
 @item: ~'@{tabs}__item';
 
-@tab-font-size: var(--tab-font-size, 28rpx);
+@tab-font-size: var(--td-tab-font-size, 28rpx);
 @tab-nav-bg-color: var(--td-tab-nav-bg-color, @bg-color-container);
 
 @tab-item-height: var(--td-tab-item-height, 96rpx);
@@ -69,7 +69,7 @@
     }
 
     &--evenly {
-      flex: 1;
+      flex: 1 0 auto;
     }
 
     &-inner {
@@ -194,7 +194,10 @@
   &__scroll {
     position: relative;
     height: @tab-item-height;
-    .border(bottom, @tab-border-color);
+
+    &--split {
+      .border(bottom, @tab-border-color);
+    }
 
     &::-webkit-scrollbar {
       display: none;

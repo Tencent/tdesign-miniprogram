@@ -15,6 +15,7 @@ lower-threshold | String / Number | 50 | `1.1.5` | N
 max-bar-height | String / Number | 80 | \- | N
 refresh-timeout | Number | 3000 | \- | N
 scroll-into-view | String | - | `1.1.5` | N
+show-scrollbar | Boolean | true | \- | N
 upper-threshold | String / Number | 50 | `1.1.5` | N
 value | Boolean | false | \- | N
 default-value | Boolean | undefined | uncontrolled property | N
@@ -26,3 +27,10 @@ name | params | description
 change | `(value: boolean)` | \-
 refresh | \- | \-
 timeout | \- | \-
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-pull-down-refresh-color | @font-gray-3 | - 

@@ -28,18 +28,9 @@ export default class Image extends SuperComponent {
   lifetimes = {
     attached() {
       const { width, height } = this.data;
-      let innerStyle = '';
-      this.update();
 
-      if (width) {
-        innerStyle += `width: ${addUnit(width)};`;
-      }
-      if (height) {
-        innerStyle += `height: ${addUnit(height)};`;
-      }
-      this.setData({
-        innerStyle,
-      });
+      this.update();
+      this.calcSize(width, height);
     },
   };
 
@@ -47,6 +38,9 @@ export default class Image extends SuperComponent {
     src() {
       if (this.preSrc === this.properties.src) return;
       this.update();
+    },
+    'width, height'(width, height) {
+      this.calcSize(width, height);
     },
   };
 
@@ -82,6 +76,20 @@ export default class Image extends SuperComponent {
         isFailed: true,
       });
       this.triggerEvent('error', e.detail);
+    },
+
+    calcSize(width, height) {
+      let innerStyle = '';
+
+      if (width) {
+        innerStyle += `width: ${addUnit(width)};`;
+      }
+      if (height) {
+        innerStyle += `height: ${addUnit(height)};`;
+      }
+      this.setData({
+        innerStyle,
+      });
     },
 
     update() {

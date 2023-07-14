@@ -31,3 +31,30 @@ collapse-avatar | String / Slot | - | \- | N
 external-classes | Array | - | `['t-class', 't-class-image', 't-class-content']` | N
 max | Number | - | \- | N
 size | String | medium | size | N
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-avatar-group-margin-left-large | -8px | - 
+--td-avatar-group-margin-left-medium | -6px | - 
+--td-avatar-group-margin-left-small | -4px | - 
+--td-avatar-bg-color | @brand-color-light-active | - 
+--td-avatar-border-color | #fff | - 
+--td-avatar-border-width-large | 8rpx | - 
+--td-avatar-border-width-medium | 6rpx | - 
+--td-avatar-border-width-small | 4rpx | - 
+--td-avatar-circle-border-radius | @radius-circle | - 
+--td-avatar-content-color | @brand-color | - 
+--td-avatar-icon-large-font-size | 64rpx | - 
+--td-avatar-icon-medium-font-size | 48rpx | - 
+--td-avatar-icon-small-font-size | 40rpx | - 
+--td-avatar-large-width | 128rpx | - 
+--td-avatar-margin-left | 0 | - 
+--td-avatar-medium-width | 96rpx | - 
+--td-avatar-round-border-radius | @radius-default | - 
+--td-avatar-small-width | 80rpx | - 
+--td-avatar-text-large-font-size | 16px | - 
+--td-avatar-text-medium-font-size | @font-size-base | - 
+--td-avatar-text-small-font-size | @font-size-s | - 

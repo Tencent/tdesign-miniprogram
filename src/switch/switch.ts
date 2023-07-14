@@ -48,9 +48,9 @@ export default class Switch extends SuperComponent {
 
   methods = {
     handleSwitch() {
-      const { disabled, value, customValue } = this.data;
+      const { loading, disabled, value, customValue } = this.data;
       const [activeValue, inactiveValue] = customValue;
-      if (disabled) return;
+      if (loading || disabled) return;
 
       this._trigger('change', {
         value: value === activeValue ? inactiveValue : activeValue,

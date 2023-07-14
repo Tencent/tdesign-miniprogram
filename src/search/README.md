@@ -49,6 +49,7 @@ action | String / Slot | '' | 自定义右侧操作按钮文字 | N
 center | Boolean | false | 是否居中 | N
 disabled | Boolean | false | 是否禁用 | N
 external-classes | Array | - | 组件外部样式类名，分别用于设置组件外层类名、输入框类名、输入框容器类名、右侧 cancel 文本类名、左侧图标类名、右侧图标类型。`['t-class', 't-class-input', 't-class-input-container', 't-class-action','t-class-left','t-class-clear']` | N
+cursor-spacing | Number | 0 | 搜索框聚焦时底部与键盘的距离 | N
 focus | Boolean | false | 是否聚焦 | N
 label | String | '' | 已废弃。左侧文本 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
@@ -69,3 +70,20 @@ change | `({ value: string })` | 值发生变化时触发
 clear | `({ value: string })` | 点击清除时触发
 focus | `({ value: string })` | 聚焦时触发
 submit | `({ value: string })` | 提交时触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-search-action-color | @brand-color | - 
+--td-search-bg-color | @bg-color-secondarycontainer | - 
+--td-search-clear-icon-color | @font-gray-3 | - 
+--td-search-font-size | @font-size-m | - 
+--td-search-height | 80rpx | - 
+--td-search-icon-color | @font-gray-3 | - 
+--td-search-label-color | @font-gray-1 | - 
+--td-search-padding | 16rpx 24rpx | - 
+--td-search-placeholder-color | @font-gray-3 | - 
+--td-search-square-radius | @radius-default | - 
+--td-search-text-color | @font-gray-1 | - 

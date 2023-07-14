@@ -24,9 +24,7 @@ export default class Stepper extends SuperComponent {
 
   observers = {
     value(v) {
-      this.setData({
-        currentValue: Number(v),
-      });
+      this.observeValue(v);
     },
   };
 
@@ -58,14 +56,39 @@ export default class Stepper extends SuperComponent {
     return false;
   }
 
+  observeValue(v) {
+    this.preValue = Number(v);
+    this.setData({
+      currentValue: this.format(Number(v)),
+    });
+  }
+
+  getLen(num: number) {
+    const numStr = num.toString();
+    return numStr.indexOf('.') === -1 ? 0 : numStr.split('.')[1].length;
+  }
+
+  /**
+   * 精确加法
+   */
+  add(a: number, b: number) {
+    const maxLen = Math.max(this.getLen(a), this.getLen(b));
+    const base = 10 ** maxLen;
+    return Math.round(a * base + b * base) / base;
+  }
+
   format(value) {
-    const { min, max } = this.properties as any;
+    const { min, max, step } = this.properties as any;
     // 超过边界取边界值
-    return Math.max(Math.min(max, value, Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER);
+    return Math.max(Math.min(max, value, Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER).toFixed(
+      this.getLen(step),
+    );
   }
 
   setValue(value) {
-    this._trigger('change', { value });
+    if (this.preValue === value) return;
+    this.preValue = value;
+    this._trigger('change', { value: Number(value) });
   }
 
   minusValue() {
@@ -74,7 +97,7 @@ export default class Stepper extends SuperComponent {
       return false;
     }
     const { currentValue, step } = this.data as any;
-    this.setValue(this.format(currentValue - step));
+    this.setValue(this.format(this.add(currentValue, -step)));
   }
 
   plusValue() {
@@ -83,7 +106,7 @@ export default class Stepper extends SuperComponent {
       return false;
     }
     const { currentValue, step } = this.data as any;
-    this.setValue(this.format(currentValue + step));
+    this.setValue(this.format(this.add(currentValue, step)));
   }
 
   changeValue(e) {

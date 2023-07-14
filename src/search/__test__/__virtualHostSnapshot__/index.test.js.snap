@@ -17,8 +17,42 @@ exports[`search Props :base 1`] = `
         style="font-size: 24px;"
         bind:tap="onTap"
       >
+<<<<<<< HEAD
         <wx-label
           class="t-icon-search t-icon-base"
+=======
+        <t-icon
+          class="t-icon t-class-left"
+        >
+          <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
+            ariaRole=""
+            class="t-icon class t-class"
+            style="font-size: 24px;"
+            bind:tap="onTap"
+          >
+            <wx-label
+              class="t-icon-search t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
+        <wx-input
+          class="t-input__keyword t-class-input"
+          confirmType="search"
+          cursorSpacing="{{0}}"
+          disabled="{{false}}"
+          focus="{{false}}"
+          name="input"
+          placeholder=""
+          placeholderClass="t-search__placeholder t-search__placeholder--normal"
+          type="text"
+          value=""
+          bind:blur="onBlur"
+          bind:confirm="onConfirm"
+          bind:focus="onFocus"
+          bind:input="onInput"
+>>>>>>> develop
         />
       </wx-view>
       <wx-input
