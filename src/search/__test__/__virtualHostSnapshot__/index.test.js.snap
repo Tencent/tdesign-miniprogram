@@ -17,10 +17,6 @@ exports[`search Props :base 1`] = `
         style="font-size: 24px;"
         bind:tap="onTap"
       >
-<<<<<<< HEAD
-        <wx-label
-          class="t-icon-search t-icon-base"
-=======
         <t-icon
           class="t-icon t-class-left"
         >
@@ -52,7 +48,6 @@ exports[`search Props :base 1`] = `
           bind:confirm="onConfirm"
           bind:focus="onFocus"
           bind:input="onInput"
->>>>>>> develop
         />
       </wx-view>
       <wx-input

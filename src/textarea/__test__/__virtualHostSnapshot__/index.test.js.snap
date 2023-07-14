@@ -11,10 +11,6 @@ exports[`textarea slots : label 1`] = `
     <wx-text
       slot="label"
     >
-<<<<<<< HEAD
-      标签文字
-    </wx-text>
-=======
       <wx-text
         slot="label"
       >
@@ -54,7 +50,6 @@ exports[`textarea slots : label 1`] = `
         bind:linechange="onLineChange"
       />
     </wx-view>
->>>>>>> develop
   </wx-view>
   <wx-view
     class="t-textarea__wrapper"
