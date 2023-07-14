@@ -8,6 +8,7 @@
     visible="{{visible}}"
     placement="bottom"
     bind:visible-change="onPopupVisibleChange"
+    show-overlay="{{showOverlay}}"
     z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
     overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
   >
