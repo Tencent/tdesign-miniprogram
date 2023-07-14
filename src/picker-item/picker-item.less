@@ -18,6 +18,7 @@
     overflow: hidden;
     flex: 1;
     z-index: 1;
+    position: relative;
   }
 
   &__wrapper {
@@ -37,5 +38,14 @@
       color: @picker-item-active-color;
       font-weight: 600;
     }
+  }
+
+  &__aria__content {
+    position: absolute;
+    bottom: -100%;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
   }
 }

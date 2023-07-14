@@ -31,10 +31,13 @@ exports[`picker :base 1`] = `
             class="t-picker__toolbar"
           >
             <wx-view
+              ariaRole="button"
               class="t-picker__cancel t-class-cancel"
               bind:tap="onCancel"
             >
-              取消
+              
+        取消
+      
             </wx-view>
             <wx-view
               class="t-picker__title t-class-title"
@@ -42,10 +45,13 @@ exports[`picker :base 1`] = `
               
             </wx-view>
             <wx-view
+              ariaRole="button"
               class="t-picker__confirm t-class-confirm"
               bind:tap="onConfirm"
             >
-              确认
+              
+        确认
+      
             </wx-view>
           </wx-view>
           <wx-view
@@ -53,6 +59,7 @@ exports[`picker :base 1`] = `
           >
             <t-picker-item>
               <wx-view
+                ariaRole="listbox"
                 class="t-picker-item__group class t-class"
                 style=""
                 bind:touchcancel="onTouchEnd"
@@ -65,6 +72,9 @@ exports[`picker :base 1`] = `
                   style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
                 >
                   <wx-view
+                    ariaHidden="{{false}}"
+                    ariaLabel="2021年，按住后上下滑动选择"
+                    ariaRole="option"
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
                   >
@@ -73,6 +83,9 @@ exports[`picker :base 1`] = `
     
                   </wx-view>
                   <wx-view
+                    ariaHidden="{{true}}"
+                    ariaLabel="2020年，按住后上下滑动选择"
+                    ariaRole="option"
                     class="t-picker-item__item"
                     data-index="{{1}}"
                   >
@@ -81,6 +94,9 @@ exports[`picker :base 1`] = `
     
                   </wx-view>
                   <wx-view
+                    ariaHidden="{{true}}"
+                    ariaLabel="2019年，按住后上下滑动选择"
+                    ariaRole="option"
                     class="t-picker-item__item"
                     data-index="{{2}}"
                   >
@@ -89,10 +105,20 @@ exports[`picker :base 1`] = `
     
                   </wx-view>
                 </wx-view>
+                <wx-view
+                  ariaHidden="{{true}}"
+                  ariaRole="alert"
+                  class="t-picker-item__aria__content"
+                >
+                  
+    2021年
+  
+                </wx-view>
               </wx-view>
             </t-picker-item>
             <t-picker-item>
               <wx-view
+                ariaRole="listbox"
                 class="t-picker-item__group class t-class"
                 style=""
                 bind:touchcancel="onTouchEnd"
@@ -105,6 +131,9 @@ exports[`picker :base 1`] = `
                   style="transition: transform 0ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, 0px, 0)"
                 >
                   <wx-view
+                    ariaHidden="{{false}}"
+                    ariaLabel="春，按住后上下滑动选择"
+                    ariaRole="option"
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
                   >
@@ -113,6 +142,9 @@ exports[`picker :base 1`] = `
     
                   </wx-view>
                   <wx-view
+                    ariaHidden="{{true}}"
+                    ariaLabel="夏，按住后上下滑动选择"
+                    ariaRole="option"
                     class="t-picker-item__item"
                     data-index="{{1}}"
                   >
@@ -121,6 +153,9 @@ exports[`picker :base 1`] = `
     
                   </wx-view>
                   <wx-view
+                    ariaHidden="{{true}}"
+                    ariaLabel="秋，按住后上下滑动选择"
+                    ariaRole="option"
                     class="t-picker-item__item"
                     data-index="{{2}}"
                   >
@@ -129,6 +164,9 @@ exports[`picker :base 1`] = `
     
                   </wx-view>
                   <wx-view
+                    ariaHidden="{{true}}"
+                    ariaLabel="冬，按住后上下滑动选择"
+                    ariaRole="option"
                     class="t-picker-item__item"
                     data-index="{{3}}"
                   >
@@ -136,6 +174,15 @@ exports[`picker :base 1`] = `
       冬
     
                   </wx-view>
+                </wx-view>
+                <wx-view
+                  ariaHidden="{{true}}"
+                  ariaRole="alert"
+                  class="t-picker-item__aria__content"
+                >
+                  
+    春
+  
                 </wx-view>
               </wx-view>
             </t-picker-item>

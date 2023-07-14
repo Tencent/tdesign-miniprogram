@@ -448,9 +448,14 @@ exports[`date-time-picker :base 1`] = `
               </wx-view>
             </wx-view>
             <wx-view
-              class="t-popup__close"
-              bind:tap="handleClose"
-            />
+              ariaHidden="{{true}}"
+              ariaRole="alert"
+              class="t-picker-item__aria__content"
+            >
+              
+    9月
+  
+            </wx-view>
           </wx-view>
         </wx-view>
         <t-overlay

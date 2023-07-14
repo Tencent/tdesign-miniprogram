@@ -7,6 +7,7 @@
   catch:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
   bind:touchcancel="onTouchEnd"
+  aria-role="listbox"
 >
   <view
     class="{{classPrefix}}__wrapper"
@@ -18,8 +19,14 @@
       wx:key="index"
       wx:for-item="option"
       data-index="{{ index }}"
+      aria-role="option"
+      aria-hidden="{{curIndex !== index}}"
+      aria-label="{{option.label + '，按住后上下滑动选择'}}"
     >
       {{option[labelAlias]}}
     </view>
+  </view>
+  <view class="{{classPrefix}}__aria__content" aria-role="alert" aria-hidden="{{!isScrolling}}">
+    {{ options[curIndex].label }}
   </view>
 </view>

@@ -51,6 +51,7 @@ export default class PickerItem extends SuperComponent {
     duration: 0, // 滚动动画延迟
     value: '',
     curIndex: 0,
+    isScrolling: false,
     labelAlias: 'label',
     valueAlias: 'value',
   };
@@ -68,10 +69,14 @@ export default class PickerItem extends SuperComponent {
       // touch偏移增量
       const touchDeltaY = event.touches[0].clientY - StartY;
       const deltaY = this.calculateViewDeltaY(touchDeltaY);
+      const offset = range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0);
+      const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
 
       this.setData({
-        offset: range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0),
+        offset,
         duration: DefaultDuration,
+        curIndex: index,
+        isScrolling: true,
       });
     },
 
@@ -87,6 +92,7 @@ export default class PickerItem extends SuperComponent {
       this.setData({
         curIndex: index,
         offset: -index * this.itemHeight,
+        isScrolling: false,
       });
 
       if (index === this._selectedIndex) {

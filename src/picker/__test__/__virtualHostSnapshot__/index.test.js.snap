@@ -149,6 +149,15 @@ exports[`picker :base 1`] = `
               class="t-picker__indicator"
             />
           </wx-view>
+          <wx-view
+            ariaHidden="{{true}}"
+            ariaRole="alert"
+            class="t-picker-item__aria__content"
+          >
+            
+    春
+  
+          </wx-view>
         </wx-view>
         <wx-view
           class="t-popup__close"
