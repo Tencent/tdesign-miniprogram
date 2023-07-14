@@ -149,6 +149,39 @@ exports[`picker :base 1`] = `
               class="t-picker__indicator"
             />
           </wx-view>
+          <wx-view
+            class="t-picker-item__accessible"
+          >
+            <wx-view
+              ariaLabel="没有上一项"
+              ariaRole="text"
+              class="t-picker-item__accessible--button"
+              bind:tap="onClickPrev"
+            >
+              
+      -
+    
+            </wx-view>
+            <wx-view
+              ariaLabel="当前选择的是：春"
+              ariaRole="text"
+              class="t-picker-item__accessible--current"
+            >
+              
+      -
+    
+            </wx-view>
+            <wx-view
+              ariaLabel="选择下一项：夏"
+              ariaRole="button"
+              class="t-picker-item__accessible--button"
+              bind:tap="onClickNext"
+            >
+              
+      -
+    
+            </wx-view>
+          </wx-view>
         </wx-view>
         <wx-view
           class="t-popup__close"

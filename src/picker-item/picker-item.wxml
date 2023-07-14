@@ -10,6 +10,7 @@
 >
   <view
     class="{{classPrefix}}__wrapper"
+    aria-hidden="{{true}}"
     style="transition: transform {{ duration }}ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, {{ offset }}px, 0)"
   >
     <view
@@ -20,6 +21,32 @@
       data-index="{{ index }}"
     >
       {{option[labelAlias]}}
+    </view>
+  </view>
+
+  <view class="{{classPrefix}}__accessible">
+    <view
+      class="{{classPrefix}}__accessible--button"
+      aria-role="{{options[curIndex-1] ? 'button' : 'text'}}"
+      aria-label="{{ !options[curIndex-1] ? '没有上一项' : '选择上一项：'+ options[curIndex-1].label}}"
+      bind:tap="onClickPrev"
+    >
+      -
+    </view>
+    <view
+      class="{{classPrefix}}__accessible--current"
+      aria-role="text"
+      aria-label="{{ options[curIndex] ? '当前选择的是：' + options[curIndex].label : '当前未选择' }}"
+    >
+      -
+    </view>
+    <view
+      class="{{classPrefix}}__accessible--button"
+      aria-role="{{options[curIndex+1] ? 'button' : 'text'}}"
+      aria-label="{{!options[curIndex+1] ? '没有下一项' : '选择下一项：' + options[curIndex+1].label}}"
+      bind:tap="onClickNext"
+    >
+      -
     </view>
   </view>
 </view>

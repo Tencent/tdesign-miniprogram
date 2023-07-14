@@ -75,15 +75,23 @@ export default class PickerItem extends SuperComponent {
       });
     },
 
-    onTouchEnd() {
+    onTouchEnd(_, nowIndex) {
       const { offset, labelAlias, valueAlias } = this.data;
       const { options } = this.properties;
 
-      if (offset === this.StartOffset) {
+      let index = nowIndex;
+      if (index !== undefined && (index < 0 || index > options.length - 1)) {
         return;
       }
-      // 调整偏移量
-      const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
+
+      if (index === undefined) {
+        if (offset === this.StartOffset) {
+          return;
+        }
+        // 调整偏移量
+        index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
+      }
+
       this.setData({
         curIndex: index,
         offset: -index * this.itemHeight,
@@ -102,6 +110,16 @@ export default class PickerItem extends SuperComponent {
           column: this.columnIndex || 0,
         });
       });
+    },
+
+    onClickPrev() {
+      const { curIndex } = this.data;
+      this.onTouchEnd(null, curIndex - 1);
+    },
+
+    onClickNext() {
+      const { curIndex } = this.data;
+      this.onTouchEnd(null, curIndex + 1);
     },
 
     // 刷新选中状态
