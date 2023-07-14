@@ -28,3 +28,18 @@ cancel | - | \-
 close | `(trigger: DialogEventSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)。<br/>`type DialogEventSource = 'cancel' \| 'overlay' \| 'close-btn'`<br/>
 confirm | - | \-
 overlay-click | - | \-
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-dialog-body-max-height | 912rpx | - 
+--td-dialog-close-color | @font-gray-3 | - 
+--td-dialog-content-color | @font-gray-2 | - 
+--td-dialog-content-font-size | 32rpx | - 
+--td-dialog-content-line-height | 48rpx | - 
+--td-dialog-title-color | @font-gray-1 | - 
+--td-dialog-title-font-size | 36rpx | - 
+--td-dialog-title-line-height | 52rpx | - 
+--td-dialog-width | 622rpx | - 

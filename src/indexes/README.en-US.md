@@ -23,3 +23,28 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 external-classes | Array | - | `['t-class']` | N
 index | String / Number | - | \- | N
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-indexes-sidebar-active-bg-color | @brand-color | - 
+--td-indexes-sidebar-active-color | @font-white-1 | - 
+--td-indexes-sidebar-color | @font-gray-1 | - 
+--td-indexes-sidebar-font-size | 24rpx | - 
+--td-indexes-sidebar-item-size | 40rpx | - 
+--td-indexes-sidebar-line-height | 40rpx | - 
+--td-indexes-sidebar-right | 16rpx | - 
+--td-indexes-sidebar-tips-bg-color | @brand-color-light | - 
+--td-indexes-sidebar-tips-color | @brand-color | - 
+--td-indexes-sidebar-tips-font-size | 40rpx | - 
+--td-indexes-sidebar-tips-right | 76rpx | - 
+--td-indexes-sidebar-tips-size | 96rpx | - 
+--td-indexes-anchor-active-bg-color | @bg-color-container | - 
+--td-indexes-anchor-active-color | @brand-color | - 
+--td-indexes-anchor-active-font-weight | 600 | - 
+--td-indexes-anchor-bg-color | @bg-color-secondarycontainer | - 
+--td-indexes-anchor-color | @font-gray-1 | - 
+--td-indexes-anchor-font-size | 28rpx | - 
+--td-indexes-anchor-line-height | 44rpx | - 

@@ -133,3 +133,29 @@ focus | `(value: InputValue)` | 获得焦点时触发
 keyboardheightchange | `(height: number, duration: number)` | 键盘高度发生变化的时候触发此事件
 nicknamereview | `(pass: boolean, timeout: boolean)`| 用户昵称审核完毕后触发，仅在 type 为 "nickname" 时有效
 click `v0.32.0`| `(trigger: InputTrigger)` | 点击事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts)。<br/>`type InputTrigger = 'suffix' \| 'suffix-icon';`<br/>
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-input-bg-color | @bg-color-container | - 
+--td-input-border-color | @component-stroke | - 
+--td-input-border-left-space | 32rpx | - 
+--td-input-border-radius | @radius-default | - 
+--td-input-border-right-space | 0 | - 
+--td-input-default-text-color | @font-gray-1 | - 
+--td-input-default-tips-color | @font-gray-3 | - 
+--td-input-disabled-text-color | @text-color-disabled | - 
+--td-input-error-text-color | @error-color | - 
+--td-input-error-tips-color | @error-color | - 
+--td-input-label-text-color | @font-gray-1 | - 
+--td-input-placeholder-text-color | @text-color-placeholder | - 
+--td-input-prefix-icon-color | @font-gray-1 | - 
+--td-input-success-text-color | @success-color | - 
+--td-input-success-tips-color | @success-color | - 
+--td-input-suffix-icon-color | @font-gray-3 | - 
+--td-input-suffix-text-color | @font-gray-1 | - 
+--td-input-vertical-padding | 32rpx | - 
+--td-input-warning-text-color | @warning-color | - 
+--td-input-warning-tips-color | @warning-color | - 

@@ -80,3 +80,22 @@ header-left-icon | String / Slot | - | 面板头左侧图标 | N
 header-right-content | String / Slot | - | 面板头的右侧区域，一般用于呈现面板操作 | N
 placement | String | bottom | `0.34.0`。选项卡内容的位置。可选项：bottom/top | N
 value | String / Number | - | 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识 | N
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-collapse-border-color | @border-color | - 
+--td-collapse-content-font-size | @font-size-base | - 
+--td-collapse-content-line-height | 1.5 | - 
+--td-collapse-content-padding | 32rpx | - 
+--td-collapse-content-text-color | @font-gray-1 | - 
+--td-collapse-extra-font-size | @font-size-m | - 
+--td-collapse-header-height | 96rpx | - 
+--td-collapse-header-text-color | @font-gray-1 | - 
+--td-collapse-header-text-disabled-color | @font-gray-4 | - 
+--td-collapse-horizontal-padding | 32rpx | - 
+--td-collapse-icon-color | @font-gray-3 | - 
+--td-collapse-panel-bg-color | @bg-color-container | - 
+--td-collapse-title-font-size | @font-size-m | - 

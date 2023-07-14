@@ -55,3 +55,11 @@ z-index | Number | 11500 | 组件层级，Web 侧样式默认为 5500，移动�
 名称 | 参数 | 描述
 -- | -- | --
 visible-change | `(visible: boolean, trigger: PopupSource) ` | 当浮层隐藏或显示时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-popup-bg-color | @bg-color-container | - 
+--td-popup-border-radius | @radius-default | - 

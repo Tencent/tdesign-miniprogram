@@ -25,6 +25,11 @@ const props: TdSearchProps = {
   externalClasses: {
     type: Array,
   },
+  /** 指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离 */
+  cursorSpacing: {
+    type: Number,
+    value: 0,
+  },
   /** 是否聚焦 */
   focus: {
     type: Boolean,

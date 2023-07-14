@@ -31,6 +31,7 @@ export default class Input extends SuperComponent {
     prefix,
     classPrefix: name,
     classBasePrefix: prefix,
+    excludeType: ['number', 'digit'],
   };
 
   lifetimes = {
@@ -62,14 +63,15 @@ export default class Input extends SuperComponent {
 
   methods = {
     updateValue(value) {
-      const { maxcharacter, maxlength } = this.properties;
-      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+      const { maxcharacter, maxlength, type } = this.properties;
+      const { excludeType } = this.data;
+      if (!excludeType.includes(type) && maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
         this.setData({
           value: characters,
           count: length,
         });
-      } else if (maxlength > 0 && !Number.isNaN(maxlength)) {
+      } else if (!excludeType.includes(type) && maxlength > 0 && !Number.isNaN(maxlength)) {
         const { length, characters } = getCharacterLength('maxlength', value, maxlength);
         this.setData({
           value: characters,

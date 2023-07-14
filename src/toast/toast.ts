@@ -80,6 +80,7 @@ export default class Toast extends SuperComponent {
     },
 
     hide() {
+      if (!this.data.visible) return; // 避免重复触发（页面关闭、定时关闭都会触发）
       this.setData({ visible: false });
       this.data?.close?.();
       this.triggerEvent('close');

@@ -69,3 +69,13 @@ default-value | String / Number | undefined | 值。非受控属性 | N
 blur | `({ type: string \| number })` | 输入框失去焦点时触发
 change | `({ value: string \| number })` | 数值发生变更时触发
 overlimit | `({type: 'minus' \| 'plus'})` | 数值超出限制时触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-stepper-border-color | @component-border | - 
+--td-stepper-border-radius | @radius-small | - 
+--td-stepper-input-color | @font-gray-1 | - 
+--td-stepper-input-disabled-color | @font-gray-4 | - 

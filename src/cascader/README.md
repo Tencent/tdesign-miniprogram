@@ -68,3 +68,19 @@ visible | Boolean | false | 是否展示 | N
 change | `(value: string \| number, selectedOptions: string[])` | `1.0.1`。值发生变更时触发
 close | `(trigger: TriggerSource)` | `1.0.1`。关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/cascader/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
 pick | `(value: string \| number, index: number)` | `1.0.1`。选择后触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-cascader-active-color | @brand-color | - 
+--td-cascader-border-color | @border-color | - 
+--td-cascader-disabled-color | @font-gray-4 | - 
+--td-cascader-options-height | 640rpx | - 
+--td-cascader-options-title-color | @font-gray-3 | - 
+--td-cascader-step-arrow-color | @font-gray-3 | - 
+--td-cascader-step-dot-size | 16rpx | - 
+--td-cascader-step-height | 88rpx | - 
+--td-cascader-title-color | @font-gray-1 | - 
+--td-cascder-title-font-size | 36rpx | - 

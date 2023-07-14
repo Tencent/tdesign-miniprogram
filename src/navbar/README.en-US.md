@@ -24,3 +24,19 @@ complete | \- | \-
 fail | \- | \-
 go-back | \- | \-
 success | \- | \-
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-navbar-bg-color | @bg-color-container | - 
+--td-navbar-capsule-border-color | #e3e6ea | - 
+--td-navbar-capsule-border-radius | 32rpx | - 
+--td-navbar-capsule-height | 64rpx | - 
+--td-navbar-capsule-width | 176rpx | - 
+--td-navbar-color | @font-gray-1 | - 
+--td-navbar-height | 96rpx | - 
+--td-navbar-left-arrow-size | 48rpx | - 
+--td-navbar-title-font-size | 36rpx | - 
+--td-navbar-title-font-weight | 600 | - 

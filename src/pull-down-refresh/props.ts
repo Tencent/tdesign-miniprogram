@@ -54,6 +54,11 @@ const props: TdPullDownRefreshProps = {
     type: String,
     value: '',
   },
+  /** 滚动条显隐控制 (同时开启 enhanced 属性后生效) */
+  showScrollbar: {
+    type: Boolean,
+    value: true,
+  },
   /** 距顶部/左边多远时，触发 scrolltoupper 事件 */
   upperThreshold: {
     type: null,

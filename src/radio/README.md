@@ -53,7 +53,7 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 placement | String | left | 复选框和内容相对位置。可选项：left/right | N
-allow-uncheck | Boolean | false | 【开发中】是否允许取消选中 | N
+allow-uncheck | Boolean | false | 是否允许取消选中 | N
 block | Boolean | true | 是否为块级元素 | N
 checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
@@ -93,3 +93,27 @@ default-value | String / Number / Boolean | undefined | 选中的值。非受控
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: RadioValue)` | 选中值发生变化时触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-radio-bg-color | @bg-color-container | - 
+--td-radio-border-color | @component-stroke | - 
+--td-radio-content-checked-color | @font-gray-2 | - 
+--td-radio-content-color | @font-gray-2 | - 
+--td-radio-content-disabled-color | @font-gray-4 | - 
+--td-radio-content-font-size | 28rpx | - 
+--td-radio-content-line-height | 44rpx | - 
+--td-radio-font-size | 32rpx | - 
+--td-radio-icon-checked-color | @brand-color | - 
+--td-radio-icon-color | @component-border | - 
+--td-radio-icon-disabled-bg-color | @bg-color-component-disabled | - 
+--td-radio-icon-disabled-color | @brand-color-disabled | - 
+--td-radio-icon-size | 48rpx | - 
+--td-radio-label-checked-color | @font-gray-1 | - 
+--td-radio-label-color | @font-gray-1 | - 
+--td-radio-label-disabled-color | @font-gray-4 | - 
+--td-radio-label-line-height | 48rpx | - 
+--td-radio-vertical-padding | 32rpx | - 

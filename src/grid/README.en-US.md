@@ -27,3 +27,29 @@ jump-type | String | navigate-to | options：redirect-to/switch-tab/relaunch/nav
 layout | String | vertical | options：vertical/horizontal | N
 text | String / Slot | - | \- | N
 url | String | - | \- | N
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-grid-bg-color | @bg-color-container | - 
+--td-grid-card-radius | @radius-large | - 
+--td-grid-item-bg-color | @bg-color-container | - 
+--td-grid-item-description-color | @font-gray-3 | - 
+--td-grid-item-description-font-size | 24rpx | - 
+--td-grid-item-description-line-height | 40rpx | - 
+--td-grid-item-description-padding-top | 8rpx | - 
+--td-grid-item-horizontal-text-description-top | 4rpx | - 
+--td-grid-item-horizontal-text-padding-left | 24rpx | - 
+--td-grid-item-hover-bg-color | @bg-color-secondarycontainer | - 
+--td-grid-item-image-middle-width | 80rpx | - 
+--td-grid-item-image-small-width | 64rpx | - 
+--td-grid-item-image-width | 96rpx | - 
+--td-grid-item-padding | 32rpx | - 
+--td-grid-item-text-color | @font-gray-1 | - 
+--td-grid-item-text-font-size | 28rpx | - 
+--td-grid-item-text-line-height | 44rpx | - 
+--td-grid-item-text-middle-font-size | 24rpx | - 
+--td-grid-item-text-padding-top | 16rpx | - 
+--td-grid-item-text-small-font-size | 24rpx | - 

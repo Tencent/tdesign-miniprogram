@@ -21,3 +21,14 @@ name | params | description
 -- | -- | --
 change | `(time: TimeData)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
 finish | \- | \-
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-countdown-bg-color | @error-color-6 | - 
+--td-countdown-default-color | @font-gray-1 | - 
+--td-countdown-round-border-radius | @radius-circle | - 
+--td-countdown-round-color | @font-white-1 | - 
+--td-countdown-square-border-radius | @radius-small | - 

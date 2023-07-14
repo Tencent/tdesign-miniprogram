@@ -45,6 +45,14 @@ export interface TdSearchProps {
     value?: ['t-class', 't-class-input', 't-class-input-container', 't-class-cancel', 't-class-left', 't-class-right'];
   };
   /**
+   * 指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离
+   * @default 0
+   */
+  cursorSpacing?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
    * 是否聚焦
    * @default false
    */
