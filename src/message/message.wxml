@@ -14,7 +14,7 @@
       <template wx:if="{{_icon}}" is="icon" data="{{tClass: prefix + '-class-icon', ariaHidden: true, ..._icon }}" />
     </view>
     <view
-      class="{{classPrefix}}__text-wrap {{true ? classPrefix + '__text-nowrap' : ''}}"
+      class="{{classPrefix}}__text-wrap {{marquee ? {{classPrefix}} + '__text-nowrap' : ''}}"
       style="text-align: {{align}}"
       id="{{classPrefix}}__text-wrap"
     >
