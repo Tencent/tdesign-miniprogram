@@ -58,9 +58,14 @@ select | `(index: string \| number)` | 点击侧边栏时触发事件
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class']` | N
 index | String / Number | - | 索引字符 | N
 
+### IndexesAnchor 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-sidebar | 侧边栏样式类
+t-class-sidebar-item | 侧边栏选项样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。

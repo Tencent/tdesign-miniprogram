@@ -54,6 +54,10 @@ theme | String | - | 提示类型。可选项：loading/success/error | N
 close | \- | 轻提示隐藏的时候触发
 destory | \- | 轻提示销毁的时候触发
 
+### Toast 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。

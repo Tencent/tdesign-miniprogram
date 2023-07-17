@@ -68,7 +68,6 @@ allow-half | Boolean | false | 是否允许半选 | N
 color | String / Array | '#ED7B2F' | `0.30.0`。评分图标的颜色，样式中默认为 #ED7B2F。一个值表示设置选中高亮的五角星颜色，示例：[选中颜色]。数组则表示分别设置 选中高亮的五角星颜色 和 未选中暗灰的五角星颜色，[选中颜色，未选中颜色]。示例：['#ED7B2F', '#E3E6EB']。TS 类型：`string \| Array<string>` | N
 count | Number | 5 | 评分的数量 | N
 disabled | Boolean | - | 是否禁用评分 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、评分图标类名、辅助文字类名。`['t-class', 't-class-icon', 't-class-text']` | N
 gap | Number | 8 | 评分图标的间距 | N
 icon | String / Array | - | `0.30.0`。自定义评分图标，[选中图标，未选中图标]。TS 类型：`string \| string[]` | N
 show-text | Boolean | false | 是否显示对应的辅助文字 | N
@@ -84,6 +83,12 @@ variant | String | outline | 废弃。形状类型，有描边类型和填充类
 -- | -- | --
 change | `(value: number)` | 评分数改变时触发
 
+### Rate 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-icon` | 图标样式类
+t-class-text | 文本样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。

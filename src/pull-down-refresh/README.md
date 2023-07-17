@@ -35,7 +35,6 @@ isComponent: true
 -- | -- | -- | -- | --
 enable-back-to-top | Boolean | true | `1.1.5`。iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向。自 2.27.3 版本开始，若非显式设置为 false，则在显示尺寸大于屏幕 90% 时自动开启 | N
 enable-passive | Boolean | false | `1.1.5`。开启 passive 特性，能优化一定的滚动性能 | N
-external-classes | Array | - | 加载loading样式。`['t-class', 't-class-loading','t-class-text', 't-class-indicator']` | N
 loading-bar-height | String / Number | 50 | 加载中下拉高度，如果值为数字则单位是：'px' | N
 loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/pull-down-refresh/type.ts) | N
 loading-texts | Array | [] | 提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']。TS 类型：`string[]` | N
@@ -56,6 +55,13 @@ change | `(value: boolean)` | 下拉或收起时触发，用户手势往下滑�
 refresh | \- | 结束下拉时触发
 timeout | \- | 刷新超时触发
 
+### PullDownRefresh 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-loading | 加载样式类
+t-class-text | 文本样式类
+t-class-indicator | 指示样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。
