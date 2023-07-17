@@ -93,6 +93,7 @@ count | Number | 8 | 设置每页展示菜单的数量，仅当 type=grid 时有
 description | String | - | `0.29.0`。动作面板描述文字 | N
 items | Array | - | 必需。菜单项。TS 类型：`Array<string \| ActionSheetItem>` `interface ActionSheetItem {label: string; color?: string; disabled?: boolean }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts) | Y
 show-cancel | Boolean | true | 是否显示取消按钮 | N
+show-overlay | Boolean | true | 是否显示遮罩层 | N
 theme | String | list | 展示类型，列表和表格形式展示。可选项：list/grid | N
 visible | Boolean | false | 必需。显示与隐藏 | Y
 default-visible | Boolean | undefined | 必需。显示与隐藏。非受控属性 | Y
