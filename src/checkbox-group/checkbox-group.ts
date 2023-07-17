@@ -47,7 +47,7 @@ export default class CheckBoxGroup extends SuperComponent {
   $checkAll = null; // 全选复选框
 
   methods = {
-    getChilds() {
+    getChildren() {
       let items = this.$children;
       if (!items.length) {
         items = this.selectAllComponents(`.${prefix}-checkbox-option`);
@@ -56,7 +56,7 @@ export default class CheckBoxGroup extends SuperComponent {
     },
 
     updateChildren() {
-      const items = this.getChilds();
+      const items = this.getChildren();
       const { value } = this.data;
 
       if (items.length > 0) {
@@ -76,14 +76,14 @@ export default class CheckBoxGroup extends SuperComponent {
     updateValue({ value, checked, checkAll, indeterminate }) {
       let { value: newValue } = this.data;
       const { max } = this.data;
-      const keySet = new Set(this.getChilds().map((item) => item.data.value));
+      const keySet = new Set(this.getChildren().map((item) => item.data.value));
 
       newValue = newValue.filter((value) => keySet.has(value));
 
       if (max && checked && newValue.length === max) return;
 
       if (checkAll) {
-        const items = this.getChilds();
+        const items = this.getChildren();
         newValue =
           !checked && indeterminate
             ? items
@@ -141,7 +141,7 @@ export default class CheckBoxGroup extends SuperComponent {
     },
 
     setCheckall() {
-      const items = this.getChilds();
+      const items = this.getChildren();
 
       if (!this.$checkAll) {
         this.$checkAll = items.find((item) => item.data.checkAll);
