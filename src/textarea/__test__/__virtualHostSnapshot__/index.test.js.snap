@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`textarea slots : label 1`] = `
-<t-textarea
-  class="base"
+<wx-view
+  class="t-textarea  class t-class"
+  style=""
 >
   <wx-view
-    class="t-textarea  class t-class"
-    style=""
+    class="t-textarea__label t-class-label"
   >
-    <wx-view
-      class="t-textarea__label t-class-label"
+    <wx-text
+      slot="label"
     >
       <wx-text
         slot="label"
@@ -51,5 +51,39 @@ exports[`textarea slots : label 1`] = `
       />
     </wx-view>
   </wx-view>
-</t-textarea>
+  <wx-view
+    class="t-textarea__wrapper"
+  >
+    <wx-textarea
+      adjustPosition="{{true}}"
+      autoFocus="{{false}}"
+      autoHeight="{{false}}"
+      class="t-textarea__wrapper-inner  t-class-textarea"
+      confirmHold="{{false}}"
+      confirmType="return"
+      cursor="{{-1}}"
+      cursorSpacing="{{0}}"
+      disabled="{{false}}"
+      disableDefaultPadding="{{false}}"
+      fixed="{{false}}"
+      focus="{{false}}"
+      holdKeyboard="{{false}}"
+      maxlength="{{-1}}"
+      placeholder=""
+      placeholderClass="t-textarea__placeholder"
+      placeholderStyle=""
+      selectionEnd="{{-1}}"
+      selectionStart="{{-1}}"
+      showConfirmBar="{{true}}"
+      style=""
+      value=""
+      bind:blur="onBlur"
+      bind:confirm="onConfirm"
+      bind:focus="onFocus"
+      bind:input="onInput"
+      bind:keyboardheightchange="onKeyboardHeightChange"
+      bind:linechange="onLineChange"
+    />
+  </wx-view>
+</wx-view>
 `;
