@@ -7,7 +7,7 @@ exports[`DateTimePicker DateTimePicker date-all demo works fine 1`] = `
     data-mode="datetime"
     hover="{{true}}"
     note=""
-    tClass="pannel-item"
+    tClass="panel-item"
     title="选择日期时间"
     bind:tap="showPicker"
   />
@@ -30,7 +30,7 @@ exports[`DateTimePicker DateTimePicker steps demo works fine 1`] = `
     arrow="{{true}}"
     hover="{{true}}"
     note=""
-    tClass="pannel-item"
+    tClass="panel-item"
     title="选择时间"
     bind:tap="showPicker"
   />
@@ -69,7 +69,7 @@ exports[`DateTimePicker DateTimePicker time demo works fine 1`] = `
     data-mode="second"
     hover="{{true}}"
     note=""
-    tClass="pannel-item"
+    tClass="panel-item"
     title="选择时间"
     bind:tap="showPicker"
   />
@@ -83,7 +83,7 @@ exports[`DateTimePicker DateTimePicker time demo works fine 1`] = `
     data-mode="minute"
     hover="{{true}}"
     note=""
-    tClass="pannel-item"
+    tClass="panel-item"
     title="选择时间"
     bind:tap="showPicker"
   />
@@ -127,7 +127,7 @@ exports[`DateTimePicker DateTimePicker year-month demo works fine 1`] = `
     data-mode="month"
     hover="{{true}}"
     note=""
-    tClass="pannel-item"
+    tClass="panel-item"
     title="选择日期"
     bind:tap="showPicker"
   />
@@ -154,7 +154,7 @@ exports[`DateTimePicker DateTimePicker year-month-date demo works fine 1`] = `
     data-mode="date"
     hover="{{true}}"
     note=""
-    tClass="pannel-item"
+    tClass="panel-item"
     title="选择日期"
     bind:tap="showPicker"
   />

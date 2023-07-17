@@ -5,7 +5,7 @@
   arrow
   data-mode="datetime"
   bindtap="showPicker"
-  t-class="pannel-item"
+  t-class="panel-item"
 />
 
 <!-- 年月日时分 -->

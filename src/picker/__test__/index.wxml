@@ -1,19 +1,19 @@
 <block>
-  <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.CITY}}">
-    <view class="pannel-label">城市</view>
-    <view class="pannel-text {{cityValue.length ? '' : 'empty'}}">{{cityCurrentValue || '选择城市'}}</view>
+  <view class="panel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.CITY}}">
+    <view class="panel-label">城市</view>
+    <view class="panel-text {{cityValue.length ? '' : 'empty'}}">{{cityCurrentValue || '选择城市'}}</view>
     <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
   </view>
-  <view class="pannel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.YEAR_SEASONS}}">
-    <view class="pannel-label">年份和季节</view>
-    <view class="pannel-text {{yearSeasonsValue.length ? '' : 'empty'}}">
+  <view class="panel-item" bind:tap="onClickPicker" data-key="{{PICKER_KEY.YEAR_SEASONS}}">
+    <view class="panel-label">年份和季节</view>
+    <view class="panel-text {{yearSeasonsValue.length ? '' : 'empty'}}">
       {{yearSeasonsCurrentValue || '选择年份和季节' }}</view
     >
     <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
   </view>
-  <view class="pannel-item last" bind:tap="onClickPicker" data-key="{{PICKER_KEY.DATE}}">
-    <view class="pannel-label">日期</view>
-    <view class="pannel-text {{dateValue.length ? '' : 'empty'}}"> {{dateCurrentValue || '选择日期' }}</view>
+  <view class="panel-item last" bind:tap="onClickPicker" data-key="{{PICKER_KEY.DATE}}">
+    <view class="panel-label">日期</view>
+    <view class="panel-text {{dateValue.length ? '' : 'empty'}}"> {{dateCurrentValue || '选择日期' }}</view>
     <t-icon name="chevron-right" color="rgba(0, 0, 0, 0.26)" size="24px" />
   </view>
 </block>

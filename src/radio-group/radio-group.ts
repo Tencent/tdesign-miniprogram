@@ -39,7 +39,7 @@ export default class RadioGroup extends SuperComponent {
 
   observers = {
     value(v) {
-      this.getChilds().forEach((item) => {
+      this.getChildren().forEach((item) => {
         item.setData({
           checked: v === item.data.value,
         });
@@ -51,7 +51,7 @@ export default class RadioGroup extends SuperComponent {
   };
 
   methods = {
-    getChilds() {
+    getChildren() {
       let items = this.$children;
 
       if (!items?.length) {

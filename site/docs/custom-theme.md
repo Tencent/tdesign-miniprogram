@@ -62,4 +62,4 @@ page {
 }
 ```
 
-> 目前仅有部分组件支持自定义主题，支持的组件在其文档有陈列对应的 CSS Varialbes，可以访问 [tab-bar-item.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/tab-bar-item/tab-bar-item.less)
+> 目前仅有部分组件支持自定义主题，支持的组件在其文档有陈列对应的 CSS Variables，可以访问 [tab-bar-item.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/tab-bar-item/tab-bar-item.less)

@@ -54,7 +54,7 @@ npm start
 此时会同时启动 `dist` 与 `example` 的构建服务，对应的开发路径与构建路径分别为：
 
 - `src` -> `miniprogram_dist`
-- `src/*/_exmaple` -> `example` -> `_example`
+- `src/*/_example` -> `example` -> `_example`
 
 使用微信开发者工具导入项目 `_example` 文件夹
 
