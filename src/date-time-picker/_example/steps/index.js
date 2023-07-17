@@ -18,7 +18,7 @@ Component({
     onConfirm(e) {
       const { value } = e.detail;
 
-      console.log('confim', value);
+      console.log('confirm', value);
 
       this.setData({
         value,

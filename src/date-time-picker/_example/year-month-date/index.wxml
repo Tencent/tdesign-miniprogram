@@ -6,7 +6,7 @@
   data-mode="date"
   bindtap="showPicker"
   class="test"
-  t-class="pannel-item"
+  t-class="panel-item"
 />
 
 <!-- 年月日 -->
