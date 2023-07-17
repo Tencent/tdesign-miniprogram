@@ -25,7 +25,7 @@ Component({
       const { value } = e.detail;
       const { mode } = this.data;
 
-      console.log('confim', value);
+      console.log('confirm', value);
 
       this.setData({
         [mode]: value,
