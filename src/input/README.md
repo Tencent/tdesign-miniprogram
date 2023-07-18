@@ -84,7 +84,6 @@ borderless | Boolean | false | 是否开启无边框模式 | N
 clearable | Boolean / Object | false | 是否可清空，默认不启动。值为 `true` 表示使用默认清除空按钮，值为 `Object` 表示透传至 `icon` | N
 disabled | Boolean | false | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
-external-classes | Array | - | 组件类名，用于设置组件外层元素、输入框、占位符、错误信息等元素类名。`['t-class','t-class-prefix-icon', 't-class-label', 't-class-input',  't-class-clearable', 't-class-suffix', 't-class-suffix-icon', 't-class-tips']` | N
 format | Function | - | 【开发中】指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => number | string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 label | String / Slot | - | 左侧文本。 | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
@@ -134,6 +133,17 @@ keyboardheightchange | `(height: number, duration: number)` | 键盘高度发生
 nicknamereview | `(pass: boolean, timeout: boolean)`| 用户昵称审核完毕后触发，仅在 type 为 "nickname" 时有效
 click `v0.32.0`| `(trigger: InputTrigger)` | 点击事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts)。<br/>`type InputTrigger = 'suffix' \| 'suffix-icon';`<br/>
 
+### CellGroup 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-prefix-icon | 前置图标样式类
+t-class-label | 标题样式类
+t-class-input | 标题样式类
+t-class-clearable | 标题样式类
+t-class-suffix | 后置样式类
+t-class-suffix-icon` | 后置图标样式类
+t-class-tips | 提示样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。

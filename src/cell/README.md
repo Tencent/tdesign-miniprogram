@@ -47,7 +47,6 @@ align | String | middle | 内容的对齐方式，默认居中对齐。可选项
 arrow | Boolean | false | 是否显示右侧箭头 | N
 bordered | Boolean | true | 是否显示下边框 | N
 description | String / Slot | - | 下方内容描述 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、标题类名、下方描述内容类名、右侧说明文字类名、激活态类名、图片类名、左侧内容、左侧图标类名、右侧内容、右侧图标类名 等。`['t-class', 't-class-title', 't-class-description', 't-class-note', 't-class-hover', 't-class-image', 't-class-left', 't-class-left-icon', 't-class-right', 't-class-right-icon']` | N
 hover | Boolean | - | 是否开启点击反馈 | N
 image | String / Slot | - | 主图 | N
 jump-type | String | navigateTo | 链接跳转类型。可选项：switchTab/reLaunch/redirectTo/navigateTo | N
@@ -64,15 +63,33 @@ url | String | - | 点击后跳转链接地址。如果值为空，则表示不�
 -- | -- | --
 click | - | 右侧内容
 
+### Cell 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-title | 标题样式类
+t-class-description | 下方描述内容样式类
+t-class-note | 右侧说明文字样式类
+t-class-hover | 悬停样式类
+t-class-image | 图片样式类
+t-class-left | 左侧内容样式类
+t-class-left-icon | 左侧图标样式类
+t-class-right | 右侧内容样式类
+t-class-right-icon | 右侧图标样式类
+
 ### CellGroup Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 bordered | Boolean | - | 是否显示组边框 | N
-external-classes | Array | - | 组件类名。`['t-class']` | N
 theme | String | default | 单元格风格。可选项：default/card | N
 title | String | - | 单元格组标题 | N
 
+### CellGroup 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-title | 标题样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。

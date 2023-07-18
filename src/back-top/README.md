@@ -29,7 +29,6 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-external-classes | Array | - | 组件类名，分别用于设置外层元素、图标、文本内容等元素类名。`['t-class', 't-class-icon', 't-class-text']` | N
 fixed | Boolean | true | 是否绝对定位固定到屏幕右下方 | N
 icon | String / Boolean / Object / Slot | true | 图标。值为 `false` 表示不显示图标。不传表示使用默认图标 `'backtop'` | N
 text | String | '' | 文案 | N
@@ -41,6 +40,12 @@ theme | String | round | 预设的样式类型。可选项：round/half-round/ro
 -- | -- | --
 to-top | \- | 点击触发
 
+### BackTop 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-icon | 图标样式类
+t-class-text | 文本样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。

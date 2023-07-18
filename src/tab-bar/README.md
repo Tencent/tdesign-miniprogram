@@ -56,7 +56,6 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 bordered | Boolean | true | 是否显示外边框 | N
-external-classes | Array | - | 组件类名，用于设置外层元素类名。`['t-class']` | N
 fixed | Boolean | true | 是否固定在底部 | N
 safe-area-inset-bottom | Boolean | true | 是否为 iPhoneX 留出底部安全距离 | N
 shape | String | normal | 标签栏的形状。可选项：normal/round | N
@@ -70,6 +69,11 @@ default-value | String / Number / Array | undefined | 当前选中标签的索�
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: string \| number)` | 选中标签切换时触发
+
+### TabBar 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
 
 ### TabBarItem Props
 

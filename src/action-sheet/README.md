@@ -97,7 +97,6 @@ show-overlay | Boolean | true | 是否显示遮罩层 | N
 theme | String | list | 展示类型，列表和表格形式展示。可选项：list/grid | N
 visible | Boolean | false | 必需。显示与隐藏 | Y
 default-visible | Boolean | undefined | 必需。显示与隐藏。非受控属性 | Y
-external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class', 't-class-content', 't-class-cancel']` | N
 
 ### ActionSheet Events
 
@@ -107,6 +106,12 @@ cancel | \- | 点击取消按钮时触发
 close | `(trigger: TriggerSource)` | 关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'command' \| 'select' `<br/>
 selected | `(selected: ActionSheetItem \| string, index: number)` | 选择菜单项时触发
 
+### ActionSheet 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-content | 内容样式类
+t-class-cancel | 取消样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。

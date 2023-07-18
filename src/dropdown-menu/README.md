@@ -48,16 +48,22 @@ isComponent: true
 -- | -- | -- | -- | --
 close-on-click-overlay | Boolean | true | 是否在点击遮罩层后关闭菜单 | N
 duration | String / Number | 200 | 动画时长 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、菜单标签、菜单图标类名 等。`['t-class', 't-class-item', 't-class-label', 't-class-icon']` | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 z-index | Number | 11600 | 菜单栏 z-index 层级 | N
+
+### DropdownMenu 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-item | 选项样式类
+t-class-label | 标签样式类
+t-class-icon | 图标样式类
 
 ### DropdownItem Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 disabled | Boolean | false | 是否禁用 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、菜单列、菜单列选项、菜单列选项标签、树形菜单、树形菜单列等类名。`['t-class','t-class-content', 't-class-column', 't-class-column-item', 't-class-column-item-label',  't-class-footer']` | N
 keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段别名。TS 类型：`KeysType` | N
 label | String | - | 标题 | N
 multiple | Boolean | false | 是否多选 | N
@@ -75,6 +81,16 @@ change | `(value: DropdownValue)` | 值改变时触发
 confirm | `(value: DropdownValue)` | 点击确认时触发
 reset | \- | 点击重置时触发
 close | \- | 关闭时触发
+
+### DropdownItem 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-content | 内容样式类
+t-class-column | 菜单列样式类
+t-class-column-item | 菜单列选项样式类
+t-class-column-item-label | 菜单列选项标签样式类
+t-class-footer | 底部样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。
