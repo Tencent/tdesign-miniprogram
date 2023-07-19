@@ -58,5 +58,35 @@ select | `(index: string \| number)` | 点击侧边栏时触发事件
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-external-classes | Array | - | 组件类名，用于设置组件外层元素类名。`['t-class']` | N
 index | String / Number | - | 索引字符 | N
+
+### IndexesAnchor 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-sidebar | 侧边栏样式类
+t-class-sidebar-item | 侧边栏选项样式类
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-indexes-sidebar-active-bg-color | @brand-color | - 
+--td-indexes-sidebar-active-color | @font-white-1 | - 
+--td-indexes-sidebar-color | @font-gray-1 | - 
+--td-indexes-sidebar-font-size | 24rpx | - 
+--td-indexes-sidebar-item-size | 40rpx | - 
+--td-indexes-sidebar-line-height | 40rpx | - 
+--td-indexes-sidebar-right | 16rpx | - 
+--td-indexes-sidebar-tips-bg-color | @brand-color-light | - 
+--td-indexes-sidebar-tips-color | @brand-color | - 
+--td-indexes-sidebar-tips-font-size | 40rpx | - 
+--td-indexes-sidebar-tips-right | 76rpx | - 
+--td-indexes-sidebar-tips-size | 96rpx | - 
+--td-indexes-anchor-active-bg-color | @bg-color-container | - 
+--td-indexes-anchor-active-color | @brand-color | - 
+--td-indexes-anchor-active-font-weight | 600 | - 
+--td-indexes-anchor-bg-color | @bg-color-secondarycontainer | - 
+--td-indexes-anchor-color | @font-gray-1 | - 
+--td-indexes-anchor-font-size | 28rpx | - 
+--td-indexes-anchor-line-height | 44rpx | - 

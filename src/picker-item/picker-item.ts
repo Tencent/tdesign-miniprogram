@@ -51,6 +51,7 @@ export default class PickerItem extends SuperComponent {
     duration: 0, // 滚动动画延迟
     value: '',
     curIndex: 0,
+    columnIndex: 0,
     labelAlias: 'label',
     valueAlias: 'value',
   };
@@ -76,7 +77,7 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchEnd() {
-      const { offset, labelAlias, valueAlias } = this.data;
+      const { offset, labelAlias, valueAlias, columnIndex } = this.data;
       const { options } = this.properties;
 
       if (offset === this.StartOffset) {
@@ -99,7 +100,7 @@ export default class PickerItem extends SuperComponent {
         this._selectedLabel = options[index]?.[labelAlias];
         this.$parent?.triggerColumnChange({
           index,
-          column: this.columnIndex || 0,
+          column: columnIndex,
         });
       });
     },

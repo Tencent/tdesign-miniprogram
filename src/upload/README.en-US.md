@@ -30,3 +30,13 @@ fail | \- | \-
 remove | `(index: number; file: UploadFile)` | \-
 select-change | `(currentSelectedFiles: MediaContext[])` | \-
 success | `(files: MediaContext)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-upload-add-bg-color | @bg-color-secondarycontainer | - 
+--td-upload-add-color | @font-gray-3 | - 
+--td-upload-add-icon-font-size | 56rpx | - 
+--td-upload-radius | @radius-default | - 

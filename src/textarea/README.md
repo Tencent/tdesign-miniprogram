@@ -68,7 +68,6 @@ confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键�
 confirm-type | String | done | 设置键盘右下角按钮的文字，仅在 type='text'时生效。可选项：send/search/next/go/done。TS 类型：`'return' \| 'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
 cursor-spacing | Number | 0 | 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 | N
 disabled | Boolean | false | 是否禁用文本框 | N
-external-classes | Array | - | 组件类名，分别用于表示组件外层元素、输入框、占位符、标签名等元素类名。`['t-class', 't-class-textarea', 't-class-label, 't-class-indicator]` | N
 focus | Boolean | false | 自动聚焦 | N
 label | String / Slot | - | 左侧文本 | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 | N
@@ -97,3 +96,25 @@ enter | `(value: TextareaValue)` | 点击完成时触发
 focus | `(value: TextareaValue)` | 获得焦点时触发
 line-change | `(value: TextareaValue)` | 行高发生变化时触发
 keyboardheightchange | `(height: number, duration: number)` | 键盘高度发生变化的时候触发此事件
+
+### Textarea 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-textarea | 占位符样式类
+t-class-label | 左侧文本样式类
+t-class-indicator | 计数器样式类
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-textarea-background-color | @bg-color-container | - 
+--td-textarea-border-color | rgba(220, 220, 220, 1) | - 
+--td-textarea-border-radius | @radius-default | - 
+--td-textarea-disabled-text-color | @font-gray-4 | - 
+--td-textarea-indicator-text-color | @font-gray-3 | - 
+--td-textarea-label-color | @font-gray-1 | - 
+--td-textarea-placeholder-color | @font-gray-3 | - 
+--td-textarea-text-color | @font-gray-1 | - 

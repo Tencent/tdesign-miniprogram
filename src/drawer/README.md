@@ -58,3 +58,23 @@ z-index | Number | 11500 | 抽屉层级，样式默认为 11500 | N
 close | `(trigger: TriggerSource)` | 关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/drawer/type.ts)。<br/>`type TriggerSource = 'overlay'`<br/>
 item-click | `(index: number; item: DrawerItem)` | 点击抽屉里的列表项
 overlay-click | \- | 如果蒙层存在，点击蒙层时触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-drawer-bg-color | @bg-color-container | - 
+--td-drawer-border-color | @border-color | - 
+--td-drawer-footer-padding-bottom | 40rpx | - 
+--td-drawer-hover-color | @bg-color-secondarycontainer | - 
+--td-drawer-item-height | 48rpx | - 
+--td-drawer-item-icon-size | 48rpx | - 
+--td-drawer-item-padding | 32rpx | - 
+--td-drawer-sidebar-height | 70vh | - 
+--td-drawer-title-color | --td-drawer-title-color | - 
+--td-drawer-title-color | @drawer-title-color | - 
+--td-drawer-title-color | @font-gray-1 | - 
+--td-drawer-title-font-size | 36rpx | - 
+--td-drawer-title-padding | 48rpx 32rpx 16rpx | - 
+--td-drawer-width | 560rpx | - 

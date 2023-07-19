@@ -58,8 +58,32 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 description | String / Slot | - | 描述文字 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-image', 't-class-title', 't-class-description']` | N
 icon | String / Boolean / Object | true | 图标名称。值为字符串表示图标名称，值为 `false` 表示不显示图标，值为 `Object` 类型，表示透传至 `icon`，不传表示使用主题图标。 | N
 image | String / Slot | - | 图片地址 | N
 theme | String | default | 内置主题。可选项：default/success/warning/error | N
 title | String / Slot | '' | 标题 | N
+
+### Result 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-image | 图片样式类
+t-class-title | 标题样式类
+t-class-description | 描述样式类
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-result-description-color | @font-gray-2 | - 
+--td-result-description-font-size | @font-size-base | - 
+--td-result-description-line-height | 44rpx | - 
+--td-result-description-margin-top | @spacer | - 
+--td-result-icon-default-color | @brand-color | - 
+--td-result-icon-error-color | @error-color | - 
+--td-result-icon-success-color | @success-color | - 
+--td-result-icon-warning-color | @warning-color | - 
+--td-result-title-color | @font-gray-1 | - 
+--td-result-title-font-size | @font-size-l | - 
+--td-result-title-line-height | 56rpx | - 
+--td-result-title-margin-top | @spacer-1 | - 
