@@ -19,6 +19,7 @@ docClass: timeline
 - `docs`: 将外部样式类的内容独立展示 @ccccpj ([#2200](https://github.com/Tencent/tdesign-miniprogram/pull/2200))
 - 修复一些示例/文档中的拼写错误 @anlyyao ([#2197](https://github.com/Tencent/tdesign-miniprogram/pull/2197)) 
 
+
 ## 🌈 1.1.12 `2023-07-11` 
 ### 🚀 Features
 - `PullDownRefresh`: 增加 show-scrollbar 属性 @lolhezihehe ([#2163](https://github.com/Tencent/tdesign-miniprogram/pull/2163))
