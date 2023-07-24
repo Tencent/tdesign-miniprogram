@@ -27,7 +27,7 @@ export default (funcName = 'onScroll') => {
       const bindScroller = this[funcName]?.bind(this);
 
       if (bindScroller) {
-        this.pageScroller = bindScroller;
+        this._pageScroller = bindScroller;
       }
 
       if (Array.isArray(page.pageScroller)) {
@@ -44,7 +44,7 @@ export default (funcName = 'onScroll') => {
       const page = getCurrentPage<{ pageScroller: Scroller[] }>();
       if (!page) return;
 
-      page.pageScroller = page.pageScroller?.filter((item) => item !== this.pageScroller) || [];
+      page.pageScroller = page.pageScroller?.filter((item) => item !== this._pageScroller) || [];
     },
   });
 };
