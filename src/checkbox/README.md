@@ -72,7 +72,6 @@ default-checked | Boolean | undefined | 是否选中。非受控属性 | N
 content | String / Slot | - | 多选框内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 content-disabled | Boolean | - | 是否禁用组件内容（content）触发选中 | N
 disabled | Boolean | undefined | 是否禁用组件。如果父组件存在 CheckboxGroup，默认值由 CheckboxGroup.disabled 控制。优先级：Checkbox.disabled > CheckboxGroup.disabled > Form.disabled | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层、多选框图标、主文案、内容 等元素类名。`['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border']` | N
 icon | String / Array | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标，半选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标。TS 类型：`'circle' \| 'line' \| 'rectangle' \| string[]` | N
 indeterminate | Boolean | false | 是否为半选 | N
 label | String / Slot | - | 主文案。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
@@ -88,6 +87,15 @@ value | String / Number / Boolean | - | 多选框的值。TS 类型：`string \|
 名称 | 参数 | 描述
 -- | -- | --
 change | `(checked: boolean)` | 值变化时触发
+
+### Checkbox 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-label | 标签样式类
+t-class-icon | 图标样式类
+t-class-content | 内容样式类
+t-class-border | 边框样式类
 
 ### CheckboxGroup Props
 
@@ -106,3 +114,26 @@ default-value | Array | undefined | 选中值。非受控属性。TS 类型：`T
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: CheckboxGroupValue)` | 值变化时触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-checkbox-bg-color | @bg-color-container | - 
+--td-checkbox-border-color | @component-stroke | - 
+--td-checkbox-description-color | @font-gray-2 | - 
+--td-checkbox-description-disabled-color | @font-gray-4 | - 
+--td-checkbox-description-line-height | 44rpx | - 
+--td-checkbox-font-size | 32rpx | - 
+--td-checkbox-icon-checked-color | @brand-color | - 
+--td-checkbox-icon-color | @gray-color-4 | - 
+--td-checkbox-icon-disabled-bg-color | @bg-color-component-disabled | - 
+--td-checkbox-icon-disabled-color | @brand-color-disabled | - 
+--td-checkbox-icon-size | 48rpx | - 
+--td-checkbox-tag-active-bg-color | @brand-color-light | - 
+--td-checkbox-tag-active-color | @brand-color | - 
+--td-checkbox-title-color | @font-gray-1 | - 
+--td-checkbox-title-disabled-color | @font-gray-4 | - 
+--td-checkbox-title-line-height | 48rpx | - 
+--td-checkbox-vertical-padding | 32rpx | - 

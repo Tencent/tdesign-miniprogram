@@ -224,7 +224,7 @@ describe('tag', () => {
     });
 
     describe('event', () => {
-      it(`: mutiple`, async () => {
+      it(`: multiple`, async () => {
         const handleClick = jest.fn();
         const handleClose = jest.fn();
         const id = simulate.load({
@@ -395,7 +395,7 @@ describe('tag', () => {
     });
 
     describe('event', () => {
-      it(`: mutiple`, async () => {
+      it(`: multiple`, async () => {
         const handleChange = jest.fn();
         const id = simulate.load({
           template: `

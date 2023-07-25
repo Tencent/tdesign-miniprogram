@@ -66,7 +66,6 @@ close-btn | Boolean / Object | false | `0.31.0`。是否展示关闭按钮，值
 close-on-overlay-click | Boolean | undefined | 点击蒙层时是否触发关闭事件 | N
 confirm-btn | String / Object / Slot | - | 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 Slot 自定义按钮时，需自行控制确认事件 | N
 content | String / Slot | - | 内容 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、组件内容部分、确认按钮、取消按钮 等元素类名。`['t-class', 't-class-content', 't-class-confirm', 't-class-cancel']` | N
 overlay-props | Object | {} | 透传至 Overlay 组件 | N
 prevent-scroll-through | Boolean | true | 防止滚动穿透 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
@@ -82,3 +81,26 @@ cancel | - | 如果“取消”按钮存在，则点击“取消”按钮时触�
 close | `(trigger: DialogEventSource)` | 关闭事件，点击 取消按钮 或 点击蒙层 时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts)。<br/>`type DialogEventSource = 'cancel' \| 'overlay' \| 'close-btn'`<br/>
 confirm | - | 如果“确认”按钮存在，则点击“确认”按钮时触发
 overlay-click | - | 如果蒙层存在，点击蒙层时触发
+
+### Dialog 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-content | 内容样式类
+t-class-confirm | 确认样式类
+t-class-cancel | 取消样式类
+t-class-action | 操作样式类
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-dialog-body-max-height | 912rpx | - 
+--td-dialog-close-color | @font-gray-3 | - 
+--td-dialog-content-color | @font-gray-2 | - 
+--td-dialog-content-font-size | 32rpx | - 
+--td-dialog-content-line-height | 48rpx | - 
+--td-dialog-title-color | @font-gray-1 | - 
+--td-dialog-title-font-size | 36rpx | - 
+--td-dialog-title-line-height | 52rpx | - 
+--td-dialog-width | 622rpx | - 

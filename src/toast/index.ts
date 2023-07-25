@@ -16,7 +16,7 @@ export type ToastOptionsType = {
   placement?: ToastPositionType;
   preventScrollThrough?: boolean;
   direction?: ToastDirectionType;
-  close?: <T = any>() => T;
+  close?: () => void;
 };
 
 function Toast(options: ToastOptionsType) {

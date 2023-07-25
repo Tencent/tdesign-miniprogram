@@ -60,7 +60,6 @@ default-checked | Boolean | undefined | 是否选中。非受控属性 | N
 content | String / Slot | - | 单选内容 | N
 content-disabled | Boolean | false | 是否禁用组件内容（content）触发选中 | N
 disabled | Boolean | undefined | 是否为禁用态 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层、单选图标、主文案、内容 等元素类名。`['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border']` | N
 icon | String / Array / Slot | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标，值为 slot 时使用插槽。TS 类型：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
 label | String / Slot | - | 主文案 | N
 max-content-row | Number | 5 | 内容最大行数限制 | N
@@ -73,6 +72,15 @@ value | String / Number / Boolean | false | 单选按钮的值。TS 类型：`Ra
 名称 | 参数 | 描述
 -- | -- | --
 change | `(checked: boolean)` | 值变化时触发
+
+### Radio 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-label | 标签样式类
+t-class-icon | 图标样式类
+t-class-content | 内容样式类
+t-class-border` | 边框样式类
 
 ### RadioGroup Props
 
@@ -93,3 +101,27 @@ default-value | String / Number / Boolean | undefined | 选中的值。非受控
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: RadioValue)` | 选中值发生变化时触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-radio-bg-color | @bg-color-container | - 
+--td-radio-border-color | @component-stroke | - 
+--td-radio-content-checked-color | @font-gray-2 | - 
+--td-radio-content-color | @font-gray-2 | - 
+--td-radio-content-disabled-color | @font-gray-4 | - 
+--td-radio-content-font-size | 28rpx | - 
+--td-radio-content-line-height | 44rpx | - 
+--td-radio-font-size | 32rpx | - 
+--td-radio-icon-checked-color | @brand-color | - 
+--td-radio-icon-color | @component-border | - 
+--td-radio-icon-disabled-bg-color | @bg-color-component-disabled | - 
+--td-radio-icon-disabled-color | @brand-color-disabled | - 
+--td-radio-icon-size | 48rpx | - 
+--td-radio-label-checked-color | @font-gray-1 | - 
+--td-radio-label-color | @font-gray-1 | - 
+--td-radio-label-disabled-color | @font-gray-4 | - 
+--td-radio-label-line-height | 48rpx | - 
+--td-radio-vertical-padding | 32rpx | - 

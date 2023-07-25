@@ -27,3 +27,21 @@ name | params | description
 change | `(value: SliderValue)` | \-
 dragend | \- | \-
 dragstart | \- | \-
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-slider-active-color | @brand-color | - 
+--td-slider-bar-height | 8rpx | - 
+--td-slider-capsule-bar-color | @bg-color-component | - 
+--td-slider-capsule-bar-heihgt | 48rpx | - 
+--td-slider-capsule-line-heihgt | 36rpx | - 
+--td-slider-default-color | @bg-color-component-disabled | - 
+--td-slider-default-color | @bg-color-secondarycomponent | - 
+--td-slider-disabled-color | @brand-color-disabled | - 
+--td-slider-disabled-text-color | @font-gray-4 | - 
+--td-slider-dot-bg-color | @bg-color-container | - 
+--td-slider-dot-color | @bg-color-secondarycontainer | - 
+--td-slider-dot-size | 40rpx | - 

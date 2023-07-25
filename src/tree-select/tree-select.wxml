@@ -51,6 +51,7 @@
         class="{{classPrefix}}__radio-item {{prefix}}-class-right-item"
         t-class-label="{{prefix}}-class-right-item-label"
         value="{{item.value}}"
+        maxLabelRow="{{1}}"
         borderless
         placement="right"
         >{{item.label}}</t-radio
@@ -68,6 +69,7 @@
         wx:key="value"
         placement="right"
         icon="line"
+        maxLabelRow="{{1}}"
         class="{{prefix}}-class-right-item"
         t-class-label="{{prefix}}-class-right-item-label"
         borderless

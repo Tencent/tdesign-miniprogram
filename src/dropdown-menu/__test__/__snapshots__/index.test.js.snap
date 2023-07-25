@@ -87,9 +87,7 @@ exports[`dropdown-menu :base 1`] = `
             bind:visible-change="handleMaskClick"
           >
             <wx-view
-              ariaModal="{{true}}"
-              ariaRole="dialog"
-              class="t-popup t-popup--top t-fade-enter t-fade-enter-active class t-class"
+              class="t-popup t-popup--top t-fade-enter-active t-fade-enter-to class t-class"
               style="z-index:11601; position: absolute;"
               bind:transitionend="onTransitionEnd"
             >

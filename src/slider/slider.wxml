@@ -22,7 +22,7 @@
           style="left:{{item.left}}px; transform: translateX(-50%);"
           aria-hidden="{{true}}"
         >
-          <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}}}">
+          <view wx:if="{{scaleTextArray.length}}" class="{{_.cls(classPrefix + '__scale-desc', [theme])}}">
             {{scaleTextArray[index]}}
           </view>
         </view>

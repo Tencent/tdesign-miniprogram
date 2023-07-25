@@ -89,19 +89,19 @@ export default class Message extends SuperComponent {
   });
 
   ready() {
-    this.memoInitalData();
+    this.memoInitialData();
   }
 
   /** 记录组件设置的项目 */
-  memoInitalData() {
-    this.initalData = {
+  memoInitialData() {
+    this.initialData = {
       ...this.properties,
       ...this.data,
     };
   }
 
   resetData(cb: () => void) {
-    this.setData({ ...this.initalData }, cb);
+    this.setData({ ...this.initialData }, cb);
   }
 
   detached() {

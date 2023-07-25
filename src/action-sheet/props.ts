@@ -50,6 +50,11 @@ const props: TdActionSheetProps = {
     type: Boolean,
     value: false,
   },
+  /** 是否显示遮罩层 */
+  showOverlay: {
+    type: Boolean,
+    value: true,
+  },
   /** popupProps透传 */
   popupProps: {
     type: Object,

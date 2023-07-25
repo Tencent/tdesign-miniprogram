@@ -41,7 +41,6 @@ close-btn | Boolean / Slot | - | 关闭按钮，值类型为 Boolean 时表示�
 close-on-overlay-click | Boolean | true | 点击遮罩层是否关闭 | N
 content | String / Slot | - | 浮层里面的内容 | N
 duration | Number | 240 | 动画过渡时间 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名。`['t-class', 't-class-overlay', 't-class-content']` | N
 overlay-props | Object | {} | 遮罩层的属性，透传至 overlay | N
 placement | String | top | 浮层出现位置。可选项：top/left/right/bottom/center | N
 prevent-scroll-through | Boolean | true | 防止滚动穿透 | N
@@ -55,3 +54,16 @@ z-index | Number | 11500 | 组件层级，Web 侧样式默认为 5500，移动�
 名称 | 参数 | 描述
 -- | -- | --
 visible-change | `(visible: boolean, trigger: PopupSource) ` | 当浮层隐藏或显示时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
+
+### Popup 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-content | 内容样式类
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-popup-bg-color | @bg-color-container | - 
+--td-popup-border-radius | @radius-default | - 

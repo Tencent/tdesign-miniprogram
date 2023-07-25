@@ -76,6 +76,15 @@ export interface TdActionSheetProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+  /**
+   * 是否显示遮罩层
+   * @default true
+   */
+  showOverlay: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /** popupProps透传 */
   popupProps: {
     type: ObjectConstructor;
     value?: object;
@@ -86,4 +95,6 @@ export interface ActionSheetItem {
   label: string;
   color?: string;
   disabled?: boolean;
+  icon?: string;
+  suffixIcon?: string;
 }
