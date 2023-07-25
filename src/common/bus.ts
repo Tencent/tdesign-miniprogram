@@ -24,7 +24,7 @@ export default class Bus {
 
     if (listeners) {
       listeners.forEach((func) => func());
-      this.emitted.add(evtName);
     }
+    this.emitted.add(evtName);
   }
 }

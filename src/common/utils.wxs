@@ -42,7 +42,7 @@ function includes(arr, value) {
 function cls(base, arr) {
   var res = [base];
   var i = 0;
-  for (size = arr.length; i < size; i++) {
+  for (var size = arr.length; i < size; i++) {
     var item = arr[i];
 
     if (item && item.constructor === 'Array') {
@@ -105,7 +105,7 @@ function _style(styles) {
         return item != null && item !== '';
       })
       .map(function (item) {
-        return isArray(item) ? style(item) : endsWith(item, ';');
+        return isArray(item) ? _style(item) : endsWith(item, ';');
       })
       .join(' ');
   }

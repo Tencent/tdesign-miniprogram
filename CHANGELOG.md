@@ -5,6 +5,18 @@ toc: false
 docClass: timeline
 ---
 
+  ## 🌈 1.1.14 `2023-07-25` 
+### 🚀 Features
+- `ActionSheet`: 新增 suffixIcon，仅在 `theme = list` 时展示 @LeeJim ([#2210](https://github.com/Tencent/tdesign-miniprogram/pull/2210))
+- `TreeSelect`:  `label` 内容支持文本超长省略 @anlyyao ([#2208](https://github.com/Tencent/tdesign-miniprogram/pull/2208))
+- `Overlay`: 支持 duration 属性，用于调整背景色过渡时间 @betavs ([#2179](https://github.com/Tencent/tdesign-miniprogram/pull/2179))
+### 🐞 Bug Fixes
+- `Popup`: 解决自动聚焦的问题 @LeeJim ([#2209](https://github.com/Tencent/tdesign-miniprogram/pull/2209))
+- `Slider`: 修复无法滑动的问题 @LeeJim ([#2211](https://github.com/Tencent/tdesign-miniprogram/pull/2211))
+- `Sticky`: 当组件销毁时，正常移除滚动函数 @LeeJim ([#2215](https://github.com/Tencent/tdesign-miniprogram/pull/2215))
+### 🚧 Others
+- 修复 utils.wxs 的语法错误 @LeeJim ([#2217](https://github.com/Tencent/tdesign-miniprogram/pull/2217)) 
+
  ## 🌈 1.1.13 `2023-07-18` 
 ### 🚀 Features
 - `ActionSheet`: 新增 show-overlay 属性 @betavs ([#2194](https://github.com/Tencent/tdesign-miniprogram/pull/2194))

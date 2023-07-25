@@ -29,11 +29,7 @@ export default class Indexes extends SuperComponent {
     },
   };
 
-  behaviors = [
-    pageScrollMixin(function (event) {
-      this.onScroll(event);
-    }),
-  ];
+  behaviors = [pageScrollMixin()];
 
   timer = null;
 

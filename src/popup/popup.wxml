@@ -6,9 +6,8 @@
   style="{{_._style([utils.getPopupStyles(zIndex), style, customStyle])}}"
   class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} class {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
-  aria-role="dialog"
-  aria-modal="{{ true }}"
 >
+  <!-- 暂时移除：aria-role="dialog" aria-modal="{{ true }}"，关联：https://github.com/Tencent/tdesign-miniprogram/issues/2142 -->
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <slot name="content" />
     <slot />

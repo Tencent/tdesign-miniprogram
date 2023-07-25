@@ -18,11 +18,7 @@ export default class Sticky extends SuperComponent {
 
   properties = props;
 
-  behaviors = [
-    pageScrollMixin(function (event) {
-      this.onScroll(event);
-    }),
-  ];
+  behaviors = [pageScrollMixin()];
 
   observers = {
     'offsetTop, disabled, container'() {
