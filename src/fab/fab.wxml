@@ -7,6 +7,6 @@
 >
   <template
     is="button"
-    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-fab__button', content: text, ariaLabel}}"
+    data="{{ ...baseButtonProps, icon, ...buttonProps, tClass: classPrefix + '__button', content: text, ariaLabel}}"
   />
 </view>

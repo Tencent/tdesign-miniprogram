@@ -8,7 +8,7 @@
     <template
       wx:elif="{{iconName || _.isNoEmptyObj(iconData)}}"
       is="icon"
-      data="{{class: classPrefix + '__icon', name: iconName, ...iconData}}"
+      data="{{cls: classPrefix + '__icon', name: iconName, ...iconData}}"
     />
     <slot wx:else name="image" />
   </view>

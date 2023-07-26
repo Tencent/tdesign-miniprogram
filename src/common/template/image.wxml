@@ -1,6 +1,6 @@
 <template name="image">
   <t-image
-    class="{{class}}"
+    class="{{cls}}"
     t-class="{{tClass}}"
     t-class-load="{{tClassLoad}}"
     style="{{style || ''}}"

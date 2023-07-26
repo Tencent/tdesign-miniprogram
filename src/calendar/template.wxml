@@ -64,7 +64,7 @@
       <!-- <t-button block theme="primary" v-bind="confirmBtn" bind:tap="handleConfirm" /> -->
       <template
         is="button"
-        data="{{ block: true,  theme: 'primary', class: 't-calendar__confirm-btn', ...innerConfirmBtn }}"
+        data="{{ block: true,  theme: 'primary', cls: 't-calendar__confirm-btn', ...innerConfirmBtn }}"
       />
     </block>
   </view>
