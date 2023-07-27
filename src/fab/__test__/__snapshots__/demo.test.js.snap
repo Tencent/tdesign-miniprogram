@@ -5,12 +5,12 @@ exports[`Fab Fab advance demo works fine 1`] = `
   <t-fab
     buttonProps="{{
       Object {
-        "icon": "call",
-        "openType": "getPhoneNumber",
+        "icon": "share",
+        "openType": "share",
       }
     }}"
     icon="add"
-    text="获取手机号"
+    text="分享给朋友"
     bind:click="handleClick"
   />
 </advance>
