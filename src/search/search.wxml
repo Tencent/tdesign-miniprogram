@@ -17,6 +17,7 @@
     <input
       type="{{type}}"
       name="input"
+      maxlength="{{maxlength}}"
       disabled="{{disabled}}"
       class="{{prefix}}-input__keyword {{prefix}}-class-input"
       focus="{{localValue.focus}}"

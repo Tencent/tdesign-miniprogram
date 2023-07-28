@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { getCharacterLength } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-search`;
@@ -37,10 +38,18 @@ export default class Search extends SuperComponent {
   };
 
   onInput(e) {
+    let realValue = '';
     const { value } = e.detail;
+    const { maxcharacter } = this.properties;
 
-    this.setData({ value });
-    this.triggerEvent('change', { value });
+    if (maxcharacter && typeof maxcharacter === 'number') {
+      const { characters } = getCharacterLength('maxcharacter', value, Number(maxcharacter));
+
+      realValue = characters;
+    }
+
+    this.setData({ value: realValue || value });
+    this.triggerEvent('change', { value: realValue || value });
   }
 
   onFocus(e) {

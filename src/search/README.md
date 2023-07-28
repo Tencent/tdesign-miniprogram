@@ -51,6 +51,8 @@ disabled | Boolean | false | 是否禁用 | N
 cursor-spacing | Number | 0 | 搜索框聚焦时底部与键盘的距离 | N
 focus | Boolean | false | 是否聚焦 | N
 label | String | '' | 已废弃。左侧文本 | N
+maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
+maxlength | Number | -1 | 用户最多可以输入的文本长度，一个中文等于一个计数长度。默认为 -1，不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 left-icon | String / Slot | 'search' | 左侧图标 | N
 placeholder | String | '' | 占位符 | N
 right-icon | String / Slot | 'close-circle-filled' | 已废弃。右侧图标 | N
