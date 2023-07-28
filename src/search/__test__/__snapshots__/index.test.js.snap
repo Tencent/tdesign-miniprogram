@@ -34,6 +34,7 @@ exports[`search Props :base 1`] = `
           cursorSpacing="{{0}}"
           disabled="{{false}}"
           focus="{{false}}"
+          maxlength="{{-1}}"
           name="input"
           placeholder=""
           placeholderClass="t-search__placeholder t-search__placeholder--normal"
