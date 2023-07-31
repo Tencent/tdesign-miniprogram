@@ -8,9 +8,10 @@
         wx:key="index"
         bind:tap="onSelect"
         data-index="{{index}}"
-        icon="{{item.icon}}"
+        icon="{{ { name: item.icon, color: item.color } }}"
         text="{{item.label}}"
         image="{{item.image}}"
+        style="--td-grid-item-text-color: {{item.color}}"
       >
       </t-grid-item>
     </t-grid>
@@ -27,9 +28,10 @@
               wx:key="index"
               data-index="{{index}}"
               bind:tap="onSelect"
-              icon="{{item.icon}}"
+              icon="{{ { name: item.icon, color: item.color } }}"
               text="{{item.label}}"
               image="{{item.image}}"
+              style="--td-grid-item-text-color: {{item.color}}"
             >
             </t-grid-item>
           </t-grid>
