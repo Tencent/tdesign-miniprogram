@@ -9,8 +9,8 @@ Component({
         content: '告知当前状态、信息和解决方法等内容。',
         cancelBtn: '取消',
         confirmBtn: {
-          openType: 'getPhoneNumber',
-          content: '获取手机',
+          openType: 'share',
+          content: '分享给朋友',
           bindgetphonenumber({ detail }) {
             console.log(detail);
             if (detail.errMsg.includes('fail')) {
