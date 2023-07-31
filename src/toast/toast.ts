@@ -1,9 +1,9 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { ToastOptionsType } from './index';
 import transition from '../mixins/transition';
 import { calcIcon } from '../common/utils';
+import { ToastOptionsType } from './index';
 
 const { prefix } = config;
 const name = `${prefix}-toast`;

@@ -1,6 +1,5 @@
-import simulate from 'miniprogram-simulate';
-
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('tag', () => {
   const Tag = load(path.resolve(__dirname, `../tag`));

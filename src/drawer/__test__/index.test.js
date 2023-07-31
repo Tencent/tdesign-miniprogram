@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('drawer', () => {
   const drawer = load(path.resolve(__dirname, `../drawer`), 't-drawer');

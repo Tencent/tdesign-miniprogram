@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('SwipeCell', () => {
   const swipeCell = load(path.resolve(__dirname, '../swipe-cell'));

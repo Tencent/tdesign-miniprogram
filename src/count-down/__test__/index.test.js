@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('countdown', () => {
   const countdown = load(path.resolve(__dirname, `../count-down`), 't-count-down');

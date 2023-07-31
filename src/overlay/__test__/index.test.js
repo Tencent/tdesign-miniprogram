@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('overlay', () => {
   const overlay = load(path.resolve(__dirname, `../overlay`), 't-overlay');
