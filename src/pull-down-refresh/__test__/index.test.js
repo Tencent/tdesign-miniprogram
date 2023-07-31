@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('pull-down-refresh', () => {
   const pullDownRefresh = load(path.resolve(__dirname, `../pull-down-refresh`), 't-pull-down-refresh');

@@ -12,9 +12,9 @@ const upperFirst = require('lodash/upperFirst');
 // };
 
 const CONFIG = {
-  sourcePath: path.resolve(__dirname, 'src'),
-  targetPath: path.resolve(__dirname, 'src'),
-  defaultTemplate: ['import simulate from \'miniprogram-simulate\';', 'import path from \'path\';'].join('\n'),
+  sourcePath: path.resolve(__dirname, '../src'),
+  targetPath: path.resolve(__dirname, '../src'),
+  defaultTemplate: ["import path from 'path';", "import simulate from 'miniprogram-simulate';"].join('\n'),
 };
 
 /*
@@ -115,7 +115,7 @@ function main() {
             outputOneComponentTestFile(componentFolder, demoFiles);
           }
         });
-      }
+      };
       files.forEach(generation);
     }
   });

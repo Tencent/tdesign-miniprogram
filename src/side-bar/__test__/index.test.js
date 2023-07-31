@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('side-bar', () => {
   const sideBarExample = load(path.resolve(__dirname, `./base/index`), 'side-bar-example');

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Col Col base demo works fine 1`] = `
+<base>
+  <t-row>
+    <t-col
+      span="8"
+      tClass="dark"
+    >
+      col-8
+    </t-col>
+    <t-col
+      span="8"
+      tClass="light"
+    >
+      col-8
+    </t-col>
+    <t-col
+      span="8"
+      tClass="dark"
+    >
+      col-8
+    </t-col>
+  </t-row>
+  <t-row>
+    <t-col
+      span="4"
+      tClass="dark"
+    >
+      col-4
+    </t-col>
+    <t-col
+      offset="4"
+      span="16"
+      tClass="light"
+    >
+      col-16 col-offset-4
+    </t-col>
+  </t-row>
+  <t-row>
+    <t-col
+      offset="12"
+      span="12"
+      tClass="dark"
+    >
+      col-12 col-offset-12
+    </t-col>
+  </t-row>
+</base>
+`;
+
+exports[`Col Col offset demo works fine 1`] = `
+<offset>
+  <t-row
+    gutter="16"
+  >
+    <t-col
+      span="8"
+      tClass="dark"
+    >
+      col-8
+    </t-col>
+    <t-col
+      span="8"
+      tClass="light"
+    >
+      col-8
+    </t-col>
+    <t-col
+      span="8"
+      tClass="dark"
+    >
+      col-8
+    </t-col>
+  </t-row>
+</offset>
+`;

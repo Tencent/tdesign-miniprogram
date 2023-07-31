@@ -38,6 +38,13 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier', 'import'],
   // add your custom rules here
   rules: {
+    'import/order': ['error', {
+      groups: [
+        'builtin', // Built-in types are first
+        'external', // Then the index file
+        'internal',
+      ]
+    }],
     // 非开发模式禁用debugger
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     // 允许调用首字母大写的函数时没有 new 操作符

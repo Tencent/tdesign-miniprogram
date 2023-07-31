@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('tree-select', () => {
   const treeSelect = load(path.resolve(__dirname, `../tree-select`));
