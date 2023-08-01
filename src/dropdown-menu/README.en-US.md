@@ -5,6 +5,7 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
+arrow-icon | String / Object | 'caret-down-small' | \- | N
 close-on-click-overlay | Boolean | true | \- | N
 duration | String / Number | 200 | \- | N
 external-classes | Array | - | `['t-class', 't-class-item', 't-class-label', 't-class-icon']` | N

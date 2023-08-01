@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('Avatar & Avatar Groups', () => {
   const id = load(path.resolve(__dirname, './index'));

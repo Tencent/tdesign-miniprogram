@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 import similateApi from 'miniprogram-simulate/src/api';
 import * as Util from '../../common/utils';
 

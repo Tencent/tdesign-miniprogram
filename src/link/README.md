@@ -64,7 +64,7 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 content | String / Slot | - | 链接内容 | N
-navigator-props | Object | - | 与 navigator 原生组件属性保持一致，具体使用参考：https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html。 | N
+navigator-props | Object | - | 与 navigator 原生组件属性保持一致，具体使用参考：[微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html)。使用时请将形如 `open-type` 风格的属性名改为 `openType` 风格 | N
 prefix-icon | String / Object / Slot | - | 前置图标 | N
 size | String | medium | 尺寸。可选项：small/medium/large。TS 类型：`SizeEnum` | N
 status | String | normal | 已废弃。组件状态。可选项：normal/active/disabled | N

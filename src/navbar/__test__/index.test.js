@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('navbar', () => {
   const navbar = load(path.resolve(__dirname, `../navbar`), 't-navbar');

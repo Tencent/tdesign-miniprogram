@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('slider', () => {
   const slider = load(path.resolve(__dirname, `../slider`), 't-slider');

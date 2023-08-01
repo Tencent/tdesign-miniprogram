@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 const textRowCol = [
   { width: '686rpx', height: '32rpx' },

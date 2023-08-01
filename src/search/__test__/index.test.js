@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('search', () => {
   const search = load(path.resolve(__dirname, `../search`), 't-search');

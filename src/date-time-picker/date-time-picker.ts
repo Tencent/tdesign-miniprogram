@@ -1,5 +1,5 @@
-import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import defaultLocale from './locale/zh';

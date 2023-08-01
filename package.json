@@ -1,7 +1,7 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "description": "tdesign-miniprogram",
   "title": "tdesign-ßminiprogram",
   "main": "miniprogram_dist/index.js",
@@ -33,7 +33,7 @@
     "cover": "jest --coverage",
     "test": "jest && jest -c jest.e2e.config.js",
     "test:snap-update": "npm run test:unit -- -u",
-    "test:demo": "node gen-demo-test.js",
+    "test:demo": "node script/gen-demo-test.js",
     "test:unit": "jest",
     "test:e2e": "jest -c jest.e2e.config.js",
     "badge": "node script/coverage-badge.js",

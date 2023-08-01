@@ -5,12 +5,12 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'scroll', 'size', 'status', 'theme', 'with-badge', 'with-content', 'with-icon'];
+const mapper = ['base', 'offset'];
 
-describe('Tabs', () => {
+describe('Col', () => {
   mapper.forEach((demoName) => {
-    it(`Tabs ${demoName} demo works fine`, () => {
-      const id = load(path.resolve(__dirname, `../../tabs/_example/${demoName}/index`), demoName);
+    it(`Col ${demoName} demo works fine`, () => {
+      const id = load(path.resolve(__dirname, `../../col/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

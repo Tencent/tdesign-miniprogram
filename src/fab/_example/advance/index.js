@@ -1,8 +1,8 @@
 Component({
   data: {
     fabButton: {
-      icon: 'call',
-      openType: 'getPhoneNumber',
+      icon: 'share',
+      openType: 'share',
     },
   },
   methods: {
