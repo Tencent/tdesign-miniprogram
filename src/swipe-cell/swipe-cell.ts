@@ -26,13 +26,25 @@ export default class SwiperCell extends SuperComponent {
     classPrefix: name,
   };
 
-  attached() {
-    ARRAY.push(this as WechatMiniprogram.Component.TrivialInstance);
-  }
+  observers = {
+    'left, right'() {
+      this.setSwipeWidth();
+    },
+  };
 
-  ready() {
-    this.setSwipeWidth();
-  }
+  lifetimes = {
+    attached() {
+      ARRAY.push(this as WechatMiniprogram.Component.TrivialInstance);
+    },
+
+    ready() {
+      this.setSwipeWidth();
+    },
+
+    detached() {
+      ARRAY = ARRAY.filter((item) => item !== this);
+    },
+  };
 
   setSwipeWidth() {
     Promise.all([getRect(this, `${ContainerClass}__left`), getRect(this, `${ContainerClass}__right`)]).then(
@@ -43,10 +55,6 @@ export default class SwiperCell extends SuperComponent {
         });
       },
     );
-  }
-
-  detached() {
-    ARRAY = ARRAY.filter((item) => item !== this);
   }
 
   open() {
