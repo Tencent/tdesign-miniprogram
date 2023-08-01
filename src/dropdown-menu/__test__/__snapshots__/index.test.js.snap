@@ -25,7 +25,9 @@ exports[`dropdown-menu :base 1`] = `
           菜单
         </wx-view>
         <t-icon
+          class=""
           tClass="t-dropdown-menu__icon t-dropdown-menu__icon--active t-class-icon"
+          bind:click=""
         >
           <wx-view
             ariaHidden="{{true}}"
@@ -56,7 +58,9 @@ exports[`dropdown-menu :base 1`] = `
           单列多选
         </wx-view>
         <t-icon
+          class=""
           tClass="t-dropdown-menu__icon t-dropdown-menu__icon-- t-class-icon"
+          bind:click=""
         >
           <wx-view
             ariaHidden="{{true}}"

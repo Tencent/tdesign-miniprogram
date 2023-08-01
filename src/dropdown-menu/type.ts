@@ -6,20 +6,20 @@
 
 export interface TdDropdownMenuProps {
   /**
+   * 自定义箭头图标
+   * @default 'caret-down-small'
+   */
+  arrowIcon?: {
+    type: null;
+    value?: string | object;
+  };
+  /**
    * 是否在点击遮罩层后关闭菜单
    * @default true
    */
   closeOnClickOverlay?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 动画时长
