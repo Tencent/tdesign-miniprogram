@@ -5,6 +5,18 @@ toc: false
 docClass: timeline
 ---
 
+   ## 🌈 1.1.15 `2023-08-01` 
+### 🚀 Features
+- `DropdownMenu`: 支持自定义箭头图标 @LeeJim ([#2240](https://github.com/Tencent/tdesign-miniprogram/pull/2240))
+
+### 🐞 Bug Fixes
+- `ActionSheet`: 修复宫格模式下无法调整选项颜色的问题 @LeeJim ([#2231](https://github.com/Tencent/tdesign-miniprogram/pull/2231))
+- `SwipeCell`: 修复 left、right 没有动态响应的问题 @LeeJim ([#2239](https://github.com/Tencent/tdesign-miniprogram/pull/2239))
+
+### 🚧 Others
+- `link`: 补充使用说明，修复文档中句号导致的链接跳转错误 @qianxuu ([#2227](https://github.com/Tencent/tdesign-miniprogram/pull/2227))
+ 
+
   ## 🌈 1.1.14 `2023-07-25` 
 ### 🚀 Features
 - `ActionSheet`: 新增 suffixIcon，仅在 `theme = list` 时展示 @LeeJim ([#2210](https://github.com/Tencent/tdesign-miniprogram/pull/2210))
