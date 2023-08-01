@@ -46,6 +46,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+arrow-icon | String / Object | 'caret-down-small' | 自定义箭头图标 | N
 close-on-click-overlay | Boolean | true | 是否在点击遮罩层后关闭菜单 | N
 duration | String / Number | 200 | 动画时长 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
