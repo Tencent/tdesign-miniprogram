@@ -5,7 +5,7 @@ toc: false
 docClass: timeline
 ---
 
-   ## 🌈 1.1.15 `2023-08-01` 
+## 🌈 1.1.15 `2023-08-01` 
 ### 🚀 Features
 - `DropdownMenu`: 支持自定义箭头图标 @LeeJim ([#2240](https://github.com/Tencent/tdesign-miniprogram/pull/2240))
 
@@ -17,7 +17,7 @@ docClass: timeline
 - `link`: 补充使用说明，修复文档中句号导致的链接跳转错误 @qianxuu ([#2227](https://github.com/Tencent/tdesign-miniprogram/pull/2227))
  
 
-  ## 🌈 1.1.14 `2023-07-25` 
+## 🌈 1.1.14 `2023-07-25` 
 ### 🚀 Features
 - `ActionSheet`: 新增 suffixIcon，仅在 `theme = list` 时展示 @LeeJim ([#2210](https://github.com/Tencent/tdesign-miniprogram/pull/2210))
 - `TreeSelect`:  `label` 内容支持文本超长省略 @anlyyao ([#2208](https://github.com/Tencent/tdesign-miniprogram/pull/2208))
@@ -29,7 +29,7 @@ docClass: timeline
 ### 🚧 Others
 - 修复 utils.wxs 的语法错误 @LeeJim ([#2217](https://github.com/Tencent/tdesign-miniprogram/pull/2217)) 
 
- ## 🌈 1.1.13 `2023-07-18` 
+## 🌈 1.1.13 `2023-07-18` 
 ### 🚀 Features
 - `ActionSheet`: 新增 show-overlay 属性 @betavs ([#2194](https://github.com/Tencent/tdesign-miniprogram/pull/2194))
 ### 🐞 Bug Fixes
