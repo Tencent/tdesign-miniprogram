@@ -23,18 +23,11 @@ export default class Search extends SuperComponent {
 
   properties = props;
 
-  observers = {
-    focus(this: Search, nextValue: boolean) {
-      this.setData({ 'localValue.focus': nextValue });
-    },
-  };
+  observers = {};
 
   data = {
     classPrefix: name,
     prefix,
-    localValue: {
-      focus: false,
-    },
   };
 
   onInput(e) {
@@ -55,14 +48,12 @@ export default class Search extends SuperComponent {
   onFocus(e) {
     const { value } = e.detail;
 
-    this.setData({ 'localValue.focus': true });
     this.triggerEvent('focus', { value });
   }
 
   onBlur(e) {
     const { value } = e.detail;
 
-    this.setData({ 'localValue.focus': false });
     this.triggerEvent('blur', { value });
   }
 

@@ -49,6 +49,55 @@ const props: TdSearchProps = {
     type: Number,
     value: -1,
   },
+  /** 设置键盘右下角按钮的文字，仅在type='text'时生效。<br />具体释义：<br />`send` 右下角按钮为“发送”；<br />`search` 右下角按钮为“搜索”；<br />`next` 右下角按钮为“下一个”；<br />`go` 右下角按钮为“前往”；<br />`done` 右下角按钮为“完成”。<br />[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/input.html) */
+  confirmType: {
+    type: String,
+    value: 'search',
+  },
+  /** 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效) */
+  alwaysEmbed: {
+    type: Boolean,
+    value: false,
+  },
+  /** 点击键盘右下角按钮时是否保持键盘不收起 */
+  confirmHold: {
+    type: Boolean,
+    value: false,
+  },
+  /** 指定focus时的光标位置 */
+  cursor: {
+    type: Number,
+  },
+  /** 光标起始位置，自动聚集时有效，需与selection-end搭配使用 */
+  selectionStart: {
+    type: Number,
+    value: -1,
+  },
+  /** 光标结束位置，自动聚集时有效，需与selection-start搭配使用 */
+  selectionEnd: {
+    type: Number,
+    value: -1,
+  },
+  /** 键盘弹起时，是否自动上推页面 */
+  adjustPosition: {
+    type: Boolean,
+    value: true,
+  },
+  /** focus时，点击页面的时候不收起键盘 */
+  holdKeyboard: {
+    type: Boolean,
+    value: false,
+  },
+  /** 指定 placeholder 的样式 */
+  placeholderStyle: {
+    type: String,
+    value: '',
+  },
+  /** 指定 placeholder 的样式类 */
+  placeholderClass: {
+    type: String,
+    value: '',
+  },
   /** 左侧图标 */
   leftIcon: {
     type: String,
