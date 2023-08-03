@@ -31,18 +31,17 @@ export default class Search extends SuperComponent {
   };
 
   onInput(e) {
-    let realValue = '';
-    const { value } = e.detail;
+    let { value } = e.detail;
     const { maxcharacter } = this.properties;
 
-    if (maxcharacter && typeof maxcharacter === 'number') {
+    if (maxcharacter && typeof maxcharacter === 'number' && maxcharacter > 0) {
       const { characters } = getCharacterLength('maxcharacter', value, Number(maxcharacter));
 
-      realValue = characters;
+      value = characters;
     }
 
-    this.setData({ value: realValue || value });
-    this.triggerEvent('change', { value: realValue || value });
+    this.setData({ value });
+    this.triggerEvent('change', { value });
   }
 
   onFocus(e) {
