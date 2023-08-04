@@ -33,20 +33,12 @@
   margin-right: 20rpx;
 }
 
-.cell .option {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-}
-
 .cell .option-desc {
   width: 68rpx;
-  padding-left: 32rpx;
 }
 
 .cell .swiper-slider {
-  flex: 1;
+  margin: 32rpx 0;
 }
 
 .swiper-box-vertical .item {
