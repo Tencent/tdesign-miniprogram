@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -20,12 +20,6 @@ export default class Cell extends SuperComponent {
     `${prefix}-class-right-icon`,
   ];
 
-  relations: RelationsOptions = {
-    '../cell-group/cell-group': {
-      type: 'parent',
-    },
-  };
-
   options = {
     multipleSlots: true,
   };
@@ -35,7 +29,6 @@ export default class Cell extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    isLastChild: false,
   };
 
   onClick(e) {

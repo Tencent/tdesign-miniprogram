@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="class {{prefix}}-class {{classPrefix}} {{ !bordered || isLastChild ? classPrefix + '--borderless' : ''}} {{classPrefix}}--{{align}}"
+  class="class {{prefix}}-class {{classPrefix}} {{ !bordered ? classPrefix + '--borderless' : ''}} {{classPrefix}}--{{align}}"
   hover-class="{{ hover ? classPrefix + '--hover' : ''}}"
   hover-stay-time="70"
   bind:tap="onClick"
