@@ -35,7 +35,7 @@ export default class Search extends SuperComponent {
     const { maxcharacter } = this.properties;
 
     if (maxcharacter && typeof maxcharacter === 'number' && maxcharacter > 0) {
-      const { characters } = getCharacterLength('maxcharacter', value, Number(maxcharacter));
+      const { characters } = getCharacterLength('maxcharacter', value, maxcharacter);
 
       value = characters;
     }
