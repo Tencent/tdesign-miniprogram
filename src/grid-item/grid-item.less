@@ -48,6 +48,7 @@
     overflow: hidden;
     position: relative;
     padding: @grid-item-padding 0 24rpx;
+    background-color: @grid-item-bg-color;
 
     &--horizontal {
       flex-direction: row;
@@ -135,12 +136,15 @@
   }
 
   &__description {
+    padding-top: @grid-item-description-padding-top;
     width: inherit;
     color: @grid-item-description-color;
     font-size: @grid-item-description-font-size;
     line-height: @grid-item-description-line-height;
 
     &--horizontal {
+      margin-top: @grid-item-horizontal-text-description-top;
+      padding-left: @grid-item-horizontal-text-padding-left;
       text-align-last: left;
     }
   }
