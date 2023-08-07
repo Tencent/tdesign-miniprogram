@@ -4,6 +4,9 @@
   <t-demo title="01 组件类型" desc="基础搜索框">
     <base />
   </t-demo>
+  <t-demo desc="字数限制">
+    <maxlength />
+  </t-demo>
   <t-demo desc="获取焦点后显示取消按钮">
     <action />
   </t-demo>
