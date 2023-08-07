@@ -85,6 +85,16 @@ change | `(current: number, source: SwiperChangeSource)` | 轮播切换时触发
 click | `(index: number)` | `0.34.0`。点击轮播项时触发
 image-load | `(index: number)` | `1.1.4`。图片加载时触发
 
+### Swiper 外部样式类
+
+类名 | 说明
+-- | --
+t-class | 根节点样式类
+t-class-nav | 导航样式类
+t-class-image | 当前图片样式类
+t-class-prev-image | 上一图片样式类
+t-class-next-image | 下一图片样式类
+
 ### SwiperNav Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
@@ -97,6 +107,11 @@ show-controls | Boolean | false | `0.32.0`。是否显示两侧的控制按钮 |
 total | Number | 0 | `0.34.0`。总共的项数 | N
 type | String | dots | 导航器类型，点状(dots)、点条状(dots-bar)、分式(fraction)等。TS 类型：`SwiperNavigationType` `type SwiperNavigationType = 'dots' \| 'dots-bar' \| 'fraction'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swiper-nav/type.ts) | N
 
+### SwiperNav 外部样式类
+
+类名 | 说明
+-- | --
+t-class | 根节点样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。
