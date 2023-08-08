@@ -30,7 +30,7 @@ isComponent: true
 
 #### 纯图标标签栏
 
-{{ text-only }}
+{{ icon-only }}
 
 #### 双层级纯文本标签栏
 
