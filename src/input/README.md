@@ -159,6 +159,8 @@ t-class-tips | 提示样式类
 --td-input-disabled-text-color | @text-color-disabled | - 
 --td-input-error-text-color | @error-color | - 
 --td-input-error-tips-color | @error-color | - 
+--td-input-label-max-width | 5em | - 
+--td-input-label-min-width | 2em | - 
 --td-input-label-text-color | @font-gray-1 | - 
 --td-input-placeholder-text-color | @text-color-placeholder | - 
 --td-input-prefix-icon-color | @font-gray-1 | - 
