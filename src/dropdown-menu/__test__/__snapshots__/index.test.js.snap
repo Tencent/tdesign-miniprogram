@@ -130,14 +130,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{false}}"
                               ariaLabel="选项一"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{false}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
                                   class="placeholder"
@@ -164,7 +164,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
@@ -183,14 +183,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{false}}"
                               ariaLabel="选项二"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{false}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
                                   class="placeholder"
@@ -217,7 +217,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
@@ -236,14 +236,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{false}}"
                               ariaLabel="选项三"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{false}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-radio__icon--checked t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-radio__icon--checked t-class-icon"
                               >
                                 <t-icon
                                   class="t-radio__icon-wrap"
@@ -283,7 +283,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
@@ -302,14 +302,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{false}}"
                               ariaLabel="选项四"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{false}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
                                   class="placeholder"
@@ -336,7 +336,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
@@ -355,14 +355,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{false}}"
                               ariaLabel="选项五"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{false}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
                                   class="placeholder"
@@ -389,7 +389,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
@@ -408,14 +408,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{false}}"
                               ariaLabel="选项六"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{false}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
                                   class="placeholder"
@@ -442,7 +442,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
@@ -461,14 +461,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{false}}"
                               ariaLabel="选项七"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{false}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
                                   class="placeholder"
@@ -495,7 +495,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
@@ -514,14 +514,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{false}}"
                               ariaLabel="选项八"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{false}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
                                   class="placeholder"
@@ -548,7 +548,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
@@ -567,14 +567,14 @@ exports[`dropdown-menu :base 1`] = `
                               ariaDisabled="{{true}}"
                               ariaLabel="禁用选项"
                               ariaRole="radio"
-                              class="t-radio t-radio--block class t-class"
+                              class="t-radio t-radio--left t-radio--block class t-class"
                               disabled="{{true}}"
                               style=""
                               tabindex=""
                               bind:tap="handleTap"
                             >
                               <wx-view
-                                class="t-radio__icon t-radio__icon--disabled t-class-icon"
+                                class="t-radio__icon t-radio__icon--left t-radio__icon--disabled t-class-icon"
                               >
                                 <wx-view
                                   class="placeholder"
@@ -601,7 +601,7 @@ exports[`dropdown-menu :base 1`] = `
                                 </wx-view>
                               </wx-view>
                               <wx-view
-                                class="t-radio__border t-class-border"
+                                class="t-radio__border t-radio__border--left t-class-border"
                               />
                             </wx-view>
                           </t-radio>
