@@ -19,9 +19,6 @@ export default class Collapse extends SuperComponent {
   relations: RelationsOptions = {
     '../collapse-panel/collapse-panel': {
       type: 'descendant',
-      linked() {
-        this.updateExpanded();
-      },
     },
   };
 
