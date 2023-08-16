@@ -3,6 +3,11 @@ function getPopupStyles(zIndex) {
   return zIndexStyle;
 }
 
+function onContentTouchMove () {
+  return false;
+}
+
 module.exports = {
   getPopupStyles: getPopupStyles,
+  onContentTouchMove: onContentTouchMove
 };
