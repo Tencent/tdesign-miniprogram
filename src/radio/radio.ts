@@ -34,12 +34,7 @@ export default class Radio extends SuperComponent {
 
   lifetimes = {
     attached() {
-      this.initStatus();
-    },
-    ready() {
-      this.setData({
-        _placement: this.data.placement ?? this.$parent?.data?.placement ?? 'left',
-      });
+      this.init();
     },
   };
 
@@ -87,7 +82,7 @@ export default class Radio extends SuperComponent {
         this._trigger('change', { checked: checked && allowUncheck ? false : !checked });
       }
     },
-    initStatus() {
+    init() {
       const { icon } = this.data;
       const isIdArr = Array.isArray(this.$parent?.icon || icon);
 
@@ -95,6 +90,7 @@ export default class Radio extends SuperComponent {
         customIcon: isIdArr,
         slotIcon: icon === 'slot',
         iconVal: isIdArr ? this.$parent?.icon || icon : [],
+        _placement: this.data.placement ?? this.$parent?.data?.placement ?? 'left',
       });
     },
 

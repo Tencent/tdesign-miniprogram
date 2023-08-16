@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { getCharacterLength } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-search`;
@@ -22,22 +23,22 @@ export default class Search extends SuperComponent {
 
   properties = props;
 
-  observers = {
-    focus(this: Search, nextValue: boolean) {
-      this.setData({ 'localValue.focus': nextValue });
-    },
-  };
+  observers = {};
 
   data = {
     classPrefix: name,
     prefix,
-    localValue: {
-      focus: false,
-    },
   };
 
   onInput(e) {
-    const { value } = e.detail;
+    let { value } = e.detail;
+    const { maxcharacter } = this.properties;
+
+    if (maxcharacter && typeof maxcharacter === 'number' && maxcharacter > 0) {
+      const { characters } = getCharacterLength('maxcharacter', value, maxcharacter);
+
+      value = characters;
+    }
 
     this.setData({ value });
     this.triggerEvent('change', { value });
@@ -46,14 +47,12 @@ export default class Search extends SuperComponent {
   onFocus(e) {
     const { value } = e.detail;
 
-    this.setData({ 'localValue.focus': true });
     this.triggerEvent('focus', { value });
   }
 
   onBlur(e) {
     const { value } = e.detail;
 
-    this.setData({ 'localValue.focus': false });
     this.triggerEvent('blur', { value });
   }
 

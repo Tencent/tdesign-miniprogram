@@ -20,15 +20,14 @@ export default class CollapsePanel extends SuperComponent {
     '../collapse/collapse': {
       type: 'ancestor',
       linked(target: WechatMiniprogram.Component.TrivialInstance) {
-        this.parent = target;
-        const { value, defaultExpandAll, expandMutex, expandIcon, disabled } = target.properties;
-        const activeValues = defaultExpandAll && !expandMutex ? [this.properties.value] : value;
+        const { value, expandIcon, disabled } = target.properties;
 
         this.setData({
           ultimateExpandIcon: expandIcon || this.properties.expandIcon,
           ultimateDisabled: this.properties.disabled == null ? disabled : this.properties.disabled,
         });
-        this.updateExpanded(activeValues);
+
+        this.updateExpanded(value);
       },
     },
   };
@@ -45,19 +44,14 @@ export default class CollapsePanel extends SuperComponent {
   };
 
   methods = {
-    set(data: Record<string, object | any>) {
-      this.setData(data);
-
-      return new Promise((resolve) => wx.nextTick(resolve));
-    },
-
-    updateExpanded(activeValues) {
-      if (!this.parent) {
+    updateExpanded(activeValues = []) {
+      if (!this.$parent || this.data.ultimateDisabled) {
         return;
       }
 
       const { value } = this.properties;
-      const expanded = activeValues.includes(value);
+      const { defaultExpandAll } = this.$parent.data;
+      const expanded = defaultExpandAll ? !this.data.expanded : activeValues.includes(value);
 
       if (expanded === this.properties.expanded) return;
 
@@ -90,7 +84,11 @@ export default class CollapsePanel extends SuperComponent {
 
       if (ultimateDisabled) return;
 
-      this.parent.switch(value);
+      if (this.$parent.data.defaultExpandAll) {
+        this.updateExpanded();
+      } else {
+        this.$parent.switch(value);
+      }
     },
   };
 }

@@ -17,9 +17,9 @@
         data="{{tClass: prefix + '-class-prefix-icon', ariaHidden: true, ..._prefixIcon}}"
       />
     </view>
-    <view class="{{classPrefix}}__label" aria-hidden>
+    <view class="{{classPrefix}}__label {{prefix}}-class-label" aria-hidden>
       <slot name="label" />
-      <text wx:if="{{label}}" class="{{prefix}}-class-label">{{label}}</text>
+      <block wx:if="{{label}}">{{label}}</block>
     </view>
   </view>
 

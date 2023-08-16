@@ -21,7 +21,10 @@ exports[`date-time-picker :base 1`] = `
           bind:transitionend="onTransitionEnd"
         >
           <wx-view
+            $gdc="{{[Function]}}"
+            $wxs:bind:touchmove="{{[Function]}}"
             class="t-popup__content t-class-content"
+            data-prevention="{{true}}"
           >
             <wx-view
               class="t-picker t-class"

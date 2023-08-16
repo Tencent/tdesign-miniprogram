@@ -80,7 +80,7 @@ t-class | 根节点样式类
 t-class-label | 标签样式类
 t-class-icon | 图标样式类
 t-class-content | 内容样式类
-t-class-border` | 边框样式类
+t-class-border | 边框样式类
 
 ### RadioGroup Props
 

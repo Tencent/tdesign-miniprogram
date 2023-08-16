@@ -29,11 +29,10 @@
         value="{{interval}}"
         min="{{1000}}"
         max="{{5000}}"
-        label=""
+        label="{{true}}"
         step="{{500}}"
         bindchange="onIntervalChange"
       ></t-slider>
-      <view class="option-desc">{{interval}}</view>
     </view>
   </view>
   <view class="cell">
@@ -45,11 +44,10 @@
         value="{{duration}}"
         min="{{200}}"
         max="{{2000}}"
-        label=""
+        label="{{true}}"
         step="{{100}}"
         bindchange="onDurationChange"
       ></t-slider>
-      <view class="option-desc">{{duration}}</view>
     </view>
   </view>
 </view>

@@ -279,7 +279,7 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
         class="option"
       >
         <t-slider
-          label=""
+          label="{{true}}"
           max="{{5000}}"
           min="{{1000}}"
           step="{{500}}"
@@ -288,11 +288,6 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
           value="{{5000}}"
           bind:change="onIntervalChange"
         />
-        <wx-view
-          class="option-desc"
-        >
-          5000
-        </wx-view>
       </wx-view>
     </wx-view>
     <wx-view
@@ -307,7 +302,7 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
         class="option"
       >
         <t-slider
-          label=""
+          label="{{true}}"
           max="{{2000}}"
           min="{{200}}"
           step="{{100}}"
@@ -316,11 +311,6 @@ exports[`Swiper Swiper vertical demo works fine 1`] = `
           value="{{500}}"
           bind:change="onDurationChange"
         />
-        <wx-view
-          class="option-desc"
-        >
-          500
-        </wx-view>
       </wx-view>
     </wx-view>
   </wx-view>

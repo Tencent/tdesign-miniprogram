@@ -133,6 +133,7 @@ var onDrag = function (event, ownerInstance) {
   }
   state.dragging = true;
   swipeMove(state.startOffset + state.deltaX);
+  return false
 };
 
 var open = function (position) {
