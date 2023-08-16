@@ -59,6 +59,7 @@ checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
 content | String / Slot | - | 单选内容 | N
 content-disabled | Boolean | false | 是否禁用组件内容（content）触发选中 | N
+readonly | Boolean | false | 只读状态 | N
 disabled | Boolean | undefined | 是否为禁用态 | N
 icon | String / Array / Slot | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标，值为 slot 时使用插槽。TS 类型：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
 label | String / Slot | - | 主文案 | N

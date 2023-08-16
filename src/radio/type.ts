@@ -69,6 +69,14 @@ export interface TdRadioProps<T = RadioValue> {
     value?: string;
   };
   /**
+   * 只读状态
+   * @default false
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否为禁用态
    */
   disabled?: {

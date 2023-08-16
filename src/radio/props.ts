@@ -40,6 +40,11 @@ const props: TdRadioProps = {
     type: Boolean,
     value: false,
   },
+  /** 只读状态 */
+  readonly: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否为禁用态 */
   disabled: {
     type: Boolean,

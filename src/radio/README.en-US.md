@@ -33,6 +33,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 placement | String | left | options：left/right | N
 borderless | Boolean | false | \- | N
+readonly | Boolean | false | \- | N
 disabled | Boolean | undefined | \- | N
 icon | String / Array | 'circle' | Typescript：`'circle' | 'line' | Array<string>` | N
 keys | Object | - | Typescript：`KeysType` | N
