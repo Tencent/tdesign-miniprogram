@@ -16,6 +16,7 @@ exports[`calendar :base 1`] = `
           $gdc="{{[Function]}}"
           $wxs:bind:touchmove="{{[Function]}}"
           class="t-popup__content t-class-content"
+          data-prevention="{{true}}"
         >
           <wx-view
             class="t-calendar t-calendar--popup class t-class"

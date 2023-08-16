@@ -29,8 +29,6 @@ export default class Popup extends SuperComponent {
   };
 
   methods = {
-    onStopPropagation() {},
-
     handleOverlayClick() {
       const { closeOnOverlayClick } = this.properties;
       if (closeOnOverlayClick) {
