@@ -15,6 +15,7 @@
       content="{{item.content || ''}}"
       allow-uncheck="{{item.allowUncheck || false}}"
       content-disabled="{{item.contentDisabled || false}}"
+      readonly="{{item.readonly || false}}"
       disabled="{{item.disabled || false}}"
       icon="{{item.icon || icon}}"
       placement="{{item.placement || placement}}"
