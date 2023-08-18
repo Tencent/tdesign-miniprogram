@@ -22,11 +22,6 @@ Component({
         },
       );
     },
-    onVisibleChange(e) {
-      this.setData({
-        visible: e.detail.visible,
-      });
-    },
     onClose() {
       this.setData({
         visible: false,

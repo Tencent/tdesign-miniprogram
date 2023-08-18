@@ -1,4 +1,4 @@
-<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="{{cur.value || 'top'}}">
+<t-popup visible="{{visible}}" placement="{{cur.value || 'top'}}">
   <view class="block block--{{cur.value}}">{{cur.text}}</view>
 </t-popup>
 

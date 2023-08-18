@@ -1,4 +1,4 @@
-<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+<t-popup visible="{{visible}}" placement="bottom">
   <view class="block">
     <view class="header">
       <view class="btn btn--cancel" aria-role="button">取消</view>
