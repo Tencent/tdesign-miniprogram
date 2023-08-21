@@ -8,7 +8,7 @@ module.exports = {
   },
 
   getIconName: function (defaultValue, value, index, icon) {
-    var curVal = value ? value : defaultValue;
+    var curVal = value >= 0 ? value : defaultValue;
     var name = ['star-filled', 'star-filled'];
 
     if (icon) {
@@ -19,7 +19,7 @@ module.exports = {
   },
 
   getIconClass: function (classPrefix, defaultValue, value, index, allowHalf, disabled, scaleIndex) {
-    var curVal = value ? value : defaultValue;
+    var curVal = value >= 0 ? value : defaultValue;
     var className = [];
     if (curVal >= index + 1) {
       className.push(classPrefix + '--selected');
