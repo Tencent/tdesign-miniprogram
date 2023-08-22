@@ -19,7 +19,7 @@
       <nav-btn />
     </t-demo>
 
-    <t-demo desc="切换按钮（controls）">
+    <t-demo desc="卡片式（cards）">
       <cards />
     </t-demo>
 

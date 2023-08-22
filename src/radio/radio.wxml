@@ -9,7 +9,7 @@
   aria-label="{{label + content}}"
   aria-disabled="{{disabled}}"
   tabindex="{{tabindex}}"
-  bind:tap="handleTap"
+  mut-bind:tap="handleTap"
 >
   <view
     class="{{_.cls(classPrefix + '__icon', [_placement, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
@@ -37,7 +37,7 @@
     </block>
   </view>
 
-  <view class="{{classPrefix}}__content" data-target="text" catch:tap="handleTap">
+  <view class="{{classPrefix}}__content" data-target="text" mut-bind:tap="handleTap">
     <view
       class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"

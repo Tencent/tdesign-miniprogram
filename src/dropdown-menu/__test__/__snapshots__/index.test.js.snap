@@ -137,7 +137,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{false}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
@@ -149,7 +149,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-class-label"
@@ -190,7 +190,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{false}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
@@ -202,7 +202,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-class-label"
@@ -243,7 +243,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{false}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-radio__icon--checked t-class-icon"
@@ -268,7 +268,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-radio__title--checked t-class-label"
@@ -309,7 +309,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{false}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
@@ -321,7 +321,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-class-label"
@@ -362,7 +362,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{false}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
@@ -374,7 +374,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-class-label"
@@ -415,7 +415,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{false}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
@@ -427,7 +427,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-class-label"
@@ -468,7 +468,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{false}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
@@ -480,7 +480,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-class-label"
@@ -521,7 +521,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{false}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
@@ -533,7 +533,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-class-label"
@@ -574,7 +574,7 @@ exports[`dropdown-menu :base 1`] = `
                               disabled="{{true}}"
                               style=""
                               tabindex=""
-                              bind:tap="handleTap"
+                              mut-bind:tap="handleTap"
                             >
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-radio__icon--disabled t-class-icon"
@@ -586,7 +586,7 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__content"
                                 data-target="text"
-                                catch:tap="handleTap"
+                                mut-bind:tap="handleTap"
                               >
                                 <wx-view
                                   class="t-radio__title t-radio__title--disabled t-class-label"

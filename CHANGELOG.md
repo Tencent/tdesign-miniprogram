@@ -5,6 +5,17 @@ toc: false
 docClass: timeline
 ---
 
+  ## 🌈 1.2.1 `2023-08-22` 
+### 🚀 Features
+- `Radio`: 新增 `readonly` 属性 @betavs ([#2292](https://github.com/Tencent/tdesign-miniprogram/pull/2292))
+### 🐞 Bug Fixes
+- `CellGroup`: 修复 `updateLastChid` 事件被多次触发的问题 @anlyyao ([#2302](https://github.com/Tencent/tdesign-miniprogram/pull/2302))
+- `Popup`: 修复 `visibleChange` 事件参数错误的问题 @anlyyao ([#2303](https://github.com/Tencent/tdesign-miniprogram/pull/2303))
+- `Rate`: 修复value = 0 且半选时图标错误的问题 @betavs ([#2307](https://github.com/Tencent/tdesign-miniprogram/pull/2307))
+- `Radio`: 修复 tap 事件无法冒泡的问题 @LeeJim ([#2309](https://github.com/Tencent/tdesign-miniprogram/pull/2309))
+- `Checkbox`: 修复 tap 事件无法冒泡的问题 @LeeJim ([#2309](https://github.com/Tencent/tdesign-miniprogram/pull/2309))
+ 
+
  ## 🌈 1.2.0 `2023-08-16` 
 ### 🚀 Features
 - `Search`: 支持透传更多 Input 的属性 @betavs ([#2229](https://github.com/Tencent/tdesign-miniprogram/pull/2229))

@@ -6,7 +6,7 @@
   aria-role="checkbox"
   aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
   aria-disabled="{{disabled ? true : false}}"
-  bind:tap="onChange"
+  mut-bind:tap="handleTap"
   tabindex="{{tabindex}}"
 >
   <view
@@ -39,7 +39,7 @@
       <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
     </block>
   </view>
-  <view class="{{classPrefix}}__content" data-target="text" catch:tap="onChange">
+  <view class="{{classPrefix}}__content" data-target="text" mut-bind:tap="handleTap">
     <view
       class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"
