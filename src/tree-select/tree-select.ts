@@ -42,6 +42,8 @@ export default class TreeSelect extends SuperComponent {
       let level = -1;
       let node = { children: options };
 
+      if (options.length === 0 || (Array.isArray(value) && value.length === 0)) return;
+
       while (node && node.children) {
         level += 1;
         const list = node.children.map((item: TreeOptionData) => ({
