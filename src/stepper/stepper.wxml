@@ -20,9 +20,9 @@
       disabled="{{ disabled || disableInput }}"
       type="number"
       value="{{ currentValue }}"
-      catchinput="inputHandle"
-      catchfocus="focusHandle"
-      catchblur="blurHandle"
+      catchinput="handleInput"
+      catchfocus="handleFocus"
+      catchblur="handleBlur"
     />
   </view>
   <view
