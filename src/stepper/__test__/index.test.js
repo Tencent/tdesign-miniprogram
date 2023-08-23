@@ -126,7 +126,7 @@ describe('stepper', () => {
   });
 
   describe('event', () => {
-    it(': chang', async () => {
+    it(':change', async () => {
       let inputValue;
       const handleChange = jest.fn((e) => {
         inputValue = e.detail;
@@ -272,6 +272,7 @@ describe('stepper', () => {
 
       const $input = comp.querySelector('.base >>> .t-stepper__input');
       $input.dispatchEvent('input', { detail: { value: 88 } });
+      $input.dispatchEvent('blur', { detail: { value: 88 } });
       await simulate.sleep(0);
       expect($stepper.toJSON()).toMatchSnapshot();
       expect(handleChange).toHaveBeenCalledTimes(1);
