@@ -30,7 +30,7 @@ export default class TreeSelect extends SuperComponent {
   ];
 
   observers = {
-    value() {
+    'value, options, keys, multiple'() {
       this.buildTreeOptions();
     },
   };
