@@ -8,6 +8,11 @@ import { LoadingProps } from '../loading/index';
 import { SizeEnum } from '../common/common';
 
 export interface TdButtonProps {
+    /**按钮id */
+    buttonId?: {
+      type: StringConstructor;
+      value?: string;
+    };
   /**
    * 是否为块级元素
    * @default false
@@ -127,7 +132,8 @@ export interface TdButtonProps {
       | 'launchApp'
       | 'openSetting'
       | 'feedback'
-      | 'chooseAvatar';
+      | 'chooseAvatar'
+      | 'agreePrivacyAuthorization';
   };
   /**
    * 指定是否阻止本节点的祖先节点出现点击态

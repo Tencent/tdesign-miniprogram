@@ -57,6 +57,7 @@ describe('button', () => {
     const handler = jest.fn();
     const id = simulate.load({
       template: `<t-button
+        buttonId="test"
         class="btn"
         openType="{{openType}}"
         bind:getuserinfo="handler"
@@ -66,6 +67,7 @@ describe('button', () => {
         bind:opensetting="handler"
         bind:launchapp="handler"
         bind:chooseavatar="handler"
+        bind:agreeprivacyauthorization="handler"
       ></t-button>`,
       data: {
         openType: 'getUserInfo',
@@ -107,6 +109,10 @@ describe('button', () => {
     expect(handler).toHaveBeenCalledTimes(12);
 
     $btn.dispatchEvent('chooseavatar');
+    await simulate.sleep(10);
+    expect(handler).toHaveBeenCalledTimes(14);
+
+    $btn.dispatchEvent('agreeprivacyauthorization');
     await simulate.sleep(10);
     expect(handler).toHaveBeenCalledTimes(14);
   });

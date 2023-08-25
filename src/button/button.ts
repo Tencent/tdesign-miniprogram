@@ -91,6 +91,9 @@ export default class Button extends SuperComponent {
     chooseavatar(e) {
       this.triggerEvent('chooseavatar', e.detail);
     },
+    agreeprivacyauthorization(e) {
+      this.triggerEvent('agreeprivacyauthorization', e.detail);
+    },
     handleTap(e) {
       if (this.data.disabled) return;
 

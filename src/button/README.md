@@ -65,6 +65,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+buttonId | String | - | 按钮标签id | N
 block | Boolean | false | 是否为块级元素 | N
 content | String / Slot | - | 按钮内容 | N
 custom-dataset | Object | - | 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取。TS 类型：`any` | N
@@ -98,6 +99,7 @@ binderror | Eventhandle | - | 当使用开放能力时，发生错误的回调�
 bindopensetting | Eventhandle | - | 在打开授权设置页后回调，open-type=openSetting时有效 | N
 bindlaunchapp | Eventhandle | - | 打开 APP 成功的回调，open-type=launchApp时有效 | N
 bindchooseavatar | Eventhandle | - | 获取用户头像回调，open-type=chooseAvatar时有效 | N
+bindagreeprivacyauthorization | Eventhandle | - | 用户同意隐私协议事件回调，open-type=agreePrivacyAuthorization时有效 | N
 
 ### Button Events
 
