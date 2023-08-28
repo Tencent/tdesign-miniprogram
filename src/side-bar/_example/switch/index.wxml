@@ -15,6 +15,7 @@
       wx:key="index"
       class="section"
       scroll-y
+      scroll-top="{{scrollTop}}"
       scroll-with-animation
       show-scrollbar="{{false}}"
     >
