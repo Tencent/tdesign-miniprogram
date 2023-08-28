@@ -1084,6 +1084,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
     >
       <wx-scroll-view
         class="section"
+        scrollTop="{{0}}"
         scrollWithAnimation="{{true}}"
         scrollY="{{true}}"
         showScrollbar="{{false}}"
@@ -1230,6 +1231,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
       </wx-scroll-view>
       <wx-scroll-view
         class="section"
+        scrollTop="{{0}}"
         scrollWithAnimation="{{true}}"
         scrollY="{{true}}"
         showScrollbar="{{false}}"
@@ -1354,6 +1356,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
       </wx-scroll-view>
       <wx-scroll-view
         class="section"
+        scrollTop="{{0}}"
         scrollWithAnimation="{{true}}"
         scrollY="{{true}}"
         showScrollbar="{{false}}"
@@ -1434,6 +1437,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
       </wx-scroll-view>
       <wx-scroll-view
         class="section"
+        scrollTop="{{0}}"
         scrollWithAnimation="{{true}}"
         scrollY="{{true}}"
         showScrollbar="{{false}}"
@@ -1536,6 +1540,7 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
       </wx-scroll-view>
       <wx-scroll-view
         class="section"
+        scrollTop="{{0}}"
         scrollWithAnimation="{{true}}"
         scrollY="{{true}}"
         showScrollbar="{{false}}"
