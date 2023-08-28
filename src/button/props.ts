@@ -7,7 +7,7 @@
 import { TdButtonProps } from './type';
 const props: TdButtonProps = { 
    /**按钮id */
-  buttonId: {
+  tId: {
     type: String,
   },
   /** 是否为块级元素 */

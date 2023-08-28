@@ -65,7 +65,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-buttonId | String | - | 按钮标签id | N
+t-id | String | - | 按钮标签id | N
 block | Boolean | false | 是否为块级元素 | N
 content | String / Slot | - | 按钮内容 | N
 custom-dataset | Object | - | 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取。TS 类型：`any` | N

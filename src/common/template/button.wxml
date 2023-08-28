@@ -1,6 +1,6 @@
 <template name="button">
   <t-button
-    button-id="{{buttonId}}"
+    t-id="{{tId}}"
     block="{{block || false}}"
     class="{{class || ''}}"
     t-class="{{externalClass}}"

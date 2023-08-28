@@ -5,7 +5,7 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-buttonId | String | - | button tag id | N
+t-id | String | - | button tag id | N
 block | Boolean | false | make button to be a block-level element | N
 content | String / Slot | - | button's children elements | N
 custom-dataset | Object | - | Typescript：`any` | N

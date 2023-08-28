@@ -9,7 +9,7 @@ import { SizeEnum } from '../common/common';
 
 export interface TdButtonProps {
     /**按钮id */
-    buttonId?: {
+    tId?: {
       type: StringConstructor;
       value?: string;
     };

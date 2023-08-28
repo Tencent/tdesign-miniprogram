@@ -57,7 +57,7 @@ describe('button', () => {
     const handler = jest.fn();
     const id = simulate.load({
       template: `<t-button
-        buttonId="test"
+        tId="test"
         class="btn"
         openType="{{openType}}"
         bind:getuserinfo="handler"
