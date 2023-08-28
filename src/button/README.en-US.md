@@ -21,7 +21,7 @@ suffix | Slot | - | \- | N
 theme | String | default | button theme。options：default/primary/danger | N
 type | String | - | type of button element, same as formType of Miniprogram。options：submit/reset | N
 variant | String | base | button variant。options：base/outline/text | N
-open-type | String | - | options：contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar | N
+open-type | String | - | options：contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
 hover-stop-propagation | Boolean | false | \- | N
 hover-start-time | Number | 20 | \- | N
 hover-stay-time | Number | 70 | \- | N
