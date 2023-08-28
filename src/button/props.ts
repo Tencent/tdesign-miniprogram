@@ -129,6 +129,11 @@ const props: TdButtonProps = {
     type: Boolean,
     value: false,
   },
+  /** 给button添加id，用来给微信校验使用。 */
+  buttonId: {
+    type: String,
+    value: '',
+  },
 };
 
 export default props;

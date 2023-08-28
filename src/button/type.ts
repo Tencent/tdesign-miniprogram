@@ -217,4 +217,12 @@ export interface TdButtonProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+  /**
+   * 给button添加id，用来给微信校验使用。
+   * @default ''
+   */
+  buttonId: {
+    type: StringConstructor,
+    value: string,
+  };
 }

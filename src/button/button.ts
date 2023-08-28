@@ -96,5 +96,8 @@ export default class Button extends SuperComponent {
 
       this.triggerEvent('tap', e);
     },
+    agreeprivacyauthorization(e) {
+      this.triggerEvent('agreeprivacyauthorization', e.detail);
+    },
   };
 }
