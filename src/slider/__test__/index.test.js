@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('slider', () => {
   const slider = load(path.resolve(__dirname, `../slider`), 't-slider');
@@ -239,8 +239,5 @@ describe('slider', () => {
 
     comp.setData({ value: 101 });
     expect($slider.instance.data._value).toBe(100);
-
-    comp.setData({ value: 'undefined' });
-    expect($slider.instance.data._value).toBe(0);
   });
 });

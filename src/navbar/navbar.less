@@ -68,7 +68,7 @@
     padding-right: @navbar-right;
     padding-top: @navbar-padding-top;
     color: @navbar-color;
-    background-color: @navbar-bg-color;
+    background: @navbar-bg-color;
     display: flex;
     align-items: center;
   }
@@ -96,6 +96,7 @@
     &::before {
       content: '';
       position: absolute;
+      z-index: -1;
       top: 0;
       left: 0;
       width: 200%;

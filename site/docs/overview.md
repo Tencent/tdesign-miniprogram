@@ -4,7 +4,7 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">5</em></h3>
+<h3>基础<em class="tag">6</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/button">
@@ -35,6 +35,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-icon.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-icon-dark.png" />
       <p class="name">Icon 图标</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/col">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-layout.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-layout-dark.png" />
+      <p class="name">Layout 布局</p>
     </a>
   </div>
 
@@ -278,18 +286,18 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/image">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image-dark.png" />
-      <p class="name">Image 图片</p>
-    </a>
-  </div>
-
-  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/grid">
       <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-grid-dark.png" />
       <p class="name">Grid 宫格</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/image">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/miniprogram-doc/doc-image-dark.png" />
+      <p class="name">Image 图片</p>
     </a>
   </div>
 

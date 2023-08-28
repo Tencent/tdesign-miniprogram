@@ -6,15 +6,20 @@
   aria-role="checkbox"
   aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
   aria-disabled="{{disabled ? true : false}}"
-  bind:tap="onChange"
+  mut-bind:tap="handleTap"
   tabindex="{{tabindex}}"
 >
   <view
     wx:if="{{theme == 'default'}}"
     class="{{_.cls(classPrefix + '__icon', [placement, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
   >
-    <view wx:if="{{_.isArray(icon)}}" class="{{classPrefix}}__icon">
-      <image src="{{checked ? icon[0] : icon[1]}}" class="{{classPrefix}}__icon-image" webp />
+    <slot name="icon" wx:if="{{icon === 'slot'}}" />
+    <view wx:elif="{{_.isArray(icon)}}" class="{{classPrefix}}__icon">
+      <image
+        src="{{checked ? indeterminate && icon[2] ? icon[2] : icon[0] : icon[1]}}"
+        class="{{classPrefix}}__icon-image"
+        webp
+      />
     </view>
     <block wx:else>
       <t-icon
@@ -34,7 +39,7 @@
       <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
     </block>
   </view>
-  <view class="{{classPrefix}}__content" data-target="text" catch:tap="onChange">
+  <view class="{{classPrefix}}__content" data-target="text" mut-bind:tap="handleTap">
     <view
       class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"

@@ -14,15 +14,11 @@ export interface StickyProps extends TdStickyProps {}
 
 @wxComponent()
 export default class Sticky extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-content`];
 
   properties = props;
 
-  behaviors = [
-    pageScrollMixin(function (event) {
-      this.onScroll(event);
-    }),
-  ];
+  behaviors = [pageScrollMixin()];
 
   observers = {
     'offsetTop, disabled, container'() {
@@ -99,7 +95,7 @@ export default class Sticky extends SuperComponent {
 
         if (isFixed) {
           containerStyle += `height:${height}px;`;
-          contentStyle += `position:fixed;top:${offsetTop}px;`;
+          contentStyle += `position:fixed;top:${offsetTop}px;left:0;right:0;`;
         }
         if (transform) {
           const translate = `translate3d(0, ${transform}px, 0)`;

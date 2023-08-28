@@ -21,7 +21,7 @@ isComponent: true
 
 <details>
   <summary>
-    控制台告警：Faild to load font
+    控制台告警：Failed to load font
     <span class="icon">👇</span>
   </summary>
   <p style="margin-top: 10px; color: rgba(0, 0, 0, .6)">

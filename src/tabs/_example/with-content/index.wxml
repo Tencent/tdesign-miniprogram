@@ -1,4 +1,10 @@
-<t-tabs defaultValue="{{0}}" bind:change="onTabsChange" bind:click="onTabsClick" t-class="custom-tabs">
+<t-tabs
+  defaultValue="{{0}}"
+  bind:change="onTabsChange"
+  bind:click="onTabsClick"
+  t-class="custom-tabs"
+  t-class-content="custom-panel"
+>
   <t-tab-panel label="选项一" value="0" style="{{tabPanelstyle}}">选项一内容</t-tab-panel>
   <t-tab-panel label="选项二" value="1" style="{{tabPanelstyle}}">选项二内容</t-tab-panel>
   <t-tab-panel label="选项三" value="2" style="{{tabPanelstyle}}">选项三内容</t-tab-panel>

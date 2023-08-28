@@ -7,7 +7,7 @@ exports[`ImageViewer ImageViewer base demo works fine 1`] = `
     size="large"
     theme="primary"
     variant="outline"
-    bind:tap="clickHandle"
+    bind:tap="onClick"
   >
     基础图片预览
   </t-button>
@@ -34,12 +34,12 @@ exports[`ImageViewer ImageViewer delete demo works fine 1`] = `
     size="large"
     theme="primary"
     variant="outline"
-    bind:tap="clickHandle"
+    bind:tap="onClick"
   >
     带操作图片预览
   </t-button>
-  <t-toast
-    id="t-toast"
+  <t-action-sheet
+    id="t-action-sheet"
   />
   <t-image-viewer
     closeBtn="{{false}}"

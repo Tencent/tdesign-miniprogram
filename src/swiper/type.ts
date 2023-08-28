@@ -24,14 +24,6 @@ export interface TdSwiperProps {
     value?: number;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 轮播滑动方向，包括横向滑动和纵向滑动两个方向
    * @default horizontal
    */
@@ -91,7 +83,7 @@ export interface TdSwiperProps {
    */
   list?: {
     type: ArrayConstructor;
-    value?: string[];
+    value?: string[] | SwiperList[];
   };
   /**
    * 是否循环播放
@@ -141,4 +133,9 @@ export interface TdSwiperProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+}
+
+export interface SwiperList {
+  value: string;
+  ariaLabel: string;
 }

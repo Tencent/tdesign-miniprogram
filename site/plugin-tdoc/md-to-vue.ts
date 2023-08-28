@@ -44,7 +44,6 @@ export default function mdToVue(options: any) {
 // 解析 markdown 内容
 function customRender({ source, file, md }: any) {
   const { content, data } = matter(source);
-  // console.log('data', data);
 
   // md top data
   const pageData = {

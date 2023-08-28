@@ -4,18 +4,17 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-export interface TdCheckboxGroupProps {
+export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   /**
-   * 自定义组件样式
-   * @default ''
+   * 是否开启无边框模式
+   * @default false
    */
-  style?: {
-    type: StringConstructor;
-    value?: string;
+  borderless?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
-   * 是否禁用组件
-   * @default false
+   * 是否禁用组件，默认为 false。 CheckboxGroup.disabled < Checkbox.disabled ，后续新增 Form 组件后，Form.disabled 优先级最低
    */
   disabled?: {
     type: BooleanConstructor;
@@ -50,7 +49,7 @@ export interface TdCheckboxGroupProps {
    */
   value?: {
     type: ArrayConstructor;
-    value?: CheckboxGroupValue;
+    value?: T;
   };
   /**
    * 选中值，非受控属性
@@ -58,7 +57,7 @@ export interface TdCheckboxGroupProps {
    */
   defaultValue?: {
     type: ArrayConstructor;
-    value?: CheckboxGroupValue;
+    value?: T;
   };
 }
 
@@ -71,4 +70,4 @@ export interface CheckboxOptionObj {
   checkAll?: true;
 }
 
-export type CheckboxGroupValue = Array<string | number>;
+export type CheckboxGroupValue = Array<string | number | boolean>;

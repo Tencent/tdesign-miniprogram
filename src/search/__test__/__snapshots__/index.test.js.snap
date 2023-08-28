@@ -29,13 +29,23 @@ exports[`search Props :base 1`] = `
           </wx-view>
         </t-icon>
         <wx-input
+          adjustPosition="{{true}}"
+          alwaysEmbed="{{false}}"
           class="t-input__keyword t-class-input"
+          confirmHold="{{false}}"
           confirmType="search"
+          cursor="{{0}}"
+          cursorSpacing="{{0}}"
           disabled="{{false}}"
           focus="{{false}}"
+          holdKeyboard="{{false}}"
+          maxlength="{{-1}}"
           name="input"
           placeholder=""
-          placeholderClass="t-search__placeholder t-search__placeholder--normal"
+          placeholderClass=" t-search__placeholder t-search__placeholder--normal"
+          placeholderStyle=""
+          selectionEnd="{{-1}}"
+          selectionStart="{{-1}}"
           type="text"
           value=""
           bind:blur="onBlur"
@@ -47,7 +57,7 @@ exports[`search Props :base 1`] = `
       <wx-view
         ariaRole="button"
         class="t-search__search-action t-class-action"
-        bind:tap="onActionClick"
+        catch:tap="onActionClick"
       >
         
     提交

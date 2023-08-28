@@ -16,13 +16,15 @@ export enum ActionSheetTheme {
 }
 
 interface ActionSheetProps {
-  visible: boolean;
-  items: Array<string | ActionSheetItem>;
-  defaultVisible?: boolean;
+  align: 'center' | 'left';
   cancelText?: string;
   count?: number;
+  description: string;
+  items: Array<string | ActionSheetItem>;
   showCancel?: boolean;
   theme?: ActionSheetTheme;
+  visible: boolean;
+  defaultVisible?: boolean;
 }
 export interface ActionSheetShowOption extends Omit<ActionSheetProps, 'visible'> {
   context?: Context;

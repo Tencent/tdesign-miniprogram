@@ -24,7 +24,7 @@ const props: TdStepItemProps = {
     type: String,
     value: 'default',
   },
-  /** 子步骤条，仅支持 layout  = 'vertical' 时 */
+  /** 已废弃。子步骤条，仅支持 layout  = 'vertical' 时 */
   subStepItems: {
     type: Array,
     value: [],

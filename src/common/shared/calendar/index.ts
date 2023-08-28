@@ -1,5 +1,4 @@
 import { getDateRect, isSameDate, getMonthDateRect, isValidDate, getDate } from '../date';
-
 import type { TDate, TDateType, TCalendarType, TCalendarValue } from './type';
 
 export default class TCalendar {
@@ -10,7 +9,7 @@ export default class TCalendar {
   maxDate: Date;
   format: (day: TDate) => TDate;
 
-  constructor(options) {
+  constructor(options = {}) {
     Object.assign(this, options);
 
     if (!this.minDate) this.minDate = getDate();

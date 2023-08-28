@@ -1,7 +1,6 @@
 name: TAG_PUSH
 
-on:
-  create
+on: create
 
 jobs:
   TAG_PUSH:
@@ -24,7 +23,7 @@ jobs:
           es6: true
           es7: true
           minify: true
-        env: 
+        env:
           MINI_APP_ID: ${{ secrets.TDESIGN_APP_ID }}
           MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}
       - id: publish
@@ -32,8 +31,7 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.TDESIGN_NPM_TOKEN }}
-          tag: ${{ contains(github.ref_name, 'alpha') && 'alpha' || 'latest' }}
+          tag: ${{ contains(github.ref_name, 'beta') && 'beta' || 'latest' }}
       - if: steps.publish.outputs.type != 'none'
         run: |
           echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
-

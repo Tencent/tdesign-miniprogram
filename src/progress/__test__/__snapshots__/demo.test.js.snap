@@ -102,6 +102,7 @@ exports[`Progress Progress plump demo works fine 1`] = `
 exports[`Progress Progress transition demo works fine 1`] = `
 <transition>
   <t-progress
+    ariaLabel="88%"
     percentage="{{88}}"
   />
   <wx-view

@@ -1,5 +1,5 @@
-import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
+import dayjs from 'dayjs';
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import defaultLocale from './locale/zh';
@@ -166,13 +166,14 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getOptionByType(type) {
-      const { locale } = this.data;
+      const { locale, steps } = this.data;
       const options: ColumnItemValue[] = [];
 
       const minEdge = this.getOptionEdge('min', type);
       const maxEdge = this.getOptionEdge('max', type);
+      const step = steps?.[type] ?? 1;
 
-      for (let i = minEdge; i <= maxEdge; i += 1) {
+      for (let i = minEdge; i <= maxEdge; i += step) {
         const label = type === 'month' ? i + 1 : i;
         options.push({
           value: `${i}`,

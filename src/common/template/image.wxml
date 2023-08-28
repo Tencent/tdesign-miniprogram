@@ -15,6 +15,7 @@
     mode="{{mode || 'scaleToFill'}}"
     webp="{{webp || false}}"
     showMenuByLongpress="{{showMenuByLongpress || false}}"
+    data-custom="{{dataset || null}}"
     bind:error="{{binderror}}"
     bind:load="{{bindload}}"
   />

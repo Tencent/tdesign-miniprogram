@@ -2,48 +2,58 @@
 
 exports[`countdown :autoStart 1`] = `
 <main>
-  <wx-view
-    ariaRole="option"
-    class="t-count-down t-count-down--default t-count-down--medium class t-class "
-    style=""
-  >
-    00 : 00 : 01
-  </wx-view>
+  <t-count-down>
+    <wx-view
+      ariaRole="option"
+      class="t-count-down t-count-down--default t-count-down--medium class t-class "
+      style=""
+    >
+      00 : 00 : 01
+    </wx-view>
+  </t-count-down>
 </main>
 `;
 
 exports[`countdown :base 1`] = `
 <main>
-  <wx-view
-    ariaRole="option"
-    class="t-count-down t-count-down--default t-count-down--medium class t-class "
-    style=""
-  >
-    00 : 00 : 01
-  </wx-view>
+  <t-count-down>
+    <wx-view
+      ariaRole="option"
+      class="t-count-down t-count-down--default t-count-down--medium class t-class "
+      style=""
+    >
+      00 : 00 : 01
+    </wx-view>
+  </t-count-down>
 </main>
 `;
 
 exports[`countdown :base 2`] = `
 <main>
-  <wx-view
-    ariaRole="option"
-    class="t-count-down t-count-down--default t-count-down--medium class t-class "
-    style=""
-  >
-    00 : 00 : 00
-  </wx-view>
+  <t-count-down>
+    <wx-view
+      ariaRole="option"
+      class="t-count-down t-count-down--default t-count-down--medium class t-class "
+      style=""
+    >
+      00 : 00 : 00
+    </wx-view>
+  </t-count-down>
 </main>
 `;
 
 exports[`countdown :millisecond 1`] = `
 <main>
-  <wx-view
-    ariaRole="option"
-    class="t-count-down t-count-down--default t-count-down--medium class t-class "
-    style=""
+  <t-count-down
+    id="cd"
   >
-    00 : 00 : 00
-  </wx-view>
+    <wx-view
+      ariaRole="option"
+      class="t-count-down t-count-down--default t-count-down--medium class t-class "
+      style=""
+    >
+      00 : 00 : 00
+    </wx-view>
+  </t-count-down>
 </main>
 `;

@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [layout, ['readonly', readonly]])}} class {{prefix}}-class"
+  class="{{_.cls(classPrefix, [layout, ['readonly', readonly], sequence])}} class {{prefix}}-class"
 >
   <slot />
 </view>

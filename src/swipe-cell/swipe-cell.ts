@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getRect } from '../common/utils';
+import { getObserver } from '../common/wechat';
 
 let ARRAY: WechatMiniprogram.Component.TrivialInstance[] = [];
 
@@ -26,27 +27,41 @@ export default class SwiperCell extends SuperComponent {
     classPrefix: name,
   };
 
-  attached() {
-    ARRAY.push(this as WechatMiniprogram.Component.TrivialInstance);
-  }
+  observers = {
+    'left, right'() {
+      this.setSwipeWidth();
+    },
+  };
 
-  ready() {
-    this.setSwipeWidth();
-  }
+  lifetimes = {
+    attached() {
+      ARRAY.push(this as WechatMiniprogram.Component.TrivialInstance);
+    },
+
+    ready() {
+      this.setSwipeWidth();
+    },
+
+    detached() {
+      ARRAY = ARRAY.filter((item) => item !== this);
+    },
+  };
 
   setSwipeWidth() {
     Promise.all([getRect(this, `${ContainerClass}__left`), getRect(this, `${ContainerClass}__right`)]).then(
       ([leftRect, rightRect]) => {
+        if (leftRect.width === 0 && rightRect.width === 0 && !this._hasObserved) {
+          this._hasObserved = true;
+          getObserver(this, `.${name}`).then(() => {
+            this.setSwipeWidth();
+          });
+        }
         this.setData({
           leftWidth: leftRect.width,
           rightWidth: rightRect.width,
         });
       },
     );
-  }
-
-  detached() {
-    ARRAY = ARRAY.filter((item) => item !== this);
   }
 
   open() {

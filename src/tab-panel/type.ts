@@ -16,15 +16,7 @@ export interface TdTabPanelProps {
     value?: object;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 选项卡内容隐藏时是否销毁
+   * 【实现有误，暂不支持】选项卡内容隐藏时是否销毁
    * @default true
    */
   destroyOnHide?: {

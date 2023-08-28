@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('textarea', () => {
   const textarea = load(path.resolve(__dirname, `../textarea`), 't-textarea');

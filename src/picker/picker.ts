@@ -25,7 +25,7 @@ export default class Picker extends SuperComponent {
   };
 
   observers = {
-    value() {
+    'value, visible'() {
       this.updateChildren();
     },
     keys(obj) {
@@ -41,15 +41,18 @@ export default class Picker extends SuperComponent {
     classPrefix: name,
     labelAlias: 'label',
     valueAlias: 'value',
+    defaultPopUpProps: {},
+    defaultPopUpzIndex: 11500,
   };
 
   methods = {
     updateChildren() {
-      const { value } = this.properties;
+      const { value, defaultValue } = this.properties;
 
       this.$children.forEach((child, index) => {
         child.setData({
-          value: value?.[index] || '',
+          value: value?.[index] ?? defaultValue?.[index] ?? '',
+          columnIndex: index,
         });
         child.update();
       });

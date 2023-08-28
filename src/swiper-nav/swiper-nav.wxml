@@ -1,12 +1,13 @@
 <wxs src="../common/utils.wxs" module="_" />
 
+
 <view
   wx:if="{{showControls}}"
   class="class {{prefix}}-class {{classPrefix}}__btn"
   style="{{_._style([style, customStyle])}}"
 >
-  <view class="{{classPrefix}}__btn--prev" bind:tap="nav" data-dir="prev" />
-  <view class="{{classPrefix}}__btn--next" bind:tap="nav" data-dir="next" />
+  <view class="{{classPrefix}}__btn--prev" bind:tap="nav" data-dir="prev" aria-role="button" aria-label="上一张" />
+  <view class="{{classPrefix}}__btn--next" bind:tap="nav" data-dir="next" aria-role="button" aria-label="下一张" />
 </view>
 <view
   wx:if="{{total >= minShowNum}}"

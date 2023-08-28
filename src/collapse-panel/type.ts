@@ -13,14 +13,6 @@ export interface TdCollapsePanelProps {
     value?: string;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 禁止当前面板展开，优先级大于 Collapse 的同名属性
    */
   disabled?: {
@@ -45,6 +37,13 @@ export interface TdCollapsePanelProps {
    * 面板头内容
    */
   header?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 面板头左侧图标
+   */
+  headerLeftIcon?: {
     type: StringConstructor;
     value?: string;
   };

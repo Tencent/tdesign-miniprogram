@@ -39,7 +39,7 @@ export default class RadioGroup extends SuperComponent {
 
   observers = {
     value(v) {
-      this.getChilds().forEach((item) => {
+      this.getChildren().forEach((item) => {
         item.setData({
           checked: v === item.data.value,
         });
@@ -51,7 +51,7 @@ export default class RadioGroup extends SuperComponent {
   };
 
   methods = {
-    getChilds() {
+    getChildren() {
       let items = this.$children;
 
       if (!items?.length) {
@@ -65,9 +65,10 @@ export default class RadioGroup extends SuperComponent {
     },
 
     handleRadioChange(e) {
-      const { value, index } = e.target.dataset;
+      const { checked } = e.detail;
+      const { value, index, allowUncheck } = e.target.dataset;
 
-      this._trigger('change', { value, index });
+      this._trigger('change', checked === false && allowUncheck ? { value: null, index } : { value, index });
     },
 
     // 支持自定义options

@@ -39,7 +39,6 @@ size | String `v0.5.1` | 'medium' | 倒计时尺寸。可选项：small/medium/l
 split-with-unit `v0.5.1` | Boolean | false | 使用时间单位分割 | N
 theme | String `v0.5.1` | 'default' | 倒计时风格。可选项：default/round/square | N
 time | Number | - | 必需。倒计时时长，单位毫秒 | Y
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、计时器类型、分隔线类名 等。`['t-class', 't-class-count', 't-class-split']` | N
 
 ### CountDown Events
 
@@ -47,3 +46,20 @@ external-classes | Array | - | 组件类名，分别用于设置 组件外层类
 -- | -- | --
 change | `(time: TimeData)` | 时间变化时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
 finish | \- | 倒计时结束时触发
+
+### CountDown 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-count | 计数样式类
+t-class-split | 分隔线样式类
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-countdown-bg-color | @error-color-6 | - 
+--td-countdown-default-color | @font-gray-1 | - 
+--td-countdown-round-border-radius | @radius-circle | - 
+--td-countdown-round-color | @font-white-1 | - 
+--td-countdown-square-border-radius | @radius-small | - 

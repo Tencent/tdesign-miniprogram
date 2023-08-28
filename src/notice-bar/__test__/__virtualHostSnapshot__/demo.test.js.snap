@@ -142,6 +142,7 @@ exports[`NoticeBar NoticeBar scrolling demo works fine 1`] = `
       ]
     }}"
     direction="vertical"
+    interval="{{3000}}"
     prefixIcon="sound"
     visible="{{true}}"
     bind:click="click"

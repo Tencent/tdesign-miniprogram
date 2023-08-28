@@ -38,7 +38,7 @@ isComponent: true
 -- | -- | -- | -- | --
 visible | Boolean | false | 是否展示 | N
 zIndex | Number | 11000 | 遮罩层及 | N
-duration | Number | 300 | (暂不支持)背景色过渡时间，单位毫秒 | N
+duration | Number | 300 | 背景色过渡时间，单位毫秒 | N
 backgroundColor | String | - | 遮罩层的背景色 | N
 preventScrollThrough | Boolean | true | 防止滚动穿透，即不允许点击和滚动 | N
 
@@ -47,3 +47,11 @@ preventScrollThrough | Boolean | true | 防止滚动穿透，即不允许点击�
 名称 | 参数 | 描述
 -- | -- | --
 click | `({ visible: boolean })` | 点击遮罩时触发
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-overlay-bg-color | @font-gray-2 | - 
+--td-overlay-transition-duration | 300ms | - 

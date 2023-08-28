@@ -28,7 +28,7 @@ var initLeftWidth = function (newVal, oldVal, ownerInstance) {
 var initOpen = function (ownerInstance) {
   getState(ownerInstance);
   if (state.opened.constructor === 'Boolean') {
-    // opened为boolen类型，判断默认打开
+    // opened为boolean类型，判断默认打开
     if (state.opened && state.rightWidth > 0) {
       swipeMove(-state.rightWidth);
     } else if (state.opened && state.leftWidth > 0) {
@@ -133,6 +133,7 @@ var onDrag = function (event, ownerInstance) {
   }
   state.dragging = true;
   swipeMove(state.startOffset + state.deltaX);
+  return false
 };
 
 var open = function (position) {

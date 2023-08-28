@@ -1,6 +1,6 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
 
+import simulate from 'miniprogram-simulate';
 import { showToast, hideToast } from '../index';
 import * as Util from '../../common/utils';
 

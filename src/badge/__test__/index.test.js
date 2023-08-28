@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 import { hex2Rgb } from '../../../test/utils/colors';
 
 const shapes = ['circle', 'square', 'round', 'ribbon'];

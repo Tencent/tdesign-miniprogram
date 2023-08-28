@@ -9,7 +9,7 @@
   aria-role="switch"
 >
   <view
-    class="{{_.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled], size])}} {{prefix}}-class-body"
+    class="{{_.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled || loading], size])}} {{prefix}}-class-body"
   >
     <view
       class="{{_.cls(classPrefix + '__dot', [['checked', checked], ['plain', label.length != 2 && icon.length != 2 && !loading], size])}} {{prefix}}-class-dot"

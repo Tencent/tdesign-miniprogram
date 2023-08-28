@@ -17,7 +17,7 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
       ]
     }}"
     value="{{false}}"
-    bind:refresh="onPullDownRefresh"
+    bind:refresh="onRefresh"
     bind:scroll="onScroll"
   >
     <wx-view

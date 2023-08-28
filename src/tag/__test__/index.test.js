@@ -1,6 +1,5 @@
-import simulate from 'miniprogram-simulate';
-
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('tag', () => {
   const Tag = load(path.resolve(__dirname, `../tag`));
@@ -224,7 +223,7 @@ describe('tag', () => {
     });
 
     describe('event', () => {
-      it(`: mutiple`, async () => {
+      it(`: multiple`, async () => {
         const handleClick = jest.fn();
         const handleClose = jest.fn();
         const id = simulate.load({
@@ -395,7 +394,7 @@ describe('tag', () => {
     });
 
     describe('event', () => {
-      it(`: mutiple`, async () => {
+      it(`: multiple`, async () => {
         const handleChange = jest.fn();
         const id = simulate.load({
           template: `

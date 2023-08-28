@@ -21,7 +21,7 @@ const props: TdPickerProps = {
     type: null,
     value: true,
   },
-  /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容 */
+  /** 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容 */
   header: {
     type: Boolean,
     value: true,
@@ -48,6 +48,11 @@ const props: TdPickerProps = {
   visible: {
     type: Boolean,
     value: false,
+  },
+  /** popupProps透传 */
+  popupProps: {
+    type: Object,
+    value: {},
   },
 };
 

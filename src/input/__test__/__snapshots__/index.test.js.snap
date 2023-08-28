@@ -17,13 +17,9 @@ exports[`input props : clearable && label && suffix 1`] = `
       />
       <wx-view
         ariaHidden="{{true}}"
-        class="t-input__label"
+        class="t-input__label t-class-label"
       >
-        <wx-text
-          class="t-class-label"
-        >
-          tdesign
-        </wx-text>
+        tdesign
       </wx-view>
     </wx-view>
     <wx-view
@@ -146,7 +142,7 @@ exports[`input slots : label 1`] = `
       />
       <wx-view
         ariaHidden="{{true}}"
-        class="t-input__label"
+        class="t-input__label t-class-label"
       >
         <wx-text
           slot="label"

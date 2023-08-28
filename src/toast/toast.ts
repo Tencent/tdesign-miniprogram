@@ -1,9 +1,9 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { ToastOptionsType } from './index';
 import transition from '../mixins/transition';
 import { calcIcon } from '../common/utils';
+import { ToastOptionsType } from './index';
 
 const { prefix } = config;
 const name = `${prefix}-toast`;
@@ -30,9 +30,17 @@ export default class Toast extends SuperComponent {
 
   properties = props;
 
-  detached() {
-    this.destroyed();
-  }
+  lifetimes = {
+    detached() {
+      this.destroyed();
+    },
+  };
+
+  pageLifetimes = {
+    hide() {
+      this.hide();
+    },
+  };
 
   methods = {
     show(options: ToastOptionsType) {
@@ -72,6 +80,7 @@ export default class Toast extends SuperComponent {
     },
 
     hide() {
+      if (!this.data.visible) return; // 避免重复触发（页面关闭、定时关闭都会触发）
       this.setData({ visible: false });
       this.data?.close?.();
       this.triggerEvent('close');

@@ -1,1 +1,5 @@
-Page({});
+Page({
+  onShareAppMessage() {
+    console.log('onShareAppMessage');
+  },
+});

@@ -15,13 +15,13 @@ exports[`collapse :defaultExpandAll 1`] = `
       >
         <wx-view
           ariaDisabled="{{false}}"
-          ariaExpanded="{{false}}"
+          ariaExpanded="{{true}}"
           ariaRole="button"
           class="t-collapse-panel__title"
           bind:tap="onClick"
         >
           <t-cell
-            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-class-header"
+            tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
             tClassNote="class-note "
             tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
@@ -69,7 +69,7 @@ exports[`collapse :defaultExpandAll 1`] = `
                     bind:tap="onTap"
                   >
                     <wx-label
-                      class="t-icon-chevron-down t-icon-base"
+                      class="t-icon-chevron-up t-icon-base"
                     />
                   </wx-view>
                 </t-icon>
@@ -79,7 +79,7 @@ exports[`collapse :defaultExpandAll 1`] = `
         </wx-view>
         <wx-view
           animation=""
-          ariaHidden="{{true}}"
+          ariaHidden=""
           class="t-collapse-panel__wrapper"
         >
           <wx-view

@@ -21,7 +21,7 @@
     t-class-count="{{badgeProps.tClassCount}}"
   >
     <view
-      class="{{this.getClass(classPrefix, size, shape, bordered)}} {{prefix}}-class-image"
+      class="{{this.getClass(classPrefix, size, shape, bordered || borderedWithGroup)}} {{prefix}}-class-image"
       style="{{this.getSize(size)}}"
       aria-label="{{ ariaLabel || alt ||'头像'}}"
       aria-role="{{ ariaRole || 'img'}}"
@@ -31,13 +31,13 @@
         wx:if="{{image}}"
         t-class="{{prefix}}-image {{classPrefix}}__image"
         t-class-load="{{prefix}}-class-alt"
-        style="{{imageProps.style || ''}}"
+        style="{{imageProps && imageProps.style || ''}}"
         src="{{image}}"
-        mode="{{imageProps.mode || 'aspectFill'}}"
-        lazy="{{imageProps.lazy || false}}"
-        loading="{{imageProps.loading || 'default'}}"
-        shape="{{imageProps.shape || 'round'}}"
-        webp="{{imageProps.webp || false}}"
+        mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
+        lazy="{{imageProps && imageProps.lazy || false}}"
+        loading="{{imageProps && imageProps.loading || 'default'}}"
+        shape="{{imageProps && imageProps.shape || 'round'}}"
+        webp="{{imageProps && imageProps.webp || false}}"
         error="{{alt || 'default'}}"
         bind:error="onLoadError"
       />

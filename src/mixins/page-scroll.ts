@@ -11,7 +11,7 @@ const onPageScroll = function (event?: IPageScrollOption) {
   if (!page) return;
   const { pageScroller } = page;
 
-  pageScroller.forEach((scroller: Scroller) => {
+  pageScroller?.forEach((scroller: Scroller) => {
     if (typeof scroller === 'function') {
       // @ts-ignore
       scroller(event);
@@ -19,12 +19,16 @@ const onPageScroll = function (event?: IPageScrollOption) {
   });
 };
 
-export default (scroller: Scroller) => {
+export default (funcName = 'onScroll') => {
   return Behavior({
     attached() {
       const page = getCurrentPage<{ pageScroller: Scroller[] }>();
       if (!page) return;
-      const bindScroller = scroller.bind(this);
+      const bindScroller = this[funcName]?.bind(this);
+
+      if (bindScroller) {
+        this._pageScroller = bindScroller;
+      }
 
       if (Array.isArray(page.pageScroller)) {
         page.pageScroller.push(bindScroller);
@@ -39,7 +43,8 @@ export default (scroller: Scroller) => {
     detached() {
       const page = getCurrentPage<{ pageScroller: Scroller[] }>();
       if (!page) return;
-      page.pageScroller = page.pageScroller?.filter((item) => item !== scroller) || [];
+
+      page.pageScroller = page.pageScroller?.filter((item) => item !== this._pageScroller) || [];
     },
   });
 };

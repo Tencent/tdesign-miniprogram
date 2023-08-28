@@ -19,6 +19,8 @@ spline: explain
 @error-color: var(--td-error-color, #e34d59); // 失败
 ```
 
+> ⚠️ 注意：1.0.0 版本之前主题色的变量是 --td-primary-color
+
 在 `app.css` 文件添加下行代码即可：
 
 ```css
@@ -60,4 +62,4 @@ page {
 }
 ```
 
-> 目前仅有部分组件支持自定义主题，支持的组件在其文档有陈列对应的 CSS Varialbes，可以访问 [tab-bar-item.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/tab-bar-item/tab-bar-item.less)
+> 目前仅有部分组件支持自定义主题，支持的组件在其文档有陈列对应的 CSS Variables，可以访问 [tab-bar-item.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/tab-bar-item/tab-bar-item.less)

@@ -55,7 +55,7 @@ isComponent: true
 -- | -- | -- | -- | --
 default-expand-all | Boolean | false | 默认是否展开全部 | N
 disabled | Boolean | - | 是否禁用面板展开/收起操作 | N
-expand-icon | Boolean | true | 展开图标。值为 undefined 或 false 则不显示展开图标；值为 true 显示默认图标 | N
+expand-icon | Boolean | true | 展开图标 | N
 expand-mutex | Boolean | false | 每个面板互斥展开，每次只展开一个面板 | N
 theme | String | default | 折叠面板风格。可选项：default/card | N
 value | Array | [] | 展开的面板集合。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/collapse/type.ts) | N
@@ -74,8 +74,33 @@ change | `(value: CollapseValue)` | 切换面板时触发，返回变化的值
 content | String / Slot | - | 折叠面板内容 | N
 disabled | Boolean | undefined | 禁止当前面板展开，优先级大于 Collapse 的同名属性 | N
 expand-icon | Boolean / Slot | undefined | 当前折叠面板展开图标，优先级大于 Collapse 的同名属性 | N
-external-classes | Array | - | 组件类名，用于组件外层元素、标题、内容。`['t-class', 't-class-header', 't-class-content']` | N
 header | String / Slot | - | 面板头内容 | N
+header-left-icon | String / Slot | - | 面板头左侧图标 | N
 header-right-content | String / Slot | - | 面板头的右侧区域，一般用于呈现面板操作 | N
 placement | String | bottom | `0.34.0`。选项卡内容的位置。可选项：bottom/top | N
 value | String / Number | - | 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识 | N
+
+### CollapsePanel 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-content | 内容样式类
+t-class-header | 头部样式类
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-collapse-border-color | @border-color | - 
+--td-collapse-content-font-size | @font-size-base | - 
+--td-collapse-content-line-height | 1.5 | - 
+--td-collapse-content-padding | 32rpx | - 
+--td-collapse-content-text-color | @font-gray-1 | - 
+--td-collapse-extra-font-size | @font-size-m | - 
+--td-collapse-header-height | 96rpx | - 
+--td-collapse-header-text-color | @font-gray-1 | - 
+--td-collapse-header-text-disabled-color | @font-gray-4 | - 
+--td-collapse-horizontal-padding | 32rpx | - 
+--td-collapse-icon-color | @font-gray-3 | - 
+--td-collapse-panel-bg-color | @bg-color-container | - 
+--td-collapse-title-font-size | @font-size-m | - 

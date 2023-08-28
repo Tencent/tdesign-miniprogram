@@ -50,11 +50,10 @@ export default class Steps extends SuperComponent {
 
   methods = {
     updateChildren() {
-      const { current, currentStatus, readonly, theme, layout } = this.data;
       const items = this.$children;
 
       items.forEach((item, index) => {
-        item.updateStatus(current, currentStatus, index, theme, layout, items, readonly);
+        item.updateStatus({ index, items, ...this.data });
       });
     },
     updateLastChid() {

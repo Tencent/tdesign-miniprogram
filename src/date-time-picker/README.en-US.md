@@ -9,12 +9,12 @@ cancel-btn | String | 取消 | \- | N
 confirm-btn | String | - | \- | N
 end | String / Number | - | \- | N
 external-classes | Array | - | `['t-class', 't-class-confirm', 't-class-cancel', 't-class-title']` | N
-footer | Slot | true | `deprecated` | N
 format | String | 'YYYY-MM-DD HH:mm:ss' | \- | N
-header | Boolean / Slot | true | \- | N
+header | Boolean / Slot | true | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 mode | String / Array | 'date' | Typescript：`DateTimePickerMode` `type DateTimePickerMode = TimeModeValues \| Array<TimeModeValues> ` `type TimeModeValues = 'year' \| 'month' \| 'date' \| 'hour' \| 'minute' \| 'second'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 show-week | Boolean | false | \- | N
 start | String / Number | - | \- | N
+steps | Object | - | \- | N
 title | String | - | title of picker | N
 value | String / Number | - | Typescript：`DateValue` `type DateValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 default-value | String / Number | undefined | uncontrolled property。Typescript：`DateValue` `type DateValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
@@ -26,6 +26,13 @@ name | params | description
 -- | -- | --
 cancel | \- | \-
 change | `(value: DateValue)` | \-
-close | `(trigger: TriggerSource)` | `1.0.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'cancel-btn' \| 'confrim-btn'`<br/>
+close | `(trigger: TriggerSource)` | `1.0.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'cancel-btn' \| 'confirm-btn'`<br/>
 confirm | `(value: DateValue)` | `1.0.1`
 pick | `(value: DateValue)` | \-
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-data-time-picker-year-width | 128rpx | - 

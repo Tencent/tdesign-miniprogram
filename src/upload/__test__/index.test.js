@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 import similateApi from 'miniprogram-simulate/src/api';
 
 const mock = (options, res) => {
@@ -157,7 +157,7 @@ describe('upload', () => {
 
       // gridConfig: width、 height
       expect($gridItemWrapper.dom.getAttribute('style')).toEqual(
-        `width:${comp.data.gridConfig.width}px;height:${comp.data.gridConfig.height}px`,
+        `align-self:flex-end;width:${comp.data.gridConfig.width}px;height:${comp.data.gridConfig.height}px`,
       );
 
       // gridConfig: column

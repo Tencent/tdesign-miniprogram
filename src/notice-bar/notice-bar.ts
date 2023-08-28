@@ -107,20 +107,17 @@ export default class NoticeBar extends SuperComponent {
           if (marquee || wrapRect.width < nodeRect.width) {
             const speeding = marquee.speed || 50;
             const delaying = marquee.delay || 0;
-            const loops = marquee.loop - 1 || -1;
             const animationDuration = ((wrapRect.width + nodeRect.width) / speeding) * 1000;
             const firstAnimationDuration = (nodeRect.width / speeding) * 1000;
-
             this.setData({
               wrapWidth: Number(wrapRect.width),
               nodeWidth: Number(nodeRect.width),
               animationDuration: animationDuration,
               delay: delaying,
-              loop: loops,
+              loop: marquee.loop - 1,
               firstAnimationDuration: firstAnimationDuration,
             });
-
-            this.startScrollAnimation(true);
+            marquee.loop !== 0 && this.startScrollAnimation(true);
           }
         });
       });

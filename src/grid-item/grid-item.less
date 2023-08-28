@@ -7,17 +7,21 @@
 @grid-item-padding: var(--td-grid-item-padding, 32rpx);
 @grid-item-bg-color: var(--td-grid-item-bg-color, @bg-color-container);
 @grid-item-image-width: var(--td-grid-item-image-width, 96rpx);
+@grid-item-image-small-width: var(--td-grid-item-image-small-width, 64rpx);
+@grid-item-image-middle-width: var(--td-grid-item-image-middle-width, 80rpx);
 @grid-item-text-color: var(--td-grid-item-text-color, @font-gray-1);
 @grid-item-text-font-size: var(--td-grid-item-text-font-size, 28rpx);
+@grid-item-text-small-font-size: var(--td-grid-item-text-small-font-size, 24rpx);
+@grid-item-text-middle-font-size: var(--td-grid-item-text-middle-font-size, 24rpx);
 @grid-item-text-line-height: var(--td-grid-item-text-line-height, 44rpx);
 @grid-item-text-padding-top: var(--td-grid-item-text-padding-top, 16rpx);
 @grid-item-description-font-size: var(--td-grid-item-description-font-size, 24rpx);
 @grid-item-description-line-height: var(--td-grid-item-description-line-height, 40rpx);
 @grid-item-description-color: var(--td-grid-item-description-color, @font-gray-3);
-@grid-item-description-padding-top: var(--td-grid-item-description-padding-top, 8rpx);
+@grid-item-description-padding-top: var(--td-grid-item-description-padding-top, 0);
 @grid-item-hover-bg-color: var(--td-grid-item-hover-bg-color, @bg-color-secondarycontainer);
-@grid-item-horizontal-text-padding-left: var(--td-grid-item-horizontal-text-padding-left, 24rpx);
-@grid-item-horizontal-text-description-top: var(--td-grid-item-horizontal-text-description-top, 4rpx);
+@grid-item-horizontal-text-padding-left: var(--td-grid-item-horizontal-text-padding-left, 0);
+@grid-item-horizontal-text-description-top: var(--td-grid-item-horizontal-text-description-top, 0);
 
 .@{item} {
   box-sizing: border-box;
@@ -44,10 +48,20 @@
     overflow: hidden;
     position: relative;
     padding: @grid-item-padding 0 24rpx;
+    background-color: @grid-item-bg-color;
 
     &--horizontal {
       flex-direction: row;
       padding-left: @grid-item-padding;
+    }
+
+    &--left {
+      justify-self: flex-start;
+      align-items: flex-start;
+
+      .@{prefix}-grid-item__words {
+        text-align: left;
+      }
     }
   }
 
@@ -76,13 +90,13 @@
       height: @grid-item-image-width;
 
       &.@{item}__image--small {
-        width: 64rpx;
-        height: 64rpx;
+        width: @grid-item-image-small-width;
+        height: @grid-item-image-small-width;
       }
 
       &.@{item}__image--middle {
-        width: 80rpx;
-        height: 80rpx;
+        width: @grid-item-image-middle-width;
+        height: @grid-item-image-middle-width;
       }
 
       .@{prefix}-grid__image {
@@ -100,15 +114,6 @@
     }
   }
 
-  &--left {
-    justify-self: flex-start;
-    align-items: flex-start;
-
-    .@{prefix}-grid-item__words {
-      text-align: left;
-    }
-  }
-
   &__text {
     width: inherit;
     color: @grid-item-text-color;
@@ -116,9 +121,12 @@
     line-height: @grid-item-text-line-height;
     padding-top: @grid-item-text-padding-top;
 
-    &--small,
+    &--small {
+      font-size: @grid-item-text-small-font-size;
+    }
+
     &--middle {
-      font-size: 24rpx;
+      font-size: @grid-item-text-middle-font-size;
     }
 
     &--horizontal {
@@ -128,12 +136,15 @@
   }
 
   &__description {
+    padding-top: @grid-item-description-padding-top;
     width: inherit;
     color: @grid-item-description-color;
     font-size: @grid-item-description-font-size;
     line-height: @grid-item-description-line-height;
 
     &--horizontal {
+      margin-top: @grid-item-horizontal-text-description-top;
+      padding-left: @grid-item-horizontal-text-padding-left;
       text-align-last: left;
     }
   }

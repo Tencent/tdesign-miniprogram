@@ -14,12 +14,16 @@
   >
     <view class="{{_.cls(classPrefix + '__wrapper', [theme])}}">
       <scroll-view
-        class="{{_.cls(classPrefix + '__scroll', [placement])}}"
+        class="{{_.cls(classPrefix + '__scroll', [placement, ['split', split]])}}"
+        enhanced
         enable-flex
         scroll-left="{{offset}}"
-        scroll-x="{{isScrollX}}"
-        scroll-y="{{isScrollY}}"
+        scroll-x="{{true}}"
+        scroll-anchoring
         scroll-with-animation
+        enable-passive
+        show-scrollbar="{{false}}"
+        bind:scroll="onScroll"
       >
         <view class="{{_.cls(classPrefix + '__nav', [placement])}}" aria-role="tablist">
           <view
@@ -56,6 +60,7 @@
       </scroll-view>
     </view>
   </t-sticky>
+  <slot name="middle" />
   <view
     class="{{_.cls(classPrefix + '__content', [['animated', animation]])}}"
     bind:touchstart="onTouchStart"
@@ -64,8 +69,8 @@
     bind:touchcancel="onTouchEnd"
   >
     <view
-      class="{{classPrefix}}__content-inner"
-      style="{{ filters.animate({duration: animation.duration, currentIndex:currentIndex, direction}) }}"
+      class="{{classPrefix}}__content-inner {{prefix}}-class-content"
+      style="{{ filters.animate({duration: animation.duration, currentIndex:currentIndex}) }}"
     >
       <slot />
     </view>

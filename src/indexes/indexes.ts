@@ -29,11 +29,7 @@ export default class Indexes extends SuperComponent {
     },
   };
 
-  behaviors = [
-    pageScrollMixin(function (event) {
-      this.onScroll(event);
-    }),
-  ];
+  behaviors = [pageScrollMixin()];
 
   timer = null;
 
@@ -44,6 +40,7 @@ export default class Indexes extends SuperComponent {
   observers = {
     indexList(v) {
       this.setIndexList(v);
+      this.setHeight(this.data._height);
     },
     height(v) {
       this.setHeight(v);
@@ -55,7 +52,7 @@ export default class Indexes extends SuperComponent {
       if (this.data._height === 0) {
         this.setHeight();
       }
-      if (this.data._indexList?.length === 0) {
+      if (this.data.indexList === null) {
         this.setIndexList();
       }
     },

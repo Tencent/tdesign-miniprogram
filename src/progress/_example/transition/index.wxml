@@ -1,4 +1,4 @@
-<t-progress percentage="{{percentage}}" />
+<t-progress percentage="{{percentage}}" ariaLabel="{{ percentage + '%' }}" />
 
 <view class="button-group">
   <t-button bindtap="clickReduce" theme="primary" variant="plain" size="small">减少</t-button>

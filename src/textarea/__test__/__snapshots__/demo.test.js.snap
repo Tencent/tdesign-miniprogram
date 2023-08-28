@@ -3,10 +3,16 @@
 exports[`Textarea Textarea autosize demo works fine 1`] = `
 <autosize>
   <t-textarea
-    autosize="{{true}}"
+    autosize="{{
+      Object {
+        "maxHeight": 120,
+        "minHeight": 20,
+      }
+    }}"
     disableDefaultPadding="{{true}}"
     label="标签文字"
     placeholder="请输入文字"
+    bind:line-change="onLineChange"
   />
 </autosize>
 `;

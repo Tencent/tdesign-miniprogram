@@ -30,7 +30,7 @@ isComponent: true
 
 #### 纯图标标签栏
 
-{{ text-only }}
+{{ icon-only }}
 
 #### 双层级纯文本标签栏
 
@@ -56,7 +56,6 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 bordered | Boolean | true | 是否显示外边框 | N
-external-classes | Array | - | 组件类名，用于设置外层元素类名。`['t-class']` | N
 fixed | Boolean | true | 是否固定在底部 | N
 safe-area-inset-bottom | Boolean | true | 是否为 iPhoneX 留出底部安全距离 | N
 shape | String | normal | 标签栏的形状。可选项：normal/round | N
@@ -71,6 +70,11 @@ default-value | String / Number / Array | undefined | 当前选中标签的索�
 -- | -- | --
 change | `(value: string \| number)` | 选中标签切换时触发
 
+### TabBar 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+
 ### TabBarItem Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
@@ -79,3 +83,20 @@ badge-props | Object | - | 图标右上角提示信息。TS 类型：`BadgeProps
 icon | String / Object / Slot | - | 图标名称。传入对象时透传至 Icon 组件 | N
 sub-tab-bar | Array | - | 二级菜单。TS 类型：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
 value | String / Number | - | 标识符 | N
+
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-tab-bar-active-bg | @brand-color-light | - 
+--td-tab-bar-active-color | @brand-color | - 
+--td-tab-bar-bg-color | @bg-color-container | - 
+--td-tab-bar-border-color | @border-color | - 
+--td-tab-bar-color | @font-gray-1 | - 
+--td-tab-bar-height | 80rpx | - 
+--td-tab-bar-hover-bg-color | rgba(0, 0, 0, 0.05) | - 
+--td-tab-bar-spread-border-color | @border-color | - 
+--td-tab-bar-spread-shadow | @shadow-3 | - 
+--td-tab-bar-border-color | @border-color | - 
+--td-tab-bar-round-shadow | @shadow-3 | - 

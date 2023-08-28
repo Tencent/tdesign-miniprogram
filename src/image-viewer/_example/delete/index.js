@@ -1,4 +1,4 @@
-import Toast from 'tdesign-miniprogram/toast/index';
+import ActionSheet from 'tdesign-miniprogram/action-sheet/index';
 
 Component({
   data: {
@@ -9,7 +9,7 @@ Component({
     images: [],
   },
   methods: {
-    clickHandle() {
+    onClick() {
       this.setData({
         images: [
           'https://tdesign.gtimg.com/miniprogram/images/swiper1.png',
@@ -22,44 +22,33 @@ Component({
       });
     },
     onChange(e) {
-      const {
-        detail: { index },
-      } = e;
-      Toast({
-        context: this,
-        selector: '#t-toast',
-        message: `翻到第${index + 1}个`,
-      });
+      const { index } = e.detail;
+
+      console.log(index);
     },
 
     onDelete(e) {
-      const {
-        detail: { index },
-      } = e;
-      Toast({
+      const { index } = e.detail;
+
+      console.log(index);
+
+      ActionSheet.show({
         context: this,
-        selector: '#t-toast',
-        message: `删除第${index + 1}个`,
+        selector: '#t-action-sheet',
+        description: '要删除这张照片吗？',
+        items: [
+          {
+            label: '删除',
+            color: '#d54941',
+          },
+        ],
       });
     },
 
     onClose(e) {
-      const {
-        detail: { trigger },
-      } = e;
-      if (trigger === 'overlay') {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: '点击overlay关闭',
-        });
-      } else if (trigger === 'button') {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: `点击button关闭`,
-        });
-      }
+      const { trigger } = e.detail;
+
+      console.log(trigger);
       this.setData({
         visible: false,
       });

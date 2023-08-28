@@ -29,3 +29,20 @@ badge-props | Object | - | Typescript：`BadgeProps`，[Badge API Documents](./b
 icon | String / Slot | - | \- | N
 sub-tab-bar | Array | - | Typescript：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
 value | String / Number | - | \- | N
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-tab-bar-active-bg | @brand-color-light | - 
+--td-tab-bar-active-color | @brand-color | - 
+--td-tab-bar-bg-color | @bg-color-container | - 
+--td-tab-bar-border-color | @border-color | - 
+--td-tab-bar-color | @font-gray-1 | - 
+--td-tab-bar-height | 80rpx | - 
+--td-tab-bar-hover-bg-color | rgba(0, 0, 0, 0.05) | - 
+--td-tab-bar-spread-border-color | @border-color | - 
+--td-tab-bar-spread-shadow | @shadow-3 | - 
+--td-tab-bar-border-color | @border-color | - 
+--td-tab-bar-round-shadow | @shadow-3 | - 

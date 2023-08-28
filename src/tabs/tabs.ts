@@ -15,7 +15,13 @@ export interface TabsProps extends TdTabsProps {}
 export default class Tabs extends SuperComponent {
   behaviors = [touch];
 
-  externalClasses = [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-active`, `${prefix}-class-track`];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-item`,
+    `${prefix}-class-active`,
+    `${prefix}-class-track`,
+    `${prefix}-class-content`,
+  ];
 
   relations: RelationsOptions = {
     '../tab-panel/tab-panel': {
@@ -57,9 +63,8 @@ export default class Tabs extends SuperComponent {
     tabs: [],
     currentIndex: -1,
     trackStyle: '',
-    isScrollX: true,
-    direction: 'X',
     offset: 0,
+    scrollLeft: 0,
     tabID: '',
     placement: 'top',
   };
@@ -89,6 +94,12 @@ export default class Tabs extends SuperComponent {
   }
 
   methods = {
+    onScroll(e) {
+      const { scrollLeft } = e.detail;
+      this.setData({
+        scrollLeft,
+      });
+    },
     updateTabs(cb) {
       const { children } = this;
       const tabs = children.map((child: any) => child.data);
@@ -140,17 +151,19 @@ export default class Tabs extends SuperComponent {
     },
 
     getTrackSize() {
-      return new Promise<number>((resolve) => {
+      return new Promise<number>((resolve, reject) => {
         if (this.trackWidth) {
           resolve(this.trackWidth);
           return;
         }
-        getRect(this, `.${prefix}-tabs__track`).then((res) => {
-          if (res) {
-            this.trackWidth = res.width;
-            resolve(this.trackWidth);
-          }
-        });
+        getRect(this, `.${prefix}-tabs__track`)
+          .then((res) => {
+            if (res) {
+              this.trackWidth = res.width;
+              resolve(this.trackWidth);
+            }
+          })
+          .catch(reject);
       });
     },
 
@@ -158,7 +171,7 @@ export default class Tabs extends SuperComponent {
       if (!this.properties.showBottomLine) return;
       const { children } = this;
       if (!children) return;
-      const { currentIndex, isScrollX, direction } = this.data;
+      const { currentIndex } = this.data;
       if (currentIndex <= -1) return;
 
       try {
@@ -171,32 +184,28 @@ export default class Tabs extends SuperComponent {
 
         res.forEach((item) => {
           if (count < currentIndex) {
-            distance += isScrollX ? item.width : item.height;
+            distance += item.width;
             count += 1;
           }
-          totalSize += isScrollX ? item.width : item.height;
+          totalSize += item.width;
         });
 
         if (this.containerWidth) {
-          const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.data.offset);
+          const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.data.scrollLeft);
           const maxOffset = totalSize - this.containerWidth;
           this.setData({
             offset: Math.min(Math.max(offset, 0), maxOffset),
           });
         }
 
-        if (isScrollX) {
+        if (this.data.theme === 'line') {
           const trackLineWidth = await this.getTrackSize();
           distance += (rect.width - trackLineWidth) / 2;
         }
-        let trackStyle = `-webkit-transform: translate${direction}(${distance}px);
-          transform: translate${direction}(${distance}px);
-        `;
-        if (!isScrollX) {
-          trackStyle += `height: ${rect.height}px;`;
-        }
         this.setData({
-          trackStyle,
+          trackStyle: `-webkit-transform: translateX(${distance}px);
+            transform: translateX(${distance}px);
+          `,
         });
       } catch (err) {
         this.triggerEvent('error', err);

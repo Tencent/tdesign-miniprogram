@@ -23,7 +23,7 @@ export default class CheckBox extends SuperComponent {
         const { value, disabled, borderless } = parent.data;
         const valueSet = new Set(value);
         const data: any = {
-          disabled: disabled || this.data.disabled,
+          disabled: this.data.disabled == null ? disabled : this.data.disabled,
         };
 
         if (borderless) {
@@ -53,10 +53,6 @@ export default class CheckBox extends SuperComponent {
       type: String,
       value: 'default',
     },
-    borderless: {
-      type: Boolean,
-      value: false,
-    },
   };
 
   data = {
@@ -72,7 +68,7 @@ export default class CheckBox extends SuperComponent {
   ];
 
   methods = {
-    onChange(e: WechatMiniprogram.TouchEvent) {
+    handleTap(e: WechatMiniprogram.TouchEvent) {
       const { disabled, readonly } = this.data;
 
       if (disabled || readonly) return;

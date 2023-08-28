@@ -266,20 +266,34 @@ exports[`Grid Grid icon-grid demo works fine 1`] = `
     class="block"
   >
     <t-grid-item
-      icon="share"
+      image="slot"
       text="分享"
-    />
+    >
+      <wx-view
+        class="grid-item__image"
+        slot="image"
+      >
+        <t-button
+          icon="share"
+          openType="share"
+          variant="text"
+        />
+      </wx-view>
+    </t-grid-item>
     <t-grid-item
       icon="star"
       text="收藏"
+      bind:click="onClick"
     />
     <t-grid-item
       icon="download"
       text="保存"
+      bind:click="onClick"
     />
     <t-grid-item
       icon="edit-1"
       text="编辑"
+      bind:click="onClick"
     />
   </t-grid>
 </icon-grid>

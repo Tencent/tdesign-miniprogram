@@ -3,6 +3,7 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
+
 export interface TdDateTimePickerProps {
   /**
    * 取消按钮文字
@@ -35,15 +36,15 @@ export interface TdDateTimePickerProps {
     value?: ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
   };
   /**
-   * 用于格式化日期，[详细文档](https://day.js.org/docs/en/display/format)
-   * @default ''
+   * 用于格式化 pick、change、confirm 事件返回的值，[详细文档](https://day.js.org/docs/en/display/format)
+   * @default 'YYYY-MM-DD HH:mm:ss'
    */
   format?: {
     type: StringConstructor;
     value?: string;
   };
   /**
-   * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容，值类型为 TNode 表示自定义头部内容
+   * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容
    * @default true
    */
   header?: {
@@ -74,6 +75,13 @@ export interface TdDateTimePickerProps {
     value?: string | number;
   };
   /**
+   * 时间间隔步数，示例：`{ minute: 5 }`
+   */
+  steps?: {
+    type: ObjectConstructor;
+    value?: object;
+  };
+  /**
    * 标题
    * @default ''
    */
@@ -102,6 +110,15 @@ export interface TdDateTimePickerProps {
   visible?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+
+  /**
+   * 透传给picker内部的pop组件
+   * @default {}
+   */
+  popupProps: {
+    type: Object;
+    value: {};
   };
 }
 

@@ -28,7 +28,7 @@ const ComponentNativeProps = [
  * @param options {}
  */
 export const toComponent = function toComponent(options: Record<string, any>) {
-  const { relations, behaviors = [], properties, externalClasses = [] } = options;
+  const { relations, behaviors = [], externalClasses = [] } = options;
 
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {

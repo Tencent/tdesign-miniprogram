@@ -22,6 +22,7 @@ export default class ImageViewer extends SuperComponent {
     windowWidth: 0,
     swiperStyle: {},
     imagesStyle: {},
+    maskTop: 0,
   };
 
   options = {
@@ -37,6 +38,7 @@ export default class ImageViewer extends SuperComponent {
 
   ready() {
     this.saveScreenSize();
+    this.calcMaskTop();
   }
 
   observers = {
@@ -60,6 +62,18 @@ export default class ImageViewer extends SuperComponent {
   };
 
   methods = {
+    calcMaskTop() {
+      if (this.data.usingCustomNavbar) {
+        const rect = wx?.getMenuButtonBoundingClientRect() || null;
+        const { statusBarHeight } = wx.getSystemInfoSync();
+
+        if (rect && statusBarHeight) {
+          this.setData({
+            maskTop: rect.top - statusBarHeight + rect.bottom,
+          });
+        }
+      }
+    },
     saveScreenSize() {
       const { windowHeight, windowWidth } = wx.getSystemInfoSync();
       this.setData({

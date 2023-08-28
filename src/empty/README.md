@@ -41,6 +41,23 @@ isComponent: true
 -- | -- | -- | -- | --
 action | Slot | - | 操作按钮 | N
 description | String / Slot | - | 描述文字 | N
-external-classes | Array | - | 组件类名，分别用于设置 组件外层类名、文本描述类名、图片类名、操作按钮类名。`['t-class', 't-class-description', 't-class-image', 't-class-actions']` | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 image | String / Slot | - | 图片地址 | N
+
+### Empty 外部样式类
+类名 | 说明
+-- | -- 
+t-class | 根节点样式类
+t-class-description | 描述样式类
+t-class-image | 图片样式类
+
+### CSS 变量
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-empty-action-margin-top | @spacer-4 | - 
+--td-empty-description-color | @font-gray-3 | - 
+--td-empty-description-font-size | @font-size-base | - 
+--td-empty-description-line-height | 44rpx | - 
+--td-empty-description-margin-top | @spacer-2 | - 
+--td-empty-icon-color | @font-gray-3 | - 

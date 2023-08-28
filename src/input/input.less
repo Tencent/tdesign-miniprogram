@@ -20,6 +20,8 @@
 @input-prefix-icon-color: var(--td-input-prefix-icon-color, @font-gray-1); // // 输入框前缀图标颜色
 @input-suffix-icon-color: var(--td-input-suffix-icon-color, @font-gray-3); // 输入框后缀图标颜色
 @input-label-text-color: var(--td-input-label-text-color, @font-gray-1); // 左侧文本颜色
+@input-label-min-width: var(--td-input-label-min-width, 2em);
+@input-label-max-width: var(--td-input-label-max-width, 5em);
 @input-suffix-text-color: var(--td-input-suffix-text-color, @font-gray-1); // 后置图标前的后置内容文本颜色
 @input-disabled-text-color: var(--td-input-disabled-text-color, @text-color-disabled); // 输入框禁用态文本颜色
 @input-border-radius: var(--td-input-border-radius, @radius-default); // 边框圆角大小
@@ -42,6 +44,7 @@
 
   &--layout-vertical {
     flex-direction: column;
+    align-items: start;
   }
 
   &__wrap--prefix {
@@ -54,12 +57,14 @@
   }
 
   &__label:not(:empty) {
-    min-width: 2em;
-    max-width: 5em;
+    min-width: @input-label-min-width;
+    max-width: @input-label-max-width;
     font-size: @font-size-m;
     line-height: 48rpx;
     color: @input-label-text-color;
     margin-right: @spacer-2;
+    word-wrap: break-word;
+
     .@{prefix}-input--layout-vertical & {
       font-size: @font-size-base;
       padding-bottom: 8rpx;
@@ -79,6 +84,7 @@
   }
 
   &__wrap {
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

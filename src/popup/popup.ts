@@ -29,17 +29,15 @@ export default class Popup extends SuperComponent {
   };
 
   methods = {
-    onStopPropagation() {},
-
     handleOverlayClick() {
       const { closeOnOverlayClick } = this.properties;
       if (closeOnOverlayClick) {
-        this.triggerEvent('visible-change', { visible: false });
+        this.triggerEvent('visible-change', { visible: false, trigger: 'overlay' });
       }
     },
 
     handleClose() {
-      this.triggerEvent('visible-change', { visible: false });
+      this.triggerEvent('visible-change', { visible: false, trigger: 'close-btn' });
     },
   };
 }

@@ -79,33 +79,11 @@ export default class Slider extends SuperComponent {
       this.handlePropsChange(newValue);
     },
     _value(newValue: SliderValue) {
-      const { min, max, range } = this.properties;
-      const { maxRange } = this.data;
-
-      if (range) {
-        const left = (maxRange * (newValue[0] - Number(min))) / (Number(max) - Number(min));
-        const right = (maxRange * (Number(max) - newValue[1])) / (Number(max) - Number(min));
-        // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
-        this.setLineStyle(left, right);
-      } else {
-        this.setSingleBarWidth(newValue as number);
-      }
-
-      this.setData({
-        isVisibleToScreenReader: true,
-      });
-      setTimeout(() => {
-        this.setData({
-          isVisibleToScreenReader: false,
-        });
-      }, 2e3);
+      this.bus.on('initial', () => this.renderLine(newValue));
+      this.toggleA11yTips();
     },
     marks(val) {
-      if (this.data.initialLeft != null) {
-        this.handleMask(val);
-      } else {
-        this.bus.on('initial', () => this.handleMask(val));
-      }
+      this.bus.on('initial', () => this.handleMark(val));
     },
   };
 
@@ -116,11 +94,38 @@ export default class Slider extends SuperComponent {
     attached() {
       const { value } = this.properties;
       if (!value) this.handlePropsChange(0);
-      this.getInitialStyle();
+      this.init();
     },
   };
 
+  toggleA11yTips() {
+    this.setData({
+      isVisibleToScreenReader: true,
+    });
+    setTimeout(() => {
+      this.setData({
+        isVisibleToScreenReader: false,
+      });
+    }, 2000);
+  }
+
+  renderLine(val) {
+    const { min, max, range } = this.properties;
+    const { maxRange } = this.data;
+
+    if (range) {
+      const left = (maxRange * (val[0] - Number(min))) / (Number(max) - Number(min));
+      const right = (maxRange * (Number(max) - val[1])) / (Number(max) - Number(min));
+      // 因为要计算点相对于线的绝对定位，所以要取整条线的长度而非可滑动的范围
+      this.setLineStyle(left, right);
+    } else {
+      this.setSingleBarWidth(val as number);
+    }
+  }
+
   triggerValue(value?: SliderValue) {
+    if (this.preval === value) return;
+    this.preval = value;
     this._trigger('change', {
       value: trimValue(value, this.properties),
     });
@@ -137,22 +142,22 @@ export default class Slider extends SuperComponent {
 
     // 基本样式未初始化，等待初始化后在改变数据。
     if (this.data.maxRange === 0) {
-      this.getInitialStyle().then(setValueAndTrigger);
+      this.init().then(setValueAndTrigger);
       return;
     }
 
     setValueAndTrigger();
   }
 
-  handleMask(marks: any) {
+  handleMark(marks: any) {
     const calcPos = (arr: number[]) => {
-      const { theme } = this.properties;
+      const { max, theme } = this.properties;
       const { blockSize, maxRange } = this.data;
       const margin = (theme as any) === 'capsule' ? blockSize / 2 : 0;
 
       return arr.map((item) => ({
         val: item,
-        left: Math.round((item / 100) * maxRange) + margin,
+        left: Math.round((item / Number(max)) * maxRange) + margin,
       }));
     };
     if (marks?.length && Array.isArray(marks)) {
@@ -187,7 +192,7 @@ export default class Slider extends SuperComponent {
     });
   }
 
-  async getInitialStyle() {
+  async init() {
     const line: boundingClientRect = await getRect(this, '#sliderLine');
     const { blockSize } = this.data;
     const { theme } = this.properties;
@@ -195,6 +200,8 @@ export default class Slider extends SuperComponent {
     let maxRange = line.right - line.left;
     let initialLeft = line.left;
     let initialRight = line.right;
+
+    if (initialLeft === 0 && initialRight === 0) return;
 
     if ((theme as any) === 'capsule') {
       maxRange = maxRange - Number(blockSize) - 6; // 6 是边框宽度
@@ -212,11 +219,12 @@ export default class Slider extends SuperComponent {
 
   stepValue(value: number): number {
     const { step, min, max } = this.properties;
-
-    if (Number(step) < 1 || Number(step) > Number(max) - Number(min)) return value;
-
-    const closestStep = trimSingleValue(Math.round(value / Number(step)) * Number(step), Number(min), Number(max));
-
+    const decimal = String(step).indexOf('.') > -1 ? String(step).length - String(step).indexOf('.') - 1 : 0;
+    const closestStep = trimSingleValue(
+      Number((Math.round(value / Number(step)) * Number(step)).toFixed(decimal)),
+      Number(min),
+      Number(max),
+    );
     return closestStep as number;
   }
 
@@ -236,13 +244,12 @@ export default class Slider extends SuperComponent {
     const { pageX } = touch;
     const currentLeft = pageX - initialLeft;
     let value = 0;
-
     if (currentLeft <= 0) {
       value = Number(min);
     } else if (currentLeft >= maxRange) {
       value = Number(max);
     } else {
-      value = Math.round((currentLeft / maxRange) * (Number(max) - Number(min)) + Number(min));
+      value = (currentLeft / maxRange) * (Number(max) - Number(min)) + Number(min);
     }
     return this.stepValue(value);
   }
@@ -295,6 +302,10 @@ export default class Slider extends SuperComponent {
         this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
       }
     });
+  }
+
+  onTouchStart(e: WechatMiniprogram.TouchEvent) {
+    this.triggerEvent('dragstart', { e });
   }
 
   onTouchMoveLeft(e: WechatMiniprogram.TouchEvent) {
@@ -355,5 +366,7 @@ export default class Slider extends SuperComponent {
     }
   }
 
-  onTouchEnd() {}
+  onTouchEnd(e: WechatMiniprogram.TouchEvent) {
+    this.triggerEvent('dragend', { e });
+  }
 }

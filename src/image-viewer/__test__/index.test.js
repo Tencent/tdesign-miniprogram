@@ -1,5 +1,5 @@
-import simulate from 'miniprogram-simulate';
 import path from 'path';
+import simulate from 'miniprogram-simulate';
 
 describe('image-viewer', () => {
   const imageViewer = load(path.resolve(__dirname, `../image-viewer`), 't-image-viewer');

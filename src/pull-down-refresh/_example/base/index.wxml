@@ -1,8 +1,8 @@
 <t-pull-down-refresh
-  value="{{baseRefresh.value}}"
+  value="{{enable}}"
   loadingProps="{{loadingProps}}"
   loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
-  bind:refresh="onPullDownRefresh"
+  bind:refresh="onRefresh"
   bind:scroll="onScroll"
 >
   <!-- 包裹页面全部内容 -->

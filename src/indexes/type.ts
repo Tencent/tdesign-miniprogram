@@ -17,7 +17,7 @@ export interface TdIndexesProps {
    * 索引字符列表。不传默认 `A-Z`
    */
   indexList?: {
-    type: ArrayConstructor;
+    type: null;
     value?: string[] | number[];
   };
   /**

@@ -2,7 +2,7 @@
 
 <view style="{{_._style([style, customStyle])}}" class="class {{classPrefix}} {{prefix}}-class">
   <view
-    class="{{classPrefix}}__input-box {{prefix}}-{{localValue.focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center ? 'center' : ''}} {{classPrefix}}__input-box--{{shape}} {{prefix}}-class-input-container"
+    class="{{classPrefix}}__input-box {{prefix}}-{{focus ? 'is-focused' : 'not-focused'}} {{classPrefix}}__input-box--{{center ? 'center' : ''}} {{classPrefix}}__input-box--{{shape}} {{prefix}}-class-input-container"
   >
     <!-- <view wx:if="{{label}}" class="{{classPrefix}}__label {{prefix}}-class-label">{{label}}</view>
     <slot name="label" /> -->
@@ -15,15 +15,25 @@
     />
     <slot name="left-icon" />
     <input
-      type="text"
+      type="{{type}}"
       name="input"
+      maxlength="{{maxlength}}"
       disabled="{{disabled}}"
       class="{{prefix}}-input__keyword {{prefix}}-class-input"
-      focus="{{localValue.focus}}"
+      focus="{{focus}}"
       value="{{value}}"
-      confirm-type="search"
+      confirm-type="{{confirmType}}"
+      confirm-hold="{{confirmHold}}"
+      cursor="{{cursor}}"
+      adjust-position="{{adjustPosition}}"
+      always-embed="{{alwaysEmbed}}"
+      selection-start="{{selectionStart}}"
+      selection-end="{{selectionEnd}}"
+      hold-keyboard="{{holdKeyboard}}"
+      cursor-spacing="{{cursorSpacing}}"
       placeholder="{{placeholder}}"
-      placeholder-class="{{classPrefix}}__placeholder {{classPrefix}}__placeholder--{{center ? 'center': 'normal'}}"
+      placeholder-style="{{placeholderStyle}}"
+      placeholder-class="{{placeholderClass}} {{classPrefix}}__placeholder {{classPrefix}}__placeholder--{{center ? 'center': 'normal'}}"
       bind:input="onInput"
       bind:focus="onFocus"
       bind:blur="onBlur"
@@ -32,7 +42,7 @@
     <view
       wx:if="{{value !=='' && clearable}}"
       class="{{classPrefix}}__clear {{prefix}}-class-clear"
-      bind:tap="handleClear"
+      catch:tap="handleClear"
       aria-role="button"
       aria-label="清除"
     >
@@ -42,7 +52,7 @@
   <view
     wx:if="{{action}}"
     class="{{classPrefix}}__search-action {{prefix}}-class-action"
-    bindtap="onActionClick"
+    catch:tap="onActionClick"
     aria-role="button"
   >
     {{action}}

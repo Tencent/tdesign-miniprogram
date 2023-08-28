@@ -43,7 +43,7 @@
           <block wx:if="{{image && image != 'slot'}}">
             <template
               is="image"
-              data="{{ src: image, shape: 'round', mode: 'widthFix', tClass: _.cls(classPrefix + '__image', [util.getImageSize(column)]), ...imageProps }}"
+              data="{{ src: image, shape: 'round', mode: 'widthFix', tClass: _.cls(classPrefix + '__image', [util.getImageSize(column)]) + ' ' + prefix + '-class-image', ...imageProps }}"
             />
           </block>
           <slot name="image" />

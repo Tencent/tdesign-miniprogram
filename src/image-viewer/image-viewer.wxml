@@ -5,7 +5,7 @@
   wx:if="{{visible}}"
   id="{{classPrefix}}"
   class="{{classPrefix}} class {{prefix}}-class"
-  style="{{_._style([style, customStyle])}}"
+  style="{{_._style([style, customStyle, '--td-image-viewer-top: ' + maskTop + 'px'])}}"
 >
   <view
     class="{{classPrefix}}__mask"

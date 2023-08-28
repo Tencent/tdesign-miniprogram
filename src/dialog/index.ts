@@ -37,7 +37,7 @@ interface DialogActionOptionsType {
 }
 
 const defaultOptions = {
-  actions: false,
+  actions: [],
   buttonLayout: props.buttonLayout.value,
   cancelBtn: props.cancelBtn.value,
   closeOnOverlayClick: props.closeOnOverlayClick.value,

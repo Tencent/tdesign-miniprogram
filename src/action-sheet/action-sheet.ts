@@ -22,6 +22,8 @@ export default class ActionSheet extends SuperComponent {
     classPrefix: name,
     gridThemeItems: [],
     currentSwiperIndex: 0,
+    defaultPopUpProps: {},
+    defaultPopUpzIndex: 11500,
   };
 
   controlledProps = [
@@ -96,15 +98,23 @@ export default class ActionSheet extends SuperComponent {
       const isSwiperMode = theme === ActionSheetTheme.Grid;
       const item = isSwiperMode ? gridThemeItems[currentSwiperIndex][index] : items[index];
       const realIndex = isSwiperMode ? index + currentSwiperIndex * count : index;
+
       if (item) {
         this.triggerEvent('selected', { selected: item, index: realIndex });
-        this.triggerEvent('close', { trigger: 'select' });
-        this._trigger('visible-change', { visible: false });
+
+        if (!item.disabled) {
+          this.triggerEvent('close', { trigger: 'select' });
+          this._trigger('visible-change', { visible: false });
+        }
       }
     },
 
     onCancel() {
       this.triggerEvent('cancel');
+      if (this.autoClose) {
+        this.setData({ visible: false });
+        this.autoClose = false;
+      }
     },
   };
 }
