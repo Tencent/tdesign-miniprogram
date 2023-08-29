@@ -2,6 +2,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <button
+  id="{{tId}}"
   style="{{_._style([style, customStyle])}}"
   data-custom="{{ customDataset }}"
   class="class {{className}}"
@@ -26,6 +27,7 @@
   bind:opensetting="opensetting"
   bind:launchapp="launchapp"
   bind:chooseavatar="chooseavatar"
+  bind:agreeprivacyauthorization="agreeprivacyauthorization"
   aria-label="{{ariaLabel}}"
 >
   <template

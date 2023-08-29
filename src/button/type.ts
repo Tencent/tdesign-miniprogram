@@ -8,6 +8,11 @@ import { LoadingProps } from '../loading/index';
 import { SizeEnum } from '../common/common';
 
 export interface TdButtonProps {
+    /**按钮id */
+    tId?: {
+      type: StringConstructor;
+      value?: string;
+    };
   /**
    * 是否为块级元素
    * @default false
@@ -127,7 +132,8 @@ export interface TdButtonProps {
       | 'launchApp'
       | 'openSetting'
       | 'feedback'
-      | 'chooseAvatar';
+      | 'chooseAvatar'
+      | 'agreePrivacyAuthorization';
   };
   /**
    * 指定按钮按下去的样式类，按钮不为加载或禁用状态时有效。当 `hover-class="none"` 时，没有点击态效果
