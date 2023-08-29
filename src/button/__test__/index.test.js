@@ -114,6 +114,6 @@ describe('button', () => {
 
     $btn.dispatchEvent('agreeprivacyauthorization');
     await simulate.sleep(10);
-    expect(handler).toHaveBeenCalledTimes(14);
+    expect(handler).toHaveBeenCalledTimes(16);
   });
 });
