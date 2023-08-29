@@ -1,0 +1,4 @@
+<view class="demo-rate">
+  <view class="demo-rate__title">自定义icon前缀</view>
+  <t-rate value="{{value}}" iconPrefix="icon" icon="a-1h" bind:change="onChange" />
+</view>

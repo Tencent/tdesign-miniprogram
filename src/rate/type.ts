@@ -60,6 +60,14 @@ export interface TdRateProps {
     value?: string | number;
   };
   /**
+   * 自定义图标前缀
+   */
+  iconPrefix?: {
+    type: StringConstructor;
+    value?: string;
+    reuqired?: boolean;
+  };
+  /**
    * 自定义评分图标，[选中图标，未选中图标]
    */
   icon?: {
