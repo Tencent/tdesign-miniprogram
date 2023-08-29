@@ -3,7 +3,6 @@
 <!-- TODO:
 ARIA:
 1. siwper control
-2. mask-close
 -->
 <view
   wx:if="{{visible}}"
@@ -18,10 +17,15 @@ ARIA:
   <view
     class="{{classPrefix}}__mask"
     data-source="overlay"
+    bind:tap="onClose"
+    style="{{ 'background-color: ' + backgroundColor }}"
+    aria-hidden="{{true}}"
+  />
+  <view
+    wx:if="{{!_closeBtn}}"
+    class="{{classPrefix}}__mask-bottom"
     data-type="tap"
     bind:tap="onClose"
-    tabindex="0"
-    style="{{ 'background-color: ' + backgroundColor }}"
     aria-role="button"
     aria-label="关闭图片查看器"
   />
@@ -33,6 +37,7 @@ ARIA:
         autoplay="{{false}}"
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
+        tabindex="0"
       >
         <swiper-item
           wx:for="{{images}}"
