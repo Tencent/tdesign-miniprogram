@@ -8,7 +8,7 @@
     <view class="demo-desc">自定义评分</view>
     <custom />
 
-    <view class="demo-desc">自定义icon前缀评分(适配自有图标库)</view>
+    <view class="demo-desc">第三方图标评分</view>
     <custom-prefix />
 
     <view class="demo-desc">自定义评分数量</view>
