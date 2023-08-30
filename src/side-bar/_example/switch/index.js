@@ -47,6 +47,6 @@ Page({
   onSideBarChange(e) {
     const { value } = e.detail;
 
-    this.setData({ sideBarIndex: value });
+    this.setData({ sideBarIndex: value, scrollTop: 0 });
   },
 });

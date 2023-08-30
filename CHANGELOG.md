@@ -5,6 +5,20 @@ toc: false
 docClass: timeline
 ---
 
+   ## 🌈 1.2.2 `2023-08-29` 
+### 🚀 Features
+- `Rate`: 支持第三方图标 @lixingdecai ([#2328](https://github.com/Tencent/tdesign-miniprogram/pull/2328))
+- `Button`: 新增 `t-id` 属性，相等于 `id` @HellyW ([#2320](https://github.com/Tencent/tdesign-miniprogram/pull/2320))
+- `Button`: 属性 `open-type` 新增支持 `agreePrivacyAuthorization` @HellyW ([#2320](https://github.com/Tencent/tdesign-miniprogram/pull/2320))
+
+### 🐞 Bug Fixes
+- `Stepper`: 修复无法输出小数的问题 @LeeJim ([#2314](https://github.com/Tencent/tdesign-miniprogram/pull/2314))
+- `Stepper`: 修复输入小数后增减的精度问题 @LeeJim ([#2314](https://github.com/Tencent/tdesign-miniprogram/pull/2314))
+- `TreeSelect`: 解决异步 options 导致无法渲染的问题 @LeeJim ([#2315](https://github.com/Tencent/tdesign-miniprogram/pull/2315))
+- `TreeSelect`: 解决异步数据导致的报错问题 @LeeJim ([#2315](https://github.com/Tencent/tdesign-miniprogram/pull/2315))
+- `ActionSheet`: 移除未使用的组件 @betavs ([#2318](https://github.com/Tencent/tdesign-miniprogram/pull/2318))
+- `SideBar`: 修复示例滚动问题 @betavs ([#2325](https://github.com/Tencent/tdesign-miniprogram/pull/2325))
+
   ## 🌈 1.2.1 `2023-08-22` 
 ### 🚀 Features
 - `Radio`: 新增 `readonly` 属性 @betavs ([#2292](https://github.com/Tencent/tdesign-miniprogram/pull/2292))

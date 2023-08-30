@@ -38,9 +38,9 @@ exports[`stepper event : input 1`] = `
       style=""
       type="number"
       value="{{4}}"
-      catch:blur="blurHandle"
-      catch:focus="focusHandle"
-      catch:input="inputHandle"
+      catch:blur="handleBlur"
+      catch:focus="handleFocus"
+      catch:input="handleInput"
     />
   </wx-view>
   <wx-view
@@ -108,9 +108,9 @@ exports[`stepper event : input 2`] = `
       style=""
       type="number"
       value="{{4}}"
-      catch:blur="blurHandle"
-      catch:focus="focusHandle"
-      catch:input="inputHandle"
+      catch:blur="handleBlur"
+      catch:focus="handleFocus"
+      catch:input="handleInput"
     />
   </wx-view>
   <wx-view

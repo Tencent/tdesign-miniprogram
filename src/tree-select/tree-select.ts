@@ -30,7 +30,7 @@ export default class TreeSelect extends SuperComponent {
   ];
 
   observers = {
-    value() {
+    'value, options, keys, multiple'() {
       this.buildTreeOptions();
     },
   };
@@ -41,6 +41,8 @@ export default class TreeSelect extends SuperComponent {
       const treeOptions = [];
       let level = -1;
       let node = { children: options };
+
+      if (options.length === 0 || (Array.isArray(value) && value.length === 0)) return;
 
       while (node && node.children) {
         level += 1;

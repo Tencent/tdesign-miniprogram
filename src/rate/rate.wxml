@@ -24,6 +24,7 @@
       t-class="{{prefix}}-class-icon"
       name="{{utils.getIconName(defaultValue, value, index, icon)}}"
       size="{{ size }}"
+      prefix="{{iconPrefix}}"
     />
   </view>
   <text

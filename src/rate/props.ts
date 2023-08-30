@@ -34,6 +34,11 @@ const props: TdRateProps = {
     type: null,
     value: 8,
   },
+  /** 自定义图标前缀 */
+  iconPrefix: {
+    type: String,
+    value: undefined,
+  },
   /** 自定义评分图标，[选中图标，未选中图标] */
   icon: {
     type: null,

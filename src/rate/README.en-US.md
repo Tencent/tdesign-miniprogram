@@ -17,6 +17,7 @@ size | String | 24px | \- | N
 texts | Array | [] | Typescript：`Array<string>` | N
 value | Number | 0 | \- | N
 default-value | Number | undefined | uncontrolled property | N
+iconPrefix | String  | undefined | icon prefix | N        
 variant | String | outline | options：outline/filled | N
 
 ### Rate Events

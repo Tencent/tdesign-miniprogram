@@ -3,6 +3,7 @@
   "usingComponents": {
     "base": "./base",
     "custom": "./custom",
+    "custom-prefix": "./custom-prefix",
     "special": "./special",
     "un-filled": "./un-filled",
     "count": "./count",
