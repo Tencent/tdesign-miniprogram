@@ -1,9 +1,5 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
-<!-- TODO:
-ARIA:
-1. siwper control
--->
 <view
   wx:if="{{visible}}"
   id="{{classPrefix}}"
@@ -19,15 +15,8 @@ ARIA:
     data-source="overlay"
     bind:tap="onClose"
     style="{{ 'background-color: ' + backgroundColor }}"
-    aria-hidden="{{true}}"
-  />
-  <view
-    wx:if="{{!_closeBtn}}"
-    class="{{classPrefix}}__mask-bottom"
-    data-type="tap"
-    bind:tap="onClose"
     aria-role="button"
-    aria-label="关闭图片查看器"
+    aria-label="关闭"
   />
   <block wx:if="{{images && images.length}}">
     <view class="{{classPrefix}}__content">
@@ -37,6 +26,7 @@ ARIA:
         autoplay="{{false}}"
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
+        bindtap="onClose"
         tabindex="0"
       >
         <swiper-item
