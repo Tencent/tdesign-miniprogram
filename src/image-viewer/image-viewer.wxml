@@ -1,5 +1,6 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
+
 <view
   wx:if="{{visible}}"
   id="{{classPrefix}}"
@@ -7,7 +8,6 @@
   style="{{_._style([style, customStyle, '--td-image-viewer-top: ' + maskTop + 'px'])}}"
   aria-modal="{{true}}"
   aria-role="dialog"
-  aria-live="polite"
   aria-label="图片查看器"
 >
   <view
