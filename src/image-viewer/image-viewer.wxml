@@ -29,12 +29,7 @@
         bindtap="onClose"
         tabindex="0"
       >
-        <swiper-item
-          wx:for="{{images}}"
-          wx:key="index"
-          class="{{classPrefix}}__preview-image"
-          aria-hidden="{{currentSwiperIndex !== index}}"
-        >
+        <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
             t-class="t-image--external"
             style="{{imagesStyle[index].style || ''}}"
