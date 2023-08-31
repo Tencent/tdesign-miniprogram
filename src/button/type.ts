@@ -8,11 +8,11 @@ import { LoadingProps } from '../loading/index';
 import { SizeEnum } from '../common/common';
 
 export interface TdButtonProps {
-    /**按钮id */
-    tId?: {
-      type: StringConstructor;
-      value?: string;
-    };
+  /** 按钮id */
+  tId?: {
+    type: StringConstructor;
+    value?: string;
+  };
   /**
    * 是否为块级元素
    * @default false
