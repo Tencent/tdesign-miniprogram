@@ -5,10 +5,11 @@
  * */
 
 import { TdButtonProps } from './type';
-const props: TdButtonProps = { 
-   /**按钮id */
+const props: TdButtonProps = {
+  /** 按钮id */
   tId: {
     type: String,
+    value: '',
   },
   /** 是否为块级元素 */
   block: {
