@@ -33,6 +33,7 @@
     bind:error="onTplButtonTap"
     bind:opensetting="onTplButtonTap"
     bind:launchapp="onTplButtonTap"
+    bind:agreeprivacyauthorization="onTplButtonTap"
     aria-label="{{ariaLabel || ''}}"
     >{{content}}</t-button
   >
