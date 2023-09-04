@@ -6,12 +6,17 @@
   id="{{classPrefix}}"
   class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style([style, customStyle, '--td-image-viewer-top: ' + maskTop + 'px'])}}"
+  aria-modal="{{true}}"
+  aria-role="dialog"
+  aria-label="图片查看器"
 >
   <view
     class="{{classPrefix}}__mask"
     data-source="overlay"
     bind:tap="onClose"
     style="{{ 'background-color: ' + backgroundColor }}"
+    aria-role="button"
+    aria-label="关闭"
   />
   <block wx:if="{{images && images.length}}">
     <view class="{{classPrefix}}__content">
@@ -21,6 +26,8 @@
         autoplay="{{false}}"
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
+        bindtap="onClose"
+        tabindex="0"
       >
         <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
@@ -37,7 +44,7 @@
       </swiper>
     </view>
     <view class="{{classPrefix}}__nav">
-      <view class="{{classPrefix}}__nav-close" catch:tap="onClose">
+      <view class="{{classPrefix}}__nav-close" catch:tap="onClose" aria-role="button" aria-label="关闭">
         <slot name="close-btn" />
         <template wx:if="{{_closeBtn}}" is="icon" data="{{ ..._closeBtn }}" />
       </view>
@@ -46,7 +53,7 @@
         {{currentSwiperIndex + 1}}/{{images.length}}
       </view>
 
-      <view class="{{classPrefix}}__nav-delete" bind:tap="onDelete">
+      <view class="{{classPrefix}}__nav-delete" bind:tap="onDelete" aria-role="button" aria-label="删除">
         <slot name="delete-btn" />
         <template is="icon" data="{{ ..._deleteBtn }}" />
       </view>
