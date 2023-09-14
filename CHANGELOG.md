@@ -5,6 +5,16 @@ toc: false
 docClass: timeline
 ---
 
+    ## 🌈 1.2.3 `2023-09-14` 
+
+### 🚀 Features
+- `ImageViewer`：支持无障碍访问
+
+### 🐞 Bug Fixes
+- `Button`: `t-id`属性没有默认值导致控制台警告问题 @betavs ([#2337](https://github.com/Tencent/tdesign-miniprogram/pull/2337))
+- `Dialog`: 修复隐私协议接口 bindagreeprivacyauthorization 回调信息丢失问题 @ElanYoung ([#2342](https://github.com/Tencent/tdesign-miniprogram/pull/2342))
+ 
+
    ## 🌈 1.2.2 `2023-08-29` 
 ### 🚀 Features
 - `Rate`: 支持第三方图标 @lixingdecai ([#2328](https://github.com/Tencent/tdesign-miniprogram/pull/2328))
