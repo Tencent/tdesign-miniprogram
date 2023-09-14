@@ -142,7 +142,7 @@ t-class-label | 标题样式类
 t-class-input | 标题样式类
 t-class-clearable | 标题样式类
 t-class-suffix | 后置样式类
-t-class-suffix-icon` | 后置图标样式类
+t-class-suffix-icon | 后置图标样式类
 t-class-tips | 提示样式类
 
 ### CSS 变量

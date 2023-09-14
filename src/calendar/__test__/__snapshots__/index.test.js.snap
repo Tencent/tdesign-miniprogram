@@ -739,6 +739,7 @@ exports[`calendar :base 1`] = `
                 data-extra=""
                 data-type=""
                 tClass=""
+                bind:agreeprivacyauthorization="onTplButtonTap"
                 bind:contact="onTplButtonTap"
                 bind:error="onTplButtonTap"
                 bind:getphonenumber="onTplButtonTap"
