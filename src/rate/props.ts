@@ -68,6 +68,14 @@ const props: TdRateProps = {
     type: Number,
     value: 0,
   },
+  /**
+   * 选择评分弹框的位置
+   * @default top
+   */
+  placement: {
+    type: String,
+    value: 'top',
+  },
 };
 
 export default props;
