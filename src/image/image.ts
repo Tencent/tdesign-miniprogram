@@ -25,14 +25,7 @@ export default class Image extends SuperComponent {
 
   preSrc = ''; // 保留上一次的src,防止在src相同时重复update
 
-  lifetimes = {
-    attached() {
-      const { width, height } = this.data;
-
-      this.update();
-      this.calcSize(width, height);
-    },
-  };
+  lifetimes = {};
 
   observers = {
     src() {
