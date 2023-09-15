@@ -30,8 +30,8 @@ export default class Picker extends SuperComponent {
     },
     keys(obj) {
       this.setData({
-        labelAlias: obj.label || 'label',
-        valueAlias: obj.value || 'value',
+        labelAlias: obj?.label || 'label',
+        valueAlias: obj?.value || 'value',
       });
     },
   };
