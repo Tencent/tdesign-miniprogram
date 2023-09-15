@@ -69,11 +69,17 @@ npm run dev
 
 最低基础库版本`^2.6.5`
 
-## 团队成员
+## 贡献成员
 
 <a href="https://github.com/tencent/tdesign-miniprogram/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=tencent/tdesign-miniprogram" />
 </a>
+
+## 反馈
+
+有任何问题，建议通过 [Github issues](https://github.com/Tencent/tdesign-miniprogram/issues) 反馈或扫码加入用户微信群。
+
+<img src="https://oteam-tdesign-1258344706.cos.ap-guangzhou.myqcloud.com/qrcode/miniprogram-wecom.jpg" width="200" />
 
 ## 开源协议
 

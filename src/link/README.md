@@ -88,7 +88,7 @@ t-class | 根节点样式类
 t-class-hover | 悬停样式类
 t-class-prefix-icon | 前置图标样式类
 t-class-content | 内容样式类
-t-class-suffix-icon` | 后置图标样式类
+t-class-suffix-icon | 后置图标样式类
 
 ### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。
