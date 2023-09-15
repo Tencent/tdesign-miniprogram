@@ -12,6 +12,13 @@ external-classes | Array | - | `['t-class', 't-class-item', 't-class-label', 't-
 show-overlay | Boolean | true | \- | N
 z-index | Number | 11600 | \- | N
 
+### DropdownMenu Events
+
+name | params | description
+-- | -- | --
+open | \- | \-
+close | \- | \-
+
 ### DropdownItem Props
 
 name | type | default | description | required

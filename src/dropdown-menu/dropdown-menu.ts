@@ -44,6 +44,10 @@ export default class DropdownMenu extends SuperComponent {
         _arrowIcon: calcIcon(v),
       });
     },
+
+    activeIdx(v: number) {
+      this.triggerEvent(v === -1 ? 'close' : 'open');
+    },
   };
 
   methods = {
