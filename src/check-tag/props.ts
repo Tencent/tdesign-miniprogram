@@ -16,7 +16,7 @@ const props: TdCheckTagProps = {
     type: null,
     value: undefined,
   },
-  /** 已废弃。标签是否可关闭 */
+  /** 标签是否可关闭 */
   closable: {
     type: Boolean,
     value: false,

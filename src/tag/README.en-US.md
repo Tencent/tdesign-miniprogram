@@ -28,7 +28,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 checked | Boolean | undefined | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
-closable | Boolean | false | `deprecated` | N
+closable | Boolean | false | \- | N
 content | String / Number / Array / Slot | - | Typescript：`string \| number \| string[]` | N
 disabled | Boolean | false | \- | N
 external-classes | Array | - | `['t-class']` | N
@@ -43,6 +43,7 @@ name | params | description
 -- | -- | --
 change | `(checked: boolean)` | \-
 click | - | \-
+close | - | \-
 
 
 ### CSS Variables

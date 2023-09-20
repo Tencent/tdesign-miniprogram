@@ -73,5 +73,10 @@ export default class CheckTag extends SuperComponent {
       this._trigger('click');
       this._trigger('change', { checked: !checked });
     },
+
+    onClose(e: WechatMiniprogram.BaseEvent) {
+      if (this.data.disabled) return;
+      this._trigger('close', e);
+    },
   };
 }
