@@ -78,7 +78,7 @@ closable | Boolean | false | 已废弃。标签是否可关闭 | N
 content | String / Number / Array / Slot | - | 组件子元素；传入数组时：[选中内容，非选中内容]。TS 类型：`string \| number \| string[]` | N
 disabled | Boolean | false | 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 | N
 icon | String / Object / Slot | - | 标签图标 | N
-shape | String | square | 已废弃。标签类型，有三种：方形、圆角方形、标记型。可选项：square/round/mark | N
+shape | String | square | 标签类型，有三种：方形、圆角方形、标记型。可选项：square/round/mark | N
 size | String | medium | 标签尺寸。可选项：small/medium/large。TS 类型：`SizeEnum` | N
 variant | String | dark | `0.26.0`。标签风格变体。可选项：dark/light/outline/light-outline | N
 

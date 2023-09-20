@@ -33,7 +33,7 @@ content | String / Number / Array / Slot | - | Typescript：`string \| number \|
 disabled | Boolean | false | \- | N
 external-classes | Array | - | `['t-class']` | N
 icon | String / Object / Slot | - | \- | N
-shape | String | square | `deprecated`。options：square/round/mark | N
+shape | String | square | options：square/round/mark | N
 size | String | medium | options：small/medium/large。Typescript：`SizeEnum` | N
 variant | String | dark | `0.26.0`。options：dark/light/outline/light-outline | N
 
