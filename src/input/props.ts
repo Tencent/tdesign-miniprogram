@@ -26,6 +26,11 @@ const props: TdInputProps = {
     type: null,
     value: false,
   },
+  /** 清空图标触发方式 */
+  clearTrigger: {
+    type: String,
+    value: 'always',
+  },
   /** 是否禁用输入框 */
   disabled: {
     type: Boolean,
