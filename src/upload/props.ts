@@ -19,6 +19,11 @@ const props: TdUploadProps = {
   config: {
     type: Object,
   },
+  /** 禁用状态 */
+  disabled: {
+    type: Boolean,
+    value: false,
+  },
   /** 已上传文件列表 */
   files: {
     type: Array,
