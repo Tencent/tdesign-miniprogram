@@ -10,8 +10,13 @@
             <img class="qrcode" :src="qrcode" />
             <!-- <img class="qrcode" :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" /> -->
           </div>
-          <iframe :src="liveUrl" frameborder="0" width="100%" height="100%"
-            style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden; border-top: 8px solid #f8f8f8"></iframe>
+          <iframe
+            :src="liveUrl"
+            frameborder="0"
+            width="100%"
+            height="100%"
+            style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden; border-top: 8px solid #f8f8f8"
+          ></iframe>
         </td-doc-phone>
         <td-contributors platform="miniprogram" framework="wx" :component-name="name"></td-contributors>
       </div>
@@ -57,7 +62,7 @@ export default defineComponent({
       return path.slice(path.lastIndexOf('/') + 1);
     },
     liveUrl() {
-      return `/miniprogram-live/m2w/program/miniprogram/#!pages/${this.name}/${this.name}.html`;
+      return `//tdesign.tencent.com/miniprogram-live/m2w/program/miniprogram/#!pages/${this.name}/${this.name}.html`;
     },
     qrcode() {
       const { path } = this.$route;
@@ -108,7 +113,7 @@ export default defineComponent({
       filter: unset;
     }
 
-    div[name='DEMO'] &+pre {
+    div[name='DEMO'] & + pre {
       margin-top: 0;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
