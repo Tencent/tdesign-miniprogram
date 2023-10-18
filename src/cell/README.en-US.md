@@ -39,6 +39,7 @@ Name | Default Value | Description
 --td-cell-group-title-padding-left | 32rpx | - 
 --td-cell-bg-color | @bg-color-container | - 
 --td-cell-border-color | @component-stroke | - 
+--td-cell-border-width | 1px | - 
 --td-cell-border-left-space | @cell-horizontal-padding | - 
 --td-cell-border-right-space | 0 | - 
 --td-cell-description-color | @font-gray-2 | - 

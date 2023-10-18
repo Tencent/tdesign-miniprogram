@@ -7,6 +7,7 @@
 @cell-bg-color: var(--td-cell-bg-color, @bg-color-container);
 @cell-hover-color: var(--td-cell-hover-color, @bg-color-secondarycontainer);
 @cell-border-color: var(--td-cell-border-color, @component-stroke);
+@cell-border-width: var(--td-cell-border-width, 1px);
 @cell-border-left-space: var(--td-cell-border-left-space, @cell-horizontal-padding);
 @cell-border-right-space: var(--td-cell-border-right-space, 0);
 @cell-description-color: var(--td-cell-description-color, @font-gray-2);
@@ -37,7 +38,7 @@
   background-color: @cell-bg-color;
 
   &::after {
-    .hairline-bottom(@cell-border-color);
+    .hairline-bottom(@cell-border-color, @cell-border-width);
     left: @cell-border-left-space;
     right: @cell-border-right-space;
   }
