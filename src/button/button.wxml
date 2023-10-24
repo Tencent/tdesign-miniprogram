@@ -33,7 +33,7 @@
   <template
     wx:if="{{iconName || _.isNoEmptyObj(iconData)}}"
     is="icon"
-    data="{{class: classPrefix + '__icon', tClass: prefix + '-class-icon', ariaHidden: true, name: iconName, ...iconData}}"
+    data="{{cls: classPrefix + '__icon', tClass: prefix + '-class-icon', ariaHidden: true, name: iconName, ...iconData}}"
   />
   <t-loading
     wx:if="{{loading}}"

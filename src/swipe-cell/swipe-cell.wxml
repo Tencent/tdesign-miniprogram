@@ -32,7 +32,7 @@
         <template
           wx:if="{{item.icon}}"
           is="icon"
-          data="{{class: classPrefix + '__icon', name: item.icon, ...item.icon}}"
+          data="{{cls: classPrefix + '__icon', name: item.icon, ...item.icon}}"
         ></template>
         <text wx:if="{{item.text}}" class="{{classPrefix}}__text">{{item.text}}</text>
       </view>
@@ -51,7 +51,7 @@
         <template
           wx:if="{{item.icon}}"
           is="icon"
-          data="{{class: classPrefix + '__icon', name: item.icon, ...item.icon}}"
+          data="{{cls: classPrefix + '__icon', name: item.icon, ...item.icon}}"
         ></template>
         <text wx:if="{{item.text}}" class="{{classPrefix}}__text">{{item.text}}</text>
       </view>
