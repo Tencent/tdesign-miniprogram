@@ -26,11 +26,17 @@ export default class BackTop extends SuperComponent {
     prefix,
     classPrefix: name,
     _icon: null,
+    hidden: true,
   };
 
   observers = {
     icon() {
       this.setIcon();
+    },
+
+    scrollTop(value: number) {
+      const { visibilityHeight } = this.properties;
+      this.setData({ hidden: value < visibilityHeight });
     },
   };
 
@@ -52,6 +58,7 @@ export default class BackTop extends SuperComponent {
       this.triggerEvent('to-top');
       if (this.$parent) {
         this.$parent?.setScrollTop(0);
+        this.setData({ hidden: true });
       } else {
         wx.pageScrollTo({
           scrollTop: 0,
