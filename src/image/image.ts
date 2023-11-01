@@ -25,8 +25,6 @@ export default class Image extends SuperComponent {
 
   preSrc = ''; // 保留上一次的src,防止在src相同时重复update
 
-  lifetimes = {};
-
   observers = {
     src() {
       if (this.preSrc === this.properties.src) return;
