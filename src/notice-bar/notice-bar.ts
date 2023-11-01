@@ -183,7 +183,8 @@ export default class NoticeBar extends SuperComponent {
     },
 
     onChange(e: WechatMiniprogram.SwiperChange) {
-      this.triggerEvent('change', { ...e.detail });
+      const { current, source } = e.detail;
+      this.triggerEvent('change', { current, source });
     },
 
     clickPrefixIcon() {
