@@ -17,6 +17,11 @@ Page({
         url: `/pages/${str.page}/${str.page}`,
       });
     }
+    this.trdPrivacy = this.selectComponent('#trdPrivacy');
+  },
+
+  showPrivacyWin() {
+    this.trdPrivacy.showPrivacyWin();
   },
 
   clickHandle(e) {

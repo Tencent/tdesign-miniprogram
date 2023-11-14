@@ -12,3 +12,9 @@
     bind:click="clickHandle"
   />
 </view>
+
+<view class="footer">
+  <view class="show_privacy" bindtap="showPrivacyWin">《TDesign组件库服务声明》</view>
+  <t-footer text="Copyright © 1998 - 2023 Tencent. All Rights Reserved. 腾讯公司 版权所有"></t-footer>
+</view>
+<trd-privacy id="trdPrivacy" name="TDesign组件库" date="2023年11月14日" winStyle="{{winStyle}}"></trd-privacy>
