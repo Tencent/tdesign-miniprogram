@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "pull-down-list": "../../components/pull-down-list/index"
+    "trd-privacy": "/components/trd-privacy/privacy",
+    "pull-down-list": "../../components/pull-down-list/index",
+    "t-footer": "tdesign-miniprogram/footer/footer"
   },
   "navigationBarTitleText": "TDesign UI",
   "navigationBarBackgroundColor": "#f6f6f6",

@@ -3,6 +3,7 @@ import list from './data/index';
 Page({
   data: {
     list,
+    currentYear: new Date().getFullYear(),
   },
   onLoad(options) {
     const { path, q } = options;
@@ -17,6 +18,11 @@ Page({
         url: `/pages/${str.page}/${str.page}`,
       });
     }
+    this.trdPrivacy = this.selectComponent('#trdPrivacy');
+  },
+
+  showPrivacyWin() {
+    this.trdPrivacy.showPrivacyWin();
   },
 
   clickHandle(e) {
