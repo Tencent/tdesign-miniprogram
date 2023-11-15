@@ -6,6 +6,25 @@ docClass: timeline
 ---
 
 
+ ## 🌈 1.2.4 `2023-11-15` 
+### 🚀 Features
+- `Rate`: 新增 `placement` 属性 @betavs ([#2359](https://github.com/Tencent/tdesign-miniprogram/pull/2359))
+- `DropdownMenu`: 新增 `open` 和 `close` 事件 @betavs ([#2361](https://github.com/Tencent/tdesign-miniprogram/pull/2361))
+- `Cell`: 新增css变量 `--td-cell-border-width` @betavs ([#2399](https://github.com/Tencent/tdesign-miniprogram/pull/2399))
+- `BackTop`: 新增 `scrollTop` 和 `visibilityHeight` 属性 @betavs ([#2177](https://github.com/Tencent/tdesign-miniprogram/pull/2177))
+### 🐞 Bug Fixes
+- `Search`: 修复因 `input` 未设置最小高度导致异常的问题 @betavs ([#2340](https://github.com/Tencent/tdesign-miniprogram/pull/2340))
+- `Picker`: 兼容 keys 为 null 的情况 @betavs ([#2358](https://github.com/Tencent/tdesign-miniprogram/pull/2358))
+- `Image`:  优化组件内部函数重复执行的问题 @betavs ([#2362](https://github.com/Tencent/tdesign-miniprogram/pull/2362))
+- `Checkbox`: 移除未使用的组件 `Cell` @eehhh ([#2404](https://github.com/Tencent/tdesign-miniprogram/pull/2404))
+- `Radio`: 移除未使用的组件 `Cell` @eehhh ([#2405](https://github.com/Tencent/tdesign-miniprogram/pull/2405))
+- `link`: 修复跳转方式为返回或退出时链接样式为禁用的问题 @qianxuu ([#2226](https://github.com/Tencent/tdesign-miniprogram/pull/2226))
+- `SideBar`: 修复子项激活态时 `prefix`与`suffix` 内容遮挡相邻项的点击热区问题 @Moonofweisheng ([#2431](https://github.com/Tencent/tdesign-miniprogram/pull/2431))
+
+### 🚧 Others
+- `Tabs`: 更新示例 @Xcyq ([#2386](https://github.com/Tencent/tdesign-miniprogram/pull/2386)) 
+
+
 ## 🌈 1.2.3 `2023-09-14` 
 ### 🚀 Features
 - `ImageViewer`：支持无障碍访问
