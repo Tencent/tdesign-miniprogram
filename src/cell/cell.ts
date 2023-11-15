@@ -16,6 +16,7 @@ export default class Cell extends SuperComponent {
     `${prefix}-class-image`,
     `${prefix}-class-left`,
     `${prefix}-class-left-icon`,
+    `${prefix}-class-center`,
     `${prefix}-class-right`,
     `${prefix}-class-right-icon`,
   ];

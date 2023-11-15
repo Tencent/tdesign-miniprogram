@@ -74,6 +74,7 @@ t-class-hover | 悬停样式类
 t-class-image | 图片样式类
 t-class-left | 左侧内容样式类
 t-class-left-icon | 左侧图标样式类
+t-class-center | 中间（`title`, `description`）内容样式类
 t-class-right | 右侧内容样式类
 t-class-right-icon | 右侧图标样式类
 
