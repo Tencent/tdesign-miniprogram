@@ -18,7 +18,7 @@ docClass: timeline
 - `Image`:  优化组件内部函数重复执行的问题 @betavs ([#2362](https://github.com/Tencent/tdesign-miniprogram/pull/2362))
 - `Checkbox`: 移除未使用的组件 `Cell` @eehhh ([#2404](https://github.com/Tencent/tdesign-miniprogram/pull/2404))
 - `Radio`: 移除未使用的组件 `Cell` @eehhh ([#2405](https://github.com/Tencent/tdesign-miniprogram/pull/2405))
-- `link`: 修复跳转方式为返回或退出时链接样式为禁用的问题 @qianxuu ([#2226](https://github.com/Tencent/tdesign-miniprogram/pull/2226))
+- `Link`: 修复跳转方式为返回或退出时链接样式为禁用的问题 @qianxuu ([#2226](https://github.com/Tencent/tdesign-miniprogram/pull/2226))
 - `SideBar`: 修复子项激活态时 `prefix`与`suffix` 内容遮挡相邻项的点击热区问题 @Moonofweisheng ([#2431](https://github.com/Tencent/tdesign-miniprogram/pull/2431))
 
 ### 🚧 Others
