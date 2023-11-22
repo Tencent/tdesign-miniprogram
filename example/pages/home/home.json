@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "trd-privacy": "/components/trd-privacy/privacy",
     "pull-down-list": "../../components/pull-down-list/index",
     "t-footer": "tdesign-miniprogram/footer/footer"
   },
