@@ -61,17 +61,17 @@
             {{file.status == 'reload' ? '重新上传' : '上传失败'}}
           </view>
         </view>
-      </view>
 
-      <!-- 删除 -->
-      <view
-        class="{{classPrefix}}__close-btn hotspot-expanded"
-        bindtap="onDelete"
-        data-index="{{index}}"
-        aria-role="button"
-        aria-label="删除"
-      >
-        <t-icon name="close" size="16" color="#fff" />
+        <!-- 删除 -->
+        <view
+          class="{{classPrefix}}__close-btn hotspot-expanded"
+          bindtap="onDelete"
+          data-index="{{index}}"
+          aria-role="button"
+          aria-label="删除"
+        >
+          <t-icon name="close" size="16" color="#fff" />
+        </view>
       </view>
     </t-grid-item>
 
