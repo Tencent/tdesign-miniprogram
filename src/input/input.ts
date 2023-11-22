@@ -61,8 +61,8 @@ export default class Input extends SuperComponent {
       });
     },
 
-    clearTrigger(v) {
-      this.setData({ showClearIcon: v === 'always' });
+    clearTrigger() {
+      this.updateClearIconVisible();
     },
   };
 
@@ -89,18 +89,21 @@ export default class Input extends SuperComponent {
         });
       }
     },
+    updateClearIconVisible(value: boolean = false) {
+      const { clearTrigger } = this.properties;
+      this.setData({ showClearIcon: value || clearTrigger === 'always' });
+    },
     onInput(e) {
       const { value, cursor, keyCode } = e.detail;
       this.updateValue(value);
       this.triggerEvent('change', { value: this.data.value, cursor, keyCode });
     },
     onFocus(e) {
-      this.setData({ showClearIcon: true });
+      this.updateClearIconVisible(true);
       this.triggerEvent('focus', e.detail);
     },
     onBlur(e) {
-      const { clearTrigger } = this.properties;
-      this.setData({ showClearIcon: clearTrigger === 'always' });
+      this.updateClearIconVisible();
       this.triggerEvent('blur', e.detail);
     },
     onConfirm(e) {
