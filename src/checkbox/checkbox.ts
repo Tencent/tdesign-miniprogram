@@ -32,6 +32,9 @@ export default class CheckBox extends SuperComponent {
         }
 
         data.checked = this.data.checked || checkedFromParent;
+        if (this.data.checked) {
+          parent.updateValue(this.data);
+        }
 
         if (this.data.checkAll) {
           data.checked = valueSet.size > 0;
