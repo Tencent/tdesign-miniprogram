@@ -22,6 +22,7 @@ export default class CheckBox extends SuperComponent {
       linked(parent) {
         const { value, disabled, borderless } = parent.data;
         const valueSet = new Set(value);
+        const checkedFromParent = valueSet.has(this.data.value);
         const data: any = {
           disabled: this.data.disabled == null ? disabled : this.data.disabled,
         };
@@ -30,7 +31,10 @@ export default class CheckBox extends SuperComponent {
           data.borderless = true;
         }
 
-        data.checked = valueSet.has(this.data.value);
+        data.checked = this.data.checked || checkedFromParent;
+        if (this.data.checked) {
+          parent.updateValue(this.data);
+        }
 
         if (this.data.checkAll) {
           data.checked = valueSet.size > 0;
