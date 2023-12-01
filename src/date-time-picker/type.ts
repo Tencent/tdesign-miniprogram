@@ -120,6 +120,15 @@ export interface TdDateTimePickerProps {
     type: Object;
     value: {};
   };
+
+  /**
+   * 组件国际化支持
+   * @default zh
+   */
+  customLocale?: {
+    type: StringConstructor;
+    value: String;
+  };
 }
 
 export type DateTimePickerMode = TimeModeValues | Array<TimeModeValues>;
