@@ -90,7 +90,7 @@ export default class CheckBox extends SuperComponent {
       if (parent) {
         parent.updateValue({ ...this.data, checked });
       } else {
-        this._trigger('change', { checked });
+        this._trigger('change', { dataset:this.dataset, checked });
       }
     },
   };
