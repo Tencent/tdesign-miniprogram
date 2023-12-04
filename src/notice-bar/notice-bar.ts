@@ -97,29 +97,31 @@ export default class NoticeBar extends SuperComponent {
       const warpID = `.${name}__content-wrap`;
       const nodeID = `.${name}__content`;
       getAnimationFrame(this, () => {
-        Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
-          const { marquee } = this.properties;
+        Promise.all([getRect(this, nodeID), getRect(this, warpID)])
+          .then(([nodeRect, wrapRect]) => {
+            const { marquee } = this.properties;
 
-          if (nodeRect == null || wrapRect == null || !nodeRect.width || !wrapRect.width) {
-            return;
-          }
+            if (nodeRect == null || wrapRect == null || !nodeRect.width || !wrapRect.width) {
+              return;
+            }
 
-          if (marquee || wrapRect.width < nodeRect.width) {
-            const speeding = marquee.speed || 50;
-            const delaying = marquee.delay || 0;
-            const animationDuration = ((wrapRect.width + nodeRect.width) / speeding) * 1000;
-            const firstAnimationDuration = (nodeRect.width / speeding) * 1000;
-            this.setData({
-              wrapWidth: Number(wrapRect.width),
-              nodeWidth: Number(nodeRect.width),
-              animationDuration: animationDuration,
-              delay: delaying,
-              loop: marquee.loop - 1,
-              firstAnimationDuration: firstAnimationDuration,
-            });
-            marquee.loop !== 0 && this.startScrollAnimation(true);
-          }
-        });
+            if (marquee || wrapRect.width < nodeRect.width) {
+              const speeding = marquee.speed || 50;
+              const delaying = marquee.delay || 0;
+              const animationDuration = ((wrapRect.width + nodeRect.width) / speeding) * 1000;
+              const firstAnimationDuration = (nodeRect.width / speeding) * 1000;
+              this.setData({
+                wrapWidth: Number(wrapRect.width),
+                nodeWidth: Number(nodeRect.width),
+                animationDuration: animationDuration,
+                delay: delaying,
+                loop: marquee.loop - 1,
+                firstAnimationDuration: firstAnimationDuration,
+              });
+              marquee.loop !== 0 && this.startScrollAnimation(true);
+            }
+          })
+          .catch(() => {});
       });
     },
 
