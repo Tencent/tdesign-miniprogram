@@ -62,7 +62,7 @@ title | String | - | 标题 | N
 value | String / Number | - | 选中值。TS 类型：`DateValue` `type DateValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 default-value | String / Number | undefined | 选中值。非受控属性。TS 类型：`DateValue` `type DateValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 visible | Boolean | false | 是否显示 | N
-custom-locale | String | 'zh' | 组件国际化语言，目前支持: 简体中文(zh), (tc), 英文(en), 日语(ja), 韩语(ko), 俄语(ru) 六种语言 | N
+custom-locale | String | 'zh' | 组件国际化语言，目前支持: 简体中文(zh)、(tc)、英文(en)、日语(ja)、韩语(ko)、俄语(ru)等六种语言 | N
 
 ### DateTimePicker Events
 
