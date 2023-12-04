@@ -35,3 +35,21 @@ jobs:
       - if: steps.publish.outputs.type != 'none'
         run: |
           echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"
+  UPDATE_OFFICIAL_WEBSITE:
+    runs-on: ubuntu-latest
+    if: github.event.ref_type == 'tag'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          submodules: recursive
+      - name: update official website
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git status
+          git fetch origin
+          git merge origin/develop
+          git push origin main
