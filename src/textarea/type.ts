@@ -39,7 +39,7 @@ export interface TdTextareaProps {
   };
   /**
    * 设置键盘右下角按钮的文字，仅在 type='text'时生效
-   * @default done
+   * @default return
    */
   confirmType?: {
     type: StringConstructor;
