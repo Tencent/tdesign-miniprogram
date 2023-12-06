@@ -32,6 +32,7 @@ export default class Input extends SuperComponent {
     classPrefix: name,
     classBasePrefix: prefix,
     excludeType: ['number', 'digit'],
+    showClearIcon: true,
   };
 
   lifetimes = {
@@ -59,6 +60,10 @@ export default class Input extends SuperComponent {
         _clearIcon: calcIcon(v, 'close-circle-filled'),
       });
     },
+
+    clearTrigger() {
+      this.updateClearIconVisible();
+    },
   };
 
   methods = {
@@ -84,15 +89,21 @@ export default class Input extends SuperComponent {
         });
       }
     },
+    updateClearIconVisible(value: boolean = false) {
+      const { clearTrigger } = this.properties;
+      this.setData({ showClearIcon: value || clearTrigger === 'always' });
+    },
     onInput(e) {
       const { value, cursor, keyCode } = e.detail;
       this.updateValue(value);
       this.triggerEvent('change', { value: this.data.value, cursor, keyCode });
     },
     onFocus(e) {
+      this.updateClearIconVisible(true);
       this.triggerEvent('focus', e.detail);
     },
     onBlur(e) {
+      this.updateClearIconVisible();
       this.triggerEvent('blur', e.detail);
     },
     onConfirm(e) {

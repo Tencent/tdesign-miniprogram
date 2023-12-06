@@ -82,6 +82,7 @@ align | String | left | 文本内容位置，居左/居中/居右。可选项：
 layout | String | horizontal | 标题输入框布局方式。可选项：vertical/horizontal | N
 borderless | Boolean | false | 是否开启无边框模式 | N
 clearable | Boolean / Object | false | 是否可清空，默认不启动。值为 `true` 表示使用默认清除空按钮，值为 `Object` 表示透传至 `icon` | N
+clear-trigger | String | always | 清空图标触发方式，仅在输入框有值时有效。可选项：always / focus | N
 disabled | Boolean | false | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
 format | Function | - | 【开发中】指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => number | string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
