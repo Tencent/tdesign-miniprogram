@@ -20,6 +20,15 @@ const props: TdFabProps = {
     type: String,
     value: '',
   },
+  /** 是否可移动 */
+  movable: {
+    type: Boolean,
+    value: false,
+  },
+  /** 可拖动配置 */
+  movableViewProps: {
+    type: Object,
+  },
 };
 
 export default props;

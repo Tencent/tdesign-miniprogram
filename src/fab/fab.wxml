@@ -1,12 +1,24 @@
-<import src="../common/template/button.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view
-  class="{{classPrefix}} class {{prefix}}-class"
-  style="right: 16px; bottom: 32px; {{_._style([style, customStyle])}}"
->
-  <template
-    is="button"
-    data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-fab__button', content: text, ariaLabel}}"
-  />
+<view>
+  <view
+    wx:if="{{!movable}}"
+    class="{{classPrefix}} class {{prefix}}-class"
+    style="right: {{defRight}}px; bottom: {{defBottom}}px; {{_._style([style, customStyle])}}"
+  >
+    <include src="./fab-button.wxml" />
+  </view>
+  <movable-area wx:else class="{{classPrefix}}-movable_area" style="{{_._style([style, customStyle])}}">
+    <movable-view
+      class="{{classPrefix}}-movable_view"
+      direction="{{baseMovableViewProps.direction}}"
+      inertia="{{baseMovableViewProps.inertia}}"
+      x="{{baseMovableViewProps.x === undefined ? movableViewX : baseMovableViewProps.x}}"
+      y="{{baseMovableViewProps.y === undefined ? movableViewY : baseMovableViewProps.y}}"
+      disabled="{{baseMovableViewProps.disabled}}"
+      bindchange="movableViewMove"
+    >
+      <include src="./fab-button.wxml" />
+    </movable-view>
+  </movable-area>
 </view>
