@@ -6,7 +6,7 @@ docClass: timeline
 ---
 
 
-    ## 🌈 1.2.5 `2023-12-08` 
+## 🌈 1.2.5 `2023-12-08` 
 ### 🚀 Features
 - `Cell`: 新增外部样式类 `t-class-center` @anlyyao ([#2439](https://github.com/Tencent/tdesign-miniprogram/pull/2439))
 - `Input`: 新增 `clearTrigger` 属性 @betavs ([#2372](https://github.com/Tencent/tdesign-miniprogram/pull/2372))
@@ -19,10 +19,10 @@ docClass: timeline
 - `Checkbox`:  修复 `checked` 属性无效的问题 @Nightmare1664 ([#2455](https://github.com/Tencent/tdesign-miniprogram/pull/2455))
 - `DateTimePicker`: 组件支持国际化。目前支持简体中文(zh)、 (tc)、 英文(en)、日语(ja)、 韩语(ko)、俄语(ru) 等六种语言 @eric-lua ([#2464](https://github.com/Tencent/tdesign-miniprogram/pull/2464))
 ### 🚧 Others
-- `Textarea`:  修复文档 ` confirm-type ` 属性默认值描述错误 @betavs ([#2475](https://github.com/Tencent/tdesign-miniprogram/pull/2475))
-- `BackTop`: 返回顶部按钮，增加 iphone 底部安全区 @leozeli ([#2457](https://github.com/Tencent/tdesign-miniprogram/pull/2457)) 
+- `Textarea`:  修复文档 `confirm-type` 属性默认值描述错误 @betavs ([#2475](https://github.com/Tencent/tdesign-miniprogram/pull/2475))
+- `BackTop`: 返回顶部按钮，增加 `iphone` 底部安全区 @leozeli ([#2457](https://github.com/Tencent/tdesign-miniprogram/pull/2457)) 
 
- ## 🌈 1.2.4 `2023-11-15` 
+## 🌈 1.2.4 `2023-11-15` 
 ### 🚀 Features
 - `Rate`: 新增 `placement` 属性 @betavs ([#2359](https://github.com/Tencent/tdesign-miniprogram/pull/2359))
 - `DropdownMenu`: 新增 `open` 和 `close` 事件 @betavs ([#2361](https://github.com/Tencent/tdesign-miniprogram/pull/2361))
