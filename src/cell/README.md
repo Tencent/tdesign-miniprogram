@@ -74,6 +74,7 @@ t-class-hover | 悬停样式类
 t-class-image | 图片样式类
 t-class-left | 左侧内容样式类
 t-class-left-icon | 左侧图标样式类
+t-class-center | 中间（`title`, `description`）内容样式类
 t-class-right | 右侧内容样式类
 t-class-right-icon | 右侧图标样式类
 
@@ -103,6 +104,7 @@ t-class-title | 标题样式类
 --td-cell-group-title-padding-left | 32rpx | - 
 --td-cell-bg-color | @bg-color-container | - 
 --td-cell-border-color | @component-stroke | - 
+--td-cell-border-width | 1px | - 
 --td-cell-border-left-space | @cell-horizontal-padding | - 
 --td-cell-border-right-space | 0 | - 
 --td-cell-description-color | @font-gray-2 | - 

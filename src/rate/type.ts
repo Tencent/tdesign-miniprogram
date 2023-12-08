@@ -114,4 +114,12 @@ export interface TdRateProps {
     type: NumberConstructor;
     value?: number;
   };
+  /**
+   * 选择评分弹框的位置
+   * @default top
+   */
+  placement?: {
+    type: StringConstructor;
+    value?: 'top' | 'bottom';
+  };
 }

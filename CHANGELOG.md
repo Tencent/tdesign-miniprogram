@@ -6,6 +6,40 @@ docClass: timeline
 ---
 
 
+## 🌈 1.2.5 `2023-12-08` 
+### 🚀 Features
+- `Cell`: 新增外部样式类 `t-class-center` @anlyyao ([#2439](https://github.com/Tencent/tdesign-miniprogram/pull/2439))
+- `Input`: 新增 `clearTrigger` 属性 @betavs ([#2372](https://github.com/Tencent/tdesign-miniprogram/pull/2372))
+### 🐞 Bug Fixes
+- `Calendar`: 修复 `use-popup` 为 `false` 时，组件未适应父容器宽度的问题 @yangbai1991 ([#2458](https://github.com/Tencent/tdesign-miniprogram/pull/2458))
+- `Checkbox`:  修复 `checked` 属性无效的问题 @Nightmare1664 ([#2455](https://github.com/Tencent/tdesign-miniprogram/pull/2455))
+- `Upload`: 处理关闭按钮溢出问题 @betavs ([#2449](https://github.com/Tencent/tdesign-miniprogram/pull/2449))
+- `DateTimePicker`: 组件支持国际化。目前支持简体中文(zh)、 (tc)、 英文(en)、日语(ja)、 韩语(ko)、俄语(ru) 等六种语言 @eric-lua ([#2464](https://github.com/Tencent/tdesign-miniprogram/pull/2464))
+- `Calendar`: 修复 `use-popup` 为 `false` 时，组件未适应父容器宽度的问题 @yangbai1991 ([#2458](https://github.com/Tencent/tdesign-miniprogram/pull/2458))
+- `Checkbox`:  修复 `checked` 属性无效的问题 @Nightmare1664 ([#2455](https://github.com/Tencent/tdesign-miniprogram/pull/2455))
+- `DateTimePicker`: 组件支持国际化。目前支持简体中文(zh)、 (tc)、 英文(en)、日语(ja)、 韩语(ko)、俄语(ru) 等六种语言 @eric-lua ([#2464](https://github.com/Tencent/tdesign-miniprogram/pull/2464))
+### 🚧 Others
+- `Textarea`:  修复文档 `confirm-type` 属性默认值描述错误 @betavs ([#2475](https://github.com/Tencent/tdesign-miniprogram/pull/2475))
+- `BackTop`: 返回顶部按钮，增加 `iphone` 底部安全区 @leozeli ([#2457](https://github.com/Tencent/tdesign-miniprogram/pull/2457)) 
+
+## 🌈 1.2.4 `2023-11-15` 
+### 🚀 Features
+- `Rate`: 新增 `placement` 属性 @betavs ([#2359](https://github.com/Tencent/tdesign-miniprogram/pull/2359))
+- `DropdownMenu`: 新增 `open` 和 `close` 事件 @betavs ([#2361](https://github.com/Tencent/tdesign-miniprogram/pull/2361))
+- `Cell`: 新增css变量 `--td-cell-border-width` @betavs ([#2399](https://github.com/Tencent/tdesign-miniprogram/pull/2399))
+- `BackTop`: 新增 `scrollTop` 和 `visibilityHeight` 属性 @betavs ([#2177](https://github.com/Tencent/tdesign-miniprogram/pull/2177))
+### 🐞 Bug Fixes
+- `Search`: 修复因 `input` 未设置最小高度导致异常的问题 @betavs ([#2340](https://github.com/Tencent/tdesign-miniprogram/pull/2340))
+- `Picker`: 兼容 keys 为 null 的情况 @betavs ([#2358](https://github.com/Tencent/tdesign-miniprogram/pull/2358))
+- `Image`:  优化组件内部函数重复执行的问题 @betavs ([#2362](https://github.com/Tencent/tdesign-miniprogram/pull/2362))
+- `Checkbox`: 移除未使用的组件 `Cell` @eehhh ([#2404](https://github.com/Tencent/tdesign-miniprogram/pull/2404))
+- `Radio`: 移除未使用的组件 `Cell` @eehhh ([#2405](https://github.com/Tencent/tdesign-miniprogram/pull/2405))
+- `Link`: 修复跳转方式为返回或退出时链接样式为禁用的问题 @qianxuu ([#2226](https://github.com/Tencent/tdesign-miniprogram/pull/2226))
+- `SideBar`: 修复子项激活态时 `prefix`与`suffix` 内容遮挡相邻项的点击热区问题 @Moonofweisheng ([#2431](https://github.com/Tencent/tdesign-miniprogram/pull/2431))
+
+### 🚧 Others
+- `Tabs`: 更新示例 @Xcyq ([#2386](https://github.com/Tencent/tdesign-miniprogram/pull/2386)) 
+
 ## 🌈 1.2.3 `2023-09-14` 
 ### 🚀 Features
 - `ImageViewer`：支持无障碍访问

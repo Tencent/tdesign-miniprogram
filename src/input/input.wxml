@@ -68,7 +68,7 @@
           安卓不会播报aria-label，会播报aria-roledescription的内容
         -->
       <view
-        wx:if="{{_clearIcon && value.length > 0}}"
+        wx:if="{{_clearIcon && value.length > 0 && showClearIcon}}"
         class="{{classPrefix}}__wrap--clearable-icon"
         bind:touchstart="clearInput"
       >

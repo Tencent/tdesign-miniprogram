@@ -52,6 +52,13 @@ duration | String / Number | 200 | 动画时长 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 z-index | Number | 11600 | 菜单栏 z-index 层级 | N
 
+### DropdownMenu Events
+
+名称 | 参数 | 描述
+-- | -- | --
+open | \- | 菜单展开时触发
+close | \- | 菜单关闭时触发
+
 ### DropdownMenu 外部样式类
 类名 | 说明
 -- | -- 

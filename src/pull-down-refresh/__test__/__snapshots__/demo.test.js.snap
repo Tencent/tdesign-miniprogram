@@ -16,7 +16,7 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
         "刷新完成",
       ]
     }}"
-    value="{{false}}"
+    value="{{true}}"
     bind:refresh="onRefresh"
     bind:scroll="onScroll"
   >
@@ -204,6 +204,11 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
           拖拽该区域演示 顶部下拉刷新
         </wx-view>
       </wx-view>
+      <t-back-top
+        scrollTop="{{0}}"
+        text="顶部"
+        visibilityHeight="{{100}}"
+      />
     </wx-view>
   </t-pull-down-refresh>
 </base>

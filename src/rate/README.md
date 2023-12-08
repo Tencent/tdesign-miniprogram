@@ -79,6 +79,7 @@ size | String | 24px | 评分图标的大小 | N
 texts | Array | [] | 评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']。TS 类型：`Array<string>` | N
 value | Number | 0 | 选择评分的值 | N
 default-value | Number | undefined | 选择评分的值。非受控属性 | N
+placement | String | top | 选择评分弹框的位置。可选项：top / bottom | N
 iconPrefix | String | undefined | 定义图标前缀 
 variant | String | outline | 废弃。形状类型，有描边类型和填充类型两种。可选项：outline/filled | N
 

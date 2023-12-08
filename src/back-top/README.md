@@ -29,6 +29,9 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+external-classes | Array | - | 组件类名，分别用于设置外层元素、图标、文本内容等元素类名。`['t-class', 't-class-icon', 't-class-text']` | N
+visibility-height | Number | 200 | 滚动高度达到此参数值才出现 | N
+scroll-top | Number | 0 | 页面滚动距离 | N
 fixed | Boolean | true | 是否绝对定位固定到屏幕右下方 | N
 icon | String / Boolean / Object / Slot | true | 图标。值为 `false` 表示不显示图标。不传表示使用默认图标 `'backtop'` | N
 text | String | '' | 文案 | N

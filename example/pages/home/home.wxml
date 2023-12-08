@@ -12,3 +12,6 @@
     bind:click="clickHandle"
   />
 </view>
+<view class="footer">
+  <t-footer text="Copyright © 1998 - {{currentYear}} Tencent. All Rights Reserved. 腾讯公司 版权所有"></t-footer>
+</view>

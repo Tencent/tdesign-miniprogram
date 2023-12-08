@@ -56,7 +56,7 @@ exports[`Tabs Tabs base demo works fine 1`] = `
     />
     <t-tab-panel
       label="上限四字"
-      value="2"
+      value="3"
     />
   </t-tabs>
   <t-tabs

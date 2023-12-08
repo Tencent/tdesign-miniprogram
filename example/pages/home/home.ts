@@ -3,6 +3,7 @@ import list from './data/index';
 Page({
   data: {
     list,
+    currentYear: new Date().getFullYear(),
   },
   onLoad(options) {
     const { path, q } = options;
