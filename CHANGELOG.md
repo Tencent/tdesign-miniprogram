@@ -5,7 +5,6 @@ toc: false
 docClass: timeline
 ---
 
-
 ## 🌈 1.2.5 `2023-12-08` 
 ### 🚀 Features
 - `Cell`: 新增外部样式类 `t-class-center` @anlyyao ([#2439](https://github.com/Tencent/tdesign-miniprogram/pull/2439))
