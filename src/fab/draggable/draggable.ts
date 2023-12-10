@@ -42,10 +42,10 @@ export default class Draggable extends SuperComponent {
       let y = this.startY - e.touches[0].clientY;
 
       if (this.properties.direction === 'horizontal') {
-        y = this.rect.bottom;
+        y = systemInfo.windowHeight - this.rect.bottom;
       }
       if (this.properties.direction === 'vertical') {
-        x = this.rect.right;
+        x = systemInfo.windowWidth - this.rect.right;
       }
 
       this.triggerEvent('move', { x, y, e });
