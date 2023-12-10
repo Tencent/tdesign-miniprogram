@@ -5,6 +5,6 @@
     "t-button": "tdesign-miniprogram/button/button",
     "base": "./base",
     "advance": "./advance",
-    "movable": "./movable"
+    "draggable": "./draggable"
   }
 }

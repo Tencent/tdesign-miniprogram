@@ -24,4 +24,4 @@
 
 <base wx:if="{{type == 'base'}}" />
 <advance wx:elif="{{type == 'advance'}}" />
-<movable wx:else />
+<draggable wx:else />

@@ -1,0 +1,14 @@
+<import src="../../common/template/button.wxml" />
+<wxs src="../../common/utils.wxs" module="_" />
+
+<template name="draggable">
+  <t-draggable
+    id="draggable"
+    style="right: 16px; bottom: 32px; {{_._style([style, customStyle, moveStyle])}}"
+    t-class="{{prefix}}}-fab__button"
+    direction="{{draggable === true ? 'all' : draggable}}"
+    bind:move="onMove"
+  >
+    <template is="button" data="{{...buttonData}}" />
+  </t-draggable>
+</template>

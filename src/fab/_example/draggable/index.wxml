@@ -4,5 +4,5 @@
   bind:click="handleClick"
   bind:move="handleMove"
   aria-label="增加"
-  movable="{{true}}"
+  draggable="{{true}}"
 ></t-fab>

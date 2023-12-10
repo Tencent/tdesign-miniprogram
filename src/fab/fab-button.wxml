@@ -1,5 +1,0 @@
-<import src="../common/template/button.wxml" />
-<template
-  is="button"
-  data="{{ ...baseButtonProps, icon, ...buttonProps, externalClass: prefix + '-fab__button', content: text, ariaLabel}}"
-/>

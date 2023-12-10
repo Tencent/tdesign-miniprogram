@@ -40,28 +40,9 @@ export interface TdFabProps {
    * 是否可移动
    * @default false
    */
-  movable?: {
+  draggable?: {
     type: BooleanConstructor;
-    value?: boolean;
+    optionalTypes: Array<StringConstructor>;
+    value?: boolean | 'all' | 'vertical' | 'horizontal';
   };
-  /**
-   * 可拖动配置
-   */
-  movableViewProps?: {
-    type: ObjectConstructor;
-    value?: movableViewProps;
-  };
-}
-
-export interface movableViewProps {
-  /** 移动方向 */
-  direction?: 'all' | 'vertical' | 'horizontal' | 'none';
-  /** 是否带有惯性 */
-  inertia?: boolean;
-  /** 定义x轴方向的偏移，单位支持px（默认）、rpx */
-  x?: number | string;
-  /** 定义y轴方向的偏移，单位支持px（默认）、rpx */
-  y?: number | string;
-  /** 是否禁用 */
-  disabled?: boolean;
 }
