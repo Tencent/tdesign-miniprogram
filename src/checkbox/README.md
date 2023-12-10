@@ -86,7 +86,7 @@ value | String / Number / Boolean | - | 多选框的值。TS 类型：`string \|
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(checked: boolean)` | 值变化时触发
+change | `(checked: boolean, {value: boolean|number|string, label: boolean|number|string })` | 值变化时触发
 
 ### Checkbox 外部样式类
 类名 | 说明

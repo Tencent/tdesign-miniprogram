@@ -83,14 +83,14 @@ export default class CheckBox extends SuperComponent {
       if (target === 'text' && contentDisabled) {
         return;
       }
-
+      const { value, label } = this.data;
       const checked = !this.data.checked;
       const parent = this.$parent;
 
       if (parent) {
         parent.updateValue({ ...this.data, checked });
       } else {
-        this._trigger('change', { dataset:this.dataset, checked });
+        this._trigger('change', { dataset:{ value, label }, checked });
       }
     },
   };
