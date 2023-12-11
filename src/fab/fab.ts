@@ -48,19 +48,19 @@ export default class Fab extends SuperComponent {
       this.triggerEvent('click', e);
     },
     onMove(e) {
-      const { x, y } = e.detail;
-      const maxX = systemInfo.windowWidth - this.fabRect?.width || 0; // 父容器宽度 - 拖动元素宽度
-      const maxY = systemInfo.windowHeight - this.fabRect?.height || 0; // 父容器高度 - 拖动元素高度
+      const { x, y, rect } = e.detail;
+      const maxX = systemInfo.windowWidth - rect.width; // 父容器宽度 - 拖动元素宽度
+      const maxY = systemInfo.windowHeight - rect.height; // 父容器高度 - 拖动元素高度
       const right = Math.max(0, Math.min(x, maxX));
       const bottom = Math.max(0, Math.min(y, maxY));
       this.setData({
         moveStyle: `right: ${right}px; bottom: ${bottom}px;`,
       });
     },
-    async computedSize() {
+    computedSize() {
       if (!this.properties.draggable) return;
       const insChild = this.selectComponent('#draggable');
-      this.fabRect = await insChild.computedRect();
+      insChild.computedRect(); // button更新时，重新获取其尺寸
     },
   };
 }
