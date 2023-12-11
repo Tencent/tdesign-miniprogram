@@ -8,6 +8,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 disabled | Boolean | - | \- | N
 opened   | Boolean / Array | false  | \- | N
+auto-close | Boolean | true | \- | N
 left | Array / Slot | - | Typescript：`Array<SwipeActionItem>` | N
 right | Array / Slot | - | Typescript：`Array<SwipeActionItem>` `interface SwipeActionItem {text?: string; icon?: string | object; className?: string; style?: string; onClick?: () => void; [key: string]: any }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swipe-cell/type.ts) | N
 

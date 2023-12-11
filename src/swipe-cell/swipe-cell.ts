@@ -76,7 +76,13 @@ export default class SwiperCell extends SuperComponent {
     ARRAY.filter((item) => item !== this).forEach((item) => item.close());
   }
 
-  onTap() {
+  onTap(event) {
+    const {
+      currentTarget: {
+        dataset: { key },
+      },
+    } = event;
+    if ((key === 'left' || key === 'right') && !this.data.autoClose) return;
     this.close();
   }
 

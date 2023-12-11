@@ -6,7 +6,7 @@
   class="class {{prefix}}-class {{classPrefix}}"
   style="{{_._style([style, customStyle])}}"
   data-key="cell"
-  capture-bind:tap="onTap"
+  bind:tap="onTap"
   bindtouchstart="{{disabled || swipe.startDrag}}"
   capture-bind:touchmove="{{disabled || swipe.onDrag}}"
   bindtouchend="{{disabled || swipe.endDrag}}"
@@ -19,7 +19,7 @@
   change:rightWidth="{{swipe.initRightWidth}}"
 >
   <view id="wrapper">
-    <view class="{{classPrefix}}__left" data-key="left">
+    <view class="{{classPrefix}}__left" data-key="left" catch:tap="onTap">
       <slot name="left" />
       <view
         wx:for="{{left}}"
@@ -38,7 +38,7 @@
       </view>
     </view>
     <slot />
-    <view class="{{classPrefix}}__right" data-key="right">
+    <view class="{{classPrefix}}__right" data-key="right" catch:tap="onTap">
       <slot name="right" />
       <view
         wx:for="{{right}}"
