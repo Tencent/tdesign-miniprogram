@@ -11,6 +11,7 @@ exports[`Upload Upload messageFile demo works fine 1`] = `
           "count": 1,
         }
       }}"
+      disabled="{{true}}"
       files="{{
         Array [
           Object {
@@ -47,6 +48,7 @@ exports[`Upload Upload multiple demo works fine 1`] = `
     class="wrapper"
   >
     <t-upload
+      disabled="{{true}}"
       files="{{
         Array [
           Object {
@@ -93,6 +95,7 @@ exports[`Upload Upload single demo works fine 1`] = `
     class="wrapper"
   >
     <t-upload
+      disabled="{{true}}"
       files="{{Array []}}"
       max="{{1}}"
       mediaType="{{
@@ -114,6 +117,7 @@ exports[`Upload Upload status demo works fine 1`] = `
     class="wrapper"
   >
     <t-upload
+      disabled="{{true}}"
       files="{{
         Array [
           Object {

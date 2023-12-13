@@ -13,7 +13,7 @@
       aria-role="presentation"
     >
       <view
-        class="{{classPrefix}}__wrapper"
+        class="{{classPrefix}}__wrapper {{disabled? classPrefix + '__wrapper--disabled' : '' }}"
         style="{{gridItemStyle}}"
         aria-role="{{ariaRole || this.getWrapperAriaRole(file)}}"
         aria-label="{{ariaLabel || this.getWrapperAriaLabel(file)}}"
@@ -86,7 +86,7 @@
       <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
         <slot name="add-content" />
         <block wx:if="{{addContent}}">{{addContent}}</block>
-        <view wx:else class="{{classPrefix}}__add-icon">
+        <view wx:else class="{{classPrefix}}__add-icon {{disabled? classPrefix + '__add-icon--disabled' : '' }}">
           <t-icon name="add" />
         </view>
       </view>
