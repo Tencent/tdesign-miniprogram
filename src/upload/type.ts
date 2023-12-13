@@ -30,6 +30,14 @@ export interface TdUploadProps {
     value?: UploadMpConfig;
   };
   /**
+   * 是否禁用组件
+   * @default false
+   */
+  disabled?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 自定义组件样式
    * @default ''
    */

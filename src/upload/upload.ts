@@ -168,7 +168,8 @@ export default class Upload extends SuperComponent {
     },
 
     onAddTap() {
-      const { mediaType, source } = this.properties;
+      const { disabled, mediaType, source } = this.properties;
+      if (disabled) return;
 
       if (source === 'media') {
         this.chooseMedia(mediaType);

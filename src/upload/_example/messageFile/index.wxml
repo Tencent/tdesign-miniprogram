@@ -1,5 +1,6 @@
 <view class="wrapper">
   <t-upload
+    disabled
     mediaType="{{['video','image']}}"
     files="{{originFiles}}"
     gridConfig="{{gridConfig}}"

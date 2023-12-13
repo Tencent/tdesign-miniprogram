@@ -8,6 +8,7 @@ name | type | default | description | required
 add-content | String / Slot | - | \- | N
 allow-upload-duplicate-file | Boolean | false | \- | N
 config | Object | - | Typescript：`UploadMpConfig` `type UploadMpConfig = ImageConfig \| VideoConfig` `interface ImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> }` `type SizeTypeValues = 'original' \| 'compressed'` `type SourceTypeValues = 'album' \| 'camera'` `interface VideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' \| 'front' }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
+disabled | Boolean | false | \- | N
 file-list-display | Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 files | Array | - | Typescript：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' \| 'video'; percent?: number; status: 'loading' \| 'reload' \| 'failed' \| 'done' }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 default-files | Array | undefined | uncontrolled property。Typescript：`Array<UploadFile>` `interface UploadFile { url: string; name?: string; size?: number; type?: 'image' \| 'video'; percent?: number; status: 'loading' \| 'reload' \| 'failed' \| 'done' }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
@@ -39,4 +40,29 @@ Name | Default Value | Description
 --td-upload-add-bg-color | @bg-color-secondarycontainer | - 
 --td-upload-add-color | @font-gray-3 | - 
 --td-upload-add-icon-font-size | 56rpx | - 
+--td-upload-radius | @radius-default | - 
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-upload-add-bg-color | @bg-color-secondarycontainer | - 
+--td-upload-add-color | @font-gray-3 | - 
+--td-upload-add-disabled-bg-color | @bg-color-component-disabled | - 
+--td-upload-add-icon-disabled-color | @text-color-disabled | - 
+--td-upload-add-icon-font-size | 56rpx | - 
+--td-upload-radius | @radius-default | - 
+
+
+### CSS Variables
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-upload-add-bg-color | @bg-color-secondarycontainer | - 
+--td-upload-add-color | @font-gray-3 | - 
+--td-upload-add-disabled-bg-color | @bg-color-component-disabled | - 
+--td-upload-add-icon-disabled-color | @text-color-disabled | - 
+--td-upload-add-icon-font-size | 56rpx | - 
+--td-upload-disabled-mask | rgba(255, 255, 255, 0.55) | - 
 --td-upload-radius | @radius-default | - 
