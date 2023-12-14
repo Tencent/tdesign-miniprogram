@@ -31,14 +31,15 @@ export default class Input extends SuperComponent {
     prefix,
     classPrefix: name,
     classBasePrefix: prefix,
-    excludeType: ['number', 'digit'],
+    excludeType: [],
     showClearIcon: true,
   };
 
   lifetimes = {
     ready() {
       const { value } = this.properties;
-      this.updateValue(value == null ? '' : value);
+      // 明确地检查null或undefined，防止0的情况被纳入
+      this.updateValue(value !== null && value !== undefined ? value : '');
     },
   };
 
@@ -85,7 +86,8 @@ export default class Input extends SuperComponent {
       } else {
         this.setData({
           value,
-          count: value ? String(value).length : 0,
+          // 确保值为0时正确设置count
+          count: value !== null && value !== undefined ? String(value).length : 0,
         });
       }
     },
