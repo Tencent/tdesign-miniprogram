@@ -32,6 +32,27 @@ exports[`Search Search base demo works fine 1`] = `
 </base>
 `;
 
+exports[`Search Search maxlength demo works fine 1`] = `
+<maxlength>
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      maxlength="{{10}}"
+      placeholder="最大输入10个字符"
+    />
+  </wx-view>
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      maxcharacter="{{10}}"
+      placeholder="最大输入10个字符，汉字算两个"
+    />
+  </wx-view>
+</maxlength>
+`;
+
 exports[`Search Search other demo works fine 1`] = `
 <other>
   <wx-view
