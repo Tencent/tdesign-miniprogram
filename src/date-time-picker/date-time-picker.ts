@@ -1,10 +1,22 @@
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
+import localeData from 'dayjs/plugin/localeData';
+
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
-import defaultLocale from './locale/zh';
 
 import props from './props';
+import dayjsLocaleMap from './locale/dayjs';
+/**
+ * dayjs LocaleData 插件
+ * https://dayjs.fenxianglu.cn/category/plugin.html#localedata
+ */
+dayjs.extend(localeData);
+// 设置 demo 的默认语言为 zh
+dayjs.locale('zh-cn');
+
+// const defaultLocale = dayjsLocaleMap.default.key;
+const defaultLocale = dayjsLocaleMap[dayjs.locale()]?.key || dayjsLocaleMap.default?.key;
 
 const { prefix } = config;
 const name = `${prefix}-date-time-picker`;
@@ -45,6 +57,14 @@ export default class DateTimePicker extends SuperComponent {
       this.updateColumns();
     },
 
+    customLocale(v) {
+      if (!v || !dayjsLocaleMap[v].key) return;
+      this.setData({
+        locale: dayjsLocaleMap[v].i18n,
+        dayjsLocale: dayjsLocaleMap[v].key,
+      });
+    },
+
     mode(m) {
       const fullModes = this.getFullModeArray(m);
       this.setData({
@@ -62,7 +82,8 @@ export default class DateTimePicker extends SuperComponent {
     columns: [],
     columnsValue: [],
     fullModes: [],
-    locale: defaultLocale,
+    locale: dayjsLocaleMap[defaultLocale].i18n, // 国际化语言包
+    dayjsLocale: dayjsLocaleMap[defaultLocale].key, // dayjs 自适应的 key
   };
 
   controlledProps = [
@@ -172,12 +193,12 @@ export default class DateTimePicker extends SuperComponent {
       const minEdge = this.getOptionEdge('min', type);
       const maxEdge = this.getOptionEdge('max', type);
       const step = steps?.[type] ?? 1;
+      const dayjsMonthsShort = dayjs().locale(this.data.dayjsLocale).localeData().monthsShort();
 
       for (let i = minEdge; i <= maxEdge; i += step) {
-        const label = type === 'month' ? i + 1 : i;
         options.push({
           value: `${i}`,
-          label: `${label + locale[type]}`,
+          label: type === 'month' ? dayjsMonthsShort[i] : `${i + locale[type]}`,
         });
       }
 
@@ -218,16 +239,16 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getMonthOptions(): ColumnItemValue[] {
-      const { locale } = this.data;
       const months: ColumnItemValue[] = [];
 
       const minMonth = this.getOptionEdge('min', 'month');
       const maxMonth = this.getOptionEdge('max', 'month');
+      const dayjsMonthsShort = dayjs.monthsShort();
 
       for (let i = minMonth; i <= maxMonth; i += 1) {
         months.push({
           value: `${i}`,
-          label: `${i + 1 + locale.month}`,
+          label: dayjsMonthsShort[i],
         });
       }
 

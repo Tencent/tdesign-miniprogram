@@ -134,6 +134,26 @@ exports[`Rate Rate custom demo works fine 1`] = `
 </custom>
 `;
 
+exports[`Rate Rate custom-prefix demo works fine 1`] = `
+<custom-prefix>
+  <wx-view
+    class="demo-rate"
+  >
+    <wx-view
+      class="demo-rate__title"
+    >
+      第三方图标
+    </wx-view>
+    <t-rate
+      icon="a-1h"
+      iconPrefix="icon"
+      value="{{3}}"
+      bind:change="onChange"
+    />
+  </wx-view>
+</custom-prefix>
+`;
+
 exports[`Rate Rate show-text demo works fine 1`] = `
 <show-text>
   <wx-view

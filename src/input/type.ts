@@ -38,6 +38,14 @@ export interface TdInputProps {
     value?: boolean | object;
   };
   /**
+   * 清空图标触发方式
+   * @default always
+   */
+  clearTrigger?: {
+    type: StringConstructor;
+    value?: 'always' | 'focus';
+  };
+  /**
    * 自定义组件样式
    * @default ''
    */
