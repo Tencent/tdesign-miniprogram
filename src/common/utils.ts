@@ -114,9 +114,21 @@ const isDef = function (value: any): boolean {
   return value !== undefined && value !== null;
 };
 
+export const isOfType = function (type: string): (value: any) => boolean {
+  return (value: any) => typeof value === type;
+};
+
 export const isNumber = function (value) {
   return /^\d+(\.\d+)?$/.test(value);
 };
+
+export const isNull = function (value: any): boolean {
+  return value === null;
+};
+
+export const isUndefined = isOfType('undefined');
+
+export const isNullOrUndefined = (value: any): boolean => isNull(value) || isUndefined(value);
 
 export const addUnit = function (value?: string | number): string | undefined {
   if (!isDef(value)) {
@@ -133,7 +145,7 @@ export const addUnit = function (value?: string | number): string | undefined {
  * @returns 当没有传入maxCharacter/maxLength 时返回字符串字符长度，当传入maxCharacter/maxLength时返回截取之后的字符串和长度。
  */
 export const getCharacterLength = (type: string, str: string, max?: number) => {
-  if (str === null || str === undefined || str.length === 0) {
+  if (isNullOrUndefined(str) || str.length === 0) {
     return {
       length: 0,
       characters: '',

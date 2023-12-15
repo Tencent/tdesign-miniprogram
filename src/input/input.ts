@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getCharacterLength, calcIcon } from '../common/utils';
+import { getCharacterLength, calcIcon, isNullOrUndefined } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-input`;
@@ -38,7 +38,7 @@ export default class Input extends SuperComponent {
     ready() {
       const { value } = this.properties;
       // 明确地检查null或undefined，防止0的情况被纳入
-      this.updateValue(value !== null && value !== undefined ? value : '');
+      this.updateValue(value ?? '');
     },
   };
 
@@ -85,7 +85,7 @@ export default class Input extends SuperComponent {
         this.setData({
           value,
           // 确保值为0时正确设置count
-          count: value !== null && value !== undefined ? String(value).length : 0,
+          count: isNullOrUndefined(value) ? String(value).length : 0,
         });
       }
     },
