@@ -133,7 +133,7 @@ export const addUnit = function (value?: string | number): string | undefined {
  * @returns 当没有传入maxCharacter/maxLength 时返回字符串字符长度，当传入maxCharacter/maxLength时返回截取之后的字符串和长度。
  */
 export const getCharacterLength = (type: string, str: string, max?: number) => {
-  if (!str || str.length === 0) {
+  if (str === null || str === undefined || str.length === 0) {
     return {
       length: 0,
       characters: '',
