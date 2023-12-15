@@ -85,7 +85,7 @@ export default class Input extends SuperComponent {
         this.setData({
           value,
           // 确保值为0时正确设置count
-          count: isNullOrUndefined(value) ? String(value).length : 0,
+          count: !isNullOrUndefined(value) ? String(value).length : 0,
         });
       }
     },
