@@ -37,7 +37,6 @@ export default class Input extends SuperComponent {
   lifetimes = {
     ready() {
       const { value } = this.properties;
-      // 明确地检查null或undefined，防止0的情况被纳入
       this.updateValue(value ?? '');
     },
   };
@@ -84,7 +83,6 @@ export default class Input extends SuperComponent {
       } else {
         this.setData({
           value,
-          // 确保值为0时正确设置count
           count: !isNullOrUndefined(value) ? String(value).length : 0,
         });
       }
