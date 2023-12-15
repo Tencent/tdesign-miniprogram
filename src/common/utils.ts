@@ -122,7 +122,7 @@ export const isNull = function (value: any): boolean {
   return value === null;
 };
 
-export const isUndefined = (value: any) => typeof value === 'undefined';
+export const isUndefined = (value: any): boolean => typeof value === 'undefined';
 
 export const isNullOrUndefined = (value: any): boolean => isNull(value) || isUndefined(value);
 
