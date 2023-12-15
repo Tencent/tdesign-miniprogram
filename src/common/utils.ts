@@ -114,10 +114,6 @@ const isDef = function (value: any): boolean {
   return value !== undefined && value !== null;
 };
 
-export const isOfType = function (type: string): (value: any) => boolean {
-  return (value: any) => typeof value === type;
-};
-
 export const isNumber = function (value) {
   return /^\d+(\.\d+)?$/.test(value);
 };
@@ -126,7 +122,7 @@ export const isNull = function (value: any): boolean {
   return value === null;
 };
 
-export const isUndefined = isOfType('undefined');
+export const isUndefined = (value: any) => typeof value === 'undefined';
 
 export const isNullOrUndefined = (value: any): boolean => isNull(value) || isUndefined(value);
 
