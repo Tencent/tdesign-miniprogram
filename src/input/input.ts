@@ -74,7 +74,7 @@ export default class Input extends SuperComponent {
           value: characters,
           count: length,
         });
-      } else if (maxlength > 0 && !Number.isNaN(maxlength)) {
+      } else if (maxlength && maxlength > 0 && !Number.isNaN(maxlength)) {
         const { length, characters } = getCharacterLength('maxlength', value, maxlength);
         this.setData({
           value: characters,
