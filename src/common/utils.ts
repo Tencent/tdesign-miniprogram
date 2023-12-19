@@ -109,11 +109,6 @@ export const getRect = function (context: any, selector: string, needAll: boolea
       .exec();
   });
 };
-
-const isDef = function (value: any): boolean {
-  return value !== undefined && value !== null;
-};
-
 export const isNumber = function (value) {
   return /^\d+(\.\d+)?$/.test(value);
 };
@@ -124,7 +119,9 @@ export const isNull = function (value: any): boolean {
 
 export const isUndefined = (value: any): boolean => typeof value === 'undefined';
 
-export const isNullOrUndefined = (value: any): boolean => isNull(value) || isUndefined(value);
+export const isDef = function (value: any): boolean {
+  return !isUndefined(value) && !isNull(value);
+};
 
 export const addUnit = function (value?: string | number): string | undefined {
   if (!isDef(value)) {
@@ -141,7 +138,7 @@ export const addUnit = function (value?: string | number): string | undefined {
  * @returns 当没有传入maxCharacter/maxLength 时返回字符串字符长度，当传入maxCharacter/maxLength时返回截取之后的字符串和长度。
  */
 export const getCharacterLength = (type: string, str: string, max?: number) => {
-  if (isNullOrUndefined(str) || str.length === 0) {
+  if (!isDef(str) || str.length === 0) {
     return {
       length: 0,
       characters: '',

@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getCharacterLength, calcIcon, isNullOrUndefined } from '../common/utils';
+import { getCharacterLength, calcIcon, isDef } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-input`;
@@ -83,7 +83,7 @@ export default class Input extends SuperComponent {
       } else {
         this.setData({
           value,
-          count: !isNullOrUndefined(value) ? String(value).length : 0,
+          count: isDef(value) ? String(value).length : 0,
         });
       }
     },
