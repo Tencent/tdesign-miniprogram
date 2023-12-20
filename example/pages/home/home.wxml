@@ -14,6 +14,7 @@
 </view>
 <view class="footer">
   <view class="show_privacy" bindtap="showPrivacyWin">《TDesign组件库服务声明》</view>
+  <t-footer text="该小程序仅演示示例，不收集个人信息。"></t-footer>
   <t-footer text="Copyright © 1998 - {{currentYear}} Tencent. All Rights Reserved. 腾讯公司 版权所有"></t-footer>
 </view>
 <trd-privacy id="trdPrivacy" name="TDesign组件库" date="2023年11月14日" winStyle="{{winStyle}}"></trd-privacy>
