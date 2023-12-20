@@ -130,7 +130,7 @@ export interface TdTextareaProps {
   };
   /**
    * 文本框值
-   * @default ''
+   * @default null
    */
   value?: {
     type: StringConstructor;
