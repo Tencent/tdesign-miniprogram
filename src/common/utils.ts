@@ -109,6 +109,7 @@ export const getRect = function (context: any, selector: string, needAll: boolea
       .exec();
   });
 };
+
 export const isNumber = function (value) {
   return /^\d+(\.\d+)?$/.test(value);
 };
@@ -133,12 +134,14 @@ export const addUnit = function (value?: string | number): string | undefined {
 
 /**
  * 计算字符串字符的长度并可以截取字符串。
- * @param str 传入字符串（maxcharacter条件下，一个汉字表示两个字符）
+ * @param char 传入字符串（maxcharacter条件下，一个汉字表示两个字符）
  * @param max 规定最大字符串长度
  * @returns 当没有传入maxCharacter/maxLength 时返回字符串字符长度，当传入maxCharacter/maxLength时返回截取之后的字符串和长度。
  */
-export const getCharacterLength = (type: string, str: string, max?: number) => {
-  if (!isDef(str) || str.length === 0) {
+export const getCharacterLength = (type: string, char: string | number, max?: number) => {
+  const str = String(char ?? '');
+
+  if (str.length === 0) {
     return {
       length: 0,
       characters: '',
