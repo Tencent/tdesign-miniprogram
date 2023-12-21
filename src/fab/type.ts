@@ -36,4 +36,13 @@ export interface TdFabProps {
     type: StringConstructor;
     value?: string;
   };
+  /**
+   * 是否可移动
+   * @default false
+   */
+  draggable?: {
+    type: BooleanConstructor;
+    optionalTypes: Array<StringConstructor>;
+    value?: boolean | 'all' | 'vertical' | 'horizontal';
+  };
 }
