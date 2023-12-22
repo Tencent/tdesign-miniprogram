@@ -28,7 +28,7 @@ value | String / Number / Boolean | - | value of checkbox。Typescript：`string
 
 name | params | description
 -- | -- | --
-change | `(checked: boolean)` | \-
+change | `(checked: boolean, context: { value: boolean|number|string, label: boolean|number|string })` | \-
 
 ### CheckboxGroup Props
 
@@ -46,7 +46,7 @@ default-value | Array | undefined | uncontrolled property。Typescript：`T` `ty
 
 name | params | description
 -- | -- | --
-change | `(value: CheckboxGroupValue)` | \-
+change | `(value: CheckboxGroupValue, context: { value: boolean|number|string, label: boolean|number|string })` | \-
 
 
 ### CSS Variables

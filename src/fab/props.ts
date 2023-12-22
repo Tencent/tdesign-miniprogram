@@ -20,6 +20,12 @@ const props: TdFabProps = {
     type: String,
     value: '',
   },
+  /** 是否可移动 */
+  draggable: {
+    type: Boolean,
+    optionalTypes: [String],
+    value: false,
+  },
 };
 
 export default props;

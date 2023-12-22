@@ -77,8 +77,8 @@ maxlength | Number | -1 | 用户最多可以输入的字符个数。默认为 -1
 indicator | Boolean | false | 显示文本计数器，如 0/140。当 `maxlength < 0 && maxcharacter < 0` 成立时， indicator无效 | N
 placeholder | String | undefined | 占位符 | N
 placeholderStyle | String | '' | 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight | N
-value | String | - | 文本框值 | N
-default-value | String | undefined | 文本框值。非受控属性 | N
+value | String | null | 文本框值 | N
+default-value | String | '' | 文本框值。非受控属性 | N
 fixed | Boolean | false | 如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true | N
 bordered | Boolean | false | 是否显示外边框 | N
 cursor | Number | -1 | 指定 focus 时的光标位置 | N
