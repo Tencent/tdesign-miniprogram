@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getCharacterLength, calcIcon } from '../common/utils';
+import { getCharacterLength, calcIcon, isDef } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-input`;
@@ -31,14 +31,13 @@ export default class Input extends SuperComponent {
     prefix,
     classPrefix: name,
     classBasePrefix: prefix,
-    excludeType: ['number', 'digit'],
     showClearIcon: true,
   };
 
   lifetimes = {
     ready() {
       const { value } = this.properties;
-      this.updateValue(value == null ? '' : value);
+      this.updateValue(value ?? '');
     },
   };
 
@@ -68,15 +67,14 @@ export default class Input extends SuperComponent {
 
   methods = {
     updateValue(value) {
-      const { maxcharacter, maxlength, type } = this.properties;
-      const { excludeType } = this.data;
-      if (!excludeType.includes(type) && maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+      const { maxcharacter, maxlength } = this.properties;
+      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
         this.setData({
           value: characters,
           count: length,
         });
-      } else if (!excludeType.includes(type) && maxlength > 0 && !Number.isNaN(maxlength)) {
+      } else if (maxlength && maxlength > 0 && !Number.isNaN(maxlength)) {
         const { length, characters } = getCharacterLength('maxlength', value, maxlength);
         this.setData({
           value: characters,
@@ -85,7 +83,7 @@ export default class Input extends SuperComponent {
       } else {
         this.setData({
           value,
-          count: value ? String(value).length : 0,
+          count: isDef(value) ? String(value).length : 0,
         });
       }
     },

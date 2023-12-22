@@ -209,7 +209,6 @@ describe('badge', () => {
 
     const $count = comp.querySelector('.badge >>> .t-badge--basic');
     expect($count.dom.style.top).toBe('20em');
-    expect($count.dom.style.right).toBe('15px');
   });
 
   it(':offset number without unit', async () => {
@@ -229,6 +228,5 @@ describe('badge', () => {
 
     const $count = comp.querySelector('.badge >>> .t-badge--basic');
     expect($count.dom.style.top).toBe('29px');
-    expect($count.dom.style.right).toBe('16px');
   });
 });

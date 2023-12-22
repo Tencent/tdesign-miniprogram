@@ -37,6 +37,16 @@ export default class StepItem extends SuperComponent {
     sequence: 'positive',
   };
 
+  observers = {
+    status(value) {
+      const { curStatus } = this.data;
+
+      if (curStatus === '' || value === curStatus) return;
+
+      this.setData({ curStatus: value });
+    },
+  };
+
   methods = {
     updateStatus({ current, currentStatus, index, theme, layout, items, sequence }) {
       let curStatus = this.data.status;
