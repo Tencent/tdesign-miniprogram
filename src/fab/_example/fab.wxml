@@ -14,6 +14,14 @@
     </t-button>
   </view>
 </t-demo>
+<t-demo desc="可移动悬浮按钮">
+  <view class="wrapper">
+    <t-button theme="primary" size="large" block variant="outline" bind:tap="handleChange" data-type="movable">
+      可移动悬浮按钮
+    </t-button>
+  </view>
+</t-demo>
 
 <base wx:if="{{type == 'base'}}" />
-<advance wx:else />
+<advance wx:elif="{{type == 'advance'}}" />
+<draggable wx:else />

@@ -5,7 +5,18 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['action', 'base', 'color', 'count', 'custom', 'show-text', 'size', 'special', 'un-filled'];
+const mapper = [
+  'action',
+  'base',
+  'color',
+  'count',
+  'custom',
+  'custom-prefix',
+  'show-text',
+  'size',
+  'special',
+  'un-filled',
+];
 
 describe('Rate', () => {
   mapper.forEach((demoName) => {

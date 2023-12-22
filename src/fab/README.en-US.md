@@ -9,6 +9,7 @@ button-props | Object | - | \- | N
 icon | String | - | \- | N
 style | String | right: 16px; bottom: 32px; | \- | N
 text | String | - | \- | N
+draggable | Boolean / String | false | \- | N
 
 ### Fab Events
 

@@ -19,8 +19,8 @@ label | String / Slot | - | \- | N
 maxcharacter | Number | - | \- | N
 maxlength | Number | - | \- | N
 placeholder | String | undefined | \- | N
-value | String | - | \- | N
-default-value | String | undefined | uncontrolled property | N
+value | String | null | \- | N
+default-value | String | '' | uncontrolled property | N
 
 ### Textarea Events
 

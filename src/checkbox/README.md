@@ -86,7 +86,7 @@ value | String / Number / Boolean | - | 多选框的值。TS 类型：`string \|
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(checked: boolean)` | 值变化时触发
+change | `(checked: boolean, context: { value: boolean|number|string, label: boolean|number|string })` | 值变化时触发。`context` 表示当前点击项内容。
 
 ### Checkbox 外部样式类
 类名 | 说明
@@ -113,7 +113,7 @@ default-value | Array | undefined | 选中值。非受控属性。TS 类型：`T
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(value: CheckboxGroupValue)` | 值变化时触发
+change | `(value: CheckboxGroupValue, context: { value: boolean|number|string, label: boolean|number|string })` | 值变化时触发。`context` 表示当前点击项内容。
 
 
 ### CSS 变量

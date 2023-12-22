@@ -1,6 +1,8 @@
 <view class="demo">
   <view class="demo-title">Upload 上传</view>
-  <view class="demo-desc">用于相册读取或拉起拍照的图片上传功能。</view>
+  <view class="demo-desc"
+    >用于相册读取或拉起拍照的图片上传功能。（目前示例均为禁用态，使用时请自行取消禁用态，以便正常使用上传动能。）</view
+  >
   <t-demo title="01 组件类型" desc="单选上传图片">
     <view class="upload-demo">
       <view class="upload-demo__title">上传图片</view>

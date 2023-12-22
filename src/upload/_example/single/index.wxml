@@ -1,5 +1,6 @@
 <view class="wrapper">
   <t-upload
+    disabled
     mediaType="{{['video','image']}}"
     max="{{1}}"
     files="{{fileList}}"

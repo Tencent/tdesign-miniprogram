@@ -4,6 +4,7 @@
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
     "base": "./base",
-    "advance": "./advance"
+    "advance": "./advance",
+    "draggable": "./draggable"
   }
 }

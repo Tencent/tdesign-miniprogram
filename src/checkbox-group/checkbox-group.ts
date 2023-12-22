@@ -73,7 +73,7 @@ export default class CheckBoxGroup extends SuperComponent {
       }
     },
 
-    updateValue({ value, checked, checkAll, indeterminate }) {
+    updateValue({ value, checked, checkAll, item, indeterminate }) {
       let { value: newValue } = this.data;
       const { max } = this.data;
       const keySet = new Set(this.getChildren().map((item) => item.data.value));
@@ -104,7 +104,7 @@ export default class CheckBoxGroup extends SuperComponent {
         newValue.splice(index, 1);
       }
 
-      this._trigger('change', { value: newValue });
+      this._trigger('change', { value: newValue, context: item });
     },
 
     initWithOptions() {
@@ -137,7 +137,7 @@ export default class CheckBoxGroup extends SuperComponent {
         rect.indeterminate = this.$checkAll?.data.indeterminate;
       }
 
-      this.updateValue({ ...item, checked, ...rect });
+      this.updateValue({ ...item, checked, item, ...rect });
     },
 
     setCheckall() {

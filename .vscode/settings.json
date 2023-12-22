@@ -2,8 +2,8 @@
   "editor.formatOnSave": true,
   "eslint.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true,
-    "source.fixAll.eslint": true
+    "source.fixAll.tslint": "explicit",
+    "source.fixAll.eslint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
@@ -15,6 +15,7 @@
   },
   "minapp-vscode.reserveTags": ["text"],
   "files.associations": {
+    "*.wxml": "html",
     "*.wxss": "css",
     "*.wxs": "javascript"
   },
