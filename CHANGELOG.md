@@ -6,6 +6,24 @@ docClass: timeline
 ---
 
 
+  ## 🌈 1.2.6 `2023-12-22` 
+### 🚀 Features
+- `Upload`: Upload组件新增 disabled属性，首页补充服务声明 @anlyyao ([#2489](https://github.com/Tencent/tdesign-miniprogram/pull/2489))
+- `NoticeBar`: 新增 `change` 事件，仅在 `direction` 为 `vertical` 时有效 @betavs ([#2492](https://github.com/Tencent/tdesign-miniprogram/pull/2492))
+- `Fab`: 悬浮按钮支持拖拽 @hkaikai ([#2478](https://github.com/Tencent/tdesign-miniprogram/pull/2478))
+- `Checkbox`:  `change` 事件新增参数 `context`，返回当前点击项内容 @gjl-0810 ([#2469](https://github.com/Tencent/tdesign-miniprogram/pull/2469))
+### 🐞 Bug Fixes
+- `Calender`: 兼容 `glass-easel` 框架真机环境\<include\>节点上不支持 `wx:` 指令 @jarmywang ([#2491](https://github.com/Tencent/tdesign-miniprogram/pull/2491))
+- `Step`: 修复 `status` 属性变更后子项未及时更新的问题 @betavs ([#2480](https://github.com/Tencent/tdesign-miniprogram/pull/2480))
+- `NoticeBar`: 处理基础库为 `3.x.x` 时控制台报错的问题 @betavs ([#2470](https://github.com/Tencent/tdesign-miniprogram/pull/2470))
+- `Input`: 修复 `type` 为 `digit`、`number`时，`maxlength` 和 `maxcharacter` 属性无效的问题 @zyqq ([#2497](https://github.com/Tencent/tdesign-miniprogram/pull/2497))
+- `GridItem`: 修复 `hover` 属性无效的问题 @betavs ([#2508](https://github.com/Tencent/tdesign-miniprogram/pull/2508))
+- `Tabbar`: 修复徽标遮挡底部内容的问题 @yangbai1991 ([#2456](https://github.com/Tencent/tdesign-miniprogram/pull/2456))
+### 🚧 Others
+- `Icon`: 弃用`wx.setClipboardData` 防止收集用户信息。 @anlyyao ([#2498](https://github.com/Tencent/tdesign-miniprogram/pull/2498))
+- `Textarea`: 更新文档默认值 @betavs ([#2507](https://github.com/Tencent/tdesign-miniprogram/pull/2507)) 
+
+
  ## 🌈 1.2.6 `2023-12-22` 
 ### 🚀 Features
 - `Upload`: Upload组件新增 disabled属性，首页补充服务声明 @anlyyao ([#2489](https://github.com/Tencent/tdesign-miniprogram/pull/2489))
