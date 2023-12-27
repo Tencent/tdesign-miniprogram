@@ -119,6 +119,14 @@ export interface TdUploadProps {
     type: StringConstructor;
     value?: 'media' | 'messageFile';
   };
+  /**
+   * 来源
+   * @default media
+   */
+  draggable?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
 }
 
 export type UploadMpConfig = ImageConfig | VideoConfig;

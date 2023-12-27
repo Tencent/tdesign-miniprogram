@@ -69,6 +69,11 @@ const props: TdUploadProps = {
     type: String,
     value: 'media',
   },
+  /** 来源 */
+  draggable: {
+    type: Boolean,
+    value: true,
+  },
 };
 
 export default props;

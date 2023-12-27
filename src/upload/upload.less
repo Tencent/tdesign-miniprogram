@@ -9,6 +9,7 @@
 @upload-disabled-mask: var(--td-upload-disabled-mask, rgba(255, 255, 255, 0.55));
 
 .@{prefix}-upload {
+  position: relative;
   &__grid {
     &-content {
       padding: 0;
@@ -16,6 +17,14 @@
 
     &-file {
       position: relative;
+    }
+
+    &-drag {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      transition: transform 0.3s !important;
     }
   }
 
@@ -113,4 +122,38 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.item-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.item-wrap .item {
+  position: absolute;
+  z-index: 1;
+  top: 0px;
+  left: 0px;
+  height: auto;
+  width: 100%;
+}
+
+.item-wrap .item.tran {
+  transition: transform 0.3s !important;
+}
+
+.item-wrap .item.cur {
+  z-index: 999;
+}
+
+.item-wrap .item.fixed {
+  z-index: 0 !important;
+}
+
+.item-wrap2 {
+  display: inline;
+}
+
+.item1 {
+  display: inline;
 }
