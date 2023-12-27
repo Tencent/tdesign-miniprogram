@@ -6,6 +6,11 @@
 
 import { TdSearchProps } from './type';
 const props: TdSearchProps = {
+  /** 预览结果列表 */
+  resultList: {
+    type: Array,
+    value: [],
+  },
   /** 自定义右侧操作按钮文字 */
   action: {
     type: String,

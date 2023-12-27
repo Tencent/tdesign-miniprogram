@@ -59,3 +59,12 @@
   </view>
   <slot name="action" />
 </view>
+<view class="{{classPrefix}}__result-list" aria-role="listbox">
+  <view
+    wx:for="{{resultList}}"
+    wx:key="{{index}}"
+    data-index="{{index}}"
+    class="{{classPrefix}}__result-item"
+    bind:tap="selectResultItem"
+    aria-role="option">{{item}}</view>
+</view>

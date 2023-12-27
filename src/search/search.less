@@ -84,4 +84,23 @@
       text-align: center;
     }
   }
+  &__result-item {
+    padding: 30rpx;
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 34rpx;
+    color: rgba(0, 0, 0, 0.55);
+    position: relative;
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 1rpx;
+      z-index: 2;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
 }

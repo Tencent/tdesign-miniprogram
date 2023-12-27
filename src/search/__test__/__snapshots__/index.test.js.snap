@@ -64,6 +64,9 @@ exports[`search Props :base 1`] = `
   
       </wx-view>
     </wx-view>
+    <wx-view
+      class="t-search__result-list"
+    />
   </t-search>
 </main>
 `;

@@ -26,7 +26,15 @@ exports[`Search Search base demo works fine 1`] = `
   >
     <t-search
       placeholder="搜索预设文案"
-      value=""
+    />
+  </wx-view>
+  <wx-view
+    class="example-search"
+  >
+    <t-search
+      placeholder="搜索预设文案，输入有预览结果"
+      resultList="{{Array []}}"
+      bind:change="onChangeValue"
     />
   </wx-view>
 </base>
