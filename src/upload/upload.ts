@@ -23,16 +23,15 @@ export default class Upload extends SuperComponent {
     customLimit: 0, // 内部动态修改的limit
     column: 4,
     /* 未渲染数据 */
-    baseData: {},
+    dragBaseData: {},
     pageMetaSupport: false, // 当前版本是否支持 page-meta 标签
     platform: '', // 平台信息
-    listWxs: [], // wxs 传回的最新 list 数据
     rows: 0, // 行数
 
     /* 渲染数据 */
-    wrapStyle: '', // item-wrap 样式
-    list: [], // 渲染数据列
-    dragging: false,
+    dragWrapStyle: '', // item-wrap 样式
+    dragList: [], // 渲染数据列
+    dragging: true,
     scrollTop: 0,
     dragLayout: false,
   };
@@ -80,6 +79,7 @@ export default class Upload extends SuperComponent {
     this.setData({
       customFiles: customFiles.length > max ? customFiles.slice(0, max) : customFiles,
       customLimit: max - customFiles.length,
+      dragging: true,
     });
   }
 
@@ -150,11 +150,76 @@ export default class Upload extends SuperComponent {
   initDragLayout() {
     const { draggable } = this.properties;
     if (!draggable) return;
-    // 初始必须为true以绑定wxs中的函数,
-    this.setData({ dragging: true });
     this.initDragList();
-    // // 异步加载数据时候, 延迟执行 initDom 方法, 防止基础库 2.7.1 版本及以下无法正确获取 dom 信息
-    // setTimeout(() => , 0);
+    this.initDragBaseData();
+  }
+
+  initDragList() {
+    let i = 0;
+    const { column, customFiles, customLimit } = this.data;
+    const dragList = [];
+    customFiles.forEach((item, index) => {
+      dragList.push({
+        realKey: i, // 真实顺序
+        sortKey: index, // 整体顺序
+        tranX: `${(index % column) * 100}%`,
+        tranY: `${Math.floor(index / column) * 100}%`,
+        name: item.name,
+      });
+      i += 1;
+    });
+    if (customLimit > 0) {
+      const listLength = dragList.length;
+      dragList.push({
+        realKey: listLength, // 真实顺序
+        sortKey: listLength, // 整体顺序
+        tranX: `${(listLength % column) * 100}%`,
+        tranY: `${Math.floor(listLength / column) * 100}%`,
+        fixed: true,
+      });
+    }
+    this.data.rows = Math.ceil(dragList.length / column);
+    this.setData({
+      dragList,
+    });
+  }
+
+  initDragBaseData() {
+    const { classPrefix, rows, column, customFiles } = this.data;
+    if (customFiles.length === 0) return;
+    const query = this.createSelectorQuery();
+    const selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
+    const selectorGrid = `.${classPrefix} >>> .t-grid`;
+    query.select(selectorGridItem).boundingClientRect();
+    query.select(selectorGrid).boundingClientRect();
+    query.selectViewport().scrollOffset();
+    query.exec((res) => {
+      const [{ width, height }, { left, top }, { scrollTop }] = res;
+      const dragBaseData = {
+        rows,
+        classPrefix,
+        itemWidth: width,
+        itemHeight: height,
+        wrapLeft: left,
+        wrapTop: top + scrollTop,
+        columns: column,
+      };
+      const dragWrapStyle = `height: ${rows * height}px`;
+      this.setData(
+        {
+          dragBaseData,
+          dragWrapStyle,
+          dragLayout: true,
+        },
+        () => {
+          // 为了给拖拽元素加上拖拽方法，同时控制不拖拽时不取消穿透
+          const timer = setTimeout(() => {
+            this.setData({ dragging: false });
+            clearTimeout(timer);
+          }, 0);
+        },
+      );
+    });
   }
 
   methods = {
@@ -300,103 +365,29 @@ export default class Upload extends SuperComponent {
       this.startUpload(files);
     },
 
-    initWrapStyle() {
-      const { classPrefix, rows = 1 } = this.data;
-      const query = this.createSelectorQuery();
-      const name = `.${classPrefix} >>> .t-grid-item`;
-      query.select(name).boundingClientRect();
-      query.exec((res) => {
-        const { height } = res[0];
-        const wrapStyle = `height: ${rows * height}px`;
-        this.setData({ wrapStyle });
-      });
-    },
-
-    initDragList() {
-      let i = 0;
-      const { column, customFiles, customLimit } = this.data;
-      const list = customFiles.map((item, index) => {
-        item.realKey = i; // 真实顺序
-        item.sortKey = index; // 整体顺序
-        item.tranX = `${(item.sortKey % column) * 100}%`;
-        item.tranY = `${Math.floor(item.sortKey / column) * 100}%`;
-        i += 1;
-        return item;
-      });
-      if (customLimit > 0) {
-        const listLength = list.length;
-        list.push({
-          realKey: listLength, // 真实顺序
-          sortKey: listLength, // 整体顺序
-          tranX: `${(listLength % column) * 100}%`,
-          tranY: `${Math.floor(listLength / column) * 100}%`,
-          fixed: true,
-        });
-      }
-      this.data.rows = Math.ceil(list.length / column);
-      this.initWrapStyle();
-      this.initDom();
-      this.setData({
-        list,
-        listWxs: list,
-      });
-    },
-
-    initDom() {
-      const baseData = {} as any;
-      const { classPrefix, rows, column, scrollTop, customFiles } = this.data;
-      if (customFiles.length === 0) return;
-      const query = this.createSelectorQuery();
-      const itemName = `.${classPrefix} >>> .t-grid-item`;
-      const itemName2 = `.${classPrefix} >>> .t-grid`;
-      query.select(itemName).boundingClientRect();
-      query.select(itemName2).boundingClientRect();
-      query.exec((res) => {
-        baseData.itemWidth = res[0].width;
-        baseData.itemHeight = res[0].height;
-        baseData.wrapLeft = res[1].left;
-        baseData.wrapTop = res[1].top + scrollTop;
-        baseData.columns = column;
-        baseData.rows = rows;
-        this.setData({
-          dragging: false,
-          baseData,
-          dragLayout: true,
-        });
-      });
-    },
-    vibrate() {
-      if (this.data.platform !== 'devtools') wx.vibrateShort({} as any);
-    },
-    pageScroll(e) {
-      if (this.data.pageMetaSupport) {
-        this.triggerEvent('scroll', {
-          scrollTop: e.scrollTop,
-        });
-      } else {
-        wx.pageScrollTo({
-          scrollTop: e.scrollTop,
-          duration: 300,
+    dragVibrate(e) {
+      const { vibrateType } = e;
+      const { dragVibrate, dragCollisionVibrate } = this.data;
+      if ((dragVibrate && vibrateType === 'longPress') || (dragCollisionVibrate && vibrateType === 'touchMove')) {
+        wx.vibrateShort({
+          type: 'light',
         });
       }
     },
-    drag(e) {
-      this.setData({
-        dragging: e.dragging,
-      });
+
+    dragStatusChange(e) {
+      const { dragging } = e;
+      this.setData({ dragging });
     },
+
     listChange(e) {
-      this.data.listWxs = e.list;
+      const { startIndex, endIndex } = e;
+      const { customFiles } = this.data;
+      const temp = customFiles[startIndex];
+      customFiles[startIndex] = customFiles[endIndex];
+      customFiles[endIndex] = temp;
     },
-    itemClick(e) {
-      const { index } = e.currentTarget.dataset;
-      const item = this.data.listWxs[index];
 
-      this.triggerEvent('click', {
-        key: item.realKey,
-        data: item.data,
-        extra: e.detail,
-      });
-    },
+    dragEnd() {},
   };
 }

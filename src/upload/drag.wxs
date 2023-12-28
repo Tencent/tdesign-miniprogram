@@ -1,9 +1,13 @@
+var classPrefix = '';
+var startIndex = 0;
+var endIndex = 0;
+
 var isOutRange = function (x1, y1, x2, y2, x3, y3) {
   return x1 < 0 || x1 >= y1 || x2 < 0 || x2 >= y2 || x3 < 0 || x3 >= y3;
 };
 
 var sortCore = function (sKey, eKey, st) {
-  var _ = st.baseData;
+  var _ = st.dragBaseData;
 
   var excludeFix = function (cKey, type) {
     if (st.list[cKey].fixed) {
@@ -75,7 +79,7 @@ var triggerCustomEvent = function (list, type, ins) {
 var longPress = function (event, ownerInstance) {
   var ins = event.instance;
   var st = ownerInstance.getState();
-  var _ = st.baseData;
+  var _ = st.dragBaseData;
 
   var sTouch = event.changedTouches[0];
   if (!sTouch) return;
@@ -89,7 +93,7 @@ var longPress = function (event, ownerInstance) {
   // 如果已经在 drag 中则返回, 防止多指触发 drag 动作, touchstart 事件中有效果
   if (st.dragging) return;
   st.dragging = true;
-  ownerInstance.callMethod('drag', { dragging: true });
+  ownerInstance.callMethod('dragStatusChange', { dragging: true });
 
   // 计算X,Y轴初始位移, 使 item 中心移动到点击处, 单列时候X轴初始不做位移
   st.tranX = _.columns === 1 ? 0 : sTouch.pageX - (_.itemWidth / 2 + _.wrapLeft);
@@ -98,19 +102,17 @@ var longPress = function (event, ownerInstance) {
   ins.setStyle({
     transform: 'translate3d(' + st.tranX + 'px, ' + st.tranY + 'px, 0)',
   });
-
   st.itemsInstance.forEach(function (item, index) {
-    item.removeClass('tran').removeClass('cur');
-    item.addClass(index === st.cur ? 'cur' : 'tran');
+    item.removeClass(classPrefix + '__drag--tran').removeClass(classPrefix + '__drag--cur');
+    item.addClass(index === st.cur ? classPrefix + '__drag--cur' : classPrefix + '__drag--tran');
   });
-
-  ownerInstance.callMethod('vibrate');
+  ownerInstance.callMethod('dragVibrate', { vibrateType: 'longPress' });
 };
 
 var touchMove = function (event, ownerInstance) {
   var ins = event.instance;
   var st = ownerInstance.getState();
-  var _ = st.baseData;
+  var _ = st.dragBaseData;
 
   var mTouch = event.changedTouches[0];
   if (!mTouch) return;
@@ -159,6 +161,8 @@ var touchMove = function (event, ownerInstance) {
   st.preStartKey = startKey;
 
   var list = sortCore(startKey, endKey, st);
+  startIndex = startKey;
+  endIndex = endKey;
   st.itemsInstance.forEach(function (itemIns, index) {
     var item = list[index];
     if (index !== st.cur) {
@@ -168,8 +172,8 @@ var touchMove = function (event, ownerInstance) {
     }
   });
 
-  ownerInstance.callMethod('vibrate');
-  ownerInstance.callMethod('listChange', { list: list });
+  ownerInstance.callMethod('dragVibrate', { vibrateType: 'touchMove' });
+  ownerInstance.callMethod('listChange', { list: list, startIndex: startIndex, endIndex: endIndex });
   triggerCustomEvent(list, 'change', ownerInstance);
 };
 
@@ -180,28 +184,31 @@ var touchEnd = function (event, ownerInstance) {
   if (!st.dragging) return;
   triggerCustomEvent(st.list, 'sortend', ownerInstance);
 
-  ins.addClass('tran');
+  ins.addClass(classPrefix + '__drag--tran');
   ins.setStyle({
     transform: 'translate3d(' + st.list[st.cur].tranX + ',' + st.list[st.cur].tranY + ', 0)',
   });
-
+  // st.itemsInstance.forEach(function (item, index) {
+  //   item.removeClass(classPrefix + '__drag--tran');
+  // });
   st.preStartKey = -1;
   st.dragging = false;
-  ownerInstance.callMethod('drag', { dragging: false });
+  ownerInstance.callMethod('dragStatusChange', { dragging: false });
   st.cur = -1;
   st.tranX = 0;
   st.tranY = 0;
+  ownerInstance.callMethod('dragEnd', { startIndex: startIndex, endIndex: endIndex });
 };
 
 var baseDataObserver = function (newVal, oldVal, ownerInstance, ins) {
   var st = ownerInstance.getState();
-  st.baseData = newVal;
+  st.dragBaseData = newVal;
+  classPrefix = newVal.classPrefix;
 };
 
 var listObserver = function (newVal, oldVal, ownerInstance, ins) {
   var st = ownerInstance.getState();
-  st.itemsInstance = ownerInstance.selectAllComponents('.item');
-
+  st.itemsInstance = ownerInstance.selectAllComponents('.' + classPrefix + '__drag-item');
   st.list = newVal || [];
 
   st.list.forEach(function (item, index) {
@@ -210,7 +217,7 @@ var listObserver = function (newVal, oldVal, ownerInstance, ins) {
       itemIns.setStyle({
         transform: 'translate3d(' + item.tranX + ',' + item.tranY + ', 0)',
       });
-      if (item.fixed) itemIns.addClass('fixed');
+      if (item.fixed) itemIns.addClass(classPrefix + '__drag--fixed');
     }
   });
 };

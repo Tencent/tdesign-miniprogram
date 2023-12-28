@@ -69,10 +69,20 @@ const props: TdUploadProps = {
     type: String,
     value: 'media',
   },
-  /** 来源 */
+  /** 是否支持拖拽 */
   draggable: {
     type: Boolean,
     value: true,
+  },
+  /** 拖拽时是否需要振动 */
+  dragVibrate: {
+    type: Boolean,
+    value: true,
+  },
+  /** 拖拽时是否需要振动 */
+  dragCollisionVibrate: {
+    type: Boolean,
+    value: false,
   },
 };
 

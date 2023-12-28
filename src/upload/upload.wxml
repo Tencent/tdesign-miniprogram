@@ -96,22 +96,22 @@
     </block>
     <block wx:else>
       <view
-        class="{{draggable ? 'item-wrap' : 'item-wrap2'}}"
-        list="{{list}}"
-        style="{{wrapStyle}};"
-        baseData="{{baseData}}"
+        class="{{classPrefix}}__drag"
+        list="{{dragList}}"
+        style="{{dragWrapStyle}};"
+        dragBaseData="{{dragBaseData}}"
         change:list="{{handler.listObserver}}"
-        change:baseData="{{handler.baseDataObserver}}"
+        change:dragBaseData="{{handler.baseDataObserver}}"
       >
         <view
-          class="{{draggable ? 'item' : 'item1'}}"
+          class="{{classPrefix}}__drag-item"
           wx:for="{{customFiles}}"
           wx:key="index"
           wx:for-item="file"
-          style="{{draggable ? ('width:' + 100 / column + '%') : ''}}"
+          style="width: {{100 / column}}%"
           bind:longpress="{{handler.longPress}}"
-          catch:touchmove="{{handler.touchMove}}"
-          catch:touchend="{{handler.touchEnd}}"
+          catch:touchmove="{{dragging ? handler.touchMove : ''}}"
+          catch:touchend="{{dragging ? handler.touchEnd : ''}}"
           data-index="{{index}}"
         >
           <!-- 图片/视频 -->
@@ -181,6 +181,7 @@
                 class="{{classPrefix}}__close-btn hotspot-expanded"
                 bindtap="onDelete"
                 data-index="{{index}}"
+                data-url="{{file.url}}"
                 aria-role="button"
                 aria-label="删除"
               >
@@ -190,7 +191,7 @@
           </t-grid-item>
           <!-- 添加 -->
         </view>
-        <view class="{{draggable ? 'item'  :'item1'}}" style="{{draggable ? ('width:' + 100 / column + '%') : ''}}">
+        <view class="{{classPrefix}}__drag-item" style="width: {{100 / column}}%">
           <t-grid-item
             wx:if="{{customLimit > 0}}"
             t-class="{{classPrefix}}__grid"

@@ -120,10 +120,26 @@ export interface TdUploadProps {
     value?: 'media' | 'messageFile';
   };
   /**
-   * 来源
-   * @default media
+   * 是否开启拖拽上传
+   * @default false
    */
   draggable?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 拖拽时是否振动
+   * @default false
+   */
+  dragVibrate?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 拖拽碰撞时是否振动
+   * @default false
+   */
+  dragCollisionVibrate?: {
     type: BooleanConstructor;
     value?: boolean;
   };

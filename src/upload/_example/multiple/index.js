@@ -13,7 +13,7 @@ Component({
       },
       {
         url: 'https://tdesign.gtimg.com/miniprogram/images/example5.png',
-        name: 'uploaded1.png',
+        name: 'uploaded3.png',
         type: 'image',
       },
     ],
@@ -36,6 +36,7 @@ Component({
     handleRemove(e) {
       const { index } = e.detail;
       const { originFiles } = this.data;
+      console.log('originFiles', originFiles);
       originFiles.splice(index, 1);
       this.setData({
         originFiles,
