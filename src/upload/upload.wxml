@@ -8,7 +8,7 @@
       <!-- 图片/视频 -->
       <t-grid-item
         wx:for="{{customFiles}}"
-        wx:key="index"
+        wx:key="url"
         wx:for-item="file"
         t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
         t-class-content="{{classPrefix}}__grid-content"
@@ -106,7 +106,7 @@
         <view
           class="{{classPrefix}}__drag-item"
           wx:for="{{customFiles}}"
-          wx:key="{{file.name}}"
+          wx:key="url"
           wx:for-item="file"
           style="width: {{100 / column}}%"
           bind:longpress="{{handler.longPress}}"
@@ -191,9 +191,8 @@
           </t-grid-item>
           <!-- 添加 -->
         </view>
-        <view class="{{classPrefix}}__drag-item" style="width: {{100 / column}}%">
+        <view class="{{classPrefix}}__drag-item" style="width: {{100 / column}}%" wx:if="{{customLimit > 0}}">
           <t-grid-item
-            wx:if="{{customLimit > 0}}"
             t-class="{{classPrefix}}__grid"
             t-class-content="{{classPrefix}}__grid-content"
             bindclick="onAddTap"

@@ -1,6 +1,7 @@
 var classPrefix = '';
 var startIndex = 0;
 var endIndex = 0;
+var dragCollisionList = [];
 
 var isOutRange = function (x1, y1, x2, y2, x3, y3) {
   return x1 < 0 || x1 >= y1 || x2 < 0 || x2 >= y2 || x3 < 0 || x3 >= y3;
@@ -160,11 +161,11 @@ var touchMove = function (event, ownerInstance) {
   if (startKey === endKey || startKey === st.preStartKey) return;
   st.preStartKey = startKey;
 
-  var list = sortCore(startKey, endKey, st);
+  dragCollisionList = sortCore(startKey, endKey, st);
   startIndex = startKey;
   endIndex = endKey;
   st.itemsInstance.forEach(function (itemIns, index) {
-    var item = list[index];
+    var item = dragCollisionList[index];
     if (index !== st.cur) {
       itemIns.setStyle({
         transform: 'translate3d(' + item.tranX + ',' + item.tranY + ', 0)',
@@ -173,8 +174,12 @@ var touchMove = function (event, ownerInstance) {
   });
 
   ownerInstance.callMethod('dragVibrate', { vibrateType: 'touchMove' });
-  ownerInstance.callMethod('dragCollision', { list: list, startIndex: startIndex, endIndex: endIndex });
-  triggerCustomEvent(list, 'change', ownerInstance);
+  ownerInstance.callMethod('dragCollision', {
+    dragCollisionList: dragCollisionList,
+    startIndex: startIndex,
+    endIndex: endIndex,
+  });
+  triggerCustomEvent(dragCollisionList, 'change', ownerInstance);
 };
 
 var touchEnd = function (event, ownerInstance) {
@@ -188,16 +193,17 @@ var touchEnd = function (event, ownerInstance) {
   ins.setStyle({
     transform: 'translate3d(' + st.list[st.cur].tranX + ',' + st.list[st.cur].tranY + ', 0)',
   });
-  // st.itemsInstance.forEach(function (item, index) {
-  //   item.removeClass(classPrefix + '__drag--tran');
-  // });
   st.preStartKey = -1;
   st.dragging = false;
   ownerInstance.callMethod('dragStatusChange', { dragging: false });
+  ownerInstance.callMethod('dragEnd', {
+    dragCollisionList: dragCollisionList,
+    startIndex: startIndex,
+    endIndex: endIndex,
+  });
   st.cur = -1;
   st.tranX = 0;
   st.tranY = 0;
-  ownerInstance.callMethod('dragEnd', { startIndex: startIndex, endIndex: endIndex });
 };
 
 var baseDataObserver = function (newVal, oldVal, ownerInstance, ins) {
@@ -206,7 +212,6 @@ var baseDataObserver = function (newVal, oldVal, ownerInstance, ins) {
   classPrefix = newVal.classPrefix;
 };
 
-var test = false;
 var listObserver = function (newVal, oldVal, ownerInstance, ins) {
   var st = ownerInstance.getState();
   st.itemsInstance = ownerInstance.selectAllComponents('.' + classPrefix + '__drag-item');
@@ -215,7 +220,9 @@ var listObserver = function (newVal, oldVal, ownerInstance, ins) {
   st.list.forEach(function (item, index) {
     var itemIns = st.itemsInstance[index];
     if (item && itemIns) {
-      itemIns.removeClass(classPrefix + '__drag--tran');
+      if (st.cur !== index) {
+        itemIns.removeClass(classPrefix + '__drag--tran');
+      }
       itemIns.setStyle({
         transform: 'translate3d(' + item.tranX + ',' + item.tranY + ', 0)',
       });

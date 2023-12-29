@@ -16,6 +16,11 @@ Component({
         name: 'uploaded3.png',
         type: 'image',
       },
+      {
+        url: 'https://tdesign.gtimg.com/miniprogram/images/example7.png',
+        name: 'uploaded4.png',
+        type: 'image',
+      },
     ],
     gridConfig: {
       column: 4,
@@ -44,6 +49,11 @@ Component({
     },
     handleClick(e) {
       console.log(e.detail.file);
+    },
+
+    handleSortEnd(e) {
+      console.log('customFiles', e.detail.files);
+      this.setData({ originFiles: e.detail.files });
     },
   },
 });
