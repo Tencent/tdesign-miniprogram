@@ -22,18 +22,14 @@ export default class Upload extends SuperComponent {
     customFiles: [] as UploadFile[], // 内部动态修改的files
     customLimit: 0, // 内部动态修改的limit
     column: 4,
-    /* 未渲染数据 */
-    dragBaseData: {},
-    pageMetaSupport: false, // 当前版本是否支持 page-meta 标签
-    platform: '', // 平台信息
+    dragBaseData: {}, // 拖拽所需要页面数据
     rows: 0, // 行数
-
-    /* 渲染数据 */
-    dragWrapStyle: '', // item-wrap 样式
-    dragList: [], // 渲染数据列
-    dragging: true,
-    scrollTop: 0,
-    dragLayout: false,
+    dragWrapStyle: '', // 拖拽容器的样式
+    dragList: [], // 拖拽的数据列
+    dragging: true, // 是否开始拖拽
+    dragLayout: false, // 是否开启拖拽布局
+    deleteIndex: -1, // 删除的文件的索引
+    sortEnd: false, // 排序结束
   };
 
   properties = props;
@@ -134,6 +130,8 @@ export default class Upload extends SuperComponent {
   deleteHandle(index: number) {
     const { customFiles } = this.data;
     const delFile = customFiles[index];
+    this.data.deleteIndex = index;
+    this.data.sortEnd = false;
     this.triggerEvent('remove', { index, file: delFile });
   }
 
@@ -150,22 +148,36 @@ export default class Upload extends SuperComponent {
   initDragLayout() {
     const { draggable } = this.properties;
     if (!draggable) return;
+    const { deleteIndex, sortEnd } = this.data;
+    if (sortEnd) {
+      this.data.sortEnd = false;
+      return;
+    }
+    if (deleteIndex > -1) {
+      this.data.dragList = [];
+      this.data.deleteIndex = -1;
+    }
     this.initDragList();
     this.initDragBaseData();
   }
 
   initDragList() {
     let i = 0;
-    const { column, customFiles, customLimit } = this.data;
-    const dragList = [];
+    const { column, customFiles, customLimit, dragList } = this.data;
+    const isFixedLastItem = this.getDragListIsFixed();
+    // 先删除最后一个
+    isFixedLastItem && dragList.splice(-1, 1);
     customFiles.forEach((item, index) => {
-      dragList.push({
-        realKey: i, // 真实顺序
-        sortKey: index, // 整体顺序
-        tranX: `${(index % column) * 100}%`,
-        tranY: `${Math.floor(index / column) * 100}%`,
-        name: item.name,
-      });
+      if (!dragList[index]) {
+        dragList.push({
+          fileIndex: index,
+          realKey: i, // 真实顺序
+          sortKey: index, // 整体顺序
+          tranX: `${(index % column) * 100}%`,
+          tranY: `${Math.floor(index / column) * 100}%`,
+          name: item.name,
+        });
+      }
       i += 1;
     });
     if (customLimit > 0) {
@@ -182,6 +194,11 @@ export default class Upload extends SuperComponent {
     this.setData({
       dragList,
     });
+  }
+
+  getDragListIsFixed() {
+    const { dragList } = this.data;
+    return dragList.findIndex((item) => item.fixed) !== -1;
   }
 
   initDragBaseData() {
@@ -259,7 +276,8 @@ export default class Upload extends SuperComponent {
     onAddTap() {
       const { disabled, mediaType, source } = this.properties;
       if (disabled) return;
-
+      this.data.deleteIndex = -1;
+      this.data.sortEnd = false;
       if (source === 'media') {
         this.chooseMedia(mediaType);
       } else {
@@ -380,14 +398,19 @@ export default class Upload extends SuperComponent {
       this.setData({ dragging });
     },
 
-    listChange(e) {
-      const { startIndex, endIndex } = e;
+    dragCollision(e) {
+      const { list, startIndex, endIndex } = e;
       const { customFiles } = this.data;
       const temp = customFiles[startIndex];
       customFiles[startIndex] = customFiles[endIndex];
       customFiles[endIndex] = temp;
+      this.data.dragList = list;
     },
 
-    dragEnd() {},
+    dragEnd() {
+      this.data.sortEnd = true;
+      this.data.deleteIndex = -1;
+      this.triggerEvent('sort-end', { files: this.data.customFiles });
+    },
   };
 }

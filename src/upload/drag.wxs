@@ -173,7 +173,7 @@ var touchMove = function (event, ownerInstance) {
   });
 
   ownerInstance.callMethod('dragVibrate', { vibrateType: 'touchMove' });
-  ownerInstance.callMethod('listChange', { list: list, startIndex: startIndex, endIndex: endIndex });
+  ownerInstance.callMethod('dragCollision', { list: list, startIndex: startIndex, endIndex: endIndex });
   triggerCustomEvent(list, 'change', ownerInstance);
 };
 
@@ -206,6 +206,7 @@ var baseDataObserver = function (newVal, oldVal, ownerInstance, ins) {
   classPrefix = newVal.classPrefix;
 };
 
+var test = false;
 var listObserver = function (newVal, oldVal, ownerInstance, ins) {
   var st = ownerInstance.getState();
   st.itemsInstance = ownerInstance.selectAllComponents('.' + classPrefix + '__drag-item');
@@ -214,6 +215,7 @@ var listObserver = function (newVal, oldVal, ownerInstance, ins) {
   st.list.forEach(function (item, index) {
     var itemIns = st.itemsInstance[index];
     if (item && itemIns) {
+      itemIns.removeClass(classPrefix + '__drag--tran');
       itemIns.setStyle({
         transform: 'translate3d(' + item.tranX + ',' + item.tranY + ', 0)',
       });

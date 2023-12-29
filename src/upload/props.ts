@@ -72,7 +72,7 @@ const props: TdUploadProps = {
   /** 是否支持拖拽 */
   draggable: {
     type: Boolean,
-    value: true,
+    value: false,
   },
   /** 拖拽时是否需要振动 */
   dragVibrate: {

@@ -106,7 +106,7 @@
         <view
           class="{{classPrefix}}__drag-item"
           wx:for="{{customFiles}}"
-          wx:key="index"
+          wx:key="{{file.name}}"
           wx:for-item="file"
           style="width: {{100 / column}}%"
           bind:longpress="{{handler.longPress}}"
