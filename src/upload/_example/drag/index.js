@@ -44,5 +44,9 @@ Component({
     handleClick(e) {
       console.log(e.detail.file);
     },
+
+    handleSortEnd(e) {
+      this.setData({ originFiles: e.detail.files });
+    },
   },
 });

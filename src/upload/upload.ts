@@ -142,8 +142,8 @@ export default class Upload extends SuperComponent {
   }
 
   initDragLayout() {
-    const { draggable } = this.properties;
-    if (!draggable) return;
+    const { draggable, disabled } = this.properties;
+    if (!draggable || disabled) return;
     this.initDragList();
     this.initDragBaseData();
   }
