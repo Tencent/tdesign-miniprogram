@@ -15,7 +15,7 @@
       <multiple />
     </view>
   </t-demo>
-  <t-demo title="" desc="拖拽排序图片">
+  <t-demo title="" desc="长按拖拽排序图片">
     <view class="upload-demo">
       <view class="upload-demo__title">上传图片</view>
       <drag />

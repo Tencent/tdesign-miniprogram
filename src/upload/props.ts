@@ -74,12 +74,12 @@ const props: TdUploadProps = {
     type: Boolean,
     value: false,
   },
-  /** 拖拽时是否需要振动 */
+  /** 长按启动拖拽时是否需要振动 */
   dragVibrate: {
     type: Boolean,
     value: true,
   },
-  /** 拖拽时是否需要振动 */
+  /** 拖拽碰撞时是否需要振动 */
   dragCollisionVibrate: {
     type: Boolean,
     value: false,

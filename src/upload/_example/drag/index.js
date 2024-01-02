@@ -46,7 +46,10 @@ Component({
     },
 
     handleSortEnd(e) {
-      this.setData({ originFiles: e.detail.files });
+      const { files } = e.detail;
+      this.setData({
+        originFiles: files,
+      });
     },
   },
 });

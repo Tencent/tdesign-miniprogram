@@ -47,6 +47,9 @@ export default class Upload extends SuperComponent {
     gridConfig() {
       this.updateGrid();
     },
+    draggable(value) {
+      value && this.initDragLayout();
+    },
   };
 
   lifetimes = {
