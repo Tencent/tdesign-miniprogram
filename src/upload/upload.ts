@@ -152,7 +152,6 @@ export default class Upload extends SuperComponent {
   }
 
   initDragList() {
-    // TODO 如果没有更新数据需要把之前拖拽列表的数据保存下来
     let i = 0;
     const { column, customFiles, customLimit } = this.data;
     const dragList = [];
@@ -376,8 +375,6 @@ export default class Upload extends SuperComponent {
       const { dragging } = e;
       this.setData({ dragging });
     },
-
-    dragCollision() {},
 
     dragEnd(e) {
       const { dragCollisionList } = e;

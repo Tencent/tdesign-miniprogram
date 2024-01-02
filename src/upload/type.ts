@@ -120,7 +120,7 @@ export interface TdUploadProps {
     value?: 'media' | 'messageFile';
   };
   /**
-   * 是否开启拖拽上传
+   * 是否支持拖拽排序
    * @default false
    */
   draggable?: {
@@ -128,7 +128,7 @@ export interface TdUploadProps {
     value?: boolean;
   };
   /**
-   * 拖拽时是否振动
+   * 长按启动拖拽时是否需要振动
    * @default false
    */
   dragVibrate?: {
@@ -136,7 +136,7 @@ export interface TdUploadProps {
     value?: boolean;
   };
   /**
-   * 拖拽碰撞时是否振动
+   * 拖拽碰撞时是否需要振动
    * @default false
    */
   dragCollisionVibrate?: {
