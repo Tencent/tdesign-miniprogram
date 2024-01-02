@@ -2,6 +2,7 @@ var classPrefix = '';
 var startIndex = 0;
 var endIndex = 0;
 var dragCollisionList = [];
+var itemsInstanceLength = 0;
 
 var isOutRange = function (x1, y1, x2, y2, x3, y3) {
   return x1 < 0 || x1 >= y1 || x2 < 0 || x2 >= y2 || x3 < 0 || x3 >= y3;
@@ -86,6 +87,7 @@ var longPress = function (event, ownerInstance) {
   if (!sTouch) return;
 
   st.cur = ins.getDataset().index;
+  longPressIndex = st.cur;
 
   // 初始项是固定项则返回
   var item = st.list[st.cur];
@@ -216,11 +218,10 @@ var listObserver = function (newVal, oldVal, ownerInstance, ins) {
   var st = ownerInstance.getState();
   st.itemsInstance = ownerInstance.selectAllComponents('.' + classPrefix + '__drag-item');
   st.list = newVal || [];
-
   st.list.forEach(function (item, index) {
     var itemIns = st.itemsInstance[index];
     if (item && itemIns) {
-      if (st.cur !== index) {
+      if (itemsInstanceLength !== st.itemsInstance.length) {
         itemIns.removeClass(classPrefix + '__drag--tran');
       }
       itemIns.setStyle({
@@ -229,6 +230,7 @@ var listObserver = function (newVal, oldVal, ownerInstance, ins) {
       if (item.fixed) itemIns.addClass(classPrefix + '__drag--fixed');
     }
   });
+  itemsInstanceLength = st.itemsInstance.length;
 };
 
 module.exports = {

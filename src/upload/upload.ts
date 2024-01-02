@@ -381,6 +381,10 @@ export default class Upload extends SuperComponent {
 
     dragEnd(e) {
       const { dragCollisionList } = e;
+      if (dragCollisionList.length === 0) {
+        this.triggerEvent('sort-end', { files: this.data.customFiles });
+        return;
+      }
       const files = dragCollisionList.reduce((list, item) => {
         const { realKey, data, fixed } = item;
         if (!fixed) {

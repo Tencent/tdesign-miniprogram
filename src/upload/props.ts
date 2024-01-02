@@ -69,7 +69,7 @@ const props: TdUploadProps = {
     type: String,
     value: 'media',
   },
-  /** 是否支持拖拽 */
+  /** 是否支持拖拽排序 */
   draggable: {
     type: Boolean,
     value: false,

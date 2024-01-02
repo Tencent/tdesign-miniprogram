@@ -20,6 +20,9 @@ media-type | Array | ['image', 'video'] | Typescript：`Array<MediaType>` `type 
 request-method | Function | - | \- | N
 size-limit | Number / Object | - | Typescript：`number \| SizeLimitObj` `interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string }` `type SizeUnitArray = ['B', 'KB', 'MB', 'GB']` `type SizeUnit = SizeUnitArray[number]`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 source | String | media | options：media/messageFile | N
+draggable | Boolean | false | - | N
+drag-vibrate | Boolean | true | - | N
+drag-collision-vibrate | Boolean | false | - | N
 
 ### Upload Events
 
@@ -31,6 +34,9 @@ fail | \- | \-
 remove | `(index: number; file: UploadFile)` | \-
 select-change | `(currentSelectedFiles: MediaContext[])` | \-
 success | `(files: MediaContext)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
+click | `(file: VideoContext \| ImageContext)` | -
+sore-end | `(files: MediaContext)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface 
+ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
 
 
 ### CSS Variables
@@ -44,3 +50,4 @@ Name | Default Value | Description
 --td-upload-add-icon-font-size | 56rpx | - 
 --td-upload-disabled-mask | rgba(255, 255, 255, 0.55) | - 
 --td-upload-radius | @radius-default | - 
+--td-upload-drag-z-index | 999 | - 

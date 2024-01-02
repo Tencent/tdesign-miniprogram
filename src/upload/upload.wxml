@@ -3,7 +3,13 @@
 <wxs src="./drag.wxs" module="handler" />
 
 <view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
-  <t-grid gutter="{{gutter}}" border="{{false}}" align="center" column="{{column}}" style="overflow: visible">
+  <t-grid
+    gutter="{{gutter}}"
+    border="{{false}}"
+    align="center"
+    column="{{column}}"
+    style="{{draggable? 'overflow: visible' : ''}}"
+  >
     <block wx:if="{{!dragLayout}}">
       <!-- 图片/视频 -->
       <t-grid-item
@@ -119,7 +125,7 @@
             t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
             t-class-content="{{classPrefix}}__grid-content"
             aria-role="presentation"
-            style="{{draggable ? 'width: 100%' : ''}}"
+            style="width: 100%"
           >
             <view
               class="{{classPrefix}}__wrapper {{disabled? classPrefix + '__wrapper--disabled' : '' }}"
@@ -197,7 +203,7 @@
             t-class-content="{{classPrefix}}__grid-content"
             bindclick="onAddTap"
             aria-label="上传"
-            style="{{draggable ? 'width: 100%' : ''}}"
+            style="width: 100%"
           >
             <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
               <slot name="add-content" />
