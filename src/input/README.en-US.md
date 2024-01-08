@@ -16,6 +16,7 @@ error-message | String | - | `deprecated` | N
 external-classes | Array | - | `['t-class', 't-class-input', 't-class-placeholder', 't-class-error-msg']` | N
 format | Function | - | Typescript：`InputFormatType` `type InputFormatType = (value: InputValue) => string`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 label | String / Slot | - | \- | N
+name | String | - | name of input element, same as name of Miniprogram. | N
 maxcharacter | Number | - | \- | N
 maxlength | Number | - | \- | N
 placeholder | String | undefined | \- | N
