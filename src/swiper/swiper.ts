@@ -73,6 +73,7 @@ export default class Swiper extends SuperComponent {
 
       this.setData({
         navCurrent: current,
+        current,
       });
 
       this.triggerEvent('change', { current, source });
