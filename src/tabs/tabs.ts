@@ -168,7 +168,7 @@ export default class Tabs extends SuperComponent {
     },
 
     async setTrack() {
-      if (!this.properties.showBottomLine) return;
+      // if (!this.properties.showBottomLine) return;
       const { children } = this;
       if (!children) return;
       const { currentIndex } = this.data;
