@@ -121,27 +121,18 @@ export interface TdUploadProps {
   };
   /**
    * 是否支持拖拽排序
-   * @default false
    */
   draggable?: {
-    type: BooleanConstructor;
-    value?: boolean;
+    type: null;
+    value?: boolean | Draggable;
   };
+
   /**
-   * 长按启动拖拽时是否需要振动
-   * @default false
+   * 过渡参数
    */
-  dragVibrate?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 拖拽碰撞时是否需要振动
-   * @default false
-   */
-  dragCollisionVibrate?: {
-    type: BooleanConstructor;
-    value?: boolean;
+  transition?: {
+    type: ObjectConstructor;
+    value: Transition;
   };
 }
 
@@ -191,3 +182,14 @@ export interface SizeLimitObj {
 export type SizeUnitArray = ['B', 'KB', 'MB', 'GB'];
 
 export type SizeUnit = SizeUnitArray[number];
+
+export interface Draggable {
+  vibrate?: boolean;
+  collisionVibrate?: boolean;
+}
+
+export interface Transition {
+  backTransition?: boolean;
+  duration?: number;
+  timingFunction?: string;
+}

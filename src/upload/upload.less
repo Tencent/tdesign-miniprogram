@@ -110,6 +110,7 @@
   &__drag {
     position: relative;
     width: 100%;
+    --td-grid-item-bg-color: transparent;
 
     &-item {
       position: absolute;
@@ -123,7 +124,9 @@
       z-index: 0;
     }
     &--tran {
-      transition: transform 0.3s;
+      transition-property: transform;
+      transition-duration: var(--td-upload-drag-transition-duration);
+      transition-timing-function: var(--td-upload-drag-transition-timing-function);
     }
     &--cur {
       z-index: @upload-drag-z-index;
@@ -139,36 +142,3 @@
     transform: rotate(360deg);
   }
 }
-
-// .item-wrap {
-//   position: relative;
-//   width: 100%;
-// }
-
-// .item-wrap .item {
-//   position: absolute;
-//   z-index: 1;
-//   top: 0px;
-//   left: 0px;
-//   height: auto;
-// }
-
-// .item-wrap .item.tran {
-//   transition: transform 0.3s !important;
-// }
-
-// .item-wrap .item.cur {
-//   z-index: 999;
-// }
-
-// .item-wrap .item.fixed {
-//   z-index: 0 !important;
-// }
-
-// .item-wrap2 {
-//   display: inline;
-// }
-
-// .item1 {
-//   display: inline;
-// }

@@ -71,18 +71,12 @@ const props: TdUploadProps = {
   },
   /** 是否支持拖拽排序 */
   draggable: {
-    type: Boolean,
-    value: false,
+    type: null,
   },
-  /** 长按启动拖拽时是否需要振动 */
-  dragVibrate: {
-    type: Boolean,
-    value: true,
-  },
-  /** 拖拽碰撞时是否需要振动 */
-  dragCollisionVibrate: {
-    type: Boolean,
-    value: false,
+  /** 是否使用动画过渡 */
+  transition: {
+    type: Object,
+    value: { backTransition: true, duration: 300, timingFunction: 'ease' },
   },
 };
 

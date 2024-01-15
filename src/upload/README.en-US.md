@@ -20,9 +20,8 @@ media-type | Array | ['image', 'video'] | Typescript：`Array<MediaType>` `type 
 request-method | Function | - | \- | N
 size-limit | Number / Object | - | Typescript：`number \| SizeLimitObj` `interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string }` `type SizeUnitArray = ['B', 'KB', 'MB', 'GB']` `type SizeUnit = SizeUnitArray[number]`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 source | String | media | options：media/messageFile | N
-draggable | Boolean | false | - | N
-drag-vibrate | Boolean | true | - | N
-drag-collision-vibrate | Boolean | false | - | N
+draggable | Boolean / Object | - | Does it support drag and drop sorting. Whether it vibrates during long periods of time and whether it vibrates during collisions。。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
+transition | Object | `{ backTransition: true, duration: 300, timingFunction: 'ease' }` | Transition parameters when dragging and moving positions。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 
 ### Upload Events
 
@@ -35,7 +34,7 @@ remove | `(index: number; file: UploadFile)` | \-
 select-change | `(currentSelectedFiles: MediaContext[])` | \-
 success | `(files: MediaContext)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
 click | `(file: VideoContext \| ImageContext)` | -
-sore-end | `(files: MediaContext)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface 
+drop | `(files: MediaContext)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface 
 ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
 
 

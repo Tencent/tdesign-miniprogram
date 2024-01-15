@@ -2,7 +2,6 @@ var classPrefix = '';
 var startIndex = 0;
 var endIndex = 0;
 var dragCollisionList = [];
-var itemsInstanceLength = 0;
 
 var isOutRange = function (x1, y1, x2, y2, x3, y3) {
   return x1 < 0 || x1 >= y1 || x2 < 0 || x2 >= y2 || x3 < 0 || x3 >= y3;
@@ -190,7 +189,6 @@ var touchEnd = function (event, ownerInstance) {
 
   if (!st.dragging) return;
   triggerCustomEvent(st.list, 'sortend', ownerInstance);
-
   ins.addClass(classPrefix + '__drag--tran');
   ins.setStyle({
     transform: 'translate3d(' + st.list[st.cur].tranX + ',' + st.list[st.cur].tranY + ', 0)',
@@ -221,16 +219,14 @@ var listObserver = function (newVal, oldVal, ownerInstance, ins) {
   st.list.forEach(function (item, index) {
     var itemIns = st.itemsInstance[index];
     if (item && itemIns) {
-      if (itemsInstanceLength !== st.itemsInstance.length) {
-        itemIns.removeClass(classPrefix + '__drag--tran');
-      }
+      itemIns.removeClass(classPrefix + '__drag--tran');
       itemIns.setStyle({
         transform: 'translate3d(' + item.tranX + ',' + item.tranY + ', 0)',
       });
       if (item.fixed) itemIns.addClass(classPrefix + '__drag--fixed');
     }
   });
-  itemsInstanceLength = st.itemsInstance.length;
+  dragCollisionList = [];
 };
 
 module.exports = {

@@ -8,6 +8,6 @@
     bind:success="handleSuccess"
     bind:remove="handleRemove"
     bind:click="handleClick"
-    bind:sort-end="handleSortEnd"
+    bind:drop="handleDrop"
   />
 </view>

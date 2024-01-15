@@ -114,7 +114,7 @@
           wx:for="{{customFiles}}"
           wx:key="url"
           wx:for-item="file"
-          style="width: {{100 / column}}%"
+          style="width: {{100 / column}}%; --td-upload-drag-transition-duration: {{transition.duration}}ms; --td-upload-drag-transition-timing-function: {{transition.timingFunction}}"
           bind:longpress="{{handler.longPress}}"
           catch:touchmove="{{dragging ? handler.touchMove : ''}}"
           catch:touchend="{{dragging ? handler.touchEnd : ''}}"
@@ -129,7 +129,7 @@
           >
             <view
               class="{{classPrefix}}__wrapper {{disabled? classPrefix + '__wrapper--disabled' : '' }}"
-              style="{{gridItemStyle}}"
+              style="{{gridItemStyle}};"
               aria-role="{{ariaRole || this.getWrapperAriaRole(file)}}"
               aria-label="{{ariaLabel || this.getWrapperAriaLabel(file)}}"
             >

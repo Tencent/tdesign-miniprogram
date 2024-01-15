@@ -45,7 +45,7 @@ Component({
       console.log(e.detail.file);
     },
 
-    handleSortEnd(e) {
+    handleDrop(e) {
       const { files } = e.detail;
       this.setData({
         originFiles: files,

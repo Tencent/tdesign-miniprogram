@@ -40,15 +40,11 @@ export default class Upload extends SuperComponent {
   ];
 
   observers = {
-    'files, max'(files: UploadFile, max: number) {
+    'files, max, draggable'(files: UploadFile, max: number) {
       this.handleLimit(files, max);
-      this.initDragLayout();
     },
     gridConfig() {
       this.updateGrid();
-    },
-    draggable(value) {
-      value && this.initDragLayout();
     },
   };
 
@@ -56,7 +52,6 @@ export default class Upload extends SuperComponent {
     ready() {
       this.handleLimit(this.data.customFiles, this.data.max);
       this.updateGrid();
-      this.initDragLayout();
     },
   };
 
@@ -78,6 +73,7 @@ export default class Upload extends SuperComponent {
       customLimit: max - customFiles.length,
       dragging: true,
     });
+    this.initDragLayout();
   }
 
   triggerSuccessEvent(files) {
@@ -363,7 +359,9 @@ export default class Upload extends SuperComponent {
 
     dragVibrate(e) {
       const { vibrateType } = e;
-      const { dragVibrate, dragCollisionVibrate } = this.data;
+      const { draggable } = this.properties;
+      const dragVibrate = draggable?.vibrate;
+      const dragCollisionVibrate = draggable?.collisionVibrate;
       if ((dragVibrate && vibrateType === 'longPress') || (dragCollisionVibrate && vibrateType === 'touchMove')) {
         wx.vibrateShort({
           type: 'light',
@@ -378,20 +376,33 @@ export default class Upload extends SuperComponent {
 
     dragEnd(e) {
       const { dragCollisionList } = e;
+      let files = [];
       if (dragCollisionList.length === 0) {
-        this.triggerEvent('sort-end', { files: this.data.customFiles });
-        return;
+        files = this.data.customFiles;
+      } else {
+        files = dragCollisionList.reduce((list, item) => {
+          const { realKey, data, fixed } = item;
+          if (!fixed) {
+            list[realKey] = {
+              ...data,
+            };
+          }
+          return list;
+        }, []);
       }
-      const files = dragCollisionList.reduce((list, item) => {
-        const { realKey, data, fixed } = item;
-        if (!fixed) {
-          list[realKey] = {
-            ...data,
-          };
-        }
-        return list;
-      }, []);
-      this.triggerEvent('sort-end', { files });
+      this.triggerDropEvent(files);
+    },
+
+    triggerDropEvent(files) {
+      const { transition } = this.properties;
+      if (transition.backTransition) {
+        const timer = setTimeout(() => {
+          this.triggerEvent('drop', { files });
+          clearTimeout(timer);
+        }, transition.duration);
+      } else {
+        this.triggerEvent('drop', { files });
+      }
     },
   };
 }
