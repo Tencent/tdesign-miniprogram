@@ -75,6 +75,7 @@ export default class Calendar extends SuperComponent {
     },
     value(v) {
       this.base.value = v;
+      this.calcMonths();
     },
     visible(v) {
       if (v) {
