@@ -359,8 +359,8 @@ export default class Upload extends SuperComponent {
 
     dragVibrate(e) {
       const { vibrateType } = e;
-      const { draggable } = this.properties;
-      const dragVibrate = draggable?.vibrate;
+      const { draggable } = this.data;
+      const dragVibrate = draggable?.vibrate ?? true;
       const dragCollisionVibrate = draggable?.collisionVibrate;
       if ((dragVibrate && vibrateType === 'longPress') || (dragCollisionVibrate && vibrateType === 'touchMove')) {
         wx.vibrateShort({
