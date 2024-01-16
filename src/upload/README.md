@@ -32,6 +32,10 @@ isComponent: true
 
 {{ multiple }}
 
+### 长按拖拽排序图片
+
+{{ drag }}
+
 ### 加载状态
 
 支持多种状态：`loading`、`reload`、`failed`；
@@ -66,6 +70,9 @@ media-type | Array | ['image', 'video'] | 支持上传的文件类型，图片�
 request-method | Function | - | 自定义上传方法 | N
 size-limit | Number / Object | - | 图片文件大小限制，单位 KB。可选单位有：`'B' \| 'KB' \| 'MB' \| 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`。TS 类型：`number \| SizeLimitObj` `interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string }` `type SizeUnitArray = ['B', 'KB', 'MB', 'GB']` `type SizeUnit = SizeUnitArray[number]`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 source | String | media | 来源。可选项：media/messageFile | N
+draggable | Boolean / Object | - | 是否支持拖拽排序。长按时是否振动，碰撞时是否振动。示例一：`true`。示例二：`{ vibrate: true, collisionVibrate: true }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
+transition | Object | `{ backTransition: true, duration: 300, timingFunction: 'ease' }` | 拖拽位置移动时的过渡参数。TS 类型：`{ backTransition: boolean, duration: number, timingFunction: string }`，`duration`单位为ms。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
+
 
 ### Upload Events
 
@@ -78,6 +85,7 @@ remove | `(index: number; file: UploadFile)` | 移除文件时触发
 select-change | `(files: MediaContext[]; currentSelectedFiles: MediaContext[])` | 选择文件或图片之后，上传之前，触发该事件。<br />`files` 表示之前已经上传完成的文件列表。<br />`currentSelectedFiles` 表示本次上传选中的文件列表
 success | `(files: MediaContext)` | 上传成功后触发，包含所有上传的文件；`url` 表示选定视频的临时文件路径 (本地路径)。`duration` 表示选定视频的时间长度。`size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
 click | `(file: VideoContext \| ImageContext)` | 点击已选文件时触发；常用于重新上传
+drop | `(files: MediaContext)` | 拖拽结束后触发，包含所有上传的文件（拖拽后的文件顺序）；`url` 表示选定视频的临时文件路径 (本地路径)。`duration` 表示选定视频的时间长度。`size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
 
 
 ### CSS 变量
@@ -91,3 +99,4 @@ click | `(file: VideoContext \| ImageContext)` | 点击已选文件时触发；�
 --td-upload-add-icon-font-size | 56rpx | - 
 --td-upload-disabled-mask | rgba(255, 255, 255, 0.55) | - 
 --td-upload-radius | @radius-default | - 
+--td-upload-drag-z-index | 999 | - 

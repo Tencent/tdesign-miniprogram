@@ -7,8 +7,10 @@
 @upload-add-icon-font-size: var(--td-upload-add-icon-font-size, 56rpx);
 @upload-add-icon-disabled-color: var(--td-upload-add-icon-disabled-color, @text-color-disabled);
 @upload-disabled-mask: var(--td-upload-disabled-mask, rgba(255, 255, 255, 0.55));
+@upload-drag-z-index: var(--td-upload-drag-z-index, 999);
 
 .@{prefix}-upload {
+  position: relative;
   &__grid {
     &-content {
       padding: 0;
@@ -102,6 +104,32 @@
 
     &-loading {
       animation: spin infinite linear 0.6s;
+    }
+  }
+
+  &__drag {
+    position: relative;
+    width: 100%;
+    --td-grid-item-bg-color: transparent;
+
+    &-item {
+      position: absolute;
+      z-index: 1;
+      top: 0px;
+      left: 0px;
+      height: auto;
+      width: 100%;
+    }
+    &--fixed {
+      z-index: 0;
+    }
+    &--tran {
+      transition-property: transform;
+      transition-duration: var(--td-upload-drag-transition-duration);
+      transition-timing-function: var(--td-upload-drag-transition-timing-function);
+    }
+    &--cur {
+      z-index: @upload-drag-z-index;
     }
   }
 }
