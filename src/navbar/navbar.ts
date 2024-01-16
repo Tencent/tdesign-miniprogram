@@ -75,13 +75,13 @@ export default class Navbar extends SuperComponent {
         const boxStyleList = [];
         const { statusBarHeight } = wx.getSystemInfoSync();
 
-        boxStyleList.push(`--td-navbar-padding-top:${statusBarHeight}px`);
+        boxStyleList.push(`--td-navbar-padding-top:${statusBarHeight * 2}rpx`);
         if (rect && res?.windowWidth) {
-          boxStyleList.push(`--td-navbar-right:${res.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
+          boxStyleList.push(`--td-navbar-right:${(res.windowWidth - rect.left) * 2}rpx`); // 导航栏右侧小程序胶囊按钮宽度
         }
-        boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
-        boxStyleList.push(`--td-navbar-capsule-width: ${rect.width}px`); // 胶囊宽度
-        boxStyleList.push(`--td-navbar-height: ${(rect.top - statusBarHeight) * 2 + rect.height}px`);
+        boxStyleList.push(`--td-navbar-capsule-height: ${rect.height * 2}rpx`); // 胶囊高度
+        boxStyleList.push(`--td-navbar-capsule-width: ${rect.width * 2}rpx`); // 胶囊宽度
+        boxStyleList.push(`--td-navbar-height: ${((rect.top - statusBarHeight) * 2 + rect.height) * 2}rpx`);
         this.setData({
           boxStyle: `${boxStyleList.join('; ')}`,
         });
