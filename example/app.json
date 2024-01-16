@@ -50,7 +50,8 @@
     "pages/result/result",
     "pages/result/result-page",
     "pages/link/link",
-    "pages/col/col"
+    "pages/col/col",
+    "pages/color-picker/color-picker"
   ],
   "subpackages": [
     {

@@ -123,6 +123,12 @@
           "scene": null
         },
         {
+          "name": "color-picker",
+          "pathName": "pages/color-picker/color-picker",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "dialog",
           "pathName": "pages/dialog/dialog",
           "query": "",
