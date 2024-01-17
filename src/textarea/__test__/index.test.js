@@ -92,6 +92,7 @@ describe('textarea', () => {
       expect(component.instance.data.count).toBe(10);
       expect(handleChange.mock.calls[1][0].detail).toStrictEqual({
         value: 'textarea用',
+        cursor: undefined,
       });
 
       $textarea.dispatchEvent('textarea', { detail: { value: 'textarea用于567' } });

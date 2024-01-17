@@ -1,5 +1,6 @@
 <view class="wrapper">
   <t-upload
+    draggable
     disabled
     media-type="{{['video','image']}}"
     files="{{originFiles}}"
@@ -7,6 +8,6 @@
     bind:success="handleSuccess"
     bind:remove="handleRemove"
     bind:click="handleClick"
-    bind:sort-end="handleSortEnd"
+    bind:drop="handleDrop"
   />
 </view>

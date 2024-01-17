@@ -45,10 +45,26 @@ export interface TdActionSheetProps {
     value?: Array<string | ActionSheetItem>;
   };
   /**
+   * popupProps透传
+   * @default {}
+   */
+  popupProps?: {
+    type: ObjectConstructor;
+    value?: object;
+  };
+  /**
    * 是否显示取消按钮
    * @default true
    */
   showCancel?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否显示遮罩层
+   * @default true
+   */
+  showOverlay?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -75,19 +91,6 @@ export interface TdActionSheetProps {
   defaultVisible: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 是否显示遮罩层
-   * @default true
-   */
-  showOverlay: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /** popupProps透传 */
-  popupProps: {
-    type: ObjectConstructor;
-    value?: object;
   };
 }
 

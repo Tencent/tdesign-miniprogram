@@ -92,8 +92,8 @@ hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键�
 
 名称 | 参数 | 描述
 -- | -- | --
-blur | `(value: TextareaValue)` | 失去焦点时触发
-change | `(value: TextareaValue)` | 输入内容变化时触发
+blur | `(value: TextareaValue, cursor: number)` | 失去焦点时触发
+change | `(value: TextareaValue, cursor: number)` | 输入内容变化时触发
 enter | `(value: TextareaValue)` | 点击完成时触发
 focus | `(value: TextareaValue)` | 获得焦点时触发
 line-change | `(value: TextareaValue)` | 行高发生变化时触发

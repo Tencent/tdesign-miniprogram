@@ -44,5 +44,12 @@ Component({
     handleClick(e) {
       console.log(e.detail.file);
     },
+
+    handleDrop(e) {
+      const { files } = e.detail;
+      this.setData({
+        originFiles: files,
+      });
+    },
   },
 });

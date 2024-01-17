@@ -22,6 +22,12 @@ export default class Upload extends SuperComponent {
     customFiles: [] as UploadFile[], // 内部动态修改的files
     customLimit: 0, // 内部动态修改的limit
     column: 4,
+    dragBaseData: {}, // 拖拽所需要页面数据
+    rows: 0, // 行数
+    dragWrapStyle: '', // 拖拽容器的样式
+    dragList: [], // 拖拽的数据列
+    dragging: true, // 是否开始拖拽
+    dragLayout: false, // 是否开启拖拽布局
   };
 
   properties = props;
@@ -34,7 +40,7 @@ export default class Upload extends SuperComponent {
   ];
 
   observers = {
-    'files, max'(files: UploadFile, max: number) {
+    'files, max, draggable'(files: UploadFile, max: number) {
       this.handleLimit(files, max);
     },
     gridConfig() {
@@ -62,11 +68,12 @@ export default class Upload extends SuperComponent {
     if (max === 0) {
       max = 20;
     }
-
     this.setData({
       customFiles: customFiles.length > max ? customFiles.slice(0, max) : customFiles,
       customLimit: max - customFiles.length,
+      dragging: true,
     });
+    this.initDragLayout();
   }
 
   triggerSuccessEvent(files) {
@@ -133,6 +140,81 @@ export default class Upload extends SuperComponent {
     });
   }
 
+  initDragLayout() {
+    const { draggable, disabled } = this.properties;
+    if (!draggable || disabled) return;
+    this.initDragList();
+    this.initDragBaseData();
+  }
+
+  initDragList() {
+    let i = 0;
+    const { column, customFiles, customLimit } = this.data;
+    const dragList = [];
+    customFiles.forEach((item, index) => {
+      dragList.push({
+        realKey: i, // 真实顺序
+        sortKey: index, // 整体顺序
+        tranX: `${(index % column) * 100}%`,
+        tranY: `${Math.floor(index / column) * 100}%`,
+        data: { ...item },
+      });
+      i += 1;
+    });
+    if (customLimit > 0) {
+      const listLength = dragList.length;
+      dragList.push({
+        realKey: listLength, // 真实顺序
+        sortKey: listLength, // 整体顺序
+        tranX: `${(listLength % column) * 100}%`,
+        tranY: `${Math.floor(listLength / column) * 100}%`,
+        fixed: true,
+      });
+    }
+    this.data.rows = Math.ceil(dragList.length / column);
+    this.setData({
+      dragList,
+    });
+  }
+
+  initDragBaseData() {
+    const { classPrefix, rows, column, customFiles } = this.data;
+    if (customFiles.length === 0) return;
+    const query = this.createSelectorQuery();
+    const selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
+    const selectorGrid = `.${classPrefix} >>> .t-grid`;
+    query.select(selectorGridItem).boundingClientRect();
+    query.select(selectorGrid).boundingClientRect();
+    query.selectViewport().scrollOffset();
+    query.exec((res) => {
+      const [{ width, height }, { left, top }, { scrollTop }] = res;
+      const dragBaseData = {
+        rows,
+        classPrefix,
+        itemWidth: width,
+        itemHeight: height,
+        wrapLeft: left,
+        wrapTop: top + scrollTop,
+        columns: column,
+      };
+      const dragWrapStyle = `height: ${rows * height}px`;
+      this.setData(
+        {
+          dragBaseData,
+          dragWrapStyle,
+          dragLayout: true,
+        },
+        () => {
+          // 为了给拖拽元素加上拖拽方法，同时控制不拖拽时不取消穿透
+          const timer = setTimeout(() => {
+            this.setData({ dragging: false });
+            clearTimeout(timer);
+          }, 0);
+        },
+      );
+    });
+  }
+
   methods = {
     uploadFiles(files: UploadFile[]) {
       return new Promise((resolve) => {
@@ -170,7 +252,6 @@ export default class Upload extends SuperComponent {
     onAddTap() {
       const { disabled, mediaType, source } = this.properties;
       if (disabled) return;
-
       if (source === 'media') {
         this.chooseMedia(mediaType);
       } else {
@@ -274,6 +355,54 @@ export default class Upload extends SuperComponent {
       });
       this._trigger('add', { files });
       this.startUpload(files);
+    },
+
+    dragVibrate(e) {
+      const { vibrateType } = e;
+      const { draggable } = this.data;
+      const dragVibrate = draggable?.vibrate ?? true;
+      const dragCollisionVibrate = draggable?.collisionVibrate;
+      if ((dragVibrate && vibrateType === 'longPress') || (dragCollisionVibrate && vibrateType === 'touchMove')) {
+        wx.vibrateShort({
+          type: 'light',
+        });
+      }
+    },
+
+    dragStatusChange(e) {
+      const { dragging } = e;
+      this.setData({ dragging });
+    },
+
+    dragEnd(e) {
+      const { dragCollisionList } = e;
+      let files = [];
+      if (dragCollisionList.length === 0) {
+        files = this.data.customFiles;
+      } else {
+        files = dragCollisionList.reduce((list, item) => {
+          const { realKey, data, fixed } = item;
+          if (!fixed) {
+            list[realKey] = {
+              ...data,
+            };
+          }
+          return list;
+        }, []);
+      }
+      this.triggerDropEvent(files);
+    },
+
+    triggerDropEvent(files) {
+      const { transition } = this.properties;
+      if (transition.backTransition) {
+        const timer = setTimeout(() => {
+          this.triggerEvent('drop', { files });
+          clearTimeout(timer);
+        }, transition.duration);
+      } else {
+        this.triggerEvent('drop', { files });
+      }
     },
   };
 }
