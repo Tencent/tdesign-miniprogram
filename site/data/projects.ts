@@ -43,10 +43,16 @@ export default [
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/xiaoyunkapian-code.jpg',
   },
   {
-    name: '小楼助教',
-    tags: ['效率工具'],
-    preview: ['https://tdesign.gtimg.com/miniprogram/case/xiaolouzhujiao.png'],
-    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/xiaolouzhujiao-code.png',
+    name: '上海慈善基金会',
+    tags: ['服务'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/cishanjijinhui.jpg'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/cishanjijinhui-code.png',
+  },
+  {
+    name: '区白白',
+    tags: ['服务'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/qubaibai.jpg'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/qubaibai-code.png',
   },
   {
     name: 'frmall',
