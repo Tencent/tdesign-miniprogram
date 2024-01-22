@@ -7,22 +7,22 @@ exports[`Avatar Avatar action demo works fine 1`] = `
     max="5"
   >
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar2.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar3.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar4.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar5.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
     />
   </t-avatar-group>
 </action>
@@ -41,7 +41,7 @@ exports[`Avatar Avatar badge-avatar demo works fine 1`] = `
       }
     }}"
     class="avatar-example"
-    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
   />
   <t-avatar
     badgeProps="{{
@@ -100,22 +100,22 @@ exports[`Avatar Avatar exhibition demo works fine 1`] = `
     max="5"
   >
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar2.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar2.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar3.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar3.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar4.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar4.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar5.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar5.png"
     />
     <t-avatar
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
     />
   </t-avatar-group>
 </exhibition>
@@ -139,11 +139,11 @@ exports[`Avatar Avatar image-avatar demo works fine 1`] = `
 <image-avatar>
   <t-avatar
     class="avatar-example"
-    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
   />
   <t-avatar
     class="avatar-example"
-    image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+    image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
     shape="round"
   />
 </image-avatar>
@@ -156,7 +156,7 @@ exports[`Avatar Avatar size demo works fine 1`] = `
   >
     <t-avatar
       class="avatar-example--large"
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
       size="large"
     />
     <t-avatar
@@ -177,7 +177,7 @@ exports[`Avatar Avatar size demo works fine 1`] = `
   >
     <t-avatar
       class="avatar-example--medium"
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
     />
     <t-avatar
       class="avatar-example--medium"
@@ -197,7 +197,7 @@ exports[`Avatar Avatar size demo works fine 1`] = `
   >
     <t-avatar
       class="avatar-example--small"
-      image="https://tdesign.gtimg.com/miniprogram/images/avatar1.png"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
       size="small"
     />
     <t-avatar

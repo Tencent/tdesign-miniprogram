@@ -18,7 +18,7 @@
   title="多行带图片"
   description="一段很长很长的内容文字"
   align="top"
-  image="https://tdesign.gtimg.com/miniprogram/images/cell1.png"
+  image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
   hover
   bordered="{{false}}"
 />

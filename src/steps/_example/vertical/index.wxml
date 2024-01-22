@@ -39,12 +39,7 @@
   <t-steps layout="vertical" current="{{third}}" bind:change="onThirdChange">
     <t-step-item wx:for="{{3}}" wx:key="index" title="{{_.getText(third, index)}}" content="可自定义此处内容">
       <view wx:if="{{index == 1}}" slot="extra">
-        <image
-          src="https://tdesign.gtimg.com/miniprogram/images/steps1.png"
-          alt="图标"
-          style="width: 100%"
-          mode="widthFix"
-        />
+        <image src="https://tdesign.gtimg.com/mobile/demos/steps1.png" alt="图标" style="width: 100%" mode="widthFix" />
       </view>
     </t-step-item>
   </t-steps>

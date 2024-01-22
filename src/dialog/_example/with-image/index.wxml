@@ -18,7 +18,7 @@
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
-  <t-image slot="top" t-class="dialog-image" src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png" />
+  <t-image slot="top" t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
 </t-dialog>
 
 <t-button
@@ -41,9 +41,5 @@
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
-  <t-image
-    slot="middle"
-    t-class="image-host dialog-image"
-    src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
-  />
+  <t-image slot="middle" t-class="image-host dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
 </t-dialog>
