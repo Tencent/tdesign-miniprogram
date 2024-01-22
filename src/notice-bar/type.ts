@@ -98,6 +98,8 @@ export interface TdNoticeBarProps {
   };
 }
 
+export type NoticeBarTrigger = 'prefix-icon' | 'content' | 'operation' | 'suffix-icon';
+
 export interface DrawMarquee {
   speed?: number;
   loop?: number;
