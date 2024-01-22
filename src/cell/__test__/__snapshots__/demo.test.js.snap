@@ -124,7 +124,7 @@ exports[`Cell Cell multiple demo works fine 1`] = `
     bordered="{{false}}"
     description="一段很长很长的内容文字"
     hover="{{true}}"
-    image="https://tdesign.gtimg.com/miniprogram/images/cell1.png"
+    image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
     title="多行带图片"
   />
 </multiple>

@@ -1,4 +1,4 @@
-const image = 'https://tdesign.gtimg.com/miniprogram/images/example1.png';
+const image = 'https://tdesign.gtimg.com/mobile/demos/example1.png';
 const items = new Array(12).fill({ label: '标题文字', image }, 0, 12);
 
 Page({
