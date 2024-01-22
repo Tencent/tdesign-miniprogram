@@ -18140,8 +18140,8 @@ exports[`Icon Icon iconImage demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="https://tdesign.gtimg.com/miniprogram/images/icon1.png"
-        name="https://tdesign.gtimg.com/miniprogram/images/icon1.png"
+        data-name="https://tdesign.gtimg.com/mobile/demos/icon1.png"
+        name="https://tdesign.gtimg.com/mobile/demos/icon1.png"
         size="24"
         bind:click="onIconTap"
       />
@@ -18150,8 +18150,8 @@ exports[`Icon Icon iconImage demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="https://tdesign.gtimg.com/miniprogram/images/icon2.png"
-        name="https://tdesign.gtimg.com/miniprogram/images/icon2.png"
+        data-name="https://tdesign.gtimg.com/mobile/demos/icon2.png"
+        name="https://tdesign.gtimg.com/mobile/demos/icon2.png"
         size="24"
         bind:click="onIconTap"
       />

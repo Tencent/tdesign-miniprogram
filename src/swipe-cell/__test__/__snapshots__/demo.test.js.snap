@@ -85,7 +85,7 @@ exports[`SwipeCell SwipeCell icon demo works fine 1`] = `
     <t-cell
       bordered="{{false}}"
       description="一段很长很长的内容文字"
-      image="https://tdesign.gtimg.com/miniprogram/images/default.svg"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
       note="辅助信息"
       title="左滑大列表-仅带图标双操作"
     />
@@ -144,7 +144,7 @@ exports[`SwipeCell SwipeCell left demo works fine 1`] = `
     <t-cell
       bordered="{{false}}"
       description="一段很长很长的内容文字"
-      image="https://tdesign.gtimg.com/miniprogram/images/default.svg"
+      image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
       note="辅助信息"
       title="左滑大列表"
     />

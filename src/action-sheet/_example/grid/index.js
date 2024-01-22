@@ -3,19 +3,19 @@ import ActionSheet, { ActionSheetTheme } from 'tdesign-miniprogram/action-sheet/
 const firstGrid = [
   {
     label: '微信',
-    image: 'https://tdesign.gtimg.com/miniprogram/logo/wechat.png',
+    image: 'https://tdesign.gtimg.com/mobile/demos/wechat.png',
   },
   {
     label: '朋友圈',
-    image: 'https://tdesign.gtimg.com/miniprogram/logo/times.png',
+    image: 'https://tdesign.gtimg.com/mobile/demos/times.png',
   },
   {
     label: 'QQ',
-    image: 'https://tdesign.gtimg.com/miniprogram/logo/qq.png',
+    image: 'https://tdesign.gtimg.com/mobile/demos/qq.png',
   },
   {
     label: '企业微信',
-    image: 'https://tdesign.gtimg.com/miniprogram/logo/wecom.png',
+    image: 'https://tdesign.gtimg.com/mobile/demos/wecom.png',
   },
   {
     label: '收藏',
