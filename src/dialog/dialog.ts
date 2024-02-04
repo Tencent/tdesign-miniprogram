@@ -99,7 +99,7 @@ export default class Dialog extends SuperComponent {
       }
 
       if (evtType !== 'tap') {
-        const success = e.detail?.errMsg.indexOf('ok') > -1;
+        const success = e.detail?.errMsg?.indexOf('ok') > -1;
         this.triggerEvent(success ? 'open-type-event' : 'open-type-error-event', e.detail);
       }
     },
