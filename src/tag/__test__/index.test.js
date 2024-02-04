@@ -254,7 +254,7 @@ describe('tag', () => {
 
         if (!VIRTUAL_HOST) {
           const $click = comp.querySelector('.base >>> .t-tag');
-          const $close = comp.querySelector('.base >>> .t-tag__icon-close');
+          const $close = comp.querySelector('.base >>> .t-icon');
 
           // 禁用态：event 不会触发
           $click.dispatchEvent('tap');
