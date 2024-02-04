@@ -12,8 +12,8 @@ export interface TdTagProps {
    * @default false
    */
   closable?: {
-    type: BooleanConstructor;
-    value?: boolean;
+    type: null;
+    value?: boolean | object;
   };
   /**
    * 自定义组件样式
