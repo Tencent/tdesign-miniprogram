@@ -44,16 +44,16 @@ isComponent: true
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
 align | String | middle | 内容的对齐方式，默认居中对齐。可选项：top/middle/bottom | N
-arrow | Boolean | false | 是否显示右侧箭头 | N
-bordered | Boolean | true | 是否显示下边框 | N
+arrow | Boolean / Object | false | 是否显示右侧箭头。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
+bordered | Boolean| true | 是否显示下边框。 | N
 description | String / Slot | - | 下方内容描述 | N
 hover | Boolean | - | 是否开启点击反馈 | N
 image | String / Slot | - | 主图 | N
 jump-type | String | navigateTo | 链接跳转类型。可选项：switchTab/reLaunch/redirectTo/navigateTo | N
-left-icon | String / Slot | - | 左侧图标，出现在单元格标题的左侧 | N
+left-icon | String / Object / Slot | - | 左侧图标，出现在单元格标题的左侧。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 note | String / Slot | - | 和标题同行的说明文字 | N
 required | Boolean | false | 是否显示表单必填星号 | N
-right-icon | String / Slot | - | 最右侧图标 | N
+right-icon | String / Object / Slot | - | 最右侧图标。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
 title | String / Slot | - | 标题 | N
 url | String | - | 点击后跳转链接地址。如果值为空，则表示不需要跳转 | N
 
