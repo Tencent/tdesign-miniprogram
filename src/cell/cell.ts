@@ -40,12 +40,15 @@ export default class Cell extends SuperComponent {
     isLastChild: false,
   };
 
-  lifetimes = {
-    ready() {
-      const { leftIcon, rightIcon, arrow } = this.properties;
-      this.setIcon('_leftIcon', leftIcon, '');
-      this.setIcon('_rightIcon', rightIcon, '');
-      this.setIcon('_arrow', arrow, 'chevron-right');
+  observers = {
+    leftIcon(v) {
+      this.setIcon('_leftIcon', v, '');
+    },
+    rightIcon(v) {
+      this.setIcon('_rightIcon', v, '');
+    },
+    arrow(v) {
+      this.setIcon('_arrow', v, 'chevron-right');
     },
   };
 
