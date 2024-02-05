@@ -18,8 +18,8 @@ export interface TdCellProps {
    * @default false
    */
   arrow?: {
-    type: BooleanConstructor;
-    value?: boolean;
+    type: null;
+    value?: boolean | object;
   };
   /**
    * 是否显示下边框
@@ -86,8 +86,8 @@ export interface TdCellProps {
    * 左侧图标，出现在单元格标题的左侧
    */
   leftIcon?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: string | object;
   };
   /**
    * 和标题同行的说明文字
@@ -108,8 +108,8 @@ export interface TdCellProps {
    * 最右侧图标
    */
   rightIcon?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: string | object;
   };
   /**
    * 标题
