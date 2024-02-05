@@ -12,8 +12,8 @@
   <t-demo desc="带数值滑动选择器">
     <label />
   </t-demo>
-
-  <!-- <t-demo desc="起始非零滑动选择器">
+  <!--
+  <t-demo desc="起始非零滑动选择器">
     <max />
   </t-demo> -->
 
@@ -27,5 +27,9 @@
 
   <t-demo title="03 特殊样式" desc="胶囊型滑块">
     <capsule />
+  </t-demo>
+
+  <t-demo title="04 垂直状态">
+    <vertical />
   </t-demo>
 </view>

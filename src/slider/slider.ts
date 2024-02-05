@@ -32,6 +32,8 @@ type dataType = {
 interface boundingClientRect {
   left: number;
   right: number;
+  bottom: number;
+  top: number;
 }
 @wxComponent()
 export default class Slider extends SuperComponent {
@@ -95,8 +97,30 @@ export default class Slider extends SuperComponent {
       const { value } = this.properties;
       if (!value) this.handlePropsChange(0);
       this.init();
+      this.injectPageScroll();
     },
   };
+
+  injectPageScroll() {
+    const { range, vertical } = this.properties;
+    if (!range || !vertical) return;
+    const pages = getCurrentPages() || [];
+    let curPage = null;
+    if (pages && pages.length - 1 >= 0) {
+      curPage = pages[pages.length - 1];
+    }
+    if (!curPage) return;
+    const originPageScroll = curPage?.onPageScroll;
+    curPage.onPageScroll = (rest) => {
+      originPageScroll?.call(this, rest);
+      this.observerScrollTop(rest);
+    };
+  }
+
+  observerScrollTop(rest) {
+    const { scrollTop } = rest || {};
+    this.pageScrollTop = scrollTop;
+  }
 
   toggleA11yTips() {
     this.setData({
@@ -186,7 +210,6 @@ export default class Slider extends SuperComponent {
     const halfBlock = (theme as any) === 'capsule' ? Number(blockSize) / 2 : 0;
     const percentage = (Number(value) - Number(min)) / (Number(max) - Number(min));
     const width = percentage * maxRange + halfBlock;
-
     this.setData({
       lineBarWidth: `${width}px`,
     });
@@ -195,12 +218,12 @@ export default class Slider extends SuperComponent {
   async init() {
     const line: boundingClientRect = await getRect(this, '#sliderLine');
     const { blockSize } = this.data;
-    const { theme } = this.properties;
+    const { theme, vertical } = this.properties;
     const halfBlock = Number(blockSize) / 2;
-    let maxRange = line.right - line.left;
-    let initialLeft = line.left;
-    let initialRight = line.right;
-
+    const { top, bottom, right, left } = line;
+    let maxRange = vertical ? bottom - top : right - left;
+    let initialLeft = vertical ? top : left;
+    let initialRight = vertical ? bottom : right;
     if (initialLeft === 0 && initialRight === 0) return;
 
     if ((theme as any) === 'capsule') {
@@ -241,8 +264,8 @@ export default class Slider extends SuperComponent {
     const { min, max } = this.properties;
     const { initialLeft, maxRange } = this.data;
     const [touch] = e.changedTouches;
-    const { pageX } = touch;
-    const currentLeft = pageX - initialLeft;
+    const pagePosition = this.getPagePosition(touch);
+    const currentLeft = pagePosition - initialLeft;
     let value = 0;
     if (currentLeft <= 0) {
       value = Number(min);
@@ -272,31 +295,34 @@ export default class Slider extends SuperComponent {
 
   // 点击范围选择滑动条的事件
   onLineTap(e: WechatMiniprogram.TouchEvent) {
-    const { disabled, theme } = this.properties;
+    const { disabled, theme, vertical } = this.properties;
     const { initialLeft, initialRight, maxRange, blockSize } = this.data;
     if (disabled) return;
 
     const [touch] = e.changedTouches;
-    const { pageX } = touch;
+    const pagePosition = this.getPagePosition(touch);
     const halfBlock = (theme as any) === 'capsule' ? Number(blockSize) / 2 : 0;
 
-    const currentLeft = pageX - initialLeft;
+    const currentLeft = pagePosition - initialLeft;
     if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
 
     Promise.all([getRect(this, '#leftDot'), getRect(this, '#rightDot')]).then(([leftDot, rightDot]) => {
+      const pageScrollTop = this.pageScrollTop || 0;
       // 点击处-halfblock 与 leftDot左侧的距离（绝对值）
-      const distanceLeft = Math.abs(pageX - leftDot.left - halfBlock);
+      const leftDotPosition = vertical ? leftDot.top + pageScrollTop : leftDot.left;
+      const distanceLeft = Math.abs(pagePosition - leftDotPosition - halfBlock);
       // 点击处-halfblock 与 rightDot左侧的距离（绝对值）
-      const distanceRight = Math.abs(rightDot.left - pageX + halfBlock);
+      const rightDotPosition = vertical ? rightDot.top + pageScrollTop : rightDot.left;
+      const distanceRight = Math.abs(rightDotPosition - pagePosition + halfBlock);
       // 哪个绝对值小就移动哪个Dot
       const isMoveLeft = distanceLeft < distanceRight;
       if (isMoveLeft) {
         // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
-        const left = pageX - initialLeft;
+        const left = pagePosition - initialLeft;
         const leftValue = this.convertPosToValue(left, 0);
         this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
       } else {
-        const right = -(pageX - initialRight);
+        const right = -(pagePosition - initialRight);
         const rightValue = this.convertPosToValue(right, 1);
 
         this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
@@ -314,8 +340,8 @@ export default class Slider extends SuperComponent {
     if (disabled) return;
 
     const [touch] = e.changedTouches;
-    const { pageX } = touch;
-    const currentLeft = pageX - initialLeft;
+    const pagePosition = this.getPagePosition(touch);
+    const currentLeft = pagePosition - initialLeft;
 
     const newData = [...(_value as number[])];
     const leftValue = this.convertPosToValue(currentLeft, 0);
@@ -331,9 +357,8 @@ export default class Slider extends SuperComponent {
     if (disabled) return;
 
     const [touch] = e.changedTouches;
-    const { pageX } = touch;
-
-    const currentRight = -(pageX - initialRight);
+    const pagePosition = this.getPagePosition(touch);
+    const currentRight = -(pagePosition - initialRight);
 
     const newData = [...(_value as number[])];
     const rightValue = this.convertPosToValue(currentRight, 1);
@@ -368,5 +393,11 @@ export default class Slider extends SuperComponent {
 
   onTouchEnd(e: WechatMiniprogram.TouchEvent) {
     this.triggerEvent('dragend', { e });
+  }
+
+  getPagePosition(touch) {
+    const { pageX, pageY } = touch;
+    const { vertical } = this.properties;
+    return vertical ? pageY : pageX;
   }
 }

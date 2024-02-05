@@ -65,6 +65,11 @@ const props: TdSliderProps = {
     type: null,
     value: 0,
   },
+  /** 是否是垂直滑块 */
+  vertical: {
+    type: Boolean,
+    value: false,
+  },
 };
 
 export default props;
