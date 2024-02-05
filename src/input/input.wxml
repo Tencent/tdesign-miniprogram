@@ -13,7 +13,7 @@
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholder-class="{{classPrefix}}__placeholder t-class-placeholder"
-        model:value="{{value}}"
+        value="{{value}}"
         bindinput="onInput"
         bindfocus="onFocus"
         bindblur="onBlur"
