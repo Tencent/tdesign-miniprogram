@@ -32,24 +32,7 @@ exports[`cell :base 1`] = `
       />
       <wx-view
         class="t-cell__right t-class-right"
-      >
-        <t-icon
-          tClass="t-cell__right-icon t-class-right-icon"
-        >
-          <wx-view
-            ariaHidden="{{false}}"
-            ariaLabel=""
-            ariaRole=""
-            class="t-icon class t-class"
-            style=""
-            bind:tap="onTap"
-          >
-            <wx-label
-              class="t-icon- t-icon-base"
-            />
-          </wx-view>
-        </t-icon>
-      </wx-view>
+      />
     </wx-view>
   </main>
 </main>

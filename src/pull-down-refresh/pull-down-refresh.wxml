@@ -20,6 +20,7 @@
   bind:scroll="onScroll"
   bindscrolltoupper="onScrollToTop"
   bindscrolltolower="onScrollToBottom"
+  throttle="{{false}}"
 >
   <view
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
