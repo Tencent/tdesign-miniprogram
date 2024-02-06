@@ -50,6 +50,12 @@ isComponent: true
 
 {{ capsule }}
 
+#### 垂直状态
+
+垂直方向的滑块
+
+{{ vertical }}
+
 ## API
 ### Slider Props
 
@@ -68,6 +74,7 @@ step | Number | 1 | 步长 | N
 theme | String | default | `0.30.0`。滑块风格。可选项：default/capsule | N
 value | Number / Array | 0 | 滑块值。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/slider/type.ts) | N
 default-value | Number / Array | undefined | 滑块值。非受控属性。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/slider/type.ts) | N
+vertical | Boolean | false | 是否是垂直的滑块（渲染垂直滑块时，默认高度为400rpx，可通过修改`--td-slider-bar-height`来自定义高度） | N
 
 ### Slider Events
 
@@ -106,9 +113,11 @@ $slider.init();
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-slider-active-color | @brand-color | - 
---td-slider-bar-height | 8rpx | - 
+--td-slider-bar-height | 8rpx | vertical为true时默认为400rpx
+--td-slider-bar-width | 8rpx | vertical为true时有效
 --td-slider-capsule-bar-color | @bg-color-component | - 
 --td-slider-capsule-bar-heihgt | 48rpx | - 
+--td-slider-capsule-bar-width | 48rpx | vertical为true时有效
 --td-slider-capsule-line-heihgt | 36rpx | - 
 --td-slider-default-color | @bg-color-component-disabled | - 
 --td-slider-default-color | @bg-color-secondarycomponent | - 
