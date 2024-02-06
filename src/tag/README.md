@@ -47,7 +47,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
-closable | Boolean | false | 标签是否可关闭 | N
+closable | Boolean / Object / Slot | false | 标签是否可关闭。 | N
 disabled | Boolean | false | 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 | N
 icon | String / Object / Slot | - | 标签中的图标，可自定义图标呈现 | N
 max-width | String / Number | - | 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80 | N

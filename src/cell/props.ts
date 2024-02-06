@@ -13,7 +13,7 @@ const props: TdCellProps = {
   },
   /** 是否显示右侧箭头 */
   arrow: {
-    type: Boolean,
+    type: null,
     value: false,
   },
   /** 是否显示下边框 */
@@ -44,7 +44,7 @@ const props: TdCellProps = {
   },
   /** 左侧图标，出现在单元格标题的左侧 */
   leftIcon: {
-    type: String,
+    type: null,
   },
   /** 和标题同行的说明文字 */
   note: {
@@ -57,7 +57,7 @@ const props: TdCellProps = {
   },
   /** 最右侧图标 */
   rightIcon: {
-    type: String,
+    type: null,
   },
   /** 标题 */
   title: {

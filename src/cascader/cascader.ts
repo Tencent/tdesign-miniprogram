@@ -50,6 +50,11 @@ export default class Cascader extends SuperComponent {
         this.initWithValue();
       }
     },
+
+    value() {
+      this.initWithValue();
+    },
+
     'selectedIndexes, options'() {
       const { options, selectedIndexes, keys } = this.data;
       const selectedValue = [];

@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-cell`;
@@ -38,6 +39,25 @@ export default class Cell extends SuperComponent {
     classPrefix: name,
     isLastChild: false,
   };
+
+  observers = {
+    leftIcon(v) {
+      this.setIcon('_leftIcon', v, '');
+    },
+    rightIcon(v) {
+      this.setIcon('_rightIcon', v, '');
+    },
+    arrow(v) {
+      this.setIcon('_arrow', v, 'chevron-right');
+    },
+  };
+
+  setIcon(name, value, defaultValue) {
+    if (!value) return;
+    this.setData({
+      [name]: calcIcon(value, defaultValue),
+    });
+  }
 
   onClick(e) {
     this.triggerEvent('click', e.detail);
