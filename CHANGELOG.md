@@ -6,6 +6,21 @@ docClass: timeline
 ---
 
 
+  ## 🌈 1.2.8 `2024-02-06` 
+### 🚀 Features
+- `Slider`: 新增 `vertical`属性 @zuiaiwanqian ([#2592](https://github.com/Tencent/tdesign-miniprogram/pull/2592))
+- `Tag`:  `closable` 属性补充支持 `Object` 和 `Slot`类型 @anlyyao ([#2590](https://github.com/Tencent/tdesign-miniprogram/pull/2590))
+- `Cell`: `leftIcon`、 `rightIcon` 和 `arrow` 属性补充支持 `Object` 类型 @anlyyao ([#2589](https://github.com/Tencent/tdesign-miniprogram/pull/2589))
+### 🐞 Bug Fixes
+- `Search`: 处理 `slot` 互斥问题 @betavs ([#2569](https://github.com/Tencent/tdesign-miniprogram/pull/2569))
+- `ImageViewer`: 修复图片未设置宽高时，图片预览被截断的问题 @azx1573 ([#2575](https://github.com/Tencent/tdesign-miniprogram/pull/2575))
+- `Cascader`: 修复 `value` 无法响应更新的问题 @catiwang ([#2578](https://github.com/Tencent/tdesign-miniprogram/pull/2578))
+- `PullDownRefresh`: 修复快速滚动时 `scrollTop` 不准确的问题 @yangbai1991 ([#2472](https://github.com/Tencent/tdesign-miniprogram/pull/2472))
+- `Dialog`: 处理基础调试库在 `3.3.3` ～ `3.3.4` 版本时控制台报错 @anlyyao ([#2587](https://github.com/Tencent/tdesign-miniprogram/pull/2587))
+### 🚧 Others
+- `NoticeBar`: 声明 `NoticeBarTrigger` 类型 @betavs ([#2567](https://github.com/Tencent/tdesign-miniprogram/pull/2567)) 
+
+
  ## 🌈 1.2.7 `2024-01-17` 
 ### 🚀 Features
 - `Upload`: 支持拖拽排序 @zuiaiwanqian ([#2527](https://github.com/Tencent/tdesign-miniprogram/pull/2527))
