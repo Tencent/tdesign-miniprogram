@@ -1,6 +1,6 @@
 .demo-desc {
-  margin-top: 24px;
-  margin-bottom: 16px;
+  margin-top: 24rpx;
+  margin-bottom: 16rpx;
 }
 
 .wrapper {
