@@ -31,6 +31,14 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
     value?: Array<CascaderOption>;
   };
   /**
+   * 未选中时的提示文案
+   * @default 选择选项
+   */
+  placeholder?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 每级展示的次标题
    * @default []
    */

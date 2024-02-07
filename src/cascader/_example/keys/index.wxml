@@ -6,5 +6,6 @@
   keys="{{keys}}"
   options="{{options}}"
   title="请选择地址"
+  placeholder="未选中时的提示文案"
   bind:change="onChange"
 ></t-cascader>

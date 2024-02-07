@@ -20,6 +20,11 @@ const props: TdCascaderProps = {
     type: Array,
     value: [],
   },
+  /** 未选中时的提示文案 */
+  placeholder: {
+    type: String,
+    value: '选择选项',
+  },
   /** 每级展示的次标题 */
   subTitles: {
     type: Array,

@@ -11,7 +11,6 @@ export interface CascaderProps extends TdCascaderProps {}
 
 type OptionsType = TdCascaderProps['options']['value'];
 
-const defaultOptionLabel = '选择选项';
 @wxComponent()
 export default class Cascader extends SuperComponent {
   externalClasses = [`${prefix}-class`];
@@ -35,9 +34,8 @@ export default class Cascader extends SuperComponent {
     stepIndex: 0,
     selectedIndexes: [],
     selectedValue: [],
-    defaultOptionLabel,
     scrollTopList: [],
-    steps: [defaultOptionLabel],
+    steps: [],
   };
 
   observers = {
@@ -56,7 +54,7 @@ export default class Cascader extends SuperComponent {
     },
 
     'selectedIndexes, options'() {
-      const { options, selectedIndexes, keys } = this.data;
+      const { options, selectedIndexes, keys, placeholder } = this.data;
       const selectedValue = [];
       const steps = [];
       const items = [options];
@@ -76,7 +74,7 @@ export default class Cascader extends SuperComponent {
       }
 
       if (steps.length < items.length) {
-        steps.push(defaultOptionLabel);
+        steps.push(placeholder);
       }
 
       this.setData({
