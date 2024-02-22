@@ -1,8 +1,9 @@
 export const getObserver = (context, selector: string) => {
   return new Promise((resolve, reject) => {
-    wx.createIntersectionObserver(context)
-      .relativeToViewport()
-      .observe(selector, (res) => {
+    const observer = wx.createIntersectionObserver(context)
+      .relativeToViewport();    
+    observer.observe(selector, (res) => {
+        observer.disconnect()
         resolve(res);
       });
   });
