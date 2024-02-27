@@ -347,6 +347,7 @@ exports[`Cascader Cascader keys demo works fine 1`] = `
         },
       ]
     }}"
+    placeholder="未选中时的提示文案"
     title="请选择地址"
     visible="{{false}}"
     bind:change="onChange"
