@@ -38,12 +38,21 @@ export default class Swiper extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    currentPath: '',
   };
 
   lifetimes = {
     ready() {
       const { current } = this.properties;
       this.setData({ navCurrent: current });
+    },
+    attached() {
+      const pages = getCurrentPages(); // 获取当前页面栈
+      const currentPage = pages[pages.length - 1]; // 获取当前页面实例
+      const currentPath = currentPage.route; // 获取当前页面的路径
+      this.setData({
+        currentPath,
+      });
     },
   };
 
