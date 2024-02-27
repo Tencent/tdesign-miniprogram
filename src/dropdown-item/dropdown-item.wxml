@@ -6,6 +6,13 @@
   class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style([this.getStyles(top, zIndex), style, customStyle])}}"
 >
+  <view
+    class="{{ classPrefix }}_mask"
+    hidden="{{!show}}"
+    style="{{_._style(['height:' + maskHeight + 'px', style, customStyle])}}"
+    bind:tap="handleMaskClick"
+    catchtouchmove="closeDropdown"
+  ></view>
   <t-popup
     visible="{{show}}"
     z-index="{{zIndex + 1}}"

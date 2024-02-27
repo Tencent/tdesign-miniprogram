@@ -108,5 +108,7 @@ export default class DropdownMenu extends SuperComponent {
 
       this.toggle(index);
     },
+
+    noop() {},
   };
 }
