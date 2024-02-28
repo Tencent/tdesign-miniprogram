@@ -13,9 +13,11 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "minapp-vscode.reserveTags": ["text"],
+  "minapp-vscode.reserveTags": [
+    "text"
+  ],
   "files.associations": {
-    "*.wxml": "html",
+    // "*.wxml": "html",
     "*.wxss": "css",
     "*.wxs": "javascript"
   },
@@ -33,5 +35,7 @@
   "[less]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["stylelint"]
+  "cSpell.words": [
+    "stylelint"
+  ]
 }

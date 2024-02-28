@@ -104,11 +104,14 @@
     "t-icon": "tdesign-miniprogram/icon/icon"
   },
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f6f6f6",
-    "backgroundColor": "#f6f6f6",
+    "backgroundTextStyle": "@bgTxtStyle",
+    "navigationBarBackgroundColor": "@navBgColor",
+    "backgroundColor": "@bgColor",
     "navigationBarTitleText": "TDesign",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "@navTxtStyle",
+    "backgroundColorTop": "@bgColorTop"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "drakmode": true,
+  "themeLocation": "theme.json"
 }
