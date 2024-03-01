@@ -1,5 +1,5 @@
 .block {
-  background-color: #fff;
+  background-color: var(--bg-color-demo);
   padding: 32rpx 0;
   margin: 32rpx 0 48rpx;
 }

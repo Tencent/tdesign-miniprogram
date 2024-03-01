@@ -10,9 +10,9 @@
 @tab-item-vertical-height: var(--td-tab-item-vertical-height, 108rpx);
 @tab-item-vertical-width: var(--td-tab-item-vertical-width, 208rpx);
 
-@tab-item-color: var(--td-tab-item-color, @font-gray-1);
+@tab-item-color: var(--td-tab-item-color, @text-color-primary);
 @tab-item-active-color: var(--td-tab-item-active-color, @brand-color);
-@tab-item-disabled-color: var(--td-tab-item-disabled-color, @font-gray-4);
+@tab-item-disabled-color: var(--td-tab-item-disabled-color, @text-color-disabled);
 @tab-border-color: var(--td-tab-border-color, @component-stroke);
 
 // track
@@ -132,7 +132,7 @@
       bottom: 0;
       width: 36rpx;
       height: 36rpx;
-      background: #fff;
+      background: @bg-color-container;
 
       &::after {
         content: '';
