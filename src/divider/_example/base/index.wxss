@@ -1,6 +1,6 @@
 .divider-demo__title {
   font-size: 28rpx;
-  color: var(--td-text-color-secondary);
+  color: var(--td-demo-desc-color);
   padding: 16rpx 32rpx;
   line-height: 40rpx;
 }
