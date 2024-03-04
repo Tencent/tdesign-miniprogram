@@ -27,6 +27,7 @@ type dataType = {
   _value: SliderValue;
   prefix: string;
   isVisibleToScreenReader: boolean;
+  identifier: number[];
 };
 
 interface boundingClientRect {
@@ -74,6 +75,7 @@ export default class Slider extends SuperComponent {
     scaleTextArray: [],
     prefix,
     isVisibleToScreenReader: false,
+    identifier: [-1, -1],
   };
 
   observers = {
@@ -263,7 +265,7 @@ export default class Slider extends SuperComponent {
   getSingleChangeValue(e: WechatMiniprogram.TouchEvent) {
     const { min, max } = this.properties;
     const { initialLeft, maxRange } = this.data;
-    const [touch] = e.changedTouches;
+    const touch = e.changedTouches.find((item) => item.identifier === this.data.identifier[0]);
     const pagePosition = this.getPagePosition(touch);
     const currentLeft = pagePosition - initialLeft;
     let value = 0;
@@ -332,6 +334,12 @@ export default class Slider extends SuperComponent {
 
   onTouchStart(e: WechatMiniprogram.TouchEvent) {
     this.triggerEvent('dragstart', { e });
+    const [touch] = e.changedTouches;
+    if (e.currentTarget.id === 'rightDot') {
+      this.data.identifier[1] = touch.identifier;
+    } else {
+      this.data.identifier[0] = touch.identifier;
+    }
   }
 
   onTouchMoveLeft(e: WechatMiniprogram.TouchEvent) {
@@ -339,7 +347,7 @@ export default class Slider extends SuperComponent {
     const { initialLeft, _value } = this.data;
     if (disabled) return;
 
-    const [touch] = e.changedTouches;
+    const touch = e.changedTouches.find((item) => item.identifier === this.data.identifier[0]);
     const pagePosition = this.getPagePosition(touch);
     const currentLeft = pagePosition - initialLeft;
 
@@ -356,7 +364,7 @@ export default class Slider extends SuperComponent {
     const { initialRight, _value } = this.data;
     if (disabled) return;
 
-    const [touch] = e.changedTouches;
+    const touch = e.changedTouches.find((item) => item.identifier === this.data.identifier[1]);
     const pagePosition = this.getPagePosition(touch);
     const currentRight = -(pagePosition - initialRight);
 
@@ -393,6 +401,11 @@ export default class Slider extends SuperComponent {
 
   onTouchEnd(e: WechatMiniprogram.TouchEvent) {
     this.triggerEvent('dragend', { e });
+    if (e.currentTarget.id === 'rightDot') {
+      this.data.identifier[1] = -1;
+    } else {
+      this.data.identifier[0] = -1;
+    }
   }
 
   getPagePosition(touch) {
