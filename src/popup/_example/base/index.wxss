@@ -1,6 +1,5 @@
 .block {
-  /*background: #fff;*/
-  color: #333;
+  color: var(--td-text-color-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +22,6 @@
   height: 240px;
 }
 
-.wrapper + .wrapper {
+.wrapper+.wrapper {
   margin-top: 32rpx;
 }
