@@ -4,6 +4,6 @@
 }
 
 .wrapper {
-  background: #fff;
+  background: var(--bg-color-demo);
   padding-top: 40rpx;
 }

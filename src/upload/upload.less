@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@upload-add-color: var(--td-upload-add-color, @font-gray-3);
+@upload-add-color: var(--td-upload-add-color, @text-color-placeholder);
 @upload-add-bg-color: var(--td-upload-add-bg-color, @bg-color-secondarycontainer);
 @upload-add-disabled-bg-color: var(--td-upload-add-disabled-bg-color, @bg-color-component-disabled);
 @upload-radius: var(--td-upload-radius, @radius-default);
@@ -140,5 +140,12 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    --td-grid-bg-color: transparent;
+    --td-grid-item-bg-color: transparent;
   }
 }
