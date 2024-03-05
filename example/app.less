@@ -1,13 +1,22 @@
 @import '../src/common/style/_variables.less';
 
 page {
-  background: #f6f6f6; // 和设计师确认过，统一改成这个颜色
+  --td-navbar-bg-color: #fff;
+  --td-navbar-title-font-weight: 400;
+  --td-navbar-title-font-size: 28rpx;
+  --td-navbar-left-arrow-size: 56rpx;
+  --td-navbar-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    --td-navbar-bg-color: #181818;
+    --td-navbar-color: white;
+  }
 }
 
 .demo {
   padding-bottom: 56rpx;
-  // padding-bottom: env(safe-area-inset-bottom, 28px); 小程序真机渲染有bug
-  // padding-bottom: constant(safe-area-inset-bottom, 28px);
 
   &-title {
     font-size: 48rpx;

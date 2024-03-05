@@ -4,8 +4,5 @@
     "t-footer": "tdesign-miniprogram/footer/footer",
     "trd-privacy": "/components/trd-privacy/privacy"
   },
-  "navigationBarTitleText": "TDesign UI",
-  "navigationBarBackgroundColor": "#f6f6f6",
-  "navigationBarTextStyle": "black",
-  "backgroundColor": "#f6f6f6"
+  "navigationBarTitleText": "TDesign UI"
 }

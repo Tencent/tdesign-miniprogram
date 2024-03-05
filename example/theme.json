@@ -1,4 +1,8 @@
 {
+  "app.json": {
+    "darkmode": true,
+    "themeLocation": "theme.json"
+  },
   "light": {
     "bgTxtStyle": "light",
     "navBgColor": "#f6f6f6",

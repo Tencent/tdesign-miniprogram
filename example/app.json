@@ -1,4 +1,6 @@
 {
+  "darkmode": true,
+  "themeLocation": "theme.json",
   "pages": [
     "pages/home/home",
     "pages/button/button",
@@ -101,7 +103,8 @@
   "usingComponents": {
     "t-demo": "./components/demo-block/index",
     "t-button": "tdesign-miniprogram/button/button",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar"
   },
   "window": {
     "backgroundTextStyle": "@bgTxtStyle",
@@ -109,9 +112,8 @@
     "backgroundColor": "@bgColor",
     "navigationBarTitleText": "TDesign",
     "navigationBarTextStyle": "@navTxtStyle",
-    "backgroundColorTop": "@bgColorTop"
+    "backgroundColorTop": "@bgColorTop",
+    "navigationStyle": "custom"
   },
-  "sitemapLocation": "sitemap.json",
-  "drakmode": true,
-  "themeLocation": "theme.json"
+  "sitemapLocation": "sitemap.json"
 }

@@ -1,9 +1,7 @@
-@import '../../../src/common/style/_variables.less';
-
 .pullDownList {
   width: 100%;
   box-sizing: border-box;
-  background-color: @home-bg-color-list;
+  background-color: var(--bg-color-demo-home);
   border-radius: 8rpx;
   margin-bottom: 12rpx * 2;
   overflow: hidden;
@@ -16,7 +14,7 @@
     padding: 0 16rpx * 2;
     font-size: 16rpx * 2;
     line-height: 24rpx * 2;
-    color: @home-text-color;
+    color: var(--bg-color-demo-home-text);
   }
 
   .name,
@@ -52,7 +50,7 @@
       margin-right: 16rpx * 2;
       font-size: 16rpx * 2;
       opacity: 0.9;
-      color: @home-text-color;
+      color: var(--bg-color-demo-home-text);
 
       &:last-of-type {
         border-bottom-color: transparent;
