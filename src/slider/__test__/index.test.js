@@ -180,6 +180,7 @@ describe('slider', () => {
     comp.setData({});
   });
 
+  /* miniprogram-simulate 触发的 touchEvent 中的 identifier 是随机数，无法通过参数传递，move 相关事件依赖 identifier 区分触点，无法进行单测
   it('@touch on range', async () => {
     const id = simulate.load({
       template: `<t-slider id="base" range></t-slider>`,
@@ -217,6 +218,7 @@ describe('slider', () => {
     move($rightDot, 150);
     expect($slider.instance.data.value).toStrictEqual([calc(100), calc(300)]);
   });
+  */
 
   it('value is over limited', async () => {
     const id = simulate.load({
