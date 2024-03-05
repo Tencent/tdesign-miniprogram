@@ -107,11 +107,8 @@
     "t-navbar": "tdesign-miniprogram/navbar/navbar"
   },
   "window": {
-    "backgroundTextStyle": "@bgTxtStyle",
-    "navigationBarBackgroundColor": "@navBgColor",
     "backgroundColor": "@bgColor",
     "navigationBarTitleText": "TDesign",
-    "navigationBarTextStyle": "@navTxtStyle",
     "backgroundColorTop": "@bgColorTop",
     "navigationStyle": "custom"
   },
