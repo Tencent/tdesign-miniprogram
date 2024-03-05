@@ -7,4 +7,13 @@ Component({
       color: '#f6f6f6',
     },
   },
+
+  lifetimes: {
+    attached() {
+      const { theme } = wx.getSystemInfoSync();
+      if (theme === 'dark') {
+        this.setData({ border: { color: '#181818' } });
+      }
+    },
+  },
 });
