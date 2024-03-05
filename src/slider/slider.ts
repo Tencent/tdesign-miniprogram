@@ -257,8 +257,15 @@ export default class Slider extends SuperComponent {
   onSingleLineTap(e: WechatMiniprogram.TouchEvent) {
     const { disabled } = this.properties;
     if (disabled) return;
-
+    const isSingleLineTap = this.data.identifier[0] === -1; // 区分点击滑动条和单游标的滑动
+    if (isSingleLineTap) {
+      const [touch] = e.changedTouches;
+      this.data.identifier[0] = touch.identifier;
+    }
     const value = this.getSingleChangeValue(e);
+    if (isSingleLineTap) {
+      this.data.identifier[0] = -1;
+    }
     this.triggerValue(value);
   }
 
