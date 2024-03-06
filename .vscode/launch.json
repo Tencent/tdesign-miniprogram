@@ -10,5 +10,11 @@
       "request": "launch",
       "type": "node-terminal"
     },
+    {
+      "command": "cd _example && npx m2w build",
+      "name": "npx m2w build",
+      "request": "launch",
+      "type": "node-terminal"
+    }
   ]
 }

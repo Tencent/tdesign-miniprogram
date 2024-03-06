@@ -41,7 +41,8 @@
     "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./",
     "changelog": "node script/generate-changelog.js",
     "robot": "publish-cli robot-msg",
-    "qrcode": "node script/qrcode/index.js"
+    "qrcode": "node script/qrcode/index.js",
+    "postinstall": "$(npm bin)/patch-package --patch-dir ./node_modules/@tencent/m2w/patches"
   },
   "author": "tdesign",
   "license": "MIT",
