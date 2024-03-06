@@ -270,11 +270,23 @@ export default class Slider extends SuperComponent {
   }
 
   getSingleChangeValue(e: WechatMiniprogram.TouchEvent) {
-    const { min, max } = this.properties;
-    const { initialLeft, maxRange } = this.data;
+    const { min, max, theme, vertical } = this.properties;
+    const { initialLeft, maxRange, blockSize } = this.data;
     const touch = e.changedTouches.find((item) => item.identifier === this.data.identifier[0]);
     const pagePosition = this.getPagePosition(touch);
-    const currentLeft = pagePosition - initialLeft;
+
+    let offset = 0;
+    if ((theme as any) === 'capsule') {
+      offset = Number(blockSize);
+      if (vertical) {
+        offset *= 2;
+      }
+      offset += 6;
+    } else if (vertical) {
+      offset = Number(blockSize);
+    }
+
+    const currentLeft = pagePosition - initialLeft - offset;
     let value = 0;
     if (currentLeft <= 0) {
       value = Number(min);
@@ -313,7 +325,8 @@ export default class Slider extends SuperComponent {
     const halfBlock = (theme as any) === 'capsule' ? Number(blockSize) / 2 : 0;
 
     const currentLeft = pagePosition - initialLeft;
-    if (currentLeft < 0 || currentLeft > maxRange + Number(blockSize)) return;
+    const currentRight = -(pagePosition - initialRight);
+    if (currentLeft < 0 || currentRight > maxRange + Number(blockSize)) return;
 
     Promise.all([getRect(this, '#leftDot'), getRect(this, '#rightDot')]).then(([leftDot, rightDot]) => {
       const pageScrollTop = this.pageScrollTop || 0;
@@ -325,13 +338,28 @@ export default class Slider extends SuperComponent {
       const distanceRight = Math.abs(rightDotPosition - pagePosition + halfBlock);
       // 哪个绝对值小就移动哪个Dot
       const isMoveLeft = distanceLeft < distanceRight;
+
+      let offset = 0;
+      if ((theme as any) === 'capsule') {
+        offset = Number(blockSize);
+        if (vertical) {
+          offset *= 2;
+        }
+        offset += 6;
+      } else if (vertical) {
+        offset = Number(blockSize);
+      }
+
       if (isMoveLeft) {
         // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
-        const left = pagePosition - initialLeft;
+        const left = pagePosition - initialLeft - offset;
         const leftValue = this.convertPosToValue(left, 0);
         this.triggerValue([this.stepValue(leftValue), this.data._value[1]]);
       } else {
-        const right = -(pagePosition - initialRight);
+        let right = -(pagePosition - initialRight);
+        if (vertical) {
+          right += offset / 2;
+        }
         const rightValue = this.convertPosToValue(right, 1);
 
         this.triggerValue([this.data._value[0], this.stepValue(rightValue)]);
@@ -350,13 +378,20 @@ export default class Slider extends SuperComponent {
   }
 
   onTouchMoveLeft(e: WechatMiniprogram.TouchEvent) {
-    const { disabled } = this.properties;
-    const { initialLeft, _value } = this.data;
+    const { disabled, theme, vertical } = this.properties;
+    const { initialLeft, _value, blockSize } = this.data;
     if (disabled) return;
 
     const touch = e.changedTouches.find((item) => item.identifier === this.data.identifier[0]);
     const pagePosition = this.getPagePosition(touch);
-    const currentLeft = pagePosition - initialLeft;
+    let offset = 0;
+    if ((theme as any) === 'capsule') {
+      offset += Number(blockSize);
+    }
+    if (vertical) {
+      offset += Number(blockSize) + 6;
+    }
+    const currentLeft = pagePosition - initialLeft - offset;
 
     const newData = [...(_value as number[])];
     const leftValue = this.convertPosToValue(currentLeft, 0);
@@ -367,13 +402,17 @@ export default class Slider extends SuperComponent {
   }
 
   onTouchMoveRight(e: WechatMiniprogram.TouchEvent) {
-    const { disabled } = this.properties;
-    const { initialRight, _value } = this.data;
+    const { disabled, vertical } = this.properties;
+    const { initialRight, _value, blockSize } = this.data;
     if (disabled) return;
 
     const touch = e.changedTouches.find((item) => item.identifier === this.data.identifier[1]);
     const pagePosition = this.getPagePosition(touch);
-    const currentRight = -(pagePosition - initialRight);
+    let offset = 0;
+    if (vertical) {
+      offset += Number(blockSize) / 2 + 6;
+    }
+    const currentRight = -(pagePosition - initialRight - offset);
 
     const newData = [...(_value as number[])];
     const rightValue = this.convertPosToValue(currentRight, 1);
