@@ -1,6 +1,5 @@
 {
   "darkmode": true,
-  "themeLocation": "theme.json",
   "pages": [
     "pages/home/home",
     "pages/button/button",
@@ -107,9 +106,7 @@
     "t-navbar": "tdesign-miniprogram/navbar/navbar"
   },
   "window": {
-    "backgroundColor": "@bgColor",
     "navigationBarTitleText": "TDesign",
-    "backgroundColorTop": "@bgColorTop",
     "navigationStyle": "custom"
   },
   "sitemapLocation": "sitemap.json"
