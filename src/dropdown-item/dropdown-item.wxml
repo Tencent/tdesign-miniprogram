@@ -7,7 +7,7 @@
   style="{{_._style([this.getStyles(top, zIndex), style, customStyle])}}"
 >
   <view
-    class="{{ classPrefix }}_mask"
+    class="{{ classPrefix }}__mask"
     hidden="{{!show}}"
     style="{{_._style(['height:' + maskHeight + 'px', style, customStyle])}}"
     bind:tap="handleMaskClick"
