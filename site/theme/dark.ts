@@ -1,5 +1,8 @@
+const DARK_MODE_CLASS = 'dark-mode';
+const DARK_MODE_NAME = 'dark';
+
 const darkModeCss = `
-  .dark-mode {
+  .${DARK_MODE_CLASS} {
     background: #181818;
     --td-brand-color-1: #1b2f51;
     --td-brand-color-2: #173463;
@@ -158,16 +161,16 @@ export const changeThemeMode = () => {
     const mode = targetNode.getAttribute('theme-mode');
     const iframeDom = previewIframe.contentWindow.document.documentElement;
     const bodyElement = previewIframe.contentWindow.document.body;
-    if (mode === 'dark') {
+    if (mode === DARK_MODE_NAME) {
       const styleElement = document.createElement('style');
       styleElement.type = 'text/css';
       styleElement.textContent = darkModeCss;
       iframeDom.appendChild(styleElement);
-      if (!bodyElement.classList.contains('dark-mode')) {
-        bodyElement.classList.add('dark-mode');
+      if (!bodyElement.classList.contains(DARK_MODE_CLASS)) {
+        bodyElement.classList.add(DARK_MODE_CLASS);
       }
     } else {
-      bodyElement.classList.remove('dark-mode');
+      bodyElement.classList.remove(DARK_MODE_CLASS);
     }
   }
 };
