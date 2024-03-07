@@ -1,15 +1,28 @@
 @import '../src/common/style/_variables.less';
 
 page {
-  --td-navbar-bg-color: #fff;
-  --td-navbar-title-font-weight: 400;
-  --td-navbar-title-font-size: 28rpx;
-  --td-navbar-left-arrow-size: 56rpx;
+  background-color: #f6f6f6;
+  --bg-color-demo-desc: #0009;
+  --bg-color-demo-title: #000000e6;
+  --bg-color-demo: #fff;
+  --bg-color-demo-border: #f0f0f0;
+  --bg-color-demo-secondary: #fff;
+  --bg-color-demo-home: #fff;
+  --bg-color-demo-home-text: #333;
+  --td-navbar-bg-color: #f6f6f6;
   --td-navbar-color: black;
 }
 
 @media (prefers-color-scheme: dark) {
   page {
+    background: #181818 !important;
+    --bg-color-demo-home-text: rgba(255, 255, 255, 0.9);
+    --bg-color-demo-home: #4f4e4e;
+    --bg-color-demo-title: #fff;
+    --bg-color-demo-desc: #fff;
+    --bg-color-demo: #181818;
+    --bg-color-demo-border: #5e5e5e;
+    --bg-color-demo-secondary: #2c2c2c;
     --td-navbar-bg-color: #181818;
     --td-navbar-color: white;
   }
@@ -23,13 +36,11 @@ page {
     font-weight: 700;
     line-height: 64rpx;
     margin: 48rpx 32rpx 0;
-    // color: @font-gray-1;
     color: var(--bg-color-demo-title);
   }
 
   &-desc {
     font-size: 28rpx;
-    // color: @font-gray-2;
     color: var(--bg-color-demo-desc);
     margin: 16rpx 32rpx 0;
     line-height: 44rpx;

@@ -1,5 +1,6 @@
-@media (prefers-color-scheme: dark) {
-  page {
+const darkModeCss = `
+  .dark-mode {
+    background: #181818;
     --td-brand-color-1: #1b2f51;
     --td-brand-color-2: #173463;
     --td-brand-color-3: #143975;
@@ -55,7 +56,6 @@
     --td-gray-color-13: #242424;
     --td-gray-color-14: #181818;
 
-    // 文字 & 图标 颜色
     --td-font-white-1: rgba(255, 255, 255, 90%);
     --td-font-white-2: rgba(255, 255, 255, 60%);
     --td-font-white-3: rgba(255, 255, 255, 40%);
@@ -65,92 +65,109 @@
     --td-font-gray-3: rgba(0, 0, 0, 40%);
     --td-font-gray-4: rgba(0, 0, 0, 26%);
 
-    // 基础颜色
-    --td-brand-color: var(--td-brand-color-8); // 色彩-品牌-可操作
-    --td-warning-color: var(--td-warning-color-5); // 色彩-功能-警告
-    --td-error-color: var(--td-error-color-6); // 色彩-功能-失败
-    --td-success-color: var(--td-success-color-5); // 色彩-功能-成功
+    --td-brand-color: var(--td-brand-color-8);
+    --td-warning-color: var(--td-warning-color-5);
+    --td-error-color: var(--td-error-color-6);
+    --td-success-color: var(--td-success-color-5);
 
-    // 基础颜色的扩展 用于 聚焦 / 禁用 / 点击 等状态
-    --td-brand-color-focus: var(--td-brand-color-1); // focus态，包括鼠标和键盘
-    --td-brand-color-active: var(--td-brand-color-9); // 点击态
-    --td-brand-color-disabled: var(--td-brand-color-3); // 禁用态
-    --td-brand-color-light: var(--td-brand-color-1); // 浅色的选中态
-    --td-brand-color-light-active: var(--td-brand-color-2); // 浅色的选中态
+    --td-brand-color-focus: var(--td-brand-color-1);
+    --td-brand-color-active: var(--td-brand-color-9);
+    --td-brand-color-disabled: var(--td-brand-color-3);
+    --td-brand-color-light: var(--td-brand-color-1);
+    --td-brand-color-light-active: var(--td-brand-color-2);
 
-    // 警告色扩展
     --td-warning-color-focus: var(--td-warning-color-2);
     --td-warning-color-active: var(--td-warning-color-4);
     --td-warning-color-disabled: var(--td-warning-color-3);
     --td-warning-color-light: var(--td-warning-color-1);
     --td-warning-color-light-active: var(--td-warning-color-2);
 
-    // 失败/错误色扩展
     --td-error-color-focus: var(--td-error-color-2);
     --td-error-color-active: var(--td-error-color-5);
     --td-error-color-disabled: var(--td-error-color-3);
     --td-error-color-light: var(--td-error-color-1);
     --td-error-color-light-active: var(--td-error-color-2);
 
-    // 成功色扩展
     --td-success-color-focus: var(--td-success-color-2);
     --td-success-color-active: var(--td-success-color-4);
     --td-success-color-disabled: var(--td-success-color-3);
     --td-success-color-light: var(--td-success-color-1);
     --td-success-color-light-active: var(--td-success-color-2);
 
-    // 遮罩
-    --td-mask-active: rgba(0, 0, 0, 40%); // 遮罩-弹出
-    --td-mask-disabled: rgba(0, 0, 0, 60%); // 遮罩-禁用
+    --td-mask-active: rgba(0, 0, 0, 40%);
+    --td-mask-disabled: rgba(0, 0, 0, 60%);
 
-    // 背景色
-    --td-bg-color-page: var(--td-gray-color-14); // 色彩 - page
-    --td-bg-color-container: var(--td-gray-color-13); // 色彩 - 容器
-    --td-bg-color-secondarycontainer: var(--td-gray-color-12); // 色彩 - 次级容器
-    --td-bg-color-component: var(--td-gray-color-11); // 色彩  - 组件
-    --td-bg-color-container-active: var(--td-gray-color-12); // 色彩 - 容器 - active
-    --td-bg-color-secondarycontainer-active: var(--td-gray-color-11); // 色彩 - 次级容器 - active
-    --td-bg-color-component-active: var(--td-gray-color-10); // 色彩 - 组件 - active
-    --td-bg-color-component-disabled: var(--td-gray-color-12); // 色彩 - 组件 - disabled
+    --td-bg-color-page: var(--td-gray-color-14);
+    --td-bg-color-container: var(--td-gray-color-13);
+    --td-bg-color-secondarycontainer: var(--td-gray-color-12);
+    --td-bg-color-component: var(--td-gray-color-11);
+    --td-bg-color-container-active: var(--td-gray-color-12);
+    --td-bg-color-secondarycontainer-active: var(--td-gray-color-11);
+    --td-bg-color-component-active: var(--td-gray-color-10);
+    --td-bg-color-component-disabled: var(--td-gray-color-12);
 
-    // 特殊组件背景色，目前只用于 button、input 组件多主题场景，浅色主题下固定为白色，深色主题下为 transparent 适配背景颜色
     --td-bg-color-specialcomponent: transparent;
 
-    // 文本颜色
-    --td-text-color-primary: var(--td-font-white-1); // 色彩-文字-主要
-    --td-text-color-secondary: var(--td-font-white-2); // 色彩-文字-次要
-    --td-text-color-placeholder: var(--td-font-white-3); // 色彩-文字-占位符/说明
-    --td-text-color-disabled: var(--td-font-white-4); // 色彩-文字-禁用
-    --td-text-color-anti: var(--td-font-gray-1); // 色彩-文字-反色
-    --td-text-color-brand: var(--td-brand-color-8); // 色彩-文字-品牌
-    --td-text-color-link: var(--td-brand-color-8); // 色彩-文字-链接
+    --td-text-color-primary: var(--td-font-white-1);
+    --td-text-color-secondary: var(--td-font-white-2);
+    --td-text-color-placeholder: var(--td-font-white-3);
+    --td-text-color-disabled: var(--td-font-white-4);
+    --td-text-color-anti: var(--td-font-gray-1);
+    --td-text-color-brand: var(--td-brand-color-8);
+    --td-text-color-link: var(--td-brand-color-8);
 
-    // 分割线
     --td-border-level-1-color: var(--td-gray-color-11);
     --td-component-stroke: var(--td-gray-color-11);
-    // 边框
     --td-border-level-2-color: var(--td-gray-color-9);
     --td-component-border: var(--td-gray-color-9);
 
-    // 基础/下层 投影 hover 使用的组件包括：表格 /
     --td-shadow-1: 0 4px 6px rgba(0, 0, 0, 6%), 0 1px 10px rgba(0, 0, 0, 8%), 0 2px 4px rgba(0, 0, 0, 12%);
-    // 中层投影 下拉 使用的组件包括：下拉菜单 / 气泡确认框 / 选择器 /
     --td-shadow-2: 0 8px 10px rgba(0, 0, 0, 12%), 0 3px 14px rgba(0, 0, 0, 10%), 0 5px 5px rgba(0, 0, 0, 16%);
-    // 上层投影（警示/弹窗）使用的组件包括：全局提示 / 消息通知
     --td-shadow-3: 0 16px 24px rgba(0, 0, 0, 14%), 0 6px 30px rgba(0, 0, 0, 12%), 0 8px 10px rgba(0, 0, 0, 20%);
-    // 内投影 用于弹窗类组件（气泡确认框 / 全局提示 / 消息通知）的内描边
 
     --td-shadow-inset-top: inset 0 0.5px 0 #5e5e5e;
     --td-shadow-inset-right: inset 0.5px 0 0 #5e5e5e;
     --td-shadow-inset-bottom: inset 0 -0.5px 0 #5e5e5e;
     --td-shadow-inset-left: inset -0.5px 0 0 #5e5e5e;
 
-    // table 特定阴影
     --td-table-shadow-color: rgba(0, 0, 0, 55%);
 
-    // 滚动条颜色
     --td-scrollbar-color: rgba(255, 255, 255, 10%);
-    // 滚动条轨道颜色，不能是带透明度，否则纵向滚动时，横向滚动条会穿透
     --td-scroll-track-color: #333;
+
+    --bg-color-demo-home-text: rgba(255, 255, 255, 0.9);
+    --bg-color-demo-home: #4f4e4e;
+    --bg-color-demo-title: #fff;
+    --bg-color-demo-desc: #fff;
+    --bg-color-demo: #181818;
+    --bg-color-demo-border: #5e5e5e;
+    --bg-color-demo-secondary: #2c2c2c;
+    --td-navbar-bg-color: #181818;
+    --td-navbar-color: white;
   }
-}
+`;
+
+export const changeThemeMode = () => {
+  const parentIframe = document.querySelector('iframe');
+  let previewIframe = null;
+  if (parentIframe && parentIframe.contentWindow) {
+    previewIframe = parentIframe.contentWindow.document.querySelector('iframe');
+  }
+  if (previewIframe && previewIframe.contentWindow) {
+    const targetNode = document.documentElement;
+    const mode = targetNode.getAttribute('theme-mode');
+    const iframeDom = previewIframe.contentWindow.document.documentElement;
+    const bodyElement = previewIframe.contentWindow.document.body;
+    if (mode === 'dark') {
+      const styleElement = document.createElement('style');
+      styleElement.type = 'text/css';
+      styleElement.textContent = darkModeCss;
+      iframeDom.appendChild(styleElement);
+      if (!bodyElement.classList.contains('dark-mode')) {
+        bodyElement.classList.add('dark-mode');
+      }
+    } else {
+      bodyElement.classList.remove('dark-mode');
+    }
+  }
+};
