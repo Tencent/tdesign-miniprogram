@@ -40,7 +40,7 @@ exports[`navbar :base 2`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--hide-animation class t-class"
-      style="--td-navbar-padding-top:40rpx; --td-navbar-right:188rpx; --td-navbar-capsule-height: 64rpx; --td-navbar-capsule-width: 174rpx; --td-navbar-height: 188rpx;"
+      style="--td-navbar-padding-top: 36rpx; --td-navbar-right: 170rpx; --td-navbar-capsule-height: 58rpx; --td-navbar-capsule-width: 158rpx; --td-navbar-height: 170rpx;"
     >
       <wx-view
         class="t-navbar__placeholder"
@@ -75,7 +75,7 @@ exports[`navbar :base 3`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--hide class t-class"
-      style="--td-navbar-padding-top:40rpx; --td-navbar-right:188rpx; --td-navbar-capsule-height: 64rpx; --td-navbar-capsule-width: 174rpx; --td-navbar-height: 188rpx;"
+      style="--td-navbar-padding-top: 36rpx; --td-navbar-right: 170rpx; --td-navbar-capsule-height: 58rpx; --td-navbar-capsule-width: 158rpx; --td-navbar-height: 170rpx;"
     >
       <wx-view
         class="t-navbar__placeholder"
@@ -110,7 +110,7 @@ exports[`navbar :fixed 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--visible-animation class t-class"
-      style="--td-navbar-padding-top:40rpx; --td-navbar-right:188rpx; --td-navbar-capsule-height: 64rpx; --td-navbar-capsule-width: 174rpx; --td-navbar-height: 188rpx;"
+      style="--td-navbar-padding-top: 36rpx; --td-navbar-right: 170rpx; --td-navbar-capsule-height: 58rpx; --td-navbar-capsule-width: 158rpx; --td-navbar-height: 170rpx;"
     >
       <wx-view
         class="t-navbar__placeholder"
@@ -145,7 +145,7 @@ exports[`navbar :menu button 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed  class t-class"
-      style="--td-navbar-padding-top:40rpx; --td-navbar-right:856rpx; --td-navbar-capsule-height: 20rpx; --td-navbar-capsule-width: 80rpx; --td-navbar-height: -20rpx;"
+      style="--td-navbar-padding-top: 36rpx; --td-navbar-right: 775rpx; --td-navbar-capsule-height: 18rpx; --td-navbar-capsule-width: 72rpx; --td-navbar-height: -18rpx;"
     >
       <wx-view
         class="t-navbar__placeholder"
