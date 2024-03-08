@@ -1,8 +1,9 @@
 @import '../common/index.less';
 
 .@{prefix}-col {
+  display: block;
   box-sizing: border-box;
-  float: left;
+  min-height: 1px;
 }
 
 .col-generate(@n, @i: 1) when(@i <= @n) {

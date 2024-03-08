@@ -6,6 +6,22 @@ docClass: timeline
 ---
 
 
+  ## 🌈 1.2.9 `2024-03-07` 
+### 🚀 Features
+- `Cascader`: 新增 `placeholder` 属性，支持自定义未选中时的提示文案 @anlyyao ([#2597](https://github.com/Tencent/tdesign-miniprogram/pull/2597))
+### 🐞 Bug Fixes
+- `DropdownMenu`: 修复菜单栏展开状态向上滚动时菜单栏和内容面板分离的问题 @maureenwanmy ([#2606](https://github.com/Tencent/tdesign-miniprogram/pull/2606))
+- `Swiper`: 修复意外的高频左右抖动 @betavs ([#2603](https://github.com/Tencent/tdesign-miniprogram/pull/2603))
+- `Layout`: 改用 `flex` 布局，修复 `col` 高度塌陷问题 @dexterBo ([#2616](https://github.com/Tencent/tdesign-miniprogram/pull/2616))
+- `Slider`: 修复 `slider` 在多点触控时无法滑动的问题  @xieyushansun ([#2619](https://github.com/Tencent/tdesign-miniprogram/pull/2619))
+- `Slider`: 修复滑块点击偏移和点击位置定位不准确的问题 @dexterBo ([#2627](https://github.com/Tencent/tdesign-miniprogram/pull/2627))
+- `Fab`: 修复拖拽模式点击不触发 @jarmywang ([#2631](https://github.com/Tencent/tdesign-miniprogram/pull/2631))
+- `Navbar`: `px` 转 `rpx` 换算错误 @betavs ([#2626](https://github.com/Tencent/tdesign-miniprogram/pull/2626))
+### 🚧 Others
+- `Tabbar`: 移除重复样式类 @Moonofweisheng ([#2630](https://github.com/Tencent/tdesign-miniprogram/pull/2630))
+- `DropdownItem`: 采用 [BEM](http://getbem.com/) 命名规范优化类名 @betavs ([#2611](https://github.com/Tencent/tdesign-miniprogram/pull/2611))
+
+
   ## 🌈 1.2.8 `2024-02-06` 
 ### 🚀 Features
 - `Slider`: 新增 `vertical`属性 @zuiaiwanqian ([#2592](https://github.com/Tencent/tdesign-miniprogram/pull/2592))

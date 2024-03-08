@@ -3,9 +3,9 @@
 <view
   class="{{classPrefix}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
-  catchtouchstart="onTouchStart"
-  catchtouchmove="onTouchMove"
-  catchtouchend="onTouchEnd"
+  bind:touchstart="onTouchStart"
+  catch:touchmove="onTouchMove"
+  bind:touchend="onTouchEnd"
 >
   <slot></slot>
 </view>
