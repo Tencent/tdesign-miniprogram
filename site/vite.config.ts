@@ -32,7 +32,7 @@ export default ({ mode }: any) => {
       open: '/',
       https: false,
       proxy: {
-        //代理所有 /api 的请求
+        //代理所有 /m2w 的请求
         '/m2w': {
           // 代理请求之后的请求地址
           target: 'http://127.0.0.1:8080',
