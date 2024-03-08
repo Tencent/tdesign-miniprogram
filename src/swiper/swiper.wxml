@@ -23,7 +23,7 @@
     <swiper-item
       wx:for="{{list}}"
       wx:key="index"
-      class="{{_.cls(classPrefix + '__item', [['preview', this.isPrev(current, index, list)], ['next', this.isNext(current, index, list)]])}}"
+      class="{{_.cls(classPrefix + '__item', [['preview', this.isPrev(navCurrent, index, list)], ['next', this.isNext(navCurrent, index, list)]])}}"
       data-index="{{index}}"
       bind:tap="onTap"
       aria-hidden="{{navCurrent !== index}}"
@@ -32,7 +32,7 @@
     >
       <template
         is="image"
-        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, current, index, list), style: 'height: ' + _.addUnit(height), src: _.isObject(item) ? item.value : item, mode: 'aspectFill', dataset: index, ...imageProps, bindload: 'onImageLoad' }}"
+        data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, navCurrent, index, list), style: 'height: ' + _.addUnit(height), src: _.isObject(item) ? item.value : item, mode: 'aspectFill', dataset: index, ...imageProps, bindload: 'onImageLoad' }}"
       />
     </swiper-item>
   </swiper>

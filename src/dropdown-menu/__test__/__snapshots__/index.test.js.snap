@@ -9,6 +9,7 @@ exports[`dropdown-menu :base 1`] = `
       class="t-dropdown-menu class t-class"
       id="t-bar"
       style="font-size: 9px;"
+      catch:touchmove="noop"
     >
       <wx-view
         ariaDisabled="{{false}}"
@@ -84,6 +85,13 @@ exports[`dropdown-menu :base 1`] = `
           class="t-dropdown-item class t-class"
           style="z-index:11600;"
         >
+          <wx-view
+            class="t-dropdown-item__mask"
+            hidden="{{false}}"
+            style="height:0px;"
+            bind:tap="handleMaskClick"
+            catch:touchmove="closeDropdown"
+          />
           <t-popup
             tClass="t-dropdown-item__popup-host"
             tClassContent="t-dropdown-item__content t-class-content"
