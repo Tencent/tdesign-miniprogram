@@ -1,14 +1,14 @@
-<t-cell class="mb-16" title="选择城市" arrow hover note="{{cityText}}" bind:click="onCityPicker" />
+<t-cell class="mb-16" title="Choose City" arrow hover note="{{cityText}}" bind:click="onCityPicker" />
 
-<t-cell class="mb-16" title="选择时间" arrow hover note="{{dateText}}" bind:click="onSeasonPicker" />
+<t-cell class="mb-16" title="Choose Date" arrow hover note="{{dateText}}" bind:click="onSeasonPicker" />
 
 <t-picker
   visible="{{cityVisible}}"
   value="{{cityValue}}"
   data-key="city"
-  title="选择城市"
-  cancelBtn="取消"
-  confirmBtn="确认"
+  title="Choose City"
+  cancelBtn="Cancel"
+  confirmBtn="Confirm"
   bindchange="onPickerChange"
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"
@@ -20,9 +20,9 @@
   visible="{{dateVisible}}"
   value="{{dateValue}}"
   data-key="date"
-  title="选择时间"
-  cancelBtn="取消"
-  confirmBtn="确认"
+  title="Choose Date"
+  cancelBtn="Cancel"
+  confirmBtn="Confirm"
   bindchange="onPickerChange"
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"

@@ -14,14 +14,14 @@
 
 <view class="swiper-box swiper-box-option">
   <view class="cell">
-    <view class="label">自动播放</view>
+    <view class="label">Autoplay</view>
     <view class="option">
       <t-switch t-class="swiper-switch" bindchange="onAutoplayChange" value="{{autoplay}}"></t-switch>
-      <view class="option-desc">{{autoplay?'开':'关'}}</view>
+      <view class="option-desc">{{autoplay?'Open':'Close'}}</view>
     </view>
   </view>
   <view class="cell">
-    <view class="label">自动播放间隔时间(单位毫秒)</view>
+    <view class="label">Autoplay Interval Time (Milliseconds)</view>
     <view class="option">
       <t-slider
         t-class="swiper-slider"
@@ -36,7 +36,7 @@
     </view>
   </view>
   <view class="cell">
-    <view class="label">动画持续时间(单位毫秒)</view>
+    <view class="label">Animation Duration (Milliseconds)</view>
     <view class="option">
       <t-slider
         t-class="swiper-slider"

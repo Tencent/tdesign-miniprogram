@@ -1,4 +1,4 @@
 <view class="demo-rate">
-  <view class="demo-rate__title">自定义评分</view>
+  <view class="demo-rate__title">Custom Rate</view>
   <t-rate value="{{value}}" icon="thumb-up" bind:change="onChange" />
 </view>

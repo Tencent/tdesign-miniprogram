@@ -2,12 +2,12 @@ Component({
   data: {
     animationList: [
       {
-        title: '渐变加载效果',
+        title: 'Gradient loading effect',
         value: 'gradient',
         loading: true,
       },
       {
-        title: '闪烁加载效果',
+        title: 'flash loading effect',
         value: 'flashed',
         loading: true,
       },

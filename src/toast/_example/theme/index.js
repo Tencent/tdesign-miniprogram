@@ -5,7 +5,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '成功文案',
+      message: 'success',
       theme: 'success',
       direction: 'column',
     });
@@ -15,7 +15,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '警告文案',
+      message: 'warning',
       theme: 'warning',
       direction: 'column',
     });
@@ -25,7 +25,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '错误文案',
+      message: 'error',
       theme: 'error',
       direction: 'column',
     });

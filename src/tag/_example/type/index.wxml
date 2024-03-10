@@ -1,27 +1,30 @@
 <view class="demo">
-  <view class="demo-desc">基础标签</view>
+  <view class="demo-desc">Basic</view>
 
-  <t-tag class="margin-16" variant="light">标签文字</t-tag>
-  <t-tag class="margin-16" variant="outline">标签文字</t-tag>
+  <t-tag class="margin-16" variant="light">Text</t-tag>
+  <t-tag class="margin-16" variant="outline">Text</t-tag>
 </view>
 
 <view class="demo">
-  <view class="demo-desc">圆弧标签</view>
+  <view class="demo-desc">Round</view>
 
-  <t-tag class="margin-16" variant="light" shape="round">标签文字</t-tag>
-  <t-tag class="margin-16" variant="outline" shape="round">标签文字</t-tag>
-  <t-tag class="margin-16" variant="outline" shape="mark">标签文字</t-tag>
+  <t-tag class="margin-16" variant="light" shape="round">Text</t-tag>
+  <t-tag class="margin-16" variant="outline" shape="round">Text</t-tag>
+  <t-tag class="margin-16" variant="outline" shape="mark">Text</t-tag>
 </view>
 
 <view class="demo">
-  <view class="demo-desc">带图标的标签</view>
+  <view class="demo-desc">Tag with Icon</view>
 
-  <t-tag class="margin-16" variant="light" icon="discount"> 标签文字 </t-tag>
-  <t-tag class="margin-16" variant="outline" icon="discount"> 标签文字 </t-tag>
+  <t-tag class="margin-16" variant="light" icon="discount"> Text </t-tag>
+  <t-tag class="margin-16" variant="outline" icon="discount"> Text </t-tag>
 </view>
 
 <view class="demo">
-  <view class="demo-desc">超长省略文本标签</view>
+  <view class="demo-desc">Excess Content will be Omitted.</view>
 
-  <t-tag max-width="{{130}}" variant="light">超长省略文本标签超长省略文本标签</t-tag>
+  <t-tag max-width="{{130}}" variant="light">
+    Excess Content will be Omitted.Excess Content will be Omitted.Excess Content will be Omitted.Excess Content will be
+    Omitted.
+  </t-tag>
 </view>

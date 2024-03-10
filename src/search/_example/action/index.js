@@ -14,7 +14,7 @@ Component({
 
     focusHandle() {
       this.setData({
-        actionText: '取消',
+        actionText: 'Cancel',
       });
     },
 

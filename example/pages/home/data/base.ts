@@ -1,5 +1,6 @@
 const base = {
   name: '基础',
+  nameEn: 'Base',
   icon: 'app',
   childArr: [
     // {

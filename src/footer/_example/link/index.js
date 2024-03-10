@@ -4,19 +4,19 @@ Component({
     links: [
       [
         {
-          name: '底部链接',
+          name: 'Bottom Link',
           url: '/pages/index',
           openType: 'navigate',
         },
       ],
       [
         {
-          name: '底部链接',
+          name: 'Bottom Link',
           url: '/pages/index',
           openType: 'navigate',
         },
         {
-          name: '底部链接',
+          name: 'Bottom Link',
           url: '',
           openType: 'navigateBack',
         },

@@ -4,7 +4,7 @@ Component({
   },
   data: {
     backTopTheme: 'round',
-    backTopText: '顶部',
+    backTopText: 'Top',
   },
   methods: {
     onToTop(e) {

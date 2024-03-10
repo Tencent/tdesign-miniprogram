@@ -1,4 +1,4 @@
-const children = new Array(5).fill('列表内容');
+const children = new Array(5).fill('List content');
 
 const list = [
   {

@@ -1,5 +1,6 @@
 const display = {
   name: '数据展示',
+  nameEn: 'Data Display',
   icon: 'image',
   childArr: [
     {

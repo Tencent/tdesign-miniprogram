@@ -1,10 +1,10 @@
 <view class="button-example">
-  <t-button theme="primary" size="large">填充按钮</t-button>
-  <t-button theme="light" size="large">填充按钮</t-button>
-  <t-button size="large">填充按钮</t-button>
+  <t-button theme="primary" size="large">Primary</t-button>
+  <t-button theme="light" size="large">Light</t-button>
+  <t-button size="large">Default</t-button>
 </view>
 
 <view class="button-example">
-  <t-button theme="primary" size="large" variant="outline">描边按钮</t-button>
-  <t-button theme="primary" size="large" variant="text">文字按钮</t-button>
+  <t-button theme="primary" size="large" variant="outline">Outline</t-button>
+  <t-button theme="primary" size="large" variant="text">Text</t-button>
 </view>

@@ -9,16 +9,16 @@ Component({
         context: this,
         items: [
           {
-            label: '选项一',
+            label: 'Option 1',
           },
           {
-            label: '选项二',
+            label: 'Option 2',
           },
           {
-            label: '选项三',
+            label: 'Option 3',
           },
           {
-            label: '选项四',
+            label: 'Option 4',
           },
         ],
       });
@@ -28,16 +28,16 @@ Component({
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
-        description: '动作面板描述文字',
+        description: 'description',
         items: [
           {
-            label: '选项一',
+            label: 'Option 1',
           },
           {
-            label: '选项二',
+            label: 'Option 2',
           },
           {
-            label: '选项三',
+            label: 'Option 3',
           },
         ],
       });
@@ -49,19 +49,19 @@ Component({
         context: this,
         items: [
           {
-            label: '选项一',
+            label: 'Option 1',
             icon: 'app',
           },
           {
-            label: '选项二',
+            label: 'Option 2',
             icon: 'app',
           },
           {
-            label: '选项三',
+            label: 'Option 3',
             icon: 'app',
           },
           {
-            label: '选项四',
+            label: 'Option 4',
             icon: 'app',
           },
         ],

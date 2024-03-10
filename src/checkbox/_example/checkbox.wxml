@@ -1,35 +1,37 @@
 <view class="demo">
-  <view class="demo-title">Checkbox 多选框</view>
-  <view class="demo-desc">用于预设的一组选项中执行多项选择，并呈现选择结果。</view>
-  <t-demo title="01 组件类型" desc="纵向多选框">
+  <view class="demo-title">Checkbox</view>
+  <view class="demo-desc">
+    Performs multiple selections in a preset set of options and renders the selection results.
+  </view>
+  <t-demo title="01 Component Type" desc="Vertical">
     <base />
   </t-demo>
 
-  <t-demo desc="横向多选框">
+  <t-demo desc="Horizontal">
     <horizontal />
   </t-demo>
 
-  <t-demo desc="带全选多选框">
+  <t-demo desc="Checkbox with Select All">
     <all />
   </t-demo>
 
-  <t-demo title="02 组件状态" desc="多选框状态">
+  <t-demo title="02 Component Status" desc="Status">
     <status />
   </t-demo>
 
-  <t-demo title="03 组件样式" desc="勾选样式">
+  <t-demo title="03 Component Style" desc="Check style">
     <type />
   </t-demo>
 
-  <t-demo desc="勾选显示位置">
+  <t-demo desc="Check Show Location">
     <right />
   </t-demo>
 
-  <t-demo desc="非通栏多选样式">
+  <t-demo desc="Non-full-width Multiple Selection Style">
     <card />
   </t-demo>
 
-  <t-demo title="04 组件规格" desc="多选框尺寸规格">
+  <t-demo title="04 Component Size" desc="Size">
     <special />
   </t-demo>
 </view>

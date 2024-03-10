@@ -1,16 +1,19 @@
 <view class="demo">
-  <view class="demo-title">Drawer 抽屉</view>
-  <view class="demo-desc">用作一组平行关系页面/内容的切换器，相较于Tab，同屏可展示更多的选项数量。</view>
-  <t-demo title="01 组件类型" desc="基础抽屉" padding>
+  <view class="demo-title">Drawer</view>
+  <view class="demo-desc">
+    It is used as a switcher for a set of parallel pages/content. Compared with Tab, it can display more options on the
+    same screen.
+  </view>
+  <t-demo title="01 Component Type" desc="Basic" padding>
     <base />
   </t-demo>
-  <t-demo desc="带图标抽屉" padding>
+  <t-demo desc="With Icon" padding>
     <icon-drawer />
   </t-demo>
-  <t-demo title="02 组件样式" desc="带标题样式" padding>
+  <t-demo title="02 Component Style" desc="With Title" padding>
     <title />
   </t-demo>
-  <t-demo desc="带底部插槽样式" padding>
+  <t-demo desc="With Footer" padding>
     <footer />
   </t-demo>
 </view>

@@ -5,15 +5,15 @@ Component({
       options: [
         {
           value: 'all',
-          label: '全部产品',
+          label: 'All',
         },
         {
           value: 'new',
-          label: '最新产品',
+          label: 'New',
         },
         {
           value: 'hot',
-          label: '最火产品',
+          label: 'Hot',
         },
       ],
     },
@@ -22,11 +22,11 @@ Component({
       options: [
         {
           value: 'default',
-          label: '默认排序',
+          label: 'Default',
         },
         {
           value: 'price',
-          label: '价格从高到低',
+          label: 'Price Sorting',
         },
       ],
     },

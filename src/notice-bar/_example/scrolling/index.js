@@ -11,6 +11,12 @@ Component({
       loop: -1,
       delay: 0,
     },
-    content: ['君不见', '高堂明镜悲白发', '朝如青丝暮成雪', '人生得意须尽欢', '莫使金樽空对月'],
+    content: [
+      'Variety is the spice of life.',
+      'Doubt is the key to knowledge.',
+      'Life is painting a picture, not doing a sum.',
+      'Wasting time is robbing oneself.',
+      'Nurture passes nature.',
+    ],
   },
 });

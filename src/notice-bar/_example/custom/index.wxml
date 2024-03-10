@@ -2,7 +2,7 @@
   visible="{{true}}"
   prefixIcon="sound"
   suffixIcon="chevron-right"
-  content="提示文字描述提示文字描述提示文字描述"
+  content="Notice bar content."
   t-class="external-class"
   t-class-prefix-icon="external-class-prefix-icon"
 ></t-notice-bar>

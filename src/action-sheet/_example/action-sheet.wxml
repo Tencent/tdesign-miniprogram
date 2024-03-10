@@ -1,19 +1,22 @@
 <view class="demo">
-  <view class="demo-title">ActionSheet 动作面板</view>
-  <view class="demo-desc">从底部弹出的模态框，提供和当前场景相关的操作动作，也支持提供信息输入和描述。</view>
-  <t-demo title="01 组件类型" desc="列表型动作面板" padding>
+  <view class="demo-title">ActionSheet</view>
+  <view class="demo-desc">
+    The modal box that pops up from the bottom provides operations related to the current scene, and also supports
+    information input and description.
+  </view>
+  <t-demo title="01 Component Type" desc="List Type" padding>
     <list />
   </t-demo>
 
-  <t-demo desc="宫格型动作面板" padding>
+  <t-demo desc="Grid Type" padding>
     <grid />
   </t-demo>
 
-  <t-demo title="02 组件状态" desc="列表型选项状态" padding>
+  <t-demo title="02 Component Status" desc="List Option Status" padding>
     <status />
   </t-demo>
 
-  <t-demo title="03 组件样式" desc="列表型对齐方式" padding>
+  <t-demo title="03 Component Style" desc="List Alignment" padding>
     <align />
   </t-demo>
 </view>

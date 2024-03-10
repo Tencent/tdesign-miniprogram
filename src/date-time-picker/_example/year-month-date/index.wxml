@@ -1,5 +1,5 @@
 <t-cell
-  title="选择日期"
+  title="Choose Year-Month-Date"
   hover
   note="{{dateText || ''}}"
   arrow
@@ -11,7 +11,7 @@
 
 <!-- 年月日 -->
 <t-date-time-picker
-  title="选择日期"
+  title="Choose Year-Month-Date"
   visible="{{dateVisible}}"
   mode="date"
   defaultValue="{{date}}"

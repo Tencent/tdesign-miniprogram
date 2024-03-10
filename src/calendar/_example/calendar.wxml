@@ -1,14 +1,14 @@
 <view class="demo">
-  <view class="demo-title">Calendar 日历</view>
-  <view class="demo-desc">按照日历形式展示数据或日期的容器</view>
+  <view class="demo-title">Calendar</view>
+  <view class="demo-desc"> Container for displaying data or dates in a calendar format. </view>
 
-  <t-demo title="01 组件类型" desc="">
+  <t-demo title="01 Component Type" desc="">
     <base />
     <multiple />
     <range />
   </t-demo>
 
-  <t-demo title="02 组件样式" desc="可自由定义想要的风格">
+  <t-demo title="02 Component Style" desc="Customizable style">
     <custom-text />
     <custom-range />
     <custom-button />

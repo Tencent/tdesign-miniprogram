@@ -1,4 +1,4 @@
-<view class="demo-desc">文字按钮</view>
+<view class="demo-desc">Text</view>
 <t-button
   t-class="wrapper"
   theme="primary"
@@ -8,19 +8,19 @@
   bind:tap="showDialog"
   block
 >
-  文字按钮
+  Text
 </t-button>
 <t-dialog
   visible="{{showConfirm}}"
-  title="对话框标题"
-  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-  confirm-btn="确定"
-  cancel-btn="取消"
+  title="Title"
+  content="Inform you of current status, information, solutions, etc. Keep description copy within three lines as much as possible."
+  confirm-btn="Confirm"
+  cancel-btn="Cancel"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 />
 
-<view class="demo-desc">水平基础按钮</view>
+<view class="demo-desc">Horizontal</view>
 <t-button
   t-class="wrapper"
   theme="primary"
@@ -30,18 +30,18 @@
   bind:tap="showDialog"
   block
 >
-  水平基础按钮
+  Horizontal
 </t-button>
 <t-dialog
   visible="{{showWarnConfirm}}"
-  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  content="Inform you of current status, information, solutions, etc. Keep description copy within three lines as much as possible."
   confirm-btn="{{ { content: '确定', variant: 'base' } }}"
-  cancel-btn="取消"
+  cancel-btn="Cancel"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 />
 
-<view class="demo-desc">垂直基础按钮</view>
+<view class="demo-desc">Vertical</view>
 <t-button
   t-class="wrapper"
   theme="primary"
@@ -51,20 +51,20 @@
   bind:tap="showDialog"
   block
 >
-  垂直基础按钮
+  Vertical
 </t-button>
 <t-dialog
   visible="{{showTooLongBtnContent}}"
-  title="对话框标题"
-  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  title="Title"
+  content="Inform you of current status, information, solutions, etc. Keep description copy within three lines as much as possible."
   confirm-btn="{{ confirmBtn }}"
-  cancel-btn="取消"
+  cancel-btn="Cancel"
   button-layout="vertical"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 />
 
-<view class="demo-desc">多按钮</view>
+<view class="demo-desc">Multiple</view>
 <t-button
   t-class="wrapper"
   theme="primary"
@@ -74,18 +74,18 @@
   bind:tap="showDialog"
   block
 >
-  多按钮
+  Multiple
 </t-button>
 <t-dialog
   visible="{{showMultiBtn}}"
-  title="对话框标题"
-  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  title="Title"
+  content="Inform you of current status, information, solutions, etc. Keep description copy within three lines as much as possible."
   button-layout="vertical"
   actions="{{ multiBtnList }}"
   bind:action="closeDialog"
 />
 
-<view class="demo-desc">带关闭按钮</view>
+<view class="demo-desc">With Close Button</view>
 <t-button
   t-class="wrapper"
   theme="primary"
@@ -95,15 +95,15 @@
   bind:tap="showDialog"
   block
 >
-  带关闭按钮
+  With Close Button
 </t-button>
 <t-dialog
   visible="{{showCloseBtn}}"
-  title="对话框标题"
-  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  title="Title"
+  content="Inform you of current status, information, solutions, etc. Keep description copy within three lines as much as possible."
   close-btn
-  confirm-btn="{{ { content: '警示操作', variant: 'base' } }}"
-  cancel-btn="取消"
+  confirm-btn="{{ { content: 'Alert Action', variant: 'base' } }}"
+  cancel-btn="Cancel"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 />

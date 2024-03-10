@@ -5,28 +5,28 @@
   https://www.zhangxinxu.com/wordpress/2017/01/voiceover-aria-web-accessible-iphone/
 -->
 
-<view class="demo-desc">圆形徽标</view>
+<view class="demo-desc">Round of Badge</view>
 <view class="demo-wrapper">
   <t-badge count="2" offset="{{ [2, -2] }}">
-    <t-icon name="notification" size="24" ariaLabel="通知" />
+    <t-icon name="notification" size="24" ariaLabel="notify" />
   </t-badge>
 </view>
 
-<view class="demo-desc">方形徽标</view>
+<view class="demo-desc">Square of Badge</view>
 <view class="demo-wrapper">
   <t-badge count="2" shape="square" offset="{{ [1, -2] }}">
-    <t-icon name="notification" size="24" ariaLabel="通知" />
+    <t-icon name="notification" size="24" ariaLabel="notify" />
   </t-badge>
 </view>
 
-<view class="demo-desc">气泡徽标</view>
+<view class="demo-desc">Bubble of Badge</view>
 <view class="demo-wrapper">
-  <t-badge count="领积分" shape="bubble" ariaRole="button">
-    <t-button icon="shop" ariaLabel="商店" shape="square" size="large" />
+  <t-badge count="Receive Points" shape="bubble" ariaRole="button">
+    <t-button icon="shop" ariaLabel="shop" shape="square" size="large" />
   </t-badge>
 </view>
 
-<view class="demo-desc" style="margin-bottom: 32rpx">角标</view>
-<t-cell title="单行标题">
+<view class="demo-desc" style="margin-bottom: 32rpx">Subscript</view>
+<t-cell title="Single Line Title">
   <t-badge count="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
 </t-cell>

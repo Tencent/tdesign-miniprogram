@@ -1,3 +1,3 @@
 <t-swipe-cell right="{{right}}" left="{{left}}" bind:click="onActionClick">
-  <t-cell title="左右滑操作" note="辅助信息" bordered="{{false}}" />
+  <t-cell title="Swipe Left or Right" note="note" bordered="{{false}}" />
 </t-swipe-cell>

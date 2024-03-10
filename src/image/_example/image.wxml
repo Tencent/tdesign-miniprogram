@@ -1,11 +1,13 @@
 <view class="demo">
-  <view class="demo-title">Image 图片</view>
-  <view class="demo-desc">用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。</view>
-  <t-demo title="01 组件类型">
+  <view class="demo-title">Image</view>
+  <view class="demo-desc">
+    Used to display effects, mainly by cutting, stretching, tiling, etc. up, down, left, right, and center.
+  </view>
+  <t-demo title="01 Component Type">
     <base />
   </t-demo>
 
-  <t-demo title="02 组件状态">
+  <t-demo title="02 Component Status">
     <status />
   </t-demo>
 </view>

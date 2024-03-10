@@ -2,19 +2,19 @@ Component({
   data: {
     resultList: [
       {
-        title: '成功状态',
+        title: 'Success Status',
         theme: 'success',
       },
       {
-        title: '失败状态',
+        title: 'Error Status',
         theme: 'error',
       },
       {
-        title: '警示状态',
+        title: 'Warning Status',
         theme: 'warning',
       },
       {
-        title: '默认状态',
+        title: 'Default Status',
         theme: 'default',
       },
     ],

@@ -1,2 +1,8 @@
-<view class="demo-desc">不使用 Popup</view>
-<t-calendar use-popup="{{false}}" type="multiple" bind:select="handleSelect" />
+<view class="demo-desc">Tiled display</view>
+<t-calendar
+  use-popup="{{false}}"
+  title="Calendar"
+  confirmBtn="{{confirmBtn}}"
+  type="multiple"
+  bind:select="handleSelect"
+/>

@@ -1,7 +1,7 @@
 Component({
   data: {
     value: 4,
-    texts: ['非常糟糕', '有些糟糕', '可以尝试', '可以前往', '推荐前往'],
+    texts: ['Very bad', 'Bad', 'Good', 'Very Goot', 'Excellent'],
   },
   methods: {
     onChange(e) {

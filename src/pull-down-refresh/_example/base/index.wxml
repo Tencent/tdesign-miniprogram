@@ -1,14 +1,16 @@
 <t-pull-down-refresh
   value="{{enable}}"
   loadingProps="{{loadingProps}}"
-  loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
+  loadingTexts="{{['Pull to refresh', 'Loose to refresh', 'Refreshing ', 'Refresh completed']}}"
   bind:refresh="onRefresh"
   bind:scroll="onScroll"
 >
   <!-- 包裹页面全部内容 -->
   <view class="demo">
-    <view class="demo-title">PullDownRefresh 下拉刷新</view>
-    <view class="demo-desc">用于快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新。</view>
+    <view class="demo-title">PullDownRefresh</view>
+    <view class="demo-desc">
+      Used to quickly refresh the page information. The refresh can be the whole page or part of the page.
+    </view>
     <view class="pulldown-reflesh__content">
       <t-skeleton rowCol="{{rowCol1}}" loading></t-skeleton>
       <view class="row">
@@ -23,8 +25,8 @@
         <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
         <t-skeleton rowCol="{{rowCol2}}" loading></t-skeleton>
       </view>
-      <view class="text">拖拽该区域演示 顶部下拉刷新</view>
+      <view class="text">Drag this area to demonstrate the pull-down refresh at the top.</view>
     </view>
-    <t-back-top text="顶部" scroll-top="{{scrollTop}}" visibility-height="{{100}}" />
+    <t-back-top text="Top" scroll-top="{{scrollTop}}" visibility-height="{{100}}" />
   </view>
 </t-pull-down-refresh>

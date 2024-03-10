@@ -5,16 +5,16 @@ Component({
     showDialog() {
       const dialogConfig = {
         context: this,
-        title: '弹窗标题',
-        content: '告知当前状态、信息和解决方法等内容。',
-        cancelBtn: '取消',
+        title: 'Title',
+        content: 'Inform you of current status, information, solutions, etc.',
+        cancelBtn: 'Cancel',
         confirmBtn: {
           openType: 'share',
-          content: '分享给朋友',
+          content: 'Share with friends',
           bindgetphonenumber({ detail }) {
             console.log(detail);
             if (detail.errMsg.includes('fail')) {
-              console.log('获取失败');
+              console.log('Failed to obtain');
               return false; // 不关闭弹窗
             }
             return true; // 关闭弹窗
@@ -24,10 +24,10 @@ Component({
 
       Dialog.confirm(dialogConfig)
         .then(() => {
-          console.log('点击确定');
+          console.log('Click OK Button');
         })
         .catch(() => {
-          console.log('点击取消');
+          console.log('Click Cancel Button');
         });
     },
   },

@@ -1,5 +1,5 @@
 <view class="wrapper">
   <t-sticky container="{{ container }}">
-    <t-button size="large" t-class="external-class green-button">指定容器</t-button>
+    <t-button size="large" t-class="external-class green-button">Container</t-button>
   </t-sticky>
 </view>

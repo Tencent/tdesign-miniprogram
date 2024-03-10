@@ -31,7 +31,7 @@ Component({
       Toast({
         context: this,
         selector: '#t-toast',
-        message: `删除第${index + 1}个`,
+        message: `Delete the${index + 1}`,
       });
     },
 

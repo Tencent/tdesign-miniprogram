@@ -1,33 +1,31 @@
 <view class="demo">
-  <view class="demo-title">Upload 上传</view>
-  <view class="demo-desc"
-    >用于相册读取或拉起拍照的图片上传功能。（目前示例均为禁用态，使用时请自行取消禁用态，以便正常使用上传动能。）</view
-  >
-  <t-demo title="01 组件类型" desc="单选上传图片">
+  <view class="demo-title">Upload</view>
+  <view class="demo-desc"> Image upload function for reading albums or pulling up to take pictures. </view>
+  <t-demo title="01 Component Type" desc="Radio Upload Image">
     <view class="upload-demo">
-      <view class="upload-demo__title">上传图片</view>
+      <view class="upload-demo__title">Upload</view>
       <single />
     </view>
   </t-demo>
-  <t-demo title="" desc="多选上传图片">
+  <t-demo title="" desc="Multi-Select Upload Images">
     <view class="upload-demo">
-      <view class="upload-demo__title">上传图片</view>
+      <view class="upload-demo__title">Upload</view>
       <multiple />
     </view>
   </t-demo>
-  <t-demo title="" desc="长按拖拽排序图片">
+  <t-demo title="" desc="Long Press and Drag to Sort Pictures">
     <view class="upload-demo">
-      <view class="upload-demo__title">上传图片</view>
+      <view class="upload-demo__title">Upload</view>
       <drag />
     </view>
   </t-demo>
-  <t-demo title="02 组件状态" desc="加载状态">
+  <t-demo title="02 Component Status" desc="Loading">
     <view class="upload-demo">
-      <view class="upload-demo__title">上传图片</view>
+      <view class="upload-demo__title">Upload</view>
       <status />
     </view>
   </t-demo>
-  <t-demo title="" desc="从聊天记录上选">
+  <t-demo title="" desc="Select from Chat History">
     <view class="upload-demo">
       <view class="upload-demo__title">上传图片</view>
       <messageFile />

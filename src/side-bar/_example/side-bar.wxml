@@ -1,23 +1,23 @@
-<view class="demo-title">SideBar 侧边栏</view>
-<view class="demo-desc">用于内容分类后的展示切换。</view>
-<t-demo title="01 组件类型" desc="侧边导航用法" padding>
+<view class="demo-title">SideBar</view>
+<view class="demo-desc">Used to change the display after content classification.</view>
+<t-demo title="01 组件类型" desc="Basic Usage" padding>
   <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="base">
-    锚点用法
+    Anchor Point Usage
   </t-button>
 
   <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="switch">
-    切页用法
+    Page Cutting Usage
   </t-button>
 </t-demo>
 
-<t-demo desc="带图标侧边导航" padding>
+<t-demo desc="SideBar With Icon" padding>
   <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="with-icon">
-    带图标侧边导航
+    SideBar With Icon
   </t-button>
 </t-demo>
 
-<t-demo title="02 组件样式" desc="侧边导航样式" padding>
+<t-demo title="02 Component Style" desc="Custom Style" padding>
   <t-button variant="outline" theme="primary" size="large" block bind:tap="toNavigation" data-target="custom">
-    自定义样式
+    Custom Style
   </t-button>
 </t-demo>

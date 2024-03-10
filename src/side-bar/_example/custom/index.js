@@ -1,5 +1,5 @@
 const image = 'https://tdesign.gtimg.com/mobile/demos/example1.png';
-const items = new Array(12).fill({ label: '标题文字', image }, 0, 12);
+const items = new Array(12).fill({ label: 'Title', image }, 0, 12);
 
 Page({
   offsetTopList: [],
@@ -8,36 +8,36 @@ Page({
     scrollTop: 0,
     categories: [
       {
-        label: '选项一',
-        title: '标题一',
+        label: 'Option 1',
+        title: 'Title 1',
         badgeProps: {},
         items,
       },
       {
-        label: '选项二',
-        title: '标题二',
+        label: 'Option 2',
+        title: 'Title 2',
         badgeProps: {
           dot: true,
         },
         items: items.slice(0, 9),
       },
       {
-        label: '选项三',
-        title: '标题三',
+        label: 'Option 3',
+        title: 'Title 3',
         badgeProps: {},
         items: items.slice(0, 9),
       },
       {
-        label: '选项四',
-        title: '标题四',
+        label: 'Option 4',
+        title: 'Title 4',
         badgeProps: {
           count: 6,
         },
         items: items.slice(0, 6),
       },
       {
-        label: '选项五',
-        title: '标题五',
+        label: 'Option 5',
+        title: 'Title 5',
         badgeProps: {},
         items: items.slice(0, 3),
       },

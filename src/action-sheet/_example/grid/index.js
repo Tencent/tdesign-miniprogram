@@ -2,11 +2,11 @@ import ActionSheet, { ActionSheetTheme } from 'tdesign-miniprogram/action-sheet/
 
 const firstGrid = [
   {
-    label: '微信',
+    label: 'Wechat',
     image: 'https://tdesign.gtimg.com/mobile/demos/wechat.png',
   },
   {
-    label: '朋友圈',
+    label: 'Times',
     image: 'https://tdesign.gtimg.com/mobile/demos/times.png',
   },
   {
@@ -14,23 +14,23 @@ const firstGrid = [
     image: 'https://tdesign.gtimg.com/mobile/demos/qq.png',
   },
   {
-    label: '企业微信',
+    label: 'WeCom',
     image: 'https://tdesign.gtimg.com/mobile/demos/wecom.png',
   },
   {
-    label: '收藏',
+    label: 'Star',
     icon: 'star',
   },
   {
-    label: '刷新',
+    label: 'Refresh',
     icon: 'refresh',
   },
   {
-    label: '下载',
+    label: 'Download',
     icon: 'download',
   },
   {
-    label: '复制',
+    label: 'Copy',
     icon: 'queue',
   },
 ];
@@ -52,7 +52,7 @@ Component({
         context: this,
         items: firstGrid.concat(
           new Array(8).fill({
-            label: '标题文字',
+            label: 'Title',
             icon: 'image',
           }),
         ),

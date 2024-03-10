@@ -1,15 +1,15 @@
 Component({
   data: {
-    confirmBtn: { content: '确定', variant: 'base' },
+    confirmBtn: { content: 'Comfirm', variant: 'base' },
     dialogKey: '',
     showConfirm: false,
     showWarnConfirm: false,
     showTooLongBtnContent: false,
     showMultiBtn: false,
     multiBtnList: [
-      { content: '次要按钮', theme: 'light' },
-      { content: '次要按钮', theme: 'light' },
-      { content: '主要按钮', theme: 'primary' },
+      { content: 'Secondary Button', theme: 'light' },
+      { content: 'Secondary Button', theme: 'light' },
+      { content: 'Primary Button', theme: 'primary' },
     ],
   },
   methods: {

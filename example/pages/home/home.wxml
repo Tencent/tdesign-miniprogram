@@ -2,10 +2,10 @@
   <view class="title-wrap">
     <image class="title-icon" mode="aspectFit" src="/assets/TDesignLogo@2x.png" aria-label="TDesign Logo" />
   </view>
-  <view class="desc"> TDesign 适配微信小程序的组件库 </view>
+  <view class="desc"> TDesign, Component library adapted to WeChat mini programs </view>
   <pull-down-list
     wx:for="{{list}}"
-    name="{{item.name}}"
+    name="{{item.nameEn}}"
     icon="{{item.icon}}"
     wx:key="name"
     childArr="{{item.childArr}}"
@@ -13,8 +13,8 @@
   />
 </view>
 <view class="footer">
-  <view class="show_privacy" bindtap="showPrivacyWin">《TDesign组件库服务声明》</view>
-  <t-footer text="该小程序仅演示示例，不收集个人信息。"></t-footer>
-  <t-footer text="Copyright © 1998 - {{currentYear}} Tencent. All Rights Reserved. 腾讯公司 版权所有"></t-footer>
+  <view class="show_privacy" bindtap="showPrivacyWin">《TDesign Component Library Service Statement》</view>
+  <t-footer text="This applet only demonstrates examples and does not collect personal information."></t-footer>
+  <t-footer text="Copyright © 1998 - {{currentYear}} Tencent. All Rights Reserved."></t-footer>
 </view>
-<trd-privacy id="trdPrivacy" name="TDesign组件库" date="2023年11月14日" winStyle="{{winStyle}}"></trd-privacy>
+<trd-privacy id="trdPrivacy" name="TDesign Component Library" date="2023-11-14" winStyle="{{winStyle}}"></trd-privacy>

@@ -1,13 +1,13 @@
 <view class="demo">
-  <view class="demo-title">Cell-group 组合单元格</view>
-  <view class="demo-desc">cell的组合单元格</view>
+  <view class="demo-title">Cell-group</view>
+  <view class="demo-desc">Group Cell</view>
 
   <view>
-    <t-cell-group title="01 基础用法">
-      <t-cell title="单行标题" required />
-      <t-cell title="单行标题" hover note="辅助信息" />
-      <t-cell title="单行标题" hover arrow />
-      <t-cell title="单行标题" hover note="辅助信息" arrow />
+    <t-cell-group title="01 Basic Usage">
+      <t-cell title="Cell Title" required />
+      <t-cell title="Cell Title" hover note="note" />
+      <t-cell title="Cell Title" hover arrow />
+      <t-cell title="Cell Title" hover note="note" arrow />
     </t-cell-group>
   </view>
 </view>

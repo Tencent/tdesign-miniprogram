@@ -7,13 +7,13 @@
   bind:tap="showDialog"
   block
 >
-  输入类-无描述
+  Without Description
 </t-button>
 <t-dialog
   visible="{{showWithInput}}"
-  title="带输入框对话框"
-  confirm-btn="确定"
-  cancel-btn="取消"
+  title="Title"
+  confirm-btn="Confirm"
+  cancel-btn="Cancel"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
@@ -22,7 +22,7 @@
     class="dialog-input"
     clearable
     slot="content"
-    placeholder="输入12文案"
+    placeholder="placeholder"
     placeholder-class="placeholder"
   />
 </t-dialog>
@@ -35,14 +35,15 @@
   data-key="showTextAndTitleWithInput"
   bind:tap="showDialog"
   block
-  >输入类-带描述</t-button
 >
+  Without Description
+</t-button>
 <t-dialog
   visible="{{showTextAndTitleWithInput}}"
-  title="带输入框对话框"
-  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-  confirm-btn="确定"
-  cancel-btn="取消"
+  title="Title"
+  content="Inform you of current status, information, solutions, etc. Keep description copy within three lines as much as possible."
+  confirm-btn="Confirm"
+  cancel-btn="Cancel"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 >
@@ -51,7 +52,7 @@
     class="dialog-input"
     clearable
     slot="content"
-    placeholder="输入12文案"
+    placeholder="placeholder"
     placeholder-class="placeholder"
   />
 </t-dialog>

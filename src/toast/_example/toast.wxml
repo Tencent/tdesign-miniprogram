@@ -1,16 +1,19 @@
 <view class="demo">
-  <view class="demo-title">Toast 轻提示</view>
-  <view class="demo-desc">用于轻量级反馈或提示，不会打断用户操作。</view>
-  <t-demo title="01 组件类型" desc="基础提示">
+  <view class="demo-title">Toast</view>
+  <view class="demo-desc">
+    Used for lightweight feedback or prompts without interrupting user action.Used for lightweight feedback or prompts
+    without interrupting user action.
+  </view>
+  <t-demo title="01 Component Type" desc="Basic">
     <base class="box" />
   </t-demo>
-  <t-demo title="02 组件状态" desc="内置主题">
+  <t-demo title="02 Component Status" desc="Built-in themes">
     <theme class="box" />
   </t-demo>
-  <t-demo title="03 显示遮罩" desc="弹窗可现实遮罩，禁止滑动和点击">
+  <t-demo title="03 Show Cover" desc="Toast can be masked, and sliding and clicking are prohibited">
     <cover class="box" />
   </t-demo>
-  <t-demo title="04 手动关闭" desc="手动关闭轻提示">
+  <t-demo title="04 Manually Close" desc="Manually Close Toast">
     <close class="box" />
   </t-demo>
 </view>

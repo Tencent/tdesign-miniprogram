@@ -2,6 +2,9 @@ Component({
   data: {
     visible: false,
     note: '',
+    confirmBtn: {
+      content: 'Confirm',
+    },
   },
   methods: {
     handleCalendar() {

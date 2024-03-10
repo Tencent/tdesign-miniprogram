@@ -1,5 +1,6 @@
 const nav = {
   name: ' 导航',
+  nameEn: 'Navigation',
   icon: 'view-module',
   childArr: [
     {

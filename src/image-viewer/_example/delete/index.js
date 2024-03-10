@@ -35,10 +35,10 @@ Component({
       ActionSheet.show({
         context: this,
         selector: '#t-action-sheet',
-        description: '要删除这张照片吗？',
+        description: 'Delete this photo?',
         items: [
           {
-            label: '删除',
+            label: 'Delete',
             color: '#d54941',
           },
         ],

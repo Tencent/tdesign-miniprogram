@@ -1,31 +1,34 @@
 <view class="demo">
-  <view class="demo-title">Dialog 对话框</view>
-  <view class="demo-desc">用于显示重要提示或请求用户进行重要操作，一种打断当前操作的模态视图。</view>
-  <t-demo title="01 组件类型" desc="反馈类对话框" padding>
+  <view class="demo-title">Dialog</view>
+  <view class="demo-desc">
+    A modal view that interrupts the current action to display an important prompt or request an important action from
+    the user.
+  </view>
+  <t-demo title="01 Component Type" desc="Feedback Class Dialog" padding>
     <base />
   </t-demo>
 
-  <t-demo desc="确认类对话框" padding>
+  <t-demo desc="Confirm Class Dialog" padding>
     <confirm />
   </t-demo>
 
-  <t-demo desc="输入类对话框" padding>
+  <t-demo desc="Enter Dialog" padding>
     <with-input />
   </t-demo>
 
-  <t-demo desc="带图片的对话框" padding>
+  <t-demo desc="Dialog With Picture" padding>
     <with-image />
   </t-demo>
 
-  <t-demo title="02 组件状态" padding>
+  <t-demo title="02 Component Status" padding>
     <status />
   </t-demo>
 
-  <t-demo title="03 组件用法" desc="命令调用" padding>
+  <t-demo title="03 Component Usage" desc="Command Line Call" padding>
     <command />
   </t-demo>
 
-  <t-demo desc="自定义按钮" padding>
+  <t-demo desc="Custom Button" padding>
     <buttonDemo />
   </t-demo>
 </view>

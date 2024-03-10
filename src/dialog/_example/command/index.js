@@ -5,15 +5,15 @@ Component({
     showDialog() {
       const dialogConfig = {
         context: this,
-        title: '弹窗标题',
-        content: '告知当前状态、信息和解决方法等内容。',
-        confirmBtn: '确定',
-        cancelBtn: '取消',
+        title: 'Title',
+        content: 'Inform you of current status, information, solutions, etc.',
+        confirmBtn: 'Comfirm',
+        cancelBtn: 'Cancel',
       };
 
       Dialog.confirm(dialogConfig)
-        .then(() => console.log('点击了确定'))
-        .catch(() => console.log('点击了取消'))
+        .then(() => console.log('Click OK Button'))
+        .catch(() => console.log('Click Cancel Button'))
         .finally(() => Dialog.close());
     },
   },

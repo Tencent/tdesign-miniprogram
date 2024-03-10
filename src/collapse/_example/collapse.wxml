@@ -1,24 +1,26 @@
 <view class="demo">
-  <view class="demo-title">Collapse 折叠面板</view>
-  <view class="demo-desc">用于对复杂区域进行分组和隐藏 常用于订单信息展示等</view>
+  <view class="demo-title">Collapse</view>
+  <view class="demo-desc">
+    Collapse is used to group and hide complex areas, and is often used to display order information.
+  </view>
 
-  <t-demo title="01 组件类型" desc="基础折叠面板">
+  <t-demo title="01 Component Type" desc="Base Collapse">
     <base />
   </t-demo>
 
-  <t-demo desc="向上展开">
+  <t-demo desc="Expansion Up">
     <placement />
   </t-demo>
 
-  <t-demo desc="带操作说明">
+  <t-demo desc="Tape Operation Instruction">
     <action />
   </t-demo>
 
-  <t-demo desc="手风琴式">
+  <t-demo desc="Accordion Style">
     <accordion />
   </t-demo>
 
-  <t-demo title="02 组件样式" desc="卡片折叠面板">
+  <t-demo title="02 Component Style" desc="Card">
     <theme />
   </t-demo>
 </view>

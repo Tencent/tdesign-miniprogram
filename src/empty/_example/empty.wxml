@@ -1,13 +1,13 @@
 <view class="demo">
-  <view class="demo-title">Empty 空状态</view>
-  <view class="demo-desc">用于空状态时的占位提示。</view>
-  <t-demo title="01 类型" desc="图标空状态">
+  <view class="demo-title">Empty</view>
+  <view class="demo-desc">Placeholder hint for empty status.</view>
+  <t-demo title="01 Component Type" desc="Icon Empty Status">
     <base />
   </t-demo>
-  <t-demo desc="自定义图片空状态">
+  <t-demo desc="Custom Picture Empty Status">
     <imageEmpty />
   </t-demo>
-  <t-demo desc="带操作空状态">
+  <t-demo desc="Tape Operation Empty Status">
     <buttonEmpty />
   </t-demo>
 </view>

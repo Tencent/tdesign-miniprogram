@@ -3,7 +3,7 @@ Component({
     logoList: [
       {
         icon: 'https://tdesign.gtimg.com/mobile/demos/logo2.png',
-        title: '品牌名称',
+        title: 'Brand Name',
       },
       {
         url: 'https://tdesign.gtimg.com/mobile/demos/logo1.png',

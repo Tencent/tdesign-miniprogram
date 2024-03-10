@@ -2,17 +2,18 @@ Component({
   data: {
     current: ['checkbox1', 'checkbox2'],
     options: [
-      { label: '多选', value: 'checkbox1' },
-      { label: '多选', value: 'checkbox2' },
+      { label: 'Checkbox1', value: 'checkbox1' },
+      { label: 'Checkbox2', value: 'checkbox2' },
       {
-        label: '多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行',
+        label: 'checkbox3.checkbox3.checkbox3.checkbox3.checkbox3.checkbox3.checkbox3.checkbox3.checkbox3.',
         value: 'checkbox3',
         maxLabelRow: 2,
       },
       {
-        label: '多选',
+        label: 'Checkbox4',
         value: 'checkbox4',
-        content: '描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息描述信息',
+        content:
+          'Description information.Description information.Description information.Description information.Description information.Description information.',
         maxContentRow: 2,
       },
     ],

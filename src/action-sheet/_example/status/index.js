@@ -9,21 +9,21 @@ Component({
         context: this,
         items: [
           {
-            label: '默认选项',
+            label: 'Default options',
             icon: 'app',
           },
           {
-            label: '自定义选项',
+            label: 'Custom options',
             icon: 'app',
             color: '#0052D9',
           },
           {
-            label: '失效选项',
+            label: 'Invalid options',
             disabled: true,
             icon: 'app',
           },
           {
-            label: '警告选项',
+            label: 'Warning options',
             color: '#e34d59',
             icon: 'app',
           },

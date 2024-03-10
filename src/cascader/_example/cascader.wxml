@@ -1,23 +1,25 @@
 <view class="demo">
-  <view class="demo-title">Cascader 级联选择器</view>
-  <view class="demo-desc">用于多层级数据的逐级选择。</view>
+  <view class="demo-title">Cascader</view>
+  <view class="demo-desc">
+    Cascader is used for multi-level data selection, mainly in a tree structure, which can display more data.
+  </view>
 
-  <t-demo title="01 类型" desc="">
+  <t-demo title="01 Component Type" desc="">
     <base />
   </t-demo>
-  <t-demo desc="选项卡风格">
+  <t-demo desc="Tab Style">
     <theme-tab />
   </t-demo>
 
-  <t-demo title="02 进阶" desc="带初始值">
+  <t-demo title="02 Advanced" desc="With Initial Value">
     <with-value />
   </t-demo>
 
-  <t-demo desc="自定义 keys">
+  <t-demo desc="Custom keys">
     <keys />
   </t-demo>
 
-  <t-demo desc="使用次级标题">
+  <t-demo desc="Use SubTitles">
     <with-title />
   </t-demo>
 </view>

@@ -1,8 +1,8 @@
 <t-textarea
   t-class="external-class"
-  label="标签文字"
-  placeholder="请输入文字"
-  value="不可编辑文字"
+  label="Disabled"
+  placeholder="Please enter text"
+  value="Uneditable text"
   disableDefaultPadding="{{true}}"
   disabled
 />

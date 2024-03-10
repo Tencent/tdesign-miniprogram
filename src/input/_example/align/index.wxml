@@ -1,3 +1,3 @@
-<t-input label="左对齐" placeholder="请输入文字" />
-<t-input label="居中" placeholder="请输入文字" align="center" />
-<t-input label="右对齐" placeholder="请输入文字" align="right" />
+<t-input label="Label" placeholder="Align Left" />
+<t-input label="Label" placeholder="Align Center" align="center" />
+<t-input label="Label" placeholder="Align Right" align="right" />

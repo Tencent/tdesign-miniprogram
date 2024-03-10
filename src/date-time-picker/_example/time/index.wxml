@@ -1,6 +1,6 @@
 <view class="demo-desc">时分秒选择器</view>
 <t-cell
-  title="选择时间"
+  title="Choose Time"
   hover
   note="{{secondText || ''}}"
   arrow
@@ -11,7 +11,7 @@
 
 <view class="demo-desc">时分选择器</view>
 <t-cell
-  title="选择时间"
+  title="Choose Time"
   hover
   note="{{minuteText || ''}}"
   arrow
@@ -22,7 +22,7 @@
 
 <!-- 时分 -->
 <t-date-time-picker
-  title="选择时间"
+  title="Choose Time"
   visible="{{secondVisible}}"
   mode="{{['null', 'second']}}"
   value="{{second}}"
@@ -34,7 +34,7 @@
 
 <!-- 时分 -->
 <t-date-time-picker
-  title="选择时间"
+  title="Choose Time"
   visible="{{minuteVisible}}"
   mode="{{['null', 'minute']}}"
   value="{{minute}}"

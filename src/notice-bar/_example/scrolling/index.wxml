@@ -2,14 +2,10 @@
   visible="{{visible}}"
   prefixIcon="null"
   marquee="{{marquee1}}"
-  content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+  content="Notice bar content."
 ></t-notice-bar>
 
-<t-notice-bar
-  visible="{{visible}}"
-  marquee="{{marquee2}}"
-  content="提示文字描述提示文字描述提示文字描述提示文字描述文"
-></t-notice-bar>
+<t-notice-bar visible="{{visible}}" marquee="{{marquee2}}" content="Notice bar content."></t-notice-bar>
 
 <t-notice-bar
   visible="{{true}}"

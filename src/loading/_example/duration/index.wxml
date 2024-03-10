@@ -1,7 +1,7 @@
 <t-loading
   theme="circular"
   size="52rpx"
-  text="加载中..."
+  text="loading..."
   t-class-text="text-l"
   duration="{{2000 - duration}}"
 ></t-loading>

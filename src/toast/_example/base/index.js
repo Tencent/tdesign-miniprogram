@@ -5,7 +5,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '轻提示文字内容',
+      message: 'Prompt text content',
     });
   },
 
@@ -13,7 +13,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '最多一行展示十个汉字宽度限制最多不超过三行文字',
+      message: 'A maximum of ten Chinese characters can be displayed in one line, no more than three lines.',
     });
   },
 
@@ -21,7 +21,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '带横向图标',
+      message: 'With horizontal icon',
       icon: 'check-circle',
     });
   },
@@ -30,7 +30,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '带竖向图标',
+      message: 'With vertical icon',
       icon: 'check-circle',
       direction: 'column',
     });
@@ -40,7 +40,7 @@ Page({
     Toast({
       context: this,
       selector: '#t-toast',
-      message: '加载中...',
+      message: 'Loading...',
       theme: 'loading',
       direction: 'column',
     });

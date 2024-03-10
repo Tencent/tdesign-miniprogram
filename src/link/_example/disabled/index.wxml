@@ -3,15 +3,15 @@
     navigatorProps="{{navigatorProps}}"
     size="small"
     theme="primary"
-    content="跳转链接"
+    content="Jump Link"
     suffixIcon="jump"
     disabled
     hover
   />
-  <t-link size="small" content="跳转链接" suffixIcon="jump" disabled />
-  <t-link size="small" theme="danger" content="跳转链接" suffixIcon="jump" disabled />
+  <t-link size="small" content="Jump Link" suffixIcon="jump" disabled />
+  <t-link size="small" theme="danger" content="Jump Link" suffixIcon="jump" disabled />
 </view>
 <view class="link-example">
-  <t-link size="small" theme="warning" content="跳转链接" suffixIcon="jump" disabled />
-  <t-link size="small" theme="success" content="跳转链接" suffixIcon="jump" disabled />
+  <t-link size="small" theme="warning" content="Jump Link" suffixIcon="jump" disabled />
+  <t-link size="small" theme="success" content="Jump Link" suffixIcon="jump" disabled />
 </view>

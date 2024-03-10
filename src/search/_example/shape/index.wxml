@@ -1,7 +1,7 @@
 <view class="example-search">
-  <t-search placeholder="搜索预设文案" />
+  <t-search placeholder="placeholder" />
 </view>
 
 <view class="example-search">
-  <t-search placeholder="搜索预设文案" shape="round" />
+  <t-search placeholder="placeholder" shape="round" />
 </view>

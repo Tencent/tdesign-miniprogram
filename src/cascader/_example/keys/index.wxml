@@ -1,11 +1,11 @@
-<t-cell title="地址" note="{{note}}" bind:click="showCascader" arrow></t-cell>
+<t-cell title="Area" note="{{note}}" bind:click="showCascader" arrow></t-cell>
 
 <t-cascader
   class="demo"
   visible="{{visible}}"
   keys="{{keys}}"
   options="{{options}}"
-  title="请选择地址"
-  placeholder="未选中时的提示文案"
+  title="Select Area"
+  placeholder="Prompt text when not selected"
   bind:change="onChange"
 ></t-cascader>

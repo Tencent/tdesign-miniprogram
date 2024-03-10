@@ -1,35 +1,35 @@
 <view class="demo">
-  <view class="demo-title">Rate 评分</view>
-  <view class="demo-desc">用于对某行为/事物进行打分。</view>
-  <t-demo title="01 组件类型">
-    <view class="demo-desc">实心评分</view>
+  <view class="demo-title">Rate</view>
+  <view class="demo-desc">Used to rate an action/thing.</view>
+  <t-demo title="01 Component Type">
+    <view class="demo-desc">Solid Rate</view>
     <base />
 
-    <view class="demo-desc">自定义评分</view>
+    <view class="demo-desc">Custom Rate</view>
     <custom />
 
-    <view class="demo-desc">第三方图标评分</view>
+    <view class="demo-desc">Custom Icon Rate</view>
     <custom-prefix />
 
-    <view class="demo-desc">自定义评分数量</view>
+    <view class="demo-desc">Customize the Number of Rate</view>
     <count />
 
-    <view class="demo-desc">带描述评分</view>
+    <view class="demo-desc">Rating with Description</view>
     <show-text />
   </t-demo>
 
-  <t-demo title="02 组件状态">
+  <t-demo title="02 Component Status">
     <action />
   </t-demo>
 
-  <t-demo title="03 组件样式">
-    <view class="demo-desc">评分大小</view>
+  <t-demo title="03 Component Style">
+    <view class="demo-desc">Size</view>
     <size />
 
-    <view class="demo-desc">设置评分颜色</view>
+    <view class="demo-desc">Custom Color</view>
     <color />
   </t-demo>
 
-  <t-demo title="04 特殊样式" desc="竖向带描述评分" />
+  <t-demo title="04 Special Style" desc="Vertical Tape Description Rate" />
   <special />
 </view>

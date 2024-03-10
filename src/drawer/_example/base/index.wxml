@@ -1,4 +1,4 @@
-<t-button variant="outline" bind:tap="openDrawerBase" block size="large" theme="primary">基础抽屉</t-button>
+<t-button variant="outline" bind:tap="openDrawerBase" block size="large" theme="primary">Basic</t-button>
 
 <t-drawer
   visible="{{visible}}"

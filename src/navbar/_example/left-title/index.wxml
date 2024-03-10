@@ -1,14 +1,14 @@
 <view class="block">
-  <t-navbar left-arrow title="标题居中" />
+  <t-navbar left-arrow title="Title Centered" />
 </view>
 
 <t-navbar left-arrow>
-  <view slot="left" class="custom-title">标题左对齐</view>
+  <view slot="left" class="custom-title">Title Left Aligned</view>
 </t-navbar>
 
-<view class="demo-desc">标题尺寸</view>
+<view class="demo-desc">Title Size</view>
 
 <t-navbar left-arrow>
-  <text class="left-text" slot="left">返回</text>
+  <text class="left-text" slot="left">Back</text>
 </t-navbar>
-<view class="header-title">大标题尺寸</view>
+<view class="header-title"> Large Title Size</view>

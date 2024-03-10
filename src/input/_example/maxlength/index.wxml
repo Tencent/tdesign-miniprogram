@@ -1,2 +1,7 @@
-<t-input label="标签文字" placeholder="请输入文字" tips="最大输入10个字符" maxlength="{{10}}" />
-<t-input label="标签文字" placeholder="请输入文字" tips="最大输入10个字符，汉字算两个" maxcharacter="{{10}}" />
+<t-input label="Label" placeholder="please enter text" tips="Maximum input is 10 character" maxlength="{{10}}" />
+<t-input
+  label="Label"
+  placeholder="please enter text"
+  tips="Maximum input is 10 characters, Chinese characters count as two."
+  maxcharacter="{{10}}"
+/>

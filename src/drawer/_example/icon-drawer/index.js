@@ -4,35 +4,35 @@ Component({
     sidebar: [],
     iconSidebar: [
       {
-        title: '菜单一',
+        title: 'One',
         icon: 'app',
       },
       {
-        title: '菜单二',
+        title: 'Two',
         icon: 'app',
       },
       {
-        title: '菜单三',
+        title: 'Three',
         icon: 'app',
       },
       {
-        title: '菜单四',
+        title: 'Four',
         icon: 'app',
       },
       {
-        title: '菜单五',
+        title: 'Five',
         icon: 'app',
       },
       {
-        title: '菜单六',
+        title: 'Six',
         icon: 'app',
       },
       {
-        title: '菜单七',
+        title: 'Seven',
         icon: 'app',
       },
       {
-        title: '菜单八',
+        title: 'Eight',
         icon: 'app',
       },
     ],

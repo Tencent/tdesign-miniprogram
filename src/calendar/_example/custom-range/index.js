@@ -4,6 +4,9 @@ Component({
     value: new Date(2022, 4, 15).getTime(),
     minDate: new Date(2022, 1, 1).getTime(),
     maxDate: new Date(2022, 10, 27).getTime(),
+    confirmBtn: {
+      content: 'Confirm',
+    },
   },
   methods: {
     handleCalendar() {

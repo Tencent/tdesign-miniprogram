@@ -7,14 +7,14 @@
   bind:tap="showDialog"
   block
 >
-  确认类-带标题
+  With Title
 </t-button>
 <t-dialog
   visible="{{showConfirm}}"
-  title="对话框标题"
-  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  title="Title"
+  content="Inform you of current status, information, solutions, etc. Keep description copy within three lines as much as possible."
   confirm-btn="{{ confirmBtn }}"
-  cancel-btn="取消"
+  cancel-btn="Cancel"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 />
@@ -28,13 +28,13 @@
   bind:tap="showDialog"
   block
 >
-  确认类-无标题
+  Without Title
 </t-button>
 <t-dialog
   visible="{{showWarnConfirm}}"
-  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-  confirm-btn="{{ { content: '警示操作', variant: 'base', theme: 'danger' } }}"
-  cancel-btn="取消"
+  content="Inform you of current status, information, solutions, etc. Keep description copy within three lines as much as possible."
+  confirm-btn="{{ { content: 'Alert Action', variant: 'base', theme: 'danger' } }}"
+  cancel-btn="Cancel"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
 />

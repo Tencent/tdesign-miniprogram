@@ -1,2 +1,8 @@
-<t-calendar visible="{{visible}}" bind:confirm="handleConfirm" type="range" />
-<t-cell arrow title="区间选择日历" bind:tap="handleCalendar" />
+<t-calendar
+  visible="{{visible}}"
+  title="Calendar"
+  confirmBtn="{{confirmBtn}}"
+  bind:confirm="handleConfirm"
+  type="range"
+/>
+<t-cell arrow title="Select Date Range" bind:tap="handleCalendar" />

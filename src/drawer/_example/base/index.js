@@ -4,28 +4,28 @@ Component({
     sidebar: [],
     baseSidebar: [
       {
-        title: '菜单一',
+        title: 'One',
       },
       {
-        title: '菜单二',
+        title: 'Two',
       },
       {
-        title: '菜单三',
+        title: 'Three',
       },
       {
-        title: '菜单四',
+        title: 'Four',
       },
       {
-        title: '菜单五',
+        title: 'Five',
       },
       {
-        title: '菜单六',
+        title: 'Six',
       },
       {
-        title: '菜单七',
+        title: 'Seven',
       },
       {
-        title: '菜单八',
+        title: 'Eight',
       },
     ],
   },

@@ -12,7 +12,7 @@ Page({
     switch (e.target.dataset.type) {
       case 'topShow': {
         this.toast({
-          message: '顶部-展示1秒',
+          message: 'Show at top for 1 second.',
           direction: 'column',
           placement: 'top',
           duration: 1000,
@@ -22,7 +22,7 @@ Page({
       }
       case 'middleShow': {
         this.toast({
-          message: '中间-展示2秒',
+          message: 'Show at center for 1 second.',
           direction: 'column',
           duration: 2000,
           icon: 'star',
@@ -31,7 +31,7 @@ Page({
       }
       case 'bottomShow': {
         this.toast({
-          message: '底部-展示3秒',
+          message: 'Show at bottom for 1 second.',
           direction: 'column',
           placement: 'bottom',
           duration: 3000,
@@ -42,7 +42,7 @@ Page({
 
       default: {
         this.toast({
-          message: '未知点击事件',
+          message: 'Unknown click event.',
         });
       }
     }

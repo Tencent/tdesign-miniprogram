@@ -2,12 +2,13 @@
 <view class="wrapper">
   <t-collapse value="{{activeValues}}" bind:change="handleChange">
     <t-collapse-panel
-      header="折叠面板标题"
-      header-right-content="{{_.contains(activeValues, 0) ? '收起' : '展开'}}"
+      header="Collapse Panel Title"
+      header-right-content="{{_.contains(activeValues, 0) ? 'Close' : 'Expand'}}"
       value="{{0}}"
       expandIcon
     >
-      此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
+      Customizable content here.Customizable content here.Customizable content here.Customizable content
+      here.Customizable content here.
     </t-collapse-panel>
   </t-collapse>
 </view>

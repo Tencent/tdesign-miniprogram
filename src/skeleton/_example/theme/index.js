@@ -2,22 +2,22 @@ Component({
   data: {
     themeList: [
       {
-        title: '头像骨架屏',
+        title: 'Avatar',
         value: 'avatar',
         loading: true,
       },
       {
-        title: '图片骨架屏',
+        title: 'Image',
         value: 'image',
         loading: true,
       },
       {
-        title: '文本骨架屏',
+        title: 'Text',
         value: 'text',
         loading: true,
       },
       {
-        title: '段落骨架屏',
+        title: 'Paragraph',
         value: 'paragraph',
         loading: true,
       },

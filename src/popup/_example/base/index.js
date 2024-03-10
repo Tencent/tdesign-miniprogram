@@ -2,11 +2,11 @@ Component({
   data: {
     cur: {},
     position: [
-      { value: 'top', text: '顶部弹出' },
-      { value: 'left', text: '左侧弹出' },
-      { value: 'center', text: '中间弹出' },
-      { value: 'bottom', text: '底部弹出' },
-      { value: 'right', text: '右侧弹出' },
+      { value: 'top', text: 'Pop in the top' },
+      { value: 'left', text: 'Pop in the left' },
+      { value: 'center', text: 'Pop in the middle' },
+      { value: 'bottom', text: 'Pop in the bottom' },
+      { value: 'right', text: 'Pop in the right' },
     ],
   },
   methods: {

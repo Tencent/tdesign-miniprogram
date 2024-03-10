@@ -1,31 +1,31 @@
 const list = [
   {
     value: 'home',
-    label: '首页',
+    label: 'Home',
     icon: 'home',
     children: [],
   },
   {
     value: 'app',
-    label: '应用',
+    label: 'App',
     icon: 'app',
     children: [],
   },
   {
     value: 'user',
-    label: '我的',
+    label: 'User',
     children: [
       {
         value: 'info',
-        label: '基本信息',
+        label: 'Basic Information',
       },
       {
         value: 'home-page',
-        label: '个人主页',
+        label: 'Homepage',
       },
       {
         value: 'setting',
-        label: '设置',
+        label: 'Setting',
       },
     ],
   },

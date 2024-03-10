@@ -1,11 +1,11 @@
-<t-cell title="选择地区" arrow hover note="{{areaText}}" bind:click="onAreaPicker" />
+<t-cell title="Choose Area" arrow hover note="{{areaText}}" bind:click="onAreaPicker" />
 
 <t-picker
   visible="{{areaVisible}}"
   value="{{areaValue}}"
-  title="选择地区"
-  cancelBtn="取消"
-  confirmBtn="确认"
+  title="Choose Area"
+  cancelBtn="Cancel"
+  confirmBtn="Confirm"
   bindchange="onPickerChange"
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"

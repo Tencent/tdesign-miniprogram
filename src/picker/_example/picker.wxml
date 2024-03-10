@@ -1,11 +1,11 @@
 <view class="area-picker-demo">
-  <view class="demo-title">Picker 选择器</view>
-  <view class="demo-desc">用于一组预设数据中的选择。</view>
-  <t-demo title="01 组件类型" desc="基础选择器">
+  <view class="demo-title">Picker</view>
+  <view class="demo-desc">Used to select from a set of default data.</view>
+  <t-demo title="01 Component Type" desc="Basic">
     <base />
     <area />
   </t-demo>
-  <t-demo title="02 组件样式" desc="是否带标题">
+  <t-demo title="02 Component Style" desc="Whether to Have a Title">
     <with-title />
   </t-demo>
 </view>

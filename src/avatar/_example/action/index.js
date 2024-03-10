@@ -12,7 +12,7 @@ Component({
 
   methods: {
     onAddTap() {
-      wx.showToast({ title: '您按下了添加', icon: 'none', duration: 1000 });
+      wx.showToast({ title: 'You pressed the add action', icon: 'none', duration: 1000 });
     },
   },
 });

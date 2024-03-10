@@ -1,6 +1,9 @@
 Component({
   data: {
     visible: false,
+    confirmBtn: {
+      content: 'Confirm',
+    },
     value: new Date(2022, 1, 15).getTime(),
     minDate: new Date(2022, 1, 1).getTime(),
     maxDate: new Date(2022, 2, 15).getTime(),

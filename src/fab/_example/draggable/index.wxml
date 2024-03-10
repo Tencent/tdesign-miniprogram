@@ -1,8 +1,8 @@
 <t-fab
   icon="gesture-press"
-  text="拖我"
+  text="Drag me"
   bind:click="handleClick"
   bind:move="handleMove"
-  aria-label="增加"
+  aria-label="Add"
   draggable="{{true}}"
 ></t-fab>

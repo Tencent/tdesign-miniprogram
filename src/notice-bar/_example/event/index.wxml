@@ -1,11 +1,17 @@
 <t-notice-bar visible="{{visible}}" suffixIcon="chevron-right" bind:click="click">
-  <view slot="content" class="inline"> 这是一条普通的通知信息 </view>
-  <t-link slot="operation" content="详情" theme="primary" underline="{{false}}" navigator-props="{{navigatorProps}}" />
+  <view slot="content" class="inline"> Notice bar content. </view>
+  <t-link
+    slot="operation"
+    content="Details"
+    theme="primary"
+    underline="{{false}}"
+    navigator-props="{{navigatorProps}}"
+  />
 </t-notice-bar>
 
 <t-notice-bar
   visible="{{visible}}"
   suffixIcon="chevron-right"
-  content="这是一条普通的通知信息"
+  content="Notice bar content."
   bind:click="click"
 ></t-notice-bar>

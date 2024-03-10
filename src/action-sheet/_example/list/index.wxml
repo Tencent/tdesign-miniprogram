@@ -1,7 +1,11 @@
-<t-action-sheet id="t-action-sheet" bind:selected="handleSelected" />
+<t-action-sheet id="t-action-sheet" cancel-text="Cancel" bind:selected="handleSelected" />
 
-<t-button size="large" variant="outline" bind:tap="handleAction" block theme="primary">列表型</t-button>
+<t-button size="large" variant="outline" bind:tap="handleAction" block theme="primary">List Type</t-button>
 
-<t-button size="large" variant="outline" bind:tap="showDescAction" block theme="primary">带描述列表型</t-button>
+<t-button size="large" variant="outline" bind:tap="showDescAction" block theme="primary">
+  With Description List Type
+</t-button>
 
-<t-button size="large" variant="outline" bind:tap="showIconAction" block theme="primary">带图标列表型</t-button>
+<t-button size="large" variant="outline" bind:tap="showIconAction" block theme="primary">
+  With Icons List Type
+</t-button>

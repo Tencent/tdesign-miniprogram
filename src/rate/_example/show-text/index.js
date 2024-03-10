@@ -1,7 +1,7 @@
 Component({
   data: {
     value: [3, 3, 0],
-    texts: ['1分', '2分', '3分', '4分', '5分'],
+    texts: ['1 star', '2 stars', '3 stars', '4 stars', '5 stars'],
   },
 
   methods: {

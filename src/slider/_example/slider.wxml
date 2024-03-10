@@ -1,15 +1,15 @@
 <view class="demo">
-  <view class="demo-title">Slider 滑动选择器</view>
-  <view class="demo-desc">用于选择横轴上的数值、区间、档位。</view>
-  <t-demo title="01 组件类型" desc="单游标滑块">
+  <view class="demo-title">Slider</view>
+  <view class="demo-desc"> Used to select the value, range, and gear on the horizontal axis. </view>
+  <t-demo title="01 Component Type" desc="Single Cursor Slider">
     <base />
   </t-demo>
 
-  <t-demo desc="双游标滑块">
+  <t-demo desc="Double Cursor Slider">
     <range />
   </t-demo>
 
-  <t-demo desc="带数值滑动选择器">
+  <t-demo desc="Slide Selector with Numerical Value">
     <label />
   </t-demo>
   <!--
@@ -17,19 +17,19 @@
     <max />
   </t-demo> -->
 
-  <t-demo desc="带刻度滑动选择器">
+  <t-demo desc="Slide Selector with Scale">
     <step />
   </t-demo>
 
-  <t-demo title="02 组件状态" desc="滑块禁用状态">
+  <t-demo title="02 Component Status" desc="Disabled">
     <disabled />
   </t-demo>
 
-  <t-demo title="03 特殊样式" desc="胶囊型滑块">
+  <t-demo title="03 Special Style" desc="Capsule">
     <capsule />
   </t-demo>
 
-  <t-demo title="04 垂直状态">
+  <t-demo title="04 Vertical">
     <vertical />
   </t-demo>
 </view>

@@ -1,39 +1,51 @@
 <view wx:if="{{privacy}}" class="privacy_wrap">
   <view class="privacy_safe_area">
     <view class="privacy_top">
-      <view class="privacy_title">{{name}}服务声明</view>
-      <view class="privacy_right">发布日期：{{date}}</view>
-      <view class="privacy_right">生效日期：{{date}}</view>
+      <view class="privacy_title">{{name}} Service Statement</view>
+      <view class="privacy_right">Release Date: {{date}}</view>
+      <view class="privacy_right">Effective Date: {{date}}</view>
     </view>
     <view class="privacy_content">
       <text class="privacy_bold">引言</text>
       <text decode="{{true}}" class="privacy_normal"
-        >{{name}}是由深圳市腾讯计算机系统有限公司（以下简称“我们”）提供的产品，我们的注册地为深圳市南山区粤海街道麻岭社区科技中一路腾讯大厦35层。</text
+        >{{name}} is a product provided by Shenzhen Tencent Computer Systems Co., Ltd. (hereinafter referred to as
+        "we"). Our registered place is the 35th floor of Tencent Building, No. 1 Science and Technology Middle Road,
+        Maling Community, Yuehai Street, Nanshan District, Shenzhen.</text
       >
       <text decode="{{true}}" class="privacy_bold"
-        >我们在此特别声明：\n1.本小程序产品功能的实现不涉及收集和处理用户（以下简称“您”）的任何个人信息。\n2.如果我们更新、改进或修改小程序产品功能，并因此导致我们需要处理您的个人信息的，我们将会依据适用法律的要求对本声明进行修订，并将修订后的内容通过弹框等形式通知您并获得您同意。</text
+        >We hereby specifically declare: \n 1.The implementation of the product functions of this mini program does not
+        involve the collection and processing of any personal information of users (hereinafter referred to as "you").\n
+        2.If we update, improve or modify the functions of Mini Program products, and as a result we need to process
+        your personal information, we will revise this statement in accordance with the requirements of applicable laws
+        and notify you of the revised content through pop-ups or other forms. and obtain your consent.</text
       >
       <text decode="{{true}}" class="privacy_normal">
-        3.如果您对本声明有任何疑问或建议，您可以通过以下方式与我们取得联系：\n（1）将问题发送至Dataprivacy@tencent.com;\n（2）通过https://kf.qq.com/与我们联系；\n（3）将您的问题邮寄至下列地址：\n\n中国广东省深圳市南山区海天二路33号腾讯滨海大厦\n数据隐私保护部（收）\n邮编：518054\n\n我们将尽快审核所涉问题，并在15个工作日或法律法规规定的期限内予以反馈。
+        3.If you have any questions or suggestions about this statement, you can contact us in the following ways:
+        \n（1） Send questions to Dataprivacy@tencent.com;\n（2）Contact us at https://kf.qq.com/;\n（3）Mail your
+        questions to the following address: \n\nTencent Binhai Building, No. 33 Haitian 2nd Road, Nanshan District,
+        Shenzhen City, Guangdong Province, China \nData Privacy Protection Department (Collection)\n Post Code: 518054
+        \n\n We will review the issues involved as soon as possible and provide feedback within 15 working days or the
+        period specified by laws and regulations.
       </text>
     </view>
     <view class="footer">
-      <t-button class="t-design-button" theme="primary" bindtap="privacyConfirm">我已知晓</t-button>
+      <t-button class="t-design-button" theme="primary" bindtap="privacyConfirm">Got it!</t-button>
     </view>
   </view>
 </view>
 <view wx:if="{{win}}" class="privacy_tips_win">
   <view class="privacy_win_content {{winStyle?'privacy_middle':''}}">
     <view class="privacy_tips_content"
-      >我们将严格按照<text class="privacy_url" bindtap="showPrivacyDetail">《{{name}}服务声明》</text
-      >向您提供服务，不会收集和处理您的个人信息。</view
+      >We will strictly follow<text class="privacy_url" bindtap="showPrivacyDetail">《{{name}} Service Statement》</text
+      >Provide services to you without collecting and processing your personal information.</view
     >
     <view class="privacy_tips_content"
-      >如您对<text class="privacy_url" bindtap="showPrivacyDetail">《{{name}}服务声明》</text
-      >有任何疑问或建议，可以通过声明内的联系方式向我们反馈。</view
+      >If you have any questions or suggestions about
+      <text class="privacy_url" bindtap="showPrivacyDetail">《{{name}} Service Statement》</text>you can give us
+      feedback through the contact information in the statement.</view
     >
     <view class="footer">
-      <t-button class="t-design-button" theme="primary" bindtap="privacyConfirm">我已知晓</t-button>
+      <t-button class="t-design-button" theme="primary" bindtap="privacyConfirm">Got it!</t-button>
     </view>
   </view>
 </view>

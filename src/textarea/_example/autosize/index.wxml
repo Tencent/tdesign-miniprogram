@@ -1,6 +1,6 @@
 <t-textarea
-  label="标签文字"
-  placeholder="请输入文字"
+  label="Autosize"
+  placeholder="Please enter text"
   disableDefaultPadding="{{true}}"
   autosize="{{autosize}}"
   bind:line-change="onLineChange"

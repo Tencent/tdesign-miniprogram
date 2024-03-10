@@ -7,7 +7,7 @@ Component({
         context: this,
         offset: [20, 32],
         duration: 5000,
-        content: '这是一条普通通知信息',
+        content: 'Message notification content.',
       });
     },
 
@@ -16,7 +16,7 @@ Component({
         context: this,
         offset: [20, 32],
         duration: 5000,
-        content: '这是一条需要用户关注到的警示通知',
+        content: 'Message notification content.',
       });
     },
 
@@ -25,7 +25,7 @@ Component({
         context: this,
         offset: [20, 32],
         duration: 5000,
-        content: '这是一条成功的提示消息',
+        content: 'Message notification content.',
       });
     },
 
@@ -34,7 +34,7 @@ Component({
         context: this,
         offset: [20, 32],
         duration: 5000,
-        content: '这是一条错误提示通知',
+        content: 'Message notification content.',
       });
     },
   },

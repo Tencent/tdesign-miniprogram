@@ -1,8 +1,8 @@
 <view class="textarea-example">
-  <text class="textarea-example__label">标签文字</text>
+  <text class="textarea-example__label">Custom</text>
   <t-textarea
     t-class="external-class"
-    placeholder="请输入文字"
+    placeholder="Please enter text"
     bordered
     maxlength="100"
     disableDefaultPadding="{{true}}"

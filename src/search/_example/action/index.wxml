@@ -2,7 +2,7 @@
   <t-search
     value="{{value}}"
     center
-    placeholder="搜索预设文案"
+    placeholder="placeholder"
     action="{{actionText}}"
     bind:blur="blurHandle"
     bind:focus="focusHandle"

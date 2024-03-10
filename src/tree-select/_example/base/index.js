@@ -1,4 +1,4 @@
-const chineseNumber = '一二三四五六七八九十'.split('');
+const chineseNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const generateTree = function (deep = 0, count = 10, prefix) {
   const ans = [];
@@ -6,7 +6,7 @@ const generateTree = function (deep = 0, count = 10, prefix) {
   for (let i = 0; i < count; i += 1) {
     const value = prefix ? `${prefix}-${i}` : `${i}`;
     const rect = {
-      label: `选项${chineseNumber[i]}`,
+      label: `Option${chineseNumber[i]}`,
       value,
     };
 

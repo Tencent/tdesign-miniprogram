@@ -1,5 +1,6 @@
 page {
   background-color: #fff;
+  --td-side-bar-width: 280rpx;
 }
 
 page .round-image {

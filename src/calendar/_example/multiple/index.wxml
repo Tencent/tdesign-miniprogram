@@ -1,2 +1,8 @@
-<t-calendar visible="{{visible}}" bind:confirm="handleConfirm" type="multiple" />
-<t-cell arrow title="多个选择日历" bind:tap="handleCalendar" />
+<t-calendar
+  visible="{{visible}}"
+  title="Calendar"
+  confirmBtn="{{confirmBtn}}"
+  bind:confirm="handleConfirm"
+  type="multiple"
+/>
+<t-cell arrow title="Select Multiple Date" bind:tap="handleCalendar" />

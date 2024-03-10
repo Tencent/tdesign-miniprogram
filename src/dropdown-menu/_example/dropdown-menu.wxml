@@ -1,11 +1,14 @@
 <view class="demo">
-  <view class="demo-title">DropdownMenu 下拉菜单</view>
-  <view class="demo-desc">菜单呈现数个并列的选项类目，用于整个页面的内容筛选，由菜单面板和菜单选项组成。</view>
-  <t-demo title="01 组件类型" desc="单选下拉菜单">
+  <view class="demo-title">DropdownMenu</view>
+  <view class="demo-desc">
+    The menu displays several juxtaposed option categories that are used to filter the content of the entire page,
+    consisting of a menu panel and menu options.
+  </view>
+  <t-demo title="01 Component Type" desc="Radio DropdownMenu">
     <single />
   </t-demo>
 
-  <t-demo desc="分栏下拉菜单">
+  <t-demo desc="Column DropdownMenu">
     <multi />
   </t-demo>
 
@@ -13,10 +16,10 @@
     <tree />
   </t-demo> -->
 
-  <t-demo title="02 组件状态" desc="禁用状态">
+  <t-demo title="02 Component Status" desc="Disabled">
     <t-dropdown-menu>
-      <t-dropdown-item disabled label="禁用菜单" />
-      <t-dropdown-item disabled label="禁用菜单" />
+      <t-dropdown-item disabled label="Disabled" />
+      <t-dropdown-item disabled label="Disabled" />
     </t-dropdown-menu>
   </t-demo>
 </view>

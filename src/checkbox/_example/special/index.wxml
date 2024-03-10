@@ -5,19 +5,19 @@
     <t-icon wx:if="{{_.contain(value, index)}}" name="check" t-class="card__icon" ariaHidden="{{true}}" />
     <t-checkbox
       value="{{index}}"
-      label="多选"
-      content="描述信息描述信息描述信息描述信息描述信息"
+      label="Checkbox {{index}}"
+      content="Description information.Description information.Description information."
       icon="none"
       borderless
     />
   </view>
 </t-checkbox-group>
 
-<view class="demo-desc" style="margin: 48rpx 32rpx 32rpx">横向卡片多选框</view>
+<view class="demo-desc" style="margin: 48rpx 32rpx 32rpx"> Horizontal Card Checkbox </view>
 
 <t-checkbox-group t-class="horizontal-box" value="{{value1}}" bind:change="onChange1">
   <view wx:for="{{3}}" wx:key="index" class="card {{_.contain(value1, index) ? 'card--active' : ''}}">
     <t-icon wx:if="{{_.contain(value1, index)}}" name="check" t-class="card__icon" ariaHidden="{{true}}" />
-    <t-checkbox value="{{index}}" label="多选" icon="none" borderless />
+    <t-checkbox value="{{index}}" label="Checkbox {{index}}" icon="none" borderless />
   </view>
 </t-checkbox-group>

@@ -1,7 +1,7 @@
-<t-cell title="选择时间" hover note="{{text || ''}}" arrow bindtap="showPicker" t-class="panel-item" />
+<t-cell title="Choose Time" hover note="{{text || ''}}" arrow bindtap="showPicker" t-class="panel-item" />
 
 <t-date-time-picker
-  title="选择时间"
+  title="Choose Time"
   visible="{{visible}}"
   value="{{value}}"
   format="HH:mm:ss"

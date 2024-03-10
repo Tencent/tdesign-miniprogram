@@ -2,13 +2,13 @@ Component({
   data: {
     right: [
       {
-        text: '删除',
+        text: 'Delete',
         className: 'btn delete-btn',
       },
     ],
     left: [
       {
-        text: '选择',
+        text: 'Choose',
         className: 'btn favor-btn',
       },
     ],
@@ -16,7 +16,7 @@ Component({
 
   methods: {
     onActionClick({ detail }) {
-      wx.showToast({ title: `你点击了${detail.text}`, icon: 'none' });
+      wx.showToast({ title: `You clicked ${detail.text}`, icon: 'none' });
     },
   },
 });

@@ -2,7 +2,7 @@ Component({
   data: {
     right: [
       {
-        text: '编辑',
+        text: 'Edit',
         icon: {
           name: 'edit',
           size: 16,
@@ -10,7 +10,7 @@ Component({
         className: 'btn edit-btn',
       },
       {
-        text: '删除',
+        text: 'Delete',
         icon: {
           name: 'delete',
           size: 16,
@@ -31,20 +31,20 @@ Component({
   },
   methods: {
     onActionClick({ detail }) {
-      wx.showToast({ title: `你点击了${detail.text}`, icon: 'none' });
+      wx.showToast({ title: `You clicked ${detail.text}`, icon: 'none' });
     },
 
     onDelete() {
-      wx.showToast({ title: '你点击了删除', icon: 'none' });
+      wx.showToast({ title: 'You Clicked the Delete Button', icon: 'none' });
     },
     onEdit() {
-      wx.showToast({ title: '你点击了编辑', icon: 'none' });
+      wx.showToast({ title: 'You Clicked the Edit Button', icon: 'none' });
     },
     onFavor() {
-      wx.showToast({ title: '你点击了收藏', icon: 'none' });
+      wx.showToast({ title: 'You Clicked the Collect Button', icon: 'none' });
     },
     onChoice() {
-      wx.showToast({ title: '你点击了选择', icon: 'none' });
+      wx.showToast({ title: 'You Clicked the Choose Button', icon: 'none' });
     },
   },
 });

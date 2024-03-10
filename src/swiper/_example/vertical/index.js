@@ -2,19 +2,19 @@ const imageCdn = 'https://tdesign.gtimg.com/mobile/demos';
 const swiperList = [
   {
     value: `${imageCdn}/swiper1.png`,
-    ariaLabel: '图片1',
+    ariaLabel: 'Picture 1',
   },
   {
     value: `${imageCdn}/swiper2.png`,
-    ariaLabel: '图片2',
+    ariaLabel: 'Picture 2',
   },
   {
     value: `${imageCdn}/swiper1.png`,
-    ariaLabel: '图片1',
+    ariaLabel: 'Picture 1',
   },
   {
     value: `${imageCdn}/swiper2.png`,
-    ariaLabel: '图片2',
+    ariaLabel: 'Picture 2',
   },
 ];
 Component({

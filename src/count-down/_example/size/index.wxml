@@ -1,5 +1,5 @@
 <view class="demo-count-down">
-  <text class="demo-count-down-desc"> 时分秒 </text>
+  <text class="demo-count-down-desc"> Base </text>
   <view class="demo-count-down-content">
     <t-count-down size="small" time="{{ time }}" />
   </view>
@@ -12,7 +12,7 @@
 </view>
 
 <view class="demo-count-down">
-  <text class="demo-count-down-desc"> 带毫秒 </text>
+  <text class="demo-count-down-desc"> Millisecond </text>
   <view class="demo-count-down-content">
     <t-count-down size="small" format="HH:mm:ss:SSS" time="{{ time }}" millisecond />
   </view>
@@ -25,7 +25,7 @@
 </view>
 
 <view class="demo-count-down">
-  <text class="demo-count-down-desc"> 带方形底 </text>
+  <text class="demo-count-down-desc"> Square </text>
   <view class="demo-count-down-content">
     <t-count-down size="small" format="HH:mm:ss" time="{{ time }}" theme="square" />
   </view>
@@ -38,7 +38,7 @@
 </view>
 
 <view class="demo-count-down">
-  <text class="demo-count-down-desc"> 带圆形底 </text>
+  <text class="demo-count-down-desc"> Round </text>
   <view class="demo-count-down-content">
     <t-count-down size="small" format="HH:mm:ss" time="{{ time }}" theme="round" />
   </view>
@@ -51,7 +51,7 @@
 </view>
 
 <view class="demo-count-down">
-  <text class="demo-count-down-desc"> 带单位 </text>
+  <text class="demo-count-down-desc"> With Unit</text>
   <view class="demo-count-down-content">
     <t-count-down size="small" format="HH:mm:ss" time="{{ time }}" splitWithUnit theme="round" />
   </view>

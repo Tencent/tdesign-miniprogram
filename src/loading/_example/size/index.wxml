@@ -1,11 +1,11 @@
 <view class="loading-size-demo">
-  <t-loading theme="circular" size="64rpx" text="加载中..." class="large" />
+  <t-loading theme="circular" size="64rpx" text="loading..." class="large" />
 
-  <view class="demo-desc">中尺寸</view>
+  <view class="demo-desc">Medium</view>
 
-  <t-loading theme="circular" size="56rpx" text="加载中..." class="middle" />
+  <t-loading theme="circular" size="56rpx" text="loading..." class="middle" />
 
-  <view class="demo-desc">小尺寸</view>
+  <view class="demo-desc">Small</view>
 
-  <t-loading theme="circular" size="48rpx" text="加载中..." />
+  <t-loading theme="circular" size="48rpx" text="loading..." />
 </view>

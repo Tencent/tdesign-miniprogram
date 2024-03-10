@@ -1,13 +1,13 @@
-const chineseNumber = '一二三四五六七八九十'.split('');
+const chineseNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const singleSelectOptions = new Array(8).fill(null).map((_, i) => ({
-  label: `选项${chineseNumber[i]}`,
+  label: `Option ${chineseNumber[i]}`,
   value: `option_${i + 1}`,
   disabled: false,
 }));
 
 singleSelectOptions.push({
-  label: '禁用选项',
+  label: 'Disabled',
   value: 'disabled',
   disabled: true,
 });
@@ -15,7 +15,7 @@ singleSelectOptions.push({
 const doubleColumnsOptions = [
   ...singleSelectOptions,
   {
-    label: '禁用选项',
+    label: 'Disabled',
     value: 'disabled',
     disabled: true,
   },
@@ -24,14 +24,14 @@ const doubleColumnsOptions = [
 const tripleColumnsOptions = [
   ...doubleColumnsOptions,
   {
-    label: '禁用选项',
+    label: 'Disabled',
     value: 'disabled',
     disabled: true,
   },
 ];
 
 tripleColumnsOptions.splice(8, 0, {
-  label: `选项${chineseNumber[8]}`,
+  label: `Option ${chineseNumber[8]}`,
   value: `option_${9}`,
   disabled: false,
 });

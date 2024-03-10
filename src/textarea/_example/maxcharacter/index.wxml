@@ -1,7 +1,7 @@
 <t-textarea
   t-class="external-class"
-  label="标签文字"
-  placeholder="设置最大字符个数，一个汉字表示两个字符"
+  label="Maxcharacter"
+  placeholder="Set the maximum number of characters, one Chinese character represents two characters"
   maxcharacter="200"
   disableDefaultPadding="{{true}}"
   indicator
