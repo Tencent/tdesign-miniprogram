@@ -57,6 +57,12 @@
       "current": 0,
       "list": [
         {
+          "name": "skyline-home",
+          "pathName": "pages/home/home",
+          "query": "skyline=1",
+          "scene": null
+        },
+        {
           "name": "action-sheet",
           "pathName": "pages/action-sheet/action-sheet",
           "query": "",

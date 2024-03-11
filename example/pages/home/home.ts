@@ -1,13 +1,26 @@
-import list from './data/index';
+import { list, skylineList } from './data/index';
 
 Page({
   data: {
-    list,
+    list: [],
     currentYear: new Date().getFullYear(),
   },
   onLoad(options) {
-    const { path, q } = options;
+    const { path, q, skyline } = options;
     console.log(path);
+
+    let compList = [];
+    this.skyline = skyline;
+    if (this.skyline) {
+      compList = skylineList;
+    } else {
+      compList = list;
+    }
+
+    this.setData({
+      list: compList,
+    });
+
     // 小程序跳转各个小程序组件库
     if (q) {
       // Navigator.gotoPage(path, rest);
@@ -38,7 +51,7 @@ Page({
         return `-${match.toLowerCase()}`;
       });
 
-      path = `/pages/${name}/${name}`;
+      path = `/pages/${name}/${this.skyline ? 'skyline/' : ''}${name}`;
     }
 
     wx.navigateTo({

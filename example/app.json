@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/button/button",
+    "pages/button/skyline/button",
     "pages/tabs/tabs",
     "pages/icon/icon",
     "pages/loading/loading",
@@ -110,5 +111,12 @@
     "navigationBarTitleText": "TDesign",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true
+    }
+  }
 }

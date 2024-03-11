@@ -6,16 +6,16 @@ Component({
   properties: {
     title: {
       type: String,
-      default: '',
+      value: '',
     },
     desc: {
       type: String,
-      default: '',
+      value: '',
     },
     operList: Array,
     padding: {
       type: Boolean,
-      default: false,
+      value: false,
     },
   },
   methods: {

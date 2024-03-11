@@ -46,4 +46,15 @@ const base = {
   ],
 };
 
-export default base;
+const skylineBase = {
+  name: '基础',
+  icon: 'app',
+  childArr: [
+    {
+      name: 'Button',
+      label: '按钮',
+    },
+  ],
+};
+
+export { base, skylineBase };
