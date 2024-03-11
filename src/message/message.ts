@@ -49,7 +49,10 @@ export default class Message extends SuperComponent {
    * @param theme
    */
   setMessage(msg: MessageProps, theme: MessageType = MessageType.info) {
-    const id = msg.id || `${name}_${index}`;
+    let id = `${name}_${index}`;
+    if (msg.single) {
+      id = name;
+    }
     gap = unitConvert(msg.gap || gap);
     const msgObj = {
       ...msg,

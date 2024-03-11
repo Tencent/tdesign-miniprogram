@@ -23,4 +23,5 @@ export interface MessageProps {
   zIndex?: number;
   id?: string;
   gap?: string;
+  single?: boolean;
 }
