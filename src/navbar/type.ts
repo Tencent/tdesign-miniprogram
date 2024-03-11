@@ -53,6 +53,14 @@ export interface TdNavbarProps {
     value?: boolean;
   };
   /**
+   * 是否展示胶囊
+   * @default true
+   */
+  capsule?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 页面标题
    */
   title?: {
