@@ -58,6 +58,8 @@ visible | Boolean | false | 是否显示，隐藏时默认销毁组件 | N
 default-visible | Boolean | false | 是否显示，隐藏时默认销毁组件。非受控属性 | N
 z-index | Number | 15000 | 元素层级，样式默认为 15000 | N
 link | String / Object / Slot | - | 链接名称。值为字符串表示链接名称，值为 `Object` 类型，表示透传至 `Link`。 | N
+id | String | - | 如期望页面上始终保持仅显示一条消息，可设置固定相同的id。 | N
+gap | String | 12 | 两条消息之间的间距，默认12px。示例：'12', '12px', '18rpx' | N
 ### Message Events
 
 名称 | 参数 | 描述
