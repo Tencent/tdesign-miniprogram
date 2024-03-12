@@ -54,7 +54,7 @@
   />
   <view class="{{classPrefix}}__content">
     <slot name="content" />
-    <block>{{content}}</block>
+    <block wx:if="{{content}}">{{content}}</block>
     <slot />
   </view>
   <slot name="suffix" />
