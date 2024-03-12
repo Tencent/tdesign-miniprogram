@@ -53,4 +53,18 @@ const ux = {
   ],
 };
 
-export default ux;
+const skylineUx = {
+  name: '反馈',
+  icon: 'chat',
+  childArr: [
+    {
+      name: 'Overlay',
+      label: '遮罩层',
+    },
+    {
+      name: 'Popup',
+      label: '弹出层',
+    },
+  ],
+};
+export { ux, skylineUx };

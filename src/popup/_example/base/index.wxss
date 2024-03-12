@@ -23,6 +23,10 @@
   height: 240px;
 }
 
-.wrapper + .wrapper {
+.wrapper {
   margin-top: 32rpx;
+}
+
+.wrapper:first-child {
+  margin-top: 0;
 }

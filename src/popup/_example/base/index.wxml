@@ -12,5 +12,6 @@
   bind:tap="handlePopup"
   data-item="{{item}}"
   t-class="wrapper"
-  >{{item.text}}</t-button
 >
+  {{item.text}}
+</t-button>
