@@ -54,6 +54,10 @@ const skylineBase = {
       name: 'Button',
       label: '按钮',
     },
+    {
+      name: 'Icon',
+      label: '图标',
+    },
   ],
 };
 
