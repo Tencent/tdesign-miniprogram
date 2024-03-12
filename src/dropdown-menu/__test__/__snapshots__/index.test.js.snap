@@ -86,7 +86,7 @@ exports[`dropdown-menu :base 1`] = `
           style="z-index:11600;"
         >
           <wx-view
-            class="t-dropdown-item_mask"
+            class="t-dropdown-item__mask"
             hidden="{{false}}"
             style="height:0px;"
             bind:tap="handleMaskClick"

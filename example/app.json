@@ -5,6 +5,7 @@
     "pages/button/skyline/button",
     "pages/tabs/tabs",
     "pages/icon/icon",
+    "pages/icon/skyline/icon",
     "pages/loading/loading",
     "pages/progress/progress",
     "pages/cascader/cascader",
