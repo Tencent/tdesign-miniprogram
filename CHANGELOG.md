@@ -6,7 +6,7 @@ docClass: timeline
 ---
 
 
-  ## 🌈 1.2.9 `2024-03-07` 
+## 🌈 1.2.9 `2024-03-07` 
 ### 🚀 Features
 - `Cascader`: 新增 `placeholder` 属性，支持自定义未选中时的提示文案 @anlyyao ([#2597](https://github.com/Tencent/tdesign-miniprogram/pull/2597))
 ### 🐞 Bug Fixes
@@ -22,7 +22,7 @@ docClass: timeline
 - `DropdownItem`: 采用 [BEM](http://getbem.com/) 命名规范优化类名 @betavs ([#2611](https://github.com/Tencent/tdesign-miniprogram/pull/2611))
 
 
-  ## 🌈 1.2.8 `2024-02-06` 
+## 🌈 1.2.8 `2024-02-06` 
 ### 🚀 Features
 - `Slider`: 新增 `vertical`属性 @zuiaiwanqian ([#2592](https://github.com/Tencent/tdesign-miniprogram/pull/2592))
 - `Tag`:  `closable` 属性补充支持 `Object` 和 `Slot`类型 @anlyyao ([#2590](https://github.com/Tencent/tdesign-miniprogram/pull/2590))
@@ -37,7 +37,7 @@ docClass: timeline
 - `NoticeBar`: 声明 `NoticeBarTrigger` 类型 @betavs ([#2567](https://github.com/Tencent/tdesign-miniprogram/pull/2567)) 
 
 
- ## 🌈 1.2.7 `2024-01-17` 
+## 🌈 1.2.7 `2024-01-17` 
 ### 🚀 Features
 - `Upload`: 支持拖拽排序 @zuiaiwanqian ([#2527](https://github.com/Tencent/tdesign-miniprogram/pull/2527))
 - `Textarea`: `change` 事件新增 `cursor` 参数 @betavs ([#2533](https://github.com/Tencent/tdesign-miniprogram/pull/2533))
