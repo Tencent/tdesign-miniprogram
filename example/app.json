@@ -7,6 +7,7 @@
     "pages/icon/icon",
     "pages/icon/skyline/icon",
     "pages/loading/loading",
+    "pages/loading/skyline/loading",
     "pages/progress/progress",
     "pages/cascader/cascader",
     "pages/cell/cell",

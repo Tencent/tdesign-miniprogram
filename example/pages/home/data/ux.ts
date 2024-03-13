@@ -65,6 +65,10 @@ const skylineUx = {
       name: 'Popup',
       label: '弹出层',
     },
+    {
+      name: 'Loading',
+      label: '加载',
+    },
   ],
 };
 export { ux, skylineUx };
