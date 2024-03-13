@@ -141,6 +141,12 @@
           "scene": null
         },
         {
+          "name": "skyline-divider",
+          "pathName": "pages/divider/skyline/divider",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "date-time-picker",
           "pathName": "pages/date-time-picker/date-time-picker",
           "query": "",

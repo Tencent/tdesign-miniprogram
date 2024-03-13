@@ -55,6 +55,10 @@ const skylineBase = {
       label: '按钮',
     },
     {
+      name: 'Divider',
+      label: '分割线',
+    },
+    {
       name: 'Icon',
       label: '图标',
     },

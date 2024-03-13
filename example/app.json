@@ -37,6 +37,7 @@
     "pages/skeleton/skeleton",
     "pages/footer/footer",
     "pages/divider/divider",
+    "pages/divider/skyline/divider",
     "pages/empty/empty",
     "pages/back-top/back-top",
     "pages/grid/grid",
