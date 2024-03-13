@@ -62,6 +62,11 @@ const skylineBase = {
       name: 'Icon',
       label: '图标',
     },
+    {
+      name: 'Layout',
+      label: '布局',
+      path: '/pages/col/skyline/col',
+    },
   ],
 };
 
