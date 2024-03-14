@@ -9,7 +9,7 @@
       </t-demo>
 
       <t-demo desc="图标按钮">
-        <icon-btn />
+        <icon-btn skyline="{{true}}" />
       </t-demo>
 
       <t-demo desc="幽灵按钮">

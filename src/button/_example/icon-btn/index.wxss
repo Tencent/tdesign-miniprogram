@@ -6,3 +6,7 @@
   margin: 32rpx;
   display: flex;
 }
+
+.button-example .loading {
+  display: flex;
+}
