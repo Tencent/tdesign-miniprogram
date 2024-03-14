@@ -1,0 +1,17 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "base": "../base",
+    "label": "../label",
+    "autosize": "../autosize",
+    "disabled": "../disabled",
+    "maxcharacter": "../maxcharacter",
+    "maxlength": "../maxlength",
+    "card": "../card",
+    "custom": "../custom"
+  },
+  "renderer": "skyline",
+  "componentFramework": "glass-easel",
+  "disableScroll": true
+}

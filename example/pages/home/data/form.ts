@@ -69,4 +69,15 @@ const form = {
   ],
 };
 
-export default form;
+const skylineForm = {
+  name: '输入',
+  icon: 'bulletpoint',
+  childArr: [
+    {
+      name: 'Textarea',
+      label: '多行文本框',
+    },
+  ],
+};
+
+export { form, skylineForm };
