@@ -77,4 +77,15 @@ const display = {
   ],
 };
 
-export default display;
+const skylineDisplay = {
+  name: '数据展示',
+  icon: 'image',
+  childArr: [
+    {
+      name: 'Skeleton',
+      label: '骨架屏',
+    },
+  ],
+};
+
+export { display, skylineDisplay };

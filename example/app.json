@@ -36,6 +36,7 @@
     "pages/drawer/drawer",
     "pages/pull-down-refresh/pull-down-refresh",
     "pages/skeleton/skeleton",
+    "pages/skeleton/skyline/skeleton",
     "pages/footer/footer",
     "pages/divider/divider",
     "pages/divider/skyline/divider",
