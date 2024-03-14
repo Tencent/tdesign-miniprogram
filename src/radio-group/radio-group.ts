@@ -48,6 +48,11 @@ export default class RadioGroup extends SuperComponent {
     options() {
       this.initWithOptions();
     },
+    disabled(v) {
+      this.getChildren().forEach((item) => {
+        item.setDisabled(v);
+      });
+    },
   };
 
   methods = {
@@ -73,7 +78,7 @@ export default class RadioGroup extends SuperComponent {
 
     // 支持自定义options
     initWithOptions() {
-      const { options, value, keys } = this.data;
+      const { options, value, keys, disabled } = this.data;
       // 数字数组｜字符串数组｜对像数组
       if (!options?.length || !Array.isArray(options)) {
         this.setData({
@@ -90,6 +95,7 @@ export default class RadioGroup extends SuperComponent {
               label: `${element}`,
               value: element,
               checked: value === element,
+              disabled,
             });
           } else if (typeName === 'object') {
             optionsValue.push({
@@ -97,6 +103,7 @@ export default class RadioGroup extends SuperComponent {
               label: element[keys?.label ?? 'label'],
               value: element[keys?.value ?? 'value'],
               checked: value === element[keys?.value ?? 'value'],
+              disabled: element.disabled || disabled,
             });
           }
         });
