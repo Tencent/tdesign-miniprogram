@@ -72,11 +72,10 @@ export default class Radio extends SuperComponent {
 
   methods = {
     handleTap(e) {
-      if (this.data._disabled || this.data.readonly) return;
-
+      const { _disabled, readonly, contentDisabled } = this.data;
       const { target } = e.currentTarget.dataset;
 
-      if (target === 'text' && this.data.contentDisabled) return;
+      if (_disabled || readonly || (target === 'text' && contentDisabled)) return;
 
       this.doChange();
     },
