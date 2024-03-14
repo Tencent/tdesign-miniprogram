@@ -61,11 +61,18 @@ export default class Radio extends SuperComponent {
     optionLinked: false,
     iconVal: [],
     _placement: '',
+    _disabled: false,
+  };
+
+  observers = {
+    disabled(v) {
+      this.setData({ _disabled: v });
+    },
   };
 
   methods = {
     handleTap(e) {
-      if (this.data.disabled || this.data.readonly) return;
+      if (this.data._disabled || this.data.readonly) return;
 
       const { target } = e.currentTarget.dataset;
 
@@ -96,7 +103,7 @@ export default class Radio extends SuperComponent {
 
     setDisabled(disabled: Boolean) {
       this.setData({
-        disabled: this.data.disabled || disabled,
+        _disabled: this.data.disabled || disabled,
       });
     },
   };

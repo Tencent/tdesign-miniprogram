@@ -49,6 +49,10 @@ export default class RadioGroup extends SuperComponent {
       this.initWithOptions();
     },
     disabled(v) {
+      if (this.data.options?.length) {
+        this.initWithOptions();
+        return;
+      }
       this.getChildren().forEach((item) => {
         item.setDisabled(v);
       });
