@@ -18,10 +18,14 @@
     </view>
   </t-demo>
   <t-demo desc="图标加文字横向" padding>
-    <t-loading theme="spinner" size="40rpx" text="加载中..." inheritColor />
+    <view class="loading-container-flex">
+      <t-loading theme="spinner" size="40rpx" text="加载中..." inheritColor />
+    </view>
   </t-demo>
   <t-demo desc="图标加文字竖向" padding>
-    <t-loading theme="spinner" size="40rpx" text="加载中..." inheritColor layout="vertical" />
+    <view class="loading-container-flex">
+      <t-loading theme="spinner" size="40rpx" text="加载中..." inheritColor layout="vertical" />
+    </view>
   </t-demo>
   <t-demo desc="纯文字" padding>
     <text />
