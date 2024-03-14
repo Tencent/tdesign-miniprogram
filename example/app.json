@@ -48,6 +48,7 @@
     "pages/overlay/overlay",
     "pages/overlay/skyline/overlay",
     "pages/image/image",
+    "pages/image/skyline/image",
     "pages/search/search",
     "pages/home/navigateFail/navigateFail",
     "pages/navbar/navbar",

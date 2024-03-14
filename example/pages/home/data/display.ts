@@ -82,6 +82,10 @@ const skylineDisplay = {
   icon: 'image',
   childArr: [
     {
+      name: 'Image',
+      label: '图片',
+    },
+    {
       name: 'Skeleton',
       label: '骨架屏',
     },
