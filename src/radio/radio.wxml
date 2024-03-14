@@ -3,16 +3,16 @@
 <view
   style="{{_._style([style, customStyle])}}"
   class="{{_.cls(classPrefix, [_placement, ['block', block]])}} class {{prefix}}-class"
-  disabled="{{disabled}}"
+  disabled="{{_disabled}}"
   aria-role="radio"
   aria-checked="{{checked}}"
   aria-label="{{label + content}}"
-  aria-disabled="{{disabled}}"
+  aria-disabled="{{_disabled}}"
   tabindex="{{tabindex}}"
   mut-bind:tap="handleTap"
 >
   <view
-    class="{{_.cls(classPrefix + '__icon', [_placement, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
+    class="{{_.cls(classPrefix + '__icon', [_placement, ['checked', checked], ['disabled', _disabled]])}} {{prefix}}-class-icon"
   >
     <slot name="icon" wx:if="{{slotIcon}}" />
     <view wx:elif="{{customIcon}}" class="{{classPrefix}}__image">
@@ -26,11 +26,11 @@
       />
       <view
         wx:if="{{checked && icon == 'dot'}}"
-        class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
+        class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])}}"
       />
       <view
         wx:if="{{!checked && (icon == 'circle' || icon == 'dot')}}"
-        class="{{_.cls(classPrefix + '__icon-circle', [['disabled', disabled]])}}"
+        class="{{_.cls(classPrefix + '__icon-circle', [['disabled', _disabled]])}}"
       />
       <!-- line && unchecked 为空 需要展位元素 -->
       <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
@@ -39,7 +39,7 @@
 
   <view class="{{classPrefix}}__content" data-target="text" mut-bind:tap="handleTap">
     <view
-      class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
+      class="{{_.cls(classPrefix + '__title', [['disabled', _disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"
     >
       {{label}}
@@ -48,7 +48,7 @@
     </view>
 
     <view
-      class="{{_.cls(classPrefix + '__description', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-content "
+      class="{{_.cls(classPrefix + '__description', [['disabled', _disabled], ['checked', checked]])}} {{prefix}}-class-content "
       style="-webkit-line-clamp:{{maxContentRow}}"
       >{{content}}<slot name="content"
     /></view>
