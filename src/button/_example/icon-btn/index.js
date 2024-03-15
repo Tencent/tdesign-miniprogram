@@ -1,9 +1,3 @@
-Component({
-  properties: {
-    /** 是否为skyline */
-    skyline: {
-      type: Boolean,
-      value: false,
-    },
-  },
-});
+import SkylineBehaviors from '@behaviors/skyline.js';
+
+Component({ behaviors: [SkylineBehaviors] });
