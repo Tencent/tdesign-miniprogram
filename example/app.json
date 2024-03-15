@@ -123,6 +123,9 @@
     "navigationBarTitleText": "TDesign",
     "navigationBarTextStyle": "black"
   },
+  "resolveAlias": {
+    "@behaviors/*": "behaviors/*"
+  },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "rendererOptions": {
