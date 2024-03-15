@@ -6,6 +6,7 @@ isComponent: true
 ---
 
 <span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-96%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-81%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-94%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-81%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -24,11 +25,10 @@ isComponent: true
 
 {{ base }}
 
-
-
 > 在使用 pull-down-refresh 组件的页面，建议开启 `disableScroll: true`
 
 ## API
+
 ### PullDownRefresh Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
@@ -54,17 +54,22 @@ default-value | Boolean | undefined | 组件状态，值为 `true` 表示下拉�
 change | `(value: boolean)` | 下拉或收起时触发，用户手势往下滑动触发下拉状态，手势松开触发收起状态
 refresh | \- | 结束下拉时触发
 timeout | \- | 刷新超时触发
+dragstart | `(scrollTop: number, scrollLeft: number)` | 滑动开始事件
+dragging | `(scrollTop: number, scrollLeft: number)` | 滑动事件
+dragend | `(scrollTop: number, scrollLeft: number)` | 滑动结束事件
 
 ### PullDownRefresh 外部样式类
+
 类名 | 说明
--- | -- 
+-- | --
 t-class | 根节点样式类
 t-class-loading | 加载样式类
 t-class-text | 文本样式类
 t-class-indicator | 指示样式类
 
 ### CSS 变量
+
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
---td-pull-down-refresh-color | @font-gray-3 | - 
+--td-pull-down-refresh-color | @font-gray-3 | -

@@ -1,6 +1,7 @@
 :: BASE_DOC ::
 
 ## API
+
 ### PullDownRefresh Props
 
 name | type | default | description | required
@@ -27,10 +28,13 @@ name | params | description
 change | `(value: boolean)` | \-
 refresh | \- | \-
 timeout | \- | \-
-
+dragstart | `(scrollTop: number, scrollLeft: number)` | \-
+dragging | `(scrollTop: number, scrollLeft: number)` | \-
+dragend | `(scrollTop: number, scrollLeft: number)` | \-
 
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
---td-pull-down-refresh-color | @font-gray-3 | - 
+--td-pull-down-refresh-color | @font-gray-3 | -
