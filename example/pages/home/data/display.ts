@@ -82,6 +82,10 @@ const skylineDisplay = {
   icon: 'image',
   childArr: [
     {
+      name: 'CountDown',
+      label: '倒计时',
+    },
+    {
       name: 'Empty',
       label: '空状态',
     },

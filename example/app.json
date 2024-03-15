@@ -47,6 +47,7 @@
     "pages/grid/grid",
     "pages/upload/upload",
     "pages/count-down/count-down",
+    "pages/count-down/skyline/count-down",
     "pages/overlay/overlay",
     "pages/overlay/skyline/overlay",
     "pages/image/image",
