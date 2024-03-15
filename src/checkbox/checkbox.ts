@@ -80,16 +80,11 @@ export default class CheckBox extends SuperComponent {
 
   methods = {
     handleTap(e: WechatMiniprogram.TouchEvent) {
-      const { _disabled, readonly } = this.data;
-
-      if (_disabled || readonly) return;
-
+      const { _disabled, readonly, contentDisabled } = this.data;
       const { target } = e.currentTarget.dataset;
-      const { contentDisabled } = this.data;
 
-      if (target === 'text' && contentDisabled) {
-        return;
-      }
+      if (_disabled || readonly || (target === 'text' && contentDisabled)) return;
+
       const { value, label } = this.data;
       const checked = !this.data.checked;
       const parent = this.$parent;
