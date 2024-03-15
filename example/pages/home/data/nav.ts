@@ -37,4 +37,15 @@ const nav = {
   ],
 };
 
-export default nav;
+const skylineNav = {
+  name: ' 导航',
+  icon: 'view-module',
+  childArr: [
+    {
+      name: 'Navbar',
+      label: '导航栏',
+    },
+  ],
+};
+
+export { nav, skylineNav };

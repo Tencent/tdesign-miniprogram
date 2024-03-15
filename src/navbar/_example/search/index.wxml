@@ -1,4 +1,4 @@
-<t-navbar leftIcon="slot">
+<t-navbar capsule="{{false}}" leftIcon="slot">
   <view class="search-box" slot="left">
     <t-search shape="round" placeholder="搜索内容" />
   </view>
