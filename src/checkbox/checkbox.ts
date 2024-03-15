@@ -24,7 +24,7 @@ export default class CheckBox extends SuperComponent {
         const valueSet = new Set(value);
         const checkedFromParent = valueSet.has(this.data.value);
         const data: any = {
-          disabled: this.data.disabled == null ? disabled : this.data.disabled,
+          _disabled: this.data.disabled == null ? disabled : this.data.disabled,
         };
 
         if (borderless) {
@@ -62,6 +62,13 @@ export default class CheckBox extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    _disabled: false,
+  };
+
+  observers = {
+    disabled(v) {
+      this.setData({ _disabled: v });
+    },
   };
 
   controlledProps = [
@@ -73,9 +80,9 @@ export default class CheckBox extends SuperComponent {
 
   methods = {
     handleTap(e: WechatMiniprogram.TouchEvent) {
-      const { disabled, readonly } = this.data;
+      const { _disabled, readonly } = this.data;
 
-      if (disabled || readonly) return;
+      if (_disabled || readonly) return;
 
       const { target } = e.currentTarget.dataset;
       const { contentDisabled } = this.data;
@@ -92,6 +99,12 @@ export default class CheckBox extends SuperComponent {
       } else {
         this._trigger('change', { context: { value, label }, checked });
       }
+    },
+
+    setDisabled(disabled: Boolean) {
+      this.setData({
+        _disabled: this.data.disabled || disabled,
+      });
     },
   };
 }
