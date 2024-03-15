@@ -15,6 +15,7 @@
     "pages/collapse/collapse",
     "pages/input/input",
     "pages/badge/badge",
+    "pages/badge/skyline/badge",
     "pages/textarea/textarea",
     "pages/textarea/skyline/textarea",
     "pages/message/message",

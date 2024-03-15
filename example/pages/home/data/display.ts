@@ -82,6 +82,10 @@ const skylineDisplay = {
   icon: 'image',
   childArr: [
     {
+      name: 'Badge',
+      label: '徽标',
+    },
+    {
       name: 'CountDown',
       label: '倒计时',
     },
