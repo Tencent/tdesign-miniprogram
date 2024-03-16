@@ -22,6 +22,8 @@
   bindscrolltolower="onScrollToBottom"
   throttle="{{false}}"
 >
+  <slot name="header" />
+
   <view
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
     style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'px, 0);' : ''}}"
