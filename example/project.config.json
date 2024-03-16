@@ -21,10 +21,11 @@
     "enhance": false,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "showShadowRootInWxmlPanel": true
+    "showShadowRootInWxmlPanel": true,
+    "skylineRenderEnable": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.20.2",
+  "libVersion": "3.3.4",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {
@@ -137,12 +138,6 @@
         {
           "name": "divider",
           "pathName": "pages/divider/divider",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "skyline-divider",
-          "pathName": "pages/divider/skyline/divider",
           "query": "",
           "scene": null
         },
