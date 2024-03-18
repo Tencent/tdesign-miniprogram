@@ -11,6 +11,7 @@
     "pages/progress/progress",
     "pages/cascader/cascader",
     "pages/cell/cell",
+    "pages/cell/skyline/cell",
     "pages/cell-group/cell-group",
     "pages/collapse/collapse",
     "pages/input/input",
@@ -94,7 +95,7 @@
     },
     {
       "root": "pages/picker/",
-      "pages": ["picker"]
+      "pages": ["picker", "skyline/picker"]
     },
     {
       "root": "pages/rate/",

@@ -86,6 +86,10 @@ const skylineDisplay = {
       label: '徽标',
     },
     {
+      name: 'Cell',
+      label: '单元格',
+    },
+    {
       name: 'CountDown',
       label: '倒计时',
     },
