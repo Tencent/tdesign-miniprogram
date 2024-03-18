@@ -28,9 +28,9 @@ name | params | description
 change | `(value: boolean)` | \-
 refresh | \- | \-
 timeout | \- | \-
-dragstart | `(scrollTop: number, scrollLeft: number)` | \-
-dragging | `(scrollTop: number, scrollLeft: number)` | \-
-dragend | `(scrollTop: number, scrollLeft: number)` | \-
+dragstart | `(scrollTop: number, scrollLeft: number)` | `1.2.10`
+dragging | `(scrollTop: number, scrollLeft: number)` | `1.2.10`
+dragend | `(scrollTop: number, scrollLeft: number)` | `1.2.10`
 
 ### CSS Variables
 
