@@ -21,6 +21,7 @@
     "pages/textarea/skyline/textarea",
     "pages/message/message",
     "pages/toast/toast",
+    "pages/toast/skyline/toast",
     "pages/stepper/stepper",
     "pages/slider/slider",
     "pages/slider/skyline/slider",

@@ -69,6 +69,10 @@ const skylineUx = {
       name: 'Loading',
       label: '加载',
     },
+    {
+      name: 'Toast',
+      label: '轻提示',
+    },
   ],
 };
 export { ux, skylineUx };
