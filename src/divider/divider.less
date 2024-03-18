@@ -32,7 +32,8 @@
     &::before,
     &::after {
       border-top-width: 1px;
-      transform: translateY(25%) scaleY(0.5);
+      transform: scaleY(0.5);
+      transform-origin: bottom;
     }
 
     .@{prefix}-divider__content:not(:empty) {
@@ -48,7 +49,8 @@
     &::before,
     &::after {
       border-left-width: 1px;
-      transform: translateX(25%) scaleX(0.5);
+      transform: scaleX(0.5);
+      transform-origin: bottom;
     }
 
     &-center {
