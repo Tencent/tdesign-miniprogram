@@ -36,6 +36,7 @@
     "pages/popup/popup",
     "pages/popup/skyline/popup",
     "pages/steps/steps",
+    "pages/steps/skyline/steps",
     "pages/dropdown-menu/dropdown-menu",
     "pages/drawer/drawer",
     "pages/pull-down-refresh/pull-down-refresh",

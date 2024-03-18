@@ -45,6 +45,10 @@ const skylineNav = {
       name: 'Navbar',
       label: '导航栏',
     },
+    {
+      name: 'Steps',
+      label: '步骤条',
+    },
   ],
 };
 
