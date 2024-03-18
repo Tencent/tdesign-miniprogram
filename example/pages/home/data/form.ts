@@ -74,6 +74,10 @@ const skylineForm = {
   icon: 'bulletpoint',
   childArr: [
     {
+      name: 'Slider',
+      label: '滑动选择器',
+    },
+    {
       name: 'Textarea',
       label: '多行文本框',
     },

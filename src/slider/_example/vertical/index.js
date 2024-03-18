@@ -4,7 +4,8 @@ Component({
   },
 
   data: {
-    value: 35,
+    singlevalue: 35,
+    capsuleValue: 35,
     marks: {
       0: '0',
       20: '20',
@@ -16,9 +17,14 @@ Component({
   },
 
   methods: {
-    handleChange(e) {
+    handleSingleChange(e) {
       this.setData({
-        value: e.detail.value,
+        singlevalue: e.detail.value,
+      });
+    },
+    handleCapsuleChange(e) {
+      this.setData({
+        capsuleValue: e.detail.value,
       });
     },
   },
