@@ -6,6 +6,7 @@ isComponent: true
 ---
 
 <span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-96%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-81%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-94%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-81%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -24,15 +25,15 @@ isComponent: true
 
 {{ base }}
 
-
-
 > 在使用 pull-down-refresh 组件的页面，建议开启 `disableScroll: true`
 
 ## API
+
 ### PullDownRefresh Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+header | Slot | - | `1.2.10` | N
 enable-back-to-top | Boolean | true | `1.1.5`。iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向。自 2.27.3 版本开始，若非显式设置为 false，则在显示尺寸大于屏幕 90% 时自动开启 | N
 enable-passive | Boolean | false | `1.1.5`。开启 passive 特性，能优化一定的滚动性能 | N
 loading-bar-height | String / Number | 50 | 加载中下拉高度，如果值为数字则单位是：'px' | N
@@ -56,15 +57,17 @@ refresh | \- | 结束下拉时触发
 timeout | \- | 刷新超时触发
 
 ### PullDownRefresh 外部样式类
+
 类名 | 说明
--- | -- 
+-- | --
 t-class | 根节点样式类
 t-class-loading | 加载样式类
 t-class-text | 文本样式类
 t-class-indicator | 指示样式类
 
 ### CSS 变量
+
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
---td-pull-down-refresh-color | @font-gray-3 | - 
+--td-pull-down-refresh-color | @font-gray-3 | -
