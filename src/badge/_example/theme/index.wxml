@@ -26,9 +26,9 @@
   </t-badge>
 </view>
 
-<block wx:if="{{!skylineRender}}">
-  <view class="demo-desc" style="margin-bottom: 32rpx">角标</view>
-  <t-cell title="单行标题">
-    <t-badge count="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
-  </t-cell>
-</block>
+<!-- <block wx:if="{{!skylineRender}}"> -->
+<view class="demo-desc" style="margin-bottom: 32rpx">角标</view>
+<t-cell title="单行标题">
+  <t-badge count="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+</t-cell>
+<!-- </block> -->
