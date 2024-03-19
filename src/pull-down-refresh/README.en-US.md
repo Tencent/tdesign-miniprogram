@@ -6,6 +6,7 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
+header | Slot | - | `1.2.10` | N
 enable-back-to-top | Boolean | true | `1.1.5` | N
 enable-passive | Boolean | false | `1.1.5` | N
 external-classes | Array | - | `['t-class', 't-class-loading','t-class-text', 't-class-indicator']` | N
