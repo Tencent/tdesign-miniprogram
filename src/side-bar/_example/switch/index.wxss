@@ -26,6 +26,7 @@ page .round-image {
 .side-bar-wrapper .title {
   padding-left: 40rpx;
   margin-bottom: 8rpx;
+  color: var(--td-text-color-primary);
 }
 
 .side-bar-wrapper .image {

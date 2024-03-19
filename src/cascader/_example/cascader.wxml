@@ -1,3 +1,4 @@
+<t-navbar title="Cascader" leftArrow />
 <view class="demo">
   <view class="demo-title">Cascader 级联选择器</view>
   <view class="demo-desc">用于多层级数据的逐级选择。</view>

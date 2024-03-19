@@ -5,7 +5,7 @@
 @drawer-title-padding: var(--td-drawer-title-padding, 48rpx 32rpx 16rpx);
 @drawer-bg-color: var(--td-drawer-bg-color, @bg-color-container);
 @drawer-border-color: var(--td-drawer-border-color, @border-color);
-@drawer-title-color: var(--td-drawer-title-color, @font-gray-1);
+@drawer-title-color: var(--td-drawer-title-color, @text-color-primary);
 @drawer-icon-color: var(--td-drawer-title-color, @drawer-title-color);
 @drawer-item-padding: var(--td-drawer-item-padding, 32rpx);
 @drawer-item-height: var(--td-drawer-item-height, 48rpx);
@@ -29,6 +29,7 @@
     font-weight: 600;
     font-size: @drawer-title-font-size;
     padding: 48rpx 32rpx 16rpx;
+    color: @drawer-title-color;
   }
 
   &__sidebar {
@@ -47,7 +48,7 @@
 
       &-title {
         flex: 1;
-        color: var(--td-drawer-title-color);
+        color: @drawer-title-color;
       }
 
       &-icon {

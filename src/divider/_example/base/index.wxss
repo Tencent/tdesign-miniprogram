@@ -1,6 +1,6 @@
 .divider-demo__title {
   font-size: 28rpx;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--bg-color-demo-desc);
   padding: 16rpx 32rpx;
   line-height: 40rpx;
 }
@@ -9,6 +9,6 @@
   display: flex;
   align-items: center;
   font-size: 28rpx;
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--td-text-color-primary);
   padding-left: 32rpx;
 }

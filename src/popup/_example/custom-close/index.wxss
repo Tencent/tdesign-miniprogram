@@ -2,7 +2,7 @@
   position: relative;
   width: 240px;
   height: 240px;
-  background: #fff;
+  background: var(--td-bg-color-container);
   border-radius: 16rpx;
 }
 

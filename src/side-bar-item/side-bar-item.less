@@ -1,11 +1,11 @@
 @import '../common/style/index.less';
 
-@side-bar-color: var(--td-side-bar-color, @font-gray-1);
+@side-bar-color: var(--td-side-bar-color, @text-color-primary);
 @side-bar-font-size: var(--td-side-bar-font-size, 32rpx);
 @side-bar-item-height: var(--td-side-bar-item-height, 112rpx);
 @side-bar-item-line-height: var(--td-side-bar-item-line-height, 48rpx);
 @side-bar-bg-color: var(--td-side-bar-bg-color, @bg-color-secondarycontainer);
-@side-bar-disabled-color: var(--td-side-bar-disabled-color, @font-gray-4);
+@side-bar-disabled-color: var(--td-side-bar-disabled-color, @text-color-disabled);
 @side-bar-active-color: var(--td-side-bar-active-color, @brand-color);
 @side-bar-border-radius: var(--td-side-bar-border-radius, 18rpx);
 @side-bar-icon-size: var(--td-side-bar-icon-size, 40rpx);
@@ -42,7 +42,7 @@
     right: 0;
     width: 100%;
     height: calc(@side-bar-border-radius * 2);
-    background: #fff;
+    background: @bg-color-container;
     pointer-events: none;
 
     &::after {

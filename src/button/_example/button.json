@@ -1,6 +1,5 @@
 {
   "navigationBarTitleText": "Button",
-  "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "base": "./base",
     "size": "./size",

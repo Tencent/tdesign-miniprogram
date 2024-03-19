@@ -3,7 +3,7 @@
 }
 
 .placeholder {
-  color: rgba(0, 0, 0, 0.26);
+  color: var(--td-text-color-placeholder);
   line-height: 96rpx;
   height: 96rpx !important;
   display: flex;
@@ -16,11 +16,6 @@
   text-align: left;
   margin-top: 32rpx;
   border-radius: 8rpx;
-  background-color: #f3f3f3;
+  background-color: var(--td-bg-color-page);
   box-sizing: border-box;
-}
-
-.placeholder {
-  color: rgba(0, 0, 0, 0.4);
-  line-height: 96rpx;
 }

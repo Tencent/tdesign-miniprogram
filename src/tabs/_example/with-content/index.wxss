@@ -4,4 +4,5 @@
 
 .custom-panel {
   height: 120px;
+  color: var(--td-text-color-primary);
 }

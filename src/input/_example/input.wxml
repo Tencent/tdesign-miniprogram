@@ -1,3 +1,4 @@
+<t-navbar title="Input" leftArrow />
 <view class="input-example">
   <view class="demo-title">Input 输入框</view>
   <view class="demo-desc">用于单行文本信息输入。</view>

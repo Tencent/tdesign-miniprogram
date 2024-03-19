@@ -6,6 +6,7 @@
 @tree-item-height: var(--td-tree-item-height, 112rpx);
 @tree-item-font-size: var(--td-tree-item-font-size, 32rpx);
 @tree-colum-width: var(--td-tree-colum-width, 206rpx);
+@tree-colum-text-color: var(--td-tree-colum-text-color, @text-color-primary);
 
 .@{prefix}-tree-select {
   display: flex;
@@ -13,6 +14,7 @@
 
   &__column {
     width: @tree-colum-width;
+    color: @tree-colum-text-color;
 
     &--left {
       background: @tree-root-bg-color;

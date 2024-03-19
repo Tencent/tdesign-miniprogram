@@ -1,3 +1,4 @@
+<t-navbar title="TDesign UI" />
 <view class="main">
   <view class="title-wrap">
     <image class="title-icon" mode="aspectFit" src="/assets/TDesignLogo@2x.png" aria-label="TDesign Logo" />

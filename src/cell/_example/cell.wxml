@@ -1,3 +1,4 @@
+<t-navbar title="Cell" leftArrow />
 <view class="demo">
   <view class="demo-title">Cell 单元格</view>
   <view class="demo-desc">用于各个类别行的信息展示。</view>

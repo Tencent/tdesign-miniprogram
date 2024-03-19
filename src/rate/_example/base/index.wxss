@@ -1,12 +1,13 @@
 .demo-rate {
-  background-color: #fff;
+  background-color: var(--bg-color-demo);
+  color: var(--td-text-color-primary);
   height: 96rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 32rpx;
-  border-bottom: solid 1rpx #f0f0f0;
-  border-top: solid 1rpx #f0f0f0;
+  border-bottom: solid 1rpx var(--bg-color-demo-border);
+  border-top: solid 1rpx var(--bg-color-demo-border);
   margin-top: 32rpx;
   margin-bottom: 32rpx;
 }

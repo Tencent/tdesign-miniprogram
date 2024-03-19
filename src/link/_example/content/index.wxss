@@ -3,5 +3,5 @@
   align-items: center;
   justify-content: space-evenly;
   height: 96rpx;
-  background-color: #fff;
+  background-color: var(--bg-color-demo);
 }

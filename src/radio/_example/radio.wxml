@@ -1,3 +1,4 @@
+<t-navbar title="Radio" leftArrow />
 <view class="demo" hover-class="none" hover-stop-propagation="false">
   <view class="demo-title">Radio 单选框</view>
   <view class="demo-desc">用于在预设的一组选项中执行单项选择，并呈现选择结果。</view>

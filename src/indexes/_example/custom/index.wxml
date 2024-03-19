@@ -1,3 +1,4 @@
+<t-navbar title="TDesign" leftArrow />
 <t-indexes bind:change="onChange" index-list="{{indexList}}" sticky-offset="{{8}}" t-class="wrapper">
   <block wx:for="{{list}}" wx:key="index">
     <t-indexes-anchor index="{{item.index}}">

@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@footer-text-color: var(--td-footer-text-color, @font-gray-3);
+@footer-text-color: var(--td-footer-text-color, @text-color-placeholder);
 @footer-text-font-size: var(--td-footer-text-font-size, @font-size-s);
 @footer-text-line-height: var(--td-footer-text-line-height, 40rpx);
 @footer-text-margin-top: var(--td-footer-text-margin-top, 8rpx);
@@ -9,7 +9,7 @@
 @footer-link-line-height: var(--td-footer-link-line-height, 40rpx);
 
 @footer-link-dividing-line-padding: var(--td-footer-link-dividing-line-padding, @spacer-1);
-@footer-link-dividing-line-color: var(--td-footer-link-dividing-line-color, @font-gray-3);
+@footer-link-dividing-line-color: var(--td-footer-link-dividing-line-color, @text-color-placeholder);
 @footer-logo-icon-width: var(--td-footer-logo-icon-width, 48rpx);
 @footer-logo-icon-height: var(--td-footer-logo-icon-height, 48rpx);
 @footer-logo-icon-margin-right: var(--td-footer-logo-icon-margin-right, @spacer);
@@ -66,6 +66,7 @@
   }
 
   &__title {
+    color: @text-color-primary;
     font-weight: bold;
     font-size: @footer-logo-title-font-size; // 图标配置，标题文本大小
     line-height: @footer-logo-title-line-height; // 图标配置，标题文本行高

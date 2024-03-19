@@ -1,3 +1,4 @@
+<t-navbar title="TDesign" leftArrow />
 <t-indexes bind:select="onSelect" index-list="{{indexList}}">
   <block wx:for="{{list}}" wx:key="index">
     <t-indexes-anchor index="{{item.index}}" />

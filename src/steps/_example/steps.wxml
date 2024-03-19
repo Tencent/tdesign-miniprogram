@@ -1,3 +1,4 @@
+<t-navbar title="Steps" leftArrow />
 <view class="demo">
   <view class="demo-title">Steps 步骤条</view>
   <view class="demo-desc">用于任务步骤展示或任务进度展示。</view>

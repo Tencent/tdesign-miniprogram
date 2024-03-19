@@ -24,7 +24,7 @@
   font-size: 28px;
   line-height: 36px;
   padding: 8rpx 32rpx 16rpx;
-  background-color: #fff;
+  background-color: var(--bg-color-demo);
   font-weight: 600;
-  color: rgba(0, 0, 0 .9);
+  color: var(--td-text-color-primary);
 }
