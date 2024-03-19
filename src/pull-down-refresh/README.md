@@ -55,6 +55,9 @@ default-value | Boolean | undefined | 组件状态，值为 `true` 表示下拉�
 change | `(value: boolean)` | 下拉或收起时触发，用户手势往下滑动触发下拉状态，手势松开触发收起状态
 refresh | \- | 结束下拉时触发
 timeout | \- | 刷新超时触发
+dragstart | `(scrollTop: number, scrollLeft: number)` | `1.2.10`。滑动开始事件
+dragging | `(scrollTop: number, scrollLeft: number)` | `1.2.10`。滑动事件
+dragend | `(scrollTop: number, scrollLeft: number)` | `1.2.10`。滑动结束事件
 
 ### PullDownRefresh 外部样式类
 
