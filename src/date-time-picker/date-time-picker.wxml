@@ -23,4 +23,5 @@
     options="{{item}}"
     index="index"
   />
+  <slot slot="footer" name="footer" />
 </t-picker>

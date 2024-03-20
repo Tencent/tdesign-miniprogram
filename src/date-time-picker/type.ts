@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { PopupProps } from '../popup/index';
+
 export interface TdDateTimePickerProps {
   /**
    * 取消按钮文字
@@ -18,6 +20,14 @@ export interface TdDateTimePickerProps {
    * @default ''
    */
   confirmBtn?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   *  组件国际化语言，目前支持: 简体中文(zh)、(tc)、英文(en)、日语(ja)、韩语(ko)、俄语(ru)等六种语言
+   * @default zh
+   */
+  customLocale?: {
     type: StringConstructor;
     value?: string;
   };
@@ -58,6 +68,14 @@ export interface TdDateTimePickerProps {
   mode?: {
     type: null;
     value?: DateTimePickerMode;
+  };
+  /**
+   * 透传 `Popup` 组件全部属性
+   * @default {}
+   */
+  popupProps?: {
+    type: ObjectConstructor;
+    value?: PopupProps;
   };
   /**
    * 【开发中】是否在日期旁边显示周几（如周一，周二，周日等）
@@ -110,24 +128,6 @@ export interface TdDateTimePickerProps {
   visible?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-
-  /**
-   * 透传给picker内部的pop组件
-   * @default {}
-   */
-  popupProps: {
-    type: Object;
-    value: {};
-  };
-
-  /**
-   * 组件国际化支持
-   * @default zh
-   */
-  customLocale?: {
-    type: StringConstructor;
-    value: String;
   };
 }
 

@@ -30,6 +30,11 @@ const props: TdPickerProps = {
   keys: {
     type: Object,
   },
+  /** 透传 `Popup` 组件全部属性 */
+  popupProps: {
+    type: Object,
+    value: {},
+  },
   /** 标题 */
   title: {
     type: String,
@@ -48,11 +53,6 @@ const props: TdPickerProps = {
   visible: {
     type: Boolean,
     value: false,
-  },
-  /** popupProps透传 */
-  popupProps: {
-    type: Object,
-    value: {},
   },
 };
 
