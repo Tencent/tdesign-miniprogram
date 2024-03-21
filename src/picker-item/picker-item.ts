@@ -60,6 +60,7 @@ export default class PickerItem extends SuperComponent {
     onTouchStart(event) {
       this.StartY = event.touches[0].clientY;
       this.StartOffset = this.data.offset;
+      this.PrewIndex = this.data.curIndex; // 上一次Index，用于控制齿轮拨动效果
       this.setData({ duration: 0 });
     },
 
@@ -69,9 +70,28 @@ export default class PickerItem extends SuperComponent {
       // touch偏移增量
       const touchDeltaY = event.touches[0].clientY - StartY;
       const deltaY = this.calculateViewDeltaY(touchDeltaY);
+      const offset = range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0);
+
+      // 产生拨动齿轮的震动
+      if (wx.vibrateShort) {
+        // 当前在第几个
+        const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
+
+        // 产生滚动 && 差不多到中间位置时
+        if (this.PrewIndex !== index && Math.abs(-offset / this.itemHeight - index) < 0.1) {
+          let _count = Math.abs(this.PrewIndex - index);
+          // 如果一次性跨多了item
+          while (_count > 0) {
+            wx.vibrateShort({ type: 'light' }); // 执行震动效果
+            _count -= 1;
+          }
+
+          this.PrewIndex = index;
+        }
+      }
 
       this.setData({
-        offset: range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0),
+        offset: offset,
         duration: DefaultDuration,
       });
     },
@@ -80,11 +100,17 @@ export default class PickerItem extends SuperComponent {
       const { offset, labelAlias, valueAlias, columnIndex } = this.data;
       const { options } = this.properties;
 
+      // 调整偏移量
+      const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
+
+      // 执行震动
+      if (index !== this.PrewIndex) {
+        if (wx.vibrateShort) wx.vibrateShort({ type: 'light' });
+      }
+
       if (offset === this.StartOffset) {
         return;
       }
-      // 调整偏移量
-      const index = range(Math.round(-offset / this.itemHeight), 0, this.getCount() - 1);
       this.setData({
         curIndex: index,
         offset: -index * this.itemHeight,
