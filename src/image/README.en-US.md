@@ -1,10 +1,12 @@
 :: BASE_DOC ::
 
 ## API
+
 ### Image Props
 
 name | type | default | description | required
 -- | -- | -- | -- | --
+t-id | String | - | `1.2.10`. image tag id | N
 error | String / Slot | 'default' | \- | N
 external-classes | Array | - | `['t-class', 't-class-load']` | N
 height | String / Number | - | \- | N
@@ -24,12 +26,12 @@ name | params | description
 error | \- | \-
 load | \- | \-
 
-
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
---td-image-color | @font-gray-3 | - 
---td-image-loading-bg-color | @bg-color-secondarycontainer | - 
---td-image-loading-color | @font-gray-3 | - 
---td-image-round-radius | @radius-default | - 
+--td-image-color | @font-gray-3 | -
+--td-image-loading-bg-color | @bg-color-secondarycontainer | -
+--td-image-loading-color | @font-gray-3 | -
+--td-image-round-radius | @radius-default | -
