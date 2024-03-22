@@ -71,6 +71,7 @@
     "pages/result/skyline/result",
     "pages/result/result-page",
     "pages/link/link",
+    "pages/link/skyline/link",
     "pages/col/col",
     "pages/col/skyline/col"
   ],
