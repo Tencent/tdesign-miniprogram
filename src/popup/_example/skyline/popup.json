@@ -5,8 +5,6 @@
   "disableScroll": true,
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "base": "../base/index",
-    "with-title": "../with-title/index",
-    "custom-close": "../custom-close/index"
+    "popup": "../popup"
   }
 }
