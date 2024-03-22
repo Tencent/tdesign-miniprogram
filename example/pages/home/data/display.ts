@@ -98,6 +98,10 @@ const skylineDisplay = {
       label: '空状态',
     },
     {
+      name: 'Footer',
+      label: '页脚',
+    },
+    {
       name: 'Image',
       label: '图片',
     },
