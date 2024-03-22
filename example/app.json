@@ -9,6 +9,7 @@
     "pages/loading/loading",
     "pages/loading/skyline/loading",
     "pages/progress/progress",
+    "pages/progress/skyline/progress",
     "pages/cascader/cascader",
     "pages/cell/cell",
     "pages/cell/skyline/cell",
