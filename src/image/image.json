@@ -1,5 +1,6 @@
 {
   "component": true,
+  "addGlobalClass": true,
   "usingComponents": {
     "t-loading": "../loading/loading",
     "t-icon": "../icon/icon"
