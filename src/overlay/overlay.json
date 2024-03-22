@@ -1,3 +1,4 @@
 {
-  "component": true
+  "component": true,
+  "addGlobalClass": true
 }
