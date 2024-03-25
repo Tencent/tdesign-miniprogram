@@ -47,6 +47,7 @@
     "pages/skeleton/skeleton",
     "pages/skeleton/skyline/skeleton",
     "pages/footer/footer",
+    "pages/footer/skyline/footer",
     "pages/divider/divider",
     "pages/divider/skyline/divider",
     "pages/empty/empty",
