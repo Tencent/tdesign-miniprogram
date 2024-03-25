@@ -59,6 +59,10 @@ const skylineBase = {
       label: '分割线',
     },
     {
+      name: 'Fab',
+      label: '悬浮按钮',
+    },
+    {
       name: 'Icon',
       label: '图标',
     },
