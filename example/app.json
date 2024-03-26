@@ -33,6 +33,7 @@
     "pages/tag/tag",
     "pages/tag/skyline/tag",
     "pages/checkbox/checkbox",
+    "pages/checkbox/skyline/checkbox",
     "pages/gulp-error/index",
     "pages/fab/fab",
     "pages/fab/skyline/fab",
