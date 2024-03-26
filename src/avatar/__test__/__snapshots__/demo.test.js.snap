@@ -35,7 +35,7 @@ exports[`Avatar Avatar badge-avatar demo works fine 1`] = `
       Object {
         "dot": true,
         "offset": Array [
-          4,
+          0,
           4,
         ],
       }
@@ -48,7 +48,7 @@ exports[`Avatar Avatar badge-avatar demo works fine 1`] = `
       Object {
         "count": 8,
         "offset": Array [
-          6,
+          -6,
           6,
         ],
       }
@@ -63,7 +63,7 @@ exports[`Avatar Avatar badge-avatar demo works fine 1`] = `
       Object {
         "count": 12,
         "offset": Array [
-          6,
+          -6,
           6,
         ],
       }
