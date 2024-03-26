@@ -6,6 +6,14 @@
 
 export interface TdImageProps {
   /**
+   * 自定义组件id
+   * @default null
+   */
+  tId?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 自定义组件样式
    * @default ''
    */

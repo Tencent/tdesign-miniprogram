@@ -39,12 +39,13 @@ isComponent: true
   </p>
 </details>
 
-
 ## API
+
 ### Image Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
 -- | -- | -- | -- | --
+t-id | String | - | `1.2.10`。图片标签id | N
 error | String / Slot | 'default' | 加载失败时显示的内容。值为 `default` 则表示使用默认加载失败风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `error`；值为其他则表示普通文本内容，如“加载失败” | N
 height | String / Number | - | 高度，默认单位为`px` | N
 lazy | Boolean | false | 是否开启图片懒加载 | N
@@ -64,16 +65,18 @@ error | \- | 图片加载失败时触发
 load | \- | 图片加载完成时触发
 
 ### Image 外部样式类
+
 类名 | 说明
--- | -- 
+-- | --
 t-class | 根节点样式类
 t-class-load | 加载样式类
 
 ### CSS 变量
+
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
---td-image-color | @font-gray-3 | - 
---td-image-loading-bg-color | @bg-color-secondarycontainer | - 
---td-image-loading-color | @font-gray-3 | - 
---td-image-round-radius | @radius-default | - 
+--td-image-color | @font-gray-3 | -
+--td-image-loading-bg-color | @bg-color-secondarycontainer | -
+--td-image-loading-color | @font-gray-3 | -
+--td-image-round-radius | @radius-default | -
