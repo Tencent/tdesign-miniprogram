@@ -86,6 +86,10 @@ const skylineForm = {
       label: '选择器',
     },
     {
+      name: 'Radio',
+      label: '单选框',
+    },
+    {
       name: 'Slider',
       label: '滑动选择器',
     },

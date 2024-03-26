@@ -28,6 +28,7 @@
     "pages/slider/slider",
     "pages/slider/skyline/slider",
     "pages/radio/radio",
+    "pages/radio/skyline/radio",
     "pages/switch/switch",
     "pages/sticky/sticky",
     "pages/tag/tag",
