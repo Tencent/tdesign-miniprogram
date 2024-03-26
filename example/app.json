@@ -96,7 +96,7 @@
     },
     {
       "root": "pages/dialog/",
-      "pages": ["dialog"]
+      "pages": ["dialog", "skyline/dialog"]
     },
     {
       "root": "pages/picker/",
