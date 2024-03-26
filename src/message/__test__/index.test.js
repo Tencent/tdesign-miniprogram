@@ -180,4 +180,43 @@ describe('message', () => {
       Message.hide();
     });
   });
+
+  describe('multiple', () => {
+    it(': message-count-gap', async () => {
+      const id = simulate.load({
+        template: `<t-message id="t-message" ></t-message>`,
+        usingComponents: {
+          't-message': message,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $message = comp.querySelector('#t-message');
+
+      mockInstance.mockImplementation(() => $message.instance);
+      Message.hide();
+      const showMessageFn = async (i) => {
+        Message.info({
+          context: $message.instance,
+          offset: [20, 32],
+          content: `这是第${i}条消息通知`,
+          duration: -1,
+          gap: '16',
+        });
+      };
+      showMessageFn('1');
+      await simulate.sleep(550);
+      showMessageFn('2');
+      await simulate.sleep(550);
+      showMessageFn('3');
+      await simulate.sleep(550);
+      const $messageItems = comp.querySelectorAll('#t-message >>> .t-message');
+      expect($messageItems.length).toBe(3);
+      if ($messageItems.length === 3) {
+        const top = 20 + (46 + 16) * 2;
+        expect($messageItems[2].dom.getAttribute('style').includes(`top:${top}px;`)).toBeTruthy();
+      }
+    });
+  });
 });

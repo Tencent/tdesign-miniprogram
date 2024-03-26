@@ -1,4 +1,4 @@
-@import '../common/style/index.less';
+@import '../../common/style/index.less';
 
 @message-height: 96rpx;
 @message-horizontal-padding: 32rpx;
@@ -26,6 +26,7 @@
   top: 0;
   left: 0;
   right: 0;
+  transition: opacity 0.3s, transform 0.4s, top 0.4s;
   display: flex;
   justify-content: @message-align;
   height: @message-height;
@@ -89,5 +90,9 @@
   &__link {
     flex: 0 0 auto;
     margin-left: @spacer;
+  }
+  &__fade {
+    opacity: 0;
+    transform: translateY(-100%);
   }
 }
