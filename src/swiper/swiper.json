@@ -1,5 +1,6 @@
 {
   "component": true,
+  "addGlobalClass": true,
   "usingComponents": {
     "t-swiper-nav": "../swiper-nav/swiper-nav",
     "t-image": "../image/image"

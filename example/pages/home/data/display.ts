@@ -117,6 +117,10 @@ const skylineDisplay = {
       name: 'Skeleton',
       label: '骨架屏',
     },
+    {
+      name: 'Swiper',
+      label: '轮播图',
+    },
     // {
     //   name: 'Tag',
     //   label: '标签',

@@ -112,7 +112,7 @@
     },
     {
       "root": "pages/swiper/",
-      "pages": ["swiper"]
+      "pages": ["swiper", "skyline/swiper"]
     },
     {
       "root": "pages/swipe-cell/",
