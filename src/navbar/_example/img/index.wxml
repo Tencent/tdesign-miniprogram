@@ -1,4 +1,4 @@
-<t-navbar capsule="{{false}}">
+<t-navbar t-class-placeholder="t-navbar-placeholder" t-class-content="t-navbar-content" capsule="{{false}}">
   <view slot="left">
     <t-image t-class="custom-image" src="{{image}}" aria-label="导航栏图片" />
   </view>

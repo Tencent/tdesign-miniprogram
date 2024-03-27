@@ -3,8 +3,8 @@
   class="{{_.cls(classPrefix, [['fixed', fixed]])}} {{visibleClass}} class {{prefix}}-class"
   style="{{_._style([boxStyle, style, customStyle])}}"
 >
-  <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder" />
-  <view class="{{classPrefix}}__content">
+  <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder {{prefix}}-class-placeholder" />
+  <view class="{{classPrefix}}__content {{prefix}}-class-content">
     <view class="{{classPrefix}}__left {{prefix}}-class-left">
       <view wx:if="{{leftArrow}}" class="{{classPrefix}}__btn" bind:tap="goBack" aria-role="button" aria-label="返回">
         <t-icon name="chevron-left" class="{{classPrefix}}__left-arrow" />
