@@ -1,7 +1,7 @@
 @import '../common/style/index.less';
 
 @badge-text-color: var(--td-badge-text-color, @font-white-1);
-@content-text-color: var(--td-content-text-color, @text-color-primary);
+@badge-content-text-color: var(--td-badge-content-text-color, @text-color-primary);
 @badge-color: var(--td-badge-bg-color, @error-color);
 @badge-font-size: var(--td-badge-font-size, @font-size-xs);
 @badge-basic-height: var(--td-badge-basic-height, 32rpx);
@@ -114,6 +114,6 @@
   &__content-text {
     display: block;
     line-height: 48rpx;
-    color: @content-text-color;
+    color: @badge-content-text-color;
   }
 }

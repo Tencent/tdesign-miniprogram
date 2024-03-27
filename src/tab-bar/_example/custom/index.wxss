@@ -5,9 +5,3 @@
   --td-tab-bar-item-color: #bbb;
   --td-tab-bar-item-active-color: #333;
 }
-
-@media (prefers-color-scheme: dark) {
-  .wrapper {
-    --td-tab-bar-color: rgba(0, 0, 0, .9)
-  }
-}
