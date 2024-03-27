@@ -5,13 +5,13 @@
   class="{{_.cls(classPrefix, [placement, theme, ['checked', checked], ['block', block]])}} class {{prefix}}-class"
   aria-role="checkbox"
   aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
-  aria-disabled="{{disabled ? true : false}}"
+  aria-disabled="{{_disabled ? true : false}}"
   mut-bind:tap="handleTap"
   tabindex="{{tabindex}}"
 >
   <view
     wx:if="{{theme == 'default'}}"
-    class="{{_.cls(classPrefix + '__icon', [placement, ['checked', checked], ['disabled', disabled]])}} {{prefix}}-class-icon"
+    class="{{_.cls(classPrefix + '__icon', [placement, ['checked', checked], ['disabled', _disabled]])}} {{prefix}}-class-icon"
   >
     <slot name="icon" wx:if="{{icon === 'slot'}}" />
     <view wx:elif="{{_.isArray(icon)}}" class="{{classPrefix}}__icon">
@@ -34,14 +34,14 @@
       />
       <view
         wx:elif="{{!checked && (icon == 'circle' || icon == 'rectangle')}}"
-        class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', disabled]])}}"
+        class="{{_.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])}}"
       />
       <view wx:if="{{!checked && icon == 'line'}}" class="placeholder"></view>
     </block>
   </view>
   <view class="{{classPrefix}}__content" data-target="text" mut-bind:tap="handleTap">
     <view
-      class="{{_.cls(classPrefix + '__title', [['disabled', disabled], ['checked', checked]])}} {{prefix}}-class-label"
+      class="{{_.cls(classPrefix + '__title', [['disabled', _disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"
     >
       {{label}}
@@ -49,7 +49,7 @@
       <slot name="label" />
     </view>
     <view
-      class="{{_.cls(classPrefix + '__description', [['disabled', disabled]])}} {{prefix}}-class-content "
+      class="{{_.cls(classPrefix + '__description', [['disabled', _disabled]])}} {{prefix}}-class-content "
       style="-webkit-line-clamp:{{maxContentRow}}"
       >{{content}}<slot name="content"
     /></view>
