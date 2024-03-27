@@ -1,5 +1,6 @@
 {
   "component": true,
+  "addGlobalClass": true,
   "usingComponents": {
     "t-icon": "../icon/icon"
   }

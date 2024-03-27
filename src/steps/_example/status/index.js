@@ -1,8 +1,4 @@
 Component({
-  options: {
-    styleIsolation: 'apply-shared',
-  },
-
   data: {
     first: 1,
     second: 1,

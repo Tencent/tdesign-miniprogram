@@ -18,9 +18,9 @@
   left: 0;
   top: 0;
   width: 0;
-  border: 14px solid #0052d9;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
+  border-width: 28px 28px 28px 0;
+  border-style: solid;
+  border-color: #0052d9 transparent transparent transparent;
 }
 
 .card__icon {
@@ -44,6 +44,10 @@
   margin: 0;
 }
 
-.horizontal-box .card + .card {
+.horizontal-box .card {
   margin-left: 24rpx;
+}
+
+.horizontal-box .card:first-child {
+  margin-left: 0;
 }

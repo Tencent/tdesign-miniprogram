@@ -9,6 +9,7 @@
     "pages/loading/loading",
     "pages/loading/skyline/loading",
     "pages/progress/progress",
+    "pages/progress/skyline/progress",
     "pages/cascader/cascader",
     "pages/cell/cell",
     "pages/cell/skyline/cell",
@@ -27,13 +28,16 @@
     "pages/slider/slider",
     "pages/slider/skyline/slider",
     "pages/radio/radio",
+    "pages/radio/skyline/radio",
     "pages/switch/switch",
     "pages/sticky/sticky",
     "pages/tag/tag",
     "pages/tag/skyline/tag",
     "pages/checkbox/checkbox",
+    "pages/checkbox/skyline/checkbox",
     "pages/gulp-error/index",
     "pages/fab/fab",
+    "pages/fab/skyline/fab",
     "pages/tab-bar/tab-bar",
     "pages/transition/transition",
     "pages/popup/popup",
@@ -46,6 +50,7 @@
     "pages/skeleton/skeleton",
     "pages/skeleton/skyline/skeleton",
     "pages/footer/footer",
+    "pages/footer/skyline/footer",
     "pages/divider/divider",
     "pages/divider/skyline/divider",
     "pages/empty/empty",
@@ -71,6 +76,7 @@
     "pages/result/skyline/result",
     "pages/result/result-page",
     "pages/link/link",
+    "pages/link/skyline/link",
     "pages/col/col",
     "pages/col/skyline/col"
   ],
@@ -93,7 +99,7 @@
     },
     {
       "root": "pages/dialog/",
-      "pages": ["dialog"]
+      "pages": ["dialog", "skyline/dialog"]
     },
     {
       "root": "pages/picker/",

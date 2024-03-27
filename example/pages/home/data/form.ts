@@ -73,6 +73,10 @@ const skylineForm = {
   name: '输入',
   icon: 'bulletpoint',
   childArr: [
+    {
+      name: 'Checkbox',
+      label: '多选框',
+    },
     // {
     //   name: 'Input',
     //   label: '输入框',
@@ -80,6 +84,10 @@ const skylineForm = {
     {
       name: 'Picker',
       label: '选择器',
+    },
+    {
+      name: 'Radio',
+      label: '单选框',
     },
     {
       name: 'Slider',
