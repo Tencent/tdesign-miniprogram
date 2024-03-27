@@ -59,6 +59,7 @@ export default class Search extends SuperComponent {
   handleClear() {
     this.setData({ value: '' });
     this.triggerEvent('clear', { value: '' });
+    this.triggerEvent('change', { value: '' });
   }
 
   onConfirm(e) {
@@ -68,5 +69,15 @@ export default class Search extends SuperComponent {
 
   onActionClick() {
     this.triggerEvent('action-click');
+  }
+  
+  selectResultItem(e) {
+    const { index } = e.currentTarget.dataset
+    const item = this.properties.resultList[index]
+    this.setData({
+      value: item
+    })
+    this.triggerEvent('change', { value: item });
+    this.triggerEvent('selectresult', { index, item })
   }
 }
