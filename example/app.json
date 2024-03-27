@@ -51,6 +51,7 @@
     "pages/empty/empty",
     "pages/empty/skyline/empty",
     "pages/back-top/back-top",
+    "pages/back-top/skyline/back-top",
     "pages/grid/grid",
     "pages/upload/upload",
     "pages/count-down/count-down",

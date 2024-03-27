@@ -63,7 +63,9 @@
   &--half-round-dark {
     width: @back-top-half-round-width;
     height: @back-top-half-round-height;
-    border-radius: @back-top-half-round-border-radius 0 0 @back-top-half-round-border-radius;
+    border-radius: 0;
+    border-top-left-radius: @back-top-half-round-border-radius;
+    border-bottom-left-radius: @back-top-half-round-border-radius;
     flex-direction: row;
     right: 0;
   }
@@ -78,7 +80,7 @@
 
   &__text--half-round,
   &__text--half-round-dark {
-    width: 2em;
+    width: 40rpx;
   }
 
   &__icon:not(:empty) + &__text--half-round,

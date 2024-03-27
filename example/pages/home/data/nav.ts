@@ -42,6 +42,10 @@ const skylineNav = {
   icon: 'view-module',
   childArr: [
     {
+      name: 'BackTop',
+      label: '返回顶部',
+    },
+    {
       name: 'Navbar',
       label: '导航栏',
     },
