@@ -12,4 +12,13 @@
     <block wx:if="{{_.isArray(content) && content.length == 2}}">{{checked ? content[0] : content[1]}}</block>
     <block wx:else>{{content}}</block>
   </view>
+  <t-icon
+    wx:if="{{ closable }}"
+    class="{{classPrefix}}__icon-close"
+    t-class="{{prefix}}-icon"
+    catch:tap="onClose"
+    name="close"
+    aria-role="button"
+    aria-label="关闭"
+  />
 </view>

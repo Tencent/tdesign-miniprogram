@@ -49,7 +49,7 @@ export default class CheckTag extends SuperComponent {
   methods = {
     setClass() {
       const { classPrefix } = this.data;
-      const { size, variant, disabled, checked } = this.properties;
+      const { size, variant, disabled, checked, shape } = this.properties;
       const tagClass = [
         classPrefix,
         `${classPrefix}--checkable`,
@@ -58,6 +58,7 @@ export default class CheckTag extends SuperComponent {
         `${classPrefix}--${checked ? 'primary' : 'default'}`,
         `${classPrefix}--${size}`,
         `${classPrefix}--${variant}`,
+        `${classPrefix}--${shape}`,
       ];
       const className = classNames(tagClass);
       this.setData({
@@ -71,6 +72,11 @@ export default class CheckTag extends SuperComponent {
 
       this._trigger('click');
       this._trigger('change', { checked: !checked });
+    },
+
+    onClose(e: WechatMiniprogram.BaseEvent) {
+      if (this.data.disabled) return;
+      this._trigger('close', e);
     },
   };
 }

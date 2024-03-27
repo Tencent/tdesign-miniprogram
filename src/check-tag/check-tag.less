@@ -43,6 +43,8 @@
 @tag-extra-large-height: var(--td-tag-extra-large-height, 80rpx);
 
 @tag-square-border-radius: var(--td-tag-square-border-radius, 8rpx);
+@tag-round-border-radius: var(--td-tag-round-border-radius, 999px);
+@tag-mark-border-radius: var(--td-tag-mark-border-radius, @tag-round-border-radius);
 
 .genVariant(@variant) {
   @themes: default, primary, success, warning, danger;
@@ -129,6 +131,20 @@
     .@{prefix}-icon,
     .@{prefix}-icon-close {
       font-size: @tag-extra-large-icon-size;
+    }
+  }
+
+  &.@{prefix}-tag {
+    &--square {
+      border-radius: @tag-square-border-radius;
+    }
+
+    &--round {
+      border-radius: @tag-round-border-radius;
+    }
+
+    &--mark {
+      border-radius: 0 @tag-mark-border-radius @tag-mark-border-radius 0;
     }
   }
 
