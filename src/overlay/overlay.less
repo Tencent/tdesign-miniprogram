@@ -11,7 +11,9 @@
   width: 100%;
   bottom: 0;
   background-color: @overlay-bg-color;
-  transition: opacity @overlay-transition-duration ease;
+  transition-property: opacity;
+  transition-duration: @overlay-transition-duration;
+  transition-timing-function: ease;
 }
 
 .t-fade-enter {

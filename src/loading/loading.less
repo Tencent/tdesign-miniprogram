@@ -43,7 +43,7 @@
           width: 5rpx;
           height: 25%;
           margin: 0 auto;
-          background-color: currentColor;
+          background-color: @loading-color;
           border-radius: 40%;
           content: ' ';
         }
@@ -79,7 +79,7 @@
         width: 20%;
         height: 20%;
         border-radius: 50%;
-        background-color: currentColor;
+        background-color: @loading-color;
         animation-duration: 1.8s;
         animation-name: dotting;
         animation-timing-function: linear;
@@ -148,7 +148,7 @@
 }
 
 .generate(@n, @i: 1) when (@i =< @n) {
-  .@{loading}__dot:nth-of-type(@{i}) {
+  .@{loading}__dot-@{i} {
     transform: rotate(@i * 30deg);
     opacity: (1 / 12) * (@i - 1);
   }

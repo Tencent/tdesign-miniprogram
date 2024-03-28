@@ -52,7 +52,8 @@
   confirm-btn="{{ confirmBtn }}"
   bind:confirm="closeDialog"
 >
-  <scroll-view slot="content" scroll-y class="long-content">
+  <!-- 适配skyline，增加type="list" -->
+  <scroll-view slot="content" type="list" scroll-y class="long-content">
     <view class="content-container"
       >这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
       这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案

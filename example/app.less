@@ -4,6 +4,17 @@ page {
   background: #f6f6f6; // 和设计师确认过，统一改成这个颜色
 }
 
+.skyline {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .scroll-view {
+    flex: 1;
+    height: 0;
+  }
+}
+
 .demo {
   padding-bottom: 56rpx;
   // padding-bottom: env(safe-area-inset-bottom, 28px); 小程序真机渲染有bug

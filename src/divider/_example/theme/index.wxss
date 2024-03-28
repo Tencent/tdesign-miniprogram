@@ -8,3 +8,7 @@
 .demo-5 {
   margin: 0 32rpx;
 }
+
+.skyline-content {
+  margin: 0 24rpx;
+}

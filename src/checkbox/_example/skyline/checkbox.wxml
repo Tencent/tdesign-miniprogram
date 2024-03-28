@@ -1,0 +1,6 @@
+<view class="skyline">
+  <t-navbar title="Checkbox" left-arrow capsule="{{false}}" />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <checkbox-demo />
+  </scroll-view>
+</view>

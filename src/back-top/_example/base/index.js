@@ -8,7 +8,7 @@ Component({
   },
   methods: {
     onToTop(e) {
-      console.log('backToTop', e);
+      this.triggerEvent('to-top', e);
     },
   },
 });

@@ -2,6 +2,7 @@
   <text class="textarea-example__label">标签文字</text>
   <t-textarea
     t-class="external-class"
+    t-class-indicator="{{skylineRender?'skyline-indicator':''}}"
     placeholder="请输入文字"
     bordered
     maxlength="100"

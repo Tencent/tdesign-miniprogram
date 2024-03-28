@@ -1,0 +1,6 @@
+<view class="skyline">
+  <t-navbar title="CountDown" left-arrow capsule="{{false}}" />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <count-down />
+  </scroll-view>
+</view>

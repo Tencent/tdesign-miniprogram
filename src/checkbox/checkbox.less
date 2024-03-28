@@ -129,8 +129,8 @@
     }
 
     &-line {
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         content: '';
         display: block;
         position: absolute;
@@ -140,7 +140,7 @@
         transform-origin: top center;
       }
 
-      &:before {
+      &::before {
         height: 16rpx;
         left: 8rpx;
         top: 22rpx;

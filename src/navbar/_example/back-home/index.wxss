@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.custom-capsule__icon + .custom-capsule__icon:before {
+.custom-capsule__icon.home:before {
   content: '';
   display: block;
   position: absolute;

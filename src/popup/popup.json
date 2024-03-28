@@ -1,5 +1,6 @@
 {
   "component": true,
+  "addGlobalClass": true,
   "usingComponents": {
     "t-overlay": "../overlay/overlay",
     "t-icon": "../icon/icon"

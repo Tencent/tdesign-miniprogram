@@ -15,3 +15,12 @@
   line-height: 40rpx;
   padding-bottom: 16rpx;
 }
+
+.skyline-indicator {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 24rpx;
+  text-align: right;
+  /*line-height: 40rpx;*/
+  padding-top: 16rpx;
+  min-height: 56rpx;
+}

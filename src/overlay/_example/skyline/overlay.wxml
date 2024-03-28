@@ -1,0 +1,3 @@
+<t-navbar title="Overlay" left-arrow capsule="{{false}}" />
+
+<overlay />

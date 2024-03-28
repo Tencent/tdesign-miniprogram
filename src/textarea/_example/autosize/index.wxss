@@ -1,0 +1,10 @@
+.skyline-label {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.9);
+  flex-shrink: 0;
+  line-height: 44rpx;
+  padding-bottom: 16rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

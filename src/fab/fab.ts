@@ -38,7 +38,7 @@ export default class Fab extends SuperComponent {
             ariaLabel: this.properties.ariaLabel,
           },
         },
-        this.computedSize,
+        this.computedSize?.bind(this),
       );
     },
   };

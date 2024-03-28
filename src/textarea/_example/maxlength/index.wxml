@@ -1,5 +1,7 @@
 <t-textarea
   t-class="external-class"
+  t-class-label="{{skylineRender?'skyline-label':''}}"
+  t-class-indicator="{{skylineRender?'skyline-indicator':''}}"
   label="标签文字"
   placeholder="设置最大字符个数"
   maxlength="200"

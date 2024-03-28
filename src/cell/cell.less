@@ -31,7 +31,6 @@
   display: flex;
   box-sizing: border-box;
   width: 100%;
-  overflow: hidden;
   padding: @cell-vertical-padding @cell-horizontal-padding;
   line-height: @cell-line-height;
   height: @cell-height;
@@ -39,6 +38,7 @@
 
   &::after {
     .hairline-bottom(@cell-border-color, @cell-border-width);
+    transform-origin: bottom;
     left: @cell-border-left-space;
     right: @cell-border-right-space;
   }

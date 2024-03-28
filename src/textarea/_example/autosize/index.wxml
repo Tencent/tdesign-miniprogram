@@ -1,5 +1,6 @@
 <t-textarea
   label="标签文字"
+  t-class-label="{{skylineRender?'skyline-label':''}}"
   placeholder="请输入文字"
   disableDefaultPadding="{{true}}"
   autosize="{{autosize}}"
