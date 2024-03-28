@@ -106,6 +106,10 @@ const skylineDisplay = {
       label: '图片',
     },
     {
+      name: 'ImageViewer',
+      label: '图片预览',
+    },
+    {
       name: 'Progress',
       label: '进度条',
     },

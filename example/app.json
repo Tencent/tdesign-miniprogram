@@ -73,6 +73,7 @@
     "pages/date-time-picker/date-time-picker",
     "pages/notice-bar/notice-bar",
     "pages/image-viewer/image-viewer",
+    "pages/image-viewer/skyline/image-viewer",
     "pages/result/result",
     "pages/result/skyline/result",
     "pages/result/result-page",

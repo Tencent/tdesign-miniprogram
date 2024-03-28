@@ -1,6 +1,9 @@
 import ActionSheet from 'tdesign-miniprogram/action-sheet/index';
+import SkylineBehavior from '@behaviors/skyline.js';
 
 Component({
+  behaviors: [SkylineBehavior],
+
   data: {
     visible: false,
     showIndex: false,
