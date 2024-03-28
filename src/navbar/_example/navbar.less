@@ -17,15 +17,6 @@
 }
 
 .demo {
-  --td-navbar-bg-color: #fff;
-  --td-navbar-color: black;
-  --td-navbar-title-font-size: 36rpx;
-  --td-navbar-title-font-weight: 600;
-}
-
-@media (prefers-color-scheme: dark) {
-  .demo {
-    --td-navbar-bg-color: #242424;
-    --td-navbar-color: rgba(255, 255, 255, 0.9);
-  }
+  --td-navbar-bg-color: var(--td-navbar-bg-color-example);
+  --td-navbar-color: var(--td-navbar-color-example);
 }

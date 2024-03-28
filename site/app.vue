@@ -81,6 +81,7 @@ export default defineComponent({
     $route(route) {
       if (!route.meta.docType) return;
       this.docType = route.meta.docType;
+      changeThemeMode();
     },
   },
 
