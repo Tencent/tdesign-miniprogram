@@ -158,27 +158,62 @@ const darkModeCss = `
 
 export const changeThemeMode = () => {
   const parentIframe = document.querySelector('iframe');
-  let previewIframe = null;
+  let previewIframeList: any = null;
   if (parentIframe && parentIframe.contentWindow) {
-    previewIframe = parentIframe.contentWindow.document.querySelector('iframe');
+    previewIframeList = parentIframe.contentWindow.document.querySelectorAll('iframe');
   }
-  if (previewIframe && previewIframe.contentWindow) {
-    const targetNode = document.documentElement;
-    const mode = targetNode.getAttribute('theme-mode');
-    const iframeDom = previewIframe.contentWindow.document.documentElement;
-    const darkStyleElement = previewIframe.contentWindow.document.getElementById('dark');
-    if (mode === DARK_MODE_NAME) {
-      const styleElement = document.createElement('style');
-      styleElement.type = 'text/css';
-      styleElement.textContent = darkModeCss;
-      styleElement.id = 'dark';
-      if (!darkStyleElement) {
-        iframeDom.appendChild(styleElement);
-      }
-    } else {
-      if (darkStyleElement) {
-        iframeDom.removeChild(darkStyleElement);
+  previewIframeList?.forEach((previewIframe: any) => {
+    if (previewIframe && previewIframe.contentWindow) {
+      addDarkStyle(previewIframe);
+    }
+  });
+};
+let observer: any = null;
+export function watchExampleRouterChange(parentIframe: any) {
+  if (observer) {
+    observer.disconnect();
+  }
+  const targetNode = parentIframe.contentWindow.document.documentElement;
+  observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach((node: any) => {
+          // 检查是否为iframe元素
+          if (node.tagName === 'DIV') {
+            const previewIframe = node.querySelector('iframe');
+            if (previewIframe) {
+              previewIframe.onload = () => {
+                addDarkStyle(previewIframe);
+              };
+            }
+          }
+        });
       }
     }
+  });
+  const config = {
+    childList: true, // 观察目标节点的子节点的变化，包括添加或者删除
+    subtree: true, // 观察后代节点
+  };
+  observer.observe(targetNode, config);
+}
+
+function addDarkStyle(previewIframe: any) {
+  const targetNode = document.documentElement;
+  const mode = targetNode.getAttribute('theme-mode');
+  const iframeDom = previewIframe.contentWindow.document.documentElement;
+  const darkStyleElement = previewIframe.contentWindow.document.getElementById('dark');
+  if (mode === DARK_MODE_NAME) {
+    const styleElement = document.createElement('style');
+    styleElement.type = 'text/css';
+    styleElement.textContent = darkModeCss;
+    styleElement.id = 'dark';
+    if (!darkStyleElement) {
+      iframeDom.appendChild(styleElement);
+    }
+  } else {
+    if (darkStyleElement) {
+      iframeDom.removeChild(darkStyleElement);
+    }
   }
-};
+}

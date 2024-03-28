@@ -18,6 +18,7 @@
             class="mobile-iframe"
             style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden"
             @load="onIframeLoaded"
+            ref="parentIframe"
           ></iframe>
         </td-doc-phone>
         <td-contributors platform="miniprogram" framework="wx" :component-name="name"></td-contributors>
@@ -38,7 +39,7 @@ import { defineComponent } from 'vue';
 import Prismjs from 'prismjs';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-json.js';
-import { changeThemeMode } from '../theme/dark';
+import { changeThemeMode, watchExampleRouterChange } from '../theme/dark';
 
 import QrCode from '@components/qrcode.vue';
 
@@ -91,6 +92,9 @@ export default defineComponent({
     this.$emit('loaded', () => {
       tdDocContent.pageStatus = 'show';
     });
+    this.$refs.parentIframe.onload = () => {
+      watchExampleRouterChange(this.$refs.parentIframe);
+    };
   },
 
   methods: {
