@@ -3,6 +3,7 @@ const itemHeight = 56 * 2;
 Component({
   data: {
     childBoxHeight: 0,
+    childIconColor: 'rgba(0, 0, 0, 0.4)',
   },
   externalClasses: ['t-class'],
   properties: {
@@ -37,6 +38,14 @@ Component({
     },
     tapChild(e: any) {
       this.triggerEvent('click', e.target.dataset);
+    },
+  },
+  lifetimes: {
+    attached() {
+      const { theme } = wx.getSystemInfoSync();
+      if (theme === 'dark') {
+        this.setData({ childIconColor: 'rgba(255, 255, 255, 35%)' });
+      }
     },
   },
 });

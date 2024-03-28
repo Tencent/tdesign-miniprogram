@@ -2,10 +2,11 @@
   display: flex;
   align-items: center;
 }
+
 .suffix--line {
   width: 1px;
   height: 24px;
-  background-color: #f6f6f6;
+  background-color: var(--td-component-stroke, #f3f3f3);
   margin-right: 16px;
 }
 

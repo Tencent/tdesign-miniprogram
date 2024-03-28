@@ -4,6 +4,7 @@ Page({
   data: {
     list,
     currentYear: new Date().getFullYear(),
+    theme: 'light',
   },
   onLoad(options) {
     const { path, q } = options;
@@ -20,6 +21,8 @@ Page({
     }
 
     this.trdPrivacy = this.selectComponent('#trdPrivacy');
+    const { theme } = wx.getSystemInfoSync();
+    this.setData({ theme });
   },
 
   showPrivacyWin() {

@@ -147,6 +147,10 @@ const darkModeCss = `
     --bg-color-demo-secondary: #2c2c2c;
     --td-navbar-bg-color: #181818;
     --td-navbar-color: white;
+    --td-border-level-1-color: var(--td-gray-color-11);
+    --td-component-stroke: var(--td-gray-color-11);
+    --td-border-level-2-color: var(--td-gray-color-9);
+    --td-component-border: var(--td-gray-color-9);
   }
 `;
 
