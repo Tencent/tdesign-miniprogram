@@ -161,6 +161,7 @@
       border-width: @button-border-width;
       border-color: @@borderColor;
     }
+    border-color: @@borderColor;
 
     &.@{button}--hover {
       z-index: 0;
@@ -168,6 +169,7 @@
         background-color: @@activeBgColor;
         border-color: @@activeBorderColor;
       }
+      border-color: @@activeBorderColor;
     }
 
     &.@{button}--disabled {
@@ -177,6 +179,7 @@
       &::after {
         border-color: @@disabledBorderColor;
       }
+      border-color: @@disabledBorderColor;
     }
   }
 }
@@ -223,6 +226,7 @@
     &::after {
       border: 0;
     }
+    border: 0;
 
     &.@{button}--hover::after {
       background-color: @button-default-text-active-bg-color;
@@ -277,6 +281,7 @@
     &::after {
       border-color: @button-ghost-border-color;
     }
+    border-color: @button-ghost-border-color;
 
     &.@{button}--hover::after {
       background: none;
@@ -288,6 +293,7 @@
       &::after {
         border-color: @button-ghost-primary-border-color;
       }
+      border-color: @button-ghost-primary-border-color;
     }
 
     &.@{button}--danger {
@@ -296,6 +302,7 @@
       &::after {
         border-color: @button-ghost-danger-border-color;
       }
+      border-color: @button-ghost-danger-border-color;
     }
 
     &.@{button}--disabled {
@@ -305,6 +312,7 @@
       &::after {
         border-color: @button-ghost-disabled-color;
       }
+      border-color: @button-ghost-disabled-color;
     }
   }
 
@@ -315,6 +323,7 @@
     &::after {
       border-color: @button-default-outline-border-color;
     }
+    border-color: @button-default-outline-border-color;
 
     &.@{button}--hover::after {
       background-color: @button-default-outline-active-bg-color;
@@ -327,6 +336,7 @@
       &::after {
         border-color: @button-default-outline-disabled-color;
       }
+      border-color: @button-default-outline-disabled-color;
     }
 
     &.@{button}--primary {
@@ -335,6 +345,7 @@
       &::after {
         border-color: @button-primary-outline-border-color;
       }
+      border-color: @button-primary-outline-border-color;
 
       &.@{button}--hover {
         color: @button-primary-outline-active-border-color;
@@ -352,6 +363,7 @@
         &::after {
           border-color: @button-primary-outline-disabled-color;
         }
+        border-color: @button-primary-outline-disabled-color;
       }
     }
 
@@ -361,6 +373,7 @@
       &::after {
         border-color: @button-danger-outline-border-color;
       }
+      border-color: @button-danger-outline-border-color;
 
       &.@{button}--hover {
         color: @button-danger-outline-active-border-color;
@@ -378,6 +391,7 @@
         &::after {
           border-color: @button-danger-outline-disabled-color;
         }
+        border-color: @button-danger-outline-disabled-color;
       }
     }
 
@@ -388,6 +402,7 @@
       &::after {
         border-color: @button-light-outline-border-color;
       }
+      border-color: @button-light-outline-border-color;
 
       &.@{button}--hover {
         color: @button-light-outline-active-border-color;
@@ -405,6 +420,7 @@
         &::after {
           border-color: @button-light-outline-disabled-color;
         }
+        border-color: @button-light-outline-disabled-color;
       }
     }
   }
@@ -419,6 +435,7 @@
       &::after {
         border-color: @button-primary-dashed-border-color;
       }
+      border-color: @button-primary-dashed-border-color;
 
       &.@{button}--disabled {
         background-color: transparent;
@@ -427,6 +444,7 @@
         &::after {
           border-color: @button-primary-dashed-disabled-color;
         }
+        border-color: @button-primary-dashed-disabled-color;
       }
     }
 
@@ -436,6 +454,7 @@
       &::after {
         border-color: @button-danger-dashed-border-color;
       }
+      border-color: @button-danger-dashed-border-color;
 
       &.@{button}--disabled {
         background-color: transparent;
