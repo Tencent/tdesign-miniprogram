@@ -1,4 +1,9 @@
 .button-example {
   margin: 32rpx;
   display: flex;
+  justify-content: space-between;
+}
+
+.group-btn {
+  margin: 0 16rpx;
 }
