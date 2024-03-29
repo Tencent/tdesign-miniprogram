@@ -18,10 +18,15 @@
   bind:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
   bind:scroll="onScroll"
+  binddragstart="onDragStart"
+  binddragging="onDragging"
+  binddragend="onDragEnd"
   bindscrolltoupper="onScrollToTop"
   bindscrolltolower="onScrollToBottom"
   throttle="{{false}}"
 >
+  <slot name="header" />
+
   <view
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
     style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'px, 0);' : ''}}"

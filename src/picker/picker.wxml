@@ -25,5 +25,6 @@
       <view class="{{classPrefix}}__mask {{classPrefix}}__mask--bottom" />
       <view class="{{classPrefix}}__indicator"></view>
     </view>
+    <slot name="footer" />
   </view>
 </t-popup>
