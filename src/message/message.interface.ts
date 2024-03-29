@@ -22,6 +22,6 @@ export interface MessageProps {
   duration?: number;
   zIndex?: number;
   id?: string;
-  gap?: string;
+  gap?: string | number;
   single?: boolean;
 }

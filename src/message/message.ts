@@ -58,6 +58,7 @@ export default class Message extends SuperComponent {
       ...msg,
       theme,
       id,
+      gap,
     };
     const instanceIndex = instances.findIndex((x) => x.id === id);
     if (instanceIndex < 0) {
@@ -109,7 +110,7 @@ export default class Message extends SuperComponent {
     }
     for (let i = 0; i < len; i += 1) {
       const instance = instances[i];
-      offsetHeight += instance.data.height + gap;
+      offsetHeight += instance.data.height + instance.data.gap;
     }
     return offsetHeight;
   }
@@ -180,7 +181,7 @@ export default class Message extends SuperComponent {
     for (let i = index; i < instances.length; i += 1) {
       const instance = instances[i];
       instance.setData({
-        wrapTop: instance.data.wrapTop - removedHeight - gap,
+        wrapTop: instance.data.wrapTop - removedHeight - instance.data.gap,
       });
     }
   }

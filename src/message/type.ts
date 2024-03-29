@@ -124,8 +124,8 @@ export interface TdMessageProps {
    * 两条message之间的间距
    */
   gap?: {
-    type: NumberConstructor;
-    value?: number;
+    type: null;
+    value?: string | number;
   };
   /**
    * 是否保持仅显示一条信息
