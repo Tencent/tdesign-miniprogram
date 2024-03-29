@@ -71,6 +71,20 @@ const props: TdMessageProps = {
   link: {
     type: null,
   },
+  /**
+   * 两条message之间的间距
+   */
+  gap: {
+    type: null,
+    value: 12,
+  },
+  /**
+   * 是否保持仅显示一条信息
+   */
+  single: {
+    type: Boolean,
+    value: false,
+  },
 };
 
 export default props;

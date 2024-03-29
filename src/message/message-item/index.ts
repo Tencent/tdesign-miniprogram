@@ -1,5 +1,5 @@
-import { MessageType, MessageProps } from './message.interface';
-import { getInstance } from '../common/utils';
+import { MessageType, MessageProps } from '../message.interface';
+import { getInstance } from '../../common/utils';
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
@@ -13,7 +13,10 @@ const showMessage = function (options: MessageActionOptionsType, theme: MessageT
   const instance = getInstance(context, selector);
 
   if (instance) {
-    instance.setMessage(otherOptions, theme);
+    instance.resetData(() => {
+      instance.setData({ theme, ...otherOptions }, instance.show.bind(instance));
+    });
+
     return instance;
   }
   console.error('未找到组件,请确认 selector && context 是否正确');
