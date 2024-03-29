@@ -16,7 +16,7 @@ const props: TdCheckTagProps = {
     type: null,
     value: undefined,
   },
-  /** 已废弃。标签是否可关闭 */
+  /** 标签是否可关闭 */
   closable: {
     type: Boolean,
     value: false,
@@ -43,7 +43,7 @@ const props: TdCheckTagProps = {
   icon: {
     type: null,
   },
-  /** 已废弃。标签类型，有三种：方形、圆角方形、标记型 */
+  /** 标签类型，有三种：方形、圆角方形、标记型 */
   shape: {
     type: String,
     value: 'square',
