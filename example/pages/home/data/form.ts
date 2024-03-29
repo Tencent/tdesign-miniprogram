@@ -77,6 +77,10 @@ const skylineForm = {
       name: 'Checkbox',
       label: '多选框',
     },
+    {
+      name: 'DateTimePicker',
+      label: '时间选择器',
+    },
     // {
     //   name: 'Input',
     //   label: '输入框',
