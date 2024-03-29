@@ -4,7 +4,7 @@ Page({
   data: {
     list,
     currentYear: new Date().getFullYear(),
-    theme: 'light',
+    isDarkMode: false,
   },
   onLoad(options) {
     const { path, q } = options;
@@ -21,8 +21,7 @@ Page({
     }
 
     this.trdPrivacy = this.selectComponent('#trdPrivacy');
-    const { theme } = wx.getSystemInfoSync();
-    this.setData({ theme });
+    this.setData({ isDarkMode: getApp().globalData.isDarkMode });
   },
 
   showPrivacyWin() {

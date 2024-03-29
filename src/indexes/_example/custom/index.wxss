@@ -6,7 +6,7 @@ page {
   margin: 0 8px;
   height: 30px;
   border-radius: 15px;
-  background-color: #f3f3f3;
+  background-color: var(--td-bg-color-secondarycontainer, #f3f3f3);
   padding-left: 32rpx;
   display: flex;
   align-items: center;

@@ -25,17 +25,14 @@ export default class Progress extends SuperComponent {
     computedStatus: '',
     computedProgress: 0,
     isIOS: false,
-    defaultBgColor: '#e7e7e7',
   };
 
   attached() {
     wx.getSystemInfo({
       success: (res) => {
         const isIOS = !!(res.system.toLowerCase().search('ios') + 1);
-        const isDarkMode = res.theme === 'dark';
         this.setData({
           isIOS,
-          defaultBgColor: isDarkMode ? '#383838' : '#e7e7e7',
         });
       },
       fail: (err) => {

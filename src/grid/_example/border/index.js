@@ -10,8 +10,7 @@ Component({
 
   lifetimes: {
     attached() {
-      const { theme } = wx.getSystemInfoSync();
-      if (theme === 'dark') {
+      if (getApp().globalData.isDarkMode) {
         this.setData({ border: { color: '#383838' } });
       }
     },

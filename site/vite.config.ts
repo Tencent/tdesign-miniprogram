@@ -31,15 +31,6 @@ export default ({ mode }: any) => {
       port: 19000,
       open: '/',
       https: false,
-      proxy: {
-        //代理所有 /m2w 的请求
-        '/m2w': {
-          // 代理请求之后的请求地址
-          target: 'http://127.0.0.1:8080',
-          // 跨域配置
-          changeOrigin: true,
-        },
-      },
     },
     build: {
       outDir: '../_site',

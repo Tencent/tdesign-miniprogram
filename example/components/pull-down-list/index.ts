@@ -1,5 +1,4 @@
 const itemHeight = 56 * 2;
-
 Component({
   data: {
     childBoxHeight: 0,
@@ -42,8 +41,7 @@ Component({
   },
   lifetimes: {
     attached() {
-      const { theme } = wx.getSystemInfoSync();
-      if (theme === 'dark') {
+      if (getApp().globalData.isDarkMode) {
         this.setData({ childIconColor: 'rgba(255, 255, 255, 35%)' });
       }
     },

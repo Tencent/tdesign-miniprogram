@@ -7,5 +7,9 @@ App({
         url: `/pages/gulp-error/index?gulpError=${gulpError}`,
       });
     }
+    this.globalData.isDarkMode = wx.getSystemInfoSync().theme === 'dark';
+  },
+  globalData: {
+    isDarkMode: false,
   },
 });

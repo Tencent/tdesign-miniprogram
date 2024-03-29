@@ -13,8 +13,7 @@ Component({
 
   lifetimes: {
     attached() {
-      const { theme } = wx.getSystemInfoSync();
-      if (theme === 'dark') {
+      if (getApp().globalData.isDarkMode) {
         const updateKeyName = 'logoList[1].url';
         this.setData({ [updateKeyName]: 'https://tdesign.gtimg.com/mobile/demos/footer-logo-dark.png' });
       }
