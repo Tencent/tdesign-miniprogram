@@ -1,7 +1,5 @@
+import SkylineBehavior from '@behaviors/skyline.js';
+
 Component({
-  lifetimes: {
-    created() {
-      this.setData({ skylineRender: this.renderer === 'skyline' });
-    },
-  },
+  behaviors: [SkylineBehavior],
 });

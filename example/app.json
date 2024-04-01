@@ -25,6 +25,7 @@
     "pages/toast/toast",
     "pages/toast/skyline/toast",
     "pages/stepper/stepper",
+    "pages/stepper/skyline/stepper",
     "pages/slider/slider",
     "pages/slider/skyline/slider",
     "pages/radio/radio",

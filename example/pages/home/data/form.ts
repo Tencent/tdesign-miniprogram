@@ -94,6 +94,10 @@ const skylineForm = {
       label: '滑动选择器',
     },
     {
+      name: 'Stepper',
+      label: '步进器',
+    },
+    {
       name: 'Textarea',
       label: '多行文本框',
     },
