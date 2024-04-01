@@ -3,7 +3,6 @@
 @picker: ~'@{prefix}-picker';
 @item: ~'@{picker}-item';
 @picker-group-height: var(--td-picker-group-height, 400rpx);
-@picker-item-height: var(--td-picker-item-height, 80rpx);
 @picker-item-color: var(--td-picker-item-color, @font-gray-2);
 @picker-item-active-color: var(--td-picker-item-active-color, @font-gray-1);
 
@@ -25,12 +24,12 @@
   }
 
   &__item {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    height: @picker-item-height;
-    line-height: @picker-item-height;
     color: @picker-item-color;
 
     &--active {
