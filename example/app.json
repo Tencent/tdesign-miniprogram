@@ -149,7 +149,9 @@
   "rendererOptions": {
     "skyline": {
       "defaultDisplayBlock": true,
-      "defaultContentBox": true
+      "defaultContentBox": true,
+      "sdkVersionBegin": "3.0.0",
+      "__useTextStyle": true
     }
   }
 }
