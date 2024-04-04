@@ -72,6 +72,7 @@
     "pages/navbar/navbar",
     "pages/navbar/skyline/navbar",
     "pages/date-time-picker/date-time-picker",
+    "pages/date-time-picker/skyline/date-time-picker",
     "pages/notice-bar/notice-bar",
     "pages/image-viewer/image-viewer",
     "pages/image-viewer/skyline/image-viewer",
