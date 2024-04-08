@@ -5,95 +5,78 @@ exports[`message props : style && customStyle 1`] = `
   <t-message
     id="t-message"
   >
-    <wx-view
-      animation="{{
-        Object {
-          "actions": Array [
-            Object {
-              "animates": Array [
-                Object {
-                  "args": Array [
-                    66,
-                  ],
-                  "type": "translateY",
-                },
-              ],
-              "option": Object {
-                "transformOrigin": "50% 50% 0",
-                "transition": Object {
-                  "delay": 0,
-                  "duration": 500,
-                  "timingFunction": "ease",
-                },
-              },
-            },
-          ],
-        }
-      }}"
-      ariaRole="alert"
-      class="t-message class t-class t-message--warning"
-      id="t-message"
-      style="z-index:15000;top:-92rpx;right:32rpx;left:32rpx; color: red; font-size: 9px;"
+    <t-message-item
+      id="t-message_0"
+      bind:close-btn-click="handleClose"
+      bind:link-click="handleLinkClick"
     >
       <wx-view
-        class="t-message__icon--left"
-      >
-        <t-icon
-          class=""
-          tClass="t-class-icon"
-          bind:click=""
-        >
-          <wx-view
-            ariaHidden="{{true}}"
-            ariaLabel=""
-            ariaRole=""
-            class="t-icon class t-class"
-            style=""
-            bind:tap="onTap"
-          >
-            <wx-label
-              class="t-icon-info-circle-filled t-icon-base"
-            />
-          </wx-view>
-        </t-icon>
-      </wx-view>
-      <wx-view
-        class="t-message__text-wrap "
-        id="t-message__text-wrap"
-        style="text-align: left"
+        animation="{{Array []}}"
+        ariaRole="alert"
+        class="t-message class t-class t-message--warning "
+        id="t-message_0"
+        style="z-index:15000;top:20px;right:32rpx;left:32rpx; color: red; font-size: 9px;"
       >
         <wx-view
-          animation="{{Array []}}"
-          class="t-message__text t-class-content"
-          id="t-message__text"
+          class="t-message__icon--left"
         >
-          这是一条带关闭的消息通知
+          <t-icon
+            class=""
+            tClass="t-class-icon"
+            bind:click=""
+          >
+            <wx-view
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              ariaRole=""
+              class="t-icon class t-class"
+              style=""
+              bind:tap="onTap"
+            >
+              <wx-label
+                class="t-icon-info-circle-filled t-icon-base"
+              />
+            </wx-view>
+          </t-icon>
         </wx-view>
-      </wx-view>
-      <wx-view
-        class="t-message__icon--right"
-        bind:tap="handleClose"
-      >
-        <t-icon
-          class=""
-          tClass="t-class-close-btn"
-          bind:click=""
+        <wx-view
+          class="t-message__text-wrap "
+          id="t-message__text-wrap"
+          style="text-align: left"
         >
           <wx-view
-            ariaHidden="{{false}}"
-            ariaLabel="关闭"
-            ariaRole="button"
-            class="t-icon class t-class"
-            style=""
-            bind:tap="onTap"
+            animation="{{Array []}}"
+            class="t-message__text t-class-content"
+            id="t-message__text"
           >
-            <wx-label
-              class="t-icon-close t-icon-base"
-            />
+            这是一条带关闭的消息通知
           </wx-view>
-        </t-icon>
+        </wx-view>
+        <wx-view
+          class="t-message__icon--right"
+          bind:tap="handleClose"
+        >
+          <t-icon
+            class=""
+            tClass="t-class-close-btn"
+            bind:click=""
+          >
+            <wx-view
+              ariaHidden="{{false}}"
+              ariaLabel="关闭"
+              ariaRole="button"
+              class="t-icon class t-class"
+              style=""
+              bind:tap="onTap"
+            >
+              <wx-label
+                class="t-icon-close t-icon-base"
+              />
+            </wx-view>
+          </t-icon>
+        </wx-view>
       </wx-view>
-    </wx-view>
+    </t-message-item>
   </t-message>
 </main>
 `;

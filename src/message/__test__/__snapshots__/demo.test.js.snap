@@ -58,6 +58,16 @@ exports[`Message Message base demo works fine 1`] = `
     >
       带按钮的通知
     </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showSingleMessage"
+    >
+      纯文字的通知单例
+    </t-button>
   </wx-view>
 </base>
 `;

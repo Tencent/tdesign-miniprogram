@@ -1,33 +1,19 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 import config from '../common/config';
-import { MessageProps } from './message.interface';
+import { MessageType, MessageProps } from './message.interface';
 import props from './props';
-import { getRect, unitConvert, calcIcon, isObject } from '../common/utils';
-
-const { prefix } = config;
-const name = `${prefix}-message`;
+import { unitConvert } from '../common/utils';
 
 // 展示动画持续时间
-const SHOW_DURATION = 500;
-
-// 主题图标
-const THEME_ICON = {
-  info: 'info-circle-filled',
-  success: 'check-circle-filled',
-  warning: 'info-circle-filled',
-  error: 'error-circle-filled',
-};
+const SHOW_DURATION = 400;
+const { prefix } = config;
+const name = `${prefix}-message`;
+let index = 0;
+const instances = [];
+let gap = 12; // 两条message之间的间距，单位px
 
 @wxComponent()
 export default class Message extends SuperComponent {
-  externalClasses = [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-    `${prefix}-class-icon`,
-    `${prefix}-class-link`,
-    `${prefix}-class-close-btn`,
-  ];
-
   options: ComponentsOptionsType = {
     styleIsolation: 'apply-shared',
     multipleSlots: true,
@@ -40,53 +26,10 @@ export default class Message extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    loop: -1,
-    animation: [],
-    showAnimation: [],
-    wrapTop: -999, // 初始定位，保证在可视区域外。
+    messageList: [],
   };
 
-  observers = {
-    marquee(val) {
-      if (JSON.stringify(val) === '{}' || JSON.stringify(val) === 'true') {
-        this.setData({
-          marquee: {
-            speed: 50,
-            loop: -1,
-            delay: 0,
-          },
-        });
-      }
-    },
-
-    'icon, theme'(icon, theme) {
-      this.setData({
-        _icon: calcIcon(icon, THEME_ICON[theme]),
-      });
-    },
-
-    link(v) {
-      const _link = isObject(v) ? { ...v } : { content: v };
-      this.setData({ _link });
-    },
-
-    closeBtn(v) {
-      this.setData({
-        _closeBtn: calcIcon(v, 'close'),
-      });
-    },
-  };
-
-  /** 延时关闭句柄 */
-  closeTimeoutContext = 0;
-
-  /** 动画句柄 */
-  nextAnimationContext = 0;
-
-  resetAnimation = wx.createAnimation({
-    duration: 0,
-    timingFunction: 'linear',
-  });
+  observers = {};
 
   ready() {
     this.memoInitialData();
@@ -100,124 +43,164 @@ export default class Message extends SuperComponent {
     };
   }
 
-  resetData(cb: () => void) {
-    this.setData({ ...this.initialData }, cb);
-  }
-
-  detached() {
-    this.clearMessageAnimation();
-  }
-
-  /** 检查是否需要开启一个新的动画循环 */
-  checkAnimation() {
-    const { marquee } = this.properties;
-    if (!marquee || marquee.loop === 0) {
-      return;
+  /**
+   * 设置消息信息
+   * @param msg
+   * @param theme
+   */
+  setMessage(msg: MessageProps, theme: MessageType = MessageType.info) {
+    let id = `${name}_${index}`;
+    if (msg.single) {
+      id = name;
     }
-
-    const speeding = marquee.speed;
-
-    if (this.data.loop > 0) {
-      this.data.loop -= 1;
-    } else if (this.data.loop === 0) {
-      // 动画回到初始位置
-      this.setData({ animation: this.resetAnimation.translateX(0).step().export() });
-      return;
-    }
-
-    if (this.nextAnimationContext) {
-      this.clearMessageAnimation();
-    }
-
-    const warpID = `#${name}__text-wrap`;
-    const nodeID = `#${name}__text`;
-    Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
-      this.setData(
-        {
-          animation: this.resetAnimation.translateX(wrapRect.width).step().export(),
-        },
-        () => {
-          const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
-          const nextAnimation = wx
-            .createAnimation({
-              // 默认50px/s
-              duration: durationTime,
-            })
-            .translateX(-nodeRect.width)
-            .step()
-            .export();
-
-          // 这里就只能用 setTimeout/20, nextTick 没用
-          // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
-          setTimeout(() => {
-            this.nextAnimationContext = setTimeout(this.checkAnimation.bind(this), durationTime) as unknown as number;
-
-            this.setData({ animation: nextAnimation });
-          }, 20);
-        },
-      );
-    });
-  }
-
-  /** 清理动画循环 */
-  clearMessageAnimation() {
-    clearTimeout(this.nextAnimationContext);
-    this.nextAnimationContext = 0;
-  }
-
-  show() {
-    const { duration, marquee, offset } = this.properties;
-    this.setData({ visible: true, loop: marquee.loop || this.data.loop });
-    this.reset();
-    this.checkAnimation();
-    if (duration && duration > 0) {
-      this.closeTimeoutContext = setTimeout(() => {
-        this.hide();
-        this.triggerEvent('duration-end', { self: this });
-      }, duration) as unknown as number;
-    }
-
-    const wrapID = `#${name}`;
-    getRect(this, wrapID).then((wrapRect) => {
-      // 入场动画。先根据 message 的实际高度设置绝对定位的 top 值，再开始显示动画
-      this.setData({ wrapTop: -wrapRect.height }, () => {
-        this.setData({
-          showAnimation: wx
-            .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
-            .translateY(wrapRect.height + unitConvert(offset[0]))
-            .step()
-            .export(),
-        });
+    gap = unitConvert(msg.gap || gap);
+    const msgObj = {
+      ...msg,
+      theme,
+      id,
+      gap,
+    };
+    const instanceIndex = instances.findIndex((x) => x.id === id);
+    if (instanceIndex < 0) {
+      this.addMessage(msgObj);
+    } else {
+      // 更新消息
+      const instance = instances[instanceIndex];
+      const offsetHeight = this.getOffsetHeight(instanceIndex);
+      instance.resetData(() => {
+        instance.setData(msgObj, instance.show.bind(instance, offsetHeight));
+        instance.onHide = () => {
+          this.close(id);
+        };
       });
-    });
-  }
-
-  hide() {
-    this.reset();
-    this.setData({
-      // 出场动画
-      showAnimation: wx
-        .createAnimation({ duration: SHOW_DURATION, timingFunction: 'ease' })
-        .translateY(this.data.wrapTop)
-        .step()
-        .export(),
-    });
-    setTimeout(() => {
-      this.setData({ visible: false, animation: [] });
-    }, SHOW_DURATION);
-  }
-
-  // 重置定时器
-  reset() {
-    if (this.nextAnimationContext) {
-      this.clearMessageAnimation();
     }
-    clearTimeout(this.closeTimeoutContext);
-    this.closeTimeoutContext = 0;
+  }
+
+  /**
+   * 新增消息
+   * @param msgObj
+   */
+  addMessage(msgObj: MessageProps) {
+    const list = [...this.data.messageList, { id: msgObj.id }];
+    this.setData(
+      {
+        messageList: list,
+      },
+      () => {
+        const offsetHeight = this.getOffsetHeight();
+        const instance = this.showMessageItem(msgObj, msgObj.id, offsetHeight);
+        if (instances) {
+          instances.push(instance);
+          index += 1;
+        }
+      },
+    );
+  }
+
+  /**
+   * 获取消息显示top偏移距离
+   * @param index
+   * @returns
+   */
+  getOffsetHeight(index: number = -1) {
+    let offsetHeight = 0;
+    let len = index;
+    if (len === -1 || len > instances.length) {
+      len = instances.length;
+    }
+    for (let i = 0; i < len; i += 1) {
+      const instance = instances[i];
+      offsetHeight += instance.data.height + instance.data.gap;
+    }
+    return offsetHeight;
+  }
+
+  /**
+   * 新增消息显示
+   * @param options
+   * @param id
+   * @param offsetHeight
+   * @returns
+   */
+  showMessageItem(options: MessageProps, id: string, offsetHeight: number) {
+    const instance = this.selectComponent(`#${id}`);
+    if (instance) {
+      instance.resetData(() => {
+        instance.setData(options, instance.show.bind(instance, offsetHeight));
+        instance.onHide = () => {
+          this.close(id);
+        };
+      });
+
+      return instance;
+    }
+    console.error('未找到组件,请确认 selector && context 是否正确');
+  }
+
+  close(id) {
+    setTimeout(() => {
+      this.removeMsg(id);
+    }, SHOW_DURATION);
+    this.removeInstance(id);
+  }
+
+  /**
+   * 移除指定消息，id为空则删除全部消息
+   * @param id
+   */
+  hide(id?: string) {
+    if (!id) {
+      this.hideAll();
+    }
+    const instance = instances.find((x) => x.id === id);
+    if (instance) {
+      instance.hide();
+    }
+  }
+
+  /**
+   * 移除全部消息
+   */
+  hideAll() {
+    // 消息移除后也会移除instance，下标不用增加，直至全部删除
+    for (let i = 0; i < instances.length; ) {
+      const instance = instances[i];
+      instance.hide();
+    }
+  }
+
+  /**
+   * 移除message实例
+   */
+  removeInstance(id) {
+    const index = instances.findIndex((x) => x.id === id);
+    if (index < 0) return;
+    const instance = instances[index];
+    const removedHeight = instance.data.height;
+    instances.splice(index, 1);
+    for (let i = index; i < instances.length; i += 1) {
+      const instance = instances[i];
+      instance.setData({
+        wrapTop: instance.data.wrapTop - removedHeight - instance.data.gap,
+      });
+    }
+  }
+
+  /**
+   * 移除页面元素
+   * @param id
+   */
+  removeMsg(id) {
+    const msgIndex = this.data.messageList.findIndex((x) => x.id === id);
+    if (msgIndex > -1) {
+      this.data.messageList.splice(msgIndex, 1);
+      this.setData({
+        messageList: this.data.messageList,
+      });
+    }
   }
 
   handleClose() {
-    this.hide();
     this.triggerEvent('close-btn-click');
   }
 

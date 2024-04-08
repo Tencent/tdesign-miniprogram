@@ -20,4 +20,8 @@
   <t-button t-class="external-class" theme="primary" variant="outline" size="large" block bind:tap="showBtnMessage"
     >带按钮的通知</t-button
   >
+
+  <t-button t-class="external-class" theme="primary" variant="outline" size="large" block bind:tap="showSingleMessage"
+    >纯文字的通知单例</t-button
+  >
 </view>
