@@ -8,7 +8,7 @@ import { TdTagProps } from './type';
 const props: TdTagProps = {
   /** 标签是否可关闭 */
   closable: {
-    type: null,
+    type: Boolean,
     value: false,
   },
   /** 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 */
