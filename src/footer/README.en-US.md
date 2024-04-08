@@ -12,7 +12,7 @@ links | Array | [] | `1.0.0`。Typescript：`Array<LinkObj>` `interface LinkObj 
 logo | Object | - | Typescript：`FooterLogo` `interface FooterLogo { icon: string; title?: string; url?: string; target?: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/footer/type.ts) | N
 text | String | '' | `1.0.0` | N
 
-### CSS 变量
+### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
