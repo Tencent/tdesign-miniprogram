@@ -15,7 +15,7 @@ Component({
     showIconMessage() {
       Message.info({
         context: this,
-        offset: ['90rpx', '32rpx'],
+        offset: ['180rpx', '32rpx'],
         duration: 5000,
         content: '这是一条带图标的消息通知 5s消失',
       });
@@ -24,7 +24,7 @@ Component({
     showCloseMessage() {
       Message.info({
         context: this,
-        offset: ['90rpx', 32],
+        offset: ['180rpx', 32],
         content: '这是一条带关闭的消息通知',
         duration: -1,
         link: {

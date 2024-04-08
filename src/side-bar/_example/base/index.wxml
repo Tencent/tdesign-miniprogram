@@ -1,4 +1,6 @@
-<t-navbar title="TDesign" leftArrow />
+<view class="custom-navbar">
+  <t-navbar title="TDesign" leftArrow />
+</view>
 <view class="side-bar-wrapper">
   <t-side-bar value="{{sideBarIndex}}" bind:change="onSideBarChange">
     <t-side-bar-item
