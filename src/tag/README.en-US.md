@@ -39,7 +39,7 @@ custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on v
 checked | Boolean | undefined | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
 closable | Boolean | false | \- | N
-content | String / Number / Array / Slot | - | Typescript：`string \| number \| string[]` | N
+content | String / Number / Array / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 disabled | Boolean | false | \- | N
 icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 shape | String | square | options: square/round/mark | N
