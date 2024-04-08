@@ -14,7 +14,7 @@ export interface TdFooterProps {
     value?: Array<LinkObj>;
   };
   /**
-   * 图标配置。`logo.icon` 表示图标链接地址，`logo.title` 表示标题文本，`logo.titleUrl` 表示链接
+   * 图标配置。`logo.icon` 表示图标链接地址，`logo.title` 表示标题文本，`logo.url` 表示链接
    */
   logo?: {
     type: ObjectConstructor;
@@ -47,5 +47,5 @@ export interface LinkObj {
 export interface FooterLogo {
   icon: string;
   title?: string;
-  titleUrl?: string;
+  url?: string;
 }
