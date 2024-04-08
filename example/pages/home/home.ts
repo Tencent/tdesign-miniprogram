@@ -4,6 +4,7 @@ Page({
   data: {
     list: [],
     currentYear: new Date().getFullYear(),
+    isSkyline: false,
   },
   onLoad(options) {
     const { path, q, skyline } = options;
@@ -19,6 +20,7 @@ Page({
 
     this.setData({
       list: compList,
+      isSkyline: !!skyline,
     });
 
     // 小程序跳转各个小程序组件库
@@ -86,5 +88,10 @@ Page({
       });
     }
     return data;
+  },
+  goSkyline() {
+    wx.navigateTo({
+      url: '/pages/home/home?skyline=1',
+    });
   },
 });
