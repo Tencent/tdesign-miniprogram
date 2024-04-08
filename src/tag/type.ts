@@ -10,8 +10,8 @@ export interface TdTagProps {
    * @default false
    */
   closable?: {
-    type: BooleanConstructor;
-    value?: boolean;
+    type: null;
+    value?: boolean | object;
   };
   /**
    * 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态
