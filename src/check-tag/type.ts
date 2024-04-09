@@ -24,7 +24,6 @@ export interface TdCheckTagProps {
   /**
    * 标签是否可关闭
    * @default false
-   * @deprecated
    */
   closable?: {
     type: BooleanConstructor;
@@ -36,14 +35,6 @@ export interface TdCheckTagProps {
   content?: {
     type: null;
     value?: string | number | string[];
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态
@@ -70,7 +61,6 @@ export interface TdCheckTagProps {
   /**
    * 标签类型，有三种：方形、圆角方形、标记型
    * @default square
-   * @deprecated
    */
   shape?: {
     type: StringConstructor;
