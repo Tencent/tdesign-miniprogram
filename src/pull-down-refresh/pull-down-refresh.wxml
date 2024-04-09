@@ -3,6 +3,7 @@
 <scroll-view
   style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} class {{prefix}}-class"
+  type="list"
   scroll-top="{{scrollTop}}"
   scroll-y
   enable-back-to-top="{{enableBackToTop}}"

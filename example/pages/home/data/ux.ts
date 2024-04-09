@@ -70,6 +70,10 @@ const skylineUx = {
       label: '弹出层',
     },
     {
+      name: 'PullDownRefresh',
+      label: '下拉刷新',
+    },
+    {
       name: 'Loading',
       label: '加载',
     },

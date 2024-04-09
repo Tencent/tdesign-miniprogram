@@ -49,6 +49,7 @@
     "pages/dropdown-menu/dropdown-menu",
     "pages/drawer/drawer",
     "pages/pull-down-refresh/pull-down-refresh",
+    "pages/pull-down-refresh/skyline/pull-down-refresh",
     "pages/skeleton/skeleton",
     "pages/skeleton/skyline/skeleton",
     "pages/footer/footer",
