@@ -38,11 +38,6 @@ const props: TdTagProps = {
     type: String,
     value: 'medium',
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 组件风格，用于描述组件不同的应用场景 */
   theme: {
     type: String,

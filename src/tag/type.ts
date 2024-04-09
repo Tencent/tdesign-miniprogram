@@ -59,14 +59,6 @@ export interface TdTagProps {
     value?: 'small' | 'medium' | 'large' | 'extra-large';
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 组件风格，用于描述组件不同的应用场景
    * @default default
    */

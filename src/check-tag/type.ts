@@ -75,14 +75,6 @@ export interface TdCheckTagProps {
     value?: SizeEnum;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 标签风格变体
    * @default dark
    */

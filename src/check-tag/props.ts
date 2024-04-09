@@ -48,11 +48,6 @@ const props: TdCheckTagProps = {
     type: String,
     value: 'medium',
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 标签风格变体 */
   variant: {
     type: String,
