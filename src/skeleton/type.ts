@@ -14,27 +14,12 @@ export interface TdSkeletonProps {
     value?: 'gradient' | 'flashed' | 'none';
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 【开发中】延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒
+   * 延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒
    * @default 0
    */
   delay?: {
     type: NumberConstructor;
     value?: number;
-  };
-  /**
-   * 组件类名，分别用于设置组件外层元素、头像、图片、文本等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-avatar', 't-class-image', 't-class-text'];
   };
   /**
    * 是否为加载状态，如果是则显示骨架图，如果不是则显示加载完成的内容
