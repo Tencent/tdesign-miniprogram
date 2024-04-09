@@ -43,7 +43,21 @@ Page({
         items: [],
       },
     ],
+    navbarHeight: 0,
   },
+  onLoad() {
+    this.getCustomNavbarHeight();
+  },
+
+  getCustomNavbarHeight() {
+    const query = wx.createSelectorQuery();
+    query.select('.custom-navbar').boundingClientRect();
+    query.exec((res) => {
+      const { height = 0 } = res[0] || {};
+      this.setData({ navbarHeight: height });
+    });
+  },
+
   onSideBarChange(e) {
     const { value } = e.detail;
 

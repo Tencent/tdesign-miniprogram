@@ -153,6 +153,7 @@ const darkModeCss = `
     --td-component-border: var(--td-gray-color-9);
     --td-grid-bg-color-example: transparent;
     --td-grid-item-bg-color-example: transparent;
+    --td-input-border-color-example: #5e5e5e;
   }
 `;
 

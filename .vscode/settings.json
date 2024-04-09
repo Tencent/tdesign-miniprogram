@@ -17,7 +17,7 @@
     "text"
   ],
   "files.associations": {
-    "*.wxml": "html",
+    // "*.wxml": "html",
     "*.wxss": "css",
     "*.wxs": "javascript"
   },

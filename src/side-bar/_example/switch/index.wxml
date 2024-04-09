@@ -1,5 +1,7 @@
-<t-navbar title="TDesign" leftArrow />
-<view class="side-bar-wrapper">
+<view class="custom-navbar">
+  <t-navbar title="TDesign" leftArrow />
+</view>
+<view class="side-bar-wrapper" style="height: calc(100vh - {{navbarHeight}}px)">
   <t-side-bar value="{{sideBarIndex}}" bind:change="onSideBarChange">
     <t-side-bar-item
       wx:for="{{categories}}"

@@ -21,7 +21,7 @@ Page({
     }
 
     this.trdPrivacy = this.selectComponent('#trdPrivacy');
-    this.setData({ isDarkMode: getApp().globalData.isDarkMode });
+    this.setData({ isDarkMode: wx.getSystemInfoSync().theme === 'dark' });
   },
 
   showPrivacyWin() {

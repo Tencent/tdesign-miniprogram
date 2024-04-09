@@ -5,7 +5,7 @@ Component({
 
   lifetimes: {
     attached() {
-      if (getApp().globalData.isDarkMode) {
+      if (wx.getSystemInfoSync().theme === 'dark') {
         this.setData({ image: 'https://tdesign.gtimg.com/mobile/demos/image-dark.png' });
       }
     },

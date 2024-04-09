@@ -42,6 +42,7 @@ Page({
         items: items.slice(0, 3),
       },
     ],
+    navbarHeight: 0,
   },
   onLoad() {
     const query = wx.createSelectorQuery().in(this);
@@ -51,7 +52,7 @@ Page({
     query.exec((res) => {
       const [rects, { height: navbarHeight }] = res;
       this.offsetTopList = rects.map((item) => item.top - navbarHeight);
-      this.setData({ scrollTop: this.offsetTopList[sideBarIndex] });
+      this.setData({ navbarHeight, scrollTop: this.offsetTopList[sideBarIndex] });
     });
   },
   onSideBarChange(e) {
