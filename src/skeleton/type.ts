@@ -51,8 +51,8 @@ export type SkeletonRowCol = Array<Number | SkeletonRowColObj | Array<SkeletonRo
 
 export interface SkeletonRowColObj {
   width?: string;
-  size?: string;
   height?: string;
+  size?: string;
   marginRight?: string;
   marginLeft?: string;
   margin?: string;
