@@ -90,6 +90,10 @@ const skylineDisplay = {
       label: '单元格',
     },
     {
+      name: 'Collapse',
+      label: '折叠面板',
+    },
+    {
       name: 'CountDown',
       label: '倒计时',
     },
@@ -125,10 +129,10 @@ const skylineDisplay = {
       name: 'Swiper',
       label: '轮播图',
     },
-    // {
-    //   name: 'Tag',
-    //   label: '标签',
-    // },
+    {
+      name: 'Tag',
+      label: '标签',
+    },
   ],
 };
 

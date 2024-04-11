@@ -1,0 +1,6 @@
+<view class="skyline">
+  <t-navbar class="block" title="Collapse" left-arrow capsule="{{false}}" />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <collapse />
+  </scroll-view>
+</view>

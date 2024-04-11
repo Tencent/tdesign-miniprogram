@@ -25,7 +25,7 @@
     "skylineRenderEnable": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.3.4",
+  "libVersion": "3.4.1",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {
