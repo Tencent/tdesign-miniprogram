@@ -33,7 +33,7 @@
             data-index="{{index}}"
             t-class="{{classPrefix}}__thumbnail"
             style="{{imageProps && imageProps.style || ''}}"
-            src="{{file.url}}"
+            src="{{ file.thumb || file.url }}"
             mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
             error="{{imageProps && imageProps.error || 'default'}}"
             lazy="{{imageProps && imageProps.lazy || false}}"
@@ -48,6 +48,7 @@
             wx:if="{{file.type === 'video'}}"
             class="{{classPrefix}}__thumbnail"
             src="{{file.url}}"
+            poster="{{ file.thumb }}"
             controls
             autoplay="{{false}}"
             objectFit="contain"
@@ -140,7 +141,7 @@
                 data-index="{{index}}"
                 t-class="{{classPrefix}}__thumbnail"
                 style="{{imageProps && imageProps.style || ''}}"
-                src="{{file.url}}"
+                src="{{ file.thumb || file.url }}"
                 mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
                 error="{{imageProps && imageProps.error || 'default'}}"
                 lazy="{{imageProps && imageProps.lazy || false}}"
@@ -155,6 +156,7 @@
                 wx:if="{{file.type === 'video'}}"
                 class="{{classPrefix}}__thumbnail"
                 src="{{file.url}}"
+                poster="{{ file.thumb }}"
                 controls
                 autoplay="{{false}}"
                 objectFit="contain"
