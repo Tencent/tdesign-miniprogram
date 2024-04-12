@@ -23,6 +23,6 @@
 }
 
 .verify {
-  color: rgba(0, 82, 217, 1);
+  color: var(--td-brand-color, #0052D9);
   font-size: 32rpx;
 }

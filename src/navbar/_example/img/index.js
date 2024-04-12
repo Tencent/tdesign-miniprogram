@@ -1,6 +1,6 @@
 Component({
   data: {
-    image: 'https://tdesign.gtimg.com/mobile/demos/logo1.png',
+    image: 'https://tdesign.gtimg.com/mobile/demos/logo-light.png',
   },
 
   lifetimes: {
