@@ -37,6 +37,19 @@ export default class Skeleton extends SuperComponent {
     rowCol() {
       this.init();
     },
+    'loading,delay'(loading: boolean, delay: number) {
+      if (!loading || delay === 0) {
+        this.setData({
+          isShow: loading,
+        });
+        return;
+      }
+      setTimeout(() => {
+        this.setData({
+          isShow: loading,
+        });
+      }, delay);
+    },
   };
 
   lifetimes = {
