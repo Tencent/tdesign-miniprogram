@@ -6,7 +6,7 @@
 @drawer-bg-color: var(--td-drawer-bg-color, @bg-color-container);
 @drawer-border-color: var(--td-drawer-border-color, @border-color);
 @drawer-title-color: var(--td-drawer-title-color, @font-gray-1);
-@drawer-icon-color: var(--td-drawer-title-color, @drawer-title-color);
+@drawer-item-icon-color: var(--td-drawer-item-icon-color, @drawer-title-color);
 @drawer-item-padding: var(--td-drawer-item-padding, 32rpx);
 @drawer-item-height: var(--td-drawer-item-height, 48rpx);
 @drawer-item-icon-size: var(--td-drawer-item-icon-size, 48rpx);
@@ -47,12 +47,12 @@
 
       &-title {
         flex: 1;
-        color: var(--td-drawer-title-color);
+        color: @drawer-title-color;
       }
 
       &-icon {
         padding-right: 16rpx;
-        color: @drawer-icon-color;
+        color: @drawer-item-icon-color;
         font-size: @drawer-item-icon-size;
       }
     }
