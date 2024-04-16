@@ -26,7 +26,7 @@ describe('skeleton', () => {
   describe('Props', () => {
     it(`: style && customStyle`, async () => {
       const id = simulate.load({
-        template: `<t-skeleton class="skeleton" style="{{style}}" customStyle="{{customStyle}}"></t-skeleton>`,
+        template: `<t-skeleton class="skeleton" style="{{style}}" customStyle="{{customStyle}}" loading="{{true}}"></t-skeleton>`,
         usingComponents: {
           't-skeleton': skeleton,
         },
