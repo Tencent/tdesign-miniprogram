@@ -30,10 +30,12 @@
     font-size: 32rpx;
   }
 
-  &--split:before {
-    .hairline-left(@color: @tab-bar-border-color);
-    top: 16rpx;
-    bottom: 16rpx;
+  &--split {
+    & + &::before {
+      .hairline-left(@color: @tab-bar-border-color);
+      top: 16rpx;
+      bottom: 16rpx;
+    }
   }
 
   &--crowded {
