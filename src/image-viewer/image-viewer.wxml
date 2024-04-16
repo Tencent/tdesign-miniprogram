@@ -26,11 +26,11 @@
         autoplay="{{false}}"
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
-        bindtap="onClose"
         tabindex="0"
       >
         <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
+            wx:if="{{!scale}}"
             t-class="t-image--external"
             style="{{imagesStyle[index].style || ''}}"
             mode="aspectFit"
@@ -40,6 +40,27 @@
             class="{{classPrefix}}__image"
             bindload="onImageLoadSuccess"
           ></t-image>
+          <movable-area wx:else style="{{movableAreaStyle[index]}}" scale-area>
+            <!-- 图片放大时，拖动图片会触发swiper的左右滑动，当放大比例大于1.5时，不允许swiper进行滑动 -->
+            <movable-view
+              style="{{imagesStyle[index].style}}"
+              direction="all"
+              scale
+              bindscale="movableScale"
+              catchhtouchmove="{{scaleValue > 1.5 ? 'touchmove': ''}}"
+            >
+              <t-image
+                t-class="t-image--external"
+                style="{{imagesStyle[index].style || ''}}"
+                mode="aspectFit"
+                lazy
+                src="{{item}}"
+                data-index="{{index}}"
+                class="{{classPrefix}}__image"
+                bindload="onImageLoadSuccess"
+              ></t-image>
+            </movable-view>
+          </movable-area>
         </swiper-item>
       </swiper>
     </view>

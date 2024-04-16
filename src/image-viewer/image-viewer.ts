@@ -22,7 +22,9 @@ export default class ImageViewer extends SuperComponent {
     windowWidth: 0,
     swiperStyle: {},
     imagesStyle: {},
+    movableAreaStyle: {},
     maskTop: 0,
+    scaleValue: 1,
   };
 
   options = {
@@ -137,7 +139,18 @@ export default class ImageViewer extends SuperComponent {
       const { mode, styleObj } = this.calcImageDisplayStyle(width, height);
       const originImagesStyle = this.data.imagesStyle;
       const originSwiperStyle = this.data.swiperStyle;
+      const originMovableAreaStyle = this.data.movableAreaStyle;
       this.setData({
+        movableAreaStyle: {
+          ...originMovableAreaStyle,
+          [index]: styles({
+            height: styleObj.height,
+            width: '100vw',
+            overflow: 'hidden',
+            padding: 0,
+            margin: 0,
+          }),
+        },
         swiperStyle: {
           ...originSwiperStyle,
           [index]: {
@@ -172,5 +185,12 @@ export default class ImageViewer extends SuperComponent {
     onDelete() {
       this._trigger('delete', { index: this.data.currentSwiperIndex });
     },
+    movableScale({ detail }) {
+      const { scale } = detail;
+      this.setData({
+        scaleValue: scale,
+      });
+    },
+    touchmove() {},
   };
 }

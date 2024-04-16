@@ -77,4 +77,12 @@ export interface TdImageViewerProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+  /**
+   * 是否启用图片预览缩放功能
+   * @default false
+   */
+  scale: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
 }

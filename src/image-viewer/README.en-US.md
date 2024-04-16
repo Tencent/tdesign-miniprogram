@@ -14,6 +14,7 @@ show-index | Boolean | false | \- | N
 using-custom-navbar | Boolean | false | \- | N
 visible | Boolean | false | \- | N
 default-visible | Boolean | undefined | uncontrolled property | N
+scale | Boolean | false | Enable image zoom | N
 
 ### ImageViewer Events
 

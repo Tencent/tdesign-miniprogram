@@ -51,6 +51,11 @@ const props: TdImageViewerProps = {
     type: Boolean,
     value: false,
   },
+  /** 是否启用图片预览缩放功能 */
+  scale: {
+    type: Boolean,
+    value: false,
+  },
 };
 
 export default props;

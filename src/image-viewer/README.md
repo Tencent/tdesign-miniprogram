@@ -54,6 +54,7 @@ show-index | Boolean | false | 是否显示页码 | N
 using-custom-navbar | Boolean | false | `v1.1.4` 是否使用了自定义导航栏 | N
 visible | Boolean | false | 隐藏/显示预览 | N
 default-visible | Boolean | undefined | 隐藏/显示预览。非受控属性 | N
+scale | Boolean | false | 开启图片缩放 | N
 
 ### ImageViewer Events
 
