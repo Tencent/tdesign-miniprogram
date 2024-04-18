@@ -91,9 +91,11 @@ export default defineComponent({
     this.$emit('loaded', () => {
       tdDocContent.pageStatus = 'show';
     });
-    this.$refs.parentIframe.onload = () => {
-      watchExampleRouterChange(this.$refs.parentIframe);
-    };
+    if (this.$refs.parentIframe && this.$refs.parentIframe.onload) {
+      this.$refs.parentIframe.onload = () => {
+        watchExampleRouterChange(this.$refs.parentIframe);
+      };
+    }
   },
 
   methods: {
