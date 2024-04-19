@@ -6,6 +6,31 @@ docClass: timeline
 ---
 
 
+## 🌈 1.3.0 `2024-04-19`
+### 🚀 Features
+- `TDesign` 微信小程序组件库提供原生深色模式适配 @zuiaiwanqian ([#2636](https://github.com/Tencent/tdesign-miniprogram/pull/2636))
+- `PullDownRefresh`: 新增 `header` 插槽 @betavs ([#2652](https://github.com/Tencent/tdesign-miniprogram/pull/2652))
+- `PullDownRefresh`: 新增 `drag` 等事件 @betavs ([#2649](https://github.com/Tencent/tdesign-miniprogram/pull/2649))
+- `Picker`: 新增 `footer` 插槽 @anlyyao ([#2632](https://github.com/Tencent/tdesign-miniprogram/pull/2632))
+- `DateTimePicker`: 新增 `footer` 插槽 @anlyyao ([#2632](https://github.com/Tencent/tdesign-miniprogram/pull/2632))
+- `CheckTag`: 新增 `shape` 和 `closable` 属性 @betavs ([#2365](https://github.com/Tencent/tdesign-miniprogram/pull/2365))
+- `Image`: 新增 `t-id` 属性 @catiwang ([#2658](https://github.com/Tencent/tdesign-miniprogram/pull/2658))
+- `upload`: 支持自定义上传图片后的略缩图 @dexterBo ([#2690](https://github.com/Tencent/tdesign-miniprogram/pull/2690))
+- `Skeleton`: 新增 `delay` 属性 @anlyyao ([#2698](https://github.com/Tencent/tdesign-miniprogram/pull/2698))
+- `Message`: 支持同时显示多条消息并自动垂直排版 @zh-huan ([#2639](https://github.com/Tencent/tdesign-miniprogram/pull/2639))
+### 🐞 Bug Fixes
+- `RadioGroup`: 修复 `disabled` 动态修改无效 @catiwang ([#2643](https://github.com/Tencent/tdesign-miniprogram/pull/2643))
+- `Calendar`: 动态设置 `format` 无效 @betavs ([#2670](https://github.com/Tencent/tdesign-miniprogram/pull/2670))
+- `CheckboxGroup`: 处理 `disabled` 动态修改无效的问题 @betavs ([#2647](https://github.com/Tencent/tdesign-miniprogram/pull/2647))
+- `Slider`: 修复组件宽度失效 @anlyyao ([#2699](https://github.com/Tencent/tdesign-miniprogram/pull/2699))
+- `Drawer`: 修复 `--td-drawer-item-icon-color` 名称错误 @anlyyao ([#2697](https://github.com/Tencent/tdesign-miniprogram/pull/2697))
+- `TabBarItem`: 当 `tab-bar` 组件 `split` 属性为真时，样式异常 @betavs ([#2696](https://github.com/Tencent/tdesign-miniprogram/pull/2696))
+### 🚧 Others
+- `Footer`: sync api @liweijie0812 ([#2683](https://github.com/Tencent/tdesign-miniprogram/pull/2683))
+- `Tag`: sync api @liweijie0812 ([#2684](https://github.com/Tencent/tdesign-miniprogram/pull/2684))
+- `Result`: sync api @liweijie0812 ([#2685](https://github.com/Tencent/tdesign-miniprogram/pull/2685))
+
+
 ## 🌈 1.2.9 `2024-03-07` 
 ### 🚀 Features
 - `Cascader`: 新增 `placeholder` 属性，支持自定义未选中时的提示文案 @anlyyao ([#2597](https://github.com/Tencent/tdesign-miniprogram/pull/2597))
