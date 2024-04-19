@@ -1,5 +1,4 @@
 const itemHeight = 56 * 2;
-
 Component({
   data: {
     childBoxHeight: 0,

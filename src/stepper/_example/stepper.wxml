@@ -1,3 +1,4 @@
+<t-navbar title="Stepper" leftArrow />
 <view class="demo">
   <view class="demo-title">Stepper 步进器</view>
   <view class="demo-desc">用于数量的增减。</view>

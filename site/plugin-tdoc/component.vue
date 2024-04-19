@@ -15,7 +15,10 @@
             frameborder="0"
             width="100%"
             height="100%"
-            style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden; border-top: 8px solid #f8f8f8"
+            class="mobile-iframe"
+            style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden"
+            @load="onIframeLoaded"
+            ref="parentIframe"
           ></iframe>
         </td-doc-phone>
         <td-contributors platform="miniprogram" framework="wx" :component-name="name"></td-contributors>
@@ -36,6 +39,7 @@ import { defineComponent } from 'vue';
 import Prismjs from 'prismjs';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-json.js';
+import { changeThemeMode, watchExampleRouterChange } from '../theme/dark';
 
 import QrCode from '@components/qrcode.vue';
 
@@ -87,11 +91,28 @@ export default defineComponent({
     this.$emit('loaded', () => {
       tdDocContent.pageStatus = 'show';
     });
+    if (this.$refs.parentIframe && this.$refs.parentIframe.onload) {
+      this.$refs.parentIframe.onload = () => {
+        watchExampleRouterChange(this.$refs.parentIframe);
+      };
+    }
+  },
+
+  methods: {
+    onIframeLoaded() {
+      changeThemeMode();
+    },
   },
 });
 </script>
 
 <style lang="less">
+:root[theme-mode='dark'] {
+  --mobile-border-color: #181818;
+}
+.mobile-iframe {
+  border-top: 8px solid var(--mobile-border-color, #f8f8f8);
+}
 .td-doc {
   // &-main {
   //   position: relative;

@@ -5,7 +5,7 @@ Component({
     showTextMessage() {
       Message.info({
         context: this,
-        offset: [20, 32],
+        offset: [90, 32],
         duration: 5000,
         icon: false,
         content: '这是一条纯文字的消息通知 5s消失',
@@ -15,7 +15,7 @@ Component({
     showIconMessage() {
       Message.info({
         context: this,
-        offset: ['20rpx', '32rpx'],
+        offset: ['180rpx', '32rpx'],
         duration: 5000,
         content: '这是一条带图标的消息通知 5s消失',
       });
@@ -24,7 +24,7 @@ Component({
     showCloseMessage() {
       Message.info({
         context: this,
-        offset: ['20rpx', 32],
+        offset: ['180rpx', 32],
         content: '这是一条带关闭的消息通知',
         duration: -1,
         link: {
@@ -40,7 +40,7 @@ Component({
     showScrollMessage() {
       Message.info({
         context: this,
-        offset: [20, 32],
+        offset: [90, 32],
         marquee: { speed: 50, loop: -1, delay: 5000 },
         icon: false,
         content: '这是一条滚动的通知信息',
@@ -51,7 +51,7 @@ Component({
     showBtnMessage() {
       Message.info({
         context: this,
-        offset: [20, 32],
+        offset: [90, 32],
         icon: 'notification-filled',
         content: '这是一条带操作的消息通知',
         duration: -1,

@@ -88,6 +88,11 @@ Page({
         children: ['昆明', '开封', '康定', '喀什'],
       },
     ],
+    stickyOffset: 0,
+  },
+
+  onLoad() {
+    this.getCustomNavbarHeight();
   },
 
   onReady() {
@@ -100,5 +105,14 @@ Page({
     const { index } = e.detail;
 
     console.log(index);
+  },
+
+  getCustomNavbarHeight() {
+    const query = wx.createSelectorQuery();
+    query.select('.custom-navbar').boundingClientRect();
+    query.exec((res) => {
+      const { height = 0 } = res[0] || {};
+      this.setData({ stickyOffset: height });
+    });
   },
 });

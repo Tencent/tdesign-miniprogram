@@ -5,7 +5,7 @@ Component({
     showInfoMessage() {
       Message.info({
         context: this,
-        offset: [20, 32],
+        offset: [90, 32],
         duration: 5000,
         content: '这是一条普通通知信息',
       });
@@ -14,7 +14,7 @@ Component({
     showWarnMessage() {
       Message.warning({
         context: this,
-        offset: [20, 32],
+        offset: [90, 32],
         duration: 5000,
         content: '这是一条需要用户关注到的警示通知',
       });
@@ -23,7 +23,7 @@ Component({
     showSuccessMessage() {
       Message.success({
         context: this,
-        offset: [20, 32],
+        offset: [90, 32],
         duration: 5000,
         content: '这是一条成功的提示消息',
       });
@@ -32,7 +32,7 @@ Component({
     showErrorMessage() {
       Message.error({
         context: this,
-        offset: [20, 32],
+        offset: [90, 32],
         duration: 5000,
         content: '这是一条错误提示通知',
       });

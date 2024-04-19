@@ -1,25 +1,57 @@
 @import '../src/common/style/_variables.less';
-
+@import '../src/common/style/theme/_dark.less';
 page {
-  background: #f6f6f6; // 和设计师确认过，统一改成这个颜色
+  background-color: #f6f6f6;
+  --bg-color-demo-desc: #0009;
+  --bg-color-demo-title: #000000e6;
+  --bg-color-demo: #fff;
+  --bg-color-demo-border: #e7e7e7;
+  --bg-color-demo-secondary: #fff;
+  --td-navbar-bg-color: #f6f6f6;
+  --td-navbar-color: black;
+  --td-navbar-title-font-size: 26rpx;
+  --td-navbar-title-font-weight: 400;
+  --td-color-demo-notice-icon: rgba(0, 0, 0, 0.9);
+  --td-avatar-border-color: var(--bg-color-demo);
+  --td-progress-circle-inner-bg-color: var(--bg-color-demo);
+  --td-navbar-bg-color-example: @bg-color-container;
+  --td-navbar-color-example: @text-color-primary;
+  --td-grid-bg-color-example: @bg-color-container;
+  --td-grid-item-bg-color-example: @bg-color-container;
+  --td-input-border-color-example: rgba(220, 220, 220, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    background: #181818 !important;
+    --bg-color-demo-title: #fff;
+    --bg-color-demo-desc: #fff;
+    --bg-color-demo: #181818;
+    --bg-color-demo-border: #383838;
+    --bg-color-demo-secondary: #2c2c2c;
+    --td-navbar-bg-color: #181818;
+    --td-navbar-color: white;
+    --td-color-demo-notice-icon: rgba(255, 255, 255, 0.9);
+    --td-grid-bg-color-example: transparent;
+    --td-grid-item-bg-color-example: transparent;
+    --td-input-border-color-example: #5e5e5e;
+  }
 }
 
 .demo {
   padding-bottom: 56rpx;
-  // padding-bottom: env(safe-area-inset-bottom, 28px); 小程序真机渲染有bug
-  // padding-bottom: constant(safe-area-inset-bottom, 28px);
 
   &-title {
     font-size: 48rpx;
     font-weight: 700;
     line-height: 64rpx;
     margin: 48rpx 32rpx 0;
-    color: @font-gray-1;
+    color: var(--bg-color-demo-title);
   }
 
   &-desc {
     font-size: 28rpx;
-    color: @font-gray-2;
+    color: var(--bg-color-demo-desc);
     margin: 16rpx 32rpx 0;
     line-height: 44rpx;
   }

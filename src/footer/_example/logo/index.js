@@ -10,4 +10,13 @@ Component({
       },
     ],
   },
+
+  lifetimes: {
+    attached() {
+      if (wx.getSystemInfoSync().theme === 'dark') {
+        const updateKeyName = 'logoList[1].url';
+        this.setData({ [updateKeyName]: 'https://tdesign.gtimg.com/mobile/demos/footer-logo-dark.png' });
+      }
+    },
+  },
 });

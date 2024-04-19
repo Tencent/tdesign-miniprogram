@@ -36,6 +36,11 @@ Page({
     list,
     indexList: list.map((item) => item.index),
     curIndex: '',
+    stickyOffset: 0,
+  },
+
+  onLoad() {
+    this.getCustomNavbarHeight();
   },
 
   onChange(e) {
@@ -44,6 +49,15 @@ Page({
     console.log(index);
     this.setData({
       curIndex: index,
+    });
+  },
+
+  getCustomNavbarHeight() {
+    const query = wx.createSelectorQuery();
+    query.select('.custom-navbar').boundingClientRect();
+    query.exec((res) => {
+      const { height = 0 } = res[0] || {};
+      this.setData({ stickyOffset: height });
     });
   },
 });
