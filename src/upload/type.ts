@@ -169,6 +169,7 @@ export interface UploadFile {
   type?: 'image' | 'video';
   percent?: number;
   status: 'loading' | 'reload' | 'failed' | 'done';
+  thumb?: string;
 }
 
 export type MediaType = 'image' | 'video';
