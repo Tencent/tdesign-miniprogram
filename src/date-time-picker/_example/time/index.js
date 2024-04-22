@@ -1,7 +1,4 @@
 Component({
-  options: {
-    styleIsolation: 'apply-shared',
-  },
   data: {
     mode: '',
     second: '10:00:00',

@@ -25,7 +25,6 @@ export default class NoticeBar extends SuperComponent {
   ];
 
   options: ComponentsOptionsType = {
-    styleIsolation: 'apply-shared',
     multipleSlots: true,
   };
 
