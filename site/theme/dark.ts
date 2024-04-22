@@ -4,16 +4,16 @@ const DARK_MODE_NAME = 'dark';
 const darkModeCss = `
   body {
     background: #181818;
-    --td-brand-color-1: #1b2f51;
-    --td-brand-color-2: #173463;
-    --td-brand-color-3: #143975;
-    --td-brand-color-4: #103d88;
-    --td-brand-color-5: #0d429a;
-    --td-brand-color-6: #054bbe;
-    --td-brand-color-7: #2667d4;
-    --td-brand-color-8: #4582e6;
-    --td-brand-color-9: #699ef5;
-    --td-brand-color-10: #96bbf8;
+    --td-primary-color-1: #1b2f51;
+    --td-primary-color-2: #173463;
+    --td-primary-color-3: #143975;
+    --td-primary-color-4: #103d88;
+    --td-primary-color-5: #0d429a;
+    --td-primary-color-6: #054bbe;
+    --td-primary-color-7: #2667d4;
+    --td-primary-color-8: #4582e6;
+    --td-primary-color-9: #699ef5;
+    --td-primary-color-10: #96bbf8;
     --td-warning-color-1: #4f2a1d;
     --td-warning-color-2: #582f21;
     --td-warning-color-3: #733c23;
