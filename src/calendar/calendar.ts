@@ -15,7 +15,6 @@ export default class Calendar extends SuperComponent {
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
-    styleIsolation: 'apply-shared',
   };
 
   properties = props;

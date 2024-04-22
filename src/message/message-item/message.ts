@@ -29,7 +29,6 @@ export default class Message extends SuperComponent {
   ];
 
   options: ComponentsOptionsType = {
-    styleIsolation: 'apply-shared',
     multipleSlots: true,
   };
 

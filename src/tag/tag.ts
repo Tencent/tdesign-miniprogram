@@ -21,7 +21,6 @@ export default class Tag extends SuperComponent {
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
-    styleIsolation: 'apply-shared',
   };
 
   lifetimes = {

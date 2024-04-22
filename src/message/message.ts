@@ -15,7 +15,6 @@ let gap = 12; // 两条message之间的间距，单位px
 @wxComponent()
 export default class Message extends SuperComponent {
   options: ComponentsOptionsType = {
-    styleIsolation: 'apply-shared',
     multipleSlots: true,
   };
 
