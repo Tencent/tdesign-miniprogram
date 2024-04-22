@@ -15,7 +15,7 @@ exports[`message props : style && customStyle 1`] = `
         ariaRole="alert"
         class="t-message class t-class t-message--warning "
         id="t-message_0"
-        style="z-index:15000;top:20px;right:32rpx;left:32rpx; color: red; font-size: 9px;"
+        style="z-index:15000;top:20px;left:20rpx;right:32rpx; color: red; font-size: 9px;"
       >
         <wx-view
           class="t-message__icon--left"
