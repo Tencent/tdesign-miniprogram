@@ -30,9 +30,17 @@ export default class Message extends SuperComponent {
 
   observers = {};
 
-  ready() {
-    this.memoInitialData();
-  }
+  pageLifetimes = {
+    show() {
+      this.hideAll();
+    },
+  };
+
+  lifetimes = {
+    ready() {
+      this.memoInitialData();
+    },
+  };
 
   /** 记录组件设置的项目 */
   memoInitialData() {

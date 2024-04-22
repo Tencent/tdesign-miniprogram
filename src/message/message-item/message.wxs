@@ -10,7 +10,7 @@ var changeNumToStr = function (arr) {
 
 var getMessageStyles = function (zIndex, offset, wrapTop) {
   var arr = changeNumToStr(offset || [0, 0]);
-  var left = arr[0] || 0;
+  var left = arr[1] || 0;
   var right = arr[1] || 0;
 
   var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
