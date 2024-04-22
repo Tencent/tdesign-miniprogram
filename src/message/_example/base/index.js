@@ -66,7 +66,7 @@ Component({
     showSingleMessage() {
       Message.info({
         context: this,
-        offset: [20, 32],
+        offset: [90, 32],
         duration: 5000,
         icon: false,
         content: '这是一条纯文字的消息通知且仅显示一条',

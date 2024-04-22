@@ -44,6 +44,9 @@ export default class Message extends SuperComponent {
     fadeClass: '',
   };
 
+  // 延时关闭句柄
+  closeTimeoutContext = 0;
+
   observers = {
     marquee(val) {
       if (JSON.stringify(val) === '{}' || JSON.stringify(val) === 'true') {
@@ -101,6 +104,7 @@ export default class Message extends SuperComponent {
       fadeClass: `${name}__fade`,
       wrapTop: unitConvert(offset[0]) + offsetHeight,
     });
+    this.reset();
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
         this.hide();
@@ -118,6 +122,7 @@ export default class Message extends SuperComponent {
   }
 
   hide() {
+    this.reset();
     this.setData({
       fadeClass: `${name}__fade`,
     });
@@ -127,6 +132,12 @@ export default class Message extends SuperComponent {
     if (typeof this.onHide === 'function') {
       this.onHide();
     }
+  }
+
+  // 重置定时器
+  reset() {
+    clearTimeout(this.closeTimeoutContext);
+    this.closeTimeoutContext = 0;
   }
 
   handleClose() {
