@@ -6,7 +6,7 @@ exports[`message props : style && customStyle 1`] = `
     id="t-message"
   >
     <t-message-item
-      id="t-message_0"
+      id="t-message"
       bind:close-btn-click="handleClose"
       bind:link-click="handleLinkClick"
     >
@@ -14,8 +14,8 @@ exports[`message props : style && customStyle 1`] = `
         animation="{{Array []}}"
         ariaRole="alert"
         class="t-message class t-class t-message--warning "
-        id="t-message_0"
-        style="z-index:15000;top:20px;left:20rpx;right:32rpx; color: red; font-size: 9px;"
+        id="t-message"
+        style="z-index:15000;top:20px;left:32rpx;right:32rpx; color: red; font-size: 9px;"
       >
         <wx-view
           class="t-message__icon--left"
