@@ -11,11 +11,11 @@ exports[`message props : style && customStyle 1`] = `
       bind:link-click="handleLinkClick"
     >
       <wx-view
-        animation="{{Array []}}"
+        animation=""
         ariaRole="alert"
         class="t-message class t-class t-message--warning "
         id="t-message_0"
-        style="z-index:15000;top:20px;left:20rpx;right:32rpx; color: red; font-size: 9px;"
+        style="z-index:15000;top:20px;left:32rpx;right:32rpx; color: red; font-size: 9px;"
       >
         <wx-view
           class="t-message__icon--left"
@@ -45,7 +45,7 @@ exports[`message props : style && customStyle 1`] = `
           style="text-align: left"
         >
           <wx-view
-            animation="{{Array []}}"
+            animation=""
             class="t-message__text t-class-content"
             id="t-message__text"
           >
