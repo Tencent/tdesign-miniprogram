@@ -83,7 +83,7 @@ const props: TdMessageProps = {
    */
   single: {
     type: Boolean,
-    value: false,
+    value: true,
   },
 };
 

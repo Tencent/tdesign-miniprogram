@@ -1,4 +1,4 @@
-import { MessageType, MessageProps } from './message.interface';
+import { MessageType, MessageProps } from '../message/message.interface';
 import { getInstance } from '../common/utils';
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
@@ -11,11 +11,12 @@ interface MessageActionOptionsType extends Optional<MessageProps> {
 const showMessage = function (options: MessageActionOptionsType, theme: MessageType = MessageType.info) {
   const { context, selector = '#t-message', ...otherOptions } = options;
   const instance = getInstance(context, selector);
-  if (typeof otherOptions.single !== 'boolean') {
-    otherOptions.single = true;
-  }
+
   if (instance) {
-    instance.setMessage(otherOptions, theme);
+    instance.resetData(() => {
+      instance.setData({ theme, ...otherOptions }, instance.show.bind(instance));
+    });
+
     return instance;
   }
   console.error('未找到组件,请确认 selector && context 是否正确');

@@ -8,6 +8,7 @@ Component({
         offset: [90, 32],
         duration: 5000,
         icon: false,
+        // single: false, // 打开注释体验多个消息叠加效果
         content: '这是一条纯文字的消息通知 5s消失',
       });
     },

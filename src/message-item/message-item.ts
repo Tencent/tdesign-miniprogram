@@ -1,8 +1,8 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../common/src/index';
-import config from '../../common/config';
-import { MessageProps } from '../message.interface';
-import props from '../props';
-import { getRect, unitConvert, calcIcon, isObject } from '../../common/utils';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import config from '../common/config';
+import { MessageProps } from '../message/message.interface';
+import props from '../message/props';
+import { getRect, unitConvert, calcIcon, isObject } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;

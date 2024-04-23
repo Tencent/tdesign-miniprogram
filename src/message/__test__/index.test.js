@@ -206,6 +206,7 @@ describe('message', () => {
           content: `这是第${i}条消息通知`,
           duration: -1,
           gap: '16',
+          single: false,
         });
       };
       showMessageFn('1');
