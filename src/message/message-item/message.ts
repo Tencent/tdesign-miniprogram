@@ -40,12 +40,22 @@ export default class Message extends SuperComponent {
     prefix,
     classPrefix: name,
     loop: -1,
+    animation: [],
+    showAnimation: [],
     wrapTop: -999, // 初始定位，保证在可视区域外。
     fadeClass: '',
   };
 
   // 延时关闭句柄
   closeTimeoutContext = 0;
+
+  // 动画句柄
+  nextAnimationContext = 0;
+
+  resetAnimation = wx.createAnimation({
+    duration: 0,
+    timingFunction: 'linear',
+  });
 
   observers = {
     marquee(val) {
@@ -82,6 +92,9 @@ export default class Message extends SuperComponent {
     ready() {
       this.memoInitialData();
     },
+    detached() {
+      this.clearMessageAnimation();
+    },
   };
 
   /** 记录组件设置的项目 */
@@ -96,6 +109,62 @@ export default class Message extends SuperComponent {
     this.setData({ ...this.initialData }, cb);
   }
 
+  /** 检查是否需要开启一个新的动画循环 */
+  checkAnimation() {
+    const { marquee } = this.properties;
+    if (!marquee || marquee.loop === 0) {
+      return;
+    }
+
+    const speeding = marquee.speed;
+
+    if (this.data.loop > 0) {
+      this.data.loop -= 1;
+    } else if (this.data.loop === 0) {
+      // 动画回到初始位置
+      this.setData({ animation: this.resetAnimation.translateX(0).step().export() });
+      return;
+    }
+
+    if (this.nextAnimationContext) {
+      this.clearMessageAnimation();
+    }
+
+    const warpID = `#${name}__text-wrap`;
+    const nodeID = `#${name}__text`;
+    Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
+      this.setData(
+        {
+          animation: this.resetAnimation.translateX(wrapRect.width).step().export(),
+        },
+        () => {
+          const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
+          const nextAnimation = wx
+            .createAnimation({
+              // 默认50px/s
+              duration: durationTime,
+            })
+            .translateX(-nodeRect.width)
+            .step()
+            .export();
+
+          // 这里就只能用 setTimeout/20, nextTick 没用
+          // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
+          setTimeout(() => {
+            this.nextAnimationContext = setTimeout(this.checkAnimation.bind(this), durationTime) as unknown as number;
+            this.setData({ animation: nextAnimation });
+          }, 20);
+        },
+      );
+    });
+  }
+
+  /** 清理动画循环 */
+  clearMessageAnimation() {
+    clearTimeout(this.nextAnimationContext);
+    this.nextAnimationContext = 0;
+  }
+
   show(offsetHeight: number = 0) {
     const { duration, marquee, offset, id } = this.properties;
     this.setData({
@@ -105,6 +174,7 @@ export default class Message extends SuperComponent {
       wrapTop: unitConvert(offset[0]) + offsetHeight,
     });
     this.reset();
+    this.checkAnimation();
     if (duration && duration > 0) {
       this.closeTimeoutContext = setTimeout(() => {
         this.hide();
@@ -127,7 +197,7 @@ export default class Message extends SuperComponent {
       fadeClass: `${name}__fade`,
     });
     setTimeout(() => {
-      this.setData({ visible: false });
+      this.setData({ visible: false, animation: [] });
     }, SHOW_DURATION);
     if (typeof this.onHide === 'function') {
       this.onHide();
@@ -136,6 +206,9 @@ export default class Message extends SuperComponent {
 
   // 重置定时器
   reset() {
+    if (this.nextAnimationContext) {
+      this.clearMessageAnimation();
+    }
     clearTimeout(this.closeTimeoutContext);
     this.closeTimeoutContext = 0;
   }
