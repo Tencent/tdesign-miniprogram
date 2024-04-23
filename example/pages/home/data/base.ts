@@ -66,10 +66,10 @@ const skylineBase = {
       name: 'Icon',
       label: '图标',
     },
-    {
-      name: 'Link',
-      label: '链接',
-    },
+    // {
+    //   name: 'Link',
+    //   label: '链接',
+    // },
     {
       name: 'Layout',
       label: '布局',
