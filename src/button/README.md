@@ -72,7 +72,7 @@ custom-dataset | Object | - | 自定义 dataset，可通过 event.currentTarget.
 disabled | Boolean | false | 禁用状态 | N
 ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
-loading | Boolean | false | 是否显示为加载状态 | N
+loading | Boolean | false | 是否显示为加载状态，skyline模式下暂不支持该属性 | N
 loading-props | Object | - | 透传至 Loading 组件。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
 shape | String | rectangle | 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形。可选项：rectangle/square/round/circle | N
 size | String | medium | 组件尺寸。可选项：extra-small/small/medium/large。TS 类型：`SizeEnum` | N
