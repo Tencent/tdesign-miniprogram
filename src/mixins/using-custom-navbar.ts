@@ -4,6 +4,10 @@ const useCustomNavbarBehavior = Behavior({
       type: Boolean,
       value: false,
     },
+    customNavbarHeight: {
+      type: Number,
+      value: 0,
+    },
   },
   data: {
     distanceTop: 0,
@@ -21,10 +25,10 @@ const useCustomNavbarBehavior = Behavior({
     calculateCustomNavbarDistanceTop() {
       const { statusBarHeight } = wx.getSystemInfoSync();
       const menuButton = wx.getMenuButtonBoundingClientRect();
-      const distanceTop = menuButton.top + menuButton.bottom - statusBarHeight;
+      const distance = menuButton.top + menuButton.bottom - statusBarHeight;
 
       this.setData({
-        distanceTop,
+        distanceTop: Math.max(distance, this.properties.customNavbarHeight),
       });
     },
   },
