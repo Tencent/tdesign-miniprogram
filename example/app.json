@@ -99,6 +99,7 @@
       "pages": ["indexes", "base/index", "custom/index"]
     }
   ],
+  "themeLocation": "theme.json",
   "usingComponents": {
     "t-demo": "./components/demo-block/index",
     "t-button": "tdesign-miniprogram/button/button",
@@ -107,7 +108,8 @@
   },
   "window": {
     "navigationBarTitleText": "TDesign",
-    "navigationStyle": "custom"
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "@navTxtStyle"
   },
   "sitemapLocation": "sitemap.json"
 }
