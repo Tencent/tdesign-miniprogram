@@ -28,7 +28,7 @@ const useCustomNavbarBehavior = Behavior({
       const distance = menuButton.top + menuButton.bottom - statusBarHeight;
 
       this.setData({
-        distanceTop: Math.max(distance, this.properties.customNavbarHeight),
+        distanceTop: Math.max(distance, this.properties.customNavbarHeight + statusBarHeight),
       });
     },
   },
