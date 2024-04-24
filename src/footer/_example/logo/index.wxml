@@ -1,8 +1,10 @@
 <!-- theme 为 logo -->
 <view class="footer-example">
-  <t-footer logo="{{logoList[0]}}" />
+  <t-footer logo="{{logo}}" />
 </view>
 
 <view class="footer-example">
-  <t-footer logo="{{logoList[1]}}" />
+  <t-footer
+    logo="{{{url: theme === 'dark'?'https://tdesign.gtimg.com/mobile/demos/footer-logo-dark.png':'https://tdesign.gtimg.com/mobile/demos/logo1.png'} }}"
+  />
 </view>

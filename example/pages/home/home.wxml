@@ -4,7 +4,7 @@
     <image
       class="title-icon"
       mode="aspectFit"
-      src="/assets/{{isDarkMode ? 'TDesign-logo_dark' : 'TDesign-logo_light'}}.png"
+      src="/assets/{{theme === 'dark' ? 'TDesign-logo_dark' : 'TDesign-logo_light'}}.png"
       aria-label="TDesign Logo"
     />
   </view>
