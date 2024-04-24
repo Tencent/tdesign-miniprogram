@@ -4,5 +4,6 @@
   bind:click="handleClick"
   bind:move="handleMove"
   aria-label="增加"
+  usingCustomNavbar="{{true}}"
   draggable="{{true}}"
 ></t-fab>

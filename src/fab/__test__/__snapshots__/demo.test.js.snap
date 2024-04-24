@@ -33,6 +33,7 @@ exports[`Fab Fab draggable demo works fine 1`] = `
     draggable="{{true}}"
     icon="gesture-press"
     text="拖我"
+    usingCustomNavbar="{{true}}"
     bind:click="handleClick"
     bind:move="handleMove"
   />
