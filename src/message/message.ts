@@ -8,14 +8,10 @@ import { unitConvert } from '../common/utils';
 const SHOW_DURATION = 400;
 const { prefix } = config;
 const name = `${prefix}-message`;
-let index = 0;
-const instances = [];
-let gap = 12; // 两条message之间的间距，单位px
 
 @wxComponent()
 export default class Message extends SuperComponent {
   options: ComponentsOptionsType = {
-    styleIsolation: 'apply-shared',
     multipleSlots: true,
   };
 
@@ -29,11 +25,26 @@ export default class Message extends SuperComponent {
     messageList: [],
   };
 
+  index = 0;
+
+  instances = [];
+
+  // 两条message之间的间距，单位px
+  gap = 12;
+
   observers = {};
 
-  ready() {
-    this.memoInitialData();
-  }
+  pageLifetimes = {
+    show() {
+      this.hideAll();
+    },
+  };
+
+  lifetimes = {
+    ready() {
+      this.memoInitialData();
+    },
+  };
 
   /** 记录组件设置的项目 */
   memoInitialData() {
@@ -49,23 +60,23 @@ export default class Message extends SuperComponent {
    * @param theme
    */
   setMessage(msg: MessageProps, theme: MessageType = MessageType.info) {
-    let id = `${name}_${index}`;
+    let id = `${name}_${this.index}`;
     if (msg.single) {
       id = name;
     }
-    gap = unitConvert(msg.gap || gap);
+    this.gap = unitConvert(msg.gap || this.gap);
     const msgObj = {
       ...msg,
       theme,
       id,
-      gap,
+      gap: this.gap,
     };
-    const instanceIndex = instances.findIndex((x) => x.id === id);
+    const instanceIndex = this.instances.findIndex((x) => x.id === id);
     if (instanceIndex < 0) {
       this.addMessage(msgObj);
     } else {
       // 更新消息
-      const instance = instances[instanceIndex];
+      const instance = this.instances[instanceIndex];
       const offsetHeight = this.getOffsetHeight(instanceIndex);
       instance.resetData(() => {
         instance.setData(msgObj, instance.show.bind(instance, offsetHeight));
@@ -89,9 +100,9 @@ export default class Message extends SuperComponent {
       () => {
         const offsetHeight = this.getOffsetHeight();
         const instance = this.showMessageItem(msgObj, msgObj.id, offsetHeight);
-        if (instances) {
-          instances.push(instance);
-          index += 1;
+        if (this.instances) {
+          this.instances.push(instance);
+          this.index += 1;
         }
       },
     );
@@ -105,11 +116,11 @@ export default class Message extends SuperComponent {
   getOffsetHeight(index: number = -1) {
     let offsetHeight = 0;
     let len = index;
-    if (len === -1 || len > instances.length) {
-      len = instances.length;
+    if (len === -1 || len > this.instances.length) {
+      len = this.instances.length;
     }
     for (let i = 0; i < len; i += 1) {
-      const instance = instances[i];
+      const instance = this.instances[i];
       offsetHeight += instance.data.height + instance.data.gap;
     }
     return offsetHeight;
@@ -152,7 +163,7 @@ export default class Message extends SuperComponent {
     if (!id) {
       this.hideAll();
     }
-    const instance = instances.find((x) => x.id === id);
+    const instance = this.instances.find((x) => x.id === id);
     if (instance) {
       instance.hide();
     }
@@ -163,8 +174,8 @@ export default class Message extends SuperComponent {
    */
   hideAll() {
     // 消息移除后也会移除instance，下标不用增加，直至全部删除
-    for (let i = 0; i < instances.length; ) {
-      const instance = instances[i];
+    for (let i = 0; i < this.instances.length; ) {
+      const instance = this.instances[i];
       instance.hide();
     }
   }
@@ -173,13 +184,13 @@ export default class Message extends SuperComponent {
    * 移除message实例
    */
   removeInstance(id) {
-    const index = instances.findIndex((x) => x.id === id);
+    const index = this.instances.findIndex((x) => x.id === id);
     if (index < 0) return;
-    const instance = instances[index];
+    const instance = this.instances[index];
     const removedHeight = instance.data.height;
-    instances.splice(index, 1);
-    for (let i = index; i < instances.length; i += 1) {
-      const instance = instances[i];
+    this.instances.splice(index, 1);
+    for (let i = index; i < this.instances.length; i += 1) {
+      const instance = this.instances[i];
       instance.setData({
         wrapTop: instance.data.wrapTop - removedHeight - instance.data.gap,
       });

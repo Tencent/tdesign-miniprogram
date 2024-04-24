@@ -1,7 +1,4 @@
 Component({
-  options: {
-    styleIsolation: 'apply-shared',
-  },
   data: {
     value: 3.5,
   },

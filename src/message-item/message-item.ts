@@ -1,8 +1,8 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../common/src/index';
-import config from '../../common/config';
-import { MessageProps } from '../message.interface';
-import props from '../props';
-import { getRect, unitConvert, calcIcon, isObject } from '../../common/utils';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import config from '../common/config';
+import { MessageProps } from '../message/message.interface';
+import props from '../message/props';
+import { getRect, unitConvert, calcIcon, isObject } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-message`;
@@ -29,7 +29,6 @@ export default class Message extends SuperComponent {
   ];
 
   options: ComponentsOptionsType = {
-    styleIsolation: 'apply-shared',
     multipleSlots: true,
   };
 
@@ -46,6 +45,17 @@ export default class Message extends SuperComponent {
     wrapTop: -999, // 初始定位，保证在可视区域外。
     fadeClass: '',
   };
+
+  // 延时关闭句柄
+  closeTimeoutContext = 0;
+
+  // 动画句柄
+  nextAnimationContext = 0;
+
+  resetAnimation = wx.createAnimation({
+    duration: 0,
+    timingFunction: 'linear',
+  });
 
   observers = {
     marquee(val) {
@@ -78,20 +88,14 @@ export default class Message extends SuperComponent {
     },
   };
 
-  /** 延时关闭句柄 */
-  closeTimeoutContext = 0;
-
-  /** 动画句柄 */
-  nextAnimationContext = 0;
-
-  resetAnimation = wx.createAnimation({
-    duration: 0,
-    timingFunction: 'linear',
-  });
-
-  ready() {
-    this.memoInitialData();
-  }
+  lifetimes = {
+    ready() {
+      this.memoInitialData();
+    },
+    detached() {
+      this.clearMessageAnimation();
+    },
+  };
 
   /** 记录组件设置的项目 */
   memoInitialData() {
@@ -103,10 +107,6 @@ export default class Message extends SuperComponent {
 
   resetData(cb: () => void) {
     this.setData({ ...this.initialData }, cb);
-  }
-
-  detached() {
-    this.clearMessageAnimation();
   }
 
   /** 检查是否需要开启一个新的动画循环 */
@@ -152,7 +152,6 @@ export default class Message extends SuperComponent {
           // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
           setTimeout(() => {
             this.nextAnimationContext = setTimeout(this.checkAnimation.bind(this), durationTime) as unknown as number;
-
             this.setData({ animation: nextAnimation });
           }, 20);
         },

@@ -1,10 +1,9 @@
 <block wx:for="{{messageList}}" wx:key="id">
   <t-message-item id="{{item.id}}" bind:close-btn-click="handleClose" bind:link-click="handleLinkClick">
-    <block wx:if="{{index === 0}}">
-      <slot name="icon" slot="icon"></slot>
-      <slot> </slot>
-      <slot name="link" slot="link"></slot>
-      <slot name="close-btn" slot="close-btn"></slot>
-    </block>
+    <slot name="icon" slot="icon" />
+    <slot name="content" slot="content" />
+    <slot />
+    <slot name="link" slot="link" />
+    <slot name="close-btn" slot="close-btn" />
   </t-message-item>
 </block>

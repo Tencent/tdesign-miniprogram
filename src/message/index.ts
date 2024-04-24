@@ -11,7 +11,9 @@ interface MessageActionOptionsType extends Optional<MessageProps> {
 const showMessage = function (options: MessageActionOptionsType, theme: MessageType = MessageType.info) {
   const { context, selector = '#t-message', ...otherOptions } = options;
   const instance = getInstance(context, selector);
-
+  if (typeof otherOptions.single !== 'boolean') {
+    otherOptions.single = true;
+  }
   if (instance) {
     instance.setMessage(otherOptions, theme);
     return instance;

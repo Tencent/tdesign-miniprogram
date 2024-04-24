@@ -1,5 +1,5 @@
-import { MessageType, MessageProps } from '../message.interface';
-import { getInstance } from '../../common/utils';
+import { MessageType, MessageProps } from '../message/message.interface';
+import { getInstance } from '../common/utils';
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 

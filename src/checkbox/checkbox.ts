@@ -48,7 +48,6 @@ export default class CheckBox extends SuperComponent {
 
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    // styleIsolation: 'shared',
   };
 
   properties = {

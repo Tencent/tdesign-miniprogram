@@ -1,5 +1,6 @@
 {
   "component": true,
+  "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-step": "../step-item/step-item"
   }

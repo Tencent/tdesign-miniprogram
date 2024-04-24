@@ -1,6 +1,6 @@
-<wxs src="./message.wxs" module="this"></wxs>
-<wxs src="../../common/utils.wxs" module="_" />
-<import src="../../common/template/icon.wxml" />
+<wxs src="./message-item.wxs" module="this"></wxs>
+<wxs src="../common/utils.wxs" module="_" />
+<import src="../common/template/icon.wxml" />
 <block wx:if="{{visible}}">
   <view
     class="{{classPrefix}} class {{prefix}}-class {{classPrefix}}--{{theme}} {{fadeClass}}"
