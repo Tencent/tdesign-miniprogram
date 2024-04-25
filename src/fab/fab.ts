@@ -42,7 +42,6 @@ export default class Fab extends SuperComponent {
           },
         },
         this.computedSize?.bind(this),
-        () => this.computedSize,
       );
     },
   };

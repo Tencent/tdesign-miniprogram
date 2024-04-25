@@ -4,6 +4,7 @@
   visible="{{visible}}"
   placement="{{placement}}"
   items="{{sidebar}}"
+  usingCustomNavbar
   bind:overlay-click="overlayClick"
   bind:item-click="itemClick"
 ></t-drawer>

@@ -45,10 +45,10 @@ const skylineNav = {
       name: 'BackTop',
       label: '返回顶部',
     },
-    // {
-    //   name: 'Drawer',
-    //   label: '抽屉',
-    // },
+    {
+      name: 'Drawer',
+      label: '抽屉',
+    },
     {
       name: 'Navbar',
       label: '导航栏',
