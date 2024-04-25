@@ -30,11 +30,6 @@ const props: TdNavbarProps = {
     type: Boolean,
     value: false,
   },
-  /** 是否展示左侧胶囊 */
-  capsule: {
-    type: Boolean,
-    value: true,
-  },
   /** 页面标题 */
   title: {
     type: String,

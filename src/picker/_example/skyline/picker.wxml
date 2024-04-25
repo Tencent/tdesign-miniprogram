@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar title="Picker" left-arrow capsule="{{false}}" />
+  <t-navbar title="Picker" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <picker />
   </scroll-view>

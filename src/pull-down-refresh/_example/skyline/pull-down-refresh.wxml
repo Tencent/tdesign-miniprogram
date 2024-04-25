@@ -1,2 +1,2 @@
-<t-navbar title="PullDownRefresh" left-arrow capsule="{{false}}" />
+<t-navbar title="PullDownRefresh" left-arrow />
 <base />

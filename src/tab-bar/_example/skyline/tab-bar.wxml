@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar class="block" title="TabBar" left-arrow capsule="{{false}}" />
+  <t-navbar class="block" title="TabBar" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view" scroll-top="{{scrollTo}}" bindscroll="onScroll">
     <view class="demo">
       <view class="demo-title">TabBar 标签栏</view>

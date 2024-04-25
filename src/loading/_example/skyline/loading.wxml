@@ -1,4 +1,4 @@
-<t-navbar title="Loading" left-arrow capsule="{{false}}" />
+<t-navbar title="Loading" left-arrow />
 <view class="demo">
   <view class="demo-title">Loading 加载</view>
   <view class="demo-desc"

@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar class="block" title="BackTop" left-arrow capsule="{{false}}" />
+  <t-navbar class="block" title="BackTop" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view" scroll-top="{{scrollTo}}" bindscroll="onScroll">
     <view class="demo">
       <view class="demo-title">BackTop 返回顶部</view>

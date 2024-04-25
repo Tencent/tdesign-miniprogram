@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar title="Fab" left-arrow capsule="{{false}}" />
+  <t-navbar title="Fab" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Fab 悬浮按钮</view>

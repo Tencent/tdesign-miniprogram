@@ -2,7 +2,6 @@
   <t-navbar
     t-class-placeholder="t-navbar-placeholder"
     t-class-content="t-navbar-content"
-    capsule="{{false}}"
     title="标题文字"
     t-class-title="nav-title"
   />
@@ -12,7 +11,6 @@
   <t-navbar
     t-class-placeholder="t-navbar-placeholder"
     t-class-content="t-navbar-content"
-    capsule="{{false}}"
     class="block"
     title="标题文字"
     left-arrow

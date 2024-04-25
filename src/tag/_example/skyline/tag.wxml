@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar class="block" title="Tag" left-arrow capsule="{{false}}" />
+  <t-navbar class="block" title="Tag" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Tag 标签</view>

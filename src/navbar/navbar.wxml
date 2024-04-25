@@ -10,7 +10,7 @@
         <t-icon name="chevron-left" class="{{classPrefix}}__left-arrow" />
       </view>
       <slot name="left" />
-      <view wx:if="{{capsule}}" class="{{classPrefix}}__capsule {{prefix}}-class-capsule">
+      <view class="{{classPrefix}}__capsule {{prefix}}-class-capsule">
         <slot name="capsule" />
       </view>
     </view>
