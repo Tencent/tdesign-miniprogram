@@ -1,6 +1,7 @@
 {
   "component": true,
   "addGlobalClass": true,
+  "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-swiper-nav": "../swiper-nav/swiper-nav",
     "t-image": "../image/image"

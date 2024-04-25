@@ -1,10 +1,10 @@
-@import '../../../src/common/style/_variables.less';
+@import '../../../src/common/index.less';
 
 .demo-block {
   margin: @spacer-4 0 0;
 
   &__header {
-    color: #000;
+    color: var(--bg-color-demo-title);
     margin: 0 @spacer-2;
 
     &-title {
@@ -17,7 +17,7 @@
       margin-top: @spacer;
       font-size: @font-size-base;
       white-space: pre-line;
-      color: @font-gray-2;
+      color: var(--bg-color-demo-desc);
       line-height: 22px;
     }
   }

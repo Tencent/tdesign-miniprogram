@@ -1,4 +1,69 @@
-:: BASE_DOC ::
+---
+title: Button
+description: Buttons are used to open a closed-loop task, such as "delete" an object, "buy" an item, etc.
+spline: base
+isComponent: true
+---
+
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-83%25-blue" /></span>
+
+
+## Usage
+
+For global import, configure it in `app.json` in the root directory of the miniprogram. For local import, configure it in `index.json` of the page or component that needs to be imported.
+
+```json
+"usingComponents": {
+  "t-button": "tdesign-miniprogram/button/button"
+}
+```
+
+
+## Code Demo
+
+### 01 Component Type
+
+#### Basic Buttons
+
+{{ base }}
+
+#### Icon Button
+
+{{ icon-btn }}
+
+#### Ghost Button
+
+{{ ghost-btn }}
+
+#### Combination Button
+
+{{ group-btn }}
+
+#### Banner Button
+
+{{ block-btn }}
+
+### 02 Component State
+
+#### Buttons for different states
+
+{{ disabled }}
+
+### 03 Component Style
+
+#### Different sizes of buttons
+
+{{ size }}
+
+#### Different shaped buttons
+
+{{ shape }}
+
+#### Different color theme buttons
+
+{{ theme }}
+
+
 
 ## API
 ### Button Props
@@ -46,6 +111,14 @@ bindagreeprivacyauthorization | Eventhandle | - | \-| N
 name | params | description
 -- | -- | --
 tap | `(e: MouseEvent)` | trigger on click
+
+
+### Button ExternalClasses
+类名 | 说明
+-- | -- 
+t-class | root
+t-class-icon | icon node
+t-class-loading | loading node
 
 
 ### CSS Variables

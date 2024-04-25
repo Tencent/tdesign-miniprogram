@@ -6,7 +6,7 @@
   <view class="childBox" style="height: {{ childBoxHeight }}rpx" aria-hidden="{{childBoxHeight ? '' : true}}">
     <view class="child" wx:for="{{childArr}}" wx:key="name" data-item="{{item}}" aria-role="button" bind:tap="tapChild">
       {{ item.name }} {{ item.label }}
-      <t-icon name="chevron-right" color="#bbb" aria-hidden />
+      <t-icon name="chevron-right" color="var(--td-text-color-placeholder)" aria-hidden />
     </view>
   </view>
 </view>

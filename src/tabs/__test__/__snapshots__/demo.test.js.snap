@@ -355,8 +355,8 @@ exports[`Tabs Tabs with-badge demo works fine 1`] = `
         Object {
           "dot": true,
           "offset": Array [
-            "-10rpx",
-            "4rpx",
+            "4px",
+            "4px",
           ],
         }
       }}"
@@ -368,8 +368,8 @@ exports[`Tabs Tabs with-badge demo works fine 1`] = `
         Object {
           "count": 8,
           "offset": Array [
-            "-16rpx",
-            "8rpx",
+            "8px",
+            "8px",
           ],
         }
       }}"

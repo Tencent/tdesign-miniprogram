@@ -1,4 +1,5 @@
 {
+  "darkmode": true,
   "pages": [
     "pages/home/home",
     "pages/button/button",
@@ -133,17 +134,17 @@
       "pages": ["indexes", "base/index", "custom/index"]
     }
   ],
+  "themeLocation": "theme.json",
   "usingComponents": {
     "t-demo": "./components/demo-block/index",
     "t-button": "tdesign-miniprogram/button/button",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar"
   },
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f6f6f6",
-    "backgroundColor": "#f6f6f6",
     "navigationBarTitleText": "TDesign",
-    "navigationBarTextStyle": "black"
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "@navTxtStyle"
   },
   "resolveAlias": {
     "@behaviors/*": "behaviors/*"

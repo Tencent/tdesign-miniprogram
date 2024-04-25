@@ -1,5 +1,6 @@
 {
   "component": true,
+  "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-grid": "../grid/grid",
     "t-grid-item": "../grid-item/grid-item",

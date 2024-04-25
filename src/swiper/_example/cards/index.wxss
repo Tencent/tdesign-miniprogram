@@ -1,9 +1,8 @@
-
 .card-theme {
   --td-swiper-radius: 0;
   --td-swiper-item-padding: 0 12rpx;
-  --td-swiper-nav-dot-color: #e7e7e7;
-  --td-swiper-nav-dot-active-color: #0052d9;
+  --td-swiper-nav-dot-color: var(--td-bg-color-component, #e7e7e7);
+  --td-swiper-nav-dot-active-color: var(--td-brand-color, #0052d9);
 
   padding-bottom: 18px;
 }
@@ -15,4 +14,3 @@
 .scale-candidate {
   height: 126px !important;
 }
-

@@ -6,3 +6,4 @@ Component({
   },
   behaviors: [SkylineBehavior],
 });
+Component({});

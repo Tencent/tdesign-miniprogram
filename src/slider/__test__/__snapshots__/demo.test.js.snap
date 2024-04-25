@@ -243,3 +243,100 @@ exports[`Slider Slider step demo works fine 1`] = `
   </wx-view>
 </step>
 `;
+
+exports[`Slider Slider vertical demo works fine 1`] = `
+<vertical>
+  <wx-view
+    class="demo-desc"
+  >
+    单游标垂直滑块
+  </wx-view>
+  <wx-view
+    class="wrapper"
+  >
+    <t-slider
+      label="\${value}"
+      value="{{35}}"
+      vertical="{{true}}"
+      bind:change="handleChange"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    带刻度的双游标垂直滑块
+  </wx-view>
+  <wx-view
+    class="wrapper"
+  >
+    <t-slider
+      defaultValue="{{
+        Array [
+          20,
+          60,
+        ]
+      }}"
+      marks="{{
+        Object {
+          "0": "0",
+          "100": "100",
+          "20": "20",
+          "40": "40",
+          "60": "60",
+          "80": "80",
+        }
+      }}"
+      range="{{true}}"
+      step="{{20}}"
+      vertical="{{true}}"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    胶囊型垂直滑块
+  </wx-view>
+  <wx-view
+    class="wrapper"
+  >
+    <t-slider
+      label="\${value}"
+      theme="capsule"
+      value="{{35}}"
+      vertical="{{true}}"
+      bind:change="handleChange"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    带刻度的胶囊型垂直滑块
+  </wx-view>
+  <wx-view
+    class="wrapper"
+  >
+    <t-slider
+      defaultValue="{{
+        Array [
+          20,
+          80,
+        ]
+      }}"
+      marks="{{
+        Object {
+          "0": "0",
+          "100": "100",
+          "20": "20",
+          "40": "40",
+          "60": "60",
+          "80": "80",
+        }
+      }}"
+      range="{{true}}"
+      step="{{20}}"
+      theme="capsule"
+      vertical="{{true}}"
+    />
+  </wx-view>
+</vertical>
+`;

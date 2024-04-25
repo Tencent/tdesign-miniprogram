@@ -1,5 +1,5 @@
+import themeChangeBehavior from 'tdesign-miniprogram/mixins/theme-change';
+
 Component({
-  data: {
-    image: 'https://tdesign.gtimg.com/mobile/demos/logo1.png',
-  },
+  behaviors: [themeChangeBehavior],
 });

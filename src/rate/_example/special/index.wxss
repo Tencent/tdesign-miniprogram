@@ -1,8 +1,9 @@
 .demo-rate {
-  background-color: #fff;
+  background-color: var(--bg-color-demo);
+  color: var(--td-text-color-primary);
   padding: 32rpx;
-  border-bottom: solid 1rpx #f0f0f0;
-  border-top: solid 1rpx #f0f0f0;
+  border-bottom: solid 1rpx var(--bg-color-demo-border);
+  border-top: solid 1rpx var(--bg-color-demo-border);
   margin-top: 32rpx;
   margin-bottom: 32rpx;
 }

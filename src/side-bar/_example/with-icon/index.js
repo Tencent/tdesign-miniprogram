@@ -47,18 +47,18 @@ Page({
         items: items.slice(0, 3),
       },
     ],
+    navbarHeight: 0,
   },
   onLoad() {
     const query = wx.createSelectorQuery().in(this);
     const { sideBarIndex } = this.data;
-
-    query
-      .selectAll('.title')
-      .boundingClientRect((rects) => {
-        this.offsetTopList = rects.map((item) => item.top);
-        this.setData({ scrollTop: rects[sideBarIndex].top });
-      })
-      .exec();
+    query.selectAll('.title').boundingClientRect();
+    query.select('.custom-navbar').boundingClientRect();
+    query.exec((res) => {
+      const [rects, { height: navbarHeight = 0 }] = res;
+      this.offsetTopList = rects.map((item) => item.top - navbarHeight);
+      this.setData({ navbarHeight, scrollTop: this.offsetTopList[sideBarIndex] });
+    });
   },
   onSideBarChange(e) {
     const { value } = e.detail;

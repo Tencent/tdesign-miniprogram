@@ -2,10 +2,11 @@
   display: flex;
   align-items: center;
 }
+
 .suffix--line {
   width: 1px;
   height: 24px;
-  background-color: #f6f6f6;
+  background-color: var(--td-component-stroke, #f3f3f3);
   margin-right: 16px;
 }
 
@@ -22,6 +23,6 @@
 }
 
 .verify {
-  color: rgba(0, 82, 217, 1);
+  color: var(--td-brand-color, #0052D9);
   font-size: 32rpx;
 }

@@ -1,8 +1,4 @@
 Component({
-  options: {
-    styleIsolation: 'apply-shared',
-  },
-
   data: {
     singlevalue: 35,
     capsuleValue: 35,

@@ -12,12 +12,12 @@
 @message-bg-color: var(--td-message-bg-color, @bg-color-container); // 消息通知背景颜色
 @message-box-shadow: var(--td-message-box-shadow, @shadow-4); // 消息通知阴影
 @message-border-radius: var(--td-message-border-radius, @radius-default); // 消息通知圆角大小
-@message-content-font-color: var(--td-message-content-font-color, @font-gray-1); // 内容文本颜色
+@message-content-font-color: var(--td-message-content-font-color, @text-color-primary); // 内容文本颜色
 @message-info-color: var(--td-message-info-color, @brand-color); // 'info'主题色
 @message-success-color: var(--td-message-success-color, @success-color); // 'success'主题色
 @message-warning-color: var(--td-message-warning-color, @warning-color); // 'warning'主题色
 @message-error-color: var(--td-message-error-color, @error-color); // 'error'主题色
-@message-close-icon-color: var(--td-message-close-icon-color, @font-gray-3); // 关闭按钮图标颜色
+@message-close-icon-color: var(--td-message-close-icon-color, @text-color-placeholder); // 关闭按钮图标颜色
 
 @message: ~'@{prefix}-message';
 
@@ -26,6 +26,7 @@
   top: 0;
   left: 0;
   right: 0;
+  transition: opacity 0.3s, transform 0.4s, top 0.4s;
   display: flex;
   justify-content: @message-align;
   height: @message-height;
@@ -89,5 +90,9 @@
   &__link {
     flex: 0 0 auto;
     margin-left: @spacer;
+  }
+  &__fade {
+    opacity: 0;
+    transform: translateY(-100%);
   }
 }

@@ -1,6 +1,5 @@
 .block {
-  /*background: #fff;*/
-  color: #333;
+  color: var(--td-text-color-secondary);
   display: flex;
   align-items: center;
   justify-content: center;

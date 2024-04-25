@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'capsule', 'disabled', 'label', 'max', 'range', 'step'];
+const mapper = ['base', 'capsule', 'disabled', 'label', 'max', 'range', 'step', 'vertical'];
 
 describe('Slider', () => {
   mapper.forEach((demoName) => {

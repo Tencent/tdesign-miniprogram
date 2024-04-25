@@ -1,5 +1,6 @@
 {
   "component": true,
+  "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-picker": "../picker/picker",
     "t-picker-item": "../picker-item/picker-item"

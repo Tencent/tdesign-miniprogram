@@ -1,6 +1,8 @@
+import themeChangeBehavior from 'tdesign-miniprogram/mixins/theme-change';
 import { list, skylineList } from './data/index';
 
 Page({
+  behaviors: [themeChangeBehavior],
   data: {
     list: [],
     currentYear: new Date().getFullYear(),

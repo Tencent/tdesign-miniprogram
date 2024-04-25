@@ -199,14 +199,14 @@ export const getInstance = function (context?: Context, selector?: string) {
   return instance;
 };
 
-export const unitConvert = (value: number | string): number => {
+export const unitConvert = (value: number | string | null | undefined): number => {
   if (typeof value === 'string') {
     if (value.includes('rpx')) {
       return (parseInt(value, 10) * (systemInfo?.screenWidth ?? 750)) / 750;
     }
     return parseInt(value, 10);
   }
-  return value;
+  return value ?? 0;
 };
 
 export const setIcon = (iconName, icon, defaultIcon) => {

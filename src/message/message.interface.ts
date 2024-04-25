@@ -21,4 +21,7 @@ export interface MessageProps {
   offset?: object;
   duration?: number;
   zIndex?: number;
+  id?: string;
+  gap?: string | number;
+  single?: boolean;
 }

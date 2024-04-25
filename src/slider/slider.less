@@ -1,16 +1,17 @@
 @import '../common/style/index.less';
 
 @slider: ~'@{prefix}-slider';
+@slider-text-color: var(--td-slider-text-color, @text-color-primary);
 @slider-bar-width: var(--td-slider-bar-width, 8rpx);
 @slider-bar-height: var(--td-slider-bar-height, 8rpx);
-@slider-dot-bg-color: var(--td-slider-dot-bg-color, @bg-color-container);
+@slider-dot-bg-color: var(--td-slider-dot-bg-color, #fff);
 @slider-dot-size: var(--td-slider-dot-size, 40rpx);
-@slider-dot-color: var(--td-slider-dot-color, @bg-color-secondarycontainer);
-@slider-default-color: var(--td-slider-default-color, @bg-color-secondarycomponent);
+@slider-dot-color: var(--td-slider-dot-color, @component-border);
+@slider-default-color: var(--td-slider-default-color, @bg-color-component);
 @slider-default-disabled-color: var(--td-slider-default-color, @bg-color-component-disabled);
 @slider-active-color: var(--td-slider-active-color, @brand-color);
 @slider-active-disabled-color: var(--td-slider-disabled-color, @brand-color-disabled);
-@slider-disabled-text-color: var(--td-slider-disabled-text-color, @font-gray-4);
+@slider-disabled-text-color: var(--td-slider-disabled-text-color, @text-color-disabled);
 
 // capsule
 @slider-capsule-bar-heihgt: var(--td-slider-capsule-bar-heihgt, 48rpx);
@@ -19,6 +20,7 @@
 @slider-capsule-line-heihgt: var(--td-slider-capsule-line-heihgt, 36rpx);
 
 .@{slider} {
+  width: 100%;
   font-size: 14px;
   display: flex;
   align-items: center;
@@ -91,7 +93,7 @@
   &__value,
   &__range-extreme,
   &__dot-value {
-    color: rgba(0, 0, 0, 0.9);
+    color: @slider-text-color;
     &--sr-only {
       position: absolute;
       width: 1px;
@@ -207,7 +209,7 @@
     &-desc {
       position: absolute;
       left: 50%;
-      color: rgba(0, 0, 0, 0.9);
+      color: @slider-text-color;
       transform: translateX(-50%);
       bottom: 32rpx;
 

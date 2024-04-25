@@ -10,7 +10,6 @@ const name = `${prefix}-avatar`;
 export default class Avatar extends SuperComponent {
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
-    styleIsolation: 'apply-shared',
   };
 
   externalClasses = [

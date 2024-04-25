@@ -15,7 +15,6 @@ export default class Calendar extends SuperComponent {
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
-    styleIsolation: 'apply-shared',
   };
 
   properties = props;
@@ -85,9 +84,11 @@ export default class Calendar extends SuperComponent {
       }
     },
     format(v) {
+      const { usePopup, visible } = this.data;
+
       this.base.format = v;
 
-      if (!this.data.usePopup) {
+      if (!usePopup || visible) {
         this.calcMonths();
       }
     },

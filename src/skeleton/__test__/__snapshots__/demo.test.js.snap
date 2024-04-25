@@ -223,7 +223,6 @@ exports[`Skeleton Skeleton theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-skeleton
-        loading="{{true}}"
         theme="avatar"
       />
     </wx-view>
@@ -238,7 +237,6 @@ exports[`Skeleton Skeleton theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-skeleton
-        loading="{{true}}"
         theme="image"
       />
     </wx-view>
@@ -253,7 +251,6 @@ exports[`Skeleton Skeleton theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-skeleton
-        loading="{{true}}"
         theme="text"
       />
     </wx-view>
@@ -268,7 +265,6 @@ exports[`Skeleton Skeleton theme demo works fine 1`] = `
       class="demo-section__content"
     >
       <t-skeleton
-        loading="{{true}}"
         theme="paragraph"
       />
     </wx-view>
