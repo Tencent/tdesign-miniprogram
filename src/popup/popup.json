@@ -1,6 +1,5 @@
 {
   "component": true,
-  "addGlobalClass": true,
   "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-overlay": "../overlay/overlay",
