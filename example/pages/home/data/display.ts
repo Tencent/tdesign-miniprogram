@@ -81,10 +81,10 @@ const skylineDisplay = {
   name: '数据展示',
   icon: 'image',
   childArr: [
-    // {
-    //   name: 'Badge',
-    //   label: '徽标',
-    // },
+    {
+      name: 'Badge',
+      label: '徽标',
+    },
     {
       name: 'Cell',
       label: '单元格',

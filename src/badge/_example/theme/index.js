@@ -1,9 +1,15 @@
-import SkylineBehavior from '@behaviors/skyline.js';
-
 Component({
   options: {
     styleIsolation: 'apply-shared',
   },
-  behaviors: [SkylineBehavior],
 });
-Component({});
+Component({
+  data: {
+    skylineRender: false,
+  },
+  lifetimes: {
+    created() {
+      this.setData({ skylineRender: this.renderer === 'skyline' });
+    },
+  },
+});
