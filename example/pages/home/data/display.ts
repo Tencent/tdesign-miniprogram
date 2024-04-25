@@ -97,14 +97,14 @@ const skylineDisplay = {
       name: 'CountDown',
       label: '倒计时',
     },
-    // {
-    //   name: 'Empty',
-    //   label: '空状态',
-    // },
-    // {
-    //   name: 'Footer',
-    //   label: '页脚',
-    // },
+    {
+      name: 'Empty',
+      label: '空状态',
+    },
+    {
+      name: 'Footer',
+      label: '页脚',
+    },
     {
       name: 'Image',
       label: '图片',
@@ -117,10 +117,10 @@ const skylineDisplay = {
     //   name: 'Progress',
     //   label: '进度条',
     // },
-    // {
-    //   name: 'Result',
-    //   label: '结果',
-    // },
+    {
+      name: 'Result',
+      label: '结果',
+    },
     {
       name: 'Skeleton',
       label: '骨架屏',
