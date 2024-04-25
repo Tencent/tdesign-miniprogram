@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import transition from '../mixins/transition';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-overlay`;
@@ -29,7 +30,7 @@ export default class Overlay extends SuperComponent {
     },
   };
 
-  behaviors = [transition()];
+  behaviors = [transition(), useCustomNavbar];
 
   data = {
     prefix,
