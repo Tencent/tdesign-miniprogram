@@ -155,8 +155,7 @@
     "skyline": {
       "defaultDisplayBlock": true,
       "defaultContentBox": true,
-      "sdkVersionBegin": "3.0.0",
-      "__useTextStyle": true
+      "sdkVersionBegin": "3.4.2"
     }
   }
 }
