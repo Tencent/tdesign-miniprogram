@@ -9,7 +9,6 @@ export default class Divider extends SuperComponent {
   externalClasses = [`${prefix}-class`, `${prefix}-class-content`];
 
   options = {
-    addGlobalClass: true,
     multipleSlots: true,
   };
 

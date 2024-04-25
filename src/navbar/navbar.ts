@@ -23,7 +23,6 @@ export default class Navbar extends SuperComponent {
   timer = null;
 
   options = {
-    addGlobalClass: true,
     multipleSlots: true,
   };
 
