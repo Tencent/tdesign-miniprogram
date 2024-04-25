@@ -1,12 +1,15 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-picker`;
 
 @wxComponent()
 export default class Picker extends SuperComponent {
+  behaviors = [useCustomNavbar];
+
   properties = props;
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`];

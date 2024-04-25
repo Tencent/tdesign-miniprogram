@@ -4,6 +4,7 @@
   class="class"
   visible="{{visible}}"
   placement="bottom"
+  usingCustomNavbar="{{usingCustomNavbar}}"
   bind:visible-change="onPopupChange"
   z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
   overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"

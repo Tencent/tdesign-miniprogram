@@ -2,12 +2,15 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { isObject, toCamel } from '../common/utils';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-dialog`;
 
 @wxComponent()
 export default class Dialog extends SuperComponent {
+  behaviors = [useCustomNavbar];
+
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
   };

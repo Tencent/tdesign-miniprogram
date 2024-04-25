@@ -81,10 +81,10 @@ const skylineForm = {
     //   name: 'DateTimePicker',
     //   label: '时间选择器',
     // },
-    // {
-    //   name: 'Input',
-    //   label: '输入框',
-    // },
+    {
+      name: 'Input',
+      label: '输入框',
+    },
     // {
     //   name: 'Picker',
     //   label: '选择器',
