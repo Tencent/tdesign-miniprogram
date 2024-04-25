@@ -20,10 +20,7 @@
   width: 0;
   border-width: 28px 28px 28px 0;
   border-style: solid;
-  border-color: #0052d9 transparent transparent transparent;
-  border: 14px solid var(--td-brand-color, #0052d9);
-  border-bottom-color: transparent;
-  border-right-color: transparent;
+  border-color: var(--td-brand-color, #0052d9) transparent transparent transparent;
 }
 
 .card__icon {

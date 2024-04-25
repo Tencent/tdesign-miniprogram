@@ -73,10 +73,10 @@ const skylineForm = {
   name: '输入',
   icon: 'bulletpoint',
   childArr: [
-    // {
-    //   name: 'Checkbox',
-    //   label: '多选框',
-    // },
+    {
+      name: 'Checkbox',
+      label: '多选框',
+    },
     // {
     //   name: 'DateTimePicker',
     //   label: '时间选择器',
@@ -89,10 +89,10 @@ const skylineForm = {
     //   name: 'Picker',
     //   label: '选择器',
     // },
-    // {
-    //   name: 'Radio',
-    //   label: '单选框',
-    // },
+    {
+      name: 'Radio',
+      label: '单选框',
+    },
     // {
     //   name: 'Slider',
     //   label: '滑动选择器',
