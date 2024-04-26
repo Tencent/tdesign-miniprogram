@@ -7,6 +7,7 @@
     disabled="{{disabled || false}}"
     data-type="{{type}}"
     data-extra="{{extra}}"
+    content="{{content || ''}}"
     icon="{{icon || ''}}"
     loading="{{loading || false}}"
     theme="{{theme || 'default'}}"
@@ -35,6 +36,5 @@
     bind:launchapp="onTplButtonTap"
     bind:agreeprivacyauthorization="onTplButtonTap"
     aria-label="{{ariaLabel || ''}}"
-    >{{content}}</t-button
-  >
+  />
 </template>
