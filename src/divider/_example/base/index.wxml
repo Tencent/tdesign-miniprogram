@@ -2,9 +2,9 @@
 
 <view class="divider-demo__title">带文字水平分割线</view>
 
-<t-divider t-class-content="{{skylineRender?'skyline-content':''}}" content="文字信息" align="left" />
-<t-divider t-class-content="{{skylineRender?'skyline-content':''}}" content="文字信息" />
-<t-divider t-class-content="{{skylineRender?'skyline-content':''}}" content="文字信息" align="right" />
+<t-divider content="文字信息" align="left" />
+<t-divider content="文字信息" />
+<t-divider content="文字信息" align="right" />
 
 <view class="divider-demo__title">垂直分割线</view>
 

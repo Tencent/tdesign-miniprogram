@@ -12,7 +12,3 @@
   color: var(--td-text-color-primary);
   padding-left: 32rpx;
 }
-
-.skyline-content {
-  margin: 0 24rpx;
-}

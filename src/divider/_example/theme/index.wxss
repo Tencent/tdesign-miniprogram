@@ -9,10 +9,6 @@
   margin: 0 32rpx;
 }
 
-.skyline-content {
-  margin: 0 24rpx;
-}
-
 /* 兼容skyline写法，后续skyline支持border-top后可删除 */
 .skyline-dashed {
   border-style: unset !important;
