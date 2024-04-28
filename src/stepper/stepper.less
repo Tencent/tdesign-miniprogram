@@ -119,11 +119,15 @@
 
   &__minus--outline,
   &__minus--filled {
-    border-radius: @stepper-border-radius 0 0 @stepper-border-radius;
+    border-radius: 0;
+    border-top-left-radius: @stepper-border-radius;
+    border-bottom-left-radius: @stepper-border-radius;
   }
   &__plus--outline,
   &__plus--filled {
-    border-radius: 0 @stepper-border-radius @stepper-border-radius 0;
+    border-radius: 0;
+    border-top-right-radius: @stepper-border-radius;
+    border-bottom-right-radius: @stepper-border-radius;
   }
 
   &__minus--filled,
