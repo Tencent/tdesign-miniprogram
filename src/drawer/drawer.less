@@ -39,7 +39,10 @@
       display: flex;
       align-items: center;
       .border(bottom, @drawer-border-color);
-      padding: @drawer-item-padding 0 @drawer-item-padding @drawer-item-padding;
+      padding-top: @drawer-item-padding;
+      padding-right: 0;
+      padding-bottom: @drawer-item-padding;
+      padding-left: @drawer-item-padding;
       line-height: @drawer-item-height;
 
       &::after {
