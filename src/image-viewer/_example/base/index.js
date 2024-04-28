@@ -1,9 +1,6 @@
 import Toast from 'tdesign-miniprogram/toast/index';
-import SkylineBehavior from '@behaviors/skyline.js';
 
 Component({
-  behaviors: [SkylineBehavior],
-
   data: {
     visible: false,
     showIndex: false,

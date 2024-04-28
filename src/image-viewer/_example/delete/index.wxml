@@ -3,7 +3,7 @@
 <t-action-sheet id="t-action-sheet" />
 
 <t-image-viewer
-  usingCustomNavbar="{{ skylineRender ? true : false }}"
+  usingCustomNavbar
   deleteBtn="{{deleteBtn}}"
   closeBtn="{{closeBtn}}"
   showIndex="{{showIndex}}"
