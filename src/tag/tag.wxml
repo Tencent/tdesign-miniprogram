@@ -10,9 +10,9 @@
     <template wx:if="{{_icon}}" is="icon" data="{{ tClass: prefix + '-icon', ..._icon }}" />
     <slot name="icon" />
   </view>
-  <text class="{{classPrefix}}__text" overflow="ellipsis">
+  <view class="{{classPrefix}}__text">
     <slot />
-  </text>
+  </view>
   <template
     wx:if="{{_closable}}"
     is="icon"
