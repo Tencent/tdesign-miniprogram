@@ -71,7 +71,7 @@ function outputOneComponentTestFile(component, demoFiles) {
   demoFiles.forEach((demo) => {
     const fp = path.resolve(`${sourcePath}/${component}/_example/${demo}`);
     // if (filterCom.includes(component) && filterDemo[component].includes(demo.replace('.vue', ''))) return;
-    if (fs.statSync(fp).isDirectory()) {
+    if (fs.statSync(fp).isDirectory() && demo !== 'skyline') {
       // const name = camelCase(demo);
       // imports.push(`import ${name} from '@/examples/${component}/demos/${demo}';`);
       demos.push(`'${demo}'`);
