@@ -109,7 +109,7 @@ export default class CheckBoxGroup extends SuperComponent {
       } else if (checked) {
         newValue = newValue.concat(value);
       } else {
-        const index = newValue.findIndex((v: string) => v === value);
+        const index = newValue.findIndex((v: string | number) => v === value);
         newValue.splice(index, 1);
       }
 
