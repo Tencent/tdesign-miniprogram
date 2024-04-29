@@ -6,6 +6,21 @@ docClass: timeline
 ---
 
 
+## 🌈 1.3.1 `2024-04-29` 
+### 🚀 Features
+- `Fab`: 新增 `using-custom-navbar` 属性 @anlyyao ([#2725](https://github.com/Tencent/tdesign-miniprogram/pull/2725))
+### 🐞 Bug Fixes
+- `Message`: 修复 `message` 重复进入位置异常并修正 `single` 属性值默认取 `true` @jarmywang ([#2719](https://github.com/Tencent/tdesign-miniprogram/pull/2719))
+- `MessageItem`: 逻辑容错异常处理 @betavs ([#2704](https://github.com/Tencent/tdesign-miniprogram/pull/2704))
+- `Skeleton`:  修复 `loading` 属性默认值无效的问题 @anlyyao ([#2714](https://github.com/Tencent/tdesign-miniprogram/pull/2714))
+- `Progress`: 修复 `circle` 主题背景色缺失的问题 @anlyyao ([#2722](https://github.com/Tencent/tdesign-miniprogram/pull/2722))
+- `BackTop`: 修复 `round/half-round` 主题文本和背景 `design token` 错误 @anlyyao ([#2722](https://github.com/Tencent/tdesign-miniprogram/pull/2722))
+- `CheckboxGroup`: `options` 对象中 `value` 不支持 `number` 类型 @betavs ([#2731](https://github.com/Tencent/tdesign-miniprogram/pull/2731))
+### 🚧 Others
+- chore: `styleIsolation` 配置项从 `options` 迁移到 `JSON` @anlyyao ([#2718](https://github.com/Tencent/tdesign-miniprogram/pull/2718))
+- chore: 修正包名 @betavs ([#2734](https://github.com/Tencent/tdesign-miniprogram/pull/2734))
+
+
 ## 🌈 1.3.0 `2024-04-19`
 ### 🚀 Features
 - `TDesign` 微信小程序组件库提供原生深色模式适配 @zuiaiwanqian ([#2636](https://github.com/Tencent/tdesign-miniprogram/pull/2636))
