@@ -3,7 +3,7 @@
   "purename": "tdesign",
   "version": "1.3.0",
   "description": "tdesign-miniprogram",
-  "title": "tdesign-ßminiprogram",
+  "title": "tdesign-miniprogram",
   "main": "miniprogram_dist/index.js",
   "miniprogram": "miniprogram_dist",
   "keywords": [
