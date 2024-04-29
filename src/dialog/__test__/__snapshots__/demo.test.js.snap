@@ -79,6 +79,7 @@ exports[`Dialog Dialog base demo works fine 1`] = `
       class="long-content"
       scrollY="{{true}}"
       slot="content"
+      type="list"
     >
       <wx-view
         class="content-container"

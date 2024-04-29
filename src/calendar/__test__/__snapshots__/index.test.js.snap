@@ -780,7 +780,6 @@ exports[`calendar :base 1`] = `
                   <wx-view
                     class="t-button__content"
                   >
-                    
                     确定
                   </wx-view>
                 </wx-button>
@@ -801,7 +800,7 @@ exports[`calendar :base 1`] = `
           ariaLabel="关闭"
           ariaRole="button"
           class="t-overlay t-fade-enter t-fade-enter-active class"
-          style="--td-overlay-transition-duration:300ms; z-index:11000;"
+          style="--td-overlay-transition-duration:300ms; z-index:11000; top:0px;"
           bind:tap="handleClick"
           catch:touchmove="noop"
           bind:transitionend="onTransitionEnd"

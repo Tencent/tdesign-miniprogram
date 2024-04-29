@@ -146,6 +146,7 @@ exports[`Button Button group-btn demo works fine 1`] = `
     <t-button
       block="{{true}}"
       size="large"
+      tClass="group-btn"
       theme="light"
     >
       填充按钮
@@ -153,6 +154,7 @@ exports[`Button Button group-btn demo works fine 1`] = `
     <t-button
       block="{{true}}"
       size="large"
+      tClass="group-btn"
       theme="primary"
     >
       填充按钮
