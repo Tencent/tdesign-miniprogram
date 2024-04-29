@@ -1,13 +1,11 @@
+import SkylineBehavior from '@behaviors/skyline.js';
+
 Component({
+  behaviors: [SkylineBehavior],
   data: {
     autosize: {
       maxHeight: 120,
       minHeight: 20,
-    },
-  },
-  lifetimes: {
-    created() {
-      this.setData({ skylineRender: this.renderer === 'skyline' });
     },
   },
   methods: {
