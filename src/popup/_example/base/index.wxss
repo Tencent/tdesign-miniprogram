@@ -23,9 +23,9 @@
 }
 
 .wrapper {
-  margin-top: 32rpx;
+  margin-bottom: 32rpx;
 }
 
-.wrapper:first-child {
-  margin-top: 0;
+.wrapper:last-child {
+  margin-bottom: 0;
 }

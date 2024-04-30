@@ -12,8 +12,3 @@
   margin-left: -32rpx;
   bottom: calc(-1 * (48rpx + 64rpx));
 }
-
-.wrapper {
-  margin: 32rpx;
-  display: block;
-}
