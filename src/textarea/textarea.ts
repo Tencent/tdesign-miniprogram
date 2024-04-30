@@ -38,7 +38,7 @@ export default class Textarea extends SuperComponent {
   lifetimes = {
     ready() {
       const { value, defaultValue } = this.properties;
-      this.updateValue((value ?? defaultValue) || '');
+      this.updateValue(value ?? defaultValue ?? '');
     },
   };
 
