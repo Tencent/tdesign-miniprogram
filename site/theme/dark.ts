@@ -350,46 +350,34 @@ const LIGHT_WHITE_BACKGROUND_COMPONENTS = [
   'pull-down-refresh',
 ];
 
-export const changeThemeMode = () => {
-  const parentIframe = document.querySelector('iframe');
-  let previewIframeList: any = null;
-  if (parentIframe && parentIframe.contentWindow) {
-    previewIframeList = parentIframe.contentWindow.document.querySelectorAll('iframe');
+function getCurComponentBackground() {
+  const url = window.location.href;
+  const lastUnderscoreIndex = url.lastIndexOf('/');
+  const lastSegment = url.substring(lastUnderscoreIndex + 1);
+  let backgroundCss = '';
+  if (LIGHT_WHITE_BACKGROUND_COMPONENTS.includes(lastSegment)) {
+    backgroundCss = 'body{ background: #fff !important; }';
+  } else {
+    backgroundCss = 'body{ background: #f6f6f6 !important; }';
   }
-  previewIframeList?.forEach((previewIframe: any) => {
-    if (previewIframe && previewIframe.contentWindow) {
-      addDarkStyle(previewIframe);
-    }
-  });
-};
-let observer: any = null;
-export function watchExampleRouterChange(parentIframe: any) {
-  if (observer) {
-    observer.disconnect();
-  }
-  const targetNode = parentIframe.contentWindow.document.documentElement;
-  observer = new MutationObserver((mutationsList) => {
-    for (const mutation of mutationsList) {
-      if (mutation.type === 'childList') {
-        mutation.addedNodes.forEach((node: any) => {
-          // 检查是否为iframe元素
-          if (node.tagName === 'DIV') {
-            const previewIframe = node.querySelector('iframe');
-            if (previewIframe) {
-              previewIframe.onload = () => {
-                addDarkStyle(previewIframe);
-              };
-            }
-          }
-        });
-      }
-    }
-  });
-  const config = {
-    childList: true, // 观察目标节点的子节点的变化，包括添加或者删除
-    subtree: true, // 观察后代节点
-  };
-  observer.observe(targetNode, config);
+  return backgroundCss;
+}
+
+function getDarkStyle() {
+  const styleElement = document.createElement('style');
+  styleElement.type = 'text/css';
+  styleElement.textContent = darkModeCss;
+  styleElement.id = 'dark';
+  return styleElement;
+}
+
+function getLightStyle() {
+  const curComponentBackground = getCurComponentBackground();
+  const styleElement = document.createElement('style');
+  styleElement.type = 'text/css';
+  styleElement.textContent = lightModeCss + curComponentBackground;
+  styleElement.id = 'light';
+  return styleElement;
 }
 
 function addDarkStyle(previewIframe: any) {
@@ -417,32 +405,46 @@ function addDarkStyle(previewIframe: any) {
   }
 }
 
-function getDarkStyle() {
-  const styleElement = document.createElement('style');
-  styleElement.type = 'text/css';
-  styleElement.textContent = darkModeCss;
-  styleElement.id = 'dark';
-  return styleElement;
-}
-
-function getLightStyle() {
-  const curComponentBackground = getCurComponentBackground();
-  const styleElement = document.createElement('style');
-  styleElement.type = 'text/css';
-  styleElement.textContent = lightModeCss + curComponentBackground;
-  styleElement.id = 'light';
-  return styleElement;
-}
-
-function getCurComponentBackground() {
-  const url = window.location.href;
-  const lastUnderscoreIndex = url.lastIndexOf('/');
-  const lastSegment = url.substring(lastUnderscoreIndex + 1);
-  let backgroundCss = '';
-  if (LIGHT_WHITE_BACKGROUND_COMPONENTS.includes(lastSegment)) {
-    backgroundCss = 'body{ background: #fff !important; }';
-  } else {
-    backgroundCss = 'body{ background: #f6f6f6 !important; }';
+export const changeThemeMode = () => {
+  const parentIframe = document.querySelector('iframe');
+  let previewIframeList: any = null;
+  if (parentIframe && parentIframe.contentWindow) {
+    previewIframeList = parentIframe.contentWindow.document.querySelectorAll('iframe');
   }
-  return backgroundCss;
+  previewIframeList?.forEach((previewIframe: any) => {
+    if (previewIframe && previewIframe.contentWindow) {
+      addDarkStyle(previewIframe);
+    }
+  });
+};
+
+let observer: any = null;
+
+export function watchExampleRouterChange(parentIframe: any) {
+  if (observer) {
+    observer.disconnect();
+  }
+  const targetNode = parentIframe.contentWindow.document.documentElement;
+  observer = new MutationObserver((mutationsList) => {
+    mutationsList.forEach((mutation: MutationRecord) => {
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach((node: any) => {
+          // 检查是否为iframe元素
+          if (node.tagName === 'DIV') {
+            const previewIframe = node.querySelector('iframe');
+            if (previewIframe) {
+              previewIframe.onload = () => {
+                addDarkStyle(previewIframe);
+              };
+            }
+          }
+        });
+      }
+    });
+  });
+  const config = {
+    childList: true, // 观察目标节点的子节点的变化，包括添加或者删除
+    subtree: true, // 观察后代节点
+  };
+  observer.observe(targetNode, config);
 }
