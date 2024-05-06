@@ -18,25 +18,30 @@ exports[`Progress Progress base demo works fine 1`] = `
 
 exports[`Progress Progress circle demo works fine 1`] = `
 <circle>
-  <t-progress
-    percentage="80"
-    theme="circle"
-  />
-  <t-progress
-    percentage="88"
-    status="warning"
-    theme="circle"
-  />
-  <t-progress
-    percentage="88"
-    status="error"
-    theme="circle"
-  />
-  <t-progress
-    percentage="88"
-    status="success"
-    theme="circle"
-  />
+  <t-demo
+    desc="环形进度条"
+    padding="{{true}}"
+  >
+    <t-progress
+      percentage="80"
+      theme="circle"
+    />
+    <t-progress
+      percentage="88"
+      status="warning"
+      theme="circle"
+    />
+    <t-progress
+      percentage="88"
+      status="error"
+      theme="circle"
+    />
+    <t-progress
+      percentage="88"
+      status="success"
+      theme="circle"
+    />
+  </t-demo>
 </circle>
 `;
 

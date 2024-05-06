@@ -113,10 +113,10 @@ const skylineDisplay = {
       name: 'ImageViewer',
       label: '图片预览',
     },
-    // {
-    //   name: 'Progress',
-    //   label: '进度条',
-    // },
+    {
+      name: 'Progress',
+      label: '进度条',
+    },
     {
       name: 'Result',
       label: '结果',
