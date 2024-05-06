@@ -242,6 +242,9 @@ describe('slider', () => {
     expect($slider.instance.data._value).toBe(0);
 
     comp.setData({ value: 101 });
-    expect($slider.instance.data._value).toBe(0); // 100
+
+    await simulate.sleep();
+
+    expect($slider.instance.data._value).toBe(100);
   });
 });
