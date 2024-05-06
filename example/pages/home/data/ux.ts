@@ -73,10 +73,10 @@ const skylineUx = {
     //   name: 'PullDownRefresh',
     //   label: '下拉刷新',
     // },
-    // {
-    //   name: 'Loading',
-    //   label: '加载',
-    // },
+    {
+      name: 'Loading',
+      label: '加载',
+    },
     {
       name: 'Toast',
       label: '轻提示',
