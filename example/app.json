@@ -99,7 +99,7 @@
     },
     {
       "root": "pages/avatar/",
-      "pages": ["avatar"]
+      "pages": ["avatar", "skyline/avatar"]
     },
     {
       "root": "pages/calendar/",
