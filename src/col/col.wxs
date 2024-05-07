@@ -1,7 +1,6 @@
 var utils = require('../common/utils.wxs');
 
 function getColStyles(gutter, style, customStyle) {
-  console.log('====col----', gutter);
   var _style = '';
   if (gutter) {
     _style = utils._style({
