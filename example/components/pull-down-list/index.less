@@ -1,9 +1,7 @@
-@import '../../../src/common/style/_variables.less';
-@import '../../../src/common/style/theme/_dark.less';
 .pullDownList {
   width: 100%;
   box-sizing: border-box;
-  background-color: @bg-color-container;
+  background-color: var(--td-bg-color-container);
   border-radius: 8rpx;
   margin-bottom: 12rpx * 2;
   overflow: hidden;
@@ -16,7 +14,7 @@
     padding: 0 16rpx * 2;
     font-size: 16rpx * 2;
     line-height: 24rpx * 2;
-    color: @text-color-secondary;
+    color: var(--td-text-color-secondary);
   }
 
   .name,
@@ -43,7 +41,7 @@
 
     .child {
       box-sizing: border-box;
-      border-bottom: 1rpx solid @component-stroke;
+      border-bottom: 1rpx solid var(--td-component-stroke);
       height: 56rpx * 2;
       display: flex;
       justify-content: space-between;
@@ -52,7 +50,7 @@
       margin-right: 16rpx * 2;
       font-size: 16rpx * 2;
       opacity: 0.9;
-      color: @text-color-primary;
+      color: var(--td-text-color-primary);
 
       &:last-of-type {
         border-bottom-color: transparent;
