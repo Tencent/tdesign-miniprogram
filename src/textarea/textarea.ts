@@ -31,14 +31,14 @@ export default class Textarea extends SuperComponent {
 
   observers = {
     value(val) {
-      this.updateCount(val);
+      this.updateCount(val ?? this.properties.defaultValue);
     },
   };
 
   lifetimes = {
     ready() {
-      const { value } = this.properties;
-      this.updateValue(value == null ? '' : value);
+      const { value, defaultValue } = this.properties;
+      this.updateValue(value ?? defaultValue ?? '');
     },
   };
 
