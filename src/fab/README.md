@@ -35,6 +35,10 @@ isComponent: true
 
 {{ advance }}
 
+### 可移动悬浮按钮
+
+{{ draggable }}
+
 ## API
 ### Fab Props
 
