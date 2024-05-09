@@ -6,6 +6,15 @@ docClass: timeline
 ---
 
 
+## 🌈 1.4.0 `2024-05-09`
+### 🚀 Features
+- `Tdesign`: Button、Fab等 33 个组件完成 Skyline 适配，并新增 Skyline Page 示例页 @jin0209 @anlyyao @jarmywang ([#2659](https://github.com/Tencent/tdesign-miniprogram/pull/2659))
+- `Input`: 新增 `default-value` 属性 @betavs ([#2738](https://github.com/Tencent/tdesign-miniprogram/pull/2738))
+- `Textarea`: 新增 `default-value` 属性 @betavs ([#2737](https://github.com/Tencent/tdesign-miniprogram/pull/2737))
+### 🐞 Bug Fixes
+- `Layout`: 修复 `Col` 和 `Row` 的 `style` 与 `customStyle` 属性无效的问题 @anlyyao ([#2745](https://github.com/Tencent/tdesign-miniprogram/pull/2745))
+
+
 ## 🌈 1.3.1 `2024-04-29` 
 ### 🚀 Features
 - `Fab`: 新增 `using-custom-navbar` 属性 @anlyyao ([#2725](https://github.com/Tencent/tdesign-miniprogram/pull/2725))
