@@ -5,6 +5,7 @@
   wx:if="{{usePopup}}"
   class="class"
   visible="{{visible}}"
+  usingCustomNavbar="{{usingCustomNavbar}}"
   bind:visible-change="onVisibleChange"
   placement="bottom"
 >

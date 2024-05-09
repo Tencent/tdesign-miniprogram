@@ -159,7 +159,7 @@ export default class CheckBoxGroup extends SuperComponent {
       if (!this.$checkAll) return;
 
       const { value } = this.data;
-      const valueSet = new Set(value.filter((val) => val !== this.$checkAll.data.value));
+      const valueSet = new Set(value?.filter((val) => val !== this.$checkAll.data.value));
       const isCheckall = items.every((item) => (item.data.checkAll ? true : valueSet.has(item.data.value)));
 
       this.$checkAll.setData({

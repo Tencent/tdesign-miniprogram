@@ -9,10 +9,6 @@ const name = `${prefix}-stepper`;
 export default class Stepper extends SuperComponent {
   externalClasses = [`${prefix}-class`, `${prefix}-class-input`, `${prefix}-class-minus`, `${prefix}-class-plus`];
 
-  options = {
-    addGlobalClass: true,
-  };
-
   properties = { ...props };
 
   controlledProps = [

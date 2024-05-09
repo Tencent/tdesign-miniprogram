@@ -33,6 +33,7 @@
     &::after {
       border-top-width: 1px;
       transform: scaleY(0.5);
+      transform-origin: bottom;
     }
 
     .@{prefix}-divider__content:not(:empty) {
@@ -42,13 +43,14 @@
 
   &--vertical {
     flex-direction: column;
-    height: 1em;
+    height: 28rpx;
     margin: 0 16rpx;
 
     &::before,
     &::after {
       border-left-width: 1px;
       transform: scaleX(0.5);
+      transform-origin: bottom;
     }
 
     &-center {

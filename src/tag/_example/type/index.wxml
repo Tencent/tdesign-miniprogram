@@ -20,7 +20,8 @@
   <t-tag class="margin-16" variant="outline" icon="discount"> 标签文字 </t-tag>
 </view>
 
-<view class="demo">
+<!-- skyline暂不支持设置后max-width超出省略 -->
+<view class="demo" wx:if="{{!skylineRender}}">
   <view class="demo-desc">超长省略文本标签</view>
 
   <t-tag max-width="{{130}}" variant="light">超长省略文本标签超长省略文本标签</t-tag>

@@ -9,6 +9,8 @@ const name = `${prefix}-navbar`;
 export default class Navbar extends SuperComponent {
   externalClasses = [
     `${prefix}-class`,
+    `${prefix}-class-placeholder`,
+    `${prefix}-class-content`,
     `${prefix}-class-title`,
     `${prefix}-class-left`,
     `${prefix}-class-center`,
@@ -21,7 +23,6 @@ export default class Navbar extends SuperComponent {
   timer = null;
 
   options = {
-    addGlobalClass: true,
     multipleSlots: true,
   };
 

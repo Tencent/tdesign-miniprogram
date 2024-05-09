@@ -1,3 +1,12 @@
 .margin {
   margin-left: 32rpx;
 }
+
+.button-example {
+  margin: 32rpx;
+  display: flex;
+}
+
+.button-example .loading {
+  display: flex;
+}

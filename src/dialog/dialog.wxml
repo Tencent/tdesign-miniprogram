@@ -15,6 +15,7 @@
   overlayProps="{{overlayProps}}"
   zIndex="{{zIndex}}"
   placement="center"
+  usingCustomNavbar="{{usingCustomNavbar}}"
   bind:visible-change="overlayClick"
 >
   <view slot="content" class="{{classPrefix}} {{prefix}}-class">

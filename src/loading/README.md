@@ -66,7 +66,7 @@ progress | Number | - | 加载进度 | N
 reverse | Boolean | - | 加载动画是否反向 | N
 size | String | '40rpx' | 尺寸，示例：40rpx/20px | N
 text | String / Slot | - | 加载提示文案。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-theme | String | circular | 加载组件类型。可选项：circular/spinner/dots | N
+theme | String | circular | 加载组件类型。可选项：circular/spinner/dots，skyline 模式下暂不支持枚举值 circular | N
 
 ### Loading 外部样式类
 类名 | 说明

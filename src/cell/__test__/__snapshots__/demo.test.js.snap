@@ -133,6 +133,7 @@ exports[`Cell Cell multiple demo works fine 1`] = `
 exports[`Cell Cell theme demo works fine 1`] = `
 <theme>
   <t-cell-group
+    bordered="{{true}}"
     theme="card"
   >
     <t-cell

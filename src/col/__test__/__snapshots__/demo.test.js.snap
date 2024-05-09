@@ -56,21 +56,30 @@ exports[`Col Col offset demo works fine 1`] = `
   >
     <t-col
       span="8"
-      tClass="dark"
     >
-      col-8
+      <wx-view
+        class="dark"
+      >
+        col-8
+      </wx-view>
     </t-col>
     <t-col
       span="8"
-      tClass="light"
     >
-      col-8
+      <wx-view
+        class="dark"
+      >
+        col-8
+      </wx-view>
     </t-col>
     <t-col
       span="8"
-      tClass="dark"
     >
-      col-8
+      <wx-view
+        class="dark"
+      >
+        col-8
+      </wx-view>
     </t-col>
   </t-row>
 </offset>

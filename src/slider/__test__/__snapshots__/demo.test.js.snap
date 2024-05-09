@@ -255,10 +255,10 @@ exports[`Slider Slider vertical demo works fine 1`] = `
     class="wrapper"
   >
     <t-slider
-      label="\${value}"
+      label="\${singlevalue}"
       value="{{35}}"
       vertical="{{true}}"
-      bind:change="handleChange"
+      bind:change="handleSingleChange"
     />
   </wx-view>
   <wx-view
@@ -300,11 +300,11 @@ exports[`Slider Slider vertical demo works fine 1`] = `
     class="wrapper"
   >
     <t-slider
-      label="\${value}"
+      label="\${capsuleValue}"
       theme="capsule"
       value="{{35}}"
       vertical="{{true}}"
-      bind:change="handleChange"
+      bind:change="handleCapsuleChange"
     />
   </wx-view>
   <wx-view

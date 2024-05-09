@@ -54,6 +54,7 @@ export default class PickerItem extends SuperComponent {
     columnIndex: 0,
     labelAlias: 'label',
     valueAlias: 'value',
+    pickItemHeight: rpx2px(itemHeight),
   };
 
   methods = {

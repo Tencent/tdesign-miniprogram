@@ -5,51 +5,55 @@ exports[`Toast Toast base demo works fine 1`] = `
   <t-toast
     id="t-toast"
   />
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="showText"
+  <wx-view
+    class="box"
   >
-    纯文本
-  </t-button>
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="showMultiText"
-  >
-    多行文字
-  </t-button>
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="showHorizontalText"
-  >
-    带横向图标
-  </t-button>
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="showVerticalText"
-  >
-    带竖向图标
-  </t-button>
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="showLoading"
-  >
-    加载状态
-  </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="showText"
+    >
+      纯文本
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="showMultiText"
+    >
+      多行文字
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="showHorizontalText"
+    >
+      带横向图标
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="showVerticalText"
+    >
+      带竖向图标
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="showLoading"
+    >
+      加载状态
+    </t-button>
+  </wx-view>
 </base>
 `;
 
@@ -59,25 +63,28 @@ exports[`Toast Toast close demo works fine 1`] = `
     id="t-toast"
   />
   <wx-view
-    class="toast-example"
+    class="box"
   >
-    <t-button
-      class="margin-16"
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="handleShow"
+    <wx-view
+      class="toast-example"
     >
-      显示提示
-    </t-button>
-    <t-button
-      size="large"
-      theme="primary"
-      variant="outline"
-      bind:tap="handleHide"
-    >
-      关闭提示
-    </t-button>
+      <t-button
+        size="large"
+        theme="primary"
+        variant="outline"
+        bind:tap="handleShow"
+      >
+        显示提示
+      </t-button>
+      <t-button
+        size="large"
+        theme="primary"
+        variant="outline"
+        bind:tap="handleHide"
+      >
+        关闭提示
+      </t-button>
+    </wx-view>
   </wx-view>
 </close>
 `;
@@ -87,15 +94,19 @@ exports[`Toast Toast cover demo works fine 1`] = `
   <t-toast
     id="t-toast"
   />
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="handleToast"
+  <wx-view
+    class="box"
   >
-    禁止滑动和点击
-  </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="handleToast"
+    >
+      禁止滑动和点击
+    </t-button>
+  </wx-view>
 </cover>
 `;
 
@@ -142,32 +153,36 @@ exports[`Toast Toast theme demo works fine 1`] = `
   <t-toast
     id="t-toast"
   />
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="showSuccessToast"
+  <wx-view
+    class="box"
   >
-    成功提示
-  </t-button>
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="showWarningToast"
-  >
-    警告提示
-  </t-button>
-  <t-button
-    block="{{true}}"
-    size="large"
-    theme="primary"
-    variant="outline"
-    bind:tap="showErrorToast"
-  >
-    错误提示
-  </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="showSuccessToast"
+    >
+      成功提示
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="showWarningToast"
+    >
+      警告提示
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      theme="primary"
+      variant="outline"
+      bind:tap="showErrorToast"
+    >
+      错误提示
+    </t-button>
+  </wx-view>
 </theme>
 `;

@@ -1,7 +1,4 @@
 Component({
-  options: {
-    addGlobalClass: true,
-  },
   data: {
     visible: false,
   },

@@ -11,10 +11,6 @@ const props: TdProgressProps = {
     type: null,
     value: '',
   },
-  /** 组件类名，分别用于设置 组件外层、进度文字等元素类名。 */
-  externalClasses: {
-    type: Array,
-  },
   /** 进度百分比，可自定义 */
   label: {
     type: null,
@@ -29,9 +25,14 @@ const props: TdProgressProps = {
   status: {
     type: String,
   },
-  /** 进度条线宽。宽度数值不能超过 size 的一半，否则不能输出环形进度 */
+  /** 进度条线宽，默认单位 `px` */
   strokeWidth: {
     type: null,
+  },
+  /** 自定义组件样式 */
+  style: {
+    type: String,
+    value: '',
   },
   /** 进度条风格。值为 line，标签（label）显示在进度条右侧；值为 plump，标签（label）显示在进度条里面；值为 circle，标签（label）显示在进度条正中间 */
   theme: {

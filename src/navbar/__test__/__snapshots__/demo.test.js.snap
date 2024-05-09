@@ -3,6 +3,8 @@
 exports[`Navbar Navbar back-home demo works fine 1`] = `
 <back-home>
   <t-navbar
+    tClassContent="t-navbar-content"
+    tClassPlaceholder="t-navbar-placeholder"
     title="标题文字"
   >
     <wx-view
@@ -12,7 +14,7 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
       <t-icon
         ariaLabel="返回"
         ariaRole="button"
-        class="custom-capsule__icon"
+        class="custom-capsule__icon back"
         name="chevron-left"
         size="20"
         bind:tap="onBack"
@@ -20,7 +22,7 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
       <t-icon
         ariaLabel="首页"
         ariaRole="button"
-        class="custom-capsule__icon"
+        class="custom-capsule__icon home"
         name="home"
         size="20"
         bind:tap="onGoHome"
@@ -36,6 +38,8 @@ exports[`Navbar Navbar base demo works fine 1`] = `
     class="block"
   >
     <t-navbar
+      tClassContent="t-navbar-content"
+      tClassPlaceholder="t-navbar-placeholder"
       tClassTitle="nav-title"
       title="标题文字"
     />
@@ -46,6 +50,8 @@ exports[`Navbar Navbar base demo works fine 1`] = `
     <t-navbar
       class="block"
       leftArrow="{{true}}"
+      tClassContent="t-navbar-content"
+      tClassPlaceholder="t-navbar-placeholder"
       title="标题文字"
       bind:go-back="handleBack"
     />
@@ -58,6 +64,8 @@ exports[`Navbar Navbar custom-color demo works fine 1`] = `
   <t-navbar
     class="custom-navbar"
     leftArrow="{{true}}"
+    tClassContent="t-navbar-content"
+    tClassPlaceholder="t-navbar-placeholder"
     title="标题文字"
   />
 </custom-color>
@@ -65,7 +73,10 @@ exports[`Navbar Navbar custom-color demo works fine 1`] = `
 
 exports[`Navbar Navbar img demo works fine 1`] = `
 <img>
-  <t-navbar>
+  <t-navbar
+    tClassContent="t-navbar-content"
+    tClassPlaceholder="t-navbar-placeholder"
+  >
     <wx-view
       slot="left"
     >
@@ -86,11 +97,15 @@ exports[`Navbar Navbar left-title demo works fine 1`] = `
   >
     <t-navbar
       leftArrow="{{true}}"
+      tClassContent="t-navbar-content"
+      tClassPlaceholder="t-navbar-placeholder"
       title="标题居中"
     />
   </wx-view>
   <t-navbar
     leftArrow="{{true}}"
+    tClassContent="t-navbar-content"
+    tClassPlaceholder="t-navbar-placeholder"
   >
     <wx-view
       class="custom-title"
@@ -106,6 +121,8 @@ exports[`Navbar Navbar left-title demo works fine 1`] = `
   </wx-view>
   <t-navbar
     leftArrow="{{true}}"
+    tClassContent="t-navbar-content"
+    tClassPlaceholder="t-navbar-placeholder"
   >
     <wx-text
       class="left-text"
@@ -126,6 +143,8 @@ exports[`Navbar Navbar search demo works fine 1`] = `
 <search>
   <t-navbar
     leftIcon="slot"
+    tClassContent="t-navbar-content"
+    tClassPlaceholder="t-navbar-placeholder"
   >
     <wx-view
       class="search-box"

@@ -1,5 +1,8 @@
-function getPopupStyles(zIndex) {
+function getPopupStyles(zIndex, distanceTop, placement) {
   var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  if ((placement === 'top' || placement === 'left') && distanceTop) {
+    zIndexStyle = zIndexStyle + 'top:' + distanceTop + 'px;'
+  }
   return zIndexStyle;
 }
 

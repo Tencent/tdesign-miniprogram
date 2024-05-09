@@ -158,7 +158,7 @@ exports[`Image Image status demo works fine 1`] = `
           loading="{{true}}"
           size="40rpx"
           slot="loading"
-          theme="circular"
+          theme="spinner"
         />
       </t-image>
     </wx-view>

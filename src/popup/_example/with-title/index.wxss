@@ -6,11 +6,6 @@
   border-top-right-radius: 16rpx;
 }
 
-.wrapper {
-  margin: 32rpx;
-  display: block;
-}
-
 .header {
   display: flex;
   align-items: center;

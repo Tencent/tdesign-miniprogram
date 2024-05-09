@@ -10,7 +10,12 @@
     aria-role="{{ariaRole  || 'img'}}"
     aria-label="{{ ariaLabel || text || '加载中'  }}"
   >
-    <view wx:if="{{ theme === 'spinner' }}" wx:for="{{12}}" wx:key="index" class="{{classPrefix}}__dot" />
+    <view
+      wx:if="{{ theme === 'spinner' }}"
+      wx:for="{{12}}"
+      wx:key="index"
+      class="{{classPrefix}}__dot {{classPrefix}}__dot-{{index}}"
+    />
     <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular" />
     <block wx:if="{{ theme === 'dots' }}">
       <view

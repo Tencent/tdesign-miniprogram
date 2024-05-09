@@ -53,7 +53,7 @@ custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场�
 closable | Boolean / Object | false | 标签是否可关闭 | N
 disabled | Boolean | false | 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 | N
 icon | String / Object / Slot | - | 标签中的图标，可自定义图标呈现。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-max-width | String / Number | - | 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80 | N
+max-width | String / Number | - | 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80 (skyline暂不支持该属性) | N
 shape | String | square | 标签类型，有三种：方形、圆角方形、标记型。可选项：square/round/mark | N
 size | String | medium | 标签尺寸。可选项：small/medium/large/extra-large | N
 theme | String | default | 组件风格，用于描述组件不同的应用场景。可选项：default/primary/warning/danger/success | N

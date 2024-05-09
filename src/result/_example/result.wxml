@@ -16,4 +16,7 @@
       <t-button theme="primary" block size="large" variant="outline" bind:tap="goResultPage">页面示例</t-button>
     </view>
   </t-demo>
+  <view class="demo-section__wrapper">
+    <t-button theme="primary" block size="large" variant="outline" bind:tap="goResultPage">页面示例</t-button>
+  </view>
 </view>
