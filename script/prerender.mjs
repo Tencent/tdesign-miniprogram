@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { chromium } from 'playwright';
 import { preview } from 'vite';
-import siteConfig from '../site/site.config.mjs';
+import { docs } from '../site/site.config.mjs';
 
 const prefix = 'http://127.0.0.1:9999';
 const spiderPath = path.resolve('./_static_site');
@@ -10,7 +10,7 @@ const spiderPath = path.resolve('./_static_site');
 function initPageList() {
   const pageList = [];
 
-  siteConfig.docs.forEach((doc) => {
+  docs.forEach((doc) => {
     doc.children.forEach((child) => {
       pageList.push(`${prefix}${child.path}`);
     });
@@ -39,9 +39,11 @@ async function initPreviewServer() {
 
   try {
     fs.mkdirSync(spiderPath);
-  } catch {}
+  } catch {
+    //
+  }
 
-  for (const url of pageList) {
+  pageList.forEach(async (url) => {
     const [, pathName] = url.split(prefix);
     const filePath = `${spiderPath}${pathName || '/index'}.html`;
 
@@ -52,11 +54,13 @@ async function initPreviewServer() {
     const html = await page.content();
     try {
       fs.mkdirSync(path.dirname(filePath));
-    } catch {}
+    } catch {
+      //
+    }
 
     console.log('\x1b[32m', `writing ${url}... \n`);
     fs.writeFileSync(filePath, html);
-  }
+  });
 
   await browser.close();
   process.exit();

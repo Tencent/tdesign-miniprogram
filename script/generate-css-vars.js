@@ -26,8 +26,7 @@ function resolveCwd(...args) {
 
 const COMPONENT_NAME = process.argv[process.argv.indexOf('--NAME') + 1]; // 在 --NAME 后面
 
-// eslint-disable-next-line
-const matchReg = /(?<=var).*?(?=\;)/g;
+const matchReg = /(?<=var).*?(?=;)/g;
 
 // 使用 v2 文件夹下 _var.less 文件
 const lessPath = [];
