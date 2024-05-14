@@ -1,3 +1,4 @@
+const path = require('path');
 const gulp = require('gulp');
 const del = require('del');
 const changed = require('gulp-changed');
@@ -5,7 +6,6 @@ const rename = require('gulp-rename');
 const gulpLess = require('gulp-less');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
-const path = require('path');
 const packageJSON = require('../package.json');
 const base = require('./gulpfile.base');
 
