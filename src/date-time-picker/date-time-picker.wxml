@@ -13,6 +13,7 @@
   title="{{title}}"
   confirmBtn="{{confirmBtn || locale.confirm}}"
   cancelBtn="{{cancelBtn || locale.cancel}}"
+  usePopup="{{usePopup}}"
   popupProps="{{ popupProps }}"
 >
   <slot slot="header" name="header" />

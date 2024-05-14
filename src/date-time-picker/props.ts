@@ -67,6 +67,11 @@ const props: TdDateTimePickerProps = {
     type: String,
     value: '',
   },
+  /** 是否使用弹出层包裹 */
+  usePopup: {
+    type: Boolean,
+    value: true,
+  },
   /** 选中值 */
   value: {
     type: null,

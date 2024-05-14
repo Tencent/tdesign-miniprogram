@@ -44,6 +44,10 @@ isComponent: true
 
 {{ steps }}
 
+#### 不使用 Popup
+
+{{ without-popup }}
+
 ## API
 
 ### DateTimePicker Props
@@ -65,6 +69,7 @@ show-week | Boolean | false | 【开发中】是否在日期旁边显示周几�
 start | String / Number | - | 选择器的最小可选时间，默认为当前时间-10年 | N
 steps | Object | - | 时间间隔步数，示例：`{ minute: 5 }` | N
 title | String | - | 标题 | N
+use-popup | Boolean | true | 是否使用弹出层包裹 | N
 value | String / Number | - | 选中值。TS 类型：`DateValue` `type DateValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 default-value | String / Number | undefined | 选中值。非受控属性。TS 类型：`DateValue` `type DateValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 visible | Boolean | false | 是否显示 | N
@@ -78,13 +83,13 @@ change | `(value: DateValue)` | 确认按钮点击时触发
 close | `(trigger: TriggerSource)` | `1.0.1`。关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'cancel-btn' \| 'confirm-btn'`<br/>
 confirm | `(value: DateValue)` | `1.0.1`。确认按钮点击时触发
 pick | `(value: DateValue)` | 选中值发生变化时触发
+### DateTimePicker External Classes
 
-### DateTimePicker 外部样式类
-类名 | 说明
--- | -- 
+类名 | 描述
+-- | --
 t-class | 根节点样式类
-t-class-confirm | 确认样式类
 t-class-cancel | 取消样式类
+t-class-confirm | 确认样式类
 t-class-title | 标题样式类
 
 ### DateTimePicker 组件国际化
@@ -98,8 +103,9 @@ dayjs.locale('zh-cn'); // 全局设置为简体中文
 ```
 - 单个组件设置：在组件上添加 custom-locale 属性即可，注意：custom-locale 优先级高于全局设置。
 
-### CSS 变量
+### CSS Variables
+
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-data-time-picker-year-width | 128rpx | - 
+--td-data-time-picker-year-width | 128rpx | -
