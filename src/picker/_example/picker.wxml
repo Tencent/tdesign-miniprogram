@@ -9,4 +9,7 @@
   <t-demo title="02 组件样式" desc="是否带标题">
     <with-title />
   </t-demo>
+  <t-demo desc="不使用 Popup">
+    <without-popup />
+  </t-demo>
 </view>

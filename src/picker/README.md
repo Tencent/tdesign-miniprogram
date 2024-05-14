@@ -39,6 +39,10 @@ isComponent: true
 
 {{ with-title }}
 
+### 不使用 Popup
+
+{{ without-popup }}
+
 ## API
 
 ### Picker Props
@@ -55,6 +59,7 @@ header | Boolean / Slot | true | 头部内容。值为 true 显示空白头部�
 keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 popup-props | Object | {} | 透传 `Popup` 组件全部属性。TS 类型：`PopupProps`，[Popup API Documents](./popup?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 title | String | '' | 标题 | N
+use-popup | Boolean | true | 是否使用弹出层包裹 | N
 value | Array | - | 选中值。TS 类型：`Array<PickerValue>` `type PickerValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 default-value | Array | undefined | 选中值。非受控属性。TS 类型：`Array<PickerValue>` `type PickerValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 visible | Boolean | false | 是否显示 | N
@@ -79,7 +84,7 @@ custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场�
 format | Function | - | 格式化标签。TS 类型：`(option: PickerItemOption) => string` | N
 options | Array | [] | 数据源。TS 类型：`PickerItemOption[]` `interface PickerItemOption { label: string; value: string \| number }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker-item/type.ts) | N
 
-### CSS 变量
+### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
