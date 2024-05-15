@@ -16,5 +16,7 @@
     <steps />
   </t-demo>
 
-  <!-- <t-demo desc="选择器" /> -->
+  <t-demo desc="不使用 Popup">
+    <without-popup />
+  </t-demo>
 </view>

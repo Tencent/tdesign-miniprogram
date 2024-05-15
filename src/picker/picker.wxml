@@ -1,6 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <t-popup
+  wx:if="{{usePopup}}"
   class="class"
   visible="{{visible}}"
   placement="bottom"
@@ -9,23 +10,8 @@
   z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
   overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
 >
-  <view slot="content" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
-    <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
-      <view class="{{classPrefix}}__cancel {{prefix}}-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel"
-        >{{cancelBtn}}</view
-      >
-      <view class="{{classPrefix}}__title {{prefix}}-class-title">{{title}}</view>
-      <view class="{{classPrefix}}__confirm {{prefix}}-class-confirm" wx:if="{{confirmBtn}}" bindtap="onConfirm"
-        >{{confirmBtn}}</view
-      >
-    </view>
-    <slot name="header" />
-    <view class="{{_.cls(classPrefix + '__main', [])}}">
-      <slot />
-      <view class="{{classPrefix}}__mask {{classPrefix}}__mask--top" />
-      <view class="{{classPrefix}}__mask {{classPrefix}}__mask--bottom" />
-      <view class="{{classPrefix}}__indicator"></view>
-    </view>
-    <slot name="footer" />
-  </view>
+  <include src="./template.wxml" />
 </t-popup>
+<block wx:else>
+  <include src="./template.wxml" />
+</block>

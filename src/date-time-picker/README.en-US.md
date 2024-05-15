@@ -21,6 +21,7 @@ show-week | Boolean | false | \- | N
 start | String / Number | - | \- | N
 steps | Object | - | \- | N
 title | String | - | title of picker | N
+use-popup | Boolean | true | \- | N
 value | String / Number | - | Typescript：`DateValue` `type DateValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 default-value | String / Number | undefined | uncontrolled property。Typescript：`DateValue` `type DateValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 visible | Boolean | false | \- | N
@@ -34,9 +35,18 @@ change | `(value: DateValue)` | \-
 close | `(trigger: TriggerSource)` | `1.0.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'cancel-btn' \| 'confirm-btn'`<br/>
 confirm | `(value: DateValue)` | `1.0.1`
 pick | `(value: DateValue)` | \-
+### DateTimePicker External Classes
+
+className | Description
+-- | --
+t-class | \-
+t-class-cancel | \-
+t-class-confirm | \-
+t-class-title | \-
 
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-data-time-picker-year-width | 128rpx | - 
+--td-data-time-picker-year-width | 128rpx | -

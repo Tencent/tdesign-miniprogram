@@ -26,8 +26,3 @@ export interface PickerItemOption {
   label: string;
   value: string | number;
 }
-
-export interface PickerItemOption {
-  label: string;
-  value: string | number;
-}

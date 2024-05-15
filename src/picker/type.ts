@@ -65,6 +65,14 @@ export interface TdPickerProps {
     value?: string;
   };
   /**
+   * 是否使用弹出层包裹
+   * @default true
+   */
+  usePopup?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 选中值
    */
   value?: {
