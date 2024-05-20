@@ -1,3 +1,5 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view slot="content" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
   <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
     <view class="{{classPrefix}}__cancel {{prefix}}-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel"
