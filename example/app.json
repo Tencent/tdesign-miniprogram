@@ -153,9 +153,11 @@
   "lazyCodeLoading": "requiredComponents",
   "rendererOptions": {
     "skyline": {
+      "disableABTest": true,
       "defaultDisplayBlock": true,
       "defaultContentBox": true,
-      "sdkVersionBegin": "3.4.2"
+      "sdkVersionBegin": "3.4.3",
+      "sdkVersionEnd": "15.255.255"
     }
   }
 }
