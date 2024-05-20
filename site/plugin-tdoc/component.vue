@@ -91,7 +91,7 @@ export default defineComponent({
     this.$emit('loaded', () => {
       tdDocContent.pageStatus = 'show';
     });
-    if (this.$refs.parentIframe && this.$refs.parentIframe.onload) {
+    if (this.$refs.parentIframe) {
       this.$refs.parentIframe.onload = () => {
         watchExampleRouterChange(this.$refs.parentIframe);
       };
