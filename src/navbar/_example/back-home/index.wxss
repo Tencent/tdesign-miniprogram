@@ -18,6 +18,6 @@
   top: 50%;
   transform: translateY(-50%);
   width: 1px;
-  height: 36rpx;
+  height: 18px;
   background: #e7e7e7;
 }

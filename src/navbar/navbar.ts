@@ -74,16 +74,15 @@ export default class Navbar extends SuperComponent {
     wx.getSystemInfo({
       success: (res) => {
         const boxStyleList = [];
-        const { windowWidth, statusBarHeight } = wx.getSystemInfoSync();
-        const px2rpx = (v: number) => Math.round((v * 750) / (windowWidth >= 750 ? 750 / 2 : windowWidth));
+        const { statusBarHeight } = wx.getSystemInfoSync();
 
-        boxStyleList.push(`--td-navbar-padding-top: ${px2rpx(statusBarHeight)}rpx`);
+        boxStyleList.push(`--td-navbar-padding-top: ${statusBarHeight}px`);
         if (rect && res?.windowWidth) {
-          boxStyleList.push(`--td-navbar-right: ${px2rpx(res.windowWidth - rect.left)}rpx`); // 导航栏右侧小程序胶囊按钮宽度
+          boxStyleList.push(`--td-navbar-right: ${res.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
         }
-        boxStyleList.push(`--td-navbar-capsule-height: ${px2rpx(rect.height)}rpx`); // 胶囊高度
-        boxStyleList.push(`--td-navbar-capsule-width: ${px2rpx(rect.width)}rpx`); // 胶囊宽度
-        boxStyleList.push(`--td-navbar-height: ${px2rpx((rect.top - statusBarHeight) * 2 + rect.height)}rpx`);
+        boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
+        boxStyleList.push(`--td-navbar-capsule-width: ${rect.width}px`); // 胶囊宽度
+        boxStyleList.push(`--td-navbar-height: ${(rect.top - statusBarHeight) * 2 + rect.height}px`);
         this.setData({
           boxStyle: `${boxStyleList.join('; ')}`,
         });
