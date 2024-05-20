@@ -6,6 +6,7 @@
 @picker-item-height: var(--td-picker-item-height, 80rpx);
 @picker-item-color: var(--td-picker-item-color, @text-color-secondary);
 @picker-item-active-color: var(--td-picker-item-active-color, @text-color-primary);
+@picker-item-font-size: var(--td-picker-item-font-size, @font-size-m);
 
 :host {
   display: flex;
@@ -32,6 +33,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     color: @picker-item-color;
+    font-size: @picker-item-font-size;
 
     &--active {
       color: @picker-item-active-color;

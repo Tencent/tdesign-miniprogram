@@ -106,4 +106,5 @@ options | Array | [] | 数据源。TS 类型：`PickerItemOption[]` `interface P
 --td-picker-toolbar-height | 116rpx | - 
 --td-picker-item-active-color | @font-gray-1 | - 
 --td-picker-item-color | @font-gray-2 | - 
+--td-picker-item-font-size | @font-size-m | -
 --td-picker-item-height | 80rpx | -
