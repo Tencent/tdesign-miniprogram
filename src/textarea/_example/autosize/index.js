@@ -1,7 +1,4 @@
-import SkylineBehavior from '@behaviors/skyline.js';
-
 Component({
-  behaviors: [SkylineBehavior],
   data: {
     autosize: {
       maxHeight: 120,

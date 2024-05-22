@@ -42,7 +42,7 @@
       class="{{_.cls(classPrefix + '__title', [['disabled', _disabled], ['checked', checked]])}} {{prefix}}-class-label"
       style="-webkit-line-clamp:{{maxLabelRow}}"
     >
-      {{label}}
+      <block wx:if="{{label}}">{{label}}</block>
       <slot />
       <slot name="label" />
     </view>
@@ -50,8 +50,10 @@
     <view
       class="{{_.cls(classPrefix + '__description', [['disabled', _disabled], ['checked', checked]])}} {{prefix}}-class-content "
       style="-webkit-line-clamp:{{maxContentRow}}"
-      >{{content}}<slot name="content"
-    /></view>
+    >
+      <block wx:if="{{content}}">{{content}}</block>
+      <slot name="content" />
+    </view>
   </view>
 
   <view wx:if="{{!borderless}}" class="{{_.cls(classPrefix + '__border', [_placement])}} {{prefix}}-class-border" />

@@ -12,7 +12,6 @@ exports[`Textarea Textarea autosize demo works fine 1`] = `
     disableDefaultPadding="{{true}}"
     label="标签文字"
     placeholder="请输入文字"
-    tClassLabel=""
     bind:line-change="onLineChange"
   />
 </autosize>
@@ -66,7 +65,6 @@ exports[`Textarea Textarea custom demo works fine 1`] = `
       placeholder="请输入文字"
       style="height: 248rpx"
       tClass="external-class"
-      tClassIndicator=""
     />
   </wx-view>
 </custom>
@@ -80,7 +78,6 @@ exports[`Textarea Textarea disabled demo works fine 1`] = `
     label="标签文字"
     placeholder="请输入文字"
     tClass="external-class"
-    tClassLabel=""
     value="不可编辑文字"
   />
 </disabled>
@@ -93,7 +90,6 @@ exports[`Textarea Textarea label demo works fine 1`] = `
     label="标签文字"
     placeholder="请输入文字"
     tClass="external-class"
-    tClassLabel=""
   />
 </wx-label>
 `;
@@ -107,8 +103,6 @@ exports[`Textarea Textarea maxcharacter demo works fine 1`] = `
     maxcharacter="200"
     placeholder="设置最大字符个数，一个汉字表示两个字符"
     tClass="external-class"
-    tClassIndicator=""
-    tClassLabel=""
   />
 </maxcharacter>
 `;
@@ -122,8 +116,6 @@ exports[`Textarea Textarea maxlength demo works fine 1`] = `
     maxlength="200"
     placeholder="设置最大字符个数"
     tClass="external-class"
-    tClassIndicator=""
-    tClassLabel=""
   />
 </maxlength>
 `;
