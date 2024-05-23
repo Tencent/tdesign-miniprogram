@@ -7,23 +7,3 @@
 .external-class {
   height: 312rpx;
 }
-
-.skyline-label {
-  font-size: 28rpx;
-  color: rgba(0, 0, 0, 0.9);
-  flex-shrink: 0;
-  line-height: 44rpx;
-  padding-bottom: 16rpx;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.skyline-indicator {
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 24rpx;
-  text-align: right;
-  /*line-height: 40rpx;*/
-  padding-top: 16rpx;
-  min-height: 56rpx;
-}
