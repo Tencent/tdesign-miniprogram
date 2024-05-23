@@ -40,8 +40,6 @@ exports[`Textarea Textarea card demo works fine 1`] = `
       placeholder="请输入文字"
       style="border-radius: 18rpx;"
       tClass="external-class"
-      tClassIndicator=""
-      tClassLabel=""
     />
   </wx-view>
 </card>
