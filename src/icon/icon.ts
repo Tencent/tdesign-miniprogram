@@ -32,7 +32,7 @@ export default class Icon extends SuperComponent {
     },
 
     setIconStyle() {
-      const { name, color, size } = this.properties;
+      const { name, color, size, prefix } = this.properties;
       const isImage = name.indexOf('/') !== -1;
       const sizeValue = addUnit(size);
       const sizeStyle = isImage && sizeValue ? { width: sizeValue, height: sizeValue } : {};
@@ -45,6 +45,7 @@ export default class Icon extends SuperComponent {
           ...fontStyle,
           ...sizeStyle,
         })}`,
+        iconClass: `${prefix || this.data.classPrefix}-${name}`,
       });
     },
   };

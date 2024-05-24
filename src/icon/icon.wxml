@@ -11,5 +11,5 @@
   <view wx:if="{{ isImage }}" class="{{classPrefix}}--image">
     <image src="{{ name }}" mode="aspectFit" class="{{classPrefix}}__image" />
   </view>
-  <label wx:else class="{{ prefix ? prefix : classPrefix }}-{{ name }} {{ classPrefix }}-base"> </label>
+  <label wx:else class="{{ iconClass }} {{ classPrefix }}-base"> </label>
 </view>
