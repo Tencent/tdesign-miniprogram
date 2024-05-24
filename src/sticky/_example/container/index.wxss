@@ -10,6 +10,13 @@
 }
 
 .green-button {
-  background-color: rgba(0, 168, 112, 1) !important;
+  z-index: 0 !important;
+  background-color: #008858 !important;
   color: #fff !important;
+}
+
+.hover-class::after {
+  z-index: -1;
+  background-color: #006c45;
+  border-color: #006c45;
 }

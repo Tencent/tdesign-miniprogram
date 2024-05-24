@@ -11,6 +11,6 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #f3f3f3;
+  background-color: var(--td-bg-color-secondarycontainer);
   border-radius: 12rpx;
 }
