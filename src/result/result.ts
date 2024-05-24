@@ -1,3 +1,4 @@
+import './result.less';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';

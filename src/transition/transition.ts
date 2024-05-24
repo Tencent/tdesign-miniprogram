@@ -1,3 +1,4 @@
+import './transition.less';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import transition from '../mixins/transition';
 import config from '../common/config';

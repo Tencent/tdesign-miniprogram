@@ -1,3 +1,4 @@
+import './switch.less';
 import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';

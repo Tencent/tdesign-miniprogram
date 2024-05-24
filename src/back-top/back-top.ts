@@ -1,3 +1,4 @@
+import './back-top.less';
 import { SuperComponent, RelationsOptions, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';

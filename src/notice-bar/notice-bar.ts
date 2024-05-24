@@ -1,3 +1,4 @@
+import './notice-bar.less';
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 import { getRect, getAnimationFrame, calcIcon } from '../common/utils';
 import props from './props';

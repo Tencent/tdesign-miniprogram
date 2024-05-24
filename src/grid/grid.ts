@@ -1,3 +1,4 @@
+import './grid.less';
 import { isObject, SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';

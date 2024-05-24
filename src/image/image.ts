@@ -1,3 +1,4 @@
+import './image.less';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import ImageProps from './props';
 import config from '../common/config';

@@ -1,3 +1,4 @@
+import './tab-panel.less';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import props from './props';
 import config from '../common/config';

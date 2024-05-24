@@ -1,3 +1,4 @@
+import './message-item.less';
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 import config from '../common/config';
 import { MessageProps } from '../message/message.interface';

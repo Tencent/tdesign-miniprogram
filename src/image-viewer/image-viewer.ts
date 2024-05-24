@@ -1,3 +1,4 @@
+import './image-viewer.less';
 import { styles, calcIcon } from '../common/utils';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';

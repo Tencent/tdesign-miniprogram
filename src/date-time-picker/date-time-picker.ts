@@ -1,3 +1,4 @@
+import './date-time-picker.less';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import localeData from 'dayjs/plugin/localeData';

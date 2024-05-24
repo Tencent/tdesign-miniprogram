@@ -1,3 +1,4 @@
+import './action-sheet.less';
 import { chunk } from '../common/utils';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';

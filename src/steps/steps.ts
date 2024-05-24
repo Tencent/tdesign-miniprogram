@@ -1,3 +1,4 @@
+import './steps.less';
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';

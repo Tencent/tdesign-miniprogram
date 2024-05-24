@@ -1,3 +1,4 @@
+import './checkbox.less';
 import { SuperComponent, wxComponent, ComponentsOptionsType, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import Props from './props';

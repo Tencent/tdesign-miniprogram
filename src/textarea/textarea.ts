@@ -1,3 +1,4 @@
+import './textarea.less';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';

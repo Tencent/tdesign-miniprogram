@@ -1,3 +1,4 @@
+import './avatar-group.less';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import avatarGroupProps from './props';

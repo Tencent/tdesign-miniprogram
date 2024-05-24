@@ -1,3 +1,4 @@
+import './radio-group.less';
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import props from './props';

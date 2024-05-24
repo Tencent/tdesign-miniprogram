@@ -1,3 +1,4 @@
+import './popup.less';
 import { TdPopupProps } from './type';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';

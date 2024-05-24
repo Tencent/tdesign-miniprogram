@@ -1,3 +1,4 @@
+import './upload.less';
 import { isObject, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import { UploadFile } from './type';
