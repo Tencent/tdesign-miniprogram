@@ -1,3 +1,4 @@
+const CONFIG_PREFIX = "t";
 export default {
   prefix: CONFIG_PREFIX,
 };
