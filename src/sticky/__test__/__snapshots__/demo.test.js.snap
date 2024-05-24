@@ -26,6 +26,7 @@ exports[`Sticky Sticky container demo works fine 1`] = `
       offsetTop="{{0}}"
     >
       <t-button
+        hoverClass="hover-class "
         size="large"
         tClass="external-class green-button"
       >
