@@ -29,5 +29,5 @@
   <t-tab-panel label="选项" value="1" />
   <t-tab-panel label="选项" value="2" />
   <t-tab-panel label="选项" value="3" />
-  <t-tab-panel label="上限三字" value="4" />
+  <t-tab-panel label="上限四字" value="4" />
 </t-tabs>
