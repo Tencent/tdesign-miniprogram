@@ -1,5 +1,5 @@
 .wrapper {
   margin-top: 32rpx;
   background: var(--bg-color-demo);
-  padding-top: 40rpx;
+  padding: 40rpx 36rpx 0;
 }
