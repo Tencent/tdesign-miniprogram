@@ -5,5 +5,5 @@
 
 .wrapper {
   background: var(--bg-color-demo);
-  padding: 40rpx 36rpx 0;
+  padding: 40rpx 12rpx 0;
 }
