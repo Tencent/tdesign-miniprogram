@@ -6,6 +6,31 @@ docClass: timeline
 ---
 
 
+## 🌈 1.4.1 `2024-05-28` 
+### 🚀 Features
+- `Picker`: 新增 `use-popup` 属性 @anlyyao ([#2770](https://github.com/Tencent/tdesign-miniprogram/pull/2770))
+- `DateTimePicker`: 新增 `use-popup` 属性 @anlyyao ([#2770](https://github.com/Tencent/tdesign-miniprogram/pull/2770))
+
+### 🐞 Bug Fixes
+- `Calendar`:  修复页面层无法修改组件样式的问题 @anlyyao ([#2767](https://github.com/Tencent/tdesign-miniprogram/pull/2767))
+- `Layout`:  支持拆行 @anlyyao ([#2773](https://github.com/Tencent/tdesign-miniprogram/pull/2773))
+- `Navbar`:  为适配右侧胶囊尺寸，恢复使用 `px` 单位 @anlyyao ([#2781](https://github.com/Tencent/tdesign-miniprogram/pull/2781))
+- `Picker`: 修复子项文本尺寸自适应问题 @anlyyao ([#2782](https://github.com/Tencent/tdesign-miniprogram/pull/2782))
+- `Tabs`: 修复在 Skyline 模式下组件不能正常使用的问题 @narukeu ([#2788](https://github.com/Tencent/tdesign-miniprogram/pull/2788))
+- `Tabs`: 修复示例文案错误 @ArcticFoxPro ([#2801](https://github.com/Tencent/tdesign-miniprogram/pull/2801))
+- `CellGroup`: 修复深色模式下外边框颜色错误 @anlyyao ([#2790](https://github.com/Tencent/tdesign-miniprogram/pull/2790))
+- `Slider`: 优化垂直方向胶囊滑轨样式 @anlyyao ([#2796](https://github.com/Tencent/tdesign-miniprogram/pull/2796))、
+- `Slider`: 示例增加边距，避免与手势返回冲突 @novlan1 ([#2807](https://github.com/Tencent/tdesign-miniprogram/pull/2807))
+- `Progress`: 修复环状进度条深色模式颜色错误 @anlyyao ([#2794](https://github.com/Tencent/tdesign-miniprogram/pull/2794))
+- `Icon`: 修复图片资源无法正常显示的问题 @betavs ([#2806](https://github.com/Tencent/tdesign-miniprogram/pull/2806))
+- `CountDown`: 改用 `TCloudNumber` 字体 @anlyyao ([#2765](https://github.com/Tencent/tdesign-miniprogram/pull/2765))
+- `Button`: 更新示例，对齐视觉 @anlyyao ([#2811](https://github.com/Tencent/tdesign-miniprogram/pull/2811))
+ 
+### 🚧 Others
+- fix(Site): 修复预览窗口内部切换时不更随颜色模式问题 @zuiaiwanqian ([#2768](https://github.com/Tencent/tdesign-miniprogram/pull/2768))
+
+
+
 ## 🌈 1.4.0 `2024-05-09`
 ### 🚀 Features
 - `Tdesign`: Button、Fab等 33 个组件完成 Skyline 适配，并新增 Skyline Page 示例页 @jin0209 @anlyyao @jarmywang ([#2659](https://github.com/Tencent/tdesign-miniprogram/pull/2659))
