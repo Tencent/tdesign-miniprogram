@@ -2,77 +2,85 @@
 
 exports[`Slider Slider base demo works fine 1`] = `
 <base>
-  <t-slider
-    defaultValue="{{23}}"
-    step="{{0.1}}"
-    bind:change="handleChange"
-  />
+  <wx-view
+    class="wrapper"
+  >
+    <t-slider
+      defaultValue="{{23}}"
+      step="{{0.1}}"
+      bind:change="handleChange"
+    />
+  </wx-view>
 </base>
 `;
 
 exports[`Slider Slider capsule demo works fine 1`] = `
 <capsule>
-  <t-slider
-    defaultValue="{{30}}"
-    theme="capsule"
-  />
-  <t-slider
-    defaultValue="{{
-      Array [
-        40,
-        60,
-      ]
-    }}"
-    range="{{true}}"
-    theme="capsule"
-  />
-  <t-slider
-    defaultValue="{{
-      Array [
-        40,
-        60,
-      ]
-    }}"
-    label="\${value}"
-    range="{{true}}"
-    theme="capsule"
-  />
-  <t-slider
-    defaultValue="{{60}}"
-    marks="{{
-      Object {
-        "0": "0",
-        "100": "100",
-        "20": "20",
-        "40": "40",
-        "60": "60",
-        "80": "80",
-      }
-    }}"
-    step="{{20}}"
-    theme="capsule"
-  />
-  <t-slider
-    defaultValue="{{
-      Array [
-        20,
-        80,
-      ]
-    }}"
-    marks="{{
-      Object {
-        "0": "0",
-        "100": "100",
-        "20": "20",
-        "40": "40",
-        "60": "60",
-        "80": "80",
-      }
-    }}"
-    range="{{true}}"
-    step="{{20}}"
-    theme="capsule"
-  />
+  <wx-view
+    class="wrapper"
+  >
+    <t-slider
+      defaultValue="{{30}}"
+      theme="capsule"
+    />
+    <t-slider
+      defaultValue="{{
+        Array [
+          40,
+          60,
+        ]
+      }}"
+      range="{{true}}"
+      theme="capsule"
+    />
+    <t-slider
+      defaultValue="{{
+        Array [
+          40,
+          60,
+        ]
+      }}"
+      label="\${value}"
+      range="{{true}}"
+      theme="capsule"
+    />
+    <t-slider
+      defaultValue="{{60}}"
+      marks="{{
+        Object {
+          "0": "0",
+          "100": "100",
+          "20": "20",
+          "40": "40",
+          "60": "60",
+          "80": "80",
+        }
+      }}"
+      step="{{20}}"
+      theme="capsule"
+    />
+    <t-slider
+      defaultValue="{{
+        Array [
+          20,
+          80,
+        ]
+      }}"
+      marks="{{
+        Object {
+          "0": "0",
+          "100": "100",
+          "20": "20",
+          "40": "40",
+          "60": "60",
+          "80": "80",
+        }
+      }}"
+      range="{{true}}"
+      step="{{20}}"
+      theme="capsule"
+    />
+  </wx-view>
 </capsule>
 `;
 
@@ -179,15 +187,19 @@ exports[`Slider Slider max demo works fine 1`] = `
 
 exports[`Slider Slider range demo works fine 1`] = `
 <range>
-  <t-slider
-    defaultValue="{{
-      Array [
-        35,
-        65,
-      ]
-    }}"
-    range="{{true}}"
-  />
+  <wx-view
+    class="wrapper"
+  >
+    <t-slider
+      defaultValue="{{
+        Array [
+          35,
+          65,
+        ]
+      }}"
+      range="{{true}}"
+    />
+  </wx-view>
 </range>
 `;
 
