@@ -8,3 +8,8 @@
 .label-class {
   flex-grow: 1;
 }
+
+.wrapper {
+  background: var(--bg-color-demo);
+  padding: 0 12rpx;
+}
