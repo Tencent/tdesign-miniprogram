@@ -29,5 +29,10 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description 
 -- | -- | --
 --td-progress-circle-inner-bg-color | @font-white-1 | - 
+--td-progress-circle-width | 224rpx | - 
 --td-progress-inner-bg-color | @brand-color | - 
---td-progress-track-bg-color | @bg-color-component | -
+--td-progress-line-stroke-width | 12rpx | - 
+--td-progress-stroke-circle-width | 12rpx | - 
+--td-progress-stroke-plump-width | 40rpx | - 
+--td-progress-track-bg-color | @bg-color-component | - 
+
