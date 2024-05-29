@@ -5,6 +5,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'ts'],
   moduleNameMapper: {
     '^tdesign-miniprogram/(.*)': '<rootDir>/src/$1',
+    '^tdesign-miniprogram': '<rootDir>/src/index',
     '^@behaviors/(.*)': '<rootDir>/example/behaviors/$1',
   },
   testMatch: ['<rootDir>/src/**/__test__/**/*.test.{js,ts}'],
