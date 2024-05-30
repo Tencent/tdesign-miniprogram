@@ -16,7 +16,6 @@
     aria-label="{{ ariaLabel || (badgeProps.dot || badgeProps.count ? _.getBadgeAriaLabel({ ...badgeProps }) : '') }}"
   >
     <view
-      wx:if="{{icon}}"
       class="{{classPrefix}}__icon"
       style="height: {{iconOnly ? 24 : 20}}px"
       aria-hidden="{{ badgeProps.dot || badgeProps.count }}"
@@ -34,7 +33,7 @@
       >
         <template is="icon" data="{{ size: iconOnly ? 24 : 20, ..._icon }}" />
       </t-badge>
-      <template wx:else is="icon" data="{{ ariaHidden: !iconOnly, size: iconOnly ? 24 : 20, ..._icon }}" />
+      <template wx:elif="{{!!icon}}" is="icon" data="{{ ariaHidden: !iconOnly, size: iconOnly ? 24 : 20, ..._icon }}" />
       <slot name="icon" />
     </view>
     <view class="{{_.cls(classPrefix + '__text', [['small', !!icon]])}}">
