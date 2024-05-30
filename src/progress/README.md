@@ -85,5 +85,10 @@ t-class-label | 标签样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-progress-circle-inner-bg-color | @font-white-1 | - 
+--td-progress-circle-width | 224rpx | - 
 --td-progress-inner-bg-color | @brand-color | - 
---td-progress-track-bg-color | @bg-color-component | -
+--td-progress-line-stroke-width | 12rpx | - 
+--td-progress-stroke-circle-width | 12rpx | - 
+--td-progress-stroke-plump-width | 40rpx | - 
+--td-progress-track-bg-color | @bg-color-component | - 
+
