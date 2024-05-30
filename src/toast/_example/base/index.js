@@ -1,6 +1,6 @@
 import SkylineBehavior from '@behaviors/skyline.js';
 
-import Toast from 'tdesign-miniprogram/toast/index';
+import { Toast } from 'tdesign-miniprogram';
 
 Component({
   behaviors: [SkylineBehavior],
