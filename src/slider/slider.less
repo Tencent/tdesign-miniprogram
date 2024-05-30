@@ -5,8 +5,10 @@
 @slider-bar-width: var(--td-slider-bar-width, 8rpx);
 @slider-bar-height: var(--td-slider-bar-height, 8rpx);
 @slider-dot-bg-color: var(--td-slider-dot-bg-color, #fff);
+@slider-dot-disabled-bg-color: var(--td-slider-dot-disabled-bg-color, #fff);
 @slider-dot-size: var(--td-slider-dot-size, 40rpx);
-@slider-dot-color: var(--td-slider-dot-color, @component-border);
+@slider-dot-border-color: var(--td-slider-dot-color, @component-border);
+@slider-dot-disabled-border-color: var(--td-slider-dot-disabled-border-color, #f3f3f3);
 @slider-default-color: var(--td-slider-default-color, @bg-color-component);
 @slider-default-disabled-color: var(--td-slider-default-color, @bg-color-component-disabled);
 @slider-active-color: var(--td-slider-active-color, @brand-color);
@@ -31,6 +33,11 @@
     .@{slider}__dot-value,
     .@{slider}__scale-desc {
       color: @slider-disabled-text-color;
+    }
+
+    .@{slider}__dot {
+      background-color: @slider-dot-disabled-bg-color;
+      border-color: @slider-dot-disabled-border-color;
     }
   }
 
@@ -61,7 +68,7 @@
 
   &__dot {
     border-radius: 50%;
-    border: 2rpx solid @slider-dot-color;
+    border: 2rpx solid @slider-dot-border-color;
     position: absolute;
     top: 50%;
     right: 0;
