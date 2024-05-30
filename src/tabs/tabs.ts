@@ -131,10 +131,14 @@ export default class Tabs extends SuperComponent {
         }
       });
       if (this.data.currentIndex === index) return;
-      this.setData({
-        currentIndex: index,
-      });
-      this.setTrack();
+      this.setData(
+        {
+          currentIndex: index,
+        },
+        () => {
+          this.setTrack();
+        },
+      );
     },
 
     getCurrentName() {
