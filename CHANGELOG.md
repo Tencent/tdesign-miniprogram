@@ -6,6 +6,19 @@ docClass: timeline
 ---
 
 
+## 🌈 1.4.2 `2024-06-07`
+### 🐞 Bug Fixes
+- `Skeleton`: 修复深色模式渐变动画颜色错误 @anlyyao ([#2818](https://github.com/Tencent/tdesign-miniprogram/pull/2818))
+- `Slider`: 修复禁用态样式错误 @anlyyao ([#2814](https://github.com/Tencent/tdesign-miniprogram/pull/2814))
+- `TabBar`: 修复 `icon` 插槽不显示问题 @jarmywang ([#2821](https://github.com/Tencent/tdesign-miniprogram/pull/2821))
+- `Tabs`: 修复当改变文本大小时下划线滑动位置错误 @anlyyao ([#2822](https://github.com/Tencent/tdesign-miniprogram/pull/2822))
+- `ActionSheet`:  修复控制台告警 @anlyyao ([#2838](https://github.com/Tencent/tdesign-miniprogram/pull/2838))
+- `Tabs`: 修复部分 `css` 变量无效 @betavs ([#2843](https://github.com/Tencent/tdesign-miniprogram/pull/2843))
+### 🚧 Others
+- `CountDown`: 示例添加 `TCloudNumber` 字体的 `Base64` 转码 @ArcticFoxPro ([#2836](https://github.com/Tencent/tdesign-miniprogram/pull/2836))
+- `Message`: 修复官网 `Message` 组件示例页面白屏 @anlyyao ([#2841](https://github.com/Tencent/tdesign-miniprogram/pull/2841))
+
+
 ## 🌈 1.4.1 `2024-05-28` 
 ### 🚀 Features
 - `Picker`: 新增 `use-popup` 属性 @anlyyao ([#2770](https://github.com/Tencent/tdesign-miniprogram/pull/2770))
