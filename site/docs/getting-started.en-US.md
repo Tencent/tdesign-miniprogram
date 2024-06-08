@@ -18,7 +18,9 @@ Before using it, please make sure you have studied WeChat’s official [Simple T
 
 ## Installation
 
-### npm
+### MiniProgram Usage
+
+#### npm
 
 TDesign MiniProgram already supports using NPM to install third-party packages. For details, see [NPM Support](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)
 
@@ -28,13 +30,13 @@ npm i tdesign-miniprogram -S --production
 
 > After installation, npm needs to be built in WeChat developer tools: `tool -  build npm`
 
-## Modify app.json
+#### Modify app.json
 
 Remove `"style": "v2"` in `app.json`.
 
 > Because [v2 configuration](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#style) means enabling a new version of component styles, it will cause TDesign component styles to be disordered.
 
-## Modify tsconfig.json
+#### Modify tsconfig.json
 
 If you use `typescript` to develop, you need to modify `tsconfig.json` to specify `paths`
 
@@ -46,7 +48,7 @@ If you use `typescript` to develop, you need to modify `tsconfig.json` to specif
 }
 ```
 
-## Use components
+#### Use components
 
 Taking the button component as an example, you only need to introduce the custom component corresponding to the button in the `JSON` file.
 
@@ -63,6 +65,68 @@ Then you can use the component directly in wxml.
 ```html
 <t-button theme="primary">按钮</t-button>
 ```
+
+### uni-app Usage
+
+#### Installation dependencies
+
+Create a new WeChat component directory wxcomponents under the project path (reference for naming other mini program component directories [Mini Program Custom Component Support](https://zh.uniapp.dcloud.io/tutorial/miniprogram-subject.html#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%94%AF%E6%8C%81)And install the tdesign-miniprogram dependency in this directory.
+
+```bash
+mkdir wxcomponents
+cd wxcomponents
+
+# npm install
+npm init -y
+npm i tdesign-miniprogram -S --production
+
+# yarn install
+yarn init -y
+yarn add tdesign-miniprogram
+```
+#### Use components
+
+Taking the button component as an example, Just introduce the custom component corresponding to the button in the `pages.json` file, and refer to the [Pages.json Page Style Configuration](https://zh.uniapp.dcloud.io/collocation/pages.html#style).
+
+
+```diff
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
++        "mp-weixin": {
++         "usingComponents": {
++           "t-button": "/wxcomponents/miniprogram_npm/tdesign-miniprogram/button/button"
++         }
++       },
+        "navigationBarTitleText": "demo"
+      }
+    }
+  ]
+}
+```
+Then you can directly use components in wxml
+
+```html
+<t-button theme="primary" @tap="increment"> click me {{state.count}} </t-button>
+```
+
+```diff
+<script setup lang="ts">
+import {reactive} from 'vue';
+const state = reactive({count: 0})
+
+function increment() {
+  state.count++
+}
+</script>
+```
+
+#### Compile and Build
+
+You need to build NPM in the WeChat developer tool: `Tools - Build NPM`, and then click `Compile` to preview and view.
+
 
 ## Preview in developer tools
 

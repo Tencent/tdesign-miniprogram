@@ -15,9 +15,11 @@ spline: explain
 
 使用前，请确保你已经学习过微信官方的 [小程序简易教程](https://developers.weixin.qq.com/miniprogram/dev/framework/) 和 [自定义组件介绍](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/)。
 
-## 安装
+## 安装使用
 
-### 使用 NPM
+### 小程序使用
+
+#### 使用 NPM
 
 小程序已经支持使用 NPM 安装第三方包，详见 [NPM 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)
 
@@ -32,14 +34,14 @@ npm i tdesign-miniprogram -S --production
 > <br/>
 ><img width="200" src="https://tdesign.gtimg.com/miniprogram/docs/getting-started.png" />
 
-
-## 修改 app.json
+#### 修改 app.json
 
 将 `app.json` 中的 `"style": "v2"` 移除。
 
 > 因为 [该配置](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#style) 表示启用新版组件样式，将会导致 TDesign 的组件样式错乱。
 
-## 修改 tsconfig.json
+#### 修改 tsconfig.json
+
 如果使用`typescript`开发，需要修改`tsconfig.json`指定`paths`
 ```json
 {
@@ -49,7 +51,7 @@ npm i tdesign-miniprogram -S --production
 }
 ```
 
-## 使用组件
+#### 使用组件
 
 以按钮组件为例，只需要在 `JSON` 文件中引入按钮对应的自定义组件即可
 
@@ -66,6 +68,70 @@ npm i tdesign-miniprogram -S --production
 ```html
 <t-button theme="primary">按钮</t-button>
 ```
+
+### uni-app使用
+
+#### 安装依赖
+
+在项目路径下新建微信组件目录 wxcomponents（其他小程序组件目录命名参考[小程序自定义组件支持](https://zh.uniapp.dcloud.io/tutorial/miniprogram-subject.html#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E6%94%AF%E6%8C%81)），并在此目录下安装 tdesign-miniprogram 依赖。
+
+```bash
+mkdir wxcomponents
+cd wxcomponents
+
+# npm 安装依赖
+npm init -y
+npm i tdesign-miniprogram -S --production
+
+# yarn 安装依赖
+yarn init -y
+yarn add tdesign-miniprogram
+```
+
+#### 使用组件
+
+以按钮组件为例，只需要在 `pages.json` 文件中引入按钮对应的自定义组件即可,针对特定小程序样式参考[pages.json 页面style配置](https://zh.uniapp.dcloud.io/collocation/pages.html#style)。
+
+```diff
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
++        "mp-weixin": {
++         "usingComponents": {
++           "t-button": "/wxcomponents/miniprogram_npm/tdesign-miniprogram/button/button"
++         }
++       },
+        "navigationBarTitleText": "demo"
+      }
+    }
+  ]
+}
+```
+
+接着就可以在 wxml 中直接使用组件
+
+```html
+<t-button theme="primary" @tap="increment"> click me {{state.count}} </t-button>
+```
+
+```diff
+<script setup lang="ts">
+import {reactive} from 'vue';
+const state = reactive({count: 0})
+
+function increment() {
+  state.count++
+}
+</script>
+```
+
+#### 编译构建
+
+需要在微信开发者工具中对 npm 进行构建：`工具 - 构建 npm` ， 然后点击`编译`即可预览查看。
+
+
 
 ## 在开发者工具中预览
 
