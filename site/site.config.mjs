@@ -54,6 +54,14 @@ export const docs = [
         component: () => import('@docs/custom-theme.md'),
       },
       {
+        title: '深色模式',
+        titleEn: 'Dark Mode',
+        name: 'dark-mode',
+        meta: { docType: 'explain' },
+        path: '/miniprogram/dark-mode',
+        component: () => import('@docs/dark-mode.md'),
+      },
+      {
         title: '组件概览',
         titleEn: 'Overview',
         name: 'overview',
