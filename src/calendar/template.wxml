@@ -7,7 +7,7 @@
 >
   <view class="{{classPrefix}}__title" tabindex="0">
     <slot name="title" />
-    <text>{{ title || '请选择日期' }}</text>
+    <text wx:if="{{title}}">{{ title }}</text>
   </view>
   <t-icon
     wx:if="{{usePopup}}"
