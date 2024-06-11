@@ -36,8 +36,13 @@
       />
     </swiper-item>
   </swiper>
+  <view class="{{classPrefix}}__navigation">
+    <slot name="navigation" />
+    <slot name="nav" />
+  </view>
   <t-swiper-nav
     wx:if="{{navigation}}"
+    class="{{classPrefix}}__nav"
     t-class="{{prefix}}-class-nav"
     type="{{navigation.type || 'dots'}}"
     current="{{navCurrent || 0}}"
@@ -48,5 +53,4 @@
     show-controls="{{navigation.showControls || false}}"
     bind:nav-btn-change="onNavBtnChange"
   />
-  <slot name="nav" />
 </view>
