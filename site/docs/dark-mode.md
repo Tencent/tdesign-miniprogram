@@ -58,7 +58,7 @@ TDesign Minirogram 基于 Design Token 变量和媒体查询 `prefers-color-sche
 
 除此之外，当你在使用 `root-portal` 组件包裹其他组件时，也会遇到类似的问题。
 
-为了解决这个问题，我们提供了在 Design Token 中加入了类选择器 `.page`，你只需要在对应的位置为其添加 `page` 类名即可。具体细节请参见：[issue #2856](https://github.com/Tencent/tdesign-miniprogram/issues/2856)。
+为了解决这个问题，我们在 Design Token 中加入了类选择器 `.page`，你只需要在对应的位置为其添加 `page` 类名即可。具体细节请参见：[issue #2856](https://github.com/Tencent/tdesign-miniprogram/issues/2856)。
 
 ```html
 // 开启虚拟节点
