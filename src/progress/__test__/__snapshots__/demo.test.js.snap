@@ -77,6 +77,10 @@ exports[`Progress Progress line demo works fine 1`] = `
     percentage="88"
     status="success"
   />
+  <t-progress
+    percentage="88"
+    status="active"
+  />
 </line>
 `;
 
@@ -99,6 +103,11 @@ exports[`Progress Progress plump demo works fine 1`] = `
   <t-progress
     percentage="88"
     status="success"
+    theme="plump"
+  />
+  <t-progress
+    percentage="88"
+    status="active"
     theme="plump"
   />
 </plump>
