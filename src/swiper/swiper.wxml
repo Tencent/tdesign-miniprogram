@@ -48,5 +48,6 @@
     show-controls="{{navigation.showControls || false}}"
     bind:nav-btn-change="onNavBtnChange"
   />
+  <slot name="navigation" />
   <slot name="nav" />
 </view>
