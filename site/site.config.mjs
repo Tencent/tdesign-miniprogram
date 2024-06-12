@@ -54,14 +54,6 @@ export const docs = [
         component: () => import('@docs/custom-theme.md'),
       },
       {
-        title: '深色模式',
-        titleEn: 'Dark Mode',
-        name: 'dark-mode',
-        meta: { docType: 'explain' },
-        path: '/miniprogram/dark-mode',
-        component: () => import('@docs/dark-mode.md'),
-      },
-      {
         title: '组件概览',
         titleEn: 'Overview',
         name: 'overview',
@@ -69,6 +61,21 @@ export const docs = [
         path: '/miniprogram/overview',
         component: () => import('@docs/overview.md'),
         componentEn: () => import('@docs/overview.en-US.md'),
+      },
+    ],
+  },
+  {
+    title: '全局配置',
+    titleEn: 'Global Config',
+    type: 'document',
+    children: [
+      {
+        title: '深色模式',
+        titleEn: 'Dark Mode',
+        name: 'dark-mode',
+        meta: { docType: 'explain' },
+        path: '/miniprogram/dark-mode',
+        component: () => import('@docs/dark-mode.md'),
       },
     ],
   },

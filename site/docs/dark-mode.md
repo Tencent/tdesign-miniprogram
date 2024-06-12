@@ -1,13 +1,21 @@
 ---
 title: 深色模式
 description: 组件库提供了深色模式支持，可以点击官网右上角开关切换整体浅色与深色模式体验
-spline: explain
+spline: design-mode
 ---
+
+<div style="background: #ecf2fe; display: flex; align-items: center; line-height: 20px; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <svg fill="none" viewBox="0 0 16 16" width="16px" height="16px" style="margin-right: 5px">
+    <path fill="#0052d9" d="M8 15A7 7 0 108 1a7 7 0 000 14zM7.4 4h1.2v1.2H7.4V4zm.1 2.5h1V12h-1V6.5z" fillOpacity="0.9"></path>
+  </svg>
+ 该特性于 1.3.0 上线，请留意版本。
+</div>
 
 ## 使用之前
 
-- 请确保你已阅读 [微信小程序深色模式适配文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/darkmode.html)。
-- TDesign Minirogram 从 `1.3.0` 开始提供深色模式能力，使用之前请先检查版本。
+使用之前，请确保你已阅读 [微信小程序深色模式适配文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/darkmode.html)。
+
+
 
 ## 实现方案
 
@@ -54,11 +62,9 @@ TDesign Minirogram 基于 Design Token 变量和媒体查询 `prefers-color-sche
 
 ## 特殊组件适配深色模式
 
-当你在使用 TDesign Miniprogram 提供的 [TabBar](http://127.0.0.1:19000/miniprogram/components/tab-bar) 组件时，根据微信的 [官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/ability/custom-tabbar.html)，`TabBar` 将是一个特殊的组件，应该定义在 `custom-tab-bar` 文件夹内。这将导致 `TabBar` 渲染在 `<page>` 标签以外，无法获取 `<page>` 标签上的 CSS 变量，造成深色模式下 `TabBar` 仍然显示为浅色模式的问题。
+我们的全局 `CSS Variables` 声明在 `page` 标签选择器下，对非页面内容无效。目前已知两种场景：1. 基于`TabBar`组件的`custom-tab-bar` 组件，`TabBar` 的深色模式失效；2. `root-portal` 组件包裹的组件，在 `webview` 下其深色模式失效。
 
-除此之外，当你在使用 `root-portal` 组件包裹其他组件时，也会遇到类似的问题。
-
-为了解决这个问题，我们在 Design Token 中加入了类选择器 `.page`，你只需要在对应的位置为其添加 `page` 类名即可。具体细节请参见：[issue #2856](https://github.com/Tencent/tdesign-miniprogram/issues/2856)。
+为了处理这个问题，我们补充了一个同级类选择器：`.page` ，需要在对应的位置手动添加 `.page` 类名。
 
 ```html
 // 开启虚拟节点
@@ -68,6 +74,12 @@ TDesign Minirogram 基于 Design Token 变量和媒体查询 `prefers-color-sche
 
 // 不开启虚拟节点
 <t-tab-bar class="page" />
+
+// root-portal 场景
+<root-portal>
+	<view class="page">
+	</view>
+</root-portal>
 ```
 
 > 💡Tips：什么是虚拟节点请参考 [微信文档](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html#%E8%99%9A%E6%8B%9F%E5%8C%96%E7%BB%84%E4%BB%B6%E8%8A%82%E7%82%B9)。
