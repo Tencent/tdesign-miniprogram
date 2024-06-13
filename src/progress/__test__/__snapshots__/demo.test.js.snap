@@ -78,6 +78,12 @@ exports[`Progress Progress line demo works fine 1`] = `
     status="success"
   />
   <t-progress
+    color="{{
+      Object {
+        "from": "#0052D9",
+        "to": "#00A870",
+      }
+    }}"
     percentage="88"
     status="active"
   />
@@ -106,6 +112,12 @@ exports[`Progress Progress plump demo works fine 1`] = `
     theme="plump"
   />
   <t-progress
+    color="{{
+      Object {
+        "from": "#0052D9",
+        "to": "#00A870",
+      }
+    }}"
     percentage="88"
     status="active"
     theme="plump"
