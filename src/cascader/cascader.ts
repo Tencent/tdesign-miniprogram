@@ -10,6 +10,19 @@ const name = `${prefix}-cascader`;
 export interface CascaderProps extends TdCascaderProps {}
 
 type OptionsType = TdCascaderProps['options']['value'];
+type KeysType = TdCascaderProps['keys']['value'];
+
+function parseOptions(options: OptionsType, keys: KeysType) {
+  const label = keys?.label ?? 'label';
+  const value = keys?.value ?? 'value';
+
+  return options.map((item) => {
+    return {
+      [label]: item[label],
+      [value]: item[value],
+    };
+  });
+}
 
 @wxComponent()
 export default class Cascader extends SuperComponent {
@@ -57,18 +70,20 @@ export default class Cascader extends SuperComponent {
       const { options, selectedIndexes, keys, placeholder } = this.data;
       const selectedValue = [];
       const steps = [];
-      const items = [options];
+      const items = [parseOptions(options, keys)];
 
       if (options.length > 0) {
+        let current = options;
         for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
           const index = selectedIndexes[i];
-          const next = items[i][index];
+          const next = current[index];
+          current = next[keys?.children ?? 'children'];
 
           selectedValue.push(next[keys?.value ?? 'value']);
           steps.push(next[keys?.label ?? 'label']);
 
           if (next[keys?.children ?? 'children']) {
-            items.push(next[keys?.children ?? 'children']);
+            items.push(parseOptions(next[keys?.children ?? 'children'], keys));
           }
         }
       }
@@ -159,9 +174,21 @@ export default class Cascader extends SuperComponent {
     handleSelect(e) {
       const { level } = e.target.dataset;
       const { value } = e.detail;
-      const { selectedIndexes, items, keys } = this.data;
+      const { selectedIndexes, items, keys, options } = this.data;
       const index = items[level].findIndex((item) => item[keys?.value ?? 'value'] === value);
-      const item = items[level][index];
+
+      let item = selectedIndexes.slice(0, level).reduce((acc, item, index) => {
+        if (index === 0) {
+          return acc[item];
+        }
+        return acc[keys?.children ?? 'children'][item];
+      }, options);
+
+      if (level === 0) {
+        item = item[index];
+      } else {
+        item = item[keys?.children ?? 'children'][index];
+      }
 
       if (item.disabled) {
         return;
