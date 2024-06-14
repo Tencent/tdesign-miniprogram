@@ -30,6 +30,7 @@ export default class Cascader extends SuperComponent {
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
+    pureDataPattern: /^options$/,
   };
 
   properties = props;
@@ -66,35 +67,21 @@ export default class Cascader extends SuperComponent {
       this.initWithValue();
     },
 
-    'selectedIndexes, options'() {
-      const { options, selectedIndexes, keys, placeholder } = this.data;
-      const selectedValue = [];
-      const steps = [];
-      const items = [parseOptions(options, keys)];
-
-      if (options.length > 0) {
-        let current = options;
-        for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
-          const index = selectedIndexes[i];
-          const next = current[index];
-          current = next[keys?.children ?? 'children'];
-
-          selectedValue.push(next[keys?.value ?? 'value']);
-          steps.push(next[keys?.label ?? 'label']);
-
-          if (next[keys?.children ?? 'children']) {
-            items.push(parseOptions(next[keys?.children ?? 'children'], keys));
-          }
-        }
-      }
-
-      if (steps.length < items.length) {
-        steps.push(placeholder);
-      }
+    options() {
+      const { selectedValue, steps, items } = this.genItems();
 
       this.setData({
         steps,
         items,
+        selectedValue,
+        stepIndex: items.length - 1,
+      });
+    },
+    selectedIndexes() {
+      const { selectedValue, steps, items } = this.genItems();
+
+      this.setData({
+        steps,
         selectedValue,
         stepIndex: items.length - 1,
       });
@@ -171,6 +158,38 @@ export default class Cascader extends SuperComponent {
         stepIndex: value,
       });
     },
+    genItems() {
+      const { options, selectedIndexes, keys, placeholder } = this.data;
+      const selectedValue = [];
+      const steps = [];
+      const items = [parseOptions(options, keys)];
+
+      if (options.length > 0) {
+        let current = options;
+        for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
+          const index = selectedIndexes[i];
+          const next = current[index];
+          current = next[keys?.children ?? 'children'];
+
+          selectedValue.push(next[keys?.value ?? 'value']);
+          steps.push(next[keys?.label ?? 'label']);
+
+          if (next[keys?.children ?? 'children']) {
+            items.push(parseOptions(next[keys?.children ?? 'children'], keys));
+          }
+        }
+      }
+
+      if (steps.length < items.length) {
+        steps.push(placeholder);
+      }
+
+      return {
+        selectedValue,
+        steps,
+        items,
+      };
+    },
     handleSelect(e) {
       const { level } = e.target.dataset;
       const { value } = e.detail;
@@ -197,18 +216,26 @@ export default class Cascader extends SuperComponent {
       selectedIndexes.length = level + 1;
 
       this.triggerEvent('pick', { value: item[keys?.value ?? 'value'], index, level });
-
+      const { items: newItems } = this.genItems();
       if (item?.[keys?.children ?? 'children']?.length) {
-        this.setData({ selectedIndexes });
+        this.setData({
+          selectedIndexes,
+          [`items[${level + 1}]`]: newItems[level + 1],
+        });
       } else {
         // setCascaderValue(item.value);
-        this.setData({ selectedIndexes }, () => {
-          const { items } = this.data;
-          this._trigger('change', {
-            value: item[keys?.value ?? 'value'],
-            selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
-          });
-        });
+        this.setData(
+          {
+            selectedIndexes,
+          },
+          () => {
+            const { items } = this.data;
+            this._trigger('change', {
+              value: item[keys?.value ?? 'value'],
+              selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
+            });
+          },
+        );
         this.hide('finish');
       }
     },
