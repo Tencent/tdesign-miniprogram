@@ -10,6 +10,19 @@ const name = `${prefix}-cascader`;
 export interface CascaderProps extends TdCascaderProps {}
 
 type OptionsType = TdCascaderProps['options']['value'];
+type KeysType = TdCascaderProps['keys']['value'];
+
+function parseOptions(options: OptionsType, keys: KeysType) {
+  const label = keys?.label ?? 'label';
+  const value = keys?.value ?? 'value';
+
+  return options.map((item) => {
+    return {
+      [label]: item[label],
+      [value]: item[value],
+    };
+  });
+}
 
 @wxComponent()
 export default class Cascader extends SuperComponent {
@@ -17,6 +30,7 @@ export default class Cascader extends SuperComponent {
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
+    pureDataPattern: /^options$/,
   };
 
   properties = props;
@@ -53,33 +67,21 @@ export default class Cascader extends SuperComponent {
       this.initWithValue();
     },
 
-    'selectedIndexes, options'() {
-      const { options, selectedIndexes, keys, placeholder } = this.data;
-      const selectedValue = [];
-      const steps = [];
-      const items = [options];
-
-      if (options.length > 0) {
-        for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
-          const index = selectedIndexes[i];
-          const next = items[i][index];
-
-          selectedValue.push(next[keys?.value ?? 'value']);
-          steps.push(next[keys?.label ?? 'label']);
-
-          if (next[keys?.children ?? 'children']) {
-            items.push(next[keys?.children ?? 'children']);
-          }
-        }
-      }
-
-      if (steps.length < items.length) {
-        steps.push(placeholder);
-      }
+    options() {
+      const { selectedValue, steps, items } = this.genItems();
 
       this.setData({
         steps,
         items,
+        selectedValue,
+        stepIndex: items.length - 1,
+      });
+    },
+    selectedIndexes() {
+      const { selectedValue, steps, items } = this.genItems();
+
+      this.setData({
+        steps,
         selectedValue,
         stepIndex: items.length - 1,
       });
@@ -156,12 +158,56 @@ export default class Cascader extends SuperComponent {
         stepIndex: value,
       });
     },
+    genItems() {
+      const { options, selectedIndexes, keys, placeholder } = this.data;
+      const selectedValue = [];
+      const steps = [];
+      const items = [parseOptions(options, keys)];
+
+      if (options.length > 0) {
+        let current = options;
+        for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
+          const index = selectedIndexes[i];
+          const next = current[index];
+          current = next[keys?.children ?? 'children'];
+
+          selectedValue.push(next[keys?.value ?? 'value']);
+          steps.push(next[keys?.label ?? 'label']);
+
+          if (next[keys?.children ?? 'children']) {
+            items.push(parseOptions(next[keys?.children ?? 'children'], keys));
+          }
+        }
+      }
+
+      if (steps.length < items.length) {
+        steps.push(placeholder);
+      }
+
+      return {
+        selectedValue,
+        steps,
+        items,
+      };
+    },
     handleSelect(e) {
       const { level } = e.target.dataset;
       const { value } = e.detail;
-      const { selectedIndexes, items, keys } = this.data;
+      const { selectedIndexes, items, keys, options } = this.data;
       const index = items[level].findIndex((item) => item[keys?.value ?? 'value'] === value);
-      const item = items[level][index];
+
+      let item = selectedIndexes.slice(0, level).reduce((acc, item, index) => {
+        if (index === 0) {
+          return acc[item];
+        }
+        return acc[keys?.children ?? 'children'][item];
+      }, options);
+
+      if (level === 0) {
+        item = item[index];
+      } else {
+        item = item[keys?.children ?? 'children'][index];
+      }
 
       if (item.disabled) {
         return;
@@ -170,18 +216,26 @@ export default class Cascader extends SuperComponent {
       selectedIndexes.length = level + 1;
 
       this.triggerEvent('pick', { value: item[keys?.value ?? 'value'], index, level });
-
+      const { items: newItems } = this.genItems();
       if (item?.[keys?.children ?? 'children']?.length) {
-        this.setData({ selectedIndexes });
+        this.setData({
+          selectedIndexes,
+          [`items[${level + 1}]`]: newItems[level + 1],
+        });
       } else {
         // setCascaderValue(item.value);
-        this.setData({ selectedIndexes }, () => {
-          const { items } = this.data;
-          this._trigger('change', {
-            value: item[keys?.value ?? 'value'],
-            selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
-          });
-        });
+        this.setData(
+          {
+            selectedIndexes,
+          },
+          () => {
+            const { items } = this.data;
+            this._trigger('change', {
+              value: item[keys?.value ?? 'value'],
+              selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
+            });
+          },
+        );
         this.hide('finish');
       }
     },
