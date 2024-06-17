@@ -9,7 +9,7 @@ actions | Array / Slot | - | Typescript：`Array<ButtonProps>`，[Button API Doc
 button-layout | String | horizontal | options：horizontal/vertical | N
 cancel-btn | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dialog/type.ts) | N
 close-btn | Boolean / Object | false | `0.31.0` | N
-close-on-overlay-click | Boolean | undefined | \- | N
+close-on-overlay-click | Boolean | false | \- | N
 confirm-btn | String / Object / Slot | - | \- | N
 content | String / Slot | - | \- | N
 external-classes | Array | - | `['t-class', 't-class-content', 't-class-confirm', 't-class-cancel']` | N
