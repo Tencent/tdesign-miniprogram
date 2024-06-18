@@ -1,0 +1,6 @@
+var hightLight = function (label, keyword) {
+  return label.replace(keyword, '<span class="t-search__result-item--hightlight">' + keyword + '</span>');
+};
+module.exports = {
+  hightLight: hightLight,
+};

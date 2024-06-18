@@ -5,6 +5,10 @@
  * */
 
 export interface TdSearchProps {
+  /**
+   * 预览结果列表
+   * @default []
+   */
   resultList: {
     type: ArrayConstructor;
     value?: [];

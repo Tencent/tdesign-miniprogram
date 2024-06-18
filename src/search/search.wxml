@@ -59,12 +59,17 @@
   </view>
   <slot name="action" />
 </view>
-<view class="{{classPrefix}}__result-list" aria-role="listbox">
-  <view
+<wxs src="./search.wxs" module="this"></wxs>
+<view wx:if="{{isShowResultList && !isSelected}}" class="{{classPrefix}}__result-list" aria-role="listbox">
+  <t-cell
     wx:for="{{resultList}}"
-    wx:key="{{index}}"
+    wx:key="index"
     data-index="{{index}}"
     class="{{classPrefix}}__result-item"
-    bind:tap="selectResultItem"
-    aria-role="option">{{item}}</view>
+    hover
+    bind:tap="onSelectResultItem"
+    aria-role="option"
+  >
+    <rich-text slot="title" nodes="{{this.hightLight(item, value)}}"></rich-text>
+  </t-cell>
 </view>
