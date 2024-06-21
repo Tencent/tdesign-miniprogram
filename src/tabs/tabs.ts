@@ -13,6 +13,10 @@ export interface TabsProps extends TdTabsProps {}
 
 @wxComponent()
 export default class Tabs extends SuperComponent {
+  options = {
+    pureDataPattern: /^currentLabels$/,
+  };
+
   behaviors = [touch];
 
   externalClasses = [
