@@ -6,6 +6,21 @@ docClass: timeline
 ---
 
 
+## 🌈 1.4.3 `2024-06-21` 
+### 🚀 Features
+- `TabPanel`: 支持动态 `lable` @anlyyao ([#2872](https://github.com/Tencent/tdesign-miniprogram/pull/2872))
+### 🐞 Bug Fixes
+- `Calendar`:  优化 `title` 默认值 @anlyyao ([#2858](https://github.com/Tencent/tdesign-miniprogram/pull/2858))
+- `Swiper`: 修复 `navigation` 插槽无效的问题 @jarmywang ([#2859](https://github.com/Tencent/tdesign-miniprogram/pull/2859))
+- `TabBar`: 修复自定义 `tabbar` 中深色模式颜色错误 @anlyyao ([#2861](https://github.com/Tencent/tdesign-miniprogram/pull/2861))
+- `CheckTag`:  更正组件内部 `checked`属性类型 @anlyyao ([#2871](https://github.com/Tencent/tdesign-miniprogram/pull/2871))
+- `Navbar`: 修复占位区高度错误 @jby0107 ([#2877](https://github.com/Tencent/tdesign-miniprogram/pull/2877))
+- `Radio`: 修复禁用态样式错误 @anlyyao ([#2875](https://github.com/Tencent/tdesign-miniprogram/pull/2875))
+- `Dialog`:  `close-on-overlay-click`属性默认值从 `undefined` 改为 `false` @jarmywang ([#2874](https://github.com/Tencent/tdesign-miniprogram/pull/2874))
+### 🚧 Others
+- `site(Button)`: 支持示例代码导入开发者工具 @anlyyao ([#2883](https://github.com/Tencent/tdesign-miniprogram/pull/2883))
+
+
 ## 🌈 1.4.2 `2024-06-07`
 ### 🐞 Bug Fixes
 - `Skeleton`: 修复深色模式渐变动画颜色错误 @anlyyao ([#2818](https://github.com/Tencent/tdesign-miniprogram/pull/2818))
