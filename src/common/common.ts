@@ -3,22 +3,38 @@ export type Classes = Array<string>;
 export interface Styles {
   [css: string]: string | number;
 }
-/** 通用全局类型 */
+
+export type ImageEvent = any;
+
+/**
+ * 通用全局类型
+ * */
+export type PlainObject = { [key: string]: any };
 
 export type OptionData = {
   label?: string;
   value?: string | number;
-} & { [key: string]: any };
+} & PlainObject;
 
-export type TreeOptionData = {
-  children?: Array<TreeOptionData>;
-} & OptionData;
+export type TreeOptionData<T = string | number> = {
+  children?: Array<TreeOptionData<T>> | boolean;
+  /** option label content */
+  label?: string;
+  /** option search text */
+  text?: string;
+  /** option value */
+  value?: T;
+  /** option node content */
+  content?: string;
+} & PlainObject;
 
 export type SizeEnum = 'small' | 'medium' | 'large';
 
 export type HorizontalAlignEnum = 'left' | 'center' | 'right';
 
 export type VerticalAlignEnum = 'top' | 'middle' | 'bottom';
+
+export type LayoutEnum = 'vertical' | 'horizontal';
 
 export type ClassName = { [className: string]: any } | ClassName[] | string;
 
@@ -27,13 +43,18 @@ export type CSSSelector = string;
 export interface KeysType {
   value?: string;
   label?: string;
+  disabled?: string;
+}
+
+export interface TreeKeysType extends KeysType {
+  children?: string;
 }
 
 export interface HTMLElementAttributes {
-  [css: string]: string;
+  [attribute: string]: string;
 }
 
-export interface InfinityScroll {
+export interface TScroll {
   /**
    * 表示除可视区域外，额外渲染的行数，避免快速滚动过程中，新出现的内容来不及渲染从而出现空白
    * @default 20
@@ -59,4 +80,21 @@ export interface InfinityScroll {
   type: 'lazy' | 'virtual';
 }
 
-export type TScroll = InfinityScroll;
+/**
+ * @deprecated use TScroll instead
+ */
+export type InfinityScroll = TScroll;
+
+export interface ScrollToElementParams {
+  /** 跳转元素下标 */
+  index?: number;
+  /** 跳转元素距离顶部的距离 */
+  top?: number;
+  /** 单个元素高度非固定场景下，即 isFixedRowHeight = false。延迟设置元素位置，一般用于依赖不同高度异步渲染等场景，单位：毫秒 */
+  time?: number;
+  behavior?: 'auto' | 'smooth';
+}
+
+export interface ComponentScrollToElementParams extends ScrollToElementParams {
+  key?: string | number;
+}

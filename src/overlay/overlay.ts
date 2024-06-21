@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 import transition from '../mixins/transition';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 
@@ -8,27 +9,7 @@ const name = `${prefix}-overlay`;
 
 @wxComponent()
 export default class Overlay extends SuperComponent {
-  properties = {
-    zIndex: {
-      type: Number,
-      value: 11000,
-    },
-
-    duration: {
-      type: Number,
-      value: 300,
-    },
-
-    backgroundColor: {
-      type: String,
-      value: '',
-    },
-
-    preventScrollThrough: {
-      type: Boolean,
-      value: true,
-    },
-  };
+  properties = props;
 
   behaviors = [transition(), useCustomNavbar];
 
