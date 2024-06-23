@@ -31,11 +31,6 @@ const props: TdOverlayProps = {
     type: String,
     value: '',
   },
-  /** 是否展示 */
-  visible: {
-    type: Boolean,
-    value: false,
-  },
   /** 遮罩层级 */
   zIndex: {
     type: Number,
