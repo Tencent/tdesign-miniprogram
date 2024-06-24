@@ -6,6 +6,11 @@ docClass: timeline
 ---
 
 
+## 🌈 1.4.4 `2024-06-24` 
+### 🐞 Bug Fixes
+- `Overlay`: 修复遮罩失效 @anlyyao ([#2887](https://github.com/Tencent/tdesign-miniprogram/pull/2887))
+
+
 ## 🌈 1.4.3 `2024-06-21` 
 ### 🚀 Features
 - `TabPanel`: 支持动态 `lable` @anlyyao ([#2872](https://github.com/Tencent/tdesign-miniprogram/pull/2872))
