@@ -131,9 +131,12 @@ var onDrag = function (event, ownerInstance) {
   if (state.direction !== 'horizontal') {
     return;
   }
+  if (!state.dragging) {
+    ownerInstance.triggerEvent('dragstart');
+  }
   state.dragging = true;
   swipeMove(state.startOffset + state.deltaX);
-  return false
+  return false;
 };
 
 var open = function (position) {
@@ -164,6 +167,7 @@ var endDrag = function (event, ownerInstance) {
       close();
     }
   }
+  ownerInstance.triggerEvent('dragend');
 };
 
 module.exports = {
