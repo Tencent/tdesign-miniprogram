@@ -8,6 +8,14 @@ import { LoadingProps } from '../loading/index';
 
 export interface TdPullDownRefreshProps {
   /**
+   * 是否禁用下拉刷新
+   * @default false
+   */
+  disabled?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向。自 2.27.3 版本开始，若非显式设置为 false，则在显示尺寸大于屏幕 90% 时自动开启
    * @default true
    */
