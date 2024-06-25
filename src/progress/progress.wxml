@@ -76,7 +76,7 @@
       aria-label="{{ ariaLabel || (isIOS ? this.getIOSAriaLabel(status) : this.getAndroidAriaLabel(status))  }}"
       aria-live="polite"
       class="{{classPrefix}}__canvas--circle"
-      style="background-image: conic-gradient( {{colorCircle || this.STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)'}} {{computedProgress}}%, {{bgColorBar || 'var(--td-progress-track-bg-color)'}} 0%);"
+      style="background-image: conic-gradient(from var(--td-progress-circle-from), {{colorCircle || this.STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)'}} {{computedProgress}}%, {{bgColorBar || 'var(--td-progress-track-bg-color)'}} 0%);"
     >
       <view
         class="{{classPrefix}}__canvas--inner {{prefix}}-class-bar"

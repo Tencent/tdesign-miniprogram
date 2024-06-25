@@ -7,6 +7,7 @@
 @progress-circle-icon-font-size: 96rpx;
 @progress-plump-label-font-size: @font-size-s;
 @progress-circle-width: var(--td-progress-circle-width, 224rpx);
+@progress-circle-from: 0deg;
 @progress-circle-label-font-size: 40rpx;
 @progress-circle-label-line-height: 56rpx;
 @progress-circle-label-font-weight: 700;
@@ -47,6 +48,7 @@
 .@{progress} {
   --td-progress-inner-bg-color: @brand-color;
   --td-progress-track-bg-color: @bg-color-component;
+  --td-progress-circle-from: @progress-circle-from;
 
   &__inner {
     position: relative;

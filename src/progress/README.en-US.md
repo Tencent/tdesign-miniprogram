@@ -30,6 +30,7 @@ Name | Default Value | Description
 -- | -- | --
 --td-progress-circle-inner-bg-color | @font-white-1 | - 
 --td-progress-circle-width | 224rpx | - 
+--td-progress-circle-from | 0deg | - 
 --td-progress-inner-bg-color | @brand-color | - 
 --td-progress-line-stroke-width | 12rpx | - 
 --td-progress-stroke-circle-width | 12rpx | - 
