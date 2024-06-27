@@ -16,8 +16,11 @@
 
 @stepper-border-radius: var(--td-stepper-border-radius, @radius-small); // outline/filled 主题下的圆角大小
 @stepper-border-color: var(--td-stepper-border-color, @component-border); // outline/filled 主题下的圆角颜色
-@stepper-input-color: var(--td-stepper-input-color, @font-gray-1); // 输入框文本/图标颜色
-@stepper-input-disabled-color: var(--td-stepper-input-disabled-color, @font-gray-4); // 禁用态输入框文本/图标颜色
+@stepper-input-color: var(--td-stepper-input-color, @text-color-primary); // 输入框文本/图标颜色
+@stepper-input-disabled-color: var(
+  --td-stepper-input-disabled-color,
+  @text-color-disabled
+); // 禁用态输入框文本/图标颜色
 @stepper-input-disabled-bg: var(
   --td-stepper-input-disabled-bg,
   @bg-color-component-disabled
@@ -116,11 +119,15 @@
 
   &__minus--outline,
   &__minus--filled {
-    border-radius: @stepper-border-radius 0 0 @stepper-border-radius;
+    border-radius: 0;
+    border-top-left-radius: @stepper-border-radius;
+    border-bottom-left-radius: @stepper-border-radius;
   }
   &__plus--outline,
   &__plus--filled {
-    border-radius: 0 @stepper-border-radius @stepper-border-radius 0;
+    border-radius: 0;
+    border-top-right-radius: @stepper-border-radius;
+    border-bottom-right-radius: @stepper-border-radius;
   }
 
   &__minus--filled,

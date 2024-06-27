@@ -9,6 +9,7 @@ exports[`dropdown-menu :base 1`] = `
       class="t-dropdown-menu class t-class"
       id="t-bar"
       style="font-size: 9px;"
+      catch:touchmove="noop"
     >
       <wx-view
         ariaDisabled="{{false}}"
@@ -84,6 +85,13 @@ exports[`dropdown-menu :base 1`] = `
           class="t-dropdown-item class t-class"
           style="z-index:11600;"
         >
+          <wx-view
+            class="t-dropdown-item__mask"
+            hidden="{{false}}"
+            style="height:0px;"
+            bind:tap="handleMaskClick"
+            catch:touchmove="closeDropdown"
+          />
           <t-popup
             tClass="t-dropdown-item__popup-host"
             tClassContent="t-dropdown-item__content t-class-content"
@@ -155,16 +163,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      选项一
-      
+                                  选项一
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -208,16 +212,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      选项二
-      
+                                  选项二
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -274,16 +274,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-radio__title--checked t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      选项三
-      
+                                  选项三
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-radio__description--checked t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -327,16 +323,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      选项四
-      
+                                  选项四
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -380,16 +372,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      选项五
-      
+                                  选项五
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -433,16 +421,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      选项六
-      
+                                  选项六
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -486,16 +470,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      选项七
-      
+                                  选项七
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -539,16 +519,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      选项八
-      
+                                  选项八
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -592,16 +568,12 @@ exports[`dropdown-menu :base 1`] = `
                                   class="t-radio__title t-radio__title--disabled t-class-label"
                                   style="-webkit-line-clamp:3"
                                 >
-                                  
-      禁用选项
-      
+                                  禁用选项
                                 </wx-view>
                                 <wx-view
                                   class="t-radio__description t-radio__description--disabled t-class-content "
                                   style="-webkit-line-clamp:5"
-                                >
-                                  
-                                </wx-view>
+                                />
                               </wx-view>
                               <wx-view
                                 class="t-radio__border t-radio__border--left t-class-border"
@@ -627,7 +599,7 @@ exports[`dropdown-menu :base 1`] = `
                 ariaLabel="关闭"
                 ariaRole="button"
                 class="t-overlay t-fade-enter-active t-fade-enter-to class"
-                style="--td-overlay-transition-duration:300ms; z-index:11000; position: absolute;"
+                style="--td-overlay-transition-duration:300ms; z-index:11000; top:0px; position: absolute;"
                 bind:tap="handleClick"
                 catch:touchmove="noop"
                 bind:transitionend="onTransitionEnd"

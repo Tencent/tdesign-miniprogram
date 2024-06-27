@@ -5,6 +5,7 @@
  * */
 
 import { ButtonProps } from '../button/index';
+import { PopupProps } from '../popup/index';
 import { KeysType } from '../common/common';
 
 export interface TdPickerProps {
@@ -48,12 +49,28 @@ export interface TdPickerProps {
     value?: KeysType;
   };
   /**
+   * 透传 `Popup` 组件全部属性
+   * @default {}
+   */
+  popupProps?: {
+    type: ObjectConstructor;
+    value?: PopupProps;
+  };
+  /**
    * 标题
    * @default ''
    */
   title?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 是否使用弹出层包裹
+   * @default true
+   */
+  usePopup?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 选中值
@@ -76,14 +93,6 @@ export interface TdPickerProps {
   visible?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * popup组件样式
-   * @default {}
-   */
-  popupProps: {
-    type: object;
-    value?: {};
   };
 }
 

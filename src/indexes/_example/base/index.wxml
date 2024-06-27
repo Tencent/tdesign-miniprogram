@@ -1,4 +1,7 @@
-<t-indexes bind:select="onSelect" index-list="{{indexList}}">
+<view class="custom-navbar">
+  <t-navbar title="TDesign" leftArrow />
+</view>
+<t-indexes bind:select="onSelect" index-list="{{indexList}}" sticky-offset="{{stickyOffset}}">
   <block wx:for="{{list}}" wx:key="index">
     <t-indexes-anchor index="{{item.index}}" />
     <t-cell-group>

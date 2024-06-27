@@ -1,9 +1,9 @@
 .demo-desc {
-  margin-top: 24px;
-  margin-bottom: 16px;
+  margin-top: 24rpx;
+  margin-bottom: 16rpx;
 }
 
 .wrapper {
-  background: #fff;
-  padding-top: 40rpx;
+  background: var(--bg-color-demo);
+  padding: 40rpx 12rpx 0;
 }

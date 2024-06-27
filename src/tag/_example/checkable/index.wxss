@@ -12,7 +12,7 @@
   font-size: 14px;
   align-items: center;
   line-height: 76rpx;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--td-text-color-placeholder);
 }
 
 .block text {
@@ -25,7 +25,7 @@
   margin-right: 32rpx;
 } */
 
-.block + .block {
+.block+.block {
   margin-top: 32rpx;
 }
 

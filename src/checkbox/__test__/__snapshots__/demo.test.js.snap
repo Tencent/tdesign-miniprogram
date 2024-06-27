@@ -313,8 +313,8 @@ exports[`Checkbox Checkbox type demo works fine 1`] = `
   <t-checkbox
     icon="{{
       Array [
-        "https://tdesign.gtimg.com/miniprogram/checkbox-checked.png",
-        "https://tdesign.gtimg.com/miniprogram/checkbox.png",
+        "https://tdesign.gtimg.com/mobile/demos/checkbox-checked.png",
+        "https://tdesign.gtimg.com/mobile/demos/checkbox.png",
       ]
     }}"
     label="图片图标"

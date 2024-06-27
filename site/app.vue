@@ -11,22 +11,56 @@
 
 <script>
 import siteConfig from './site.config';
+import { changeThemeMode } from './theme/dark';
 
 import { defineComponent } from 'vue';
 
-const { docs: routerList } = JSON.parse(JSON.stringify(siteConfig).replace(/component:.+/g, ''));
+const { docs, enDocs } = JSON.parse(JSON.stringify(siteConfig).replace(/component:.+/g, ''));
 
-routerList.forEach(item => {
-  if (item.type === 'component') {
-    item.children = item.children.sort((a, b) => {
-      const nameA = a.name.toUpperCase();
-      const nameB = b.name.toUpperCase();
-      if (nameA < nameB) return -1;
-      if (nameA > nameB) return 1;
-      return 0;
-    });
-  }
-})
+const sortDocs = (docs) => {
+  let innerDocs = [];
+  docs.forEach((item) => {
+    let { children } = item;
+    if (item.type === 'component') {
+      children = item.children.sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0;
+      });
+    }
+    if (children) {
+      item.children = sortDocs(children);
+    }
+    innerDocs.push(item);
+  });
+  return innerDocs;
+};
+
+const docsMap = {
+  zh: sortDocs(docs),
+  en: sortDocs(enDocs),
+};
+
+function watchHtmlMode(callback = () => {}) {
+  const targetNode = document.documentElement;
+  const config = { attributes: true };
+
+  const observerCallback = (mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.attributeName === 'theme-mode') {
+        const themeMode = mutation.target.getAttribute('theme-mode') || 'light';
+        if (themeMode) callback(themeMode);
+      }
+    }
+  };
+
+  const observer = new MutationObserver(observerCallback);
+  observer.observe(targetNode, config);
+
+  return observer;
+}
 
 export default defineComponent({
   data() {
@@ -46,7 +80,7 @@ export default defineComponent({
   mounted() {
     this.docType = this.$route.meta.docType;
     this.$refs.tdHeader.framework = 'miniprogram';
-    this.$refs.tdDocAside.routerList = routerList;
+    this.$refs.tdDocAside.routerList = docsMap[this.$route?.meta?.lang || 'zh'];
     this.$refs.tdDocAside.onchange = ({ detail }) => {
       if (this.$route.path === detail) return;
       this.loaded = false;
@@ -54,13 +88,15 @@ export default defineComponent({
       window.scrollTo(0, 0);
     };
     this.$refs.tdDocSearch.docsearchInfo = { indexName: 'tdesign_doc_miniprogram' };
+    watchHtmlMode(changeThemeMode);
   },
 
   watch: {
     $route(route) {
+      this.$refs.tdDocAside.routerList = docsMap[route.meta.lang || 'zh'];
       if (!route.meta.docType) return;
       this.docType = route.meta.docType;
-    }
+    },
   },
 
   methods: {

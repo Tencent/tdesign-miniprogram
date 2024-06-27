@@ -13,6 +13,10 @@ export interface TabsProps extends TdTabsProps {}
 
 @wxComponent()
 export default class Tabs extends SuperComponent {
+  options = {
+    pureDataPattern: /^currentLabels$/,
+  };
+
   behaviors = [touch];
 
   externalClasses = [
@@ -61,6 +65,7 @@ export default class Tabs extends SuperComponent {
     prefix,
     classPrefix: name,
     tabs: [],
+    currentLabels: [],
     currentIndex: -1,
     trackStyle: '',
     offset: 0,
@@ -124,17 +129,26 @@ export default class Tabs extends SuperComponent {
 
     setCurrentIndex(index: number) {
       if (index <= -1 || index >= this.children.length) return;
+      const Labels = [];
       this.children.forEach((child: any, idx: number) => {
         const isActive = index === idx;
         if (isActive !== child.data.active) {
           child.render(isActive, this);
         }
+        Labels.push(child.data.label);
       });
-      if (this.data.currentIndex === index) return;
-      this.setData({
-        currentIndex: index,
-      });
-      this.setTrack();
+
+      const { currentIndex, currentLabels } = this.data;
+      if (currentIndex === index && currentLabels.join('') === Labels.join('')) return;
+      this.setData(
+        {
+          currentIndex: index,
+          currentLabels: Labels,
+        },
+        () => {
+          this.setTrack();
+        },
+      );
     },
 
     getCurrentName() {
@@ -168,7 +182,7 @@ export default class Tabs extends SuperComponent {
     },
 
     async setTrack() {
-      if (!this.properties.showBottomLine) return;
+      // if (!this.properties.showBottomLine) return;
       const { children } = this;
       if (!children) return;
       const { currentIndex } = this.data;
@@ -262,8 +276,12 @@ export default class Tabs extends SuperComponent {
       const len = tabs.length;
       for (let i = step; currentIndex + step >= 0 && currentIndex + step < len; i += step) {
         const newIndex = currentIndex + i;
-        if (newIndex >= 0 && newIndex < len && tabs[newIndex] && !tabs[newIndex].disabled) {
-          return newIndex;
+        if (newIndex >= 0 && newIndex < len && tabs[newIndex]) {
+          if (!tabs[newIndex].disabled) {
+            return newIndex;
+          }
+        } else {
+          return currentIndex;
         }
       }
       return -1;

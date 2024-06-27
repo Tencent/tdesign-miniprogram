@@ -1,13 +1,16 @@
+<view class="custom-navbar">
+  <t-navbar title="Sticky" leftArrow />
+</view>
 <view class="demo tdesign-demo-sticky-base">
   <view class="demo-title">Sticky 吸顶</view>
   <view class="demo-desc">用于常驻页面顶部的信息、操作展示。</view>
   <t-demo title="01 类型" desc="基础吸顶" padding>
-    <base />
+    <base navbar-height="{{navbarHeight}}" />
   </t-demo>
   <t-demo title="" desc="吸顶距离">
-    <offset />
+    <offset navbar-height="{{navbarHeight}}" />
   </t-demo>
   <t-demo title="" desc="指定容器">
-    <container />
+    <container navbar-height="{{navbarHeight}}" />
   </t-demo>
 </view>

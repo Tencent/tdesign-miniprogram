@@ -2,18 +2,18 @@ Component({
   data: {
     originFiles: [
       {
-        url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
+        url: 'https://tdesign.gtimg.com/mobile/demos/example4.png',
         name: 'uploaded1.png',
         type: 'image',
       },
       {
-        url: 'https://tdesign.gtimg.com/miniprogram/images/example6.png',
+        url: 'https://tdesign.gtimg.com/mobile/demos/example6.png',
         name: 'uploaded2.png',
         type: 'image',
       },
       {
-        url: 'https://tdesign.gtimg.com/miniprogram/images/example5.png',
-        name: 'uploaded1.png',
+        url: 'https://tdesign.gtimg.com/mobile/demos/example5.png',
+        name: 'uploaded3.png',
         type: 'image',
       },
     ],

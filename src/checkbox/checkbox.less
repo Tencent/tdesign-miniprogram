@@ -10,11 +10,11 @@
 @checkbox-vertical-padding: var(--td-checkbox-vertical-padding, 32rpx);
 @checkbox-bg-color: var(--td-checkbox-bg-color, @bg-color-container);
 @checkbox-border-color: var(--td-checkbox-border-color, @component-stroke);
-@checkbox-title-color: var(--td-checkbox-title-color, @font-gray-1);
-@checkbox-title-disabled-color: var(--td-checkbox-title-disabled-color, @font-gray-4);
-@checkbox-description-color: var(--td-checkbox-description-color, @font-gray-2);
-@checkbox-description-disabled-color: var(--td-checkbox-description-disabled-color, @font-gray-4);
-@checkbox-icon-color: var(--td-checkbox-icon-color, @gray-color-4);
+@checkbox-title-color: var(--td-checkbox-title-color, @text-color-primary);
+@checkbox-title-disabled-color: var(--td-checkbox-title-disabled-color, @text-color-disabled);
+@checkbox-description-color: var(--td-checkbox-description-color, @text-color-secondary);
+@checkbox-description-disabled-color: var(--td-checkbox-description-disabled-color, @text-color-disabled);
+@checkbox-icon-color: var(--td-checkbox-icon-color, @text-color-disabled);
 @checkbox-icon-disabled-color: var(--td-checkbox-icon-disabled-color, @brand-color-disabled);
 @checkbox-icon-disabled-bg-color: var(--td-checkbox-icon-disabled-bg-color, @bg-color-component-disabled);
 @checkbox-icon-checked-color: var(--td-checkbox-icon-checked-color, @brand-color);
@@ -129,8 +129,8 @@
     }
 
     &-line {
-      &:before,
-      &:after {
+      &::before,
+      &::after {
         content: '';
         display: block;
         position: absolute;
@@ -140,7 +140,7 @@
         transform-origin: top center;
       }
 
-      &:before {
+      &::before {
         height: 16rpx;
         left: 8rpx;
         top: 22rpx;
@@ -211,7 +211,7 @@
     padding-top: 16rpx;
     padding-bottom: 16rpx;
     text-align: center;
-    background-color: #f3f3f3;
+    background-color: @bg-color-secondarycontainer;
     border-radius: 12rpx;
 
     &.@{checkbox}--checked {

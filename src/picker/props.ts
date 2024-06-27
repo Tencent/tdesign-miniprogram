@@ -30,10 +30,20 @@ const props: TdPickerProps = {
   keys: {
     type: Object,
   },
+  /** 透传 `Popup` 组件全部属性 */
+  popupProps: {
+    type: Object,
+    value: {},
+  },
   /** 标题 */
   title: {
     type: String,
     value: '',
+  },
+  /** 是否使用弹出层包裹 */
+  usePopup: {
+    type: Boolean,
+    value: true,
   },
   /** 选中值 */
   value: {
@@ -48,11 +58,6 @@ const props: TdPickerProps = {
   visible: {
     type: Boolean,
     value: false,
-  },
-  /** popupProps透传 */
-  popupProps: {
-    type: Object,
-    value: {},
   },
 };
 

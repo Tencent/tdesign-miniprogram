@@ -108,6 +108,14 @@ export interface TdSliderProps {
     type: null;
     value?: SliderValue;
   };
+  /**
+   * 是否垂直展示
+   * @default false
+   */
+  vertical?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
 }
 
 export type SliderValue = number | Array<number>;

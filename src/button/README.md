@@ -18,45 +18,52 @@ isComponent: true
 
 ## 代码演示
 
+<a href="https://developers.weixin.qq.com/s/F1cSo7mm75SS" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+
+<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
+<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
+</blockquote>
+
+
 ### 01 组件类型
 
-基础按钮
+#### 基础按钮
 
 {{ base }}
 
-图标按钮
+#### 图标按钮
 
 {{ icon-btn }}
 
-幽灵按钮
+#### 幽灵按钮
 
 {{ ghost-btn }}
 
-组合按钮
+#### 组合按钮
 
 {{ group-btn }}
 
-通栏按钮
+#### 通栏按钮
 
 {{ block-btn }}
 
 ### 02 组件状态
 
-按钮禁用态
+#### 按钮禁用态
 
 {{ disabled }}
 
 ### 03 组件样式
 
-按钮尺寸
+#### 按钮尺寸
 
 {{ size }}
 
-按钮形状
+#### 按钮形状
 
 {{ shape }}
 
-按钮主题
+#### 按钮主题
 
 {{ theme }}
 
@@ -72,7 +79,7 @@ custom-dataset | Object | - | 自定义 dataset，可通过 event.currentTarget.
 disabled | Boolean | false | 禁用状态 | N
 ghost | Boolean | false | 是否为幽灵按钮（镂空按钮） | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 | N
-loading | Boolean | false | 是否显示为加载状态 | N
+loading | Boolean | false | 是否显示为加载状态，skyline模式下暂不支持该属性 | N
 loading-props | Object | - | 透传至 Loading 组件。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
 shape | String | rectangle | 按钮形状，有 4 种：长方形、正方形、圆角长方形、圆形。可选项：rectangle/square/round/circle | N
 size | String | medium | 组件尺寸。可选项：extra-small/small/medium/large。TS 类型：`SizeEnum` | N

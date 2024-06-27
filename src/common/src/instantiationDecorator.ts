@@ -169,12 +169,14 @@ export const wxComponent = function wxComponent() {
 
     const current = new WxComponent();
 
+    current.options = current.options || {};
+
     // 所有组件默认都开启css作用域
     // 写到这里是为了防止组件设置 options 时无意覆盖掉了 addGlobalClass
-    current.options = current.options || {};
-    if (current.options.addGlobalClass === undefined) {
-      current.options.addGlobalClass = true;
-    }
+    // 使用 "styleIsolation": "apply-shared" 代替 addGlobalClass: true，see https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/glass-easel/migration.html#JSON-%E9%85%8D%E7%BD%AE
+    // if (current.options.addGlobalClass === undefined) {
+    //   current.options.addGlobalClass = true;
+    // }
 
     if (canUseVirtualHost()) {
       current.options.virtualHost = true;

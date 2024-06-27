@@ -1,6 +1,6 @@
-const glob = require('glob');
 const fs = require('fs');
 const path = require('path');
+const glob = require('glob');
 
 glob('src/**/*.md', (err, files) => {
   if (err) {

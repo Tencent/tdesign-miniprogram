@@ -8,5 +8,5 @@
 }
 
 .favor-btn {
-  background-color: #0052d9;
+  background-color: var(--td-brand-color, #0052d9);
 }

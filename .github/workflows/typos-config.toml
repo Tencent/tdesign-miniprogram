@@ -1,0 +1,10 @@
+default.check-filename = true
+
+[default.extend-words]
+actived = "actived"
+Colum = "Colum"
+ded = "ded"
+destory ="destory"
+
+[files]
+extend-exclude = ["CHANGELOG.md"]

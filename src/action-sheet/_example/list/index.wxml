@@ -1,4 +1,4 @@
-<t-action-sheet id="t-action-sheet" bind:selected="handleSelected" />
+<t-action-sheet id="t-action-sheet" usingCustomNavbar bind:selected="handleSelected" />
 
 <t-button size="large" variant="outline" bind:tap="handleAction" block theme="primary">列表型</t-button>
 

@@ -3,6 +3,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import { ActionSheetTheme, show } from './show';
 import props from './props';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-action-sheet`;
@@ -10,6 +11,8 @@ const name = `${prefix}-action-sheet`;
 @wxComponent()
 export default class ActionSheet extends SuperComponent {
   static show = show;
+
+  behaviors = [useCustomNavbar];
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-cancel`];
 

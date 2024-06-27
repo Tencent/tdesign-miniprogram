@@ -31,14 +31,14 @@ export default class Textarea extends SuperComponent {
 
   observers = {
     value(val) {
-      this.updateCount(val);
+      this.updateCount(val ?? this.properties.defaultValue);
     },
   };
 
   lifetimes = {
     ready() {
-      const { value } = this.properties;
-      this.updateValue(value == null ? '' : value);
+      const { value, defaultValue } = this.properties;
+      this.updateValue(value ?? defaultValue ?? '');
     },
   };
 
@@ -82,9 +82,9 @@ export default class Textarea extends SuperComponent {
     },
 
     onInput(event) {
-      const { value } = event.detail;
+      const { value, cursor } = event.detail;
       this.updateValue(value);
-      this.triggerEvent('change', { value: this.data.value });
+      this.triggerEvent('change', { value: this.data.value, cursor });
     },
     onFocus(event) {
       this.triggerEvent('focus', {

@@ -26,8 +26,8 @@ default-value | String | '' | uncontrolled property | N
 
 name | params | description
 -- | -- | --
-blur | `(value: TextareaValue)` | \-
-change | `(value: TextareaValue)` | \-
+blur | `(value: TextareaValue, cursor: number)` | \-
+change | `(value: TextareaValue, cursor: number)` | \-
 enter | `(value: TextareaValue)` | \-
 focus | `(value: TextareaValue)` | \-
 line-change | `(value: TextareaValue)` | \-

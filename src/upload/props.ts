@@ -69,6 +69,15 @@ const props: TdUploadProps = {
     type: String,
     value: 'media',
   },
+  /** 是否支持拖拽排序 */
+  draggable: {
+    type: null,
+  },
+  /** 是否使用动画过渡 */
+  transition: {
+    type: Object,
+    value: { backTransition: true, duration: 300, timingFunction: 'ease' },
+  },
 };
 
 export default props;

@@ -1,13 +1,11 @@
+import themeChangeBehavior from 'tdesign-miniprogram/mixins/theme-change';
+
 Component({
+  behaviors: [themeChangeBehavior],
   data: {
-    logoList: [
-      {
-        icon: 'https://tdesign.gtimg.com/miniprogram/images/logo2.png',
-        title: '品牌名称',
-      },
-      {
-        url: 'https://tdesign.gtimg.com/miniprogram/images/logo1.png',
-      },
-    ],
+    logo: {
+      icon: 'https://tdesign.gtimg.com/mobile/demos/logo2.png',
+      title: '品牌名称',
+    },
   },
 });

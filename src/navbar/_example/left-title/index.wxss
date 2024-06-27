@@ -1,6 +1,6 @@
 .custom-title {
-  margin-left: 16rpx;
-  font-size: 36rpx;
+  margin-left: 8px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -16,7 +16,7 @@
 
 .left-text {
   display: block;
-  margin-left: 8rpx;
+  margin-left: 4px;
   font-size: 16px;
 }
 
@@ -24,7 +24,7 @@
   font-size: 28px;
   line-height: 36px;
   padding: 8rpx 32rpx 16rpx;
-  background-color: #fff;
+  background-color: var(--td-bg-color-container);
   font-weight: 600;
-  color: rgba(0, 0, 0 .9);
+  color: var(--td-text-color-primary);
 }

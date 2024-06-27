@@ -1,0 +1,22 @@
+<view class="demo-desc">单游标垂直滑块</view>
+<view class="wrapper">
+  <t-slider vertical value="{{singlevalue}}" label="${singlevalue}" bind:change="handleSingleChange" />
+</view>
+<view class="demo-desc">带刻度的双游标垂直滑块</view>
+<view class="wrapper">
+  <t-slider vertical range defaultValue="{{ [20, 60] }}" marks="{{marks}}" step="{{20}}" />
+</view>
+<view class="demo-desc">胶囊型垂直滑块</view>
+<view class="wrapper">
+  <t-slider
+    vertical
+    value="{{capsuleValue}}"
+    label="${capsuleValue}"
+    theme="capsule"
+    bind:change="handleCapsuleChange"
+  />
+</view>
+<view class="demo-desc">带刻度的胶囊型垂直滑块</view>
+<view class="wrapper">
+  <t-slider vertical defaultValue="{{ [20, 80] }}" range marks="{{marks}}" step="{{20}}" theme="capsule" />
+</view>

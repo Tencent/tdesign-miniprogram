@@ -8,7 +8,7 @@ spline: explain
 
 ## 全局自定义
 
-小程序的 CSS Variables 全部定义考验在这里看到: [_variables.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/style/_variables.less)
+小程序的 CSS Variables 全部定义可以在这里看到: [_variables.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/style/_variables.less)
 
 如果你想改变主题色，主要改变这几个变量即可：
 
@@ -21,7 +21,7 @@ spline: explain
 
 > ⚠️ 注意：1.0.0 版本之前主题色的变量是 --td-primary-color
 
-在 `app.css` 文件添加下行代码即可：
+在 `app.wxss` 文件添加下行代码即可：
 
 ```css
 page {

@@ -1,7 +1,7 @@
 <wxs module="_"> module.exports.contain = function(arr, key) { return arr.indexOf(key) > -1 } </wxs>
 
 <t-checkbox-group value="{{value}}" bind:change="onChange">
-  <view wx:for="{{3}}" wx:key="index" class="card {{_.contain(value, index) ? 'card--active' : value.indexOf(index)}}">
+  <view wx:for="{{3}}" wx:key="index" class="card {{_.contain(value, index) ? 'card--active' : ''}}">
     <t-icon wx:if="{{_.contain(value, index)}}" name="check" t-class="card__icon" ariaHidden="{{true}}" />
     <t-checkbox
       value="{{index}}"

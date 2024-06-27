@@ -119,6 +119,21 @@ export interface TdUploadProps {
     type: StringConstructor;
     value?: 'media' | 'messageFile';
   };
+  /**
+   * 是否支持拖拽排序
+   */
+  draggable?: {
+    type: null;
+    value?: boolean | Draggable;
+  };
+
+  /**
+   * 过渡参数
+   */
+  transition?: {
+    type: ObjectConstructor;
+    value: Transition;
+  };
 }
 
 export type UploadMpConfig = ImageConfig | VideoConfig;
@@ -154,6 +169,7 @@ export interface UploadFile {
   type?: 'image' | 'video';
   percent?: number;
   status: 'loading' | 'reload' | 'failed' | 'done';
+  thumb?: string;
 }
 
 export type MediaType = 'image' | 'video';
@@ -167,3 +183,14 @@ export interface SizeLimitObj {
 export type SizeUnitArray = ['B', 'KB', 'MB', 'GB'];
 
 export type SizeUnit = SizeUnitArray[number];
+
+export interface Draggable {
+  vibrate?: boolean;
+  collisionVibrate?: boolean;
+}
+
+export interface Transition {
+  backTransition?: boolean;
+  duration?: number;
+  timingFunction?: string;
+}

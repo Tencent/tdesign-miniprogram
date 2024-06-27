@@ -30,7 +30,7 @@ exports[`Empty Empty imageEmpty demo works fine 1`] = `
 <imageEmpty>
   <t-empty
     description="描述文字"
-    image="https://tdesign.gtimg.com/miniprogram/images/empty1.png"
+    image="https://tdesign.gtimg.com/mobile/demos/empty1.png"
     tClass="empty-cls"
     tClassImage="t-empty__image"
   />

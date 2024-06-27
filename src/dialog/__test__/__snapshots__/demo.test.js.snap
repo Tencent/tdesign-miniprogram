@@ -79,6 +79,7 @@ exports[`Dialog Dialog base demo works fine 1`] = `
       class="long-content"
       scrollY="{{true}}"
       slot="content"
+      type="list"
     >
       <wx-view
         class="content-container"
@@ -393,7 +394,7 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
   >
     <t-image
       slot="top"
-      src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
+      src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
       tClass="dialog-image"
     />
   </t-dialog>
@@ -426,7 +427,7 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
   >
     <t-image
       slot="middle"
-      src="https://tdesign.gtimg.com/miniprogram/images/dialog1.png"
+      src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
       tClass="image-host dialog-image"
     />
   </t-dialog>

@@ -9,6 +9,8 @@ const name = `${prefix}-navbar`;
 export default class Navbar extends SuperComponent {
   externalClasses = [
     `${prefix}-class`,
+    `${prefix}-class-placeholder`,
+    `${prefix}-class-content`,
     `${prefix}-class-title`,
     `${prefix}-class-left`,
     `${prefix}-class-center`,
@@ -21,7 +23,6 @@ export default class Navbar extends SuperComponent {
   timer = null;
 
   options = {
-    addGlobalClass: true,
     multipleSlots: true,
   };
 
@@ -75,9 +76,9 @@ export default class Navbar extends SuperComponent {
         const boxStyleList = [];
         const { statusBarHeight } = wx.getSystemInfoSync();
 
-        boxStyleList.push(`--td-navbar-padding-top:${statusBarHeight}px`);
+        boxStyleList.push(`--td-navbar-padding-top: ${statusBarHeight}px`);
         if (rect && res?.windowWidth) {
-          boxStyleList.push(`--td-navbar-right:${res.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
+          boxStyleList.push(`--td-navbar-right: ${res.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
         }
         boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
         boxStyleList.push(`--td-navbar-capsule-width: ${rect.width}px`); // 胶囊宽度

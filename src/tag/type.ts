@@ -4,24 +4,14 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { SizeEnum } from '../common/common';
-
 export interface TdTagProps {
   /**
    * 标签是否可关闭
    * @default false
    */
   closable?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: boolean | object;
   };
   /**
    * 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态
@@ -66,7 +56,7 @@ export interface TdTagProps {
    */
   size?: {
     type: StringConstructor;
-    value?: SizeEnum;
+    value?: 'small' | 'medium' | 'large' | 'extra-large';
   };
   /**
    * 组件风格，用于描述组件不同的应用场景

@@ -4,6 +4,7 @@
     "single": "./single",
     "multiple": "./multiple",
     "status": "./status",
-    "messageFile": "./messageFile"
+    "messageFile": "./messageFile",
+    "drag": "./drag"
   }
 }

@@ -84,9 +84,8 @@ export const styles = function (styleObj) {
 };
 
 export const getAnimationFrame = function (context: any, cb: Function) {
-  return wx
+  return context
     .createSelectorQuery()
-    .in(context)
     .selectViewport()
     .boundingClientRect()
     .exec(() => {
@@ -96,8 +95,8 @@ export const getAnimationFrame = function (context: any, cb: Function) {
 
 export const getRect = function (context: any, selector: string, needAll: boolean = false) {
   return new Promise<any>((resolve, reject) => {
-    wx.createSelectorQuery()
-      .in(context)
+    context
+      .createSelectorQuery()
       [needAll ? 'selectAll' : 'select'](selector)
       .boundingClientRect((rect) => {
         if (rect) {
@@ -200,14 +199,14 @@ export const getInstance = function (context?: Context, selector?: string) {
   return instance;
 };
 
-export const unitConvert = (value: number | string): number => {
+export const unitConvert = (value: number | string | null | undefined): number => {
   if (typeof value === 'string') {
     if (value.includes('rpx')) {
       return (parseInt(value, 10) * (systemInfo?.screenWidth ?? 750)) / 750;
     }
     return parseInt(value, 10);
   }
-  return value;
+  return value ?? 0;
 };
 
 export const setIcon = (iconName, icon, defaultIcon) => {

@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const systemInfo = wx.getSystemInfoSync();
 const { prefix } = config;
@@ -14,6 +15,8 @@ const baseButtonProps = {
 
 @wxComponent()
 export default class Fab extends SuperComponent {
+  behaviors = [useCustomNavbar];
+
   properties = props;
 
   externalClasses = [`class`, `${prefix}-class`, `${prefix}-class-button`];
@@ -38,7 +41,7 @@ export default class Fab extends SuperComponent {
             ariaLabel: this.properties.ariaLabel,
           },
         },
-        this.computedSize,
+        this.computedSize?.bind(this),
       );
     },
   };
@@ -48,9 +51,12 @@ export default class Fab extends SuperComponent {
       this.triggerEvent('click', e);
     },
     onMove(e) {
+      const { distanceTop } = this.data;
+
       const { x, y, rect } = e.detail;
       const maxX = systemInfo.windowWidth - rect.width; // 父容器宽度 - 拖动元素宽度
-      const maxY = systemInfo.windowHeight - rect.height; // 父容器高度 - 拖动元素高度
+      const maxY = systemInfo.windowHeight - distanceTop - rect.height; // 父容器高度 - 拖动元素高度
+
       const right = Math.max(0, Math.min(x, maxX));
       const bottom = Math.max(0, Math.min(y, maxY));
       this.setData({

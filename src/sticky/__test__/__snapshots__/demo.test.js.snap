@@ -2,7 +2,9 @@
 
 exports[`Sticky Sticky base demo works fine 1`] = `
 <base>
-  <t-sticky>
+  <t-sticky
+    offsetTop="{{0}}"
+  >
     <t-button
       size="large"
       tClass="external-class"
@@ -21,8 +23,10 @@ exports[`Sticky Sticky container demo works fine 1`] = `
   >
     <t-sticky
       container="{{[Function]}}"
+      offsetTop="{{0}}"
     >
       <t-button
+        hoverClass="hover-class "
         size="large"
         tClass="external-class green-button"
       >

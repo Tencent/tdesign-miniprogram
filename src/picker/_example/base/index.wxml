@@ -9,6 +9,7 @@
   title="选择城市"
   cancelBtn="取消"
   confirmBtn="确认"
+  usingCustomNavbar
   bindchange="onPickerChange"
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"
@@ -23,6 +24,7 @@
   title="选择时间"
   cancelBtn="取消"
   confirmBtn="确认"
+  usingCustomNavbar
   bindchange="onPickerChange"
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"

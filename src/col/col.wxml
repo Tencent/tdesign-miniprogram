@@ -3,7 +3,7 @@
 
 <view
   class="class {{prefix}}-class {{ _.cls(classPrefix, [span]) }} {{ offset ? classPrefix + '--offset-' + offset : '' }}"
-  style="{{ utils.getColStyles({ gutter }) }}"
+  style="{{ utils.getColStyles(gutter, style, customStyle) }}"
 >
   <slot />
 </view>

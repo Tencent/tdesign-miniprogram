@@ -13,7 +13,8 @@
       class="{{prefix}}-icon {{prefix}}-class-left"
       aria-hidden="{{true}}"
     />
-    <slot name="left-icon" />
+    <slot wx:else name="left-icon" />
+
     <input
       type="{{type}}"
       name="input"
@@ -57,7 +58,7 @@
   >
     {{action}}
   </view>
-  <slot name="action" />
+  <slot wx:else name="action" />
 </view>
 <wxs src="./search.wxs" module="this"></wxs>
 <view wx:if="{{isShowResultList && !isSelected}}" class="{{classPrefix}}__result-list" aria-role="listbox">

@@ -56,20 +56,24 @@ exports[`Divider Divider theme demo works fine 1`] = `
 <theme>
   <t-divider
     dashed="{{true}}"
+    tClass=""
   />
   <t-divider
     align="left"
     content="文字信息"
     dashed="{{true}}"
+    tClass=""
   />
   <t-divider
     content="文字信息"
     dashed="{{true}}"
+    tClass=""
   />
   <t-divider
     align="right"
     content="文字信息"
     dashed="{{true}}"
+    tClass=""
   />
 </theme>
 `;

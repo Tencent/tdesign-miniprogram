@@ -14,10 +14,10 @@
 
 // variant
 @tag-outline-bg-color: var(--td-tag-outline-bg-color, @bg-color-container);
-@tag-default-font-color: var(--td-tag-default-font-color, @font-gray-1);
+@tag-default-font-color: var(--td-tag-default-font-color, @text-color-primary);
 
 // status
-@tag-disabled-color: var(--td-tag-disabled-color, @font-gray-4);
+@tag-disabled-color: var(--td-tag-disabled-color, @text-color-disabled);
 @tag-disabled-background-color: var(--td-tag-disabled-background-color, @bg-color-component-disabled);
 @tag-disabled-border-color: var(--td-tag-disabled-border-color, @component-border);
 
@@ -46,7 +46,7 @@
 @tag-round-border-radius: var(--td-tag-round-border-radius, 999px);
 @tag-mark-border-radius: var(--td-tag-mark-border-radius, @tag-round-border-radius);
 
-@tag-close-icon-color: var(--td-tag-close-icon-color, @font-gray-3);
+@tag-close-icon-color: var(--td-tag-close-icon-color, @text-color-placeholder);
 
 .genVariant(@variant) {
   @themes: default, primary, success, warning, danger;
@@ -159,7 +159,9 @@
     }
 
     &--mark {
-      border-radius: 0 @tag-mark-border-radius @tag-mark-border-radius 0;
+      border-radius: 0;
+      border-top-right-radius: @tag-mark-border-radius;
+      border-bottom-right-radius: @tag-mark-border-radius;
     }
   }
 

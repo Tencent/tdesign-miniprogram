@@ -1,1 +1,7 @@
-<t-navbar class="custom-navbar" left-arrow title="标题文字" />
+<t-navbar
+  t-class-placeholder="t-navbar-placeholder"
+  t-class-content="t-navbar-content"
+  class="custom-navbar"
+  left-arrow
+  title="标题文字"
+/>

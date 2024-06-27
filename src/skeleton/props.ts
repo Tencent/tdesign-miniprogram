@@ -11,14 +11,10 @@ const props: TdSkeletonProps = {
     type: String,
     value: 'none',
   },
-  /** 【开发中】延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒 */
+  /** 延迟显示加载效果的时间，用于防止请求速度过快引起的加载闪烁，单位：毫秒 */
   delay: {
     type: Number,
     value: 0,
-  },
-  /** 组件类名，分别用于设置组件外层元素、头像、图片、文本等元素类名 */
-  externalClasses: {
-    type: Array,
   },
   /** 是否为加载状态，如果是则显示骨架图，如果不是则显示加载完成的内容 */
   loading: {

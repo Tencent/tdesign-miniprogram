@@ -31,10 +31,10 @@
 @button-large-icon-font-size: var(--td-button-large-icon-font-size, 48rpx);
 
 // default
-@button-default-color: var(--td-button-default-color, @font-gray-1);
+@button-default-color: var(--td-button-default-color, @text-color-primary);
 @button-default-bg-color: var(--td-button-default-bg-color, @bg-color-component);
 @button-default-border-color: var(--td-button-default-border-color, @bg-color-component);
-@button-default-disabled-color: var(--td-button-default-disabled-color, @font-gray-4);
+@button-default-disabled-color: var(--td-button-default-disabled-color, @text-color-disabled);
 @button-default-disabled-bg: var(--td-button-default-disabled-bg, @bg-color-component-disabled);
 @button-default-disabled-border-color: var(--td-button-default-disabled-border-color, @bg-color-component-disabled);
 // primary
@@ -59,7 +59,7 @@
 @button-danger-disabled-bg: var(--td-button-danger-disabled-bg, @error-color-3);
 @button-danger-disabled-border-color: var(--td-button-danger-disabled-border-color, @error-color-3);
 // default + outline
-@button-default-outline-color: var(--td-button-default-outline-color, @font-gray-1);
+@button-default-outline-color: var(--td-button-default-outline-color, @text-color-primary);
 @button-default-outline-border-color: var(--td-button-default-outline-border-color, @component-border);
 @button-default-outline-disabled-color: var(--td-button-default-outline-disabled-color, @component-border);
 // primary + outline
@@ -161,6 +161,7 @@
       border-width: @button-border-width;
       border-color: @@borderColor;
     }
+    border-color: @@borderColor;
 
     &.@{button}--hover {
       z-index: 0;
@@ -168,6 +169,7 @@
         background-color: @@activeBgColor;
         border-color: @@activeBorderColor;
       }
+      border-color: @@activeBorderColor;
     }
 
     &.@{button}--disabled {
@@ -177,6 +179,7 @@
       &::after {
         border-color: @@disabledBorderColor;
       }
+      border-color: @@disabledBorderColor;
     }
   }
 }
@@ -206,6 +209,7 @@
   font-family: PingFang SC, Microsoft YaHei, Arial Regular;
   font-weight: @button-font-weight;
   vertical-align: top;
+  box-sizing: border-box;
 
   .cursor-pointer();
 
@@ -223,6 +227,7 @@
     &::after {
       border: 0;
     }
+    border: 0;
 
     &.@{button}--hover::after {
       background-color: @button-default-text-active-bg-color;
@@ -277,6 +282,7 @@
     &::after {
       border-color: @button-ghost-border-color;
     }
+    border-color: @button-ghost-border-color;
 
     &.@{button}--hover::after {
       background: none;
@@ -288,6 +294,7 @@
       &::after {
         border-color: @button-ghost-primary-border-color;
       }
+      border-color: @button-ghost-primary-border-color;
     }
 
     &.@{button}--danger {
@@ -296,6 +303,7 @@
       &::after {
         border-color: @button-ghost-danger-border-color;
       }
+      border-color: @button-ghost-danger-border-color;
     }
 
     &.@{button}--disabled {
@@ -305,6 +313,7 @@
       &::after {
         border-color: @button-ghost-disabled-color;
       }
+      border-color: @button-ghost-disabled-color;
     }
   }
 
@@ -315,6 +324,7 @@
     &::after {
       border-color: @button-default-outline-border-color;
     }
+    border-color: @button-default-outline-border-color;
 
     &.@{button}--hover::after {
       background-color: @button-default-outline-active-bg-color;
@@ -327,6 +337,7 @@
       &::after {
         border-color: @button-default-outline-disabled-color;
       }
+      border-color: @button-default-outline-disabled-color;
     }
 
     &.@{button}--primary {
@@ -335,6 +346,7 @@
       &::after {
         border-color: @button-primary-outline-border-color;
       }
+      border-color: @button-primary-outline-border-color;
 
       &.@{button}--hover {
         color: @button-primary-outline-active-border-color;
@@ -352,6 +364,7 @@
         &::after {
           border-color: @button-primary-outline-disabled-color;
         }
+        border-color: @button-primary-outline-disabled-color;
       }
     }
 
@@ -361,6 +374,7 @@
       &::after {
         border-color: @button-danger-outline-border-color;
       }
+      border-color: @button-danger-outline-border-color;
 
       &.@{button}--hover {
         color: @button-danger-outline-active-border-color;
@@ -378,6 +392,7 @@
         &::after {
           border-color: @button-danger-outline-disabled-color;
         }
+        border-color: @button-danger-outline-disabled-color;
       }
     }
 
@@ -388,6 +403,7 @@
       &::after {
         border-color: @button-light-outline-border-color;
       }
+      border-color: @button-light-outline-border-color;
 
       &.@{button}--hover {
         color: @button-light-outline-active-border-color;
@@ -405,6 +421,7 @@
         &::after {
           border-color: @button-light-outline-disabled-color;
         }
+        border-color: @button-light-outline-disabled-color;
       }
     }
   }
@@ -419,6 +436,7 @@
       &::after {
         border-color: @button-primary-dashed-border-color;
       }
+      border-color: @button-primary-dashed-border-color;
 
       &.@{button}--disabled {
         background-color: transparent;
@@ -427,6 +445,7 @@
         &::after {
           border-color: @button-primary-dashed-disabled-color;
         }
+        border-color: @button-primary-dashed-disabled-color;
       }
     }
 
@@ -436,6 +455,7 @@
       &::after {
         border-color: @button-danger-dashed-border-color;
       }
+      border-color: @button-danger-dashed-border-color;
 
       &.@{button}--disabled {
         background-color: transparent;

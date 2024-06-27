@@ -7,6 +7,7 @@
   bind:visible-change="visibleChange"
   visible="{{visible}}"
   zIndex="{{zIndex}}"
+  usingCustomNavbar="{{usingCustomNavbar}}"
   placement="{{placement == 'right' ? 'right' : 'left'}}"
   showOverlay="{{showOverlay}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
@@ -14,11 +15,10 @@
   <view class="{{classPrefix}}">
     <slot name="title" />
     <view wx:if="{{title}}" class="{{classPrefix}}__title">{{title}}</view>
-    <scroll-view class="{{classPrefix}}__sidebar" scroll-y>
+    <scroll-view class="{{classPrefix}}__sidebar" scroll-y type="list">
       <view
         class="{{classPrefix}}__sidebar-item"
         hover-class="{{classPrefix}}--hover"
-        hover-stop-propagation="{{false}}"
         hover-start-time="{{0}}"
         hover-stay-time="{{100}}"
         wx:for="{{items}}"

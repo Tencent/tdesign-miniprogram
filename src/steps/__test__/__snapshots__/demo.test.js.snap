@@ -415,7 +415,7 @@ exports[`Steps Steps vertical demo works fine 1`] = `
           <wx-image
             alt="图标"
             mode="widthFix"
-            src="https://tdesign.gtimg.com/miniprogram/images/steps1.png"
+            src="https://tdesign.gtimg.com/mobile/demos/steps1.png"
             style="width: 100%"
           />
         </wx-view>

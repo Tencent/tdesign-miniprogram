@@ -3,6 +3,7 @@ import config from '../common/config';
 import props from './props';
 import TCalendar from '../common/shared/calendar/index';
 import { TdCalendarProps } from './type';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-calendar`;
@@ -11,11 +12,12 @@ export interface CalendarProps extends TdCalendarProps {}
 
 @wxComponent()
 export default class Calendar extends SuperComponent {
+  behaviors = [useCustomNavbar];
+
   externalClasses = [`${prefix}-class`];
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
-    styleIsolation: 'apply-shared',
   };
 
   properties = props;
@@ -75,6 +77,7 @@ export default class Calendar extends SuperComponent {
     },
     value(v) {
       this.base.value = v;
+      this.calcMonths();
     },
     visible(v) {
       if (v) {
@@ -84,9 +87,11 @@ export default class Calendar extends SuperComponent {
       }
     },
     format(v) {
+      const { usePopup, visible } = this.data;
+
       this.base.format = v;
 
-      if (!this.data.usePopup) {
+      if (!usePopup || visible) {
         this.calcMonths();
       }
     },
