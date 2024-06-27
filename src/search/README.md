@@ -57,6 +57,7 @@ confirm-type | String | search | 设置键盘右下角按钮的文字，仅在ty
 always-embed | Boolean | false | 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效) | N
 confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键盘不收起 | N
 cursor | Number | - | 必需。指定 focus 时的光标位置 | Y
+result-list | Array | [] | 预览结果列表 | N
 selection-start | Number | -1 | 光标起始位置，自动聚集时有效，需与 selection-end 搭配使用 | N
 selection-end | Number | -1 | 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 | N
 adjust-position | Boolean | true | 键盘弹起时，是否自动上推页面 | N
@@ -105,5 +106,6 @@ t-class-clear | 右侧图标样式类
 --td-search-label-color | @font-gray-1 | - 
 --td-search-padding | 16rpx 24rpx | - 
 --td-search-placeholder-color | @font-gray-3 | - 
+--td-search-result-high-light-color | @brand-color | -
 --td-search-square-radius | @radius-default | - 
 --td-search-text-color | @font-gray-1 | - 
