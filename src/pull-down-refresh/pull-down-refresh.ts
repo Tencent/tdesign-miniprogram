@@ -119,7 +119,7 @@ export default class PullDownRefresh extends SuperComponent {
       this.triggerEvent('scroll', { scrollTop });
     },
     onTouchStart(e: WechatMiniprogram.Component.TrivialInstance) {
-      if (this.isPulling || !this.data.enableToRefresh) return;
+      if (this.isPulling || !this.data.enableToRefresh || this.properties.disabled) return;
       const { touches } = e;
       if (touches.length !== 1) return;
       const { pageX, pageY } = touches[0];
@@ -130,7 +130,7 @@ export default class PullDownRefresh extends SuperComponent {
     },
 
     onTouchMove(e: WechatMiniprogram.Component.TrivialInstance) {
-      if (!this.startPoint) return;
+      if (!this.startPoint || this.properties.disabled) return;
 
       const { touches } = e;
 
@@ -145,7 +145,7 @@ export default class PullDownRefresh extends SuperComponent {
     },
 
     onTouchEnd(e: WechatMiniprogram.Component.TrivialInstance) {
-      if (!this.startPoint) return;
+      if (!this.startPoint || this.properties.disabled) return;
       const { changedTouches } = e;
       if (changedTouches.length !== 1) return;
       const { pageY } = changedTouches[0];
@@ -166,24 +166,28 @@ export default class PullDownRefresh extends SuperComponent {
     },
 
     onDragStart(e: WechatMiniprogram.ScrollViewDragStart) {
+      if (this.properties.disabled) return;
       const { scrollTop, scrollLeft } = e.detail;
 
       this.triggerEvent('dragstart', { scrollTop, scrollLeft });
     },
 
     onDragging(e: WechatMiniprogram.ScrollViewDragging) {
+      if (this.properties.disabled) return;
       const { scrollTop, scrollLeft } = e.detail;
 
       this.triggerEvent('dragging', { scrollTop, scrollLeft });
     },
 
     onDragEnd(e: WechatMiniprogram.ScrollViewDragEnd) {
+      if (this.properties.disabled) return;
       const { scrollTop, scrollLeft } = e.detail;
 
       this.triggerEvent('dragend', { scrollTop, scrollLeft });
     },
 
     doRefresh() {
+      if (this.properties.disabled) return;
       this.setData({
         barHeight: this.loadingBarHeight,
         refreshStatus: 2,
