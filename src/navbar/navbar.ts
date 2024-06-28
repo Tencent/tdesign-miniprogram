@@ -62,6 +62,8 @@ export default class Navbar extends SuperComponent {
     classPrefix: name,
     boxStyle: '',
     showTitle: '',
+    hideLeft: false, // 隐藏左侧内容
+    hideCenter: false, // 隐藏中部内容
   };
 
   attached() {
@@ -86,6 +88,8 @@ export default class Navbar extends SuperComponent {
         this.setData({
           boxStyle: `${boxStyleList.join('; ')}`,
         });
+        // @ts-ignore
+        wx.onMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res)); // 监听胶囊条长度变化，隐藏遮挡的内容
       },
       fail: (err) => {
         console.error('navbar 获取系统信息失败', err);
@@ -93,7 +97,42 @@ export default class Navbar extends SuperComponent {
     });
   }
 
+  detached() {
+    // @ts-ignore
+    wx.offMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res));
+  }
+
   methods = {
+    /**
+     * 比较胶囊条和navbar内容，决定是否隐藏
+     * @param capsuleRect API返回值，胶囊条的位置信息
+     */
+    queryElements(capsuleRect) {
+      const query = wx.createSelectorQuery().in(this);
+      query.select(`.${this.data.classPrefix}__left`).boundingClientRect();
+      query.select(`.${this.data.classPrefix}__center`).boundingClientRect();
+      query.exec((res) => {
+        const rect1 = res[0];
+        const rect2 = res[1];
+
+        if (rect1.right > capsuleRect.left) {
+          this.setData({
+            hideLeft: true,
+            hideCenter: true,
+          });
+        } else if (rect2.right > capsuleRect.left) {
+          this.setData({
+            hideLeft: false,
+            hideCenter: true,
+          });
+        } else {
+          this.setData({
+            hideLeft: false,
+            hideCenter: false,
+          });
+        }
+      });
+    },
     goBack() {
       const { delta } = this.data;
       // eslint-disable-next-line

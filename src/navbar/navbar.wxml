@@ -5,7 +5,7 @@
 >
   <view wx:if="{{fixed}}" class="{{classPrefix}}__placeholder {{prefix}}-class-placeholder" />
   <view class="{{classPrefix}}__content {{prefix}}-class-content">
-    <view class="{{classPrefix}}__left {{prefix}}-class-left">
+    <view class="{{classPrefix}}__left {{hideLeft ? classPrefix + '__left--hide' : ''}} {{prefix}}-class-left">
       <view wx:if="{{leftArrow}}" class="{{classPrefix}}__btn" bind:tap="goBack" aria-role="button" aria-label="返回">
         <t-icon name="chevron-left" class="{{classPrefix}}__left-arrow" />
       </view>
@@ -14,7 +14,7 @@
         <slot name="capsule" />
       </view>
     </view>
-    <view class="{{classPrefix}}__center {{prefix}}-class-center">
+    <view class="{{classPrefix}}__center {{hideCenter ? classPrefix + '__center--hide' : ''}} {{prefix}}-class-center">
       <slot name="title" />
       <text wx:if="{{title}}" class="{{classPrefix}}__center-title {{prefix}}-class-title">{{showTitle}}</text>
     </view>
