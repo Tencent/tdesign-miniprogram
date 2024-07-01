@@ -21,6 +21,12 @@ isComponent: true
 
 步骤条，方向可以横向和纵向，可以自定义步骤条显示内容以及是否可写
 
+<a href="https://developers.weixin.qq.com/s/3H9EuimQ7JS0" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+
+<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
+<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
+</blockquote>
+
 ### 组件类型
 
 #### 水平步骤条
