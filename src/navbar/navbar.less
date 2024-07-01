@@ -82,9 +82,14 @@
     display: flex;
     align-items: center;
     margin-left: @spacer-1;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     &-arrow {
       font-size: @navbar-left-arrow-size;
+    }
+
+    &--hide {
+      opacity: 0;
     }
   }
 
@@ -129,6 +134,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     &:empty {
       display: none;
@@ -140,6 +146,10 @@
       white-space: nowrap;
       overflow: hidden;
       font-weight: @navbar-title-font-weight;
+    }
+
+    &--hide {
+      opacity: 0;
     }
   }
 }

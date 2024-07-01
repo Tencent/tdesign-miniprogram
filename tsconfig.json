@@ -17,5 +17,5 @@
       "tdesign-miniprogram/*": ["miniprogram_dist/*"]
     }
   },
-  "include": ["src/**/*", "example/**/*", "site/**/*", "typing.d.ts"]
+  "include": ["src/**/*", "example/**/*", "site/**/*", "typing.d.ts", "wechat-miniprogram-extension.d.ts"]
 }

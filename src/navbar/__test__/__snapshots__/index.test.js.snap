@@ -14,14 +14,14 @@ exports[`navbar :base 1`] = `
         class="t-navbar__content t-class-content"
       >
         <wx-view
-          class="t-navbar__left t-class-left"
+          class="t-navbar__left  t-class-left"
         >
           <wx-view
             class="t-navbar__capsule t-class-capsule"
           />
         </wx-view>
         <wx-view
-          class="t-navbar__center t-class-center"
+          class="t-navbar__center  t-class-center"
         >
           <wx-text
             class="t-navbar__center-title t-class-title"
@@ -49,14 +49,14 @@ exports[`navbar :base 2`] = `
         class="t-navbar__content t-class-content"
       >
         <wx-view
-          class="t-navbar__left t-class-left"
+          class="t-navbar__left  t-class-left"
         >
           <wx-view
             class="t-navbar__capsule t-class-capsule"
           />
         </wx-view>
         <wx-view
-          class="t-navbar__center t-class-center"
+          class="t-navbar__center  t-class-center"
         >
           <wx-text
             class="t-navbar__center-title t-class-title"
@@ -84,14 +84,14 @@ exports[`navbar :base 3`] = `
         class="t-navbar__content t-class-content"
       >
         <wx-view
-          class="t-navbar__left t-class-left"
+          class="t-navbar__left  t-class-left"
         >
           <wx-view
             class="t-navbar__capsule t-class-capsule"
           />
         </wx-view>
         <wx-view
-          class="t-navbar__center t-class-center"
+          class="t-navbar__center  t-class-center"
         >
           <wx-text
             class="t-navbar__center-title t-class-title"
@@ -119,14 +119,14 @@ exports[`navbar :fixed 1`] = `
         class="t-navbar__content t-class-content"
       >
         <wx-view
-          class="t-navbar__left t-class-left"
+          class="t-navbar__left  t-class-left"
         >
           <wx-view
             class="t-navbar__capsule t-class-capsule"
           />
         </wx-view>
         <wx-view
-          class="t-navbar__center t-class-center"
+          class="t-navbar__center  t-class-center"
         >
           <wx-text
             class="t-navbar__center-title t-class-title"
@@ -154,14 +154,14 @@ exports[`navbar :menu button 1`] = `
         class="t-navbar__content t-class-content"
       >
         <wx-view
-          class="t-navbar__left t-class-left"
+          class="t-navbar__left  t-class-left"
         >
           <wx-view
             class="t-navbar__capsule t-class-capsule"
           />
         </wx-view>
         <wx-view
-          class="t-navbar__center t-class-center"
+          class="t-navbar__center  t-class-center"
         >
           <wx-text
             class="t-navbar__center-title t-class-title"
