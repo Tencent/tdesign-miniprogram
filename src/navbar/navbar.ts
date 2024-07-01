@@ -88,8 +88,10 @@ export default class Navbar extends SuperComponent {
         this.setData({
           boxStyle: `${boxStyleList.join('; ')}`,
         });
-        // @ts-ignore
-        wx.onMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res)); // 监听胶囊条长度变化，隐藏遮挡的内容
+        if (wx.onMenuButtonBoundingClientRectWeightChange) {
+          // fixme: 规避单元测试无法识别新api，更新后可删除
+          wx.onMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res)); // 监听胶囊条长度变化，隐藏遮挡的内容
+        }
       },
       fail: (err) => {
         console.error('navbar 获取系统信息失败', err);
@@ -98,8 +100,10 @@ export default class Navbar extends SuperComponent {
   }
 
   detached() {
-    // @ts-ignore
-    wx.offMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res));
+    if (wx.offMenuButtonBoundingClientRectWeightChange) {
+      // fixme: 规避单元测试无法识别新api，更新后可删除
+      wx.offMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res));
+    }
   }
 
   methods = {
