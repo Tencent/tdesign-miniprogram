@@ -12,6 +12,7 @@
 @search-round-radius: calc(@search-height / 2);
 @search-action-color: var(--td-search-action-color, @brand-color);
 @search-clear-icon-color: var(--td-search-clear-icon-color, @text-color-placeholder);
+@search-result-high-light-color: var(--td-search-result-high-light-color, @brand-color);
 
 .@{prefix}-search {
   display: flex;
@@ -82,6 +83,19 @@
 
     &--center {
       text-align: center;
+    }
+  }
+  &__result-item {
+    &--highLight {
+      color: @search-result-high-light-color;
+    }
+  }
+
+  &__result-list &__result-item {
+    padding-left: 0;
+
+    &::after {
+      left: 0;
     }
   }
 }

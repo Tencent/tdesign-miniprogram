@@ -1,4 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
+<wxs src="./search.wxs" module="this"></wxs>
 
 <view style="{{_._style([style, customStyle])}}" class="class {{classPrefix}} {{prefix}}-class">
   <view
@@ -59,4 +60,18 @@
     {{action}}
   </view>
   <slot wx:else name="action" />
+</view>
+
+<view wx:if="{{isShowResultList && !isSelected}}" class="{{classPrefix}}__result-list" aria-role="listbox">
+  <t-cell
+    wx:for="{{resultList}}"
+    wx:key="index"
+    data-index="{{index}}"
+    class="{{classPrefix}}__result-item"
+    hover
+    bind:tap="onSelectResultItem"
+    aria-role="option"
+  >
+    <rich-text slot="title" nodes="{{this.highLight(item, value)}}"></rich-text>
+  </t-cell>
 </view>

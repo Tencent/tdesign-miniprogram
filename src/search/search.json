@@ -2,6 +2,7 @@
   "component": true,
   "styleIsolation": "apply-shared",
   "usingComponents": {
-    "t-icon": "../icon/icon"
+    "t-icon": "../icon/icon",
+    "t-cell": "../cell/cell"
   }
 }
