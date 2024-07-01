@@ -1,4 +1,5 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
+import { getRect } from '../common/utils';
 import config from '../common/config';
 import props from './props';
 
@@ -88,8 +89,10 @@ export default class Navbar extends SuperComponent {
         this.setData({
           boxStyle: `${boxStyleList.join('; ')}`,
         });
+        // @ts-ignore
         if (wx.onMenuButtonBoundingClientRectWeightChange) {
           // fixme: 规避单元测试无法识别新api，更新后可删除
+          // @ts-ignore
           wx.onMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res)); // 监听胶囊条长度变化，隐藏遮挡的内容
         }
       },
@@ -100,8 +103,10 @@ export default class Navbar extends SuperComponent {
   }
 
   detached() {
+    // @ts-ignore
     if (wx.offMenuButtonBoundingClientRectWeightChange) {
       // fixme: 规避单元测试无法识别新api，更新后可删除
+      // @ts-ignore
       wx.offMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res));
     }
   }
@@ -112,19 +117,16 @@ export default class Navbar extends SuperComponent {
      * @param capsuleRect API返回值，胶囊条的位置信息
      */
     queryElements(capsuleRect) {
-      const query = wx.createSelectorQuery().in(this);
-      query.select(`.${this.data.classPrefix}__left`).boundingClientRect();
-      query.select(`.${this.data.classPrefix}__center`).boundingClientRect();
-      query.exec((res) => {
-        const rect1 = res[0];
-        const rect2 = res[1];
-
-        if (rect1.right > capsuleRect.left) {
+      Promise.all([
+        getRect(this, `.${this.data.classPrefix}__left`),
+        getRect(this, `.${this.data.classPrefix}__center`),
+      ]).then(([leftRect, centerRect]) => {
+        if (leftRect.right > capsuleRect.left) {
           this.setData({
             hideLeft: true,
             hideCenter: true,
           });
-        } else if (rect2.right > capsuleRect.left) {
+        } else if (centerRect.right > capsuleRect.left) {
           this.setData({
             hideLeft: false,
             hideCenter: true,
