@@ -70,7 +70,7 @@
       <view
         wx:if="{{_clearIcon && value.length > 0 && showClearIcon}}"
         class="{{classPrefix}}__wrap--clearable-icon"
-        bind:touchstart="clearInput"
+        bind:tap="clearInput"
       >
         <template
           is="icon"
