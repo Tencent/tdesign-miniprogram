@@ -4,15 +4,9 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { TdOverlayProps as OverlayProps } from '../overlay/index';
+
 export interface TdToastProps {
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
   /**
    * 图标排列方式
    * @default row
@@ -30,19 +24,11 @@ export interface TdToastProps {
     value?: number;
   };
   /**
-   * 组件类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class'];
-  };
-  /**
-   * 自定义图标
-   * @default ''
+   * 自定义图标。传入对象则透传至 Icon 组件
    */
   icon?: {
     type: null;
-    value?: string;
+    value?: string | object;
   };
   /**
    * 弹窗显示文字
@@ -57,7 +43,7 @@ export interface TdToastProps {
    */
   overlayProps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: OverlayProps;
   };
   /**
    * 弹窗展示位置
@@ -89,5 +75,13 @@ export interface TdToastProps {
   theme?: {
     type: StringConstructor;
     value?: 'loading' | 'success' | 'error';
+  };
+  /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
 }

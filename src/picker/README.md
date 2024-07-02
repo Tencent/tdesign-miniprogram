@@ -66,6 +66,7 @@ keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段�
 popup-props | Object | {} | 透传 `Popup` 组件全部属性。TS 类型：`PopupProps`，[Popup API Documents](./popup?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 title | String | '' | 标题 | N
 use-popup | Boolean | true | 是否使用弹出层包裹 | N
+using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 value | Array | - | 选中值。TS 类型：`Array<PickerValue>` `type PickerValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 default-value | Array | undefined | 选中值。非受控属性。TS 类型：`Array<PickerValue>` `type PickerValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
 visible | Boolean | false | 是否显示 | N
