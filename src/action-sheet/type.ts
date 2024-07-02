@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { PopupProps } from '../popup/index';
+
 export interface TdActionSheetProps {
   /**
    * 水平对齐方式
@@ -50,7 +52,7 @@ export interface TdActionSheetProps {
    */
   popupProps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: PopupProps;
   };
   /**
    * 是否显示取消按钮
@@ -75,6 +77,14 @@ export interface TdActionSheetProps {
   theme?: {
     type: StringConstructor;
     value?: 'list' | 'grid';
+  };
+  /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 显示与隐藏

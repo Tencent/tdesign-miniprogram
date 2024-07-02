@@ -16,11 +16,7 @@ const props: TdToastProps = {
     type: Number,
     value: 2000,
   },
-  /** 组件类名 */
-  externalClasses: {
-    type: Array,
-  },
-  /** 自定义图标 */
+  /** 自定义图标。传入对象则透传至 Icon 组件 */
   icon: {
     type: null,
   },

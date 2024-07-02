@@ -51,6 +51,14 @@ export interface TdDrawerProps {
     value?: string;
   };
   /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 组件是否可见
    * @default false
    */

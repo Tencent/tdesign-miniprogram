@@ -80,6 +80,7 @@ overlay-props | Object | {} | 透传至 Overlay 组件。TS 类型：`OverlayPro
 prevent-scroll-through | Boolean | true | 防止滚动穿透 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 title | String / Slot | - | 标题。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 visible | Boolean | - | 控制对话框是否显示 | N
 z-index | Number | 11500 | 对话框层级，Web 侧样式默认为 2500，移动端样式默认 2500，小程序样式默认为 11500 | N
 

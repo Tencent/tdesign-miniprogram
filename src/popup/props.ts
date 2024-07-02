@@ -48,10 +48,6 @@ const props: TdPopupProps = {
     type: Boolean,
     value: true,
   },
-  /** 动画效果定义 */
-  transitionProps: {
-    type: Object,
-  },
   /** 是否显示浮层 */
   visible: {
     type: Boolean,

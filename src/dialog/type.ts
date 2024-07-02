@@ -107,6 +107,14 @@ export interface TdDialogProps {
     value?: string;
   };
   /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 控制对话框是否显示
    */
   visible?: {

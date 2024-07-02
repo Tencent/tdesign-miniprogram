@@ -10,21 +10,26 @@ const props: TdFabProps = {
   buttonProps: {
     type: Object,
   },
-  /** 图标 */
-  icon: {
-    type: String,
-    value: '',
-  },
-  /** 文本内容 */
-  text: {
-    type: String,
-    value: '',
-  },
   /** 是否可移动 */
   draggable: {
     type: Boolean,
     optionalTypes: [String],
     value: false,
+  },
+  /** 图标 */
+  icon: {
+    type: String,
+    value: '',
+  },
+  /** 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `style`） */
+  style: {
+    type: String,
+    value: 'right: 16px; bottom: 32px;',
+  },
+  /** 文本内容 */
+  text: {
+    type: String,
+    value: '',
   },
 };
 
