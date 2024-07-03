@@ -73,6 +73,14 @@ export interface TdPickerProps {
     value?: boolean;
   };
   /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 选中值
    */
   value?: {
