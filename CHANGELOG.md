@@ -13,7 +13,7 @@ docClass: timeline
 
 ## 🌈 1.4.3 `2024-06-21` 
 ### 🚀 Features
-- `TabPanel`: 支持动态 `lable` @anlyyao ([#2872](https://github.com/Tencent/tdesign-miniprogram/pull/2872))
+- `TabPanel`: 支持动态 `label` @anlyyao ([#2872](https://github.com/Tencent/tdesign-miniprogram/pull/2872))
 ### 🐞 Bug Fixes
 - `Calendar`:  优化 `title` 默认值 @anlyyao ([#2858](https://github.com/Tencent/tdesign-miniprogram/pull/2858))
 - `Swiper`: 修复 `navigation` 插槽无效的问题 @jarmywang ([#2859](https://github.com/Tencent/tdesign-miniprogram/pull/2859))
