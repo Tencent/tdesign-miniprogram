@@ -277,3 +277,5 @@ export const isOverSize = (size, sizeLimit) => {
 
   return size > computedSize;
 };
+
+export const rpx2px = (rpx) => Math.floor((systemInfo.windowWidth * rpx) / 750);
