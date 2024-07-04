@@ -155,6 +155,7 @@ exports[`picker :base 1`] = `
             />
             <wx-view
               class="t-picker__indicator"
+              style="height: 44px"
             />
           </wx-view>
         </wx-view>
