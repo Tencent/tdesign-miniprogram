@@ -42,6 +42,14 @@ export interface TdPickerProps {
     value?: boolean;
   };
   /**
+   * PickerItem 的子项高度，单位 rpx
+   * @default 80
+   */
+  itemHeight?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
    * 用来定义 value / label 在 `options` 中对应的字段别名
    */
   keys?: {
