@@ -68,7 +68,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
-                    style="height: 44px"
+                    style="height: 40px"
                   >
                     
       2021年
@@ -77,7 +77,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{1}}"
-                    style="height: 44px"
+                    style="height: 40px"
                   >
                     
       2020年
@@ -86,7 +86,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{2}}"
-                    style="height: 44px"
+                    style="height: 40px"
                   >
                     
       2019年
@@ -111,7 +111,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
-                    style="height: 44px"
+                    style="height: 40px"
                   >
                     
       春
@@ -120,7 +120,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{1}}"
-                    style="height: 44px"
+                    style="height: 40px"
                   >
                     
       夏
@@ -129,7 +129,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{2}}"
-                    style="height: 44px"
+                    style="height: 40px"
                   >
                     
       秋
@@ -138,7 +138,7 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{3}}"
-                    style="height: 44px"
+                    style="height: 40px"
                   >
                     
       冬
@@ -155,7 +155,7 @@ exports[`picker :base 1`] = `
             />
             <wx-view
               class="t-picker__indicator"
-              style="height: 44px"
+              style="height: 40px"
             />
           </wx-view>
         </wx-view>
