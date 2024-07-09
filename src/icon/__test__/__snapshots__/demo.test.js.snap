@@ -2784,15 +2784,15 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="chart-colum"
-        name="chart-colum"
+        data-name="chart-column"
+        name="chart-column"
         size="48rpx"
         bind:click="onIconTap"
       />
       <wx-view
         class="demo__card-name"
       >
-        chart-colum
+        chart-column
       </wx-view>
     </wx-view>
     <wx-view
@@ -9924,6 +9924,21 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="list-numbered"
+        name="list-numbered"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        list-numbered
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="list"
         name="list"
         size="48rpx"
@@ -10074,6 +10089,21 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="lock-off-filled"
+        name="lock-off-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        lock-off-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="lock-off"
         name="lock-off"
         size="48rpx"
@@ -10083,6 +10113,21 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         lock-off
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="lock-on-filled"
+        name="lock-on-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        lock-on-filled
       </wx-view>
     </wx-view>
     <wx-view
