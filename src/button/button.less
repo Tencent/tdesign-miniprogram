@@ -169,6 +169,7 @@
         background-color: @@activeBgColor;
         border-color: @@activeBorderColor;
       }
+      background-color: @@activeBgColor;
       border-color: @@activeBorderColor;
     }
 
@@ -229,6 +230,9 @@
     }
     border: 0;
 
+    &.@{button}--hover {
+      background-color: @button-default-text-active-bg-color;
+    }
     &.@{button}--hover::after {
       background-color: @button-default-text-active-bg-color;
     }
@@ -237,6 +241,9 @@
       color: @button-primary-text-color;
       background: none;
 
+      &.@{button}--hover {
+        background-color: @button-primary-text-active-bg-color;
+      }
       &.@{button}--hover::after {
         background-color: @button-primary-text-active-bg-color;
       }
@@ -251,6 +258,9 @@
       color: @button-danger-text-color;
       background: none;
 
+      &.@{button}--hover {
+        background-color: @button-danger-text-active-bg-color;
+      }
       &.@{button}--hover::after {
         background-color: @button-danger-text-active-bg-color;
       }
@@ -265,6 +275,9 @@
       color: @button-light-text-color;
       background: none;
 
+      &.@{button}--hover {
+        background-color: @button-light-text-active-bg-color;
+      }
       &.@{button}--hover::after {
         background-color: @button-light-text-active-bg-color;
       }
@@ -284,6 +297,9 @@
     }
     border-color: @button-ghost-border-color;
 
+    &.@{button}--hover {
+      background: none;
+    }
     &.@{button}--hover::after {
       background: none;
     }
@@ -326,6 +342,10 @@
     }
     border-color: @button-default-outline-border-color;
 
+    &.@{button}--hover {
+      background-color: @button-default-outline-active-bg-color;
+      border-color: @button-default-outline-active-border-color;
+    }
     &.@{button}--hover::after {
       background-color: @button-default-outline-active-bg-color;
       border-color: @button-default-outline-active-border-color;
