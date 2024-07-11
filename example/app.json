@@ -33,6 +33,7 @@
     "pages/radio/radio",
     "pages/radio/skyline/radio",
     "pages/switch/switch",
+    "pages/switch/skyline/switch",
     "pages/sticky/sticky",
     "pages/tag/tag",
     "pages/tag/skyline/tag",

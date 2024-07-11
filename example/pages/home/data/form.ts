@@ -106,6 +106,10 @@ const skylineForm = {
       label: '步进器',
     },
     {
+      name: 'Switch',
+      label: '开关',
+    },
+    {
       name: 'Textarea',
       label: '多行文本框',
     },
