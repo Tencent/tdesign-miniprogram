@@ -27,6 +27,7 @@
     scroll-y
     enhanced
     show-scrollbar="{{false}}"
+    bindscroll="onScroll"
   >
     <block wx:for="{{months}}" wx:key="index">
       <view class="{{classPrefix}}__month" id="year_{{item.year}}_month_{{item.month}}"

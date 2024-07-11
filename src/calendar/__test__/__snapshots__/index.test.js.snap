@@ -93,6 +93,7 @@ exports[`calendar :base 1`] = `
               scrollIntoView="year_2022_month_9"
               scrollY="{{true}}"
               showScrollbar="{{false}}"
+              bind:scroll="onScroll"
             >
               <wx-view
                 class="t-calendar__month"

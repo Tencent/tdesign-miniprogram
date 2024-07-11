@@ -48,6 +48,11 @@ const props: TdCalendarProps = {
     type: Boolean,
     value: true,
   },
+  /** 是否使用了自定义导航栏 */
+  usingCustomNavbar: {
+    type: Boolean,
+    value: false,
+  },
   /** 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组 */
   value: {
     type: null,
