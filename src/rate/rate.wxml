@@ -85,7 +85,7 @@
         class="{{_.cls(classPrefix + '__icon', [['selected', utils.ceil(value) == value], ['selected-half', utils.ceil(value) != value]]) }}"
         name="{{utils.getIconName(defaultValue, 0, 0, icon)}}"
         size="{{ size }}"
-        style="{{utils.getColor(color)}}; font-size: {{size}};"
+        style="{{utils.getColor(color)}}; font-size:{{size}}"
       />
       <view class="{{classPrefix}}__tips-text">{{value}}</view>
     </view>
