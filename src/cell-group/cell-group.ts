@@ -12,6 +12,9 @@ export default class CellGroup extends SuperComponent {
   relations: RelationsOptions = {
     '../cell/cell': {
       type: 'child',
+      linked() {
+        this.updateLastChid();
+      },
     },
   };
 
@@ -26,12 +29,6 @@ export default class CellGroup extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-  };
-
-  lifetimes = {
-    ready() {
-      this.updateLastChid();
-    },
   };
 
   methods = {
