@@ -34,6 +34,7 @@
         is="image"
         data="{{ class: classPrefix + '__image-host', tClass: this.getImageClass(prefix, navCurrent, index, list), style: 'height: ' + _.addUnit(height), src: _.isObject(item) ? item.value : item, mode: 'aspectFill', dataset: index, ...imageProps, bindload: 'onImageLoad' }}"
       />
+      <view wx:if="{{item.title}}" class="{{classPrefix}}__image-title" style="{{_._style(item.titleStyle)}}">{{item.title}}</view>
     </swiper-item>
   </swiper>
   <t-swiper-nav

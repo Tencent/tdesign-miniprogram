@@ -133,6 +133,11 @@ export interface TdSwiperProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+  /** 图片的描述性文字 */
+  title: {
+    type: StringConstructor;
+    value?: string;
+  };
 }
 
 export interface SwiperList {

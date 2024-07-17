@@ -84,6 +84,12 @@ const props: TdSwiperProps = {
     type: Boolean,
     value: false,
   },
+  /** 图片的描述性文字 */
+  title: {
+    type: String,
+    value: '',
+  },
+
 };
 
 export default props;
