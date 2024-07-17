@@ -15,6 +15,10 @@ const ux = {
       label: '下拉菜单',
     },
     {
+      name: 'Guide',
+      label: '引导',
+    },
+    {
       name: 'Loading',
       label: '加载',
     },
@@ -72,6 +76,10 @@ const skylineUx = {
     // {
     //   name: 'PullDownRefresh',
     //   label: '下拉刷新',
+    // },
+    // {
+    //   name: 'Guide',
+    //   label: '引导',
     // },
     {
       name: 'Loading',

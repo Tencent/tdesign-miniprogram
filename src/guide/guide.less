@@ -1,0 +1,78 @@
+@import '../common/style/index.less';
+
+@guide-reference-mask-color: var(--td-guide-reference-mask-color, @font-gray-2);
+@guide-reference-border-radius: var(--td-guide-reference-border-radius, @radius-default);
+
+@guide-popover-bg-color: var(--td-guide-popover-bg-color, @font-white-1);
+@guide-popover-border: var(--td-guide-popover-border, 1px solid @gray-color-4);
+@guide-popover-border-2: var(--td-guide-popover-border-2, 2px solid @brand-color);
+@guide-popover-border-radius: var(--td-guide-popover-border-radius, @radius-large);
+@guide-popover-shadow: var(--td-guide-popover-shadow, @shadow-3);
+@guide-popover-padding: var(--td-guide-popover-padding, 12px);
+@guide-popover-min-width: var(--td-guide-popover-min-width, 240px);
+@guide-popover-max-width: var(--td-guide-popover-max-width, 270px);
+
+@guide-title-text-align: var(--td-guide-title-text-align, left);
+@guide-title-color: var(--td-guide-title-color, @font-gray-1);
+@guide-title-font-size: var(--td-guide-title-font-size, @font-size-m);
+@guide-title-font-weight: var(--td-guide-title-font-weight, 600);
+@guide-title-line-height: var(--td-guide-title-line-height, 24px);
+
+@guide-desc-margin-top: var(--td-guide-desc-margin-top, 4px);
+@guide-desc-text-align: var(--td-guide-desc-text-align, left);
+@guide-desc-color: var(--td-guide-desc-color, @font-gray-2);
+@guide-desc-font-size: var(--td-guide-desc-font-size, @font-size-base);
+@guide-desc-font-weight: var(--td-guide-desc-font-weight, 400);
+@guide-desc-line-height: var(--td-guide-desc-line-height, 22px);
+
+@guide-footer-text-align: var(--td-guide-footer-text-align, right);
+@guide-footer-margin-top: var(--td-guide-footer-margin-top, @spacer-3);
+@guide-footer-button-space: var(--td-guide-footer-button-space, @spacer-1);
+
+.@{prefix}-guide {
+  &__reference {
+    position: absolute;
+    box-shadow: 0 0 0 0 @guide-reference-mask-color, @guide-reference-mask-color 0 0 0 5000px;
+    border-radius: @guide-reference-border-radius;
+  }
+  &__popover {
+    position: absolute;
+    background-color: @guide-popover-bg-color;
+    border: @guide-popover-border;
+    border-radius: @guide-popover-border-radius;
+    box-shadow: @guide-popover-shadow;
+    padding: @guide-popover-padding;
+    min-width: @guide-popover-min-width;
+    max-width: @guide-popover-max-width;
+  }
+  &__title {
+    text-align: @guide-title-text-align;
+    color: @guide-title-color;
+    font-size: @guide-title-font-size;
+    font-weight: @guide-title-font-weight;
+    line-height: @guide-title-line-height;
+  }
+  &__desc {
+    margin-top: @guide-desc-margin-top;
+    text-align: @guide-desc-text-align;
+    color: @guide-desc-color;
+    font-size: @guide-desc-font-size;
+    font-weight: @guide-desc-font-weight;
+    line-height: @guide-desc-line-height;
+  }
+  &__footer {
+    text-align: @guide-footer-text-align;
+    margin-top: @guide-footer-margin-top;
+    button + button {
+      margin-left: @guide-footer-button-space;
+    }
+  }
+  &.non-overlay {
+    .@{prefix}-guide__reference {
+      box-shadow: none;
+    }
+    .@{prefix}-guide__popover {
+      padding: @guide-popover-border-2;
+    }
+  }
+}

@@ -86,7 +86,8 @@
     "pages/link/link",
     "pages/link/skyline/link",
     "pages/col/col",
-    "pages/col/skyline/col"
+    "pages/col/skyline/col",
+    "pages/guide/guide"
   ],
   "subpackages": [
     {

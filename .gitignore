@@ -28,3 +28,4 @@ yarn-error.log*
 *.sw*
 tdesign-miniprogram
 m2w_dist
+.history
