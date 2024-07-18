@@ -181,6 +181,8 @@ export default class Upload extends SuperComponent {
     const { classPrefix, rows, column, customFiles } = this.data;
     if (customFiles.length === 0) {
       this.setData({
+        dragList: [],
+        dragWrapStyle: '',
         dragLayout: false,
       });
       return;
