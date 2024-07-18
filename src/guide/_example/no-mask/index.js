@@ -43,7 +43,7 @@ Component({
               ),
             title: '用户引导标题',
             body: '用户引导的说明文案',
-            placement: 'bottom-right',
+            placement: 'top-right',
           },
         ],
       });

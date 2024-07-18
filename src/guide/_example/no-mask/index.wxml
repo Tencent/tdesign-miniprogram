@@ -15,4 +15,4 @@
   </view>
 </view>
 
-<t-guide current="{{current}}" steps="{{steps}}" bind:skip="close" bind:finish="close" />
+<t-guide current="{{current}}" steps="{{steps}}" show-overlay="{{false}}" bind:skip="close" bind:finish="close" />

@@ -33,13 +33,6 @@ export default class Guide extends SuperComponent {
     pureDataPattern: /^_/,
   };
 
-  controlledProps = [
-    {
-      key: 'current',
-      event: 'change',
-    },
-  ];
-
   data = {
     prefix,
     classPrefix: name,
@@ -108,13 +101,12 @@ export default class Guide extends SuperComponent {
       const showOverlay = step.showOverlay ?? this.data.showOverlay;
       this.setData({ nonOverlay: !showOverlay });
       if (steps === _steps && current === _current) return;
-      const rect = await step.element().catch(() => null);
-      if (!rect) return;
+      const rect = await step.element();
       const highlightPadding = step.highlightPadding ?? this.data.highlightPadding;
-      const referenceTop = Math.max(rect.top - highlightPadding, 1);
-      const referenceRight = Math.max(systemInfo.windowWidth - rect.right - highlightPadding, 1);
-      const referenceBottom = Math.max(systemInfo.windowHeight - rect.bottom - highlightPadding, 1);
-      const referenceLeft = Math.max(rect.left - highlightPadding, 1);
+      const referenceTop = rect.top - highlightPadding;
+      const referenceRight = systemInfo.windowWidth - rect.right - highlightPadding;
+      const referenceBottom = systemInfo.windowHeight - rect.bottom - highlightPadding;
+      const referenceLeft = rect.left - highlightPadding;
       const style = {
         top: `${referenceTop}px`,
         right: `${referenceRight}px`,
@@ -126,19 +118,79 @@ export default class Guide extends SuperComponent {
         _current: this.data.current,
         visible: true,
         referenceStyle: styles(style),
+      });
+      await this.nextTick();
+      const popoverStyle = await this.placementOffset(step, style);
+      this.setData({
+        popoverStyle,
         title: step.title ?? '',
         desc: step.body ?? '',
         ...this.buttonProps(step),
       });
-      await this.nextTick();
-      const popoverStyle = await this.placementOffset(step.placement, style);
-      this.setData({ popoverStyle });
     },
-    async placementOffset(placement, offset) {
-      const rect = await getRect(this, `.${name}__popover`);
-      // eslint-disable-next-line no-console
-      console.log(rect, placement, offset);
-      return '';
+    async placementOffset({ placement }: GuideStep, offset: CSSStyleDeclaration) {
+      const rect: WechatMiniprogram.BoundingClientRectCallbackResult = await getRect(this, `.${name}__popover`);
+      const bottom = parseFloat(offset.bottom);
+      const left = parseFloat(offset.left);
+      const right = parseFloat(offset.right);
+      const top = parseFloat(offset.top);
+      const height = systemInfo.windowHeight - bottom - top;
+      const width = systemInfo.windowWidth - left - right;
+      const style: Partial<CSSStyleDeclaration> = {};
+      switch (placement) {
+        case 'center':
+        case 'bottom':
+          style.top = `${Math.max(height + top + 16, 1)}px`;
+          style.left = `${Math.max(width / 2 + left - rect.width / 2, 1)}px`;
+          break;
+        case 'bottom-left':
+          style.top = `${Math.max(height + top + 16, 1)}px`;
+          style.left = `${Math.max(left, 1)}px`;
+          break;
+        case 'bottom-right':
+          style.top = `${height + top + 16}px`;
+          style.right = `${Math.max(right, 1)}px`;
+          break;
+        case 'left':
+          style.top = `${Math.max(height / 2 + top - rect.height / 2, 1)}px`;
+          style.right = `${Math.max(width + right + 16, 1)}px`;
+          break;
+        case 'left-top':
+          style.top = `${Math.max(top, 1)}px`;
+          style.right = `${Math.max(width + right + 16, 1)}px`;
+          break;
+        case 'left-bottom':
+          style.bottom = `${Math.max(bottom, 1)}px`;
+          style.right = `${Math.max(width + right + 16, 1)}px`;
+          break;
+        case 'right':
+          style.top = `${Math.max(height / 2 + top - rect.height / 2, 1)}px`;
+          style.left = `${Math.max(left + width + 16, 1)}px`;
+          break;
+        case 'right-top':
+          style.top = `${Math.max(top, 1)}px`;
+          style.left = `${Math.max(left + width + 16, 1)}px`;
+          break;
+        case 'right-bottom':
+          style.bottom = `${Math.max(bottom, 1)}px`;
+          style.left = `${Math.max(left + width + 16, 1)}px`;
+          break;
+        case 'top':
+          style.bottom = `${Math.max(height + bottom + 16, 1)}px`;
+          style.left = `${Math.max(width / 2 + left - rect.width / 2, 1)}px`;
+          break;
+        case 'top-left':
+          style.bottom = `${Math.max(height + bottom + 16, 1)}px`;
+          style.left = `${Math.max(left, 1)}px`;
+          break;
+        case 'top-right':
+          style.bottom = `${Math.max(height + bottom + 16, 1)}px`;
+          style.right = `${Math.max(right, 1)}px`;
+          break;
+        default:
+          break;
+      }
+      return styles(style);
     },
     buttonProps(step) {
       let skipButton = step.skipButtonProps ?? this.data.skipButtonProps;
@@ -180,12 +232,32 @@ export default class Guide extends SuperComponent {
     },
     buttonContent(button) {
       const { steps, current, hideCounter } = this.data;
-      return `${button.content}${hideCounter ? '' : ` (${current + 1}/${steps.length})`}`;
+      return `${button.content.replace(/ \(.*?\)/, '')}${hideCounter ? '' : ` (${current + 1}/${steps.length})`}`;
     },
     onTplButtonTap(e) {
       const { type } = e.target.dataset;
-      // eslint-disable-next-line no-console
-      console.log(type);
+      const parmas = { e, current: this.data.current, total: this.data.steps.length };
+      switch (type) {
+        case 'next':
+          this.triggerEvent('next-step-click', { next: this.data.current + 1, ...parmas });
+          this.setData({ current: this.data.current + 1 });
+          break;
+        case 'skip':
+          this.triggerEvent('skip', parmas);
+          this.setData({ current: -1 });
+          break;
+        case 'back':
+          this.triggerEvent('back', parmas);
+          this.setData({ current: 0 });
+          break;
+        case 'finish':
+          this.triggerEvent('finish', parmas);
+          this.setData({ current: -1 });
+          break;
+        default:
+          break;
+      }
+      this.triggerEvent('change', { current: this.data.current });
     },
   };
 }

@@ -4,6 +4,7 @@
   "usingComponents": {
     "t-button": "tdesign-miniprogram/button/button",
     "t-popup": "tdesign-miniprogram/popup/popup",
-    "base": "./base"
+    "base": "./base",
+    "no-mask": "./no-mask"
   }
 }

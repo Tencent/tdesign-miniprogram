@@ -2,10 +2,10 @@
 
 @guide-reference-mask-color: var(--td-guide-reference-mask-color, @font-gray-2);
 @guide-reference-border-radius: var(--td-guide-reference-border-radius, @radius-default);
+@guide-reference-border: var(--td-guide-reference-border, 2px solid @brand-color);
 
 @guide-popover-bg-color: var(--td-guide-popover-bg-color, @font-white-1);
 @guide-popover-border: var(--td-guide-popover-border, 1px solid @gray-color-4);
-@guide-popover-border-2: var(--td-guide-popover-border-2, 2px solid @brand-color);
 @guide-popover-border-radius: var(--td-guide-popover-border-radius, @radius-large);
 @guide-popover-shadow: var(--td-guide-popover-shadow, @shadow-3);
 @guide-popover-padding: var(--td-guide-popover-padding, 12px);
@@ -34,6 +34,11 @@
     position: absolute;
     box-shadow: 0 0 0 0 @guide-reference-mask-color, @guide-reference-mask-color 0 0 0 5000px;
     border-radius: @guide-reference-border-radius;
+    transition: all @anim-duration-base @anim-time-fn-ease-out;
+    &.non-overlay {
+      box-shadow: none;
+      border: @guide-reference-border;
+    }
   }
   &__popover {
     position: absolute;
@@ -65,14 +70,6 @@
     margin-top: @guide-footer-margin-top;
     button + button {
       margin-left: @guide-footer-button-space;
-    }
-  }
-  &.non-overlay {
-    .@{prefix}-guide__reference {
-      box-shadow: none;
-    }
-    .@{prefix}-guide__popover {
-      padding: @guide-popover-border-2;
     }
   }
 }

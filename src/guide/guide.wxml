@@ -6,8 +6,11 @@
   background-color="transparent"
   z-index="{{zIndex}}"
 >
-  <view class="class {{prefix}}-class {{classPrefix}} {{nonOverlay && 'non-overlay'}}">
-    <view class="{{prefix}}-class-reference {{classPrefix}}__reference" style="{{referenceStyle}}"></view>
+  <view class="class {{prefix}}-class {{classPrefix}}">
+    <view
+      class="{{prefix}}-class-reference {{classPrefix}}__reference {{nonOverlay && 'non-overlay'}}"
+      style="{{referenceStyle}}"
+    ></view>
     <view class="{{prefix}}-class-popover {{classPrefix}}__popover" style="{{popoverStyle}}">
       <view class="{{prefix}}-class-tooltip">
         <view class="{{prefix}}-class-title {{classPrefix}}__title">{{title}}</view>
