@@ -179,7 +179,14 @@ export default class Upload extends SuperComponent {
 
   initDragBaseData() {
     const { classPrefix, rows, column, customFiles } = this.data;
-    if (customFiles.length === 0) return;
+    if (customFiles.length === 0) {
+      this.setData({
+        dragBaseData: {},
+        dragWrapStyle: '',
+        dragLayout: false,
+      });
+      return;
+    }
     const query = this.createSelectorQuery();
     const selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
     const selectorGrid = `.${classPrefix} >>> .t-grid`;
