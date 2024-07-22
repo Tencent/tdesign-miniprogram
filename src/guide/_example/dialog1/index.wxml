@@ -16,5 +16,8 @@
 </view>
 
 <t-guide current="{{current}}" steps="{{steps}}" bind:skip="close" bind:finish="close">
-  <view slot="body-2" class="slot-body">slot展示 用户引导的说明文案</view>
+  <view slot="body-1" class="slot-body">
+    <p>用户引导的说明文案 1</p>
+    <t-image src="https://tdesign.gtimg.com/demo/demo-image-1.png" mode="scaleToFill" width="100%"></t-image>
+  </view>
 </t-guide>

@@ -13,15 +13,6 @@ const props: TdGuideProps = {
   /** 当前步骤，即整个引导的进度。-1 则不展示，用于需要中断展示的场景 */
   current: {
     type: Number,
-    value: null,
-  },
-  /** 当前步骤，即整个引导的进度。-1 则不展示，用于需要中断展示的场景，非受控属性 */
-  defaultCurrent: {
-    type: Number,
-  },
-  /** 组件类名，用于设置组件外层元素元素类名 */
-  externalClasses: {
-    type: Array,
   },
   /** 透传 完成 的全部属性，示例：`{ content: '完成', theme: 'primary' }` */
   finishButtonProps: {
@@ -37,10 +28,10 @@ const props: TdGuideProps = {
     type: Boolean,
     value: false,
   },
-  /** 高亮框的内边距 */
+  /** 高亮框的内边距，单位rpx */
   highlightPadding: {
     type: Number,
-    value: 8,
+    value: 16,
   },
   /** 引导框的类型 */
   mode: {

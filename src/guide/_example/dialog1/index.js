@@ -29,9 +29,8 @@ Component({
                   .exec(),
               ),
             title: '用户引导标题',
-            body: '用户引导的说明文案',
             placement: 'bottom',
-            highlightPadding: 0,
+            mode: 'dialog',
           },
           {
             element: () =>
@@ -42,7 +41,7 @@ Component({
                   .exec(),
               ),
             title: '用户引导标题',
-            // body: '用户引导的说明文案',
+            body: '用户引导的说明文案',
             placement: 'bottom-right',
           },
         ],

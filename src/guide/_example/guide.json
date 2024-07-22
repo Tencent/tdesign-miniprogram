@@ -5,6 +5,9 @@
     "t-button": "tdesign-miniprogram/button/button",
     "t-popup": "tdesign-miniprogram/popup/popup",
     "base": "./base",
-    "no-mask": "./no-mask"
+    "no-mask": "./no-mask",
+    "dialog": "./dialog",
+    "dialog1": "./dialog1",
+    "content": "./content"
   }
 }

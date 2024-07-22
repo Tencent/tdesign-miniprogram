@@ -22,20 +22,6 @@ export interface TdGuideProps {
     value?: number;
   };
   /**
-   * 当前步骤，即整个引导的进度。-1 则不展示，用于需要中断展示的场景，非受控属性
-   */
-  defaultCurrent?: {
-    type: NumberConstructor;
-    value?: number;
-  };
-  /**
-   * 组件类名，用于设置组件外层元素元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class'];
-  };
-  /**
    * 透传 完成 的全部属性，示例：`{ content: '完成', theme: 'primary' }`
    */
   finishButtonProps?: {
@@ -59,8 +45,8 @@ export interface TdGuideProps {
     value?: boolean;
   };
   /**
-   * 高亮框的内边距
-   * @default 8
+   * 高亮框的内边距，单位rpx
+   * @default 16
    */
   highlightPadding?: {
     type: NumberConstructor;
@@ -127,12 +113,12 @@ export interface GuideStep {
    */
   backButtonProps?: ButtonProps;
   /**
-   * 当前步骤提示框的内容
+   * 当前步骤提示框的内容，支持插槽：slot="body-{{index}}" (1、当要显示body-{{index}}插槽时，请将body设置为空；2、当要显示content-{{index}}插槽完全自定义内容时，请将body和title都设置为空)
    * @default ''
    */
   body?: string;
   /**
-   * 高亮的节点。示例： () => new Promise((resolve) => this.createSelectorQuery(). select('#tdesign'). boundingClientRect((rect) => resolve(rect)). exec())
+   * 高亮的节点。示例： `() => new Promise((resolve) => this.createSelectorQuery().select('#tdesign').boundingClientRect((rect) => resolve(rect)).exec())`
    */
   element: StepElement;
   /**
@@ -140,7 +126,7 @@ export interface GuideStep {
    */
   finishButtonProps?: ButtonProps;
   /**
-   * 高亮框的内边距
+   * 高亮框的内边距，单位rpx
    */
   highlightPadding?: number;
   /**
@@ -152,7 +138,7 @@ export interface GuideStep {
    */
   nextButtonProps?: ButtonProps;
   /**
-   * 【讨论确认中】相对于 placement 的偏移量，示例：[-10, 20] 或 ['10px', '8px']
+   * 相对于 placement 的偏移量[left, top]，默认单位rpx，示例：[-10, 20] 或 ['10px', '8px'] 或 ['20rpx', '16rpx'] (仅当 `mode` 为 `popover` 时生效)
    */
   offset?: Array<string | number>;
   /**
@@ -170,13 +156,13 @@ export interface GuideStep {
    */
   skipButtonProps?: ButtonProps;
   /**
-   * 当前步骤的标题内容
+   * 当前步骤的标题内容，支持插槽：slot="title-{{index}}" (1、当要显示body-{{index}}插槽时，请将title设置为空；2、当要显示content-{{index}}插槽完全自定义内容时，请将body和title都设置为空)
    * @default ''
    */
   title?: string;
 }
 
-export type StepElement = () => Promise<WechatMiniprogram.BoundingClientRectCallbackResult | null>;
+export type StepElement = () => Promise<WechatMiniprogram.BoundingClientRectCallbackResult>;
 
 export type StepPopoverPlacement =
   | 'top'

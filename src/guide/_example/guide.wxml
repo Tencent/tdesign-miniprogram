@@ -18,4 +18,28 @@
       </view>
     </t-popup>
   </t-demo>
+  <t-demo desc="弹窗形式的引导" padding>
+    <t-button theme="primary" content="用户引导" block bindtap="handleDialogClick"></t-button>
+    <t-popup visible="{{visibleDialogPopup}}" placement="bottom" show-overlay="{{false}}">
+      <view style="height: calc(100vh - 60px)">
+        <dialog wx:if="{{visibleDialog}}" bind:close="handleDialogClose" />
+      </view>
+    </t-popup>
+  </t-demo>
+  <t-demo desc="气泡与弹窗混合的引导" padding>
+    <t-button theme="primary" content="用户引导" block bindtap="handleDialog1Click"></t-button>
+    <t-popup visible="{{visibleDialog1Popup}}" placement="bottom" show-overlay="{{false}}">
+      <view style="height: calc(100vh - 60px)">
+        <dialog1 wx:if="{{visibleDialog1}}" bind:close="handleDialog1Close" />
+      </view>
+    </t-popup>
+  </t-demo>
+  <t-demo desc="自定义气泡" padding>
+    <t-button theme="primary" content="用户引导" block bindtap="handleContentClick"></t-button>
+    <t-popup visible="{{visibleContentPopup}}" placement="bottom" show-overlay="{{false}}">
+      <view style="height: calc(100vh - 60px)">
+        <content wx:if="{{visibleContent}}" bind:close="handleContentClose" />
+      </view>
+    </t-popup>
+  </t-demo>
 </view>

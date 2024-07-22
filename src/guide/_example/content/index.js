@@ -16,8 +16,6 @@ Component({
                   .boundingClientRect((rect) => resolve(rect))
                   .exec(),
               ),
-            title: '用户引导标题',
-            body: '用户引导的说明文案',
             placement: 'center',
           },
           {
@@ -28,8 +26,6 @@ Component({
                   .boundingClientRect((rect) => resolve(rect))
                   .exec(),
               ),
-            title: '用户引导标题',
-            body: '用户引导的说明文案',
             placement: 'bottom',
             highlightPadding: 0,
           },
@@ -41,8 +37,6 @@ Component({
                   .boundingClientRect((rect) => resolve(rect))
                   .exec(),
               ),
-            title: '用户引导标题',
-            // body: '用户引导的说明文案',
             placement: 'bottom-right',
           },
         ],
@@ -52,6 +46,20 @@ Component({
   methods: {
     close() {
       this.triggerEvent('close');
+    },
+    skip() {
+      this.setData({ current: -1 });
+      this.close();
+    },
+    back() {
+      this.setData({ current: 0 });
+    },
+    next() {
+      this.setData({ current: this.data.current + 1 });
+    },
+    finish() {
+      this.setData({ current: -1 });
+      this.close();
     },
   },
 });

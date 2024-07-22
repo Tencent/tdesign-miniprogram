@@ -1,22 +1,22 @@
 .main-title {
-  margin: 16px;
+  margin: 32rpx;
   display: inline-block;
 }
 .title-major {
-  font-size: 24px;
+  font-size: 48rpx;
   font-weight: 600;
-  line-height: 36px;
+  line-height: 72rpx;
 }
 .title-sub {
-  font-size: 16px;
+  font-size: 32rpx;
   font-weight: 400;
-  line-height: 24px;
-  margin-top: 4px;
+  line-height: 48rpx;
+  margin-top: 8rpx;
   color: #0009;
 }
 .action {
-  margin: 16px;
+  margin: 32px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: 32px;
 }

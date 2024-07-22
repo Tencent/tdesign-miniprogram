@@ -2,32 +2,43 @@
 
 @guide-reference-mask-color: var(--td-guide-reference-mask-color, @font-gray-2);
 @guide-reference-border-radius: var(--td-guide-reference-border-radius, @radius-default);
-@guide-reference-border: var(--td-guide-reference-border, 2px solid @brand-color);
+@guide-reference-border: var(--td-guide-reference-border, 4rpx solid @brand-color);
 
 @guide-popover-bg-color: var(--td-guide-popover-bg-color, @font-white-1);
-@guide-popover-border: var(--td-guide-popover-border, 1px solid @gray-color-4);
+@guide-popover-border: var(--td-guide-popover-border, 2rpx solid @gray-color-4);
 @guide-popover-border-radius: var(--td-guide-popover-border-radius, @radius-large);
+@guide-dialog-border-radius: var(--td-guide-dialog-border-radius, @radius-extra-large);
 @guide-popover-shadow: var(--td-guide-popover-shadow, @shadow-3);
-@guide-popover-padding: var(--td-guide-popover-padding, 12px);
-@guide-popover-min-width: var(--td-guide-popover-min-width, 240px);
-@guide-popover-max-width: var(--td-guide-popover-max-width, 270px);
+@guide-popover-padding: var(--td-guide-popover-padding, @spacer-2);
+@guide-dialog-padding: var(--td-guide-dialog-padding, @spacer-3 0);
+@guide-popover-min-width: var(--td-guide-popover-min-width, 480rpx);
+@guide-popover-max-width: var(--td-guide-popover-max-width, 540rpx);
+@guide-dialog-width: var(--td-guide-dialog-width, 622rpx);
 
-@guide-title-text-align: var(--td-guide-title-text-align, left);
+@guide-popover-title-text-align: var(--td-guide-popover-title-text-align, left);
+@guide-dialog-title-text-align: var(--td-guide-dialog-title-text-align, center);
 @guide-title-color: var(--td-guide-title-color, @font-gray-1);
-@guide-title-font-size: var(--td-guide-title-font-size, @font-size-m);
+@guide-popover-title-font-size: var(--td-guide-popover-title-font-size, @font-size-m);
+@guide-dialog-title-font-size: var(--td-guide-dialog-title-font-size, 36rpx);
 @guide-title-font-weight: var(--td-guide-title-font-weight, 600);
-@guide-title-line-height: var(--td-guide-title-line-height, 24px);
+@guide-popover-title-line-height: var(--td-guide-popover-title-line-height, 48rpx);
+@guide-dialog-title-line-height: var(--td-guide-dialog-title-line-height, 52rpx);
 
-@guide-desc-margin-top: var(--td-guide-desc-margin-top, 4px);
-@guide-desc-text-align: var(--td-guide-desc-text-align, left);
-@guide-desc-color: var(--td-guide-desc-color, @font-gray-2);
-@guide-desc-font-size: var(--td-guide-desc-font-size, @font-size-base);
-@guide-desc-font-weight: var(--td-guide-desc-font-weight, 400);
-@guide-desc-line-height: var(--td-guide-desc-line-height, 22px);
+@guide-popover-body-margin-top: var(--td-guide-popover-body-margin-top, 8rpx);
+@guide-dialog-body-margin-top: var(--td-guide-dialog-body-margin-top, 16rpx);
+@guide-popover-body-text-align: var(--td-guide-popover-body-text-align, left);
+@guide-dialog-body-text-align: var(--td-guide-dialog-body-text-align, center);
+@guide-body-color: var(--td-guide-body-color, @font-gray-2);
+@guide-popover-body-font-size: var(--td-guide-popover-body-font-size, @font-size-base);
+@guide-dialog-body-font-size: var(--td-guide-dialog-body-font-size, @font-size-m);
+@guide-body-font-weight: var(--td-guide-body-font-weight, 400);
+@guide-popover-body-line-height: var(--td-guide-popover-body-line-height, 44rpx);
+@guide-dialog-body-line-height: var(--td-guide-dialog-body-line-height, 48rpx);
 
 @guide-footer-text-align: var(--td-guide-footer-text-align, right);
 @guide-footer-margin-top: var(--td-guide-footer-margin-top, @spacer-3);
 @guide-footer-button-space: var(--td-guide-footer-button-space, @spacer-1);
+@guide-dialog-footer-button-padding: var(--td-guide-dialog-footer-button-padding, 0 @spacer-3);
 
 .@{prefix}-guide {
   &__reference {
@@ -41,7 +52,9 @@
     }
   }
   &__popover {
-    position: absolute;
+    display: inline-block;
+  }
+  &__popover.popover {
     background-color: @guide-popover-bg-color;
     border: @guide-popover-border;
     border-radius: @guide-popover-border-radius;
@@ -50,26 +63,57 @@
     min-width: @guide-popover-min-width;
     max-width: @guide-popover-max-width;
   }
-  &__title {
-    text-align: @guide-title-text-align;
-    color: @guide-title-color;
-    font-size: @guide-title-font-size;
-    font-weight: @guide-title-font-weight;
-    line-height: @guide-title-line-height;
+  &__popover.dialog {
+    background-color: @guide-popover-bg-color;
+    border-radius: @guide-dialog-border-radius;
+    padding: @guide-dialog-padding;
+    width: @guide-dialog-width;
   }
-  &__desc {
-    margin-top: @guide-desc-margin-top;
-    text-align: @guide-desc-text-align;
-    color: @guide-desc-color;
-    font-size: @guide-desc-font-size;
-    font-weight: @guide-desc-font-weight;
-    line-height: @guide-desc-line-height;
+  &__title.popover {
+    text-align: @guide-popover-title-text-align;
+    color: @guide-title-color;
+    font-size: @guide-popover-title-font-size;
+    font-weight: @guide-title-font-weight;
+    line-height: @guide-popover-title-line-height;
+  }
+  &__title.dialog {
+    text-align: @guide-dialog-title-text-align;
+    color: @guide-title-color;
+    font-size: @guide-dialog-title-font-size;
+    font-weight: @guide-title-font-weight;
+    line-height: @guide-dialog-title-line-height;
+  }
+  &__body.popover {
+    margin-top: @guide-popover-body-margin-top;
+    text-align: @guide-popover-body-text-align;
+    color: @guide-body-color;
+    font-size: @guide-popover-body-font-size;
+    font-weight: @guide-body-font-weight;
+    line-height: @guide-popover-body-line-height;
+  }
+  &__body.dialog {
+    margin-top: @guide-dialog-body-margin-top;
+    text-align: @guide-dialog-body-text-align;
+    color: @guide-body-color;
+    font-size: @guide-dialog-body-font-size;
+    font-weight: @guide-body-font-weight;
+    line-height: @guide-dialog-body-line-height;
   }
   &__footer {
     text-align: @guide-footer-text-align;
     margin-top: @guide-footer-margin-top;
     button + button {
       margin-left: @guide-footer-button-space;
+    }
+    button.hidden {
+      display: none;
+    }
+    &.dialog {
+      display: flex;
+      padding: @guide-dialog-footer-button-padding;
+      button:last-child {
+        flex-grow: 1;
+      }
     }
   }
 }

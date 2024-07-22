@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 import { TdGuideProps, GuideStep } from './type';
-import { debounce, getRect, styles } from '../common/utils';
+import { debounce, getRect, isNumber, rpx2px, styles, unitConvert } from '../common/utils';
 
 export interface GuideProps extends TdGuideProps {}
 export { GuideStep };
@@ -19,7 +19,7 @@ export default class Guide extends SuperComponent {
     `${prefix}-class-popover`,
     `${prefix}-class-tooltip`,
     `${prefix}-class-title`,
-    `${prefix}-class-desc`,
+    `${prefix}-class-body`,
     `${prefix}-class-footer`,
     `${prefix}-class-skip`,
     `${prefix}-class-next`,
@@ -31,42 +31,23 @@ export default class Guide extends SuperComponent {
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     pureDataPattern: /^_/,
+    multipleSlots: true,
   };
 
   data = {
     prefix,
     classPrefix: name,
     visible: false,
-
     _current: -1,
     _steps: [],
     _init: null,
-
-    skipButton: {
-      theme: 'light',
-      size: 'small',
-      content: '跳过',
-    },
-    nextButton: {
-      theme: 'primary',
-      size: 'small',
-      content: '下一步',
-    },
-    backButton: {
-      theme: 'light',
-      size: 'small',
-      content: '返回',
-    },
-    finishButton: {
-      theme: 'primary',
-      size: 'small',
-      content: '完成',
-    },
+    buttonProps: {},
     referenceStyle: '',
     popoverStyle: '',
     title: '',
-    desc: '',
+    body: '',
     nonOverlay: false,
+    modeType: '',
   };
 
   observers = {
@@ -98,111 +79,132 @@ export default class Guide extends SuperComponent {
       if (!step) {
         return this.setData({ visible: false });
       }
+      const modeType = (step.mode ?? this.data.mode) === 'dialog' ? 'dialog' : 'popover';
       const showOverlay = step.showOverlay ?? this.data.showOverlay;
-      this.setData({ nonOverlay: !showOverlay });
+      this.setData({ nonOverlay: !showOverlay, modeType });
       if (steps === _steps && current === _current) return;
-      const rect = await step.element();
-      const highlightPadding = step.highlightPadding ?? this.data.highlightPadding;
-      const referenceTop = rect.top - highlightPadding;
-      const referenceRight = systemInfo.windowWidth - rect.right - highlightPadding;
-      const referenceBottom = systemInfo.windowHeight - rect.bottom - highlightPadding;
-      const referenceLeft = rect.left - highlightPadding;
-      const style = {
-        top: `${referenceTop}px`,
-        right: `${referenceRight}px`,
-        bottom: `${referenceBottom}px`,
-        left: `${referenceLeft}px`,
-      };
-      this.setData({
-        _steps: this.data.steps,
-        _current: this.data.current,
-        visible: true,
-        referenceStyle: styles(style),
-      });
-      await this.nextTick();
-      const popoverStyle = await this.placementOffset(step, style);
-      this.setData({
-        popoverStyle,
-        title: step.title ?? '',
-        desc: step.body ?? '',
-        ...this.buttonProps(step),
-      });
+      if (modeType === 'popover') {
+        const rect = await step.element();
+        if (!rect) return;
+        const highlightPadding = rpx2px(step.highlightPadding ?? this.data.highlightPadding);
+        const referenceTop = rect.top - highlightPadding;
+        const referenceRight = systemInfo.windowWidth - rect.right - highlightPadding;
+        const referenceBottom = systemInfo.windowHeight - rect.bottom - highlightPadding;
+        const referenceLeft = rect.left - highlightPadding;
+        const style = {
+          top: `${referenceTop}px`,
+          right: `${referenceRight}px`,
+          bottom: `${referenceBottom}px`,
+          left: `${referenceLeft}px`,
+        };
+        this.setData({
+          _steps: this.data.steps,
+          _current: this.data.current,
+          visible: true,
+          referenceStyle: styles(style),
+          title: step.title ?? '',
+          body: step.body ?? '',
+          buttonProps: this.buttonProps(step, 'popover'),
+        });
+        const popoverStyle = await this.placementOffset(step, style);
+        this.setData({ popoverStyle });
+      } else {
+        this.setData({
+          _steps: this.data.steps,
+          _current: this.data.current,
+          visible: true,
+          title: step.title ?? '',
+          body: step.body ?? '',
+          buttonProps: this.buttonProps(step, 'dialog'),
+        });
+      }
     },
-    async placementOffset({ placement }: GuideStep, offset: CSSStyleDeclaration) {
+    async placementOffset({ placement, offset }: GuideStep, place: CSSStyleDeclaration) {
+      await this.nextTick();
       const rect: WechatMiniprogram.BoundingClientRectCallbackResult = await getRect(this, `.${name}__popover`);
-      const bottom = parseFloat(offset.bottom);
-      const left = parseFloat(offset.left);
-      const right = parseFloat(offset.right);
-      const top = parseFloat(offset.top);
+      let offsetLeft = offset?.[0];
+      offsetLeft = unitConvert(isNumber(offsetLeft) ? `${offsetLeft}rpx` : offsetLeft || 0);
+      let offsetTop = offset?.[1];
+      offsetTop = unitConvert(isNumber(offsetTop) ? `${offsetTop}rpx` : offsetTop || 0);
+      const bottom = parseFloat(place.bottom);
+      const left = parseFloat(place.left);
+      const right = parseFloat(place.right);
+      const top = parseFloat(place.top);
       const height = systemInfo.windowHeight - bottom - top;
       const width = systemInfo.windowWidth - left - right;
-      const style: Partial<CSSStyleDeclaration> = {};
+      const space = rpx2px(32);
+      const style: Partial<CSSStyleDeclaration> = { position: 'absolute' };
       switch (placement) {
         case 'center':
         case 'bottom':
-          style.top = `${Math.max(height + top + 16, 1)}px`;
-          style.left = `${Math.max(width / 2 + left - rect.width / 2, 1)}px`;
+          style.top = `${Math.max(height + top + space + offsetTop, 1)}px`;
+          style.left = `${Math.max(width / 2 + left - rect.width / 2 + offsetLeft, 1)}px`;
           break;
         case 'bottom-left':
-          style.top = `${Math.max(height + top + 16, 1)}px`;
-          style.left = `${Math.max(left, 1)}px`;
+          style.top = `${Math.max(height + top + space + offsetTop, 1)}px`;
+          style.left = `${Math.max(left + offsetLeft, 1)}px`;
           break;
         case 'bottom-right':
-          style.top = `${height + top + 16}px`;
-          style.right = `${Math.max(right, 1)}px`;
+          style.top = `${Math.max(height + top + space + offsetTop, 1)}px`;
+          style.right = `${Math.max(right - offsetLeft, 1)}px`;
           break;
         case 'left':
-          style.top = `${Math.max(height / 2 + top - rect.height / 2, 1)}px`;
-          style.right = `${Math.max(width + right + 16, 1)}px`;
+          style.top = `${Math.max(height / 2 + top - rect.height / 2 + offsetTop, 1)}px`;
+          style.right = `${Math.max(width + right + space - offsetLeft, 1)}px`;
           break;
         case 'left-top':
-          style.top = `${Math.max(top, 1)}px`;
-          style.right = `${Math.max(width + right + 16, 1)}px`;
+          style.top = `${Math.max(top + offsetTop, 1)}px`;
+          style.right = `${Math.max(width + right + space - offsetLeft, 1)}px`;
           break;
         case 'left-bottom':
-          style.bottom = `${Math.max(bottom, 1)}px`;
-          style.right = `${Math.max(width + right + 16, 1)}px`;
+          style.bottom = `${Math.max(bottom - offsetTop, 1)}px`;
+          style.right = `${Math.max(width + right + space - offsetLeft, 1)}px`;
           break;
         case 'right':
-          style.top = `${Math.max(height / 2 + top - rect.height / 2, 1)}px`;
-          style.left = `${Math.max(left + width + 16, 1)}px`;
+          style.top = `${Math.max(height / 2 + top - rect.height / 2 + offsetTop, 1)}px`;
+          style.left = `${Math.max(left + width + space + offsetLeft, 1)}px`;
           break;
         case 'right-top':
-          style.top = `${Math.max(top, 1)}px`;
-          style.left = `${Math.max(left + width + 16, 1)}px`;
+          style.top = `${Math.max(top + offsetTop, 1)}px`;
+          style.left = `${Math.max(left + width + space + offsetLeft, 1)}px`;
           break;
         case 'right-bottom':
-          style.bottom = `${Math.max(bottom, 1)}px`;
-          style.left = `${Math.max(left + width + 16, 1)}px`;
+          style.bottom = `${Math.max(bottom - offsetTop, 1)}px`;
+          style.left = `${Math.max(left + width + space + offsetLeft, 1)}px`;
           break;
         case 'top':
-          style.bottom = `${Math.max(height + bottom + 16, 1)}px`;
-          style.left = `${Math.max(width / 2 + left - rect.width / 2, 1)}px`;
+          style.bottom = `${Math.max(height + bottom + space - offsetTop, 1)}px`;
+          style.left = `${Math.max(width / 2 + left - rect.width / 2 + offsetLeft, 1)}px`;
           break;
         case 'top-left':
-          style.bottom = `${Math.max(height + bottom + 16, 1)}px`;
-          style.left = `${Math.max(left, 1)}px`;
+          style.bottom = `${Math.max(height + bottom + space - offsetTop, 1)}px`;
+          style.left = `${Math.max(left + offsetLeft, 1)}px`;
           break;
         case 'top-right':
-          style.bottom = `${Math.max(height + bottom + 16, 1)}px`;
-          style.right = `${Math.max(right, 1)}px`;
+          style.bottom = `${Math.max(height + bottom + space - offsetTop, 1)}px`;
+          style.right = `${Math.max(right - offsetLeft, 1)}px`;
           break;
         default:
           break;
       }
       return styles(style);
     },
-    buttonProps(step) {
+    buttonProps(step, mode) {
       let skipButton = step.skipButtonProps ?? this.data.skipButtonProps;
+      const size = mode === 'popover' ? 'extra-small' : 'medium';
       skipButton = {
-        ...this.data.skipButton,
+        theme: 'light',
+        content: '跳过',
+        size,
         ...skipButton,
-        class: `${prefix}-class-skip ${skipButton?.class || ''}`,
+        class: `${prefix}-class-skip ${step.hideSkip && 'hidden'} ${skipButton?.class || ''}`,
         type: 'skip',
       };
       let nextButton = step.nextButtonProps ?? this.data.nextButtonProps;
       nextButton = {
-        ...this.data.nextButton,
+        theme: 'primary',
+        content: '下一步',
+        size,
         ...nextButton,
         class: `${prefix}-class-next ${nextButton?.class || ''}`,
         type: 'next',
@@ -210,14 +212,18 @@ export default class Guide extends SuperComponent {
       nextButton = { ...nextButton, content: this.buttonContent(nextButton) };
       let backButton = step.backButtonProps ?? this.data.backButtonProps;
       backButton = {
-        ...this.data.backButton,
+        theme: 'light',
+        content: '返回',
+        size,
         ...backButton,
         class: `${prefix}-class-back ${backButton?.class || ''}`,
         type: 'back',
       };
       let finishButton = step.finishButtonProps ?? this.data.finishButtonProps;
       finishButton = {
-        ...this.data.finishButton,
+        theme: 'primary',
+        content: '完成',
+        size,
         ...finishButton,
         class: `${prefix}-class-finish ${finishButton?.class || ''}`,
         type: 'finish',

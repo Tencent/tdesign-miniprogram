@@ -1,6 +1,7 @@
-<import src="../common/template/button.wxml" />
+<import src="./content.wxml" />
 
 <t-overlay
+  wx:if="{{modeType === 'popover'}}"
   visible="{{visible}}"
   using-custom-navbar="{{usingCustomNavbar}}"
   background-color="transparent"
@@ -8,20 +9,34 @@
 >
   <view class="class {{prefix}}-class {{classPrefix}}">
     <view
-      class="{{prefix}}-class-reference {{classPrefix}}__reference {{nonOverlay && 'non-overlay'}}"
+      class="{{prefix}}-class-reference {{classPrefix}}__reference {{nonOverlay ? 'non-overlay' : ''}}"
       style="{{referenceStyle}}"
-    ></view>
-    <view class="{{prefix}}-class-popover {{classPrefix}}__popover" style="{{popoverStyle}}">
-      <view class="{{prefix}}-class-tooltip">
-        <view class="{{prefix}}-class-title {{classPrefix}}__title">{{title}}</view>
-        <view class="{{prefix}}-class-desc {{classPrefix}}__desc">{{desc}}</view>
-      </view>
-      <view class="{{prefix}}-class-footer {{classPrefix}}__footer">
-        <template is="button" wx:if="{{current < steps.length - 1}}" data="{{...skipButton}}"></template>
-        <template is="button" wx:else data="{{...backButton}}"></template>
-        <template is="button" wx:if="{{current < steps.length - 1}}" data="{{...nextButton}}"></template>
-        <template is="button" wx:else data="{{...finishButton}}"></template>
-      </view>
+    />
+    <view
+      class="{{prefix}}-class-popover {{classPrefix}}__popover {{title || body ? modeType : ''}}"
+      style="{{popoverStyle}}"
+    >
+      <template
+        is="content"
+        data="{{ prefix: prefix, classPrefix: classPrefix, title: title, body: body, steps: steps, current: current, modeType: modeType, ...buttonProps }}"
+      />
     </view>
   </view>
 </t-overlay>
+<t-popup
+  wx:elif="{{modeType === 'dialog'}}"
+  visible="{{visible}}"
+  show-overlay="{{!nonOverlay}}"
+  using-custom-navbar="{{usingCustomNavbar}}"
+  z-index="{{zIndex}}"
+  placement="center"
+>
+  <view class="class {{prefix}}-class {{classPrefix}}">
+    <view class="{{prefix}}-class-popover {{classPrefix}}__popover {{title || body ? modeType : ''}}">
+      <template
+        is="content"
+        data="{{ prefix: prefix, classPrefix: classPrefix, title: title, body: body, steps: steps, current: current, modeType: modeType, ...buttonProps }}"
+      />
+    </view>
+  </view>
+</t-popup>
