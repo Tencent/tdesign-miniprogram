@@ -42,7 +42,7 @@ isComponent: true
 
 #### 气泡与弹窗混合的引导
 
-{{ dialog1 }}
+{{ multiple }}
 
 #### 自定义气泡
 
