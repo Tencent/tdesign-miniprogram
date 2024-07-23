@@ -7,7 +7,7 @@
     "base": "./base",
     "no-mask": "./no-mask",
     "dialog": "./dialog",
-    "dialog1": "./dialog1",
+    "multiple": "./multiple",
     "content": "./content"
   }
 }

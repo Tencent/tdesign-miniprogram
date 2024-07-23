@@ -30,7 +30,7 @@
     <t-button theme="primary" content="用户引导" block bindtap="handleDialog1Click"></t-button>
     <t-popup visible="{{visibleDialog1Popup}}" placement="bottom" show-overlay="{{false}}">
       <view style="height: calc(100vh - 60px)">
-        <dialog1 wx:if="{{visibleDialog1}}" bind:close="handleDialog1Close" />
+        <multiple wx:if="{{visibleDialog1}}" bind:close="handleDialog1Close" />
       </view>
     </t-popup>
   </t-demo>
