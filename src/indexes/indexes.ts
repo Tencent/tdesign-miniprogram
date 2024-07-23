@@ -49,6 +49,9 @@ export default class Indexes extends SuperComponent {
 
   lifetimes = {
     ready() {
+      this.timer = null;
+      this.groupTop = [];
+      this.sidebar = null;
       if (this.data._height === 0) {
         this.setHeight();
       }
@@ -145,13 +148,13 @@ export default class Indexes extends SuperComponent {
     setAnchorByIndex(index) {
       if (this.preIndex != null && this.preIndex === index) return;
 
-      const { _indexList } = this.data;
+      const { _indexList, stickyOffset } = this.data;
       const activeAnchor = _indexList[index];
       const target = this.groupTop.find((item) => item.anchor === activeAnchor);
 
       if (target) {
         wx.pageScrollTo({
-          scrollTop: target.top,
+          scrollTop: target.top - stickyOffset,
           duration: 0,
         });
       }
@@ -224,9 +227,11 @@ export default class Indexes extends SuperComponent {
         this.triggerEvent('change', { index: curGroup.anchor });
       }
 
-      this.setData({
-        activeAnchor: curGroup.anchor,
-      });
+      if (this.data.activeAnchor !== curGroup.anchor) {
+        this.setData({
+          activeAnchor: curGroup.anchor,
+        });
+      }
 
       if (sticky) {
         const offset = curGroup.top - scrollTop;
@@ -234,22 +239,29 @@ export default class Indexes extends SuperComponent {
 
         this.$children.forEach((child, index) => {
           if (index === curIndex) {
-            child.setData({
-              sticky: scrollTop > stickyOffset,
-              active: true,
-              style: `height: ${curGroup.height}px`,
-              anchorStyle: `transform: translate3d(0, ${betwixt ? offset : 0}px, 0); top: ${stickyOffset}px`,
-            });
+            const sticky = scrollTop > stickyOffset;
+            const anchorStyle = `transform: translate3d(0, ${betwixt ? offset : 0}px, 0); top: ${stickyOffset}px`;
+            if (anchorStyle !== child.data.anchorStyle || sticky !== child.data.sticky) {
+              child.setData({
+                sticky,
+                active: true,
+                style: `height: ${curGroup.height}px`,
+                anchorStyle,
+              });
+            }
           } else if (index + 1 === curIndex) {
             // 两个 anchor 同时出现时的上一个
-            child.setData({
-              sticky: true,
-              active: true,
-              style: `height: ${curGroup.height}px`,
-              anchorStyle: `transform: translate3d(0, ${
-                betwixt ? offset - curGroup.height : 0
-              }px, 0); top: ${stickyOffset}px`,
-            });
+            const anchorStyle = `transform: translate3d(0, ${
+              betwixt ? offset - curGroup.height : 0
+            }px, 0); top: ${stickyOffset}px`;
+            if (anchorStyle !== child.data.anchorStyle) {
+              child.setData({
+                sticky: true,
+                active: true,
+                style: `height: ${curGroup.height}px`,
+                anchorStyle,
+              });
+            }
           } else {
             child.setData({ active: false, sticky: false, anchorStyle: '' });
           }
