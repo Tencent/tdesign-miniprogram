@@ -23,10 +23,6 @@
         <size />
       </t-demo>
 
-      <!-- <t-demo title="02 组件状态" desc="如果加载状态在延迟内结束，则不显示" padding>
-        <status />
-      </t-demo> -->
-
       <t-demo title="03 加载速度" desc="加载速度调整" padding>
         <duration />
       </t-demo>
