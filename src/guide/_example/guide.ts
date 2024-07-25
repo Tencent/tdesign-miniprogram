@@ -1,5 +1,7 @@
 Page({
   data: {
+    navbarHeight: 60,
+
     visibleBasePopup: false,
     visibleBase: false,
 
@@ -14,6 +16,15 @@ Page({
 
     visibleContentPopup: false,
     visibleContent: false,
+  },
+
+  async onLoad() {
+    this.createSelectorQuery()
+      .select('.custom-navbar')
+      .boundingClientRect((rect) => {
+        this.setData({ navbarHeight: rect.height });
+      })
+      .exec();
   },
 
   handleBaseClick() {

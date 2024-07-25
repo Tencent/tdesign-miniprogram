@@ -26,16 +26,32 @@
         content="跳过"
         size="extra-small"
         bindtap="skip"
+        class="guide-demo-button"
       ></t-button>
-      <t-button wx:else theme="light" content="返回" size="extra-small" bindtap="back"></t-button>
+      <t-button
+        wx:else
+        class="guide-demo-button"
+        theme="light"
+        content="返回"
+        size="extra-small"
+        bindtap="back"
+      ></t-button>
       <t-button
         wx:if="{{current < steps.length - 1}}"
         theme="primary"
         content="下一步"
         size="extra-small"
         bindtap="next"
+        class="guide-demo-button"
       ></t-button>
-      <t-button wx:else theme="primary" content="完成" size="extra-small" bindtap="finish"></t-button>
+      <t-button
+        wx:else
+        class="guide-demo-button"
+        theme="primary"
+        content="完成"
+        size="extra-small"
+        bindtap="finish"
+      ></t-button>
     </view>
   </view>
   <view slot="content-1" class="content">
@@ -48,16 +64,32 @@
         content="跳过"
         size="extra-small"
         bindtap="skip"
+        class="guide-demo-button"
       ></t-button>
-      <t-button wx:else theme="light" content="返回" size="extra-small" bindtap="back"></t-button>
+      <t-button
+        wx:else
+        class="guide-demo-button"
+        theme="light"
+        content="返回"
+        size="extra-small"
+        bindtap="back"
+      ></t-button>
       <t-button
         wx:if="{{current < steps.length - 1}}"
         theme="primary"
         content="下一步"
         size="extra-small"
         bindtap="next"
+        class="guide-demo-button"
       ></t-button>
-      <t-button wx:else theme="primary" content="完成" size="extra-small" bindtap="finish"></t-button>
+      <t-button
+        wx:else
+        class="guide-demo-button"
+        theme="primary"
+        content="完成"
+        size="extra-small"
+        bindtap="finish"
+      ></t-button>
     </view>
   </view>
   <view slot="content-2" class="content">
@@ -70,16 +102,32 @@
         content="跳过"
         size="extra-small"
         bindtap="skip"
+        class="guide-demo-button"
       ></t-button>
-      <t-button wx:else theme="light" content="返回" size="extra-small" bindtap="back"></t-button>
+      <t-button
+        wx:else
+        class="guide-demo-button"
+        theme="light"
+        content="返回"
+        size="extra-small"
+        bindtap="back"
+      ></t-button>
       <t-button
         wx:if="{{current < steps.length - 1}}"
         theme="primary"
         content="下一步"
         size="extra-small"
         bindtap="next"
+        class="guide-demo-button"
       ></t-button>
-      <t-button wx:else theme="primary" content="完成" size="extra-small" bindtap="finish"></t-button>
+      <t-button
+        wx:else
+        class="guide-demo-button"
+        theme="primary"
+        content="完成"
+        size="extra-small"
+        bindtap="finish"
+      ></t-button>
     </view>
   </view>
 </t-guide>

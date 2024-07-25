@@ -44,6 +44,6 @@
   margin-top: 32rpx;
 }
 
-.content .footer button + button {
+.content .footer .guide-demo-button + .guide-demo-button {
   margin-left: 24rpx;
 }

@@ -1,11 +1,11 @@
 @import '../common/style/index.less';
 
-@guide-reference-mask-color: var(--td-guide-reference-mask-color, @font-gray-2);
+@guide-reference-mask-color: var(--td-guide-reference-mask-color, @text-color-secondary);
 @guide-reference-border-radius: var(--td-guide-reference-border-radius, @radius-default);
 @guide-reference-border: var(--td-guide-reference-border, 4rpx solid @brand-color);
 
-@guide-popover-bg-color: var(--td-guide-popover-bg-color, @font-white-1);
-@guide-popover-border: var(--td-guide-popover-border, 2rpx solid @gray-color-4);
+@guide-popover-bg-color: var(--td-guide-popover-bg-color, @bg-color-container);
+@guide-popover-border: var(--td-guide-popover-border, 2rpx solid @component-border);
 @guide-popover-border-radius: var(--td-guide-popover-border-radius, @radius-large);
 @guide-dialog-border-radius: var(--td-guide-dialog-border-radius, @radius-extra-large);
 @guide-popover-shadow: var(--td-guide-popover-shadow, @shadow-3);
@@ -17,7 +17,7 @@
 
 @guide-popover-title-text-align: var(--td-guide-popover-title-text-align, left);
 @guide-dialog-title-text-align: var(--td-guide-dialog-title-text-align, center);
-@guide-title-color: var(--td-guide-title-color, @font-gray-1);
+@guide-title-color: var(--td-guide-title-color, @text-color-primary);
 @guide-popover-title-font-size: var(--td-guide-popover-title-font-size, @font-size-m);
 @guide-dialog-title-font-size: var(--td-guide-dialog-title-font-size, 36rpx);
 @guide-title-font-weight: var(--td-guide-title-font-weight, 600);
@@ -28,7 +28,7 @@
 @guide-dialog-body-margin-top: var(--td-guide-dialog-body-margin-top, 16rpx);
 @guide-popover-body-text-align: var(--td-guide-popover-body-text-align, left);
 @guide-dialog-body-text-align: var(--td-guide-dialog-body-text-align, center);
-@guide-body-color: var(--td-guide-body-color, @font-gray-2);
+@guide-body-color: var(--td-guide-body-color, @text-color-secondary);
 @guide-popover-body-font-size: var(--td-guide-popover-body-font-size, @font-size-base);
 @guide-dialog-body-font-size: var(--td-guide-dialog-body-font-size, @font-size-m);
 @guide-body-font-weight: var(--td-guide-body-font-weight, 400);
@@ -102,16 +102,17 @@
   &__footer {
     text-align: @guide-footer-text-align;
     margin-top: @guide-footer-margin-top;
-    button + button {
+    .@{prefix}-guide__button + .@{prefix}-guide__button {
       margin-left: @guide-footer-button-space;
     }
-    button.hidden {
+
+    .@{prefix}-guide__button.hidden {
       display: none;
     }
     &.dialog {
       display: flex;
       padding: @guide-dialog-footer-button-padding;
-      button:last-child {
+      .@{prefix}-guide__button:last-child {
         flex-grow: 1;
       }
     }

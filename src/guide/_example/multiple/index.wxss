@@ -29,6 +29,6 @@
   font-weight: 400;
   line-height: 48rpx;
 }
-.slot-body image {
+.slot-body .guide-demo-image {
   margin-top: 48rpx;
 }

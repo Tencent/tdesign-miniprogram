@@ -74,7 +74,8 @@ export default class Guide extends SuperComponent {
       });
     },
     async init() {
-      const { steps, _steps, current, _current } = this.data;
+      const { steps, current } = this.properties;
+      const { _steps, _current } = this.data;
       const step: GuideStep = steps[current];
       if (!step) {
         return this.setData({ visible: false });
@@ -197,7 +198,7 @@ export default class Guide extends SuperComponent {
         content: '跳过',
         size,
         ...skipButton,
-        class: `${prefix}-class-skip ${step.hideSkip && 'hidden'} ${skipButton?.class || ''}`,
+        class: `${prefix}-class-skip ${name}__button ${step.hideSkip && 'hidden'} ${skipButton?.class || ''}`,
         type: 'skip',
       };
       let nextButton = step.nextButtonProps ?? this.data.nextButtonProps;
@@ -206,7 +207,7 @@ export default class Guide extends SuperComponent {
         content: '下一步',
         size,
         ...nextButton,
-        class: `${prefix}-class-next ${nextButton?.class || ''}`,
+        class: `${prefix}-class-next ${name}__button ${nextButton?.class || ''}`,
         type: 'next',
       };
       nextButton = { ...nextButton, content: this.buttonContent(nextButton) };
@@ -216,7 +217,7 @@ export default class Guide extends SuperComponent {
         content: '返回',
         size,
         ...backButton,
-        class: `${prefix}-class-back ${backButton?.class || ''}`,
+        class: `${prefix}-class-back ${name}__button ${backButton?.class || ''}`,
         type: 'back',
       };
       let finishButton = step.finishButtonProps ?? this.data.finishButtonProps;
@@ -225,7 +226,7 @@ export default class Guide extends SuperComponent {
         content: '完成',
         size,
         ...finishButton,
-        class: `${prefix}-class-finish ${finishButton?.class || ''}`,
+        class: `${prefix}-class-finish ${name}__button ${finishButton?.class || ''}`,
         type: 'finish',
       };
       finishButton = { ...finishButton, content: this.buttonContent(finishButton) };
