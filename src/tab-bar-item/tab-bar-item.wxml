@@ -50,7 +50,7 @@
       wx:for="{{subTabBar}}"
       wx:for-item="child"
       wx:for-index="index"
-      wx:key="index"
+      wx:key="value"
       bind:tap="selectChild"
       data-value="{{child.value || index}}"
       aria-role="tab"
