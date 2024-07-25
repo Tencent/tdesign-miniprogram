@@ -5,7 +5,7 @@
   <t-side-bar value="{{sideBarIndex}}" bind:change="onSideBarChange">
     <t-side-bar-item
       wx:for="{{categories}}"
-      wx:key="index"
+      wx:key="label"
       value="{{item.value || index}}"
       label="{{item.label}}"
       disabled="{{item.disabled}}"
@@ -15,7 +15,7 @@
   <view class="content" style="transform: translateY(-{{sideBarIndex * 100}}%)">
     <scroll-view
       wx:for="{{categories}}"
-      wx:key="index"
+      wx:key="label"
       class="section"
       scroll-y
       scroll-top="{{scrollTop}}"
