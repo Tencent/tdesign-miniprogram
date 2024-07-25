@@ -37,6 +37,8 @@ export default class Indexes extends SuperComponent {
 
   sidebar = null;
 
+  currentTouchAnchor = null;
+
   observers = {
     indexList(v) {
       this.setIndexList(v);
@@ -146,25 +148,23 @@ export default class Indexes extends SuperComponent {
     },
 
     setAnchorByIndex(index) {
-      if (this.preIndex != null && this.preIndex === index) return;
-
       const { _indexList, stickyOffset } = this.data;
       const activeAnchor = _indexList[index];
+
+      if (this.data.activeAnchor !== null && this.data.activeAnchor === activeAnchor) return;
+
       const target = this.groupTop.find((item) => item.anchor === activeAnchor);
 
       if (target) {
+        this.currentTouchAnchor = activeAnchor;
+        const scrollTop = target.top - stickyOffset;
         wx.pageScrollTo({
-          scrollTop: target.top - stickyOffset,
+          scrollTop,
           duration: 0,
         });
-      }
-
-      this.preIndex = index;
-      this.toggleTips(true);
-      this.triggerEvent('select', { index: activeAnchor });
-
-      if (activeAnchor !== this.data.activeAnchor) {
-        this.triggerEvent('change', { index: activeAnchor });
+        this.toggleTips(true);
+        this.triggerEvent('select', { index: activeAnchor });
+        this.setData({ activeAnchor });
       }
     },
 
@@ -211,7 +211,7 @@ export default class Indexes extends SuperComponent {
         return;
       }
 
-      const { sticky, stickyOffset } = this.data;
+      const { sticky, stickyOffset, activeAnchor } = this.data;
 
       scrollTop += stickyOffset;
 
@@ -222,15 +222,12 @@ export default class Indexes extends SuperComponent {
       if (curIndex === -1) return;
 
       const curGroup = this.groupTop[curIndex];
-
-      if (this.data.activeAnchor !== curGroup.anchor) {
+      if (this.currentTouchAnchor !== null) {
         this.triggerEvent('change', { index: curGroup.anchor });
-      }
-
-      if (this.data.activeAnchor !== curGroup.anchor) {
-        this.setData({
-          activeAnchor: curGroup.anchor,
-        });
+        this.currentTouchAnchor = null;
+      } else if (activeAnchor !== curGroup.anchor) {
+        this.triggerEvent('change', { index: curGroup.anchor });
+        this.setData({ activeAnchor: curGroup.anchor });
       }
 
       if (sticky) {
