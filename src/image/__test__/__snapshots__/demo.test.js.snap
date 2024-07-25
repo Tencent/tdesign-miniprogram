@@ -108,17 +108,6 @@ exports[`Image Image base demo works fine 1`] = `
 </base>
 `;
 
-exports[`Image Image size demo works fine 1`] = `
-<size>
-  <t-image
-    mode="aspectFill"
-    shape="round"
-    src="https://tdesign.gtimg.com/mobile/demos/image1.jpeg"
-    tClass="size-l"
-  />
-</size>
-`;
-
 exports[`Image Image status demo works fine 1`] = `
 <status>
   <wx-view

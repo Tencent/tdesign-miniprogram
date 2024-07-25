@@ -116,37 +116,6 @@ exports[`Loading Loading size demo works fine 1`] = `
 </size>
 `;
 
-exports[`Loading Loading status demo works fine 1`] = `
-<status>
-  <wx-view
-    class="loading-container-flex"
-  >
-    <t-switch
-      colors="{{
-        Array [
-          "#00A870",
-        ]
-      }}"
-      slot="note"
-      value="{{false}}"
-      bind:change="switchChange"
-    />
-    <span
-      class="text-info"
-    >
-       请求结束，隐藏loading加载 
-    </span>
-  </wx-view>
-  <t-loading
-    delay="{{1000}}"
-    loading="{{false}}"
-    size="40rpx"
-    text="加载中..."
-    theme="circular"
-  />
-</status>
-`;
-
 exports[`Loading Loading text demo works fine 1`] = `
 <wx-text>
   <t-loading
