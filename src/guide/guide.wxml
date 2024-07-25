@@ -9,11 +9,11 @@
 >
   <view class="class {{prefix}}-class {{classPrefix}}">
     <view
-      class="{{prefix}}-class-reference {{classPrefix}}__reference {{nonOverlay ? 'non-overlay' : ''}}"
+      class="{{prefix}}-class-reference {{classPrefix}}__reference {{nonOverlay ? classPrefix + '__reference--nonoverlay' : ''}}"
       style="{{referenceStyle}}"
     />
     <view
-      class="{{prefix}}-class-popover {{classPrefix}}__popover {{title || body ? modeType : ''}}"
+      class="{{prefix}}-class-popover {{classPrefix}}__container {{title || body ? classPrefix + '__container--' + modeType : ''}}"
       style="{{popoverStyle}}"
     >
       <template
@@ -32,7 +32,9 @@
   placement="center"
 >
   <view class="class {{prefix}}-class {{classPrefix}}">
-    <view class="{{prefix}}-class-popover {{classPrefix}}__popover {{title || body ? modeType : ''}}">
+    <view
+      class="{{prefix}}-class-popover {{classPrefix}}__container {{title || body ? classPrefix + '__container--' + modeType : ''}}"
+    >
       <template
         is="content"
         data="{{ prefix: prefix, classPrefix: classPrefix, title: title, body: body, steps: steps, current: current, modeType: modeType, ...buttonProps }}"

@@ -122,7 +122,7 @@ export default class Guide extends SuperComponent {
     },
     async placementOffset({ placement, offset }: GuideStep, place: CSSStyleDeclaration) {
       await this.nextTick();
-      const rect: WechatMiniprogram.BoundingClientRectCallbackResult = await getRect(this, `.${name}__popover`);
+      const rect: WechatMiniprogram.BoundingClientRectCallbackResult = await getRect(this, `.${name}__container`);
       let offsetLeft = offset?.[0];
       offsetLeft = unitConvert(isNumber(offsetLeft) ? `${offsetLeft}rpx` : offsetLeft || 0);
       let offsetTop = offset?.[1];
@@ -198,7 +198,9 @@ export default class Guide extends SuperComponent {
         content: '跳过',
         size,
         ...skipButton,
-        class: `${prefix}-class-skip ${name}__button ${step.hideSkip && 'hidden'} ${skipButton?.class || ''}`,
+        class: `${prefix}-class-skip ${name}__button ${step.hideSkip ? `${name}__button--hidden` : ''} ${
+          skipButton?.class || ''
+        }`,
         type: 'skip',
       };
       let nextButton = step.nextButtonProps ?? this.data.nextButtonProps;

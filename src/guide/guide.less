@@ -46,44 +46,44 @@
     box-shadow: 0 0 0 0 @guide-reference-mask-color, @guide-reference-mask-color 0 0 0 5000px;
     border-radius: @guide-reference-border-radius;
     transition: all @anim-duration-base @anim-time-fn-ease-out;
-    &.non-overlay {
+    &--nonoverlay {
       box-shadow: none;
       border: @guide-reference-border;
     }
   }
-  &__popover {
+  &__container {
     display: inline-block;
+    &--popover {
+      background-color: @guide-popover-bg-color;
+      border: @guide-popover-border;
+      border-radius: @guide-popover-border-radius;
+      box-shadow: @guide-popover-shadow;
+      padding: @guide-popover-padding;
+      min-width: @guide-popover-min-width;
+      max-width: @guide-popover-max-width;
+    }
+    &--dialog {
+      background-color: @guide-popover-bg-color;
+      border-radius: @guide-dialog-border-radius;
+      padding: @guide-dialog-padding;
+      width: @guide-dialog-width;
+    }
   }
-  &__popover.popover {
-    background-color: @guide-popover-bg-color;
-    border: @guide-popover-border;
-    border-radius: @guide-popover-border-radius;
-    box-shadow: @guide-popover-shadow;
-    padding: @guide-popover-padding;
-    min-width: @guide-popover-min-width;
-    max-width: @guide-popover-max-width;
-  }
-  &__popover.dialog {
-    background-color: @guide-popover-bg-color;
-    border-radius: @guide-dialog-border-radius;
-    padding: @guide-dialog-padding;
-    width: @guide-dialog-width;
-  }
-  &__title.popover {
+  &__title--popover {
     text-align: @guide-popover-title-text-align;
     color: @guide-title-color;
     font-size: @guide-popover-title-font-size;
     font-weight: @guide-title-font-weight;
     line-height: @guide-popover-title-line-height;
   }
-  &__title.dialog {
+  &__title--dialog {
     text-align: @guide-dialog-title-text-align;
     color: @guide-title-color;
     font-size: @guide-dialog-title-font-size;
     font-weight: @guide-title-font-weight;
     line-height: @guide-dialog-title-line-height;
   }
-  &__body.popover {
+  &__body--popover {
     margin-top: @guide-popover-body-margin-top;
     text-align: @guide-popover-body-text-align;
     color: @guide-body-color;
@@ -91,7 +91,7 @@
     font-weight: @guide-body-font-weight;
     line-height: @guide-popover-body-line-height;
   }
-  &__body.dialog {
+  &__body--dialog {
     margin-top: @guide-dialog-body-margin-top;
     text-align: @guide-dialog-body-text-align;
     color: @guide-body-color;
@@ -105,11 +105,10 @@
     .@{prefix}-guide__button + .@{prefix}-guide__button {
       margin-left: @guide-footer-button-space;
     }
-
-    .@{prefix}-guide__button.hidden {
+    .@{prefix}-guide__button--hidden {
       display: none;
     }
-    &.dialog {
+    &--dialog {
       display: flex;
       padding: @guide-dialog-footer-button-padding;
       .@{prefix}-guide__button:last-child {
