@@ -4,7 +4,7 @@
 <view class="indexes">
   <t-indexes bind:change="onChange" index-list="{{indexList}}" sticky-offset="{{stickyOffset + 8}}" t-class="wrapper">
     <block wx:for="{{list}}" wx:key="index">
-      <t-indexes-anchor index="{{item.index}}">
+      <t-indexes-anchor index="{{item.index}}" t-class="anchor-wrapper">
         <view class="capsule{{curIndex == item.index ? ' capsule--active' : ''}}">{{item.index}}</view>
       </t-indexes-anchor>
       <t-cell-group>
