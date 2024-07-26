@@ -34,6 +34,7 @@ export default class NoticeBar extends SuperComponent {
     prefix,
     classPrefix: name,
     loop: -1,
+    ready: false,
   };
 
   observers = {
@@ -50,6 +51,7 @@ export default class NoticeBar extends SuperComponent {
     },
 
     visible(visible) {
+      if (!this.data.ready) return;
       if (visible) {
         this.show();
       } else {
@@ -68,6 +70,7 @@ export default class NoticeBar extends SuperComponent {
     },
 
     content() {
+      if (!this.data.ready) return;
       this.clearNoticeBarAnimation();
       this.initAnimation();
     },
@@ -87,6 +90,7 @@ export default class NoticeBar extends SuperComponent {
 
     ready() {
       this.show();
+      this.setData({ ready: true });
     },
   };
 
