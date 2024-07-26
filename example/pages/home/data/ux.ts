@@ -15,6 +15,10 @@ const ux = {
       label: '下拉菜单',
     },
     {
+      name: 'Guide',
+      label: '引导',
+    },
+    {
       name: 'Loading',
       label: '加载',
     },
